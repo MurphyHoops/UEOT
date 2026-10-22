@@ -1,0 +1,1456 @@
+{
+  "schema": "PATH_REALIZATION_SOURCE_SEMANTIC_REUSE_REVIEW_V1",
+  "status": "SOURCE_SEMANTIC_REUSE_CLEAR_NATIVE_PENDING",
+  "baseline_ref": "d503586107974c56e0773b4ea106b41a7d144b43",
+  "source_only_hints_receipt_sha256": "44a33caaf528ebfea9596d051f2e7d856afca845bb85a02166c88a74d62f2909",
+  "lexical_reuse_hints_sha256": "ba63ff0386f2de6b2b7ec17f3481bac9814d37ccb5f26de41b5e3f54dde7d005",
+  "complete_source_fingerprint_at_hint_preparation": "c344bf6657ab31a32c46fba9feff6d5c04846b8f061d444aec8accb4994ad41b",
+  "new_source_bindings": [
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/C3ExecutableSearch.lean",
+      "sha256": "6a70601f35f12edf0eaf881a39aa36fc8d22d5b42111d0c937fa92948df70abc",
+      "public_source_candidates": 16
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean",
+      "sha256": "7f231017ef32eb607c0187dc659a139101f92ee4ad2ed434f35d4f0687a46cdd",
+      "public_source_candidates": 8
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryRealization.lean",
+      "sha256": "8306c376acbf26db8ae70a5064460c9e423da527a0c89efe4ec18e0e6150191f",
+      "public_source_candidates": 7
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySafetyWitness.lean",
+      "sha256": "fcc011bd9c7571e9ae95e6df606baaf500e2f7767453be6788af5da470b934e7",
+      "public_source_candidates": 9
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean",
+      "sha256": "1bcf2d6baaa55e4ea648d19a78dc490a86b525eaaa109464654184d447544081",
+      "public_source_candidates": 9
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean",
+      "sha256": "e37d32b9f5da631392706e60c68d21fcb26491fea1c67614be57afbf6d4b0455",
+      "public_source_candidates": 14
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+      "sha256": "61feecf09bd38d2b5497a7be33d073b1c04cd20a3e45a6840af19dd1670af363",
+      "public_source_candidates": 14
+    }
+  ],
+  "source_public_candidates": 77,
+  "nonempty_hint_groups_reviewed": 26,
+  "candidate_pairs_reviewed": 63,
+  "unique_old_declarations_reviewed": 40,
+  "all_hint_pairs_accounted_for": true,
+  "old_sources_read_from_exact_baseline_and_matched_current_bytes": true,
+  "all_new_sources_matched_hint_snapshot": true,
+  "source_snapshot_revision": {
+    "earlier_receipt_sha256": "aaa24598d528704cf352497def1fec989dd1c15efb1dc8395ed162025b3c74a3",
+    "earlier_receipt_preserved": true,
+    "lexical_hint_artifact_byte_identical_to_previous": true,
+    "revised_source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+    "previous_source_sha256": "4ce233c0138c17faeb458580c34c7d99985fd3cb0ba9fc3b09884a4d7f655691",
+    "reviewed_source_sha256": "61feecf09bd38d2b5497a7be33d073b1c04cd20a3e45a6840af19dd1670af363",
+    "exact_change": "Private hfun type annotation: unavailable ℝ≥0∞ notation replaced with explicit ENNReal. Reversing precisely that one occurrence reproduces the previous complete file SHA-256.",
+    "public_declarations_or_proof_conclusions_changed": false
+  },
+  "reviewer_scope": "C3 agent performed semantic comparison independently of the name-score output. Six other module sources are independently reviewed. The C3 implementation was authored by this agent; its separate independent source review remains C3_AND_DOOB_WITNESS_REVIEW.md.",
+  "native_type_check_executed_by_this_review": false,
+  "fixed_native_hashes_or_counts_asserted": false,
+  "global_mathematical_closure": "NOT_ESTABLISHED",
+  "counted_ledger_changes": "NONE",
+  "records": [
+    {
+      "index": 1,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.search_eq_firstGoodIndex",
+      "new_declaration_evidence": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/C3ExecutableSearch.lean",
+        "line": 253,
+        "end_line": 261,
+        "source_sha256": "6a70601f35f12edf0eaf881a39aa36fc8d22d5b42111d0c937fa92948df70abc",
+        "declaration_source": "theorem search_eq_firstGoodIndex\n    (F : NestedCandidateFamily V n) (oracle : Finset V → Bool)\n    (Good : Finset V → Prop) [DecidablePred Good]\n    (hmatch : ∀ i, oracle (F.candidate i) = true ↔ Good (F.candidate i))\n    (hne : (F.goodIndices Good).Nonempty) :\n    (search F oracle).found = some (F.firstGoodIndex Good hne).val := by\n  apply (search_found_iff F oracle Good hmatch _).mpr\n  exact F.firstGoodIndex_chainMinimal Good hne\n"
+      },
+      "source_semantics": "The executable short-circuit scan, with an explicit Bool oracle matching Good on the registered table, returns the existing family minimum. This is an executable-to-specification bridge, not a second abstract minimum construction.",
+      "reuse_decision": "The proof calls the already registered firstGoodIndex_chainMinimal through search_found_iff. The earlier firstGoodIndex_good is used within that established family API; no choose/min operation is put into the executable oracle or search.",
+      "scope_boundary": "Oracle matching is an external premise. The result is minimal within the registered finite family and does not enumerate all carriers, prove physical deletion safety, or require Good monotonicity.",
+      "candidate_assessments": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.NestedCandidateFamily.firstGoodIndex_good",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/C3NestedSearch.lean",
+          "similarity": 0.6,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old theorem says the abstract minimum is Good, assuming nonempty goodIndices. It does not identify the result of a Bool-oracle program or account for queries. The new proof deliberately consumes the stronger old chain-minimality theorem.",
+          "disposition": "OLD_FAMILY_API_EXPLICITLY_REUSED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/C3NestedSearch.lean",
+            "line": 49,
+            "end_line": 56,
+            "source_sha256": "2849405060b590e72665cfeec024c6c9adcc485e0a444e21edffb0739361cd83",
+            "declaration_source": "theorem firstGoodIndex_good\n    (F : NestedCandidateFamily V n)\n    (Good : Finset V → Prop) [DecidablePred Good]\n    (hne : (F.goodIndices Good).Nonempty) :\n    Good (F.candidate (F.firstGoodIndex Good hne)) := by\n  have hm := Finset.min'_mem (F.goodIndices Good) hne\n  simpa [firstGoodIndex, goodIndices] using hm\n"
+          }
+        }
+      ],
+      "decision": "SOURCE_SEMANTIC_REUSE_CLEAR_NATIVE_CHECK_PENDING"
+    },
+    {
+      "index": 2,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.stateHistoryEquiv_map",
+      "new_declaration_evidence": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean",
+        "line": 99,
+        "end_line": 113,
+        "source_sha256": "7f231017ef32eb607c0187dc659a139101f92ee4ad2ed434f35d4f0687a46cdd",
+        "declaration_source": "theorem stateHistoryEquiv_map\n    {S T : Type u} [MeasurableSpace S] [MeasurableSpace T] (f : S → T) :\n    ∀ n (h : CausalHistory S S n),\n      stateHistoryEquiv n (riskHistoryMap f f n h) =\n        mapHistory f n (stateHistoryEquiv n h) := by\n  intro n\n  induction n with\n  | zero => intro h; rfl\n  | succ n ih =>\n      rintro ⟨h, x⟩\n      change appendHistory n\n          (stateHistoryEquiv n (riskHistoryMap f f n h), f x) =\n        mapHistory f (n + 1) (appendHistory n (stateHistoryEquiv n h, x))\n      rw [mapHistory_appendHistory, ih]\n"
+      },
+      "source_semantics": "Naturality of the existing recursive-history to finite-coordinate equivalence under an arbitrary state map f; the conclusion is equality of the complete mapped histories.",
+      "reuse_decision": "Keep stateHistoryEquiv, riskHistoryMap, appendHistory and the new elementary mapHistory representation. Induction uses mapHistory_appendHistory and the existing equivalence recursion; it does not introduce a second history equivalence.",
+      "scope_boundary": "The statement itself asserts no path-law equality, measurability of an arbitrary f, physical safety, or Markov property.",
+      "candidate_assessments": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.stateHistoryEquiv_last",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+          "similarity": 0.6,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old result evaluates only the last coordinate of one history; the target commutes an arbitrary f with every coordinate.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+            "line": 96,
+            "end_line": 107,
+            "source_sha256": "514927df86f19ee9af7ab60f90caebb15779e9feb2c79deba655335098c9ad15",
+            "declaration_source": "@[simp] theorem stateHistoryEquiv_last\n    {X : Type u} [MeasurableSpace X]\n    (n : ℕ) (h : CausalHistory X X n) :\n    stateHistoryEquiv n h (lastHistoryIndex n) = currentState n h := by\n  cases n with\n  | zero => rfl\n  | succ n =>\n      rcases h with ⟨h, x⟩\n      rw [stateHistoryEquiv_succ]\n      simp [Function.comp_def, appendHistory, IicProdIoc_def,\n        lastHistoryIndex, MeasurableEquiv.piSingleton, currentState, Prod.map]\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.stateHistoryEquiv_succ",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+          "similarity": 0.6,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old recursion equation is the structural mechanism used in the successor step. It does not itself quantify over a state map or prove the full naturality equation.",
+          "disposition": "OLD_REPRESENTATION_RECURSION_REUSED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+            "line": 90,
+            "end_line": 95,
+            "source_sha256": "514927df86f19ee9af7ab60f90caebb15779e9feb2c79deba655335098c9ad15",
+            "declaration_source": "theorem stateHistoryEquiv_succ\n    {X : Type u} [MeasurableSpace X] (n : ℕ) :\n    (stateHistoryEquiv (X := X) (n + 1) :\n      CausalHistory X X (n + 1) → ((i : Finset.Iic (n + 1)) → X)) =\n      appendHistory n ∘ Prod.map (stateHistoryEquiv n) id := rfl\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.stateHistoryEquiv_zero",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+          "similarity": 0.6,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old base-case equivalence agrees with the new proof at n=0. It alone supplies neither the arbitrary-time induction nor mapping naturality.",
+          "disposition": "OLD_REPRESENTATION_BASE_REUSED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+            "line": 85,
+            "end_line": 89,
+            "source_sha256": "514927df86f19ee9af7ab60f90caebb15779e9feb2c79deba655335098c9ad15",
+            "declaration_source": "@[simp] theorem stateHistoryEquiv_zero\n    {X : Type u} [MeasurableSpace X] :\n    stateHistoryEquiv (X := X) 0 =\n      (MeasurableEquiv.piUnique (fun _ : Finset.Iic 0 => X)).symm := rfl\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSafePrefixCheck.stateHistoryEquiv_survival_iff",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceSafePrefix.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old statement transports a particular survival predicate to coordinate histories. It has a safe set and membership equivalence, not an arbitrary map f or equality of histories.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceSafePrefix.lean",
+            "line": 40,
+            "end_line": 74,
+            "source_sha256": "574908f3524470791bdac6b4b78c03dd1eb9faef2e9eecd1ef8c6ee2238ef41f",
+            "declaration_source": "theorem stateHistoryEquiv_survival_iff\n    {X : Type u} [MeasurableSpace X] (K : Set X) :\n    ∀ (n : ℕ) (h : CausalHistory X X n),\n      stateHistoryEquiv n h ∈ historySurvivalSet Kᶜ n ↔\n        stateSurvives K n h := by\n  intro n\n  induction n with\n  | zero =>\n      intro h\n      have h0 (i : Finset.Iic 0) : stateHistoryEquiv 0 h i = h := by\n        rw [Subsingleton.elim i (lastHistoryIndex 0)]\n        exact stateHistoryEquiv_last 0 h\n      constructor\n      · intro hs\n        have hh := (mem_historySurvivalSet_iff Kᶜ 0 _).mp hs (lastHistoryIndex 0)\n        rw [h0] at hh\n        change ¬ ¬ (h ∈ K) at hh\n        change h ∈ K\n        exact not_not.mp hh\n      · intro hs\n        apply (mem_historySurvivalSet_iff Kᶜ 0 _).mpr\n        intro i\n        rw [h0 i]\n        change ¬ ¬ (h ∈ K)\n        change h ∈ K at hs\n        exact not_not.mpr hs\n  | succ n ih =>\n      intro h\n      rcases h with ⟨h, x⟩\n      rw [stateHistoryEquiv_succ]\n      change appendHistory n (stateHistoryEquiv n h, x) ∈\n        historySurvivalSet Kᶜ (n + 1) ↔ stateSurvives K n h ∧ x ∈ K\n      rw [appendHistory_mem_historySurvivalSet_iff, ih h]\n      simp only [Set.mem_compl_iff, not_not]\n"
+          }
+        }
+      ],
+      "decision": "SOURCE_SEMANTIC_REUSE_CLEAR_NATIVE_CHECK_PENDING"
+    },
+    {
+      "index": 3,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.actual_state_prefix_eq",
+      "new_declaration_evidence": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean",
+        "line": 137,
+        "end_line": 157,
+        "source_sha256": "7f231017ef32eb607c0187dc659a139101f92ee4ad2ed434f35d4f0687a46cdd",
+        "declaration_source": "theorem actual_state_prefix_eq\n    {X M Y A : Type u} [Fintype X] [Fintype M]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    [MeasurableSpace M] [MeasurableSingletonClass M]\n    (controller : FiniteMemoryController M Y A) (p₀ : PMF X) (q : X → Y)\n    (P : ℕ → X → A → PMF X) (n : ℕ) :\n    ((microLaw p₀ q P controller.policy n).map\n      (stateHistoryEquiv n ∘ eraseActionHistory n)).toMeasure =\n      (stateTrajMeasure controller p₀ q P).map (Preorder.frestrictLe n) := by\n  rw [stateTrajMeasure, Measure.map_map (Preorder.measurable_frestrictLe n)\n    (measurable_mapPath Prod.fst measurable_fst), frestrictLe_mapPath]\n  rw [← Measure.map_map (measurable_mapHistory Prod.fst measurable_fst n)\n    (Preorder.measurable_frestrictLe n), ← actual_augmented_prefix_eq]\n  rw [PMF.toMeasure_map, PMF.map_comp]\n  · congr 2\n    funext h\n    change stateHistoryEquiv n (eraseActionHistory n h) =\n      mapHistory Prod.fst n (stateHistoryEquiv n (augmentHistory controller q n h))\n    rw [← stateHistoryEquiv_map, eraseMemory_augmentHistory]\n  · exact measurable_mapHistory Prod.fst measurable_fst n\n"
+      },
+      "source_semantics": "Equality of the complete actual state-prefix distribution and the prefix of the projected augmented trajectory for one finite-memory controller, original p0, observation q and arbitrary numeric sequence P n.",
+      "reuse_decision": "Project the newly proved actual_augmented_prefix_eq through Prod.fst, using PMF/Measure map composition, stateHistoryEquiv_map and eraseMemory_augmentHistory. Existing history representations and action erasure are retained.",
+      "scope_boundary": "The projected state process need not be Markov. A fixed numerical kernel and current-observation stationary feedback are not assumed; no reference-process policy identity follows.",
+      "candidate_assessments": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.actual_state_prefix_eq_homogeneous_prefix",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+          "similarity": 0.8,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old source fixes a Model and current-observation sigma, and its target is homTrajMeasure of the resulting homogeneous state row. The new controller may need memory and P may vary with time, so those source hypotheses cannot be silently supplied.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+            "line": 171,
+            "end_line": 188,
+            "source_sha256": "514927df86f19ee9af7ab60f90caebb15779e9feb2c79deba655335098c9ad15",
+            "declaration_source": "theorem actual_state_prefix_eq_homogeneous_prefix\n    {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)\n    (p0 : PMF X) (n : ℕ) :\n    ((causalLaw p0\n      (riskMicroControlKernel q (fun _ => M.transitionPMF)\n        (observationMarkovPolicy sigma)) n).map\n          (stateHistoryEquiv n ∘ eraseActionHistory n)).toMeasure =\n      (homTrajMeasure p0.toMeasure\n        (pmfRowKernel\n          (policyTransitionPMF M (liftedStationaryPolicy q sigma)))).map\n            (Preorder.frestrictLe n) := by\n  rw [← PMF.map_comp,\n    actual_state_path_eq_stationary_path M q sigma p0 n]\n  exact state_history_eq_homogeneous_prefix p0\n    (policyTransitionPMF M (liftedStationaryPolicy q sigma)) n\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.actual_state_prefix_event_mass",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+          "similarity": 0.525,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old theorem evaluates one finite-prefix event for the same stationary source. The target is equality of measures for a different, constructed finite-memory trajectory; the old event theorem does not construct that law.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+            "line": 192,
+            "end_line": 213,
+            "source_sha256": "514927df86f19ee9af7ab60f90caebb15779e9feb2c79deba655335098c9ad15",
+            "declaration_source": "theorem actual_state_prefix_event_mass\n    {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    [MeasurableSpace A] [MeasurableSingletonClass A]\n    (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)\n    (p0 : PMF X) (n : ℕ) (B : Set ((i : Finset.Iic n) → X)) :\n    (causalLaw p0\n      (riskMicroControlKernel q (fun _ => M.transitionPMF)\n        (observationMarkovPolicy sigma)) n).toMeasure\n          ((stateHistoryEquiv n ∘ eraseActionHistory n) ⁻¹' B) =\n      homTrajMeasure p0.toMeasure\n        (pmfRowKernel\n          (policyTransitionPMF M (liftedStationaryPolicy q sigma)))\n            ((Preorder.frestrictLe n) ⁻¹' B) := by\n  have hB : MeasurableSet B := (Set.toFinite B).measurableSet\n  have hmass := congrArg\n    (fun mu : Measure ((i : Finset.Iic n) → X) => mu B)\n    (actual_state_prefix_eq_homogeneous_prefix M q sigma p0 n)\n  rw [PMF.toMeasure_map_apply _ _ _ (measurable_of_finite _) hB,\n    Measure.map_apply (Preorder.measurable_frestrictLe n) hB] at hmass\n  exact hmass\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.state_history_eq_homogeneous_prefix",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "This old generic history theorem has a fixed J : X -> PMF X. The new augmented J is indexed by n, and an arbitrary unbounded time sequence is not a finite homogeneous state row.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+            "line": 140,
+            "end_line": 167,
+            "source_sha256": "514927df86f19ee9af7ab60f90caebb15779e9feb2c79deba655335098c9ad15",
+            "declaration_source": "theorem state_history_eq_homogeneous_prefix\n    {X : Type u} [Fintype X]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    (p0 : PMF X) (J : X → PMF X) (n : ℕ) :\n    ((causalLaw p0 (fun k h => J (currentState k h)) n).map\n      (stateHistoryEquiv n)).toMeasure =\n      (homTrajMeasure p0.toMeasure (pmfRowKernel J)).map\n        (Preorder.frestrictLe n) := by\n  rw [← PMF.toMeasure_map _ _ (stateHistoryEquiv n).measurable]\n  induction n with\n  | zero =>\n      dsimp only [CausalHistory, causalLaw, causalHistoryMeasurableSpace,\n        stateHistoryEquiv]\n      exact (homTrajMeasure_prefix_zero p0.toMeasure (pmfRowKernel J)).symm\n  | succ n ih =>\n      letI : IsMarkovKernel (homHistoryKernel (pmfRowKernel J) n) :=\n        isMarkovKernel_homHistoryKernel (pmfRowKernel J) n\n      change (pmfExtend\n        (causalLaw p0 (fun k h => J (currentState k h)) n)\n        (fun h => J (currentState n h))).toMeasure.map\n          (stateHistoryEquiv (n + 1)) = _\n      rw [pmfExtend_toMeasure_compProd, stateHistoryEquiv_succ]\n      rw [← Measure.map_map (measurable_appendHistory n)\n        ((stateHistoryEquiv n).measurable.prodMap measurable_id)]\n      rw [historyRowKernel_eq_comap J n,\n        compProd_comap_map_left, ih]\n      exact homTrajMeasure_prefix_succ p0.toMeasure (pmfRowKernel J) n\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.actual_state_path_eq_stationary_path",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourcePolicyPathBridge.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old theorem erases actions from a stationary observation-feedback experiment into its state-only causal law. The new source erases memory only after constructing the actual augmented law; memory is not generally recoverable from the current state.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourcePolicyPathBridge.lean",
+            "line": 96,
+            "end_line": 142,
+            "source_sha256": "3e12ece077ed1528cf3a3f6adb16530400b241bae384071a0c1ba616023d546e",
+            "declaration_source": "theorem actual_state_path_eq_stationary_path\n    {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]\n    (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)\n    (p0 : PMF X) (n : ℕ) :\n    (causalLaw p0\n      (riskMicroControlKernel q (fun _ => M.transitionPMF)\n        (observationMarkovPolicy sigma)) n).map (eraseActionHistory n) =\n      causalLaw p0 (policyPathKernel M (liftedStationaryPolicy q sigma)) n := by\n  let K := riskMicroControlKernel q (fun _ => M.transitionPMF)\n    (observationMarkovPolicy sigma)\n  let L := policyPathKernel M (liftedStationaryPolicy q sigma)\n  change (causalLaw p0 K n).map (eraseActionHistory n) = causalLaw p0 L n\n  induction n with\n  | zero =>\n      change p0.map id = p0\n      exact PMF.map_id p0\n  | succ n ih =>\n      have hrow :\n          (fun h : CausalHistory X (A × X) n => (K n h).map Prod.snd) =\n            (fun h => L n (eraseActionHistory n h)) := by\n        funext h\n        change\n          (riskMicroControlKernel q (fun _ => M.transitionPMF)\n            (observationMarkovPolicy sigma) n h).map Prod.snd =\n          policyTransitionPMF M (liftedStationaryPolicy q sigma)\n            (currentState n (eraseActionHistory n h))\n        rw [currentState_eraseActionHistory]\n        exact actual_next_state_eq_stationary_row M q sigma n h\n      change\n        (pmfExtend (causalLaw p0 K n) (K n)).map\n            (fun hz => (eraseActionHistory n hz.1, hz.2.2)) =\n          pmfExtend (causalLaw p0 L n) (L n)\n      calc\n        _ = ((pmfExtend (causalLaw p0 K n) (K n)).map\n              (fun hz => (hz.1, hz.2.2))).map\n              (fun hz => (eraseActionHistory n hz.1, hz.2)) := by\n                rw [PMF.map_comp]\n                rfl\n        _ = (pmfExtend (causalLaw p0 K n)\n              (fun h => L n (eraseActionHistory n h))).map\n              (fun hz => (eraseActionHistory n hz.1, hz.2)) := by\n                rw [risk_map_extend_right, hrow]\n        _ = pmfExtend ((causalLaw p0 K n).map (eraseActionHistory n)) (L n) :=\n              coverage_map_extend_reference (causalLaw p0 K n)\n                (eraseActionHistory n) (L n)\n        _ = _ := by rw [ih]\n"
+          }
+        }
+      ],
+      "decision": "SOURCE_SEMANTIC_REUSE_CLEAR_NATIVE_CHECK_PENDING"
+    },
+    {
+      "index": 4,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.actual_state_prefix_event_mass",
+      "new_declaration_evidence": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean",
+        "line": 159,
+        "end_line": 175,
+        "source_sha256": "7f231017ef32eb607c0187dc659a139101f92ee4ad2ed434f35d4f0687a46cdd",
+        "declaration_source": "theorem actual_state_prefix_event_mass\n    {X M Y A : Type u} [Fintype X] [Fintype M] [Fintype A]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    [MeasurableSpace M] [MeasurableSingletonClass M]\n    [MeasurableSpace A] [MeasurableSingletonClass A]\n    (controller : FiniteMemoryController M Y A) (p₀ : PMF X) (q : X → Y)\n    (P : ℕ → X → A → PMF X) (n : ℕ) (B : Set ((i : Finset.Iic n) → X)) :\n    (microLaw p₀ q P controller.policy n).toMeasure\n      ((stateHistoryEquiv n ∘ eraseActionHistory n) ⁻¹' B) =\n      stateTrajMeasure controller p₀ q P ((Preorder.frestrictLe n) ⁻¹' B) := by\n  have hB : MeasurableSet B := (Set.toFinite B).measurableSet\n  have h := congrArg (fun μ : Measure ((i : Finset.Iic n) → X) => μ B)\n    (actual_state_prefix_eq controller p₀ q P n)\n  rw [PMF.toMeasure_map_apply _ _ _ (measurable_of_finite _) hB,\n    Measure.map_apply (Preorder.measurable_frestrictLe n) hB] at h\n  exact h\n"
+      },
+      "source_semantics": "Event-level consumer of the new finite-memory state-prefix measure identity, with the original microscopic event and finite measurable action/state histories.",
+      "reuse_decision": "Apply the measure identity to B and use the existing PMF.toMeasure_map_apply and Measure.map_apply. The common evaluation pattern is an adapter; the new source law is supplied by actual_state_prefix_eq.",
+      "scope_boundary": "An identical short theorem name does not identify source processes. This event adapter adds no separate stationary or reference-process assumption.",
+      "candidate_assessments": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.actual_state_prefix_event_mass",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+          "similarity": 1.0,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old result has Model, sigma and a homogeneous state trajectory; the new one has a finite-memory controller, arbitrary P n and stateTrajMeasure projected from the augmented law. The statement types and actual source constructions differ despite the identical short name.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+            "line": 192,
+            "end_line": 213,
+            "source_sha256": "514927df86f19ee9af7ab60f90caebb15779e9feb2c79deba655335098c9ad15",
+            "declaration_source": "theorem actual_state_prefix_event_mass\n    {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    [MeasurableSpace A] [MeasurableSingletonClass A]\n    (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)\n    (p0 : PMF X) (n : ℕ) (B : Set ((i : Finset.Iic n) → X)) :\n    (causalLaw p0\n      (riskMicroControlKernel q (fun _ => M.transitionPMF)\n        (observationMarkovPolicy sigma)) n).toMeasure\n          ((stateHistoryEquiv n ∘ eraseActionHistory n) ⁻¹' B) =\n      homTrajMeasure p0.toMeasure\n        (pmfRowKernel\n          (policyTransitionPMF M (liftedStationaryPolicy q sigma)))\n            ((Preorder.frestrictLe n) ⁻¹' B) := by\n  have hB : MeasurableSet B := (Set.toFinite B).measurableSet\n  have hmass := congrArg\n    (fun mu : Measure ((i : Finset.Iic n) → X) => mu B)\n    (actual_state_prefix_eq_homogeneous_prefix M q sigma p0 n)\n  rw [PMF.toMeasure_map_apply _ _ _ (measurable_of_finite _) hB,\n    Measure.map_apply (Preorder.measurable_frestrictLe n) hB] at hmass\n  exact hmass\n"
+          }
+        }
+      ],
+      "decision": "SOURCE_SEMANTIC_REUSE_CLEAR_NATIVE_CHECK_PENDING"
+    },
+    {
+      "index": 5,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.stateTrajMeasure_coordinate_mass",
+      "new_declaration_evidence": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean",
+        "line": 183,
+        "end_line": 202,
+        "source_sha256": "7f231017ef32eb607c0187dc659a139101f92ee4ad2ed434f35d4f0687a46cdd",
+        "declaration_source": "theorem stateTrajMeasure_coordinate_mass\n    {X M Y A : Type u} [Fintype X] [Fintype M] [Fintype A]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    [MeasurableSpace M] [MeasurableSingletonClass M]\n    [MeasurableSpace A] [MeasurableSingletonClass A]\n    (controller : FiniteMemoryController M Y A) (p₀ : PMF X) (q : X → Y)\n    (P : ℕ → X → A → PMF X) (n : ℕ) (K : Set X) :\n    stateTrajMeasure controller p₀ q P {ω | ω n ∈ K} =\n      (microLaw p₀ q P controller.policy n).toMeasure\n        {h | riskLastState n h ∈ K} := by\n  have h := actual_state_prefix_event_mass controller p₀ q P n\n    {g | g (lastHistoryIndex n) ∈ K}\n  have hlast (g : CausalHistory X (A × X) n) :\n      stateHistoryEquiv n (eraseActionHistory n g) (lastHistoryIndex n) =\n        riskLastState n g := by\n    rw [stateHistoryEquiv_last, currentState_erase]\n  have hprefix (ω : ℕ → X) :\n      Preorder.frestrictLe n ω (lastHistoryIndex n) = ω n := rfl\n  simpa only [Set.preimage_ofPred_eq, Function.comp_apply, hlast, hprefix] using h.symm\n"
+      },
+      "source_semantics": "Identifies time-n event mass of the projected finite-memory trajectory with the original microscopic terminal-state event at the same n.",
+      "reuse_decision": "Specialize the full state-prefix event identity to the last coordinate; reuse stateHistoryEquiv_last and the action-erasure last-state identity. No new coordinate-law construction is assumed.",
+      "scope_boundary": "Finite X, memory and A plus measurable singletons are retained. This is a marginal identity derived from a stronger complete-prefix identity, not a proof that the state projection is Markov.",
+      "candidate_assessments": [
+        {
+          "symbol": "UEOT.V3.ViabilityTrajectory.stationaryTrajMeasure_coordinate",
+          "path": "formalization/ueot-core/UEOT/V3/ViabilityTrajectory.lean",
+          "similarity": 0.535,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old theorem identifies the pushforward of a homogeneous deterministic state-feedback trajectory with stationaryStateLaw. The new theorem handles randomized memory feedback and time-varying P, and its right side remains the actual action-history law.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/ViabilityTrajectory.lean",
+            "line": 175,
+            "end_line": 191,
+            "source_sha256": "413d882183ef6dcf6508782dc29d68ec5905ee0fd78843dc807e28265073aafd",
+            "declaration_source": "theorem stationaryTrajMeasure_coordinate\n    (P : X → A → PMF X) (π : X → A) (μ : PMF X) (n : ℕ) :\n    (stationaryTrajMeasure P π μ).map (fun z : ℕ → X => z n) =\n      (stationaryStateLaw P π μ n).toMeasure := by\n  induction n with\n  | zero =>\n      unfold stationaryTrajMeasure\n      simpa [stationaryStateLaw] using\n        homTrajMeasure_time_zero μ.toMeasure (stationaryKernel P π)\n  | succ n ih =>\n      rw [stationaryTrajMeasure]\n      rw [homTrajMeasure_time_succ μ.toMeasure (stationaryKernel P π) n]\n      change stationaryKernel P π ∘ₘ\n          (stationaryTrajMeasure P π μ).map (fun z : ℕ → X => z n) = _\n      rw [ih]\n      exact (stationaryStateLaw_succ_toMeasure P π μ n).symm\n"
+          }
+        }
+      ],
+      "decision": "SOURCE_SEMANTIC_REUSE_CLEAR_NATIVE_CHECK_PENDING"
+    },
+    {
+      "index": 6,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.augmentHistory_last",
+      "new_declaration_evidence": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryRealization.lean",
+        "line": 53,
+        "end_line": 59,
+        "source_sha256": "8306c376acbf26db8ae70a5064460c9e423da527a0c89efe4ec18e0e6150191f",
+        "declaration_source": "@[simp] theorem augmentHistory_last {X M Y A : Type u}\n    (controller : FiniteMemoryController M Y A) (q : X → Y)\n    (n : ℕ) (h : CausalHistory X (A × X) n) :\n    currentState n (augmentHistory controller q n h) =\n      (riskLastState n h, controller.memory n (projectHistory q n h)) := by\n  cases n <;> rfl\n"
+      },
+      "source_semantics": "The last state of the constructed augmented history is the pair of the actual microscopic last state and the controller memory replayed from the original observed record.",
+      "reuse_decision": "This is a two-case definitional identity for augmentHistory. It reuses the established controller.memory and projectHistory definitions; it is not a new probability theorem.",
+      "scope_boundary": "No finite or measurable-space assumptions, probability identity, or independent memory-state input are needed for this structural equality.",
+      "candidate_assessments": [
+        {
+          "symbol": "CrooksJarzynski.MeasureProtocol.Markov.measurable_historyLast",
+          "path": "formalization/ueot-core/UEOT/V3/ThirdParty/CrooksJarzynski/MeasureProtocol.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The vendored-adapted theorem proves measurability of evaluation on coordinate histories. It states no equality for the newly constructed state-memory pair and cannot supply the target.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/ThirdParty/CrooksJarzynski/MeasureProtocol.lean",
+            "line": 235,
+            "end_line": 238,
+            "source_sha256": "f1b6c622fe9b88d26cdec1eae78656d930fcca0ab6c20e8a105edfd5edd43587",
+            "declaration_source": "theorem measurable_historyLast (t : ℕ) :\n    Measurable (historyLast (Ω := Ω) t) :=\n  measurable_pi_apply _\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.class_history_last",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old concrete witness maps a Class history to a Bool class bit. The new arbitrary-controller equation includes replayed memory and a different history map; both are small definitional last-coordinate adapters.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+            "line": 579,
+            "end_line": 582,
+            "source_sha256": "9bd381fde5c6db2ae84e02363d33ed68de412b1fd9a2f827a72fe474bf82405e",
+            "declaration_source": "theorem class_history_last (n : ℕ) (h : CausalHistory Class (Bool × Class) n) :\n    riskLastState n (classHistoryEquiv n h) = classBit (riskLastState n h) := by\n  cases n <;> rfl\n"
+          }
+        }
+      ],
+      "decision": "SOURCE_SEMANTIC_REUSE_CLEAR_NATIVE_CHECK_PENDING"
+    },
+    {
+      "index": 7,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.state_history_eq_sequence_prefix",
+      "new_declaration_evidence": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryRealization.lean",
+        "line": 221,
+        "end_line": 246,
+        "source_sha256": "8306c376acbf26db8ae70a5064460c9e423da527a0c89efe4ec18e0e6150191f",
+        "declaration_source": "theorem state_history_eq_sequence_prefix\n    (p₀ : PMF S) (J : ℕ → S → PMF S) (n : ℕ) :\n    ((causalLaw p₀ (fun k h => J k (currentState k h)) n).map\n      (stateHistoryEquiv n)).toMeasure =\n      (sequenceTrajMeasure p₀ J).map (Preorder.frestrictLe n) := by\n  rw [← PMF.toMeasure_map _ _ (stateHistoryEquiv n).measurable]\n  induction n with\n  | zero => exact (sequence_prefix_zero p₀ J).symm\n  | succ n ih =>\n      have hrow :\n          pmfRowKernel (fun h : CausalHistory S S n => J n (currentState n h)) =\n            Kernel.comap (sequenceHistoryKernel J n)\n              (stateHistoryEquiv n) (stateHistoryEquiv n).measurable := by\n        ext h E hE\n        change (J n (currentState n h)).toMeasure E =\n          (J n (stateHistoryEquiv n h (lastHistoryIndex n))).toMeasure E\n        rw [stateHistoryEquiv_last]\n      change (pmfExtend (causalLaw p₀ (fun k h => J k (currentState k h)) n)\n        (fun h => J n (currentState n h))).toMeasure.map\n          (stateHistoryEquiv (n + 1)) = _\n      rw [extend_toMeasure, stateHistoryEquiv_succ]\n      rw [← Measure.map_map (measurable_appendHistory n)\n        ((stateHistoryEquiv n).measurable.prodMap measurable_id)]\n      rw [hrow, compProd_comap_map, ih]\n      exact sequence_prefix_succ p₀ J n\n"
+      },
+      "source_semantics": "For a numeric sequence J n : S -> PMF S, identify the original recursive finite history PMF with the prefix of the actual nonautonomous sequence trajectory.",
+      "reuse_decision": "Retain the old stateHistoryEquiv and PMF extension mechanism, and use the sequence prefix-zero/prefix-successor identities supplied by the same Ionescu-Tulcea construction. The induction genuinely supplies the time-indexed row boundary.",
+      "scope_boundary": "The old homogeneous result is a special-case pattern. Instantiating a fixed J with a time-varying row is invalid; finite support homogeneity does not make numerical rows equal.",
+      "candidate_assessments": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.state_history_eq_homogeneous_prefix",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+          "similarity": 0.667,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old theorem quantifies over a single J and targets homTrajMeasure. The new theorem quantifies over J : Nat -> S -> PMF S and targets sequenceTrajMeasure. Its successor proof must use J n and sequenceHistoryKernel J n.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+            "line": 140,
+            "end_line": 167,
+            "source_sha256": "514927df86f19ee9af7ab60f90caebb15779e9feb2c79deba655335098c9ad15",
+            "declaration_source": "theorem state_history_eq_homogeneous_prefix\n    {X : Type u} [Fintype X]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    (p0 : PMF X) (J : X → PMF X) (n : ℕ) :\n    ((causalLaw p0 (fun k h => J (currentState k h)) n).map\n      (stateHistoryEquiv n)).toMeasure =\n      (homTrajMeasure p0.toMeasure (pmfRowKernel J)).map\n        (Preorder.frestrictLe n) := by\n  rw [← PMF.toMeasure_map _ _ (stateHistoryEquiv n).measurable]\n  induction n with\n  | zero =>\n      dsimp only [CausalHistory, causalLaw, causalHistoryMeasurableSpace,\n        stateHistoryEquiv]\n      exact (homTrajMeasure_prefix_zero p0.toMeasure (pmfRowKernel J)).symm\n  | succ n ih =>\n      letI : IsMarkovKernel (homHistoryKernel (pmfRowKernel J) n) :=\n        isMarkovKernel_homHistoryKernel (pmfRowKernel J) n\n      change (pmfExtend\n        (causalLaw p0 (fun k h => J (currentState k h)) n)\n        (fun h => J (currentState n h))).toMeasure.map\n          (stateHistoryEquiv (n + 1)) = _\n      rw [pmfExtend_toMeasure_compProd, stateHistoryEquiv_succ]\n      rw [← Measure.map_map (measurable_appendHistory n)\n        ((stateHistoryEquiv n).measurable.prodMap measurable_id)]\n      rw [historyRowKernel_eq_comap J n,\n        compProd_comap_map_left, ih]\n      exact homTrajMeasure_prefix_succ p0.toMeasure (pmfRowKernel J) n\n"
+          }
+        }
+      ],
+      "decision": "SOURCE_SEMANTIC_REUSE_CLEAR_NATIVE_CHECK_PENDING"
+    },
+    {
+      "index": 8,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.actual_augmented_prefix_eq",
+      "new_declaration_evidence": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryRealization.lean",
+        "line": 270,
+        "end_line": 282,
+        "source_sha256": "8306c376acbf26db8ae70a5064460c9e423da527a0c89efe4ec18e0e6150191f",
+        "declaration_source": "theorem actual_augmented_prefix_eq\n    {X M Y A : Type u} [Fintype X] [Fintype M]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    [MeasurableSpace M] [MeasurableSingletonClass M]\n    (controller : FiniteMemoryController M Y A) (p₀ : PMF X) (q : X → Y)\n    (P : ℕ → X → A → PMF X) (n : ℕ) :\n    ((microLaw p₀ q P controller.policy n).map\n      (stateHistoryEquiv n ∘ augmentHistory controller q n)).toMeasure =\n      (augmentedTrajMeasure controller p₀ q P).map (Preorder.frestrictLe n) := by\n  rw [← PMF.map_comp, actual_augmented_history_law]\n  exact state_history_eq_sequence_prefix\n    (augmentedInitial controller p₀ q) (augmentedRow controller q P) n\n"
+      },
+      "source_semantics": "Complete state-memory prefix identity for the actual original controller experiment, not only equality of one-time marginal laws.",
+      "reuse_decision": "Compose actual_augmented_history_law, which proves the finite same-source PMF identity, with state_history_eq_sequence_prefix. Initial memory and updates come from the same controller and observed records.",
+      "scope_boundary": "The target retains memory but may erase actions that cannot be reconstructed. The theorem alone does not identify arbitrary action-dependent events or a different controller.",
+      "candidate_assessments": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.actual_state_prefix_eq_homogeneous_prefix",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old theorem retains only state and assumes homogeneous current-observation feedback. The new target alphabet is X x M and its source includes an arbitrary P n. The finite augmented-law identity is extra work absent from the old result.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+            "line": 171,
+            "end_line": 188,
+            "source_sha256": "514927df86f19ee9af7ab60f90caebb15779e9feb2c79deba655335098c9ad15",
+            "declaration_source": "theorem actual_state_prefix_eq_homogeneous_prefix\n    {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)\n    (p0 : PMF X) (n : ℕ) :\n    ((causalLaw p0\n      (riskMicroControlKernel q (fun _ => M.transitionPMF)\n        (observationMarkovPolicy sigma)) n).map\n          (stateHistoryEquiv n ∘ eraseActionHistory n)).toMeasure =\n      (homTrajMeasure p0.toMeasure\n        (pmfRowKernel\n          (policyTransitionPMF M (liftedStationaryPolicy q sigma)))).map\n            (Preorder.frestrictLe n) := by\n  rw [← PMF.map_comp,\n    actual_state_path_eq_stationary_path M q sigma p0 n]\n  exact state_history_eq_homogeneous_prefix p0\n    (policyTransitionPMF M (liftedStationaryPolicy q sigma)) n\n"
+          }
+        }
+      ],
+      "decision": "SOURCE_SEMANTIC_REUSE_CLEAR_NATIVE_CHECK_PENDING"
+    },
+    {
+      "index": 9,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.actual_augmented_prefix_event_mass",
+      "new_declaration_evidence": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryRealization.lean",
+        "line": 285,
+        "end_line": 302,
+        "source_sha256": "8306c376acbf26db8ae70a5064460c9e423da527a0c89efe4ec18e0e6150191f",
+        "declaration_source": "theorem actual_augmented_prefix_event_mass\n    {X M Y A : Type u} [Fintype X] [Fintype M] [Fintype A]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    [MeasurableSpace M] [MeasurableSingletonClass M]\n    [MeasurableSpace A] [MeasurableSingletonClass A]\n    (controller : FiniteMemoryController M Y A) (p₀ : PMF X) (q : X → Y)\n    (P : ℕ → X → A → PMF X) (n : ℕ)\n    (B : Set ((i : Finset.Iic n) → X × M)) :\n    (microLaw p₀ q P controller.policy n).toMeasure\n      ((stateHistoryEquiv n ∘ augmentHistory controller q n) ⁻¹' B) =\n      augmentedTrajMeasure controller p₀ q P ((Preorder.frestrictLe n) ⁻¹' B) := by\n  have hB : MeasurableSet B := (Set.toFinite B).measurableSet\n  have h := congrArg (fun μ : Measure ((i : Finset.Iic n) → X × M) => μ B)\n    (actual_augmented_prefix_eq controller p₀ q P n)\n  rw [PMF.toMeasure_map_apply _ _ _ (measurable_of_finite _) hB,\n    Measure.map_apply (Preorder.measurable_frestrictLe n) hB] at h\n  exact h\n"
+      },
+      "source_semantics": "Evaluate a measurable finite state-memory prefix event in the same original experiment and augmented infinite trajectory.",
+      "reuse_decision": "Evaluate actual_augmented_prefix_eq on B and apply existing map-measure identities. The repeated argument is an elementary source-specific event adapter, not a separate general extension theorem.",
+      "scope_boundary": "B is a set of coordinate histories valued in X x M. It does not become a statement about arbitrary erased-action events.",
+      "candidate_assessments": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.actual_state_prefix_event_mass",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+          "similarity": 0.667,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old B is state-valued and its source is homogeneous stationary observation feedback. The new B is state-memory-valued and belongs to the nonautonomous augmented law, so the old source-specific result cannot be used directly.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+            "line": 192,
+            "end_line": 213,
+            "source_sha256": "514927df86f19ee9af7ab60f90caebb15779e9feb2c79deba655335098c9ad15",
+            "declaration_source": "theorem actual_state_prefix_event_mass\n    {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    [MeasurableSpace A] [MeasurableSingletonClass A]\n    (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)\n    (p0 : PMF X) (n : ℕ) (B : Set ((i : Finset.Iic n) → X)) :\n    (causalLaw p0\n      (riskMicroControlKernel q (fun _ => M.transitionPMF)\n        (observationMarkovPolicy sigma)) n).toMeasure\n          ((stateHistoryEquiv n ∘ eraseActionHistory n) ⁻¹' B) =\n      homTrajMeasure p0.toMeasure\n        (pmfRowKernel\n          (policyTransitionPMF M (liftedStationaryPolicy q sigma)))\n            ((Preorder.frestrictLe n) ⁻¹' B) := by\n  have hB : MeasurableSet B := (Set.toFinite B).measurableSet\n  have hmass := congrArg\n    (fun mu : Measure ((i : Finset.Iic n) → X) => mu B)\n    (actual_state_prefix_eq_homogeneous_prefix M q sigma p0 n)\n  rw [PMF.toMeasure_map_apply _ _ _ (measurable_of_finite _) hB,\n    Measure.map_apply (Preorder.measurable_frestrictLe n) hB] at hmass\n  exact hmass\n"
+          }
+        }
+      ],
+      "decision": "SOURCE_SEMANTIC_REUSE_CLEAR_NATIVE_CHECK_PENDING"
+    },
+    {
+      "index": 10,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.safe_source_all_times_mass_one",
+      "new_declaration_evidence": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySafetyWitness.lean",
+        "line": 83,
+        "end_line": 89,
+        "source_sha256": "fcc011bd9c7571e9ae95e6df606baaf500e2f7767453be6788af5da470b934e7",
+        "declaration_source": "theorem safe_source_all_times_mass_one :\n    stateTrajMeasure controller (PMF.pure false) observe (source false)\n      {ω | ∀ n : ℕ, ω n ∈ safe} = 1 := by\n  exact controller_all_times_physical_safe controller (PMF.pure false)\n    observe (source false) certified safe initial_false_safe\n    source_false_preserves_safe (all_rows_zero_uncovered false false)\n"
+      },
+      "source_semantics": "A nonempty concrete Bool/Unit source verifies the new physical-safety bridge using the original safe initial atom, actual source closure and the same controller zero occupancy.",
+      "reuse_decision": "Directly instantiate controller_all_times_physical_safe. Its generic proof reuses ViabilityPath.all_times_safe_eq_one after establishing every actual coordinate mass; the witness does not reprove countable-intersection continuity.",
+      "scope_boundary": "This witness validates source premises. It is not an independent general probability-one theorem or the separate example proving memory improves control power.",
+      "candidate_assessments": [
+        {
+          "symbol": "UEOT.V3.ViabilityPath.all_times_safe_eq_one",
+          "path": "formalization/ueot-core/UEOT/V3/ViabilityPath.lean",
+          "similarity": 0.571,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "This is the canonical general countable probability-one intersection theorem, and the new generic physical-safety theorem explicitly uses it. The witness additionally discharges actual controller/source premises.",
+          "disposition": "CANONICAL_GENERAL_PROBABILITY_THEOREM_REUSED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/ViabilityPath.lean",
+            "line": 45,
+            "end_line": 62,
+            "source_sha256": "71737ea8c497838def2aac8fab5d905738b582c1ba7028f17545a78c98f4b99a",
+            "declaration_source": "theorem all_times_safe_eq_one\n    {X : Type*} [MeasurableSpace X]\n    (μ : Measure Ω) [IsProbabilityMeasure μ]\n    (Xn : ℕ → Ω → X)\n    (K : Set X) (hK : MeasurableSet K)\n    (hXn : ∀ n, Measurable (Xn n))\n    (hone : ∀ n, μ {ω | Xn n ω ∈ K} = 1) :\n    μ {ω | ∀ n, Xn n ω ∈ K} = 1 := by\n  let A : ℕ → Set Ω := fun n => {ω | Xn n ω ∈ K}\n  have hA : ∀ n, MeasurableSet (A n) := by\n    intro n\n    exact hK.preimage (hXn n)\n  have hi : (⋂ n, A n) = {ω | ∀ n, Xn n ω ∈ K} := by\n    ext ω\n    simp [A]\n  rw [← hi]\n  exact measure_iInter_eq_one_of_measure_eq_one μ A hA hone\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.ViabilityTrajectory.all_times_safe_of_coordinate_one",
+          "path": "formalization/ueot-core/UEOT/V3/ViabilityTrajectory.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old wrapper fixes a stationary deterministic policy trajectory and assumes coordinate safety. The new witness travels through the more general finite-memory realization and physical support proof; the shared intersection mechanism is already reused below both wrappers.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/ViabilityTrajectory.lean",
+            "line": 195,
+            "end_line": 206,
+            "source_sha256": "413d882183ef6dcf6508782dc29d68ec5905ee0fd78843dc807e28265073aafd",
+            "declaration_source": "theorem all_times_safe_of_coordinate_one\n    (P : X → A → PMF X) (π : X → A) (μ : PMF X)\n    (K : Set X)\n    (hone : ∀ n : ℕ,\n      stationaryTrajMeasure P π μ {ω | ω n ∈ K} = 1) :\n    stationaryTrajMeasure P π μ {ω | ∀ n : ℕ, ω n ∈ K} = 1 := by\n  exact UEOT.V3.ViabilityPath.all_times_safe_eq_one\n    (μ := stationaryTrajMeasure P π μ)\n    (Xn := fun n ω => ω n)\n    K (Set.toFinite K).measurableSet\n    (fun n => measurable_pi_apply n) hone\n"
+          }
+        }
+      ],
+      "decision": "SOURCE_SEMANTIC_REUSE_CLEAR_NATIVE_CHECK_PENDING"
+    },
+    {
+      "index": 11,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.doobRowPMF_apply_toReal",
+      "new_declaration_evidence": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean",
+        "line": 40,
+        "end_line": 46,
+        "source_sha256": "1bcf2d6baaa55e4ea648d19a78dc490a86b525eaaa109464654184d447544081",
+        "declaration_source": "@[simp] theorem doobRowPMF_apply_toReal\n    {S : Type u} [Fintype S] {Q : Matrix S S ℝ}\n    (D : RightEigenData Q) (hQ : ∀ i j, 0 ≤ Q i j) (i j : S) :\n    (doobRowPMF D hQ i j).toReal = hTransform D i j := by\n  unfold doobRowPMF\n  exact FiniteProbabilityRow.ofRealRow_apply_toReal (hTransform D i) _ _ j\n"
+      },
+      "source_semantics": "A small PMF representation adapter for the already established positive-eigenvector h-transform row.",
+      "reuse_decision": "The PMF constructor uses existing hTransform_nonneg and hTransform_row_sum; the theorem directly invokes the canonical FiniteProbabilityRow.ofRealRow_apply_toReal.",
+      "scope_boundary": "The adapter does not re-establish eigenvector existence or claim new normalization theory. Strictly positive right-eigenvector/scale data and Q nonnegativity remain inputs.",
+      "candidate_assessments": [
+        {
+          "symbol": "UEOT.V3.FiniteDobrushin.rowPMF_toReal",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteDobrushin.lean",
+          "similarity": 0.75,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "This old wrapper represents a row of an arbitrary row-stochastic matrix. The new row is the existing hTransform D i and directly reuses their shared lower-level ofRealRow theorem, avoiding a second stochastic-matrix wrapper.",
+          "disposition": "SHARED_CANONICAL_PMF_CONVERSION_REUSED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/FiniteDobrushin.lean",
+            "line": 67,
+            "end_line": 71,
+            "source_sha256": "5862b1717beb4f800842fef6d1720aae00f3dfa0c9f648112d358b1f91dbc860",
+            "declaration_source": "@[simp] theorem rowPMF_toReal\n    (P : Matrix S S ℝ) (hP : P ∈ Matrix.rowStochastic ℝ S) (x y : S) :\n    ((rowPMF P hP x) y).toReal = P x y := by\n  simp [rowPMF, FiniteProbabilityRow.ofRealRow_apply_toReal]\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.finiteKernelRowPMF_apply_toReal",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CalibratedRiskRows.lean",
+          "similarity": 0.7,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old wrapper takes a FiniteControlledStochasticKernel and an action. The new row has positive eigen data and no control-kernel record; both use the same canonical real-row conversion.",
+          "disposition": "SHARED_CANONICAL_PMF_CONVERSION_REUSED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CalibratedRiskRows.lean",
+            "line": 65,
+            "end_line": 71,
+            "source_sha256": "04e1a1915fa30f1e1df387074d62d36c2562c56cf8ccb411c4eeed50f5907ba7",
+            "declaration_source": "@[simp] theorem finiteKernelRowPMF_apply_toReal\n    {X : Type uX} {A : Type uA} [Fintype X]\n    (K : FiniteControlledStochasticKernel X A) (x : X) (a : A) (z : X) :\n    ((finiteKernelRowPMF K x a) z).toReal = K.mass x a z := by\n  exact UEOT.V3.FiniteDiscountedControl.FiniteProbabilityRow.ofRealRow_apply_toReal\n    (K.mass x a) (K.nonneg x a) (K.normalized x a) z\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.FiniteDiscountedControl.Model.transitionPMF_apply_toReal",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedApproxQuotient.lean",
+          "similarity": 0.667,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old wrapper takes a full discounted-control Model and action. Constructing rewards, discount and a model merely to convert a Doob row is unnecessary; the shared primitive is used directly.",
+          "disposition": "SHARED_CANONICAL_PMF_CONVERSION_REUSED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedApproxQuotient.lean",
+            "line": 86,
+            "end_line": 89,
+            "source_sha256": "0120633e891b2424b1fe329d4973290ecb67571c74e3973788fd65b92967aab6",
+            "declaration_source": "@[simp] theorem transitionPMF_apply_toReal (M : Model X A) (x : X) (a : A x) (y : X) :\n    ((M.transitionPMF x a) y).toReal = M.transition x a y := by\n  simp [transitionPMF]\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.CoreOperationalAssembly.policyTransitionPMF_apply_toReal",
+          "path": "formalization/ueot-core/UEOT/V3/CoreOperationalAssembly.lean",
+          "similarity": 0.6,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old target is the stationary-policy transition mixture of a Model. The new h-transform row need not be presented by that control data; its conversion uses the same primitive.",
+          "disposition": "SHARED_CANONICAL_PMF_CONVERSION_REUSED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/CoreOperationalAssembly.lean",
+            "line": 286,
+            "end_line": 292,
+            "source_sha256": "1f8c4f5be6d3906cdeaa6d88809cc5e0fa5f601ce8b69b21cef67a16dc7a7384",
+            "declaration_source": "@[simp] theorem policyTransitionPMF_apply_toReal\n    {S : Type uX} [Fintype S]\n    {A : S → Type uA} [∀ s, Fintype (A s)] [∀ s, Nonempty (A s)]\n    (M : Model S A) (π : StationaryPolicy A) (x y : S) :\n    ((policyTransitionPMF M π x) y).toReal = M.policyTransition π x y := by\n  simp [policyTransitionPMF, FiniteProbabilityRow.ofRealRow_apply_toReal]\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.FiniteDiscountedControl.pushforwardTransitionPMF_apply_toReal",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedApproxQuotient.lean",
+          "similarity": 0.6,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "This old theorem computes a quotient-fiber sum after mapping a controlled transition. The new result is a direct atom identity with no quotient map or fiber sum.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedApproxQuotient.lean",
+            "line": 119,
+            "end_line": 124,
+            "source_sha256": "0120633e891b2424b1fe329d4973290ecb67571c74e3973788fd65b92967aab6",
+            "declaration_source": "@[simp] theorem pushforwardTransitionPMF_apply_toReal\n    (f : X → Y) (M : Model X A) (x : X) (a : A x) (y : Y) :\n    ((pushforwardTransitionPMF f M x a) y).toReal =\n      fiberMass f (M.transition x a) y := by\n  simp [pushforwardTransitionPMF]\n"
+          }
+        }
+      ],
+      "decision": "SOURCE_SEMANTIC_REUSE_CLEAR_NATIVE_CHECK_PENDING"
+    },
+    {
+      "index": 12,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.tiltedInitialPMF_apply_toReal",
+      "new_declaration_evidence": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean",
+        "line": 59,
+        "end_line": 68,
+        "source_sha256": "1bcf2d6baaa55e4ea648d19a78dc490a86b525eaaa109464654184d447544081",
+        "declaration_source": "@[simp] theorem tiltedInitialPMF_apply_toReal\n    {S : Type u} [Fintype S] {Q : Matrix S S ℝ}\n    (D : RightEigenData Q) (eta : S → ℝ) (heta : ∀ i, 0 ≤ eta i)\n    (hc : 0 < initialPairing eta D.vector) (i : S) :\n    (tiltedInitialPMF D eta heta hc i).toReal =\n      eta i * D.vector i / initialPairing eta D.vector := by\n  unfold tiltedInitialPMF\n  exact FiniteProbabilityRow.ofRealRow_apply_toReal\n    (fun j => eta j * D.vector j / initialPairing eta D.vector) _ _ i\n"
+      },
+      "source_semantics": "Convert the actual normalized initial h-tilt eta(i) h(i) / <eta,h> to a PMF atom identity, allowing eta to retain original unnormalized safe mass.",
+      "reuse_decision": "The implementation directly invokes FiniteProbabilityRow.ofRealRow_apply_toReal. Positivity and normalization are supplied for this specific tilted vector, not assumed for eta itself.",
+      "scope_boundary": "A positive pairing is mandatory. This initial h-tilt is not generally the initial distribution conditional on finite-window survival.",
+      "candidate_assessments": [
+        {
+          "symbol": "UEOT.V3.FiniteDiscountedControl.Model.transitionPMF_apply_toReal",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedApproxQuotient.lean",
+          "similarity": 0.667,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old row belongs to a Model transition indexed by state/action; the new vector is an initial distribution. Both should use the shared canonical real-row conversion.",
+          "disposition": "SHARED_CANONICAL_PMF_CONVERSION_REUSED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedApproxQuotient.lean",
+            "line": 86,
+            "end_line": 89,
+            "source_sha256": "0120633e891b2424b1fe329d4973290ecb67571c74e3973788fd65b92967aab6",
+            "declaration_source": "@[simp] theorem transitionPMF_apply_toReal (M : Model X A) (x : X) (a : A x) (y : X) :\n    ((M.transitionPMF x a) y).toReal = M.transition x a y := by\n  simp [transitionPMF]\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.CoreOperationalAssembly.policyTransitionPMF_apply_toReal",
+          "path": "formalization/ueot-core/UEOT/V3/CoreOperationalAssembly.lean",
+          "similarity": 0.6,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old statement converts a policy-averaged transition row, not an initial h-tilt. The new implementation reuses the common conversion without manufacturing a policy.",
+          "disposition": "SHARED_CANONICAL_PMF_CONVERSION_REUSED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/CoreOperationalAssembly.lean",
+            "line": 286,
+            "end_line": 292,
+            "source_sha256": "1f8c4f5be6d3906cdeaa6d88809cc5e0fa5f601ce8b69b21cef67a16dc7a7384",
+            "declaration_source": "@[simp] theorem policyTransitionPMF_apply_toReal\n    {S : Type uX} [Fintype S]\n    {A : S → Type uA} [∀ s, Fintype (A s)] [∀ s, Nonempty (A s)]\n    (M : Model S A) (π : StationaryPolicy A) (x y : S) :\n    ((policyTransitionPMF M π x) y).toReal = M.policyTransition π x y := by\n  simp [policyTransitionPMF, FiniteProbabilityRow.ofRealRow_apply_toReal]\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.FiniteDiscountedControl.pushforwardTransitionPMF_apply_toReal",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedApproxQuotient.lean",
+          "similarity": 0.6,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "A pushed transition mass is a sum over a quotient fiber. The new numerator is pointwise eta times h and the denominator is its positive pairing; no pushforward operation is claimed.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedApproxQuotient.lean",
+            "line": 119,
+            "end_line": 124,
+            "source_sha256": "0120633e891b2424b1fe329d4973290ecb67571c74e3973788fd65b92967aab6",
+            "declaration_source": "@[simp] theorem pushforwardTransitionPMF_apply_toReal\n    (f : X → Y) (M : Model X A) (x : X) (a : A x) (y : Y) :\n    ((pushforwardTransitionPMF f M x a) y).toReal =\n      fiberMass f (M.transition x a) y := by\n  simp [pushforwardTransitionPMF]\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.FiniteDobrushin.rowPMF_toReal",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteDobrushin.lean",
+          "similarity": 0.556,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old wrapper expects a stochastic matrix and a chosen row. The initial vector is already supplied directly to the lower-level canonical PMF constructor.",
+          "disposition": "SHARED_CANONICAL_PMF_CONVERSION_REUSED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/FiniteDobrushin.lean",
+            "line": 67,
+            "end_line": 71,
+            "source_sha256": "5862b1717beb4f800842fef6d1720aae00f3dfa0c9f648112d358b1f91dbc860",
+            "declaration_source": "@[simp] theorem rowPMF_toReal\n    (P : Matrix S S ℝ) (hP : P ∈ Matrix.rowStochastic ℝ S) (x y : S) :\n    ((rowPMF P hP x) y).toReal = P x y := by\n  simp [rowPMF, FiniteProbabilityRow.ofRealRow_apply_toReal]\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.FiniteDobrushin.simplexPMF_toReal",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteDobrushin.lean",
+          "similarity": 0.556,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old wrapper takes a certified simplex vector. The new normalized vector could be packaged that way, but directly uses the same underlying ofRealRow proof rather than adding an intermediate simplex record.",
+          "disposition": "SHARED_CANONICAL_PMF_CONVERSION_REUSED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/FiniteDobrushin.lean",
+            "line": 55,
+            "end_line": 59,
+            "source_sha256": "5862b1717beb4f800842fef6d1720aae00f3dfa0c9f648112d358b1f91dbc860",
+            "declaration_source": "@[simp] theorem simplexPMF_toReal (mu : stdSimplex ℝ S) (s : S) :\n    ((simplexPMF mu) s).toReal = mu.1 s := by\n  exact FiniteProbabilityRow.ofRealRow_apply_toReal mu.1\n    (fun x => stdSimplex.zero_le mu x) (stdSimplex.sum_eq_one mu) s\n"
+          }
+        }
+      ],
+      "decision": "SOURCE_SEMANTIC_REUSE_CLEAR_NATIVE_CHECK_PENDING"
+    },
+    {
+      "index": 13,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.safeInitialRow_nonneg",
+      "new_declaration_evidence": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean",
+        "line": 146,
+        "end_line": 149,
+        "source_sha256": "1bcf2d6baaa55e4ea648d19a78dc490a86b525eaaa109464654184d447544081",
+        "declaration_source": "theorem safeInitialRow_nonneg {X : Type u} (p0 : PMF X) (K : Set X) (i : K) :\n    0 ≤ safeInitialRow p0 K i :=\n  ENNReal.toReal_nonneg\n"
+      },
+      "source_semantics": "Expose nonnegativity of the existing unnormalized safeInitialRow at its original type for PMF construction.",
+      "reuse_decision": "The proof is the canonical ENNReal.toReal_nonneg fact. The named adapter preserves the row expression when passed as a dependent proof argument.",
+      "scope_boundary": "No safe-support assumption or normalization of the restricted initial mass is introduced; this is not a new mathematical positivity result.",
+      "candidate_assessments": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.safeInitialRow_map_subtype",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old equality applies when p0 is explicitly r.map Subtype.val for a PMF on K, hence safe-supported and normalized. The new statement covers arbitrary original p0, including unsafe mass, and only asserts nonnegativity.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+            "line": 31,
+            "end_line": 36,
+            "source_sha256": "7c576f6b349c841e1ce5873a78b2fa81dec57d46aa83f87c5ac4b5e3031aae9d",
+            "declaration_source": "theorem safeInitialRow_map_subtype {X : Type u} (K : Set X) (r : PMF K) :\n    safeInitialRow (r.map Subtype.val) K = fun v => (r v).toReal := by\n  funext v\n  unfold safeInitialRow\n  rw [pmf_map_injective_atom Subtype.val Subtype.val_injective r v]\n"
+          }
+        }
+      ],
+      "decision": "SOURCE_SEMANTIC_REUSE_CLEAR_NATIVE_CHECK_PENDING"
+    },
+    {
+      "index": 14,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.actual_survival_mass_eq_initial_remaining_sum",
+      "new_declaration_evidence": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean",
+        "line": 164,
+        "end_line": 173,
+        "source_sha256": "1bcf2d6baaa55e4ea648d19a78dc490a86b525eaaa109464654184d447544081",
+        "declaration_source": "theorem actual_survival_mass_eq_initial_remaining_sum (T : ℕ) :\n    actualSurvivalMass M q sigma p0 K T =\n      ∑ i : K, eta i * remainingSurvival Q T i := by\n  unfold actualSurvivalMass\n  rw [actual_survival_mass_eq_killed_pow_sum]\n  simp only [UEOT.V3.QSDPerron.rowApply, remainingSurvival]\n  rw [Finset.sum_comm]\n  simp only [Finset.mul_sum]\n  congr!\n"
+      },
+      "source_semantics": "Express the already proved actual total survival mass as the original safe initial row paired with Q^T 1.",
+      "reuse_decision": "Directly rewrite using actual_survival_mass_eq_killed_pow_sum, unfold rowApply and remainingSurvival, and interchange finite sums. The probability/source identity is inherited from the old theorem.",
+      "scope_boundary": "This is an algebraic endpoint adapter; it neither renormalizes initial safe mass nor establishes positive infinite survival.",
+      "candidate_assessments": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.actual_survival_mass_eq_killed_pow_sum",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledPath.lean",
+          "similarity": 0.556,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old right side sums terminal indices after applying eta Q^T. The new side first sums Q^T along each initial row and then weights by eta. Finite-sum commutation is the precise additional step.",
+          "disposition": "HINTED_OLD_THEOREM_DIRECTLY_REUSED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledPath.lean",
+            "line": 320,
+            "end_line": 359,
+            "source_sha256": "496f6b5de9850dda1de036da3862824dffd2f137ebd740c28bd061e566fec4d0",
+            "declaration_source": "theorem actual_survival_mass_eq_killed_pow_sum\n    {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    [MeasurableSpace A] [MeasurableSingletonClass A]\n    (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)\n    (p0 : PMF X) (K : Set X) (n : ℕ) :\n    (causalLaw p0 (riskMicroControlKernel q (fun _ => M.transitionPMF)\n      (observationMarkovPolicy sigma)) n).toMeasure.real\n        {h | ¬ riskEverFailure (fun x => x ∉ K) n h} =\n      ∑ v : K, rowApply (safeInitialRow p0 K)\n        ((killedMatrix M (liftedStationaryPolicy q sigma) K) ^ n) v := by\n  let mu := causalLaw p0 (riskMicroControlKernel q (fun _ => M.transitionPMF)\n    (observationMarkovPolicy sigma)) n\n  let E : Set (CausalHistory X X n) := {h | stateSurvives K n h}\n  have hevent : (eraseActionHistory (X := X) (A := A) n) ⁻¹' E =\n      {h | ¬ riskEverFailure (fun x => x ∉ K) n h} := by\n    ext h\n    simp only [E, Set.mem_preimage, Set.mem_setOf_eq, stateSurvives_erase_iff]\n  have hpush : mu.map (eraseActionHistory n) =\n      causalLaw p0 (policyPathKernel M (liftedStationaryPolicy q sigma)) n :=\n    actual_state_path_eq_stationary_path M q sigma p0 n\n  calc\n    mu.toMeasure.real {h | ¬ riskEverFailure (fun x => x ∉ K) n h} =\n        (mu.map (eraseActionHistory n)).toMeasure.real E := by\n      rw [finite_map_event_mass, hevent]\n    _ = (causalLaw p0 (policyPathKernel M (liftedStationaryPolicy q sigma)) n).toMeasure.real E := by\n      rw [hpush]\n    _ = ∑ h : CausalHistory X X n, if stateSurvives K n h then\n        (causalLaw p0 (policyPathKernel M (liftedStationaryPolicy q sigma)) n h).toReal\n        else 0 := by\n      exact finite_event_mass\n        (causalLaw p0 (policyPathKernel M (liftedStationaryPolicy q sigma)) n)\n        (stateSurvives K n)\n    _ = ∑ v : K, stateTerminalMass M (liftedStationaryPolicy q sigma) p0 K n v :=\n      sum_stateTerminalMass M (liftedStationaryPolicy q sigma) p0 K n\n    _ = _ := by\n      apply Finset.sum_congr rfl\n      intro v _\n      exact state_terminal_mass_eq_killed_pow M (liftedStationaryPolicy q sigma) p0 K n v\n"
+          }
+        }
+      ],
+      "decision": "SOURCE_SEMANTIC_REUSE_CLEAR_NATIVE_CHECK_PENDING"
+    },
+    {
+      "index": 15,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.safeLaw_mass",
+      "new_declaration_evidence": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean",
+        "line": 81,
+        "end_line": 86,
+        "source_sha256": "e37d32b9f5da631392706e60c68d21fcb26491fea1c67614be57afbf6d4b0455",
+        "declaration_source": "@[simp] theorem safeLaw_mass (b : Bool) :\n    (safeLaw (safeEquiv b)).toReal = 1 / 2 := by\n  unfold safeLaw\n  rw [pmf_map_injective_atom safeEquiv safeEquiv.injective]\n  norm_num [PMF.uniformOfFintype_apply]\n"
+      },
+      "source_semantics": "Each atom of the actual uniform safe-law PMF, transported from Bool through safeEquiv into the safe subtype of Option Bool, has real mass 1/2.",
+      "reuse_decision": "Reuse pmf_map_injective_atom for the actual equivalence and PMF.uniformOfFintype_apply. No path-law, survival recurrence or data-generating experiment is inferred from the shared word mass.",
+      "scope_boundary": "This is a concrete finite PMF calculation, not a general support or survival theorem.",
+      "candidate_assessments": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.safe_mass_closed",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/AbsorbingLeakage.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old quantity is the time-n mass of the sole safe Bool state of a leakage process, equal to (1-epsilon)^n. The new quantity is a time-independent atom of a PMF on two safe states.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/AbsorbingLeakage.lean",
+            "line": 146,
+            "end_line": 152,
+            "source_sha256": "31212ec53f321e485ce6e5738b04b9dfcef523c1f8118140d05b753286cf2dc5",
+            "declaration_source": "theorem safe_mass_closed (epsilon : ℝ)\n    (hzero : 0 ≤ epsilon) (hone : epsilon ≤ 1) (n : ℕ) :\n    ((law epsilon hzero hone n) false).toReal = (1 - epsilon) ^ n := by\n  induction n with\n  | zero => simp [law]\n  | succ n ih => rw [safe_mass_succ, ih, pow_succ]\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.safe_mass_succ",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/AbsorbingLeakage.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old result is a transition recurrence for safe-state mass. The new result evaluates the fixed initial safe-law construction and has no time recursion.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/AbsorbingLeakage.lean",
+            "line": 126,
+            "end_line": 134,
+            "source_sha256": "31212ec53f321e485ce6e5738b04b9dfcef523c1f8118140d05b753286cf2dc5",
+            "declaration_source": "theorem safe_mass_succ (epsilon : ℝ)\n    (hzero : 0 ≤ epsilon) (hone : epsilon ≤ 1) (n : ℕ) :\n    ((law epsilon hzero hone (n + 1)) false).toReal =\n      ((law epsilon hzero hone n) false).toReal * (1 - epsilon) := by\n  change (((law epsilon hzero hone n).bind\n    (kernel epsilon hzero hone)) false).toReal = _\n  rw [bind_mass]\n  simp [transitionMass]\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.trainingLaw_mass",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskBoundary.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old theorem computes the atom of a two-action product training experiment. The new law is a uniform safe-state PMF; neither the sample coordinates nor the product source are shared.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskBoundary.lean",
+            "line": 66,
+            "end_line": 69,
+            "source_sha256": "a9f2742599f190755548f9739a1c67276f6e72bf1c38769b343710e59999dc4c",
+            "declaration_source": "theorem trainingLaw_mass (b c : Bool) :\n    trainingLaw (b, c) = actionRow false b * actionRow true c := by\n  simp [trainingLaw]\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.FiniteBayesBelief.observationLaw_mass",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteBayesBelief.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old identity concerns a finite belief observation distribution and Bayesian evidence for a model/action. The new quantity has no belief update or observation-likelihood model.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/FiniteBayesBelief.lean",
+            "line": 140,
+            "end_line": 143,
+            "source_sha256": "1ea79d7c1217c4a3292b790c000d1c1f6fc9777439f8b8a0102157a5e52e97ed",
+            "declaration_source": "@[simp] theorem observationLaw_mass (M : Model Theta X A Y)\n    (b : Belief Theta X) (a : A) (y : Y) :\n    (observationLaw M b a).mass y = evidence M b a y := rfl\n"
+          }
+        }
+      ],
+      "decision": "SOURCE_SEMANTIC_REUSE_CLEAR_NATIVE_CHECK_PENDING"
+    },
+    {
+      "index": 16,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.initial_safe_mass",
+      "new_declaration_evidence": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean",
+        "line": 87,
+        "end_line": 92,
+        "source_sha256": "e37d32b9f5da631392706e60c68d21fcb26491fea1c67614be57afbf6d4b0455",
+        "declaration_source": "@[simp] theorem initial_safe_mass (b : Bool) :\n    safeInitialRow initial safe (safeEquiv b) = 1 / 2 := by\n  change safeInitialRow (safeLaw.map Subtype.val) safe (safeEquiv b) = _\n  rw [safeInitialRow_map_subtype]\n  exact safeLaw_mass b\n"
+      },
+      "source_semantics": "Evaluate the existing unnormalized safeInitialRow of the actual three-state witness initial PMF at each safe state.",
+      "reuse_decision": "Directly apply the canonical safeInitialRow_map_subtype, then safeLaw_mass. This retains the exact original initial PMF rather than independently postulating a row vector.",
+      "scope_boundary": "The two safe atoms each have mass 1/2; this is initial-state bookkeeping, not time-n total safe mass.",
+      "candidate_assessments": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.safe_mass_closed",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/AbsorbingLeakage.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old source has a single safe Bool atom and a time-indexed leakage law. It cannot identify either of the two initial safe subtype atoms in the new three-state source.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/AbsorbingLeakage.lean",
+            "line": 146,
+            "end_line": 152,
+            "source_sha256": "31212ec53f321e485ce6e5738b04b9dfcef523c1f8118140d05b753286cf2dc5",
+            "declaration_source": "theorem safe_mass_closed (epsilon : ℝ)\n    (hzero : 0 ≤ epsilon) (hone : epsilon ≤ 1) (n : ℕ) :\n    ((law epsilon hzero hone n) false).toReal = (1 - epsilon) ^ n := by\n  induction n with\n  | zero => simp [law]\n  | succ n ih => rw [safe_mass_succ, ih, pow_succ]\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.safe_mass_succ",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/AbsorbingLeakage.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old step recurrence concerns future leakage. The new equality instead follows from subtype pushforward of the chosen initial PMF, using an already existing source identity.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/AbsorbingLeakage.lean",
+            "line": 126,
+            "end_line": 134,
+            "source_sha256": "31212ec53f321e485ce6e5738b04b9dfcef523c1f8118140d05b753286cf2dc5",
+            "declaration_source": "theorem safe_mass_succ (epsilon : ℝ)\n    (hzero : 0 ≤ epsilon) (hone : epsilon ≤ 1) (n : ℕ) :\n    ((law epsilon hzero hone (n + 1)) false).toReal =\n      ((law epsilon hzero hone n) false).toReal * (1 - epsilon) := by\n  change (((law epsilon hzero hone n).bind\n    (kernel epsilon hzero hone)) false).toReal = _\n  rw [bind_mass]\n  simp [transitionMass]\n"
+          }
+        }
+      ],
+      "decision": "SOURCE_SEMANTIC_REUSE_CLEAR_NATIVE_CHECK_PENDING"
+    },
+    {
+      "index": 17,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_survival",
+      "new_declaration_evidence": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean",
+        "line": 109,
+        "end_line": 113,
+        "source_sha256": "e37d32b9f5da631392706e60c68d21fcb26491fea1c67614be57afbf6d4b0455",
+        "declaration_source": "theorem actual_survival (T : ℕ) :\n    actualSurvivalMass model observe feedback initial safe T = (1 / 2) ^ T := by\n  exact actual_qsd_survival_mass model observe feedback safe safeLaw (1 / 2)\n    source_left_qsd T\n"
+      },
+      "source_semantics": "Specialize the established same-source QSD survival formula to the actual three-state model, its uniform safe law and the verified left eigenvalue 1/2.",
+      "reuse_decision": "The entire proof directly invokes actual_qsd_survival_mass with source_left_qsd. This is a concrete consumer of accepted QSD theory, used to calculate the witness normalization.",
+      "scope_boundary": "The formula is finite-horizon survival (1/2)^T. It does not imply positive infinite survival, and a left QSD does not identify the conditioned complete path with a fixed Doob process.",
+      "candidate_assessments": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_survival_pos",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+          "similarity": 0.513,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old positivity corollary follows from the mass formula plus rho>0. The new theorem records the exact value for rho=1/2; positivity is then available without a new theorem of that kind.",
+          "disposition": "OLD_QSD_FORMULA_AND_COROLLARY_SCOPE_REUSED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+            "line": 73,
+            "end_line": 80,
+            "source_sha256": "7c576f6b349c841e1ce5873a78b2fa81dec57d46aa83f87c5ac4b5e3031aae9d",
+            "declaration_source": "theorem actual_qsd_survival_pos\n    (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)\n    (hrho : 0 < rho) (n : ℕ) :\n    0 < (nu n).toMeasure.real\n      {h | ¬ riskEverFailure (fun x => x ∉ K) n h} := by\n  rw [actual_qsd_survival_mass M q sigma K r rho hleft n]\n  exact pow_pos hrho n\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_survival_mass_empty",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old result is zero survival for an empty safe set. The new safe subtype has two states and verified positive finite survival, so the degenerate specialization is inapplicable.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+            "line": 253,
+            "end_line": 259,
+            "source_sha256": "ba5c3ebb96fc4bcc3927dc7fe7c0976da6ca5483b4833e2ac03bb4312edc71d4",
+            "declaration_source": "theorem actual_survival_mass_empty :\n    (causalLaw p0 (riskMicroControlKernel q (fun _ => M.transitionPMF)\n      (observationMarkovPolicy sigma)) n).toMeasure.real\n        {h | ¬ riskEverFailure (fun x => x ∉ (∅ : Set X)) n h} = 0 := by\n  rw [actual_survival_mass_eq_killed_pow_sum M q sigma p0 (∅ : Set X) n]\n  exact Finset.sum_eq_zero fun v _ => False.elim v.property\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_survival_mass",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "This exact generic old theorem is applied directly to the new same-source left-QSD witness; no parallel survival proof is introduced.",
+          "disposition": "HINTED_OLD_THEOREM_DIRECTLY_REUSED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+            "line": 63,
+            "end_line": 71,
+            "source_sha256": "7c576f6b349c841e1ce5873a78b2fa81dec57d46aa83f87c5ac4b5e3031aae9d",
+            "declaration_source": "theorem actual_qsd_survival_mass\n    (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)\n    (n : ℕ) :\n    (nu n).toMeasure.real\n      {h | ¬ riskEverFailure (fun x => x ∉ K) n h} = rho ^ n := by\n  rw [actual_survival_mass_eq_killed_pow_sum, safeInitialRow_map_subtype]\n  convert qsd_survival_mass_pow Q rR rho (coverage_sum_toReal r) hleft n using 1 <;>\n    congr!\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_survival_support",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old theorem derives existence of a supported surviving history from positive QSD survival. The new target is the exact scalar mass, which is used before that support-existence step.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+            "line": 178,
+            "end_line": 184,
+            "source_sha256": "7c576f6b349c841e1ce5873a78b2fa81dec57d46aa83f87c5ac4b5e3031aae9d",
+            "declaration_source": "theorem actual_qsd_survival_support\n    (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)\n    (hrho : 0 < rho) (n : ℕ) :\n    ∃ h ∈ {h | ¬ riskEverFailure (fun x => x ∉ K) n h}, h ∈ (nu n).support := by\n  exact (actual_survival_pos_iff_support M q sigma p0 K n).1\n    (actual_qsd_survival_pos M q sigma K r rho hleft hrho n)\n"
+          }
+        }
+      ],
+      "decision": "SOURCE_SEMANTIC_REUSE_CLEAR_NATIVE_CHECK_PENDING"
+    },
+    {
+      "index": 18,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_zero",
+      "new_declaration_evidence": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+        "line": 48,
+        "end_line": 52,
+        "source_sha256": "61feecf09bd38d2b5497a7be33d073b1c04cd20a3e45a6840af19dd1670af363",
+        "declaration_source": "@[simp] theorem remainingSurvival_zero\n    {S : Type u} [Fintype S] (Q : Matrix S S ℝ) (i : S) :\n    remainingSurvival Q 0 i = 1 := by\n  simp [remainingSurvival, Matrix.one_apply]\n"
+      },
+      "source_semantics": "For an arbitrary finite real matrix, the row sum of Q^0 is one at every state.",
+      "reuse_decision": "Use the existing matrix power-zero and identity-matrix sum simplifications. This is elementary matrix algebra, with no new semigroup theory.",
+      "scope_boundary": "The statement does not require Q nonnegative or substochastic. Probability meaning is only supplied later by the same-source killed matrix.",
+      "candidate_assessments": [
+        {
+          "symbol": "UEOT.V3.QSDTVLimit.qSurvival_zero",
+          "path": "formalization/ueot-core/UEOT/V3/QSDTVLimit.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old result concerns a KilledSemigroup and a ProbabilityMeasure, and uses the semigroup time-zero identity. The new matrix statement has weaker data and a pointwise initial-state output; an arbitrary real matrix is not supplied with a killed-semigroup realization.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/QSDTVLimit.lean",
+            "line": 328,
+            "end_line": 334,
+            "source_sha256": "1b6e0658bad5eca35839365c6dfcba2503d6bac615663a1e708d62e4e2a65894",
+            "declaration_source": "theorem qSurvival_zero\n    (S : KilledSemigroup X) (q : ProbabilityMeasure X) :\n    qSurvival S q 0 = 1 := by\n  unfold qSurvival\n  rw [S.zero]\n  simp\n"
+          }
+        }
+      ],
+      "decision": "SOURCE_SEMANTIC_REUSE_CLEAR_NATIVE_CHECK_PENDING"
+    },
+    {
+      "index": 19,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.state_prefix_survival_mass",
+      "new_declaration_evidence": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+        "line": 254,
+        "end_line": 274,
+        "source_sha256": "61feecf09bd38d2b5497a7be33d073b1c04cd20a3e45a6840af19dd1670af363",
+        "declaration_source": "theorem state_prefix_survival_mass\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    (t r : ℕ) (h : CausalHistory X X t)\n    (hs : stateSurvives K t h) (i : K) (hi : currentState t h = i.1) :\n    (causalLaw p0 (policyPathKernel M pi) (t + r)).toMeasure.real\n      {g | stateSurvives K (t + r) g ∧ statePrefix t r g = h} =\n      (causalLaw p0 (policyPathKernel M pi) t h).toReal *\n        remainingSurvival (killedMatrix M pi K) r i := by\n  rw [finite_event_mass]\n  calc\n    _ = weightedPrefixMass M pi p0 K t r h (fun _ => 1) := by\n      unfold weightedPrefixMass\n      apply Finset.sum_congr rfl\n      intro g _\n      by_cases he : stateSurvives K (t + r) g ∧ statePrefix t r g = h\n      · simp only [he, mul_one]\n      · simp only [he, if_false]\n    _ = _ := by\n      simpa only [mul_one, remainingSurvival] using\n        weightedPrefixMass_eq M pi p0 K t r h hs i hi (fun _ => 1)\n"
+      },
+      "source_semantics": "Factor the joint mass of a fixed safe complete prefix through t and survival through t+r into that prefix atom and its actual remaining-survival row sum.",
+      "reuse_decision": "Use the original causal PMF recursion, existing killedMatrix, finite_event_mass adapter and weightedPrefixMass_eq. The finite suffix summation is the new source calculation needed for the conditional-prefix formula.",
+      "scope_boundary": "The event fixes the entire prefix and constrains a later horizon. It is not merely a coordinate event or transfer to an infinite-path representation.",
+      "candidate_assessments": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.actual_state_prefix_event_mass",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old theorem transports any state-prefix event to an infinite homogeneous path measure; it does not evaluate the joint prefix/future-survival event or derive the Q^r 1 factor. It supplies representation, not this factorization.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+            "line": 192,
+            "end_line": 213,
+            "source_sha256": "514927df86f19ee9af7ab60f90caebb15779e9feb2c79deba655335098c9ad15",
+            "declaration_source": "theorem actual_state_prefix_event_mass\n    {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    [MeasurableSpace A] [MeasurableSingletonClass A]\n    (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)\n    (p0 : PMF X) (n : ℕ) (B : Set ((i : Finset.Iic n) → X)) :\n    (causalLaw p0\n      (riskMicroControlKernel q (fun _ => M.transitionPMF)\n        (observationMarkovPolicy sigma)) n).toMeasure\n          ((stateHistoryEquiv n ∘ eraseActionHistory n) ⁻¹' B) =\n      homTrajMeasure p0.toMeasure\n        (pmfRowKernel\n          (policyTransitionPMF M (liftedStationaryPolicy q sigma)))\n            ((Preorder.frestrictLe n) ⁻¹' B) := by\n  have hB : MeasurableSet B := (Set.toFinite B).measurableSet\n  have hmass := congrArg\n    (fun mu : Measure ((i : Finset.Iic n) → X) => mu B)\n    (actual_state_prefix_eq_homogeneous_prefix M q sigma p0 n)\n  rw [PMF.toMeasure_map_apply _ _ _ (measurable_of_finite _) hB,\n    Measure.map_apply (Preorder.measurable_frestrictLe n) hB] at hmass\n  exact hmass\n"
+          }
+        }
+      ],
+      "decision": "SOURCE_SEMANTIC_REUSE_CLEAR_NATIVE_CHECK_PENDING"
+    },
+    {
+      "index": 20,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.finiteWindowRowPMF_apply_toReal",
+      "new_declaration_evidence": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+        "line": 294,
+        "end_line": 301,
+        "source_sha256": "61feecf09bd38d2b5497a7be33d073b1c04cd20a3e45a6840af19dd1670af363",
+        "declaration_source": "@[simp] theorem finiteWindowRowPMF_apply_toReal\n    {S : Type u} [Fintype S] (Q : Matrix S S ℝ)\n    (hQ : ∀ i j, 0 ≤ Q i j) (r : ℕ) (i : S)\n    (hpos : 0 < remainingSurvival Q (r + 1) i) (j : S) :\n    (finiteWindowRowPMF Q hQ r i hpos j).toReal = finiteWindowRow Q r i j := by\n  unfold finiteWindowRowPMF\n  exact FiniteProbabilityRow.ofRealRow_apply_toReal (finiteWindowRow Q r i) _ _ j\n"
+      },
+      "source_semantics": "A PMF atom adapter for Q(i,j) g_r(j) / g_(r+1)(i), under nonnegative Q and a strictly positive current remaining-survival denominator.",
+      "reuse_decision": "The row normalization proof uses the proved remaining-survival recurrence; the PMF conversion directly uses canonical FiniteProbabilityRow.ofRealRow_apply_toReal.",
+      "scope_boundary": "No PMF is assigned on a null conditioning row. r is the remaining-step parameter in this definition, not evidence of a homogeneous conditional process.",
+      "candidate_assessments": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.finiteKernelRowPMF_apply_toReal",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CalibratedRiskRows.lean",
+          "similarity": 0.8,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old controlled-kernel wrapper converts a normalized input row. The new row is normalized from the survival recurrence and then uses the same generic conversion.",
+          "disposition": "SHARED_CANONICAL_PMF_CONVERSION_REUSED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CalibratedRiskRows.lean",
+            "line": 65,
+            "end_line": 71,
+            "source_sha256": "04e1a1915fa30f1e1df387074d62d36c2562c56cf8ccb411c4eeed50f5907ba7",
+            "declaration_source": "@[simp] theorem finiteKernelRowPMF_apply_toReal\n    {X : Type uX} {A : Type uA} [Fintype X]\n    (K : FiniteControlledStochasticKernel X A) (x : X) (a : A) (z : X) :\n    ((finiteKernelRowPMF K x a) z).toReal = K.mass x a z := by\n  exact UEOT.V3.FiniteDiscountedControl.FiniteProbabilityRow.ofRealRow_apply_toReal\n    (K.mass x a) (K.nonneg x a) (K.normalized x a) z\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.FiniteDobrushin.rowPMF_toReal",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteDobrushin.lean",
+          "similarity": 0.667,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old wrapper takes a whole row-stochastic matrix. At a fixed r the new construction requires positivity only at the chosen i, so it need not provide probability rows at all other states.",
+          "disposition": "SHARED_CANONICAL_PMF_CONVERSION_REUSED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/FiniteDobrushin.lean",
+            "line": 67,
+            "end_line": 71,
+            "source_sha256": "5862b1717beb4f800842fef6d1720aae00f3dfa0c9f648112d358b1f91dbc860",
+            "declaration_source": "@[simp] theorem rowPMF_toReal\n    (P : Matrix S S ℝ) (hP : P ∈ Matrix.rowStochastic ℝ S) (x y : S) :\n    ((rowPMF P hP x) y).toReal = P x y := by\n  simp [rowPMF, FiniteProbabilityRow.ofRealRow_apply_toReal]\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.finiteKernelRowPMF_map_toReal",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CalibratedRiskRows.lean",
+          "similarity": 0.636,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old result computes a quotient-class pushforward sum. The new target is an atom at j of a conditioned row with no quotient map or equivalence class.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CalibratedRiskRows.lean",
+            "line": 74,
+            "end_line": 100,
+            "source_sha256": "04e1a1915fa30f1e1df387074d62d36c2562c56cf8ccb411c4eeed50f5907ba7",
+            "declaration_source": "theorem finiteKernelRowPMF_map_toReal\n    {X : Type uX} {A : Type uA} {Y : Type uY} [Fintype X]\n    (K : FiniteControlledStochasticKernel X A) (q : X → Y)\n    (x : X) (a : A) (c : ReachableState q) :\n    (((finiteKernelRowPMF K x a).map (toReachable q)) c).toReal =\n      massIntoClass K q x a c := by\n  classical\n  rw [PMF.map_apply, tsum_fintype]\n  rw [ENNReal.toReal_sum (by\n    intro z _\n    split_ifs\n    · exact PMF.apply_ne_top (finiteKernelRowPMF K x a) z\n    · exact ENNReal.zero_ne_top)]\n  unfold massIntoClass\n  apply Finset.sum_congr rfl\n  intro z _\n  have hclass : c = toReachable q z ↔ q z = c.1 := by\n    constructor\n    · intro h\n      exact (congrArg Subtype.val h).symm\n    · intro h\n      exact Subtype.ext h.symm\n  by_cases h : q z = c.1\n  · simp [hclass.mpr h, h]\n  · have hne : c ≠ toReachable q z := fun hc => h (hclass.mp hc)\n    simp [hne, h]\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.FiniteDiscountedControl.Model.transitionPMF_apply_toReal",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedApproxQuotient.lean",
+          "similarity": 0.6,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old wrapper belongs to a full controlled Model. The new finite-window row already has its own normalization and needs no reward/discount/control structure.",
+          "disposition": "SHARED_CANONICAL_PMF_CONVERSION_REUSED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedApproxQuotient.lean",
+            "line": 86,
+            "end_line": 89,
+            "source_sha256": "0120633e891b2424b1fe329d4973290ecb67571c74e3973788fd65b92967aab6",
+            "declaration_source": "@[simp] theorem transitionPMF_apply_toReal (M : Model X A) (x : X) (a : A x) (y : X) :\n    ((M.transitionPMF x a) y).toReal = M.transition x a y := by\n  simp [transitionPMF]\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.CoreOperationalAssembly.policyTransitionPMF_apply_toReal",
+          "path": "formalization/ueot-core/UEOT/V3/CoreOperationalAssembly.lean",
+          "similarity": 0.545,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old target is a stationary-policy mixture row. The finite-window row includes a remaining-horizon tilt and only local denominator positivity; conversion still reuses the same primitive.",
+          "disposition": "SHARED_CANONICAL_PMF_CONVERSION_REUSED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/CoreOperationalAssembly.lean",
+            "line": 286,
+            "end_line": 292,
+            "source_sha256": "1f8c4f5be6d3906cdeaa6d88809cc5e0fa5f601ce8b69b21cef67a16dc7a7384",
+            "declaration_source": "@[simp] theorem policyTransitionPMF_apply_toReal\n    {S : Type uX} [Fintype S]\n    {A : S → Type uA} [∀ s, Fintype (A s)] [∀ s, Nonempty (A s)]\n    (M : Model S A) (π : StationaryPolicy A) (x y : S) :\n    ((policyTransitionPMF M π x) y).toReal = M.policyTransition π x y := by\n  simp [policyTransitionPMF, FiniteProbabilityRow.ofRealRow_apply_toReal]\n"
+          }
+        }
+      ],
+      "decision": "SOURCE_SEMANTIC_REUSE_CLEAR_NATIVE_CHECK_PENDING"
+    },
+    {
+      "index": 21,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_prefix_survival_mass",
+      "new_declaration_evidence": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+        "line": 327,
+        "end_line": 352,
+        "source_sha256": "61feecf09bd38d2b5497a7be33d073b1c04cd20a3e45a6840af19dd1670af363",
+        "declaration_source": "theorem actual_prefix_survival_mass\n    (t r : ℕ) (h : CausalHistory X X t)\n    (hs : stateSurvives K t h) (i : K) (hi : currentState t h = i.1) :\n    actualPrefixSurvivalMass M q sigma p0 K t r h =\n      (causalLaw p0 (policyPathKernel M pi) t h).toReal *\n        remainingSurvival Q r i := by\n  let nu := causalLaw p0 (riskMicroControlKernel q (fun _ => M.transitionPMF)\n    (observationMarkovPolicy sigma)) (t + r)\n  let E : Set (CausalHistory X X (t + r)) :=\n    {g | stateSurvives K (t + r) g ∧ statePrefix t r g = h}\n  have hevent : (eraseActionHistory (X := X) (A := A) (t + r)) ⁻¹' E =\n      {g | ¬ riskEverFailure (fun x => x ∉ K) (t + r) g ∧\n        statePrefix t r (eraseActionHistory (t + r) g) = h} := by\n    ext g\n    simp only [E, Set.mem_preimage, Set.mem_ofPred_eq, stateSurvives_erase_iff]\n  have hm := PMF.toMeasure_map_apply (eraseActionHistory (X := X) (A := A) (t + r))\n    nu E (measurable_of_finite _) (Set.toFinite E).measurableSet\n  calc\n    actualPrefixSurvivalMass M q sigma p0 K t r h =\n        (nu.map (eraseActionHistory (t + r))).toMeasure.real E := by\n      simpa only [actualPrefixSurvivalMass, nu, Measure.real, hevent] using\n        (congrArg ENNReal.toReal hm).symm\n    _ = (causalLaw p0 (policyPathKernel M pi) (t + r)).toMeasure.real E := by\n      rw [actual_state_path_eq_stationary_path M q sigma p0 (t + r)]\n    _ = _ := state_prefix_survival_mass M pi p0 K t r h hs i hi\n"
+      },
+      "source_semantics": "Bind the finite prefix/future-survival factorization to the original action/state experiment under the same Model, q, sigma, p0 and safe set.",
+      "reuse_decision": "Use the exact action-erasure pushforward theorem actual_state_path_eq_stationary_path and the prefix survival factorization. The event-preimage equality is derived from definitions, not assumed as a source-matching field.",
+      "scope_boundary": "The theorem retains an arbitrary original initial PMF and a complete prefix, with no left-eigenvector or QSD premise.",
+      "candidate_assessments": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_survival_mass_empty",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+          "similarity": 0.6,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "This old empty-safe-set boundary is a scalar zero statement. It cannot evaluate the nonempty fixed-prefix event and remaining-horizon weight.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+            "line": 253,
+            "end_line": 259,
+            "source_sha256": "ba5c3ebb96fc4bcc3927dc7fe7c0976da6ca5483b4833e2ac03bb4312edc71d4",
+            "declaration_source": "theorem actual_survival_mass_empty :\n    (causalLaw p0 (riskMicroControlKernel q (fun _ => M.transitionPMF)\n      (observationMarkovPolicy sigma)) n).toMeasure.real\n        {h | ¬ riskEverFailure (fun x => x ∉ (∅ : Set X)) n h} = 0 := by\n  rw [actual_survival_mass_eq_killed_pow_sum M q sigma p0 (∅ : Set X) n]\n  exact Finset.sum_eq_zero fun v _ => False.elim v.property\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_survival_mass",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+          "similarity": 0.6,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old formula assumes a normalized safe-supported left QSD initial law and returns total rho^n. The new result accepts arbitrary p0 and identifies each complete prefix.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+            "line": 63,
+            "end_line": 71,
+            "source_sha256": "7c576f6b349c841e1ce5873a78b2fa81dec57d46aa83f87c5ac4b5e3031aae9d",
+            "declaration_source": "theorem actual_qsd_survival_mass\n    (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)\n    (n : ℕ) :\n    (nu n).toMeasure.real\n      {h | ¬ riskEverFailure (fun x => x ∉ K) n h} = rho ^ n := by\n  rw [actual_survival_mass_eq_killed_pow_sum, safeInitialRow_map_subtype]\n  convert qsd_survival_mass_pow Q rR rho (coverage_sum_toReal r) hleft n using 1 <;>\n    congr!\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_survival_mass_at_zero",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old theorem handles the single time-zero total safe event. The new result allows t and r arbitrary and keeps the prefix atom and its future survival factor.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+            "line": 229,
+            "end_line": 238,
+            "source_sha256": "ba5c3ebb96fc4bcc3927dc7fe7c0976da6ca5483b4833e2ac03bb4312edc71d4",
+            "declaration_source": "theorem actual_survival_mass_at_zero :\n    (causalLaw p0 (riskMicroControlKernel q (fun _ => M.transitionPMF)\n      (observationMarkovPolicy sigma)) 0).toMeasure.real\n        {h | ¬ riskEverFailure (fun x => x ∉ K) 0 h} = p0.toMeasure.real K := by\n  change p0.toMeasure.real {x : X | ¬ (x ∉ K)} = p0.toMeasure.real K\n  have hset : {x : X | ¬ (x ∉ K)} = K := by\n    ext x\n    simp only [Set.mem_ofPred_eq, not_not]\n  rw [hset]\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.actual_state_prefix_event_mass",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old identity transfers prefix-event measure to the homogeneous infinite source without computing it. The new theorem evaluates a joint event constrained through the later horizon t+r.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+            "line": 192,
+            "end_line": 213,
+            "source_sha256": "514927df86f19ee9af7ab60f90caebb15779e9feb2c79deba655335098c9ad15",
+            "declaration_source": "theorem actual_state_prefix_event_mass\n    {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    [MeasurableSpace A] [MeasurableSingletonClass A]\n    (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)\n    (p0 : PMF X) (n : ℕ) (B : Set ((i : Finset.Iic n) → X)) :\n    (causalLaw p0\n      (riskMicroControlKernel q (fun _ => M.transitionPMF)\n        (observationMarkovPolicy sigma)) n).toMeasure\n          ((stateHistoryEquiv n ∘ eraseActionHistory n) ⁻¹' B) =\n      homTrajMeasure p0.toMeasure\n        (pmfRowKernel\n          (policyTransitionPMF M (liftedStationaryPolicy q sigma)))\n            ((Preorder.frestrictLe n) ⁻¹' B) := by\n  have hB : MeasurableSet B := (Set.toFinite B).measurableSet\n  have hmass := congrArg\n    (fun mu : Measure ((i : Finset.Iic n) → X) => mu B)\n    (actual_state_prefix_eq_homogeneous_prefix M q sigma p0 n)\n  rw [PMF.toMeasure_map_apply _ _ _ (measurable_of_finite _) hB,\n    Measure.map_apply (Preorder.measurable_frestrictLe n) hB] at hmass\n  exact hmass\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_survival_terminal_mass",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old result fixes only the terminal state and uses a left eigenrelation. A terminal marginal does not determine the joint probability of an arbitrary earlier complete prefix, and no QSD premise is assumed here.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+            "line": 53,
+            "end_line": 61,
+            "source_sha256": "7c576f6b349c841e1ce5873a78b2fa81dec57d46aa83f87c5ac4b5e3031aae9d",
+            "declaration_source": "theorem actual_qsd_survival_terminal_mass\n    (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)\n    (n : ℕ) (v : K) :\n    (nu n).toMeasure.real\n      {h | ¬ riskEverFailure (fun x => x ∉ K) n h ∧ riskLastState n h = v.1} =\n      rho ^ n * (r v).toReal := by\n  rw [actual_survival_terminal_mass_eq_killed_pow, safeInitialRow_map_subtype]\n  convert leftPerron_pow Q rR rho hleft n v using 1 <;> congr!\n"
+          }
+        }
+      ],
+      "decision": "SOURCE_SEMANTIC_REUSE_CLEAR_NATIVE_CHECK_PENDING"
+    },
+    {
+      "index": 22,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_prefix_support",
+      "new_declaration_evidence": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+        "line": 390,
+        "end_line": 401,
+        "source_sha256": "61feecf09bd38d2b5497a7be33d073b1c04cd20a3e45a6840af19dd1670af363",
+        "declaration_source": "theorem actual_conditioned_prefix_support\n    (t r : ℕ) (hpos : 0 < actualSurvivalMass M q sigma p0 K (t + r)) :\n    (actualConditionedPrefix M q sigma p0 K t r hpos).support ⊆\n      {h | stateSurvives K t h} := by\n  intro h hh\n  unfold actualConditionedPrefix at hh\n  rcases (PMF.mem_support_map_iff _ _ _).1 hh with ⟨g, hg, rfl⟩\n  have hsafe := (PMF.mem_support_filter_iff\n    ((actual_survival_pos_iff_support M q sigma p0 K (t + r)).1 hpos)).1 hg\n  exact stateSurvives_prefix K t r _\n    ((stateSurvives_erase_iff K (t + r) g).2 hsafe.1)\n"
+      },
+      "source_semantics": "A supported prefix of the actual experiment conditioned on survival to t+r must itself survive through t.",
+      "reuse_decision": "Unpack PMF.mem_support_map_iff and PMF.mem_support_filter_iff, reuse actual_survival_pos_iff_support, and propagate safety through the actual action erasure and prefix truncation.",
+      "scope_boundary": "Positive total survival remains required to define the conditional PMF. Full prefix safety is stronger than membership of its terminal state in K.",
+      "candidate_assessments": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportStrictWitness.actualPrefix_support_iff",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+          "similarity": 0.6,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old concrete control-coverage example has exactly two named supported microscopic histories. It is neither a generic filtering theorem nor a result about conditioning on future survival.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+            "line": 221,
+            "end_line": 228,
+            "source_sha256": "230128e5bb046e2f44ab46d29933324eeebed31c255248558e946e55b1e9099a",
+            "declaration_source": "theorem actualPrefix_support_iff (h : MicroHistory) :\n    h ∈ actualPrefix.support ↔ h = leftHistory ∨ h = rightHistory := by\n  rcases h with ⟨⟨phase, side⟩, a, ⟨nextPhase, nextSide⟩⟩\n  erw [PMF.mem_support_iff, actualPrefix_apply, initial_apply]\n  cases phase <;> cases side <;> cases a <;> cases nextPhase <;> cases nextSide <;>\n    norm_num [transition, leftHistory, rightHistory,\n      leftStart, rightStart, leftState, rightState]\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_conditioned_terminal_support",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+          "similarity": 0.6,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old generic theorem says the retained terminal state lies in K. The new target retains every coordinate of an earlier prefix and must show all of them safe; a terminal marginal cannot supply that full-path property.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+            "line": 142,
+            "end_line": 151,
+            "source_sha256": "ba5c3ebb96fc4bcc3927dc7fe7c0976da6ca5483b4833e2ac03bb4312edc71d4",
+            "declaration_source": "theorem actual_conditioned_terminal_support (hpos : 0 < s) :\n    (actualConditionedTerminal M q sigma p0 K n hpos).support ⊆ K := by\n  intro x hx\n  let hs := (actual_survival_pos_iff_support M q sigma p0 K n).1 hpos\n  change x ∈ (((nu).filter S hs).map (riskLastState n)).support at hx\n  rcases (PMF.mem_support_map_iff (riskLastState n) ((nu).filter S hs) x).1 hx with\n    ⟨h, hh, heq⟩\n  have hsafe := (PMF.mem_support_filter_iff hs).1 hh\n  exact heq ▸ survives_last_mem K n h hsafe.1\n"
+          }
+        }
+      ],
+      "decision": "SOURCE_SEMANTIC_REUSE_CLEAR_NATIVE_CHECK_PENDING"
+    },
+    {
+      "index": 23,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_prefix_eq_zero_of_not_survives",
+      "new_declaration_evidence": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+        "line": 404,
+        "end_line": 411,
+        "source_sha256": "61feecf09bd38d2b5497a7be33d073b1c04cd20a3e45a6840af19dd1670af363",
+        "declaration_source": "theorem actual_conditioned_prefix_eq_zero_of_not_survives\n    (t r : ℕ) (hpos : 0 < actualSurvivalMass M q sigma p0 K (t + r))\n    (h : CausalHistory X X t) (hunsafe : ¬ stateSurvives K t h) :\n    actualConditionedPrefix M q sigma p0 K t r hpos h = 0 := by\n  apply (PMF.apply_eq_zero_iff _ h).2\n  intro hh\n  exact hunsafe (actual_conditioned_prefix_support M q sigma p0 K t r hpos hh)\n"
+      },
+      "source_semantics": "The actual conditioned-prefix PMF gives zero mass to any history that is unsafe anywhere in its retained prefix.",
+      "reuse_decision": "Use the just-proved prefix-support inclusion and the canonical PMF.apply_eq_zero_iff equivalence. This is a support-to-zero-mass adapter.",
+      "scope_boundary": "A history can end inside K while having failed earlier; a theorem excluding only terminal states outside K would not suffice.",
+      "candidate_assessments": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_conditioned_terminal_eq_zero_of_notMem",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+          "similarity": 0.6,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old zero atom is indexed by one state x outside K. The new atom is a whole history and its exclusion premise is failure of all-time prefix safety, including unsafe intermediate states.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+            "line": 152,
+            "end_line": 158,
+            "source_sha256": "ba5c3ebb96fc4bcc3927dc7fe7c0976da6ca5483b4833e2ac03bb4312edc71d4",
+            "declaration_source": "theorem actual_conditioned_terminal_eq_zero_of_notMem\n    (hpos : 0 < s) (x : X) (hx : x ∉ K) :\n    actualConditionedTerminal M q sigma p0 K n hpos x = 0 := by\n  apply (PMF.apply_eq_zero_iff _ x).2\n  intro hmem\n  exact hx (actual_conditioned_terminal_support M q sigma p0 K n hpos hmem)\n"
+          }
+        }
+      ],
+      "decision": "SOURCE_SEMANTIC_REUSE_CLEAR_NATIVE_CHECK_PENDING"
+    },
+    {
+      "index": 24,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_prefix_mass",
+      "new_declaration_evidence": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+        "line": 413,
+        "end_line": 426,
+        "source_sha256": "61feecf09bd38d2b5497a7be33d073b1c04cd20a3e45a6840af19dd1670af363",
+        "declaration_source": "theorem actual_conditioned_prefix_mass\n    (t r : ℕ) (hpos : 0 < actualSurvivalMass M q sigma p0 K (t + r))\n    (h : CausalHistory X X t)\n    (hs : stateSurvives K t h) (i : K) (hi : currentState t h = i.1) :\n    (actualConditionedPrefix M q sigma p0 K t r hpos h).toReal =\n      (causalLaw p0 (policyPathKernel M pi) t h).toReal *\n        remainingSurvival Q r i / actualSurvivalMass M q sigma p0 K (t + r) := by\n  unfold actualConditionedPrefix\n  rw [filter_map_outerMeasure_atom, ENNReal.toReal_div]\n  simp only [← PMF.toMeasure_apply_eq_toOuterMeasure]\n  change actualPrefixSurvivalMass M q sigma p0 K t r h /\n    actualSurvivalMass M q sigma p0 K (t + r) = _\n  rw [actual_prefix_survival_mass M q sigma p0 K t r h hs i hi]\n"
+      },
+      "source_semantics": "For each safe complete prefix ending at i, derive its conditional mass as original prefix weight times g_r(i), divided by the original total survival s_(t+r).",
+      "reuse_decision": "Filter and map the actual original PMF; use public PMF outer-measure map/singleton identities and the actual_prefix_survival_mass theorem. The older private filter/map helper is not callable, and the revised source uses the public outer-measure chain rather than copying that proof.",
+      "scope_boundary": "The denominator is the actual original survival mass and must be positive. No QSD or right-eigenvector data are needed for this finite-window conditional law.",
+      "candidate_assessments": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_conditioned_terminal_mass",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+          "similarity": 0.6,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old quantity is the terminal state marginal eta Q^n(v)/s_n, obtained after summing all safe prefixes. The new law retains the complete prefix and a remaining-horizon factor, which terminal marginal data do not determine.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+            "line": 134,
+            "end_line": 140,
+            "source_sha256": "ba5c3ebb96fc4bcc3927dc7fe7c0976da6ca5483b4833e2ac03bb4312edc71d4",
+            "declaration_source": "theorem actual_conditioned_terminal_mass (hpos : 0 < s) (v : K) :\n    (actualConditionedTerminal M q sigma p0 K n hpos v.1).toReal = w v / s := by\n  unfold actualConditionedTerminal\n  rw [filter_map_apply_real]\n  simp only [Set.mem_ofPred_eq]\n  rw [actual_survival_terminal_mass_eq_killed_pow M q sigma p0 K n v]\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.actual_state_prefix_event_mass",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old measure-transport theorem is unconditional and does not normalize a survival-conditioned law or calculate a suffix survival weight.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+            "line": 192,
+            "end_line": 213,
+            "source_sha256": "514927df86f19ee9af7ab60f90caebb15779e9feb2c79deba655335098c9ad15",
+            "declaration_source": "theorem actual_state_prefix_event_mass\n    {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    [MeasurableSpace A] [MeasurableSingletonClass A]\n    (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)\n    (p0 : PMF X) (n : ℕ) (B : Set ((i : Finset.Iic n) → X)) :\n    (causalLaw p0\n      (riskMicroControlKernel q (fun _ => M.transitionPMF)\n        (observationMarkovPolicy sigma)) n).toMeasure\n          ((stateHistoryEquiv n ∘ eraseActionHistory n) ⁻¹' B) =\n      homTrajMeasure p0.toMeasure\n        (pmfRowKernel\n          (policyTransitionPMF M (liftedStationaryPolicy q sigma)))\n            ((Preorder.frestrictLe n) ⁻¹' B) := by\n  have hB : MeasurableSet B := (Set.toFinite B).measurableSet\n  have hmass := congrArg\n    (fun mu : Measure ((i : Finset.Iic n) → X) => mu B)\n    (actual_state_prefix_eq_homogeneous_prefix M q sigma p0 n)\n  rw [PMF.toMeasure_map_apply _ _ _ (measurable_of_finite _) hB,\n    Measure.map_apply (Preorder.measurable_frestrictLe n) hB] at hmass\n  exact hmass\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_conditioned_terminal_mass_at_zero",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+          "similarity": 0.483,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old time-zero conditioning only restricts X0 to K and divides by p0(K). The new t=0 specialization can condition on a later horizon and hence multiplies by g_T(i).",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+            "line": 241,
+            "end_line": 251,
+            "source_sha256": "ba5c3ebb96fc4bcc3927dc7fe7c0976da6ca5483b4833e2ac03bb4312edc71d4",
+            "declaration_source": "theorem actual_conditioned_terminal_mass_at_zero\n    (hpos : 0 < (causalLaw p0\n      (riskMicroControlKernel q (fun _ => M.transitionPMF)\n        (observationMarkovPolicy sigma)) 0).toMeasure.real\n          {h | ¬ riskEverFailure (fun x => x ∉ K) 0 h}) (v : K) :\n    (actualConditionedTerminal M q sigma p0 K 0 hpos v.1).toReal =\n      (p0 v.1).toReal / p0.toMeasure.real K := by\n  rw [actual_conditioned_terminal_mass M q sigma p0 K 0 hpos v,\n    actual_survival_mass_at_zero M q sigma p0 K]\n  simp [rowApply, Matrix.one_apply, safeInitialRow, mul_ite]\n"
+          }
+        }
+      ],
+      "decision": "SOURCE_SEMANTIC_REUSE_CLEAR_NATIVE_CHECK_PENDING"
+    },
+    {
+      "index": 25,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_initial_mass",
+      "new_declaration_evidence": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+        "line": 429,
+        "end_line": 440,
+        "source_sha256": "61feecf09bd38d2b5497a7be33d073b1c04cd20a3e45a6840af19dd1670af363",
+        "declaration_source": "theorem actual_conditioned_initial_mass\n    (T : ℕ) (hpos : 0 < actualSurvivalMass M q sigma p0 K (0 + T)) (i : K) :\n    (actualConditionedPrefix M q sigma p0 K 0 T hpos i.1).toReal =\n      safeInitialRow p0 K i * remainingSurvival Q T i /\n        actualSurvivalMass M q sigma p0 K T := by\n  rw [actual_conditioned_prefix_mass M q sigma p0 K 0 T hpos i.1 i.property i rfl]\n  change (p0 i.1).toReal * remainingSurvival Q T i /\n      actualSurvivalMass M q sigma p0 K (0 + T) =\n    (p0 i.1).toReal * remainingSurvival Q T i /\n      actualSurvivalMass M q sigma p0 K T\n  rw [Nat.zero_add]\n"
+      },
+      "source_semantics": "Identify the original initial state distribution conditional on survival to T: eta(i) g_T(i) / s_T.",
+      "reuse_decision": "Specialize actual_conditioned_prefix_mass to retained prefix length zero and use the original safeInitialRow definition. This is a required source-specific endpoint, not an independent Bayes rule.",
+      "scope_boundary": "At T=0 it reduces to initial safety conditioning; for T>0 it carries a future-survival tilt. A left QSD stabilizes the conditioned terminal marginal and generally does not remove this tilt at time zero.",
+      "candidate_assessments": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_conditioned_terminal_mass",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+          "similarity": 0.6,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old target is X_T given survival to T. The new target is X_0 under that same later survival event, so the matrix weight appears as eta(i) times a row sum rather than a terminal column mass.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+            "line": 134,
+            "end_line": 140,
+            "source_sha256": "ba5c3ebb96fc4bcc3927dc7fe7c0976da6ca5483b4833e2ac03bb4312edc71d4",
+            "declaration_source": "theorem actual_conditioned_terminal_mass (hpos : 0 < s) (v : K) :\n    (actualConditionedTerminal M q sigma p0 K n hpos v.1).toReal = w v / s := by\n  unfold actualConditionedTerminal\n  rw [filter_map_apply_real]\n  simp only [Set.mem_ofPred_eq]\n  rw [actual_survival_terminal_mass_eq_killed_pow M q sigma p0 K n v]\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_conditioned_terminal_mass_at_zero",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+          "similarity": 0.513,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old theorem conditions on survival only at horizon zero. It is the T=0 boundary of the new formula, but it cannot supply g_T for a later conditioning horizon.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+            "line": 241,
+            "end_line": 251,
+            "source_sha256": "ba5c3ebb96fc4bcc3927dc7fe7c0976da6ca5483b4833e2ac03bb4312edc71d4",
+            "declaration_source": "theorem actual_conditioned_terminal_mass_at_zero\n    (hpos : 0 < (causalLaw p0\n      (riskMicroControlKernel q (fun _ => M.transitionPMF)\n        (observationMarkovPolicy sigma)) 0).toMeasure.real\n          {h | ¬ riskEverFailure (fun x => x ∉ K) 0 h}) (v : K) :\n    (actualConditionedTerminal M q sigma p0 K 0 hpos v.1).toReal =\n      (p0 v.1).toReal / p0.toMeasure.real K := by\n  rw [actual_conditioned_terminal_mass M q sigma p0 K 0 hpos v,\n    actual_survival_mass_at_zero M q sigma p0 K]\n  simp [rowApply, Matrix.one_apply, safeInitialRow, mul_ite]\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_conditioned_terminal_support",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+          "similarity": 0.492,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old support inclusion gives membership in K only. It says neither the initial conditional weights nor the horizon-dependent reweighting.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+            "line": 142,
+            "end_line": 151,
+            "source_sha256": "ba5c3ebb96fc4bcc3927dc7fe7c0976da6ca5483b4833e2ac03bb4312edc71d4",
+            "declaration_source": "theorem actual_conditioned_terminal_support (hpos : 0 < s) :\n    (actualConditionedTerminal M q sigma p0 K n hpos).support ⊆ K := by\n  intro x hx\n  let hs := (actual_survival_pos_iff_support M q sigma p0 K n).1 hpos\n  change x ∈ (((nu).filter S hs).map (riskLastState n)).support at hx\n  rcases (PMF.mem_support_map_iff (riskLastState n) ((nu).filter S hs) x).1 hx with\n    ⟨h, hh, heq⟩\n  have hsafe := (PMF.mem_support_filter_iff hs).1 hh\n  exact heq ▸ survives_last_mem K n h hsafe.1\n"
+          }
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_conditioned_terminal_law",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+          "similarity": 0.492,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old equality to r concerns the terminal marginal under a left-QSD start. It does not identify the retrospective initial conditional law, which may be tilted even for that QSD source.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+            "line": 189,
+            "end_line": 211,
+            "source_sha256": "7c576f6b349c841e1ce5873a78b2fa81dec57d46aa83f87c5ac4b5e3031aae9d",
+            "declaration_source": "theorem actual_qsd_conditioned_terminal_law\n    {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    [MeasurableSpace A] [MeasurableSingletonClass A]\n    (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)\n    (K : Set X) (r : PMF K) (rho : ℝ)\n    (hleft : ∀ v, rowApply (fun w : K => (r w).toReal)\n      (killedMatrix M (liftedStationaryPolicy q sigma) K) v = rho * (r v).toReal)\n    (hrho : 0 < rho) (n : ℕ) :\n    let nu := causalLaw (r.map Subtype.val)\n      (riskMicroControlKernel q (fun _ => M.transitionPMF)\n        (observationMarkovPolicy sigma)) n\n    let S : Set (CausalHistory X (A × X) n) :=\n      {h | ¬ riskEverFailure (fun x => x ∉ K) n h}\n    (nu.filter S\n      (actual_qsd_survival_support M q sigma K r rho hleft hrho n)).map\n        (riskLastState n) = r.map Subtype.val := by\n  let hpos := actual_qsd_survival_pos M q sigma K r rho hleft hrho n\n  change actualConditionedTerminal M q sigma (r.map Subtype.val) K n hpos =\n    r.map Subtype.val\n  exact actual_qsd_conditioned_terminal_law_of_survival_pos\n    M q sigma K r rho hleft n hpos\n"
+          }
+        }
+      ],
+      "decision": "SOURCE_SEMANTIC_REUSE_CLEAR_NATIVE_CHECK_PENDING"
+    },
+    {
+      "index": 26,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_safe_path_mass",
+      "new_declaration_evidence": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+        "line": 442,
+        "end_line": 452,
+        "source_sha256": "61feecf09bd38d2b5497a7be33d073b1c04cd20a3e45a6840af19dd1670af363",
+        "declaration_source": "theorem actual_conditioned_safe_path_mass\n    (T : ℕ) (hpos : 0 < actualSurvivalMass M q sigma p0 K (T + 0))\n    (h : CausalHistory K K T) :\n    (actualConditionedPrefix M q sigma p0 K T 0 hpos (safeHistory K T h)).toReal =\n      matrixPathWeight (safeInitialRow p0 K) Q T h /\n        actualSurvivalMass M q sigma p0 K T := by\n  rw [actual_conditioned_prefix_mass M q sigma p0 K T 0 hpos\n    (safeHistory K T h) (safeHistory_survives K T h) (currentState T h)\n    (safeHistory_current K T h)]\n  rw [remainingSurvival_zero, mul_one, state_safe_atom_eq_matrixPathWeight, Nat.add_zero]\n"
+      },
+      "source_semantics": "Identify each actual complete safe path atom after conditioning on survival to T with matrixPathWeight eta Q T divided by s_T.",
+      "reuse_decision": "Specialize the prefix formula to no remaining suffix, use remainingSurvival_zero, the existing original state-path recursion and the proved safe-path atom identity. The original p0 and its unnormalized safe restriction are retained.",
+      "scope_boundary": "A full path weight determines later marginals by summation; the converse recovery from one terminal marginal is invalid. This endpoint is what supports the subsequent exact Doob path comparison.",
+      "candidate_assessments": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_conditioned_terminal_mass",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+          "comparison": "The old result sums over all safe paths ending at one v. It loses intermediate states and cannot by itself determine the atom of a specified complete safe history; the new path-product proof supplies precisely that missing information.",
+          "disposition": "DISTINCT_SOURCE_OR_TYPE_REUSE_MECHANISM_RETAINED",
+          "baseline_declaration_evidence": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+            "line": 134,
+            "end_line": 140,
+            "source_sha256": "ba5c3ebb96fc4bcc3927dc7fe7c0976da6ca5483b4833e2ac03bb4312edc71d4",
+            "declaration_source": "theorem actual_conditioned_terminal_mass (hpos : 0 < s) (v : K) :\n    (actualConditionedTerminal M q sigma p0 K n hpos v.1).toReal = w v / s := by\n  unfold actualConditionedTerminal\n  rw [filter_map_apply_real]\n  simp only [Set.mem_ofPred_eq]\n  rw [actual_survival_terminal_mass_eq_killed_pow M q sigma p0 K n v]\n"
+          }
+        }
+      ],
+      "decision": "SOURCE_SEMANTIC_REUSE_CLEAR_NATIVE_CHECK_PENDING"
+    }
+  ]
+}

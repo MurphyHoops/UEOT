@@ -1,0 +1,40 @@
+{
+  "schema": "PATH_REALIZATION_PROTOCOL_ADAPTATION_V1",
+  "kind": "integration_native",
+  "baseline_ref": "d503586107974c56e0773b4ea106b41a7d144b43",
+  "frozen_inputs_sha256": "6b3b91d2506b4ad72768a31efd12dba309613558d618d52a1c41d72d95370c9f",
+  "source_tree_sha256": "c344bf6657ab31a32c46fba9feff6d5c04846b8f061d444aec8accb4994ad41b",
+  "immutable_driver": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/longterm_control_statistics_v1/native_protocol/integration_native.py",
+    "sha256": "d4708782bbb14360002f119715ba51f96c05e2e632694ba64c56c3d38ce8a924"
+  },
+  "executed_source_sha256": "152ff6c382b8fcbdd3da8e33acaab7ddc3484f8f1b074de4714ff218eec52e89",
+  "substitutions": [
+    {
+      "old": "\"LONGTERM_ACTUAL_FULL_BUILD_V1\"",
+      "new": "\"PATH_REALIZATION_ACTUAL_FULL_BUILD_V1\"",
+      "occurrences": 1
+    },
+    {
+      "old": "NAME = \"LONGTERM_CONTROL_STATISTICS\"",
+      "new": "NAME = \"PATH_REALIZATION\"",
+      "occurrences": 1
+    },
+    {
+      "old": "PRIOR_MODULES, PRIOR_THEOREMS, PRIOR_OVERLAYS = 666, 4147, 8",
+      "new": "PRIOR_MODULES, PRIOR_THEOREMS, PRIOR_OVERLAYS = 684, 4272, 10",
+      "occurrences": 1
+    },
+    {
+      "old": "\"UNCOUNTED_SAME_SOURCE_LONGTERM_POLICY_AND_ROWWISE_SISC\"",
+      "new": "\"UNCOUNTED_SAME_SOURCE_PATH_REALIZATION\"",
+      "occurrences": 1
+    }
+  ],
+  "wrapper": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/native_protocol/integration_native.py",
+    "sha256": "0f9baf11b1a1d51e195a276a548ce9b9a119bfe74bd9598c4d5914d3cf38b1c6"
+  },
+  "adapter_sha256": "8afada91c504c3f97f18cf20b519ac2f701b13fa2211e748bbbc4ddca6bead4f",
+  "claim": "Only listed scope/schema/metadata substitutions; actual execution, full census, raw-type comparisons, fixed-edge replay, and source/runtime identity gates remain in the executed predecessor code."
+}

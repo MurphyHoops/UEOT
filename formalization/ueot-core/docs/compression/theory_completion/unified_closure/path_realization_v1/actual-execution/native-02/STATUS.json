@@ -1,0 +1,40 @@
+{
+  "state": "PASS_PENDING_INDEPENDENT_REVIEW_AND_REGISTRATION",
+  "baseline_ref": "d503586107974c56e0773b4ea106b41a7d144b43",
+  "build_receipt_sha256": "142c7f832a3d9cd9a012abf38a3bc748ae75f01a94c09f9296da40a5378658d7",
+  "results": [
+    {
+      "label": "native_export",
+      "command": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/path-realization-evidence-20261022/native-02/PATH_REALIZATION_NATIVE_EXPORT.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 58.451,
+      "log_sha256": "69d1e0ab5717a16608296b4396d3340bccedf8248be8ae270ceee1cd5a7d49f4"
+    },
+    {
+      "label": "fixed_verifier",
+      "command": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/path-realization-evidence-20261022/native-02/VERIFY_PATH_REALIZATION_OVERLAY_TYPES.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 58.297,
+      "log_sha256": "69d1e0ab5717a16608296b4396d3340bccedf8248be8ae270ceee1cd5a7d49f4"
+    }
+  ],
+  "summary": {
+    "modules": 7,
+    "public_source_theorems": 73,
+    "native_constants": 249,
+    "registered_edges": 114,
+    "overlay_sha256": "e87a8b9a921e4f9014d59f761ed73c8432c869f354e3b498542d99133a84239a",
+    "verifier_sha256": "430aae70eec2c7cf87530020e24a8e43beae7021e2f8282f4c0c9b2949195714",
+    "native_sha256": "61dabee5113b7fd2e640971c55ef6d2dba91e257744f587b57235f94a73b3308"
+  }
+}

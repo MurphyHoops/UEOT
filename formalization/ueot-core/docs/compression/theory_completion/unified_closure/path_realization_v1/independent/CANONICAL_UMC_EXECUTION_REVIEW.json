@@ -1,0 +1,242 @@
+{
+  "schema": "UEOT_PATH_REALIZATION_ACTUAL_CANONICAL_UMC_REVIEW_V1",
+  "state": "ACTUAL_CANONICAL_UMC_FULL_CLEAR",
+  "reviewer": "/root/finite_window_source",
+  "observed_at_utc": "2026-10-22T03:12:19.172824+00:00",
+  "independence": "Reviewer did not execute the Mac run or author the canonical auditor/wrapper. Reviewer authored two of the seven new Lean modules; this is an execution/evidence review, not a second independent mathematical authorship review of those modules.",
+  "baseline_ref": "d503586107974c56e0773b4ea106b41a7d144b43",
+  "source_tree_sha256": "de7c7e287bd1b351ed3f790de58bfd71edf18df4013f7e5aaf2af55a6b3f6379",
+  "actual_execution": {
+    "state": "PASS",
+    "started_at_utc": "2026-10-22T03:03:23.075868+00:00",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "-B",
+      "formalization/ueot-core/docs/compression/theory_completion/unified_closure/audit_umc_local.py",
+      "--full",
+      "--output",
+      "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/path-realization-evidence-20261022/umc-full-01/UMC_FULL_AUDIT.json"
+    ],
+    "exit_code": 0,
+    "seconds": 60.70238387491554,
+    "log_sha256": "6346f37838285674bed9a4fa1369ec6631ff3771ef6ccd700d1846b3ddd67531",
+    "driver_sha256": "f6dda475d5518ebf1e325fde43050e147e16f7b3c73d07bf948255c682796725",
+    "full_build_receipt_sha256": "142c7f832a3d9cd9a012abf38a3bc748ae75f01a94c09f9296da40a5378658d7",
+    "source_tree_sha256": "de7c7e287bd1b351ed3f790de58bfd71edf18df4013f7e5aaf2af55a6b3f6379",
+    "source_runtime_dependencies_before": "EXACT_ACCEPTED_FULL_BUILD_IDENTITY",
+    "source_runtime_dependencies_after": "EXACT_ACCEPTED_FULL_BUILD_IDENTITY",
+    "audit_sha256": "0c527b9db22b6db5efbd2266a4d8b59bf3f39d62a07c3b7c8889fdecc7e40c80"
+  },
+  "actual_audit": {
+    "canonical_main": "d503586107974c56e0773b4ea106b41a7d144b43",
+    "research_modules": 92,
+    "UMC_theorems_and_lemmas": 672,
+    "source_PIDs_located": 106,
+    "source_provenance": {
+      "DOC_REFERENCED_LOCATION_FOUND": 106
+    },
+    "UMC_axioms": "1404/1404_LEAN_STANDARD_AXIOMS",
+    "UMC_source_count_authority": "FKRG_LEXICAL_PUBLIC_CANDIDATES",
+    "UMC_native_census": {
+      "theorem_constants": 1404,
+      "private_theorem_constants": 176,
+      "confirmed_public_source_candidates": 672,
+      "other_native_public_constants": 556,
+      "source_modules": 92,
+      "scope_authority": "Lean compiled source modules, including private and generated theorem constants",
+      "other_native_public_scope": "Native nonprivate constants outside the FKRG source candidate list; typically generated, not inferred to be source declarations"
+    },
+    "full_Lean": "PASS",
+    "public_root_imports": 92,
+    "global_bundled_Lean_modules": 691,
+    "full_import_dag_acyclic_reachable_complete": true,
+    "frozen_source_impact": "NONE",
+    "claim": "CONDITIONAL_COMMON_PROCESS_CONSTRUCTION_AND_BOUNDARIES",
+    "global_strong_unified_closure": "NOT_ESTABLISHED",
+    "scientific_external_evidence": "UNVERIFIED",
+    "publication_actions": "NOT_PERFORMED_BY_THIS_READ_ONLY_AUDIT",
+    "epistemic_scope": "Proof validity is conditional on actual theorem premises; file/declaration index is not an independent semantic audit."
+  },
+  "canonical_import": {
+    "schema": "PATH_REALIZATION_CANONICAL_EXACT_IMPORT_V1",
+    "state": "PASS_EXACT_RAW_BYTES_IMPORTED_AND_ARCHIVED",
+    "files": 17,
+    "raw_file_bytes": 3557798,
+    "payload_sha256": "f81e1fc243479d2043a4356bd7fe7c0aefc8aea135c41e1b93e120a4717701d1",
+    "encoded_sha256": "10104084dd256d90d250d9110f89e5dce5ced02234699c3d1f553f587fa2847c",
+    "source_root": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/path-realization-evidence-20261022"
+  },
+  "canonical_sync_files_verified": 10,
+  "baseline_before_files_verified": 6,
+  "current_complete_source_records_verified": 691,
+  "current_research_source_modules_verified": 92,
+  "current_public_source_candidates_verified": 672,
+  "current_public_root_imports_verified": 92,
+  "dag_sha256": "6f2aa90ef9efc30a992d47d8c1c59520b74205da67eb9343a1af31fe168f2318",
+  "auditor_identity": {
+    "sha256": "7acc030d2607cd2afbcea00a5967a542cee34f7bb3ce897adca2c7761fd87c48",
+    "archived_current_and_immutable_baseline_bytes_equal": true
+  },
+  "wrapper_identity": {
+    "sha256": "f6dda475d5518ebf1e325fde43050e147e16f7b3c73d07bf948255c682796725",
+    "only_predecessor_difference": "expected module assertion 684 -> 691"
+  },
+  "read_only_checker": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/independent/canonical-execution-support-01/check_canonical_execution.py",
+    "sha256": "c7e78bbebc814cb56b55f75d1628cbd24ed4f4ac48fa2b76cd4da8bbd885c770",
+    "exit_code": 0,
+    "seconds": 0.531012069,
+    "output_sha256": "5bb45961e0e47677d2b70666a3b4fdb2cd8feb95b3ed58e311ee0fd352c4f0a7",
+    "watched_inputs_unchanged": 748
+  },
+  "support_manifest": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/independent/canonical-execution-support-01/MANIFEST.json",
+    "sha256": "50113be264f426f53a02c582bd6fe4e88c46d00846237209b15bb9c3e8f61782"
+  },
+  "evidence_files": [
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/actual-execution/canonical-sync-01/PAYLOAD.json",
+      "bytes": 2406517,
+      "sha256": "07ecba689fed2328640c9e80b9f0ec995bb85953ac94d6741d2f858aab959058"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/actual-execution/canonical-sync-01/RECEIPT.json",
+      "bytes": 3514,
+      "sha256": "8e20a3b1d66064098958dcdec3fba07c7f53f72afad67b49d235d473baa7d28d"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/actual-execution/canonical-sync-01/before/formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md",
+      "bytes": 25449,
+      "sha256": "fe19fc6a542d8b6b689ac2bdb11e6d4baa6a3a8606605b1c3f9858500054f73a"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/actual-execution/canonical-sync-01/before/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
+      "bytes": 63762,
+      "sha256": "6692cc8fb7acfb6871ca0dd45990a8d60670a97e07daaf197bc3adda9dd7463a"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/actual-execution/canonical-sync-01/before/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py",
+      "bytes": 3732,
+      "sha256": "a0b51bb5e6805c8e067fa9980b5a75567f2385ca03860b2fb8214af583887513"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/actual-execution/canonical-sync-01/before/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+      "bytes": 33367,
+      "sha256": "9c4a1e8a70c281f044f7633e7a5e9c4e19ff961bff453e76e196d12a20a11c2b"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/actual-execution/canonical-sync-01/before/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
+      "bytes": 73738,
+      "sha256": "694b4796d7e650996c6c6158338d9b41fcc2eb8a27554387c6e4baa509a2de8c"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/actual-execution/canonical-sync-01/before/formalization/ueot-core/docs/compression/theory_completion/unified_closure/UMC_GLOBAL_MODULE_DAG_V4.json",
+      "bytes": 419057,
+      "sha256": "943784627d5cf8626477e0a23167f139f99f0930cf54268858d0c5df2ac4734e"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/actual-execution/canonical-sync-01/driver.py",
+      "bytes": 3677,
+      "sha256": "ad342f7c354e1d1c39e8da04aaa7fb2dec18627ea7d766ebbde1a65d95a48334"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/actual-execution/export_canonical_01.py",
+      "bytes": 2244,
+      "sha256": "f4423deabfe06f981460365c4a3a8703e0be84442d474efd2464ac007077a576"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/actual-execution/sync_canonical_inputs.py",
+      "bytes": 3677,
+      "sha256": "ad342f7c354e1d1c39e8da04aaa7fb2dec18627ea7d766ebbde1a65d95a48334"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/actual-execution/umc-full-01/EXECUTION.json",
+      "bytes": 1093,
+      "sha256": "d27b7834e2e09f96b45742530b051f160c33c00a342a097d51acd9f98b7368da"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/actual-execution/umc-full-01/UMC_FULL_AUDIT.json",
+      "bytes": 1385,
+      "sha256": "0c527b9db22b6db5efbd2266a4d8b59bf3f39d62a07c3b7c8889fdecc7e40c80"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/actual-execution/umc-full-01/auditor.py",
+      "bytes": 22252,
+      "sha256": "7acc030d2607cd2afbcea00a5967a542cee34f7bb3ce897adca2c7761fd87c48"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/actual-execution/umc-full-01/canonical-audit.log",
+      "bytes": 1391,
+      "sha256": "6346f37838285674bed9a4fa1369ec6631ff3771ef6ccd700d1846b3ddd67531"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/actual-execution/umc-full-01/driver.py",
+      "bytes": 3774,
+      "sha256": "f6dda475d5518ebf1e325fde43050e147e16f7b3c73d07bf948255c682796725"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/actual-execution/unpack_and_sync_canonical.py",
+      "bytes": 489169,
+      "sha256": "280ba2744c4963e6f9c550f43ebbdf7c8de1c3344275d15c6e666d77d418b72f"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/actual-execution/canonical-import-01/IMPORT_RECEIPT.json",
+      "bytes": 7140,
+      "sha256": "f59749bb8a71f637c7a275ce1418eb90f93484e572f4468e494c6a7e14f8929f"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/actual-execution/tool-observations/CANONICAL_01_TOOL_OUTPUT.json",
+      "bytes": 1391,
+      "sha256": "85936fe7706f1fc9e97f6c65db97b80c0866ac418d5b3b87fa754c65a1836b88"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/actual-execution/tool-observations/CANONICAL_SYNC_01_TOOL_OUTPUT.json",
+      "bytes": 3974,
+      "sha256": "481528209f83fbce97b9c8ee1942bc4b066be12e034e0ce1b9fe98b5aabf2ea4"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/actual-execution/full-build-02/FULL_BUILD_RECEIPT.json",
+      "bytes": 210300,
+      "sha256": "142c7f832a3d9cd9a012abf38a3bc748ae75f01a94c09f9296da40a5378658d7"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/UMC_GLOBAL_MODULE_DAG_V4.json",
+      "bytes": 423863,
+      "sha256": "6f2aa90ef9efc30a992d47d8c1c59520b74205da67eb9343a1af31fe168f2318"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/independent/ACTUAL_EXECUTION_REVIEW.json",
+      "bytes": 27484,
+      "sha256": "89697625b9aa110791da53332ba02714191c30b5accf239f5380242076529fbf"
+    },
+    {
+      "path": "/workspace/scratch/534b0448126c/tmp/core-path-realization-20261022/transfer-canonical-01/MANIFEST.json",
+      "bytes": 3813,
+      "sha256": "32624254ff2fe3138607d602032962f1af3adb77297161e4730af2c9b5bb7803"
+    },
+    {
+      "path": "/workspace/scratch/534b0448126c/tmp/core-path-realization-20261022/transfer-canonical-01/payload.b64",
+      "bytes": 1125353,
+      "sha256": "10104084dd256d90d250d9110f89e5dce5ced02234699c3d1f553f587fa2847c"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/independent/canonical-execution-support-01/check_canonical_execution.py",
+      "bytes": 14378,
+      "sha256": "c7e78bbebc814cb56b55f75d1628cbd24ed4f4ac48fa2b76cd4da8bbd885c770"
+    }
+  ],
+  "findings": [
+    "The actual canonical --full command used the recorded Mac Python 3.14 executable, exited zero in 60.70238387491554 seconds, and the outer tool observation independently records exit zero. Its complete raw UMC_LOCAL_AUDIT_PASS JSON equals the saved audit object.",
+    "UMC_VERIFIED_GIT_HEAD is the immutable d503586107974c56e0773b4ea106b41a7d144b43 baseline. The audited proof bytes are the frozen workingtree source de7c7e287bd1b351ed3f790de58bfd71edf18df4013f7e5aaf2af55a6b3f6379; no uncreated candidate commit is claimed as the execution HEAD.",
+    "The archived wrapper equals its statically reviewed current source and differs from its accepted predecessor only by the expected total-module assertion 684 to 691. Its completed before/after checks bind source, runtime binaries, environment and dependencies to the already reviewed actual full-build-02 receipt.",
+    "The archived Mac canonical auditor, current cloud auditor and immutable baseline Git object are byte identical. The unchanged implementation rebuilds UEOT before enumerating compiler-owned theorem constants across every physical UMC module, including private/generated constants, and rejects nonstandard axioms.",
+    "All 17 files and 3557798 raw bytes decoded from the actual compressed transfer equal both imported and repository archive bytes. All ten synchronized inputs equal current accepted bytes; all six non-null before snapshots equal their baseline Git objects, and the other four paths are absent from that baseline.",
+    "Read-only rediscovery confirms the complete 691 source records against the accepted build identity, exact current DAG fingerprint, 92 physical UMC modules and public root imports, and 672 distinct public lexical theorem candidates.",
+    "The actual canonical census reports 1404 theorem constants: 176 private, 672 confirmed source candidates and 556 other native nonprivate constants. Its axiom result is 1404/1404_LEAN_STANDARD_AXIOMS.",
+    "The actual report preserves 106 located source P-IDs, the complete reachable acyclic import DAG, frozen source impact NONE, scientific external evidence UNVERIFIED and global strong closure NOT_ESTABLISHED. Publication was not performed by this audit."
+  ],
+  "scope_note": "The unchanged canonical auditor actually checked temporary native records and emits their aggregate census. This reviewer did not receive the 1404 per-constant temporary rows. The separate final increment of 249 constants was retained and independently reviewed in ACTUAL_EXECUTION_REVIEW.json.",
+  "historical_preservation": "The original source PENDING, failed focused batches, frozen01 native failure, cache qualifications and interrupted diagnostic remain unchanged. Native01 outer Python driver exited 1; inner lake env lean command result was 130 after SIGINT. Final frozen02 build/native acceptance remains in the separate immutable ACTUAL_EXECUTION_REVIEW.",
+  "publication_status": "PENDING_SEPARATE_IMMUTABLE_GIT_OBJECT_PR_AND_RESULTING_MAIN_GATES",
+  "no_rerun": "Local read-only decoding, hashing, immutable Git-object reads and lexical source rediscovery. No Mac call, Lean, lake, native or canonical audit rerun."
+}

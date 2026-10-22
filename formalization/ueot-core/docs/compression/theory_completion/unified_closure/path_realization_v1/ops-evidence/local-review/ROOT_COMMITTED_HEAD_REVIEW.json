@@ -1,0 +1,32 @@
+{
+  "schema": "PATH_REALIZATION_OPS_ROOT_REVIEW_V1",
+  "state": "EXACT_COMMITTED_CANDIDATE_CLEAR",
+  "base": "50a91fb9c81e0f5e698ce2cc02ec1a44c9583b04",
+  "head": "91366e9cf38815788978aeaf010f3016942d31dd",
+  "tree": "08e1f9869bdad2c8b1d2a95a602711ffaa1eb92b",
+  "branch": "ops/compression-tc-path-realization-evidence",
+  "independent_reviewer": "/root",
+  "changed_paths": [
+    "formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json"
+  ],
+  "review": "Only exact six-path evidence exception retargeted; three JSON leaf strings changed; all other policy and frozen classifications preserved.",
+  "command": [
+    "python3",
+    "-B",
+    "formalization/ueot-core/scripts/validate_compression_research.py",
+    "--repo-root",
+    "/workspace/scratch/534b0448126c/ueot-path-realization-ops",
+    "--baseline-ref",
+    "50a91fb9c81e0f5e698ce2cc02ec1a44c9583b04",
+    "--candidate-ref",
+    "91366e9cf38815788978aeaf010f3016942d31dd",
+    "--branch-name",
+    "ops/compression-tc-path-realization-evidence",
+    "--changed-path-file",
+    "/workspace/scratch/534b0448126c/tmp/core-path-realization-ops/changed-paths.txt"
+  ],
+  "exit_code": 0,
+  "seconds": 0.3263713759952225,
+  "utc": "2026-10-22T01:35:10.295515+00:00",
+  "log_sha256": "6565626591c565b12dad7471cd552b758fc34618b01cff96d8514e72b728f6b8"
+}

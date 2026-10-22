@@ -1,0 +1,56 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryRealization.lean:85:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  L (F h)
+in the target expression
+  PMF.map (fun hz => (F hz.1, G hz.1 hz.2)) (PMF.map (fun z => (h, z)) (K h)) =
+    ((fun h => PMF.map (fun z => (h, z)) (L h)) ∘ F) h
+
+case e_f
+H Z W V : Type u
+p : PMF H
+K : H → PMF Z
+F : H → W
+G : H → Z → V
+L : W → PMF V
+hrow : ∀ (h : H), PMF.map (G h) (K h) = L (F h)
+h : H
+⊢ PMF.map (fun hz => (F hz.1, G hz.1 hz.2)) (PMF.map (fun z => (h, z)) (K h)) =
+    ((fun h => PMF.map (fun z => (h, z)) (L h)) ∘ F) h
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryRealization.lean:117:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  PMF.map
+    (fun hz =>
+      (currentState n (augmentHistory controller q n hz.1), hz.2.2,
+        controller.update (controller.memory n (projectHistory q n hz.1)) hz.2.1 (q hz.2.2)))
+    (pmfExtend ?m.198 (riskMicroControlKernel q P controller.policy n))
+in the target expression
+  PMF.map
+      (fun hz =>
+        (augmentHistory controller q n hz.1, hz.2.2,
+          controller.update (controller.memory n (projectHistory q n hz.1)) hz.2.1 (q hz.2.2)))
+      (pmfExtend (microLaw p₀ q P controller.policy n) (riskMicroControlKernel q P controller.policy n)) =
+    pmfExtend
+      (causalLaw (augmentedInitial controller p₀ q) (fun k h => augmentedRow controller q P k (currentState k h)) n)
+      fun h => augmentedRow controller q P n (currentState n h)
+
+case succ
+X M Y A : Type u
+controller : FiniteMemoryController M Y A
+p₀ : PMF X
+q : X → Y
+P : ℕ → X → A → PMF X
+n : ℕ
+ih :
+  PMF.map (augmentHistory controller q n) (microLaw p₀ q P controller.policy n) =
+    causalLaw (augmentedInitial controller p₀ q) (fun k h => augmentedRow controller q P k (currentState k h)) n
+hrow :
+  ∀ (h : CausalHistory X (A × X) n),
+    PMF.map (fun ax => (ax.2, controller.update (controller.memory n (projectHistory q n h)) ax.1 (q ax.2)))
+        (riskMicroControlKernel q P controller.policy n h) =
+      augmentedRow controller q P n (currentState n (augmentHistory controller q n h))
+⊢ PMF.map
+      (fun hz =>
+        (augmentHistory controller q n hz.1, hz.2.2,
+          controller.update (controller.memory n (projectHistory q n hz.1)) hz.2.1 (q hz.2.2)))
+      (pmfExtend (microLaw p₀ q P controller.policy n) (riskMicroControlKernel q P controller.policy n)) =
+    pmfExtend
+      (causalLaw (augmentedInitial controller p₀ q) (fun k h => augmentedRow controller q P k (currentState k h)) n)
+      fun h => augmentedRow controller q P n (currentState n h)

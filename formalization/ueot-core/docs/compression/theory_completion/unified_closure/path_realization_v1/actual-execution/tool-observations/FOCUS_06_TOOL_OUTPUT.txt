@@ -1,0 +1,63 @@
+[Reading 60 new lines (total: 60 lines)]
+
+{"module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoob", "source_sha256": "5175fed66f44c17f58d965a21c06a60542a22a5edd9dfc22ac146e22cdb61367", "exit_code": 0, "seconds": 3.9796065, "log_sha256": "08bb20905d8b865c2876b68a622f69b83401bbee809fe5da375b287a7caffce3", "args": ["/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake", "env", "lean", "-o", ".lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.olean", "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean"]}
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean:114:10: warning: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean:114:10: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean:193:6: warning: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean:193:6: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+
+{"module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitness", "source_sha256": "48c6ac43ad1fc4c60740ba651e1b14b0c8dcc7831df2b63d3894c82107b85ba1", "exit_code": 1, "seconds": 3.9244825, "log_sha256": "46d0f429768dcd5513fd672ca7176222a053f29c1a97009f3352aec17b16ffad", "args": ["/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake", "env", "lean", "-o", ".lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.olean", "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean"]}
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean:133:11: error: ambiguous term, use fully qualified name, possible interpretations [@PositiveEigenstructure.colApply,
+ @QSDPerron.colApply]
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean:138:73: error: unsolved goals
+⊢ safeInitialRow initial safe ⟨some false, ⋯⟩ * (3 / 2) + safeInitialRow initial safe ⟨some true, ⋯⟩ * (1 / 2) = 1
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean:141:31: warning: declaration uses `sorry`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean:177:2: error: Type mismatch: After simplification, term
+  h
+ has type
+  (conditionedPair (some i, some j)).toReal =
+    safeInitialRow initial safe ⟨some i, ⋯⟩ *
+        killedMatrix model (liftedStationaryPolicy observe feedback) safe ⟨some i, ⋯⟩ ⟨some j, ⋯⟩ *
+      2
+but is expected to have type
+  (conditionedPair (some i, some j)).toReal = if i = true then 8⁻¹ else 3 / 8
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean:187:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ((doobPathLaw ?D ?hQ ?eta ?heta ?hc ?T) ?g).toReal
+in the target expression
+  ((doobPathLaw rightData killed_nonneg (safeInitialRow initial safe) ⋯ initial_pairing_pos 1)
+        (safeEquiv i, safeEquiv j)).toReal =
+    (if i = true then 1 / 4 else 3 / 4) * if j = true then 1 / 4 else 3 / 4
+
+i j : Bool
+⊢ ((doobPathLaw rightData killed_nonneg (safeInitialRow initial safe) ⋯ initial_pairing_pos 1)
+        (safeEquiv i, safeEquiv j)).toReal =
+    (if i = true then 1 / 4 else 3 / 4) * if j = true then 1 / 4 else 3 / 4
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    doobPathLaw rightData killed_nonneg (safeInitialRow initial safe) ⋯ initial_pairing_pos 1
+  has type
+    PMF (CausalHistory (↑safe) (↑safe) 1)
+  but is expected to have type
+    PMF (↑safe × ↑safe)
+  in the application
+    ⇑(doobPathLaw rightData killed_nonneg (safeInitialRow initial safe) ⋯ initial_pairing_pos 1)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean:195:8: error(lean.unknownIdentifier): Unknown identifier `tsum_eq_zero`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean:196:8: error: No goals to be solved
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean:204:8: error(lean.unknownIdentifier): Unknown identifier `tsum_eq_zero`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean:205:8: error: No goals to be solved
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean:210:89: error: unsolved goals
+y : State
+⊢ none ∈ {x | ¬x = none} → y = none
+
+FINAL_STATE=FAIL
+✅ Process completed with exit code 0 (runtime: 7.99s)

@@ -1,0 +1,28 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/C3ExecutableSearch.lean:70:31: warning: This simp argument is unused:
+  if_pos rfl
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [scan, ho]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/C3ExecutableSearch.lean:109:31: warning: This simp argument is unused:
+  if_pos rfl
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [scan, ho]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/C3ExecutableSearch.lean:182:6: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 0
+  c ≥ 0
+  c - d ≤ -1
+  b ≥ 0
+  a ≥ 0
+  a - b ≥ 0
+  a - b - c ≤ -1
+where
+ a := ↑i
+ b := ↑start
+ c := ↑fuel
+ d := ↑(i - start + 1)

@@ -158,6 +158,13 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryControll
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryCheck
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindow
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoob
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitness
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch
 /-!
 # UEOT Theory Completion public root
 

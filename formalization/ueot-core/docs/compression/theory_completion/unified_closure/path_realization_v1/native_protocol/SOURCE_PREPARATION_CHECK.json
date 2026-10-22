@@ -1,0 +1,130 @@
+{
+  "schema": "PATH_REALIZATION_PROTOCOL_SOURCE_PREPARATION_V1",
+  "state": "SOURCE_ONLY_SYNTAX_AND_LITERAL_ANCHORS_CHECKED",
+  "protocol_entrypoints_executed": false,
+  "lean_or_native_executed": false,
+  "frozen_manifest_created": false,
+  "old_files_modified": false,
+  "prior_census": {
+    "modules": 684,
+    "registered_public": 4272,
+    "overlays": 10
+  },
+  "new_modules": 7,
+  "complete_modules": 691,
+  "public_and_hint_counts": "DYNAMIC_AT_FUTURE_FREEZE",
+  "protocol_sources": [
+    {
+      "file": "protocol_adapter.py",
+      "sha256": "8afada91c504c3f97f18cf20b519ac2f701b13fa2211e748bbbc4ddca6bead4f",
+      "syntax": "PARSED_NOT_EXECUTED"
+    },
+    {
+      "file": "freeze_inputs.py",
+      "sha256": "b8b7eee07250f51398b3a2f2f29f230d46dab8745a6e98b14512220c029bd995",
+      "syntax": "PARSED_NOT_EXECUTED"
+    },
+    {
+      "file": "full_build.py",
+      "sha256": "44d5d2dbb4639ae89877a90224dfae2308d005ab3b15ed867139cdaa726020c9",
+      "syntax": "PARSED_NOT_EXECUTED"
+    },
+    {
+      "file": "integration_native.py",
+      "sha256": "0f9baf11b1a1d51e195a276a548ce9b9a119bfe74bd9598c4d5914d3cf38b1c6",
+      "syntax": "PARSED_NOT_EXECUTED"
+    },
+    {
+      "file": "register_overlay.py",
+      "sha256": "71f810000fdafa39c1cc28e0e5a219521e0e385fd7ae30fa0febfcbcfb3357bf",
+      "syntax": "PARSED_NOT_EXECUTED"
+    }
+  ],
+  "immutable_literal_anchors": [
+    {
+      "driver": "full_build",
+      "immutable_sha256": "132b1c96d38a4462ef407ee31ed94378c2025996b2a7b603e297fd9d35cf86de",
+      "substitutions": 1,
+      "counts": [
+        {
+          "literal": "\"LONGTERM_ACTUAL_FULL_BUILD_V1\"",
+          "occurrences": 1
+        }
+      ]
+    },
+    {
+      "driver": "integration_native",
+      "immutable_sha256": "d4708782bbb14360002f119715ba51f96c05e2e632694ba64c56c3d38ce8a924",
+      "substitutions": 4,
+      "counts": [
+        {
+          "literal": "\"LONGTERM_ACTUAL_FULL_BUILD_V1\"",
+          "occurrences": 1
+        },
+        {
+          "literal": "NAME = \"LONGTERM_CONTROL_STATISTICS\"",
+          "occurrences": 1
+        },
+        {
+          "literal": "PRIOR_MODULES, PRIOR_THEOREMS, PRIOR_OVERLAYS = 666, 4147, 8",
+          "occurrences": 1
+        },
+        {
+          "literal": "\"UNCOUNTED_SAME_SOURCE_LONGTERM_POLICY_AND_ROWWISE_SISC\"",
+          "occurrences": 1
+        }
+      ]
+    },
+    {
+      "driver": "register_overlay",
+      "immutable_sha256": "3679552fc1599894cd1cf0ce5aba3324c1d13d885fbcdd6c96fc1796dbc1c939",
+      "substitutions": 11,
+      "counts": [
+        {
+          "literal": "\"LONGTERM_ACTUAL_FULL_BUILD_V1\"",
+          "occurrences": 1
+        },
+        {
+          "literal": "NAME = \"LONGTERM_CONTROL_STATISTICS\"",
+          "occurrences": 1
+        },
+        {
+          "literal": "PROTOCOL = PACKET + \"longterm_control_statistics_v1/native_protocol/\"",
+          "occurrences": 1
+        },
+        {
+          "literal": "\"longterm_control_statistics_v1\"",
+          "occurrences": 1
+        },
+        {
+          "literal": "EXPECTED_SOURCE = \"60cd5f8ab161c5b51394463c466947a4c6a6c1742ecdcd9c2bbfc41c0c06bd31\"",
+          "occurrences": 1
+        },
+        {
+          "literal": "PRIOR_MODULES, MODULES, PRIOR_PUBLIC, NEW_PUBLIC = 666, 678, 4147, 90",
+          "occurrences": 1
+        },
+        {
+          "literal": "(PRIOR_MODULES, MODULES, PRIOR_PUBLIC, 8)",
+          "occurrences": 1
+        },
+        {
+          "literal": "require(hinted == 27,",
+          "occurrences": 1
+        },
+        {
+          "literal": "NATIVE, OVERLAY, \"development_lexical_reuse_hints.json\")",
+          "occurrences": 1
+        },
+        {
+          "literal": "for name in (\"FULL_BUILD_RECEIPT.json\", \"full-build.log\"):",
+          "occurrences": 1
+        },
+        {
+          "literal": "    provenance = {\"schema\": NAME + \"_REGISTRATION_PROVENANCE_V1\", \"inputs\": inputs,",
+          "occurrences": 1
+        }
+      ]
+    }
+  ]
+}

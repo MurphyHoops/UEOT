@@ -1,0 +1,344 @@
+[
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.NestedCandidateFamily.firstGoodIndex_good",
+    "short_name": "firstGoodIndex_good",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/C3NestedSearch.lean",
+    "line": 49,
+    "header_preview": "theorem firstGoodIndex_good     (F : NestedCandidateFamily V n)     (Good : Finset V → Prop) [DecidablePred Good]     (hne : (F.goodIndices Good).Nonempty) :     Good (F.candidate (F.firstGoodIndex Good hne)) := by   have hm := Finset.min'_mem (F.goodIndices Good) hne",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.safe_mass_succ",
+    "short_name": "safe_mass_succ",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/AbsorbingLeakage.lean",
+    "line": 126,
+    "header_preview": "theorem safe_mass_succ (epsilon : ℝ)     (hzero : 0 ≤ epsilon) (hone : epsilon ≤ 1) (n : ℕ) :     ((law epsilon hzero hone (n + 1)) false).toReal =       ((law epsilon hzero hone n) false).toReal * (1 - epsilon) := by   change (((law epsilon hzero hone n).bind     (kernel epsilon hzero hone)) false).toReal = _",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.safe_mass_closed",
+    "short_name": "safe_mass_closed",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/AbsorbingLeakage.lean",
+    "line": 146,
+    "header_preview": "theorem safe_mass_closed (epsilon : ℝ)     (hzero : 0 ≤ epsilon) (hone : epsilon ≤ 1) (n : ℕ) :     ((law epsilon hzero hone n) false).toReal = (1 - epsilon) ^ n := by   induction n with   | zero => simp [law]   | succ n ih => rw [safe_mass_succ, ih, pow_succ]",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.finiteKernelRowPMF_apply_toReal",
+    "short_name": "finiteKernelRowPMF_apply_toReal",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CalibratedRiskRows.lean",
+    "line": 65,
+    "header_preview": "@[simp] theorem finiteKernelRowPMF_apply_toReal     {X : Type uX} {A : Type uA} [Fintype X]     (K : FiniteControlledStochasticKernel X A) (x : X) (a : A) (z : X) :     ((finiteKernelRowPMF K x a) z).toReal = K.mass x a z := by   exact UEOT.V3.FiniteDiscountedControl.FiniteProbabilityRow.ofRealRow_apply_toReal     (K.mass x a) (K.nonneg x a) (K.normalized x a) z",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.finiteKernelRowPMF_map_toReal",
+    "short_name": "finiteKernelRowPMF_map_toReal",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CalibratedRiskRows.lean",
+    "line": 74,
+    "header_preview": "theorem finiteKernelRowPMF_map_toReal     {X : Type uX} {A : Type uA} {Y : Type uY} [Fintype X]     (K : FiniteControlledStochasticKernel X A) (q : X → Y)     (x : X) (a : A) (c : ReachableState q) :     (((finiteKernelRowPMF K x a).map (toReachable q)) c).toReal =       massIntoClass K q x a c := by",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportStrictWitness.actualPrefix_support_iff",
+    "short_name": "actualPrefix_support_iff",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+    "line": 221,
+    "header_preview": "theorem actualPrefix_support_iff (h : MicroHistory) :     h ∈ actualPrefix.support ↔ h = leftHistory ∨ h = rightHistory := by   rcases h with ⟨⟨phase, side⟩, a, ⟨nextPhase, nextSide⟩⟩   erw [PMF.mem_support_iff, actualPrefix_apply, initial_apply]   cases phase <;> cases side <;> cases a <;> cases nextPhase <;> cases nextSide <;>     norm_num [transition, leftHistory, rightHistory,",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_conditioned_terminal_mass",
+    "short_name": "actual_conditioned_terminal_mass",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+    "line": 134,
+    "header_preview": "theorem actual_conditioned_terminal_mass (hpos : 0 < s) (v : K) :     (actualConditionedTerminal M q sigma p0 K n hpos v.1).toReal = w v / s := by   unfold actualConditionedTerminal   rw [filter_map_apply_real]   simp only [Set.mem_ofPred_eq]   rw [actual_survival_terminal_mass_eq_killed_pow M q sigma p0 K n v]",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_conditioned_terminal_support",
+    "short_name": "actual_conditioned_terminal_support",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+    "line": 142,
+    "header_preview": "theorem actual_conditioned_terminal_support (hpos : 0 < s) :     (actualConditionedTerminal M q sigma p0 K n hpos).support ⊆ K := by   intro x hx   let hs := (actual_survival_pos_iff_support M q sigma p0 K n).1 hpos   change x ∈ (((nu).filter S hs).map (riskLastState n)).support at hx   rcases (PMF.mem_support_map_iff (riskLastState n) ((nu).filter S hs) x).1 hx with",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_conditioned_terminal_eq_zero_of_notMem",
+    "short_name": "actual_conditioned_terminal_eq_zero_of_notMem",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+    "line": 152,
+    "header_preview": "theorem actual_conditioned_terminal_eq_zero_of_notMem     (hpos : 0 < s) (x : X) (hx : x ∉ K) :     actualConditionedTerminal M q sigma p0 K n hpos x = 0 := by   apply (PMF.apply_eq_zero_iff _ x).2   intro hmem   exact hx (actual_conditioned_terminal_support M q sigma p0 K n hpos hmem)",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_survival_mass_at_zero",
+    "short_name": "actual_survival_mass_at_zero",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+    "line": 229,
+    "header_preview": "theorem actual_survival_mass_at_zero :     (causalLaw p0 (riskMicroControlKernel q (fun _ => M.transitionPMF)       (observationMarkovPolicy sigma)) 0).toMeasure.real         {h | ¬ riskEverFailure (fun x => x ∉ K) 0 h} = p0.toMeasure.real K := by   change p0.toMeasure.real {x : X | ¬ (x ∉ K)} = p0.toMeasure.real K   have hset : {x : X | ¬ (x ∉ K)} = K := by",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_conditioned_terminal_mass_at_zero",
+    "short_name": "actual_conditioned_terminal_mass_at_zero",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+    "line": 241,
+    "header_preview": "theorem actual_conditioned_terminal_mass_at_zero     (hpos : 0 < (causalLaw p0       (riskMicroControlKernel q (fun _ => M.transitionPMF)         (observationMarkovPolicy sigma)) 0).toMeasure.real           {h | ¬ riskEverFailure (fun x => x ∉ K) 0 h}) (v : K) :     (actualConditionedTerminal M q sigma p0 K 0 hpos v.1).toReal =",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_survival_mass_empty",
+    "short_name": "actual_survival_mass_empty",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean",
+    "line": 253,
+    "header_preview": "theorem actual_survival_mass_empty :     (causalLaw p0 (riskMicroControlKernel q (fun _ => M.transitionPMF)       (observationMarkovPolicy sigma)) n).toMeasure.real         {h | ¬ riskEverFailure (fun x => x ∉ (∅ : Set X)) n h} = 0 := by   rw [actual_survival_mass_eq_killed_pow_sum M q sigma p0 (∅ : Set X) n]   exact Finset.sum_eq_zero fun v _ => False.elim v.property",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.stateHistoryEquiv_zero",
+    "short_name": "stateHistoryEquiv_zero",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+    "line": 85,
+    "header_preview": "@[simp] theorem stateHistoryEquiv_zero     {X : Type u} [MeasurableSpace X] :     stateHistoryEquiv (X := X) 0 =       (MeasurableEquiv.piUnique (fun _ : Finset.Iic 0 => X)).symm := rfl  theorem stateHistoryEquiv_succ",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.stateHistoryEquiv_succ",
+    "short_name": "stateHistoryEquiv_succ",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+    "line": 90,
+    "header_preview": "theorem stateHistoryEquiv_succ     {X : Type u} [MeasurableSpace X] (n : ℕ) :     (stateHistoryEquiv (X := X) (n + 1) :       CausalHistory X X (n + 1) → ((i : Finset.Iic (n + 1)) → X)) =       appendHistory n ∘ Prod.map (stateHistoryEquiv n) id := rfl ",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.stateHistoryEquiv_last",
+    "short_name": "stateHistoryEquiv_last",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+    "line": 96,
+    "header_preview": "@[simp] theorem stateHistoryEquiv_last     {X : Type u} [MeasurableSpace X]     (n : ℕ) (h : CausalHistory X X n) :     stateHistoryEquiv n h (lastHistoryIndex n) = currentState n h := by   cases n with   | zero => rfl",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.state_history_eq_homogeneous_prefix",
+    "short_name": "state_history_eq_homogeneous_prefix",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+    "line": 140,
+    "header_preview": "theorem state_history_eq_homogeneous_prefix     {X : Type u} [Fintype X]     [MeasurableSpace X] [MeasurableSingletonClass X]     (p0 : PMF X) (J : X → PMF X) (n : ℕ) :     ((causalLaw p0 (fun k h => J (currentState k h)) n).map       (stateHistoryEquiv n)).toMeasure =",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.actual_state_prefix_eq_homogeneous_prefix",
+    "short_name": "actual_state_prefix_eq_homogeneous_prefix",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+    "line": 171,
+    "header_preview": "theorem actual_state_prefix_eq_homogeneous_prefix     {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]     [MeasurableSpace X] [MeasurableSingletonClass X]     (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)     (p0 : PMF X) (n : ℕ) :     ((causalLaw p0",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.actual_state_prefix_event_mass",
+    "short_name": "actual_state_prefix_event_mass",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+    "line": 192,
+    "header_preview": "theorem actual_state_prefix_event_mass     {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)     (p0 : PMF X) (n : ℕ) (B : Set ((i : Finset.Iic n) → X)) :",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.actual_survival_mass_eq_killed_pow_sum",
+    "short_name": "actual_survival_mass_eq_killed_pow_sum",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledPath.lean",
+    "line": 320,
+    "header_preview": "theorem actual_survival_mass_eq_killed_pow_sum     {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)     (p0 : PMF X) (K : Set X) (n : ℕ) :",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.safeInitialRow_map_subtype",
+    "short_name": "safeInitialRow_map_subtype",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+    "line": 31,
+    "header_preview": "theorem safeInitialRow_map_subtype {X : Type u} (K : Set X) (r : PMF K) :     safeInitialRow (r.map Subtype.val) K = fun v => (r v).toReal := by   funext v   unfold safeInitialRow   rw [pmf_map_injective_atom Subtype.val Subtype.val_injective r v] ",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_survival_terminal_mass",
+    "short_name": "actual_qsd_survival_terminal_mass",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+    "line": 53,
+    "header_preview": "theorem actual_qsd_survival_terminal_mass     (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)     (n : ℕ) (v : K) :     (nu n).toMeasure.real       {h | ¬ riskEverFailure (fun x => x ∉ K) n h ∧ riskLastState n h = v.1} =       rho ^ n * (r v).toReal := by",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_survival_mass",
+    "short_name": "actual_qsd_survival_mass",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+    "line": 63,
+    "header_preview": "theorem actual_qsd_survival_mass     (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)     (n : ℕ) :     (nu n).toMeasure.real       {h | ¬ riskEverFailure (fun x => x ∉ K) n h} = rho ^ n := by   rw [actual_survival_mass_eq_killed_pow_sum, safeInitialRow_map_subtype]",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_survival_pos",
+    "short_name": "actual_qsd_survival_pos",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+    "line": 73,
+    "header_preview": "theorem actual_qsd_survival_pos     (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)     (hrho : 0 < rho) (n : ℕ) :     0 < (nu n).toMeasure.real       {h | ¬ riskEverFailure (fun x => x ∉ K) n h} := by   rw [actual_qsd_survival_mass M q sigma K r rho hleft n]",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_survival_support",
+    "short_name": "actual_qsd_survival_support",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+    "line": 178,
+    "header_preview": "theorem actual_qsd_survival_support     (hleft : ∀ v, rowApply rR Q v = rho * (r v).toReal)     (hrho : 0 < rho) (n : ℕ) :     ∃ h ∈ {h | ¬ riskEverFailure (fun x => x ∉ K) n h}, h ∈ (nu n).support := by   exact (actual_survival_pos_iff_support M q sigma p0 K n).1     (actual_qsd_survival_pos M q sigma K r rho hleft hrho n)",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_conditioned_terminal_law",
+    "short_name": "actual_qsd_conditioned_terminal_law",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceQSDBinding.lean",
+    "line": 189,
+    "header_preview": "theorem actual_qsd_conditioned_terminal_law     {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)     (K : Set X) (r : PMF K) (rho : ℝ)",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSafePrefixCheck.stateHistoryEquiv_survival_iff",
+    "short_name": "stateHistoryEquiv_survival_iff",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceSafePrefix.lean",
+    "line": 40,
+    "header_preview": "theorem stateHistoryEquiv_survival_iff     {X : Type u} [MeasurableSpace X] (K : Set X) :     ∀ (n : ℕ) (h : CausalHistory X X n),       stateHistoryEquiv n h ∈ historySurvivalSet Kᶜ n ↔         stateSurvives K n h := by   intro n",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.actual_state_path_eq_stationary_path",
+    "short_name": "actual_state_path_eq_stationary_path",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourcePolicyPathBridge.lean",
+    "line": 96,
+    "header_preview": "theorem actual_state_path_eq_stationary_path     {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]     (M : Model X (fun _ => A)) (q : X → Y) (sigma : Y → PMF A)     (p0 : PMF X) (n : ℕ) :     (causalLaw p0       (riskMicroControlKernel q (fun _ => M.transitionPMF)",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.trainingLaw_mass",
+    "short_name": "trainingLaw_mass",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskBoundary.lean",
+    "line": 66,
+    "header_preview": "theorem trainingLaw_mass (b c : Bool) :     trainingLaw (b, c) = actionRow false b * actionRow true c := by   simp [trainingLaw]  private theorem trainingProbability_expand (event : Bool × Bool → Bool) :     trainingProbability event =",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.class_history_last",
+    "short_name": "class_history_last",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+    "line": 579,
+    "header_preview": "theorem class_history_last (n : ℕ) (h : CausalHistory Class (Bool × Class) n) :     riskLastState n (classHistoryEquiv n h) = classBit (riskLastState n h) := by   cases n <;> rfl                                                                                    theorem classReferenceKernel_map (n : ℕ) (c : Class) (a : Bool) :",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.CoreOperationalAssembly.policyTransitionPMF_apply_toReal",
+    "short_name": "policyTransitionPMF_apply_toReal",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/CoreOperationalAssembly.lean",
+    "line": 286,
+    "header_preview": "@[simp] theorem policyTransitionPMF_apply_toReal     {S : Type uX} [Fintype S]     {A : S → Type uA} [∀ s, Fintype (A s)] [∀ s, Nonempty (A s)]     (M : Model S A) (π : StationaryPolicy A) (x y : S) :     ((policyTransitionPMF M π x) y).toReal = M.policyTransition π x y := by   simp [policyTransitionPMF, FiniteProbabilityRow.ofRealRow_apply_toReal]",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.FiniteBayesBelief.observationLaw_mass",
+    "short_name": "observationLaw_mass",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/FiniteBayesBelief.lean",
+    "line": 140,
+    "header_preview": "@[simp] theorem observationLaw_mass (M : Model Theta X A Y)     (b : Belief Theta X) (a : A) (y : Y) :     (observationLaw M b a).mass y = evidence M b a y := rfl                                                                                                                                           ",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.FiniteDiscountedControl.Model.transitionPMF_apply_toReal",
+    "short_name": "transitionPMF_apply_toReal",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedApproxQuotient.lean",
+    "line": 86,
+    "header_preview": "@[simp] theorem transitionPMF_apply_toReal (M : Model X A) (x : X) (a : A x) (y : X) :     ((M.transitionPMF x a) y).toReal = M.transition x a y := by   simp [transitionPMF]  end Model ",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.FiniteDiscountedControl.pushforwardTransitionPMF_apply_toReal",
+    "short_name": "pushforwardTransitionPMF_apply_toReal",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedApproxQuotient.lean",
+    "line": 119,
+    "header_preview": "@[simp] theorem pushforwardTransitionPMF_apply_toReal     (f : X → Y) (M : Model X A) (x : X) (a : A x) (y : Y) :     ((pushforwardTransitionPMF f M x a) y).toReal =       fiberMass f (M.transition x a) y := by   simp [pushforwardTransitionPMF] ",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.FiniteDobrushin.simplexPMF_toReal",
+    "short_name": "simplexPMF_toReal",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/FiniteDobrushin.lean",
+    "line": 55,
+    "header_preview": "@[simp] theorem simplexPMF_toReal (mu : stdSimplex ℝ S) (s : S) :     ((simplexPMF mu) s).toReal = mu.1 s := by   exact FiniteProbabilityRow.ofRealRow_apply_toReal mu.1     (fun x => stdSimplex.zero_le mu x) (stdSimplex.sum_eq_one mu) s                                                                               ",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.FiniteDobrushin.rowPMF_toReal",
+    "short_name": "rowPMF_toReal",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/FiniteDobrushin.lean",
+    "line": 67,
+    "header_preview": "@[simp] theorem rowPMF_toReal     (P : Matrix S S ℝ) (hP : P ∈ Matrix.rowStochastic ℝ S) (x y : S) :     ((rowPMF P hP x) y).toReal = P x y := by   simp [rowPMF, FiniteProbabilityRow.ofRealRow_apply_toReal]                                                                                    ",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "UEOT.V3.QSDTVLimit.qSurvival_zero",
+    "short_name": "qSurvival_zero",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/QSDTVLimit.lean",
+    "line": 328,
+    "header_preview": "theorem qSurvival_zero     (S : KilledSemigroup X) (q : ProbabilityMeasure X) :     qSurvival S q 0 = 1 := by   unfold qSurvival   rw [S.zero]   simp",
+    "origin": "UEOT_MAINTAINED"
+  },
+  {
+    "symbol": "CrooksJarzynski.MeasureProtocol.Markov.measurable_historyLast",
+    "short_name": "measurable_historyLast",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/ThirdParty/CrooksJarzynski/MeasureProtocol.lean",
+    "line": 235,
+    "header_preview": "theorem measurable_historyLast (t : ℕ) :     Measurable (historyLast (Ω := Ω) t) :=   measurable_pi_apply _                                                                                                                                                              ",
+    "origin": "VENDORED_ADAPTED_UPSTREAM"
+  },
+  {
+    "symbol": "UEOT.V3.ViabilityTrajectory.stationaryTrajMeasure_coordinate",
+    "short_name": "stationaryTrajMeasure_coordinate",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/ViabilityTrajectory.lean",
+    "line": 175,
+    "header_preview": "theorem stationaryTrajMeasure_coordinate     (P : X → A → PMF X) (π : X → A) (μ : PMF X) (n : ℕ) :     (stationaryTrajMeasure P π μ).map (fun z : ℕ → X => z n) =       (stationaryStateLaw P π μ n).toMeasure := by   induction n with   | zero =>",
+    "origin": "UEOT_MAINTAINED"
+  }
+]

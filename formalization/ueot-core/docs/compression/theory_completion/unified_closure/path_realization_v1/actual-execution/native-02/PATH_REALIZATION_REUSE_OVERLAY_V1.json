@@ -1,0 +1,1416 @@
+{
+  "schema": "FKRG_REUSE_OVERLAY_V1",
+  "overlay_id": "PATH_REALIZATION_REUSE_OVERLAY_V1",
+  "source_checkpoint": "worktree-sha256:de7c7e287bd1b351ed3f790de58bfd71edf18df4013f7e5aaf2af55a6b3f6379",
+  "source_checkpoint_kind": "FROZEN_SOURCE_CONTENT_BEFORE_GIT_COMMIT",
+  "baseline_ref": "d503586107974c56e0773b4ea106b41a7d144b43",
+  "base_snapshot_modules": 684,
+  "prior_overlay": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/FINITE_MEMORY_REUSE_OVERLAY_V1.json",
+    "sha256": "cd697c44f7a5d7e4b73a0b53d7477b2e1e8aee43ab55e105b515cd531fd63d38"
+  },
+  "source_hash_overrides": {
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean": "67723632402a26c144d8590953930b3bfc7f62ced566484e22eb100cf4f32461"
+  },
+  "added_modules": [
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/C3ExecutableSearch.lean",
+      "content_sha256": "6a70601f35f12edf0eaf881a39aa36fc8d22d5b42111d0c937fa92948df70abc",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean",
+      "content_sha256": "7f231017ef32eb607c0187dc659a139101f92ee4ad2ed434f35d4f0687a46cdd",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryRealization.lean",
+      "content_sha256": "8306c376acbf26db8ae70a5064460c9e423da527a0c89efe4ec18e0e6150191f",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySafetyWitness.lean",
+      "content_sha256": "08060447a92c3b129351b95615ed2e1b3214e12e9ded21c638d0c6554c400c88",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoob",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean",
+      "content_sha256": "1bcf2d6baaa55e4ea648d19a78dc490a86b525eaaa109464654184d447544081",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean",
+      "content_sha256": "e37d32b9f5da631392706e60c68d21fcb26491fea1c67614be57afbf6d4b0455",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindow",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+      "content_sha256": "61feecf09bd38d2b5497a7be33d073b1c04cd20a3e45a6840af19dd1670af363",
+      "source_origin": "UEOT_MAINTAINED"
+    }
+  ],
+  "public_theorems": [
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_found_iff",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/C3ExecutableSearch.lean",
+      "line": 38,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_none_iff",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/C3ExecutableSearch.lean",
+      "line": 86,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_query_count",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/C3ExecutableSearch.lean",
+      "line": 118,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_found_iff"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_query_mem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/C3ExecutableSearch.lean",
+      "line": 139,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_queries_nodup",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/C3ExecutableSearch.lean",
+      "line": 159,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_query_mem"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_query_bound",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/C3ExecutableSearch.lean",
+      "line": 174,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_found_iff",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_query_count"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.search_found_iff",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/C3ExecutableSearch.lean",
+      "line": 205,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_found_iff"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.search_none_iff",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/C3ExecutableSearch.lean",
+      "line": 234,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_none_iff"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.search_eq_firstGoodIndex",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/C3ExecutableSearch.lean",
+      "line": 253,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.NestedCandidateFamily.firstGoodIndex_chainMinimal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.search_found_iff"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.search_registered_inclusion_minimal",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/C3ExecutableSearch.lean",
+      "line": 264,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.search_found_iff"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.search_queries_of_found",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/C3ExecutableSearch.lean",
+      "line": 280,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_query_count"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.search_queries_of_none",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/C3ExecutableSearch.lean",
+      "line": 290,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_queries_nodup",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_query_count"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.search_query_budget",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/C3ExecutableSearch.lean",
+      "line": 301,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_query_bound",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_query_mem"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.prefix_threshold_search",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/C3ExecutableSearch.lean",
+      "line": 324,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.prefix_impossible_search",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/C3ExecutableSearch.lean",
+      "line": 329,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.prefix_nonmonotone_search",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/C3ExecutableSearch.lean",
+      "line": 334,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.supported_micro_history_safe",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean",
+      "line": 43,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.mem_microLaw_succ_support_iff",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.mem_traceSupport_iff_realized",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.zero_uncovered_iff_support_certified"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.actual_finite_safety_one",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean",
+      "line": 79,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.supported_micro_history_safe"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.stateHistoryEquiv_map",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean",
+      "line": 99,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety",
+      "source_theorem_deps": [
+        "UEOT.V3.DynamicsKernel.mapHistory_appendHistory"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.actual_state_prefix_eq",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean",
+      "line": 137,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.stateHistoryEquiv_map",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.actual_augmented_prefix_eq",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.eraseMemory_augmentHistory",
+        "UEOT.V3.DynamicsKernel.frestrictLe_mapPath",
+        "UEOT.V3.DynamicsKernel.measurable_mapHistory",
+        "UEOT.V3.DynamicsKernel.measurable_mapPath"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.actual_state_prefix_event_mass",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean",
+      "line": 159,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.actual_state_prefix_eq"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.stateTrajMeasure_coordinate_mass",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean",
+      "line": 183,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.actual_state_prefix_event_mass",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.stateHistoryEquiv_last"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.controller_all_times_physical_safe",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean",
+      "line": 205,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.stateTrajMeasure_coordinate_mass",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.supported_micro_history_safe",
+        "UEOT.V3.ViabilityPath.all_times_safe_eq_one"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.supportMemoryController_all_times_physical_safe",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean",
+      "line": 232,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.controller_all_times_physical_safe",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportMemoryController_zero_uncovered"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.augmentHistory_last",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryRealization.lean",
+      "line": 53,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.eraseMemory_augmentHistory",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryRealization.lean",
+      "line": 61,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.actual_augmented_history_law",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryRealization.lean",
+      "line": 91,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.augmentHistory_last"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.augmented_history_state_projection",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryRealization.lean",
+      "line": 123,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.actual_augmented_history_law",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.eraseMemory_augmentHistory"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.state_history_eq_sequence_prefix",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryRealization.lean",
+      "line": 221,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.stateHistoryEquiv_last",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.stateHistoryEquiv_succ",
+        "UEOT.V3.DynamicsKernel.measurable_appendHistory"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.actual_augmented_prefix_eq",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryRealization.lean",
+      "line": 270,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.actual_augmented_history_law",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.state_history_eq_sequence_prefix"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.actual_augmented_prefix_event_mass",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryRealization.lean",
+      "line": 285,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.actual_augmented_prefix_eq"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.safe_is_proper_nonempty",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySafetyWitness.lean",
+      "line": 50,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.all_rows_zero_uncovered",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySafetyWitness.lean",
+      "line": 62,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.zero_uncovered_iff_support_certified"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.initial_false_safe",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySafetyWitness.lean",
+      "line": 71,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.source_false_preserves_safe",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySafetyWitness.lean",
+      "line": 78,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.physical_safety_premises_independent",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySafetyWitness.lean",
+      "line": 164,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.all_rows_zero_uncovered",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.initial_false_safe",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.safe_is_proper_nonempty",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.source_false_preserves_safe"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.doobRowPMF_apply_toReal",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean",
+      "line": 40,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoob",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.PositiveEigenstructure.hTransform_nonneg",
+        "UEOT.V3.Compression.PositiveEigenstructure.hTransform_row_sum",
+        "UEOT.V3.FiniteDiscountedControl.FiniteProbabilityRow.ofRealRow_apply_toReal"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.tiltedInitialPMF_apply_toReal",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean",
+      "line": 59,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoob",
+      "source_theorem_deps": [
+        "UEOT.V3.FiniteDiscountedControl.FiniteProbabilityRow.ofRealRow_apply_toReal"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.doob_path_atom",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean",
+      "line": 81,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoob",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.doobRowPMF_apply_toReal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.tiltedInitialPMF_apply_toReal",
+        "UEOT.V3.PathError.pmfExtend_apply"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.remainingSurvival_eq_pow_of_constant_row_sum",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean",
+      "line": 118,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoob",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_succ",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_zero"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.finiteWindowRow_eq_normalized_of_constant_row_sum",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean",
+      "line": 133,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoob",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.remainingSurvival_eq_pow_of_constant_row_sum"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.safeInitialRow_nonneg",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean",
+      "line": 146,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoob",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.actual_survival_mass_eq_initial_remaining_sum",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean",
+      "line": 164,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoob",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.actual_survival_mass_eq_killed_pow_sum"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.actual_doob_path_comparison",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean",
+      "line": 176,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoob",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.doob_path_atom",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.safeInitialRow_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_safe_path_mass",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.killedMatrix_nonneg"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.actual_doob_atom_eq_iff_terminal_weight",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean",
+      "line": 196,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoob",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.doob_path_atom",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.safeInitialRow_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_safe_path_mass",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.killedMatrix_nonneg"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.safeLaw_mass",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean",
+      "line": 81,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.pmf_map_injective_atom"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.initial_safe_mass",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean",
+      "line": 87,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.safeLaw_mass",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.safeInitialRow_map_subtype"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.killed_entry",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean",
+      "line": 93,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.source_left_qsd",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean",
+      "line": 100,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.killed_entry",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.safeLaw_mass"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_survival",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean",
+      "line": 109,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.source_left_qsd",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_survival_mass"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_initial_pairing",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean",
+      "line": 137,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.initial_safe_mass"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.conditioned_safe_atom",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean",
+      "line": 172,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_survival",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.initial_safe_mass",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.killed_entry",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_safe_path_mass"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.doob_safe_atom",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean",
+      "line": 185,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.doob_path_atom",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.safeInitialRow_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_initial_pairing",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.initial_safe_mass",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.killed_entry",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.pmf_map_injective_atom"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.doob_cemetery_left",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean",
+      "line": 204,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.doob_cemetery_right",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean",
+      "line": 213,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.conditioned_cemetery_left",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean",
+      "line": 222,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_prefix_eq_zero_of_not_survives"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.conditioned_cemetery_right",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean",
+      "line": 227,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_prefix_eq_zero_of_not_survives"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_conditioned_doob_tv",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean",
+      "line": 234,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.conditioned_cemetery_left",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.conditioned_cemetery_right",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.conditioned_safe_atom",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.doob_cemetery_left",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.doob_cemetery_right",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.doob_safe_atom",
+        "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_conditioned_ne_doob",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean",
+      "line": 243,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_conditioned_doob_tv",
+        "UEOT.V3.TotalVariation.tvDist_self_eq_zero"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_zero",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+      "line": 48,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindow",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_succ",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+      "line": 53,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindow",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_nonneg",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+      "line": 61,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindow",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_succ",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_zero"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.state_safe_atom_eq_matrixPathWeight",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+      "line": 238,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindow",
+      "source_theorem_deps": [
+        "UEOT.V3.CoreOperationalAssembly.policyTransitionPMF_apply_toReal",
+        "UEOT.V3.PathError.pmfExtend_apply"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.state_prefix_survival_mass",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+      "line": 254,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindow",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.finiteWindowRowPMF_apply_toReal",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+      "line": 294,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindow",
+      "source_theorem_deps": [
+        "UEOT.V3.FiniteDiscountedControl.FiniteProbabilityRow.ofRealRow_apply_toReal"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_prefix_survival_mass",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+      "line": 327,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindow",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.state_prefix_survival_mass",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.actual_state_path_eq_stationary_path"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_prefix_support",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+      "line": 390,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindow",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_survival_pos_iff_support"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_prefix_eq_zero_of_not_survives",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+      "line": 404,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindow",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_prefix_support"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_prefix_mass",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+      "line": 413,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindow",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_prefix_survival_mass"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_initial_mass",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+      "line": 429,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindow",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_prefix_mass"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_safe_path_mass",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+      "line": 442,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindow",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_prefix_mass",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_zero",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.state_safe_atom_eq_matrixPathWeight"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_positive_prefix_remaining_pos",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+      "line": 455,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindow",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_prefix_survival_mass"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_next_prefix_ratio",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+      "line": 470,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindow",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_positive_prefix_remaining_pos",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_prefix_survival_mass",
+        "UEOT.V3.CoreOperationalAssembly.policyTransitionPMF_apply_toReal",
+        "UEOT.V3.PathError.pmfExtend_apply"
+      ]
+    }
+  ],
+  "type_distinctness": {
+    "status": "PASS",
+    "verifier": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_PATH_REALIZATION_OVERLAY_TYPES.lean",
+    "new_theorems": 73,
+    "registered_prior_theorems": 4272,
+    "cross_isDefEq_comparisons": 311856,
+    "internal_isDefEq_comparisons": 2628,
+    "definitionally_equal_matches": 0,
+    "protocol": "Raw stored compiled types; fresh liftTermElabM per Meta.isDefEq comparison; stored universe names retained. Not a general logical-equivalence decision."
+  },
+  "proof_dependency_certification": {
+    "status": "PASS",
+    "verifier": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_PATH_REALIZATION_OVERLAY_TYPES.lean",
+    "measure": "Actual theorem proof-value getUsedConstants restricted to all previous and new registered public theorem names",
+    "registered_direct_edges": 114,
+    "edges": [
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_query_count",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_found_iff"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_queries_nodup",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_query_mem"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_query_bound",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_found_iff"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_query_bound",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_query_count"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.search_found_iff",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_found_iff"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.search_none_iff",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_none_iff"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.search_eq_firstGoodIndex",
+        "target": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.NestedCandidateFamily.firstGoodIndex_chainMinimal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.search_eq_firstGoodIndex",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.search_found_iff"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.search_registered_inclusion_minimal",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.search_found_iff"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.search_queries_of_found",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_query_count"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.search_queries_of_none",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_queries_nodup"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.search_queries_of_none",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_query_count"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.search_query_budget",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_query_bound"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.search_query_budget",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_query_mem"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.supported_micro_history_safe",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.mem_microLaw_succ_support_iff"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.supported_micro_history_safe",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.mem_traceSupport_iff_realized"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.supported_micro_history_safe",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.zero_uncovered_iff_support_certified"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.actual_finite_safety_one",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.supported_micro_history_safe"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.stateHistoryEquiv_map",
+        "target": "UEOT.V3.DynamicsKernel.mapHistory_appendHistory"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.actual_state_prefix_eq",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.stateHistoryEquiv_map"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.actual_state_prefix_eq",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.actual_augmented_prefix_eq"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.actual_state_prefix_eq",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.eraseMemory_augmentHistory"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.actual_state_prefix_eq",
+        "target": "UEOT.V3.DynamicsKernel.frestrictLe_mapPath"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.actual_state_prefix_eq",
+        "target": "UEOT.V3.DynamicsKernel.measurable_mapHistory"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.actual_state_prefix_eq",
+        "target": "UEOT.V3.DynamicsKernel.measurable_mapPath"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.actual_state_prefix_event_mass",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.actual_state_prefix_eq"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.stateTrajMeasure_coordinate_mass",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.actual_state_prefix_event_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.stateTrajMeasure_coordinate_mass",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.stateHistoryEquiv_last"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.controller_all_times_physical_safe",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.stateTrajMeasure_coordinate_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.controller_all_times_physical_safe",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.supported_micro_history_safe"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.controller_all_times_physical_safe",
+        "target": "UEOT.V3.ViabilityPath.all_times_safe_eq_one"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.supportMemoryController_all_times_physical_safe",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.controller_all_times_physical_safe"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.supportMemoryController_all_times_physical_safe",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportMemoryController_zero_uncovered"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.actual_augmented_history_law",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.augmentHistory_last"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.augmented_history_state_projection",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.actual_augmented_history_law"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.augmented_history_state_projection",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.eraseMemory_augmentHistory"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.state_history_eq_sequence_prefix",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.stateHistoryEquiv_last"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.state_history_eq_sequence_prefix",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.stateHistoryEquiv_succ"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.state_history_eq_sequence_prefix",
+        "target": "UEOT.V3.DynamicsKernel.measurable_appendHistory"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.actual_augmented_prefix_eq",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.actual_augmented_history_law"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.actual_augmented_prefix_eq",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.state_history_eq_sequence_prefix"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.actual_augmented_prefix_event_mass",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.actual_augmented_prefix_eq"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.all_rows_zero_uncovered",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.zero_uncovered_iff_support_certified"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.physical_safety_premises_independent",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.all_rows_zero_uncovered"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.physical_safety_premises_independent",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.initial_false_safe"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.physical_safety_premises_independent",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.safe_is_proper_nonempty"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.physical_safety_premises_independent",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.source_false_preserves_safe"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.doobRowPMF_apply_toReal",
+        "target": "UEOT.V3.Compression.PositiveEigenstructure.hTransform_nonneg"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.doobRowPMF_apply_toReal",
+        "target": "UEOT.V3.Compression.PositiveEigenstructure.hTransform_row_sum"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.doobRowPMF_apply_toReal",
+        "target": "UEOT.V3.FiniteDiscountedControl.FiniteProbabilityRow.ofRealRow_apply_toReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.tiltedInitialPMF_apply_toReal",
+        "target": "UEOT.V3.FiniteDiscountedControl.FiniteProbabilityRow.ofRealRow_apply_toReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.doob_path_atom",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.doobRowPMF_apply_toReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.doob_path_atom",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.tiltedInitialPMF_apply_toReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.doob_path_atom",
+        "target": "UEOT.V3.PathError.pmfExtend_apply"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.remainingSurvival_eq_pow_of_constant_row_sum",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_succ"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.remainingSurvival_eq_pow_of_constant_row_sum",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_zero"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.finiteWindowRow_eq_normalized_of_constant_row_sum",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.remainingSurvival_eq_pow_of_constant_row_sum"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.actual_survival_mass_eq_initial_remaining_sum",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.actual_survival_mass_eq_killed_pow_sum"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.actual_doob_path_comparison",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.doob_path_atom"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.actual_doob_path_comparison",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.safeInitialRow_nonneg"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.actual_doob_path_comparison",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_safe_path_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.actual_doob_path_comparison",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.killedMatrix_nonneg"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.actual_doob_atom_eq_iff_terminal_weight",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.doob_path_atom"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.actual_doob_atom_eq_iff_terminal_weight",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.safeInitialRow_nonneg"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.actual_doob_atom_eq_iff_terminal_weight",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_safe_path_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.actual_doob_atom_eq_iff_terminal_weight",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.killedMatrix_nonneg"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.safeLaw_mass",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.pmf_map_injective_atom"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.initial_safe_mass",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.safeLaw_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.initial_safe_mass",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.safeInitialRow_map_subtype"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.source_left_qsd",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.killed_entry"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.source_left_qsd",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.safeLaw_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_survival",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.source_left_qsd"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_survival",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceQSDBindingCheck.actual_qsd_survival_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_initial_pairing",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.initial_safe_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.conditioned_safe_atom",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_survival"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.conditioned_safe_atom",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.initial_safe_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.conditioned_safe_atom",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.killed_entry"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.conditioned_safe_atom",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_safe_path_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.doob_safe_atom",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.doob_path_atom"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.doob_safe_atom",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.safeInitialRow_nonneg"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.doob_safe_atom",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_initial_pairing"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.doob_safe_atom",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.initial_safe_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.doob_safe_atom",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.killed_entry"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.doob_safe_atom",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.pmf_map_injective_atom"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.conditioned_cemetery_left",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_prefix_eq_zero_of_not_survives"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.conditioned_cemetery_right",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_prefix_eq_zero_of_not_survives"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_conditioned_doob_tv",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.conditioned_cemetery_left"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_conditioned_doob_tv",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.conditioned_cemetery_right"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_conditioned_doob_tv",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.conditioned_safe_atom"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_conditioned_doob_tv",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.doob_cemetery_left"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_conditioned_doob_tv",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.doob_cemetery_right"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_conditioned_doob_tv",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.doob_safe_atom"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_conditioned_doob_tv",
+        "target": "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_conditioned_ne_doob",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_conditioned_doob_tv"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_conditioned_ne_doob",
+        "target": "UEOT.V3.TotalVariation.tvDist_self_eq_zero"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_nonneg",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_succ"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_nonneg",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_zero"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.state_safe_atom_eq_matrixPathWeight",
+        "target": "UEOT.V3.CoreOperationalAssembly.policyTransitionPMF_apply_toReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.state_safe_atom_eq_matrixPathWeight",
+        "target": "UEOT.V3.PathError.pmfExtend_apply"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.finiteWindowRowPMF_apply_toReal",
+        "target": "UEOT.V3.FiniteDiscountedControl.FiniteProbabilityRow.ofRealRow_apply_toReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_prefix_survival_mass",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.state_prefix_survival_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_prefix_survival_mass",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.actual_state_path_eq_stationary_path"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_prefix_support",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.actual_survival_pos_iff_support"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_prefix_eq_zero_of_not_survives",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_prefix_support"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_prefix_mass",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_prefix_survival_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_initial_mass",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_prefix_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_safe_path_mass",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_prefix_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_safe_path_mass",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_zero"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_safe_path_mass",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.state_safe_atom_eq_matrixPathWeight"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_positive_prefix_remaining_pos",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_prefix_survival_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_next_prefix_ratio",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_positive_prefix_remaining_pos"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_next_prefix_ratio",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_prefix_survival_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_next_prefix_ratio",
+        "target": "UEOT.V3.CoreOperationalAssembly.policyTransitionPMF_apply_toReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_next_prefix_ratio",
+        "target": "UEOT.V3.PathError.pmfExtend_apply"
+      }
+    ]
+  },
+  "native_axiom_census": {
+    "status": "PASS",
+    "physical_source_modules": 7,
+    "theorem_constants": 249,
+    "private_theorem_constants": 51,
+    "confirmed_public_source_candidates": 73,
+    "other_native_public_constants": 125,
+    "standard_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "scope": "All compiler-owned theorem constants of every added module, including private and generated constants"
+  },
+  "native_export_evidence": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/PATH_REALIZATION_NATIVE_V1.json",
+    "sha256": "61dabee5113b7fd2e640971c55ef6d2dba91e257744f587b57235f94a73b3308"
+  },
+  "native_execution": {
+    "build_receipt_sha256": "142c7f832a3d9cd9a012abf38a3bc748ae75f01a94c09f9296da40a5378658d7",
+    "source_tree_sha256": "de7c7e287bd1b351ed3f790de58bfd71edf18df4013f7e5aaf2af55a6b3f6379",
+    "native_export_exit_code": 0,
+    "fixed_certificate_exit_code": 0,
+    "fixed_certificate_sha256": "430aae70eec2c7cf87530020e24a8e43beae7021e2f8282f4c0c9b2949195714",
+    "fixed_export_equals_initial_native_export": true,
+    "results": [
+      {
+        "label": "native_export",
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/path-realization-evidence-20261022/native-02/PATH_REALIZATION_NATIVE_EXPORT.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 58.451,
+        "log_sha256": "69d1e0ab5717a16608296b4396d3340bccedf8248be8ae270ceee1cd5a7d49f4"
+      },
+      {
+        "label": "fixed_verifier",
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/path-realization-evidence-20261022/native-02/VERIFY_PATH_REALIZATION_OVERLAY_TYPES.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 58.297,
+        "log_sha256": "69d1e0ab5717a16608296b4396d3340bccedf8248be8ae270ceee1cd5a7d49f4"
+      }
+    ]
+  },
+  "scientific_role": "UNCOUNTED_SAME_SOURCE_PATH_REALIZATION",
+  "counted_core_impact": "NONE",
+  "scientific_closure": "NOT_ESTABLISHED"
+}

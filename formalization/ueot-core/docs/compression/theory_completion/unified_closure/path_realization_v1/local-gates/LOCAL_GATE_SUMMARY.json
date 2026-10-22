@@ -1,0 +1,79 @@
+{
+  "state": "REQUIRED_LOCAL_GATES_PASS",
+  "source_tree_sha256": "de7c7e287bd1b351ed3f790de58bfd71edf18df4013f7e5aaf2af55a6b3f6379",
+  "applied_six_paths_sha256": "fb8546ac7f6005e3b683986028f568d774294acbc89cd460f3a87693bbedfe03",
+  "author_scope_preservation_sha256": "3e8752b4cb81fe86c92490f50f70d570d3285049fd11b41c34b27c105db40967",
+  "gates": [
+    {
+      "gate": "parser-01",
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/local-gates/parser-01/RECEIPT.json",
+      "sha256": "1dabc87bf3ff8c1a00eb16ad173c13fd71a9c00949e42b6db0f33205f85c03f5",
+      "state": "PASS",
+      "seconds": 3.4799023130035494,
+      "result": {
+        "actual_tests": 89,
+        "success_lines": 89,
+        "skipped_count": 0
+      },
+      "parser_reused_without_rerun": true
+    },
+    {
+      "gate": "dag-01",
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/local-gates/dag-01/RECEIPT.json",
+      "sha256": "178f6fecffce9d37365a574e6ae05f31a2676ef414b901c1209bc9378265fe36",
+      "state": "PASS",
+      "seconds": 0.2756609070056584,
+      "result": {},
+      "parser_reused_without_rerun": false
+    },
+    {
+      "gate": "reuse-01",
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/local-gates/reuse-01/RECEIPT.json",
+      "sha256": "eab49e8dfe1ce6eabb61dae048e766f3a474a74adae4c26c4b7a067ce94eb234",
+      "state": "PASS",
+      "seconds": 2.3451966249995166,
+      "result": {
+        "expected_test_methods": 54,
+        "actual_tests": 54,
+        "skipped": false,
+        "unittest_ok": true
+      },
+      "parser_reused_without_rerun": false
+    },
+    {
+      "gate": "fkrg-01",
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/local-gates/fkrg-01/RECEIPT.json",
+      "sha256": "51d9e76473d89286b8dd6ebbd9a07f6785c41c2514da3d756c0f2f08c8d03d2b",
+      "state": "PASS",
+      "seconds": 3.4566214099904755,
+      "result": {
+        "expected_test_methods": 30,
+        "actual_tests": 30,
+        "skipped": false,
+        "unittest_ok": true
+      },
+      "parser_reused_without_rerun": false
+    },
+    {
+      "gate": "clone-01",
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/local-gates/clone-01/RECEIPT.json",
+      "sha256": "518569eb6345554b04818fe3d98fb59a82a35e5b8fc7a0d9aecebc2348b04c13",
+      "state": "PASS",
+      "seconds": 1.7398846589931054,
+      "result": {
+        "status": "PASS",
+        "cross_file_proof_related_code_clone_pairs": 68,
+        "length_15_plus": 12,
+        "max_code_lines": 31,
+        "kind": "exact normalized source snippet matching, NOT logical theorem equivalence"
+      },
+      "parser_reused_without_rerun": false
+    }
+  ],
+  "unchanged_parser_test_count": 89,
+  "new_live_reuse_test_count": 54,
+  "full_fkrg_test_count": 30,
+  "current_full_clone_pairs": 68,
+  "clone_current_source_modules": 691,
+  "independent_consumer_review_and_canonical_publication": "SEPARATE_ACTUAL_RECEIPTS"
+}

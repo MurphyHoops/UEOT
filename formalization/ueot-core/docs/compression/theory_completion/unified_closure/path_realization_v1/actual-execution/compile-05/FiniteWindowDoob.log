@@ -1,0 +1,168 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean:92:9: error: unsolved goals
+case zero
+S : Type u
+inst✝ : Fintype S
+Q : Matrix S S ℝ
+D : RightEigenData Q
+hQ : ∀ (i j : S), 0 ≤ Q i j
+eta : S → ℝ
+heta : ∀ (i : S), 0 ≤ eta i
+hc : 0 < initialPairing eta D.vector
+g : CausalHistory S S 0
+⊢ ((tiltedInitialPMF D eta heta hc) g).toReal = eta g * D.vector g / initialPairing eta D.vector
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean:96:14: error: unsolved goals
+case succ
+S : Type u
+inst✝ : Fintype S
+Q : Matrix S S ℝ
+D : RightEigenData Q
+hQ : ∀ (i j : S), 0 ≤ Q i j
+eta : S → ℝ
+heta : ∀ (i : S), 0 ≤ eta i
+hc : 0 < initialPairing eta D.vector
+T : ℕ
+ih :
+  ∀ (g : CausalHistory S S T),
+    ((doobPathLaw D hQ eta heta hc T) g).toReal =
+      matrixPathWeight eta Q T g * D.vector (currentState T g) / (D.scale ^ T * initialPairing eta D.vector)
+g : CausalHistory S S T
+j : S
+hr : D.scale ≠ 0
+hh : D.vector (currentState T g) ≠ 0
+hn : D.scale ^ T ≠ 0
+⊢ matrixPathWeight eta Q T g *
+            D.vector
+              (match T, g with
+              | 0, x => x
+              | n.succ, h => h.2) *
+          Q
+            (match T, g with
+            | 0, x => x
+            | n.succ, h => h.2)
+            j *
+        D.vector j *
+      (D.vector
+          (match T, g with
+          | 0, x => x
+          | n.succ, h => h.2))⁻¹ =
+    matrixPathWeight eta Q T g *
+        Q
+          (match T, g with
+          | 0, x => x
+          | n.succ, h => h.2)
+          j *
+      D.vector j
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean:94:41: warning: This simp argument is unused:
+  tiltedInitialPMF_apply_toReal
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [doobPathLaw, causalLaw, matrixPathWeight, currentState, pow_zero, one_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean:138:6: warning: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean:138:6: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean:156:50: error: unsolved goals
+X Y A : Type u
+inst✝⁶ : Fintype X
+inst✝⁵ : Fintype A
+inst✝⁴ : Nonempty A
+inst✝³ : MeasurableSpace X
+inst✝² : MeasurableSingletonClass X
+inst✝¹ : MeasurableSpace A
+inst✝ : MeasurableSingletonClass A
+M : Model X fun x => A
+q : X → Y
+sigma : Y → PMF A
+p0 : PMF X
+K : Set X
+T : ℕ
+⊢ ∑ y, ∑ x, eta y * (Q ^ T) y x = ∑ x, ∑ i, eta x * (Q ^ T) x i
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean:176:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ((doobPathLaw ?D ?hQ ?«eta» ?heta ?hc ?T) ?g).toReal
+in the target expression
+  ((doobPathLaw D ⋯ eta ⋯ hc T) g).toReal =
+    ((actualConditionedPrefix M q sigma p0 K T 0 hpos) (safeHistory K T g)).toReal *
+      (actualSurvivalMass M q sigma p0 K T * D.vector (currentState T g) / (D.scale ^ T * initialPairing eta D.vector))
+
+X Y A : Type u
+inst✝⁶ : Fintype X
+inst✝⁵ : Fintype A
+inst✝⁴ : Nonempty A
+inst✝³ : MeasurableSpace X
+inst✝² : MeasurableSingletonClass X
+inst✝¹ : MeasurableSpace A
+inst✝ : MeasurableSingletonClass A
+M : Model X fun x => A
+q : X → Y
+sigma : Y → PMF A
+p0 : PMF X
+K : Set X
+D : RightEigenData Q
+hc : 0 < initialPairing eta D.vector
+T : ℕ
+hpos : 0 < actualSurvivalMass M q sigma p0 K (T + 0)
+g : CausalHistory (↑K) (↑K) T
+⊢ ((doobPathLaw D ⋯ eta ⋯ hc T) g).toReal =
+    ((actualConditionedPrefix M q sigma p0 K T 0 hpos) (safeHistory K T g)).toReal *
+      (actualSurvivalMass M q sigma p0 K T * D.vector (currentState T g) / (D.scale ^ T * initialPairing eta D.vector))
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    fun x => ENNReal.toReal_nonneg
+  has type
+    ∀ (x : ↑K), @LE.le ℝ Real.instLE 0 (p0 ↑x).toReal
+  but is expected to have type
+    ∀ (i : ↑K), @LE.le ℝ Real.instLE 0 (eta i)
+  in the application
+    doobPathLaw D ⋯ eta ⋯
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean:197:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ((doobPathLaw ?D ?hQ ?«eta» ?heta ?hc ?T) ?g).toReal
+in the target expression
+  ((doobPathLaw D ⋯ eta ⋯ hc T) g).toReal =
+      ((actualConditionedPrefix M q sigma p0 K T 0 hpos) (safeHistory K T g)).toReal ↔
+    D.vector (currentState T g) = D.scale ^ T * initialPairing eta D.vector / actualSurvivalMass M q sigma p0 K T
+
+X Y A : Type u
+inst✝⁶ : Fintype X
+inst✝⁵ : Fintype A
+inst✝⁴ : Nonempty A
+inst✝³ : MeasurableSpace X
+inst✝² : MeasurableSingletonClass X
+inst✝¹ : MeasurableSpace A
+inst✝ : MeasurableSingletonClass A
+M : Model X fun x => A
+q : X → Y
+sigma : Y → PMF A
+p0 : PMF X
+K : Set X
+D : RightEigenData Q
+hc : 0 < initialPairing eta D.vector
+T : ℕ
+hpos : 0 < actualSurvivalMass M q sigma p0 K (T + 0)
+g : CausalHistory (↑K) (↑K) T
+hg : 0 < matrixPathWeight eta Q T g
+⊢ ((doobPathLaw D ⋯ eta ⋯ hc T) g).toReal =
+      ((actualConditionedPrefix M q sigma p0 K T 0 hpos) (safeHistory K T g)).toReal ↔
+    D.vector (currentState T g) = D.scale ^ T * initialPairing eta D.vector / actualSurvivalMass M q sigma p0 K T
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    fun x => ENNReal.toReal_nonneg
+  has type
+    ∀ (x : ↑K), @LE.le ℝ Real.instLE 0 (p0 ↑x).toReal
+  but is expected to have type
+    ∀ (i : ↑K), @LE.le ℝ Real.instLE 0 (eta i)
+  in the application
+    doobPathLaw D ⋯ eta ⋯

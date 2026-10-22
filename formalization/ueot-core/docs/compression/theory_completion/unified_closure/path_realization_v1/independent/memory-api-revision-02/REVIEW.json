@@ -1,0 +1,147 @@
+{
+  "schema": "PATH_REALIZATION_MEMORY_API_REVISION_02_INDEPENDENT_REVIEW_V1",
+  "status": "SOURCE_SEMANTIC_CLEAR_FOCUSED_PASS_NATIVE02_PENDING",
+  "reviewer": "/root/c3_executable_search",
+  "author": "/root/finite_memory_realization",
+  "baseline_ref": "d503586107974c56e0773b4ea106b41a7d144b43",
+  "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySafetyWitness.lean",
+  "prior_source_sha256": "fcc011bd9c7571e9ae95e6df606baaf500e2f7767453be6788af5da470b934e7",
+  "reviewed_source_sha256": "08060447a92c3b129351b95615ed2e1b3214e12e9ded21c638d0c6554c400c88",
+  "prior_complete_source_fingerprint": "c344bf6657ab31a32c46fba9feff6d5c04846b8f061d444aec8accb4994ad41b",
+  "reviewed_complete_source_fingerprint": "de7c7e287bd1b351ed3f790de58bfd71edf18df4013f7e5aaf2af55a6b3f6379",
+  "unchanged_prior_source_recovered_exactly_after_reversing_declared_changes": true,
+  "allowed_changes": [
+    "Three module-comment lines",
+    "Five theorem visibility modifiers",
+    "One public conjunction theorem and its explanatory comment"
+  ],
+  "old_witness_public_source_count": 9,
+  "new_witness_public_source_count": 5,
+  "new_increment_public_source_candidate_count": 73,
+  "native_confirmed_public_count": null,
+  "removed_public_names": [
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.safe_source_all_times_mass_one",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.unsafe_initial_all_times_mass_zero",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.unsafe_initial_time_zero_mass_zero",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.unsafe_transition_all_times_mass_zero",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.unsafe_transition_time_one_mass_zero"
+  ],
+  "added_public_names": [
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.physical_safety_premises_independent"
+  ],
+  "all_five_original_statement_and_proof_bytes_preserved": true,
+  "all_five_original_facts_publicly_projectible": true,
+  "projection_bindings": {
+    "positive": "h.2.1",
+    "badTransition": "h.2.2.1",
+    "badInitial": "h.2.2.2"
+  },
+  "mass_fact_projections": {
+    "safe_source_all_times_mass_one": "positive.2.2.2",
+    "unsafe_transition_time_one_mass_zero": "badTransition.2.2.2.1",
+    "unsafe_transition_all_times_mass_zero": "badTransition.2.2.2.2",
+    "unsafe_initial_time_zero_mass_zero": "badInitial.2.2.2.1",
+    "unsafe_initial_all_times_mass_zero": "badInitial.2.2.2.2"
+  },
+  "each_private_helper_named_occurrences_in_public_proof_source": {
+    "safe_source_all_times_mass_one": 1,
+    "unsafe_transition_time_one_mass_zero": 1,
+    "unsafe_transition_all_times_mass_zero": 1,
+    "unsafe_initial_time_zero_mass_zero": 1,
+    "unsafe_initial_all_times_mass_zero": 1
+  },
+  "compiled_direct_constants_confirmation": "PENDING_NATIVE02",
+  "new_explicit_premise_negations": {
+    "transition_closure": "n=0, x=false, a=(), z=true: z is in source true support, x is safe, certified is True, but z is not safe.",
+    "initial_safety": "true is in (PMF.pure true).support but true is not in safe={false}."
+  },
+  "new_assumptions_added": false,
+  "opaque_wrapper_or_dummy_marker_added": false,
+  "production_source_consumers_of_old_five_names_outside_module": [],
+  "other_six_new_lean_sources_unchanged": [
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/C3ExecutableSearch.lean",
+      "sha256": "6a70601f35f12edf0eaf881a39aa36fc8d22d5b42111d0c937fa92948df70abc",
+      "public_source_candidates": 16
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean",
+      "sha256": "7f231017ef32eb607c0187dc659a139101f92ee4ad2ed434f35d4f0687a46cdd",
+      "public_source_candidates": 8
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryRealization.lean",
+      "sha256": "8306c376acbf26db8ae70a5064460c9e423da527a0c89efe4ec18e0e6150191f",
+      "public_source_candidates": 7
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean",
+      "sha256": "1bcf2d6baaa55e4ea648d19a78dc490a86b525eaaa109464654184d447544081",
+      "public_source_candidates": 9
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean",
+      "sha256": "e37d32b9f5da631392706e60c68d21fcb26491fea1c67614be57afbf6d4b0455",
+      "public_source_candidates": 14
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+      "sha256": "61feecf09bd38d2b5497a7be33d073b1c04cd20a3e45a6840af19dd1670af363",
+      "public_source_candidates": 14
+    }
+  ],
+  "five_protocol_python_sources_unchanged": [
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/native_protocol/protocol_adapter.py",
+      "sha256": "8afada91c504c3f97f18cf20b519ac2f701b13fa2211e748bbbc4ddca6bead4f"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/native_protocol/freeze_inputs.py",
+      "sha256": "b8b7eee07250f51398b3a2f2f29f230d46dab8745a6e98b14512220c029bd995"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/native_protocol/full_build.py",
+      "sha256": "44d5d2dbb4639ae89877a90224dfae2308d005ab3b15ed867139cdaa726020c9"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/native_protocol/integration_native.py",
+      "sha256": "0f9baf11b1a1d51e195a276a548ce9b9a119bfe74bd9598c4d5914d3cf38b1c6"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/native_protocol/register_overlay.py",
+      "sha256": "71f810000fdafa39c1cc28e0e5a219521e0e385fd7ae30fa0febfcbcfb3357bf"
+    }
+  ],
+  "native_comparison_algorithm_changed": false,
+  "public_isDefEq_domain_changed": true,
+  "private_native_owner_axiom_type_and_direct_constants_scope_required": true,
+  "focused_execution_independently_read": {
+    "raw_tool_output": "/workspace/scratch/534b0448126c/tmp/core-path-realization-20261022/FOCUS_10_TOOL_OUTPUT.txt",
+    "raw_tool_output_sha256": "81679829b933f34d132c4b949d143952b2ca8acdbbfec4b25123bbacc0bfbef3",
+    "module_result": {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness",
+      "source_sha256": "08060447a92c3b129351b95615ed2e1b3214e12e9ded21c638d0c6554c400c88",
+      "exit_code": 0,
+      "seconds": 3.5598977080000003,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "args": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "lean",
+        "-o",
+        ".lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySafetyWitness.olean",
+        "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySafetyWitness.lean"
+      ]
+    }
+  },
+  "source_bytes_stable_during_check": true,
+  "historical_receipts_rewritten": false,
+  "global_mathematical_closure": "NOT_ESTABLISHED",
+  "check_script_sha256": "c9e40e5f90d990e47a85b8b59301edef56e9787e12c228ecc43dc6d2b6ac8a70",
+  "remaining": [
+    "Fresh source hints and semantic review supplement under the revised complete fingerprint.",
+    "Fresh manifest02, complete build02, unchanged-algorithm full public comparisons and complete compiler-owned native audit.",
+    "Actual fixed-export equality/replay and registration, including direct reference to all five private helpers.",
+    "New current-source consumer and complete clone gates; old native01 remains interrupted, not PASS."
+  ]
+}

@@ -1,0 +1,170 @@
+# Finite-window source and Doob endpoints
+
+This document describes the mathematical scope of the new source files.
+Execution and integration status are recorded separately; the earlier
+`SOURCE_CONTRACT_V1.md` preserves the initial draft stage.
+
+The final dependency chain passed actual focused compile-09; its exact
+source identities, timings and execution boundaries are recorded in
+`FOCUSED_CHAIN_PASS.md`. The module-level execution record is separate from
+the coordinating root's production-integration acceptance.
+
+## Shared source
+
+The actual data are a finite state type `X`, a finite nonempty action type `A`,
+the existing controlled model `M`, an arbitrary observation map `q : X → Y`,
+a stationary current-observation feedback `sigma : Y → PMF A`, the original
+initial PMF `p0`, and a safe set `K`. Real-measure statements retain the
+measurable-singleton assumptions on the original state and action types.
+
+The stationary lifted policy, killed matrix and safe initial row are the
+existing definitions. In particular,
+
+\[
+\eta_0(u)=p_0(u),\qquad
+Q(u,v)=P^{\mathrm{closed}}(u,v)\quad(u,v\in K).
+\]
+
+The safe initial row keeps its original mass. It is not normalized before
+forming any source path or event. The new function
+`remainingSurvival Q r i` is
+
+\[
+g_r(i)=\sum_j(Q^r)_{ij}.
+\]
+
+Its zero-time value, successor recursion and nonnegativity are proved by
+`remainingSurvival_zero`, `remainingSurvival_succ` and
+`remainingSurvival_nonneg`.
+
+## Actual finite-window conditioning
+
+The namespace is
+`UnifiedClosure.SameSourceFiniteWindowCheck` under
+`UEOT.V3.Compression.TheoryCompletion`.
+
+`statePrefix t r` drops the last `r` state records from a complete history
+through time `t + r`. It retains the entire state prefix through time `t`.
+`actualPrefixSurvivalMass` is measured in the original action/state
+experiment: it is the joint event that every recorded state through `t + r`
+is safe and the erased state history has that retained prefix.
+
+For any safe complete prefix `h` ending at `i : K`, the source theorem is
+
+\[
+\Pr(H_t=h,\ X_0,\ldots,X_{t+r}\in K)
+  =\Pr(H_t=h)\,g_r(i).
+\]
+
+The prefix atom on the right belongs to the same original closed-loop state
+law. The public theorem is `actual_prefix_survival_mass`. It does not require
+positive total survival or positive prefix probability. The state-law version
+is `state_prefix_survival_mass`.
+
+The proof uses a private weighted suffix-sum induction for an arbitrary
+terminal test function. Each successor step is obtained from the actual
+`causalLaw`/`pmfExtend` recursion. Existing action erasure then binds that
+calculation to the original controlled experiment.
+
+| Endpoint | Mathematical conclusion |
+| --- | --- |
+| `actualConditionedPrefix` | Filters the original final-survival event at `t + r`, then maps to the complete state prefix; requires positive total survival. |
+| `actual_conditioned_prefix_mass` | The actual conditioned safe prefix atom is its original source atom times `g_r(i)`, divided by original total survival. |
+| `actual_conditioned_initial_mass` | The actual conditioned initial atom is `eta0(i) * g_T(i) / s_T`. |
+| `actual_conditioned_safe_path_mass` | The actual complete conditional safe-path atom is its killed product weight divided by `s_T`. |
+| `actual_conditioned_prefix_support` | Every positive conditioned prefix atom is a safe prefix. |
+| `actual_conditioned_prefix_eq_zero_of_not_survives` | An unsafe prefix has zero actual PMF mass, including complete-window paths outside the safe-history subtype. |
+| `actual_positive_prefix_remaining_pos` | Positive actual parent event mass implies positivity of the appropriate remaining-survival function. |
+| `actual_next_prefix_ratio` | The ratio of actual child and parent prefix/survival event masses is the finite-window transition row. |
+
+More explicitly, for `r ≥ 0`, a safe parent prefix `h` ending at `i`, and
+positive joint parent mass through `t + r + 1`,
+
+\[
+\frac{
+ \Pr(H_{t+1}=(h,j),\ X_0,\ldots,X_{t+r+1}\in K)
+}{
+ \Pr(H_t=h,\ X_0,\ldots,X_{t+r+1}\in K)
+}
+=Q(i,j)\frac{g_r(j)}{g_{r+1}(i)}.
+\]
+
+`finiteWindowRow` names this real expression. `finiteWindowRowPMF` constructs
+its normalized PMF only when `g_(r+1)(i) > 0`. Positive total survival alone
+does not supply that condition at every state or every prefix. The bare real
+expression is a total Lean expression; it is not treated as a probability
+row at a zero denominator.
+
+## Genuine Doob path comparison
+
+The namespace is `UnifiedClosure.FiniteWindowDoobCheck` under the same parent
+namespace. It reuses `PositiveEigenstructure.RightEigenData Q`:
+
+\[
+Qh=\rho h,\qquad \rho>0,\qquad h(i)>0.
+\]
+
+`doobRowPMF` uses the existing nonnegativity and row-sum proofs for the Doob
+transform. `tiltedInitialPMF` uses the actual pairing
+
+\[
+c=\langle\eta_0,h\rangle>0
+\]
+
+to normalize the initial row `eta0(i) * h(i) / c`. `doobPathLaw` is the actual
+finite causal PMF generated by these initial and transition PMFs.
+
+`doob_path_atom` expands that causal PMF and cancels the interior `h` factors:
+
+\[
+D_T(i_0,\ldots,i_T)
+ =\frac{
+   \eta_0(i_0)\prod_{k<T}Q(i_k,i_{k+1})\,h(i_T)
+ }{\rho^T c}.
+\]
+
+Only after the preceding actual-source theorem is available does
+`actual_doob_path_comparison` identify the ratio with the actual conditioned
+source path:
+
+\[
+D_T(\gamma)
+ =\Pr(\gamma\mid X_0,\ldots,X_T\in K)
+   \frac{s_T h(\gamma_T)}{\rho^T c}.
+\]
+
+`actual_doob_atom_eq_iff_terminal_weight` gives the exact equality criterion
+on each positive killed path: its terminal `h` value must equal
+`rho^T * c / s_T`. It does not impose constancy at unreachable states or
+claim a global spectral limit.
+
+`actual_survival_mass_eq_initial_remaining_sum` identifies the same actual
+survival with `sum_i eta0(i) * g_T(i)`. `safeInitialRow_nonneg` provides a named
+proof with the original row's exact type for the PMF constructors.
+
+Two additional sufficient-condition results are
+`remainingSurvival_eq_pow_of_constant_row_sum` and
+`finiteWindowRow_eq_normalized_of_constant_row_sum`. If `Q 1 = rho 1` with
+positive `rho`, then `g_r = rho^r 1` and every positive finite-window row is
+`Q / rho`. A left QSD is not used to infer that constant-row-sum condition.
+
+## Exact boundaries
+
+The complete conditioned source PMF is constructed by filtering the original
+experiment. The row endpoint identifies its positive parent/child event
+ratios. This batch does not additionally construct an independent time-varying
+causal kernel with a total fallback on every zero-mass state and prove that
+new kernel's entire path law equal to the filtered PMF.
+
+Zero total survival provides no conditioned PMF. Empty safe sets and unsafe
+initial mass remain valid inputs to the unconditional joint-mass theorem.
+The source feedback in this batch is stationary and current-observation
+based; the matrix source is numerically homogeneous. No action-dependent
+event is discarded without an erasure proof, and the conditioned action
+policy is not identified with the original feedback.
+
+The separate three-state source witness consumes these actual APIs and
+computes full pair-law TV `1/4` despite a genuine left QSD. It preserves the
+distinction between terminal QSD stability, finite-window conditional paths,
+and the stationary Doob process. Q-process limits and their spectral/support
+conditions remain separate statements.

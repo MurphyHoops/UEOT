@@ -1,0 +1,50 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean:202:8: error: 'change' tactic failed, pattern
+  ∑ z,
+      @ite ℝ ((stateSurvives K (t + r) g ∧ z ∈ K) ∧ statePrefix t r g = h)
+        (@instDecidableAnd (stateSurvives K (t + r) g ∧ z ∈ K) (statePrefix t r g = h) instDecidableAnd
+          (Classical.propDecidable (statePrefix t r g = h)))
+        (((pmfExtend mu (policyPathKernel M pi (t + r))) (g, z)).toReal * f z) 0 =
+    ?m.531
+is not definitionally equal to target
+  ∑ y,
+      @ite ℝ (stateSurvives K (t + r + 1) (g, y) ∧ statePrefix t (r + 1) (g, y) = h)
+        (@instDecidableAnd (stateSurvives K (t + r + 1) (g, y)) (statePrefix t (r + 1) (g, y) = h)
+          (Classical.propDecidable (stateSurvives K (t + r + 1) (g, y)))
+          (Classical.propDecidable (statePrefix t (r + 1) (g, y) = h)))
+        (((causalLaw p0 (policyPathKernel M pi) (t + r + 1)) (g, y)).toReal * f (currentState (t + r + 1) (g, y))) 0 =
+    if stateSurvives K (t + r) g ∧ statePrefix t r g = h then
+      ((causalLaw p0 (policyPathKernel M pi) (t + r)) g).toReal * F (currentState (t + r) g)
+    else 0
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean:268:6: error: Type mismatch: After simplification, term
+  weightedPrefixMass_eq M pi p0 K t r h hs i hi fun x => 1
+ has type
+  (weightedPrefixMass M pi p0 K t r h fun x => 1) =
+    ((causalLaw p0 (policyPathKernel M pi) t) h).toReal *
+      ∑ x,
+        @HPow.hPow (Matrix ↑K ↑K ℝ) ℕ (Matrix ↑K ↑K ℝ)
+          (@instHPow (Matrix ↑K ↑K ℝ) ℕ
+            (@NPow.toPow (Matrix ↑K ↑K ℝ)
+              (@Monoid.toNPow (Matrix ↑K ↑K ℝ)
+                (@Semiring.toMonoid (Matrix ↑K ↑K ℝ)
+                  (@Matrix.semiring ↑K ℝ Real.semiring (Subtype.fintype (Membership.mem K)) fun a b =>
+                    Subtype.instDecidableEq a b)))))
+          (killedMatrix M pi K) r i x
+but is expected to have type
+  (weightedPrefixMass M pi p0 K t r h fun x => 1) =
+    ((causalLaw p0 (policyPathKernel M pi) t) h).toReal *
+      ∑ j,
+        @HPow.hPow (Matrix ↑K ↑K ℝ) ℕ (Matrix ↑K ↑K ℝ)
+          (@instHPow (Matrix ↑K ↑K ℝ) ℕ
+            (@NPow.toPow (Matrix ↑K ↑K ℝ)
+              (@Monoid.toNPow (Matrix ↑K ↑K ℝ)
+                (@Semiring.toMonoid (Matrix ↑K ↑K ℝ)
+                  (@Matrix.semiring ↑K ℝ Real.semiring (Subtype.fintype (Membership.mem K)) fun a b =>
+                    Classical.propDecidable (a = b))))))
+          (killedMatrix M pi K) r i j
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean:265:23: warning: This simp argument is unused:
+  if_true
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [he, mul_one]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

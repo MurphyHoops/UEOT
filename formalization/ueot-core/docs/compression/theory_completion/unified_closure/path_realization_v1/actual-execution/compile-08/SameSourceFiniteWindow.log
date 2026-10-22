@@ -1,0 +1,20 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean:358:38: error: expected token
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean:358:15: error: invalid binder name `p.filter`, it must be atomic
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean:357:55: error: unsolved goals
+case hfun
+H : Type u
+inst✝ : Fintype H
+p : PMF H
+S : Set H
+hs : ∃ h ∈ S, h ∈ p.support
+E : Set H
+⊢ PSigma sorry
+
+H : Type u
+inst✝ : Fintype H
+p : PMF H
+S : Set H
+hs : ∃ h ∈ S, h ∈ p.support
+E : Set H
+hfun : PSigma sorry
+⊢ (p.filter S hs).toOuterMeasure E = p.toOuterMeasure (E ∩ S) / p.toOuterMeasure S
