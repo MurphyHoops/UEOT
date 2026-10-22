@@ -1,0 +1,201 @@
+{
+  "schema": "PATH_REALIZATION_MEMORY_REVISION_02_NATIVE_DEPENDENCY_REVIEW",
+  "status": "ACTUAL_NATIVE_DEPENDENCIES_CLEAR_REGISTRATION_PENDING",
+  "reviewer": "/root/c3_executable_search",
+  "baseline_ref": "d503586107974c56e0773b4ea106b41a7d144b43",
+  "complete_source_fingerprint": "de7c7e287bd1b351ed3f790de58bfd71edf18df4013f7e5aaf2af55a6b3f6379",
+  "reviewed_witness_sha256": "08060447a92c3b129351b95615ed2e1b3214e12e9ded21c638d0c6554c400c88",
+  "execution_import_root": "/workspace/scratch/534b0448126c/tmp/core-path-realization-20261022/mac-import-01",
+  "check_script_sha256": "0e9ba90bfda4e515e7cbada3146f92ca0b10a7e6f8af4b86bd3fe6fca4744136",
+  "evidence": [
+    {
+      "path": "native-02/PATH_REALIZATION_NATIVE_V1.json",
+      "sha256": "61dabee5113b7fd2e640971c55ef6d2dba91e257744f587b57235f94a73b3308"
+    },
+    {
+      "path": "native-02/observed_first_native.json",
+      "sha256": "61dabee5113b7fd2e640971c55ef6d2dba91e257744f587b57235f94a73b3308"
+    },
+    {
+      "path": "native-02/PATH_REALIZATION_REUSE_OVERLAY_V1.json",
+      "sha256": "e87a8b9a921e4f9014d59f761ed73c8432c869f354e3b498542d99133a84239a"
+    },
+    {
+      "path": "native-02/VERIFY_PATH_REALIZATION_OVERLAY_TYPES.lean",
+      "sha256": "430aae70eec2c7cf87530020e24a8e43beae7021e2f8282f4c0c9b2949195714"
+    },
+    {
+      "path": "native-02/native_export.log",
+      "sha256": "69d1e0ab5717a16608296b4396d3340bccedf8248be8ae270ceee1cd5a7d49f4"
+    },
+    {
+      "path": "native-02/fixed_verifier.log",
+      "sha256": "69d1e0ab5717a16608296b4396d3340bccedf8248be8ae270ceee1cd5a7d49f4"
+    },
+    {
+      "path": "native-02/STATUS.json",
+      "sha256": "aff0d6b4d35e6cb760c1135c9382b265dcaef4d2728a61b0a3b9f5766ce13168"
+    },
+    {
+      "path": "native-02/FROZEN_INPUTS.json",
+      "sha256": "aeb36dad76ffbff5e8900b522a89950634c1e09c59fec8f4f01d0b7e05af44d3"
+    },
+    {
+      "path": "native-02/SOURCE_PREFLIGHT.json",
+      "sha256": "4be618bcd49045c5b2f981e7d05ed010359bf7eb5e1a0feb927085d15dc41310"
+    },
+    {
+      "path": "full-build-02/FULL_BUILD_RECEIPT.json",
+      "sha256": "142c7f832a3d9cd9a012abf38a3bc748ae75f01a94c09f9296da40a5378658d7"
+    }
+  ],
+  "actual_runs": [
+    {
+      "label": "native_export",
+      "command": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/path-realization-evidence-20261022/native-02/PATH_REALIZATION_NATIVE_EXPORT.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 58.451,
+      "log_sha256": "69d1e0ab5717a16608296b4396d3340bccedf8248be8ae270ceee1cd5a7d49f4"
+    },
+    {
+      "label": "fixed_verifier",
+      "command": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/path-realization-evidence-20261022/native-02/VERIFY_PATH_REALIZATION_OVERLAY_TYPES.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 58.297,
+      "log_sha256": "69d1e0ab5717a16608296b4396d3340bccedf8248be8ae270ceee1cd5a7d49f4"
+    }
+  ],
+  "scope_counts": {
+    "public_candidates": 73,
+    "owned_constants": 249,
+    "private_constants": 51,
+    "other_public_generated_constants": 125,
+    "registered_direct_edges": 114,
+    "witness_owned_constants": 16,
+    "witness_private_constants": 8
+  },
+  "actual_public_comparisons": {
+    "cross": 311856,
+    "internal": 2628,
+    "collisions": []
+  },
+  "initial_and_fixed_raw_bytes_equal": true,
+  "both_raw_logs_decode_to_the_actual_native_artifact": true,
+  "endpoint": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.physical_safety_premises_independent",
+  "endpoint_stored_type_sha256": "dd7adabe9349021a1bf7fc835cd24fadeb54a90dc09a887d996eb7beadc3642a",
+  "endpoint_registered_direct_edges": [
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.safe_is_proper_nonempty",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.all_rows_zero_uncovered",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.initial_false_safe",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.source_false_preserves_safe"
+  ],
+  "private_helpers": [
+    {
+      "short_name": "safe_source_all_times_mass_one",
+      "compiled_name": "_private.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.safe_source_all_times_mass_one",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness",
+      "is_private": true,
+      "level_parameters": [],
+      "stored_type_sha256": "a1387d5e17660ef0d31c86d8eaeb866fd64b3dc0356b4eb0f0a392e5fda54e28",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "public_proof_direct_reference": true,
+      "ueot_direct_theorem_constants": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.controller_all_times_physical_safe",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.initial_false_safe",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.source_false_preserves_safe",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.all_rows_zero_uncovered"
+      ]
+    },
+    {
+      "short_name": "unsafe_transition_time_one_mass_zero",
+      "compiled_name": "_private.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.unsafe_transition_time_one_mass_zero",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness",
+      "is_private": true,
+      "level_parameters": [],
+      "stored_type_sha256": "0074f65087ce91b4083763d78437009901c78994a0525aac1ede7eed755d689b",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "public_proof_direct_reference": true,
+      "ueot_direct_theorem_constants": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.stateTrajMeasure_coordinate_mass",
+        "UEOT.V3.PathError.causalHistoryMeasurableSingleton",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.mem_microLaw_succ_support_iff",
+        "_private.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.unsafe_transition_time_one_mass_zero._simp_1_2"
+      ]
+    },
+    {
+      "short_name": "unsafe_transition_all_times_mass_zero",
+      "compiled_name": "_private.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.unsafe_transition_all_times_mass_zero",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness",
+      "is_private": true,
+      "level_parameters": [],
+      "stored_type_sha256": "67721446a9f5a8d0dec1e4d1a2da278de84f58977ed769b43a904cb1571faf49",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "public_proof_direct_reference": true,
+      "ueot_direct_theorem_constants": [
+        "_private.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.all_times_mass_le_coordinate",
+        "_private.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.unsafe_transition_time_one_mass_zero"
+      ]
+    },
+    {
+      "short_name": "unsafe_initial_time_zero_mass_zero",
+      "compiled_name": "_private.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.unsafe_initial_time_zero_mass_zero",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness",
+      "is_private": true,
+      "level_parameters": [],
+      "stored_type_sha256": "5fddfba03e53af8c0f5054f68ddda6c81728780456d9cc5bc419b7e502cdcbb2",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "public_proof_direct_reference": true,
+      "ueot_direct_theorem_constants": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.stateTrajMeasure_coordinate_mass",
+        "_private.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.unsafe_initial_time_zero_mass_zero._simp_1_1"
+      ]
+    },
+    {
+      "short_name": "unsafe_initial_all_times_mass_zero",
+      "compiled_name": "_private.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.unsafe_initial_all_times_mass_zero",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness",
+      "is_private": true,
+      "level_parameters": [],
+      "stored_type_sha256": "899b137031c5a16ee599eb3f4c9bb549950c26a9d9eb465b9f4e01ce8f28f118",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "public_proof_direct_reference": true,
+      "ueot_direct_theorem_constants": [
+        "_private.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.all_times_mass_le_coordinate",
+        "_private.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.unsafe_initial_time_zero_mass_zero"
+      ]
+    }
+  ],
+  "review_scope": "Actual native ownership, private dependencies, standard axiom closure and exact initial/fixed byte bindings; complete protocol/archive execution review is separately authored.",
+  "scope_limitation": "The five private helpers are compiler-audited proof ingredients and direct public consequences; they are not individual members of the new public pairwise comparison domain. The interrupted native01 remains an incomplete historical run.",
+  "registration_and_live_consumer_gates": "PENDING_SEPARATE_ACTUAL_RECEIPTS"
+}

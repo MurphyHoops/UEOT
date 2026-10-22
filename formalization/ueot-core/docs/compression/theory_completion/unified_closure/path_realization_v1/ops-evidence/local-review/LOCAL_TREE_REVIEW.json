@@ -1,0 +1,81 @@
+{
+  "schema": "UEOT_PATH_REALIZATION_OPS_LOCAL_TREE_REVIEW_V1",
+  "state": "LOCAL_IMMUTABLE_TREE_GOVERNANCE_PASS_COMMIT_AND_PUBLICATION_PENDING",
+  "author_reviewer": "/root/c3_executable_search",
+  "review_kind": "scoped implementation self-review; independent coordinator review pending",
+  "observed_at_utc": "2026-10-22T01:34:34.931008+00:00",
+  "worktree": "/workspace/scratch/534b0448126c/ueot-path-realization-ops",
+  "branch": "ops/compression-tc-path-realization-evidence",
+  "base_commit": "50a91fb9c81e0f5e698ce2cc02ec1a44c9583b04",
+  "branch_head_unchanged": true,
+  "candidate_tree": "08e1f9869bdad2c8b1d2a95a602711ffaa1eb92b",
+  "candidate_object_type": "tree",
+  "candidate_commit": null,
+  "changed_paths": [
+    "formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json"
+  ],
+  "changed_json_leaf_paths": [
+    "/l2_existing_path_exceptions/0/exception_id",
+    "/l2_existing_path_exceptions/0/branch_patterns/0",
+    "/l2_existing_path_exceptions/0/reason"
+  ],
+  "all_other_json_values_and_bytes_preserved": true,
+  "unchanged_exact_authorized_paths": [
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/UMC_GLOBAL_MODULE_DAG_V4.json",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py"
+  ],
+  "new_science_branch": "compression/theory-completion-path-realization",
+  "retired_exception_science_branch": "compression/theory-completion-finite-memory",
+  "base_authorized_path_count_new_science_branch": 0,
+  "candidate_policy_authorized_path_count_new_science_branch": 6,
+  "candidate_policy_authorized_path_count_old_science_branch": 0,
+  "same_candidate_self_authorization_for_science": false,
+  "lean_paths_changed": [],
+  "counted_core_impact": "NONE",
+  "proof_build_claim": "NOT_RUN_AND_NOT_REQUIRED_FOR_THIS_POLICY_ONLY_DIFF",
+  "parser_regression": "NOT_RERUN_UNCHANGED_PARSER_PRIOR_ACCEPTED_EVIDENCE_REUSED",
+  "remote_writes": "NONE",
+  "executed_validator_is_byte_identical_to_immutable_base": true,
+  "validator_sha256": "01020dfa2f7bcda1959a945979ed5d9c138d347717f61da2e437d645d5596205",
+  "policy_base_sha256": "216dc5804cbce226fc95812eaf2e5529663b378b51a3f11fc0cc7d54b0b30527",
+  "policy_candidate_sha256": "98255f81990791981daade29616561ec0d2910b61982f262fd0a8656fd805209",
+  "gate": {
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "/workspace/scratch/534b0448126c/ueot-path-realization-ops/formalization/ueot-core/scripts/validate_compression_research.py",
+      "--repo-root",
+      "/workspace/scratch/534b0448126c/ueot-path-realization-ops",
+      "--baseline-ref",
+      "50a91fb9c81e0f5e698ce2cc02ec1a44c9583b04",
+      "--candidate-ref",
+      "08e1f9869bdad2c8b1d2a95a602711ffaa1eb92b",
+      "--branch-name",
+      "ops/compression-tc-path-realization-evidence",
+      "--changed-path-file",
+      "/workspace/scratch/534b0448126c/tmp/core-path-realization-ops/changed-paths.txt"
+    ],
+    "exit_code": 0,
+    "seconds": 0.4189139410009375,
+    "stdout_sha256": "6565626591c565b12dad7471cd552b758fc34618b01cff96d8514e72b728f6b8",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "changed_path_input_source": "git diff --name-only <base-commit> <candidate-tree>"
+  },
+  "artifact_sha256": {
+    "prepare_and_validate.py": "321c45eb2d426874c48636688098e111e0399839da7fb97c94c2883b0c61a07b",
+    "changed-paths.txt": "ecad6bc086b3bfc389338bc3c245bf72edc0e0c826a4d822718aeba9bd71a374",
+    "candidate.patch": "8dab2e394d897779c094123470466af356a90b6a5de17f4e2a45c62e1237a373",
+    "candidate-tree.txt": "d79665cf4a6478846730893e055bde70aee76d7ae690055d2bba9ae2435493a1"
+  },
+  "remaining": [
+    "Independent coordinator review of this exact three-string policy change.",
+    "Coordinator creates the operations commit and validates that its tree is this reviewed tree.",
+    "Run committed-head Git-object preflight and required canonical publication gates.",
+    "Scientific existing-path mutations consume only a later accepted baseline containing this exception.",
+    "Scientific proof/build/native/axiom and final publication evidence remain separate."
+  ]
+}

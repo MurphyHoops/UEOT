@@ -1,0 +1,30 @@
+[Reading 27 new lines (total: 27 lines)]
+
+{"module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindow", "source_sha256": "4ce233c0138c17faeb458580c34c7d99985fd3cb0ba9fc3b09884a4d7f655691", "exit_code": 1, "seconds": 25.791251707999997, "log_sha256": "aa35fbf82e679ffe95d9f7dfe0418a1aca1e65d50f23f9818d29342adc453d23", "args": ["/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake", "env", "lean", "-o", ".lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.olean", "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean"]}
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean:358:38: error: expected token
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean:358:15: error: invalid binder name `p.filter`, it must be atomic
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean:357:55: error: unsolved goals
+case hfun
+H : Type u
+inst✝ : Fintype H
+p : PMF H
+S : Set H
+hs : ∃ h ∈ S, h ∈ p.support
+E : Set H
+⊢ PSigma sorry
+
+H : Type u
+inst✝ : Fintype H
+p : PMF H
+S : Set H
+hs : ∃ h ∈ S, h ∈ p.support
+E : Set H
+hfun : PSigma sorry
+⊢ (p.filter S hs).toOuterMeasure E = p.toOuterMeasure (E ∩ S) / p.toOuterMeasure S
+
+{"module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoob", "source_sha256": "1bcf2d6baaa55e4ea648d19a78dc490a86b525eaaa109464654184d447544081", "exit_code": 0, "seconds": 4.801970292, "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "args": ["/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake", "env", "lean", "-o", ".lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.olean", "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean"]}
+
+{"module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitness", "source_sha256": "e37d32b9f5da631392706e60c68d21fcb26491fea1c67614be57afbf6d4b0455", "exit_code": 0, "seconds": 4.205313167, "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "args": ["/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake", "env", "lean", "-o", ".lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.olean", "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean"]}
+
+FINAL_STATE=FAIL
+✅ Process completed with exit code 0 (runtime: 34.90s)

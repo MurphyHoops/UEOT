@@ -1,0 +1,9 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean:195:14: warning: `Set.preimage_setOf_eq` has been deprecated: Use `Set.preimage_ofPred_eq` instead
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean:195:2: error: Type mismatch: After simplification, term
+  Eq.symm h
+ has type
+  (stateTrajMeasure controller p₀ q P) {a | a n ∈ K} =
+    (microLaw p₀ q P controller.policy n).toMeasure {a | (stateHistoryEquiv n) (eraseActionHistory n a) ⟨n, ⋯⟩ ∈ K}
+but is expected to have type
+  (stateTrajMeasure controller p₀ q P) {ω | ω n ∈ K} =
+    (microLaw p₀ q P controller.policy n).toMeasure {h | riskLastState n h ∈ K}

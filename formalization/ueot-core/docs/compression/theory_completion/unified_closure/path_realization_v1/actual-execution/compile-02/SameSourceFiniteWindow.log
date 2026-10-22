@@ -1,0 +1,98 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean:195:8: error: Type mismatch
+  hinner g
+has type
+  (∑ z,
+      if (stateSurvives K (t + r) g ∧ z ∈ K) ∧ statePrefix t r g = h then
+        (mu g).toReal * ((policyPathKernel M pi (t + r) g) z).toReal * f z
+      else 0) =
+    if stateSurvives K (t + r) g ∧ statePrefix t r g = h then (mu g).toReal * F (currentState (t + r) g) else 0
+but is expected to have type
+  (∑ x,
+      if (stateSurvives K (t + r) g ∧ x ∈ K) ∧ statePrefix t r g = h then
+        ((pmfExtend (causalLaw p0 (policyPathKernel M pi) (t + r)) (policyPathKernel M pi (t + r))) (g, x)).toReal * f x
+      else 0) =
+    if stateSurvives K (t + r) g ∧ statePrefix t r g = h then
+      ((causalLaw p0 (policyPathKernel M pi) (t + r)) g).toReal *
+        F
+          (match t + r, g with
+          | 0, x => x
+          | n.succ, h => h.2)
+    else 0
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean:194:10: warning: This simp argument is unused:
+  UEOT.V3.PathError.pmfExtend_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [stateSurvives, statePrefix, currentState, causalLaw, ENNReal.toReal_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean:194:45: warning: This simp argument is unused:
+  ENNReal.toReal_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [stateSurvives, statePrefix, currentState, causalLaw, UEOT.V3.PathError.pmfExtend_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean:236:2: error: Type mismatch: After simplification, term
+  weightedPrefixMass_eq M pi p0 K t r h hs i hi fun x => 1
+ has type
+  ∑ x,
+      @ite ℝ (stateSurvives K (t + r) x ∧ statePrefix t r x = h) instDecidableAnd
+        ((causalLaw p0 (policyPathKernel M pi) (t + r)) x).toReal 0 =
+    ((causalLaw p0 (policyPathKernel M pi) t) h).toReal * ∑ x, (killedMatrix M pi K ^ r) i x
+but is expected to have type
+  ∑ h_1,
+      @ite ℝ (stateSurvives K (t + r) h_1 ∧ statePrefix t r h_1 = h)
+        (Classical.propDecidable (stateSurvives K (t + r) h_1 ∧ statePrefix t r h_1 = h))
+        ((causalLaw p0 (policyPathKernel M pi) (t + r)) h_1).toReal 0 =
+    ((causalLaw p0 (policyPathKernel M pi) t) h).toReal * ∑ j, (killedMatrix M pi K ^ r) i j
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean:262:77: error: unsolved goals
+S : Type u
+inst✝ : Fintype S
+Q : Matrix S S ℝ
+hQ : ∀ (i j : S), 0 ≤ Q i j
+r : ℕ
+i : S
+hpos : 0 < remainingSurvival Q (r + 1) i
+j : S
+⊢ ((FiniteProbabilityRow.ofRealRow (finiteWindowRow Q r i) ⋯ ⋯) j).toReal = finiteWindowRow Q r i j
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean:263:33: warning: This simp argument is unused:
+  FiniteProbabilityRow.ofRealRow_apply_toReal
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [finiteWindowRowPMF]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean:304:36: warning: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean:370:2: error: Type mismatch: After simplification, term
+  actual_conditioned_prefix_mass M q sigma p0 K 0 T hpos (↑i) i.property i rfl
+ has type
+  @Eq ℝ ((actualConditionedPrefix M q sigma p0 K 0 T hpos) ↑i).toReal
+    ((p0 ↑i).toReal * remainingSurvival Q T i / actualSurvivalMass M q sigma p0 K T)
+but is expected to have type
+  @Eq ℝ ((actualConditionedPrefix M q sigma p0 K 0 T hpos) ↑i).toReal
+    ((p0 ↑i).toReal * remainingSurvival Q T i / actualSurvivalMass M q sigma p0 K T)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean:379:47: error: unsolved goals
+X Y A : Type u
+inst✝⁶ : Fintype X
+inst✝⁵ : Fintype A
+inst✝⁴ : Nonempty A
+inst✝³ : MeasurableSpace X
+inst✝² : MeasurableSingletonClass X
+inst✝¹ : MeasurableSpace A
+inst✝ : MeasurableSingletonClass A
+M : Model X fun x => A
+q : X → Y
+sigma : Y → PMF A
+p0 : PMF X
+K : Set X
+T : ℕ
+hpos : 0 < actualSurvivalMass M q sigma p0 K (T + 0)
+h : CausalHistory (↑K) (↑K) T
+⊢ matrixPathWeight (safeInitialRow p0 K) Q T h / actualSurvivalMass M q sigma p0 K (T + 0) =
+    matrixPathWeight (safeInitialRow p0 K) Q T h / actualSurvivalMass M q sigma p0 K T
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean:430:6: warning: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean:430:6: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`

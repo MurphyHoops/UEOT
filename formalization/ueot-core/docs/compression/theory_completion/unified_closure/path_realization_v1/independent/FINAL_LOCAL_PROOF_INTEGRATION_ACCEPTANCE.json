@@ -1,0 +1,144 @@
+{
+  "schema": "PATH_REALIZATION_FINAL_LOCAL_PROOF_INTEGRATION_ACCEPTANCE_V1",
+  "state": "CLEAR_LOCAL_PROOF_INTEGRATION",
+  "scope": "LOCAL_PROOF_INTEGRATION_ONLY",
+  "reviewer": "/root/finite_window_source",
+  "reviewed_at_utc": "2026-10-22T03:16:23.469437+00:00",
+  "independence": "Reviewer did not author ACCEPTED_PROOF_INPUTS.json, execute Mac proof/canonical runs, or perform registration/consumer integration. Reviewer authored two new Lean modules and the separate execution/canonical reviews; those disclosures and independent source reviews remain in force. This final review checks manifest composition and exact bytes, without repeating tests.",
+  "accepted_manifest": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/ACCEPTED_PROOF_INPUTS.json",
+    "sha256": "dc6391b07bd4a188d7d5a3a01cea3b11ad8030cf7f270b7a2f2e9f009c9503bc",
+    "bytes": 240836
+  },
+  "baseline_ref": "d503586107974c56e0773b4ea106b41a7d144b43",
+  "source_tree_sha256": "de7c7e287bd1b351ed3f790de58bfd71edf18df4013f7e5aaf2af55a6b3f6379",
+  "verified": {
+    "exact_source_records": 691,
+    "source_records_equal_actual_full_build_02": true,
+    "current_physical_source_set_equal": true,
+    "recomputed_source_fingerprint_equal": true,
+    "bound_repository_files": 144,
+    "bound_file_hashes_and_sizes_match": true,
+    "four_signed_reviews_clear": true,
+    "local_gate_summary_pass": true,
+    "canonical_scope_equals_actual_json": true,
+    "protected_files_unchanged": 835
+  },
+  "signed_review_records": [
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/independent/ACTUAL_EXECUTION_REVIEW.json",
+      "sha256": "89697625b9aa110791da53332ba02714191c30b5accf239f5380242076529fbf",
+      "state": "CLEAR"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/independent/registration-consumer-review/REGISTRATION_REVIEW.json",
+      "sha256": "b18292550f6d2719c792aa67d21a7305b97287a36f63ad1919307bb996463013",
+      "state": "CLEAR_METADATA_ONLY_REGISTRATION_AND_EXACT_BYTE_PRESERVATION"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/independent/registration-consumer-review/CONSUMER_DAG_REVIEW.json",
+      "sha256": "dfe672373566a701811bf65047fed95e48ba15856ab330120d7b60bd55a809d1",
+      "state": "CLEAR_SIX_CONSUMERS_DAG_OLD_TEN_PRESERVATION_AND_ACTUAL_LOCAL_GATES"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/independent/CANONICAL_UMC_EXECUTION_REVIEW.json",
+      "sha256": "a6e1fbdc8d755684f9d5e21727e0c9784c940fcba5a50de526cc803d71931000",
+      "state": "ACTUAL_CANONICAL_UMC_FULL_CLEAR"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/local-gates/LOCAL_GATE_SUMMARY.json",
+      "sha256": "3e4cb2e284f2bf01d77520ae7a998013a93fc86f2735044195d7a17080b5deb1",
+      "state": "REQUIRED_LOCAL_GATES_PASS"
+    }
+  ],
+  "actual_local_gate_receipts": [
+    {
+      "gate": "parser-01",
+      "receipt_sha256": "1dabc87bf3ff8c1a00eb16ad173c13fd71a9c00949e42b6db0f33205f85c03f5",
+      "status_field": "status",
+      "state": "PASS",
+      "exit_code": 0
+    },
+    {
+      "gate": "dag-01",
+      "receipt_sha256": "178f6fecffce9d37365a574e6ae05f31a2676ef414b901c1209bc9378265fe36",
+      "status_field": "state",
+      "state": "PASS",
+      "exit_code": 0
+    },
+    {
+      "gate": "reuse-01",
+      "receipt_sha256": "eab49e8dfe1ce6eabb61dae048e766f3a474a74adae4c26c4b7a067ce94eb234",
+      "status_field": "state",
+      "state": "PASS",
+      "exit_code": 0
+    },
+    {
+      "gate": "fkrg-01",
+      "receipt_sha256": "51d9e76473d89286b8dd6ebbd9a07f6785c41c2514da3d756c0f2f08c8d03d2b",
+      "status_field": "state",
+      "state": "PASS",
+      "exit_code": 0
+    },
+    {
+      "gate": "clone-01",
+      "receipt_sha256": "518569eb6345554b04818fe3d98fb59a82a35e5b8fc7a0d9aecebc2348b04c13",
+      "status_field": "state",
+      "state": "PASS",
+      "exit_code": 0
+    }
+  ],
+  "accepted_counts": {
+    "module_count": 691,
+    "new_public_source_theorems": 73,
+    "native_owned_theorem_constants": 249,
+    "new_registered_direct_edges": 114,
+    "current_registered_public_theorems": 4345,
+    "current_registered_direct_edges": 5728,
+    "overlay_count": 11
+  },
+  "canonical_native_scope": {
+    "theorem_constants": 1404,
+    "private_theorem_constants": 176,
+    "confirmed_public_source_candidates": 672,
+    "other_native_public_constants": 556,
+    "source_modules": 92,
+    "scope_authority": "Lean compiled source modules, including private and generated theorem constants",
+    "other_native_public_scope": "Native nonprivate constants outside the FKRG source candidate list; typically generated, not inferred to be source declarations"
+  },
+  "frozen_authority": {
+    "pids": 106,
+    "generated": 11,
+    "adapters": 89,
+    "boundaries": 6,
+    "counted_generators": 4
+  },
+  "global_strong_unified_closure": "NOT_ESTABLISHED",
+  "scientific_external_evidence": "UNVERIFIED",
+  "canonical_scope_note": "The unchanged canonical auditor checked temporary native records and emitted the 1404-constant aggregate. The complete 249-constant increment was separately preserved and reviewed. This acceptance does not enlarge either scope.",
+  "history": "Original failures, PENDING records, native01 interruption, cache qualifications and chronological reviews remain unchanged. Earlier review remaining-work lists are historical and are discharged only by the later separately bound evidence where applicable.",
+  "reviewer_check_history": [
+    {
+      "attempt": "First inline manifest read check",
+      "tool_chunk_id": "9b327d",
+      "exit_code": 1,
+      "error": "KeyError: state on the original parser receipt, whose schema uses status",
+      "acceptance_written": false,
+      "bound_files_modified": false
+    },
+    {
+      "attempt": "Corrected inline manifest read check",
+      "resolution": "Read parser status and other four state fields according to their actual schemas; require PASS and exit 0 for each."
+    }
+  ],
+  "not_claimed": [
+    "immutable candidate Git-object acceptance",
+    "PR or CI acceptance",
+    "merge or resulting-main acceptance",
+    "Mac/cloud resulting-main tree equality",
+    "remote branch retirement",
+    "new empirical evidence"
+  ],
+  "execution_policy": "No tests, Lean, Lake, Mac, native or canonical audit rerun. Existing actual records and signed reviews reused.",
+  "mutations": "Only the new acceptance JSON and short companion Markdown are created. No bound file, Lean source, prior review or raw record is changed."
+}

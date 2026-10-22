@@ -1,0 +1,17 @@
+[Reading 14 new lines (total: 14 lines)]
+
+{"module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization", "source_sha256": "8306c376acbf26db8ae70a5064460c9e423da527a0c89efe4ec18e0e6150191f", "exit_code": 0, "seconds": 5.195062625, "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "args": ["/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake", "env", "lean", "-o", ".lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryRealization.olean", "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryRealization.lean"]}
+
+{"module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety", "source_sha256": "b4b4702b02f66ac51bab10de38c54c6e24b02636b554a891513ee39d609bcaf8", "exit_code": 1, "seconds": 3.693334084, "log_sha256": "06c5b75b0d966138a7af044d6de60f313fe2678c92489fee4163a33f2ac5162b", "args": ["/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake", "env", "lean", "-o", ".lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.olean", "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean"]}
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean:195:14: warning: `Set.preimage_setOf_eq` has been deprecated: Use `Set.preimage_ofPred_eq` instead
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean:195:2: error: Type mismatch: After simplification, term
+  Eq.symm h
+ has type
+  (stateTrajMeasure controller p₀ q P) {a | a n ∈ K} =
+    (microLaw p₀ q P controller.policy n).toMeasure {a | (stateHistoryEquiv n) (eraseActionHistory n a) ⟨n, ⋯⟩ ∈ K}
+but is expected to have type
+  (stateTrajMeasure controller p₀ q P) {ω | ω n ∈ K} =
+    (microLaw p₀ q P controller.policy n).toMeasure {h | riskLastState n h ∈ K}
+
+FINAL_STATE=FAIL
+✅ Process completed with exit code 0 (runtime: 8.98s)
