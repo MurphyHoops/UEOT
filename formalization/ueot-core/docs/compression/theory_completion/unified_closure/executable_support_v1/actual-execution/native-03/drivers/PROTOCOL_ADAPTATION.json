@@ -1,0 +1,75 @@
+{
+  "schema": "EXECUTABLE_SUPPORT_PROTOCOL_ADAPTATION_V1",
+  "kind": "register_overlay",
+  "baseline_ref": "c54f1a96b25e57a3484da46d38c1c9f668d53a34",
+  "frozen_inputs_sha256": "6976ab4f9ef671de534e753e14246dde5cedc5b44490a54f78d4876b52e694e2",
+  "source_tree_sha256": "f95a19e8c0ad5f7295f8166d5a5fc212af5a8af40e2e2740673aaaf425b6e09d",
+  "immutable_driver": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/longterm_control_statistics_v1/native_protocol/register_overlay.py",
+    "sha256": "3679552fc1599894cd1cf0ce5aba3324c1d13d885fbcdd6c96fc1796dbc1c939"
+  },
+  "executed_source_sha256": "a629e3b6d1c8f874a939113bb252de2f2ac742fc195a69f9bf67207742e1fcd5",
+  "substitutions": [
+    {
+      "old": "\"LONGTERM_ACTUAL_FULL_BUILD_V1\"",
+      "new": "\"EXECUTABLE_SUPPORT_ACTUAL_FULL_BUILD_V1\"",
+      "occurrences": 1
+    },
+    {
+      "old": "NAME = \"LONGTERM_CONTROL_STATISTICS\"",
+      "new": "NAME = \"EXECUTABLE_SUPPORT\"",
+      "occurrences": 1
+    },
+    {
+      "old": "PROTOCOL = PACKET + \"longterm_control_statistics_v1/native_protocol/\"",
+      "new": "PROTOCOL = PACKET + \"executable_support_v1/native_protocol/\"",
+      "occurrences": 1
+    },
+    {
+      "old": "\"longterm_control_statistics_v1\"",
+      "new": "\"executable_support_v1\"",
+      "occurrences": 1
+    },
+    {
+      "old": "EXPECTED_SOURCE = \"60cd5f8ab161c5b51394463c466947a4c6a6c1742ecdcd9c2bbfc41c0c06bd31\"",
+      "new": "EXPECTED_SOURCE = 'f95a19e8c0ad5f7295f8166d5a5fc212af5a8af40e2e2740673aaaf425b6e09d'",
+      "occurrences": 1
+    },
+    {
+      "old": "PRIOR_MODULES, MODULES, PRIOR_PUBLIC, NEW_PUBLIC = 666, 678, 4147, 90",
+      "new": "PRIOR_MODULES, MODULES, PRIOR_PUBLIC, NEW_PUBLIC = 694, 696, 4357, 33",
+      "occurrences": 1
+    },
+    {
+      "old": "(PRIOR_MODULES, MODULES, PRIOR_PUBLIC, 8)",
+      "new": "(PRIOR_MODULES, MODULES, PRIOR_PUBLIC, 12)",
+      "occurrences": 1
+    },
+    {
+      "old": "require(hinted == 27,",
+      "new": "require(hinted == 17,",
+      "occurrences": 1
+    },
+    {
+      "old": "NATIVE, OVERLAY, \"development_lexical_reuse_hints.json\")",
+      "new": "NATIVE, OVERLAY, \"development_lexical_reuse_hints.json\", 'PROTOCOL_ADAPTATION.json', 'FROZEN_INPUTS.json', 'protocol_adapter.py', 'integration_native.py', 'immutable_integration_native.py', 'executed_integration_native.py')",
+      "occurrences": 1
+    },
+    {
+      "old": "for name in (\"FULL_BUILD_RECEIPT.json\", \"full-build.log\"):",
+      "new": "for name in (\"FULL_BUILD_RECEIPT.json\", \"full-build.log\", 'PROTOCOL_ADAPTATION.json', 'FROZEN_INPUTS.json', 'protocol_adapter.py', 'full_build.py', 'immutable_full_build.py', 'executed_full_build.py'):",
+      "occurrences": 1
+    },
+    {
+      "old": "    provenance = {\"schema\": NAME + \"_REGISTRATION_PROVENANCE_V1\", \"inputs\": inputs,",
+      "new": "    for name, content in ADAPTED_REGISTRATION_INPUTS.items():\n        record(\"executed_registration_protocol\", \"executed-memory:\" + name,\n               (archive / \"drivers\" / name).relative_to(repo), content)\n    provenance = {\"schema\": NAME + \"_REGISTRATION_PROVENANCE_V1\", \"inputs\": inputs,",
+      "occurrences": 1
+    }
+  ],
+  "wrapper": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/executable_support_v1/native_protocol/register_overlay.py",
+    "sha256": "71f810000fdafa39c1cc28e0e5a219521e0e385fd7ae30fa0febfcbcfb3357bf"
+  },
+  "adapter_sha256": "4458057499f6f8df768527dc1caa93fc82f3081aeb0ff789b1c688647a77026f",
+  "claim": "Only listed scope/schema/metadata and export recursion-limit substitutions; actual execution, full census, raw-type comparisons, fixed-edge replay, and source/runtime identity gates remain in the executed predecessor code."
+}

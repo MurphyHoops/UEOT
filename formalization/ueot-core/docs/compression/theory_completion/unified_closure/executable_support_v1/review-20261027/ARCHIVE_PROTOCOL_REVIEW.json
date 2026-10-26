@@ -1,0 +1,199 @@
+{
+  "schema": "UEOT_EXECUTABLE_SUPPORT_ARCHIVE_PROTOCOL_INDEPENDENT_REVIEW_V1",
+  "observed_at": "2026-10-26T17:38:40.079662+00:00",
+  "status": "CLEAR",
+  "baseline_ref": "c54f1a96b25e57a3484da46d38c1c9f668d53a34",
+  "candidate_commit": "NOT_YET_BOUND",
+  "review_scope": "Read-only archive, registration, source identity, prior overlay immutability and protocol adaptation. Consumer work has its own review.",
+  "source_binding": {
+    "source_tree_sha256": "f95a19e8c0ad5f7295f8166d5a5fc212af5a8af40e2e2740673aaaf425b6e09d",
+    "current_files_and_full_build_manifest_matched": 696,
+    "old_source_files_byte_identical_to_baseline": 693,
+    "only_changed_old_source": "TheoryCompletion.lean: exactly the two new imports",
+    "new_module_sha256": {
+      "ExecutableSupportController.lean": "5e19fb3cba080f8c20726626801e457321af6a12b4c8dedc4ae52f842d2bb333",
+      "ExecutableSupportControllerWitness.lean": "e737f0caf8127eb233ccf85366e7d5b5b1cbb8db8d2aac16db7af32a6b18ba73"
+    },
+    "environment_files_verified": 3
+  },
+  "archive_root": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/executable_support_v1/actual-execution/",
+  "execution_binding": {
+    "full_build_receipt_sha256": "f83ea3eed8de7f4d6958d505d417dd770926f190b0b02793c1b9c9c933ffe902",
+    "full_build": {
+      "exit_code": 0,
+      "seconds": 79.232,
+      "log_name": "full-build.log",
+      "log_sha256": "798674eff281780864dddc09331b356ce70f3fd93f3b38eb8f7eeb264c148d95"
+    },
+    "native_status_sha256": "7cdc4edb16b284c800bd64d713e4606891fa62eab482eb0195289d559e60b681",
+    "native_results": [
+      {
+        "label": "native_export",
+        "exit_code": 0,
+        "seconds": 480.086,
+        "log_sha256": "cb5c5153efabd069bfafc9663b4f60c829382a1136fce19494e8ba4afc9fc15b"
+      },
+      {
+        "label": "fixed_verifier",
+        "exit_code": 0,
+        "seconds": 475.909,
+        "log_sha256": "cb5c5153efabd069bfafc9663b4f60c829382a1136fce19494e8ba4afc9fc15b"
+      }
+    ],
+    "initial_and_fixed_log_bytes_and_full_json_identical": true,
+    "public_theorems": 33,
+    "native_owned_theorem_constants": 73,
+    "private_constants_included": 4,
+    "standard_axioms_only": true,
+    "cross_type_comparisons": 143781,
+    "internal_type_comparisons": 528,
+    "collisions": 0,
+    "registered_direct_dependency_edges_verified": 60,
+    "fixed_verifier_checks_exact_per_theorem_dependency_sets_and_full_owned_census": true
+  },
+  "registration": {
+    "receipt_sha256": "7b80a2d2664334c818f2e4acbf7d078b1baf2b34c7747bfce2eef39feab89e27",
+    "state": "PASS_METADATA_ONLY_CONSUMER_UNCHANGED",
+    "top_level_artifacts_sha256": {
+      "EXECUTABLE_SUPPORT_REUSE_OVERLAY_V1.json": "861becca60f6c406f576658ff8a5ccd6c812addbd79a56f05a1823becf9b7f46",
+      "EXECUTABLE_SUPPORT_NATIVE_V1.json": "9e2be23986e5d5f38266e267964feac9af18cc8e3f3f17bdf18a356cc8f06592",
+      "VERIFY_EXECUTABLE_SUPPORT_OVERLAY_TYPES.lean": "5fcb4fcb16ae638fdc1f04385f6914910004a704d21edc8d082de9cbb24d8fe7"
+    },
+    "raw_overlay_sha256": "853573a3a4ccdc44c444be5cc912730e4e7b24cf0a7940f299252eb771ac1f80",
+    "only_added_keys": [
+      "lexical_pr_preflight",
+      "registration_provenance"
+    ],
+    "stripping_added_keys_exactly_restores_raw_json": true,
+    "top_level_registered_overlay_native_and_verifier_equal_archived_bytes": true,
+    "all_original_archived_input_bytes_preserved": true,
+    "new_provenance_reference_count": 39,
+    "new_original_verification_methods": {
+      "actual_original_file_bytes": 28,
+      "immutable_helper_baseline_git_blob": 4,
+      "baseline_git_blob": 1,
+      "reconstructed_and_hashed_protocol_archive": 6
+    },
+    "git_object_preflight": "NOT_PERFORMED_SEPARATE_GATE"
+  },
+  "old_overlay_binding": {
+    "baseline_ref": "c54f1a96b25e57a3484da46d38c1c9f668d53a34",
+    "count": 12,
+    "all_twelve_byte_identical_to_baseline": true,
+    "sha256_by_filename": {
+      "CALIBRATED_DEFECT_REUSE_OVERLAY_V1.json": "b48607f7b68bfcd8aef0d2417d0111d66e374001114fd38048602b4557f8adc2",
+      "DEFECT_GAUGE_REUSE_OVERLAY_V1.json": "182efa3fc030cac3ba2082fc13df461a8e165411b58582b5a85cb05343c263b9",
+      "DEPLOYMENT_JOINT_REUSE_OVERLAY_V1.json": "72fd346f3ab3adca4cb29de1f5c19cc6742555e3003fc32efa345eabbda850f2",
+      "FINITE_HORIZON_RISK_REUSE_OVERLAY_V1.json": "c7e4f561e438f6f3eef3112ecf7ceeea59e1cb98c10b5b20c65490eb7919d480",
+      "FINITE_MEMORY_REUSE_OVERLAY_V1.json": "cd697c44f7a5d7e4b73a0b53d7477b2e1e8aee43ab55e105b515cd531fd63d38",
+      "LONGTERM_CONTROL_STATISTICS_REUSE_OVERLAY_V1.json": "cb5792eff95b2a1386a7c0832eeeedc5a283f212b462f2c6c6d3342dd5e1bb06",
+      "MINCORE_REUSE_OVERLAY_V1.json": "90df2d97cca4383032d9f4729b6698252b985d657583275c6755c3cfafad84d8",
+      "PATH_REALIZATION_REUSE_OVERLAY_V1.json": "8e72781498acf49496733ace5dfbf80257830ff3a6d85e1b02e66474f936ec3b",
+      "REGISTERED_INTERFACES_REUSE_OVERLAY_V1.json": "6667bf7a908d713394e5daae5291c3a82f1ff7b3da144e2addf3da5959d0e781",
+      "STATISTICAL_RISK_REUSE_OVERLAY_V1.json": "f0d0ea91584773c24eeed59f8f1915102b92c318bf864f3b08a4c7093552c755",
+      "SUPPORT_VIABILITY_REUSE_OVERLAY_V1.json": "2af284000d6a6c25f67e9356a236817b22334dbfba777ca2eaf37e8060a3a45e",
+      "TOTAL_KERNEL_MEMORY_REUSE_OVERLAY_V1.json": "a2f8966fedd58492b28d2e0235329d5994d27ee74d3deba0c081b22ce54c478f"
+    }
+  },
+  "all_provenance": {
+    "overlays_scanned": 13,
+    "references_checked": 177,
+    "unique_archive_paths": 173,
+    "all_files_exist_with_matching_sha256": true,
+    "nonempty_provenance_counts": {
+      "EXECUTABLE_SUPPORT_REUSE_OVERLAY_V1.json": 39,
+      "FINITE_MEMORY_REUSE_OVERLAY_V1.json": 39,
+      "LONGTERM_CONTROL_STATISTICS_REUSE_OVERLAY_V1.json": 21,
+      "PATH_REALIZATION_REUSE_OVERLAY_V1.json": 39,
+      "TOTAL_KERNEL_MEMORY_REUSE_OVERLAY_V1.json": 39
+    },
+    "verified_reference_set_sha256": "93f2217426aa139f336eb0fac7d039a389b2f1ec5bf8b793148628995a07e8d0",
+    "details": "Original registration_provenance.inputs are retained in the overlay JSON files; they are not recopied here."
+  },
+  "protocol_review": {
+    "method": "Read exact wrapper/adapter source and each immutable-to-executed diff; independently apply every archived substitution, compare exact executed bytes and baseline originals, and check gate AST counts. No driver or Lean invocation was reexecuted.",
+    "allowed_changes": "Packet/schema/name, exact new scope and census, frozen source fingerprint, preservation of additional provenance, exporter maxRecDepth 16384.",
+    "removed_or_bypassed_gate_count": 0,
+    "preserved_gates": [
+      "Full lake build UEOT real process exit and log",
+      "Complete source/runtime identity and environment capture in original full-build protocol",
+      "Exact frozen source and protocol hashes",
+      "Prior source/public/overlay census and immutable helper/consumer identity",
+      "Complete module-owned theorem/axiom census including private and generated constants",
+      "All public raw stored-type comparisons against registered prior and internally",
+      "Fixed verifier repeats comparisons and checks exact dependency sets and native census",
+      "Full fixed replay JSON equality with original native output",
+      "Registration refuses absent/mismatched actual artifacts and preserves raw bytes"
+    ],
+    "wrapper_checks": "Wrappers execute the adapted original functions and archive their exact executed source; adapter rejects optimized Python, validates exact replacement anchor occurrence counts, and checks frozen manifest/source/protocol identity before execution.",
+    "drivers": [
+      {
+        "kind": "full_build",
+        "adaptation_sha256": "c96f077c68b95513d4c1f8eefb376d96bf00cf68a2ad902ca9fd06535ed0b905",
+        "immutable_sha256": "132b1c96d38a4462ef407ee31ed94378c2025996b2a7b603e297fd9d35cf86de",
+        "executed_sha256": "765591e66fdf939f39b61f57052720ff7e09b29c6d593f3b56467eb7d08196eb",
+        "immutable_exact_baseline_match": true,
+        "listed_substitutions_reconstruct_executed_bytes": true,
+        "reviewed_substitution_count": 1,
+        "gate_ast_counts_before_and_after": {
+          "assert_nodes": 0,
+          "require_calls": 0
+        }
+      },
+      {
+        "kind": "integration_native",
+        "adaptation_sha256": "512ee69220600ab2e2550976600a604ca8c47e0de84685bed61be551786fe701",
+        "immutable_sha256": "d4708782bbb14360002f119715ba51f96c05e2e632694ba64c56c3d38ce8a924",
+        "executed_sha256": "3b44fcffd4ff2a650f3f7e7bcf4c8a86de35968a7b3bc2f2eb947a4dcaa13713",
+        "immutable_exact_baseline_match": true,
+        "listed_substitutions_reconstruct_executed_bytes": true,
+        "reviewed_substitution_count": 5,
+        "gate_ast_counts_before_and_after": {
+          "assert_nodes": 44,
+          "require_calls": 0
+        }
+      },
+      {
+        "kind": "register_overlay",
+        "adaptation_sha256": "145c31dfeb54ef4ee26e2390bef69f4798482e6af5522ceb127050ec305149c7",
+        "immutable_sha256": "3679552fc1599894cd1cf0ce5aba3324c1d13d885fbcdd6c96fc1796dbc1c939",
+        "executed_sha256": "a629e3b6d1c8f874a939113bb252de2f2ac742fc195a69f9bf67207742e1fcd5",
+        "immutable_exact_baseline_match": true,
+        "listed_substitutions_reconstruct_executed_bytes": true,
+        "reviewed_substitution_count": 11,
+        "gate_ast_counts_before_and_after": {
+          "assert_nodes": 0,
+          "require_calls": 61
+        }
+      }
+    ]
+  },
+  "retained_failed_native_attempts": [
+    {
+      "status_sha256": "3c1d72cb506e58827b8eca2990fc48da74c3864ed57a09ccf1064d3b8d990cd2",
+      "log_sha256": "bbac2825000609ffacf7bae19fc9d10af46a681904bf6a2a71b4a01b9c3ae606",
+      "resolution_sha256": "6fef2fe42b3bf4133c33736041e928e200d8f56a964e4f40284f20b8ba242e1f",
+      "failure_exit_1_verified": true
+    },
+    {
+      "status_sha256": "dbb5c714a135192077a6657b8c67b7dcf8329c65b7b1edba6f4b9f2227977d88",
+      "log_sha256": "0bc640e59f63fc90153b947baae4e75ff9c548575653b99ceeb7389d121f6fd6",
+      "resolution_sha256": "f9595cd4a6ea927b9554e9f50196eadd7c745b9885bf24b2433e89bc0c07c542",
+      "failure_exit_1_verified": true
+    }
+  ],
+  "prior_review_archive_snapshots": {
+    "FINAL_SOURCE_REVIEW.json": "5014548d8d01290df1d2235cfb44ee4926c2335fa437aae9f8e8f1437309e0e6",
+    "TYPED_REUSE_REVIEW.json": "f7b09e8e8f18abab77cce96af3889af0fbcb59aea07499e7e323579c49460910"
+  },
+  "review_execution": {
+    "repository_writes": false,
+    "lean_build_native_or_registration_rerun": false,
+    "consumer_run_or_edits": false,
+    "cloud_ci": false,
+    "gi_writes": false,
+    "only_review_output_under_tmp": true
+  },
+  "blocking_findings": [],
+  "remaining_boundary": "Exact committed Git candidate binding. Consumer/governance checks are a separate review and are not reexecuted here. No counted-core or scientific-closure promotion."
+}

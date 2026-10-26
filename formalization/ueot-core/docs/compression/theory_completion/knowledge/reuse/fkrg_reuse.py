@@ -34,6 +34,7 @@ OVERLAY_PATHS = [
     HERE / "FINITE_MEMORY_REUSE_OVERLAY_V1.json",
     HERE / "PATH_REALIZATION_REUSE_OVERLAY_V1.json",
     HERE / "TOTAL_KERNEL_MEMORY_REUSE_OVERLAY_V1.json",
+    HERE / "EXECUTABLE_SUPPORT_REUSE_OVERLAY_V1.json",
 ]
 OVERLAY_TYPE_CHECKS = [
     HERE / "VERIFY_MINCORE_OVERLAY_TYPES.lean",
@@ -48,6 +49,7 @@ OVERLAY_TYPE_CHECKS = [
     HERE / "VERIFY_FINITE_MEMORY_OVERLAY_TYPES.lean",
     HERE / "VERIFY_PATH_REALIZATION_OVERLAY_TYPES.lean",
     HERE / "VERIFY_TOTAL_KERNEL_MEMORY_OVERLAY_TYPES.lean",
+    HERE / "VERIFY_EXECUTABLE_SUPPORT_OVERLAY_TYPES.lean",
 ]
 OVERLAY_SHA256S = [
     "90df2d97cca4383032d9f4729b6698252b985d657583275c6755c3cfafad84d8",
@@ -62,6 +64,7 @@ OVERLAY_SHA256S = [
     "cd697c44f7a5d7e4b73a0b53d7477b2e1e8aee43ab55e105b515cd531fd63d38",
     "8e72781498acf49496733ace5dfbf80257830ff3a6d85e1b02e66474f936ec3b",
     "a2f8966fedd58492b28d2e0235329d5994d27ee74d3deba0c081b22ce54c478f",
+    "861becca60f6c406f576658ff8a5ccd6c812addbd79a56f05a1823becf9b7f46",
 ]
 OVERLAY_TYPE_CHECK_SHA256S = [
     "23112dd2df1e1233c664a98e3d3118275cac1053e0ed8f3d08feb4061cfcb550",
@@ -76,6 +79,7 @@ OVERLAY_TYPE_CHECK_SHA256S = [
     "0a39a7605b4454f6410bc9f382dc79feb07ef42bc655db1a900e24fd8e73b762",
     "430aae70eec2c7cf87530020e24a8e43beae7021e2f8282f4c0c9b2949195714",
     "a9486d70eae7be47c7294bac05e6adced5245c463547e1639618ee8985fc553f",
+    "5fcb4fcb16ae638fdc1f04385f6914910004a704d21edc8d082de9cbb24d8fe7",
 ]
 
 # Independent immutable digests calculated from main after merged PR #314.
@@ -572,7 +576,7 @@ def status(data: dict):
             x["lexical_pr_preflight"]["new_theorems_with_lexical_reuse_candidates"]
             for x in overlays),
         "crossfile_exact_code_clone_candidates": len(data["clones"]),
-        "source_of_truth": "immutable 2026-10-10 Lean proof snapshot plus governed pinned MINCORE, calibrated-defect, defect-gauge, finite-horizon-risk, statistical-risk, deployment-joint, support-viability, registered-interfaces, longterm-control-statistics, finite-memory, path-realization and total-kernel-memory overlays, Lean kernel, and canonical Core/Compression ledgers",
+        "source_of_truth": "immutable 2026-10-10 Lean proof snapshot plus governed pinned MINCORE, calibrated-defect, defect-gauge, finite-horizon-risk, statistical-risk, deployment-joint, support-viability, registered-interfaces, longterm-control-statistics, finite-memory, path-realization, total-kernel-memory and executable-support overlays, Lean kernel, and canonical Core/Compression ledgers",
         "scientific_closure": "NOT_ESTABLISHED"
     }
 

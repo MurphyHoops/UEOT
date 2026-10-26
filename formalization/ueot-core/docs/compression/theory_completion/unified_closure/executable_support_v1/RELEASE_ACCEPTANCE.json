@@ -1,0 +1,167 @@
+{
+  "schema": "EXECUTABLE_SUPPORT_RELEASE_ACCEPTANCE_V1",
+  "state": "LOCAL_MATH_AND_EXECUTION_VERIFIED_PUBLICATION_GATES_SEPARATE",
+  "baseline_ref": "c54f1a96b25e57a3484da46d38c1c9f668d53a34",
+  "source_tree_sha256": "f95a19e8c0ad5f7295f8166d5a5fc212af5a8af40e2e2740673aaaf425b6e09d",
+  "bundled_modules": 696,
+  "scope": "R1 explicit finite-table executable support controller and same-source correctness; not global mathematical closure",
+  "source_files": [
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+      "sha256": "5e19fb3cba080f8c20726626801e457321af6a12b4c8dedc4ae52f842d2bb333"
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+      "sha256": "e737f0caf8127eb233ccf85366e7d5b5b1cbb8db8d2aac16db7af32a6b18ba73"
+    }
+  ],
+  "actual_full_build": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/executable_support_v1/actual-execution/full-build-04/FULL_BUILD_RECEIPT.json",
+    "sha256": "f83ea3eed8de7f4d6958d505d417dd770926f190b0b02793c1b9c9c933ffe902",
+    "state": "PASS",
+    "exit_code": 0,
+    "seconds": 79.232,
+    "jobs_including_cache": 9402
+  },
+  "actual_runtime": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/executable_support_v1/actual-execution/runtime-02/RUNTIME_RECEIPT.json",
+    "sha256": "183e0f2e79e1a1c5d4a1f1e99566dfa2ecd3720a9766b4e027bda2aca04129ab",
+    "state": "PASS",
+    "safe_steps": 12,
+    "checks": [
+      "state/support membership",
+      "certified selected action",
+      "proper safe-set exclusion of cemetery",
+      "exact successor memory",
+      "mixed/incomplete/empty input rejected",
+      "empty-memory non-first fallback",
+      "forward/reverse first-passing order"
+    ],
+    "infinite_horizon_basis": "The Lean same-source theorems, not finite runtime extrapolation"
+  },
+  "actual_native_and_fixed_replay": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/executable_support_v1/actual-execution/native-03/STATUS.json",
+    "sha256": "7cdc4edb16b284c800bd64d713e4606891fa62eab482eb0195289d559e60b681",
+    "state": "PASS_BOTH_REAL_EXECUTIONS",
+    "public_source_theorems": 33,
+    "all_owned_theorem_constants": 73,
+    "private_constants": 4,
+    "other_native_public_constants": 36,
+    "registered_proof_edges": 60,
+    "cross_stored_type_comparisons": 143781,
+    "internal_stored_type_comparisons": 528,
+    "type_collisions": 0,
+    "complete_json_equal": true,
+    "results": [
+      {
+        "label": "native_export",
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/executable-support-evidence-20261027/native-03/EXECUTABLE_SUPPORT_NATIVE_EXPORT.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 480.086,
+        "log_sha256": "cb5c5153efabd069bfafc9663b4f60c829382a1136fce19494e8ba4afc9fc15b"
+      },
+      {
+        "label": "fixed_verifier",
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/executable-support-evidence-20261027/native-03/VERIFY_EXECUTABLE_SUPPORT_OVERLAY_TYPES.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 475.909,
+        "log_sha256": "cb5c5153efabd069bfafc9663b4f60c829382a1136fce19494e8ba4afc9fc15b"
+      }
+    ],
+    "type_scope": "Raw compiled stored-type definitional comparison; neither general logical equivalence nor scientific novelty"
+  },
+  "actual_registration": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/executable_support_v1/actual-execution/native-03/REGISTRATION_RECEIPT.json",
+    "sha256": "7b80a2d2664334c818f2e4acbf7d078b1baf2b34c7747bfce2eef39feab89e27"
+  },
+  "registered_overlay": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/EXECUTABLE_SUPPORT_REUSE_OVERLAY_V1.json",
+    "sha256": "861becca60f6c406f576658ff8a5ccd6c812addbd79a56f05a1823becf9b7f46"
+  },
+  "actual_canonical_umc_axioms": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/executable_support_v1/actual-execution/checks-01/UMC_FULL_AUDIT_R1_FINAL.json",
+    "sha256": "c094fa88cabddd64460e55b110e56fbc6d9e6b01c4bd218cf6832e9d155b4e21",
+    "modules": 97,
+    "public_source_candidates": 717,
+    "owned_native_constants": 1557,
+    "standard_axioms_only": true
+  },
+  "actual_checks": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/executable_support_v1/actual-execution/checks-01/CHECKS.json",
+    "sha256": "3925a3e1eb000012e603b5ef9dafca906a20c6d11be5d045de636d4dd7d51bc7"
+  },
+  "consumer_status": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/executable_support_v1/actual-execution/checks-01/REUSE_LIVE_STATUS.json",
+    "sha256": "e1e6fe996d371cb767807fcc82e721079408cc690dcd6da666a7942384c32fc8"
+  },
+  "tests": {
+    "reuse": 62,
+    "new_reuse_tests_included": 4,
+    "parser": 89,
+    "fkrg": 30,
+    "mission_negative_controls": 12,
+    "research_governance_pass_assertions": 38,
+    "immutable_clone_rows_reproduced": 68
+  },
+  "independent_source_review": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/executable_support_v1/review-20261027/FINAL_SOURCE_REVIEW.json",
+    "sha256": "5014548d8d01290df1d2235cfb44ee4926c2335fa437aae9f8e8f1437309e0e6"
+  },
+  "independent_typed_semantic_review": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/executable_support_v1/review-20261027/TYPED_REUSE_REVIEW.json",
+    "sha256": "f7b09e8e8f18abab77cce96af3889af0fbcb59aea07499e7e323579c49460910"
+  },
+  "typed_semantic_groups": 17,
+  "typed_semantic_pairs": 37,
+  "preserved_failures": [
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/executable_support_v1/actual-execution/failed-native-01/STATUS.json",
+      "sha256": "3c1d72cb506e58827b8eca2990fc48da74c3864ed57a09ccf1064d3b8d990cd2"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/executable_support_v1/actual-execution/failed-native-02/STATUS.json",
+      "sha256": "dbb5c714a135192077a6657b8c67b7dcf8329c65b7b1edba6f4b9f2227977d88"
+    }
+  ],
+  "failure_resolution": "Explicit generated-export recursion resource limit; closed Boolean fallback regression made private, still in all-owned census and actual runtime checks. No gate removed.",
+  "publication_gates": {
+    "immutable_git_object_preflight": "SEPARATE_AFTER_COMMIT",
+    "baseline_owned_candidate_path_validation": "SEPARATE_AFTER_COMMIT",
+    "exact_head_independent_review": "SEPARATE_AT_PR_BOUNDARY",
+    "resulting_main_local_build": "REQUIRED_AFTER_MERGE"
+  },
+  "cloud_ci": {
+    "state": "DISABLED_MANUALLY_NOT_RUN",
+    "source": {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/executable_support_v1/actual-execution/checks-01/CORE_WORKFLOW_STATES.json",
+      "sha256": "5cadbe8f96b235d6c688add02317d9317ff414937269b12d59d5a0ad3cc1573a"
+    }
+  },
+  "frozen_core": {
+    "source_theorems": 106,
+    "counted_generators": 4,
+    "generated_adapter_boundary": [
+      11,
+      89,
+      6
+    ],
+    "impact": "NONE"
+  },
+  "global_strong_mathematical_closure": "NOT_ESTABLISHED",
+  "external_scientific_evidence": "UNVERIFIED",
+  "remaining": "R2 finite-sample support no-go, genuine noisy oracle, accepted-event finite risk; optional later topics follow original audit scope and actual blockers",
+  "independent_archive_protocol_review": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/executable_support_v1/review-20261027/ARCHIVE_PROTOCOL_REVIEW.json",
+    "sha256": "0559c34c00d41f57b29854b510b0d3c25ab43303968277ca9612d2be5f19cefe"
+  }
+}

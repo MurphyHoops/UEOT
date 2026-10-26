@@ -20,26 +20,26 @@ class ProofReuseTests(unittest.TestCase):
 
     def test_evidence_and_sources_exact_baseline(self):
         res = reuse.status(self.data)
-        self.assertEqual(res["module_source_hashes_verified"], 694)
-        self.assertEqual(res["ueot_maintained_modules"], 683)
+        self.assertEqual(res["module_source_hashes_verified"], 696)
+        self.assertEqual(res["ueot_maintained_modules"], 685)
         self.assertEqual(res["vendor_modules"], 11)
-        self.assertEqual(res["public_source_theorems_with_direct_proof_graph"], 4357)
+        self.assertEqual(res["public_source_theorems_with_direct_proof_graph"], 4390)
         self.assertEqual(res["verified_equal_type_groups"], 37)
         self.assertEqual(res["equal_type_statement_names"], 77)
         self.assertEqual(res["near_type_not_defeq_candidate_pairs"], 15)
         self.assertEqual(res["crossfile_exact_code_clone_candidates"], 68)
-        self.assertEqual(res["overlay_public_theorems"], 564)
+        self.assertEqual(res["overlay_public_theorems"], 597)
         self.assertEqual(res["overlay_cross_snapshot_defeq_matches"], 0)
-        self.assertEqual(res["overlay_lexical_reuse_candidates"], 138)
-        self.assertEqual(res["overlay_count"], 12)
-        self.assertEqual(res["overlay_registered_direct_edges"], 868)
+        self.assertEqual(res["overlay_lexical_reuse_candidates"], 155)
+        self.assertEqual(res["overlay_count"], 13)
+        self.assertEqual(res["overlay_registered_direct_edges"], 928)
         self.assertEqual(res["overlay_historical_public_repairs"], 1)
         self.assertEqual(res["overlay_existing_registered_direct_edge_repairs"], 1)
         self.assertEqual(sum(len(json.loads(row["source_theorem_deps_json"]))
-                             for row in self.data["graph"].values()), 5755)
+                             for row in self.data["graph"].values()), 5815)
 
     def test_calibrated_defect_overlay_chain_and_kernel_graph(self):
-        self.assertEqual(len(self.data["overlays"]), 12)
+        self.assertEqual(len(self.data["overlays"]), 13)
         prior, current = self.data["overlays"][:2]
         self.assertEqual(prior["base_snapshot_modules"], 633)
         self.assertEqual(current["base_snapshot_modules"], 634)
@@ -1250,6 +1250,216 @@ class ProofReuseTests(unittest.TestCase):
         self.assertEqual(lexical["new_theorems_with_lexical_reuse_candidates"], 5)
 
 
+    def test_executable_support_native_ownership_and_registered_edges(self):
+        current = self.data["overlays"][12]
+        prefix = "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure."
+        modules = {prefix + name for name in (
+            "ExecutableSupportController", "ExecutableSupportControllerWitness")}
+        self.assertEqual(current["base_snapshot_modules"], 694)
+        self.assertEqual(current["prior_overlay"]["sha256"], reuse.OVERLAY_SHA256S[11])
+        self.assertEqual(current["baseline_ref"], "c54f1a96b25e57a3484da46d38c1c9f668d53a34")
+        self.assertEqual(current["source_checkpoint"],
+                         "worktree-sha256:f95a19e8c0ad5f7295f8166d5a5fc212af5a8af40e2e2740673aaaf425b6e09d")
+        self.assertEqual(current["source_checkpoint_kind"], "FROZEN_SOURCE_CONTENT_BEFORE_GIT_COMMIT")
+        self.assertEqual(current["scientific_role"],
+                         "UNCOUNTED_EXECUTABLE_SUPPORT_SYNTHESIS")
+        self.assertEqual(current["counted_core_impact"], "NONE")
+        self.assertEqual(current["scientific_closure"], "NOT_ESTABLISHED")
+        self.assertNotIn("historical_public_repairs", current)
+        self.assertNotIn("existing_proof_dependency_repairs", current)
+        self.assertEqual({row["module"] for row in current["added_modules"]}, modules)
+        evidence = current["native_export_evidence"]
+        artifact = reuse.REPO / evidence["path"]
+        native_sha = "9e2be23986e5d5f38266e267964feac9af18cc8e3f3f17bdf18a356cc8f06592"
+        self.assertEqual(evidence["sha256"], native_sha)
+        self.assertEqual(reuse.sha256(artifact.read_bytes()).hexdigest(), native_sha)
+        native = json.loads(artifact.read_text())
+        self.assertEqual(native["schema"], "EXECUTABLE_SUPPORT_NATIVE_EXPORT_V1")
+        self.assertEqual(native["collisions"], [])
+        scope = native["all_native_theorem_constants"]
+        by_name = {row["name"]: row for row in scope}
+        self.assertEqual(len(scope), 73)
+        self.assertEqual(len(by_name), len(scope))
+        self.assertEqual(sum(row["is_private"] for row in scope), 4)
+        self.assertEqual({row["source_module"] for row in scope}, modules)
+        fields = {"name", "source_module", "is_private", "level_parameters", "type",
+                  "direct_constants", "direct_theorem_constants", "axioms"}
+        for row in scope:
+            with self.subTest(native_symbol=row["name"]):
+                self.assertEqual(set(row), fields)
+                self.assertTrue(set(row["axioms"]) <= {"propext", "Classical.choice", "Quot.sound"})
+                self.assertTrue(set(row["direct_theorem_constants"]) <= set(row["direct_constants"]))
+        public = {row["name"]: row for row in current["public_theorems"]}
+        native_public = {row["name"]: row for row in native["public_source_theorems"]}
+        self.assertEqual(len(public), 33)
+        self.assertEqual(set(public), set(native_public))
+        self.assertEqual(sum(not row["is_private"] and row["name"] not in public
+                             for row in scope), 36)
+        edges = set()
+        for name, row in public.items():
+            with self.subTest(public_symbol=name):
+                full = by_name[name]
+                self.assertFalse(full["is_private"])
+                self.assertEqual(row["source_module"], full["source_module"])
+                for field in ("source_module", "level_parameters", "type", "direct_constants"):
+                    self.assertEqual(native_public[name][field], full[field])
+                actual = (set(full["direct_constants"]) & set(self.data["graph"])) - {name}
+                self.assertEqual(set(row["source_theorem_deps"]), actual)
+                self.assertEqual(set(native_public[name]["source_theorem_deps"]), actual)
+                edges.update((name, target) for target in actual)
+        certified = current["proof_dependency_certification"]
+        self.assertEqual(edges, {(row["source"], row["target"]) for row in certified["edges"]})
+        self.assertEqual(len(edges), certified["registered_direct_edges"])
+        self.assertEqual(len(edges), 60)
+        distinct = current["type_distinctness"]
+        self.assertEqual(distinct["registered_prior_theorems"], 4357)
+        self.assertEqual(distinct["definitionally_equal_matches"], 0)
+        for field, expected in (
+                ("cross_isDefEq_comparisons", 33 * 4357),
+                ("internal_isDefEq_comparisons", 33 * 32 // 2)):
+            self.assertEqual(distinct[field], expected)
+            self.assertEqual(native[field], expected)
+
+    def test_executable_support_same_source_and_semantic_reuse(self):
+        prefix = "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure."
+        synthesis = prefix + "ExecutableSupportSynthesis."
+        expected = {
+            "selectedAction_step": {
+                prefix + "SupportViabilityClosure.supportWinning_step",
+                prefix + "SupportViabilityClosure.supportWinning_subset_arena",
+                synthesis + "stepCheck_iff"},
+            "program_memory_eq_traceSupport": {
+                synthesis + "Program.toController_memory", synthesis + "memory_eq_traceSupport"},
+            "synthesize_isSome_iff_exists_all_times_policy": {
+                synthesis + "synthesize_isSome_iff",
+                prefix + "SupportViabilityClosure.finiteMemoryCheck_iff_exists_all_times_policy"},
+            "zero_uncovered": {
+                prefix + "SupportViabilityClosure.zero_uncovered_iff_support_certified",
+                synthesis + "memory_eq_traceSupport", synthesis + "supported_histories_winning",
+                synthesis + "selectedAction_step"},
+            "all_times_physical_safe": {
+                prefix + "FiniteMemoryPhysicalSafety.controller_all_times_physical_safe",
+                synthesis + "zero_uncovered"},
+            "synthesize_some_killed_mass_one": {
+                prefix + "HomogeneousMemorySurvival.actual_finite_survival_eq_killed_mass",
+                synthesis + "synthesize_some_zero_uncovered",
+                prefix + "FiniteMemoryPhysicalSafety.actual_finite_safety_one"},
+        }
+        for name, dependencies in expected.items():
+            with self.subTest(symbol=name):
+                item = reuse.explain(self.data, synthesis + name)
+                self.assertEqual(set(item["direct_existing_source_theorem_uses"]), dependencies)
+        for row in self.data["overlays"][12]["public_theorems"]:
+            item = reuse.explain(self.data, row["name"])
+            self.assertEqual(item["role"], "UNCOUNTED_EXECUTABLE_SUPPORT_SYNTHESIS")
+            self.assertEqual(item["area"], "V3/Compression/TheoryCompletion/UnifiedClosure")
+
+    def test_executable_support_witnesses_and_actual_runtime(self):
+        current = self.data["overlays"][12]
+        native = json.loads((reuse.REPO / current["native_export_evidence"]["path"]).read_text())
+        by_name = {row["name"]: row for row in native["all_native_theorem_constants"]}
+        prefix = "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure."
+        witness = prefix + "ExecutableSupportControllerWitness."
+        for suffix in ("finite_input_checks", "synthesis_rejections", "computed_flip_steps",
+                       "action_order_is_effective"):
+            row = by_name[witness + suffix]
+            self.assertIn("of_decide_eq_true", row["direct_theorem_constants"])
+        private = {}
+        for suffix in ("empty_memory_uses_fallback", "mixed_support_exact"):
+            rows = [row for row in by_name.values() if row["name"].endswith("." + suffix)]
+            self.assertEqual(len(rows), 1)
+            row = rows[0]
+            self.assertTrue(row["is_private"])
+            self.assertNotIn(row["name"], self.data["graph"])
+            private[suffix] = row
+        self.assertIn("of_decide_eq_true", private["empty_memory_uses_fallback"]["direct_theorem_constants"])
+        rejected = witness + "mixed_initial_has_no_all_times_policy"
+        self.assertIn(private["mixed_support_exact"]["name"], by_name[rejected]["direct_theorem_constants"])
+        self.assertEqual(set(reuse.explain(self.data, rejected)["direct_existing_source_theorem_uses"]), {
+            prefix + "ExecutableSupportSynthesis.synthesize_isSome_iff_exists_all_times_policy",
+            witness + "source_support_exact", witness + "synthesis_rejections"})
+        self.assertEqual(set(reuse.explain(self.data, witness + "actual_killed_mass_one")[
+            "direct_existing_source_theorem_uses"]), {
+                prefix + "ExecutableSupportSynthesis.synthesize_some_killed_mass_one",
+                witness + "synthesis_returns_program", witness + "initial_support_exact",
+                witness + "model_support_exact", witness + "initial_safe",
+                witness + "certified_transition_safe", witness + "source_support_exact"})
+        scope = reuse.HERE.parent.parent / "unified_closure" / "executable_support_v1"
+        runtime = scope / "actual-execution" / "runtime-02"
+        receipt = json.loads((runtime / "RUNTIME_RECEIPT.json").read_text())
+        self.assertEqual(receipt["schema"], "EXECUTABLE_SUPPORT_RUNTIME_V1")
+        self.assertEqual(receipt["state"], "PASS")
+        self.assertEqual(receipt["exit_code"], 0)
+        self.assertEqual(receipt["safe_transitions"], 12)
+        self.assertEqual(receipt["source_tree_sha256"],
+                         "f95a19e8c0ad5f7295f8166d5a5fc212af5a8af40e2e2740673aaaf425b6e09d")
+        self.assertEqual(receipt["script_sha256"],
+                         reuse.sha256((scope / "EXECUTE_CONTROLLER.lean").read_bytes()).hexdigest())
+        log = (runtime / "runtime.log").read_bytes()
+        self.assertEqual(receipt["log_sha256"], reuse.sha256(log).hexdigest())
+        self.assertIn(b"R1_RUNTIME_PASS: 12 safe transitions", log)
+        self.assertIn(b"mixed/incomplete/empty rejected; fallback and list order checked", log)
+
+    def test_executable_support_registration_preserves_raw_execution(self):
+        current = self.data["overlays"][12]
+        provenance = current["registration_provenance"]
+        additions = {"lexical_pr_preflight", "registration_provenance"}
+        self.assertEqual(provenance["schema"], "EXECUTABLE_SUPPORT_REGISTRATION_PROVENANCE_V1")
+        self.assertEqual(set(provenance["metadata_additions_only"]), additions)
+        self.assertTrue(provenance["raw_evidence_bytes_preserved"])
+        self.assertFalse(provenance["consumer_registry_modified"])
+        self.assertEqual(provenance["git_object_pr_preflight"], "NOT_PERFORMED_SEPARATE_GATE")
+        fingerprint = "f95a19e8c0ad5f7295f8166d5a5fc212af5a8af40e2e2740673aaaf425b6e09d"
+        self.assertEqual(provenance["source_tree_sha256"], fingerprint)
+        self.assertEqual(provenance["baseline_ref"], current["baseline_ref"])
+        inputs = provenance["inputs"]
+        self.assertEqual(len({(row["role"], row["path"]) for row in inputs}), len(inputs))
+        for row in inputs:
+            with self.subTest(archived_input=row["path"]):
+                path = reuse.REPO / row["path"]
+                self.assertTrue(path.resolve().is_relative_to(reuse.REPO.resolve()))
+                self.assertEqual(reuse.sha256(path.read_bytes()).hexdigest(), row["sha256"])
+        raw_rows = [row for row in inputs if row["role"] == "actual_native_output"
+                    and row["path"].endswith("/EXECUTABLE_SUPPORT_REUSE_OVERLAY_V1.json")]
+        self.assertEqual(len(raw_rows), 1)
+        raw_path = reuse.REPO / raw_rows[0]["path"]
+        raw = json.loads(raw_path.read_text())
+        self.assertEqual(set(current) - set(raw), additions)
+        self.assertEqual({key: value for key, value in current.items() if key not in additions}, raw)
+        archive = raw_path.parent
+        self.assertEqual((archive / "REGISTERED_OVERLAY.json").read_bytes(), reuse.OVERLAY_PATHS[12].read_bytes())
+        receipt = json.loads((archive / "REGISTRATION_RECEIPT.json").read_text())
+        self.assertEqual(receipt["schema"], "EXECUTABLE_SUPPORT_REGISTRATION_RECEIPT_V1")
+        self.assertEqual(receipt["state"], "PASS_METADATA_ONLY_CONSUMER_UNCHANGED")
+        self.assertEqual(receipt["raw_overlay_sha256"], raw_rows[0]["sha256"])
+        self.assertEqual(receipt["registered_overlay"]["sha256"], reuse.OVERLAY_SHA256S[12])
+        self.assertEqual(set(receipt["added_top_level_keys"]), additions)
+        self.assertTrue(receipt["stripped_registered_json_equals_raw"])
+        self.assertIsNone(receipt["candidate_ref"])
+        self.assertEqual(receipt["input_files"], inputs)
+        preflight = json.loads((archive / "SOURCE_PREFLIGHT.json").read_text())
+        self.assertEqual(preflight["status"], "PENDING_ACTUAL_NATIVE_EXECUTION")
+        self.assertEqual(preflight["source_tree_sha256"], fingerprint)
+        self.assertEqual(preflight["complete_source_modules"], 696)
+        self.assertEqual(preflight["added_modules"], current["added_modules"])
+        execution = json.loads((archive / "STATUS.json").read_text())
+        self.assertEqual(execution["state"], "PASS_PENDING_INDEPENDENT_REVIEW_AND_REGISTRATION")
+        self.assertTrue(current["native_execution"]["fixed_export_equals_initial_native_export"])
+        self.assertEqual(json.loads((archive / "observed_first_native.json").read_text()),
+                         json.loads((reuse.REPO / current["native_export_evidence"]["path"]).read_text()))
+        for row in current["native_execution"]["results"]:
+            log = archive / ("native_export.log" if row["label"] == "native_export" else "fixed_verifier.log")
+            self.assertEqual(row["exit_code"], 0)
+            self.assertEqual(reuse.sha256(log.read_bytes()).hexdigest(), row["log_sha256"])
+        lexical = current["lexical_pr_preflight"]
+        self.assertIsNone(lexical["candidate_ref"])
+        self.assertEqual(lexical["new_public_source_theorem_count"], 33)
+        self.assertEqual(lexical["base_public_lexical_theorem_count"], 4357)
+        self.assertEqual(lexical["candidate_public_lexical_theorem_count"], 4390)
+        self.assertEqual(lexical["candidate_registered_public_source_theorem_count"], 4390)
+        self.assertEqual(lexical["new_theorems_with_lexical_reuse_candidates"], 17)
+
+
     def test_historical_apostrophe_registration_and_existing_incoming_edge(self):
         current = self.data["overlays"][7]
         helper = "UEOT.V3.FreeInformationValue.integrable_finset_sup'"
@@ -1416,7 +1626,7 @@ class ProofReuseTests(unittest.TestCase):
 
     def test_new_lean_module_cannot_be_omitted_from_index(self):
         live = reuse.live_source_paths()
-        self.assertEqual(len(live), 694)
+        self.assertEqual(len(live), 696)
         new = "formalization/ueot-core/UEOT/V3/FutureNovelLemma.lean"
         with mock.patch.object(reuse, "live_source_paths", return_value=live | {new}):
             with self.assertRaisesRegex(RuntimeError, "STALE_AUDIT_SOURCE_SET"):

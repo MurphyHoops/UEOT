@@ -8,9 +8,9 @@ The existing FKRG cache remains useful for broad keyword/module search.
 This supplement adds real proof-term direct dependencies, verified same-type
 theorem peers, source copies, and a read-only scientific-role distinction.
 
-The current twelve-layer census is **694 modules = 683 UEOT-maintained + 11
-adapted upstream**, with **4,357 registered public theorem nodes** and
-**5,755 registered direct proof edges**. The layer-by-layer counts below
+The current thirteen-layer census is **696 modules = 685 UEOT-maintained + 11
+adapted upstream**, with **4,390 registered public theorem nodes** and
+**5,815 registered direct proof edges**. The layer-by-layer counts below
 retain each historical scope.
 
 ## Governed overlay chain
@@ -1053,6 +1053,81 @@ acceptance and release remain separately evidenced gates. Frozen counted
 classifications remain unchanged, strong global closure is
 `NOT_ESTABLISHED`, and external scientific evidence remains `UNVERIFIED`.
 
+### Layer 13 — executable support-controller synthesis
+
+The additive executable-support layer is based on `c54f1a96b25e57a3484da46d38c1c9f668d53a34`
+and frozen source fingerprint `f95a19e8c0ad5f7295f8166d5a5fc212af5a8af40e2e2740673aaaf425b6e09d`. Its two modules add
+33 registered public source theorems and 60 compiled direct registered edges.
+
+| Evidence | SHA-256 |
+| --- | --- |
+| [Complete native export](EXECUTABLE_SUPPORT_NATIVE_V1.json) | `9e2be23986e5d5f38266e267964feac9af18cc8e3f3f17bdf18a356cc8f06592` |
+| [Fixed Lean certificate](VERIFY_EXECUTABLE_SUPPORT_OVERLAY_TYPES.lean) | `5fcb4fcb16ae638fdc1f04385f6914910004a704d21edc8d082de9cbb24d8fe7` |
+| [Registered overlay](EXECUTABLE_SUPPORT_REUSE_OVERLAY_V1.json) | `861becca60f6c406f576658ff8a5ccd6c812addbd79a56f05a1823becf9b7f46` |
+
+The complete native census contains **73 owned theorem constants: 33 public
+source candidates, four private constants and 36 other generated public
+constants**. All records retain actual ownership, stored universes, displayed
+types, direct proof constants, direct theorem constants and standard-only
+transitive axiom closures. All 33 public types were compared against **4,357**
+prior registrations in **143,781 cross-layer** and **528 internal** raw
+stored-type `Meta.isDefEq` comparisons with zero collisions. These comparisons
+retain the earlier universe and instantiation limits; they do not establish
+general logical independence.
+
+The live graph now has **4,390 nodes and 5,815 direct edges**, including
+**597 overlay nodes and 928 outgoing overlay edges**. The historical old-node
+repair remains separate. Seventeen new lexical hint groups bring the total
+to **155**. The source fingerprint, module hashes, complete native export,
+fixed certificate and registered overlay each retain separate identities.
+
+`Program` computes its initial finite memory, action and recorded-action /
+observation update from explicit finite tables. The synthesis gate checks
+nonempty initial support, complete action-list coverage and the existing
+bounded finite-memory viability condition. Selection uses the first passing
+action in the supplied list; duplicates are valid and order can affect the
+choice. Empty memory uses the declared fallback. The implementation reuses
+`finiteRelationSuccessor` and the existing bounded checker at depth
+`2 ^ |X| - 1`; it does not claim a memoized table or a complexity bound.
+
+The same program's replayed memory equals the original experiment's trace
+support under exact initial, transition-support and certification
+representation assumptions. Existing finite viability supplies the
+all-times existence equivalence, while the selected actions and replayed
+memory prove zero uncovered occupancy for the returned program's own
+controller. Probability-one physical safety additionally requires safe
+initial support and safety of every certified transition. The killed-mass
+endpoint uses the same numerical homogeneous source and the existing
+`HomogeneousMemorySurvival.actual_finite_survival_eq_killed_mass` bridge.
+The PMF interpretation remains mathematical; the finite controller itself
+is executable.
+
+The two-safe-state plus cemetery witness verifies successful synthesis,
+rejection of mixed, empty and action-incomplete inputs, alternating phase
+updates, action-order effects and fallback behavior. Its actual source
+and model support are proved separately. The private
+`empty_memory_uses_fallback` proof remains in the complete native census;
+it is excluded from public registration after a genuine closed-type
+collision. The private mixed-support proof remains a dependency of the
+public no-all-times-policy witness. The archived failed native attempts
+are retained. A [separate runtime receipt](../../unified_closure/executable_support_v1/actual-execution/runtime-02/RUNTIME_RECEIPT.json)
+binds the actual executable script and output for 12 safe transitions and
+all rejection/order/fallback assertions. The infinite-horizon conclusion
+is supplied by Lean theorems, not extrapolation from those 12 steps.
+
+Registration adds only `lexical_pr_preflight` and
+`registration_provenance`; stripping them recovers the raw overlay. The
+[registration receipt](../../unified_closure/executable_support_v1/actual-execution/native-03/REGISTRATION_RECEIPT.json)
+binds the original execution and frozen inputs. All twelve prior overlays,
+fixed certificates, historical equal/near-type evidence and the 68-row
+clone table remain unchanged. Four consumer regressions check native
+ownership and edges, exact semantic reuse routes, private witness/runtime
+evidence and raw-byte registration preservation. Actual full consumer
+execution, current-source clone equality, canonical acceptance and release
+remain separately evidenced gates. Counted classifications stay unchanged,
+strong global closure remains `NOT_ESTABLISHED`, and external scientific
+evidence remains `UNVERIFIED`.
+
 ## Run from repository root
 
     P=formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse
@@ -1069,20 +1144,20 @@ classifications remain unchanged, strong global closure is
 Run the new native certificate from `formalization/ueot-core` after building
 the public imports with the pinned toolchain:
 
-    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_TOTAL_KERNEL_MEMORY_OVERLAY_TYPES.lean
+    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_EXECUTABLE_SUPPORT_OVERLAY_TYPES.lean
 
 ## Strongly typed and provenance-limited evidence
 
 - 633 immutable-base source modules = 622 UEOT-maintained + 11 adapted upstream modules;
-  twelve governed overlays extend the live census to 694 = 683 + 11.
-- 3,793 immutable-base public source theorem proofs + 564 governed registrations
-  (including one historical public-name repair) = 4,357 live graph nodes, with
-  5,755 direct registered-source theorem
+  thirteen governed overlays extend the live census to 696 = 685 + 11.
+- 3,793 immutable-base public source theorem proofs + 597 governed registrations
+  (including one historical public-name repair) = 4,390 live graph nodes, with
+  5,815 direct registered-source theorem
   references. The historical four overlays add 0, 3, 6 and 73 certified direct edges;
   the fifth adds 91, the sixth adds 98, and the seventh adds 163 certified direct edges.
   The eighth adds 97 edges from new registrations and one certified old-node repair.
   The ninth adds 149 edges, the tenth adds 47, the eleventh adds 114 and the
-  twelfth adds 27, giving 868 outgoing edges from overlay nodes;
+  twelfth adds 27 and the thirteenth adds 60, giving 928 outgoing edges from overlay nodes;
   the old-node repair remains a separate addition.
 - 37 equal-type groups / 77 names. The original audit checked 40/40
   representative-to-peer theorem type pairs via Lean Meta.isDefEq. Here
@@ -1100,7 +1175,7 @@ the public imports with the pinned toolchain:
   12 spans reach 15 lines. This is a text-copy candidate index, NOT
   a proof-equivalence decision procedure. The historical 646-module recomputation
   preserved all 68 historical rows exactly, with no added or missing rows.
-  The current scanner recomputes all 694 modules and rejects any difference
+  The current scanner recomputes all 696 modules and rejects any difference
   from that immutable result; its actual command result establishes whether
   the current-source scan passes. The historical snapshot alone does not.
 
@@ -1133,7 +1208,7 @@ the pinned Lean compiler/dependency environment (lean-toolchain,
 lakefile.lean and lake-manifest.json including the pinned Mathlib revision),
 the exact set of live Lean source paths (including detecting ANY newly added
 or deleted module), and all immutable-base source hashes plus the governed
-overlay-chain hashes against the exact 694-module live source census. It refuses to
+overlay-chain hashes against the exact 696-module live source census. It refuses to
 answer if any source or metadata changed. A docs-only Git commit does
 not spuriously make a valid source snapshot stale.
 

@@ -1,0 +1,157 @@
+{
+  "schema": "EXECUTABLE_SUPPORT_FOCUSED_CHECKS_V1",
+  "checks": [
+    {
+      "name": "parser",
+      "command": [
+        "python3",
+        "-B",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_pr_preflight.py"
+      ],
+      "exit_code": 0,
+      "state": "PASS",
+      "scope": "89 tests and unittest OK",
+      "log": "parser.log",
+      "log_sha256": "88219f7ab54f1f525686414379967194fc2b965916d47cdd76f4b9f00657a4b3"
+    },
+    {
+      "name": "mission",
+      "command": [
+        "python3",
+        "-B",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/test_validate_unified_closure.py"
+      ],
+      "exit_code": 0,
+      "state": "PASS",
+      "scope": "baseline accepted, 12 expected rejections",
+      "log": "mission.log",
+      "log_sha256": "583b6b29252b2279c39048ca5f1171dacc17e6c89fa5945763598aaef45c619f"
+    },
+    {
+      "name": "governance",
+      "command": [
+        "python3",
+        "-B",
+        "formalization/ueot-core/scripts/test_validate_compression_research.py"
+      ],
+      "exit_code": 0,
+      "state": "PASS",
+      "scope": "38 PASS assertions, no failed assertion",
+      "log": "governance.log",
+      "log_sha256": "d8fb69310c671936ad9bc9d9b9490bfee9f0b1d8a1b10fcc022e92ba944f0aa8"
+    },
+    {
+      "name": "fkrg",
+      "command": [
+        "python3",
+        "-B",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/test_fkrg.py"
+      ],
+      "exit_code": 0,
+      "state": "PASS",
+      "scope": "30 tests including real fast-audit immutable-receipt preservation",
+      "log": "fkrg.log",
+      "log_sha256": "94d0f7a1c0d84cfaae35a1350cba14de24e80bfd4e26d26bfe8a27b534e98d35"
+    },
+    {
+      "name": "compression-build",
+      "command": [
+        "lake",
+        "--dir",
+        "formalization/ueot-core",
+        "build",
+        "UEOT.V3.Compression"
+      ],
+      "exit_code": 0,
+      "state": "PASS",
+      "scope": "Applicable namespace build",
+      "log": "compression-build.log",
+      "log_sha256": "2c60ceca0b23967a75dda59a1cdf0a0b90fad3393aa2236494541724a7e3766a"
+    },
+    {
+      "name": "reuse-full",
+      "command": [
+        "python3",
+        "-B",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py"
+      ],
+      "state": "PASS",
+      "exit_code": 0,
+      "scope": "62 tests, including all four executable-support regressions",
+      "log": "reuse-full.log",
+      "log_sha256": "a3384d7749968ab731cdcf8cdb0476f5d2396be8b859b44f38acaea4ddda062a"
+    },
+    {
+      "name": "clone-scan",
+      "command": [
+        "python3",
+        "-B",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py"
+      ],
+      "state": "PASS",
+      "exit_code": 0,
+      "scope": "Actual complete 696-module source scan exactly matches immutable 68 rows",
+      "log": "clone-scan.log",
+      "log_sha256": "4c3c4972fb549c2e6bc3c150350e88b23c100ff348a0f32041a56603ba9134a1"
+    },
+    {
+      "name": "final-fkrg",
+      "command": [
+        "python3",
+        "-B",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/test_fkrg.py"
+      ],
+      "state": "PASS",
+      "exit_code": 0,
+      "scope": "30 tests, final f95 source and current DAG",
+      "log": "final-fkrg.log",
+      "log_sha256": "9186ffdf52fb6f9119543531a8788100bca111f0d46997a109f0a0ae17989f12"
+    },
+    {
+      "name": "final-compression-build",
+      "command": [
+        "lake",
+        "--dir",
+        "formalization/ueot-core",
+        "build",
+        "UEOT.V3.Compression"
+      ],
+      "state": "PASS",
+      "exit_code": 0,
+      "scope": "Final f95 namespace build",
+      "log": "final-compression-build.log",
+      "log_sha256": "67592a49a5ef9cf96f12286c0c49413c3ac718395bc8ef0f6a50773691bc02da"
+    },
+    {
+      "name": "mission-validation",
+      "command": [
+        "python3",
+        "-B",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/validate_unified_closure.py",
+        "--repo-root",
+        "."
+      ],
+      "state": "PASS",
+      "exit_code": 0,
+      "scope": "Frozen106/four-generator/seven-stage mission validator",
+      "log": "mission-validation.log",
+      "log_sha256": "084c44d2151e4c711dd06606abc1957a26ac9072a992fa06b7bf4791ca9fb321"
+    }
+  ],
+  "ownership_note": "Precommit research validator compared HEAD to base and saw zero changed paths; not accepted as candidate ownership. Candidate-ref governance must run after commit.",
+  "excluded_invocation": {
+    "command": [
+      "python3",
+      "-B",
+      "formalization/ueot-core/scripts/validate_compression.py",
+      "--repo-root",
+      ".",
+      "--baseline-ref",
+      "c54f1a96b25e57a3484da46d38c1c9f668d53a34"
+    ],
+    "exit_code": 1,
+    "error": "FINAL mission state requires live Git/GitHub reference verification",
+    "scope": "Wrong gate invocation for additive L1; frozen FINAL mission unchanged. Required base research ownership uses validate_compression_research.py."
+  },
+  "current_source_tree_sha256": "f95a19e8c0ad5f7295f8166d5a5fc212af5a8af40e2e2740673aaaf425b6e09d"
+}

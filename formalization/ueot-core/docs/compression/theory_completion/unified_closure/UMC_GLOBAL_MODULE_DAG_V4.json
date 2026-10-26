@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "source_tree_sha256": "2a0482a9717cc776b76383755a42b327ba132a04fbb6dfaea5c3ddb45da47b24",
+  "source_tree_sha256": "f95a19e8c0ad5f7295f8166d5a5fc212af5a8af40e2e2740673aaaf425b6e09d",
   "scope": "literal first-party UEOT Lean source files and their direct imports",
   "source_semantics": "metadata audit, NOT independent theorem-source semantic certification",
-  "total_Lean_modules": 694,
-  "total_source_lines": 126850,
-  "total_theorem_lemma_tokens": 4636,
+  "total_Lean_modules": 696,
+  "total_source_lines": 127639,
+  "total_theorem_lemma_tokens": 4671,
   "category_counts": {
     "Core_v3_and_Substrate": 306,
     "Compression_Frozen_Bridges": 62,
@@ -14,9 +14,9 @@
     "Objecthood": 88,
     "P0_P12_TheoryCompletion": 57,
     "C1_C7_SISC": 55,
-    "UMC_New_Bridges": 95
+    "UMC_New_Bridges": 97
   },
-  "reachable_from_UEOT_root": 694,
+  "reachable_from_UEOT_root": 696,
   "not_reachable_from_UEOT_root": [],
   "cycles_detected": [],
   "missing_internal_imports": {},
@@ -256,7 +256,7 @@
     {
       "from": "Compression_Frozen_Bridges",
       "to": "UMC_New_Bridges",
-      "edges": 95
+      "edges": 97
     },
     {
       "from": "Core_v3_and_Substrate",
@@ -3446,8 +3446,8 @@
     },
     "UEOT.V3.Compression.TheoryCompletion": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
-      "bytes": 14086,
-      "lines": 179,
+      "bytes": 14267,
+      "lines": 181,
       "category": "Compression_Frozen_Bridges",
       "title": "UEOT Theory Completion public root",
       "imports": [
@@ -3620,7 +3620,9 @@
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindow",
-        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowWitness"
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowWitness",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportController",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness"
       ],
       "theorem_lemma_count": 0,
       "decl_count": 0
@@ -5416,6 +5418,32 @@
       ],
       "theorem_lemma_count": 7,
       "decl_count": 10
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportController": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+      "bytes": 27244,
+      "lines": 543,
+      "category": "UMC_New_Bridges",
+      "title": "Executable synthesis of an autonomous support controller",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryCheck",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival"
+      ],
+      "theorem_lemma_count": 18,
+      "decl_count": 29
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+      "bytes": 10546,
+      "lines": 244,
+      "category": "UMC_New_Bridges",
+      "title": "Executable synthesis with a real failure state",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportController"
+      ],
+      "theorem_lemma_count": 17,
+      "decl_count": 33
     },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteCommonProcessWitness": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteCommonProcessWitness.lean",

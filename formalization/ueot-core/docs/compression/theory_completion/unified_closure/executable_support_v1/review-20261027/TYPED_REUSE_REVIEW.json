@@ -1,0 +1,1866 @@
+{
+  "schema": "UEOT_EXECUTABLE_SUPPORT_TYPED_SEMANTIC_REUSE_REVIEW_V2",
+  "observed_at": "2026-10-26T17:26:12.111129+00:00",
+  "status": "CLEAR",
+  "baseline_ref": "c54f1a96b25e57a3484da46d38c1c9f668d53a34",
+  "candidate_commit": "NOT_YET_BOUND",
+  "source_tree_sha256": "f95a19e8c0ad5f7295f8166d5a5fc212af5a8af40e2e2740673aaaf425b6e09d",
+  "source_module_count": 696,
+  "new_source_files": [
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportController",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+      "content_sha256": "5e19fb3cba080f8c20726626801e457321af6a12b4c8dedc4ae52f842d2bb333",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+      "content_sha256": "e737f0caf8127eb233ccf85366e7d5b5b1cbb8db8d2aac16db7af32a6b18ba73",
+      "source_origin": "UEOT_MAINTAINED"
+    }
+  ],
+  "source_preflight": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/executable-support-evidence-20261027/native-03/SOURCE_PREFLIGHT.json",
+    "sha256": "f22ea92b8e59d2ef865bdc58b217c4473b0f87c2aa6c4759dbc9589470cc430c",
+    "recorded_state": "PENDING_ACTUAL_NATIVE_EXECUTION",
+    "interpretation": "This file is the frozen pre-execution input; actual completed export outcome is read from STATUS and native_export.log."
+  },
+  "lexical_discovery": {
+    "total_public_source_rows": 33,
+    "nonempty_hint_groups": 17,
+    "candidate_pairs": 37,
+    "empty_groups": 16,
+    "name_similarity_is_not_a_proof": true
+  },
+  "method": "Read each actual candidate declaration with its surrounding variable hypotheses, definitions, event/source meaning and proof body. Compare it with the new source and trace direct/transitive proof calls. All old candidate files matched the baseline Git blobs. No theorem is declared independent merely because names or stored types differ.",
+  "checked_old_source_files": [
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "sha256": "230128e5bb046e2f44ab46d29933324eeebed31c255248558e946e55b1e9099a",
+      "matches_baseline_git_blob": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean",
+      "sha256": "935b597e08858e4aee33847296d14b8ed00033307cd2925a83338c13dfd11f46",
+      "matches_baseline_git_blob": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean",
+      "sha256": "7f231017ef32eb607c0187dc659a139101f92ee4ad2ed434f35d4f0687a46cdd",
+      "matches_baseline_git_blob": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySafetyWitness.lean",
+      "sha256": "08060447a92c3b129351b95615ed2e1b3214e12e9ded21c638d0c6554c400c88",
+      "matches_baseline_git_blob": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+      "sha256": "1c52baa3e029b45420ce7b393ee2d42479f7cc994f56f921222fdf7ac756ffa8",
+      "matches_baseline_git_blob": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+      "sha256": "88cfb12b7321a3892ce1d73e38caa84362507f2e61175c665726019eef4b158b",
+      "matches_baseline_git_blob": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+      "sha256": "f222dd852190edec16e90ab710db56a847e2820f1d2566a5a3b3df3f04fd31e2",
+      "matches_baseline_git_blob": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViability.lean",
+      "sha256": "85ea1b193b61a1a823873e622e771776c75aee4b43e047f148c5decd252fd88c",
+      "matches_baseline_git_blob": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean",
+      "sha256": "1bcf2d6baaa55e4ea648d19a78dc490a86b525eaaa109464654184d447544081",
+      "matches_baseline_git_blob": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean",
+      "sha256": "e37d32b9f5da631392706e60c68d21fcb26491fea1c67614be57afbf6d4b0455",
+      "matches_baseline_git_blob": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "sha256": "451dbcb249188564ab985b57e984a4d3e05b59486384792bdf04e112c7f16ac6",
+      "matches_baseline_git_blob": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+      "sha256": "eae57f9a70fa28ea790055c5a3b4ee296f47c5912da39dfcfd1c81903b6ae8a0",
+      "matches_baseline_git_blob": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/FixedFitnessConcentration.lean",
+      "sha256": "f1583db6ca43bb154084c7d1784f026bf2bb374f48a672344e6a64c5b48a8c29",
+      "matches_baseline_git_blob": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/ViabilityPath.lean",
+      "sha256": "71737ea8c497838def2aac8fab5d905738b582c1ba7028f17545a78c98f4b99a",
+      "matches_baseline_git_blob": true
+    }
+  ],
+  "groups": [
+    {
+      "group": 1,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.relationCheck_iff_viableWith",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+      "new_line": 121,
+      "classification": "PURE_RELATION_COMPUTATION_BRIDGE",
+      "new_hypotheses_and_conclusion": "The new theorem proves executable finiteRelationViabilityCheck=true iff pure relation viableWith for every finite S, depth and time, with explicit deciders and without any PMF or support-realizability premise.",
+      "actual_reuse_or_proof_ingredients": [
+        "finiteRelationSuccessor_coe_eq_relationSuccessor",
+        "induction on checker depth"
+      ],
+      "pairs": [
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.viable_iff_homogeneous_relation",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+          "disposition": "DIFFERENT_PREMISES_AND_BRIDGE",
+          "hypothesis_conclusion_and_reuse_comparison": "viable_iff_homogeneous_relation assumes an actual PMF source P and exact hR/hC and rewrites mathematical Viable into fixed-relation viableWith; it does not prove correctness of the executable Boolean checker. Arbitrary R can have dead-end rows and need not admit a matching PMF, so adding such a source merely to invoke the old theorem would strengthen the new premises. The relation semantics and successor bridge are shared; this is not a new viability principle.",
+          "logical_independence_inferred": false
+        }
+      ],
+      "compiler_binding": {
+        "native_run": "native-03",
+        "compiler_displayed_type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype A] [inst_2 : DecidableEq X] [inst_3 : DecidableEq Y] (q : X → Y)\n  (R : X → A → X → Prop) (C : X → A → Prop) [inst_4 : (x : X) → (a : A) → (z : X) → Decidable (R x a z)]\n  [inst_5 : (x : X) → (a : A) → Decidable (C x a)] (k n : ℕ) (S : Finset X),\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteRelationViabilityCheck q\n        (fun x => R) (fun x => C) n k S =\n      true ↔\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.viableWith\n      (fun x => UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.relationSuccessor q R)\n      (fun x => C) n k ↑S",
+        "level_parameters": [
+          "u"
+        ],
+        "source_theorem_deps": [
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteRelationSuccessor_coe_eq_relationSuccessor"
+        ],
+        "direct_constants": [
+          "Fintype",
+          "DecidableEq",
+          "Decidable",
+          "Nat",
+          "Nat.recAux",
+          "Finset",
+          "Iff",
+          "Eq",
+          "Bool",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteRelationViabilityCheck",
+          "Bool.true",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.viableWith",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.relationSuccessor",
+          "SetLike.coe",
+          "Finset.instSetLike",
+          "of_eq_true",
+          "OfNat.ofNat",
+          "instOfNatNat",
+          "True",
+          "Eq.trans",
+          "congrFun'",
+          "congrArg",
+          "eq_self",
+          "iff_self",
+          "Eq.mpr",
+          "HAdd.hAdd",
+          "instHAdd",
+          "instAddNat",
+          "Exists",
+          "And",
+          "Membership.mem",
+          "SetLike.instMembership",
+          "Finset.Nonempty",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteRelationSuccessor",
+          "Set",
+          "Set.instMembership",
+          "Set.Nonempty",
+          "id",
+          "decide_eq_true_eq",
+          "Fintype.decidableExistsFintype",
+          "instDecidableAnd",
+          "Fintype.decidableForallFintype",
+          "forall_prop_decidable",
+          "Finset.decidableMem",
+          "Finset.decidableNonempty",
+          "instDecidableEqBool",
+          "Iff.intro",
+          "Exists.casesOn",
+          "And.casesOn",
+          "Exists.intro",
+          "And.intro",
+          "And.left",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteRelationSuccessor_coe_eq_relationSuccessor",
+          "Iff.mp",
+          "Eq.mp",
+          "Iff.mpr"
+        ],
+        "identical_to_independently_reviewed_native02_public_row": true,
+        "stored_type_comparison": "NO_COLLISION_IN_THIS_RUN_PROTOCOL",
+        "semantic_review_confirmed": true
+      }
+    },
+    {
+      "group": 2,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.selectedAction_step",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+      "new_line": 217,
+      "classification": "FIRST_MATCH_WINNING_ACTION_VERIFICATION",
+      "new_hypotheses_and_conclusion": "With complete ordered actions and S in supportWinning, the actual List.find? result certifies every x in S and preserves winning membership for every nonempty observed successor.",
+      "actual_reuse_or_proof_ingredients": [
+        "supportWinning_step",
+        "stepCheck_iff",
+        "List.find?_eq_none",
+        "List.find?_some"
+      ],
+      "pairs": [
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.selectedAction_pmf",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+          "disposition": "DISTINCT_SELECTION_MECHANISM",
+          "hypothesis_conclusion_and_reuse_comparison": "selectedAction_pmf concerns a selected Boolean training-sample coordinate: trainingLaw.toPMF.map selectedAction = actualRow false. It proves a random sampling marginal, not success or winningness of a finite ordered action search. No training sample law occurs in the new interface.",
+          "logical_independence_inferred": false
+        },
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.selectedAction_law",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+          "disposition": "DISTINCT_SELECTION_MECHANISM",
+          "hypothesis_conclusion_and_reuse_comparison": "selectedAction_law is the measure-level marginal of the same registered training sample, supplied by samples_law. It has no support-winning predicate, complete ordered list or continuation obligation. The common word selection does not make it a substitute for the new algorithm verification.",
+          "logical_independence_inferred": false
+        }
+      ],
+      "compiler_binding": {
+        "native_run": "native-03",
+        "compiler_displayed_type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype A] [inst_2 : DecidableEq X] [inst_3 : DecidableEq Y] (q : X → Y)\n  (R : X → A → X → Prop) (C : X → A → Prop) [inst_4 : (x : X) → (a : A) → (z : X) → Decidable (R x a z)]\n  [inst_5 : (x : X) → (a : A) → Decidable (C x a)] (ordered : List A) (fallback : A),\n  (∀ (a : A), a ∈ ordered) →\n    ∀ (S : Finset X),\n      ↑S ∈ UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportWinning q R C →\n        (∀ x ∈ ↑S,\n            C x\n              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.selectedAction q R C\n                ordered fallback S)) ∧\n          ∀ (y : Y),\n            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.relationSuccessor q R (↑S)\n                  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.selectedAction q R C\n                    ordered fallback S)\n                  y).Nonempty →\n              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.relationSuccessor q R (↑S)\n                  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.selectedAction q R C\n                    ordered fallback S)\n                  y ∈\n                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportWinning q R C",
+        "level_parameters": [
+          "u"
+        ],
+        "source_theorem_deps": [
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportWinning_step",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportWinning_subset_arena",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.stepCheck_iff"
+        ],
+        "direct_constants": [
+          "Fintype",
+          "DecidableEq",
+          "Decidable",
+          "List",
+          "Membership.mem",
+          "List.instMembership",
+          "Finset",
+          "Set",
+          "Set.instMembership",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportWinning",
+          "SetLike.coe",
+          "Finset.instSetLike",
+          "Exists.casesOn",
+          "And",
+          "Set.Nonempty",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.relationSuccessor",
+          "Exists",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.selectedAction",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportWinning_step",
+          "And.casesOn",
+          "Finset.Nonempty",
+          "And.left",
+          "Eq",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportWinning_subset_arena",
+          "Bool",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.stepCheck",
+          "Bool.true",
+          "Iff.mpr",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.stepCheck_iff",
+          "And.intro",
+          "Option.casesOn",
+          "Option",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.findAction",
+          "Option.none",
+          "Eq.ndrec",
+          "Not",
+          "Iff.mp",
+          "List.find?",
+          "List.find?_eq_none",
+          "False.elim",
+          "Eq.symm",
+          "Eq.refl",
+          "Option.some",
+          "List.find?_some",
+          "Eq.mpr",
+          "id",
+          "congr",
+          "congrArg",
+          "forall_congr",
+          "implies_congr",
+          "congrFun'",
+          "Option.getD",
+          "And.right"
+        ],
+        "identical_to_independently_reviewed_native02_public_row": true,
+        "stored_type_comparison": "NO_COLLISION_IN_THIS_RUN_PROTOCOL",
+        "semantic_review_confirmed": true
+      }
+    },
+    {
+      "group": 3,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.selectedAction_empty",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+      "new_line": 241,
+      "classification": "EMPTY_MEMORY_RUNTIME_BOUNDARY",
+      "new_hypotheses_and_conclusion": "The new empty guard forces findAction=[] search to return none and selectedAction to return its fixed fallback, for every ordered list.",
+      "actual_reuse_or_proof_ingredients": [
+        "List.find?_eq_none",
+        "stepCheck",
+        "Option.getD_none"
+      ],
+      "pairs": [
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.selectedAction_pmf",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+          "disposition": "DISTINCT_EVENT_AND_INPUT",
+          "hypothesis_conclusion_and_reuse_comparison": "selectedAction_pmf is a distribution identity for a training-sample selector, with no empty Finset memory or fallback branch. The new theorem is a total-runtime edge case, proved from the actual guard.",
+          "logical_independence_inferred": false
+        },
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.selectedAction_law",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+          "disposition": "DISTINCT_EVENT_AND_INPUT",
+          "hypothesis_conclusion_and_reuse_comparison": "selectedAction_law is a training measure pushforward, not an empty-memory computation. The new theorem reuses List.find? behavior and does not claim a probability-law result.",
+          "logical_independence_inferred": false
+        }
+      ],
+      "compiler_binding": {
+        "native_run": "native-03",
+        "compiler_displayed_type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype A] [inst_2 : DecidableEq X] [inst_3 : DecidableEq Y] (q : X → Y)\n  (R : X → A → X → Prop) (C : X → A → Prop) [inst_4 : (x : X) → (a : A) → (z : X) → Decidable (R x a z)]\n  [inst_5 : (x : X) → (a : A) → Decidable (C x a)] (ordered : List A) (fallback : A),\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.selectedAction q R C ordered fallback\n      ∅ =\n    fallback",
+        "level_parameters": [
+          "u"
+        ],
+        "source_theorem_deps": [],
+        "direct_constants": [
+          "Fintype",
+          "DecidableEq",
+          "Decidable",
+          "List",
+          "Eq",
+          "Option",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.findAction",
+          "EmptyCollection.emptyCollection",
+          "Finset",
+          "Finset.instEmptyCollection",
+          "Option.none",
+          "Iff.mpr",
+          "List.find?",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.stepCheck",
+          "Membership.mem",
+          "List.instMembership",
+          "Not",
+          "Bool",
+          "Bool.true",
+          "List.find?_eq_none",
+          "of_eq_true",
+          "Eq.trans",
+          "False",
+          "True",
+          "congrArg",
+          "Bool.false",
+          "congrFun'",
+          "Decidable.decide",
+          "And",
+          "Finset.Nonempty",
+          "SetLike.instMembership",
+          "Finset.instSetLike",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.nextMemory",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteRelationViabilityCheck",
+          "Nat",
+          "OfNat.ofNat",
+          "instOfNatNat",
+          "HSub.hSub",
+          "instHSub",
+          "instSubNat",
+          "HPow.hPow",
+          "instHPow",
+          "NPow.toPow",
+          "Monoid.toNPow",
+          "Nat.instMonoid",
+          "Fintype.card",
+          "instDecidableAnd",
+          "Finset.decidableNonempty",
+          "Fintype.decidableForallFintype",
+          "forall_prop_decidable",
+          "Finset.decidableMem",
+          "instDecidableEqBool",
+          "instDecidableFalse",
+          "Decidable.decide.congr_simp",
+          "congr",
+          "Finset.not_nonempty_empty._simp_1",
+          "forall_congr",
+          "implies_congr",
+          "Finset.notMem_empty._simp_1",
+          "Eq.refl",
+          "IsEmpty.forall_iff._simp_1",
+          "instIsEmptyFalse",
+          "implies_true",
+          "true_and",
+          "false_and",
+          "decide_false",
+          "Bool.false_eq_true",
+          "not_false_eq_true",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.selectedAction",
+          "Option.getD",
+          "eq_self"
+        ],
+        "identical_to_independently_reviewed_native02_public_row": true,
+        "stored_type_comparison": "NO_COLLISION_IN_THIS_RUN_PROTOCOL",
+        "semantic_review_confirmed": true
+      }
+    },
+    {
+      "group": 4,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize_eq_some_iff",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+      "new_line": 251,
+      "classification": "SYNTHESIS_ACCEPTANCE_SPECIFICATION",
+      "new_hypotheses_and_conclusion": "synthesize=some program iff nonempty initial support, complete action enumeration, finiteMemoryCheck=true and program=buildProgram. The acceptance conditions are computed, not supplied as winning-policy data.",
+      "actual_reuse_or_proof_ingredients": [
+        "synthesize definition",
+        "Boolean case analysis",
+        "Option.some injectivity through simp"
+      ],
+      "pairs": [
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.atomEncode_eq_some_iff",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+          "disposition": "DISTINCT_OPTION_CONSTRUCTOR_CONTRACT",
+          "hypothesis_conclusion_and_reuse_comparison": "atomEncode_eq_some_iff assumes an injective carrier map and identifies an Option label with y=i s; atomEncode itself uses existential choice. The new Option contains an executable Program after three Boolean validations and requires no injective encoder. Both characterize some, but the obligations and constructor data differ; importing the old result cannot validate synthesis.",
+          "logical_independence_inferred": false
+        }
+      ],
+      "compiler_binding": {
+        "native_run": "native-03",
+        "compiler_displayed_type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype A] [inst_2 : DecidableEq X] [inst_3 : DecidableEq Y] (q : X → Y)\n  (R : X → A → X → Prop) (C : X → A → Prop) [inst_4 : (x : X) → (a : A) → (z : X) → Decidable (R x a z)]\n  [inst_5 : (x : X) → (a : A) → Decidable (C x a)] [inst_6 : DecidableEq A] (initial : Finset X) (ordered : List A)\n  (fallback : A)\n  (program : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.Program X Y A),\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize q R C initial ordered\n        fallback =\n      some program ↔\n    initial.Nonempty ∧\n      (∀ (a : A), a ∈ ordered) ∧\n        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteMemoryCheck q R C initial =\n            true ∧\n          program =\n            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.buildProgram q R C initial\n              ordered fallback",
+        "level_parameters": [
+          "u"
+        ],
+        "source_theorem_deps": [],
+        "direct_constants": [
+          "Fintype",
+          "DecidableEq",
+          "Decidable",
+          "Finset",
+          "List",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.Program",
+          "dite",
+          "Iff",
+          "Eq",
+          "Option",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize",
+          "Option.some",
+          "And",
+          "Finset.Nonempty",
+          "Membership.mem",
+          "List.instMembership",
+          "Bool",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteMemoryCheck",
+          "Bool.true",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.buildProgram",
+          "Finset.decidableNonempty",
+          "Fintype.decidableForallFintype",
+          "List.instDecidableMemOfLawfulBEq",
+          "instBEqOfDecidableEq",
+          "instLawfulBEq",
+          "instDecidableEqBool",
+          "of_eq_true",
+          "Eq.trans",
+          "True",
+          "congr",
+          "congrArg",
+          "congrFun'",
+          "ite_cond_eq_true",
+          "Bool.and",
+          "Decidable.decide",
+          "Option.none",
+          "instDecidableTrue",
+          "Decidable.decide.congr_simp",
+          "eq_true",
+          "decide_true",
+          "forall_congr",
+          "implies_true",
+          "Bool.and_self",
+          "eq_self",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize_eq_some_iff._simp_1_2",
+          "Option.some.injEq",
+          "true_and",
+          "iff_self",
+          "Not",
+          "False",
+          "ite_cond_eq_false",
+          "Bool.false",
+          "Bool.of_not_eq_true",
+          "Bool.and_false",
+          "Bool.false_eq_true",
+          "eq_false'",
+          "False.elim",
+          "noConfusion_of_Nat",
+          "Option.ctorIdx",
+          "false_and",
+          "and_false",
+          "instDecidableFalse",
+          "eq_false",
+          "decide_false",
+          "Bool.and_true",
+          "and_self"
+        ],
+        "identical_to_independently_reviewed_native02_public_row": true,
+        "stored_type_comparison": "NO_COLLISION_IN_THIS_RUN_PROTOCOL",
+        "semantic_review_confirmed": true
+      }
+    },
+    {
+      "group": 5,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.memory_eq_traceSupport",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+      "new_line": 322,
+      "classification": "EXECUTABLE_MEMORY_REPRESENTATION_TRANSFER",
+      "new_hypotheses_and_conclusion": "For exact finite initial table h0 and exact fixed support relation hR, the new Finset-memory controller replay equals actual traceSupport on every record, including null ones.",
+      "actual_reuse_or_proof_ingredients": [
+        "finiteRelationSuccessor_coe_eq_relationSuccessor",
+        "successorSupport_eq_relation_of_homogeneous",
+        "induction on the actual memory recursion"
+      ],
+      "pairs": [
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation.trace_support_eq_memory_singleton",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+          "disposition": "CONCRETE_OLD_MODEL_NOT_GENERAL_ADAPTER",
+          "hypothesis_conclusion_and_reuse_comparison": "trace_support_eq_memory_singleton is specific to a Boolean source flipping independently of the action and a hand-written two-memory flipController. It proves singleton trace shape for that source. New finite supports can contain many states and the implementation uses explicit tables and Finset updates; the concrete Boolean theorem does not supply this representation correctness.",
+          "logical_independence_inferred": false
+        },
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportMemoryController_memory_eq_traceSupport",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+          "disposition": "SAME_INVARIANT_NEW_EXECUTABLE_REPRESENTATION",
+          "hypothesis_conclusion_and_reuse_comparison": "supportMemoryController_memory_eq_traceSupport proves the analogous invariant for a noncomputable Set-valued SupportMemory controller initialized from an arbitrary PMF support and using the classical winning selector. The new controller has a different computable Finset representation and explicit initial table with h0, so a representation/recursion proof is required. The new proof reuses the old relation-successor identity; it does not claim a new abstract trace-support invariant or independence from the old result.",
+          "logical_independence_inferred": false
+        },
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.deadend_trace_support_eq",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+          "disposition": "CONCRETE_HISTORY_NOT_GENERAL_REPLAY",
+          "hypothesis_conclusion_and_reuse_comparison": "deadend_trace_support_eq computes the singleton {true} at one length-one dead-end history in a time-dependent Boolean source. It has no generic controller-memory equality. It cannot replace an all-record, all-horizon replay theorem.",
+          "logical_independence_inferred": false
+        }
+      ],
+      "compiler_binding": {
+        "native_run": "native-03",
+        "compiler_displayed_type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype A] [inst_2 : DecidableEq X] [inst_3 : DecidableEq Y] (q : X → Y)\n  (R : X → A → X → Prop) (C : X → A → Prop) [inst_4 : (x : X) → (a : A) → (z : X) → Decidable (R x a z)]\n  [inst_5 : (x : X) → (a : A) → Decidable (C x a)] (initial : Finset X) (ordered : List A) (fallback : A) (p₀ : PMF X)\n  (P : ℕ → X → A → PMF X),\n  (∀ (x : X), x ∈ initial ↔ x ∈ p₀.support) →\n    (∀ (n : ℕ) (x : X) (a : A) (z : X), z ∈ (P n x a).support ↔ R x a z) →\n      ∀ (n : ℕ) (h : UEOT.V3.PathError.CausalHistory Y (A × Y) n),\n        ↑((UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.semanticController q R C\n                  initial ordered fallback).memory\n              n h) =\n          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.traceSupport p₀ q P n h",
+        "level_parameters": [
+          "u"
+        ],
+        "source_theorem_deps": [
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteRelationSuccessor_coe_eq_relationSuccessor",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.successorSupport_eq_relation_of_homogeneous"
+        ],
+        "direct_constants": [
+          "Fintype",
+          "DecidableEq",
+          "Decidable",
+          "Finset",
+          "List",
+          "PMF",
+          "Nat",
+          "Iff",
+          "Membership.mem",
+          "SetLike.instMembership",
+          "Finset.instSetLike",
+          "Set",
+          "Set.instMembership",
+          "PMF.support",
+          "Nat.recAux",
+          "UEOT.V3.PathError.CausalHistory",
+          "Prod",
+          "Eq",
+          "SetLike.coe",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryController.memory",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.semanticController",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.traceSupport",
+          "OfNat.ofNat",
+          "instOfNatNat",
+          "id",
+          "Set.ext",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.initialMemory",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.initialSupport",
+          "of_eq_true",
+          "Eq.trans",
+          "And",
+          "Not",
+          "ENNReal",
+          "DFunLike.coe",
+          "PMF.instFunLike",
+          "Zero.toOfNat0",
+          "ENNReal.instZero",
+          "True",
+          "congr",
+          "congrArg",
+          "congrFun'",
+          "Set.ofPred",
+          "Finset.filter",
+          "Finset.coe_filter",
+          "funext",
+          "Ne",
+          "propext",
+          "PMF.mem_support_iff._simp_1",
+          "iff_self",
+          "HAdd.hAdd",
+          "instHAdd",
+          "instAddNat",
+          "Prod.casesOn",
+          "Prod.mk",
+          "Eq.mpr",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.nextMemory",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.successorSupport",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteRelationSuccessor",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.nextMemory.eq_1",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.relationSuccessor",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteRelationSuccessor_coe_eq_relationSuccessor",
+          "Eq.symm",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.successorSupport_eq_relation_of_homogeneous"
+        ],
+        "identical_to_independently_reviewed_native02_public_row": true,
+        "stored_type_comparison": "NO_COLLISION_IN_THIS_RUN_PROTOCOL",
+        "semantic_review_confirmed": true
+      }
+    },
+    {
+      "group": 6,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.program_memory_eq_traceSupport",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+      "new_line": 345,
+      "classification": "PROGRAM_TO_PMF_MEMORY_ADAPTER",
+      "new_hypotheses_and_conclusion": "The executable Program.memory itself equals source traceSupport; this follows by identifying its replay with toController.memory and the preceding implementation-specific invariant.",
+      "actual_reuse_or_proof_ingredients": [
+        "Program.toController_memory",
+        "ExecutableSupportSynthesis.memory_eq_traceSupport"
+      ],
+      "pairs": [
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation.trace_support_eq_memory_singleton",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+          "disposition": "TRANSPARENT_WRAPPER_DISTINCT_FROM_OLD_EXAMPLE",
+          "hypothesis_conclusion_and_reuse_comparison": "The old Boolean singleton theorem concerns a different hand-written controller and a special action-independent source. The new theorem is intentionally a short adapter for the actual executable Program replay, not a separately novel invariant.",
+          "logical_independence_inferred": false
+        },
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportMemoryController_memory_eq_traceSupport",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+          "disposition": "TRANSPARENT_WRAPPER_OVER_NEW_REPRESENTATION_PROOF",
+          "hypothesis_conclusion_and_reuse_comparison": "The old theorem targets the noncomputable SupportMemory controller. This endpoint directly reuses the new Finset/controller memory proof and Program.toController_memory; it is an explicit representation bridge, not a renamed proof of the old controller.",
+          "logical_independence_inferred": false
+        },
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.deadend_trace_support_eq",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+          "disposition": "CONCRETE_HISTORY_NOT_PROGRAM_REPLAY",
+          "hypothesis_conclusion_and_reuse_comparison": "The one-history dead-end trace calculation does not concern Program.memory or arbitrary exact tables. The new wrapper has its real two-step dependency chain stated above; no edge to the old concrete calculation is asserted.",
+          "logical_independence_inferred": false
+        }
+      ],
+      "compiler_binding": {
+        "native_run": "native-03",
+        "compiler_displayed_type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype A] [inst_2 : DecidableEq X] [inst_3 : DecidableEq Y] (q : X → Y)\n  (R : X → A → X → Prop) (C : X → A → Prop) [inst_4 : (x : X) → (a : A) → (z : X) → Decidable (R x a z)]\n  [inst_5 : (x : X) → (a : A) → Decidable (C x a)] (initial : Finset X) (ordered : List A) (fallback : A) (p₀ : PMF X)\n  (P : ℕ → X → A → PMF X),\n  (∀ (x : X), x ∈ initial ↔ x ∈ p₀.support) →\n    (∀ (n : ℕ) (x : X) (a : A) (z : X), z ∈ (P n x a).support ↔ R x a z) →\n      ∀ (n : ℕ) (h : UEOT.V3.PathError.CausalHistory Y (A × Y) n),\n        ↑((UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.buildProgram q R C initial\n                  ordered fallback).memory\n              n h) =\n          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.traceSupport p₀ q P n h",
+        "level_parameters": [
+          "u"
+        ],
+        "source_theorem_deps": [
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.Program.toController_memory",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.memory_eq_traceSupport"
+        ],
+        "direct_constants": [
+          "Fintype",
+          "DecidableEq",
+          "Decidable",
+          "Finset",
+          "List",
+          "PMF",
+          "Nat",
+          "Iff",
+          "Membership.mem",
+          "SetLike.instMembership",
+          "Finset.instSetLike",
+          "Set",
+          "Set.instMembership",
+          "PMF.support",
+          "UEOT.V3.PathError.CausalHistory",
+          "Prod",
+          "Eq.mp",
+          "Eq",
+          "SetLike.coe",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryController.memory",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.semanticController",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.traceSupport",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.Program.memory",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.buildProgram",
+          "congrFun'",
+          "congrArg",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.Program.toController_memory",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.memory_eq_traceSupport"
+        ],
+        "identical_to_independently_reviewed_native02_public_row": true,
+        "stored_type_comparison": "NO_COLLISION_IN_THIS_RUN_PROTOCOL",
+        "semantic_review_confirmed": true
+      }
+    },
+    {
+      "group": 7,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.supported_histories_winning",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+      "new_line": 356,
+      "classification": "NEW_POLICY_OWN_LAW_WINNING_INVARIANT",
+      "new_hypotheses_and_conclusion": "The finite checker and complete action order imply winning membership along supported histories of the newly implemented semanticController policy itself.",
+      "actual_reuse_or_proof_ingredients": [
+        "finiteMemoryCheck_iff_initial_winning",
+        "mem_coarseLaw_succ_support_iff",
+        "memory_eq_traceSupport",
+        "selectedAction_step",
+        "PMF.support_pure"
+      ],
+      "pairs": [
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportMemoryController_supported_histories_winning",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+          "disposition": "SAME_INDUCTION_PATTERN_DIFFERENT_ACTUAL_POLICY",
+          "hypothesis_conclusion_and_reuse_comparison": "supportMemoryController_supported_histories_winning is tied to the old classical selector and receives initial winning membership directly. Ordered finite search can choose a different winning action, so its actual coarse-law distribution need not equal the old law. The new induction legitimately repeats the own-law verification using the actual first-match action and extracts initial winningness from the checker. It reuses generic support decomposition and fixed-point step facts, not an unproved identity of the two policies.",
+          "logical_independence_inferred": false
+        }
+      ],
+      "compiler_binding": {
+        "native_run": "native-03",
+        "compiler_displayed_type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype A] [inst_2 : DecidableEq X] [inst_3 : DecidableEq Y] (q : X → Y)\n  (R : X → A → X → Prop) (C : X → A → Prop) [inst_4 : (x : X) → (a : A) → (z : X) → Decidable (R x a z)]\n  [inst_5 : (x : X) → (a : A) → Decidable (C x a)] (initial : Finset X) (ordered : List A) (fallback : A) (p₀ : PMF X)\n  (P : ℕ → X → A → PMF X),\n  (∀ (a : A), a ∈ ordered) →\n    (∀ (x : X), x ∈ initial ↔ x ∈ p₀.support) →\n      (∀ (n : ℕ) (x : X) (a : A) (z : X), z ∈ (P n x a).support ↔ R x a z) →\n        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteMemoryCheck q R C initial =\n            true →\n          ∀ (n : ℕ),\n            ∀\n              h ∈\n                (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.coarseLaw p₀ q P\n                    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.semanticController q\n                        R C initial ordered fallback).policy\n                    n).support,\n              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.traceSupport p₀ q P n h ∈\n                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportWinning q R C",
+        "level_parameters": [
+          "u"
+        ],
+        "source_theorem_deps": [
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteMemoryCheck_iff_initial_winning",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.mem_coarseLaw_zero_support_iff",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.mem_coarseLaw_succ_support_iff",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.memory_eq_traceSupport",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.selectedAction_step",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.successorSupport_eq_relation_of_homogeneous"
+        ],
+        "direct_constants": [
+          "Fintype",
+          "DecidableEq",
+          "Decidable",
+          "Finset",
+          "List",
+          "PMF",
+          "Nat",
+          "Membership.mem",
+          "List.instMembership",
+          "Iff",
+          "SetLike.instMembership",
+          "Finset.instSetLike",
+          "Set",
+          "Set.instMembership",
+          "PMF.support",
+          "Eq",
+          "Bool",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteMemoryCheck",
+          "Bool.true",
+          "Set.Nonempty",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.initialSupport",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportWinning",
+          "Iff.mp",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteMemoryCheck_iff_initial_winning",
+          "Nat.recAux",
+          "UEOT.V3.PathError.CausalHistory",
+          "Prod",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.coarseLaw",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryController.policy",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.semanticController",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.traceSupport",
+          "OfNat.ofNat",
+          "instOfNatNat",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.mem_coarseLaw_zero_support_iff",
+          "HAdd.hAdd",
+          "instHAdd",
+          "instAddNat",
+          "Prod.casesOn",
+          "Prod.mk",
+          "And",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.successorSupport",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.mem_coarseLaw_succ_support_iff",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryController.memory",
+          "SetLike.coe",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.memory_eq_traceSupport",
+          "Eq.mpr",
+          "id",
+          "congrArg",
+          "And.left",
+          "And.right",
+          "PMF.pure",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.selectedAction",
+          "Eq.mp",
+          "Eq.trans",
+          "Singleton.singleton",
+          "Set.instSingletonSet",
+          "congrFun'",
+          "PMF.support_pure",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.supported_histories_winning._simp_1_1",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.relationSuccessor",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.selectedAction_step",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.successorSupport_eq_relation_of_homogeneous",
+          "Eq.symm"
+        ],
+        "identical_to_independently_reviewed_native02_public_row": true,
+        "stored_type_comparison": "NO_COLLISION_IN_THIS_RUN_PROTOCOL",
+        "semantic_review_confirmed": true
+      }
+    },
+    {
+      "group": 8,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.zero_uncovered",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+      "new_line": 398,
+      "classification": "NEW_POLICY_ALL_TIMES_ZERO_OCCUPANCY",
+      "new_hypotheses_and_conclusion": "For exact h0/hR/hC, complete actions and a true finite checker, the actual new policy has zero uncertified deployment-row mass at every time.",
+      "actual_reuse_or_proof_ingredients": [
+        "zero_uncovered_iff_support_certified",
+        "supported_histories_winning",
+        "memory_eq_traceSupport",
+        "selectedAction_step"
+      ],
+      "pairs": [
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation.stationary_uncovered_zero",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+          "disposition": "NAME_ZERO_MEANS_TIME_ZERO_NOT_ZERO_VALUE",
+          "hypothesis_conclusion_and_reuse_comparison": "stationary_uncovered_zero computes the time-zero uncertified mass of a fixed Boolean action PMF rho as (rho true).toReal, which can be positive. It is neither an all-times zero theorem nor a theorem about the synthesized controller.",
+          "logical_independence_inferred": false
+        },
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.all_rows_zero_uncovered",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySafetyWitness.lean",
+          "disposition": "TRIVIAL_CERTIFICATION_EXAMPLE_NOT_GENERAL_RESULT",
+          "hypothesis_conclusion_and_reuse_comparison": "all_rows_zero_uncovered is a Boolean one-memory/one-action witness whose certified predicate is True for every row. The new certification can be nontrivial and is established for a computed controller, so this concrete tautological-coverage example cannot discharge it.",
+          "logical_independence_inferred": false
+        },
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation.flip_controller_zero_uncovered",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+          "disposition": "DIFFERENT_CONCRETE_CONTROLLER",
+          "hypothesis_conclusion_and_reuse_comparison": "flip_controller_zero_uncovered verifies a hand-written Boolean flipController in its own action-independent flip source. The new theorem covers arbitrary exact finite tables and the actual first-match controller. Both reuse zero_uncovered_iff_support_certified; no policy identity is assumed.",
+          "logical_independence_inferred": false
+        },
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportStrictWitness.actual_uncovered_probability_zero",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+          "disposition": "ONE_TIME_POSTERIOR_WITNESS_NOT_ALL_TIMES_SYNTHESIS",
+          "hypothesis_conclusion_and_reuse_comparison": "actual_uncovered_probability_zero is a time-one statement in a four-state source with an observation/history-memory policy, proved through posterior_supported_actions_bound_actual_coverage. The new theorem is all-times for a separately synthesized policy and reuses the generic support criterion rather than that concrete event calculation.",
+          "logical_independence_inferred": false
+        },
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.viablePolicy_zero_uncovered",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViability.lean",
+          "disposition": "FINITE_HORIZON_CLASSICAL_POLICY_NOT_NEW_AUTONOMOUS_POLICY",
+          "hypothesis_conclusion_and_reuse_comparison": "viablePolicy_zero_uncovered assumes initial T-step viability and proves coverage only for n<T for a remaining-horizon Classical.choose policy with full-history fallback. The new autonomous first-match program has no T input and uses a finite fixed-point cutoff to get all n. It shares the generic support criterion but the old endpoint does not certify this new actual law.",
+          "logical_independence_inferred": false
+        }
+      ],
+      "compiler_binding": {
+        "native_run": "native-03",
+        "compiler_displayed_type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype A] [inst_2 : DecidableEq X] [inst_3 : DecidableEq Y] (q : X → Y)\n  (R : X → A → X → Prop) (C : X → A → Prop) [inst_4 : (x : X) → (a : A) → (z : X) → Decidable (R x a z)]\n  [inst_5 : (x : X) → (a : A) → Decidable (C x a)] (initial : Finset X) (ordered : List A) (fallback : A) (p₀ : PMF X)\n  (P : ℕ → X → A → PMF X) [inst_6 : MeasurableSpace X] [MeasurableSingletonClass X] [inst_8 : MeasurableSpace A]\n  [MeasurableSingletonClass A] (certified : ℕ → X → A → Prop),\n  (∀ (a : A), a ∈ ordered) →\n    (∀ (x : X), x ∈ initial ↔ x ∈ p₀.support) →\n      (∀ (n : ℕ) (x : X) (a : A) (z : X), z ∈ (P n x a).support ↔ R x a z) →\n        (∀ (n : ℕ) (x : X) (a : A), certified n x a ↔ C x a) →\n          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteMemoryCheck q R C initial =\n              true →\n            ∀ (n : ℕ),\n              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverageDeploymentRowLaw p₀ q P\n                        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.semanticController\n                            q R C initial ordered fallback).policy\n                        n).toMeasure.real\n                  {xa | ¬certified n xa.1 xa.2} =\n                0",
+        "level_parameters": [
+          "u"
+        ],
+        "source_theorem_deps": [
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.zero_uncovered_iff_support_certified",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.memory_eq_traceSupport",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.supported_histories_winning",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.selectedAction_step"
+        ],
+        "direct_constants": [
+          "Fintype",
+          "DecidableEq",
+          "Decidable",
+          "Finset",
+          "List",
+          "PMF",
+          "Nat",
+          "MeasurableSpace",
+          "MeasurableSingletonClass",
+          "Membership.mem",
+          "List.instMembership",
+          "Iff",
+          "SetLike.instMembership",
+          "Finset.instSetLike",
+          "Set",
+          "Set.instMembership",
+          "PMF.support",
+          "Eq",
+          "Bool",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteMemoryCheck",
+          "Bool.true",
+          "Iff.mpr",
+          "Real",
+          "MeasureTheory.Measure.real",
+          "Prod",
+          "Prod.instMeasurableSpace",
+          "PMF.toMeasure",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverageDeploymentRowLaw",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryController.policy",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.semanticController",
+          "Set.ofPred",
+          "Not",
+          "Prod.fst",
+          "Prod.snd",
+          "OfNat.ofNat",
+          "Zero.toOfNat0",
+          "Real.instZero",
+          "UEOT.V3.PathError.CausalHistory",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.coarseLaw",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.traceSupport",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.zero_uncovered_iff_support_certified",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryController.memory",
+          "SetLike.coe",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.memory_eq_traceSupport",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportWinning",
+          "Eq.mpr",
+          "id",
+          "congrArg",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.supported_histories_winning",
+          "PMF.pure",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.selectedAction",
+          "Eq.mp",
+          "Eq.trans",
+          "Singleton.singleton",
+          "Set.instSingletonSet",
+          "congrFun'",
+          "PMF.support_pure",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.zero_uncovered._simp_1_1",
+          "And.left",
+          "Set.Nonempty",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.relationSuccessor",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.selectedAction_step"
+        ],
+        "identical_to_independently_reviewed_native02_public_row": true,
+        "stored_type_comparison": "NO_COLLISION_IN_THIS_RUN_PROTOCOL",
+        "semantic_review_confirmed": true
+      }
+    },
+    {
+      "group": 9,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.all_times_physical_safe",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+      "new_line": 467,
+      "classification": "PHYSICAL_SAFETY_AS_EXISTING_THEOREM_APPLICATION",
+      "new_hypotheses_and_conclusion": "The new program has probability-one all-times physical safety under initial safety and one-step C/R closure; its own zero occupancy is derived from computed-table viability.",
+      "actual_reuse_or_proof_ingredients": [
+        "FiniteMemoryPhysicalSafety.controller_all_times_physical_safe",
+        "ExecutableSupportSynthesis.zero_uncovered"
+      ],
+      "pairs": [
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.controller_all_times_physical_safe",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean",
+          "disposition": "DIRECT_REUSE",
+          "hypothesis_conclusion_and_reuse_comparison": "controller_all_times_physical_safe is directly applied to semanticController, the same actual P and p0, the physical premises and the new zero_uncovered theorem. The generic safety theorem is reused unchanged; this endpoint packages the executable-controller-specific premises and is not presented as new probability theory.",
+          "logical_independence_inferred": false
+        },
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.supportMemoryController_all_times_physical_safe",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean",
+          "disposition": "OLD_SELECTOR_ADAPTER_NOT_DIRECTLY_APPLICABLE",
+          "hypothesis_conclusion_and_reuse_comparison": "supportMemoryController_all_times_physical_safe is already an adapter for the old classical SupportMemory controller and takes initial winningness. The new computed controller can differ in chosen actions and law, so it correctly reuses their common generic safety theorem with its own zero proof instead of asserting equality to the old selected controller.",
+          "logical_independence_inferred": false
+        },
+        {
+          "candidate_symbol": "UEOT.V3.ViabilityPath.all_times_safe_eq_one",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/ViabilityPath.lean",
+          "disposition": "TRANSITIVE_REUSE",
+          "hypothesis_conclusion_and_reuse_comparison": "ViabilityPath.all_times_safe_eq_one is the countable probability-one coordinate intersection lemma, called by controller_all_times_physical_safe. The new endpoint reaches it transitively. Coordinate safety is derived from actual controlled histories, not supplied as the final result.",
+          "logical_independence_inferred": false
+        }
+      ],
+      "compiler_binding": {
+        "native_run": "native-03",
+        "compiler_displayed_type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype A] [inst_2 : DecidableEq X] [inst_3 : DecidableEq Y] (q : X → Y)\n  (R : X → A → X → Prop) (C : X → A → Prop) [inst_4 : (x : X) → (a : A) → (z : X) → Decidable (R x a z)]\n  [inst_5 : (x : X) → (a : A) → Decidable (C x a)] (initial : Finset X) (ordered : List A) (fallback : A) (p₀ : PMF X)\n  (P : ℕ → X → A → PMF X) [inst_6 : MeasurableSpace X] [inst_7 : MeasurableSingletonClass X]\n  [inst_8 : MeasurableSpace A] [MeasurableSingletonClass A] [inst_10 : MeasurableSpace (Finset X)]\n  [inst_11 : MeasurableSingletonClass (Finset X)] (certified : ℕ → X → A → Prop),\n  (∀ (a : A), a ∈ ordered) →\n    (∀ (x : X), x ∈ initial ↔ x ∈ p₀.support) →\n      (∀ (n : ℕ) (x : X) (a : A) (z : X), z ∈ (P n x a).support ↔ R x a z) →\n        (∀ (n : ℕ) (x : X) (a : A), certified n x a ↔ C x a) →\n          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteMemoryCheck q R C initial =\n              true →\n            ∀ (K : Set X),\n              (∀ x ∈ p₀.support, x ∈ K) →\n                (∀ (x : X) (a : A), x ∈ K → C x a → ∀ (z : X), R x a z → z ∈ K) →\n                  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.stateTrajMeasure\n                        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.semanticController\n                          q R C initial ordered fallback)\n                        p₀ q P)\n                      {ω | ∀ (n : ℕ), ω n ∈ K} =\n                    1",
+        "level_parameters": [
+          "u"
+        ],
+        "source_theorem_deps": [
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.controller_all_times_physical_safe",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.zero_uncovered"
+        ],
+        "direct_constants": [
+          "Fintype",
+          "DecidableEq",
+          "Decidable",
+          "Finset",
+          "List",
+          "PMF",
+          "Nat",
+          "MeasurableSpace",
+          "MeasurableSingletonClass",
+          "Membership.mem",
+          "List.instMembership",
+          "Iff",
+          "SetLike.instMembership",
+          "Finset.instSetLike",
+          "Set",
+          "Set.instMembership",
+          "PMF.support",
+          "Eq",
+          "Bool",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteMemoryCheck",
+          "Bool.true",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.controller_all_times_physical_safe",
+          "Finset.fintype",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.semanticController",
+          "Iff.mp",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.zero_uncovered"
+        ],
+        "identical_to_independently_reviewed_native02_public_row": true,
+        "stored_type_comparison": "NO_COLLISION_IN_THIS_RUN_PROTOCOL",
+        "semantic_review_confirmed": true
+      }
+    },
+    {
+      "group": 10,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize_some_all_times_physical_safe",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+      "new_line": 488,
+      "classification": "RETURNED_PROGRAM_SAFETY_ADAPTER",
+      "new_hypotheses_and_conclusion": "An actual synthesize=some program provides list completeness, viability and exact program identity; combined with representation and physical premises it proves that returned program own infinite law safe.",
+      "actual_reuse_or_proof_ingredients": [
+        "synthesize_eq_some_iff",
+        "ExecutableSupportSynthesis.all_times_physical_safe",
+        "FiniteMemoryPhysicalSafety.controller_all_times_physical_safe"
+      ],
+      "pairs": [
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.controller_all_times_physical_safe",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean",
+          "disposition": "TRANSITIVE_REUSE_WITH_COMPUTED_PREMISES",
+          "hypothesis_conclusion_and_reuse_comparison": "The generic controller safety theorem takes zero occupancy as a premise. The returned-program wrapper extracts the computed acceptance facts, applies the new own-policy zero proof and then reaches that generic theorem. This is deliberate reuse with a new executable-output contract, not a renamed generic result or a hidden safety premise.",
+          "logical_independence_inferred": false
+        }
+      ],
+      "compiler_binding": {
+        "native_run": "native-03",
+        "compiler_displayed_type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype A] [inst_2 : DecidableEq X] [inst_3 : DecidableEq Y] (q : X → Y)\n  (R : X → A → X → Prop) (C : X → A → Prop) [inst_4 : (x : X) → (a : A) → (z : X) → Decidable (R x a z)]\n  [inst_5 : (x : X) → (a : A) → Decidable (C x a)] (initial : Finset X) (ordered : List A) (fallback : A) (p₀ : PMF X)\n  (P : ℕ → X → A → PMF X) [inst_6 : MeasurableSpace X] [inst_7 : MeasurableSingletonClass X]\n  [inst_8 : MeasurableSpace A] [MeasurableSingletonClass A] [inst_10 : MeasurableSpace (Finset X)]\n  [inst_11 : MeasurableSingletonClass (Finset X)] [inst_12 : DecidableEq A] (certified : ℕ → X → A → Prop)\n  (program : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.Program X Y A),\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize q R C initial ordered\n        fallback =\n      some program →\n    (∀ (x : X), x ∈ initial ↔ x ∈ p₀.support) →\n      (∀ (n : ℕ) (x : X) (a : A) (z : X), z ∈ (P n x a).support ↔ R x a z) →\n        (∀ (n : ℕ) (x : X) (a : A), certified n x a ↔ C x a) →\n          ∀ (K : Set X),\n            (∀ x ∈ p₀.support, x ∈ K) →\n              (∀ (x : X) (a : A), x ∈ K → C x a → ∀ (z : X), R x a z → z ∈ K) →\n                (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.stateTrajMeasure\n                      program.toController p₀ q P)\n                    {ω | ∀ (n : ℕ), ω n ∈ K} =\n                  1",
+        "level_parameters": [
+          "u"
+        ],
+        "source_theorem_deps": [
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize_eq_some_iff",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.all_times_physical_safe"
+        ],
+        "direct_constants": [
+          "Fintype",
+          "DecidableEq",
+          "Decidable",
+          "Finset",
+          "List",
+          "PMF",
+          "Nat",
+          "MeasurableSpace",
+          "MeasurableSingletonClass",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.Program",
+          "Eq",
+          "Option",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize",
+          "Option.some",
+          "Iff",
+          "Membership.mem",
+          "SetLike.instMembership",
+          "Finset.instSetLike",
+          "Set",
+          "Set.instMembership",
+          "PMF.support",
+          "And.casesOn",
+          "Finset.Nonempty",
+          "And",
+          "List.instMembership",
+          "Bool",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteMemoryCheck",
+          "Bool.true",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.buildProgram",
+          "ENNReal",
+          "DFunLike.coe",
+          "MeasureTheory.Measure",
+          "MeasurableSpace.pi",
+          "MeasureTheory.Measure.instFunLike",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.stateTrajMeasure",
+          "Finset.fintype",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.Program.toController",
+          "Set.ofPred",
+          "OfNat.ofNat",
+          "One.toOfNat1",
+          "ENNReal.instOne",
+          "Iff.mp",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize_eq_some_iff",
+          "Eq.ndrec",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.all_times_physical_safe",
+          "Eq.symm"
+        ],
+        "identical_to_independently_reviewed_native02_public_row": true,
+        "stored_type_comparison": "NO_COLLISION_IN_THIS_RUN_PROTOCOL",
+        "semantic_review_confirmed": true
+      }
+    },
+    {
+      "group": 11,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.initial_support_exact",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+      "new_line": 124,
+      "classification": "CONCRETE_INITIAL_TABLE_PMF_REPRESENTATION",
+      "new_hypotheses_and_conclusion": "For the new three-state example, membership in explicit initialTable={some false} is exactly membership in initialLaw=pure(some false) support.",
+      "actual_reuse_or_proof_ingredients": [
+        "PMF.support_pure",
+        "Finset singleton membership"
+      ],
+      "pairs": [
+        {
+          "candidate_symbol": "UEOT.V3.FixedFitnessConcentration.initialSupport_nonempty",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/FixedFitnessConcentration.lean",
+          "disposition": "DISTINCT_SUPPORT_NOTION_AND_CONCLUSION",
+          "hypothesis_conclusion_and_reuse_comparison": "FixedFitnessConcentration.initialSupport_nonempty concerns positivity support of a normalized nonnegative real frequency vector and proves only nonemptiness. It does not identify a finite runtime table with the new PMF support.",
+          "logical_independence_inferred": false
+        },
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.initialSupport_mem_arena",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+          "disposition": "OBSERVATION_ARENA_PROPERTY_NOT_TABLE_EQUALITY",
+          "hypothesis_conclusion_and_reuse_comparison": "initialSupport_mem_arena says a nonempty observation fiber of any PMF lies in the single-observation support arena. It neither defines nor verifies the concrete executable initial table. The core already uses this generic arena fact where needed.",
+          "logical_independence_inferred": false
+        },
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.initial_support_eq_univ",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+          "disposition": "DIFFERENT_INITIAL_DISTRIBUTION",
+          "hypothesis_conclusion_and_reuse_comparison": "SafePrefixDeadend.initial_support_eq_univ uses a uniform Boolean initial law and constant observation, yielding the entire two-state fiber. The new example starts at one safe Option Bool state; the old full-support result is not the new singleton table equality.",
+          "logical_independence_inferred": false
+        },
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness.source_support_exact",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean",
+          "disposition": "TRANSITION_SUPPORT_NOT_INITIAL_SUPPORT",
+          "hypothesis_conclusion_and_reuse_comparison": "FiniteMemoryCheckWitness.source_support_exact identifies action-independent Boolean transition support with z=!x. The new statement is about the initial PMF table, not a successor law. Shared pure-PMF support simplification is reused, not a false theorem edge.",
+          "logical_independence_inferred": false
+        },
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.supportTable_exact",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+          "disposition": "TRANSITION_TABLE_NOT_INITIAL_TABLE",
+          "hypothesis_conclusion_and_reuse_comparison": "SafePrefixDeadend.supportTable_exact describes a time-dependent Boolean successor row. It does not identify initialTable with initialLaw. The elementary pure-PMF support fact is the actual shared ingredient.",
+          "logical_independence_inferred": false
+        }
+      ],
+      "compiler_binding": {
+        "native_run": "native-03",
+        "compiler_displayed_type": "∀ (x : Option Bool),\n  x ∈ UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.initialTable ↔\n    x ∈ UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.initialLaw.support",
+        "level_parameters": [],
+        "source_theorem_deps": [],
+        "direct_constants": [
+          "Option",
+          "Bool",
+          "of_eq_true",
+          "Iff",
+          "Membership.mem",
+          "Finset",
+          "SetLike.instMembership",
+          "Finset.instSetLike",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.initialTable",
+          "Set",
+          "Set.instMembership",
+          "PMF.support",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.initialLaw",
+          "Eq.trans",
+          "Eq",
+          "Option.some",
+          "Bool.false",
+          "True",
+          "congr",
+          "congrArg",
+          "Finset.mem_singleton._simp_1",
+          "Singleton.singleton",
+          "Set.instSingletonSet",
+          "congrFun'",
+          "PMF.support_pure",
+          "Set.mem_singleton_iff._simp_1",
+          "iff_self"
+        ],
+        "identical_to_independently_reviewed_native02_public_row": true,
+        "stored_type_comparison": "NO_COLLISION_IN_THIS_RUN_PROTOCOL",
+        "semantic_review_confirmed": true
+      }
+    },
+    {
+      "group": 12,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.source_support_exact",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+      "new_line": 128,
+      "classification": "THREE_STATE_SOURCE_TABLE_REPRESENTATION",
+      "new_hypotheses_and_conclusion": "The actual pure nextState PMF has support exactly relation x a z, with incorrect actions going to the absorbing none state.",
+      "actual_reuse_or_proof_ingredients": [
+        "PMF.support_pure",
+        "source and relation definitions"
+      ],
+      "pairs": [
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness.source_support_exact",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean",
+          "disposition": "REVALIDATED_NEW_SOURCE_NOT_NEW_SUPPORT_PRINCIPLE",
+          "hypothesis_conclusion_and_reuse_comparison": "The old exact-support theorem is for Boolean flipping independently of action. The new Option Bool source has three states and action-dependent failure, so its relation is not the same old model under a renaming. Both are elementary instances of the existing PMF.support_pure law; the new source binding is necessary and makes no general novelty claim.",
+          "logical_independence_inferred": false
+        },
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.supportTable_exact",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+          "disposition": "DIFFERENT_NUMERICAL_SOURCE_AND_TIME_DEPENDENCE",
+          "hypothesis_conclusion_and_reuse_comparison": "The old supportTable_exact source uses transition n x a = a at n=0 and x later, over Bool. The new fixed source flips only when action matches and otherwise fails. It reuses the same generic support-of-pure fact, but the concrete relation and modeled experiment differ.",
+          "logical_independence_inferred": false
+        }
+      ],
+      "compiler_binding": {
+        "native_run": "native-03",
+        "compiler_displayed_type": "∀ (n : ℕ) (x : Option Bool) (a : Bool) (z : Option Bool),\n  z ∈ (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.source n x a).support ↔\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.relation x a z",
+        "level_parameters": [],
+        "source_theorem_deps": [],
+        "direct_constants": [
+          "Nat",
+          "Option",
+          "Bool",
+          "of_eq_true",
+          "Iff",
+          "Membership.mem",
+          "Set",
+          "Set.instMembership",
+          "PMF.support",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.source",
+          "Eq",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.nextState",
+          "Eq.trans",
+          "True",
+          "congrFun'",
+          "congrArg",
+          "Singleton.singleton",
+          "Set.instSingletonSet",
+          "PMF.support_pure",
+          "Set.mem_singleton_iff._simp_1",
+          "iff_self"
+        ],
+        "identical_to_independently_reviewed_native02_public_row": true,
+        "stored_type_comparison": "NO_COLLISION_IN_THIS_RUN_PROTOCOL",
+        "semantic_review_confirmed": true
+      }
+    },
+    {
+      "group": 13,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.safe_is_nonempty_proper",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+      "new_line": 132,
+      "classification": "PROPER_SAFE_SET_WITNESS_CHECK",
+      "new_hypotheses_and_conclusion": "The new safe set excludes none in Option Bool, so it contains two states and is not universal.",
+      "actual_reuse_or_proof_ingredients": [
+        "explicit inhabitant some false",
+        "explicit excluded element none"
+      ],
+      "pairs": [
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.safe_is_proper_nonempty",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySafetyWitness.lean",
+          "disposition": "CONCRETE_NONVACUITY_CHECK_NOT_NEW_SET_THEORY",
+          "hypothesis_conclusion_and_reuse_comparison": "safe_is_proper_nonempty concerns {false} inside Bool, with one safe and one excluded state. The new three-state safe set has two safe states and one real failure state, so the old fixed constant theorem is not literally the same set. This small concrete nonvacuity proof is intentionally not counted as a new general mathematical principle.",
+          "logical_independence_inferred": false
+        }
+      ],
+      "compiler_binding": {
+        "native_run": "native-03",
+        "compiler_displayed_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.safe.Nonempty ∧\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.safe ≠ Set.univ",
+        "level_parameters": [],
+        "source_theorem_deps": [],
+        "direct_constants": [
+          "And.intro",
+          "Set.Nonempty",
+          "Option",
+          "Bool",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.safe",
+          "Ne",
+          "Set",
+          "Set.univ",
+          "Exists.intro",
+          "Membership.mem",
+          "Set.instMembership",
+          "Option.some",
+          "Bool.false",
+          "of_eq_true",
+          "Not",
+          "Eq",
+          "Option.none",
+          "Eq.trans",
+          "False",
+          "True",
+          "congrArg",
+          "eq_false'",
+          "False.elim",
+          "noConfusion_of_Nat",
+          "Option.ctorIdx",
+          "not_false_eq_true",
+          "Eq.rec",
+          "Set.mem_univ",
+          "Eq.symm",
+          "rfl"
+        ],
+        "identical_to_independently_reviewed_native02_public_row": true,
+        "stored_type_comparison": "NO_COLLISION_IN_THIS_RUN_PROTOCOL",
+        "semantic_review_confirmed": true
+      }
+    },
+    {
+      "group": 14,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.initial_safe",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+      "new_line": 139,
+      "classification": "CONCRETE_INITIAL_PHYSICAL_PREMISE",
+      "new_hypotheses_and_conclusion": "The actual pure(some false) initial law is supported in the new proper safe set.",
+      "actual_reuse_or_proof_ingredients": [
+        "PMF.support_pure",
+        "safe definition"
+      ],
+      "pairs": [
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.initial_false_safe",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySafetyWitness.lean",
+          "disposition": "REVALIDATED_CONCRETE_PHYSICAL_PREMISE",
+          "hypothesis_conclusion_and_reuse_comparison": "initial_false_safe refers to pure false over Bool and safe={false}. The new source has Option Bool and safe={x != none}. The same generic pure-support fact supplies this small model-specific premise; no new safety theorem is claimed.",
+          "logical_independence_inferred": false
+        },
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.initial_safe_mass",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean",
+          "disposition": "INITIAL_NUMERIC_MASS_NOT_SUPPORT_CONTAINMENT",
+          "hypothesis_conclusion_and_reuse_comparison": "FiniteWindowDoobWitnessCheck.initial_safe_mass computes mass 1/2 at each safe atom of a different uniform/QSD experiment. It does not assert or prove this new deterministic initial support lies in K.",
+          "logical_independence_inferred": false
+        },
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.safeInitialRow_nonneg",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean",
+          "disposition": "NONNEGATIVITY_DOES_NOT_IMPLY_INITIAL_SAFETY",
+          "hypothesis_conclusion_and_reuse_comparison": "FiniteWindowDoobCheck.safeInitialRow_nonneg says a restricted PMF row is nonnegative for any K, even with original mass outside K. It cannot prove all initial support is safe. The new premise is checked using the actual initial point mass.",
+          "logical_independence_inferred": false
+        }
+      ],
+      "compiler_binding": {
+        "native_run": "native-03",
+        "compiler_displayed_type": "∀ x ∈ UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.initialLaw.support,\n  x ∈ UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.safe",
+        "level_parameters": [],
+        "source_theorem_deps": [],
+        "direct_constants": [
+          "Option",
+          "Bool",
+          "Membership.mem",
+          "Set",
+          "Set.instMembership",
+          "PMF.support",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.initialLaw",
+          "Eq",
+          "Option.some",
+          "Bool.false",
+          "Eq.mp",
+          "Eq.trans",
+          "Singleton.singleton",
+          "Set.instSingletonSet",
+          "congrFun'",
+          "congrArg",
+          "PMF.support_pure",
+          "Set.mem_singleton_iff._simp_1",
+          "of_eq_true",
+          "Set.ofPred",
+          "Not",
+          "Option.none",
+          "True",
+          "False",
+          "eq_false'",
+          "False.elim",
+          "noConfusion_of_Nat",
+          "Option.ctorIdx",
+          "not_false_eq_true"
+        ],
+        "identical_to_independently_reviewed_native02_public_row": true,
+        "stored_type_comparison": "NO_COLLISION_IN_THIS_RUN_PROTOCOL",
+        "semantic_review_confirmed": true
+      }
+    },
+    {
+      "group": 15,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.model_support_exact",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+      "new_line": 188,
+      "classification": "NUMERICAL_MODEL_PMF_SOURCE_ADAPTER",
+      "new_hypotheses_and_conclusion": "The constructed Model transitionPMF is proved equal to the witness source 0 PMF, then its support is identified with the same runtime relation.",
+      "actual_reuse_or_proof_ingredients": [
+        "Model.transitionPMF_apply_toReal",
+        "PMF.ext",
+        "ENNReal.toReal_eq_toReal_iff",
+        "ExecutableSupportControllerWitness.source_support_exact"
+      ],
+      "pairs": [
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness.source_support_exact",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean",
+          "disposition": "OWN_SOURCE_ADAPTER_BEFORE_SUPPORT_REUSE",
+          "hypothesis_conclusion_and_reuse_comparison": "The old Boolean source_support_exact begins with an already given pure PMF. The new theorem first discharges the real-row Model-to-PMF reconstruction equality for the three-state source and then directly reuses its own source_support_exact. An unrelated old Boolean support identity cannot supply that numerical model equality.",
+          "logical_independence_inferred": false
+        },
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.supportTable_exact",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+          "disposition": "OWN_MODEL_IDENTITY_REQUIRED",
+          "hypothesis_conclusion_and_reuse_comparison": "The old time-dependent Boolean supportTable_exact has no newly constructed finite Model or normalization round trip. The new proof explicitly establishes equality of numerical PMFs before invoking its own support theorem; no independently supplied source identity is hidden.",
+          "logical_independence_inferred": false
+        }
+      ],
+      "compiler_binding": {
+        "native_run": "native-03",
+        "compiler_displayed_type": "∀ (x : Option Bool) (a : Bool) (z : Option Bool),\n  z ∈\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.model.transitionPMF x\n          a).support ↔\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.relation x a z",
+        "level_parameters": [],
+        "source_theorem_deps": [
+          "UEOT.V3.FiniteDiscountedControl.Model.transitionPMF_apply_toReal",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.source_support_exact"
+        ],
+        "direct_constants": [
+          "Option",
+          "Bool",
+          "Eq",
+          "PMF",
+          "UEOT.V3.FiniteDiscountedControl.Model.transitionPMF",
+          "instFintypeOption",
+          "Bool.fintype",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.model",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.source",
+          "OfNat.ofNat",
+          "Nat",
+          "instOfNatNat",
+          "PMF.ext",
+          "Iff.mp",
+          "Real",
+          "ENNReal.toReal",
+          "DFunLike.coe",
+          "ENNReal",
+          "PMF.instFunLike",
+          "ENNReal.toReal_eq_toReal_iff'",
+          "PMF.apply_ne_top",
+          "Eq.mpr",
+          "UEOT.V3.FiniteDiscountedControl.Model.transition",
+          "id",
+          "congrArg",
+          "UEOT.V3.FiniteDiscountedControl.Model.transitionPMF_apply_toReal",
+          "instNonemptyOfInhabited",
+          "instInhabitedBool",
+          "Eq.refl",
+          "Iff",
+          "Membership.mem",
+          "Set",
+          "Set.instMembership",
+          "PMF.support",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.relation",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.source_support_exact"
+        ],
+        "identical_to_independently_reviewed_native02_public_row": true,
+        "stored_type_comparison": "NO_COLLISION_IN_THIS_RUN_PROTOCOL",
+        "semantic_review_confirmed": true
+      }
+    },
+    {
+      "group": 16,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.actual_killed_mass_one",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+      "new_line": 205,
+      "classification": "ACTUAL_COMPUTED_PROGRAM_KILLED_SURVIVAL_INSTANCE",
+      "new_hypotheses_and_conclusion": "At every n the actual synthesized program on the same three-state numerical source has unnormalized augmented killed survival mass one on the proper safe set.",
+      "actual_reuse_or_proof_ingredients": [
+        "ExecutableSupportSynthesis.synthesize_some_killed_mass_one",
+        "model_support_exact",
+        "synthesis_returns_program",
+        "certified_transition_safe"
+      ],
+      "pairs": [
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.MissingFiber.actual_uncovered_mass_is_one",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+          "disposition": "DIFFERENT_EVENT_WITH_OPPOSITE_COVERAGE_ROLE",
+          "hypothesis_conclusion_and_reuse_comparison": "MissingFiber.actual_uncovered_mass_is_one proves uncertified deployment-row mass one at time zero when a chosen observation representative hides an unsafe/uncertified true state. The new result concerns safe survival mass in the augmented killed chain at every horizon. Similar words actual/mass/one do not equate these events. The new result genuinely instantiates the R0 same-source survival identity through the newly verified controller.",
+          "logical_independence_inferred": false
+        }
+      ],
+      "compiler_binding": {
+        "native_run": "native-03",
+        "compiler_displayed_type": "∀ (n : ℕ),\n  ∑ v,\n      UEOT.V3.QSDPerron.rowApply\n        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.safeInitialRow\n          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.augmentedInitial\n            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.program.toController\n            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.initialLaw\n            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.observe)\n          (Prod.fst ⁻¹' UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.safe))\n        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.killedMatrix\n            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.augmentedModel\n              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.model\n              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.program.toController\n              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.observe)\n            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.liftedStationaryPolicy\n              Prod.snd\n              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.program.toController.action)\n            (Prod.fst ⁻¹' UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.safe) ^\n          n)\n        v =\n    1",
+        "level_parameters": [],
+        "source_theorem_deps": [
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize_some_killed_mass_one",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.synthesis_returns_program",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.initial_support_exact",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.model_support_exact",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.initial_safe",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.certified_transition_safe",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.source_support_exact"
+        ],
+        "direct_constants": [
+          "Nat",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize_some_killed_mass_one",
+          "Option",
+          "Bool",
+          "Unit",
+          "instFintypeOption",
+          "Bool.fintype",
+          "Option.instDecidableEq",
+          "instDecidableEqBool",
+          "instDecidableEqPUnit",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.observe",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.relation",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.certification",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.instDecidableRelation",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.instDecidableCertification",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.initialTable",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.actionOrder",
+          "Bool.false",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.initialLaw",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.instMeasurableSpaceOptionBool_uEOT",
+          "instMeasurableSingletonClassOfMeasurableEq",
+          "StandardBorelSpace.instMeasurableEq",
+          "standardBorelSpace_of_discreteMeasurableSpace",
+          "instDiscreteMeasurableSpace",
+          "Option.instCountable",
+          "Bool.countable",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.instMeasurableSpaceBool_uEOT",
+          "Bool.instMeasurableSingletonClass",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.instMeasurableSpaceFinsetOptionBool_uEOT",
+          "Finset",
+          "Finset.countable",
+          "instNonemptyOfInhabited",
+          "instInhabitedBool",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.model",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.certified",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.program",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.synthesis_returns_program",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.initial_support_exact",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.model_support_exact",
+          "Iff.rfl",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.safe",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.initial_safe",
+          "Membership.mem",
+          "Set",
+          "Set.instMembership",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.certified_transition_safe",
+          "OfNat.ofNat",
+          "instOfNatNat",
+          "Iff.mpr",
+          "PMF.support",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.source",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.source_support_exact"
+        ],
+        "identical_to_independently_reviewed_native02_public_row": true,
+        "stored_type_comparison": "NO_COLLISION_IN_THIS_RUN_PROTOCOL",
+        "semantic_review_confirmed": true
+      }
+    },
+    {
+      "group": 17,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.mixed_initial_has_no_all_times_policy",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+      "new_line": 229,
+      "classification": "AMBIGUOUS_INITIAL_PHASE_WITNESS_REVALIDATION",
+      "new_hypotheses_and_conclusion": "For the uniform mixture on some false and some true in the new action-dependent failure source, no complete causal policy has zero uncertified occupancy at every time.",
+      "actual_reuse_or_proof_ingredients": [
+        "synthesize_isSome_iff_exists_all_times_policy",
+        "synthesis_rejections",
+        "mixed_support_exact",
+        "source_support_exact"
+      ],
+      "pairs": [
+        {
+          "candidate_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness.mixed_initial_has_no_all_times_policy",
+          "candidate_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean",
+          "disposition": "SAME_OBSTRUCTION_NEW_EXPERIMENT_NOT_NOVEL_IMPOSSIBILITY_PRINCIPLE",
+          "hypothesis_conclusion_and_reuse_comparison": "The old theorem uses uniform Bool and action-independent flipping; the new law lives on Option Bool and wrong actions enter an absorbing failure state. Both expose the same ambiguous-phase certification obstruction and both reuse the generic finite-check/existence equivalence. The new endpoint consumes the actual synthesize rejection and exact new-source tables. It is a new-source regression witness, not a new general impossibility principle or a claim of logical independence; directly transporting the old theorem would require a proved relation between the two actual experiments.",
+          "logical_independence_inferred": false
+        }
+      ],
+      "compiler_binding": {
+        "native_run": "native-03",
+        "compiler_displayed_type": "¬∃ π,\n    ∀ (n : ℕ),\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverageDeploymentRowLaw\n                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.mixedLaw\n                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.observe\n                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.source π\n                n).toMeasure.real\n          {xa |\n            ¬UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.certified n xa.1\n                xa.2} =\n        0",
+        "level_parameters": [],
+        "source_theorem_deps": [
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize_isSome_iff_exists_all_times_policy",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.source_support_exact",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.synthesis_rejections"
+        ],
+        "direct_constants": [
+          "Exists",
+          "Nat",
+          "UEOT.V3.PathError.CausalHistory",
+          "Unit",
+          "Prod",
+          "Bool",
+          "PMF",
+          "Eq",
+          "Real",
+          "MeasureTheory.Measure.real",
+          "Option",
+          "Prod.instMeasurableSpace",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.instMeasurableSpaceOptionBool_uEOT",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.instMeasurableSpaceBool_uEOT",
+          "PMF.toMeasure",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverageDeploymentRowLaw",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.mixedLaw",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.observe",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.source",
+          "Set.ofPred",
+          "Not",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.certified",
+          "Prod.fst",
+          "Prod.snd",
+          "OfNat.ofNat",
+          "Zero.toOfNat0",
+          "Real.instZero",
+          "Exists.casesOn",
+          "False",
+          "Option.isSome",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.Program",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize",
+          "instFintypeOption",
+          "Bool.fintype",
+          "Option.instDecidableEq",
+          "instDecidableEqBool",
+          "instDecidableEqPUnit",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.relation",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.certification",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.instDecidableRelation",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.instDecidableCertification",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.mixedTable",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.actionOrder",
+          "Bool.false",
+          "Bool.true",
+          "Iff.mpr",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize_isSome_iff_exists_all_times_policy",
+          "instMeasurableSingletonClassOfMeasurableEq",
+          "StandardBorelSpace.instMeasurableEq",
+          "standardBorelSpace_of_discreteMeasurableSpace",
+          "instDiscreteMeasurableSpace",
+          "Option.instCountable",
+          "Bool.countable",
+          "Bool.instMeasurableSingletonClass",
+          "of_decide_eq_true",
+          "Membership.mem",
+          "List",
+          "List.instMembership",
+          "Bool.instDecidableForallOfDecidablePred",
+          "List.instDecidableMemOfLawfulBEq",
+          "instBEqOfDecidableEq",
+          "instLawfulBEqBool",
+          "id",
+          "Decidable.decide",
+          "Eq.refl",
+          "_private.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.mixed_support_exact",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.source_support_exact",
+          "Iff.rfl",
+          "Exists.intro",
+          "Eq.casesOn",
+          "HEq",
+          "Eq.mp",
+          "congrArg",
+          "And.left",
+          "And",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.initialTable",
+          "List.cons",
+          "List.nil",
+          "EmptyCollection.emptyCollection",
+          "Finset",
+          "Finset.instEmptyCollection",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.synthesis_rejections",
+          "False.elim",
+          "noConfusion_of_Nat",
+          "Bool.ctorIdx",
+          "HEq.refl"
+        ],
+        "identical_to_independently_reviewed_native02_public_row": true,
+        "stored_type_comparison": "NO_COLLISION_IN_THIS_RUN_PROTOCOL",
+        "semantic_review_confirmed": true
+      }
+    }
+  ],
+  "review_of_empty_hint_groups": "All new source endpoints, including empty lexical groups, are covered by the separate final source-semantic review; an empty lexical list is not an independence certificate.",
+  "compiler_type_binding": {
+    "status": "COMPLETED_NATIVE_EXPORT_VERIFIED",
+    "native_directory": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/executable-support-evidence-20261027/native-03",
+    "run_status_at_review": "RUNNING",
+    "native_type_comparison_reexecuted_by_reviewer": false,
+    "receipt": {
+      "label": "native_export",
+      "command": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/executable-support-evidence-20261027/native-03/EXECUTABLE_SUPPORT_NATIVE_EXPORT.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 480.086,
+      "log_sha256": "cb5c5153efabd069bfafc9663b4f60c829382a1136fce19494e8ba4afc9fc15b"
+    },
+    "log": {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/executable-support-evidence-20261027/native-03/native_export.log",
+      "sha256": "cb5c5153efabd069bfafc9663b4f60c829382a1136fce19494e8ba4afc9fc15b"
+    },
+    "observed_first_native": {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/executable-support-evidence-20261027/native-03/observed_first_native.json",
+      "sha256": "9e2be23986e5d5f38266e267964feac9af18cc8e3f3f17bdf18a356cc8f06592"
+    },
+    "exporter": {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/executable-support-evidence-20261027/native-03/EXECUTABLE_SUPPORT_NATIVE_EXPORT.lean",
+      "sha256": "2693889c79ed13a1f51042b4d9d79911b44176bbcdb77fe3cdddba3720004d00"
+    },
+    "public_type_and_dependency_rows": 33,
+    "public_rows_exactly_equal_native02_minus_private_regression": true,
+    "registered_prior_theorems": 4357,
+    "cross_isDefEq_comparisons": 143781,
+    "internal_isDefEq_comparisons": 528,
+    "collisions": [],
+    "all_module_owned_theorem_constants": 73,
+    "all_owned_axiom_union": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "private_regression_retained_in_native_scope": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "direct_constants": [
+        "of_decide_eq_true",
+        "Eq",
+        "Bool",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.selectedAction",
+        "Option",
+        "Unit",
+        "instFintypeOption",
+        "Bool.fintype",
+        "Option.instDecidableEq",
+        "instDecidableEqBool",
+        "instDecidableEqPUnit",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.observe",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.relation",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.certification",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.instDecidableRelation",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.instDecidableCertification",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.actionOrder",
+        "Bool.true",
+        "EmptyCollection.emptyCollection",
+        "Finset",
+        "Finset.instEmptyCollection",
+        "id",
+        "Decidable.decide",
+        "Eq.refl"
+      ],
+      "direct_theorem_constants": [
+        "of_decide_eq_true"
+      ],
+      "is_private": true,
+      "level_parameters": [],
+      "name": "_private.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.empty_memory_uses_fallback",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness",
+      "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.selectedAction\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.observe\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.relation\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.certification\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.actionOrder true ∅ =\n  true"
+    },
+    "final_protocol_status_or_fixed_replay_not_inferred_from_export": true
+  },
+  "epistemic_boundary": {
+    "typed_noncollision_meaning": "The completed native-03 comparison reports no collision for the 33 public interfaces under the actual stored/compiler type representations and this fixed protocol. This does not prove logical independence, theorem nonderivability, scientific novelty, correctness of empirical source representations, or strong unified closure. Native-02 genuinely failed with the recorded two public collisions.",
+    "semantic_reuse_meaning": "This review identifies real existing-theorem applications, necessary verification of the new executable representation and own policy law, and model-specific regression witnesses. Several endpoints deliberately repackage or instantiate existing results; no novelty credit is assigned merely for a new name.",
+    "independent_mathematical_novelty_claimed": false,
+    "counted_ledger_promotion": "NONE"
+  },
+  "blocking_findings": [],
+  "source_semantic_conclusion": "CLEAR: all 17 nonempty lexical groups and 37 indicated source pairs were inspected with hypotheses, conclusions and actual proof reuse. Necessary executable-representation correctness, source realization, and returned-program own-law bridges are distinguished from existing mathematical principles and local witness instantiations. The 33 public compiler types/dependencies match that source review. No unacknowledged rename/move is presented as independent mathematical novelty.",
+  "review_execution": {
+    "repo_edits": false,
+    "lean_or_build_rerun": false,
+    "native_export_or_pair_scan_rerun": false,
+    "cloud_ci": false,
+    "gi_writes": false
+  },
+  "pending": "Exact final candidate Git commit binding; fixed replay and final protocol status, unless separately completed after this export-scoped review.",
+  "scope": "Independent source semantic reuse review and binding to completed native-03 compiler export. Final Git candidate binding is a separate boundary; ongoing full protocol stages are not inferred to have passed.",
+  "source_draft": {
+    "path": "/tmp/ueot-r1-typed-reuse-review.source-draft.json",
+    "sha256": "0917f89b66cca8c3ed57124c5068eebc402cb6a75d5e86c91e9a5b7e4c5af5c4"
+  },
+  "preceding_failed_runs": [
+    {
+      "run": "native-01",
+      "status": {
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/executable-support-evidence-20261027/native-01/STATUS.json",
+        "sha256": "3c1d72cb506e58827b8eca2990fc48da74c3864ed57a09ccf1064d3b8d990cd2"
+      },
+      "result": {
+        "label": "native_export",
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/executable-support-evidence-20261027/native-01/EXECUTABLE_SUPPORT_NATIVE_EXPORT.lean"
+        ],
+        "exit_code": 1,
+        "seconds": 54.021,
+        "log_sha256": "bbac2825000609ffacf7bae19fc9d10af46a681904bf6a2a71b4a01b9c3ae606"
+      },
+      "interpretation": "Actual exporter recursion-depth failure, retained as failure. The later exporter adapter raises maxRecDepth to 16384; it does not change production theorem proofs."
+    },
+    {
+      "run": "native-02",
+      "status": {
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/executable-support-evidence-20261027/native-02/STATUS.json",
+        "sha256": "dbb5c714a135192077a6657b8c67b7dcf8329c65b7b1edba6f4b9f2227977d88"
+      },
+      "result": {
+        "label": "native_export",
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/executable-support-evidence-20261027/native-02/EXECUTABLE_SUPPORT_NATIVE_EXPORT.lean"
+        ],
+        "exit_code": 1,
+        "seconds": 484.865,
+        "log_sha256": "0bc640e59f63fc90153b947baae4e75ff9c548575653b99ceeb7389d121f6fd6"
+      },
+      "public_count": 34,
+      "cross_isDefEq_comparisons": 148138,
+      "internal_isDefEq_comparisons": 561,
+      "collisions": [
+        [
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.empty_memory_uses_fallback",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.flip_next_state_is_true"
+        ],
+        [
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.empty_memory_uses_fallback",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.survival_micro_alias"
+        ]
+      ],
+      "interpretation": "Both are real public stored-type collisions for a closed concrete fallback equality that reduces to true = true. No no-collision claim is made for this run."
+    }
+  ],
+  "private_classification_resolution": {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.empty_memory_uses_fallback",
+    "old_source_sha256": "e3ba016452df6627a0e0800cb5944835fe4d2d37de5642c5c6ceded3c899d7db",
+    "new_source_sha256": "e737f0caf8127eb233ccf85366e7d5b5b1cbb8db8d2aac16db7af32a6b18ba73",
+    "exact_change": "theorem empty_memory_uses_fallback -> private theorem empty_memory_uses_fallback",
+    "body_type_and_computational_regression_unchanged": true,
+    "source_public_callers_found": 0,
+    "rationale": "A concrete local executable fallback regression is retained for verification but not registered as an independent public theorem result. All owned theorem constants, including this private one, remain in the native axiom/type audit. The public generic selectedAction_empty theorem remains reviewed."
+  },
+  "final_source_review": {
+    "path": "/tmp/ueot-r1-final-source-review.json",
+    "sha256": "5014548d8d01290df1d2235cfb44ee4926c2335fa437aae9f8e8f1437309e0e6"
+  }
+}

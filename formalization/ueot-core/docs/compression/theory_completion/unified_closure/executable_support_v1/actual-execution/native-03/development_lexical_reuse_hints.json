@@ -1,0 +1,571 @@
+[
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.relationCheck_iff_viableWith",
+    "short_name": "relationCheck_iff_viableWith",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+    "line": 121,
+    "header_preview": "theorem relationCheck_iff_viableWith :     ∀ k n (S : Finset X),       finiteRelationViabilityCheck q (fun _ => R) (fun _ => C) n k S = true ↔         viableWith (fun _ => relationSuccessor q R) (fun _ => C) n k (↑S : Set X) := by   intro k   induction k with",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": [
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.viable_iff_homogeneous_relation",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+        "similarity": 0.5,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      }
+    ]
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.boundedCheck_iff_winning",
+    "short_name": "boundedCheck_iff_winning",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+    "line": 156,
+    "header_preview": "theorem boundedCheck_iff_winning (S : Finset X)     (hS : (↑S : Set X) ∈ supportArena q) :     finiteRelationViabilityCheck q (fun _ => R) (fun _ => C) 0       (2 ^ Fintype.card X - 1) S = true ↔         (↑S : Set X) ∈ supportWinning q R C := by   have hB : supportArenaCard q ≤ 2 ^ Fintype.card X - 1 := by",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": []
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.stepCheck_iff",
+    "short_name": "stepCheck_iff",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+    "line": 171,
+    "header_preview": "theorem stepCheck_iff (S : Finset X) (a : A) :     stepCheck q R C S a = true ↔       S.Nonempty ∧ (∀ x ∈ (↑S : Set X), C x a) ∧         ∀ y : Y, (relationSuccessor q R (↑S : Set X) a y).Nonempty →           relationSuccessor q R (↑S : Set X) a y ∈ supportWinning q R C := by   simp only [stepCheck, decide_eq_true_eq]",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": []
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.findAction_eq_some_iff",
+    "short_name": "findAction_eq_some_iff",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+    "line": 207,
+    "header_preview": "theorem findAction_eq_some_iff (ordered : List A) (S : Finset X) (a : A) :     findAction q R C ordered S = some a ↔       stepCheck q R C S a = true ∧         ∃ before after, ordered = before ++ a :: after ∧           ∀ b ∈ before, stepCheck q R C S b = false := by   simpa only [findAction, Bool.not_eq_eq_eq_not, Bool.not_true] using",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": []
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.selectedAction_step",
+    "short_name": "selectedAction_step",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+    "line": 217,
+    "header_preview": "theorem selectedAction_step (ordered : List A) (fallback : A)     (hcomplete : ∀ a : A, a ∈ ordered) (S : Finset X)     (hS : (↑S : Set X) ∈ supportWinning q R C) :     (∀ x ∈ (↑S : Set X), C x (selectedAction q R C ordered fallback S)) ∧       ∀ y : Y,         (relationSuccessor q R (↑S : Set X)",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": [
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.selectedAction_pmf",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+        "similarity": 0.567,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.selectedAction_law",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+        "similarity": 0.533,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      }
+    ]
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.selectedAction_empty",
+    "short_name": "selectedAction_empty",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+    "line": 241,
+    "header_preview": "@[simp] theorem selectedAction_empty (ordered : List A) (fallback : A) :     selectedAction q R C ordered fallback ∅ = fallback := by   have hnone : findAction q R C ordered ∅ = none := by     apply List.find?_eq_none.mpr     intro a _     simp [stepCheck]",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": [
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.selectedAction_pmf",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+        "similarity": 0.552,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.selectedAction_law",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+        "similarity": 0.52,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      }
+    ]
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize_eq_some_iff",
+    "short_name": "synthesize_eq_some_iff",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+    "line": 251,
+    "header_preview": "theorem synthesize_eq_some_iff [DecidableEq A]     (initial : Finset X) (ordered : List A) (fallback : A) (program : Program X Y A) :     synthesize q R C initial ordered fallback = some program ↔       initial.Nonempty ∧ (∀ a : A, a ∈ ordered) ∧         finiteMemoryCheck q R C initial = true ∧           program = buildProgram q R C initial ordered fallback := by",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": [
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeCheck.atomEncode_eq_some_iff",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean",
+        "similarity": 0.5,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      }
+    ]
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize_isSome_iff",
+    "short_name": "synthesize_isSome_iff",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+    "line": 264,
+    "header_preview": "theorem synthesize_isSome_iff [DecidableEq A]     (initial : Finset X) (ordered : List A) (fallback : A) :     (synthesize q R C initial ordered fallback).isSome = true ↔       initial.Nonempty ∧ (∀ a : A, a ∈ ordered) ∧         finiteMemoryCheck q R C initial = true := by   by_cases hne : initial.Nonempty <;>",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": []
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.Program.toController_memory",
+    "short_name": "toController_memory",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+    "line": 287,
+    "header_preview": "@[simp] theorem toController_memory {X Y A : Type u} (program : Program X Y A) :     ∀ n (h : CausalHistory Y (A × Y) n),       program.toController.memory n h = program.memory n h := by   intro n   induction n with   | zero => intro h; rfl",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": []
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.memory_eq_traceSupport",
+    "short_name": "memory_eq_traceSupport",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+    "line": 322,
+    "header_preview": "theorem memory_eq_traceSupport     (h0 : ∀ x, x ∈ initial ↔ x ∈ p₀.support)     (hR : ∀ n x a z, z ∈ (P n x a).support ↔ R x a z) :     ∀ n (h : CausalHistory Y (A × Y) n),       (↑((semanticController q R C initial ordered fallback).memory n h) : Set X) =         traceSupport p₀ q P n h := by",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": [
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation.trace_support_eq_memory_singleton",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+        "similarity": 0.8,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportMemoryController_memory_eq_traceSupport",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+        "similarity": 0.8,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.deadend_trace_support_eq",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+        "similarity": 0.6,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      }
+    ]
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.program_memory_eq_traceSupport",
+    "short_name": "program_memory_eq_traceSupport",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+    "line": 345,
+    "header_preview": "theorem program_memory_eq_traceSupport     (h0 : ∀ x, x ∈ initial ↔ x ∈ p₀.support)     (hR : ∀ n x a z, z ∈ (P n x a).support ↔ R x a z)     (n : ℕ) (h : CausalHistory Y (A × Y) n) :     (↑((buildProgram q R C initial ordered fallback).memory n h) : Set X) =       traceSupport p₀ q P n h := by",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": [
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation.trace_support_eq_memory_singleton",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+        "similarity": 0.667,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportMemoryController_memory_eq_traceSupport",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+        "similarity": 0.667,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.deadend_trace_support_eq",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+        "similarity": 0.5,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      }
+    ]
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.supported_histories_winning",
+    "short_name": "supported_histories_winning",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+    "line": 356,
+    "header_preview": "theorem supported_histories_winning     (hcomplete : ∀ a : A, a ∈ ordered)     (h0 : ∀ x, x ∈ initial ↔ x ∈ p₀.support)     (hR : ∀ n x a z, z ∈ (P n x a).support ↔ R x a z)     (hcheck : finiteMemoryCheck q R C initial = true) :     ∀ n, ∀ h ∈ (coarseLaw p₀ q P",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": [
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.supportMemoryController_supported_histories_winning",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean",
+        "similarity": 0.5,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      }
+    ]
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.zero_uncovered",
+    "short_name": "zero_uncovered",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+    "line": 398,
+    "header_preview": "theorem zero_uncovered     (certified : ℕ → X → A → Prop)     (hcomplete : ∀ a : A, a ∈ ordered)     (h0 : ∀ x, x ∈ initial ↔ x ∈ p₀.support)     (hR : ∀ n x a z, z ∈ (P n x a).support ↔ R x a z)     (hC : ∀ n x a, certified n x a ↔ C x a)",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": [
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation.stationary_uncovered_zero",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+        "similarity": 0.667,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.all_rows_zero_uncovered",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySafetyWitness.lean",
+        "similarity": 0.5,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation.flip_controller_zero_uncovered",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean",
+        "similarity": 0.5,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportStrictWitness.actual_uncovered_probability_zero",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+        "similarity": 0.5,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.viablePolicy_zero_uncovered",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportViability.lean",
+        "similarity": 0.5,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      }
+    ]
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize_isSome_iff_exists_all_times_policy",
+    "short_name": "synthesize_isSome_iff_exists_all_times_policy",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+    "line": 430,
+    "header_preview": "theorem synthesize_isSome_iff_exists_all_times_policy [DecidableEq A]     (certified : ℕ → X → A → Prop)     (hcomplete : ∀ a : A, a ∈ ordered)     (h0 : ∀ x, x ∈ initial ↔ x ∈ p₀.support)     (hR : ∀ n x a z, z ∈ (P n x a).support ↔ R x a z)     (hC : ∀ n x a, certified n x a ↔ C x a) :",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": []
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize_some_zero_uncovered",
+    "short_name": "synthesize_some_zero_uncovered",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+    "line": 450,
+    "header_preview": "theorem synthesize_some_zero_uncovered [DecidableEq A]     (certified : ℕ → X → A → Prop) (program : Program X Y A)     (hsynth : synthesize q R C initial ordered fallback = some program)     (h0 : ∀ x, x ∈ initial ↔ x ∈ p₀.support)     (hR : ∀ n x a z, z ∈ (P n x a).support ↔ R x a z)     (hC : ∀ n x a, certified n x a ↔ C x a) :",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": []
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.all_times_physical_safe",
+    "short_name": "all_times_physical_safe",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+    "line": 467,
+    "header_preview": "theorem all_times_physical_safe     (certified : ℕ → X → A → Prop)     (hcomplete : ∀ a : A, a ∈ ordered)     (h0 : ∀ x, x ∈ initial ↔ x ∈ p₀.support)     (hR : ∀ n x a z, z ∈ (P n x a).support ↔ R x a z)     (hC : ∀ n x a, certified n x a ↔ C x a)",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": [
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.controller_all_times_physical_safe",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean",
+        "similarity": 0.8,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.supportMemoryController_all_times_physical_safe",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean",
+        "similarity": 0.571,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      },
+      {
+        "symbol": "UEOT.V3.ViabilityPath.all_times_safe_eq_one",
+        "path": "formalization/ueot-core/UEOT/V3/ViabilityPath.lean",
+        "similarity": 0.5,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      }
+    ]
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize_some_all_times_physical_safe",
+    "short_name": "synthesize_some_all_times_physical_safe",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+    "line": 488,
+    "header_preview": "theorem synthesize_some_all_times_physical_safe [DecidableEq A]     (certified : ℕ → X → A → Prop) (program : Program X Y A)     (hsynth : synthesize q R C initial ordered fallback = some program)     (h0 : ∀ x, x ∈ initial ↔ x ∈ p₀.support)     (hR : ∀ n x a z, z ∈ (P n x a).support ↔ R x a z)     (hC : ∀ n x a, certified n x a ↔ C x a)",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": [
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.controller_all_times_physical_safe",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean",
+        "similarity": 0.571,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      }
+    ]
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize_some_killed_mass_one",
+    "short_name": "synthesize_some_killed_mass_one",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+    "line": 513,
+    "header_preview": "theorem synthesize_some_killed_mass_one [DecidableEq A] [Nonempty A]     (source : Model X (fun _ => A))     (certified : ℕ → X → A → Prop) (program : Program X Y A)     (hsynth : synthesize q R C initial ordered fallback = some program)     (h0 : ∀ x, x ∈ initial ↔ x ∈ p₀.support)     (hR : ∀ x a z, z ∈ (source.transitionPMF x a).support ↔ R x a z)",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": []
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.finite_input_checks",
+    "short_name": "finite_input_checks",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+    "line": 47,
+    "header_preview": "theorem finite_input_checks :     finiteMemoryCheck observe relation certification initialTable = true ∧       finiteMemoryCheck observe relation certification mixedTable = false := by   decide                                                                                  ",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": []
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.synthesis_returns_program",
+    "short_name": "synthesis_returns_program",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+    "line": 56,
+    "header_preview": "theorem synthesis_returns_program :     synthesize observe relation certification initialTable actionOrder false =       some program := by   apply (synthesize_eq_some_iff observe relation certification     initialTable actionOrder false program).mpr   exact ⟨by decide, by decide, finite_input_checks.1, rfl⟩",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": []
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.synthesis_rejections",
+    "short_name": "synthesis_rejections",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+    "line": 64,
+    "header_preview": "theorem synthesis_rejections :     (synthesize observe relation certification mixedTable actionOrder false).isSome = false ∧       (synthesize observe relation certification initialTable [false] false).isSome = false ∧       (synthesize observe relation certification (∅ : Finset (Option Bool))         actionOrder false).isSome = false := by   decide",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": []
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.computed_flip_steps",
+    "short_name": "computed_flip_steps",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+    "line": 74,
+    "header_preview": "theorem computed_flip_steps :     program.initialMemory () = {some false} ∧       program.action {some false} = false ∧       program.update {some false} false () = {some true} ∧       program.action {some true} = true ∧       program.update {some true} true () = {some false} := by",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": []
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.action_order_is_effective",
+    "short_name": "action_order_is_effective",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+    "line": 98,
+    "header_preview": "theorem action_order_is_effective :     selectedAction (fun _ : Unit => ()) freeRelation freeCertification         [false, true] false ({()} : Finset Unit) = false ∧       selectedAction (fun _ : Unit => ()) freeRelation freeCertification         [true, false] false ({()} : Finset Unit) = true := by   decide",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": []
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.initial_support_exact",
+    "short_name": "initial_support_exact",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+    "line": 124,
+    "header_preview": "theorem initial_support_exact (x : Option Bool) :     x ∈ initialTable ↔ x ∈ initialLaw.support := by   simp [initialTable, initialLaw, PMF.support_pure]  theorem source_support_exact (n : ℕ) (x : Option Bool) (a : Bool) (z : Option Bool) :     z ∈ (source n x a).support ↔ relation x a z := by",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": [
+      {
+        "symbol": "UEOT.V3.FixedFitnessConcentration.initialSupport_nonempty",
+        "path": "formalization/ueot-core/UEOT/V3/FixedFitnessConcentration.lean",
+        "similarity": 0.52,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.initialSupport_mem_arena",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean",
+        "similarity": 0.509,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.initial_support_eq_univ",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+        "similarity": 0.502,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness.source_support_exact",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean",
+        "similarity": 0.5,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.supportTable_exact",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+        "similarity": 0.5,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      }
+    ]
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.source_support_exact",
+    "short_name": "source_support_exact",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+    "line": 128,
+    "header_preview": "theorem source_support_exact (n : ℕ) (x : Option Bool) (a : Bool) (z : Option Bool) :     z ∈ (source n x a).support ↔ relation x a z := by   simp [source, relation, PMF.support_pure]  theorem safe_is_nonempty_proper : safe.Nonempty ∧ safe ≠ Set.univ := by   constructor",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": [
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness.source_support_exact",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean",
+        "similarity": 1.0,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.supportTable_exact",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+        "similarity": 0.5,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      }
+    ]
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.safe_is_nonempty_proper",
+    "short_name": "safe_is_nonempty_proper",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+    "line": 132,
+    "header_preview": "theorem safe_is_nonempty_proper : safe.Nonempty ∧ safe ≠ Set.univ := by   constructor   · exact ⟨some false, by simp [safe]⟩   · intro h     have hn : (none : Option Bool) ∈ safe := h ▸ Set.mem_univ none     exact hn rfl",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": [
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.safe_is_proper_nonempty",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySafetyWitness.lean",
+        "similarity": 1.0,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      }
+    ]
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.initial_safe",
+    "short_name": "initial_safe",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+    "line": 139,
+    "header_preview": "theorem initial_safe : ∀ x ∈ initialLaw.support, x ∈ safe := by   intro x hx   have heq : x = some false := by simpa [initialLaw, PMF.support_pure] using hx   simp [heq, safe]  theorem certified_transition_safe :",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": [
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySafetyWitness.initial_false_safe",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySafetyWitness.lean",
+        "similarity": 0.667,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.initial_safe_mass",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean",
+        "similarity": 0.667,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.safeInitialRow_nonneg",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean",
+        "similarity": 0.5,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      }
+    ]
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.certified_transition_safe",
+    "short_name": "certified_transition_safe",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+    "line": 144,
+    "header_preview": "theorem certified_transition_safe :     ∀ n x a, x ∈ safe → certified n x a →       ∀ z ∈ (source n x a).support, z ∈ safe := by   intro n x a _ hcert z hz   have hx : x = some a := hcert   subst x",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": []
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.returned_program_zero_uncovered",
+    "short_name": "returned_program_zero_uncovered",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+    "line": 154,
+    "header_preview": "theorem returned_program_zero_uncovered :     ∀ n, (coverageDeploymentRowLaw initialLaw observe source       program.toController.policy n).toMeasure.real         {xa | ¬ certified n xa.1 xa.2} = 0 := by   exact synthesize_some_zero_uncovered observe relation certification     initialTable actionOrder false initialLaw source certified program",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": []
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.returned_program_all_times_safe",
+    "short_name": "returned_program_all_times_safe",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+    "line": 165,
+    "header_preview": "theorem returned_program_all_times_safe :     FiniteMemoryPhysicalSafety.stateTrajMeasure program.toController       initialLaw observe source {ω | ∀ n : ℕ, ω n ∈ safe} = 1 := by   apply synthesize_some_all_times_physical_safe observe relation certification     initialTable actionOrder false initialLaw source certified program     synthesis_returns_program initial_support_exact source_support_exact",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": []
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.model_support_exact",
+    "short_name": "model_support_exact",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+    "line": 188,
+    "header_preview": "theorem model_support_exact (x : Option Bool) (a : Bool) (z : Option Bool) :     z ∈ (model.transitionPMF x a).support ↔ relation x a z := by   have heq : model.transitionPMF x a = source 0 x a := by     apply PMF.ext     intro y     apply (ENNReal.toReal_eq_toReal_iff'",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": [
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness.source_support_exact",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean",
+        "similarity": 0.533,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.supportTable_exact",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+        "similarity": 0.5,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      }
+    ]
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.actual_killed_mass_one",
+    "short_name": "actual_killed_mass_one",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+    "line": 205,
+    "header_preview": "theorem actual_killed_mass_one (n : ℕ) :     ∑ v : (Prod.fst ⁻¹' safe : Set (Option Bool × Finset (Option Bool))),       rowApply (safeInitialRow (augmentedInitial program.toController initialLaw observe)         (Prod.fst ⁻¹' safe))         ((killedMatrix           (HomogeneousMemorySurvival.augmentedModel model program.toController observe)",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": [
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.MissingFiber.actual_uncovered_mass_is_one",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+        "similarity": 0.5,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      }
+    ]
+  },
+  {
+    "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.mixed_initial_has_no_all_times_policy",
+    "short_name": "mixed_initial_has_no_all_times_policy",
+    "kind": "theorem",
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+    "line": 229,
+    "header_preview": "theorem mixed_initial_has_no_all_times_policy :     ¬ ∃ π : ∀ n, CausalHistory Unit (Bool × Unit) n → PMF Bool,       ∀ n, (coverageDeploymentRowLaw mixedLaw observe source π n).toMeasure.real         {xa | ¬ certified n xa.1 xa.2} = 0 := by   rintro ⟨π, hzero⟩   have haccept := (synthesize_isSome_iff_exists_all_times_policy",
+    "origin": "UEOT_MAINTAINED",
+    "reuse_candidates": [
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness.mixed_initial_has_no_all_times_policy",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean",
+        "similarity": 1.0,
+        "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+      }
+    ]
+  }
+]
