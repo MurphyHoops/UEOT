@@ -53,6 +53,8 @@ The active Lean package is under:
 
 The source-level completion gate is based on the UEOT Core v3 proposition inventory, not on Lean theorem count or Lake job count.
 
+The [2026-10-26 mathematical closure audit and execution plan](./mathematics/review/MATHEMATICAL_CLOSURE_AUDIT_2026-10-26.md) distinguishes merged proofs, the unpublished total-kernel/memory candidate, and remaining mathematical obligations. Its next proposed mathematical step is executable support-controller synthesis; strong unified closure remains unestablished.
+
 ## Physics status
 
 Physics is treated as the strongest stress test of UEOT, not as a decorative application. The active top-level `physics/` layer is intended to separate:
