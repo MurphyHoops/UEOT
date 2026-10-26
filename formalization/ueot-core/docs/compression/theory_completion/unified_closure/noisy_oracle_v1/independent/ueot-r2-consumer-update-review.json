@@ -9,7 +9,7 @@
     {
       "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md",
       "before_sha256": "5d7d416c120221e2089a2c43436b9d4bf24797447e0d4d29706357284b73562d",
-      "after_sha256": "7632f8d7582cedb7d1d5e75473eb1f47e428bf60a317db44e4dbd0482854df2e"
+      "after_sha256": "c0fe8b663e1794a33ca07dc4877cfb7e6f9b5d169fa06d3e7edf991a7080ae2c"
     },
     {
       "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
@@ -29,7 +29,7 @@
     {
       "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
       "before_sha256": "76b1fd287f521d8a0d299eeed7d40e9825ae8f0db1b7f98216c1fddf905950d9",
-      "after_sha256": "8963ac631d6d1e48fa76553eee8569a844fa2afdea256bb77004c6984f8d089b"
+      "after_sha256": "39a521a033160006a1df68c1d704a5cf8a5e38e14587e31e2e220b516303e3de"
     }
   ],
   "commands": [
@@ -118,14 +118,17 @@
     "registered_public": 43,
     "all_native": 167,
     "private": 38,
-    "other_generated_public": 86,
     "registered_direct_edges": 63,
     "cross_raw_type_comparisons": 188770,
     "internal_raw_type_comparisons": 903,
     "collisions": 0,
     "registered_overlay_sha256": "8e966bab093ddccadeffc8a91d3265e99cd1bfbc34696d965b981426e0457283",
     "native_sha256": "bbb7551f055b2ec4a5e2d83b9214647e209ae6155e92d5436eba30132c4b54c6",
-    "fixed_certificate_sha256": "7d91f54676bc3821adb0f81f42d1daa4e98ffe311385b25b87f03afa78724b17"
+    "fixed_certificate_sha256": "7d91f54676bc3821adb0f81f42d1daa4e98ffe311385b25b87f03afa78724b17",
+    "other_public_outside_lexical": 86,
+    "other_public_named_source_instances": 1,
+    "other_public_generated": 85,
+    "named_source_instance": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.trainingMeasure_isProbability"
   },
   "live_graph_edges": 5878,
   "new_tests": [
@@ -163,5 +166,32 @@
   "limitations": [
     "This consumer review verifies actual recorded native/runtime evidence and consumer behavior; it does not claim PR merge or replace the separate semantic/source review.",
     "The ideal independent-uniform sampling backend and external scientific source matching remain unverified."
-  ]
+  ],
+  "metadata_correction": {
+    "candidate_before_correction": "07b03c81efa7506a356e48fb88b9cede094105e0",
+    "reason": "The 86 nonprivate native declarations outside the 43 lexical-public theorems include one named source Prop instance and 85 generated constants.",
+    "edited_consumer_file": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
+    "previous_after_sha256": "8963ac631d6d1e48fa76553eee8569a844fa2afdea256bb77004c6984f8d089b",
+    "corrected_sha256": "39a521a033160006a1df68c1d704a5cf8a5e38e14587e31e2e220b516303e3de",
+    "other_four_consumer_files_edited_by_this_agent": false,
+    "raw_native_and_old_layer_assets_unchanged": true,
+    "focused_check": {
+      "command": "python3 -B formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py -k noisy_oracle",
+      "exit_code": 0,
+      "tests_executed": 4,
+      "test_reported_seconds": 0.094,
+      "log_path": "/tmp/ueot-r2-consumer-metadata-focused.log",
+      "log_sha256": "d29c9457830b87c0f530f33dd56ede4ef3860f8c39a217ad535a3aef0175d7b7"
+    },
+    "diff_check": {
+      "exit_code": 0,
+      "log_path": "/tmp/ueot-r2-consumer-metadata-diff-check.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "root_updated_knowledge_readme": {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md",
+      "previous_after_sha256": "7632f8d7582cedb7d1d5e75473eb1f47e428bf60a317db44e4dbd0482854df2e",
+      "corrected_sha256": "c0fe8b663e1794a33ca07dc4877cfb7e6f9b5d169fa06d3e7edf991a7080ae2c"
+    }
+  }
 }

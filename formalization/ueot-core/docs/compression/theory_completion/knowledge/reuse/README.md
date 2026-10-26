@@ -1141,8 +1141,10 @@ and frozen source fingerprint `4b5145e874601392568293c1d561684e6d0478f2676dc20ac
 | [Registered overlay](NOISY_ORACLE_REUSE_OVERLAY_V1.json) | `8e966bab093ddccadeffc8a91d3265e99cd1bfbc34696d965b981426e0457283` |
 
 The complete native census contains **167 owned theorem constants: 43 public
-source candidates, 38 private constants and 86 other generated public
-constants**. Ownership, displayed types, stored universes, direct constants,
+source candidates, 38 private constants and 86 other public native
+constants**. The last group contains 85 generated constants and one named
+source instance, `NoisyFiniteRiskOracle.trainingMeasure_isProbability`.
+Ownership, displayed types, stored universes, direct constants,
 direct theorem constants and standard-only transitive axiom closures remain
 in every native record. The 43 public types underwent **188,770 cross-layer**
 comparisons against all **4,390** prior registrations and **903 internal**

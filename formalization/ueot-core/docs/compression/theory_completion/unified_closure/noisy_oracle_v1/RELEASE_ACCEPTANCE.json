@@ -60,13 +60,15 @@
     "public_source": 43,
     "all_owned": 167,
     "private": 38,
-    "other_generated": 86,
     "cross_comparisons": 188770,
     "internal_comparisons": 903,
     "collisions": 0,
     "direct_registered_edges": 63,
     "first_and_fixed_complete_json_and_log_bytes_equal": true,
-    "all_owned_axioms": "LEAN_STANDARD_ONLY"
+    "all_owned_axioms": "LEAN_STANDARD_ONLY",
+    "other_native_outside_public_theorem_lemma_census": 86,
+    "named_source_public_instances": 1,
+    "generated_public_constants": 85
   },
   "umc": {
     "modules": 100,
@@ -98,7 +100,7 @@
   "independent_reviews": [
     {
       "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/noisy_oracle_v1/independent/ueot-r2-consumer-update-review.json",
-      "sha256": "8f2cdd65269ac8c3653361c389200c1ae249b3fff42d753a523e234c38ec1a72"
+      "sha256": "32c69edb7c87c19a218a84f35e01da003d4c1618122dbf33457f3eed46432a2f"
     },
     {
       "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/noisy_oracle_v1/independent/ueot-r2-final-witness-review.json",
@@ -106,7 +108,7 @@
     },
     {
       "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/noisy_oracle_v1/independent/ueot-r2-hinted-type-review.json",
-      "sha256": "55ffc2b9687a6bf1ed322c72151fd7f3bbbd4f3944bf826190089cda532c37b3"
+      "sha256": "76a2b71d3d991050487e1549e83f04eb724d76ac8757287abab39aed88989749"
     },
     {
       "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/noisy_oracle_v1/independent/ueot-r2-noisy-core-review.json",
@@ -169,7 +171,7 @@
     },
     {
       "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/noisy_oracle_v1/actual-execution/ROOT_NATIVE_ASSERTIONS.json",
-      "sha256": "ed421654044ae94e5adc0d088aeb6e39c55ccc0ba87ef0c7314a49dd039c3dcf"
+      "sha256": "fbdaf67adf9e4b4b0acbef90765b893bbc50332b5d1d155472fd86301b883f13"
     },
     {
       "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/noisy_oracle_v1/actual-execution/UMC_AUDIT_01.json",
@@ -232,5 +234,17 @@
   "global_strong_closure": "NOT_ESTABLISHED",
   "external_scientific_evidence": "UNVERIFIED",
   "core_cloud_ci": "DISABLED_MANUALLY_NOT_A_PROOF_PASS",
-  "publication_identity": "Exact Git-object preflight, PR-boundary independent review and resulting-main receipts are bound externally after commit to avoid self-referential commit hashes."
+  "publication_identity": "Exact Git-object preflight, PR-boundary independent review and resulting-main receipts are bound externally after commit to avoid self-referential commit hashes.",
+  "metadata_corrections": [
+    "An explicit source probability-measure instance is among the 86 other public native constants; corrected classification is 1 named source instance and 85 generated constants. Source, proof, build, native and runtime bytes are unchanged."
+  ],
+  "metadata_correction_parent": "07b03c81efa7506a356e48fb88b9cede094105e0",
+  "metadata_correction_focused_test": {
+    "executed": 4,
+    "exit_code": 0,
+    "log": {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/noisy_oracle_v1/actual-execution/consumer-checks-01/ueot-r2-consumer-metadata-focused.log",
+      "sha256": "d29c9457830b87c0f530f33dd56ede4ef3860f8c39a217ad535a3aef0175d7b7"
+    }
+  }
 }

@@ -78,7 +78,6 @@
     "new_public_source_theorems": 43,
     "native_theorem_constants": 167,
     "private_theorem_constants": 38,
-    "other_generated_public_constants": 86,
     "allowed_axioms": [
       "Classical.choice",
       "Quot.sound",
@@ -95,7 +94,14 @@
     "log_sha256": "ee3b4a20405afcf51be417ce2b178ebc95613886ba8c7f83ee1139ab2eb758e7",
     "recorded_native_exit_code": 0,
     "recorded_fixed_replay_exit_code": 0,
-    "interpretation": "Zero stored-type isDefEq collisions do not decide theorem equivalence or independent novelty. The per-pair mathematical decisions below inspect hypotheses, objects and actual proof use. The 63-edge metric includes only direct registered public targets, so it intentionally omits the generated intermediary paths demonstrated for groups 9 and 10."
+    "interpretation": "Zero stored-type isDefEq collisions do not decide theorem equivalence or independent novelty. The per-pair mathematical decisions below inspect hypotheses, objects and actual proof use. The 63-edge metric includes only direct registered public targets, so it intentionally omits the generated intermediary paths demonstrated for groups 9 and 10.",
+    "other_native_outside_lexical_public": 86,
+    "named_source_instances": 1,
+    "named_source_instance_names": [
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.trainingMeasure_isProbability"
+    ],
+    "generated_constants_outside_lexical_public": 85,
+    "outside_lexical_public_classification": "The 86 nonprivate theorem constants outside the 43 lexical public theorem/lemma candidates comprise one explicitly named Prop-valued instance, trainingMeasure_isProbability, plus 85 compiler-generated constants. The named instance is source-authored, not compiler-generated."
   },
   "groups": [
     {
@@ -1136,5 +1142,11 @@
   "blockers": [],
   "required_source_fixes": [],
   "public_removal_recommendations": [],
-  "conclusion": "CLEAR: all 17 groups and 26 proposed pairs have actual typed mathematical verdicts. Four hinted pairs have observed existing-proof reuse paths (one direct, two through generated simplifier theorems, one through the synthesis-safety wrapper). The other 22 pairs do not supply replacements for the new contracts under their actual hypotheses and objects. The implementation uses existing empirical, TV, scan, controller-safety and risk propagation results; no public source removal or new proof redesign is warranted."
+  "conclusion": "CLEAR: all 17 groups and 26 proposed pairs have actual typed mathematical verdicts. Four hinted pairs have observed existing-proof reuse paths (one direct, two through generated simplifier theorems, one through the synthesis-safety wrapper). The other 22 pairs do not supply replacements for the new contracts under their actual hypotheses and objects. The implementation uses existing empirical, TV, scan, controller-safety and risk propagation results; no public source removal or new proof redesign is warranted.",
+  "metadata_correction": {
+    "corrected_at_utc": "2026-10-26T19:35:41.002733+00:00",
+    "previous_report_sha256": "55ffc2b9687a6bf1ed322c72151fd7f3bbbd4f3944bf826190089cda532c37b3",
+    "scope": "Native census labels only. Counts of all 167 owned constants, 43 public theorem/lemma candidates and 38 private constants, every typed declaration, all 17 group/26 pair verdicts, proof paths, status and required-fix conclusions remain unchanged.",
+    "reason": "The nonprivate outside-lexical set includes one named source instance, not 86 generated constants."
+  }
 }
