@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "source_tree_sha256": "de7c7e287bd1b351ed3f790de58bfd71edf18df4013f7e5aaf2af55a6b3f6379",
+  "source_tree_sha256": "2a0482a9717cc776b76383755a42b327ba132a04fbb6dfaea5c3ddb45da47b24",
   "scope": "literal first-party UEOT Lean source files and their direct imports",
   "source_semantics": "metadata audit, NOT independent theorem-source semantic certification",
-  "total_Lean_modules": 691,
-  "total_source_lines": 126169,
-  "total_theorem_lemma_tokens": 4606,
+  "total_Lean_modules": 694,
+  "total_source_lines": 126850,
+  "total_theorem_lemma_tokens": 4636,
   "category_counts": {
     "Core_v3_and_Substrate": 306,
     "Compression_Frozen_Bridges": 62,
@@ -14,9 +14,9 @@
     "Objecthood": 88,
     "P0_P12_TheoryCompletion": 57,
     "C1_C7_SISC": 55,
-    "UMC_New_Bridges": 92
+    "UMC_New_Bridges": 95
   },
-  "reachable_from_UEOT_root": 691,
+  "reachable_from_UEOT_root": 694,
   "not_reachable_from_UEOT_root": [],
   "cycles_detected": [],
   "missing_internal_imports": {},
@@ -256,7 +256,7 @@
     {
       "from": "Compression_Frozen_Bridges",
       "to": "UMC_New_Bridges",
-      "edges": 92
+      "edges": 95
     },
     {
       "from": "Core_v3_and_Substrate",
@@ -3446,8 +3446,8 @@
     },
     "UEOT.V3.Compression.TheoryCompletion": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
-      "bytes": 13840,
-      "lines": 176,
+      "bytes": 14086,
+      "lines": 179,
       "category": "Compression_Frozen_Bridges",
       "title": "UEOT Theory Completion public root",
       "imports": [
@@ -3617,7 +3617,10 @@
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindow",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoob",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitness",
-        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch"
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindow",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowWitness"
       ],
       "theorem_lemma_count": 0,
       "decl_count": 0
@@ -5660,6 +5663,19 @@
       "theorem_lemma_count": 19,
       "decl_count": 35
     },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/HomogeneousMemorySurvival.lean",
+      "bytes": 10524,
+      "lines": 210,
+      "category": "UMC_New_Bridges",
+      "title": "The same homogeneous controlled source with its actual finite memory",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSurvivalTail"
+      ],
+      "theorem_lemma_count": 6,
+      "decl_count": 7
+    },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.InfiniteSupportViability": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/InfiniteSupportViability.lean",
       "bytes": 11362,
@@ -6248,6 +6264,32 @@
       ],
       "theorem_lemma_count": 8,
       "decl_count": 10
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindow": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindow.lean",
+      "bytes": 15318,
+      "lines": 305,
+      "category": "UMC_New_Bridges",
+      "title": "Total finite-window kernels generate the original conditioned experiment",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoob",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscape"
+      ],
+      "theorem_lemma_count": 12,
+      "decl_count": 18
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowWitness": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindowWitness.lean",
+      "bytes": 7324,
+      "lines": 163,
+      "category": "UMC_New_Bridges",
+      "title": "An actual source with a null conditional row and unsafe initial mass",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindow",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitness"
+      ],
+      "theorem_lemma_count": 12,
+      "decl_count": 20
     },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TrainingDeploymentJoint.lean",

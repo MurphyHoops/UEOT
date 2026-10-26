@@ -1,0 +1,19 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindow.lean:102:6: error: Type mismatch: After simplification, term
+  windowInitial_apply_toReal Q hQ eta heta T hpos h
+ has type
+  @Eq ℝ ((windowInitial Q hQ eta heta T hpos) h).toReal
+    (eta h * remainingSurvival Q T h / initialPairing eta (remainingSurvival Q T))
+but is expected to have type
+  @Eq ℝ ((windowInitial Q hQ eta heta T hpos) h).toReal
+    (eta h * remainingSurvival Q T h / initialPairing eta (remainingSurvival Q T))
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindow.lean:159:14: error: unsolved goals
+case succ
+X : Type u
+K : Set X
+n : ℕ
+ih : ∀ (h : CausalHistory X X n), stateSurvives K n h → ∃ g, safeHistory K n g = h
+h : CausalHistory X X (n + 1)
+hh : stateSurvives K (n + 1) h
+g : CausalHistory (↑K) (↑K) n
+hg : safeHistory K n g = h.1
+⊢ (h.1, h.2) = h

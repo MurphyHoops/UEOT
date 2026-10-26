@@ -1,0 +1,630 @@
+{
+  "schema": "FKRG_REUSE_OVERLAY_V1",
+  "overlay_id": "TOTAL_KERNEL_MEMORY_REUSE_OVERLAY_V1",
+  "source_checkpoint": "worktree-sha256:2a0482a9717cc776b76383755a42b327ba132a04fbb6dfaea5c3ddb45da47b24",
+  "source_checkpoint_kind": "FROZEN_SOURCE_CONTENT_BEFORE_GIT_COMMIT",
+  "baseline_ref": "41c4b27ef8d993c797b2414311f0934eeb4cb561",
+  "base_snapshot_modules": 691,
+  "prior_overlay": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/PATH_REALIZATION_REUSE_OVERLAY_V1.json",
+    "sha256": "8e72781498acf49496733ace5dfbf80257830ff3a6d85e1b02e66474f936ec3b"
+  },
+  "source_hash_overrides": {
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean": "a98a94fbc6479eb2c00f31678b47238f730de13c2d6857bc56d8c05417067240"
+  },
+  "added_modules": [
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/HomogeneousMemorySurvival.lean",
+      "content_sha256": "7d9eecdd4013fa029a1c0e8f0f20b72faf9fe46a8329136f8947be9db68f701b",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindow",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindow.lean",
+      "content_sha256": "688792bc4110338cfa80076e08231ecdb80bf1a92856802438ea4cc848c33595",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindowWitness.lean",
+      "content_sha256": "27ca193467164914dac94dafa55deb46bd26dabc4c5b0b8573ba9ed3f45dc527",
+      "source_origin": "UEOT_MAINTAINED"
+    }
+  ],
+  "public_theorems": [
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.augmentedModel_transitionPMF",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/HomogeneousMemorySurvival.lean",
+      "line": 68,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival",
+      "source_theorem_deps": [
+        "UEOT.V3.FiniteDiscountedControl.Model.transitionPMF_apply_toReal"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.closed_loop_eq_augmentedRow",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/HomogeneousMemorySurvival.lean",
+      "line": 84,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.augmentedModel_transitionPMF",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.actual_next_state_eq_stationary_row"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.actual_augmentedTrajMeasure_eq_homogeneous",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/HomogeneousMemorySurvival.lean",
+      "line": 113,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.closed_loop_eq_augmentedRow"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.actual_finite_survival_eq_killed_mass",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/HomogeneousMemorySurvival.lean",
+      "line": 155,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.actual_state_prefix_event_mass",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSafePrefixCheck.actual_safe_prefix_pullback"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.killed_mass_tendsto_actual_infinite_survival",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/HomogeneousMemorySurvival.lean",
+      "line": 175,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.Objecthood.neverHitSet_eq_iInter_survivalSet",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.actual_augmentedTrajMeasure_eq_homogeneous",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSurvivalTailCheck.killed_survival_mass_tendsto_homogeneous_neverHit_real",
+        "UEOT.V3.DynamicsKernel.measurable_mapPath",
+        "UEOT.V3.RecoveryHittingNonnegative.measurableSet_survivalSet"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.totalWindowRow_apply_toReal_of_pos",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindow.lean",
+      "line": 35,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindow",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.finiteWindowRowPMF_apply_toReal"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.windowPathLaw_prefix_atom",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindow.lean",
+      "line": 89,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindow",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.totalWindowRow_apply_toReal_of_pos",
+        "UEOT.V3.PathError.pmfExtend_apply"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.windowPathLaw_fallback_independent",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindow.lean",
+      "line": 133,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindow",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.windowPathLaw_prefix_atom"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_prefix_eq_actual",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindow.lean",
+      "line": 195,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindow",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.actual_survival_mass_eq_initial_remaining_sum",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.safeInitialRow_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.riskHistoryMap_injective_general",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.pmf_map_injective_atom",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_prefix_eq_zero_of_not_survives",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_prefix_mass",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.state_safe_atom_eq_matrixPathWeight",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.killedMatrix_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.windowPathLaw_prefix_atom"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_ambient_eq_actual",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindow.lean",
+      "line": 285,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindow",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_prefix_eq_actual"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_ambient_fallback_independent",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindow.lean",
+      "line": 295,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindow",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_ambient_eq_actual"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowWitnessCheck.null_row_actual_source_witness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindowWitness.lean",
+      "line": 151,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowWitness",
+      "source_theorem_deps": []
+    }
+  ],
+  "type_distinctness": {
+    "status": "PASS",
+    "verifier": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_TOTAL_KERNEL_MEMORY_OVERLAY_TYPES.lean",
+    "new_theorems": 12,
+    "registered_prior_theorems": 4345,
+    "cross_isDefEq_comparisons": 52140,
+    "internal_isDefEq_comparisons": 66,
+    "definitionally_equal_matches": 0,
+    "protocol": "Raw stored compiled types; fresh liftTermElabM per Meta.isDefEq comparison; stored universe names retained. Not a general logical-equivalence decision."
+  },
+  "proof_dependency_certification": {
+    "status": "PASS",
+    "verifier": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_TOTAL_KERNEL_MEMORY_OVERLAY_TYPES.lean",
+    "measure": "Actual theorem proof-value getUsedConstants restricted to all previous and new registered public theorem names",
+    "registered_direct_edges": 27,
+    "edges": [
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.augmentedModel_transitionPMF",
+        "target": "UEOT.V3.FiniteDiscountedControl.Model.transitionPMF_apply_toReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.closed_loop_eq_augmentedRow",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.augmentedModel_transitionPMF"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.closed_loop_eq_augmentedRow",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.actual_next_state_eq_stationary_row"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.actual_augmentedTrajMeasure_eq_homogeneous",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.closed_loop_eq_augmentedRow"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.actual_finite_survival_eq_killed_mass",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.actual_state_prefix_event_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.actual_finite_survival_eq_killed_mass",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSafePrefixCheck.actual_safe_prefix_pullback"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.killed_mass_tendsto_actual_infinite_survival",
+        "target": "UEOT.V3.Compression.Objecthood.neverHitSet_eq_iInter_survivalSet"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.killed_mass_tendsto_actual_infinite_survival",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.actual_augmentedTrajMeasure_eq_homogeneous"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.killed_mass_tendsto_actual_infinite_survival",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceSurvivalTailCheck.killed_survival_mass_tendsto_homogeneous_neverHit_real"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.killed_mass_tendsto_actual_infinite_survival",
+        "target": "UEOT.V3.DynamicsKernel.measurable_mapPath"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.killed_mass_tendsto_actual_infinite_survival",
+        "target": "UEOT.V3.RecoveryHittingNonnegative.measurableSet_survivalSet"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.totalWindowRow_apply_toReal_of_pos",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.finiteWindowRowPMF_apply_toReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.windowPathLaw_prefix_atom",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_nonneg"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.windowPathLaw_prefix_atom",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.totalWindowRow_apply_toReal_of_pos"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.windowPathLaw_prefix_atom",
+        "target": "UEOT.V3.PathError.pmfExtend_apply"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.windowPathLaw_fallback_independent",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.windowPathLaw_prefix_atom"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_prefix_eq_actual",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.actual_survival_mass_eq_initial_remaining_sum"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_prefix_eq_actual",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.safeInitialRow_nonneg"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_prefix_eq_actual",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.riskHistoryMap_injective_general"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_prefix_eq_actual",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceConditionedTerminalCheck.pmf_map_injective_atom"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_prefix_eq_actual",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_prefix_eq_zero_of_not_survives"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_prefix_eq_actual",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_prefix_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_prefix_eq_actual",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.state_safe_atom_eq_matrixPathWeight"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_prefix_eq_actual",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.killedMatrix_nonneg"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_prefix_eq_actual",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.windowPathLaw_prefix_atom"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_ambient_eq_actual",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_prefix_eq_actual"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_ambient_fallback_independent",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_ambient_eq_actual"
+      }
+    ]
+  },
+  "native_axiom_census": {
+    "status": "PASS",
+    "physical_source_modules": 3,
+    "theorem_constants": 80,
+    "private_theorem_constants": 27,
+    "confirmed_public_source_candidates": 12,
+    "other_native_public_constants": 41,
+    "standard_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "scope": "All compiler-owned theorem constants of every added module, including private and generated constants"
+  },
+  "native_export_evidence": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/TOTAL_KERNEL_MEMORY_NATIVE_V1.json",
+    "sha256": "0f164136ebca7dd0e3dd3339fe54286be820cce6b285a03ca5ade12cf1422e02"
+  },
+  "native_execution": {
+    "build_receipt_sha256": "5b70f762b569a91a66f7cba4c58aed110438dc0a5b73f47100f650691b4eba8f",
+    "source_tree_sha256": "2a0482a9717cc776b76383755a42b327ba132a04fbb6dfaea5c3ddb45da47b24",
+    "native_export_exit_code": 0,
+    "fixed_certificate_exit_code": 0,
+    "fixed_certificate_sha256": "a9486d70eae7be47c7294bac05e6adced5245c463547e1639618ee8985fc553f",
+    "fixed_export_equals_initial_native_export": true,
+    "results": [
+      {
+        "label": "native_export",
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-evidence-20261023/native-01/TOTAL_KERNEL_MEMORY_NATIVE_EXPORT.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 86.647,
+        "log_sha256": "069d01a8ff9adf5aebe5b65988e9b2fa32557d2e4f9fbe558cf38d31c911261a"
+      },
+      {
+        "label": "fixed_verifier",
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-evidence-20261023/native-01/VERIFY_TOTAL_KERNEL_MEMORY_OVERLAY_TYPES.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 57.175,
+        "log_sha256": "069d01a8ff9adf5aebe5b65988e9b2fa32557d2e4f9fbe558cf38d31c911261a"
+      }
+    ]
+  },
+  "scientific_role": "UNCOUNTED_TOTAL_CONDITIONED_KERNEL_AND_HOMOGENEOUS_MEMORY_SURVIVAL",
+  "counted_core_impact": "NONE",
+  "scientific_closure": "NOT_ESTABLISHED",
+  "lexical_pr_preflight": {
+    "baseline_ref": "41c4b27ef8d993c797b2414311f0934eeb4cb561",
+    "candidate_ref": null,
+    "candidate_scope": "Current frozen worktree bytes; an immutable Git-object PR preflight is separately required after commit.",
+    "base_lean_module_count": 691,
+    "candidate_lean_module_count": 694,
+    "base_public_lexical_theorem_count": 4345,
+    "candidate_public_lexical_theorem_count": 4357,
+    "new_public_source_theorem_count": 12,
+    "historical_public_repair_count": 0,
+    "overlay_public_registration_count": 12,
+    "new_theorems_with_lexical_reuse_candidates": 5,
+    "candidate_source_tree_sha256": "2a0482a9717cc776b76383755a42b327ba132a04fbb6dfaea5c3ddb45da47b24",
+    "registered_prior_public_source_theorem_count": 4345,
+    "candidate_registered_public_source_theorem_count": 4357,
+    "note": "Counts and H use the actual SOURCE_PREFLIGHT declaration/name hints. This is not a Git-object PR preflight; name hints and raw stored-type isDefEq do not replace independent semantic review."
+  },
+  "registration_provenance": {
+    "schema": "TOTAL_KERNEL_MEMORY_REGISTRATION_PROVENANCE_V1",
+    "inputs": [
+      {
+        "role": "actual_native_output",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/tmp/total-kernel-memory-mac-execution/native-01/FROZEN_INPUTS.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/FROZEN_INPUTS.json",
+        "sha256": "858a8fc751560eb48513ef4d5b9430fe2743c9ba9143e0b2c5ac02f48111a9a4"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/tmp/total-kernel-memory-mac-execution/native-01/PROTOCOL_ADAPTATION.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/PROTOCOL_ADAPTATION.json",
+        "sha256": "736092218f52f2b90406b3f2ea8d51f88a9aa918b815b02d835401cd941ea116"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/tmp/total-kernel-memory-mac-execution/native-01/SOURCE_PREFLIGHT.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/SOURCE_PREFLIGHT.json",
+        "sha256": "9210c7512c2356514c6f956a6f393b60bb661d54596ad24434580df4e95c0a55"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/tmp/total-kernel-memory-mac-execution/native-01/STATUS.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/STATUS.json",
+        "sha256": "4239049d0d1acce8a6c6eaf6a47bd9e85393757e41abfa23dc40d5942bc4bab2"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/tmp/total-kernel-memory-mac-execution/native-01/TOTAL_KERNEL_MEMORY_NATIVE_EXPORT.lean",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/TOTAL_KERNEL_MEMORY_NATIVE_EXPORT.lean",
+        "sha256": "36dbcca3844512605a84483ba5bb2714986b28c547d8543343c46784785592af"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/tmp/total-kernel-memory-mac-execution/native-01/TOTAL_KERNEL_MEMORY_NATIVE_V1.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/TOTAL_KERNEL_MEMORY_NATIVE_V1.json",
+        "sha256": "0f164136ebca7dd0e3dd3339fe54286be820cce6b285a03ca5ade12cf1422e02"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/tmp/total-kernel-memory-mac-execution/native-01/TOTAL_KERNEL_MEMORY_REUSE_OVERLAY_V1.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/TOTAL_KERNEL_MEMORY_REUSE_OVERLAY_V1.json",
+        "sha256": "1985f2bff2e6f6a19f113ea8391e971a3d81c3667f6cf30a263d477c8d98c122"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/tmp/total-kernel-memory-mac-execution/native-01/VERIFY_TOTAL_KERNEL_MEMORY_OVERLAY_TYPES.lean",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/VERIFY_TOTAL_KERNEL_MEMORY_OVERLAY_TYPES.lean",
+        "sha256": "a9486d70eae7be47c7294bac05e6adced5245c463547e1639618ee8985fc553f"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/tmp/total-kernel-memory-mac-execution/native-01/development_lexical_reuse_hints.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/development_lexical_reuse_hints.json",
+        "sha256": "f1ce1b2d18c2a89ebfd88b2fcb8ed3e3f84760e2b7c09f76747c385336aeda7e"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/tmp/total-kernel-memory-mac-execution/native-01/executed_integration_native.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/executed_integration_native.py",
+        "sha256": "19cc5ecb6b2031e84c37361ee308e6137953851d7e82ce364ead68133a780e17"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/tmp/total-kernel-memory-mac-execution/native-01/fixed_verifier.log",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/fixed_verifier.log",
+        "sha256": "069d01a8ff9adf5aebe5b65988e9b2fa32557d2e4f9fbe558cf38d31c911261a"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/tmp/total-kernel-memory-mac-execution/native-01/immutable_integration_native.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/immutable_integration_native.py",
+        "sha256": "d4708782bbb14360002f119715ba51f96c05e2e632694ba64c56c3d38ce8a924"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/tmp/total-kernel-memory-mac-execution/native-01/integration_native.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/integration_native.py",
+        "sha256": "faf2a405cfcb0b81c54e923ad418ce94e4f05f36da81027c4a92263874c6578b"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/tmp/total-kernel-memory-mac-execution/native-01/native_export.log",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/native_export.log",
+        "sha256": "069d01a8ff9adf5aebe5b65988e9b2fa32557d2e4f9fbe558cf38d31c911261a"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/tmp/total-kernel-memory-mac-execution/native-01/observed_first_native.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/observed_first_native.json",
+        "sha256": "0f164136ebca7dd0e3dd3339fe54286be820cce6b285a03ca5ade12cf1422e02"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/tmp/total-kernel-memory-mac-execution/native-01/protocol_adapter.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/protocol_adapter.py",
+        "sha256": "d01c7970eb3dc54a810ded4251a48fe6bdb5a35842bd362e68945f262102e57d"
+      },
+      {
+        "role": "actual_full_build",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/tmp/total-kernel-memory-mac-execution/full-build-01/FULL_BUILD_RECEIPT.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/full-build-01/FULL_BUILD_RECEIPT.json",
+        "sha256": "5b70f762b569a91a66f7cba4c58aed110438dc0a5b73f47100f650691b4eba8f"
+      },
+      {
+        "role": "actual_full_build",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/tmp/total-kernel-memory-mac-execution/full-build-01/full-build.log",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/full-build-01/full-build.log",
+        "sha256": "39e9a7cd52565aa8c7a8f32f6b06dae9cb865c74cb512d411f1bb05ff7254d96"
+      },
+      {
+        "role": "actual_full_build",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/tmp/total-kernel-memory-mac-execution/full-build-01/PROTOCOL_ADAPTATION.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/full-build-01/PROTOCOL_ADAPTATION.json",
+        "sha256": "b72594a75023b725e79f5fbb1d41f4f70cb2cd66a2322d77dd2ec449739cea97"
+      },
+      {
+        "role": "actual_full_build",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/tmp/total-kernel-memory-mac-execution/full-build-01/FROZEN_INPUTS.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/full-build-01/FROZEN_INPUTS.json",
+        "sha256": "858a8fc751560eb48513ef4d5b9430fe2743c9ba9143e0b2c5ac02f48111a9a4"
+      },
+      {
+        "role": "actual_full_build",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/tmp/total-kernel-memory-mac-execution/full-build-01/protocol_adapter.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/full-build-01/protocol_adapter.py",
+        "sha256": "d01c7970eb3dc54a810ded4251a48fe6bdb5a35842bd362e68945f262102e57d"
+      },
+      {
+        "role": "actual_full_build",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/tmp/total-kernel-memory-mac-execution/full-build-01/full_build.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/full-build-01/full_build.py",
+        "sha256": "44d5d2dbb4639ae89877a90224dfae2308d005ab3b15ed867139cdaa726020c9"
+      },
+      {
+        "role": "actual_full_build",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/tmp/total-kernel-memory-mac-execution/full-build-01/immutable_full_build.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/full-build-01/immutable_full_build.py",
+        "sha256": "132b1c96d38a4462ef407ee31ed94378c2025996b2a7b603e297fd9d35cf86de"
+      },
+      {
+        "role": "actual_full_build",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/tmp/total-kernel-memory-mac-execution/full-build-01/executed_full_build.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/full-build-01/executed_full_build.py",
+        "sha256": "bd2188354b2807f0cb7d4b5cc848bd40e3c0a3a054a1d91f9e15f0c43bf63ee2"
+      },
+      {
+        "role": "executed_driver",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/ueot-core/formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/native_protocol/integration_native.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/drivers/integration_native.py",
+        "sha256": "faf2a405cfcb0b81c54e923ad418ce94e4f05f36da81027c4a92263874c6578b"
+      },
+      {
+        "role": "executed_driver",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/ueot-core/formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/native_protocol/full_build.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/drivers/full_build.py",
+        "sha256": "44d5d2dbb4639ae89877a90224dfae2308d005ab3b15ed867139cdaa726020c9"
+      },
+      {
+        "role": "immutable_protocol_helper",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/ueot-core/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/pr_preflight.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/protocol-inputs/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/pr_preflight.py",
+        "sha256": "6d9ee21b7c832aa238c7fd2b42cd5aa9085bc3af616df16819aa100d82f9213c"
+      },
+      {
+        "role": "immutable_protocol_helper",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/ueot-core/formalization/ueot-core/docs/compression/theory_completion/knowledge/fkrg.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/protocol-inputs/formalization/ueot-core/docs/compression/theory_completion/knowledge/fkrg.py",
+        "sha256": "a91301a76165f542d658e924846eede169287a73da6f31f73f24979250de96ff"
+      },
+      {
+        "role": "immutable_protocol_helper",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/ueot-core/formalization/ueot-core/docs/compression/theory_completion/unified_closure/registered_interfaces/native_protocol/prepare_registered_interfaces_export.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/protocol-inputs/formalization/ueot-core/docs/compression/theory_completion/unified_closure/registered_interfaces/native_protocol/prepare_registered_interfaces_export.py",
+        "sha256": "9dee4154f7233065d723d58da5117463f7f2182856e20a6762450c837c433ed8"
+      },
+      {
+        "role": "immutable_protocol_helper",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/ueot-core/formalization/ueot-core/docs/compression/theory_completion/unified_closure/registered_interfaces/native_protocol/build_identity.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/protocol-inputs/formalization/ueot-core/docs/compression/theory_completion/unified_closure/registered_interfaces/native_protocol/build_identity.py",
+        "sha256": "e80ed3ef63b7f6a6a6cd9f3b248917b1b3dc17dbbd0428c41333febc9cdb2e73"
+      },
+      {
+        "role": "prior_overlay",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/ueot-core/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/PATH_REALIZATION_REUSE_OVERLAY_V1.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/protocol-inputs/PATH_REALIZATION_REUSE_OVERLAY_V1.json",
+        "sha256": "8e72781498acf49496733ace5dfbf80257830ff3a6d85e1b02e66474f936ec3b"
+      },
+      {
+        "role": "immutable_base_consumer",
+        "input_path": "41c4b27ef8d993c797b2414311f0934eeb4cb561:formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/drivers/baseline_fkrg_reuse.py",
+        "sha256": "022afe80fa500ce13489f579467e3eb5e9c233302ca078dd06412f20639caade"
+      },
+      {
+        "role": "registration_driver",
+        "input_path": "/workspace/scratch/c8f8d561c8f3/ueot-core/formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/native_protocol/register_overlay.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/drivers/register_overlay.py",
+        "sha256": "71f810000fdafa39c1cc28e0e5a219521e0e385fd7ae30fa0febfcbcfb3357bf"
+      },
+      {
+        "role": "executed_registration_protocol",
+        "input_path": "executed-memory:PROTOCOL_ADAPTATION.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/drivers/PROTOCOL_ADAPTATION.json",
+        "sha256": "ab863f4916e72cf8d2b36aab5a3e8e0628a6842e7d84b6bae8e8908d8f69af15"
+      },
+      {
+        "role": "executed_registration_protocol",
+        "input_path": "executed-memory:FROZEN_INPUTS.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/drivers/FROZEN_INPUTS.json",
+        "sha256": "858a8fc751560eb48513ef4d5b9430fe2743c9ba9143e0b2c5ac02f48111a9a4"
+      },
+      {
+        "role": "executed_registration_protocol",
+        "input_path": "executed-memory:protocol_adapter.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/drivers/protocol_adapter.py",
+        "sha256": "d01c7970eb3dc54a810ded4251a48fe6bdb5a35842bd362e68945f262102e57d"
+      },
+      {
+        "role": "executed_registration_protocol",
+        "input_path": "executed-memory:register_overlay.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/drivers/register_overlay.py",
+        "sha256": "71f810000fdafa39c1cc28e0e5a219521e0e385fd7ae30fa0febfcbcfb3357bf"
+      },
+      {
+        "role": "executed_registration_protocol",
+        "input_path": "executed-memory:immutable_register_overlay.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/drivers/immutable_register_overlay.py",
+        "sha256": "3679552fc1599894cd1cf0ce5aba3324c1d13d885fbcdd6c96fc1796dbc1c939"
+      },
+      {
+        "role": "executed_registration_protocol",
+        "input_path": "executed-memory:executed_register_overlay.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/drivers/executed_register_overlay.py",
+        "sha256": "e9266c97fc44b6426236f0c2bbe82ccebe50f5da0cc66a2901ff787d90ca3ade"
+      }
+    ],
+    "baseline_ref": "41c4b27ef8d993c797b2414311f0934eeb4cb561",
+    "source_tree_sha256": "2a0482a9717cc776b76383755a42b327ba132a04fbb6dfaea5c3ddb45da47b24",
+    "metadata_additions_only": [
+      "lexical_pr_preflight",
+      "registration_provenance"
+    ],
+    "raw_evidence_bytes_preserved": true,
+    "git_object_pr_preflight": "NOT_PERFORMED_SEPARATE_GATE",
+    "consumer_registry_modified": false,
+    "independent_review": "SEPARATE_GATE"
+  }
+}

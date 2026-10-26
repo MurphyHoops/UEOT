@@ -20,26 +20,26 @@ class ProofReuseTests(unittest.TestCase):
 
     def test_evidence_and_sources_exact_baseline(self):
         res = reuse.status(self.data)
-        self.assertEqual(res["module_source_hashes_verified"], 691)
-        self.assertEqual(res["ueot_maintained_modules"], 680)
+        self.assertEqual(res["module_source_hashes_verified"], 694)
+        self.assertEqual(res["ueot_maintained_modules"], 683)
         self.assertEqual(res["vendor_modules"], 11)
-        self.assertEqual(res["public_source_theorems_with_direct_proof_graph"], 4345)
+        self.assertEqual(res["public_source_theorems_with_direct_proof_graph"], 4357)
         self.assertEqual(res["verified_equal_type_groups"], 37)
         self.assertEqual(res["equal_type_statement_names"], 77)
         self.assertEqual(res["near_type_not_defeq_candidate_pairs"], 15)
         self.assertEqual(res["crossfile_exact_code_clone_candidates"], 68)
-        self.assertEqual(res["overlay_public_theorems"], 552)
+        self.assertEqual(res["overlay_public_theorems"], 564)
         self.assertEqual(res["overlay_cross_snapshot_defeq_matches"], 0)
-        self.assertEqual(res["overlay_lexical_reuse_candidates"], 133)
-        self.assertEqual(res["overlay_count"], 11)
-        self.assertEqual(res["overlay_registered_direct_edges"], 841)
+        self.assertEqual(res["overlay_lexical_reuse_candidates"], 138)
+        self.assertEqual(res["overlay_count"], 12)
+        self.assertEqual(res["overlay_registered_direct_edges"], 868)
         self.assertEqual(res["overlay_historical_public_repairs"], 1)
         self.assertEqual(res["overlay_existing_registered_direct_edge_repairs"], 1)
         self.assertEqual(sum(len(json.loads(row["source_theorem_deps_json"]))
-                             for row in self.data["graph"].values()), 5728)
+                             for row in self.data["graph"].values()), 5755)
 
     def test_calibrated_defect_overlay_chain_and_kernel_graph(self):
-        self.assertEqual(len(self.data["overlays"]), 11)
+        self.assertEqual(len(self.data["overlays"]), 12)
         prior, current = self.data["overlays"][:2]
         self.assertEqual(prior["base_snapshot_modules"], 633)
         self.assertEqual(current["base_snapshot_modules"], 634)
@@ -1034,6 +1034,222 @@ class ProofReuseTests(unittest.TestCase):
         self.assertEqual(lexical["candidate_registered_public_source_theorem_count"], 4345)
         self.assertEqual(lexical["new_theorems_with_lexical_reuse_candidates"], 25)
 
+    def test_total_kernel_memory_native_ownership_and_registered_edges(self):
+        current = self.data["overlays"][11]
+        prefix = "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure."
+        modules = {prefix + name for name in (
+            "TotalFiniteWindow", "TotalFiniteWindowWitness", "HomogeneousMemorySurvival")}
+        self.assertEqual(current["base_snapshot_modules"], 691)
+        self.assertEqual(current["prior_overlay"]["sha256"], reuse.OVERLAY_SHA256S[10])
+        self.assertEqual(current["baseline_ref"], "41c4b27ef8d993c797b2414311f0934eeb4cb561")
+        self.assertEqual(current["source_checkpoint"],
+                         "worktree-sha256:2a0482a9717cc776b76383755a42b327ba132a04fbb6dfaea5c3ddb45da47b24")
+        self.assertEqual(current["source_checkpoint_kind"], "FROZEN_SOURCE_CONTENT_BEFORE_GIT_COMMIT")
+        self.assertEqual(current["scientific_role"],
+                         "UNCOUNTED_TOTAL_CONDITIONED_KERNEL_AND_HOMOGENEOUS_MEMORY_SURVIVAL")
+        self.assertEqual(current["counted_core_impact"], "NONE")
+        self.assertEqual(current["scientific_closure"], "NOT_ESTABLISHED")
+        self.assertNotIn("historical_public_repairs", current)
+        self.assertNotIn("existing_proof_dependency_repairs", current)
+        self.assertEqual({row["module"] for row in current["added_modules"]}, modules)
+        evidence = current["native_export_evidence"]
+        artifact = reuse.REPO / evidence["path"]
+        native_sha = "0f164136ebca7dd0e3dd3339fe54286be820cce6b285a03ca5ade12cf1422e02"
+        self.assertEqual(evidence["sha256"], native_sha)
+        self.assertEqual(reuse.sha256(artifact.read_bytes()).hexdigest(), native_sha)
+        native = json.loads(artifact.read_text())
+        self.assertEqual(native["schema"], "TOTAL_KERNEL_MEMORY_NATIVE_EXPORT_V1")
+        self.assertEqual(native["collisions"], [])
+        scope = native["all_native_theorem_constants"]
+        by_name = {row["name"]: row for row in scope}
+        self.assertEqual(len(scope), 80)
+        self.assertEqual(len(by_name), len(scope))
+        self.assertEqual(sum(row["is_private"] for row in scope), 27)
+        self.assertEqual({row["source_module"] for row in scope}, modules)
+        fields = {"name", "source_module", "is_private", "level_parameters", "type",
+                  "direct_constants", "direct_theorem_constants", "axioms"}
+        for row in scope:
+            with self.subTest(native_symbol=row["name"]):
+                self.assertEqual(set(row), fields)
+                self.assertTrue(set(row["axioms"]) <= {"propext", "Classical.choice", "Quot.sound"})
+                self.assertTrue(set(row["direct_theorem_constants"]) <= set(row["direct_constants"]))
+        public = {row["name"]: row for row in current["public_theorems"]}
+        native_public = {row["name"]: row for row in native["public_source_theorems"]}
+        self.assertEqual(len(public), 12)
+        self.assertEqual(set(public), set(native_public))
+        self.assertEqual(sum(not row["is_private"] and row["name"] not in public
+                             for row in scope), 41)
+        edges = set()
+        for name, row in public.items():
+            with self.subTest(public_symbol=name):
+                full = by_name[name]
+                self.assertFalse(full["is_private"])
+                self.assertEqual(row["source_module"], full["source_module"])
+                for field in ("source_module", "level_parameters", "type", "direct_constants"):
+                    self.assertEqual(native_public[name][field], full[field])
+                actual = (set(full["direct_constants"]) & set(self.data["graph"])) - {name}
+                self.assertEqual(set(row["source_theorem_deps"]), actual)
+                self.assertEqual(set(native_public[name]["source_theorem_deps"]), actual)
+                edges.update((name, target) for target in actual)
+        certified = current["proof_dependency_certification"]
+        self.assertEqual(edges, {(row["source"], row["target"]) for row in certified["edges"]})
+        self.assertEqual(len(edges), certified["registered_direct_edges"])
+        self.assertEqual(len(edges), 27)
+        distinct = current["type_distinctness"]
+        self.assertEqual(distinct["registered_prior_theorems"], 4345)
+        self.assertEqual(distinct["definitionally_equal_matches"], 0)
+        for field, expected in (
+                ("cross_isDefEq_comparisons", 12 * 4345),
+                ("internal_isDefEq_comparisons", 12 * 11 // 2)):
+            self.assertEqual(distinct[field], expected)
+            self.assertEqual(native[field], expected)
+
+    def test_total_kernel_memory_actual_source_and_canonical_reuse(self):
+        prefix = "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure."
+        expected = {
+            "TotalFiniteWindowCheck.windowPathLaw_prefix_atom": {
+                "UEOT.V3.PathError.pmfExtend_apply",
+                prefix + "SameSourceFiniteWindowCheck.remainingSurvival_nonneg",
+                prefix + "TotalFiniteWindowCheck.totalWindowRow_apply_toReal_of_pos"},
+            "TotalFiniteWindowCheck.generated_prefix_eq_actual": {
+                prefix + "PathObservationEscapeCheck.riskHistoryMap_injective_general",
+                prefix + "SameSourceConditionedTerminalCheck.pmf_map_injective_atom",
+                prefix + "FiniteWindowDoobCheck.safeInitialRow_nonneg",
+                prefix + "SameSourceKilledPathCheck.killedMatrix_nonneg",
+                prefix + "TotalFiniteWindowCheck.windowPathLaw_prefix_atom",
+                prefix + "SameSourceFiniteWindowCheck.actual_conditioned_prefix_mass",
+                prefix + "SameSourceFiniteWindowCheck.state_safe_atom_eq_matrixPathWeight",
+                prefix + "FiniteWindowDoobCheck.actual_survival_mass_eq_initial_remaining_sum",
+                prefix + "SameSourceFiniteWindowCheck.actual_conditioned_prefix_eq_zero_of_not_survives"},
+            "TotalFiniteWindowCheck.generated_ambient_eq_actual": {
+                prefix + "TotalFiniteWindowCheck.generated_prefix_eq_actual"},
+            "HomogeneousMemorySurvival.closed_loop_eq_augmentedRow": {
+                prefix + "HomogeneousMemorySurvival.augmentedModel_transitionPMF",
+                prefix + "SourcePolicyPathBridgeCheck.actual_next_state_eq_stationary_row"},
+            "HomogeneousMemorySurvival.actual_augmentedTrajMeasure_eq_homogeneous": {
+                prefix + "HomogeneousMemorySurvival.closed_loop_eq_augmentedRow"},
+            "HomogeneousMemorySurvival.killed_mass_tendsto_actual_infinite_survival": {
+                "UEOT.V3.Compression.Objecthood.neverHitSet_eq_iInter_survivalSet",
+                "UEOT.V3.RecoveryHittingNonnegative.measurableSet_survivalSet",
+                "UEOT.V3.DynamicsKernel.measurable_mapPath",
+                prefix + "HomogeneousMemorySurvival.actual_augmentedTrajMeasure_eq_homogeneous",
+                prefix + "SameSourceSurvivalTailCheck.killed_survival_mass_tendsto_homogeneous_neverHit_real"},
+        }
+        for name, deps in expected.items():
+            with self.subTest(symbol=name):
+                item = reuse.explain(self.data, prefix + name)
+                self.assertEqual(set(item["direct_existing_source_theorem_uses"]), deps)
+        for row in self.data["overlays"][11]["public_theorems"]:
+            item = reuse.explain(self.data, row["name"])
+            self.assertEqual(item["role"],
+                             "UNCOUNTED_TOTAL_CONDITIONED_KERNEL_AND_HOMOGENEOUS_MEMORY_SURVIVAL")
+            self.assertEqual(item["area"], "V3/Compression/TheoryCompletion/UnifiedClosure")
+
+    def test_total_kernel_memory_private_bridges_and_null_witness(self):
+        current = self.data["overlays"][11]
+        native = json.loads((reuse.REPO / current["native_export_evidence"]["path"]).read_text())
+        scope = native["all_native_theorem_constants"]
+        by_name = {row["name"]: row for row in scope}
+        prefix = "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure."
+
+        def helper(module, short_name):
+            matches = [row for row in scope if row["source_module"] == prefix + module
+                       and row["name"].endswith("." + short_name)]
+            self.assertEqual(len(matches), 1)
+            row = matches[0]
+            self.assertTrue(row["is_private"])
+            self.assertNotIn(row["name"], self.data["graph"])
+            return row
+
+        endpoint = prefix + "TotalFiniteWindowWitnessCheck.null_row_actual_source_witness"
+        public = next(row for row in native["public_source_theorems"] if row["name"] == endpoint)
+        # Zero registered public edges does not erase actual private proof reuse.
+        self.assertEqual(public["source_theorem_deps"], [])
+        witness_helpers = {}
+        for name in ("initial_unsafe_mass", "survival_one", "remaining_one",
+                     "null_rows_differ", "generated_eq_pure"):
+            row = helper("TotalFiniteWindowWitness", name)
+            witness_helpers[name] = row
+            self.assertIn(row["name"], public["direct_constants"])
+            self.assertIn(row["name"], by_name[endpoint]["direct_theorem_constants"])
+        conditioned = helper("TotalFiniteWindowWitness", "conditioned_eq_pure")
+        self.assertIn(conditioned["name"], witness_helpers["generated_eq_pure"]["direct_theorem_constants"])
+        self.assertIn(prefix + "TotalFiniteWindowCheck.generated_ambient_eq_actual",
+                      witness_helpers["generated_eq_pure"]["direct_theorem_constants"])
+        self.assertIn(prefix + "SameSourceFiniteWindowCheck.actual_conditioned_safe_path_mass",
+                      conditioned["direct_theorem_constants"])
+        ambient = helper("TotalFiniteWindow", "generated_map_eq_ambient")
+        self.assertIn(ambient["name"],
+                      by_name[prefix + "TotalFiniteWindowCheck.generated_ambient_eq_actual"]["direct_theorem_constants"])
+        for name in ("risk_map_extend_right", "coverage_map_extend_reference"):
+            self.assertIn(prefix + name, ambient["direct_theorem_constants"])
+        projected = helper("HomogeneousMemorySurvival", "projected_survival_mass")
+        self.assertIn(projected["name"],
+                      by_name[prefix + "HomogeneousMemorySurvival.actual_finite_survival_eq_killed_mass"]["direct_theorem_constants"])
+        for name in ("HomogeneousMemorySurvival.actual_augmentedTrajMeasure_eq_homogeneous",
+                     "SameSourceSafePrefixCheck.homogeneous_survival_real_eq_killed_pow_sum"):
+            self.assertIn(prefix + name, projected["direct_theorem_constants"])
+
+    def test_total_kernel_memory_registration_preserves_raw_execution(self):
+        current = self.data["overlays"][11]
+        provenance = current["registration_provenance"]
+        additions = {"lexical_pr_preflight", "registration_provenance"}
+        self.assertEqual(provenance["schema"], "TOTAL_KERNEL_MEMORY_REGISTRATION_PROVENANCE_V1")
+        self.assertEqual(set(provenance["metadata_additions_only"]), additions)
+        self.assertTrue(provenance["raw_evidence_bytes_preserved"])
+        self.assertFalse(provenance["consumer_registry_modified"])
+        self.assertEqual(provenance["git_object_pr_preflight"], "NOT_PERFORMED_SEPARATE_GATE")
+        fingerprint = "2a0482a9717cc776b76383755a42b327ba132a04fbb6dfaea5c3ddb45da47b24"
+        self.assertEqual(provenance["source_tree_sha256"], fingerprint)
+        self.assertEqual(provenance["baseline_ref"], current["baseline_ref"])
+        inputs = provenance["inputs"]
+        self.assertEqual(len({(row["role"], row["path"]) for row in inputs}), len(inputs))
+        for row in inputs:
+            with self.subTest(archived_input=row["path"]):
+                path = reuse.REPO / row["path"]
+                self.assertTrue(path.resolve().is_relative_to(reuse.REPO.resolve()))
+                self.assertEqual(reuse.sha256(path.read_bytes()).hexdigest(), row["sha256"])
+        raw_rows = [row for row in inputs if row["role"] == "actual_native_output"
+                    and row["path"].endswith("/TOTAL_KERNEL_MEMORY_REUSE_OVERLAY_V1.json")]
+        self.assertEqual(len(raw_rows), 1)
+        raw_path = reuse.REPO / raw_rows[0]["path"]
+        raw = json.loads(raw_path.read_text())
+        self.assertEqual(set(current) - set(raw), additions)
+        self.assertEqual({key: value for key, value in current.items() if key not in additions}, raw)
+        archive = raw_path.parent
+        self.assertEqual((archive / "REGISTERED_OVERLAY.json").read_bytes(), reuse.OVERLAY_PATHS[11].read_bytes())
+        receipt = json.loads((archive / "REGISTRATION_RECEIPT.json").read_text())
+        self.assertEqual(receipt["schema"], "TOTAL_KERNEL_MEMORY_REGISTRATION_RECEIPT_V1")
+        self.assertEqual(receipt["state"], "PASS_METADATA_ONLY_CONSUMER_UNCHANGED")
+        self.assertEqual(receipt["raw_overlay_sha256"], raw_rows[0]["sha256"])
+        self.assertEqual(receipt["registered_overlay"]["sha256"], reuse.OVERLAY_SHA256S[11])
+        self.assertEqual(set(receipt["added_top_level_keys"]), additions)
+        self.assertTrue(receipt["stripped_registered_json_equals_raw"])
+        self.assertIsNone(receipt["candidate_ref"])
+        self.assertEqual(receipt["input_files"], inputs)
+        preflight = json.loads((archive / "SOURCE_PREFLIGHT.json").read_text())
+        self.assertEqual(preflight["status"], "PENDING_ACTUAL_NATIVE_EXECUTION")
+        self.assertEqual(preflight["source_tree_sha256"], fingerprint)
+        self.assertEqual(preflight["complete_source_modules"], 694)
+        self.assertEqual(preflight["added_modules"], current["added_modules"])
+        execution = json.loads((archive / "STATUS.json").read_text())
+        self.assertEqual(execution["state"], "PASS_PENDING_INDEPENDENT_REVIEW_AND_REGISTRATION")
+        self.assertTrue(current["native_execution"]["fixed_export_equals_initial_native_export"])
+        self.assertEqual(json.loads((archive / "observed_first_native.json").read_text()),
+                         json.loads((reuse.REPO / current["native_export_evidence"]["path"]).read_text()))
+        for row in current["native_execution"]["results"]:
+            log = archive / ("native_export.log" if row["label"] == "native_export" else "fixed_verifier.log")
+            self.assertEqual(row["exit_code"], 0)
+            self.assertEqual(reuse.sha256(log.read_bytes()).hexdigest(), row["log_sha256"])
+        lexical = current["lexical_pr_preflight"]
+        self.assertIsNone(lexical["candidate_ref"])
+        self.assertEqual(lexical["new_public_source_theorem_count"], 12)
+        self.assertEqual(lexical["base_public_lexical_theorem_count"], 4345)
+        self.assertEqual(lexical["candidate_public_lexical_theorem_count"], 4357)
+        self.assertEqual(lexical["candidate_registered_public_source_theorem_count"], 4357)
+        self.assertEqual(lexical["new_theorems_with_lexical_reuse_candidates"], 5)
+
+
     def test_historical_apostrophe_registration_and_existing_incoming_edge(self):
         current = self.data["overlays"][7]
         helper = "UEOT.V3.FreeInformationValue.integrable_finset_sup'"
@@ -1200,7 +1416,7 @@ class ProofReuseTests(unittest.TestCase):
 
     def test_new_lean_module_cannot_be_omitted_from_index(self):
         live = reuse.live_source_paths()
-        self.assertEqual(len(live), 691)
+        self.assertEqual(len(live), 694)
         new = "formalization/ueot-core/UEOT/V3/FutureNovelLemma.lean"
         with mock.patch.object(reuse, "live_source_paths", return_value=live | {new}):
             with self.assertRaisesRegex(RuntimeError, "STALE_AUDIT_SOURCE_SET"):
