@@ -168,6 +168,8 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindow
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowWitness
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportController
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness
 /-!
 # UEOT Theory Completion public root
 

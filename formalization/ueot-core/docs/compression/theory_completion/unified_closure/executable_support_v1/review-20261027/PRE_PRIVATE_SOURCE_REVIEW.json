@@ -1,0 +1,156 @@
+{
+  "schema": "UEOT_EXECUTABLE_SUPPORT_FINAL_SOURCE_SEMANTIC_REVIEW_V2",
+  "observed_at": "2026-10-26T17:01:30.864583+00:00",
+  "status": "CLEAR",
+  "reviewer_role": "Independent read-only executable-controller and witness source reviewer",
+  "source_files": [
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+      "sha256": "5e19fb3cba080f8c20726626801e457321af6a12b4c8dedc4ae52f842d2bb333",
+      "lines": 543
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+      "sha256": "e3ba016452df6627a0e0800cb5944835fe4d2d37de5642c5c6ceded3c899d7db",
+      "lines": 244
+    }
+  ],
+  "total_source_lines": 787,
+  "base_head": "c54f1a96b25e57a3484da46d38c1c9f668d53a34",
+  "candidate_commit": "NOT_YET_BOUND_NEW_SOURCE",
+  "prior_review": {
+    "path": "/tmp/ueot-r1-executable-source-review-f45aaec.json",
+    "sha256": "770a534c8ef65c9b7cc1c346dff616560d301a2f5bc4cb60b743e65f33c3ec0e",
+    "reviewed_core_sha256": "f45aaec164b0b6e026f0ffc77fe82e3e42b7aa60882287cfe6061e8901e2795e",
+    "verification": "The preceding cb954216 snapshot recovers f45aaec exactly after removing its new R0 import, two cost-comment lines and appended killed-mass block. The present 5e19fb3c snapshot additionally normalizes findAction back to selectedAction?; that inverse rename recovers the exact cb954216 bytes.",
+    "core_prior_503_lines_preserved_exactly_in_preceding_cb954216_snapshot": true
+  },
+  "core_delta": {
+    "added_import": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival",
+    "cost_comment": "Retains the existing recursive checker until measured cost blocks a concrete finite input; then considers a memoized winning-support table. No new asymptotic or practical-cost guarantee is asserted.",
+    "new_endpoint": "ExecutableSupportSynthesis.synthesize_some_killed_mass_one",
+    "new_endpoint_location": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean:513",
+    "premises": "Actual synthesize = some program; exact initial support; one fixed numerical source Model whose transitionPMF support is R; certification equivalent to C; actual initial safety; one-step C/R physical closure.",
+    "conclusion": "That returned program.toController has unnormalized killed mass one at every finite n on its actual augmented X x Finset X chain, safe set Prod.fst inverse K and actual augmented initial law.",
+    "proof_chain": [
+      "HomogeneousMemorySurvival.actual_finite_survival_eq_killed_mass rewrites the augmented killed mass as the finite survival probability of the original controlled experiment.",
+      "synthesize_some_zero_uncovered derives zero uncertified occupancy for the returned program from hsynth and exact representations.",
+      "FiniteMemoryPhysicalSafety.actual_finite_safety_one combines that new own-policy result with independent initial-safety and one-step closure premises.",
+      "ENNReal.toReal at the proved mass one yields the real-valued killed mass."
+    ],
+    "safety_not_input": true,
+    "new_program_own_law_preserved": true,
+    "no_old_selector_identification": true,
+    "numerical_homogeneity_required_for_matrix_power": true,
+    "new_classical_local_equality_only_in_theorem_block": true,
+    "reviewed_delta_target_sha256": "cb954216d0ef3edcb88dca201cc060f71da1996d4a37beb290f030659bfdfb7d",
+    "runtime_definitions_unchanged_before_final_identifier_rename": true
+  },
+  "witness_review": {
+    "namespace": "ExecutableSupportControllerWitness",
+    "state_type": "Option Bool (three states)",
+    "action_type": "Bool",
+    "observation": "Constant Unit at every state, including failure.",
+    "transition_table": [
+      {
+        "state": "some false",
+        "action": false,
+        "next": "some true"
+      },
+      {
+        "state": "some false",
+        "action": true,
+        "next": "none"
+      },
+      {
+        "state": "some true",
+        "action": false,
+        "next": "none"
+      },
+      {
+        "state": "some true",
+        "action": true,
+        "next": "some false"
+      },
+      {
+        "state": "none",
+        "action": false,
+        "next": "none"
+      },
+      {
+        "state": "none",
+        "action": true,
+        "next": "none"
+      }
+    ],
+    "certification": "x = some a; the two safe hidden phases require opposite actions.",
+    "accepted_initial_support": "{some false}",
+    "rejected_mixed_support": "{some false, some true}",
+    "action_order": [
+      false,
+      true
+    ],
+    "synthesis_binding": "program is buildProgram on explicit data, and synthesis_returns_program proves actual synthesize = some program using the computed finite checker and list/initial checks.",
+    "finite_computations": "Kernel decide checks accepted/rejected finiteMemoryCheck values, synthesis premises, mixed/incomplete/empty-input rejection, actual flip-step init/action/update values, empty-memory fallback and effective supplied action order. No native_decide is used.",
+    "semantic_lift": "A separate noncomputable section defines initialLaw = pure (some false), source n x a = pure (nextState x a) and exact support matching to the same finite tables.",
+    "proper_safe_set": "safe = {x | x != none}; nonempty and not universal are proved.",
+    "physical_premises": "Initial safety and certified-transition safety are proved from the concrete source. Matching actions move to some (!a); mismatched actions actually reach none.",
+    "own_policy_results": "returned_program_zero_uncovered and returned_program_all_times_safe apply generic returned-program endpoints with synthesis_returns_program and concrete exact-support/physical proofs, never assume zero occupancy or infinite safety.",
+    "model_adapter": "The added Model uses source 0 row.toReal, reward zero, bound zero and discount one half. Its probability rows are proved equal to the original source 0 PMFs by Model.transitionPMF_apply_toReal and finite PMF extensionality; model_support_exact follows from this equality rather than an assumed unrelated kernel identity.",
+    "actual_killed_mass_one": "The added witness endpoint applies synthesize_some_killed_mass_one to the same computed program, exact model, initial law and proper safe set at every horizon n. Its one-step closure is the previously proved concrete certified_transition_safe translated by exact source support.",
+    "mixed_initial_boundary": "mixedLaw is uniform Boolean pushed through some, with support mixedTable. Mixed rejection plus proved completeness rules out every complete causal policy with all-times zero uncertified occupancy. This is a certification-policy impossibility theorem; no separate general no-physical-safety-policy theorem or minimal-memory theorem is asserted.",
+    "in_turn_incremental_change": "The witness changed from 196 to 244 lines during review. The additional model, support proof, killed-mass instance and scoped opens were independently read. Removing exactly those additions recovers SHA256 88cb8a902f2e4016a1e106f3601934accabadca19459fc8e2e560a3fa4a26223; this final review binds the new e3ba0164 hash."
+  },
+  "inherited_core_checks": {
+    "computable_program_no_choose_or_pmf_support_oracle": true,
+    "source_free_checker_to_winning": true,
+    "complete_order_and_nonempty_initial_checked": true,
+    "duplicates_allowed_first_match_relative_to_list": true,
+    "memory_exact_on_all_records": true,
+    "winning_and_zero_occupancy_for_new_policy_own_law": true,
+    "returned_program_all_times_safety_derived": true
+  },
+  "retained_limits": [
+    "Table/source/certification exactness and physical initial/one-step closure are explicit theorem premises, not empirical runtime verification.",
+    "General R1 occupancy and safety allow time-varying numerical P with fixed support R; the matrix-power endpoint requires a fixed numerical Model.",
+    "Runtime recomputes a recursive checker; no memoized support-action table or practical-complexity guarantee.",
+    "No logical independence, scientific novelty, counted-ledger or strong scientific-closure promotion is inferred."
+  ],
+  "blocking_findings": [],
+  "changes_requested": [],
+  "review_execution": {
+    "author_source_edits": false,
+    "lean_compilation_or_tests_rerun": false,
+    "full_build_or_native_export_rerun": false,
+    "actual_lean_run_witness_result_reviewed": false,
+    "cloud_ci": false,
+    "gi_writes": false,
+    "source_hash_and_inverse_rename_checked": true,
+    "native_typed_hint_review": "PENDING_SEPARATE_HINTS"
+  },
+  "next_boundary": "Bind both source hashes to the candidate commit. Current build and native execution receipts and typed-reuse hints require their own separate evidence review; no build was rerun by this reviewer.",
+  "preceding_final_review": {
+    "path": "/tmp/ueot-r1-final-sources-review-cb954216.json",
+    "sha256": "d08ccd4678af97a580d782ca26f7a243dab65ad8dc8eb48cdbb459f7c422545c",
+    "status": "CLEAR",
+    "reviewed_core_sha256": "cb954216d0ef3edcb88dca201cc060f71da1996d4a37beb290f030659bfdfb7d",
+    "witness_sha256": "e3ba016452df6627a0e0800cb5944835fe4d2d37de5642c5c6ceded3c899d7db"
+  },
+  "final_rename_delta": {
+    "old_identifier": "selectedAction?",
+    "new_identifier": "findAction",
+    "renamed_declaration": "findAction_eq_some_iff",
+    "text_occurrences": 7,
+    "inverse_rename_recovers_prior_source_sha256": "cb954216d0ef3edcb88dca201cc060f71da1996d4a37beb290f030659bfdfb7d",
+    "only_change_is_consistent_identifier_replacement": true,
+    "definition_body_unchanged": "ordered.find? (stepCheck q R C S)",
+    "theorem_statement_and_proof_unchanged_except_names": true,
+    "all_prior_runtime_safety_killed_mass_and_witness_findings_preserved": true
+  },
+  "current_source_identity": {
+    "source_scope": "UEOT.lean plus UEOT/**/*.lean",
+    "module_count": 696,
+    "source_tree_sha256": "6cbba51be88895abaab409b14f4d3b5b73436b3d7da3063ecdd31b0168fcf461",
+    "method": "Read current source bytes, sorted by module name, hashing module NUL bytes NUL. This is an input-identity check, not a build execution or receipt verification."
+  }
+}
