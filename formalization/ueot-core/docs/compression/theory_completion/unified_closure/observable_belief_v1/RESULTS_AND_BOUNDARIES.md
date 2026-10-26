@@ -29,8 +29,8 @@ posterior identity.
 
 The quotient kernel is constructed by composing that same C1 transition with
 the explicit belief section and mapping by T. Source-test closure proves its
-factorization for every belief and action. Surjectivity of the section proves
-uniqueness. This uses the existing surjective-descent uniqueness principle;
+factorization for every belief and action. The section proves that the coordinate is surjective,
+which gives uniqueness. This uses the existing surjective-descent uniqueness principle;
 the new bridge supplies the actual C1 law and measurable Markov construction.
 Conversely, any factorization kernel, even without a Markov
 premise, forces source-test closure by evaluating Dirac input beliefs.
