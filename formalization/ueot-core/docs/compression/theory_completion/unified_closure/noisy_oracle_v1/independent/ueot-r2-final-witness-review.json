@@ -1,0 +1,219 @@
+{
+  "schema": "UEOT_R2_FINAL_WITNESS_SOURCE_REVIEW_V1",
+  "status": "CLEAR",
+  "reviewer": "independent formal_audit agent",
+  "created_at_utc": "2026-10-26T19:17:55.045540+00:00",
+  "scope": "Read-only semantic, implementation-source, and assumption-boundary review of all three bound files; no Lean build, runtime, test, native replay, GI write, cloud action, or repository edit performed.",
+  "source_files": [
+    {
+      "role": "witness",
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracleWitness.lean",
+      "relative_path": "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracleWitness.lean",
+      "bytes": 18069,
+      "lines": 389,
+      "sha256": "73b6cec824e9f18e99bc613702eaf7f67eb45a4ffd57684fecc22d6f43b23be0",
+      "full_source_read": true,
+      "stable_across_review": true
+    },
+    {
+      "role": "sampler",
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/noisy_oracle_v1/SAMPLE_FINITE_SOURCE.py",
+      "relative_path": "docs/compression/theory_completion/unified_closure/noisy_oracle_v1/SAMPLE_FINITE_SOURCE.py",
+      "bytes": 1942,
+      "lines": 42,
+      "sha256": "5f579f5c112916a45aadbbde1f9587862e8cf8a91d26ec44f852d09edfafe15c",
+      "full_source_read": true,
+      "stable_across_review": true
+    },
+    {
+      "role": "runtime",
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/noisy_oracle_v1/EXECUTE_NOISY_ORACLE.lean",
+      "relative_path": "docs/compression/theory_completion/unified_closure/noisy_oracle_v1/EXECUTE_NOISY_ORACLE.lean",
+      "bytes": 5889,
+      "lines": 108,
+      "sha256": "818494098bb06d4b2aa05591b99c28d104509cc9ae10c04b929a7fa37d4324f3",
+      "full_source_read": true,
+      "stable_across_review": true
+    }
+  ],
+  "retained_reviews": [
+    {
+      "scope": "all 847 lines and 26 public core theorems",
+      "path": "/tmp/ueot-r2-noisy-core-review.json",
+      "sha256": "799623651efb35a143f8301bb63805588075cbc88fe5b57cab88856b8cdc397b",
+      "reviewed_core_sha256": "ac5cb46f495e019960a54fe46e0bf5bad2e10a50f98050d5d9e83d19adba4e03",
+      "status": "CLEAR; unchanged core hash rechecked; relevant integration definitions reread"
+    },
+    {
+      "scope": "fixed-sample exact-support no-go theorem",
+      "path": "/tmp/ueot-r2-support-no-go-review.json",
+      "sha256": "be0843ccbe83e0e9324b50add72cfdf0c05bbe2d1241432b71ebd73b1df7f4cd",
+      "status": "Retained; no independent rerun or full rereview in this increment"
+    }
+  ],
+  "public_witness_endpoints": [
+    {
+      "line": 165,
+      "name": "source_support_exact"
+    },
+    {
+      "line": 204,
+      "name": "returned_program_all_times_safe"
+    },
+    {
+      "line": 241,
+      "name": "computed_certificate_controls_actual_process"
+    },
+    {
+      "line": 267,
+      "name": "selected_model_joint_risk"
+    },
+    {
+      "line": 281,
+      "name": "registered_confidence_is_nontrivial"
+    },
+    {
+      "line": 310,
+      "name": "actualGoalRisk_formula"
+    },
+    {
+      "line": 346,
+      "name": "alternate_model_exceeds_cap"
+    },
+    {
+      "line": 353,
+      "name": "alternate_model_rejects_on_good"
+    },
+    {
+      "line": 373,
+      "name": "alternate_model_acceptance_probability"
+    }
+  ],
+  "checks": [
+    {
+      "name": "structural source and actual returned programs",
+      "status": "CLEAR",
+      "anchors": [
+        "witness:22-81",
+        "witness:129-211"
+      ],
+      "finding": "State is Option Bool, with cemetery none, start some false and goal some true. Each source has absorbing cemetery and goal; start has strictly positive stay and progress probabilities at both p=1/4 and p=1/8. The exact support relation is proved from these PMFs for every time, and synthesize returns the concrete program for either observation. The R1 theorem is applied to that program, its own controller law, exact initial support, and source support. Safety is the proper set x != none and holds all times. The source is numerically homogeneous; finite samples do not establish its support."
+    },
+    {
+      "name": "actual goal-risk formula",
+      "status": "CLEAR",
+      "anchors": [
+        "witness:233-237",
+        "witness:307-349",
+        "AbsorbingLeakage.lean:33-63"
+      ],
+      "finding": "The theorem removes the policy through total mass 1 on Unit, derives the two-step causal atom mass from pmfExtend, and sums the actual terminal event over all finite histories. It proves actualGoalRisk(theta,detailed)=(1-parameter(theta))^2 rather than taking that probability as an input. The imported transition has false->true mass p; map some identifies that target with this witness goal, regardless of its old leakage name. For every detailed flag, p=1/4 yields 9/16 and p=1/8 yields 49/64 > 7/10."
+    },
+    {
+      "name": "computed reference and actual certificate are the same program",
+      "status": "CLEAR",
+      "anchors": [
+        "witness:94-119",
+        "witness:213-256",
+        "core:672-697"
+      ],
+      "finding": "computedBudget and computedAccepts use the concrete program, exact initial rational mass, computed empirical rows, horizon 2 and missedGoal. Initial mass equality and the physical-to-observed event envelope are proved. The same-core runtime-to-causal-law bridge supplies actual goal risk <=7/10 on CalibrationGood plus the computed true Boolean; the theorem does not accept an externally supplied fit bound or reference-risk conclusion. Coarse observation maps every safe state to start, so its envelope is conservative, not a fabricated goal identification."
+    },
+    {
+      "name": "actual finite selection and same-source training/deployment",
+      "status": "CLEAR",
+      "anchors": [
+        "witness:109-119",
+        "witness:258-278",
+        "core:36-37",
+        "core:79-92",
+        "core:708-721",
+        "core:756-777",
+        "core:790-843",
+        "TrainingDeploymentJoint.lean:23-26"
+      ],
+      "finding": "The actual candidate family is Fin 2 with coarse index 0 and detailed index 1. Selection is the first certified non-rejected scan result; ambiguity yields none. modelJoint uses trainingMeasure N (source theta), the actual computedSelection on samplesAt, and selectedSourceDeployment of the same source theta and selected program. The joint event is computedSelectedAccepts AND missedGoal. Its bound is min(1,B+(1-B)*7/10), with rejected-budget and none branches empty for this event. It is not a conditional-on-acceptance guarantee and has no acceptance-power claim."
+    },
+    {
+      "name": "nontrivial registered confidence",
+      "status": "CLEAR",
+      "anchors": [
+        "witness:280-305",
+        "core:717-750"
+      ],
+      "finding": "For the complete 3-state, 1-action registration and N=4096,u=1/20, B=min(1,48*exp(-512/25)). The Lean proof establishes exp(512/25)>48 via the squared lower bound exp(256/25)>=1+256/25, then derives B<1. It uses the existing common simultaneous row-TV event and no candidate-count or horizon union factor. The deterministic N=4 and N=8 fixtures are not asserted to be nontrivial-confidence sampling experiments."
+    },
+    {
+      "name": "over-cap source cannot certify on the good event",
+      "status": "CLEAR",
+      "anchors": [
+        "witness:345-385"
+      ],
+      "finding": "alternate_model_rejects_on_good splits the actual selectCandidate result. None cannot accept. For Some j, the actual computed certificate theorem would force source risk <=7/10, contradicting the proved actual 49/64. The acceptance event under product training for source true is therefore a subset of calibration failure, yielding its mass <=B. This is not a claim that noisy identity PASS itself is impossible, nor that no bad sample can produce erroneous acceptance."
+    },
+    {
+      "name": "sampler model correspondence and preservation",
+      "status": "CLEAR_WITH_EXPLICIT_SOURCE_MATCHING_ASSUMPTION",
+      "anchors": [
+        "sampler:1-7",
+        "sampler:14-42"
+      ],
+      "finding": "The script fixes N=4096 and complete rows in rank order cemetery/start/goal. Deterministic rows encode the two absorbing PMFs; each start draw uses randbelow(4)==0 for goal and otherwise start, matching source false with p=1/4 under ideal independent uniform OS draws. The output includes all raw rows, declares the assumption and external evidence UNVERIFIED, and exclusive file creation prevents overwriting a preserved draw. Dataset inspection alone does not verify the operating-system RNG, independence, model-to-world correspondence, or absence of previous unrecorded draws."
+    },
+    {
+      "name": "runtime parses raw data and calls actual finite selector",
+      "status": "CLEAR",
+      "anchors": [
+        "runtime:18-21",
+        "runtime:58-101"
+      ],
+      "finding": "The certificate parser consumes sample_count and rows only. It rejects N !=4096, row count !=3, per-row length !=4096, encodings outside 0..2, and observations outside the declared structural relation before constructing SampleTable. Its stateRank and decodeState are inverse on the three validated encodings, so getD defaults are unreachable for this sample construction. It calls computedSelection and computedSelectedAccepts, checks agreement with the two-query scan, and labels accepted vs budget-exceeded vs ambiguous vs exhausted. It does not read a true probability, precomputed risk, or external proof from dataset metadata."
+    },
+    {
+      "name": "regression and edge-case source coverage",
+      "status": "CLEAR_SOURCE_ONLY",
+      "anchors": [
+        "runtime:23-56",
+        "core:58-92",
+        "core:756-765"
+      ],
+      "finding": "Runtime assertions cover coarse FAIL/fine PASS, query order [0,1], actual Fin2 selection and acceptance, exact quarter reference 9/16 and budget 53/80, contrasting eighth reference 49/64 and selected rejection, too-small beta rejection, synthetic AMBIGUOUS stopping without the second query, N=0 rejection, and an actual empty Fin0 selector/selectedAccepts pair. The ambiguity assertion exercises scanOutcome/scanNoisy directly; source inspection additionally verifies selectCandidate maps ambiguity to none and selectedAccepts maps none to false. These are assertions present in the bound runtime source, not independent claims of their execution."
+    }
+  ],
+  "standard_axiom_boundary": {
+    "source_inspection": "The complete witness and runtime sources contain no sorry, admit, axiom declaration, native_decide, unsafe declaration, or extern declaration. Finite synthesis checks use decide, and the analytic theorems use ordinary proof terms/tactics over the previously reviewed core.",
+    "permitted_foundation": "The intended ordinary Lean/Mathlib closure may include propext, Classical.choice and Quot.sound. Kernel proof acceptance and exact axiom dependency output require their own current compiler/receipt evidence.",
+    "current_evidence": "Parent reported focused11 PASS with empty log. That build and a current #print axioms closure were not independently run or read in this source-only increment; no independent axiom-closure verification is claimed here."
+  },
+  "execution_evidence_boundary": {
+    "source_review_only": true,
+    "independent_execution_performed": false,
+    "not_reviewed_here": [
+      "current focused build log/receipt",
+      "actual sampler run count and raw dataset",
+      "runtime regression and malformed-input execution logs",
+      "native freeze/export/replay and ownership evidence",
+      "final candidate commit binding"
+    ],
+    "note": "RESULTS_AND_BOUNDARIES.md was read for boundary consistency; its concrete sample count/replay and source-fingerprint assertions remain execution-evidence claims for a separate audit, not upgraded by this source review."
+  },
+  "numeric_sanity": {
+    "quarter_actual_risk": "9/16",
+    "eighth_actual_risk": "49/64",
+    "quarter_exact_frequency_fixture_budget": "53/80",
+    "eighth_exact_frequency_fixture_budget": "277/320",
+    "confidence_raw_approximation": 6.121956621725012e-08,
+    "note": "Rational/elementary numerical cross-check only; exact B<1 is established by the source proof reviewed above."
+  },
+  "material_limits": [
+    "Fixed independent generative row sampling with complete finite registration; not a single trajectory, adaptive/stopping-time sample plan, or unbounded-horizon statistical certificate.",
+    "Exact structural support, initial support, certification and physical source matching remain independent inputs; finite empirical zeros do not certify absent edges.",
+    "Safety and finite missed-goal risk are distinct statements with distinct assumptions; nontrivial safe-source risk does not weaken exact structural safety.",
+    "The joint bound concerns acceptance AND failure; conditioning on acceptance could change the bound and is not established.",
+    "On-good rejection for the p=1/8 alternate source does not imply unconditional impossibility of erroneous acceptance. Conversely the p=1/4 model need not accept every calibrated record.",
+    "CSPRNG correctness/independence and external scientific evidence remain unverified assumptions; strong world closure is not established."
+  ],
+  "blockers": [],
+  "required_source_fixes": [],
+  "conclusion": "All three exact bound files are semantically consistent with the retained core/no-go reviews. Actual 49/64 risk, on-good rejection, acceptance mass, B<1, same-source selection/deployment, and total edge-case handling are present without circular empirical-fit or budget premises. CLEAR for this source-review scope; execution, axiom, native, and candidate provenance are separate evidence."
+}

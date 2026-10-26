@@ -1,0 +1,236 @@
+{
+  "schema": "NOISY_ORACLE_LOCAL_RELEASE_ACCEPTANCE_V1",
+  "state": "LOCAL_VERIFIED_PR_BOUNDARY_REVIEW_AND_RESULTING_MAIN_PENDING",
+  "observed_at": "2026-10-26T19:30:30.805978+00:00",
+  "baseline_ref": "d048429a1f713246dd7a69aa278f71c4d0df1677",
+  "source_tree_sha256": "4b5145e874601392568293c1d561684e6d0478f2676dc20accf04a8080c3261d",
+  "production_modules": 699,
+  "new_source_files": [
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FixedSampleSupportNoGo.lean",
+      "sha256": "2e86d0bb68795296e5b6ecde3cce625d0cc4e36a61bcfbba1f14183d07d4a252"
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "sha256": "ac5cb46f495e019960a54fe46e0bf5bad2e10a50f98050d5d9e83d19adba4e03"
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracleWitness.lean",
+      "sha256": "73b6cec824e9f18e99bc613702eaf7f67eb45a4ffd57684fecc22d6f43b23be0"
+    }
+  ],
+  "full_build": {
+    "command": [
+      "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+      "build",
+      "UEOT"
+    ],
+    "exit_code": 0,
+    "seconds": 20.863,
+    "log_name": "full-build.log",
+    "log_sha256": "14f08a7022e0780bc9df5ad95d6f98804320257f61d5e2ce4207ce4f12b1e34e"
+  },
+  "native": {
+    "exports": [
+      {
+        "label": "native_export",
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/noisy-oracle-evidence-20261027/native-01/NOISY_ORACLE_NATIVE_EXPORT.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 60.441,
+        "log_sha256": "ee3b4a20405afcf51be417ce2b178ebc95613886ba8c7f83ee1139ab2eb758e7"
+      },
+      {
+        "label": "fixed_verifier",
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/noisy-oracle-evidence-20261027/native-01/VERIFY_NOISY_ORACLE_OVERLAY_TYPES.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 56.047,
+        "log_sha256": "ee3b4a20405afcf51be417ce2b178ebc95613886ba8c7f83ee1139ab2eb758e7"
+      }
+    ],
+    "public_source": 43,
+    "all_owned": 167,
+    "private": 38,
+    "other_generated": 86,
+    "cross_comparisons": 188770,
+    "internal_comparisons": 903,
+    "collisions": 0,
+    "direct_registered_edges": 63,
+    "first_and_fixed_complete_json_and_log_bytes_equal": true,
+    "all_owned_axioms": "LEAN_STANDARD_ONLY"
+  },
+  "umc": {
+    "modules": 100,
+    "all_native_theorems": 1724,
+    "axioms": "1724/1724_LEAN_STANDARD_AXIOMS"
+  },
+  "consumer_checks": {
+    "focused": 4,
+    "reuse": 66,
+    "parser": 89,
+    "fkrg": 30,
+    "actual_clone_rows_unchanged": 68,
+    "research_governance": 38,
+    "mission_expected_rejections": 12,
+    "raw_compression_proof_escapes": 0,
+    "source_docs_whitespace": "PASS_WITH_IMMUTABLE_RAW_LOGS_EXCLUDED"
+  },
+  "current_loader": {
+    "modules": 699,
+    "maintained": 688,
+    "out_of_tree": 11,
+    "public_source": 4433,
+    "overlay_public": 640,
+    "layers": 14,
+    "overlay_edges": 991,
+    "graph_edges": 5878,
+    "lexical_hint_groups": 172
+  },
+  "independent_reviews": [
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/noisy_oracle_v1/independent/ueot-r2-consumer-update-review.json",
+      "sha256": "8f2cdd65269ac8c3653361c389200c1ae249b3fff42d753a523e234c38ec1a72"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/noisy_oracle_v1/independent/ueot-r2-final-witness-review.json",
+      "sha256": "116894822482816876e106ade76d21f749e3a217e8f53711cc702dc0d2fbd4aa"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/noisy_oracle_v1/independent/ueot-r2-hinted-type-review.json",
+      "sha256": "55ffc2b9687a6bf1ed322c72151fd7f3bbbd4f3944bf826190089cda532c37b3"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/noisy_oracle_v1/independent/ueot-r2-noisy-core-review.json",
+      "sha256": "799623651efb35a143f8301bb63805588075cbc88fe5b57cab88856b8cdc397b"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/noisy_oracle_v1/independent/ueot-r2-support-no-go-review.json",
+      "sha256": "be0843ccbe83e0e9324b50add72cfdf0c05bbe2d1241432b71ebd73b1df7f4cd"
+    }
+  ],
+  "typed_reuse_review": {
+    "groups": 17,
+    "pairs": 26,
+    "actual_compiled_types": 40,
+    "prior_files_unchanged": 15,
+    "genuine_existing_reuse_pairs": 4,
+    "status": "CLEAR"
+  },
+  "sampling_runtime": {
+    "dataset_sha256": "0d5e5bc9b4f11656986bddb880c493ff2bbd81bf530183af77e3c185c553f6f3",
+    "sampler_sha256": "5f579f5c112916a45aadbbde1f9587862e8cf8a91d26ec44f852d09edfafe15c",
+    "runtime_sha256": "818494098bb06d4b2aa05591b99c28d104509cc9ae10c04b929a7fa37d4324f3",
+    "single_preserved_draw": true,
+    "no_resampling": true,
+    "result": {
+      "accepted": true,
+      "coarse_defect": "1539/2048",
+      "defect_interval_radius": "1/10",
+      "empirical_progress": "509/2048",
+      "fine_budget": "13939757/20971520",
+      "fine_defect": "0",
+      "fine_reference_risk": "2368521/4194304",
+      "first_non_fail": 1,
+      "horizon": 2,
+      "queries": [
+        0,
+        1
+      ],
+      "risk_cap": "7/10",
+      "row_tv_radius": "1/20",
+      "sample_count": 4096,
+      "selected_candidate": 1,
+      "state": "ACCEPTED",
+      "threshold": "1/8"
+    },
+    "negative_zero_allocation": "ACTUAL_NONZERO_EXIT_EXPECTED_REJECTION"
+  },
+  "actual_evidence_refs": [
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/noisy_oracle_v1/actual-execution/full-build-01/FULL_BUILD_RECEIPT.json",
+      "sha256": "4167bcbd4e7d37a41a3aa57c6894370dc51585c387c471db4b4ec238b566a382"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/noisy_oracle_v1/actual-execution/native-01/STATUS.json",
+      "sha256": "f2640507afb04efe077c03ca9f4fdfc822a957a98e70c3f3997ca7d1fe69fdcd"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/noisy_oracle_v1/actual-execution/native-01/REGISTRATION_RECEIPT.json",
+      "sha256": "74f24a44306e0faea3ad24583a7914d1da207b5ac96941b07addc59842b917b4"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/noisy_oracle_v1/actual-execution/ROOT_NATIVE_ASSERTIONS.json",
+      "sha256": "ed421654044ae94e5adc0d088aeb6e39c55ccc0ba87ef0c7314a49dd039c3dcf"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/noisy_oracle_v1/actual-execution/UMC_AUDIT_01.json",
+      "sha256": "edee03259e196fcefa3c42f8c2ae0826d79a83e4b98562edf5844e199c7ecf78"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/noisy_oracle_v1/actual-execution/local-gates-01/RESULTS.json",
+      "sha256": "73f1473c0af9f4e8cab1d57bdc25f8bc65b3d345593a0f02060ec447cc38d2d6"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/noisy_oracle_v1/actual-execution/runtime-03/RUNTIME_RECEIPT.json",
+      "sha256": "f2a3be6f8ccac48e35a481ba97ba03cd89a4577ddce3fc1a3bf750d8c97225c2"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/noisy_oracle_v1/actual-execution/runtime-03/NEGATIVE_RECEIPT.json",
+      "sha256": "6b775980d8179cdbf56e1698041fbcc0636958c196fc01039e8bb15b295a3a74"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/noisy_oracle_v1/actual-execution/sampling-01/DATASET.json",
+      "sha256": "0d5e5bc9b4f11656986bddb880c493ff2bbd81bf530183af77e3c185c553f6f3"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/noisy_oracle_v1/SAMPLE_FINITE_SOURCE.py",
+      "sha256": "5f579f5c112916a45aadbbde1f9587862e8cf8a91d26ec44f852d09edfafe15c"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/noisy_oracle_v1/EXECUTE_NOISY_ORACLE.lean",
+      "sha256": "818494098bb06d4b2aa05591b99c28d104509cc9ae10c04b929a7fa37d4324f3"
+    }
+  ],
+  "new_registry_assets": [
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/NOISY_ORACLE_REUSE_OVERLAY_V1.json",
+      "sha256": "8e966bab093ddccadeffc8a91d3265e99cd1bfbc34696d965b981426e0457283"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/NOISY_ORACLE_NATIVE_V1.json",
+      "sha256": "bbb7551f055b2ec4a5e2d83b9214647e209ae6155e92d5436eba30132c4b54c6"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_NOISY_ORACLE_OVERLAY_TYPES.lean",
+      "sha256": "7d91f54676bc3821adb0f81f42d1daa4e98ffe311385b25b87f03afa78724b17"
+    }
+  ],
+  "historical_preservation": {
+    "old_overlay_layers": 13,
+    "old_overlay_certificate_native_clone_assets_byte_unchanged": 37,
+    "runtime_01": "HISTORICAL_COMPUTATION_WITH_THEN_PENDING_PROOFS",
+    "runtime_02": "ACTUAL_SYNTAX_FAILURE_PRESERVED; inverse correction recovers exact receipt-bound source bytes",
+    "runtime_03": "FINAL_ACTUAL_SUCCESSFUL_REPLAY"
+  },
+  "claim": "FIXED_SAMPLE_EXACT_SUPPORT_NO_GO_AND_CONDITIONAL_COMPUTED_SAME_SOURCE_FINITE_RISK",
+  "limits": [
+    "Exact structural support and initial support are supplied independently of finite data.",
+    "Calibration uses fixed independent product training and the same source for deployment; OS RNG/source correspondence remains assumed.",
+    "The statistical probability is accepted AND failure, not failure conditioned on acceptance.",
+    "No acceptance completeness, unregistered-row guarantee, arbitrary stopping-time or optimal complexity claim."
+  ],
+  "frozen_counted_status": "UNCHANGED_106_4_11_89_6",
+  "global_strong_closure": "NOT_ESTABLISHED",
+  "external_scientific_evidence": "UNVERIFIED",
+  "core_cloud_ci": "DISABLED_MANUALLY_NOT_A_PROOF_PASS",
+  "publication_identity": "Exact Git-object preflight, PR-boundary independent review and resulting-main receipts are bound externally after commit to avoid self-referential commit hashes."
+}

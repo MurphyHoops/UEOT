@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "source_tree_sha256": "f95a19e8c0ad5f7295f8166d5a5fc212af5a8af40e2e2740673aaaf425b6e09d",
+  "source_tree_sha256": "4b5145e874601392568293c1d561684e6d0478f2676dc20accf04a8080c3261d",
   "scope": "literal first-party UEOT Lean source files and their direct imports",
   "source_semantics": "metadata audit, NOT independent theorem-source semantic certification",
-  "total_Lean_modules": 696,
-  "total_source_lines": 127639,
-  "total_theorem_lemma_tokens": 4671,
+  "total_Lean_modules": 699,
+  "total_source_lines": 129022,
+  "total_theorem_lemma_tokens": 4734,
   "category_counts": {
     "Core_v3_and_Substrate": 306,
     "Compression_Frozen_Bridges": 62,
@@ -14,9 +14,9 @@
     "Objecthood": 88,
     "P0_P12_TheoryCompletion": 57,
     "C1_C7_SISC": 55,
-    "UMC_New_Bridges": 97
+    "UMC_New_Bridges": 100
   },
-  "reachable_from_UEOT_root": 696,
+  "reachable_from_UEOT_root": 699,
   "not_reachable_from_UEOT_root": [],
   "cycles_detected": [],
   "missing_internal_imports": {},
@@ -90,6 +90,10 @@
       "direct_dependents": 7
     },
     {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage",
+      "direct_dependents": 7
+    },
+    {
       "module": "UEOT.V3.FiniteDiscountedApproxQuotient",
       "direct_dependents": 7
     },
@@ -142,6 +146,10 @@
       "direct_dependents": 6
     },
     {
+      "module": "UEOT.V3.StatisticalDefect",
+      "direct_dependents": 6
+    },
+    {
       "module": "UEOT.V3.ViabilityKernel",
       "direct_dependents": 6
     },
@@ -182,23 +190,15 @@
       "direct_dependents": 5
     },
     {
-      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage",
-      "direct_dependents": 5
-    },
-    {
       "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportViability",
       "direct_dependents": 5
     },
     {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples",
+      "direct_dependents": 5
+    },
+    {
       "module": "UEOT.V3.Compression.TopologyChangingGoaL1ResidualConorm",
-      "direct_dependents": 5
-    },
-    {
-      "module": "UEOT.V3.DualDriveGauge",
-      "direct_dependents": 5
-    },
-    {
-      "module": "UEOT.V3.FiniteCandidatePStat08",
       "direct_dependents": 5
     }
   ],
@@ -256,7 +256,7 @@
     {
       "from": "Compression_Frozen_Bridges",
       "to": "UMC_New_Bridges",
-      "edges": 97
+      "edges": 100
     },
     {
       "from": "Core_v3_and_Substrate",
@@ -331,7 +331,7 @@
     {
       "from": "UMC_New_Bridges",
       "to": "C1_C7_SISC",
-      "edges": 20
+      "edges": 21
     },
     {
       "from": "UMC_New_Bridges",
@@ -341,7 +341,7 @@
     {
       "from": "UMC_New_Bridges",
       "to": "Core_v3_and_Substrate",
-      "edges": 29
+      "edges": 30
     },
     {
       "from": "UMC_New_Bridges",
@@ -3446,8 +3446,8 @@
     },
     "UEOT.V3.Compression.TheoryCompletion": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
-      "bytes": 14267,
-      "lines": 181,
+      "bytes": 14518,
+      "lines": 184,
       "category": "Compression_Frozen_Bridges",
       "title": "UEOT Theory Completion public root",
       "imports": [
@@ -3622,7 +3622,10 @@
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindow",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowWitness",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportController",
-        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness"
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness"
       ],
       "theorem_lemma_count": 0,
       "decl_count": 0
@@ -5691,6 +5694,20 @@
       "theorem_lemma_count": 19,
       "decl_count": 35
     },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FixedSampleSupportNoGo.lean",
+      "bytes": 6777,
+      "lines": 144,
+      "category": "UMC_New_Bridges",
+      "title": "Fixed-sample exact-support certification has no nontrivial uniform power",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage",
+        "Mathlib.Algebra.Order.Ring.Pow"
+      ],
+      "theorem_lemma_count": 8,
+      "decl_count": 15
+    },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/HomogeneousMemorySurvival.lean",
       "bytes": 10524,
@@ -5769,6 +5786,37 @@
       ],
       "theorem_lemma_count": 3,
       "decl_count": 7
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "bytes": 42133,
+      "lines": 847,
+      "category": "UMC_New_Bridges",
+      "title": "Fixed-sample noisy certification for an actual finite controller",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportController",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch",
+        "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.C2IntervalDecision",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint",
+        "UEOT.V3.StatisticalDefect"
+      ],
+      "theorem_lemma_count": 35,
+      "decl_count": 63
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracleWitness.lean",
+      "bytes": 18069,
+      "lines": 389,
+      "category": "UMC_New_Bridges",
+      "title": "Known structural support, unknown progress probability",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle"
+      ],
+      "theorem_lemma_count": 20,
+      "decl_count": 47
     },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverage": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableActionCoverage.lean",

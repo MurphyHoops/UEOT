@@ -1,0 +1,842 @@
+{
+  "schema": "FKRG_REUSE_OVERLAY_V1",
+  "overlay_id": "NOISY_ORACLE_REUSE_OVERLAY_V1",
+  "source_checkpoint": "worktree-sha256:4b5145e874601392568293c1d561684e6d0478f2676dc20accf04a8080c3261d",
+  "source_checkpoint_kind": "FROZEN_SOURCE_CONTENT_BEFORE_GIT_COMMIT",
+  "baseline_ref": "d048429a1f713246dd7a69aa278f71c4d0df1677",
+  "base_snapshot_modules": 696,
+  "prior_overlay": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/EXECUTABLE_SUPPORT_REUSE_OVERLAY_V1.json",
+    "sha256": "861becca60f6c406f576658ff8a5ccd6c812addbd79a56f05a1823becf9b7f46"
+  },
+  "source_hash_overrides": {
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean": "58d4f7669ee3d8c68eef789ec5fdfbd3c8a22111c5800d3d84dcc093feb7c446"
+  },
+  "added_modules": [
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FixedSampleSupportNoGo.lean",
+      "content_sha256": "2e86d0bb68795296e5b6ecde3cce625d0cc4e36a61bcfbba1f14183d07d4a252",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "content_sha256": "ac5cb46f495e019960a54fe46e0bf5bad2e10a50f98050d5d9e83d19adba4e03",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracleWitness.lean",
+      "content_sha256": "73b6cec824e9f18e99bc613702eaf7f67eb45a4ffd57684fecc22d6f43b23be0",
+      "source_origin": "UEOT_MAINTAINED"
+    }
+  ],
+  "public_theorems": [
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.trainingLaw_apply",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FixedSampleSupportNoGo.lean",
+      "line": 34,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.trainingLaw_zeroRecord",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FixedSampleSupportNoGo.lean",
+      "line": 40,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.kernel_mass",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.trainingLaw_apply"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.trainingLaw_at_zero",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FixedSampleSupportNoGo.lean",
+      "line": 46,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.trainingLaw_zeroRecord"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.certificationProbability_eq_sum",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FixedSampleSupportNoGo.lean",
+      "line": 69,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.certificationProbability_at_zero",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FixedSampleSupportNoGo.lean",
+      "line": 81,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.trainingLaw_at_zero"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.certificationProbability_ge_zeroPower",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FixedSampleSupportNoGo.lean",
+      "line": 87,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.certificationProbability_eq_sum",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.trainingLaw_zeroRecord"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.exists_positive_source_false_certification",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FixedSampleSupportNoGo.lean",
+      "line": 100,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.certificationProbability_at_zero",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.certificationProbability_ge_zeroPower"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.no_uniform_exact_zero_certificate",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FixedSampleSupportNoGo.lean",
+      "line": 132,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.exists_positive_source_false_certification"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalDefect_nonneg",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "line": 161,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalTV_le_defect",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "line": 166,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.representative_fibre",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "line": 174,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalMass_eq",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "line": 188,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empiricalResponsePMF_event_mean"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalTV_eq",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "line": 196,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalMass_eq",
+        "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalDefect_eq_sourceDefect",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "line": 274,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalTV_eq",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalTV_le_defect"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.calibrated_defect_error",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "line": 297,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalDefect_eq_sourceDefect",
+        "UEOT.V3.StatisticalDefect.responseDefect_error"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.noisyDecision_certified_sound",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "line": 335,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.decideAt_certified_sound",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.calibrated_defect_error"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.noisyDecision_rejected_sound",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "line": 348,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.decideAt_rejected_sound",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.calibrated_defect_error"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.scanNoisy_found_iff",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "line": 363,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.scanOutcome_some_iff",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "line": 368,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.scanOutcome_none_iff",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "line": 376,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.selectCandidate_eq_some_iff",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "line": 380,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.scan_first_certified_on_good",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "line": 403,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.noisyDecision_certified_sound",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.noisyDecision_rejected_sound",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.scanOutcome_some_iff"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.selectCandidate_first_on_good",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "line": 421,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.noisyDecision_certified_sound",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.noisyDecision_rejected_sound",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.scanOutcome_some_iff",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.selectCandidate_eq_some_iff"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empirical_reference_fit",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "line": 485,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalTV_eq",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalTV_le_defect",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.representative_fibre",
+        "UEOT.V3.TotalVariation.tvDist_map_le"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.calibrated_reference_row",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "line": 504,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empirical_reference_fit",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empirical_coarse_row_tv"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.referenceHistoryMass_eq",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "line": 519,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.Program.toController_memory",
+        "UEOT.V3.PathError.pmfExtend_apply"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.referenceRisk_eq",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "line": 557,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.referenceHistoryMass_eq",
+        "UEOT.V3.PathError.pmfMeasureReal_eq_sum_finset"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.accepts_eq_true_iff",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "line": 582,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.synthesized_actual_risk_le_budget_on_good",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "line": 608,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize_some_zero_uncovered",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.calibrated_reference_row",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.referenceRisk_eq",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_microscopic_failure_risk"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.accepts_actual_risk_on_good",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "line": 645,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.accepts_eq_true_iff",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.synthesized_actual_risk_le_budget_on_good"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.accepts_actual_risk_and_safety_on_good",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "line": 672,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize_some_all_times_physical_safe",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.accepts_actual_risk_on_good"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.confidenceFailureBound_mem_unit",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "line": 724,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.training_calibration",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "line": 735,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples.product_experiment_calibration"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.selected_accepts_and_failure_joint_le",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "line": 790,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.accepts_actual_risk_on_good",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.training_calibration",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_failure_le"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.source_support_exact",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracleWitness.lean",
+      "line": 165,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.returned_program_all_times_safe",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracleWitness.lean",
+      "line": 204,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize_some_all_times_physical_safe",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.source_support_exact"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.computed_certificate_controls_actual_process",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracleWitness.lean",
+      "line": 241,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.accepts_actual_risk_and_safety_on_good",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.source_support_exact"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.selected_model_joint_risk",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracleWitness.lean",
+      "line": 267,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.selected_accepts_and_failure_joint_le",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.source_support_exact"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.registered_confidence_is_nontrivial",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracleWitness.lean",
+      "line": 281,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.actualGoalRisk_formula",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracleWitness.lean",
+      "line": 310,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.kernel_mass",
+        "UEOT.V3.PathError.pmfExtend_apply",
+        "UEOT.V3.PathError.pmfMeasureReal_eq_sum_finset"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.alternate_model_exceeds_cap",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracleWitness.lean",
+      "line": 346,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.actualGoalRisk_formula"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.alternate_model_rejects_on_good",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracleWitness.lean",
+      "line": 353,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.alternate_model_exceeds_cap",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.computed_certificate_controls_actual_process"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.alternate_model_acceptance_probability",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracleWitness.lean",
+      "line": 373,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.training_calibration",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.alternate_model_rejects_on_good"
+      ]
+    }
+  ],
+  "type_distinctness": {
+    "status": "PASS",
+    "verifier": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_NOISY_ORACLE_OVERLAY_TYPES.lean",
+    "new_theorems": 43,
+    "registered_prior_theorems": 4390,
+    "cross_isDefEq_comparisons": 188770,
+    "internal_isDefEq_comparisons": 903,
+    "definitionally_equal_matches": 0,
+    "protocol": "Raw stored compiled types; fresh liftTermElabM per Meta.isDefEq comparison; stored universe names retained. Not a general logical-equivalence decision."
+  },
+  "proof_dependency_certification": {
+    "status": "PASS",
+    "verifier": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_NOISY_ORACLE_OVERLAY_TYPES.lean",
+    "measure": "Actual theorem proof-value getUsedConstants restricted to all previous and new registered public theorem names",
+    "registered_direct_edges": 63,
+    "edges": [
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.trainingLaw_zeroRecord",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.kernel_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.trainingLaw_zeroRecord",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.trainingLaw_apply"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.trainingLaw_at_zero",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.trainingLaw_zeroRecord"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.certificationProbability_at_zero",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.trainingLaw_at_zero"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.certificationProbability_ge_zeroPower",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.certificationProbability_eq_sum"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.certificationProbability_ge_zeroPower",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.trainingLaw_zeroRecord"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.exists_positive_source_false_certification",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.certificationProbability_at_zero"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.exists_positive_source_false_certification",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.certificationProbability_ge_zeroPower"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.no_uniform_exact_zero_certificate",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.exists_positive_source_false_certification"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalMass_eq",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empiricalResponsePMF_event_mean"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalTV_eq",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalMass_eq"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalTV_eq",
+        "target": "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalDefect_eq_sourceDefect",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalTV_eq"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalDefect_eq_sourceDefect",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalTV_le_defect"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.calibrated_defect_error",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalDefect_eq_sourceDefect"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.calibrated_defect_error",
+        "target": "UEOT.V3.StatisticalDefect.responseDefect_error"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.noisyDecision_certified_sound",
+        "target": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.decideAt_certified_sound"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.noisyDecision_certified_sound",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.calibrated_defect_error"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.noisyDecision_rejected_sound",
+        "target": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.decideAt_rejected_sound"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.noisyDecision_rejected_sound",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.calibrated_defect_error"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.scan_first_certified_on_good",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.noisyDecision_certified_sound"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.scan_first_certified_on_good",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.noisyDecision_rejected_sound"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.scan_first_certified_on_good",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.scanOutcome_some_iff"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.selectCandidate_first_on_good",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.noisyDecision_certified_sound"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.selectCandidate_first_on_good",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.noisyDecision_rejected_sound"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.selectCandidate_first_on_good",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.scanOutcome_some_iff"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.selectCandidate_first_on_good",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.selectCandidate_eq_some_iff"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empirical_reference_fit",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalTV_eq"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empirical_reference_fit",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalTV_le_defect"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empirical_reference_fit",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.representative_fibre"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empirical_reference_fit",
+        "target": "UEOT.V3.TotalVariation.tvDist_map_le"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.calibrated_reference_row",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empirical_reference_fit"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.calibrated_reference_row",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empirical_coarse_row_tv"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.referenceHistoryMass_eq",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.Program.toController_memory"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.referenceHistoryMass_eq",
+        "target": "UEOT.V3.PathError.pmfExtend_apply"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.referenceRisk_eq",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.referenceHistoryMass_eq"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.referenceRisk_eq",
+        "target": "UEOT.V3.PathError.pmfMeasureReal_eq_sum_finset"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.synthesized_actual_risk_le_budget_on_good",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize_some_zero_uncovered"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.synthesized_actual_risk_le_budget_on_good",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.calibrated_reference_row"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.synthesized_actual_risk_le_budget_on_good",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.referenceRisk_eq"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.synthesized_actual_risk_le_budget_on_good",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_microscopic_failure_risk"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.accepts_actual_risk_on_good",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.accepts_eq_true_iff"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.accepts_actual_risk_on_good",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.synthesized_actual_risk_le_budget_on_good"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.accepts_actual_risk_and_safety_on_good",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize_some_all_times_physical_safe"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.accepts_actual_risk_and_safety_on_good",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.accepts_actual_risk_on_good"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.training_calibration",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples.product_experiment_calibration"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.selected_accepts_and_failure_joint_le",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.accepts_actual_risk_on_good"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.selected_accepts_and_failure_joint_le",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.training_calibration"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.selected_accepts_and_failure_joint_le",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.selectedTrainingDeployment_failure_le"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.returned_program_all_times_safe",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize_some_all_times_physical_safe"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.returned_program_all_times_safe",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.source_support_exact"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.computed_certificate_controls_actual_process",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.accepts_actual_risk_and_safety_on_good"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.computed_certificate_controls_actual_process",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.source_support_exact"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.selected_model_joint_risk",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.selected_accepts_and_failure_joint_le"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.selected_model_joint_risk",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.source_support_exact"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.actualGoalRisk_formula",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.kernel_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.actualGoalRisk_formula",
+        "target": "UEOT.V3.PathError.pmfExtend_apply"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.actualGoalRisk_formula",
+        "target": "UEOT.V3.PathError.pmfMeasureReal_eq_sum_finset"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.alternate_model_exceeds_cap",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.actualGoalRisk_formula"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.alternate_model_rejects_on_good",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.alternate_model_exceeds_cap"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.alternate_model_rejects_on_good",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.computed_certificate_controls_actual_process"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.alternate_model_acceptance_probability",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.training_calibration"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.alternate_model_acceptance_probability",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.alternate_model_rejects_on_good"
+      }
+    ]
+  },
+  "native_axiom_census": {
+    "status": "PASS",
+    "physical_source_modules": 3,
+    "theorem_constants": 167,
+    "private_theorem_constants": 38,
+    "confirmed_public_source_candidates": 43,
+    "other_native_public_constants": 86,
+    "standard_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "scope": "All compiler-owned theorem constants of every added module, including private and generated constants"
+  },
+  "native_export_evidence": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/NOISY_ORACLE_NATIVE_V1.json",
+    "sha256": "bbb7551f055b2ec4a5e2d83b9214647e209ae6155e92d5436eba30132c4b54c6"
+  },
+  "native_execution": {
+    "build_receipt_sha256": "4167bcbd4e7d37a41a3aa57c6894370dc51585c387c471db4b4ec238b566a382",
+    "source_tree_sha256": "4b5145e874601392568293c1d561684e6d0478f2676dc20accf04a8080c3261d",
+    "native_export_exit_code": 0,
+    "fixed_certificate_exit_code": 0,
+    "fixed_certificate_sha256": "7d91f54676bc3821adb0f81f42d1daa4e98ffe311385b25b87f03afa78724b17",
+    "fixed_export_equals_initial_native_export": true,
+    "results": [
+      {
+        "label": "native_export",
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/noisy-oracle-evidence-20261027/native-01/NOISY_ORACLE_NATIVE_EXPORT.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 60.441,
+        "log_sha256": "ee3b4a20405afcf51be417ce2b178ebc95613886ba8c7f83ee1139ab2eb758e7"
+      },
+      {
+        "label": "fixed_verifier",
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/noisy-oracle-evidence-20261027/native-01/VERIFY_NOISY_ORACLE_OVERLAY_TYPES.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 56.047,
+        "log_sha256": "ee3b4a20405afcf51be417ce2b178ebc95613886ba8c7f83ee1139ab2eb758e7"
+      }
+    ]
+  },
+  "scientific_role": "UNCOUNTED_FINITE_SAMPLE_SUPPORT_BOUNDARY_AND_NOISY_RISK",
+  "counted_core_impact": "NONE",
+  "scientific_closure": "NOT_ESTABLISHED"
+}

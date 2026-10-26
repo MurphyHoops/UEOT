@@ -1,0 +1,66 @@
+{
+  "status": "PASS_ANCHOR_SMOKE_ONLY_SOURCE_NOT_FROZEN",
+  "syntax_files": 5,
+  "checks": [
+    {
+      "driver": "full_build",
+      "synthetic_public_count": 1,
+      "anchors": 1,
+      "retained_gate_counts": {
+        "assert": 0,
+        "require": 0,
+        "subprocess.run": 1
+      }
+    },
+    {
+      "driver": "integration_native",
+      "synthetic_public_count": 1,
+      "anchors": 5,
+      "retained_gate_counts": {
+        "assert": 44,
+        "require": 0,
+        "subprocess.run": 1
+      }
+    },
+    {
+      "driver": "register_overlay",
+      "synthetic_public_count": 1,
+      "anchors": 11,
+      "retained_gate_counts": {
+        "assert": 0,
+        "require": 61,
+        "subprocess.run": 0
+      }
+    },
+    {
+      "driver": "full_build",
+      "synthetic_public_count": 7,
+      "anchors": 1,
+      "retained_gate_counts": {
+        "assert": 0,
+        "require": 0,
+        "subprocess.run": 1
+      }
+    },
+    {
+      "driver": "integration_native",
+      "synthetic_public_count": 7,
+      "anchors": 5,
+      "retained_gate_counts": {
+        "assert": 44,
+        "require": 0,
+        "subprocess.run": 1
+      }
+    },
+    {
+      "driver": "register_overlay",
+      "synthetic_public_count": 7,
+      "anchors": 11,
+      "retained_gate_counts": {
+        "assert": 0,
+        "require": 61,
+        "subprocess.run": 0
+      }
+    }
+  ]
+}
