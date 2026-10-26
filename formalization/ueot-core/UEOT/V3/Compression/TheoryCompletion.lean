@@ -165,6 +165,9 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindo
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoob
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitness
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindow
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowWitness
 /-!
 # UEOT Theory Completion public root
 

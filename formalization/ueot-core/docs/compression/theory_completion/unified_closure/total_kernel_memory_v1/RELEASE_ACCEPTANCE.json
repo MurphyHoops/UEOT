@@ -1,0 +1,81 @@
+{
+  "schema": "UEOT_TOTAL_KERNEL_MEMORY_RELEASE_ACCEPTANCE_V1",
+  "status": "LOCAL_CHECKS_PASS_GIT_PR_GATES_SEPARATE",
+  "date": "2026-10-26",
+  "branch": "compression/theory-completion-total-kernel-memory",
+  "integration_base": "e4f5007e25441cf1d0dfcbf1a5c5a377a0dcbf3f",
+  "source_tree_sha256": "2a0482a9717cc776b76383755a42b327ba132a04fbb6dfaea5c3ddb45da47b24",
+  "module_count": 694,
+  "current_full_lean": {
+    "receipt": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/full-build-20261026-02/FULL_BUILD_RECEIPT.json",
+    "receipt_sha256": "94b5a435c6204eb8008ed241b92e01cbf0156fdd4a1ab109169a5a997638bc3f",
+    "exit_code": 0,
+    "seconds": 2.987,
+    "lake_jobs": 9400,
+    "source_environment_runtime_dependencies_equal_original_proof_inputs": true
+  },
+  "failed_current_build": {
+    "receipt": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/full-build-20261026/FULL_BUILD_RECEIPT.json",
+    "exit_code": 1,
+    "reason": "Mathlib dependency file reads reported interrupted system calls; no theorem/source change; successful dependency diagnostic and subsequent full build retained."
+  },
+  "test_observations": [
+    {
+      "command": "python3 -B formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py -k total_kernel_memory",
+      "exit_code": 0,
+      "tests": 4
+    },
+    {
+      "command": "python3 -B formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
+      "exit_code": 0,
+      "tests": 58
+    },
+    {
+      "command": "python3 -B formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_pr_preflight.py",
+      "exit_code": 0,
+      "tests": 89
+    },
+    {
+      "command": "python3 -B formalization/ueot-core/docs/compression/theory_completion/knowledge/test_fkrg.py",
+      "exit_code": 0,
+      "tests": 30,
+      "includes_real_fast_audit": true
+    }
+  ],
+  "test_evidence_kind": "Observed command exit statuses and summaries; no new raw-test-log artifact is asserted.",
+  "reused_canonical_full_audit": {
+    "receipt": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/umc-full-01/EXECUTION_RECEIPT.json",
+    "receipt_sha256": "65d3225b23a606764e5b6a561d6a4e8297fd305014f1ceabd6e859bab47b8937",
+    "input_file_hashes_checked": 10,
+    "all_match": true,
+    "reexecuted": false
+  },
+  "native_export": {
+    "receipt": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/STATUS.json",
+    "reexecuted": false,
+    "original_bytes_preserved": true
+  },
+  "current_fast_audit": "PASS; 95 UMC modules; 684 lexical public candidates; 694 full-source modules; full_Lean NOT_RUN in that fast audit",
+  "proof_escape_scan": "CLEAR",
+  "archive_inputs": {
+    "references": 39,
+    "distinct_files": 38,
+    "all_pinned_sha256_match": true,
+    "historical_registration_receipt_recovered": false
+  },
+  "github_ci": "DISABLED_BY_EXPLICIT_USER_REQUEST; NOT_RUN",
+  "strong_unified_closure": "NOT_ESTABLISHED",
+  "external_scientific_evidence": "UNVERIFIED",
+  "frozen_counted_core_impact": "NONE",
+  "git_object_preflight": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/review-20261026/GIT_OBJECT_PREFLIGHT.json",
+    "base": "e4f5007e25441cf1d0dfcbf1a5c5a377a0dcbf3f",
+    "candidate": "d0f4d14d4ac0cb931ac790c7bea85c9f31a6999f",
+    "status": "PASS_WITH_TYPED_REUSE_REVIEW_REQUIRED",
+    "new_public": 12,
+    "hint_groups": 5,
+    "hint_pairs": 9,
+    "typed_semantic_review": "CLEAR; exact review retained separately"
+  },
+  "exact_candidate_review": "CLEAR on d0f4d14d4ac0cb931ac790c7bea85c9f31a6999f; final evidence-only commit requires source/environment identity confirmation"
+}

@@ -1,0 +1,215 @@
+{
+  "schema": "FKRG_PR_DIFF_PREFLIGHT_V1",
+  "base_sha": "e4f5007e25441cf1d0dfcbf1a5c5a377a0dcbf3f",
+  "candidate_sha": "d0f4d14d4ac0cb931ac790c7bea85c9f31a6999f",
+  "source_scope": "formalization/ueot-core/UEOT.lean plus UEOT/**/*.lean",
+  "base_lean_module_count": 691,
+  "candidate_lean_module_count": 694,
+  "changed_lean_paths": [
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/HomogeneousMemorySurvival.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindow.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindowWitness.lean"
+  ],
+  "base_public_lexical_theorem_count": 4345,
+  "candidate_public_lexical_theorem_count": 4357,
+  "new_public_source_theorem_count": 12,
+  "new_public_source_theorems": [
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.augmentedModel_transitionPMF",
+      "short_name": "augmentedModel_transitionPMF",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/HomogeneousMemorySurvival.lean",
+      "line": 68,
+      "header_preview": "theorem augmentedModel_transitionPMF     (source : Model X (fun _ => A))     (controller : FiniteMemoryController Mem Y A) (q : X → Y)     (xm : X × Mem) (a : A) :     (augmentedModel source controller q).transitionPMF xm a =       (source.transitionPMF xm.1 a).map",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.ApproximateHistoryEncoder.representativeMacroModel_transitionPMF",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/ApproximateHistoryEncoder.lean",
+          "similarity": 0.625,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.ApproximateSemanticGauge.pushforwardTransitionPMF_relabel",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/ApproximateSemanticGauge.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.closed_loop_eq_augmentedRow",
+      "short_name": "closed_loop_eq_augmentedRow",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/HomogeneousMemorySurvival.lean",
+      "line": 84,
+      "header_preview": "theorem closed_loop_eq_augmentedRow     (source : Model X (fun _ => A))     (controller : FiniteMemoryController Mem Y A) (q : X → Y)     (n : ℕ) (xm : X × Mem) :     policyTransitionPMF (augmentedModel source controller q)         (liftedStationaryPolicy Prod.snd controller.action) xm =",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.actual_augmentedTrajMeasure_eq_homogeneous",
+      "short_name": "actual_augmentedTrajMeasure_eq_homogeneous",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/HomogeneousMemorySurvival.lean",
+      "line": 113,
+      "header_preview": "theorem actual_augmentedTrajMeasure_eq_homogeneous     (source : Model X (fun _ => A))     (controller : FiniteMemoryController Mem Y A) (q : X → Y) (p₀ : PMF X) :     augmentedTrajMeasure controller p₀ q (fun _ => source.transitionPMF) =       homTrajMeasure (augmentedInitial controller p₀ q).toMeasure         (pmfRowKernel (policyTransitionPMF (augmentedModel source controller q)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.actual_finite_survival_eq_killed_mass",
+      "short_name": "actual_finite_survival_eq_killed_mass",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/HomogeneousMemorySurvival.lean",
+      "line": 155,
+      "header_preview": "theorem actual_finite_survival_eq_killed_mass     [MeasurableSpace A] [MeasurableSingletonClass A]     (source : Model X (fun _ => A))     (controller : FiniteMemoryController Mem Y A) (q : X → Y) (p₀ : PMF X)     (K : Set X) (n : ℕ) :     (microLaw p₀ q (fun _ => source.transitionPMF) controller.policy n).toMeasure.real",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.actual_survival_mass_eq_killed_pow_sum",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledPath.lean",
+          "similarity": 0.625,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.actual_survival_terminal_mass_eq_killed_pow",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledPath.lean",
+          "similarity": 0.625,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.killed_mass_tendsto_actual_infinite_survival",
+      "short_name": "killed_mass_tendsto_actual_infinite_survival",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/HomogeneousMemorySurvival.lean",
+      "line": 175,
+      "header_preview": "theorem killed_mass_tendsto_actual_infinite_survival     [MeasurableSpace A] [MeasurableSingletonClass A]     (source : Model X (fun _ => A))     (controller : FiniteMemoryController Mem Y A) (q : X → Y) (p₀ : PMF X)     (K : Set X) :     Tendsto",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.totalWindowRow_apply_toReal_of_pos",
+      "short_name": "totalWindowRow_apply_toReal_of_pos",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindow.lean",
+      "line": 35,
+      "header_preview": "theorem totalWindowRow_apply_toReal_of_pos     {S : Type u} [Fintype S] (Q : Matrix S S ℝ)     (hQ : ∀ i j, 0 ≤ Q i j) (fallback : ℕ → S → PMF S)     (r : ℕ) (i j : S) (hp : 0 < remainingSurvival Q (r + 1) i) :     (totalWindowRow Q hQ fallback r i j).toReal = finiteWindowRow Q r i j := by   rw [totalWindowRow, dif_pos hp, finiteWindowRowPMF_apply_toReal]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.FiniteDiscountedControl.FiniteProbabilityRow.ofRealRow_apply_toReal",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedApproxQuotient.lean",
+          "similarity": 0.625,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.windowPathLaw_prefix_atom",
+      "short_name": "windowPathLaw_prefix_atom",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindow.lean",
+      "line": 89,
+      "header_preview": "theorem windowPathLaw_prefix_atom     {S : Type u} [Fintype S] (Q : Matrix S S ℝ)     (hQ : ∀ i j, 0 ≤ Q i j) (eta : S → ℝ) (heta : ∀ i, 0 ≤ eta i)     (T : ℕ) (hpos : 0 < initialPairing eta (remainingSurvival Q T))     (fallback : ℕ → S → PMF S) :     ∀ n, n ≤ T → ∀ h : CausalHistory S S n,",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.ReflexiveStatePathLaw.historyPathLaw_prefix",
+          "path": "formalization/ueot-core/UEOT/V3/ReflexiveStatePathLaw.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.windowPathLaw_fallback_independent",
+      "short_name": "windowPathLaw_fallback_independent",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindow.lean",
+      "line": 133,
+      "header_preview": "theorem windowPathLaw_fallback_independent     {S : Type u} [Fintype S] (Q : Matrix S S ℝ)     (hQ : ∀ i j, 0 ≤ Q i j) (eta : S → ℝ) (heta : ∀ i, 0 ≤ eta i)     (T : ℕ) (hpos : 0 < initialPairing eta (remainingSurvival Q T))     (fallback other : ℕ → S → PMF S) (n : ℕ) (hn : n ≤ T) :     windowPathLaw Q hQ eta heta T hpos fallback n =",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_prefix_eq_actual",
+      "short_name": "generated_prefix_eq_actual",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindow.lean",
+      "line": 195,
+      "header_preview": "theorem generated_prefix_eq_actual     (t r : ℕ) (hpos : 0 < actualSurvivalMass M q sigma p0 K (t + r))     (fallback : ℕ → K → PMF K) :     (generatedConditionedPrefix M q sigma p0 K (t + r) hpos fallback t).map         (safeHistory K t) = actualConditionedPrefix M q sigma p0 K t r hpos := by   apply PMF.ext",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.actual_state_prefix_eq",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean",
+          "similarity": 0.6,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.actual_augmented_prefix_eq",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryRealization.lean",
+          "similarity": 0.6,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.actual_state_prefix_eq_homogeneous_prefix",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_ambient_eq_actual",
+      "short_name": "generated_ambient_eq_actual",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindow.lean",
+      "line": 285,
+      "header_preview": "theorem generated_ambient_eq_actual     (t r : ℕ) (hpos : 0 < actualSurvivalMass M q sigma p0 K (t + r))     (fallback : ℕ → K → PMF K) (outside : ℕ → X → PMF X) :     generatedAmbientPrefix M q sigma p0 K (t + r) hpos fallback outside t =       actualConditionedPrefix M q sigma p0 K t r hpos := by   rw [← generated_map_eq_ambient M q sigma p0 K (t + r) hpos fallback outside t]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_ambient_fallback_independent",
+      "short_name": "generated_ambient_fallback_independent",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindow.lean",
+      "line": 295,
+      "header_preview": "theorem generated_ambient_fallback_independent     (t r : ℕ) (hpos : 0 < actualSurvivalMass M q sigma p0 K (t + r))     (fallback other : ℕ → K → PMF K) (outside otherOutside : ℕ → X → PMF X) :     generatedAmbientPrefix M q sigma p0 K (t + r) hpos fallback outside t =       generatedAmbientPrefix M q sigma p0 K (t + r) hpos other otherOutside t := by   rw [generated_ambient_eq_actual M q sigma p0 K t r hpos fallback outside,",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowWitnessCheck.null_row_actual_source_witness",
+      "short_name": "null_row_actual_source_witness",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindowWitness.lean",
+      "line": 151,
+      "header_preview": "theorem null_row_actual_source_witness :     (initial none).toReal = 1 / 3 ∧     actualSurvivalMass model observe feedback initial safe 1 = 1 / 3 ∧     remainingSurvival killed 1 (safeEquiv true) = 0 ∧     totalWindowRow killed killed_nonneg (fallback false) 0 (safeEquiv true) ≠       totalWindowRow killed killed_nonneg (fallback true) 0 (safeEquiv true) ∧",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    }
+  ],
+  "counted_ledger_promotion": "NONE",
+  "fuzzy_similarity_is_a_proof": false,
+  "source_graph": "GIT_COMMIT_DIFF_LEXICAL_NOT_ELABORATED",
+  "status": "PASS_WITH_TYPED_REUSE_REVIEW_REQUIRED",
+  "reason": "This gate is mandatory discovery and audit, not an automatic proof equivalence or scientific promotion detector"
+}

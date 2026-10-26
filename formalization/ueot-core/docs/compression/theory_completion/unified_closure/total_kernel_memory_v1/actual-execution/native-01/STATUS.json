@@ -1,0 +1,40 @@
+{
+  "state": "PASS_PENDING_INDEPENDENT_REVIEW_AND_REGISTRATION",
+  "baseline_ref": "41c4b27ef8d993c797b2414311f0934eeb4cb561",
+  "build_receipt_sha256": "5b70f762b569a91a66f7cba4c58aed110438dc0a5b73f47100f650691b4eba8f",
+  "results": [
+    {
+      "label": "native_export",
+      "command": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-evidence-20261023/native-01/TOTAL_KERNEL_MEMORY_NATIVE_EXPORT.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 86.647,
+      "log_sha256": "069d01a8ff9adf5aebe5b65988e9b2fa32557d2e4f9fbe558cf38d31c911261a"
+    },
+    {
+      "label": "fixed_verifier",
+      "command": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-evidence-20261023/native-01/VERIFY_TOTAL_KERNEL_MEMORY_OVERLAY_TYPES.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 57.175,
+      "log_sha256": "069d01a8ff9adf5aebe5b65988e9b2fa32557d2e4f9fbe558cf38d31c911261a"
+    }
+  ],
+  "summary": {
+    "modules": 3,
+    "public_source_theorems": 12,
+    "native_constants": 80,
+    "registered_edges": 27,
+    "overlay_sha256": "1985f2bff2e6f6a19f113ea8391e971a3d81c3667f6cf30a263d477c8d98c122",
+    "verifier_sha256": "a9486d70eae7be47c7294bac05e6adced5245c463547e1639618ee8985fc553f",
+    "native_sha256": "0f164136ebca7dd0e3dd3339fe54286be820cce6b285a03ca5ade12cf1422e02"
+  }
+}

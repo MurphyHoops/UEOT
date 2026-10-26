@@ -8,9 +8,9 @@ The existing FKRG cache remains useful for broad keyword/module search.
 This supplement adds real proof-term direct dependencies, verified same-type
 theorem peers, source copies, and a read-only scientific-role distinction.
 
-The current eleven-layer census is **691 modules = 680 UEOT-maintained + 11
-adapted upstream**, with **4,345 registered public theorem nodes** and
-**5,728 registered direct proof edges**. The layer-by-layer counts below
+The current twelve-layer census is **694 modules = 683 UEOT-maintained + 11
+adapted upstream**, with **4,357 registered public theorem nodes** and
+**5,755 registered direct proof edges**. The layer-by-layer counts below
 retain each historical scope.
 
 ## Governed overlay chain
@@ -955,6 +955,104 @@ clone equality, canonical Git preflight and publication each retain separate
 receipts. The frozen 106 P-ID classification, four counted generators and
 strong global-closure status `NOT_ESTABLISHED` remain unchanged.
 
+### Layer 12 — total conditioned kernels and homogeneous memory survival
+
+This layer uses canonical authorization base
+`41c4b27ef8d993c797b2414311f0934eeb4cb561` and adds three physical
+UnifiedClosure modules to the intact 691-module census:
+`TotalFiniteWindow`, `TotalFiniteWindowWitness` and
+`HomogeneousMemorySurvival`. The frozen source fingerprint is
+`2a0482a9717cc776b76383755a42b327ba132a04fbb6dfaea5c3ddb45da47b24`.
+The actual full build passed in **46.555 seconds**. Actual native export and
+the separately executed fixed certificate passed in **86.647 and 57.175
+seconds**, yielding equal complete JSON exports. The
+[research packet](../../unified_closure/total_kernel_memory_v1/RESULTS_AND_BOUNDARIES.md)
+retains focused compilation failures, final successful runs and independent
+mathematical/source and native-execution reviews.
+
+| Artifact | SHA-256 |
+| --- | --- |
+| [TOTAL_KERNEL_MEMORY_NATIVE_V1.json](TOTAL_KERNEL_MEMORY_NATIVE_V1.json) | `0f164136ebca7dd0e3dd3339fe54286be820cce6b285a03ca5ade12cf1422e02` |
+| [VERIFY_TOTAL_KERNEL_MEMORY_OVERLAY_TYPES.lean](VERIFY_TOTAL_KERNEL_MEMORY_OVERLAY_TYPES.lean) | `a9486d70eae7be47c7294bac05e6adced5245c463547e1639618ee8985fc553f` |
+| [TOTAL_KERNEL_MEMORY_REUSE_OVERLAY_V1.json](TOTAL_KERNEL_MEMORY_REUSE_OVERLAY_V1.json) | `a2f8966fedd58492b28d2e0235329d5994d27ee74d3deba0c081b22ce54c478f` |
+
+The complete native census has **80 owned theorem constants: 12 registered
+public source candidates, 27 private constants and 41 other generated public
+constants**. Every record retains physical ownership, actual displayed type,
+stored universes, full direct proof constants, direct theorem constants and
+standard-only transitive axiom closure. The 12 public types were compared
+against all **4,345** prior registrations in **52,140 cross-layer** and
+**66 internal** raw stored-type `Meta.isDefEq` comparisons, with no collisions.
+The original stored-universe and instantiation limits remain; this is not a
+general logical-equivalence or independence result.
+
+The new graph contributes **27 direct registered edges**. The live graph has
+**4,357 nodes and 5,755 edges**, including **564 overlay nodes and 868 outgoing
+overlay edges**. Layer eight's separate old-node repair remains intact. The
+five new lexical hint groups contain nine candidate pairs and bring the
+cumulative group count to **138**. Independent semantic review retains the
+actual hypothesis and source-identity obligations behind those name hints.
+
+The mathematical increment has two parts and a concrete boundary witness:
+
+- An independently defined initial PMF and total finite-window rows generate
+  exactly the same complete state-prefix distribution as the original
+  action/state experiment conditioned on positive survival through the
+  horizon. The induction covers all prefixes, including zero-mass parents,
+  and the original state alphabet includes explicit unsafe-state rows.
+  Safe null-row fallbacks are arbitrary PMFs on the safe subtype; unsafe
+  rows are arbitrary PMFs on the original state space. Both choices are
+  irrelevant for the generated prefix law through the conditioning horizon.
+- The deterministic source `false -> true -> cemetery -> cemetery`, with a
+  uniform original initial law, has initial unsafe mass and one-step survival
+  mass both `1/3`. The safe state `true` has zero remaining one-step survival.
+  Its two fallback rows differ, but both complete conditional paths equal
+  `delta(false,true)`. The public witness has zero registered public outgoing
+  edges and directly uses its private calculations. Those calculations,
+  their standard axiom closures and the path to `generated_ambient_eq_actual`
+  remain in the complete native records; no public direct edge is fabricated.
+- For a fixed numerical source and the same finite-memory controller, the
+  constructed augmented model samples the original successor and performs
+  the actual action/observation memory update. Its stationary closed-loop
+  row is proved to be the existing actual augmented row, and the full
+  infinite trajectory measures coincide. The safe set is pulled back along
+  the state projection. Its unnormalized killed mass equals the original
+  controller's finite survival probability and converges to that controller's
+  all-times survival probability, using the existing killed-prefix and
+  decreasing-event tail theorems.
+
+The canonical proof routes reuse the positive finite-window PMF, original
+conditioned-prefix atom formula, safe-path matrix weight, injective history
+embedding and existing PMF map/extension transport. The memory finite-mass
+endpoint uses the private `projected_survival_mass` bridge to the public
+`homogeneous_survival_real_eq_killed_pow_sum`; the tail endpoint consumes
+`killed_survival_mass_tendsto_homogeneous_neverHit_real`. These are actual
+compiled proof references, with private routes distinguished from the public
+direct-edge graph.
+
+Positive conditioning-horizon mass remains required. No cross-horizon
+consistency, post-horizon fallback independence, infinite Q-process limit,
+spectral convergence, equality to a fixed Doob process or executable
+exact-real sampling algorithm is asserted. The memory source must be
+numerically homogeneous; stationary support alone does not suffice. The
+state-memory process is Markov, but the state-only projection is not asserted
+to be Markov. Initial failure mass is retained, and the survival limit may be
+zero. The earlier physical-safety hypotheses remain necessary for their
+separate probability-one conclusion.
+
+Actual registration adds only `lexical_pr_preflight` and
+`registration_provenance`; stripping them recovers the original overlay.
+The [registration receipt](../../unified_closure/total_kernel_memory_v1/actual-execution/native-01/REGISTRATION_RECEIPT.json)
+binds 39 archived inputs and the original pending preflight. All eleven prior
+overlays, fixed certificates, historical equal/near-type evidence and the
+68-row clone table remain unchanged. Four new consumer regressions inspect
+full native structure and exact registered edges, semantic reuse routes,
+private witness/transport dependencies and metadata-only byte preservation.
+Actual consumer execution, full current-source clone equality, canonical
+acceptance and release remain separately evidenced gates. Frozen counted
+classifications remain unchanged, strong global closure is
+`NOT_ESTABLISHED`, and external scientific evidence remains `UNVERIFIED`.
+
 ## Run from repository root
 
     P=formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse
@@ -971,20 +1069,20 @@ strong global-closure status `NOT_ESTABLISHED` remain unchanged.
 Run the new native certificate from `formalization/ueot-core` after building
 the public imports with the pinned toolchain:
 
-    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_PATH_REALIZATION_OVERLAY_TYPES.lean
+    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_TOTAL_KERNEL_MEMORY_OVERLAY_TYPES.lean
 
 ## Strongly typed and provenance-limited evidence
 
 - 633 immutable-base source modules = 622 UEOT-maintained + 11 adapted upstream modules;
-  eleven governed overlays extend the live census to 691 = 680 + 11.
-- 3,793 immutable-base public source theorem proofs + 552 governed registrations
-  (including one historical public-name repair) = 4,345 live graph nodes, with
-  5,728 direct registered-source theorem
+  twelve governed overlays extend the live census to 694 = 683 + 11.
+- 3,793 immutable-base public source theorem proofs + 564 governed registrations
+  (including one historical public-name repair) = 4,357 live graph nodes, with
+  5,755 direct registered-source theorem
   references. The historical four overlays add 0, 3, 6 and 73 certified direct edges;
   the fifth adds 91, the sixth adds 98, and the seventh adds 163 certified direct edges.
   The eighth adds 97 edges from new registrations and one certified old-node repair.
-  The ninth adds 149 edges, the tenth adds 47 and the eleventh adds 114,
-  giving 841 outgoing edges from overlay nodes;
+  The ninth adds 149 edges, the tenth adds 47, the eleventh adds 114 and the
+  twelfth adds 27, giving 868 outgoing edges from overlay nodes;
   the old-node repair remains a separate addition.
 - 37 equal-type groups / 77 names. The original audit checked 40/40
   representative-to-peer theorem type pairs via Lean Meta.isDefEq. Here
@@ -1002,7 +1100,7 @@ the public imports with the pinned toolchain:
   12 spans reach 15 lines. This is a text-copy candidate index, NOT
   a proof-equivalence decision procedure. The historical 646-module recomputation
   preserved all 68 historical rows exactly, with no added or missing rows.
-  The current scanner recomputes all 691 modules and rejects any difference
+  The current scanner recomputes all 694 modules and rejects any difference
   from that immutable result; its actual command result establishes whether
   the current-source scan passes. The historical snapshot alone does not.
 
@@ -1035,7 +1133,7 @@ the pinned Lean compiler/dependency environment (lean-toolchain,
 lakefile.lean and lake-manifest.json including the pinned Mathlib revision),
 the exact set of live Lean source paths (including detecting ANY newly added
 or deleted module), and all immutable-base source hashes plus the governed
-overlay-chain hashes against the exact 691-module live source census. It refuses to
+overlay-chain hashes against the exact 694-module live source census. It refuses to
 answer if any source or metadata changed. A docs-only Git commit does
 not spuriously make a valid source snapshot stale.
 

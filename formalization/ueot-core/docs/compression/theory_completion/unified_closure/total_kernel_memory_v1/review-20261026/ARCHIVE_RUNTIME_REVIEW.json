@@ -1,0 +1,43 @@
+{
+  "schema": "UEOT_TOTAL_KERNEL_MEMORY_INDEPENDENT_RECOVERY_REVIEW_V1",
+  "candidate_commit": "d0f4d14d4ac0cb931ac790c7bea85c9f31a6999f",
+  "observed_at": "2026-10-26T15:46:51.034295+00:00",
+  "scope": "Read-only independent verification of source identity, archive restoration, metadata honesty and actual build receipts; no build or test execution in this review",
+  "status": "CLEAR_FOR_SEPARATE_GIT_PREFLIGHT_AND_PUBLICATION",
+  "checks": {
+    "39_input_records_38_distinct_targets": true,
+    "all_archive_reference_sha_match": true,
+    "all_archive_reference_files_committed": true,
+    "original_overlay_bytes_preserved": true,
+    "registered_archive_matches_pinned_overlay": true,
+    "new_receipt_explicit_recovery": true,
+    "recovery_receipt_hash_binding": true,
+    "old_and_current_full_build_identity_equal": true,
+    "current_694_source_files_match_receipt": true,
+    "current_environment_files_match_receipt": true,
+    "current_runtime_binary_hashes_match_receipt": true,
+    "current_full_build_receipt_hash_matches_release": true,
+    "current_build_pass_and_log_match": true,
+    "current_build_log_9400_job_completion": true,
+    "canonical_ten_input_hashes_match": true,
+    "tracked_worktree_matches_candidate": true,
+    "recoverable_original_archive_bytes_unchanged": true,
+    "failed_current_build_preserved": true
+  },
+  "original_archive_files_compared": 53,
+  "failures": [],
+  "test_observation_assessment": {
+    "release_reports_reuse_tests": 58,
+    "release_reports_reuse_exit_code": 0,
+    "independent_rerun": false,
+    "persisted_raw_test_log_claimed": false,
+    "assessment": "Acceptance explicitly labels these as observed command exits/summaries; this review does not upgrade them to independently replayed test evidence. Restored required bytes and assertions were independently examined."
+  },
+  "build_scope": "lake build UEOT target success, including cached/replayed tasks; not a claim of 9400 fresh compilations",
+  "mathematics": "Three Lean sources retain previously reviewed hashes and contracts; Z_T>0, n<=T, numerical homogeneity, possible zero infinite-survival limit, and state projection limitations remain explicit",
+  "remaining_gates": [
+    "Immutable Git-object preflight",
+    "PR merge and resulting-main identity verification"
+  ],
+  "github_ci": "User-disabled and NOT_RUN, not claimed as a pass"
+}

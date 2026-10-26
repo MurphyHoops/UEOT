@@ -1,0 +1,117 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/HomogeneousMemorySurvival.lean:88:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  policyTransitionPMF (augmentedModel source controller q) (liftedStationaryPolicy Prod.snd controller.action)
+    (riskLastState 0 xm)
+in the target expression
+  policyTransitionPMF (augmentedModel source controller q) (liftedStationaryPolicy Prod.snd controller.action) xm =
+    augmentedRow controller q (fun x => source.transitionPMF) n xm
+
+X Mem Y A : Type u
+inst✝³ : Fintype X
+inst✝² : Fintype Mem
+inst✝¹ : Fintype A
+inst✝ : Nonempty A
+source : Model X fun x => A
+controller : FiniteMemoryController Mem Y A
+q : X → Y
+n : ℕ
+xm : X × Mem
+⊢ policyTransitionPMF (augmentedModel source controller q) (liftedStationaryPolicy Prod.snd controller.action) xm =
+    augmentedRow controller q (fun x => source.transitionPMF) n xm
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/HomogeneousMemorySurvival.lean:143:2: error: Type mismatch
+  homogeneous_survival_real_eq_killed_pow_sum (augmentedModel source controller q) Prod.snd controller.action
+    (augmentedInitial controller p₀ q) (Prod.fst ⁻¹' K) n
+has type
+  (homTrajMeasure (augmentedInitial controller p₀ q).toMeasure
+          (pmfRowKernel
+            (policyTransitionPMF (augmentedModel source controller q)
+              (liftedStationaryPolicy Prod.snd controller.action)))).real
+      (survivalSet (Prod.fst ⁻¹' K)ᶜ n) =
+    ∑ v,
+      rowApply (safeInitialRow (augmentedInitial controller p₀ q) (Prod.fst ⁻¹' K))
+        (@HPow.hPow (Matrix ↑(Prod.fst ⁻¹' K) ↑(Prod.fst ⁻¹' K) ℝ) ℕ (Matrix ↑(Prod.fst ⁻¹' K) ↑(Prod.fst ⁻¹' K) ℝ)
+          (@instHPow (Matrix ↑(Prod.fst ⁻¹' K) ↑(Prod.fst ⁻¹' K) ℝ) ℕ
+            (@NPow.toPow (Matrix ↑(Prod.fst ⁻¹' K) ↑(Prod.fst ⁻¹' K) ℝ)
+              (@Monoid.toNPow (Matrix ↑(Prod.fst ⁻¹' K) ↑(Prod.fst ⁻¹' K) ℝ)
+                (@Semiring.toMonoid (Matrix ↑(Prod.fst ⁻¹' K) ↑(Prod.fst ⁻¹' K) ℝ)
+                  (@Matrix.semiring ↑(Prod.fst ⁻¹' K) ℝ Real.semiring
+                    (Subtype.fintype (Membership.mem (Prod.fst ⁻¹' K))) fun a b =>
+                    @Subtype.instDecidableEq (X × Mem) (Membership.mem (Prod.fst ⁻¹' K))
+                      (fun a b => Classical.propDecidable (a = b)) a b)))))
+          (killedMatrix (augmentedModel source controller q) (liftedStationaryPolicy Prod.snd controller.action)
+            (Prod.fst ⁻¹' K))
+          n)
+        v
+but is expected to have type
+  ((homTrajMeasure (augmentedInitial controller p₀ q).toMeasure
+          (pmfRowKernel
+            (policyTransitionPMF (augmentedModel source controller q)
+              (liftedStationaryPolicy Prod.snd controller.action))))
+        (survivalSet (Prod.fst ⁻¹' K)ᶜ n)).toReal =
+    ∑ v,
+      rowApply (safeInitialRow (augmentedInitial controller p₀ q) (Prod.fst ⁻¹' K))
+        (@HPow.hPow (Matrix ↑(Prod.fst ⁻¹' K) ↑(Prod.fst ⁻¹' K) ℝ) ℕ (Matrix ↑(Prod.fst ⁻¹' K) ↑(Prod.fst ⁻¹' K) ℝ)
+          (@instHPow (Matrix ↑(Prod.fst ⁻¹' K) ↑(Prod.fst ⁻¹' K) ℝ) ℕ
+            (@NPow.toPow (Matrix ↑(Prod.fst ⁻¹' K) ↑(Prod.fst ⁻¹' K) ℝ)
+              (@Monoid.toNPow (Matrix ↑(Prod.fst ⁻¹' K) ↑(Prod.fst ⁻¹' K) ℝ)
+                (@Semiring.toMonoid (Matrix ↑(Prod.fst ⁻¹' K) ↑(Prod.fst ⁻¹' K) ℝ)
+                  (@Matrix.semiring ↑(Prod.fst ⁻¹' K) ℝ Real.semiring
+                    (Subtype.fintype (Membership.mem (Prod.fst ⁻¹' K))) fun a b =>
+                    @Subtype.instDecidableEq (X × Mem) (Membership.mem (Prod.fst ⁻¹' K))
+                      (fun a b => instDecidableEqProd a b) a b)))))
+          (killedMatrix (augmentedModel source controller q) (liftedStationaryPolicy Prod.snd controller.action)
+            (Prod.fst ⁻¹' K))
+          n)
+        v
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/HomogeneousMemorySurvival.lean:199:2: error: Type mismatch
+  killed_survival_mass_tendsto_homogeneous_neverHit_real (augmentedModel source controller q) Prod.snd controller.action
+    (augmentedInitial controller p₀ q) (Prod.fst ⁻¹' K)
+has type
+  Tendsto
+    (fun n =>
+      ∑ v,
+        rowApply (safeInitialRow (augmentedInitial controller p₀ q) (Prod.fst ⁻¹' K))
+          (@HPow.hPow (Matrix ↑(Prod.fst ⁻¹' K) ↑(Prod.fst ⁻¹' K) ℝ) ℕ (Matrix ↑(Prod.fst ⁻¹' K) ↑(Prod.fst ⁻¹' K) ℝ)
+            (@instHPow (Matrix ↑(Prod.fst ⁻¹' K) ↑(Prod.fst ⁻¹' K) ℝ) ℕ
+              (@NPow.toPow (Matrix ↑(Prod.fst ⁻¹' K) ↑(Prod.fst ⁻¹' K) ℝ)
+                (@Monoid.toNPow (Matrix ↑(Prod.fst ⁻¹' K) ↑(Prod.fst ⁻¹' K) ℝ)
+                  (@Semiring.toMonoid (Matrix ↑(Prod.fst ⁻¹' K) ↑(Prod.fst ⁻¹' K) ℝ)
+                    (@Matrix.semiring ↑(Prod.fst ⁻¹' K) ℝ Real.semiring
+                      (Subtype.fintype (Membership.mem (Prod.fst ⁻¹' K))) fun a b =>
+                      @Subtype.instDecidableEq (X × Mem) (Membership.mem (Prod.fst ⁻¹' K))
+                        (fun a b => Classical.propDecidable (a = b)) a b)))))
+            (killedMatrix (augmentedModel source controller q) (liftedStationaryPolicy Prod.snd controller.action)
+              (Prod.fst ⁻¹' K))
+            n)
+          v)
+    atTop
+    (nhds
+      ((homTrajMeasure (augmentedInitial controller p₀ q).toMeasure
+            (pmfRowKernel
+              (policyTransitionPMF (augmentedModel source controller q)
+                (liftedStationaryPolicy Prod.snd controller.action)))).real
+        (neverHitSet (Prod.fst ⁻¹' K)ᶜ)))
+but is expected to have type
+  Tendsto
+    (fun n =>
+      ∑ v,
+        rowApply (safeInitialRow (augmentedInitial controller p₀ q) (Prod.fst ⁻¹' K))
+          (@HPow.hPow (Matrix ↑(Prod.fst ⁻¹' K) ↑(Prod.fst ⁻¹' K) ℝ) ℕ (Matrix ↑(Prod.fst ⁻¹' K) ↑(Prod.fst ⁻¹' K) ℝ)
+            (@instHPow (Matrix ↑(Prod.fst ⁻¹' K) ↑(Prod.fst ⁻¹' K) ℝ) ℕ
+              (@NPow.toPow (Matrix ↑(Prod.fst ⁻¹' K) ↑(Prod.fst ⁻¹' K) ℝ)
+                (@Monoid.toNPow (Matrix ↑(Prod.fst ⁻¹' K) ↑(Prod.fst ⁻¹' K) ℝ)
+                  (@Semiring.toMonoid (Matrix ↑(Prod.fst ⁻¹' K) ↑(Prod.fst ⁻¹' K) ℝ)
+                    (@Matrix.semiring ↑(Prod.fst ⁻¹' K) ℝ Real.semiring
+                      (Subtype.fintype (Membership.mem (Prod.fst ⁻¹' K))) fun a b =>
+                      @Subtype.instDecidableEq (X × Mem) (Membership.mem (Prod.fst ⁻¹' K))
+                        (fun a b => instDecidableEqProd a b) a b)))))
+            (killedMatrix (augmentedModel source controller q) (liftedStationaryPolicy Prod.snd controller.action)
+              (Prod.fst ⁻¹' K))
+            n)
+          v)
+    atTop
+    (nhds
+      ((homTrajMeasure (augmentedInitial controller p₀ q).toMeasure
+            (pmfRowKernel
+              (policyTransitionPMF (augmentedModel source controller q)
+                (liftedStationaryPolicy Prod.snd controller.action)))).real
+        (neverHitSet (Prod.fst ⁻¹' K)ᶜ)))
