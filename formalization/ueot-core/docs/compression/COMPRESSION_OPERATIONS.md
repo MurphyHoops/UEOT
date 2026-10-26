@@ -129,8 +129,8 @@ validation, with their actual commands/results recorded in the research PR.
 No cloud success is inferred from the absence of workflow runs.
 
 The workflow definitions remain available for a future explicitly requested re-enable;
-their dispatch entries do not run while the workflows are disabled. The observed settings
-and scope are recorded in `mathematics/review/LOCAL_CORE_VALIDATION_MODE_2026-10-26.json`.
+their dispatch entries do not run while the workflows are disabled. Recheck the actual
+settings with `gh workflow list --repo MurphyHoops/UEOT --all --json id,name,path,state`.
 
 ### Resulting main
 
