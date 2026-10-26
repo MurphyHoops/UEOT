@@ -1,0 +1,194 @@
+{
+  "schema": "OBSERVABLE_BELIEF_LOCAL_RELEASE_ACCEPTANCE_V1",
+  "state": "LOCAL_VERIFIED_PR_BOUNDARY_REVIEW_AND_RESULTING_MAIN_PENDING",
+  "observed_at": "2026-10-26T22:24:30.070590+00:00",
+  "baseline_ref": "e045cca43a94abbff00fd0da53e6200e0bd6ae2e",
+  "source_tree_sha256": "778b37210962b487cedd2d5d50e9fa95c1297987ec4e18630da7fbc1ccd883c2",
+  "production_modules": 701,
+  "new_source_files": [
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "sha256": "8ea9470fbc1fcb7067581a02247e7eaf88dbc6e57b4c86e7e621470453ac52a7"
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "sha256": "4ea06cb6cadc4c4573376281485a885ecd1897ca7e435d209b75d0643270c511"
+    }
+  ],
+  "full_build": {
+    "command": [
+      "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+      "build",
+      "UEOT"
+    ],
+    "exit_code": 0,
+    "seconds": 364.677,
+    "log_name": "full-build.log",
+    "log_sha256": "3659308766006e765cf02cab6fdc92e49759c14a47d0de13c86a7e49e60f46bd"
+  },
+  "native": {
+    "state": "PASS",
+    "source_tree_sha256": "778b37210962b487cedd2d5d50e9fa95c1297987ec4e18630da7fbc1ccd883c2",
+    "public_source": 30,
+    "all_native_owned": 84,
+    "private": 19,
+    "named_source_public_prop_instances": [
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.observation_isMarkov",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.quotientKernel_isMarkov",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.badSource_isMarkov",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.source_isMarkov"
+    ],
+    "compiler_generated_other_public": 31,
+    "cross_comparisons": 132990,
+    "internal_comparisons": 435,
+    "collisions": 0,
+    "registered_edges": 29,
+    "first_and_fixed_complete_json_equal": true,
+    "first_and_fixed_log_bytes_equal": true,
+    "all_owned_axioms": "LEAN_STANDARD_ONLY",
+    "classification": "Compiler source_module ownership controls scope, including generated constants with logical names outside the new module namespace.",
+    "independent_typed_review_preflight_matches_actual_native": true,
+    "source_preflight_sha256": "51dee92428ddfbf4f51ec055abfffa4f4d081451d83127acabf524522bed7523",
+    "actual_executions": [
+      {
+        "label": "native_export",
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/canonical-belief-evidence-20261027/native-01/OBSERVABLE_BELIEF_NATIVE_EXPORT.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 312.707,
+        "log_sha256": "be4d7c52b5380269eb6e0c1d83762333fa95c14bc51384feea1e8edd6e9add1a"
+      },
+      {
+        "label": "fixed_verifier",
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/canonical-belief-evidence-20261027/native-01/VERIFY_OBSERVABLE_BELIEF_OVERLAY_TYPES.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 370.229,
+        "log_sha256": "be4d7c52b5380269eb6e0c1d83762333fa95c14bc51384feea1e8edd6e9add1a"
+      }
+    ]
+  },
+  "umc": {
+    "source_modules": 102,
+    "all_native_theorems": 1808,
+    "axioms": "1808/1808_LEAN_STANDARD_AXIOMS"
+  },
+  "consumer_checks": {
+    "focused": 4,
+    "reuse": 70,
+    "parser": 89,
+    "fkrg": 30,
+    "clone_rows_unchanged": 68,
+    "research_governance": 38,
+    "mission_expected_rejections": 12,
+    "raw_compression_proof_escapes": 0,
+    "actual_exit_codes": "ALL_ZERO",
+    "source_docs_whitespace": "PASS_RAW_LOG_BYTES_PRESERVED"
+  },
+  "current_loader": {
+    "bundled_modules": 701,
+    "ueot_maintained_modules": 690,
+    "vendor_modules": 11,
+    "public_source_theorems_with_direct_proof_graph": 4463,
+    "overlay_count": 15,
+    "overlay_public_theorems": 670,
+    "overlay_registered_direct_edges": 1020,
+    "overlay_lexical_reuse_candidates": 177
+  },
+  "graph_direct_edges": 5907,
+  "typed_reuse_review": {
+    "groups": 5,
+    "pairs": 10,
+    "status": "CLEAR",
+    "uniqueness_scope": "Specializes existing surjective-descent uniqueness, does not introduce a new uniqueness principle."
+  },
+  "independent_reviews": [
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/observable_belief_v1/independent/ueot-r3-math-review.json",
+      "sha256": "5adbfc4e505ae6f11793acd75a95c97fde60c69f6c962724ceba530744a871f0"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/observable_belief_v1/independent/ueot-r3-typed-reuse-review.json",
+      "sha256": "a9022393610e661af046b7e36935bf2c73530a057291e5c1dbafe6ab87b0b2a0"
+    }
+  ],
+  "actual_evidence_refs": [
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/observable_belief_v1/actual-execution/full-build-02/FULL_BUILD_RECEIPT.json",
+      "sha256": "0a0cfcf891d27a8005894893a81b56f5ecd531b7dfdd82bc3eb14b557f13db79"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/observable_belief_v1/actual-execution/native-01/STATUS.json",
+      "sha256": "4d793c095062be7bbe3a14b41a300243475586f961087c85d09b9e2e94fa7098"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/observable_belief_v1/actual-execution/native-01/REGISTRATION_RECEIPT.json",
+      "sha256": "4025907aedd89f149673f302e0155d51e0b49c54099da2d99189ed9b97b5aeb8"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/observable_belief_v1/actual-execution/ROOT_NATIVE_ASSERTIONS.json",
+      "sha256": "71b6f02726eaacb732a5b64c95b2103447ec19407ae89336c93f7c3c11c506bd"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/observable_belief_v1/actual-execution/UMC_AUDIT_01.json",
+      "sha256": "ad6a3fcfa8793fefee6271c4bbb34178e1398e3ab007029efa481eedae0ccf43"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/observable_belief_v1/actual-execution/consumer-checks-01/COMMAND_RESULTS.json",
+      "sha256": "d3e58a51cc821cc22b08abc8030a7d09efb6e849db15addd1867fa5f21c9a6f1"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/observable_belief_v1/actual-execution/local-gates-01/RESULTS.json",
+      "sha256": "bdb0e1df981d0bfcb8eba5717cd81ef62b250749584a03c974079f0f3526e7d2"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/observable_belief_v1/actual-execution/OLD_ASSET_IMMUTABILITY_01.json",
+      "sha256": "bbf87c8f0e7a142e6338faa6daff11d655d0456a50961360cbd35140c9d9acba"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/observable_belief_v1/actual-execution/consumer-checks-01/RESULTS.json",
+      "sha256": "e90bcbb659b10611f1120b7f3587b8a5200b04205814e4933f575f2842a07e87"
+    }
+  ],
+  "new_registry_assets": [
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/OBSERVABLE_BELIEF_REUSE_OVERLAY_V1.json",
+      "sha256": "9e4440d2ef4b101dbadc09b5e02b11d766126b73b8953c60182da64320c247db"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/OBSERVABLE_BELIEF_NATIVE_V1.json",
+      "sha256": "3bee681d5f501a9eb2cd397ae5190bbafa73e96a62a8f203284dd5933a5bdf0b"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_OBSERVABLE_BELIEF_OVERLAY_TYPES.lean",
+      "sha256": "f953b3ffe81fbe86ed952c070aea7d2d3cb06edb8a01e378bd421e927c76c652"
+    }
+  ],
+  "historical_preservation": {
+    "old_overlay_layers": 14,
+    "old_overlay_certificate_native_clone_assets_unchanged": 40,
+    "full_build_01": "ACTUAL_INVALID_IMPORT_FAILURE_PRESERVED_WITH_LATER_EXACT_SHA_SOURCE_RECONSTRUCTION",
+    "full_build_02": "FINAL_ACTUAL_SUCCESSFUL_FULL_BUILD"
+  },
+  "claim": "CONDITIONAL_BINARY_GENERATING_TEST_QUOTIENT_OF_ACTUAL_C1_BELIEF_KERNEL",
+  "limits": [
+    "Known measurable binary observation and explicit zero/one representatives; nonempty standard Borel latent space and a Markov source.",
+    "Source closure is derived in the finite witness, assumed for the general forward theorem and necessary for any general quotient factorization.",
+    "Posterior identities are observation-almost everywhere; no pointwise null-observation posterior claim.",
+    "Reward and safety need separate factorization; hidden readouts provide a negative witness.",
+    "No arbitrary countable-coordinate Borel image, minimal memory, arbitrary-real runtime, all-time safety, optimal-control or external scientific validation claim."
+  ],
+  "frozen_counted_status": "UNCHANGED_106_4_11_89_6",
+  "global_strong_closure": "NOT_ESTABLISHED",
+  "external_scientific_evidence": "UNVERIFIED",
+  "core_cloud_ci": "DISABLED_MANUALLY_NOT_A_PROOF_PASS",
+  "publication_identity": "Exact Git-object preflight, independent exact-head review and resulting-main receipts are bound externally after commit to avoid self-reference."
+}

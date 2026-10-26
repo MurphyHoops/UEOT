@@ -1,0 +1,227 @@
+{
+  "schema": "OBSERVABLE_BELIEF_CONSUMER_UPDATE_REVIEW_V1",
+  "state": "PASS_CONSUMER_INTEGRATION_CHECKS",
+  "reviewed_at_utc": "2026-10-26T22:24:36.310720+00:00",
+  "repo": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023",
+  "baseline_ref": "e045cca43a94abbff00fd0da53e6200e0bd6ae2e",
+  "source_tree_sha256": "778b37210962b487cedd2d5d50e9fa95c1297987ec4e18630da7fbc1ccd883c2",
+  "scope": "Five authorized consumers plus regeneration of the existing source metadata DAG; no source/protocol/mission edits and no commit by this agent",
+  "files": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md",
+      "before_sha256": "c0fe8b663e1794a33ca07dc4877cfb7e6f9b5d169fa06d3e7edf991a7080ae2c",
+      "after_initial_application_sha256": "9b68e801bd3519fc142fc16898f65e344783372d977973b647de4367861b2e4f",
+      "final_sha256": "9b68e801bd3519fc142fc16898f65e344783372d977973b647de4367861b2e4f"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+      "before_sha256": "d712f76a03438b7ef2c506a006e69c0823500efce2053c42f3c2186905776e3b",
+      "after_initial_application_sha256": "2d0ff783c8dfa956120640f335fc6f8c52cec7fe12bf3a1a777d26a773399ce9",
+      "final_sha256": "2d0ff783c8dfa956120640f335fc6f8c52cec7fe12bf3a1a777d26a773399ce9"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
+      "before_sha256": "5bf75f137b991de262f1996f798d443b5604b699d176b4249026b9cc5b99f56a",
+      "after_initial_application_sha256": "c041abb7f9cebaca395a2d6ea6fcde9060e3cf88b3762db6234fea886f80e080",
+      "final_sha256": "c041abb7f9cebaca395a2d6ea6fcde9060e3cf88b3762db6234fea886f80e080"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py",
+      "before_sha256": "cd08243114cde67a0d68ef79e184e6a5366844de414d7f7eac7a60045073e33a",
+      "after_initial_application_sha256": "d1b4b77b48bf0470e877f1455898e6121cd9045baeb14e7e71acc26252cc96fd",
+      "final_sha256": "d1b4b77b48bf0470e877f1455898e6121cd9045baeb14e7e71acc26252cc96fd"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
+      "before_sha256": "39a521a033160006a1df68c1d704a5cf8a5e38e14587e31e2e220b516303e3de",
+      "after_initial_application_sha256": "ba208f73dd9fa010b92881f9e4cbf5468ac9139e795ec72c51781927b07cc84d",
+      "final_sha256": "c2cf37b9c788e6b211ee310b3391861b17e09d1039b09a1d8b75ffa3ad580f68"
+    }
+  ],
+  "commands": [
+    {
+      "label": "focused",
+      "command": "python3 -B formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py -k observable_belief",
+      "actual_exit_code": 0,
+      "log_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/canonical-belief-evidence-20261027/consumer-checks-01/focused-01.log",
+      "log_sha256": "409f5378a187f8cab9616fc264b1a9175f49a5a76faa7d8b0e92b0718be2c9ac",
+      "tests_executed": 4,
+      "test_reported_seconds": 0.227,
+      "result": "OK"
+    },
+    {
+      "label": "full",
+      "command": "python3 -B formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
+      "actual_exit_code": 0,
+      "log_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/canonical-belief-evidence-20261027/consumer-checks-01/full-01.log",
+      "log_sha256": "39edaad45b12e51454a502c64cd1e0b625b2fb01ddb780d5693239e3d482dce6",
+      "tests_executed": 70,
+      "test_reported_seconds": 3.524,
+      "result": "OK"
+    },
+    {
+      "label": "parser",
+      "command": "python3 -B formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_pr_preflight.py",
+      "actual_exit_code": 0,
+      "log_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/canonical-belief-evidence-20261027/consumer-checks-01/parser-01.log",
+      "log_sha256": "e7a8ba7e14d8e1587ea214ee214c605ae4fa0d9729a196b8df1cae0283e80a01",
+      "tests_executed": 89,
+      "test_reported_seconds": 25.187,
+      "result": "OK"
+    },
+    {
+      "label": "fkrg",
+      "command": "python3 -B formalization/ueot-core/docs/compression/theory_completion/knowledge/test_fkrg.py",
+      "actual_exit_code": 0,
+      "log_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/canonical-belief-evidence-20261027/consumer-checks-01/fkrg-01.log",
+      "log_sha256": "b5b27765af3348e3460ce3b6e57f94646b8052b5ca3781b2305672936a28ca5e",
+      "tests_executed": 30,
+      "test_reported_seconds": 7.193,
+      "result": "OK"
+    },
+    {
+      "label": "clones",
+      "command": "python3 -B formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py",
+      "actual_exit_code": 0,
+      "log_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/canonical-belief-evidence-20261027/consumer-checks-01/clones-01.log",
+      "log_sha256": "4c3c4972fb549c2e6bc3c150350e88b23c100ff348a0f32041a56603ba9134a1",
+      "result": {
+        "status": "PASS",
+        "cross_file_proof_related_code_clone_pairs": 68,
+        "length_15_plus": 12,
+        "max_code_lines": 31,
+        "kind": "exact normalized source snippet matching, NOT logical theorem equivalence"
+      }
+    },
+    {
+      "label": "status",
+      "command": "python3 -B formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py --json status",
+      "actual_exit_code": 0,
+      "log_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/canonical-belief-evidence-20261027/consumer-checks-01/status-01.log",
+      "log_sha256": "164e5bbe47666a6734c547be43fc58b22fc692a1ea3cd6395a322c7a1bb0b319"
+    },
+    {
+      "label": "diff",
+      "command": "git diff --check HEAD -- formalization/ueot-core/UEOT formalization/ueot-core/docs/compression ':(exclude)**/*.log'",
+      "actual_exit_code": 0,
+      "log_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/canonical-belief-evidence-20261027/consumer-checks-01/diff-01.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "result": "PASS_NO_WHITESPACE_ERRORS"
+    },
+    {
+      "label": "diff_final",
+      "command": "git diff --check HEAD -- formalization/ueot-core/UEOT formalization/ueot-core/docs/compression ':(exclude)**/*.log'",
+      "actual_exit_code": 0,
+      "log_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/canonical-belief-evidence-20261027/consumer-checks-01/diff-02.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "result": "PASS_NO_WHITESPACE_ERRORS"
+    }
+  ],
+  "live_status": {
+    "module_source_hashes_verified": 701,
+    "ueot_maintained_modules": 690,
+    "vendor_modules": 11,
+    "public_source_theorems_with_direct_proof_graph": 4463,
+    "overlay_public_theorems": 670,
+    "overlay_count": 15,
+    "overlay_registered_direct_edges": 1020,
+    "overlay_lexical_reuse_candidates": 177,
+    "crossfile_exact_code_clone_candidates": 68,
+    "registered_graph_direct_edges": 5907
+  },
+  "new_tests": [
+    "ProofReuseTests.test_observable_belief_actual_c1_and_finite_test_reuse",
+    "ProofReuseTests.test_observable_belief_native_ownership_and_registered_edges",
+    "ProofReuseTests.test_observable_belief_registration_preserves_raw_execution",
+    "ProofReuseTests.test_observable_belief_witness_no_quotient_and_readout_contracts"
+  ],
+  "native_classification": {
+    "all_owned": 84,
+    "public_lexical_theorem_lemma_candidates": 30,
+    "private": 19,
+    "other_public_outside_lexical": 35,
+    "named_public_prop_instances": 4,
+    "compiler_generated_other_public": 31,
+    "named_instance_names": [
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.observation_isMarkov",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.quotientKernel_isMarkov",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.source_isMarkov",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.badSource_isMarkov"
+    ],
+    "classification_authority": "Compiler source_module ownership, including generated constants with older logical namespaces",
+    "axiom_policy": "Actual transitive closure is contained in propext/Classical.choice/Quot.sound; no fixed per-axiom count or invented axiom classification"
+  },
+  "artifact_sha256s": {
+    "OBSERVABLE_BELIEF_REUSE_OVERLAY_V1.json": "9e4440d2ef4b101dbadc09b5e02b11d766126b73b8953c60182da64320c247db",
+    "OBSERVABLE_BELIEF_NATIVE_V1.json": "3bee681d5f501a9eb2cd397ae5190bbafa73e96a62a8f203284dd5933a5bdf0b",
+    "VERIFY_OBSERVABLE_BELIEF_OVERLAY_TYPES.lean": "f953b3ffe81fbe86ed952c070aea7d2d3cb06edb8a01e378bd421e927c76c652"
+  },
+  "registration": {
+    "receipt_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/observable_belief_v1/actual-execution/native-01/REGISTRATION_RECEIPT.json",
+    "receipt_sha256": "4025907aedd89f149673f302e0155d51e0b49c54099da2d99189ed9b97b5aeb8",
+    "provenance_input_references": 39,
+    "metadata_additions_only": true,
+    "native_and_fixed_complete_json_equal": true,
+    "native_and_fixed_log_bytes_equal": true
+  },
+  "preservation": {
+    "prior_overlay_layers": 14,
+    "old_overlay_certificate_native_and_clone_assets_byte_verified": 40,
+    "evidence_manifest_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/canonical-belief-evidence-20261027/consumer-checks-01/APPLIED_CONSUMERS.json",
+    "evidence_manifest_sha256": "0e4db4fdaaedf76b83303c7262fe5de518691b8e454f6141b88be33cebd6edb7",
+    "clone_asset_sha256": "e369d3eee8fe5383532bf68c18ed08ec961d9710b4d600da3edc11a243ebc064",
+    "clone_algorithm_unchanged_docstring_only": true,
+    "old_layer_1_to_14_readme_sections_byte_unchanged": true,
+    "existing_tests_unchanged": 63,
+    "existing_current_census_tests_updated": [
+      "ProofReuseTests.test_calibrated_defect_overlay_chain_and_kernel_graph",
+      "ProofReuseTests.test_evidence_and_sources_exact_baseline",
+      "ProofReuseTests.test_new_lean_module_cannot_be_omitted_from_index"
+    ]
+  },
+  "dag": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/UMC_GLOBAL_MODULE_DAG_V4.json",
+    "sha256": "ddb9c216ac3b126fab3c30df4d4510b416b542e98bb9ad4f7733f358c9be76fa",
+    "generator_command": "python3 -B formalization/ueot-core/docs/compression/theory_completion/unified_closure/build_umc_global_map.py",
+    "latest_generator_exit_code": 0,
+    "latest_generator_log": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/canonical-belief-evidence-20261027/consumer-checks-01/dag-generation-02.log",
+    "latest_generator_log_sha256": "cb12f51500aae348723876614689a4823fcdb17e2cee79b9c47b85942c35c2ab",
+    "modules": 701,
+    "root_reachable": 701,
+    "cycles": [],
+    "missing_internal_imports": {},
+    "unreachable": [],
+    "source_semantics": "Import/source metadata, not an independent Lean proof execution"
+  },
+  "retained_prior_execution_failure": {
+    "receipt_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/canonical-belief-evidence-20261027/full-build-01/FULL_BUILD_RECEIPT.json",
+    "receipt_sha256": "fb4704229108c89b187eddd29d6050ead804a4e05b09044836925946d7b30cfe",
+    "state": "FAILED",
+    "actual_exit_code": 1,
+    "source_tree_sha256": "93fc9d7bbc8fa2f1c909654aada20fa745c4a17bf31d06374b03a7efe8b1f3f0",
+    "cause": "Root imports were initially after the doc comment; root corrected their placement before FROZEN_INPUTS_03. The failed receipt/log remain preserved.",
+    "final_build_receipt_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/canonical-belief-evidence-20261027/full-build-02/FULL_BUILD_RECEIPT.json",
+    "final_build_receipt_sha256": "0a0cfcf891d27a8005894893a81b56f5ecd531b7dfdd82bc3eb14b557f13db79",
+    "final_build_state": "PASS",
+    "final_build_actual_exit_code": 0
+  },
+  "resolved_documentation_correction": {
+    "file": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
+    "previous_wording": "binds 39 input references; its archive contains 43 files.",
+    "final_wording": "binds 39 input references covering native execution, build evidence and the executed drivers.",
+    "reason": "43 denotes planned registration output files, not the native-01 directory size. The explicit 39 provenance-reference count is verified against the actual receipt.",
+    "verification": "Final source/docs diff check and seven new documentation references passed; no application code changed after the full tests."
+  },
+  "documentation_references": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/canonical-belief-evidence-20261027/consumer-checks-01/DOC_REFERENCES.json",
+    "sha256": "a9405b2636f08ec5dbb014ae980464a00ef651cfbec421c44fbcd68768bc6dd8",
+    "checks": 7,
+    "state": "PASS"
+  },
+  "failed_consumer_test_runs": [],
+  "findings": [],
+  "limits": [
+    "Root whole-UMC/full audit and publication/resulting-main gates are separate; this receipt does not claim their completion.",
+    "Counted classifications and scientific scope remain unchanged: NOT_ESTABLISHED global closure and UNVERIFIED external evidence."
+  ]
+}

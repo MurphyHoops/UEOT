@@ -20,26 +20,26 @@ class ProofReuseTests(unittest.TestCase):
 
     def test_evidence_and_sources_exact_baseline(self):
         res = reuse.status(self.data)
-        self.assertEqual(res["module_source_hashes_verified"], 699)
-        self.assertEqual(res["ueot_maintained_modules"], 688)
+        self.assertEqual(res["module_source_hashes_verified"], 701)
+        self.assertEqual(res["ueot_maintained_modules"], 690)
         self.assertEqual(res["vendor_modules"], 11)
-        self.assertEqual(res["public_source_theorems_with_direct_proof_graph"], 4433)
+        self.assertEqual(res["public_source_theorems_with_direct_proof_graph"], 4463)
         self.assertEqual(res["verified_equal_type_groups"], 37)
         self.assertEqual(res["equal_type_statement_names"], 77)
         self.assertEqual(res["near_type_not_defeq_candidate_pairs"], 15)
         self.assertEqual(res["crossfile_exact_code_clone_candidates"], 68)
-        self.assertEqual(res["overlay_public_theorems"], 640)
+        self.assertEqual(res["overlay_public_theorems"], 670)
         self.assertEqual(res["overlay_cross_snapshot_defeq_matches"], 0)
-        self.assertEqual(res["overlay_lexical_reuse_candidates"], 172)
-        self.assertEqual(res["overlay_count"], 14)
-        self.assertEqual(res["overlay_registered_direct_edges"], 991)
+        self.assertEqual(res["overlay_lexical_reuse_candidates"], 177)
+        self.assertEqual(res["overlay_count"], 15)
+        self.assertEqual(res["overlay_registered_direct_edges"], 1020)
         self.assertEqual(res["overlay_historical_public_repairs"], 1)
         self.assertEqual(res["overlay_existing_registered_direct_edge_repairs"], 1)
         self.assertEqual(sum(len(json.loads(row["source_theorem_deps_json"]))
-                             for row in self.data["graph"].values()), 5878)
+                             for row in self.data["graph"].values()), 5907)
 
     def test_calibrated_defect_overlay_chain_and_kernel_graph(self):
-        self.assertEqual(len(self.data["overlays"]), 14)
+        self.assertEqual(len(self.data["overlays"]), 15)
         prior, current = self.data["overlays"][:2]
         self.assertEqual(prior["base_snapshot_modules"], 633)
         self.assertEqual(current["base_snapshot_modules"], 634)
@@ -1744,6 +1744,236 @@ class ProofReuseTests(unittest.TestCase):
         self.assertEqual(lexical["new_theorems_with_lexical_reuse_candidates"], 17)
 
 
+    def test_observable_belief_native_ownership_and_registered_edges(self):
+        current = self.data["overlays"][14]
+        prefix = "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure."
+        modules = {prefix + name for name in (
+            "ObservableBeliefQuotient", "ObservableBeliefQuotientWitness")}
+        self.assertEqual(current["base_snapshot_modules"], 699)
+        self.assertEqual(current["prior_overlay"]["sha256"], reuse.OVERLAY_SHA256S[13])
+        self.assertEqual(current["baseline_ref"], "e045cca43a94abbff00fd0da53e6200e0bd6ae2e")
+        self.assertEqual(current["source_checkpoint"],
+                         "worktree-sha256:778b37210962b487cedd2d5d50e9fa95c1297987ec4e18630da7fbc1ccd883c2")
+        self.assertEqual(current["source_checkpoint_kind"], "FROZEN_SOURCE_CONTENT_BEFORE_GIT_COMMIT")
+        self.assertEqual(current["scientific_role"],
+                         "UNCOUNTED_OBSERVABLE_BELIEF_KERNEL_DESCENT")
+        self.assertEqual(current["counted_core_impact"], "NONE")
+        self.assertEqual(current["scientific_closure"], "NOT_ESTABLISHED")
+        self.assertNotIn("historical_public_repairs", current)
+        self.assertNotIn("existing_proof_dependency_repairs", current)
+        self.assertEqual({row["module"] for row in current["added_modules"]}, modules)
+        evidence = current["native_export_evidence"]
+        artifact = reuse.REPO / evidence["path"]
+        native_sha = "3bee681d5f501a9eb2cd397ae5190bbafa73e96a62a8f203284dd5933a5bdf0b"
+        self.assertEqual(evidence["sha256"], native_sha)
+        self.assertEqual(reuse.sha256(artifact.read_bytes()).hexdigest(), native_sha)
+        native = json.loads(artifact.read_text())
+        self.assertEqual(native["schema"], "OBSERVABLE_BELIEF_NATIVE_EXPORT_V1")
+        self.assertEqual(native["collisions"], [])
+        scope = native["all_native_theorem_constants"]
+        by_name = {row["name"]: row for row in scope}
+        self.assertEqual(len(scope), 84)
+        self.assertEqual(len(by_name), len(scope))
+        self.assertEqual(sum(row["is_private"] for row in scope), 19)
+        self.assertEqual({row["source_module"] for row in scope}, modules)
+        fields = {"name", "source_module", "is_private", "level_parameters", "type",
+                  "direct_constants", "direct_theorem_constants", "axioms"}
+        for row in scope:
+            with self.subTest(native_symbol=row["name"]):
+                self.assertEqual(set(row), fields)
+                self.assertTrue(set(row["axioms"]) <= {"propext", "Classical.choice", "Quot.sound"})
+                self.assertTrue(set(row["direct_theorem_constants"]) <= set(row["direct_constants"]))
+        public = {row["name"]: row for row in current["public_theorems"]}
+        native_public = {row["name"]: row for row in native["public_source_theorems"]}
+        self.assertEqual(len(public), 30)
+        self.assertEqual(set(public), set(native_public))
+        self.assertEqual(sum(not row["is_private"] and row["name"] not in public
+                             for row in scope), 35)
+        named_instances = {
+            prefix + "ObservableBeliefQuotient.observation_isMarkov",
+            prefix + "ObservableBeliefQuotient.quotientKernel_isMarkov",
+            prefix + "ObservableBeliefQuotientWitness.source_isMarkov",
+            prefix + "ObservableBeliefQuotientWitness.badSource_isMarkov",
+        }
+        other_public = {row["name"] for row in scope if not row["is_private"] and row["name"] not in public}
+        self.assertTrue(named_instances <= other_public)
+        self.assertEqual(len(other_public - named_instances), 31)
+        for name in named_instances:
+            self.assertEqual(by_name[name]["source_module"], name.rsplit(".", 1)[0])
+            self.assertNotIn(name, self.data["graph"])
+        generated = by_name["UEOT.V3.GeneralBayesPosterior.predictedLaw.eq_1"]
+        self.assertEqual(generated["source_module"], prefix + "ObservableBeliefQuotient")
+        self.assertIn(generated["name"], other_public - named_instances)
+        edges = set()
+        for name, row in public.items():
+            with self.subTest(public_symbol=name):
+                full = by_name[name]
+                self.assertFalse(full["is_private"])
+                self.assertEqual(row["source_module"], full["source_module"])
+                for field in ("source_module", "level_parameters", "type", "direct_constants"):
+                    self.assertEqual(native_public[name][field], full[field])
+                actual = (set(full["direct_constants"]) & set(self.data["graph"])) - {name}
+                self.assertEqual(set(row["source_theorem_deps"]), actual)
+                self.assertEqual(set(native_public[name]["source_theorem_deps"]), actual)
+                edges.update((name, target) for target in actual)
+        certified = current["proof_dependency_certification"]
+        self.assertEqual(edges, {(row["source"], row["target"]) for row in certified["edges"]})
+        self.assertEqual(len(edges), certified["registered_direct_edges"])
+        self.assertEqual(len(edges), 29)
+        distinct = current["type_distinctness"]
+        self.assertEqual(distinct["registered_prior_theorems"], 4433)
+        self.assertEqual(distinct["definitionally_equal_matches"], 0)
+        for field, expected in (
+                ("cross_isDefEq_comparisons", 30 * 4433),
+                ("internal_isDefEq_comparisons", 30 * 29 // 2)):
+            self.assertEqual(distinct[field], expected)
+            self.assertEqual(native[field], expected)
+
+    def test_observable_belief_actual_c1_and_finite_test_reuse(self):
+        prefix = "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure."
+        quotient = prefix + "ObservableBeliefQuotient."
+        c1 = "UEOT.V3.Compression.TheoryCompletion.ScientificClosure."
+        expected = {
+            "coordinate_real_image": {quotient + "coordinate_liftBelief"},
+            "coordinate_image_isClosed": {quotient + "coordinate_real_image"},
+            "actual_kernel_coordinate_law": {
+                c1 + "measurable_c1ParametricPosteriorBelief",
+                c1 + "c1BeliefTransitionKernel_apply_eq_map", quotient + "measurable_coordinate"},
+            "quotientKernel_factor": {
+                quotient + "measurable_coordinate", quotient + "actual_kernel_coordinate_law",
+                quotient + "closed_tests_predictive_law", quotient + "coordinate_liftBelief"},
+            "quotientKernel_unique": {quotient + "quotientKernel_factor", quotient + "coordinate_liftBelief"},
+            "closed_tests_of_quotient": {quotient + "actual_kernel_coordinate_law"},
+            "closed_tests_iff_existsUnique_quotient": {
+                quotient + "quotientKernel_factor", quotient + "quotientKernel_unique",
+                quotient + "closed_tests_of_quotient"},
+            "finite_test_response_factors": {quotient + "closed_tests_prefix_response"},
+            "same_coordinate_same_tests": {quotient + "finite_test_response_factors"},
+            "testExpectation_mem_unit": {quotient + "testResponse_le_one"},
+        }
+        for name, dependencies in expected.items():
+            with self.subTest(symbol=name):
+                self.assertEqual(set(reuse.explain(self.data, quotient + name)[
+                    "direct_existing_source_theorem_uses"]), dependencies)
+        current = self.data["overlays"][14]
+        native = json.loads((reuse.REPO / current["native_export_evidence"]["path"]).read_text())
+        by_name = {row["name"]: row for row in native["all_native_theorem_constants"]}
+        posterior = [row for row in by_name.values()
+                     if row["name"].endswith(".ObservableBeliefQuotient.posterior_observable_ae")]
+        self.assertEqual(len(posterior), 1)
+        self.assertTrue(posterior[0]["is_private"])
+        self.assertNotIn(posterior[0]["name"], self.data["graph"])
+        self.assertIn(posterior[0]["name"], by_name[quotient + "actual_kernel_coordinate_law"][
+            "direct_theorem_constants"])
+        self.assertIn(c1 + "c1ParametricPosteriorKernel_ae_eq_existing",
+                      posterior[0]["direct_theorem_constants"])
+        self.assertTrue(any(name.endswith(".deterministic_comp_posterior")
+                            for name in posterior[0]["direct_theorem_constants"]))
+        for row in current["public_theorems"]:
+            self.assertEqual(reuse.explain(self.data, row["name"])["role"],
+                             "UNCOUNTED_OBSERVABLE_BELIEF_KERNEL_DESCENT")
+
+    def test_observable_belief_witness_no_quotient_and_readout_contracts(self):
+        current = self.data["overlays"][14]
+        native = json.loads((reuse.REPO / current["native_export_evidence"]["path"]).read_text())
+        by_name = {row["name"]: row for row in native["all_native_theorem_constants"]}
+        prefix = "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure."
+        quotient = prefix + "ObservableBeliefQuotient."
+        witness = prefix + "ObservableBeliefQuotientWitness."
+        expected = {
+            "probe_test_is_coordinate": {quotient + "first_test_eq_observation", witness + "probe_observation_law"},
+            "predictive_equivalence_iff": {
+                witness + "probe_test_is_coordinate", quotient + "same_coordinate_same_tests", witness + "source_closed"},
+            "actual_C1_descends": {quotient + "quotientKernel_factor", witness + "source_closed"},
+            "aliases_have_all_same_future_tests": {witness + "predictive_equivalence_iff"},
+            "no_quotient_without_closed_tests": {quotient + "closed_tests_of_quotient"},
+            "reward_readout_factors": {quotient + "observation_reward_factors"},
+            "safe_readout_factors": {quotient + "safe_class_probability"},
+        }
+        for name, dependencies in expected.items():
+            with self.subTest(symbol=name):
+                self.assertEqual(set(reuse.explain(self.data, witness + name)[
+                    "direct_existing_source_theorem_uses"]), dependencies)
+        aliases = [row for row in by_name.values()
+                   if row["name"].endswith(".ObservableBeliefQuotientWitness.alias_coordinates")]
+        self.assertEqual(len(aliases), 1)
+        self.assertTrue(aliases[0]["is_private"])
+        self.assertNotIn(aliases[0]["name"], self.data["graph"])
+        for name in ("aliases_have_all_same_future_tests", "hidden_readouts_do_not_descend"):
+            self.assertIn(aliases[0]["name"], by_name[witness + name]["direct_theorem_constants"])
+        no_quotient = " ".join(by_name[witness + "no_quotient_without_closed_tests"]["type"].split())
+        self.assertIn("¬∃", no_quotient.replace(" ", ""))
+        self.assertIn("c1BeliefTransitionKernel", no_quotient)
+        readouts = by_name[witness + "hidden_readouts_do_not_descend"]["type"]
+        self.assertIn("hiddenReward", readouts)
+        self.assertIn("hiddenSafe", readouts)
+
+    def test_observable_belief_registration_preserves_raw_execution(self):
+        current = self.data["overlays"][14]
+        provenance = current["registration_provenance"]
+        additions = {"lexical_pr_preflight", "registration_provenance"}
+        self.assertEqual(provenance["schema"], "OBSERVABLE_BELIEF_REGISTRATION_PROVENANCE_V1")
+        self.assertEqual(set(provenance["metadata_additions_only"]), additions)
+        self.assertTrue(provenance["raw_evidence_bytes_preserved"])
+        self.assertFalse(provenance["consumer_registry_modified"])
+        self.assertEqual(provenance["git_object_pr_preflight"], "NOT_PERFORMED_SEPARATE_GATE")
+        fingerprint = "778b37210962b487cedd2d5d50e9fa95c1297987ec4e18630da7fbc1ccd883c2"
+        self.assertEqual(provenance["source_tree_sha256"], fingerprint)
+        self.assertEqual(provenance["baseline_ref"], current["baseline_ref"])
+        inputs = provenance["inputs"]
+        self.assertEqual(len({(row["role"], row["path"]) for row in inputs}), len(inputs))
+        for row in inputs:
+            with self.subTest(archived_input=row["path"]):
+                path = reuse.REPO / row["path"]
+                self.assertTrue(path.resolve().is_relative_to(reuse.REPO.resolve()))
+                self.assertEqual(reuse.sha256(path.read_bytes()).hexdigest(), row["sha256"])
+        raw_rows = [row for row in inputs if row["role"] == "actual_native_output"
+                    and row["path"].endswith("/OBSERVABLE_BELIEF_REUSE_OVERLAY_V1.json")]
+        self.assertEqual(len(raw_rows), 1)
+        raw_path = reuse.REPO / raw_rows[0]["path"]
+        raw = json.loads(raw_path.read_text())
+        self.assertEqual(set(current) - set(raw), additions)
+        self.assertEqual({key: value for key, value in current.items() if key not in additions}, raw)
+        archive = raw_path.parent
+        self.assertEqual((archive / "REGISTERED_OVERLAY.json").read_bytes(), reuse.OVERLAY_PATHS[14].read_bytes())
+        receipt = json.loads((archive / "REGISTRATION_RECEIPT.json").read_text())
+        self.assertEqual(receipt["schema"], "OBSERVABLE_BELIEF_REGISTRATION_RECEIPT_V1")
+        self.assertEqual(receipt["state"], "PASS_METADATA_ONLY_CONSUMER_UNCHANGED")
+        self.assertEqual(receipt["raw_overlay_sha256"], raw_rows[0]["sha256"])
+        self.assertEqual(receipt["registered_overlay"]["sha256"], reuse.OVERLAY_SHA256S[14])
+        self.assertEqual(set(receipt["added_top_level_keys"]), additions)
+        self.assertTrue(receipt["stripped_registered_json_equals_raw"])
+        self.assertIsNone(receipt["candidate_ref"])
+        self.assertEqual(receipt["input_files"], inputs)
+        preflight = json.loads((archive / "SOURCE_PREFLIGHT.json").read_text())
+        self.assertEqual(preflight["status"], "PENDING_ACTUAL_NATIVE_EXECUTION")
+        self.assertEqual(preflight["source_tree_sha256"], fingerprint)
+        self.assertEqual(preflight["complete_source_modules"], 701)
+        self.assertEqual(preflight["added_modules"], current["added_modules"])
+        frozen = json.loads((archive / "FROZEN_INPUTS.json").read_text())
+        self.assertEqual(frozen["source_tree_sha256"], fingerprint)
+        self.assertEqual(frozen["new_public"], 30)
+        self.assertEqual(frozen["lexical_hinted"], 5)
+        self.assertEqual(set(frozen["public_source_names"]),
+                         {row["name"] for row in current["public_theorems"]})
+        execution = json.loads((archive / "STATUS.json").read_text())
+        self.assertEqual(execution["state"], "PASS_PENDING_INDEPENDENT_REVIEW_AND_REGISTRATION")
+        self.assertTrue(current["native_execution"]["fixed_export_equals_initial_native_export"])
+        self.assertEqual(json.loads((archive / "observed_first_native.json").read_text()),
+                         json.loads((reuse.REPO / current["native_export_evidence"]["path"]).read_text()))
+        for row in current["native_execution"]["results"]:
+            log = archive / ("native_export.log" if row["label"] == "native_export" else "fixed_verifier.log")
+            self.assertEqual(row["exit_code"], 0)
+            self.assertEqual(reuse.sha256(log.read_bytes()).hexdigest(), row["log_sha256"])
+        lexical = current["lexical_pr_preflight"]
+        self.assertIsNone(lexical["candidate_ref"])
+        self.assertEqual(lexical["new_public_source_theorem_count"], 30)
+        self.assertEqual(lexical["base_public_lexical_theorem_count"], 4433)
+        self.assertEqual(lexical["candidate_public_lexical_theorem_count"], 4463)
+        self.assertEqual(lexical["candidate_registered_public_source_theorem_count"], 4463)
+        self.assertEqual(lexical["new_theorems_with_lexical_reuse_candidates"], 5)
+
+
     def test_historical_apostrophe_registration_and_existing_incoming_edge(self):
         current = self.data["overlays"][7]
         helper = "UEOT.V3.FreeInformationValue.integrable_finset_sup'"
@@ -1910,7 +2140,7 @@ class ProofReuseTests(unittest.TestCase):
 
     def test_new_lean_module_cannot_be_omitted_from_index(self):
         live = reuse.live_source_paths()
-        self.assertEqual(len(live), 699)
+        self.assertEqual(len(live), 701)
         new = "formalization/ueot-core/UEOT/V3/FutureNovelLemma.lean"
         with mock.patch.object(reuse, "live_source_paths", return_value=live | {new}):
             with self.assertRaisesRegex(RuntimeError, "STALE_AUDIT_SOURCE_SET"):

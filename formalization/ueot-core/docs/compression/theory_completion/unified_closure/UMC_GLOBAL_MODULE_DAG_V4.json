@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "source_tree_sha256": "4b5145e874601392568293c1d561684e6d0478f2676dc20accf04a8080c3261d",
+  "source_tree_sha256": "778b37210962b487cedd2d5d50e9fa95c1297987ec4e18630da7fbc1ccd883c2",
   "scope": "literal first-party UEOT Lean source files and their direct imports",
   "source_semantics": "metadata audit, NOT independent theorem-source semantic certification",
-  "total_Lean_modules": 699,
-  "total_source_lines": 129022,
-  "total_theorem_lemma_tokens": 4734,
+  "total_Lean_modules": 701,
+  "total_source_lines": 129719,
+  "total_theorem_lemma_tokens": 4779,
   "category_counts": {
     "Core_v3_and_Substrate": 306,
     "Compression_Frozen_Bridges": 62,
@@ -14,9 +14,9 @@
     "Objecthood": 88,
     "P0_P12_TheoryCompletion": 57,
     "C1_C7_SISC": 55,
-    "UMC_New_Bridges": 100
+    "UMC_New_Bridges": 102
   },
-  "reachable_from_UEOT_root": 699,
+  "reachable_from_UEOT_root": 701,
   "not_reachable_from_UEOT_root": [],
   "cycles_detected": [],
   "missing_internal_imports": {},
@@ -256,7 +256,7 @@
     {
       "from": "Compression_Frozen_Bridges",
       "to": "UMC_New_Bridges",
-      "edges": 100
+      "edges": 102
     },
     {
       "from": "Core_v3_and_Substrate",
@@ -331,7 +331,7 @@
     {
       "from": "UMC_New_Bridges",
       "to": "C1_C7_SISC",
-      "edges": 21
+      "edges": 22
     },
     {
       "from": "UMC_New_Bridges",
@@ -3446,8 +3446,8 @@
     },
     "UEOT.V3.Compression.TheoryCompletion": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
-      "bytes": 14518,
-      "lines": 184,
+      "bytes": 14693,
+      "lines": 186,
       "category": "Compression_Frozen_Bridges",
       "title": "UEOT Theory Completion public root",
       "imports": [
@@ -3625,7 +3625,9 @@
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
-        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness"
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness"
       ],
       "theorem_lemma_count": 0,
       "decl_count": 0
@@ -5829,6 +5831,31 @@
       ],
       "theorem_lemma_count": 9,
       "decl_count": 11
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "bytes": 24584,
+      "lines": 498,
+      "category": "UMC_New_Bridges",
+      "title": "A binary generating-test quotient of the actual C1 belief kernel",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.C1ParametricBelief",
+        "Mathlib"
+      ],
+      "theorem_lemma_count": 30,
+      "decl_count": 39
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "bytes": 8824,
+      "lines": 197,
+      "category": "UMC_New_Bridges",
+      "title": null,
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient"
+      ],
+      "theorem_lemma_count": 15,
+      "decl_count": 26
     },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OrganizationalCoreAssembly": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OrganizationalCoreAssembly.lean",

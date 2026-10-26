@@ -1,0 +1,53 @@
+{
+  "schema": "OBSERVABLE_BELIEF_CONSUMER_COMMAND_RESULTS_V1",
+  "commands": [
+    {
+      "label": "focused",
+      "command": "python3 -B formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py -k observable_belief",
+      "actual_exit_code": 0,
+      "log_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/canonical-belief-evidence-20261027/consumer-checks-01/focused-01.log"
+    },
+    {
+      "label": "full",
+      "command": "python3 -B formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
+      "actual_exit_code": 0,
+      "log_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/canonical-belief-evidence-20261027/consumer-checks-01/full-01.log"
+    },
+    {
+      "label": "parser",
+      "command": "python3 -B formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_pr_preflight.py",
+      "actual_exit_code": 0,
+      "log_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/canonical-belief-evidence-20261027/consumer-checks-01/parser-01.log"
+    },
+    {
+      "label": "fkrg",
+      "command": "python3 -B formalization/ueot-core/docs/compression/theory_completion/knowledge/test_fkrg.py",
+      "actual_exit_code": 0,
+      "log_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/canonical-belief-evidence-20261027/consumer-checks-01/fkrg-01.log"
+    },
+    {
+      "label": "clones",
+      "command": "python3 -B formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py",
+      "actual_exit_code": 0,
+      "log_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/canonical-belief-evidence-20261027/consumer-checks-01/clones-01.log"
+    },
+    {
+      "label": "status",
+      "command": "python3 -B formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py --json status",
+      "actual_exit_code": 0,
+      "log_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/canonical-belief-evidence-20261027/consumer-checks-01/status-01.log"
+    },
+    {
+      "label": "diff",
+      "command": "git diff --check HEAD -- formalization/ueot-core/UEOT formalization/ueot-core/docs/compression ':(exclude)**/*.log'",
+      "actual_exit_code": 0,
+      "log_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/canonical-belief-evidence-20261027/consumer-checks-01/diff-01.log"
+    },
+    {
+      "label": "diff_final",
+      "command": "git diff --check HEAD -- formalization/ueot-core/UEOT formalization/ueot-core/docs/compression ':(exclude)**/*.log'",
+      "actual_exit_code": 0,
+      "log_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/canonical-belief-evidence-20261027/consumer-checks-01/diff-02.log"
+    }
+  ]
+}

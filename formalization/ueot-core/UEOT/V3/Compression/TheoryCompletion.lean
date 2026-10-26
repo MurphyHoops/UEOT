@@ -173,6 +173,8 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportCont
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness
 /-!
 # UEOT Theory Completion public root
 
