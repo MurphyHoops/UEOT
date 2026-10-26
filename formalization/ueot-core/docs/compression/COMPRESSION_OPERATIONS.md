@@ -136,8 +136,8 @@ settings with `gh workflow list --repo MurphyHoops/UEOT --all --json id,name,pat
 
 For Lean-source changes, verify the resulting `main` with the cached local
 `lake build UEOT` regression and record the actual source identity and outcome.
-The manual `UEOT Core Lean` workflow remains available for an independently requested
-cloud run. `Compression Guard` does not duplicate the full UEOT target.
+A future cloud run requires an explicit user request and re-enabling the relevant
+workflow first. `Compression Guard` does not duplicate the full UEOT target.
 
 ### L2/L3
 
