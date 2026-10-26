@@ -1,0 +1,220 @@
+{
+  "schema": "UEOT_TOTAL_KERNEL_MEMORY_EXACT_SOURCE_TYPED_REVIEW_V1",
+  "observed_at": "2026-10-26T15:53:02.257220+00:00",
+  "status": "CLEAR",
+  "candidate_sha": "d0f4d14d4ac0cb931ac790c7bea85c9f31a6999f",
+  "parent_sha": "e4f5007e25441cf1d0dfcbf1a5c5a377a0dcbf3f",
+  "reviewer_role": "independent read-only source, assumption-boundary and evidence reviewer",
+  "git_preflight": {
+    "path": "/tmp/ueot-r0-git-preflight-20261026.json",
+    "sha256": "20d4dfecb80063225e12422169f0c4de918fbb3fc4f412bf4f1aeac6048158cf",
+    "reported_status": "PASS_WITH_TYPED_REUSE_REVIEW_REQUIRED",
+    "semantic_reuse_review_resolved": true
+  },
+  "source_review_binding": {
+    "files": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindow.lean",
+        "sha256": "688792bc4110338cfa80076e08231ecdb80bf1a92856802438ea4cc848c33595"
+      },
+      {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindowWitness.lean",
+        "sha256": "27ca193467164914dac94dafa55deb46bd26dabc4c5b0b8573ba9ed3f45dc527"
+      },
+      {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/HomogeneousMemorySurvival.lean",
+        "sha256": "7d9eecdd4013fa029a1c0e8f0f20b72faf9fe46a8329136f8947be9db68f701b"
+      }
+    ],
+    "all_match_prior_678_line_semantic_review": true
+  },
+  "protected_input_verification": {
+    "baseline_sha": "41c4b27ef8d993c797b2414311f0934eeb4cb561",
+    "prior_module_count": 691,
+    "prior_exact_byte_unchanged": 690,
+    "only_prior_source_change": "TheoryCompletion.lean contains exactly the three new import lines; removing those lines yields the exact baseline blob.",
+    "candidate_module_count": 694,
+    "all_candidate_git_source_bytes_match_successful_build_manifest": true,
+    "source_tree_sha256": "2a0482a9717cc776b76383755a42b327ba132a04fbb6dfaea5c3ddb45da47b24",
+    "build_environment_files_unchanged": 3,
+    "current_read_only_identity_equals_original_and_current_success_receipts": true,
+    "runtime_executables_and_versions_checked": [
+      "lean",
+      "lake"
+    ],
+    "dependencies_checked_at_pinned_head_and_clean": 9,
+    "import_environment_matches": true
+  },
+  "scope_verification": {
+    "changed_paths": 110,
+    "new_packet_paths": 97,
+    "explicit_integration_paths": 13,
+    "all_within_authorized_r0_scope": true,
+    "deletions": 0,
+    "nonregular_file_modes": 0,
+    "qm_physics_or_workflow_changes": false,
+    "counted_ledger_promotion": "NONE"
+  },
+  "evidence_verification": {
+    "method": "Read actual Git blobs and assert their SHA256/byte lengths against pinned manifests; inspect statements and logs; do not infer pass from labels alone.",
+    "current_success": {
+      "receipt": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/full-build-20261026-02/FULL_BUILD_RECEIPT.json",
+      "exit_code": 0,
+      "seconds": 2.987,
+      "lake_jobs": 9400,
+      "receipt_and_log_hashes_match": true
+    },
+    "retained_current_failure": {
+      "receipt": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/full-build-20261026/FULL_BUILD_RECEIPT.json",
+      "exit_code": 1,
+      "seconds": 6.939,
+      "log_hash_matches": true,
+      "interrupted_system_call_errors_observed": true
+    },
+    "original_full_build": {
+      "exit_code": 0,
+      "seconds": 46.555,
+      "lake_jobs": 9400,
+      "log_hash_matches": true,
+      "input_identity_equals_current_success": true
+    },
+    "archive_pinned_references": 39,
+    "archive_distinct_target_files": 38,
+    "all_archive_reference_hashes_match": true,
+    "historical_packet_hashes_verified": 29,
+    "recovery_method_reference_counts": {
+      "EXISTING_LOCAL_EVIDENCE": 28,
+      "MATCHING_REPOSITORY_BYTES": 6,
+      "IMMUTABLE_BASE_GIT_BLOB": 1,
+      "DETERMINISTIC_ADAPTER_RECONSTRUCTION": 4
+    },
+    "registered_overlay_bytes_unchanged": true,
+    "stripped_registered_payload_equals_archived_raw_overlay": true,
+    "new_registration_receipt_honestly_identifies_archive_recovery": true,
+    "historical_registration_receipt_recovered": false,
+    "registration_reexecuted": false,
+    "recovery_receipt_and_script_hashes_match": true,
+    "test_evidence_assessment": "RELEASE_ACCEPTANCE explicitly describes author-observed command exits and summaries and does not assert newly archived raw test logs; reviewer did not repeat these tests.",
+    "results_and_boundaries_assessment": "Matches reviewed mathematics and preserves finite-horizon positivity, state-only projection, numerical homogeneity, no infinite conditioned-process implication, no executable-controller synthesis and no scientific-closure promotion."
+  },
+  "typed_semantic_reuse_review": {
+    "group_count": 5,
+    "pair_count": 9,
+    "method": "Read the complete current source declarations, hypotheses, definitions and proof call paths of each candidate pair; distinguish actual direct or transitive reuse from different event or source interfaces. No new native pairwise run was performed.",
+    "groups": [
+      {
+        "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.augmentedModel_transitionPMF",
+        "new_location": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/HomogeneousMemorySurvival.lean:68",
+        "pairs": [
+          {
+            "candidate": "UEOT.V3.Compression.ApproximateHistoryEncoder.representativeMacroModel_transitionPMF",
+            "candidate_location": "formalization/ueot-core/UEOT/V3/Compression/ApproximateHistoryEncoder.lean:98",
+            "disposition": "DIFFERENT_SEMANTIC_INTERFACE_SHARED_PMF_PRIMITIVES_REUSED",
+            "hypothesis_and_semantic_comparison": "The existing theorem requires a fixed surjective encoder C and a chosen representative and identifies the representative macro-model row with the encoded micro row. The new row maps z to (z, update m a (q z)), depending on the current memory and recorded action. It has no fixed surjective quotient or representative premise. Applying the existing theorem would require a new artificial quotient interface and would not itself establish the actual memory-update row.",
+            "actual_reuse": "The new proof directly uses Model.transitionPMF_apply_toReal, PMF.ext, and finite PMF toReal equality. It is a short row-adapter, not an independence or novelty claim."
+          },
+          {
+            "candidate": "UEOT.V3.Compression.ApproximateSemanticGauge.pushforwardTransitionPMF_relabel",
+            "candidate_location": "formalization/ueot-core/UEOT/V3/Compression/ApproximateSemanticGauge.lean:74",
+            "disposition": "DIFFERENT_SEMANTIC_INTERFACE_SHARED_PMF_PRIMITIVES_REUSED",
+            "hypothesis_and_semantic_comparison": "The existing theorem assumes an equivalence e of one target state space and e composed with q equals r, and transports an already constructed pushforward row under relabeling. The action- and memory-dependent graph map z to (z, update m a (q z)) is not supplied as such a whole-space equivalence; the new theorem establishes the original numerical row of a newly constructed augmented Model. The relabeling hypotheses and conclusion do not replace this obligation.",
+            "actual_reuse": "Ordinary PMF mapping and extensional equality are reused without adding unused relabeling hypotheses."
+          }
+        ]
+      },
+      {
+        "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.actual_finite_survival_eq_killed_mass",
+        "new_location": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/HomogeneousMemorySurvival.lean:155",
+        "pairs": [
+          {
+            "candidate": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.actual_survival_mass_eq_killed_pow_sum",
+            "candidate_location": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledPath.lean:320",
+            "disposition": "REUSED_TRANSITIVELY_WITH_ACTUAL_SOURCE_BRIDGE",
+            "hypothesis_and_semantic_comparison": "The existing theorem computes total survival for a stationary current-observation policy on a fixed finite Model. The new theorem concerns the original experiment driven by an autonomous finite-memory controller. The constructed augmented Model, observation Prod.snd and action law controller.action meet the existing stationary interface.",
+            "actual_reuse": "actual_finite_survival_eq_killed_mass -> projected_survival_mass -> SameSourceSafePrefixCheck.homogeneous_survival_real_eq_killed_pow_sum -> SameSourceKilledPathCheck.actual_survival_mass_eq_killed_pow_sum. FiniteMemoryPhysicalSafety.actual_state_prefix_event_mass and actual_safe_prefix_pullback establish equality with the original finite-memory experiment."
+          },
+          {
+            "candidate": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.actual_survival_terminal_mass_eq_killed_pow",
+            "candidate_location": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledPath.lean:277",
+            "disposition": "COVERED_BY_EXISTING_TOTAL_MASS_BRIDGE_NOT_A_DIRECT_PROOF_EDGE",
+            "hypothesis_and_semantic_comparison": "The existing theorem is a single-terminal joint survival mass for the stationary observation-policy experiment. The new theorem requires the total survival mass of the actual finite-memory experiment. One could apply the terminal theorem on augmented states and sum, but the already available total-mass bridge supplies precisely that required result.",
+            "actual_reuse": "The new proof uses the existing total-mass theorem through the bridge above. The old terminal and total theorems both reach state_terminal_mass_eq_killed_pow. No direct dependency on actual_survival_terminal_mass_eq_killed_pow is invented, and no independent result is claimed."
+          }
+        ]
+      },
+      {
+        "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.totalWindowRow_apply_toReal_of_pos",
+        "new_location": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindow.lean:35",
+        "pairs": [
+          {
+            "candidate": "UEOT.V3.FiniteDiscountedControl.FiniteProbabilityRow.ofRealRow_apply_toReal",
+            "candidate_location": "formalization/ueot-core/UEOT/V3/FiniteDiscountedApproxQuotient.lean:42",
+            "disposition": "REUSED_TRANSITIVELY",
+            "hypothesis_and_semantic_comparison": "The existing theorem converts a nonnegative finite row of sum one to its exact PMF values. The new positive remaining-survival hypothesis selects the positive totalWindowRow branch; finiteWindowRowPMF has already supplied the nonnegativity and normalization proofs required by the existing theorem.",
+            "actual_reuse": "totalWindowRow_apply_toReal_of_pos -> finiteWindowRowPMF_apply_toReal -> FiniteProbabilityRow.ofRealRow_apply_toReal."
+          }
+        ]
+      },
+      {
+        "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.windowPathLaw_prefix_atom",
+        "new_location": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindow.lean:89",
+        "pairs": [
+          {
+            "candidate": "UEOT.V3.ReflexiveStatePathLaw.historyPathLaw_prefix",
+            "candidate_location": "formalization/ueot-core/UEOT/V3/ReflexiveStatePathLaw.lean:141",
+            "disposition": "DIFFERENT_SEMANTIC_INTERFACE",
+            "hypothesis_and_semantic_comparison": "The existing theorem assumes a measurable Markov kernel and causal policy and proves unconditional consistency of an infinite complete-history measure with its recursively composed finite law. The new theorem assumes finite nonnegative Q, nonnegative eta, positive Z_T and n<=T and computes every conditioned prefix atom as a killed product times its remaining-survival weight divided by Z_T. General prefix consistency supplies neither the initial tilt nor the suffix-weight identity nor the zero-row cancellation needed for this formula.",
+            "actual_reuse": "The new proof uses causalLaw/pmfExtend recursion, finiteWindowRow normalization, and nonnegative remaining-survival recursion. The existing infinite-history consistency theorem cannot substitute for the new atom computation. This is an interface assessment, not a logical independence claim."
+          }
+        ]
+      },
+      {
+        "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_prefix_eq_actual",
+        "new_location": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindow.lean:195",
+        "pairs": [
+          {
+            "candidate": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.actual_state_prefix_eq",
+            "candidate_location": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean:137",
+            "disposition": "DIFFERENT_CONDITIONED_INTERFACE_WITH_SHARED_SOURCE_FOUNDATION",
+            "hypothesis_and_semantic_comparison": "The existing theorem identifies an unconditioned original finite-memory experiment after state projection with the finite prefix of its projected infinite state trajectory, allowing numerical rows to depend on time. The new theorem compares independently generated tilted time-dependent rows with a positive-survival-conditioned state prefix of the stationary original experiment. The unconditional projection identity does not prove the conditioning, tilt or changed row law.",
+            "actual_reuse": "The new proof uses actual_conditioned_prefix_mass and state_safe_atom_eq_matrixPathWeight. actual_conditioned_prefix_mass -> actual_prefix_survival_mass -> actual_state_path_eq_stationary_path supplies the same-source foundation. No direct dependency on this unrelated finite-memory prefix endpoint is invented."
+          },
+          {
+            "candidate": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.actual_augmented_prefix_eq",
+            "candidate_location": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryRealization.lean:268",
+            "disposition": "DIFFERENT_CONDITIONED_INTERFACE_WITH_SHARED_SOURCE_FOUNDATION",
+            "hypothesis_and_semantic_comparison": "The existing theorem replays actual recorded actions into initialized and updated memory and identifies the unconditioned state-memory prefix with the corresponding infinite augmented trajectory. The new theorem has no memory replay target: it identifies the survival-conditioned state prefix with independently generated finite-window rows. Augmentation alone does not establish the terminal survival tilt or the conditioned prefix weights.",
+            "actual_reuse": "The new proof reuses the existing actual conditioned-prefix mass calculation and same-source path bridge; it does not claim the unconditional augmentation theorem proves the conditioned identity."
+          },
+          {
+            "candidate": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.actual_state_prefix_eq_homogeneous_prefix",
+            "candidate_location": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean:171",
+            "disposition": "DIFFERENT_CONDITIONED_INTERFACE_WITH_SHARED_SOURCE_FOUNDATION",
+            "hypothesis_and_semantic_comparison": "The existing theorem relates the unconditioned stationary original action/state experiment, after action erasure, to a homogeneous infinite trajectory prefix. The new theorem assumes positive survival through T and identifies a horizon-dependent tilted initial PMF and totalized nonhomogeneous rows with the filtered experiment. The existing unconditional homogeneous prefix theorem does not supply these changes of law.",
+            "actual_reuse": "Both interfaces rest on actual_state_path_eq_stationary_path. The new theorem reaches it through actual_conditioned_prefix_mass and actual_prefix_survival_mass, and additionally proves all-atom finite-window weights including zero rows."
+          }
+        ]
+      }
+    ],
+    "logical_independence_claimed": false,
+    "scientific_novelty_claimed": false,
+    "type_inequality_used_as_independence_evidence": false
+  },
+  "retained_mathematical_limits": [
+    "The finite-window interpretation requires Z_T>0 and n<=T, including T=0.",
+    "The actual conditioned identity retains complete state prefixes, not reconstructed full action histories.",
+    "Homogeneous memory survival requires a fixed numerical source; support homogeneity alone is insufficient.",
+    "The state-memory chain need not make its state-only projection Markov.",
+    "No cross-horizon conditioned infinite process, positive infinite survival, QSD assumption or executable controller synthesis is supplied."
+  ],
+  "execution_scope": {
+    "repository_edits": false,
+    "lean_compilation_or_full_build_rerun": false,
+    "native_export_or_52140_pair_rerun": false,
+    "cloud_ci": false,
+    "gi_writes": false,
+    "runtime_version_queries_only": true
+  },
+  "blocking_findings": [],
+  "next_boundary": "A later evidence-only commit must preserve this candidate Lean source and environment identity; final Git/PR/resulting-main checks remain separate."
+}
