@@ -92,7 +92,7 @@ Normal post-FINAL research:
 5. at a meaningful milestone, run the Compression namespace checks;
 6. before first/final push, run the relevant local regression once;
 7. open one PR to `main`;
-8. obtain lightweight CI and one exact-head independent review against the local validation evidence;
+8. complete the applicable checks locally and obtain one exact-head independent review against that evidence;
 9. merge;
 10. run the resulting-main regression locally when Lean source changed;
 11. close/update the task tracker and Issue #146 current block;
@@ -119,20 +119,25 @@ Required when applicable:
 - exact-head independent review once at PR boundary.
 
 Documentation/registry-only changes do not run a Lean proof build solely because they live
-under `formalization/ueot-core/`. Automatic PR/`main` checks retain ownership, governance,
-source proof-escape scanning and evidence regressions. They explicitly report cloud Lean
-builds as **NOT RUN**, with local proof evidence supplied by the research PR.
+under `formalization/ueot-core/`.
 
-`UEOT Core Lean` is manual-only (`workflow_dispatch`). A manual `Compression Guard`
-dispatch additionally runs its Compression build, ledger Lean witnesses and axiom audit.
-Select the intended branch/ref explicitly; ordinary pushes do not launch either build.
+**Current local-only mode (2026-10-26, explicit user request):** GitHub workflows
+`UEOT Core Lean` (353886299), `UEOT Core Compression Guard` (367861810), and
+`UEOT Compression Research Base Policy` (371465469) are `disabled_manually`.
+Core PRs and `main` therefore use local Lean, ownership, proof-escape and evidence
+validation, with their actual commands/results recorded in the research PR.
+No cloud success is inferred from the absence of workflow runs.
+
+The workflow definitions remain available for a future explicitly requested re-enable;
+their dispatch entries do not run while the workflows are disabled. Recheck the actual
+settings with `gh workflow list --repo MurphyHoops/UEOT --all --json id,name,path,state`.
 
 ### Resulting main
 
 For Lean-source changes, verify the resulting `main` with the cached local
 `lake build UEOT` regression and record the actual source identity and outcome.
-The manual `UEOT Core Lean` workflow remains available for an independently requested
-cloud run. `Compression Guard` does not duplicate the full UEOT target.
+A future cloud run requires an explicit user request and re-enabling the relevant
+workflow first. `Compression Guard` does not duplicate the full UEOT target.
 
 ### L2/L3
 
