@@ -1,0 +1,344 @@
+{
+  "schema": "UEOT_MATHEMATICAL_CLOSURE_AUDIT_EVIDENCE_V1",
+  "observed_date": "2026-10-26",
+  "timezone": "Asia/Shanghai",
+  "repository": "MurphyHoops/UEOT",
+  "main": "41c4b27ef8d993c797b2414311f0934eeb4cb561",
+  "report": "MATHEMATICAL_CLOSURE_AUDIT_2026-10-26.md",
+  "scope": "Critical-path mathematical/source review, complete source-identity verification and historical receipt readback; not a new full Lean build or an empirical validation.",
+  "frozen_source": {
+    "path": "mathematics/source/core-v3.0/UEOT_Core_Mathematics_v3.0_Complete.md",
+    "bytes": 183440,
+    "sha256": "ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303",
+    "counted_source_theorems": 106,
+    "generated": 11,
+    "retained_adapters": 89,
+    "boundaries": 6,
+    "counted_generators": 4
+  },
+  "census": {
+    "total_lean_modules": 691,
+    "root_aggregator": 1,
+    "under_UEOT_directory": 690,
+    "unified_closure_modules": 92,
+    "kind": "source census, not independent theorem count or scientific completion percentage"
+  },
+  "recent_merged_pulls": [
+    {
+      "number": 363,
+      "title": "feat(core): integrate same-source long-term laws, infinite policy, and rowwise SISC",
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-10-21T15:37:49Z",
+      "head": "b9c6a41f0594bfba7cc18110f823497871a854f7",
+      "merge": "a9109004959975b3d2c5a303741e117f1cd8cb9c",
+      "url": "https://github.com/MurphyHoops/UEOT/pull/363",
+      "changed_files": 155
+    },
+    {
+      "number": 365,
+      "title": "formal(core): finite support memory and executable decision",
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-10-21T17:59:18Z",
+      "head": "b73c7d4de46566a576878c97c5beaa9282f3041f",
+      "merge": "50a91fb9c81e0f5e698ce2cc02ec1a44c9583b04",
+      "url": "https://github.com/MurphyHoops/UEOT/pull/365",
+      "changed_files": 202
+    },
+    {
+      "number": 367,
+      "title": "Core: realize memory paths, finite-window conditioning, and executable C3 search",
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-10-22T04:25:10Z",
+      "head": "e9ea60b8a2fc77e8b7f3dcfdc58f278b8c66d6a1",
+      "merge": "d794847707c6f66b03901814d584bd432789aa0a",
+      "url": "https://github.com/MurphyHoops/UEOT/pull/367",
+      "changed_files": 375
+    },
+    {
+      "number": 368,
+      "title": "Ops: authorize live evidence refresh for total kernels and memory survival",
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-10-22T17:32:28Z",
+      "head": "4d29770f972e8bd3a2ac95a94734897b74e3ee2a",
+      "merge": "41c4b27ef8d993c797b2414311f0934eeb4cb561",
+      "url": "https://github.com/MurphyHoops/UEOT/pull/368",
+      "changed_files": 1
+    }
+  ],
+  "initial_open_pull_requests": 0,
+  "issue_observations": [
+    {
+      "number": 146,
+      "title": "[LIVE] UEOT Core Compression Formalization — minimal generating structure",
+      "state": "open",
+      "updated_at": "2026-10-22T04:40:35Z",
+      "source": "https://github.com/MurphyHoops/UEOT/issues/146",
+      "note": "Leading current-main pointer was d794847..., while actual main was 41c4b27...; #368 changed only the research registry."
+    },
+    {
+      "number": 302,
+      "title": "[LIVE] UEOT Unified Mathematical Closure — common-process constructive spine",
+      "state": "open",
+      "updated_at": "2026-10-22T04:40:42Z",
+      "source": "https://github.com/MurphyHoops/UEOT/issues/302",
+      "note": "Strong unified mathematical closure remains OPEN."
+    }
+  ],
+  "main_ci": {
+    "run_id": 39823612191,
+    "url": "https://github.com/MurphyHoops/UEOT/actions/runs/39823612191",
+    "event": "push",
+    "head": "41c4b27ef8d993c797b2414311f0934eeb4cb561",
+    "jobs": [
+      {
+        "id": 119980980578,
+        "name": "classify",
+        "conclusion": "success"
+      },
+      {
+        "id": 119981063853,
+        "name": "governance",
+        "conclusion": "success"
+      },
+      {
+        "id": 119981511743,
+        "name": "proof",
+        "conclusion": "skipped"
+      }
+    ],
+    "interpretation": "Governance PASS; proof SKIPPED. No current full Lean run claimed."
+  },
+  "main_historical_build_identity": {
+    "head": "41c4b27ef8d993c797b2414311f0934eeb4cb561",
+    "receipt": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/path_realization_v1/actual-execution/full-build-02/FULL_BUILD_RECEIPT.json",
+    "receipt_state": "PASS",
+    "source_files_checked": 691,
+    "source_hash_mismatch_count": 0,
+    "source_set_matches": true,
+    "environment": [
+      {
+        "path": "formalization/ueot-core/lake-manifest.json",
+        "matches": true
+      },
+      {
+        "path": "formalization/ueot-core/lakefile.lean",
+        "matches": true
+      },
+      {
+        "path": "formalization/ueot-core/lean-toolchain",
+        "matches": true
+      }
+    ],
+    "log_hash_matches": true,
+    "log_tail": [
+      "✔ [9395/9397] Built UEOT.V3.Compression (2.8s)",
+      "✔ [9396/9397] Built UEOT (2.8s)",
+      "Build completed successfully (9397 jobs)."
+    ],
+    "build_exit_code": 0,
+    "build_seconds": 14.23,
+    "scope": "READBACK_OF_HISTORICAL_RECEIPT_AND_CURRENT_GIT_BLOB_IDENTITY; NO_BUILD_RERUN"
+  },
+  "local_candidate": {
+    "schema": "UEOT_CANDIDATE_READ_ONLY_AUDIT_V1",
+    "observed_at": "2026-10-26T22:50:45+08:00",
+    "repository": "MurphyHoops/UEOT",
+    "worktree": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023",
+    "base_head": "41c4b27ef8d993c797b2414311f0934eeb4cb561",
+    "status": "LOCAL_UNCOMMITTED_CANDIDATE_WITH_MATCHING_HISTORICAL_LEAN_EVIDENCE_AND_FAILED_ARCHIVE_REGRESSION",
+    "added_lean_sources": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/HomogeneousMemorySurvival.lean",
+        "sha256": "7d9eecdd4013fa029a1c0e8f0f20b72faf9fe46a8329136f8947be9db68f701b",
+        "matches_overlay": true
+      },
+      {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindow.lean",
+        "sha256": "688792bc4110338cfa80076e08231ecdb80bf1a92856802438ea4cc848c33595",
+        "matches_overlay": true
+      },
+      {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindowWitness.lean",
+        "sha256": "27ca193467164914dac94dafa55deb46bd26dabc4c5b0b8573ba9ed3f45dc527",
+        "matches_overlay": true
+      }
+    ],
+    "source_tree_sha256": "2a0482a9717cc776b76383755a42b327ba132a04fbb6dfaea5c3ddb45da47b24",
+    "historical_receipts": [
+      {
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-evidence-20261023/full-build-01/FULL_BUILD_RECEIPT.json",
+        "sha256": "5b70f762b569a91a66f7cba4c58aed110438dc0a5b73f47100f650691b4eba8f"
+      },
+      {
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-evidence-20261023/native-01/STATUS.json",
+        "sha256": "4239049d0d1acce8a6c6eaf6a47bd9e85393757e41abfa23dc40d5942bc4bab2"
+      },
+      {
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-evidence-20261023/umc-full-01/EXECUTION_RECEIPT.json",
+        "sha256": "65d3225b23a606764e5b6a561d6a4e8297fd305014f1ceabd6e859bab47b8937"
+      },
+      {
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-evidence-20261023/umc-full-01/UMC_FULL_AUDIT.json",
+        "sha256": "2df4f02b978cded34b8088015dc224bb2b8bfa47a740bf5a533e135e6cab5902"
+      }
+    ],
+    "historical_execution": {
+      "lake_build_UEOT_exit_code": 0,
+      "native_export_exit_code": 0,
+      "fixed_verifier_exit_code": 0,
+      "canonical_full_audit_exit_code": 0,
+      "rerun_lean_in_this_audit": false
+    },
+    "current_identity_checks": {
+      "source_files_checked": 694,
+      "source_mismatches": [],
+      "environment_files_all_match": true,
+      "runtime_binaries_all_match": true,
+      "dependencies": [
+        {
+          "name": "Cli",
+          "matches_revision": true,
+          "clean": true
+        },
+        {
+          "name": "LeanSearchClient",
+          "matches_revision": true,
+          "clean": true
+        },
+        {
+          "name": "Qq",
+          "matches_revision": true,
+          "clean": true
+        },
+        {
+          "name": "aesop",
+          "matches_revision": true,
+          "clean": true
+        },
+        {
+          "name": "batteries",
+          "matches_revision": true,
+          "clean": true
+        },
+        {
+          "name": "importGraph",
+          "matches_revision": true,
+          "clean": true
+        },
+        {
+          "name": "mathlib",
+          "matches_revision": true,
+          "clean": true
+        },
+        {
+          "name": "plausible",
+          "matches_revision": true,
+          "clean": true
+        },
+        {
+          "name": "proofwidgets",
+          "matches_revision": true,
+          "clean": true
+        }
+      ],
+      "full_build_log_hash_matches": true,
+      "native_log_hashes_match": true,
+      "canonical_input_files_all_match": true,
+      "canonical_audit_hash_matches": true
+    },
+    "native_summary": {
+      "public_source_candidates": 12,
+      "theorem_constants": 80,
+      "axiom_union": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "native_artifact_sha256": "0f164136ebca7dd0e3dd3339fe54286be820cce6b285a03ca5ade12cf1422e02",
+      "fixed_verifier_sha256": "a9486d70eae7be47c7294bac05e6adced5245c463547e1639618ee8985fc553f"
+    },
+    "archive_check": {
+      "referenced_inputs": 39,
+      "missing_count": 39,
+      "missing_paths": [
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/FROZEN_INPUTS.json",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/PROTOCOL_ADAPTATION.json",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/SOURCE_PREFLIGHT.json",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/STATUS.json",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/TOTAL_KERNEL_MEMORY_NATIVE_EXPORT.lean",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/TOTAL_KERNEL_MEMORY_NATIVE_V1.json",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/TOTAL_KERNEL_MEMORY_REUSE_OVERLAY_V1.json",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/VERIFY_TOTAL_KERNEL_MEMORY_OVERLAY_TYPES.lean",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/development_lexical_reuse_hints.json",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/executed_integration_native.py",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/fixed_verifier.log",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/immutable_integration_native.py",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/integration_native.py",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/native_export.log",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/observed_first_native.json",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/protocol_adapter.py",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/full-build-01/FULL_BUILD_RECEIPT.json",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/full-build-01/full-build.log",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/full-build-01/PROTOCOL_ADAPTATION.json",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/full-build-01/FROZEN_INPUTS.json",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/full-build-01/protocol_adapter.py",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/full-build-01/full_build.py",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/full-build-01/immutable_full_build.py",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/full-build-01/executed_full_build.py",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/drivers/integration_native.py",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/drivers/full_build.py",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/protocol-inputs/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/pr_preflight.py",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/protocol-inputs/formalization/ueot-core/docs/compression/theory_completion/knowledge/fkrg.py",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/protocol-inputs/formalization/ueot-core/docs/compression/theory_completion/unified_closure/registered_interfaces/native_protocol/prepare_registered_interfaces_export.py",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/protocol-inputs/formalization/ueot-core/docs/compression/theory_completion/unified_closure/registered_interfaces/native_protocol/build_identity.py",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/protocol-inputs/PATH_REALIZATION_REUSE_OVERLAY_V1.json",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/drivers/baseline_fkrg_reuse.py",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/drivers/register_overlay.py",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/drivers/PROTOCOL_ADAPTATION.json",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/drivers/FROZEN_INPUTS.json",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/drivers/protocol_adapter.py",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/drivers/register_overlay.py",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/drivers/immutable_register_overlay.py",
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/total_kernel_memory_v1/actual-execution/native-01/drivers/executed_register_overlay.py"
+      ],
+      "missing_report": true,
+      "missing_registration_receipt": true
+    },
+    "test_observation": {
+      "command": "python3 -B formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py -k total_kernel_memory",
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023",
+      "exit_code": 1,
+      "tests_run": 4,
+      "tests_passed": 3,
+      "test_methods_with_error": 1,
+      "error_records": 40,
+      "failing_test": "ProofReuseTests.test_total_kernel_memory_registration_preserves_raw_execution",
+      "cause": "39 missing archive-input subtest errors plus subsequent raw-overlay FileNotFoundError",
+      "source": "Observed actual exec_command execution in this audit; not inferred from static inspection",
+      "persisted_test_log": null
+    },
+    "limits": [
+      "No repository edits and no new Lean build in this audit",
+      "Historical build identity agreement does not imply independent semantic review or publication",
+      "Global strong unified closure remains NOT_ESTABLISHED; external scientific evidence remains UNVERIFIED"
+    ]
+  },
+  "documentary_conclusions": {
+    "frozen_core": "106/106_FULL_GREEN",
+    "strong_unified_closure": "NOT_ESTABLISHED",
+    "external_scientific_evidence": "UNVERIFIED",
+    "next_mathematical_increment": "Executable support-controller synthesis from explicit finite tables, followed by a source-matched noisy-oracle/support-risk contract."
+  },
+  "current_round": {
+    "lean_source_changed": false,
+    "full_lean_rerun": false,
+    "candidate_wip_modified": false,
+    "books_rebuilt": false,
+    "physics_modified": false,
+    "validation": "Unified-closure governance validator PASS; report relative-link/Markdown-delimiter assertions and independent mathematics/source review recorded in the PR."
+  }
+}
