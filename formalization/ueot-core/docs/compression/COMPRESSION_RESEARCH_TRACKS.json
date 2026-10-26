@@ -9,25 +9,7 @@
   "max_active_mutating_tracks": 4,
   "main_only_cross_track_dependencies": true,
   "cross_track_integration_gate": "open",
-  "l2_existing_path_exceptions": [
-    {
-      "exception_id": "TC-OBSERVABLE-BELIEF-EVIDENCE-2026-10-27",
-      "track": "TC",
-      "branch_patterns": [
-        "^compression/theory-completion-belief-quotient$"
-      ],
-      "paths": [
-        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/UMC_GLOBAL_MODULE_DAG_V4.json",
-        "formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md",
-        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
-        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
-        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
-        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py"
-      ],
-      "reason": "R2 noisy-oracle/support-boundary research is complete in PR #375. R3b will connect the actual C1 posterior-belief kernel to a binary predictive quotient derived from source-test closure, with an explicit measurable belief section and closed coordinate image, a finite stochastic witness, and a failure case without test closure. Its production integration must refresh the live source-derived UMC DAG and append a compiler-certified reuse overlay to the same six existing evidence/navigation/consumer paths. Additive files cannot update their pinned registries and full source census. The completed R2 exception is retired. Existing Lean remains immutable except additive TheoryCompletion imports; prior overlays, native evidence, frozen/counted surfaces and old receipts remain unchanged.",
-      "temporary": true
-    }
-  ],
+  "l2_existing_path_exceptions": [],
   "governed_path_prefixes": [
     "formalization/ueot-core/UEOT/V3/Compression/",
     "formalization/ueot-core/docs/compression/",
@@ -158,7 +140,7 @@
       "change_policy": "additive_only_by_default"
     },
     "X": {
-      "title": "Cross-Track Parent Formation \u00d7 Long-Run Semantic Stability",
+      "title": "Cross-Track Parent Formation × Long-Run Semantic Stability",
       "status": "active",
       "preferred_branch_prefix": "compression/cross-track-",
       "branch_patterns": [
