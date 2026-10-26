@@ -141,10 +141,10 @@ objective without an explicit exception.
 
 ## 11. CI efficiency rules
 
-- UEOT Core's automatic cloud full builds are suspended in local development mode.
-  Its full Lean workflow and Compression proof job require explicit manual dispatch;
-  automatic ownership/governance/source checks continue. Their summaries distinguish
-  a successful governance check from a Lean build that was not run.
+- UEOT Core uses local-only validation at the user's 2026-10-26 request. The Core Lean,
+  Compression Guard and Compression Research Base Policy GitHub workflows are disabled.
+  Run applicable ownership/governance/source checks and Lean builds locally, and record
+  the actual evidence in each PR. An absent cloud run is not a successful cloud check.
 - Complete local proof validation before publishing Core changes, and verify merged
   Core sources locally. The existing counted FINAL event requirements remain intact.
 - Prefer one canonical owner for each expensive regression.
