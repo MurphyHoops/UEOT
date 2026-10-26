@@ -1,0 +1,536 @@
+{
+  "schema": "FKRG_REUSE_OVERLAY_V1",
+  "overlay_id": "OBSERVABLE_BELIEF_REUSE_OVERLAY_V1",
+  "source_checkpoint": "worktree-sha256:778b37210962b487cedd2d5d50e9fa95c1297987ec4e18630da7fbc1ccd883c2",
+  "source_checkpoint_kind": "FROZEN_SOURCE_CONTENT_BEFORE_GIT_COMMIT",
+  "baseline_ref": "e045cca43a94abbff00fd0da53e6200e0bd6ae2e",
+  "base_snapshot_modules": 699,
+  "prior_overlay": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/NOISY_ORACLE_REUSE_OVERLAY_V1.json",
+    "sha256": "8e966bab093ddccadeffc8a91d3265e99cd1bfbc34696d965b981426e0457283"
+  },
+  "source_hash_overrides": {
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean": "ee09b2197012c8b617e9085c80fa6e6f6b1ec518724b58a10efce0b293fc8974"
+  },
+  "added_modules": [
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "content_sha256": "8ea9470fbc1fcb7067581a02247e7eaf88dbc6e57b4c86e7e621470453ac52a7",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "content_sha256": "4ea06cb6cadc4c4573376281485a885ecd1897ca7e435d209b75d0643270c511",
+      "source_origin": "UEOT_MAINTAINED"
+    }
+  ],
+  "public_theorems": [
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.measurable_coordinate",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 32,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.measurable_liftBelief",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 47,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.coordinate_liftBelief",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 58,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.coordinate_real_image",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 68,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.coordinate_liftBelief"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.coordinate_image_isClosed",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 79,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.coordinate_real_image"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.actual_kernel_coordinate_law",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 200,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.c1BeliefTransitionKernel_apply_eq_map",
+        "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.measurable_c1ParametricPosteriorBelief",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.measurable_coordinate"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.closed_tests_predictive_law",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 217,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.quotientKernel_factor",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 268,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.actual_kernel_coordinate_law",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.closed_tests_predictive_law",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.coordinate_liftBelief",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.measurable_coordinate"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.quotientKernel_unique",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 283,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.coordinate_liftBelief",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.quotientKernel_factor"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.closed_tests_of_quotient",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 317,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.actual_kernel_coordinate_law"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.closed_tests_iff_existsUnique_quotient",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 342,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.closed_tests_of_quotient",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.quotientKernel_factor",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.quotientKernel_unique"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.closed_tests_prefix_response",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 369,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.finite_test_response_factors",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 387,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.closed_tests_prefix_response"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.same_coordinate_same_tests",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 405,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.finite_test_response_factors"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.testResponse_le_one",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 420,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.testExpectation_mem_unit",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 438,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.testResponse_le_one"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.first_test_eq_observation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 450,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.safe_class_probability",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 465,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.observation_reward_factors",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 475,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.source_closed",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 44,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.probe_observation_law",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 59,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.probe_test_is_coordinate",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 73,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.first_test_eq_observation",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.probe_observation_law"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.predictive_equivalence_iff",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 81,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.same_coordinate_same_tests",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.probe_test_is_coordinate",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.source_closed"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.actual_C1_descends",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 94,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.quotientKernel_factor",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.source_closed"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.source_hidden_flip_mass",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 102,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.aliases_have_all_same_future_tests",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 128,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.predictive_equivalence_iff"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.no_quotient_without_closed_tests",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 142,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.closed_tests_of_quotient"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.reward_readout_factors",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 158,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.observation_reward_factors"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.safe_readout_factors",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 167,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.safe_class_probability"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.hidden_readouts_do_not_descend",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 175,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness",
+      "source_theorem_deps": []
+    }
+  ],
+  "type_distinctness": {
+    "status": "PASS",
+    "verifier": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_OBSERVABLE_BELIEF_OVERLAY_TYPES.lean",
+    "new_theorems": 30,
+    "registered_prior_theorems": 4433,
+    "cross_isDefEq_comparisons": 132990,
+    "internal_isDefEq_comparisons": 435,
+    "definitionally_equal_matches": 0,
+    "protocol": "Raw stored compiled types; fresh liftTermElabM per Meta.isDefEq comparison; stored universe names retained. Not a general logical-equivalence decision."
+  },
+  "proof_dependency_certification": {
+    "status": "PASS",
+    "verifier": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_OBSERVABLE_BELIEF_OVERLAY_TYPES.lean",
+    "measure": "Actual theorem proof-value getUsedConstants restricted to all previous and new registered public theorem names",
+    "registered_direct_edges": 29,
+    "edges": [
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.coordinate_real_image",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.coordinate_liftBelief"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.coordinate_image_isClosed",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.coordinate_real_image"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.actual_kernel_coordinate_law",
+        "target": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.c1BeliefTransitionKernel_apply_eq_map"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.actual_kernel_coordinate_law",
+        "target": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.measurable_c1ParametricPosteriorBelief"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.actual_kernel_coordinate_law",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.measurable_coordinate"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.quotientKernel_factor",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.actual_kernel_coordinate_law"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.quotientKernel_factor",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.closed_tests_predictive_law"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.quotientKernel_factor",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.coordinate_liftBelief"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.quotientKernel_factor",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.measurable_coordinate"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.quotientKernel_unique",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.coordinate_liftBelief"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.quotientKernel_unique",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.quotientKernel_factor"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.closed_tests_of_quotient",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.actual_kernel_coordinate_law"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.closed_tests_iff_existsUnique_quotient",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.closed_tests_of_quotient"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.closed_tests_iff_existsUnique_quotient",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.quotientKernel_factor"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.closed_tests_iff_existsUnique_quotient",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.quotientKernel_unique"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.finite_test_response_factors",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.closed_tests_prefix_response"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.same_coordinate_same_tests",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.finite_test_response_factors"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.testExpectation_mem_unit",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.testResponse_le_one"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.probe_test_is_coordinate",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.first_test_eq_observation"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.probe_test_is_coordinate",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.probe_observation_law"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.predictive_equivalence_iff",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.same_coordinate_same_tests"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.predictive_equivalence_iff",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.probe_test_is_coordinate"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.predictive_equivalence_iff",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.source_closed"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.actual_C1_descends",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.quotientKernel_factor"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.actual_C1_descends",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.source_closed"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.aliases_have_all_same_future_tests",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.predictive_equivalence_iff"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.no_quotient_without_closed_tests",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.closed_tests_of_quotient"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.reward_readout_factors",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.observation_reward_factors"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.safe_readout_factors",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.safe_class_probability"
+      }
+    ]
+  },
+  "native_axiom_census": {
+    "status": "PASS",
+    "physical_source_modules": 2,
+    "theorem_constants": 84,
+    "private_theorem_constants": 19,
+    "confirmed_public_source_candidates": 30,
+    "other_native_public_constants": 35,
+    "standard_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "scope": "All compiler-owned theorem constants of every added module, including private and generated constants"
+  },
+  "native_export_evidence": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/OBSERVABLE_BELIEF_NATIVE_V1.json",
+    "sha256": "3bee681d5f501a9eb2cd397ae5190bbafa73e96a62a8f203284dd5933a5bdf0b"
+  },
+  "native_execution": {
+    "build_receipt_sha256": "0a0cfcf891d27a8005894893a81b56f5ecd531b7dfdd82bc3eb14b557f13db79",
+    "source_tree_sha256": "778b37210962b487cedd2d5d50e9fa95c1297987ec4e18630da7fbc1ccd883c2",
+    "native_export_exit_code": 0,
+    "fixed_certificate_exit_code": 0,
+    "fixed_certificate_sha256": "f953b3ffe81fbe86ed952c070aea7d2d3cb06edb8a01e378bd421e927c76c652",
+    "fixed_export_equals_initial_native_export": true,
+    "results": [
+      {
+        "label": "native_export",
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/canonical-belief-evidence-20261027/native-01/OBSERVABLE_BELIEF_NATIVE_EXPORT.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 312.707,
+        "log_sha256": "be4d7c52b5380269eb6e0c1d83762333fa95c14bc51384feea1e8edd6e9add1a"
+      },
+      {
+        "label": "fixed_verifier",
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/canonical-belief-evidence-20261027/native-01/VERIFY_OBSERVABLE_BELIEF_OVERLAY_TYPES.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 370.229,
+        "log_sha256": "be4d7c52b5380269eb6e0c1d83762333fa95c14bc51384feea1e8edd6e9add1a"
+      }
+    ]
+  },
+  "scientific_role": "UNCOUNTED_OBSERVABLE_BELIEF_KERNEL_DESCENT",
+  "counted_core_impact": "NONE",
+  "scientific_closure": "NOT_ESTABLISHED"
+}

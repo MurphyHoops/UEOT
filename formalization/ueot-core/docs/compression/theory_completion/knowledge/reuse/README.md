@@ -8,9 +8,9 @@ The existing FKRG cache remains useful for broad keyword/module search.
 This supplement adds real proof-term direct dependencies, verified same-type
 theorem peers, source copies, and a read-only scientific-role distinction.
 
-The current fourteen-layer census is **699 modules = 688 UEOT-maintained + 11
-adapted upstream**, with **4,433 registered public theorem nodes** and
-**5,878 registered direct proof edges**. The layer-by-layer counts below
+The current fifteen-layer census is **701 modules = 690 UEOT-maintained + 11
+adapted upstream**, with **4,463 registered public theorem nodes** and
+**5,907 registered direct proof edges**. The layer-by-layer counts below
 retain each historical scope.
 
 ## Governed overlay chain
@@ -1217,6 +1217,90 @@ separate receipts. Counted classifications stay unchanged, strong global
 closure remains `NOT_ESTABLISHED`, and external scientific evidence remains
 `UNVERIFIED`.
 
+### Layer 15 — observable belief-kernel descent
+
+This layer is based on `e045cca43a94abbff00fd0da53e6200e0bd6ae2e`
+and frozen source fingerprint `778b37210962b487cedd2d5d50e9fa95c1297987ec4e18630da7fbc1ccd883c2`. Two modules add 30 registered
+public source theorems and 29 direct registered edges.
+
+| Evidence | SHA-256 |
+| --- | --- |
+| [Complete native export](OBSERVABLE_BELIEF_NATIVE_V1.json) | `3bee681d5f501a9eb2cd397ae5190bbafa73e96a62a8f203284dd5933a5bdf0b` |
+| [Fixed Lean certificate](VERIFY_OBSERVABLE_BELIEF_OVERLAY_TYPES.lean) | `f953b3ffe81fbe86ed952c070aea7d2d3cb06edb8a01e378bd421e927c76c652` |
+| [Registered overlay](OBSERVABLE_BELIEF_REUSE_OVERLAY_V1.json) | `9e4440d2ef4b101dbadc09b5e02b11d766126b73b8953c60182da64320c247db` |
+
+The native census has **84 owned theorem constants: 30 public
+source candidates, 19 private constants and
+35 other public native constants**. The last group consists of four named
+Prop instances (`observation_isMarkov`, `quotientKernel_isMarkov`,
+`source_isMarkov` and `badSource_isMarkov`) and 31 compiler-generated constants.
+Compiler-reported source ownership is retained even for generated equation or
+congruence constants whose logical names use an older namespace. Actual owners,
+stored universes, displayed types, full direct constants, direct theorem
+constants and standard-only transitive axiom closures are retained. The
+30 public types have **132,990 cross-layer** comparisons against 4,433 prior
+registrations and **435 internal** raw stored-type `Meta.isDefEq` comparisons.
+Both comparison scopes have zero collisions. Actual native export and the
+separate fixed verifier passed in 312.707 and 370.229 seconds, with identical
+complete JSON and log bytes. These raw-type comparisons retain the stored-
+universe limits and do not establish general logical independence.
+
+The live graph has **4,463 nodes and 5,907 direct edges**, including
+**670 overlay nodes and 1020 outgoing overlay edges**. The old-node
+repair remains separate. Five new lexical hint groups bring the total to
+**177**. Name hints remain distinct from compiled direct dependencies and
+independent mathematical review.
+
+The coordinate is the belief probability of the true fibre of a known
+binary observation. Explicit zero/one representatives construct a measurable
+two-Dirac section. Its coordinate is the given value, so the real image is
+exactly the closed interval `[0,1]`. This settles the image and section
+obligations in this model without asserting a general countable-coordinate
+Borel-image theorem.
+
+For the original source, binary test closure means equal observed states
+have equal next-true-fibre probabilities for every action. This condition is
+equivalent to a unique measurable Markov quotient of the actual common C1
+posterior-belief kernel for every input belief. The quotient is constructed
+by mapping that C1 kernel at the explicit section. The proof uses the common
+posterior version and deterministic posterior composition only observation-
+almost everywhere; null observations have no fabricated pointwise posterior
+identity. The reverse theorem rules out any descended kernel when source-test
+closure fails, even before requiring the target to be Markov.
+
+Recursively defined finite action/observation tests are actual iterated source
+integrals. Closure gives factorization of every finite test response and
+equality of all test expectations for equal coordinates; those expectations
+are proved to lie in `[0,1]`. The finite `Bool × Bool` witness has genuine
+Bernoulli noise: its hidden bit flips with probability `1/4`. A probe action
+preserves the observed bit, so one test recovers the coordinate; the other
+action can flip the observed bit. Thus equality of all finite predictive tests
+is equivalent to coordinate equality in this witness. Distinct hidden-bit
+Dirac beliefs supply a nontrivial predictive alias.
+
+A second source sends two same-observation hidden states to different next
+observed classes. Its theorem denies existence of a kernel satisfying the
+actual C1 quotient equation, not merely a Boolean closure check. Separately,
+the chosen observation-based reward expectation and safe-class probability
+factor through the coordinate. Hidden-bit reward and safety readouts do not
+descend for the predictive aliases. These contracts do not establish arbitrary
+reward/safety preservation, all-time physical safety, optimal control or
+minimal memory.
+
+Registration retains the raw overlay bytes and adds only lexical preflight
+and registration provenance. The [registration receipt](../../unified_closure/observable_belief_v1/actual-execution/native-01/REGISTRATION_RECEIPT.json)
+binds 39 input references covering native execution, build evidence and the executed drivers. All fourteen old overlays, certificates and
+native evidence, the historical equal/near-type artifacts and the 68-row
+clone table remain immutable. The actual initial full-build failure caused
+by imports placed after the root doc comment remains archived. Corrected
+imports and the final frozen source have separate successful full-build and
+native receipts. Four consumer regressions inspect full native ownership/edges,
+actual C1 and finite-test routes, no-quotient/readout witnesses and raw-byte
+registration preservation. Current-source clone equality, release and
+resulting-main checks remain separate receipts. Counted classifications remain
+unchanged, strong global closure is `NOT_ESTABLISHED`, and external evidence
+is `UNVERIFIED`.
+
 ## Run from repository root
 
     P=formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse
@@ -1233,21 +1317,21 @@ closure remains `NOT_ESTABLISHED`, and external scientific evidence remains
 Run the new native certificate from `formalization/ueot-core` after building
 the public imports with the pinned toolchain:
 
-    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_NOISY_ORACLE_OVERLAY_TYPES.lean
+    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_OBSERVABLE_BELIEF_OVERLAY_TYPES.lean
 
 ## Strongly typed and provenance-limited evidence
 
 - 633 immutable-base source modules = 622 UEOT-maintained + 11 adapted upstream modules;
-  fourteen governed overlays extend the live census to 699 = 688 + 11.
-- 3,793 immutable-base public source theorem proofs + 640 governed registrations
-  (including one historical public-name repair) = 4,433 live graph nodes, with
-  5,878 direct registered-source theorem
+  fifteen governed overlays extend the live census to 701 = 690 + 11.
+- 3,793 immutable-base public source theorem proofs + 670 governed registrations
+  (including one historical public-name repair) = 4,463 live graph nodes, with
+  5,907 direct registered-source theorem
   references. The historical four overlays add 0, 3, 6 and 73 certified direct edges;
   the fifth adds 91, the sixth adds 98, and the seventh adds 163 certified direct edges.
   The eighth adds 97 edges from new registrations and one certified old-node repair.
   The ninth adds 149 edges, the tenth adds 47, the eleventh adds 114 and the
-  twelfth adds 27, the thirteenth adds 60 and the fourteenth adds 63, giving
-  991 outgoing edges from overlay nodes;
+  twelfth adds 27, the thirteenth adds 60, the fourteenth adds 63 and the
+  fifteenth adds 29, giving 1020 outgoing edges from overlay nodes;
   the old-node repair remains a separate addition.
 - 37 equal-type groups / 77 names. The original audit checked 40/40
   representative-to-peer theorem type pairs via Lean Meta.isDefEq. Here
@@ -1265,7 +1349,7 @@ the public imports with the pinned toolchain:
   12 spans reach 15 lines. This is a text-copy candidate index, NOT
   a proof-equivalence decision procedure. The historical 646-module recomputation
   preserved all 68 historical rows exactly, with no added or missing rows.
-  The current scanner recomputes all 699 modules and rejects any difference
+  The current scanner recomputes all 701 modules and rejects any difference
   from that immutable result; its actual command result establishes whether
   the current-source scan passes. The historical snapshot alone does not.
 
@@ -1298,7 +1382,7 @@ the pinned Lean compiler/dependency environment (lean-toolchain,
 lakefile.lean and lake-manifest.json including the pinned Mathlib revision),
 the exact set of live Lean source paths (including detecting ANY newly added
 or deleted module), and all immutable-base source hashes plus the governed
-overlay-chain hashes against the exact 699-module live source census. It refuses to
+overlay-chain hashes against the exact 701-module live source census. It refuses to
 answer if any source or metadata changed. A docs-only Git commit does
 not spuriously make a valid source snapshot stale.
 

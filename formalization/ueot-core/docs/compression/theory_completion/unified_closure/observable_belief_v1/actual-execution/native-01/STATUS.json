@@ -1,0 +1,40 @@
+{
+  "state": "PASS_PENDING_INDEPENDENT_REVIEW_AND_REGISTRATION",
+  "baseline_ref": "e045cca43a94abbff00fd0da53e6200e0bd6ae2e",
+  "build_receipt_sha256": "0a0cfcf891d27a8005894893a81b56f5ecd531b7dfdd82bc3eb14b557f13db79",
+  "results": [
+    {
+      "label": "native_export",
+      "command": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/canonical-belief-evidence-20261027/native-01/OBSERVABLE_BELIEF_NATIVE_EXPORT.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 312.707,
+      "log_sha256": "be4d7c52b5380269eb6e0c1d83762333fa95c14bc51384feea1e8edd6e9add1a"
+    },
+    {
+      "label": "fixed_verifier",
+      "command": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/canonical-belief-evidence-20261027/native-01/VERIFY_OBSERVABLE_BELIEF_OVERLAY_TYPES.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 370.229,
+      "log_sha256": "be4d7c52b5380269eb6e0c1d83762333fa95c14bc51384feea1e8edd6e9add1a"
+    }
+  ],
+  "summary": {
+    "modules": 2,
+    "public_source_theorems": 30,
+    "native_constants": 84,
+    "registered_edges": 29,
+    "overlay_sha256": "c9361302521f72795b4d60222335bab91335ee8f30ac67efa1579d3e7792c63a",
+    "verifier_sha256": "f953b3ffe81fbe86ed952c070aea7d2d3cb06edb8a01e378bd421e927c76c652",
+    "native_sha256": "3bee681d5f501a9eb2cd397ae5190bbafa73e96a62a8f203284dd5933a5bdf0b"
+  }
+}

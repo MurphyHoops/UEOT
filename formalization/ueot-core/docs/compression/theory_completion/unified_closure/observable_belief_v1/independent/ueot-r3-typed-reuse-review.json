@@ -1,0 +1,404 @@
+{
+  "schema": "ueot.independent_typed_reuse_review.v1",
+  "review_id": "R3-observable-belief-quotient-typed-reuse",
+  "created_at_utc": "2026-10-26T22:03:26.793727+00:00",
+  "reviewer": "formal_audit",
+  "status": "CLEAR",
+  "blocking_findings": [],
+  "baseline_ref": "e045cca43a94abbff00fd0da53e6200e0bd6ae2e",
+  "source_preflight": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/canonical-belief-evidence-20261027/source-prepare-01/SOURCE_PREFLIGHT.json",
+    "sha256": "51dee92428ddfbf4f51ec055abfffa4f4d081451d83127acabf524522bed7523",
+    "bytes": 44297,
+    "observed_status": "PENDING_ACTUAL_NATIVE_EXECUTION",
+    "source_tree_sha256": "778b37210962b487cedd2d5d50e9fa95c1297987ec4e18630da7fbc1ccd883c2",
+    "source_public_candidates": 30,
+    "hint_groups_with_candidates": 5,
+    "candidate_pairs_reviewed": 10
+  },
+  "new_sources": [
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "sha256": "8ea9470fbc1fcb7067581a02247e7eaf88dbc6e57b4c86e7e621470453ac52a7",
+      "bytes": 24584,
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient"
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "sha256": "4ea06cb6cadc4c4573376281485a885ecd1897ca7e435d209b75d0643270c511",
+      "bytes": 8824,
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness"
+    }
+  ],
+  "method": [
+    "Read the actual declarations, definitions, relevant ambient hypotheses and proof bodies from immutable git blobs at the stated base, and compare against the new source declarations and proof chains.",
+    "Analyze whether substituting concrete types and parameters can discharge every old premise and produce the new claim; different names or isDefEq results are not used as a proof of non-reuse.",
+    "Distinguish semantic specialization, transitive/definitional reuse and literal proof-constant dependency. No new Lean, native export, sampler or test execution is claimed."
+  ],
+  "lexical_groups": [
+    {
+      "candidate": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.measurable_coordinate",
+      "candidate_source": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+        "sha256": "8ea9470fbc1fcb7067581a02247e7eaf88dbc6e57b4c86e7e621470453ac52a7",
+        "bytes": 24584,
+        "line": 32,
+        "source_type_text": "@[fun_prop] theorem measurable_coordinate (q : X → Bool) (hq : Measurable q) :\n    Measurable (coordinate q)"
+      },
+      "candidate_contract": "For an arbitrary measurable latent space X and measurable q : X -> Bool, the probability-of-true map ProbabilityMeasure X -> unitInterval is measurable. It evaluates a measurable event in the Giry measurable space, then applies ENNReal.toReal and a subtype constructor. No topology or finite/countable latent-state assumption is required.",
+      "pairs": [
+        {
+          "prior_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RowwiseProbeSampling.coordinateGood_measurable",
+          "prior_source_at_baseline": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RowwiseProbeSampling.lean",
+            "sha256": "24f389bd6fe31c8c62758edf38e1badc3e3148851bac0b9d23d3ee54bd002c26",
+            "bytes": 5557,
+            "line": 39,
+            "source_type_text": "theorem coordinateGood_measurable\n    {J : Type uJ} {X : Type uX} {Ω : Type uΩ}\n    [Fintype J] [MeasurableSpace X] [MeasurableSpace Ω] {N : J → ℕ}\n    (row : J → PMF X) (outcome : J → X → ℝ)\n    (sample : ∀ j, Fin (N j) → Ω → X) (u : ℝ)\n    (hOutcome : ∀ j, Measurable (outcome j))\n    (hSample : ∀ j k, Measurable (sample j k)) :\n    MeasurableSet (coordinateGood row outcome sample u)"
+          },
+          "decision": "FINITE_SAMPLING_EVENT_NOT_COORDINATE_FUNCTION",
+          "semantic_instantiation_analysis": "The old theorem proves MeasurableSet of a finite intersection of empirical-versus-population error inequalities. Its parameters include finite row index J, row PMFs, outcomes, samples and their measurability. Substituting a probability-belief sample space does not provide the measurable evaluation map needed to define the samples; it would presuppose that key obligation and still conclude only event measurability. The new proof directly reuses Measure.measurable_coe and ENNReal.measurable_toReal.",
+          "blocking_reuse_omission": false
+        },
+        {
+          "prior_symbol": "UEOT.V3.InformationConditionalStatistic.measurable_coreAt",
+          "prior_source_at_baseline": {
+            "path": "formalization/ueot-core/UEOT/V3/InformationConditionalStatistic.lean",
+            "sha256": "e898329bba82940ebd672c0bb187085df8a4b7cfc6757ef7f6a02b3ce7e2fe34",
+            "bytes": 6347,
+            "line": 41,
+            "source_type_text": "lemma measurable_coreAt\n    (c : U × H → C) (hc : Measurable c) (u : U) :\n    Measurable (coreAt c u)"
+          },
+          "decision": "FIXED_PARAMETER_COMPOSITION_PRESUPPOSES_MEASURABILITY",
+          "semantic_instantiation_analysis": "The old lemma fixes u in a supplied measurable c : U x H -> C. Taking H = ProbabilityMeasure X and c(u,b) = coordinate q b would require proving that product map measurable before applying the lemma, so it cannot establish the missing probability-evaluation measurability. The only shared principle is ordinary measurable composition, already used directly.",
+          "blocking_reuse_omission": false
+        },
+        {
+          "prior_symbol": "UEOT.V3.CompactArgmaxSelector.measurable_center",
+          "prior_source_at_baseline": {
+            "path": "formalization/ueot-core/UEOT/V3/CompactArgmaxSelector.lean",
+            "sha256": "6721730c64e4fb003167a54a640c15ed4f79557b55a3779915709e4f6a5ce550",
+            "bytes": 13806,
+            "line": 220,
+            "source_type_text": "lemma measurable_center {q : X → A → ℝ}\n    (hq : Continuous ↿q) (n : ℕ) :\n    Measurable (center hq n)"
+          },
+          "decision": "COMPACT_ARGMAX_APPROXIMATION_HAS_DIFFERENT_OBJECT_AND_PREMISES",
+          "semantic_instantiation_analysis": "The old lemma concerns denseSeq A indexed by the nth measurable approximation in a continuous compact metric argmax construction. Its compact metric spaces, continuous objective, approximation indices and dense-sequence center do not construct the Giry evaluation of an arbitrary measurable event. No instantiation identifies that center with the belief coordinate, and the new theorem does not assume the required topological data.",
+          "blocking_reuse_omission": false
+        },
+        {
+          "prior_symbol": "UEOT.V3.InformationDiscreteLawCode.DiscreteLawCode.measurable_decode",
+          "prior_source_at_baseline": {
+            "path": "formalization/ueot-core/UEOT/V3/InformationDiscreteLawCode.lean",
+            "sha256": "11b597937ea9160294f9f623ff53ed2cb9970119259bff7e36208c47c41cf261",
+            "bytes": 8553,
+            "line": 215,
+            "source_type_text": "theorem measurable_decode\n    (code : DiscreteLawCode (C := C) (Y := Y)) :\n    Measurable (decode code)"
+          },
+          "decision": "COUNTABLE_LAW_DECODER_CANNOT_REPLACE_CONTINUOUS_PROBABILITY_COORDINATE",
+          "semantic_instantiation_analysis": "The old theorem requires an injective measure-valued code for a Countable, nonempty label type with measurable singletons, and proves measurability of its match-set/default-label decoder. The new full coordinate image is the uncountable interval [0,1], rather than a countable code label. Restricting the old label type to Bool loses the probability mixture coordinate; it cannot produce the needed map on every probability belief.",
+          "blocking_reuse_omission": false
+        },
+        {
+          "prior_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.measurable_good",
+          "prior_source_at_baseline": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+            "sha256": "9bd381fde5c6db2ae84e02363d33ed68de412b1fd9a2f827a72fe474bf82405e",
+            "bytes": 32136,
+            "line": 333,
+            "source_type_text": "theorem measurable_good : MeasurableSet {ω | Good ω}"
+          },
+          "decision": "CONCRETE_TRAINING_EVENT_NOT_MEASURE_EVALUATION",
+          "semantic_instantiation_analysis": "The old theorem is a fixed finite experiment on SampleSpace with 4096 samples and two registered candidates, proving measurability of EmpiricalTransitionCalibrated. It cannot instantiate to an arbitrary probability-belief evaluation function; its supplied finite measurable samples already carry a different measurable-space contract.",
+          "blocking_reuse_omission": false
+        }
+      ]
+    },
+    {
+      "candidate": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.measurable_liftBelief",
+      "candidate_source": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+        "sha256": "8ea9470fbc1fcb7067581a02247e7eaf88dbc6e57b4c86e7e621470453ac52a7",
+        "bytes": 24584,
+        "line": 47,
+        "source_type_text": "@[fun_prop] theorem measurable_liftBelief (zero one : X) :\n    Measurable (liftBelief zero one)"
+      },
+      "candidate_contract": "For fixed zero, one : X in an arbitrary measurable space, c in unitInterval is mapped measurably to (1-c) Dirac zero + c Dirac one, bundled as a probability measure. This is a measure-valued mixture section, not a product-coordinate lift.",
+      "pairs": [
+        {
+          "prior_symbol": "UEOT.V3.InformationStatistic.measurable_statisticLift",
+          "prior_source_at_baseline": {
+            "path": "formalization/ueot-core/UEOT/V3/InformationStatistic.lean",
+            "sha256": "3422833ac0f7eae43682372b2ac65890b52ad4e36d24fd9ba1f2240c1c6eb9a8",
+            "bytes": 10547,
+            "line": 122,
+            "source_type_text": "theorem measurable_statisticLift\n    {H : Type*} {Y : Type*} {M : Type*}\n    [MeasurableSpace H] [MeasurableSpace Y] [MeasurableSpace M]\n    (f : H → M) (hf : Measurable f) :\n    Measurable (statisticLift (Y := Y) f)"
+          },
+          "decision": "PRODUCT_LIFT_PRESUPPOSES_INPUT_MAP_MEASURABILITY",
+          "semantic_instantiation_analysis": "The old theorem maps (h,y) to ((f h,y),h), assuming Measurable f. It neither forms a convex combination of Dirac measures nor proves a measure-valued map measurable. Setting f = liftBelief would require exactly the new conclusion as an input. The new proof uses Measure.measurable_of_measurable_coe and existing arithmetic measurability instead.",
+          "blocking_reuse_omission": false
+        }
+      ]
+    },
+    {
+      "candidate": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.quotientKernel_unique",
+      "candidate_source": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+        "sha256": "8ea9470fbc1fcb7067581a02247e7eaf88dbc6e57b4c86e7e621470453ac52a7",
+        "bytes": 24584,
+        "line": 283,
+        "source_type_text": "theorem quotientKernel_unique (q : X → Bool) (hq : Measurable q)\n    (P : Kernel (X × A) X) [IsMarkovKernel P] (hclosed : ClosedTests P q)\n    (zero one : X) (hzero : q zero = false) (hone : q one = true)\n    (K : Kernel (unitInterval × A) unitInterval)\n    (hK : ∀ (b : ProbabilityMeasure X) (a : A),\n      (c1BeliefTransitionKernel P (observation q hq) (b, a)).map (coordinate q) =\n        K (coordinate q b, a)) : K = quotientKernel q hq P zero one"
+      },
+      "candidate_contract": "For a measurable binary observation on Standard-Borel nonempty X, Markov P, original-source ClosedTests, and representatives of both Boolean classes, every Kernel K whose rows factor the actual C1 posterior-belief coordinate law for all input beliefs/actions equals the explicitly constructed quotientKernel. K is not required to be Markov in this uniqueness theorem.",
+      "pairs": [
+        {
+          "prior_symbol": "UEOT.V3.Compression.QuotientGauge.quotientEquiv_unique",
+          "prior_source_at_baseline": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/QuotientGauge.lean",
+            "sha256": "d28a66230cc042e7ef3c976387ceec52820544fee7126085307f1e59e0bea12d",
+            "bytes": 5053,
+            "line": 101,
+            "source_type_text": "theorem quotientEquiv_unique\n    {X : Type uX} {Y : Type uY} {Z : Type uZ}\n    (q : X → Y) (r : X → Z)\n    (hq : Surjective q) (hr : Surjective r)\n    (hsame : SameFibers q r)\n    (e : Y ≃ Z)\n    (he : e ∘ q = r) :\n    e = quotientEquiv q r hq hr hsame"
+          },
+          "decision": "BIJECTIVE_RELABELING_UNIQUENESS_NOT_KERNEL_FACTOR_UNIQUENESS",
+          "semantic_instantiation_analysis": "The old theorem compares an equivalence e : Y equiv Z with the canonical equivalence between two surjective source representations q and r having the same fibres. A stochastic quotient kernel is a measure-valued row function, generally neither injective nor surjective and not an equivalence. Supplying the old bijection premises would be unjustified. The simpler set-level QuotientDescent uniqueness theorem is a valid partial semantic reuse route, described separately below.",
+          "blocking_reuse_omission": false
+        }
+      ]
+    },
+    {
+      "candidate": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.testExpectation_mem_unit",
+      "candidate_source": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+        "sha256": "8ea9470fbc1fcb7067581a02247e7eaf88dbc6e57b4c86e7e621470453ac52a7",
+        "bytes": 24584,
+        "line": 438,
+        "source_type_text": "theorem testExpectation_mem_unit (P : Kernel (X × A) X) [IsMarkovKernel P]\n    (q : X → Bool) (b : ProbabilityMeasure X) (word : List (A × Bool)) :\n    testExpectation P q b word ∈ Set.Icc (0 : ℝ) 1"
+      },
+      "candidate_contract": "For any Markov Kernel (X x A) X, any q : X -> Bool, any probability belief, and any finite action/observation word, the recursive ENNReal test-response integral converted to real lies in [0,1]. The bound follows by induction from the probability-mass-one rows and monotonicity of lintegral; measurability of q is not needed for this outer-integral bound.",
+      "pairs": [
+        {
+          "prior_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.test_expectation",
+          "prior_source_at_baseline": {
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+            "sha256": "9bd381fde5c6db2ae84e02363d33ed68de412b1fd9a2f827a72fe474bf82405e",
+            "bytes": 32136,
+            "line": 214,
+            "source_type_text": "theorem test_expectation (a i : Bool) (x : State) :\n    transitionTestExpectation model (test i) a x =\n      if i then failureChance x.2 a else 1 - failureChance x.2 a"
+          },
+          "decision": "ONE_FIXED_FINITE_MODEL_EXPECTATION_NOT_ARBITRARY_WORD_BOUND",
+          "semantic_instantiation_analysis": "The old theorem exactly computes one-step transitionTestExpectation in a particular finite Bool x Bool transition table as failureChance or its complement. It does not quantify over arbitrary Markov kernels, arbitrary probability beliefs or recursively composed finite words. The new statement needs the generic induction and probability-integral bound, and already uses standard lintegral monotonicity rather than reproducing the finite-table calculation.",
+          "blocking_reuse_omission": false
+        }
+      ]
+    },
+    {
+      "candidate": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.probe_observation_law",
+      "candidate_source": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+        "sha256": "4ea06cb6cadc4c4573376281485a885ecd1897ca7e435d209b75d0643270c511",
+        "bytes": 8824,
+        "line": 59,
+        "source_type_text": "theorem probe_observation_law (b : ProbabilityMeasure State) :\n    observationLaw b.toMeasure source (observation observe measurable_observe) false =\n      b.toMeasure.map observe"
+      },
+      "candidate_contract": "For the concrete Bool x Bool stochastic source and action false, the predictive Boolean observation measure for every input ProbabilityMeasure State equals the prior pushed through observe. This uses the source-specific fact that false keeps the visible bit while the hidden bit still receives noise.",
+      "pairs": [
+        {
+          "prior_symbol": "UEOT.V3.FiniteBayesBelief.observationLaw_mass",
+          "prior_source_at_baseline": {
+            "path": "formalization/ueot-core/UEOT/V3/FiniteBayesBelief.lean",
+            "sha256": "1ea79d7c1217c4a3292b790c000d1c1f6fc9777439f8b8a0102157a5e52e97ed",
+            "bytes": 10757,
+            "line": 140,
+            "source_type_text": "@[simp] theorem observationLaw_mass (M : Model Theta X A Y)\n    (b : Belief Theta X) (a : A) (y : Y) :\n    (observationLaw M b a).mass y = evidence M b a y"
+          },
+          "decision": "FINITE_MASS_PROJECTION_NOT_PROBE_INVARIANCE",
+          "semantic_instantiation_analysis": "The old finite-table theorem is definitional: the mass of FiniteBayesBelief.observationLaw M b a at y equals evidence M b a y. Its custom finite Model/Belief/FiniteLaw types do not state invariance of this source under a probe action. Translating the concrete source into that model would still require the new row projection and bridge to the actual GeneralBayesPosterior/C1 measure law. It cannot replace the equality of measures for all probability beliefs.",
+          "blocking_reuse_omission": false
+        },
+        {
+          "prior_symbol": "UEOT.V3.GeneralBayesPosterior.observationLaw_eq",
+          "prior_source_at_baseline": {
+            "path": "formalization/ueot-core/UEOT/V3/GeneralBayesPosterior.lean",
+            "sha256": "5b5cd1fcb88048caafbbd5d6d1d24f9f3f1e8cf6ce4027ccd775768ae6afafbd",
+            "bytes": 5398,
+            "line": 84,
+            "source_type_text": "theorem observationLaw_eq\n    (b : Measure Z) (P : Kernel (Z × A) Z)\n    (O : Kernel (Z × A) Y) (a : A) :\n    observationLaw b P O a = fixedActionKernel O a ∘ₘ predictedLaw b P a"
+          },
+          "decision": "EXISTING_DEFINITION_REUSED_WITH_NEW_SOURCE_SPECIFIC_STEP",
+          "semantic_instantiation_analysis": "The old theorem states observationLaw b P O a = fixedActionKernel O a composed with predictedLaw b P a, by rfl. The new proof unfolds this same existing observationLaw definition, then uses Measure.map_comp, deterministic_comp_eq_map and the new probe_projection to derive equality with b.map observe. Rewriting with the old theorem instead of unfolding the definition is a valid cosmetic alternative; the old result alone does not remove the transition. Record semantic/definitional reuse, not a direct proof-constant dependency that the current term does not contain.",
+          "blocking_reuse_omission": false
+        }
+      ]
+    }
+  ],
+  "additional_reuse_review": [
+    {
+      "topic": "Generic set-level factor uniqueness is already available",
+      "prior_symbols": [
+        "UEOT.V3.Compression.QuotientDescent.eq_descend_of_comp_eq",
+        "UEOT.V3.Compression.QuotientDescent.existsUnique_descend"
+      ],
+      "source": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/QuotientDescent.lean",
+        "sha256": "1cb1e6f46e36f989cfdd8f4b300084245efa090c5a4f6140960049bfcd476dcd",
+        "bytes": 15340
+      },
+      "valid_instantiation": "Let S = ProbabilityMeasure X x A, C = unitInterval x A, T = Measure unitInterval, qtilde(b,a) = (coordinate q b,a), and g(b,a) = map (coordinate q) (c1BeliefTransitionKernel P (observation q hq) (b,a)). coordinate_liftBelief provides a right inverse (c,a) -> (liftBelief zero one c,a), hence qtilde is surjective. quotientKernel_factor supplies factorization and therefore FiberCompatible qtilde g. The old unique-descend theorem forces the underlying functions of every factoring K and quotientKernel to coincide; Kernel extensionality yields kernel equality.",
+      "assessment": "This is a true semantic specialization of the existing universal uniqueness principle. The current short section-based proof is acceptable and is not a new abstract uniqueness principle. An optional rewrite using the existing generic theorem would add adapters and does not remove any source-specific obligation. No source change is required.",
+      "not_supplied_by_old_theorem": [
+        "measurability of the explicit probability section or descended kernel",
+        "Markov normalization",
+        "actual C1 observable posterior law",
+        "derivation from original-source ClosedTests",
+        "converse recovery of original transition tests from C1 quotient factorization"
+      ]
+    },
+    {
+      "topic": "Actual C1 common-version interface is reused directly",
+      "source": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/C1ParametricBelief.lean",
+        "sha256": "d01ebe16cea8d93e38690a1eb3bf68701e3c177b117d3ee6496b5968b877967d",
+        "bytes": 20284
+      },
+      "prior_symbols": [
+        "c1ParametricPosteriorKernel_ae_eq_existing",
+        "measurable_c1ParametricPosteriorBelief",
+        "c1BeliefTransitionKernel_apply_eq_map"
+      ],
+      "assessment": "posterior_observable_ae and actual_kernel_coordinate_law explicitly call these existing interfaces, together with Mathlib deterministic_comp_posterior. The new work identifies the deterministic Boolean observation pushforward a.e. and integrates that equality into the exact coordinate transition law. It does not reconstruct a new disintegration or replace the existing C1 kernel."
+    },
+    {
+      "topic": "Finite stochastic predictive quotients do not subsume this belief kernel quotient",
+      "sources": [
+        {
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StochasticPredictiveObservabilityBridge.lean",
+          "sha256": "f32c0c77fa10d802409716f27e48146191d8e2456a4b029b723a80a8ddd611a6",
+          "bytes": 7129
+        },
+        {
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeterministicDiracPredictiveBridge.lean",
+          "sha256": "c48830217f10a2be87ed9ca0392d3435efa864a255a668868f772251be9cc5d3",
+          "bytes": 4590
+        }
+      ],
+      "assessment": "The existing finite-state theorems construct FiniteControlledStochasticKernel on reachable microscopic predictive classes, under finite indicator-spanning tests or deterministic source dynamics. Here the source is the existing measure-valued C1 posterior transition on all ProbabilityMeasure X, with quotient image the generally uncountable interval [0,1]. The new observation is post-transition. The old finite/pre-action interfaces cannot be instantiated to this full belief domain without new bridges and hypotheses, and do not provide its measurable section or common-version posterior identity."
+    },
+    {
+      "topic": "Existing finite probe counterexample is a different boundary",
+      "source": {
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePredictiveProbeCompleteness.lean",
+        "sha256": "adc94ed44c6be6c6bcbfec3ce9db18b7f6dcbe63b596d9f7cf5ba27c13e20d89",
+        "bytes": 6382
+      },
+      "assessment": "finite_predictive_separation_does_not_force_markov_quotient concerns a six-state stochastic microscopic trace counterexample and strong lumpability. The new no_quotient_without_closed_tests evaluates the actual C1 kernel for a specified controlled Bool x Bool source and refutes any Kernel factorization on the probability coordinate, including non-Markov K. The former is relevant context, not an instance proving the latter."
+    }
+  ],
+  "baseline_sources": [
+    {
+      "path": "formalization/ueot-core/UEOT/V3/CompactArgmaxSelector.lean",
+      "sha256": "6721730c64e4fb003167a54a640c15ed4f79557b55a3779915709e4f6a5ce550",
+      "bytes": 13806,
+      "working_tree_bytes_equal_baseline": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/QuotientDescent.lean",
+      "sha256": "1cb1e6f46e36f989cfdd8f4b300084245efa090c5a4f6140960049bfcd476dcd",
+      "bytes": 15340,
+      "working_tree_bytes_equal_baseline": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/QuotientGauge.lean",
+      "sha256": "d28a66230cc042e7ef3c976387ceec52820544fee7126085307f1e59e0bea12d",
+      "bytes": 5053,
+      "working_tree_bytes_equal_baseline": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/C1ParametricBelief.lean",
+      "sha256": "d01ebe16cea8d93e38690a1eb3bf68701e3c177b117d3ee6496b5968b877967d",
+      "bytes": 20284,
+      "working_tree_bytes_equal_baseline": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeterministicDiracPredictiveBridge.lean",
+      "sha256": "c48830217f10a2be87ed9ca0392d3435efa864a255a668868f772251be9cc5d3",
+      "bytes": 4590,
+      "working_tree_bytes_equal_baseline": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePredictiveProbeCompleteness.lean",
+      "sha256": "adc94ed44c6be6c6bcbfec3ce9db18b7f6dcbe63b596d9f7cf5ba27c13e20d89",
+      "bytes": 6382,
+      "working_tree_bytes_equal_baseline": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RowwiseProbeSampling.lean",
+      "sha256": "24f389bd6fe31c8c62758edf38e1badc3e3148851bac0b9d23d3ee54bd002c26",
+      "bytes": 5557,
+      "working_tree_bytes_equal_baseline": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "sha256": "9bd381fde5c6db2ae84e02363d33ed68de412b1fd9a2f827a72fe474bf82405e",
+      "bytes": 32136,
+      "working_tree_bytes_equal_baseline": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StochasticPredictiveObservabilityBridge.lean",
+      "sha256": "f32c0c77fa10d802409716f27e48146191d8e2456a4b029b723a80a8ddd611a6",
+      "bytes": 7129,
+      "working_tree_bytes_equal_baseline": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/FiniteBayesBelief.lean",
+      "sha256": "1ea79d7c1217c4a3292b790c000d1c1f6fc9777439f8b8a0102157a5e52e97ed",
+      "bytes": 10757,
+      "working_tree_bytes_equal_baseline": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/GeneralBayesPosterior.lean",
+      "sha256": "5b5cd1fcb88048caafbbd5d6d1d24f9f3f1e8cf6ce4027ccd775768ae6afafbd",
+      "bytes": 5398,
+      "working_tree_bytes_equal_baseline": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/InformationConditionalStatistic.lean",
+      "sha256": "e898329bba82940ebd672c0bb187085df8a4b7cfc6757ef7f6a02b3ce7e2fe34",
+      "bytes": 6347,
+      "working_tree_bytes_equal_baseline": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/InformationDiscreteLawCode.lean",
+      "sha256": "11b597937ea9160294f9f623ff53ed2cb9970119259bff7e36208c47c41cf261",
+      "bytes": 8553,
+      "working_tree_bytes_equal_baseline": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/InformationStatistic.lean",
+      "sha256": "3422833ac0f7eae43682372b2ac65890b52ad4e36d24fd9ba1f2240c1c6eb9a8",
+      "bytes": 10547,
+      "working_tree_bytes_equal_baseline": true
+    }
+  ],
+  "prior_independent_math_review": {
+    "path": "/tmp/ueot-r3-math-review.json",
+    "sha256": "5adbfc4e505ae6f11793acd75a95c97fde60c69f6c962724ceba530744a871f0",
+    "bytes": 17114
+  },
+  "limits": [
+    "This report reviews source types and mathematical instantiations; it does not certify later native execution or a final Git commit.",
+    "The source-preflight status was PENDING_ACTUAL_NATIVE_EXECUTION. Production build and native receipt acceptance remain separate evidence.",
+    "No claim that a theorem is semantically independent follows merely from a different elaborated type. The identified generic uniqueness specialization is explicitly retained."
+  ],
+  "actions": {
+    "source_edits": false,
+    "heavy_lean_or_test_runs": false,
+    "native_export_runs": false,
+    "cloud_actions": false,
+    "gi_writes": false,
+    "spawned_agents": false,
+    "written_outputs": [
+      "/tmp/ueot-r3-typed-reuse-review.json"
+    ]
+  }
+}

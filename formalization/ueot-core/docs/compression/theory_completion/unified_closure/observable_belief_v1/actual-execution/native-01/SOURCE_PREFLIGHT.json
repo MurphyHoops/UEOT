@@ -1,0 +1,667 @@
+{
+  "status": "PENDING_ACTUAL_NATIVE_EXECUTION",
+  "baseline_ref": "e045cca43a94abbff00fd0da53e6200e0bd6ae2e",
+  "baseline_reuse_consumer": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+    "sha256": "d712f76a03438b7ef2c506a006e69c0823500efce2053c42f3c2186905776e3b"
+  },
+  "immutable_protocol_helpers": [
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/pr_preflight.py",
+      "sha256": "6d9ee21b7c832aa238c7fd2b42cd5aa9085bc3af616df16819aa100d82f9213c"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/fkrg.py",
+      "sha256": "a91301a76165f542d658e924846eede169287a73da6f31f73f24979250de96ff"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/registered_interfaces/native_protocol/prepare_registered_interfaces_export.py",
+      "sha256": "9dee4154f7233065d723d58da5117463f7f2182856e20a6762450c837c433ed8"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/registered_interfaces/native_protocol/build_identity.py",
+      "sha256": "e80ed3ef63b7f6a6a6cd9f3b248917b1b3dc17dbbd0428c41333febc9cdb2e73"
+    }
+  ],
+  "integration_driver_sha256": "76cfb21fa3e7a74c602d14430eaab412403a4891b84111fa8f81c31f20c22b02",
+  "source_tree_sha256": "778b37210962b487cedd2d5d50e9fa95c1297987ec4e18630da7fbc1ccd883c2",
+  "complete_source_modules": 701,
+  "base_snapshot_modules": 699,
+  "registered_prior_theorems": 4433,
+  "prior_overlay_count": 14,
+  "prior_overlay": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/NOISY_ORACLE_REUSE_OVERLAY_V1.json",
+    "sha256": "8e966bab093ddccadeffc8a91d3265e99cd1bfbc34696d965b981426e0457283"
+  },
+  "source_hash_overrides": {
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean": "ee09b2197012c8b617e9085c80fa6e6f6b1ec518724b58a10efce0b293fc8974"
+  },
+  "added_modules": [
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "content_sha256": "8ea9470fbc1fcb7067581a02247e7eaf88dbc6e57b4c86e7e621470453ac52a7",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "content_sha256": "4ea06cb6cadc4c4573376281485a885ecd1897ca7e435d209b75d0643270c511",
+      "source_origin": "UEOT_MAINTAINED"
+    }
+  ],
+  "public_source_candidates": [
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.measurable_coordinate",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 32,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.measurable_liftBelief",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 47,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.coordinate_liftBelief",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 58,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.coordinate_real_image",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 68,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.coordinate_image_isClosed",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 79,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.actual_kernel_coordinate_law",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 200,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.closed_tests_predictive_law",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 217,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.quotientKernel_factor",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 268,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.quotientKernel_unique",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 283,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.closed_tests_of_quotient",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 317,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.closed_tests_iff_existsUnique_quotient",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 342,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.closed_tests_prefix_response",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 369,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.finite_test_response_factors",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 387,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.same_coordinate_same_tests",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 405,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.testResponse_le_one",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 420,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.testExpectation_mem_unit",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 438,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.first_test_eq_observation",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 450,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.safe_class_probability",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 465,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.observation_reward_factors",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 475,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.source_closed",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 44,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.probe_observation_law",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 59,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.probe_test_is_coordinate",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 73,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.predictive_equivalence_iff",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 81,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.actual_C1_descends",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 94,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.source_hidden_flip_mass",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 102,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.aliases_have_all_same_future_tests",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 128,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.no_quotient_without_closed_tests",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 142,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.reward_readout_factors",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 158,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.safe_readout_factors",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 167,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.hidden_readouts_do_not_descend",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 175,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    }
+  ],
+  "exporter_sha256": "b20ccaa58076408536fa4574840efc6a154f0abe99c9efed6225f408f2af773c",
+  "reused_export_protocol": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/registered_interfaces/native_protocol/prepare_registered_interfaces_export.py",
+    "sha256": "9dee4154f7233065d723d58da5117463f7f2182856e20a6762450c837c433ed8"
+  },
+  "lexical_reuse_hints": [
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.measurable_coordinate",
+      "short_name": "measurable_coordinate",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 32,
+      "header_preview": "@[fun_prop] theorem measurable_coordinate (q : X → Bool) (hq : Measurable q) :     Measurable (coordinate q) := by   apply Measurable.subtype_mk   exact ENNReal.measurable_toReal.comp     ((Measure.measurable_coe ((measurableSet_singleton true).preimage hq)).comp       measurable_subtype_coe)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RowwiseProbeSampling.coordinateGood_measurable",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RowwiseProbeSampling.lean",
+          "similarity": 0.667,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.InformationConditionalStatistic.measurable_coreAt",
+          "path": "formalization/ueot-core/UEOT/V3/InformationConditionalStatistic.lean",
+          "similarity": 0.533,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.CompactArgmaxSelector.measurable_center",
+          "path": "formalization/ueot-core/UEOT/V3/CompactArgmaxSelector.lean",
+          "similarity": 0.513,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.InformationDiscreteLawCode.DiscreteLawCode.measurable_decode",
+          "path": "formalization/ueot-core/UEOT/V3/InformationDiscreteLawCode.lean",
+          "similarity": 0.513,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.measurable_good",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+          "similarity": 0.506,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.measurable_liftBelief",
+      "short_name": "measurable_liftBelief",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 47,
+      "header_preview": "@[fun_prop] theorem measurable_liftBelief (zero one : X) :     Measurable (liftBelief zero one) := by   apply Measurable.subtype_mk   apply Measure.measurable_of_measurable_coe   intro s _hs   simp only [Measure.add_apply, Measure.smul_apply, smul_eq_mul]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.InformationStatistic.measurable_statisticLift",
+          "path": "formalization/ueot-core/UEOT/V3/InformationStatistic.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.coordinate_liftBelief",
+      "short_name": "coordinate_liftBelief",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 58,
+      "header_preview": "theorem coordinate_liftBelief (q : X → Bool) (hq : Measurable q)     (zero one : X) (hzero : q zero = false) (hone : q one = true) (c : unitInterval) :     coordinate q (liftBelief zero one c) = c := by   apply Subtype.ext   change ((ENNReal.ofReal (1 - (c : ℝ)) • Measure.dirac zero +     ENNReal.ofReal (c : ℝ) • Measure.dirac one) (q ⁻¹' {true})).toReal = c",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.coordinate_real_image",
+      "short_name": "coordinate_real_image",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 68,
+      "header_preview": "theorem coordinate_real_image (q : X → Bool) (hq : Measurable q)     (zero one : X) (hzero : q zero = false) (hone : q one = true) :     Set.range (fun b => (coordinate q b : ℝ)) = Set.Icc 0 1 := by   ext c   constructor   · rintro ⟨b, rfl⟩",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.coordinate_image_isClosed",
+      "short_name": "coordinate_image_isClosed",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 79,
+      "header_preview": "theorem coordinate_image_isClosed (q : X → Bool) (hq : Measurable q)     (zero one : X) (hzero : q zero = false) (hone : q one = true) :     IsClosed (Set.range (fun b => (coordinate q b : ℝ))) := by   rw [coordinate_real_image q hq zero one hzero hone]   exact isClosed_Icc ",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.actual_kernel_coordinate_law",
+      "short_name": "actual_kernel_coordinate_law",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 200,
+      "header_preview": "theorem actual_kernel_coordinate_law (q : X → Bool) (hq : Measurable q)     (P : Kernel (X × A) X) [IsMarkovKernel P] (b : ProbabilityMeasure X) (a : A) :     (c1BeliefTransitionKernel P (observation q hq) (b, a)).map (coordinate q) =       (observationLaw b.toMeasure P (observation q hq) a).map vertex := by   have hpostMeas : Measurable (fun y =>       c1ParametricPosteriorBelief P (observation q hq) ((b, a), y)) :=",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.closed_tests_predictive_law",
+      "short_name": "closed_tests_predictive_law",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 217,
+      "header_preview": "theorem closed_tests_predictive_law (q : X → Bool) (hq : Measurable q)     (P : Kernel (X × A) X) [IsMarkovKernel P] (hclosed : ClosedTests P q)     (zero one : X) (hzero : q zero = false) (hone : q one = true)     (b b' : ProbabilityMeasure X) (h : coordinate q b = coordinate q b') (a : A) :     observationLaw b.toMeasure P (observation q hq) a =       observationLaw b'.toMeasure P (observation q hq) a := by",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.quotientKernel_factor",
+      "short_name": "quotientKernel_factor",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 268,
+      "header_preview": "theorem quotientKernel_factor (q : X → Bool) (hq : Measurable q)     (P : Kernel (X × A) X) [IsMarkovKernel P] (hclosed : ClosedTests P q)     (zero one : X) (hzero : q zero = false) (hone : q one = true)     (b : ProbabilityMeasure X) (a : A) :     (c1BeliefTransitionKernel P (observation q hq) (b, a)).map (coordinate q) =       quotientKernel q hq P zero one (coordinate q b, a) := by",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.quotientKernel_unique",
+      "short_name": "quotientKernel_unique",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 283,
+      "header_preview": "theorem quotientKernel_unique (q : X → Bool) (hq : Measurable q)     (P : Kernel (X × A) X) [IsMarkovKernel P] (hclosed : ClosedTests P q)     (zero one : X) (hzero : q zero = false) (hone : q one = true)     (K : Kernel (unitInterval × A) unitInterval)     (hK : ∀ (b : ProbabilityMeasure X) (a : A),       (c1BeliefTransitionKernel P (observation q hq) (b, a)).map (coordinate q) =",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.QuotientGauge.quotientEquiv_unique",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/QuotientGauge.lean",
+          "similarity": 0.514,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.closed_tests_of_quotient",
+      "short_name": "closed_tests_of_quotient",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 317,
+      "header_preview": "theorem closed_tests_of_quotient (q : X → Bool) (hq : Measurable q)     (P : Kernel (X × A) X) [IsMarkovKernel P]     (K : Kernel (unitInterval × A) unitInterval)     (hK : ∀ (b : ProbabilityMeasure X) (a : A),       (c1BeliefTransitionKernel P (observation q hq) (b, a)).map (coordinate q) =         K (coordinate q b, a)) : ClosedTests P q := by",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.closed_tests_iff_existsUnique_quotient",
+      "short_name": "closed_tests_iff_existsUnique_quotient",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 342,
+      "header_preview": "theorem closed_tests_iff_existsUnique_quotient (q : X → Bool) (hq : Measurable q)     (P : Kernel (X × A) X) [IsMarkovKernel P]     (zero one : X) (hzero : q zero = false) (hone : q one = true) :     ClosedTests P q ↔ ∃! K : Kernel (unitInterval × A) unitInterval,       IsMarkovKernel K ∧ ∀ (b : ProbabilityMeasure X) (a : A),         (c1BeliefTransitionKernel P (observation q hq) (b, a)).map (coordinate q) =",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.closed_tests_prefix_response",
+      "short_name": "closed_tests_prefix_response",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 369,
+      "header_preview": "theorem closed_tests_prefix_response (q : X → Bool) (hq : Measurable q)     (P : Kernel (X × A) X) [IsMarkovKernel P] (hclosed : ClosedTests P q)     (zero one : X) (hzero : q zero = false) (hone : q one = true)     (a : A) (o : Bool) (f : Bool → ℝ≥0∞) :     ∃ g : Bool → ℝ≥0∞, ∀ x,       (∫⁻ z, if q z = o then f (q z) else 0 ∂P (x, a)) = g (q x) := by",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.finite_test_response_factors",
+      "short_name": "finite_test_response_factors",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 387,
+      "header_preview": "theorem finite_test_response_factors (q : X → Bool) (hq : Measurable q)     (P : Kernel (X × A) X) [IsMarkovKernel P] (hclosed : ClosedTests P q)     (zero one : X) (hzero : q zero = false) (hone : q one = true)     (word : List (A × Bool)) :     ∃ g : Bool → ℝ≥0∞, ∀ x, testResponse P q word x = g (q x) := by   induction word with",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.same_coordinate_same_tests",
+      "short_name": "same_coordinate_same_tests",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 405,
+      "header_preview": "theorem same_coordinate_same_tests (q : X → Bool) (hq : Measurable q)     (P : Kernel (X × A) X) [IsMarkovKernel P] (hclosed : ClosedTests P q)     (zero one : X) (hzero : q zero = false) (hone : q one = true)     (b b' : ProbabilityMeasure X) (h : coordinate q b = coordinate q b')     (word : List (A × Bool)) : testExpectation P q b word = testExpectation P q b' word := by   obtain ⟨g, hg⟩ := finite_test_response_factors q hq P hclosed zero one hzero hone word",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.testResponse_le_one",
+      "short_name": "testResponse_le_one",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 420,
+      "header_preview": "theorem testResponse_le_one (P : Kernel (X × A) X) [IsMarkovKernel P]     (q : X → Bool) (word : List (A × Bool)) (x : X) :     testResponse P q word x ≤ 1 := by   induction word generalizing x with   | nil => simp [testResponse]   | cons ao word ih =>",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.testExpectation_mem_unit",
+      "short_name": "testExpectation_mem_unit",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 438,
+      "header_preview": "theorem testExpectation_mem_unit (P : Kernel (X × A) X) [IsMarkovKernel P]     (q : X → Bool) (b : ProbabilityMeasure X) (word : List (A × Bool)) :     testExpectation P q b word ∈ Set.Icc (0 : ℝ) 1 := by   refine ⟨ENNReal.toReal_nonneg, ?_⟩   have hmass : (∫⁻ x, testResponse P q word x ∂b.toMeasure) ≤ 1 := by     calc",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.test_expectation",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+          "similarity": 0.507,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.first_test_eq_observation",
+      "short_name": "first_test_eq_observation",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 450,
+      "header_preview": "theorem first_test_eq_observation (q : X → Bool) (hq : Measurable q)     (P : Kernel (X × A) X) [IsMarkovKernel P] (b : ProbabilityMeasure X) (a : A) (o : Bool) :     testExpectation P q b [(a, o)] =       (observationLaw b.toMeasure P (observation q hq) a).real {o} := by   have hresponse (x : X) : testResponse P q [(a, o)] x = P (x, a) (q ⁻¹' {o}) := by     simpa only [testResponse, Set.indicator, Set.mem_preimage, Set.mem_singleton_iff,",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.safe_class_probability",
+      "short_name": "safe_class_probability",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 465,
+      "header_preview": "theorem safe_class_probability (q : X → Bool) (hq : Measurable q) (b : ProbabilityMeasure X) :     b.toMeasure.real (q ⁻¹' {false}) = 1 - (coordinate q b : ℝ) := by   have hcomp : (q ⁻¹' {true})ᶜ = q ⁻¹' {false} := by     ext x     cases hx : q x <;> simp [Set.mem_preimage, hx]   have h := probReal_compl_eq_one_sub (μ := b.toMeasure)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.observation_reward_factors",
+      "short_name": "observation_reward_factors",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "line": 475,
+      "header_preview": "theorem observation_reward_factors (q : X → Bool) (hq : Measurable q)     (b : ProbabilityMeasure X) (r : Bool → ℝ) :     (∫ x, r (q x) ∂b.toMeasure) =       (1 - (coordinate q b : ℝ)) * r false + (coordinate q b : ℝ) * r true := by   let μ := probabilityPush q hq b   have hm : Measurable r := measurable_of_countable _",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.source_closed",
+      "short_name": "source_closed",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 44,
+      "header_preview": "theorem source_closed : ClosedTests source observe := by   intro x x' hx a   have hrow : (source (x, a)).map observe = (source (x', a)).map observe := by     rw [source_projection, source_projection]     change x.1 = x'.1 at hx     rw [hx]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.probe_observation_law",
+      "short_name": "probe_observation_law",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 59,
+      "header_preview": "theorem probe_observation_law (b : ProbabilityMeasure State) :     observationLaw b.toMeasure source (observation observe measurable_observe) false =       b.toMeasure.map observe := by   have hO : fixedActionKernel (observation (A := Bool) observe measurable_observe) false =       Kernel.deterministic observe measurable_observe := rfl   have hP : (fixedActionKernel source false).map observe =",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.FiniteBayesBelief.observationLaw_mass",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteBayesBelief.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.GeneralBayesPosterior.observationLaw_eq",
+          "path": "formalization/ueot-core/UEOT/V3/GeneralBayesPosterior.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.probe_test_is_coordinate",
+      "short_name": "probe_test_is_coordinate",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 73,
+      "header_preview": "theorem probe_test_is_coordinate (b : ProbabilityMeasure State) :     testExpectation source observe b [(false, true)] = (coordinate observe b : ℝ) := by   rw [first_test_eq_observation observe measurable_observe source b false true,     probe_observation_law]   change ((b.toMeasure.map observe) {true}).toReal = _   rw [Measure.map_apply measurable_observe (measurableSet_singleton true)]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.predictive_equivalence_iff",
+      "short_name": "predictive_equivalence_iff",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 81,
+      "header_preview": "theorem predictive_equivalence_iff (b b' : ProbabilityMeasure State) :     (∀ word : List (Bool × Bool),       testExpectation source observe b word = testExpectation source observe b' word) ↔       coordinate observe b = coordinate observe b' := by   constructor   · intro h",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.actual_C1_descends",
+      "short_name": "actual_C1_descends",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 94,
+      "header_preview": "theorem actual_C1_descends (b : ProbabilityMeasure State) (a : Bool) :     (c1BeliefTransitionKernel source (observation observe measurable_observe) (b, a)).map         (coordinate observe) =       quotientKernel observe measurable_observe source (false, false) (true, false)         (coordinate observe b, a) := by   exact quotientKernel_factor observe measurable_observe source source_closed",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.source_hidden_flip_mass",
+      "short_name": "source_hidden_flip_mass",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 102,
+      "header_preview": "theorem source_hidden_flip_mass (x : State) (a : Bool) :     source (x, a) {z | z.2 ≠ x.2} = (1 / 4 : ℝ≥0∞) := by   change (noise.map (advance x a)) _ = _   have hs : MeasurableSet {z : State | z.2 ≠ x.2} := (Set.to_countable _).measurableSet   rw [Measure.map_apply (measurable_of_countable _) hs]   have hpre : (advance x a) ⁻¹' {z : State | z.2 ≠ x.2} = {true} := by",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.aliases_have_all_same_future_tests",
+      "short_name": "aliases_have_all_same_future_tests",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 128,
+      "header_preview": "theorem aliases_have_all_same_future_tests :     ∀ word : List (Bool × Bool),       testExpectation source observe aliasZero word = testExpectation source observe aliasOne word :=   (predictive_equivalence_iff aliasZero aliasOne).mpr alias_coordinates  def badSource : Kernel (State × Bool) State :=",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.no_quotient_without_closed_tests",
+      "short_name": "no_quotient_without_closed_tests",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 142,
+      "header_preview": "theorem no_quotient_without_closed_tests :     ¬ ∃ K : Kernel (unitInterval × Bool) unitInterval,       ∀ (b : ProbabilityMeasure State) (a : Bool),         (c1BeliefTransitionKernel badSource (observation observe measurable_observe) (b, a)).map             (coordinate observe) = K (coordinate observe b, a) := by   rintro ⟨K, hK⟩",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.reward_readout_factors",
+      "short_name": "reward_readout_factors",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 158,
+      "header_preview": "theorem reward_readout_factors (b : ProbabilityMeasure State) (a : Bool) :     (∫ x, reward x a ∂b.toMeasure) =       (coordinate observe b : ℝ) - (if a then 1 / 8 else 0) := by   have h := observation_reward_factors observe measurable_observe b     (fun y => (if y then 1 else 0) - (if a then 1 / 8 else 0))   change (∫ x, ((if observe x then 1 else 0) - (if a then 1 / 8 else 0)) ∂b.toMeasure) = _",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.safe_readout_factors",
+      "short_name": "safe_readout_factors",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 167,
+      "header_preview": "theorem safe_readout_factors (b : ProbabilityMeasure State) :     b.toMeasure.real {x | observe x = false} = 1 - (coordinate observe b : ℝ) := by   exact safe_class_probability observe measurable_observe b  def hiddenReward (x : State) : ℝ := if x.2 then 1 else 0 ",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.hidden_readouts_do_not_descend",
+      "short_name": "hidden_readouts_do_not_descend",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+      "line": 175,
+      "header_preview": "theorem hidden_readouts_do_not_descend :     (¬ ∃ rbar : unitInterval → ℝ, ∀ b : ProbabilityMeasure State,       (∫ x, hiddenReward x ∂b.toMeasure) = rbar (coordinate observe b)) ∧     (¬ ∃ sbar : unitInterval → ℝ, ∀ b : ProbabilityMeasure State,       b.toMeasure.real hiddenSafe = sbar (coordinate observe b)) := by   constructor",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    }
+  ]
+}

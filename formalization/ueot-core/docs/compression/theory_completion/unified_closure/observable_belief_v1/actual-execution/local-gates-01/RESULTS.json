@@ -1,0 +1,42 @@
+[
+  {
+    "name": "research-governance",
+    "command": [
+      "python3",
+      "formalization/ueot-core/scripts/test_validate_compression_research.py",
+      "--repo-root",
+      "."
+    ],
+    "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023",
+    "exit_code": 0,
+    "seconds": 7.745
+  },
+  {
+    "name": "mission-validator",
+    "command": [
+      "python3",
+      "formalization/ueot-core/docs/compression/theory_completion/unified_closure/validate_unified_closure.py",
+      "--repo-root",
+      "."
+    ],
+    "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023",
+    "exit_code": 0,
+    "seconds": 0.029
+  },
+  {
+    "name": "mission-adversarial",
+    "command": [
+      "python3",
+      "formalization/ueot-core/docs/compression/theory_completion/unified_closure/test_validate_unified_closure.py"
+    ],
+    "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023",
+    "exit_code": 0,
+    "seconds": 0.036
+  },
+  {
+    "name": "production-raw-proof-escape-scan",
+    "source": "Compression/**/*.lean",
+    "state": "PASS",
+    "matches": []
+  }
+]
