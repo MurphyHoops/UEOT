@@ -1,0 +1,122 @@
+{
+  "schema": "UEOT_R2_NOISY_FINITE_RISK_ORACLE_SOURCE_REVIEW_V1",
+  "status": "CLEAR",
+  "baseline_ref": "d048429a1f713246dd7a69aa278f71c4d0df1677",
+  "candidate_commit": "NOT_YET_BOUND",
+  "source": {
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+    "sha256": "ac5cb46f495e019960a54fe46e0bf5bad2e10a50f98050d5d9e83d19adba4e03",
+    "lines": 847,
+    "public_theorems": 26
+  },
+  "blocking_findings": [],
+  "verified_chain": [
+    {
+      "stage": "Computed empirical defect",
+      "lines": "41-57, 161-308",
+      "finding": "Rational frequency is proved equal to empiricalRow atom mass; the overlap expression is proved equal to canonical TV. The executable max includes every same-fiber triple and zero. Its pair bound is proved directly, then its real cast is proved equal to the existing responseDefect with fixed microscopic output X. P-STAT-02 supplies the simultaneous 2u error on the actual all-row calibration event.",
+      "reused": [
+        "empiricalResponsePMF_event_mean",
+        "PathError.tvDist_eq_one_sub_pmfCommonMass",
+        "StatisticalDefect.responseDefect_error"
+      ]
+    },
+    {
+      "stage": "Three-valued scan and actual finite selector",
+      "lines": "59-93, 312-439",
+      "finding": "Rational comparisons are bridged to C2 interval semantics. scanNoisy calls the existing C3 scan with stop=decision != rejected. Ambiguity is retained by scanOutcome and blocks later candidates. selectCandidate is an actual Option (Fin count), including count=0; its Some result has a proved connection to the actual first certified scan output and, on Good, the first true qualifying registered index. No exact Boolean truth oracle or global inclusion-minimality premise is smuggled in.",
+      "reused": [
+        "C2IntervalDecision.decideAt_certified_sound",
+        "C2IntervalDecision.decideAt_rejected_sound",
+        "C3ExecutableSearch.scan_found_iff",
+        "C3ExecutableSearch.scan_none_iff"
+      ]
+    },
+    {
+      "stage": "Constructed empirical reference fit",
+      "lines": "95-111, 174-180, 451-516",
+      "finding": "representative chooses a minimum in a computed fiber, with fallback only for empty fibers; q(rep(q x))=q x is proved. referenceRowMass and referenceKernel use that same representative and the same observed samples. The actual max pair bound plus TV data processing derives hfit; empirical_coarse_row_tv then yields min 1 (u+dHat). No fit inequality is an input.",
+      "reused": [
+        "TotalVariation.tvDist_map_le",
+        "empirical_coarse_row_tv"
+      ]
+    },
+    {
+      "stage": "Rational recursion equals the own reference law",
+      "lines": "113-144, 457-480, 519-577",
+      "finding": "The recursion starts from the actual rational initial masses, multiplies reference rows, and checks recorded actions against program.action(program.memory history). The proof uses the R1 toController_memory identity, the pure-action policy, and pmfExtend point masses. Thus every computed history mass, and the finite bad-event sum, equals the reference causalLaw for this same program; no external reference-risk number is assumed.",
+      "reused": [
+        "Program.toController_memory",
+        "PathError.pmfExtend_apply",
+        "PathError.causalLaw",
+        "pmfMeasureReal_eq_sum_finset"
+      ]
+    },
+    {
+      "stage": "Executed Bool to actual source risk and structural safety",
+      "lines": "146-153, 582-697",
+      "finding": "accepts checks positive N, nonnegative radius/threshold, beta in [0,1], actual noisy PASS, and the computed rational budget. accepts_eq_true_iff extracts that checked inequality. Successful R1 synthesis plus exact initial/support representation supplies this program own zero uncovered occupancy; coverage risk and the proved reference-risk equality give the numerical bound. The optional all-times safety conclusion separately retains safe initial support and certified-transition closure. No external hchecked or final risk assumption occurs.",
+      "reused": [
+        "ExecutableSupportSynthesis.synthesize_some_zero_uncovered",
+        "coverage_same_policy_microscopic_failure_risk",
+        "ExecutableSupportSynthesis.synthesize_some_all_times_physical_safe"
+      ]
+    },
+    {
+      "stage": "Actual fixed product training",
+      "lines": "701-753",
+      "finding": "trainingMeasure is the existing productRowLaw on (X x A, Fin N), with every row equal to the same P later used by deployment. product_experiment_calibration proves the all-row event for samplesAt(record). The proof enlarges its supplied good set to the canonical all-row calibration event and charges its complement at most min 1 B. There is no supplied calibration/law/independence conclusion and no extra candidate or horizon union charge.",
+      "reused": [
+        "VariableRegisteredSamples.productRowLaw",
+        "VariableRegisteredSamples.product_experiment_calibration"
+      ]
+    },
+    {
+      "stage": "Actual optional selection and accepted-gated joint law",
+      "lines": "756-845",
+      "finding": "selectedAccepts actually executes selectCandidate and the selected program budget check. selectedSourceDeployment runs that selected program on the same P; None has an explicit total fallback law. The final theorem constructs selectedTrainingDeployment from trainingMeasure.toPMF, that real Option selector, and that deployment family. Both None and budget-rejected Some branches have the empty gated event; accepted Some consumes the derived pointwise risk. The old training-dependent event theorem gives min 1 (Bcap+(1-Bcap)beta) for accepted AND failure, not risk conditional on acceptance.",
+      "reused": [
+        "selectedTrainingDeployment",
+        "selectedTrainingDeployment_failure_le",
+        "accepts_actual_risk_on_good"
+      ]
+    }
+  ],
+  "retained_input_contracts": [
+    "Finite X,Y,A and an explicit computable LinearOrder X; a common fixed positive N per state/action row. Arbitrary per-row allocations are not implemented by this module.",
+    "One fixed homogeneous P for both product training and actual deployment; independent registered-row reset/query sampling is part of that mathematical experiment.",
+    "Rational initial masses must equal the actual PMF masses; initial finite support and structural R must equal the actual source supports. Those identities are independent source contracts, not inferred from absent samples.",
+    "Every registered program must have an actual successful R1 synthesis equation before statistical selection. The finite family, budgets and observable envelope are fixed inputs.",
+    "The microscopic event must lie in the explicit observable bad-event envelope. Runtime scalar checks alone do not validate arbitrary user-supplied initial tables, source contracts or envelopes."
+  ],
+  "theta_adjustment_review": {
+    "decision": "USE_1_8_ALTERNATIVE; nontrivial finite-risk contrast is valid",
+    "reason": "For the two-step start-to-absorbing-goal experiment, p=1/4 gives actual goal failure 9/16 below 7/10, while p=1/8 gives 49/64 above 7/10. Both p values remain strictly between zero and one and therefore preserve the same structural relation and physical safe set. A prior structural contract covering both parameters no longer supplies the claimed risk cap by itself.",
+    "exact_count_budget_arithmetic": {
+      "quarter_reference_failure": "9/16",
+      "quarter_budget_with_u_1_20": "53/80 < 7/10",
+      "eighth_reference_failure": "49/64",
+      "eighth_budget_with_u_1_20": "277/320 > 7/10"
+    },
+    "required_constraints": [
+      "Bind the 9/16 and 49/64 claims to the actual source causalLaw and the same goal event/program in the completed WIT; these arithmetic values are not a substitute for that semantic equality.",
+      "For p=1/8, Good implies selectedAccepts=false: acceptance would contradict actual goal risk 49/64 > beta. The identity candidate can still receive noisyDecision=certified; it is the risk-budget check that withholds the deployment certificate. Do not claim every random record must withhold acceptance: bad calibration records retain the stated failure budget.",
+      "For p=1/4, Good alone does not guarantee acceptance. At N=4096, an empirical goal frequency 820/4096 differs from 1/4 by 51/1024 < 1/20 but yields budget 3878093/5242880 > 7/10; a sound oracle may abstain on this Good record.",
+      "The N=4 quarter-count fixture is an arithmetic regression and has capped confidence bound 1 at u=1/20. A nontrivial sampling witness must bind its actual larger-N record and confidence calculation separately (N=4096 gives raw B=48 exp(-512/25)). RNG seed reproducibility is not a proof of distributional source matching."
+    ],
+    "arithmetic_check": "Exact Python Fraction arithmetic only; no WIT Lean theorem or random simulation was executed by this reviewer.",
+    "witness_final_hash_locked": false
+  },
+  "reviewed_existing_interface_files_unchanged_from_baseline": 11,
+  "semantic_novelty_boundary": "This is executable representation/source-law glue and concrete use of existing probability and risk theorems. The review does not infer logical independence or novelty from new names, nor certify a future native collision/axiom audit.",
+  "review_execution": {
+    "full_source_read": true,
+    "old_interfaces_read": true,
+    "lean_build_native_or_tests_rerun": false,
+    "repository_edits": false,
+    "spawned_agents": false,
+    "cloud_ci": false,
+    "gi_writes": false
+  },
+  "pending": "Bind final candidate Git/native/axiom evidence and review completed WIT/runtime separately; this report certifies the current core source semantics only."
+}

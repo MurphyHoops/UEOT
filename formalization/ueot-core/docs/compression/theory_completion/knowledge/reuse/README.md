@@ -8,9 +8,9 @@ The existing FKRG cache remains useful for broad keyword/module search.
 This supplement adds real proof-term direct dependencies, verified same-type
 theorem peers, source copies, and a read-only scientific-role distinction.
 
-The current thirteen-layer census is **696 modules = 685 UEOT-maintained + 11
-adapted upstream**, with **4,390 registered public theorem nodes** and
-**5,815 registered direct proof edges**. The layer-by-layer counts below
+The current fourteen-layer census is **699 modules = 688 UEOT-maintained + 11
+adapted upstream**, with **4,433 registered public theorem nodes** and
+**5,878 registered direct proof edges**. The layer-by-layer counts below
 retain each historical scope.
 
 ## Governed overlay chain
@@ -1128,6 +1128,95 @@ remain separately evidenced gates. Counted classifications stay unchanged,
 strong global closure remains `NOT_ESTABLISHED`, and external scientific
 evidence remains `UNVERIFIED`.
 
+### Layer 14 — fixed-sample support boundary and noisy finite risk
+
+The noisy-oracle layer is based on `d048429a1f713246dd7a69aa278f71c4d0df1677`
+and frozen source fingerprint `4b5145e874601392568293c1d561684e6d0478f2676dc20accf04a8080c3261d`. Its three modules add
+43 registered public source theorems and 63 compiled direct registered edges.
+
+| Evidence | SHA-256 |
+| --- | --- |
+| [Complete native export](NOISY_ORACLE_NATIVE_V1.json) | `bbb7551f055b2ec4a5e2d83b9214647e209ae6155e92d5436eba30132c4b54c6` |
+| [Fixed Lean certificate](VERIFY_NOISY_ORACLE_OVERLAY_TYPES.lean) | `7d91f54676bc3821adb0f81f42d1daa4e98ffe311385b25b87f03afa78724b17` |
+| [Registered overlay](NOISY_ORACLE_REUSE_OVERLAY_V1.json) | `8e966bab093ddccadeffc8a91d3265e99cd1bfbc34696d965b981426e0457283` |
+
+The complete native census contains **167 owned theorem constants: 43 public
+source candidates, 38 private constants and 86 other public native
+constants**. The last group contains 85 generated constants and one named
+source instance, `NoisyFiniteRiskOracle.trainingMeasure_isProbability`.
+Ownership, displayed types, stored universes, direct constants,
+direct theorem constants and standard-only transitive axiom closures remain
+in every native record. The 43 public types underwent **188,770 cross-layer**
+comparisons against all **4,390** prior registrations and **903 internal**
+raw stored-type `Meta.isDefEq` comparisons, with zero collisions. Native export
+and the separate fixed certificate ran in 60.441 and 56.047 seconds and
+returned identical complete JSON. This retains the earlier universe and
+instantiation limits; it does not establish general logical independence.
+
+The live graph now has **4,433 nodes and 5,878 direct edges**, including
+**640 overlay nodes and 991 outgoing overlay edges**. The old-node repair
+remains separate. Seventeen new lexical hint groups bring the total to
+**172**. Name hints remain distinct from compiled proof dependencies and
+independent semantic review.
+
+The fixed-sample boundary uses the existing actual product law of N
+Bernoulli responses and an arbitrary `Record N -> PMF Bool` rule. At a
+positive source parameter, the all-zero record's probability contributes
+`zeroPower * (1-p)^N` to false certification. For each fixed positive N,
+power above alpha at p=0 forces false certification above alpha at some
+positive p. This includes record-dependent randomized rules; it does not
+assert impossibility of approximate numerical inference.
+
+The executable oracle computes rational empirical masses, total variation,
+fibre defects, reference-history risk and a finite risk budget from the
+sample table. P-STAT-02 and the existing product experiment connect these
+calculations to one simultaneous row-TV calibration event for the same
+source used in deployment. The actual optional `Fin count` selector returns
+the first certified candidate; an earlier ambiguous result stops the scan.
+There is no extra candidate-count factor in the common calibration budget.
+
+Each registered candidate uses the R1 synthesized program under explicit
+initial/support/certification representation assumptions. The actual source
+risk theorem reuses that program's zero-uncovered result, the calibrated
+reference-row bound and existing microscopic-risk transport. The selected
+training/deployment theorem controls the joint event accepted AND actual
+failure by `min(1, alpha + (1-alpha)*beta)`. It is not a risk bound conditional
+on acceptance. Structural all-times safety is a separate conclusion and
+retains the safe-initial and certified-transition safety assumptions.
+
+The witness proves the actual two-step missed-goal risk `(1-p)^2` from the
+original causal law. The alternate p=1/8 model has risk **49/64 > 7/10**;
+on the common calibration event its selected certificate must be rejected,
+and its overall erroneous acceptance probability is at most the calibration
+failure budget. Private synthesis, initial-law, support, envelope and safety
+helpers remain explicit in the complete native proof evidence. They are not
+invented public edges.
+
+The [runtime receipt](../../unified_closure/noisy_oracle_v1/actual-execution/runtime-03/RUNTIME_RECEIPT.json)
+binds one preserved draw of **4,096 samples per registered row**, the script,
+sampler, dataset and output. The actual finite selector returns candidate 1
+with query trace `[0,1]`; its fine reference risk is `2368521/4194304` and its
+computed budget `13939757/20971520` is below the cap `7/10`. Separate deterministic
+regressions retain the 9/16 reference risk, 53/80 budget, contrasting 49/64
+rejection, ambiguity stop, insufficient-budget, zero-sample and empty-family
+checks. The [negative receipt](../../unified_closure/noisy_oracle_v1/actual-execution/runtime-03/NEGATIVE_RECEIPT.json)
+records actual parser rejection of a zero sample count. No second draw is
+substituted. Ideal independent-uniform sampling remains an explicit backend
+assumption; neither Lean nor this dataset establishes external source matching.
+
+Registration adds only `lexical_pr_preflight` and
+`registration_provenance`; stripping them recovers the raw overlay. The
+[registration receipt](../../unified_closure/noisy_oracle_v1/actual-execution/native-01/REGISTRATION_RECEIPT.json)
+binds all 39 archived input references and the original execution. All
+thirteen earlier overlays and fixed certificates, historical equal/near-type
+evidence and the 68-row clone table remain unchanged. Four consumer regressions
+check complete native ownership/edges, NoGo and same-source semantic routes,
+witness/runtime evidence and metadata-only byte preservation. Current-source
+consumer tests, clone equality, canonical acceptance and release retain
+separate receipts. Counted classifications stay unchanged, strong global
+closure remains `NOT_ESTABLISHED`, and external scientific evidence remains
+`UNVERIFIED`.
+
 ## Run from repository root
 
     P=formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse
@@ -1144,20 +1233,21 @@ evidence remains `UNVERIFIED`.
 Run the new native certificate from `formalization/ueot-core` after building
 the public imports with the pinned toolchain:
 
-    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_EXECUTABLE_SUPPORT_OVERLAY_TYPES.lean
+    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_NOISY_ORACLE_OVERLAY_TYPES.lean
 
 ## Strongly typed and provenance-limited evidence
 
 - 633 immutable-base source modules = 622 UEOT-maintained + 11 adapted upstream modules;
-  thirteen governed overlays extend the live census to 696 = 685 + 11.
-- 3,793 immutable-base public source theorem proofs + 597 governed registrations
-  (including one historical public-name repair) = 4,390 live graph nodes, with
-  5,815 direct registered-source theorem
+  fourteen governed overlays extend the live census to 699 = 688 + 11.
+- 3,793 immutable-base public source theorem proofs + 640 governed registrations
+  (including one historical public-name repair) = 4,433 live graph nodes, with
+  5,878 direct registered-source theorem
   references. The historical four overlays add 0, 3, 6 and 73 certified direct edges;
   the fifth adds 91, the sixth adds 98, and the seventh adds 163 certified direct edges.
   The eighth adds 97 edges from new registrations and one certified old-node repair.
   The ninth adds 149 edges, the tenth adds 47, the eleventh adds 114 and the
-  twelfth adds 27 and the thirteenth adds 60, giving 928 outgoing edges from overlay nodes;
+  twelfth adds 27, the thirteenth adds 60 and the fourteenth adds 63, giving
+  991 outgoing edges from overlay nodes;
   the old-node repair remains a separate addition.
 - 37 equal-type groups / 77 names. The original audit checked 40/40
   representative-to-peer theorem type pairs via Lean Meta.isDefEq. Here
@@ -1175,7 +1265,7 @@ the public imports with the pinned toolchain:
   12 spans reach 15 lines. This is a text-copy candidate index, NOT
   a proof-equivalence decision procedure. The historical 646-module recomputation
   preserved all 68 historical rows exactly, with no added or missing rows.
-  The current scanner recomputes all 696 modules and rejects any difference
+  The current scanner recomputes all 699 modules and rejects any difference
   from that immutable result; its actual command result establishes whether
   the current-source scan passes. The historical snapshot alone does not.
 
@@ -1208,7 +1298,7 @@ the pinned Lean compiler/dependency environment (lean-toolchain,
 lakefile.lean and lake-manifest.json including the pinned Mathlib revision),
 the exact set of live Lean source paths (including detecting ANY newly added
 or deleted module), and all immutable-base source hashes plus the governed
-overlay-chain hashes against the exact 696-module live source census. It refuses to
+overlay-chain hashes against the exact 699-module live source census. It refuses to
 answer if any source or metadata changed. A docs-only Git commit does
 not spuriously make a valid source snapshot stale.
 

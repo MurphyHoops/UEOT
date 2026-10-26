@@ -1,0 +1,75 @@
+{
+  "schema": "NOISY_ORACLE_PROTOCOL_ADAPTATION_V1",
+  "kind": "register_overlay",
+  "baseline_ref": "d048429a1f713246dd7a69aa278f71c4d0df1677",
+  "frozen_inputs_sha256": "70720946ca9e1a827d977eafe41f1b715e247056d5000a5388344249bc843ff9",
+  "source_tree_sha256": "4b5145e874601392568293c1d561684e6d0478f2676dc20accf04a8080c3261d",
+  "immutable_driver": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/longterm_control_statistics_v1/native_protocol/register_overlay.py",
+    "sha256": "3679552fc1599894cd1cf0ce5aba3324c1d13d885fbcdd6c96fc1796dbc1c939"
+  },
+  "executed_source_sha256": "45bf8c5bb3a966182342a266d0b2bd61b8d973031a04148c7389700cd6a9170e",
+  "substitutions": [
+    {
+      "old": "\"LONGTERM_ACTUAL_FULL_BUILD_V1\"",
+      "new": "\"NOISY_ORACLE_ACTUAL_FULL_BUILD_V1\"",
+      "occurrences": 1
+    },
+    {
+      "old": "NAME = \"LONGTERM_CONTROL_STATISTICS\"",
+      "new": "NAME = \"NOISY_ORACLE\"",
+      "occurrences": 1
+    },
+    {
+      "old": "PROTOCOL = PACKET + \"longterm_control_statistics_v1/native_protocol/\"",
+      "new": "PROTOCOL = PACKET + \"noisy_oracle_v1/native_protocol/\"",
+      "occurrences": 1
+    },
+    {
+      "old": "\"longterm_control_statistics_v1\"",
+      "new": "\"noisy_oracle_v1\"",
+      "occurrences": 1
+    },
+    {
+      "old": "EXPECTED_SOURCE = \"60cd5f8ab161c5b51394463c466947a4c6a6c1742ecdcd9c2bbfc41c0c06bd31\"",
+      "new": "EXPECTED_SOURCE = '4b5145e874601392568293c1d561684e6d0478f2676dc20accf04a8080c3261d'",
+      "occurrences": 1
+    },
+    {
+      "old": "PRIOR_MODULES, MODULES, PRIOR_PUBLIC, NEW_PUBLIC = 666, 678, 4147, 90",
+      "new": "PRIOR_MODULES, MODULES, PRIOR_PUBLIC, NEW_PUBLIC = 696, 699, 4390, 43",
+      "occurrences": 1
+    },
+    {
+      "old": "(PRIOR_MODULES, MODULES, PRIOR_PUBLIC, 8)",
+      "new": "(PRIOR_MODULES, MODULES, PRIOR_PUBLIC, 13)",
+      "occurrences": 1
+    },
+    {
+      "old": "require(hinted == 27,",
+      "new": "require(hinted == 17,",
+      "occurrences": 1
+    },
+    {
+      "old": "NATIVE, OVERLAY, \"development_lexical_reuse_hints.json\")",
+      "new": "NATIVE, OVERLAY, \"development_lexical_reuse_hints.json\", 'PROTOCOL_ADAPTATION.json', 'FROZEN_INPUTS.json', 'protocol_adapter.py', 'integration_native.py', 'immutable_integration_native.py', 'executed_integration_native.py')",
+      "occurrences": 1
+    },
+    {
+      "old": "for name in (\"FULL_BUILD_RECEIPT.json\", \"full-build.log\"):",
+      "new": "for name in (\"FULL_BUILD_RECEIPT.json\", \"full-build.log\", 'PROTOCOL_ADAPTATION.json', 'FROZEN_INPUTS.json', 'protocol_adapter.py', 'full_build.py', 'immutable_full_build.py', 'executed_full_build.py'):",
+      "occurrences": 1
+    },
+    {
+      "old": "    provenance = {\"schema\": NAME + \"_REGISTRATION_PROVENANCE_V1\", \"inputs\": inputs,",
+      "new": "    for name, content in ADAPTED_REGISTRATION_INPUTS.items():\n        record(\"executed_registration_protocol\", \"executed-memory:\" + name,\n               (archive / \"drivers\" / name).relative_to(repo), content)\n    provenance = {\"schema\": NAME + \"_REGISTRATION_PROVENANCE_V1\", \"inputs\": inputs,",
+      "occurrences": 1
+    }
+  ],
+  "wrapper": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/noisy_oracle_v1/native_protocol/register_overlay.py",
+    "sha256": "71f810000fdafa39c1cc28e0e5a219521e0e385fd7ae30fa0febfcbcfb3357bf"
+  },
+  "adapter_sha256": "4c2b6d120132d59fb70bd91ccd9f90d4cb9ced5d2765a27aa130f8eb3a825091",
+  "claim": "Only listed scope/schema/metadata and export recursion-limit substitutions; actual execution, full census, raw-type comparisons, fixed-edge replay, and source/runtime identity gates remain in the executed predecessor code."
+}

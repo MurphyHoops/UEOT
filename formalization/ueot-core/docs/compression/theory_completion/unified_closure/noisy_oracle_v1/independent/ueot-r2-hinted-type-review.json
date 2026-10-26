@@ -1,0 +1,1152 @@
+{
+  "schema": "UEOT_R2_HINTED_TYPED_REUSE_REVIEW_V1",
+  "status": "CLEAR",
+  "reviewer": "independent formal_audit agent",
+  "created_at_utc": "2026-10-26T19:28:51.268308+00:00",
+  "scope": "Independent read-only review of every nonempty lexical-hint group using actual compiled Lean types, current source statements/proofs, and all-native proof constants including generated/private intermediates. No Lean/build/test/native command, repository edit, GI write, cloud action, or subagent spawn by this reviewer.",
+  "counts": {
+    "hint_groups": 17,
+    "hint_pairs": 26,
+    "distinct_new_hinted_symbols": 17,
+    "distinct_prior_hinted_symbols": 23,
+    "compiled_types_reviewed": 40,
+    "old_source_files_bound_to_baseline": 15,
+    "pairs_with_observed_compiled_reuse_path": 4,
+    "other_typed_pairs": 22,
+    "unreviewed_pairs": 0,
+    "required_public_removals": 0
+  },
+  "baseline_ref": "d048429a1f713246dd7a69aa278f71c4d0df1677",
+  "source_tree_sha256": "4b5145e874601392568293c1d561684e6d0478f2676dc20accf04a8080c3261d",
+  "added_modules": [
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FixedSampleSupportNoGo.lean",
+      "content_sha256": "2e86d0bb68795296e5b6ecde3cce625d0cc4e36a61bcfbba1f14183d07d4a252",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "content_sha256": "ac5cb46f495e019960a54fe46e0bf5bad2e10a50f98050d5d9e83d19adba4e03",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracleWitness.lean",
+      "content_sha256": "73b6cec824e9f18e99bc613702eaf7f67eb45a4ffd57684fecc22d6f43b23be0",
+      "source_origin": "UEOT_MAINTAINED"
+    }
+  ],
+  "evidence": [
+    {
+      "kind": "actual compiled new types, generated/private theorem constants and axiom closures",
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/noisy-oracle-evidence-20261027/native-01/observed_first_native.json",
+      "sha256": "bbb7551f055b2ec4a5e2d83b9214647e209ae6155e92d5436eba30132c4b54c6",
+      "bytes": 652046
+    },
+    {
+      "kind": "exact lexical hint set and source binding",
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/noisy-oracle-evidence-20261027/native-01/SOURCE_PREFLIGHT.json",
+      "sha256": "df6b15445a5e07951a3a2b2a6a7efd6f981ac667ee7982652bb0cd30e24fde9b",
+      "phase_note": "This preflight retains its historical pre-execution PENDING state. Later actual STATUS/registration evidence records completed execution; the preflight is not represented as a final gate."
+    },
+    {
+      "kind": "registered current overlay",
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/NOISY_ORACLE_REUSE_OVERLAY_V1.json",
+      "sha256": "8e966bab093ddccadeffc8a91d3265e99cd1bfbc34696d965b981426e0457283"
+    },
+    {
+      "kind": "current actual compiled types for three older base symbols",
+      "path": "/tmp/ueot-r2-prior-types.log",
+      "sha256": "fa5398ae303966d14be2a1264cde6248562b3ce6a6515691d98b84d98b80dfdc",
+      "bytes": 2592,
+      "command_source": {
+        "path": "/tmp/ueot-r2-prior-types.lean",
+        "sha256": "3b54c64fa2e5618ae6af56845bcb73e58091b7d8eac961437acf1038d31aafac"
+      },
+      "execution_note": "Parent executed this bounded #check export successfully. Reviewer read exact source/output; no additional build."
+    },
+    {
+      "kind": "native execution receipt/status",
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/noisy-oracle-evidence-20261027/native-01/STATUS.json",
+      "sha256": "f2640507afb04efe077c03ca9f4fdfc822a957a98e70c3f3997ca7d1fe69fdcd",
+      "result_state": "PASS_PENDING_INDEPENDENT_REVIEW_AND_REGISTRATION"
+    }
+  ],
+  "native_evidence_crosschecks": {
+    "new_public_source_theorems": 43,
+    "native_theorem_constants": 167,
+    "private_theorem_constants": 38,
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "unexpected_axioms": [],
+    "recorded_registered_direct_edges": 63,
+    "registered_prior_theorems": 4390,
+    "cross_isDefEq_comparisons": 188770,
+    "internal_isDefEq_comparisons": 903,
+    "definitionally_equal_collisions": 0,
+    "observed_export_final_export_registered_payload_byte_identical": true,
+    "initial_and_fixed_logs_byte_identical": true,
+    "log_sha256": "ee3b4a20405afcf51be417ce2b178ebc95613886ba8c7f83ee1139ab2eb758e7",
+    "recorded_native_exit_code": 0,
+    "recorded_fixed_replay_exit_code": 0,
+    "interpretation": "Zero stored-type isDefEq collisions do not decide theorem equivalence or independent novelty. The per-pair mathematical decisions below inspect hypotheses, objects and actual proof use. The 63-edge metric includes only direct registered public targets, so it intentionally omits the generated intermediary paths demonstrated for groups 9 and 10.",
+    "other_native_outside_lexical_public": 86,
+    "named_source_instances": 1,
+    "named_source_instance_names": [
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.trainingMeasure_isProbability"
+    ],
+    "generated_constants_outside_lexical_public": 85,
+    "outside_lexical_public_classification": "The 86 nonprivate theorem constants outside the 43 lexical public theorem/lemma candidates comprise one explicitly named Prop-valued instance, trainingMeasure_isProbability, plus 85 compiler-generated constants. The named instance is source-authored, not compiler-generated."
+  },
+  "groups": [
+    {
+      "group": 1,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.trainingLaw_apply",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FixedSampleSupportNoGo.lean",
+      "new_line": 34,
+      "new_role": "Arbitrary N independent Bernoulli-row training atom factorization.",
+      "status": "CLEAR",
+      "pair_count": 1,
+      "pairs": [
+        {
+          "prior_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.trainingLaw_mass",
+          "prior_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskBoundary.lean",
+          "lexical_similarity": 0.52,
+          "classification": "DISTINCT_GENERAL_PRODUCT_BRIDGE",
+          "typed_mathematical_verdict": "The prior theorem factors one fixed two-action Bool x Bool experiment with p=3/4. The new type quantifies N, p in [0,1], and a full Record N, and interprets VariableRegisteredSamples.productRowLaw.toPMF. The concrete two-coordinate prior theorem cannot supply this arbitrary product law. The proof reuses productRowLaw and the standard Measure.pi_singleton/product-measure identity, rather than introducing a new probability model.",
+          "actual_compiled_proof_path_to_hinted_parent": null,
+          "type_reviewed": true,
+          "source_contract_and_proof_reviewed": true
+        }
+      ],
+      "actual_reuse": [
+        "VariableRegisteredSamples.productRowLaw definition",
+        "MeasureTheory.Measure.pi_singleton in the compiled proof constants"
+      ],
+      "source_anchors": [
+        "FixedSampleSupportNoGo.lean:21-37",
+        "StatisticalRiskBoundary.lean:31-68"
+      ]
+    },
+    {
+      "group": 2,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.trainingLaw_zeroRecord",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FixedSampleSupportNoGo.lean",
+      "new_line": 40,
+      "new_role": "The actual all-false record has probability (1-p)^N.",
+      "status": "CLEAR",
+      "pair_count": 1,
+      "pairs": [
+        {
+          "prior_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.law_zero",
+          "prior_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/AbsorbingLeakage.lean",
+          "lexical_similarity": 0.5,
+          "classification": "DIFFERENT_ZERO_NOTION",
+          "typed_mathematical_verdict": "AbsorbingLeakage.law_zero fixes time n=0 for every epsilon and returns the initial PMF.pure false. The new theorem fixes the observed full record to all false, retains arbitrary N and p, and calculates a real atom probability of a product experiment. A time-zero initialization does not establish this likelihood. The new proof correctly uses trainingLaw_apply and AbsorbingLeakage.kernel_mass.",
+          "actual_compiled_proof_path_to_hinted_parent": null,
+          "type_reviewed": true,
+          "source_contract_and_proof_reviewed": true
+        }
+      ],
+      "actual_reuse": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.trainingLaw_apply",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.kernel_mass"
+      ],
+      "source_anchors": [
+        "FixedSampleSupportNoGo.lean:40-44",
+        "AbsorbingLeakage.lean:33-63"
+      ]
+    },
+    {
+      "group": 3,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.trainingLaw_at_zero",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FixedSampleSupportNoGo.lean",
+      "new_line": 46,
+      "new_role": "At source parameter p=0 the entire N-record law is the point mass on zeroRecord.",
+      "status": "CLEAR",
+      "pair_count": 2,
+      "pairs": [
+        {
+          "prior_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.law_zero",
+          "prior_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/AbsorbingLeakage.lean",
+          "lexical_similarity": 0.5,
+          "classification": "DIFFERENT_ZERO_NOTION",
+          "typed_mathematical_verdict": "The prior law_zero sets time to zero; this theorem sets the Bernoulli parameter to zero for every N. The carrier is a whole finite record instead of Bool. The conclusion follows from the actual zeroRecord mass being one, not from the old initialization equation.",
+          "actual_compiled_proof_path_to_hinted_parent": null,
+          "type_reviewed": true,
+          "source_contract_and_proof_reviewed": true
+        },
+        {
+          "prior_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.trainingLaw_mass",
+          "prior_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskBoundary.lean",
+          "lexical_similarity": 0.492,
+          "classification": "DISTINCT_DEGENERATE_PRODUCT_LAW",
+          "typed_mathematical_verdict": "The fixed p=3/4 two-action factorization has neither a variable source parameter nor the arbitrary-N record carrier needed here. The new theorem derives degeneracy at p=0 from trainingLaw_zeroRecord and standard PMF support/extensionality facts.",
+          "actual_compiled_proof_path_to_hinted_parent": null,
+          "type_reviewed": true,
+          "source_contract_and_proof_reviewed": true
+        }
+      ],
+      "actual_reuse": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.trainingLaw_zeroRecord",
+        "PMF.apply_eq_one_iff",
+        "PMF.apply_eq_zero_iff"
+      ],
+      "source_anchors": [
+        "FixedSampleSupportNoGo.lean:46-58",
+        "StatisticalRiskBoundary.lean:31-68"
+      ]
+    },
+    {
+      "group": 4,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalDefect_nonneg",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "new_line": 161,
+      "new_role": "The total executable rational maximum is nonnegative, including N=0 and empty finite alphabets.",
+      "status": "CLEAR",
+      "pair_count": 1,
+      "pairs": [
+        {
+          "prior_symbol": "UEOT.V3.CoreOperationalAssembly.responseDefect_nonneg",
+          "prior_path": "formalization/ueot-core/UEOT/V3/CoreOperationalAssembly.lean",
+          "lexical_similarity": 0.5,
+          "classification": "DISTINCT_EXECUTABLE_CONTRACT_WITH_RELATED_PRIVATE_SPECIALIZATION",
+          "typed_mathematical_verdict": "The prior type is real-valued nonnegativity of a supremum of TV distances for normalized probability measures. The public new type is rational max nonnegativity with no positive-N, nonempty-alphabet, or PMF interpretation premise; insertion of 0 proves it directly. Reusing the analytic result would require the additional positive-N semantic bridge and would not replace this total contract. The adjacent private sourceDefect_nonneg helper is a straightforward specialization of the old analytic theorem; that routine overlap is acknowledged, not counted as independent mathematics.",
+          "actual_compiled_proof_path_to_hinted_parent": null,
+          "type_reviewed": true,
+          "source_contract_and_proof_reviewed": true
+        }
+      ],
+      "actual_reuse": [
+        "Finset.le_max' and Finset.mem_insert_self"
+      ],
+      "source_anchors": [
+        "NoisyFiniteRiskOracle.lean:51-56",
+        "NoisyFiniteRiskOracle.lean:161-164",
+        "NoisyFiniteRiskOracle.lean:234-241",
+        "CoreOperationalAssembly.lean:131-147"
+      ]
+    },
+    {
+      "group": 5,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.representative_fibre",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "new_line": 174,
+      "new_role": "The finite ordered representative actually lies in the observation fibre for every input x.",
+      "status": "CLEAR",
+      "pair_count": 2,
+      "pairs": [
+        {
+          "prior_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.MissingFiber.representative_is_certified",
+          "prior_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+          "lexical_similarity": 0.498,
+          "classification": "UNRELATED_CERTIFICATION_WITNESS",
+          "typed_mathematical_verdict": "The prior MissingFiber result is only observe false=observe true and certification of one chosen Bool state in a counterexample. It is not a section law for an executable representative and cannot justify the new row comparison.",
+          "actual_compiled_proof_path_to_hinted_parent": null,
+          "type_reviewed": true,
+          "source_contract_and_proof_reviewed": true
+        },
+        {
+          "prior_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.representative_section",
+          "prior_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+          "lexical_similarity": 0.495,
+          "classification": "DISTINCT_GENERAL_COMPUTABLE_SECTION",
+          "typed_mathematical_verdict": "The old theorem is a section identity for a particular two-bit quotient and the explicit representative (classBit c,false). The new function selects the Finset.min' of the fibre of arbitrary q on a finite linearly ordered X, with a fallback outside the image. Its general q(rep(q x))=q x law requires the finite-fibre membership argument, which is supplied.",
+          "actual_compiled_proof_path_to_hinted_parent": null,
+          "type_reviewed": true,
+          "source_contract_and_proof_reviewed": true
+        }
+      ],
+      "actual_reuse": [
+        "Finset.min'_mem",
+        "Finset.mem_filter"
+      ],
+      "source_anchors": [
+        "NoisyFiniteRiskOracle.lean:94-98",
+        "NoisyFiniteRiskOracle.lean:174-180",
+        "ControlCoverageWitness.lean:90-97",
+        "StatisticalRiskWitness.lean:260-275"
+      ]
+    },
+    {
+      "group": 6,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalMass_eq",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "new_line": 188,
+      "new_role": "The rational sample count divided by N is the actual empirical PMF atom mass.",
+      "status": "CLEAR",
+      "pair_count": 1,
+      "pairs": [
+        {
+          "prior_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.empirical_loss",
+          "prior_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverageWitness.lean",
+          "lexical_similarity": 0.503,
+          "classification": "DISTINCT_COUNT_TO_PMF_BRIDGE",
+          "typed_mathematical_verdict": "The prior empirical_loss computes one Bool point-mass TV loss against a fixed reference as an indicator. It does not relate arbitrary finite counts to PMF atoms. The new theorem instead reuses empiricalResponsePMF_event_mean on a singleton and reconciles the executable rational count with the existing semantic empirical PMF.",
+          "actual_compiled_proof_path_to_hinted_parent": null,
+          "type_reviewed": true,
+          "source_contract_and_proof_reviewed": true
+        }
+      ],
+      "actual_reuse": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empiricalResponsePMF_event_mean"
+      ],
+      "source_anchors": [
+        "NoisyFiniteRiskOracle.lean:184-194",
+        "DeploymentCoverageWitness.lean:303-313"
+      ]
+    },
+    {
+      "group": 7,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalTV_eq",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "new_line": 196,
+      "new_role": "Executable rational overlap TV equals TV between two existing empirical row measures.",
+      "status": "CLEAR",
+      "pair_count": 1,
+      "pairs": [
+        {
+          "prior_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.empirical_fit",
+          "prior_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+          "lexical_similarity": 0.493,
+          "classification": "DISTINCT_TV_INTERPRETATION_BRIDGE",
+          "typed_mathematical_verdict": "RegisteredSelectionWitness.empirical_fit is a zero-distance fit inequality for one fixed registered source, identity coarse map, and reference literally equal to its learned row. It neither implements nor interprets general rational TV between two sample arrays. The new theorem reuses the existing one-minus-common-mass formula and empiricalMass_eq.",
+          "actual_compiled_proof_path_to_hinted_parent": null,
+          "type_reviewed": true,
+          "source_contract_and_proof_reviewed": true
+        }
+      ],
+      "actual_reuse": [
+        "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalMass_eq"
+      ],
+      "source_anchors": [
+        "NoisyFiniteRiskOracle.lean:196-201",
+        "RegisteredDeploymentRiskWitness.lean:166-175"
+      ]
+    },
+    {
+      "group": 8,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.calibrated_defect_error",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "new_line": 297,
+      "new_role": "The executable empirical defect inherits the established simultaneous 2u semantic error bound.",
+      "status": "CLEAR",
+      "pair_count": 1,
+      "pairs": [
+        {
+          "prior_symbol": "UEOT.V3.StatisticalDefect.responseDefect_error",
+          "prior_path": "formalization/ueot-core/UEOT/V3/StatisticalDefect.lean",
+          "lexical_similarity": 0.5,
+          "classification": "ACTUAL_DIRECT_REUSE",
+          "typed_mathematical_verdict": "This is an intentional specialization of responseDefect_error, not a separate defect-stability proof. The old theorem takes arbitrary measure rows/readout and a simultaneous row-TV bound; the new proof instantiates readout with constant Finset Unit -> q, uses source and empirical PMFs, supplies CalibrationGood, and rewrites the empirical semantic defect with empiricalDefect_eq_sourceDefect. The actual compiled proof directly depends on the old theorem.",
+          "actual_compiled_proof_path_to_hinted_parent": [
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.calibrated_defect_error",
+            "UEOT.V3.StatisticalDefect.responseDefect_error"
+          ],
+          "type_reviewed": true,
+          "source_contract_and_proof_reviewed": true
+        }
+      ],
+      "actual_reuse": [
+        "UEOT.V3.StatisticalDefect.responseDefect_error",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalDefect_eq_sourceDefect"
+      ],
+      "source_anchors": [
+        "NoisyFiniteRiskOracle.lean:291-308",
+        "StatisticalDefect.lean:121-176"
+      ]
+    },
+    {
+      "group": 9,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.scanNoisy_found_iff",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "new_line": 363,
+      "new_role": "The noisy scanner stops at the first non-rejected ternary decision.",
+      "status": "CLEAR",
+      "pair_count": 1,
+      "pairs": [
+        {
+          "prior_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_found_iff",
+          "prior_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/C3ExecutableSearch.lean",
+          "lexical_similarity": 0.75,
+          "classification": "ACTUAL_REUSE_THROUGH_GENERATED_SIMPLIFIER",
+          "typed_mathematical_verdict": "The old Boolean scanner theorem has arbitrary start/fuel and stops on true. scanNoisy is that same scanner at start=0 with Bool oracle decide(decision != rejected). The new theorem translates the old interval result into first non-FAIL semantics; it does not duplicate scanner induction. The compiled proof reaches scan_found_iff through the generated scanNoisy_found_iff._simp_1_2 theorem, so an empty registered-direct-edge list is not absence of reuse.",
+          "actual_compiled_proof_path_to_hinted_parent": [
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.scanNoisy_found_iff",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.scanNoisy_found_iff._simp_1_2",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_found_iff"
+          ],
+          "type_reviewed": true,
+          "source_contract_and_proof_reviewed": true
+        }
+      ],
+      "actual_reuse": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_found_iff"
+      ],
+      "source_anchors": [
+        "NoisyFiniteRiskOracle.lean:69-77",
+        "NoisyFiniteRiskOracle.lean:363-366",
+        "C3ExecutableSearch.lean:37-59"
+      ]
+    },
+    {
+      "group": 10,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.scanOutcome_none_iff",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "new_line": 376,
+      "new_role": "No noisy scan outcome means all registered indices were rejected.",
+      "status": "CLEAR",
+      "pair_count": 1,
+      "pairs": [
+        {
+          "prior_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_none_iff",
+          "prior_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/C3ExecutableSearch.lean",
+          "lexical_similarity": 0.75,
+          "classification": "ACTUAL_REUSE_THROUGH_GENERATED_SIMPLIFIER",
+          "typed_mathematical_verdict": "This specializes the existing Boolean scan-none theorem at start=0, converts decide(non-rejected)=false into rejected, and removes Option.map. The proof actually reaches scan_none_iff through scanOutcome_none_iff._simp_1_3. It preserves ambiguity as a stopping outcome rather than exhaustion.",
+          "actual_compiled_proof_path_to_hinted_parent": [
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.scanOutcome_none_iff",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.scanOutcome_none_iff._simp_1_3",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_none_iff"
+          ],
+          "type_reviewed": true,
+          "source_contract_and_proof_reviewed": true
+        }
+      ],
+      "actual_reuse": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_none_iff"
+      ],
+      "source_anchors": [
+        "NoisyFiniteRiskOracle.lean:74-77",
+        "NoisyFiniteRiskOracle.lean:376-378",
+        "C3ExecutableSearch.lean:85-106"
+      ]
+    },
+    {
+      "group": 11,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.selectCandidate_eq_some_iff",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "new_line": 380,
+      "new_role": "The actual Option(Fin count) selector equals some i exactly for a certified scan result at i.",
+      "status": "CLEAR",
+      "pair_count": 1,
+      "pairs": [
+        {
+          "prior_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize_eq_some_iff",
+          "prior_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+          "lexical_similarity": 0.5,
+          "classification": "DIFFERENT_OPTION_PRODUCER",
+          "typed_mathematical_verdict": "The prior synthesize theorem characterizes a returned Program through nonempty initial support, complete action ordering, and finiteMemoryCheck. The new theorem characterizes selection among statistical observation candidates, whose return type is Fin count and whose source is scanOutcome. Their shared eq_some_iff suffix is generic; the old synthesis conditions cannot imply or replace the noisy selection equation. Both APIs are used at distinct stages of the final integration.",
+          "actual_compiled_proof_path_to_hinted_parent": null,
+          "type_reviewed": true,
+          "source_contract_and_proof_reviewed": true
+        }
+      ],
+      "actual_reuse": [
+        "The actual existing C3 scan via selectCandidate/scanOutcome; elementary Option and Fin extensionality for this wrapper"
+      ],
+      "source_anchors": [
+        "NoisyFiniteRiskOracle.lean:79-92",
+        "NoisyFiniteRiskOracle.lean:380-399",
+        "ExecutableSupportController.lean:249-260"
+      ]
+    },
+    {
+      "group": 12,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empirical_reference_fit",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "new_line": 485,
+      "new_role": "Derive the representative empirical fit bound from the computed maximum, without an external hfit.",
+      "status": "CLEAR",
+      "pair_count": 2,
+      "pairs": [
+        {
+          "prior_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.empirical_fit",
+          "prior_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+          "lexical_similarity": 0.667,
+          "classification": "DISTINCT_GENERAL_COMPUTED_FIT",
+          "typed_mathematical_verdict": "The old witness proves TV<=0 because its specific reference is exactly the same empirical row after identity mapping. Here q is arbitrary, the representative may be a different state in the same fibre, and the computed empiricalDefect controls the potentially nonzero fit. The proof uses TV contraction plus the finite maximum and representative_fibre.",
+          "actual_compiled_proof_path_to_hinted_parent": null,
+          "type_reviewed": true,
+          "source_contract_and_proof_reviewed": true
+        },
+        {
+          "prior_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empirical_reference_risk_of_calibrated",
+          "prior_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/EmpiricalReferenceRisk.lean",
+          "lexical_similarity": 0.49,
+          "classification": "SUPPLIES_A_PREMISE_OF_OLDER_RISK_THEOREM",
+          "typed_mathematical_verdict": "The older empirical_reference_risk_of_calibrated consumes hfit as an input to a path-risk conclusion; it does not derive hfit from counts. Using it to prove the new fit statement would be circular. The current integration then reuses empirical_coarse_row_tv (the same row-level principle used in that older risk theorem) and the existing coverage path-risk endpoint, so it does not reprove path-TV propagation.",
+          "actual_compiled_proof_path_to_hinted_parent": null,
+          "type_reviewed": true,
+          "source_contract_and_proof_reviewed": true
+        }
+      ],
+      "actual_reuse": [
+        "UEOT.V3.TotalVariation.tvDist_map_le",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalTV_eq",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalTV_le_defect",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.representative_fibre",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empirical_coarse_row_tv"
+      ],
+      "source_anchors": [
+        "NoisyFiniteRiskOracle.lean:483-513",
+        "RegisteredDeploymentRiskWitness.lean:166-175",
+        "EmpiricalReferenceRisk.lean:135-160"
+      ]
+    },
+    {
+      "group": 13,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.referenceHistoryMass_eq",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "new_line": 519,
+      "new_role": "The rational reference-history recursion equals the causal-law mass of the same executable R1 program.",
+      "status": "CLEAR",
+      "pair_count": 1,
+      "pairs": [
+        {
+          "prior_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.escape_reference_live_history_mass",
+          "prior_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+          "lexical_similarity": 0.5,
+          "classification": "DISTINCT_COMPUTATION_TO_PROCESS_IDENTITY",
+          "typed_mathematical_verdict": "The old escape result equates two PMF history masses after injective observation embedding and Option escape completion for arbitrary policies. It assumes PMF kernels on both sides; it does not interpret rational sample rows or the executable program-memory action test. The new induction explicitly uses Program.toController_memory and pmfExtend_apply, with the rational referenceRowMass bridge. No injective escape encoding is part of this contract.",
+          "actual_compiled_proof_path_to_hinted_parent": null,
+          "type_reviewed": true,
+          "source_contract_and_proof_reviewed": true
+        }
+      ],
+      "actual_reuse": [
+        "UEOT.V3.PathError.pmfExtend_apply",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.Program.toController_memory"
+      ],
+      "source_anchors": [
+        "NoisyFiniteRiskOracle.lean:111-123",
+        "NoisyFiniteRiskOracle.lean:519-554",
+        "PathObservationEscape.lean:190-210"
+      ]
+    },
+    {
+      "group": 14,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.referenceRisk_eq",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "new_line": 557,
+      "new_role": "The finite rational Boolean-event sum equals actual probability under the computed reference process.",
+      "status": "CLEAR",
+      "pair_count": 2,
+      "pairs": [
+        {
+          "prior_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.referenceFailure_eq",
+          "prior_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+          "lexical_similarity": 0.5,
+          "classification": "DISTINCT_GENERAL_EVENT_SUM_BRIDGE",
+          "typed_mathematical_verdict": "The prior referenceFailure_eq is a concrete one-step Bool witness reducing its chosen-policy event to one empirical selected-action atom. The new theorem quantifies T, finite alphabets, every returned Program and Boolean full-history event, and relates executable rational recursion to measure.real. It reuses the generic PMF finite-event sum theorem plus referenceHistoryMass_eq.",
+          "actual_compiled_proof_path_to_hinted_parent": null,
+          "type_reviewed": true,
+          "source_contract_and_proof_reviewed": true
+        },
+        {
+          "prior_symbol": "UEOT.V3.FiniteCTMCPathKL.fullReference_eq",
+          "prior_path": "formalization/ueot-core/UEOT/V3/FiniteCTMCPathKL.lean",
+          "lexical_similarity": 0.5,
+          "classification": "UNRELATED_CONTINUOUS_TIME_REFERENCE_INVARIANCE",
+          "typed_mathematical_verdict": "The actual prior type is equality of two rate-independent full-path reference measures for finite continuous-time jump generators G,H and NNReal duration T. It has no empirical samples, rational risk sum, finite-memory program or Boolean event. The shared word reference cannot provide the new theorem.",
+          "actual_compiled_proof_path_to_hinted_parent": null,
+          "type_reviewed": true,
+          "source_contract_and_proof_reviewed": true
+        }
+      ],
+      "actual_reuse": [
+        "UEOT.V3.PathError.pmfMeasureReal_eq_sum_finset",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.referenceHistoryMass_eq"
+      ],
+      "source_anchors": [
+        "NoisyFiniteRiskOracle.lean:556-577",
+        "RegisteredDeploymentRiskWitness.lean:192-200",
+        "FiniteCTMCPathKL.lean:2258-2270"
+      ]
+    },
+    {
+      "group": 15,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.accepts_actual_risk_on_good",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "new_line": 645,
+      "new_role": "A true computed Boolean certificate bounds actual source risk of this synthesized controller on CalibrationGood.",
+      "status": "CLEAR",
+      "pair_count": 1,
+      "pairs": [
+        {
+          "prior_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.representative_risk_on_good",
+          "prior_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+          "lexical_similarity": 0.5,
+          "classification": "DISTINCT_EXECUTABLE_ACCEPTANCE_BRIDGE_REUSING_GENERIC_RISK",
+          "typed_mathematical_verdict": "The prior representative_risk_on_good is a fixed StatisticalRiskWitness model/partition, reconstructed indicator family and chosen coefficients producing RepresentativeRiskConclusion. It does not evaluate counts, synthesize this arbitrary Program, or extract a numeric budget from accepts=true. The new theorem obtains hchecked from accepts_eq_true_iff and composes synthesized_actual_risk_le_budget_on_good, which actually reuses R1 zero-uncovered, calibrated_reference_row, and coverage_same_policy_microscopic_failure_risk. It is an implementation/semantic bridge rather than a new independent path-risk theory.",
+          "actual_compiled_proof_path_to_hinted_parent": null,
+          "type_reviewed": true,
+          "source_contract_and_proof_reviewed": true
+        }
+      ],
+      "actual_reuse": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.accepts_eq_true_iff",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.synthesized_actual_risk_le_budget_on_good",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize_some_zero_uncovered",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_same_policy_microscopic_failure_risk"
+      ],
+      "source_anchors": [
+        "NoisyFiniteRiskOracle.lean:606-666",
+        "StatisticalRiskWitness.lean:399-413"
+      ]
+    },
+    {
+      "group": 16,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.source_support_exact",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracleWitness.lean",
+      "new_line": 165,
+      "new_role": "Both unknown-parameter stochastic sources realize exactly the witness structural support.",
+      "status": "CLEAR",
+      "pair_count": 5,
+      "pairs": [
+        {
+          "prior_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.source_support_exact",
+          "prior_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+          "lexical_similarity": 1.0,
+          "classification": "DISTINCT_SOURCE_SUPPORT_FACT",
+          "typed_mathematical_verdict": "The old executable-support source has Bool actions and deterministic nextState: a correct action flips phase, an incorrect action goes to cemetery. The new Unit-action source has both stay and goal edges at start with positive p in {1/4,1/8}. Different rows and action carriers require the new positivity/map-support proof; the old literal source theorem is not substitutable.",
+          "actual_compiled_proof_path_to_hinted_parent": null,
+          "type_reviewed": true,
+          "source_contract_and_proof_reviewed": true
+        },
+        {
+          "prior_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness.source_support_exact",
+          "prior_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean",
+          "lexical_similarity": 1.0,
+          "classification": "DISTINCT_SOURCE_SUPPORT_FACT",
+          "typed_mathematical_verdict": "The old finite-memory-check witness is a deterministic Bool flip source, no cemetery and no numerical uncertainty. Its flipRelation proof by pure support cannot establish the two-positive-edge support of the new source.",
+          "actual_compiled_proof_path_to_hinted_parent": null,
+          "type_reviewed": true,
+          "source_contract_and_proof_reviewed": true
+        },
+        {
+          "prior_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.model_support_exact",
+          "prior_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+          "lexical_similarity": 0.533,
+          "classification": "DISTINCT_NUMERICAL_MODEL_INTERPRETATION",
+          "typed_mathematical_verdict": "The old model_support_exact reconstructs the old deterministic Bool-action PMF from its numerical Model and proves agreement with its old relation. The new theorem concerns its own parameterized PMF directly; no equality with that Model is established or needed.",
+          "actual_compiled_proof_path_to_hinted_parent": null,
+          "type_reviewed": true,
+          "source_contract_and_proof_reviewed": true
+        },
+        {
+          "prior_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.initial_support_exact",
+          "prior_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+          "lexical_similarity": 0.5,
+          "classification": "INITIAL_SUPPORT_IS_NOT_TRANSITION_SUPPORT",
+          "typed_mathematical_verdict": "The old initial_support_exact is a unary membership equivalence for the initial Finset and PMF.pure start. The new statement is a time/state/action/successor transition support equivalence. The new witness separately proves its own initial support premise; that shared starting state does not establish its transitions.",
+          "actual_compiled_proof_path_to_hinted_parent": null,
+          "type_reviewed": true,
+          "source_contract_and_proof_reviewed": true
+        },
+        {
+          "prior_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.supportTable_exact",
+          "prior_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+          "lexical_similarity": 0.5,
+          "classification": "DISTINCT_TIME_DEPENDENT_DEADEND_SOURCE",
+          "typed_mathematical_verdict": "The old SafePrefixDeadend source deterministically chooses the action at n=0 then holds the state thereafter, with Bool states/actions and a time-indexed supportTable. The new support is stationary, stochastic, and on Option Bool with Unit actions. The reversed iff orientation is incidental; the source contracts differ materially.",
+          "actual_compiled_proof_path_to_hinted_parent": null,
+          "type_reviewed": true,
+          "source_contract_and_proof_reviewed": true
+        }
+      ],
+      "actual_reuse": [
+        "PMF.support_pure",
+        "PMF.mem_support_map_iff",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.kernel_mass through the private response_support positivity proof"
+      ],
+      "source_anchors": [
+        "NoisyFiniteRiskOracleWitness.lean:129-180",
+        "ExecutableSupportControllerWitness.lean:20-38",
+        "ExecutableSupportControllerWitness.lean:115-130",
+        "ExecutableSupportControllerWitness.lean:175-198",
+        "FiniteMemoryCheckWitness.lean:25-29",
+        "FiniteMemoryCheckWitness.lean:71-75",
+        "FiniteMemorySeparation.lean:28-34",
+        "ControlCoverageWitness.lean:412-438"
+      ]
+    },
+    {
+      "group": 17,
+      "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.returned_program_all_times_safe",
+      "new_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracleWitness.lean",
+      "new_line": 204,
+      "new_role": "Every returned program for either observation is all-time physically safe under either parameterized numerical source.",
+      "status": "CLEAR",
+      "pair_count": 2,
+      "pairs": [
+        {
+          "prior_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.returned_program_all_times_safe",
+          "prior_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+          "lexical_similarity": 1.0,
+          "classification": "DISTINCT_WITNESS_WITH_COMMON_GENERAL_THEOREM",
+          "typed_mathematical_verdict": "The old returned-program theorem concerns one specific hidden-flip/cemetery controller and deterministic source. The new witness quantifies theta and detailed and uses its own Program, observation, and stochastic source, while legitimately reusing the same proper safe set x!=none. No equality to the old controller/source is asserted. Both proofs invoke the common generic synthesis safety theorem.",
+          "actual_compiled_proof_path_to_hinted_parent": null,
+          "type_reviewed": true,
+          "source_contract_and_proof_reviewed": true
+        },
+        {
+          "prior_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.all_times_physical_safe",
+          "prior_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+          "lexical_similarity": 0.5,
+          "classification": "ACTUAL_TRANSITIVE_REUSE",
+          "typed_mathematical_verdict": "The old all_times_physical_safe is exactly the general structural result that should be reused. The new witness calls synthesize_some_all_times_physical_safe; that existing theorem extracts the actual returned Program/check conditions and directly calls all_times_physical_safe. The compiled proof path confirms this two-edge reuse; the new witness supplies checked synthesis, actual source/initial support and safe-closure premises, rather than assuming the final safety event.",
+          "actual_compiled_proof_path_to_hinted_parent": [
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.returned_program_all_times_safe",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize_some_all_times_physical_safe",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.all_times_physical_safe"
+          ],
+          "type_reviewed": true,
+          "source_contract_and_proof_reviewed": true
+        }
+      ],
+      "actual_reuse": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize_some_all_times_physical_safe",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.all_times_physical_safe"
+      ],
+      "source_anchors": [
+        "NoisyFiniteRiskOracleWitness.lean:182-211",
+        "ExecutableSupportControllerWitness.lean:163-173",
+        "ExecutableSupportController.lean:465-501"
+      ]
+    }
+  ],
+  "compiled_type_evidence": {
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.law_zero": {
+      "level_parameters": [],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.law_zero",
+      "type": "∀ (epsilon : ℝ) (hzero : 0 ≤ epsilon) (hone : epsilon ≤ 1),\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.law epsilon hzero hone 0 = PMF.pure false",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/FINITE_HORIZON_RISK_NATIVE_V1.json",
+      "native_evidence_sha256": "56f49de755f7328f5d24e4542ef4635f2e80e850f9cf6cfc0742cf71e7dc5b79"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_found_iff": {
+      "level_parameters": [],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_found_iff",
+      "type": "∀ (oracle : ℕ → Bool) (start fuel i : ℕ),\n  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan oracle start fuel).found = some i ↔\n    start ≤ i ∧ i < start + fuel ∧ oracle i = true ∧ ∀ (j : ℕ), start ≤ j → j < i → oracle j = false",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/PATH_REALIZATION_NATIVE_V1.json",
+      "native_evidence_sha256": "61dabee5113b7fd2e640971c55ef6d2dba91e257744f587b57235f94a73b3308"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_none_iff": {
+      "level_parameters": [],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan_none_iff",
+      "type": "∀ (oracle : ℕ → Bool) (start fuel : ℕ),\n  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.C3ExecutableSearch.scan oracle start fuel).found = none ↔\n    ∀ (i : ℕ), start ≤ i → i < start + fuel → oracle i = false",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/PATH_REALIZATION_NATIVE_V1.json",
+      "native_evidence_sha256": "61dabee5113b7fd2e640971c55ef6d2dba91e257744f587b57235f94a73b3308"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.empirical_loss": {
+      "level_parameters": [],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.empirical_loss",
+      "type": "∀ (z : Bool),\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverageWitness.empiricalLoss z =\n    if z = true then 1 else 0",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/DEPLOYMENT_JOINT_NATIVE_V1.json",
+      "native_evidence_sha256": "04058c199ae439fbafb0a659ed78228b3c5e5ab2a4e2444efa6e60d1df588725"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.initial_support_exact": {
+      "level_parameters": [],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.initial_support_exact",
+      "type": "∀ (x : Option Bool),\n  x ∈ UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.initialTable ↔\n    x ∈ UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.initialLaw.support",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/EXECUTABLE_SUPPORT_NATIVE_V1.json",
+      "native_evidence_sha256": "9e2be23986e5d5f38266e267964feac9af18cc8e3f3f17bdf18a356cc8f06592"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.model_support_exact": {
+      "level_parameters": [],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.model_support_exact",
+      "type": "∀ (x : Option Bool) (a : Bool) (z : Option Bool),\n  z ∈\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.model.transitionPMF x\n          a).support ↔\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.relation x a z",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/EXECUTABLE_SUPPORT_NATIVE_V1.json",
+      "native_evidence_sha256": "9e2be23986e5d5f38266e267964feac9af18cc8e3f3f17bdf18a356cc8f06592"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.returned_program_all_times_safe": {
+      "level_parameters": [],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.returned_program_all_times_safe",
+      "type": "(UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.stateTrajMeasure\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.program.toController\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.initialLaw\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.observe\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.source)\n    {ω | ∀ (n : ℕ), ω n ∈ UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.safe} =\n  1",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/EXECUTABLE_SUPPORT_NATIVE_V1.json",
+      "native_evidence_sha256": "9e2be23986e5d5f38266e267964feac9af18cc8e3f3f17bdf18a356cc8f06592"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.source_support_exact": {
+      "level_parameters": [],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.source_support_exact",
+      "type": "∀ (n : ℕ) (x : Option Bool) (a : Bool) (z : Option Bool),\n  z ∈ (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.source n x a).support ↔\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.relation x a z",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/EXECUTABLE_SUPPORT_NATIVE_V1.json",
+      "native_evidence_sha256": "9e2be23986e5d5f38266e267964feac9af18cc8e3f3f17bdf18a356cc8f06592"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.all_times_physical_safe": {
+      "level_parameters": [
+        "u"
+      ],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.all_times_physical_safe",
+      "type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype A] [inst_2 : DecidableEq X] [inst_3 : DecidableEq Y] (q : X → Y)\n  (R : X → A → X → Prop) (C : X → A → Prop) [inst_4 : (x : X) → (a : A) → (z : X) → Decidable (R x a z)]\n  [inst_5 : (x : X) → (a : A) → Decidable (C x a)] (initial : Finset X) (ordered : List A) (fallback : A) (p₀ : PMF X)\n  (P : ℕ → X → A → PMF X) [inst_6 : MeasurableSpace X] [inst_7 : MeasurableSingletonClass X]\n  [inst_8 : MeasurableSpace A] [MeasurableSingletonClass A] [inst_10 : MeasurableSpace (Finset X)]\n  [inst_11 : MeasurableSingletonClass (Finset X)] (certified : ℕ → X → A → Prop),\n  (∀ (a : A), a ∈ ordered) →\n    (∀ (x : X), x ∈ initial ↔ x ∈ p₀.support) →\n      (∀ (n : ℕ) (x : X) (a : A) (z : X), z ∈ (P n x a).support ↔ R x a z) →\n        (∀ (n : ℕ) (x : X) (a : A), certified n x a ↔ C x a) →\n          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteMemoryCheck q R C initial =\n              true →\n            ∀ (K : Set X),\n              (∀ x ∈ p₀.support, x ∈ K) →\n                (∀ (x : X) (a : A), x ∈ K → C x a → ∀ (z : X), R x a z → z ∈ K) →\n                  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.stateTrajMeasure\n                        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.semanticController\n                          q R C initial ordered fallback)\n                        p₀ q P)\n                      {ω | ∀ (n : ℕ), ω n ∈ K} =\n                    1",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/EXECUTABLE_SUPPORT_NATIVE_V1.json",
+      "native_evidence_sha256": "9e2be23986e5d5f38266e267964feac9af18cc8e3f3f17bdf18a356cc8f06592"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize_eq_some_iff": {
+      "level_parameters": [
+        "u"
+      ],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize_eq_some_iff",
+      "type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype A] [inst_2 : DecidableEq X] [inst_3 : DecidableEq Y] (q : X → Y)\n  (R : X → A → X → Prop) (C : X → A → Prop) [inst_4 : (x : X) → (a : A) → (z : X) → Decidable (R x a z)]\n  [inst_5 : (x : X) → (a : A) → Decidable (C x a)] [inst_6 : DecidableEq A] (initial : Finset X) (ordered : List A)\n  (fallback : A)\n  (program : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.Program X Y A),\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize q R C initial ordered\n        fallback =\n      some program ↔\n    initial.Nonempty ∧\n      (∀ (a : A), a ∈ ordered) ∧\n        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.finiteMemoryCheck q R C initial =\n            true ∧\n          program =\n            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.buildProgram q R C initial\n              ordered fallback",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/EXECUTABLE_SUPPORT_NATIVE_V1.json",
+      "native_evidence_sha256": "9e2be23986e5d5f38266e267964feac9af18cc8e3f3f17bdf18a356cc8f06592"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness.source_support_exact": {
+      "level_parameters": [],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness.source_support_exact",
+      "type": "∀ (n : ℕ) (x a z : Bool),\n  z ∈ (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemorySeparation.source n x a).support ↔\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryCheckWitness.flipRelation x a z",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/FINITE_MEMORY_NATIVE_V1.json",
+      "native_evidence_sha256": "5a06a9df4a662327e48e34f2743f485fb7471f86f99e18fd71d6feceb7eaa471"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.trainingLaw_apply": {
+      "level_parameters": [],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.trainingLaw_apply",
+      "type": "∀ (N : ℕ) (p : ℝ) (hp0 : 0 ≤ p) (hp1 : p ≤ 1)\n  (w : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.Record N),\n  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.trainingLaw N p hp0 hp1) w =\n    ∏ k, (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.response p hp0 hp1) (w k)",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/noisy-oracle-evidence-20261027/native-01/observed_first_native.json",
+      "native_evidence_sha256": "bbb7551f055b2ec4a5e2d83b9214647e209ae6155e92d5436eba30132c4b54c6"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.trainingLaw_at_zero": {
+      "level_parameters": [],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.trainingLaw_at_zero",
+      "type": "∀ (N : ℕ),\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.trainingLaw N 0 ⋯ ⋯ =\n    PMF.pure (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.zeroRecord N)",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/noisy-oracle-evidence-20261027/native-01/observed_first_native.json",
+      "native_evidence_sha256": "bbb7551f055b2ec4a5e2d83b9214647e209ae6155e92d5436eba30132c4b54c6"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.trainingLaw_zeroRecord": {
+      "level_parameters": [],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.trainingLaw_zeroRecord",
+      "type": "∀ (N : ℕ) (p : ℝ) (hp0 : 0 ≤ p) (hp1 : p ≤ 1),\n  ((UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.trainingLaw N p hp0 hp1)\n        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.zeroRecord N)).toReal =\n    (1 - p) ^ N",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/noisy-oracle-evidence-20261027/native-01/observed_first_native.json",
+      "native_evidence_sha256": "bbb7551f055b2ec4a5e2d83b9214647e209ae6155e92d5436eba30132c4b54c6"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.accepts_actual_risk_on_good": {
+      "level_parameters": [
+        "u"
+      ],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.accepts_actual_risk_on_good",
+      "type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype Y] [inst_2 : Fintype A] [inst_3 : LinearOrder X]\n  [inst_4 : DecidableEq Y] [inst_5 : DecidableEq A] [inst_6 : MeasurableSpace X] [MeasurableSingletonClass X]\n  [inst_8 : MeasurableSpace Y] [MeasurableSingletonClass Y] [inst_10 : MeasurableSpace A] [MeasurableSingletonClass A]\n  {N : ℕ} (q : X → Y) (R : X → A → X → Prop) (C : X → A → Prop)\n  [inst_12 : (x : X) → (a : A) → (z : X) → Decidable (R x a z)] [inst_13 : (x : X) → (a : A) → Decidable (C x a)]\n  (I : Finset X) (ordered : List A) (fallbackA : A) (hN : 0 < N)\n  (program : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.Program X Y A),\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.synthesize q R C I ordered fallbackA =\n      some program →\n    ∀ (initial : X → ℚ) (p₀ : PMF X),\n      (∀ (x : X), ↑(initial x) = (p₀ x).toReal) →\n        (∀ (x : X), x ∈ I ↔ x ∈ p₀.support) →\n          ∀ (P : X → A → PMF X),\n            (∀ (x : X) (a : A) (z : X), z ∈ (P x a).support ↔ R x a z) →\n              ∀ (fallbackX : X)\n                (sample : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.SampleTable X A N)\n                (u tau beta : ℚ),\n                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.CalibrationGood P hN sample\n                    ↑u →\n                  ∀ (T : ℕ) (bad : UEOT.V3.PathError.CausalHistory Y (A × Y) T → Bool),\n                    ∀\n                      E ⊆\n                        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskHistoryMap q (fun ax => (ax.1, q ax.2))\n                            T ⁻¹'\n                          {h | bad h = true},\n                      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.accepts program initial\n                            q fallbackX sample u tau beta T bad =\n                          true →\n                        (UEOT.V3.PathError.causalLaw p₀\n                                  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskMicroControlKernel q\n                                    (fun x => P) program.toController.policy)\n                                  T).toMeasure.real\n                            E ≤\n                          ↑beta",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/noisy-oracle-evidence-20261027/native-01/observed_first_native.json",
+      "native_evidence_sha256": "bbb7551f055b2ec4a5e2d83b9214647e209ae6155e92d5436eba30132c4b54c6"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.calibrated_defect_error": {
+      "level_parameters": [
+        "u"
+      ],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.calibrated_defect_error",
+      "type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype A] [inst_2 : LinearOrder X] [inst_3 : DecidableEq Y] {N : ℕ}\n  [inst_4 : MeasurableSpace X] [MeasurableSingletonClass X] [Nonempty X] [Nonempty A] (hN : 0 < N) (P : X → A → PMF X)\n  (q : X → Y) (sample : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.SampleTable X A N)\n  (u : ℚ),\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.CalibrationGood P hN sample ↑u →\n    |↑(UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalDefect q sample) -\n          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.sourceDefect q P| ≤\n      2 * ↑u",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/noisy-oracle-evidence-20261027/native-01/observed_first_native.json",
+      "native_evidence_sha256": "bbb7551f055b2ec4a5e2d83b9214647e209ae6155e92d5436eba30132c4b54c6"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalDefect_nonneg": {
+      "level_parameters": [
+        "u"
+      ],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalDefect_nonneg",
+      "type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype A] [inst_2 : LinearOrder X] [inst_3 : DecidableEq Y] {N : ℕ}\n  (q : X → Y) (sample : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.SampleTable X A N),\n  0 ≤ UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalDefect q sample",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/noisy-oracle-evidence-20261027/native-01/observed_first_native.json",
+      "native_evidence_sha256": "bbb7551f055b2ec4a5e2d83b9214647e209ae6155e92d5436eba30132c4b54c6"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalMass_eq": {
+      "level_parameters": [
+        "u"
+      ],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalMass_eq",
+      "type": "∀ {X : Type u} [Fintype X] [inst : LinearOrder X] {N : ℕ} [inst_1 : MeasurableSpace X] [MeasurableSingletonClass X]\n  (hN : 0 < N) (sample : Fin N → X) (z : X),\n  ↑(UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalMass sample z) =\n    ((UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalRow hN sample) z).toReal",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/noisy-oracle-evidence-20261027/native-01/observed_first_native.json",
+      "native_evidence_sha256": "bbb7551f055b2ec4a5e2d83b9214647e209ae6155e92d5436eba30132c4b54c6"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalTV_eq": {
+      "level_parameters": [
+        "u"
+      ],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalTV_eq",
+      "type": "∀ {X : Type u} [inst : Fintype X] [inst_1 : LinearOrder X] {N : ℕ} [inst_2 : MeasurableSpace X]\n  [MeasurableSingletonClass X] (hN : 0 < N) (left right : Fin N → X),\n  ↑(UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalTV left right) =\n    UEOT.V3.TotalVariation.tvDist\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalRow hN left).toMeasure\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalRow hN right).toMeasure",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/noisy-oracle-evidence-20261027/native-01/observed_first_native.json",
+      "native_evidence_sha256": "bbb7551f055b2ec4a5e2d83b9214647e209ae6155e92d5436eba30132c4b54c6"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empirical_reference_fit": {
+      "level_parameters": [
+        "u"
+      ],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empirical_reference_fit",
+      "type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype A] [inst_2 : LinearOrder X] [inst_3 : DecidableEq Y]\n  [inst_4 : MeasurableSpace X] [MeasurableSingletonClass X] [inst_6 : MeasurableSpace Y] {N : ℕ} (hN : 0 < N)\n  (q : X → Y) (fallback : X)\n  (sample : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.SampleTable X A N) (x : X)\n  (a : A),\n  UEOT.V3.TotalVariation.tvDist\n      (PMF.map q\n          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalRow hN\n            (sample x a))).toMeasure\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.referenceKernel hN q fallback sample\n          (q x) a).toMeasure ≤\n    ↑(UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalDefect q sample)",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/noisy-oracle-evidence-20261027/native-01/observed_first_native.json",
+      "native_evidence_sha256": "bbb7551f055b2ec4a5e2d83b9214647e209ae6155e92d5436eba30132c4b54c6"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.referenceHistoryMass_eq": {
+      "level_parameters": [
+        "u"
+      ],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.referenceHistoryMass_eq",
+      "type": "∀ {X Y A : Type u} [inst : Fintype X] [Fintype Y] [Fintype A] [inst_3 : LinearOrder X] [inst_4 : DecidableEq Y]\n  [inst_5 : DecidableEq A] [inst_6 : MeasurableSpace X] [MeasurableSingletonClass X] {N : ℕ} (hN : 0 < N)\n  (program : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.Program X Y A)\n  (initial : X → ℚ) (p₀ : PMF X),\n  (∀ (x : X), ↑(initial x) = (p₀ x).toReal) →\n    ∀ (q : X → Y) (fallback : X)\n      (sample : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.SampleTable X A N) (n : ℕ)\n      (h : UEOT.V3.PathError.CausalHistory Y (A × Y) n),\n      ↑(UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.referenceHistoryMass program initial q\n            fallback sample n h) =\n        ((UEOT.V3.PathError.causalLaw (PMF.map q p₀)\n              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskMacroControlKernel\n                (fun x =>\n                  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.referenceKernel hN q\n                    fallback sample)\n                program.toController.policy)\n              n)\n            h).toReal",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/noisy-oracle-evidence-20261027/native-01/observed_first_native.json",
+      "native_evidence_sha256": "bbb7551f055b2ec4a5e2d83b9214647e209ae6155e92d5436eba30132c4b54c6"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.referenceRisk_eq": {
+      "level_parameters": [
+        "u"
+      ],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.referenceRisk_eq",
+      "type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype Y] [inst_2 : Fintype A] [inst_3 : LinearOrder X]\n  [inst_4 : DecidableEq Y] [inst_5 : DecidableEq A] [inst_6 : MeasurableSpace X] [MeasurableSingletonClass X]\n  [inst_8 : MeasurableSpace Y] [MeasurableSingletonClass Y] [inst_10 : MeasurableSpace A] [MeasurableSingletonClass A]\n  {N : ℕ} (hN : 0 < N)\n  (program : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.Program X Y A)\n  (initial : X → ℚ) (p₀ : PMF X),\n  (∀ (x : X), ↑(initial x) = (p₀ x).toReal) →\n    ∀ (q : X → Y) (fallback : X)\n      (sample : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.SampleTable X A N) (T : ℕ)\n      (bad : UEOT.V3.PathError.CausalHistory Y (A × Y) T → Bool),\n      ↑(UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.referenceRisk program initial q\n            fallback sample T bad) =\n        (UEOT.V3.PathError.causalLaw (PMF.map q p₀)\n                (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskMacroControlKernel\n                  (fun x =>\n                    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.referenceKernel hN q\n                      fallback sample)\n                  program.toController.policy)\n                T).toMeasure.real\n          {h | bad h = true}",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/noisy-oracle-evidence-20261027/native-01/observed_first_native.json",
+      "native_evidence_sha256": "bbb7551f055b2ec4a5e2d83b9214647e209ae6155e92d5436eba30132c4b54c6"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.representative_fibre": {
+      "level_parameters": [
+        "u"
+      ],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.representative_fibre",
+      "type": "∀ {X Y : Type u} [inst : Fintype X] [inst_1 : LinearOrder X] [inst_2 : DecidableEq Y] (q : X → Y) (fallback x : X),\n  q (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.representative q fallback (q x)) = q x",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/noisy-oracle-evidence-20261027/native-01/observed_first_native.json",
+      "native_evidence_sha256": "bbb7551f055b2ec4a5e2d83b9214647e209ae6155e92d5436eba30132c4b54c6"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.scanNoisy_found_iff": {
+      "level_parameters": [],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.scanNoisy_found_iff",
+      "type": "∀ (oracle : ℕ → UEOT.V3.Compression.TheoryCompletion.ScientificClosure.CertificationDecision) (count i : ℕ),\n  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.scanNoisy oracle count).found = some i ↔\n    i < count ∧\n      oracle i ≠ UEOT.V3.Compression.TheoryCompletion.ScientificClosure.CertificationDecision.rejected ∧\n        ∀ j < i, oracle j = UEOT.V3.Compression.TheoryCompletion.ScientificClosure.CertificationDecision.rejected",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/noisy-oracle-evidence-20261027/native-01/observed_first_native.json",
+      "native_evidence_sha256": "bbb7551f055b2ec4a5e2d83b9214647e209ae6155e92d5436eba30132c4b54c6"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.scanOutcome_none_iff": {
+      "level_parameters": [],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.scanOutcome_none_iff",
+      "type": "∀ (oracle : ℕ → UEOT.V3.Compression.TheoryCompletion.ScientificClosure.CertificationDecision) (count : ℕ),\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.scanOutcome oracle count = none ↔\n    ∀ i < count, oracle i = UEOT.V3.Compression.TheoryCompletion.ScientificClosure.CertificationDecision.rejected",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/noisy-oracle-evidence-20261027/native-01/observed_first_native.json",
+      "native_evidence_sha256": "bbb7551f055b2ec4a5e2d83b9214647e209ae6155e92d5436eba30132c4b54c6"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.selectCandidate_eq_some_iff": {
+      "level_parameters": [
+        "u"
+      ],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.selectCandidate_eq_some_iff",
+      "type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype A] [inst_2 : DecidableEq X] [inst_3 : DecidableEq Y]\n  {N count : ℕ} (q : Fin count → X → Y)\n  (sample : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.SampleTable X A N) (u tau : ℚ)\n  (i : Fin count),\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.selectCandidate q sample u tau = some i ↔\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.scanOutcome\n        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.candidateDecision q sample u tau)\n        count =\n      some (↑i, UEOT.V3.Compression.TheoryCompletion.ScientificClosure.CertificationDecision.certified)",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/noisy-oracle-evidence-20261027/native-01/observed_first_native.json",
+      "native_evidence_sha256": "bbb7551f055b2ec4a5e2d83b9214647e209ae6155e92d5436eba30132c4b54c6"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.returned_program_all_times_safe": {
+      "level_parameters": [],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.returned_program_all_times_safe",
+      "type": "∀ (theta detailed : Bool),\n  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.stateTrajMeasure\n        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.program detailed).toController\n        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.initialLaw\n        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.observe detailed)\n        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.actualSource theta))\n      {w |\n        ∀ (n : ℕ), w n ∈ UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportControllerWitness.safe} =\n    1",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/noisy-oracle-evidence-20261027/native-01/observed_first_native.json",
+      "native_evidence_sha256": "bbb7551f055b2ec4a5e2d83b9214647e209ae6155e92d5436eba30132c4b54c6"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.source_support_exact": {
+      "level_parameters": [],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.source_support_exact",
+      "type": "∀ (theta : Bool) (n : ℕ) (x : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.State)\n  (a : Unit) (z : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.State),\n  z ∈\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.actualSource theta n x\n          a).support ↔\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness.relation x a z",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/noisy-oracle-evidence-20261027/native-01/observed_first_native.json",
+      "native_evidence_sha256": "bbb7551f055b2ec4a5e2d83b9214647e209ae6155e92d5436eba30132c4b54c6"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.MissingFiber.representative_is_certified": {
+      "level_parameters": [],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.MissingFiber.representative_is_certified",
+      "type": "∀ (n : ℕ),\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.MissingFiber.observe false =\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.MissingFiber.observe true ∧\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.MissingFiber.certified n false ()",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/SUPPORT_VIABILITY_NATIVE_V1.json",
+      "native_evidence_sha256": "34376e2c8564d148e5dcd4452ab0dddeb9aa20bbb1b9d0f7c88c194b9b82baca"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.escape_reference_live_history_mass": {
+      "level_parameters": [
+        "u"
+      ],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.escape_reference_live_history_mass",
+      "type": "∀ {X I Y A : Type u} (p₀ : PMF X) (qI : X → I) (i : I → Y),\n  Function.Injective i →\n    ∀ (fallback : Y) (Q : ℕ → Y → A → PMF Y) (π : (n : ℕ) → UEOT.V3.PathError.CausalHistory Y (A × Y) n → PMF A) (n : ℕ)\n      (h : UEOT.V3.PathError.CausalHistory I (A × I) n),\n      (UEOT.V3.PathError.causalLaw (PMF.map (i ∘ qI) p₀)\n            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskMacroControlKernel Q π) n)\n          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.observationHistoryMap i n h) =\n        (UEOT.V3.PathError.causalLaw (PMF.map (fun x => some (qI x)) p₀)\n            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskMacroControlKernel\n              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.escapeReferenceKernel i Q)\n              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.escapePolicy i fallback\n                π))\n            n)\n          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PathObservationEscapeCheck.observationHistoryMap some n\n            h)",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REGISTERED_INTERFACES_NATIVE_V1.json",
+      "native_evidence_sha256": "75945bbff2e0212a406f27859c68a777bc3deba75b0b8aece66c84236b5e39c1"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.empirical_fit": {
+      "level_parameters": [],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.empirical_fit",
+      "type": "∀ (ω : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.SampleSpace) (n : ℕ) (hn : n < 1)\n  (x a : Bool) (hc : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.certified n x a),\n  UEOT.V3.TotalVariation.tvDist\n      (PMF.map id\n          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empiricalResponsePMF ⋯\n            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.samples\n              ⟨(⟨n, hn⟩, a, x), hc⟩)\n            ω)).toMeasure\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.reference ω n x a).toMeasure ≤\n    0",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/SUPPORT_VIABILITY_NATIVE_V1.json",
+      "native_evidence_sha256": "34376e2c8564d148e5dcd4452ab0dddeb9aa20bbb1b9d0f7c88c194b9b82baca"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.referenceFailure_eq": {
+      "level_parameters": [],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.referenceFailure_eq",
+      "type": "∀ (ω : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.SampleSpace),\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.referenceFailure ω =\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.empiricalRow ω\n            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredSelectionWitness.selectedAction\n              ω)).toMeasure.real\n      {true}",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/SUPPORT_VIABILITY_NATIVE_V1.json",
+      "native_evidence_sha256": "34376e2c8564d148e5dcd4452ab0dddeb9aa20bbb1b9d0f7c88c194b9b82baca"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.trainingLaw_mass": {
+      "level_parameters": [],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.trainingLaw_mass",
+      "type": "∀ (b c : Bool),\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.trainingLaw (b, c) =\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.actionRow false) b *\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.actionRow true) c",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/STATISTICAL_RISK_NATIVE_V1.json",
+      "native_evidence_sha256": "9a87e5f99d48cfc7fa95df595d7884837f0dd24253205858f5c27ae22545a63d"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.representative_risk_on_good": {
+      "level_parameters": [],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.representative_risk_on_good",
+      "type": "∀ (ω : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.SampleSpace),\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.Good ω →\n    ∀ (p₀ : PMF UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.State)\n      (policy :\n        (n : ℕ) →\n          UEOT.V3.PathError.CausalHistory\n              (↑UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.Class)\n              (Bool × ↑UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.Class) n →\n            PMF Bool),\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RepresentativeRiskConclusion\n        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.modelFamily\n        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.partition\n        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.representative p₀ policy (fun x => 0)\n        (fun x => 3 / 16) UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.radius (fun x => 1)\n        2",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/STATISTICAL_RISK_NATIVE_V1.json",
+      "native_evidence_sha256": "9a87e5f99d48cfc7fa95df595d7884837f0dd24253205858f5c27ae22545a63d"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.representative_section": {
+      "level_parameters": [],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.representative_section",
+      "type": "∀ (c : ↑UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.Class),\n  UEOT.V3.Compression.RecursiveSufficientState.toReachable\n      (UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC.setoidRepresentation\n        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.partition)\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.representative c) =\n    c",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/STATISTICAL_RISK_NATIVE_V1.json",
+      "native_evidence_sha256": "9a87e5f99d48cfc7fa95df595d7884837f0dd24253205858f5c27ae22545a63d"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.supportTable_exact": {
+      "level_parameters": [],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.supportTable_exact",
+      "type": "∀ (n : ℕ) (x a z : Bool),\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.supportTable n x a z ↔\n    z ∈\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.SafePrefixDeadend.source n x\n          a).support",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/SUPPORT_VIABILITY_NATIVE_V1.json",
+      "native_evidence_sha256": "34376e2c8564d148e5dcd4452ab0dddeb9aa20bbb1b9d0f7c88c194b9b82baca"
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empirical_reference_risk_of_calibrated": {
+      "level_parameters": [
+        "u",
+        "uΩ"
+      ],
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empirical_reference_risk_of_calibrated",
+      "type": "∀ {Ω : Type uΩ} {X Y A R O : Type u} [inst : Fintype X] [Fintype Y] [Fintype A] [inst_3 : MeasurableSpace X]\n  [MeasurableSingletonClass X] [inst_5 : MeasurableSpace Y] [MeasurableSingletonClass Y] [inst_7 : MeasurableSpace A]\n  [MeasurableSingletonClass A] {N : ℕ} (hN : 0 < N) (M : ℕ → UEOT.V3.FiniteStablePartition.Model X A R O)\n  (sample : ℕ → A → X → Fin N → Ω → X) (ω : Ω) (q : X → Y) (r : Y → X) (p₀ : PMF X)\n  (policy : (n : ℕ) → UEOT.V3.PathError.CausalHistory Y (A × Y) n → PMF A) (rho eta : ℕ → ℝ) (T : ℕ),\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.EmpiricalTransitionCalibrated M\n      (fun x => UEOT.V3.FiniteAlphabetSampling.eventIndicator) sample rho T ω →\n    (∀ n < T, 0 ≤ rho n) →\n      (∀ n < T, 0 ≤ eta n) →\n        (∀ n < T,\n            ∀ (x : X) (a : A),\n              UEOT.V3.TotalVariation.tvDist\n                  (PMF.map q\n                      ((fun n x a =>\n                          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empiricalResponsePMF hN (sample n a x) ω)\n                        n x a)).toMeasure\n                  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskRepresentativeKernel q r\n                      (fun n x a =>\n                        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empiricalResponsePMF hN (sample n a x) ω)\n                      n (q x) a).toMeasure ≤\n                eta n) →\n          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.EmpiricalReferenceRiskConclusion hN M sample ω q r p₀\n            policy rho eta T",
+      "native_evidence": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/STATISTICAL_RISK_NATIVE_V1.json",
+      "native_evidence_sha256": "9a87e5f99d48cfc7fa95df595d7884837f0dd24253205858f5c27ae22545a63d"
+    },
+    "UEOT.V3.CoreOperationalAssembly.responseDefect_nonneg": {
+      "name": "UEOT.V3.CoreOperationalAssembly.responseDefect_nonneg",
+      "type": "UEOT.V3.CoreOperationalAssembly.responseDefect_nonneg.{uV, uH, uI, uR, uY} {V : Type uV} {H : Type uH} {I : Type uI}\n  {R : Type uR} {Y : Type uY} [MeasurableSpace.{uY} Y] (readout : Finset.{uV} V → H → R)\n  (p : H → I → @MeasureTheory.Measure.{uY} Y inst✝)\n  (hp : ∀ (h : H) (i : I), @MeasureTheory.IsProbabilityMeasure.{uY} Y inst✝ (p h i)) (S : Finset.{uV} V) :\n  @LE.le.{0} Real Real.instLE (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero))\n    (@UEOT.V3.StatisticalDefect.responseDefect.{uV, uH, uI, uR, uY} V H I R Y inst✝ readout p S)",
+      "type_format": "actual #check output with pp.universes and pp.explicit enabled",
+      "native_evidence": "/tmp/ueot-r2-prior-types.log",
+      "native_evidence_sha256": "fa5398ae303966d14be2a1264cde6248562b3ce6a6515691d98b84d98b80dfdc"
+    },
+    "UEOT.V3.FiniteCTMCPathKL.fullReference_eq": {
+      "name": "UEOT.V3.FiniteCTMCPathKL.fullReference_eq",
+      "type": "UEOT.V3.FiniteCTMCPathKL.fullReference_eq.{u} {X : Type u} [Fintype.{u} X] [DecidableEq.{u + 1} X]\n  [MeasurableSpace.{u} X] [@MeasurableSingletonClass.{u} X inst✝]\n  (G H : @CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.FiniteJumpGenerator.{u} X inst✝¹) (T : NNReal) :\n  @Eq.{u + 1}\n    (@MeasureTheory.Measure.{u} (CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.FullPath.{u} X)\n      (@Sigma.instMeasurableSpace.{u, 0} Nat\n        (fun n => CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.JumpPath.{u} X n) fun a =>\n        @CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.instMeasurableSpaceJumpPath.{u} X inst✝ a))\n    (@UEOT.V3.FiniteCTMCPathKL.fullReference.{u} X inst✝¹ inst✝ G T)\n    (@UEOT.V3.FiniteCTMCPathKL.fullReference.{u} X inst✝¹ inst✝ H T)",
+      "type_format": "actual #check output with pp.universes and pp.explicit enabled",
+      "native_evidence": "/tmp/ueot-r2-prior-types.log",
+      "native_evidence_sha256": "fa5398ae303966d14be2a1264cde6248562b3ce6a6515691d98b84d98b80dfdc"
+    },
+    "UEOT.V3.StatisticalDefect.responseDefect_error": {
+      "name": "UEOT.V3.StatisticalDefect.responseDefect_error",
+      "type": "UEOT.V3.StatisticalDefect.responseDefect_error.{uV, uH, uI, uR, uY} {V : Type uV} {H : Type uH} {I : Type uI}\n  {R : Type uR} {Y : Type uY} [MeasurableSpace.{uY} Y] [Nonempty.{uH + 1} H] [Nonempty.{uI + 1} I]\n  (readout : Finset.{uV} V → H → R) (p pHat : H → I → @MeasureTheory.Measure.{uY} Y inst✝)\n  (hp : ∀ (h : H) (i : I), @MeasureTheory.IsProbabilityMeasure.{uY} Y inst✝ (p h i))\n  (hpHat : ∀ (h : H) (i : I), @MeasureTheory.IsProbabilityMeasure.{uY} Y inst✝ (pHat h i)) (η : Real)\n  (hresp :\n    ∀ (h : H) (i : I), @LE.le.{0} Real Real.instLE (@UEOT.V3.TotalVariation.tvDist.{uY} Y inst✝ (p h i) (pHat h i)) η)\n  (S : Finset.{uV} V) :\n  @LE.le.{0} Real Real.instLE\n    (@abs.{0} Real Real.lattice Real.instAddGroup\n      (@HSub.hSub.{0, 0, 0} Real Real Real (@instHSub.{0} Real Real.instSub)\n        (@UEOT.V3.StatisticalDefect.responseDefect.{uV, uH, uI, uR, uY} V H I R Y inst✝ readout pHat S)\n        (@UEOT.V3.StatisticalDefect.responseDefect.{uV, uH, uI, uR, uY} V H I R Y inst✝ readout p S)))\n    (@HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul)\n      (@OfNat.ofNat.{0} Real (nat_lit 2) (@instOfNatAtLeastTwo.{0} Real (nat_lit 2) Real.instNatCast ⋯)) η)",
+      "type_format": "actual #check output with pp.universes and pp.explicit enabled",
+      "native_evidence": "/tmp/ueot-r2-prior-types.log",
+      "native_evidence_sha256": "fa5398ae303966d14be2a1264cde6248562b3ce6a6515691d98b84d98b80dfdc"
+    }
+  },
+  "unchanged_prior_source_files": [
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/AbsorbingLeakage.lean",
+      "bytes": 8518,
+      "sha256": "31212ec53f321e485ce6e5738b04b9dfcef523c1f8118140d05b753286cf2dc5",
+      "byte_identical_to_baseline": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/C3ExecutableSearch.lean",
+      "bytes": 13494,
+      "sha256": "6a70601f35f12edf0eaf881a39aa36fc8d22d5b42111d0c937fa92948df70abc",
+      "byte_identical_to_baseline": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+      "bytes": 24109,
+      "sha256": "230128e5bb046e2f44ab46d29933324eeebed31c255248558e946e55b1e9099a",
+      "byte_identical_to_baseline": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverageWitness.lean",
+      "bytes": 14311,
+      "sha256": "19db0904c2d856c6efa3830555bb75572d670da607b97a8dcd6e4e120397288b",
+      "byte_identical_to_baseline": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/EmpiricalReferenceRisk.lean",
+      "bytes": 11403,
+      "sha256": "9b5594629e9e439282134cdece24b22786eff83a392a6a4168cc4249f9e0556d",
+      "byte_identical_to_baseline": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean",
+      "bytes": 27244,
+      "sha256": "5e19fb3cba080f8c20726626801e457321af6a12b4c8dedc4ae52f842d2bb333",
+      "byte_identical_to_baseline": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean",
+      "bytes": 10546,
+      "sha256": "e737f0caf8127eb233ccf85366e7d5b5b1cbb8db8d2aac16db7af32a6b18ba73",
+      "byte_identical_to_baseline": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryCheckWitness.lean",
+      "bytes": 5260,
+      "sha256": "935b597e08858e4aee33847296d14b8ed00033307cd2925a83338c13dfd11f46",
+      "byte_identical_to_baseline": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PathObservationEscape.lean",
+      "bytes": 11412,
+      "sha256": "eb963f19ae5d0a22a7d6215f7c769becbbd688a1bb5cbc33fa09880368cfa854",
+      "byte_identical_to_baseline": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisteredDeploymentRiskWitness.lean",
+      "bytes": 16917,
+      "sha256": "451dbcb249188564ab985b57e984a4d3e05b59486384792bdf04e112c7f16ac6",
+      "byte_identical_to_baseline": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskBoundary.lean",
+      "bytes": 7151,
+      "sha256": "a9f2742599f190755548f9739a1c67276f6e72bf1c38769b343710e59999dc4c",
+      "byte_identical_to_baseline": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+      "bytes": 32136,
+      "sha256": "9bd381fde5c6db2ae84e02363d33ed68de412b1fd9a2f827a72fe474bf82405e",
+      "byte_identical_to_baseline": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/CoreOperationalAssembly.lean",
+      "bytes": 38484,
+      "sha256": "1f8c4f5be6d3906cdeaa6d88809cc5e0fa5f601ce8b69b21cef67a16dc7a7384",
+      "byte_identical_to_baseline": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/FiniteCTMCPathKL.lean",
+      "bytes": 132595,
+      "sha256": "645013420b0fa15554f555aef6305c92fbd90cfe32d3d92cefd5aa634492a6ba",
+      "byte_identical_to_baseline": true
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/StatisticalDefect.lean",
+      "bytes": 7631,
+      "sha256": "acf043effe89364adec73d1b2dae5a4d10504b10ac2cf984369a6baae69f1fe0",
+      "byte_identical_to_baseline": true
+    }
+  ],
+  "acknowledged_nonblocking_overlap": [
+    {
+      "location": "NoisyFiniteRiskOracle.lean:236",
+      "name": "private sourceDefect_nonneg",
+      "relationship": "The private analytic helper is a direct mathematical specialization of CoreOperationalAssembly.responseDefect_nonneg and that module is already in the import closure. Its four-line local proof is correct and unregistered; it is not an independent public result. This does not make the hinted public rational empiricalDefect_nonneg, which covers N=0 without PMFs, replaceable by the old theorem. No source correction is required for correctness or public theorem registration; using the old helper directly would be an optional proof simplification."
+    }
+  ],
+  "boundaries": [
+    "Intentional specializations, executable/semantic bridges, and concrete witness applications are accepted as reuse. They are not asserted to be logically independent discoveries.",
+    "All matched reuse paths are reported as actual proof dependencies, not inferred from matching names; absence of an observed path is not treated as a theorem-independence proof.",
+    "The 20 older compiled types recovered from native payloads were checked against current source contracts. All 15 parent source files are byte-identical to baseline d048429a1f713246dd7a69aa278f71c4d0df1677. The remaining three parent types were read from the current actual #check log.",
+    "This review adds no claim of OS randomness verification, external scientific source matching, acceptance-conditioned risk, or strong world closure.",
+    "Axiom/output hash checks here establish consistency of the inspected actual artifacts; they do not substitute for any separate final Git candidate, build-identity, or publication audit."
+  ],
+  "blockers": [],
+  "required_source_fixes": [],
+  "public_removal_recommendations": [],
+  "conclusion": "CLEAR: all 17 groups and 26 proposed pairs have actual typed mathematical verdicts. Four hinted pairs have observed existing-proof reuse paths (one direct, two through generated simplifier theorems, one through the synthesis-safety wrapper). The other 22 pairs do not supply replacements for the new contracts under their actual hypotheses and objects. The implementation uses existing empirical, TV, scan, controller-safety and risk propagation results; no public source removal or new proof redesign is warranted.",
+  "metadata_correction": {
+    "corrected_at_utc": "2026-10-26T19:35:41.002733+00:00",
+    "previous_report_sha256": "55ffc2b9687a6bf1ed322c72151fd7f3bbbd4f3944bf826190089cda532c37b3",
+    "scope": "Native census labels only. Counts of all 167 owned constants, 43 public theorem/lemma candidates and 38 private constants, every typed declaration, all 17 group/26 pair verdicts, proof paths, status and required-fix conclusions remain unchanged.",
+    "reason": "The nonprivate outside-lexical set includes one named source instance, not 86 generated constants."
+  }
+}

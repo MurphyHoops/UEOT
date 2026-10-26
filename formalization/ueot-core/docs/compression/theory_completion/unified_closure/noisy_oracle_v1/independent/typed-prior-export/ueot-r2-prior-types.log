@@ -1,0 +1,31 @@
+UEOT.V3.CoreOperationalAssembly.responseDefect_nonneg.{uV, uH, uI, uR, uY} {V : Type uV} {H : Type uH} {I : Type uI}
+  {R : Type uR} {Y : Type uY} [MeasurableSpace.{uY} Y] (readout : Finset.{uV} V → H → R)
+  (p : H → I → @MeasureTheory.Measure.{uY} Y inst✝)
+  (hp : ∀ (h : H) (i : I), @MeasureTheory.IsProbabilityMeasure.{uY} Y inst✝ (p h i)) (S : Finset.{uV} V) :
+  @LE.le.{0} Real Real.instLE (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero))
+    (@UEOT.V3.StatisticalDefect.responseDefect.{uV, uH, uI, uR, uY} V H I R Y inst✝ readout p S)
+UEOT.V3.StatisticalDefect.responseDefect_error.{uV, uH, uI, uR, uY} {V : Type uV} {H : Type uH} {I : Type uI}
+  {R : Type uR} {Y : Type uY} [MeasurableSpace.{uY} Y] [Nonempty.{uH + 1} H] [Nonempty.{uI + 1} I]
+  (readout : Finset.{uV} V → H → R) (p pHat : H → I → @MeasureTheory.Measure.{uY} Y inst✝)
+  (hp : ∀ (h : H) (i : I), @MeasureTheory.IsProbabilityMeasure.{uY} Y inst✝ (p h i))
+  (hpHat : ∀ (h : H) (i : I), @MeasureTheory.IsProbabilityMeasure.{uY} Y inst✝ (pHat h i)) (η : Real)
+  (hresp :
+    ∀ (h : H) (i : I), @LE.le.{0} Real Real.instLE (@UEOT.V3.TotalVariation.tvDist.{uY} Y inst✝ (p h i) (pHat h i)) η)
+  (S : Finset.{uV} V) :
+  @LE.le.{0} Real Real.instLE
+    (@abs.{0} Real Real.lattice Real.instAddGroup
+      (@HSub.hSub.{0, 0, 0} Real Real Real (@instHSub.{0} Real Real.instSub)
+        (@UEOT.V3.StatisticalDefect.responseDefect.{uV, uH, uI, uR, uY} V H I R Y inst✝ readout pHat S)
+        (@UEOT.V3.StatisticalDefect.responseDefect.{uV, uH, uI, uR, uY} V H I R Y inst✝ readout p S)))
+    (@HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul)
+      (@OfNat.ofNat.{0} Real (nat_lit 2) (@instOfNatAtLeastTwo.{0} Real (nat_lit 2) Real.instNatCast ⋯)) η)
+UEOT.V3.FiniteCTMCPathKL.fullReference_eq.{u} {X : Type u} [Fintype.{u} X] [DecidableEq.{u + 1} X]
+  [MeasurableSpace.{u} X] [@MeasurableSingletonClass.{u} X inst✝]
+  (G H : @CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.FiniteJumpGenerator.{u} X inst✝¹) (T : NNReal) :
+  @Eq.{u + 1}
+    (@MeasureTheory.Measure.{u} (CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.FullPath.{u} X)
+      (@Sigma.instMeasurableSpace.{u, 0} Nat
+        (fun n => CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.JumpPath.{u} X n) fun a =>
+        @CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.instMeasurableSpaceJumpPath.{u} X inst✝ a))
+    (@UEOT.V3.FiniteCTMCPathKL.fullReference.{u} X inst✝¹ inst✝ G T)
+    (@UEOT.V3.FiniteCTMCPathKL.fullReference.{u} X inst✝¹ inst✝ H T)

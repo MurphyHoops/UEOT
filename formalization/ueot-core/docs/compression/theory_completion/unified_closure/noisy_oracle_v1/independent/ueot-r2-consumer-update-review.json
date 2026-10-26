@@ -1,0 +1,197 @@
+{
+  "schema": "NOISY_ORACLE_CONSUMER_UPDATE_REVIEW_V1",
+  "state": "PASS_CONSUMER_INTEGRATION_CHECKS",
+  "repo": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023",
+  "baseline_ref": "d048429a1f713246dd7a69aa278f71c4d0df1677",
+  "source_tree_sha256": "4b5145e874601392568293c1d561684e6d0478f2676dc20accf04a8080c3261d",
+  "scope": "Exactly five consumer files; no commit by this agent",
+  "files": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md",
+      "before_sha256": "5d7d416c120221e2089a2c43436b9d4bf24797447e0d4d29706357284b73562d",
+      "after_sha256": "c0fe8b663e1794a33ca07dc4877cfb7e6f9b5d169fa06d3e7edf991a7080ae2c"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+      "before_sha256": "fb5d25ac27f97bfec80922f2cb9ae7528a338ded4c901bdf9c213022f34e7c87",
+      "after_sha256": "d712f76a03438b7ef2c506a006e69c0823500efce2053c42f3c2186905776e3b"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
+      "before_sha256": "283409893a6eb01f8f74dee2656ebdb86714e9db1f8150ad4d4d6d7bc249c129",
+      "after_sha256": "5bf75f137b991de262f1996f798d443b5604b699d176b4249026b9cc5b99f56a"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py",
+      "before_sha256": "9c997a0bc8ebfd0e737ce4d462ce46f637da6ae88887b56ba4f1fc1e0bc0689b",
+      "after_sha256": "cd08243114cde67a0d68ef79e184e6a5366844de414d7f7eac7a60045073e33a"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
+      "before_sha256": "76b1fd287f521d8a0d299eeed7d40e9825ae8f0db1b7f98216c1fddf905950d9",
+      "after_sha256": "39a521a033160006a1df68c1d704a5cf8a5e38e14587e31e2e220b516303e3de"
+    }
+  ],
+  "commands": [
+    {
+      "label": "focused",
+      "command": "python3 -B formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py -k noisy_oracle",
+      "exit_code": 0,
+      "log_path": "/tmp/ueot-r2-consumer-focused.log",
+      "log_sha256": "d89ea9010a625a184c43752d31eb5117be24a40b156739ff982e238110469117",
+      "tests_executed": 4,
+      "test_reported_seconds": 0.089,
+      "result": "OK"
+    },
+    {
+      "label": "full",
+      "command": "python3 -B formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
+      "exit_code": 0,
+      "log_path": "/tmp/ueot-r2-consumer-full.log",
+      "log_sha256": "667bea19ac921104f666fbca40ddf525244df5d51ca7876decc2228446b89da5",
+      "tests_executed": 66,
+      "test_reported_seconds": 1.382,
+      "result": "OK"
+    },
+    {
+      "label": "parser",
+      "command": "python3 -B formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_pr_preflight.py",
+      "exit_code": 0,
+      "log_path": "/tmp/ueot-r2-consumer-parser.log",
+      "log_sha256": "99c9e8f4887936646aedd3758debc4ecb510798a34609371ede6aff50f6b087b",
+      "tests_executed": 89,
+      "test_reported_seconds": 11.296,
+      "result": "OK"
+    },
+    {
+      "label": "fkrg",
+      "command": "python3 -B formalization/ueot-core/docs/compression/theory_completion/knowledge/test_fkrg.py",
+      "exit_code": 0,
+      "log_path": "/tmp/ueot-r2-consumer-fkrg.log",
+      "log_sha256": "97c45cf383fa780b3b7c401ef99d3749730acc32395be5f515f87b3d37c7ddcb",
+      "tests_executed": 30,
+      "test_reported_seconds": 2.492,
+      "result": "OK"
+    },
+    {
+      "label": "clones",
+      "command": "python3 -B formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py",
+      "exit_code": 0,
+      "log_path": "/tmp/ueot-r2-consumer-clones.log",
+      "log_sha256": "4c3c4972fb549c2e6bc3c150350e88b23c100ff348a0f32041a56603ba9134a1",
+      "result": {
+        "status": "PASS",
+        "cross_file_proof_related_code_clone_pairs": 68,
+        "length_15_plus": 12,
+        "max_code_lines": 31,
+        "kind": "exact normalized source snippet matching, NOT logical theorem equivalence"
+      }
+    },
+    {
+      "label": "status",
+      "command": "python3 -B formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py --json status",
+      "exit_code": 0,
+      "log_path": "/tmp/ueot-r2-consumer-status.log",
+      "log_sha256": "8eb4ad25a249083c6e54170231cfc63701aa32b5cdbd0edd31c45bc194f4b1fa",
+      "result": {
+        "overlay_count": 14,
+        "module_source_hashes_verified": 699,
+        "ueot_maintained_modules": 688,
+        "vendor_modules": 11,
+        "public_source_theorems_with_direct_proof_graph": 4433,
+        "overlay_public_theorems": 640,
+        "overlay_registered_direct_edges": 991,
+        "overlay_lexical_reuse_candidates": 172,
+        "crossfile_exact_code_clone_candidates": 68
+      }
+    },
+    {
+      "label": "diff_check",
+      "command": "git diff --check -- formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
+      "exit_code": 0,
+      "log_path": "/tmp/ueot-r2-consumer-diff-check.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "result": "PASS"
+    }
+  ],
+  "actual_native": {
+    "registered_public": 43,
+    "all_native": 167,
+    "private": 38,
+    "registered_direct_edges": 63,
+    "cross_raw_type_comparisons": 188770,
+    "internal_raw_type_comparisons": 903,
+    "collisions": 0,
+    "registered_overlay_sha256": "8e966bab093ddccadeffc8a91d3265e99cd1bfbc34696d965b981426e0457283",
+    "native_sha256": "bbb7551f055b2ec4a5e2d83b9214647e209ae6155e92d5436eba30132c4b54c6",
+    "fixed_certificate_sha256": "7d91f54676bc3821adb0f81f42d1daa4e98ffe311385b25b87f03afa78724b17",
+    "other_public_outside_lexical": 86,
+    "other_public_named_source_instances": 1,
+    "other_public_generated": 85,
+    "named_source_instance": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.trainingMeasure_isProbability"
+  },
+  "live_graph_edges": 5878,
+  "new_tests": [
+    "test_noisy_oracle_native_ownership_and_registered_edges",
+    "test_noisy_oracle_registration_preserves_raw_execution",
+    "test_noisy_oracle_same_source_semantic_reuse",
+    "test_noisy_oracle_witnesses_and_preserved_runtime"
+  ],
+  "review_findings": [],
+  "preservation": {
+    "old_layers": 13,
+    "old_overlay_certificate_native_and_clone_assets_byte_verified": 37,
+    "manifest_path": "/tmp/ueot-r2-consumer-before-after.json",
+    "manifest_sha256": "767d2498afb1187e6378f42f8cfcba1b7b82e6f9a787c39708265491967fb68e",
+    "clone_asset_sha256": "e369d3eee8fe5383532bf68c18ed08ec961d9710b4d600da3edc11a243ebc064",
+    "existing_tests_unchanged": 59,
+    "existing_tests_changed_only_for_current_census": [
+      "ProofReuseTests.test_calibrated_defect_overlay_chain_and_kernel_graph",
+      "ProofReuseTests.test_evidence_and_sources_exact_baseline",
+      "ProofReuseTests.test_new_lean_module_cannot_be_omitted_from_index"
+    ],
+    "historical_layer_tests_unchanged": true,
+    "clone_algorithm_unchanged_docstring_only": true
+  },
+  "initial_failed_attempts": [
+    {
+      "phase": "preparation before any repository writes",
+      "command": "python3 -B /tmp/ueot-apply-r2-consumers.py",
+      "exit_code": 1,
+      "captured_tool_output_excerpt": "File \"/tmp/ueot-apply-r2-consumers.py\", line 401, in <module>\n    assert len([name for name in new_methods if name.startswith('test_')]) == 66\nAssertionError",
+      "cause": "The temporary preparation guard counted only ProofReuseTests, while AdditiveHistoricalRepairTests contains 14 additional tests.",
+      "resolution": "Count all test classes; verify 62 existing plus 4 new methods. The guard passed before writing exactly five files. No application test assertion or evidence gate was weakened."
+    }
+  ],
+  "limitations": [
+    "This consumer review verifies actual recorded native/runtime evidence and consumer behavior; it does not claim PR merge or replace the separate semantic/source review.",
+    "The ideal independent-uniform sampling backend and external scientific source matching remain unverified."
+  ],
+  "metadata_correction": {
+    "candidate_before_correction": "07b03c81efa7506a356e48fb88b9cede094105e0",
+    "reason": "The 86 nonprivate native declarations outside the 43 lexical-public theorems include one named source Prop instance and 85 generated constants.",
+    "edited_consumer_file": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
+    "previous_after_sha256": "8963ac631d6d1e48fa76553eee8569a844fa2afdea256bb77004c6984f8d089b",
+    "corrected_sha256": "39a521a033160006a1df68c1d704a5cf8a5e38e14587e31e2e220b516303e3de",
+    "other_four_consumer_files_edited_by_this_agent": false,
+    "raw_native_and_old_layer_assets_unchanged": true,
+    "focused_check": {
+      "command": "python3 -B formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py -k noisy_oracle",
+      "exit_code": 0,
+      "tests_executed": 4,
+      "test_reported_seconds": 0.094,
+      "log_path": "/tmp/ueot-r2-consumer-metadata-focused.log",
+      "log_sha256": "d29c9457830b87c0f530f33dd56ede4ef3860f8c39a217ad535a3aef0175d7b7"
+    },
+    "diff_check": {
+      "exit_code": 0,
+      "log_path": "/tmp/ueot-r2-consumer-metadata-diff-check.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "root_updated_knowledge_readme": {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md",
+      "previous_after_sha256": "7632f8d7582cedb7d1d5e75473eb1f47e428bf60a317db44e4dbd0482854df2e",
+      "corrected_sha256": "c0fe8b663e1794a33ca07dc4877cfb7e6f9b5d169fa06d3e7edf991a7080ae2c"
+    }
+  }
+}

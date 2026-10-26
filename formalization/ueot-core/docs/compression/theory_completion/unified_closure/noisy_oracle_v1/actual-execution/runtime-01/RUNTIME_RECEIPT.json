@@ -1,0 +1,41 @@
+{
+  "schema": "NOISY_ORACLE_ACTUAL_RUNTIME_V1",
+  "state": "ACTUAL_COMPUTATION_PASS_SEMANTIC_PROOFS_PENDING",
+  "command": [
+    "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+    "env",
+    "lean",
+    "--run",
+    "docs/compression/theory_completion/unified_closure/noisy_oracle_v1/EXECUTE_NOISY_ORACLE.lean",
+    "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/noisy-oracle-evidence-20261027/sampling-01/DATASET.json"
+  ],
+  "exit_code": 0,
+  "seconds": 4.348,
+  "script_sha256": "908011d34df56f8ed8e6c8dc30ba49314b24ea7a50f9b8c523e20494ff18e116",
+  "sampler_sha256": "5f579f5c112916a45aadbbde1f9587862e8cf8a91d26ec44f852d09edfafe15c",
+  "dataset_sha256": "0d5e5bc9b4f11656986bddb880c493ff2bbd81bf530183af77e3c185c553f6f3",
+  "log_sha256": "b1621046e0dd15e98504c7495a9ccd2faa50b38cfac5d7ae6b9365b70822b300",
+  "result": {
+    "accepted": true,
+    "coarse_defect": "1539/2048",
+    "defect_interval_radius": "1/10",
+    "empirical_progress": "509/2048",
+    "fine_budget": "13939757/20971520",
+    "fine_defect": "0",
+    "fine_reference_risk": "2368521/4194304",
+    "found": 1,
+    "horizon": 2,
+    "queries": [
+      0,
+      1
+    ],
+    "risk_cap": "7/10",
+    "row_tv_radius": "1/20",
+    "sample_count": 4096,
+    "state": "ACCEPTED",
+    "threshold": "1/8"
+  },
+  "sampling": "One preserved OS-CSPRNG model draw, no resampling",
+  "source_matching": "Ideal independent uniform backend is assumed; not verified from data or by Lean",
+  "external_scientific_evidence": "UNVERIFIED"
+}

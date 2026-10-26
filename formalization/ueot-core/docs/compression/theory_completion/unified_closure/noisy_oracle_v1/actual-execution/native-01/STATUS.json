@@ -1,0 +1,40 @@
+{
+  "state": "PASS_PENDING_INDEPENDENT_REVIEW_AND_REGISTRATION",
+  "baseline_ref": "d048429a1f713246dd7a69aa278f71c4d0df1677",
+  "build_receipt_sha256": "4167bcbd4e7d37a41a3aa57c6894370dc51585c387c471db4b4ec238b566a382",
+  "results": [
+    {
+      "label": "native_export",
+      "command": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/noisy-oracle-evidence-20261027/native-01/NOISY_ORACLE_NATIVE_EXPORT.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 60.441,
+      "log_sha256": "ee3b4a20405afcf51be417ce2b178ebc95613886ba8c7f83ee1139ab2eb758e7"
+    },
+    {
+      "label": "fixed_verifier",
+      "command": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/noisy-oracle-evidence-20261027/native-01/VERIFY_NOISY_ORACLE_OVERLAY_TYPES.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 56.047,
+      "log_sha256": "ee3b4a20405afcf51be417ce2b178ebc95613886ba8c7f83ee1139ab2eb758e7"
+    }
+  ],
+  "summary": {
+    "modules": 3,
+    "public_source_theorems": 43,
+    "native_constants": 167,
+    "registered_edges": 63,
+    "overlay_sha256": "bc113bca3c2ef58010a59263b0ea5fbecfba7ac34a6da8bbe774a4f52a574b76",
+    "verifier_sha256": "7d91f54676bc3821adb0f81f42d1daa4e98ffe311385b25b87f03afa78724b17",
+    "native_sha256": "bbb7551f055b2ec4a5e2d83b9214647e209ae6155e92d5436eba30132c4b54c6"
+  }
+}

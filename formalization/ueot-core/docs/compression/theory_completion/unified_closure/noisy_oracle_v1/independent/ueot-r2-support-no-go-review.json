@@ -1,0 +1,52 @@
+{
+  "schema": "UEOT_R2_FIXED_SAMPLE_SUPPORT_NOGO_SOURCE_REVIEW_V1",
+  "status": "CLEAR",
+  "source": {
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FixedSampleSupportNoGo.lean",
+    "sha256": "2e86d0bb68795296e5b6ecde3cce625d0cc4e36a61bcfbba1f14183d07d4a252",
+    "lines": 144,
+    "public_theorems": [
+      "trainingLaw_apply",
+      "trainingLaw_zeroRecord",
+      "trainingLaw_at_zero",
+      "certificationProbability_eq_sum",
+      "certificationProbability_at_zero",
+      "certificationProbability_ge_zeroPower",
+      "exists_positive_source_false_certification",
+      "no_uniform_exact_zero_certificate"
+    ]
+  },
+  "findings": [],
+  "no_go_checks": {
+    "sampling": "trainingLaw uses the existing actual productRowLaw and converts that probability measure to PMF. The product atom formula and all-zero mass (1-p)^N are derived, not premises.",
+    "randomization": "rule : Record N -> PMF Bool is an arbitrary record-dependent randomized kernel fixed before and across p; certificationProbability is its actual bind with trainingLaw.",
+    "boundaries": "Atom/zero-source/lower-bound identities allow N=0. The final existence and uniform no-go endpoints explicitly require N>0 and alpha>=0. No separate alpha<1 assumption is needed: the nontrivial power premise implies alpha<rho<=1; otherwise the uniform conclusion is trivial.",
+    "explicit_positive_source": "For rho>alpha>=0, p=(rho-alpha)/(2*rho*N) is proved strictly between 0 and 1. Bernoulli inequality and the derived all-zero contribution yield false certification>alpha. The uniform theorem is the contrapositive.",
+    "no_conclusion_as_input": true,
+    "migration": "Only the namespace/header, unused response_true_mass lemma, and #print diagnostics differ from the previously reviewed temporary draft; the eight retained proof bodies and definitions are unchanged.",
+    "semantic_reuse": "Reuses product sampling, the existing Bernoulli PMF row, PMF bind finite-sum semantics and the standard Bernoulli inequality. It does not rebrand the old deployment survival law as a sampling law or claim independent mathematical novelty.",
+    "limit": "A one-sided exact-zero/absent-edge certificate for fixed N and a source-independent rule. No claim about arbitrary sequential stopping or impossibility of certifying a positive edge after observing it."
+  },
+  "witness_completed_scope": {
+    "status": "CLEAR_FOR_REVIEWED_STRUCTURAL_PART_ONLY",
+    "declarations": [
+      "relation",
+      "certification",
+      "program",
+      "input_check",
+      "synthesis_returns_program",
+      "parameter",
+      "source",
+      "actualSource",
+      "initial_support_exact",
+      "source_support_exact",
+      "initial_safe",
+      "relation_safe",
+      "returned_program_all_times_safe"
+    ],
+    "checks": "Both theta values 1/4 and 3/4 realize the same declared R. Initial support and source support are proved from the actual PMFs. Both observation choices have actual successful R1 synthesis. The proper safe set is the old ExecutableSupportControllerWitness.safe, and the physical-safety theorem is instantiated for this new program and its own actual source law.",
+    "full_file_hash_frozen": false,
+    "excluded": "The in-progress Noisy core and WIT computation/sampling/finite-risk API were not reviewed or certified."
+  },
+  "execution": "Read-only source review; no Lean/test runs, repository edits, native novelty checks or spawned agents."
+}
