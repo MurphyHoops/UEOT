@@ -9,7 +9,25 @@
   "max_active_mutating_tracks": 4,
   "main_only_cross_track_dependencies": true,
   "cross_track_integration_gate": "open",
-  "l2_existing_path_exceptions": [],
+  "l2_existing_path_exceptions": [
+    {
+      "exception_id": "TC-CONDITIONAL-STABILITY-EVIDENCE-2026-10-28",
+      "track": "TC",
+      "branch_patterns": [
+        "^compression/theory-completion-conditional-stability$"
+      ],
+      "paths": [
+        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/UMC_GLOBAL_MODULE_DAG_V4.json",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
+        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py"
+      ],
+      "reason": "Continue mathematical closure audit 2026-10-26 section 10.4 with sharp same-event conditional total-variation stability, a fixed-record R2 calibration consumer and actual finite sharpness/no-go witnesses. Production integration appends one compiler-certified reuse overlay and refreshes the current source DAG/navigation/consumer census in these exact six existing paths. New additive assets cannot update their pinned registries. Existing Lean declarations, prior imports, frozen/counting surfaces, historical overlays, native receipts and clone rows remain unchanged; only additive TheoryCompletion root imports are allowed by existing L1 policy. This exception authorizes evidence integration, not any broader semantic claim or validator change.",
+      "temporary": true
+    }
+  ],
   "governed_path_prefixes": [
     "formalization/ueot-core/UEOT/V3/Compression/",
     "formalization/ueot-core/docs/compression/",
