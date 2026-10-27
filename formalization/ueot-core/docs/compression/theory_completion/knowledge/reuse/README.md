@@ -8,9 +8,9 @@ The existing FKRG cache remains useful for broad keyword/module search.
 This supplement adds real proof-term direct dependencies, verified same-type
 theorem peers, source copies, and a read-only scientific-role distinction.
 
-The current sixteen-layer census is **703 modules = 692 UEOT-maintained + 11
-adapted upstream**, with **4,474 registered public theorem nodes** and
-**5,926 registered direct proof edges**. The layer-by-layer counts below
+The current seventeen-layer census is **708 modules = 697 UEOT-maintained + 11
+adapted upstream**, with **4,504 registered public theorem nodes** and
+**5,966 registered direct proof edges**. The layer-by-layer counts below
 retain each historical scope.
 
 ## Governed overlay chain
@@ -1367,6 +1367,84 @@ and resulting-main checks retain separate command receipts. Counted classificati
 remain unchanged; strong global closure is `NOT_ESTABLISHED` and external evidence
 is `UNVERIFIED`. Infinite-horizon survival is not a conclusion of this layer.
 
+### Layer 17 — action realizability, gauge classification and conditioned transport
+
+This layer is based on `dd6ab2d4696ce4fa7824baa2faeb993069ee8787`
+and frozen source fingerprint `9a90676af4c234eee2121ac75c0e127f2dd87370e727e5e7189ea99b4b377530`.
+Five modules add **30 registered public source theorems** and
+**40 direct registered edges**.
+
+| Evidence | SHA-256 |
+| --- | --- |
+| [Complete native export](ACTION_GAUGE_TRANSPORT_NATIVE_V1.json) | `0d47202668032dddb912fce8974606caefecbfd56435d7bc9cbe169af4905a1a` |
+| [Fixed Lean certificate](VERIFY_ACTION_GAUGE_TRANSPORT_OVERLAY_TYPES.lean) | `5fe6bf1fc8653e6f552b916aeac4448b4eea0804c9254a6ab58c0bdb00f0cdfb` |
+| [Registered overlay](ACTION_GAUGE_TRANSPORT_REUSE_OVERLAY_V1.json) | `513330a6d41bc67dc26e03611299013cdf66d5907d39de68a392469413d6e351` |
+
+The complete native census retains **93 owned theorem constants:
+30 public source candidates, 37 private constants and
+26 other public native constants**. Actual owners, stored
+universes, displayed types, full direct constants, direct theorem constants and
+standard-only transitive axiom closures are retained. Compiler ownership can
+depend on import order; other-public constants are not automatically new source
+declarations or independent mathematical results. Public stored types underwent
+**134,220 cross-layer** comparisons against 4,474 prior
+registrations and **435 internal** `Meta.isDefEq` comparisons,
+with zero collisions. The fixed exporter reproduces the initial native export.
+These checks do not prove general logical independence.
+
+The current graph contains **4,504 nodes and 5,966 direct
+edges**, including **711 overlay nodes and 1079 outgoing
+overlay edges**. The historical old-node repair remains separate. The 3
+new lexical hint groups bring their total to **180**. Lexical hints
+are distinct from compiled dependencies and independent mathematical review.
+
+`FiniteActionRealizability` converts an actual `PMF.bind` over allowed actions
+to finite real convex combinations and proves both directions of implementation
+iff convex-hull membership. Its observation criterion uses a single mixture of
+entire row families on each observation fiber. Existing actual action/state path
+identities supply the whole-path consumer. All causal transition schemes keep
+the initial record marginal, giving a TV lower bound from any initial mismatch.
+
+`FiniteActionRealizabilityWitness` conditions the existing singleton-action
+three-state source row, rather than choosing an independent target. Its strict
+best possible errors are `1/4` and `3/4`; the target is outside the old action
+hull. Keeping the old action while adding two deterministic safe actions permits
+the same target through fair randomization, but no deterministic member suffices.
+Two hidden states can each be feasible while their aliased current observation
+admits no common action mixture. In the original path witness, the conditional
+initial tilt alone forces at least `1/4` error for every future causal kernel
+started from the unchanged initial law.
+
+`ConditionedActionTransport` constructs a time-dependent current-observation
+policy from convex feasibility on target-occupied fibers. Erasing actions from
+its actual experiment yields the previously constructed total conditional path
+of the same source, with the correctly prepared survival-tilted initial law.
+Unoccupied and null rows impose no feasibility obligation. An explicit model
+with every deterministic state-selection action proves its own feasibility and
+therefore implements every declared positive finite conditional window. These
+are finite-horizon operational transport claims. They do not assert ontic parent
+equality, autonomous initial-law preparation, or a no-go for informative memory.
+
+`DualDriveLinearGaugeClassification` proves that two exact nondegenerate linear
+factorizations of the same complete response differ by one unique invertible
+latent map. Surjective encoders and injective decoders are explicit hypotheses;
+the theorem applies to GL(2) on the existing `TwoDriveLatent` instance. It does not
+turn a noisy rank estimate or rank upper bound into exact nondegeneracy.
+`DualDriveOperationalAnchors` classifies the residual labelled-axis and oriented-ray
+scales, proves identification from two independently unit-calibrated input
+interventions, and retains one-anchor shear and uncalibrated-scaling witnesses.
+The operational calibration premises are not inferred from the fitted response;
+physical axis meanings and empirical selective interventions remain external.
+
+Registration preserves raw execution bytes and adds only lexical preflight and
+registration provenance. All sixteen earlier overlays, native exports and fixed
+certificates, the historical equal/near-type artifacts and the 68-row clone table
+remain immutable. Four added regressions inspect native ownership and edges,
+actual action/initial-law/C4 proof routes, inverse-classification and anchor routes,
+and registration provenance. Actual command receipts remain separate. Counted
+classifications stay unchanged; strong global closure is `NOT_ESTABLISHED` and
+external scientific evidence is `UNVERIFIED`.
+
 ## Run from repository root
 
     P=formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse
@@ -1383,22 +1461,22 @@ is `UNVERIFIED`. Infinite-horizon survival is not a conclusion of this layer.
 Run the new native certificate from `formalization/ueot-core` after building
 the public imports with the pinned toolchain:
 
-    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_CONDITIONAL_STABILITY_OVERLAY_TYPES.lean
+    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_ACTION_GAUGE_TRANSPORT_OVERLAY_TYPES.lean
 
 ## Strongly typed and provenance-limited evidence
 
 - 633 immutable-base source modules = 622 UEOT-maintained + 11 adapted upstream modules;
-  sixteen governed overlays extend the live census to 703 = 692 + 11.
-- 3,793 immutable-base public source theorem proofs + 681 governed registrations
-  (including one historical public-name repair) = 4,474 live graph nodes, with
-  5,926 direct registered-source theorem
+  seventeen governed overlays extend the live census to 708 = 697 + 11.
+- 3,793 immutable-base public source theorem proofs + 711 governed registrations
+  (including one historical public-name repair) = 4,504 live graph nodes, with
+  5,966 direct registered-source theorem
   references. The historical four overlays add 0, 3, 6 and 73 certified direct edges;
   the fifth adds 91, the sixth adds 98, and the seventh adds 163 certified direct edges.
   The eighth adds 97 edges from new registrations and one certified old-node repair.
   The ninth adds 149 edges, the tenth adds 47, the eleventh adds 114 and the
   twelfth adds 27, the thirteenth adds 60, the fourteenth adds 63 and the
-  fifteenth adds 29 and the sixteenth adds 19, giving
-  1039 outgoing edges from overlay nodes;
+  fifteenth adds 29, the sixteenth adds 19, and the seventeenth adds 40, giving
+  1079 outgoing edges from overlay nodes;
   the old-node repair remains a separate addition.
 - 37 equal-type groups / 77 names. The original audit checked 40/40
   representative-to-peer theorem type pairs via Lean Meta.isDefEq. Here
@@ -1416,7 +1494,7 @@ the public imports with the pinned toolchain:
   12 spans reach 15 lines. This is a text-copy candidate index, NOT
   a proof-equivalence decision procedure. The historical 646-module recomputation
   preserved all 68 historical rows exactly, with no added or missing rows.
-  The current scanner recomputes all 703 modules and rejects any difference
+  The current scanner recomputes all 708 modules and rejects any difference
   from that immutable result; its actual command result establishes whether
   the current-source scan passes. The historical snapshot alone does not.
 
@@ -1449,7 +1527,7 @@ the pinned Lean compiler/dependency environment (lean-toolchain,
 lakefile.lean and lake-manifest.json including the pinned Mathlib revision),
 the exact set of live Lean source paths (including detecting ANY newly added
 or deleted module), and all immutable-base source hashes plus the governed
-overlay-chain hashes against the exact 703-module live source census. It refuses to
+overlay-chain hashes against the exact 708-module live source census. It refuses to
 answer if any source or metadata changed. A docs-only Git commit does
 not spuriously make a valid source snapshot stale.
 

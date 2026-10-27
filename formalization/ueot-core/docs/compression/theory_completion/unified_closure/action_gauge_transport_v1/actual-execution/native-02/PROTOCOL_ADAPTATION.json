@@ -1,0 +1,45 @@
+{
+  "schema": "ACTION_GAUGE_TRANSPORT_PROTOCOL_ADAPTATION_V1",
+  "kind": "integration_native",
+  "baseline_ref": "dd6ab2d4696ce4fa7824baa2faeb993069ee8787",
+  "frozen_inputs_sha256": "c0a5a6bb8f44e95603f17c3fbea7a2aa7d9e5f48bacc1c70ec4e83eb5677841b",
+  "source_tree_sha256": "9a90676af4c234eee2121ac75c0e127f2dd87370e727e5e7189ea99b4b377530",
+  "immutable_driver": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/longterm_control_statistics_v1/native_protocol/integration_native.py",
+    "sha256": "d4708782bbb14360002f119715ba51f96c05e2e632694ba64c56c3d38ce8a924"
+  },
+  "executed_source_sha256": "7c817c359c9dd4adef50c7dfd6af5ea5854ece8ecb5c8d2d41017882f877de45",
+  "substitutions": [
+    {
+      "old": "\"LONGTERM_ACTUAL_FULL_BUILD_V1\"",
+      "new": "\"ACTION_GAUGE_TRANSPORT_ACTUAL_FULL_BUILD_V1\"",
+      "occurrences": 1
+    },
+    {
+      "old": "NAME = \"LONGTERM_CONTROL_STATISTICS\"",
+      "new": "NAME = \"ACTION_GAUGE_TRANSPORT\"",
+      "occurrences": 1
+    },
+    {
+      "old": "PRIOR_MODULES, PRIOR_THEOREMS, PRIOR_OVERLAYS = 666, 4147, 8",
+      "new": "PRIOR_MODULES, PRIOR_THEOREMS, PRIOR_OVERLAYS = 703, 4474, 16",
+      "occurrences": 1
+    },
+    {
+      "old": "\"UNCOUNTED_SAME_SOURCE_LONGTERM_POLICY_AND_ROWWISE_SISC\"",
+      "new": "\"UNCOUNTED_ACTION_REALIZABILITY_GAUGE_AND_CONDITIONED_TRANSPORT\"",
+      "occurrences": 1
+    },
+    {
+      "old": "    exporter = helper.render_export(prior, public, modules, [])",
+      "new": "    exporter = helper.render_export(prior, public, modules, [])\n    exporter = exporter.replace(\"set_option maxHeartbeats 0\",\n        \"set_option maxHeartbeats 0\\nset_option maxRecDepth 16384\")",
+      "occurrences": 1
+    }
+  ],
+  "wrapper": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/native_protocol/integration_native.py",
+    "sha256": "69f7f2fec01b8e9f8a64f548378c0bd56bd2a0c1aff0f5565c725a4ea0d146d4"
+  },
+  "adapter_sha256": "cc579078f685560ef81b47d3090c7346a0225f61ac81e2a7b4a6eae9421e1c4c",
+  "claim": "Only listed scope/schema/metadata and export recursion-limit substitutions; actual execution, full census, raw-type comparisons, fixed-edge replay, and source/runtime identity gates remain in the executed predecessor code."
+}

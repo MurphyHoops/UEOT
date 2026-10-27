@@ -1,0 +1,31 @@
+diff --git a/formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json b/formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json
+index 57d13ff4..082c2e48 100644
+--- a/formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json
++++ b/formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json
+@@ -9,7 +9,25 @@
+   "max_active_mutating_tracks": 4,
+   "main_only_cross_track_dependencies": true,
+   "cross_track_integration_gate": "open",
+-  "l2_existing_path_exceptions": [],
++  "l2_existing_path_exceptions": [
++    {
++      "exception_id": "TC-ACTION-GAUGE-TRANSPORT-EVIDENCE-2026-10-28",
++      "track": "TC",
++      "branch_patterns": [
++        "^compression/theory-completion-action-gauge$"
++      ],
++      "paths": [
++        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/UMC_GLOBAL_MODULE_DAG_V4.json",
++        "formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md",
++        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
++        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
++        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
++        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py"
++      ],
++      "reason": "Close the user-requested action-realizability, nondegenerate linear gauge classification and operational-anchor increments, with a concrete finite conditioned-path transport consumer. Production integration appends one compiler-certified reuse overlay and refreshes the current source DAG, navigation and consumer census in exactly these six existing paths. Additive assets cannot update their pinned registries. Existing Lean declarations, prior imports, frozen/counting surfaces, historical overlays, native receipts and clone rows remain unchanged. Only additive TheoryCompletion root imports use the existing L1 exception. This temporary record authorizes evidence integration, not validator changes or stronger global/scientific claims.",
++      "temporary": true
++    }
++  ],
+   "governed_path_prefixes": [
+     "formalization/ueot-core/UEOT/V3/Compression/",
+     "formalization/ueot-core/docs/compression/",

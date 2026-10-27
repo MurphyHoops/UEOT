@@ -1,0 +1,258 @@
+{
+  "schema": "UEOT_ACTION_GAUGE_INDEPENDENT_TYPED_REUSE_REVIEW_V1",
+  "reviewer": "/root/independent_review",
+  "verdict": "CLEAR_FOR_REVIEWED_TYPED_COMPARISONS_ONLY",
+  "publication_clearance": false,
+  "candidate_scope": "FIRST_SCIENTIFIC_SOURCE_CANDIDATE",
+  "baseline_ref": "dd6ab2d4696ce4fa7824baa2faeb993069ee8787",
+  "source_tree_sha256": "442e455f2153bc11ebe2785a0e2f76b00580051c085f07dd4ec0fb9d75b65908",
+  "new_source_public_count": 30,
+  "typed_old_count": 28,
+  "typed_total_count": 58,
+  "all_new_public_types_compared_to_actual_native": true,
+  "all_new_types_owner_and_axioms_exact_match": true,
+  "review_basis": "Actual Lean-stored types, actual compiler module ownership, native proof constants, and source proof semantics. Author classifications were treated as suggestions, not accepted verdicts.",
+  "evidence": [
+    {
+      "path": "actual-review/TYPED_REUSE_ACTUAL.json",
+      "sha256": "a8de800849e28d15ce2ddf9a11463f9f5959fce480ad5b582672750dae00a8b9"
+    },
+    {
+      "path": "actual-review/TYPED_REUSE_ACTUAL.lean",
+      "sha256": "31108e0ba7dfafa546efedec6a5a6f66ca14d03945b7ecb3fbc498bb9b48c5f4"
+    },
+    {
+      "path": "actual-review/TYPED_REUSE_ACTUAL_V2.lean",
+      "sha256": "3b6c8d4551df0a8d5eb22dd9ac6c0655fcb83b86fd8b31de078669a279361aaa"
+    },
+    {
+      "path": "actual-review/typed-reuse-actual-01.log",
+      "sha256": "ffcab4630bee60fe466c0cc9bf1a7b4859ec5479636158c44b2162fa53f6b9e7"
+    },
+    {
+      "path": "actual-review/typed-reuse-actual-02.log",
+      "sha256": "37c8862afcbfa0a45f193b97f03897a5c4f592123eaaea1aa7199baa181bf296"
+    },
+    {
+      "path": "actual-review/TYPED_LEXICAL_HINT_EXTRA.json",
+      "sha256": "f0b3076622749a07b141316aba3935ece15e252c539a6e5c2b38185d3d6a17fa"
+    },
+    {
+      "path": "actual-review/TYPED_LEXICAL_HINT_EXTRA.lean",
+      "sha256": "60ec59517cec5815007c892971616e7e15abc910e98c797163fe5ad799a6c2a8"
+    },
+    {
+      "path": "actual-review/typed-lexical-extra.log",
+      "sha256": "ff649ae8e5aed4e2682678f049bc8a233731cddce39dfa5ca7e2f1843b437763"
+    },
+    {
+      "path": "actual-review/native-01/ACTION_GAUGE_TRANSPORT_NATIVE_V1.json",
+      "sha256": "6eaaa452fcd6412d4b863dc5c820c197af2ab5604f5a2f741e9c46220484f0f4"
+    },
+    {
+      "path": "actual-review/native-01/development_lexical_reuse_hints.json",
+      "sha256": "69f70459f44dfa522d36107d69d9fadeb591369b7111a485117570e501a045e5"
+    }
+  ],
+  "failed_first_extraction": {
+    "preserved": true,
+    "reason": "Lean parse error: unexpected token 'matches'; expected '(', ':=', 'rec', '|', identifier or term",
+    "successful_revision": "V2 changes the local variable to candidates; no theorem statement or proof was altered by this extraction repair."
+  },
+  "resolved_names": {
+    "private_helper": "_private.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePMFProjection.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_bind_apply_toReal",
+    "private_resolution": "Actual environment unique suffix match; exact compiler private name, type, owner and axioms stored.",
+    "namespace_correction": {
+      "requested": "UEOT.V3.FiniteDiscountedControl.policyTransitionPMF_apply_toReal",
+      "actual": "UEOT.V3.CoreOperationalAssembly.policyTransitionPMF_apply_toReal"
+    },
+    "missing_lexical_candidate_completed": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.actual_state_prefix_eq"
+  },
+  "groups": [
+    {
+      "id": "PMF_CONVEX_REPRESENTATION",
+      "new": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.realRow_actionMixture",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.pmf_barycenter_exists_iff_mem_convexHull",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.row_realizable_iff_mem_convexHull"
+      ],
+      "old": [
+        "PMF.bind_apply",
+        "mem_convexHull_of_exists_fintype",
+        "convexHull_range_eq_exists_affineCombination",
+        "UEOT.V3.FiniteDiscountedControl.FiniteProbabilityRow.ofRealRow_apply_toReal",
+        "_private.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePMFProjection.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_bind_apply_toReal"
+      ],
+      "classification": "STANDARD_ADAPTER_AND_PUBLIC_IMPLEMENTABILITY_INTERFACE",
+      "analysis": "realRow_actionMixture is the same finite bind-coordinate identity as the old private risk_bind_apply_toReal, expressed as equality of real-valued functions and a finite barycenter. It is not an independent mathematical principle. The barycenter theorem adapts Mathlib finite convex combinations to PMF weights. The final iff packages this representation into the explicit allowed-action question; it neither assumes feasibility nor enlarges the action set."
+    },
+    {
+      "id": "COMMON_OBSERVATION_FIBER",
+      "new": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.observation_realizable_iff_fiber_convexHull",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.separately_feasible_hidden_rows",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.no_common_policy_for_aliased_rows"
+      ],
+      "old": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.EmptyCommonAction.each_state_has_a_certified_action",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.EmptyCommonAction.no_common_certified_action",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportStrictWitness.whole_current_fiber_has_no_common_action"
+      ],
+      "classification": "EXACT_RANDOMIZED_ROW_INTERFACE_AND_REFINEMENT_OF_KNOWN_COMMON_ACTION_OBSTRUCTION",
+      "analysis": "The old predicates distinguish pointwise deterministic certification from one certified action on a fiber. The new iff concerns actual PMF row equality with a single randomized action PMF on a whole function-valued observation fiber. The Bool witness strengthens the semantic realization of the same obstruction phenomenon by allowing all action PMFs. It is not a newly discovered generic no-go, and it does not rule out informative memory."
+    },
+    {
+      "id": "STATIONARY_ACTUAL_ACTION_PATH",
+      "new": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.stationary_row_eq_actionMixture",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.actual_next_state_eq_target",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.actual_state_path_eq_target"
+      ],
+      "old": [
+        "UEOT.V3.CoreOperationalAssembly.policyTransitionPMF_apply_toReal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.actual_next_state_eq_stationary_row",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.actual_state_path_eq_stationary_path",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.actual_state_prefix_eq"
+      ],
+      "classification": "DERIVED_SOURCE_CONSUMERS",
+      "analysis": "The old bridge identifies action-erased state laws with the stationary model mixture. New statements consume explicit equality of the original action mixtures to an independently specified target row and conclude target next-state/full-path equality. The finite-memory old theorem instead identifies finite prefixes of the actual experiment with marginals of its infinite trajectory measure. It has no target-row realizability certificate and is not an equivalent target implementation theorem. These are source-identity consumers, not independent underlying path principles."
+    },
+    {
+      "id": "INITIAL_MARGINAL_OBSTRUCTION",
+      "new": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.causalLaw_initial_marginal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.path_implementation_requires_initial",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.initial_tv_le_path_tv",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.actual_conditioning_changes_initial_tv",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.unchanged_initial_forces_path_error"
+      ],
+      "old": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.pmfExtend_map_fst",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.causalLaw_map_prefix",
+        "UEOT.V3.TotalVariation.tvDist_map_le",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_initial_mass",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.conditioned_safe_atom",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_conditioned_doob_tv"
+      ],
+      "classification": "PREFIX_AND_DATA_PROCESSING_CONSUMERS_WITH_CONCRETE_INITIAL_LAW_OBSTRUCTION",
+      "analysis": "The general initial invariant follows by iterating the existing prefix projection. Its TV inequality consumes the existing data-processing theorem. The witness computes the actual conditioned initial marginal and obtains a lower bound for every future history-dependent kernel with unchanged initial law. The old finite-window formula gives general survival tilting, and the older 1/4 theorem compares two full paths; equal numeric constants do not make these the same statement."
+    },
+    {
+      "id": "ACTUAL_ALLOWED_ACTION_WITNESSES",
+      "new": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.original_actions_have_irreducible_conditional_error",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.conditional_row_outside_original_action_hull",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.added_safe_actions_realize_conditional_row",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.deterministic_extended_action_does_not_realize"
+      ],
+      "old": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.mass_mul_conditioned_atom",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.conditioned_safe_atom",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_conditioned_doob_tv"
+      ],
+      "classification": "NEW_EXACT_WITNESSES_ON_REUSED_SOURCE_MODEL",
+      "analysis": "The conditional target is obtained by filtering the original transition row. Original singleton actions have universal randomized TV errors 1/4 or 3/4 and hence violate the action hull criterion. The positive family explicitly retains the original action and adds two safe pure actions; their mixture implements the target although none of the three deterministic members does. The pre-existing conditioned-pair-vs-Doob-pair discrepancy is about different objects and has no quantification over allowed action mixtures."
+    },
+    {
+      "id": "OCCUPIED_CONDITIONED_PATH_TRANSPORT",
+      "new": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.time_action_state_path_eq_mixture",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.occupied_fibers_supply_actual_path",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.occupied_conditioned_fibers_supply_actual_experiment",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.state_selection_realizes_its_conditioned_path"
+      ],
+      "old": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.actual_next_state_eq_stationary_row",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.actual_state_path_eq_stationary_path",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_ambient_eq_actual",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_tv_bind_same_weights"
+      ],
+      "classification": "TIME_INDEXED_OCCUPIED_FIBER_CONSUMER_AND_EXPLICIT_FULL_ACTUATOR_MODEL",
+      "analysis": "The old stationary bridge is reused one time slice at a time. Target-support induction and the new common-fiber criterion produce an actual time-dependent observation controller on original rows. Prior total finite-window source identity supplies exact equality to the original conditioned path. The last theorem constructs feasibility for a stated state-selection capability. General residual compatibility, arbitrary source P_t, parent formation and lineage are not established."
+    },
+    {
+      "id": "INVERSE_LINEAR_GAUGE_CLASSIFICATION",
+      "new": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.nondegenerate_linear_factorization_unique_gauge",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_linear_response_iff_unique_gauge"
+      ],
+      "old": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.latent_GL2_reparameterization_preserves_all_responses",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_objective_iff_gauge_related",
+        "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC.third_singular_zero_of_rank_le_two",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.fixed_injective_latent_decoder_identifies_latents"
+      ],
+      "classification": "CONVERSE_WITH_UNIQUE_LINEAR_EQUIVALENCE_IN_EXPLICIT_NONDEGENERATE_CLASS",
+      "analysis": "The prior GL theorem takes the latent coordinate change as an input and proves forward invariance for arbitrary maps. The new theorem derives a unique invertible linear coordinate change from equal linear responses under surjective encoders and injective decoders. The scalar objective gauge is additive and does not classify two unknown linear factorizations. A singular-value rank upper bound is not this factorization theorem; a fixed decoder theorem assumes the decoder is already shared."
+    },
+    {
+      "id": "OPERATIONAL_ANCHOR_LADDER",
+      "new": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.labelled_axis_lines_iff_nonzero_diagonal_gauge",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.oriented_axis_rays_iff_positive_diagonal_gauge",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.two_unit_anchors_identify_gauge",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.registered_unit_interventions_identify_factorization",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.one_unit_anchor_leaves_nontrivial_gauge",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.two_oriented_axes_do_not_identify_units"
+      ],
+      "old": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.fixed_injective_latent_decoder_identifies_latents",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.pi_identified_of_phi_anchor",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.phi_identified_of_pi_anchor",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.two_drive_GL2_gauge_is_nontrivial"
+      ],
+      "classification": "EXACT_STABILIZER_CLASSIFICATION_AND_TWO_COMMON_INPUT_CALIBRATION_CONSUMER",
+      "analysis": "The old scalar anchors assume equality of an entire unknown function, or assume the same known injective decoder. New interventions constrain two common input values only; they derive encoder surjectivity and consume the unique inverse classification to identify both factors. Labelled lines, oriented rays and calibrated unit vectors leave distinct residual groups, with explicit counterexamples for insufficient calibration. No empirical availability or physical meaning of the anchors is inferred."
+    }
+  ],
+  "lexical_hint_coverage": {
+    "groups": 3,
+    "pairs": 5,
+    "all_pairs_actual_compiled_types_reviewed": true,
+    "pairs_reviewed": [
+      {
+        "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.actual_next_state_eq_target",
+        "old": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.actual_next_state_eq_stationary_row",
+        "classification": "DERIVED_TARGET_ROW_CONSUMER",
+        "group": "STATIONARY_ACTUAL_ACTION_PATH"
+      },
+      {
+        "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.actual_next_state_eq_target",
+        "old": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.actual_state_prefix_eq",
+        "classification": "DIFFERENT_TARGET_REALIZATION_VS_INFINITE_PREFIX_PROJECTION",
+        "group": "STATIONARY_ACTUAL_ACTION_PATH"
+      },
+      {
+        "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.actual_state_path_eq_target",
+        "old": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.actual_state_path_eq_stationary_path",
+        "classification": "DERIVED_TARGET_PATH_CONSUMER",
+        "group": "STATIONARY_ACTUAL_ACTION_PATH"
+      },
+      {
+        "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.actual_state_path_eq_target",
+        "old": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.actual_state_prefix_eq",
+        "classification": "DIFFERENT_TARGET_REALIZATION_VS_INFINITE_PREFIX_PROJECTION",
+        "group": "STATIONARY_ACTUAL_ACTION_PATH"
+      },
+      {
+        "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.actual_conditioning_changes_initial_tv",
+        "old": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_initial_mass",
+        "classification": "CONCRETE_TV_WITNESS_CONSUMES_GENERAL_SURVIVAL_TILT_PHENOMENON",
+        "group": "INITIAL_MARGINAL_OBSTRUCTION"
+      }
+    ]
+  },
+  "non_equivalence_claim_limits": [
+    "Zero raw stored-type isDefEq collisions does not prove general logical or mathematical independence.",
+    "Lexical matches alone neither prove duplication nor prove novelty.",
+    "30 public theorem declarations include wrappers, adapters and consumers, and are not counted as 30 new independent scientific principles.",
+    "The exact realRow bind helper is acknowledged as the same mathematics as the previous private helper."
+  ],
+  "outstanding_consumer_findings": {
+    "source": "Root actual execution update, 2026-10-28 work session; full logs pending transfer.",
+    "tests": "78 executed; 2 failures reported, including an assertion expecting textual comp while native pretty-print uses ∘ₗ.",
+    "clone_scan": "69 candidates reported against historical 68; new pair under investigation.",
+    "review_effect": "No final publication/merge clearance. A source or consumer revision requires a new candidate binding and actual evidence; preserve this first snapshot and failed runs."
+  },
+  "git_exact_head_review": "PENDING_SEPARATE_CANDIDATE"
+}

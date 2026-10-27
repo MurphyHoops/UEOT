@@ -1,0 +1,30 @@
+✖ [3255/3255] Building UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveLinearGaugeClassification (3.3s)
+trace: .> LEAN_PATH=/Users/murphyhoops/Documents/ueotlean-worktrees/statistical-risk-20261020/formalization/ueot-core/.lake/packages/Cli/.lake/build/lib/lean:/Users/murphyhoops/Documents/ueotlean-worktrees/statistical-risk-20261020/formalization/ueot-core/.lake/packages/batteries/.lake/build/lib/lean:/Users/murphyhoops/Documents/ueotlean-worktrees/statistical-risk-20261020/formalization/ueot-core/.lake/packages/Qq/.lake/build/lib/lean:/Users/murphyhoops/Documents/ueotlean-worktrees/statistical-risk-20261020/formalization/ueot-core/.lake/packages/aesop/.lake/build/lib/lean:/Users/murphyhoops/Documents/ueotlean-worktrees/statistical-risk-20261020/formalization/ueot-core/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/murphyhoops/Documents/ueotlean-worktrees/statistical-risk-20261020/formalization/ueot-core/.lake/packages/importGraph/.lake/build/lib/lean:/Users/murphyhoops/Documents/ueotlean-worktrees/statistical-risk-20261020/formalization/ueot-core/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/murphyhoops/Documents/ueotlean-worktrees/statistical-risk-20261020/formalization/ueot-core/.lake/packages/plausible/.lake/build/lib/lean:/Users/murphyhoops/Documents/ueotlean-worktrees/statistical-risk-20261020/formalization/ueot-core/.lake/packages/mathlib/.lake/build/lib/lean:/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/.lake/build/lib/lean /Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean /Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveLinearGaugeClassification.lean -o /Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/.lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveLinearGaugeClassification.olean -i /Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/.lake/build/lib/lean/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveLinearGaugeClassification.ilean -c /Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/.lake/build/ir/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveLinearGaugeClassification.c --setup /Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/.lake/build/ir/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveLinearGaugeClassification.setup.json --json
+error: UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveLinearGaugeClassification.lean:68:19: unsolved goals
+X : Type uX
+L : Type uL
+Y : Type uY
+inst✝⁵ : AddCommGroup X
+inst✝⁴ : Module ℝ X
+inst✝³ : AddCommGroup L
+inst✝² : Module ℝ L
+inst✝¹ : AddCommGroup Y
+inst✝ : Module ℝ Y
+H H' : X →ₗ[ℝ] L
+G G' : L →ₗ[ℝ] Y
+hH : Function.Surjective ⇑H
+hH' : Function.Surjective ⇑H'
+hG : Function.Injective ⇑G
+hG' : Function.Injective ⇑G'
+hJ : G ∘ₗ H = G' ∘ₗ H'
+f : L → L := fun z => H' (Classical.choose ⋯)
+g : L → L := fun z => H (Classical.choose ⋯)
+hf : ∀ (z : L), G' (f z) = G z
+hg : ∀ (z : L), G (g z) = G' z
+c : ℝ
+z : L
+⊢ c • G z = (RingHom.id ℝ) c • G z
+error: Lean exited with code 1
+Some required targets logged failures:
+- UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveLinearGaugeClassification
+error: build failed

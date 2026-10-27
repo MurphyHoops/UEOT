@@ -1,0 +1,40 @@
+{
+  "state": "PASS_PENDING_INDEPENDENT_REVIEW_AND_REGISTRATION",
+  "baseline_ref": "dd6ab2d4696ce4fa7824baa2faeb993069ee8787",
+  "build_receipt_sha256": "aa1ab0b686c7146d62c7b41f7168e11508ec34b203b84ed2a9220f05d032e362",
+  "results": [
+    {
+      "label": "native_export",
+      "command": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/native-02/ACTION_GAUGE_TRANSPORT_NATIVE_EXPORT.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 57.45,
+      "log_sha256": "d5bcdbce76f87fda9615c6ab18d62c857302086e98549a6bf68f3fab69a316ab"
+    },
+    {
+      "label": "fixed_verifier",
+      "command": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/native-02/VERIFY_ACTION_GAUGE_TRANSPORT_OVERLAY_TYPES.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 56.129,
+      "log_sha256": "d5bcdbce76f87fda9615c6ab18d62c857302086e98549a6bf68f3fab69a316ab"
+    }
+  ],
+  "summary": {
+    "modules": 5,
+    "public_source_theorems": 30,
+    "native_constants": 93,
+    "registered_edges": 40,
+    "overlay_sha256": "e898a75dc7494787b6ae73b4f3efe78795c96c316c1176bd6d30d3919911a7f8",
+    "verifier_sha256": "5fe6bf1fc8653e6f552b916aeac4448b4eea0804c9254a6ab58c0bdb00f0cdfb",
+    "native_sha256": "0d47202668032dddb912fce8974606caefecbfd56435d7bc9cbe169af4905a1a"
+  }
+}

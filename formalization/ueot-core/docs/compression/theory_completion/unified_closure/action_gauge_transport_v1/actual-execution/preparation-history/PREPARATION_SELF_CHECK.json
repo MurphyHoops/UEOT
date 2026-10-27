@@ -1,0 +1,144 @@
+{
+  "schema": "ACTION_GAUGE_TRANSPORT_PREPARATION_SELF_CHECK_V1",
+  "state": "PASS_PREPARATION_ONLY_NO_LEAN_NO_NATIVE_EXECUTION",
+  "checked_at_utc": "2026-10-27T19:11:59.977814+00:00",
+  "authorship": "integration_helper_author_self_check_not_independent_review",
+  "synthetic_inputs": true,
+  "actual_production_execution": false,
+  "checks": {
+    "adaptations": [
+      {
+        "kind": "full_build",
+        "synthetic_public": 30,
+        "synthetic_hints": 0,
+        "preserved_gates": {
+          "asserts": 0,
+          "requires": 0
+        },
+        "substitutions": 1
+      },
+      {
+        "kind": "integration_native",
+        "synthetic_public": 30,
+        "synthetic_hints": 0,
+        "preserved_gates": {
+          "asserts": 44,
+          "requires": 0
+        },
+        "substitutions": 5
+      },
+      {
+        "kind": "register_overlay",
+        "synthetic_public": 30,
+        "synthetic_hints": 0,
+        "preserved_gates": {
+          "asserts": 0,
+          "requires": 61
+        },
+        "substitutions": 11
+      },
+      {
+        "kind": "full_build",
+        "synthetic_public": 31,
+        "synthetic_hints": 4,
+        "preserved_gates": {
+          "asserts": 0,
+          "requires": 0
+        },
+        "substitutions": 1
+      },
+      {
+        "kind": "integration_native",
+        "synthetic_public": 31,
+        "synthetic_hints": 4,
+        "preserved_gates": {
+          "asserts": 44,
+          "requires": 0
+        },
+        "substitutions": 5
+      },
+      {
+        "kind": "register_overlay",
+        "synthetic_public": 31,
+        "synthetic_hints": 4,
+        "preserved_gates": {
+          "asserts": 0,
+          "requires": 61
+        },
+        "substitutions": 11
+      },
+      {
+        "kind": "full_build",
+        "synthetic_public": 1,
+        "synthetic_hints": 1,
+        "preserved_gates": {
+          "asserts": 0,
+          "requires": 0
+        },
+        "substitutions": 1
+      },
+      {
+        "kind": "integration_native",
+        "synthetic_public": 1,
+        "synthetic_hints": 1,
+        "preserved_gates": {
+          "asserts": 44,
+          "requires": 0
+        },
+        "substitutions": 5
+      },
+      {
+        "kind": "register_overlay",
+        "synthetic_public": 1,
+        "synthetic_hints": 1,
+        "preserved_gates": {
+          "asserts": 0,
+          "requires": 61
+        },
+        "substitutions": 11
+      }
+    ],
+    "renders": [
+      {
+        "synthetic_public": 30,
+        "synthetic_hints": 0,
+        "files": 5,
+        "tests": 78,
+        "all_sixteen_historical_layers_byte_preserved": true
+      },
+      {
+        "synthetic_public": 31,
+        "synthetic_hints": 4,
+        "files": 5,
+        "tests": 78,
+        "all_sixteen_historical_layers_byte_preserved": true
+      }
+    ]
+  },
+  "sources": [
+    {
+      "path": "action-gauge-work/integration/action_gauge_transport_v1/native_protocol/freeze_inputs.py",
+      "sha256": "b8b7eee07250f51398b3a2f2f29f230d46dab8745a6e98b14512220c029bd995"
+    },
+    {
+      "path": "action-gauge-work/integration/action_gauge_transport_v1/native_protocol/full_build.py",
+      "sha256": "44d5d2dbb4639ae89877a90224dfae2308d005ab3b15ed867139cdaa726020c9"
+    },
+    {
+      "path": "action-gauge-work/integration/action_gauge_transport_v1/native_protocol/protocol_adapter.py",
+      "sha256": "cc579078f685560ef81b47d3090c7346a0225f61ac81e2a7b4a6eae9421e1c4c"
+    },
+    {
+      "path": "action-gauge-work/integration/action_gauge_transport_v1/native_protocol/integration_native.py",
+      "sha256": "69f7f2fec01b8e9f8a64f548378c0bd56bd2a0c1aff0f5565c725a4ea0d146d4"
+    },
+    {
+      "path": "action-gauge-work/integration/action_gauge_transport_v1/native_protocol/register_overlay.py",
+      "sha256": "71f810000fdafa39c1cc28e0e5a219521e0e385fd7ae30fa0febfcbcfb3357bf"
+    },
+    {
+      "path": "action-gauge-work/integration/prepare_consumers.py",
+      "sha256": "25397137b08202e06deebfad599b1dd89d3cfd9e956bb9115625b5d96be6be94"
+    }
+  ]
+}

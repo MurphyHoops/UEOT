@@ -1,0 +1,573 @@
+{
+  "schema": "FKRG_REUSE_OVERLAY_V1",
+  "overlay_id": "CONDITIONAL_STABILITY_REUSE_OVERLAY_V1",
+  "source_checkpoint": "worktree-sha256:0e17dd5ef3c4a9e3eaea47c8c0b7e83f6ef097915bed6092ca81e3e6c032abe0",
+  "source_checkpoint_kind": "FROZEN_SOURCE_CONTENT_BEFORE_GIT_COMMIT",
+  "baseline_ref": "7708a3a1289b1a009c269d81edceef06a4c347dc",
+  "base_snapshot_modules": 701,
+  "prior_overlay": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/OBSERVABLE_BELIEF_REUSE_OVERLAY_V1.json",
+    "sha256": "9e4440d2ef4b101dbadc09b5e02b11d766126b73b8953c60182da64320c247db"
+  },
+  "source_hash_overrides": {
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean": "b685a8beecd307eb22edd8f5cfdec81e26ccbb519f079e9d171ca5cc5dea9f8d"
+  },
+  "added_modules": [
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "content_sha256": "ee47efdc109f9670c77f6bb04595c66f56e8475144bb75f2f190e0cdfd730e05",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStabilityWitness.lean",
+      "content_sha256": "434556fd1a9433bd3a52741520cba4743cc4747995caa44024869ef9da8e5829",
+      "source_origin": "UEOT_MAINTAINED"
+    }
+  ],
+  "public_theorems": [
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.mass_mul_conditioned_atom",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "line": 90,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_max_mass",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "line": 168,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability",
+      "source_theorem_deps": [
+        "UEOT.V3.TotalVariation.tvDist_le_one"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_certifies_positive",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "line": 191,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability",
+      "source_theorem_deps": [
+        "UEOT.V3.TotalVariation.tvDist_nonneg",
+        "UEOT.V3.TotalVariation.tvEvent_le"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_reference_mass",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "line": 204,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_max_mass",
+        "UEOT.V3.TotalVariation.tvDist_nonneg"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_conditional_certificate",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "line": 219,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_reference_mass",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_certifies_positive"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditioned_readout_tv_le_reference_mass",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "line": 232,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_reference_mass",
+        "UEOT.V3.TotalVariation.tvDist_map_le"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.causal_path_conditional_certificate",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "line": 249,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_conditional_certificate",
+        "UEOT.V3.PathError.causalLaw_tv_bound"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.noisy_reference_conditional_certificate",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "line": 275,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_conditional_certificate",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.calibrated_reference_row",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalDefect_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_policy_projected_path_error"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.rare_event_sharpness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStabilityWitness.lean",
+      "line": 116,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.arbitrarily_small_unconditional_error",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStabilityWitness.lean",
+      "line": 138,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.rare_event_sharpness"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.positive_reference_certificate_is_sharp",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStabilityWitness.lean",
+      "line": 190,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_reference_mass",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.mass_mul_conditioned_atom",
+        "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass"
+      ]
+    }
+  ],
+  "type_distinctness": {
+    "status": "PASS",
+    "verifier": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_CONDITIONAL_STABILITY_OVERLAY_TYPES.lean",
+    "new_theorems": 11,
+    "registered_prior_theorems": 4463,
+    "cross_isDefEq_comparisons": 49093,
+    "internal_isDefEq_comparisons": 55,
+    "definitionally_equal_matches": 0,
+    "protocol": "Raw stored compiled types; fresh liftTermElabM per Meta.isDefEq comparison; stored universe names retained. Not a general logical-equivalence decision."
+  },
+  "proof_dependency_certification": {
+    "status": "PASS",
+    "verifier": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_CONDITIONAL_STABILITY_OVERLAY_TYPES.lean",
+    "measure": "Actual theorem proof-value getUsedConstants restricted to all previous and new registered public theorem names",
+    "registered_direct_edges": 19,
+    "edges": [
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_max_mass",
+        "target": "UEOT.V3.TotalVariation.tvDist_le_one"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_certifies_positive",
+        "target": "UEOT.V3.TotalVariation.tvDist_nonneg"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_certifies_positive",
+        "target": "UEOT.V3.TotalVariation.tvEvent_le"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_reference_mass",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_max_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_reference_mass",
+        "target": "UEOT.V3.TotalVariation.tvDist_nonneg"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_conditional_certificate",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_reference_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_conditional_certificate",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_certifies_positive"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditioned_readout_tv_le_reference_mass",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_reference_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditioned_readout_tv_le_reference_mass",
+        "target": "UEOT.V3.TotalVariation.tvDist_map_le"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.causal_path_conditional_certificate",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_conditional_certificate"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.causal_path_conditional_certificate",
+        "target": "UEOT.V3.PathError.causalLaw_tv_bound"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.noisy_reference_conditional_certificate",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_conditional_certificate"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.noisy_reference_conditional_certificate",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.calibrated_reference_row"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.noisy_reference_conditional_certificate",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalDefect_nonneg"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.noisy_reference_conditional_certificate",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_policy_projected_path_error"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.arbitrarily_small_unconditional_error",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.rare_event_sharpness"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.positive_reference_certificate_is_sharp",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_reference_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.positive_reference_certificate_is_sharp",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.mass_mul_conditioned_atom"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.positive_reference_certificate_is_sharp",
+        "target": "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass"
+      }
+    ]
+  },
+  "native_axiom_census": {
+    "status": "PASS",
+    "physical_source_modules": 2,
+    "theorem_constants": 63,
+    "private_theorem_constants": 34,
+    "confirmed_public_source_candidates": 11,
+    "other_native_public_constants": 18,
+    "standard_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "scope": "All compiler-owned theorem constants of every added module, including private and generated constants"
+  },
+  "native_export_evidence": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/CONDITIONAL_STABILITY_NATIVE_V1.json",
+    "sha256": "00907d59fa7b780759ea4de80ae68a94ac4faebad0eb3492b71539b4f2d619d4"
+  },
+  "native_execution": {
+    "build_receipt_sha256": "1336fd6e86f630b8bb03985c1a479739227cbd6bc16bef413aadaed4797cb6ef",
+    "source_tree_sha256": "0e17dd5ef3c4a9e3eaea47c8c0b7e83f6ef097915bed6092ca81e3e6c032abe0",
+    "native_export_exit_code": 0,
+    "fixed_certificate_exit_code": 0,
+    "fixed_certificate_sha256": "94defdc86beb366a149ec12ccfb660e56ddd4f6869749275f821c6ad81d26ccd",
+    "fixed_export_equals_initial_native_export": true,
+    "results": [
+      {
+        "label": "native_export",
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/native-01/CONDITIONAL_STABILITY_NATIVE_EXPORT.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 53.028,
+        "log_sha256": "09e27ffc8cff7a8d43caa12b4d0bebc56cf1e672256192147d1a933c13105ff6"
+      },
+      {
+        "label": "fixed_verifier",
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/native-01/VERIFY_CONDITIONAL_STABILITY_OVERLAY_TYPES.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 52.82,
+        "log_sha256": "09e27ffc8cff7a8d43caa12b4d0bebc56cf1e672256192147d1a933c13105ff6"
+      }
+    ]
+  },
+  "scientific_role": "UNCOUNTED_FINITE_CONDITIONAL_STABILITY",
+  "counted_core_impact": "NONE",
+  "scientific_closure": "NOT_ESTABLISHED",
+  "lexical_pr_preflight": {
+    "baseline_ref": "7708a3a1289b1a009c269d81edceef06a4c347dc",
+    "candidate_ref": null,
+    "candidate_scope": "Current frozen worktree bytes; an immutable Git-object PR preflight is separately required after commit.",
+    "base_lean_module_count": 701,
+    "candidate_lean_module_count": 703,
+    "base_public_lexical_theorem_count": 4463,
+    "candidate_public_lexical_theorem_count": 4474,
+    "new_public_source_theorem_count": 11,
+    "historical_public_repair_count": 0,
+    "overlay_public_registration_count": 11,
+    "new_theorems_with_lexical_reuse_candidates": 0,
+    "candidate_source_tree_sha256": "0e17dd5ef3c4a9e3eaea47c8c0b7e83f6ef097915bed6092ca81e3e6c032abe0",
+    "registered_prior_public_source_theorem_count": 4463,
+    "candidate_registered_public_source_theorem_count": 4474,
+    "note": "Counts and H use the actual SOURCE_PREFLIGHT declaration/name hints. This is not a Git-object PR preflight; name hints and raw stored-type isDefEq do not replace independent semantic review."
+  },
+  "registration_provenance": {
+    "schema": "CONDITIONAL_STABILITY_REGISTRATION_PROVENANCE_V1",
+    "inputs": [
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/native-01/CONDITIONAL_STABILITY_NATIVE_EXPORT.lean",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/CONDITIONAL_STABILITY_NATIVE_EXPORT.lean",
+        "sha256": "6cf792b4d24fbff4263782c5d9af7d33535d9a9ed27b1be095c74b07a6be6181"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/native-01/CONDITIONAL_STABILITY_NATIVE_V1.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/CONDITIONAL_STABILITY_NATIVE_V1.json",
+        "sha256": "00907d59fa7b780759ea4de80ae68a94ac4faebad0eb3492b71539b4f2d619d4"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/native-01/CONDITIONAL_STABILITY_REUSE_OVERLAY_V1.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/CONDITIONAL_STABILITY_REUSE_OVERLAY_V1.json",
+        "sha256": "5aa80d163503f104265aeb7e73cffca168484bb31b7337c57f1187ea35c5d714"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/native-01/FROZEN_INPUTS.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/FROZEN_INPUTS.json",
+        "sha256": "3f9ba9601ec9308969ccfa364cb306fc91acc6f68274ad637ecaff406e531c2e"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/native-01/PROTOCOL_ADAPTATION.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/PROTOCOL_ADAPTATION.json",
+        "sha256": "4457b98ff0d780d44d10429e2b97c467f3cf40dd8538c5c7d8ece1a0b3435b03"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/native-01/SOURCE_PREFLIGHT.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/SOURCE_PREFLIGHT.json",
+        "sha256": "f871a7d9b0d375d19eafdc89d208e01b247455c46b0ee26851bec488f910b26b"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/native-01/STATUS.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/STATUS.json",
+        "sha256": "bd1390b60a08e0c2648ab6059cb5afe5dd9b9d1c6941c7f05d011b4275e33aad"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/native-01/VERIFY_CONDITIONAL_STABILITY_OVERLAY_TYPES.lean",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/VERIFY_CONDITIONAL_STABILITY_OVERLAY_TYPES.lean",
+        "sha256": "94defdc86beb366a149ec12ccfb660e56ddd4f6869749275f821c6ad81d26ccd"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/native-01/development_lexical_reuse_hints.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/development_lexical_reuse_hints.json",
+        "sha256": "55c0549dc8ad37b1c971df770fac7432a145a6261adeed6e96284faec90d34e8"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/native-01/executed_integration_native.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/executed_integration_native.py",
+        "sha256": "82aa87add4c8de013f8d42dfa8905d704d8e1217852c29a54e38f04e85b6d248"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/native-01/fixed_verifier.log",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/fixed_verifier.log",
+        "sha256": "09e27ffc8cff7a8d43caa12b4d0bebc56cf1e672256192147d1a933c13105ff6"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/native-01/immutable_integration_native.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/immutable_integration_native.py",
+        "sha256": "d4708782bbb14360002f119715ba51f96c05e2e632694ba64c56c3d38ce8a924"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/native-01/integration_native.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/integration_native.py",
+        "sha256": "76cfb21fa3e7a74c602d14430eaab412403a4891b84111fa8f81c31f20c22b02"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/native-01/native_export.log",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/native_export.log",
+        "sha256": "09e27ffc8cff7a8d43caa12b4d0bebc56cf1e672256192147d1a933c13105ff6"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/native-01/observed_first_native.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/observed_first_native.json",
+        "sha256": "00907d59fa7b780759ea4de80ae68a94ac4faebad0eb3492b71539b4f2d619d4"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/native-01/protocol_adapter.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/protocol_adapter.py",
+        "sha256": "0e839d073bf00bfd66941344bfa0665c41a20a9ce4dd98cfe08df8129f7d68b0"
+      },
+      {
+        "role": "actual_full_build",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/full-build-01/FULL_BUILD_RECEIPT.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/full-build-01/FULL_BUILD_RECEIPT.json",
+        "sha256": "1336fd6e86f630b8bb03985c1a479739227cbd6bc16bef413aadaed4797cb6ef"
+      },
+      {
+        "role": "actual_full_build",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/full-build-01/full-build.log",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/full-build-01/full-build.log",
+        "sha256": "5c5a1b4f19578398f862d6ef2ac765de1bfd8929204d406b3126817baf5600ac"
+      },
+      {
+        "role": "actual_full_build",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/full-build-01/PROTOCOL_ADAPTATION.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/full-build-01/PROTOCOL_ADAPTATION.json",
+        "sha256": "8efe1e262eef83c263dfc5adabc37c278ffccbccbea7ce66e440def46322b2f2"
+      },
+      {
+        "role": "actual_full_build",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/full-build-01/FROZEN_INPUTS.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/full-build-01/FROZEN_INPUTS.json",
+        "sha256": "3f9ba9601ec9308969ccfa364cb306fc91acc6f68274ad637ecaff406e531c2e"
+      },
+      {
+        "role": "actual_full_build",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/full-build-01/protocol_adapter.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/full-build-01/protocol_adapter.py",
+        "sha256": "0e839d073bf00bfd66941344bfa0665c41a20a9ce4dd98cfe08df8129f7d68b0"
+      },
+      {
+        "role": "actual_full_build",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/full-build-01/full_build.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/full-build-01/full_build.py",
+        "sha256": "44d5d2dbb4639ae89877a90224dfae2308d005ab3b15ed867139cdaa726020c9"
+      },
+      {
+        "role": "actual_full_build",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/full-build-01/immutable_full_build.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/full-build-01/immutable_full_build.py",
+        "sha256": "132b1c96d38a4462ef407ee31ed94378c2025996b2a7b603e297fd9d35cf86de"
+      },
+      {
+        "role": "actual_full_build",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/full-build-01/executed_full_build.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/full-build-01/executed_full_build.py",
+        "sha256": "e26c6cb04d1a7e0e34873a85f512a64dfeab6c731b824b523e4914d6a8391fde"
+      },
+      {
+        "role": "executed_driver",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/native_protocol/integration_native.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/drivers/integration_native.py",
+        "sha256": "76cfb21fa3e7a74c602d14430eaab412403a4891b84111fa8f81c31f20c22b02"
+      },
+      {
+        "role": "executed_driver",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/native_protocol/full_build.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/drivers/full_build.py",
+        "sha256": "44d5d2dbb4639ae89877a90224dfae2308d005ab3b15ed867139cdaa726020c9"
+      },
+      {
+        "role": "immutable_protocol_helper",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/pr_preflight.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/protocol-inputs/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/pr_preflight.py",
+        "sha256": "6d9ee21b7c832aa238c7fd2b42cd5aa9085bc3af616df16819aa100d82f9213c"
+      },
+      {
+        "role": "immutable_protocol_helper",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/fkrg.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/protocol-inputs/formalization/ueot-core/docs/compression/theory_completion/knowledge/fkrg.py",
+        "sha256": "a91301a76165f542d658e924846eede169287a73da6f31f73f24979250de96ff"
+      },
+      {
+        "role": "immutable_protocol_helper",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/registered_interfaces/native_protocol/prepare_registered_interfaces_export.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/protocol-inputs/formalization/ueot-core/docs/compression/theory_completion/unified_closure/registered_interfaces/native_protocol/prepare_registered_interfaces_export.py",
+        "sha256": "9dee4154f7233065d723d58da5117463f7f2182856e20a6762450c837c433ed8"
+      },
+      {
+        "role": "immutable_protocol_helper",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/registered_interfaces/native_protocol/build_identity.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/protocol-inputs/formalization/ueot-core/docs/compression/theory_completion/unified_closure/registered_interfaces/native_protocol/build_identity.py",
+        "sha256": "e80ed3ef63b7f6a6a6cd9f3b248917b1b3dc17dbbd0428c41333febc9cdb2e73"
+      },
+      {
+        "role": "prior_overlay",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/OBSERVABLE_BELIEF_REUSE_OVERLAY_V1.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/protocol-inputs/OBSERVABLE_BELIEF_REUSE_OVERLAY_V1.json",
+        "sha256": "9e4440d2ef4b101dbadc09b5e02b11d766126b73b8953c60182da64320c247db"
+      },
+      {
+        "role": "immutable_base_consumer",
+        "input_path": "7708a3a1289b1a009c269d81edceef06a4c347dc:formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/drivers/baseline_fkrg_reuse.py",
+        "sha256": "2d0ff783c8dfa956120640f335fc6f8c52cec7fe12bf3a1a777d26a773399ce9"
+      },
+      {
+        "role": "registration_driver",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/native_protocol/register_overlay.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/drivers/register_overlay.py",
+        "sha256": "71f810000fdafa39c1cc28e0e5a219521e0e385fd7ae30fa0febfcbcfb3357bf"
+      },
+      {
+        "role": "executed_registration_protocol",
+        "input_path": "executed-memory:PROTOCOL_ADAPTATION.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/drivers/PROTOCOL_ADAPTATION.json",
+        "sha256": "ef3ef4597705e7ed60f6d2c3a75a318460c5b91385ca90eaa5b3f5bf20f5f74c"
+      },
+      {
+        "role": "executed_registration_protocol",
+        "input_path": "executed-memory:FROZEN_INPUTS.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/drivers/FROZEN_INPUTS.json",
+        "sha256": "3f9ba9601ec9308969ccfa364cb306fc91acc6f68274ad637ecaff406e531c2e"
+      },
+      {
+        "role": "executed_registration_protocol",
+        "input_path": "executed-memory:protocol_adapter.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/drivers/protocol_adapter.py",
+        "sha256": "0e839d073bf00bfd66941344bfa0665c41a20a9ce4dd98cfe08df8129f7d68b0"
+      },
+      {
+        "role": "executed_registration_protocol",
+        "input_path": "executed-memory:register_overlay.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/drivers/register_overlay.py",
+        "sha256": "71f810000fdafa39c1cc28e0e5a219521e0e385fd7ae30fa0febfcbcfb3357bf"
+      },
+      {
+        "role": "executed_registration_protocol",
+        "input_path": "executed-memory:immutable_register_overlay.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/drivers/immutable_register_overlay.py",
+        "sha256": "3679552fc1599894cd1cf0ce5aba3324c1d13d885fbcdd6c96fc1796dbc1c939"
+      },
+      {
+        "role": "executed_registration_protocol",
+        "input_path": "executed-memory:executed_register_overlay.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/actual-execution/native-01/drivers/executed_register_overlay.py",
+        "sha256": "3ec9045a87cacdf8e696c9acf724bbcbd29bd050137ad0723664037f7b67ee6f"
+      }
+    ],
+    "baseline_ref": "7708a3a1289b1a009c269d81edceef06a4c347dc",
+    "source_tree_sha256": "0e17dd5ef3c4a9e3eaea47c8c0b7e83f6ef097915bed6092ca81e3e6c032abe0",
+    "metadata_additions_only": [
+      "lexical_pr_preflight",
+      "registration_provenance"
+    ],
+    "raw_evidence_bytes_preserved": true,
+    "git_object_pr_preflight": "NOT_PERFORMED_SEPARATE_GATE",
+    "consumer_registry_modified": false,
+    "independent_review": "SEPARATE_GATE"
+  }
+}

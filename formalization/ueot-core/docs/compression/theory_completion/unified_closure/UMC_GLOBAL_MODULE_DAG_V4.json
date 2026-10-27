@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "source_tree_sha256": "0e17dd5ef3c4a9e3eaea47c8c0b7e83f6ef097915bed6092ca81e3e6c032abe0",
+  "source_tree_sha256": "9a90676af4c234eee2121ac75c0e127f2dd87370e727e5e7189ea99b4b377530",
   "scope": "literal first-party UEOT Lean source files and their direct imports",
   "source_semantics": "metadata audit, NOT independent theorem-source semantic certification",
-  "total_Lean_modules": 703,
-  "total_source_lines": 130301,
-  "total_theorem_lemma_tokens": 4809,
+  "total_Lean_modules": 708,
+  "total_source_lines": 131380,
+  "total_theorem_lemma_tokens": 4855,
   "category_counts": {
     "Core_v3_and_Substrate": 306,
     "Compression_Frozen_Bridges": 62,
@@ -14,9 +14,9 @@
     "Objecthood": 88,
     "P0_P12_TheoryCompletion": 57,
     "C1_C7_SISC": 55,
-    "UMC_New_Bridges": 104
+    "UMC_New_Bridges": 109
   },
-  "reachable_from_UEOT_root": 703,
+  "reachable_from_UEOT_root": 708,
   "not_reachable_from_UEOT_root": [],
   "cycles_detected": [],
   "missing_internal_imports": {},
@@ -194,11 +194,11 @@
       "direct_dependents": 5
     },
     {
-      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridge",
       "direct_dependents": 5
     },
     {
-      "module": "UEOT.V3.Compression.TopologyChangingGoaL1ResidualConorm",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples",
       "direct_dependents": 5
     }
   ],
@@ -256,7 +256,7 @@
     {
       "from": "Compression_Frozen_Bridges",
       "to": "UMC_New_Bridges",
-      "edges": 104
+      "edges": 109
     },
     {
       "from": "Core_v3_and_Substrate",
@@ -3446,8 +3446,8 @@
     },
     "UEOT.V3.Compression.TheoryCompletion": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
-      "bytes": 14872,
-      "lines": 188,
+      "bytes": 15316,
+      "lines": 193,
       "category": "Compression_Frozen_Bridges",
       "title": "UEOT Theory Completion public root",
       "imports": [
@@ -3629,7 +3629,12 @@
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient",
-        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness"
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizability",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitness",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveLinearGaugeClassification",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveOperationalAnchors",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransport"
       ],
       "theorem_lemma_count": 0,
       "decl_count": 0
@@ -5259,6 +5264,19 @@
       "theorem_lemma_count": 8,
       "decl_count": 10
     },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransport": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ConditionedActionTransport.lean",
+      "bytes": 13336,
+      "lines": 262,
+      "category": "UMC_New_Bridges",
+      "title": "An actual action consumer of finite-window conditional transport",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizability",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindow"
+      ],
+      "theorem_lemma_count": 7,
+      "decl_count": 15
+    },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ControlCoverageWitness": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
       "bytes": 24109,
@@ -5412,6 +5430,30 @@
       "theorem_lemma_count": 3,
       "decl_count": 4
     },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveLinearGaugeClassification": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveLinearGaugeClassification.lean",
+      "bytes": 4154,
+      "lines": 113,
+      "category": "UMC_New_Bridges",
+      "title": "Exact inverse classification of nondegenerate linear drive factorizations",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveLinearGauge"
+      ],
+      "theorem_lemma_count": 2,
+      "decl_count": 2
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveOperationalAnchors": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveOperationalAnchors.lean",
+      "bytes": 9583,
+      "lines": 243,
+      "category": "UMC_New_Bridges",
+      "title": "What independently calibrated operational anchors identify",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveLinearGaugeClassification"
+      ],
+      "theorem_lemma_count": 9,
+      "decl_count": 12
+    },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.EmpiricalReferenceRisk": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/EmpiricalReferenceRisk.lean",
       "bytes": 11403,
@@ -5451,6 +5493,35 @@
       ],
       "theorem_lemma_count": 17,
       "decl_count": 33
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizability": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizability.lean",
+      "bytes": 10623,
+      "lines": 229,
+      "category": "UMC_New_Bridges",
+      "title": "Which target kernels can the original actions implement?",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridge",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFlux",
+        "Mathlib.Analysis.Convex.Combination",
+        "Mathlib.Tactic"
+      ],
+      "theorem_lemma_count": 11,
+      "decl_count": 14
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitness": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizabilityWitness.lean",
+      "bytes": 10246,
+      "lines": 227,
+      "category": "UMC_New_Bridges",
+      "title": "Positive implementation and genuine action/information obstructions",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizability",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitness"
+      ],
+      "theorem_lemma_count": 17,
+      "decl_count": 22
     },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteCommonProcessWitness": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteCommonProcessWitness.lean",

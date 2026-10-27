@@ -1,0 +1,15 @@
+{
+  "schema": "ACTION_GAUGE_TRANSPORT_CONSUMER_EXPECTATION_REVISION_V1",
+  "state": "CORRECTED_PRINTED_TYPE_SPELLING_PENDING_REAL_CONSUMER_RERUN",
+  "helper_before_sha256": "25397137b08202e06deebfad599b1dd89d3cfd9e956bb9115625b5d96be6be94",
+  "helper_after_sha256": "11c08ca856dcdc7a3ce1648391c2212b0c815cb398c7a65ac62e713ef48200d3",
+  "changed_expectation": {
+    "before": "for fragment in (\"Surjective\", \"Injective\", \"comp\", \"symm\"):",
+    "after": "for fragment in (\"Surjective\", \"Injective\", \"∘ₗ\", \"symm\"):"
+  },
+  "reason": "The root-reported actual stored Lean type prints LinearMap.comp with the infix notation ∘ₗ. The old substring comp was an incorrect representation expectation. Surjective, Injective, unique equivalence and inverse checks remain unchanged.",
+  "lean_sources_modified_by_this_change": [],
+  "production_native_or_consumer_execution_by_this_agent": false,
+  "previous_failure_preservation": "Original actual Mac consumer failure and its input version remain owned/preserved by root; this record does not rewrite their result.",
+  "preparation_self_check": "PREPARATION_SELF_CHECK_EXPECTATION_REVISION_02.json"
+}

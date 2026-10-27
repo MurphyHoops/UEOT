@@ -20,26 +20,26 @@ class ProofReuseTests(unittest.TestCase):
 
     def test_evidence_and_sources_exact_baseline(self):
         res = reuse.status(self.data)
-        self.assertEqual(res["module_source_hashes_verified"], 703)
-        self.assertEqual(res["ueot_maintained_modules"], 692)
+        self.assertEqual(res["module_source_hashes_verified"], 708)
+        self.assertEqual(res["ueot_maintained_modules"], 697)
         self.assertEqual(res["vendor_modules"], 11)
-        self.assertEqual(res["public_source_theorems_with_direct_proof_graph"], 4474)
+        self.assertEqual(res["public_source_theorems_with_direct_proof_graph"], 4504)
         self.assertEqual(res["verified_equal_type_groups"], 37)
         self.assertEqual(res["equal_type_statement_names"], 77)
         self.assertEqual(res["near_type_not_defeq_candidate_pairs"], 15)
         self.assertEqual(res["crossfile_exact_code_clone_candidates"], 68)
-        self.assertEqual(res["overlay_public_theorems"], 681)
+        self.assertEqual(res["overlay_public_theorems"], 711)
         self.assertEqual(res["overlay_cross_snapshot_defeq_matches"], 0)
-        self.assertEqual(res["overlay_lexical_reuse_candidates"], 177)
-        self.assertEqual(res["overlay_count"], 16)
-        self.assertEqual(res["overlay_registered_direct_edges"], 1039)
+        self.assertEqual(res["overlay_lexical_reuse_candidates"], 180)
+        self.assertEqual(res["overlay_count"], 17)
+        self.assertEqual(res["overlay_registered_direct_edges"], 1079)
         self.assertEqual(res["overlay_historical_public_repairs"], 1)
         self.assertEqual(res["overlay_existing_registered_direct_edge_repairs"], 1)
         self.assertEqual(sum(len(json.loads(row["source_theorem_deps_json"]))
-                             for row in self.data["graph"].values()), 5926)
+                             for row in self.data["graph"].values()), 5966)
 
     def test_calibrated_defect_overlay_chain_and_kernel_graph(self):
-        self.assertEqual(len(self.data["overlays"]), 16)
+        self.assertEqual(len(self.data["overlays"]), 17)
         prior, current = self.data["overlays"][:2]
         self.assertEqual(prior["base_snapshot_modules"], 633)
         self.assertEqual(current["base_snapshot_modules"], 634)
@@ -2171,6 +2171,234 @@ class ProofReuseTests(unittest.TestCase):
         self.assertEqual(lexical["new_theorems_with_lexical_reuse_candidates"], 0)
 
 
+    def test_action_gauge_transport_native_ownership_and_registered_edges(self):
+        current = self.data["overlays"][16]
+        prefix = "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure."
+        modules = {prefix + name for name in (
+            "FiniteActionRealizability", "FiniteActionRealizabilityWitness",
+            "DualDriveLinearGaugeClassification", "DualDriveOperationalAnchors",
+            "ConditionedActionTransport")}
+        self.assertEqual(current["base_snapshot_modules"], 703)
+        self.assertEqual(current["prior_overlay"]["sha256"], reuse.OVERLAY_SHA256S[15])
+        self.assertEqual(current["baseline_ref"], "dd6ab2d4696ce4fa7824baa2faeb993069ee8787")
+        self.assertEqual(current["source_checkpoint"],
+                         "worktree-sha256:9a90676af4c234eee2121ac75c0e127f2dd87370e727e5e7189ea99b4b377530")
+        self.assertEqual(current["source_checkpoint_kind"], "FROZEN_SOURCE_CONTENT_BEFORE_GIT_COMMIT")
+        self.assertEqual(current["scientific_role"],
+                         "UNCOUNTED_ACTION_REALIZABILITY_GAUGE_AND_CONDITIONED_TRANSPORT")
+        self.assertEqual(current["counted_core_impact"], "NONE")
+        self.assertEqual(current["scientific_closure"], "NOT_ESTABLISHED")
+        self.assertNotIn("historical_public_repairs", current)
+        self.assertNotIn("existing_proof_dependency_repairs", current)
+        self.assertEqual({row["module"] for row in current["added_modules"]}, modules)
+        evidence = current["native_export_evidence"]
+        artifact = reuse.REPO / evidence["path"]
+        native_sha = "0d47202668032dddb912fce8974606caefecbfd56435d7bc9cbe169af4905a1a"
+        self.assertEqual(evidence["sha256"], native_sha)
+        self.assertEqual(reuse.sha256(artifact.read_bytes()).hexdigest(), native_sha)
+        native = json.loads(artifact.read_text())
+        self.assertEqual(native["schema"], "ACTION_GAUGE_TRANSPORT_NATIVE_EXPORT_V1")
+        self.assertEqual(native["collisions"], [])
+        scope = native["all_native_theorem_constants"]
+        by_name = {row["name"]: row for row in scope}
+        self.assertEqual(len(scope), 93)
+        self.assertEqual(len(by_name), len(scope))
+        self.assertEqual(sum(row["is_private"] for row in scope), 37)
+        self.assertEqual({row["source_module"] for row in scope}, modules)
+        fields = {"name", "source_module", "is_private", "level_parameters", "type",
+                  "direct_constants", "direct_theorem_constants", "axioms"}
+        for row in scope:
+            with self.subTest(native_symbol=row["name"]):
+                self.assertEqual(set(row), fields)
+                self.assertTrue(set(row["axioms"]) <= {"propext", "Classical.choice", "Quot.sound"})
+                self.assertTrue(set(row["direct_theorem_constants"]) <= set(row["direct_constants"]))
+        public = {row["name"]: row for row in current["public_theorems"]}
+        native_public = {row["name"]: row for row in native["public_source_theorems"]}
+        self.assertEqual(len(public), 30)
+        self.assertEqual(set(public), set(native_public))
+        self.assertEqual(sum(not row["is_private"] and row["name"] not in public
+                             for row in scope), 26)
+        edges = set()
+        for name, row in public.items():
+            with self.subTest(public_symbol=name):
+                full = by_name[name]
+                self.assertFalse(full["is_private"])
+                self.assertEqual(row["source_module"], full["source_module"])
+                for field in ("source_module", "level_parameters", "type", "direct_constants"):
+                    self.assertEqual(native_public[name][field], full[field])
+                actual = (set(full["direct_constants"]) & set(self.data["graph"])) - {name}
+                self.assertEqual(set(row["source_theorem_deps"]), actual)
+                self.assertEqual(set(native_public[name]["source_theorem_deps"]), actual)
+                edges.update((name, target) for target in actual)
+        certified = current["proof_dependency_certification"]
+        self.assertEqual(edges, {(row["source"], row["target"]) for row in certified["edges"]})
+        self.assertEqual(len(edges), certified["registered_direct_edges"])
+        self.assertEqual(len(edges), 40)
+        distinct = current["type_distinctness"]
+        self.assertEqual(distinct["registered_prior_theorems"], 4474)
+        self.assertEqual(distinct["definitionally_equal_matches"], 0)
+        for field, expected in (
+                ("cross_isDefEq_comparisons", 30 * 4474),
+                ("internal_isDefEq_comparisons", 30 * 29 // 2)):
+            self.assertEqual(distinct[field], expected)
+            self.assertEqual(native[field], expected)
+
+    def test_action_gauge_transport_actual_actions_initial_law_and_c4_routes(self):
+        current = self.data["overlays"][16]
+        native = json.loads((reuse.REPO / current["native_export_evidence"]["path"]).read_text())
+        by_name = {row["name"]: row for row in native["all_native_theorem_constants"]}
+        prefix = "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure."
+        action = prefix + "FiniteActionRealizabilityCheck."
+        witness = prefix + "FiniteActionRealizabilityWitnessCheck."
+        transport = prefix + "ConditionedActionTransportCheck."
+        required = {
+            action + "row_realizable_iff_mem_convexHull": {
+                action + "pmf_barycenter_exists_iff_mem_convexHull", action + "realRow_actionMixture"},
+            action + "observation_realizable_iff_fiber_convexHull": {
+                action + "pmf_barycenter_exists_iff_mem_convexHull", action + "realRow_actionMixture"},
+            action + "actual_state_path_eq_target": {
+                prefix + "SourcePolicyPathBridgeCheck.actual_state_path_eq_stationary_path",
+                action + "stationary_row_eq_actionMixture"},
+            action + "initial_tv_le_path_tv": {
+                action + "causalLaw_initial_marginal", "UEOT.V3.TotalVariation.tvDist_map_le"},
+            witness + "conditional_row_outside_original_action_hull": {
+                action + "row_realizable_iff_mem_convexHull",
+                witness + "original_actions_have_irreducible_conditional_error"},
+            witness + "unchanged_initial_forces_path_error": {
+                action + "initial_tv_le_path_tv", witness + "actual_conditioning_changes_initial_tv"},
+            transport + "time_action_state_path_eq_mixture": {
+                prefix + "SourcePolicyPathBridgeCheck.actual_next_state_eq_stationary_row",
+                action + "stationary_row_eq_actionMixture",
+                prefix + "risk_causalLaw_map", prefix + "riskFiberPosterior_support"},
+            transport + "occupied_fibers_supply_actual_path": {
+                action + "observation_realizable_iff_fiber_convexHull",
+                transport + "time_action_state_path_eq_mixture"},
+            transport + "occupied_conditioned_fibers_supply_actual_experiment": {
+                transport + "occupied_fibers_supply_actual_path",
+                prefix + "TotalFiniteWindowCheck.generated_ambient_eq_actual"},
+            transport + "state_selection_realizes_its_conditioned_path": {
+                transport + "occupied_conditioned_fibers_supply_actual_experiment",
+                action + "observation_realizable_iff_fiber_convexHull"},
+        }
+        for name, dependencies in required.items():
+            with self.subTest(symbol=name):
+                actual = set(reuse.explain(self.data, name)["direct_existing_source_theorem_uses"])
+                self.assertTrue(dependencies <= actual, (name, dependencies - actual))
+        for suffix in ("original_actions_have_irreducible_conditional_error",
+                       "added_safe_actions_realize_conditional_row",
+                       "deterministic_extended_action_does_not_realize",
+                       "separately_feasible_hidden_rows", "no_common_policy_for_aliased_rows",
+                       "actual_conditioning_changes_initial_tv", "unchanged_initial_forces_path_error"):
+            self.assertIn(witness + suffix, self.data["graph"])
+        obstruction = "".join(by_name[witness + "original_actions_have_irreducible_conditional_error"]["type"].split())
+        for fragment in ("tvDist", "3/4", "1/4", "targetConditionalRow"):
+            self.assertIn(fragment, obstruction)
+        concrete = by_name[transport + "state_selection_realizes_its_conditioned_path"]["type"]
+        for fragment in ("stateSelectionModel", "preparedInitial", "actualConditionedPrefix", "riskMicroControlKernel"):
+            self.assertIn(fragment, concrete)
+        self.assertNotIn("OccupiedFiberFeasible", concrete)
+        for row in current["public_theorems"]:
+            self.assertEqual(reuse.explain(self.data, row["name"])["role"],
+                             "UNCOUNTED_ACTION_REALIZABILITY_GAUGE_AND_CONDITIONED_TRANSPORT")
+
+    def test_action_gauge_transport_inverse_classification_and_operational_anchors(self):
+        current = self.data["overlays"][16]
+        native = json.loads((reuse.REPO / current["native_export_evidence"]["path"]).read_text())
+        by_name = {row["name"]: row for row in native["all_native_theorem_constants"]}
+        prefix = "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure."
+        required = {
+            "same_linear_response_iff_unique_gauge": {prefix + "nondegenerate_linear_factorization_unique_gauge"},
+            "oriented_axis_rays_iff_positive_diagonal_gauge": {
+                prefix + "labelled_axis_lines_iff_nonzero_diagonal_gauge"},
+            "registered_unit_interventions_identify_factorization": {
+                prefix + "nondegenerate_linear_factorization_unique_gauge",
+                prefix + "two_unit_anchors_identify_gauge"},
+        }
+        for name, dependencies in required.items():
+            with self.subTest(symbol=name):
+                actual = set(reuse.explain(self.data, prefix + name)["direct_existing_source_theorem_uses"])
+                self.assertTrue(dependencies <= actual, (name, dependencies - actual))
+        statement = by_name[prefix + "nondegenerate_linear_factorization_unique_gauge"]["type"]
+        for fragment in ("Surjective", "Injective", "∘ₗ", "symm"):
+            self.assertIn(fragment, statement)
+        self.assertTrue("∃!" in statement or "ExistsUnique" in statement)
+        calibration = "".join(by_name[prefix + "registered_unit_interventions_identify_factorization"]["type"].split())
+        for fragment in ("Function.Injective⇑G", "Function.Injective⇑G'"):
+            self.assertIn(fragment, calibration)
+        same_input_units_and_conclusion = (
+            "∀(d:Fin2→X),(∀(i:Fin2),H(di)=" + prefix + "driveUnitAxisi∧"
+            "H'(di)=" + prefix + "driveUnitAxisi)→H=H'∧G=G'")
+        self.assertIn(same_input_units_and_conclusion, calibration)
+        for suffix in ("one_unit_anchor_leaves_nontrivial_gauge",
+                       "two_oriented_axes_do_not_identify_units"):
+            self.assertIn(prefix + suffix, self.data["graph"])
+            self.assertIn("≠", by_name[prefix + suffix]["type"])
+
+    def test_action_gauge_transport_registration_preserves_raw_execution(self):
+        current = self.data["overlays"][16]
+        provenance = current["registration_provenance"]
+        additions = {"lexical_pr_preflight", "registration_provenance"}
+        self.assertEqual(provenance["schema"], "ACTION_GAUGE_TRANSPORT_REGISTRATION_PROVENANCE_V1")
+        self.assertEqual(set(provenance["metadata_additions_only"]), additions)
+        self.assertTrue(provenance["raw_evidence_bytes_preserved"])
+        self.assertFalse(provenance["consumer_registry_modified"])
+        self.assertEqual(provenance["git_object_pr_preflight"], "NOT_PERFORMED_SEPARATE_GATE")
+        fingerprint = "9a90676af4c234eee2121ac75c0e127f2dd87370e727e5e7189ea99b4b377530"
+        self.assertEqual(provenance["source_tree_sha256"], fingerprint)
+        self.assertEqual(provenance["baseline_ref"], current["baseline_ref"])
+        inputs = provenance["inputs"]
+        self.assertEqual(len({(row["role"], row["path"]) for row in inputs}), len(inputs))
+        for row in inputs:
+            with self.subTest(archived_input=row["path"]):
+                path = reuse.REPO / row["path"]
+                self.assertTrue(path.resolve().is_relative_to(reuse.REPO.resolve()))
+                self.assertEqual(reuse.sha256(path.read_bytes()).hexdigest(), row["sha256"])
+        raw_rows = [row for row in inputs if row["role"] == "actual_native_output"
+                    and row["path"].endswith("/ACTION_GAUGE_TRANSPORT_REUSE_OVERLAY_V1.json")]
+        self.assertEqual(len(raw_rows), 1)
+        raw_path = reuse.REPO / raw_rows[0]["path"]
+        raw = json.loads(raw_path.read_text())
+        self.assertEqual(set(current) - set(raw), additions)
+        self.assertEqual({key: value for key, value in current.items() if key not in additions}, raw)
+        archive = raw_path.parent
+        self.assertEqual((archive / "REGISTERED_OVERLAY.json").read_bytes(), reuse.OVERLAY_PATHS[16].read_bytes())
+        receipt = json.loads((archive / "REGISTRATION_RECEIPT.json").read_text())
+        self.assertEqual(receipt["schema"], "ACTION_GAUGE_TRANSPORT_REGISTRATION_RECEIPT_V1")
+        self.assertEqual(receipt["state"], "PASS_METADATA_ONLY_CONSUMER_UNCHANGED")
+        self.assertEqual(receipt["raw_overlay_sha256"], raw_rows[0]["sha256"])
+        self.assertEqual(receipt["registered_overlay"]["sha256"], reuse.OVERLAY_SHA256S[16])
+        self.assertEqual(set(receipt["added_top_level_keys"]), additions)
+        self.assertTrue(receipt["stripped_registered_json_equals_raw"])
+        self.assertIsNone(receipt["candidate_ref"])
+        self.assertEqual(receipt["input_files"], inputs)
+        preflight = json.loads((archive / "SOURCE_PREFLIGHT.json").read_text())
+        self.assertEqual(preflight["status"], "PENDING_ACTUAL_NATIVE_EXECUTION")
+        self.assertEqual(preflight["source_tree_sha256"], fingerprint)
+        self.assertEqual(preflight["complete_source_modules"], 708)
+        self.assertEqual(preflight["added_modules"], current["added_modules"])
+        frozen = json.loads((archive / "FROZEN_INPUTS.json").read_text())
+        self.assertEqual(frozen["source_tree_sha256"], fingerprint)
+        self.assertEqual(frozen["new_public"], 30)
+        self.assertEqual(frozen["lexical_hinted"], 3)
+        self.assertEqual(set(frozen["public_source_names"]),
+                         {row["name"] for row in current["public_theorems"]})
+        execution = json.loads((archive / "STATUS.json").read_text())
+        self.assertEqual(execution["state"], "PASS_PENDING_INDEPENDENT_REVIEW_AND_REGISTRATION")
+        self.assertTrue(current["native_execution"]["fixed_export_equals_initial_native_export"])
+        self.assertEqual(json.loads((archive / "observed_first_native.json").read_text()),
+                         json.loads((reuse.REPO / current["native_export_evidence"]["path"]).read_text()))
+        for row in current["native_execution"]["results"]:
+            log = archive / ("native_export.log" if row["label"] == "native_export" else "fixed_verifier.log")
+            self.assertEqual(row["exit_code"], 0)
+            self.assertEqual(reuse.sha256(log.read_bytes()).hexdigest(), row["log_sha256"])
+        lexical = current["lexical_pr_preflight"]
+        self.assertIsNone(lexical["candidate_ref"])
+        self.assertEqual(lexical["new_public_source_theorem_count"], 30)
+        self.assertEqual(lexical["base_public_lexical_theorem_count"], 4474)
+        self.assertEqual(lexical["candidate_public_lexical_theorem_count"], 4504)
+        self.assertEqual(lexical["candidate_registered_public_source_theorem_count"], 4504)
+        self.assertEqual(lexical["new_theorems_with_lexical_reuse_candidates"], 3)
+
     def test_historical_apostrophe_registration_and_existing_incoming_edge(self):
         current = self.data["overlays"][7]
         helper = "UEOT.V3.FreeInformationValue.integrable_finset_sup'"
@@ -2337,7 +2565,7 @@ class ProofReuseTests(unittest.TestCase):
 
     def test_new_lean_module_cannot_be_omitted_from_index(self):
         live = reuse.live_source_paths()
-        self.assertEqual(len(live), 703)
+        self.assertEqual(len(live), 708)
         new = "formalization/ueot-core/UEOT/V3/FutureNovelLemma.lean"
         with mock.patch.object(reuse, "live_source_paths", return_value=live | {new}):
             with self.assertRaisesRegex(RuntimeError, "STALE_AUDIT_SOURCE_SET"):

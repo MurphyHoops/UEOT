@@ -1,0 +1,121 @@
+{
+  "schema": "UEOT_ACTION_GAUGE_LEAN_INDEPENDENT_SEMANTIC_REVIEW_V2",
+  "reviewer": "/root/independent_review",
+  "independence": "Reviewer authored no production Lean source or integration helper and performed no Mac/GitHub mutation.",
+  "verdict": "CLEAR_WITH_STATED_MATHEMATICAL_SCOPE",
+  "baseline_ref": "dd6ab2d4696ce4fa7824baa2faeb993069ee8787",
+  "source_tree_sha256": "9a90676af4c234eee2121ac75c0e127f2dd87370e727e5e7189ea99b4b377530",
+  "reviewed_sources": [
+    {
+      "module": "FiniteActionRealizability",
+      "sha256": "fc45d67c59111e4f262a28d850306d3782801116ad01bb403c3dea4ef12a655f"
+    },
+    {
+      "module": "FiniteActionRealizabilityWitness",
+      "sha256": "ca07e60f757ac12fb1997d9db52c17695247345a262aeb7f97bf03d88fbe8590"
+    },
+    {
+      "module": "DualDriveLinearGaugeClassification",
+      "sha256": "6931bfb534570015b45f6601592adb654f7fc62e283d56fccae2fb678a804c53"
+    },
+    {
+      "module": "DualDriveOperationalAnchors",
+      "sha256": "aa4fda07436424ac262bb81501318713b77ef9f3fb3dbbbf4ee164532e17e796"
+    },
+    {
+      "module": "ConditionedActionTransport",
+      "sha256": "bdef4d1f2e5f4154c3a65151c407908a18efee03e1596b1f04c36855bd1eb25e"
+    }
+  ],
+  "reviewed_root_sha256": "86fe38d87cdf314392b50960a087964ea02c5a988a24cd27b4ebbf5a97cff66f",
+  "actual_compiled_type_evidence": {
+    "path": "actual-review/TYPED_REUSE_FINAL.json",
+    "sha256": "d8de05ad44660287c0331e823376a6ece7c189c33bd25f1a40a1032a479a412b",
+    "receipt_sha256": "8b5d6bdb440b39896930b75afc786228661fd215ac3b8898ad374a5df91b96b4",
+    "actual_exit_code": 0,
+    "all_actual_compiled_types": 60,
+    "new_source_public_types": 30,
+    "all_30_types_owner_and_axioms_exactly_equal_actual_native_export": true
+  },
+  "source_and_actual_full_receipt_hashes_equal": true,
+  "checks": [
+    {
+      "id": "A1_original_action_row_iff",
+      "result": "CLEAR",
+      "finding": "The allowed rows are P a and the implementation is PMF.bind over the actual finite action alphabet. Equality of PMFs is equivalent to real-coordinate target membership in the convex hull of those rows. The statement does not silently add actions and does not require a finite output state alphabet. Finite action support converts the standard Mathlib convex representation into a PMF certificate."
+    },
+    {
+      "id": "A2_common_observation_fiber",
+      "result": "CLEAR",
+      "finding": "The convex hull is taken in the function space of the whole observation fiber; one action PMF simultaneously matches every indexed row in that fiber. Independent input index I permits the later occupied-state subtype. No hidden-state-dependent mixture is substituted for a common observable policy, and no finite observation alphabet is assumed."
+    },
+    {
+      "id": "A3_actual_path_and_initial_law",
+      "result": "CLEAR",
+      "finding": "The actual action experiment uses Model.transitionPMF and the existing action/state-history construction. All-row equality is used only as a sufficient path theorem. For any history-dependent causal kernel the initial marginal is invariant; data processing gives an initial-TV lower bound on full-path error."
+    },
+    {
+      "id": "A4_source_witnesses",
+      "result": "CLEAR",
+      "finding": "The three-state target is the actual conditionedPMF of the prior model transition row. Original singleton actions have exact TV 1/4 or 3/4 and fail the convex criterion. The positive model explicitly extends Option Bool actions, retains the original row at none, and adds two safe pure rows; the fair randomized policy succeeds and all three deterministic members fail. A separate Bool witness proves current-observation alias obstruction, and the actual conditioned initial marginal forces at least 1/4 full-path error under every unchanged-initial causal continuation."
+    },
+    {
+      "id": "C5_unique_inverse_orbit",
+      "result": "CLEAR",
+      "finding": "For two linear factorizations through the same real latent space, surjective encoders and injective decoders plus exact response equality construct a unique latent LinearEquiv. The gauge relation is a conclusion, not an assumption. The reverse implication yields a genuine iff. The general latent-space theorem specializes to TwoDriveLatent without finite-dimensional input/output assumptions."
+    },
+    {
+      "id": "C5_operational_anchors",
+      "result": "CLEAR",
+      "finding": "Labelled axis lines leave nonzero independent scales; oriented labelled rays leave positive scales; two fixed unit axes force the identity. Registered interventions constrain the same two input vectors for both encoders and derive their surjectivity. With exact response equality and injective decoders they identify the complete factorization by consuming the new inverse theorem. One unit anchor leaves a nonidentity shear; two oriented axes leave a nonidentity common scale. Whole encoder equality is not assumed."
+    },
+    {
+      "id": "C4_occupied_support",
+      "result": "CLEAR",
+      "finding": "OccupiedState is defined from nonzero atoms of the independently generated target prefix. Feasibility constrains only these states before T and simultaneously each observation fiber. Induction on target support derives full prefix equality; target-null and unreachable rows are not artificially required to be implementable."
+    },
+    {
+      "id": "C4_actual_conditioned_consumer",
+      "result": "CLEAR",
+      "finding": "The prepared initial law and total conditioned rows reuse the earlier same-source finite-window construction. Its independent generated_ambient_eq_actual theorem supplies equality to the original survival-conditioned experiment. No fitted target path equality, generic formation compatibility, or transport compatibility is assumed."
+    },
+    {
+      "id": "C4_nonvacuous_model",
+      "result": "CLEAR",
+      "finding": "The state-selection model explicitly permits every deterministic state reset and observes the state. The final theorem proves the fiber feasibility condition by using the target PMF as the actual randomized action law. This exhibits a nonvacuous family; it makes no claim that the original singleton source has gained this capability."
+    }
+  ],
+  "required_interpretive_limits": [
+    "Row and observation-fiber iff do not by themselves assert a necessary-and-sufficient characterization of arbitrary history-dependent full-path implementation.",
+    "The concrete C4 conclusion is a finite-horizon operational conditioned-path transport consumer. It does not close ontic parent formation, binding/weighted-Hall lineage, arbitrary time-inhomogeneous raw sources, or unrestricted C4.",
+    "The base Model transitions remain stationary; time dependence is in the feedback policy and conditioned target rows.",
+    "Preparing the survival-tilted initial law is an explicit precondition of the operational experiment. Later actions do not prepare it for free.",
+    "Classical existence of action PMFs is not an executable optimizer or a physically measured controller.",
+    "C5 classifies exact nondegenerate linear factorizations only. It does not classify degenerate, nonlinear, approximate or noisy factorizations.",
+    "Operational anchors require independent calibration with common interventions, labelled axes, orientation and units as specified. They do not create physical meanings or establish an empirical two-drive law.",
+    "For a given exact factorization through a two-dimensional latent space, rank J = 2 can imply encoder surjectivity and decoder injectivity. A rank upper bound, noisy finite-sample indication or unspecified local Jacobian alone does not supply the theorem assumptions."
+  ],
+  "claim_accounting": {
+    "new_source_public_declarations": 30,
+    "independent_new_principles_claimed": false,
+    "frozen_core_counted_impact": "UNCHANGED",
+    "strong_global_closure": "NOT_ESTABLISHED",
+    "external_scientific_validity": "UNVERIFIED"
+  },
+  "not_covered_by_this_review": [
+    "Exact final Git candidate/tree and resulting-main synchronization.",
+    "Actual consumer execution/clone scan results, covered by a separate integration review.",
+    "Empirical availability of interventions, calibration, physical actuators or prepared initial distributions."
+  ],
+  "revision_review": {
+    "first_source_tree_sha256": "442e455f2153bc11ebe2785a0e2f76b00580051c085f07dd4ec0fb9d75b65908",
+    "only_changed_source_in_complete_708_inventory": "ConditionedActionTransport.lean",
+    "all_30_public_and_all_93_native_compiled_types_and_owners_unchanged": true,
+    "proof_reuse_fix": "The C4 time-dependent action/state identity now directly consumes risk_causalLaw_map. It proves the projected kernel equals the independently defined action-mixture kernel from posterior fiber support; null projected histories use that kernel as explicit fallback. The former repeated induction is removed, with no extra hypothesis or change of target, initial law, action alphabet or information structure.",
+    "actual_native_reuse_edges_added": [
+      "risk_causalLaw_map",
+      "riskFiberPosterior_support"
+    ],
+    "prior_review_preserved": "LEAN_SEMANTIC_REVIEW_FIRST_CANDIDATE.json"
+  }
+}

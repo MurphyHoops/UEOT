@@ -177,6 +177,11 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracleWitness
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizability
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitness
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveLinearGaugeClassification
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveOperationalAnchors
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransport
 /-!
 # UEOT Theory Completion public root
 

@@ -1,0 +1,69 @@
+{
+  "commands": [
+    {
+      "label": "freeze-02",
+      "command": [
+        "/opt/homebrew/bin/python3",
+        "-B",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/native_protocol/freeze_inputs.py",
+        "--repo",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023",
+        "--base-ref",
+        "dd6ab2d4696ce4fa7824baa2faeb993069ee8787",
+        "--output",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/FROZEN_INPUTS_02.json"
+      ],
+      "exit_code": 0,
+      "seconds": 7.2051345410291106,
+      "log": "freeze-02.log",
+      "log_sha256": "394a59453696ec46f89b225fe15d2a05a2311b7ba6df4d34f4db8f3a29ccc812"
+    },
+    {
+      "label": "full-build-driver-02",
+      "command": [
+        "/opt/homebrew/bin/python3",
+        "-B",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/native_protocol/full_build.py",
+        "--repo",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023",
+        "--base-ref",
+        "dd6ab2d4696ce4fa7824baa2faeb993069ee8787",
+        "--frozen-inputs",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/FROZEN_INPUTS_02.json",
+        "--output",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/full-build-02",
+        "--lake",
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "--lean",
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean"
+      ],
+      "exit_code": 0,
+      "seconds": 11.202461541863158,
+      "log": "full-build-driver-02.log",
+      "log_sha256": "b345bf65b1ec3ec6bf14919a74c1c8e1a533fab6da7b1d30ac64956d016af77f"
+    },
+    {
+      "label": "native-driver-02",
+      "command": [
+        "/opt/homebrew/bin/python3",
+        "-B",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/native_protocol/integration_native.py",
+        "run",
+        "--repo",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023",
+        "--base-ref",
+        "dd6ab2d4696ce4fa7824baa2faeb993069ee8787",
+        "--frozen-inputs",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/FROZEN_INPUTS_02.json",
+        "--build-receipt",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/full-build-02/FULL_BUILD_RECEIPT.json",
+        "--output",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/native-02"
+      ],
+      "exit_code": 0,
+      "seconds": 122.86179550015368,
+      "log": "native-driver-02.log",
+      "log_sha256": "5a67b38e9a1354d93355908df957b7c087e164a6e463d774b873c210c7df2650"
+    }
+  ]
+}

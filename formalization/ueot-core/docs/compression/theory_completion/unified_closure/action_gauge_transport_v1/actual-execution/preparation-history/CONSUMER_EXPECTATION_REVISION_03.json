@@ -1,0 +1,31 @@
+{
+  "schema": "ACTION_GAUGE_TRANSPORT_CONSUMER_EXPECTATION_REVISION_V1",
+  "state": "CORRECTED_ANONYMOUS_PROP_PRINTING_AND_ADDED_C4_REUSE_REGRESSION_PENDING_REAL_CONSUMER_RERUN",
+  "helper_before_sha256": "11c08ca856dcdc7a3ce1648391c2212b0c815cb398c7a65ac62e713ef48200d3",
+  "helper_after_sha256": "3c5b55189797e5247f74a8876b18f78f20374fffc4dff4bde52453e6e518f909",
+  "changes": [
+    {
+      "kind": "type_representation_expectation",
+      "before": "hanchor source binder name required in the printed theorem type",
+      "after": "Both actual decoder injectivity statements, same d : Fin 2 → X, the conjunction H(d i)=e_i and H'(d i)=e_i, followed by H=H' ∧ G=G' are checked in the whitespace-normalized actual type.",
+      "reason": "The Lean printer renders an anonymous Prop argument as an implication and does not preserve its source binder name."
+    },
+    {
+      "kind": "mathematical_reuse_regression",
+      "theorem": "ConditionedActionTransportCheck.time_action_state_path_eq_mixture",
+      "required_direct_edges_added": [
+        "risk_causalLaw_map",
+        "riskFiberPosterior_support"
+      ],
+      "previous_required_edges_retained": true,
+      "reason": "Root-directed regression for the actual source reuse correction that replaced repeated induction."
+    }
+  ],
+  "four_new_tests_inspected": true,
+  "type_expectation_evidence": "ACTUAL_TYPE_EXPECTATION_CHECK_03.json",
+  "preparation_self_check": "PREPARATION_SELF_CHECK_EXPECTATION_REVISION_03_FINAL.json",
+  "test_count": 78,
+  "lean_sources_modified_by_this_change": [],
+  "production_native_or_consumer_execution_by_this_agent": false,
+  "previous_failure_preservation": "The previous actual Mac consumer failure and source version remain historical evidence. This record does not change its outcome. Previous self-check records are not overwritten."
+}
