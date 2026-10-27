@@ -1,0 +1,75 @@
+{
+  "schema": "CONDITIONAL_STABILITY_PROTOCOL_ADAPTATION_V1",
+  "kind": "register_overlay",
+  "baseline_ref": "7708a3a1289b1a009c269d81edceef06a4c347dc",
+  "frozen_inputs_sha256": "3f9ba9601ec9308969ccfa364cb306fc91acc6f68274ad637ecaff406e531c2e",
+  "source_tree_sha256": "0e17dd5ef3c4a9e3eaea47c8c0b7e83f6ef097915bed6092ca81e3e6c032abe0",
+  "immutable_driver": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/longterm_control_statistics_v1/native_protocol/register_overlay.py",
+    "sha256": "3679552fc1599894cd1cf0ce5aba3324c1d13d885fbcdd6c96fc1796dbc1c939"
+  },
+  "executed_source_sha256": "3ec9045a87cacdf8e696c9acf724bbcbd29bd050137ad0723664037f7b67ee6f",
+  "substitutions": [
+    {
+      "old": "\"LONGTERM_ACTUAL_FULL_BUILD_V1\"",
+      "new": "\"CONDITIONAL_STABILITY_ACTUAL_FULL_BUILD_V1\"",
+      "occurrences": 1
+    },
+    {
+      "old": "NAME = \"LONGTERM_CONTROL_STATISTICS\"",
+      "new": "NAME = \"CONDITIONAL_STABILITY\"",
+      "occurrences": 1
+    },
+    {
+      "old": "PROTOCOL = PACKET + \"longterm_control_statistics_v1/native_protocol/\"",
+      "new": "PROTOCOL = PACKET + \"conditional_stability_v1/native_protocol/\"",
+      "occurrences": 1
+    },
+    {
+      "old": "\"longterm_control_statistics_v1\"",
+      "new": "\"conditional_stability_v1\"",
+      "occurrences": 1
+    },
+    {
+      "old": "EXPECTED_SOURCE = \"60cd5f8ab161c5b51394463c466947a4c6a6c1742ecdcd9c2bbfc41c0c06bd31\"",
+      "new": "EXPECTED_SOURCE = '0e17dd5ef3c4a9e3eaea47c8c0b7e83f6ef097915bed6092ca81e3e6c032abe0'",
+      "occurrences": 1
+    },
+    {
+      "old": "PRIOR_MODULES, MODULES, PRIOR_PUBLIC, NEW_PUBLIC = 666, 678, 4147, 90",
+      "new": "PRIOR_MODULES, MODULES, PRIOR_PUBLIC, NEW_PUBLIC = 701, 703, 4463, 11",
+      "occurrences": 1
+    },
+    {
+      "old": "(PRIOR_MODULES, MODULES, PRIOR_PUBLIC, 8)",
+      "new": "(PRIOR_MODULES, MODULES, PRIOR_PUBLIC, 15)",
+      "occurrences": 1
+    },
+    {
+      "old": "require(hinted == 27,",
+      "new": "require(hinted == 0,",
+      "occurrences": 1
+    },
+    {
+      "old": "NATIVE, OVERLAY, \"development_lexical_reuse_hints.json\")",
+      "new": "NATIVE, OVERLAY, \"development_lexical_reuse_hints.json\", 'PROTOCOL_ADAPTATION.json', 'FROZEN_INPUTS.json', 'protocol_adapter.py', 'integration_native.py', 'immutable_integration_native.py', 'executed_integration_native.py')",
+      "occurrences": 1
+    },
+    {
+      "old": "for name in (\"FULL_BUILD_RECEIPT.json\", \"full-build.log\"):",
+      "new": "for name in (\"FULL_BUILD_RECEIPT.json\", \"full-build.log\", 'PROTOCOL_ADAPTATION.json', 'FROZEN_INPUTS.json', 'protocol_adapter.py', 'full_build.py', 'immutable_full_build.py', 'executed_full_build.py'):",
+      "occurrences": 1
+    },
+    {
+      "old": "    provenance = {\"schema\": NAME + \"_REGISTRATION_PROVENANCE_V1\", \"inputs\": inputs,",
+      "new": "    for name, content in ADAPTED_REGISTRATION_INPUTS.items():\n        record(\"executed_registration_protocol\", \"executed-memory:\" + name,\n               (archive / \"drivers\" / name).relative_to(repo), content)\n    provenance = {\"schema\": NAME + \"_REGISTRATION_PROVENANCE_V1\", \"inputs\": inputs,",
+      "occurrences": 1
+    }
+  ],
+  "wrapper": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/native_protocol/register_overlay.py",
+    "sha256": "71f810000fdafa39c1cc28e0e5a219521e0e385fd7ae30fa0febfcbcfb3357bf"
+  },
+  "adapter_sha256": "0e839d073bf00bfd66941344bfa0665c41a20a9ce4dd98cfe08df8129f7d68b0",
+  "claim": "Only listed scope/schema/metadata and export recursion-limit substitutions; actual execution, full census, raw-type comparisons, fixed-edge replay, and source/runtime identity gates remain in the executed predecessor code."
+}

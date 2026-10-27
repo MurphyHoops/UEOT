@@ -1,0 +1,74 @@
+/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/FiniteConditionalStability.lean:54:71: error: unsolved goals
+X : Type u
+inst✝² : Fintype X
+inst✝¹ : MeasurableSpace X
+inst✝ : MeasurableSingletonClass X
+p : PMF X
+S : Set X
+hset : S = ↑{x | x ∈ S}
+⊢ (∑ a, if a ∈ S then (p a).toReal else 0) = ∑ x, if x ∈ ↑{x | x ∈ S} then (p x).toReal else 0
+/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/FiniteConditionalStability.lean:60:8: warning: automatically included section variable(s) unused in theorem `_private._stdin.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.total_mass_sum`:
+  [MeasurableSpace X]
+  [MeasurableSingletonClass X]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace X] [MeasurableSingletonClass X] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/FiniteConditionalStability.lean:136:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  min (?m.224 * ?m.230) (?m.224 * ?c)
+in the target expression
+  min (p x).toReal (q x).toReal ≤ min (q.toMeasure.real S * (pc x).toReal) (q.toMeasure.real S * (qc x).toReal)
+
+case pos
+X : Type u
+inst✝² : Fintype X
+inst✝¹ : MeasurableSpace X
+inst✝ : MeasurableSingletonClass X
+p q : PMF X
+S : Set X
+hp : 0 < p.toMeasure.real S
+hq : 0 < q.toMeasure.real S
+hmass : p.toMeasure.real S ≤ q.toMeasure.real S
+pc : PMF X := conditionedPMF p S hp
+qc : PMF X := conditionedPMF q S hq
+x : X
+hx : x ∈ S
+hpatom : p.toMeasure.real S * ((conditionedPMF p S hp) x).toReal = (p x).toReal
+hqatom : q.toMeasure.real S * ((conditionedPMF q S hq) x).toReal = (q x).toReal
+hple : (p x).toReal ≤ q.toMeasure.real S * (pc x).toReal
+hqeq : (q x).toReal = q.toMeasure.real S * (qc x).toReal
+hmin : min (p x).toReal (q x).toReal ≤ min (q.toMeasure.real S * (pc x).toReal) (q.toMeasure.real S * (qc x).toReal)
+⊢ min (p x).toReal (q x).toReal ≤ q.toMeasure.real S * min (pc x).toReal (qc x).toReal + 0
+/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/FiniteConditionalStability.lean:136:30: error: Application type mismatch: The argument
+  le_of_lt hq
+has type
+  0 ≤ q.toMeasure.real S
+of sort `Prop` but is expected to have type
+  ?m.221
+of sort `Type ?u.128` in the application
+  mul_min_of_nonneg (le_of_lt hq)
+/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/FiniteConditionalStability.lean:227:28: error: Application type mismatch: The argument
+  hf
+has type
+  Measurable f
+of sort `Prop` but is expected to have type
+  PMF ?m.63
+of sort `Type ?u.60` in the application
+  PMF.toMeasure_map ?m.65 hf
+/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/FiniteConditionalStability.lean:226:46: error: unsolved goals
+X : Type u
+inst✝³ : Fintype X
+inst✝² : MeasurableSpace X
+inst✝¹ : MeasurableSingletonClass X
+Y : Type v
+inst✝ : MeasurableSpace Y
+p q : PMF X
+S : Set X
+hp : 0 < p.toMeasure.real S
+hq : 0 < q.toMeasure.real S
+epsilon : ℝ
+hTV : tvDist p.toMeasure q.toMeasure ≤ epsilon
+f : X → Y
+hf : Measurable f
+⊢ tvDist (PMF.map f (conditionedPMF p S hp)).toMeasure (PMF.map f (conditionedPMF q S hq)).toMeasure ≤
+    min 1 (epsilon / q.toMeasure.real S)

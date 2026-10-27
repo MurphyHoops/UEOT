@@ -1,0 +1,637 @@
+{
+  "schema": "CONDITIONAL_STABILITY_TYPED_REUSE_REVIEW_V1",
+  "reviewer": "/root/core_semantics_audit",
+  "review_date_asia_shanghai": "2026-10-28",
+  "verdict": "PASS",
+  "blocking_findings": [],
+  "candidate_commit": "281b797253eb1b1170954fa0a512df17c7a46332",
+  "candidate_tree_reported_by_root": "2d33d2858982d49dfee11abb4bb734975122e27d",
+  "baseline_commit": "7708a3a1289b1a009c269d81edceef06a4c347dc",
+  "candidate_identity_basis": "Exact Git-object preflight receipt names the commit. Reviewed mathematical bytes match its existing full/native evidence; GitHub final-head review will follow the documentation-only successor.",
+  "source_tree_sha256": "0e17dd5ef3c4a9e3eaea47c8c0b7e83f6ef097915bed6092ca81e3e6c032abe0",
+  "new_source_sha256": {
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean": "ee47efdc109f9670c77f6bb04595c66f56e8475144bb75f2f190e0cdfd730e05",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStabilityWitness.lean": "434556fd1a9433bd3a52741520cba4743cc4747995caa44024869ef9da8e5829"
+  },
+  "preflight_status": "PASS_WITH_TYPED_REUSE_REVIEW_REQUIRED",
+  "new_public_declarations": 11,
+  "lexical_hint_groups": 0,
+  "interpretation": "零lexical hints和零stored-type isDefEq碰撞均不证明没有数学重叠。本审逐条阅读实际编译类型、源证明和邻近API，明确承认原子恒等式、正性、reference/readout封装等派生内容；11个公共名字不等于11条独立新数学原理。",
+  "scope": "核对全部11新声明的实际native type、19条注册proof edges、15个旧端点的实际compiled type，并比较旧fibre条件化、同权混合和Doob见证的假设与结论。未运行新的Lean证明，未修改数学源。",
+  "typed_existing_export": {
+    "receipt_sha256": "33dbdd828be2d1ff2d4709f28fda91e7ac2b0a68287abbd6135c63a7a6aaaa84",
+    "source_sha256": "2eba55302f9bc25166e5af6abb1a8504a87f72d0a9248fa4798afd74a38c0ce3",
+    "log_sha256": "f6c1cee4273b410b1c8ca5405ddaaed244963a08c192ac07e5bea4be0ea215ad",
+    "exit_code": 0,
+    "seconds": 3.83,
+    "actual_source_read": true,
+    "actual_log_hash_recomputed": true,
+    "log_json_equals_receipt_rows": true,
+    "count": 10,
+    "rows": [
+      {
+        "name": "PMF.filter_apply",
+        "type": "∀ {α : Type u_1} {p : PMF α} {s : Set α} (h : ∃ a ∈ s, a ∈ p.support) (a : α),\n  (p.filter s h) a = s.indicator (⇑p) a * (∑' (a' : α), s.indicator (⇑p) a')⁻¹"
+      },
+      {
+        "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.calibrated_reference_row",
+        "type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype A] [inst_2 : LinearOrder X] [inst_3 : DecidableEq Y]\n  [inst_4 : MeasurableSpace X] [MeasurableSingletonClass X] [inst_6 : MeasurableSpace Y] {N : ℕ} (hN : 0 < N)\n  (P : X → A → PMF X) (q : X → Y) (fallback : X)\n  (sample : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.SampleTable X A N) (u : ℚ),\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.CalibrationGood P hN sample ↑u →\n    ∀ (x : X) (a : A),\n      UEOT.V3.TotalVariation.tvDist (PMF.map q (P x a)).toMeasure\n          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.referenceKernel hN q fallback\n              sample (q x) a).toMeasure ≤\n        min 1\n          (↑u + ↑(UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalDefect q sample))"
+      },
+      {
+        "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalDefect_nonneg",
+        "type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype A] [inst_2 : LinearOrder X] [inst_3 : DecidableEq Y] {N : ℕ}\n  (q : X → Y) (sample : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.SampleTable X A N),\n  0 ≤ UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalDefect q sample"
+      },
+      {
+        "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_policy_projected_path_error",
+        "type": "∀ {X Y A : Type u} [Fintype X] [Fintype Y] [Fintype A] [inst : MeasurableSpace Y] [MeasurableSingletonClass Y]\n  [inst_2 : MeasurableSpace A] [MeasurableSingletonClass A] (p₀ : PMF X) (q : X → Y) (P : ℕ → X → A → PMF X)\n  (Q : ℕ → Y → A → PMF Y) (π : (n : ℕ) → UEOT.V3.PathError.CausalHistory Y (A × Y) n → PMF A) (ε : ℕ → ℝ) (T : ℕ),\n  (∀ n < T, 0 ≤ ε n) →\n    (∀ n < T, ε n ≤ 1) →\n      (∀ n < T,\n          ∀ (x : X) (a : A),\n            UEOT.V3.TotalVariation.tvDist (PMF.map q (P n x a)).toMeasure (Q n (q x) a).toMeasure ≤ ε n) →\n        UEOT.V3.TotalVariation.tvDist\n              (PMF.map\n                  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskHistoryMap q (fun ax => (ax.1, q ax.2)) T)\n                  (UEOT.V3.PathError.causalLaw p₀\n                    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskMicroControlKernel q P π) T)).toMeasure\n              (UEOT.V3.PathError.causalLaw (PMF.map q p₀)\n                  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskMacroControlKernel Q π) T).toMeasure ≤\n            1 - ∏ i ∈ Finset.range T, (1 - ε i) ∧\n          1 - ∏ i ∈ Finset.range T, (1 - ε i) ≤ ∑ i ∈ Finset.range T, ε i"
+      },
+      {
+        "name": "UEOT.V3.PathError.causalLaw_tv_bound",
+        "type": "∀ {H₀ Z : Type uHist} [Fintype H₀] [Fintype Z] [inst : MeasurableSpace H₀] [MeasurableSingletonClass H₀]\n  [inst_2 : MeasurableSpace Z] [MeasurableSingletonClass Z] (p₀ : PMF H₀)\n  (K L : (n : ℕ) → UEOT.V3.PathError.CausalHistory H₀ Z n → PMF Z) (ε : ℕ → ℝ),\n  (∀ (n : ℕ), 0 ≤ ε n) →\n    (∀ (n : ℕ), ε n ≤ 1) →\n      (∀ (n : ℕ) (h : UEOT.V3.PathError.CausalHistory H₀ Z n),\n          UEOT.V3.TotalVariation.tvDist (K n h).toMeasure (L n h).toMeasure ≤ ε n) →\n        ∀ (T : ℕ),\n          UEOT.V3.TotalVariation.tvDist (UEOT.V3.PathError.causalLaw p₀ K T).toMeasure\n              (UEOT.V3.PathError.causalLaw p₀ L T).toMeasure ≤\n            1 - ∏ i ∈ Finset.range T, (1 - ε i)"
+      },
+      {
+        "name": "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass",
+        "type": "∀ {α : Type u_1} [inst : Fintype α] [inst_1 : MeasurableSpace α] [MeasurableSingletonClass α] (p q : PMF α),\n  UEOT.V3.TotalVariation.tvDist p.toMeasure q.toMeasure = 1 - UEOT.V3.PathError.pmfCommonMass p q"
+      },
+      {
+        "name": "UEOT.V3.TotalVariation.tvDist_le_one",
+        "type": "∀ {X : Type uX} [inst : MeasurableSpace X] (μ ν : MeasureTheory.Measure X) [MeasureTheory.IsProbabilityMeasure μ]\n  [MeasureTheory.IsProbabilityMeasure ν], UEOT.V3.TotalVariation.tvDist μ ν ≤ 1"
+      },
+      {
+        "name": "UEOT.V3.TotalVariation.tvDist_map_le",
+        "type": "∀ {X : Type uX} {Y : Type uY} [inst : MeasurableSpace X] [inst_1 : MeasurableSpace Y] (μ ν : MeasureTheory.Measure X)\n  [MeasureTheory.IsProbabilityMeasure μ] [MeasureTheory.IsProbabilityMeasure ν] (f : X → Y),\n  Measurable f →\n    UEOT.V3.TotalVariation.tvDist (MeasureTheory.Measure.map f μ) (MeasureTheory.Measure.map f ν) ≤\n      UEOT.V3.TotalVariation.tvDist μ ν"
+      },
+      {
+        "name": "UEOT.V3.TotalVariation.tvDist_nonneg",
+        "type": "∀ {X : Type uX} [inst : MeasurableSpace X] (μ ν : MeasureTheory.Measure X) [MeasureTheory.IsProbabilityMeasure μ]\n  [MeasureTheory.IsProbabilityMeasure ν], 0 ≤ UEOT.V3.TotalVariation.tvDist μ ν"
+      },
+      {
+        "name": "UEOT.V3.TotalVariation.tvEvent_le",
+        "type": "∀ {X : Type uX} [inst : MeasurableSpace X] (μ ν : MeasureTheory.Measure X) [MeasureTheory.IsProbabilityMeasure μ]\n  [MeasureTheory.IsProbabilityMeasure ν] (A : Set X),\n  MeasurableSet A → |μ.real A - ν.real A| ≤ UEOT.V3.TotalVariation.tvDist μ ν"
+      }
+    ]
+  },
+  "additional_source_peers_read": [
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePMFProjection.lean",
+      "symbols": [
+        "risk_map_mul_fiberPosterior",
+        "risk_conditionedRow_mass",
+        "risk_tv_bind_same_weights",
+        "risk_conditionedRow_tv_le"
+      ],
+      "basis": "Read source statements and proofs in immutable baseline snapshot; all four also have actual compiled types in TYPED_REUSE_NEARBY.json, source/log bytes independently hashed."
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoobWitness.lean",
+      "symbols": [
+        "FiniteWindowDoobWitnessCheck.actual_conditioned_doob_tv"
+      ],
+      "basis": "Read the exact fixed-source conditional-versus-Doob statement and proof; actual compiled type also reviewed in TYPED_REUSE_NEARBY.json."
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindow.lean",
+      "symbols": [
+        "TotalFiniteWindowCheck.generated_ambient_eq_actual"
+      ],
+      "basis": "Prior complete source semantic review; identifies one actual conditioned source law and does not subsume perturbation stability."
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+      "symbols": [
+        "NoisyFiniteRiskOracle.synthesized_actual_risk_le_budget_on_good"
+      ],
+      "basis": "Prior source review of the existing unconditional finite-risk consumer."
+    }
+  ],
+  "per_theorem_reviews": [
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.mass_mul_conditioned_atom",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "source_line": 90,
+      "native_type_reviewed": true,
+      "native_type": "∀ {X : Type u} [inst : Fintype X] [inst_1 : MeasurableSpace X] [inst_2 : MeasurableSingletonClass X] (p : PMF X)\n  (S : Set X) (hp : 0 < p.toMeasure.real S) (x : X),\n  p.toMeasure.real S *\n      ((UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditionedPMF p S hp)\n          x).toReal =\n    if x ∈ S then (p x).toReal else 0",
+      "native_type_text_sha256": "636f81125470eb61374db488c439307a5d595f8c2b3952b6b6bff2dd5fdcbe67",
+      "native_level_parameters": [
+        "u"
+      ],
+      "direct_registered_proof_dependencies": [],
+      "actual_reused_existing_compiled_peers_through_owned_helpers": [
+        "PMF.filter_apply"
+      ],
+      "classification": "FILTER_ATOM_INTERFACE_ADAPTER",
+      "nearest_existing_apis": [
+        "PMF.filter_apply",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_map_mul_fiberPosterior",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_conditionedRow_mass"
+      ],
+      "comparison": "PMF.filter_apply 已给任意集合上的实际滤后原子公式。risk_map_mul_fiberPosterior 已给 ENNReal 下的观测 fibre 质量乘后验恒等式；把 S 编码成二元观测 fibre、再转换 positivity/support 和实数质量即可得到相近内容。risk_conditionedRow_mass 还包含后验 bind 的联合质量分解。",
+      "increment": "把同一实际 PMF.filter 的质量恒等式暴露为 finite real event-mass 接口，直接使用 p.toMeasure.real S>0；这是接口整理，明确承认与旧 fibre 恒等式数学重叠，不计为独立新原理。",
+      "consumer": "主界的共同质量证明和非饱和正例都消费该接口，以避免另给条件分布或条件原子质量。当前证明已直接复用 PMF.filter_apply；无须为 typed review 改写已通过的源码。",
+      "limits": "有限状态；条件 PMF 的构造需要正事件质量。",
+      "decision": "CLEAR_WITH_STATED_REUSE_AND_SCOPE",
+      "nearest_peers_with_actual_compiled_type_evidence": [
+        "PMF.filter_apply",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_map_mul_fiberPosterior",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_conditionedRow_mass"
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_max_mass",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "source_line": 168,
+      "native_type_reviewed": true,
+      "native_type": "∀ {X : Type u} [inst : Fintype X] [inst_1 : MeasurableSpace X] [inst_2 : MeasurableSingletonClass X] (p q : PMF X)\n  (S : Set X) (hp : 0 < p.toMeasure.real S) (hq : 0 < q.toMeasure.real S) (epsilon : ℝ),\n  UEOT.V3.TotalVariation.tvDist p.toMeasure q.toMeasure ≤ epsilon →\n    UEOT.V3.TotalVariation.tvDist\n        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditionedPMF p S hp).toMeasure\n        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditionedPMF q S\n            hq).toMeasure ≤\n      min 1 (epsilon / max (p.toMeasure.real S) (q.toMeasure.real S))",
+      "native_type_text_sha256": "70d9051d50ee3f5d709266a5c27cdc8a101670e727bb3a2acf87e3048a386312",
+      "native_level_parameters": [
+        "u"
+      ],
+      "direct_registered_proof_dependencies": [
+        "UEOT.V3.TotalVariation.tvDist_le_one"
+      ],
+      "actual_reused_existing_compiled_peers_through_owned_helpers": [
+        "PMF.filter_apply",
+        "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass",
+        "UEOT.V3.TotalVariation.tvDist_le_one"
+      ],
+      "classification": "SHARP_SAME_EVENT_CONDITIONAL_BOUND",
+      "nearest_existing_apis": [
+        "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass",
+        "UEOT.V3.TotalVariation.tvDist_le_one",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_tv_bind_same_weights",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_conditionedRow_tv_le"
+      ],
+      "comparison": "旧 risk_conditionedRow_tv_le 从逐微观行统一 TV 界推出同一个 fibre posterior 混合到参考行的界；其混合权重共同且 null fibre 直接 fallback。它不从两份原始律的 TV 控制两份不同的条件归一化权重。旧共同质量恒等式与 TV<=1 是此证明的基础，并未包含 epsilon/max(P(S),Q(S)) 结论。",
+      "increment": "实际同一事件滤后律的尖锐放大界，消除了旧审计非最优的因子2；两事件质量可不同。证明中的新比较位于 private max_mass_mul_conditioned_tv_le_right，再复用已有共同质量恒等式、正性和TV上界。",
+      "consumer": "所有 reference-only、readout、causal path 和 noisy R2 条件消费者的核心上界。参数化与非饱和见证分别固定最优放大系数和未饱和取等。",
+      "limits": "同一事件、同一有限字母表、两事件正质量；不比较失配事件或宣称新的普遍 TV 理论。",
+      "decision": "CLEAR_WITH_STATED_REUSE_AND_SCOPE",
+      "nearest_peers_with_actual_compiled_type_evidence": [
+        "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass",
+        "UEOT.V3.TotalVariation.tvDist_le_one",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_tv_bind_same_weights",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_conditionedRow_tv_le"
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_certifies_positive",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "source_line": 191,
+      "native_type_reviewed": true,
+      "native_type": "∀ {X : Type u} [Fintype X] [inst : MeasurableSpace X] [MeasurableSingletonClass X] (p q : PMF X) (S : Set X)\n  (epsilon : ℝ),\n  UEOT.V3.TotalVariation.tvDist p.toMeasure q.toMeasure ≤ epsilon →\n    epsilon < q.toMeasure.real S → 0 < p.toMeasure.real S ∧ 0 < q.toMeasure.real S",
+      "native_type_text_sha256": "e78ada6d864629c6ace3dfdcb783f61b75be58fae5aa662e090cadff534d3da5",
+      "native_level_parameters": [
+        "u"
+      ],
+      "direct_registered_proof_dependencies": [
+        "UEOT.V3.TotalVariation.tvEvent_le",
+        "UEOT.V3.TotalVariation.tvDist_nonneg"
+      ],
+      "actual_reused_existing_compiled_peers_through_owned_helpers": [
+        "UEOT.V3.TotalVariation.tvDist_nonneg",
+        "UEOT.V3.TotalVariation.tvEvent_le"
+      ],
+      "classification": "EXISTING_EVENT_TV_POSITIVITY_COROLLARY",
+      "nearest_existing_apis": [
+        "UEOT.V3.TotalVariation.tvEvent_le",
+        "UEOT.V3.TotalVariation.tvDist_nonneg"
+      ],
+      "comparison": "已有 tvEvent_le 直接控制事件概率差，非负性使 epsilon>=0；本项是这两条定理的线性算术推论，不包含新的概率不等式。",
+      "increment": "把可检查的 Q(S)>epsilon 转成两份实际 filter 所需的正性证明，避免调用者另传未知 P(S)>0。",
+      "consumer": "reference_mass_conditional_certificate 在构造依赖正性证明的条件 PMF 之前调用它。",
+      "limits": "严格大于条件用于排除真实零概率事件；Q(S)<=epsilon 时本证据不提供正性。",
+      "decision": "CLEAR_WITH_STATED_REUSE_AND_SCOPE",
+      "nearest_peers_with_actual_compiled_type_evidence": [
+        "UEOT.V3.TotalVariation.tvEvent_le",
+        "UEOT.V3.TotalVariation.tvDist_nonneg"
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_reference_mass",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "source_line": 204,
+      "native_type_reviewed": true,
+      "native_type": "∀ {X : Type u} [inst : Fintype X] [inst_1 : MeasurableSpace X] [inst_2 : MeasurableSingletonClass X] (p q : PMF X)\n  (S : Set X) (hp : 0 < p.toMeasure.real S) (hq : 0 < q.toMeasure.real S) (epsilon : ℝ),\n  UEOT.V3.TotalVariation.tvDist p.toMeasure q.toMeasure ≤ epsilon →\n    UEOT.V3.TotalVariation.tvDist\n        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditionedPMF p S hp).toMeasure\n        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditionedPMF q S\n            hq).toMeasure ≤\n      min 1 (epsilon / q.toMeasure.real S)",
+      "native_type_text_sha256": "4b6ce5f262a6cbf5a1abfb35d8c049db498f06aebd5fe2178d7dabc5b5204aa9",
+      "native_level_parameters": [
+        "u"
+      ],
+      "direct_registered_proof_dependencies": [
+        "UEOT.V3.TotalVariation.tvDist_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_max_mass"
+      ],
+      "actual_reused_existing_compiled_peers_through_owned_helpers": [
+        "PMF.filter_apply",
+        "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass",
+        "UEOT.V3.TotalVariation.tvDist_le_one",
+        "UEOT.V3.TotalVariation.tvDist_nonneg"
+      ],
+      "classification": "REFERENCE_DENOMINATOR_COROLLARY",
+      "nearest_existing_apis": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_max_mass",
+        "UEOT.V3.TotalVariation.tvDist_nonneg"
+      ],
+      "comparison": "这是本增量主界的单调弱化：max(P(S),Q(S))>=Q(S)。完全复用主界，无独立同义证明；旧通用 TV 非负性提供分子非负。",
+      "increment": "保留只依赖参考事件质量的 epsilon/Q(S) 分母，使消费者无需求真实事件质量；不把该直接推论描述成第二条独立原理。",
+      "consumer": "参考证书、可测 readout 和正例取等证明直接使用该形式。",
+      "limits": "该条本身仍接收两边正性；自动正性由下一封装提供。",
+      "decision": "CLEAR_WITH_STATED_REUSE_AND_SCOPE",
+      "nearest_peers_with_actual_compiled_type_evidence": [
+        "UEOT.V3.TotalVariation.tvDist_nonneg"
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_conditional_certificate",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "source_line": 219,
+      "native_type_reviewed": true,
+      "native_type": "∀ {X : Type u} [inst : Fintype X] [inst_1 : MeasurableSpace X] [inst_2 : MeasurableSingletonClass X] (p q : PMF X)\n  (S : Set X) (epsilon : ℝ),\n  UEOT.V3.TotalVariation.tvDist p.toMeasure q.toMeasure ≤ epsilon →\n    epsilon < q.toMeasure.real S →\n      ∃ (hp : 0 < p.toMeasure.real S) (hq : 0 < q.toMeasure.real S),\n        UEOT.V3.TotalVariation.tvDist\n            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditionedPMF p S\n                hp).toMeasure\n            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditionedPMF q S\n                hq).toMeasure ≤\n          min 1 (epsilon / q.toMeasure.real S)",
+      "native_type_text_sha256": "87fdbfc8f253ba4dc75231f6490e3cc98cb0098b462000d6efc2c634da436ac0",
+      "native_level_parameters": [
+        "u"
+      ],
+      "direct_registered_proof_dependencies": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_certifies_positive",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_reference_mass"
+      ],
+      "actual_reused_existing_compiled_peers_through_owned_helpers": [
+        "PMF.filter_apply",
+        "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass",
+        "UEOT.V3.TotalVariation.tvDist_le_one",
+        "UEOT.V3.TotalVariation.tvDist_nonneg",
+        "UEOT.V3.TotalVariation.tvEvent_le"
+      ],
+      "classification": "REFERENCE_ONLY_CONSUMER_PACKAGE",
+      "nearest_existing_apis": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_certifies_positive",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_reference_mass",
+        "UEOT.V3.TotalVariation.tvEvent_le"
+      ],
+      "comparison": "把上两条已证明结果顺序组合为存在 hp,hq 的依赖类型结果。没有增加原始概率假设，也没有另证明条件TV。",
+      "increment": "提供只接收无条件 TV 预算和参考质量余量的安全调用入口：先得正性，再返回实际 filter 律的界。属于必要消费者封装。",
+      "consumer": "causal_path_conditional_certificate 与 noisy_reference_conditional_certificate 的统一终点，调用处不再人为供应真实条件质量。",
+      "limits": "不是训练边缘不变的联合条件化定理，也不处理事件定义不一致。",
+      "decision": "CLEAR_WITH_STATED_REUSE_AND_SCOPE",
+      "nearest_peers_with_actual_compiled_type_evidence": [
+        "UEOT.V3.TotalVariation.tvEvent_le"
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditioned_readout_tv_le_reference_mass",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "source_line": 232,
+      "native_type_reviewed": true,
+      "native_type": "∀ {X : Type u} [inst : Fintype X] [inst_1 : MeasurableSpace X] [inst_2 : MeasurableSingletonClass X] {Y : Type v}\n  [inst_3 : MeasurableSpace Y] (p q : PMF X) (S : Set X) (hp : 0 < p.toMeasure.real S) (hq : 0 < q.toMeasure.real S)\n  (epsilon : ℝ),\n  UEOT.V3.TotalVariation.tvDist p.toMeasure q.toMeasure ≤ epsilon →\n    ∀ (f : X → Y),\n      Measurable f →\n        UEOT.V3.TotalVariation.tvDist\n            (PMF.map f\n                (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditionedPMF p S\n                  hp)).toMeasure\n            (PMF.map f\n                (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditionedPMF q S\n                  hq)).toMeasure ≤\n          min 1 (epsilon / q.toMeasure.real S)",
+      "native_type_text_sha256": "ceac61723fa8db68f5c28ac75ed24a732eb7d71d0c6ad3b70d0a41d773ba2483",
+      "native_level_parameters": [
+        "u",
+        "v"
+      ],
+      "direct_registered_proof_dependencies": [
+        "UEOT.V3.TotalVariation.tvDist_map_le",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_reference_mass"
+      ],
+      "actual_reused_existing_compiled_peers_through_owned_helpers": [
+        "PMF.filter_apply",
+        "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass",
+        "UEOT.V3.TotalVariation.tvDist_le_one",
+        "UEOT.V3.TotalVariation.tvDist_map_le",
+        "UEOT.V3.TotalVariation.tvDist_nonneg"
+      ],
+      "classification": "DATA_PROCESSING_READOUT_ADAPTER",
+      "nearest_existing_apis": [
+        "UEOT.V3.TotalVariation.tvDist_map_le",
+        "PMF.toMeasure_map",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_reference_mass"
+      ],
+      "comparison": "已有 tvDist_map_le 对任意同一可测 map 收缩 TV；本条显式复用它并通过 PMF.toMeasure_map 对接实际条件PMF。新的内容仅为所需输入/输出接口与前置条件化证书。",
+      "increment": "把同一条件路径证书送到前缀、终态或其他共同可测读出，目标空间可非有限。不是新的 data processing 原理。",
+      "consumer": "实际有限窗的前缀/终态消费者可以直接读出条件保证，不需各自重做 map-toMeasure 转换。",
+      "limits": "两边是同一函数；不声称先 map 再对不同事件条件化与本操作等价。",
+      "decision": "CLEAR_WITH_STATED_REUSE_AND_SCOPE",
+      "nearest_peers_with_actual_compiled_type_evidence": [
+        "UEOT.V3.TotalVariation.tvDist_map_le"
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.causal_path_conditional_certificate",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "source_line": 249,
+      "native_type_reviewed": true,
+      "native_type": "∀ {H Z : Type u} [inst : Fintype H] [inst_1 : Fintype Z] [inst_2 : MeasurableSpace H]\n  [inst_3 : MeasurableSingletonClass H] [inst_4 : MeasurableSpace Z] [inst_5 : MeasurableSingletonClass Z] (p0 : PMF H)\n  (K L : (n : ℕ) → UEOT.V3.PathError.CausalHistory H Z n → PMF Z) (epsilon : ℕ → ℝ),\n  (∀ (n : ℕ), 0 ≤ epsilon n) →\n    (∀ (n : ℕ), epsilon n ≤ 1) →\n      (∀ (n : ℕ) (h : UEOT.V3.PathError.CausalHistory H Z n),\n          UEOT.V3.TotalVariation.tvDist (K n h).toMeasure (L n h).toMeasure ≤ epsilon n) →\n        ∀ (T : ℕ) (S : Set (UEOT.V3.PathError.CausalHistory H Z T)),\n          1 - ∏ i ∈ Finset.range T, (1 - epsilon i) < (UEOT.V3.PathError.causalLaw p0 L T).toMeasure.real S →\n            ∃ (hp : 0 < (UEOT.V3.PathError.causalLaw p0 K T).toMeasure.real S) (hq :\n              0 < (UEOT.V3.PathError.causalLaw p0 L T).toMeasure.real S),\n              UEOT.V3.TotalVariation.tvDist\n                  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditionedPMF\n                      (UEOT.V3.PathError.causalLaw p0 K T) S hp).toMeasure\n                  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditionedPMF\n                      (UEOT.V3.PathError.causalLaw p0 L T) S hq).toMeasure ≤\n                min 1\n                  ((1 - ∏ i ∈ Finset.range T, (1 - epsilon i)) / (UEOT.V3.PathError.causalLaw p0 L T).toMeasure.real S)",
+      "native_type_text_sha256": "76ced22e24f647a8ba92e155a6ee509342c79f29046b98cce55ac3739b30f916",
+      "native_level_parameters": [
+        "u"
+      ],
+      "direct_registered_proof_dependencies": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_conditional_certificate",
+        "UEOT.V3.PathError.causalLaw_tv_bound"
+      ],
+      "actual_reused_existing_compiled_peers_through_owned_helpers": [
+        "PMF.filter_apply",
+        "UEOT.V3.PathError.causalLaw_tv_bound",
+        "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass",
+        "UEOT.V3.TotalVariation.tvDist_le_one",
+        "UEOT.V3.TotalVariation.tvDist_nonneg",
+        "UEOT.V3.TotalVariation.tvEvent_le"
+      ],
+      "classification": "CAUSAL_PATH_CONDITIONAL_CONSUMER",
+      "nearest_existing_apis": [
+        "UEOT.V3.PathError.causalLaw_tv_bound",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_conditional_certificate",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_ambient_eq_actual"
+      ],
+      "comparison": "causalLaw_tv_bound 已从相同初态及逐行误差得到 1-product(1-epsilon_t) 的无条件路径界；R0 generated_ambient_eq_actual 识别一份原源的实际条件路径。前者尚无条件化放大，后者不比较两份有误差的源。新条直接组合既有路径预算和本层参考条件证书。",
+      "increment": "从真实因果核输入导出实际路径 filter 正性与条件 TV，调用者无需另提供整条路径拟合。是路径证书消费者，不重复证明已有路径耦合/乘积界。",
+      "consumer": "把 R0 有限窗的条件化语义接到已有 causalLaw 误差预算；可继续应用同一 readout。",
+      "limits": "共同原初态；逐行误差前提在该接口中对所有时刻给出，有限T实际只用前T步；不证明条件核可以用原动作实现。",
+      "decision": "CLEAR_WITH_STATED_REUSE_AND_SCOPE",
+      "nearest_peers_with_actual_compiled_type_evidence": [
+        "UEOT.V3.PathError.causalLaw_tv_bound"
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.noisy_reference_conditional_certificate",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "source_line": 275,
+      "native_type_reviewed": true,
+      "native_type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype Y] [inst_2 : Fintype A] [inst_3 : LinearOrder X]\n  [inst_4 : DecidableEq Y] [DecidableEq A] [inst_6 : MeasurableSpace X] [MeasurableSingletonClass X]\n  [inst_8 : MeasurableSpace Y] [inst_9 : MeasurableSingletonClass Y] [inst_10 : MeasurableSpace A]\n  [inst_11 : MeasurableSingletonClass A] {N : ℕ} (hN : 0 < N) (p0 : PMF X) (q : X → Y) (P : X → A → PMF X)\n  (fallback : X) (sample : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.SampleTable X A N)\n  (u : ℚ),\n  0 ≤ u →\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.CalibrationGood P hN sample ↑u →\n      ∀ (program : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ExecutableSupportSynthesis.Program X Y A) (T : ℕ)\n        (S : Set (UEOT.V3.PathError.CausalHistory Y (A × Y) T)),\n        1 -\n              (1 -\n                  min 1\n                    (↑u +\n                      ↑(UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalDefect q\n                          sample))) ^\n                T <\n            (UEOT.V3.PathError.causalLaw (PMF.map q p0)\n                    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskMacroControlKernel\n                      (fun x =>\n                        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.referenceKernel hN q\n                          fallback sample)\n                      program.toController.policy)\n                    T).toMeasure.real\n              S →\n          have actual :=\n            PMF.map (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskHistoryMap q (fun ax => (ax.1, q ax.2)) T)\n              (UEOT.V3.PathError.causalLaw p0\n                (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskMicroControlKernel q (fun x => P)\n                  program.toController.policy)\n                T);\n          have reference :=\n            UEOT.V3.PathError.causalLaw (PMF.map q p0)\n              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskMacroControlKernel\n                (fun x =>\n                  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.referenceKernel hN q\n                    fallback sample)\n                program.toController.policy)\n              T;\n          have pathError :=\n            1 -\n              (1 -\n                  min 1\n                    (↑u +\n                      ↑(UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalDefect q\n                          sample))) ^\n                T;\n          ∃ (hp : 0 < actual.toMeasure.real S) (hq : 0 < reference.toMeasure.real S),\n            UEOT.V3.TotalVariation.tvDist\n                (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditionedPMF actual S\n                    hp).toMeasure\n                (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditionedPMF reference\n                    S hq).toMeasure ≤\n              min 1 (pathError / reference.toMeasure.real S)",
+      "native_type_text_sha256": "db7fa3bf7e0521a4315f7cc64d274b35a1472cde04cc7e66031dc7cf5f20486d",
+      "native_level_parameters": [
+        "u"
+      ],
+      "direct_registered_proof_dependencies": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalDefect_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_policy_projected_path_error",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.calibrated_reference_row",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_conditional_certificate"
+      ],
+      "actual_reused_existing_compiled_peers_through_owned_helpers": [
+        "PMF.filter_apply",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.calibrated_reference_row",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalDefect_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_policy_projected_path_error",
+        "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass",
+        "UEOT.V3.TotalVariation.tvDist_le_one",
+        "UEOT.V3.TotalVariation.tvDist_nonneg",
+        "UEOT.V3.TotalVariation.tvEvent_le"
+      ],
+      "classification": "DIRECT_FIXED_RECORD_R2_CONSUMER",
+      "nearest_existing_apis": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.calibrated_reference_row",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalDefect_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_policy_projected_path_error",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.synthesized_actual_risk_le_budget_on_good",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_conditional_certificate"
+      ],
+      "comparison": "calibrated_reference_row 已把共同 CalibrationGood、经验纤维缺陷送到投影源行TV；same_policy_projected_path_error 已把它送到同策略的实际投影路径；旧 noisy risk 端点控制无条件事件风险。它们没有给同一观测事件 filter 后的正性与归一化TV。新条实际调用这条已有链，不把路径拟合或所需条件界作为参数。",
+      "increment": "固定同一训练表、P、q、参考核与Program，得到 e=min(1,u+empiricalDefect)、E_T=1-(1-e)^T，再由参考事件质量>E_T导出条件证书。这是本轮最直接的已有R2消费者。",
+      "consumer": "同一 noisy reference 部署模型的有限条件窗/观测读出误差；任何固定Program均可用，无需把成功综合或被选择强行加作行TV证明前提。",
+      "limits": "固定训练记录、同一可观察action/state事件；微观物理存活需事件拉回；联合训练/部署条件化会重加权训练边缘，未在本条处理。",
+      "decision": "CLEAR_WITH_STATED_REUSE_AND_SCOPE",
+      "nearest_peers_with_actual_compiled_type_evidence": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.calibrated_reference_row",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalDefect_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_policy_projected_path_error"
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.rare_event_sharpness",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStabilityWitness.lean",
+      "source_line": 116,
+      "native_type_reviewed": true,
+      "native_type": "∀ (r : ℝ) (hr : 0 < r) (hr1 : r ≤ 1),\n  have p :=\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.rareSource r ⋯ hr1 false;\n  have q :=\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.rareSource r ⋯ hr1 true;\n  p.toMeasure.real UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.safe = r ∧\n    q.toMeasure.real UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.safe = r ∧\n      UEOT.V3.TotalVariation.tvDist p.toMeasure q.toMeasure = r ∧\n        ∃ (hp :\n          0 <\n            p.toMeasure.real UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.safe)\n          (hq :\n          0 <\n            q.toMeasure.real\n              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.safe),\n          UEOT.V3.TotalVariation.tvDist\n              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditionedPMF p\n                  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.safe\n                  hp).toMeasure\n              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditionedPMF q\n                  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.safe\n                  hq).toMeasure =\n            1",
+      "native_type_text_sha256": "e282840de4174143de6562d590d9e4d1b64c7a04ba051ea0dec3b404df1ca030",
+      "native_level_parameters": [],
+      "direct_registered_proof_dependencies": [],
+      "actual_reused_existing_compiled_peers_through_owned_helpers": [
+        "PMF.filter_apply",
+        "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass"
+      ],
+      "classification": "PARAMETRIC_ACTUAL_FILTER_SHARPNESS_WITNESS",
+      "nearest_existing_apis": [
+        "PMF.filter_apply",
+        "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_conditioned_doob_tv"
+      ],
+      "comparison": "旧 Doob 见证比较固定源的条件路径与另一条 stationary Doob 路径，其TV=1/4，不涉及两份原始PMF的TV、相同事件质量与误差放大。新见证从归一化三状态 PMF 与实际filter计算；主要基础是既有filter原子式和共同质量公式，非调用新主界反推等号。",
+      "increment": "每个0<r<=1同时给原TV=r、两事件质量=r、条件TV=1，固定了主界的普适最优放大系数。",
+      "consumer": "主界 sharpness 与下一条任意小误差 no-go；零 registered-direct edges 只表示其桥接经私有辅助定理，不表示未复用PMF/PathError。",
+      "limits": "三状态数学族，不是外部实验、独立世界机制或所有失配条件事件的反例。",
+      "decision": "CLEAR_WITH_STATED_REUSE_AND_SCOPE",
+      "nearest_peers_with_actual_compiled_type_evidence": [
+        "PMF.filter_apply",
+        "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_conditioned_doob_tv"
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.arbitrarily_small_unconditional_error",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStabilityWitness.lean",
+      "source_line": 138,
+      "native_type_reviewed": true,
+      "native_type": "∀ (delta : ℝ),\n  0 < delta →\n    ∃ p q,\n      ∃ (hp :\n        0 < p.toMeasure.real UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.safe)\n        (hq :\n        0 <\n          q.toMeasure.real UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.safe),\n        UEOT.V3.TotalVariation.tvDist p.toMeasure q.toMeasure < delta ∧\n          UEOT.V3.TotalVariation.tvDist\n              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditionedPMF p\n                  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.safe\n                  hp).toMeasure\n              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditionedPMF q\n                  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.safe\n                  hq).toMeasure =\n            1",
+      "native_type_text_sha256": "85387196ab80f1828f8ef237297dfa90e7e60aecf381b705ea267f9a64a64873",
+      "native_level_parameters": [],
+      "direct_registered_proof_dependencies": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.rare_event_sharpness"
+      ],
+      "actual_reused_existing_compiled_peers_through_owned_helpers": [
+        "PMF.filter_apply",
+        "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass"
+      ],
+      "classification": "QUANTIFIED_NO_UNIFORM_CONTINUITY_COROLLARY",
+      "nearest_existing_apis": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.rare_event_sharpness"
+      ],
+      "comparison": "显式选择 r=min(delta/2,1/2)并调用同层rare_event_sharpness；完全承认它是参数化见证的量化推论，没有第二套概率构造。",
+      "increment": "把取等族转成每个delta>0都有原TV<delta而条件TV=1的可直接引用边界，排除无存活质量控制的统一连续性主张。",
+      "consumer": "防止后续鲁棒性消费者删去正事件质量条件；是边界接口，非另一独立正向原理。",
+      "limits": "反对的是统一的小误差保证；不否定在正质量下或受限源族中的条件稳定性。",
+      "decision": "CLEAR_WITH_STATED_REUSE_AND_SCOPE",
+      "nearest_peers_with_actual_compiled_type_evidence": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.positive_reference_certificate_is_sharp",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStabilityWitness.lean",
+      "source_line": 190,
+      "native_type_reviewed": true,
+      "native_type": "∃ (hp :\n  0 <\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.positiveP.toMeasure.real\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.safe)\n  (hq :\n  0 <\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.positiveQ.toMeasure.real\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.safe),\n  UEOT.V3.TotalVariation.tvDist\n        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.positiveP.toMeasure\n        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.positiveQ.toMeasure =\n      1 / 8 ∧\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.positiveQ.toMeasure.real\n          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.safe =\n        1 / 2 ∧\n      UEOT.V3.TotalVariation.tvDist\n            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditionedPMF\n                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.positiveP\n                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.safe hp).toMeasure\n            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditionedPMF\n                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.positiveQ\n                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.safe\n                hq).toMeasure =\n          1 / 4 ∧\n        UEOT.V3.TotalVariation.tvDist\n            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditionedPMF\n                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.positiveP\n                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.safe hp).toMeasure\n            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditionedPMF\n                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.positiveQ\n                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.safe\n                hq).toMeasure ≤\n          min 1\n            (1 / 8 /\n              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.positiveQ.toMeasure.real\n                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.safe)",
+      "native_type_text_sha256": "cd1c3e30ad871ba12ba5965cfcf1c493cda7d9e513314da88e5405b1047cc18d",
+      "native_level_parameters": [],
+      "direct_registered_proof_dependencies": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.mass_mul_conditioned_atom",
+        "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_reference_mass"
+      ],
+      "actual_reused_existing_compiled_peers_through_owned_helpers": [
+        "PMF.filter_apply",
+        "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass",
+        "UEOT.V3.TotalVariation.tvDist_le_one",
+        "UEOT.V3.TotalVariation.tvDist_nonneg"
+      ],
+      "classification": "NONSATURATED_REFERENCE_CERTIFICATE_WITNESS",
+      "nearest_existing_apis": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.mass_mul_conditioned_atom",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_reference_mass",
+        "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_conditioned_doob_tv"
+      ],
+      "comparison": "旧 Doob 反例同为1/4仅是数值巧合，比较的律和假设不同。新rare_event_sharpness只有饱和值1且q=epsilon；它不提供q>epsilon的非饱和正例。此条独立计算两实际filter的六个原子，再使用已有共同质量公式与本层证书。",
+      "increment": "P=(1/4,1/4,1/2)、Q=(3/8,1/8,1/2)，原TV=1/8，q=1/2>epsilon，条件TV=1/4=epsilon/q。验证参考-only界在非饱和区域也可取等。",
+      "consumer": "证明有效正性余量和有信息条件上界可以同时达到，并补充仅给稀有事件极端反例所欠的正面可用性。",
+      "limits": "具体有限模型上的确切计算，不是额外采样或现实适用验证。",
+      "decision": "CLEAR_WITH_STATED_REUSE_AND_SCOPE",
+      "nearest_peers_with_actual_compiled_type_evidence": [
+        "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_conditioned_doob_tv"
+      ]
+    }
+  ],
+  "overall_assessment": {
+    "conclusion": "All eleven declarations have an explicit typed relation to existing APIs or an actual named consumer. The main finite same-event normalization inequality and its two sharpness regimes supply the mathematical increment; derived wrappers are retained as scoped source/record/readout interfaces. No undisclosed overlap found that blocks this increment.",
+    "strong_overlap_acknowledged": "mass_mul_conditioned_atom is closely related to risk_map_mul_fiberPosterior after event-as-fibre and ENNReal-to-real conversions; its current proof directly reuses PMF.filter_apply and it is classified as an adapter.",
+    "important_non_subsumption": "risk_conditionedRow_tv_le uses uniform row errors and common posterior mixture weights. It does not supply two-law conditional normalization control from unconditional TV. A fixed conditional-versus-Doob discrepancy is not the new same-event two-source sharpness family.",
+    "existing_theory_reused": "No new path-TV, data-processing, empirical calibration or selector theory is asserted. Their actual existing proof dependencies are present in the compiled native export.",
+    "counted_core_impact": "NONE",
+    "scientific_closure": "NOT_ESTABLISHED",
+    "mathematical_originality_or_global_independence_claimed": false
+  },
+  "evidence_files": [
+    {
+      "path": "native-01/CONDITIONAL_STABILITY_NATIVE_V1.json",
+      "bytes": 301438,
+      "sha256": "00907d59fa7b780759ea4de80ae68a94ac4faebad0eb3492b71539b4f2d619d4"
+    },
+    {
+      "path": "native-01/CONDITIONAL_STABILITY_REUSE_OVERLAY_V1.json",
+      "bytes": 17441,
+      "sha256": "5aa80d163503f104265aeb7e73cffca168484bb31b7337c57f1187ea35c5d714"
+    },
+    {
+      "path": "full-build-01/FULL_BUILD_RECEIPT.json",
+      "bytes": 214539,
+      "sha256": "1336fd6e86f630b8bb03985c1a479739227cbd6bc16bef413aadaed4797cb6ef"
+    },
+    {
+      "path": "TYPED_REUSE_EXISTING.json",
+      "bytes": 6375,
+      "sha256": "33dbdd828be2d1ff2d4709f28fda91e7ac2b0a68287abbd6135c63a7a6aaaa84"
+    },
+    {
+      "path": "TYPED_REUSE_EXISTING.lean",
+      "bytes": 1155,
+      "sha256": "2eba55302f9bc25166e5af6abb1a8504a87f72d0a9248fa4798afd74a38c0ce3"
+    },
+    {
+      "path": "typed-reuse-existing.log",
+      "bytes": 5509,
+      "sha256": "f6c1cee4273b410b1c8ca5405ddaaed244963a08c192ac07e5bea4be0ea215ad"
+    },
+    {
+      "path": "git-checks-01/PR_PREFLIGHT.json",
+      "bytes": 10213,
+      "sha256": "e40ba5893cd5fde05f9c298b7571f319669116e5bb54b8496cf8449b454c35fb"
+    },
+    {
+      "path": "git-checks-01/COMMAND_RESULTS.json",
+      "bytes": 1953,
+      "sha256": "ab9faec0b1843065c18cb2901c1ab188d34c2643772522584fd3e0a2965515db"
+    },
+    {
+      "path": "TYPED_REUSE_NEARBY.json",
+      "bytes": 2977,
+      "sha256": "dea8e8b1bbc2279c5671d3c58aa0688d2052f00a64186865334a8d6b6938849b"
+    },
+    {
+      "path": "TYPED_REUSE_NEARBY.lean",
+      "bytes": 1016,
+      "sha256": "c74948ca16c13295d4cfaccad8f6c49f1d29b5aff40edcd592c7896eb0822e3b"
+    },
+    {
+      "path": "typed-reuse-nearby.log",
+      "bytes": 2244,
+      "sha256": "460d5a355c00037d13dc21c51e5fdd762232864ba41cffc8b1051ec08ecf6ce5"
+    }
+  ],
+  "candidate_preflight_and_base_policy_actual_commands": [
+    {
+      "label": "reuse_preflight",
+      "command": [
+        "/opt/homebrew/bin/python3",
+        "-B",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/pr_preflight.py",
+        "--repo-root",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023",
+        "--baseline-ref",
+        "7708a3a1289b1a009c269d81edceef06a4c347dc",
+        "--candidate-ref",
+        "281b797253eb1b1170954fa0a512df17c7a46332",
+        "--report",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/git-checks-01/PR_PREFLIGHT.json",
+        "--summary",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/git-checks-01/PR_PREFLIGHT.md"
+      ],
+      "exit_code": 0,
+      "seconds": 8.601,
+      "log_sha256": "dfa8cbe6f1b05cf7d0caa6c65d1403def6e51b72ac32a338bfdeb15462ce14b5"
+    },
+    {
+      "label": "base_policy",
+      "command": [
+        "/opt/homebrew/bin/python3",
+        "-B",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/scripts/validate_compression_research.py",
+        "--repo-root",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023",
+        "--baseline-ref",
+        "7708a3a1289b1a009c269d81edceef06a4c347dc",
+        "--candidate-ref",
+        "281b797253eb1b1170954fa0a512df17c7a46332",
+        "--branch-name",
+        "compression/theory-completion-conditional-stability",
+        "--head-repo",
+        "MurphyHoops/UEOT",
+        "--base-repo",
+        "MurphyHoops/UEOT"
+      ],
+      "exit_code": 0,
+      "seconds": 3.12,
+      "log_sha256": "c88981a7c8e5c6d9879aa706f046ce7f53384bfa03f48244573e9a3aa577fddf"
+    }
+  ],
+  "publication_boundary": "This is the requested typed-reuse review of mathematical source content at the named candidate. It may be carried by a documentation-only successor with identical Lean/environment hashes; the successor commit and final GitHub exact head must be checked separately.",
+  "typed_nearby_export": {
+    "receipt_sha256": "dea8e8b1bbc2279c5671d3c58aa0688d2052f00a64186865334a8d6b6938849b",
+    "source_sha256": "c74948ca16c13295d4cfaccad8f6c49f1d29b5aff40edcd592c7896eb0822e3b",
+    "log_sha256": "460d5a355c00037d13dc21c51e5fdd762232864ba41cffc8b1051ec08ecf6ce5",
+    "exit_code": 0,
+    "seconds": 3.602,
+    "actual_source_read": true,
+    "actual_log_hash_recomputed": true,
+    "log_json_equals_receipt_rows": true,
+    "count": 5,
+    "rows": [
+      {
+        "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_map_mul_fiberPosterior",
+        "type": "∀ {X : Type uX} {Y : Type uY} (p : PMF X) (f : X → Y) (y : Y) (hy : y ∈ (PMF.map f p).support) (x : X),\n  (PMF.map f p) y * (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskFiberPosterior p f y hy) x =\n    if f x = y then p x else 0"
+      },
+      {
+        "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_conditionedRow_mass",
+        "type": "∀ {X : Type uX} {Y : Type uY} {Z : Type uZ} [inst : Fintype X] (p : PMF X) (f : X → Y) (K : X → PMF Z)\n  (fallback : Y → PMF Z) (y : Y) (z : Z),\n  (PMF.map f p) y * (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskConditionedRow p f K fallback y) z =\n    ∑ x, if f x = y then p x * (K x) z else 0"
+      },
+      {
+        "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_tv_bind_same_weights",
+        "type": "∀ {X : Type uX} {Z : Type uZ} [Fintype X] [Fintype Z] [inst : MeasurableSpace Z] [MeasurableSingletonClass Z]\n  (p : PMF X) (K L : X → PMF Z) (ε : ℝ),\n  (∀ x ∈ p.support, UEOT.V3.TotalVariation.tvDist (K x).toMeasure (L x).toMeasure ≤ ε) →\n    UEOT.V3.TotalVariation.tvDist (p.bind K).toMeasure (p.bind L).toMeasure ≤ ε"
+      },
+      {
+        "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_conditionedRow_tv_le",
+        "type": "∀ {X : Type uX} {Y : Type uY} {Z : Type uZ} [Fintype X] [Fintype Z] [inst : MeasurableSpace Z]\n  [MeasurableSingletonClass Z] (p : PMF X) (f : X → Y) (K : X → PMF Z) (L : Y → PMF Z) (ε : ℝ),\n  0 ≤ ε →\n    (∀ (x : X), UEOT.V3.TotalVariation.tvDist (K x).toMeasure (L (f x)).toMeasure ≤ ε) →\n      ∀ (y : Y),\n        UEOT.V3.TotalVariation.tvDist\n            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskConditionedRow p f K L y).toMeasure\n            (L y).toMeasure ≤\n          ε"
+      },
+      {
+        "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_conditioned_doob_tv",
+        "type": "UEOT.V3.TotalVariation.tvDist\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.conditionedPair.toMeasure\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.doobPair.toMeasure =\n  1 / 4"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "schema": "CONDITIONAL_STABILITY_ACTUAL_NEARBY_TYPED_REUSE_V1",
+  "command": [
+    "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+    "env",
+    "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+    "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/TYPED_REUSE_NEARBY.lean"
+  ],
+  "exit_code": 0,
+  "seconds": 3.602,
+  "source_sha256": "c74948ca16c13295d4cfaccad8f6c49f1d29b5aff40edcd592c7896eb0822e3b",
+  "log_sha256": "460d5a355c00037d13dc21c51e5fdd762232864ba41cffc8b1051ec08ecf6ce5",
+  "rows": [
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_map_mul_fiberPosterior",
+      "type": "∀ {X : Type uX} {Y : Type uY} (p : PMF X) (f : X → Y) (y : Y) (hy : y ∈ (PMF.map f p).support) (x : X),\n  (PMF.map f p) y * (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskFiberPosterior p f y hy) x =\n    if f x = y then p x else 0"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_conditionedRow_mass",
+      "type": "∀ {X : Type uX} {Y : Type uY} {Z : Type uZ} [inst : Fintype X] (p : PMF X) (f : X → Y) (K : X → PMF Z)\n  (fallback : Y → PMF Z) (y : Y) (z : Z),\n  (PMF.map f p) y * (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskConditionedRow p f K fallback y) z =\n    ∑ x, if f x = y then p x * (K x) z else 0"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_tv_bind_same_weights",
+      "type": "∀ {X : Type uX} {Z : Type uZ} [Fintype X] [Fintype Z] [inst : MeasurableSpace Z] [MeasurableSingletonClass Z]\n  (p : PMF X) (K L : X → PMF Z) (ε : ℝ),\n  (∀ x ∈ p.support, UEOT.V3.TotalVariation.tvDist (K x).toMeasure (L x).toMeasure ≤ ε) →\n    UEOT.V3.TotalVariation.tvDist (p.bind K).toMeasure (p.bind L).toMeasure ≤ ε"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_conditionedRow_tv_le",
+      "type": "∀ {X : Type uX} {Y : Type uY} {Z : Type uZ} [Fintype X] [Fintype Z] [inst : MeasurableSpace Z]\n  [MeasurableSingletonClass Z] (p : PMF X) (f : X → Y) (K : X → PMF Z) (L : Y → PMF Z) (ε : ℝ),\n  0 ≤ ε →\n    (∀ (x : X), UEOT.V3.TotalVariation.tvDist (K x).toMeasure (L (f x)).toMeasure ≤ ε) →\n      ∀ (y : Y),\n        UEOT.V3.TotalVariation.tvDist\n            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskConditionedRow p f K L y).toMeasure\n            (L y).toMeasure ≤\n          ε"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_conditioned_doob_tv",
+      "type": "UEOT.V3.TotalVariation.tvDist\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.conditionedPair.toMeasure\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.doobPair.toMeasure =\n  1 / 4"
+    }
+  ]
+}

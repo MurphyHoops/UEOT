@@ -1,0 +1,40 @@
+{
+  "state": "PASS_PENDING_INDEPENDENT_REVIEW_AND_REGISTRATION",
+  "baseline_ref": "7708a3a1289b1a009c269d81edceef06a4c347dc",
+  "build_receipt_sha256": "1336fd6e86f630b8bb03985c1a479739227cbd6bc16bef413aadaed4797cb6ef",
+  "results": [
+    {
+      "label": "native_export",
+      "command": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/native-01/CONDITIONAL_STABILITY_NATIVE_EXPORT.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 53.028,
+      "log_sha256": "09e27ffc8cff7a8d43caa12b4d0bebc56cf1e672256192147d1a933c13105ff6"
+    },
+    {
+      "label": "fixed_verifier",
+      "command": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/native-01/VERIFY_CONDITIONAL_STABILITY_OVERLAY_TYPES.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 52.82,
+      "log_sha256": "09e27ffc8cff7a8d43caa12b4d0bebc56cf1e672256192147d1a933c13105ff6"
+    }
+  ],
+  "summary": {
+    "modules": 2,
+    "public_source_theorems": 11,
+    "native_constants": 63,
+    "registered_edges": 19,
+    "overlay_sha256": "5aa80d163503f104265aeb7e73cffca168484bb31b7337c57f1187ea35c5d714",
+    "verifier_sha256": "94defdc86beb366a149ec12ccfb660e56ddd4f6869749275f821c6ad81d26ccd",
+    "native_sha256": "00907d59fa7b780759ea4de80ae68a94ac4faebad0eb3492b71539b4f2d619d4"
+  }
+}

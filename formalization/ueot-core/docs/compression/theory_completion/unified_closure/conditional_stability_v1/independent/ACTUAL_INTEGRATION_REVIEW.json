@@ -1,0 +1,958 @@
+{
+  "schema": "UEOT_CONDITIONAL_STABILITY_ACTUAL_INTEGRATION_REVIEW_V1",
+  "reviewer": "/root/core_semantics_audit",
+  "review_date_asia_shanghai": "2026-10-28",
+  "verdict": "PASS",
+  "apply_recommendation": "PASS_FOR_APPLY_EXACT_SIX_CANDIDATES",
+  "blocking_findings": [],
+  "scope": "Independent review of actual Mac receipts and returned raw outputs, exact six-consumer candidate diff, and complete source-manifest comparison with an independently fetched immutable GitHub baseline receipt. No Mac operation, candidate mutation or Lean rerun by reviewer. This review does not itself assert exact-head publication or resulting-main acceptance.",
+  "mathematical_baseline": "44e1b7d25272b5ce09acb71ef7b36f9a1c4c001d",
+  "integration_baseline": "7708a3a1289b1a009c269d81edceef06a4c347dc",
+  "source_tree_sha256": "0e17dd5ef3c4a9e3eaea47c8c0b7e83f6ef097915bed6092ca81e3e6c032abe0",
+  "candidate_manifest_sha256": "10ca6c4eacbecf8137a8bb3102ca35f95f00cbb413ff43ea1b7d1233c047be90",
+  "review_basis": {
+    "initial_returned_files": 17,
+    "supplementary_returned_files": [
+      "old-UMC_GLOBAL_MODULE_DAG_V4.json",
+      "REGISTERED_OVERLAY.json",
+      "full-build-01/full-build.log",
+      "native-01/VERIFY_CONDITIONAL_STABILITY_OVERLAY_TYPES.lean"
+    ],
+    "old_text_consumers": "ueot-current at 44e1b7d; all five actual byte hashes equal the candidate manifest baseline hashes",
+    "old_dag": "returned old-UMC_GLOBAL_MODULE_DAG_V4.json; actual byte SHA equals manifest baseline hash",
+    "independent_baseline_source": {
+      "provider": "GitHub plugin fetch_file",
+      "repository": "MurphyHoops/UEOT",
+      "ref": "44e1b7d25272b5ce09acb71ef7b36f9a1c4c001d",
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/observable_belief_v1/actual-execution/full-build-02/FULL_BUILD_RECEIPT.json",
+      "git_blob_sha1": "4ea19f7c64ab33884a90af182d39df5c0e29992d",
+      "fetched_bytes": 213816,
+      "git_blob_hash_independently_recomputed": true,
+      "sha256": "0a0cfcf891d27a8005894893a81b56f5ecd531b7dfdd82bc3eb14b557f13db79"
+    },
+    "auxiliary_assistance": "convex_api extracted receipt values only; it authored the preparer and was not counted as an independent helper/candidate reviewer. This reviewer separately repeated native, log, registration, source-identity and consumer checks."
+  },
+  "full_build": {
+    "state": "PASS",
+    "command": [
+      "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+      "build",
+      "UEOT"
+    ],
+    "exit_code": 0,
+    "seconds": 11.175,
+    "jobs_observed_in_actual_log": 9409,
+    "module_count": 703,
+    "receipt_sha256": "1336fd6e86f630b8bb03985c1a479739227cbd6bc16bef413aadaed4797cb6ef",
+    "log_sha256": "5c5a1b4f19578398f862d6ef2ac765de1bfd8929204d406b3126817baf5600ac",
+    "log_bytes": 406052,
+    "actual_log_ends_successfully": true,
+    "cold_rebuild_claimed": false,
+    "exact_source_identity": {
+      "baseline_manifest_modules": 701,
+      "current_manifest_modules": 703,
+      "unchanged_prior_source_records": 700,
+      "added_source_records": [
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+          "content_sha256": "ee47efdc109f9670c77f6bb04595c66f56e8475144bb75f2f190e0cdfd730e05",
+          "source_origin": "UEOT_MAINTAINED"
+        },
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStabilityWitness.lean",
+          "content_sha256": "434556fd1a9433bd3a52741520cba4743cc4747995caa44024869ef9da8e5829",
+          "source_origin": "UEOT_MAINTAINED"
+        }
+      ],
+      "only_changed_prior_source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
+      "changed_source_sha256": "b685a8beecd307eb22edd8f5cfdec81e26ccbb519f079e9d171ca5cc5dea9f8d",
+      "root_reconstructed_from_old_bytes_plus_two_imports_matches_actual_manifest_sha": true,
+      "deleted_source_records": [],
+      "all_700_prior_sha_and_byte_counts_equal_immutable_github_baseline": true,
+      "new_source_bytes_match_previous_independent_semantic_review": true,
+      "toolchain_environment_files_runtime_tools_dependencies_import_environment_equal_baseline": true,
+      "dependency_records": 9,
+      "all_dependency_revisions_match_and_clean_in_receipt": true,
+      "full_703_raw_source_fingerprint_recomputed_in_this_child": false
+    }
+  },
+  "native_and_fixed_replay": {
+    "import_scope": "import UEOT",
+    "modules": 2,
+    "registered_public_source": 11,
+    "owned_native_theorem_constants": 63,
+    "private_native": 34,
+    "other_public_native": 18,
+    "other_public_names_all_equation_congruence_or_compiler_proof_names": true,
+    "module_counts": {
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability": {
+        "native": 17,
+        "registered_public_source": 8,
+        "private": 7,
+        "other_public_generated_names": 2
+      },
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness": {
+        "native": 46,
+        "registered_public_source": 3,
+        "private": 27,
+        "other_public_generated_names": 16
+      }
+    },
+    "unique_names": true,
+    "exact_compiled_module_owners": true,
+    "allowed_transitive_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "axiom_presence_counts": {
+      "propext": 54,
+      "Classical.choice": 44,
+      "Quot.sound": 45
+    },
+    "unexpected_axioms": [],
+    "registered_prior": 4463,
+    "cross_isDefEq_comparisons": 49093,
+    "internal_isDefEq_comparisons": 55,
+    "collisions": [],
+    "comparison_meaning": "Stored type definitional-equality checks, not general mathematical or logical independence.",
+    "registered_direct_edges": 19,
+    "native_public_full_records_agree": true,
+    "native_to_raw_overlay_dependency_sets_agree": true,
+    "raw_overlay_dependency_lists_are_native_sorted_lists": true,
+    "fixed_certificate_source_read_and_hash_verified": true,
+    "fixed_certificate_enumerates_all_compiled_owned_theorems_and_rejects_extra_axioms": true,
+    "fixed_certificate_recomputes_actual_public_proof_constants_and_checks_frozen_edges": true,
+    "logs_byte_identical": true,
+    "each_log_bytes": 239111,
+    "log_sha256": "09e27ffc8cff7a8d43caa12b4d0bebc56cf1e672256192147d1a933c13105ff6",
+    "each_log_has_one_native_json_record_equal_to_returned_native_artifact": true,
+    "execution_results": [
+      {
+        "label": "native_export",
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/native-01/CONDITIONAL_STABILITY_NATIVE_EXPORT.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 53.028,
+        "log_sha256": "09e27ffc8cff7a8d43caa12b4d0bebc56cf1e672256192147d1a933c13105ff6"
+      },
+      {
+        "label": "fixed_verifier",
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/native-01/VERIFY_CONDITIONAL_STABILITY_OVERLAY_TYPES.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 52.82,
+        "log_sha256": "09e27ffc8cff7a8d43caa12b4d0bebc56cf1e672256192147d1a933c13105ff6"
+      }
+    ],
+    "native_sha256": "00907d59fa7b780759ea4de80ae68a94ac4faebad0eb3492b71539b4f2d619d4",
+    "fixed_certificate_sha256": "94defdc86beb366a149ec12ccfb660e56ddd4f6869749275f821c6ad81d26ccd"
+  },
+  "registration": {
+    "state": "PASS_METADATA_ONLY_CONSUMER_UNCHANGED",
+    "raw_overlay_sha256": "5aa80d163503f104265aeb7e73cffca168484bb31b7337c57f1187ea35c5d714",
+    "registered_overlay_sha256": "bbe93031ca6607baaedda6af1a90d6875587032e44c8a556b646a66ddb876b9c",
+    "added_top_level_keys": [
+      "lexical_pr_preflight",
+      "registration_provenance"
+    ],
+    "registered_without_two_metadata_keys_exactly_equals_raw": true,
+    "registration_provenance_inputs_equal_receipt_input_files": true,
+    "input_references": 39,
+    "candidate_ref": null,
+    "git_object_pr_preflight": "NOT_PERFORMED_SEPARATE_GATE",
+    "candidate_pinned_overlay_and_certificate_hashes_match_actual_files": true,
+    "all_five_prepared_protocol_file_hashes_match_actual_frozen_inputs": true
+  },
+  "consumer_review": {
+    "exact_six_paths": [
+      {
+        "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md",
+        "original_sha256": "9b68e801bd3519fc142fc16898f65e344783372d977973b647de4367861b2e4f",
+        "candidate_sha256": "94346004b0748fea8f20ab99f81a154593eded4fc109a28647f4f14d756edf8d"
+      },
+      {
+        "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+        "original_sha256": "2d0ff783c8dfa956120640f335fc6f8c52cec7fe12bf3a1a777d26a773399ce9",
+        "candidate_sha256": "3f397ba5c099dee76669f42ed3ec17e8ce60eceb7b78dcacc1048e959892d5f2"
+      },
+      {
+        "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
+        "original_sha256": "c041abb7f9cebaca395a2d6ea6fcde9060e3cf88b3762db6234fea886f80e080",
+        "candidate_sha256": "3bf9d40e92ef66cfce4d3a8f925d3a98d2f269d4148d150197dac82987ec8104"
+      },
+      {
+        "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py",
+        "original_sha256": "d1b4b77b48bf0470e877f1455898e6121cd9045baeb14e7e71acc26252cc96fd",
+        "candidate_sha256": "3a4a6d8fa45dfecf5b5c7dfa4141c394f6595da546255094a77695a1571380c6"
+      },
+      {
+        "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
+        "original_sha256": "c2cf37b9c788e6b211ee310b3391861b17e09d1039b09a1d8b75ffa3ad580f68",
+        "candidate_sha256": "e852488d6970f75364a15c368d4100c23cfa5e036bafd966f6b1b1aeff31f2e4"
+      },
+      {
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/UMC_GLOBAL_MODULE_DAG_V4.json",
+        "original_sha256": "ddb9c216ac3b126fab3c30df4d4510b416b542e98bb9ad4f7733f358c9be76fa",
+        "candidate_sha256": "07cb2973839a8a1131774818419edd7985a7219b415457d0239868405de484c2"
+      }
+    ],
+    "all_original_and_candidate_file_hashes_recomputed": true,
+    "fkrg_reuse": {
+      "four_registry_arrays_append_one_each": true,
+      "all_previous_15_array_entries_ast_identical": true,
+      "other_ast_change": "Only source_of_truth descriptive string; all validation/control code identical."
+    },
+    "tests": {
+      "previous": 70,
+      "new": 4,
+      "total": 74,
+      "removed": [],
+      "old_methods_changed_only_for_live_census": [
+        "test_evidence_and_sources_exact_baseline",
+        "test_calibrated_defect_overlay_chain_and_kernel_graph",
+        "test_new_lean_module_cannot_be_omitted_from_index"
+      ],
+      "all_other_67_old_test_method_asts_identical": true,
+      "new_regression_scope": [
+        "native ownership, axioms and registered edges",
+        "actual filter and causal/R2 proof routes",
+        "rare-event and nonsaturated sharpness",
+        "raw registration provenance and execution identity"
+      ]
+    },
+    "clone_scanner": {
+      "executable_ast_identical_after_module_docstring": true,
+      "immutable_68_row_table_not_a_candidate_path": true
+    },
+    "reuse_readme": {
+      "historical_layer_1_through_15_block_byte_identical": true,
+      "new_layer_16_and_live_counts_only": true
+    },
+    "knowledge_readme": "Latest census refreshed, previous layer history retained, current finite conditional theorem and fixed-record/physical-event boundaries accurately described.",
+    "dag": {
+      "modules": 703,
+      "new_entries": 2,
+      "deleted_entries": 0,
+      "unchanged_prior_nonroot_entries": 700,
+      "only_prior_entry_change": "TheoryCompletion: two new imports, matching byte and line counts",
+      "all_entry_paths_and_bytes_equal_full_build_manifest": true,
+      "all_aggregate_counts_independently_recomputed_from_entries": true,
+      "root_reachable": 703,
+      "cycles": [],
+      "missing_internal_imports": {},
+      "fingerprint_matches_frozen_and_build_receipts": true
+    },
+    "current_totals": {
+      "modules": 703,
+      "ueot_maintained": 692,
+      "adapted_upstream": 11,
+      "overlays": 16,
+      "registered_public_nodes": 4474,
+      "direct_registered_edges": 5926,
+      "overlay_public_nodes": 681,
+      "overlay_outgoing_edges": 1039,
+      "lexical_hint_groups": 177
+    },
+    "historical_assets_note": "Manifest records 47 unchanged prior reuse assets. This independent review verifies prior consumer pins and historical text; it does not claim every original archived asset byte was returned to this child."
+  },
+  "actual_returned_artifact_hashes": [
+    {
+      "path": "FROZEN_INPUTS_01.json",
+      "bytes": 4161,
+      "sha256": "3f9ba9601ec9308969ccfa364cb306fc91acc6f68274ad637ecaff406e531c2e"
+    },
+    {
+      "path": "full-build-01/FULL_BUILD_RECEIPT.json",
+      "bytes": 214539,
+      "sha256": "1336fd6e86f630b8bb03985c1a479739227cbd6bc16bef413aadaed4797cb6ef"
+    },
+    {
+      "path": "full-build-01/full-build.log",
+      "bytes": 406052,
+      "sha256": "5c5a1b4f19578398f862d6ef2ac765de1bfd8929204d406b3126817baf5600ac"
+    },
+    {
+      "path": "native-01/CONDITIONAL_STABILITY_NATIVE_V1.json",
+      "bytes": 301438,
+      "sha256": "00907d59fa7b780759ea4de80ae68a94ac4faebad0eb3492b71539b4f2d619d4"
+    },
+    {
+      "path": "native-01/CONDITIONAL_STABILITY_REUSE_OVERLAY_V1.json",
+      "bytes": 17441,
+      "sha256": "5aa80d163503f104265aeb7e73cffca168484bb31b7337c57f1187ea35c5d714"
+    },
+    {
+      "path": "native-01/SOURCE_PREFLIGHT.json",
+      "bytes": 16968,
+      "sha256": "f871a7d9b0d375d19eafdc89d208e01b247455c46b0ee26851bec488f910b26b"
+    },
+    {
+      "path": "native-01/STATUS.json",
+      "bytes": 1779,
+      "sha256": "bd1390b60a08e0c2648ab6059cb5afe5dd9b9d1c6941c7f05d011b4275e33aad"
+    },
+    {
+      "path": "native-01/PROTOCOL_ADAPTATION.json",
+      "bytes": 2295,
+      "sha256": "4457b98ff0d780d44d10429e2b97c467f3cf40dd8538c5c7d8ece1a0b3435b03"
+    },
+    {
+      "path": "native-01/native_export.log",
+      "bytes": 239111,
+      "sha256": "09e27ffc8cff7a8d43caa12b4d0bebc56cf1e672256192147d1a933c13105ff6"
+    },
+    {
+      "path": "native-01/fixed_verifier.log",
+      "bytes": 239111,
+      "sha256": "09e27ffc8cff7a8d43caa12b4d0bebc56cf1e672256192147d1a933c13105ff6"
+    },
+    {
+      "path": "native-01/VERIFY_CONDITIONAL_STABILITY_OVERLAY_TYPES.lean",
+      "bytes": 87669,
+      "sha256": "94defdc86beb366a149ec12ccfb660e56ddd4f6869749275f821c6ad81d26ccd"
+    },
+    {
+      "path": "REGISTERED_OVERLAY.json",
+      "bytes": 38678,
+      "sha256": "bbe93031ca6607baaedda6af1a90d6875587032e44c8a556b646a66ddb876b9c"
+    },
+    {
+      "path": "REGISTRATION_RECEIPT.json",
+      "bytes": 20041,
+      "sha256": "033373c06dcd7f6f73467b723284014ba1c47e790902acce735f756cadb9c32f"
+    },
+    {
+      "path": "old-UMC_GLOBAL_MODULE_DAG_V4.json",
+      "bytes": 431382,
+      "sha256": "ddb9c216ac3b126fab3c30df4d4510b416b542e98bb9ad4f7733f358c9be76fa"
+    },
+    {
+      "path": "GITHUB_BASE_44e1b7d_FULL_BUILD_RECEIPT.json",
+      "bytes": 213816,
+      "sha256": "0a0cfcf891d27a8005894893a81b56f5ecd531b7dfdd82bc3eb14b557f13db79"
+    },
+    {
+      "path": "consumer-candidates-01/MANIFEST.json",
+      "bytes": 22938,
+      "sha256": "10ca6c4eacbecf8137a8bb3102ca35f95f00cbb413ff43ea1b7d1233c047be90"
+    },
+    {
+      "path": "consumer-candidates-01/APPLICATION_RECEIPT.json",
+      "bytes": 3159,
+      "sha256": "9990ef39c965dbeeba03c55bd5ca5b8ef55cb11bf9c641441a2695016319a9b4"
+    },
+    {
+      "path": "consumer-checks-01/COMMAND_RESULTS.json",
+      "bytes": 4866,
+      "sha256": "2367ab5f5c192cb204ca58dd6da3adc4265fcd3515bb7e495d644f22e227fc50"
+    },
+    {
+      "path": "consumer-checks-01/UMC_FULL_RECEIPT.json",
+      "bytes": 1388,
+      "sha256": "0320d373724f4b78a9b8bfe24bc23a26d9ae5f2f40d44368f9a75a6ec1898e18"
+    },
+    {
+      "path": "IMPORT_OWNERSHIP_COMPARISON.json",
+      "bytes": 874,
+      "sha256": "91c7ce54d49f74c08e535d9726cbe504f802681e7afd91f57730aaf38da00476"
+    },
+    {
+      "path": "UMC_IMPORT_CENSUS_COMPARISON.json",
+      "bytes": 33028,
+      "sha256": "628454ca178738ad45540be269985b35f12050b8d209315dcc944356b1efc161"
+    },
+    {
+      "path": "baseline_import_closure.lean",
+      "bytes": 24466,
+      "sha256": "35bb6ff259781a42f264808a46d056e0ed7b33f1c6249b4e3c9ef529ddf4e732"
+    },
+    {
+      "path": "baseline_import_closure.log",
+      "bytes": 519684,
+      "sha256": "c1871fc499e959ad4732cbeae4e45aeb52463091ed6cd10d6976e1b1d44cf1fb"
+    },
+    {
+      "path": "current_import_closure.lean",
+      "bytes": 10303,
+      "sha256": "0168997c586d2354299906a6606ae76b4254e6062da5b1bd7a441f0a742a4236"
+    },
+    {
+      "path": "current_import_closure.log",
+      "bytes": 542795,
+      "sha256": "9673265f7e9fc3b4b0aefcff701724d5a0cfae045fad0fdd7bdf33c4e208cd75"
+    },
+    {
+      "path": "GENERATED_OWNER_EXPLANATION.json",
+      "bytes": 5037,
+      "sha256": "d00c59c5a3166dc13ac836973bf916e84676a04c6a5a6157e47089f425fe78ab"
+    },
+    {
+      "path": "OLD_GENERATED_OWNER_LOOKUP.lean",
+      "bytes": 15696,
+      "sha256": "09ed2ffcee46dfd89acc54db479929a13697a299b396fc227c19f5b9672c9b12"
+    },
+    {
+      "path": "old-generated-owner-lookup.log",
+      "bytes": 1945,
+      "sha256": "442d3e44a822513019e718dd2b9c1f7f585c58aaf227dbbcc03ff9d4c18a0691"
+    }
+  ],
+  "execution_boundary": {
+    "reviewer_operated_mac": false,
+    "reviewer_mutated_candidates": false,
+    "reviewer_reran_lean_or_consumer_tests": false,
+    "post_apply_test_receipts_read_by_reviewer_at_this_checkpoint": true,
+    "global_umc_count_followup": "RESOLVED: eight existing generated theorem names had old owners outside UMC and current owners in existing UMC modules; independently confirmed from actual old-environment lookup, raw full-census logs, exact pure-render drivers and fixed Lean import-owner implementation.",
+    "pending_publication_scope": "Exact committed Git-object preflight, GitHub final-head review and resulting-main/exception-retirement receipts are separate subsequent actions.",
+    "post_apply_test_receipt_basis": "Actual COMMAND_RESULTS.json, APPLICATION_RECEIPT.json and UMC_FULL_RECEIPT.json inspected and hashed; individual command logs not all returned."
+  },
+  "limitations": [
+    "All returned relevant full/native/fixed/registration bytes were independently hashed and compared. The whole 703-file raw source tree was not retransferred; complete source manifests were compared against exact immutable GitHub baseline, and all changed source bytes were independently checked.",
+    "Initial exporter source, observed_first_native standalone copy and every one of the 39 archived input copies were not all returned. The two actual output logs are byte-identical and each parses to the provided complete native artifact; fixed verifier source and raw/registered overlays were directly inspected.",
+    "A passing application review is not a statement of scientific closure, global theorem independence, completed publication, or unseen external workflow results."
+  ],
+  "review_update": "Actual post-application command receipts, full UMC receipt, both full-census raw logs/drivers and direct old-environment owner lookup independently reviewed. The eight-count discrepancy is fully explained by compiled owner changes. PASS; exact-head publication is a subsequent review.",
+  "application_and_actual_consumer_checks": {
+    "application_receipt_read": true,
+    "application_state": "PASS_EXACT_SIX_FILES_APPLIED_AND_SOURCE_CENSUS_VERIFIED",
+    "application_receipt_sha256": "9990ef39c965dbeeba03c55bd5ca5b8ef55cb11bf9c641441a2695016319a9b4",
+    "application_exact_candidate_manifest_and_all_six_hashes_match_review": true,
+    "application_reported_prior_assets_byte_unchanged": 47,
+    "command_receipt_read": true,
+    "command_results_sha256": "2367ab5f5c192cb204ca58dd6da3adc4265fcd3515bb7e495d644f22e227fc50",
+    "all_nine_actual_commands_exit_zero": true,
+    "commands": [
+      {
+        "label": "reuse",
+        "command": [
+          "/opt/homebrew/bin/python3",
+          "-B",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py"
+        ],
+        "exit_code": 0,
+        "seconds": 1.136,
+        "log": "reuse.log",
+        "log_sha256": "b8f36b75843dc37ac65d5732d3ba5f31f10a98113ecb2eabbbe3193777c7fc62"
+      },
+      {
+        "label": "parser",
+        "command": [
+          "/opt/homebrew/bin/python3",
+          "-B",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_pr_preflight.py"
+        ],
+        "exit_code": 0,
+        "seconds": 17.827,
+        "log": "parser.log",
+        "log_sha256": "16622de28311627dfa80f418d6fbc9474440fcd436006adb2d73a9ca1d49991b"
+      },
+      {
+        "label": "fkrg",
+        "command": [
+          "/opt/homebrew/bin/python3",
+          "-B",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/test_fkrg.py"
+        ],
+        "exit_code": 0,
+        "seconds": 2.404,
+        "log": "fkrg.log",
+        "log_sha256": "bca7c71f835a4e2deef7d62c3f85a9218e9f65a2a75a00c99d9e49bd5a6dd7f0"
+      },
+      {
+        "label": "clones",
+        "command": [
+          "/opt/homebrew/bin/python3",
+          "-B",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py"
+        ],
+        "exit_code": 0,
+        "seconds": 0.655,
+        "log": "clones.log",
+        "log_sha256": "4c3c4972fb549c2e6bc3c150350e88b23c100ff348a0f32041a56603ba9134a1"
+      },
+      {
+        "label": "status",
+        "command": [
+          "/opt/homebrew/bin/python3",
+          "-B",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+          "--json",
+          "status"
+        ],
+        "exit_code": 0,
+        "seconds": 0.105,
+        "log": "status.log",
+        "log_sha256": "d350f7f2e5be1f0a3bec26c839e0937e66ef3f2ea2a77ca305a2728172c4ec78"
+      },
+      {
+        "label": "governance",
+        "command": [
+          "/opt/homebrew/bin/python3",
+          "-B",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/scripts/test_validate_compression_research.py"
+        ],
+        "exit_code": 0,
+        "seconds": 8.165,
+        "log": "governance.log",
+        "log_sha256": "d8fb69310c671936ad9bc9d9b9490bfee9f0b1d8a1b10fcc022e92ba944f0aa8"
+      },
+      {
+        "label": "mission",
+        "command": [
+          "/opt/homebrew/bin/python3",
+          "-B",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/validate_unified_closure.py",
+          "--repo-root",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023"
+        ],
+        "exit_code": 0,
+        "seconds": 0.032,
+        "log": "mission.log",
+        "log_sha256": "084c44d2151e4c711dd06606abc1957a26ac9072a992fa06b7bf4791ca9fb321"
+      },
+      {
+        "label": "mission_negative",
+        "command": [
+          "/opt/homebrew/bin/python3",
+          "-B",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/test_validate_unified_closure.py"
+        ],
+        "exit_code": 0,
+        "seconds": 0.034,
+        "log": "mission_negative.log",
+        "log_sha256": "583b6b29252b2279c39048ca5f1171dacc17e6c89fa5945763598aaef45c619f"
+      },
+      {
+        "label": "umc_full",
+        "command": [
+          "/opt/homebrew/bin/python3",
+          "-B",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/audit_umc_local.py",
+          "--full",
+          "--output",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/consumer-checks-01/UMC_FULL_RECEIPT.json"
+        ],
+        "exit_code": 0,
+        "seconds": 61.337,
+        "log": "umc_full.log",
+        "log_sha256": "ec7177c600db40866873dc27c119f05abd288cbff79d5ad56147051115892e34"
+      }
+    ],
+    "test_scope_counts": {
+      "reuse": 74,
+      "parser": 89,
+      "fkrg": 30,
+      "governance": 38,
+      "expected_mission_rejections": 12,
+      "clone_rows": 68
+    },
+    "individual_consumer_log_bytes_returned_to_reviewer": false,
+    "individual_log_hashes": "Bound by the actual COMMAND_RESULTS.json; this child has read the command receipt, not separately rehashed every test log."
+  },
+  "global_umc_audit": {
+    "actual_receipt_read": true,
+    "receipt_sha256": "0320d373724f4b78a9b8bfe24bc23a26d9ae5f2f40d44368f9a75a6ec1898e18",
+    "import_scope": "UEOT.V3.Compression.TheoryCompletion",
+    "modules": 104,
+    "public_source_candidates": 801,
+    "native_theorem_constants": 1879,
+    "private_native": 298,
+    "other_public_native": 780,
+    "standard_axiom_status": "1879/1879_LEAN_STANDARD_AXIOMS",
+    "full_lean": "PASS",
+    "seconds": 61.337,
+    "source_core_impact": "NONE",
+    "strong_unified_closure": "NOT_ESTABLISHED",
+    "scientific_external_evidence": "UNVERIFIED"
+  },
+  "native_import_count_reconciliation": {
+    "state": "PASS_EXACT_EIGHT_NAMES_EXISTED_OUTSIDE_UMC_AND_CHANGED_COMPILED_OWNER",
+    "evidence_note": "Fresh current-environment comparison; not a reconstruction of the historical 1808 execution.",
+    "narrow_new_module_check": {
+      "schema": "CONDITIONAL_STABILITY_IMPORT_OWNERSHIP_COMPARISON_V1",
+      "narrow_import": "UEOT.V3.Compression.TheoryCompletion",
+      "wide_import": "UEOT",
+      "narrow_new_module_constants": 63,
+      "wide_new_module_constants": 63,
+      "narrow_only": [],
+      "wide_only": [],
+      "same_named_source_module_differences": [],
+      "log_sha256": "ebdee09b76b76fabebc5baab50ba551e67a45c430a69f6816261b7420e0f4784",
+      "source_sha256": "04ce4aa65e1e92ac884edb9307c96c03b7cad50441dadffba1d2f491da80017c",
+      "actual_exit_code": 0,
+      "command": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/NARROW_IMPORT_OWNER_CHECK.lean"
+      ],
+      "seconds": 51.388
+    },
+    "historical_immutable_receipt": {
+      "repo": "MurphyHoops/UEOT",
+      "ref": "44e1b7d25272b5ce09acb71ef7b36f9a1c4c001d",
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/observable_belief_v1/actual-execution/UMC_AUDIT_01.json",
+      "git_blob_sha1": "abb6d9c729721ba51b402ab0c3d217e8f2ef5362",
+      "modules": 102,
+      "native": 1808,
+      "private": 264,
+      "public_source": 790,
+      "other_public": 754
+    },
+    "fresh_baseline_import_replay": {
+      "modules": 102,
+      "native": 1808
+    },
+    "fresh_current_import_replay": {
+      "modules": 104,
+      "native": 1879
+    },
+    "current_only_names": 71,
+    "old_only_names": 0,
+    "new_layer_names": 63,
+    "extra_names": 8,
+    "arithmetic": "1879 = 1808 + 63 + 8; private delta 34 and public-source delta 11 match the new layer; other-public delta 26 consists of the layer 18 plus eight additional generated names in the UMC-owned selection.",
+    "all_63_new_layer_name_owner_private_axiom_rows_match_full_native_export": true,
+    "extra_generated_rows": [
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "is_private": false,
+        "name": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.IntervalCertificate.lower.eq_1",
+        "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle"
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "is_private": false,
+        "name": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.IntervalCertificate.mk.congr_simp",
+        "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle"
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "is_private": false,
+        "name": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.IntervalCertificate.totalRadius.eq_1",
+        "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle"
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "is_private": false,
+        "name": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.IntervalCertificate.upper.eq_1",
+        "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle"
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "is_private": false,
+        "name": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.decideAt.eq_1",
+        "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle"
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "is_private": false,
+        "name": "UEOT.V3.CoreOperationalAssembly.policyMatrix.congr_simp",
+        "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPath"
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "is_private": false,
+        "name": "UEOT.V3.CoreOperationalAssembly.policyMatrix.eq_1",
+        "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPath"
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "is_private": false,
+        "name": "UEOT.V3.FiniteDiscountedControl.StationaryPolicy.mk.congr_simp",
+        "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridge"
+      }
+    ],
+    "ten_existing_UMC_names_change_compiled_owner": [
+      {
+        "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.empiricalResponsePMF.congr_simp",
+        "baseline": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisteredDeploymentRisk",
+        "current": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle"
+      },
+      {
+        "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskLastState.eq_1",
+        "baseline": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ControlCoverageWitness",
+        "current": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival"
+      },
+      {
+        "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.initialSupport.eq_1",
+        "baseline": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ControlCoverageWitness",
+        "current": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportMemoryCheck"
+      },
+      {
+        "name": "UEOT.V3.CoreOperationalAssembly.currentState.eq_1",
+        "baseline": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPath",
+        "current": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefix"
+      },
+      {
+        "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskLastState.eq_2",
+        "baseline": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ControlCoverageWitness",
+        "current": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival"
+      },
+      {
+        "name": "UEOT.V3.PathError.causalLaw.eq_1",
+        "baseline": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ControlCoverageWitness",
+        "current": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPath"
+      },
+      {
+        "name": "UEOT.V3.PathError.pmfExtend.eq_1",
+        "baseline": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ControlCoverageWitness",
+        "current": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefix"
+      },
+      {
+        "name": "UEOT.V3.PathError.causalLaw.eq_2",
+        "baseline": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ControlCoverageWitness",
+        "current": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPath"
+      },
+      {
+        "name": "UEOT.V3.CoreOperationalAssembly.currentState.eq_2",
+        "baseline": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPath",
+        "current": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefix"
+      },
+      {
+        "name": "UEOT.V3.PathError.causalLaw.eq_def",
+        "baseline": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ControlCoverageWitness",
+        "current": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPath"
+      }
+    ],
+    "actual_replay_runs": [
+      {
+        "label": "baseline_import_closure",
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/baseline_import_closure.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 56.377,
+        "log_sha256": "c1871fc499e959ad4732cbeae4e45aeb52463091ed6cd10d6976e1b1d44cf1fb",
+        "source_sha256": "35bb6ff259781a42f264808a46d056e0ed7b33f1c6249b4e3c9ef529ddf4e732"
+      },
+      {
+        "label": "current_import_closure",
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/current_import_closure.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 56.747,
+        "log_sha256": "9673265f7e9fc3b4b0aefcff701724d5a0cfae045fad0fdd7bdf33c4e208cd75",
+        "source_sha256": "0168997c586d2354299906a6606ae76b4254e6062da5b1bd7a441f0a742a4236"
+      }
+    ],
+    "mechanism_verified_against_fixed_lean_sources": {
+      "lean_commit": "819816b2e0a3bf405af45ae5c7af2491d8f5bee6",
+      "environment_file": "https://github.com/leanprover/lean4/blob/819816b2e0a3bf405af45ae5c7af2491d8f5bee6/src/Lean/Environment.lean",
+      "environment_git_blob_sha1": "33928512dadcfa2e42a307499e9228596da0341a",
+      "owner_rule": "getModuleIdxFor? reads const2ModIdx; imported compatible same-name theorems keep first owner via insertIfNew; source expressly permits on-demand nonprivate equational theorems generated in different files.",
+      "axiom_collector_file": "https://github.com/leanprover/lean4/blob/819816b2e0a3bf405af45ae5c7af2491d8f5bee6/src/Lean/Util/CollectAxioms.lean",
+      "collector_git_blob_sha1": "dc9897059a4463dfd143a2b3f8fbb4f4a3c3f154",
+      "collector_rule": "ReaderT Environment / StateM traversal of existing declarations and axiom caches; the audited loop has no explicit equation generation."
+    },
+    "interpretation_boundary": "The eight additional UMC-owned entries are preexisting generated equation/congruence theorems whose first compiled owner changes from outside UMC to existing UMC modules under the changed root import environment. They are not eight new public source propositions, modified old proofs, or constants created by the audit loop. Ten further existing names change owner within UMC and do not change its total. The current-environment replay of the old import list agrees with the historical 1808 aggregate; original historical raw logs were not recovered or claimed.",
+    "raw_full_census_logs_and_drivers_now_returned": true,
+    "both_raw_full_logs_hashed_and_parsed": true,
+    "baseline_driver_exactly_old_root_import_list_plus_immutable_render_tail": true,
+    "current_driver_exactly_immutable_render_output": true,
+    "all_1808_old_and_1879_current_census_rows_have_only_standard_axioms": true,
+    "exact_71_additions_zero_deletions_and_10_owner_changes_recomputed_from_actual_raw_logs": true,
+    "old_environment_direct_lookup": {
+      "receipt": {
+        "schema": "CONDITIONAL_STABILITY_GENERATED_OWNER_EXPLANATION_V1",
+        "actual_exit_code": 0,
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/OLD_GENERATED_OWNER_LOOKUP.lean"
+        ],
+        "seconds": 3.439,
+        "source_sha256": "09ed2ffcee46dfd89acc54db479929a13697a299b396fc227c19f5b9672c9b12",
+        "log_sha256": "442d3e44a822513019e718dd2b9c1f7f585c58aaf227dbbcc03ff9d4c18a0691",
+        "rows": [
+          {
+            "name": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.IntervalCertificate.lower.eq_1",
+            "existed_in_old_environment": true,
+            "baseline_owner": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCRegisteredCandidateExamples",
+            "current_owner": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+            "baseline_axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "current_axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ]
+          },
+          {
+            "name": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.IntervalCertificate.mk.congr_simp",
+            "existed_in_old_environment": true,
+            "baseline_owner": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCRegisteredCandidateExamples",
+            "current_owner": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+            "baseline_axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "current_axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ]
+          },
+          {
+            "name": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.IntervalCertificate.totalRadius.eq_1",
+            "existed_in_old_environment": true,
+            "baseline_owner": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCRegisteredCandidateExamples",
+            "current_owner": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+            "baseline_axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "current_axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ]
+          },
+          {
+            "name": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.IntervalCertificate.upper.eq_1",
+            "existed_in_old_environment": true,
+            "baseline_owner": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCRegisteredCandidateExamples",
+            "current_owner": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+            "baseline_axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "current_axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ]
+          },
+          {
+            "name": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.decideAt.eq_1",
+            "existed_in_old_environment": true,
+            "baseline_owner": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCRegisteredCandidateExamples",
+            "current_owner": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+            "baseline_axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "current_axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ]
+          },
+          {
+            "name": "UEOT.V3.CoreOperationalAssembly.policyMatrix.congr_simp",
+            "existed_in_old_environment": true,
+            "baseline_owner": "UEOT.V3.Compression.ApproximateHistoryEncoder",
+            "current_owner": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPath",
+            "baseline_axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "current_axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ]
+          },
+          {
+            "name": "UEOT.V3.CoreOperationalAssembly.policyMatrix.eq_1",
+            "existed_in_old_environment": true,
+            "baseline_owner": "UEOT.V3.Compression.GoaGaugeInvariance",
+            "current_owner": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPath",
+            "baseline_axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "current_axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ]
+          },
+          {
+            "name": "UEOT.V3.FiniteDiscountedControl.StationaryPolicy.mk.congr_simp",
+            "existed_in_old_environment": true,
+            "baseline_owner": "UEOT.V3.Compression.GoaGaugeInvariance",
+            "current_owner": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridge",
+            "baseline_axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "current_axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ]
+          }
+        ]
+      },
+      "driver_and_log_hashes_independently_recomputed": true,
+      "actual_log_contains_exactly_eight_lookup_rows": true,
+      "all_eight_existed_in_old_environment": true,
+      "all_eight_old_owners_outside_102_UMC_module_scope": true,
+      "all_eight_current_owners_inside_preexisting_UMC_modules": true,
+      "all_eight_nonprivate_and_standard_axioms_in_both_environments": true
+    },
+    "conclusion": "UMC owner-filtered native counts are relative to the import environment and are not arithmetically additive across different root-import environments. The reviewed layer remains exactly 63 owned constants, 11 registered public source theorems and 19 registered direct edges in its fixed export scope; the complete current UMC scope has 1879 standard-axiom theorem constants."
+  }
+}
