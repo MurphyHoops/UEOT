@@ -312,6 +312,8 @@ J=AB^\mathsf T=\widetilde A\widetilde B^\mathsf T,
 | 全局源码图 | 703 个模块均从公共入口可达，无环、无缺失 import |
 | UMC 全域本地审计 | 104 个研究模块，801 个公共源码候选；1,879 个编译归属常量均只依赖标准公理；此入口统计另见导入归属比较 |
 
+[逐条定理复用独审](independent/TYPED_REUSE_REVIEW.json) 已核全部 11 个新声明和 15 个最近旧端点的实际编译类型。原子质量恒等式属于接口整理，reference/readout/路径端点属于派生结果或消费者；11 个公共源码定理不等于 11 条彼此独立的新数学原理。零词法候选和零类型碰撞也不被解释成一般数学独立性。
+
 完整记录见 [本地验收](RELEASE_ACCEPTANCE.json)、[真实完整构建](actual-execution/full-build-01/FULL_BUILD_RECEIPT.json)、[native 与回放](actual-execution/native-01/STATUS.json)、[消费者运行](actual-execution/consumer-checks-01/COMMAND_RESULTS.json)、[UMC 全域审计](actual-execution/consumer-checks-01/UMC_FULL_RECEIPT.json)、[独立语义审查](independent/LEAN_SEMANTIC_REVIEW.json)及[实际收据独审](independent/ACTUAL_INTEGRATION_REVIEW.json)。最初五轮 focused 编译失败的真实源码与日志继续保存；第三轮因覆盖传输被拒绝，实际重复运行了第二轮源码，不把它改写成新版本运行。
 
 Core 三个 GitHub workflow 保持用户要求的 `disabled_manually`。上述通过均来自实际本地检查；没有云端 CI 通过的主张。这个内容绑定的验收记录在 Git 提交前生成，精确候选 Git 对象预检、最终 HEAD 独审、PR 合并及合并后源码/环境身份与真实本地构建记录由对应发布 PR 和 resulting-main 收据单独绑定，避免让一个提交声称包含自己的哈希。

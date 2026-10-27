@@ -1,0 +1,145 @@
+{
+  "schema": "FKRG_PR_DIFF_PREFLIGHT_V1",
+  "base_sha": "7708a3a1289b1a009c269d81edceef06a4c347dc",
+  "candidate_sha": "281b797253eb1b1170954fa0a512df17c7a46332",
+  "source_scope": "formalization/ueot-core/UEOT.lean plus UEOT/**/*.lean",
+  "base_lean_module_count": 701,
+  "candidate_lean_module_count": 703,
+  "changed_lean_paths": [
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStabilityWitness.lean"
+  ],
+  "base_public_lexical_theorem_count": 4463,
+  "candidate_public_lexical_theorem_count": 4474,
+  "new_public_source_theorem_count": 11,
+  "new_public_source_theorems": [
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.mass_mul_conditioned_atom",
+      "short_name": "mass_mul_conditioned_atom",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "line": 90,
+      "header_preview": "theorem mass_mul_conditioned_atom     (p : PMF X) (S : Set X) (hp : 0 < p.toMeasure.real S) (x : X) :     p.toMeasure.real S * (conditionedPMF p S hp x).toReal =       if x ∈ S then (p x).toReal else 0 := by   have hden : (∑' a, S.indicator (fun a => p a) a) = p.toMeasure S := by     rw [tsum_fintype, PMF.toMeasure_apply_fintype]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_max_mass",
+      "short_name": "conditional_tv_le_max_mass",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "line": 168,
+      "header_preview": "theorem conditional_tv_le_max_mass     (p q : PMF X) (S : Set X)     (hp : 0 < p.toMeasure.real S) (hq : 0 < q.toMeasure.real S)     (epsilon : ℝ) (hTV : tvDist p.toMeasure q.toMeasure ≤ epsilon) :     tvDist (conditionedPMF p S hp).toMeasure       (conditionedPMF q S hq).toMeasure ≤",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_certifies_positive",
+      "short_name": "reference_mass_certifies_positive",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "line": 191,
+      "header_preview": "theorem reference_mass_certifies_positive     (p q : PMF X) (S : Set X) (epsilon : ℝ)     (hTV : tvDist p.toMeasure q.toMeasure ≤ epsilon)     (hgap : epsilon < q.toMeasure.real S) :     0 < p.toMeasure.real S ∧ 0 < q.toMeasure.real S := by   have he := (tvEvent_le p.toMeasure q.toMeasure S",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_reference_mass",
+      "short_name": "conditional_tv_le_reference_mass",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "line": 204,
+      "header_preview": "theorem conditional_tv_le_reference_mass     (p q : PMF X) (S : Set X)     (hp : 0 < p.toMeasure.real S) (hq : 0 < q.toMeasure.real S)     (epsilon : ℝ) (hTV : tvDist p.toMeasure q.toMeasure ≤ epsilon) :     tvDist (conditionedPMF p S hp).toMeasure       (conditionedPMF q S hq).toMeasure ≤",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_conditional_certificate",
+      "short_name": "reference_mass_conditional_certificate",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "line": 219,
+      "header_preview": "theorem reference_mass_conditional_certificate     (p q : PMF X) (S : Set X) (epsilon : ℝ)     (hTV : tvDist p.toMeasure q.toMeasure ≤ epsilon)     (hgap : epsilon < q.toMeasure.real S) :     ∃ (hp : 0 < p.toMeasure.real S) (hq : 0 < q.toMeasure.real S),       tvDist (conditionedPMF p S hp).toMeasure",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditioned_readout_tv_le_reference_mass",
+      "short_name": "conditioned_readout_tv_le_reference_mass",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "line": 232,
+      "header_preview": "theorem conditioned_readout_tv_le_reference_mass     {Y : Type v} [MeasurableSpace Y]     (p q : PMF X) (S : Set X)     (hp : 0 < p.toMeasure.real S) (hq : 0 < q.toMeasure.real S)     (epsilon : ℝ) (hTV : tvDist p.toMeasure q.toMeasure ≤ epsilon)     (f : X → Y) (hf : Measurable f) :",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.causal_path_conditional_certificate",
+      "short_name": "causal_path_conditional_certificate",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "line": 249,
+      "header_preview": "theorem causal_path_conditional_certificate     {H Z : Type u} [Fintype H] [Fintype Z]     [MeasurableSpace H] [MeasurableSingletonClass H]     [MeasurableSpace Z] [MeasurableSingletonClass Z]     (p0 : PMF H) (K L : ∀ n, CausalHistory H Z n → PMF Z)     (epsilon : ℕ → ℝ) (heps0 : ∀ n, 0 ≤ epsilon n)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.noisy_reference_conditional_certificate",
+      "short_name": "noisy_reference_conditional_certificate",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "line": 275,
+      "header_preview": "theorem noisy_reference_conditional_certificate     {X Y A : Type u} [Fintype X] [Fintype Y] [Fintype A]     [LinearOrder X] [DecidableEq Y] [DecidableEq A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace Y] [MeasurableSingletonClass Y]     [MeasurableSpace A] [MeasurableSingletonClass A]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.rare_event_sharpness",
+      "short_name": "rare_event_sharpness",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStabilityWitness.lean",
+      "line": 116,
+      "header_preview": "theorem rare_event_sharpness     (r : ℝ) (hr : 0 < r) (hr1 : r ≤ 1) :     let p := rareSource r (le_of_lt hr) hr1 false     let q := rareSource r (le_of_lt hr) hr1 true     p.toMeasure.real safe = r ∧ q.toMeasure.real safe = r ∧       tvDist p.toMeasure q.toMeasure = r ∧",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.arbitrarily_small_unconditional_error",
+      "short_name": "arbitrarily_small_unconditional_error",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStabilityWitness.lean",
+      "line": 138,
+      "header_preview": "theorem arbitrarily_small_unconditional_error     (delta : ℝ) (hdelta : 0 < delta) :     ∃ (p q : PMF State)       (hp : 0 < p.toMeasure.real safe) (hq : 0 < q.toMeasure.real safe),       tvDist p.toMeasure q.toMeasure < delta ∧         tvDist (conditionedPMF p safe hp).toMeasure",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.positive_reference_certificate_is_sharp",
+      "short_name": "positive_reference_certificate_is_sharp",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStabilityWitness.lean",
+      "line": 190,
+      "header_preview": "theorem positive_reference_certificate_is_sharp :     ∃ (hp : 0 < positiveP.toMeasure.real safe)       (hq : 0 < positiveQ.toMeasure.real safe),       tvDist positiveP.toMeasure positiveQ.toMeasure = 1 / 8 ∧       positiveQ.toMeasure.real safe = 1 / 2 ∧       tvDist (conditionedPMF positiveP safe hp).toMeasure",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [],
+      "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+    }
+  ],
+  "counted_ledger_promotion": "NONE",
+  "fuzzy_similarity_is_a_proof": false,
+  "source_graph": "GIT_COMMIT_DIFF_LEXICAL_NOT_ELABORATED",
+  "status": "PASS_WITH_TYPED_REUSE_REVIEW_REQUIRED",
+  "reason": "This gate is mandatory discovery and audit, not an automatic proof equivalence or scientific promotion detector"
+}
+
