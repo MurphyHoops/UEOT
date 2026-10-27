@@ -1,0 +1,676 @@
+[
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": true,
+    "name": "_private.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePMFProjection.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_bind_apply_toReal",
+    "requested": "*.risk_bind_apply_toReal",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePMFProjection",
+    "type": "∀ {X : Type uX} {Z : Type uZ} [inst : Fintype X] (p : PMF X) (K : X → PMF Z) (z : Z),\n  ((p.bind K) z).toReal = ∑ x, (p x).toReal * ((K x) z).toReal"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "PMF.bind_apply",
+    "requested": "PMF.bind_apply",
+    "source_module": "Mathlib.Probability.ProbabilityMassFunction.Monad",
+    "type": "∀ {α : Type u_1} {β : Type u_2} (p : PMF α) (f : α → PMF β) (b : β), (p.bind f) b = ∑' (a : α), p a * (f a) b"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC.third_singular_zero_of_rank_le_two",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISC.third_singular_zero_of_rank_le_two",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.ScientificClosure.SISCJoint2DRejection",
+    "type": "∀ {m : Type u_1} {n : Type u_2} [inst : Fintype m] [inst_1 : Fintype n] [inst_2 : DecidableEq n] (S : Matrix m n ℝ),\n  S.rank ≤ 2 → UEOT.V3.SingularValueEffectiveDimension.matrixSingularValue S 2 = 0"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.occupied_conditioned_fibers_supply_actual_experiment",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.occupied_conditioned_fibers_supply_actual_experiment",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransport",
+    "type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype A] [inst_2 : Nonempty A] [inst_3 : MeasurableSpace X]\n  [inst_4 : MeasurableSingletonClass X] [inst_5 : MeasurableSpace A] [inst_6 : MeasurableSingletonClass A]\n  (M : UEOT.V3.FiniteDiscountedControl.Model X fun x => A) (q : X → Y) (basePolicy : Y → PMF A) (p0 : PMF X)\n  (safe : Set X) (T : ℕ)\n  (hpos :\n    0 <\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actualSurvivalMass M q basePolicy\n        p0 safe T)\n  (fallback : ℕ → ↑safe → PMF ↑safe) (outside : ℕ → X → PMF X),\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.OccupiedFiberFeasible M q\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.preparedInitial M q\n        basePolicy p0 safe T hpos fallback outside)\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.conditionedTargetRow M q\n        basePolicy safe T fallback outside)\n      T →\n    ∃ sigma,\n      PMF.map (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.eraseActionHistory T)\n          (UEOT.V3.PathError.causalLaw\n            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.preparedInitial M q\n              basePolicy p0 safe T hpos fallback outside)\n            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskMicroControlKernel q (fun x => M.transitionPMF)\n              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.timeObservationPolicy\n                sigma))\n            T) =\n        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actualConditionedPrefix M q\n          basePolicy p0 safe T 0 hpos"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.occupied_fibers_supply_actual_path",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.occupied_fibers_supply_actual_path",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransport",
+    "type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype A] [Nonempty A]\n  (M : UEOT.V3.FiniteDiscountedControl.Model X fun x => A) (q : X → Y) (p0 : PMF X) (R : ℕ → X → PMF X) (T : ℕ),\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.OccupiedFiberFeasible M q p0 R T →\n    ∃ sigma,\n      PMF.map (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.eraseActionHistory T)\n          (UEOT.V3.PathError.causalLaw p0\n            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskMicroControlKernel q (fun x => M.transitionPMF)\n              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.timeObservationPolicy\n                sigma))\n            T) =\n        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.targetPath p0 R T"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.state_selection_realizes_its_conditioned_path",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.state_selection_realizes_its_conditioned_path",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransport",
+    "type": "∀ {X : Type u} [inst : Fintype X] [inst_1 : Nonempty X] [inst_2 : MeasurableSpace X]\n  [inst_3 : MeasurableSingletonClass X] (basePolicy : X → PMF X) (p0 : PMF X) (safe : Set X) (T : ℕ)\n  (hpos :\n    0 <\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actualSurvivalMass\n        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.stateSelectionModel X) id\n        basePolicy p0 safe T)\n  (fallback : ℕ → ↑safe → PMF ↑safe) (outside : ℕ → X → PMF X),\n  ∃ sigma,\n    PMF.map (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.eraseActionHistory T)\n        (UEOT.V3.PathError.causalLaw\n          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.preparedInitial\n            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.stateSelectionModel X)\n            id basePolicy p0 safe T hpos fallback outside)\n          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskMicroControlKernel id\n            (fun x =>\n              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.stateSelectionModel\n                  X).transitionPMF)\n            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.timeObservationPolicy\n              sigma))\n          T) =\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actualConditionedPrefix\n        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.stateSelectionModel X) id\n        basePolicy p0 safe T 0 hpos"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.time_action_state_path_eq_mixture",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.time_action_state_path_eq_mixture",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransport",
+    "type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype A] [Nonempty A]\n  (M : UEOT.V3.FiniteDiscountedControl.Model X fun x => A) (q : X → Y) (sigma : ℕ → Y → PMF A) (p0 : PMF X) (n : ℕ),\n  PMF.map (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.eraseActionHistory n)\n      (UEOT.V3.PathError.causalLaw p0\n        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskMicroControlKernel q (fun x => M.transitionPMF)\n          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.timeObservationPolicy\n            sigma))\n        n) =\n    UEOT.V3.PathError.causalLaw p0\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.timeMixtureKernel M q sigma)\n      n"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.actual_next_state_eq_target",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.actual_next_state_eq_target",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizability",
+    "type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype A] [Nonempty A]\n  (M : UEOT.V3.FiniteDiscountedControl.Model X fun x => A) (q : X → Y) (sigma : Y → PMF A) (R : X → PMF X),\n  (∀ (x : X),\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.actionMixture\n          (M.transitionPMF x) (sigma (q x)) =\n        R x) →\n    ∀ (n : ℕ) (h : UEOT.V3.PathError.CausalHistory X (A × X) n),\n      PMF.map Prod.snd\n          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskMicroControlKernel q (fun x => M.transitionPMF)\n            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.observationMarkovPolicy\n              sigma)\n            n h) =\n        R (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskLastState n h)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.actual_state_path_eq_target",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.actual_state_path_eq_target",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizability",
+    "type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype A] [Nonempty A]\n  (M : UEOT.V3.FiniteDiscountedControl.Model X fun x => A) (q : X → Y) (sigma : Y → PMF A) (R : X → PMF X),\n  (∀ (x : X),\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.actionMixture\n          (M.transitionPMF x) (sigma (q x)) =\n        R x) →\n    ∀ (p0 : PMF X) (T : ℕ),\n      PMF.map (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.eraseActionHistory T)\n          (UEOT.V3.PathError.causalLaw p0\n            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskMicroControlKernel q (fun x => M.transitionPMF)\n              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.observationMarkovPolicy\n                sigma))\n            T) =\n        UEOT.V3.PathError.causalLaw p0 (fun n h => R (UEOT.V3.CoreOperationalAssembly.currentState n h)) T"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.causalLaw_initial_marginal",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.causalLaw_initial_marginal",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizability",
+    "type": "∀ {X Z : Type u} (p0 : PMF X) (K : (n : ℕ) → UEOT.V3.PathError.CausalHistory X Z n → PMF Z) (T : ℕ),\n  PMF.map (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.initialRecord T)\n      (UEOT.V3.PathError.causalLaw p0 K T) =\n    p0"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.initial_tv_le_path_tv",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.initial_tv_le_path_tv",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizability",
+    "type": "∀ {X Z : Type u} [Fintype X] [Fintype Z] [inst : MeasurableSpace X] [MeasurableSingletonClass X]\n  [inst_2 : MeasurableSpace Z] [MeasurableSingletonClass Z] (p0 : PMF X)\n  (K : (n : ℕ) → UEOT.V3.PathError.CausalHistory X Z n → PMF Z) (T : ℕ)\n  (target : PMF (UEOT.V3.PathError.CausalHistory X Z T)),\n  UEOT.V3.TotalVariation.tvDist p0.toMeasure\n      (PMF.map (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.initialRecord T)\n          target).toMeasure ≤\n    UEOT.V3.TotalVariation.tvDist (UEOT.V3.PathError.causalLaw p0 K T).toMeasure target.toMeasure"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.observation_realizable_iff_fiber_convexHull",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.observation_realizable_iff_fiber_convexHull",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizability",
+    "type": "∀ {I : Type uI} {X : Type u} {Y : Type v} {A : Type w} [Fintype A] (q : I → Y) (P : I → A → PMF X) (R : I → PMF X),\n  (∃ sigma,\n      ∀ (x : I),\n        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.actionMixture (P x)\n            (sigma (q x)) =\n          R x) ↔\n    ∀ (y : Y),\n      (fun x => UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.realRow (R ↑x)) ∈\n        (convexHull ℝ)\n          (Set.range fun a x =>\n            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.realRow (P (↑x) a))"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.path_implementation_requires_initial",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.path_implementation_requires_initial",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizability",
+    "type": "∀ {X Z : Type u} (p0 : PMF X) (K : (n : ℕ) → UEOT.V3.PathError.CausalHistory X Z n → PMF Z) (T : ℕ)\n  (target : PMF (UEOT.V3.PathError.CausalHistory X Z T)),\n  UEOT.V3.PathError.causalLaw p0 K T = target →\n    PMF.map (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.initialRecord T)\n        target =\n      p0"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.pmf_barycenter_exists_iff_mem_convexHull",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.pmf_barycenter_exists_iff_mem_convexHull",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizability",
+    "type": "∀ {A : Type u} [inst : Fintype A] {E : Type v} [inst_1 : AddCommGroup E] [inst_2 : _root_.Module ℝ E] (v : A → E)\n  (z : E), (∃ sigma, ∑ a, (sigma a).toReal • v a = z) ↔ z ∈ (convexHull ℝ) (Set.range v)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.realRow_actionMixture",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.realRow_actionMixture",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizability",
+    "type": "∀ {X : Type u} {A : Type v} [inst : Fintype A] (P : A → PMF X) (sigma : PMF A),\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.realRow\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.actionMixture P sigma) =\n    ∑ a,\n      (sigma a).toReal •\n        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.realRow (P a)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.row_realizable_iff_mem_convexHull",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.row_realizable_iff_mem_convexHull",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizability",
+    "type": "∀ {X : Type u} {A : Type v} [Fintype A] (P : A → PMF X) (R : PMF X),\n  (∃ sigma,\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.actionMixture P sigma = R) ↔\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.realRow R ∈\n      (convexHull ℝ)\n        (Set.range fun a =>\n          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.realRow (P a))"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.stationary_row_eq_actionMixture",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.stationary_row_eq_actionMixture",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizability",
+    "type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype A] [inst_2 : Nonempty A]\n  (M : UEOT.V3.FiniteDiscountedControl.Model X fun x => A) (q : X → Y) (sigma : Y → PMF A) (x : X),\n  UEOT.V3.CoreOperationalAssembly.policyTransitionPMF M\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.liftedStationaryPolicy q sigma)\n      x =\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.actionMixture (M.transitionPMF x)\n      (sigma (q x))"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.actual_conditioning_changes_initial_tv",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.actual_conditioning_changes_initial_tv",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitness",
+    "type": "UEOT.V3.TotalVariation.tvDist\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.initial.toMeasure\n    (PMF.map Prod.fst\n        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.conditionedPair).toMeasure =\n  1 / 4"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.added_safe_actions_realize_conditional_row",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.added_safe_actions_realize_conditional_row",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitness",
+    "type": "∀ (i : Bool),\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.actionMixture\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.extendedAction i)\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.fairSafePolicy =\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.targetConditionalRow i"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.conditional_row_outside_original_action_hull",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.conditional_row_outside_original_action_hull",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitness",
+    "type": "∀ (i : Bool),\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.realRow\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.targetConditionalRow\n        i) ∉\n    (convexHull ℝ)\n      (Set.range fun a =>\n        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.realRow\n          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.model.transitionPMF (some i)\n            a))"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.deterministic_extended_action_does_not_realize",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.deterministic_extended_action_does_not_realize",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitness",
+    "type": "∀ (i : Bool) (a : Option Bool),\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.extendedAction i a ≠\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.targetConditionalRow i"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.no_common_policy_for_aliased_rows",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.no_common_policy_for_aliased_rows",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitness",
+    "type": "¬∃ sigma,\n    ∀ (x : Bool),\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.actionMixture\n          (fun a => PMF.pure a) (sigma ()) =\n        PMF.pure x"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.original_actions_have_irreducible_conditional_error",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.original_actions_have_irreducible_conditional_error",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitness",
+    "type": "∀ (i : Bool) (sigma : PMF Unit),\n  UEOT.V3.TotalVariation.tvDist\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.actionMixture\n          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.model.transitionPMF\n            (some i))\n          sigma).toMeasure\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.targetConditionalRow\n          i).toMeasure =\n    if i = true then 3 / 4 else 1 / 4"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.separately_feasible_hidden_rows",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.separately_feasible_hidden_rows",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitness",
+    "type": "∀ (x : Bool),\n  ∃ sigma,\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.actionMixture\n        (fun a => PMF.pure a) sigma =\n      PMF.pure x"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.unchanged_initial_forces_path_error",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.unchanged_initial_forces_path_error",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitness",
+    "type": "∀\n  (L :\n    (n : ℕ) →\n      UEOT.V3.PathError.CausalHistory\n          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.State\n          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.State n →\n        PMF UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.State),\n  1 / 4 ≤\n    UEOT.V3.TotalVariation.tvDist\n      (UEOT.V3.PathError.causalLaw\n          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.initial L 1).toMeasure\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.conditionedPair.toMeasure"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.mass_mul_conditioned_atom",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.mass_mul_conditioned_atom",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability",
+    "type": "∀ {X : Type u} [inst : Fintype X] [inst_1 : MeasurableSpace X] [inst_2 : MeasurableSingletonClass X] (p : PMF X)\n  (S : Set X) (hp : 0 < p.toMeasure.real S) (x : X),\n  p.toMeasure.real S *\n      ((UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditionedPMF p S hp)\n          x).toReal =\n    if x ∈ S then (p x).toReal else 0"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_conditioned_doob_tv",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.actual_conditioned_doob_tv",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitness",
+    "type": "UEOT.V3.TotalVariation.tvDist\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.conditionedPair.toMeasure\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.doobPair.toMeasure =\n  1 / 4"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.conditioned_safe_atom",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.conditioned_safe_atom",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitness",
+    "type": "∀ (i j : Bool),\n  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobWitnessCheck.conditionedPair\n        (some i, some j)).toReal =\n    if i = true then 1 / 8 else 3 / 8"
+  },
+  {
+    "axioms": [],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.EmptyCommonAction.each_state_has_a_certified_action",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.EmptyCommonAction.each_state_has_a_certified_action",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ControlCoverageWitness",
+    "type": "∀ (x : Bool),\n  ∃ a,\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.EmptyCommonAction.crossedRegistration\n      0 x a"
+  },
+  {
+    "axioms": [],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.EmptyCommonAction.no_common_certified_action",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.EmptyCommonAction.no_common_certified_action",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ControlCoverageWitness",
+    "type": "¬∃ a,\n    ∀ (x : Bool),\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.EmptyCommonAction.crossedRegistration\n        0 x a"
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportStrictWitness.whole_current_fiber_has_no_common_action",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportStrictWitness.whole_current_fiber_has_no_common_action",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ControlCoverageWitness",
+    "type": "¬∃ a,\n    ∀ (x : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportStrictWitness.State),\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportStrictWitness.observe x = none →\n        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PosteriorSupportStrictWitness.certified 1 x a"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_initial_mass",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actual_conditioned_initial_mass",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindow",
+    "type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype A] [inst_2 : Nonempty A] [inst_3 : MeasurableSpace X]\n  [inst_4 : MeasurableSingletonClass X] [inst_5 : MeasurableSpace A] [inst_6 : MeasurableSingletonClass A]\n  (M : UEOT.V3.FiniteDiscountedControl.Model X fun x => A) (q : X → Y) (sigma : Y → PMF A) (p0 : PMF X) (K : Set X)\n  (T : ℕ)\n  (hpos :\n    0 <\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actualSurvivalMass M q sigma p0 K\n        (0 + T))\n  (i : ↑K),\n  ((UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actualConditionedPrefix M q sigma p0\n          K 0 T hpos)\n        ↑i).toReal =\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.safeInitialRow p0 K i *\n        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival\n          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.killedMatrix M\n            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.liftedStationaryPolicy q\n              sigma)\n            K)\n          T i /\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actualSurvivalMass M q sigma p0 K\n        T"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.causalLaw_map_prefix",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.causalLaw_map_prefix",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFlux",
+    "type": "∀ {H Z : Type u} (p0 : PMF H) (L : (n : ℕ) → UEOT.V3.PathError.CausalHistory H Z n → PMF Z) (n : ℕ),\n  PMF.map (fun h => h.1) (UEOT.V3.PathError.causalLaw p0 L (n + 1)) = UEOT.V3.PathError.causalLaw p0 L n"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.pmfExtend_map_fst",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.pmfExtend_map_fst",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFlux",
+    "type": "∀ {H : Type u_1} {Z : Type u_2} (p : PMF H) (L : H → PMF Z), PMF.map Prod.fst (UEOT.V3.PathError.pmfExtend p L) = p"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.actual_next_state_eq_stationary_row",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.actual_next_state_eq_stationary_row",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridge",
+    "type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype A] [inst_2 : Nonempty A]\n  (M : UEOT.V3.FiniteDiscountedControl.Model X fun x => A) (q : X → Y) (sigma : Y → PMF A) (n : ℕ)\n  (h : UEOT.V3.PathError.CausalHistory X (A × X) n),\n  PMF.map Prod.snd\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskMicroControlKernel q (fun x => M.transitionPMF)\n        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.observationMarkovPolicy sigma)\n        n h) =\n    UEOT.V3.CoreOperationalAssembly.policyTransitionPMF M\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.liftedStationaryPolicy q sigma)\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskLastState n h)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.actual_state_path_eq_stationary_path",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.actual_state_path_eq_stationary_path",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridge",
+    "type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype A] [inst_2 : Nonempty A]\n  (M : UEOT.V3.FiniteDiscountedControl.Model X fun x => A) (q : X → Y) (sigma : Y → PMF A) (p0 : PMF X) (n : ℕ),\n  PMF.map (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.eraseActionHistory n)\n      (UEOT.V3.PathError.causalLaw p0\n        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskMicroControlKernel q (fun x => M.transitionPMF)\n          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.observationMarkovPolicy\n            sigma))\n        n) =\n    UEOT.V3.PathError.causalLaw p0\n      (UEOT.V3.CoreOperationalAssembly.policyPathKernel M\n        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.liftedStationaryPolicy q\n          sigma))\n      n"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_ambient_eq_actual",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_ambient_eq_actual",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindow",
+    "type": "∀ {X Y A : Type u} [inst : Fintype X] [inst_1 : Fintype A] [inst_2 : Nonempty A] [inst_3 : MeasurableSpace X]\n  [inst_4 : MeasurableSingletonClass X] [inst_5 : MeasurableSpace A] [inst_6 : MeasurableSingletonClass A]\n  (M : UEOT.V3.FiniteDiscountedControl.Model X fun x => A) (q : X → Y) (sigma : Y → PMF A) (p0 : PMF X) (K : Set X)\n  (t r : ℕ)\n  (hpos :\n    0 <\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actualSurvivalMass M q sigma p0 K\n        (t + r))\n  (fallback : ℕ → ↑K → PMF ↑K) (outside : ℕ → X → PMF X),\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generatedAmbientPrefix M q sigma p0 K\n      (t + r) hpos fallback outside t =\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.actualConditionedPrefix M q sigma p0\n      K t r hpos"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.fixed_injective_latent_decoder_identifies_latents",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.fixed_injective_latent_decoder_identifies_latents",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveLinearGauge",
+    "type": "∀ {X : Type uX} {O : Type uO} (z z' : X → UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TwoDriveLatent)\n  (read : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TwoDriveLatent → O),\n  Function.Injective read → ((fun x => read (z x)) = fun x => read (z' x)) → z = z'"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.labelled_axis_lines_iff_nonzero_diagonal_gauge",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.labelled_axis_lines_iff_nonzero_diagonal_gauge",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveOperationalAnchors",
+    "type": "∀\n  (A :\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TwoDriveLatent ≃ₗ[ℝ]\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TwoDriveLatent),\n  (∀ (i : Fin 2),\n      ∃ c,\n        A (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.driveUnitAxis i) =\n          c • UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.driveUnitAxis i) ↔\n    ∃ c, ∃ (hc : ∀ (i : Fin 2), c i ≠ 0), A = UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.driveAxisScaling c hc"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.latent_GL2_reparameterization_preserves_all_responses",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.latent_GL2_reparameterization_preserves_all_responses",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveLinearGauge",
+    "type": "∀ {X : Type uX} {O : Type uO} (z : X → UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TwoDriveLatent)\n  (read : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TwoDriveLatent → O)\n  (g :\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TwoDriveLatent ≃ₗ[ℝ]\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TwoDriveLatent),\n  (fun x => read (z x)) = fun x => (read ∘ ⇑g.symm) (g (z x))"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.nondegenerate_linear_factorization_unique_gauge",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.nondegenerate_linear_factorization_unique_gauge",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveLinearGaugeClassification",
+    "type": "∀ {X : Type uX} {L : Type uL} {Y : Type uY} [inst : AddCommGroup X] [inst_1 : _root_.Module ℝ X]\n  [inst_2 : AddCommGroup L] [inst_3 : _root_.Module ℝ L] [inst_4 : AddCommGroup Y] [inst_5 : _root_.Module ℝ Y]\n  (H H' : X →ₗ[ℝ] L) (G G' : L →ₗ[ℝ] Y),\n  Function.Surjective ⇑H →\n    Function.Surjective ⇑H' →\n      Function.Injective ⇑G → Function.Injective ⇑G' → G ∘ₗ H = G' ∘ₗ H' → ∃! A, H' = ↑A ∘ₗ H ∧ G' = G ∘ₗ ↑A.symm"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.one_unit_anchor_leaves_nontrivial_gauge",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.one_unit_anchor_leaves_nontrivial_gauge",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveOperationalAnchors",
+    "type": "∃ A,\n  A (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.driveUnitAxis 0) =\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.driveUnitAxis 0 ∧\n    A ≠ LinearEquiv.refl ℝ UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TwoDriveLatent"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.oriented_axis_rays_iff_positive_diagonal_gauge",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.oriented_axis_rays_iff_positive_diagonal_gauge",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveOperationalAnchors",
+    "type": "∀\n  (A :\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TwoDriveLatent ≃ₗ[ℝ]\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TwoDriveLatent),\n  (∀ (i : Fin 2),\n      ∃ c,\n        0 < c ∧\n          A (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.driveUnitAxis i) =\n            c • UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.driveUnitAxis i) ↔\n    ∃ c, ∃ (hc : ∀ (i : Fin 2), 0 < c i), A = UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.driveAxisScaling c ⋯"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.phi_identified_of_pi_anchor",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.phi_identified_of_pi_anchor",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveGaugeCompleteness",
+    "type": "∀ {X : Type uX} (pi phi pi' phi' : X → ℝ) (lambda : ℝ),\n  lambda ≠ 0 →\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.driveObjective pi phi lambda =\n        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.driveObjective pi' phi' lambda →\n      pi = pi' → phi = phi'"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.pi_identified_of_phi_anchor",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.pi_identified_of_phi_anchor",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveGaugeCompleteness",
+    "type": "∀ {X : Type uX} (pi phi pi' phi' : X → ℝ) (lambda : ℝ),\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.driveObjective pi phi lambda =\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.driveObjective pi' phi' lambda →\n    phi = phi' → pi = pi'"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.registered_unit_interventions_identify_factorization",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.registered_unit_interventions_identify_factorization",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveOperationalAnchors",
+    "type": "∀ {X : Type u_1} {Y : Type u_2} [inst : AddCommGroup X] [inst_1 : _root_.Module ℝ X] [inst_2 : AddCommGroup Y]\n  [inst_3 : _root_.Module ℝ Y] (H H' : X →ₗ[ℝ] UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TwoDriveLatent)\n  (G G' : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TwoDriveLatent →ₗ[ℝ] Y),\n  Function.Injective ⇑G →\n    Function.Injective ⇑G' →\n      G ∘ₗ H = G' ∘ₗ H' →\n        ∀ (d : Fin 2 → X),\n          (∀ (i : Fin 2),\n              H (d i) = UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.driveUnitAxis i ∧\n                H' (d i) = UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.driveUnitAxis i) →\n            H = H' ∧ G = G'"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_tv_bind_same_weights",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_tv_bind_same_weights",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePMFProjection",
+    "type": "∀ {X : Type uX} {Z : Type uZ} [Fintype X] [Fintype Z] [inst : MeasurableSpace Z] [MeasurableSingletonClass Z]\n  (p : PMF X) (K L : X → PMF Z) (ε : ℝ),\n  (∀ x ∈ p.support, UEOT.V3.TotalVariation.tvDist (K x).toMeasure (L x).toMeasure ≤ ε) →\n    UEOT.V3.TotalVariation.tvDist (p.bind K).toMeasure (p.bind L).toMeasure ≤ ε"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_linear_response_iff_unique_gauge",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_linear_response_iff_unique_gauge",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveLinearGaugeClassification",
+    "type": "∀ {X : Type uX} {L : Type uL} {Y : Type uY} [inst : AddCommGroup X] [inst_1 : _root_.Module ℝ X]\n  [inst_2 : AddCommGroup L] [inst_3 : _root_.Module ℝ L] [inst_4 : AddCommGroup Y] [inst_5 : _root_.Module ℝ Y]\n  (H H' : X →ₗ[ℝ] L) (G G' : L →ₗ[ℝ] Y),\n  Function.Surjective ⇑H →\n    Function.Surjective ⇑H' →\n      Function.Injective ⇑G → Function.Injective ⇑G' → (G ∘ₗ H = G' ∘ₗ H' ↔ ∃! A, H' = ↑A ∘ₗ H ∧ G' = G ∘ₗ ↑A.symm)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_objective_iff_gauge_related",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_objective_iff_gauge_related",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveGaugeCompleteness",
+    "type": "∀ {X : Type uX} (pi phi pi' phi' : X → ℝ) (lambda : ℝ),\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.driveObjective pi phi lambda =\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.driveObjective pi' phi' lambda ↔\n    ∃ chi, (∀ (x : X), pi' x = pi x + lambda * chi x) ∧ ∀ (x : X), phi' x = phi x + chi x"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.two_drive_GL2_gauge_is_nontrivial",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.two_drive_GL2_gauge_is_nontrivial",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveLinearGauge",
+    "type": "∃ g, (g fun x => 1) ≠ fun x => 1"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.two_oriented_axes_do_not_identify_units",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.two_oriented_axes_do_not_identify_units",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveOperationalAnchors",
+    "type": "∃ A,\n  (∀ (i : Fin 2),\n      ∃ c,\n        0 < c ∧\n          A (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.driveUnitAxis i) =\n            c • UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.driveUnitAxis i) ∧\n    A ≠ LinearEquiv.refl ℝ UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TwoDriveLatent"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.two_unit_anchors_identify_gauge",
+    "requested": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.two_unit_anchors_identify_gauge",
+    "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveOperationalAnchors",
+    "type": "∀\n  (A :\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TwoDriveLatent ≃ₗ[ℝ]\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TwoDriveLatent),\n  A (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.driveUnitAxis 0) =\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.driveUnitAxis 0 →\n    A (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.driveUnitAxis 1) =\n        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.driveUnitAxis 1 →\n      A = LinearEquiv.refl ℝ UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TwoDriveLatent"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.FiniteDiscountedControl.FiniteProbabilityRow.ofRealRow_apply_toReal",
+    "requested": "UEOT.V3.FiniteDiscountedControl.FiniteProbabilityRow.ofRealRow_apply_toReal",
+    "source_module": "UEOT.V3.FiniteDiscountedApproxQuotient",
+    "type": "∀ {S : Type uS} [inst : Fintype S] (p : S → ℝ) (hp : ∀ (s : S), 0 ≤ p s) (hsum : ∑ s, p s = 1) (s : S),\n  ((UEOT.V3.FiniteDiscountedControl.FiniteProbabilityRow.ofRealRow p hp hsum) s).toReal = p s"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.CoreOperationalAssembly.policyTransitionPMF_apply_toReal",
+    "requested": "UEOT.V3.FiniteDiscountedControl.policyTransitionPMF_apply_toReal",
+    "source_module": "UEOT.V3.CoreOperationalAssembly",
+    "type": "∀ {S : Type uX} [inst : Fintype S] {A : S → Type uA} [inst_1 : (s : S) → Fintype (A s)]\n  [inst_2 : ∀ (s : S), Nonempty (A s)] (M : UEOT.V3.FiniteDiscountedControl.Model S A)\n  (π : UEOT.V3.FiniteDiscountedControl.StationaryPolicy A) (x y : S),\n  ((UEOT.V3.CoreOperationalAssembly.policyTransitionPMF M π x) y).toReal = M.policyTransition π x y"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "UEOT.V3.TotalVariation.tvDist_map_le",
+    "requested": "UEOT.V3.TotalVariation.tvDist_map_le",
+    "source_module": "UEOT.V3.TotalVariation",
+    "type": "∀ {X : Type uX} {Y : Type uY} [inst : MeasurableSpace X] [inst_1 : MeasurableSpace Y] (μ ν : MeasureTheory.Measure X)\n  [MeasureTheory.IsProbabilityMeasure μ] [MeasureTheory.IsProbabilityMeasure ν] (f : X → Y),\n  Measurable f →\n    UEOT.V3.TotalVariation.tvDist (MeasureTheory.Measure.map f μ) (MeasureTheory.Measure.map f ν) ≤\n      UEOT.V3.TotalVariation.tvDist μ ν"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "convexHull_range_eq_exists_affineCombination",
+    "requested": "convexHull_range_eq_exists_affineCombination",
+    "source_module": "Mathlib.Analysis.Convex.Combination",
+    "type": "∀ {R : Type u_1} {E : Type u_3} {ι : Type u_5} [inst : Field R] [inst_1 : AddCommGroup E] [inst_2 : _root_.Module R E]\n  [inst_3 : LinearOrder R] [IsStrictOrderedRing R] (v : ι → E),\n  (convexHull R) (Set.range v) = {x | ∃ s w, (∀ i ∈ s, 0 ≤ w i) ∧ s.sum w = 1 ∧ (Finset.affineCombination R s v) w = x}"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "is_private": false,
+    "name": "mem_convexHull_of_exists_fintype",
+    "requested": "mem_convexHull_of_exists_fintype",
+    "source_module": "Mathlib.Analysis.Convex.Combination",
+    "type": "∀ {R : Type u_1} {E : Type u_3} {ι : Type u_5} [inst : Field R] [inst_1 : AddCommGroup E] [inst_2 : _root_.Module R E]\n  [inst_3 : LinearOrder R] [IsStrictOrderedRing R] {s : Set E} {x : E} [inst_5 : Fintype ι] (w : ι → R) (z : ι → E),\n  (∀ (i : ι), 0 ≤ w i) → ∑ i, w i = 1 → (∀ (i : ι), z i ∈ s) → ∑ i, w i • z i = x → x ∈ (convexHull R) s"
+  }
+]

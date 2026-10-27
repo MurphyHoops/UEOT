@@ -1,0 +1,879 @@
+{
+  "schema": "FKRG_REUSE_OVERLAY_V1",
+  "overlay_id": "ACTION_GAUGE_TRANSPORT_REUSE_OVERLAY_V1",
+  "source_checkpoint": "worktree-sha256:9a90676af4c234eee2121ac75c0e127f2dd87370e727e5e7189ea99b4b377530",
+  "source_checkpoint_kind": "FROZEN_SOURCE_CONTENT_BEFORE_GIT_COMMIT",
+  "baseline_ref": "dd6ab2d4696ce4fa7824baa2faeb993069ee8787",
+  "base_snapshot_modules": 703,
+  "prior_overlay": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/CONDITIONAL_STABILITY_REUSE_OVERLAY_V1.json",
+    "sha256": "bbe93031ca6607baaedda6af1a90d6875587032e44c8a556b646a66ddb876b9c"
+  },
+  "source_hash_overrides": {
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean": "86fe38d87cdf314392b50960a087964ea02c5a988a24cd27b4ebbf5a97cff66f"
+  },
+  "added_modules": [
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransport",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ConditionedActionTransport.lean",
+      "content_sha256": "bdef4d1f2e5f4154c3a65151c407908a18efee03e1596b1f04c36855bd1eb25e",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveLinearGaugeClassification",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveLinearGaugeClassification.lean",
+      "content_sha256": "6931bfb534570015b45f6601592adb654f7fc62e283d56fccae2fb678a804c53",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveOperationalAnchors",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveOperationalAnchors.lean",
+      "content_sha256": "aa4fda07436424ac262bb81501318713b77ef9f3fb3dbbbf4ee164532e17e796",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizability",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizability.lean",
+      "content_sha256": "fc45d67c59111e4f262a28d850306d3782801116ad01bb403c3dea4ef12a655f",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizabilityWitness.lean",
+      "content_sha256": "ca07e60f757ac12fb1997d9db52c17695247345a262aeb7f97bf03d88fbe8590",
+      "source_origin": "UEOT_MAINTAINED"
+    }
+  ],
+  "public_theorems": [
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.time_action_state_path_eq_mixture",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ConditionedActionTransport.lean",
+      "line": 51,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransport",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.stationary_row_eq_actionMixture",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.actual_next_state_eq_stationary_row",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskFiberPosterior_support",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_causalLaw_map"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.occupied_fibers_supply_actual_path",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ConditionedActionTransport.lean",
+      "line": 142,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransport",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.time_action_state_path_eq_mixture",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.observation_realizable_iff_fiber_convexHull"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.occupied_conditioned_fibers_supply_actual_experiment",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ConditionedActionTransport.lean",
+      "line": 190,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransport",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.occupied_fibers_supply_actual_path",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_ambient_eq_actual"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.state_selection_realizes_its_conditioned_path",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ConditionedActionTransport.lean",
+      "line": 233,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransport",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.occupied_conditioned_fibers_supply_actual_experiment",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.observation_realizable_iff_fiber_convexHull"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.nondegenerate_linear_factorization_unique_gauge",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveLinearGaugeClassification.lean",
+      "line": 27,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveLinearGaugeClassification",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_linear_response_iff_unique_gauge",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveLinearGaugeClassification.lean",
+      "line": 93,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveLinearGaugeClassification",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.nondegenerate_linear_factorization_unique_gauge"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.labelled_axis_lines_iff_nonzero_diagonal_gauge",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveOperationalAnchors.lean",
+      "line": 63,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveOperationalAnchors",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.oriented_axis_rays_iff_positive_diagonal_gauge",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveOperationalAnchors.lean",
+      "line": 99,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveOperationalAnchors",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.labelled_axis_lines_iff_nonzero_diagonal_gauge"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.two_unit_anchors_identify_gauge",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveOperationalAnchors.lean",
+      "line": 126,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveOperationalAnchors",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.registered_unit_interventions_identify_factorization",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveOperationalAnchors.lean",
+      "line": 157,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveOperationalAnchors",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.nondegenerate_linear_factorization_unique_gauge",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.two_unit_anchors_identify_gauge"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.one_unit_anchor_leaves_nontrivial_gauge",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveOperationalAnchors.lean",
+      "line": 213,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveOperationalAnchors",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.two_oriented_axes_do_not_identify_units",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveOperationalAnchors.lean",
+      "line": 227,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveOperationalAnchors",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.realRow_actionMixture",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizability.lean",
+      "line": 49,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizability",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.pmf_barycenter_exists_iff_mem_convexHull",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizability.lean",
+      "line": 62,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizability",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_sum_toReal",
+        "UEOT.V3.FiniteDiscountedControl.FiniteProbabilityRow.ofRealRow_apply_toReal"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.row_realizable_iff_mem_convexHull",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizability.lean",
+      "line": 91,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizability",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.pmf_barycenter_exists_iff_mem_convexHull",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.realRow_actionMixture"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.observation_realizable_iff_fiber_convexHull",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizability.lean",
+      "line": 109,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizability",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.pmf_barycenter_exists_iff_mem_convexHull",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.realRow_actionMixture"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.stationary_row_eq_actionMixture",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizability.lean",
+      "line": 139,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizability",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.realRow_actionMixture",
+        "UEOT.V3.CoreOperationalAssembly.policyTransitionPMF_apply_toReal",
+        "UEOT.V3.FiniteDiscountedControl.Model.transitionPMF_apply_toReal"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.actual_next_state_eq_target",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizability.lean",
+      "line": 153,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizability",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.stationary_row_eq_actionMixture",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.actual_next_state_eq_stationary_row"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.actual_state_path_eq_target",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizability.lean",
+      "line": 165,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizability",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.stationary_row_eq_actionMixture",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.actual_state_path_eq_stationary_path"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.causalLaw_initial_marginal",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizability.lean",
+      "line": 189,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizability",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.pmfExtend_map_fst"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.path_implementation_requires_initial",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizability.lean",
+      "line": 204,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizability",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.causalLaw_initial_marginal"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.initial_tv_le_path_tv",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizability.lean",
+      "line": 213,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizability",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.causalLaw_initial_marginal",
+        "UEOT.V3.TotalVariation.tvDist_map_le"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.original_actions_have_irreducible_conditional_error",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizabilityWitness.lean",
+      "line": 82,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.conditional_row_outside_original_action_hull",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizabilityWitness.lean",
+      "line": 93,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.row_realizable_iff_mem_convexHull",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.original_actions_have_irreducible_conditional_error",
+        "UEOT.V3.TotalVariation.tvDist_self_eq_zero"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.added_safe_actions_realize_conditional_row",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizabilityWitness.lean",
+      "line": 131,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.deterministic_extended_action_does_not_realize",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizabilityWitness.lean",
+      "line": 140,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.original_actions_have_irreducible_conditional_error",
+        "UEOT.V3.TotalVariation.tvDist_self_eq_zero"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.separately_feasible_hidden_rows",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizabilityWitness.lean",
+      "line": 157,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.no_common_policy_for_aliased_rows",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizabilityWitness.lean",
+      "line": 166,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.actual_conditioning_changes_initial_tv",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizabilityWitness.lean",
+      "line": 208,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.unchanged_initial_forces_path_error",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizabilityWitness.lean",
+      "line": 218,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.initial_tv_le_path_tv",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.actual_conditioning_changes_initial_tv"
+      ]
+    }
+  ],
+  "type_distinctness": {
+    "status": "PASS",
+    "verifier": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_ACTION_GAUGE_TRANSPORT_OVERLAY_TYPES.lean",
+    "new_theorems": 30,
+    "registered_prior_theorems": 4474,
+    "cross_isDefEq_comparisons": 134220,
+    "internal_isDefEq_comparisons": 435,
+    "definitionally_equal_matches": 0,
+    "protocol": "Raw stored compiled types; fresh liftTermElabM per Meta.isDefEq comparison; stored universe names retained. Not a general logical-equivalence decision."
+  },
+  "proof_dependency_certification": {
+    "status": "PASS",
+    "verifier": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_ACTION_GAUGE_TRANSPORT_OVERLAY_TYPES.lean",
+    "measure": "Actual theorem proof-value getUsedConstants restricted to all previous and new registered public theorem names",
+    "registered_direct_edges": 40,
+    "edges": [
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.time_action_state_path_eq_mixture",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.stationary_row_eq_actionMixture"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.time_action_state_path_eq_mixture",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.actual_next_state_eq_stationary_row"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.time_action_state_path_eq_mixture",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.riskFiberPosterior_support"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.time_action_state_path_eq_mixture",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.risk_causalLaw_map"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.occupied_fibers_supply_actual_path",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.time_action_state_path_eq_mixture"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.occupied_fibers_supply_actual_path",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.observation_realizable_iff_fiber_convexHull"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.occupied_conditioned_fibers_supply_actual_experiment",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.occupied_fibers_supply_actual_path"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.occupied_conditioned_fibers_supply_actual_experiment",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_ambient_eq_actual"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.state_selection_realizes_its_conditioned_path",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.occupied_conditioned_fibers_supply_actual_experiment"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.state_selection_realizes_its_conditioned_path",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.observation_realizable_iff_fiber_convexHull"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_linear_response_iff_unique_gauge",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.nondegenerate_linear_factorization_unique_gauge"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.oriented_axis_rays_iff_positive_diagonal_gauge",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.labelled_axis_lines_iff_nonzero_diagonal_gauge"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.registered_unit_interventions_identify_factorization",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.nondegenerate_linear_factorization_unique_gauge"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.registered_unit_interventions_identify_factorization",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.two_unit_anchors_identify_gauge"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.pmf_barycenter_exists_iff_mem_convexHull",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_sum_toReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.pmf_barycenter_exists_iff_mem_convexHull",
+        "target": "UEOT.V3.FiniteDiscountedControl.FiniteProbabilityRow.ofRealRow_apply_toReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.row_realizable_iff_mem_convexHull",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.pmf_barycenter_exists_iff_mem_convexHull"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.row_realizable_iff_mem_convexHull",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.realRow_actionMixture"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.observation_realizable_iff_fiber_convexHull",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.pmf_barycenter_exists_iff_mem_convexHull"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.observation_realizable_iff_fiber_convexHull",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.realRow_actionMixture"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.stationary_row_eq_actionMixture",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.realRow_actionMixture"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.stationary_row_eq_actionMixture",
+        "target": "UEOT.V3.CoreOperationalAssembly.policyTransitionPMF_apply_toReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.stationary_row_eq_actionMixture",
+        "target": "UEOT.V3.FiniteDiscountedControl.Model.transitionPMF_apply_toReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.actual_next_state_eq_target",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.stationary_row_eq_actionMixture"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.actual_next_state_eq_target",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.actual_next_state_eq_stationary_row"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.actual_state_path_eq_target",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.stationary_row_eq_actionMixture"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.actual_state_path_eq_target",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridgeCheck.actual_state_path_eq_stationary_path"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.causalLaw_initial_marginal",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.pmfExtend_map_fst"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.path_implementation_requires_initial",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.causalLaw_initial_marginal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.initial_tv_le_path_tv",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.causalLaw_initial_marginal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.initial_tv_le_path_tv",
+        "target": "UEOT.V3.TotalVariation.tvDist_map_le"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.original_actions_have_irreducible_conditional_error",
+        "target": "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.conditional_row_outside_original_action_hull",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.row_realizable_iff_mem_convexHull"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.conditional_row_outside_original_action_hull",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.original_actions_have_irreducible_conditional_error"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.conditional_row_outside_original_action_hull",
+        "target": "UEOT.V3.TotalVariation.tvDist_self_eq_zero"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.deterministic_extended_action_does_not_realize",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.original_actions_have_irreducible_conditional_error"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.deterministic_extended_action_does_not_realize",
+        "target": "UEOT.V3.TotalVariation.tvDist_self_eq_zero"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.actual_conditioning_changes_initial_tv",
+        "target": "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.unchanged_initial_forces_path_error",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.initial_tv_le_path_tv"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.unchanged_initial_forces_path_error",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitnessCheck.actual_conditioning_changes_initial_tv"
+      }
+    ]
+  },
+  "native_axiom_census": {
+    "status": "PASS",
+    "physical_source_modules": 5,
+    "theorem_constants": 93,
+    "private_theorem_constants": 37,
+    "confirmed_public_source_candidates": 30,
+    "other_native_public_constants": 26,
+    "standard_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "scope": "All compiler-owned theorem constants of every added module, including private and generated constants"
+  },
+  "native_export_evidence": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/ACTION_GAUGE_TRANSPORT_NATIVE_V1.json",
+    "sha256": "0d47202668032dddb912fce8974606caefecbfd56435d7bc9cbe169af4905a1a"
+  },
+  "native_execution": {
+    "build_receipt_sha256": "aa1ab0b686c7146d62c7b41f7168e11508ec34b203b84ed2a9220f05d032e362",
+    "source_tree_sha256": "9a90676af4c234eee2121ac75c0e127f2dd87370e727e5e7189ea99b4b377530",
+    "native_export_exit_code": 0,
+    "fixed_certificate_exit_code": 0,
+    "fixed_certificate_sha256": "5fe6bf1fc8653e6f552b916aeac4448b4eea0804c9254a6ab58c0bdb00f0cdfb",
+    "fixed_export_equals_initial_native_export": true,
+    "results": [
+      {
+        "label": "native_export",
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/native-02/ACTION_GAUGE_TRANSPORT_NATIVE_EXPORT.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 57.45,
+        "log_sha256": "d5bcdbce76f87fda9615c6ab18d62c857302086e98549a6bf68f3fab69a316ab"
+      },
+      {
+        "label": "fixed_verifier",
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/native-02/VERIFY_ACTION_GAUGE_TRANSPORT_OVERLAY_TYPES.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 56.129,
+        "log_sha256": "d5bcdbce76f87fda9615c6ab18d62c857302086e98549a6bf68f3fab69a316ab"
+      }
+    ]
+  },
+  "scientific_role": "UNCOUNTED_ACTION_REALIZABILITY_GAUGE_AND_CONDITIONED_TRANSPORT",
+  "counted_core_impact": "NONE",
+  "scientific_closure": "NOT_ESTABLISHED",
+  "lexical_pr_preflight": {
+    "baseline_ref": "dd6ab2d4696ce4fa7824baa2faeb993069ee8787",
+    "candidate_ref": null,
+    "candidate_scope": "Current frozen worktree bytes; an immutable Git-object PR preflight is separately required after commit.",
+    "base_lean_module_count": 703,
+    "candidate_lean_module_count": 708,
+    "base_public_lexical_theorem_count": 4474,
+    "candidate_public_lexical_theorem_count": 4504,
+    "new_public_source_theorem_count": 30,
+    "historical_public_repair_count": 0,
+    "overlay_public_registration_count": 30,
+    "new_theorems_with_lexical_reuse_candidates": 3,
+    "candidate_source_tree_sha256": "9a90676af4c234eee2121ac75c0e127f2dd87370e727e5e7189ea99b4b377530",
+    "registered_prior_public_source_theorem_count": 4474,
+    "candidate_registered_public_source_theorem_count": 4504,
+    "note": "Counts and H use the actual SOURCE_PREFLIGHT declaration/name hints. This is not a Git-object PR preflight; name hints and raw stored-type isDefEq do not replace independent semantic review."
+  },
+  "registration_provenance": {
+    "schema": "ACTION_GAUGE_TRANSPORT_REGISTRATION_PROVENANCE_V1",
+    "inputs": [
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/native-02/ACTION_GAUGE_TRANSPORT_NATIVE_EXPORT.lean",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/ACTION_GAUGE_TRANSPORT_NATIVE_EXPORT.lean",
+        "sha256": "3e1ef1f545bb3e5e9709173386bd67517630ce555558d9040c1e037b754fe1a4"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/native-02/ACTION_GAUGE_TRANSPORT_NATIVE_V1.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/ACTION_GAUGE_TRANSPORT_NATIVE_V1.json",
+        "sha256": "0d47202668032dddb912fce8974606caefecbfd56435d7bc9cbe169af4905a1a"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/native-02/ACTION_GAUGE_TRANSPORT_REUSE_OVERLAY_V1.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/ACTION_GAUGE_TRANSPORT_REUSE_OVERLAY_V1.json",
+        "sha256": "e898a75dc7494787b6ae73b4f3efe78795c96c316c1176bd6d30d3919911a7f8"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/native-02/FROZEN_INPUTS.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/FROZEN_INPUTS.json",
+        "sha256": "c0a5a6bb8f44e95603f17c3fbea7a2aa7d9e5f48bacc1c70ec4e83eb5677841b"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/native-02/PROTOCOL_ADAPTATION.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/PROTOCOL_ADAPTATION.json",
+        "sha256": "c4bdbd2a184f3ec7819448ff18c58921e15cc578e78be529643babc95ec39c3a"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/native-02/SOURCE_PREFLIGHT.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/SOURCE_PREFLIGHT.json",
+        "sha256": "51a25abe2b0545d232053e0c4528669771351d353d1195468e36655ac64c723e"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/native-02/STATUS.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/STATUS.json",
+        "sha256": "5a67b38e9a1354d93355908df957b7c087e164a6e463d774b873c210c7df2650"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/native-02/VERIFY_ACTION_GAUGE_TRANSPORT_OVERLAY_TYPES.lean",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/VERIFY_ACTION_GAUGE_TRANSPORT_OVERLAY_TYPES.lean",
+        "sha256": "5fe6bf1fc8653e6f552b916aeac4448b4eea0804c9254a6ab58c0bdb00f0cdfb"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/native-02/development_lexical_reuse_hints.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/development_lexical_reuse_hints.json",
+        "sha256": "bcf91bf2b1abf227b776a851417cb21003d44ea36c1b8a76cfb1b961e78f1557"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/native-02/executed_integration_native.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/executed_integration_native.py",
+        "sha256": "7c817c359c9dd4adef50c7dfd6af5ea5854ece8ecb5c8d2d41017882f877de45"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/native-02/fixed_verifier.log",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/fixed_verifier.log",
+        "sha256": "d5bcdbce76f87fda9615c6ab18d62c857302086e98549a6bf68f3fab69a316ab"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/native-02/immutable_integration_native.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/immutable_integration_native.py",
+        "sha256": "d4708782bbb14360002f119715ba51f96c05e2e632694ba64c56c3d38ce8a924"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/native-02/integration_native.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/integration_native.py",
+        "sha256": "69f7f2fec01b8e9f8a64f548378c0bd56bd2a0c1aff0f5565c725a4ea0d146d4"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/native-02/native_export.log",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/native_export.log",
+        "sha256": "d5bcdbce76f87fda9615c6ab18d62c857302086e98549a6bf68f3fab69a316ab"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/native-02/observed_first_native.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/observed_first_native.json",
+        "sha256": "0d47202668032dddb912fce8974606caefecbfd56435d7bc9cbe169af4905a1a"
+      },
+      {
+        "role": "actual_native_output",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/native-02/protocol_adapter.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/protocol_adapter.py",
+        "sha256": "cc579078f685560ef81b47d3090c7346a0225f61ac81e2a7b4a6eae9421e1c4c"
+      },
+      {
+        "role": "actual_full_build",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/full-build-02/FULL_BUILD_RECEIPT.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/full-build-02/FULL_BUILD_RECEIPT.json",
+        "sha256": "aa1ab0b686c7146d62c7b41f7168e11508ec34b203b84ed2a9220f05d032e362"
+      },
+      {
+        "role": "actual_full_build",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/full-build-02/full-build.log",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/full-build-02/full-build.log",
+        "sha256": "25decdfb0befd95071917f30d63dc18dc571b477bd11adba6419e156cad50e96"
+      },
+      {
+        "role": "actual_full_build",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/full-build-02/PROTOCOL_ADAPTATION.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/full-build-02/PROTOCOL_ADAPTATION.json",
+        "sha256": "15d59e1835321d51ca853fd63625835d70456e3fa9a40dcb32d2e7ac8ae3d9f8"
+      },
+      {
+        "role": "actual_full_build",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/full-build-02/FROZEN_INPUTS.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/full-build-02/FROZEN_INPUTS.json",
+        "sha256": "c0a5a6bb8f44e95603f17c3fbea7a2aa7d9e5f48bacc1c70ec4e83eb5677841b"
+      },
+      {
+        "role": "actual_full_build",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/full-build-02/protocol_adapter.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/full-build-02/protocol_adapter.py",
+        "sha256": "cc579078f685560ef81b47d3090c7346a0225f61ac81e2a7b4a6eae9421e1c4c"
+      },
+      {
+        "role": "actual_full_build",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/full-build-02/full_build.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/full-build-02/full_build.py",
+        "sha256": "44d5d2dbb4639ae89877a90224dfae2308d005ab3b15ed867139cdaa726020c9"
+      },
+      {
+        "role": "actual_full_build",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/full-build-02/immutable_full_build.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/full-build-02/immutable_full_build.py",
+        "sha256": "132b1c96d38a4462ef407ee31ed94378c2025996b2a7b603e297fd9d35cf86de"
+      },
+      {
+        "role": "actual_full_build",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/full-build-02/executed_full_build.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/full-build-02/executed_full_build.py",
+        "sha256": "5d65a3bbef14c93e7f0249dea7299603b9b00bd21fe522d6c4f8c7cb89d1077f"
+      },
+      {
+        "role": "executed_driver",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/native_protocol/integration_native.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/drivers/integration_native.py",
+        "sha256": "69f7f2fec01b8e9f8a64f548378c0bd56bd2a0c1aff0f5565c725a4ea0d146d4"
+      },
+      {
+        "role": "executed_driver",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/native_protocol/full_build.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/drivers/full_build.py",
+        "sha256": "44d5d2dbb4639ae89877a90224dfae2308d005ab3b15ed867139cdaa726020c9"
+      },
+      {
+        "role": "immutable_protocol_helper",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/pr_preflight.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/protocol-inputs/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/pr_preflight.py",
+        "sha256": "6d9ee21b7c832aa238c7fd2b42cd5aa9085bc3af616df16819aa100d82f9213c"
+      },
+      {
+        "role": "immutable_protocol_helper",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/fkrg.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/protocol-inputs/formalization/ueot-core/docs/compression/theory_completion/knowledge/fkrg.py",
+        "sha256": "a91301a76165f542d658e924846eede169287a73da6f31f73f24979250de96ff"
+      },
+      {
+        "role": "immutable_protocol_helper",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/registered_interfaces/native_protocol/prepare_registered_interfaces_export.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/protocol-inputs/formalization/ueot-core/docs/compression/theory_completion/unified_closure/registered_interfaces/native_protocol/prepare_registered_interfaces_export.py",
+        "sha256": "9dee4154f7233065d723d58da5117463f7f2182856e20a6762450c837c433ed8"
+      },
+      {
+        "role": "immutable_protocol_helper",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/registered_interfaces/native_protocol/build_identity.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/protocol-inputs/formalization/ueot-core/docs/compression/theory_completion/unified_closure/registered_interfaces/native_protocol/build_identity.py",
+        "sha256": "e80ed3ef63b7f6a6a6cd9f3b248917b1b3dc17dbbd0428c41333febc9cdb2e73"
+      },
+      {
+        "role": "prior_overlay",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/CONDITIONAL_STABILITY_REUSE_OVERLAY_V1.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/protocol-inputs/CONDITIONAL_STABILITY_REUSE_OVERLAY_V1.json",
+        "sha256": "bbe93031ca6607baaedda6af1a90d6875587032e44c8a556b646a66ddb876b9c"
+      },
+      {
+        "role": "immutable_base_consumer",
+        "input_path": "dd6ab2d4696ce4fa7824baa2faeb993069ee8787:formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/drivers/baseline_fkrg_reuse.py",
+        "sha256": "3f397ba5c099dee76669f42ed3ec17e8ce60eceb7b78dcacc1048e959892d5f2"
+      },
+      {
+        "role": "registration_driver",
+        "input_path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/native_protocol/register_overlay.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/drivers/register_overlay.py",
+        "sha256": "71f810000fdafa39c1cc28e0e5a219521e0e385fd7ae30fa0febfcbcfb3357bf"
+      },
+      {
+        "role": "executed_registration_protocol",
+        "input_path": "executed-memory:PROTOCOL_ADAPTATION.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/drivers/PROTOCOL_ADAPTATION.json",
+        "sha256": "3ca079e6ee8ab27917e008f28149f72d3f5d03caf51995932d88327a20a90ef7"
+      },
+      {
+        "role": "executed_registration_protocol",
+        "input_path": "executed-memory:FROZEN_INPUTS.json",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/drivers/FROZEN_INPUTS.json",
+        "sha256": "c0a5a6bb8f44e95603f17c3fbea7a2aa7d9e5f48bacc1c70ec4e83eb5677841b"
+      },
+      {
+        "role": "executed_registration_protocol",
+        "input_path": "executed-memory:protocol_adapter.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/drivers/protocol_adapter.py",
+        "sha256": "cc579078f685560ef81b47d3090c7346a0225f61ac81e2a7b4a6eae9421e1c4c"
+      },
+      {
+        "role": "executed_registration_protocol",
+        "input_path": "executed-memory:register_overlay.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/drivers/register_overlay.py",
+        "sha256": "71f810000fdafa39c1cc28e0e5a219521e0e385fd7ae30fa0febfcbcfb3357bf"
+      },
+      {
+        "role": "executed_registration_protocol",
+        "input_path": "executed-memory:immutable_register_overlay.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/drivers/immutable_register_overlay.py",
+        "sha256": "3679552fc1599894cd1cf0ce5aba3324c1d13d885fbcdd6c96fc1796dbc1c939"
+      },
+      {
+        "role": "executed_registration_protocol",
+        "input_path": "executed-memory:executed_register_overlay.py",
+        "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/actual-execution/native-02/drivers/executed_register_overlay.py",
+        "sha256": "cae48c8cf9b016dbe957d9b53f150bc16633256caaca0008e9a34f3644267461"
+      }
+    ],
+    "baseline_ref": "dd6ab2d4696ce4fa7824baa2faeb993069ee8787",
+    "source_tree_sha256": "9a90676af4c234eee2121ac75c0e127f2dd87370e727e5e7189ea99b4b377530",
+    "metadata_additions_only": [
+      "lexical_pr_preflight",
+      "registration_provenance"
+    ],
+    "raw_evidence_bytes_preserved": true,
+    "git_object_pr_preflight": "NOT_PERFORMED_SEPARATE_GATE",
+    "consumer_registry_modified": false,
+    "independent_review": "SEPARATE_GATE"
+  }
+}

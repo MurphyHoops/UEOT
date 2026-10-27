@@ -1,0 +1,314 @@
+{
+  "schema": "ACTION_GAUGE_TRANSPORT_LOCAL_RELEASE_ACCEPTANCE_V1",
+  "state": "PASS_LOCAL_PROOF_AND_INTEGRATION",
+  "baseline_ref": "dd6ab2d4696ce4fa7824baa2faeb993069ee8787",
+  "source_tree_sha256": "9a90676af4c234eee2121ac75c0e127f2dd87370e727e5e7189ea99b4b377530",
+  "complete_source_modules": 708,
+  "reviewed_sources": [
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ConditionedActionTransport.lean",
+      "sha256": "bdef4d1f2e5f4154c3a65151c407908a18efee03e1596b1f04c36855bd1eb25e"
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveLinearGaugeClassification.lean",
+      "sha256": "6931bfb534570015b45f6601592adb654f7fc62e283d56fccae2fb678a804c53"
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveOperationalAnchors.lean",
+      "sha256": "aa4fda07436424ac262bb81501318713b77ef9f3fb3dbbbf4ee164532e17e796"
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizability.lean",
+      "sha256": "fc45d67c59111e4f262a28d850306d3782801116ad01bb403c3dea4ef12a655f"
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizabilityWitness.lean",
+      "sha256": "ca07e60f757ac12fb1997d9db52c17695247345a262aeb7f97bf03d88fbe8590"
+    }
+  ],
+  "focused_final": {
+    "command": [
+      "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+      "build",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransport"
+    ],
+    "exit_code": 0,
+    "seconds": 5.360996667062864,
+    "source_sha256": "bdef4d1f2e5f4154c3a65151c407908a18efee03e1596b1f04c36855bd1eb25e",
+    "log_sha256": "592abc466325cfce1f94bc13d5e2d0eb610fbcc8f37889668c527fba3e2a9e46"
+  },
+  "full_build": {
+    "command": [
+      "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+      "build",
+      "UEOT"
+    ],
+    "exit_code": 0,
+    "seconds": 10.209,
+    "log_name": "full-build.log",
+    "log_sha256": "25decdfb0befd95071917f30d63dc18dc571b477bd11adba6419e156cad50e96"
+  },
+  "full_build_receipt_sha256": "aa1ab0b686c7146d62c7b41f7168e11508ec34b203b84ed2a9220f05d032e362",
+  "native_summary": {
+    "modules": 5,
+    "public_source_theorems": 30,
+    "native_constants": 93,
+    "registered_edges": 40,
+    "overlay_sha256": "e898a75dc7494787b6ae73b4f3efe78795c96c316c1176bd6d30d3919911a7f8",
+    "verifier_sha256": "5fe6bf1fc8653e6f552b916aeac4448b4eea0804c9254a6ab58c0bdb00f0cdfb",
+    "native_sha256": "0d47202668032dddb912fce8974606caefecbfd56435d7bc9cbe169af4905a1a"
+  },
+  "native_results": [
+    {
+      "label": "native_export",
+      "command": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/native-02/ACTION_GAUGE_TRANSPORT_NATIVE_EXPORT.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 57.45,
+      "log_sha256": "d5bcdbce76f87fda9615c6ab18d62c857302086e98549a6bf68f3fab69a316ab"
+    },
+    {
+      "label": "fixed_verifier",
+      "command": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/native-02/VERIFY_ACTION_GAUGE_TRANSPORT_OVERLAY_TYPES.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 56.129,
+      "log_sha256": "d5bcdbce76f87fda9615c6ab18d62c857302086e98549a6bf68f3fab69a316ab"
+    }
+  ],
+  "native_type_comparisons": {
+    "cross": 134220,
+    "internal": 435,
+    "collisions": []
+  },
+  "native_classification": {
+    "public_source": 30,
+    "private": 37,
+    "other_generated_public": 26
+  },
+  "compiled_type_review": {
+    "total": 60,
+    "new": 30,
+    "old": 30,
+    "lexical_groups": 3,
+    "all_lexical_pairs": 5,
+    "actual_receipt_sha256": "8b5d6bdb440b39896930b75afc786228661fd215ac3b8898ad374a5df91b96b4"
+  },
+  "consumer_census": {
+    "base": "dd6ab2d4696ce4fa7824baa2faeb993069ee8787",
+    "source": "9a90676af4c234eee2121ac75c0e127f2dd87370e727e5e7189ea99b4b377530",
+    "new_public": 30,
+    "hinted": 3,
+    "new_edges": 40,
+    "all_native": 93,
+    "private_native": 37,
+    "other_public_native": 26,
+    "overlay_sha": "513330a6d41bc67dc26e03611299013cdf66d5907d39de68a392469413d6e351",
+    "native_sha": "0d47202668032dddb912fce8974606caefecbfd56435d7bc9cbe169af4905a1a",
+    "verifier_sha": "5fe6bf1fc8653e6f552b916aeac4448b4eea0804c9254a6ab58c0bdb00f0cdfb",
+    "total_public": 4504,
+    "overlay_public": 711,
+    "total_hinted": 180,
+    "overlay_edges": 1079,
+    "total_edges": 5966,
+    "cross_comparisons": 134220,
+    "internal_comparisons": 435
+  },
+  "consumer_commands": [
+    {
+      "label": "reuse",
+      "command": [
+        "/opt/homebrew/bin/python3",
+        "-B",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.9999920839909464,
+      "log": "reuse.log",
+      "log_sha256": "225d30fff710f785b1af9bdec63a6827e18a8d07c0da2ddaaa4c0eb5ce78b49a"
+    },
+    {
+      "label": "parser",
+      "command": [
+        "/opt/homebrew/bin/python3",
+        "-B",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_pr_preflight.py"
+      ],
+      "exit_code": 0,
+      "seconds": 14.486378792207688,
+      "log": "parser.log",
+      "log_sha256": "4de10e3f2b1b6fa10485fedf6964a2d280802d3d7c42bd155b871937ada109a1"
+    },
+    {
+      "label": "fkrg",
+      "command": [
+        "/opt/homebrew/bin/python3",
+        "-B",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/test_fkrg.py"
+      ],
+      "exit_code": 0,
+      "seconds": 2.3113730838522315,
+      "log": "fkrg.log",
+      "log_sha256": "d4fa783da97b5cd881aea831feb024f7745fb2e1de0f8d3a96d78cab7819b898"
+    },
+    {
+      "label": "clones",
+      "command": [
+        "/opt/homebrew/bin/python3",
+        "-B",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.6414657498244196,
+      "log": "clones.log",
+      "log_sha256": "4c3c4972fb549c2e6bc3c150350e88b23c100ff348a0f32041a56603ba9134a1"
+    },
+    {
+      "label": "status",
+      "command": [
+        "/opt/homebrew/bin/python3",
+        "-B",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+        "--json",
+        "status"
+      ],
+      "exit_code": 0,
+      "seconds": 0.10618791682645679,
+      "log": "status.log",
+      "log_sha256": "61676980519d3cbb64d9b1553bdfc6a144c6a3e46e983392e2af23d0d596cff4"
+    },
+    {
+      "label": "governance",
+      "command": [
+        "/opt/homebrew/bin/python3",
+        "-B",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/scripts/test_validate_compression_research.py"
+      ],
+      "exit_code": 0,
+      "seconds": 7.682188875041902,
+      "log": "governance.log",
+      "log_sha256": "d8fb69310c671936ad9bc9d9b9490bfee9f0b1d8a1b10fcc022e92ba944f0aa8"
+    },
+    {
+      "label": "mission",
+      "command": [
+        "/opt/homebrew/bin/python3",
+        "-B",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/validate_unified_closure.py",
+        "--repo-root",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023"
+      ],
+      "exit_code": 0,
+      "seconds": 0.03274737508036196,
+      "log": "mission.log",
+      "log_sha256": "084c44d2151e4c711dd06606abc1957a26ac9072a992fa06b7bf4791ca9fb321"
+    },
+    {
+      "label": "mission_negative",
+      "command": [
+        "/opt/homebrew/bin/python3",
+        "-B",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/test_validate_unified_closure.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.035169542068615556,
+      "log": "mission_negative.log",
+      "log_sha256": "583b6b29252b2279c39048ca5f1171dacc17e6c89fa5945763598aaef45c619f"
+    },
+    {
+      "label": "umc_full",
+      "command": [
+        "/opt/homebrew/bin/python3",
+        "-B",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/audit_umc_local.py",
+        "--full",
+        "--output",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-gauge-evidence-20261028/consumer-checks-02/UMC_FULL_RECEIPT.json"
+      ],
+      "exit_code": 0,
+      "seconds": 59.54742162511684,
+      "log": "umc_full.log",
+      "log_sha256": "e1b403fbd5ee3492aee78dd1d329e5422e260650bc2055a92a6b967064cd923b"
+    }
+  ],
+  "umc_native_scope": {
+    "theorem_constants": 1972,
+    "private_theorem_constants": 335,
+    "confirmed_public_source_candidates": 831,
+    "other_native_public_constants": 806,
+    "source_modules": 109,
+    "scope_authority": "Lean compiled source modules, including private and generated theorem constants",
+    "other_native_public_scope": "Native nonprivate constants outside the FKRG source candidate list; typically generated, not inferred to be source declarations"
+  },
+  "whole_import_graph_complete_reachable_acyclic": true,
+  "prior_reuse_assets_byte_unchanged": 50,
+  "independent_reviews": [
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/independent/ACTUAL_INTEGRATION_REVIEW.json",
+      "sha256": "794d5b1ca98f1f54adfa54debb288701788d19161f4d7f7cb05f611774783009"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/independent/ACTUAL_INTEGRATION_REVIEW_FIRST_CANDIDATE.json",
+      "sha256": "00d2aa68146e96edc5c338b784a122448b53e355f038b5fd9053c95902396249"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/independent/CONSUMER_CANDIDATE_REVIEW.json",
+      "sha256": "ef11206c66aa52a3b050331005e2137e9d7f0fcb6d2923b3a4f7152df64e9435"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/independent/CONSUMER_CANDIDATE_REVIEW_FINAL.json",
+      "sha256": "5c1dc642449b06dcec5438c2d395ebb7bbed1b750e5560682015345c47836b3f"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/independent/INDEPENDENT_FINAL_EVIDENCE_CHECKS.json",
+      "sha256": "21c356c1492fa77930bbb6fe5991237097adbd5575a9b534bab80c4220c03ffc"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/independent/LEAN_SEMANTIC_REVIEW.json",
+      "sha256": "d5a65229132666dbd86734442002aaba94e445660b75b79ce08b2b973f3828bd"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/independent/LEAN_SEMANTIC_REVIEW_FIRST_CANDIDATE.json",
+      "sha256": "cdfd4cfeece49681be6f57f8fecd09fa5386aa330c2522c3a0f6764c1bb8b691"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/independent/OPS_AUTH_REVIEW.json",
+      "sha256": "ff2febe6fe67c2e7bf5fd5fe16528e88cead7cb337a5f84f3724c3d61c20acf0"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/independent/REPORT_CLAIMS_REVIEW.json",
+      "sha256": "692e1bc933557ad0d6b626f9a51452a80840140e072bc43ca44396d721158c37"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/independent/TYPED_REUSE_REVIEW.json",
+      "sha256": "ca47140086de9a5933ebcb4d5b082724890201e119e207cddded98562bd4f2a4"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_gauge_transport_v1/independent/TYPED_REUSE_REVIEW_FIRST_CANDIDATE.json",
+      "sha256": "1e9566f267858838cf76ba17ee9196954b5b13de41a35fab650846c2a340f04f"
+    }
+  ],
+  "failed_first_consumer_run_preserved": "actual-execution/consumer-checks-01/COMMAND_RESULTS.json",
+  "initial_failed_source_candidate_preserved": "actual-execution/first-candidate-preservation/PRESERVATION_RECEIPT.json",
+  "history_archive_sha256": "2d1529fd3cfb239d9bb48a2c7a4fde5a6060c270ada850d89fc2e8922838a337",
+  "proof_identity_revalidated_exact_before_commit": true,
+  "git_publication": "Separate exact-commit preflight, immutable-base policy, independent head/tree review and resulting-main receipts are required after the candidate exists; tracked acceptance does not assert its own future commit or merge.",
+  "cloud_workflows": "Core Lean, Compression Guard and Research Base Policy remain user-disabled; absent cloud execution is not PASS.",
+  "frozen_core_counts": {
+    "P_IDs": 106,
+    "generators": 4,
+    "generated": 11,
+    "adapters": 89,
+    "boundaries": 6
+  },
+  "global_strong_unified_closure": "NOT_ESTABLISHED",
+  "scientific_external_evidence": "UNVERIFIED"
+}

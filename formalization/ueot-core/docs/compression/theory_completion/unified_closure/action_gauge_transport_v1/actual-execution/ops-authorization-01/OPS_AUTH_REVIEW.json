@@ -1,0 +1,55 @@
+{
+  "schema": "UEOT_ACTION_GAUGE_TRANSPORT_OPS_AUTH_INDEPENDENT_REVIEW_V1",
+  "reviewer": "/root/independent_review",
+  "date": "2026-10-28",
+  "verdict": "CLEAR",
+  "scope": "Registry-only temporary L2 evidence-consumer exception; no mathematical release or Lean execution approval is asserted by this review.",
+  "baseline_ref": "1932c6794e001510deca7c8f0a0f2bae18dc6c4c",
+  "candidate_ref": "702632701dd083fb5a661e4717e1c279bdf9d641",
+  "candidate_tree": "c4c2db352ee0b63e325226d2107e754368fe27b4",
+  "candidate_branch": "ops/compression-action-gauge-evidence",
+  "changed_paths": [
+    "formalization/ueot-core/docs/compression/COMPRESSION_RESEARCH_TRACKS.json"
+  ],
+  "registry_sha256": "cc8e6446edbf869a485b1c816ef21ab06f74cd4b1ea4a104692820af5b21b36a",
+  "exception_id": "TC-ACTION-GAUGE-TRANSPORT-EVIDENCE-2026-10-28",
+  "authorized_scientific_branch_pattern": "^compression/theory-completion-action-gauge$",
+  "authorized_existing_paths": [
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/UMC_GLOBAL_MODULE_DAG_V4.json",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
+    "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py"
+  ],
+  "checks": {
+    "exactly_one_registry_path_in_actual_candidate_receipt_and_diff": true,
+    "candidate_registry_bytes_match_candidate_record": true,
+    "only_one_temporary_exception_added_to_independently_read_baseline": true,
+    "all_other_registry_semantics_identical_to_baseline": true,
+    "branch_regex_exactly_pins_one_existing_TC_research_branch": true,
+    "exact_six_existing_evidence_consumer_paths_no_globs": true,
+    "no_theorem_validator_workflow_frozen_counted_or_historical_evidence_mutation_authorized": true,
+    "actual_38_governance_pass_lines_exit_zero_and_log_hash_verified": true,
+    "actual_immutable_base_candidate_policy_pass_exit_zero_and_log_hash_verified": true,
+    "command_results_match_candidate_receipt": true,
+    "scope_change_independent_of_scientific_candidate": true
+  },
+  "findings": [],
+  "rationale": [
+    "Appending the new compiler-certified overlay requires changing the six existing pinned consumers; an additive scientific module alone cannot refresh those consumers.",
+    "The exception is restricted to those evidence consumers and exactly the action-gauge research branch; existing additive root-import authorization is not widened.",
+    "Frozen Core, counted classifications, historical overlays/receipts, prior source, validator code, workflows and cross-track boundaries remain protected.",
+    "Mathematical evidence, full build, native replay, scientific review, resulting-main verification and later exception retirement remain distinct steps."
+  ],
+  "material_hashes": {
+    "action-gauge-work/ops-authorization-01/CANDIDATE.json": "1b77d0cda7a11db25eae355f562aca643976c776a4e0bf98d314e294c1ac4163",
+    "action-gauge-work/ops-authorization-01/CANDIDATE_REGISTRY.json": "cc8e6446edbf869a485b1c816ef21ab06f74cd4b1ea4a104692820af5b21b36a",
+    "action-gauge-work/ops-authorization-01/COMMAND_RESULTS.json": "2c52b10de0a0c41e8e096c3d29cd79e06c1a849ea6a3e47bd8c685c8af5250b3",
+    "action-gauge-work/ops-authorization-01/base_policy.log": "c8097fba6aac1ab1b4aab6e00d355d243b6f662524968eaf58e30c6a50fe9a93",
+    "action-gauge-work/ops-authorization-01/governance.log": "d8fb69310c671936ad9bc9d9b9490bfee9f0b1d8a1b10fcc022e92ba944f0aa8",
+    "action-gauge-work/ops-authorization-01/registry.diff": "50a7f4dfa704dbed53ec036e839ca5ad2214a44d7b67fb4667becc6a4cbb71a6"
+  },
+  "independent_baseline_registry_sha256": "5a45a506c8b81d80731cde98603e882c96d39efa2fdf453fe751ea754aecf69c",
+  "evidence_origin": "Root-transferred actual Mac Git candidate, registry/diff and command receipts; reviewer independently inspected and cross-checked their contents and hashes in the cloud snapshot. No new Mac/GitHub operation was performed by reviewer."
+}
