@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "source_tree_sha256": "778b37210962b487cedd2d5d50e9fa95c1297987ec4e18630da7fbc1ccd883c2",
+  "source_tree_sha256": "0e17dd5ef3c4a9e3eaea47c8c0b7e83f6ef097915bed6092ca81e3e6c032abe0",
   "scope": "literal first-party UEOT Lean source files and their direct imports",
   "source_semantics": "metadata audit, NOT independent theorem-source semantic certification",
-  "total_Lean_modules": 701,
-  "total_source_lines": 129719,
-  "total_theorem_lemma_tokens": 4779,
+  "total_Lean_modules": 703,
+  "total_source_lines": 130301,
+  "total_theorem_lemma_tokens": 4809,
   "category_counts": {
     "Core_v3_and_Substrate": 306,
     "Compression_Frozen_Bridges": 62,
@@ -14,23 +14,23 @@
     "Objecthood": 88,
     "P0_P12_TheoryCompletion": 57,
     "C1_C7_SISC": 55,
-    "UMC_New_Bridges": 102
+    "UMC_New_Bridges": 104
   },
-  "reachable_from_UEOT_root": 701,
+  "reachable_from_UEOT_root": 703,
   "not_reachable_from_UEOT_root": [],
   "cycles_detected": [],
   "missing_internal_imports": {},
   "most_imported_first_party": [
+    {
+      "module": "UEOT.V3.PathError",
+      "direct_dependents": 11
+    },
     {
       "module": "UEOT.V3.TotalVariation",
       "direct_dependents": 11
     },
     {
       "module": "UEOT.V3.CoreOperationalAssembly",
-      "direct_dependents": 10
-    },
-    {
-      "module": "UEOT.V3.PathError",
       "direct_dependents": 10
     },
     {
@@ -256,7 +256,7 @@
     {
       "from": "Compression_Frozen_Bridges",
       "to": "UMC_New_Bridges",
-      "edges": 102
+      "edges": 104
     },
     {
       "from": "Core_v3_and_Substrate",
@@ -341,7 +341,7 @@
     {
       "from": "UMC_New_Bridges",
       "to": "Core_v3_and_Substrate",
-      "edges": 30
+      "edges": 31
     },
     {
       "from": "UMC_New_Bridges",
@@ -3446,11 +3446,13 @@
     },
     "UEOT.V3.Compression.TheoryCompletion": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
-      "bytes": 14693,
-      "lines": 186,
+      "bytes": 14872,
+      "lines": 188,
       "category": "Compression_Frozen_Bridges",
       "title": "UEOT Theory Completion public root",
       "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness",
         "UEOT.V3.Compression.TheoryCompletion.OperationalObject",
         "UEOT.V3.Compression.TheoryCompletion.Purpose",
         "UEOT.V3.Compression.TheoryCompletion.PurposeIdentifiability",
@@ -5463,6 +5465,33 @@
       ],
       "theorem_lemma_count": 6,
       "decl_count": 7
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "bytes": 15392,
+      "lines": 329,
+      "category": "UMC_New_Bridges",
+      "title": "Finite same-event conditional stability",
+      "imports": [
+        "UEOT.V3.PathError",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle",
+        "Mathlib.Probability.ProbabilityMassFunction.Constructions",
+        "Mathlib.Tactic"
+      ],
+      "theorem_lemma_count": 14,
+      "decl_count": 15
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStabilityWitness.lean",
+      "bytes": 11437,
+      "lines": 251,
+      "category": "UMC_New_Bridges",
+      "title": "Three-state sharpness and rare-event witnesses",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability"
+      ],
+      "theorem_lemma_count": 16,
+      "decl_count": 23
     },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteFormationBoundary": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteFormationBoundary.lean",

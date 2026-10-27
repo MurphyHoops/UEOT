@@ -1,0 +1,83 @@
+{
+  "schema": "UEOT_INDEPENDENT_LEAN_SEMANTIC_REVIEW_V1",
+  "reviewer": "/root/core_semantics_audit",
+  "review_date_asia_shanghai": "2026-10-28",
+  "source_baseline": "44e1b7d25272b5ce09acb71ef7b36f9a1c4c001d",
+  "verdict": "CLEAR",
+  "review_scope": "Independent complete reading of the two candidate Lean files and relevant preexisting R2/source-path APIs; mathematical and source-level semantic review. This is not a replacement for exact-candidate compiler, axiom/native or integration receipts.",
+  "blocking_findings": [],
+  "reviewed_files": [
+    {
+      "path": "FiniteConditionalStability.lean",
+      "sha256": "ee47efdc109f9670c77f6bb04595c66f56e8475144bb75f2f190e0cdfd730e05",
+      "bytes": 15392,
+      "lines": 329,
+      "public_theorems": [
+        "mass_mul_conditioned_atom",
+        "conditional_tv_le_max_mass",
+        "reference_mass_certifies_positive",
+        "conditional_tv_le_reference_mass",
+        "reference_mass_conditional_certificate",
+        "conditioned_readout_tv_le_reference_mass",
+        "causal_path_conditional_certificate",
+        "noisy_reference_conditional_certificate"
+      ]
+    },
+    {
+      "path": "FiniteConditionalStabilityWitness.lean",
+      "sha256": "434556fd1a9433bd3a52741520cba4743cc4747995caa44024869ef9da8e5829",
+      "bytes": 11437,
+      "lines": 251,
+      "public_theorems": [
+        "rare_event_sharpness",
+        "arbitrarily_small_unconditional_error",
+        "positive_reference_certificate_is_sharp"
+      ]
+    }
+  ],
+  "mathematical_findings": [
+    "Both conditional distributions are Mathlib PMF.filter constructions on the same event; positivity yields a genuine supported event rather than assigning a law to a null event.",
+    "The proof of max(event masses) times conditional TV <= unconditional TV is correct. On the conditioning event it compares overlap with the larger normalizing mass; off-event overlap is bounded by the larger-mass law's complement mass. The finite overlap identity then gives the desired inequality.",
+    "Only an unconditional TV upper bound and reference event mass strictly greater than that bound are needed to prove both events positive. The denominator in the reference certificate is the reference event mass itself, not reference mass minus error.",
+    "The same measurable readout is applied to both actual filtered laws, so the data-processing endpoint is legitimate.",
+    "The generic causal endpoint consumes the existing complete-path TV theorem with a common initial law. Its all-time row premises are stronger than needed for a finite horizon, but mathematically sound and not a blocking issue.",
+    "The direct R2 endpoint derives the unconditional projected path error from CalibrationGood and the existing calibrated_reference_row theorem, using the same program, source P, observation q and empirical reference kernel. It does not assume the desired path or conditional fit conclusion.",
+    "The R2 event lives on the common observed action/state history alphabet. The documentation correctly requires an additional event-pullback identity to interpret it as microscopic physical survival.",
+    "The fixed-training-record limitation is explicit; there is no unjustified claim that conditioning a joint training/deployment law preserves the training marginal.",
+    "The rare-event family has original TV r, equal event masses r and conditional TV 1 for every 0<r<=1, establishing the necessity of a positive event-mass bound and the optimal uniform amplification constant.",
+    "The nonsaturated positive witness has p=(1/4,1/4,1/2), q=(3/8,1/8,1/2), original TV 1/8, event masses 1/2 and actual filtered TV 1/4, attaining the nontrivial reference certificate."
+  ],
+  "independent_derivation": "Assume p(S)>=q(S)>0. For A subset S, p(S)*(p(A)/p(S)-q(A)/q(S)) <= p(A)-q(A) <= TV(p,q). Apply the same inequality to S\\A for the reverse conditional difference. Swapping the two laws yields the max-mass denominator. This derivation was checked independently before reading the candidate overlap proof.",
+  "source_escape_scan": {
+    "tokens_scanned": [
+      "sorry",
+      "admit",
+      "axiom",
+      "unsafe"
+    ],
+    "matches": [],
+    "limitation": "A text scan is not a Lean-kernel or compiled axiom audit."
+  },
+  "execution_status": {
+    "reviewer_ran_lean": false,
+    "root_reported_focused06_two_modules_pass": true,
+    "root_reported_focused06_seconds": 5.549,
+    "root_reported_focused06_jobs_including_cache": 8837,
+    "root_reported_full_lake_build_UEOT_pass": true,
+    "root_reported_full_seconds": 11.175,
+    "root_reported_full_module_count": 703,
+    "root_reported_source_fingerprint": "0e17dd5ef3c4a9e3eaea47c8c0b7e83f6ef097915bed6092ca81e3e6c032abe0",
+    "reviewer_inspected_compile_receipts": false,
+    "native_and_fixed_replay_status_at_recheck": "Root running; no completion inferred by reviewer.",
+    "publication_requirement": "Bind these final independently reviewed exact source hashes to completed focused/full compiler, native/axiom and integration receipts. Later byte changes require exact delta review or complete rereading."
+  },
+  "integration_base": "7708a3a1289b1a009c269d81edceef06a4c347dc",
+  "integration_base_note": "PR #379 merged after the mathematical baseline; registry-only six-consumer scope authorization, no Lean source changes.",
+  "final_source_recheck": {
+    "basis": "The unchanged complete main-module hash was verified. The final witness was independently reread in full at SHA 434556fd1a9433bd3a52741520cba4743cc4747995caa44024869ef9da8e5829; final atom proofs explicitly expose the same definitional equalities with change and close by linarith.",
+    "semantic_verdict": "CLEAR",
+    "prior_witness_sha256": "e56e96dfcb9937898af1eedb6425c86ec115dcb5f6572f90925bcfe8836f74c2",
+    "exact_prior_bytes_diff_claimed": false,
+    "no_changed_mathematical_claim_identified": true
+  }
+}

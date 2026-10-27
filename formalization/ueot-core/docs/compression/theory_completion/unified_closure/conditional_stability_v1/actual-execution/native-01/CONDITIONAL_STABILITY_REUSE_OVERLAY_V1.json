@@ -1,0 +1,307 @@
+{
+  "schema": "FKRG_REUSE_OVERLAY_V1",
+  "overlay_id": "CONDITIONAL_STABILITY_REUSE_OVERLAY_V1",
+  "source_checkpoint": "worktree-sha256:0e17dd5ef3c4a9e3eaea47c8c0b7e83f6ef097915bed6092ca81e3e6c032abe0",
+  "source_checkpoint_kind": "FROZEN_SOURCE_CONTENT_BEFORE_GIT_COMMIT",
+  "baseline_ref": "7708a3a1289b1a009c269d81edceef06a4c347dc",
+  "base_snapshot_modules": 701,
+  "prior_overlay": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/OBSERVABLE_BELIEF_REUSE_OVERLAY_V1.json",
+    "sha256": "9e4440d2ef4b101dbadc09b5e02b11d766126b73b8953c60182da64320c247db"
+  },
+  "source_hash_overrides": {
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean": "b685a8beecd307eb22edd8f5cfdec81e26ccbb519f079e9d171ca5cc5dea9f8d"
+  },
+  "added_modules": [
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "content_sha256": "ee47efdc109f9670c77f6bb04595c66f56e8475144bb75f2f190e0cdfd730e05",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStabilityWitness.lean",
+      "content_sha256": "434556fd1a9433bd3a52741520cba4743cc4747995caa44024869ef9da8e5829",
+      "source_origin": "UEOT_MAINTAINED"
+    }
+  ],
+  "public_theorems": [
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.mass_mul_conditioned_atom",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "line": 90,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_max_mass",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "line": 168,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability",
+      "source_theorem_deps": [
+        "UEOT.V3.TotalVariation.tvDist_le_one"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_certifies_positive",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "line": 191,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability",
+      "source_theorem_deps": [
+        "UEOT.V3.TotalVariation.tvDist_nonneg",
+        "UEOT.V3.TotalVariation.tvEvent_le"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_reference_mass",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "line": 204,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_max_mass",
+        "UEOT.V3.TotalVariation.tvDist_nonneg"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_conditional_certificate",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "line": 219,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_reference_mass",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_certifies_positive"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditioned_readout_tv_le_reference_mass",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "line": 232,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_reference_mass",
+        "UEOT.V3.TotalVariation.tvDist_map_le"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.causal_path_conditional_certificate",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "line": 249,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_conditional_certificate",
+        "UEOT.V3.PathError.causalLaw_tv_bound"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.noisy_reference_conditional_certificate",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStability.lean",
+      "line": 275,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_conditional_certificate",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.calibrated_reference_row",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalDefect_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_policy_projected_path_error"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.rare_event_sharpness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStabilityWitness.lean",
+      "line": 116,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.arbitrarily_small_unconditional_error",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStabilityWitness.lean",
+      "line": 138,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.rare_event_sharpness"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.positive_reference_certificate_is_sharp",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteConditionalStabilityWitness.lean",
+      "line": 190,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_reference_mass",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.mass_mul_conditioned_atom",
+        "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass"
+      ]
+    }
+  ],
+  "type_distinctness": {
+    "status": "PASS",
+    "verifier": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_CONDITIONAL_STABILITY_OVERLAY_TYPES.lean",
+    "new_theorems": 11,
+    "registered_prior_theorems": 4463,
+    "cross_isDefEq_comparisons": 49093,
+    "internal_isDefEq_comparisons": 55,
+    "definitionally_equal_matches": 0,
+    "protocol": "Raw stored compiled types; fresh liftTermElabM per Meta.isDefEq comparison; stored universe names retained. Not a general logical-equivalence decision."
+  },
+  "proof_dependency_certification": {
+    "status": "PASS",
+    "verifier": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_CONDITIONAL_STABILITY_OVERLAY_TYPES.lean",
+    "measure": "Actual theorem proof-value getUsedConstants restricted to all previous and new registered public theorem names",
+    "registered_direct_edges": 19,
+    "edges": [
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_max_mass",
+        "target": "UEOT.V3.TotalVariation.tvDist_le_one"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_certifies_positive",
+        "target": "UEOT.V3.TotalVariation.tvDist_nonneg"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_certifies_positive",
+        "target": "UEOT.V3.TotalVariation.tvEvent_le"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_reference_mass",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_max_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_reference_mass",
+        "target": "UEOT.V3.TotalVariation.tvDist_nonneg"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_conditional_certificate",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_reference_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_conditional_certificate",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_certifies_positive"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditioned_readout_tv_le_reference_mass",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_reference_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditioned_readout_tv_le_reference_mass",
+        "target": "UEOT.V3.TotalVariation.tvDist_map_le"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.causal_path_conditional_certificate",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_conditional_certificate"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.causal_path_conditional_certificate",
+        "target": "UEOT.V3.PathError.causalLaw_tv_bound"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.noisy_reference_conditional_certificate",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.reference_mass_conditional_certificate"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.noisy_reference_conditional_certificate",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.calibrated_reference_row"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.noisy_reference_conditional_certificate",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalDefect_nonneg"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.noisy_reference_conditional_certificate",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.same_policy_projected_path_error"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.arbitrarily_small_unconditional_error",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.rare_event_sharpness"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.positive_reference_certificate_is_sharp",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.conditional_tv_le_reference_mass"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.positive_reference_certificate_is_sharp",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability.mass_mul_conditioned_atom"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness.positive_reference_certificate_is_sharp",
+        "target": "UEOT.V3.PathError.tvDist_eq_one_sub_pmfCommonMass"
+      }
+    ]
+  },
+  "native_axiom_census": {
+    "status": "PASS",
+    "physical_source_modules": 2,
+    "theorem_constants": 63,
+    "private_theorem_constants": 34,
+    "confirmed_public_source_candidates": 11,
+    "other_native_public_constants": 18,
+    "standard_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "scope": "All compiler-owned theorem constants of every added module, including private and generated constants"
+  },
+  "native_export_evidence": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/CONDITIONAL_STABILITY_NATIVE_V1.json",
+    "sha256": "00907d59fa7b780759ea4de80ae68a94ac4faebad0eb3492b71539b4f2d619d4"
+  },
+  "native_execution": {
+    "build_receipt_sha256": "1336fd6e86f630b8bb03985c1a479739227cbd6bc16bef413aadaed4797cb6ef",
+    "source_tree_sha256": "0e17dd5ef3c4a9e3eaea47c8c0b7e83f6ef097915bed6092ca81e3e6c032abe0",
+    "native_export_exit_code": 0,
+    "fixed_certificate_exit_code": 0,
+    "fixed_certificate_sha256": "94defdc86beb366a149ec12ccfb660e56ddd4f6869749275f821c6ad81d26ccd",
+    "fixed_export_equals_initial_native_export": true,
+    "results": [
+      {
+        "label": "native_export",
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/native-01/CONDITIONAL_STABILITY_NATIVE_EXPORT.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 53.028,
+        "log_sha256": "09e27ffc8cff7a8d43caa12b4d0bebc56cf1e672256192147d1a933c13105ff6"
+      },
+      {
+        "label": "fixed_verifier",
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/conditional-stability-evidence-20261028/native-01/VERIFY_CONDITIONAL_STABILITY_OVERLAY_TYPES.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 52.82,
+        "log_sha256": "09e27ffc8cff7a8d43caa12b4d0bebc56cf1e672256192147d1a933c13105ff6"
+      }
+    ]
+  },
+  "scientific_role": "UNCOUNTED_FINITE_CONDITIONAL_STABILITY",
+  "counted_core_impact": "NONE",
+  "scientific_closure": "NOT_ESTABLISHED"
+}

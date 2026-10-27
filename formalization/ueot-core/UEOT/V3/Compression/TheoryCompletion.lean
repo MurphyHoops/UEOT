@@ -1,3 +1,5 @@
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness
 import UEOT.V3.Compression.TheoryCompletion.OperationalObject
 import UEOT.V3.Compression.TheoryCompletion.Purpose
 import UEOT.V3.Compression.TheoryCompletion.PurposeIdentifiability

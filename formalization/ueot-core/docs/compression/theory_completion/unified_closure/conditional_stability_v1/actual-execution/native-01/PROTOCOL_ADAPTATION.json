@@ -1,0 +1,45 @@
+{
+  "schema": "CONDITIONAL_STABILITY_PROTOCOL_ADAPTATION_V1",
+  "kind": "integration_native",
+  "baseline_ref": "7708a3a1289b1a009c269d81edceef06a4c347dc",
+  "frozen_inputs_sha256": "3f9ba9601ec9308969ccfa364cb306fc91acc6f68274ad637ecaff406e531c2e",
+  "source_tree_sha256": "0e17dd5ef3c4a9e3eaea47c8c0b7e83f6ef097915bed6092ca81e3e6c032abe0",
+  "immutable_driver": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/longterm_control_statistics_v1/native_protocol/integration_native.py",
+    "sha256": "d4708782bbb14360002f119715ba51f96c05e2e632694ba64c56c3d38ce8a924"
+  },
+  "executed_source_sha256": "82aa87add4c8de013f8d42dfa8905d704d8e1217852c29a54e38f04e85b6d248",
+  "substitutions": [
+    {
+      "old": "\"LONGTERM_ACTUAL_FULL_BUILD_V1\"",
+      "new": "\"CONDITIONAL_STABILITY_ACTUAL_FULL_BUILD_V1\"",
+      "occurrences": 1
+    },
+    {
+      "old": "NAME = \"LONGTERM_CONTROL_STATISTICS\"",
+      "new": "NAME = \"CONDITIONAL_STABILITY\"",
+      "occurrences": 1
+    },
+    {
+      "old": "PRIOR_MODULES, PRIOR_THEOREMS, PRIOR_OVERLAYS = 666, 4147, 8",
+      "new": "PRIOR_MODULES, PRIOR_THEOREMS, PRIOR_OVERLAYS = 701, 4463, 15",
+      "occurrences": 1
+    },
+    {
+      "old": "\"UNCOUNTED_SAME_SOURCE_LONGTERM_POLICY_AND_ROWWISE_SISC\"",
+      "new": "\"UNCOUNTED_FINITE_CONDITIONAL_STABILITY\"",
+      "occurrences": 1
+    },
+    {
+      "old": "    exporter = helper.render_export(prior, public, modules, [])",
+      "new": "    exporter = helper.render_export(prior, public, modules, [])\n    exporter = exporter.replace(\"set_option maxHeartbeats 0\",\n        \"set_option maxHeartbeats 0\\nset_option maxRecDepth 16384\")",
+      "occurrences": 1
+    }
+  ],
+  "wrapper": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/conditional_stability_v1/native_protocol/integration_native.py",
+    "sha256": "76cfb21fa3e7a74c602d14430eaab412403a4891b84111fa8f81c31f20c22b02"
+  },
+  "adapter_sha256": "0e839d073bf00bfd66941344bfa0665c41a20a9ce4dd98cfe08df8129f7d68b0",
+  "claim": "Only listed scope/schema/metadata and export recursion-limit substitutions; actual execution, full census, raw-type comparisons, fixed-edge replay, and source/runtime identity gates remain in the executed predecessor code."
+}

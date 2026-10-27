@@ -8,9 +8,9 @@ The existing FKRG cache remains useful for broad keyword/module search.
 This supplement adds real proof-term direct dependencies, verified same-type
 theorem peers, source copies, and a read-only scientific-role distinction.
 
-The current fifteen-layer census is **701 modules = 690 UEOT-maintained + 11
-adapted upstream**, with **4,463 registered public theorem nodes** and
-**5,907 registered direct proof edges**. The layer-by-layer counts below
+The current sixteen-layer census is **703 modules = 692 UEOT-maintained + 11
+adapted upstream**, with **4,474 registered public theorem nodes** and
+**5,926 registered direct proof edges**. The layer-by-layer counts below
 retain each historical scope.
 
 ## Governed overlay chain
@@ -1301,6 +1301,72 @@ resulting-main checks remain separate receipts. Counted classifications remain
 unchanged, strong global closure is `NOT_ESTABLISHED`, and external evidence
 is `UNVERIFIED`.
 
+### Layer 16 — finite conditional stability
+
+This layer is based on `7708a3a1289b1a009c269d81edceef06a4c347dc`
+and frozen source fingerprint `0e17dd5ef3c4a9e3eaea47c8c0b7e83f6ef097915bed6092ca81e3e6c032abe0`.
+Two modules add **11 registered public source theorems** and
+**19 direct registered edges**.
+
+| Evidence | SHA-256 |
+| --- | --- |
+| [Complete native export](CONDITIONAL_STABILITY_NATIVE_V1.json) | `00907d59fa7b780759ea4de80ae68a94ac4faebad0eb3492b71539b4f2d619d4` |
+| [Fixed Lean certificate](VERIFY_CONDITIONAL_STABILITY_OVERLAY_TYPES.lean) | `94defdc86beb366a149ec12ccfb660e56ddd4f6869749275f821c6ad81d26ccd` |
+| [Registered overlay](CONDITIONAL_STABILITY_REUSE_OVERLAY_V1.json) | `bbe93031ca6607baaedda6af1a90d6875587032e44c8a556b646a66ddb876b9c` |
+
+The complete native census retains **63 owned theorem constants:
+11 public source candidates, 34 private constants and
+18 other public native constants**. Actual owners, stored
+universes, displayed types, full direct constants, direct theorem constants and
+standard-only transitive axiom closures are retained. The other-public category
+is not assumed to consist entirely of generated declarations. Public stored types
+underwent **49,093 cross-layer** comparisons against 4,463 prior
+registrations and **55 internal** `Meta.isDefEq` comparisons,
+with zero collisions. The fixed exporter reproduces the initial native export.
+These checks do not prove general logical independence.
+
+The current graph contains **4,474 nodes and 5,926 direct
+edges**, including **681 overlay nodes and 1039 outgoing
+overlay edges**. The historical old-node repair remains separate. The 0
+new lexical hint groups bring their total to **177**. Lexical hints
+are distinct from compiled dependencies and mathematical review.
+
+`FiniteConditionalStability` constructs the original finite PMF conditioned on
+one declared positive-probability event with Mathlib `PMF.filter`. Its atom identity
+retains the original event mass. For `TV(p,q) ≤ ε`, actual conditioning on the same
+event satisfies `TV(p|S,q|S) ≤ min(1, ε/max(p(S),q(S)))`. A reference-only margin
+`ε < q(S)` first proves both event masses positive and then gives
+`min(1, ε/q(S))`. No conditional transition or conditional fit is an assumption.
+The same measurable readout of both conditioned laws inherits the bound.
+
+The causal-path consumer uses the existing actual `causalLaw_tv_bound` with its
+row budgets and common initial law. The noisy-reference consumer instead derives
+the source path budget from `CalibrationGood`, empirical fibre defect and the
+fixed actual program through `calibrated_reference_row` and
+`same_policy_projected_path_error`. Its conditional event lives on the common
+observed action/state record alphabet. Calling it microscopic physical survival
+additionally requires the corresponding event pullback. Training records and
+programs are fixed in this theorem; conditioning a joint training/deployment law
+would reweight its training marginal and is not asserted here.
+
+`FiniteConditionalStabilityWitness` uses a fixed three-state alphabet. For every
+`0 < r ≤ 1`, the laws share mass `1-r` outside the event and put their surviving
+mass `r` on opposite safe outcomes. Source TV equals `r` while conditional TV
+equals one. Consequently arbitrarily small source error can coexist with maximal
+conditional error when no survival lower bound is imposed. A separate positive
+certificate has source TV `1/8`, reference mass `1/2` and actual conditional TV
+`1/4`, attaining the bound before it saturates at one.
+
+Registration preserves raw execution bytes and adds only lexical preflight and
+registration provenance. All fifteen earlier overlays, native exports and fixed
+certificates, the historical equal/near-type artifacts and the 68-row clone table
+remain immutable. Four added consumer regressions inspect native ownership/edges,
+actual-filter and source-proof routes, the two sharpness regimes and registration
+provenance. Their actual execution, the unchanged full-source clone scan, release
+and resulting-main checks retain separate command receipts. Counted classifications
+remain unchanged; strong global closure is `NOT_ESTABLISHED` and external evidence
+is `UNVERIFIED`. Infinite-horizon survival is not a conclusion of this layer.
+
 ## Run from repository root
 
     P=formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse
@@ -1317,21 +1383,22 @@ is `UNVERIFIED`.
 Run the new native certificate from `formalization/ueot-core` after building
 the public imports with the pinned toolchain:
 
-    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_OBSERVABLE_BELIEF_OVERLAY_TYPES.lean
+    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_CONDITIONAL_STABILITY_OVERLAY_TYPES.lean
 
 ## Strongly typed and provenance-limited evidence
 
 - 633 immutable-base source modules = 622 UEOT-maintained + 11 adapted upstream modules;
-  fifteen governed overlays extend the live census to 701 = 690 + 11.
-- 3,793 immutable-base public source theorem proofs + 670 governed registrations
-  (including one historical public-name repair) = 4,463 live graph nodes, with
-  5,907 direct registered-source theorem
+  sixteen governed overlays extend the live census to 703 = 692 + 11.
+- 3,793 immutable-base public source theorem proofs + 681 governed registrations
+  (including one historical public-name repair) = 4,474 live graph nodes, with
+  5,926 direct registered-source theorem
   references. The historical four overlays add 0, 3, 6 and 73 certified direct edges;
   the fifth adds 91, the sixth adds 98, and the seventh adds 163 certified direct edges.
   The eighth adds 97 edges from new registrations and one certified old-node repair.
   The ninth adds 149 edges, the tenth adds 47, the eleventh adds 114 and the
   twelfth adds 27, the thirteenth adds 60, the fourteenth adds 63 and the
-  fifteenth adds 29, giving 1020 outgoing edges from overlay nodes;
+  fifteenth adds 29 and the sixteenth adds 19, giving
+  1039 outgoing edges from overlay nodes;
   the old-node repair remains a separate addition.
 - 37 equal-type groups / 77 names. The original audit checked 40/40
   representative-to-peer theorem type pairs via Lean Meta.isDefEq. Here
@@ -1349,7 +1416,7 @@ the public imports with the pinned toolchain:
   12 spans reach 15 lines. This is a text-copy candidate index, NOT
   a proof-equivalence decision procedure. The historical 646-module recomputation
   preserved all 68 historical rows exactly, with no added or missing rows.
-  The current scanner recomputes all 701 modules and rejects any difference
+  The current scanner recomputes all 703 modules and rejects any difference
   from that immutable result; its actual command result establishes whether
   the current-source scan passes. The historical snapshot alone does not.
 
@@ -1382,7 +1449,7 @@ the pinned Lean compiler/dependency environment (lean-toolchain,
 lakefile.lean and lake-manifest.json including the pinned Mathlib revision),
 the exact set of live Lean source paths (including detecting ANY newly added
 or deleted module), and all immutable-base source hashes plus the governed
-overlay-chain hashes against the exact 701-module live source census. It refuses to
+overlay-chain hashes against the exact 703-module live source census. It refuses to
 answer if any source or metadata changed. A docs-only Git commit does
 not spuriously make a valid source snapshot stale.
 
