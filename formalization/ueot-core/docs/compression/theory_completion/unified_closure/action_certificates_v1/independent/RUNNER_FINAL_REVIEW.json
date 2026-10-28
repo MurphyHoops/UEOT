@@ -1,0 +1,112 @@
+{
+  "schema": "UEOT/INDEPENDENT_FINAL_RUNNER_REVIEW/V1",
+  "status": "CLEAR_FOR_FINAL_SOURCE_BYTES",
+  "observed_at": "2026-10-28T15:47:10.172774+00:00",
+  "reviewer": "source_bridge agent; did not author certify.py or test_certify.py; own source mathematics excluded",
+  "reviewed_sources": {
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_certificates_v1/certify.py": "469abb430d6a7a077948ab0fd0d75d599d339d8132b53be893010fe3c541029f",
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_certificates_v1/test_certify.py": "aabd95352c8384242ca0c509a4e01df84bd38dc6fd0c3959b548ae76bdc327d6"
+  },
+  "supersedes_only_runner_entry_of_prior_review": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_certificates_v1/independent/PATH_CHECKER_REVIEW.json",
+    "sha256": "e99a80b635ea9e9e3828be399c88f3c141e3033c57960a4ff275148e4a7134d2",
+    "prior_runner_sha256": "ee23aaf4db881f25844abc213e1618151d38e53326ada935e9442a0ec105993e"
+  },
+  "prior_reviewed_sources_still_byte_identical": {
+    "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePolicyPath.lean": "cbab41a545401b3242401f9fb9ec406b4e32c2b5757985a583440fcd013d7eb6",
+    "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean": "9bc9d14b756d843b4fa4247e37ae6f6b224877ea1f9842c980612b0131162522",
+    "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean": "6e23d2c1653ff28892c9b4027397e48e7c58ace37a6bffa7886fed4681b25487",
+    "docs/compression/theory_completion/unified_closure/action_certificates_v1/emit_lean_witness.py": "a1ee4afc03ad3a10b83cbf54fdbddcdebc8c18fd3716995c2a94ea49b08456a3",
+    "docs/compression/theory_completion/unified_closure/action_certificates_v1/exact_certificates.py": "1bbc8a1c80c44ce8abac46bbc77e643b8fc453ce1ad8cd068cc9aaa47cb6a0ff",
+    "docs/compression/theory_completion/unified_closure/action_certificates_v1/registered_checks.lean.txt": "374a1b0a9bf7599bc68f753f155c57f2b00996862ea23b0c0a5e00d8413864a2",
+    "docs/compression/theory_completion/unified_closure/action_certificates_v1/test_exact_certificates.py": "78f3fb55bb1b381bad85cb5d7e77fbb6670bc375c2e0414dba54096af887b0cf"
+  },
+  "applied_consumer_files_match_independently_reviewed_candidates": [
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md",
+      "original_sha256": "58abbbdc35fc779a5c1bece8cfef65b3899eff92445e2e38faea71a5eab2e1c8",
+      "candidate_sha256": "32187d3f428022f7ac369f2c4b8b73f9ec0bea94af88d0b2a099120ca04a5ebe"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+      "original_sha256": "4b19b9c3f4c8d030657a080b41ca9aeae908d98f645aa50082ef51ace6a6922b",
+      "candidate_sha256": "cac75b498bc2239517d14fb59789f436e994629d828b59203d2ee684b73b125e"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
+      "original_sha256": "73312fce24649292160342381b3531e4edd3513b550f1b86bb12fac0747b47b2",
+      "candidate_sha256": "071cd1cc5c1cd43581facc3d59ed2a0d245358f22c8e7036b1bf2deb96a5c0a9"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py",
+      "original_sha256": "908c02f4d36a926d1372b3bad7d4fc193dce72f33649b260e84344209ef6e4a9",
+      "candidate_sha256": "c3e50d64f46983eea04688d5c0aeeee059641294f248d07ae523dbf0697d7382"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
+      "original_sha256": "5d67fd23dc5b294b8e627bb89b7a480a2f026cf6275c8f253b7bd4e3260224fa",
+      "candidate_sha256": "8c0e879bb5f34339a926c17771f6d17314be3848541bdc9805bf9567255bd8a7"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/UMC_GLOBAL_MODULE_DAG_V4.json",
+      "original_sha256": "77abdf45529979c55a58eca805f861d96a6e9de1eeccc97742fa5adccd060b37",
+      "candidate_sha256": "d038d58e3f82bb25aa49d423d33a1b58ca2ea8b5ef76888b85844a072102e13a"
+    }
+  ],
+  "findings": [],
+  "change_assessment": [
+    "The source identity baseline is now taken before the actual lake build, not after it. The final endpoint comparison therefore rejects persistent source changes during either build or proof, instead of accepting the changed post-build source as a baseline.",
+    "The existing driver snapshot is also compared at the end. Certification still requires successful build, successful kernel elaboration, and matching source/driver endpoint identities. Source/proof failure remains UNKNOWN.",
+    "execute now maps process-launch OSError to exit127 and retains a diagnostic log. This fails closed and supplies reviewable evidence rather than propagating an uncertified result.",
+    "The new mutation regression is discriminating: with identical mocked subprocess success and mutation during build, an in-memory reconstruction of the prior snapshot-after-build function returns CERTIFIED_REALIZABLE, whereas the current function returns UNKNOWN. The production file was not changed to perform this counterfactual."
+  ],
+  "independent_execution": [
+    {
+      "command": "python3 test_certify.py",
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_certificates_v1",
+      "exit_code": 0,
+      "log": "/tmp/action-certificates-final-runner-review.log",
+      "log_sha256": "7bc8bde9f93be8d25ce0ac94ef1e1b73e6a8e1b8d97a8f6cc1e83810ce589baa",
+      "coverage": "Actual Lean certification for a nonconstant observation map, separate build/proof rejection, persistent source change during build, and invalid-input rejection without a Lean call."
+    },
+    {
+      "check": "Reviewer-only process-launch OSError mock",
+      "result": "PASS: exit127 and retained simulated missing-executable diagnostic."
+    },
+    {
+      "check": "Reviewer-only in-memory prior/current counterfactual on same build-time source mutation",
+      "before_snapshot_fix": "CERTIFIED_REALIZABLE",
+      "current_snapshot_before_build": "UNKNOWN",
+      "result": "Regression demonstrably fails the old implementation."
+    }
+  ],
+  "actual_registered_runner_receipt": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-certificates-evidence-20261028/certified-registered-02/result.json",
+    "sha256": "cd2dc1a9d3b5bb59b42921e5a6a3fd11bafbeff35226d7e448d6d5f8b710b2ba",
+    "exit_codes": [
+      0,
+      0
+    ],
+    "source_identity_file": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-certificates-evidence-20261028/certified-registered-02/core-source-identity.json",
+    "source_identity_sha256": "f91ff13689d31eb0adc6f8b0032dc47477b154f2b3290c42e26a66522c28f39b",
+    "all_source_identities_match_current": true,
+    "all_driver_hashes_match_current": true,
+    "sources_unchanged_during_build_and_proof": true,
+    "statuses": {
+      "original_actions": "CERTIFIED_UNREALIZABLE",
+      "two_step_added_actions": "CERTIFIED_REALIZABLE",
+      "unprepared_initial": "CERTIFIED_UNREALIZABLE",
+      "same_source_alias": "CERTIFIED_UNREALIZABLE",
+      "unreachable_fallback": "CERTIFIED_REALIZABLE",
+      "independent_baseline_variant": "CERTIFIED_REALIZABLE",
+      "zero_horizon": "CERTIFIED_REALIZABLE",
+      "zero_survival": "CONDITIONING_UNDEFINED"
+    }
+  },
+  "exact_head_binding": "This file binds final reviewed source bytes and prior applied candidate hashes. The subsequent exact candidate commit/tree receipt is separate to avoid self-referential Git commit identity.",
+  "limits": [
+    "Identity comparisons cover the pre-build and post-proof endpoints; they are not a continuous filesystem lock or watcher and do not claim to detect a transient change that is restored between observations.",
+    "No new Lean source or mathematical proof changed in this runner correction. Existing independent semantic/path/checker reviews remain hash-current, except the explicitly superseded runner entry.",
+    "RationalConditionedSource mathematics was authored by this reviewer; its independent mathematical clearance is the other-authored SEMANTIC_REVIEW.json, not this runner review."
+  ]
+}

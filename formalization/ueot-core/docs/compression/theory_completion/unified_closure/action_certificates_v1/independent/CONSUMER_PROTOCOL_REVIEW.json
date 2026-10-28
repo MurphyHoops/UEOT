@@ -1,0 +1,150 @@
+{
+  "schema": "UEOT/INDEPENDENT_CONSUMER_PROTOCOL_REVIEW/V1",
+  "status": "CLEAR",
+  "observed_at": "2026-10-28T15:30:21.157117+00:00",
+  "reviewer": "source_bridge agent; did not author consumer preparer, adapter or six candidates",
+  "candidate_manifest": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-certificates-evidence-20261028/consumer-candidates-01/MANIFEST.json",
+  "candidate_manifest_sha256": "d4d0bb181423e398f8363b286ec226746186ca06c57e063f225e703441ac6b02",
+  "base_ref": "61fc3caead1945f72b919973217d573957a1b8d0",
+  "source_tree_sha256": "a499c2264c1b0b6b770d4023042187baa0b824de833f1ddf6046bffd22393d82",
+  "reviewed_candidates": [
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md",
+      "original_sha256": "58abbbdc35fc779a5c1bece8cfef65b3899eff92445e2e38faea71a5eab2e1c8",
+      "candidate_sha256": "32187d3f428022f7ac369f2c4b8b73f9ec0bea94af88d0b2a099120ca04a5ebe"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+      "original_sha256": "4b19b9c3f4c8d030657a080b41ca9aeae908d98f645aa50082ef51ace6a6922b",
+      "candidate_sha256": "cac75b498bc2239517d14fb59789f436e994629d828b59203d2ee684b73b125e"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
+      "original_sha256": "73312fce24649292160342381b3531e4edd3513b550f1b86bb12fac0747b47b2",
+      "candidate_sha256": "071cd1cc5c1cd43581facc3d59ed2a0d245358f22c8e7036b1bf2deb96a5c0a9"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py",
+      "original_sha256": "908c02f4d36a926d1372b3bad7d4fc193dce72f33649b260e84344209ef6e4a9",
+      "candidate_sha256": "c3e50d64f46983eea04688d5c0aeeee059641294f248d07ae523dbf0697d7382"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
+      "original_sha256": "5d67fd23dc5b294b8e627bb89b7a480a2f026cf6275c8f253b7bd4e3260224fa",
+      "candidate_sha256": "8c0e879bb5f34339a926c17771f6d17314be3848541bdc9805bf9567255bd8a7"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/UMC_GLOBAL_MODULE_DAG_V4.json",
+      "original_sha256": "77abdf45529979c55a58eca805f861d96a6e9de1eeccc97742fa5adccd060b37",
+      "candidate_sha256": "d038d58e3f82bb25aa49d423d33a1b58ca2ea8b5ef76888b85844a072102e13a"
+    }
+  ],
+  "reviewed_drivers": {
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_certificates_v1/prepare_consumers.py": "7437ec51040f7089c44dbe6c5e5cf3dc29f4ff177518fcf2579a56a68ad13290",
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_certificates_v1/native_protocol/freeze_inputs.py": "b8b7eee07250f51398b3a2f2f29f230d46dab8745a6e98b14512220c029bd995",
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_certificates_v1/native_protocol/full_build.py": "44d5d2dbb4639ae89877a90224dfae2308d005ab3b15ed867139cdaa726020c9",
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_certificates_v1/native_protocol/integration_native.py": "c717d9edc1f3099076e0a660dc47a58083312fb8facd0e3c02645abdad3f1426",
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_certificates_v1/native_protocol/protocol_adapter.py": "05a2a9e8732a1c7f5cc0cc556fe31913f4e35c9d1231a6141ac32e8a7ccb0501",
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_certificates_v1/native_protocol/register_overlay.py": "71f810000fdafa39c1cc28e0e5a219521e0e385fd7ae30fa0febfcbcfb3357bf"
+  },
+  "findings": [],
+  "verification": {
+    "exact_six_file_scope_and_original_git_bytes": true,
+    "all_candidate_hashes_verified": true,
+    "all_evidence_input_hashes_verified": 44,
+    "prior_assets_match_live_and_baseline_git_bytes": 53,
+    "registry_original_17_items_preserved_and_only_18th_appended": [
+      "OVERLAY_PATHS",
+      "OVERLAY_TYPE_CHECKS",
+      "OVERLAY_SHA256S",
+      "OVERLAY_TYPE_CHECK_SHA256S"
+    ],
+    "registry_runtime_AST_unchanged_except_exact_metadata_and_four_append_lists": true,
+    "old_test_methods": 78,
+    "preserved_old_test_methods": 78,
+    "new_test_methods": [
+      "test_action_certificates_checker_and_same_source_routes",
+      "test_action_certificates_native_ownership_and_registered_edges",
+      "test_action_certificates_registration_preserves_raw_execution",
+      "test_action_certificates_specified_policy_and_prefix_routes"
+    ],
+    "old_test_changes_only_increasing_literal_census": {
+      "test_calibrated_defect_overlay_chain_and_kernel_graph": [
+        [
+          17,
+          18
+        ]
+      ],
+      "test_evidence_and_sources_exact_baseline": [
+        [
+          708,
+          712
+        ],
+        [
+          697,
+          701
+        ],
+        [
+          4504,
+          4542
+        ],
+        [
+          711,
+          749
+        ],
+        [
+          180,
+          190
+        ],
+        [
+          17,
+          18
+        ],
+        [
+          1079,
+          1159
+        ],
+        [
+          5966,
+          6046
+        ]
+      ],
+      "test_new_lean_module_cannot_be_omitted_from_index": [
+        [
+          708,
+          712
+        ]
+      ]
+    },
+    "clone_scanner_executable_AST_unchanged": true,
+    "old_lean_sources_checked": 708,
+    "changed_old_lean_sources_only_public_import_root": [
+      "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean"
+    ],
+    "deterministic_candidate_render_matches": true,
+    "immutable_and_adapted_preparer_archive_match": true,
+    "full_build_and_native_exit_codes_verified": true,
+    "full_build_source_files_match_current": 712,
+    "registered_native_and_fixed_verifier_equal_actual_execution_bytes": true,
+    "source_hash_override_only_real_changed_root": true,
+    "no_prior_theorem_or_dependency_repairs": true,
+    "candidate_consumer_loaded_in_memory_with_source_verification": true,
+    "candidate_consumer_observed": {
+      "source_modules": 712,
+      "graph_nodes": 4542,
+      "overlays": 18,
+      "clone_rows": 68
+    },
+    "dag_old_entries_unchanged_except_public_root_imports": true,
+    "dag_exact_four_new_modules_and_no_cycles_or_missing_imports": true,
+    "full_and_native_protocol_archives_reconstructed_byte_exact": true
+  },
+  "new_regression_assessment": "Four additions inspect complete native ownership/standard axioms, same-policy and full-prefix compiled routes, rational-checker/same-source routes, and raw registration provenance. Existing historical methods remain structurally unchanged; only three live-census methods update increasing literal expectations. Fragment checks are supplemented by direct compiled dependency equality, rather than substituting strings for mathematical validation.",
+  "gate_preservation_assessment": "Adapter substitutions are scope/schema/census metadata plus the native exporter recursion limit needed for deep compiled closed terms. Native/full execution, source/runtime identities, exact raw-type comparisons, fixed-edge replay, collision checks, input pinning, and atomic six-file application with rollback remain inherited. No collision/axiom/test threshold was weakened. Preparer application rerenders candidates and rechecks original hashes before mutation; it does not claim the separately scheduled consumer tests or clone scan have already run.",
+  "limits": [
+    "This is independent source/identity review and read-only candidate loading; no six-file production application performed.",
+    "Native/full results are verified recorded executions bound to the frozen source; this review does not relabel them as another fresh full build.",
+    "Governance fixture failures and retries are separate evidence; this review reads only current restored immutable assets and source identities.",
+    "The public/private counts describe registration, not scientific completion or independence."
+  ]
+}

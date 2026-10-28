@@ -1,0 +1,92 @@
+{
+  "schema": "UEOT_FINITE_ACTION_CERTIFICATES_INDEPENDENT_SEMANTIC_REVIEW_V1",
+  "reviewer": "/root/path_iff; did not author the three reviewed files",
+  "status": "CLEAR_FOR_REVIEWED_SOURCE_NOT_FULL_PACKAGE_ACCEPTANCE",
+  "reviewed_source": [
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "sha256": "9bc9d14b756d843b4fa4247e37ae6f6b224877ea1f9842c980612b0131162522"
+    },
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "sha256": "22d42615bbb6ad58ed1c8c7a65d420b46519bd1f537867a1ab0459df0729db41"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_certificates_v1/exact_certificates.py",
+      "sha256": "1bbc8a1c80c44ce8abac46bbc77e643b8fc453ce1ad8cd068cc9aaa47cb6a0ff"
+    }
+  ],
+  "findings": [],
+  "earlier_findings_resolved": [
+    {
+      "issue": "Standalone Python checker formerly accepted an external target.",
+      "resolution": "Both checker functions now recompute derive(source); source identity is checked and occupied fiber is derived internally."
+    },
+    {
+      "issue": "Mandatory checker calls formerly used assertions and full path checking enumerated unbounded histories.",
+      "resolution": "Explicit RuntimeError guards retain verification under optimized Python; exhaustive independent path checks are bounded to 100000 histories. Runtime labels are CANDIDATE_* until Lean acceptance."
+    }
+  ],
+  "semantic_checks": [
+    {
+      "topic": "Executable trust boundary",
+      "result": "CLEAR",
+      "evidence": "ValidRow, pathMass, occupied, checkPositive, fiberScore and checkNegative use decidable finite rational operations. Computation does not depend on Classical.choice. Noncomputable PMF/model interpretations and proof-only finite-instance transport are outside execution."
+    },
+    {
+      "topic": "Same-source target and indexing",
+      "result": "CLEAR",
+      "evidence": "baselineRow uses original P, q and baseline weights. sourceRemaining(0,x)=safe(x); recurrence includes current safety. For t<T, r=T-(t+1), so target numerator uses h at t+1 and denominator uses h at t. Unsafe/null rows self-loop explicitly. Positive sourceMass is required for all conditional-law interpretations."
+    },
+    {
+      "topic": "No assumed key source equivalence",
+      "result": "CLEAR",
+      "evidence": "rationalModel_transitionPMF, baselineRow_cast, rationalRemaining_cast, sourceMass_eq_actual, sourceInitial_eq_prepared and sourceTarget_eq_row are proved. sourceTargetPath_eq_actual derives the full original conditioned experiment using generated_ambient_eq_actual; it does not accept a fitted path equality."
+    },
+    {
+      "topic": "Same accepted weight table",
+      "result": "CLEAR",
+      "evidence": "checkPositive tests deployed p=mu, every w(t,y) is a probability row, and row equations only on computed positive target occupancy. acceptedWeights projects validity from that same accepted w; policy interprets w directly. checkPositive_sound uses specified_policy_path_of_rows, with no alternative-policy existence or choice."
+    },
+    {
+      "topic": "Occupied target fiber",
+      "result": "CLEAR",
+      "evidence": "occupied is finite positive-history existence from mu/R. pathMass_eq and occupied_iff prove its PMF meaning. fiberScore recomputes occupied(mu,R,time) intersected with q(x)=observation; certificate does not supply its own fiber."
+    },
+    {
+      "topic": "Arbitrary-real separation and path no-go",
+      "result": "CLEAR",
+      "evidence": "checkNegative checks time<T, rational gap>0, all action scores<=bound and target score>=bound+gap. checkNegative_sound uses an arbitrary PMF A, real nonnegative weights summing to one, finite score linearity and strict-gap contradiction. checkNegative_path_no_go invokes specified_policy_path_iff to extract this same common fiber mixture, so the conclusion covers all real time-varying current-observation policies."
+    },
+    {
+      "topic": "Boundary behavior",
+      "result": "CLEAR",
+      "evidence": "Zero horizon constrains only actual initial equality. Zero source mass does not supply a conditioned PMF. Null/unreachable rows do not constrain policy. Wrong source, weights and nonpositive gap are rejected, not classified as mathematical impossibility."
+    }
+  ],
+  "independent_runtime_check": {
+    "exit_code": 0,
+    "execution": "Inline Python imported the reviewed runtime by path, derived each registered source, enumerated its baseline state paths, filtered the exact safe event, normalized by Z, and compared against its target law; positive returned tables were rechecked and their actual full paths compared. This check did not run Lean/native/repository integration.",
+    "additional_assertions": [
+      "Two-step Z=1/4, mu=(3/4,1/4,0), weights=(0,3/4,1/4) then (0,1/2,1/2).",
+      "Changed source identity, wrong first-step weights and zero separator gap are rejected.",
+      "Negative horizon, Boolean horizon, invalid observation index, non-Boolean safety, float initial row and empty transition alphabet yield INVALID_INPUT."
+    ],
+    "observed_results": {
+      "original_actions": "CANDIDATE_UNREALIZABLE",
+      "two_step_added_actions": "CANDIDATE_REALIZABLE",
+      "unprepared_initial": "CANDIDATE_UNREALIZABLE",
+      "same_source_alias": "CANDIDATE_UNREALIZABLE",
+      "unreachable_fallback": "CANDIDATE_REALIZABLE",
+      "independent_baseline_variant": "CANDIDATE_REALIZABLE",
+      "zero_horizon": "CANDIDATE_REALIZABLE",
+      "zero_survival": "CONDITIONING_UNDEFINED"
+    }
+  },
+  "proof_route_boundaries": [
+    "Generic Lean checkers require valid finite probability rows; rational same-source bridge constructs those rows and proves model/target identity. Concrete emitted witness and certification runner must actually consume this bridge before final CERTIFIED_* status.",
+    "This review excludes final generated witness/runner, native export/full build, integration protocol authored by this reviewer, PR/merge/main state and GI adoption. It is not package completion.",
+    "Lean positive-history occupancy and recursive safe-mass evaluation may be exponential on large horizons. Python uses forward occupancy; its search has explicit small-action/coefficient limits and UNKNOWN is not a no-go.",
+    "No search completeness, arbitrary-history policy no-go, ontic trajectory identity, empirical calibration, general time-varying source, QM/physics, C5 or global closure claim is made."
+  ]
+}

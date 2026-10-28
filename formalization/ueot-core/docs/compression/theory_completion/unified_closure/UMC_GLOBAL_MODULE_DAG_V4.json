@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "source_tree_sha256": "9a90676af4c234eee2121ac75c0e127f2dd87370e727e5e7189ea99b4b377530",
+  "source_tree_sha256": "a499c2264c1b0b6b770d4023042187baa0b824de833f1ddf6046bffd22393d82",
   "scope": "literal first-party UEOT Lean source files and their direct imports",
   "source_semantics": "metadata audit, NOT independent theorem-source semantic certification",
-  "total_Lean_modules": 708,
-  "total_source_lines": 131380,
-  "total_theorem_lemma_tokens": 4855,
+  "total_Lean_modules": 712,
+  "total_source_lines": 132932,
+  "total_theorem_lemma_tokens": 4985,
   "category_counts": {
     "Core_v3_and_Substrate": 306,
     "Compression_Frozen_Bridges": 62,
@@ -14,9 +14,9 @@
     "Objecthood": 88,
     "P0_P12_TheoryCompletion": 57,
     "C1_C7_SISC": 55,
-    "UMC_New_Bridges": 109
+    "UMC_New_Bridges": 113
   },
-  "reachable_from_UEOT_root": 708,
+  "reachable_from_UEOT_root": 712,
   "not_reachable_from_UEOT_root": [],
   "cycles_detected": [],
   "missing_internal_imports": {},
@@ -256,7 +256,7 @@
     {
       "from": "Compression_Frozen_Bridges",
       "to": "UMC_New_Bridges",
-      "edges": 109
+      "edges": 113
     },
     {
       "from": "Core_v3_and_Substrate",
@@ -3446,8 +3446,8 @@
     },
     "UEOT.V3.Compression.TheoryCompletion": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
-      "bytes": 15316,
-      "lines": 193,
+      "bytes": 15650,
+      "lines": 197,
       "category": "Compression_Frozen_Bridges",
       "title": "UEOT Theory Completion public root",
       "imports": [
@@ -3634,7 +3634,11 @@
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityWitness",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveLinearGaugeClassification",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveOperationalAnchors",
-        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransport"
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransport",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPath",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificate",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitness"
       ],
       "theorem_lemma_count": 0,
       "decl_count": 0
@@ -5494,6 +5498,31 @@
       "theorem_lemma_count": 17,
       "decl_count": 33
     },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificate": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "bytes": 15616,
+      "lines": 331,
+      "category": "UMC_New_Bridges",
+      "title": "Exact finite action certificates",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPath"
+      ],
+      "theorem_lemma_count": 11,
+      "decl_count": 21
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitness": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "bytes": 31466,
+      "lines": 627,
+      "category": "UMC_New_Bridges",
+      "title": "Computed certificates rechecked by the Lean kernel",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability"
+      ],
+      "theorem_lemma_count": 96,
+      "decl_count": 184
+    },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizability": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizability.lean",
       "bytes": 10623,
@@ -5718,6 +5747,18 @@
       ],
       "theorem_lemma_count": 11,
       "decl_count": 13
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPath": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePolicyPath.lean",
+      "bytes": 7413,
+      "lines": 163,
+      "category": "UMC_New_Bridges",
+      "title": "Specified finite current-observation policies: complete-path equivalence",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransport"
+      ],
+      "theorem_lemma_count": 5,
+      "decl_count": 5
     },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePredictiveProbeCompleteness": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePredictiveProbeCompleteness.lean",
@@ -6080,6 +6121,18 @@
       ],
       "theorem_lemma_count": 6,
       "decl_count": 8
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "bytes": 19454,
+      "lines": 427,
+      "category": "UMC_New_Bridges",
+      "title": "Executable finite rational conditioning from the original source",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificate"
+      ],
+      "theorem_lemma_count": 18,
+      "decl_count": 26
     },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ReachablePolicyExtension": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ReachablePolicyExtension.lean",

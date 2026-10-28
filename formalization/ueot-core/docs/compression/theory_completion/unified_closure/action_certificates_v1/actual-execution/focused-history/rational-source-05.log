@@ -1,0 +1,34 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:171:8: warning: Try `simp at hp` instead of `simpa using hp`
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:229:47: error(lean.unknownIdentifier): Unknown constant `Set.setOf`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:230:61: error(lean.unknownIdentifier): Unknown constant `Set.setOf`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:231:50: warning: This simp argument is unused:
+  rationalRemaining_cast
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [sourceRemaining, dif_pos x.property]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:241:80: error(lean.unknownIdentifier): Unknown constant `Set.setOf`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:251:14: error(lean.unknownIdentifier): Unknown constant `Set.setOf`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:254:9: error: unsolved goals
+X Y A : Type u
+inst✝⁶ : Fintype X
+inst✝⁵ : Fintype A
+inst✝⁴ : Nonempty A
+P : X → A → X → ℚ
+hP : ∀ (x : X) (a : A), ValidRow (P x a)
+q : X → Y
+base : Y → A → ℚ
+hbase : ∀ (y : Y), ValidRow (base y)
+p0 : X → ℚ
+hp0 : ValidRow p0
+safe : X → Bool
+inst✝³ : MeasurableSpace X
+inst✝² : MeasurableSingletonClass X
+inst✝¹ : MeasurableSpace A
+inst✝ : MeasurableSingletonClass A
+T : ℕ
+x : X
+⊢ safe x = true ↔ ?m.165 x

@@ -1,0 +1,241 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:26:57: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  X → Fintype A
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:38:8: warning: declaration uses `sorry`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:44:2: warning: Unused tactic linter: `rw [Model.transitionPMF_apply_toReal, rowPMF_toReal]` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:45:2: warning: Unused tactic linter: `rfl` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:45:2: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:63:9: error: unsolved goals
+case zero
+S : Type u
+inst✝ : Fintype S
+Q : S → S → ℚ
+i : S
+⊢ 1 = remainingSurvival (fun i j => ↑(Q i j)) 0 i
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:66:41: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  remainingSurvival ?Q (?r + 1) ?i
+in the target expression
+  ∑ i_1, ↑(Q i i_1 * rationalRemaining Q r i_1) = remainingSurvival (fun i j => ↑(Q i j)) (r + 1) i
+
+case succ
+S : Type u
+inst✝ : Fintype S
+Q : S → S → ℚ
+r : ℕ
+ih : ∀ (i : S), ↑(rationalRemaining Q r i) = remainingSurvival (fun i j => ↑(Q i j)) r i
+i : S
+⊢ ∑ i_1, ↑(Q i i_1 * rationalRemaining Q r i_1) = remainingSurvival (fun i j => ↑(Q i j)) (r + 1) i
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    fun i j => ↑(Q i j)
+  has type
+    S → S → ℝ
+  but is expected to have type
+    Matrix S S ℝ
+  in the application
+    remainingSurvival fun i j => ↑(Q i j)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:121:4: error: Type mismatch: After simplification, term
+  Eq.symm (sum_safe safe fun z => B x z * sourceRemaining B safe r z)
+ has type
+  ∑ x_1, B x ↑x_1 * sourceRemaining B safe r ↑x_1 =
+    ∑ x_1, if safe x_1 = true then B x x_1 * sourceRemaining B safe r x_1 else 0
+but is expected to have type
+  ∑ x_1, B x ↑x_1 * rationalRemaining (fun i j => B ↑i ↑j) r x_1 =
+    ∑ x_1, if h : safe x_1 = true then B x x_1 * rationalRemaining (fun i j => B ↑i ↑j) r ⟨x_1, ⋯⟩ else 0
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:131:52: error(lean.invalidField): Invalid field notation: Type of
+  i
+is not known; cannot resolve field `val`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `AddUnits.val`
+  • `ArchimedeanOrder.val`
+  • `Char.val`
+  • `DerivedWanted.val`
+  • `Fin.val`
+  • `Finset.val`
+  • `GroupLike.val`
+  • `HomogeneousLocalization.val`
+  • `IntermediateField.val`
+  • `IterateAddAct.val`
+  • `IterateMulAct.val`
+  • `MulArchimedeanOrder.val`
+  • `NonScalar.val`
+  • `PNat.val`
+  • `PreQuasiregular.val`
+  • `PreTilt.val`
+  • `Semiquot.val`
+  • `SheafOfModules.val`
+  • `Subalgebra.val`
+  • `SubalgebraClass.val`
+  • `Subtype.val`
+  • `Units.val`
+  • `ZMod.val`
+  • `Algebra.Generators.val`
+  • `Array.Mem.val`
+  • `CategoryTheory.Sheaf.val`
+  • `Group.Generators.val`
+  • `Heyting.Regular.val`
+  • `Lean.ExprStructEq.val`
+  • `Metric.Snowflaking.val`
+  • `NumberField.RingOfIntegers.val`
+  • `OrderHom.Subtype.val`
+  • `ST.Out.val`
+  • `SheafOfModules.Hom.val`
+  • `Valuation.IsUniformizer.val`
+  • `Valuation.Uniformizer.val`
+  • `Vector.Mem.val`
+  • `Algebra.Extension.Cotangent.val`
+  • `Algebra.Generators.Hom.val`
+  • `CategoryTheory.ActionCategory.homOfPair.val`
+  • `CategoryTheory.OverPresheafAux.OverArrows.val`
+  • `Lean.Doc.Parser.val`
+  • `Lean.Doc.WithSyntax.val`
+  • `Lean.Elab.FieldInfo.val`
+  • `Lean.Language.DynamicSnapshot.val`
+  • `Lean.Language.SyntaxGuarded.val`
+  • `Lean.Meta.InstanceEntry.val`
+  • `Lean.Server.WithRpcRef.val`
+  • `Module.End.Eigenvalues.val`
+  • `Module.End.UnifEigenvalues.val`
+  • `Std.Time.Timestamp.val`
+  • `Std.Time.WallTime.val`
+  • `Batteries.BinomialHeap.Imp.FindMin.val`
+  • `CategoryTheory.Functor.WellOrderInductionData.Extension.val`
+  • `CategoryTheory.Limits.MulticospanIndex.sections.val`
+  • `CategoryTheory.PreGaloisCategory.PointedGaloisObject.Hom.val`
+  • `Lean.Elab.ComputedFields.Context.val`
+  • `Lean.Elab.Term.LetRecToLift.val`
+  • `Lean.Elab.Term.NamedArg.val`
+  • `Lean.Meta.Match.Example.val`
+  • `Lean.Meta.Match.Pattern.val`
+  • `Lean.Meta.Sym.BitVecValue.val`
+  • `Lean.Meta.Sym.FinValue.val`
+  • `Lean.Meta.SynthInstance.Instance.val`
+  • `Mathlib.Tactic.Determinant.Cert.val`
+  • `Std.Sat.AIG.Fanin.val`
+  • `Std.Time.Internal.UnitVal.val`
+  • `Lean.Meta.Try.Collector.InductionCandidate.val`
+  • `Mathlib.Tactic.Ring.Common.Result.val`
+  • `Std.Tactic.BVDecide.BVExpr.WithCache.val`
+  • `Lean.Meta.Grind.Arith.Cutsat.SymbolicBound.val`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:131:58: error(lean.invalidField): Invalid field notation: Type of
+  j
+is not known; cannot resolve field `val`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `AddUnits.val`
+  • `ArchimedeanOrder.val`
+  • `Char.val`
+  • `DerivedWanted.val`
+  • `Fin.val`
+  • `Finset.val`
+  • `GroupLike.val`
+  • `HomogeneousLocalization.val`
+  • `IntermediateField.val`
+  • `IterateAddAct.val`
+  • `IterateMulAct.val`
+  • `MulArchimedeanOrder.val`
+  • `NonScalar.val`
+  • `PNat.val`
+  • `PreQuasiregular.val`
+  • `PreTilt.val`
+  • `Semiquot.val`
+  • `SheafOfModules.val`
+  • `Subalgebra.val`
+  • `SubalgebraClass.val`
+  • `Subtype.val`
+  • `Units.val`
+  • `ZMod.val`
+  • `Algebra.Generators.val`
+  • `Array.Mem.val`
+  • `CategoryTheory.Sheaf.val`
+  • `Group.Generators.val`
+  • `Heyting.Regular.val`
+  • `Lean.ExprStructEq.val`
+  • `Metric.Snowflaking.val`
+  • `NumberField.RingOfIntegers.val`
+  • `OrderHom.Subtype.val`
+  • `ST.Out.val`
+  • `SheafOfModules.Hom.val`
+  • `Valuation.IsUniformizer.val`
+  • `Valuation.Uniformizer.val`
+  • `Vector.Mem.val`
+  • `Algebra.Extension.Cotangent.val`
+  • `Algebra.Generators.Hom.val`
+  • `CategoryTheory.ActionCategory.homOfPair.val`
+  • `CategoryTheory.OverPresheafAux.OverArrows.val`
+  • `Lean.Doc.Parser.val`
+  • `Lean.Doc.WithSyntax.val`
+  • `Lean.Elab.FieldInfo.val`
+  • `Lean.Language.DynamicSnapshot.val`
+  • `Lean.Language.SyntaxGuarded.val`
+  • `Lean.Meta.InstanceEntry.val`
+  • `Lean.Server.WithRpcRef.val`
+  • `Module.End.Eigenvalues.val`
+  • `Module.End.UnifEigenvalues.val`
+  • `Std.Time.Timestamp.val`
+  • `Std.Time.WallTime.val`
+  • `Batteries.BinomialHeap.Imp.FindMin.val`
+  • `CategoryTheory.Functor.WellOrderInductionData.Extension.val`
+  • `CategoryTheory.Limits.MulticospanIndex.sections.val`
+  • `CategoryTheory.PreGaloisCategory.PointedGaloisObject.Hom.val`
+  • `Lean.Elab.ComputedFields.Context.val`
+  • `Lean.Elab.Term.LetRecToLift.val`
+  • `Lean.Elab.Term.NamedArg.val`
+  • `Lean.Meta.Match.Example.val`
+  • `Lean.Meta.Match.Pattern.val`
+  • `Lean.Meta.Sym.BitVecValue.val`
+  • `Lean.Meta.Sym.FinValue.val`
+  • `Lean.Meta.SynthInstance.Instance.val`
+  • `Mathlib.Tactic.Determinant.Cert.val`
+  • `Std.Sat.AIG.Fanin.val`
+  • `Std.Time.Internal.UnitVal.val`
+  • `Lean.Meta.Try.Collector.InductionCandidate.val`
+  • `Mathlib.Tactic.Ring.Common.Result.val`
+  • `Std.Tactic.BVDecide.BVExpr.WithCache.val`
+  • `Lean.Meta.Grind.Arith.Cutsat.SymbolicBound.val`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:159:8: warning: Try `simp at hp` instead of `simpa using hp`
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:160:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  if safe x = true then ∑ z, B x z * sourceRemaining B safe ?m.73 z else 0
+in the target expression
+  (∑ i, B x i * sourceRemaining B safe (T - (t + 1)) i) / sourceRemaining B safe (T - (t + 1) + 1) x = 1
+
+case right
+X : Type u
+inst✝¹ : Fintype X
+inst✝ : DecidableEq X
+B : X → X → ℚ
+hB : ∀ (x z : X), 0 ≤ B x z
+safe : X → Bool
+T t : ℕ
+x : X
+hp : 0 < sourceRemaining B safe (T - (t + 1) + 1) x
+hx : safe x = true
+⊢ (∑ i, B x i * sourceRemaining B safe (T - (t + 1)) i) / sourceRemaining B safe (T - (t + 1) + 1) x = 1
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:164:15: error: Tactic `split` failed: Could not split an `if` or `match` expression in the goal
+
+Hint: Use `set_option trace.split.failure true` to display additional diagnostic information
+
+case left
+X : Type u
+inst✝¹ : Fintype X
+inst✝ : DecidableEq X
+B : X → X → ℚ
+hB : ∀ (x z : X), 0 ≤ B x z
+safe : X → Bool
+T t : ℕ
+x : X
+hp : ¬0 < sourceRemaining B safe (T - (t + 1) + 1) x
+z : X
+⊢ 0 ≤ (fun z => if z = x then 1 else 0) z

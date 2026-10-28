@@ -1,0 +1,135 @@
+{
+  "schema": "UEOT/INDEPENDENT_SEMANTIC_SOURCE_REVIEW/V1",
+  "observed_at": "2026-10-28T15:15:27.639866+00:00",
+  "reviewer": "source_bridge subagent; independent author from reviewed path/checker/witness/runner/emitter",
+  "status": "CLEAR",
+  "scope": "Final actual source bytes, finite full-state-path iff, same-table positive certificate, real-PMF separating certificate, registered consumers, and certification trust boundary.",
+  "reviewed_sources": {
+    "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePolicyPath.lean": "cbab41a545401b3242401f9fb9ec406b4e32c2b5757985a583440fcd013d7eb6",
+    "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean": "9bc9d14b756d843b4fa4247e37ae6f6b224877ea1f9842c980612b0131162522",
+    "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean": "6e23d2c1653ff28892c9b4027397e48e7c58ace37a6bffa7886fed4681b25487",
+    "docs/compression/theory_completion/unified_closure/action_certificates_v1/certify.py": "ee23aaf4db881f25844abc213e1618151d38e53326ada935e9442a0ec105993e",
+    "docs/compression/theory_completion/unified_closure/action_certificates_v1/emit_lean_witness.py": "a1ee4afc03ad3a10b83cbf54fdbddcdebc8c18fd3716995c2a94ea49b08456a3",
+    "docs/compression/theory_completion/unified_closure/action_certificates_v1/exact_certificates.py": "1bbc8a1c80c44ce8abac46bbc77e643b8fc453ce1ad8cd068cc9aaa47cb6a0ff",
+    "docs/compression/theory_completion/unified_closure/action_certificates_v1/registered_checks.lean.txt": "374a1b0a9bf7599bc68f753f155c57f2b00996862ea23b0c0a5e00d8413864a2",
+    "docs/compression/theory_completion/unified_closure/action_certificates_v1/test_exact_certificates.py": "78f3fb55bb1b381bad85cb5d7e77fbb6670bc375c2e0414dba54096af887b0cf"
+  },
+  "authorship_exclusion": "Reviewer authored RationalConditionedSource.lean. This review does not claim independent authorship review of that module; path_iff agent independently reviews its source semantics and hash.",
+  "findings": [],
+  "semantic_checks": [
+    {
+      "topic": "Full path necessity",
+      "result": "The proof projects the entire T-step law with causalLaw_map_prefix to t and t+1, compares pmfExtend atoms, and cancels only a target history atom that is nonzero and finite by PMF.apply_ne_top. It derives p=mu at prefix zero. Terminal equality alone is never substituted."
+    },
+    {
+      "topic": "Sufficiency and null boundary",
+      "result": "The induction uses target-support row equality and prefix equality; target zero atoms annihilate both products. T=0 reduces exactly to p=mu. The specified action experiment is mapped through the existing time_action_state_path_eq_mixture theorem."
+    },
+    {
+      "topic": "Returned policy identity",
+      "result": "checkPositive checks the deployed rational p=mu and all accepted finite weights. policy interprets the exact w argument directly. acceptedWeights is only a proof for that w; no Classical.choice or alternative existential policy is used in execution. The full positive conclusion retains policy weights in its type."
+    },
+    {
+      "topic": "Occupancy and information",
+      "result": "occupied is recomputed from pathMass(mu,R), and occupied_iff identifies this with target PMF support. fiberScore filters this computed occupancy and q. There is one distribution per (time,observation), not per hidden state."
+    },
+    {
+      "topic": "Strict separation",
+      "result": "checkNegative verifies time<T, gap>0, every original action score<=bound, and target>=bound+gap. checkNegative_sound expands the functional of an arbitrary real PMF mixture, uses nonnegative PMF masses summing to one, and contradicts the positive gap. The path no-go invokes necessary occupied rows; it does not equate search failure with impossibility."
+    },
+    {
+      "topic": "Source identity and actual experiment consumers",
+      "result": "Every registered nonzero target is recomputed as sourceInitial/sourceTarget from P,q,base,p0,safe,T. Each consumer discharges rationalModel_transitionPMF and sourceTargetPath_eq_actual; positive and negative endpoints are actualConditionedPrefix for the same baseline experiment."
+    },
+    {
+      "topic": "Registered distinguishing cases",
+      "result": "Original one-action source has a strict occupied-row separator. Added-actions T2 uses the literal output weights (0,3/4,1/4) then (0,1/2,1/2), with deployed (3/4,1/4,0). The alias source has constant observation and both safe states occupied, separately feasible but jointly separated. The unreachable variant proves its zero-occupancy fallback cannot be implemented, while its full path is still certified. Zero horizon is a positive initial-only case; zero survival proves actualSurvivalMass=0 without constructing conditioning."
+    },
+    {
+      "topic": "Initial obstacle",
+      "result": "The unprepared source proves initial inequality and no current-observation policy path equality. The additional public every_causal_path_tv_obstacle reuses initial_tv_le_path_tv and causalLaw_initial_marginal to prove TV>=1/4 for every future causal state kernel, with its target identified as the original conditioned path."
+    },
+    {
+      "topic": "Bad certificates and static substitution",
+      "result": "Kernel-checked closed checks reject negative/misnormalized weights, the static 3/4:1/4 table at both T2 times, zero gap, out-of-horizon separators, and forged coefficients. Python checks also reject source identity mismatch and input floats/malformed rows."
+    },
+    {
+      "topic": "Runner and emitter trust boundary",
+      "result": "certify.py emits only numeric validated rational data and generated case_i namespaces, builds the source module, and requires Lean exit0 plus stable Core and driver identities before any CERTIFIED status. Build/proof failure remains UNKNOWN. emit_lean_witness.py proves candidate acceptance by decide +kernel, never native_decide; source identity and actual-path conclusions are kernel obligations. The CLI does not accept its optional trusted repository tail from JSON input."
+    }
+  ],
+  "typed_reuse_review": [
+    {
+      "existing": "SameSourceKilledExitFluxCheck.causalLaw_map_prefix",
+      "consumer": "FinitePolicyPathCheck.full_path_eq_prefix",
+      "assessment": "Direct reuse supplies entire-prefix necessity."
+    },
+    {
+      "existing": "ConditionedActionTransportCheck.time_action_state_path_eq_mixture",
+      "consumer": "FinitePolicyPathCheck.specified_policy_path_iff",
+      "assessment": "Direct reuse preserves original action/state experiment identity."
+    },
+    {
+      "existing": "FiniteActionRealizabilityCheck.realRow_actionMixture and coverage_sum_toReal",
+      "consumer": "FiniteActionCertificateCheck.checkPositive_sound_rows and checkNegative_sound",
+      "assessment": "Existing PMF mixture semantics and normalization reused; no new convex framework."
+    },
+    {
+      "existing": "TotalFiniteWindowCheck.generated_ambient_eq_actual",
+      "consumer": "Source-derived target identity consumed by final witness",
+      "assessment": "No source-to-target equality field is assumed."
+    },
+    {
+      "existing": "FiniteConditionalStability.initial_tv_le_path_tv and causalLaw_initial_marginal",
+      "consumer": "unprepared_initial.every_causal_path_tv_obstacle",
+      "assessment": "Direct reuse supports arbitrary future causal kernels."
+    }
+  ],
+  "reuse_tradeoff": {
+    "observation": "The backward direction of causal_path_eq_iff repeats the short support-product induction of an existing private causalLaw_eq_on_target_support helper.",
+    "searched_public_alternatives": [
+      "causalLaw_congr_before",
+      "PolicyPrefixCongruenceCheck.actual_causalLaw_congr_before"
+    ],
+    "why_not_substituted": "Both public alternatives require equality on all histories, stronger than the required target-support contract. The exact helper is private. Exporting it would change a previously registered private native owner and require extra historical owner/overlay migration.",
+    "disposition": "Accepted explicit integration tradeoff under user proof-route autonomy: preserve older Lean source/owner evidence, publish the minimal finite iff with direct backward induction, and reuse the existing path, prefix, and PMF interfaces. This is not a soundness finding or a newly claimed foundational principle."
+  },
+  "axiom_audit": {
+    "checked": [
+      "causal_path_eq_iff",
+      "specified_policy_path_iff",
+      "checkPositive_sound",
+      "checkNegative_sound",
+      "checkNegative_path_no_go"
+    ],
+    "observed_only": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "note": "No sorry, custom axioms, native_decide or Lean.ofReduceBool used in these conclusions. Classical.choice occurs in standard PMF mathematical interfaces, not executable rational candidate/checker code."
+  },
+  "executed_checks": [
+    {
+      "command": "lake env lean /tmp/ReviewPathChecker.lean",
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core",
+      "exit_code": 0,
+      "log": "/tmp/review-path-checker-types.log",
+      "log_sha256": "fb838ef2eaa4f6434ae36cfc90d1eb7f1cddca57817ec038d904f15febdf8f45"
+    },
+    {
+      "command": "lake env lean UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core",
+      "exit_code": 0,
+      "log": "/tmp/action-certificates-independent-witness.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "boundaries": [
+    "Finite exact rational source and fixed original transition model; only policies vary with time.",
+    "State-path distribution equality, not samplewise path identity or ontic parent identity.",
+    "No search completeness theorem; bounded search may return UNKNOWN on other inputs.",
+    "Raw Boolean acceptance requires the separately proved input row-validity hypotheses to acquire semantic soundness; the emitter discharges those hypotheses.",
+    "Global UEOT closure and external scientific/empirical validation are outside this package."
+  ]
+}

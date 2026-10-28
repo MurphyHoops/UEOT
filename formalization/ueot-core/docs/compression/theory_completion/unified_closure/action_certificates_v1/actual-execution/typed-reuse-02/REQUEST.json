@@ -1,0 +1,567 @@
+{
+  "new": [
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.acceptedWeights",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.cast_fiberScore",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkNegative_path_no_go",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkNegative_sound",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkPositive_sound",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkPositive_sound_rows",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.occupied_iff",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.pathMass_eq",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.rowPMF_toReal",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.independent_baseline_variant.output_actual_path",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.original_actions.conditional_path_no_go",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.same_source_alias.conditional_path_no_go",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.two_step_added_actions.output_actual_path",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.unprepared_initial.conditional_path_no_go",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.unprepared_initial.every_causal_path_tv_obstacle",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.unreachable_fallback.output_actual_path",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.zero_horizon.output_actual_path",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.zero_survival.zero_survival_event",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.causal_path_eq_iff",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.full_path_eq_prefix",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.specified_policy_conditioned_path_iff",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.specified_policy_path_iff",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.specified_policy_path_of_rows",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.actualSource_pos",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.baselineRow_cast",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.baselineRow_nonneg",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.rationalModel_transitionPMF",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.rationalRemaining_cast",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.rationalRemaining_nonneg",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceInitial_eq_prepared",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceInitial_valid",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceMass_eq_actual",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceRemaining_eq_actual",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceRemaining_nonneg",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceRemaining_succ",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTargetPath_eq_actual",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTarget_eq_row",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTarget_valid"
+  ],
+  "old": [
+    "UEOT.V3.Compression.ActionGapGaugeStability.targetGreedy_eq_transportedSourceGreedy",
+    "UEOT.V3.Compression.ApproximateHistoryEncoder.representativeMacroModel_transitionPMF",
+    "UEOT.V3.Compression.ApproximateSemanticGauge.pushforwardTransitionPMF_relabel",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.occupied_conditioned_fibers_supply_actual_experiment",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.actual_state_path_eq_target",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.initial_tv_le_path_tv",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.realRow_actionMixture",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.doobRowPMF_apply_toReal",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.augmentedModel_transitionPMF",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalMass_eq",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.finiteWindowRowPMF_apply_toReal",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_nonneg",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_succ",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_zero",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.causalLaw_map_prefix",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_ambient_eq_actual",
+    "UEOT.V3.DynamicsKernel.pathMeasure_eq_of_prefix_eq",
+    "UEOT.V3.FiniteCTMCPathKL.sourceRateIntegrand_nonneg",
+    "UEOT.V3.FiniteDiscountedControl.FiniteProbabilityRow.ofRealRow_apply_toReal",
+    "UEOT.V3.FiniteDobrushin.rowPMF_toReal",
+    "UEOT.V3.FiniteDobrushin.simplexPMF_toReal",
+    "UEOT.V3.QSDTVLimit.qSurvival_zero",
+    "UEOT.V3.SymmetricKilledSpectralStability.squarePMF_toReal"
+  ],
+  "lexical_hints": [
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.rowPMF_toReal",
+      "short_name": "rowPMF_toReal",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 32,
+      "header_preview": "@[simp] theorem rowPMF_toReal {X : Type u} [Fintype X]     (r : X \u2192 \u211a) (hr : ValidRow r) (x : X) :     (rowPMF r hr x).toReal = (r x : \u211d) :=   FiniteProbabilityRow.ofRealRow_apply_toReal _ _ _ _                                                                           ",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.FiniteDobrushin.rowPMF_toReal",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteDobrushin.lean",
+          "similarity": 1.0,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.doobRowPMF_apply_toReal",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean",
+          "similarity": 0.75,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.FiniteDobrushin.simplexPMF_toReal",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteDobrushin.lean",
+          "similarity": 0.714,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.SymmetricKilledSpectralStability.squarePMF_toReal",
+          "path": "formalization/ueot-core/UEOT/V3/SymmetricKilledSpectralStability.lean",
+          "similarity": 0.714,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.finiteWindowRowPMF_apply_toReal",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+          "similarity": 0.667,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.pathMass_eq",
+      "short_name": "pathMass_eq",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 55,
+      "header_preview": "theorem pathMass_eq {X : Type u} [Fintype X]     (mu : X \u2192 \u211a) (R : \u2115 \u2192 X \u2192 X \u2192 \u211a)     (hmu : ValidRow mu) (hR : \u2200 t x, ValidRow (R t x)) :     \u2200 n (h : CausalHistory X X n),       (pathMass mu R n h : \u211d) =         (targetPath (rowPMF mu hmu) (fun t x => rowPMF (R t x) (hR t x)) n h).toReal := by",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalMass_eq",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.occupied_iff",
+      "short_name": "occupied_iff",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 71,
+      "header_preview": "theorem occupied_iff {X : Type u} [Fintype X]     (mu : X \u2192 \u211a) (R : \u2115 \u2192 X \u2192 X \u2192 \u211a)     (hmu : ValidRow mu) (hR : \u2200 t x, ValidRow (R t x)) (n : \u2115) (x : X) :     occupied mu R n x \u2194       x \u2208 occupiedState (rowPMF mu hmu) (fun t x => rowPMF (R t x) (hR t x)) n := by   have hne (h : CausalHistory X X n) : pathMass mu R n h \u2260 0 \u2194",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkPositive_sound_rows",
+      "short_name": "checkPositive_sound_rows",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 100,
+      "header_preview": "theorem checkPositive_sound_rows     {X Y A : Type u} [Fintype X] [Fintype Y] [Fintype A] [DecidableEq X]     (p mu : X \u2192 \u211a) (P : X \u2192 A \u2192 X \u2192 \u211a) (R : \u2115 \u2192 X \u2192 X \u2192 \u211a)     (q : X \u2192 Y) (T : \u2115) (w : Fin T \u2192 Y \u2192 A \u2192 \u211a)     (hp : ValidRow p) (hmu : ValidRow mu) (hP : \u2200 x a, ValidRow (P x a))     (hR : \u2200 t x, ValidRow (R t x)) (after : A)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.cast_fiberScore",
+      "short_name": "cast_fiberScore",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 159,
+      "header_preview": "@[simp] theorem cast_fiberScore {X Y : Type u} [Fintype X] [DecidableEq X] [DecidableEq Y]     (mu : X \u2192 \u211a) (R : \u2115 \u2192 X \u2192 X \u2192 \u211a) (q : X \u2192 Y)     (c : Separation X Y) (v : X \u2192 X \u2192 \u211a) :     (fiberScore mu R q c v : \u211d) = realFiberScore mu R q c (fun x z => (v x z : \u211d)) := by   simp only [fiberScore, realFiberScore, Rat.cast_sum]   apply Finset.sum_congr rfl",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkNegative_sound",
+      "short_name": "checkNegative_sound",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 210,
+      "header_preview": "theorem checkNegative_sound     {X Y A : Type u} [Fintype X] [Fintype A] [DecidableEq X] [DecidableEq Y]     (mu : X \u2192 \u211a) (P : X \u2192 A \u2192 X \u2192 \u211a) (R : \u2115 \u2192 X \u2192 X \u2192 \u211a)     (q : X \u2192 Y) (T : \u2115) (c : Separation X Y)     (hP : \u2200 x a, ValidRow (P x a)) (hR : \u2200 t x, ValidRow (R t x))     (hcheck : checkNegative mu P R q T c = true) :",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.acceptedWeights",
+      "short_name": "acceptedWeights",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 266,
+      "header_preview": "theorem acceptedWeights     {X Y A : Type u} [Fintype X] [Fintype Y] [Fintype A] [DecidableEq X]     (p mu : X \u2192 \u211a) (P : X \u2192 A \u2192 X \u2192 \u211a) (R : \u2115 \u2192 X \u2192 X \u2192 \u211a)     (q : X \u2192 Y) (T : \u2115) (w : Fin T \u2192 Y \u2192 A \u2192 \u211a)     (hcheck : checkPositive p mu P R q T w = true) :     \u2200 t y, ValidRow (w t y) :=",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkPositive_sound",
+      "short_name": "checkPositive_sound",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 276,
+      "header_preview": "theorem checkPositive_sound     {X Y A : Type u} [Fintype X] [Fintype Y] [Fintype A] [DecidableEq X] [Nonempty A]     (p mu : X \u2192 \u211a) (P : X \u2192 A \u2192 X \u2192 \u211a) (R : \u2115 \u2192 X \u2192 X \u2192 \u211a)     (q : X \u2192 Y) (T : \u2115) (w : Fin T \u2192 Y \u2192 A \u2192 \u211a)     (hp : ValidRow p) (hmu : ValidRow mu) (hP : \u2200 x a, ValidRow (P x a))     (hR : \u2200 t x, ValidRow (R t x)) (after : A)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkNegative_path_no_go",
+      "short_name": "checkNegative_path_no_go",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 304,
+      "header_preview": "theorem checkNegative_path_no_go     {X Y A : Type u} [Fintype X] [Fintype A] [DecidableEq X] [DecidableEq Y] [Nonempty A]     (mu : X \u2192 \u211a) (P : X \u2192 A \u2192 X \u2192 \u211a) (R : \u2115 \u2192 X \u2192 X \u2192 \u211a)     (q : X \u2192 Y) (T : \u2115) (c : Separation X Y)     (hmu : ValidRow mu) (hP : \u2200 x a, ValidRow (P x a))     (hR : \u2200 t x, ValidRow (R t x))",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.original_actions.conditional_path_no_go",
+      "short_name": "conditional_path_no_go",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 82,
+      "header_preview": "theorem conditional_path_no_go (p : PMF (Fin 3)) :     \u00ac \u2203 sigma : \u2115 \u2192 Fin 1 \u2192 PMF (Fin 1),       (causalLaw p (riskMicroControlKernel q         (fun _ => (rationalModel P source_rows).transitionPMF)         (timeObservationPolicy sigma)) T).map         (SourcePolicyPathBridgeCheck.eraseActionHistory T) =",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.two_step_added_actions.output_actual_path",
+      "short_name": "output_actual_path",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 148,
+      "header_preview": "theorem output_actual_path :     (causalLaw (rowPMF deployed deployed_row)       (riskMicroControlKernel q (fun _ => (rationalModel P source_rows).transitionPMF)         (timeObservationPolicy (policy weights           (acceptedWeights deployed mu P R q T weights accepted) 0))) T).map         (SourcePolicyPathBridgeCheck.eraseActionHistory T) =",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.unprepared_initial.conditional_path_no_go",
+      "short_name": "conditional_path_no_go",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 208,
+      "header_preview": "theorem conditional_path_no_go :     \u00ac \u2203 sigma : \u2115 \u2192 Fin 1 \u2192 PMF (Fin 3),       (causalLaw (rowPMF deployed deployed_row) (riskMicroControlKernel q         (fun _ => (rationalModel P source_rows).transitionPMF)         (timeObservationPolicy sigma)) T).map         (SourcePolicyPathBridgeCheck.eraseActionHistory T) =",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.same_source_alias.conditional_path_no_go",
+      "short_name": "conditional_path_no_go",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 282,
+      "header_preview": "theorem conditional_path_no_go (p : PMF (Fin 3)) :     \u00ac \u2203 sigma : \u2115 \u2192 Fin 1 \u2192 PMF (Fin 2),       (causalLaw p (riskMicroControlKernel q         (fun _ => (rationalModel P source_rows).transitionPMF)         (timeObservationPolicy sigma)) T).map         (SourcePolicyPathBridgeCheck.eraseActionHistory T) =",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.unreachable_fallback.output_actual_path",
+      "short_name": "output_actual_path",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 348,
+      "header_preview": "theorem output_actual_path :     (causalLaw (rowPMF deployed deployed_row)       (riskMicroControlKernel q (fun _ => (rationalModel P source_rows).transitionPMF)         (timeObservationPolicy (policy weights           (acceptedWeights deployed mu P R q T weights accepted) 0))) T).map         (SourcePolicyPathBridgeCheck.eraseActionHistory T) =",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.independent_baseline_variant.output_actual_path",
+      "short_name": "output_actual_path",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 413,
+      "header_preview": "theorem output_actual_path :     (causalLaw (rowPMF deployed deployed_row)       (riskMicroControlKernel q (fun _ => (rationalModel P source_rows).transitionPMF)         (timeObservationPolicy (policy weights           (acceptedWeights deployed mu P R q T weights accepted) 0))) T).map         (SourcePolicyPathBridgeCheck.eraseActionHistory T) =",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.zero_horizon.output_actual_path",
+      "short_name": "output_actual_path",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 478,
+      "header_preview": "theorem output_actual_path :     (causalLaw (rowPMF deployed deployed_row)       (riskMicroControlKernel q (fun _ => (rationalModel P source_rows).transitionPMF)         (timeObservationPolicy (policy weights           (acceptedWeights deployed mu P R q T weights accepted) 0))) T).map         (SourcePolicyPathBridgeCheck.eraseActionHistory T) =",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.zero_survival.zero_survival_event",
+      "short_name": "zero_survival_event",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 514,
+      "header_preview": "theorem zero_survival_event :     actualSurvivalMass (rationalModel P source_rows) q       (fun y => rowPMF (base y) (baseline_rows y)) (rowPMF p0 initial_row)       {x | safe x = true} T = 0 := by   rw [\u2190 sourceMass_eq_actual P source_rows q base baseline_rows p0 initial_row safe T]   exact_mod_cast conditioning_undefined",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_zero",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.QSDTVLimit.qSurvival_zero",
+          "path": "formalization/ueot-core/UEOT/V3/QSDTVLimit.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.unprepared_initial.every_causal_path_tv_obstacle",
+      "short_name": "every_causal_path_tv_obstacle",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 606,
+      "header_preview": "theorem every_causal_path_tv_obstacle     (K : \u2200 n, CausalHistory (Fin 3) (Fin 3) n \u2192 PMF (Fin 3)) :     1/4 \u2264 tvDist (causalLaw (rowPMF p0 initial_row) K T).toMeasure       (actualConditionedPrefix (rationalModel P source_rows) q         (fun y => rowPMF (base y) (baseline_rows y)) (rowPMF p0 initial_row)         {x | safe x = true} T 0",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.full_path_eq_prefix",
+      "short_name": "full_path_eq_prefix",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePolicyPath.lean",
+      "line": 25,
+      "header_preview": "theorem full_path_eq_prefix     {X : Type u} (p mu : PMF X)     (K L : \u2200 n, CausalHistory X X n \u2192 PMF X) (T : \u2115)     (heq : causalLaw p K T = causalLaw mu L T) :     \u2200 n, n \u2264 T \u2192 causalLaw p K n = causalLaw mu L n := by   induction T with",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.DynamicsKernel.pathMeasure_eq_of_prefix_eq",
+          "path": "formalization/ueot-core/UEOT/V3/DynamicsKernel.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.causal_path_eq_iff",
+      "short_name": "causal_path_eq_iff",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePolicyPath.lean",
+      "line": 51,
+      "header_preview": "theorem causal_path_eq_iff     {X : Type u} [Fintype X] (p mu : PMF X)     (K L : \u2200 n, CausalHistory X X n \u2192 PMF X) (T : \u2115) :     causalLaw p K T = causalLaw mu L T \u2194       p = mu \u2227 \u2200 t, t < T \u2192 \u2200 h, causalLaw mu L t h \u2260 0 \u2192 K t h = L t h := by   constructor",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.specified_policy_path_iff",
+      "short_name": "specified_policy_path_iff",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePolicyPath.lean",
+      "line": 91,
+      "header_preview": "theorem specified_policy_path_iff     {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]     (M : Model X (fun _ => A)) (q : X \u2192 Y) (sigma : \u2115 \u2192 Y \u2192 PMF A)     (p mu : PMF X) (R : \u2115 \u2192 X \u2192 PMF X) (T : \u2115) :     (causalLaw p (riskMicroControlKernel q (fun _ => M.transitionPMF)       (timeObservationPolicy sigma)) T).map (eraseActionHistory T) = targetPath mu R T \u2194",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.specified_policy_path_of_rows",
+      "short_name": "specified_policy_path_of_rows",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePolicyPath.lean",
+      "line": 116,
+      "header_preview": "theorem specified_policy_path_of_rows     {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]     (M : Model X (fun _ => A)) (q : X \u2192 Y) (sigma : \u2115 \u2192 Y \u2192 PMF A)     (p mu : PMF X) (R : \u2115 \u2192 X \u2192 PMF X) (T : \u2115)     (hp : p = mu)     (hrow : \u2200 t, t < T \u2192 \u2200 x \u2208 occupiedState mu R t,",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.specified_policy_conditioned_path_iff",
+      "short_name": "specified_policy_conditioned_path_iff",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePolicyPath.lean",
+      "line": 130,
+      "header_preview": "theorem specified_policy_conditioned_path_iff     {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (M : Model X (fun _ => A)) (q : X \u2192 Y) (basePolicy : Y \u2192 PMF A)     (p0 p : PMF X) (safe : Set X) (T : \u2115)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.rationalModel_transitionPMF",
+      "short_name": "rationalModel_transitionPMF",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 40,
+      "header_preview": "theorem rationalModel_transitionPMF {X A : Type u} [Fintype X] [Fintype A] [Nonempty A]     (P : X \u2192 A \u2192 X \u2192 \u211a) (hP : \u2200 x a, ValidRow (P x a)) (x : X) (a : A) :     (rationalModel P hP).transitionPMF x a = rowPMF (P x a) (hP x a) := by   apply PMF.ext   intro z   apply (ENNReal.toReal_eq_toReal_iff' (PMF.apply_ne_top _ _) (PMF.apply_ne_top _ _)).mp",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.augmentedModel_transitionPMF",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/HomogeneousMemorySurvival.lean",
+          "similarity": 0.714,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.ApproximateHistoryEncoder.representativeMacroModel_transitionPMF",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/ApproximateHistoryEncoder.lean",
+          "similarity": 0.625,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.ApproximateSemanticGauge.pushforwardTransitionPMF_relabel",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/ApproximateSemanticGauge.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.rationalRemaining_cast",
+      "short_name": "rationalRemaining_cast",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 62,
+      "header_preview": "theorem rationalRemaining_cast {S : Type u} [Fintype S] (Q : S \u2192 S \u2192 \u211a) :     \u2200 r i, (rationalRemaining Q r i : \u211d) =       remainingSurvival (fun i j => (Q i j : \u211d)) r i := by   intro r   induction r with   | zero => intro i; simp [rationalRemaining]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.rationalRemaining_nonneg",
+      "short_name": "rationalRemaining_nonneg",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 76,
+      "header_preview": "theorem rationalRemaining_nonneg {S : Type u} [Fintype S] (Q : S \u2192 S \u2192 \u211a)     (hQ : \u2200 i j, 0 \u2264 Q i j) : \u2200 r i, 0 \u2264 rationalRemaining Q r i := by   intro r   induction r with   | zero => intro i; exact zero_le_one   | succ r ih =>",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_nonneg",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceRemaining_succ",
+      "short_name": "sourceRemaining_succ",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 118,
+      "header_preview": "theorem sourceRemaining_succ {X : Type u} [Fintype X]     (B : X \u2192 X \u2192 \u211a) (safe : X \u2192 Bool) (r : \u2115) (x : X) :     sourceRemaining B safe (r+1) x =       if safe x = true then \u2211 z, B x z * sourceRemaining B safe r z else 0 := by   by_cases hx : safe x = true   \u00b7 rw [if_pos hx]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_succ",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceRemaining_nonneg",
+      "short_name": "sourceRemaining_nonneg",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 140,
+      "header_preview": "theorem sourceRemaining_nonneg {X : Type u} [Fintype X]     (B : X \u2192 X \u2192 \u211a) (hB : \u2200 x z, 0 \u2264 B x z) (safe : X \u2192 Bool) (r : \u2115) (x : X) :     0 \u2264 sourceRemaining B safe r x := by   unfold sourceRemaining   split   \u00b7 exact rationalRemaining_nonneg _ (fun (i j : {x // safe x = true}) => hB i.val j.val) _ _",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_nonneg",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.FiniteCTMCPathKL.sourceRateIntegrand_nonneg",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteCTMCPathKL.lean",
+          "similarity": 0.484,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceInitial_valid",
+      "short_name": "sourceInitial_valid",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 149,
+      "header_preview": "theorem sourceInitial_valid {X : Type u} [Fintype X]     (B : X \u2192 X \u2192 \u211a) (hB : \u2200 x z, 0 \u2264 B x z) (p0 : X \u2192 \u211a)     (hp0 : \u2200 x, 0 \u2264 p0 x) (safe : X \u2192 Bool) (T : \u2115)     (hpos : 0 < sourceMass B p0 safe T) : ValidRow (sourceInitial B p0 safe T) := by   constructor   \u00b7 intro x",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTarget_valid",
+      "short_name": "sourceTarget_valid",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 160,
+      "header_preview": "theorem sourceTarget_valid {X : Type u} [Fintype X] [DecidableEq X]     (B : X \u2192 X \u2192 \u211a) (hB : \u2200 x z, 0 \u2264 B x z) (safe : X \u2192 Bool) (T t : \u2115) (x : X) :     ValidRow (sourceTarget B safe T t x) := by   unfold sourceTarget   dsimp only   split",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.baselineRow_nonneg",
+      "short_name": "baselineRow_nonneg",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 185,
+      "header_preview": "theorem baselineRow_nonneg {X Y A : Type u} [Fintype X] [Fintype A]     (P : X \u2192 A \u2192 X \u2192 \u211a) (hP : \u2200 x a, ValidRow (P x a))     (q : X \u2192 Y) (base : Y \u2192 A \u2192 \u211a) (hbase : \u2200 y, ValidRow (base y)) (x z : X) :     0 \u2264 baselineRow P q base x z :=   Finset.sum_nonneg fun a _ => mul_nonneg ((hbase (q x)).1 a) ((hP x a).1 z) ",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.baselineRow_cast",
+      "short_name": "baselineRow_cast",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 192,
+      "header_preview": "theorem baselineRow_cast {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]     (P : X \u2192 A \u2192 X \u2192 \u211a) (hP : \u2200 x a, ValidRow (P x a))     (q : X \u2192 Y) (base : Y \u2192 A \u2192 \u211a) (hbase : \u2200 y, ValidRow (base y)) (x z : X) :     (baselineRow P q base x z : \u211d) =       policyMatrix (rationalModel P hP)         (liftedStationaryPolicy q (fun y => rowPMF (base y) (hbase y))) x z := by",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceRemaining_eq_actual",
+      "short_name": "sourceRemaining_eq_actual",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 254,
+      "header_preview": "theorem sourceRemaining_eq_actual (r : \u2115) (x : K) :     (sourceRemaining B safe r x.val : \u211d) = remainingSurvival Q r x := by   have hx : safe x.val = true := x.property   unfold sourceRemaining   rw [dif_pos hx]   have hcast := rationalRemaining_cast",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceMass_eq_actual",
+      "short_name": "sourceMass_eq_actual",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 270,
+      "header_preview": "theorem sourceMass_eq_actual     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A] (T : \u2115) :     (sourceMass B p0 safe T : \u211d) = actualSurvivalMass M q sigma (rowPMF p0 hp0) K T := by   rw [actual_survival_mass_eq_initial_remaining_sum]   unfold sourceMass",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.actualSource_pos",
+      "short_name": "actualSource_pos",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 295,
+      "header_preview": "theorem actualSource_pos     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A] (T : \u2115)     (hpos : 0 < sourceMass B p0 safe T) :     0 < actualSurvivalMass M q sigma (rowPMF p0 hp0) K T := by   rw [\u2190 sourceMass_eq_actual P hP q base hbase p0 hp0 safe T]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceInitial_eq_prepared",
+      "short_name": "sourceInitial_eq_prepared",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 305,
+      "header_preview": "theorem sourceInitial_eq_prepared     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A] (T : \u2115)     (hpos : 0 < sourceMass B p0 safe T) :     rowPMF (sourceInitial B p0 safe T)       (sourceInitial_valid B (baselineRow_nonneg P hP q base hbase) p0 hp0.1 safe T hpos) =",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTarget_eq_row",
+      "short_name": "sourceTarget_eq_row",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 339,
+      "header_preview": "theorem sourceTarget_eq_row [DecidableEq X] (T t : \u2115) (x : X) :     rowPMF (sourceTarget B safe T t x)       (sourceTarget_valid B (baselineRow_nonneg P hP q base hbase) safe T t x) =       ambientWindowRow M q sigma K (fun _ i => PMF.pure i) (fun _ x => PMF.pure x)         (T-(t+1)) x := by   classical",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.ActionGapGaugeStability.targetGreedy_eq_transportedSourceGreedy",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/ActionGapGaugeStability.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTargetPath_eq_actual",
+      "short_name": "sourceTargetPath_eq_actual",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 400,
+      "header_preview": "theorem sourceTargetPath_eq_actual [DecidableEq X]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A] (T : \u2115)     (hpos : 0 < sourceMass B p0 safe T) :     targetPath       (rowPMF (sourceInitial B p0 safe T)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.actual_state_path_eq_target",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizability.lean",
+          "similarity": 0.667,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    }
+  ]
+}

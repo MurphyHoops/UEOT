@@ -1,0 +1,23 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:46:6: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  ∀ (x : X), Nonempty A
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:42:72: error: unsolved goals
+X A : Type u
+inst✝¹ : Fintype X
+inst✝ : Fintype A
+P : X → A → X → ℚ
+hP : ∀ (x : X) (a : A), ValidRow (P x a)
+x : X
+a : A
+z : X
+⊢ ∀ (x : X), Nonempty A
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:130:8: error: Type mismatch
+  Eq.symm (sum_safe safe ?m.98)
+has type
+  ∑ x, ?m.98 ↑x = ∑ x, if safe x = true then ?m.98 x else 0
+but is expected to have type
+  ∑ z, B x ↑z * sourceRemaining B safe r ↑z = ∑ z, if safe z = true then B x z * sourceRemaining B safe r z else 0
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:171:8: warning: Try `simp at hp` instead of `simpa using hp`
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
