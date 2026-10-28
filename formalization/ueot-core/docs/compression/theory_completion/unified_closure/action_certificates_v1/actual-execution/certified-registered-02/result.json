@@ -1,0 +1,77 @@
+{
+  "candidates": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-certificates-evidence-20261028/certified-registered-02/candidates.json",
+  "candidates_sha256": "0e69e572adf2e0546a67d6e78557f6ddd58ec134141b69051eff0f208474228c",
+  "cases": {
+    "independent_baseline_variant": {
+      "proof_namespace": "case_5",
+      "status": "CERTIFIED_REALIZABLE"
+    },
+    "original_actions": {
+      "proof_namespace": "case_0",
+      "status": "CERTIFIED_UNREALIZABLE"
+    },
+    "same_source_alias": {
+      "proof_namespace": "case_3",
+      "status": "CERTIFIED_UNREALIZABLE"
+    },
+    "two_step_added_actions": {
+      "proof_namespace": "case_1",
+      "status": "CERTIFIED_REALIZABLE"
+    },
+    "unprepared_initial": {
+      "proof_namespace": "case_2",
+      "status": "CERTIFIED_UNREALIZABLE"
+    },
+    "unreachable_fallback": {
+      "proof_namespace": "case_4",
+      "status": "CERTIFIED_REALIZABLE"
+    },
+    "zero_horizon": {
+      "proof_namespace": "case_6",
+      "status": "CERTIFIED_REALIZABLE"
+    },
+    "zero_survival": {
+      "proof_namespace": "case_7",
+      "status": "CONDITIONING_UNDEFINED"
+    }
+  },
+  "core_source_identity": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-certificates-evidence-20261028/certified-registered-02/core-source-identity.json",
+  "core_source_identity_sha256": "f91ff13689d31eb0adc6f8b0032dc47477b154f2b3290c42e26a66522c28f39b",
+  "core_sources_unchanged_during_proof": true,
+  "driver_sources": {
+    "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_certificates_v1/certify.py": "469abb430d6a7a077948ab0fd0d75d599d339d8132b53be893010fe3c541029f",
+    "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_certificates_v1/emit_lean_witness.py": "a1ee4afc03ad3a10b83cbf54fdbddcdebc8c18fd3716995c2a94ea49b08456a3",
+    "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_certificates_v1/exact_certificates.py": "1bbc8a1c80c44ce8abac46bbc77e643b8fc453ce1ad8cd068cc9aaa47cb6a0ff"
+  },
+  "lean_source": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-certificates-evidence-20261028/certified-registered-02/Certificate.lean",
+  "lean_source_sha256": "650f51cebd9de04d94a3ff3254bc14047df014cc017479677cb53d985363c41e",
+  "schema": "UEOT/EXACT_ACTION_CERTIFICATION/V1",
+  "source": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-certificates-evidence-20261028/certified-registered-02/source.json",
+  "source_sha256": "057ee92475e4fd294897321fa4fcfede046d9124357ef736241ef7baaba2e62a",
+  "sources_unchanged_during_build_and_proof": true,
+  "verification": [
+    {
+      "command": [
+        "/Users/murphyhoops/.elan/bin/lake",
+        "build",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core",
+      "exit_code": 0,
+      "log": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-certificates-evidence-20261028/certified-registered-02/build.log",
+      "log_sha256": "900c2c78d9559e0e54d5611027cc241abd451bc6d96abcd2cc1951581551202f"
+    },
+    {
+      "command": [
+        "/Users/murphyhoops/.elan/bin/lake",
+        "env",
+        "lean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-certificates-evidence-20261028/certified-registered-02/Certificate.lean"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core",
+      "exit_code": 0,
+      "log": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-certificates-evidence-20261028/certified-registered-02/lean.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

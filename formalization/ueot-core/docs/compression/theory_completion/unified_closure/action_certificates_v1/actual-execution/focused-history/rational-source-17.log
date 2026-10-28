@@ -1,0 +1,13 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:172:8: warning: Try `simp at hp` instead of `simpa using hp`
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:379:6: error: 'change' tactic failed, pattern
+  ↑(B x z) * ↑(sourceRemaining B safe r z) / ↑(sourceRemaining B safe (r + 1) x) =
+    ((totalWindowRow (killedMatrix M (liftedStationaryPolicy q fun y => rowPMF (base y) ⋯) K) ⋯ (fun x i => PMF.pure i)
+          r ⟨x, hx⟩)
+        ⟨z, hz⟩).toReal
+is not definitionally equal to target
+  ↑(B x z * sourceRemaining B safe r z / sourceRemaining B safe (r + 1) x) =
+    ((totalWindowRow (killedMatrix M (liftedStationaryPolicy q fun y => rowPMF (base y) ⋯) K) ⋯ (fun x i => PMF.pure i)
+          (T - (t + 1)) ⟨x, ⋯⟩)
+        ⟨z, hz⟩).toReal

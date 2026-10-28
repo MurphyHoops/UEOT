@@ -1,0 +1,876 @@
+{
+  "status": "PENDING_ACTUAL_NATIVE_EXECUTION",
+  "baseline_ref": "61fc3caead1945f72b919973217d573957a1b8d0",
+  "baseline_reuse_consumer": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
+    "sha256": "4b19b9c3f4c8d030657a080b41ca9aeae908d98f645aa50082ef51ace6a6922b"
+  },
+  "immutable_protocol_helpers": [
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/pr_preflight.py",
+      "sha256": "6d9ee21b7c832aa238c7fd2b42cd5aa9085bc3af616df16819aa100d82f9213c"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/fkrg.py",
+      "sha256": "a91301a76165f542d658e924846eede169287a73da6f31f73f24979250de96ff"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/registered_interfaces/native_protocol/prepare_registered_interfaces_export.py",
+      "sha256": "9dee4154f7233065d723d58da5117463f7f2182856e20a6762450c837c433ed8"
+    },
+    {
+      "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/registered_interfaces/native_protocol/build_identity.py",
+      "sha256": "e80ed3ef63b7f6a6a6cd9f3b248917b1b3dc17dbbd0428c41333febc9cdb2e73"
+    }
+  ],
+  "integration_driver_sha256": "c717d9edc1f3099076e0a660dc47a58083312fb8facd0e3c02645abdad3f1426",
+  "source_tree_sha256": "a499c2264c1b0b6b770d4023042187baa0b824de833f1ddf6046bffd22393d82",
+  "complete_source_modules": 712,
+  "base_snapshot_modules": 708,
+  "registered_prior_theorems": 4504,
+  "prior_overlay_count": 17,
+  "prior_overlay": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/ACTION_GAUGE_TRANSPORT_REUSE_OVERLAY_V1.json",
+    "sha256": "513330a6d41bc67dc26e03611299013cdf66d5907d39de68a392469413d6e351"
+  },
+  "source_hash_overrides": {
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean": "bc507758c81772c7276b1ee7ca9eecd3a90100b4c04d41ada73fcc9b3b883622"
+  },
+  "added_modules": [
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificate",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "content_sha256": "9bc9d14b756d843b4fa4247e37ae6f6b224877ea1f9842c980612b0131162522",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "content_sha256": "6e23d2c1653ff28892c9b4027397e48e7c58ace37a6bffa7886fed4681b25487",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPath",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePolicyPath.lean",
+      "content_sha256": "cbab41a545401b3242401f9fb9ec406b4e32c2b5757985a583440fcd013d7eb6",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "content_sha256": "22d42615bbb6ad58ed1c8c7a65d420b46519bd1f537867a1ab0459df0729db41",
+      "source_origin": "UEOT_MAINTAINED"
+    }
+  ],
+  "public_source_candidates": [
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.rowPMF_toReal",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificate",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 32,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.pathMass_eq",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificate",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 55,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.occupied_iff",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificate",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 71,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkPositive_sound_rows",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificate",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 100,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.cast_fiberScore",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificate",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 159,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkNegative_sound",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificate",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 210,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.acceptedWeights",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificate",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 266,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkPositive_sound",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificate",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 276,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkNegative_path_no_go",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificate",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 304,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.original_actions.conditional_path_no_go",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 82,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.two_step_added_actions.output_actual_path",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 148,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.unprepared_initial.conditional_path_no_go",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 208,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.same_source_alias.conditional_path_no_go",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 282,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.unreachable_fallback.output_actual_path",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 348,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.independent_baseline_variant.output_actual_path",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 413,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.zero_horizon.output_actual_path",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 478,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.zero_survival.zero_survival_event",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 514,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.unprepared_initial.every_causal_path_tv_obstacle",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 606,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.full_path_eq_prefix",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPath",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePolicyPath.lean",
+      "line": 25,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.causal_path_eq_iff",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPath",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePolicyPath.lean",
+      "line": 51,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.specified_policy_path_iff",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPath",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePolicyPath.lean",
+      "line": 91,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.specified_policy_path_of_rows",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPath",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePolicyPath.lean",
+      "line": 116,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.specified_policy_conditioned_path_iff",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPath",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePolicyPath.lean",
+      "line": 130,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.rationalModel_transitionPMF",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 40,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.rationalRemaining_cast",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 62,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.rationalRemaining_nonneg",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 76,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceRemaining_succ",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 118,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceRemaining_nonneg",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 140,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceInitial_valid",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 149,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTarget_valid",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 160,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.baselineRow_nonneg",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 185,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.baselineRow_cast",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 192,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceRemaining_eq_actual",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 254,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceMass_eq_actual",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 270,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.actualSource_pos",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 295,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceInitial_eq_prepared",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 305,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTarget_eq_row",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 339,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTargetPath_eq_actual",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 400,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public"
+    }
+  ],
+  "exporter_sha256": "0aa716c64d37572def9ff1a7ae6bca46b2a95093833a8e8b4c379bda8fa280c5",
+  "reused_export_protocol": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/registered_interfaces/native_protocol/prepare_registered_interfaces_export.py",
+    "sha256": "9dee4154f7233065d723d58da5117463f7f2182856e20a6762450c837c433ed8"
+  },
+  "lexical_reuse_hints": [
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.rowPMF_toReal",
+      "short_name": "rowPMF_toReal",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 32,
+      "header_preview": "@[simp] theorem rowPMF_toReal {X : Type u} [Fintype X]     (r : X → ℚ) (hr : ValidRow r) (x : X) :     (rowPMF r hr x).toReal = (r x : ℝ) :=   FiniteProbabilityRow.ofRealRow_apply_toReal _ _ _ _                                                                           ",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.FiniteDobrushin.rowPMF_toReal",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteDobrushin.lean",
+          "similarity": 1.0,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.doobRowPMF_apply_toReal",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteWindowDoob.lean",
+          "similarity": 0.75,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.FiniteDobrushin.simplexPMF_toReal",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteDobrushin.lean",
+          "similarity": 0.714,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.SymmetricKilledSpectralStability.squarePMF_toReal",
+          "path": "formalization/ueot-core/UEOT/V3/SymmetricKilledSpectralStability.lean",
+          "similarity": 0.714,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.finiteWindowRowPMF_apply_toReal",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+          "similarity": 0.667,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.pathMass_eq",
+      "short_name": "pathMass_eq",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 55,
+      "header_preview": "theorem pathMass_eq {X : Type u} [Fintype X]     (mu : X → ℚ) (R : ℕ → X → X → ℚ)     (hmu : ValidRow mu) (hR : ∀ t x, ValidRow (R t x)) :     ∀ n (h : CausalHistory X X n),       (pathMass mu R n h : ℝ) =         (targetPath (rowPMF mu hmu) (fun t x => rowPMF (R t x) (hR t x)) n h).toReal := by",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.NoisyFiniteRiskOracle.empiricalMass_eq",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.occupied_iff",
+      "short_name": "occupied_iff",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 71,
+      "header_preview": "theorem occupied_iff {X : Type u} [Fintype X]     (mu : X → ℚ) (R : ℕ → X → X → ℚ)     (hmu : ValidRow mu) (hR : ∀ t x, ValidRow (R t x)) (n : ℕ) (x : X) :     occupied mu R n x ↔       x ∈ occupiedState (rowPMF mu hmu) (fun t x => rowPMF (R t x) (hR t x)) n := by   have hne (h : CausalHistory X X n) : pathMass mu R n h ≠ 0 ↔",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkPositive_sound_rows",
+      "short_name": "checkPositive_sound_rows",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 100,
+      "header_preview": "theorem checkPositive_sound_rows     {X Y A : Type u} [Fintype X] [Fintype Y] [Fintype A] [DecidableEq X]     (p mu : X → ℚ) (P : X → A → X → ℚ) (R : ℕ → X → X → ℚ)     (q : X → Y) (T : ℕ) (w : Fin T → Y → A → ℚ)     (hp : ValidRow p) (hmu : ValidRow mu) (hP : ∀ x a, ValidRow (P x a))     (hR : ∀ t x, ValidRow (R t x)) (after : A)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.cast_fiberScore",
+      "short_name": "cast_fiberScore",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 159,
+      "header_preview": "@[simp] theorem cast_fiberScore {X Y : Type u} [Fintype X] [DecidableEq X] [DecidableEq Y]     (mu : X → ℚ) (R : ℕ → X → X → ℚ) (q : X → Y)     (c : Separation X Y) (v : X → X → ℚ) :     (fiberScore mu R q c v : ℝ) = realFiberScore mu R q c (fun x z => (v x z : ℝ)) := by   simp only [fiberScore, realFiberScore, Rat.cast_sum]   apply Finset.sum_congr rfl",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkNegative_sound",
+      "short_name": "checkNegative_sound",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 210,
+      "header_preview": "theorem checkNegative_sound     {X Y A : Type u} [Fintype X] [Fintype A] [DecidableEq X] [DecidableEq Y]     (mu : X → ℚ) (P : X → A → X → ℚ) (R : ℕ → X → X → ℚ)     (q : X → Y) (T : ℕ) (c : Separation X Y)     (hP : ∀ x a, ValidRow (P x a)) (hR : ∀ t x, ValidRow (R t x))     (hcheck : checkNegative mu P R q T c = true) :",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.acceptedWeights",
+      "short_name": "acceptedWeights",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 266,
+      "header_preview": "theorem acceptedWeights     {X Y A : Type u} [Fintype X] [Fintype Y] [Fintype A] [DecidableEq X]     (p mu : X → ℚ) (P : X → A → X → ℚ) (R : ℕ → X → X → ℚ)     (q : X → Y) (T : ℕ) (w : Fin T → Y → A → ℚ)     (hcheck : checkPositive p mu P R q T w = true) :     ∀ t y, ValidRow (w t y) :=",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkPositive_sound",
+      "short_name": "checkPositive_sound",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 276,
+      "header_preview": "theorem checkPositive_sound     {X Y A : Type u} [Fintype X] [Fintype Y] [Fintype A] [DecidableEq X] [Nonempty A]     (p mu : X → ℚ) (P : X → A → X → ℚ) (R : ℕ → X → X → ℚ)     (q : X → Y) (T : ℕ) (w : Fin T → Y → A → ℚ)     (hp : ValidRow p) (hmu : ValidRow mu) (hP : ∀ x a, ValidRow (P x a))     (hR : ∀ t x, ValidRow (R t x)) (after : A)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkNegative_path_no_go",
+      "short_name": "checkNegative_path_no_go",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 304,
+      "header_preview": "theorem checkNegative_path_no_go     {X Y A : Type u} [Fintype X] [Fintype A] [DecidableEq X] [DecidableEq Y] [Nonempty A]     (mu : X → ℚ) (P : X → A → X → ℚ) (R : ℕ → X → X → ℚ)     (q : X → Y) (T : ℕ) (c : Separation X Y)     (hmu : ValidRow mu) (hP : ∀ x a, ValidRow (P x a))     (hR : ∀ t x, ValidRow (R t x))",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.original_actions.conditional_path_no_go",
+      "short_name": "conditional_path_no_go",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 82,
+      "header_preview": "theorem conditional_path_no_go (p : PMF (Fin 3)) :     ¬ ∃ sigma : ℕ → Fin 1 → PMF (Fin 1),       (causalLaw p (riskMicroControlKernel q         (fun _ => (rationalModel P source_rows).transitionPMF)         (timeObservationPolicy sigma)) T).map         (SourcePolicyPathBridgeCheck.eraseActionHistory T) =",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.two_step_added_actions.output_actual_path",
+      "short_name": "output_actual_path",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 148,
+      "header_preview": "theorem output_actual_path :     (causalLaw (rowPMF deployed deployed_row)       (riskMicroControlKernel q (fun _ => (rationalModel P source_rows).transitionPMF)         (timeObservationPolicy (policy weights           (acceptedWeights deployed mu P R q T weights accepted) 0))) T).map         (SourcePolicyPathBridgeCheck.eraseActionHistory T) =",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.unprepared_initial.conditional_path_no_go",
+      "short_name": "conditional_path_no_go",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 208,
+      "header_preview": "theorem conditional_path_no_go :     ¬ ∃ sigma : ℕ → Fin 1 → PMF (Fin 3),       (causalLaw (rowPMF deployed deployed_row) (riskMicroControlKernel q         (fun _ => (rationalModel P source_rows).transitionPMF)         (timeObservationPolicy sigma)) T).map         (SourcePolicyPathBridgeCheck.eraseActionHistory T) =",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.same_source_alias.conditional_path_no_go",
+      "short_name": "conditional_path_no_go",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 282,
+      "header_preview": "theorem conditional_path_no_go (p : PMF (Fin 3)) :     ¬ ∃ sigma : ℕ → Fin 1 → PMF (Fin 2),       (causalLaw p (riskMicroControlKernel q         (fun _ => (rationalModel P source_rows).transitionPMF)         (timeObservationPolicy sigma)) T).map         (SourcePolicyPathBridgeCheck.eraseActionHistory T) =",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.unreachable_fallback.output_actual_path",
+      "short_name": "output_actual_path",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 348,
+      "header_preview": "theorem output_actual_path :     (causalLaw (rowPMF deployed deployed_row)       (riskMicroControlKernel q (fun _ => (rationalModel P source_rows).transitionPMF)         (timeObservationPolicy (policy weights           (acceptedWeights deployed mu P R q T weights accepted) 0))) T).map         (SourcePolicyPathBridgeCheck.eraseActionHistory T) =",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.independent_baseline_variant.output_actual_path",
+      "short_name": "output_actual_path",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 413,
+      "header_preview": "theorem output_actual_path :     (causalLaw (rowPMF deployed deployed_row)       (riskMicroControlKernel q (fun _ => (rationalModel P source_rows).transitionPMF)         (timeObservationPolicy (policy weights           (acceptedWeights deployed mu P R q T weights accepted) 0))) T).map         (SourcePolicyPathBridgeCheck.eraseActionHistory T) =",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.zero_horizon.output_actual_path",
+      "short_name": "output_actual_path",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 478,
+      "header_preview": "theorem output_actual_path :     (causalLaw (rowPMF deployed deployed_row)       (riskMicroControlKernel q (fun _ => (rationalModel P source_rows).transitionPMF)         (timeObservationPolicy (policy weights           (acceptedWeights deployed mu P R q T weights accepted) 0))) T).map         (SourcePolicyPathBridgeCheck.eraseActionHistory T) =",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.zero_survival.zero_survival_event",
+      "short_name": "zero_survival_event",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 514,
+      "header_preview": "theorem zero_survival_event :     actualSurvivalMass (rationalModel P source_rows) q       (fun y => rowPMF (base y) (baseline_rows y)) (rowPMF p0 initial_row)       {x | safe x = true} T = 0 := by   rw [← sourceMass_eq_actual P source_rows q base baseline_rows p0 initial_row safe T]   exact_mod_cast conditioning_undefined",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_zero",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.QSDTVLimit.qSurvival_zero",
+          "path": "formalization/ueot-core/UEOT/V3/QSDTVLimit.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.unprepared_initial.every_causal_path_tv_obstacle",
+      "short_name": "every_causal_path_tv_obstacle",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 606,
+      "header_preview": "theorem every_causal_path_tv_obstacle     (K : ∀ n, CausalHistory (Fin 3) (Fin 3) n → PMF (Fin 3)) :     1/4 ≤ tvDist (causalLaw (rowPMF p0 initial_row) K T).toMeasure       (actualConditionedPrefix (rationalModel P source_rows) q         (fun y => rowPMF (base y) (baseline_rows y)) (rowPMF p0 initial_row)         {x | safe x = true} T 0",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.full_path_eq_prefix",
+      "short_name": "full_path_eq_prefix",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePolicyPath.lean",
+      "line": 25,
+      "header_preview": "theorem full_path_eq_prefix     {X : Type u} (p mu : PMF X)     (K L : ∀ n, CausalHistory X X n → PMF X) (T : ℕ)     (heq : causalLaw p K T = causalLaw mu L T) :     ∀ n, n ≤ T → causalLaw p K n = causalLaw mu L n := by   induction T with",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.DynamicsKernel.pathMeasure_eq_of_prefix_eq",
+          "path": "formalization/ueot-core/UEOT/V3/DynamicsKernel.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.causal_path_eq_iff",
+      "short_name": "causal_path_eq_iff",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePolicyPath.lean",
+      "line": 51,
+      "header_preview": "theorem causal_path_eq_iff     {X : Type u} [Fintype X] (p mu : PMF X)     (K L : ∀ n, CausalHistory X X n → PMF X) (T : ℕ) :     causalLaw p K T = causalLaw mu L T ↔       p = mu ∧ ∀ t, t < T → ∀ h, causalLaw mu L t h ≠ 0 → K t h = L t h := by   constructor",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.specified_policy_path_iff",
+      "short_name": "specified_policy_path_iff",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePolicyPath.lean",
+      "line": 91,
+      "header_preview": "theorem specified_policy_path_iff     {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]     (M : Model X (fun _ => A)) (q : X → Y) (sigma : ℕ → Y → PMF A)     (p mu : PMF X) (R : ℕ → X → PMF X) (T : ℕ) :     (causalLaw p (riskMicroControlKernel q (fun _ => M.transitionPMF)       (timeObservationPolicy sigma)) T).map (eraseActionHistory T) = targetPath mu R T ↔",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.specified_policy_path_of_rows",
+      "short_name": "specified_policy_path_of_rows",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePolicyPath.lean",
+      "line": 116,
+      "header_preview": "theorem specified_policy_path_of_rows     {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]     (M : Model X (fun _ => A)) (q : X → Y) (sigma : ℕ → Y → PMF A)     (p mu : PMF X) (R : ℕ → X → PMF X) (T : ℕ)     (hp : p = mu)     (hrow : ∀ t, t < T → ∀ x ∈ occupiedState mu R t,",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.specified_policy_conditioned_path_iff",
+      "short_name": "specified_policy_conditioned_path_iff",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePolicyPath.lean",
+      "line": 130,
+      "header_preview": "theorem specified_policy_conditioned_path_iff     {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A]     (M : Model X (fun _ => A)) (q : X → Y) (basePolicy : Y → PMF A)     (p0 p : PMF X) (safe : Set X) (T : ℕ)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.rationalModel_transitionPMF",
+      "short_name": "rationalModel_transitionPMF",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 40,
+      "header_preview": "theorem rationalModel_transitionPMF {X A : Type u} [Fintype X] [Fintype A] [Nonempty A]     (P : X → A → X → ℚ) (hP : ∀ x a, ValidRow (P x a)) (x : X) (a : A) :     (rationalModel P hP).transitionPMF x a = rowPMF (P x a) (hP x a) := by   apply PMF.ext   intro z   apply (ENNReal.toReal_eq_toReal_iff' (PMF.apply_ne_top _ _) (PMF.apply_ne_top _ _)).mp",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.HomogeneousMemorySurvival.augmentedModel_transitionPMF",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/HomogeneousMemorySurvival.lean",
+          "similarity": 0.714,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.ApproximateHistoryEncoder.representativeMacroModel_transitionPMF",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/ApproximateHistoryEncoder.lean",
+          "similarity": 0.625,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.ApproximateSemanticGauge.pushforwardTransitionPMF_relabel",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/ApproximateSemanticGauge.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.rationalRemaining_cast",
+      "short_name": "rationalRemaining_cast",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 62,
+      "header_preview": "theorem rationalRemaining_cast {S : Type u} [Fintype S] (Q : S → S → ℚ) :     ∀ r i, (rationalRemaining Q r i : ℝ) =       remainingSurvival (fun i j => (Q i j : ℝ)) r i := by   intro r   induction r with   | zero => intro i; simp [rationalRemaining]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.rationalRemaining_nonneg",
+      "short_name": "rationalRemaining_nonneg",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 76,
+      "header_preview": "theorem rationalRemaining_nonneg {S : Type u} [Fintype S] (Q : S → S → ℚ)     (hQ : ∀ i j, 0 ≤ Q i j) : ∀ r i, 0 ≤ rationalRemaining Q r i := by   intro r   induction r with   | zero => intro i; exact zero_le_one   | succ r ih =>",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_nonneg",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceRemaining_succ",
+      "short_name": "sourceRemaining_succ",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 118,
+      "header_preview": "theorem sourceRemaining_succ {X : Type u} [Fintype X]     (B : X → X → ℚ) (safe : X → Bool) (r : ℕ) (x : X) :     sourceRemaining B safe (r+1) x =       if safe x = true then ∑ z, B x z * sourceRemaining B safe r z else 0 := by   by_cases hx : safe x = true   · rw [if_pos hx]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_succ",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceRemaining_nonneg",
+      "short_name": "sourceRemaining_nonneg",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 140,
+      "header_preview": "theorem sourceRemaining_nonneg {X : Type u} [Fintype X]     (B : X → X → ℚ) (hB : ∀ x z, 0 ≤ B x z) (safe : X → Bool) (r : ℕ) (x : X) :     0 ≤ sourceRemaining B safe r x := by   unfold sourceRemaining   split   · exact rationalRemaining_nonneg _ (fun (i j : {x // safe x = true}) => hB i.val j.val) _ _",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_nonneg",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceFiniteWindow.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        },
+        {
+          "symbol": "UEOT.V3.FiniteCTMCPathKL.sourceRateIntegrand_nonneg",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteCTMCPathKL.lean",
+          "similarity": 0.484,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceInitial_valid",
+      "short_name": "sourceInitial_valid",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 149,
+      "header_preview": "theorem sourceInitial_valid {X : Type u} [Fintype X]     (B : X → X → ℚ) (hB : ∀ x z, 0 ≤ B x z) (p0 : X → ℚ)     (hp0 : ∀ x, 0 ≤ p0 x) (safe : X → Bool) (T : ℕ)     (hpos : 0 < sourceMass B p0 safe T) : ValidRow (sourceInitial B p0 safe T) := by   constructor   · intro x",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTarget_valid",
+      "short_name": "sourceTarget_valid",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 160,
+      "header_preview": "theorem sourceTarget_valid {X : Type u} [Fintype X] [DecidableEq X]     (B : X → X → ℚ) (hB : ∀ x z, 0 ≤ B x z) (safe : X → Bool) (T t : ℕ) (x : X) :     ValidRow (sourceTarget B safe T t x) := by   unfold sourceTarget   dsimp only   split",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.baselineRow_nonneg",
+      "short_name": "baselineRow_nonneg",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 185,
+      "header_preview": "theorem baselineRow_nonneg {X Y A : Type u} [Fintype X] [Fintype A]     (P : X → A → X → ℚ) (hP : ∀ x a, ValidRow (P x a))     (q : X → Y) (base : Y → A → ℚ) (hbase : ∀ y, ValidRow (base y)) (x z : X) :     0 ≤ baselineRow P q base x z :=   Finset.sum_nonneg fun a _ => mul_nonneg ((hbase (q x)).1 a) ((hP x a).1 z) ",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.baselineRow_cast",
+      "short_name": "baselineRow_cast",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 192,
+      "header_preview": "theorem baselineRow_cast {X Y A : Type u} [Fintype X] [Fintype A] [Nonempty A]     (P : X → A → X → ℚ) (hP : ∀ x a, ValidRow (P x a))     (q : X → Y) (base : Y → A → ℚ) (hbase : ∀ y, ValidRow (base y)) (x z : X) :     (baselineRow P q base x z : ℝ) =       policyMatrix (rationalModel P hP)         (liftedStationaryPolicy q (fun y => rowPMF (base y) (hbase y))) x z := by",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceRemaining_eq_actual",
+      "short_name": "sourceRemaining_eq_actual",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 254,
+      "header_preview": "theorem sourceRemaining_eq_actual (r : ℕ) (x : K) :     (sourceRemaining B safe r x.val : ℝ) = remainingSurvival Q r x := by   have hx : safe x.val = true := x.property   unfold sourceRemaining   rw [dif_pos hx]   have hcast := rationalRemaining_cast",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceMass_eq_actual",
+      "short_name": "sourceMass_eq_actual",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 270,
+      "header_preview": "theorem sourceMass_eq_actual     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A] (T : ℕ) :     (sourceMass B p0 safe T : ℝ) = actualSurvivalMass M q sigma (rowPMF p0 hp0) K T := by   rw [actual_survival_mass_eq_initial_remaining_sum]   unfold sourceMass",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.actualSource_pos",
+      "short_name": "actualSource_pos",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 295,
+      "header_preview": "theorem actualSource_pos     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A] (T : ℕ)     (hpos : 0 < sourceMass B p0 safe T) :     0 < actualSurvivalMass M q sigma (rowPMF p0 hp0) K T := by   rw [← sourceMass_eq_actual P hP q base hbase p0 hp0 safe T]",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceInitial_eq_prepared",
+      "short_name": "sourceInitial_eq_prepared",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 305,
+      "header_preview": "theorem sourceInitial_eq_prepared     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A] (T : ℕ)     (hpos : 0 < sourceMass B p0 safe T) :     rowPMF (sourceInitial B p0 safe T)       (sourceInitial_valid B (baselineRow_nonneg P hP q base hbase) p0 hp0.1 safe T hpos) =",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTarget_eq_row",
+      "short_name": "sourceTarget_eq_row",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 339,
+      "header_preview": "theorem sourceTarget_eq_row [DecidableEq X] (T t : ℕ) (x : X) :     rowPMF (sourceTarget B safe T t x)       (sourceTarget_valid B (baselineRow_nonneg P hP q base hbase) safe T t x) =       ambientWindowRow M q sigma K (fun _ i => PMF.pure i) (fun _ x => PMF.pure x)         (T-(t+1)) x := by   classical",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.ActionGapGaugeStability.targetGreedy_eq_transportedSourceGreedy",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/ActionGapGaugeStability.lean",
+          "similarity": 0.5,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTargetPath_eq_actual",
+      "short_name": "sourceTargetPath_eq_actual",
+      "kind": "theorem",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 400,
+      "header_preview": "theorem sourceTargetPath_eq_actual [DecidableEq X]     [MeasurableSpace X] [MeasurableSingletonClass X]     [MeasurableSpace A] [MeasurableSingletonClass A] (T : ℕ)     (hpos : 0 < sourceMass B p0 safe T) :     targetPath       (rowPMF (sourceInitial B p0 safe T)",
+      "origin": "UEOT_MAINTAINED",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.actual_state_path_eq_target",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizability.lean",
+          "similarity": 0.667,
+          "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:172:8: warning: Try `simp at hp` instead of `simpa using hp`
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:347:54: error: Invalid `⟨...⟩` notation: The expected type `ℕ` has more than one constructor
+
+Note: This notation can only be used when the expected type is an inductive type with a single constructor
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:378:22: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ((totalWindowRow (killedMatrix M (liftedStationaryPolicy q fun y => rowPMF (base y) ⋯) K) ⋯ ?m.337 r ⟨x, hx⟩)
+      ⟨z, hz⟩).toReal
+in the target expression
+  ↑(B x z * sourceRemaining B safe r z / sourceRemaining B safe (r + 1) x) =
+    ((totalWindowRow (killedMatrix M (liftedStationaryPolicy q fun y => rowPMF (base y) ⋯) K) ⋯ (fun x i => PMF.pure i)
+          (T - (t + 1)) ⟨x, ⋯⟩)
+        ⟨z, hz⟩).toReal
+
+case pos
+X Y A : Type u
+inst✝³ : Fintype X
+inst✝² : Fintype A
+inst✝¹ : Nonempty A
+P : X → A → X → ℚ
+hP : ∀ (x : X) (a : A), ValidRow (P x a)
+q : X → Y
+base : Y → A → ℚ
+hbase : ∀ (y : Y), ValidRow (base y)
+safe : X → Bool
+inst✝ : DecidableEq X
+T t : ℕ
+x : X
+r : ℕ := T - (t + 1)
+hp : 0 < sourceRemaining B safe (r + 1) x
+hx : safe x = true
+hden :
+  ↑(sourceRemaining B safe (r + 1) ↑⟨x, hx⟩) =
+    remainingSurvival (killedMatrix M (liftedStationaryPolicy q fun y => rowPMF (base y) ⋯) K) (r + 1) ⟨x, hx⟩
+hp' : 0 < remainingSurvival (killedMatrix M (liftedStationaryPolicy q fun y => rowPMF (base y) ⋯) K) (r + 1) ⟨x, hx⟩
+z : X
+hz : safe z = true
+⊢ ↑(B x z * sourceRemaining B safe r z / sourceRemaining B safe (r + 1) x) =
+    ((totalWindowRow (killedMatrix M (liftedStationaryPolicy q fun y => rowPMF (base y) ⋯) K) ⋯ (fun x i => PMF.pure i)
+          (T - (t + 1)) ⟨x, ⋯⟩)
+        ⟨z, hz⟩).toReal

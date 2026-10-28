@@ -1,0 +1,99 @@
+/tmp/RationalSourceSmoke.lean:10:45: error: Tactic `decide` failed for proposition
+  sourceMass B p0 safe 2 = 1 / 4
+because its `Decidable` instance
+  instDecidableEqRat (sourceMass B p0 safe 2) (1 / 4)
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `instDecidableEqRat`, `Int.decEq`, `Int.instDecidableEq`, and `instDecidableEqRat.decEq`, reduction got stuck at the `Decidable` instance
+  match
+    (((fun x => p0 x * sourceRemaining B safe 2 x) ((fun i => i) ⟨0, ⋯⟩)).add
+        (List.foldr (fun x1 x2 => x1 + x2) 0
+          (List.map (fun x => p0 x * sourceRemaining B safe 2 x)
+            ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨1, ⋯⟩ ((fun x1 x2 => (fun i => i) x1 :: x2) ⟨2, ⋯⟩ []))))).num,
+    (Rat.mul 1 (Rat.inv 4)).num with
+  | Int.ofNat a, Int.ofNat b =>
+    match decEq a b with
+    | isTrue h => isTrue ⋯
+    | isFalse h => isFalse ⋯
+  | Int.ofNat a, Int.negSucc a_1 => isFalse ⋯
+  | Int.negSucc a, Int.ofNat a_1 => isFalse ⋯
+  | Int.negSucc a, Int.negSucc b =>
+    match decEq a b with
+    | isTrue h => isTrue ⋯
+    | isFalse h => isFalse ⋯
+/tmp/RationalSourceSmoke.lean:11:68: error: Tactic `decide` failed for proposition
+  List.ofFn (sourceInitial B p0 safe 2) = [3 / 4, 1 / 4, 0]
+because its `Decidable` instance
+  instDecidableEqList (List.ofFn (sourceInitial B p0 safe 2)) [3 / 4, 1 / 4, 0]
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `decEq`, `instDecidableEqList`, `instDecidableEqRat`, `Int.decEq`, `Int.instDecidableEq`, and `instDecidableEqRat.decEq`, reduction got stuck at the `Decidable` instance
+  match ((p0 ⟨0, ⋯⟩ * sourceRemaining B safe 2 ⟨0, ⋯⟩).mul (sourceMass B p0 safe 2).inv).num,
+    (Rat.mul 3 (Rat.inv 4)).num with
+  | Int.ofNat a, Int.ofNat b =>
+    match decEq a b with
+    | isTrue h => isTrue ⋯
+    | isFalse h => isFalse ⋯
+  | Int.ofNat a, Int.negSucc a_1 => isFalse ⋯
+  | Int.negSucc a, Int.ofNat a_1 => isFalse ⋯
+  | Int.negSucc a, Int.negSucc b =>
+    match decEq a b with
+    | isTrue h => isTrue ⋯
+    | isFalse h => isFalse ⋯
+/tmp/RationalSourceSmoke.lean:12:68: error: Tactic `decide` failed for proposition
+  List.ofFn (sourceTarget B safe 2 0 0) = [3 / 4, 1 / 4, 0]
+because its `Decidable` instance
+  instDecidableEqList (List.ofFn (sourceTarget B safe 2 0 0)) [3 / 4, 1 / 4, 0]
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `decEq`, `instDecidableEqBool`, `instDecidableEqFin`, `instDecidableEqList`, `instDecidableEqNat`, `instDecidableEqRat`, `Bool.decEq`, `Int.decEq`, `Int.decLt`, `Int.decNonneg`, `Int.instDecidableEq`, `Nat.decEq`, `Rat.instDecidableLt`, and `instDecidableEqRat.decEq`, reduction got stuck at the `Decidable` instance
+  match
+    (Decidable.rec (fun h => (fun x => if ⟨0, ⋯⟩ = 0 then 1 else 0) h)
+        (fun h =>
+          (fun x =>
+              B 0 ⟨0, ⋯⟩ * sourceRemaining B safe (2 - (0 + 1)) ⟨0, ⋯⟩ / sourceRemaining B safe (2 - (0 + 1) + 1) 0)
+            h)
+        (Rat.instDecidableLt 0 (sourceRemaining B safe (2 - (0 + 1) + 1) 0))).num,
+    (Rat.mul 3 (Rat.inv 4)).num with
+  | Int.ofNat a, Int.ofNat b =>
+    match decEq a b with
+    | isTrue h => isTrue ⋯
+    | isFalse h => isFalse ⋯
+  | Int.ofNat a, Int.negSucc a_1 => isFalse ⋯
+  | Int.negSucc a, Int.ofNat a_1 => isFalse ⋯
+  | Int.negSucc a, Int.negSucc b =>
+    match decEq a b with
+    | isTrue h => isTrue ⋯
+    | isFalse h => isFalse ⋯
+/tmp/RationalSourceSmoke.lean:13:68: error: Tactic `decide` failed for proposition
+  List.ofFn (sourceTarget B safe 2 1 0) = [1 / 2, 1 / 2, 0]
+because its `Decidable` instance
+  instDecidableEqList (List.ofFn (sourceTarget B safe 2 1 0)) [1 / 2, 1 / 2, 0]
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `decEq`, `instDecidableEqBool`, `instDecidableEqFin`, `instDecidableEqList`, `instDecidableEqNat`, `instDecidableEqRat`, `Bool.decEq`, `Int.decEq`, `Int.decLt`, `Int.decNonneg`, `Int.instDecidableEq`, `Nat.decEq`, `Rat.instDecidableLt`, and `instDecidableEqRat.decEq`, reduction got stuck at the `Decidable` instance
+  match
+    (Decidable.rec (fun h => (fun x => if ⟨0, ⋯⟩ = 0 then 1 else 0) h)
+        (fun h =>
+          (fun x =>
+              B 0 ⟨0, ⋯⟩ * sourceRemaining B safe (2 - (1 + 1)) ⟨0, ⋯⟩ / sourceRemaining B safe (2 - (1 + 1) + 1) 0)
+            h)
+        (Rat.instDecidableLt 0 (sourceRemaining B safe (2 - (1 + 1) + 1) 0))).num,
+    (Rat.mul 1 (Rat.inv 2)).num with
+  | Int.ofNat a, Int.ofNat b =>
+    match decEq a b with
+    | isTrue h => isTrue ⋯
+    | isFalse h => isFalse ⋯
+  | Int.ofNat a, Int.negSucc a_1 => isFalse ⋯
+  | Int.negSucc a, Int.ofNat a_1 => isFalse ⋯
+  | Int.negSucc a, Int.negSucc b =>
+    match decEq a b with
+    | isTrue h => isTrue ⋯
+    | isFalse h => isFalse ⋯
+1 / 4
+[3 / 4, 1 / 4, 0]
+[3 / 4, 1 / 4, 0]
+[1 / 2, 1 / 2, 0]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTargetPath_eq_actual' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

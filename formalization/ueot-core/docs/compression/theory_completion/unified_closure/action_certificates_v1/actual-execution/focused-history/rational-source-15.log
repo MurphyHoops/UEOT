@@ -1,0 +1,128 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:172:8: warning: Try `simp at hp` instead of `simpa using hp`
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:257:5: error: unexpected token 'noncomputable'; expected 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:258:2: error: Type mismatch
+  @Subtype.fintype X (Membership.mem K)
+has type
+  [DecidablePred (Membership.mem K)] → [Fintype X] → Fintype { x // x ∈ K }
+but is expected to have type
+  Fintype ↑K
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:259:4: error: unexpected token '('; expected command
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:263:5: error: unexpected token 'Q'; expected '_' or identifier
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:281:41: error(lean.unknownIdentifier): Unknown identifier `rationalRemaining_instance_irrel`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:303:6: error: Tactic `apply` failed: could not unify the conclusion of `Finset.sum_congr rfl`
+  Finset.sum ?m.191 ?m.188 = Finset.sum ?m.191 ?m.189
+with the goal
+  ∑ x, ↑(p0 ↑x) * ↑(sourceRemaining B safe T ↑x) =
+    ∑ i,
+      safeInitialRow (rowPMF p0 hp0) K i *
+        remainingSurvival (killedMatrix M (liftedStationaryPolicy q fun y => rowPMF (base y) ⋯) K) T i
+
+Note: The full type of `Finset.sum_congr rfl` is
+  (∀ x ∈ ?m.191, ?m.188 x = ?m.189 x) → Finset.sum ?m.191 ?m.188 = Finset.sum ?m.191 ?m.189
+
+X Y A : Type u
+inst✝⁶ : Fintype X
+inst✝⁵ : Fintype A
+inst✝⁴ : Nonempty A
+P : X → A → X → ℚ
+hP : ∀ (x : X) (a : A), ValidRow (P x a)
+q : X → Y
+base : Y → A → ℚ
+hbase : ∀ (y : Y), ValidRow (base y)
+p0 : X → ℚ
+hp0 : ValidRow p0
+safe : X → Bool
+inst✝³ : MeasurableSpace X
+inst✝² : MeasurableSingletonClass X
+inst✝¹ : MeasurableSpace A
+inst✝ : MeasurableSingletonClass A
+T : ℕ
+⊢ ∑ x, ↑(p0 ↑x) * ↑(sourceRemaining B safe T ↑x) =
+    ∑ i,
+      safeInitialRow (rowPMF p0 hp0) K i *
+        remainingSurvival (killedMatrix M (liftedStationaryPolicy q fun y => rowPMF (base y) ⋯) K) T i
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:333:2: error: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (600000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:378:22: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ((totalWindowRow (killedMatrix M (liftedStationaryPolicy q fun y => rowPMF (base y) ⋯) K) ⋯ ?m.337 r ⟨x, hx⟩)
+      ⟨z, hz⟩).toReal
+in the target expression
+  ↑(B x z * sourceRemaining B safe r z / sourceRemaining B safe (r + 1) x) =
+    ((totalWindowRow (killedMatrix M (liftedStationaryPolicy q fun y => rowPMF (base y) ⋯) K) ⋯ (fun x i => PMF.pure i)
+          (T - (t + 1)) ⟨x, ⋯⟩)
+        ⟨z, hz⟩).toReal
+
+case pos
+X Y A : Type u
+inst✝³ : Fintype X
+inst✝² : Fintype A
+inst✝¹ : Nonempty A
+P : X → A → X → ℚ
+hP : ∀ (x : X) (a : A), ValidRow (P x a)
+q : X → Y
+base : Y → A → ℚ
+hbase : ∀ (y : Y), ValidRow (base y)
+safe : X → Bool
+inst✝ : DecidableEq X
+T t : ℕ
+x : X
+r : ℕ := T - (t + 1)
+hp : 0 < sourceRemaining B safe (r + 1) x
+hx : safe x = true
+hden :
+  ↑(sourceRemaining B safe (r + 1) ↑⟨x, hx⟩) =
+    remainingSurvival (killedMatrix M (liftedStationaryPolicy q fun y => rowPMF (base y) ⋯) K) (r + 1) ⟨x, hx⟩
+hp' : 0 < remainingSurvival (killedMatrix M (liftedStationaryPolicy q fun y => rowPMF (base y) ⋯) K) (r + 1) ⟨x, hx⟩
+z : X
+hz : safe z = true
+⊢ ↑(B x z * sourceRemaining B safe r z / sourceRemaining B safe (r + 1) x) =
+    ((totalWindowRow (killedMatrix M (liftedStationaryPolicy q fun y => rowPMF (base y) ⋯) K) ⋯ (fun x i => PMF.pure i)
+          (T - (t + 1)) ⟨x, ⋯⟩)
+        ⟨z, hz⟩).toReal
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:394:12: error: synthesized type class instance is not definitionally equal to expression inferred by typing rules, synthesized
+  semanticSafeFintype safe
+inferred
+  Subtype.fintype (Membership.mem K)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:394:28: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  dite (0 < remainingSurvival (killedMatrix M (liftedStationaryPolicy q fun y => rowPMF (base y) ⋯) K) (r + 1) ⟨x, hx⟩)
+    ?m.452 ?m.453
+in the target expression
+  PMF.map Subtype.val
+      (if hp :
+          0 <
+            remainingSurvival (killedMatrix M (liftedStationaryPolicy q fun y => rowPMF (base y) ⋯) K) (r + 1)
+              ⟨x, hx⟩ then
+        finiteWindowRowPMF (killedMatrix M (liftedStationaryPolicy q fun y => rowPMF (base y) ⋯) K) ⋯ r ⟨x, hx⟩ hp
+      else PMF.pure ⟨x, hx⟩) =
+    PMF.pure x
+
+X Y A : Type u
+inst✝³ : Fintype X
+inst✝² : Fintype A
+inst✝¹ : Nonempty A
+P : X → A → X → ℚ
+hP : ∀ (x : X) (a : A), ValidRow (P x a)
+q : X → Y
+base : Y → A → ℚ
+hbase : ∀ (y : Y), ValidRow (base y)
+safe : X → Bool
+inst✝ : DecidableEq X
+T t : ℕ
+x : X
+r : ℕ := T - (t + 1)
+hp : ¬0 < sourceRemaining B safe (r + 1) x
+hx : x ∈ K
+hp' : ¬0 < remainingSurvival (killedMatrix M (liftedStationaryPolicy q fun y => rowPMF (base y) ⋯) K) (r + 1) ⟨x, hx⟩
+⊢ PMF.map Subtype.val
+      (if hp :
+          0 <
+            remainingSurvival (killedMatrix M (liftedStationaryPolicy q fun y => rowPMF (base y) ⋯) K) (r + 1)
+              ⟨x, hx⟩ then
+        finiteWindowRowPMF (killedMatrix M (liftedStationaryPolicy q fun y => rowPMF (base y) ⋯) K) ⋯ r ⟨x, hx⟩ hp
+      else PMF.pure ⟨x, hx⟩) =
+    PMF.pure x

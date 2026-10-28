@@ -1,0 +1,40 @@
+{
+  "state": "PASS_PENDING_INDEPENDENT_REVIEW_AND_REGISTRATION",
+  "baseline_ref": "61fc3caead1945f72b919973217d573957a1b8d0",
+  "build_receipt_sha256": "a9edef03c3906a608390ec3d1a40ffaa193090768da77c1179d3c05aa0f58512",
+  "results": [
+    {
+      "label": "native_export",
+      "command": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-certificates-evidence-20261028/native-01/ACTION_CERTIFICATES_NATIVE_EXPORT.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 75.79,
+      "log_sha256": "edeceba3827ad109bbaded98edf34b181e23c5db193f7f4293578dee509d01cf"
+    },
+    {
+      "label": "fixed_verifier",
+      "command": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-certificates-evidence-20261028/native-01/VERIFY_ACTION_CERTIFICATES_OVERLAY_TYPES.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 77.426,
+      "log_sha256": "edeceba3827ad109bbaded98edf34b181e23c5db193f7f4293578dee509d01cf"
+    }
+  ],
+  "summary": {
+    "modules": 4,
+    "public_source_theorems": 38,
+    "native_constants": 236,
+    "registered_edges": 80,
+    "overlay_sha256": "55d31cdc77ffd2e40cfb7dea2a6f47d186884a6e916f2c2a693089f157b5ba23",
+    "verifier_sha256": "28408c8f1375add3c80fd55531d290248a92abec6b92a50b4c5b1a6a8973ffb2",
+    "native_sha256": "caabf5a021abc2f7fc03d26c37354ec1f5a0664a6849f183684acb374fb7291d"
+  }
+}

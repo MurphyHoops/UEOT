@@ -1,0 +1,891 @@
+{
+  "schema": "FKRG_REUSE_OVERLAY_V1",
+  "overlay_id": "ACTION_CERTIFICATES_REUSE_OVERLAY_V1",
+  "source_checkpoint": "worktree-sha256:a499c2264c1b0b6b770d4023042187baa0b824de833f1ddf6046bffd22393d82",
+  "source_checkpoint_kind": "FROZEN_SOURCE_CONTENT_BEFORE_GIT_COMMIT",
+  "baseline_ref": "61fc3caead1945f72b919973217d573957a1b8d0",
+  "base_snapshot_modules": 708,
+  "prior_overlay": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/ACTION_GAUGE_TRANSPORT_REUSE_OVERLAY_V1.json",
+    "sha256": "513330a6d41bc67dc26e03611299013cdf66d5907d39de68a392469413d6e351"
+  },
+  "source_hash_overrides": {
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean": "bc507758c81772c7276b1ee7ca9eecd3a90100b4c04d41ada73fcc9b3b883622"
+  },
+  "added_modules": [
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificate",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "content_sha256": "9bc9d14b756d843b4fa4247e37ae6f6b224877ea1f9842c980612b0131162522",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "content_sha256": "6e23d2c1653ff28892c9b4027397e48e7c58ace37a6bffa7886fed4681b25487",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPath",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePolicyPath.lean",
+      "content_sha256": "cbab41a545401b3242401f9fb9ec406b4e32c2b5757985a583440fcd013d7eb6",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "content_sha256": "22d42615bbb6ad58ed1c8c7a65d420b46519bd1f537867a1ab0459df0729db41",
+      "source_origin": "UEOT_MAINTAINED"
+    }
+  ],
+  "public_theorems": [
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.rowPMF_toReal",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 32,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificate",
+      "source_theorem_deps": [
+        "UEOT.V3.FiniteDiscountedControl.FiniteProbabilityRow.ofRealRow_apply_toReal"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.pathMass_eq",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 55,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificate",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.rowPMF_toReal",
+        "UEOT.V3.PathError.pmfExtend_apply"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.occupied_iff",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 71,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificate",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.pathMass_eq"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkPositive_sound_rows",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 100,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificate",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.occupied_iff",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.rowPMF_toReal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.realRow_actionMixture"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.cast_fiberScore",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 159,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificate",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkNegative_sound",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 210,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificate",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.cast_fiberScore",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.rowPMF_toReal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.realRow_actionMixture",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_sum_toReal"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.acceptedWeights",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 266,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificate",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkPositive_sound",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 276,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificate",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.acceptedWeights",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkPositive_sound_rows",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.specified_policy_path_of_rows"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkNegative_path_no_go",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificate.lean",
+      "line": 304,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificate",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkNegative_sound",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.occupied_iff",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.specified_policy_path_iff"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.original_actions.conditional_path_no_go",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 82,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.actualSource_pos"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.two_step_added_actions.output_actual_path",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 148,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.acceptedWeights",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.actualSource_pos"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.unprepared_initial.conditional_path_no_go",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 208,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.specified_policy_path_iff",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.actualSource_pos"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.same_source_alias.conditional_path_no_go",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 282,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.actualSource_pos"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.unreachable_fallback.output_actual_path",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 348,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.acceptedWeights",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.actualSource_pos"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.independent_baseline_variant.output_actual_path",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 413,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.acceptedWeights",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.actualSource_pos"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.zero_horizon.output_actual_path",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 478,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.acceptedWeights",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.actualSource_pos"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.zero_survival.zero_survival_event",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 514,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceMass_eq_actual"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.unprepared_initial.every_causal_path_tv_obstacle",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionCertificateWitness.lean",
+      "line": 606,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitness",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.causalLaw_initial_marginal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.initial_tv_le_path_tv",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.actualSource_pos"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.full_path_eq_prefix",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePolicyPath.lean",
+      "line": 25,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPath",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.causalLaw_map_prefix"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.causal_path_eq_iff",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePolicyPath.lean",
+      "line": 51,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPath",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.full_path_eq_prefix",
+        "UEOT.V3.PathError.pmfExtend_apply"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.specified_policy_path_iff",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePolicyPath.lean",
+      "line": 91,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPath",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.time_action_state_path_eq_mixture",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.causal_path_eq_iff"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.specified_policy_path_of_rows",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePolicyPath.lean",
+      "line": 116,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPath",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.specified_policy_path_iff"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.specified_policy_conditioned_path_iff",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePolicyPath.lean",
+      "line": 130,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPath",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.specified_policy_path_iff",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_ambient_eq_actual"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.rationalModel_transitionPMF",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 40,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.rowPMF_toReal",
+        "UEOT.V3.FiniteDiscountedControl.Model.transitionPMF_apply_toReal"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.rationalRemaining_cast",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 62,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_succ",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_zero"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.rationalRemaining_nonneg",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 76,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceRemaining_succ",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 118,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceRemaining_nonneg",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 140,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.rationalRemaining_nonneg"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceInitial_valid",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 149,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceRemaining_nonneg"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTarget_valid",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 160,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceRemaining_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceRemaining_succ"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.baselineRow_nonneg",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 185,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.baselineRow_cast",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 192,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.rowPMF_toReal"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceRemaining_eq_actual",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 254,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.baselineRow_cast",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.rationalRemaining_cast"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceMass_eq_actual",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 270,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.rowPMF_toReal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.actual_survival_mass_eq_initial_remaining_sum",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceRemaining_eq_actual"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.actualSource_pos",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 295,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceMass_eq_actual"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceInitial_eq_prepared",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 305,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.rowPMF_toReal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.actual_survival_mass_eq_initial_remaining_sum",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.safeInitialRow_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.actualSource_pos",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.baselineRow_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceInitial_valid",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceMass_eq_actual",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceRemaining_eq_actual",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.killedMatrix_nonneg",
+        "UEOT.V3.FiniteDiscountedControl.FiniteProbabilityRow.ofRealRow_apply_toReal"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTarget_eq_row",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 339,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.rowPMF_toReal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.baselineRow_cast",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.baselineRow_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceRemaining_eq_actual",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTarget_valid",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.killedMatrix_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.totalWindowRow_apply_toReal_of_pos"
+      ]
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTargetPath_eq_actual",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+      "line": 400,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+      "source_theorem_deps": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.actualSource_pos",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.baselineRow_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceInitial_eq_prepared",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceInitial_valid",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTarget_eq_row",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTarget_valid",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_ambient_eq_actual"
+      ]
+    }
+  ],
+  "type_distinctness": {
+    "status": "PASS",
+    "verifier": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_ACTION_CERTIFICATES_OVERLAY_TYPES.lean",
+    "new_theorems": 38,
+    "registered_prior_theorems": 4504,
+    "cross_isDefEq_comparisons": 171152,
+    "internal_isDefEq_comparisons": 703,
+    "definitionally_equal_matches": 0,
+    "protocol": "Raw stored compiled types; fresh liftTermElabM per Meta.isDefEq comparison; stored universe names retained. Not a general logical-equivalence decision."
+  },
+  "proof_dependency_certification": {
+    "status": "PASS",
+    "verifier": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_ACTION_CERTIFICATES_OVERLAY_TYPES.lean",
+    "measure": "Actual theorem proof-value getUsedConstants restricted to all previous and new registered public theorem names",
+    "registered_direct_edges": 80,
+    "edges": [
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.rowPMF_toReal",
+        "target": "UEOT.V3.FiniteDiscountedControl.FiniteProbabilityRow.ofRealRow_apply_toReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.pathMass_eq",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.rowPMF_toReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.pathMass_eq",
+        "target": "UEOT.V3.PathError.pmfExtend_apply"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.occupied_iff",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.pathMass_eq"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkPositive_sound_rows",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.occupied_iff"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkPositive_sound_rows",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.rowPMF_toReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkPositive_sound_rows",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.realRow_actionMixture"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkNegative_sound",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.cast_fiberScore"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkNegative_sound",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.rowPMF_toReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkNegative_sound",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.realRow_actionMixture"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkNegative_sound",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverage_sum_toReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkPositive_sound",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.acceptedWeights"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkPositive_sound",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkPositive_sound_rows"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkPositive_sound",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.specified_policy_path_of_rows"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkNegative_path_no_go",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkNegative_sound"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkNegative_path_no_go",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.occupied_iff"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.checkNegative_path_no_go",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.specified_policy_path_iff"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.original_actions.conditional_path_no_go",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.actualSource_pos"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.two_step_added_actions.output_actual_path",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.acceptedWeights"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.two_step_added_actions.output_actual_path",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.actualSource_pos"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.unprepared_initial.conditional_path_no_go",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.specified_policy_path_iff"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.unprepared_initial.conditional_path_no_go",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.actualSource_pos"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.same_source_alias.conditional_path_no_go",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.actualSource_pos"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.unreachable_fallback.output_actual_path",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.acceptedWeights"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.unreachable_fallback.output_actual_path",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.actualSource_pos"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.independent_baseline_variant.output_actual_path",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.acceptedWeights"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.independent_baseline_variant.output_actual_path",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.actualSource_pos"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.zero_horizon.output_actual_path",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.acceptedWeights"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.zero_horizon.output_actual_path",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.actualSource_pos"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.zero_survival.zero_survival_event",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceMass_eq_actual"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.unprepared_initial.every_causal_path_tv_obstacle",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.causalLaw_initial_marginal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.unprepared_initial.every_causal_path_tv_obstacle",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.initial_tv_le_path_tv"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitnessCheck.unprepared_initial.every_causal_path_tv_obstacle",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.actualSource_pos"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.full_path_eq_prefix",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledExitFluxCheck.causalLaw_map_prefix"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.causal_path_eq_iff",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.full_path_eq_prefix"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.causal_path_eq_iff",
+        "target": "UEOT.V3.PathError.pmfExtend_apply"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.specified_policy_path_iff",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConditionedActionTransportCheck.time_action_state_path_eq_mixture"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.specified_policy_path_iff",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.causal_path_eq_iff"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.specified_policy_path_of_rows",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.specified_policy_path_iff"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.specified_policy_conditioned_path_iff",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.specified_policy_path_iff"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FinitePolicyPathCheck.specified_policy_conditioned_path_iff",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_ambient_eq_actual"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.rationalModel_transitionPMF",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.rowPMF_toReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.rationalModel_transitionPMF",
+        "target": "UEOT.V3.FiniteDiscountedControl.Model.transitionPMF_apply_toReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.rationalRemaining_cast",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_succ"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.rationalRemaining_cast",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceFiniteWindowCheck.remainingSurvival_zero"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceRemaining_nonneg",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.rationalRemaining_nonneg"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceInitial_valid",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceRemaining_nonneg"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTarget_valid",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceRemaining_nonneg"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTarget_valid",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceRemaining_succ"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.baselineRow_cast",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.rowPMF_toReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceRemaining_eq_actual",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.baselineRow_cast"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceRemaining_eq_actual",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.rationalRemaining_cast"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceMass_eq_actual",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.rowPMF_toReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceMass_eq_actual",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.actual_survival_mass_eq_initial_remaining_sum"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceMass_eq_actual",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceRemaining_eq_actual"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.actualSource_pos",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceMass_eq_actual"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceInitial_eq_prepared",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.rowPMF_toReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceInitial_eq_prepared",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.actual_survival_mass_eq_initial_remaining_sum"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceInitial_eq_prepared",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteWindowDoobCheck.safeInitialRow_nonneg"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceInitial_eq_prepared",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.actualSource_pos"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceInitial_eq_prepared",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.baselineRow_nonneg"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceInitial_eq_prepared",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceInitial_valid"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceInitial_eq_prepared",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceMass_eq_actual"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceInitial_eq_prepared",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceRemaining_eq_actual"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceInitial_eq_prepared",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.killedMatrix_nonneg"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceInitial_eq_prepared",
+        "target": "UEOT.V3.FiniteDiscountedControl.FiniteProbabilityRow.ofRealRow_apply_toReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTarget_eq_row",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.rowPMF_toReal"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTarget_eq_row",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.baselineRow_cast"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTarget_eq_row",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.baselineRow_nonneg"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTarget_eq_row",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceRemaining_eq_actual"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTarget_eq_row",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTarget_valid"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTarget_eq_row",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceKilledPathCheck.killedMatrix_nonneg"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTarget_eq_row",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.totalWindowRow_apply_toReal_of_pos"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTargetPath_eq_actual",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.actualSource_pos"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTargetPath_eq_actual",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.baselineRow_nonneg"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTargetPath_eq_actual",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceInitial_eq_prepared"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTargetPath_eq_actual",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceInitial_valid"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTargetPath_eq_actual",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTarget_eq_row"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTargetPath_eq_actual",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTarget_valid"
+      },
+      {
+        "source": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTargetPath_eq_actual",
+        "target": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_ambient_eq_actual"
+      }
+    ]
+  },
+  "native_axiom_census": {
+    "status": "PASS",
+    "physical_source_modules": 4,
+    "theorem_constants": 236,
+    "private_theorem_constants": 162,
+    "confirmed_public_source_candidates": 38,
+    "other_native_public_constants": 36,
+    "standard_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "scope": "All compiler-owned theorem constants of every added module, including private and generated constants"
+  },
+  "native_export_evidence": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/ACTION_CERTIFICATES_NATIVE_V1.json",
+    "sha256": "caabf5a021abc2f7fc03d26c37354ec1f5a0664a6849f183684acb374fb7291d"
+  },
+  "native_execution": {
+    "build_receipt_sha256": "a9edef03c3906a608390ec3d1a40ffaa193090768da77c1179d3c05aa0f58512",
+    "source_tree_sha256": "a499c2264c1b0b6b770d4023042187baa0b824de833f1ddf6046bffd22393d82",
+    "native_export_exit_code": 0,
+    "fixed_certificate_exit_code": 0,
+    "fixed_certificate_sha256": "28408c8f1375add3c80fd55531d290248a92abec6b92a50b4c5b1a6a8973ffb2",
+    "fixed_export_equals_initial_native_export": true,
+    "results": [
+      {
+        "label": "native_export",
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-certificates-evidence-20261028/native-01/ACTION_CERTIFICATES_NATIVE_EXPORT.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 75.79,
+        "log_sha256": "edeceba3827ad109bbaded98edf34b181e23c5db193f7f4293578dee509d01cf"
+      },
+      {
+        "label": "fixed_verifier",
+        "command": [
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+          "env",
+          "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+          "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-certificates-evidence-20261028/native-01/VERIFY_ACTION_CERTIFICATES_OVERLAY_TYPES.lean"
+        ],
+        "exit_code": 0,
+        "seconds": 77.426,
+        "log_sha256": "edeceba3827ad109bbaded98edf34b181e23c5db193f7f4293578dee509d01cf"
+      }
+    ]
+  },
+  "scientific_role": "UNCOUNTED_FINITE_SOURCE_ACTION_CERTIFICATES",
+  "counted_core_impact": "NONE",
+  "scientific_closure": "NOT_ESTABLISHED"
+}

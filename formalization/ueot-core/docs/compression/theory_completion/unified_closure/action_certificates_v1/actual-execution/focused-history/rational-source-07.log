@@ -1,0 +1,37 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:171:8: warning: Try `simp at hp` instead of `simpa using hp`
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:252:47: error: type expected, got
+  (fun x => safe x = true : X → Prop)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:274:14: error: Application type mismatch: The argument
+  fun x => safe x = true
+has type
+  X → Prop
+of sort `Type u` but is expected to have type
+  Type ?u.102
+of sort `Type (?u.102 + 1)` in the application
+  Finset fun x => safe x = true
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:277:9: error: unsolved goals
+X Y A : Type u
+inst✝⁶ : Fintype X
+inst✝⁵ : Fintype A
+inst✝⁴ : Nonempty A
+P : X → A → X → ℚ
+hP : ∀ (x : X) (a : A), ValidRow (P x a)
+q : X → Y
+base : Y → A → ℚ
+hbase : ∀ (y : Y), ValidRow (base y)
+p0 : X → ℚ
+hp0 : ValidRow p0
+safe : X → Bool
+inst✝³ : MeasurableSpace X
+inst✝² : MeasurableSingletonClass X
+inst✝¹ : MeasurableSpace A
+inst✝ : MeasurableSingletonClass A
+T : ℕ
+x : X
+⊢ safe x = true ↔ ?m.167 x
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:310:7: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  Fintype ↑fun x => safe x = true
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.

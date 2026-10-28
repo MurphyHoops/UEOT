@@ -1,0 +1,89 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:171:8: warning: Try `simp at hp` instead of `simpa using hp`
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:256:43: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  Fintype ↑K
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:257:30: warning: This simp argument is unused:
+  dif_pos x.property
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [sourceRemaining, rationalRemaining_cast]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:257:50: warning: This simp argument is unused:
+  rationalRemaining_cast
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [sourceRemaining, dif_pos x.property]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:277:10: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  Fintype ↑K
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:280:9: error: unsolved goals
+X Y A : Type u
+inst✝⁶ : Fintype X
+inst✝⁵ : Fintype A
+inst✝⁴ : Nonempty A
+P : X → A → X → ℚ
+hP : ∀ (x : X) (a : A), ValidRow (P x a)
+q : X → Y
+base : Y → A → ℚ
+hbase : ∀ (y : Y), ValidRow (base y)
+p0 : X → ℚ
+hp0 : ValidRow p0
+safe : X → Bool
+inst✝³ : MeasurableSpace X
+inst✝² : MeasurableSingletonClass X
+inst✝¹ : MeasurableSpace A
+inst✝ : MeasurableSingletonClass A
+T : ℕ
+x : X
+⊢ safe x = true ↔ ?m.171 x
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:313:7: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  Fintype ↑K
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:343:50: error: Application type mismatch: The argument
+  base
+has type
+  Y → A → ℚ
+but is expected to have type
+  X → Bool
+in the application
+  sourceRemaining_eq_actual P ?m.118 ?m.120 base
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:343:48: error: Application type mismatch: The argument
+  q
+has type
+  X → Y
+but is expected to have type
+  ?m.112 → A → ℚ
+in the application
+  sourceRemaining_eq_actual P ?m.118 q
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:369:25: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  Fintype ↑K
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:370:49: error: Application type mismatch: The argument
+  base
+has type
+  Y → A → ℚ
+but is expected to have type
+  X → Bool
+in the application
+  sourceRemaining_eq_actual P ?m.221 ?m.223 base
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:372:12: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  Fintype ↑K
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean:370:47: error: Application type mismatch: The argument
+  q
+has type
+  X → Y
+but is expected to have type
+  ?m.215 → A → ℚ
+in the application
+  sourceRemaining_eq_actual P ?m.221 q

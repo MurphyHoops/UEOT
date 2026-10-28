@@ -1,0 +1,18 @@
+{
+  "parallel_governance_false_conflict": {
+    "log": "governance-final.log",
+    "cause": "Parent incorrectly ran mutable-ledger compression test and governance regression concurrently; governance saw temporary fixture state. Ledger restored in finally; serial governance-final-02 passes."
+  },
+  "compression_remote_timeout": {
+    "log": "compression-final.log",
+    "cause": "Final restored-positive GitHub historical receipt lookup TLS timeout; serial compression-final-02 passes without changed validator or policy."
+  },
+  "focused_implementation": {
+    "archive": "../focused-history/MANIFEST.json",
+    "cause": "Earlier prefix namespace/rewrites, subtype Fintype transport, kernel reduction mode and Fin-index simplification; source contract unchanged."
+  },
+  "runner_provenance_race": {
+    "history_receipt": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/action-certificates-evidence-20261028/certified-registered-01/result.json",
+    "correction": "Source snapshot moved before build; added mutation-during-build fail-closed regression. Latest certified-registered-02 binds final driver."
+  }
+}
