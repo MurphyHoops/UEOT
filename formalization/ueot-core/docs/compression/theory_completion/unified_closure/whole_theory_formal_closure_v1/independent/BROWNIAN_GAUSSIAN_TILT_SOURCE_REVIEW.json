@@ -1,0 +1,483 @@
+{
+  "schema": "UEOT_NONAUTHOR_SOURCE_AND_TYPED_REUSE_REVIEW_V1",
+  "status": "PASS",
+  "reviewer": "/root/c1_joint_review",
+  "author": "/root/register_typed_review",
+  "independence": "Reviewer authored none of these three source modules; full source and upstream APIs read independently. Some old C1/vector lexical hits were reviewer-authored, and are compared only by actual type mismatch, not presented as independent semantic review of those old modules.",
+  "created_utc": "2026-10-29T23:33:19.706119+00:00",
+  "candidate": "440aafb79c4b54ba5b18c0d5ede9473575f3ebb0",
+  "base": "1957ffa5594160337051ab274e24428180035974",
+  "source": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianGaussianTiltSource.lean",
+    "sha256": "dd867d4114bac119a5c13b9922ad3016af7e58a52ba26f952d27233062ab0da9",
+    "bytes": 6282
+  },
+  "candidate_blob_identity": true,
+  "author_receipt": {
+    "path": "/tmp/ueot-brownian-gaussian-tilt-source-receipt.json",
+    "sha256": "2286e92aefe320c775b79c813123f6a7b6a8b3ab222c734937b420eb9379a05e",
+    "bytes": 3521
+  },
+  "dependencies": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+      "sha256": "a51aedd39c0a819fb9fb045d008aac7ab622049f5bb749e2dab32d3dbdd25cc3",
+      "bytes": 16180
+    }
+  ],
+  "scientific_conclusion": "Actual centered Gaussian Esscher identity and SAME original terminal B_T law/moments under literal tiltedLaw u T, including variance0/T0/u0.",
+  "full_source_semantic_checks": [
+    "Centered Gaussian weight is exp(u*x-u²*v/2); for v>0 complete-square native density identity, v=0 native Dirac. It does not claim the same normalization for arbitrary nonzero Gaussian mean.",
+    "Readout-density transport keeps literal P.withDensity(weight∘X), then the actual old BrownianMartingaleSource tiltedLaw density and actual B_T centered Gaussian law are used; no new measure or desired terminal-law field.",
+    "Q at T=0 uses actual B_0 AE zero; u=0 uses pointwise density1. Actual terminal mean uT, centered variance T and algebraic control-integral shift verified.",
+    "Full finite-table Brownian and whole original-past properties are established only in the successor, not inferred from this endpoint identity."
+  ],
+  "actual_public_consumer_obligations": [
+    "u=2,T=1: actual B1 Gaussian(2,1), mean2, centered mean0/second moment1",
+    "T=0 Gaussian Dirac and Q=P; u=0 Q=P",
+    "pointwise original uB_T shift algebra"
+  ],
+  "scope_and_remaining_obligations": [
+    "Scalar canonical source and deterministic real u with finite NNReal T.",
+    "Terminal identity alone is not general Girsanov or whole-path Brownian."
+  ],
+  "checks": [
+    {
+      "kind": "fresh_direct_actual_source_elaboration",
+      "exit_code": 0,
+      "log": {
+        "path": "/tmp/ueot-gaussian-girsanov-independent-BrownianGaussianTiltSource1.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "kind": "fresh_types_axioms_and_exact_old_helper_adapter",
+      "exit_code": 0,
+      "input": {
+        "path": "/tmp/ueot-gaussian-girsanov-independent-types.lean",
+        "sha256": "c6fac5712dbbbeba10a5c8732c7fba6707d9a9b68481d1679b5527155d37bdfb",
+        "bytes": 23767
+      },
+      "log": {
+        "path": "/tmp/ueot-gaussian-girsanov-independent-types-final.log",
+        "sha256": "e4bacd80ee9ecee26617cd4b6d345318f3f54260d860a02564bb25fc87b82375",
+        "bytes": 59109
+      }
+    },
+    {
+      "kind": "fresh_actual_public_UEOT_consumer",
+      "exit_code": 0,
+      "input": {
+        "path": "/tmp/ueot-gaussian-girsanov-independent-consumer.lean",
+        "sha256": "657a8c555d5b265211794d6adbe271d5b0f50834c54896378ad796d2c88410d1",
+        "bytes": 8705
+      },
+      "log": {
+        "path": "/tmp/ueot-gaussian-girsanov-independent-consumer-final.log",
+        "sha256": "1aeb7b329d4105e41bb06f8b76c2a5e784a78bdce696a743364019121d873437",
+        "bytes": 4313
+      }
+    },
+    {
+      "kind": "focused_lake_build_all_three",
+      "exit_code": 0,
+      "log": {
+        "path": "/tmp/ueot-gaussian-girsanov-independent-focused1.log",
+        "sha256": "75b8689b47abc20651c8783d0ca23b53543e93fba47239e7780bb59dde8464b4",
+        "bytes": 5860
+      }
+    }
+  ],
+  "axioms": {
+    "all_new_public_and_supporting_declarations_checked": true,
+    "per_source_declarations": [
+      {
+        "source": "BrownianGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.gaussianTiltWeight",
+        "kind": "def",
+        "line": 17
+      },
+      {
+        "source": "BrownianGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.gaussian_exponential_tilt",
+        "kind": "theorem",
+        "line": 22
+      },
+      {
+        "source": "BrownianGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.map_readout_density",
+        "kind": "theorem",
+        "line": 45
+      },
+      {
+        "source": "BrownianGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.terminal_hasLaw_tilted",
+        "kind": "theorem",
+        "line": 58
+      },
+      {
+        "source": "BrownianGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.shifted_terminal_hasLaw",
+        "kind": "theorem",
+        "line": 68
+      },
+      {
+        "source": "BrownianGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.tilted_terminal_mean",
+        "kind": "theorem",
+        "line": 73
+      },
+      {
+        "source": "BrownianGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.shifted_terminal_mean",
+        "kind": "theorem",
+        "line": 79
+      },
+      {
+        "source": "BrownianGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.shifted_terminal_second_moment",
+        "kind": "theorem",
+        "line": 84
+      },
+      {
+        "source": "BrownianGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.constant_terminal_integral_shift",
+        "kind": "theorem",
+        "line": 93
+      },
+      {
+        "source": "BrownianGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.tiltedLaw_zero",
+        "kind": "theorem",
+        "line": 98
+      },
+      {
+        "source": "BrownianGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.tiltedLaw_zero_control",
+        "kind": "theorem",
+        "line": 105
+      }
+    ],
+    "actual_type_and_axiom_signatures": [
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.gaussianTiltWeight",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.gaussianTiltWeight (u : ℝ) (v : NNReal)\n  (x : ℝ) : ENNReal"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.gaussian_exponential_tilt",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.gaussian_exponential_tilt (u : ℝ)\n  (v : NNReal) :\n  (ProbabilityTheory.gaussianReal 0 v).withDensity\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.gaussianTiltWeight u v) =\n    ProbabilityTheory.gaussianReal (u * ↑v) v"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.map_readout_density",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.map_readout_density.{u_1, u_2}\n  {Ω : Type u_1} {E : Type u_2} [MeasurableSpace Ω] [MeasurableSpace E] (P : MeasureTheory.Measure Ω) (X : Ω → E)\n  (hX : Measurable X) (w : E → ENNReal) (hw : Measurable w) :\n  MeasureTheory.Measure.map X (P.withDensity fun ω => w (X ω)) = (MeasureTheory.Measure.map X P).withDensity w"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.terminal_hasLaw_tilted",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.terminal_hasLaw_tilted (u : ℝ)\n  (T : NNReal) :\n  ProbabilityTheory.HasLaw (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process T)\n    (ProbabilityTheory.gaussianReal (u * ↑T) T)\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T)"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.shifted_terminal_hasLaw",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.shifted_terminal_hasLaw (u : ℝ)\n  (T : NNReal) :\n  ProbabilityTheory.HasLaw\n    (fun ω => UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process T ω - u * ↑T)\n    (ProbabilityTheory.gaussianReal 0 T)\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T)"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.tilted_terminal_mean",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.tilted_terminal_mean (u : ℝ)\n  (T : NNReal) :\n  ∫ (ω : NNReal → ℝ),\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process T\n        ω ∂UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T =\n    u * ↑T"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.shifted_terminal_mean",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.shifted_terminal_mean (u : ℝ)\n  (T : NNReal) :\n  ∫ (ω : NNReal → ℝ),\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process T ω -\n        u * ↑T ∂UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T =\n    0"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.shifted_terminal_second_moment",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.shifted_terminal_second_moment (u : ℝ)\n  (T : NNReal) :\n  ∫ (ω : NNReal → ℝ),\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process T ω - u * ↑T) ^\n        2 ∂UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T =\n    ↑T"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.constant_terminal_integral_shift",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.constant_terminal_integral_shift (u : ℝ)\n  (T : NNReal) (ω : NNReal → ℝ) :\n  u * UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process T ω =\n    u * (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process T ω - u * ↑T) + u ^ 2 * ↑T"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.tiltedLaw_zero",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.tiltedLaw_zero (u : ℝ) :\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u 0 =\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.tiltedLaw_zero_control",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.tiltedLaw_zero_control (T : NNReal) :\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw 0 T =\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw"
+      }
+    ],
+    "allowed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "sorryAx_present": false
+  },
+  "typed_reuse": {
+    "discovery_only_preflight": {
+      "path": "/private/tmp/ueot-gaussian-girsanov-reviewed-preflight.json",
+      "sha256": "967e35077f7d39d2096533ae63b4655cfd920e53857c7d1790fa3add9e873345",
+      "bytes": 348979
+    },
+    "preflight_original_path": "/tmp/ueot-ito-vector-calibration-preflight.json",
+    "all_source_rows": [
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.gaussian_exponential_tilt",
+        "short_name": "gaussian_exponential_tilt",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianGaussianTiltSource.lean",
+        "line": 22,
+        "header_preview": "theorem gaussian_exponential_tilt (u : ℝ) (v : ℝ≥0) :     (gaussianReal 0 v).withDensity (gaussianTiltWeight u v) = gaussianReal (u*(v : ℝ)) v := by   by_cases hv : v=0   · subst v     rw [gaussianReal_zero_var,dirac_withDensity]     simp [gaussianTiltWeight]",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.map_readout_density",
+        "short_name": "map_readout_density",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianGaussianTiltSource.lean",
+        "line": 45,
+        "header_preview": "theorem map_readout_density {Ω E : Type*} [MeasurableSpace Ω] [MeasurableSpace E] (P : Measure Ω)     (X : Ω → E) (hX : Measurable X) (w : E → ℝ≥0∞) (hw : Measurable w) :     (P.withDensity (fun ω => w (X ω))).map X = (P.map X).withDensity w := by   ext A hA   rw [Measure.map_apply hX hA,withDensity_apply _ (hX hA),withDensity_apply _ hA]   rw [← lintegral_indicator (hX hA),← lintegral_indicator hA,",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [
+          {
+            "symbol": "CrooksJarzynski.MeasureProtocol.map_withDensity",
+            "path": "formalization/ueot-core/UEOT/V3/ThirdParty/CrooksJarzynski/MeasureProtocol.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          }
+        ],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.terminal_hasLaw_tilted",
+        "short_name": "terminal_hasLaw_tilted",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianGaussianTiltSource.lean",
+        "line": 58,
+        "header_preview": "theorem terminal_hasLaw_tilted (u : ℝ) (T : ℝ≥0) :     HasLaw (process T) (gaussianReal (u*(T : ℝ)) T) (tiltedLaw u T) := by   refine ⟨(measurable_process T).aemeasurable,?_⟩   change (sourceLaw.withDensity (fun ω => gaussianTiltWeight u T (process T ω))).map (process T) = _   rw [map_readout_density sourceLaw (process T) (measurable_process T) (gaussianTiltWeight u T)     (by unfold gaussianTiltWeight; fun_prop),(process_isPreBrownian.hasLaw_eval T).map_eq]",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.shifted_terminal_hasLaw",
+        "short_name": "shifted_terminal_hasLaw",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianGaussianTiltSource.lean",
+        "line": 68,
+        "header_preview": "theorem shifted_terminal_hasLaw (u : ℝ) (T : ℝ≥0) :     HasLaw (fun ω => process T ω-u*(T : ℝ)) (gaussianReal 0 T) (tiltedLaw u T) := by   simpa only [sub_self] using gaussianReal_sub_const (terminal_hasLaw_tilted u T) (u*(T : ℝ))                                                                         theorem tilted_terminal_mean (u : ℝ) (T : ℝ≥0) :",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.tilted_terminal_mean",
+        "short_name": "tilted_terminal_mean",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianGaussianTiltSource.lean",
+        "line": 73,
+        "header_preview": "theorem tilted_terminal_mean (u : ℝ) (T : ℝ≥0) :     (∫ ω, process T ω ∂tiltedLaw u T) = u*(T : ℝ) := by   have h := (terminal_hasLaw_tilted u T).integral_comp (f := id) (by fun_prop)   simpa only [Function.id_comp,id_eq,integral_id_gaussianReal] using h                                                                   ",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.shifted_terminal_mean",
+        "short_name": "shifted_terminal_mean",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianGaussianTiltSource.lean",
+        "line": 79,
+        "header_preview": "theorem shifted_terminal_mean (u : ℝ) (T : ℝ≥0) :     (∫ ω, (process T ω-u*(T : ℝ)) ∂tiltedLaw u T) = 0 := by   have h := (shifted_terminal_hasLaw u T).integral_comp (f := id) (by fun_prop)   simpa only [Function.id_comp,id_eq,integral_id_gaussianReal] using h  theorem shifted_terminal_second_moment (u : ℝ) (T : ℝ≥0) :",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.shifted_terminal_second_moment",
+        "short_name": "shifted_terminal_second_moment",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianGaussianTiltSource.lean",
+        "line": 84,
+        "header_preview": "theorem shifted_terminal_second_moment (u : ℝ) (T : ℝ≥0) :     (∫ ω, (process T ω-u*(T : ℝ))^2 ∂tiltedLaw u T) = (T : ℝ) := by   have h := variance_id_gaussianReal (μ := 0) (v := T)   rw [variance_eq_integral measurable_id.aemeasurable] at h   have hs := (shifted_terminal_hasLaw u T).integral_comp (f := fun x => x^2) (by fun_prop)   exact hs.trans (by simpa only [id_eq,integral_id_gaussianReal,sub_zero] using h)",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.constant_terminal_integral_shift",
+        "short_name": "constant_terminal_integral_shift",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianGaussianTiltSource.lean",
+        "line": 93,
+        "header_preview": "theorem constant_terminal_integral_shift (u : ℝ) (T : ℝ≥0) (ω : ℝ≥0 → ℝ) :     u*process T ω = u*(process T ω-u*(T : ℝ))+u^2*(T : ℝ) := by ring                                                                                                                                theorem tiltedLaw_zero (u : ℝ) : tiltedLaw u 0 = sourceLaw := by",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.tiltedLaw_zero",
+        "short_name": "tiltedLaw_zero",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianGaussianTiltSource.lean",
+        "line": 98,
+        "header_preview": "theorem tiltedLaw_zero (u : ℝ) : tiltedLaw u 0 = sourceLaw := by   have he : (fun ω => ENNReal.ofReal (exponentialProcess u 0 ω)) =ᵐ[sourceLaw] (1 : (ℝ≥0 → ℝ) → ℝ≥0∞) := by     filter_upwards [process_zero] with ω hω     change ENNReal.ofReal (Real.exp (u*process 0 ω-u^2*(0 : ℝ)/2))=1     simp [hω]   rw [tiltedLaw,withDensity_congr_ae he,withDensity_one]",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.law_zero",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/AbsorbingLeakage.lean",
+            "similarity": 0.667,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.inputLaw_zero",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableInputs.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.PathKLChain.pathLaw_zero",
+            "path": "formalization/ueot-core/UEOT/V3/PathKLChain.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw_rnDeriv",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+            "similarity": 0.497,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          }
+        ],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.tiltedLaw_zero_control",
+        "short_name": "tiltedLaw_zero_control",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianGaussianTiltSource.lean",
+        "line": 105,
+        "header_preview": "theorem tiltedLaw_zero_control (T : ℝ≥0) : tiltedLaw 0 T = sourceLaw := by   have he : (fun ω => ENNReal.ofReal (exponentialProcess 0 T ω)) = (1 : (ℝ≥0 → ℝ) → ℝ≥0∞) := by     funext ω     change ENNReal.ofReal (Real.exp (0*process T ω-0^2*(T : ℝ)/2))=1     simp   rw [tiltedLaw,he,withDensity_one]",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.law_zero",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/AbsorbingLeakage.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          }
+        ],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      }
+    ],
+    "all_individual_hits_accounted_for": 6,
+    "type_checked_groups": [
+      {
+        "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.map_readout_density",
+        "actual_new_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.map_readout_density.{u_1, u_2}\n  {Ω : Type u_1} {E : Type u_2} [MeasurableSpace Ω] [MeasurableSpace E] (P : MeasureTheory.Measure Ω) (X : Ω → E)\n  (hX : Measurable X) (w : E → ENNReal) (hw : Measurable w) :\n  MeasureTheory.Measure.map X (P.withDensity fun ω => w (X ω)) = (MeasureTheory.Measure.map X P).withDensity w",
+        "decision": "EXACT CrooksJarzynski.MeasureProtocol.map_withDensity.symm has the same generic measurable-readout/weight signature. Independent compatibility adapter actually elaborates. Parent explicitly approved retaining the six-line local native measure proof to avoid importing the entire CrooksJarzynski module at this low-level Gaussian leaf. This is an interface/dependency choice, NOT a new scientific result.",
+        "all_discovery_hits": [
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.map_readout_density",
+            "symbol": "CrooksJarzynski.MeasureProtocol.map_withDensity",
+            "path": "formalization/ueot-core/UEOT/V3/ThirdParty/CrooksJarzynski/MeasureProtocol.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "CrooksJarzynski.MeasureProtocol.map_withDensity.{u_1, u_2} {α : Type u_1} {β : Type u_2} [MeasurableSpace α]\n  [MeasurableSpace β] (μ : MeasureTheory.Measure α) (observable : α → β) (q : β → ENNReal)\n  (hObservable : Measurable observable) (hq : Measurable q) :\n  (MeasureTheory.Measure.map observable μ).withDensity q =\n    MeasureTheory.Measure.map observable (μ.withDensity (q ∘ observable))",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          }
+        ]
+      },
+      {
+        "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.tiltedLaw_zero",
+        "actual_new_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.tiltedLaw_zero (u : ℝ) :\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u 0 =\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw",
+        "decision": "Absorbing pure/pathLaw-zero and zero time-input-law hits concern different measures. Q at T=0 equals probability sourceLaw, not the zero measure. Original tiltedLaw_rnDeriv alone still requires actual B_0=0 AE to identify density1. Native withDensity_congr_ae/one after actual B_0 AE zero proves equality.",
+        "all_discovery_hits": [
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.tiltedLaw_zero",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.law_zero",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/AbsorbingLeakage.lean",
+            "similarity": 0.667,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.law_zero (epsilon : ℝ) (hzero : 0 ≤ epsilon)\n  (hone : epsilon ≤ 1) :\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.law epsilon hzero hone 0 = PMF.pure false",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.tiltedLaw_zero",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.inputLaw_zero",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableInputs.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.inputLaw_zero :\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianTimeIntegrand.inputLaw 0 = 0",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.tiltedLaw_zero",
+            "symbol": "UEOT.V3.PathKLChain.pathLaw_zero",
+            "path": "formalization/ueot-core/UEOT/V3/PathKLChain.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.PathKLChain.pathLaw_zero.{uX} {X : Type uX} [MeasurableSpace X] [StandardBorelSpace X] [Countable X]\n  [MeasurableSingletonClass X] [Nonempty X] (μ0 : MeasureTheory.Measure X) [MeasureTheory.IsProbabilityMeasure μ0]\n  (K : (n : ℕ) → ProbabilityTheory.Kernel (UEOT.V3.PathKLChain.History X n) X)\n  [∀ (n : ℕ), ProbabilityTheory.IsMarkovKernel (K n)] :\n  UEOT.V3.PathKLChain.pathLaw μ0 K 0 = MeasureTheory.Measure.map (⇑(MeasurableEquiv.piUnique fun x => X).symm) μ0",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.tiltedLaw_zero",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw_rnDeriv",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+            "similarity": 0.497,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw_rnDeriv (u : ℝ) (T : NNReal) :\n  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T).rnDeriv\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw =ᵐ[UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw]\n    fun ω =>\n    ENNReal.ofReal\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.exponentialProcess u T ω)",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          }
+        ]
+      },
+      {
+        "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.tiltedLaw_zero_control",
+        "actual_new_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.tiltedLaw_zero_control (T : NNReal) :\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw 0 T =\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw",
+        "decision": "Absorbing pure-law hit has different carrier/measure. Here literal exp(0)=1 pointwise and native withDensity_one prove Q_0,T=P; probability law is not the zero measure.",
+        "all_discovery_hits": [
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.tiltedLaw_zero_control",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.law_zero",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/AbsorbingLeakage.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.law_zero (epsilon : ℝ) (hzero : 0 ≤ epsilon)\n  (hone : epsilon ≤ 1) :\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.law epsilon hzero hone 0 = PMF.pure false",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          }
+        ]
+      }
+    ],
+    "no_hit_rows": "Direct source proof routes read and all resulting actual public/supporting types audited; empty name-discovery list is not a mathematical novelty/completeness finding.",
+    "binding_manifest": {
+      "path": "/tmp/ueot-gaussian-girsanov-independent-bindings.json",
+      "sha256": "9166ef98904ec762cd082a30d68a83fa2b12b3cdd8e44f8621febcbff1452605",
+      "bytes": 108953
+    },
+    "actual_old_type_snapshot": {
+      "path": "/tmp/ueot-gaussian-girsanov-independent-hit-types.json",
+      "sha256": "df04ad3f3b2a4bfe70af5cf64112724d78f288b3aa36b04bed29a37fb477d656",
+      "bytes": 25230
+    }
+  },
+  "resolved_implementation_choice": {
+    "old_helper": "CrooksJarzynski.MeasureProtocol.map_withDensity.symm",
+    "exact_compatibility_actually_elaborated": true,
+    "parent_decision": "Retain six-line native measure proof to avoid whole-module dependency in low-level Gaussian leaf. This is a small dependency/interface choice, not independent scientific novelty. Original GirsanovPathKL consumers remain direct."
+  },
+  "audit_repairs_not_source_findings": [
+    "External adapter initially used unopened ENNReal notation; changed only /tmp type harness to ENNReal; final actual0.",
+    "A zsh read-only status variable prevented exit capture after Lean; reran only final two /tmp harnesses through Python subprocess and captured both exit0. Original failed capture logs retained."
+  ],
+  "findings": [],
+  "pending_semantic_corrections": [],
+  "source_mutations": false,
+  "public_git_GI_book_mutations": false,
+  "whole_theory_goal": "OPEN; this bounded deterministic constant-tilt source adoption does not close general Itô/Girsanov/vector/control or the whole Core theory."
+}

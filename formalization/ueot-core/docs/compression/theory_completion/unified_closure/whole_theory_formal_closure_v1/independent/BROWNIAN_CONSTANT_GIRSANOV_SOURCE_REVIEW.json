@@ -1,0 +1,682 @@
+{
+  "schema": "UEOT_NONAUTHOR_SOURCE_AND_TYPED_REUSE_REVIEW_V1",
+  "status": "PASS",
+  "reviewer": "/root/c1_joint_review",
+  "author": "/root/register_typed_review",
+  "independence": "Reviewer authored none of these three source modules; full source and upstream APIs read independently. Some old C1/vector lexical hits were reviewer-authored, and are compared only by actual type mismatch, not presented as independent semantic review of those old modules.",
+  "created_utc": "2026-10-29T23:33:19.729032+00:00",
+  "candidate": "440aafb79c4b54ba5b18c0d5ede9473575f3ebb0",
+  "base": "1957ffa5594160337051ab274e24428180035974",
+  "source": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianConstantGirsanovSource.lean",
+    "sha256": "7cca207a5b3621fb327d217c9213d943faf6f13a2e050486ac2372e27f2b0c59",
+    "bytes": 8685
+  },
+  "candidate_blob_identity": true,
+  "author_receipt": {
+    "path": "/tmp/ueot-brownian-constant-girsanov-source-receipt.json",
+    "sha256": "26de65dd48ea4d44eccf9aea7a1fe345be410def1b3ce0c709d1eb77964f70fc",
+    "bytes": 4936
+  },
+  "dependencies": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteGaussianTiltSource.lean",
+      "sha256": "3372aae6f8b0c3583b3b5d3fb3cbd8f65f134de8a562831581c184ccc1fc8b6f",
+      "bytes": 13789
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralLiteralIntervals.lean",
+      "sha256": "0c81ff30498539a3e32c12a8fb6b1df7153170c524e88aeb36a2c546cb4e8dd0",
+      "bytes": 7637
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/GirsanovPathKL.lean",
+      "sha256": "f9ad0f6bfdf004e7f7e5d5ee29540287ab3d44bb934c2c40be11f1e1313a56f1",
+      "bytes": 8744
+    }
+  ],
+  "scientific_conclusion": "Actual constant-input native P integral, actual Q Brownian controlled elementary integral and original TerminalGirsanovData use SAME P/Q/density/energy; original p_kl_05 yields exact full KL=u²T/2 and every measurable readout bound.",
+  "full_source_semantic_checks": [
+    "baselineInput is the original fullPredictableL2 interval input with constant coefficient u; original predictableIntegral returns the SAME literal u(B_T−B_0) AE under P, not an assumed symbolic integral.",
+    "Controlled elementary integral is literal u(W_t−W_0) under the already proved actual Q Brownian source; its martingale uses original Ft. This does not construct arbitrary full predictable Q integrals.",
+    "Original TerminalGirsanovData is constructed field by field, including actual constant progressive real-time control, Fin2 [0,T] filtration clock, actual terminal martingale, literal initial0, energy u²T, and actual exp density. No desired shifted-law/integral/energy/martingale field is taken as a caller premise.",
+    "ChangeOfMeasure is SAME old tiltedLaw withDensity definition. Actual RN equals SAME expProcess under Q through original data theorem; actual consumer checks density/changeOfMeasure identities. AE density exponent uses actual B0=0, while integral shift retains B0 on both sides pointwise.",
+    "Original fullSpaceKL_eq_halfEnergy and original p_kl_05 are directly called. Measurable observation/readout KL is bounded by full KL; equality for every coarse readout is not claimed.",
+    "Clock is F_(toNNReal t) for control and original F0/FT for the terminal data; no OU-clock confusion, no enlargement, no substituted Q. Beyond T the W drift is clipped, so no claim of constant drift forever."
+  ],
+  "actual_public_consumer_obligations": [
+    "actualTerminalData 2 1 has ORIGINAL TerminalGirsanovData type",
+    "u=2,T=1: energy4, exact full KL2, original p_kl_05 observed B1 bound2",
+    "u=−2,T=1 also KL2; u0/T0 KL0",
+    "ALL measurable raw B-path readout consumer; SAME Q-RN/density/changeOfMeasure/controlled clock bindings"
+  ],
+  "scope_and_remaining_obligations": [
+    "Constant scalar control on fixed finite horizon only; not general predictable-control Girsanov/SDE.",
+    "Full-space KL equality; arbitrary readout only data-processing inequality.",
+    "Original arbitrary-control consumer now has a real nontrivial constant-source inhabitant, not proof of its hypotheses for all controls."
+  ],
+  "checks": [
+    {
+      "kind": "fresh_direct_actual_source_elaboration",
+      "exit_code": 0,
+      "log": {
+        "path": "/tmp/ueot-gaussian-girsanov-independent-BrownianConstantGirsanovSource1.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "kind": "fresh_types_axioms_and_exact_old_helper_adapter",
+      "exit_code": 0,
+      "input": {
+        "path": "/tmp/ueot-gaussian-girsanov-independent-types.lean",
+        "sha256": "c6fac5712dbbbeba10a5c8732c7fba6707d9a9b68481d1679b5527155d37bdfb",
+        "bytes": 23767
+      },
+      "log": {
+        "path": "/tmp/ueot-gaussian-girsanov-independent-types-final.log",
+        "sha256": "e4bacd80ee9ecee26617cd4b6d345318f3f54260d860a02564bb25fc87b82375",
+        "bytes": 59109
+      }
+    },
+    {
+      "kind": "fresh_actual_public_UEOT_consumer",
+      "exit_code": 0,
+      "input": {
+        "path": "/tmp/ueot-gaussian-girsanov-independent-consumer.lean",
+        "sha256": "657a8c555d5b265211794d6adbe271d5b0f50834c54896378ad796d2c88410d1",
+        "bytes": 8705
+      },
+      "log": {
+        "path": "/tmp/ueot-gaussian-girsanov-independent-consumer-final.log",
+        "sha256": "1aeb7b329d4105e41bb06f8b76c2a5e784a78bdce696a743364019121d873437",
+        "bytes": 4313
+      }
+    },
+    {
+      "kind": "focused_lake_build_all_three",
+      "exit_code": 0,
+      "log": {
+        "path": "/tmp/ueot-gaussian-girsanov-independent-focused1.log",
+        "sha256": "75b8689b47abc20651c8783d0ca23b53543e93fba47239e7780bb59dde8464b4",
+        "bytes": 5860
+      }
+    }
+  ],
+  "axioms": {
+    "all_new_public_and_supporting_declarations_checked": true,
+    "per_source_declarations": [
+      {
+        "source": "BrownianConstantGirsanovSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.constantControl",
+        "kind": "def",
+        "line": 21
+      },
+      {
+        "source": "BrownianConstantGirsanovSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.controlFiltration",
+        "kind": "def",
+        "line": 25
+      },
+      {
+        "source": "BrownianConstantGirsanovSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.baselineInput",
+        "kind": "def",
+        "line": 30
+      },
+      {
+        "source": "BrownianConstantGirsanovSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.baselineIntegral",
+        "kind": "def",
+        "line": 34
+      },
+      {
+        "source": "BrownianConstantGirsanovSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.baseline_returns_actual_integral",
+        "kind": "theorem",
+        "line": 36
+      },
+      {
+        "source": "BrownianConstantGirsanovSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.controlledIntegralProcess",
+        "kind": "def",
+        "line": 43
+      },
+      {
+        "source": "BrownianConstantGirsanovSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.controlledIntegralProcess_martingale",
+        "kind": "theorem",
+        "line": 46
+      },
+      {
+        "source": "BrownianConstantGirsanovSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.terminalClock",
+        "kind": "def",
+        "line": 52
+      },
+      {
+        "source": "BrownianConstantGirsanovSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.terminalClock_mono",
+        "kind": "theorem",
+        "line": 54
+      },
+      {
+        "source": "BrownianConstantGirsanovSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.terminalFiltration",
+        "kind": "def",
+        "line": 58
+      },
+      {
+        "source": "BrownianConstantGirsanovSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.terminalIntegral_martingale",
+        "kind": "theorem",
+        "line": 63
+      },
+      {
+        "source": "BrownianConstantGirsanovSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.constantControl_energy",
+        "kind": "theorem",
+        "line": 70
+      },
+      {
+        "source": "BrownianConstantGirsanovSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actual_integral_shift",
+        "kind": "theorem",
+        "line": 78
+      },
+      {
+        "source": "BrownianConstantGirsanovSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actualTerminalData",
+        "kind": "def",
+        "line": 87
+      },
+      {
+        "source": "BrownianConstantGirsanovSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actual_fullSpaceKL",
+        "kind": "theorem",
+        "line": 122
+      },
+      {
+        "source": "BrownianConstantGirsanovSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actual_observedPathKL",
+        "kind": "theorem",
+        "line": 132
+      },
+      {
+        "source": "BrownianConstantGirsanovSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actual_p_kl_05",
+        "kind": "theorem",
+        "line": 139
+      }
+    ],
+    "actual_type_and_axiom_signatures": [
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.constantControl",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.constantControl (u : ℝ) :\n  ℝ → (NNReal → ℝ) → ℝ"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.controlFiltration",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.controlFiltration :\n  MeasureTheory.Filtration ℝ inferInstance"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.baselineInput",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.baselineInput (u : ℝ) (T : NNReal) :\n  ↥(UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.fullPredictableL2 T)"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.baselineIntegral",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.baselineIntegral (u : ℝ)\n  (T : NNReal) : (NNReal → ℝ) → ℝ"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.baseline_returns_actual_integral",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.baseline_returns_actual_integral\n  (u : ℝ) (T : NNReal) :\n  ↑↑((UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity.predictableIntegral T)\n          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.baselineInput u\n            T)) =ᵐ[UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw]\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.baselineIntegral u T"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.controlledIntegralProcess",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.controlledIntegralProcess (u : ℝ)\n  (T t : NNReal) (ω : NNReal → ℝ) : ℝ"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.controlledIntegralProcess_martingale",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.controlledIntegralProcess_martingale\n  (u : ℝ) (T : NNReal) :\n  MeasureTheory.Martingale\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.controlledIntegralProcess u T)\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.naturalFiltration\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T)"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.terminalClock",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.terminalClock (T : NNReal) :\n  Fin 2 → NNReal"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.terminalClock_mono",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.terminalClock_mono (T : NNReal) :\n  Monotone (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.terminalClock T)"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.terminalFiltration",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.terminalFiltration (T : NNReal) :\n  MeasureTheory.Filtration (Fin 2) inferInstance"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.terminalIntegral_martingale",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.terminalIntegral_martingale (u : ℝ)\n  (T : NNReal) :\n  MeasureTheory.Martingale\n    (fun i =>\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.controlledIntegralProcess u T\n        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.terminalClock T i))\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.terminalFiltration T)\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T)"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.constantControl_energy",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.constantControl_energy (u : ℝ)\n  (T : NNReal) (ω : NNReal → ℝ) :\n  UEOT.V3.GirsanovPathKL.controlEnergy T\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.constantControl u) ω =\n    u ^ 2 * ↑T"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actual_integral_shift",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actual_integral_shift (u : ℝ)\n  (T : NNReal) (ω : NNReal → ℝ) :\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.baselineIntegral u T ω =\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.controlledIntegralProcess u T T\n        ω +\n      UEOT.V3.GirsanovPathKL.controlEnergy T\n        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.constantControl u) ω"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actualTerminalData",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actualTerminalData (u : ℝ)\n  (T : NNReal) :\n  UEOT.V3.GirsanovPathKL.TerminalGirsanovData\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T) T\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.constantControl u)"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actual_fullSpaceKL",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actual_fullSpaceKL (u : ℝ)\n  (T : NNReal) :\n  InformationTheory.klDiv (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T)\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw =\n    ENNReal.ofReal (1 / 2 * u ^ 2 * ↑T)"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actual_observedPathKL",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actual_observedPathKL.{u_1}\n  {Γ : Type u_1} [MeasurableSpace Γ] (u : ℝ) (T : NNReal) (readout : (NNReal → ℝ) → Γ) (hreadout : Measurable readout) :\n  InformationTheory.klDiv\n      (MeasureTheory.Measure.map readout\n        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T))\n      (MeasureTheory.Measure.map readout\n        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw) ≤\n    ENNReal.ofReal (1 / 2 * u ^ 2 * ↑T)"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actual_p_kl_05",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actual_p_kl_05.{u_1} {Γ : Type u_1}\n  [MeasurableSpace Γ] (u : ℝ) (T : NNReal) (readout : (NNReal → ℝ) → Γ) (hreadout : Measurable readout) :\n  InformationTheory.klDiv (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T)\n        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw =\n      ENNReal.ofReal (1 / 2 * u ^ 2 * ↑T) ∧\n    InformationTheory.klDiv\n        (MeasureTheory.Measure.map readout\n          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T))\n        (MeasureTheory.Measure.map readout\n          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw) ≤\n      ENNReal.ofReal (1 / 2 * u ^ 2 * ↑T)"
+      }
+    ],
+    "allowed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "sorryAx_present": false
+  },
+  "typed_reuse": {
+    "discovery_only_preflight": {
+      "path": "/private/tmp/ueot-gaussian-girsanov-reviewed-preflight.json",
+      "sha256": "967e35077f7d39d2096533ae63b4655cfd920e53857c7d1790fa3add9e873345",
+      "bytes": 348979
+    },
+    "preflight_original_path": "/tmp/ueot-ito-vector-calibration-preflight.json",
+    "all_source_rows": [
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.baseline_returns_actual_integral",
+        "short_name": "baseline_returns_actual_integral",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianConstantGirsanovSource.lean",
+        "line": 36,
+        "header_preview": "theorem baseline_returns_actual_integral (u : ℝ) (T : ℝ≥0) :     (predictableIntegral T (baselineInput u T) : (ℝ≥0 → ℝ) → ℝ) =ᵐ[sourceLaw] baselineIntegral u T := by   rw [baselineInput,integral_interval_literal]   exact (oneStep_memLp_two (memLp_top_const u) 0 T).coeFn_toLp                                                                          ",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.controlledIntegralProcess_martingale",
+        "short_name": "controlledIntegralProcess_martingale",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianConstantGirsanovSource.lean",
+        "line": 46,
+        "header_preview": "theorem controlledIntegralProcess_martingale (u : ℝ) (T : ℝ≥0) :     Martingale (controlledIntegralProcess u T) naturalFiltration (tiltedLaw u T) := by   have hconst := martingale_const_fun naturalFiltration (tiltedLaw u T)     (shiftedProcess_stronglyAdapted u T 0) ((shiftedProcess_isPreBrownian u T).integrable_eval 0)   exact ((shiftedProcess_martingale u T).sub hconst).smul u ",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_martingale",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralMartingale.lean",
+            "similarity": 0.75,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralContinuousVersion.continuousIntegralProcess_martingale",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralContinuousVersion.lean",
+            "similarity": 0.6,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.process_martingale",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.exponentialProcess_martingale",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+            "similarity": 0.497,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.GirsanovPathKL.TerminalGirsanovData.controlledIntegral_integrable",
+            "path": "formalization/ueot-core/UEOT/V3/GirsanovPathKL.lean",
+            "similarity": 0.497,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          }
+        ],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.terminalClock_mono",
+        "short_name": "terminalClock_mono",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianConstantGirsanovSource.lean",
+        "line": 54,
+        "header_preview": "theorem terminalClock_mono (T : ℝ≥0) : Monotone (terminalClock T) := by   intro i j hij   fin_cases i <;> fin_cases j <;> simp_all [terminalClock]  def terminalFiltration (T : ℝ≥0) : Filtration (Fin 2) (inferInstance : MeasurableSpace (ℝ≥0 → ℝ)) where   seq i := naturalFiltration (terminalClock T i)",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianQuadraticVariation.uniformClock_mono",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianQuadraticVariation.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          }
+        ],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.terminalIntegral_martingale",
+        "short_name": "terminalIntegral_martingale",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianConstantGirsanovSource.lean",
+        "line": 63,
+        "header_preview": "theorem terminalIntegral_martingale (u : ℝ) (T : ℝ≥0) :     Martingale (fun i => controlledIntegralProcess u T (terminalClock T i)) (terminalFiltration T) (tiltedLaw u T) := by   have hm := controlledIntegralProcess_martingale u T   exact ⟨fun i => hm.stronglyAdapted (terminalClock T i),fun i j hij => hm.condExp_ae_eq (terminalClock_mono T hij)⟩                                                                           ",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralCompensator.compensatedIntegral_martingale",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralCompensator.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_martingale",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralMartingale.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableMultiplier.multipliedIntegral_martingale",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableMultiplier.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          }
+        ],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.constantControl_energy",
+        "short_name": "constantControl_energy",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianConstantGirsanovSource.lean",
+        "line": 70,
+        "header_preview": "theorem constantControl_energy (u : ℝ) (T : ℝ≥0) (ω : ℝ≥0 → ℝ) :     controlEnergy T (constantControl u) ω=u^2*(T : ℝ) := by   simp only [controlEnergy,constantControl,intervalIntegral.integral_const,sub_zero,smul_eq_mul,     Real.norm_eq_abs,sq_abs]   ring ",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actual_integral_shift",
+        "short_name": "actual_integral_shift",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianConstantGirsanovSource.lean",
+        "line": 78,
+        "header_preview": "theorem actual_integral_shift (u : ℝ) (T : ℝ≥0) (ω : ℝ≥0 → ℝ) :     baselineIntegral u T ω=controlledIntegralProcess u T T ω+controlEnergy T (constantControl u) ω := by   rw [constantControl_energy]   unfold baselineIntegral oneStep increment controlledIntegralProcess shiftedProcess   simp only [Pi.mul_apply,min_self,zero_min,NNReal.coe_zero,mul_zero,sub_zero]   ring",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actual_fullSpaceKL",
+        "short_name": "actual_fullSpaceKL",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianConstantGirsanovSource.lean",
+        "line": 122,
+        "header_preview": "theorem actual_fullSpaceKL (u : ℝ) (T : ℝ≥0) :     klDiv (tiltedLaw u T) sourceLaw = ENNReal.ofReal ((1/2 : ℝ)*u^2*(T : ℝ)) := by   rw [(actualTerminalData u T).fullSpaceKL_eq_halfEnergy]   have he : controlEnergy T (constantControl u) = fun _ => u^2*(T : ℝ) := funext (constantControl_energy u T)   rw [he,integral_const,probReal_univ,one_smul]   congr 1",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [
+          {
+            "symbol": "UEOT.V3.GirsanovPathKL.TerminalGirsanovData.fullSpaceKL_eq_halfEnergy",
+            "path": "formalization/ueot-core/UEOT/V3/GirsanovPathKL.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          }
+        ],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actual_observedPathKL",
+        "short_name": "actual_observedPathKL",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianConstantGirsanovSource.lean",
+        "line": 132,
+        "header_preview": "theorem actual_observedPathKL {Γ : Type*} [MeasurableSpace Γ] (u : ℝ) (T : ℝ≥0)     (readout : (ℝ≥0 → ℝ) → Γ) (hreadout : Measurable readout) :     klDiv ((tiltedLaw u T).map readout) (sourceLaw.map readout) ≤ ENNReal.ofReal ((1/2 : ℝ)*u^2*(T : ℝ)) := by   rw [← actual_fullSpaceKL u T]   exact klDiv_map_le (tiltedLaw u T) sourceLaw hreadout ",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveLatentPath.actual_observed_path",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveLatentPath.lean",
+            "similarity": 0.6,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveLatentPath.actual_finite_observed_path",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveLatentPath.lean",
+            "similarity": 0.51,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          }
+        ],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actual_p_kl_05",
+        "short_name": "actual_p_kl_05",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianConstantGirsanovSource.lean",
+        "line": 139,
+        "header_preview": "theorem actual_p_kl_05 {Γ : Type*} [MeasurableSpace Γ] (u : ℝ) (T : ℝ≥0)     (readout : (ℝ≥0 → ℝ) → Γ) (hreadout : Measurable readout) :     klDiv (tiltedLaw u T) sourceLaw = ENNReal.ofReal ((1/2 : ℝ)*u^2*(T : ℝ)) ∧     klDiv ((tiltedLaw u T).map readout) (sourceLaw.map readout) ≤ ENNReal.ofReal ((1/2 : ℝ)*u^2*(T : ℝ)) := by   have h := (actualTerminalData u T).p_kl_05 readout hreadout   have he : controlEnergy T (constantControl u) = fun _ => u^2*(T : ℝ) := funext (constantControl_energy u T)",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [
+          {
+            "symbol": "UEOT.V3.GirsanovPathKL.TerminalGirsanovData.p_kl_05",
+            "path": "formalization/ueot-core/UEOT/V3/GirsanovPathKL.lean",
+            "similarity": 0.75,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          }
+        ],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      }
+    ],
+    "all_individual_hits_accounted_for": 13,
+    "type_checked_groups": [
+      {
+        "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.controlledIntegralProcess_martingale",
+        "actual_new_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.controlledIntegralProcess_martingale\n  (u : ℝ) (T : NNReal) :\n  MeasureTheory.Martingale\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.controlledIntegralProcess u T)\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.naturalFiltration\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T)",
+        "decision": "Existing scalar P-integral/B/exponential martingales have sourceLaw, while this theorem has SAME tiltedLaw Q and shifted W. Absolute continuity alone does not transport martingales. Native sub/smul applied to the proved Q-W original-filtration martingale; TerminalGirsanovData.controlledIntegral_integrable is downstream of constructing data, not an input producer.",
+        "all_discovery_hits": [
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.controlledIntegralProcess_martingale",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_martingale",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralMartingale.lean",
+            "similarity": 0.75,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_martingale (T : NNReal)\n  (f : ↥(UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.fullPredictableL2 T)) :\n  MeasureTheory.Martingale\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess T f)\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.naturalFiltration\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.controlledIntegralProcess_martingale",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralContinuousVersion.continuousIntegralProcess_martingale",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralContinuousVersion.lean",
+            "similarity": 0.6,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralContinuousVersion.continuousIntegralProcess_martingale\n  (T : NNReal)\n  (f : ↥(UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.fullPredictableL2 T)) :\n  MeasureTheory.Martingale\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralContinuousVersion.continuousIntegralProcess T\n      f)\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.naturalFiltration\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.controlledIntegralProcess_martingale",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.process_martingale",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.process_martingale :\n  MeasureTheory.Martingale UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.naturalFiltration\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.controlledIntegralProcess_martingale",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.exponentialProcess_martingale",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+            "similarity": 0.497,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.exponentialProcess_martingale (u : ℝ) :\n  MeasureTheory.Martingale\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.exponentialProcess u)\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.naturalFiltration\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.controlledIntegralProcess_martingale",
+            "symbol": "UEOT.V3.GirsanovPathKL.TerminalGirsanovData.controlledIntegral_integrable",
+            "path": "formalization/ueot-core/UEOT/V3/GirsanovPathKL.lean",
+            "similarity": 0.497,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.GirsanovPathKL.TerminalGirsanovData.controlledIntegral_integrable.{uΩ, uE} {Ω : Type uΩ} [MeasurableSpace Ω]\n  {E : Type uE} [NormedAddCommGroup E] [MeasurableSpace E] {P0 Q : MeasureTheory.Measure Ω} {T : NNReal} {u : ℝ → Ω → E}\n  [MeasureTheory.IsProbabilityMeasure Q] (h : UEOT.V3.GirsanovPathKL.TerminalGirsanovData P0 Q T u) :\n  MeasureTheory.Integrable h.controlledIntegral Q",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          }
+        ]
+      },
+      {
+        "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.terminalClock_mono",
+        "actual_new_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.terminalClock_mono (T : NNReal) :\n  Monotone (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.terminalClock T)",
+        "decision": "The existing uniformClock_mono T 0 specializes to the same two-point clock after literal clock congruence. The new Fin2 case split is a bounded local clock-interface choice, not new science or a claim about arbitrary partitions.",
+        "all_discovery_hits": [
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.terminalClock_mono",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianQuadraticVariation.uniformClock_mono",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianQuadraticVariation.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianQuadraticVariation.uniformClock_mono (T : NNReal) (n : ℕ) :\n  Monotone (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianQuadraticVariation.uniformClock T n)",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          }
+        ]
+      },
+      {
+        "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.terminalIntegral_martingale",
+        "actual_new_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.terminalIntegral_martingale (u : ℝ)\n  (T : NNReal) :\n  MeasureTheory.Martingale\n    (fun i =>\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.controlledIntegralProcess u T\n        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.terminalClock T i))\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.terminalFiltration T)\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T)",
+        "decision": "Old integral/multiplied/compensated martingales use P and different processes. Native monotone-clock martingale restriction is reused on the newly derived Q-controlled integral; no P-to-Q coercion.",
+        "all_discovery_hits": [
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.terminalIntegral_martingale",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralCompensator.compensatedIntegral_martingale",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralCompensator.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralCompensator.compensatedIntegral_martingale\n  (T : NNReal)\n  (f : ↥(UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.fullPredictableL2 T)) :\n  MeasureTheory.Martingale\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralCompensator.compensatedIntegral T f)\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.naturalFiltration\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.terminalIntegral_martingale",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_martingale",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralMartingale.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_martingale (T : NNReal)\n  (f : ↥(UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.fullPredictableL2 T)) :\n  MeasureTheory.Martingale\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess T f)\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.naturalFiltration\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.terminalIntegral_martingale",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableMultiplier.multipliedIntegral_martingale",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableMultiplier.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableMultiplier.multipliedIntegral_martingale\n  (T : NNReal) (H : ℝ × (NNReal → ℝ) → ℝ)\n  (hH : MeasureTheory.MemLp H ⊤ (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianTimeIntegrand.inputLaw T))\n  (hpred :\n    MeasureTheory.AEStronglyMeasurable H\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianTimeIntegrand.inputLaw T))\n  (f : ↥(UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.fullPredictableL2 T)) :\n  MeasureTheory.Martingale\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralContinuousVersion.continuousIntegralProcess T\n      ((UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableMultiplier.inputMultiplier T H hH hpred)\n        f))\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.naturalFiltration\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          }
+        ]
+      },
+      {
+        "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actual_fullSpaceKL",
+        "actual_new_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actual_fullSpaceKL (u : ℝ)\n  (T : NNReal) :\n  InformationTheory.klDiv (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T)\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw =\n    ENNReal.ofReal (1 / 2 * u ^ 2 * ↑T)",
+        "decision": "EXACT original TerminalGirsanovData.fullSpaceKL_eq_halfEnergy is directly consumed after all fields of actualTerminalData are constructed from SAME source and Q; constant energy is simplified, no duplicate KL proof.",
+        "all_discovery_hits": [
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actual_fullSpaceKL",
+            "symbol": "UEOT.V3.GirsanovPathKL.TerminalGirsanovData.fullSpaceKL_eq_halfEnergy",
+            "path": "formalization/ueot-core/UEOT/V3/GirsanovPathKL.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.GirsanovPathKL.TerminalGirsanovData.fullSpaceKL_eq_halfEnergy.{uΩ, uE} {Ω : Type uΩ} [MeasurableSpace Ω]\n  {E : Type uE} [NormedAddCommGroup E] [MeasurableSpace E] {P0 Q : MeasureTheory.Measure Ω} {T : NNReal} {u : ℝ → Ω → E}\n  [MeasureTheory.IsProbabilityMeasure P0] [MeasureTheory.IsProbabilityMeasure Q]\n  (h : UEOT.V3.GirsanovPathKL.TerminalGirsanovData P0 Q T u) :\n  InformationTheory.klDiv Q P0 = ENNReal.ofReal (2⁻¹ * ∫ (ω : Ω), UEOT.V3.GirsanovPathKL.controlEnergy T u ω ∂Q)",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          }
+        ]
+      },
+      {
+        "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actual_observedPathKL",
+        "actual_new_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actual_observedPathKL.{u_1}\n  {Γ : Type u_1} [MeasurableSpace Γ] (u : ℝ) (T : NNReal) (readout : (NNReal → ℝ) → Γ) (hreadout : Measurable readout) :\n  InformationTheory.klDiv\n      (MeasureTheory.Measure.map readout\n        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T))\n      (MeasureTheory.Measure.map readout\n        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw) ≤\n    ENNReal.ofReal (1 / 2 * u ^ 2 * ↑T)",
+        "decision": "C1 actual-observed-path APIs are source-to-readout law transports on different carriers, not KL bounds. New theorem uses native klDiv_map_le from the already proved full-space KL. Readouts may discard information, so only inequality is claimed.",
+        "all_discovery_hits": [
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actual_observedPathKL",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveLatentPath.actual_observed_path",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveLatentPath.lean",
+            "similarity": 0.6,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveLatentPath.actual_observed_path.{u_1, u_2, u_3}\n  {Z : Type u_1} {A : Type u_2} {W : Type u_3} [MeasurableSpace Z] [MeasurableSpace A] [MeasurableSpace W]\n  [StandardBorelSpace Z] [Nonempty Z] [MeasurableSpace.CountablyGenerated W] (P : ProbabilityTheory.Kernel (Z × A) Z)\n  [ProbabilityTheory.IsMarkovKernel P] (O : ProbabilityTheory.Kernel (Z × A) W) [ProbabilityTheory.IsMarkovKernel O]\n  (π : ProbabilityTheory.Kernel (ℕ × MeasureTheory.ProbabilityMeasure Z) A) [ProbabilityTheory.IsMarkovKernel π]\n  (r : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveJointPath.RecordState Z A W) :\n  MeasureTheory.Measure.map (UEOT.V3.DynamicsKernel.mapPath Prod.fst)\n      (UEOT.V3.DynamicsKernel.homTrajMeasure\n        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveLatentPath.latentLift r)\n        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveLatentPath.physicalKernel P O π)) =\n    UEOT.V3.DynamicsKernel.homTrajMeasure (MeasureTheory.Measure.dirac r)\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveJointPath.recordKernel P O π)",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actual_observedPathKL",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveLatentPath.actual_finite_observed_path",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveLatentPath.lean",
+            "similarity": 0.51,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveLatentPath.actual_finite_observed_path.{u_1,\n    u_2, u_3}\n  {Z : Type u_1} {A : Type u_2} {W : Type u_3} [MeasurableSpace Z] [MeasurableSpace A] [MeasurableSpace W]\n  [StandardBorelSpace Z] [Nonempty Z] [MeasurableSpace.CountablyGenerated W] (P : ProbabilityTheory.Kernel (Z × A) Z)\n  [ProbabilityTheory.IsMarkovKernel P] (O : ProbabilityTheory.Kernel (Z × A) W) [ProbabilityTheory.IsMarkovKernel O]\n  (π : ProbabilityTheory.Kernel (ℕ × MeasureTheory.ProbabilityMeasure Z) A) [ProbabilityTheory.IsMarkovKernel π]\n  (r : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveJointPath.RecordState Z A W) (n : ℕ) :\n  MeasureTheory.Measure.map (UEOT.V3.DynamicsKernel.mapHistory Prod.fst n)\n      (MeasureTheory.Measure.map (Preorder.frestrictLe n)\n        (UEOT.V3.DynamicsKernel.homTrajMeasure\n          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveLatentPath.latentLift r)\n          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveLatentPath.physicalKernel P O π))) =\n    MeasureTheory.Measure.map (Preorder.frestrictLe n)\n      (UEOT.V3.DynamicsKernel.homTrajMeasure (MeasureTheory.Measure.dirac r)\n        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveJointPath.recordKernel P O π))",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          }
+        ]
+      },
+      {
+        "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actual_p_kl_05",
+        "actual_new_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actual_p_kl_05.{u_1} {Γ : Type u_1}\n  [MeasurableSpace Γ] (u : ℝ) (T : NNReal) (readout : (NNReal → ℝ) → Γ) (hreadout : Measurable readout) :\n  InformationTheory.klDiv (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T)\n        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw =\n      ENNReal.ofReal (1 / 2 * u ^ 2 * ↑T) ∧\n    InformationTheory.klDiv\n        (MeasureTheory.Measure.map readout\n          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T))\n        (MeasureTheory.Measure.map readout\n          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw) ≤\n      ENNReal.ofReal (1 / 2 * u ^ 2 * ↑T)",
+        "decision": "EXACT original TerminalGirsanovData.p_kl_05 directly consumed, not copied or assumed; both clauses use the SAME actualTerminalData and measure.",
+        "all_discovery_hits": [
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actual_p_kl_05",
+            "symbol": "UEOT.V3.GirsanovPathKL.TerminalGirsanovData.p_kl_05",
+            "path": "formalization/ueot-core/UEOT/V3/GirsanovPathKL.lean",
+            "similarity": 0.75,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.GirsanovPathKL.TerminalGirsanovData.p_kl_05.{uΩ, uΓ, uE} {Ω : Type uΩ} [MeasurableSpace Ω] {Γ : Type uΓ}\n  [MeasurableSpace Γ] {E : Type uE} [NormedAddCommGroup E] [MeasurableSpace E] {P0 Q : MeasureTheory.Measure Ω}\n  {T : NNReal} {u : ℝ → Ω → E} [MeasureTheory.IsProbabilityMeasure P0] [MeasureTheory.IsProbabilityMeasure Q]\n  (h : UEOT.V3.GirsanovPathKL.TerminalGirsanovData P0 Q T u) (statePath : Ω → Γ) (hstate : Measurable statePath) :\n  InformationTheory.klDiv Q P0 = ENNReal.ofReal (2⁻¹ * ∫ (ω : Ω), UEOT.V3.GirsanovPathKL.controlEnergy T u ω ∂Q) ∧\n    InformationTheory.klDiv (MeasureTheory.Measure.map statePath Q) (MeasureTheory.Measure.map statePath P0) ≤\n      ENNReal.ofReal (2⁻¹ * ∫ (ω : Ω), UEOT.V3.GirsanovPathKL.controlEnergy T u ω ∂Q)",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          }
+        ]
+      }
+    ],
+    "no_hit_rows": "Direct source proof routes read and all resulting actual public/supporting types audited; empty name-discovery list is not a mathematical novelty/completeness finding.",
+    "binding_manifest": {
+      "path": "/tmp/ueot-gaussian-girsanov-independent-bindings.json",
+      "sha256": "9166ef98904ec762cd082a30d68a83fa2b12b3cdd8e44f8621febcbff1452605",
+      "bytes": 108953
+    },
+    "actual_old_type_snapshot": {
+      "path": "/tmp/ueot-gaussian-girsanov-independent-hit-types.json",
+      "sha256": "df04ad3f3b2a4bfe70af5cf64112724d78f288b3aa36b04bed29a37fb477d656",
+      "bytes": 25230
+    }
+  },
+  "resolved_implementation_choice": {
+    "old_helper": "CrooksJarzynski.MeasureProtocol.map_withDensity.symm",
+    "exact_compatibility_actually_elaborated": true,
+    "parent_decision": "Retain six-line native measure proof to avoid whole-module dependency in low-level Gaussian leaf. This is a small dependency/interface choice, not independent scientific novelty. Original GirsanovPathKL consumers remain direct."
+  },
+  "audit_repairs_not_source_findings": [
+    "External adapter initially used unopened ENNReal notation; changed only /tmp type harness to ENNReal; final actual0.",
+    "A zsh read-only status variable prevented exit capture after Lean; reran only final two /tmp harnesses through Python subprocess and captured both exit0. Original failed capture logs retained."
+  ],
+  "findings": [],
+  "pending_semantic_corrections": [],
+  "source_mutations": false,
+  "public_git_GI_book_mutations": false,
+  "whole_theory_goal": "OPEN; this bounded deterministic constant-tilt source adoption does not close general Itô/Girsanov/vector/control or the whole Core theory."
+}

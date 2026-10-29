@@ -1,0 +1,1178 @@
+{
+  "schema": "UEOT_NONAUTHOR_SOURCE_AND_TYPED_REUSE_REVIEW_V1",
+  "status": "PASS",
+  "reviewer": "/root/c1_joint_review",
+  "author": "/root/register_typed_review",
+  "independence": "Reviewer authored none of these three source modules; full source and upstream APIs read independently. Some old C1/vector lexical hits were reviewer-authored, and are compared only by actual type mismatch, not presented as independent semantic review of those old modules.",
+  "created_utc": "2026-10-29T23:33:19.717069+00:00",
+  "candidate": "440aafb79c4b54ba5b18c0d5ede9473575f3ebb0",
+  "base": "1957ffa5594160337051ab274e24428180035974",
+  "source": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteGaussianTiltSource.lean",
+    "sha256": "3372aae6f8b0c3583b3b5d3fb3cbd8f65f134de8a562831581c184ccc1fc8b6f",
+    "bytes": 13789
+  },
+  "candidate_blob_identity": true,
+  "author_receipt": {
+    "path": "/tmp/ueot-brownian-finite-gaussian-tilt-source-receipt.json",
+    "sha256": "c1e9821ad931f4b4041f9dc4e7410d3e3e541791c462a2e23faccd53bc0d4730",
+    "bytes": 3929
+  },
+  "dependencies": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianGaussianTiltSource.lean",
+      "sha256": "dd867d4114bac119a5c13b9922ad3016af7e58a52ba26f952d27233062ab0da9",
+      "bytes": 6282
+    }
+  ],
+  "scientific_conclusion": "On SAME Q, W_t=B_t-u*min(t,T) has actual ALL finite Brownian laws and continuous paths; future W increments are independent of ENTIRE original B past and form an original-F_t martingale.",
+  "full_source_semantic_checks": [
+    "For caller finite I, insert T and derive the joint Gaussian residual-vector/B_T law by a native linear map. Covariances of every residual coordinate with terminal are proved zero; Gaussian whole-vector-versus-terminal independence follows. No independence of residual coordinates is assumed.",
+    "Literal joint density depends only on B_T, so same Q factors as residual law × tilted terminal law; recentering terminal and affine reconstruction prove the ENTIRE I-restricted W law equals old P B law, including times beyond T. T=0 separate avoids division by0.",
+    "IsPreBrownian comes from all actual finite laws. Existing process_continuous is ALL constructed paths; subtracting deterministic clipped shift gives IsBrownian under Q, with no hidden Kolmogorov premise or uncountable AE intersection.",
+    "Regression residual uses B_T only as an analytic proof device. W_t itself reads B_t and deterministic u,t,T only; original-F_t strong adaptation is directly derived.",
+    "Original B past is a measurable deterministic shift of whole W past, so native Q Brownian increment independence transports to whole original B past. Same Q integrability and conditional mean0 establish martingale in original naturalFiltration.",
+    "After T, W subtracts uT, not ut. The independent consumer proves mean(B2−4) under Q_(2,1) is −2, while W2 is centered; crossing T=3/2 removes drift1 on [1,2]."
+  ],
+  "actual_public_consumer_obligations": [
+    "u=2,T=1: full joint finite table {0,1,2}, Gaussian W2 variance2",
+    "cross T=3/2 on [1,2]: Gaussian increment variance1, original F1 conditional mean0, literal shift1",
+    "Q whole original past independence; martingale original Ft; T0 and u0 IsBrownian",
+    "unclipped-after-T alternative has actual nonzero mean−2"
+  ],
+  "scope_and_remaining_obligations": [
+    "Scalar deterministic constant finite-horizon tilt only.",
+    "No arbitrary predictable drift or vector Girsanov.",
+    "Future B_T regression is proof-only; does not grant controller future access."
+  ],
+  "checks": [
+    {
+      "kind": "fresh_direct_actual_source_elaboration",
+      "exit_code": 0,
+      "log": {
+        "path": "/tmp/ueot-gaussian-girsanov-independent-BrownianFiniteGaussianTiltSource1.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "kind": "fresh_types_axioms_and_exact_old_helper_adapter",
+      "exit_code": 0,
+      "input": {
+        "path": "/tmp/ueot-gaussian-girsanov-independent-types.lean",
+        "sha256": "c6fac5712dbbbeba10a5c8732c7fba6707d9a9b68481d1679b5527155d37bdfb",
+        "bytes": 23767
+      },
+      "log": {
+        "path": "/tmp/ueot-gaussian-girsanov-independent-types-final.log",
+        "sha256": "e4bacd80ee9ecee26617cd4b6d345318f3f54260d860a02564bb25fc87b82375",
+        "bytes": 59109
+      }
+    },
+    {
+      "kind": "fresh_actual_public_UEOT_consumer",
+      "exit_code": 0,
+      "input": {
+        "path": "/tmp/ueot-gaussian-girsanov-independent-consumer.lean",
+        "sha256": "657a8c555d5b265211794d6adbe271d5b0f50834c54896378ad796d2c88410d1",
+        "bytes": 8705
+      },
+      "log": {
+        "path": "/tmp/ueot-gaussian-girsanov-independent-consumer-final.log",
+        "sha256": "1aeb7b329d4105e41bb06f8b76c2a5e784a78bdce696a743364019121d873437",
+        "bytes": 4313
+      }
+    },
+    {
+      "kind": "focused_lake_build_all_three",
+      "exit_code": 0,
+      "log": {
+        "path": "/tmp/ueot-gaussian-girsanov-independent-focused1.log",
+        "sha256": "75b8689b47abc20651c8783d0ca23b53543e93fba47239e7780bb59dde8464b4",
+        "bytes": 5860
+      }
+    }
+  ],
+  "axioms": {
+    "all_new_public_and_supporting_declarations_checked": true,
+    "per_source_declarations": [
+      {
+        "source": "BrownianFiniteGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess",
+        "kind": "def",
+        "line": 17
+      },
+      {
+        "source": "BrownianFiniteGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.regressionCoefficient",
+        "kind": "def",
+        "line": 20
+      },
+      {
+        "source": "BrownianFiniteGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.regressionResidual",
+        "kind": "def",
+        "line": 22
+      },
+      {
+        "source": "BrownianFiniteGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residualVector",
+        "kind": "def",
+        "line": 25
+      },
+      {
+        "source": "BrownianFiniteGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residualVector_measurable",
+        "kind": "theorem",
+        "line": 28
+      },
+      {
+        "source": "BrownianFiniteGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residual_terminal_jointGaussian",
+        "kind": "theorem",
+        "line": 34
+      },
+      {
+        "source": "BrownianFiniteGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residual_indep_terminal",
+        "kind": "theorem",
+        "line": 49
+      },
+      {
+        "source": "BrownianFiniteGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.tilted_residual_terminal_map",
+        "kind": "theorem",
+        "line": 66
+      },
+      {
+        "source": "BrownianFiniteGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.tilted_centered_joint_map",
+        "kind": "theorem",
+        "line": 80
+      },
+      {
+        "source": "BrownianFiniteGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shifted_finite_map",
+        "kind": "theorem",
+        "line": 97
+      },
+      {
+        "source": "BrownianFiniteGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_measurable",
+        "kind": "theorem",
+        "line": 128
+      },
+      {
+        "source": "BrownianFiniteGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_isPreBrownian",
+        "kind": "theorem",
+        "line": 133
+      },
+      {
+        "source": "BrownianFiniteGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_isBrownian",
+        "kind": "theorem",
+        "line": 148
+      },
+      {
+        "source": "BrownianFiniteGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_before",
+        "kind": "theorem",
+        "line": 155
+      },
+      {
+        "source": "BrownianFiniteGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_after",
+        "kind": "theorem",
+        "line": 158
+      },
+      {
+        "source": "BrownianFiniteGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shifted_indep_original_past",
+        "kind": "theorem",
+        "line": 163
+      },
+      {
+        "source": "BrownianFiniteGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedIncrement",
+        "kind": "def",
+        "line": 173
+      },
+      {
+        "source": "BrownianFiniteGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedIncrement_measurable",
+        "kind": "theorem",
+        "line": 176
+      },
+      {
+        "source": "BrownianFiniteGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedIncrement_indep_original_past",
+        "kind": "theorem",
+        "line": 179
+      },
+      {
+        "source": "BrownianFiniteGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_stronglyAdapted",
+        "kind": "theorem",
+        "line": 190
+      },
+      {
+        "source": "BrownianFiniteGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.condExp_shiftedIncrement",
+        "kind": "theorem",
+        "line": 195
+      },
+      {
+        "source": "BrownianFiniteGaussianTiltSource",
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_martingale",
+        "kind": "theorem",
+        "line": 214
+      }
+    ],
+    "actual_type_and_axiom_signatures": [
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess (u : ℝ)\n  (T t : NNReal) (ω : NNReal → ℝ) : ℝ"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.regressionCoefficient",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.regressionCoefficient\n  (T t : NNReal) : ℝ"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.regressionResidual",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.regressionResidual (T t : NNReal)\n  (ω : NNReal → ℝ) : ℝ"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residualVector",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residualVector (T : NNReal)\n  (I : Finset NNReal) (ω : NNReal → ℝ) : ↥I → ℝ"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residualVector_measurable",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residualVector_measurable\n  (T : NNReal) (I : Finset NNReal) :\n  Measurable (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residualVector T I)"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residual_terminal_jointGaussian",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residual_terminal_jointGaussian\n  (T : NNReal) (I : Finset NNReal) :\n  ProbabilityTheory.HasGaussianLaw\n    (fun ω =>\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residualVector T I ω,\n        fun x => UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process T ω))\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residual_indep_terminal",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residual_indep_terminal\n  (T : NNReal) (hT : T ≠ 0) (I : Finset NNReal) :\n  ProbabilityTheory.IndepFun\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residualVector T I)\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process T)\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.tilted_residual_terminal_map",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.tilted_residual_terminal_map\n  (u : ℝ) (T : NNReal) (hT : T ≠ 0) (I : Finset NNReal) :\n  MeasureTheory.Measure.map\n      (fun ω =>\n        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residualVector T I ω,\n          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process T ω))\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T) =\n    (MeasureTheory.Measure.map\n          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residualVector T I)\n          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw).prod\n      (ProbabilityTheory.gaussianReal (u * ↑T) T)"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.tilted_centered_joint_map",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.tilted_centered_joint_map (u : ℝ)\n  (T : NNReal) (hT : T ≠ 0) (I : Finset NNReal) :\n  MeasureTheory.Measure.map\n      (fun ω =>\n        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residualVector T I ω,\n          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process T ω - u * ↑T))\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T) =\n    MeasureTheory.Measure.map\n      (fun ω =>\n        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residualVector T I ω,\n          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process T ω))\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shifted_finite_map",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shifted_finite_map (u : ℝ)\n  (T : NNReal) (hT : T ≠ 0) (I : Finset NNReal) :\n  MeasureTheory.Measure.map\n      (fun ω =>\n        I.restrict fun x =>\n          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess u T x ω)\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T) =\n    MeasureTheory.Measure.map\n      (fun ω =>\n        I.restrict fun x => UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process x ω)\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_measurable",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_measurable (u : ℝ)\n  (T t : NNReal) :\n  Measurable (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess u T t)"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_isPreBrownian",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_isPreBrownian\n  (u : ℝ) (T : NNReal) :\n  ProbabilityTheory.IsPreBrownianReal\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess u T)\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T)"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_isBrownian",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_isBrownian (u : ℝ)\n  (T : NNReal) :\n  ProbabilityTheory.IsBrownianReal\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess u T)\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T)"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_before",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_before (u : ℝ)\n  (T t : NNReal) (ht : t ≤ T) (ω : NNReal → ℝ) :\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess u T t ω =\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process t ω - u * ↑t"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_after",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_after (u : ℝ)\n  (T t : NNReal) (ht : T ≤ t) (ω : NNReal → ℝ) :\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess u T t ω =\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process t ω - u * ↑T"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shifted_indep_original_past",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shifted_indep_original_past (u : ℝ)\n  (T s : NNReal) :\n  ProbabilityTheory.IndepFun\n    (fun ω r =>\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess u T (s + r)\n          ω -\n        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess u T s ω)\n    (fun ω r => UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process (↑r) ω)\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T)"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedIncrement",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedIncrement (u : ℝ)\n  (T s t : NNReal) (ω : NNReal → ℝ) : ℝ"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedIncrement_measurable",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedIncrement_measurable (u : ℝ)\n  (T s t : NNReal) :\n  Measurable\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedIncrement u T s t)"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedIncrement_indep_original_past",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedIncrement_indep_original_past\n  (u : ℝ) (T s t : NNReal) (hst : s ≤ t) :\n  ProbabilityTheory.IndepFun\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedIncrement u T s t)\n    (fun ω r => UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process (↑r) ω)\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T)"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_stronglyAdapted",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_stronglyAdapted\n  (u : ℝ) (T : NNReal) :\n  MeasureTheory.StronglyAdapted\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.naturalFiltration\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess u T)"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.condExp_shiftedIncrement",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.condExp_shiftedIncrement (u : ℝ)\n  (T s t : NNReal) (hst : s ≤ t) :\n  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u\n        T)[UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedIncrement u T s\n        t |\n      ↑UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.naturalFiltration\n        s] =ᵐ[UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T]\n    fun x => 0"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_martingale",
+        "type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_martingale (u : ℝ)\n  (T : NNReal) :\n  MeasureTheory.Martingale\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess u T)\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.naturalFiltration\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T)"
+      }
+    ],
+    "allowed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "sorryAx_present": false
+  },
+  "typed_reuse": {
+    "discovery_only_preflight": {
+      "path": "/private/tmp/ueot-gaussian-girsanov-reviewed-preflight.json",
+      "sha256": "967e35077f7d39d2096533ae63b4655cfd920e53857c7d1790fa3add9e873345",
+      "bytes": 348979
+    },
+    "preflight_original_path": "/tmp/ueot-ito-vector-calibration-preflight.json",
+    "all_source_rows": [
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residualVector_measurable",
+        "short_name": "residualVector_measurable",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteGaussianTiltSource.lean",
+        "line": 28,
+        "header_preview": "theorem residualVector_measurable (T : ℝ≥0) (I : Finset ℝ≥0) : Measurable (residualVector T I) := by   apply measurable_pi_lambda   intro i   exact (measurable_process i).sub (measurable_const.mul (measurable_process T))                                                                         ",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [
+          {
+            "symbol": "CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.Simplex.measurable_residual",
+            "path": "formalization/ueot-core/UEOT/V3/ThirdParty/CrooksJarzynski/ContinuousTimeJumpSimplex.lean",
+            "similarity": 0.667,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.Simplex.measurable_residualAt",
+            "path": "formalization/ueot-core/UEOT/V3/ThirdParty/CrooksJarzynski/ContinuousTimeJumpSimplex.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.CompactFellerControl.Model.greedySelector_measurable",
+            "path": "formalization/ueot-core/UEOT/V3/CompactFellerControl.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.vectorIncrement_measurable",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteProductSource.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.vectorProcess_measurable",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteProductSource.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          }
+        ],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residual_terminal_jointGaussian",
+        "short_name": "residual_terminal_jointGaussian",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteGaussianTiltSource.lean",
+        "line": 34,
+        "header_preview": "theorem residual_terminal_jointGaussian (T : ℝ≥0) (I : Finset ℝ≥0) :     HasGaussianLaw (fun ω => (residualVector T I ω,fun _ : Unit => process T ω)) sourceLaw := by   classical   let J := insert T I   let ind (i : I) : J := ⟨i,by simp [J,i.property]⟩   let last : J := ⟨T,by simp [J]⟩",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residual_indep_terminal",
+        "short_name": "residual_indep_terminal",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteGaussianTiltSource.lean",
+        "line": 49,
+        "header_preview": "theorem residual_indep_terminal (T : ℝ≥0) (hT : T ≠ 0) (I : Finset ℝ≥0) :     IndepFun (residualVector T I) (process T) sourceLaw := by   have hcov (i : I) (j : Unit) : cov[regressionResidual T i,fun ω => process T ω;sourceLaw]=0 := by     have hi : MemLp (process i) 2 sourceLaw := (process_isPreBrownian.hasLaw_eval i).hasGaussianLaw.memLp_two     have ht : MemLp (process T) 2 sourceLaw := (process_isPreBrownian.hasLaw_eval T).hasGaussianLaw.memLp_two     change cov[fun ω => process i ω-regressionCoefficient T i*process T ω,process T;sourceLaw]=0",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [
+          {
+            "symbol": "UEOT.V3.DiffusionHJBVerification.Model.ItoRun.residual_integrable",
+            "path": "formalization/ueot-core/UEOT/V3/DiffusionHJBVerification.lean",
+            "similarity": 0.495,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          }
+        ],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.tilted_residual_terminal_map",
+        "short_name": "tilted_residual_terminal_map",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteGaussianTiltSource.lean",
+        "line": 66,
+        "header_preview": "theorem tilted_residual_terminal_map (u : ℝ) (T : ℝ≥0) (hT : T ≠ 0) (I : Finset ℝ≥0) :     (tiltedLaw u T).map (fun ω => (residualVector T I ω,process T ω)) =       (sourceLaw.map (residualVector T I)).prod (gaussianReal (u*(T : ℝ)) T) := by   change (sourceLaw.withDensity (fun ω => gaussianTiltWeight u T (process T ω))).map     (fun ω => (residualVector T I ω,process T ω)) = _   rw [map_readout_density sourceLaw _ ((residualVector_measurable T I).prodMk (measurable_process T))",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.tilted_centered_joint_map",
+        "short_name": "tilted_centered_joint_map",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteGaussianTiltSource.lean",
+        "line": 80,
+        "header_preview": "theorem tilted_centered_joint_map (u : ℝ) (T : ℝ≥0) (hT : T ≠ 0) (I : Finset ℝ≥0) :     (tiltedLaw u T).map (fun ω => (residualVector T I ω,process T ω-u*(T : ℝ))) =       sourceLaw.map (fun ω => (residualVector T I ω,process T ω)) := by   have hm : (fun ω => (residualVector T I ω,process T ω-u*(T : ℝ))) =       Prod.map id (fun y : ℝ => y-u*(T : ℝ)) ∘ (fun ω => (residualVector T I ω,process T ω)) := rfl   rw [hm,← Measure.map_map (by fun_prop) ((residualVector_measurable T I).prodMk (measurable_process T)),",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shifted_finite_map",
+        "short_name": "shifted_finite_map",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteGaussianTiltSource.lean",
+        "line": 97,
+        "header_preview": "theorem shifted_finite_map (u : ℝ) (T : ℝ≥0) (hT : T ≠ 0) (I : Finset ℝ≥0) :     (tiltedLaw u T).map (fun ω => I.restrict (shiftedProcess u T · ω)) =       sourceLaw.map (fun ω => I.restrict (process · ω)) := by   let F : (I → ℝ) × ℝ → I → ℝ := fun p i => p.1 i+regressionCoefficient T i*p.2   have hF : Measurable F := by     apply measurable_pi_lambda",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_measurable",
+        "short_name": "shiftedProcess_measurable",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteGaussianTiltSource.lean",
+        "line": 128,
+        "header_preview": "theorem shiftedProcess_measurable (u : ℝ) (T t : ℝ≥0) : Measurable (shiftedProcess u T t) :=   (measurable_process t).sub measurable_const                                                                                                                                         theorem shiftedProcess_isPreBrownian (u : ℝ) (T : ℝ≥0) :",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.measurable_process",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianContinuousSource.lean",
+            "similarity": 0.667,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.vectorProcess_measurable",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteProductSource.lean",
+            "similarity": 0.51,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.measurable_joint_process",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianContinuousSource.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.measurable_exponentialProcess",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          }
+        ],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_isPreBrownian",
+        "short_name": "shiftedProcess_isPreBrownian",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteGaussianTiltSource.lean",
+        "line": 133,
+        "header_preview": "theorem shiftedProcess_isPreBrownian (u : ℝ) (T : ℝ≥0) :     IsPreBrownianReal (shiftedProcess u T) (tiltedLaw u T) := by   constructor   intro I   have hr : Measurable (fun ω => I.restrict (shiftedProcess u T · ω)) :=     measurable_pi_lambda _ (fun (i : I) => shiftedProcess_measurable u T i)",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process_isPreBrownian",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianContinuousSource.lean",
+            "similarity": 0.8,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process_isBrownian",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianContinuousSource.lean",
+            "similarity": 0.6,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.source_isPreBrownian",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianProjectiveSource.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          }
+        ],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_isBrownian",
+        "short_name": "shiftedProcess_isBrownian",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteGaussianTiltSource.lean",
+        "line": 148,
+        "header_preview": "theorem shiftedProcess_isBrownian (u : ℝ) (T : ℝ≥0) :     IsBrownianReal (shiftedProcess u T) (tiltedLaw u T) := by   refine ⟨shiftedProcess_isPreBrownian u T,Eventually.of_forall (fun ω => ?_)⟩   exact (process_continuous ω).sub (continuous_const.mul (continuous_subtype_val.comp (continuous_id.min continuous_const)))                                                                         ",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process_isBrownian",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianContinuousSource.lean",
+            "similarity": 0.75,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process_isPreBrownian",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianContinuousSource.lean",
+            "similarity": 0.6,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          }
+        ],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_before",
+        "short_name": "shiftedProcess_before",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteGaussianTiltSource.lean",
+        "line": 155,
+        "header_preview": "theorem shiftedProcess_before (u : ℝ) (T t : ℝ≥0) (ht : t ≤ T) (ω : ℝ≥0 → ℝ) :     shiftedProcess u T t ω=process t ω-u*(t : ℝ) := by rw [shiftedProcess,min_eq_left ht]  theorem shiftedProcess_after (u : ℝ) (T t : ℝ≥0) (ht : T ≤ t) (ω : ℝ≥0 → ℝ) :     shiftedProcess u T t ω=process t ω-u*(T : ℝ) := by rw [shiftedProcess,min_eq_right ht] ",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_after",
+        "short_name": "shiftedProcess_after",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteGaussianTiltSource.lean",
+        "line": 158,
+        "header_preview": "theorem shiftedProcess_after (u : ℝ) (T t : ℝ≥0) (ht : T ≤ t) (ω : ℝ≥0 → ℝ) :     shiftedProcess u T t ω=process t ω-u*(T : ℝ) := by rw [shiftedProcess,min_eq_right ht]                                                                                                                                                         theorem shifted_indep_original_past (u : ℝ) (T s : ℝ≥0) :",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shifted_indep_original_past",
+        "short_name": "shifted_indep_original_past",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteGaussianTiltSource.lean",
+        "line": 163,
+        "header_preview": "theorem shifted_indep_original_past (u : ℝ) (T s : ℝ≥0) :     IndepFun (fun ω r => shiftedProcess u T (s+r) ω-shiftedProcess u T s ω)       (fun ω (r : Iic s) => process r ω) (tiltedLaw u T) := by   have hm : Measurable (fun f : Iic s → ℝ => fun r => f r+u*(min (r : ℝ≥0) T : ℝ≥0)) := by     apply measurable_pi_lambda     intro r",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedIncrement_measurable",
+        "short_name": "shiftedIncrement_measurable",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteGaussianTiltSource.lean",
+        "line": 176,
+        "header_preview": "theorem shiftedIncrement_measurable (u : ℝ) (T s t : ℝ≥0) : Measurable (shiftedIncrement u T s t) :=   (shiftedProcess_measurable u T t).sub (shiftedProcess_measurable u T s)  theorem shiftedIncrement_indep_original_past (u : ℝ) (T s t : ℝ≥0) (hst : s ≤ t) :     IndepFun (shiftedIncrement u T s t) (fun ω (r : Iic s) => process r ω) (tiltedLaw u T) := by   have h := (shifted_indep_original_past u T s).comp (measurable_pi_apply (t-s)) measurable_id",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.measurable_increment",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+            "similarity": 0.667,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.coordinateIncrement_measurable",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteProductSource.lean",
+            "similarity": 0.529,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.vectorIncrement_measurable",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteProductSource.lean",
+            "similarity": 0.52,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          }
+        ],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedIncrement_indep_original_past",
+        "short_name": "shiftedIncrement_indep_original_past",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteGaussianTiltSource.lean",
+        "line": 179,
+        "header_preview": "theorem shiftedIncrement_indep_original_past (u : ℝ) (T s t : ℝ≥0) (hst : s ≤ t) :     IndepFun (shiftedIncrement u T s t) (fun ω (r : Iic s) => process r ω) (tiltedLaw u T) := by   have h := (shifted_indep_original_past u T s).comp (measurable_pi_apply (t-s)) measurable_id   have hs : s+(t-s)=t := add_tsub_cancel_of_le hst   change IndepFun (fun ω => shiftedProcess u T (s+(t-s)) ω-shiftedProcess u T s ω)     (fun ω (r : Iic s) => process r ω) (tiltedLaw u T) at h",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.increment_indep_past",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+            "similarity": 0.6,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.coordinateIncrement_indep_jointPast",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteProductSource.lean",
+            "similarity": 0.492,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.vectorIncrement_indep_jointPast",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteProductSource.lean",
+            "similarity": 0.483,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          }
+        ],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_stronglyAdapted",
+        "short_name": "shiftedProcess_stronglyAdapted",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteGaussianTiltSource.lean",
+        "line": 190,
+        "header_preview": "theorem shiftedProcess_stronglyAdapted (u : ℝ) (T : ℝ≥0) :     StronglyAdapted naturalFiltration (shiftedProcess u T) := by   intro t   exact (process_stronglyAdapted t).sub stronglyMeasurable_const  theorem condExp_shiftedIncrement (u : ℝ) (T s t : ℝ≥0) (hst : s ≤ t) :",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.process_stronglyAdapted",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+            "similarity": 0.75,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.vectorProcess_stronglyAdapted",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteProductSource.lean",
+            "similarity": 0.6,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_stronglyAdapted",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralMartingale.lean",
+            "similarity": 0.6,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.exponentialProcess_stronglyAdapted",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+            "similarity": 0.6,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.PredictableOLSSourceAdapted.shiftedScore_stronglyAdapted",
+            "path": "formalization/ueot-core/UEOT/V3/PredictableOLSSourceAdapted.lean",
+            "similarity": 0.6,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          }
+        ],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.condExp_shiftedIncrement",
+        "short_name": "condExp_shiftedIncrement",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteGaussianTiltSource.lean",
+        "line": 195,
+        "header_preview": "theorem condExp_shiftedIncrement (u : ℝ) (T s t : ℝ≥0) (hst : s ≤ t) :     (tiltedLaw u T)[shiftedIncrement u T s t | naturalFiltration s] =ᵐ[tiltedLaw u T] fun _ => 0 := by   have hi : Indep (MeasurableSpace.comap (shiftedIncrement u T s t) inferInstance)       (naturalFiltration s) (tiltedLaw u T) := by     rw [naturalFiltration,Filtration.natural_eq_comap]     exact shiftedIncrement_indep_original_past u T s t hst",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.coordinateIncrement_condExp",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteProductSource.lean",
+            "similarity": 0.6,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.condExp_increment_function",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+            "similarity": 0.6,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.condExp_increment_square",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+            "similarity": 0.6,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.condExp_increment_zero",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+            "similarity": 0.6,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.coordinateIncrement_condExp_product",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteProductSource.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          }
+        ],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      },
+      {
+        "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_martingale",
+        "short_name": "shiftedProcess_martingale",
+        "kind": "theorem",
+        "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteGaussianTiltSource.lean",
+        "line": 214,
+        "header_preview": "theorem shiftedProcess_martingale (u : ℝ) (T : ℝ≥0) :     Martingale (shiftedProcess u T) naturalFiltration (tiltedLaw u T) := by   refine ⟨shiftedProcess_stronglyAdapted u T,fun s t hst => ?_⟩   have hW := shiftedProcess_isPreBrownian u T   have hi : Integrable (shiftedIncrement u T s t) (tiltedLaw u T) :=     (hW.integrable_eval t).sub (hW.integrable_eval s)",
+        "origin": "UEOT_MAINTAINED",
+        "reuse_candidates": [
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.process_martingale",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+            "similarity": 0.667,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_martingale",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralMartingale.lean",
+            "similarity": 0.54,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          },
+          {
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.exponentialProcess_martingale",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED"
+          }
+        ],
+        "review_outcome": "TYPED_REUSE_REVIEW_REQUIRED"
+      }
+    ],
+    "all_individual_hits_accounted_for": 34,
+    "type_checked_groups": [
+      {
+        "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residualVector_measurable",
+        "actual_new_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residualVector_measurable\n  (T : NNReal) (I : Finset NNReal) :\n  Measurable (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residualVector T I)",
+        "decision": "Jump-simplex residuals, greedy selectors and product-vector Brownian observables have different carriers and codomains. Actual finite residual table uses native measurable_pi and same scalar B_i/B_T endpoint measurability with deterministic subtraction. No selector or vector independence is imported as a premise.",
+        "all_discovery_hits": [
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residualVector_measurable",
+            "symbol": "CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.Simplex.measurable_residual",
+            "path": "formalization/ueot-core/UEOT/V3/ThirdParty/CrooksJarzynski/ContinuousTimeJumpSimplex.lean",
+            "similarity": 0.667,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.Simplex.measurable_residual {n : ℕ} :\n  Measurable CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.Simplex.residual",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residualVector_measurable",
+            "symbol": "CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.Simplex.measurable_residualAt",
+            "path": "formalization/ueot-core/UEOT/V3/ThirdParty/CrooksJarzynski/ContinuousTimeJumpSimplex.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.Simplex.measurable_residualAt {n : ℕ} (ρ : ℝ) :\n  Measurable (CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.Simplex.residualAt ρ)",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residualVector_measurable",
+            "symbol": "UEOT.V3.CompactFellerControl.Model.greedySelector_measurable",
+            "path": "formalization/ueot-core/UEOT/V3/CompactFellerControl.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.CompactFellerControl.Model.greedySelector_measurable.{uX, uA} {X : Type uX} {A : Type uA} [MetricSpace X]\n  [CompactSpace X] [MeasurableSpace X] [BorelSpace X] [MetricSpace A] [CompactSpace A] [Nonempty A] [MeasurableSpace A]\n  [BorelSpace A] (M : UEOT.V3.CompactFellerControl.Model X A) : Measurable M.greedySelector",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residualVector_measurable",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.vectorIncrement_measurable",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteProductSource.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.vectorIncrement_measurable (d : ℕ)\n  (s t : NNReal) :\n  Measurable (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.vectorIncrement d s t)",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residualVector_measurable",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.vectorProcess_measurable",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteProductSource.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.vectorProcess_measurable (d : ℕ)\n  (t : NNReal) :\n  Measurable (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.vectorProcess d t)",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          }
+        ]
+      },
+      {
+        "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residual_indep_terminal",
+        "actual_new_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residual_indep_terminal\n  (T : NNReal) (hT : T ≠ 0) (I : Finset NNReal) :\n  ProbabilityTheory.IndepFun\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residualVector T I)\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process T)\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw",
+        "decision": "DiffusionHJB ItoRun.residual_integrable assumes an ItoRun and proves occupation integrability, not Gaussian regression independence. New proof derives finite joint Gaussian covariance zero and native Gaussian independence for the WHOLE residual vector versus B_T; it does not assume residual coordinates independent.",
+        "all_discovery_hits": [
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.residual_indep_terminal",
+            "symbol": "UEOT.V3.DiffusionHJBVerification.Model.ItoRun.residual_integrable",
+            "path": "formalization/ueot-core/UEOT/V3/DiffusionHJBVerification.lean",
+            "similarity": 0.495,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.DiffusionHJBVerification.Model.ItoRun.residual_integrable.{uX, uA} {X : Type uX} [NormedAddCommGroup X]\n  [NormedSpace ℝ X] [MeasurableSpace X] [BorelSpace X] {A : Type uA} [MeasurableSpace A]\n  {M : UEOT.V3.DiffusionHJBVerification.Model X A} {x0 : X} (R : M.ItoRun x0) (T : NNReal) :\n  MeasureTheory.Integrable (fun z => M.residual z) (R.occupation T)",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          }
+        ]
+      },
+      {
+        "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_measurable",
+        "actual_new_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_measurable (u : ℝ)\n  (T t : NNReal) :\n  Measurable (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess u T t)",
+        "decision": "EXACT same-source measurable_process endpoint reused under native subtraction of a deterministic constant. Product-vector/exponential observables differ; joint measurability can specialize but is unnecessary.",
+        "all_discovery_hits": [
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_measurable",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.measurable_process",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianContinuousSource.lean",
+            "similarity": 0.667,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.measurable_process (t : NNReal) :\n  Measurable (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process t)",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_measurable",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.vectorProcess_measurable",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteProductSource.lean",
+            "similarity": 0.51,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.vectorProcess_measurable (d : ℕ)\n  (t : NNReal) :\n  Measurable (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.vectorProcess d t)",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_measurable",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.measurable_joint_process",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianContinuousSource.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.measurable_joint_process :\n  Measurable (Function.uncurry UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process)",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_measurable",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.measurable_exponentialProcess",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.measurable_exponentialProcess (u : ℝ)\n  (t : NNReal) :\n  Measurable (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.exponentialProcess u t)",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          }
+        ]
+      },
+      {
+        "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_isPreBrownian",
+        "actual_new_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_isPreBrownian\n  (u : ℝ) (T : NNReal) :\n  ProbabilityTheory.IsPreBrownianReal\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess u T)\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T)",
+        "decision": "Original source P raw/canonical IsPreBrownian does not imply W under changed Q merely by absolute continuity. Original finite Gaussian laws are reused, then genuine joint Gaussian Esscher/reconstruction gives ALL finite shifted tables under SAME Q.",
+        "all_discovery_hits": [
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_isPreBrownian",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process_isPreBrownian",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianContinuousSource.lean",
+            "similarity": 0.8,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process_isPreBrownian :\n  ProbabilityTheory.IsPreBrownianReal\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_isPreBrownian",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process_isBrownian",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianContinuousSource.lean",
+            "similarity": 0.6,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process_isBrownian :\n  ProbabilityTheory.IsBrownianReal UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_isPreBrownian",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.source_isPreBrownian",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianProjectiveSource.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.source_isPreBrownian :\n  ProbabilityTheory.IsPreBrownianReal (fun t ω => ω t)\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          }
+        ]
+      },
+      {
+        "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_isBrownian",
+        "actual_new_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_isBrownian (u : ℝ)\n  (T : NNReal) :\n  ProbabilityTheory.IsBrownianReal\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess u T)\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T)",
+        "decision": "Existing P Brownian/pre-Brownian laws are not Q-W conclusions. Reuse original ALL-path process_continuous and derived Q finite laws, subtract deterministic continuous clipped shift; no continuity field or uncountable AE intersection assumed.",
+        "all_discovery_hits": [
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_isBrownian",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process_isBrownian",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianContinuousSource.lean",
+            "similarity": 0.75,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process_isBrownian :\n  ProbabilityTheory.IsBrownianReal UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_isBrownian",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process_isPreBrownian",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianContinuousSource.lean",
+            "similarity": 0.6,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process_isPreBrownian :\n  ProbabilityTheory.IsPreBrownianReal\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          }
+        ]
+      },
+      {
+        "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedIncrement_measurable",
+        "actual_new_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedIncrement_measurable (u : ℝ)\n  (T s t : NNReal) :\n  Measurable\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedIncrement u T s t)",
+        "decision": "Same scalar measurable_increment can yield the result after deterministic-shift rewriting; implementation instead subtracts two directly reused shifted endpoint measurability facts. Product-coordinate/vector hits have different domains. This is measure-free measurability, not changed-measure independence.",
+        "all_discovery_hits": [
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedIncrement_measurable",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.measurable_increment",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+            "similarity": 0.667,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.measurable_increment (s t : NNReal) :\n  Measurable (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.increment s t)",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedIncrement_measurable",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.coordinateIncrement_measurable",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteProductSource.lean",
+            "similarity": 0.529,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.coordinateIncrement_measurable (d : ℕ)\n  (i : Fin d) (s t : NNReal) :\n  Measurable\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.coordinateIncrement d i s t)",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedIncrement_measurable",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.vectorIncrement_measurable",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteProductSource.lean",
+            "similarity": 0.52,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.vectorIncrement_measurable (d : ℕ)\n  (s t : NNReal) :\n  Measurable (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.vectorIncrement d s t)",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          }
+        ]
+      },
+      {
+        "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedIncrement_indep_original_past",
+        "actual_new_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedIncrement_indep_original_past\n  (u : ℝ) (T s t : NNReal) (hst : s ≤ t) :\n  ProbabilityTheory.IndepFun\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedIncrement u T s t)\n    (fun ω r => UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process (↑r) ω)\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T)",
+        "decision": "Existing scalar P past independence and product P_d joint-past independence have the wrong law or carrier. Derived IsPreBrownian of W under Q gives independence from ENTIRE W-past, then a measurable deterministic shift reconstructs ENTIRE original B-past. No weakening to current-state-only past.",
+        "all_discovery_hits": [
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedIncrement_indep_original_past",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.increment_indep_past",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+            "similarity": 0.6,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.increment_indep_past (s t : NNReal)\n  (hst : s ≤ t) :\n  ProbabilityTheory.IndepFun\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.increment s t)\n    (fun ω r => UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process (↑r) ω)\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedIncrement_indep_original_past",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.coordinateIncrement_indep_jointPast",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteProductSource.lean",
+            "similarity": 0.492,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.coordinateIncrement_indep_jointPast\n  (d : ℕ) (i : Fin d) (s t : NNReal) (hst : s ≤ t) :\n  ProbabilityTheory.IndepFun\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.coordinateIncrement d i s t)\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.jointPast d s)\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.productLaw d)",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedIncrement_indep_original_past",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.vectorIncrement_indep_jointPast",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteProductSource.lean",
+            "similarity": 0.483,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.vectorIncrement_indep_jointPast (d : ℕ)\n  (s t : NNReal) (hst : s ≤ t) :\n  ProbabilityTheory.IndepFun\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.vectorIncrement d s t)\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.jointPast d s)\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.productLaw d)",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          }
+        ]
+      },
+      {
+        "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_stronglyAdapted",
+        "actual_new_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_stronglyAdapted\n  (u : ℝ) (T : NNReal) :\n  MeasureTheory.StronglyAdapted\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.naturalFiltration\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess u T)",
+        "decision": "EXACT original process_stronglyAdapted is reused via native subtraction of deterministic strongly adapted constants. Other integral/exponential/vector/discrete-score hits have different observables. No future information or filtration enlargement.",
+        "all_discovery_hits": [
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_stronglyAdapted",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.process_stronglyAdapted",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+            "similarity": 0.75,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.process_stronglyAdapted :\n  MeasureTheory.StronglyAdapted\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.naturalFiltration\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_stronglyAdapted",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.vectorProcess_stronglyAdapted",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteProductSource.lean",
+            "similarity": 0.6,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.vectorProcess_stronglyAdapted (d : ℕ) :\n  MeasureTheory.StronglyAdapted\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.jointNaturalFiltration d)\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.vectorProcess d)",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_stronglyAdapted",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_stronglyAdapted",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralMartingale.lean",
+            "similarity": 0.6,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_stronglyAdapted\n  (T : NNReal)\n  (f : ↥(UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.fullPredictableL2 T)) :\n  MeasureTheory.StronglyAdapted\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.naturalFiltration\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess T f)",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_stronglyAdapted",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.exponentialProcess_stronglyAdapted",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+            "similarity": 0.6,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.exponentialProcess_stronglyAdapted\n  (u : ℝ) :\n  MeasureTheory.StronglyAdapted\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.naturalFiltration\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.exponentialProcess u)",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_stronglyAdapted",
+            "symbol": "UEOT.V3.PredictableOLSSourceAdapted.shiftedScore_stronglyAdapted",
+            "path": "formalization/ueot-core/UEOT/V3/PredictableOLSSourceAdapted.lean",
+            "similarity": 0.6,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.PredictableOLSSourceAdapted.shiftedScore_stronglyAdapted.{uΩ} {Ω : Type uΩ} [mΩ : MeasurableSpace Ω] {d : ℕ}\n  (F : MeasureTheory.Filtration ℕ mΩ) (phi : ℕ → Ω → Fin d → ℝ) (xi : ℕ → Ω → ℝ) (j : Fin d)\n  (hphi : ∀ (n : ℕ) (j : Fin d), Measurable fun ω => phi (n + 1) ω j) (hxi : ∀ (n : ℕ), Measurable (xi (n + 1))) :\n  MeasureTheory.StronglyAdapted (UEOT.V3.PredictableOLSSourceAdapted.succFiltration F)\n    (UEOT.V3.PredictableOLSSourceAdapted.shiftedScoreProcess phi xi j)",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          }
+        ]
+      },
+      {
+        "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.condExp_shiftedIncrement",
+        "actual_new_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.condExp_shiftedIncrement (u : ℝ)\n  (T s t : NNReal) (hst : s ≤ t) :\n  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u\n        T)[UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedIncrement u T s\n        t |\n      ↑UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.naturalFiltration\n        s] =ᵐ[UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T]\n    fun x => 0",
+        "decision": "Conditional expectation depends on measure; old P or product-law coordinate formulas cannot imply Q. Square/product hit observables also differ. Native conditional expectation of independent integrable actual Q increment is used with the whole original past, yielding zero.",
+        "all_discovery_hits": [
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.condExp_shiftedIncrement",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.coordinateIncrement_condExp",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteProductSource.lean",
+            "similarity": 0.6,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.coordinateIncrement_condExp (d : ℕ)\n  (i : Fin d) (s t : NNReal) (hst : s ≤ t) :\n  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.productLaw\n        d)[UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.coordinateIncrement d i s t |\n      ↑(UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.jointNaturalFiltration d)\n        s] =ᵐ[UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.productLaw d]\n    fun x => 0",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.condExp_shiftedIncrement",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.condExp_increment_function",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+            "similarity": 0.6,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.condExp_increment_function (s t : NNReal)\n  (hst : s ≤ t) (φ : ℝ → ℝ) (hφ : Measurable φ) :\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw[fun ω =>\n      φ (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.increment s t ω) |\n      ↑UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.naturalFiltration\n        s] =ᵐ[UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw]\n    fun x =>\n    ∫ (ω : NNReal → ℝ),\n      φ\n        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.increment s t\n          ω) ∂UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.condExp_shiftedIncrement",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.condExp_increment_square",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+            "similarity": 0.6,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.condExp_increment_square (s t : NNReal)\n  (hst : s ≤ t) :\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw[fun ω =>\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.increment s t ω ^ 2 |\n      ↑UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.naturalFiltration\n        s] =ᵐ[UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw]\n    fun x => ↑t - ↑s",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.condExp_shiftedIncrement",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.condExp_increment_zero",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+            "similarity": 0.6,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.condExp_increment_zero (s t : NNReal)\n  (hst : s ≤ t) :\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw[UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.increment\n        s t |\n      ↑UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.naturalFiltration\n        s] =ᵐ[UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw]\n    fun x => 0",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.condExp_shiftedIncrement",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.coordinateIncrement_condExp_product",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteProductSource.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.coordinateIncrement_condExp_product\n  (d : ℕ) (i j : Fin d) (s t : NNReal) (hst : s ≤ t) :\n  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.productLaw d)[fun ω =>\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.coordinateIncrement d i s t ω *\n        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.coordinateIncrement d j s t ω |\n      ↑(UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.jointNaturalFiltration d)\n        s] =ᵐ[UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.productLaw d]\n    fun x => if i = j then ↑t - ↑s else 0",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          }
+        ]
+      },
+      {
+        "new_symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_martingale",
+        "actual_new_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_martingale (u : ℝ)\n  (T : NNReal) :\n  MeasureTheory.Martingale\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess u T)\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.naturalFiltration\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T)",
+        "decision": "Old P scalar/integral/exponential martingales do not transfer by Q≪P. Derived Q increment mean-zero plus actual Q integrability and original-filtration adaptation supply the martingale via native criteria.",
+        "all_discovery_hits": [
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_martingale",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.process_martingale",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+            "similarity": 0.667,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.process_martingale :\n  MeasureTheory.Martingale UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.naturalFiltration\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_martingale",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_martingale",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralMartingale.lean",
+            "similarity": 0.54,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_martingale (T : NNReal)\n  (f : ↥(UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.fullPredictableL2 T)) :\n  MeasureTheory.Martingale\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess T f)\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.naturalFiltration\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          },
+          {
+            "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_martingale",
+            "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.exponentialProcess_martingale",
+            "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+            "similarity": 0.5,
+            "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+            "actual_old_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.exponentialProcess_martingale (u : ℝ) :\n  MeasureTheory.Martingale\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.exponentialProcess u)\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.naturalFiltration\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw",
+            "kernel_type_actually_checked": true,
+            "original_lexical_status_is_not_verdict": true
+          }
+        ]
+      }
+    ],
+    "no_hit_rows": "Direct source proof routes read and all resulting actual public/supporting types audited; empty name-discovery list is not a mathematical novelty/completeness finding.",
+    "binding_manifest": {
+      "path": "/tmp/ueot-gaussian-girsanov-independent-bindings.json",
+      "sha256": "9166ef98904ec762cd082a30d68a83fa2b12b3cdd8e44f8621febcbff1452605",
+      "bytes": 108953
+    },
+    "actual_old_type_snapshot": {
+      "path": "/tmp/ueot-gaussian-girsanov-independent-hit-types.json",
+      "sha256": "df04ad3f3b2a4bfe70af5cf64112724d78f288b3aa36b04bed29a37fb477d656",
+      "bytes": 25230
+    }
+  },
+  "resolved_implementation_choice": {
+    "old_helper": "CrooksJarzynski.MeasureProtocol.map_withDensity.symm",
+    "exact_compatibility_actually_elaborated": true,
+    "parent_decision": "Retain six-line native measure proof to avoid whole-module dependency in low-level Gaussian leaf. This is a small dependency/interface choice, not independent scientific novelty. Original GirsanovPathKL consumers remain direct."
+  },
+  "audit_repairs_not_source_findings": [
+    "External adapter initially used unopened ENNReal notation; changed only /tmp type harness to ENNReal; final actual0.",
+    "A zsh read-only status variable prevented exit capture after Lean; reran only final two /tmp harnesses through Python subprocess and captured both exit0. Original failed capture logs retained."
+  ],
+  "findings": [],
+  "pending_semantic_corrections": [],
+  "source_mutations": false,
+  "public_git_GI_book_mutations": false,
+  "whole_theory_goal": "OPEN; this bounded deterministic constant-tilt source adoption does not close general Itô/Girsanov/vector/control or the whole Core theory."
+}
