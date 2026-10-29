@@ -217,6 +217,8 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianSimplePredict
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveWordController
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveHistoryCanonical
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralClosure
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeInfinite
 /-!
 # UEOT Theory Completion public root
 

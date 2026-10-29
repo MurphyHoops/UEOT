@@ -1,0 +1,191 @@
+{
+  "schema": "UEOT_INDEPENDENT_SOURCE_REVIEW_V1",
+  "verdict": "PASS_NO_PENDING_SOURCE_SEMANTIC_CORRECTION",
+  "created_utc": "2026-10-29T18:20:32.689603+00:00",
+  "reviewer": {
+    "task": "/root/c1_joint_review",
+    "role": "Independent reviewer; did not author PredictableInputs or Brownian source/integral closure chain."
+  },
+  "source": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableInputs.lean",
+    "sha256": "cfce88106ce5c1bd871fb898ddd098eeeb4c404c13f5455535b825a0c080ac68",
+    "bytes": 14619
+  },
+  "author_receipt": {
+    "path": "/private/tmp/ueot-brownian-predictable-inputs-source-receipt.json",
+    "sha256": "7095e44e3c39bff544cdfa0859615656a6003f3e0d5a7def382d76608ecee242",
+    "bytes": 6664
+  },
+  "dependencies": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralClosure.lean",
+      "sha256": "c9967cc526519101a6737254c7f9c323c3698d589332f3f7d499285cbcf0b41f",
+      "bytes": 10964
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianTimeIntegrand.lean",
+      "sha256": "f3b6437b82d664b54f90a1a3f5cd6c77ef05c07b63b9b3dca533de54f4f007c3",
+      "bytes": 10851
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+      "sha256": "a51aedd39c0a819fb9fb045d008aac7ab622049f5bb749e2dab32d3dbdd25cc3",
+      "bytes": 16180
+    }
+  ],
+  "whole_theory_goal": "OPEN. Establishes actual elementary-closure inclusion in independently defined native predictable L2 and actual generator realization. Reverse inclusion/full predictable density is NOT proved in this source.",
+  "comment_precision_history": {
+    "reviewed_original_source": {
+      "path": "/private/tmp/ueot-brownian-predictable-inputs-reviewed-draft.lean",
+      "sha256": "73148fabf10221294bd494fe8ca087377edce0c8e42b42580c29bb61d1a52193",
+      "bytes": 14619
+    },
+    "old_sha256": "73148fabf10221294bd494fe8ca087377edce0c8e42b42580c29bb61d1a52193",
+    "new_sha256": "cfce88106ce5c1bd871fb898ddd098eeeb4c404c13f5455535b825a0c080ac68",
+    "identity_receipt": {
+      "path": "/private/tmp/ueot-brownian-predictable-inputs-comment-identity.json",
+      "sha256": "b18578d3a3efaba549e9e8c9b005032ed7310bfec093461dd870cc473f556bc1",
+      "bytes": 870
+    },
+    "author_diff": {
+      "path": "/private/tmp/ueot-brownian-predictable-inputs-comment-only-diff.txt",
+      "sha256": "41e15dbaec7ebf329c036e3faa6ab3b0da7bae12662aac25d6c1c53c0dc6ecd9",
+      "bytes": 1254
+    },
+    "independently_verified_exact_two_comment_reverse_reconstruction": true,
+    "same_source_hash_claimed": false,
+    "findings_resolved": [
+      {
+        "original": "predictable_interval_rectangle comment used iff wording",
+        "resolution": "Now states START-time permission is SUFFICIENT only. The theorem was already one-directional; s=t empty rectangle disproves an unnecessary converse."
+      },
+      {
+        "original": "time_support_ae comment called its event probability-one",
+        "resolution": "Now says full-measure. inputLaw T has total massT and is zero atT=0, so AE/full-measure is the correct language."
+      }
+    ],
+    "proof_identity": "Outside these TWO exact block-comment strings every source byte is identical; original full semantic/proof read and original focused/type evidence may be reused ONLY through this identity. Current source has its own actual SHA-checked independent direct elaboration."
+  },
+  "read_scope": {
+    "complete_original_source": true,
+    "lines": 267,
+    "corrected_comments_re_read": true,
+    "all_private_native_sigma_le_real_time_inequality_and_zero_boundary_proofs_read": true,
+    "native_API_bindings": [
+      {
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/statistical-risk-20261020/formalization/ueot-core/.lake/packages/mathlib/Mathlib/Probability/Process/Predictable.lean",
+        "sha256": "5897b7b8da16748946da792e11d008b29820b67c63d273ac2cf4c661a1fdcd3b",
+        "bytes": 13256
+      },
+      {
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/statistical-risk-20261020/formalization/ueot-core/.lake/packages/mathlib/Mathlib/MeasureTheory/Function/ConditionalExpectation/AEMeasurable.lean",
+        "sha256": "30e86b2be5f1d4717ea68fda9a99917763a447daee2def4fff558e489e9d4087",
+        "bytes": 24564
+      }
+    ]
+  },
+  "mathematical_assessments": [
+    {
+      "lines": "19-43",
+      "claim": "Genuine independent predictable domain definition",
+      "assessment": "timeReadout maps real time x to toNNReal(x) and leaves original sample untouched. predictableSigma is exactly comap of native naturalFiltration.predictable, whose native generators are {0}xA with A inF0 and (s,infty)xA with A inFs. Its ambient measurability bound is proved from actual filtration inclusion and generated measurable rectangles. fullPredictableL2 is native lpMeas of this sigma in original Lp2(inputLaw T), defined independently of integralDomain. Native closedness of AE-strongly-measurable Lp subspace proves it closed. This is not a renaming of elementary closure."
+    },
+    {
+      "lines": "48-104",
+      "claim": "Actual causal block predictability and ONE closure inclusion",
+      "assessment": "Native predictable_Ioc_prod plus exact time readout preimage gives real(s,t]xA measurable for A inFs. Direct preimage calculation proves an actual H(omega) interval block predictable when H is START-past strongly measurable; no future permission. Every actual elementary input is a finite sum of such blocks and native toLp AE identity yields membership. Native span then topologicalClosure_minimal in the independently closed lpMeas subspace proves integralDomain<=fullPredictableL2. No reverse inclusion or density is inferred."
+    },
+    {
+      "lines": "106-136,168-193",
+      "claim": "True generating interval classes realized by actual blockInput",
+      "assessment": "blockInput has real deterministic clock[0,s,T], coefficient0 then the supplied bounded past H, with actual original permission fields only. Its original inputValue equals the literal intervalIntegrand native class, not an a.e.-selected replacement. For A inFs and real c, actual bounded coefficient H=c*1_A constructs the true(s,T]xA indicatorConstLp class in existing integralDomain. This is genuine native generator realization under the SAME time/source measure, not an external density certificate."
+    },
+    {
+      "lines": "138-166,195-254",
+      "claim": "Actual horizon support, future and zero native generators",
+      "assessment": "time_support_ae derives full-measure support(0,T] under EXACT dt|[0,T] product SAME sourceLaw by Lebesgue zero atom and restriction. Future Ioi(s)xA is AE the trimmed(s,T]xA ifs<=T; ifs>T its class is strictly0, even though A can be F_s-information later than horizon. The native time-zero generator pulls back to real Iic0xA, whose actual input class is0. Constants agree AE with the0-start full-horizon future rectangle. All boundary removals are measure-theoretic under declared inputLaw, not a probability normalization or discarded positive-mass source event."
+    },
+    {
+      "lines": "256-264",
+      "claim": "T=0 derived rather than bypassed",
+      "assessment": "At horizon0 the same support theorem gives an empty positive-time support event, so actual inputLaw0 is derived zero. There is no T>0 assumption or normalization dividing byT. Negative real time in the pullback is only the toNNReal-zero fiber and carries no mass under the actual time restriction."
+    }
+  ],
+  "quantifier_guards": {
+    "sigma": "Original actual natural filtration predictable sigma on NNReal time, pulled back to real time; no augmented/right-continuous filtration is quietly added.",
+    "measure": "Actual finite time-source inputLaw, generally massT rather than probability1. All statements use AE/full-measure appropriately and T0 zero is explicit.",
+    "coefficient": "Generating block coefficient is original START-past H with same-source L-infinity bound for L2 class; predictability itself uses strong Fs measurability. No future H permitted on a positive-length earlier cell.",
+    "domain_relation": "Only integralDomain<=fullPredictableL2 plus specific native generator class membership. Equality/full elementary density remains next proof; no no-go from missing reverse inclusion.",
+    "generator_scope": "Native future/zero rectangles and constants enter existing domain via actual source input records or zero classes; sigma-induction/simple-function/L2 density is not already performed.",
+    "source": "Same Brownian process/sourceLaw and actual interval time measure; no new noise coordinate, action or data selection."
+  },
+  "independent_verification": {
+    "current_exact_source_direct": {
+      "command": "lake env lean UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableInputs.lean",
+      "observed_exit_code": 0,
+      "receipt": {
+        "path": "/private/tmp/ueot-brownian-predictable-inputs-independent-direct-final-receipt.json",
+        "sha256": "ac4b74a9d029d6d86fbddf80795f9fe7e0364f3b4e8c66055813e033a2d43d23",
+        "bytes": 271
+      },
+      "log": {
+        "path": "/private/tmp/ueot-brownian-predictable-inputs-independent-direct-final.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "source_sha_checked_before_and_after": "cfce88106ce5c1bd871fb898ddd098eeeb4c404c13f5455535b825a0c080ac68"
+    },
+    "all_public_types_axioms_actual_consumers": {
+      "command": "lake env lean /tmp/ueot-brownian-predictable-inputs-independent-audit.lean",
+      "observed_exit_code": 0,
+      "input": {
+        "path": "/private/tmp/ueot-brownian-predictable-inputs-independent-audit.lean",
+        "sha256": "f5adcce6f4be7437a874d0400b48023b9b27a115fd35326e0d7fa8827e4b1153",
+        "bytes": 7024
+      },
+      "log": {
+        "path": "/private/tmp/ueot-brownian-predictable-inputs-independent-audit.log",
+        "sha256": "d68eb23287319e103818b79e1d8b1ed42a358d5d1cbda077013f28ea8c0d8cd3",
+        "bytes": 10172
+      },
+      "reported_axioms_only": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "old_focused_type_reuse_bridge": {
+        "path": "/private/tmp/ueot-brownian-predictable-inputs-comment-identity.json",
+        "sha256": "b18578d3a3efaba549e9e8c9b005032ed7310bfec093461dd870cc473f556bc1",
+        "bytes": 870
+      }
+    },
+    "actual_consumer_cases": [
+      "Definitional identity with original native predictable comap and lpMeas, independent of elementary closure.",
+      "ONE domain inclusion and actual unitInput membership in fullPredictableL2.",
+      "Actual past event A={B_s<=0} produces the native real(s,T]xA indicator class in existing integralDomain via real Fs permission.",
+      "Future native generator at s3 beyond horizonT2 is consumed through the source theorem zero-class branch, with no earlier exposure of its F3 event.",
+      "Exact inputLaw0=0 and native zero-time-generator class0; native zero generator pulls back to Iic0 as stated."
+    ],
+    "resolved_reviewer_harness_failure": {
+      "log": {
+        "path": "/private/tmp/ueot-brownian-predictable-inputs-independent-harness-error.log",
+        "sha256": "52bc2d7345d33ee569d1952b88ec8a02fe09111bdbcffa055371e0b8ebafd805",
+        "bytes": 12382
+      },
+      "classification": "Reviewer-only use of nonexistent measurableSet_le dot notation. Original native global measurableSet_le application resolves it; frozen proof source unchanged."
+    },
+    "source_scan": {
+      "sorry_admit_axiom_opaque_declarations": false
+    }
+  },
+  "reuse_assessment": "Directly reuses native Filtration.predictable/Ioc generators, actual natural-filtration source permissions, native lpMeas closed subspace and indicatorConstLp/toLp quotient APIs. New real-time pullback and actual blockInput bind existing stochastic integral domain to the genuine predictable sigma without assuming full density or creating an alternative simple-function framework.",
+  "findings": [],
+  "pending_semantic_corrections": [],
+  "boundaries": [
+    "Reverse fullPredictableL2 inclusion/density remains OPEN and belongs to the separately authored successor.",
+    "No all-predictable terminal integral, time-indexed martingale/quadratic-variation, general Ito/Girsanov/SDE/control or whole-theory completion is certified by this single inclusion unit.",
+    "No changes to earlier frozen sources, root exports, source measure, sampling/failed records, thresholds, QM/physics, GI implementation or global configuration."
+  ],
+  "mutation_scope": "Only requested exclusive independent review JSON and external /tmp independent audit/log/identity-reconstruction/receipt. Reviewer did not edit source/root/Git/GI/books; two comment corrections were made by author under root direction.",
+  "promotion": "Clears corrected frozen source cfce8810 for root-managed validation/integration. It does not retroactively relabel old73148 source or promote density WIP."
+}
