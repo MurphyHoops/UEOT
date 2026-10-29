@@ -410,7 +410,7 @@ $$
 
 ## 4.6 递归充分性的正式实现边界
 
-本章一般最小预测像仍有来源义务。第 39.6 节补充已经构造的共享噪声源、实际后验及联合记录的精确范围。
+第 39.7、39.12 节已从声明的非空标准 Borel 潜状态、原 P/O 核、有限／可数协议及实际完整历史程序，构造后验响应递归、真实过去—未来联合律和模零最小预测消费者。原过去／filter 联合律只需观察可数生成；联合可测的 ambient 响应更新及以响应数组构造的 fresh／记忆预测核，还保留标准 Borel 观察、可数且单点可测动作的条件。继承控制记忆时保留响应与记忆，新未来程序以登记的空记忆开始时才取得相应 canonical-only 结论。未覆盖的模型仍须按本章条件及第 4.3 节的不可数版本保护处理；这些结果不从有限数据自动推断整个源。
 
 P-PRED-03 的 Lean 源 PredictionUpdate 证明分子、分母已经通过当前状态因子分解时的 Bayes 更新因子化，并证明有限动作/观察及相应坐标条件下的联合可测性。它没有从任意数据中自动产生这些充分坐标。一般空间中的参数化解体见第 34.6 节的 C1。
 
@@ -2761,6 +2761,8 @@ $$
 有限路径和有限 CTMC 的概率构造、相对熵链与实际同源核可以在相应模块内部展开。连续扩散分支则显式保留 TerminalGirsanovData；恢复矩保留 DynkinExpectationCertificate，HJB 保留 ItoRun。它们描述由合法过程定理应提供的测度和期望恒等式，不是自动完成了全部随机微积分。
 
 StochasticSubstrate 将这些接口接入 P11，仍不把控制能量变成无条件热力学功。若密度不对观察路径可测，第 22.5 节只用数据处理上界；第 33 章的单位校准也必须另行给定。
+
+第 39.9—39.15 节已给出实际全时间 Gaussian／连续 Brownian 源、自然过滤条件矩及完整 predictable L² 上的实际终点积分。自然过滤的指数密度也已规范化并与实际 RN 导数相接。它们没有单独推出受控扩散的换测度漂移身份、一般 Itô 公式或全部 HJB 前提；本节相应接口仍承担这些来源责任，不能用积分的终点等距代替过程定理。
 
 <a id="ch-23"></a>
 
@@ -5294,6 +5296,84 @@ MeasurablePredictiveHistoryControl 先在登记初始信念下采样一次潜状
 
 完整历史在响应旁边保留很重要。一个实际 Bool 源的前两步动作固定，后续动作读取第一次观察。两条时间二历史各有实际概率 $1/4$，长度和最后动作—观察事件相同，下一动作律却不同。这个反例没有挑选成功运行，也没有证明响应本身足以实现所有有记忆控制器。共同 Gaussian 源则给每个上述整数动作、完整实观察历史控制器的非原子消费者。进一步比较不同初始信念时，仍须固定同一个控制器及其同一初始记忆；不同控制器历史不能静默合并。
 
+## 39.12 从真实历史程序导出自适应预测的最小性
+
+前面的有限词响应还需要回答两个实际问题：未来动作会读取观察后再决定；已经发生的过去，也可能由完整历史程序产生。现在固定同一 P/O 源，过去程序只读取实际动作—观察历史，潜状态从登记初始信念采样一次后持续保留。前缀归纳推出：整个实际过去与末态潜变量的联合律，由实际过去律及同一个末态后验分解。未来程序从这个保留的真实潜变量执行；没有重新创造一个与过去独立的物理状态。
+
+本节实际过去／保留潜态联合律只需观察空间可数生成。后文由响应数组构造实际可测的 fresh／记忆预测核，还要求观察标准 Borel、动作可数且单点可测。若把每个新未来程序的控制记忆明确初始化为空，其完整可数动作—观察历史律有一个这样的预测核，以当前完整响应数组为输入。于是同一响应、同一未来程序和同一初始控制记忆给出相同完整未来律。若未来程序继承的记忆是过去的可测函数 $m(h)$，相应预测器保留 $(C(h),m(h))$；它没有把不同记忆中的行动规则强行等同。
+
+最小性也需要实际实验的包含关系。对每个有限动作词 $u$，构造真实历史程序：按当前历史长度执行 $u$ 的相应允许动作，词结束后使用登记的允许默认动作。在长度 $|u|$ 的实际历史上，明确的有序观察投影恰好给原 $M_u$。重复动作的观察位置仍然不同，缺位默认读出不会改变任何实际词观察。由此，能够预测所有这些真实 fresh adaptive 程序的统计量，必然能预测每个原有限词；原 canonical 最小性才适用于它，而不是另外假定一个词预测证书。
+
+更准确地，设 $\mu_n$ 为任意完整历史过去程序的实际前缀律。若统计量 $S$ 对每个 fresh adaptive 程序都具有可测 Markov 预测核，分别在 $\mu_n$ 下几乎处处给出其真实未来律，则 $C$ 在 $\mu_n$ 下几乎处处可测因子化经过 $S$，并有模零信息包含 $\sigma(C)\preceq\sigma(S)$。共同零集只对原可数动作词族取交；没有对不可数的全部程序族取交。这里保留原有限／可数规范协议约定及观察空间条件，不扩大为没有共同可测结构的不可数版本。
+
+MeasurablePredictiveAdaptiveCanonical、MeasurablePredictiveWordController 与 MeasurablePredictiveHistoryCanonical 分别承担实际可测未来核、物理词投影和任意真实过去的来源。最后一个模块使过去也不再受可见 belief 策略限制；控制程序始终只读取其允许的观察历史。真实过去—未来联合律和这些充分性／最小性消费者使用同一源。
+
+## 39.13 整个自然过去上的条件噪声
+
+令 $B$ 为第 39.10 节实际构造的连续过程，$\mathcal F_s=\sigma(B_r:r\le s)$ 为其自然过滤。BrownianMartingaleSource 从同一源的独立增量证明，未来增量与整个自然过去独立，而不只是与单个当前坐标独立。对 $0\le s\le t$，实际得到
+$$
+E[B_t-B_s\mid\mathcal F_s]=0,\qquad
+E[(B_t-B_s)^2\mid\mathcal F_s]=t-s.
+$$
+相应可积性由 Gaussian 矩分别推出。于是 $B_t$ 和 $B_t^2-t$ 是该自然过滤下的真实 martingale；没有把它们作为来源字段输入。
+
+对每个固定实数 $u$，同源 Gaussian MGF 又给
+$$
+Z_t^u=\exp(uB_t-u^2t/2),\qquad E[Z_t^u]=1,
+\qquad E[Z_t^u\mid\mathcal F_s]=Z_s^u.
+$$
+有限时域测度 $Q_T^u=Z_T^uP$ 因而是概率律，对每个固定 $u,T$，其实际 Radon–Nikodym 导数在 $P$ 下几乎处处为同一个显式 $Z_T^u$；对 $A\in\mathcal F_s$、$s\le t$ 有 $Q_t^u(A)=Q_s^u(A)$。这是有限时域的规范化和过去事件一致性，不等于证明换测度后的漂移平移过程是 Brownian，也不等于一般 Girsanov 或无限时域的绝对连续性。
+
+## 39.14 同一个时间输入返回同一个随机积分
+
+取有限非降确定分割 $0=t_0\le\cdots\le t_N=T$。每个实系数 $H_i$ 只对区间起点的 $\mathcal F_{t_i}$ 强可测，并在同一 $P$ 下本质有界。实际输出和时间输入分别定义为
+$$
+I(H)=\sum_{i<N}H_i(B_{t_{i+1}}-B_{t_i}),\qquad
+h(t,\omega)=\sum_{i<N}H_i(\omega)\mathbf1_{(t_i,t_{i+1}]}(t).
+$$
+原自然过去条件矩推出一步零均值和二阶矩；一个先前输出在其终点可测，才可以进入后一区间起点的条件期望。这样推导交叉项正交，并取得
+$$
+E[I(H)^2]=\sum_{i<N}(t_{i+1}-t_i)E[H_i^2]
+=\|h\|_{L^2([0,T]\times\Omega,dt\,dP)}^2.
+$$
+重复时刻的增量和输入区间严格为零，空分割与 $T=0$ 也保留。系数看未来时，不能继续使用这个条件均值论证。
+
+还不能因为每张分割表有相同形式的能量公式，就认为它们已经定义同一个积分。对两张表，BrownianCommonRefinement 实际构造区间交集的共同细分，逐点证明原时间输入与原执行输出都不变。空交集统一用零系数，因为另一表的系数可能要到更晚才可见；正长度交集只沿过滤的前向包含传递权限。同源共同差的能量等式据此推出：原生时间输入 L² 类相同，原 literal 输出便几乎处处相同，其原生输出类也相同；不同输入间的全部 L² 距离同样保持。
+
+BrownianIntegralClosure 从已证距离和范数推导 Gram 恒等式，再用原生有限线性组合构造 elementary 输入张成空间上的连续线性等距映射，并连续延拓到这个空间在原生 L² 中的拓扑闭包。每个原有限输入仍返回原 $I(H)$ 的同一输出类；原有限输入在时间—源 L² 中的收敛，推动它们原来的输出类收敛到该实际积分。单位系数在 $(0,T]$ 上的积分能量为 $T$，非零执行噪声没有在延拓中被删除。
+
+这一步的积分域明确只是 elementary 张成空间的闭包。下一节补足它与完整 predictable L² 类的关系；该关系需要独立证明，不能用“闭包”这个定义替代。随时间变化的积分过程及其 martingale／二次变差、原一般 Itô／Girsanov／受控 SDE 消费者仍各有实际义务。
+
+## 39.15 积分域确实是原生 predictable L²
+
+上述闭包与可预测输入的关系现在有了独立证明。先采用原生自然过滤的 predictable σ 代数，由零时截面与 $(s,\infty)\times A$、$A\in\mathcal F_s$ 的矩形生成，再把它拉回本书使用的实时间坐标。完整 predictable L² 空间由这一 σ 代数下具有几乎处处强可测版本的原生 L² 类定义，未使用 elementary 闭包作为定义。
+
+每个实际区间输入都可预测，故 elementary 闭包包含于该完整空间。反方向也从真实输入推导：在同一 $[0,T]$ 测度下，生成矩形由已有有限区间记录实现；超出时域的矩形及零时截面是零类。生成族的 π 系统性质、σ 代数归纳、同一乘积测度下指标函数的 L² 收敛及原生 L² 强可测归纳，据此把所有完整 predictable L² 类送入原闭包。两个空间因此相等，$T=0$ 也包含在证明中。
+
+BrownianPredictableInputs 与 BrownianPredictableDensity 将这条双向包含接到原积分，给完整 predictable L² 上的实际连续线性等距积分。每个原有限输入仍返回同一 literal 输出，单位系数能量仍为 $T$。这是终点积分的来源；随时间的自然过滤 martingale、连续路径版本、二次变差及原一般 Itô／Girsanov 消费者仍须分别推导。
+
+## 39.16 有限实际出生与费用数据的目的证书
+
+第 39.5 节的精确均值访问并非有限数据。现在固定完整预算：先执行 $N$ 次 write-false，再执行 $N$ 次 write-true；费用读出按预先登记的有理宽度 $\tau>0$ 变成整数箱，价格 $\lambda\ge0$ 也登记为有理数。允许动作、原未知实故障率、程序目标及实费用保持，训练观察只含出生位与费用箱。完整事务序列保留同一亲本，失败、费用和全部 $2N$ 坐标都留下。源模式与标签的同一产品律导出实际时序样本的独立性及每行观测律，没有重置到成功状态，也没有重新抽样。
+
+若某次请求位 $b$ 产生实际子代，则 $b$ 就是源目标，并且本次实际费用为 $c$。整数箱 $k$ 满足
+$$
+k\tau\le c<(k+1)\tau.
+$$
+可执行选择器只读取完整 Bool／Nat 批次及登记的有理参数：若 $\lambda(k+1)\tau<1$，返回对应修复控制器；若 $1<\lambda k\tau$，在明确 $\epsilon<1$ 及实际坏态的条件下给出一步 idle 优于修复的负判定；其余返回 UNKNOWN。源参数、真实均值及校准好事件不进入选择器。区间与目标证书在这个精确读出模型中没有错误；这不表示物理执行没有故障。
+
+在正输出下，学得位等于原受保护目标，费用证书供应原 $\lambda c\le1$ 的充分条件。新消费者从完成全部探针后的实际末父对象及其真实物理状态出发，执行同一返回控制器。一个真实无限记录律同时保留原全部有限前缀、失败及费用；其可积无限收益等于该返回策略自身的值，并等于原全部因果策略的最优值。没有另选一个存在的策略，也没有回到首次成功时的中间状态。训练已发生的费用仍在原完整记录中；最优结论评价登记的未来部署，不声称训练加未来的总净收益最优或训练免费。
+
+若有信息的箱仍不能裁决，则 $|\lambda c-1|\le\lambda\tau$。在真实箱已与阈值分离的条件下，对任何仅用于分析、满足 $0\le u<1-\epsilon$ 的半径，原同源标量 Hoeffding 校准给
+$$
+P(\mathrm{UNKNOWN})\le\min\{1,4e^{-2Nu^2}\}.
+$$
+这不是把未知修复概率的下界交给选择器。固定 $N=64,\lambda=1/2,\tau=1/4,c=1,\epsilon=1/4$ 的源条件下，取分析半径 $u=1/4$，界为 $4e^{-8}<1$。这是固定预算模型的形式结论，执行的选择器 fixtures 也是确定性核验；本包没有生成新的现实采样批次。零预算总返回 UNKNOWN；总故障 $\epsilon=1$ 时几乎处处返回 UNKNOWN，未从零质量的假想成功元组推出正修复概率。
+
+必要负界也保留。故障率 $1/2$ 下的共同全故障样本，具有正质量 $2^{-2N}$；价格一、目标 true、费用零与二的源在该样本上无法区分，但同一坏态的实际一步排序相反。因此确定性 data-only 且零错误的程序不能对这两个源都总是作出严格裁决；这里未声称随机判定器版本。费用宽度二还会使费用 $1/2$ 和 $3/2$ 的全部粗读出相同，这是该固定粗读出的相对障碍。
+
+负输出的时域不能扩大。取 $\epsilon=1/4,\lambda=d=1/2,c=3$，坏态修复的一步差值为 $-3/8$，但同一编译策略自身的无限值为 $3/32$，idle 自身的无限值为零。这里使用策略评价，未调用不适用的 $\lambda c\le1$ 最优性条件。有限资料的部分目的证书、完整源参数识别和任意时域的全部策略排序是不同责任。源码为 RegisterFaultFinitePurposeProbe 与 RegisterFaultFinitePurposeInfinite；新的资源维持通道和成本更全面的评价仍应单独登记。
+
 <a id="appendix-a"></a>
 
 # 附录 A. 符号与类型索引
@@ -6192,4 +6272,7 @@ UC.RegisterFaultPurposeInformation.observed_source_identifies_actual_purpose 用
 C1 的源及传感器对应 UC.MeasurablePredictiveSource、UC.MeasurablePredictiveSensor；UC.MeasurablePredictiveJointPath.actual_timevarying_joint_path、actual_finite_record_event、actual_finite_record_lintegral 保持同一时变可见 belief 策略的完整有限联合记录。新增 UC.MeasurablePredictiveLatentPath.actual_finite_prefix_consistency 与 actual_source_timevarying_joint_path 从实际保留潜状态的转移证明递归 filter 的条件一致性及同源可数记录律。具体核验、独立审查及源码身份见[当前来源差额](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/actual_infinite_sources_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)、[故障包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/register_fault_resources_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)和[C1 路径包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/c1_joint_path_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。两书编译不改变其数学范围，全理论状态仍为 OPEN / NOT_ESTABLISHED。
 
 
-第 39.7—39.11 节补入的实际端点为：UC.MeasurablePredictiveResponseRecursion.actual_C1_response_kernel_factor；UC.MeasurablePredictiveCanonicalSource.actual_past_future_factorization、actual_response_ae_minimal 与 actual_canonical_recursion；UC.RegisterTimestampedBirthSource 的同一记录抹除、时钟与实际出生身份消费者；UC.BrownianProjectiveSource 的实际全时间有限维 Gaussian 来源；UC.BrownianContinuousSource.process_isBrownian、measurable_joint_process、actual_ou_recovery；以及 UC.MeasurablePredictiveHistoryControl.actual_action_observation_history_path、actual_finite_action_observation_history_path 与 actual_positive_memory_histories。完整前提与来源身份分别见[一般响应与时戳包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/predictive_genealogy_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)、[规范预测与全时间高斯包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/canonical_brownian_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)和[连续源与历史控制包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/continuous_history_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。原冻结结果索引及其登记处分不因新增来源而重计。一般 Itô/Girsanov、全部自适应协议的最小性和全局总装仍不由这些端点自动取得。
+第 39.7—39.11 节补入的实际端点为：UC.MeasurablePredictiveResponseRecursion.actual_C1_response_kernel_factor；UC.MeasurablePredictiveCanonicalSource.actual_past_future_factorization、actual_response_ae_minimal 与 actual_canonical_recursion；UC.RegisterTimestampedBirthSource 的同一记录抹除、时钟与实际出生身份消费者；UC.BrownianProjectiveSource 的实际全时间有限维 Gaussian 来源；UC.BrownianContinuousSource.process_isBrownian、measurable_joint_process、actual_ou_recovery；以及 UC.MeasurablePredictiveHistoryControl.actual_action_observation_history_path、actual_finite_action_observation_history_path 与 actual_positive_memory_histories。完整前提与来源身份分别见[一般响应与时戳包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/predictive_genealogy_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)、[规范预测与全时间高斯包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/canonical_brownian_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)和[连续源与历史控制包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/continuous_history_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。原冻结结果索引及其登记处分不因新增来源而重计。第 39.12 节进一步给出声明协议类中任意真实历史过去与全部 fresh adaptive 未来的最小性；更广协议仍按第 4.3 节的条件处理。一般 Itô/Girsanov 与全局总装不由这些局部来源自动取得。
+
+
+第 39.12 节对应 UC.MeasurablePredictiveHistoryCanonical 的 actual_past_future_factorization、actual_response_adaptive_ae_minimal 与 futureKernel_response_memory_factor。第 39.13 节对应 UC.BrownianMartingaleSource；第 39.14—39.15 节的输入表示、原输出与完整 predictable 域对应 UC.BrownianIntegralRepresentation、UC.BrownianIntegralClosure.integral_returns_literal、UC.BrownianPredictableDensity.predictableIntegral_returns_literal。第 39.16 节对应 UC.RegisterFaultFinitePurposeProbe 及 UC.RegisterFaultFinitePurposeInfinite.returned_positive_actual_infinite_record。完整类型与义务见[自适应／条件噪声包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/adaptive_stochastic_sources_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)、[真实过去／积分表示包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/history_integral_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)和[真正 predictable／有限目的证书包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/predictable_finite_purpose_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。全理论仍 OPEN / NOT_ESTABLISHED。
