@@ -235,6 +235,11 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegra
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralProductCompensator
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralWeightedQV
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterOwnProgramJointJournal
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianBoundedC2DynkinSource
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OUSemigroupSource
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralL2TimeContinuity
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveFiniteNoisyCalibration
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource
 /-!
 # UEOT Theory Completion public root
 
