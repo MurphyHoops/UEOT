@@ -1,3 +1,5 @@
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultPurposeInformation
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterProgramOptimality
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismPurpose
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSourceWitness
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSensorWitness

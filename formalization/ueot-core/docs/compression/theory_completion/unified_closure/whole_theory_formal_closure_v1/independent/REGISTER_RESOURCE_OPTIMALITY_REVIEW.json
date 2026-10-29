@@ -1,0 +1,80 @@
+{
+  "schema": "UEOT/REGISTER_RESOURCE_PROGRAM_OPTIMALITY_INDEPENDENT_REVIEW/V1",
+  "reviewer": "independent /root/longterm_final_review; no authorship",
+  "reviewed_at": "2026-10-29T11:13:30.756205+00:00",
+  "verdict": "CLEAR_FOR_DECLARED_RESOURCE_AND_NO_EXTERNAL_FAULT_CONTROL_CONTRACTS",
+  "blocking_findings": [],
+  "source_hashes": {
+    "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterResourceSource.lean": "90607ae2c4482986a2824bb3a44b887f48bc04d457d48da7cfea13221bfcd5bb",
+    "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterProgramOptimality.lean": "4c7cedcf6d0068c0b79dfee98879b92329f33dc0089ae8bfd4711f0629bd12c3"
+  },
+  "checks": [
+    {
+      "source_exact_prefix_checked": true,
+      "checker": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/whole-theory-audit-20261029/p11-independent/RegisterResourceSource_CHECK.lean",
+      "checker_sha256": "4c22f5cd48797dc7d0b0df36d1de4926fe18eb74971f24973b37b07348596116",
+      "log_sha256": "a99830feadc43cbd3ea596db42c784bce170d2af455e427c472ac070f2bf3059",
+      "exit_code": 0,
+      "endpoint_count": 3,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "source_exact_prefix_checked": true,
+      "checker": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/whole-theory-audit-20261029/p11-independent/RegisterProgramOptimality_CHECK.lean",
+      "checker_sha256": "a6df6285a1f93ee1c419ad015c348fc2ba660a60f088fc17556508a285bc0700",
+      "log_sha256": "5b1ff066a0fa967faca880a4b130d4da3c46c617a9c6dbc0b3dea131ac32bf43",
+      "exit_code": 0,
+      "endpoint_count": 2,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "parent_build_log": {
+    "path": "/tmp/ueot-register-resource-optimal-build.log",
+    "sha256": "47202b755a8b3a68053de72972ea4660ea7ad41ebefcd807fa673f9287933ba8",
+    "readback": "Both modules Built; Build completed successfully (8961 jobs)."
+  },
+  "resource_source": {
+    "same_action_binding": "actualCost evaluates the controller selected by the same canonicalizeRepairOrganization used inside safeRepairKernel. Stored code is decoded/rebound before selecting this action; no substituted policy is priced.",
+    "carrier_binding": "actualCost_on_carrier uses the proved stored-program=m.goal characterization to identify the runtime cost with the original registered reproductive action tariff.",
+    "unit_contract": "actualCost, accounting.repair, initial and supply are all raw register-write resource units. price is absent from this ledger and converts write units to offspring-value penalty only in the reproductive objective. P5 potential/drift is not identified as a resource stock.",
+    "cost_derivations": [
+      "actualCost_eq gives zero on an already correct designated bit and writeCost otherwise; bounds hold even when writeCost=0.",
+      "damaged_cost derives the registered write charge from actual damage; corrected comment no longer claims strict positivity without its hypothesis.",
+      "stateResourceCost upper bound is source-derived. Maintenance and reconstruction charges are zero in this declared write-only accounting.",
+      "realizedStepCost charges actual runtime write only in repair mode; environmental damage is not charged as a repair action."
+    ],
+    "pathwise_quantifiers": "actual_trace_resource_viable holds for every trace and every repair/fault mode sequence, so every realized source trace is covered without an expectation/high-probability substitution. It asserts nonnegative balances at every integer accounting horizon N.",
+    "supply_condition": "initial>=0 and supply>=writeCost are independent sufficient design inputs. The code does not infer supply from the source, claim minimal supply, or prove indefinite viability without replenishment. The atomic-step recurrence credits supply and subtracts this step cost.",
+    "remaining": [
+      "Costs of environmental damage, program/controller rebinding, copying and thermodynamic work are not metered in this source class.",
+      "A coupled actual multistep source-record/budget execution interpretation remains a separate integration task; the universal bound is arithmetic for all supplied trace/mode pairs.",
+      "This is resource affordability under the designed inflow, not a theorem that the physical target is always legitimate under arbitrary fault rates."
+    ]
+  },
+  "program_optimality": {
+    "source_model": "RegisterMechanismPurpose.model on physical register State n with the original deterministic allowed-action P and the original registered living-birth-minus-priced-write stage. noise is the birth-label law, not an exogenous physical-fault process.",
+    "proof_chain": [
+      "qValue_source uses the same physical update and derived stage payoff.",
+      "value_action_bound covers every Option Bool action and every state. price*writeCost<=1 and 0<discount<1 are legitimate sufficient conditions, not claimed necessary.",
+      "compiled_attains_value uses (substrate i).execute m.goal literally. It does not return a choice-based replacement selector.",
+      "value_eq_optimal proves the explicit function is a Bellman fixed point and reuses Model.fixedPoint_unique.",
+      "compiled_optimal_against_all_causal directly reuses selector_optimal_against_all_causal, proving this same compiled selector attains optimalValue and dominates every declared CausalPolicy/initial memory."
+    ],
+    "value_formula": "At a correct target bit V=1/(1-discount); otherwise V=1/(1-discount)-price*writeCost. The immediate birth-after-update convention is consistent with this formula.",
+    "remaining": [
+      "No optimality theorem is supplied for the actual P5 repair/fault mixture on organizational state.",
+      "Transport to that mixed source requires its actual action/timing, payoff, cost and state/identity map to be specified and proved; the no-fault Bellman equation cannot simply be relabeled as a noisy-source theorem.",
+      "No finite-horizon greedy optimality, unique universal purpose, or physical cost calibration is inferred."
+    ]
+  },
+  "whole_goal_status": "OPEN_NOT_ESTABLISHED. These are two additional source reductions, not organizational/whole-theory closure.",
+  "coordination": "Only this exclusive review JSON and external check snapshots were written; no shared source/export/Git/GI edits."
+}
