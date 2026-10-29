@@ -1,0 +1,415 @@
+{
+  "schema": "UEOT/WHOLE_THEORY_TYPED_REUSE_REVIEW/V1",
+  "reviewer": "independent /root/longterm_final_review; no authorship of the seven reviewed modules",
+  "observed_at": "2026-10-29T10:55:34.533737+00:00",
+  "head": "594b75db69029954b1cc45af61b8bdb27e98a1a1",
+  "tree": "242653bbd1980f4b921e66f50965cfc8ec677161",
+  "base": "ccc42a3c4b7b4817c24275235e85cdda73c2a295",
+  "verdict": "CLEAR_TYPED_REUSE_REVIEW",
+  "blocking_findings": [],
+  "discovery": {
+    "preflight_file": "/tmp/ueot-whole-reuse.json",
+    "preflight_sha256": "c2e85c9a3607b51718ec03e2a19f982b77075b8c6ad93c3ac24f9d25e3404262",
+    "new_public_source_declarations": 64,
+    "declarations_with_hits": 21,
+    "suggested_hits_reviewed": 41,
+    "distinct_old_candidate_types_checked": 31,
+    "declarations_without_hits": "Not given a new proof obligation in this review."
+  },
+  "typed_evidence": {
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/whole-theory-audit-20261029/p11-independent/WHOLE_TYPED_REUSE_SIGNATURES.lean"
+    ],
+    "exit_code": 0,
+    "checker_sha256": "6be0ca72b60d4ca38c07c43db4ed6636a447bd0d1dd4acc92c0a0baf3a5bb829",
+    "log_sha256": "839ce050fa6e4bdcae2415dc6838ed74b4283a24eb542f211fa8e6b897e1143a",
+    "all_21_hinted_new_declarations_types_and_axioms_checked": true,
+    "axioms": "Only propext/Classical.choice/Quot.sound; repair_same_object is axiom-free.",
+    "additional_existing_signatures_checked": [
+      "EvolutionPrice.p_evo_01",
+      "RegisterRepairHistory.actual_birth_price_bridge",
+      "FiniteDiscountedControl.p_ctl_01_causal_optimality",
+      "TheoryCompletion.no_physicalOnly_synthesizer_for_distinct_sources"
+    ],
+    "limits": "No new isDefEq census was performed. Verdict uses actual compiled types, source bodies and required contracts; lexical similarity is not proof equivalence."
+  },
+  "reused_upstream_proofs_confirmed": [
+    {
+      "consumer": "RegisterRepairHistory.unlabelled_record_cannot_recover_history",
+      "existing_result": "AutopoiesisClosure.no_physicalOnly_synthesizer_for_distinct_sources",
+      "assessment": "Directly reused on actual parent/child outputs, rather than copying its information no-go."
+    },
+    {
+      "consumer": "RegisterRepairHistory.journal_discovery_consumes_p12",
+      "existing_result": "AutopoiesisClosure.p12_discovered_parent_tendsto_lifecycleParent",
+      "assessment": "Directly reused after deriving journal_parent_bridge."
+    },
+    {
+      "consumer": "RegisterRepairHistory.actual_birth_price_bridge",
+      "existing_result": "EvolutionPrice.p_evo_01",
+      "assessment": "Directly calls the existing rectangular I\u2192J theorem with J=Bool and actual PMF label rows. Row normalization and positive-edge actual birth support/copy are proved; fertility remains explicit. This supplements the earlier semantic review for the subsequently appended Price bridge."
+    },
+    {
+      "consumer": "RegisterMechanismPurpose.registered_observation_identifies_purpose",
+      "existing_result": "C6PurposeMechanism.mechanismObservation_identifies_teleologicalClass",
+      "assessment": "Reused with source-derived faithfulness; no new generic teleological-class proof."
+    },
+    {
+      "consumer": "RegisterMechanismPurpose.registered_causal_optimality",
+      "existing_result": "FiniteDiscountedControl.p_ctl_01_causal_optimality",
+      "assessment": "Reused on the same source model for all declared causal policies/initial memories; no Bellman/causal-control proof duplication."
+    },
+    {
+      "consumer": "MeasurablePredictiveSensor.actual_posterior_coordinate_ae",
+      "existing_result": "c1PosteriorSection_factorization + Kernel.ae_eq_of_compProd_eq",
+      "assessment": "Actual common posterior transport is derived by these canonical existing results; null observations retain a.e. scope."
+    }
+  ],
+  "dispositions": [
+    {
+      "declaration": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSensor.sensor_observationLaw_factors",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSensor.lean",
+      "suggested_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.observation_reward_factors",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        }
+      ],
+      "typed_reason": "Equality of entire noisy-sensor observation measures from the same projected source; the suggested old result is a scalar expectation of a Bool reward."
+    },
+    {
+      "declaration": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSensor.actual_posterior_coordinate_ae",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSensor.lean",
+      "suggested_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.actual_kernel_coordinate_law",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        }
+      ],
+      "typed_reason": "Observation-a.e. pushforward of the actual common posterior to an actual coarse posterior for arbitrary countably-generated W. The old Bool exact-observation transition law has a different domain/output and cannot supply this joint-law uniqueness argument."
+    },
+    {
+      "declaration": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSensor.actual_C1_recursion",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSensor.lean",
+      "suggested_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.actual_C1_descends",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        }
+      ],
+      "typed_reason": "General Standard-Borel Y/H, hidden-blind sensor W, full ProbabilityMeasure Y state and actual posterior transition. The old fixed Bool witness is neither this source class nor a noisy-sensor theorem."
+    },
+    {
+      "declaration": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSensorWitness.actual_posterior_true_mass",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSensorWitness.lean",
+      "suggested_candidates": [
+        {
+          "symbol": "UEOT.V3.FiniteBayesBelief.posterior_mass",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        }
+      ],
+      "typed_reason": "Mass of the actual c1ParametricPosteriorBelief version derived from its common joint factorization. FiniteBayesBelief.posterior_mass is an explicitly constructed finite normalized posterior; it does not identify that different object with the actual common RCD."
+    },
+    {
+      "declaration": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSource.measurable_coordinate",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSource.lean",
+      "suggested_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.measurable_coordinate",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RowwiseProbeSampling.coordinateGood_measurable",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        },
+        {
+          "symbol": "UEOT.V3.InformationConditionalStatistic.measurable_coreAt",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        },
+        {
+          "symbol": "UEOT.V3.CompactArgmaxSelector.measurable_center",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        },
+        {
+          "symbol": "UEOT.V3.InformationDiscreteLawCode.DiscreteLawCode.measurable_decode",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        }
+      ],
+      "typed_reason": "Measurability of ProbabilityMeasure(Y\u00d7H)\u2192ProbabilityMeasure Y induced by map fst. Old Bool\u2192unitInterval scalar coordinate, calibration-event measurability, argmax/statistic/decoder maps have different types. The proof directly reuses Measure.measurable_map."
+    },
+    {
+      "declaration": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSource.measurable_liftBelief",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSource.lean",
+      "suggested_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.measurable_liftBelief",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.coordinate_liftBelief",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        },
+        {
+          "symbol": "UEOT.V3.InformationStatistic.measurable_statisticLift",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        }
+      ],
+      "typed_reason": "Measurability of the section b\u21a6map(y\u21a6(y,reference)) on every ProbabilityMeasure Y. Old two-Dirac section has domain unitInterval; an identity-of-section or statisticLift function is not this function. Canonical map measurability is reused."
+    },
+    {
+      "declaration": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSource.coordinate_liftBelief",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSource.lean",
+      "suggested_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.coordinate_liftBelief",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.measurable_liftBelief",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        }
+      ],
+      "typed_reason": "Right-inverse identity on every ProbabilityMeasure Y, using projection after the actual section. Old identity only covers scalar unitInterval with two Bool representatives; measurable_liftBelief is a measurability conclusion. Proof reuses Measure.map_map/map_id."
+    },
+    {
+      "declaration": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSource.measurable_testResponse",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSource.lean",
+      "suggested_candidates": [
+        {
+          "symbol": "CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.JumpPath.measurableSet_horizonSet",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        }
+      ],
+      "typed_reason": "Measurability of a recursively integrated ENNReal response for arbitrary measurable observation-event continuation words. A measurable finite-jump horizon set is a different proposition."
+    },
+    {
+      "declaration": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSource.source_projection",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSource.lean",
+      "suggested_candidates": [
+        {
+          "symbol": "UEOT.V3.InformationRandomEncoder.measurable_encoderSourceProjection",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        }
+      ],
+      "typed_reason": "Equality of actual controlled-source row pushforwards and the derived visible kernel. Candidate only proves measurability of a distinct encoder projection; map_map is already reused."
+    },
+    {
+      "declaration": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSource.observationLaw_factors",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSource.lean",
+      "suggested_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.observation_reward_factors",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        },
+        {
+          "symbol": "UEOT.V3.FiniteBayesBelief.observationLaw_mass",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        },
+        {
+          "symbol": "UEOT.V3.GeneralBayesPosterior.observationLaw_eq",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.probe_observation_law",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        }
+      ],
+      "typed_reason": "Transport of the whole actual observation measure through a source-derived visible projection for arbitrary Y. Numeric Bool reward/mass formulas and a fixed Bool probe do not supply it; observationLaw_eq is the existing bind-definition identity already unfolded in the proof, not the source descent statement."
+    },
+    {
+      "declaration": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSource.posterior_coordinate_ae",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSource.lean",
+      "suggested_candidates": [
+        {
+          "symbol": "UEOT.V3.PredictionAE.coordinate_ae_sufficient",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        }
+      ],
+      "typed_reason": "Actual common posterior projected to Dirac(y), observation-a.e. for arbitrary Y; PredictionAE.coordinate_ae_sufficient is evaluation of one kernel coordinate from a response family and has no posterior/joint-law identity. Existing actual posterior and deterministic posterior facts are reused."
+    },
+    {
+      "declaration": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSource.actual_kernel_coordinate_law",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSource.lean",
+      "suggested_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.actual_kernel_coordinate_law",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        }
+      ],
+      "typed_reason": "Map of actual C1 belief law to ProbabilityMeasure Y equals Dirac-pushforward of the constructed visible prediction. Old exact-observation Bool result maps to scalar unitInterval vertices; general Y cannot be substituted into Bool."
+    },
+    {
+      "declaration": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSource.quotientKernel_factor",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSource.lean",
+      "suggested_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.quotientKernel_factor",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.quotientKernel_unique",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        }
+      ],
+      "typed_reason": "Kernel factorization on full ProbabilityMeasure Y, with source closure derived from primitive visible autonomy. Old Bool/unitInterval factor requires ClosedTests as a premise and two representatives; the old uniqueness theorem concludes kernel equality, not this factor."
+    },
+    {
+      "declaration": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSource.quotientKernel_unique",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSource.lean",
+      "suggested_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.quotientKernel_unique",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.QuotientGauge.quotientEquiv_unique",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.quotientKernel_factor",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        }
+      ],
+      "typed_reason": "Uniqueness of an actual belief-transition quotient on full ProbabilityMeasure Y via its proved section. Old kernel uniqueness is restricted to Bool/unitInterval; quotientEquiv_unique concerns a set-theoretic equivalence map. Old factor theorem has a different conclusion."
+    },
+    {
+      "declaration": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSource.same_coordinate_same_tests",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSource.lean",
+      "suggested_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.same_coordinate_same_tests",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        }
+      ],
+      "typed_reason": "Equality of ENNReal future event-cylinder integrals for arbitrary measurable Y events and source-derived continuation closure. Old tests are List(A\u00d7Bool) scalar toReal expectations under assumed binary ClosedTests."
+    },
+    {
+      "declaration": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSourceWitness.actual_C1_descends",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSourceWitness.lean",
+      "suggested_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.actual_C1_descends",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        }
+      ],
+      "typed_reason": "Real visible/hidden/action spaces with shared Gaussian noise and the full probability-law coordinate. Old witness is Bool\u00d7Bool with Bool actions and scalar coordinate; existing new general factor theorem is directly instantiated."
+    },
+    {
+      "declaration": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSourceWitness.origin_observation_law",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSourceWitness.lean",
+      "suggested_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.probe_observation_law",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        },
+        {
+          "symbol": "UEOT.V3.FiniteBayesBelief.observationLaw_mass",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        },
+        {
+          "symbol": "UEOT.V3.GeneralBayesPosterior.observationLaw_eq",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        }
+      ],
+      "typed_reason": "The actual real source origin observation law is a non-atomic Gaussian. Old fixed Bool probe and finite singleton-mass identity have different source/range; general observationLaw_eq alone only unfolds the existing bind. New proof reuses the proved source factor and canonical bind/map facts."
+    },
+    {
+      "declaration": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismPurpose.observe_injective",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismPurpose.lean",
+      "suggested_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.live_injective",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.CrossTrack.BindingIsolation.injective",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        }
+      ],
+      "typed_reason": "Exact allowed birth/cost probes distinguish this concrete goal/writeCost mechanism. The old finite live encoding or metric isolation diagnostic injectivity supplies neither this source nor these measurements."
+    },
+    {
+      "declaration": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismPurpose.one_step_constant",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismPurpose.lean",
+      "suggested_candidates": [
+        {
+          "symbol": "CrooksJarzynski.MeasureProtocol.Markov.oneStep_crooks",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        },
+        {
+          "symbol": "CrooksJarzynski.MeasureProtocol.Markov.oneStep_jarzynski",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.one_step_failure",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        },
+        {
+          "symbol": "UEOT.V3.QSDPerron.qsd_one_step",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        }
+      ],
+      "typed_reason": "Existing causal truncatedValue for the actual register stage at horizon1. Crooks/Jarzynski are reweighting/balance identities; leakage failure and QSD one-step are distinct models/propositions. Proof directly reuses selector_truncatedValue_succ."
+    },
+    {
+      "declaration": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterRepairHistory.repair_same_object",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterRepairHistory.lean",
+      "suggested_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.LineageSemantics.sameObjectRepair_not_offspring",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.LineageSemantics.sameObject_refl",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        }
+      ],
+      "typed_reason": "An executed repair changes the physical state but keeps the actual history identity. sameObject_refl concerns one unchanged object; sameObjectRepair_not_offspring consumes preservation rather than proving this source invariant. The current source definition makes the proof rfl."
+    },
+    {
+      "declaration": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterRepairHistory.repair_reaches_target",
+      "source_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterRepairHistory.lean",
+      "suggested_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.Objecthood.GeometricRetryWitness.repairIter_eq_target",
+          "disposition": "NOT_A_SUBSTITUTE_FOR_THIS_TYPED_CONTRACT"
+        }
+      ],
+      "typed_reason": "Actual instruction interpretation/write reaches the inherited bit target for all registers/programs/states. GeometricRetryWitness.repairIter_eq_target is a fixed-kernel set-iteration identity, not correctness of this executable source."
+    }
+  ],
+  "reviewed_source_blobs": {
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSensor.lean": {
+      "git_blob": "8250c286ea0cd8450b4d988cba865b8efb615ee4",
+      "sha256": "ef89784d1e4c22e0ba0445e9c7d3de8edea73a9dbffb597e3c72610d1048e80c"
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSensorWitness.lean": {
+      "git_blob": "8226de95239317a960aef26c8302ca508e19e112",
+      "sha256": "13cf94181a1a18c9de14e7546faca3507b91701521c757687a80dab721a67aea"
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSource.lean": {
+      "git_blob": "3edf500c6ec0765f505cf8678a8cfdd28e1a16f2",
+      "sha256": "d2b0eb37c97e8e1c417aea49e705d1b782f32b0eaea3772acecc349849fd1f36"
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSourceWitness.lean": {
+      "git_blob": "29dbbac015ebaa9c8154b97f607da9a972031f09",
+      "sha256": "8dff59860e06946377ce0f847c29c5a9417375d09dce8ca4dde0fa1bf9f26fe5"
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismPurpose.lean": {
+      "git_blob": "66d4f1a5b5e1220968869db81e09c55ac188ebc5",
+      "sha256": "894c582b6c6805e72e72f158091cdd1e6878e444cc56070456dd45b110f0cbf3"
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterRepairHistory.lean": {
+      "git_blob": "7bd86d49215d602fa7b649010575c76f7b640774",
+      "sha256": "17dcd06aaf1daf47ac379c6e3b68769a4738a840bed6dbeb9179c2f04446981c"
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterRepairSource.lean": {
+      "git_blob": "1ef252413d4c576d0b843cd03f197c526a0b8713",
+      "sha256": "904c7ccafdffbb52a1f9ea5e0f048c9bac2ed35f59cd9918e228ae98dc38b6a7"
+    }
+  },
+  "scope": "Typed reuse gate for the frozen local source package only. Whole-theory closure, multi-time birth/cost/journal composition, external calibration and pending P11 source classes remain OPEN. No source, old data, shared export, Git or GI edits."
+}
