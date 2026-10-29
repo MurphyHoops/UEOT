@@ -1,0 +1,136 @@
+{
+  "schema": "FINITE_DATA_LOOP_PROTOCOL_ADAPTATION_V1",
+  "kind": "register_overlay",
+  "baseline_ref": "f4c23ac61b440df9d88ca1e79a4684d589066489",
+  "frozen_inputs_sha256": "9d34ba9a9e3e8d8e78f8e6295f7a29b8b04871058df37fd14cbef0e15219ae76",
+  "source_tree_sha256": "98734d8a4ae150a66e5bbdac18008897d98f9cc97f7e68f45fa7eb5d813c92f2",
+  "immutable_driver": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/longterm_control_statistics_v1/native_protocol/register_overlay.py",
+    "sha256": "3679552fc1599894cd1cf0ce5aba3324c1d13d885fbcdd6c96fc1796dbc1c939"
+  },
+  "executed_source_sha256": "cba731392e6249ff6789fa8feef8e0103a569aaff95ebe8708ebe55debff26ac",
+  "substitutions": [
+    {
+      "old": "\"LONGTERM_ACTUAL_FULL_BUILD_V1\"",
+      "new": "\"FINITE_DATA_LOOP_ACTUAL_FULL_BUILD_V1\"",
+      "occurrences": 1
+    },
+    {
+      "old": "NAME = \"LONGTERM_CONTROL_STATISTICS\"",
+      "new": "NAME = \"FINITE_DATA_LOOP\"",
+      "occurrences": 1
+    },
+    {
+      "old": "PROTOCOL = PACKET + \"longterm_control_statistics_v1/native_protocol/\"",
+      "new": "PROTOCOL = PACKET + \"finite_data_loop_v1/native_protocol/\"",
+      "occurrences": 1
+    },
+    {
+      "old": "\"longterm_control_statistics_v1\"",
+      "new": "\"finite_data_loop_v1\"",
+      "occurrences": 1
+    },
+    {
+      "old": "EXPECTED_SOURCE = \"60cd5f8ab161c5b51394463c466947a4c6a6c1742ecdcd9c2bbfc41c0c06bd31\"",
+      "new": "EXPECTED_SOURCE = '98734d8a4ae150a66e5bbdac18008897d98f9cc97f7e68f45fa7eb5d813c92f2'",
+      "occurrences": 1
+    },
+    {
+      "old": "PRIOR_MODULES, MODULES, PRIOR_PUBLIC, NEW_PUBLIC = 666, 678, 4147, 90",
+      "new": "PRIOR_MODULES, MODULES, PRIOR_PUBLIC, NEW_PUBLIC = 712, 724, 4542, 88",
+      "occurrences": 1
+    },
+    {
+      "old": "(PRIOR_MODULES, MODULES, PRIOR_PUBLIC, 8)",
+      "new": "(PRIOR_MODULES, MODULES, PRIOR_PUBLIC, 18)",
+      "occurrences": 1
+    },
+    {
+      "old": "require(hinted == 27,",
+      "new": "require(hinted == 29,",
+      "occurrences": 1
+    },
+    {
+      "old": "NATIVE, OVERLAY, \"development_lexical_reuse_hints.json\")",
+      "new": "NATIVE, OVERLAY, \"development_lexical_reuse_hints.json\", 'PROTOCOL_ADAPTATION.json', 'FROZEN_INPUTS.json', 'protocol_adapter.py', 'adapter_predecessor.py', 'ADAPTER_SCOPE_SUBSTITUTIONS.json', 'integration_native.py', 'immutable_integration_native.py', 'executed_integration_native.py')",
+      "occurrences": 1
+    },
+    {
+      "old": "for name in (\"FULL_BUILD_RECEIPT.json\", \"full-build.log\"):",
+      "new": "for name in (\"FULL_BUILD_RECEIPT.json\", \"full-build.log\", 'PROTOCOL_ADAPTATION.json', 'FROZEN_INPUTS.json', 'protocol_adapter.py', 'adapter_predecessor.py', 'ADAPTER_SCOPE_SUBSTITUTIONS.json', 'full_build.py', 'immutable_full_build.py', 'executed_full_build.py'):",
+      "occurrences": 1
+    },
+    {
+      "old": "    provenance = {\"schema\": NAME + \"_REGISTRATION_PROVENANCE_V1\", \"inputs\": inputs,",
+      "new": "    for name, content in ADAPTED_REGISTRATION_INPUTS.items():\n        record(\"executed_registration_protocol\", \"executed-memory:\" + name,\n               (archive / \"drivers\" / name).relative_to(repo), content)\n    provenance = {\"schema\": NAME + \"_REGISTRATION_PROVENANCE_V1\", \"inputs\": inputs,",
+      "occurrences": 1
+    }
+  ],
+  "wrapper": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_data_loop_v1/native_protocol/register_overlay.py",
+    "sha256": "71f810000fdafa39c1cc28e0e5a219521e0e385fd7ae30fa0febfcbcfb3357bf"
+  },
+  "adapter_sha256": "e9642e1cb4610c366a71b99cc8b71d0e7514eff2b47d3f9842420b5c60bf6465",
+  "claim": "Only listed scope/schema/metadata and export recursion-limit substitutions; actual execution, full census, raw-type comparisons, fixed-edge replay, and source/runtime identity gates remain in the executed predecessor code.",
+  "adapter_predecessor": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_certificates_v1/native_protocol/protocol_adapter.py",
+    "sha256": "05a2a9e8732a1c7f5cc0cc556fe31913f4e35c9d1231a6141ac32e8a7ccb0501"
+  },
+  "adapter_scope_substitutions": [
+    {
+      "old": "action_certificates",
+      "new": "finite_data_loop",
+      "occurrences": 7
+    },
+    {
+      "old": "ACTION_CERTIFICATES",
+      "new": "FINITE_DATA_LOOP",
+      "occurrences": 7
+    },
+    {
+      "old": "\"FinitePolicyPath\", \"FiniteActionCertificate\",\n    \"RationalConditionedSource\", \"FiniteActionCertificateWitness\"",
+      "new": "\"FiniteDataSource\", \"FiniteDataPathBounds\", \"FiniteDataConditioned\",\n    \"FiniteDataNumericalBounds\", \"FiniteDataControl\", \"FiniteDataCalibration\",\n    \"FiniteDataObstacles\", \"FiniteDataCertificate\", \"FiniteDataGeneralRoute\",\n    \"FiniteDataJoint\", \"FiniteDataLiteral\", \"FiniteDataCertifiedConsumer\"",
+      "occurrences": 1
+    },
+    {
+      "old": "PRIOR_MODULES, PRIOR_PUBLIC, PRIOR_OVERLAYS = 708, 4504, 17",
+      "new": "PRIOR_MODULES, PRIOR_PUBLIC, PRIOR_OVERLAYS = 712, 4542, 18",
+      "occurrences": 1
+    },
+    {
+      "old": "(708, 4504, 17, 712)",
+      "new": "(712, 4542, 18, 724)",
+      "occurrences": 1
+    },
+    {
+      "old": "PRIOR_MODULES, PRIOR_THEOREMS, PRIOR_OVERLAYS = 708, 4504, 17",
+      "new": "PRIOR_MODULES, PRIOR_THEOREMS, PRIOR_OVERLAYS = 712, 4542, 18",
+      "occurrences": 1
+    },
+    {
+      "old": "PRIOR_MODULES, MODULES, PRIOR_PUBLIC, NEW_PUBLIC = 708, 712, 4504,",
+      "new": "PRIOR_MODULES, MODULES, PRIOR_PUBLIC, NEW_PUBLIC = 712, 724, 4542,",
+      "occurrences": 1
+    },
+    {
+      "old": "\"(PRIOR_MODULES, MODULES, PRIOR_PUBLIC, 17)\"",
+      "new": "\"(PRIOR_MODULES, MODULES, PRIOR_PUBLIC, 18)\"",
+      "occurrences": 1
+    },
+    {
+      "old": "UNCOUNTED_FINITE_SOURCE_FINITE_DATA_LOOP",
+      "new": "UNCOUNTED_FINITE_DATA_PATH_RISK",
+      "occurrences": 1
+    },
+    {
+      "old": "EXACT_FOUR_MODULE_SCOPE_REQUIRED",
+      "new": "EXACT_TWELVE_MODULE_SCOPE_REQUIRED",
+      "occurrences": 1
+    },
+    {
+      "old": "four new modules",
+      "new": "twelve new modules",
+      "occurrences": 1
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+-- ISOLATED REGRESSION: all generated obligations removed before real Lean.

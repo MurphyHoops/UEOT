@@ -1,0 +1,40 @@
+{
+  "state": "PASS_PENDING_INDEPENDENT_REVIEW_AND_REGISTRATION",
+  "baseline_ref": "f4c23ac61b440df9d88ca1e79a4684d589066489",
+  "build_receipt_sha256": "3eba60a4e1f6418bc3618de00629296b33ea66710a275bda4b1ece31dc9329c3",
+  "results": [
+    {
+      "label": "native_export",
+      "command": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/longterm-finite-data-evidence-20261029/native-01/FINITE_DATA_LOOP_NATIVE_EXPORT.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 85.655,
+      "log_sha256": "bd58cec2dbd6cf6e154eb6dd045667af707de9ed2d26d6324a7fc5d1404f4836"
+    },
+    {
+      "label": "fixed_verifier",
+      "command": [
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lake",
+        "env",
+        "/Users/murphyhoops/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/longterm-finite-data-evidence-20261029/native-01/VERIFY_FINITE_DATA_LOOP_OVERLAY_TYPES.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 77.161,
+      "log_sha256": "bd58cec2dbd6cf6e154eb6dd045667af707de9ed2d26d6324a7fc5d1404f4836"
+    }
+  ],
+  "summary": {
+    "modules": 12,
+    "public_source_theorems": 88,
+    "native_constants": 234,
+    "registered_edges": 178,
+    "overlay_sha256": "32039143e4ef9de0c6efdbcb0027fa377e9e10f14ef42615de9891835964a3f7",
+    "verifier_sha256": "88b6d62a11efa6277e2eb1c0694db9cafcafbff36d7b833119be81635726f86c",
+    "native_sha256": "3c097d0a25313496ba1d747b9bdb1af30dffd999c1dbd2036f3fb6f1b96ffced"
+  }
+}

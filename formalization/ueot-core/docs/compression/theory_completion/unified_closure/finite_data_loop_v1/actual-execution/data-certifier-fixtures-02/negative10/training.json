@@ -1,0 +1,35 @@
+{
+  "format": "BERNOULLI_BITS_LSB_FIRST_V1",
+  "freeze_sha256": "bc5365c2adc0f481b95c5edc44206bc72a7c29dad6e62949f25c89d7aa47b7d3",
+  "n": 262144,
+  "probe_order": [
+    "risk0_safe",
+    "risk1_safe",
+    "select0_failure",
+    "select1_failure"
+  ],
+  "probes": [
+    {
+      "file": "risk0_safe.bin",
+      "name": "risk0_safe",
+      "sha256": "a3476c8ccb9781720367d8ac1d7b30c42e936c3ae09b15c5d61d9b50a941f4a3"
+    },
+    {
+      "file": "risk1_safe.bin",
+      "name": "risk1_safe",
+      "sha256": "39e80c9bc56b8a0e31a739e766abbdef8ec8e551d8294a76f785789ed0657813"
+    },
+    {
+      "file": "select0_failure.bin",
+      "name": "select0_failure",
+      "sha256": "39ea5a9db361ca8fbc215cac7c8077334d1e44eeba86c2061f4e934e603baa2c"
+    },
+    {
+      "file": "select1_failure.bin",
+      "name": "select1_failure",
+      "sha256": "39ea5a9db361ca8fbc215cac7c8077334d1e44eeba86c2061f4e934e603baa2c"
+    }
+  ],
+  "record_id": "deterministic-unit-fixture",
+  "schema": "UEOT/FINITE_DATA_TRAINING/V1"
+}

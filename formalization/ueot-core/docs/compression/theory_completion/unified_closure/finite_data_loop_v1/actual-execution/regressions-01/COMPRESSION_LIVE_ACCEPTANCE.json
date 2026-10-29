@@ -1,0 +1,15 @@
+{
+  "exit_code": 0,
+  "command": [
+    "/opt/homebrew/opt/python@3.14/bin/python3.14",
+    "-B",
+    "formalization/ueot-core/scripts/validate_compression.py",
+    "--repo-root",
+    ".",
+    "--baseline-ref",
+    "f4c23ac61b440df9d88ca1e79a4684d589066489",
+    "--verify-finalization-refs"
+  ],
+  "log_sha256": "86e13448cf1c83d50f1adc32b8e55b8e08bfdc3338aba03a09d8e55c54b1aef2",
+  "correction": "Initial source check without --verify-finalization-refs correctly rejected FINAL-state validation; actual live reference check passed with required flag. No source/ledger change."
+}
