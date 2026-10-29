@@ -1,0 +1,1114 @@
+{
+  "schema": "UEOT_PREDICTIVE_GENEALOGY_TYPED_REUSE_REVIEW_V1",
+  "verdict": "CLEAR_FOR_REQUIRED_TYPED_REUSE_REVIEW_NONPROMOTIONAL",
+  "whole_theory_goal": "OPEN_NOT_ESTABLISHED",
+  "reviewer_roles": {
+    "auditor": "/root/c1_joint_review",
+    "C1_authorship": "Auditor authored MeasurablePredictiveResponseRecursion. This is its actual-type/reuse audit, NOT its independent mathematical review.",
+    "C1_independent_review": {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/whole_theory_formal_closure_v1/independent/C1_RESPONSE_SOURCE_REVIEW.json",
+      "sha256": "9c41040fa42d39400e6b96e61428a5c55fe8311e0810686a1de91b457d7a91bf"
+    },
+    "timestamp_independence": "Auditor did not author RegisterTimestampedBirthSource; complete independent semantic/source review is separately bound.",
+    "timestamp_second_independent_review": {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/whole_theory_formal_closure_v1/independent/TIMESTAMPED_BIRTH_SECOND_REVIEW.json",
+      "sha256": "2bc42c616c6a1a8224dd9c461c33f13f7f475c0aa3f487a89c191976a91978ea"
+    },
+    "root_timestamp_review": {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/whole_theory_formal_closure_v1/independent/TIMESTAMPED_BIRTH_SOURCE_REVIEW.json",
+      "sha256": "45803f29d983a11f772a0660ab01c9bfe801fcf59a70afa09ee1b666b3ecfd49"
+    }
+  },
+  "base_sha": "829f15bee269d8247887581a7914428805885726",
+  "candidate_sha": "1c25f887f3cc09a151f3144a5e903a792b46970f",
+  "inputs": {
+    "preflight": {
+      "path": "/tmp/ueot-predictive-genealogy-reuse.json",
+      "sha256": "dae166d6f643de31204217cf74ea4917b143be2a1801f317a28a1c7044d057ac"
+    },
+    "preflight_markdown": {
+      "path": "/tmp/ueot-predictive-genealogy-reuse.md",
+      "sha256": "a61d3f22343a61cc241c09a293235eb8327f9359ea5868e411a1a1fd663503ba"
+    },
+    "type_checker": {
+      "path": "/tmp/ueot-predictive-genealogy-typed-api.lean",
+      "sha256": "9288559f0f02d24828289792f91a4ed376a62b50ded0b7b5992023953c8424a0"
+    },
+    "typed_output": {
+      "path": "/tmp/ueot-predictive-genealogy-typed-api.log",
+      "sha256": "5f5c1d9762141ab542f3f0b631b4deab13042466a1ea388263318fa98d63aa50"
+    },
+    "support_inventory": {
+      "path": "/tmp/ueot-predictive-genealogy-support-inventory.json",
+      "sha256": "4f38d250f19249f54a08ecdcb3116f0137978ab80cbcec864634a871fbfd138f"
+    }
+  },
+  "changed_lean_sources": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
+      "sha256": "fbc64d664118c83260cfcb00c7b09e4bc41ee0f8728c8a6ec7a26bd90ce3ccc1"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "sha256": "5882e71ff4d417e2e6a8e7c41c734dbba0b4bff72533a2bd830a431ea2988190"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "sha256": "f046221efe5e8802000e93bff8a713f601b70029728f0a04783992da21b89ffc"
+    }
+  ],
+  "verification": {
+    "command": "lake env lean /tmp/ueot-predictive-genealogy-typed-api.lean",
+    "exit_code": 0,
+    "all_changed_and_hint_source_bytes_match_candidate": true,
+    "actual_types_elaborated_for_every_gate_theorem_hint_support_decl": true,
+    "structure_constructors_also_checked": [
+      "ClockedOrganism.mk",
+      "ClockedRecord.mk",
+      "Request.mk"
+    ],
+    "private_source_support": "Private Gaussian Markov support was source-read and already covered by independent C1 consumer/source review, not misrepresented as a new public reuse candidate.",
+    "public_export_diff": "TheoryCompletion.lean adds only imports for the two actual new source modules; no old public import or result removed.",
+    "no_source_changes_or_repeated_historical_full_build": true
+  },
+  "coverage": {
+    "gate_symbols": [
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.measurable_response",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.primitive_joint_mixture",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.actual_word_factorization",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.response_first_marginal",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.same_response_observationLaw",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.same_response_posterior_word_ae",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.same_response_posterior_response_ae",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.measurable_coordinateUpdate",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.coordinateUpdate_factorization",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.measurable_ambientUpdate_fixed",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.measurable_ambientUpdate_joint",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.ambientUpdate_word_actual_ae",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.ambientUpdate_actual_response_ae",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.ambientResponseKernel_apply",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.ambientObservation_actual",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.actual_C1_response_kernel_factor",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.same_response_next_law",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.GaussianConsumer.actual_gaussian_response_factor",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.GaussianConsumer.origin_first_response",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.step_erase",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.step_parent_identity",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.step_clock",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.step_parent_organism",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.actual_child_source",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.actual_child_erases_timestamp_history",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.actual_child_parent_prefix",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.actual_child_offspring",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.retained_parent_not_offspring",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.runParent_identity",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.runParent_clock",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.trace_erase",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.recordLaw_erase",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.actual_run_child_identity",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.actual_run_parent_provenance",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.distinct_births_in_run",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.actual_child_enters_maintenance",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.actualParent_eq_child_prefix",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.child_journal_parent_bridge",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.journal_discovery_consumes_p12",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.repeated_label_failure_preserving_witness",
+      "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.positive_noise_witness_mass"
+    ],
+    "every_gate_symbol_has_typed_disposition": true,
+    "every_JSON_reuse_candidate_has_individual_typed_disposition": true,
+    "all_explicit_supporting_public_definitions_abbreviations_structures_instances_checked": true,
+    "not_a_scientific_completion_metric": true
+  },
+  "findings": [],
+  "source_specific_conclusions": [
+    "C1 actual joint-word disintegration and common-a.e. response recursion are genuinely derived for actual P/O. Existing finite-alphabet scalar Bayes wrappers retain their original supplied factorization scope and are not relabelled as this result.",
+    "Timestamp metadata is a deterministic extension of exactly the old source law. Freshness is limited to distinct transaction indices of one retained-parent run, and P12 supplies optional successful-birth parent identity with declared journal recovery, not global identity or failed-request parent recovery.",
+    "All nearest generic mathematical operators and original P5/P8/P12 consumers are actually reused where their types apply. No identified candidate warrants a source replacement or new common abstraction."
+  ],
+  "new_theorem_reviews": [
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.measurable_response",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "line": 79,
+      "actual_type_sha256": "3acbc6bf4b4e44824a6d9f7d3ed5d2e0f4e850c8dd334f9d37821ad86b6b1def",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "The target maps a latent ProbabilityMeasure to a dependent array of actual finite observation-word ProbabilityMeasures. It reuses measurable_bind, subtype and pi measurability; the scalar-test, history-projection, code-decoder and path-reversal hints have different domains/codomains.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSource.measurable_testResponse",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSource.lean",
+          "lexical_similarity_only": 0.667,
+          "actual_type_sha256": "8061a53fb7364cd2a7bc8c2c59dbd4c6580e628e4c71c1f99ae6add85e7379bc",
+          "actual_type_preview": "@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSource.measurable_testResponse : ∀\n  {Y : Type u_1} {A : Type u_2} [inst : MeasurableSpace Y] [inst_1 : MeasurableSpace A] {Z : Type u_3}\n  [inst_2 : MeasurableSpace Z] (K : ProbabilityTheory.Kernel (Z × A) Z) [ProbabilityTheory.IsMarkovKernel K]\n  (q : Z → Y),\n  Measurable q →\n    ∀ (word : List (A × UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSo",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "State-to-ENNReal scalar testResponse measurability for a list of action/measurable-event tests; target is belief-to-array of entire observation-word probability laws."
+        },
+        {
+          "symbol": "CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.JumpPath.measurable_reverse",
+          "path": "formalization/ueot-core/UEOT/V3/ThirdParty/CrooksJarzynski/ContinuousTimeJump.lean",
+          "lexical_similarity_only": 0.527,
+          "actual_type_sha256": "da8004a090dc0e09c04fb2add642277b8c68190785fa01598d52cd683f4a5881",
+          "actual_type_preview": "@CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.JumpPath.measurable_reverse : ∀ {Ω : Type u_1}\n  [inst : MeasurableSpace Ω] {n : ℕ}, Measurable CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.JumpPath.reverse",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "A measurable finite continuous-time JumpPath reversal; no latent belief, response law or conditional update in its type."
+        },
+        {
+          "symbol": "UEOT.V3.InformationDiscreteLawCode.DiscreteLawCode.measurable_decode",
+          "path": "formalization/ueot-core/UEOT/V3/InformationDiscreteLawCode.lean",
+          "lexical_similarity_only": 0.506,
+          "actual_type_sha256": "0d0f2b18998c7a1975fdad7b1bc09b39d43eae5122354d6da4a9ab2e555b6d16",
+          "actual_type_preview": "@UEOT.V3.InformationDiscreteLawCode.DiscreteLawCode.measurable_decode : ∀ {C : Type u_1} {Y : Type u_2}\n  [inst : MeasurableSpace C] [inst_1 : MeasurableSpace Y] [Countable C] [MeasurableSingletonClass C]\n  [inst_4 : Nonempty C] (code : UEOT.V3.InformationDiscreteLawCode.DiscreteLawCode), Measurable code.decode",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "Measurability of a supplied countable law-code decoder code.decode, with Countable/Nonempty code space; not source-word response or universal disintegration."
+        },
+        {
+          "symbol": "UEOT.V3.FiniteHistoryMeasurable.measurable_current",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteHistoryMeasurable.lean",
+          "lexical_similarity_only": 0.492,
+          "actual_type_sha256": "1fd7ef0bd55e28e11cfbfca741f0e4cc5c81518adf7f04253e1c48c03ea0860a",
+          "actual_type_preview": "@UEOT.V3.FiniteHistoryMeasurable.measurable_current : ∀ {X : Type u_1} {A : Type u_2} [inst : MeasurableSpace X]\n  [inst_1 : MeasurableSpace A], Measurable UEOT.V3.FiniteHistory.Carrier.current",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "Projection Carrier.current from full finite-history Sigma carrier to its current physical state; not a response-law map."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.primitive_joint_mixture",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "line": 92,
+      "actual_type_sha256": "b3005add265e8da405b969dd2cabadd9579be3687d4c6cb581044eedba2d5c68",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Small measure-level adapter directly reuses the existing lintegral_belief_joint and Measure.ext_iff_lintegral. It identifies fixed-action primitive P/O mixture with c1BeliefActionJoint; no new disintegration is proved.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.actual_word_factorization",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "line": 109,
+      "actual_type_sha256": "754a5003a354d392c826b4877a3f4ea55338ea06d316956efe02f4d6d95a9778",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Derives the complete longer-word measure from literal P/O recursion using primitive_joint_mixture, existing c1PosteriorSection_factorization and parallelComp_comp_compProd. A set-theoretic quotient factorization cannot replace this source joint-law identity.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.StructuredQuotient.canonical_factorization",
+          "path": "formalization/ueot-core/UEOT/V3/StructuredQuotient.lean",
+          "lexical_similarity_only": 0.488,
+          "actual_type_sha256": "058712d4af2db568df4495dc8115085a79bf31926ddc910336c501069d4fa6cf",
+          "actual_type_preview": "@UEOT.V3.StructuredQuotient.canonical_factorization : ∀ {X : Type u_1} {E : Type u_2} {I : Type u_3} {R : Type u_4}\n  (K : I → X → E → R) (i : I) (x : X) (e : E),\n  K i x e =\n    UEOT.V3.StructuredQuotient.quotientResponse K i (UEOT.V3.StructuredQuotient.internalClass K x)\n      (UEOT.V3.StructuredQuotient.environmentClass K e)",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "Plain set-theoretic response descent through internal/environment Quotients. It proves a pointwise value equality, not observation-law compProd continuation=responseWord law."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.response_first_marginal",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "line": 123,
+      "actual_type_sha256": "e09eeb24de69854c7a99a167ac99d0d1e929416137168065247c6615d2b314cc",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Reuses Measure.fst_compProd on the derived source word factorization, yielding the exact first-observation marginal for every continuation word.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.same_response_observationLaw",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "line": 131,
+      "actual_type_sha256": "590c1a0f41eae474ece262fab6ee5e2a2af3946e98904f33f2fdbb3c3c39e05a",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Reads the singleton-action coordinate of equal complete response arrays and applies response_first_marginal. The finite Bool probe-law witness is not the same quantified source theorem.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.probe_observation_law",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean",
+          "lexical_similarity_only": 0.494,
+          "actual_type_sha256": "9cbc11b5e16f9c211347584ea63a0da01ab22c2e9de2aabee05d10f62d086824",
+          "actual_type_preview": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.probe_observation_law : ∀\n  (b :\n    MeasureTheory.ProbabilityMeasure\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.State),\n  UEOT.V3.GeneralBayesPosterior.observationLaw (↑b)\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotientWitness.source\n      (UEOT.V3.Compression.TheoryCompletion.Unifi",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "A particular Bool-action finite witness probe law equals a fixed observation pushforward. It does not quantify arbitrary Markov P/O and complete response arrays."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.same_response_posterior_word_ae",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "line": 139,
+      "actual_type_sha256": "7589a2d56a069a062024bb9d5aa1604cfb0ce466a3e9af6edb1054e1df27bef4",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Actually reuses Kernel.ae_eq_of_compProd_eq after proving both first-observation/continuation joint laws equal from current coordinates. CountablyGenerated W and its word tuple suffice; no desired posterior-coordinate equality is assumed.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.same_response_posterior_response_ae",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "line": 161,
+      "actual_type_sha256": "668ea94e56c74f7953002e77e974e6ae3acda7bb27c4ed425369a81849b8f381",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Reuses ae_all_iff over countably many List A words and funext. It adds explicit Countable A to obtain a single common full-measure set, not an invalid uncountable intersection.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.measurable_coordinateUpdate",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "line": 198,
+      "actual_type_sha256": "9ba004cad8d7ce31a86b543a7b17e8e29668975a2e3f8d511acbc809fc310b79",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Uses the existing universal conditional-kernel measurability and subtype construction for probability-law-valued updates. Finite scalar Bayes ratio formulas and fixed marginal coordinates are not typed replacements.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.PredictionUpdate.exists_measurable_coordinate_update",
+          "path": "formalization/ueot-core/UEOT/V3/PredictionUpdate.lean",
+          "lexical_similarity_only": 0.75,
+          "actual_type_sha256": "a09f7993c234cdf3385f1cad5dfdc82b6264ceaa4d454143ba4fbc1d34c4c072",
+          "actual_type_preview": "@UEOT.V3.PredictionUpdate.exists_measurable_coordinate_update : ∀ {A : Type u_1} {O : Type u_2} {I : Type u_3}\n  {J : Type u_4} [inst : MeasurableSpace A] [inst_1 : MeasurableSpace O] [Fintype A] [Fintype O]\n  [MeasurableSingletonClass A] [MeasurableSingletonClass O]\n  (cl : UEOT.V3.PredictionUpdate.RecursiveCoordinateClosure A O I J),\n  ∃ U,\n    Measurable U ∧ ∀ (c : J → ℝ) (a : A) (o : O), U (c, a, o) = UEOT.V3.PredictionUpdate.coordinateBayesU",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "Finite A/O scalar-coordinate RecursiveCoordinateClosure ratio update; source numerator/evidence indices are supplied. New theorem derives actual word joints and uses non-atomic conditional laws."
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSource.measurable_coordinate",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSource.lean",
+          "lexical_similarity_only": 0.667,
+          "actual_type_sha256": "684672579de6c1a2dedb4c8e9f03930ccb54f4da17fcfd0a4da1bfda96b7ae3a",
+          "actual_type_preview": "@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSource.measurable_coordinate : ∀ {Y : Type u_1}\n  {H : Type u_2} [inst : MeasurableSpace Y] [inst_1 : MeasurableSpace H],\n  Measurable UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSource.coordinate",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "Measurable visible marginal ProbabilityMeasure(Y×H)→ProbabilityMeasure Y. New coordinateUpdate has input(joint probability law,actual observation) and output conditional continuation law."
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.measurable_coordinate",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+          "lexical_similarity_only": 0.667,
+          "actual_type_sha256": "ec239c662413b803655148a21af1ba756831db2be4aaad94730ca48e6b43dcad",
+          "actual_type_preview": "@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.measurable_coordinate : ∀ {X : Type u_1}\n  [inst : MeasurableSpace X] (q : X → Bool),\n  Measurable q → Measurable (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.coordinate q)",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "Measurability of Bool observable-belief coordinate q; no general word-valued conditional kernel or joint observation parameter."
+        },
+        {
+          "symbol": "UEOT.V3.PredictionUpdate.measurable_coordinateBayesUpdate_fixed",
+          "path": "formalization/ueot-core/UEOT/V3/PredictionUpdate.lean",
+          "lexical_similarity_only": 0.6,
+          "actual_type_sha256": "3112165b3056c8a6d4d9b3d96f318a52ab83c6de0b27c563ec9e438a95a68538",
+          "actual_type_preview": "@UEOT.V3.PredictionUpdate.measurable_coordinateBayesUpdate_fixed : ∀ {A : Type u_1} {O : Type u_2} {I : Type u_3}\n  {J : Type u_4} [inst : MeasurableSpace A] [inst_1 : MeasurableSpace O] [Fintype A] [Fintype O]\n  [MeasurableSingletonClass A] [MeasurableSingletonClass O]\n  (cl : UEOT.V3.PredictionUpdate.RecursiveCoordinateClosure A O I J) (a : A) (o : O),\n  Measurable fun c => UEOT.V3.PredictionUpdate.coordinateBayesUpdate cl c a o",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "For fixed finite-alphabet action/observation, a real-valued coordinate ratio vector is measurable. Gaussian observations here all have null singleton evidence; conditional-kernel update is a different type/semantics."
+        },
+        {
+          "symbol": "UEOT.V3.PredictionUpdate.measurable_coordinateBayesUpdate_joint",
+          "path": "formalization/ueot-core/UEOT/V3/PredictionUpdate.lean",
+          "lexical_similarity_only": 0.6,
+          "actual_type_sha256": "7d306fbf9771b96294b65d7fd1a0338d4a671e776c61768875ac76241db2d999",
+          "actual_type_preview": "@UEOT.V3.PredictionUpdate.measurable_coordinateBayesUpdate_joint : ∀ {A : Type u_1} {O : Type u_2} {I : Type u_3}\n  {J : Type u_4} [inst : MeasurableSpace A] [inst_1 : MeasurableSpace O] [Fintype A] [Fintype O]\n  [MeasurableSingletonClass A] [MeasurableSingletonClass O]\n  (cl : UEOT.V3.PredictionUpdate.RecursiveCoordinateClosure A O I J),\n  Measurable fun z => UEOT.V3.PredictionUpdate.coordinateBayesUpdate cl z.1 z.2.1 z.2.2",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "Joint measurability for Fintype A and Fintype O scalar arrays with given closure indices. New result allows Standard Borel non-atomic W and countable actions."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.coordinateUpdate_factorization",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "line": 205,
+      "actual_type_sha256": "4668dab949f364b939fb0a76d237f53af3df6f4e3e1affeff155ff460a82b560",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Directly reuses Kernel.disintegrate for the common probability-law parameter kernel and compProd_apply_eq_compProd_sectR. The needed conditional distribution is constructed, not supplied.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.measurable_ambientUpdate_fixed",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "line": 226,
+      "actual_type_sha256": "016bae77be8d0d72d8b9bc03b7be2ec70ce3a8dd5230a3bd5ea3718cc109d81b",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Composes common coordinateUpdate with evaluation of coordinate(a::word), then uses product/pi measurability. It handles Standard Borel observations without finite-observation Bayes denominators.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.PredictionUpdate.measurable_coordinateBayesUpdate_fixed",
+          "path": "formalization/ueot-core/UEOT/V3/PredictionUpdate.lean",
+          "lexical_similarity_only": 0.5,
+          "actual_type_sha256": "3112165b3056c8a6d4d9b3d96f318a52ab83c6de0b27c563ec9e438a95a68538",
+          "actual_type_preview": "@UEOT.V3.PredictionUpdate.measurable_coordinateBayesUpdate_fixed : ∀ {A : Type u_1} {O : Type u_2} {I : Type u_3}\n  {J : Type u_4} [inst : MeasurableSpace A] [inst_1 : MeasurableSpace O] [Fintype A] [Fintype O]\n  [MeasurableSingletonClass A] [MeasurableSingletonClass O]\n  (cl : UEOT.V3.PredictionUpdate.RecursiveCoordinateClosure A O I J) (a : A) (o : O),\n  Measurable fun c => UEOT.V3.PredictionUpdate.coordinateBayesUpdate cl c a o",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "For fixed finite-alphabet action/observation, a real-valued coordinate ratio vector is measurable. Gaussian observations here all have null singleton evidence; conditional-kernel update is a different type/semantics."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.measurable_ambientUpdate_joint",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "line": 236,
+      "actual_type_sha256": "76c78d268fbe189dba5b67339ddf6fab9c7839ddcb0b316b8711f287df6e6dcb",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Uses the same standard countable measurable-partition lemma as older finite-alphabet wrappers, but partitions only the countable discrete action labels. Observation W stays Standard Borel and can be non-atomic.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.BayesianRecursiveClosure.measurable_bayesUpdate_joint",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/BayesianRecursiveClosure.lean",
+          "lexical_similarity_only": 0.6,
+          "actual_type_sha256": "dcac3b909496345b2774533d9508e6400ad6c4c4c478784a3b2969cae6736345",
+          "actual_type_preview": "@UEOT.V3.Compression.BayesianRecursiveClosure.measurable_bayesUpdate_joint : ∀ {S : Type u_1} {A : Type u_2}\n  {O : Type u_3} {I : Type u_4} [inst : MeasurableSpace S] [inst_1 : MeasurableSpace A] [inst_2 : MeasurableSpace O]\n  [Fintype A] [Fintype O] [MeasurableSingletonClass A] [MeasurableSingletonClass O] (joint : S → A → O → I → ℝ)\n  (evidence : S → A → O → ℝ) (fallback : I → ℝ),\n  (∀ (a : A) (o : O) (i : I), Measurable fun s => joint s a o i",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "Generic scalar ratio/fallback update with Fintype action/observation and supplied measurable numerator/evidence. It does not construct source word laws or their disintegration."
+        },
+        {
+          "symbol": "UEOT.V3.PredictionUpdate.measurable_coordinateBayesUpdate_joint",
+          "path": "formalization/ueot-core/UEOT/V3/PredictionUpdate.lean",
+          "lexical_similarity_only": 0.5,
+          "actual_type_sha256": "7d306fbf9771b96294b65d7fd1a0338d4a671e776c61768875ac76241db2d999",
+          "actual_type_preview": "@UEOT.V3.PredictionUpdate.measurable_coordinateBayesUpdate_joint : ∀ {A : Type u_1} {O : Type u_2} {I : Type u_3}\n  {J : Type u_4} [inst : MeasurableSpace A] [inst_1 : MeasurableSpace O] [Fintype A] [Fintype O]\n  [MeasurableSingletonClass A] [MeasurableSingletonClass O]\n  (cl : UEOT.V3.PredictionUpdate.RecursiveCoordinateClosure A O I J),\n  Measurable fun z => UEOT.V3.PredictionUpdate.coordinateBayesUpdate cl z.1 z.2.1 z.2.2",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "Joint measurability for Fintype A and Fintype O scalar arrays with given closure indices. New result allows Standard Borel non-atomic W and countable actions."
+        },
+        {
+          "symbol": "UEOT.V3.PredictionUpdate.measurable_stateBayesUpdateVector_joint",
+          "path": "formalization/ueot-core/UEOT/V3/PredictionUpdate.lean",
+          "lexical_similarity_only": 0.481,
+          "actual_type_sha256": "aaea648a249e008c25f298d112fcbc180a634e6e3d5a331893d9f990905a4c0a",
+          "actual_type_preview": "@UEOT.V3.PredictionUpdate.measurable_stateBayesUpdateVector_joint : ∀ {S : Type u_1} {A : Type u_2} {O : Type u_3}\n  {I : Type u_4} [inst : MeasurableSpace S] [inst_1 : MeasurableSpace A] [inst_2 : MeasurableSpace O] [Fintype A]\n  [Fintype O] [MeasurableSingletonClass A] [MeasurableSingletonClass O] (jointS : S → A → O → I → ℝ)\n  (obsS : S → A → O → ℝ),\n  (∀ (a : A) (o : O) (i : I), Measurable fun s => jointS s a o i) →\n    (∀ (a : A) (o : O), Me",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "A finite-alphabet scalar Bayes-vector measurability wrapper with externally given joint/evidence maps, not a universal probability-coordinate conditional."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.ambientUpdate_word_actual_ae",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "line": 245,
+      "actual_type_sha256": "713505b07f1353668c1fee11abf630a6f949430d6e449d6b154ac10d472fde8f",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Reuses conditional-kernel uniqueness to compare the universal coordinate disintegration with the actual source posterior continuation; the longer-word numerator was derived upstream.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.ambientUpdate_actual_response_ae",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "line": 266,
+      "actual_type_sha256": "2340b7362596b5e8ad9e974096b3348170573ac6aea78bebd030248bcc57cebb",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Reuses ae_all_iff and funext to bind all word coordinates to the SAME actual posterior on a common observation-full-measure set.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.ambientResponseKernel_apply",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "line": 316,
+      "actual_type_sha256": "c1c0fc659995673313c21e33f93265bdeca270584de7c54a4d8044c2c40ad5a6",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Reuses standard kernel integral/map/deterministic identities to show literal row semantics. A Sigma growing-history augmented kernel has a different carrier and does not produce this compressed response transition.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.ConcreteHistoryMarkovization.augmentedKernel_apply",
+          "path": "formalization/ueot-core/UEOT/V3/ConcreteHistoryMarkovization.lean",
+          "lexical_similarity_only": 0.484,
+          "actual_type_sha256": "45ce81783889ea1f7983c5724e3efa21998cbbd61eba9bb8738d865c25e090ab",
+          "actual_type_preview": "@UEOT.V3.ConcreteHistoryMarkovization.augmentedKernel_apply : ∀ {X : Type u_1} {A : Type u_2} [inst : MeasurableSpace X]\n  [inst_1 : MeasurableSpace A] (q : (n : ℕ) → ProbabilityTheory.Kernel (UEOT.V3.FiniteHistory.HistoryFiber X A n × A) X)\n  (n : ℕ) (z : UEOT.V3.FiniteHistory.HistoryFiber X A n × A),\n  (UEOT.V3.ConcreteHistoryMarkovization.augmentedKernel q) ⟨n, z⟩ =\n    (UEOT.V3.ConcreteHistoryMarkovization.fixedAugmented n (q n)) z",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "Equality of a Sigma full-history augmentedKernel branch and fixedAugmented. The target response kernel instead samples the computed first-observation coordinate and updates compressed response arrays."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.ambientObservation_actual",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "line": 329,
+      "actual_type_sha256": "b365ff34d635405c8406cfa0dd1f68b4748bfb0eb9bb1635e1d655eda07d372e",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Applies response_first_marginal to the actual one-action coordinate, with no separately supplied observation-law factor.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.actual_C1_response_kernel_factor",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "line": 336,
+      "actual_type_sha256": "cb3f8a10d5e3f9868152c69ed8ed28cf311e6f2d875b8366f6fcc78d3c241d19",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Directly consumes existing c1BeliefTransitionKernel_apply_eq_map and the newly derived common-a.e. actual response update. The ambient kernel is constructed from coordinates; no image section or hL is an argument.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.same_response_next_law",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "line": 348,
+      "actual_type_sha256": "5370a59cbaacc73c00684b98ad689a676bc433e5489d25c6f1ee5a56433ee558",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "One-line actual downstream equality using actual_C1_response_kernel_factor and equality of current source response arrays; it is not a second choice-based existence proof.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.GaussianConsumer.actual_gaussian_response_factor",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "line": 380,
+      "actual_type_sha256": "e366002f830f4a24407cf0ba1d9c1fcb4701a873dc22a4806f3d4b05810ce597",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Direct specialization of the new general C1 factor to the existing shared-Gaussian source transparently restricted to integer drift actions. No new Gaussian existence assertion or original finite-data action change.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.GaussianConsumer.origin_first_response",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "line": 389,
+      "actual_type_sha256": "612c27f4afece782ef243bf0865a1e121fa0b0db1776b2a085b54a70cb89381e",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Reuses existing Gaussian origin_observation_law after checking fixed-action source/sensor rows. It identifies the new complete-response coordinate marginal, not a second Gaussian derivation.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.step_erase",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "line": 64,
+      "actual_type_sha256": "e8daf33a3924b3e271817ce35a9efdd49e53239206728ecac06b6bc85c2b0126",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Executes old modeRecordStep once and erases only new journal metadata. It is a new clocked-to-old source adapter, not another physical transition implementation.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.step_parent_identity",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "line": 69,
+      "actual_type_sha256": "5fea0a904efb10baafe0ad9f4c8142a8fefa4ea998d3cff54c0c60019b35d65c",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Definitional metadata invariant used by actual-prefix proofs; no caller parent-identity certificate.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.step_clock",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "line": 73,
+      "actual_type_sha256": "cab1966c6272097b0781b496b97e011d68f28eb6d6a4f03ab6e7c7a80c4d2366",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Definitional all-transaction counter increment with no success/mode premise; it is the needed freshness source.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.step_parent_organism",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "line": 77,
+      "actual_type_sha256": "87e8ece2a4c4c471ed323407ea3d1ee019fe9d341d23173da9e44c2ba1f17468",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Definitional equality with the actual old modeRecordStep parent result; reused in erasure/source interpretation.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.actual_child_source",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "line": 82,
+      "actual_type_sha256": "f9014faff6ef8a902188fcc9e891aa78c5f06b648ff7a5e913f395991ce514be",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Derives literal old child, appended actual counter/label address and childclock0 via Option.map_eq_some_iff. Old Organism child readiness/source theorems cannot supply clocked metadata equations.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterBirthMaintenance.actual_child_ready",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterBirthMaintenance.lean",
+          "lexical_similarity_only": 0.527,
+          "actual_type_sha256": "58e4813eb308279804e9ad6c51363d40a83eab9ec647fb596c99e8cbc4804361",
+          "actual_type_preview": "@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterBirthMaintenance.actual_child_ready : ∀ {n : ℕ} (i : Fin n)\n  (m : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismPurpose.Mechanism)\n  (parent child : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterRepairHistory.Organism n)\n  (a : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterRepairSource.Action) (label : Bool),\n  parent.program = m.goal ",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "Unclocked Organism child program/target validity and old Bool-lineage OffspringOf from recordStep, with parent.program=goal. It provides neither timestamp append nor childclock0 nor clocked lineage distinctness; relevant readiness is already reused by maintenance transitively."
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.actualSource_pos",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+          "lexical_similarity_only": 0.5,
+          "actual_type_sha256": "e2279997019ae9f878e5f2f4b012a17c723295c08a12a87f1a7da6810c76a273",
+          "actual_type_preview": "@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.actualSource_pos : ∀\n  {X Y A : Type u_1} [inst : Fintype X] [inst_1 : Fintype A] [Nonempty A] (P : X → A → X → ℚ)\n  (hP :\n    ∀ (x : X) (a : A),\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateCheck.ValidRow (P x a))\n  (q : X → Y) (base : Y → A → ℚ)\n  (hbase :\n    ∀ (y : Y), UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.Fini",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "Finite rational source/safe-survival positive-mass transfer under ValidRow premises; no ClockedOrganism, journal address or child Option in the type."
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointRecord.record_child_source",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointRecord.lean",
+          "lexical_similarity_only": 0.5,
+          "actual_type_sha256": "f1e880767aed67aad4414b8750eb13b715738c3460f884c732a300c56a89e168",
+          "actual_type_preview": "@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointRecord.record_child_source : ∀ {n : ℕ} (i : Fin n)\n  (m : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismPurpose.Mechanism)\n  (o : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterRepairHistory.Organism n)\n  (a : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterRepairSource.Action) (label : Bool)\n  (c : UEOT.V3.Compression.TheoryCompletio",
+          "decision": "REUSED_WHERE_TYPE_APPLIES_NOT_METADATA_REPLACEMENT",
+          "typed_reason": "Old recordStep child equals birthEvent and inherits program. This is actually used by actual_child_erases_timestamp_history, while actual_child_source needs additional computed address/counter equations unavailable in this type."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.actual_child_erases_timestamp_history",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "line": 97,
+      "actual_type_sha256": "0c6cbfdee73f04703a192b85ab2d97016f91d9131d88decaee5dde54be0e8ae1",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Reuses old actual_child_requires_repair, record_child_source and birthEvent/repairEvent semantics, retaining explicit founder-journal alignment. This proves correspondence instead of assuming it.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.actual_child_parent_prefix",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "line": 110,
+      "actual_type_sha256": "aaee7db6acbb4f166406104f783b9bb2a3a5a5d9c3aeefc26def063fe6e4fee8",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Reuses actual_child_source and List.dropLast on the actual appended child address; no statistical or physical-only parent inference.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.actual_child_offspring",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "line": 122,
+      "actual_type_sha256": "d544d5b264f3971e432fc610971550de1016706726ef5937a0d29fe56fd08dba",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Reuses original LineageSemantics.OffspringOf with actual step success and identity-length inequality. The older unclocked child readiness theorem has a different lineage/identity type.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterBirthMaintenance.actual_child_ready",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterBirthMaintenance.lean",
+          "lexical_similarity_only": 0.5,
+          "actual_type_sha256": "58e4813eb308279804e9ad6c51363d40a83eab9ec647fb596c99e8cbc4804361",
+          "actual_type_preview": "@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterBirthMaintenance.actual_child_ready : ∀ {n : ℕ} (i : Fin n)\n  (m : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismPurpose.Mechanism)\n  (parent child : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterRepairHistory.Organism n)\n  (a : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterRepairSource.Action) (label : Bool),\n  parent.program = m.goal ",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "Unclocked Organism child program/target validity and old Bool-lineage OffspringOf from recordStep, with parent.program=goal. It provides neither timestamp append nor childclock0 nor clocked lineage distinctness; relevant readiness is already reused by maintenance transitively."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.retained_parent_not_offspring",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "line": 135,
+      "actual_type_sha256": "4d2398c739328cf4d08748aa27b99c6f7d123880c22c9bbdd63ab1482b0e48ba",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Actually applies the original generic LineageSemantics.sameObjectRepair_not_offspring using preserved parent ID; no duplicate P8 argument.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.runParent_identity",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "line": 153,
+      "actual_type_sha256": "a539b507eb1de1183f50fe3eec24244365e70ce46cef5aa0d4fead6d4cb9e559",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Fold induction propagates the actual one-step retained-parent identity; no general World or independent identity transport premise.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.runParent_clock",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "line": 160,
+      "actual_type_sha256": "fac4fafcd06e0e3cf0051f87a011dedd49bdd6cabd25861567c8df500f052991",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Fold induction derives initialclock+literal-wordlength, counting every actual transaction. This is stronger source data than an assumed increasing rank.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.trace_erase",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "line": 172,
+      "actual_type_sha256": "65b255ea9a0cfcd79a1a010d04ce397ba77602da226cab17bd534f72d1a615d9",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Reuses step_erase to identify complete clocked traces with the old SAME-policy interpreter trace, preserving all memory and physical successor effects.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.recordLaw_erase",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "line": 197,
+      "actual_type_sha256": "9dd6056e1b7e42cfa27c6c24549f40549ea6516b38280f814311e83df7e7a356",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Reuses PMF.map_comp, trace_erase and old trace_tapeEvents to identify the complete SAME initialized policy/hazard/label law, not only marginal states.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.actual_run_child_identity",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "line": 215,
+      "actual_type_sha256": "c20269ca2ad6605c1912579c4da663616ef7289314d19e56cee18157e6c45cfc",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Combines literal actual_child_source with actual run counter/identity invariants under explicit valid index bounds. No old untimestamped history theorem supplies the counter.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.actual_run_parent_provenance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "line": 227,
+      "actual_type_sha256": "8b9e4ad48f983d7da40828944d64389a6518650759be6b6ce7bd1ab7a3408873",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Combines actual child OffspringOf and prefix-address equations for the executed run prefix. It identifies parent ID, not complete parent state.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.distinct_births_in_run",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "line": 238,
+      "actual_type_sha256": "56db586f032e9cafd003633643b45b95d7e5f2947e6de022d8593dfac4d58747",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Uses actual run child-ID formula, list append cancellation and Nat addition cancellation for different transaction indices. It closes the repeated-label collision only in the declared serialized run.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.actual_child_enters_maintenance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "line": 261,
+      "actual_type_sha256": "f573a8748932dde1d16323ec1eed27a342aa9e708238f19ee1c942c03cdc3348",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Actually calls the nearest existing fault-aware actual_mode_birth_enters_maintenance after stripping new metadata through actual_child_source. The no-fault birth maintenance adapter is reused transitively.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterBirthMaintenance.actual_birth_enters_maintenance",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterBirthMaintenance.lean",
+          "lexical_similarity_only": 0.6,
+          "actual_type_sha256": "e1ccadca6a2a62c2e2d0f7756d674b7affc3652107c6bce34883ad373dab3c9f",
+          "actual_type_preview": "@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterBirthMaintenance.actual_birth_enters_maintenance : ∀\n  {n : ℕ} [inst : MeasurableSpace (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterRepairSource.State n)]\n  [inst_1 : MeasurableSingletonClass (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterRepairSource.State n)]\n  (i : Fin n) (m : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismPurpose.M",
+          "decision": "ACTUALLY_REUSED_TRANSITIVELY",
+          "typed_reason": "No-fault literal child P5 entry theorem is consumed through the existing fault-aware actual_mode_birth_enters_maintenance; the new wrapper chooses the closer adapter, avoiding a second P5 proof."
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultJointRecord.actual_mode_birth_enters_maintenance",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultJointRecord.lean",
+          "lexical_similarity_only": 0.524,
+          "actual_type_sha256": "42a40500336c22017bfac19b349ba627a1b5fba2965d2b81fcb69b15e40b6d5d",
+          "actual_type_preview": "@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultJointRecord.actual_mode_birth_enters_maintenance : ∀\n  {n : ℕ} (i : Fin n) (m : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismPurpose.Mechanism)\n  (epsilon : NNReal) (he : epsilon ≤ 1)\n  [inst : MeasurableSpace (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterRepairSource.State n)]\n  [inst_1 : MeasurableSingletonClass (UEOT.V3.Compression.TheoryCo",
+          "decision": "ACTUALLY_REUSED_DIRECTLY",
+          "typed_reason": "Exact same mode-aware old-child/program/hazard P5 seed-entry interface is called in actual_child_enters_maintenance after actual_child_source supplies the old child equality."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.actualParent_eq_child_prefix",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "line": 292,
+      "actual_type_sha256": "c2ac0ce024c54a96b5878f5f806a496ecaa163c6d1e6af51d11dd31be47ac16f",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Executes the real step child Option and derives the optional parent ID as dropLast of observed child ID. Finite physical trajectory prefix-law equalities are not typed replacements.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.actual_state_prefix_eq",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean",
+          "lexical_similarity_only": 0.5,
+          "actual_type_sha256": "b5bd0566b6a08f0d448dccfe7dc3725ee8838f21c7a905cfae781c5218376bac",
+          "actual_type_preview": "@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryPhysicalSafety.actual_state_prefix_eq : ∀\n  {X M Y A : Type u_1} [inst : Fintype X] [inst_1 : Fintype M] [inst_2 : MeasurableSpace X]\n  [inst_3 : MeasurableSingletonClass X] [inst_4 : MeasurableSpace M] [inst_5 : MeasurableSingletonClass M]\n  (controller : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryController M Y A) (p₀ : PMF X)\n  (q : X → Y) (P : ℕ → X → A → PM",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "Equality of finite controller physical trajectory prefix measures under PMF/kernel histories; not value-level Option(parent timestamp ID)=map dropLast observed child ID."
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.actual_augmented_prefix_eq",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryRealization.lean",
+          "lexical_similarity_only": 0.5,
+          "actual_type_sha256": "721194e776fba7b9a2c3ff38e12b1c5081315cc199a5aa5487aaec52497013e7",
+          "actual_type_preview": "@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryRealization.actual_augmented_prefix_eq : ∀\n  {X M Y A : Type u_1} [inst : Fintype X] [inst_1 : Fintype M] [inst_2 : MeasurableSpace X]\n  [inst_3 : MeasurableSingletonClass X] [inst_4 : MeasurableSpace M] [inst_5 : MeasurableSingletonClass M]\n  (controller : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMemoryController M Y A) (p₀ : PMF X)\n  (q : X → Y) (P : ℕ → X → A → P",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "Equality between finite-memory augmented-path PMF and Ionescu-Tulcea prefix measure. Different state/history measure carriers, not a child ID list prefix."
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_prefix_eq_actual",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindow.lean",
+          "lexical_similarity_only": 0.5,
+          "actual_type_sha256": "478625198102fbec5c53972a74fa54d90154c9802bb09dead432953f4e6d6db1",
+          "actual_type_preview": "@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TotalFiniteWindowCheck.generated_prefix_eq_actual : ∀\n  {X Y A : Type u_1} [inst : Fintype X] [inst_1 : Fintype A] [inst_2 : Nonempty A] [inst_3 : MeasurableSpace X]\n  [inst_4 : MeasurableSingletonClass X] [inst_5 : MeasurableSpace A] [inst_6 : MeasurableSingletonClass A]\n  (M : UEOT.V3.FiniteDiscountedControl.Model X fun x => A) (q : X → Y) (sigma : Y → PMF A) (p0 : PMF X) (K : Set X)\n  (t r :",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "Finite safe conditioned-prefix PMF equality under positive survival and fallback kernel. No birth journal, parent identity or counter semantics."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.child_journal_parent_bridge",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "line": 303,
+      "actual_type_sha256": "4d2828b783ce45c3bfb57b4957e1c0695c4724979b3d99b4dd8347d366892659",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Constructs the original ObjectClassParentBridge for Request candidates and optional timestamp identities using actualParent_eq_child_prefix. Older Bool-log/fixed-founder bridge has different candidate and parent types.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterRepairHistory.journal_parent_bridge",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterRepairHistory.lean",
+          "lexical_similarity_only": 0.75,
+          "actual_type_sha256": "18501b2ec742a0ac8521926e4fceb27d22374f8f42eb9134f53ba267baa71373",
+          "actual_type_preview": "@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterRepairHistory.journal_parent_bridge : ∀ {n : ℕ} (i : Fin n)\n  (o : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterRepairHistory.Organism n),\n  UEOT.V3.Compression.TheoryCompletion.InverseObjecthood.ObjectClassParentBridge\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterRepairHistory.journalClass n)\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.Re",
+          "decision": "SHARED_INTERFACE_REUSED_NOT_SAME_SPECIALIZATION",
+          "typed_reason": "Old bridge is for List(Event n) candidates, birthLabels class and fixed-founder Bool history. New bridge is for actual Request candidates, child/failure journal and Option timestamp parent IDs. Both use the existing ObjectClassParentBridge but prove different source interpretation."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.journal_discovery_consumes_p12",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "line": 313,
+      "actual_type_sha256": "41620bb0355abe1dfdaa84e3d57c3720fb70379fd67eb09b7c281d46b8f0e980",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Actually calls the shared original p12_discovered_parent_tendsto_lifecycleParent, with the new source-derived bridge. Older List Event/Bool-history wrapper cannot instantiate Request/Option timestamp IDs directly.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterRepairHistory.journal_discovery_consumes_p12",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterRepairHistory.lean",
+          "lexical_similarity_only": 1.0,
+          "actual_type_sha256": "bc94c14689868fc7f3b1ad842471bcddd705dd09260ddb8e96a922c5ac7946ad",
+          "actual_type_preview": "@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterRepairHistory.journal_discovery_consumes_p12 : ∀ {n : ℕ}\n  (i : Fin n) (o : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterRepairHistory.Organism n)\n  {Omega : ℕ → Type u_1} [inst : (k : ℕ) → MeasurableSpace (Omega k)]\n  (C : UEOT.V3.Compression.TheoryCompletion.StatisticalConsistency.ChangingSampleEventContract Omega)\n  (truth : List (UEOT.V3.Compression.TheoryCompletion.U",
+          "decision": "SHARED_GENERIC_CONSUMER_REUSED_NOT_SAME_WRAPPER",
+          "typed_reason": "Old specialized wrapper learns Bool birthLabels of List(Event n); new learns optional timestamp child IDs of Request n. The shared original generic p12_discovered_parent_tendsto_lifecycleParent is actually reused, not reimplemented."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.repeated_label_failure_preserving_witness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "line": 333,
+      "actual_type_sha256": "a35881a36fd3cdee8f1d25e7116fd17fe840f6a3252aa933460f6b1ad24f8d98",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Evaluates actual repair/fault/repair trace, retaining the failed middle birth and original repeated Bool child histories while proving new child IDs differ. No RNG resampling.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.positive_noise_witness_mass",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "line": 347,
+      "actual_type_sha256": "b05eb0471a7836e4bc3f55877a81357778ea62640a9488b816738820399318c5",
+      "decision": "ACCEPT_NEW_SOURCE_SPECIFIC_ADAPTER_OR_DERIVATION_WITH_EXISTING_CORE_REUSE",
+      "typed_basis": "Evaluates the original source tapeLaw for the full specified three-stage compiled-policy tape. Shared original mode/label/selector laws are reused; other positive-noise purpose/OU experiments have different propositions.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OUQuadraticDynkinSource.positive_noise_parameter_witness",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OUQuadraticDynkinSource.lean",
+          "lexical_similarity_only": 0.6,
+          "actual_type_sha256": "287a2f597d9c331c1d1a43f35b8f613412854db8ec4356cd316ed0100c91354e",
+          "actual_type_preview": "@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OUQuadraticDynkinSource.positive_noise_parameter_witness : ∀\n  {Ω : Type u_1} [inst : MeasurableSpace Ω] {P : MeasureTheory.Measure Ω} {B : NNReal → Ω → ℝ},\n  ProbabilityTheory.IsPreBrownianReal B P →\n    ∃ k s,\n      0 < k ∧\n        s ≠ 0 ∧\n          0 <\n            ∫ (ω : Ω),\n              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OUQuadraticDynkinSource.ouSource B k s 0 1 ω ^ 2 ∂P",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "Conditional Brownian/OU source existence of positive k,s and nonzero quadratic moment, with IsPreBrownianReal input. Not an exact finite source tape probability."
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultPurposeInformation.positive_noise_identification_witness",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultPurposeInformation.lean",
+          "lexical_similarity_only": 0.6,
+          "actual_type_sha256": "319f7f26d796cd6ce216a9960b3bfd95f34e631a8e10a09ade66300ad5e03f18",
+          "actual_type_preview": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultPurposeInformation.positive_noise_identification_witness : ∀\n  (noise : PMF Bool),\n  have theta := { mechanism := { goal := Bool.true, writeCost := 1 }, epsilon := 1 / 4, epsilon_lt_one := ⋯ };\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultPurposeInformation.observe 0 noise theta =\n      (0, 3 / 4, 3 / 4) ∧\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "Same register family but different experiment: exact three probe means and two one-stage policy objective values. It cannot replace the three-stage tape mass9/512 assertion; original shared source laws are reused directly."
+        }
+      ]
+    }
+  ],
+  "supporting_declaration_reviews": [
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.ObservationWord",
+      "kind": "abbrev",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "actual_type_sha256": "d0900e3816973865f682514f2c6082ab1cf9e016de9dd2bbb5cd3aacdf820d9a",
+      "typed_reuse_basis": "Reuses List.TProd for actual ordered observation tuples; repeated protocol actions retain separate positions and no artificial initial observation."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.observationWord_standardBorel",
+      "kind": "instance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "actual_type_sha256": "fe9cf9d58770f1adc058f112cde01df9e4c299d83701157911c4f4c37ef71bb5",
+      "typed_reuse_basis": "Finite product instance built by list induction from existing Standard Borel instances, not a claim about the canonical source image."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.observationWord_countablyGenerated",
+      "kind": "instance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "actual_type_sha256": "b23c8d3351feaae8b4d8352ba7f3e73f536b55c6d9277666f2df0c25ffa173e2",
+      "typed_reuse_basis": "Finite tuple countable-generation instance, allowing the source common-a.e. theorem at the original broader observation scope."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.wordKernel",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "actual_type_sha256": "be9a897ab706e6ff8a1fe1a1446a5c1e4934e3c08e045923d5662e14b0516fb0",
+      "typed_reuse_basis": "New general actual P/O finite-word execution; reuses c1OneStepJoint, fixedActionKernel, parallelComp and composition. Existing finiteHorizonOutputWordMass is a finite-model scalar/current-output functional, not this general next-observation law kernel."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.wordKernel_isMarkov",
+      "kind": "instance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "actual_type_sha256": "d9900750c12582fe0f23acf18d5e200ae4477e5e2329e45234133e703a357838",
+      "typed_reuse_basis": "Existing Markov-kernel closure instances applied through the actual finite-word recursion."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.ResponseState",
+      "kind": "abbrev",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "actual_type_sha256": "68dcabbf13ad9c0f62a1a931f9035ee22179398962941d984fc001d854f7137d",
+      "typed_reuse_basis": "Dependent product of probability-law coordinates for every finite open-loop action word; not a postulated Borel quotient image."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.responseLaw",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "actual_type_sha256": "aaf762cd7bea9b4f732a1fc6284b0b9ba84522c4495c9cd0ccea15f756a51031",
+      "typed_reuse_basis": "Actual source wordKernel composed with the supplied initial probability belief."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.responseLaw_isProbability",
+      "kind": "instance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "actual_type_sha256": "936d5036e93ce86c31197d2af862d4073e7c69da9fd55e36bb12e304308dd8f4",
+      "typed_reuse_basis": "Existing probability/Markov composition instance reused."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.response",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "actual_type_sha256": "5965f189f120f210a1fb45284609526b2b53999936c0f3955dcb72e36144cf55",
+      "typed_reuse_basis": "Packages those actual source laws as the ambient coordinate array; no guessed response values."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.continuationPosterior",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "actual_type_sha256": "d04bc87f943d5b8fe25da0d45fc6a31941dd2986f72d8cee918bda40abdf0f7a",
+      "typed_reuse_basis": "Existing actual common C1 posterior followed by actual continuation wordKernel, rather than a desired response-kernel field."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.continuationPosterior_isMarkov",
+      "kind": "instance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "actual_type_sha256": "bcbc98a88230a7051515336937ba4568b452f52ff4690de77423e53925475988",
+      "typed_reuse_basis": "Existing composition Markov instance reused."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.coordinatePosterior",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "actual_type_sha256": "b378d1b56583f71da4744df6a282e63f5ea452adb0ed881564b50cf80f549c0e",
+      "typed_reuse_basis": "Existing Kernel.condKernel disintegrates a supplied joint probability coordinate. Source only proves output nonemptiness for null totalization; cross-source update independence checks by rfl."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.coordinatePosterior_isMarkov",
+      "kind": "instance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "actual_type_sha256": "ed9273c196a4d5ec6ad32b045c711e7df0fc20d1309c47ef27578faacc092633",
+      "typed_reuse_basis": "Existing conditional-kernel Markov instance reused."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.coordinateUpdate",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "actual_type_sha256": "37cc28bad2be73c3500177974bc2736fc304445d4e943a1d735e7745a91806f1",
+      "typed_reuse_basis": "ProbabilityMeasure packaging of common coordinatePosterior, not an unverified custom Bayes normalizer."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.ambientUpdate",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "actual_type_sha256": "7ae1c96dd89a0eb1b7091cadee89615e0f99fad6dbce041a24fa592773b0124a",
+      "typed_reuse_basis": "Selects actual longer-word coordinates and common universal conditional versions; off-image arrays are explicit extensions with no realization claim."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.selectedWordKernel",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "actual_type_sha256": "631594cac479524efbda3d10229a2d6e8cc4910b2f19f219953c29318b0476a6",
+      "typed_reuse_basis": "Measurable response-coordinate selection using countable measurable singleton action labels, no latent decoder/section."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.selectedWordKernel_isMarkov",
+      "kind": "instance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "actual_type_sha256": "037fd6298150a23ccd3006de48186e83685b599ad22c5aeb41a7814d2e403e4b",
+      "typed_reuse_basis": "Every array coordinate is already a ProbabilityMeasure; existing Markov structure reused."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.ambientObservation",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "actual_type_sha256": "9936a6f277875ca821bec9e716a8515042aa045e32ede47037136e79a7e9e445",
+      "typed_reuse_basis": "Existing Kernel.fst of selected one-action response coordinate."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.ambientObservation_isMarkov",
+      "kind": "instance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "actual_type_sha256": "c74192be4cef66ce94bb17ec8fd18884ef8230c0facdbcebcb38979dd82f11ce",
+      "typed_reuse_basis": "Existing first-marginal Markov instance reused."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.ambientResponseKernel",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "actual_type_sha256": "56861a94803237de62ac4f891e5e906dd7db6f84d7c705a095207464d3587e54",
+      "typed_reuse_basis": "Existing compProd, deterministic and snd operators sample source first-observation coordinate then ambientUpdate. This is the actual new C1 consumer target."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.ambientResponseKernel_isMarkov",
+      "kind": "instance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "actual_type_sha256": "de62cf2cd0adf484bd1671e6070bae4068935c6f64ea590c2e69744d2bc010ba",
+      "typed_reuse_basis": "Existing kernel closure instances reused, without requiring a Borel source image."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.GaussianConsumer.allowedSource",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "actual_type_sha256": "f423c6c141df03d3e492725b37e56d9d99c058408c0ee59fa9326fd81ebe6c1e",
+      "typed_reuse_basis": "Transparent countable-integer-action restriction of the existing continuous Gaussian source via comap; no new Gaussian construction or changed finite-data permission."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.GaussianConsumer.allowedSource_isMarkov",
+      "kind": "instance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "actual_type_sha256": "1daef7f76091f09644e89b761fb194651f1a450deb7cce32963d5bb5dc56ea39",
+      "typed_reuse_basis": "Existing comap Markov instance reused."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.GaussianConsumer.allowedObservation",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "actual_type_sha256": "ec95367075d4da4294211d3a7fd274b0f6bd75da8eb7253f1db876c0dbc12275",
+      "typed_reuse_basis": "Reuses the existing actual visible-coordinate observation kernel for this explicit witness."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.GaussianConsumer.allowedObservation_isMarkov",
+      "kind": "instance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "actual_type_sha256": "ab6d736fc1d5df4b929614da44b0bd72fc79aab0081d81e7f3a0ee58b828c326",
+      "typed_reuse_basis": "Existing deterministic observation Markov instance reused."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.Identity",
+      "kind": "abbrev",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "actual_type_sha256": "8e95b6d38e5e2f9850fced07b29d49103b544b3780f6f207004d4d60c3cb7bc2",
+      "typed_reuse_basis": "Concrete ancestral list of local parental transaction counters and Bool labels; no global uniqueness allocation contract."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.ClockedOrganism",
+      "kind": "structure",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "actual_type_sha256": "b8ad68dd54f00100b704f16b209c955867b81db318d3c718ea6c5227fa4d6a8e",
+      "typed_reuse_basis": "Necessary old organism plus explicit journal ID and Nat clock; constructor fields inspected and typed. Initial founder metadata stays a declared boundary."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.ClockedRecord",
+      "kind": "structure",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "actual_type_sha256": "005369d5351c2bfa853a2c6702e895728b0855c74c53d6a7a575827906f13840",
+      "typed_reuse_basis": "Old physical/action/mode/birth/fee record with timestamped parent/child metadata; constructor inspected. No new cost or policy sensor hidden in fields."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.eraseRecord",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "actual_type_sha256": "fa01a2b23f8764cde38478a5dab7e09c68f839ea8eb47dc9756d68ff2cf4abe6",
+      "typed_reuse_basis": "Forgets only new metadata into existing ModeRecord, enabling exact source-law compatibility."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.step",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "actual_type_sha256": "09fb84df03581d6317750f736ef2bcb8ec9d6fe723a5e728b9f936a43709b525",
+      "typed_reuse_basis": "Calls old modeRecordStep once and computes journal/counter output; does not duplicate underlying source transition or success test."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.lineage",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "actual_type_sha256": "9c3f60d311104797faf7a4d56e4e6b37090c1880cc166f1e0492ae61ee8cecd2",
+      "typed_reuse_basis": "Reuses original LineageSemantics, defining parentOf by actual step success and identity by computed timestamp journal."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.Event",
+      "kind": "abbrev",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "actual_type_sha256": "e681e79057e7d94f135888e10d40a2ecc9094d03c42b334734f121e9aeeed8a8",
+      "typed_reuse_basis": "Direct alias of existing RegisterFaultInfiniteRecord.Event; no new random event alphabet."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.runParent",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "actual_type_sha256": "ea1cd25ed1f2a5f26634a260ccfb2e241c1af475a6e6622cba0e512046445795",
+      "typed_reuse_basis": "Actual retained-parent fold over existing literal events; does not advance to child or omit faults."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.trace",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "actual_type_sha256": "096729e1e7bfd6890311f3e8ba955515048a336affd3f7266e8b1477a2b1de59",
+      "typed_reuse_basis": "Literal clocked output trace built from same step and retained parent; corresponding erasure theorem actually reuses old trace semantics."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.recordLaw",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "actual_type_sha256": "1693f8e66db6f33bce5faa5c467f4b641581ea4189feff48c61a0565e74f9a74",
+      "typed_reuse_basis": "Pure map of SAME old tapeLaw, adding computed output metadata without new sampling, conditioning or policy information."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.recordAt",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "actual_type_sha256": "096b16e0ff17e05c02d634983b6058c0db248e3a49b51b6bf203977987fddc4e",
+      "typed_reuse_basis": "Reads actual event/prefix state at a supplied index. Defaults outside the list are totalization; run identity/freshness theorems explicitly require valid indices."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.Request",
+      "kind": "structure",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "actual_type_sha256": "c571b636ca7d9ecc53ec7ca7a92427c9813fed875967c4becb99f88f99af9e76",
+      "typed_reuse_basis": "Concrete raw step inputs (clocked parent, existing action, mode,label), no attached child-success or parent-equality certificate."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.observedChildID",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "actual_type_sha256": "c7b680bd081680cdea4809638d3ed689a6339db898f2bf28d10757dd1aafca39",
+      "typed_reuse_basis": "Literal produced child ID Option from step; failure stays None."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.actualParent",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "actual_type_sha256": "142b507a2e5e6f0e538513bd9b608dc87de4adef28efe4d6642d767d1ba11cee",
+      "typed_reuse_basis": "Optional source parent ID only when an actual child exists. It does not claim failed-request parent reconstruction."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.childJournalClass",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "actual_type_sha256": "6c190f2a91ee791844ed9ff0b48f5cd76f6ac4354784066a85ba515f59b82cbe",
+      "typed_reuse_basis": "Kernel setoid of the declared actual child-ID/failure observation, not a quotient of hidden physics."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.witnessParent",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "actual_type_sha256": "d6052342f7cc646f0bf98b9dbb2911144b5bad8a773c03d16ddabd30f8f97e5f",
+      "typed_reuse_basis": "Fixed aligned one-register damaged founder literal, not a privileged runtime reset operation."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource.witnessEvents",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "actual_type_sha256": "24210e08fcb6d341b895f4b2ababf3c9dd36618417c754213ca14ca58a1b93a6",
+      "typed_reuse_basis": "Fixed existing repair/fault/repair word used for the exact positive-mass source witness, with failure retained."
+    }
+  ],
+  "promotion": "NONE; lexical similarity, source counts, local checks and this typed review do not certify whole-theory closure or alter frozen counted ledgers.",
+  "mutation_scope": "Only this exclusive review JSON and external typed checker/inventory/logs; no Lean source, public exports, Git, GI, books, data or global configuration edits."
+}
