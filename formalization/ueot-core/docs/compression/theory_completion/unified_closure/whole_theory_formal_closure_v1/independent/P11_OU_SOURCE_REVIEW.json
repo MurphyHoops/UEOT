@@ -1,0 +1,118 @@
+{
+  "verdict": "CLEAR_FOR_DECLARED_CONDITIONAL_QUADRATIC_OU_DYNKIN_SOURCE_BRIDGE",
+  "whole_theory_goal": "OPEN_NOT_ESTABLISHED",
+  "p11_status": "OPEN_NOT_CLOSED_BY_THIS_SOURCE",
+  "reviewer": "independent /root/register_typed_review; no authorship of current source or original external experiment",
+  "reviewed_head_anchor": "7d923a152034189c97f4851ed36faac2a3bdfd7e",
+  "source": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OUQuadraticDynkinSource.lean",
+    "sha256": "aebe1a2b61a495e155adfba3f1c9072760acfafa0d15229d8290dd70fc2d3425",
+    "adoption_state_at_review": "Local source proof; public export/PR/resulting-main adoption are owned by root and not certified by this review."
+  },
+  "reviewed_dependencies": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/RecoveryDynkin.lean",
+      "sha256": "7218bbaaac1f531f866b2ea429d7e19e819477552fcca7971822b9056fc4f26c"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/RecoveryContinuous.lean",
+      "sha256": "5c0ecb03c66a4b7bd1d6e9f6a3797244052904ececea7d3613d24694a7e7c6a8"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/.lake/packages/mathlib/Mathlib/Probability/BrownianMotion/Basic.lean",
+      "sha256": "de6c9e2a1fe6addf9ede01bc29514b63f80b5eb4a5c7912e580d13aa1674127f"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/.lake/packages/mathlib/Mathlib/Probability/Moments/Variance.lean",
+      "sha256": "3a49f3a97302edfa5788098d13882105fe448c4d6cefe51fb3891991635e7638"
+    }
+  ],
+  "blocking_findings": [],
+  "source_and_hypothesis_audit": [
+    "IsPreBrownianReal B P is an explicit supplied stochastic SOURCE hypothesis. In the pinned mathlib it requires the actual finite-dimensional Brownian laws for every finite set of NNReal times, not a Dynkin/recovery certificate. It yields probability normalization, Gaussian L2 integrability, zero means, covariance min(s,t), and B0=0 a.e.",
+    "ouSource is explicitly exp(-k*t)*x0 + exp(-k*t)*s*B(ouClock k t), with deterministic initial x0 and deterministic clock (exp(2*k*t)-1)/(2*k) for k>0,t>=0. No process moment, generator identity, initial-law or Dynkin certificate is an independent input.",
+    "ouLaw is the actual pushforward of P by that same source. Its real time argument is clamped by toNNReal outside nonnegative time; all advertised moment/recovery identities restrict to t>=0 and generator derivative is within Ici0.",
+    "Brownian source EXISTENCE is not proved. positive_noise_parameter_witness is conditional on hB and provides parameter choices, not a realization of Omega/P/B. This prerequisite remains a full-theory construction obligation and must not be relabeled as a closed nonempty-world result.",
+    "Continuous paths require the stronger supplied IsBrownianReal B P (finite-dimensional laws plus a.e. continuity). IsPreBrownianReal by itself is not promoted to continuous paths."
+  ],
+  "moment_integrability_and_noise_audit": [
+    "brownian_quadratic_moment is derived from actual covariance_eval and zero integral. The affine squared moment expands constants, linear and quadratic terms only after proving their integrability from Gaussian L2.",
+    "ou_source_quadratic_moment substitutes the explicit clock and proves the exact expected squared value exp(-2*k*t)*x0^2 + s^2/(2*k)*(1-exp(-2*k*t)). Clock nonnegativity and exponential identities are proved; no desired closed form is assumed.",
+    "ou_law_quadratic_integrable derives MemLp2 for the actual affine source from Gaussian MemLp2 and transports it to the actual pushforward law. Generator integrability follows from its affine-in-square formula. The Bochner expectations are not used through undefined-integral defaults.",
+    "ou_law_initial_dirac separately proves the actual initial law is Dirac x0 using B0=0 a.e. The scalar initial energy consumed by p_rec_02 is also derived from that same source moment.",
+    "ou_source_mean and ou_source_variance derive the actual mean exp(-k*t)*x0 and variance s^2/(2*k)*(1-exp(-2*k*t)). Positive variance for k>0,s!=0,t>0 holds at every deterministic x0; spread is not supplied by randomizing the initial condition."
+  ],
+  "quadratic_generator_and_dynkin_audit": [
+    "quadraticGenerator(k,s,x)=-2*k*x^2+s^2 is verified by quadratic_generator_from_source as the RIGHT-TIME derivative of the actual expectation of x^2 from each initial state x0 at time0. This is an observable-domain infinitesimal moment identity. It is not yet a conditional Markov semigroup generator/domain theorem, which the source text explicitly leaves open.",
+    "quadraticMean_hasDerivAt proves the actual closed-form mean-square derivative equals -2*k*m+s^2 on real time. ou_law_expected_generator integrates the same quadratic drift with derived integrability.",
+    "ou_quadratic_dynkin constructs BOTH original certificate fields. Absolute continuity on [0,T] comes from smoothness of the closed form and proved equality to actual expectation. The a.e. derivative identity uses local equality at positive times and excludes time0 only by its null Lebesgue mass; it does not assert a two-sided derivative for the clamped law at0.",
+    "The source-specific certificate is constructed rather than supplied, even though the route is explicit Gaussian moments and ordinary differentiation rather than a general Ito theorem. This is enough for the exact original RecoveryDynkin output contract for this quadratic family."
+  ],
+  "actual_original_consumer": {
+    "symbol": "UEOT.V3.RecoveryDynkin.p_rec_02",
+    "used_by": "actual_source_p_rec_02",
+    "instantiation": "law=ouLaw P B k s x0; W(x)=d2(x)=x^2; LW=quadraticGenerator k s; a=2*k,b=s^2,c=1; actual initial x0; finite T>=0.",
+    "discharged_inputs": "Probability and all three integrability obligations; the source-derived Dynkin certificate; initial energy; pointwise generator drift equality and squared-distance domination.",
+    "result": "Expected square (exact squared distance to zero by square_eq_distance_to_zero) satisfies the original exponential recovery bound for every t in[0,T]. The independent moment formula is actually an equality; the proof deliberately invokes the original recovery consumer rather than bypassing it."
+  },
+  "reuse_audit": [
+    {
+      "candidate": "External OUQuadraticDynkinSource experiment SHAe874bc29526cfbec0cde3459c7ece2ca54a4df75ce4971c46569f43501bdc906",
+      "decision": "EXACT_PROOF_REUSE_PLUS_REVIEWED_NOISE_DELTA",
+      "reason": "Diff confirms original source proofs unchanged apart from explanatory comments; current addition derives mean/variance/strict positive variance. Current full source was independently checked, not accepted from an old receipt alone."
+    },
+    {
+      "candidate": "Mathlib Brownian finite-law Gaussian/covariance/integrability interfaces",
+      "decision": "ACTUALLY_REUSED",
+      "reason": "Supply source moments and L2; no custom stochastic axioms or assumed expected-drift identity."
+    },
+    {
+      "candidate": "RecoveryDynkin.DynkinExpectationCertificate and p_rec_02",
+      "decision": "ACTUALLY_REUSED",
+      "reason": "Construct the existing AC/ae-derivative fields and call the original recovery theorem on actual pushforward laws; no alternate recovery framework."
+    }
+  ],
+  "independent_inputs_and_remaining_obligations": [
+    "An actual supplied B/P with IsPreBrownianReal; stronger IsBrownianReal for path continuity. Canonical Brownian realization and a continuous modification construction remain required in the whole-theory task.",
+    "k>0 for the OU quadratic mean/generator/recovery identities, s!=0 and positive time for strict variance; finite nonnegative T for the original recovery interval. Generic theorems also admit s=0 without claiming nondegeneracy.",
+    "No conditional-transition/semigroup identity or pathwise SDE integral equation is proved, and the quadratic right-time moment identity cannot be used as those claims.",
+    "General C2 Ito, stochastic integration/localization, adapted control/HJB source, Girsanov/exponential martingale and conditional path-law obligations remain OPEN. P-CTL-03/P-KL-05 are not discharged by the scalar quadratic recovery source.",
+    "No universal P11/full-theory mathematical closure, empirical evidence or all-object common-source assembly follows. Root integration and books/GI must report this conditional source result with these remaining prerequisites."
+  ],
+  "verification": {
+    "independent_direct_current_source": {
+      "command": "lake env lean UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OUQuadraticDynkinSource.lean",
+      "exit_code": 0,
+      "warnings": 0,
+      "log": {
+        "path": "/tmp/ueot-ou-source-independent-direct.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "compiled_types_and_axioms": {
+      "command": "lake env lean /tmp/ueot-ou-source-independent-types.lean",
+      "exit_code": 0,
+      "source": {
+        "path": "/tmp/ueot-ou-source-independent-types.lean",
+        "sha256": "4f01fc491b3b0c50092835a1af274c56be1a3697354c3cafbbf033302ef9b69c"
+      },
+      "log": {
+        "path": "/tmp/ueot-ou-source-independent-types.log",
+        "sha256": "e8c4e3562e2871d5e5521bf6870afee118ef5eb8bd8064d98c5ee3af883e5681"
+      },
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "author_receipt": {
+      "path": "/tmp/ueot-ou-source-adoption-receipt.json",
+      "sha256": "b1f645a86470ee7fac97eadbe150023c1abc02f05d3f83e950878f852f4ce9fa",
+      "source_experiment_consumer_check_and_log_hashes_matched": true
+    },
+    "frozen_source_hash_rechecked": true,
+    "no_historical_full_build_or_resampling_rerun": true,
+    "mutation_scope": "Only this exclusive independent JSON and external focused checker/logs; no source, public exports, Git, GI, books, QM/physics, data or global configuration changes."
+  }
+}
