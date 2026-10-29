@@ -2,7 +2,7 @@
 title: "UEOT Core 完整数学理论"
 subtitle: "从原始对象—演化思想到预测、实现、持续、组合、目的与学习的统一架构"
 version: "3.1"
-date: "2026-10-20"
+date: "2026-10-29"
 status: "完整中文维护版；冻结106结果与同源形式化闭环的逐章整合"
 format: "UTF-8 Markdown + LaTeX math"
 scope: "通用数学核心、应用与领域接口"
@@ -49,6 +49,8 @@ scope: "通用数学核心、应用与领域接口"
 - [36. 实际有限路径、后验分解与部署覆盖](#ch-36)
 - [37. 部分观察下的有限支持生存：双向定理与可执行检验](#ch-37)
 - [38. 从注册采样到数据选择后的真实联合风险](#ch-38)
+
+- [39. 执行、故障、复制与目的的同源构造](#ch-39)
 
 - [附录 A](#appendix-a)
 - [附录 B](#appendix-b)
@@ -407,6 +409,8 @@ $$
 只有单步边缘相同不足以保证递归充分。若协议不允许后续自适应操作，也不能把为该协议构造的状态直接用于更大的控制策略类。
 
 ## 4.6 递归充分性的正式实现边界
+
+本章一般最小预测像仍有来源义务。第 39.6 节补充已经构造的共享噪声源、实际后验及联合记录的精确范围。
 
 P-PRED-03 的 Lean 源 PredictionUpdate 证明分子、分母已经通过当前状态因子分解时的 Bayes 更新因子化，并证明有限动作/观察及相应坐标条件下的联合可测性。它没有从任意数据中自动产生这些充分坐标。一般空间中的参数化解体见第 34.6 节的 C1。
 
@@ -5152,6 +5156,78 @@ $$
 
 这些新连接不把相关单轨迹采样、训练后自行改变 N、额外未注册行或任意非原子参考核纳入结论。它们把已经明确的实际采样与部署条件进一步接紧，使第 31.1 节的共同证书装配少一组重复前提，而不是通过重命名输入消去真实研究问题。
 
+<a id="ch-39"></a>
+
+# 39. 执行、故障、复制与目的的同源构造
+
+## 39.1 哪些条件仍由模型承担
+
+前面的接口把程序执行、修复、父对象、资源和评价分开陈述。本章给出一个共同的非退化源族，实际推导其中若干原先独立的桥。它不是对任意世界的自创生证明：执行器及解释器可靠，保留程序受保护，复制按声明规则继承程序；环境模式与出生标签按给定的独立概率律产生。动作权限、价格、折扣、初始历史与资源供给也明确登记。
+
+取有限寄存器集 $I$、指定执行位 $i\in I$，物理状态为 $x\in\{0,1\}^I$。保留程序位为 $b$。允许动作只有 idle、write-false、write-true；$U_i(x,a)$ 按动作保持或写入第 $i$ 位。实际解释器先读取 $x_i$：若 $x_i=b$ 就 idle，否则 write-$b$。有限指令的解释证明其动作就是此策略 $\pi_b$，不是另用选择公理寻找一个实现相同目标的程序。
+
+每步模式 $R_t$ 的修复概率为 $r=1-\epsilon$，故障概率为 $\epsilon\in[0,1]$。物理转移是
+$$
+X_{t+1}=\begin{cases}
+U_i(X_t,A_t),&R_t=1,\\
+X_t[i\leftarrow\neg b],&R_t=0.
+\end{cases}
+$$
+故障把指定寄存器置成程序目标的反值，保留程序和控制器。它不是对任意受损位再翻转一次；后一规则可能偶然修好损伤，属于不同源。源模式的 PMF 推送等于 P5 的物理故障/修复混合行，也等于本章控制模型的完整物理行。核相等由执行定义证明，没有作为调用者输入。
+
+## 39.2 修复能力、实际出生与历史
+
+联合组织状态中，有限修复载体恰由保留程序正确刻画。实际势能与故障包络由上述转移构造，故 P5 所需的执行和故障条件得到来源。这里的载体进入表示仍有恢复能力；寄存器在故障时可以不满足物理目标，不能从载体进入推出它以后每刻健康。
+
+在修复模式中，动作后的目标位正确才产生一个实际子代；失败记为 None。子代字面复制程序及动作后物理状态，其历史为亲本历史加上本次标签。由实际出生可推出子代满足目标、继承程序，并把同一个子代作为种子接入同一 $\epsilon$ 的 P5。没有重试，也没有按成功删去失败。
+
+对 repair、damage、birth 指令组成的实际日志，执行后的历史等于原历史连接日志中按次序出现的出生标签。因此父身份桥来自真实执行历史。修复不增加出生标签，出生则严格增加代数。两个未标记物理/程序记录可以相同而真实历史不同，所以仅凭前者不能恢复后者。标签历史描述这一谱系，不保证跨时刻、并发人口中每个子代都有全局唯一标识。
+
+这一点也修订了一个容易混淆的有限模型。若有限非空的永久个体表上每个正繁殖边都严格增加代数，就不可能每一行的繁殖质量都为一：取代数最大的个体，其全部出边只能非正，与行和一矛盾。正确的有限 Price 消费者以亲本类型和子代事件标签作矩形索引，从实际出生标签律给出归一化传递核；亲本频率、繁殖强度及性状赋值仍是输入。类型和事件标签不等于永久个体。严格个体谱系不能静默替换成类型链。
+
+## 39.3 同一记录的收益与资源
+
+设每次受控写入费用为 $c\ge0$，idle 费用为零，登记价格为 $\lambda\ge0$。实际记录同时保留动作、模式、标签、亲本、子代及费用。记
+$$
+B_t=\mathbf1_{\{R_t=1\}}\mathbf1_{\{U_i(X_t,A_t)_i=b\}},\qquad
+C_t=c\,\mathbf1_{\{R_t=1\}}\mathbf1_{\{A_t\ne\mathrm{idle}\}}.
+$$
+$B_t$ 是本次实际出生计数。故障时没有受控写费用，也没有出生。物理损伤、代码拷贝与重新绑定在这个费用模型中不另收费，不能把 $C_t$ 称为全部能耗。给定 $0<d<1$，有限评价为
+$$
+J_T(\pi)=E\!\left[\sum_{t<T}d^t(B_t-\lambda C_t)\right].
+$$
+初始策略记忆中的当前状态须与亲本实际物理状态一致，亲本保留程序须为登记目标；编译策略的指定种子自动满足这些条件。完整有限记录的 PMF 由同一策略、模式和标签逐步生成。直接证明其记录积分可积，并等于同一策略在上述物理控制模型中的截断值。策略可有原有的物理/动作因果记忆；模式和标签虽然被记录，不因此升级为策略观察。
+
+实际付费记录还接入原 P6 资源账。对任意实际动作与模式序列，每步 $0\le C_t\le c$，所以初始储备非负、每步供给 $s\ge c$ 时，所有累计余额非负。这是逐路径的充分供给条件，供给仍是设计输入，并未从平均收益或繁殖成功中创造出来。原有限记录之外补零只定义有限时域的费用消费者。新增无限解释器按实际事件递次延长同一历史，得到概率一的前缀相容性；其完整无限记录律的每个有限前缀恰是上述 recordLaw。对该实际无限费用流，P6 的同一供给条件也逐路径成立，无需补零。
+
+## 39.4 解释出的同一策略确实最优
+
+在充分条件 $\lambda c\le1$ 下，$\pi_b$ 在原全部因果策略类中最优，且对所有 $\epsilon\in[0,1]$ 使用同一个程序。其健康与受损状态值分别为
+$$
+G=\frac{r(1-d\epsilon\lambda c)}{1-d},\qquad H=G-r\lambda c.
+$$
+证明先按同一模式律求实际单步出生减费用，再核对 Bellman 不等式以及 $\pi_b$ 对该不等式取等，最后调用原因果最优性端点。条件只声称充分性。这里的新故障目标重新从实际记录推导，没有把旧无故障模型的路径积分搬过来。
+
+取单寄存器、目标 $b=\mathrm{true}$、公平出生标签，$\epsilon=1/4,c=1,\lambda=d=1/2$ 时，$G=45/32,H=33/32$。从受损初态出发，指定首步 write-true、次步 idle、先修复后故障的模式及标签 true、false 的完整两步 tape 事件质量为 $3/64$，折扣净收益为 $1/2$（实际写费用为 $1$，价格折算为 $1/2$）；第二步的失败仍留在记录中。同一程序的有限记录期望趋于最优控制模型的值。进一步，对上述实际无限解释器，单步收益绝对值不超过 $1+\lambda c$；几何折扣给绝对可和及可积性。支配收敛与已证明的前缀律据此推出实际无限记录积分恰为同一原因果策略的无限值，编译程序的实际积分即为上述最优值。原策略的任意 Type0 内部记忆由可数事件字重放，不增加有限记忆限制；模式和标签始终不进入原策略的信息权限。
+
+## 39.5 未知故障率下的目的来源
+
+真实 write-false、write-true 的出生读出及受控写费用读出给出三个精确均值
+$$
+\bigl(r\mathbf1_{\{b=\mathrm{false}\}},\ r\mathbf1_{\{b=\mathrm{true}\}},\ rc\bigr).
+$$
+当 $r>0$ 时，前两项之和识别 $r$，非零项识别 $b$，第三项除以 $r$ 识别 $c$。这些均值从动作后的实际出生/付款计算，且与亲本当时物理状态和历史无关；无需额外授予重置权限。由此先识别源参数，再推出完整记录评价的策略排序相同，供应原 C6 的忠实性消费者。价格、折扣和评价合同仍为登记输入，机制没有独自决定伦理评价。
+
+当 $\epsilon=1$ 时，这些均值全零，源参数不能这样识别；但登记控制值也全零。这并不证明全无差别的目的排序类不可识别。精确实验均值访问也不等于有限采样估计、已执行反演算法或选后风险保证；将本章机制接到统计校准仍需自己的共同消费者。保留程序的控制器本身不读取真实故障率。
+
+## 39.6 已核验来源与仍须完成的连接
+
+上述来源分别见 RegisterRepairSource、RegisterRepairHistory、RegisterFaultSource、RegisterResourceSource、RegisterFaultControlSource、RegisterFaultControlModel、RegisterFaultJointRecord、RegisterBirthMaintenance、RegisterFaultPurposeInformation 和 RegisterFaultInfiniteRecord。它们调用原 P5/P6/P12/C6 与因果控制端点。直接源码对应及核验回执见[故障来源包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/register_fault_resources_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。
+
+一般预测方面，MeasurablePredictiveSource/Sensor 已从共享噪声的可测更新及不读取隐藏坐标的观察器推导实际后验的几乎处处投影和同策略递归；允许连续噪声及部分、有噪观察。隐藏坐标控制下一可见状态、破坏可见自治时，已有严格泄漏反例。在此基础上，MeasurablePredictiveJointPath 保持同一时变可见 belief 策略的完整有限动作—观察—后验记录。MeasurablePredictiveLatentPath 从初始潜状态 $X_0\sim b_0$ 出发，按原 P/O 保留并转移实际潜状态，同时由实际观察更新同一 posterior。一步解体恒等式给随机 lift 的相容性；前缀归纳证明完整观察记录与末态潜变量的联合律，经最后实际 posterior 分解。由此取得实际潜状态运行的有限观察记录律，并以可数前缀唯一性推广到完整可数路径。它没有逐点假设任意 belief 与潜状态配对都满足 lumpability，也没有每步从 belief 重抽物理状态。这里的可见 belief 由声明源给出，不把它说成任意过程的最小可测预测像。
+
+这些结果使对象、程序、动作、实际历史、出生、资源和注册目的之间多了一条非空的共同来源链。整个理论仍未闭合：一般最小预测像、更大源及策略类的路径运输、连续随机过程来源、相关/适应校准与发现、忠实谱系及尺度运输、长期资源和全局组合仍有必需义务。编译、数学成立及现实经验支持分别报告；本章不宣称已确认自然界的普适机制。
+
 <a id="appendix-a"></a>
 
 # 附录 A. 符号与类型索引
@@ -6033,3 +6109,18 @@ ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303
 这里“标准三公理”指 propext、Classical.choice、Quot.sound 的子集。check-03 和 check-06 的旧拼接源有已观察到的 unused-variable／simp 警告，不因此把它们记为 warning-free。check-04 整批和前一轮严格后验／延长混合批次曾含其他源的失败；第 38.8 节只使用其中实际通过的单项。
 
 历史检查成功、当前正式源码构建成功、真实 Git 候选通过、远端合并以及现实实验支持是不同事实。一本数学书需要准确说明它引用哪一种事实，不必把整个研发过程写成哲学论据。本文的条件性数学结论与明确反例先由正文承担，编译证据为其具体实现提供额外核验。
+
+
+## F.5 同源执行与可测预测的新增对应
+
+第 39 章的来源分工如下：
+
+- 程序执行与历史：`RegisterRepairSource`、`RegisterRepairHistory`。
+- 故障和资源：`RegisterFaultSource`、`RegisterResourceSource`。
+- 实际子代的维持：`RegisterBirthMaintenance`。
+- 同源控制与记录：`RegisterFaultControlSource`、`RegisterFaultControlModel`、`RegisterFaultJointRecord`。
+- 实际无限执行、价值和费用：`RegisterFaultInfiniteRecord`。
+
+UC.RegisterFaultPurposeInformation.observed_source_identifies_actual_purpose 用源均值导出原 C6 忠实性。无故障的 UC.RegisterProgramOptimality 与 UC.RegisterJointRecord 仍保留其不同源的原合同，不能用于替代有故障记录律。
+
+C1 的源及传感器对应 UC.MeasurablePredictiveSource、UC.MeasurablePredictiveSensor；UC.MeasurablePredictiveJointPath.actual_timevarying_joint_path、actual_finite_record_event、actual_finite_record_lintegral 保持同一时变可见 belief 策略的完整有限联合记录。新增 UC.MeasurablePredictiveLatentPath.actual_finite_prefix_consistency 与 actual_source_timevarying_joint_path 从实际保留潜状态的转移证明递归 filter 的条件一致性及同源可数记录律。具体核验、独立审查及源码身份见[当前来源差额](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/actual_infinite_sources_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)、[故障包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/register_fault_resources_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)和[C1 路径包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/c1_joint_path_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。两书编译不改变其数学范围，全理论状态仍为 OPEN / NOT_ESTABLISHED。
