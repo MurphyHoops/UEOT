@@ -20,7 +20,7 @@ The three exact means are (r I(false=goal), r I(true=goal), r*writeCost). They c
 
 ## Nondegeneracy and boundaries
 
-At epsilon=1/4, cost=1 and price=discount=1/2, the actual program optimal values are 45/32 (healthy) and 33/32 (damaged). Two fixed non-oracle one-step policies have actual record values 0 and 3/8. A specified repair-then-fault tape with fair labels has mass3/64 and payment1/2; its failed stage remains. Failed births always remain None/count0; no sampling, retry or success selection occurred.
+At epsilon=1/4, cost=1 and price=discount=1/2, the actual program optimal values are 45/32 (healthy) and 33/32 (damaged). Two fixed non-oracle one-step policies have actual record values 0 and 3/8. A specified repair-then-fault tape with fair labels has mass 3/64 and discounted net payoff 1/2; its literal write expenditure is 1 (priced fee 1/2), and its failed stage remains. Failed births always remain None/count0; no sampling, retry or success selection occurred.
 
 At total fault, birth/paid means and the registered control value vanish. Parameter identification fails there; this does not prove non-identifiability of an all-indifferent objective class. P5 carrier entry is repairability, not permanent physical legitimacy. The original fault-free objective was not silently transported to the fault law. Compiled finite-record expectations converge to optimal model value; no probability law of infinite complete records is asserted.
 

@@ -1,0 +1,1175 @@
+{
+  "schema": "ueot-independent-typed-reuse-review-v1",
+  "verdict": "CLEAR_FOR_DECLARED_REGISTER_FAULT_RESOURCE_RECORD_PURPOSE_PACKAGE",
+  "whole_theory_goal": "OPEN_NOT_ESTABLISHED",
+  "reviewer": "independent /root/register_typed_review; no source authorship",
+  "base_sha": "0d4f2128547aa3b9545d881ff3ae0c851ecc2eeb",
+  "candidate_sha": "56c1d5835375596c9777c0423e7450df9378c2bd",
+  "scope": "All changed Lean blobs and all FKRG new-public declarations/reuse hits; excludes untracked C1/P11 experiments and book work.",
+  "blocking_findings": [],
+  "source_sha256": {
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean": "a2b88fd1643d28fd1ae960c37369cfcad9208b3aecc8f6b5951bc73acf2cc13e",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterBirthMaintenance.lean": "b39c11631a93a50d54aadd8514ee0ca87fe5af35b3b8bce6adeee97344d76e97",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultControlModel.lean": "c20cceafe6208878d3e7824c0ba2b57f8b7ca90690f6cb7e6e02fe3ee471d1ee",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultControlSource.lean": "5a787e967fddae5f8f00b9f7321b9e8917bf4ac857c42b0ba1bb215dccd1cda4",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultJointRecord.lean": "b7be526a4350c7b84db6e355495486fee9f55062288b7c0ce2fef251e76ff7b1",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultPurposeInformation.lean": "fd469724190edbe91334751f45b1a61f187a1e17ef34dd441b4cb48df21103b1",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultSource.lean": "bd0d262a11aa11759cd5c1ca4af0b80d70d6a9b60907e5b45d806871d6f2fbeb",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointRecord.lean": "54c85da08919b7639a34cb8f1d3f39e07936212da1eafaab709133e9972f8329",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterProgramOptimality.lean": "4c7cedcf6d0068c0b79dfee98879b92329f33dc0089ae8bfd4711f0629bd12c3",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterResourceSource.lean": "ffa4d02b21e46b940d8709802f4873661301d7eac35375491ba1837713b14e4c"
+  },
+  "candidate_target_source_sha256": {
+    "formalization/ueot-core/UEOT/V3/CompactCausalOptimalityCore.lean": "0f0e76ca109ec7e33679d12938f1536e17eee9f013538a58583b1bd2b5dddba2",
+    "formalization/ueot-core/UEOT/V3/CompactFellerControl.lean": "9b43dc7f50a80bb46e804be4a4e1b9a7cb5ca6ea1ecf4a1345222068e7cce367",
+    "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/DualIsolationCore.lean": "f75f8deedff13ddae1dbd2ba0ae67f2c277adde648dd587c3494541a2e000e0c",
+    "formalization/ueot-core/UEOT/V3/Compression/Objecthood/OntogeneticConstruction/Assembly.lean": "ac7ef2166309c3b1a96e71908fc5ab45456f2864bdffc703f28d8cb8e3805e7e",
+    "formalization/ueot-core/UEOT/V3/Compression/Objecthood/ResourceClosure/FiniteReserve.lean": "db578589561923d5cc0356b6f7a34ba63809e8d12a8cc6bc98114c991cd39b36",
+    "formalization/ueot-core/UEOT/V3/Compression/PositiveEigenstructure.lean": "746a435146c4bc20721a1429085285492ac01a040b6090e186f8141b251f257b",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteDataConditioned.lean": "f47ceffeeccaf3f11638cf4892960bebab0f7f935b2b892cf35eff177a328023",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteDataSource.lean": "4aedd557ed785ea759d7e3e7c06e34413ad7d5e5fdceed6e160ef1c0df7cd1d7",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean": "0fe9d180c44a7b35784472ecee3a8baee0b6e6464edee85e5dfaa78863c0cbc9",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean": "22d42615bbb6ad58ed1c8c7a65d420b46519bd1f537867a1ab0459df0729db41",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismPurpose.lean": "894c582b6c6805e72e72f158091cdd1e6878e444cc56070456dd45b110f0cbf3",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterRepairHistory.lean": "17dcd06aaf1daf47ac379c6e3b68769a4738a840bed6dbeb9179c2f04446981c",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskBoundary.lean": "a9f2742599f190755548f9739a1c67276f6e72bf1c38769b343710e59999dc4c",
+    "formalization/ueot-core/UEOT/V3/EvolutionReproductiveMartingale.lean": "71e4f201b8ea9c9bb48372554aaff16a83113e8197fb0a272a95215507ecd863",
+    "formalization/ueot-core/UEOT/V3/FiniteBayesBelief.lean": "1ea79d7c1217c4a3292b790c000d1c1f6fc9777439f8b8a0102157a5e52e97ed",
+    "formalization/ueot-core/UEOT/V3/FiniteDiscountedExactQuotient.lean": "bd7b718f62a67108d2c78a02f3157a056f2e1820e913b5b2acd089b2e931e9a9",
+    "formalization/ueot-core/UEOT/V3/FiniteDiscountedGreedy.lean": "58f7f9062893718af874ebf74bd9a24c76cbcf89afac9de533090cc48e9b95f5",
+    "formalization/ueot-core/UEOT/V3/FiniteDiscountedSelector.lean": "0da107b3f0bcdb63d06b50c5178b419d36c231c9d1f819fc84dacbab38cb6b89",
+    "formalization/ueot-core/UEOT/V3/FiniteRecurrentDecompositionStability.lean": "2f8aa0e5a98f1091bba8a3d8f7556fcaa8fb68ebdee193187dbc2935362997ee"
+  },
+  "typed_judgments": [
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterBirthMaintenance.actual_child_ready",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterBirthMaintenance.lean",
+      "source_sha256": "b39c11631a93a50d54aadd8514ee0ca87fe5af35b3b8bce6adeee97344d76e97",
+      "elaborated_type_sha256": "a2ba4b822a7e59070b9cc49380ce53157d7ff338686d9d53d93bd0280e776115",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterBirthMaintenance.actual_birth_enters_maintenance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterBirthMaintenance.lean",
+      "source_sha256": "b39c11631a93a50d54aadd8514ee0ca87fe5af35b3b8bce6adeee97344d76e97",
+      "elaborated_type_sha256": "419c600432941109232d01be34bc11e26f14b644826cab69530692777280c2a7",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultControlModel.expectedModePayoff_eq",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultControlModel.lean",
+      "source_sha256": "c20cceafe6208878d3e7824c0ba2b57f8b7ca90690f6cb7e6e02fe3ee471d1ee",
+      "elaborated_type_sha256": "2b6b213401f28b86a3dd2eb024a4088ed6179cf3b9d27c4ed77603285e094d91",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultControlModel.model_transition_eq_physicalSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultControlModel.lean",
+      "source_sha256": "c20cceafe6208878d3e7824c0ba2b57f8b7ca90690f6cb7e6e02fe3ee471d1ee",
+      "elaborated_type_sha256": "84cd3bdc58833227fc963f9e93875cb0547dc73fd1e9c9747ecb791b7ef1019f",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismPurpose.model_transition_eq_physical",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismPurpose.lean",
+          "elaborated_type_sha256": "2bef30d37bdcf2f1a6cd705b8e6801be469c85256390e9f8a47af004238b1972",
+          "judgment": "REUSED_IN_SOURCE: old theorem identifies the deterministic physical update row with its real transition entry. The new noisy real-row theorem explicitly invokes it for both repair and damage Dirac components; PMF row equality then uses the new mixture theorem. It cannot replace the hazard-dependent mixture statement."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultControlModel.model_row_eq_physicalSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultControlModel.lean",
+      "source_sha256": "c20cceafe6208878d3e7824c0ba2b57f8b7ca90690f6cb7e6e02fe3ee471d1ee",
+      "elaborated_type_sha256": "eb7763a7a50bbaefcf41181169c1a5727bb4421f1d8feefa3cfb0cb7a84a0d10",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceTarget_eq_row",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RationalConditionedSource.lean",
+          "elaborated_type_sha256": "5b08de45575e937c17ee4167d7884f53cdd4251e91ffa661cf4e46891ca834af",
+          "judgment": "NOT_TYPE_COMPATIBLE: old conclusion is a rational same-source finite-window conditioned row (P,q,baseline,safe,T,t). New conclusion is equality of the hazard-mode finite-control transitionPMF with the unconditioned physicalSource at a supplied action. No conditioning data or window is present."
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismPurpose.model_transition_eq_physical",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismPurpose.lean",
+          "elaborated_type_sha256": "2bef30d37bdcf2f1a6cd705b8e6801be469c85256390e9f8a47af004238b1972",
+          "judgment": "REUSED_IN_SOURCE: old theorem identifies the deterministic physical update row with its real transition entry. The new noisy real-row theorem explicitly invokes it for both repair and damage Dirac components; PMF row equality then uses the new mixture theorem. It cannot replace the hazard-dependent mixture statement."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultControlModel.modeLaw_next_eq_physicalSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultControlModel.lean",
+      "source_sha256": "c20cceafe6208878d3e7824c0ba2b57f8b7ca90690f6cb7e6e02fe3ee471d1ee",
+      "elaborated_type_sha256": "0523bcd7f4c3e2585862f00fdacfe990c18f8e477170172adfb3baaa1a28a564",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultControlModel.model_expect_source",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultControlModel.lean",
+      "source_sha256": "c20cceafe6208878d3e7824c0ba2b57f8b7ca90690f6cb7e6e02fe3ee471d1ee",
+      "elaborated_type_sha256": "17c1de2c47bd9df068fd09b2b77d5840b898480aea8894b346f5237b65639d19",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultControlModel.qValue_source",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultControlModel.lean",
+      "source_sha256": "c20cceafe6208878d3e7824c0ba2b57f8b7ca90690f6cb7e6e02fe3ee471d1ee",
+      "elaborated_type_sha256": "768d322a914c9469e90f3554a7ce9814cbb5797d6d079766f29023f4ce6d9017",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.FiniteDiscountedControl.ExactControlQuotient.qValue_pullback",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedExactQuotient.lean",
+          "elaborated_type_sha256": "30ad1fe1c0d3642bd2bfe4510c2d53cc61c1a8bdaacc070a951efacf3f6917bc",
+          "judgment": "NOT_TYPE_COMPATIBLE: requires an ExactControlQuotient and transports qValue between micro/macro models under pullback. Here one source model qValue is expanded into actual birth/cost and next-state formulas; no quotient or second state model is given. Existing Model.qValue is reused directly."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultControlModel.value_action_bound",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultControlModel.lean",
+      "source_sha256": "c20cceafe6208878d3e7824c0ba2b57f8b7ca90690f6cb7e6e02fe3ee471d1ee",
+      "elaborated_type_sha256": "9363116baf8f257c8858b76ad7b20b03285bf004c306c16906bcf2b84f931045",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.CompactCausalOptimalityCore.Model.integrable_actionValue",
+          "path": "formalization/ueot-core/UEOT/V3/CompactCausalOptimalityCore.lean",
+          "elaborated_type_sha256": "4960123f98a3e2f54083abfa4affb2d9e16556edaab21c725d1c38f869604808",
+          "judgment": "NOT_TYPE_COMPATIBLE: compact measurable-control theorem yields integrability of finite-horizon actionValue on history fibers. New result is a pointwise Bellman inequality for the explicit analytic value of a finite register source; integrability neither states nor supplies that inequality."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultControlModel.compiled_attains_value",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultControlModel.lean",
+      "source_sha256": "c20cceafe6208878d3e7824c0ba2b57f8b7ca90690f6cb7e6e02fe3ee471d1ee",
+      "elaborated_type_sha256": "70f1d88723249ae1230433ebe10b45347566fe82d15916b831f715f8a1597b27",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultControlModel.value_eq_optimal",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultControlModel.lean",
+      "source_sha256": "c20cceafe6208878d3e7824c0ba2b57f8b7ca90690f6cb7e6e02fe3ee471d1ee",
+      "elaborated_type_sha256": "c3fc901cf76eb7715addb132e132afb23baca6592f58ce10a339d5310635046f",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.FiniteDiscountedControl.greedy_infiniteValue_eq_optimal",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedGreedy.lean",
+          "elaborated_type_sha256": "bc84d9623748ac5b18047aa6f125fb1b958079867d0d0376ebf9b94df9e3db61",
+          "judgment": "NOT_A_REPLACEMENT: candidate theorem concerns a greedy/selector infiniteValue equality, a compact-Feller optimal fixed point, or exact quotient transport. New result identifies the explicit closed-form source value with finite Model.optimalValue. The implementation reuses finite Model.fixedPoint_unique after proving both Bellman inequalities for this literal value; no desired greedy specification or quotient certificate is assumed."
+        },
+        {
+          "symbol": "UEOT.V3.FiniteDiscountedControl.selector_infiniteValue_eq_optimal",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedSelector.lean",
+          "elaborated_type_sha256": "5f8d0302a30ef5308ae54e6579b2a258bd96807d610eef6a92a0e4a2092c2819",
+          "judgment": "NOT_A_REPLACEMENT: candidate theorem concerns a greedy/selector infiniteValue equality, a compact-Feller optimal fixed point, or exact quotient transport. New result identifies the explicit closed-form source value with finite Model.optimalValue. The implementation reuses finite Model.fixedPoint_unique after proving both Bellman inequalities for this literal value; no desired greedy specification or quotient certificate is assumed."
+        },
+        {
+          "symbol": "UEOT.V3.CompactFellerControl.Model.optimalValue_fixed",
+          "path": "formalization/ueot-core/UEOT/V3/CompactFellerControl.lean",
+          "elaborated_type_sha256": "34cf22493f46fd1dfca77d2303b537ca4772d6a0a4146b9ad528d4c3a5f4c332",
+          "judgment": "NOT_A_REPLACEMENT: candidate theorem concerns a greedy/selector infiniteValue equality, a compact-Feller optimal fixed point, or exact quotient transport. New result identifies the explicit closed-form source value with finite Model.optimalValue. The implementation reuses finite Model.fixedPoint_unique after proving both Bellman inequalities for this literal value; no desired greedy specification or quotient certificate is assumed."
+        },
+        {
+          "symbol": "UEOT.V3.FiniteDiscountedControl.ExactControlQuotient.liftSelector_infiniteValue_eq_optimal",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedExactQuotient.lean",
+          "elaborated_type_sha256": "bcab47d2a8ce90aa40e9cfb3836b6ef22d070f869039e0c23fb7c8a01de95811",
+          "judgment": "NOT_A_REPLACEMENT: candidate theorem concerns a greedy/selector infiniteValue equality, a compact-Feller optimal fixed point, or exact quotient transport. New result identifies the explicit closed-form source value with finite Model.optimalValue. The implementation reuses finite Model.fixedPoint_unique after proving both Bellman inequalities for this literal value; no desired greedy specification or quotient certificate is assumed."
+        },
+        {
+          "symbol": "UEOT.V3.FiniteDiscountedControl.ExactControlQuotient.optimalValue_apply",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedExactQuotient.lean",
+          "elaborated_type_sha256": "6d010e36e0960e6d64bbd3fa252a27d4becf98f1e70efcb63f220c55536ef077",
+          "judgment": "NOT_A_REPLACEMENT: candidate theorem concerns a greedy/selector infiniteValue equality, a compact-Feller optimal fixed point, or exact quotient transport. New result identifies the explicit closed-form source value with finite Model.optimalValue. The implementation reuses finite Model.fixedPoint_unique after proving both Bellman inequalities for this literal value; no desired greedy specification or quotient certificate is assumed."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultControlModel.compiled_optimal_against_all_causal",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultControlModel.lean",
+      "source_sha256": "c20cceafe6208878d3e7824c0ba2b57f8b7ca90690f6cb7e6e02fe3ee471d1ee",
+      "elaborated_type_sha256": "3258a6d4bf5fdd62ec0369354101df6153b29f03526b26c0eb8b924f74423117",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.CompactCausalOptimalityCore.Model.GreedyCertificate.optimal_against_all_causal",
+          "path": "formalization/ueot-core/UEOT/V3/CompactCausalOptimalityCore.lean",
+          "elaborated_type_sha256": "cbd201f84c0e23306556e788ccb3a31b4febe7bf0b830570912e03b971b7951f",
+          "judgment": "NOT_NEEDED: compact measurable/history-fiber certificate or exact-quotient lifting endpoint has additional model/certificate types absent here. The original finite selector_optimal_against_all_causal already supplies the required all-causal conclusion without constructing a replacement controller or extra quotient."
+        },
+        {
+          "symbol": "UEOT.V3.FiniteDiscountedControl.selector_optimal_against_all_causal",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedSelector.lean",
+          "elaborated_type_sha256": "bd533ed690f1ce72573b95e2b0fa986b483ad9322849112d913df6eb6a1b3bd5",
+          "judgment": "REUSED_DIRECTLY: exact finite Model and supplied selector signature match. Source code applies this original endpoint to substrate.execute goal, proves its hσ from the analytic source Bellman equality and fixed-point identification, and returns that SAME selector plus domination over every original causal-memory policy."
+        },
+        {
+          "symbol": "UEOT.V3.CompactCausalOptimalityCore.Model.GreedyCertificate.optimal_against_all_causal_from_state",
+          "path": "formalization/ueot-core/UEOT/V3/CompactCausalOptimalityCore.lean",
+          "elaborated_type_sha256": "c2f66ca864e4c3c1fb0664364c68bd02b8c8f938413ed7570c13d48e410925a8",
+          "judgment": "NOT_NEEDED: compact measurable/history-fiber certificate or exact-quotient lifting endpoint has additional model/certificate types absent here. The original finite selector_optimal_against_all_causal already supplies the required all-causal conclusion without constructing a replacement controller or extra quotient."
+        },
+        {
+          "symbol": "UEOT.V3.FiniteDiscountedControl.ExactControlQuotient.liftSelector_optimal_against_all_causal",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedExactQuotient.lean",
+          "elaborated_type_sha256": "ddd48ced7315fc0a0c4072d560c0f4e34772f05a88d756ec732ee19549cdf388",
+          "judgment": "NOT_NEEDED: compact measurable/history-fiber certificate or exact-quotient lifting endpoint has additional model/certificate types absent here. The original finite selector_optimal_against_all_causal already supplies the required all-causal conclusion without constructing a replacement controller or extra quotient."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultControlModel.positive_noise_values",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultControlModel.lean",
+      "source_sha256": "c20cceafe6208878d3e7824c0ba2b57f8b7ca90690f6cb7e6e02fe3ee471d1ee",
+      "elaborated_type_sha256": "f00cf0d2403572cbee8370604c1197c5e511920745f88fa82d4500b5f74671f7",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultControlModel.actual_P5_row_eq_control_row",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultControlModel.lean",
+      "source_sha256": "c20cceafe6208878d3e7824c0ba2b57f8b7ca90690f6cb7e6e02fe3ee471d1ee",
+      "elaborated_type_sha256": "afc3930a755ce86c2d3c535a437b7c49a4863401cb0da69c7d35edeee9c86e5c",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultControlSource.actual_P5_physical_shadow",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultControlSource.lean",
+      "source_sha256": "5a787e967fddae5f8f00b9f7321b9e8917bf4ac857c42b0ba1bb215dccd1cda4",
+      "elaborated_type_sha256": "1e1515bc5c2c70ca11889743fab741111782a6309369a860232dc43b79981b7d",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultJointRecord.step_physical",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultJointRecord.lean",
+      "source_sha256": "b7be526a4350c7b84db6e355495486fee9f55062288b7c0ce2fef251e76ff7b1",
+      "elaborated_type_sha256": "648f64d7a30d1b4269e6c93775614a39a5e5b16d35032745938303ca1cff3f90",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.Objecthood.OntogeneticConstruction.OntogeneticAssemblyPlan.toSeed_physical",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/OntogeneticConstruction/Assembly.lean",
+          "elaborated_type_sha256": "d0117ec08996d0ca457c1ab1cf9300cfc19f0e988ef785aae200db561451312e",
+          "judgment": "NOT_TYPE_COMPATIBLE: seed assembly projection applies to OntogeneticAssemblyPlan.toSeed. New theorem projects the actual modeRecordStep post-action parent, with an actual fault alternative. No assembly plan is being evaluated; proof is direct source-mode case reduction."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultJointRecord.step_program",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultJointRecord.lean",
+      "source_sha256": "b7be526a4350c7b84db6e355495486fee9f55062288b7c0ce2fef251e76ff7b1",
+      "elaborated_type_sha256": "9ffc7673406b87f7b0a766e3d8ab0d8369fc0edc963a09c5ae4d020d8f608c25",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.Objecthood.OntogeneticConstruction.OntogeneticAssemblyPlan.toSeed_program",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/OntogeneticConstruction/Assembly.lean",
+          "elaborated_type_sha256": "34670bf81f6c5e8e9d88c13ca1bb592391a100187a6ed8a5609593c42ec9b42e",
+          "judgment": "NOT_TYPE_COMPATIBLE: seed assembly projection concerns a selected assembly plan programSource. New theorem proves retained parent program invariance under actual repair/fault transactions; it is direct modeRecordStep evaluation, not an assembled seed projection."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultJointRecord.step_history",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultJointRecord.lean",
+      "source_sha256": "b7be526a4350c7b84db6e355495486fee9f55062288b7c0ce2fef251e76ff7b1",
+      "elaborated_type_sha256": "afb17c4fcb16a92f3a87f8e21baca786e2bf5aad7f9aff501ec56dbbf0aa293e",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterRepairHistory.replay_history",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterRepairHistory.lean",
+          "elaborated_type_sha256": "172394bc9c12c9ff999cca0e802fd3517000542ece6ac1c2eb17f1ff259e8df3",
+          "judgment": "NOT_TYPE_COMPATIBLE: old replay follows an event-descendant chain and appends birth labels to the continuing descendant history. New modeRecordStep continues the SAME parent and leaves its history fixed while recording a separate child. Replacing it by replay_history would change identity and the transition semantics."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultJointRecord.step_payoff",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultJointRecord.lean",
+      "source_sha256": "b7be526a4350c7b84db6e355495486fee9f55062288b7c0ce2fef251e76ff7b1",
+      "elaborated_type_sha256": "20d71a01d6f96a243476befd3f24377cb49c41b447f733dc5bdf708a6a57a1cb",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultJointRecord.weight_nonneg",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultJointRecord.lean",
+      "source_sha256": "b7be526a4350c7b84db6e355495486fee9f55062288b7c0ce2fef251e76ff7b1",
+      "elaborated_type_sha256": "ad26cc0dfc7ef97cfc226fd05ac0ddc26d459c66819a4f5222cbd6a78e23a505",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.PositiveEigenstructure.W_nonneg",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/PositiveEigenstructure.lean",
+          "elaborated_type_sha256": "51d9b7d0b18303f28a5939e9f7db9da63e604e51795c552b90f389d4ab83b371",
+          "judgment": "NOT_TYPE_COMPATIBLE: candidates prove nonnegativity of Perron/reproductive martingale W or recurrent absorption H, and require their eigenstructure/process/decomposition inputs. New weight is a recursively policy-dependent literal action/(mode)/label tape likelihood. It reuses multiplication nonnegativity and original actionProb_nonneg, not unrelated normalized-population quantities."
+        },
+        {
+          "symbol": "UEOT.V3.EvolutionReproductiveMartingale.W_nonneg",
+          "path": "formalization/ueot-core/UEOT/V3/EvolutionReproductiveMartingale.lean",
+          "elaborated_type_sha256": "84d82d9f40c3c4dee0cd9ef7409bf5b5b442b2705b6b51bcf6f60ff713daa77c",
+          "judgment": "NOT_TYPE_COMPATIBLE: candidates prove nonnegativity of Perron/reproductive martingale W or recurrent absorption H, and require their eigenstructure/process/decomposition inputs. New weight is a recursively policy-dependent literal action/(mode)/label tape likelihood. It reuses multiplication nonnegativity and original actionProb_nonneg, not unrelated normalized-population quantities."
+        },
+        {
+          "symbol": "UEOT.V3.FiniteRecurrentDecompositionStability.RecurrentBlockDecomposition.H_nonneg",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteRecurrentDecompositionStability.lean",
+          "elaborated_type_sha256": "5bbc1cf667a8b05c42e2623cd9c0c5417ed83a8a3165b83b0e28a178881dfc26",
+          "judgment": "NOT_TYPE_COMPATIBLE: candidates prove nonnegativity of Perron/reproductive martingale W or recurrent absorption H, and require their eigenstructure/process/decomposition inputs. New weight is a recursively policy-dependent literal action/(mode)/label tape likelihood. It reuses multiplication nonnegativity and original actionProb_nonneg, not unrelated normalized-population quantities."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultJointRecord.weight_sum_one",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultJointRecord.lean",
+      "source_sha256": "b7be526a4350c7b84db6e355495486fee9f55062288b7c0ce2fef251e76ff7b1",
+      "elaborated_type_sha256": "a94ce2466b0d0d0a02dd12822a9900d23bfe407e71b39f74547e8b1b079a9deb",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.PositiveEigenstructure.invariantWeight_sum",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/PositiveEigenstructure.lean",
+          "elaborated_type_sha256": "d602120ea9938c11a8390d14f5a27de4f2fd8341353511426c6e103f843df8dd",
+          "judgment": "NOT_TYPE_COMPATIBLE: candidates normalize an invariant eigenweight, a fixed Fin3 transition row, or finite Bayesian evidence. New statement normalizes the whole recursively policy-dependent tape for arbitrary causal memory and horizon. Existing finite sums and actual actionProb_sum_one/PMF.tsum_coe are reused; normalization is proved, not supplied."
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataSource.transition_sum_one",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteDataSource.lean",
+          "elaborated_type_sha256": "699640544919981b86d15b37420e40d5a155acc69ef2a3de06f545ae378b79b1",
+          "judgment": "NOT_TYPE_COMPATIBLE: candidates normalize an invariant eigenweight, a fixed Fin3 transition row, or finite Bayesian evidence. New statement normalizes the whole recursively policy-dependent tape for arbitrary causal memory and horizon. Existing finite sums and actual actionProb_sum_one/PMF.tsum_coe are reused; normalization is proved, not supplied."
+        },
+        {
+          "symbol": "UEOT.V3.FiniteBayesBelief.evidence_sum_one",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteBayesBelief.lean",
+          "elaborated_type_sha256": "c9069e457beb942d0f79324c18534c77c445761cef01beda59733cb6ec6f1851",
+          "judgment": "NOT_TYPE_COMPATIBLE: candidates normalize an invariant eigenweight, a fixed Fin3 transition row, or finite Bayesian evidence. New statement normalizes the whole recursively policy-dependent tape for arbitrary causal memory and horizon. Existing finite sums and actual actionProb_sum_one/PMF.tsum_coe are reused; normalization is proved, not supplied."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultJointRecord.actualExpectation_succ",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultJointRecord.lean",
+      "source_sha256": "b7be526a4350c7b84db6e355495486fee9f55062288b7c0ce2fef251e76ff7b1",
+      "elaborated_type_sha256": "f00f9793d971eb6f5f21479558397d0a158023f14b6af5c78732c8c22758a173",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultJointRecord.actualExpectation_eq_truncatedValue",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultJointRecord.lean",
+      "source_sha256": "b7be526a4350c7b84db6e355495486fee9f55062288b7c0ce2fef251e76ff7b1",
+      "elaborated_type_sha256": "968b8ff25059f2effda27a715bf2d9ae69a66404dceaf3249bede14b96e8f871",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultJointRecord.records_length",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultJointRecord.lean",
+      "source_sha256": "b7be526a4350c7b84db6e355495486fee9f55062288b7c0ce2fef251e76ff7b1",
+      "elaborated_type_sha256": "47af2cdae28733f5a4357fb97c3edbcbd6183c08f2818320ecd601f3fd9a1288",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultJointRecord.actual_child_requires_repair",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultJointRecord.lean",
+      "source_sha256": "b7be526a4350c7b84db6e355495486fee9f55062288b7c0ce2fef251e76ff7b1",
+      "elaborated_type_sha256": "3ab8b7145fb09920dfa8e714f609ac0c2982eaade49d8e7dd989a214424bd420",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultJointRecord.records_source_semantics",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultJointRecord.lean",
+      "source_sha256": "b7be526a4350c7b84db6e355495486fee9f55062288b7c0ce2fef251e76ff7b1",
+      "elaborated_type_sha256": "05d51f14894c81f5dfe0d3af5e579a1da6da2d39637adcb00bbc6754f46f3e45",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultJointRecord.two_stage_repair_then_fault",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultJointRecord.lean",
+      "source_sha256": "b7be526a4350c7b84db6e355495486fee9f55062288b7c0ce2fef251e76ff7b1",
+      "elaborated_type_sha256": "6a84217df100c572c64a97af2772e4272c3ffb55844f08ee66e524cca84870b8",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultJointRecord.positive_fault_transaction_witness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultJointRecord.lean",
+      "source_sha256": "b7be526a4350c7b84db6e355495486fee9f55062288b7c0ce2fef251e76ff7b1",
+      "elaborated_type_sha256": "7b7b74c318e747f329dfd0977a08424e97eb2e9b02a6fb7a61f19892cbc8e388",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultJointRecord.records_expenditure",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultJointRecord.lean",
+      "source_sha256": "b7be526a4350c7b84db6e355495486fee9f55062288b7c0ce2fef251e76ff7b1",
+      "elaborated_type_sha256": "587ffd668632fec3d89114b25216203d6fddfac13685c572fa413308680449db",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultJointRecord.recordedCostAt_eq",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultJointRecord.lean",
+      "source_sha256": "b7be526a4350c7b84db6e355495486fee9f55062288b7c0ce2fef251e76ff7b1",
+      "elaborated_type_sha256": "4f47ef9171dbbf9c02cbd49b4fa1ca68fc43ba55b6441038955a0323112387ac",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultJointRecord.actual_record_resource_viable",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultJointRecord.lean",
+      "source_sha256": "b7be526a4350c7b84db6e355495486fee9f55062288b7c0ce2fef251e76ff7b1",
+      "elaborated_type_sha256": "21e0b93d4b0593e4db68071b82fa90a3e18b383dfd19b04c17685e0cdb76f972",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultJointRecord.recorded_payoff_integrable",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultJointRecord.lean",
+      "source_sha256": "b7be526a4350c7b84db6e355495486fee9f55062288b7c0ce2fef251e76ff7b1",
+      "elaborated_type_sha256": "afe08d3cb07d75451c48de496607410607dfffb7ead7bc0ac99e2dd686c864aa",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultJointRecord.integral_recordLaw_eq_actualExpectation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultJointRecord.lean",
+      "source_sha256": "b7be526a4350c7b84db6e355495486fee9f55062288b7c0ce2fef251e76ff7b1",
+      "elaborated_type_sha256": "3ec79f6969f6836890e65bd91c76777cdb9a87db7f3ed03f67dc72f48b1c7185",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultJointRecord.actual_record_integral_eq_policy_value",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultJointRecord.lean",
+      "source_sha256": "b7be526a4350c7b84db6e355495486fee9f55062288b7c0ce2fef251e76ff7b1",
+      "elaborated_type_sha256": "65bcd47c85837a5833695f5b8e714311b7e783982ae842d56d709b848cf45806",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultJointRecord.compiled_record_integral_tendsto_optimal",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultJointRecord.lean",
+      "source_sha256": "b7be526a4350c7b84db6e355495486fee9f55062288b7c0ce2fef251e76ff7b1",
+      "elaborated_type_sha256": "2a59430ad28ca39d0c2300192ab96441e03ef9be2561fb7169aaf12aa1a9b996",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultJointRecord.actual_mode_birth_enters_maintenance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultJointRecord.lean",
+      "source_sha256": "b7be526a4350c7b84db6e355495486fee9f55062288b7c0ce2fef251e76ff7b1",
+      "elaborated_type_sha256": "909d6363611362e7cd2c1b7af2528157dbd78aba5cdd5f359dd8787f41991a4a",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultPurposeInformation.repairChance_pos",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultPurposeInformation.lean",
+      "source_sha256": "fd469724190edbe91334751f45b1a61f187a1e17ef34dd441b4cb48df21103b1",
+      "elaborated_type_sha256": "3e8516bf4c620fec31f0332cd813d49f0ede2ab78739bf15981ed4a7a7b2d0c5",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultPurposeInformation.probeBirthMean_eq",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultPurposeInformation.lean",
+      "source_sha256": "fd469724190edbe91334751f45b1a61f187a1e17ef34dd441b4cb48df21103b1",
+      "elaborated_type_sha256": "c50d334fa9809509b47d38f916eeb0a3306ef00a7f3d19b6722ef828a794570f",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultPurposeInformation.probePaidMean_eq",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultPurposeInformation.lean",
+      "source_sha256": "fd469724190edbe91334751f45b1a61f187a1e17ef34dd441b4cb48df21103b1",
+      "elaborated_type_sha256": "658d6063bfc51573f2138770975a11923e4651aca1f7842ac35d949bfcc27d80",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultPurposeInformation.probe_means_from_actual_parent",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultPurposeInformation.lean",
+      "source_sha256": "fd469724190edbe91334751f45b1a61f187a1e17ef34dd441b4cb48df21103b1",
+      "elaborated_type_sha256": "d0e7bd2aea4059ff1fde622b93108ccdb416efa19c70d873cf2b29f03ffe1f5c",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultPurposeInformation.observed_birth_sum",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultPurposeInformation.lean",
+      "source_sha256": "fd469724190edbe91334751f45b1a61f187a1e17ef34dd441b4cb48df21103b1",
+      "elaborated_type_sha256": "acca5d6ed78428ad833847395ccdad3633469647b4a42cf7d1c158f3b71b0b35",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultPurposeInformation.observe_injective",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultPurposeInformation.lean",
+      "source_sha256": "fd469724190edbe91334751f45b1a61f187a1e17ef34dd441b4cb48df21103b1",
+      "elaborated_type_sha256": "877827cbe2b7b70aa019b8cb382a8778a4d3c70c874b4d28dfe4061864c41c58",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismPurpose.observe_injective",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismPurpose.lean",
+          "elaborated_type_sha256": "6156d541c64713643aad1768324af160c3887b87b941a27b9d3320900d7f0547",
+          "judgment": "NOT_TYPE_COMPATIBLE: old unknown fields are goal/writeCost and observations are fault-free birth means and an unscaled cost. New Parameter adds UNKNOWN epsilon<1 and all means are scaled by r=1-epsilon. New proof first recovers r from the sum of birth means, then epsilon, goal and cost using r>0. The old injectivity theorem cannot recover the new hidden hazard."
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteObservationEscapeBoundaryCheck.live_injective",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscapeBoundary.lean",
+          "elaborated_type_sha256": "17a6425771287bf5c03c1e08cbe5d78df57210b3fe248b1f03d29d2dc48b3e62",
+          "judgment": "NOT_TYPE_COMPATIBLE: injectivity is for that concrete escape-boundary live channel, not the actual three mean observation map of Parameter. It supplies none of the new hazard/goal/cost recovery identities."
+        },
+        {
+          "symbol": "UEOT.V3.Compression.CrossTrack.BindingIsolation.injective",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/CrossTrack/DualIsolationCore.lean",
+          "elaborated_type_sha256": "9f2194bcf62cc1c41e0a9273feed636886e464f655b4d04df7cb1433cb63789c",
+          "judgment": "NOT_TYPE_COMPATIBLE: requires a metric diagnostic isolation lower-bound certificate and positive isolation factor. New observation identification is algebraic and includes no such isolation premise; adding it would externalize the result rather than derive it from source means."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultPurposeInformation.total_fault_experiments_zero",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultPurposeInformation.lean",
+      "source_sha256": "fd469724190edbe91334751f45b1a61f187a1e17ef34dd441b4cb48df21103b1",
+      "elaborated_type_sha256": "511ce418270b97657d83d35ee89478d120a66ec878b00f84511e6a9482dc4eb2",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultPurposeInformation.objective_eq_actual_policy_value",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultPurposeInformation.lean",
+      "source_sha256": "fd469724190edbe91334751f45b1a61f187a1e17ef34dd441b4cb48df21103b1",
+      "elaborated_type_sha256": "03cffc7523abb2d5e0a2ac7ccf07f5a319634276b08c644d7db7c9d1d143b245",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultPurposeInformation.one_step_constant_value",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultPurposeInformation.lean",
+      "source_sha256": "fd469724190edbe91334751f45b1a61f187a1e17ef34dd441b4cb48df21103b1",
+      "elaborated_type_sha256": "5fe2f17cd55f105415a0096a3f4c16bf070738c1346ca37cebd3e63a98e0d9fa",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismPurpose.one_step_constant",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismPurpose.lean",
+          "elaborated_type_sha256": "6b0ef6ce523e558ecc38884c27fb4c66375dc3a93e3841621aab3338054a9844",
+          "judgment": "NOT_TYPE_COMPATIBLE: old objective is fault-free control truncatedValue equal to its stage reward. New objective is an actual noisy ModeRecord-law integral. The implementation first reuses the newly proved actual integral-to-SAME-policy value identity, then original selector_truncatedValue_succ and new mode-payoff formula. The old law cannot be transported silently."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultPurposeInformation.positive_noise_identification_witness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultPurposeInformation.lean",
+      "source_sha256": "fd469724190edbe91334751f45b1a61f187a1e17ef34dd441b4cb48df21103b1",
+      "elaborated_type_sha256": "e573f8555cf61ec5e5fd4810769959d623180dacecee6a87bb31023f601e59b4",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultPurposeInformation.actual_record_mechanism_faithful",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultPurposeInformation.lean",
+      "source_sha256": "fd469724190edbe91334751f45b1a61f187a1e17ef34dd441b4cb48df21103b1",
+      "elaborated_type_sha256": "b109cec0806f38663cb11d24e342498b772bc254cb6776bf7e51b15a00315464",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismPurpose.registered_mechanism_faithful",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismPurpose.lean",
+          "elaborated_type_sha256": "be369098a134cfa47286f05313699490b2fcf17dd31144edc251a33f757a7156",
+          "judgment": "NOT_TYPE_COMPATIBLE: old hfaith is for fault-free Mechanism/observe/objective, not new unknown-hazard Parameter and full noisy-record integral. New proof uses its independently derived observe_injective. The generic original C6 mechanismObservation_identifies_teleologicalClass consumer is reused downstream."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultPurposeInformation.observed_source_identifies_actual_purpose",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultPurposeInformation.lean",
+      "source_sha256": "fd469724190edbe91334751f45b1a61f187a1e17ef34dd441b4cb48df21103b1",
+      "elaborated_type_sha256": "9830845ca5d47c16aa71c7d7b8b8a9ddb5a12f33e777d165a8f2df9b3ec6d87a",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultSource.potential_finite",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultSource.lean",
+      "source_sha256": "bd0d262a11aa11759cd5c1ca4af0b80d70d6a9b60907e5b45d806871d6f2fbeb",
+      "elaborated_type_sha256": "adb2bc9aebe7d4c20de685e56bb27cdba5400ea66d63aa2cc4cce6ebed6b6c85",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultSource.carrier_iff_program",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultSource.lean",
+      "source_sha256": "bd0d262a11aa11759cd5c1ca4af0b80d70d6a9b60907e5b45d806871d6f2fbeb",
+      "elaborated_type_sha256": "df3b67db3a3761658b56b4a4c934cde5e22c78540300e499458d07a2e0ad6895",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultSource.actual_fault_envelope",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultSource.lean",
+      "source_sha256": "bd0d262a11aa11759cd5c1ca4af0b80d70d6a9b60907e5b45d806871d6f2fbeb",
+      "elaborated_type_sha256": "e0fb87f11c01e4a13469f08f87c35d56cdd3c9f5e4b8c272f0f8763db0624bfe",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultSource.actual_fault_outside_target",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultSource.lean",
+      "source_sha256": "bd0d262a11aa11759cd5c1ca4af0b80d70d6a9b60907e5b45d806871d6f2fbeb",
+      "elaborated_type_sha256": "ccfb0bdc4d3131f3acef68888966bdc89c04c7b85d8676150214d8a5e09b449e",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultSource.assembled_enters_actual_fault_system",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultSource.lean",
+      "source_sha256": "bd0d262a11aa11759cd5c1ca4af0b80d70d6a9b60907e5b45d806871d6f2fbeb",
+      "elaborated_type_sha256": "b63bc9797853244316e07369c0adac62b349b3867e309108db927d3eaae1fd2e",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointRecord.record_parent_history",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointRecord.lean",
+      "source_sha256": "54c85da08919b7639a34cb8f1d3f39e07936212da1eafaab709133e9972f8329",
+      "elaborated_type_sha256": "4334e002c049946c9f92316b8304c82a8ad210dc60bc08a1c76a3e7f761e57ae",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointRecord.record_parent_program",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointRecord.lean",
+      "source_sha256": "54c85da08919b7639a34cb8f1d3f39e07936212da1eafaab709133e9972f8329",
+      "elaborated_type_sha256": "26cd57f15897fc231a8e0d1b047a4e6af6e96b0d3324fb3918b496a4cd1638d7",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointRecord.record_child_source",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointRecord.lean",
+      "source_sha256": "54c85da08919b7639a34cb8f1d3f39e07936212da1eafaab709133e9972f8329",
+      "elaborated_type_sha256": "7e3ca54ab03699402abb87292f9cd80767b213d8c4e069ea17121248bbc6acda",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointRecord.record_child_physical",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointRecord.lean",
+      "source_sha256": "54c85da08919b7639a34cb8f1d3f39e07936212da1eafaab709133e9972f8329",
+      "elaborated_type_sha256": "3f131d1179a3e3bfd98984f77f05ce337a3ddb3cb593a81a0ccfab47a86a7ae2",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointRecord.record_payoff_eq",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointRecord.lean",
+      "source_sha256": "54c85da08919b7639a34cb8f1d3f39e07936212da1eafaab709133e9972f8329",
+      "elaborated_type_sha256": "dbbe5b12de784c0031b19af438615739b6446c76758d5373556cebf4f39ef7ed",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointRecord.weight_nonneg",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointRecord.lean",
+      "source_sha256": "54c85da08919b7639a34cb8f1d3f39e07936212da1eafaab709133e9972f8329",
+      "elaborated_type_sha256": "460128d070d1db7a47ea002a4e8bce179291803e0984328f0bb29bef6406c86d",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.PositiveEigenstructure.W_nonneg",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/PositiveEigenstructure.lean",
+          "elaborated_type_sha256": "51d9b7d0b18303f28a5939e9f7db9da63e604e51795c552b90f389d4ab83b371",
+          "judgment": "NOT_TYPE_COMPATIBLE: candidates prove nonnegativity of Perron/reproductive martingale W or recurrent absorption H, and require their eigenstructure/process/decomposition inputs. New weight is a recursively policy-dependent literal action/(mode)/label tape likelihood. It reuses multiplication nonnegativity and original actionProb_nonneg, not unrelated normalized-population quantities."
+        },
+        {
+          "symbol": "UEOT.V3.EvolutionReproductiveMartingale.W_nonneg",
+          "path": "formalization/ueot-core/UEOT/V3/EvolutionReproductiveMartingale.lean",
+          "elaborated_type_sha256": "84d82d9f40c3c4dee0cd9ef7409bf5b5b442b2705b6b51bcf6f60ff713daa77c",
+          "judgment": "NOT_TYPE_COMPATIBLE: candidates prove nonnegativity of Perron/reproductive martingale W or recurrent absorption H, and require their eigenstructure/process/decomposition inputs. New weight is a recursively policy-dependent literal action/(mode)/label tape likelihood. It reuses multiplication nonnegativity and original actionProb_nonneg, not unrelated normalized-population quantities."
+        },
+        {
+          "symbol": "UEOT.V3.FiniteRecurrentDecompositionStability.RecurrentBlockDecomposition.H_nonneg",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteRecurrentDecompositionStability.lean",
+          "elaborated_type_sha256": "5bbc1cf667a8b05c42e2623cd9c0c5417ed83a8a3165b83b0e28a178881dfc26",
+          "judgment": "NOT_TYPE_COMPATIBLE: candidates prove nonnegativity of Perron/reproductive martingale W or recurrent absorption H, and require their eigenstructure/process/decomposition inputs. New weight is a recursively policy-dependent literal action/(mode)/label tape likelihood. It reuses multiplication nonnegativity and original actionProb_nonneg, not unrelated normalized-population quantities."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointRecord.weight_sum_one",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointRecord.lean",
+      "source_sha256": "54c85da08919b7639a34cb8f1d3f39e07936212da1eafaab709133e9972f8329",
+      "elaborated_type_sha256": "e72c26ae562ddd3215a427d617aba19635b61373cb2e68e12c1be9ff440f51d2",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.PositiveEigenstructure.invariantWeight_sum",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/PositiveEigenstructure.lean",
+          "elaborated_type_sha256": "d602120ea9938c11a8390d14f5a27de4f2fd8341353511426c6e103f843df8dd",
+          "judgment": "NOT_TYPE_COMPATIBLE: candidates normalize an invariant eigenweight, a fixed Fin3 transition row, or finite Bayesian evidence. New statement normalizes the whole recursively policy-dependent tape for arbitrary causal memory and horizon. Existing finite sums and actual actionProb_sum_one/PMF.tsum_coe are reused; normalization is proved, not supplied."
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataSource.transition_sum_one",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteDataSource.lean",
+          "elaborated_type_sha256": "699640544919981b86d15b37420e40d5a155acc69ef2a3de06f545ae378b79b1",
+          "judgment": "NOT_TYPE_COMPATIBLE: candidates normalize an invariant eigenweight, a fixed Fin3 transition row, or finite Bayesian evidence. New statement normalizes the whole recursively policy-dependent tape for arbitrary causal memory and horizon. Existing finite sums and actual actionProb_sum_one/PMF.tsum_coe are reused; normalization is proved, not supplied."
+        },
+        {
+          "symbol": "UEOT.V3.FiniteBayesBelief.evidence_sum_one",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteBayesBelief.lean",
+          "elaborated_type_sha256": "c9069e457beb942d0f79324c18534c77c445761cef01beda59733cb6ec6f1851",
+          "judgment": "NOT_TYPE_COMPATIBLE: candidates normalize an invariant eigenweight, a fixed Fin3 transition row, or finite Bayesian evidence. New statement normalizes the whole recursively policy-dependent tape for arbitrary causal memory and horizon. Existing finite sums and actual actionProb_sum_one/PMF.tsum_coe are reused; normalization is proved, not supplied."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointRecord.tapeLaw_real",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointRecord.lean",
+      "source_sha256": "54c85da08919b7639a34cb8f1d3f39e07936212da1eafaab709133e9972f8329",
+      "elaborated_type_sha256": "6e831adfaded4c8b7cd429eb657c8466c6aa54b6f997cde3108cddd1e339eb7f",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointRecord.actualExpectation_succ",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointRecord.lean",
+      "source_sha256": "54c85da08919b7639a34cb8f1d3f39e07936212da1eafaab709133e9972f8329",
+      "elaborated_type_sha256": "4ac4090f7156f570b5256a7224ed66b51c27dccdbc5e59fc811bd13ff6ed5666",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointRecord.actualExpectation_eq_truncatedValue",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointRecord.lean",
+      "source_sha256": "54c85da08919b7639a34cb8f1d3f39e07936212da1eafaab709133e9972f8329",
+      "elaborated_type_sha256": "8c550da59e31c077c34aedad40cd5b4534b19edfc8433faad8a70ee5674e3caf",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointRecord.records_length",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointRecord.lean",
+      "source_sha256": "54c85da08919b7639a34cb8f1d3f39e07936212da1eafaab709133e9972f8329",
+      "elaborated_type_sha256": "39667bb6b8a60520b41ce326ea7a4db9ab13a8618b24f72072cb624ab4146a72",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointRecord.records_source_semantics",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointRecord.lean",
+      "source_sha256": "54c85da08919b7639a34cb8f1d3f39e07936212da1eafaab709133e9972f8329",
+      "elaborated_type_sha256": "06243aeba01da32036fbee7b2e4bd595b3c0efaee1ba400b72764bc870e1fc17",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointRecord.compiled_two_stage_record",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointRecord.lean",
+      "source_sha256": "54c85da08919b7639a34cb8f1d3f39e07936212da1eafaab709133e9972f8329",
+      "elaborated_type_sha256": "48aa02fdea2f09fde9e07d11f8c2fc8b225302a305d4ffebb6bcde7cb76e0d21",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointRecord.recorded_payoff_integrable",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointRecord.lean",
+      "source_sha256": "54c85da08919b7639a34cb8f1d3f39e07936212da1eafaab709133e9972f8329",
+      "elaborated_type_sha256": "e1943e8a971e8d41c524ee6740ab2be9be9dcd49069781af7942ac0313becdf8",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointRecord.integral_recordLaw_eq_actualExpectation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointRecord.lean",
+      "source_sha256": "54c85da08919b7639a34cb8f1d3f39e07936212da1eafaab709133e9972f8329",
+      "elaborated_type_sha256": "82be186ebf23885705ca552f1d41f280f1ddc5174029c9261c18828bbc1e42c2",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointRecord.actual_record_integral_eq_policy_value",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointRecord.lean",
+      "source_sha256": "54c85da08919b7639a34cb8f1d3f39e07936212da1eafaab709133e9972f8329",
+      "elaborated_type_sha256": "677bd9677e00e98412a26708def6d1e83158748768c35f9720de56261393ca8c",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointRecord.recordedObjective_eq_objective",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointRecord.lean",
+      "source_sha256": "54c85da08919b7639a34cb8f1d3f39e07936212da1eafaab709133e9972f8329",
+      "elaborated_type_sha256": "27ccc47eb21d987913b7f5f4bf396d2694caade2638256cbe5bd319d28a7364d",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointRecord.recorded_observation_identifies_purpose",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointRecord.lean",
+      "source_sha256": "54c85da08919b7639a34cb8f1d3f39e07936212da1eafaab709133e9972f8329",
+      "elaborated_type_sha256": "e87954775bab25d689bff8943293546b07a47a45797f14a34587ba4b2d183795",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismPurpose.registered_observation_identifies_purpose",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismPurpose.lean",
+          "elaborated_type_sha256": "f7b7b1c66ce8b55712abfba78a86d6f63fecfb649cc5c13e13b358ac87a053c2",
+          "judgment": "REUSED_DIRECTLY_AFTER_PROVED_TRANSPORT: new recordedObjective_eq_objective first identifies the actual fault-free complete-record integral with the original objective for the SAME supplied policy and horizon; then source code calls registered_observation_identifies_purpose. No new C6 class machinery is introduced."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterProgramOptimality.qValue_source",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterProgramOptimality.lean",
+      "source_sha256": "4c7cedcf6d0068c0b79dfee98879b92329f33dc0089ae8bfd4711f0629bd12c3",
+      "elaborated_type_sha256": "b74954b4c873083a87c20b356e2f0b36530068495bc0e2e6e7f6f0ebfd0982bc",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.FiniteDiscountedControl.ExactControlQuotient.qValue_pullback",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedExactQuotient.lean",
+          "elaborated_type_sha256": "30ad1fe1c0d3642bd2bfe4510c2d53cc61c1a8bdaacc070a951efacf3f6917bc",
+          "judgment": "NOT_TYPE_COMPATIBLE: requires an ExactControlQuotient and transports qValue between micro/macro models under pullback. Here one source model qValue is expanded into actual birth/cost and next-state formulas; no quotient or second state model is given. Existing Model.qValue is reused directly."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterProgramOptimality.value_action_bound",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterProgramOptimality.lean",
+      "source_sha256": "4c7cedcf6d0068c0b79dfee98879b92329f33dc0089ae8bfd4711f0629bd12c3",
+      "elaborated_type_sha256": "41f5ecc532fd76b320ece11149d7ba2ee7e8c8e18abc71f577e037dc83de2d44",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.CompactCausalOptimalityCore.Model.integrable_actionValue",
+          "path": "formalization/ueot-core/UEOT/V3/CompactCausalOptimalityCore.lean",
+          "elaborated_type_sha256": "4960123f98a3e2f54083abfa4affb2d9e16556edaab21c725d1c38f869604808",
+          "judgment": "NOT_TYPE_COMPATIBLE: compact measurable-control theorem yields integrability of finite-horizon actionValue on history fibers. New result is a pointwise Bellman inequality for the explicit analytic value of a finite register source; integrability neither states nor supplies that inequality."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterProgramOptimality.compiled_attains_value",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterProgramOptimality.lean",
+      "source_sha256": "4c7cedcf6d0068c0b79dfee98879b92329f33dc0089ae8bfd4711f0629bd12c3",
+      "elaborated_type_sha256": "571bc23f1e87590096fe7c30339a55aa47b04b0c8263001692243f0a0ce071dc",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterProgramOptimality.value_eq_optimal",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterProgramOptimality.lean",
+      "source_sha256": "4c7cedcf6d0068c0b79dfee98879b92329f33dc0089ae8bfd4711f0629bd12c3",
+      "elaborated_type_sha256": "dee1d29721300e885d3fb0aa87d8d217c759017beb23e03c1f947754179c4a20",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.FiniteDiscountedControl.greedy_infiniteValue_eq_optimal",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedGreedy.lean",
+          "elaborated_type_sha256": "bc84d9623748ac5b18047aa6f125fb1b958079867d0d0376ebf9b94df9e3db61",
+          "judgment": "NOT_A_REPLACEMENT: candidate theorem concerns a greedy/selector infiniteValue equality, a compact-Feller optimal fixed point, or exact quotient transport. New result identifies the explicit closed-form source value with finite Model.optimalValue. The implementation reuses finite Model.fixedPoint_unique after proving both Bellman inequalities for this literal value; no desired greedy specification or quotient certificate is assumed."
+        },
+        {
+          "symbol": "UEOT.V3.FiniteDiscountedControl.selector_infiniteValue_eq_optimal",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedSelector.lean",
+          "elaborated_type_sha256": "5f8d0302a30ef5308ae54e6579b2a258bd96807d610eef6a92a0e4a2092c2819",
+          "judgment": "NOT_A_REPLACEMENT: candidate theorem concerns a greedy/selector infiniteValue equality, a compact-Feller optimal fixed point, or exact quotient transport. New result identifies the explicit closed-form source value with finite Model.optimalValue. The implementation reuses finite Model.fixedPoint_unique after proving both Bellman inequalities for this literal value; no desired greedy specification or quotient certificate is assumed."
+        },
+        {
+          "symbol": "UEOT.V3.CompactFellerControl.Model.optimalValue_fixed",
+          "path": "formalization/ueot-core/UEOT/V3/CompactFellerControl.lean",
+          "elaborated_type_sha256": "34cf22493f46fd1dfca77d2303b537ca4772d6a0a4146b9ad528d4c3a5f4c332",
+          "judgment": "NOT_A_REPLACEMENT: candidate theorem concerns a greedy/selector infiniteValue equality, a compact-Feller optimal fixed point, or exact quotient transport. New result identifies the explicit closed-form source value with finite Model.optimalValue. The implementation reuses finite Model.fixedPoint_unique after proving both Bellman inequalities for this literal value; no desired greedy specification or quotient certificate is assumed."
+        },
+        {
+          "symbol": "UEOT.V3.FiniteDiscountedControl.ExactControlQuotient.liftSelector_infiniteValue_eq_optimal",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedExactQuotient.lean",
+          "elaborated_type_sha256": "bcab47d2a8ce90aa40e9cfb3836b6ef22d070f869039e0c23fb7c8a01de95811",
+          "judgment": "NOT_A_REPLACEMENT: candidate theorem concerns a greedy/selector infiniteValue equality, a compact-Feller optimal fixed point, or exact quotient transport. New result identifies the explicit closed-form source value with finite Model.optimalValue. The implementation reuses finite Model.fixedPoint_unique after proving both Bellman inequalities for this literal value; no desired greedy specification or quotient certificate is assumed."
+        },
+        {
+          "symbol": "UEOT.V3.FiniteDiscountedControl.ExactControlQuotient.optimalValue_apply",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedExactQuotient.lean",
+          "elaborated_type_sha256": "6d010e36e0960e6d64bbd3fa252a27d4becf98f1e70efcb63f220c55536ef077",
+          "judgment": "NOT_A_REPLACEMENT: candidate theorem concerns a greedy/selector infiniteValue equality, a compact-Feller optimal fixed point, or exact quotient transport. New result identifies the explicit closed-form source value with finite Model.optimalValue. The implementation reuses finite Model.fixedPoint_unique after proving both Bellman inequalities for this literal value; no desired greedy specification or quotient certificate is assumed."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterProgramOptimality.compiled_optimal_against_all_causal",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterProgramOptimality.lean",
+      "source_sha256": "4c7cedcf6d0068c0b79dfee98879b92329f33dc0089ae8bfd4711f0629bd12c3",
+      "elaborated_type_sha256": "314ef3e8fd6fbf371ccce0144d4ba6b54c97a9d167c08e400c0aeaf7999f660d",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.CompactCausalOptimalityCore.Model.GreedyCertificate.optimal_against_all_causal",
+          "path": "formalization/ueot-core/UEOT/V3/CompactCausalOptimalityCore.lean",
+          "elaborated_type_sha256": "cbd201f84c0e23306556e788ccb3a31b4febe7bf0b830570912e03b971b7951f",
+          "judgment": "NOT_NEEDED: compact measurable/history-fiber certificate or exact-quotient lifting endpoint has additional model/certificate types absent here. The original finite selector_optimal_against_all_causal already supplies the required all-causal conclusion without constructing a replacement controller or extra quotient."
+        },
+        {
+          "symbol": "UEOT.V3.FiniteDiscountedControl.selector_optimal_against_all_causal",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedSelector.lean",
+          "elaborated_type_sha256": "bd533ed690f1ce72573b95e2b0fa986b483ad9322849112d913df6eb6a1b3bd5",
+          "judgment": "REUSED_DIRECTLY: exact finite Model and supplied selector signature match. Source code applies this original endpoint to substrate.execute goal, proves its hσ from the analytic source Bellman equality and fixed-point identification, and returns that SAME selector plus domination over every original causal-memory policy."
+        },
+        {
+          "symbol": "UEOT.V3.CompactCausalOptimalityCore.Model.GreedyCertificate.optimal_against_all_causal_from_state",
+          "path": "formalization/ueot-core/UEOT/V3/CompactCausalOptimalityCore.lean",
+          "elaborated_type_sha256": "c2f66ca864e4c3c1fb0664364c68bd02b8c8f938413ed7570c13d48e410925a8",
+          "judgment": "NOT_NEEDED: compact measurable/history-fiber certificate or exact-quotient lifting endpoint has additional model/certificate types absent here. The original finite selector_optimal_against_all_causal already supplies the required all-causal conclusion without constructing a replacement controller or extra quotient."
+        },
+        {
+          "symbol": "UEOT.V3.FiniteDiscountedControl.ExactControlQuotient.liftSelector_optimal_against_all_causal",
+          "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedExactQuotient.lean",
+          "elaborated_type_sha256": "ddd48ced7315fc0a0c4072d560c0f4e34772f05a88d756ec732ee19549cdf388",
+          "judgment": "NOT_NEEDED: compact measurable/history-fiber certificate or exact-quotient lifting endpoint has additional model/certificate types absent here. The original finite selector_optimal_against_all_causal already supplies the required all-causal conclusion without constructing a replacement controller or extra quotient."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterResourceSource.actualCost_eq",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterResourceSource.lean",
+      "source_sha256": "ffa4d02b21e46b940d8709802f4873661301d7eac35375491ba1837713b14e4c",
+      "elaborated_type_sha256": "b664e2769a72962cf6b87b4b19e3ff92913cb8986db025d2850c9acff36eb4b0",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataConditioned.target_eq_actual",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteDataConditioned.lean",
+          "elaborated_type_sha256": "9ae8db64c65ffa0e22de60ea8492123ec325fa399a991d77401be44b5c0d4c79",
+          "judgment": "NOT_TYPE_COMPATIBLE: candidate is a finite conditioned path target identity or a fixed statistical failure number. New result is literal rebinding/execution write-tariff equality for a RepairOrganizationState. It is a direct evaluation of already defined canonicalizeRepairOrganization, execute_compiled and cost, unrelated to conditioned risks."
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskBoundary.actualFailure_eq",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskBoundary.lean",
+          "elaborated_type_sha256": "aa53144af93bd9e7588ed7d1657f86a450c59448f4c5e07fea9146993d03db4c",
+          "judgment": "NOT_TYPE_COMPATIBLE: candidate is a finite conditioned path target identity or a fixed statistical failure number. New result is literal rebinding/execution write-tariff equality for a RepairOrganizationState. It is a direct evaluation of already defined canonicalizeRepairOrganization, execute_compiled and cost, unrelated to conditioned risks."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterResourceSource.actionCost_bounds",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterResourceSource.lean",
+      "source_sha256": "ffa4d02b21e46b940d8709802f4873661301d7eac35375491ba1837713b14e4c",
+      "elaborated_type_sha256": "486734cc31ffda966588d26c504aa567e83f5d3358dd4e1b0f5a3509bde7fe76",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterResourceSource.actualCost_bounds",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterResourceSource.lean",
+      "source_sha256": "ffa4d02b21e46b940d8709802f4873661301d7eac35375491ba1837713b14e4c",
+      "elaborated_type_sha256": "fbff82537d755cfc5daf59d2ae3b0c4536994f99756e9ad991606638b7381b9f",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterResourceSource.damaged_cost",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterResourceSource.lean",
+      "source_sha256": "ffa4d02b21e46b940d8709802f4873661301d7eac35375491ba1837713b14e4c",
+      "elaborated_type_sha256": "6676587ca8bfadbf126ecd1fda7293c20bac524f6a2faa2bd917edd66f7faaf4",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterResourceSource.actualCost_le_p6",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterResourceSource.lean",
+      "source_sha256": "ffa4d02b21e46b940d8709802f4873661301d7eac35375491ba1837713b14e4c",
+      "elaborated_type_sha256": "d4d298054cee717de7e09f76826e8fde97e6410d84195adc14f770c0ec238c73",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.Objecthood.ResourceClosure.ResourceCostModel.cumulativeActualCost_le_envelope",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/Objecthood/ResourceClosure/FiniteReserve.lean",
+          "elaborated_type_sha256": "2e65bc2d865435dbac08e1e9db8fcfc538eada83009a156ec8405be27ae5c549",
+          "judgment": "NOT_A_REPLACEMENT: old theorem sums an ALREADY GIVEN per-step expected-cost bound. New result proves a pointwise actual runtime cost is at most the existing stateResourceCost on each organization state. Using the cumulative theorem would still require this source bound. Actual pathwise affordability separately reuses resourceViable_of_pointwise_cost_le_replenish with the literal paid schedule."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterResourceSource.actualCost_on_carrier",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterResourceSource.lean",
+      "source_sha256": "ffa4d02b21e46b940d8709802f4873661301d7eac35375491ba1837713b14e4c",
+      "elaborated_type_sha256": "3c539d88747447d71099388b846bac1f7b7c2b539b70e84a24d01f2662215898",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterResourceSource.realizedStepCost_bounds",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterResourceSource.lean",
+      "source_sha256": "ffa4d02b21e46b940d8709802f4873661301d7eac35375491ba1837713b14e4c",
+      "elaborated_type_sha256": "c0e913bd9b940a89b4f74b41a4838592a1889c014564f4638b8a9137c7186192",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterResourceSource.actual_trace_resource_viable",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterResourceSource.lean",
+      "source_sha256": "ffa4d02b21e46b940d8709802f4873661301d7eac35375491ba1837713b14e4c",
+      "elaborated_type_sha256": "2d1c1fdeb83239e31d10a16bfad666ea47082bcfbe9f82f2c164472f88bc0e09",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterResourceSource.action_schedule_resource_viable",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterResourceSource.lean",
+      "source_sha256": "ffa4d02b21e46b940d8709802f4873661301d7eac35375491ba1837713b14e4c",
+      "elaborated_type_sha256": "169742abb575daa79688ee86bb03fe18da10ddf7d4f3d30efc8612c4c5550e23",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterResourceSource.actual_balance_step",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterResourceSource.lean",
+      "source_sha256": "ffa4d02b21e46b940d8709802f4873661301d7eac35375491ba1837713b14e4c",
+      "elaborated_type_sha256": "6e3934bfc4a5d9f6348f46da981706dd99864bde54fc0cbb36c8dc8cf6379cda",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterResourceSource.nontrivial_cost_instance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterResourceSource.lean",
+      "source_sha256": "ffa4d02b21e46b940d8709802f4873661301d7eac35375491ba1837713b14e4c",
+      "elaborated_type_sha256": "080daf5467f3f2567170b93406a1691a52da35a2c14d70927a12ec85f9b47057",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "No lexical hit was supplied. Read in its actual source/dataflow; source-specific execution/record/finite-sum/consumer adapter, using existing primitive and original endpoint interfaces. No alternate conclusion or new framework is needed."
+    }
+  ],
+  "key_dataflow_audit": [
+    "Fault-free RegisterJointRecord and noisy RegisterFaultJointRecord have genuinely different tape, parent-step, payment and transition laws. The noisy integral identity is proved anew by source-mode recursion and then identifies the SAME supplied policy value. Record/payoff/child primitives are shared; the old fault-free expectation theorem is not used as an unsupported noisy law identity.",
+    "Both literal-program optimality modules directly consume original finite selector_optimal_against_all_causal. The source-specific mathematical work is Bellman domination, equality for exactly substrate.execute goal, and Model.fixedPoint_unique, with price*writeCost<=1. Old choice-based greedy existence is not substituted for the supplied compiled program.",
+    "P6 accounting uses the same literal tariff as the source reward. action_schedule_resource_viable directly consumes resourceViable_of_pointwise_cost_le_replenish for arbitrary actual action/mode words; actual_record_resource_viable proves recorded paid readout equals that schedule before reuse. No expected-cost envelope is mistaken for a realized pathwise reserve statement.",
+    "Original C6 consumer is actually called. Fault-free record purpose first reuses original objective identification after proved integral transport. Unknown-hazard purpose derives its own observation injectivity from actual birth/paid means and then constructs the original MechanismTeleologicalFaithfulness, rather than importing fault-free hfaith for a different type.",
+    "Literal child->P5 uses real successful recordStep evidence and source-derived inherited program/physical target, not caller-supplied seed validity. actual_mode_birth_enters_maintenance extracts actual repair mode and passes the SAME child into that existing source consumer.",
+    "Public root adds only RegisterFaultPurposeInformation and RegisterProgramOptimality imports; all other new modules are reachable transitively and preexisting imports remain."
+  ],
+  "boundaries_preserved": [
+    "Finite parameterized reliable-register/protected-code source, declared stable independent mode/label laws and action/readout permissions remain model contracts.",
+    "Exact experiment means and epsilon<1 identify source parameters; no finite-sample estimator or executable inverse is established by this package.",
+    "Cost units are controlled writes only, with zero idle/fault-execution charge and no extra environment, copying or rebinding charge. Supply>=writeCost and initial>=0 are independent design conditions.",
+    "Finite record expectations tending to discounted optimum are not an infinite complete-record probability law; zero padding after finite horizon is explicit.",
+    "Actual successful-child maintenance is conditional one-generation carrier entry. Parent history/Bool addresses do not establish globally unique concurrent child IDs or infinite reproduction.",
+    "Total hazard makes probe means and registered objective vanish; no no-go for the all-indifferent purpose class or everlasting target health is inferred.",
+    "Books, general C1/UMC/P11 obligations and whole-theory closure remain open; this review authorizes no theorem-count promotion or scope reduction."
+  ],
+  "verification": {
+    "kernel_type_check": {
+      "command": "lake env lean /tmp/ueot-register-typed-reuse-check.lean",
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core",
+      "exit_code": 0,
+      "source": {
+        "path": "/tmp/ueot-register-typed-reuse-check.lean",
+        "sha256": "48f3e4f656d20807b03da7073ae8439af42b0ce0c920ef3d23c665f0d8965c04"
+      },
+      "log": {
+        "path": "/tmp/ueot-register-typed-reuse-check.log",
+        "sha256": "e30f1d573b03f18fe1a51172640fd5aa187eda1bdeca08701035dec7c90a58e3"
+      },
+      "all_new_and_hit_symbols_elaborated": true
+    },
+    "preflight": {
+      "path": "/tmp/ueot-register-reuse.json",
+      "sha256": "edb3b1447c400fe3f3bc7bc0887a17ddd8d9ff307c4c87fafcf6161859516e86"
+    },
+    "source_validation": {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/register_fault_resources_v1/checks/SOURCE_VALIDATION.json",
+      "sha256": "e2244fb8ea33bb90cdf6a8836f7f3e1038ae15418d8a0b80e883078dff1f854c",
+      "all_source_and_log_hashes_matched": true
+    },
+    "candidate_blobs_match_worktree": true,
+    "public_build_and_axiom_receipts_reused_by_source_identity": true,
+    "no_sampling_or_historical_full_build_rerun": true
+  },
+  "mutation_scope": "Only this exclusive independent JSON and external review checker/logs; no source, exports, Git, GI or configuration changes.",
+  "documentary_precision_finding": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/register_fault_resources_v1/RESULTS_AND_OPEN_OBLIGATIONS.md",
+    "candidate_56c1_wording": "payment1/2",
+    "status": "ROOT_IDENTIFIED_AND_INDEPENDENTLY_CONFIRMED_CORRECTION_REQUIRED_BEFORE_PR",
+    "correct_source_reading": "The registered repair-then-fault tape has mass3/64. Its first literal controlled-write expenditure is1, priced charge is1/2 at price1/2, and discountedPayoff is1/2 (one birth minus priced charge, then zero fault payoff). positive_fault_transaction_witness proves the net discounted payoff, not literal payment1/2.",
+    "scope": "Documentary-only wording correction. No Lean type/source hash changes. Root owns the correction and its subsequent commit; review remains bound to56c1 Lean blobs."
+  }
+}
