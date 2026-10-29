@@ -1,6 +1,6 @@
 # Whole-theory source bridge checkpoint
 
-Overall goal: **OPEN / NOT_ESTABLISHED**. Original Core scope, P0–P12, C1–C7, UMC and both books remain in scope. This checkpoint does not supersede their contracts or old immutable matrices. Original baseline main: ccc42a3c4b7b4817c24275235e85cdda73c2a295. The first source bridges are integrated by PR392 at main 0d4f2128547aa3b9545d881ff3ae0c851ecc2eeb; the following fault/resource delta continues from that actual main.
+Overall goal: **OPEN / NOT_ESTABLISHED**. Original Core scope, P0–P12, C1–C7, UMC and both books remain in scope. This checkpoint does not supersede their contracts or old immutable matrices. Baseline main: ccc42a3c4b7b4817c24275235e85cdda73c2a295.
 
 ## Source results and actual consumers
 
@@ -13,8 +13,8 @@ Overall goal: **OPEN / NOT_ESTABLISHED**. Original Core scope, P0–P12, C1–C7
 
 ## Unresolved mandatory continuations
 
-1. **Finite source delta resolved:** actual mode/action/label/parent/child/paid-cost record PMFs now have integrable discounted payoff equal to the SAME supplied causal policy value in the SAME fault source. The actual compiled policy is optimal for price*writeCost≤1. A probability law of infinite complete records and its value integral still require construction; convergence of finite-record expectations alone is not that construction.
-2. **Finite fault/resource delta resolved:** protected-program damage supplies the P5 fault envelope; the same physical row is proved for control. Literal actual paid actions feed P6 with nonnegative reserve and supply≥writeCost. An actual successful child is the literal same-hazard P5 seed. Unknown hazard<1, goal and cost are identified by actual probe means and feed original C6 faithfulness. Supply generation, program acquisition, global unique births, and infinite actual resource/reproduction claims remain open; history permissions and evaluation remain declared inputs where legitimate. See [precise delta and limitations](../register_fault_resources_v1/RESULTS_AND_OPEN_OBLIGATIONS.md).
+1. Actual multitime parent/birth/cost records and expectation of the registered discounted sum must be connected to the same causal-policy value. The current outcome function provides one-stage source means and the control model recursion; it does not yet supply that joint recorded-history law.
+2. Construct nontrivial P5 fault envelopes and same-source resource supply/stock/cost, then consume P6/P12. Do not treat their remaining certificates as internally solved. Program acquisition, history permissions and evaluation remain declared inputs where legitimate.
 3. C1 complete finite controlled paths, general minimal predictive image, general source/sensor classes and any claimed infinite-path result remain open beyond the exact stated source classes.
 4. P11 actual continuous-process certificates remain mandatory. Independent Brownian/OU quadratic Dynkin source experiments exist outside the public Lean tree but require adoption, root review and integration. General ItoRun/Girsanov and Brownian realization obligations remain open.
 5. Correlated/adaptive calibration/discovery, formation/scale transport, remaining C5/C6 identification and joint theory assembly remain open according to the original mission. No original difficult claim was removed.
