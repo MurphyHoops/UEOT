@@ -23,8 +23,16 @@ No system font installation or administrator privileges are required for the Not
 fonts. A local TeX package tree can be supplied with `--texmf /absolute/texmf/directory`.
 
 Pandoc regenerates the committed LaTeX from Markdown; XeLaTeX runs three passes
-for the table of contents and internal references. The LaTeX is also independently
-compilable when the named Noto fonts and standard packages are installed. The
+for the table of contents and internal references. Auxiliary files are isolated
+by generated-TeX hash, preserving old diagnostics without importing stale locale
+macros after an input change. The LaTeX is also independently
+compilable when the named font files and standard packages are in the TeX/font search path.
+The builder uses explicit font filenames and sets a process-local `OPENTYPEFONTS`
+path, so native macOS XeTeX does not require system font registration; DejaVu
+files must also be discoverable, for example from the TeX `dejavu` package.
+Chinese layout uses xeCJK; the builder suppresses Babel locale import (while
+retaining document language metadata), avoiding its chapter-macro rescan on
+TeX Live 2026. The
 source-date epoch is fixed for reproducible metadata; binary equality across
 different TeX distributions is not claimed.
 

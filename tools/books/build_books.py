@@ -75,6 +75,8 @@ def font_environment(font_dir: Path, download: bool) -> dict[str, str]:
                       f'<cachedir>{escape(str(CACHE / "fontconfig"))}</cachedir>'
                       '</fontconfig>\n')
     env["FONTCONFIG_FILE"] = str(config)
+    # Native macOS XeTeX also resolves bare font filenames through kpathsea.
+    env["OPENTYPEFONTS"] = str(font_dir.resolve()) + "//:" + env.get("OPENTYPEFONTS", "")
     return env
 
 
@@ -94,16 +96,24 @@ def build(book: str, env: dict[str, str]) -> dict:
                "--lua-filter=tools/books/print.lua", "--include-in-header=tools/books/preamble.tex",
                "--variable=documentclass:book", "--variable=classoption:oneside",
                "--variable=fontsize:11pt", "--variable=geometry:" + geometry,
-               "--variable=mainfont:DejaVu Serif",
-               "--variable=monofont:DejaVu Sans Mono",
-               "--variable=CJKmainfont:Noto Serif CJK SC",
+               "--variable=mainfont:DejaVuSerif.ttf",
+               "--variable=mainfontoptions:BoldFont=DejaVuSerif-Bold.ttf,ItalicFont=DejaVuSerif-Italic.ttf,BoldItalicFont=DejaVuSerif-BoldItalic.ttf",
+               "--variable=monofont:DejaVuSansMono.ttf",
+               "--variable=monofontoptions:BoldFont=DejaVuSansMono-Bold.ttf,ItalicFont=DejaVuSansMono-Oblique.ttf,BoldItalicFont=DejaVuSansMono-BoldOblique.ttf",
+               "--variable=CJKmainfont:NotoSerifCJKsc-Regular.otf",
+               "--variable=CJKoptions:BoldFont=NotoSerifCJKsc-Bold.otf",
                "--variable=CJKoptions:AutoFakeSlant=0.15",
+               # xeCJK handles Chinese; avoid Babel locale rescanning chapter macros.
+               "--variable=babel-lang:",
                "--variable=colorlinks:true", "--variable=linkcolor:MidnightBlue",
                "--variable=urlcolor:MidnightBlue", "--variable=toccolor:MidnightBlue",
                "--metadata=running-title:" + running_title,
                "--metadata=ueot-book:" + book,
                "--output=" + str(tex.relative_to(REPO))]
     run(command, env, work / "pandoc.log")
+    # Keep auxiliary language/macros from a different TeX input out of this build.
+    work = work / sha(tex)[:16]
+    work.mkdir(parents=True, exist_ok=True)
     for attempt in range(1, 4):
         run(["xelatex", "-interaction=nonstopmode", "-halt-on-error", "-file-line-error",
              "-output-directory=" + str(work), str(tex.relative_to(REPO))],
