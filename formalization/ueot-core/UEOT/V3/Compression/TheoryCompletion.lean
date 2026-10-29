@@ -225,6 +225,12 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianQuadraticVari
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralSquareL1
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralCompensator
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterPopulationTypePrice
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianBoundedContinuousQV
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFullInputQV
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPartitionQV
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorSimplePredictableIntegral
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFundedProbe
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterPopulationJournalLearning
 /-!
 # UEOT Theory Completion public root
 
