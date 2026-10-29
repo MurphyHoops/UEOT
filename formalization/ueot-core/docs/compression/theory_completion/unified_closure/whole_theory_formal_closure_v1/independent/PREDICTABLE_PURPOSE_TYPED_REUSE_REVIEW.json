@@ -1,0 +1,1371 @@
+{
+  "schema": "ueot.mandatory-typed-reuse-review.v1",
+  "verdict": "PASS_NO_TYPED_REUSE_OR_PUBLIC_CONSUMER_BLOCKER",
+  "created_utc": "2026-10-29T18:53:37.541321+00:00",
+  "candidate_sha": "91f4690407d06541a0b0d346e9da212a16d02f47",
+  "base_sha": "8f68fa17ab7aa19d394f8a5fa78290eadd7647eb",
+  "gate": {
+    "path": "/tmp/ueot-predictable-purpose-reuse.json",
+    "sha256": "aa4b1981fce528a17b64c50a1155264769e37976a7631b370d927fa9d90153b3",
+    "status": "PASS_WITH_TYPED_REUSE_REVIEW_REQUIRED",
+    "role": "Mandatory lexical discovery only, not kernel type or proof equivalence."
+  },
+  "reviewer": {
+    "agent": "/root/c1_joint_review",
+    "independence": "Did not author any of these four source modules. Full independent source reviews are exact-identity reused below. Earlier unrelated C1 latent/response authorship is outside this candidate."
+  },
+  "source_scope": "Only final corrected Inputs, Density, frozen Probe, Infinite thin common consumer and two public root imports. Time cutoff/conditional/literal-interval/resource WIP excluded.",
+  "changed_lean_paths": [
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableDensity.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableInputs.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeInfinite.lean",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean"
+  ],
+  "candidate_bound_file_blobs": {
+    "formalization/ueot-core/UEOT/V3/CompactArgmaxSelector.lean": {
+      "sha256": "6721730c64e4fb003167a54a640c15ed4f79557b55a3779915709e4f6a5ce550",
+      "git_blob": "db82f08d3838067356316645c0e1a4b21edf178f"
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean": {
+      "sha256": "e171c426150abdaaeb6c7f3bc6c508813c20e8e7c010a7a52115bfdf7187ddbe",
+      "git_blob": "f869c8825702ef7bf6d17735bc4282481fe62c2d"
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/CalibratedDefectComparison.lean": {
+      "sha256": "fc2c8d56c0d349d1f2a578677745cb5f48e32612c579f5fe320cceff6e4c0ed5",
+      "git_blob": "cfa31dbb53affbba1b3110f9e0707e95eb6fbf20"
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/AbsorbingLeakage.lean": {
+      "sha256": "31212ec53f321e485ce6e5738b04b9dfcef523c1f8118140d05b753286cf2dc5",
+      "git_blob": "b4a3b389739d7a4aa606f3b6880969861ac314e0"
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianCommonRefinement.lean": {
+      "sha256": "5cd41cd71310797092a1df7f31ce82ef0ac251efb372d8cc37e5477b5af3e60b",
+      "git_blob": "53854503911b1457f4b71f758fd053a39da9229c"
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralClosure.lean": {
+      "sha256": "c9967cc526519101a6737254c7f9c323c3698d589332f3f7d499285cbcf0b41f",
+      "git_blob": "856b7e142fa02cb691bd8f3b7e518bfe146359cc"
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableDensity.lean": {
+      "sha256": "e1e90471b7ce3514d365eb53f666d40b8466e6373159feacc4a3f8f123e23aee",
+      "git_blob": "aeaf7343de987d9c4ca7cd0075b1a5219e6b4f86"
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableInputs.lean": {
+      "sha256": "cfce88106ce5c1bd871fb898ddd098eeeb4c404c13f5455535b825a0c080ac68",
+      "git_blob": "78b5562bae2ed56d83bbf392861e4da821703e2a"
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianTimeIntegrand.lean": {
+      "sha256": "f3b6437b82d664b54f90a1a3f5cd6c77ef05c07b63b9b3dca533de54f4f007c3",
+      "git_blob": "ab6fd2a948d173043ed9bfb4950b1eb1b8dc99df"
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FixedSampleSupportNoGo.lean": {
+      "sha256": "2e86d0bb68795296e5b6ecde3cce625d0cc4e36a61bcfbba1f14183d07d4a252",
+      "git_blob": "ac5854aaf61434945240b9c96d21d1b1ea48a88c"
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveHistoryControl.lean": {
+      "sha256": "07a84881744a7c42919130e995c866c69f65d4f906c7a21270c8fe068ae7a32c",
+      "git_blob": "cf2a777c25e6e284c375e941ec38b975d9772994"
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSource.lean": {
+      "sha256": "d2b0eb37c97e8e1c417aea49e705d1b782f32b0eaea3772acecc349849fd1f36",
+      "git_blob": "3edf500c6ec0765f505cf8678a8cfdd28e1a16f2"
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean": {
+      "sha256": "8ea9470fbc1fcb7067581a02247e7eaf88dbc6e57b4c86e7e621470453ac52a7",
+      "git_blob": "f75c49dc3833447581c7c1ed2937b244fcfd5382"
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultControlModel.lean": {
+      "sha256": "c20cceafe6208878d3e7824c0ba2b57f8b7ca90690f6cb7e6e02fe3ee471d1ee",
+      "git_blob": "20bb223a82b7b68bb7a3ded30bd45b8162c1a17d"
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeInfinite.lean": {
+      "sha256": "993ba1e935e8bafd3b674a2196937d182db507b3cbbad021b19f0cb990198046",
+      "git_blob": "83d4e5b693bca3aae7574ba11b8689d22c4648bc"
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean": {
+      "sha256": "74ea8da20d8ec7b0b529f85fe0ebb77c5eafca0dfc89b98e66f6d0063be4dff4",
+      "git_blob": "cb7c1c929e00c04f99f5eda21e49c226d2d988ba"
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultInfiniteRecord.lean": {
+      "sha256": "89749be05f2e4229e78ede7c1e4032c0c2fc9245a9aa435c88594f4441087024",
+      "git_blob": "29116a09e916b7171bc363aad4b431bba2992dd8"
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultPurposeInformation.lean": {
+      "sha256": "fd469724190edbe91334751f45b1a61f187a1e17ef34dd441b4cb48df21103b1",
+      "git_blob": "8f107de9a2247bc4004889ee88a3f1ef51c73354"
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointRecord.lean": {
+      "sha256": "54c85da08919b7639a34cb8f1d3f39e07936212da1eafaab709133e9972f8329",
+      "git_blob": "48f3c60df36e4f45ef465f1f5472233aa4883d97"
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterProgramOptimality.lean": {
+      "sha256": "4c7cedcf6d0068c0b79dfee98879b92329f33dc0089ae8bfd4711f0629bd12c3",
+      "git_blob": "7a80e921076ff78544c2070f2973945fe114baec"
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RowwiseProbeSampling.lean": {
+      "sha256": "24f389bd6fe31c8c62758edf38e1badc3e3148851bac0b9d23d3ee54bd002c26",
+      "git_blob": "5f30e31cd82b709f1aedc1c0448c5ccd862ab02b"
+    },
+    "formalization/ueot-core/UEOT/V3/GeneralBayesPosterior.lean": {
+      "sha256": "5b5cd1fcb88048caafbbd5d6d1d24f9f3f1e8cf6ce4027ccd775768ae6afafbd",
+      "git_blob": "ab008fa7af09dd1ac0a91a6486647c9099217db6"
+    },
+    "formalization/ueot-core/UEOT/V3/HilbertMeanPrefixFiltration.lean": {
+      "sha256": "920b2a1b7942198e736956d25e16577449813a1cfe62822b1e1b202d204d05bf",
+      "git_blob": "0ba1640617eec9852cd1807a1150f23667dbe7f8"
+    },
+    "formalization/ueot-core/UEOT/V3/HilbertMeanSubGaussianLawTransfer.lean": {
+      "sha256": "78e491f7388b94da3691d052d58789974bc63715072ee693fac1b926a7c4df6a",
+      "git_blob": "9ff79ae700ec1314b2bd9a6b88e515c15f7f8f3b"
+    },
+    "formalization/ueot-core/UEOT/V3/InformationFin2KL.lean": {
+      "sha256": "61f9d20a1ecfb1a96cfcf71f2d4e435b4a2e422978b0f133c6ea148553aa4dff",
+      "git_blob": "ae0cf190e08b6759c986df68f4ad51187023abf9"
+    },
+    "formalization/ueot-core/UEOT/V3/PathKLChain.lean": {
+      "sha256": "780b01fdfdda32f9d8dfe1633ba8877e6da312c817eb7a97f0da8eeac294371d",
+      "git_blob": "a029c72b3096f2f8c8332175b832c9cfc5bd852d"
+    }
+  },
+  "source_reviews": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/whole_theory_formal_closure_v1/independent/BROWNIAN_PREDICTABLE_INPUTS_SOURCE_REVIEW.json",
+      "sha256": "64fa040199c3ba8deaa0ef48a55411589b6b6635043f0ae7e3922f7bb8b6023d",
+      "reuse_basis": "Exact unchanged source content in candidate; actual source/axiom/consumer check identities preserved."
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/whole_theory_formal_closure_v1/independent/BROWNIAN_PREDICTABLE_DENSITY_SOURCE_REVIEW.json",
+      "sha256": "68a497ce92c8f871e5c6f121c1dfdb95444f44f0f917bef9d3dfe2c657976096",
+      "reuse_basis": "Exact unchanged source content in candidate; actual source/axiom/consumer check identities preserved."
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/whole_theory_formal_closure_v1/independent/REGISTER_FINITE_PURPOSE_SOURCE_REVIEW.json",
+      "sha256": "fed2b59e805e116a3f7140c74cae5170afdc69d79f1d0a48de68ac9d1e21fe55",
+      "reuse_basis": "Exact unchanged source content in candidate; actual source/axiom/consumer check identities preserved."
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/whole_theory_formal_closure_v1/independent/REGISTER_FINITE_PURPOSE_INFINITE_SOURCE_REVIEW.json",
+      "sha256": "52cedf243e1bcbfff405f9fef4e4b8b214517111e416d25a37144bc41f914036",
+      "reuse_basis": "Exact unchanged source content in candidate; actual source/axiom/consumer check identities preserved."
+    }
+  ],
+  "public_root": {
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
+    "sha256": "e171c426150abdaaeb6c7f3bc6c508813c20e8e7c010a7a52115bfdf7187ddbe",
+    "added_imports": [
+      "import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity",
+      "import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeInfinite"
+    ],
+    "removed_imports": [],
+    "result": "Exactly two new transitive imports. All new declarations and actual combined consumers are elaborated with ONLY import UEOT."
+  },
+  "new_public_theorem_reviews": [
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity.predictable_indicator_mem_domain",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableDensity.lean",
+      "line": 142,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity.fullPredictableL2_le_integralDomain",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableDensity.lean",
+      "line": 173,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity.integralDomain_eq_fullPredictableL2",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableDensity.lean",
+      "line": 186,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity.predictableIntegral_norm",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableDensity.lean",
+      "line": 199,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralClosure.integral_norm",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralClosure.elementaryIntegral_norm"
+      ],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity.predictableIntegral_returns_literal",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableDensity.lean",
+      "line": 213,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralClosure.integral_returns_literal"
+      ],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity.predictableIntegral_unit_energy",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableDensity.lean",
+      "line": 221,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralClosure.integral_unit_energy"
+      ],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.predictableSigma_le",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableInputs.lean",
+      "line": 32,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [
+        "UEOT.V3.HilbertMeanPrefixFiltration.prefixSigma_le"
+      ],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.fullPredictableL2_closed",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableInputs.lean",
+      "line": 42,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.predictable_interval_rectangle",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableInputs.lean",
+      "line": 50,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.intervalIntegrand_predictable",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableInputs.lean",
+      "line": 64,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianCommonRefinement.intervalIntegrand_refine",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianTimeIntegrand.intervalIntegrand_energy"
+      ],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.elementary_input_predictable",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableInputs.lean",
+      "line": 86,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.integralDomain_le_fullPredictableL2",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableInputs.lean",
+      "line": 100,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.blockInput_class",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableInputs.lean",
+      "line": 125,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.time_support_ae",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableInputs.lean",
+      "line": 140,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.indicatorClass_congr_ae",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableInputs.lean",
+      "line": 153,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [
+        "UEOT.V3.HilbertMeanSubGaussianLawTransfer.HasSubgaussianMGF.congr_ae"
+      ],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.interval_rectangle_mem_domain",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableInputs.lean",
+      "line": 167,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.future_rectangle_mem_domain",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableInputs.lean",
+      "line": 194,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.zero_rectangle_class_zero",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableInputs.lean",
+      "line": 226,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.constant_indicator_mem_domain",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableInputs.lean",
+      "line": 238,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.readout_preimage_future",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableInputs.lean",
+      "line": 249,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.readout_preimage_zero",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableInputs.lean",
+      "line": 254,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.inputLaw_zero",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableInputs.lean",
+      "line": 260,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.law_zero",
+        "UEOT.V3.PathKLChain.pathLaw_zero"
+      ],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeInfinite.postProbeParent_trace",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeInfinite.lean",
+      "line": 30,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeInfinite.postProbeParent_program",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeInfinite.lean",
+      "line": 42,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointRecord.record_parent_program"
+      ],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeInfinite.returned_positive_actual_infinite_record",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeInfinite.lean",
+      "line": 65,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultInfiniteRecord.positive_actual_infinite_values"
+      ],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.measurable_feeBin",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 61,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [
+        "UEOT.V3.CompactArgmaxSelector.measurableSet_hit",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveHistoryControl.measurable_nextBelief",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSource.measurable_liftBelief",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.measurable_liftBelief",
+        "UEOT.V3.InformationFin2KL.measurable_realToBit"
+      ],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.recordObservation_eq",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 72,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointRecord.record_payoff_eq",
+        "UEOT.V3.GeneralBayesPosterior.observationLaw_eq"
+      ],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.feeBin_bounds",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 80,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.primitiveLaw_apply",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 92,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.trainingLaw_apply"
+      ],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.registration_length",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 114,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.mem_registration",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 116,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.actual_probe_trace_observations",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 130,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.informative_source",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 144,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.select_repair_sound",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 167,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.select_idle_sound",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 188,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.birth_mean",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 220,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultPurposeInformation.probeBirthMean_eq"
+      ],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.birth_mean_eq_original",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 236,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultPurposeInformation.probeBirthMean_eq"
+      ],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.actual_probe_calibration",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 272,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RowwiseProbeSampling.product_probe_calibration",
+        "UEOT.V3.Compression.TheoryCompletion.MinCore.rescaleCalibration"
+      ],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.unknown_subset_bad",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 320,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.unknown_probability_le",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 337,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.returned_positive_optimal",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 361,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.returned_positive_actual_record_limit",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 384,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.one_step_repair_idle_gap",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 403,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.returned_negative_one_step",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 419,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.returned_negative_actual_objective",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 441,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.error_empty",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 463,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.error_probability_zero",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 475,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.informative_unknown_gap",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 481,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.empty_budget_unknown",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 502,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.total_fault_unknown_ae",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 518,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.total_fault_unknown_probability",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 533,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.allFault_data",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 541,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.allFault_mass",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 546,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.no_complete_zero_error",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 563,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.same_goal_feeBin_data",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 576,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.coarse_cost_alias",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 583,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.no_complete_pair_actual_orders",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 591,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.finite_positive_budget",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 612,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.compiled_own_value",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 632,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultControlModel.compiled_attains_value",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterProgramOptimality.compiled_attains_value"
+      ],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.idle_bad_infinite_zero",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 667,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.one_step_negative_not_infinite_idle_optimal",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 679,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT",
+      "source_semantics": "Exact frozen source identity reuses full independent semantic/axiom review listed below. No-hits is not a novelty or completeness claim.",
+      "individual_hit_symbols": [],
+      "outcome": "NO_REUSE_BLOCKER"
+    }
+  ],
+  "supporting_public_declarations": [
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity.predictableInclusion",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableDensity.lean",
+      "line": 191,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity.predictableIntegral",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableDensity.lean",
+      "line": 196,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity.predictableIntegralIsometry",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableDensity.lean",
+      "line": 205,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity.literalPredictableInput",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableDensity.lean",
+      "line": 210,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.timeReadout",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableInputs.lean",
+      "line": 18,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.predictableSigma",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableInputs.lean",
+      "line": 29,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.fullPredictableL2",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableInputs.lean",
+      "line": 39,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.blockInput",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableInputs.lean",
+      "line": 106,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.indicatorClass",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableInputs.lean",
+      "line": 150,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeInfinite.postProbeParent",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeInfinite.lean",
+      "line": 23,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.Observation",
+      "kind": "abbrev",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 27,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.Coordinate",
+      "kind": "abbrev",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 28,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.Batch",
+      "kind": "abbrev",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 29,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.registration",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 31,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.Verdict",
+      "kind": "inductive",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 34,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.firstBirth",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 41,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.select",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 47,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.feeBin",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 59,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.recordObservation",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 64,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.feature",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 67,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.primitiveLaw",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 89,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.row",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 98,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.rawLaw",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 103,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.rawLaw_isProbability",
+      "kind": "instance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 107,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.sourceData",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 111,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.probeTrace",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 121,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.birthScore",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 208,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.sourceSample",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 242,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.Good",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 268,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.Separated",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 298,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.priceValue",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 346,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.returnedSelector",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 350,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.returnedPolicy",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 355,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.Error",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 457,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.allFault",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "line": 539,
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.Verdict.repair",
+      "kind": "constructor",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.Verdict.idle",
+      "kind": "constructor",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.Verdict.unknown",
+      "kind": "constructor",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "type_check": "ACTUAL_LEAN_ELABORATED_FROM_IMPORT_UEOT"
+    }
+  ],
+  "individual_discovery_hit_reviews": [
+    {
+      "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity.predictableIntegral_norm",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralClosure.integral_norm",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralClosure.lean",
+      "similarity": 0.667,
+      "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+      "type_check": "ACTUAL_LEAN_ELABORATED_PUBLIC_API",
+      "classification": "REUSED_AFTER_PROVED_NATIVE_DOMAIN_IDENTITY",
+      "reason": "Old CLM isometry on actual elementary closure is reused through the proved equality with independently defined native lpMeas predictable L2. New domain identification is essential; old closure norm alone does not assert it.",
+      "fuzzy_equivalence_claim": false
+    },
+    {
+      "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity.predictableIntegral_norm",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralClosure.elementaryIntegral_norm",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralClosure.lean",
+      "similarity": 0.5,
+      "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+      "type_check": "ACTUAL_LEAN_ELABORATED_PUBLIC_API",
+      "classification": "RETAIN_OLD_SPAN_INTERMEDIATE",
+      "reason": "Old endpoint is on finite elementarySpan. New endpoint accepts ALL native predictable L2 inputs after density; finite-span norm is an existing proof foundation, not the full target type.",
+      "fuzzy_equivalence_claim": false
+    },
+    {
+      "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity.predictableIntegral_returns_literal",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralClosure.integral_returns_literal",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralClosure.lean",
+      "similarity": 0.75,
+      "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+      "type_check": "ACTUAL_LEAN_ELABORATED_PUBLIC_API",
+      "classification": "DIRECT_EXISTING_OUTPUT_REUSE",
+      "reason": "New native predictable input is included as the SAME old representedInput, so existing literal-output equality is directly reused. No new arbitrary output or chosen replacement integral.",
+      "fuzzy_equivalence_claim": false
+    },
+    {
+      "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity.predictableIntegral_unit_energy",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralClosure.integral_unit_energy",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralClosure.lean",
+      "similarity": 0.75,
+      "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+      "type_check": "ACTUAL_LEAN_ELABORATED_PUBLIC_API",
+      "classification": "DERIVED_CONCRETE_NATIVE_CONSUMER",
+      "reason": "Same original unit input/output energy, transported through proved native-domain inclusion and literal return. It is a typed consumer, not an independent new Brownian normalization theorem.",
+      "fuzzy_equivalence_claim": false
+    },
+    {
+      "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.predictableSigma_le",
+      "symbol": "UEOT.V3.HilbertMeanPrefixFiltration.prefixSigma_le",
+      "path": "formalization/ueot-core/UEOT/V3/HilbertMeanPrefixFiltration.lean",
+      "similarity": 0.5,
+      "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+      "type_check": "ACTUAL_LEAN_ELABORATED_PUBLIC_API",
+      "classification": "DIFFERENT_MEASURABLE_SUBSPACES",
+      "reason": "Old sigma is a finite-coordinate prefix on a discrete sequence. New sigma is native Filtration.predictable pulled back on real time x original path space. Shared inclusion shape does not supply time rectangles/filtration permission.",
+      "fuzzy_equivalence_claim": false
+    },
+    {
+      "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.intervalIntegrand_predictable",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianCommonRefinement.intervalIntegrand_refine",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianCommonRefinement.lean",
+      "similarity": 0.544,
+      "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+      "type_check": "ACTUAL_LEAN_ELABORATED_PUBLIC_API",
+      "classification": "DIFFERENT_CONCLUSIONS",
+      "reason": "Old result is a pointwise finite refinement/telescope identity for interval functions. New conclusion is measurability under native predictable sigma using start-past permission. Arithmetic refinement alone does not imply it.",
+      "fuzzy_equivalence_claim": false
+    },
+    {
+      "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.intervalIntegrand_predictable",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianTimeIntegrand.intervalIntegrand_energy",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianTimeIntegrand.lean",
+      "similarity": 0.5,
+      "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+      "type_check": "ACTUAL_LEAN_ELABORATED_PUBLIC_API",
+      "classification": "DIFFERENT_CONCLUSIONS",
+      "reason": "Old result computes actual dt x P squared energy; new result proves native predictable measurability. They are separate necessary inputs to L2 integration.",
+      "fuzzy_equivalence_claim": false
+    },
+    {
+      "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.indicatorClass_congr_ae",
+      "symbol": "UEOT.V3.HilbertMeanSubGaussianLawTransfer.HasSubgaussianMGF.congr_ae",
+      "path": "formalization/ueot-core/UEOT/V3/HilbertMeanSubGaussianLawTransfer.lean",
+      "similarity": 0.5,
+      "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+      "type_check": "ACTUAL_LEAN_ELABORATED_PUBLIC_API",
+      "classification": "DIFFERENT_TARGET_PREDICATE",
+      "reason": "Discovered endpoint transports a sub-Gaussian MGF under random-variable AE equality. New endpoint equates native Lp indicator classes; native Lp.ext is the correct reused interface.",
+      "fuzzy_equivalence_claim": false
+    },
+    {
+      "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.inputLaw_zero",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.law_zero",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/AbsorbingLeakage.lean",
+      "similarity": 0.667,
+      "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+      "type_check": "ACTUAL_LEAN_ELABORATED_PUBLIC_API",
+      "classification": "INCOMPATIBLE_MEASURE_BOUNDARY",
+      "reason": "AbsorbingLeakage law at time zero is a probability point mass. New inputLaw 0 is ZERO dt x P measure, since the time horizon is null. Substitution would incorrectly normalize the integrand measure.",
+      "fuzzy_equivalence_claim": false
+    },
+    {
+      "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.inputLaw_zero",
+      "symbol": "UEOT.V3.PathKLChain.pathLaw_zero",
+      "path": "formalization/ueot-core/UEOT/V3/PathKLChain.lean",
+      "similarity": 0.53,
+      "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+      "type_check": "ACTUAL_LEAN_ELABORATED_PUBLIC_API",
+      "classification": "INCOMPATIBLE_MEASURE_BOUNDARY",
+      "reason": "Old trajectory time-zero law is the probability initial prefix pushforward. New time-space input measure at zero horizon is null. These are not the same measure or boundary.",
+      "fuzzy_equivalence_claim": false
+    },
+    {
+      "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeInfinite.postProbeParent_program",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointRecord.record_parent_program",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointRecord.lean",
+      "similarity": 0.48,
+      "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+      "type_check": "ACTUAL_LEAN_ELABORATED_PUBLIC_API",
+      "classification": "ITERATED_SAME_SOURCE_BRIDGE",
+      "reason": "Old endpoint preserves program in one fault-free recordStep. New endpoint is ALL registered probes including faults, using original modeRecordStep.step_program in fold induction; it also binds actual trace endpoint. No duplicate world abstraction.",
+      "fuzzy_equivalence_claim": false
+    },
+    {
+      "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeInfinite.returned_positive_actual_infinite_record",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultInfiniteRecord.positive_actual_infinite_values",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultInfiniteRecord.lean",
+      "similarity": 0.5,
+      "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+      "type_check": "ACTUAL_LEAN_ELABORATED_PUBLIC_API",
+      "classification": "GENERAL_SOURCE_BOUND_COMMON_CONSUMER",
+      "reason": "Old endpoint evaluates displayed fixed parameter word-path examples. New endpoint binds executable finite data to actual post-probe parent and SAME returned policy, ALL actual recordPath prefixes/integrability/value/optimum for arbitrary parameters satisfying certificate. It reuses old generic infinite interfaces, not numeric example substitution.",
+      "fuzzy_equivalence_claim": false
+    },
+    {
+      "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.measurable_feeBin",
+      "symbol": "UEOT.V3.CompactArgmaxSelector.measurableSet_hit",
+      "path": "formalization/ueot-core/UEOT/V3/CompactArgmaxSelector.lean",
+      "similarity": 0.506,
+      "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+      "type_check": "ACTUAL_LEAN_ELABORATED_PUBLIC_API",
+      "classification": "UNRELATED_TYPED_TARGET",
+      "reason": "Compact argmax hit-set measurability does not prove Nat floor of scaled real fee measurable. Native Nat.measurable_floor composition is reused directly.",
+      "fuzzy_equivalence_claim": false
+    },
+    {
+      "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.measurable_feeBin",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveHistoryControl.measurable_nextBelief",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveHistoryControl.lean",
+      "similarity": 0.488,
+      "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+      "type_check": "ACTUAL_LEAN_ELABORATED_PUBLIC_API",
+      "classification": "UNRELATED_TYPED_TARGET",
+      "reason": "Bayes next-belief map of source/sensor kernels differs from deterministic real-fee Nat floor readout. Native floor measurability is the minimal interface.",
+      "fuzzy_equivalence_claim": false
+    },
+    {
+      "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.measurable_feeBin",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSource.measurable_liftBelief",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSource.lean",
+      "similarity": 0.488,
+      "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+      "type_check": "ACTUAL_LEAN_ELABORATED_PUBLIC_API",
+      "classification": "UNRELATED_TYPED_TARGET",
+      "reason": "Probability/belief embedding measurability has different domain and codomain; neither discovered liftBelief supplies fee floor. Native floor composition is direct.",
+      "fuzzy_equivalence_claim": false
+    },
+    {
+      "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.measurable_feeBin",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableBeliefQuotient.measurable_liftBelief",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean",
+      "similarity": 0.488,
+      "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+      "type_check": "ACTUAL_LEAN_ELABORATED_PUBLIC_API",
+      "classification": "UNRELATED_TYPED_TARGET",
+      "reason": "Probability/belief embedding measurability has different domain and codomain; neither discovered liftBelief supplies fee floor. Native floor composition is direct.",
+      "fuzzy_equivalence_claim": false
+    },
+    {
+      "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.measurable_feeBin",
+      "symbol": "UEOT.V3.InformationFin2KL.measurable_realToBit",
+      "path": "formalization/ueot-core/UEOT/V3/InformationFin2KL.lean",
+      "similarity": 0.488,
+      "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+      "type_check": "ACTUAL_LEAN_ELABORATED_PUBLIC_API",
+      "classification": "UNRELATED_TYPED_TARGET",
+      "reason": "Binary real-threshold readout and scaled Nat-floor readout are different measurable functions; use native Nat floor, not a new common readout framework.",
+      "fuzzy_equivalence_claim": false
+    },
+    {
+      "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.recordObservation_eq",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointRecord.record_payoff_eq",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointRecord.lean",
+      "similarity": 0.5,
+      "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+      "type_check": "ACTUAL_LEAN_ELABORATED_PUBLIC_API",
+      "classification": "COMPLEMENTARY_LITERAL_READOUT",
+      "reason": "Old scalar net payoff of an ordinary record is not the joint birth-bit/fee-bin readout under actual modeRecordStep. New proof handles fault/nocharge branch and inherited program. Same original recordStep is reused.",
+      "fuzzy_equivalence_claim": false
+    },
+    {
+      "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.recordObservation_eq",
+      "symbol": "UEOT.V3.GeneralBayesPosterior.observationLaw_eq",
+      "path": "formalization/ueot-core/UEOT/V3/GeneralBayesPosterior.lean",
+      "similarity": 0.5,
+      "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+      "type_check": "ACTUAL_LEAN_ELABORATED_PUBLIC_API",
+      "classification": "UNRELATED_TYPED_TARGET",
+      "reason": "General Bayes observation-law bind equality is unrelated to the literal register transaction erasure. No posterior interface is needed for deterministic fee/birth readout.",
+      "fuzzy_equivalence_claim": false
+    },
+    {
+      "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.primitiveLaw_apply",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FixedSampleSupportNoGo.trainingLaw_apply",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FixedSampleSupportNoGo.lean",
+      "similarity": 0.5,
+      "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+      "type_check": "ACTUAL_LEAN_ELABORATED_PUBLIC_API",
+      "classification": "DIFFERENT_PRODUCT_LEVEL",
+      "reason": "Old fixed-sample law computes an N-fold product of response probabilities. New primitiveLaw is one original mode/label pair through PMF.bind/map. Native finite PMF formulas are sufficient; full raw product uses existing productRowLaw separately.",
+      "fuzzy_equivalence_claim": false
+    },
+    {
+      "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.birth_mean",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultPurposeInformation.probeBirthMean_eq",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultPurposeInformation.lean",
+      "similarity": 0.5,
+      "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+      "type_check": "ACTUAL_LEAN_ELABORATED_PUBLIC_API",
+      "classification": "SAME_SOURCE_FORMULA_BRIDGE",
+      "reason": "New row mean derives original repairChance x goal match from actual restricted mode/label pushforward. Old exact probe mean used a displayed founder and epsilon<1 parameter. New row derivation is state-invariant and permits epsilon=1; birth_mean_eq_original explicitly proves agreement where old parameter interface applies.",
+      "fuzzy_equivalence_claim": false
+    },
+    {
+      "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.birth_mean_eq_original",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultPurposeInformation.probeBirthMean_eq",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultPurposeInformation.lean",
+      "similarity": 0.6,
+      "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+      "type_check": "ACTUAL_LEAN_ELABORATED_PUBLIC_API",
+      "classification": "DIRECT_IDENTITY_MATCH_REUSE",
+      "reason": "The new explicit bridge rewrites new birth_mean and old probeBirthMean_eq to show exact equality; this reuses the old source formula and grants no population mean access to selector.",
+      "fuzzy_equivalence_claim": false
+    },
+    {
+      "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.actual_probe_calibration",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RowwiseProbeSampling.product_probe_calibration",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RowwiseProbeSampling.lean",
+      "similarity": 0.531,
+      "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+      "type_check": "ACTUAL_LEAN_ELABORATED_PUBLIC_API",
+      "classification": "REUSE_EXISTING_REGISTERED_STATISTICAL_CORE",
+      "reason": "Existing product row theorem samples direct observations. New source starts with primitive mode/label product and actual transaction features; proves marginal/independence/measurability then applies existing general coordinate calibration. No new concentration core or false independence assumption.",
+      "fuzzy_equivalence_claim": false
+    },
+    {
+      "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.actual_probe_calibration",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.MinCore.rescaleCalibration",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/MinCore/CalibratedDefectComparison.lean",
+      "similarity": 0.484,
+      "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+      "type_check": "ACTUAL_LEAN_ELABORATED_PUBLIC_API",
+      "classification": "UNRELATED_TYPED_TARGET",
+      "reason": "MinCore theorem rescales a relation-defect presentation. It is not a sampling/calibration probability theorem and cannot replace Hoeffding on actual probe rows.",
+      "fuzzy_equivalence_claim": false
+    },
+    {
+      "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.compiled_own_value",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultControlModel.compiled_attains_value",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultControlModel.lean",
+      "similarity": 0.52,
+      "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+      "type_check": "ACTUAL_LEAN_ELABORATED_PUBLIC_API",
+      "classification": "REUSED_POLICY_EVALUATION_NOT_OPTIMALITY",
+      "reason": "Current noisy-source compiled_attains_value gives policy Bellman equality without price*c<=1. New endpoint consumes it via selector fixed-point uniqueness to obtain SAME policy own infinite value, correctly allowing c=3. Does not invoke optimal-value identification requiring failed sufficient condition.",
+      "fuzzy_equivalence_claim": false
+    },
+    {
+      "new": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe.compiled_own_value",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterProgramOptimality.compiled_attains_value",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterProgramOptimality.lean",
+      "similarity": 0.52,
+      "epistemic_status": "NAME_SIMILARITY_ONLY_KERNEL_TYPE_NOT_CHECKED",
+      "type_check": "ACTUAL_LEAN_ELABORATED_PUBLIC_API",
+      "classification": "DIFFERENT_FAULT_MODEL",
+      "reason": "Old fault-free compiled q-value equality has no epsilon/mode. New endpoint evaluates same policy in actual fault source. The current noisy-source compiled_attains_value is reused instead; no price*c<=1 condition is introduced for own value.",
+      "fuzzy_equivalence_claim": false
+    }
+  ],
+  "typed_check_coverage": {
+    "theorem_rows": 61,
+    "supporting_declarations_including_enum_constructors": 38,
+    "individual_discovery_hits": 26,
+    "unique_discovery_symbols": 25,
+    "distinct_checked_symbols": 124,
+    "generated_instances": "DecidableEq Verdict and Repr Verdict synthesized from public import. Counts measure this gate coverage only, never mathematical closure."
+  },
+  "actual_independent_checks": [
+    {
+      "argv": [
+        "lake",
+        "env",
+        "lean",
+        "/tmp/ueot-predictable-purpose-typed-api.lean"
+      ],
+      "exit_code": 0,
+      "log": "/tmp/ueot-predictable-purpose-typed-api.log",
+      "result": "All new public theorem types, supporting definitions/aliases/named instance/enum constructors and ALL individual discovery targets type-check through public import UEOT."
+    },
+    {
+      "argv": [
+        "lake",
+        "env",
+        "lean",
+        "/tmp/ueot-predictable-purpose-public-consumers.lean"
+      ],
+      "exit_code": 0,
+      "log": "/tmp/ueot-predictable-purpose-public-consumers.log",
+      "result": "Empty final log. Public-only common harness actually consumes native sigma/lpMeas, generator blocks/zero horizon, full density/isometry/literal finite output, L2 limits, same-source full-probe pushforward, exactly-once chronological independence, literal endpoint/fee witness, finite-policy limit and same actual infinite record law prefixes/integrability/value/optimum."
+    }
+  ],
+  "public_cross_module_consumers": [
+    "Inputs native predictableSigma comap and lpMeas definitions feed Density proved equality; original unit/block finite input classes belong native subspace.",
+    "Density accepts arbitrary native fullPredictableL2 input and preserves norm; every original ElementaryInput returns the SAME old outputValue; genuinely changing unit-input L2 sequence, all zero-horizon inputs and exact unit energy use original source.",
+    "Probe rawLaw pushed through complete original probeTrace actual observation list equals all registered sourceData. registration visits each primitive coordinate exactly once and chronological pairs are iIndepFun under SAME product source.",
+    "Probe actual final parent is fold of original records; inherited program persists, four-record concrete batch retains total fee1 and final bad state, same returned literal policy consumes original finite-record limit.",
+    "Infinite common consumer at exact actual postProbeParent simultaneously provides ALL finite record prefixes, original streamPayoff integrability and actual integral=SAME returnedPolicy own value=original optimum, including concrete final-fault damaged-parent witness."
+  ],
+  "external_harness_correction": {
+    "log": "/tmp/ueot-predictable-purpose-public-harness-error.log",
+    "classification": "Public harness composition only: original standalone Inputs audit left noncomputable section open, legal at standalone EOF; appended explicit end before enclosing public namespace. No source theorem or proof changed. Final public harness exits0 without warning."
+  },
+  "scope_and_scientific_boundaries": [
+    "Brownian full native predictable L2 density is actually discharged for the declared finite horizon, natural filtration and original source. This candidate still supplies terminal integral per horizon; time cutoff/horizon-consistent process, conditional increments, process martingale/continuity, quadratic variation, general Ito/Girsanov/SDE/control remain separate.",
+    "Purpose result is an executable partial data judgment, with exact pointwise goal/fee soundness and source-dependent UNKNOWN bound. Negative is only epsilon<1 bad-state one-step. It is not full unknown goal/cost/hazard or teleological objective identification.",
+    "Actual future infinite record deployment starts after complete fixed probe budget with same retained parent. Probe fees are retained; no train+future optimum, free probes, affordability, actual draw, retries or success filtering is asserted.",
+    "Brownian and register families compile together but are not thereby identified as one mathematical World. Entire UEOT Goal remains OPEN.",
+    "No source, Git, exports, books, GI or global settings edited by this review."
+  ],
+  "hashes": {
+    "/tmp/ueot-predictable-purpose-typed-api.lean": "92baccd724aa2794676039fa49f11ed7f3e1997d81afbac79ef54a975cb6db9c",
+    "/tmp/ueot-predictable-purpose-typed-api.log": "79f6369abe623628794d5ffa565d1ce0c436fd0f998330b0b3ddbfffa10c38a4",
+    "/tmp/ueot-predictable-purpose-public-consumers.lean": "8b32e8fd7902eba495148cea3311bfa9d844b6ea82ca940aa05149c8bf3894e3",
+    "/tmp/ueot-predictable-purpose-public-consumers.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/tmp/ueot-predictable-purpose-public-harness-error.log": "b2eaaf21db7af23156f2f99102179198d0b93891a3e41756d12516660d72040f",
+    "/tmp/ueot-predictable-purpose-typed-bindings.json": "bb36cdd2cd3b4a61ee90e35ec9e7ac31302936bd15a864b725220a49357a3d80",
+    "/tmp/ueot-predictable-purpose-reuse.json": "aa4b1981fce528a17b64c50a1155264769e37976a7631b370d927fa9d90153b3",
+    "/tmp/ueot-predictable-purpose-reuse.md": "33dc7cbd73e2a448c070687fda0c31ff15dd5ea6903e5b372ebf99a9e5dd6a13"
+  },
+  "pending_findings": [],
+  "whole_theory_goal": "OPEN"
+}
