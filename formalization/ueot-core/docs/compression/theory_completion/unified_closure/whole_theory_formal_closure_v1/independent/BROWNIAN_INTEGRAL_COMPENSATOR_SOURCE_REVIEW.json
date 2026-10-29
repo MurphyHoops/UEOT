@@ -1,0 +1,42 @@
+{
+  "schema": "ueot.independent-source-review.v1",
+  "reviewer": "/root; independent of author /root/register_typed_review",
+  "verdict": "PASS_EXACT_SOURCE_AND_ACTUAL_CONSUMERS",
+  "source": {
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralCompensator.lean",
+    "sha256": "47e92e0c28133aa9b08914725f166f9b11ca1bac6ac1c446f3fcae47684073c7"
+  },
+  "complete_source_read": true,
+  "findings": [
+    "Actual energyRectangle is original cutoff time rectangle times event. Native restricted-product Fubini derives eventwise timeEnergy; rectangle subtraction yields original future eventWindow, including s>T empty case.",
+    "Original full-input localization/isometry gives actual integral increment second energy on EVERY permitted Fs event. Actual L2 martingale cross product is integrable and its conditional mean zero; algebra derives same continuous integral square increment equals SAME actual timeEnergy increment on those events.",
+    "Compensated process is literally M_s²−timeEnergy_s, not a free process/certificate. Fs strong adaptation, L1 integrability and native conditional-expectation uniqueness derive its genuine martingale on ORIGINAL naturalFiltration. No L4 premise or supplied conditional variance.",
+    "ONE actual full section Fubini event from global product integrability proves timeEnergy monotone/continuous at ALL times, with native nonatomic time primitive continuity; no uncountable AE intersection. Same compensated process continuous AE by two proved full events.",
+    "Independent combined consumer simultaneously retains same martingale, all-time monotone/continuous actual energy, continuous compensated process, literal zero start and mean-zero actual difference."
+  ],
+  "actual_checks": {
+    "focused_build": {
+      "path": "/tmp/ueot-compensator-independent-build.log",
+      "sha256": "29834b855b9eb15e6dba1f4b7b6aa3072487828807fb1d99d71a9f45873fa49f",
+      "exit_code": 0
+    },
+    "consumer": {
+      "source": "/tmp/ueot-compensator-independent-audit.lean",
+      "source_sha256": "b3b46ffc06c2ce501b751fbed0f4b843535eb58b65946a75877bdd8c9f9753d5",
+      "log": "/tmp/ueot-compensator-independent-audit.log",
+      "log_sha256": "106e963fc72255bf2889bee1b3b8a71e22c0bf1f4e27a5b9a19fde8de58bb271",
+      "exit_code": 0
+    },
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "scope_limits": [
+    "Same actual scalar canonical source/natural filtration, every genuine full predictable L2 input, fixed horizon incl0.",
+    "These continuous increasing energy and compensated-square martingale properties do not themselves prove partition quadratic-variation convergence for arbitrary f, general Ito, vector/filtered transport or Girsanov.",
+    "WIP not yet public/main integrated; whole Goal OPEN."
+  ],
+  "pending_source_semantic_corrections": []
+}

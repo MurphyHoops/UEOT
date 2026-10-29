@@ -221,6 +221,10 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDe
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeInfinite
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralContinuousVersion
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFeedbackResource
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianQuadraticVariation
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralSquareL1
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralCompensator
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterPopulationTypePrice
 /-!
 # UEOT Theory Completion public root
 

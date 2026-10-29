@@ -1,0 +1,40 @@
+{
+  "schema": "ueot.independent-source-review.v1",
+  "reviewer": "/root; independent of source author /root/register_typed_review",
+  "verdict": "PASS_EXACT_SOURCE_AND_ACTUAL_CONSUMERS",
+  "source": {
+    "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianQuadraticVariation.lean",
+    "sha256": "3fe2a598d1512dd68031da87d0298d7d910da146021481be8be6447e90862fd2"
+  },
+  "complete_source_read": true,
+  "findings": [
+    "Literal centered sum expands same weighted squared-increment sum minus same weighted clock sum. Derived orthogonality gives its exact energy.",
+    "Mesh is actual finite supremum from supplied deterministic nondecreasing clock, repetitions and empty clock allowed. Sum of gaps telescopes, deriving MSE<=2mesh*elapsed.",
+    "Every caller supplied zero-mesh family converges in mean-square/native Lp2. Concrete uniformClock with n+1 cells proves its own mesh tends to zero, including T0.",
+    "Weighted family may vary per partition but has common deterministic bound and START permission; target is same weighted clock sum, not an unproved time integral."
+  ],
+  "actual_checks": {
+    "focused_build": {
+      "path": "/tmp/ueot-qv-energy-independent-build.log",
+      "sha256": "f53df6e12c61cdfdfceda8a141232918640510c42bcff493597fe9274bd21cd3",
+      "exit_code": 0
+    },
+    "joint_consumer": {
+      "source": "/tmp/ueot-qv-energy-independent-audit.lean",
+      "source_sha256": "7438ee8ce1e2eb213ba621b8e455167a68c63e606ea88dbb6a8daec23229b059",
+      "log": "/tmp/ueot-qv-energy-independent-audit.log",
+      "log_sha256": "4f9f4abe6ab7986e9a2c36b5b387ab6382b0dc61403574fe737620858d71c164",
+      "exit_code": 0
+    },
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "scope_limits": [
+    "Not yet quadratic variation of arbitrary full stochastic integral. No stopping-time partitions or arbitrary integrand-time-integral limit claimed.",
+    "Successor WIP, not publicly adopted or integrated by this review. Whole theory OPEN."
+  ],
+  "pending_source_semantic_corrections": []
+}
