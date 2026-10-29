@@ -158,3 +158,8 @@
 本版引用上述七个生产模块。声明、完整源树身份与验收入口见 [REGISTERED_INTERFACES_CLOSURE_V1](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/REGISTERED_INTERFACES_CLOSURE_V1.md)；接口范围见 [LEAN_API_SCOPE](LEAN_API_SCOPE.md) 与附录 F.3.1。
 
 哲学反馈进入配套书关于对象、修复、学习、稳态与意义的独立论证。其规范理由不从本数学模型自动推出；原论文第 6–7、40–41 页提出的 GOA、目的与意义问题继续作为思想来源，而非新数学命题的证明。既有 P-ID 源映射、原附件、历史代码与历史输出未因本次增补重写。
+
+
+## 7. 同源程序、预测与连续来源的当前差额
+
+第 39 章与附录 F.5 对应实际修复程序、故障和资源、同一无限记录、时戳出生身份、一般有限动作词响应、实际最小预测来源、完整历史策略以及实际连续 Brownian/OU 来源。直接入口为 [第 39 章](UEOT_MATHEMATICS.md#ch-39)；精确模型条件、公开端点与当前必需义务见[连续源与历史控制差额](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/continuous_history_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。新增来源不改变冻结 106 条的历史索引，也不证明一般 Itô/Girsanov、完整自适应预测最小性或整体形式化闭环。
