@@ -1,0 +1,175 @@
+{
+  "schema": "UEOT_INDEPENDENT_SOURCE_REVIEW_V1",
+  "verdict": "PASS_NO_SOURCE_SEMANTIC_BLOCKER",
+  "created_utc": "2026-10-29T16:56:14.285639+00:00",
+  "reviewer": {
+    "task": "/root/c1_joint_review",
+    "role": "Independent reviewer of this HistoryControl module, authored by /root/register_infinite_record. I authored prior LatentPath and ResponseRecursion dependencies; those already have separate independent semantic reviews and are not reclassified as independently authored by me. This review independently checks the new history-control extension and its exact reuse."
+  },
+  "source": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveHistoryControl.lean",
+    "sha256": "07a84881744a7c42919130e995c866c69f65d4f906c7a21270c8fe068ae7a32c",
+    "bytes": 35145
+  },
+  "author_receipt": {
+    "path": "/private/tmp/ueot-history-control-receipt.json",
+    "sha256": "be40edf761d0abf595ca47b2eb49aa80d581e796f5c9ae7d14efc56e9976983d",
+    "bytes": 4442
+  },
+  "whole_theory_goal": "OPEN; this closes the declared arbitrary observed-history policy path transport contract with history RETAINED, not the entire theory.",
+  "observed_head_in_author_receipt": "e4cb0114230272854f935167e48af0ff18462f47",
+  "dependencies": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/DynamicsKernel.lean",
+      "sha256": "97ed375855ff5d76e657f3d2c135ef4b36fa154c7377106fc24d1a97126599bc",
+      "bytes": 24580
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "sha256": "d3b986dc16dff3feb201f0f27a0f23ae3ece5f4aa3f05aad84184fc585b28d50",
+      "bytes": 17024
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "sha256": "5882e71ff4d417e2e6a8e7c41c734dbba0b4bff72533a2bd830a431ea2988190",
+      "bytes": 21053
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveLatentPath.lean",
+      "sha256": "588ac5f6ff03e9f0b3af72a45f717a2792c77649d78714417906bd425a07f71d",
+      "bytes": 23176
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/Objecthood/ExactPathLawDiscountedHittingTransform.lean",
+      "sha256": "2d8591c57f563800f4cb15defa3c6d95c0e97b3537f1c67660ab4dcae3c20e7f",
+      "bytes": 33025
+    }
+  ],
+  "read_scope": {
+    "complete_new_source": true,
+    "source_lines": 638,
+    "private_proofs_read": true,
+    "upstream_interfaces_read": [
+      "ScientificClosure/C1ParametricBelief c1OneStepJoint and parameterized actual posterior disintegration",
+      "MeasurablePredictiveResponseRecursion measurable_ambientUpdate_joint, ambientObservation_actual, ambientUpdate_actual_response_ae",
+      "MeasurablePredictiveLatentPath beliefKernel and lintegral_belief_joint",
+      "DynamicsKernel StrongLumpability, pathMeasure_eq_of_prefix_eq, homTrajMeasure_path_naturality",
+      "ExactPathLawDiscountedHittingTransform time marginal interface"
+    ]
+  },
+  "mathematical_assessments": [
+    {
+      "lines": "25-108",
+      "claim": "Actual natural finite-history measurable interface",
+      "assessment": "History is literal List(A x W). historySpace is explicitly comap of an injective code consisting of length and ALL padded ordered coordinates into Nat x (Nat -> Unit+(A x W)). It is not a top/discrete sigma algebra imposed on uncountable observations. Every code coordinate and length is measurable; append is derived coordinatewise with measurable length comparisons and measurable event insertion. injectivity loses no earlier event. Singleton instances are derived under exactly measurable singletons. The local history instance does not alter a global List measurable instance; downstream code can explicitly install historySpace."
+    },
+    {
+      "lines": "110-196",
+      "claim": "Same information permissions and physical source",
+      "assessment": "BeliefHistory and ResponseHistory retain full observed history. The controller is a fixed arbitrary Markov kernel pi:History->A; both sampledBelief and sampledPhysical obtain action ONLY from pi(history). The physical observation/nextlatent pair is c1OneStepJoint P O(current physical latent, sampled action); nextPhysical stores that actual returned latent, the same sampled observation and action, and the computed posterior. No action selector is chosen from belief/response, no hidden latent is exposed to pi, and there is no new action or observation."
+    },
+    {
+      "lines": "142-175,201-230",
+      "claim": "Initial consistency rather than raw-state lumpability",
+      "assessment": "historyLatentLift r samples the latent once from r.b while retaining r. The physical kernel does NOT call that lift to resample each next latent. Seeded one-step law consistency is proved by source-derived c1PosteriorSection_factorization and Tonelli, valid for each registered belief/history r. It does not assert pointwise StrongLumpability from arbitrary inconsistent (belief,x) pairs. Swapping latent and action integrals is justified by the controller dependence only on the retained history and the shown joint measurability."
+    },
+    {
+      "lines": "232-359",
+      "claim": "Complete prefix conditional consistency and countable path law",
+      "assessment": "Induction retains the COMPLETE belief/history prefix and terminal physical latent, whose conditional kernel is the actual recursively computed terminal belief. Zero prefix is the literal initial consistency lift; successor uses the SAME one-step consistency and append interface. Dropping terminal latent gives exact finite-prefix projection. Existing pathMeasure_eq_of_prefix_eq then gives equality of full N-indexed path measures under the product sigma algebra. Source/filter results need CountablyGenerated W, not StandardBorel W, and permit arbitrary measurable A."
+    },
+    {
+      "lines": "361-436",
+      "claim": "Response update retains history and same joint sampled event",
+      "assessment": "projectResponse r=(response(r.b),r.history), with history copied literally. nextResponse uses the existing measurable ambient response update and appends the SAME sampled action/observation. sampledResponse uses exactly pi(history) and observation readout from the response array. For each fixed action, the source-derived observation equality and observation-a.e. actual update suffice inside the iterated integral. Joint measurability of the ambient update is used only with explicit Countable A, measurable singleton A, and StandardBorel W. No source-image section or recursive sufficiency premise is supplied."
+    },
+    {
+      "lines": "440-490",
+      "claim": "Actual same-policy controlled path transport",
+      "assessment": "StrongLumpability is proved for the actual BELIEF+HISTORY to RESPONSE+HISTORY map at every belief/history r; this is distinct from the invalid arbitrary raw latent lumpability. Existing path naturality transports the full response/history trajectory, then composes with the proved seeded physical/filter trajectory. The principal action-observation result starts at (registered b,EMPTY history), initializes physical latent under b, and compares the identical pi in both runs. Every finite complete prefix follows by projection. For arbitrary nonempty seed history r, the theorem concerns a new experiment initialized consistently from r.b; it does not assert that an arbitrary given r.b was historically derived from r.history."
+    },
+    {
+      "lines": "494-507",
+      "claim": "Same non-atomic Gaussian actual consumer",
+      "assessment": "actual_gaussian_history_path directly specializes the general physical/response history path theorem to the previously defined allowedSource/allowedObservation on latent R x R with integer actions and real observations. It supports every permitted measurable full-history pi, without replacing it by a current-belief policy or adding an observation/latent oracle."
+    },
+    {
+      "lines": "510-635",
+      "claim": "Strict history dependence with actual positive reachability",
+      "assessment": "The Unit-latent Bool source uses constant fair observation coin and ordinary allowed Bool actions. The first two actions are false; thereafter memoryAction reads the FIRST observation. The two literal length2 histories have the same last event but unequal next-action laws. The witness derives its history row from the SAME actual P/O/filter kernel rather than assuming/replacing a posterior version, transports that law from the actual physical run, and computes both time2 masses exactly1/4. No conditional-on-success selection or retry is present."
+    }
+  ],
+  "information_and_quantifier_guards": {
+    "controller_information": "pi receives only literal List(action,observation). Clock dependence is available through its measured length. Controller does not receive belief, response, latent, external randomness state or a source oracle.",
+    "controller_class": "Fixed arbitrary measurable stochastic history kernel pi. It can depend on all observed finite history and its length. Persistent private controller memory/random seeds are not modeled beyond what its visible-history kernel represents.",
+    "initialization": "Primary actual event-history theorem uses EMPTY history and registered belief b with actual x0~b. General r theorems seed x0~r.b once and retain r.history; no historical validity of arbitrary seed pair is inferred.",
+    "path_scope": "Every finite complete prefix and full countable trajectory law on N-indexed paths/product sigma algebra; not finite marginals alone and not equality of individual sampled trajectories.",
+    "response_state": "State is (complete current response array, FULL retained history). No claim that arbitrary history controllers factor through response alone, and no equality conclusion for different initial histories based only on equal response.",
+    "posterior_versions": "For each current belief/action, actual observation-a.e. equality is integrated before path transport; no pointwise identity on zero-observation branches or invalid uncountable a.e. intersection is assumed.",
+    "no_privilege_change": "Same source P/O, same pi, same sampled action+observation appended in every process; no expanded actions, observations or hidden-state access."
+  },
+  "independent_verification": {
+    "direct_source": {
+      "command": "lake env lean UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveHistoryControl.lean",
+      "observed_exit_code": 0,
+      "log": {
+        "path": "/private/tmp/ueot-history-control-independent-direct.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "all_public_signature_axioms": {
+      "command": "lake env lean /tmp/ueot-history-control-independent-audit.lean",
+      "observed_exit_code": 0,
+      "input": {
+        "path": "/private/tmp/ueot-history-control-independent-audit.lean",
+        "sha256": "517d19b0de9a8a943c4dc1f94cd137be47c6e7084868cd371642a7c483cda51c",
+        "bytes": 13861
+      },
+      "log": {
+        "path": "/private/tmp/ueot-history-control-independent-audit.log",
+        "sha256": "0ff75e0146b0a46ff610bc485070e11cc863c6aefb839716f26f85f4723dc3ff",
+        "bytes": 46169
+      },
+      "coverage": "Every explicit public theorem/definition/abbreviation/instance in the frozen module, including Gaussian and MemoryWitness consumers.",
+      "reported_axioms_only": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "actual_external_consumers": {
+      "command": "lake env lean /tmp/ueot-history-control-independent-consumers.lean",
+      "observed_exit_code": 0,
+      "input": {
+        "path": "/private/tmp/ueot-history-control-independent-consumers.lean",
+        "sha256": "e3156344331ed392236b7142ec3b9417bf2e49dc0cb535086c4f62da7648e3c0",
+        "bytes": 2491
+      },
+      "log": {
+        "path": "/private/tmp/ueot-history-control-independent-consumers.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "checked": [
+        "Source/filter countable path transport compiled with only CountablyGenerated W (no StandardBorel W assumption).",
+        "Equal response coordinates at the SAME empty initial history and same arbitrary pi imply equal actual physical observed-history path laws, by consuming the new actual theorem.",
+        "For one fixed Unit belief the response coordinates of firstFalse and firstTrue are definitionally equal, while actual controller rows differ by strictly_history_sensitive. This independently guards against dropping retained history from the claim."
+      ]
+    },
+    "source_scan": {
+      "sorry_admit_axiom_opaque_declarations": false
+    }
+  },
+  "reuse_assessment": "New explicit measurable finite-history encoding and physical/filter seeded prefix induction are necessary extensions beyond the prior current-belief clock policy interface. Existing actual posterior factorization, ambient response update, path prefix uniqueness and path naturality are reused directly. No duplicate general kernel-identification or source-image selection framework is introduced.",
+  "findings": [],
+  "boundaries": [
+    "The retained-history state is not compressed away. Response-only minimality for arbitrary controllers with different preexisting histories is neither proved nor true without further controller-state conditions.",
+    "Countable action labels with measurable singletons and StandardBorel observations are explicit only where joint ambient response recursion is required; no uncountable-action universal update is claimed.",
+    "Natural finite visible histories do not provide arbitrary hidden-state policies, persistent unobserved controller memory or extra oracle protocols.",
+    "The positive Bool witness shows history beyond the latest event matters and both histories occur in the same actual run; it does not promote empirical learning, costs or risk claims.",
+    "No new stochastic integration, Ito/Girsanov, continuous-time history control, cross-source one-World coupling, general quotient-image universality or whole-theory closure is claimed."
+  ],
+  "mutation_scope": "Only this exclusive review JSON and external independent audit/consumer harnesses and logs. No source, public exports, Git, GI, books, sampling records or global configuration edits.",
+  "promotion": "Clears this exact frozen source contract for root-managed public build, typed reuse and integration; not an automatic whole-theory verdict."
+}
