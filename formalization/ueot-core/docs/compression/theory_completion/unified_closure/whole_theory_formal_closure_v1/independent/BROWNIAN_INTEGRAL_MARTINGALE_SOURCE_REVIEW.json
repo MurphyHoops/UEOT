@@ -1,0 +1,149 @@
+{
+  "schema": "ueot.independent-source-review.v1",
+  "verdict": "PASS_NO_SOURCE_SEMANTIC_BLOCKER",
+  "created_utc": "2026-10-29T19:01:44.169876+00:00",
+  "reviewer": {
+    "agent": "/root/c1_joint_review",
+    "source_author": "/root/register_typed_review",
+    "independence": "Reviewer did not author or modify any of these four source modules. Earlier C1 latent/response source authorship is unrelated and supplies no Brownian proof."
+  },
+  "shared_actual_consumer_check": {
+    "argv": [
+      "lake",
+      "env",
+      "lean",
+      "/tmp/ueot-brownian-integral-time-chain-independent-audit.lean"
+    ],
+    "exit_code": 0,
+    "log": "/tmp/ueot-brownian-integral-time-chain-independent-audit.log",
+    "result": "All 41 public declarations of four exact frozen modules checked with axioms; native tower/projection/dense-CLM interfaces checked; actual random-past interval/cutoff/process/T0 consumers elaborate, standard three axioms only. This audit imports final new chain module transitively, not the as-yet-unmodified UEOT public root."
+  },
+  "shared_independent_consumers": [
+    "Fixed inputLaw T retained for all queried u, including u>=T; actual integralClassProcess saturates at original predictableIntegral T with no measure change.",
+    "Exact cutoff energy under same original time-space measure.",
+    "Genuinely random bounded coefficient H=sin(actual B1), with only supplied naturalFiltration 1 strong-measurability permission: conditional prefix at u=0 uses tower, and at u=3/2 equals original H-weighted B_(3/2)-B1 increment. No premise or pull-out at F0 for H.",
+    "Actual intervalInput 3 1 2 returns same oneStep source native L2 class under full predictableIntegral.",
+    "One canonical process simultaneously satisfies native Martingale, EVERY separately fixed-time AE equality to actual cutoff class, exact input energy and original terminal value.",
+    "Canonical actual process on same random intervalInput agrees at arbitrary fixed u with original oneStep H 1 (clamp 1 2 u).",
+    "EVERY fullPredictableL2 0 input gives actual process zero AE at any fixed u, with no division/normalization by horizon."
+  ],
+  "pinned_native_APIs": {
+    ".lake/packages/mathlib/Mathlib/MeasureTheory/Function/Holder.lean": "60ed95457da79c6fe6a595834222474a89d94ad806405e237a0e9c7182c2a030",
+    ".lake/packages/mathlib/Mathlib/MeasureTheory/Function/ConditionalExpectation/Basic.lean": "d57fa219082fed04923b2d70599da0b78f78a8a35df65571bc9e5f638b7396be",
+    ".lake/packages/mathlib/Mathlib/MeasureTheory/Function/ConditionalExpectation/CondexpL2.lean": "d609ce72b9dc4734e8f4b4dfe6776af5850f72f8f1137b61297bdd512e8b6228",
+    ".lake/packages/mathlib/Mathlib/Topology/Algebra/Module/ContinuousLinearMap/Basic.lean": "db86568d3ba2332c8f5588c1ca7542312a57d3ec7912e63db3d14322c579b2d1",
+    ".lake/packages/mathlib/Mathlib/Probability/Martingale/Basic.lean": "0f743be91a5710023c39469632f595e95f593ddbd6e50577d941c1069056c278"
+  },
+  "external_harness_corrections": {
+    "logs": [
+      "/tmp/ueot-brownian-integral-time-chain-independent-harness-error.log",
+      "/tmp/ueot-brownian-integral-time-chain-independent-harness-error2.log"
+    ],
+    "classification": "Only independent harness issues: rewriting f by truncate_horizon in both sides created unintended nested cutoff, fixed by a typed intermediate identity; NNReal min/max bounds made explicit through real casts; wrong namespace in auxiliary #check ProbabilityTheory.martingale_condExp corrected to native MeasureTheory.martingale_condExp. All source elaborations were clean throughout; final whole audit exits0 without errors/warnings/sorryAx."
+  },
+  "shared_log_hashes": {
+    "/tmp/ueot-brownian-integral-time-chain-independent-audit.lean": "6b3539f0ea9b97dd24cb7d103ca26c8c4adbedbfe5a6c342f7e58b339c8a0310",
+    "/tmp/ueot-brownian-integral-time-chain-independent-audit.log": "85f2b335b292675ce8c55e2d6e2ed9f5e96f32bca4f0f9b39086ba741435245e",
+    "/tmp/ueot-brownian-integral-time-chain-independent-harness-error.log": "160125433eb2b39b272804cf0a7b7ef47d1613828229c5c96ec1b92d3d6f74c8",
+    "/tmp/ueot-brownian-integral-time-chain-independent-harness-error2.log": "53fedb0f738e2adac7bfb2b8dfe9d13805982306042dd78b38fdaa3504ac3f53"
+  },
+  "axioms_observed": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "whole_theory_goal": "OPEN",
+  "mutations": "Only separate independent review JSONs and /tmp harness/logs; no source, public root, Git, GI, books or global configuration changes.",
+  "source": {
+    "path": "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralMartingale.lean",
+    "sha256": "3ae8ce73e2af10e77c388d4c2814709dd2f3fd781f547e5c379b9a1e2b36c451",
+    "lines": 192,
+    "read_complete": true
+  },
+  "author_receipt": {
+    "path": "/tmp/ueot-brownian-integral-martingale-source-receipt.json",
+    "sha256": "a20479dc268886ac237a6dc2039e1fa59eaec99fdc6e99be95d0caa367fb604d",
+    "role": "Author evidence identity checked; independent direct/audit checks actually executed separately."
+  },
+  "dependencies": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralLiteralIntervals.lean",
+      "sha256": "0c81ff30498539a3e32c12a8fb6b1df7153170c524e88aeb36a2c546cb4e8dd0",
+      "bytes": 7637
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralConditionalStep.lean",
+      "sha256": "ef68b464a23394bebcf93d7020d8a5aa2783b6c179b19ac99f1b26696058463c",
+      "bytes": 4433
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralTimeTruncation.lean",
+      "sha256": "1f8e95f87328821f5a5061d19df1b8c156554e7c3bc19612685e4c981d905af6",
+      "bytes": 7532
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableDensity.lean",
+      "sha256": "e1e90471b7ce3514d365eb53f666d40b8466e6373159feacc4a3f8f123e23aee",
+      "bytes": 13039
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralClosure.lean",
+      "sha256": "c9967cc526519101a6737254c7f9c323c3698d589332f3f7d499285cbcf0b41f",
+      "bytes": 10964
+    }
+  ],
+  "independent_direct_check": {
+    "argv": [
+      "lake",
+      "env",
+      "lean",
+      "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralMartingale.lean"
+    ],
+    "exit_code": 0,
+    "log": "/tmp/ueot-brownian-integral-martingale-independent-direct.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "Exact frozen source elaborates, empty log and no warnings."
+  },
+  "public_declarations_audited": [
+    "integral_projection_identity",
+    "integralProcess",
+    "integralProcess_eq_truncated",
+    "integralClassProcess_adapted",
+    "integralProcess_martingale",
+    "integralProcess_stronglyAdapted",
+    "integralProcess_memLp_two",
+    "integralProcess_energy",
+    "integralProcess_zero",
+    "integralProcess_horizon",
+    "integralProcess_returns_literal",
+    "integralProcess_mean_zero"
+  ],
+  "mathematical_findings": [
+    {
+      "claim": "Actual literal finite input decomposition",
+      "evidence": "Every original ElementaryInput is proved equal in native fullPredictableL2 to the finite sum of its actual permitted intervalInput parts. Finite AE intersection is only over Fin r.n. Original clock monotonicity/end derive every part order/horizon and preserve coefficient start permission."
+    },
+    {
+      "claim": "Proved dense extension, not assumed sufficiency",
+      "evidence": "Native continuous maps naturalProjection u composed with actual predictableIntegral T and actual integralAt T u agree on every actual finite input by literal interval projection, then on their span. Dense span in full native predictable L2 is proved by transporting existing actual elementary-span dense inclusion through domainToPredictable, whose surjectivity uses the previously PROVED full predictable density. Native ContinuousLinearMap.ext_on therefore yields integral_projection_identity for EVERY native fullPredictableL2 f."
+    },
+    {
+      "claim": "Canonical version actually binds original cutoff",
+      "evidence": "Only after that L2 identity, integralProcess is defined as conditional expectation of the SAME actual terminal predictableIntegral output. Native condExpL2 AE identification proves EACH fixed-time equality to integralClassProcess. L2 adaptedness of that actual cutoff is derived from native projection range. There is no supplied desired-process, adaptedness, martingale or projection certificate and no replacement integral."
+    },
+    {
+      "claim": "Native martingale and actual consumers",
+      "evidence": "Original native martingale_condExp gives strong adapted natural martingale for this canonical version. Fixed-time actual binding transfers MemLp2 and exact cutoff energy. Actual zero start and horizon/old literal finite output are proved; native martingale setIntegral plus zero start derives zero mean. The original terminal is actual Lp2 under source probability, so conditional expectation is not a nonintegrable-totalization substitute."
+    },
+    {
+      "claim": "Quantifiers and regularity boundaries",
+      "evidence": "All real-function version equalities are stated for each fixed queried time, source-a.e, outside quantification. No illegal intersection over uncountably many times is used. Strong adaptation is per-time measurability; neither it nor native martingale_condExp constructs continuous, right-continuous or jointly time-measurable sample paths here. The class process is stopped at T in L2/per-fixed-time AE, and observation times beyond T add no output."
+    }
+  ],
+  "scope_limits": [
+    "Same original sourceLaw, natural filtration, fixed T and inputLaw T; no separate input family at each time or cross-horizon measure equivalence.",
+    "No continuous-path version, quadratic variation, Ito formula, Girsanov, SDE/control or whole P11/theory closure.",
+    "Mean-square time continuity is separately authored WIP and excluded from this frozen module/review; absence of that proof is not a no-go."
+  ],
+  "pending_source_semantic_corrections": []
+}
