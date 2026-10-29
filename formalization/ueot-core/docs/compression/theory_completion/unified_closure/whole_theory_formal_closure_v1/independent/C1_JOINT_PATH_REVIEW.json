@@ -1,0 +1,141 @@
+{
+  "verdict": "CLEAR_FOR_DECLARED_C1_FINITE_JOINT_BELIEF_RECORD_CONTRACT",
+  "whole_theory_goal": "OPEN_NOT_ESTABLISHED",
+  "reviewer": "independent /root/c1_joint_review; no authorship of reviewed Lean source",
+  "source": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveJointPath.lean",
+    "sha256": "4921b3880b0fdf7979585dc63dc00a07e87e31604f4a94bcec52c8e602964834"
+  },
+  "reviewed_dependencies": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSensor.lean",
+      "sha256": "ef89784d1e4c22e0ba0445e9c7d3de8edea73a9dbffb597e3c72610d1048e80c"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSource.lean",
+      "sha256": "d2b0eb37c97e8e1c417aea49e705d1b782f32b0eaea3772acecc349849fd1f36"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/C1ParametricBelief.lean",
+      "sha256": "d01ebe16cea8d93e38690a1eb3bf68701e3c177b117d3ee6496b5968b877967d"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/GeneralBayesPosterior.lean",
+      "sha256": "5b5cd1fcb88048caafbbd5d6d1d24f9f3f1e8cf6ce4027ccd775768ae6afafbd"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/DynamicsKernel.lean",
+      "sha256": "97ed375855ff5d76e657f3d2c135ef4b36fa154c7377106fc24d1a97126599bc"
+    }
+  ],
+  "blocking_findings": [],
+  "source_and_policy_trace": [
+    "sampledEvent draws the same supplied policy action and then the existing c1BeliefObservationKernel from the SAME current microscopic belief/action. nextRecord deterministically calls the existing jointly measurable c1ParametricPosteriorBelief and retains the literal sampled action and observation.",
+    "The clock and Unit+event payload are record fields. liftedPolicy reads only clock and coordinate(current belief); sampledEvent never supplies hidden belief or old event payload to pi. timedPolicy dispatches by the discrete clock to the supplied family and remains jointly measurable and Markov.",
+    "actual_joint_step first expands the exact execution pushforwards and action/observation integrals. It rewrites the observation law using sensor_observationLaw_factors and compares the posterior maps only observation-almost everywhere using actual_posterior_coordinate_ae. Null observations are never upgraded to pointwise posterior equality.",
+    "The action distribution is common before integrating the observation-a.e. equality for each fixed action. Consequently action/observation/nextbelief correlations are retained. This is stronger than matching only separate posterior or observation marginals.",
+    "actual_record_lumpability is derived from that row equality, then actual_finite_joint_path directly consumes existing homTrajMeasure_prefix_naturality. Its initial measure is the literal registered initial belief at clock zero with Sum.inl (), so no fictitious initial action or observation is inserted.",
+    "actual_finite_record_event and actual_finite_record_lintegral directly transport measurable events and nonnegative measurable functions of the WHOLE prefix. Correlations across all recorded times are preserved by equality of prefix measures."
+  ],
+  "quantifiers": {
+    "state_and_observation": "Nonempty Standard Borel visible Y and hidden H; arbitrary measurable action A and primitive noise N; countably generated observation W; probability noise; measurable visible and hidden updates; Markov sensor and policy. Finite prefix horizon T is arbitrary.",
+    "source_restrictions": "Visible update depends on visible state/action/source noise, not hidden state. Hidden update can depend on all coordinates and the SAME source noise. Sensor depends on visible NEXT state and same action. These are explicit sufficient source-class conditions, not a universal characterization or necessary conditions.",
+    "policy_class": "Any measurable Markov kernel pi(clock,visible belief), and consequently every time-indexed family of measurable current-visible-belief Markov policies. Lifted microscopic policy cannot read full microscopic belief, hidden coordinate, or event history. An externally designed family may encode fixed design choices; no epistemic learning guarantee follows.",
+    "initial": "Every initial microscopic probability belief b; coarse initial is exactly coordinate b. No independent replacement of initial distributions.",
+    "payoff": "Nonnegative measurable prefix function F, possibly infinite, so no integrability premise is required. A general signed Bochner cost conclusion would require its own integrability adapter and is not claimed."
+  },
+  "reuse_audit": [
+    {
+      "candidate": "DynamicsKernel.homTrajMeasure_prefix_naturality",
+      "decision": "ACTUALLY_REUSED",
+      "reason": "The new result derives the source-specific StrongLumpability row and applies this existing exact finite-prefix theorem without reimplementing path-law induction."
+    },
+    {
+      "candidate": "MeasurablePredictiveSensor.actual_posterior_coordinate_ae and sensor_observationLaw_factors",
+      "decision": "ACTUALLY_REUSED",
+      "reason": "These are the actual same-source posterior/observation identities. No second conditional version or new C1 image factor is assumed."
+    },
+    {
+      "candidate": "MeasurablePredictiveSensor.same_policy_controlled_recursion",
+      "decision": "INSUFFICIENT_TO_REPLACE_JOINT_ROW",
+      "reason": "This existing endpoint retains only nextbelief. The new row retains action and observation, so separate marginal recursion alone does not prove the desired correlations."
+    },
+    {
+      "candidate": "C1ParametricBelief.c1BeliefActionJoint",
+      "decision": "REUSED_TRANSITIVELY_NOT_REPLACEMENT_FOR_RECORDER",
+      "reason": "The existing joint supplies observation and latent state before posterior conversion; it has no clock or last-event payload. The recorder is a deterministic execution of the existing observation/posterior kernels, not a replacement posterior construction."
+    },
+    {
+      "candidate": "MeasurablePredictiveSource.randomUpdate",
+      "decision": "NOT_TYPE_COMPATIBLE_WITH_GENERAL_EXECUTE",
+      "reason": "randomUpdate samples a fixed primitive noise measure. execute samples a general state-dependent kernel; its local helper establishes the appropriate dependent pushforward rather than introducing a new source family."
+    }
+  ],
+  "nonvacuity_and_boundaries": {
+    "inherited_witnesses": "The source class already has a continuous Gaussian example with observation-null singletons and a hidden-blind noisy Bool sensor whose actual posterior masses are 3/4 and 1/4. The universal path theorem accepts those source types and arbitrary allowed policy kernels; this review does not claim an additional computed multi-step sample.",
+    "no_physical_filter_coupling": "recordKernel is the actual C1 belief/action/observation kernel, whose observations are sampled from the predictive mixture. The theorem does NOT yet prove its joint law equals an independently sampled primitive physical/hidden trajectory together with its recursively computed filter.",
+    "other_open_claims": "No minimal predictive quotient, arbitrary fullhistory policy, infinite-path transport theorem, finite-data learning or external empirical validity is established by this module. The path measure exists on infinite sequences through existing Ionescu-Tulcea, but this module states and consumes only finite-prefix identities."
+  },
+  "next_source_bridge": {
+    "classification": "MISSING_PROVED_INTERFACE_AND_IMPLEMENTATION; not a no-go result",
+    "minimal_target": "Construct a literal augmented physical/filter kernel: action~pi(t,b); next latent z~P(x,a); observation w~O(z,a); next belief=c1ParametricPosteriorBelief P O ((b,a),w). Seed with b0 and x0~b0. Prove that its projection to complete belief/action/observation prefixes has exactly recordKernel path law.",
+    "required_invariant": "Keep the entire observed record prefix and current latent state. Prove their joint law factorizes as observed-prefix law compProd the LAST recorded posterior belief. This conditional-consistency invariant, not pointwise lumpability of raw (belief,latent), is the induction hypothesis.",
+    "existing_upstream_identity": "C1ParametricBelief.c1PosteriorSection_factorization already proves observationLaw(b,a) compProd actualPosteriorSection(b,a) = jointLaw(b,a).map swap, and c1BeliefActionJoint_apply_eq_existing connects that joint to actual P/O kernel execution. Integrate these identities against the SAME action policy and prefix measure.",
+    "proof_route": "First prove the one-step stochastic-lift intertwining after drawing x~b; then prove a prefix extension identity using the conditional-consistency lift and existing compProd/map/associativity rules. Iterate with homTrajMeasure_prefix_succ. The augmented source kernel must still sample actual x before P, rather than resample x from b at every transition.",
+    "reuse_locations": [
+      "UEOT/V3/Compression/TheoryCompletion/ScientificClosure/C1ParametricBelief.lean:c1PosteriorSection_factorization",
+      "UEOT/V3/Compression/TheoryCompletion/ScientificClosure/C1ParametricBelief.lean:c1BeliefActionJoint_apply_eq_existing",
+      "UEOT/V3/DynamicsKernel.lean:homTrajMeasure_prefix_succ",
+      "Mathlib/Probability/Kernel/Composition/MeasureCompProd.lean",
+      "Mathlib/Probability/Kernel/Composition/Lemmas.lean"
+    ],
+    "avoid_wrong_reduction": "Do not demand pointwise StrongLumpability for every raw pair (belief,x). Predictive observations generally depend on x, whereas recordKernel averages x using b. Correct projection is an integrated consistency result for the seeded joint law."
+  },
+  "verification": {
+    "independent_focused_build": {
+      "command": "lake build UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveJointPath",
+      "exit_code": 0,
+      "log": {
+        "path": "/tmp/ueot-c1-joint-independent-build.log",
+        "sha256": "fe9c423943ce0be2352a9e72c472466bb49ea3f626e37ebcc225d707ec062c1d"
+      },
+      "note": "Dependency linter warnings are replayed; build completed successfully. No theorem count is a scientific closure claim."
+    },
+    "compiled_types_and_axioms": {
+      "command": "lake env lean /tmp/ueot-c1-joint-independent-types.lean",
+      "exit_code": 0,
+      "source": {
+        "path": "/tmp/ueot-c1-joint-independent-types.lean",
+        "sha256": "7908a892827020c4c4b9d528d1a65b05b9cbf0d74be3af577d4e744d00a87cab"
+      },
+      "log": {
+        "path": "/tmp/ueot-c1-joint-independent-types.log",
+        "sha256": "0b5ba77fb402e035077e3d57a9b832fd8aecf560430db4dbf0310c2ea441c776"
+      },
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "checked_endpoints": [
+        "actual_joint_step",
+        "actual_record_lumpability",
+        "actual_finite_joint_path",
+        "actual_timevarying_joint_path",
+        "actual_finite_record_event",
+        "actual_finite_record_lintegral"
+      ]
+    },
+    "source_hash_matches_requested": true,
+    "mutation_scope": "Only this exclusive review JSON and external focused checker/logs. No source, exports, Git, GI, data or global configuration modifications.",
+    "independent_direct_current_source": {
+      "command": "lake env lean UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveJointPath.lean",
+      "exit_code": 0,
+      "warnings": 0,
+      "log": {
+        "path": "/tmp/ueot-c1-joint-independent-direct.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  }
+}
