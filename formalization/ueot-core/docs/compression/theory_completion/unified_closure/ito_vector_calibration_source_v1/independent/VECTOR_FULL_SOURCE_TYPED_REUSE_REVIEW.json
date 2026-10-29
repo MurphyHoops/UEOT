@@ -1,0 +1,677 @@
+{
+  "schema": "ueot.typed-reuse-review.v1",
+  "reviewer": "/root; independent of vector source author /root/c1_joint_review",
+  "verdict": "PASS_VECTOR_EXACT_NATIVE_TYPES_AND_SHARED_SOURCE_REUSE",
+  "candidate_scientific_commit": "440aafb79c4b54ba5b18c0d5ede9473575f3ebb0",
+  "preflight": {
+    "path": "/tmp/ueot-ito-vector-calibration-preflight.json",
+    "sha256": "967e35077f7d39d2096533ae63b4655cfd920e53857c7d1790fa3add9e873345"
+  },
+  "actual_all_candidate_public_types_axioms": {
+    "input": {
+      "path": "/tmp/ueot-ito-vector-calibration-public-types.lean",
+      "sha256": "2e12fec99f4dbd9a2edb8b4341c120edb8bef8bfc00936f0660f0d3af31fa86b"
+    },
+    "log": {
+      "path": "/tmp/ueot-ito-vector-calibration-public-types.log",
+      "sha256": "b7261d56302efacdb56ac6def6119451a3d1cbb5deabaa124c08223bf799b585"
+    },
+    "observed_exit_code": 0
+  },
+  "actual_original_related_types": {
+    "input": {
+      "path": "/tmp/ueot-vector-full-source-old-type-reuse.lean",
+      "sha256": "83534bc01f9bf432276384438b7683eb54bcec8ccbcabefb1faa872ccda36f51"
+    },
+    "log": {
+      "path": "/tmp/ueot-vector-full-source-old-type-reuse.log",
+      "sha256": "21aff9277a388b478554e6421e078ec1e87b2690321cbe46e7f525c2c36614f9"
+    },
+    "observed_exit_code": 0
+  },
+  "decisions": [
+    "Scalar same-named fullPredictableL2/predictableIntegral/martingale/live cutoff APIs use scalar sourceLaw/real-valued input/naturalFiltration; cannot consume a caller native Euclidean input on productLaw d/WHOLE jointNaturalFiltration. No scalar noise or own-coordinate filtration alias is used.",
+    "Reuses original actual finite product source, Euclidean native L2 closure/inclusion/Finsupp extension and returned literal output. New independent joint native predictable domain is proved equal by generator realization/nativeLp induction, including time0-null and d0/T0. Source permission/covariance/density conclusions are never new input fields.",
+    "Pure scalar BrownianCommonRefinement.clamp and native predictable rectangle, Holder multiplication, conditionalExpectation L2 and native Lp/CLM density/DCT APIs reused. Whole-joint one-step source/tower and Euclidean indicator class proofs supply changed actual typed inputs.",
+    "Interval/finite-output/prefix evidence consumes supplied original [0,a,b,T] or arbitrary ElementaryInput; all full predictable inputs are covered by exact dense extension. Actual source martingale and energy identities bound EACH fixed time. Native L2 time continuity is not the old scalar continuous-sample theorem.",
+    "Lexical candidates about unrelated truncated values, selector hitting sets, path KL or scalar alignment are declined as different premise/conclusion and source type; no outside-scope physics source is adopted. No new one-implementation abstraction or general kernel-identification framework."
+  ],
+  "covered_new_symbols": [
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralConditionalSource.intervalInput_coe",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralConditionalSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralLiteralIntervals.intervalInput_coe",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorRepresentation.intervalInput_refine",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorTimeInput.intervalInput_energy",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorTimeInput.intervalInput_nonoverlap",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorTimeInput.intervalInput_apply"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralConditionalSource.intervalRecord_output",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralConditionalSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralLiteralIntervals.intervalRecord_output"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralConditionalSource.integral_interval_literal",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralConditionalSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralLiteralIntervals.integral_interval_literal",
+        "UEOT.V3.AlignmentGlobalExactness.arcIntegrand_intervalIntegrable",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralClosure.integral_returns_literal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralLiteralIntervals.projection_integral_interval",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralPastLocalization.localize_interval_integral"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralConditionalSource.truncate_intervalInput",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralConditionalSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralLiteralIntervals.truncate_intervalInput",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralLiteralIntervals.intervalInput_coe",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorRepresentation.intervalInput_refine",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorTimeInput.intervalInput_apply",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorTimeInput.intervalInput_energy"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralConditionalSource.projection_integral_interval",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralConditionalSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralLiteralIntervals.projection_integral_interval",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralLiteralIntervals.integral_interval_literal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integral_projection_identity",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralPastLocalization.localize_interval_integral"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralConditionalSource.integral_projection_identity",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralConditionalSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integral_projection_identity",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralLiteralIntervals.projection_integral_interval"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralConditionalSource.integralProcess_eq_truncated",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralConditionalSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_eq_truncated",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralFinitePaths.integralProcess_eq_spanPath",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralFinitePaths.integralProcess_eq_literalPath",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_stronglyAdapted",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralContinuousVersion.continuousIntegralProcess_eq_actual"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralConditionalSource.integralClassProcess_adapted",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralConditionalSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralClassProcess_adapted",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralL2TimeContinuity.continuous_integralClassProcess",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_stronglyAdapted",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.integralClassProcess_energy",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.integralClassProcess_horizon"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralConditionalSource.integralProcess_martingale",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralConditionalSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_martingale",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralContinuousVersion.continuousIntegralProcess_martingale",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.process_martingale",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMaximalControl.integralProcess_square_submartingale",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.exponentialProcess_martingale"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralConditionalSource.integralProcess_stronglyAdapted",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralConditionalSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_stronglyAdapted",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralContinuousVersion.continuousIntegralProcess_stronglyAdapted",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.process_stronglyAdapted",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.vectorProcess_stronglyAdapted",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralCompensator.compensatedIntegral_stronglyAdapted"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralConditionalSource.integralProcess_memLp_two",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralConditionalSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_memLp_two",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralContinuousVersion.continuousIntegralProcess_memLp_two",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianSimplePredictableIntegral.simpleIntegral_memLp_two",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorSimplePredictableIntegral.simpleIntegral_memLp_two",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_mean_zero"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralConditionalSource.integralProcess_energy",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralConditionalSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_energy",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralContinuousVersion.continuousIntegralProcess_energy",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.integralClassProcess_energy",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralContinuousVersion.continuousIntegralProcess_unit_energy",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_zero"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralConditionalSource.integralProcess_zero",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralConditionalSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_zero",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralContinuousVersion.continuousIntegralProcess_zero",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_mean_zero",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.integralClassProcess_zero",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process_zero"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralConditionalSource.integralProcess_horizon",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralConditionalSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_horizon",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralContinuousVersion.continuousIntegralProcess_horizon",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.integralClassProcess_horizon",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_zero",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_martingale"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralConditionalSource.integralProcess_returns_literal",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralConditionalSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_returns_literal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralContinuousVersion.continuousIntegralProcess_returns_literal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralClosure.integral_returns_literal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralClosure.integral_returns_literal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity.predictableIntegral_returns_literal"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralConditionalSource.integralProcess_returns_literal_prefix",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralConditionalSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_returns_literal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralContinuousVersion.continuousIntegralProcess_returns_literal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralClosure.integral_returns_literal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralClosure.integral_returns_literal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralFinitePaths.integralProcess_eq_literalPath"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralConditionalSource.integralProcess_mean_zero",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralConditionalSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_mean_zero",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_zero",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralCompensator.compensatedIntegral_mean_zero",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralContinuousVersion.continuousIntegralProcess_zero",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.integralClassProcess_zero"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralL2TimeContinuity.continuous_truncate",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralL2TimeContinuity.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralL2TimeContinuity.continuous_truncate"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralL2TimeContinuity.continuous_integralClassProcess",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralL2TimeContinuity.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralL2TimeContinuity.continuous_integralClassProcess",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralContinuousVersion.continuousIntegralProcess_continuous",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralL2TimeContinuity.continuous_processClass",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralContinuousVersion.continuousIntegralProcess_energy",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralContinuousVersion.continuousIntegralProcess_horizon"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralL2TimeContinuity.processClass_eq_actual",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralL2TimeContinuity.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralL2TimeContinuity.processClass_eq_actual",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralSquareL1.actualSquareClass_eq",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSourceCheck.sourceMass_eq_actual",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralContinuousVersion.continuousIntegralProcess_eq_actual"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralL2TimeContinuity.continuous_processClass",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralL2TimeContinuity.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralL2TimeContinuity.continuous_processClass",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralL2TimeContinuity.continuous_integralClassProcess",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process_continuous",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralSquareL1.continuous_squareClass",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource.vectorProcess_continuous"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralL2TimeContinuity.integralProcess_meanSquare_tendsto",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralL2TimeContinuity.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralL2TimeContinuity.integralProcess_meanSquare_tendsto",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousAdaptedInputs.left_integrands_meanSquare_tendsto",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_mean_zero",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMaximalControl.integralProcess_square_submartingale"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralTimeSource.timeSet_predictable",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralTimeSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.timeSet_predictable",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.timeSet_measurable"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralTimeSource.timeSet_measurable",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralTimeSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.timeSet_measurable",
+        "UEOT.V3.FiniteHistoryMeasurable.measurable_time",
+        "CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.JumpPath.measurableSet_horizonSet",
+        "UEOT.V3.CompactArgmaxSelector.measurableSet_hit",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.timeSet_predictable"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralTimeSource.truncateAmbient_coe",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralTimeSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.truncateAmbient_coe",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.truncate_coe",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.truncateAmbient_predictable",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableMultiplier.ambientMultiplier_coe"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralTimeSource.truncateAmbient_predictable",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralTimeSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.truncateAmbient_predictable",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.truncateAmbient_coe",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableMultiplier.ambientMultiplier_predictable"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralTimeSource.truncate_coe",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralTimeSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.truncate_coe",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.truncateAmbient_coe",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.truncate_zero",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.truncate_norm_le"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralTimeSource.truncate_norm_le",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralTimeSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.truncate_norm_le",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.truncate_coe"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralTimeSource.truncate_zero",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralTimeSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.truncate_zero",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.truncate_coe",
+        "UEOT.V3.CompactCausalOptimalityCore.Model.truncatedValue_zero",
+        "UEOT.V3.FiniteDiscountedControl.CausalPolicy.truncatedValue_zero",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.truncate_horizon"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralTimeSource.truncate_horizon",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralTimeSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.truncate_horizon"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralTimeSource.integralClassProcess_zero",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralTimeSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.integralClassProcess_zero",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_zero",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralContinuousVersion.continuousIntegralProcess_zero",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralL2TimeContinuity.continuous_integralClassProcess",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralClassProcess_adapted"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralTimeSource.integralClassProcess_horizon",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralTimeSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.integralClassProcess_horizon",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_horizon",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralContinuousVersion.continuousIntegralProcess_horizon",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralL2TimeContinuity.continuous_integralClassProcess",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralClassProcess_adapted"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralTimeSource.integralClassProcess_norm_le",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralTimeSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.integralClassProcess_norm_le",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.integralClassProcess_energy",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.integralClassProcess_zero",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.integralClassProcess_horizon",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralClassProcess_adapted"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralTimeSource.integralClassProcess_energy",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralTimeSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.integralClassProcess_energy",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_energy",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralContinuousVersion.continuousIntegralProcess_energy",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralL2TimeContinuity.continuous_integralClassProcess",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralClassProcess_adapted"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralTimeSource.integralAt_apply",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralTimeSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.integralAt_apply",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorTimeInput.intervalInput_apply"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralTimeSource.integralAt_norm_le_one",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralTimeSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation.integralAt_norm_le_one",
+        "UEOT.V3.FiniteRecurrentDecompositionStability.RecurrentBlockDecomposition.direct_norm_le_one",
+        "UEOT.V3.HilbertMeanSourceVariance.integral_norm_sq_le_one_of_ae_norm_le_one",
+        "UEOT.V3.HilbertMeanSourceVariance.integral_norm_sub_mean_sq_le_one"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralTimeSource.oneStep_condExp_prefix",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralTimeSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralConditionalStep.oneStep_condExp_prefix",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOneStepIntegral.oneStep_condExp_square",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOneStepIntegral.oneStep_condExp_zero",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorOneStepIntegral.oneStep_condExp_zero",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralConditionalStep.oneStep_projection_prefix"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralTimeSource.oneStep_projection_prefix",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralTimeSource.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralConditionalStep.oneStep_projection_prefix",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralConditionalStep.oneStep_condExp_prefix"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorPredictableDensity.time_support_ae",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorPredictableDensity.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.time_support_ae"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorPredictableDensity.indicatorClass_congr_ae",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorPredictableDensity.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.indicatorClass_congr_ae",
+        "UEOT.V3.HilbertMeanSubGaussianLawTransfer.HasSubgaussianMGF.congr_ae"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorPredictableDensity.interval_rectangle_mem_domain",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorPredictableDensity.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.interval_rectangle_mem_domain",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.future_rectangle_mem_domain"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorPredictableDensity.future_rectangle_mem_domain",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorPredictableDensity.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.future_rectangle_mem_domain",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.interval_rectangle_mem_domain"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorPredictableDensity.zero_rectangle_class_zero",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorPredictableDensity.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.zero_rectangle_class_zero"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorPredictableDensity.constant_indicator_mem_domain",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorPredictableDensity.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.constant_indicator_mem_domain",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity.predictable_indicator_mem_domain"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorPredictableDensity.readout_preimage_future",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorPredictableDensity.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.readout_preimage_future",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.readout_preimage_zero"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorPredictableDensity.readout_preimage_zero",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorPredictableDensity.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.readout_preimage_zero",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.readout_preimage_future"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorPredictableDensity.inputLaw_zero",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorPredictableDensity.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.inputLaw_zero",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.AbsorbingLeakage.law_zero",
+        "UEOT.V3.PathKLChain.pathLaw_zero"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorPredictableDensity.predictable_indicator_mem_domain",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorPredictableDensity.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity.predictable_indicator_mem_domain",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.constant_indicator_mem_domain"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorPredictableDensity.fullPredictableL2_le_integralDomain",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorPredictableDensity.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity.fullPredictableL2_le_integralDomain",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.integralDomain_le_fullPredictableL2",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity.integralDomain_eq_fullPredictableL2"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorPredictableDensity.integralDomain_eq_fullPredictableL2",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorPredictableDensity.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity.integralDomain_eq_fullPredictableL2",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity.fullPredictableL2_le_integralDomain",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.integralDomain_le_fullPredictableL2"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorPredictableDensity.predictableIntegral_norm",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorPredictableDensity.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity.predictableIntegral_norm",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralClosure.integral_norm",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralClosure.integral_norm",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralPastLocalization.predictableIntegral_localize",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity.predictableIntegral_unit_energy"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorPredictableDensity.predictableIntegral_returns_literal",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorPredictableDensity.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity.predictableIntegral_returns_literal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralClosure.integral_returns_literal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralClosure.integral_returns_literal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale.integralProcess_returns_literal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity.predictableIntegral_unit_energy"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorPredictableInputs.predictableSigma_le",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorPredictableInputs.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.predictableSigma_le",
+        "UEOT.V3.HilbertMeanPrefixFiltration.prefixSigma_le"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorPredictableInputs.fullPredictableL2_closed",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorPredictableInputs.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.fullPredictableL2_closed"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorPredictableInputs.predictable_interval_rectangle",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorPredictableInputs.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.predictable_interval_rectangle",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.intervalIntegrand_predictable",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity.predictableIntegral_norm",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity.predictableIntegral_returns_literal"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorPredictableInputs.intervalInput_predictable",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorPredictableInputs.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.intervalIntegrand_predictable",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorRepresentation.intervalInput_refine",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.elementary_input_predictable",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousAdaptedInputs.inputFunction_predictable",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralLiteralIntervals.intervalInput_coe"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorPredictableInputs.elementary_input_predictable",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorPredictableInputs.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.elementary_input_predictable",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousAdaptedInputs.inputFunction_predictable"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorPredictableInputs.integralDomain_le_fullPredictableL2",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorPredictableInputs.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity.fullPredictableL2_le_integralDomain",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.integralDomain_le_fullPredictableL2",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity.integralDomain_eq_fullPredictableL2"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorPredictableInputs.blockInput_class",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorPredictableInputs.lean",
+      "suggested_symbols": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs.blockInput_class"
+      ],
+      "decision": "Actual typed native vector/joint-source proof reviewed; scalar/source-independent alternatives classified by decisions above, literal consumer/root source reports bind exact proof."
+    }
+  ],
+  "semantic_evidence": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/whole_theory_formal_closure_v1/independent/BROWNIAN_VECTOR_PREDICTABLE_INPUTS_SOURCE_REVIEW.json",
+      "sha256": "64c611e5fdb3d6e9b5a52823ece257b1f87952de0ce92e039c0925c4704f2eef"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/whole_theory_formal_closure_v1/independent/BROWNIAN_VECTOR_PREDICTABLE_DENSITY_SOURCE_REVIEW.json",
+      "sha256": "982e2bbec69d2f46267396c94b006cb5cb3f65ad287783eb5a5d5dafb0caaf6b"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/whole_theory_formal_closure_v1/independent/BROWNIAN_VECTOR_TIME_PROCESS_SOURCE_CHAIN_REVIEW.json",
+      "sha256": "92960afa5abfcdb5a0309694aac0a55aabd8a08f01efe95c03f155ece1ac2264"
+    }
+  ],
+  "scope": "Vector source portion only. Nonvector exact source semantics/typed reuse come from nonauthor source reports; preflight lexical PASS alone proves nothing. Whole theory OPEN."
+}
