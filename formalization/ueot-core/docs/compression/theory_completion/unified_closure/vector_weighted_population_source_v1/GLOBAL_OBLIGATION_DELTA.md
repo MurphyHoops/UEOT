@@ -1,0 +1,5 @@
+# Current whole-theory difference
+
+Actual main409 already closes same-input deterministic partition QV, whole-joint-past finite vector noise sums, complete funded training and declared noisy-journal discovery sources. This candidate adds actual vector representation/closed-span integral, actual scalar weighted first/second terms, and mixed-program own P5/offspring Price/P12 with complete joint risk. These reduce real named source premises; they do not close their general parent obligations.
+
+Next obligatory science: actual Taylor/remainder→Ito, vector full joint predictable density and original P11 SDE/control/normalized measure-change consumers; C5 noisy/near-degenerate calibration into the same native action gap; remaining adaptive/related data and discovery, formation/binding/splitting/scale and compatible assembly. Protected program/environment/evaluation/explicit external ports are declared model conditions. A new model cannot silently inherit a conclusion from an incompatible old source. Whole original106/P0–P12/C1–C7/UMC and both-book contract remains active; numeric source/test/report counts are not completion.

@@ -231,6 +231,10 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPartitionQV
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorSimplePredictableIntegral
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFundedProbe
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterPopulationJournalLearning
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralClosure
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralProductCompensator
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralWeightedQV
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterOwnProgramJointJournal
 /-!
 # UEOT Theory Completion public root
 
