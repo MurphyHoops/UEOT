@@ -1,0 +1,38 @@
+{
+  "schema": "UEOT/REGISTER_FAULT_SOURCE_INDEPENDENT_REVIEW/V1",
+  "reviewer": "independent /root/longterm_final_review; no authorship",
+  "reviewed_at": "2026-10-29T10:57:45.716908+00:00",
+  "verdict": "CLEAR_FOR_PROTECTED_CODE_FAULT_SOURCE_CONTRACT",
+  "blocking_findings": [],
+  "source": "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultSource.lean",
+  "source_sha256": "0693d8fe88fe0ca174aee514b5bc35a594d0efb1d02563acc5279fa9b358059b",
+  "source_dependency_sha256": "904c7ccafdffbb52a1f9ea5e0f048c9bac2ed35f59cd9918e228ae98dc38b6a7",
+  "findings": [
+    "Physical damage is an actual deterministic update setting address i opposite to the retained program bit. Controller and code are unchanged.",
+    "potential_finite is derived from the existing finite 0/1 physical potential and finite mismatch penalty.",
+    "carrier_iff_program derives both the real program-specific recovery condition (via the existing actual expected-hitting source) and finite potential. It is not assumed as a success field.",
+    "actual_fault_envelope follows from retained code and the proved carrier characterization. No hF premise remains in its signature.",
+    "actual_fault_outside_target shows genuine damage to the original target for every source-bit-consistent input.",
+    "assembled_enters_actual_fault_system directly calls existing compiled_enters_p5 with the derived hF and himpl."
+  ],
+  "scope_limits": [
+    "Protected-code physical fault class only; arbitrary program/controller corruption is not demonstrated.",
+    "The final theorem proves entry into the existing repairable carrier, not continued membership in the legitimate target for all hazard rates. Epsilon1 remains permitted by that carrier statement.",
+    "The source uses a retained target program; it does not discover/synthesize that program from the physical state.",
+    "Physical-state disturbance is deterministically opposite to the retained target, not necessarily a flip of an already-damaged current bit. Header wording should use that precise description.",
+    "No long-run resource/hazard balance or whole organizational closure is inferred."
+  ],
+  "fresh_type_check": {
+    "file": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/whole-theory-audit-20261029/p11-independent/REGISTER_FAULT_TYPES.lean",
+    "sha256": "5eca8760ff43c1a54553ada953185b4175e94d83b92475b98f5e3de30d14cb45",
+    "log_sha256": "fbcd269f3eca27fabde3fcbc2bce37af5371e6310ee94b4084129a4805fef6a3",
+    "exit_code": 0,
+    "endpoints": 3,
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "publication_scope": "This file is outside first frozen594b75db seven-module package. Its review does not block or enlarge that publication."
+}
