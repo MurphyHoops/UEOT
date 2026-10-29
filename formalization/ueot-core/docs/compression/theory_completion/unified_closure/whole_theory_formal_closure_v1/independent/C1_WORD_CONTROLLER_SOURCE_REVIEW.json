@@ -1,0 +1,163 @@
+{
+  "schema": "UEOT_INDEPENDENT_SOURCE_REVIEW_V1",
+  "verdict": "PASS_NO_SOURCE_SEMANTIC_BLOCKER",
+  "created_utc": "2026-10-29T17:32:23.269809+00:00",
+  "reviewer": {
+    "task": "/root/c1_joint_review",
+    "role": "Independent reviewer of WordController authored by /root/register_infinite_record. I authored older LatentPath/ResponseRecursion dependencies, independently reviewed elsewhere, and did not author WordController, HistoryControl, AdaptiveCanonical or CanonicalSource."
+  },
+  "source": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveWordController.lean",
+    "sha256": "61be37e3b9394e8a790d870acf8b844fe712e97220c26b74528c78f585bf276d",
+    "bytes": 22885
+  },
+  "author_receipt": {
+    "path": "/private/tmp/ueot-word-controller-receipt.json",
+    "sha256": "d2179b65a4dadda90eff475bfc49049811c7eda3a56c44f78c25554409e072cd",
+    "bytes": 5941
+  },
+  "dependencies": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveHistoryControl.lean",
+      "sha256": "07a84881744a7c42919130e995c866c69f65d4f906c7a21270c8fe068ae7a32c",
+      "bytes": 35145
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveAdaptiveCanonical.lean",
+      "sha256": "752effd3bb314a756db5ec78b7a9f0602e9fc8e3e0e2d76aaed9fe907417ab23",
+      "bytes": 6833
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "sha256": "d3b986dc16dff3feb201f0f27a0f23ae3ece5f4aa3f05aad84184fc585b28d50",
+      "bytes": 17024
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "sha256": "5882e71ff4d417e2e6a8e7c41c734dbba0b4bff72533a2bd830a431ea2988190",
+      "bytes": 21053
+    }
+  ],
+  "original_minimality_API_bindings": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/PredictionDependent.lean",
+      "sha256": "54f2569cf7323471f9f4214a78df41ab53f276231f78645a810bba44e1172e92",
+      "bytes": 3922
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/PredictionAE.lean",
+      "sha256": "75bb919a5e1c2c7b81cc36335a95400cb7d747c12a5c85f80c38e50affffa16f",
+      "bytes": 8859
+    }
+  ],
+  "whole_theory_goal": "OPEN. This proves actual physical fresh-word execution and relative mod-null minimality for predictors of all declared fresh observed-history controllers; not arbitrary-memory program identification or whole-theory closure.",
+  "read_scope": {
+    "complete_new_source": true,
+    "source_lines": 391,
+    "all_private_cons_snoc_inductions_and_readback_proofs_read": true,
+    "upstream_exact_interfaces_read": [
+      "HistoryControl same actual retained-latent/filter path",
+      "ResponseRecursion actual_word_factorization and responseLaw/wordKernel",
+      "AdaptiveCanonical actualAdaptiveLaw and actual_adaptive_factorization",
+      "CanonicalSource actual_response_ae_minimal and probability-array embedding decoder",
+      "PredictionDependent common_factorization and canonical_ae_minimal ae_all_iff over countable word index"
+    ]
+  },
+  "mathematical_assessments": [
+    {
+      "lines": "26-61",
+      "claim": "Actual ordered response consumption",
+      "assessment": "consumeWord recursively executes the original actual posterior updates and appends exactly the prescribed action and sampled observation. snocWord preserves List.TProd observation order and the append identity is proved by induction. All maps use the explicit natural finite-list history measurable interface and original posterior measurability."
+    },
+    {
+      "lines": "63-142",
+      "claim": "Longer word law from SAME source terminal posterior",
+      "assessment": "The original source-derived actual_word_factorization supplies first-observation/continuation execution. Induction proves the snoc decomposition through finalObservationKernel at the posterior actually computed while consuming u. Actual response laws, not supplied factorized numerators or desired continuation certificates, feed the induction; all integral swaps are nonnegative kernel integrals with shown measurability."
+    },
+    {
+      "lines": "144-198",
+      "claim": "Literal physical controller action permissions",
+      "assessment": "controller(u,defaultAction) is exactly deterministic action u.getD(history.length,defaultAction). Its measurability is from measurable length and a Nat-indexed map, not a latent/belief/response oracle or uncountable action selection. defaultAction is an explicit already-allowed A. Source successor proof uses consumeWord_length from EMPTY initial history so the clock agrees exactly with the word prefix index."
+    },
+    {
+      "lines": "203-239",
+      "claim": "Actual source execution before word horizon",
+      "assessment": "Induction on n<=length(u) proves the SAME controller belief/history time-n marginal equals actual responseLaw of u.take(n) mapped through consumeWord. Within the registered word, getD is proved equal to the actual nth action, so defaultAction does not intervene. Original physical/filter path transport then identifies the actual retained-latent run at the word horizon. The initial latent is sampled once from b; later latents are P/O transitions, not posterior resamples."
+    },
+    {
+      "lines": "241-329",
+      "claim": "Measurable ordered observation projection with safe totalization",
+      "assessment": "events pairs every action with its matching ordered observation. Actual consumed history equals initial history appended with these literal events. readObservation uses defaultObservation ONLY for missing coordinates; readWord_events proves exact recovery for all existing actual word coordinates. observationProjection reads complete history at length(u), then all positions0..length(u)-1 in order. Mapping the actual physical law through that measurable projection gives EXACT original responseLaw. Empty word is handled by the unique empty tuple. No fabricated observation or missing-event default enters actual word law."
+    },
+    {
+      "lines": "333-367",
+      "claim": "All-actual-adaptive prediction really implies original canonical minimality",
+      "assessment": "FreshController is the SAME class of actual Markov kernels on literal observed histories, with a stored Markov proof. wordAsController supplies each deterministic word program as a real member. freshLaw is actual physical adaptive execution from terminal posterior with EMPTY future controller memory. Given a statistic s and measurable Markov predictions L(c) of EVERY such actual fresh full-history law, map only L(wordAsController(u)) through actual observationProjection. The proved physical word-law bridge derives the original finite-word prediction premise. The original CanonicalSource.actual_response_ae_minimal is then called, with its proper all-normalized-array embedding decoder; no word-law branch/certificate is assumed independently."
+    },
+    {
+      "lines": "375-388",
+      "claim": "Mod-null sigma lower bound and exact quantifiers",
+      "assessment": "The sigma-information conclusion is the original PredictionAE.aeFactors_sigmaLE applied to the derived actual canonical factorization. hL is forall c, ae h for EACH c. Only the countable word-indexed subclass is assembled by original PredictionDependent.common_factorization/ae_all_iff. No common null set over uncountably many controllers, priors or stochastic policies is taken."
+    }
+  ],
+  "quantifier_and_permission_guards": {
+    "past_law": "The measure supporting minimality remains original CanonicalSource observedPrefixLaw for its declared clock/current-belief pastPolicy. This is not a new arbitrary-full-history past minimality theorem.",
+    "future_class": "All actual FRESH observed-history Markov controllers in this source, initialized at EMPTY future history. These are new registered future experiments, not an unchanged continuation of the past policy or identification of nonempty controller memories.",
+    "initial_latent": "For each registered initial b the actual experiment samples x0~b once and retains/advances physical state. For minimality, this initial b is the actual terminal posterior at the given past; no assertion equates different control memories.",
+    "default_action": "Explicit A value used only after u is complete. It guarantees an admissible infinite controller and does not enlarge allowed actions.",
+    "default_observation": "Explicit W value only totalizes missing-coordinate reads of arbitrary histories. Exact actual word readback is independent of its value.",
+    "countability": "Countable A is used for countable finite words in original common-a.e. minimality. No jointly measurable kernel over the set of all controllers and no uncountable-controller intersection is asserted.",
+    "measurability": "Source snoc/physical-state part is under CountablyGenerated W and nonempty SB latent. Declared actual adaptive wrapper/minimality is under SB W; no action measurable-singleton condition is added for fixed word execution/minimality itself. Combining with response-state adaptive sufficiency retains that prior module's extra jointly measurable countable-singleton action conditions.",
+    "prediction_premise": "hL is the legitimate definition of the competing statistic predicting all ACTUAL fresh adaptive law kernels. It is not a desired Bayes factorization or unproved physical-execution implementation premise."
+  },
+  "independent_verification": {
+    "direct_source": {
+      "command": "lake env lean UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveWordController.lean",
+      "observed_exit_code": 0,
+      "log": {
+        "path": "/private/tmp/ueot-word-controller-independent-direct.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "all_public_types_axioms_and_actual_consumers": {
+      "command": "lake env lean /tmp/ueot-word-controller-independent-audit.lean",
+      "observed_exit_code": 0,
+      "input": {
+        "path": "/private/tmp/ueot-word-controller-independent-audit.lean",
+        "sha256": "1cd1eb3219caf802ba1166061ec43d323339c258657305590c52a2150dfaee46",
+        "bytes": 8971
+      },
+      "log": {
+        "path": "/private/tmp/ueot-word-controller-independent-audit.log",
+        "sha256": "60edd18a68078f311d935d61084558eaafd3ebb76a0194eb978e50a7a84239df",
+        "bytes": 22946
+      },
+      "reported_axioms_only": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "actual_external_consumer_cases": [
+      "For ANY two permitted default actions and any two observation read defaults, actual horizon-projected controller laws are equal by the proved SAME original response law.",
+      "Literal repeated-action word[a,a] with two observations(w0,w1) reads back (w0,(w1,unit)) in order and never the missing-event default.",
+      "Actual physical shared-Gaussian one-action program[0] has first law Gaussian(0,1) for ANY allowed integer post-horizon default action and ANY real observation read default.",
+      "The ALL-controller prediction premise is realized without an oracle: choose s=actualCanonical and L(c)=the computed adaptiveFutureKernel for c with empty history. Original actual_adaptive_factorization proves hL for every c, then NEW actual_response_adaptive_ae_minimal is actually consumed. This validates a non-vacuous common consumer for source construction and minimality."
+    ],
+    "source_scan": {
+      "sorry_admit_axiom_opaque_declarations": false
+    }
+  },
+  "reuse_assessment": "Reuses original actual word disintegration, actual history/filter path transport, homogeneous time marginal and kernel integration, original countable canonical minimality and sigma-factor lower bound. The additional snoc/ordered physical-controller projection is the precise missing bridge; it avoids an independent open-loop oracle branch or a new general quotient-image framework.",
+  "findings": [],
+  "boundaries": [
+    "No comparison between different controller memories, no assertion that response alone realizes arbitrary preexisting private/control memory.",
+    "No arbitrary uncountable-action all-protocol minimality or common null set over all controllers.",
+    "No arbitrary-history past-law minimality, observation classes lacking declared disintegration regularity, empirical calibration, cost/risk extension or cross-source World assembly.",
+    "The construction is mathematical/noncomputable and is not a finite-data executed strategy learner.",
+    "Whole-theory formal closure remains OPEN."
+  ],
+  "mutation_scope": "Only this exclusive review JSON and external /tmp independent harness/log/receipt. No source/root/Git/GI/books edits.",
+  "promotion": "Clears this exact frozen source contract for root-managed public build, typed reuse and integration; no whole-theory promotion."
+}
