@@ -1,0 +1,269 @@
+{
+  "schema": "ueot-independent-typed-reuse-review-v1",
+  "verdict": "CLEAR_FOR_DECLARED_C1_FINITE_JOINT_BELIEF_RECORD_PACKAGE",
+  "whole_theory_goal": "OPEN_NOT_ESTABLISHED",
+  "reviewer": "independent /root/register_typed_review; no authorship of this C1 source",
+  "base_sha": "619023d279a2eaf05d25312c6acad642d93d8131",
+  "candidate_sha": "e726b84a33dd1dbbd01ecce261d3b8555f710c30",
+  "scope": "Every FKRG JSON new declaration and hit, including candidates omitted from the shorter Markdown display. Actual raw latent/filter coupling is explicitly EXCLUDED until separately proved.",
+  "source_sha256": {
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean": "106c508724d8af8e520da5511c7b0e0299b1a92e637d0e5825cd355f81834998",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveJointPath.lean": "4921b3880b0fdf7979585dc63dc00a07e87e31604f4a94bcec52c8e602964834"
+  },
+  "candidate_target_source_sha256": {
+    "formalization/ueot-core/UEOT/V3/CompactArgmaxSelector.lean": "6721730c64e4fb003167a54a640c15ed4f79557b55a3779915709e4f6a5ce550",
+    "formalization/ueot-core/UEOT/V3/CompositionParentInformation.lean": "ab1d2132301fd8702ced31e6ba2bb74ec784c453dd424a13fe535d1503c1b64d",
+    "formalization/ueot-core/UEOT/V3/CompositionPathKernelProduct.lean": "b9308e5a62fe393ab6f8a47386f35742bebe87eccc3e53894a277ec05abc0c45",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterResourceSource.lean": "ffa4d02b21e46b940d8709802f4873661301d7eac35375491ba1837713b14e4c",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean": "514927df86f19ee9af7ab60f90caebb15779e9feb2c79deba655335098c9ad15",
+    "formalization/ueot-core/UEOT/V3/InformationDiscreteLawCode.lean": "11b597937ea9160294f9f623ff53ed2cb9970119259bff7e36208c47c41cf261",
+    "formalization/ueot-core/UEOT/V3/InformationPredictiveCoreRecovery.lean": "86110eff3ec38d2a4e08605254360074c9fead20b2a6364414aff9a71c3e42ff",
+    "formalization/ueot-core/UEOT/V3/PredictionAE.lean": "75bb919a5e1c2c7b81cc36335a95400cb7d747c12a5c85f80c38e50affffa16f",
+    "formalization/ueot-core/UEOT/V3/PredictionDependent.lean": "54f2569cf7323471f9f4214a78df41ab53f276231f78645a810bba44e1172e92",
+    "formalization/ueot-core/UEOT/V3/RepresentationCovariance.lean": "8fefb4d93f7049606a1c23d31a5f4b4f6473c6060cc29f7e5e53f2c1d9f6d5cb",
+    "formalization/ueot-core/UEOT/V3/ThirdParty/CrooksJarzynski/ContinuousTimeJumpTrajectory.lean": "bed8d283cd74c0ae6ecf23307d6bf67ce4908b8b8fa74e8fb3aa1803ad45306d"
+  },
+  "blocking_findings": [],
+  "typed_judgments": [
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveJointPath.measurable_nextRecord",
+      "source_sha256": "4921b3880b0fdf7979585dc63dc00a07e87e31604f4a94bcec52c8e602964834",
+      "elaborated_type_sha256": "65b1ea3b9f14c7172976efaa99a7ce92e91b4e2363a6aef172ccb9c69bc634e9",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [
+        {
+          "symbol": "CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.FullPath.measurable_trajectory",
+          "path": "formalization/ueot-core/UEOT/V3/ThirdParty/CrooksJarzynski/ContinuousTimeJumpTrajectory.lean",
+          "elaborated_type_sha256": "9ea32fe974f98c5400e6b8b7d1592afbf2daabbb9ef54eae3fcd8ecc48d804fb",
+          "judgment": "NOT_TYPE_COMPATIBLE: this is evaluation of a JumpPath/FullPath at a real time, not nextRecord from a belief/event or projectRecord from a clocked belief payload. C1 needs no jump-time process. Direct product/projection/posterior measurability via existing fun_prop is the smaller applicable proof."
+        },
+        {
+          "symbol": "CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.JumpPath.measurable_trajectory",
+          "path": "formalization/ueot-core/UEOT/V3/ThirdParty/CrooksJarzynski/ContinuousTimeJumpTrajectory.lean",
+          "elaborated_type_sha256": "5884eb00a0bca8b29d5c02ac06f78d4187122f2b2ed2a8f9ca89496a69b407fb",
+          "judgment": "NOT_TYPE_COMPATIBLE: this is evaluation of a JumpPath/FullPath at a real time, not nextRecord from a belief/event or projectRecord from a clocked belief payload. C1 needs no jump-time process. Direct product/projection/posterior measurability via existing fun_prop is the smaller applicable proof."
+        },
+        {
+          "symbol": "UEOT.V3.CompactArgmaxSelector.measurable_selector",
+          "path": "formalization/ueot-core/UEOT/V3/CompactArgmaxSelector.lean",
+          "elaborated_type_sha256": "3dd3c2f58cd37110dc2dba2fb4d60ef52faa0ca324daa9b221fee28e73f7d10e",
+          "judgment": "NOT_TYPE_COMPATIBLE: requires compact metric/Borel state and action spaces plus a continuous q and proves measurability of its chosen argmax. nextRecord executes the already fixed jointly measurable Bayesian posterior and records an event; it performs no argmax or policy selection."
+        },
+        {
+          "symbol": "UEOT.V3.InformationDiscreteLawCode.DiscreteLawCode.measurable_decode",
+          "path": "formalization/ueot-core/UEOT/V3/InformationDiscreteLawCode.lean",
+          "elaborated_type_sha256": "ccaa2463cc3ea3afc60f88c6cc28870f113eeb35a9be25e8968528e2b5cd7066",
+          "judgment": "NOT_TYPE_COMPATIBLE: conclusion is measurability of a decoder for a Countable measurable-singleton label space C given a DiscreteLawCode. C1 nextRecord is a clocked posterior probability measure with literal event payload and neither discrete code nor countable belief state."
+        },
+        {
+          "symbol": "UEOT.V3.CompactArgmaxSelector.measurableSet_nextPredicate",
+          "path": "formalization/ueot-core/UEOT/V3/CompactArgmaxSelector.lean",
+          "elaborated_type_sha256": "134aea94bac97baf5de5d3d79fb451978250f10a866ed9c3e52d444d010c743d",
+          "judgment": "NOT_TYPE_COMPATIBLE: conclusion is a measurable compact-argmax approximation hit/distance set, with continuity, metrics, dense sequence and Approximation inputs. None represents a C1 posterior update; importing them would add unsupported assumptions."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveJointPath.recordKernel_apply",
+      "source_sha256": "4921b3880b0fdf7979585dc63dc00a07e87e31604f4a94bcec52c8e602964834",
+      "elaborated_type_sha256": "6cbb829a644a574511fa8a61195dce553430637b91b6a418d74d7ec31308e68c",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.CompositionPathKernelProduct.reblockedKernel_apply",
+          "path": "formalization/ueot-core/UEOT/V3/CompositionPathKernelProduct.lean",
+          "elaborated_type_sha256": "d2a4d2019ebaa7ef8b640af0f22563560c8ab99f02bdecf29c837529dadde5ac",
+          "judgment": "NOT_TYPE_COMPATIBLE: reblocks a FINITE product-valued path kernel by a fixed coordinate partition. recordKernel executes a state-dependent action/observation kernel and maps via nextRecord(x,event); its state-dependent deterministic execution is not reblocking. Existing Kernel.compProd, deterministic, snd and map_apply rules are reused locally."
+        },
+        {
+          "symbol": "UEOT.V3.PredictionAE.coordinateKernel_apply",
+          "path": "formalization/ueot-core/UEOT/V3/PredictionAE.lean",
+          "elaborated_type_sha256": "282864144e9a15cf932aa3a37e741f338d099e9d33d4eae078399a27d6f8b744",
+          "judgment": "NOT_TYPE_COMPATIBLE: evaluates coordinateKernel on an input family of measures and returns c i. The recorder instead composes policy, observation and posterior kernels; it is not a coordinate lookup in a measure family. Its private execute_apply proves the required dependent pushforward from actual kernel composition."
+        },
+        {
+          "symbol": "UEOT.V3.PredictionDependent.coordinateKernel_apply",
+          "path": "formalization/ueot-core/UEOT/V3/PredictionDependent.lean",
+          "elaborated_type_sha256": "9ec9ce0f89b00c1ca93def347450ca8d18a52dc344893a3dd3e461eadb117630",
+          "judgment": "NOT_TYPE_COMPATIBLE: evaluates coordinateKernel on an input family of measures and returns c i. The recorder instead composes policy, observation and posterior kernels; it is not a coordinate lookup in a measure family. Its private execute_apply proves the required dependent pushforward from actual kernel composition."
+        },
+        {
+          "symbol": "UEOT.V3.RepresentationCovariance.transportKernel_apply",
+          "path": "formalization/ueot-core/UEOT/V3/RepresentationCovariance.lean",
+          "elaborated_type_sha256": "a209f334e342209ab34ec017a15e9522314722b5ebb71144c57a3bceaf867321",
+          "judgment": "NOT_TYPE_COMPATIBLE: transports a homogeneous kernel across a measurable EQUIVALENCE T and evaluates at T x. The actual recorder map depends on both x and event and generally loses information; no measurable equivalence or conjugate state model exists as an input."
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.pmfRowKernel_apply",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+          "elaborated_type_sha256": "ab1bd1208de70ff057b920bb32fe6ee8b8eb12e366b500cc2e002e6dad52659e",
+          "judgment": "NOT_TYPE_COMPATIBLE: converts a PMF row J on a finite input H into its measure. C1 permits general Standard Borel belief spaces and countably generated observations; recordKernel is not a finite-PMF conversion, and imposing finite rows would shrink its stated model class."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveJointPath.measurable_projectRecord",
+      "source_sha256": "4921b3880b0fdf7979585dc63dc00a07e87e31604f4a94bcec52c8e602964834",
+      "elaborated_type_sha256": "a78b241276549a141ff0fcd4988684e1c20ad921c5b349127c6541679961d545",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [
+        {
+          "symbol": "CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.FullPath.measurable_trajectory",
+          "path": "formalization/ueot-core/UEOT/V3/ThirdParty/CrooksJarzynski/ContinuousTimeJumpTrajectory.lean",
+          "elaborated_type_sha256": "9ea32fe974f98c5400e6b8b7d1592afbf2daabbb9ef54eae3fcd8ecc48d804fb",
+          "judgment": "NOT_TYPE_COMPATIBLE: this is evaluation of a JumpPath/FullPath at a real time, not nextRecord from a belief/event or projectRecord from a clocked belief payload. C1 needs no jump-time process. Direct product/projection/posterior measurability via existing fun_prop is the smaller applicable proof."
+        },
+        {
+          "symbol": "CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.JumpPath.measurable_trajectory",
+          "path": "formalization/ueot-core/UEOT/V3/ThirdParty/CrooksJarzynski/ContinuousTimeJumpTrajectory.lean",
+          "elaborated_type_sha256": "5884eb00a0bca8b29d5c02ac06f78d4187122f2b2ed2a8f9ca89496a69b407fb",
+          "judgment": "NOT_TYPE_COMPATIBLE: this is evaluation of a JumpPath/FullPath at a real time, not nextRecord from a belief/event or projectRecord from a clocked belief payload. C1 needs no jump-time process. Direct product/projection/posterior measurability via existing fun_prop is the smaller applicable proof."
+        },
+        {
+          "symbol": "UEOT.V3.InformationPredictiveCoreRecovery.measurable_predictiveCoreDecoder",
+          "path": "formalization/ueot-core/UEOT/V3/InformationPredictiveCoreRecovery.lean",
+          "elaborated_type_sha256": "cb2cdc57b468c77e703ca0dd442353e992fa75c4e80b789ac0d4eea7937dc7a4",
+          "judgment": "NOT_TYPE_COMPATIBLE: decodes a countable DiscreteLawCode from q:U×M->Measure Y. projectRecord keeps clock/event and pushes the probability-belief coordinate by Prod.fst; no decoder or countability of the belief image is supplied or needed."
+        },
+        {
+          "symbol": "UEOT.V3.CompositionParentInformation.measurable_parentCoreMap",
+          "path": "formalization/ueot-core/UEOT/V3/CompositionParentInformation.lean",
+          "elaborated_type_sha256": "ac292b84e27cda92e641d001588a63082a6f877d7100c48a1e2a1661bf4107d6",
+          "judgment": "NOT_TYPE_COMPATIBLE: measurable_parentCoreMap assumes finite core labels M,C and a supplied measurable g:M×U->C, and rearranges a source-parent coordinate. projectRecord is the probability-measure marginal map with an unchanged clock and optional literal event; current proof uses existing measurable_coordinate plus products, without finite-label assumptions."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveJointPath.actual_joint_step",
+      "source_sha256": "4921b3880b0fdf7979585dc63dc00a07e87e31604f4a94bcec52c8e602964834",
+      "elaborated_type_sha256": "8313fc98f7c81685e92eb78ffba54460514a5e79d4fdba75572b3ba8d695a5db",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterResourceSource.actual_balance_step",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterResourceSource.lean",
+          "elaborated_type_sha256": "6e3934bfc4a5d9f6348f46da981706dd99864bde54fc0cbb36c8dc8cf6379cda",
+          "judgment": "NOT_TYPE_COMPATIBLE: scalar cumulative resource balance recurrence for an actual register repair/action schedule. actual_joint_step is equality of pushed-forward C1 action/observation/next-posterior measures. Neither scalar resource accounting nor its recurrence can supply this joint-kernel equality."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveJointPath.actual_record_lumpability",
+      "source_sha256": "4921b3880b0fdf7979585dc63dc00a07e87e31604f4a94bcec52c8e602964834",
+      "elaborated_type_sha256": "c0ef456ca4dd746899981a2aad284cdbbbbc07c77394da5cc37bf3c47984326e",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "Source-specific adapter directly reusing the existing pointwise-lumpability characterization, prefix naturality, map_apply and lintegral_map machinery; no new generic path induction or caller-supplied desired path equality."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveJointPath.actual_finite_joint_path",
+      "source_sha256": "4921b3880b0fdf7979585dc63dc00a07e87e31604f4a94bcec52c8e602964834",
+      "elaborated_type_sha256": "98eb714316068d1740d91dccb78d2912a9711375eeb99d2f46646508ef4fefaf",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "Source-specific adapter directly reusing the existing pointwise-lumpability characterization, prefix naturality, map_apply and lintegral_map machinery; no new generic path induction or caller-supplied desired path equality."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveJointPath.actual_finite_record_event",
+      "source_sha256": "4921b3880b0fdf7979585dc63dc00a07e87e31604f4a94bcec52c8e602964834",
+      "elaborated_type_sha256": "49567e359eb40039f21d4d5a41300a6247844559b4086f0f44b87f8ed8a5c84d",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "Source-specific adapter directly reusing the existing pointwise-lumpability characterization, prefix naturality, map_apply and lintegral_map machinery; no new generic path induction or caller-supplied desired path equality."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveJointPath.actual_timevarying_joint_path",
+      "source_sha256": "4921b3880b0fdf7979585dc63dc00a07e87e31604f4a94bcec52c8e602964834",
+      "elaborated_type_sha256": "38bae3616c716d674c5868102ed2f735c0e1c3bf4c3c64ba5a2af1f63a10f8b3",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "Source-specific adapter directly reusing the existing pointwise-lumpability characterization, prefix naturality, map_apply and lintegral_map machinery; no new generic path induction or caller-supplied desired path equality."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveJointPath.actual_finite_record_lintegral",
+      "source_sha256": "4921b3880b0fdf7979585dc63dc00a07e87e31604f4a94bcec52c8e602964834",
+      "elaborated_type_sha256": "481578af8fa2f6dc1886e2c31096024c3200f5b8de51d18cf74b68befc91c629",
+      "outcome": "CHECKED_NO_MANDATORY_REFACTOR",
+      "reuse_candidates": [],
+      "judgment": "Source-specific adapter directly reusing the existing pointwise-lumpability characterization, prefix naturality, map_apply and lintegral_map machinery; no new generic path induction or caller-supplied desired path equality."
+    }
+  ],
+  "actual_reuse_and_nonreplacement_checks": [
+    {
+      "symbol": "MeasurablePredictiveSensor.sensor_observationLaw_factors",
+      "decision": "ACTUALLY_REUSED",
+      "reason": "actual_joint_step rewrites the actual same-source observation measure before comparing complete next-record pushforwards."
+    },
+    {
+      "symbol": "MeasurablePredictiveSensor.actual_posterior_coordinate_ae",
+      "decision": "ACTUALLY_REUSED",
+      "reason": "Used only under the actual observation measure for each fixed supplied action. No null-observation pointwise equality is assumed."
+    },
+    {
+      "symbol": "DynamicsKernel.strongLumpability_iff_apply",
+      "decision": "ACTUALLY_REUSED",
+      "reason": "Derives original StrongLumpability from the proved complete joint record row; it is not an input field."
+    },
+    {
+      "symbol": "DynamicsKernel.homTrajMeasure_prefix_naturality",
+      "decision": "ACTUALLY_REUSED",
+      "reason": "Supplies the entire finite-prefix transport without rebuilding path induction. Initial map of the actual Dirac belief/absent event is proved by Measure.map_dirac."
+    },
+    {
+      "symbol": "MeasurablePredictiveSensor.same_policy_controlled_recursion",
+      "decision": "INSUFFICIENT_FOR_NEW_JOINT_ROW",
+      "reason": "Matches only nextbelief. It does not retain sampled action and observation or prove their joint correlations; new row proof is required for complete records."
+    },
+    {
+      "symbol": "ScientificClosure.C1ParametricBelief common posterior and observation kernels",
+      "decision": "ACTUALLY_REUSED",
+      "reason": "sampledEvent and nextRecord execute the existing common jointly measurable versions. No independent posterior, decoder or minimal-image oracle is introduced."
+    },
+    {
+      "symbol": "MeasurablePredictiveSource.randomUpdate",
+      "decision": "NOT_A_REPLACEMENT_FOR_EXECUTE",
+      "reason": "Samples a fixed primitive noise measure. Here execute must sample a general state-dependent event kernel; the local helper is just existing composition and deterministic-map evaluation."
+    }
+  ],
+  "policy_and_scope_audit": [
+    "The same supplied pi(clock,visible current belief) is used on both sides. liftedPolicy projects only the current belief; the fresh sample and recorded prior payload are not exposed as extra control observations.",
+    "timedPolicy embeds every time-indexed measurable current-belief Markov-policy family using the discrete clock. This is not arbitrary full-history adaptation.",
+    "Complete finite-prefix equality preserves all clock/action/observation/posterior correlations and is actually consumed by measurable-event probabilities and nonnegative measurable prefix-cost expectations.",
+    "Nonempty Standard Borel state factors, measurable autonomous visible source update under common probability noise, hidden-blind sensor, countably generated observation and Markov kernels are explicit sufficient conditions. No compactness, finite state, measurable decoder or exact observation pointwise requirement is silently added.",
+    "The theorem concerns the actual C1 belief/event kernel. It does not yet identify a separately sampled primitive physical/hidden trajectory and recursive filter law. That missing source-consistency/intertwining proof remains necessary, not a no-go.",
+    "Only finite-prefix conclusions are delivered; a trajectory measure being defined on infinite sequences is not a separately established infinite-path transport or signed-integrable payoff theorem. Minimal image, general history controllers and whole-theory/book obligations remain open."
+  ],
+  "verification": {
+    "kernel_types": {
+      "command": "lake env lean /tmp/ueot-c1-joint-typed-reuse.lean",
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core",
+      "exit_code": 0,
+      "source": {
+        "path": "/tmp/ueot-c1-joint-typed-reuse.lean",
+        "sha256": "e108c10b03e9ed055a46dc4d59e7a4853b961d133f74f73c875b572d79729cce"
+      },
+      "log": {
+        "path": "/tmp/ueot-c1-joint-typed-reuse.log",
+        "sha256": "4df517220a7ab8a952dceab32441d19a1c6c80f354293b60b11bda7055d30b24"
+      },
+      "all_json_symbols_elaborated": true
+    },
+    "preflight": {
+      "path": "/tmp/ueot-c1-joint-reuse.json",
+      "sha256": "691bae05346bc91c9612862ee991c34c013b0cebe18eda890706b0a808fc7ab2"
+    },
+    "semantic_review": {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/whole_theory_formal_closure_v1/independent/C1_JOINT_PATH_REVIEW.json",
+      "sha256": "3ec919c989735008b079cc2a67432f5668cbbd0ee824032e317d8ec7d3c5219e"
+    },
+    "source_validation": {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/c1_joint_path_v1/SOURCE_VALIDATION.json",
+      "sha256": "bde1813e2aea8c0b00538641d9a7169d4518d33a9e2996e125eaed195c6eee36",
+      "source_and_public_build_log_hash_matched": true
+    },
+    "candidate_lean_blobs_match_worktree": true,
+    "public_build_and_independent_semantic_evidence_reused_by_identity": true,
+    "historical_full_build_and_raw_data_rerun": false
+  },
+  "mutation_scope": "Only this exclusive independent JSON and external checker/logs. No source, exports, Git, GI, QM/physics, raw data or global configuration mutations."
+}

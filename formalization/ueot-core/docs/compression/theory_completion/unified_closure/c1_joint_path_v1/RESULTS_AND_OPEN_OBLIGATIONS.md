@@ -1,0 +1,11 @@
+# Actual C1 finite joint paths
+
+Whole-theory goal **OPEN / NOT_ESTABLISHED**. Base main: 619023d279a2eaf05d25312c6acad642d93d8131 (PR393).
+
+The original promise is recursive prediction from one source, with actions and observations kept in the same process. Previous source/sensor proofs supplied the actual posterior projection observation-a.e., but not complete controlled-record transport. `MeasurablePredictiveJointPath` now proves the joint next action/observation/posterior row, derives strong lumpability, and reuses `DynamicsKernel.homTrajMeasure_prefix_naturality` for the complete finite record. It actually consumes that path identity for every measurable event and nonnegative cost of the complete record. No caller-supplied lumpability/path equality is used.
+
+The same arbitrary time-varying belief-Markov policy is run on both sides. The microscopic policy reads only clock and projected current belief, neither hidden coordinates nor recorded action/observation payload. Initial payload is absent, not a fictitious event. Standard-Borel nonempty state factors, measurable autonomous visible update under common probability noise, hidden-blind countably-generated sensor and Markov policies are explicit source conditions. Previous non-Dirac noisy-sensor, Gaussian and strict hidden-leak examples remain the family witnesses and boundary; no new resampling occurs.
+
+This is the actual C1 belief/action/observation-record kernel path. It does NOT yet couple separately sampled primitive hidden/physical trajectories to a recursive filter; that bridge requires law-level latent/posterior consistency, not pointwise strong lumpability on arbitrary raw (belief,state) pairs. General minimal predictive image, arbitrary full-history controllers and claimed infinite-path extensions remain separate obligations. The register fault/resource source chain, general P11, statistics/discovery, genealogy/scale, both books and global integration remain within the full mission.
+
+Independent semantic review and exact-source Lean/axiom evidence: `../whole_theory_formal_closure_v1/independent/C1_JOINT_PATH_REVIEW.json`. Public export is additive. Document build status does not supply missing mathematics or empirical support.
