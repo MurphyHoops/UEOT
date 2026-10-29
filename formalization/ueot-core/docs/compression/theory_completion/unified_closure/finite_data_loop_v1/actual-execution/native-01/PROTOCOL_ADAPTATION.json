@@ -1,0 +1,106 @@
+{
+  "schema": "FINITE_DATA_LOOP_PROTOCOL_ADAPTATION_V1",
+  "kind": "integration_native",
+  "baseline_ref": "f4c23ac61b440df9d88ca1e79a4684d589066489",
+  "frozen_inputs_sha256": "9d34ba9a9e3e8d8e78f8e6295f7a29b8b04871058df37fd14cbef0e15219ae76",
+  "source_tree_sha256": "98734d8a4ae150a66e5bbdac18008897d98f9cc97f7e68f45fa7eb5d813c92f2",
+  "immutable_driver": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/longterm_control_statistics_v1/native_protocol/integration_native.py",
+    "sha256": "d4708782bbb14360002f119715ba51f96c05e2e632694ba64c56c3d38ce8a924"
+  },
+  "executed_source_sha256": "fc9bde3927b8b664304432107e13651c28860a1c7dfb1cf0b6112ed48b9bb9df",
+  "substitutions": [
+    {
+      "old": "\"LONGTERM_ACTUAL_FULL_BUILD_V1\"",
+      "new": "\"FINITE_DATA_LOOP_ACTUAL_FULL_BUILD_V1\"",
+      "occurrences": 1
+    },
+    {
+      "old": "NAME = \"LONGTERM_CONTROL_STATISTICS\"",
+      "new": "NAME = \"FINITE_DATA_LOOP\"",
+      "occurrences": 1
+    },
+    {
+      "old": "PRIOR_MODULES, PRIOR_THEOREMS, PRIOR_OVERLAYS = 666, 4147, 8",
+      "new": "PRIOR_MODULES, PRIOR_THEOREMS, PRIOR_OVERLAYS = 712, 4542, 18",
+      "occurrences": 1
+    },
+    {
+      "old": "\"UNCOUNTED_SAME_SOURCE_LONGTERM_POLICY_AND_ROWWISE_SISC\"",
+      "new": "\"UNCOUNTED_FINITE_DATA_PATH_RISK\"",
+      "occurrences": 1
+    },
+    {
+      "old": "    exporter = helper.render_export(prior, public, modules, [])",
+      "new": "    exporter = helper.render_export(prior, public, modules, [])\n    exporter = exporter.replace(\"set_option maxHeartbeats 0\",\n        \"set_option maxHeartbeats 0\\nset_option maxRecDepth 16384\")",
+      "occurrences": 1
+    }
+  ],
+  "wrapper": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_data_loop_v1/native_protocol/integration_native.py",
+    "sha256": "3342fbe9faed2fd00269587e066e2ed1181350c7e91a24667a667019db0dc1f4"
+  },
+  "adapter_sha256": "e9642e1cb4610c366a71b99cc8b71d0e7514eff2b47d3f9842420b5c60bf6465",
+  "claim": "Only listed scope/schema/metadata and export recursion-limit substitutions; actual execution, full census, raw-type comparisons, fixed-edge replay, and source/runtime identity gates remain in the executed predecessor code.",
+  "adapter_predecessor": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_certificates_v1/native_protocol/protocol_adapter.py",
+    "sha256": "05a2a9e8732a1c7f5cc0cc556fe31913f4e35c9d1231a6141ac32e8a7ccb0501"
+  },
+  "adapter_scope_substitutions": [
+    {
+      "old": "action_certificates",
+      "new": "finite_data_loop",
+      "occurrences": 7
+    },
+    {
+      "old": "ACTION_CERTIFICATES",
+      "new": "FINITE_DATA_LOOP",
+      "occurrences": 7
+    },
+    {
+      "old": "\"FinitePolicyPath\", \"FiniteActionCertificate\",\n    \"RationalConditionedSource\", \"FiniteActionCertificateWitness\"",
+      "new": "\"FiniteDataSource\", \"FiniteDataPathBounds\", \"FiniteDataConditioned\",\n    \"FiniteDataNumericalBounds\", \"FiniteDataControl\", \"FiniteDataCalibration\",\n    \"FiniteDataObstacles\", \"FiniteDataCertificate\", \"FiniteDataGeneralRoute\",\n    \"FiniteDataJoint\", \"FiniteDataLiteral\", \"FiniteDataCertifiedConsumer\"",
+      "occurrences": 1
+    },
+    {
+      "old": "PRIOR_MODULES, PRIOR_PUBLIC, PRIOR_OVERLAYS = 708, 4504, 17",
+      "new": "PRIOR_MODULES, PRIOR_PUBLIC, PRIOR_OVERLAYS = 712, 4542, 18",
+      "occurrences": 1
+    },
+    {
+      "old": "(708, 4504, 17, 712)",
+      "new": "(712, 4542, 18, 724)",
+      "occurrences": 1
+    },
+    {
+      "old": "PRIOR_MODULES, PRIOR_THEOREMS, PRIOR_OVERLAYS = 708, 4504, 17",
+      "new": "PRIOR_MODULES, PRIOR_THEOREMS, PRIOR_OVERLAYS = 712, 4542, 18",
+      "occurrences": 1
+    },
+    {
+      "old": "PRIOR_MODULES, MODULES, PRIOR_PUBLIC, NEW_PUBLIC = 708, 712, 4504,",
+      "new": "PRIOR_MODULES, MODULES, PRIOR_PUBLIC, NEW_PUBLIC = 712, 724, 4542,",
+      "occurrences": 1
+    },
+    {
+      "old": "\"(PRIOR_MODULES, MODULES, PRIOR_PUBLIC, 17)\"",
+      "new": "\"(PRIOR_MODULES, MODULES, PRIOR_PUBLIC, 18)\"",
+      "occurrences": 1
+    },
+    {
+      "old": "UNCOUNTED_FINITE_SOURCE_FINITE_DATA_LOOP",
+      "new": "UNCOUNTED_FINITE_DATA_PATH_RISK",
+      "occurrences": 1
+    },
+    {
+      "old": "EXACT_FOUR_MODULE_SCOPE_REQUIRED",
+      "new": "EXACT_TWELVE_MODULE_SCOPE_REQUIRED",
+      "occurrences": 1
+    },
+    {
+      "old": "four new modules",
+      "new": "twelve new modules",
+      "occurrences": 1
+    }
+  ]
+}

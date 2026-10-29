@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "source_tree_sha256": "a499c2264c1b0b6b770d4023042187baa0b824de833f1ddf6046bffd22393d82",
+  "source_tree_sha256": "98734d8a4ae150a66e5bbdac18008897d98f9cc97f7e68f45fa7eb5d813c92f2",
   "scope": "literal first-party UEOT Lean source files and their direct imports",
   "source_semantics": "metadata audit, NOT independent theorem-source semantic certification",
-  "total_Lean_modules": 712,
-  "total_source_lines": 132932,
-  "total_theorem_lemma_tokens": 4985,
+  "total_Lean_modules": 724,
+  "total_source_lines": 134867,
+  "total_theorem_lemma_tokens": 5093,
   "category_counts": {
     "Core_v3_and_Substrate": 306,
     "Compression_Frozen_Bridges": 62,
@@ -14,9 +14,9 @@
     "Objecthood": 88,
     "P0_P12_TheoryCompletion": 57,
     "C1_C7_SISC": 55,
-    "UMC_New_Bridges": 113
+    "UMC_New_Bridges": 125
   },
-  "reachable_from_UEOT_root": 712,
+  "reachable_from_UEOT_root": 724,
   "not_reachable_from_UEOT_root": [],
   "cycles_detected": [],
   "missing_internal_imports": {},
@@ -32,6 +32,10 @@
     {
       "module": "UEOT.V3.CoreOperationalAssembly",
       "direct_dependents": 10
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage",
+      "direct_dependents": 9
     },
     {
       "module": "UEOT.V3.DynamicsKernel",
@@ -51,10 +55,6 @@
     },
     {
       "module": "UEOT.V3.Compression.OccupationLimitInvariance",
-      "direct_dependents": 8
-    },
-    {
-      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage",
       "direct_dependents": 8
     },
     {
@@ -119,6 +119,10 @@
     },
     {
       "module": "UEOT.V3.Compression.RecursiveSufficientState",
+      "direct_dependents": 6
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint",
       "direct_dependents": 6
     },
     {
@@ -190,15 +194,11 @@
       "direct_dependents": 5
     },
     {
-      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSupportViability",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability",
       "direct_dependents": 5
     },
     {
-      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourcePolicyPathBridge",
-      "direct_dependents": 5
-    },
-    {
-      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.VariableRegisteredSamples",
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataSource",
       "direct_dependents": 5
     }
   ],
@@ -256,7 +256,7 @@
     {
       "from": "Compression_Frozen_Bridges",
       "to": "UMC_New_Bridges",
-      "edges": 113
+      "edges": 125
     },
     {
       "from": "Core_v3_and_Substrate",
@@ -3446,11 +3446,23 @@
     },
     "UEOT.V3.Compression.TheoryCompletion": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
-      "bytes": 15650,
-      "lines": 197,
+      "bytes": 16611,
+      "lines": 209,
       "category": "Compression_Frozen_Bridges",
       "title": "UEOT Theory Completion public root",
       "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataSource",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataPathBounds",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataConditioned",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataNumericalBounds",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataControl",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataCalibration",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataObstacles",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataCertificate",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataGeneralRoute",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataJoint",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataLiteral",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataCertifiedConsumer",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability",
         "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStabilityWitness",
         "UEOT.V3.Compression.TheoryCompletion.OperationalObject",
@@ -5592,6 +5604,167 @@
       ],
       "theorem_lemma_count": 16,
       "decl_count": 23
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataCalibration": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteDataCalibration.lean",
+      "bytes": 10199,
+      "lines": 210,
+      "category": "UMC_New_Bridges",
+      "title": null,
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataSource",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataNumericalBounds"
+      ],
+      "theorem_lemma_count": 12,
+      "decl_count": 24
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataCertificate": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteDataCertificate.lean",
+      "bytes": 6625,
+      "lines": 119,
+      "category": "UMC_New_Bridges",
+      "title": null,
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataControl",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataCalibration",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataConditioned",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataObstacles"
+      ],
+      "theorem_lemma_count": 5,
+      "decl_count": 6
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataCertifiedConsumer": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteDataCertifiedConsumer.lean",
+      "bytes": 3320,
+      "lines": 52,
+      "category": "UMC_New_Bridges",
+      "title": null,
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataCertificate",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataGeneralRoute",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataLiteral",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataJoint"
+      ],
+      "theorem_lemma_count": 2,
+      "decl_count": 2
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataConditioned": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteDataConditioned.lean",
+      "bytes": 10968,
+      "lines": 240,
+      "category": "UMC_New_Bridges",
+      "title": null,
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataSource"
+      ],
+      "theorem_lemma_count": 17,
+      "decl_count": 22
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataControl": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteDataControl.lean",
+      "bytes": 6462,
+      "lines": 128,
+      "category": "UMC_New_Bridges",
+      "title": null,
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataSource",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataPathBounds",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataNumericalBounds"
+      ],
+      "theorem_lemma_count": 7,
+      "decl_count": 8
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataGeneralRoute": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteDataGeneralRoute.lean",
+      "bytes": 7023,
+      "lines": 110,
+      "category": "UMC_New_Bridges",
+      "title": null,
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataCertificate"
+      ],
+      "theorem_lemma_count": 4,
+      "decl_count": 5
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataJoint": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteDataJoint.lean",
+      "bytes": 6274,
+      "lines": 119,
+      "category": "UMC_New_Bridges",
+      "title": null,
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataCertificate",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint"
+      ],
+      "theorem_lemma_count": 5,
+      "decl_count": 12
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataLiteral": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteDataLiteral.lean",
+      "bytes": 8408,
+      "lines": 158,
+      "category": "UMC_New_Bridges",
+      "title": null,
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataControl",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.TrainingDeploymentJoint"
+      ],
+      "theorem_lemma_count": 7,
+      "decl_count": 13
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataNumericalBounds": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteDataNumericalBounds.lean",
+      "bytes": 9246,
+      "lines": 207,
+      "category": "UMC_New_Bridges",
+      "title": "Registered finite-data numerical budgets",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RowwiseProbeSampling",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Real"
+      ],
+      "theorem_lemma_count": 19,
+      "decl_count": 22
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataObstacles": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteDataObstacles.lean",
+      "bytes": 13699,
+      "lines": 269,
+      "category": "UMC_New_Bridges",
+      "title": null,
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataSource",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataNumericalBounds"
+      ],
+      "theorem_lemma_count": 19,
+      "decl_count": 21
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataPathBounds": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteDataPathBounds.lean",
+      "bytes": 9908,
+      "lines": 188,
+      "category": "UMC_New_Bridges",
+      "title": "Finite-data path budgets for the specified action table",
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificate",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteConditionalStability",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DeploymentCoverage"
+      ],
+      "theorem_lemma_count": 5,
+      "decl_count": 6
+    },
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataSource": {
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteDataSource.lean",
+      "bytes": 5467,
+      "lines": 123,
+      "category": "UMC_New_Bridges",
+      "title": null,
+      "imports": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RowwiseProbeSampling",
+        "Mathlib.Tactic"
+      ],
+      "theorem_lemma_count": 6,
+      "decl_count": 29
     },
     "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteFormationBoundary": {
       "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteFormationBoundary.lean",

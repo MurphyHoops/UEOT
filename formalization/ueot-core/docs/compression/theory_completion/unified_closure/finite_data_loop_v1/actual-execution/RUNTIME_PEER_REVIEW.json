@@ -1,0 +1,108 @@
+{
+  "schema": "UEOT/FINITE_DATA_RUNTIME_PEER_REVIEW/V1",
+  "reviewer": "independent child /root/finite_data_obstacles",
+  "status": "CLEAR_NO_UNRESOLVED_RUNTIME_FINDINGS",
+  "observed_at": "2026-10-29T04:25:38.404878+00:00",
+  "scope": "Independent exact-source and actual-proof-evidence review before registered sampling; does not claim a registered demonstration or authorize new scope.",
+  "source_sha256": {
+    "docs/compression/theory_completion/unified_closure/finite_data_loop_v1/selector.py": "ca2c31bc5f719e9d1f990abde6a4b3d4e73608dbb85a3fc9327909127dbe53b3",
+    "docs/compression/theory_completion/unified_closure/finite_data_loop_v1/batch.py": "091ff5fbcf90a4e004fa00b499054f5e16199a4f1fb338ffda15a99ad6ba71aa",
+    "docs/compression/theory_completion/unified_closure/finite_data_loop_v1/emit_data.py": "df0aefe78500daae078b337fc70a730f5bb4150b71143b7c794ecdd457ca1545",
+    "docs/compression/theory_completion/unified_closure/finite_data_loop_v1/certify_data.py": "47a50d43bdcb292e4694bb4ca30f4e9ba0d83a18fbc67550e2f9e7ffb5348cf2",
+    "docs/compression/theory_completion/unified_closure/finite_data_loop_v1/test_runtime.py": "c2f754d83d7775be5c7405d76671f7227fbefddcb690ab5117ad5a02e32654fa",
+    "docs/compression/theory_completion/unified_closure/finite_data_loop_v1/test_certify_data.py": "8696bb40288a3e38e64046429fe0b43a203555bdaf15299768873897df18a2c7",
+    "docs/compression/theory_completion/unified_closure/finite_data_loop_v1/independent_evaluate.py": "5f807807cd4b263a31041d92d1d6365209796aba1764bcf7444cba919e14ffab"
+  },
+  "implementation_receipt": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/longterm-audit-20261029/RUNTIME_IMPLEMENTATION_FINAL.json",
+    "sha256": "8645aa396e7c8e1917ac828f9d57ef7c3126d7217e3595081a3dfe097dd9346a",
+    "scope": "Author final implementation/test receipt, except explicitly superseded owner evaluator metadata/optimization guard changes."
+  },
+  "owner_evaluator_followup": {
+    "source_sha256": "5f807807cd4b263a31041d92d1d6365209796aba1764bcf7444cba919e14ffab",
+    "changes": "Require exactly four metadata probe rows; reject optimized Python that disables assert checks. Reviewed full evaluator source.",
+    "optimized_negative_command": "python3 -O docs/compression/theory_completion/unified_closure/finite_data_loop_v1/independent_evaluate.py --help",
+    "optimized_negative_exit_code": 1,
+    "observed_error": "OPTIMIZED_PYTHON_DISABLES_REQUIRED_ASSERTIONS",
+    "normal_registered_execution": "NOT_RUN_YET; single actual registered batch evaluation remains required."
+  },
+  "actual_proof_fixtures": [
+    {
+      "case": "positive2",
+      "receipt": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/longterm-audit-20261029/data-certifier-fixtures-02/positive2/result.json",
+      "sha256": "d18926a151c90611d6b6e8b8375ebc684ce18f8ff283e3c771002ccdc077c4af",
+      "actual_exit_codes": [
+        0,
+        0
+      ],
+      "four_binding_stages_and_all_current_input_driver_Core_bytes_match": true,
+      "proof_sha256": "e9247942d06df26c2ec73a1a4177262a4cc94e6d490c9147f9b83ca2ed602644",
+      "status": "CONDITIONAL_STATISTICAL_APPROX"
+    },
+    {
+      "case": "positive10",
+      "receipt": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/longterm-audit-20261029/data-certifier-fixtures-02/positive10/result.json",
+      "sha256": "aec44037c353bcf12a15201be5c602bfc5da84a260f4c6a467de9bf1d50a3ce2",
+      "actual_exit_codes": [
+        0,
+        0
+      ],
+      "four_binding_stages_and_all_current_input_driver_Core_bytes_match": true,
+      "proof_sha256": "7d3f1e427cda7c77dc7126e5150243e458388af32b207c2c4ac56c42e81157dd",
+      "status": "CONDITIONAL_STATISTICAL_APPROX"
+    },
+    {
+      "case": "negative10",
+      "receipt": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/longterm-audit-20261029/data-certifier-fixtures-02/negative10/result.json",
+      "sha256": "cdf5143dc1afd5eda1261b214665ff0a36c6a0afadeba94d2e0c415ba1c2a2f4",
+      "actual_exit_codes": [
+        0,
+        0
+      ],
+      "four_binding_stages_and_all_current_input_driver_Core_bytes_match": true,
+      "proof_sha256": "82b3c99d5a08b35056e54b6a5e9a17687be1b6068198f00afe55b534c8b9e50b",
+      "status": "STATISTICAL_NO_GO"
+    }
+  ],
+  "actual_test_logs": [
+    {
+      "exit_code": 0,
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/longterm-audit-20261029/runtime-selfcheck-04.log",
+      "sha256": "8a32676f3067011cd12c7eab8747fdc090c1fa3187a9538ead9cd60a8c49d046"
+    },
+    {
+      "exit_code": 0,
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/longterm-audit-20261029/data-certifier-selfcheck-04.log",
+      "sha256": "561f25599fb5195470a12e4961fdac62d856bec87046122acaaf767ea68d4357"
+    },
+    {
+      "exit_code": 0,
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/longterm-audit-20261029/data-certifier-fixtures-02.log",
+      "sha256": "bdc2dcd807da54d29ad49f831f869e9ce8ba63b4812f3e8cd13943d3f5e0e666"
+    }
+  ],
+  "findings": [],
+  "checks": [
+    "Every selector parameter is reconstructed from the complete packed raw record. Training metadata, all raw bytes, normalized candidate, original freeze/numerical receipt, proof, Core source manifest and drivers participate in before/after build and proof identity checks.",
+    "The returned same literal preparation and finite time-varying table are closed rational objects whose coordinate formulas and probability legality are actually Lean checked. Full-record post-preparation projection and actual original-source conditioning are in the generated conclusion.",
+    "Fine reference_prepared identity is proved from the estimated-source real operation. Exact computed initial residual and every occupied-row residual are connected to actual TV by selected_row_tv, structural target safety and causal_path_tv_le; the computed min-capped fine reference path bound is closed arithmetic, not an unchecked diagnostic.",
+    "Positive states remain CONDITIONAL_STATISTICAL_APPROX and negative states STATISTICAL_NO_GO under quantified Box+Good. No true parameter or observed Good flag is read by selector/certifier. Generic joint Accept-intersect-Fail bound is kept distinct from failure conditional on acceptance or a multi-deployment union bound.",
+    "For sampled records, original saved decision bytes must equal the data-recomputed candidate; deployment metadata bind that decision, training bytes and horizon; complete sampler provenance binds decision/trace hashes. All remain checked through proof completion. Both missing saved decision and trace with retained sampling provenance now fail UNKNOWN.",
+    "Actual Lean rejects a forged zero fine reference bound; artifact/saved-plan/trace mutations and deletions fail UNKNOWN. Mocked mutation cases are not described as actual Lean proofs. The actual positive/negative/saved-trace unit proofs and durable fixtures are separate genuine Lean executions.",
+    "No generated sorry, admit, native_decide or axiom escape occurs. decide +kernel and norm_num produce kernel-checked closed rational obligations.",
+    "The complete preregistered batch uses one frozen seed commitment set, one exclusive start marker and no retries or success filtering. Rejects/unknowns remain recorded; only accepted policies are executed. Actual preparation and all T later operations remain in the saved trace, including absorbing failure.",
+    "Independent evaluator imports neither selector nor generator, recounts every raw bit, reconstructs the same literal plan and risk gate, independently enumerates exact original-baseline safe paths and all actual safe/dead mass. It requires actual full-path TV <= claimed budget for A/B demonstrations independently of retrospective Good; C uses a strict true-source obstacle."
+  ],
+  "resolved_review_edges": [
+    "Sampling provenance makes absence of both original decision and trace an UNKNOWN failure rather than dropping actual-execution binding.",
+    "Independent evaluator optimized mode cannot return PASS with scientific assertions removed."
+  ],
+  "limits": [
+    "All inspected fixtures are explicitly handcrafted deterministic unit records; they are not registered draws and do not satisfy the scientific demonstration requirement.",
+    "Raw-bit parsing is the declared host-language boundary; the runner does not purport to provide millions of individual native Lean bit proofs.",
+    "Simulation PRNG-to-ideal-product sampling/source faithfulness remains an explicit experiment assumption. Stored-trace validation establishes its full semantics/support; it is not a proof of physical iid behavior.",
+    "Endpoint identity checks assume exclusive intended writers and do not claim resistance to arbitrary instantaneous same-permission change-and-restore attacks.",
+    "This reviewer authored Numerical/Obstacles/Calibration/Joint underlying modules; those are excluded from this independent mathematical review and independently reviewed in ROOT_MATH_REVIEW.json. This receipt reviews other-author runtime glue and actual emitted proof consumption."
+  ],
+  "next": "Owner freezes these exact current scripts and proved numerical contract, performs exactly the complete registered batch, certifies/re-evaluates all retained outputs, and finishes applicable production/GI integration. Overall A-F is still unfinished before those results."
+}

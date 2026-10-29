@@ -1,0 +1,79 @@
+{
+  "artifacts_unchanged_during_build_and_proof": false,
+  "binding_checks": [
+    {
+      "artifacts_match": true,
+      "sources_match": true,
+      "stage": "before_build"
+    },
+    {
+      "artifacts_match": true,
+      "sources_match": true,
+      "stage": "after_build"
+    },
+    {
+      "artifacts_match": true,
+      "sources_match": true,
+      "stage": "before_proof"
+    },
+    {
+      "artifacts_match": false,
+      "sources_match": true,
+      "stage": "after_proof"
+    }
+  ],
+  "bound_artifacts": {
+    "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/longterm-audit-20261029/A-actual-proof-replacement-fixed-01/Certificate.lean": "c2aee95fa4fd07fac8dcd423a8e781673eeb39b49e2ca9269debf58167b41a98",
+    "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/longterm-audit-20261029/A-actual-proof-replacement-fixed-01/candidates.json": "5c69cb04752d879a408691e083f878530b97a4b9ec0aeee35e2ccfc4c130b74e",
+    "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/longterm-audit-20261029/A-actual-proof-replacement-fixed-01/core-source-identity.json": "81da51c164227deb4fe18c30bd440b6f06bed5b57cd66194c9374e5af7e53b4a",
+    "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/longterm-audit-20261029/A-actual-proof-replacement-fixed-01/source.json": "010457cec4798150f84841a30d6aad07abf68927251c404abebf2a746d50407e"
+  },
+  "candidates": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/longterm-audit-20261029/A-actual-proof-replacement-fixed-01/candidates.json",
+  "candidates_sha256": "5c69cb04752d879a408691e083f878530b97a4b9ec0aeee35e2ccfc4c130b74e",
+  "cases": {
+    "two_step_added_actions": {
+      "reason": "Bound input, candidate, proof, identity manifest, source or driver changed or missing",
+      "status": "UNKNOWN"
+    }
+  },
+  "core_source_identity": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/longterm-audit-20261029/A-actual-proof-replacement-fixed-01/core-source-identity.json",
+  "core_source_identity_sha256": "81da51c164227deb4fe18c30bd440b6f06bed5b57cd66194c9374e5af7e53b4a",
+  "core_sources_unchanged_during_proof": true,
+  "driver_sources": {
+    "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_certificates_v1/certify.py": "79f39fc3a289af7075583ec1683bbdca48f84697b1d8e02047d2d0d0ee6a61b6",
+    "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_certificates_v1/emit_lean_witness.py": "a1ee4afc03ad3a10b83cbf54fdbddcdebc8c18fd3716995c2a94ea49b08456a3",
+    "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_certificates_v1/exact_certificates.py": "1bbc8a1c80c44ce8abac46bbc77e643b8fc453ce1ad8cd068cc9aaa47cb6a0ff"
+  },
+  "failure": "Bound input, candidate, proof, identity manifest, source or driver changed or missing",
+  "lean_source": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/longterm-audit-20261029/A-actual-proof-replacement-fixed-01/Certificate.lean",
+  "lean_source_sha256": "c2aee95fa4fd07fac8dcd423a8e781673eeb39b49e2ca9269debf58167b41a98",
+  "schema": "UEOT/EXACT_ACTION_CERTIFICATION/V1",
+  "source": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/longterm-audit-20261029/A-actual-proof-replacement-fixed-01/source.json",
+  "source_sha256": "010457cec4798150f84841a30d6aad07abf68927251c404abebf2a746d50407e",
+  "sources_unchanged_during_build_and_proof": true,
+  "verification": [
+    {
+      "command": [
+        "/Users/murphyhoops/.elan/bin/lake",
+        "build",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core",
+      "exit_code": 0,
+      "log": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/longterm-audit-20261029/A-actual-proof-replacement-fixed-01/build.log",
+      "log_sha256": "d97a8ab4883714126ab8a13cbf3b84324ac10b45247619ff6fedb158f86b5a5d"
+    },
+    {
+      "command": [
+        "/Users/murphyhoops/.elan/bin/lake",
+        "env",
+        "lean",
+        "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/longterm-audit-20261029/A-actual-proof-replacement-fixed-01/Certificate.lean"
+      ],
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core",
+      "exit_code": 0,
+      "log": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/longterm-audit-20261029/A-actual-proof-replacement-fixed-01/lean.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

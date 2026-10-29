@@ -8,9 +8,9 @@ The existing FKRG cache remains useful for broad keyword/module search.
 This supplement adds real proof-term direct dependencies, verified same-type
 theorem peers, source copies, and a read-only scientific-role distinction.
 
-The current eighteen-layer census is **712 modules = 701 UEOT-maintained + 11
-adapted upstream**, with **4,542 registered public theorem nodes** and
-**6,046 registered direct proof edges**. The layer-by-layer counts below
+The current nineteen-layer census is **724 modules = 713 UEOT-maintained + 11
+adapted upstream**, with **4,630 registered public theorem nodes** and
+**6,224 registered direct proof edges**. The layer-by-layer counts below
 retain each historical scope.
 
 ## Governed overlay chain
@@ -1475,6 +1475,38 @@ native ownership, prefix/policy routes, checker routes and raw registration prov
 All seventeen earlier overlays, 68 clone rows and prior regressions stay pinned.
 Strong global closure remains `NOT_ESTABLISHED`; external science remains `UNVERIFIED`.
 
+### Layer 19 — finite-data path risk
+
+Baseline `f4c23ac61b440df9d88ca1e79a4684d589066489`; frozen source `98734d8a4ae150a66e5bbdac18008897d98f9cc97f7e68f45fa7eb5d813c92f2`.
+Twelve modules add 88 public source declarations and 178 registered edges.
+
+| Evidence | SHA-256 |
+| --- | --- |
+| [Complete native export](FINITE_DATA_LOOP_NATIVE_V1.json) | `3c097d0a25313496ba1d747b9bdb1af30dffd999c1dbd2036f3fb6f1b96ffced` |
+| [Fixed Lean certificate](VERIFY_FINITE_DATA_LOOP_OVERLAY_TYPES.lean) | `88b6d62a11efa6277e2eb1c0694db9cafcafbff36d7b833119be81635726f86c` |
+| [Registered overlay](FINITE_DATA_LOOP_REUSE_OVERLAY_V1.json) | `a627955e025c5a8054a2c811f573e7602157f6afce9c08b4a587895b4f473713` |
+
+The native export retains 234 owned theorem constants (88 public
+source, 28 private, 118 other public). Stored types
+undergo 399,696 comparisons against 4,542 prior registrations and
+3,828 internal comparisons with zero definitional collisions.
+Complete native owners, direct constants and standard-only axiom closures are retained.
+These comparisons do not establish logical independence.
+
+The same finite source supplies training probes, baseline conditioning and deployment.
+The returned literal preparation/table is consumed directly, including an explicit
+full T+1-operation experiment projected to its post-preparation T-step state window.
+Target-support weighted TV bounds retain preparation failure. The actual rank-one
+conditional target gives the structural stability route; the existing general
+conditional-TV theorem remains a separate rare-event-sensitive route. Four scalar
+Hoeffding probes give one simultaneous calibration event before selection. The
+selected joint risk bounds Accept AND Fail; it is not a failure-given-Accept guarantee.
+Nonzero-noise acceptance and high-noise/initial/horizon obstructions retain their
+specified premises. Raw-record parser, RNG and source matching boundaries remain
+explicit. No complete search, universal objects/axes or external validation follows.
+All eighteen earlier overlays and their tests/artifacts remain pinned.
+Strong global closure remains `NOT_ESTABLISHED`; external science remains `UNVERIFIED`.
+
 ## Run from repository root
 
     P=formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse
@@ -1491,22 +1523,22 @@ Strong global closure remains `NOT_ESTABLISHED`; external science remains `UNVER
 Run the new native certificate from `formalization/ueot-core` after building
 the public imports with the pinned toolchain:
 
-    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_ACTION_CERTIFICATES_OVERLAY_TYPES.lean
+    lake env lean docs/compression/theory_completion/knowledge/reuse/VERIFY_FINITE_DATA_LOOP_OVERLAY_TYPES.lean
 
 ## Strongly typed and provenance-limited evidence
 
 - 633 immutable-base source modules = 622 UEOT-maintained + 11 adapted upstream modules;
-  eighteen governed overlays extend the live census to 712 = 701 + 11.
-- 3,793 immutable-base public source theorem proofs + 749 governed registrations
-  (including one historical public-name repair) = 4,542 live graph nodes, with
-  6,046 direct registered-source theorem
+  nineteen governed overlays extend the live census to 724 = 713 + 11.
+- 3,793 immutable-base public source theorem proofs + 837 governed registrations
+  (including one historical public-name repair) = 4,630 live graph nodes, with
+  6,224 direct registered-source theorem
   references. The historical four overlays add 0, 3, 6 and 73 certified direct edges;
   the fifth adds 91, the sixth adds 98, and the seventh adds 163 certified direct edges.
   The eighth adds 97 edges from new registrations and one certified old-node repair.
   The ninth adds 149 edges, the tenth adds 47, the eleventh adds 114 and the
   twelfth adds 27, the thirteenth adds 60, the fourteenth adds 63 and the
-  fifteenth adds 29, the sixteenth adds 19, the seventeenth adds 40, and the eighteenth adds 80, giving
-  1159 outgoing edges from overlay nodes;
+  fifteenth adds 29, the sixteenth adds 19, the seventeenth adds 40, the eighteenth adds 80, and the nineteenth adds 178, giving
+  1337 outgoing edges from overlay nodes;
   the old-node repair remains a separate addition.
 - 37 equal-type groups / 77 names. The original audit checked 40/40
   representative-to-peer theorem type pairs via Lean Meta.isDefEq. Here
@@ -1524,7 +1556,7 @@ the public imports with the pinned toolchain:
   12 spans reach 15 lines. This is a text-copy candidate index, NOT
   a proof-equivalence decision procedure. The historical 646-module recomputation
   preserved all 68 historical rows exactly, with no added or missing rows.
-  The current scanner recomputes all 712 modules and rejects any difference
+  The current scanner recomputes all 724 modules and rejects any difference
   from that immutable result; its actual command result establishes whether
   the current-source scan passes. The historical snapshot alone does not.
 
@@ -1557,7 +1589,7 @@ the pinned Lean compiler/dependency environment (lean-toolchain,
 lakefile.lean and lake-manifest.json including the pinned Mathlib revision),
 the exact set of live Lean source paths (including detecting ANY newly added
 or deleted module), and all immutable-base source hashes plus the governed
-overlay-chain hashes against the exact 712-module live source census. It refuses to
+overlay-chain hashes against the exact 724-module live source census. It refuses to
 answer if any source or metadata changed. A docs-only Git commit does
 not spuriously make a valid source snapshot stale.
 
