@@ -1,3 +1,6 @@
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismPurpose
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSourceWitness
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSensorWitness
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataSource
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataPathBounds
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteDataConditioned

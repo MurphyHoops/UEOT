@@ -1,0 +1,78 @@
+{
+  "schema": "UEOT/WHOLE_THEORY_C1_SENSOR_PURPOSE_INDEPENDENT_REVIEW/V1",
+  "reviewer": "independent /root/longterm_final_review; no authorship in these seven modules",
+  "observed_at": "2026-10-29T10:48:35.498858+00:00",
+  "verdict": "CLEAR_FOR_DECLARED_SEVEN_MODULE_SOURCE_CONTRACTS",
+  "blocking_findings": [],
+  "source_hashes": {
+    "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterRepairSource.lean": "904c7ccafdffbb52a1f9ea5e0f048c9bac2ed35f59cd9918e228ae98dc38b6a7",
+    "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterRepairHistory.lean": "17dcd06aaf1daf47ac379c6e3b68769a4738a840bed6dbeb9179c2f04446981c",
+    "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismPurpose.lean": "894c582b6c6805e72e72f158091cdd1e6878e444cc56070456dd45b110f0cbf3",
+    "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSource.lean": "d2b0eb37c97e8e1c417aea49e705d1b782f32b0eaea3772acecc349849fd1f36",
+    "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSourceWitness.lean": "8dff59860e06946377ce0f847c29c5a9417375d09dce8ca4dde0fa1bf9f26fe5",
+    "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSensor.lean": "ef89784d1e4c22e0ba0445e9c7d3de8edea73a9dbffb597e3c72610d1048e80c",
+    "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSensorWitness.lean": "13cf94181a1a18c9de14e7546faca3507b91701521c757687a80dab721a67aea"
+  },
+  "prior_source_history_review": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/whole_theory_formal_closure_v1/independent/REGISTER_HISTORY_C1_SOURCE_REVIEW.json",
+    "sha256": "894b0ad557bcdbba7e4fd69e6b37de7e3b9ee2cdcdaee4493474663a1bf8b5f5",
+    "all_four_reviewed_source_hashes_unchanged": true
+  },
+  "fresh_compiled_types": {
+    "file": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/whole-theory-audit-20261029/p11-independent/C1_PURPOSE_COMPILED_TYPES.lean",
+    "source_sha256": "f63abd01617bfbba657b69766587fe92e4c5a93baa4bfaa935a19e49a1b828c9",
+    "log": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/whole-theory-audit-20261029/p11-independent/C1_PURPOSE_COMPILED_TYPES.log",
+    "log_sha256": "ca81a32dd47b2075a117b275a0e865b5d35f5e0f97348ed47563f7445cb7c9e0",
+    "exit_code": 0,
+    "checked_endpoints": 9,
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "scope": "Fresh import/type and axiom check of the built source modules; parent full-build evidence remains separate. No old historical suite rerun."
+  },
+  "sensor_review": {
+    "source_class": "Visible-autonomous shared-noise source with Standard Borel Y/H and a hidden-blind arbitrary Markov sensor on Y\u00d7A; observation W countably generated, A/N arbitrary measurable. Explicit sufficient model class.",
+    "posterior_source_chain": [
+      "joint_projection derives the actual microscopic joint-law projection by compProd/map identities; predicted_projection derives from the same primitive source projection.",
+      "sensor_observationLaw_factors and sensor_joint_projection connect actual microscopic/coarse laws.",
+      "actual_posterior_coordinate_ae compares the existing c1PosteriorSection factorizations and applies Kernel.ae_eq_of_compProd_eq under their common observation measure. Posterior equivalence is a result, not an input.",
+      "For every fixed belief/action, equality is observation-a.e. w; no null-observation pointwise claim or null set uniform over uncountable parameters is asserted.",
+      "actual_C1_recursion pushes this a.e. identity through the same observation law, yielding equality of the full actual posterior-transition pushforward.",
+      "same_policy_controlled_recursion integrates against exactly policy(coordinate b); the microscopic policy is explicitly comapped along coordinate, with no hidden policy substitution."
+    ],
+    "witness_checks": [
+      "Fair source update and sensor correctness3/4 are actual source mechanisms.",
+      "Posterior true mass3/4 after true and1/4 after false is derived by evaluating the original common posterior joint factorization and canceling positive observation mass1/2.",
+      "Non-Dirac uncertainty and observation dependence are proved; microscopic uncertainty uses the legitimate a.e. projection."
+    ],
+    "remaining": [
+      "This removes the first packet exact-observation limitation, while visible autonomy/hidden-blind sensor/regularity conditions remain declared.",
+      "No all-future iff/minimal-memory, arbitrary hidden-controlled source, arbitrary-measurable disintegration or arbitrary history-policy path transport is claimed."
+    ]
+  },
+  "purpose_review": {
+    "source_chain": [
+      "Actual update decides whether a living child is produced; outcome uses birthEvent and literal program copying.",
+      "expectedChildren_eq derives the birth indicator from the actual PMF label law; Model reward is this source child-count minus fixed registered price times literal write cost, with a derived finite bound.",
+      "model_transition_eq_physical and model_expect_eq_update connect the control Model to the same original physical source.",
+      "observe uses allowed write-false/write-true birth feedback and a write-cost measurement; it is not defined as the unknown goal or ranking. Injectivity is proved.",
+      "registered_mechanism_faithful removes C6 hfaith for this mechanism/probe class, and registered_observation_identifies_purpose calls the original teleological-class consumer.",
+      "Deployment includes its initial causal memory; finite objective is the existing truncatedValue.",
+      "registered_causal_optimality reuses original p_ctl_01_causal_optimality for arbitrary causal memory/initial memory, giving infinite discounted domination and greedy attainment. registered_greedy_equation uses actual source update/stage; no finite-horizon greedy optimum is asserted."
+    ],
+    "counterexample_and_nonvacuity": [
+      "physical_cost_observations_insufficient gives identical physical/cost observations and opposite T1 policy rankings at registered price0 for two actual inherited-target mechanisms.",
+      "nonconstant_cost_witness proves costs0 versus1 plus actual proper-target repair from outside. Its final comment is narrowed to these facts. Other program nondegeneracy remains in RegisterRepairSource."
+    ],
+    "remaining": [
+      "Price/discount are a legitimate registered evaluation contract; no unique universal purpose is inferred. Exact probes are mathematical information rights, not finite-data/external-world calibration.",
+      "Current outcome reconstructs a one-stage parent at history=[] with program=m.goal; finite objective is the Model stage-expectation recursion. Same persistent journal/actual multistep birth-and-cost-record expectation remains a required next construction.",
+      "Source supply/resource expenditure and a joint nondegenerate repair/birth/resource realization remain whole-theory obligations."
+    ]
+  },
+  "resolved_review_note": "The only wording issue raised here (cost-witness comment overstating noise/program quantifiers) was narrowed before this current source-hash snapshot.",
+  "whole_goal_status": "OPEN_NOT_ESTABLISHED; local source reductions do not retire whole C1/C6/P11/organizational composition.",
+  "OU_authorship_boundary": "Separate external OU source was authored by this reviewer, excluded from this independent review, and awaits root/other-peer review/adoption."
+}

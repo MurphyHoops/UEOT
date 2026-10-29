@@ -1,0 +1,41 @@
+{
+  "status": "PUBLIC_FULL_BUILD_AXIOMS_COMPRESSION_PASSED_REVIEW_AND_INTEGRATION_PENDING",
+  "whole_goal": "OPEN_NOT_ESTABLISHED",
+  "baseline": "ccc42a3c4b7b4817c24275235e85cdda73c2a295",
+  "sources": {
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterRepairSource.lean": "904c7ccafdffbb52a1f9ea5e0f048c9bac2ed35f59cd9918e228ae98dc38b6a7",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterRepairHistory.lean": "17dcd06aaf1daf47ac379c6e3b68769a4738a840bed6dbeb9179c2f04446981c",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismPurpose.lean": "894c582b6c6805e72e72f158091cdd1e6878e444cc56070456dd45b110f0cbf3",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSource.lean": "d2b0eb37c97e8e1c417aea49e705d1b782f32b0eaea3772acecc349849fd1f36",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSourceWitness.lean": "8dff59860e06946377ce0f847c29c5a9417375d09dce8ca4dde0fa1bf9f26fe5",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSensor.lean": "ef89784d1e4c22e0ba0445e9c7d3de8edea73a9dbffb597e3c72610d1048e80c",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSensorWitness.lean": "13cf94181a1a18c9de14e7546faca3507b91701521c757687a80dab721a67aea"
+  },
+  "toolchain": "leanprover/lean4:v4.33.1",
+  "lock_sha256": "84542dad0540d0595b67e5b83d6b2d7bf96b4ca4aee9051f557ed73b0cb012d1",
+  "notes": [
+    "PUBLIC_FULL_BUILD predates only a comment narrowing on nonconstant_cost_witness; final build is rerun before publishing.",
+    "SOURCE_AXIOMS imports actual compiled modules; only propext, Classical.choice, Quot.sound.",
+    "Book publication and GI update are mandatory remaining integration work.",
+    "Initial invocation without required --verify-finalization-refs rejected. An invocation from repository root could not discover pinned toolchain. Correct local-core cwd full build and explicit live FINAL reference verification subsequently passed; no configuration changed."
+  ],
+  "checks": {
+    "FINAL_PUBLIC_FULL_BUILD.log": "9fff15aa1762b4afd8e8225d3466b8c44ebc617266d1e797f8ad9ad48cad3eb0",
+    "SOURCE_AXIOMS.log": "be6285fad8e8e5f8eacc96589955fd56c47b28ccf466985a7ccb3e335b6c8142",
+    "COMPRESSION_LIVE.log": "86e13448cf1c83d50f1adc32b8e55b8e08bfdc3338aba03a09d8e55c54b1aef2"
+  },
+  "raw_logs": {
+    "PUBLIC_FULL_BUILD.log": {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/whole-theory-source-evidence-20261029/PUBLIC_FULL_BUILD.log",
+      "sha256": "a6ac9889aa034db7892b5f9479fdff52c9e460ffc5904166cf8e51cdf019828c"
+    },
+    "FINAL_PUBLIC_FULL_BUILD.log": {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/whole-theory-source-evidence-20261029/FINAL_PUBLIC_FULL_BUILD.log",
+      "sha256": "9fff15aa1762b4afd8e8225d3466b8c44ebc617266d1e797f8ad9ad48cad3eb0"
+    },
+    "COMPRESSION_LIVE.log": {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/whole-theory-source-evidence-20261029/COMPRESSION_LIVE.log",
+      "sha256": "86e13448cf1c83d50f1adc32b8e55b8e08bfdc3338aba03a09d8e55c54b1aef2"
+    }
+  }
+}
