@@ -2,7 +2,7 @@
 title: "UEOT Core 完整数学理论"
 subtitle: "从原始对象—演化思想到预测、实现、持续、组合、目的与学习的统一架构"
 version: "3.1"
-date: "2026-10-29"
+date: "2026-10-30"
 status: "完整中文维护版；冻结106结果与同源形式化闭环的逐章整合"
 format: "UTF-8 Markdown + LaTeX math"
 scope: "通用数学核心、应用与领域接口"
@@ -5226,7 +5226,73 @@ $$
 
 一般预测方面，MeasurablePredictiveSource/Sensor 已从共享噪声的可测更新及不读取隐藏坐标的观察器推导实际后验的几乎处处投影和同策略递归；允许连续噪声及部分、有噪观察。隐藏坐标控制下一可见状态、破坏可见自治时，已有严格泄漏反例。在此基础上，MeasurablePredictiveJointPath 保持同一时变可见 belief 策略的完整有限动作—观察—后验记录。MeasurablePredictiveLatentPath 从初始潜状态 $X_0\sim b_0$ 出发，按原 P/O 保留并转移实际潜状态，同时由实际观察更新同一 posterior。一步解体恒等式给随机 lift 的相容性；前缀归纳证明完整观察记录与末态潜变量的联合律，经最后实际 posterior 分解。由此取得实际潜状态运行的有限观察记录律，并以可数前缀唯一性推广到完整可数路径。它没有逐点假设任意 belief 与潜状态配对都满足 lumpability，也没有每步从 belief 重抽物理状态。这里的可见 belief 由声明源给出，不把它说成任意过程的最小可测预测像。
 
-这些结果使对象、程序、动作、实际历史、出生、资源和注册目的之间多了一条非空的共同来源链。整个理论仍未闭合：一般最小预测像、更大源及策略类的路径运输、连续随机过程来源、相关/适应校准与发现、忠实谱系及尺度运输、长期资源和全局组合仍有必需义务。编译、数学成立及现实经验支持分别报告；本章不宣称已确认自然界的普适机制。
+这些结果使对象、程序、动作、实际历史、出生、资源和注册目的之间多了一条非空的共同来源链。下面继续给出实际有限协议的最小预测来源、完整历史策略、时戳身份和连续 Gaussian 来源。它们各自只覆盖声明的模型与策略类；整个理论仍未闭合，未覆盖协议与动作类、一般连续随机分析、相关/适应校准与发现、忠实人口谱系及尺度运输、长期资源和全局组合仍有必需义务。编译、数学成立及现实经验支持分别报告；本章不宣称已确认自然界的普适机制。
+
+## 39.7 从一般实际源导出有限协议预测递归
+
+现在不要求可见动力学自治。给定任意非空标准 Borel 潜状态 $Z$、原转移核 $P$ 及观察核 $O$，令 $K_u$ 为允许动作词 $u$ 的完整有序观察律：先按 $P$ 转移，再在同一步下一潜状态上按 $O$ 观察，随后执行余下动作。重复动作仍占不同位置，空词输出唯一空元组。对先验 $b$ 定义
+$$
+M_u(b)=K_u\circ b,\qquad C(b)=(M_u(b))_{u\in A^*}.
+$$
+这保存每个有限动作词下的整个观察概率律，未把它缩成几个经验评分。由同一真实 P/O 联合律的解体，直接推出
+$$
+M_{a::u}(b)=\operatorname{Obs}_{b,a}\otimes
+  \bigl(K_u\circ\operatorname{Posterior}_{b,a}\bigr).
+$$
+分子及延续因子来自实际长词执行，不再由调用者另给 Bayes 因子化。若 $C(b)=C(c)$，则同一首动作的实际观察律相等，且每个延续词的下一后验响应几乎处处相等。动作可数时，对全部有限动作词取可数交，得到一个共同概率一集合。此集合针对固定的 $b,c,a$，没有偷换成对不可数先验同时成立的版本。
+
+源响应的上述递归只需观察空间可数生成。若观察空间进一步为标准 Borel，可对响应坐标 $M_{a::u}(b)$ 本身采用统一的可测解体，构造总的响应数组更新；它不读取潜状态、源参数或一个到潜信念的 section。动作可数且单点可测时，更新对状态、动作和观察联合可测，并得到一个实际 Markov 核：同一 C1 后验转移经 $C$ 推送，恰等于由响应数组计算的下一响应核。任意不在源像内的数组只获数学延拓，不被说成物理可实现。零观察概率分支也不因总核存在而得到经验认证。
+
+已有连续 Gaussian 源取明确允许的整数漂移动作，给出非原子的共同消费者，原点首步观察律为 $N(0,1)$。这项可数动作结论没有静默覆盖全部实数动作，也没有独自证明任意自适应协议或一般最小预测像。其源码为 MeasurablePredictiveResponseRecursion，真实消费者为 actual_C1_response_kernel_factor。
+
+MeasurablePredictiveCanonicalSource 又从已经生成的实际过去和保留的末态潜变量出发，执行同一 P/O 的未来动作词，推导过去—未来联合律等于实际过去律乘以最后后验给出的未来核。这是明确的未来干预，未来动作词可以不同于生成过去所用策略的继续动作。由这条来源再调用原 PredictionDependent 的预测充分性、事件条件期望以及模零最小性；竞争统计量能够预测这些真实未来律，是该统计量充分性的定义，不是另给一个实现证书。最小性针对实际过去律并取模零意义，动作可数时适用。概率响应数组到原 Measure 数组的嵌入只涉及全部已归一化数组，不要求物理可实现像为 Borel，也不构造到潜信念的截面。
+
+## 39.8 同一亲本在不同时刻产生的后代
+
+原 Bool 标签可以重复：同一亲本两次成功出生后，子代的旧标签历史可以完全相同。新增来源在原事务解释外保存一个实际计数器；每次事务，包括故障和失败，都使亲本计数加一。实际子代身份为亲本身份连接本次计数和标签，子代自己的局部计数从零开始。于是可从已执行前缀推出，同一保留亲本不同事务时刻的成功出生具有不同身份，并从真实子代身份的前缀解释其亲本。
+
+整个带时戳记录律擦除新增元数据后，严格等于原来同一策略、初态、故障率和标签源的完整记录律；动作、物理状态、程序、付费和失败都保持。指定受损单寄存器、true 程序、故障率 $1/4$、公平标签，三步 write-true/idle/write-true，模式修复/故障/修复且三个已采样标签均为 true 的完整 tape 质量为 $9/512$。中间失败仍在，两个实际子代身份分别为 $[(0,\mathrm{true})]$ 和 $[(2,\mathrm{true})]$，其旧 Bool 历史却同为 $[\mathrm{true}]$。
+
+RegisterTimestampedBirthSource 实际消费原 P8 的修复/后代区分、原 P5 的同一子代维持，以及原 P12 的父身份发现。后者在成功出生时解释 Option(parent ID)，失败保留 None，不识别失败请求的亲本。可靠且可访问的串行元数据、初始 founder 身份与计数仍是声明条件；元数据在原受控写费用模型中不另收费。它既不是从无标签物理状态中自动生成的历史知识，也不解决任意并发人口的 founder 分配、全局身份或繁殖强度来源。
+
+## 39.9 从有限 Gaussian 律构造实际全时间来源
+
+恢复的连续时间接口还需要真实随机来源。对满足 Brownian 有限维律的源，可以从时间变换
+$$
+\tau(t)=\frac{e^{2kt}-1}{2k},\qquad
+X_t=e^{-kt}\bigl(x_0+sB_{\tau(t)}\bigr),\quad k>0,
+$$
+推导实际推送律、确定初态、二次可积性以及
+$$
+E[X_t^2]=e^{-2kt}x_0^2+\frac{s^2}{2k}(1-e^{-2kt}).
+$$
+此期望绝对连续，几乎处处导数等于 $E[-2kX_t^2+s^2]$；原 p_rec_02 据此消费实际构造的 Dynkin 证书。这个二次观测的右时间变化率也从源导出，没有直接推出一般生成元定义域、条件转移半群或 SDE 恒等式。
+
+给定源的前提本身又有了一个实际构造。BrownianCountableSource 从已有有限 Gaussian 律出发，解体相邻有限前缀，再迭代现有轨迹核，构造任意可数时间列的一个概率空间。每个有限坐标集合具有原 Gaussian 律，重复时间共享坐标；同一个稠密时间源有几乎处处零初态和单位时间单位方差。
+
+BrownianProjectiveSource 进一步处理全非负实时间。每个可数柱集族及其柱形并集只用到可数多个时间：在同一个上述可数源上实现它们，用真实概率测度的并集界证明柱集 content 的 $\sigma$ 次可加性，再调用现有 Carathéodory 扩张。所得一个全时间概率律具有所有原有限维 Brownian Gaussian 律，实际给出 IsPreBrownianReal；未把 projective limit、次可加性或 Brownian 来源当成输入。这个同一实际源接入上述 OU 恢复，并从任意确定初态给出正噪声、正时刻的严格正方差。
+
+有限维律、样本路径连续性和联合时间可测性分别承担证明责任。原始乘积坐标过程没有被默认几乎处处连续；下一节给出实际连续修改。一般 Itô、受控 SDE/HJB 和 Girsanov 仍是全理论必需义务。数学来源构造不等于对现实噪声模型的经验确认。
+
+## 39.10 同一高斯概率源的实际连续修改
+
+BrownianContinuousSource 从上述源的 Gaussian 增量推导
+$$
+E[|B_t-B_s|^4]=3|t-s|^2.
+$$
+在每个整数紧区间取步长 $32^{-n}$ 的网格，以相邻增量阈值 $2^{-n}$ 和 Markov 界得到可求和的坏事件概率。对全部整数区间与全部层数构造一个可测概率一事件，格点近似在此事件上一致收敛，细分与振荡估计推出连续极限。事件外统一取零路径，因而所构造过程的每条路径都连续；每个固定时刻的极限可测，再由连续路径与逐时可测性推出联合时间可测。
+
+还须说明它与原源的关系。Gaussian 二阶矩保证固定时刻的格点近似依概率趋于原坐标；概率一事件上的极限及依概率极限唯一性，使每个固定时刻的新过程与原坐标几乎处处相等。这里没有对不可数时刻取零集交。有限维分布只需有限交，故完整转移所有原 Gaussian 有限维律，并得到一个不再以 Brownian 证书为输入的 IsBrownianReal。其零初态和单位时间单位方差保留，非零噪声没有因构造而消失。
+
+同一概率律和连续过程实际接回上一节的 OU：每条 OU 路径连续，任意确定初态在正噪声和正时刻下有严格正方差；每个固定时刻的 OU 推送律与原坐标构造完全相同，故原恢复界仍由同一个源消费。这没有证明一般随机积分、Itô 公式、受控 SDE 或换测度 Girsanov；自然过滤下的条件增量与这些一般消费者仍各有来源责任。
+
+## 39.11 原策略读取完整实际历史
+
+令控制器为完整有限历史 $h\in(A\times W)^*$ 上的可测 Markov 核，时间可由历史长度取得。历史可测空间由长度和每个有缺位标记的有序事件坐标生成，允许非原子观察；没有给所有历史强加离散可测空间。控制器读取同一真实观察历史，不读取潜状态、后验、响应数组或模型 oracle。
+
+MeasurablePredictiveHistoryControl 先在登记初始信念下采样一次潜状态，随后每步只按原 P/O 保留并推进它。实际后验解体给一步一致性，完整前缀归纳给末态潜变量的同一后验分布。再把当前后验变成上述完整响应数组、同时原样保留历史，得到同一控制器的有限与可数完整动作—观察历史路径律。潜状态标准 Borel 且非空，观察可数生成时已能证明源与 filter 的路径相容；响应过程再要求观察标准 Borel、动作可数且单点可测。
+
+完整历史在响应旁边保留很重要。一个实际 Bool 源的前两步动作固定，后续动作读取第一次观察。两条时间二历史各有实际概率 $1/4$，长度和最后动作—观察事件相同，下一动作律却不同。这个反例没有挑选成功运行，也没有证明响应本身足以实现所有有记忆控制器。共同 Gaussian 源则给每个上述整数动作、完整实观察历史控制器的非原子消费者。进一步比较不同初始信念时，仍须固定同一个控制器及其同一初始记忆；不同控制器历史不能静默合并。
 
 <a id="appendix-a"></a>
 
@@ -6124,3 +6190,6 @@ ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303
 UC.RegisterFaultPurposeInformation.observed_source_identifies_actual_purpose 用源均值导出原 C6 忠实性。无故障的 UC.RegisterProgramOptimality 与 UC.RegisterJointRecord 仍保留其不同源的原合同，不能用于替代有故障记录律。
 
 C1 的源及传感器对应 UC.MeasurablePredictiveSource、UC.MeasurablePredictiveSensor；UC.MeasurablePredictiveJointPath.actual_timevarying_joint_path、actual_finite_record_event、actual_finite_record_lintegral 保持同一时变可见 belief 策略的完整有限联合记录。新增 UC.MeasurablePredictiveLatentPath.actual_finite_prefix_consistency 与 actual_source_timevarying_joint_path 从实际保留潜状态的转移证明递归 filter 的条件一致性及同源可数记录律。具体核验、独立审查及源码身份见[当前来源差额](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/actual_infinite_sources_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)、[故障包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/register_fault_resources_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)和[C1 路径包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/c1_joint_path_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。两书编译不改变其数学范围，全理论状态仍为 OPEN / NOT_ESTABLISHED。
+
+
+第 39.7—39.11 节补入的实际端点为：UC.MeasurablePredictiveResponseRecursion.actual_C1_response_kernel_factor；UC.MeasurablePredictiveCanonicalSource.actual_past_future_factorization、actual_response_ae_minimal 与 actual_canonical_recursion；UC.RegisterTimestampedBirthSource 的同一记录抹除、时钟与实际出生身份消费者；UC.BrownianProjectiveSource 的实际全时间有限维 Gaussian 来源；UC.BrownianContinuousSource.process_isBrownian、measurable_joint_process、actual_ou_recovery；以及 UC.MeasurablePredictiveHistoryControl.actual_action_observation_history_path、actual_finite_action_observation_history_path 与 actual_positive_memory_histories。完整前提与来源身份分别见[一般响应与时戳包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/predictive_genealogy_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)、[规范预测与全时间高斯包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/canonical_brownian_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)和[连续源与历史控制包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/continuous_history_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。原冻结结果索引及其登记处分不因新增来源而重计。一般 Itô/Girsanov、全部自适应协议的最小性和全局总装仍不由这些端点自动取得。
