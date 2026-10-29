@@ -1,0 +1,278 @@
+{
+  "schema": "UEOT_INDEPENDENT_SOURCE_REVIEW_V1",
+  "verdict": "PASS_NO_SOURCE_SEMANTIC_BLOCKER",
+  "created_utc": "2026-10-29T17:26:58.151695+00:00",
+  "reviewer": {
+    "task": "/root/c1_joint_review",
+    "role": "Independent source and consumer reviewer; did not author either OneStepIntegral or SimplePredictableIntegral, or their Brownian source chain."
+  },
+  "sources": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianOneStepIntegral.lean",
+      "sha256": "1d6e33f0f951cd604557b89353069c450428bdb14b9a19afc70f60470176b9ec",
+      "bytes": 5388
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianSimplePredictableIntegral.lean",
+      "sha256": "90a9d7f4b3209d613e12ba274baf14c09148820bdd074a0beb55b3bae61e04cd",
+      "bytes": 7102
+    }
+  ],
+  "author_receipts": [
+    {
+      "path": "/private/tmp/ueot-brownian-one-step-source-receipt.json",
+      "sha256": "ecd939356290ec35fa0a02720a1cad90d3ccbddec4e055181cd229e306362567",
+      "bytes": 4677
+    },
+    {
+      "path": "/private/tmp/ueot-brownian-simple-integral-source-receipt.json",
+      "sha256": "1d47cf26c4e3fea99b2d746b7815083a36132a23056a8af602ecd6bc983f5361",
+      "bytes": 6048
+    }
+  ],
+  "dependency_binding": {
+    "manifest": {
+      "path": "/private/tmp/ueot-brownian-predictable-dependency-closure.json",
+      "sha256": "ade22e8cee92c05154b103d8c4c9c229c8acc7e9bd612c64a27571c64264ab16",
+      "bytes": 7658
+    },
+    "all_transitive_UEOT_sources": [
+      {
+        "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource",
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianContinuousSource.lean",
+        "sha256": "b657ceb4335459de47531177344c787a440c1c461b6e36c4ff221c5d81521509",
+        "imports": [
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource",
+          "Mathlib.Probability.Moments.MGFAnalytic",
+          "Mathlib.MeasureTheory.OuterMeasure.BorelCantelli",
+          "Mathlib.MeasureTheory.Function.ConvergenceInMeasure",
+          "Mathlib.Analysis.SpecificLimits.Basic"
+        ]
+      },
+      {
+        "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianCountableSource",
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianCountableSource.lean",
+        "sha256": "983dad5c1d1a49cdd81b0e9930fe2f360f9af724d9ae8cc6688b81c52be9ce7d",
+        "imports": [
+          "Mathlib.Probability.BrownianMotion.Basic",
+          "UEOT.V3.DynamicsKernel"
+        ]
+      },
+      {
+        "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource",
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+        "sha256": "a51aedd39c0a819fb9fb045d008aac7ab622049f5bb749e2dab32d3dbdd25cc3",
+        "imports": [
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource",
+          "Mathlib.Probability.Martingale.Basic",
+          "Mathlib.Probability.ConditionalExpectation",
+          "Mathlib.Probability.Distributions.Gaussian.Real",
+          "Mathlib.MeasureTheory.Measure.Decomposition.Lebesgue"
+        ]
+      },
+      {
+        "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOneStepIntegral",
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianOneStepIntegral.lean",
+        "sha256": "1d6e33f0f951cd604557b89353069c450428bdb14b9a19afc70f60470176b9ec",
+        "imports": [
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource"
+        ]
+      },
+      {
+        "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource",
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianProjectiveSource.lean",
+        "sha256": "ea0959f51edd4647d322532982bc59d3556204fea2dd4dec6614d00d7a361cae",
+        "imports": [
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianCountableSource",
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OUQuadraticDynkinSource",
+          "Mathlib.MeasureTheory.Constructions.ProjectiveFamilyContent",
+          "Mathlib.MeasureTheory.OuterMeasure.OfAddContent"
+        ]
+      },
+      {
+        "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianSimplePredictableIntegral",
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianSimplePredictableIntegral.lean",
+        "sha256": "90a9d7f4b3209d613e12ba274baf14c09148820bdd074a0beb55b3bae61e04cd",
+        "imports": [
+          "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOneStepIntegral"
+        ]
+      },
+      {
+        "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OUQuadraticDynkinSource",
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OUQuadraticDynkinSource.lean",
+        "sha256": "aebe1a2b61a495e155adfba3f1c9072760acfafa0d15229d8290dd70fc2d3425",
+        "imports": [
+          "Mathlib.Probability.BrownianMotion.Basic",
+          "Mathlib.Probability.Distributions.Gaussian.HasGaussianLaw.Basic",
+          "Mathlib.Probability.Moments.Variance",
+          "Mathlib.Tactic",
+          "UEOT.V3.RecoveryDynkin"
+        ]
+      },
+      {
+        "module": "UEOT.V3.DynamicsKernel",
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/DynamicsKernel.lean",
+        "sha256": "97ed375855ff5d76e657f3d2c135ef4b36fa154c7377106fc24d1a97126599bc",
+        "imports": [
+          "Mathlib.Probability.Kernel.Composition.CompMap",
+          "Mathlib.Probability.Kernel.IonescuTulcea.Traj"
+        ]
+      },
+      {
+        "module": "UEOT.V3.RecoveryContinuous",
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/RecoveryContinuous.lean",
+        "sha256": "5c0ecb03c66a4b7bd1d6e9f6a3797244052904ececea7d3613d24694a7e7c6a8",
+        "imports": [
+          "Mathlib.Analysis.ODE.Gronwall",
+          "Mathlib.Analysis.SpecialFunctions.ExpDeriv",
+          "Mathlib.MeasureTheory.Integral.IntervalIntegral.AbsolutelyContinuousFun",
+          "Mathlib.Tactic.FieldSimp",
+          "Mathlib.Tactic.Ring"
+        ]
+      },
+      {
+        "module": "UEOT.V3.RecoveryDynkin",
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/RecoveryDynkin.lean",
+        "sha256": "7218bbaaac1f531f866b2ea429d7e19e819477552fcca7971822b9056fc4f26c",
+        "imports": [
+          "UEOT.V3.RecoveryContinuous"
+        ]
+      }
+    ],
+    "pinned_mathlib_git_head": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "pinned_native_API_files": [
+      {
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/statistical-risk-20261020/formalization/ueot-core/.lake/packages/mathlib/Mathlib/MeasureTheory/Function/ConditionalExpectation/PullOut.lean",
+        "sha256": "c12fa1744a39d51a6afbb48774388d3e49dfc1ecd69afc60ace4387a62c8b7a0",
+        "bytes": 14914
+      },
+      {
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/statistical-risk-20261020/formalization/ueot-core/.lake/packages/mathlib/Mathlib/MeasureTheory/Function/LpSeminorm/Basic.lean",
+        "sha256": "a9cbdad8fae393b320ba20cf025bbac20722fc85f76b7b44ea8968134f9b0bfb",
+        "bytes": 45225
+      },
+      {
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/statistical-risk-20261020/formalization/ueot-core/.lake/packages/mathlib/Mathlib/MeasureTheory/Function/LpSeminorm/CompareExp.lean",
+        "sha256": "c7ac957ccb008aa619f46411b8e3fa8faf9fb3457631a67cff4a3755a91dd396",
+        "bytes": 17357
+      }
+    ],
+    "scope": "Exact full imported UEOT source closure bound, including original DynamicsKernel/Recovery/OU and entire constructed Brownian chain. Independent semantic review reads new proofs and actually reused source/moment/pull-out/L2 APIs; this is not a claim to re-prove all transitive native mathematics."
+  },
+  "whole_theory_goal": "OPEN. This is exact finite deterministic simple-predictable source integration/isometry, not general stochastic integration or whole-theory closure.",
+  "read_scope": {
+    "OneStepIntegral_complete_lines": 92,
+    "SimplePredictableIntegral_complete_lines": 114,
+    "private_partition_order_read": true,
+    "full_actual_source_dependency_review_reused": "BROWNIAN_MARTINGALE_SOURCE_REVIEW.json and BROWNIAN_CONTINUOUS_SOURCE_REVIEW.json bind unchanged exact source identities."
+  },
+  "mathematical_assessments": [
+    {
+      "source": "BrownianOneStepIntegral",
+      "claim": "Literal actual returned output and genuine past permission",
+      "assessment": "oneStep H s t is exactly H*(B_t-B_s) of the constructed process under original sourceLaw. H is required StronglyMeasurable in naturalFiltration s, the START of the interval, for conditional identities. MemLp H infinity is under the SAME sourceLaw, providing a.e. essential boundedness plus a.e. strong measurability. No coefficient independence, future-read permission or separate noise certificate is assumed."
+    },
+    {
+      "source": "BrownianOneStepIntegral",
+      "claim": "Actual integrability and conditional source moments",
+      "assessment": "Actual Gaussian increment L2 multiplied with same-source L-infinity H gives literal output L2, hence integrability and square integrability under the finite probability source. Native conditional expectation pull-out is applied only after proving product integrability and true start-past strong measurability; original zero conditional increment and elapsed-time conditional square give conditional oneStep mean0 and square H^2*(t-s). No nonintegrable undefined-integral convention is used to fake these actual consumers."
+    },
+    {
+      "source": "BrownianOneStepIntegral",
+      "claim": "One-step mean/isometry and later permission",
+      "assessment": "Native integral_condExp gives unconditional mean0 and exact integral(output^2)=(t-s)*integral(H^2). The output is strongly measurable in naturalFiltration t by start-past inclusion and source strong adaptedness at both endpoints. This END-time permission, not merely ambient measurability, is what can be used by the later interval."
+    },
+    {
+      "source": "BrownianSimplePredictableIntegral",
+      "claim": "Derived nonoverlap orthogonality",
+      "assessment": "For s<=t<=u<=v, the first output is F_t-measurable and therefore F_u-measurable. Each output is L2, so their product is integrable. Pull-out from conditional expectation given F_u and the second actual zero conditional mean derives integral(product)=0. This correctly permits later coefficients to depend on the entire observed natural past, including the first interval; independent coefficients or raw scalar-state independence are not substituted."
+    },
+    {
+      "source": "BrownianSimplePredictableIntegral",
+      "claim": "Finite actual partition and off-diagonal proof",
+      "assessment": "tau:Fin(n+1)->NNReal is deterministic and only Monotone, not strictly increasing. For i<j, index order gives tau(i+1)<=tau(j), precisely feeding nonoverlap orthogonality. Reversing i,j uses real multiplication commutativity. Repeated times have literal B_tau-B_tau=0 and elapsed energy0. No zero-start or positive interval length is silently assumed; n=0 is also well-defined."
+    },
+    {
+      "source": "BrownianSimplePredictableIntegral",
+      "claim": "L2, final measurability, mean and exact isometry",
+      "assessment": "The output is the literal finite sum of actual oneStep outputs. Native finite-sum L2 and end-time strong measurability are used; final time dominates every interval end by monotonicity. Every double-sum product is integrable via actual L2, so expanding the output square and interchanging FINITE sums/integrals is justified. All off-diagonal integrals are the derived zeros; diagonal terms use exact same-source oneStep_isometry. Thus actual integral(sum^2)=sum elapsed_i*integral(H_i^2), with no caller-supplied orthogonality or energy field."
+    }
+  ],
+  "quantifier_guards": {
+    "clock": "For every finite n and deterministic nondecreasing tau:Fin(n+1)->NNReal, including repeated times and arbitrary nonnegative starting time. No random/stopping-time partitions or infinite partition convergence theorem.",
+    "coefficient": "Each H_i may be signed and depend on the ENTIRE actual natural past at tau_i, but must be strongly measurable there and essentially bounded under sourceLaw. It does not read future increments.",
+    "source": "Exact original constructed continuous Brownian process and sourceLaw throughout; all moments, L2 and conditional expectations use that measure.",
+    "isometry": "For each declared partition and actual allowed coefficients, identity of scalar second-moment integrals. This is not a proof that differently represented simple processes give identical L2 output under common refinements, nor completion to all predictable L2 integrands.",
+    "zero_intervals": "Monotonicity allows tau_i=tau_(i+1); increments vanish pointwise and energy factors vanish.",
+    "AE": "Conditional expectation conclusions are source-a.e. for each declared interval/coefficient. No simultaneous uncountable-parameter nullset is used."
+  },
+  "independent_verification": {
+    "one_step_direct_source": {
+      "command": "lake env lean UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianOneStepIntegral.lean",
+      "observed_exit_code": 0,
+      "log": {
+        "path": "/private/tmp/ueot-brownian-one-step-independent-direct.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "simple_direct_source": {
+      "command": "lake env lean UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianSimplePredictableIntegral.lean",
+      "observed_exit_code": 0,
+      "log": {
+        "path": "/private/tmp/ueot-brownian-simple-independent-direct.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "public_types_axioms_actual_consumers": {
+      "command": "lake env lean /tmp/ueot-brownian-predictable-independent-audit.lean",
+      "observed_exit_code": 0,
+      "input": {
+        "path": "/private/tmp/ueot-brownian-predictable-independent-audit.lean",
+        "sha256": "1c0440efd758b4c1d3ac8d4dd704224a5bc08c3ca671532ecc4850dbbd3399e5",
+        "bytes": 6351
+      },
+      "log": {
+        "path": "/private/tmp/ueot-brownian-predictable-independent-audit.log",
+        "sha256": "ffebd31a8179bdf52c5900085313c1ad617fd32141f4a0d345ccc47bff947586",
+        "bytes": 12572
+      },
+      "coverage": "Every public definition/theorem in both frozen sources, plus actual boundary and past-dependent-coefficient consumers.",
+      "reported_axioms_only": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "actual_consumer_cases": [
+      "Original unit[0,1] oneStep second moment1",
+      "For ANY H and repeated s=t, oneStep H s s=0 pointwise",
+      "Coefficient H=sin(actual B_1) is proved F_1-strongly measurable and L-infinity under SAME source, then actual oneStep[1,2] isometry is consumed",
+      "Actual cross integral of unit[0,1] output with sin(B_1)-weighted[1,2] output is0, allowing the later coefficient to read first-interval past",
+      "Deterministic tau=[0,1,1] unit-coefficient finite simple integral has exact second moment1, preserving the zero-length final interval",
+      "Empty n=0 partition output is literally0"
+    ],
+    "source_scan": {
+      "sorry_admit_axiom_opaque_declarations": false
+    },
+    "resolved_reviewer_harness_failure": {
+      "log": {
+        "path": "/private/tmp/ueot-brownian-predictable-independent-harness-error.log",
+        "sha256": "22fc4fb6cd782afe293e22b1e4c55a1dacfef19329c9286def97052c59da5e9a",
+        "bytes": 13838
+      },
+      "classification": "Reviewer-only numeral simplification: simp did not normalize (2-1) multiplying the sine-coefficient energy. norm_num at the theorem instance resolves it. No source change or assumption change."
+    }
+  },
+  "reuse_assessment": "Reuses same-source Gaussian MemLp2, native Holder multiplication, conditional expectation integrable pull-out, filtration monotonicity, native finite-sum L2/integration and existing actual oneStep source. New source extension is the necessary signed causal cross-term and finite-energy consumer; it does not build a competing martingale or general integration framework.",
+  "findings": [],
+  "boundaries": [
+    "No density, common-refinement well-definedness or Hilbert completion to all predictable L2 processes is proved.",
+    "No stopping-time integration, general Ito formula, quadratic-variation limit, SDE/control/HJB or Girsanov completion is claimed.",
+    "No global/augmented/right-continuous-filtration or source-family compatibility bridge is inferred.",
+    "No change to actions, observation information, sampling batches, failure records, thresholds, QM/physics, GI implementation or global configuration."
+  ],
+  "mutation_scope": "Only this exclusive review JSON and external /tmp dependency manifest/audit harness/log/receipt. No source/root/Git/GI/books edits.",
+  "promotion": "Clears these exact two frozen source contracts for root-managed public build, typed reuse and integration; not a whole-theory verdict."
+}

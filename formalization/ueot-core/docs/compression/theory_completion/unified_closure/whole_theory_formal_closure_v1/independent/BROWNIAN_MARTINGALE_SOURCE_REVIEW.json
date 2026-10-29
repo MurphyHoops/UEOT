@@ -1,0 +1,133 @@
+{
+  "schema": "UEOT_INDEPENDENT_SOURCE_REVIEW_V1",
+  "verdict": "PASS_NO_SOURCE_SEMANTIC_BLOCKER",
+  "created_utc": "2026-10-29T17:15:33.463881+00:00",
+  "reviewer": {
+    "task": "/root/c1_joint_review",
+    "role": "Independent reviewer; did not author BrownianMartingaleSource or BrownianContinuous/Projective sources."
+  },
+  "source": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+    "sha256": "a51aedd39c0a819fb9fb045d008aac7ab622049f5bb749e2dab32d3dbdd25cc3",
+    "bytes": 16180
+  },
+  "author_receipt": {
+    "path": "/private/tmp/ueot-brownian-martingale-source-receipt.json",
+    "sha256": "cc95bb3c9c7cf68f1d27400947182990b50ef2b26edbb4faeeb217efcc02e1f1",
+    "bytes": 6421
+  },
+  "dependencies": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianContinuousSource.lean",
+      "sha256": "b657ceb4335459de47531177344c787a440c1c461b6e36c4ff221c5d81521509",
+      "bytes": 25495
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianProjectiveSource.lean",
+      "sha256": "ea0959f51edd4647d322532982bc59d3556204fea2dd4dec6614d00d7a361cae",
+      "bytes": 9602
+    }
+  ],
+  "whole_theory_goal": "OPEN; natural-filtration conditional-moment and explicit finite-horizon density source only.",
+  "read_scope": {
+    "complete_source": true,
+    "lines": 308,
+    "all_private_proofs_read": true,
+    "pinned_original_APIs": [
+      "IsPreBrownianReal.indepFun_shift full Gaussian past-process independence, proved by Gaussian zero cross-covariance",
+      "Filtration.natural and natural_eq_comap",
+      "condExp_indep_eq, including its nonintegrable convention branch",
+      "native conditional expectation add/sub and integrable pull-out",
+      "Martingale definition and setIntegral_eq",
+      "Gaussian MGF/integrable exponential",
+      "Measure.rnDeriv_withDensity"
+    ]
+  },
+  "mathematical_assessments": [
+    {
+      "lines": "21-48",
+      "claim": "Actual entire natural past independence",
+      "assessment": "naturalFiltration is exactly original Filtration.natural of the constructed continuous process. Original source-derived finite Gaussian laws feed indepFun_shift, whose conclusion is independence between the entire shifted process and the entire Iic(s)-indexed past tuple. Composing only the future side with evaluation t-s gives actual increment independence from ALL natural-past coordinates; s+(t-s)=t uses s<=t. natural_eq_comap identifies the generated past sigma algebra. No single-time-only independence or assumed martingale/independence certificate is substituted."
+    },
+    {
+      "lines": "52-86",
+      "claim": "Conditional increment mean and actual Brownian martingale",
+      "assessment": "The measurable-transform conditional identity is a direct original independent-sigma-algebra conditional expectation application. Actual increment integrability is separately proved from Gaussian coordinate integrability, and its mean is derived from actual Gaussian zero means. These establish conditional zero increment and the actual process martingale under the same natural filtration, by native conditional addition/pullback."
+    },
+    {
+      "lines": "88-169",
+      "claim": "Elapsed-time conditional second moment and compensated square",
+      "assessment": "Actual increment Gaussian law yields integrable square and expectation t-s. Product integrability for current coordinate times increment is derived from actual Gaussian L2 bounds, permitting conditional pull-out and zero cross term. The algebraic square decomposition then gives E[B_t^2|F_s]=B_s^2+t-s and B_t^2-t martingale. Every needed integrability premise is derived, not a source field."
+    },
+    {
+      "lines": "173-263",
+      "claim": "Actual exponential martingale for every real u",
+      "assessment": "gaussianExp(u,v,x)=exp(u*x-u^2*v/2). Actual Gaussian integrable exponential and MGF normalization prove its integral is1, including degenerate zero variance. The actual increment law is Gaussian(0,t-s). Its independent conditional exponential mean is1. Exact exponential multiplicative factorization and integrable pull-out prove the exponential martingale for all real u and all s<=t in NNReal. No stochastic integral/exponential certificate or Novikov premise is used because the parameter is deterministic constant u."
+    },
+    {
+      "lines": "269-305",
+      "claim": "Explicit finite-horizon probability and RN source",
+      "assessment": "tiltedLaw(u,T) is explicitly a DIFFERENT probability measure obtained by withDensity of the terminal positive exponential on the SAME measurable raw sample space. Integrability, positivity and derived mean1 prove normalization. Absolute continuity and source-a.e. RN derivative use native withDensity APIs. For s<=t, measures with terminal horizons t and s agree only on events in the actual F_s; the original martingale set-integral identity proves this. This is not a new Brownian law under the tilted measure and does not claim all-event or infinite-horizon equality."
+    }
+  ],
+  "quantifier_guards": {
+    "time": "All nonnegative real s,t,T; conditional increments and horizon consistency require s<=t. No stopping-time or optional-sampling theorem.",
+    "parameters": "Exponential parameter u is an arbitrary deterministic real constant. No predictable/random drift process is included.",
+    "past": "Entire natural past sigma algebra, generated by all coordinates at r<=s; not completed/right-continuous augmentation.",
+    "generic_transform_convention": "condExp_increment_function assumes only measurable phi. Its nonintegrable cases follow mathlib total Bochner integral/conditional-expectation conventions (undefined integral and CE are0). It is not an extended-real expectation theorem for arbitrary nonintegrable transforms. All actual mean/square/exponential consumers independently prove integrability.",
+    "RN": "For each fixed u,T, rnDeriv(tiltedLaw u T,sourceLaw) equals explicit density SOURCE-a.e.; no simultaneous all-parameter nullset or pointwise identity is asserted.",
+    "horizon": "For each s<=t and each F_s-measurable event A, tiltedLaw u t A=tiltedLaw u s A. This does not identify the two measures on the entire ambient sigma algebra."
+  },
+  "independent_verification": {
+    "direct_source": {
+      "command": "lake env lean UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+      "observed_exit_code": 0,
+      "log": {
+        "path": "/private/tmp/ueot-brownian-martingale-independent-direct.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "all_public_types_axioms_and_consumers": {
+      "command": "lake env lean /tmp/ueot-brownian-martingale-independent-audit.lean",
+      "observed_exit_code": 0,
+      "input": {
+        "path": "/private/tmp/ueot-brownian-martingale-independent-audit.lean",
+        "sha256": "dc54252bffe3628bb51df648788768a31d1bfd5a9cbe22a694f8dc03dfc82fff",
+        "bytes": 7765
+      },
+      "log": {
+        "path": "/private/tmp/ueot-brownian-martingale-independent-audit.log",
+        "sha256": "ff2ebdbbf13174f27bdf35680a0f4507a71a62057a5a8a1f8ceeb6f3976110a7",
+        "bytes": 15318
+      },
+      "reported_axioms_only": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "source_scan": {
+      "sorry_admit_axiom_opaque_declarations": false
+    }
+  },
+  "actual_external_consumers": [
+    "Typed actual process Martingale",
+    "Typed entire Iic(s)-past increment IndepFun",
+    "Typed conditional process square source",
+    "Typed exponential Martingale for arbitrary u",
+    "Inferred probability of explicit tiltedLaw",
+    "Typed actual source-a.e. RN density",
+    "Typed F_s event horizon-consistency equality"
+  ],
+  "reuse_assessment": "Directly reuses original Gaussian process independence, natural-filtration equivalence, conditional expectation algebra, Gaussian MGF and withDensity/RN APIs. New source results derive the premises required by predictable moment and finite-horizon likelihood consumers; no general stochastic integration framework is duplicated.",
+  "findings": [],
+  "boundaries": [
+    "No shifted process Brownian under tiltedLaw, general Girsanov, Novikov, infinite-horizon change of measure or parameter-uniform a.e. statement is proved.",
+    "General predictable/L2 integration, Ito, SDE/control/HJB and filtration augmentation remain separate obligations.",
+    "This is the same constructed process and base sourceLaw; tiltedLaw is an explicitly declared finite-horizon change of measure, not a quiet source replacement.",
+    "No empirical sampling, actions, observations, failure records or thresholds are altered."
+  ],
+  "mutation_scope": "Only this independent review JSON and external /tmp audit files/logs; no source/root/Git/GI/books edits.",
+  "promotion": "Root-managed public build, mandatory typed reuse and integration are still separate gates."
+}
