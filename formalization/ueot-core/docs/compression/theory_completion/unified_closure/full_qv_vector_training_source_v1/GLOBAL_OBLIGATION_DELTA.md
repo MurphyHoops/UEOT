@@ -1,0 +1,5 @@
+# Current global obligations (whole-theory goal remains OPEN)
+
+## Current source difference after actual main408 (2026-10-30)
+
+Earlier unresolved bullets are historical source checkpoint obligations, not a current claim that their completed narrow sources are missing. Actual main406 derives continuous same-input scalar integral and external-idle resource source;407 derives actual compensated martingale and population allocator/offspring Price;408 publishes both books through407. Current candidate `full_qv_vector_training_source_v1` reduces same-input arbitrary deterministic partition QV, whole-joint-past Euclidean noise, complete funded training origin and declared noisy-journal Good/P12 source premises. Exact scopes, counterexamples, review hashes and actual public consumers are in that packet. None closes general P11 Ito/SDE/Girsanov, all original source dimensions/filtrations, formation/scale, noisy C5 or compatible whole-theory assembly. New own-program population and multiplier/vector-closure successors remain excluded until independently reviewed and adopted. Whole Goal OPEN.
