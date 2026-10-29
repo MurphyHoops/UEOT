@@ -209,6 +209,8 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultInfinite
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OUQuadraticDynkinSource
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource
 /-!
 # UEOT Theory Completion public root
 

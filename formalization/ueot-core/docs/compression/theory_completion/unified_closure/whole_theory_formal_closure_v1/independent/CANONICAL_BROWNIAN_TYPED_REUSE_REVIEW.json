@@ -1,0 +1,949 @@
+{
+  "schema": "UEOT_CANONICAL_BROWNIAN_TYPED_REUSE_REVIEW_V1",
+  "verdict": "CLEAR_FOR_REQUIRED_TYPED_REUSE_REVIEW_NONPROMOTIONAL",
+  "whole_theory_goal": "OPEN_NOT_ESTABLISHED",
+  "reviewer": "/root/c1_joint_review; did not author any of the three new source modules. Authorship of some older C1 response/latent dependencies is explicit in the separate canonical source review; their independent reviews remain authoritative for that role.",
+  "base_sha": "3b0ffa14ffce72738da0cd7eba33c5e738029b8d",
+  "candidate_sha": "e4cb0114230272854f935167e48af0ff18462f47",
+  "inputs": {
+    "preflight": {
+      "path": "/tmp/ueot-canonical-brownian-reuse.json",
+      "sha256": "ddd1bbf3849ccf06f8d5aadfcd034accb37381588b7275489435cd0ca2c10499"
+    },
+    "preflight_markdown": {
+      "path": "/tmp/ueot-canonical-brownian-reuse.md",
+      "sha256": "87e7b4b68118fcac3badc3e73d2e57554f60c473077c2a0351ff2202e055aa11"
+    },
+    "type_checker": {
+      "path": "/tmp/ueot-canonical-brownian-typed-api.lean",
+      "sha256": "30a021ebca5093d8093d9172f787b40bd648bab710789270e46af274e2860046"
+    },
+    "typed_output": {
+      "path": "/tmp/ueot-canonical-brownian-typed-api.log",
+      "sha256": "df3285d294fa238b485d5113cf1abcddd9bbe84bfa773f6072fcba30d3b820de"
+    },
+    "support_inventory": {
+      "path": "/tmp/ueot-canonical-brownian-support-inventory.json",
+      "sha256": "da80f54be9bf51de06ed4e1b6ca1862b378da348c52f8e8def0f414592ad463e"
+    }
+  },
+  "source_semantic_reviews": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/whole_theory_formal_closure_v1/independent/C1_CANONICAL_SOURCE_REVIEW.json",
+      "sha256": "86e30886b3f7f76580a84456dacfcdfe8b4a31a12312f1d87f91658e2bbd660b"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/whole_theory_formal_closure_v1/independent/BROWNIAN_COUNTABLE_SOURCE_REVIEW.json",
+      "sha256": "8bf7e76380feea21139c0aa4e8bf9b28f19e34da51abafdb803598e3ed879c26"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/whole_theory_formal_closure_v1/independent/BROWNIAN_PROJECTIVE_SOURCE_REVIEW.json",
+      "sha256": "f37bb163cb8ada3d86f6f73bbd119b4076cff0817698aaa4063c8e39c6249860"
+    }
+  ],
+  "changed_lean_sources": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
+      "sha256": "e3124a2f83fcba54b9be0810981ecf0d7e4e6f5b1e32af5d853ca557e9cc9838"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianCountableSource.lean",
+      "sha256": "983dad5c1d1a49cdd81b0e9930fe2f360f9af724d9ae8cc6688b81c52be9ce7d"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianProjectiveSource.lean",
+      "sha256": "ea0959f51edd4647d322532982bc59d3556204fea2dd4dec6614d00d7a361cae"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "sha256": "d3b986dc16dff3feb201f0f27a0f23ae3ece5f4aa3f05aad84184fc585b28d50"
+    }
+  ],
+  "verification": {
+    "command": "lake env lean /tmp/ueot-canonical-brownian-typed-api.lean",
+    "exit_code": 0,
+    "every_gate_symbol_support_symbol_and_individual_hit_type_elaborated": true,
+    "all_changed_and_hint_source_blobs_match_candidate": true,
+    "private_helper_scope": "Complete private/source helper code was read in independent semantic reviews and full exact-source Lean checks; private Gaussian-prefix disintegration and local-cylinder realization are not ignored or represented as external source certificates.",
+    "public_export_diff": "Public root adds exactly CanonicalSource and ProjectiveSource imports, with CountableSource transitively exported; no old import or result removed.",
+    "no_source_or_git_mutation": true
+  },
+  "coverage": {
+    "every_gate_theorem_has_actual_typed_disposition": true,
+    "every_individual_JSON_hint_has_actual_typed_disposition": true,
+    "all_explicit_supporting_public_definitions_abbreviations_instances_checked": true,
+    "not_a_scientific_completion_metric": true
+  },
+  "findings": [],
+  "cross_source_scope": "Canonical P/O predictive family and canonical pre-Brownian/OU family are separately declared compatible source consumers. This review does not assert an unproved common World, conditional OU semigroup/P-O representation, continuous source or global composition merely because both use Gaussian mathematics.",
+  "source_specific_findings": [
+    "Original dependent PredictionDependent minimality/sufficiency/tower consumers are ACTUALLY called after source future kernels are derived, rather than renamed as their own source assumptions. All-probability-array embedding does not assume a Borel source image or latent selector.",
+    "Countable Brownian realization uses actual finite Gaussian projectivity and existing conditional kernels/trajectory construction. All-NNReal source sigma-subadditivity is PROVED via one countable local realization for each whole cylinder cover, then existing Caratheodory extension is reused.",
+    "The actual canonical evaluation source removes hB for the original OU quadratic recovery and positive-variance consumers. Raw-process continuity, general Ito/control/Girsanov and whole theory remain explicit open obligations.",
+    "No lexical hint requires a code replacement or new common abstraction. Closest exact original generic consumers/operators are already reused at the appropriate types."
+  ],
+  "new_theorem_reviews": [
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianCountableSource.finiteLaw_restrict",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianCountableSource.lean",
+      "line": 130,
+      "actual_type_sha256": "7cbad9887a95034f14a4ab631403a2de2135ffc3e154c16585b2a2f72747e9c2",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Actually reuses original Brownian finite Gaussian projectivity and commuting finite selection/restriction maps. It handles duplicate/nonmonotone requested times, not a supplied infinite source.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianCountableSource.countableLaw_prefix",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianCountableSource.lean",
+      "line": 148,
+      "actual_type_sha256": "c4679508291936f98d1cfbda2a57d544277baa439b8c2457d910efb9c5def37f",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Instantiates the constructed private Ionescu-Tulcea prefix realization with the PROVED finiteLaw_restrict; no projective-limit or hB field is input.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianCountableSource.countableLaw_finite",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianCountableSource.lean",
+      "line": 156,
+      "actual_type_sha256": "f55c25257dcef42e38fe229e8a1cf748b8090d7b2eddf0a2eabc100f35d3ad99",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Reuses countableLaw_prefix, finiteLaw_restrict and the finite-index supremum prefix to recover every finite coordinate set, not only initial segments.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianCountableSource.countable_isGaussianProcess",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianCountableSource.lean",
+      "line": 175,
+      "actual_type_sha256": "56d1b059e97099fb1bba3be5cd58c33ed543a9b8260bf455f71b2d89aa085470",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Uses actual finite-law HasLaw and finiteLaw_isGaussian continuous-linear images of original Gaussian finite laws. Gaussian process existence is concluded, not assumed.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianCountableSource.countable_eval_hasLaw",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianCountableSource.lean",
+      "line": 190,
+      "actual_type_sha256": "35043e8461ca06f50c6c342905a4e3c5a90e87a475b3c49051a7182ed8556f42",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Transports an actual singleton finite marginal and existing Gaussian evaluation law.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianCountableSource.countable_mean",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianCountableSource.lean",
+      "line": 198,
+      "actual_type_sha256": "fde8add744aacde9a5adfd0019cfd2abaa2e0e55e99903e53f702d6b251912c4",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Reuses actual countable_eval_hasLaw and Gaussian integral identity, with no caller-supplied moment certificate.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianCountableSource.countable_covariance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianCountableSource.lean",
+      "line": 210,
+      "actual_type_sha256": "16f045279f091b1ad1a02c6f7bcd2387f376ab67fe4c3f56c65d28bf8b84a68f",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Transports exact two-coordinate finite Gaussian covariance through the actual finite HasLaw map.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianCountableSource.countable_variance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianCountableSource.lean",
+      "line": 222,
+      "actual_type_sha256": "74cf4e08f38ed6e66dbfaeea518863f4481115fb8f4b5252d6b0bc68e9b4c70c",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Uses covariance_self, actual countable_covariance and coordinate measurability; not an independently asserted positive-noise assumption.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianCountableSource.countable_increment_hasLaw",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianCountableSource.lean",
+      "line": 239,
+      "actual_type_sha256": "5953ff799e20f861835b0d9235f85eb2c459f5f994464fa346860df77e43ef75",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Uses actual two-coordinate finite Gaussian image and existing evaluation-difference law, without requiring requested times to be ordered or distinct.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianCountableSource.countable_increment_second_moment",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianCountableSource.lean",
+      "line": 248,
+      "actual_type_sha256": "846e429970e6b2d43b09daf2126c68676bfeae4b7dcac1fb685988016bf2004f",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Uses actual increment Gaussian mean/variance identities to derive the second moment; no Kolmogorov-continuity certificate is silently assumed.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianCountableSource.denseTimes_dense",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianCountableSource.lean",
+      "line": 264,
+      "actual_type_sha256": "fc59be54e86c7716a33386f0785bbafc288d49d7af2fb8244f6c15d51759e2b0",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Adds explicit zero/unit coordinates to the existing standard dense sequence and reuses its DenseRange theorem. No new density framework.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianCountableSource.dense_source_zero",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianCountableSource.lean",
+      "line": 270,
+      "actual_type_sha256": "867d9cdbfeb2f29221d51abad02656316fff959d2c99221b27f103bbacadd8f5",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Uses actual coordinate Gaussian law at requested physical time0 and Gaussian zero-variance Dirac identity.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianCountableSource.dense_source_unit_variance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianCountableSource.lean",
+      "line": 277,
+      "actual_type_sha256": "2a42356c1b118966e01aeac0c3a059d848f1acc294e806d7098959b151e64536",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Directly consumes actual countable_variance at the explicitly requested unit time.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianCountableSource.dense_source_realized",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianCountableSource.lean",
+      "line": 285,
+      "actual_type_sha256": "b5986e2b1131602a8abc4b011e7adfacf2aa19f3ee9d8066f2268baeb182b948",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Packages the SAME constructed countable measure, Gaussian finite-law property, covariance, zero start and unit variance. It is not a new existence assumption or all-time continuity assertion.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.brownianContent_sigmaSubadditive",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianProjectiveSource.lean",
+      "line": 95,
+      "actual_type_sha256": "d97d29d7752ed904f6ebe5ec080070634c443ccbda2eedb421f6e2667ebd2574",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Localizes every finite support of ONE countable cylinder family and its cylinder union on ONE actual countableLaw tau. Reuses local finite laws, original projective content and measure_iUnion_le to prove the missing sigma-subadditivity instead of taking it as input.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw_finite",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianProjectiveSource.lean",
+      "line": 138,
+      "actual_type_sha256": "0a324fdad1ca9fc5bf094fd531a8087a95d9cd763446e82f460dec4ef84a4dcf",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Uses original AddContent.measure_eq on measurable cylinders after proving sigma-subadditivity. A finite training sourceSample law is not this all-NNReal coordinate law identity.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_law",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskWitness.lean",
+          "lexical_similarity_only": 0.5,
+          "actual_type_sha256": "5c7a5df31f3290a865cee1ab2926a649cc3fd685ddd8cba18b758d9e78827ef2",
+          "actual_type_preview": "@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.StatisticalRiskWitness.sourceSample_law : ∀ {X A R O : Type u_1}\n  [inst : Fintype X] [inst_1 : Fintype A] [inst_2 : MeasurableSpace X] [MeasurableSingletonClass X]\n  [inst_4 : MeasurableSpace A] [MeasurableSingletonClass A] (M : ℕ → UEOT.V3.FiniteStablePartition.Model X A R O)\n  (N T n : ℕ),\n  n < T →\n    ∀ (a : A) (x : X) (k : Fin N),\n      MeasureTheory.Measure.map\n          (UEOT.V3.Compres",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "Finite Fintype controlled training experiment: one sampled row state from sourceExperimentLaw has a given finite row PMF. New target is EVERY finite NNReal coordinate restriction of an actually constructed Brownian path measure; no such training indices/sample rows appear."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.source_isPreBrownian",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianProjectiveSource.lean",
+      "line": 155,
+      "actual_type_sha256": "bc9ded22156b7771c7238488316f80a2ea0f5018fa1a2471be730b87ea0efd8b",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Constructs the original IsPreBrownianReal finite HasLaw field from sourceLaw_finite for literal evaluation under actual sourceLaw, with no input hB/process/source-law certificate.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.source_zero",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianProjectiveSource.lean",
+      "line": 159,
+      "actual_type_sha256": "b82897155be7dc0ec73af6bff4d6742406ba940cde5ae54053ecdfc4b10f340e",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Consumes original actual source_isPreBrownian.eval_zero_ae_eq_zero; unrelated finite-vector snoc index0 lemma is not the same proposition.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": [
+        {
+          "symbol": "CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.FiniteJumpGenerator.snoc_zero",
+          "path": "formalization/ueot-core/UEOT/V3/ThirdParty/CrooksJarzynski/ContinuousTimeJumpFiniteGeneratorPathLaw.lean",
+          "lexical_similarity_only": 0.52,
+          "actual_type_sha256": "4083852ea18437e7d09d01ecaf66fe9d04ad29d15da5eef347d4482a41db8fe1",
+          "actual_type_preview": "@CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.FiniteJumpGenerator.snoc_zero : ∀ {Ω : Type u_1} {n : ℕ}\n  (init : Fin (n + 1) → Ω) (z : Ω), Fin.snoc init z 0 = init 0",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "Actual type is Fin.snoc init z 0=init0. It preserves the zeroth coordinate of a finite vector; it is not an almost-sure Brownian zero-start law."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.source_unit_variance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianProjectiveSource.lean",
+      "line": 161,
+      "actual_type_sha256": "01fd26a7684fc9a8fcd246fb6c68e289e12e2a448a10ad2d11919d57c181b9d7",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Uses actual pre-Brownian covariance_eval and covariance_self. The older conditional OU variance theorem requires hB and cannot construct the base Brownian source noncircularly.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OUQuadraticDynkinSource.ou_source_variance",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OUQuadraticDynkinSource.lean",
+          "lexical_similarity_only": 0.513,
+          "actual_type_sha256": "b6c16e534125fc463f01736642a5e5f5ea070c81abd7c9a9c911ba0ee966add0",
+          "actual_type_preview": "@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OUQuadraticDynkinSource.ou_source_variance : ∀ {Ω : Type u_1}\n  [inst : MeasurableSpace Ω] {P : MeasureTheory.Measure Ω} {B : NNReal → Ω → ℝ},\n  ProbabilityTheory.IsPreBrownianReal B P →\n    ∀ (k s x0 : ℝ),\n      0 < k →\n        ∀ (t : NNReal),\n          ProbabilityTheory.variance\n              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OUQuadraticDynkinSource.ouSource B k s x0 t) P =",
+          "decision": "NOT_TYPED_REPLACEMENT_FOR_SOURCE_FOUNDATION",
+          "typed_reason": "Conditional OU variance formula assumes an existing IsPreBrownianReal source and k>0. It cannot supply the base actual Brownian source/unit variance without circularly assuming hB; the OU formulas are reused only downstream after source realization."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.actual_ou_recovery",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianProjectiveSource.lean",
+      "line": 169,
+      "actual_type_sha256": "13388f805eb9a58dee8fef7bdca23884714ede53d7936a7474b251a21d69eee9",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Actually invokes original OUQuadraticDynkinSource.actual_source_p_rec_02 with constructed source_isPreBrownian; no duplicate quadratic Dynkin proof.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.actual_ou_positive_variance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianProjectiveSource.lean",
+      "line": 177,
+      "actual_type_sha256": "c3c88e58be3e9c36413bcca2fd161a5c83181f80c698380457acba9d22a8ce66",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Actually invokes original OU nonzero_noise_positive_variance under the SAME constructed source, retaining k>0,s!=0,t>0 and arbitrary deterministic x0.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.measurable_rawResponse",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "line": 39,
+      "actual_type_sha256": "a0bfc7cff66c741616aaa88137ce2bcfa9a9b9b230582a05ed81f9ac06aafb4c",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Forget only coordinate probability proofs via existing subtype/Pi measurability. This is not a second source response construction or a jump-rate measurability theorem.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.measurable_response",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+          "lexical_similarity_only": 0.667,
+          "actual_type_sha256": "3acbc6bf4b4e44824a6d9f7d3ed5d2e0f4e850c8dd334f9d37821ad86b6b1def",
+          "actual_type_preview": "@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.measurable_response : ∀\n  {Z : Type u_1} {A : Type u_2} {W : Type u_3} [inst : MeasurableSpace Z] [inst_1 : MeasurableSpace A]\n  [inst_2 : MeasurableSpace W] (P : ProbabilityTheory.Kernel (Z × A) Z) [inst_3 : ProbabilityTheory.IsMarkovKernel P]\n  (O : ProbabilityTheory.Kernel (Z × A) W) [inst_4 : ProbabilityTheory.IsMarkovKernel O],\n  Measurable (UEOT.V3.Co",
+          "decision": "REUSED_FOR_CORRECT_TARGET_NOT_RAW_FORGETFUL_MAP",
+          "typed_reason": "This maps a latent ProbabilityMeasure to its actual normalized response array; the new rawResponse map forgets normalization proofs on ANY probability array. It is actually reused by measurable_actualCanonical where its type fits."
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSource.measurable_testResponse",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSource.lean",
+          "lexical_similarity_only": 0.553,
+          "actual_type_sha256": "8061a53fb7364cd2a7bc8c2c59dbd4c6580e628e4c71c1f99ae6add85e7379bc",
+          "actual_type_preview": "@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSource.measurable_testResponse : ∀\n  {Y : Type u_1} {A : Type u_2} [inst : MeasurableSpace Y] [inst_1 : MeasurableSpace A] {Z : Type u_3}\n  [inst_2 : MeasurableSpace Z] (K : ProbabilityTheory.Kernel (Z × A) Z) [ProbabilityTheory.IsMarkovKernel K]\n  (q : Z → Y),\n  Measurable q →\n    ∀ (word : List (A × UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSo",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "A state-to-ENNReal scalar finite-event test measurability theorem, not a subtype/Pi array forgetful map."
+        },
+        {
+          "symbol": "CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.FiniteJumpGenerator.measurable_rateDensity",
+          "path": "formalization/ueot-core/UEOT/V3/ThirdParty/CrooksJarzynski/ContinuousTimeJumpFiniteGeneratorPathLaw.lean",
+          "lexical_similarity_only": 0.48,
+          "actual_type_sha256": "f9dcf961e5f6366551fe2f38dd6f0920d87942cf2c51f7701ab434925757b0ec",
+          "actual_type_preview": "@CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.FiniteJumpGenerator.measurable_rateDensity : ∀ {Ω : Type u_1}\n  [inst : Fintype Ω] [inst_1 : MeasurableSpace Ω] [MeasurableSingletonClass Ω]\n  (G : CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.FiniteJumpGenerator Ω) (w : Ω → ENNReal) (n : ℕ),\n  Measurable (CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.JumpPath.rateDensity w G.pathEscapeRate G.pathJumpRate)",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "Measurability of finite jump-path rateDensity for a supplied finite generator/weights; no response probability arrays in its type."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.rawResponse_embedding",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "line": 47,
+      "actual_type_sha256": "0d25f26644bcb09835fd49ab8a97505ee6513ab082183928e653998cfe2191d3",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Uses measurable countable intersection of probability-normalization predicates, existing subtypePiEquivPi and subtype_coe embedding. It embeds ALL normalized arrays, not an asserted Borel source image or latent section.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.measurable_terminalPosterior",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "line": 74,
+      "actual_type_sha256": "6c70887f8af0a6a6dc96b69c2868c3b3b98cfddc43ae127d7822783dee5db0f5",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Uses existing measurable_pi_apply and product projections to READ the stored last posterior. It does not recompute posterior disintegration or read a terminal CTMC state.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": [
+        {
+          "symbol": "CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.FullPath.measurable_terminalState",
+          "path": "formalization/ueot-core/UEOT/V3/ThirdParty/CrooksJarzynski/ContinuousTimeJumpFiniteGeneratorFullPath.lean",
+          "lexical_similarity_only": 0.554,
+          "actual_type_sha256": "71b280a122b4107e04e921c8bb8f28fc496c9a19410a0250d325829a4c5c96db",
+          "actual_type_preview": "@CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.FullPath.measurable_terminalState : ∀ {Ω : Type u_1}\n  [inst : MeasurableSpace Ω], Measurable CrooksJarzynski.MeasureProtocol.ContinuousTimeJump.FullPath.terminalState",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "Reads terminal state of the FullPath jump-trajectory datatype. New target reads ProbabilityMeasure from a coordinate of finite C1 RecordState history, so standard pi/product projections are the direct reusable API."
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.measurable_generalPosterior_readout",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/GeneralStateObjecthood.lean",
+          "lexical_similarity_only": 0.5,
+          "actual_type_sha256": "632b1f531ea76b7aa030418e2e3f48ae69d3df6f51a762bb1a80ff7c291d7cd1",
+          "actual_type_preview": "@UEOT.V3.Compression.TheoryCompletion.measurable_generalPosterior_readout : ∀ {Z : Type u_1} {A : Type u_2}\n  {Y : Type u_3} [inst : MeasurableSpace Z] [inst_1 : StandardBorelSpace Z] [inst_2 : Nonempty Z]\n  [inst_3 : MeasurableSpace A] [inst_4 : MeasurableSpace Y] (b : MeasureTheory.Measure Z)\n  [inst_5 : MeasureTheory.IsProbabilityMeasure b] (P : ProbabilityTheory.Kernel (Z × A) Z)\n  [inst_6 : ProbabilityTheory.IsMarkovKernel P] (O : Probabilit",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "For fixed b,P,O,a, maps a new observation y to a posteriorKernel measure. New terminalPosterior simply reads the previously computed belief from a full observed prefix; no new conditioning occurs."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.futureKernel_apply",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "line": 103,
+      "actual_type_sha256": "e7c5c106b08d4f4feabab90553e6470dd304d054c64cec4cec51041938c9bb28",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Definitional source adapter: future wordKernel composed with the last actual belief law equals responseLaw(last posterior). Other kernel_apply hints operate on different carriers and do not supply this source interpretation.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveJointPath.recordKernel_apply",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveJointPath.lean",
+          "lexical_similarity_only": 0.513,
+          "actual_type_sha256": "f6524c03e475635546afc9fe9edb64b6eb66371588ee6ac54d01ddabfe34ce4e",
+          "actual_type_preview": "@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveJointPath.recordKernel_apply : ∀ {Z : Type u_1}\n  {A : Type u_2} {W : Type u_3} [inst : MeasurableSpace Z] [inst_1 : MeasurableSpace A] [inst_2 : MeasurableSpace W]\n  [inst_3 : StandardBorelSpace Z] [inst_4 : Nonempty Z] [inst_5 : MeasurableSpace.CountablyGenerated W]\n  (P : ProbabilityTheory.Kernel (Z × A) Z) [inst_6 : ProbabilityTheory.IsMarkovKernel P]\n  (O : ProbabilityT",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "RecordState transition row as pushforward of action/observation samples. New futureKernel_apply equates a continuation observation-word law from terminal belief, with a different input/output carrier and no future pi sampling."
+        },
+        {
+          "symbol": "UEOT.V3.ConcreteHistoryMarkovization.augmentedKernel_apply",
+          "path": "formalization/ueot-core/UEOT/V3/ConcreteHistoryMarkovization.lean",
+          "lexical_similarity_only": 0.507,
+          "actual_type_sha256": "45ce81783889ea1f7983c5724e3efa21998cbbd61eba9bb8738d865c25e090ab",
+          "actual_type_preview": "@UEOT.V3.ConcreteHistoryMarkovization.augmentedKernel_apply : ∀ {X : Type u_1} {A : Type u_2} [inst : MeasurableSpace X]\n  [inst_1 : MeasurableSpace A] (q : (n : ℕ) → ProbabilityTheory.Kernel (UEOT.V3.FiniteHistory.HistoryFiber X A n × A) X)\n  (n : ℕ) (z : UEOT.V3.FiniteHistory.HistoryFiber X A n × A),\n  (UEOT.V3.ConcreteHistoryMarkovization.augmentedKernel q) ⟨n, z⟩ =\n    (UEOT.V3.ConcreteHistoryMarkovization.fixedAugmented n (q n)) z",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "Sigma full-history augmented kernel branch equals fixedAugmented; not a posterior-mixture future-word law."
+        },
+        {
+          "symbol": "UEOT.V3.CompositionPathKernelProduct.reblockedKernel_apply",
+          "path": "formalization/ueot-core/UEOT/V3/CompositionPathKernelProduct.lean",
+          "lexical_similarity_only": 0.5,
+          "actual_type_sha256": "17b63d1ae82f2263bdd39c148b505730c186c0fefe9e4e046c1d8143d88c2c79",
+          "actual_type_preview": "@UEOT.V3.CompositionPathKernelProduct.reblockedKernel_apply : ∀ {I : Type u_1} [Fintype I] {X : I → Type u_3}\n  [inst : (i : I) → MeasurableSpace (X i)] {B : Type u_2} [Fintype B] {U : Type u_4} [inst_2 : MeasurableSpace U]\n  (κ : ProbabilityTheory.Kernel U ((i : I) → X i)) (blockOf : I → B) (u : U),\n  (UEOT.V3.CompositionPathKernelProduct.reblockedKernel κ blockOf) u =\n    UEOT.V3.CompositionPathInformation.reblockedJointLaw (κ u) blockOf",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "Reblocking a finite dependent product joint kernel by component partition; no actual latent/filter or future-word conditional law appears."
+        },
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.pmfRowKernel_apply",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceInfinitePrefix.lean",
+          "lexical_similarity_only": 0.5,
+          "actual_type_sha256": "0b7c20237ca4882333ecef6146e97815e0a6a26ca9665468decefde3645d33e2",
+          "actual_type_preview": "@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.pmfRowKernel_apply : ∀ {H : Type u_1}\n  {Z : Type u_2} [inst : Fintype H] [inst_1 : MeasurableSpace H] [inst_2 : MeasurableSingletonClass H]\n  [inst_3 : MeasurableSpace Z] (J : H → PMF Z) (h : H),\n  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SameSourceInfinitePrefixCheck.pmfRowKernel J) h = (J h).toMeasure",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "Embeds a finite-domain PMF row J h as a measure kernel. New future law is arbitrary Standard Borel latent/countably generated observation wordKernel composed with actual posterior, not a finite PMF row."
+        },
+        {
+          "symbol": "UEOT.V3.PredictionAE.coordinateKernel_apply",
+          "path": "formalization/ueot-core/UEOT/V3/PredictionAE.lean",
+          "lexical_similarity_only": 0.5,
+          "actual_type_sha256": "3a389d9ffd88e70236972aefaec25d736ddee07f3d8d33091e3b578c9ba9bd52",
+          "actual_type_preview": "@UEOT.V3.PredictionAE.coordinateKernel_apply : ∀ {I : Type u_1} {Y : Type u_2} [inst : MeasurableSpace Y] (i : I)\n  (c : I → MeasureTheory.Measure Y), (UEOT.V3.PredictionAE.coordinateKernel i) c = c i",
+          "decision": "REUSED_DEPENDENT_COORDINATE_API_WHERE_APPROPRIATE",
+          "typed_reason": "Homogeneous raw-array coordinate evaluation is analogous but its single future codomain Y is not the complete dependent family ObservationWord W u. The actual probability-coordinate predictor uses original PredictionDependent.coordinateKernel via comap."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.actual_past_future_factorization",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "line": 118,
+      "actual_type_sha256": "bdced9ec1615595c19dd287eb7453506645e10b07b176bd201cda1dff07ec3fc",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Actually reuses actual_finite_prefix_consistency and Measure.parallelComp_comp_compProd to derive the full generated-past/retained-latent/future-word joint factorization. A first-observation/continuation word factorization alone does not substitute for the entire past coupling.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.actual_word_factorization",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+          "lexical_similarity_only": 0.502,
+          "actual_type_sha256": "754a5003a354d392c826b4877a3f4ea55338ea06d316956efe02f4d6d95a9778",
+          "actual_type_preview": "@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.actual_word_factorization : ∀\n  {Z : Type u_1} {A : Type u_2} {W : Type u_3} [inst : MeasurableSpace Z] [inst_1 : MeasurableSpace A]\n  [inst_2 : MeasurableSpace W] [inst_3 : StandardBorelSpace Z] [inst_4 : Nonempty Z]\n  [inst_5 : MeasurableSpace.CountablyGenerated W] (P : ProbabilityTheory.Kernel (Z × A) Z)\n  [inst_6 : ProbabilityTheory.IsMarkovKernel P] (O",
+          "decision": "NOT_TYPED_REPLACEMENT_FOR_FULL_PAST_COUPLING",
+          "typed_reason": "This factors first observation plus continuation at one prior b. New target factors the ENTIRE actual policy-generated observed prefix and an intervention continuation from its RETAINED latent. Existing full-prefix consistency is the correct directly reused bridge."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.actual_past_marginal",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "line": 135,
+      "actual_type_sha256": "d4dfc984134f6dcf88644c8249af8a2ea6b67a68ac43e24b5d1098ea8e8147f5",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Uses derived source joint and existing fst_compProd; future intervention preserves the full actual past law.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.actual_past_future_rectangle",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "line": 143,
+      "actual_type_sha256": "60ef1e06bb4975d766cbc86597d8dd93cc1b26fa5518030ed6d51563c5f7ba47",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Uses derived actual joint factorization and original Measure.compProd_apply_prod, not a fresh conditional-future assumption.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.actual_initial_future_law",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "line": 159,
+      "actual_type_sha256": "3ce013c94f92ec4e25a0d0a54d5f69bd76518234a6204488c94c086b8ec33f96",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Uses actual zero-prefix Dirac law and existing snd_compProd/dirac_bind to identify the intervention word law from the registered prior. An unrelated finite coverage-row example cannot replace it.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.MissingFiber.actual_initial_row_law",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ControlCoverageWitness.lean",
+          "lexical_similarity_only": 0.6,
+          "actual_type_sha256": "520ca9f1037b1d37f412b8ad8e03d7410bf1c3e2baad695728b3ea961aab7a66",
+          "actual_type_preview": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.MissingFiber.actual_initial_row_law : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.coverageDeploymentRowLaw\n    (PMF.pure Bool.true)\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.MissingFiber.observe\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ObservableActionCoverageCheck.MissingFiber.source\n    UEOT.V3.Com",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "A single concrete finite Bool/unit coverage deployment row equals a pure PMF. New zero-past future theorem quantifies arbitrary P/O, prior record, policy and complete word laws."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.measurable_actualRawCanonical",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "line": 175,
+      "actual_type_sha256": "b8b1b379b9e656c10447a954fea54beeaa39cb1055c84384d6489b015cec379d",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Directly consumes original PredictionDependent.canonical_measurable for the actual DEPENDENT word-future kernel family.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.PredictionAE.canonical_measurable",
+          "path": "formalization/ueot-core/UEOT/V3/PredictionAE.lean",
+          "lexical_similarity_only": 0.5,
+          "actual_type_sha256": "f3ba7df43a60368e5c80aabbdd063cc7b7982a62968e1441c21ecba79b54f6c6",
+          "actual_type_preview": "@UEOT.V3.PredictionAE.canonical_measurable : ∀ {H : Type u_1} {I : Type u_2} {Y : Type u_3} [inst : MeasurableSpace H]\n  [inst_1 : MeasurableSpace Y] (K : I → ProbabilityTheory.Kernel H Y), Measurable fun h i => (K i) h",
+          "decision": "HOMOGENEOUS_VARIANT_NOT_DIRECT_REPLACEMENT",
+          "typed_reason": "Works with I→Kernel H Y for one future type Y. Complete finite action words here have dependent tuple spaces; the exact original PredictionDependent theorem is reused for raw state. Normalized state uses existing response measurability."
+        },
+        {
+          "symbol": "UEOT.V3.PredictionDependent.canonical_measurable",
+          "path": "formalization/ueot-core/UEOT/V3/PredictionDependent.lean",
+          "lexical_similarity_only": 0.5,
+          "actual_type_sha256": "23686cc264a3e50d6742b8c6804e3395e44ec8bff967e1b1f1585d4bb728a959",
+          "actual_type_preview": "@UEOT.V3.PredictionDependent.canonical_measurable : ∀ {H : Type u_1} {I : Type u_2} {Y : I → Type u_3}\n  [inst : MeasurableSpace H] [inst_1 : (i : I) → MeasurableSpace (Y i)]\n  (K : (i : I) → ProbabilityTheory.Kernel H (Y i)), Measurable fun h i => (K i) h",
+          "decision": "ACTUALLY_REUSED_FOR_RAW_STATE",
+          "typed_reason": "Exact dependent family (u:List A)→Kernel H (ObservationWord W u) matches measurable_actualRawCanonical and is directly called. For normalized actualCanonical the shorter typed route is measurable_response composed with terminalPosterior."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.measurable_actualCanonical",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "line": 180,
+      "actual_type_sha256": "c5896c512d6fb859a0c1d2de9f5b8d9cdcf7be0aecc37e263b00c9ba951cd8c7",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Reuses existing measurable_response composed with measurable_terminalPosterior for the probability-valued state. Raw-measure canonical measurability has a different target subtype.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.PredictionAE.canonical_measurable",
+          "path": "formalization/ueot-core/UEOT/V3/PredictionAE.lean",
+          "lexical_similarity_only": 0.667,
+          "actual_type_sha256": "f3ba7df43a60368e5c80aabbdd063cc7b7982a62968e1441c21ecba79b54f6c6",
+          "actual_type_preview": "@UEOT.V3.PredictionAE.canonical_measurable : ∀ {H : Type u_1} {I : Type u_2} {Y : Type u_3} [inst : MeasurableSpace H]\n  [inst_1 : MeasurableSpace Y] (K : I → ProbabilityTheory.Kernel H Y), Measurable fun h i => (K i) h",
+          "decision": "HOMOGENEOUS_VARIANT_NOT_DIRECT_REPLACEMENT",
+          "typed_reason": "Works with I→Kernel H Y for one future type Y. Complete finite action words here have dependent tuple spaces; the exact original PredictionDependent theorem is reused for raw state. Normalized state uses existing response measurability."
+        },
+        {
+          "symbol": "UEOT.V3.PredictionDependent.canonical_measurable",
+          "path": "formalization/ueot-core/UEOT/V3/PredictionDependent.lean",
+          "lexical_similarity_only": 0.667,
+          "actual_type_sha256": "23686cc264a3e50d6742b8c6804e3395e44ec8bff967e1b1f1585d4bb728a959",
+          "actual_type_preview": "@UEOT.V3.PredictionDependent.canonical_measurable : ∀ {H : Type u_1} {I : Type u_2} {Y : I → Type u_3}\n  [inst : MeasurableSpace H] [inst_1 : (i : I) → MeasurableSpace (Y i)]\n  (K : (i : I) → ProbabilityTheory.Kernel H (Y i)), Measurable fun h i => (K i) h",
+          "decision": "ACTUALLY_REUSED_FOR_RAW_STATE",
+          "typed_reason": "Exact dependent family (u:List A)→Kernel H (ObservationWord W u) matches measurable_actualRawCanonical and is directly called. For normalized actualCanonical the shorter typed route is measurable_response composed with terminalPosterior."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.actualRawCanonical_eq_response",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "line": 187,
+      "actual_type_sha256": "538073c46b1910a30f2470e983eac21becce73153d3713930279cc25bf663069",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Pointwise source interpretation, identifying raw actual future kernels with the exact normalized response of the last actual filter. No independent decoder relation is assumed.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.actual_raw_kernel_sufficient",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "line": 192,
+      "actual_type_sha256": "56d239dc56c2b6fd7b8b7359b9652879f2cf5e4bd4b6478b141b749f0301807f",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Directly consumes original dependent canonical_kernel_sufficient with the derived actual source future kernels. No replacement sufficiency theorem is built.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.PredictionAE.canonical_kernel_sufficient",
+          "path": "formalization/ueot-core/UEOT/V3/PredictionAE.lean",
+          "lexical_similarity_only": 0.52,
+          "actual_type_sha256": "7427983b09d4069704d06a6788fc16d78dd1c2c62c701f181fa0fdc93523df6c",
+          "actual_type_preview": "@UEOT.V3.PredictionAE.canonical_kernel_sufficient : ∀ {H : Type u_1} {I : Type u_2} {Y : Type u_3}\n  [inst : MeasurableSpace H] [inst_1 : MeasurableSpace Y] (K : I → ProbabilityTheory.Kernel H Y) (i : I),\n  ∃ L, ∀ (h : H), (K i) h = L fun j => (K j) h",
+          "decision": "HOMOGENEOUS_VARIANT_NOT_DIRECT_REPLACEMENT",
+          "typed_reason": "One shared Y cannot be directly instantiated with variable-length dependent observation tuples. Exact dependent original sufficiency API is reused, without constructing a tagged replacement representation."
+        },
+        {
+          "symbol": "UEOT.V3.PredictionDependent.canonical_kernel_sufficient",
+          "path": "formalization/ueot-core/UEOT/V3/PredictionDependent.lean",
+          "lexical_similarity_only": 0.52,
+          "actual_type_sha256": "348c0c309b1fcf2c30fa6324a30e8994d4ed941d3a797bfbe342d04eb3e439ed",
+          "actual_type_preview": "@UEOT.V3.PredictionDependent.canonical_kernel_sufficient : ∀ {H : Type u_1} {I : Type u_2} {Y : I → Type u_3}\n  [inst : MeasurableSpace H] [inst_1 : (i : I) → MeasurableSpace (Y i)] (K : (i : I) → ProbabilityTheory.Kernel H (Y i))\n  (i : I), ∃ L, ∀ (h : H), (K i) h = L fun j => (K j) h",
+          "decision": "ACTUALLY_REUSED_DIRECTLY",
+          "typed_reason": "Exact original dependent-coordinate sufficiency consumer is called with the DERIVED actual future kernels. Probability-normalized predictor is then its existing coordinateKernel comapped to all probability arrays."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.actual_probability_kernel_sufficient",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "line": 201,
+      "actual_type_sha256": "30d683aede6f9f62d20d1117005772df81dc9677e6bead534b184cbb08819490",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Reuses original dependent coordinateKernel comapped along rawResponse. Every coordinate is normalized on ALL probability arrays, so the actual probability-state predictors are genuinely Markov globally.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.actual_canonical_event_condExp",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "line": 206,
+      "actual_type_sha256": "c625841c11515377bc53184e87a5c5d6f7954ad12e02db431e1395963301d93a",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Directly consumes original PredictionDependent.canonical_event_condExp on actual past law and probability future kernels. This fixes the future-event probability function under canonical conditioning; source joint meaning is supplied by proved factorization/rectangles.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.PredictionAE.canonical_event_condExp",
+          "path": "formalization/ueot-core/UEOT/V3/PredictionAE.lean",
+          "lexical_similarity_only": 0.8,
+          "actual_type_sha256": "662ead317056267c69fff874b7462337993ea8189492a729a2d6b0ea1a909ef3",
+          "actual_type_preview": "@UEOT.V3.PredictionAE.canonical_event_condExp : ∀ {H : Type u_1} {I : Type u_2} {Y : Type u_3}\n  [inst : MeasurableSpace H] [inst_1 : MeasurableSpace Y] (μ : MeasureTheory.Measure H)\n  [MeasureTheory.IsProbabilityMeasure μ] (K : I → ProbabilityTheory.Kernel H Y),\n  (∀ (i : I) (h : H), MeasureTheory.IsProbabilityMeasure ((K i) h)) →\n    ∀ (i : I) {B : Set Y},\n      MeasurableSet B →\n        μ[fun h => ((K i) h).real B | MeasurableSpace.comap (fun ",
+          "decision": "HOMOGENEOUS_VARIANT_REUSED_THROUGH_RIGHT_CORE",
+          "typed_reason": "One shared future codomain versus varying word tuple spaces. Exact dependent variant is directly used and itself reuses the original generic conditional-expectation exact-factor theorem."
+        },
+        {
+          "symbol": "UEOT.V3.PredictionDependent.canonical_event_condExp",
+          "path": "formalization/ueot-core/UEOT/V3/PredictionDependent.lean",
+          "lexical_similarity_only": 0.8,
+          "actual_type_sha256": "efb4add3f01ee9acda7059ac3adc8043894d68666dc01d75db695dab12377575",
+          "actual_type_preview": "@UEOT.V3.PredictionDependent.canonical_event_condExp : ∀ {H : Type u_1} {I : Type u_2} {Y : I → Type u_3}\n  [inst : MeasurableSpace H] [inst_1 : (i : I) → MeasurableSpace (Y i)] (μ : MeasureTheory.Measure H)\n  [MeasureTheory.IsProbabilityMeasure μ] (K : (i : I) → ProbabilityTheory.Kernel H (Y i)),\n  (∀ (i : I) (h : H), MeasureTheory.IsProbabilityMeasure ((K i) h)) →\n    ∀ (i : I) {B : Set (Y i)},\n      MeasurableSet B →\n        μ[fun h => ((K i) ",
+          "decision": "ACTUALLY_REUSED_DIRECTLY",
+          "typed_reason": "Exact actual-past/probability-kernel future-event probability-function consumer is called with source-derived K and actual observedPrefixLaw."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.actual_raw_ae_minimal",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "line": 218,
+      "actual_type_sha256": "7cd8172b69d7f1b464ae85823b8c97b604436fdd02cad6a345ab8fe1d59dc849",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Directly consumes original PredictionDependent.canonical_ae_minimal for actual source futures and actual past measure; hL is the legitimate competing-statistic sufficiency predicate, not a source-implementation field.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.actual_raw_ae_sigma_minimal",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "line": 230,
+      "actual_type_sha256": "f93749a2bff0755bc97c4ee6405faa0aab1cbb98f817c829e651cff4a8653244",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Directly consumes original PredictionDependent.canonical_ae_sigma_minimal with dependent word future spaces and common countable-protocol null set.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.PredictionAE.canonical_ae_sigma_minimal",
+          "path": "formalization/ueot-core/UEOT/V3/PredictionAE.lean",
+          "lexical_similarity_only": 0.515,
+          "actual_type_sha256": "e366f50eb255b2b7416d037112ffe8321c043e3992c12a7530c6a48ea91d5739",
+          "actual_type_preview": "@UEOT.V3.PredictionAE.canonical_ae_sigma_minimal : ∀ {H : Type u_1} {I : Type u_2} {S : Type u_3} {Y : Type u_4}\n  [Countable I] [inst : MeasurableSpace H] [inst_1 : MeasurableSpace S] [inst_2 : MeasurableSpace Y]\n  (μ : MeasureTheory.Measure H) (K : I → ProbabilityTheory.Kernel H Y) (s : H → S)\n  (L : I → ProbabilityTheory.Kernel S Y),\n  (∀ (i : I), ∀ᵐ (h : H) ∂μ, (K i) h = (L i) (s h)) → UEOT.V3.PredictionAE.AESigmaLE μ (fun h i => (K i) h) s",
+          "decision": "RAW_HOMOGENEOUS_VARIANT_NOT_NORMALIZED_REPLACEMENT",
+          "typed_reason": "Raw homogeneous canonical array is not the new dependent normalized ProbabilityMeasure state. Original generic AEFactors→AESigmaLE is reused directly after the appropriate actual-source/raw or normalized factor proof."
+        },
+        {
+          "symbol": "UEOT.V3.PredictionDependent.canonical_ae_sigma_minimal",
+          "path": "formalization/ueot-core/UEOT/V3/PredictionDependent.lean",
+          "lexical_similarity_only": 0.515,
+          "actual_type_sha256": "ae52d28091726ae25ad81235839ef2cc3d31ba36a2b9a4a838f725e5a8f71cf3",
+          "actual_type_preview": "@UEOT.V3.PredictionDependent.canonical_ae_sigma_minimal : ∀ {H : Type u_1} {I : Type u_2} {S : Type u_3}\n  {Y : I → Type u_4} [inst : MeasurableSpace H] [inst_1 : MeasurableSpace S] [inst_2 : (i : I) → MeasurableSpace (Y i)]\n  [Countable I] (μ : MeasureTheory.Measure H) (K : (i : I) → ProbabilityTheory.Kernel H (Y i)) (s : H → S)\n  (L : (i : I) → ProbabilityTheory.Kernel S (Y i)),\n  (∀ (i : I), ∀ᵐ (h : H) ∂μ, (K i) h = (L i) (s h)) → UEOT.V3.Pred",
+          "decision": "ACTUALLY_REUSED_FOR_RAW_STATE",
+          "typed_reason": "Direct call proves actual_raw_ae_sigma_minimal for dependent future spaces. Normalized probability-state sigma minimality then uses the already-proved embedding transport plus generic aeFactors_sigmaLE, rather than pretending raw and normalized codomains are identical."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.actual_response_ae_minimal",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "line": 243,
+      "actual_type_sha256": "b11bbae3a08c33d30254438e9e11c097f191e4060604a0c84f74a43a7aab5594",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Transports original RAW actual-source minimality to ProbabilityMeasure arrays using the all-probability-array measurable embedding/identity extension. It does not choose a latent belief/source-image section; the ambient recursion hint has a different conditioning domain and conclusion.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.ambientUpdate_actual_response_ae",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+          "lexical_similarity_only": 0.5,
+          "actual_type_sha256": "2340b7362596b5e8ad9e974096b3348170573ac6aea78bebd030248bcc57cebb",
+          "actual_type_preview": "@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion.ambientUpdate_actual_response_ae : ∀\n  {Z : Type u_1} {A : Type u_2} {W : Type u_3} [inst : MeasurableSpace Z] [inst_1 : MeasurableSpace A]\n  [inst_2 : MeasurableSpace W] [inst_3 : StandardBorelSpace Z] [inst_4 : Nonempty Z]\n  [inst_5 : MeasurableSpace.CountablyGenerated W] (P : ProbabilityTheory.Kernel (Z × A) Z)\n  [inst_6 : ProbabilityTheory.IsMarkovKerne",
+          "decision": "DIFFERENT_TYPE_ACTUALLY_REUSED_IN_RECURSION",
+          "typed_reason": "This gives response recursion under first-observation law for b,a. It does not prove a decoder from an arbitrary competing sufficient statistic under past-history law. It is correctly reused later by actual_canonical_recursion."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.actual_response_ae_sigma_minimal",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "line": 258,
+      "actual_type_sha256": "ab87f047a9a5a0b7e0fced81801dc45283959593a31912029493be6170296e09",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Uses original PredictionAE.aeFactors_sigmaLE after the already-derived probability-state AEFactors. Raw homogeneous/dependent canonical wrappers are not literal normalized-output replacements.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.PredictionAE.canonical_ae_sigma_minimal",
+          "path": "formalization/ueot-core/UEOT/V3/PredictionAE.lean",
+          "lexical_similarity_only": 0.5,
+          "actual_type_sha256": "e366f50eb255b2b7416d037112ffe8321c043e3992c12a7530c6a48ea91d5739",
+          "actual_type_preview": "@UEOT.V3.PredictionAE.canonical_ae_sigma_minimal : ∀ {H : Type u_1} {I : Type u_2} {S : Type u_3} {Y : Type u_4}\n  [Countable I] [inst : MeasurableSpace H] [inst_1 : MeasurableSpace S] [inst_2 : MeasurableSpace Y]\n  (μ : MeasureTheory.Measure H) (K : I → ProbabilityTheory.Kernel H Y) (s : H → S)\n  (L : I → ProbabilityTheory.Kernel S Y),\n  (∀ (i : I), ∀ᵐ (h : H) ∂μ, (K i) h = (L i) (s h)) → UEOT.V3.PredictionAE.AESigmaLE μ (fun h i => (K i) h) s",
+          "decision": "RAW_HOMOGENEOUS_VARIANT_NOT_NORMALIZED_REPLACEMENT",
+          "typed_reason": "Raw homogeneous canonical array is not the new dependent normalized ProbabilityMeasure state. Original generic AEFactors→AESigmaLE is reused directly after the appropriate actual-source/raw or normalized factor proof."
+        },
+        {
+          "symbol": "UEOT.V3.PredictionDependent.canonical_ae_sigma_minimal",
+          "path": "formalization/ueot-core/UEOT/V3/PredictionDependent.lean",
+          "lexical_similarity_only": 0.5,
+          "actual_type_sha256": "ae52d28091726ae25ad81235839ef2cc3d31ba36a2b9a4a838f725e5a8f71cf3",
+          "actual_type_preview": "@UEOT.V3.PredictionDependent.canonical_ae_sigma_minimal : ∀ {H : Type u_1} {I : Type u_2} {S : Type u_3}\n  {Y : I → Type u_4} [inst : MeasurableSpace H] [inst_1 : MeasurableSpace S] [inst_2 : (i : I) → MeasurableSpace (Y i)]\n  [Countable I] (μ : MeasureTheory.Measure H) (K : (i : I) → ProbabilityTheory.Kernel H (Y i)) (s : H → S)\n  (L : (i : I) → ProbabilityTheory.Kernel S (Y i)),\n  (∀ (i : I), ∀ᵐ (h : H) ∂μ, (K i) h = (L i) (s h)) → UEOT.V3.Pred",
+          "decision": "ACTUALLY_REUSED_FOR_RAW_STATE",
+          "typed_reason": "Direct call proves actual_raw_ae_sigma_minimal for dependent future spaces. Normalized probability-state sigma minimality then uses the already-proved embedding transport plus generic aeFactors_sigmaLE, rather than pretending raw and normalized codomains are identical."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.terminalPosterior_appendObserved",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "line": 272,
+      "actual_type_sha256": "d817308aaad301de6ad3c1f6fd5180c6241327e42b9a770038374fc2f360677a",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Computes the same posterior from literal appended allowed action/observation record using existing appendHistory and nextRecord, with no new filter version.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.actual_canonical_recursion",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "line": 282,
+      "actual_type_sha256": "eff1aaac1f4a949f7ca4c7cab35cf86c2cf56462e2d8a4e6a9450655ffe8a98b",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Actually consumes general actual ambientUpdate_actual_response_ae and literal append-posterior equality. It is a response-state conditional-a.e. recursion for arbitrary P/O, not the older autonomous-visible/sensor quotient law.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": [
+        {
+          "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSensor.actual_C1_recursion",
+          "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSensor.lean",
+          "lexical_similarity_only": 0.509,
+          "actual_type_sha256": "a0ee9493f2ef168e5c33e62d69649857d68a0e4d094808885f7b3862508490cf",
+          "actual_type_preview": "@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSensor.actual_C1_recursion : ∀ {Y : Type u_1}\n  {H : Type u_2} {A : Type u_3} {N : Type u_4} {W : Type u_5} [inst : MeasurableSpace Y] [inst_1 : MeasurableSpace H]\n  [inst_2 : MeasurableSpace A] [inst_3 : MeasurableSpace N] [inst_4 : MeasurableSpace W] [inst_5 : StandardBorelSpace Y]\n  [inst_6 : StandardBorelSpace H] [inst_7 : MeasurableSpace.CountablyGenerated W] [inst_8 : ",
+          "decision": "NOT_TYPED_REPLACEMENT",
+          "typed_reason": "Specific autonomous visible/hidden shared-noise source with hidden-blind sensor descends its posterior kernel under visible marginal coordinate. New source has arbitrary P/O and complete protocol response state; actual append recursion uses the general ambient response update instead."
+        }
+      ]
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.GaussianConsumer.actual_initial_gaussian_future",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "line": 296,
+      "actual_type_sha256": "340baf4ba3d03c6d81869a43abfbce1f011e5e98a929cf5117b5348c55ea81b2",
+      "decision": "ACCEPT_SOURCE_SPECIFIC_DERIVATION_OR_TYPED_ADAPTER_USING_EXISTING_CORE",
+      "typed_basis": "Reuses actual_initial_future_law and existing Gaussian origin_first_response. The future word[0] is an explicitly declared intervention after zero generated-past length, not arbitrary pi unchanged future.",
+      "every_preflight_hit_reviewed": true,
+      "reuse_candidates": []
+    }
+  ],
+  "supporting_declaration_reviews": [
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianCountableSource.finiteLaw",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianCountableSource.lean",
+      "actual_type_sha256": "da1a0694f89ff92d435c606cf7ed58d4fb507b378488382178b6866c24868dc3",
+      "typed_reuse_basis": "Original finite Brownian Gaussian family on finite IMAGE of requested times, pushed by coordinate selection; duplicates share actual coordinates."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianCountableSource.finiteLaw_isProbability",
+      "kind": "instance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianCountableSource.lean",
+      "actual_type_sha256": "fed61197bfe001d69663812d556193c37a532da387f98b8b65e040c2f83edbb1",
+      "typed_reuse_basis": "Existing Gaussian probability and measurable-map instance reused."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianCountableSource.countableLaw",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianCountableSource.lean",
+      "actual_type_sha256": "1b193f5046589b7ec89c5c4477e157eef616e94f3af26df408b4e631745cc773",
+      "typed_reuse_basis": "Original Kernel.trajMeasure of conditional next-prefix kernels, built from actual finite Gaussian laws; no Brownian/source-limit certificate input."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianCountableSource.countableLaw_isProbability",
+      "kind": "instance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianCountableSource.lean",
+      "actual_type_sha256": "c3f8222dfa6072bb17fba6ef52fb2f47a528cc46879e2ab613fc172d39f7837f",
+      "typed_reuse_basis": "Existing Ionescu-Tulcea probability instance reused."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianCountableSource.finiteLaw_isGaussian",
+      "kind": "instance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianCountableSource.lean",
+      "actual_type_sha256": "54370bdfa28c38c91fe1350b4ef8f9da7709cb8ad69c5c1599735ed1081b65f3",
+      "typed_reuse_basis": "Existing Gaussian closure under an explicitly constructed continuous linear coordinate selection map."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianCountableSource.denseTimes",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianCountableSource.lean",
+      "actual_type_sha256": "1e6c701ccde81470870f3e1af3713ea14162ced7866f7711f077e9ff0d7b1f7b",
+      "typed_reuse_basis": "Explicit zero/unit prefixes and existing denseSeq tail; no source selection by favorable samples."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianProjectiveSource.lean",
+      "actual_type_sha256": "5b656f717db0380392c9b64713a038dccc1f1c4bb8bddf0f0d578f194d1ee058",
+      "typed_reuse_basis": "Original AddContent.measure applied to Brownian projective content AFTER proving sigma-subadditivity. No new Caratheodory implementation."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw_isProbability",
+      "kind": "instance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianProjectiveSource.lean",
+      "actual_type_sha256": "68bdf2df0e2f2922b72ad58bcdd86eb1eee0ca03a1cdaa9834b987d9b89bbb02",
+      "typed_reuse_basis": "Normalization derived from actual empty finite marginal, not supplied as a certificate."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.ObservedPrefix",
+      "kind": "abbrev",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "actual_type_sha256": "7431a324a9f21e01cbf65b41dfdf56cb5ac3fd2c51b421408dc55a3ed39b5518",
+      "typed_reuse_basis": "Existing finite Iic history of C1 RecordState values; no new path framework."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.RawResponse",
+      "kind": "abbrev",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "actual_type_sha256": "6d6c3e601058e8d7b077943e362f10c97a9aa0b163bb9af688aa7795a1f5421e",
+      "typed_reuse_basis": "Original dependent raw Measure-array carrier for all finite words."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.rawResponse",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "actual_type_sha256": "382840509672b13b851a14e2278046eb5de6a8ab8c9fec8a1b1164a8351b416c",
+      "typed_reuse_basis": "Only forgets probability normalization proofs coordinatewise; does not select a source realization."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.probabilityCoordinateKernel",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "actual_type_sha256": "32d10f32196b4d53a7b60734b3cc2b254468b246c813c3aa3927465b1caddcea",
+      "typed_reuse_basis": "Reuses original PredictionDependent.coordinateKernel through comap rawResponse on ALL probability arrays."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.probabilityCoordinateKernel_isMarkov",
+      "kind": "instance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "actual_type_sha256": "030fbb3cb223b11543832a923581c4445cf5425a9454ab763730f025b96b3ad2",
+      "typed_reuse_basis": "Probability normalization is guaranteed by domain type on all arrays, resolving raw-coordinate non-Markov behavior off-image without an image assumption."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.terminalPosterior",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "actual_type_sha256": "7981c0dd655f2a74ba9c6e46795e21667f7039b0dcd8feb33095b02e7c376b76",
+      "typed_reuse_basis": "Stored last computed belief readout from the entire observed prefix, using existing lastHistoryIndex."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.observedPrefixLaw",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "actual_type_sha256": "6019bb54843b133ed8a1794c88523708ecc6b5086e4b1ae8ed65b56b396c856a",
+      "typed_reuse_basis": "Existing homTrajMeasure recorder prefix from registered r and same past policy pi."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.observedPrefixLaw_isProbability",
+      "kind": "instance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "actual_type_sha256": "c80a2105a7299a592537b883d7594b08c2237f37b7346195c3b7adb4256d3669",
+      "typed_reuse_basis": "Existing measurable-prefix pushforward probability instance reused."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.futureKernel",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "actual_type_sha256": "f535e90bac18aedf0b21911b1862718946a742db76fb4f1aef208be214f3d4be",
+      "typed_reuse_basis": "Actual future wordKernel composed with terminalBelief; no purported conditional-future field."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.futureKernel_isMarkov",
+      "kind": "instance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "actual_type_sha256": "daa84ed91f425ea9440634ba9b077e2b7fcf7ccce9f5dae6d4e558da7b4f11b0",
+      "typed_reuse_basis": "Existing actual word/terminal-belief Markov composition instances reused."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.actualPastFutureJoint",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "actual_type_sha256": "c1c9426c3da9dc657c708bdc08711208c9d8e8021a2a43d176995ed11265cac7",
+      "typed_reuse_basis": "Runs future word from the RETAINED terminal latent of the actual physical/filter past, preserving its entire observed prefix; not defined by the desired conditional factorization."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.actualPastFutureJoint_isProbability",
+      "kind": "instance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "actual_type_sha256": "e6878812dab8e2696a3613cafd438303a8ccf7c4d62a0f3b5edad408ab4adeca",
+      "typed_reuse_basis": "Uses DERIVED actual source factorization and existing composition-product probability instance."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.actualRawCanonical",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "actual_type_sha256": "fd90cd17cff3d6d43cc9b5155d65ee89002fa9ff6ba9bcfdda54026833c3c178",
+      "typed_reuse_basis": "Original canonical family instantiated with source-derived future kernels."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.actualCanonical",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "actual_type_sha256": "fd01d0d89806f68291ed9c6d6c3dd2bc8ae6c3861bb9b6e9374e0b39a6c10c1c",
+      "typed_reuse_basis": "Existing actual response of last computed posterior, normalized probability-array output."
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource.appendObserved",
+      "kind": "def",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "actual_type_sha256": "5553ef0f23dec0f5f8ddbe4183c631e54bdbf47ce743660038cd949d6c72f672",
+      "typed_reuse_basis": "Existing appendHistory and nextRecord preserve old prefix and append literal action/observation/posterior record."
+    }
+  ],
+  "promotion": "NONE. Source/declaration counts, lexical similarity and this typed audit do not establish whole-theory completion or change frozen counted ledgers.",
+  "mutation_scope": "Only this exclusive review JSON and external typed checker/inventory/logs. No source, public exports, Git, GI, books, data or global configuration edits."
+}
