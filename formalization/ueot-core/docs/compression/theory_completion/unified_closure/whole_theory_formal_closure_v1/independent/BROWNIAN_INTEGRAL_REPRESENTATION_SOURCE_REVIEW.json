@@ -1,0 +1,135 @@
+{
+  "schema": "UEOT_INDEPENDENT_SOURCE_REVIEW_V1",
+  "verdict": "PASS_NO_SOURCE_SEMANTIC_BLOCKER",
+  "created_utc": "2026-10-29T17:59:39.461122+00:00",
+  "reviewer": {
+    "task": "/root/c1_joint_review",
+    "role": "Independent reviewer; did not author IntegralRepresentation or Brownian source/refinement/integral chain."
+  },
+  "source": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralRepresentation.lean",
+    "sha256": "9afebdd6e4d84fc4d6d39126d13c64101e7f18578a6c0f152e988f40b3a81857",
+    "bytes": 11987
+  },
+  "author_receipt": {
+    "path": "/private/tmp/ueot-brownian-integral-representation-source-receipt.json",
+    "sha256": "f98791942e3b2136a734ce444e5e927c73550f27ec9cd0323fb33ffddaf5d284",
+    "bytes": 4844
+  },
+  "dependencies": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianCommonRefinement.lean",
+      "sha256": "5cd41cd71310797092a1df7f31ce82ef0ac251efb372d8cc37e5477b5af3e60b",
+      "bytes": 17265
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianTimeIntegrand.lean",
+      "sha256": "f3b6437b82d664b54f90a1a3f5cd6c77ef05c07b63b9b3dca533de54f4f007c3",
+      "bytes": 10851
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianSimplePredictableIntegral.lean",
+      "sha256": "90a9d7f4b3209d613e12ba274baf14c09148820bdd074a0beb55b3bae61e04cd",
+      "bytes": 7102
+    }
+  ],
+  "whole_theory_goal": "OPEN. This source derives actual cross-partition native-L2 representation independence and distance preservation on declared elementary predictable representations; it does not itself construct an extension to all inputs.",
+  "read_scope": {
+    "complete_new_source": true,
+    "lines": 199,
+    "all_private_finite_square_product_zero_and_toLp_difference_proofs_read": true,
+    "native_APIs_read": "integral_eq_zero_iff_of_nonneg_ae requires actual Integrable square; native Lp.ext/coeFn_toLp/coeFn_sub; L2.inner_def and nonnegative square-root norm conversion."
+  },
+  "mathematical_assessments": [
+    {
+      "lines": "21-67",
+      "claim": "Pairwise nonoverlap and integrable finite-square expansion",
+      "assessment": "commonCell_nonoverlap derives one of the two temporal orderings for ANY distinct pair in Fin(n)xFin(m), including collapsed cells. Different rows are ordered by original tau interval bounds; same-row cells by monotonic sigma and monotone clamp. Native finite-square expansion is justified by every pair product integrable via actual L2 Holder. Time-cell products are pointwise zero from ordered Ioc cells, including endpoints; no orthogonality input field is assumed."
+    },
+    {
+      "lines": "69-111",
+      "claim": "Actual refined output/product-input isometry",
+      "assessment": "Each common G has its genuine common-START strong-measurability and SAME-source L-infinity condition. Actual oneStep L2 and original nonoverlap_orthogonal give source cross integrals zero in whichever temporal order holds. Native time-product blocks are L2 and pointwise disjoint. Both finite-square energies reduce to matching exact oneStep/interval energy terms, with all ends bounded by tau_last<=T. There is no need to invent a sorted/refining random clock or independent source."
+    },
+    {
+      "lines": "113-158",
+      "claim": "Same native input class implies literal actual output equality",
+      "assessment": "Equality of native inputClass values is converted via BOTH actual coeFn_toLp identities to integrand equality dt-times-P a.e. Constructed commonDifference inherits only legal original start permissions on positive cells and zero on collapsed cells. Its refined input is a.e.zero, so proved refined_isometry gives zero actual output-difference square integral. The square is explicitly integrable from L2 difference, and native nonnegative-integral-zero theorem yields source-a.e. equality of the ORIGINAL literal simpleIntegral outputs. No undefined-integral convention or newly chosen output is used."
+    },
+    {
+      "lines": "160-171",
+      "claim": "Native actual output class equality across partitions",
+      "assessment": "Original source Lp.ext combines actual output-a.e. equality with the two native actual-output coeFn_toLp relations. It compares different partition dimensions n,m and SAME inputLaw T, retaining each actual coefficient/source/readout rather than an existential alternative output."
+    },
+    {
+      "lines": "173-196",
+      "claim": "Every allowed pairwise native distance is preserved",
+      "assessment": "Native L2 inner product and actual coeFn_sub identify norm of class differences with integrals of literal squared differences on source and time-product spaces. The SAME constructed commonDifference isometry plus pointwise input/output difference reconstruction equates those energies. Nonnegative norms convert equality of squares to equality of actual native distances. This applies to unequal inputs as well, not only zero-class uniqueness."
+    }
+  ],
+  "quantifier_guards": {
+    "domain": "Every pair of finite deterministic nondecreasing FULL[0,T] partitions tau,sigma with starts0 and finalT, allowing repeated times and different numbers of cells. No random or stopping-time partitions.",
+    "coefficient": "Each H_i and K_j may be signed and depend on the whole actual natural past at its own original start, and must be MemLp infinity under SAME sourceLaw. Empty intersections never back-date future coefficients; commonDifference gives0.",
+    "equivalence": "Native input equality is dt-times-P AE, conclusions are original literal-output equality source-a.e. and native source L2 class equality. Pointwise equality of arbitrary unequal Lp representatives is not claimed.",
+    "distance": "All distances among the DECLARED elementary representations; not an isometry claimed on the entire ambient predictable L2 space without a domain/density proof.",
+    "finite_energy": "Finite horizon, bounded coefficients and finite sums prove every relevant L2/product/square integrable; zero integral is not obtained from failed integrability.",
+    "extension": "No linear mapping, closure extension, density or general Ito/Girsanov/SDE result is asserted by this module alone."
+  },
+  "independent_verification": {
+    "direct_source": {
+      "command": "lake env lean UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralRepresentation.lean",
+      "observed_exit_code": 0,
+      "log": {
+        "path": "/private/tmp/ueot-brownian-integral-representation-independent-direct.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "all_public_types_axioms_and_actual_consumers": {
+      "command": "lake env lean /tmp/ueot-brownian-integral-representation-independent-audit.lean",
+      "observed_exit_code": 0,
+      "input": {
+        "path": "/private/tmp/ueot-brownian-integral-representation-independent-audit.lean",
+        "sha256": "0183ce1158e6e5ca998ed79e5dfe21d9fae1237ad3eabceca375d96a371c5572",
+        "bytes": 4900
+      },
+      "log": {
+        "path": "/private/tmp/ueot-brownian-integral-representation-independent-audit.log",
+        "sha256": "bae34d621949df80279b162e19457b6bff1e2bddf69db9f7380675bf9ba8a8ab",
+        "bytes": 6607
+      },
+      "reported_axioms_only": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "actual_consumer_cases": [
+      "Constructed native inputClass equality for coarse[0,2] and DIFFERENT repeated fine[0,1,1,2] with unit coefficients, from actual common input reconstruction and native coeFn_toLp/Lp.ext.",
+      "NEW output_ae_eq_of_inputClass_eq returns equality of literal actual SimpleIntegral outputs for those distinct/repeated partitions.",
+      "NEW outputClass_eq_of_inputClass_eq returns equality of native actual source L2 outputs for those same input classes.",
+      "NEW input_output_distance is consumed for DIFFERENT coefficient inputs1 versus2 on distinct coarse/repeated-fine clocks, not merely a zero-distance example."
+    ],
+    "resolved_reviewer_harness_failure": {
+      "log": {
+        "path": "/private/tmp/ueot-brownian-integral-representation-independent-harness-error.log",
+        "sha256": "db8ca80100ce17c219e530eeedcff2b5010127a83a9f2e3d5d6476b1f8e0d26a",
+        "bytes": 7747
+      },
+      "classification": "Reviewer-only polymorphic ae_of_all/trans elaboration in input-class equality. Explicitly typed dt-times-P AE intermediate resolves it; source unchanged."
+    },
+    "source_scan": {
+      "sorry_admit_axiom_opaque_declarations": false
+    }
+  },
+  "reuse_assessment": "Consumes actual CommonRefinement pointwise differences/zero-cell permission, original oneStep conditional/energy consumers, native finite Bochner products and native Lp/inner product/zero-integral APIs. The generic finite-square helper is the minimal Fintype common-matrix energy extension of the prior finite partition proof; it adds no independent stochastic assumption.",
+  "findings": [],
+  "boundaries": [
+    "Linear isometric map on elementary span and continuous extension remain successor work.",
+    "Identification of elementary closure with all predictable L2 integrands requires a separate density proof.",
+    "No general Ito formula, Girsanov, SDE/control/HJB or whole-theory completion; no new source or data privileges."
+  ],
+  "candidate_scope": "Successor chain source, excluded from earlier frozen five-source5b3623e25a500ab26e066898f8b206ea2a9e3962 review. Span/Closure not adopted by this report.",
+  "mutation_scope": "Only this exclusive review JSON and external /tmp independent audit/log/receipt. No source/root/Git/GI/books edits.",
+  "promotion": "Clears this frozen representation source contract for root-managed public build, typed reuse and integration; entire theory remains OPEN."
+}

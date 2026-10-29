@@ -1,0 +1,158 @@
+{
+  "schema": "UEOT_INDEPENDENT_SOURCE_REVIEW_V1",
+  "verdict": "PASS_NO_SOURCE_SEMANTIC_BLOCKER",
+  "created_utc": "2026-10-29T17:38:21.849875+00:00",
+  "reviewer": {
+    "task": "/root/c1_joint_review",
+    "role": "Independent reviewer; did not author BrownianTimeIntegrand or the Brownian source/integral chain."
+  },
+  "source": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianTimeIntegrand.lean",
+    "sha256": "f3b6437b82d664b54f90a1a3f5cd6c77ef05c07b63b9b3dca533de54f4f007c3",
+    "bytes": 10851
+  },
+  "author_receipt": {
+    "path": "/private/tmp/ueot-brownian-time-integrand-source-receipt.json",
+    "sha256": "0a3750bc7eb84224cae5906a82bc8a543bdf173c92948b5e337a3768ff08089b",
+    "bytes": 5020
+  },
+  "dependencies": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianSimplePredictableIntegral.lean",
+      "sha256": "90a9d7f4b3209d613e12ba274baf14c09148820bdd074a0beb55b3bae61e04cd",
+      "bytes": 7102
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianOneStepIntegral.lean",
+      "sha256": "1d6e33f0f951cd604557b89353069c450428bdb14b9a19afc70f60470176b9ec",
+      "bytes": 5388
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+      "sha256": "a51aedd39c0a819fb9fb045d008aac7ab622049f5bb749e2dab32d3dbdd25cc3",
+      "bytes": 16180
+    }
+  ],
+  "pinned_native_API_files": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/statistical-risk-20261020/formalization/ueot-core/.lake/packages/mathlib/Mathlib/MeasureTheory/Integral/Prod.lean",
+      "sha256": "c7d4d23349591c5c65aa5b1b6024331fb0b7f22e9b2b08d6a1fe19b1c258ec5b",
+      "bytes": 32393
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/statistical-risk-20261020/formalization/ueot-core/.lake/packages/mathlib/Mathlib/MeasureTheory/Function/L2Space.lean",
+      "sha256": "7dd0542490f2841e8a91d2258a903d328383d7305915375d99d589fae40de399",
+      "bytes": 13899
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/statistical-risk-20261020/formalization/ueot-core/.lake/packages/mathlib/Mathlib/MeasureTheory/Function/LpSeminorm/Prod.lean",
+      "sha256": "b78f765422915b394ef5e487582bdbb04681d0f2b15c56e504c52c73da0ff67e",
+      "bytes": 1257
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/statistical-risk-20261020/formalization/ueot-core/.lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Lebesgue/Basic.lean",
+      "sha256": "c831261b75c98f3f9b3f7126c5dae3629215b7bb2ff8bbd2ba9edc7b1abbd659",
+      "bytes": 32585
+    }
+  ],
+  "whole_theory_goal": "OPEN; native elementary dt-times-source L2 input identification only. Different-representation well-definedness and closed-space extension remain separate next obligations.",
+  "read_scope": {
+    "complete_source": true,
+    "source_lines": 191,
+    "all_private_time_mass_disjoint_cell_square_and_output_norm_proofs_read": true,
+    "reused_dependency_review": "BROWNIAN_PREDICTABLE_INTEGRAL_SOURCE_REVIEW.json binds unchanged OneStep/Simple proofs and their entire UEOT import closure."
+  },
+  "mathematical_assessments": [
+    {
+      "lines": "22-42",
+      "claim": "Actual finite dt-times-P measure and literal interval input",
+      "assessment": "timeLaw T is REAL Lebesgue volume restricted to Icc(0,T); inputLaw T is its native product with EXACT original sourceLaw. It is finite, generally not probability (its total mass is T). intervalIntegrand is H(omega) active on the precise right-closed (s,t] time cell, with coefficient fixed at interval LEFT endpoint. No new noise, empirical time law or abstract energy field is introduced."
+    },
+    {
+      "lines": "35-69",
+      "claim": "Actual product L2 and interval energy",
+      "assessment": "Same-source H in MemLp infinity implies source L2; indicator(timecell) has finite essential bound1. Native comp_snd/comp_fst and Holder produce interval L2 on inputLaw. The time interval mass is derived from restricted Lebesgue volume with nonnegative s<=t<=T, giving t-s. Native integral_prod_mul then identifies each block square energy. The standalone intervalIntegrand_energy helper allows arbitrary H under native total Bochner-integral conventions; actual norm/isometry consumers separately derive L2 integrability, so undefined-integral conventions do not fake their energy."
+    },
+    {
+      "lines": "71-130",
+      "claim": "Actual deterministic time function energy",
+      "assessment": "integrand is exactly the sum of these time blocks. Under deterministic Monotone tau the (tau_i,tau_(i+1)] cells are POINTWISE disjoint, including common endpoints, and repeated times give empty cells. Therefore the square is sum of squares pointwise. Each block square is integrable by actual L2; finite Bochner sum and the proved interval masses yield exact total product energy sum_i elapsed_i*integral(H_i^2). tau_last<=T is explicit; no tau_0=0 or tau_last=T assumption is needed because input is zero outside the registered cells."
+    },
+    {
+      "lines": "132-154",
+      "claim": "Native L2 input class and actual output identity",
+      "assessment": "inputClass uses existing MemLp.toLp for the actual integrand on inputLaw. L2.inner_def, real inner-product self norm and coeFn_toLp AE identity derive the native norm squared as the actual product-energy integral. output_isometry consumes original SAME-source simpleIntegral_isometry, with each H_i still strongly measurable in naturalFiltration(tau_i) and essentially bounded under sourceLaw. This is genuine input/output norm identification, not a new assumed isometry field."
+    },
+    {
+      "lines": "156-188",
+      "claim": "Native output class and zero-input dependency",
+      "assessment": "outputClass is existing native Lp2 class of the already constructed literal source output, not an independently selected output. The analogous native output norm identity gives equality of input/output norms for each registered representation. Thus inputClass=0 forces this actual outputClass=0. It is a valid required dependency for later representation independence; it alone does NOT prove equality of outputs for two different partitions or define a quotient-linear integral operator."
+    }
+  ],
+  "quantifier_guards": {
+    "measure": "For each finite T:NNReal, actual Lebesgue|[0,T] product original sourceLaw. Input-law normalization is not assumed.",
+    "partition": "Finite deterministic nondecreasing tau with tau_last<=T, including repeated/zero-length intervals and gaps before tau_0 or after tau_last. No stopping-time/random partitions.",
+    "coefficient": "Each H_i is SAME-source MemLp infinity; causal output identities additionally require full natural-past StronglyMeasurable at tau_i. Native input energy alone needs no adaptedness, as appropriate for a norm calculation.",
+    "equivalence_classes": "inputClass is modulo dt-times-P AE, outputClass modulo sourceLaw AE. The proved zero implication concerns one registered representation. Arbitrary different-partition equality/common refinement is not claimed.",
+    "completion": "No full predictable sigma-algebra characterization, density, common-refinement quotient, continuous linear extension or general Ito/Girsanov theorem is present."
+  },
+  "independent_verification": {
+    "direct_source": {
+      "command": "lake env lean UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianTimeIntegrand.lean",
+      "observed_exit_code": 0,
+      "log": {
+        "path": "/private/tmp/ueot-brownian-time-integrand-independent-direct.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "all_public_types_axioms_and_actual_consumers": {
+      "command": "lake env lean /tmp/ueot-brownian-time-integrand-independent-audit.lean",
+      "observed_exit_code": 0,
+      "input": {
+        "path": "/private/tmp/ueot-brownian-time-integrand-independent-audit.lean",
+        "sha256": "b493d9c54341d420f1cb135b5aab16c53a51580313113bc47e290685ab53e88c",
+        "bytes": 5592
+      },
+      "log": {
+        "path": "/private/tmp/ueot-brownian-time-integrand-independent-audit.log",
+        "sha256": "e83c9759f5e0f8fee41598bd546c45885e2a06a683bf08a1b4880962587ffd97",
+        "bytes": 9840
+      },
+      "reported_axioms_only": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "actual_consumer_cases": [
+      "inputLaw definition is exactly restricted real Lebesgue product SAME sourceLaw",
+      "intervalIntegrand vanishes at left endpoint and equals H at strictly later right endpoint",
+      "Actual native inputClass for tau=[0,2], H=1, T=2 has norm squared2",
+      "Actual native outputClass for that partition has equal input norm using declared start-past permission",
+      "For an arbitrary permitted partition/horizon, zero coefficient input class is proved0 by native norm identity, then outputClass_zero_of_input_zero is consumed to obtain actual source output class0"
+    ],
+    "resolved_reviewer_harness_failure": {
+      "log": {
+        "path": "/private/tmp/ueot-brownian-time-integrand-independent-harness-error.log",
+        "sha256": "9247128d52c5fb93aebc555ce3e2252a14feda99c1770b5cc92adf8506222b6c",
+        "bytes": 10753
+      },
+      "classification": "Reviewer-only concrete Fin.last/vector simplification and an omitted boundedness argument; explicit endpoint reduction/boundedness proof and norm_eq_zero after simp resolved it. Frozen source unchanged."
+    },
+    "source_scan": {
+      "sorry_admit_axiom_opaque_declarations": false
+    }
+  },
+  "reuse_assessment": "Uses original Lebesgue restriction/interval mass, native product integrals and MemLp pullbacks/Holder/finite sums, original native L2 inner product and actual source SimpleIntegral isometry. The new bridge binds the previously coefficient-indexed energy to the literal time-dependent input in native Hilbert space without building a parallel abstract norm.",
+  "findings": [],
+  "boundaries": [
+    "Different-partition common refinement and representation-independent actual output remain OPEN in this source.",
+    "L2 closed-subspace extension and density in all predictable L2 inputs remain separate obligations.",
+    "No general stochastic integral, Ito formula, Girsanov, SDE/control/HJB or whole-theory closure is certified.",
+    "No sampling record, failure, threshold, action/observation permission or source probability has been replaced."
+  ],
+  "candidate_scope": "Reviewed as NEXT package source only; not added to the earlier five-source Martingale/OneStep/Simple/Adaptive/Word candidate or its forthcoming typed review.",
+  "mutation_scope": "Only requested exclusive review JSON and external /tmp independent audit/log/receipt. No source/root/Git/GI/books edits.",
+  "promotion": "Clears this exact source contract for later root-managed public build, typed reuse and integration; no promotion of successor WIP."
+}
