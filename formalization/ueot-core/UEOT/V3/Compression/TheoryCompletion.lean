@@ -206,6 +206,7 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertifica
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveJointPath
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveLatentPath
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultInfiniteRecord
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OUQuadraticDynkinSource
 /-!
 # UEOT Theory Completion public root
 

@@ -1,0 +1,156 @@
+{
+  "schema": "UEOT/WHOLE_THEORY_P11_INDEPENDENT_SOURCE_REVIEW/V1",
+  "reviewer": "independent /root/longterm_final_review",
+  "observed_at": "2026-10-29T08:59:29.797975+00:00",
+  "baseline": "ccc42a3c4b7b4817c24275235e85cdda73c2a295",
+  "status": "SOURCE_OBLIGATIONS_OPEN_WITH_VERIFIED_QUADRATIC_SOURCE_CONSUMER",
+  "whole_goal": "OPEN_NOT_ESTABLISHED",
+  "source_blobs_sha256": {
+    "UEOT/V3/RecoveryDynkin.lean": "7218bbaaac1f531f866b2ea429d7e19e819477552fcca7971822b9056fc4f26c",
+    "UEOT/V3/DiffusionHJBVerification.lean": "6685ef527451e7f9e127ae9cc1d130373039b2e90c8bd3be42abbb497a882e31",
+    "UEOT/V3/GirsanovPathKL.lean": "f9ad0f6bfdf004e7f7e5d5ee29540287ab3d44bb934c2c40be11f1e1313a56f1",
+    "UEOT/V3/Compression/TheoryCompletion/StochasticSubstrate.lean": "4135cf9ca1ba92770fd6ea48d4a7fbc3e5e94a5dc7e6b3308aa3427fde631a0e",
+    ".lake/packages/mathlib/Mathlib/Probability/BrownianMotion/Basic.lean": "de6c9e2a1fe6addf9ede01bc29514b63f80b5eb4a5c7912e580d13aa1674127f",
+    ".lake/packages/mathlib/Mathlib/Probability/BrownianMotion/GaussianProjectiveFamily.lean": "9014a683ad688fb77511b160524c5d6dd467cb3ab93910419caa6dbc53c68163",
+    ".lake/packages/mathlib/Mathlib/Probability/Process/Kolmogorov.lean": "01fce00788f966ede5455a15a72f009195778ba7c65cee1d76585458de9984b5"
+  },
+  "original_consumer_obligations": [
+    {
+      "pid": "P-REC-02",
+      "source": "UEOT/V3/RecoveryDynkin.lean:118",
+      "quantifiers": "Any measurable X, real time law: R\u2192Measure X; W,LW,d\u00b2:X\u2192R; fixed deterministic x0; a,c>0,b\u22650 and T\u22650; bound for every t\u2208[0,T]. Original actual process requires W in generator domain and nonexplosion/localization/integrability.",
+      "legitimate_inputs": [
+        "Chosen filtered probability/source process class, initial x0, Lyapunov function W, target distance and domain/regularity conditions",
+        "Pointwise generator drift and domination are hypotheses of the recovery theorem, not intended conclusions"
+      ],
+      "derive_from_actual_source": [
+        "law t as source X_t pushforward; hprob",
+        "hWint,hLWint,hd2int from concrete moment/domain conditions",
+        "hinit from actual deterministic initial state",
+        "DynkinExpectationCertificate.ac: local AC of expected W",
+        "DynkinExpectationCertificate.deriv_eq: ae derivative equals expected actual generator LW"
+      ],
+      "precise_gap": "Neither process nor generator domain is present in the current certificate signature. Assigning a symbolic LW to an arbitrary marginal family cannot supply these two properties. The existing pointwise-to-expectation and scalar Gronwall derivations already work and should be reused."
+    },
+    {
+      "pid": "P-CTL-03",
+      "source": "UEOT/V3/DiffusionHJBVerification.lean:307",
+      "quantifiers": "General real normed state X with Borel structure and measurable A; every Policy in supplied ControlFamily, every initial x0, all finite NNReal horizons, then natural horizons\u2192infinity. Source theorem speaks about admissible nonanticipative diffusion controls and a well-defined maximizing closed-loop SDE.",
+      "legitimate_model_fields": [
+        "rho,rho_pos",
+        "V,V_C2,VBound,VBound_nonneg,V_bounded",
+        "reward",
+        "selector,selector_measurable,hjb_upper,hjb_selector (candidate PDE/selection assumptions)"
+      ],
+      "generatorV_responsibility": "generatorV must be proved to equal the generator acting on V for the declared drift/diffusion; it cannot remain an unrelated function while claiming an SDE source theorem. Finite-dimensional Euclidean/C\u00b2-localized process class is an appropriate first honest class, with broader original classes retained separately.",
+      "ItoRun_field_sources": {
+        "occupation": "Construct discounted pushforward/integral of joint source state/control law over [0,T]",
+        "terminalLaw": "Construct Law(X_T) from same run",
+        "terminal_prob": "Derive from source probability and measurable readout",
+        "reward_integrable": "Derive from chosen reward bound/localization/integrability conditions",
+        "drift_integrable": "Derive actual generator-minus-discount integrability under same occupation measure",
+        "ito_expectation": "Prove process-specific discounted Ito/Dynkin expectation identity; core missing analytical bridge",
+        "infiniteReward": "Define actual infinite discounted expected reward under convergence/integrability conditions",
+        "reward_tendsto": "Prove finite occupation integrals converge to that same infinite reward; bounded reward gives direct dominated-tail route"
+      },
+      "SelectorRun_field_sources": {
+        "selector_ae": "From actual action process a_t=selector(X_t), not an unrelated occupation support assertion"
+      },
+      "ControlFamily_field_sources": {
+        "run": "Construct from each declared admissible policy and x0",
+        "selectorPolicy": "The actual maximizing feedback policy",
+        "selectorRun": "Actual well-defined closed-loop source run",
+        "selectorRun_eq": "Definitional/construction identification of this source run with run selectorPolicy"
+      },
+      "precise_gap": "Current Policy is an abstract type and ItoRun is terminal output only. No field contains optimality, but actual source/filtration/adaptedness, state-control consistency and Ito derivation still need constructing. The current optimality proof remains a valid reusable consequence."
+    },
+    {
+      "pid": "P-KL-05",
+      "source": "UEOT/V3/GirsanovPathKL.lean:191",
+      "quantifiers": "Measurable base Omega and readout Gamma, full probability measures P0,Q, finite T\u22650, real-time control u into normed E; exact full-space KL, measurable-state-path KL upper bound. Physical diffusion source normally needs finite Euclidean/Hilbert noise; the abstract terminal algebra itself only needs the stated norm.",
+      "legitimate_inputs": [
+        "Baseline filtered Brownian probability space and source dynamics, progressively measurable control class",
+        "True exponential-martingale condition (e.g. suitable Novikov sufficient hypothesis) and finite Q-energy",
+        "Measurable state-path readout and declared initial condition"
+      ],
+      "TerminalGirsanovData_field_sources": {
+        "density": "Construct terminal stochastic exponential from baseline Brownian/source integral",
+        "baselineIntegral": "Construct actual integral of u against baseline Brownian noise",
+        "controlledIntegral": "Construct actual integral against shifted noise under Q",
+        "controlFiltration": "The filtration of that same source experiment",
+        "control_progressive": "Derived for each control in the declared admissible class",
+        "energy_intervalIntegrable": "Pathwise consequence of control/domain assumptions",
+        "measurable_density": "Measurability of constructed stochastic exponential",
+        "changeOfMeasure": "Define Q by this density and prove probability normalization from true martingale",
+        "density_eq_exp": "Defining/constructed stochastic exponential identity",
+        "integral_shift": "Prove change-of-integrator formula W0=Wu+integral(u dt)",
+        "controlledIntegralProcess": "Actual controlled integral process restricted to times 0,T (current Fin2 output alone is not its construction)",
+        "controlledFiltration": "Restriction of source changed-measure filtration at 0,T",
+        "controlledIntegral_martingale": "Derive from controlled Brownian integral square-integrability after Girsanov",
+        "controlledIntegral_initial": "Actual integral at 0",
+        "controlledIntegral_terminal": "Actual terminal integral at T",
+        "energy_integrable": "The declared finite Q-energy condition or a derived bounded-control sufficient condition"
+      },
+      "precise_gap": "The current terminal record does not construct a stochastic integral or prove shifted noise is Brownian. Density/shift/martingale consequences cannot be renamed as arbitrary model inputs to discharge the whole-theory obligation. Existing RN, zero-mean, entropy and data-processing consequences should be reused."
+    }
+  ],
+  "pinned_mathlib": {
+    "revision": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "available": [
+      "IsPreBrownianReal finite Gaussian laws, mean, covariance, independent increments and weak Markov",
+      "IsBrownianReal extends finite laws by ae continuous paths",
+      "Gaussian real measures, moments, exponential moments/characteristic functions",
+      "Projective Gaussian finite family and projective content/uniqueness interfaces",
+      "Filtrations, progressive/adapted processes, martingales, optional stopping/sampling, product laws"
+    ],
+    "not_found_in_this_pinned_source": [
+      "A general stochastic integral construction",
+      "Ito formula / SDE solution theory / stochastic Girsanov theorem",
+      "A ready Brownian canonical continuous realization or completed Kolmogorov-Chentsov continuous-modification theorem; current Basic defines predicates, GaussianProjectiveFamily proves consistency, Process/Kolmogorov defines its moment condition"
+    ],
+    "interpretation": "Absence from the inspected pinned source is an implementation dependency, not a mathematical no-go. Brownian source conditions can be an explicit initial source-class hypothesis, but whole-theory nonempty source realization must be proved or linked to a trusted theorem before closure."
+  },
+  "first_verified_constructive_ingredient": {
+    "file": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/whole-theory-audit-20261029/p11-independent/OUQuadraticDynkinSource.lean",
+    "sha256": "e874bc29526cfbec0cde3459c7ece2ca54a4df75ce4971c46569f43501bdc906",
+    "receipt": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/whole-theory-audit-20261029/p11-independent/OU_SOURCE_RECEIPT.json",
+    "receipt_sha256": "a10eec61db3923b40aeb2428fa51c5c0cbabcf5f6651e03bb5c564103f17ef9e",
+    "lean_exit_code": 0,
+    "log_sha256": "34a90fef1536a99533447a89ab6c3899e6c07db49db8114311ee27072bc8cee0",
+    "actual_consumer": "UEOT.V3.RecoveryDynkin.p_rec_02",
+    "no_Dynkin_certificate_input": true,
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "authorship": "This source experiment is authored by this reviewer; independent review is delegated to the root/another reviewer before adoption. Original P11 source audit remains independent."
+  },
+  "next_constructive_target": {
+    "source": "For kappa>0 and sigma!=0, define tau(t)=(exp(2*kappa*t)-1)/(2*kappa), X_t=exp(-kappa*t)*(x0+sigma*B_tau(t)).",
+    "derive": [
+      "Continuity from Brownian continuous paths and deterministic time change",
+      "E[X_t\u00b2]=exp(-2*kappa*t)*x0\u00b2+(sigma\u00b2/(2*kappa))*(1-exp(-2*kappa*t)) from verified affine moment ingredient",
+      "Gaussian independent-increment transition/semigroup and actual quadratic generator -2*kappa*x\u00b2+sigma\u00b2",
+      "AC and ae derivative mprime=-2*kappa*m+sigma\u00b2, then construct DynkinExpectationCertificate for this actual source and call p_rec_02",
+      "Exhibit nonzero-noise/nonzero-kappa and nonzero-initial-state instance"
+    ],
+    "scope_limit": "This eliminates Dynkin input for an explicit nondegenerate OU/quadratic family. General generator-domain recovery, bounded C\u00b2 controlled HJB and Girsanov remain OPEN; no finite CTMC substitution or family example closes them.",
+    "derived_now": [
+      "Actual source pushforward laws and probability",
+      "Quadratic integrability and exact moment",
+      "Actual deterministic initial law",
+      "Quadratic generator from right-time source transition expectation at each initial state",
+      "Actual quadratic Dynkin AC/ae derivative certificate",
+      "Original P-REC-02 consumed with a=2k,b=s^2,c=1 and d\u00b2=x\u00b2=distance-to-zero\u00b2",
+      "Continuous paths whenever the supplied Brownian source has continuous paths",
+      "Strictly positive moment for s!=0 and positive time; nonempty positive-noise parameter choices"
+    ],
+    "remaining": [
+      "No Brownian source existence construction is asserted; all results explicitly quantify over a supplied IsPreBrownianReal/IsBrownianReal source.",
+      "No pathwise SDE identity, arbitrary C\u00b2 generator-domain Ito theorem, adapted-control stochastic integration or Girsanov source theorem is asserted.",
+      "General original source classes remain whole-theory obligations. This packet does not retire P11 or the whole Goal."
+    ]
+  },
+  "coordination": "No shared Lean/source API, registry, index, old data, PR, GI or RNG changes. External prototype only; root integration required."
+}
