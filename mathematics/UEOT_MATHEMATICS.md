@@ -2762,7 +2762,7 @@ $$
 
 StochasticSubstrate 将这些接口接入 P11，仍不把控制能量变成无条件热力学功。若密度不对观察路径可测，第 22.5 节只用数据处理上界；第 33 章的单位校准也必须另行给定。
 
-第 39.9—39.15 节给出实际全时间 Gaussian／连续 Brownian 源、自然过滤条件矩及真正 predictable L² 终点积分。第 39.17、39.19 节进一步构造同一输入的实际连续积分过程，并从真实时间能量和条件二阶关系推导平方补偿鞅；Brownian 分割平方和也有原源网格误差界。自然过滤的指数密度已规范化并与实际 RN 导数相接。这些来源仍未推出一般完整积分的分割二次变差、受控扩散换测度漂移、一般 Itô 或全部 HJB 前提；本节相应接口继续承担实际过程与维度／过滤来源责任。
+第 39.9—39.15 节给出实际全时间 Gaussian／连续 Brownian 源、自然过滤条件矩及真正 predictable L² 终点积分。第 39.17、39.19 节进一步构造同一输入的实际连续积分过程，并从真实时间能量和条件二阶关系推导平方补偿鞅；Brownian 分割平方和也有原源网格误差界。自然过滤的指数密度已规范化并与实际 RN 导数相接。第 39.22 节现已从同一完整可预测标量输入推导确定性零网格分割的实际二次变差及实际加权一、二阶随机和。这些结果仍未合成已公开的 Taylor／Itô 来源，也未给出受控扩散换测度漂移或全部 HJB 前提；原过程、维度／过滤与模型类来源责任继续保留。
 
 <a id="ch-23"></a>
 
@@ -5372,7 +5372,7 @@ $$
 
 必要负界也保留。故障率 $1/2$ 下的共同全故障样本，具有正质量 $2^{-2N}$；价格一、目标 true、费用零与二的源在该样本上无法区分，但同一坏态的实际一步排序相反。因此确定性 data-only 且零错误的程序不能对这两个源都总是作出严格裁决；这里未声称随机判定器版本。费用宽度二还会使费用 $1/2$ 和 $3/2$ 的全部粗读出相同，这是该固定粗读出的相对障碍。
 
-负输出的时域不能扩大。取 $\epsilon=1/4,\lambda=d=1/2,c=3$，坏态修复的一步差值为 $-3/8$，但同一编译策略自身的无限值为 $3/32$，idle 自身的无限值为零。这里使用策略评价，未调用不适用的 $\lambda c\le1$ 最优性条件。有限资料的部分目的证书、完整源参数识别和任意时域的全部策略排序是不同责任。源码为 RegisterFaultFinitePurposeProbe 与 RegisterFaultFinitePurposeInfinite；新的资源维持通道在第 39.18 节另行登记；完整训练资金与成本更全面的评价仍分别承担来源责任。
+负输出的时域不能扩大。取 $\epsilon=1/4,\lambda=d=1/2,c=3$，坏态修复的一步差值为 $-3/8$，但同一编译策略自身的无限值为 $3/32$，idle 自身的无限值为零。这里使用策略评价，未调用不适用的 $\lambda c\le1$ 最优性条件。有限资料的部分目的证书、完整源参数识别和任意时域的全部策略排序是不同责任。源码为 RegisterFaultFinitePurposeProbe 与 RegisterFaultFinitePurposeInfinite；新的资源维持通道在第 39.18 节另行登记；第 39.24 节在另登记的完整 idle／write 协议中接入实际训练账本；原旧协议与成本更全面的评价仍保留其各自范围。
 
 ## 39.17 同一积分的真实连续过程
 
@@ -5436,6 +5436,52 @@ $$
 源计算的 $f bK$ 更新归一化后，恰等于实际子代的均匀经验频率。因此原 p_evo_01 的频率、繁殖率和传递矩阵均来自同一次实际出生。对子代继承的程序性状，传递项为零，得到实际子代均值变化等于选择协方差除以平均繁殖率。两种程序并存而标签相同的实例中，亲本 true 型比例为 $1/2$，实际子代中为零，协方差除以平均繁殖率的项为 $-1/2$；同一调度的全故障实现则是零子代，不归一化。
 
 这是逐实现的经验 Price 恒等式，没有把随机比的期望换成期望之比。旧亲本仍保留在末表中，所更新的频率明确只属于子代普查，不是整个末表人口比例。它也不证明选择必然趋于最优。来源为 RegisterPopulationTypePrice；形成、依赖统计发现、尺度、长期资金闭环及全局组合仍继续承担各自义务。
+
+## 39.22 同一完整积分的分割平方和与实际加权表
+
+第 39.19 节的平方补偿鞅并未单独证明分割二次变差。新的来源链固定原实时间乘原概率律上的完整可预测 $L^2$ 输入 $f$，使用同一连续积分过程 $M_f$ 和同一实际时间能量 $A_f(t)=\int_0^{t\wedge T}f_s^2\,ds$。任意声明的确定性有限非降分割 $\pi_m$ 从 $0$ 到 $T$，只要计算出的最大时间间隔趋零，就有
+
+$$
+\sum_{[u,v]\in\pi_m}(M_f(v)-M_f(u))^2\longrightarrow A_f(T)
+\quad\text{于原概率源的 }L^1\text{，从而依概率。}
+$$
+
+这里没有换成另一个存在的输入。证明从原有限张成空间的实际左采样出发，经真实时间边缘积分和对所有分割一致的平方和稳定界扩展到完整输入；只要求原 $L^2$，没有另加 $L^4$。重复端点、空时间域均保留。结论不含随机停时分割，也不声称一条共同事件同时保证所有分割族的整列几乎处处收敛。
+
+对同一 Brownian 源上的两个输入 $f,g$，实际交叉增量和的极限是真实的 $\int_0^T f_sg_s\,ds$；相应的 $M_fM_g-\int fg\,ds$ 是原自然过滤上的可积鞅。这里的两个输入不是两个独立噪声。对一致有界、联合可测、适应且几乎处处连续的实际系数过程 $H$，原 $F_u$ 简单函数逼近、未来区间定位和原输入的支配收敛进一步给出
+
+$$
+\begin{aligned}
+\sum_{[u,v]\in\pi_m}H_u\,(M_f(v)-M_f(u)) &\longrightarrow I(Hf)_T,\\
+\sum_{[u,v]\in\pi_m}H_u\,(M_f(v)-M_f(u))^2 &\longrightarrow \int_0^T H_sf_s^2\,ds.
+\end{aligned}
+$$
+
+于原源的概率。每张表逐项使用同一实际 $M_f$；目标由原时间积分计算，未作为待证极限输入。这提供 Itô 所需的一、二阶随机和来源，尚须 Taylor 余项与实际望远镜和的合成。任意有界 $C^2$ 函数并不自动有有界一、二阶导数；后续消费者须逐项提供自身所需的正则性和可积性。当前源是标量规范源，不免除一般维度、过滤、受控 SDE 与换测度的原义务。
+
+## 39.23 读取整个联合历史的有限维噪声与原生输入身份
+
+另登记有限个原标量 Brownian 源的原生乘积，向量使用真正的欧氏范数。未来向量增量与整个联合自然历史的独立性由坐标成对律和乘积重排推导；不能仅凭各坐标与自身过去独立就授予联合历史权限。因而一个实际系数可以读取其他坐标的过去，例如读取第二坐标后构造余弦／正弦权重。在每个确定 START 点，各坐标系数对整个联合自然历史强可测并在同一源上本质有界时，实际点积增量和具有由同源条件协方差推导的零均值与欧氏等距。
+
+实际输入位于未归一的实时间乘同一向量概率源的欧氏值 $L^2$。不同确定性分割的公共细化保持原始 START 权限；塌缩公共时间单元的系数取零，不能把未来可测函数挪到更早的起点。由此推导原生输入、输出之间全部距离相等：同一输入类返回同一张有限程序的实际输出类和几乎处处相同的原输出。原生有限支撑线性组合及连续线性延拓再构造该张成空间闭包上的积分，并证明它返回每个原有限输入的原输出。
+
+这个定义域明确是实际基本输入张成空间的闭包。它与全部联合可预测欧氏值 $L^2$ 的相等仍需生成集／密度证明，不能作为字段补进来。零维、零时域和重复时间都包含在准确范围内；一般向量 Itô、控制及 Girsanov 不由有限和等距自动成立。
+
+## 39.24 完整训练费用与实际返回策略的一条账本
+
+第 39.18 节的外部保护 idle 端口现接入一个另登记的完整训练协议：每次原允许写动作前先请求一次 idle，最后再请求一次 idle。原 $2N$ 次写动作因此对应完整 $4N+1$ 次 primitive 抽取。全部故障、出生、费用和 idle 记录保留；没有重置、程序安装、筛选成功或重抽。所选写坐标的边缘律等于原训练源，完整轨迹和实际末亲本则确实不同，不能沿用旧轨迹的同一性。
+
+在声明的端口输入 $g\ge c$、实际初始储备 $R_0\ge0$ 下，每个实际训练前缀账面非负，末储备至少为 $c$。同一计数选择器只读实际允许观测；在原程序匹配、登记价格、正读出宽度与 $0<d<1$ 折扣条件下，其正修复裁决返回的原策略从新的实际末亲本状态出发，接入原未来最优性和资源 P6。将完整训练记录字面前接到该实际未来记录律，得到同一初始储备的一条完整账本几乎处处可行。最优性仍从实际部署起点计，不冒称“训练加未来总净收益”最优；端口是另登记的外部供给，不是内部产生能源。
+
+## 39.25 混合程序的自身维持、实际子代与完整亲本发现
+
+原固定全局目标机制下，混合程序群体不能自动共享同一个 P5。新的模型在每次真实亲本查找后，以该亲本保护程序计算本次目标；故障改为写入其自身程序的反值。这是明确不同的环境语义，旧源和旧限制保留，未增加生物动作。实际出生的物理种子与继承程序相合，因而各类型子对象分别进入其自身的原 P5，无须再外给“亲本程序等于全局目标”。
+
+冻结旧地址队列、每个原亲本只访问一次时，新模型的完整实际子对象选项与原子代普查投影相等，故能复用原 Price 的实际频率、繁殖数和传递项。故障后保留的亲本和整个末表可以不同；子代频率不是整个末表频率。实际新生槽位、唯一出生 ID 和亲本由同一分配器推导。一个三亲本源产生两类实际子代、一个保留故障及随后真实付费修复；其四步 primitive 字的原概率为 $27/4096$。新生子对象零局部 cushion 与声明的 idle 端口还给出其实际第一步资金桥，未给出全群体银行或全局调度最优性。
+
+亲本发现另登记 marked journal 的完整噪声读权限。计数选择器只使用实际 ID 读出、有限 registry 和固定 fallback，隐蔽目标、噪声参数、正确标记及 Good 不进入选择器。在 $\eta<1/2$ 时，真实独立读源以正确概率至少 $1-\eta$ 给出严格多数事件，从源均值和 Hoeffding 推出其补集概率至多 $\exp[-2N(1/2-\eta)^2]$。实际 ID 类到亲本的桥把这一结论送入原 P12。在 $\eta=1/2$、未知任意 confuser 类中，不同实际亲本可有相等的完整读出律；任一确定性估计器在两源的错误风险之和至少为一。
+
+更强的共同消费者覆盖全部四步群体抽取与全部 $N$ 次读抽取的乘积律。第四动作对每个群体原始字都从真实前三步状态计算；实际 key 和亲本可随原始字变化。在群体与读噪声均为 $1/4$ 的登记源上，联合实际亲本风险至多 $\exp(-N/8)$ 并趋零。没有对正例、成功出生或接受结果条件化；质量 $1/4096$ 的全故障无出生字仍在完整源中。只有在源推导的 Good 且目标确实出生时，返回的同一个实际子对象才进入自身 P5。None 表示无子代亲本，不是失败交易尝试者的身份。读取成本、全群体资金与全局目的最优仍承担各自来源义务，不能从元数据权限中免费取得。
 
 <a id="appendix-a"></a>
 
@@ -6341,3 +6387,5 @@ C1 的源及传感器对应 UC.MeasurablePredictiveSource、UC.MeasurablePredict
 第 39.12 节对应 UC.MeasurablePredictiveHistoryCanonical 的 actual_past_future_factorization、actual_response_adaptive_ae_minimal 与 futureKernel_response_memory_factor。第 39.13 节对应 UC.BrownianMartingaleSource；第 39.14—39.15 节的输入表示、原输出与完整 predictable 域对应 UC.BrownianIntegralRepresentation、UC.BrownianIntegralClosure.integral_returns_literal、UC.BrownianPredictableDensity.predictableIntegral_returns_literal。第 39.16 节对应 UC.RegisterFaultFinitePurposeProbe 及 UC.RegisterFaultFinitePurposeInfinite.returned_positive_actual_infinite_record。完整类型与义务见[自适应／条件噪声包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/adaptive_stochastic_sources_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)、[真实过去／积分表示包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/history_integral_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)和[真正 predictable／有限目的证书包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/predictable_finite_purpose_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。全理论仍 OPEN / NOT_ESTABLISHED。
 
 第 39.17—39.19 节对应 UC.BrownianIntegralContinuousVersion、UC.RegisterFaultFeedbackResource、UC.BrownianQuadraticVariation、UC.BrownianIntegralPastLocalization 与 UC.BrownianIntegralCompensator；第 39.20—39.21 节对应 UC.RegisterPopulationHistorySource 和 UC.RegisterPopulationTypePrice。直接义务与精确类型分别见[连续积分／反馈资源](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/continuous_resource_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)和[真实二阶能量／人口来源](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/compensator_population_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。补偿鞅不等于一般分割 QV／Itô；开放资源端口不是封闭源，子代普查不是整个末表。全理论仍 OPEN / NOT_ESTABLISHED。
+
+第 39.22—39.25 节采用 UC 中已集成的完整标量分割 QV、交叉／加权积分、欧氏乘积／向量闭包积分、资金训练及共同群体／日志学习来源。实际公共消费者、精确前提及总义务差额见[完整 QV／训练／发现来源](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/full_qv_vector_training_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)和[向量表示／加权表／共同人口源](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/vector_weighted_population_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。后继 Taylor／Itô、向量可预测密度与带噪 C5 校准尚未作为本书已公开结果；全理论仍 OPEN / NOT_ESTABLISHED。
