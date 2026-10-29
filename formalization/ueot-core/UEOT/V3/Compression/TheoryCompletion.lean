@@ -219,6 +219,8 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveH
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralClosure
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeInfinite
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralContinuousVersion
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFeedbackResource
 /-!
 # UEOT Theory Completion public root
 
