@@ -9,27 +9,7 @@
   "max_active_mutating_tracks": 4,
   "main_only_cross_track_dependencies": true,
   "cross_track_integration_gate": "open",
-  "l2_existing_path_exceptions": [
-    {
-      "exception_id": "TC-FINITE-DATA-BINDING-20261029",
-      "track": "TC",
-      "branch_patterns": [
-        "^compression/theory-completion-finite-data-loop$"
-      ],
-      "paths": [
-        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_certificates_v1/certify.py",
-        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/action_certificates_v1/test_certify.py",
-        "formalization/ueot-core/docs/compression/theory_completion/knowledge/README.md",
-        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/fkrg_reuse.py",
-        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/test_fkrg_reuse.py",
-        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/README.md",
-        "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/REBUILD_CLONE_CANDIDATES.py",
-        "formalization/ueot-core/docs/compression/theory_completion/unified_closure/UMC_GLOBAL_MODULE_DAG_V4.json"
-      ],
-      "reason": "Repair the actually reproduced generated-proof/input/candidate binding gap in the existing runner and update only the six established native/reuse evidence consumers for the same-source finite-data path-risk program. An additive wrapper cannot fix existing certify callers; no old theorem, counted core, or immutable evidence is authorized.",
-      "temporary": true
-    }
-  ],
+  "l2_existing_path_exceptions": [],
   "governed_path_prefixes": [
     "formalization/ueot-core/UEOT/V3/Compression/",
     "formalization/ueot-core/docs/compression/",
