@@ -2530,7 +2530,7 @@ Girsanov 与熵的精确条件可参见原始数学研究；本文使用上述�
 
 StochasticSubstrate 将这些接口接入 P11，仍不把控制能量变成无条件热力学功。若密度不对观察路径可测，第 22.5 节只用数据处理上界；第 33 章的单位校准也必须另行给定。
 
-第 39.9---39.15 节给出实际全时间 Gaussian／连续 Brownian 源、自然过滤条件矩及真正 predictable L² 终点积分。第 39.17、39.19 节进一步构造同一输入的实际连续积分过程，并从真实时间能量和条件二阶关系推导平方补偿鞅；Brownian 分割平方和也有原源网格误差界。自然过滤的指数密度已规范化并与实际 RN 导数相接。第 39.22 节现已从同一完整可预测标量输入推导确定性零网格分割的实际二次变差及实际加权一、二阶随机和。这些结果仍未合成已公开的 Taylor／Itô 来源，也未给出受控扩散换测度漂移或全部 HJB 前提；原过程、维度／过滤与模型类来源责任继续保留。
+第 39.9---39.15 节给出实际全时间 Gaussian／连续 Brownian 源、自然过滤条件矩及真正 predictable L² 终点积分。第 39.17、39.19 节进一步构造同一输入的实际连续积分过程，并从真实时间能量和条件二阶关系推导平方补偿鞅；Brownian 分割平方和也有原源网格误差界。自然过滤的指数密度已规范化并与实际 RN 导数相接。第 39.22 节现已从同一完整可预测标量输入推导确定性零网格分割的实际二次变差及实际加权一、二阶随机和。第 39.26---39.28 节进一步从实际 Taylor 和推导同输入标量 Itô／Dynkin、向量完整可预测域与条件过程、原 OU 条件核及常控制的实际 TerminalGirsanovData／原 KL 消费者。全局一、二阶导数界等条件明确保留；一般受控 SDE、可预测控制换测度及全部 HJB 前提仍承担来源责任。
 
 \hypertarget{ux3c0ux3c6ux7ea6ux675fux51e0ux4f55ux4e0eux53ccux9a71ux52a8ux7684ux4e25ux683cux7248ux672c}{%
 \chapter{23. Π/Φ、约束几何与双驱动的严格版本}\label{ux3c0ux3c6ux7ea6ux675fux51e0ux4f55ux4e0eux53ccux9a71ux52a8ux7684ux4e25ux683cux7248ux672c}}
@@ -5250,7 +5250,7 @@ M_s(f)^2-A_s(f)
 \end{aligned}
 \]
 
-于原源的概率。每张表逐项使用同一实际 \(M_f\)；目标由原时间积分计算，未作为待证极限输入。这提供 Itô 所需的一、二阶随机和来源，尚须 Taylor 余项与实际望远镜和的合成。任意有界 \(C^2\) 函数并不自动有有界一、二阶导数；后续消费者须逐项提供自身所需的正则性和可积性。当前源是标量规范源，不免除一般维度、过滤、受控 SDE 与换测度的原义务。
+于原源的概率。每张表逐项使用同一实际 \(M_f\)；目标由原时间积分计算，未作为待证极限输入。这提供 Itô 所需的一、二阶随机和来源；第 39.26 节在明确全局导数界下以实际 Taylor 余项和望远镜和完成同一标量输入的合成。任意有界 \(C^2\) 函数并不自动有有界一、二阶导数；后续消费者须逐项提供自身所需的正则性和可积性。当前源是标量规范源，不免除一般维度、过滤、受控 SDE 与换测度的原义务。
 
 \hypertarget{ux8bfbux53d6ux6574ux4e2aux8054ux5408ux5386ux53f2ux7684ux6709ux9650ux7ef4ux566aux58f0ux4e0eux539fux751fux8f93ux5165ux8eabux4efd}{%
 \section{39.23 读取整个联合历史的有限维噪声与原生输入身份}\label{ux8bfbux53d6ux6574ux4e2aux8054ux5408ux5386ux53f2ux7684ux6709ux9650ux7ef4ux566aux58f0ux4e0eux539fux751fux8f93ux5165ux8eabux4efd}}
@@ -5259,7 +5259,7 @@ M_s(f)^2-A_s(f)
 
 实际输入位于未归一的实时间乘同一向量概率源的欧氏值 \(L^2\)。不同确定性分割的公共细化保持原始 START 权限；塌缩公共时间单元的系数取零，不能把未来可测函数挪到更早的起点。由此推导原生输入、输出之间全部距离相等：同一输入类返回同一张有限程序的实际输出类和几乎处处相同的原输出。原生有限支撑线性组合及连续线性延拓再构造该张成空间闭包上的积分，并证明它返回每个原有限输入的原输出。
 
-这个定义域明确是实际基本输入张成空间的闭包。它与全部联合可预测欧氏值 \(L^2\) 的相等仍需生成集／密度证明，不能作为字段补进来。零维、零时域和重复时间都包含在准确范围内；一般向量 Itô、控制及 Girsanov 不由有限和等距自动成立。
+本节首先构造实际基本输入张成空间闭包；第 39.27 节另由真实生成集／密度证明它等于全部联合可预测欧氏值 \(L^2\)，并推导实际条件过程与均方时间连续性，未将这些结论补成字段。零维、零时域和重复时间都包含在准确范围内；向量样本连续性、一般向量 Itô、控制及 Girsanov 仍不由有限和等距自动成立。
 
 \hypertarget{ux5b8cux6574ux8badux7ec3ux8d39ux7528ux4e0eux5b9eux9645ux8fd4ux56deux7b56ux7565ux7684ux4e00ux6761ux8d26ux672c}{%
 \section{39.24 完整训练费用与实际返回策略的一条账本}\label{ux5b8cux6574ux8badux7ec3ux8d39ux7528ux4e0eux5b9eux9645ux8fd4ux56deux7b56ux7565ux7684ux4e00ux6761ux8d26ux672c}}
@@ -5278,6 +5278,58 @@ M_s(f)^2-A_s(f)
 亲本发现另登记 marked journal 的完整噪声读权限。计数选择器只使用实际 ID 读出、有限 registry 和固定 fallback，隐蔽目标、噪声参数、正确标记及 Good 不进入选择器。在 \(\eta<1/2\) 时，真实独立读源以正确概率至少 \(1-\eta\) 给出严格多数事件，从源均值和 Hoeffding 推出其补集概率至多 \(\exp[-2N(1/2-\eta)^2]\)。实际 ID 类到亲本的桥把这一结论送入原 P12。在 \(\eta=1/2\)、未知任意 confuser 类中，不同实际亲本可有相等的完整读出律；任一确定性估计器在两源的错误风险之和至少为一。
 
 更强的共同消费者覆盖全部四步群体抽取与全部 \(N\) 次读抽取的乘积律。第四动作对每个群体原始字都从真实前三步状态计算；实际 key 和亲本可随原始字变化。在群体与读噪声均为 \(1/4\) 的登记源上，联合实际亲本风险至多 \(\exp(-N/8)\) 并趋零。没有对正例、成功出生或接受结果条件化；质量 \(1/4096\) 的全故障无出生字仍在完整源中。只有在源推导的 Good 且目标确实出生时，返回的同一个实际子对象才进入自身 P5。None 表示无子代亲本，不是失败交易尝试者的身份。读取成本、全群体资金与全局目的最优仍承担各自来源义务，不能从元数据权限中免费取得。
+
+\hypertarget{ux540cux4e00ux5b8cux6574ux8f93ux5165ux7684ux5b9eux9645-ituxf4-ux4e0e-dynkin-ux6765ux6e90}{%
+\section{39.26 同一完整输入的实际 Itô 与 Dynkin 来源}\label{ux540cux4e00ux5b8cux6574ux8f93ux5165ux7684ux5b9eux9645-ituxf4-ux4e0e-dynkin-ux6765ux6e90}}
+
+令 \(f\) 是第 39.13---39.17 节同一原 Brownian 源上的任意真实可预测平方可积输入，\(M\) 是该输入构造的实际连续积分。若 \(\varphi\in C^2(\mathbb R)\)，且一、二阶导数分别有全局界，则原源几乎处处有
+
+\[
+\begin{aligned}
+\varphi(M_T)-\varphi(0)
+&=I_T\bigl(\varphi'(M)f\bigr)\\
+&\quad+\frac12\int_0^T\varphi''(M_t)f_t^2\,dt.
+\end{aligned}
+\]
+
+有限表是同一 \(M\) 的实际 Taylor 望远镜和。二阶余项由实际紧路径区间上 \(\varphi''\) 的一致连续性、实际平方和的概率紧性及子序列极限唯一性控制；不要求 \(f\in L^4\) 或三阶导数，也未把 Itô 恒等式作为输入。\(\varphi\) 本身不必有界，而有界的 \(C^2\) 函数并不自动满足上述导数界。
+
+取同一实际输入的常系数形式，得到 \(X_t=x_0+\sigma B_t\) 的实际状态律。源推导的均值零、时间 Fubini 和微积分基本定理构造原 RecoveryDynkin 期望绝对连续／几乎处处生成元证书。\(\sigma=2\) 的位移二阶矩为 \(4t\)，非线性正弦测试也消费同一证书。自由 Brownian 与有界正弦测试不满足强制恢复的全部条件；一般恢复和受控 SDE 义务仍在，旧 OU 二次恢复结论保持独立身份。
+
+\hypertarget{ux5411ux91cfux5b8cux6574ux53efux9884ux6d4bux57dfux4e0eux5b9eux9645ux6761ux4ef6ux8fc7ux7a0b}{%
+\section{39.27 向量完整可预测域与实际条件过程}\label{ux5411ux91cfux5b8cux6574ux53efux9884ux6d4bux57dfux4e0eux5b9eux9645ux6761ux4ef6ux8fc7ux7a0b}}
+
+第 39.23 节的闭包域现在与独立定义的、整个联合自然滤过上的原生可预测欧氏值 \(L^2\) 相等。证明实际实现可预测生成矩形的向量指标输入，再用原生 \(L^p\) 归纳取得密度；零时刻生成集的原时间乘积测度为零。结论包含所有有限维数、零维、零时域和重复时间。新的积分消费同一输入类，返回原有限程序的原输出。
+
+原生截断使用同一个固定时域的 \(dt\times P\)，而非另选测度或噪声。观察早于 START 时，条件前缀经 START 的塔律推导，不能将未来系数提出更早的条件期望。实际有限前缀与连续线性稠密延拓导出完整输入的联合过去鞅、每个固定时刻的原输出恒等式和欧氏能量。无原子时间边界与平方范数支配收敛又推导均方时间连续性。均方连续不等于样本连续版本；向量路径正则、向量二次变差和一般向量 Itô 仍有独立责任。
+
+\hypertarget{ux539f-ou-ux6761ux4ef6ux6838ux4e0eux5b9eux9645ux5e38ux63a7ux5236ux6362ux6d4bux5ea6}{%
+\section{39.28 原 OU 条件核与实际常控制换测度}\label{ux539f-ou-ux6761ux4ef6ux6838ux4e0eux5b9eux9645ux5e38ux63a7ux5236ux6362ux6d4bux5ea6}}
+
+对原 OU 换时钟源，\(k>0\) 时，实际条件滤过是 \(\mathcal F_{\tau_k(s)}\)，其中 \(\tau_k(s)=(e^{2ks}-1)/(2k)\)。同一 Brownian 路径给出实际状态分解和与整个该过去独立的 Gaussian innovation；条件核中的当前状态是实际随机状态。原生条件分布与塔律推导所有初态、所有有界 Borel 测试的转移算子半群，包括不连续指标、零时刻及退化噪声。这个算子半群不是物理时钟 SDE 的证明，也不把换时钟过去说成未经换时钟的 \(\mathcal F_s\)。
+
+常控制 \(u\) 和有限 \(T\) 则消费同一原噪声源的实际指数密度。完成平方与有限 Gaussian 残差的真实联合律，证明在该实际 \(Q\) 下
+
+\[
+W_t=B_t-u\min(t,T)
+\]
+
+是 Brownian，且对原 \(\mathcal F_t\) 有整个过去独立性与鞅性质；超过 \(T\) 后漂移停止累积。原可预测积分返回 \(u(B_T-B_0)\)，受控积分、实际时间能量 \(u^2T\) 和漂移恒等式共同构造原 TerminalGirsanovData，故实际完整噪声 KL 为 \(u^2T/2\)，任意可测读出的 KL 不大于此值。\(T=0\)、\(u=0\) 与跨过密度时域的增量均包括在证明内。一般可预测控制的真实指数鞅、漂移及 \(Q\) 能量来源尚未由常控制结论完成。
+
+\hypertarget{ux540cux4e00ux5e26ux566aux6d4bux91cfux5b9eux9645ux9006ux4e0eux8fd4ux56deux52a8ux4f5c}{%
+\section{39.29 同一带噪测量、实际逆与返回动作}\label{ux540cux4e00ux5e26ux566aux6d4bux91cfux5b9eux9645ux9006ux4e0eux8fd4ux56deux52a8ux4f5c}}
+
+C5 的确定性误差结论在有限维上使用上确界范数，与前节 Brownian 欧氏范数区分。由实际带误差锚列构造 \(\widehat M\)；对同一个返回矩阵 \(R\) 精确核验 \(R\widehat M=\widehat M R=I\)，再以同一带噪查询计算系数。误差和原 action-gap 排序界显式依赖 \(\lVert R\rVert\)。正锚仍可趋近退化；查询误差随之放大，故不能去掉条件数因子。求逆失败不被当成一般不可实现性证明。
+
+另登记二维未知正有理对角增益、两个互异有理潜在响应均在 \([-1,1]\) 的原源，单位锚与独立读噪声是明确模型权限。风险结论对每行 \(N>0\) 成立；本注册各行 \(N=32\)、共 \(128\) 个完整符号，传感噪声幅度为 \(1/10\)。这批符号及观测是预注册形式字与实际 sourceData 的合成重建，不是新增经验采样；公平独立描述原概率律，不能由固定字当成经验事实。注册后不改符号、预算或阈值。选择器只读实际有理均值，计算同一对角逆、条件数及查询分数，以原阈值拒绝或返回动作；真增益、真排序、噪声符号和 Good 均不输入选择器。原源 Hoeffding 与同一误差事件给出
+
+\[
+P(\mathrm{Accept}\cap\mathrm{Wrong})\le 8e^{-N/8},
+\]
+
+在原预算下为 \(8e^{-4}<1\)。这不是条件错误率或逐样本零错误。实际登记字的第二锚有非零偏差 \(1/160\)，返回坐标误差为 \(1/321\)；独立逐项重建全部符号与两个合法参数源各自的完整观测，并在核中证明其等于实际 sourceData。反序源沿用同一原符号字，但查询观测改变，选择器正确改变返回动作。
+
+严格限制也消费同一源和同一选择器：合法增益 \((1,9/100)\)、真实响应 \((-1,1)\) 的另一个完整字，使测得均值为 \((1,-1/100,-19/100,19/100)\)，条件数为 \(100\)、分数为 \((19,-19)\)，实际接受错误动作。该字质量为 \(2^{-128}>0\)，位于 Good 外；它保留联合风险结论，并否定将其解释为逐样本正确。这个形式源字不是重新抽取的经验批次，原 A--F 真实资料原样保留。一般相关／适应资料、秩缺陷、非线性与完整动态目的接口继续承担来源义务。
 
 \hypertarget{ux9644ux5f55-a.-ux7b26ux53f7ux4e0eux7c7bux578bux7d22ux5f15}{%
 \chapter{附录 A. 符号与类型索引}\label{ux9644ux5f55-a.-ux7b26ux53f7ux4e0eux7c7bux578bux7d22ux5f15}}
@@ -6365,7 +6417,7 @@ C1 的源及传感器对应 \nolinkurl{UC.MeasurablePredictiveSource}、\nolinku
 
 第 39.17---39.19 节对应 \nolinkurl{UC.BrownianIntegralContinuousVersion}、\nolinkurl{UC.RegisterFaultFeedbackResource}、\nolinkurl{UC.BrownianQuadraticVariation}、\nolinkurl{UC.BrownianIntegralPastLocalization} 与 \nolinkurl{UC.BrownianIntegralCompensator}；第 39.20---39.21 节对应 \nolinkurl{UC.RegisterPopulationHistorySource} 和 \nolinkurl{UC.RegisterPopulationTypePrice}。直接义务与精确类型分别见\href{../formalization/ueot-core/docs/compression/theory_completion/unified_closure/continuous_resource_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md}{连续积分／反馈资源}和\href{../formalization/ueot-core/docs/compression/theory_completion/unified_closure/compensator_population_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md}{真实二阶能量／人口来源}。补偿鞅不等于一般分割 QV／Itô；开放资源端口不是封闭源，子代普查不是整个末表。全理论仍 OPEN / NOT\_ESTABLISHED。
 
-第 39.22---39.25 节采用 UC 中已集成的完整标量分割 QV、交叉／加权积分、欧氏乘积／向量闭包积分、资金训练及共同群体／日志学习来源。实际公共消费者、精确前提及总义务差额见\href{../formalization/ueot-core/docs/compression/theory_completion/unified_closure/full_qv_vector_training_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md}{完整 QV／训练／发现来源}和\href{../formalization/ueot-core/docs/compression/theory_completion/unified_closure/vector_weighted_population_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md}{向量表示／加权表／共同人口源}。后继 Taylor／Itô、向量可预测密度与带噪 C5 校准尚未作为本书已公开结果；全理论仍 OPEN / NOT\_ESTABLISHED。
+第 39.22---39.25 节采用 UC 中已集成的完整标量分割 QV、交叉／加权积分、欧氏乘积／向量闭包积分、资金训练及共同群体／日志学习来源。实际公共消费者、精确前提及总义务差额见\href{../formalization/ueot-core/docs/compression/theory_completion/unified_closure/full_qv_vector_training_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md}{完整 QV／训练／发现来源}和\href{../formalization/ueot-core/docs/compression/theory_completion/unified_closure/vector_weighted_population_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md}{向量表示／加权表／共同人口源}。第 39.26---39.29 节采用已集成的 \nolinkurl{UC.BrownianScalarItoSource}、\nolinkurl{UC.BrownianBoundedC2DynkinSource}、UC.OUSemigroupSource、\nolinkurl{UC.BrownianVectorIntegralL2TimeContinuity}、\nolinkurl{UC.BrownianConstantGirsanovSource} 及 \nolinkurl{UC.DualDriveFiniteNoisyCalibration}。原源、实际返回值、独审和边界见\href{../formalization/ueot-core/docs/compression/theory_completion/unified_closure/ito_vector_calibration_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md}{同输入演算／向量完整域／校准来源}。仅采用主干 \#412；随机 START、尺度与有用接受率后继另列。全理论仍 OPEN / NOT\_ESTABLISHED。
 
 \backmatter
 \end{document}
