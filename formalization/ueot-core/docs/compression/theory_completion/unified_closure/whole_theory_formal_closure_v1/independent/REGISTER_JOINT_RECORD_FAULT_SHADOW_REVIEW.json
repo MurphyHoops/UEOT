@@ -1,0 +1,79 @@
+{
+  "schema": "UEOT/REGISTER_JOINT_RECORD_FAULT_SHADOW_INDEPENDENT_REVIEW/V1",
+  "reviewer": "independent /root/longterm_final_review; no authorship",
+  "reviewed_at": "2026-10-29T11:23:58.936551+00:00",
+  "verdict": "CLEAR_FOR_NO_FAULT_RECORD_EXPECTATION_AND_ACTUAL_P5_ROW_PROJECTION",
+  "blocking_findings": [],
+  "source_hashes": {
+    "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointRecord.lean": "54c85da08919b7639a34cb8f1d3f39e07936212da1eafaab709133e9972f8329",
+    "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultControlSource.lean": "5a787e967fddae5f8f00b9f7321b9e8917bf4ac857c42b0ba1bb215dccd1cda4"
+  },
+  "fresh_checks": [
+    {
+      "checker": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/whole-theory-audit-20261029/p11-independent/FAULT_CONTROL_SHADOW_CHECK.lean",
+      "checker_sha256": "2e0153ba52567d000a5f3d6eec95ce2a9f0b74d001075e0c752bf24740d7b772",
+      "log_sha256": "54ec4dfb198231fced1d7776614cd04de198d5bc7608ec8995ff50a70fd8b0ec",
+      "exit_code": 0,
+      "endpoint_count": 1,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "checker": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/whole-theory-audit-20261029/p11-independent/JOINT_RECORD_TYPES_CHECK.lean",
+      "checker_sha256": "9424f38c1f38963085e979ee6223890c20a95dd6868004443adc20f2fafdafc8",
+      "log_sha256": "26ef67d6af20d0a4086855b04c02924a8903387ae9d1cbbed1fa69ca04758eab",
+      "exit_code": 0,
+      "endpoint_count": 5,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "provided_frozen_record_evidence": {
+    "build_log": "/tmp/ueot-joint-record-build-final.log",
+    "build_log_sha256": "5afa7a913ef215a6f8a5a080708d136688de916e6e98f3ee5fe70bda8b0a27e2",
+    "build_readback": "RegisterJointRecord Built; Build completed successfully (8959 jobs).",
+    "audit_log_sha256": "72a5b8e10a71245f6b8708c551415b812aae6978b3ec258ac53b93a50029c58e",
+    "reported_endpoints_verified_standard_axioms": 8
+  },
+  "joint_record": {
+    "actual_execution": [
+      "recordStep updates the actual parent with the selected original allowed actuator, preserves parent history/program, stores action/label/expenditure and an actual optional child.",
+      "record_child_source binds every child to birthEvent of its actual post-action parent and proves offspring distinction/program copying. record_child_physical proves the successful birth interpreter performs no extra register write, so one cost charge is correct.",
+      "records recursively advances the SAME supplied pi memory by action and actual physical successor. Explicit initial physical=current-memory and program=mechanism.goal conditions persist through this recursion.",
+      "weight is the same pi.actionProb times the declared fresh label law and suffix likelihood. Nonnegativity/normalization are proved for every finite tape, with no acceptance or successful-birth filtering.",
+      "tapeLaw uses the existing trusted finite real-row PMF constructor; recordLaw is its actual interpreter pushforward.",
+      "recorded_payoff_integrable proves finite-experiment Bochner integrability before integral_recordLaw_eq_actualExpectation. No undefined-integral default is used.",
+      "actualExpectation_eq_truncatedValue follows by source recurrence induction, current_advance and existing model_expect_eq_update. actual_record_integral_eq_policy_value is the actual complete-record integral, not merely a physical marginal.",
+      "recordedObjective_eq_objective transports the existing C6 objective to the same actual record expectation; recorded_observation_identifies_purpose reuses the existing source-derived identification theorem."
+    ],
+    "quantifiers": "Every finite horizon k, arbitrary supplied causal memory in Type0, every initial memory time t, every founder journal, any PMF Bool label law, any NNReal tariff/price and valid discount. Labels are retained in records but not passed to pi.advance.",
+    "witness": "compiled_two_stage_record shows actual write-then-idle actions, both successful birth transactions, exact tape weight noise(label0)*noise(label1), and discounted payoff(1-price*c)+discount. It does not require a new seed or claim every chosen label pair has positive mass.",
+    "scope_limits": [
+      "Original physical action source without environmental P5 faults.",
+      "Policies do not receive birth labels; no claim about an enlarged label-reading policy class is inferred.",
+      "Birth count is successful time-indexed transactions, not a globally unique-ID population count. The ongoing parent retains its founder history; repeated labels can share lineage addresses.",
+      "Maintenance of resource budgets and noisy P5 control/reward transport require their actual coupled source interfaces; this theorem does not silently establish them."
+    ]
+  },
+  "fault_control_projection": {
+    "source_binding": [
+      "physicalSource is the original action row mixed with the actual environment-damage successor, using the same recurrentFaultMix and hazard epsilon<=1.",
+      "carrier_iff_program supplies stored program=goal, repair_shadow projects the same canonicalized safeRepairKernel physical action, and actual_fault_envelope is source-derived.",
+      "actual_P5_physical_shadow proves a pointwise row equality on the actual repairable carrier at the SAME compiled program action, with no external identification field."
+    ],
+    "reuse_disposition": "The private map_mix is an appropriate thin bridge for this custom PMF mixture. It reuses recurrentFaultMix_apply, PMF.map_apply and finite sum linearity, handles noninjective readouts, and does not rebuild the mixture or a new general path framework. No existing same-contract custom-mixture PMF-map lemma was located in UEOT.",
+    "noise_boundaries": [
+      "epsilon=0 recovers the original action row; epsilon=1 retains only the environment-damage row. The row projection itself remains valid at both boundaries.",
+      "This is the compiled-program instance of the controlled physical family, not a proof that all counterfactual actuator policies are the same autonomous P5 program.",
+      "No reward/cost/record objective or optimal-value equality is concluded from a physical row projection. Those migrations remain required and OPEN."
+    ]
+  },
+  "whole_goal_status": "OPEN_NOT_ESTABLISHED. Two source arrows are validated; no local packet is declared whole-theory closure.",
+  "coordination": "Read-only shared-source audit; only exclusive review JSON and external type-check snapshots/logs were written."
+}
