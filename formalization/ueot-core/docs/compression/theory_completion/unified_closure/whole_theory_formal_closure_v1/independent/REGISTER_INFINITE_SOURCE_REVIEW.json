@@ -1,0 +1,137 @@
+{
+  "verdict": "CLEAR_FOR_DECLARED_ACTUAL_INFINITE_REGISTER_RECORD_VALUE_RESOURCE_CONTRACT",
+  "whole_theory_goal": "OPEN_NOT_ESTABLISHED",
+  "reviewer": "independent /root/register_typed_review; no authorship of this source",
+  "reviewed_main_anchor": "3763d2cb9fc1fcf06b528c1981255639174c8609",
+  "source": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultInfiniteRecord.lean",
+    "sha256": "89749be05f2e4229e78ede7c1e4032c0c2fc9245a9aa435c88594f4441087024"
+  },
+  "reviewed_dependencies": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultJointRecord.lean",
+      "sha256": "b7be526a4350c7b84db6e355495486fee9f55062288b7c0ce2fef251e76ff7b1"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultControlModel.lean",
+      "sha256": "c20cceafe6208878d3e7824c0ba2b57f8b7ca90690f6cb7e6e02fe3ee471d1ee"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterResourceSource.lean",
+      "sha256": "ffa4d02b21e46b940d8709802f4873661301d7eac35375491ba1837713b14e4c"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointRecord.lean",
+      "sha256": "54c85da08919b7639a34cb8f1d3f39e07936212da1eafaab709133e9972f8329"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/Objecthood/ExactPathLawDiscountedHittingTransform.lean",
+      "sha256": "2d8591c57f563800f4cb15defa3c6d95c0e97b3537f1c67660ab4dcae3c20e7f"
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/DynamicsKernel.lean",
+      "sha256": "97ed375855ff5d76e657f3d2c135ef4b36fa154c7377106fc24d1a97126599bc"
+    }
+  ],
+  "blocking_findings": [],
+  "literal_source_and_memory_audit": [
+    "Config stores the SAME original arbitrary Type0 CausalPolicy memory and continuing parent. advance calls the original modeRecordStep and pi.advance(old memory,requested action,actual next physical state), preserving the original action/current/advance interface.",
+    "eventWeight is exactly original pi.actionProb times the existing modeLaw mass times the existing label PMF mass. Its normalization is proved from original actionProb_sum_one and actual PMF sums; no action selector or success-conditioned event distribution is substituted.",
+    "The actual homogeneous state is the COUNTABLE full growing literal word, not a finite replacement for policy memory. wordKernel replays the fixed initial Config through that word to recover exact original memory. Countable word-state measurability therefore imposes no additional measurable-space or finite-memory assumption on pi.Memory.",
+    "Mode and label determine the literal physical/child transaction but are never supplied as fresh arguments to pi.actionProb or pi.advance. The original policy may infer what its original physical/action memory permits; no new direct mode/label observation or true-hazard oracle is added.",
+    "wordPathLaw is the existing actual Ionescu-Tulcea homTrajMeasure from empty word through wordKernel. It is constructed before any desired infinite-value equality. It does not choose an arbitrary path law with the desired finite expectations."
+  ],
+  "full_prefix_and_failure_audit": [
+    "tapeLaw_snoc and wordLaw_succ prove that appending one literal event has exactly the previous finite-source likelihood and the same replayed memory. actual_word_prefix_law then derives the entire length-k WORD distribution from actual trajectory recursion.",
+    "Although actual_word_prefix_law is a time-k marginal of the growing-word state, that state contains the WHOLE event prefix. It is not merely a final physical-state marginal. wordPathLaw_ae_coherent proves one probability-one set with the empty start and every append, so these stored words are mutually compatible prefixes of one actual stream.",
+    "eventAt fallback is arbitrary only outside coherent supported words. coherent_trace_eq_stream proves, on the probability-one coherent set, that the trace of word k equals the first k records of the same infinite stream.",
+    "actual_record_prefix_law and actual_stream_prefix_law derive equality to the existing finite recordLaw, including every fault, requested-but-not-executed action, failed birth, label, parent and literal payment field. No failed stage, zero-weight tape or unsuccessful birth is conditioned away.",
+    "recordPathLaw is the measurable literal infinite transaction-stream readout of wordPathLaw. actual_recordPath_prefix_law gives every Fin-k record cylinder exactly the existing length-k recordLaw after its total List-to-Fin representation. listPrefix default is not used on these actual length-k records; the proof reduces the actual prefix to List.ofFn and uses j.isLt.",
+    "The k=0 record prefix is empty and no fictitious first transaction is inserted."
+  ],
+  "infinite_evaluation_and_resource_audit": [
+    "step_abs_bound proves each actual mode transaction payoff has absolute value at most 1+price*writeCost, for every literal mode/action/parent including failed births and noncoherent fallback words.",
+    "For 0<discount<1, geometric domination yields actual_payoff_summable and infinite_payoff_integrable. Thus the infinitePayoff integral is a defined integrable discounted source sum, not a default Bochner integral value or supplied evaluation certificate.",
+    "actual_path_prefix_integral first maps the real interpreter prefix to the old finite recordLaw, then reuses actual_record_integral_eq_policy_value with explicit initial physical/current-memory matching and inherited program=goal. The SAME supplied policy and same hazard model are used.",
+    "actual_infinite_integral_eq_policy_value proves sum/integral interchange with dominated convergence and identifies finite partial integrals with original truncatedValue. It then uses original truncatedValue_tendsto_infiniteValue and uniqueness of limits; no circular infinite-law identity is assumed.",
+    "actual_recordPath_payoff_integrable and actual_recordPath_integral_eq_policy_value transfer integrability/evaluation to the actual infinite complete-record law through measurable readout. streamPayoff is not claimed summable for arbitrary unconstrained record streams; its actual source image supplies the bound.",
+    "compiled_actual_infinite_integral_optimal consumes the existing original all-causal selector theorem for exactly substrate.execute goal. The actual infinite executions attain optimum under price*writeCost<=1; no choice-based replacement policy is used. Positive hazard1/4 with cost1 and price=discount1/2 gives actual infinite expectation45/32 and33/32 from distinct initial physical states.",
+    "actual_infinite_resource_viable reads actual recordAt expenditures for EVERY k of an infinite stream, proves they equal that mode/action fee schedule, and directly reuses original action_schedule_resource_viable. There is no horizon cutoff or zero padding. Nonnegative initial stock and supply>=writeCost remain explicit sufficient external design inputs."
+  ],
+  "quantifiers_and_conditions": {
+    "source_family": "Any finite Bool register bank with designated i:Fin n; original Mechanism(goal,NNReal writeCost); any fixed Bool label PMF; stable hazard epsilon in[0,1] with the original independent fresh mode/label law.",
+    "policy_and_initial": "Exactly CausalPolicy.{0,0,0}(State n)(fun _=>Action), arbitrary Type0 time-indexed memory and initial t,h,organism o. Source/path laws are defined even for mismatched o/current memory; the value theorem explicitly requires o.physical=pi.current h and o.program=m.goal.",
+    "discount_and_price": "Price is nonnegative; actual discounted value/integrability requires0<d<1. The optimum adds sufficient price*writeCost<=1, not a necessity classification. Hazard one is allowed by the source/value law and gives zero controlled payoffs; C6 parameter identification has its own epsilon<1 restriction elsewhere.",
+    "measurability": "Event and countable literal word states use the discrete sigma algebra. Record streams use the explicitly declared discrete record coordinate sigma algebra and countable product. Arbitrary policy memory is replayed from words and never endowed with an unstated measurable structure.",
+    "independent_inputs": "Reliable allowed actuator/interpreter, retained protected/copyable program, stable law shared with P5/control, registered source modes/labels, evaluation price/discount, and external replenishment remain model/design contracts."
+  },
+  "reuse_audit": [
+    {
+      "candidate": "RegisterFaultJointRecord.modeRecordStep, records, tapeLaw and recordLaw",
+      "decision": "ACTUALLY_REUSED",
+      "reason": "The infinite interpreter is literally built from the existing step and finite tape likelihood, and exact prefix laws are proved by snoc/word recursion."
+    },
+    {
+      "candidate": "DynamicsKernel.homTrajMeasure and original trajectory successor interfaces",
+      "decision": "ACTUALLY_REUSED",
+      "reason": "Construct actual infinite probability law and derive word marginals/coherent transitions; no new general infinite-path framework."
+    },
+    {
+      "candidate": "RegisterFaultJointRecord.compiled_record_integral_tendsto_optimal",
+      "decision": "INSUFFICIENT_TO_REPLACE_INFINITE_LAW",
+      "reason": "Finite-record expectation convergence alone does not construct a joint infinite record law. This source adds that real law, exact coherent prefixes, summability and integration interchange."
+    },
+    {
+      "candidate": "FiniteDiscountedControl.CausalPolicy.truncatedValue_tendsto_infiniteValue and existing compiled selector optimality",
+      "decision": "ACTUALLY_REUSED",
+      "reason": "Connect actual integral partial sums and the SAME literal compiled program to original control endpoints."
+    },
+    {
+      "candidate": "RegisterResourceSource.action_schedule_resource_viable",
+      "decision": "ACTUALLY_REUSED",
+      "reason": "Applies to the actual infinite fee schedule after proved expenditure identity, without reusing finite-horizon zero padding."
+    }
+  ],
+  "remaining_obligations": [
+    "No no-supply finite-stock ruin theorem, internally generated supply/thermodynamic closure, permanent target health or infinite population-survival claim is established.",
+    "Births remain transactions along the continuing parent, with prior Bool/history address limitations; this does not create globally unique concurrent child IDs or faithful whole-population genealogy.",
+    "No finite-data unknown-hazard estimator, learned selector or empirical support follows from this exact-law source theorem.",
+    "Whole-theory C1/P11/statistics/formation/scale/global assembly and two-book obligations remain in scope. This package resolves the formerly missing actual infinite register-record law/value bridge, not the whole mission."
+  ],
+  "verification": {
+    "independent_direct_current_source": {
+      "command": "lake env lean UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultInfiniteRecord.lean",
+      "exit_code": 0,
+      "warnings": 0,
+      "log": {
+        "path": "/tmp/ueot-register-infinite-independent-direct.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "compiled_types_and_axioms": {
+      "command": "lake env lean /tmp/ueot-register-infinite-independent-types.lean",
+      "exit_code": 0,
+      "source": {
+        "path": "/tmp/ueot-register-infinite-independent-types.lean",
+        "sha256": "a3be0ce2fce9357f2f19b7aeaa75ee43e20726a7313a24d58e5306a41ddd89c6"
+      },
+      "log": {
+        "path": "/tmp/ueot-register-infinite-independent-types.log",
+        "sha256": "ffca3c8fb7933b84098f89f09657aaf369fac07af7e7ad2772175655e15b75d1"
+      },
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "author_receipt": {
+      "path": "/tmp/ueot-register-infinite-record-receipt.json",
+      "sha256": "e8d32d79f359c8c5afdf083e7081a12ee5d7dcf541ed8f7ac0605189c8d5b388",
+      "all_check_source_dependency_log_hashes_matched": true
+    },
+    "frozen_source_hash_rechecked": true,
+    "historical_full_build_or_sampling_rerun": false,
+    "mutation_scope": "Only this exclusive independent JSON and external focused checker/logs; no source, shared exports, Git, GI, books, QM/physics, data or global configuration edits."
+  }
+}

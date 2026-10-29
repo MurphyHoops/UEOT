@@ -204,6 +204,8 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertifica
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionCertificateWitness
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveJointPath
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveLatentPath
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultInfiniteRecord
 /-!
 # UEOT Theory Completion public root
 
