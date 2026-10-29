@@ -17,7 +17,7 @@ import subprocess
 import sys
 
 from emit_lean_witness import emit
-from exact_certificates import registered_cases, run
+from exact_certificates import Source, registered_cases, run
 
 CORE = Path(__file__).resolve().parents[5]
 SOURCE_MODULE = "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalConditionedSource"
@@ -25,6 +25,13 @@ SOURCE_MODULE = "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RationalCon
 
 def digest(path):
     return sha256(path.read_bytes()).hexdigest()
+
+
+def snapshot(path, text):
+    """Hash the intended bytes, rather than trusting a subsequent file read."""
+    data = text.encode()
+    path.write_bytes(data)
+    return sha256(data).hexdigest()
 
 
 def source_identity():
@@ -61,11 +68,16 @@ def certified_status(candidate):
 def certify(cases, output):
     output = output.resolve()
     output.mkdir(parents=True, exist_ok=False)
-    source = output / "source.json"
-    source.write_text(json.dumps(cases, sort_keys=True, indent=2, default=str) + "\n")
+    # Detach caller-owned mutable data, then normalize valid rational sources.
+    cases = json.loads(json.dumps(cases, default=str))
     candidates = {name: run(raw) for name, raw in cases.items()}
+    cases = {name: Source.read(raw).__dict__ if candidates[name]["status"] != "INVALID_INPUT" else raw
+             for name, raw in cases.items()}
+    source = output / "source.json"
+    source_sha = snapshot(source, json.dumps(cases, sort_keys=True, indent=2, default=str) + "\n")
     candidate_file = output / "candidates.json"
-    candidate_file.write_text(json.dumps(candidates, indent=2, default=str) + "\n")
+    candidate_sha = snapshot(candidate_file, json.dumps(candidates, sort_keys=True, indent=2,
+                                                       default=str) + "\n")
     valid = {name: raw for name, raw in cases.items()
              if candidates[name]["status"] != "INVALID_INPUT"}
     driver_paths = [Path(__file__), Path(__file__).with_name("emit_lean_witness.py"),
@@ -73,33 +85,53 @@ def certify(cases, output):
     drivers = {str(p): digest(p) for p in driver_paths}
     evidence = {"schema": "UEOT/EXACT_ACTION_CERTIFICATION/V1", "driver_sources": drivers,
                 "source": str(source),
-                "source_sha256": digest(source), "candidates": str(candidate_file),
-                "candidates_sha256": digest(candidate_file), "cases": {}, "verification": []}
+                "source_sha256": source_sha, "candidates": str(candidate_file),
+                "candidates_sha256": candidate_sha, "cases": {}, "verification": []}
     verified = False
     if valid:
         proof = output / "Certificate.lean"
-        proof.write_text(emit(valid, candidates=candidates))
-        evidence.update(lean_source=str(proof), lean_source_sha256=digest(proof))
+        proof_sha = snapshot(proof, emit(valid, candidates=candidates))
+        evidence.update(lean_source=str(proof), lean_source_sha256=proof_sha)
         lake = shutil.which("lake")
         if lake is None:
             evidence["failure"] = "lake executable unavailable"
         else:
             before = source_identity()
-            build = execute([lake, "build", SOURCE_MODULE], output / "build.log")
-            evidence["verification"].append(build)
-            if build["exit_code"] == 0:
-                source_manifest = output / "core-source-identity.json"
-                source_manifest.write_text(json.dumps(before, sort_keys=True, indent=2) + "\n")
-                evidence.update(core_source_identity=str(source_manifest),
-                                core_source_identity_sha256=digest(source_manifest))
-                checked = execute([lake, "env", "lean", str(proof)], output / "lean.log")
-                evidence["verification"].append(checked)
-                stable = before == source_identity() and drivers == {str(p): digest(p) for p in driver_paths}
+            source_manifest = output / "core-source-identity.json"
+            manifest_sha = snapshot(source_manifest, json.dumps(before, sort_keys=True, indent=2) + "\n")
+            evidence.update(core_source_identity=str(source_manifest), core_source_identity_sha256=manifest_sha)
+            bound = {str(source): source_sha, str(candidate_file): candidate_sha,
+                     str(proof): proof_sha, str(source_manifest): manifest_sha}
+            evidence.update(bound_artifacts=bound, binding_checks=[])
+
+            def matches(stage):
+                # Exclusive new output directory, with no other intended writer.
+                # Endpoint checks do not claim to defeat change-and-restore races.
+                check = {"stage": stage, "artifacts_match": False, "sources_match": False}
+                try:
+                    check["artifacts_match"] = all(digest(Path(p)) == sha for p, sha in bound.items())
+                    check["sources_match"] = before == source_identity() and drivers == {
+                        str(p): digest(p) for p in driver_paths}
+                except OSError as error:
+                    check["error"] = str(error)
+                evidence["binding_checks"].append(check)
+                stable = all(c["sources_match"] for c in evidence["binding_checks"])
                 evidence["sources_unchanged_during_build_and_proof"] = stable
                 evidence["core_sources_unchanged_during_proof"] = stable
-                verified = checked["exit_code"] == 0 and stable
-                if not stable:
-                    evidence["failure"] = "Source or driver identity changed during proof"
+                evidence["artifacts_unchanged_during_build_and_proof"] = all(
+                    c["artifacts_match"] for c in evidence["binding_checks"])
+                if not check["artifacts_match"] or not check["sources_match"]:
+                    evidence["failure"] = "Bound input, candidate, proof, identity manifest, source or driver changed or missing"
+                    return False
+                return True
+
+            if matches("before_build"):
+                build = execute([lake, "build", SOURCE_MODULE], output / "build.log")
+                evidence["verification"].append(build)
+                if matches("after_build") and build["exit_code"] == 0 and matches("before_proof"):
+                    checked = execute([lake, "env", "lean", str(proof)], output / "lean.log")
+                    evidence["verification"].append(checked)
+                    verified = matches("after_proof") and checked["exit_code"] == 0
             if not verified and "failure" not in evidence:
                 evidence["failure"] = "Lean build or proof rejected the generated obligations"
     for name, candidate in candidates.items():
