@@ -243,6 +243,9 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsa
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepGirsanovSource
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterActuatorPopulationScale
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveFiniteCalibrationCoverage
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteStepShiftedSource
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralContinuousVersion
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterPopulationFundingObstruction
 /-!
 # UEOT Theory Completion public root
 
