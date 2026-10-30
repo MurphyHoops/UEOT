@@ -1,0 +1,11 @@
+# Current whole-theory difference
+
+Actual base main414 has original random-past single-block Girsanov, retained-actuator population/identity/Price transport and same-selector finite calibration coverage. Books on actual main413 publish through scientific cut412. This source cut removes finite-table normalization/full shifted path/original filtration/terminal KL premises; continuous-version premises for the same fulljoint Euclidean vector input; and complete ongoing population ledger/funding assertions from the original P11/P6 consumers.
+
+P11 general bounded predictable measure change, original-filtration Brownian source/KL limit, controlled/state SDE, vector QV/Itô and closed-loop/transversality remain required. Finite-table exact natural-filtration equality is not presumed to survive general path-dependent limits. Scalar Itô under its stated regularity remains valid; no new blanket SDE closure is claimed.
+
+Actual shared-pool supply is an explicit external port and does not prove organizational autonomy/endogenous energy or a population optimizer. Its all-registered-plan iff requires actual initial occupancy and is not a per-plan necessity. Price remains actual offspring cohort, not arbitrary terminal-store or ratio-expectation equality. C4 remaining semantic predicates, splitting/merging and other required compatible scale/formation links remain open.
+
+C5 original finite IID calibration/coverage remain; separately frozen data-only adaptive read protocol and persistent-correlation boundary need nonauthor adoption. C2/C3 actual source-derived discovery/carrier/cutset algorithms and explicit complexity/physical-frame consumers remain active. No old data or threshold changes and no new empirical sampling. All original106/P0–P12/C1–C7/UMC/committed post-Core duties and compatible source assembly remain; do not manufacture universal World/all-pairs links.
+
+Integrate this FIXED11 cut normally, validate actual resulting main, then publish both books with414 and this cut. Root serializes public roots/Git/GI/books; independent authors continue bounded-control sources and source carrier algorithms outside this frozen cut. Goal ACTIVE/OPEN, no package/count/UNKNOWN or missing API proves total closure.
