@@ -1,0 +1,33 @@
+# Actual state Itô, original-Q martingale and checked restoration
+
+Original commitment: finite-state stochastic calculus, controlled conditional processes and P9 recovery need actual same-source producers.
+Existing exact results and hypotheses: adopted fixedfulljoint-input QV/actual START/stateweighted source; SAME ownQ bounded deployment and real Q integral explicitclosure; actual submitted/returned AST complete countable records and target preservation. Derivative/regularity/model permissions remain explicit.
+Named premises reduced: external actual state Taylor remainder/Itô; assumed Q cutoff-membership/projection/process martingale; assumed submitted-program dynamics/recovery/P9 repairability certificate.
+General families and boundaries: arbitrary finite m/d original zero-initial integral state; C2 Taylor-only no global bound, actual Itô explicit global native gradient/Hessian bounds; SAME fixedQ_A and explicit Q elementary spanclosure at readU; finite one-port AST with executable actual restoration and same synthesised q. No extra actions/observations/initial/resource/cost rights.
+Actual consumers: SAME derivative-generated original itoInput and Hessian time energy; native originalFs Q martingale/conditional process; ORIGINAL program-specific recoverability/eventually-always nofault law and P9 returned-q repairability.
+
+## Actual finite-state Taylor and Itô
+
+Original Frechet Hessian is derived from fderiv(fderiv phi), and genuine line derivatives feed the existing PURE scalar C2 Lagrange bound. Actual state path lies on its own compact ball, where Hessian uniform continuity supplies the real remainder modulus; actual computed mesh and max cell ratio tend to0. Same state-square sums converge to sum original dt energies, and native generic measure domination proves actual remainder sum tends to0 in original product-source measure. Taylor-only assumes C2, no C3/L4/global derivative bound.
+
+For actual Itô, global operator-norm bounds on Dphi and D²phi separately ensure native original-L2 stochastic integral and bounded Hessian weights. SAME original family f_j defines zero-initial state X_j=M_fj. Actual derivative weights on SAME state produce ONE concrete itoInput with actual native representative. Original first START sums converge to its SAME integral; actual Hessian-weighted cross sums converge to original dt sum D²phi(X)[f_j,f_k]; actual Taylor remainder vanishes. Literal finite telescope and common subsequence uniqueness give phi(X_T)=phi(0)+M_itoInput(T)+.5*actualHessianEnergy. No supplied Itô/QV/remainder or new clock premise enters terminal theorem.
+
+Non-author fresh unit-coordinate inputs generate actual full-rank triangular state X=(DeltaB0,DeltaB0+2DeltaB1), actual crossTimeEnergy=T, sin(x0+x1) with mixed Hessian01=-1, T4/repeatedclock/T0. Unbounded-gradient quadratic is checked ONLY for Taylor. This cut does not add initial displacement/drift, unbounded-C2 localization or general SDE; actual drift/physicalOU successors remain excluded.
+
+## SAME ownQ and originalFs: genuine conditional integral process
+
+Actual W increment conditional law on ENTIRE originalFs derives arbitrary-read oneStep condition expectation H*DeltaW(a,clamp(u)); beforeSTART uses tower, inside/after uses actual decomposition and future independence. Actual finite literal W paths are continuous for each actual finite-path sample, strongly adapted and genuine originalFs Q martingales; horizon is SAME simpleIntegral and zero is0.
+
+Native dtU x SAMEQ indicator CLM, literal finite decomposition and closure continuity derive actual truncation preserves the explicit integralDomain. No cutoff-membership certificate is input. Finite actual path returns, native Q condExpL2 and dense closed linear-map identity prove projection=actual cutoff. Canonical closed-domain process is thus strongly adapted true native originalFs Martingale, with actual truncated-integral binding, zero/horizon and dtQ second energy. These are every fixed-time AE statements; no uncountable AE intersection or general closed-input sample continuity/fullQ predictable density assertion.
+
+Non-author fixed densityA3 controlcos(B1), wholeFs2 coefficient 2+sin(B2)+.25cos(B1), integratorU6/repeat[0,2,2,5,6] consumes true conditional/projection/cutoff/martingale at before/inside/after reads. Beyond deploymentA, increments4->5 still noise variance1 and weighted output second moment>=9/16. Unit-input Qenergy6 and U0 included. No switch to Q_U.
+
+## Actual submitted program recovers, beyond mere preservation
+
+restorationCheck computes whether actual update(i,x,interpret p x) at retainedport equals target for EVERY physical state. A passed check yields full physical state-kernel identity with original reliable target write while keeping passive ports; original RepairProgramDynamicsImplementsPolicy, program-specific recoverable basin and nofault eventual-always consumer are derived for THIS p. The same synthesize-returned q passes the physical restoration check iff p does. Original P9 PreservesRepairability is produced on this computably admitted family, not input as hpres. It is a sufficient one-step restoration criterion, not a completeness claim for all eventual/history-dependent recovery.
+
+Fault-inclusive same-parent legitimacy after step is exactly last repairMode; recurring faults are not erased. Original idle remains Valid/semantically implementable yet never recovers damaged parent even with endless repair opportunities. Alwayswrite and compiled conditional repair can have same physical recovery but different actual fees; no purpose/resource optimality follows. No AST installation/codec/new initial preparation is added.
+
+Non-author new n4/port1/targetfalse hidden3/0 nested paid program: staticreject, exact semantic synthesis returns actual allowed two-branch false AST, computed restorationtrue, original recovery/P9/actual countablelaw and arbitrary correlated stream consumers. Same intact false seed at cost3: paid program fee3 versus compiled idlefee0. All6 P9/homeostasis/generalorganization/splitmerge and global compatible assembly remain responsibilities. Homeostasis quantitative/source successors excluded.
+
+All exact source/author/nonauthor/public-consumer evidence in SOURCE_VALIDATION.json. Actual main420 original control Run/weighted-state/countableAST remains adopted; books419 currently publish417/418. Required next books batch adopts420 and this cut only after actual main verification; future drift/OU/homeostasis sources excluded. Whole theory ACTIVE/OPEN/NOT_ESTABLISHED, empiricalsupport separate; old registered data/thresholds/failures and Core3 disabled workflows unchanged. No QM/physics/GIimplementation/globalconfiguration changes.

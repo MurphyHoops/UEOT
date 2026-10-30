@@ -256,6 +256,9 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianControlledHJB
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianControlledItoIdentitySource
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorWeightedCrossQV
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterSemanticInstructionInfinite
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteStateItoSource
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOwnQIntegralMartingale
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterInstructionRecoveryScale
 /-!
 # UEOT Theory Completion public root
 
