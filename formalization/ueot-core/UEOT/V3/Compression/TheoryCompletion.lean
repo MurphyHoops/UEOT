@@ -259,6 +259,11 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterSemanticInstr
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteStateItoSource
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOwnQIntegralMartingale
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterInstructionRecoveryScale
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteStateDriftItoSource
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PredictableDriftPointSamplingCounterexample
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OUPhysicalRecoverySource
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterInstructionGOASource
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOwnQUnboundedIntervalSource
 /-!
 # UEOT Theory Completion public root
 
