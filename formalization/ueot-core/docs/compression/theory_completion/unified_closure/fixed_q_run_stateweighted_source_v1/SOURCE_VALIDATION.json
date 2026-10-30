@@ -169,10 +169,11 @@
   "actual_public_root_build": {
     "status": "PASS",
     "command": "lake build UEOT",
+    "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core",
     "observed_exit_code": 0,
     "log": {
-      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/fixed-q-run-stateweighted-source-evidence-20261030/ueot-fixed-q24-public-build-final.log",
-      "sha256": "9ef42e6c6bd9e6a9ac685a26a5369ce3704705c4988ff450a8c7cfa640f072f1"
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/fixed-q-run-stateweighted-source-evidence-20261030/ueot-fixed-q24-public-build-final-root.log",
+      "sha256": "4431dd2795ff400f2073a21570cc26a7428fbf686c70ad91f097f8017b082f4f"
     }
   },
   "actual_public_consumers": [
@@ -292,5 +293,14 @@
     "other C4 semantic/organization future sources"
   ],
   "public_main_adoption": "PENDING",
-  "whole_theory": "OPEN_NOT_ESTABLISHED"
+  "whole_theory": "OPEN_NOT_ESTABLISHED",
+  "integration_correction": {
+    "initial_gate_log": {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/fixed-q-run-stateweighted-source-evidence-20261030/GOVERNANCE_INITIAL_EXTRA_PUBLIC_ROOT_BLANKLINE.log",
+      "sha256": "20ca3e85ab6fcc3acb96e0526635bc888fe5ef429c360f9d6b5ff190862b40b3"
+    },
+    "cause": "An extra blank line alongside four correct imports violated existing TC additive-import-only root gate. Removed solely that extra blank. Source/proof/allowed actions/permissions unchanged; exact native imports remain same. No policy/threshold weakened.",
+    "corrected_root": "Deterministic ordered-line comparison proves original root lines intact and exactly four additive import lines; actual public build after correction exit0.",
+    "native_consumer_reuse": "Exact same 24 proof-source bytes and same imported modules/native consumers; previous actual public consumer exit0 retained. Public type audits repeated after final root."
+  }
 }
