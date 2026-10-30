@@ -1,0 +1,61 @@
+# Actual new-measure integrals, fixed-input QV and returned programs
+
+Original commitment: original P11/P9 consumers must receive the actual source integral, fixed input and returned program, with their stated permissions.
+Existing exact results and assumptions: adopted bounded canonical-source fullQ Brownian/original-past law; original joint-predictable Euclidean input/continuous scalar-output integral; actual actuator projection/interpreter and abstract repair-validity/P9. Quantitative regularity and original allowed actions remain explicit.
+Named premises reduced: external OWN-Q integral/substitution/terminal martingale and cost; external fixed-original-input partition QV; externally assumed execution/property factor for the given literal Instruction.
+General models and boundaries: native bounded P-predictable scalar control with SAME ownQ/W; all finite noise dimensions and native full joint-predictable Euclidean L2 inputs with deterministic caller clocks; finite Bool register banks/current-state Instruction programs under original actuator projection. Positive nonlinear/Gaussian history inputs, zero clocks/dimensions, literal faults/failed births, static false negatives and genuine hidden-action obstructions retained.
+Actual consumers: ORIGINAL TerminalGirsanovData/p_kl_05 bound to constructed SAME-control Q integral; actual SAME continuous path-square sums→SAME dt energy; original RepairProgramValid and transport_object_property, actual returned AST and complete finite primitive-word laws. Whole theory OPEN, not a count-based completion claim.
+
+## Constructed own-Q integral and original terminal consumer
+
+The bounded native f from the adopted cut keeps its OWN unrenormalized density D=exp(nativeI_f-actualA_f/2), actual Q and actual W=B-dtDrift. Genuine Q increment Gaussian moments and ENTIRE original Fs independence derive bounded original-START coefficient one-step conditional square/isometry, then literal finite sums of actual W increments and their original-clock conditional-prefix martingale. The integrator horizon U may exceed density horizon T; W continues to carry noise after T although drift stops.
+
+Native input is original timeLawU times SAME Q; native output is L2(Q). Pure commonStart/End/refinement and zero collapsed-cell permissions are reused, while actual W telescoping is proved separately. Actual input and output distances are equal, so native Finsupp/span kernel descent and CLM.extend construct an isometric integral on the explicit elementary-input span closure. This domain is not called all Q-predictable L2.
+
+SAME originally bounded f is derived to belong to that Q-domain. Product Q-time law is absolutely continuous with respect to original P-time law; actual SAME-K source tables converge in P, a common subsequence AE transports through Q-AC, and the global2K bound supplies genuine finite-measure DCT to Q-L2. Actual progressive control matches the resulting Q-input class. Thus boundedIntegralQ is constructed by the actual Q isometry/closure and SAME table limits, not defined to be a desired P integral minus energy.
+
+For each literal table, actual W=B-drift gives Q integral = ORIGINAL P output minus actual cross-time drift. Original native cross/productClass/Holder/timeMarginal continuity yields cross(table_n,f)→ACTUAL A_f. Actual two source output limits, Q absolute continuity and in-measure uniqueness then prove
+
+    constructed I_Q(f;W) = native I_P(f;B) - actual A_f, Q-a.e.
+
+Coefficient of actual energy is ONE. The actual own density also equals exp(constructed I_Q(f)+A_f/2) Q-AE. Original TerminalData's returned controlled integral equals this constructed Q integral. No alternate f, policy, approximate path or source is chosen to replace the supplied one.
+
+Separately, actual D_n uniform-L2 bounds and actual energy boundedness strengthen J_n=I_n-A_n convergence to strong P-L2. Native simple-function density converts actual density L1 plus uniformL2 to weakL2 pairings. Finite actual D_n/J_n zero pairing, strong J_n convergence and Holder derive OWN-Q integrability/mean0 of actual nativeI_f-A_f. This supplies the original Fs0/FsT terminal record: Fs0 is not replaced by bottom, its whole past is constant on one Q-full event by original B0 and Q-AC. Actual continuous terminal version is FsT measurable.
+
+ORIGINAL TerminalGirsanovData baseline is LITERALLY nativeI_f and density LITERALLY ownD. Actual control/progressivity/energy/substitution/terminal martingale are produced; original p_kl_05 gives KL(Q||P)=.5 E_Q actualA_f and every measurable readout bound, with upper K²T/2. It is not E_P cost. Root's fresh nonsmooth START1 sign(.5/1.5) on(1,2] has actual KL in[1/8,9/8]; zero T/K has exactKL0. A separate signed nonsmooth two-history control consumes constructedQI/ownD/actualA and literal original record identities. DensityT0 with unit integratorU3 has energy3; it is distinct from that zero-horizon control's own Q input/integral0.
+
+These are genuine same-control Q-domain/integral/terminal consumers, not a complete all-time Q stochastic-integral framework, all-Q predictable density or original P-CTL Run. Independently developing target g!=f, all-read horizons, controlled C2/Dynkin/occupation/discount sources are excluded from this fixed cut.
+
+## SAME fixed full joint input: actual path quadratic variation
+
+Noise has arbitrary finite dimension d. Its input f is an actual Euclidean R^d-valued full joint-predictable L2 element, while M_f is the SAME scalar stochastic integral against that d-dimensional noise. Actual timeEnergy is the dt integral of its Euclidean squared norm. Full joint Fs permits other-coordinate past coefficients; no own-coordinate scalar filtration is substituted.
+
+Native conditional projection and isometry derive every finite deterministic mono0/T grid total increment energy and grid-uniform L1 stability. Actual timeEnergy uses same native representative/timeLaw×productLaw; Fubini binds the original continuous process second moment. ONE integrable-section event gives ALL-time continuity/monotonicity, avoiding uncountable AE intersections. Native Holder/timeMarginal contractions give true energyL1 stability at natural L2 scale, without L4.
+
+Original Gaussian fourth moments and whole-joint-past independence derive the actual centered products DeltaB_i DeltaB_j-delta_ij DeltaT, with diagonal variance2 DeltaT²/offdiagonal DeltaT². Weights H_iH_j within a row are not presumed independent. Cross-row martingale orthogonality and finite Cauchy yield the honest2 d^4 K^4 mesh times horizon mean-square bound. Literal Euclidean dt energy and actual continuous path increments are bound to SAME supplied record; this first yields a changing-table error theorem only.
+
+To reach FIXED f, pure caller-clock cell/left-limit facts are reused through a necessary arbitrary-value helper; it transports no stochastic source. Original finite span has a genuine Ioc-left/current-joint-past trace. Original essential bounds give one source-full event foralltime/coordinate; clipping yields a globally bounded current-past analysis representative with the EXACT original native input coeq. It is not a strengthened raw forallomega bound or a future-Good runtime branch.
+
+Caller clocks actually sample that original trace at row START. Whole-joint Fs permissions, honest Euclidean norm bound and finite-measure DCT derive sample input L2 convergence to SAME original span. Combining changingliteral error with grid-uniform inputL1 and actual energyL1 stability gives FIXED original span QV. Native true full-predictable density and uniform partition-error bound2||f-g||(||f||+||g||) then give, for EVERY SAME fixed full native f and every deterministic finite mono0/T caller partition family with COMPUTED mesh->0:
+
+    actual sum of (M_f(t_next)-M_f(t_start))² -> actual timeEnergy_f(T)
+
+Convergence holds in native source L1 and for literal actual readouts in source measure. No L4 or full-f boundedness, desired approximation, output limit or bracket field is added. Random/stopping partitions, almost-sure convergence, vector-valued state Ito and state-dependent Hessian weights remain separate obligations.
+
+Root independently constructed a genuine native full input using OTHER-coordinate Gaussian START increments on(1,2],T3 through L2 only, without a boundedElementaryInput or L4 input. Universal caller-clock and actual uniform-clock consumers use exactly that fixed f and its computed timeEnergy. Every original zero-horizon input/emptyclock, zero dimension with positive horizon and repeated times are within the checked range. Existing independent nonsmooth cross-coordinate and actual changingrecord consumers retain their narrower exact scope.
+
+## The given literal program: exact returned coarse implementation
+
+Original Instruction is the external current-state controller syntax emitting old OptionBool actions. A computable static check recursively accepts retained-actuator tests and all emits/nested branches, producing an actual coarse AST. AST induction proves exact interpretation on EVERY physical state. Checked/certify graph binds SAME submitted fine p and actual returned q.
+
+Actual update/projection proves original RepairProgramValid equivalence for the registered active-bit target. Here Valid is carrier/target preservation, not full repair/recovery. Derived PreservesObjectPredicate supplies ORIGINAL P9 transport_object_property, with no external hpres/actionfactor field. A wrong-write emit passes syntax but is actually invalid; syntactic access does not certify arbitrary correctness.
+
+Every finite primitive word recomputes p on SAME retained parent's new physical state. Actual complete modeRecord transportation includes protected inherited Bool program/history, paid writes, faults, failed births, actual parents and children. ANY PMF on complete finite words, including correlated words, has the exact actual projected record law. This does not assert a countable-infinite AST execution source. Costs/records are the ORIGINAL write expenditure and external transactions, not new branch-read/runtime costs or internal interpreter traces.
+
+Static access check is only sufficient: a hidden test with identical semantic behavior can be rejected. A new exact finiteCheck evaluates the ACTUAL interpret truth table and canonical active-bit representatives; it is equivalent to ORIGINAL QuotientDescent.FiberCompatible. It returns an ORIGINAL allowed two-branch Instruction using two actual interpreter readings. Success proves THAT returned AST realizes SAME p. ANY coarse current-state actionfunction realization forces check pass, giving exact synthesis necessary/sufficient in this full-state/action contract. Rejection is not a solver failure or a claim against every history-dependent/reachable-domain policy.
+
+The actual input p is not replaced in physical execution: proved action equality with a statically accepted literal fineTable lets original static validity/P9/wholeword theorem be reused for p itself. Canonical passive-fill representatives are interpreter evaluation/proof inputs, never executed reset, initial preparation or added observation rights.
+
+Nested real repair retains paid/fault/paid fees[1,0,1] and births[T,F,T]. A SAME coarse organism/program/history pair with truly hidden-test-dependent action has different ACTUAL birth/fee(false,0)/(true,1), so no exact coarse current-state action or birth/fee factor exists. In contrast a harmless hidden nested branch passes semantic synthesis despite static rejection. Root independently checked a new n4 retained-port2 hidden0/3 idle AST: semantic synth returns the exact allowed two-branch idle program, full word/PMF law and validity equivalence, with all16 encoded physical states actual VM. That does not claim idle repairs damaged states.
+
+Program/source/allowed actions/observations/initial permissions, old calibration/data/failures and source archives are unchanged. All six P9 semantics, splitting/merging, general organization or Wilsonian RG are not claimed. SOURCE_VALIDATION.json binds exact sources/reviews/public clients; GLOBAL_OBLIGATION_DELTA.md retains whole-theory obligations. WholeGoal ACTIVE/OPEN; empirical support UNVERIFIED; three Core workflows remain disabled.
