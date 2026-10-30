@@ -1,0 +1,7 @@
+# Whole-theory difference after actual fixed-Q control source
+
+This exact cut reduces source premises at the ORIGINAL p_ctl_03/ItoRun consumer, SAME actual time/state weighted increments and actual returned AST countable path. It adopts only the explicit frozen import closure and complementary nonauthor source evidence; no counts close any theoretical goal.
+
+General Q predictable-domain density/alltime integral process and general SDE/infinite-deployment controls still need sources. Actual scalar constant-sigma bounded C2 feedback and explicit nonconstant HJB evaluation family do not discharge all P11. State-dependent weighted QV is ready for the separate native state Taylor/Itô source; those successors are excluded. AST countable target-preservation/source-record transport does not discharge all P9 predicates, splitting/merging, autonomous organization or hidden internal costs. Source-specific external resource/funding and old data protocols keep their precise contracts.
+
+Both books currently publish417/418. Actual main verification and the next book/GI adoption remain required after this cut. Root serializes shared exports/Git/integration/GI/books while independent authors continue native state Itô, actual Q conditional process and the next remaining C4 semantic mechanism source. All original P0–P12/C1–C7/UMC/committed post-Core compatibility duties remain accountable; whole Goal ACTIVE/OPEN.
