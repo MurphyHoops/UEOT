@@ -1,0 +1,61 @@
+{
+  "schema": "ueot.independent-source-review.v1",
+  "reviewer": "/root/register_infinite_record",
+  "independence": "Did NOT author Coverage; did author its imported FiniteNoisyCalibration dependency. Coverage author is root.",
+  "created_utc": "2026-10-29T23:39:43.531576+00:00",
+  "source": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveFiniteCalibrationCoverage.lean",
+    "sha256": "de3de06bb475f18d1a3151add0498df85a6f823b697a0f1ff572a13531313ae0",
+    "lines": 145
+  },
+  "verdict": "PASS_WITH_EXPLICIT_SCOPE",
+  "full_source_read": true,
+  "findings": [],
+  "quantifier_review": [
+    "All Parameters and full raw tuples, N>0: originalGood plus gain>=1 and specified truegap>=1/2 force unchanged data-only select returns best. No truth information enters selector.",
+    "Original source mean-error bound implies actual anchor means>=19/20, actual computed reciprocal kappa<=20/19. Actual query gap beats original threshold. Both Bool branches and true-first priority checked.",
+    "Failure set select!=some best includes ALL rejections and wrong outputs; subset originalGood complement on SAME rawLaw. Native finite-set complement derives lower acceptance, not conditional risk.",
+    "good_correct_accepts calls original good_selected_action_correct, which calls actual_action_gap on SAME measured columns, checked computed inverse, query observations and returned action.",
+    "Scalar acceptance/bounds do not need Valid, legitimately stronger; Valid remains explicit for original action-gap consumer. No geometric/actuator extension outside Valid asserted.",
+    "Same budget32, four rows, amplitude1/10, full128sign word, law, sourceData, computed inverse, select threshold retained. Original regular/reverse both positive. No allValid coverage or completeness."
+  ],
+  "fresh_checks": [
+    {
+      "command": "lake env lean UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveFiniteCalibrationCoverage.lean",
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core",
+      "exit_code": 0,
+      "log": "/tmp/ueot-c5-coverage-independent-direct.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": "lake env lean /tmp/ueot-c5-coverage-independent.lean",
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core",
+      "exit_code": 0,
+      "fixture_sha256": "a69db41347aa9350d660e7de281eb71de5db3c286166b526d6a2324a13729799",
+      "log": "/tmp/ueot-c5-coverage-independent.log",
+      "sha256": "632eb38468d7d01a313a3cba2e172cd65e6affb3d5e22da75143eff90ce80eb9"
+    }
+  ],
+  "fresh_actual_consumers": [
+    "Both directions at gain EXACTLY1 and true gap EXACTLY1/2, all N>0 and rawGood.",
+    "SAME registeredRaw128signs boundary source actual select and original action-gap consumer.",
+    "Both boundary orderings have strict positive complete-source acceptance mass at sameN32.",
+    "N0reject retained."
+  ],
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "implementation_failures": [
+    "First independent fixture misordered generated apply goals for Valid/gap. Corrected with explicit hv:Valid and exact application; no source changes."
+  ],
+  "boundaries": [
+    "Explicit sufficient separated source subset, not sharp/necessary/allValid coverage.",
+    "True gain/order assumptions only proof conditions, not selector knowledge or observed membership certificate.",
+    "No new real sampling or changes to original data/threshold.",
+    "No conditional-on-acceptance guarantee; outsideGood positive-mass error remains possible.",
+    "Finite diagonal rational iid sensor model only; no non-diagonal/nonlinear/dynamicGOA claim.",
+    "Whole Core Goal remains incomplete."
+  ]
+}

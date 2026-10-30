@@ -1,0 +1,347 @@
+{
+  "schema": "UEOT_NONAUTHOR_SOURCE_REVIEW_V1",
+  "status": "PASS_SOURCE_SEMANTICS_ACTUAL_CONSUMERS",
+  "reviewer": "/root/c1_joint_review",
+  "author": "/root/register_typed_review",
+  "non_author_independence": true,
+  "created_utc": "2026-10-29T23:47:45.957805+00:00",
+  "observed_HEAD": "b888f219afa3d72fbcfe4551087a087d3b09003f",
+  "source": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPastStepShiftedSource.lean",
+    "sha256": "b9f3853b0387b301006bd3a9f0614b17c9af25a921e684e3b676f76580a743de",
+    "bytes": 14570
+  },
+  "complete_source_read": true,
+  "source_contract": "Same one-block Q has actual full Brownian W_t=B_t−H*(min(t,b)−min(t,a)), and its natural filtration equals EXACT original Ft; whole original past independence and actual W martingale follow.",
+  "derivation_and_quantifier_review": [
+    "Actual X=(Rfinite,H) jointly independent of SAME block increment is passed to existing independent_gaussian_random_tilt_joint, parameter coordinate Prod.snd. SAME stepLaw density is retained; joint recentering then actual linear reconstruction gives all caller finite W tables equal original P B tables.",
+    "Weak a≤b includes a=b by original literal stepLaw_same_time and overlap0. Regression only invoked for strict duration; no division0.",
+    "ALL constructed original paths are continuous; subtracting finite real H(omega) times deterministic continuous overlap gives continuous W on ALL samples. No desired shifted Brownian/continuity field or uncountable AE intersection.",
+    "Before a, W_t=B_t LITERALLY, so no H permission required. After a, actual original Fa permission transports monotonically; this derives W strong adaptation in original Ft.",
+    "All through-a path readouts are exactly equal, proving Wnatural(a)=originalFa. Actual H is therefore Wnatural(a)-measurable; B_t=W_t+H*overlap is Wnatural-adapted (with zero-before-a split). Two native iSup/comap inequalities prove EXACT full filtration equality, not just W-adaptedness.",
+    "Native W Brownian whole future independent of Wpast is transported through the proved equality to ENTIRE original Bpast. Same Q Gaussian integrability and actual conditionalmean0 give original-Ft Wmartingale.",
+    "No boundedness/L2 assumption is needed for this full Brownian-law conclusion; actual H=B1 unbounded source consumer elaborates. This does not imply finite energy without separate source moments."
+  ],
+  "actual_reuse_decision": "Direct reuse of native random-parameter joint tilt and original IsPreBrownian finite laws/ALLpath continuity. Deterministic constant shifted-source proof cannot be specialized by replacing its constant with random H: changed density, residual+H joint law and exact original-filtration recovery are the new proved obligations. Existing native natural filtration/comap and conditional-expectation APIs are reused.",
+  "scope_limits": [
+    "a,b are deterministic nonnegative times; randomness is the START-observed H, not random stopping times.",
+    "No arbitrary finite/simple/general predictable control or arbitrary Q stochastic-integral construction."
+  ],
+  "actual_consumer_obligations": [
+    "sin(B1): full finite table{0,1/2,1,3/2,2,3}, futureW3 Gaussian(0,3), exact Wnatural=originalFt, original wholepast independence/martingale",
+    "No artificial bound: actual H=B1 gives IsBrownian, exact filtration equality and increment crossing START/END independent of entire originalF_1/2",
+    "Literal beforeSTART identity, interior driftH/2 at1.5, afterEND driftH at3; a=b actual Brownian"
+  ],
+  "author_receipt": {
+    "path": "/tmp/ueot-brownian-past-step-shifted-source-receipt.json",
+    "sha256": "e56d5e7305a7b83e311fadfb3a0f1fc0091793ec634615cf8e2f4be3295a74fb",
+    "bytes": 4157
+  },
+  "dependency_bindings": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPastStepGaussianResidualSource.lean",
+      "sha256": "fa59886cb88fd84f0c29e85147679ec0d643dfa3e01b8b348104d311585d3a67",
+      "bytes": 7045
+    }
+  ],
+  "identity_reused_non_author_parent_reviews": [
+    {
+      "report": {
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/whole_theory_formal_closure_v1/independent/BROWNIAN_PAST_STEP_EXPONENTIAL_SOURCE_REVIEW.json",
+        "sha256": "35a14a70b43c53d6a517c3ddfe92b46d9dd07f77c3c9a06d6a759826e952abe8",
+        "bytes": 2751
+      },
+      "reviewed_source_current_identity": {
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPastStepExponentialSource.lean",
+        "sha256": "9b6c28351fa69955ecd89d4cc9601d842c801b3a9706dd097996e20813f591fa",
+        "bytes": 13540
+      }
+    },
+    {
+      "report": {
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/whole_theory_formal_closure_v1/independent/BROWNIAN_PAST_STEP_TILT_KERNEL_SOURCE_REVIEW.json",
+        "sha256": "842a3ff5f8ba2790fdd454bc3331ed47cb4442707d42cf991c22b867353bc669",
+        "bytes": 3530
+      },
+      "reviewed_source_current_identity": {
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPastStepTiltKernelSource.lean",
+        "sha256": "b4ab0cb59d195d82f4c411edce25eadf8b1480a2b2d81158b2a5d0bd13b76c20",
+        "bytes": 12993
+      }
+    },
+    {
+      "report": {
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/whole_theory_formal_closure_v1/independent/BROWNIAN_GAUSSIAN_TILT_SOURCE_REVIEW.json",
+        "sha256": "4fad2f499b06c0d4ae589df268c19877926828e4d25ab6441c2da04dca26c8ef",
+        "bytes": 34540
+      },
+      "reviewed_source_current_identity": {
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianGaussianTiltSource.lean",
+        "sha256": "dd867d4114bac119a5c13b9922ad3016af7e58a52ba26f952d27233062ab0da9",
+        "bytes": 6282
+      }
+    },
+    {
+      "report": {
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/whole_theory_formal_closure_v1/independent/BROWNIAN_FINITE_GAUSSIAN_TILT_SOURCE_REVIEW.json",
+        "sha256": "e12dfa6dc9086515d63b757bff01ef5004c6738e620f0de380af2b6dcb77dd0b",
+        "bytes": 100445
+      },
+      "reviewed_source_current_identity": {
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteGaussianTiltSource.lean",
+        "sha256": "3372aae6f8b0c3583b3b5d3fb3cbd8f65f134de8a562831581c184ccc1fc8b6f",
+        "bytes": 13789
+      }
+    },
+    {
+      "report": {
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/docs/compression/theory_completion/unified_closure/whole_theory_formal_closure_v1/independent/BROWNIAN_CONSTANT_GIRSANOV_SOURCE_REVIEW.json",
+        "sha256": "fc2327cbd206b2e54dd35b9fa38bce72c1696f73866d2a4d2205d37ed4d10a5f",
+        "bytes": 58301
+      },
+      "reviewed_source_current_identity": {
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianConstantGirsanovSource.lean",
+        "sha256": "7cca207a5b3621fb327d217c9213d943faf6f13a2e050486ac2372e27f2b0c59",
+        "bytes": 8685
+      }
+    }
+  ],
+  "checks": [
+    {
+      "kind": "fresh_direct_current_source_elaboration",
+      "observed_exit_code": 0,
+      "log": {
+        "path": "/tmp/ueot-past-step-independent-BrownianPastStepShiftedSource1.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "kind": "focused_lake_build_exact_three_sources",
+      "observed_exit_code": 0,
+      "log": {
+        "path": "/tmp/ueot-past-step-independent-focused1.log",
+        "sha256": "52885c8fe09fc356ac2170232a9c605813cf525db990bd2d2df774b99bddc835",
+        "bytes": 5860
+      },
+      "warnings": "Only preexisting imported DynamicsKernel/RecoveryContinuous/RecoveryDynkin hints replayed; direct new source logs are empty."
+    },
+    {
+      "kind": "fresh_actual_public_and_supporting_types_plus_original_native_apis",
+      "observed_exit_code": 0,
+      "input": {
+        "path": "/tmp/ueot-past-step-independent-types.lean",
+        "sha256": "9826f211ae60d7e10ae687b8bf644318c00535d2cf6906a9b50f50aa971c98e8",
+        "bytes": 12145
+      },
+      "log": {
+        "path": "/tmp/ueot-past-step-independent-types1.log",
+        "sha256": "a59e9e33a5c8792abc6def6feeb17f804178ef9dd97755a835844653dd3a4b9e",
+        "bytes": 33581
+      }
+    },
+    {
+      "kind": "fresh_actual_same_source_common_consumer",
+      "observed_exit_code": 0,
+      "input": {
+        "path": "/tmp/ueot-past-step-independent-consumer.lean",
+        "sha256": "d5c058b611bff34edf420f621331d33ec9627aeaf8fa84e5cfb7bfe415c0f98d",
+        "bytes": 12569
+      },
+      "log": {
+        "path": "/tmp/ueot-past-step-independent-consumer2.log",
+        "sha256": "fb9c16f7f5c67a1cd94e9e4e8951397253c270fe223b600c710bc6dcebb86644",
+        "bytes": 3887
+      },
+      "imports": "Exact three frozen source modules explicitly; not presented as already exported public UEOT adoption."
+    }
+  ],
+  "all_public_supporting_declaration_types": [
+    {
+      "source": "BrownianPastStepShiftedSource",
+      "kind": "def",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedProcess",
+      "line": 17,
+      "actual_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedProcess (H : (NNReal → ℝ) → ℝ)\n  (a b t : NNReal) (ω : NNReal → ℝ) : ℝ"
+    },
+    {
+      "source": "BrownianPastStepShiftedSource",
+      "kind": "theorem",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shifted_finite_map",
+      "line": 22,
+      "actual_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shifted_finite_map\n  (H : (NNReal → ℝ) → ℝ) (a b : NNReal) (hab : a < b) (hH : MeasureTheory.StronglyMeasurable H) (I : Finset NNReal) :\n  MeasureTheory.Measure.map\n      (fun ω =>\n        I.restrict fun x =>\n          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedProcess H a b x ω)\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepExponentialSource.stepLaw H a b) =\n    MeasureTheory.Measure.map\n      (fun ω =>\n        I.restrict fun x => UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process x ω)\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw"
+    },
+    {
+      "source": "BrownianPastStepShiftedSource",
+      "kind": "theorem",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedProcess_measurable",
+      "line": 60,
+      "actual_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedProcess_measurable\n  (H : (NNReal → ℝ) → ℝ) (a b t : NNReal) (hH : MeasureTheory.StronglyMeasurable H) :\n  Measurable (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedProcess H a b t)"
+    },
+    {
+      "source": "BrownianPastStepShiftedSource",
+      "kind": "theorem",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedProcess_isPreBrownian",
+      "line": 66,
+      "actual_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedProcess_isPreBrownian\n  (H : (NNReal → ℝ) → ℝ) (a b : NNReal) (hab : a ≤ b) (hH : MeasureTheory.StronglyMeasurable H) :\n  ProbabilityTheory.IsPreBrownianReal\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedProcess H a b)\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepExponentialSource.stepLaw H a b)"
+    },
+    {
+      "source": "BrownianPastStepShiftedSource",
+      "kind": "theorem",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.overlap_continuous",
+      "line": 80,
+      "actual_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.overlap_continuous (a b : NNReal) :\n  Continuous (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepGaussianResidualSource.overlap a b)"
+    },
+    {
+      "source": "BrownianPastStepShiftedSource",
+      "kind": "theorem",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedProcess_isBrownian",
+      "line": 85,
+      "actual_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedProcess_isBrownian\n  (H : (NNReal → ℝ) → ℝ) (a b : NNReal) (hab : a ≤ b) (hH : MeasureTheory.StronglyMeasurable H) :\n  ProbabilityTheory.IsBrownianReal\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedProcess H a b)\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepExponentialSource.stepLaw H a b)"
+    },
+    {
+      "source": "BrownianPastStepShiftedSource",
+      "kind": "theorem",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedProcess_before",
+      "line": 93,
+      "actual_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedProcess_before\n  (H : (NNReal → ℝ) → ℝ) (a b t : NNReal) (hab : a ≤ b) (ht : t ≤ a) (ω : NNReal → ℝ) :\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedProcess H a b t ω =\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process t ω"
+    },
+    {
+      "source": "BrownianPastStepShiftedSource",
+      "kind": "theorem",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedProcess_after",
+      "line": 97,
+      "actual_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedProcess_after\n  (H : (NNReal → ℝ) → ℝ) (a b t : NNReal) (hab : a ≤ b) (ht : b ≤ t) (ω : NNReal → ℝ) :\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedProcess H a b t ω =\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process t ω - H ω * (↑b - ↑a)"
+    },
+    {
+      "source": "BrownianPastStepShiftedSource",
+      "kind": "theorem",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedProcess_stronglyAdapted",
+      "line": 103,
+      "actual_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedProcess_stronglyAdapted\n  (H : (NNReal → ℝ) → ℝ) (a b : NNReal) (hab : a ≤ b) (hH : MeasureTheory.StronglyMeasurable H) :\n  MeasureTheory.StronglyAdapted\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.naturalFiltration\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedProcess H a b)"
+    },
+    {
+      "source": "BrownianPastStepShiftedSource",
+      "kind": "def",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedNatural",
+      "line": 113,
+      "actual_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedNatural (H : (NNReal → ℝ) → ℝ)\n  (a b : NNReal) (hH : MeasureTheory.StronglyMeasurable H) : MeasureTheory.Filtration NNReal inferInstance"
+    },
+    {
+      "source": "BrownianPastStepShiftedSource",
+      "kind": "theorem",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.start_filtration_eq",
+      "line": 125,
+      "actual_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.start_filtration_eq\n  (H : (NNReal → ℝ) → ℝ) (a b : NNReal) (hab : a ≤ b) (hH : MeasureTheory.StronglyMeasurable H) :\n  ↑(UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedNatural H a b hH) a =\n    ↑UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.naturalFiltration a"
+    },
+    {
+      "source": "BrownianPastStepShiftedSource",
+      "kind": "theorem",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedNatural_eq_original",
+      "line": 150,
+      "actual_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedNatural_eq_original\n  (H : (NNReal → ℝ) → ℝ) (a b : NNReal) (hab : a ≤ b) (hH : MeasureTheory.StronglyMeasurable H) :\n  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedNatural H a b hH =\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.naturalFiltration"
+    },
+    {
+      "source": "BrownianPastStepShiftedSource",
+      "kind": "theorem",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shifted_indep_original_past",
+      "line": 165,
+      "actual_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shifted_indep_original_past\n  (H : (NNReal → ℝ) → ℝ) (a b : NNReal) (hab : a ≤ b) (hH : MeasureTheory.StronglyMeasurable H) (s : NNReal) :\n  ProbabilityTheory.IndepFun\n    (fun ω r =>\n      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedProcess H a b (s + r) ω -\n        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedProcess H a b s ω)\n    (fun ω r => UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process (↑r) ω)\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepExponentialSource.stepLaw H a b)"
+    },
+    {
+      "source": "BrownianPastStepShiftedSource",
+      "kind": "def",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedIncrement",
+      "line": 178,
+      "actual_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedIncrement\n  (H : (NNReal → ℝ) → ℝ) (a b s t : NNReal) (ω : NNReal → ℝ) : ℝ"
+    },
+    {
+      "source": "BrownianPastStepShiftedSource",
+      "kind": "theorem",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedIncrement_indep_original_past",
+      "line": 181,
+      "actual_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedIncrement_indep_original_past\n  (H : (NNReal → ℝ) → ℝ) (a b : NNReal) (hab : a ≤ b) (hH : MeasureTheory.StronglyMeasurable H) (s t : NNReal)\n  (hst : s ≤ t) :\n  ProbabilityTheory.IndepFun\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedIncrement H a b s t)\n    (fun ω r => UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource.process (↑r) ω)\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepExponentialSource.stepLaw H a b)"
+    },
+    {
+      "source": "BrownianPastStepShiftedSource",
+      "kind": "theorem",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.condExp_shiftedIncrement",
+      "line": 191,
+      "actual_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.condExp_shiftedIncrement\n  (H : (NNReal → ℝ) → ℝ) (a b : NNReal) (hab : a ≤ b) (hH : MeasureTheory.StronglyMeasurable H) (s t : NNReal)\n  (hst : s ≤ t) :\n  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepExponentialSource.stepLaw H a\n        b)[UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedIncrement H a b s\n        t |\n      ↑UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.naturalFiltration\n        s] =ᵐ[UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepExponentialSource.stepLaw H a b]\n    fun x => 0"
+    },
+    {
+      "source": "BrownianPastStepShiftedSource",
+      "kind": "theorem",
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedProcess_martingale",
+      "line": 211,
+      "actual_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedProcess_martingale\n  (H : (NNReal → ℝ) → ℝ) (a b : NNReal) (hab : a ≤ b) (hH : MeasureTheory.StronglyMeasurable H) :\n  MeasureTheory.Martingale\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource.shiftedProcess H a b)\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.naturalFiltration\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepExponentialSource.stepLaw H a b)"
+    }
+  ],
+  "original_native_extra_types": [
+    {
+      "symbol": "UEOT.V3.GirsanovPathKL.TerminalGirsanovData",
+      "actual_type": "UEOT.V3.GirsanovPathKL.TerminalGirsanovData.{uΩ, uE} {Ω : Type uΩ} [MeasurableSpace Ω] {E : Type uE}\n  [NormedAddCommGroup E] [MeasurableSpace E] (P0 Q : MeasureTheory.Measure Ω) (T : NNReal) (u : ℝ → Ω → E) : Type uΩ"
+    },
+    {
+      "symbol": "UEOT.V3.GirsanovPathKL.TerminalGirsanovData.p_kl_05",
+      "actual_type": "UEOT.V3.GirsanovPathKL.TerminalGirsanovData.p_kl_05.{uΩ, uΓ, uE} {Ω : Type uΩ} [MeasurableSpace Ω] {Γ : Type uΓ}\n  [MeasurableSpace Γ] {E : Type uE} [NormedAddCommGroup E] [MeasurableSpace E] {P0 Q : MeasureTheory.Measure Ω}\n  {T : NNReal} {u : ℝ → Ω → E} [MeasureTheory.IsProbabilityMeasure P0] [MeasureTheory.IsProbabilityMeasure Q]\n  (h : UEOT.V3.GirsanovPathKL.TerminalGirsanovData P0 Q T u) (statePath : Ω → Γ) (hstate : Measurable statePath) :\n  InformationTheory.klDiv Q P0 = ENNReal.ofReal (2⁻¹ * ∫ (ω : Ω), UEOT.V3.GirsanovPathKL.controlEnergy T u ω ∂Q) ∧\n    InformationTheory.klDiv (MeasureTheory.Measure.map statePath Q) (MeasureTheory.Measure.map statePath P0) ≤\n      ENNReal.ofReal (2⁻¹ * ∫ (ω : Ω), UEOT.V3.GirsanovPathKL.controlEnergy T u ω ∂Q)"
+    },
+    {
+      "symbol": "UEOT.V3.GirsanovPathKL.TerminalGirsanovData.rnDeriv_eq_density",
+      "actual_type": "UEOT.V3.GirsanovPathKL.TerminalGirsanovData.rnDeriv_eq_density.{uΩ, uE} {Ω : Type uΩ} [MeasurableSpace Ω] {E : Type uE}\n  [NormedAddCommGroup E] [MeasurableSpace E] {P0 Q : MeasureTheory.Measure Ω} {T : NNReal} {u : ℝ → Ω → E}\n  [MeasureTheory.SigmaFinite P0] (h : UEOT.V3.GirsanovPathKL.TerminalGirsanovData P0 Q T u) :\n  Q.rnDeriv P0 =ᵐ[Q] h.density"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepTiltKernelSource.independent_gaussian_random_tilt_joint",
+      "actual_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepTiltKernelSource.independent_gaussian_random_tilt_joint.{u_1,\n    u_2}\n  {Ω : Type u_1} {A : Type u_2} [MeasurableSpace Ω] [MeasurableSpace A] (P : MeasureTheory.Measure Ω)\n  [MeasureTheory.IsFiniteMeasure P] (X : Ω → A) (hX : Measurable X) (Y : Ω → ℝ) (hY : Measurable Y) (d : NNReal)\n  (hLaw : ProbabilityTheory.HasLaw Y (ProbabilityTheory.gaussianReal 0 d) P) (hXY : ProbabilityTheory.IndepFun X Y P)\n  (H : A → ℝ) (hH : Measurable H) :\n  MeasureTheory.Measure.map (fun ω => (X ω, Y ω - H (X ω) * ↑d))\n      (P.withDensity fun ω =>\n        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource.gaussianTiltWeight (H (X ω)) d\n          (Y ω)) =\n    MeasureTheory.Measure.map (fun ω => (X ω, Y ω)) P"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepExponentialSource.stepLaw_map_coefficient",
+      "actual_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepExponentialSource.stepLaw_map_coefficient\n  (H : (NNReal → ℝ) → ℝ) (a b : NNReal) (hab : a ≤ b) (hH : MeasureTheory.StronglyMeasurable H) :\n  MeasureTheory.Measure.map H\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepExponentialSource.stepLaw H a b) =\n    MeasureTheory.Measure.map H UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepExponentialSource.stepLaw_square_integrable",
+      "actual_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepExponentialSource.stepLaw_square_integrable\n  (H : (NNReal → ℝ) → ℝ) (a b : NNReal) (hab : a ≤ b) (hH : MeasureTheory.StronglyMeasurable H)\n  (hH₂ :\n    MeasureTheory.MemLp H 2 UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw) :\n  MeasureTheory.Integrable (fun ω => H ω ^ 2)\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepExponentialSource.stepLaw H a b)"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepTiltKernelSource.centeredIncrement_law_indep",
+      "actual_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepTiltKernelSource.centeredIncrement_law_indep\n  (H : (NNReal → ℝ) → ℝ) (a b : NNReal) (hab : a ≤ b) (hH : MeasureTheory.StronglyMeasurable H) :\n  ProbabilityTheory.HasLaw\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepTiltKernelSource.centeredIncrement H a b)\n      (ProbabilityTheory.gaussianReal 0 (b - a))\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepExponentialSource.stepLaw H a b) ∧\n    ProbabilityTheory.Indep\n      (↑UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.naturalFiltration a)\n      (MeasurableSpace.comap\n        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepTiltKernelSource.centeredIncrement H a b)\n        inferInstance)\n      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepExponentialSource.stepLaw H a b)"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepExponentialSource.stepLaw_energy_integrable",
+      "actual_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepExponentialSource.stepLaw_energy_integrable\n  (H : (NNReal → ℝ) → ℝ) (a b : NNReal) (hab : a ≤ b) (hH : MeasureTheory.StronglyMeasurable H)\n  (hH₂ :\n    MeasureTheory.MemLp H 2 UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw) :\n  MeasureTheory.Integrable\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepExponentialSource.stepEnergy H a b)\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepExponentialSource.stepLaw H a b)"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_isBrownian",
+      "actual_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess_isBrownian (u : ℝ)\n  (T : NNReal) :\n  ProbabilityTheory.IsBrownianReal\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource.shiftedProcess u T)\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T)"
+    },
+    {
+      "symbol": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actualTerminalData",
+      "actual_type": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.actualTerminalData (u : ℝ)\n  (T : NNReal) :\n  UEOT.V3.GirsanovPathKL.TerminalGirsanovData\n    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource.sourceLaw\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource.tiltedLaw u T) T\n    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource.constantControl u)"
+    },
+    {
+      "symbol": "ProbabilityTheory.IsGaussianProcess.indepFun_of_covariance_eq_zero",
+      "actual_type": "ProbabilityTheory.IsGaussianProcess.indepFun_of_covariance_eq_zero.{u_1, u_2, u_4} {T : Type u_1} {Ω : Type u_2}\n  {mΩ : MeasurableSpace Ω} {P : MeasureTheory.Measure Ω} {S : Type u_4} {X : S → Ω → ℝ} {Y : T → Ω → ℝ}\n  (hXY : ProbabilityTheory.IsGaussianProcess (Sum.elim X Y) P) (mX : ∀ (s : S), AEMeasurable (X s) P)\n  (mY : ∀ (t : T), AEMeasurable (Y t) P) (h : ∀ (s : S) (t : T), ProbabilityTheory.covariance (X s) (Y t) P = 0) :\n  ProbabilityTheory.IndepFun (fun ω s => X s ω) (fun ω t => Y t ω) P"
+    }
+  ],
+  "axioms_only": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "sorryAx": false,
+  "external_harness_repairs": [
+    {
+      "diagnosis": "NNReal fractional clock inequality and real numeral subtraction were not discharged by default norm_num/simp in initial added consumer.",
+      "repair": "Only /tmp harness changed: exact_mod_cast real bound, norm_num at literal elapsed identity. Same mathematical types/source/data; final actual exit0.",
+      "retained_failure_log": {
+        "path": "/tmp/ueot-past-step-independent-consumer1.log",
+        "sha256": "6f75549e5ab03409455b9f53c96a54fd643daf908bdc7bd68ea97eab95bd9c1a",
+        "bytes": 4235
+      }
+    }
+  ],
+  "findings": [],
+  "pending_source_semantic_corrections": [],
+  "source_and_permission_boundary": "No source/export/root/Git/GI/book/global mutation; unrelated finite-density WIP not read/reviewed. Source semantic PASS does not claim public integration/main adoption.",
+  "whole_theory_status": "OPEN / NOT_ESTABLISHED"
+}

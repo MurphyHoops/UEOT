@@ -240,6 +240,9 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OUSemigroupSource
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralL2TimeContinuity
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveFiniteNoisyCalibration
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepGirsanovSource
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterActuatorPopulationScale
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveFiniteCalibrationCoverage
 /-!
 # UEOT Theory Completion public root
 
