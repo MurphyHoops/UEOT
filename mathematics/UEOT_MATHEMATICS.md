@@ -2762,7 +2762,7 @@ $$
 
 StochasticSubstrate 将这些接口接入 P11，仍不把控制能量变成无条件热力学功。若密度不对观察路径可测，第 22.5 节只用数据处理上界；第 33 章的单位校准也必须另行给定。
 
-第 39.9—39.15 节给出实际全时间 Gaussian／连续 Brownian 源、自然过滤条件矩及真正 predictable L² 终点积分。第 39.17、39.19 节进一步构造同一输入的实际连续积分过程，并从真实时间能量和条件二阶关系推导平方补偿鞅；Brownian 分割平方和也有原源网格误差界。自然过滤的指数密度已规范化并与实际 RN 导数相接。第 39.22 节现已从同一完整可预测标量输入推导确定性零网格分割的实际二次变差及实际加权一、二阶随机和。第 39.26—39.28 节进一步从实际 Taylor 和推导同输入标量 Itô／Dynkin、向量完整可预测域与条件过程、原 OU 条件核及常控制的实际 TerminalGirsanovData／原 KL 消费者。第 39.30 节进一步构造实际有限反馈表的完整换测度路径与原 KL 消费者，第 39.31 节补同一完整向量输入的连续版本。全局一、二阶导数界等条件明确保留；一般受控 SDE、全部可预测控制换测度及全部 HJB 前提仍承担来源责任。
+第 39.9—39.15 节给出实际全时间 Gaussian／连续 Brownian 源、自然过滤条件矩及真正 predictable L² 终点积分。第 39.17、39.19 节进一步构造同一输入的实际连续积分过程，并从真实时间能量和条件二阶关系推导平方补偿鞅；Brownian 分割平方和也有原源网格误差界。自然过滤的指数密度已规范化并与实际 RN 导数相接。第 39.22 节现已从同一完整可预测标量输入推导确定性零网格分割的实际二次变差及实际加权一、二阶随机和。第 39.26—39.28 节进一步从实际 Taylor 和推导同输入标量 Itô／Dynkin、向量完整可预测域与条件过程、原 OU 条件核及常控制的实际 TerminalGirsanovData／原 KL 消费者。第 39.30 节进一步构造实际有限反馈表的完整换测度路径与原 KL 消费者，第 39.31 节补同一完整向量输入的连续版本。全局一、二阶导数界等条件明确保留；第 39.34 节现进一步导出同一有界可预测输入的实际完整换测度路径、所构造的 $Q$ 积分及原终端 KL；第 39.35 节给同一固定完整联合输入的确定性分割 QV。一般受控 SDE、未覆盖的控制域及全部 HJB 前提仍承担来源责任。
 
 <a id="ch-23"></a>
 
@@ -5563,7 +5563,7 @@ $$
 
 输出在每个时刻采用该时刻原 $\mathcal F_t$ 可测的 limUnder；全局未来 Good 事件只用于证明，不在程序中分支选值。固定时刻与原积分、同一输入能量精确绑定；有限表和张成空间上的原路径在共同几乎处处意义下逐时返回。逐时域上的全样本连续、强适应逼近函数及可测极限又导出真实 progressive 性，未在未完备滤过上只用“几乎处处连续加适应”的捷径。
 
-二维例子让一坐标的积分系数读取另一坐标在 START 的不连续符号函数，实际返回、能量与 START 前零路径均由同一联合源核验。零维、零时域、重复时间和有限族欧氏输出也包含在准确范围内。这构造了实际样本连续版本；向量二次变差、一般向量／状态 Itô 和受控 SDE 仍有独立来源责任。
+二维例子让一坐标的积分系数读取另一坐标在 START 的不连续符号函数，实际返回、能量与 START 前零路径均由同一联合源核验。零维、零时域、重复时间和有限族欧氏输出也包含在准确范围内。这构造了实际样本连续版本；第 39.35 节进一步给同一固定欧氏输入的标量积分 QV，一般向量／状态 Itô 和受控 SDE 仍有独立来源责任。
 
 ## 39.32 保留执行的尺度与真实持续人口资金
 
@@ -5587,6 +5587,80 @@ $$
 
 定量分离是充分模型条件，真增益和真排序不输入程序，也未证明它们是尖锐必要条件。原正序、反序登记源均实际消费此结论；原正质量接受错误字仍保留在 Good 外。没有增加样本、改动阈值或把联合风险改称条件错误率。相关资料、实际适应读数的后继协议及一般非线性来源另承担其自己的义务。
 
+
+
+## 39.34 有界原输入的实际换测度与所构造的新测度积分
+
+令 $f$ 是原 Brownian 自然滤过上真正可预测的原生 $L^2(dt\times P)$ 输入，且 $|f|\le K$ 在该时间—源测度下几乎处处成立，$K\ge0$。同一 $f$ 的实际积分及能量记为 $I_P(f)$、$A_f$。从原生稠密性、左取样和同一 $K$ 的截断导出实际有限表；没有另给“逼近存在”或“一致可积”证书。有限表的平方密度等于辅助双系数密度乘以实际能量指数，导出统一 $L^2$ 界。结合实际收敛和 Vitali 得到
+
+$$
+D_f=\exp(I_P(f)-A_f/2),\qquad E_P D_f=1,\qquad Q=D_f\cdot P.
+$$
+
+因此规范化不是对任意 $L^2$ 指数的无条件断言。真实可预测代表及时间掩码产生实际控制 $a$，在 $(0,T]$ 外为零；$W_t=B_t-\int_0^t a_s\,ds$ 在同一 $Q$ 下为完整 Brownian 过程。任意原 $\mathcal F_s$ 事件与整个后续 $W$ 增量读出独立。一般路径依赖极限没有假定 $W$ 的自然滤过等于原滤过，也没有用反向 SDE 消除此项责任。
+
+从这些真实 $Q$ 增量的条件矩构造有限和及等距映射，再由原生闭包延拓构造 $I_Q$。其定义域明确为基本输入张成空间的闭包；本节没有将其称为所有 $Q$ 可预测 $L^2$。同一有界 $f$ 的原表通过 $dt\times Q\ll dt\times P$、实际几乎处处子列及有界收敛进入该定义域。对实际有限表证明 $W=B-\int a$ 的替换式，再比较实际两侧极限，得到
+
+$$
+I_Q(f;W)=I_P(f;B)-A_f\quad Q\text{-几乎处处}.
+$$
+
+这里能量系数是一；$I_Q$ 先由等距延拓构造，没有直接定义成右侧。积分时域 $U$ 可以超过密度时域 $T$：漂移停止后，真实 $W$ 仍有 Brownian 噪声。密度时域为零不表示任意随后输入的积分为零。
+
+实际密度的弱 $L^2$ 配对和同一有限受控积分的强 $L^2$ 极限又导出终端零均值。原 $\mathcal F_0$ 没有换成底 σ 代数；原零时过去在一个 $Q$ 满事件上为常值。由此构造原 TerminalGirsanovData，其返回受控积分正是上述构造的 $I_Q(f;W)$，并调用原消费者得到
+
+$$
+\mathrm{KL}(Q\Vert P)=\tfrac12 E_Q A_f\le K^2T/2.
+$$
+
+任意可测读出满足相应数据处理界。真实反馈在 $(1,2]$ 按 $B_1$ 的符号选择 $1/2$ 或 $3/2$，给实际代价区间 $[1/8,9/8]$；零时域或零控制的实际 KL 为零。该终端记录不是一般全时间 $Q$ 积分过程，也未完成任意受控 SDE 或原 HJB 的全部来源。
+
+## 39.35 同一固定联合输入的实际分割二次变差
+
+对任意有限噪声维数 $d$，令 $f$ 属于第 39.27 节整个联合过去上的原生欧氏值可预测 $L^2$。输出 $M_f$ 是同一输入对 $d$ 维噪声的**标量**连续积分，实际能量为 $A_f(t)=\int_0^t\|f_s\|^2ds$。对任意一族确定性有限单调时钟，从零到同一 $T$，其实际计算网格趋于零，则
+
+$$
+\sum_j\bigl(M_f(t_{j+1})-M_f(t_j)\bigr)^2
+\longrightarrow A_f(T)
+$$
+
+在原源 $L^1$ 及实际读出的依测度意义下成立。这里每个分割使用同一固定 $f$ 和同一 $M_f$；不是把随网格改变的表误差称为固定输入极限。
+
+证明先从整个联合过去的 Gaussian 四阶矩导出有限表误差。行内 $H_iH_j$ 不被假设独立；跨行条件中心化与正交性给出均方界 $2d^4K^4\,\mathrm{mesh}\,(t_{\rm last}-t_{\rm first})$。原有限张成输入的左迹及原本质界给一个共同满事件，截断后的分析代表保持原输入类精确相等；调用者时钟在 START 取样，经真实 $L^2$ 收敛给固定张成输入结论。最后用原完整域稠密性及统一分割误差稳定界推广到固定完整 $f$。
+
+没有要求完整 $f$ 有界或属于 $L^4$。例如可直接以另一坐标过去的 Gaussian 增量作为系数，经原生二阶可积性构造同一完整输入。零维、零时域、空分割及重复时间均保留。随机停止分割、几乎必然分割收敛、状态依赖 Hessian 权重及向量状态 Itô 仍有独立义务。
+
+## 39.36 提交的程序与计算返回的实现
+
+有限 Bool 寄存器上的 Instruction 是当前状态控制器，发出原允许的 Option Bool 动作；它与受保护的继承 Bool 修复程序具有不同角色。静态检查递归处理测试、输出与嵌套分支，返回实际粗层 AST。语法归纳证明该返回值对每个真实状态与提交程序发出相同动作。实际更新和投影进而导出原 RepairProgramValid 等价与 P9 目标保持消费者；此处 Valid 指登记目标保持，不能解释为所有损伤都被修复。错误写入可以通过语法检查但不满足 Valid。
+
+静态检查并不完备：隐藏测试两侧语义相同时，程序仍可能被拒。精确有限检查直接计算同一解释器的真值表，恰好等价于原观察纤维上的动作相等。它计算并返回原允许的两分支粗层程序。检查成功证明**该返回程序**实现**所提交程序**；反过来，任何粗层当前状态动作函数的精确实现都要求检查成功。拒绝因而是这个全状态动作合同的不可实现证据，不是对所有历史策略或较小可达域的普遍否定。用于检查的规范代表只参与计算和证明，没有成为真实重置、初态准备或新增观察。
+
+每个有限原始故障词都在同一保留亲本的新状态上重新解释同一提交程序。实际父子、故障、失败出生、受保护程序／历史及写入费用的完整记录逐词交换，任意相关有限词 PMF 的完整投影律也相等。真实修复例保留费用 $[1,0,1]$ 和出生 $[\mathrm T,\mathrm F,\mathrm T]$。真正依赖隐藏测试的程序则可在同一粗观察上给不同实际出生和费用，构成严格反例。当前刊载结论限有限词；可数持续 AST 记录另待采纳，费用仍是原写入事务费，没有暗加解释器内部读分支或运行时成本。
+
+## 39.37 实际适应读数与另行登记的方向策略
+
+在同一四行观测源上，先各读 $m>0$ 次，再允许 $K$ 次额外读数。每次只读所选行的下一个原坐标，并记录行、索引和值及实际缓存。计算出的 $n_*$ 是最短缓存长度，满足 $m\le n_*\le m+K$；实际解码恰是原 sourceData 的这个前缀。一个同时覆盖区间内全部前缀的 Good 事件给原选择器
+
+$$
+P(\mathrm{Accept}\cap\mathrm{Wrong})\le8(K+1)e^{-m/8}.
+$$
+
+没有条件化于 $n_*$ 或接受。未读坐标只出现在证明事件中，不输入选择器。登记 $m=128,K=8$ 的两个完整形式字均保留全部 544 个潜在符号，实际读 520 个；计算的最短缓存分别为 130、128。这些是实际执行重现事实；一般解码和风险由 Lean 证明，不把具体读数计数伪装成另一个核定理。
+
+仅保持每次边缘律不足以套用独立样本界。每行重复一个公平符号的相关源上，原同一选择器有至少 $1/16$ 的接受错误概率。这个反例保留。
+
+另行登记的新策略只对原已接受动作作处理：同一观测锚行均值为负时翻转 Bool，否则保持；原拒绝仍拒绝。没有新动作、样本、观察或阈值。逐词原均值误差不超过 $0.1$，原接受分数差及锚下界使新动作对应的实际查询均值差超过 $0.3>0.2$；原 action-gap 消费者与真实正增益于是推出新动作正确。因此新策略在任意行／时间相关、任意实际读数路由下的“接受且错误”集合为空。它是新策略的结论，不改写原策略的正风险。
+
+有用接受仍另需源分离条件；合法弱增益源能在每个样本量拒绝。一般路由定理是对给定历史回调的一致结论，不是禁止回调捕获外部参数的程序沙箱。原实际采样批次、阈值和失败字均不改变。
+
+## 39.38 从实际响应表计算载体与物理割集
+
+给有限源状态表、观测表和目标表，从每对目标不同的源行计算实际区分集合 $D_{xy}$。原充分读取恰好等价于击中全部这些集合。结构化 frontier 只从当前区分集合增加原子并剔除生成候选中的非极小者；一般引擎只需原子可判等，不枚举环境全部子集。实际返回载体表等于原 inclusion-minimal carriers，实际 find 解码器在每个源行返回同一目标。实际割集表等于原 blocker。
+
+新的双副本快照源以 $\operatorname{Option}(\operatorname{Fin}m)$ 为行，$\operatorname{Fin}m\times\mathrm{Bool}$ 为观测原子，采用全支持均匀律。实际响应导出每对副本组成一条区分边，实际完整载体输出恰有 $2^m$ 项。对任意固定自然数 $C,k$，某个这样的源满足输出量大于 $C$ 乘以全部观测与目标表单元数的 $k$ 次幂。这是完整显式输出大小的严格障碍，不证明寻找单个载体或压缩答案具有相同复杂性，也不声称多项式延迟算法。
+
+物理删除恰在删除集上写 None，其他位置保留 Some 原读数。由真实更新推导 frame 和失败条件，再调用原 minimal-erasure／blocker 消费者；没有以“缺乏修复”替代物理删除。常目标零副本源有一个空载体且无割集；盲观测而目标不同的源没有载体，割集表恰含空集。这是另登记的快照删除权限，不静默扩充原修复／校准动作，也不证明普遍死亡等价或组织自治。
 
 
 <a id="appendix-a"></a>
@@ -6494,4 +6568,6 @@ C1 的源及传感器对应 UC.MeasurablePredictiveSource、UC.MeasurablePredict
 
 第 39.17—39.19 节对应 UC.BrownianIntegralContinuousVersion、UC.RegisterFaultFeedbackResource、UC.BrownianQuadraticVariation、UC.BrownianIntegralPastLocalization 与 UC.BrownianIntegralCompensator；第 39.20—39.21 节对应 UC.RegisterPopulationHistorySource 和 UC.RegisterPopulationTypePrice。直接义务与精确类型分别见[连续积分／反馈资源](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/continuous_resource_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)和[真实二阶能量／人口来源](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/compensator_population_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。补偿鞅不等于一般分割 QV／Itô；开放资源端口不是封闭源，子代普查不是整个末表。全理论仍 OPEN / NOT_ESTABLISHED。
 
-第 39.22—39.25 节采用 UC 中已集成的完整标量分割 QV、交叉／加权积分、欧氏乘积／向量闭包积分、资金训练及共同群体／日志学习来源。实际公共消费者、精确前提及总义务差额见[完整 QV／训练／发现来源](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/full_qv_vector_training_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)和[向量表示／加权表／共同人口源](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/vector_weighted_population_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。第 39.26—39.29 节采用已集成的 UC.BrownianScalarItoSource、UC.BrownianBoundedC2DynkinSource、UC.OUSemigroupSource、UC.BrownianVectorIntegralL2TimeContinuity、UC.BrownianConstantGirsanovSource 及 UC.DualDriveFiniteNoisyCalibration。原源、实际返回值、独审和边界见[同输入演算／向量完整域／校准来源](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/ito_vector_calibration_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。第 39.30—39.33 节进一步采用已集成 #414/#415：UC.BrownianPastStepGirsanovSource、UC.BrownianFiniteStepShiftedSource、UC.BrownianVectorIntegralContinuousVersion、UC.RegisterActuatorPopulationScale、UC.RegisterPopulationFundingObstruction 及 UC.DualDriveFiniteCalibrationCoverage。实际公共消费者、独审与准确前提见[过去反馈／实际尺度／接受](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/past_feedback_scale_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)和[实际表路径／连续向量／持续资金](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/table_continuous_funding_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。一般有界可预测控制极限、适应校准和载体算法的未集成后继不在本书刊 cut。全理论仍 OPEN / NOT_ESTABLISHED。
+第 39.22—39.25 节采用 UC 中已集成的完整标量分割 QV、交叉／加权积分、欧氏乘积／向量闭包积分、资金训练及共同群体／日志学习来源。实际公共消费者、精确前提及总义务差额见[完整 QV／训练／发现来源](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/full_qv_vector_training_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)和[向量表示／加权表／共同人口源](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/vector_weighted_population_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。第 39.26—39.29 节采用已集成的 UC.BrownianScalarItoSource、UC.BrownianBoundedC2DynkinSource、UC.OUSemigroupSource、UC.BrownianVectorIntegralL2TimeContinuity、UC.BrownianConstantGirsanovSource 及 UC.DualDriveFiniteNoisyCalibration。原源、实际返回值、独审和边界见[同输入演算／向量完整域／校准来源](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/ito_vector_calibration_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。第 39.30—39.33 节进一步采用已集成 #414/#415：UC.BrownianPastStepGirsanovSource、UC.BrownianFiniteStepShiftedSource、UC.BrownianVectorIntegralContinuousVersion、UC.RegisterActuatorPopulationScale、UC.RegisterPopulationFundingObstruction 及 UC.DualDriveFiniteCalibrationCoverage。实际公共消费者、独审与准确前提见[过去反馈／实际尺度／接受](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/past_feedback_scale_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)和[实际表路径／连续向量／持续资金](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/table_continuous_funding_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。该段记录 #414/#415 的历史来源；其后已集成的有界可预测控制、适应校准和载体算法差额见下段。全理论仍 OPEN / NOT_ESTABLISHED。
+
+第 39.34—39.38 节采用已集成 #417/#418。实际有界控制、适应缓存、新方向策略及载体／物理删除见[有界控制与算法来源](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/bounded_control_carrier_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)；所构造 Q 积分与原终端 KL、固定完整联合输入 QV、提交／返回 Instruction 对应 UC.BrownianOwnQIntegralShift、UC.BrownianBoundedTerminalKLSource、UC.BrownianVectorPartitionQV 及 UC.RegisterSemanticInstructionScale，见[实际积分与程序来源](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/q_integral_vector_qv_program_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。未集成的 controlled ItoRun、state-weighted QV／状态 Itô 与可数持续 AST 后继不在本刊 cut；全理论仍 OPEN / NOT_ESTABLISHED。
