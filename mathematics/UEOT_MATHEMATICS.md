@@ -5735,7 +5735,7 @@ $$
 \quad\text{几乎处处}.
 $$
 
-没有把 Itô、括号或余项证书放回假设。独立消费者从两个独立坐标单位输入产生满秩三角状态 $(\Delta B_0,\Delta B_0+2\Delta B_1)$，实际交叉时间能量为 $T$；$\sin(x_0+x_1)$ 的混合 Hessian 在指定点为 $-1$。无界梯度的二次函数只验证 Taylor 余项，不被冒称满足本节完整 Itô 的全局导数条件。非零初态／有限变差漂移、一般无界 $C^2$ 局部化和 SDE 仍另承担来源责任。
+没有把 Itô、括号或余项证书放回假设。独立消费者从两个独立坐标单位输入产生满秩三角状态 $(\Delta B_0,\Delta B_0+2\Delta B_1)$，实际交叉时间能量为 $T$；$\sin(x_0+x_1)$ 的混合 Hessian 在指定点为 $-1$。无界梯度的二次函数只验证 Taylor 余项，不被冒称满足本节完整 Itô 的全局导数条件。第 39.45 节补入明确初态与真实有界可预测漂移；一般无界 $C^2$ 局部化和隐式 SDE 不由该构造自动取得。
 
 ## 39.43 原滤过上的真实 Q 积分鞅
 
@@ -5743,7 +5743,7 @@ $$
 
 实际有限 $W$ 路径由此给连续、原滤过强适应的真实鞅，并在积分终点返回同一 simpleIntegral。原生 $dt\times Q_A$ 的指标函数连续线性映射、实际有限窗口恒等式及闭空间连续性，证明截断保持原显式积分闭包；截断成员资格不是输入字段。真正的 $Q$ 条件期望投影与稠密线性映射恒等式进一步证明“投影等于实际截断”。因此该闭包中的任意同一输入，都有原 $\mathcal F_t$ 上的真实积分鞅、实际二阶时间能量、零时和终点绑定。
 
-一般闭包输入的各时刻等式是逐个时刻几乎处处成立，不是不可数个满事件的任意交，也未证明其一般样本连续版本或所有 $Q$ 可预测 $L^2$ 都进入此闭包。有限实际路径的全样本连续性不被传给一般输入。一个控制窗 $A=3$、积分窗 $U=6$ 的消费者使用原第二时刻的非恒定过去系数；$4\to5$ 的真实增量方差仍为一，相应加权输出二阶矩至少 $9/16$，单位输入的能量为六。部署窗结束不等于噪声结束。
+一般闭包输入的各时刻等式是逐个时刻几乎处处成立，不是不可数个满事件的任意交，也未证明其一般样本连续版本；第 39.48 节另证明原可预测 $Q$ 的完整 $L^2$ 域确实等于此闭包。有限实际路径的全样本连续性不被传给一般输入。一个控制窗 $A=3$、积分窗 $U=6$ 的消费者使用原第二时刻的非恒定过去系数；$4\to5$ 的真实增量方差仍为一，相应加权输出二阶矩至少 $9/16$，单位输入的能量为六。部署窗结束不等于噪声结束。
 
 ## 39.44 从实际更新检查导出恢复性
 
@@ -5751,7 +5751,86 @@ $$
 
 同一 synthesize 返回的 $q$ 通过此恢复检查，当且仅当提交的 $p$ 通过。由可执行检查接纳的同一程序对，推导原 PreservesRepairability，并调用实际 P9 恢复性消费者。这是一阶恢复的充分判据，不是所有最终可恢复或历史策略的完备检查。
 
-在初始受保护程序等于该目标时，实际含故障的保留亲本在一步后是否合法，恰好等价于该步实际 mode 是否为 repair。原无故障永久性不能据此套给不断发生故障的源。恒写和条件修复可以有同一物理恢复，却在完好状态支付不同实际费用；修复性没有因此被当作目的最优或资金可行。此处也未安装新的继承 AST、增加观察、重置初态或提供新资源。长期合法频率、全部六个 P9 语义、组织与分裂合并仍另有义务。
+在初始受保护程序等于该目标时，实际含故障的保留亲本在一步后是否合法，恰好等价于该步实际 mode 是否为 repair。原无故障永久性不能据此套给不断发生故障的源。恒写和条件修复可以有同一物理恢复，却在完好状态支付不同实际费用；修复性没有因此被当作目的最优或资金可行。此处也未安装新的继承 AST、增加观察、重置初态或提供新资源。第 39.47 节补实际长期合法频率、目的与 GOD—GOA；全部六个 P9 语义、组织与分裂合并仍按各自原义务处理。
+
+
+## 39.45 真实漂移积分与同一状态的 Itô
+
+状态维数与噪声维数任意有限。保留同一原联合源、完整可预测输入族及明确初态，定义
+
+$$
+Y_t=x_0+\int_0^t\beta_s\,ds+M_f(t).
+$$
+
+$\beta$ 对整个原联合过去强可预测，并有明确的全局逐样本范数界。真实 Lebesgue 原函数由此强适应、联合可测、逐样本连续，增量范数至多为界乘区间长度。它的平方增量和由网格大小控制，混合漂移—噪声和通过原二次变差紧性及 Cauchy 界趋零，无需新增 $L^4$ 条件。
+
+真实漂移和使用 $\Delta\int\beta ds$。仅可测的 $\beta$ 不保证左端值乘时间步等于或逼近该增量：确定性的有理时刻指标函数是可预测源；在实际单位时域 $[0,1]$ 上，其时间积分为零，而每个有理等距网格上的左端和为一。正确结论保留原可测漂移类，不靠增添时间连续性来掩盖这个反例。
+
+对具有全局有界原生 Frechet 一、二阶导数的 $C^2$ 函数 $\varphi$，同一 $Y$ 的梯度产生具体原积分输入 $g$。实际 START 和、加权漂移和、Hessian 交叉和、Taylor 余项及有限伸缩式共同给
+
+$$
+\begin{aligned}
+\varphi(Y_T)&=\varphi(x_0)+M_g(T)+\int_0^T D\varphi(Y_s)[\beta_s]ds\\
+&\quad+\frac12\int_0^T\sum_{j,k}\partial_{jk}\varphi(Y_s)
+\langle f_j(s),f_k(s)\rangle ds.
+\end{aligned}
+\qquad\text{几乎处处}
+$$
+
+这是所构造过程的实际恒等式，不是任意隐式 SDE 的存在定理。全局有界漂移不能直接套给无界的 $-kX$；下一节的 OU 另从其真实显式机制推导。
+
+## 39.46 物理时钟 OU 与原恢复消费者
+
+旧时间变换 OU 已给正确转移律，但其样本路径不能直接被当作同一物理时钟上的 Brownian 驱动。令 $\bar B_t=B_t-B_0$，真实 Volterra 状态为
+
+$$
+X_t=e^{-kt}\left(x_0-k\sigma\int_0^t e^{ks}\bar B_sds\right)
++\sigma\bar B_t.
+$$
+
+它逐样本初始为 $x_0$，在原物理滤过上适应且连续。原生微积分基本定理直接给
+
+$$
+X_t=x_0-k\int_0^t X_sds+\sigma\bar B_t.
+$$
+
+在同一个满事件 $B_0=0$ 上，$\bar B$ 可还原为实际 $B$；没有给所有原始样本强加 $B_0=0$。原生确定性 Gaussian 积分、实际 Riemann／积分分部界和 $L^2$ 极限唯一性把同一随机积分绑定到上述 Volterra 路径。可测的未来坐标极限和原源整个过去的独立性，给真实创新 Gaussian 律。
+
+当 $k>0$，这条物理路径自己的条件核恰等于原 OU 转移核。实际物理推送律与旧有效 OU 律相等是**律等式**，并非样本路径相等。由该律推导实际二次 Dynkin 证书，再让原 P-REC-02 接收物理路径自身的推送律，得到
+
+$$
+\mathbb E[X_t^2]\le e^{-2kt}x_0^2+
+\frac{\sigma^2}{2k}(1-e^{-2kt}).
+$$
+
+这里实际二阶矩达到右侧。独立消费者取 $k=3/2,\sigma=-4,x_0=5$，使用原物理过去、非线性过去读数及真实条件核；零时、重复时刻和零噪声保留。当 $k=0$，新物理过程为 $X_t=x_0+\sigma(B_t-B_0)$，方差为 $\sigma^2t$；其原生单位指数积分的方差为 $t$，不能使用旧公式中退化为零的时间变换时钟。一般 SDE、无界函数局部化与这个明确 OU 来源分列。
+
+## 39.47 同一实际程序的长期、目的与 GOD—GOA
+
+初始受保护程序等于目标，且提交 AST 通过真实恢复检查时，一步后的合法性恰是实际 repair mode 指标。对原登记 IID mode／label 源，令故障概率为 $\varepsilon$，则实际合法频率几乎处处为 $1-\varepsilon$；$\varepsilon<1$ 时无限返回合法状态，而 $\varepsilon>0$ 时原“最终永久合法”事件概率为零。只有这些 mode 指标被证明 IID，完整动作、费用和历史记录没有被声称 IID。支付费用也不自动提供资源。
+
+同一实际 Organism、提交程序 $p$ 与计算返回的 $q$ 继续进入真实无穷记录律、可积折扣收益和原控制消费者。价格、成本和折扣是明确评价合同；实际解释／更新／出生／费用到该收益的关系另由源推导。原原生 Bellman 结果比较的是全部声明内细状态历史因果策略，不只 Bool 编译器类。由真实记录收益等式与该比较，得到同一 $p/q$ 的目的运输和 P9 消费。
+
+原故障概率 $1/4$、价格和成本为一、折扣 $1/2$ 的合同仍给条件修复价值 $21/16$、恒定付费写入价值零，尽管二者物理恢复路径可以相同。另一个明确登记的零价格合同给价值 $3/2$，其隐藏状态依赖的细层最优动作没有粗层当前动作因子。这不改原合同，也不否定存在正确粗层最优策略。
+
+GOD 是原集合值 Bellman 对应。实际程序最优动作可以与某个规范 greedy 的平局选择不同。由真实保留亲本递归与原 IID 源推导正时刻物理边缘、实际选择器转移行及不变律，再调用原 InvariantLawGOA。这个联合最优消费者具体取原条件修复程序 $p=\operatorname{compile}(i,\mathrm{goal})$ 及其计算返回的 $q$，保留 $0<d<1$、价格乘写入成本不超过一、初始受保护程序等于目标的条件。相同返回 $q$ 因此同时拥有原生最优收益、GOD 与 GOA；任意恢复检查通过本身不推出最优性。粗层常行核的不变律唯一，而细层保留的被动坐标允许不同不变律。
+
+恒付费策略仍可具有同一物理 GOA 却价值零；全故障时 GOA 也可以落在合法概率零的状态上。弱最优不推出恢复，稳态不推出活着。这里实际 IID 边缘来源与原生价值适配分别绑定，没有额外声称整个适配器路径相等或任意时间相关原始流都保持同样最优性。全部六种 P9 性质、一般组织与分裂合并仍各有原义务。
+
+## 39.48 完整原可预测 Q 域与真正无界系数
+
+固定同一有界部署所产生的 $Q_A$，先独立定义原可预测 $\sigma$ 代数中的原生 $L^2(dt\times Q_A)$ 子空间。对其真实可预测代表逐次截断，得到合法、有界的原 $P$ 输入；既有目标输入定理让每个截断进入已构造的 $Q_A$ 积分闭包。真正的 $Q_A$ 上 $L^2$ 支配收敛及闭性给反向包含，原实际有限表的可预测性给正向包含。因此完整域等于原闭包是证明结论，不是定义改名。
+
+同一原生输入的恒等类等距映射产生实际全域积分、原滤过上的真实鞅、条件过程和截断时间能量，调用者不再外给闭包成员资格。滤过仍是整个原过去，没有假定它等于 $W$ 的自然滤过。
+
+一个独立非恒定控制消费者保持部署窗 $A=2$ 的同一 $Q_A$，在积分窗 $U=5$ 使用 $H=W_1$。该系数属于真实 $Q_A$ 的 $L^2$ 而不属于 $L^\infty$，且
+
+$$
+I_{Q_A}\bigl(W_1\,1_{(1,4]}\bigr)=W_1(W_4-W_1),
+\qquad \mathbb E_{Q_A}[I^2]=3,\qquad\mathbb E_{Q_A}[I]=0.
+$$
+
+截断和实际有限记录极限证明这个同一积分产品式，不能直接套仅适用于本质有界系数的旧引理。行首、重复窗口、零积分时域以及 $A=0$ 仍有噪声的边界分别验证。一般输入的过程等式仍逐个时刻几乎处处成立，未据此声称任意不可数共同满事件、一般样本连续版本或所有局部化 Itô。
 
 
 <a id="appendix-a"></a>
@@ -6663,4 +6742,6 @@ C1 的源及传感器对应 UC.MeasurablePredictiveSource、UC.MeasurablePredict
 
 第 39.34—39.38 节采用已集成 #417/#418。实际有界控制、适应缓存、新方向策略及载体／物理删除见[有界控制与算法来源](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/bounded_control_carrier_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)；所构造 Q 积分与原终端 KL、固定完整联合输入 QV、提交／返回 Instruction 对应 UC.BrownianOwnQIntegralShift、UC.BrownianBoundedTerminalKLSource、UC.BrownianVectorPartitionQV 及 UC.RegisterSemanticInstructionScale，见[实际积分与程序来源](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/q_integral_vector_qv_program_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。该段记录 #417/#418 的历史来源；后续采纳见下段；全理论仍 OPEN / NOT_ESTABLISHED。
 
-第 39.39—39.44 节采用已集成 #420/#421。[实际原控制／权重／持续程序](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/fixed_q_run_stateweighted_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)对应原 ItoRun／P-CTL、实际同状态 START 权重及同一 AST 可数完整律；[状态演算／Q 鞅／恢复](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/state_ito_q_martingale_recovery_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)对应 UC.BrownianFiniteStateItoSource、UC.BrownianOwnQIntegralMartingale 与 UC.RegisterInstructionRecoveryScale。实际 source、公共消费者、独审及边界以各包为准。未集成的漂移状态、物理时钟 OU、长期 homeostasis 后继不在本刊 cut。全理论仍 OPEN / NOT_ESTABLISHED。
+第 39.39—39.44 节采用已集成 #420/#421。[实际原控制／权重／持续程序](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/fixed_q_run_stateweighted_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)对应原 ItoRun／P-CTL、实际同状态 START 权重及同一 AST 可数完整律；[状态演算／Q 鞅／恢复](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/state_ito_q_martingale_recovery_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)对应 UC.BrownianFiniteStateItoSource、UC.BrownianOwnQIntegralMartingale 与 UC.RegisterInstructionRecoveryScale。实际 source、公共消费者、独审及边界以各包为准。这些来源的后继现见第 39.45—39.48 节。全理论仍 OPEN / NOT_ESTABLISHED。
+
+第 39.45—39.48 节对应 UC.BrownianFiniteStateDriftItoSource、UC.PredictableDriftPointSamplingCounterexample、UC.OUPhysicalRecoverySource、UC.RegisterInstructionHomeostasis／PurposeScale／GODScale／GOASource 与 UC.BrownianOwnQPredictableDensity／FullIntegralSource／UnboundedIntervalSource。真实 source、公共消费者、独审及量词见[物理来源与实际程序差额](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/drift_ou_instruction_qfull_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。轮换身体及资源后继未纳入本批；全理论仍 OPEN / NOT_ESTABLISHED。

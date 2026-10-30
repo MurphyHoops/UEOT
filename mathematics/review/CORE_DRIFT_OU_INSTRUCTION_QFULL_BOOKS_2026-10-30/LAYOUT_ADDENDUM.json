@@ -1,0 +1,66 @@
+{
+  "schema": "ueot-book-layout-review-addendum-v1",
+  "verdict": "PASS_LAYOUT_ONLY_SEMANTICS_IDENTICAL",
+  "reviewer": "/root/register_typed_review",
+  "created_utc": "2026-10-30T08:57:10.192270+00:00",
+  "original_frozen_prose_review": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/mathematics/review/CORE_DRIFT_OU_INSTRUCTION_QFULL_BOOKS_2026-10-30/INDEPENDENT_SOURCE_REVIEW.json",
+    "sha256": "fbb59dc793e28134e3170474daaf12e46b00c6c7d78cfb1ca11c8b98b44a7fd9",
+    "bytes": 18503
+  },
+  "before_math": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/drift-ou-instruction-qfull-books-evidence-20261030/MATH_BEFORE_ITO_DISPLAY_WRAP.md",
+    "sha256": "9922bab0cd9455d15dee3a3e1131b5082e9adae01aefb67ff3a3875cbf9922ac",
+    "bytes": 433079
+  },
+  "final_math": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/mathematics/UEOT_MATHEMATICS.md",
+    "sha256": "184d5433e80fa1c4617e21368537b2d94409026b8d2c1c45104530c5ad19b858",
+    "bytes": 433118
+  },
+  "external_final_draft": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/drift-ou-instruction-qfull-books-evidence-20261030/DRAFT/UEOT_MATHEMATICS.md",
+    "sha256": "184d5433e80fa1c4617e21368537b2d94409026b8d2c1c45104530c5ad19b858",
+    "bytes": 433118
+  },
+  "unchanged_phi_and_index": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/philosophy/UEOT_PHILOSOPHY.md",
+      "sha256": "f4f293ff0c90eb533e3fd1482deed2f6f13379005048334abadb2d5f15386067",
+      "bytes": 143290
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/mathematics/UEOT_MATHEMATICS_SOURCES.md",
+      "sha256": "4f18c001dff24c0c891d5bd649dadff0f4e2291747af8c990f523a477fe1d7af",
+      "bytes": 37624
+    }
+  ],
+  "checkout_context_only": "686cde595e920e0ecb442bca3b7eacc8c049dfb0",
+  "actual_source_main_root_reported": "686cde595e920e0ecb442bca3b7eacc8c049dfb0",
+  "observed_exact_delta": {
+    "scope": "Only39.45 display after its unchanged hypotheses",
+    "before": "$$\n\\varphi(Y_T)=\\varphi(x_0)+M_g(T)\n+\\int_0^T D\\varphi(Y_s)[\\beta_s]ds\n+\\frac12\\int_0^T\\sum_{j,k}\\partial_{jk}\\varphi(Y_s)\n\\langle f_j(s),f_k(s)\\rangle ds\n\\quad\\text{几乎处处}.\n$$",
+    "after": "$$\n\\begin{aligned}\n\\varphi(Y_T)&=\\varphi(x_0)+M_g(T)+\\int_0^T D\\varphi(Y_s)[\\beta_s]ds\\\\\n&\\quad+\\frac12\\int_0^T\\sum_{j,k}\\partial_{jk}\\varphi(Y_s)\n\\langle f_j(s),f_k(s)\\rangle ds.\n\\end{aligned}\n\\qquad\\text{几乎处处}\n$$",
+    "whole_document_single_display_replacement_verified": true,
+    "equation_and_AE_tokens_identical_modulo_only_layout_whitespace_punctuation": true,
+    "math_repository_equals_external_draft_bytes": true
+  },
+  "meaning": "Same Y,initialstate,M_g,beta drift integral,Hessian cross energy,coefficient1/2 and almost-everywhere qualifier. aligned/ampersands/two-line break change mathematical layout only. All scientific scope and source identities from frozen prior review remain in force.",
+  "reason_for_layout_change": "First actual math build exited0 but one genuine overfull hbox at this long display. Compilation success alone was not visual/layout pass.",
+  "first_build_evidence": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/drift-ou-instruction-qfull-books-evidence-20261030/MATH_FIRST_BUILD_OVERFULL.json",
+      "sha256": "d0a8d5aac6889e96622a20592ced0a40870ff4a50e83c0c27c6f8234b336dd9a",
+      "bytes": 1131
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/drift-ou-instruction-qfull-books-evidence-20261030/FIRST_BOTH_BOOKS_BUILD.log",
+      "sha256": "09bbb831277f4ac5e0227233725bdaae1ba25cc0cae3e6aeba05fe0eb231af59",
+      "bytes": 2110
+    }
+  ],
+  "validation_boundary": "This addendum independently verifies exact text/math identity and final MD hashes; does not assert pending root final rebuild/renderQA passed. No Lean proof rerun needed for layout-only unchanged source.",
+  "mutations": "Only new LAYOUT_ADDENDUM.json; original review/source/books/Git/GI untouched.",
+  "blocking_findings": [],
+  "whole_goal": "OPEN_NOT_ESTABLISHED"
+}
