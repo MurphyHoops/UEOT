@@ -1,0 +1,179 @@
+{
+  "schema": "ueot-nonauthor-semantic-source-review-v1",
+  "verdict": "PASS_FINITE_LINEAR_RANK_IFF_CONSTRUCTS_FACTORS_AND_DERIVES_NONDEGENERACY",
+  "reviewer": "/root/body_hitting",
+  "created_utc": "2026-10-30T15:48:00.235167+00:00",
+  "source": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveFiniteRankFactorization.lean",
+    "sha256": "20429af68d918e340d6bd125b4f799cc5c3b4a3b8c8fe6d4055b8c74e47693b5",
+    "bytes": 6907,
+    "lines": 119
+  },
+  "author_receipt": {
+    "path": "/tmp/ueot-finite-rank-factor-source-receipt.json",
+    "sha256": "92770ef74e58d0a59fdf9b11701d89224ef57602a7055b70469c5f2a3d212855",
+    "bytes": 6351,
+    "lines": 102
+  },
+  "checkout_context_only": "bdef87cf16255e771bbd7052501f171c1ee329ce",
+  "independence": "NONAUTHOR of new finite-rank leaf and old GL/anchor/rank sources. Complete frozen leaf and exact original interfaces read; independently built new mixed4-input/3-output response, distinct shear, independent units, degenerate and nonidentity rank3 consumers. Direct/type/consumer Lean checks and independent exact Fraction matrix/minor/response reproduction; no old GL classification reimplementation.",
+  "old_source_identities_verified": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/CommonBottleneckRank.lean",
+      "sha256": "2f0ec39d4ec46c5f00e74726c9c27d6add7699651dd85b67e09ef38341546d7e",
+      "bytes": 5519
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveLinearGaugeClassification.lean",
+      "sha256": "6931bfb534570015b45f6601592adb654f7fc62e283d56fccae2fb678a804c53",
+      "bytes": 4154
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveOperationalAnchors.lean",
+      "sha256": "aa4fda07436424ac262bb81501318713b77ef9f3fb3dbbbf4ee164532e17e796",
+      "bytes": 9583
+    }
+  ],
+  "semantic_review": [
+    {
+      "endpoint": "finite_rank_le_two_iff_linear_factorization",
+      "judgment": "PASS",
+      "reason": "Finite-dimensional real INPUT implies finite-dimensional actual range J, even with arbitrary possibly infinite-dimensional output Y. Existing finrank injection criterion embeds that actual range into existing TwoDriveLatent. Existing linear left inverse followed by actual range subtype constructs decoder; encoder is embedding composed with J.rangeRestrict. Proof uses only observed map/rank upper bound, not supplied H/G or a desired factorization field. Reverse direction uses actual composition range dimension, not a floating rank heuristic."
+    },
+    {
+      "endpoint": "rank_two_factorization_nondegenerate",
+      "judgment": "PASS",
+      "reason": "Exact rank(J)=2 forces rank(H)>=2 and rank(H)<=dim(latent)=2, so H is onto. Actual rank G=2 and finite latent rank-nullity force ker G dimension0, hence G injective. Applies to ANY exact factorization, without independent caller surjectivity/injectivity assumptions. Mere rank<=2 is not substituted for exact rank2."
+    },
+    {
+      "endpoint": "rank_two_exists_nondegenerate_factorization",
+      "judgment": "PASS",
+      "reason": "Uses actual factor existence from prior iff then derives both nondegeneracy facts. Caller obtains the constructed existential from rank rather than simply returning independently supplied known factors."
+    },
+    {
+      "endpoint": "rank_two_factorizations_unique_gauge",
+      "judgment": "PASS_OLD_CONSUMER_ACTUALLY_CALLED",
+      "reason": "For BOTH exact same-J factors, rank-derived nondegeneracy discharges old nondegenerate_linear_factorization_unique_gauge inputs. Unique invertible latent coordinate change preserves contragredient decoder; no physical axis meaning inferred."
+    },
+    {
+      "endpoint": "rank_two_registered_units_identify",
+      "judgment": "PASS_OLD_ANCHOR_CONSUMER_ACTUALLY_CALLED",
+      "reason": "Old registered_unit_interventions_identify_factorization is actually called, with decoder injectivity derived from rank. SAME independently registered unit responses for BOTH models remain explicit; no selective intervention is created by the observed response or by rank."
+    },
+    {
+      "endpoint": "matrix_rank_le_two_iff_linear_factorization",
+      "judgment": "PASS_EXACT_OLD_COORDINATES",
+      "reason": "Actual Matrix.rank agrees with finrank(range Matrix.mulVecLin); matrix-facing statement uses this actual linear map. It does not transfer a fitted or differently ordered matrix rank to an unrelated source map."
+    }
+  ],
+  "independent_caller": {
+    "path": "/tmp/ueot-independent-finite-rank-factor-consumer.lean",
+    "sha256": "c6e039c5bd016b7d1c3ce7f50297ed6434f8957a225bb0958af8234fa39fb9ab",
+    "bytes": 7825,
+    "lines": 171
+  },
+  "independent_actual_results": {
+    "mixed_response": "Input Fin4->R; H(x)=[2x0+x2,x1-3x3]; G(z)=[z0+z1,2z0-z1,5z1]. Source J=G.comp H. Actual J([1,-2,3,4])=[-9,24,-70]; range dimension exactly2 proved.",
+    "rank_creates_factor": "rank_two_exists_nondegenerate_factorization J exact_rank is actually consumed, producing existence without passing H/G. Another theorem quantifies ANY alternative E/D with J=D.comp E and derives onto/injective using rank only.",
+    "exact_matrix_binding": "Independently written observed real matrix [[2,1,1,-3],[4,-1,2,3],[0,5,0,-15]]; actual observed.mulVecLin=J proved by LinearMap.ext on every input and native finite dot product. Its Matrix.rank=2 and matrix factor criterion are actually consumed.",
+    "distinct_gauge": "Old driveShear(-2/3) produces Hs different from H and Gs=G.comp S.inverse; exact same actual J proved. New rank-derived theorem consumes old unique GL orbit for these actual factors.",
+    "independent_units": "Registered input interventions [1/2,0,0,0] and [0,1,0,0] produce unit axes for H. Old unit-anchor consumer invoked for ANY same-J alternative satisfying those SAME units, no caller injectivity premise. Sheared model explicitly fails the second unit, showing composite observations alone did not fix units.",
+    "rank0_and1": "Zero finite map gets existence from iff; real identity has exact rank1 and actual factor H1(x)=[x,0],G1(z)=z0. H1 is NOT onto and G1 is NOT injective, both proved. No rank1/zero GL uniqueness is claimed.",
+    "rank3": "Nonidentity rankThree=2*id on Fin3 has exact rank3; no two-dimensional linear factor and no factor for its exact observedThree matrix, both actually proved. Independent Fraction determinant8 corroborates.",
+    "arbitrary_output": "Criterion instantiated with ANY linear F:(Fin2->R)->linear(Nat->R), whose codomain need not be finite dimensional. Finite input dimension is retained.",
+    "independent_fraction": "Exact rational matrix multiplication, response, same-J shear relation, nonzero2x2 minor -6, all3x3 minors0, unit/semi-anchor behavior and rank3 determinant8 independently asserted. No floating rank or empirical data."
+  },
+  "checks": [
+    {
+      "command": "lake env lean UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveFiniteRankFactorization.lean",
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core",
+      "actual_exit_code": 0,
+      "log": {
+        "path": "/tmp/ueot-independent-finite-rank-factor-direct.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "lines": 0
+      },
+      "empty_log": true
+    },
+    {
+      "command": "lake env lean /tmp/ueot-independent-finite-rank-factor-types.lean",
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core",
+      "actual_exit_code": 0,
+      "input": {
+        "path": "/tmp/ueot-independent-finite-rank-factor-types.lean",
+        "sha256": "fefc281fb9a77ceab13c33408838d7afa13bb0ac129ac05fe3d2e7f82656a997",
+        "bytes": 1324,
+        "lines": 13
+      },
+      "log": {
+        "path": "/tmp/ueot-independent-finite-rank-factor-types.log",
+        "sha256": "6fae05727b01936c3e8e37ec63988ff8ec994fd0cc7d404f1332ccb6124ca7b5",
+        "bytes": 3751,
+        "lines": 48
+      },
+      "public_theorems": 6,
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "command": "lake env lean /tmp/ueot-independent-finite-rank-factor-consumer.lean",
+      "cwd": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core",
+      "actual_exit_code": 0,
+      "log": {
+        "path": "/tmp/ueot-independent-finite-rank-factor-consumer8.log",
+        "sha256": "b5ea2c465e769f177221b6849949d7cd15ebd93a4bcbe3f8f5136fddc14073f8",
+        "bytes": 1210,
+        "lines": 11
+      },
+      "named_proofs_axioms": 11,
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "warnings": 0
+    },
+    {
+      "command": "python3 /tmp/ueot-independent-finite-rank-factor-semantics.py",
+      "actual_exit_code": 0,
+      "script": {
+        "path": "/tmp/ueot-independent-finite-rank-factor-semantics.py",
+        "sha256": "646b570727239a932cae0089e6bae215ca4db2852a3d572c7bc8b93b38e29888",
+        "bytes": 1768,
+        "lines": 32
+      },
+      "log": {
+        "path": "/tmp/ueot-independent-finite-rank-factor-semantics.log",
+        "sha256": "8f5b651f00b96a7a6bf5b26a9e360bdf13511b5c122b9e274b9a8239ce31b35c",
+        "bytes": 298,
+        "lines": 1
+      },
+      "output": {
+        "path": "/tmp/ueot-independent-finite-rank-factor-semantics.json",
+        "sha256": "ee673de7331911aed52b3e06284e058ba643ed4c9a75ce249bbadb176d171c4b",
+        "bytes": 1341,
+        "lines": 132
+      }
+    }
+  ],
+  "blocking_findings": [],
+  "scope_and_remaining_obligations": [
+    "Exact finite real LINEAR factor criterion. Infinite output allowed, finite-dimensional input retained; Nat finrank must not be used as an unrestricted infinite-rank detector.",
+    "Constructed existence is classical mathlib linear algebra; not an efficient executable numerical factorizer or a certificate that floating/finite noisy data have exact rank2.",
+    "Rank0/1 factorization has unused latent dimensions; rank upper bound alone does not derive nondegeneracy or unique GL gauge.",
+    "No physical Pi/Phi meaning, independently selective intervention, response-model validity or unit calibration follows from rank. Their exact premises stay independent.",
+    "A single derivative/Jacobian factor is a pointwise linear statement. Original CommonBottleneckRank differentiable shared-z chain-rule implication remains valid, and this finite converse does NOT prove a global differentiable/nonlinear common mechanism or transport across budget points.",
+    "No whole C5 empirical support or whole-theory closure is claimed. Public exports, integration, both books and GI remain root responsibility."
+  ],
+  "preserved_independent_implementation_failures": [
+    "/tmp/ueot-independent-finite-rank-factor-consumer1.log and consumer2.log: vector coordinate3 and actual matrix basis-single evaluation issues; corrected fixture-only simplification/linear-map extensionality. No model/source change.",
+    "/tmp/ueot-independent-finite-rank-factor-consumer3.log through consumer5.log: broad Fin.ext_iff caused simp recursion. Raising local recursion limit produced no new information; switched proof decomposition and removed that limit.",
+    "/tmp/ueot-independent-finite-rank-factor-consumer6.log and consumer7.log: generic ext selected basis vectors and recursive sum left constructor/numeral aliases. Replaced by explicit LinearMap.ext on arbitrary input and existing native Fin.sum_univ_four, obtaining final consumer8 exit0 without warnings. All matrix coefficients/cases/thresholds remained fixed."
+  ],
+  "source_public_export_git_gi_books_config_mutations": false,
+  "whole_theory_status": "OPEN_NOT_ESTABLISHED"
+}
