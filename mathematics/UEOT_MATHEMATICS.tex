@@ -5722,6 +5722,47 @@ I_{Q_A}\bigl(W_1\,1_{(1,4]}\bigr)=W_1(W_4-W_1),
 
 原宽度 \(1/4\) 的批次没有改作细分箱：独立保持该宽度的消费者得到分箱8／24和动态修复／idle，但其旧低费用选择是 UNKNOWN，不能借用细宽度例的旧 idle。原 \(c=3\) 虽有正无限修复价值，在固定 \(N=64,u=1/4\) 的两个宽度下新选择仍 UNKNOWN，未加样本或改阈值。独立登记的 \(N=96\)、宽度 \(1/20\) 形式例核对全部192真实读数，实际训练后亲本完好，低／高费用的同一 \(p/q\) 值为 \(9/5\) 与 \(3/2\)，全部训练费用为 \(2592/5\) 与 \(1728\)。这些不同末状态和非零费用共同检验了没有重置或免费训练的连接。
 
+\hypertarget{ux540cux4e00ux8badux7ec3ux4e0eux90e8ux7f72ux8054ux5408ux5f8bux4e0aux7684ux771fux5b9eux652fux4ed8}{%
+\section{39.55 同一训练与部署联合律上的真实支付}\label{ux540cux4e00ux8badux7ec3ux4e0eux90e8ux7f72ux8054ux5408ux5f8bux4e0aux7684ux771fux5b9eux652fux4ed8}}
+
+第 39.54 节原 \(2N\) 笔训练交易和实际训练后亲本不变，随后仍由同一数据返回的 AST 在原生无穷部署律上执行。每笔原 literal 交易费用在 \([0,c]\) 内，包括失败、故障、UNKNOWN 和错误选择。源推导这个费用界，不向调用者另索取所需的路径可行性证书。
+
+现在使用原已登记的开放环境权限：有独立已知费用上界 \(C\ge c\)，每笔真实交易支付前先到达外供 \(g\ge C\)，初始储备 \(R_0\ge0\)。令 \(e_t\) 是同一个完整训练加部署记录的实际费用，则
+
+\[
+B_{t+1}=B_t+g-e_t,\qquad B_0=R_0.
+\]
+
+同一真实联合律上几乎处处，每个前缀满足原 P6 的 ResourceViable，且该笔费用在支付前可负担：\(e_t\le B_t+g\)。允许 \(R_0=0\) 是因为供给在首笔支付之前到达；若供给次序不同，合同也必须不同。这里没有插入旧的等待动作，没有用 \(4N+1\) 的另一协议代换原 \(2N\) 轨迹，也没有重置训练后状态。资本坐标的可测增广是一条概率律，抹去它严格回到原训练乘部署 jointLaw。
+
+供给条件是充分环境权限，不是所有策略的必要阈值或内生能量结论。选择器不读 \(C,g\) 或真费用；实际 \(p/q\) 的 GOD／P9 和无限价值、原唯一校准风险保持同一来源。资金几乎处处有效，不再重复增加统计失败预算，但也未证明训练净收益最优。
+
+原宽度 \(1/4\)、\(N=64\)、实际费用 \(11/5\) 的完整128输入例，在 \(C=g=3,R_0=0\) 下保持实际损坏末亲本及价值 \(15/32\)。独立 \(N=80\) 的160输入形式例有真实训练费312、坏末亲本、同一 \(p/q\) 值 \(321/400\)，在 \(C=4,g=9/2,R_0=1/2\) 下全部可支付。同一例若 \(g=1/2\)，首笔余额在正联合质量上为 \(-8/5\)。数学源例未替换原经验数据。对原单比特编译策略，\(c>0\)、\(0<\varepsilon<1\)、任意给定有限初储备的零收入 no-AE 障碍仍保留；全故障时实际费用可以为零，不能把这个结论推广为所有正故障或所有策略的资源障碍。
+
+\hypertarget{ux53efux6570ux5757ux8bb0ux5f55ux5f8bux53caux5b8cux6574ux8eabux4f53ux7684ux4fe1ux606fux969cux788d}{%
+\section{39.56 可数块记录律及完整身体的信息障碍}\label{ux53efux6570ux5757ux8bb0ux5f55ux5f8bux53caux5b8cux6574ux8eabux4f53ux7684ux4fe1ux606fux969cux788d}}
+
+第 39.53 节的实际注入块现在延续为无穷执行，每轮仍恰有 \(k\) 笔原交易。实际保留亲本、全部有限顺序记录前缀与端口限制交换。原生无穷乘积推送定理和已证单轮真实源限制，导出整条输入流的律；每个记录坐标的可测性由实际有限源因子推导。由此得到同一完整可数记录的推送律相等，任意可测记录事件都可运输，未把有限前缀结论直接改名为无穷结论。
+
+原 \(k\) 端口身体返回和 P10 消费者因此适用于这个细层 \(n\) 端口源的同一块目标。成功率为 \(p=(1-\varepsilon)^k\)，任意起始轮后 \(R\) 轮不返回的概率恰为 \((1-p)^R\)；\(\varepsilon<1\) 时几乎处处无限返回块目标。完整细身体目标仍等价于块目标加未访问坐标初始全好。若缺少 PassiveReady，同一实际流在每个时钟都不能使完整身体全好。
+
+两个只在隐藏被动初态不同的细亲本，整个投影无穷记录完全相同；在 \(\varepsilon<1\) 时，完整身体成功的正质量却不同。因此不存在一个读取这些完整块记录的解码器，对两条实际初态源都几乎处处正确判断完整身体成功。证明使用真实正质量，不借零概率全成功词。独立 \(n=5,k=3\)、端口 \([4,1,3]\)、故障率 \(2/5\)、费用 \(7/3\) 的消费者核对真实六笔交易与费用7、可数尾事件运输、失败率 \(98/125\) 及原 P10。空块、空身体及全故障边界分列。它不是整个 \(n\) 端口扫描，也未自动运输任意细历史控制／GOD、资源或折扣时间单位。
+
+\hypertarget{ux540cux4e00ux5b9eux9645ux8defux5f84ux7684ux539fux547dux4e2dux65f6ux95f4ux6d88ux8d39ux8005}{%
+\section{39.57 同一实际路径的原命中时间消费者}\label{ux540cux4e00ux5b9eux9645ux8defux5f84ux7684ux539fux547dux4e2dux65f6ux95f4ux6d88ux8d39ux8005}}
+
+每轮新的轮末物理状态由当前原输入生成，并与整个此前原输入的 \(\sigma\) 代数独立；结合真实保留亲本递归，推导实际物理路径自己的齐次转移核、Dirac 实际初态和原 homTrajMeasure 的完整路径律。原 hittingAfter 在这个路径上定义首个注册身体目标命中 \(\tau\)，包括初始时刻零。它是原完整过去上的可测停时；登记过程继续执行，没有执行新的停止或重启。
+
+真实生存尾计数绑定到原非负 hittingValue。对同一源进行非负尾积分，若初态已经在目标，则 \(\mathbb E\tau=0\)；否则
+
+\[
+\mathbb E\tau=\bigl((1-\varepsilon)^k\bigr)^{-1}.
+\]
+
+这里使用扩展非负值，零成功概率的逆为无穷。实际坏状态指标势非负，真实转移行积分导出目标外下降量 \(p=(1-\varepsilon)^k>0\)。原 P-REC-04 于是消费同一个核、初态和漂移，给 \(\mathbb E\tau\le1/p\)；精确尾式进一步给坏初态等号。初态好为零、零故障坏初态为一、空身体为零、全故障且正身体维数的坏初态几乎处处永不命中，以及非全故障时实际停时几乎处处有限，均有来源证明。
+
+这个 \(\tau\) 只在每轮 \(k\) 笔交易结束时观察目标，不是最早微步骤命中。独立两端口、true 目标、故障率 \(1/3\)、费用 \(5/2\) 的例给 \(p=4/9\)、\(\mathbb E\tau=9/4\) 和原 P-REC-04 同一上界；实际词在第三笔交易已身体完好、第四笔再次故障，注册首命中却是第三轮末，累计六笔交易、实际费用5。不能把轮末时间等同微步骤首次时间、有限资源寿命或调整折扣时钟。本节是从实际路径到原消费者的证明，不是外给一个具有所需均值的几何变量。
+
 \hypertarget{ux9644ux5f55-a.-ux7b26ux53f7ux4e0eux7c7bux578bux7d22ux5f15}{%
 \chapter{附录 A. 符号与类型索引}\label{ux9644ux5f55-a.-ux7b26ux53f7ux4e0eux7c7bux578bux7d22ux5f15}}
 
@@ -6816,7 +6857,9 @@ C1 的源及传感器对应 \nolinkurl{UC.MeasurablePredictiveSource}、\nolinku
 
 第 39.45---39.48 节对应 \nolinkurl{UC.BrownianFiniteStateDriftItoSource}、\nolinkurl{UC.PredictableDriftPointSamplingCounterexample}、\nolinkurl{UC.OUPhysicalRecoverySource}、\nolinkurl{UC.RegisterInstructionHomeostasis}／PurposeScale／GODScale／GOASource 与 \nolinkurl{UC.BrownianOwnQPredictableDensity}／FullIntegralSource／UnboundedIntervalSource。真实 source、公共消费者、独审及量词见\href{../formalization/ueot-core/docs/compression/theory_completion/unified_closure/drift_ou_instruction_qfull_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md}{物理来源与实际程序差额}。轮换身体、实际子对象、全价格目的、有限资源、有限块运输及原数据动态选择现见第 39.49---39.54 节；全理论仍 OPEN / NOT\_ESTABLISHED。
 
-第 39.49---39.54 节对应已集成 \#425/\#426 的 \nolinkurl{UC.RegisterRotatingBodySource}／Returns／P10、\nolinkurl{UC.RegisterRotatingChildRepair}、\nolinkurl{UC.RegisterFaultDynamicPrice}／Program、\nolinkurl{UC.RegisterFaultFiniteResourceMaintenance}／Witness／Boundary、\nolinkurl{UC.RegisterBlockFormationTransport} 与 \nolinkurl{UC.RegisterFaultDynamicProbe}／Infinite。准确来源、独立公共消费者与条件见\href{../formalization/ueot-core/docs/compression/theory_completion/unified_closure/rotating_body_dynamic_price_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md}{实际时变身体与全价格目的}和\href{../formalization/ueot-core/docs/compression/theory_completion/unified_closure/resource_block_dynamic_data_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md}{有限资源／块／数据动态来源}。本刊不采用未集成的资金、可数块、命中时间与 P12 后继。全理论仍 OPEN / NOT\_ESTABLISHED。
+第 39.49---39.54 节对应已集成 \#425/\#426 的 \nolinkurl{UC.RegisterRotatingBodySource}／Returns／P10、\nolinkurl{UC.RegisterRotatingChildRepair}、\nolinkurl{UC.RegisterFaultDynamicPrice}／Program、\nolinkurl{UC.RegisterFaultFiniteResourceMaintenance}／Witness／Boundary、\nolinkurl{UC.RegisterBlockFormationTransport} 与 \nolinkurl{UC.RegisterFaultDynamicProbe}／Infinite。准确来源、独立公共消费者与条件见\href{../formalization/ueot-core/docs/compression/theory_completion/unified_closure/rotating_body_dynamic_price_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md}{实际时变身体与全价格目的}和\href{../formalization/ueot-core/docs/compression/theory_completion/unified_closure/resource_block_dynamic_data_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md}{有限资源／块／数据动态来源}。资金、可数块和实际轮末命中后继现见第 39.55---39.57 节；P12 与原生／primitive 来源后继仍分别承担连接责任。全理论仍 OPEN / NOT\_ESTABLISHED。
+
+第 39.55---39.57 节对应 \nolinkurl{UC.RegisterFaultDynamicProbeResource}、\nolinkurl{UC.RegisterBlockInfiniteTransport}／ReturnTransport 和 \nolinkurl{UC.RegisterBodyCanonicalPath}／HittingSource，准确源、公共消费者、独审和适用边界见\href{../formalization/ueot-core/docs/compression/theory_completion/unified_closure/funded_countable_block_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md}{同源资金／可数块／实际命中来源}。原有限严格生殖不可能性仍保留，Lifecycle、原生完整程序律和有限rank逆向后继未纳入本刊。全理论仍 OPEN / NOT\_ESTABLISHED。
 
 \backmatter
 \end{document}
