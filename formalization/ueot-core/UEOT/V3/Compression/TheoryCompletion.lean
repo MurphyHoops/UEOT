@@ -264,6 +264,9 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PredictableDriftPoint
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OUPhysicalRecoverySource
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterInstructionGOASource
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOwnQUnboundedIntervalSource
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterRotatingBodyP10
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterRotatingChildRepair
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultDynamicPriceProgram
 /-!
 # UEOT Theory Completion public root
 
