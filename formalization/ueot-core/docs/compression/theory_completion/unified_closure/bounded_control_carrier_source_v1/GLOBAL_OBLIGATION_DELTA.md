@@ -1,0 +1,11 @@
+# Current whole-theory difference
+
+Actual main416 publishes both books through scientific415. This fixed source cut derives same-input bounded true-predictable actualfullQ Brownian/wholeoriginalpast path law, actual adaptive read cache/decoder/risk and source-correlation boundary, a distinctly registered same-data orientation policy whose accepted actions are safe without IID, and actual finite table carrier/cut/physical-frame algorithms with strict explicit-output boundary.
+
+P11 actual bounded-input ORIGINAL TerminalGirsanovData/KL is a separate successor; frozen TerminalL2/Mean not rolled into this cut. GeneralQ integration, vector actual partition QV/stateIto/SDE, HJB/closed-loop/transversality and remaining source families still owe their conclusions. Finite-table exact natural-filtration equality is not presumed for general bounded path-dependent limits; original-Fs independence is actually derived instead.
+
+NEW orientation safety uses the original bounded-error positive-diagonal sensor model and original threshold; it does not prove allValid acceptance/inverse accuracy/generalGL or arbitrary noise discovery. Oldselect correlated wrong outcomes remain oldstrategy facts. Actual table algorithms require the finite response/target table as input, not empirical access to unmeasured responses; no general polynomial explicit enumeration or statistical discovery theorem is inferred. Physical erasure is a separately declared snapshot intervention, not all dynamics/no-death equivalence.
+
+Population shared supply/pooling remains explicit, not endogenous autonomy/optimizer. C4 remaining P9 semantic predicates, literal program/formation/scale sources, splitting/merging, resource and compatible wholeassembly remain active. C1 continues same jointvector partition/timeenergy/finiteQV dependencies; register continues checked actualAST repair validity transportation. These successors are excluded from this fixed cut.
+
+Next complete exact public consumers/reuse/livegates/normal integration/resulting-main Lean, then the next necessary two-book batch and original GI. ALL original106/P0–P12/C1–C7/UMC and committed post-Core obligations remain; no package/count/UNKNOWN/API limit establishes whole completion. No data resampling/threshold changes, QM/physics/GI implementation or global config work. Goal ACTIVE/OPEN.
