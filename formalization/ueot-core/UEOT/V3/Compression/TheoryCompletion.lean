@@ -270,6 +270,9 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultDynamicP
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFiniteResourceBoundary
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterBlockFormationTransport
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultDynamicProbeInfinite
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultDynamicProbeResource
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterBlockReturnTransport
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterBodyHittingSource
 /-!
 # UEOT Theory Completion public root
 
