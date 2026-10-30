@@ -246,6 +246,9 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveFiniteCalibr
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteStepShiftedSource
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralContinuousVersion
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterPopulationFundingObstruction
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianBoundedGirsanovSource
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDrivePositiveOrientationCalibration
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteReplicaCarrierErasureSource
 /-!
 # UEOT Theory Completion public root
 
