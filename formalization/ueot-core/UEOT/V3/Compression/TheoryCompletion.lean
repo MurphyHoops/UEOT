@@ -249,6 +249,9 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterPopulationFun
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianBoundedGirsanovSource
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDrivePositiveOrientationCalibration
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteReplicaCarrierErasureSource
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOwnQIntegralShift
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorPartitionQV
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterSemanticInstructionScale
 /-!
 # UEOT Theory Completion public root
 
