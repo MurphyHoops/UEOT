@@ -267,6 +267,9 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOwnQUnbounded
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterRotatingBodyP10
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterRotatingChildRepair
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultDynamicPriceProgram
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFiniteResourceBoundary
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterBlockFormationTransport
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultDynamicProbeInfinite
 /-!
 # UEOT Theory Completion public root
 
