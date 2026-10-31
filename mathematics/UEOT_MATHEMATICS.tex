@@ -5763,6 +5763,61 @@ B_{t+1}=B_t+g-e_t,\qquad B_0=R_0.
 
 这个 \(\tau\) 只在每轮 \(k\) 笔交易结束时观察目标，不是最早微步骤命中。独立两端口、true 目标、故障率 \(1/3\)、费用 \(5/2\) 的例给 \(p=4/9\)、\(\mathbb E\tau=9/4\) 和原 P-REC-04 同一上界；实际词在第三笔交易已身体完好、第四笔再次故障，注册首命中却是第三轮末，累计六笔交易、实际费用5。不能把轮末时间等同微步骤首次时间、有限资源寿命或调整折扣时钟。本节是从实际路径到原消费者的证明，不是外给一个具有所需均值的几何变量。
 
+\hypertarget{ux5b9eux9645ux8fd4ux56deux4feeux590dux4e0eux540cux4e00ux5b8cux6574ux8bb0ux5f55ux7684ux7236ux5386ux53f2}{%
+\section{39.58 实际返回修复与同一完整记录的父历史}\label{ux5b9eux9645ux8fd4ux56deux4feeux590dux4e0eux540cux4e00ux5b8cux6574ux8bb0ux5f55ux7684ux7236ux5386ux53f2}}
+
+固定初始受保护程序等于机制目标的原模型族。原完整 Batch 返回 repair 时，实际首次出生记录已经证明所返回目标位等于机制目标；这件事不要求校准 Good。由此检查同一个返回 AST 的全部恢复分支，而不是另取一个存在的修复程序。实际 postProbeParent 可以已经损坏；它直接进入原 recoverable P5 载体与 P12 maintained-parent 端点，没有重置为完好种子。这里调用的是准确的父对象维持端点，组织表示时钟没有被当作 literal 交易时钟，也没有宣称整个有限严格生命周期终端已实现。
+
+原生保留亲本的动作支持及递归证明，任意实际部署程序的交易前后父历史保持输入历史；原实际 probe 递归也保持它。因此在同一个原训练乘原生部署 jointLaw 上，全部 wholeRecords 的每笔交易前后父历史均等于原父历史。它与第 39.55 节的原 P6／prepay 在同一个满测度事件上成立，包含所有训练费用及错误／UNKNOWN 输出。
+
+保持真实父历史不等于从 Batch 识别它。两个初始物理状态和程序相同、但真实历史不同的父对象，产生完全相同的原可见 Batch 与原输入律。对任意读取完整 Batch 的父历史估计器，两条实际源上的错误概率之和至少为一。旧 Batch 没有因此获得全局父 ID 权限；明确登记的身份通道与这个不可识别结论分列。
+
+独立 \(N=72\) 的144输入形式例保留此前冻结的同一输入词、宽度、坏末亲本及实际 repair／idle。低／高实际费用为4／20，全部训练费为432／2160。低费用4的实际 P12 载体、同联合律父历史及资金／prepay 使用 \(C=9/2,g=5,R_0=1/3\) 核验；高费用20是 idle 非修复负例，不借用前者的费用上界与供给证书。原有限永久个体正规化严格增代不可能性没有被撤回，也没有用循环历史伪造实际多代。
+
+\hypertarget{ux539fux751fux5b8cux6574ux7a0bux5e8fux5f8bux4e0eux5b9eux9645ux8054ux5408ux957fux671fux7ef4ux6301}{%
+\section{39.59 原生完整程序律与实际联合长期维持}\label{ux539fux751fux5b8cux6574ux7a0bux5e8fux5f8bux4e0eux5b9eux9645ux8054ux5408ux957fux671fux7ef4ux6301}}
+
+此前 AST 的原 IID 解释器记录与原生因果部署记录各有定义，不能仅凭相同物理作用把它们当作同一律。现在对任意原 AST \(p\) 和实际初态，从原生增长动作／mode／label 词的事件边缘开始证明：取最后 primitive 的强合并、原 homTrajMeasure 路径自然性及移除零时默认值的实际 shift，导出真实 IID primitive 创新流。由同一 \(p\) 的动作支持和实际保留亲本递归，重构每笔完整记录，得到
+
+\[
+\operatorname{Law}_{\rm native}(\text{实际完整记录};p,o)
+=\operatorname{Law}_{\rm primitive}(\text{同一实际完整记录};p,o).
+\]
+
+这条律等式不外给``源匹配''，也不要求 \(p\) 可综合或通过恢复检查。依赖未观察被动端口、综合失败而不恢复的程序也被独立核验。它没有宣称任意两种物理恢复相同的策略其记录相等：编译修复在好态 idle，恒写仍可支付费用，费用序列没有被当作 IID。
+
+当初始受保护程序等于目标，且同一 \(p\) 通过实际恢复检查时，原长期定理由这条完整律进入该原生部署律：合法频率几乎处处为 \(1-\varepsilon\)；\(\varepsilon<1\) 时无限返回合法状态，\(\varepsilon>0\) 时不是最终永久合法。实际数据返回的 repair \(p\) 与综合实际返回的 \(q\) 各自得到自己的原生完整记录律和对应频率，初态仍为实际 postProbeParent 及其真实投影。
+
+在原训练乘原生部署 jointLaw 上，同一满事件同时给完整训练加部署的父历史、P6／prepay，以及每个实际 repair 输出的未来频率、返回和非永久性。这些执行结论不再外给 Good：实际出生记录已保证返回位正确。Good 继续用于最优目的／GOD 的统计证据，原唯一校准预算未重复计入。实际高成本导致 idle 的分支不被误写成修复或生命保证。
+
+独立消费者复用同一 \(N=72\)、144输入及实际末状态；两步前缀的全部 primitive／native 事件精确枚举比较完整记录各字段；完整无限律另由 Lean 证明。对通过实际恢复检查且初始保护代码匹配的程序，零故障时每个实际交易后都合法，全故障时每个实际交易后都坏，坏初态 idle 永远坏；零费用仍可有正健康频率，不能套正费用资源耗竭结论。这消除了第 39.58 节留下的原生／primitive 全记录律前提，未消除 P5 组织时钟或 Batch 父身份信息条件。
+
+\hypertarget{ux6709ux9650ux7ebfux6027ux79e9ux4e0eux4e24ux7ef4ux56e0ux5b50ux7684ux5b58ux5728}{%
+\section{39.60 有限线性秩与两维因子的存在}\label{ux6709ux9650ux7ebfux6027ux79e9ux4e0eux4e24ux7ef4ux56e0ux5b50ux7684ux5b58ux5728}}
+
+原 A5 要求的充分方向不同于``两份已给因子之间的 GL 唯一''。对有限维实输入空间 \(X\)、任意实向量空间 \(Y\) 及线性响应 \(J:X\to Y\)，现在证明
+
+\[
+\dim\operatorname{range}J\le2
+\quad\Longleftrightarrow\quad
+\exists H:X\to\mathbb R^2,\ G:\mathbb R^2\to Y,
+\quad J=G\circ H.
+\]
+
+这里箭头表示线性映射。由真实值域嵌入和原生线性左逆构造实际 \(H,G\)，秩零／一允许补零。若响应秩恰为二，则任意给定的实际两维因子都具有满射 \(H\) 与单射 \(G\)；由维数推出这些条件后，真正调用既有非退化 GL 唯一及独立登记单位干预锚消费者。矩阵专用充要式绑定的是同一实际 \(J\) 的矩阵。
+
+独立混合矩阵
+
+\[
+\begin{pmatrix}
+2&1&1&-3\\
+4&-1&2&3\\
+0&5&0&-15
+\end{pmatrix}
+\]
+
+逐项绑定实际四输入三输出线性映射，精确秩二。系数 \(-2/3\) 的非平凡 shear 改变编码器而保持全部响应；单位锚的原消费者消除其坐标自由。秩零／一的退化因子和三维 \(2I\) 的秩三无两维因子均有严格核验。此结果补有限线性存在性，不从低秩导出物理命名 Π／Φ、独立干预的现实存在、带噪测量下的精确秩或全局非线性共同因子。原一般可微共同瓶颈的链式必要性和既有带噪校准按各自范围复用。
+
 \hypertarget{ux9644ux5f55-a.-ux7b26ux53f7ux4e0eux7c7bux578bux7d22ux5f15}{%
 \chapter{附录 A. 符号与类型索引}\label{ux9644ux5f55-a.-ux7b26ux53f7ux4e0eux7c7bux578bux7d22ux5f15}}
 
@@ -6857,9 +6912,11 @@ C1 的源及传感器对应 \nolinkurl{UC.MeasurablePredictiveSource}、\nolinku
 
 第 39.45---39.48 节对应 \nolinkurl{UC.BrownianFiniteStateDriftItoSource}、\nolinkurl{UC.PredictableDriftPointSamplingCounterexample}、\nolinkurl{UC.OUPhysicalRecoverySource}、\nolinkurl{UC.RegisterInstructionHomeostasis}／PurposeScale／GODScale／GOASource 与 \nolinkurl{UC.BrownianOwnQPredictableDensity}／FullIntegralSource／UnboundedIntervalSource。真实 source、公共消费者、独审及量词见\href{../formalization/ueot-core/docs/compression/theory_completion/unified_closure/drift_ou_instruction_qfull_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md}{物理来源与实际程序差额}。轮换身体、实际子对象、全价格目的、有限资源、有限块运输及原数据动态选择现见第 39.49---39.54 节；全理论仍 OPEN / NOT\_ESTABLISHED。
 
-第 39.49---39.54 节对应已集成 \#425/\#426 的 \nolinkurl{UC.RegisterRotatingBodySource}／Returns／P10、\nolinkurl{UC.RegisterRotatingChildRepair}、\nolinkurl{UC.RegisterFaultDynamicPrice}／Program、\nolinkurl{UC.RegisterFaultFiniteResourceMaintenance}／Witness／Boundary、\nolinkurl{UC.RegisterBlockFormationTransport} 与 \nolinkurl{UC.RegisterFaultDynamicProbe}／Infinite。准确来源、独立公共消费者与条件见\href{../formalization/ueot-core/docs/compression/theory_completion/unified_closure/rotating_body_dynamic_price_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md}{实际时变身体与全价格目的}和\href{../formalization/ueot-core/docs/compression/theory_completion/unified_closure/resource_block_dynamic_data_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md}{有限资源／块／数据动态来源}。资金、可数块和实际轮末命中后继现见第 39.55---39.57 节；P12 与原生／primitive 来源后继仍分别承担连接责任。全理论仍 OPEN / NOT\_ESTABLISHED。
+第 39.49---39.54 节对应已集成 \#425/\#426 的 \nolinkurl{UC.RegisterRotatingBodySource}／Returns／P10、\nolinkurl{UC.RegisterRotatingChildRepair}、\nolinkurl{UC.RegisterFaultDynamicPrice}／Program、\nolinkurl{UC.RegisterFaultFiniteResourceMaintenance}／Witness／Boundary、\nolinkurl{UC.RegisterBlockFormationTransport} 与 \nolinkurl{UC.RegisterFaultDynamicProbe}／Infinite。准确来源、独立公共消费者与条件见\href{../formalization/ueot-core/docs/compression/theory_completion/unified_closure/rotating_body_dynamic_price_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md}{实际时变身体与全价格目的}和\href{../formalization/ueot-core/docs/compression/theory_completion/unified_closure/resource_block_dynamic_data_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md}{有限资源／块／数据动态来源}。资金、可数块和实际轮末命中后继现见第 39.55---39.57 节；原生／primitive 完整律连接现见第 39.58---39.59 节；完整 P12、P9 共同消费者与人口来源仍分别承担责任。全理论仍 OPEN / NOT\_ESTABLISHED。
 
-第 39.55---39.57 节对应 \nolinkurl{UC.RegisterFaultDynamicProbeResource}、\nolinkurl{UC.RegisterBlockInfiniteTransport}／ReturnTransport 和 \nolinkurl{UC.RegisterBodyCanonicalPath}／HittingSource，准确源、公共消费者、独审和适用边界见\href{../formalization/ueot-core/docs/compression/theory_completion/unified_closure/funded_countable_block_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md}{同源资金／可数块／实际命中来源}。原有限严格生殖不可能性仍保留，Lifecycle、原生完整程序律和有限rank逆向后继未纳入本刊。全理论仍 OPEN / NOT\_ESTABLISHED。
+第 39.55---39.57 节对应 \nolinkurl{UC.RegisterFaultDynamicProbeResource}、\nolinkurl{UC.RegisterBlockInfiniteTransport}／ReturnTransport 和 \nolinkurl{UC.RegisterBodyCanonicalPath}／HittingSource，准确源、公共消费者、独审和适用边界见\href{../formalization/ueot-core/docs/compression/theory_completion/unified_closure/funded_countable_block_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md}{同源资金／可数块／实际命中来源}。原有限严格生殖不可能性仍保留，Lifecycle、原生完整程序律与有限线性rank存在性后继现见第 39.58---39.60 节；原P9共同终端与实际人口后继仍另承担来源责任。全理论仍 OPEN / NOT\_ESTABLISHED。
+
+第 39.58---39.60 节对应 \nolinkurl{UC.RegisterFaultDynamicProbeLifecycle}、\nolinkurl{UC.RegisterInstructionNativeSource}／\nolinkurl{RegisterFaultDynamicProbeNativeHomeostasis} 与 \nolinkurl{DualDriveFiniteRankFactorization} 模块中的 \nolinkurl{UC.finite_rank_le_two_iff_linear_factorization}、\nolinkurl{UC.rank_two_factorizations_unique_gauge}、\nolinkurl{UC.rank_two_registered_units_identify}；准确源码、公理、独立公共消费者及边界见\href{../formalization/ueot-core/docs/compression/theory_completion/unified_closure/native_lifecycle_rank_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md}{实际父对象／原生完整生活律／有限秩来源}。新六性质共同消费者与实际人口 AST／出生／Price 仍未纳入本刊；全理论仍 OPEN / NOT\_ESTABLISHED。
 
 \backmatter
 \end{document}
