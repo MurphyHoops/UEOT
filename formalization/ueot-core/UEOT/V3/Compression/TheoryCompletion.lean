@@ -280,6 +280,9 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultDynamicP
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultNativeOrganization
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultDynamicProbeParentDiscovery
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterPopulationFiniteEpisodeResource
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFiniteGenerationCommonConsumer
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterPredictiveSource
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterPopulationCurrentParentContinuation
 /-!
 # UEOT Theory Completion public root
 

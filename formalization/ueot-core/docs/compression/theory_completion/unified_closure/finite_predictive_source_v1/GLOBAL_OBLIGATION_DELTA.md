@@ -1,0 +1,9 @@
+# Current original-obligation difference: three-source extension
+
+The exact two-leaf predecessor is retained:9da8 pays the single finite write/read wallet and derives actual founder discovery/P8/P5/P9 roles; d896 supplies SAME Register canonical all-word prediction and actual p/q control/P9. The former lacked actual post-episode current-root continuation and generic same-episode Price; its independent scoped PASS remains unchanged, not retroactively strengthened.
+
+The frozen ef504 successor derives root0's actual terminal state/program/history/owner/clock, constructs its THIS-AST native conditional law and full joint source with exactly preserved finite marginal. Same initial wallet/actual remaining bill funds all costs with separately registered future g>=cap only after the switch. Actual native P5/P12 reconstruction/identity/life and original h1 old-cohort Price are consumed on that same full source. Zero births, wrong reads/UNKNOWN/faults remain; no closed-wallet infinity or finite-population GOD is inferred.
+
+The final independent shared-source consumer links CURRENTroot to actual primitive/model kernel, entire canonical microModel, THISq lift, native word law, same wallet/finite marginal, current originalP9Six and actual Price. It handles correct mark vs markedGood without changing the two-event risk. Original legal model conditions remain external and classified; no source certificate is merely renamed as an input.
+
+All named scientific predecessor gaps now have reviewed constructions in the declared model classes. This is not yet FULL acceptance: exact final public checks/main integration, saved-data fingerprint-dependent AF recertification, original-contract role/mean/risk review, both books/PDF QA and originalGI/CONTINUE are still required. Frozen matrices/counts/data and false strong-claim counterexamples remain unchanged. Empirical support stays separate.
