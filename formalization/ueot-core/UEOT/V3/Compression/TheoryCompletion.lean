@@ -275,6 +275,9 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterBlockReturnTr
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterBodyHittingSource
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultDynamicProbeNativeHomeostasis
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveFiniteRankFactorization
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultDynamicProbeP9Terminal
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultDynamicProbeHistoryPrice
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultNativeOrganization
 /-!
 # UEOT Theory Completion public root
 
