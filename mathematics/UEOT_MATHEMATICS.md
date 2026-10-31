@@ -6035,6 +6035,49 @@ $$
 本节补上第 39.58—39.59 节的同 tick 组织来源。第 39.61 节来源 owner／时钟与第 39.62—39.63 节 serial 人口的登记运输、整个有限世代过程的实际资源和原 P12 父身份发现，仍须真正接到同一过程；登记视图不使人口派发变成固定亲本无限部署。标记读取的额外权限和费用必须明确登记，旧 Batch 仍不能识别全局父身份。全理论仍 OPEN / NOT_ESTABLISHED。
 
 
+## 39.65 来源身份与实际派发时钟的登记运输
+
+第 39.61 节实际 postClocked 保留来源 owner 与训练后的起钟，而真实人口采用 serial 根标记与零钟。现在构造明确的登记视图：根标记替换为实际 founder 的历史前缀，后续正 phase 标记偏移登记 epoch。初始 serial 根因此恰好表示原完整训练后的实际 postClocked；参数来自明确的来源登记权限，不是旧 Batch 估计出的全局身份，也不增加第二个 founder。
+
+时钟不能统一加 epoch。真实新生非根 child 的钟为零，统一加 epoch 会得到错误结果；原模型内已有严格反例。正确视图保持新生零钟，只对实际正派发 phase 作偏移。由真实 lookup、THIS AST 请求及解释器证明 step、child、run、完整有限 trace 与其律交换，而不把欲证的亲本相等放回字段。可达身份的单射与 SameObject 反射、严格亲子和原 P8 由此保留。
+
+真实历史深度改变一个固定常量，原 incidence 和 fertility 不变，因此 Price 的选择项、传递项和均值增量均保持。独立此前同一 $N=72$、144输入形式例采用不同 founder 前缀和起钟17，epoch 为161，真实派发钟为162、163、164或 None，新生钟仍为零。完整64种三步 primitive 词的精确重放不是新的经验抽样。
+
+Store.length 对无效 None 请求也递增，故一般 phase 不等于实际交易次数。这个严格边界不被登记运输抹去；登记时间也没有把有限子对象派发改成原保留亲本的无限评价协议。P9／GOD 保持其原协议类型：原成本 $11/5$、价格 $1/2$、故障率 $1/4$ 下，若只看坏亲本最后一步，编译修复的真实期望即时收益为 $-3/40$，idle 为零。该核验不否定原无限值最优性，也不是整个有限人口的最优求解器。
+
+## 39.66 真实出生父标记的可执行发现
+
+父标记的真值来自这同一个数据 AST 的实际三步 episode，而不是另给父身份答案。显式协议族最后一次请求可以选根0或实际 child1；候选1仅由首次真实出生建立。额外传感器读取实际出生的父标记，允许的观测为 None、Some0、Some1。多数算法直接返回这个 operational serial 标记，不调用 actualParent、隐藏请求地址或世界 owner lookup 来补答案。后者只可作为语义证明桥，不能静默增加到算法输入。
+
+对任意一个预登记事件 slot，使用固定标记噪声 $\eta=1/4$、任意未知 confuser 和全部 $B$ 次读数，在原完整训练乘三步未来再乘读数的联合律上推导
+
+$$
+\Pr(\text{返回标记不等于该实际事件的父标记})
+\le \exp(-B/8).
+$$
+
+实际 ParentBridge 及原 P12 的发现端点由真实出生历史推导并调用。没有 child 的 None 分支和假阳性均保留；事件 slot 不等于一次实际成功交易。这里是一项预登记目标的风险，不能把它免费改成任意多目标同时保证。
+
+独立消费者保留原 $N=64$、完整128输入形式词，取非均匀未知 confuser，精确处理固定64次读取的全部计数类。$B=64$ 给 $\exp(-8)$ 上界，实际有限读取的错误风险也被严格证明为正。每次读取费用 $1/20$，64次合计 $16/5$，即使真实 child 缺席、读数或估计错误也照付。固定预算限制可读取的 $B$；让误差随 $B$ 趋零时必须另列随 $B$ 增长的资源族。
+
+信息边界有两个不同层级。正执行噪声下，两真实 episode 有共同支持的 bare 观测原子而真父不同，故任意仅依该 bare 观测的 decoder 在两个实验的错误风险之和至少为共同正原子质量，因而至少一个实验有严格正风险；这不表示整个 bare 律相等，中间故障的动作或费用可区分它们。$\eta=1/2$ 的交换 confuser 反例则只证明固定不同真标记时全部 mark-read 序列的律相等，属于这个读通道的不可识别；它不证明训练、派发和读数的完整 world 律相等。若免费读取完整祖先 ID，父信息条件已改变，不能沿用 bare 反例的结论。
+
+## 39.67 全部训练与真实有限派发的原 P6 账本
+
+资金现在逐笔来自原解释器：先保留原全部 $2N$ 次训练交易，再接同一个实际 AST 的有限人口 Option 记录。每个真实费用非负且不超过原 writeCost；故障交易仍在记录中，无效 None 的物理费用为零。预登记有限时域 $H$、费用上界 cap 与初资 reserve 满足
+
+$$
+\text{writeCost}\le\mathrm{cap},\qquad
+(2N+H)\mathrm{cap}\le\mathrm{reserve}
+$$
+
+时，直接推出同一完整有限费用流的原 P6 ResourceViable 和每笔 prepay，收入恒零。有限结束后的零费用延拓只是账本约定，不是伪造无限 None 执行。没有增添 idle-before-work、收入、免费第二 founder、允许动作或 primitive 抽样。
+
+原形式参考预登记 $N=64,H=3,\mathrm{cap}=9/4,\mathrm{reserve}=300$。真实训练总费 $1056/5$，正支持 TFT 的全部物理总费 $1067/5$；只有训练数额的初资在同源 TFT 上严格不足，故不能几乎处处支付这个完整协议。独立此前同一 $N=72$、144输入形式词用 cap $9/2$、reserve665，真实训练432、TFT 全部436；训练初资432给负余额四，FFF／B0／None 和不同费用分支也保持。该否证针对这一协议与账本，不针对每个策略或原另登记外部供给。
+
+本节仍只支付 controlled-write 费用。第 39.66 节全部读取费 $B r$ 必须在下一有限世代共同消费者中接入同一初始钱包，不是另给一个免费观察账户；None 与错读不得豁免。原 P12 正确矩形有限世代替代仍须把 owner／时钟、同一返回程序、真实亲子、P5／P6、Price、原登记 P9 评价及必要父身份发现真正连起来。登记／评价／传感器权限是明确模型条件，不能作为这些内部推导的同义替身。全理论仍 OPEN / NOT_ESTABLISHED。
+
+
 <a id="appendix-a"></a>
 
 # 附录 A. 符号与类型索引
@@ -6954,4 +6997,6 @@ C1 的源及传感器对应 UC.MeasurablePredictiveSource、UC.MeasurablePredict
 
 第 39.58—39.60 节对应 UC.RegisterFaultDynamicProbeLifecycle、UC.RegisterInstructionNativeSource／RegisterFaultDynamicProbeNativeHomeostasis 与 DualDriveFiniteRankFactorization 模块中的 UC.finite_rank_le_two_iff_linear_factorization、UC.rank_two_factorizations_unique_gauge、UC.rank_two_registered_units_identify；准确源码、公理、独立公共消费者及边界见[实际父对象／原生完整生活律／有限秩来源](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/native_lifecycle_rank_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。第 39.61—39.64 节进一步采用真实六性质／有限后代及 Price／同 tick 组织来源；全理论仍 OPEN / NOT_ESTABLISHED。
 
-第 39.61—39.64 节对应 UC.RegisterFaultDynamicProbeClocked／RegisterFaultDynamicProbeP9Terminal、RegisterFaultDynamicProbePopulation／RegisterFaultDynamicProbeHistoryPrice 与 RegisterFaultNativeOrganization；准确源码、独立公共消费者、类型和边界见[实际六性质／有限后代 Price／同 tick 组织来源](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/p9_lineage_organization_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。登记运输、含读取费用的有限世代共同消费者尚未纳入本刊，全理论仍 OPEN / NOT_ESTABLISHED。
+第 39.61—39.64 节对应 UC.RegisterFaultDynamicProbeClocked／RegisterFaultDynamicProbeP9Terminal、RegisterFaultDynamicProbePopulation／RegisterFaultDynamicProbeHistoryPrice 与 RegisterFaultNativeOrganization；准确源码、独立公共消费者、类型和边界见[实际六性质／有限后代 Price／同 tick 组织来源](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/p9_lineage_organization_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。第 39.65—39.67 节补登记运输、真实父标记及完整有限写费；含读取费的共同钱包与有限世代共同消费者尚未纳入本刊，全理论仍 OPEN / NOT_ESTABLISHED。
+
+第 39.65—39.67 节对应 UC.RegisterPopulationOwnerClockTransport、RegisterFaultDynamicProbeParentDiscovery 与 RegisterPopulationFiniteEpisodeResource；准确源码、独立公共消费者、类型及边界见[实际登记／出生父标记／有限资金来源](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/owner_discovery_resource_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。有限世代共同消费者仍承担同一钱包付全读取费及全部原角色的真实连接；全理论仍 OPEN / NOT_ESTABLISHED。
