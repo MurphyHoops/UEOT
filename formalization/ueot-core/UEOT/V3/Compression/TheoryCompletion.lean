@@ -278,6 +278,8 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveFiniteRankFa
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultDynamicProbeP9Terminal
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultDynamicProbeHistoryPrice
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultNativeOrganization
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultDynamicProbeParentDiscovery
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterPopulationFiniteEpisodeResource
 /-!
 # UEOT Theory Completion public root
 

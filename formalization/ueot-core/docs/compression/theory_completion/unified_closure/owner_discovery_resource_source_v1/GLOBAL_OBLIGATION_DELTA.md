@@ -1,0 +1,7 @@
+# Original obligation difference
+
+Registration identity and clocks are now derived source views, not an input equality: the original actual postClocked founder is represented by the serial root view; THIS-AST step/run/fulltrace and reachable P8/identity/Price covariance are proved. Fresh newborn clock0 and phase versus real transaction count restrict the transport.
+
+THIS episode's actual birth history now gives the truth and original P12 ParentBridge for a genuine marked-journal learner. Exact complete joint finite-read risk and positive-error/no-identification boundaries distinguish channel observations, bare episode atoms and complete source laws. Sensor permission and per-read costs remain declared model inputs, not old Batch information.
+
+Actual full training+finite population fees now give original P6/prepay under a registered finite reserve, without changing transactions or supplying credit. The common finite-generation consumer still must pay reads from that SAME wallet and bind every original role on the same source/actual object or a proved transport. P9 retains its own infinite evaluation protocol; actual finite dispatch is not automatically globally optimal. Full strict normalized permanent finite genealogy remains refuted; rectangular actual event replacement and original discovery role are mandatory. Whole-theory OPEN, not closed by adopting these three dependencies.
