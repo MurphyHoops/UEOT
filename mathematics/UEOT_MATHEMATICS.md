@@ -2,8 +2,8 @@
 title: "UEOT Core 完整数学理论"
 subtitle: "从原始对象—演化思想到预测、实现、持续、组合、目的与学习的统一架构"
 version: "3.1"
-date: "2026-10-30"
-status: "完整中文维护版；冻结106结果与同源形式化闭环的逐章整合"
+date: "2026-11-03"
+status: "完整中文维护版；本版数学合同及必要来源已核验，发行采用以匹配回执为准"
 format: "UTF-8 Markdown + LaTeX math"
 scope: "通用数学核心、应用与领域接口"
 ---
@@ -68,6 +68,8 @@ scope: "通用数学核心、应用与领域接口"
 本文将前期 Mathematical Foundations I–IV、统一数学 v1.1 至 v2.1、通用实现接口及后续审计中仍有效的结果重构为一套连续正文。定义、证明、条件、反例、算法接口与应用流程均在本文件内陈述，不要求先阅读旧版或依赖“上一版定理”才能理解主链。本版不收录量子专属理论、粒子选择或场论章节。后续分支产生的数学，仅在其证明不需要这些专属结构时回归本核心。
 
 这里的“完整”指**本版所声明数学架构与应用接口的完整陈述**。它不表示所有开放问题都已解决，也不表示从几个哲学句子已推出自然界的全部规律。测度扩张、可测选择、谱论等基础数学采用明确标记的标准定理；本理论的主要连接结论均给出证明。
+
+本版数学合同的来源、合法前提与验收依据见第 39.70—39.74 节和附录 F.5；历史源码审计与阶段开放状态仍按其原时点保留，实际发行采用以最终回执为准。
 
 ## 0.1 原始概念与本版数学对象
 
@@ -1010,7 +1012,7 @@ $$
 -L_D\phi_n=\lambda_n\phi_n,\qquad
 0<\lambda_1<\lambda_2\le\cdots.
 $$
-初始密度 $g\in L^2(m)$，$a_1=\langle g,\phi_1\rangle>0$。
+取 $\|\phi_1\|_2=1$，初始概率密度 $g\in L^2(m)$ 满足 $g\ge0$、$\int g\,dm=1$，并记 $a_1=\langle g,\phi_1\rangle>0$。
 
 <a id="p-qsd-04"></a>
 
@@ -1028,11 +1030,13 @@ $\|R_t\|_2\le e^{-\lambda_2t}\|g-a_1\phi_1\|_2$。
 Cauchy–Schwarz 将其转成 $L^1$ 界。生存质量的主项系数
 $a_1\int\phi_1dm>0$，充分大 $t$ 时余项小于其一半。分子、分母同除 $e^{-\lambda_1t}$，比较条件密度与 $q$，得到所述速率。∎
 
+**当前 Lean 来源。** CompactSpectralSemigroupSource 从同一实际 $R=(I-L_D)^{-1}$ 与 $S_t$ 的生成关系、紧自伴性和原谱条件推导实际展开与 Parseval 余项界；CompactKilledSpectralBinding.ofActualSource 据此构造原 SpectralData，并由 actual_p_qsd_04 消费同一个 killed 过程的条件律和生存律。原展开与余项不再作为调用者给出的结论字段。主系数正性、主模总质量正性和 resolvent 注入性也由当前输入推导。准确来源及非零余项共同实例见第 39.73—39.74 节。
+
 一般非自伴核存在非正交模或 Jordan 项，不能未经控制直接套用同一个精确谱间隔常数。一般 QSD 存在与收敛条件可调用 Champagnat–Villemonais 的原始研究，本文只将其作为条件模块使用。[原始论文](https://arxiv.org/abs/1404.1349)
 
 ## 10.5 正特征数据与谱存在性分层
 
-M-PE-01 重用本章的归一化代数：给定正的左右特征数据，就能证明 QSD、Doob 随机核、平稳权重及随机读出的鞅性质。PositiveEigenstructure.qsdDoob_bundle 不负责替任意矩阵产生 Perron 数据；P-EVO 的严格主谱极限仍消费 KPF01Certificate。
+M-PE-01 重用本章的归一化代数：给定正的左右特征数据，就能证明 QSD、Doob 随机核、平稳权重及随机读出的鞅性质。PositiveEigenstructure.qsdDoob_bundle 提供其声明的给定数据代数。现在 PrimitivePerronClosure 从原本原矩阵假设构造完整 KPF01Certificate；CompactKilledSpectralBinding 从实际生成关系构造本节谱场。额外来源证明与该共用代数接口的职责分别登记。
 
 这解释为什么“统一正特征结构”与“所有长期结果被一个谱定理生成”不同。P-QSD-01 的条件极限、P-QSD-03 的同初态窗口、P-QSD-04 的可逆谱分析以及一般 GOA 稳定性仍各有适配。模型改变了支撑或失去谱隙时，应回到这些独立条件。
 
@@ -2366,7 +2370,7 @@ M-OI-01 统一的是“有极限且可观测残差趋零→极限不变”的核
 
 ## 21.7 同一受控源的稳态、条件生存与价值
 
-本节把第 10、19、21 章的一般数学机制实例化到同一个实际有限受控源，并与第 35.7 节的对象划分、支持和恢复相接。源核、精确控制商与安全固定点已有 Lean 实现；以下参数化稳态、QSD 及完整受限最优闭环的显式实例给出新的书面证明，尚不声称这些新数值和实例已有专门 Lean 端点。第 35.4 节的 8/5 模型及第 38.6 节的 9/64 注册实验保持各自独立来源。
+本节把第 10、19、21 章的一般数学机制实例化到同一个实际有限受控源，并与第 35.7 节的对象划分、支持和恢复相接。源核、精确控制商与安全固定点已有 Lean 实现；本节的参数化稳态、QSD、完整状态—动作条件路径、同一无限实验及原无约束／受限 GOA 现由 ConflictParametricSource、Control、Stationary、QSD、Path、Infinite 和 CommonConsumer 的实际证明接通。第 35.4 节的 8/5 模型及第 38.6 节的 9/64 注册实验保持各自独立来源。
 
 ### 21.7.1 唯一的受控源与完整策略
 
@@ -2385,7 +2389,7 @@ P((b,u),a)\{(b',u')\}=\tfrac12{\bf1}_{b'=a},\qquad
 r((b,u),a)=1-a,\qquad \gamma=\tfrac12.                 \tag{21.7-1}
 $$
 
-式（21.7-1）的 PMF 质量应由 M 的实数转移经已有 transitionPMF 转换定理取得，后续形式化不能另造同值表而省去相等证明。内部位按该转移重新取值，允许保持原值。
+式（21.7-1）的 PMF 质量由 M 的实数转移经已有 transitionPMF 转换定理取得；ConflictParametricSource.transition_real 给出该来源等式，不另造同值表而省去证明。内部位按该转移重新取值，允许保持原值。
 
 对每个 $\theta\in[0,1]$，定义同一个完整因果策略 $\pi_\theta$：对每一时刻及每个可见历史，其动作 PMF 恒为
 $$
@@ -2539,13 +2543,13 @@ $$
 \lim_{T\to\infty}\Pr_{\pi_\theta}(\tau\le T)=1.         \tag{21.7-13}
 $$
 
-如需把（21.7-13）表述为同一无限实验中的“几乎必然最终失效”，可以明确构造：在动作序列与内部位序列的乘积概率空间上，让各动作坐标服从（21.7-2）、内部位坐标为公平 Bool，两个坐标族独立；置 $X_0=(1,0)$，$X_{n+1}=(A_n,U_{n+1})$。其每个有限圆柱分布逐项等于上述实际因果乘积，所以它实现了同一源与同一策略。由事件 $S_T$ 的递减连续性，
+把（21.7-13）表述为同一无限实验中的“几乎必然最终失效”时，ConflictParametricInfinite 先由原源计算一步完整记录 $(A_n,X_{n+1})$ 的 PMF，证明它在本例不依赖当前状态，再构造该记录律的可数乘积。固定 $X_0=(1,0)$ 并递推完整前缀；其每个有限圆柱分布由 finite_record_cylinder 逐项等于原生产因果路径 PMF，record_prefix_consistent 给出前缀一致性。因此这里实现的是同一源与同一策略。由事件 $S_T$ 的递减连续性，
 $$
 \Pr(\tau=\infty)=\lim_T(1-\theta)^T=0
 $$
 对 $0<\theta\le1$ 成立。对于 $\theta=0$，该概率为一。
 
-这里给出的是本例明确乘积空间上的数学延伸；对应无限路径 Lean 对象及其与生产有限 PMF 的一致性尚未形式化。通用“每个有限 T 存在可行策略”的命题仍不能直接换量词成“存在一个策略无限存活”。
+persistent_survival_null、actual_eventual_failure_ae 和 zero_theta_survives_ae 已在这个同一无限实验中证明上述结论。正参数的结论是几乎处处；不把零测度的无限安全样本点删去后宣称逐点失效。通用“每个有限 T 存在可行策略”的命题仍不能直接换量词成“存在一个策略无限存活”。
 
 ### 21.7.5 最优性、可行性与全空间不变律
 
@@ -3027,7 +3031,7 @@ $$
 
 ## 25.4 Perron 增长与组成
 
-**K-PF-01（复用并展开）：有限本原非负矩阵定理。** 若某个正整数幂 $M^k$ 的所有元素严格正，则存在 $R>0$、正列向量 $r$、正行向量 $l$，满足
+**K-PF-01（复用并展开）：有限本原非负矩阵定理。** 固定非空有限类型上的非负矩阵 M；若某个正整数幂 $M^k$ 的所有元素严格正，则存在 $R>0$、正列向量 $r$、正行向量 $l$，满足
 $$
 Mr=Rr,\quad lM=Rl,\quad l\mathbf1=1,\quad lr=1.
 $$
@@ -3043,6 +3047,8 @@ $$
 若 $w>0$ 满足对每个非负 $z$，$(zM)w=\rho zw$，则 $\rho=R$，且 $w$ 是 $r$ 的正倍数。
 
 **证明。** 第一部分直接左乘 K-PF-01 的矩阵极限；分母极限为 $z_0r>0$。第二部分取各坐标单位向量得 $Mw=\rho w$，再由正特征向量的 Perron 唯一性得结论。∎
+
+**当前 Lean 来源。** PrimitivePerronClosure.certificateOfPrimitive 的外部输入只有同一 M 及 Matrix.IsPrimitive M。正右数据、左数据与双归一化、全幂极限、严格复谱支配和正特征方向唯一性均由一般来源推导；actual_root_simple 及 PrimitivePerronSimplicity 同时证明原实矩阵与复化的实际主根代数重数为一。actual_p_evo_03 直接调用原增长、组成与评价消费者，不以某个有限数值实例代替这里的一般量词。第 39.72 节给出分解及独立例。
 
 右向量 $r$ 表示线性计数评价中的相对繁殖价值，左向量 $l$ 表示长期平均类型组成。这里“规范”是相对于指定正线性繁殖机制的唯一性，不是所有对象或所有价值的普适唯一性。
 
@@ -3067,7 +3073,7 @@ $$
 
 ## 25.6 以同一繁殖算子桥接实际谱系
 
-LineageEvolution 的 lineage_price_bridge 消费与 Price 代数相同的传递核；lineage_perron_bridge 消费与 P-EVO-03 相同的矩阵及 KPF01Certificate，并要求其每条正繁殖边具有实际子代语义。这样谱结论不会来自与谱系记录无关的另一矩阵。
+LineageEvolution 的 lineage_price_bridge 消费与 Price 代数相同的传递核；lineage_perron_bridge 消费与 P-EVO-03 相同的矩阵及 KPF01Certificate，并要求其每条正繁殖边具有实际子代语义。这样谱结论不会来自与谱系记录无关的另一矩阵。 本原性本身不提供这项子代身份条件。平均算子的指标是类型，不能直接当作永久个体；有正对角项的矩阵若这样解释，会要求个体是自己的不同子代。真实跨世代身份按第 39 章已证明的矩形出生／时钟来源处理，严格有限永久谱系的归一障碍继续保留。
 
 修复同一个身份与产生一个不同身份的后代被形式化为互斥角色。谱的存在性、增长与随机种群结果仍保持本章条件；“任意客体都自发形成满足 Perron 假设的谱系”不在结论中。
 
@@ -4204,7 +4210,9 @@ $$r(s,z,a)=s-a,\qquad\beta=1/2.$$
 
 未受限模型的值为 $V(0)=0,V(1)=8/5$：在零状态，修复动作值为 $-1+(1/2)(8/5)=-1/5$，等待为零；在一状态，等待值为 $1+(1/2)(3/4)(8/5)=8/5$，修复为 $4/5$。故未受限最优策略等待，它在健康状态有正失败风险。
 
-这是由前述有限 Bellman 方程直接检验的数学例，不另声称它有专门的 Lean 见证端点。它说明“未受限最优”与“安全最优”可以不同；注册输出和精确商都不能抹去这种价值约束差别。
+本例由独立的 WaitingRepairControl 来源形式化：actual_pmf、actual_reward 与 actual_discount 绑定上述实际源，optimal_value、dominates_all_causal、actual_greedy_attains 给出原无限因果控制消费者；restricted_optimal_zero、restricted_all_causal 与 actual_safe_attainment 给出实际受限模型。
+
+actual_macro_optimal 同时消费原精确控制商。它与第 21.7 节的零／二值模型不是同一个过程。它说明“未受限最优”与“安全最优”可以不同；注册输出和精确商都不能抹去这种价值约束差别。
 
 ## 35.5 恢复程序返回同一安全核
 
@@ -4233,7 +4241,7 @@ $$r(s,z,a)=s-a,\qquad\beta=1/2.$$
 
 对注册读出 $q(b,u)=b$，逐个动作有 $q_\#P(x,a)=\delta_a$，奖励也不区分同一可见纤维中的状态。已有 survivalRead_strongLumpable 与 conflictRewardControl 因此提供非零奖励的精确控制商。宏观类型实际是 q 的 ReachableState 子类型；它与 Bool 的对应要有显式映射。若把内部位也登记为必须保留的程序属性，原两类分割就不够；既有 hiddenProgramProtectedModel 保留了这种区别。
 
-P-ALG 的 registeredSurvivalModel 具体见证使用同一个物理核，但奖励字段为零。它与本节完整 M 不是同一条模型记录。本节奖励与当前状态无关，所以书面上不会继续细化按 b 的初始分割；把这个非零奖励注册模型写入并证明其终端分割仍为 q 的核，是另一个具体适配。不能由已存在的精确控制商反向宣称这个 P-ALG 实例也已形式化。
+旧 P-ALG 的 registeredSurvivalModel 见证虽使用同一物理核，奖励字段为零，不能替代这里的完整 M。现有 ConflictOrganizationalSource.registeredModel 明确使用 M.reward 与 M.transition；registered_reward_actual、registered_transition_actual 绑定原源，initial_stable、terminal_eq_initial 与 terminal_relation 直接证明其原 P-ALG 终端分割恰为 q 的核。actual_macro_read 给出实际 ReachableState 子类型到 Bool 的显式映射。protectedModel 在同一非零奖励源上加入受保护内部位，protected_terminal_relation 与 protected_hidden_cannot_merge 保留相应更细分割。
 
 真实支持为
 
@@ -4244,15 +4252,15 @@ $$
 
 在 K 内，保持域的动作恰为 1。按本章受限动作定义，K 外两动作均合法。M-21.7 已逐状态给出受限最优值：K 内为零、K 外为二；完整 greedy 保持当前可见位，拥有两个闭类及其所有混合不变律。从指定安全初态出发，它才与恒选 1 的策略拥有相同的实际路径。这样得到的持续与最优有真实共同来源，也有不可省略的初态和比较范围。
 
-本源的后验支持提供一个清楚的适用边界：在初始时刻，正概率观察只有 1，其真实支持是单点 $(1,0)$；在任意正时间、正概率实际历史上，最后一步的内部位公平重新取值，所以终端支持恰为该历史的当前可见纤维。这个实例没有展示“历史严格缩小当前纤维”的记忆增益。第 37 章的独立严格后验与死路见证仍有不可替代的作用。
+ConflictOrganizationalSource.Posterior.actual_posterior_support 从原 fiberTerminalPosterior 证明本源的后验支持，提供一个清楚的适用边界：在初始时刻，正概率观察只有 1，其真实支持是单点 $(1,0)$；在任意正时间、正概率实际历史上，最后一步的内部位公平重新取值，所以终端支持恰为该历史的当前可见纤维。这个实例没有展示“历史严格缩小当前纤维”的记忆增益。第 37 章的独立严格后验与死路见证仍有不可替代的作用。
 
 对在每个历史下以 $\theta$ 选择动作 0 的同一策略，若认证条件是 $a=1$，各步实际未认证占据均为 $\theta$；其 T 步曾失败风险为 $1-(1-\theta)^T$。若把全部真实行认证，并选真实精确参考核，则未认证占据可为零，参考风险仍为这个正数。另一证书可以只认证动作 1、使用零失败参考轨迹，但要支付本策略自己的占据预算。这些参数属于各自完整证书，不能混搭零参考风险与另一证书的零占据。
 
-恢复程序还能接回同一个 P。一个明确保存可信程序来源的恢复步骤可以先重建程序、暂时保持物理状态，下一组织步骤执行恢复出的动作 1，再由 P 进入 K。这里的程序表示是联合恢复状态中的附加内容，不等于本例每步重新取值的内部位 u；两个组织步骤也不等于两个未经改变的物理 P 步。已有 JointRecovery 与本章 M-35.3 提供相应核一致性接口，具体两时钟实例仍需自己的适配。一次恢复重新开放了未来安全运行，却没有把先前中断从实际历史中删除。
+恢复程序还能接回同一个 P。一个明确保存可信程序来源的恢复步骤可以先重建程序、暂时保持物理状态，下一组织步骤执行恢复出的动作 1，再由 P 进入 K。这里的程序表示是联合恢复状态中的附加内容，不等于本例每步重新取值的内部位 u；两个组织步骤也不等于两个未经改变的物理 P 步。ConflictOrganizationalSource 的 first_tick_restores、first_tick_physical_unchanged、two_tick_physical_source 与 two_tick_recovered 已构造并消费原 JointRepairKernel／RecoveredJointTarget；对任意普通控制器及任意单坏副本，第一拍恢复真实程序且物理状态不变，第二拍执行恢复出的程序并由原 P 进入 K。damaged_not_safe_after_restore 保留坏物理初态在第一拍仍不安全的反例。一次恢复重新开放了未来安全运行，却没有把先前中断从实际历史中删除。
 
 这个共同实例连接了对象描述、可行行动、受限价值、支持、概率风险和恢复的来源条件。它不替代载体毁损的物理框架、父对象形成、谱系和外部实验。各条数学联系成立的范围，恰是其能为哲学的对象、持续和意义讨论提供清楚内容的原因。
 
-**来源。** [统一有限源研究及逐箭头表](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/interface_research_v1/UNIFIED_FINITE_SOURCE_EXAMPLE.md)、[SafeRewardConflictWitness](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SafeRewardConflictWitness.lean)、[OrganizationalSufficiencyWitness](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OrganizationalSufficiencyWitness.lean)。新数值、参数化策略、完整 greedy 不变律与额外实例的形式化范围按第 21.7 节和附录 F 阅读。
+**来源。** [统一有限源研究及逐箭头表](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/interface_research_v1/UNIFIED_FINITE_SOURCE_EXAMPLE.md)、[SafeRewardConflictWitness](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SafeRewardConflictWitness.lean)、[OrganizationalSufficiencyWitness](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OrganizationalSufficiencyWitness.lean)。本节新增的非零奖励分割、后验与两时钟恢复，以及第 21.7 节的完整参数族，见[原书具名来源包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/conflict_family_book_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)；具体量词和端点仍按第 21.7 节及附录 F 阅读。
 
 <a id="ch-36"></a>
 
@@ -6075,7 +6083,159 @@ $$
 
 原形式参考预登记 $N=64,H=3,\mathrm{cap}=9/4,\mathrm{reserve}=300$。真实训练总费 $1056/5$，正支持 TFT 的全部物理总费 $1067/5$；只有训练数额的初资在同源 TFT 上严格不足，故不能几乎处处支付这个完整协议。独立此前同一 $N=72$、144输入形式词用 cap $9/2$、reserve665，真实训练432、TFT 全部436；训练初资432给负余额四，FFF／B0／None 和不同费用分支也保持。该否证针对这一协议与账本，不针对每个策略或原另登记外部供给。
 
-本节仍只支付 controlled-write 费用。第 39.66 节全部读取费 $B r$ 必须在下一有限世代共同消费者中接入同一初始钱包，不是另给一个免费观察账户；None 与错读不得豁免。原 P12 正确矩形有限世代替代仍须把 owner／时钟、同一返回程序、真实亲子、P5／P6、Price、原登记 P9 评价及必要父身份发现真正连起来。登记／评价／传感器权限是明确模型条件，不能作为这些内部推导的同义替身。全理论仍 OPEN / NOT_ESTABLISHED。
+本节仍只支付 controlled-write 费用；完整读取费 $B r$ 接入同一初始钱包的实际消费者现见第 39.68 节，None 与错读不豁免。原 P12 正确矩形有限世代替代仍须把 owner／时钟、同一返回程序、真实亲子、P5／P6、Price、原登记 P9 评价及必要父身份发现真正连起来。登记／评价／传感器权限是明确模型条件，不能作为这些内部推导的同义替身。全理论仍 OPEN / NOT_ESTABLISHED。
+
+
+## 39.68 同一钱包与真实首出生父的共同消费
+
+第 39.67 节的物理写费账本，现在与全部标记读取真正合为同一初始钱包。保留原全部 $2N$ 训练交易、同一个实际返回 AST 的计划 $[0,0,h]$ 三个派发位置和完整 $B$ 次读取；预登记
+
+$$
+(2N+3)\mathrm{cap}+B r\le\mathrm{reserve},
+\qquad \text{writeCost}\le\mathrm{cap}
+$$
+
+即从真实费用推导原 P6 和每笔先付能力，有限阶段收入为零。读数位于原完整写费轨迹之后，实际账单恰为原 readCharge；None、首出生失败、错读和假阳性不免除 $B r$，也没有第二个观察账户。
+
+主同父消费者固定预登记首事件 $e=0$。其请求从真实 postClocked founder 出发，实际 child 存在时由真实出生推出原 P8，以及重新登记交易 actor 与该 founder 的 SameObject。时钟按实际派发更新，不强称 Clocked 元组完全相等。最后事件 $e=2,h=1$ 的父则是 child1，不能因为程序相同就冒名 founder。标记算法仍只返回 operational mark；world lookup 仅解释已返回标记的真实意义，不是输入算法的新目录访问。
+
+在这个实际首出生父上调用原 P12 marked discovery、原 maintained-parent 组织族及原 P9 六性质。最优目的使用原 Good；实际 repair 由原完整联合输入律几乎处处推出 $\varepsilon<1$，没有让选择器读真故障率。原训练校准坏事件与实际父标记错误各计一次，完整 training／future／reads 联合律上给
+
+$$
+\Pr(\text{校准坏或父标记错})
+\le \min\{1,4\exp(-2Nu^2)\}+\exp(-B/8).
+$$
+
+这是两个声明错误事件的并集上界，不是接受后的条件风险，更不保证出生或整条流程成功。原 $N=64,u=1/4,B=64$ 的上界为 $5\exp(-8)$，首故障、UNKNOWN 与 None 的概率仍完整保留。发现的渐近结论是另行支付相应读取的实验族，不是固定钱包无限免费读取。
+
+原形式例同一钱包300，TFT 的物理及读数总费 $1083/5$、余额 $417/5$，FFF 总费 $1072/5$、余额 $428/5$。独立原 $N=72$、144输入形式词同钱包665，全部64读计 $16/5$；真实支持的 Good 读取原子和 FFF 假阳性原子均有正质量。FFF 的返回标记可为 Some0 而实际父为 None，账单仍照付。没有筛选成功样本或覆盖失败记录。
+
+准确的剩余边界也必须保留：这里的 native maintained-parent 合同从实际训练后状态开始，是同对象的另一个保留亲本协议，不是执行完三步人口派发后的真实尾部，也没有由有限零收入钱包资助无限维护。真实 episode 会改变 founder；下一来源必须从实际末 root 的物理状态、代码、身份和钟出发，保留当前余额并明确登记后续供给。原矩形 Price 已有来源，但同一 $h=1$ 实际 cohort 的一般正出生计数角色仍须在该共同来源上消费，零出生不归一。整个有限世代链尚未因此全闭合。
+
+## 39.69 同一个 Register 源的规范预测与实际程序
+
+已有活动端口执行与价值运输，并不自动表示规范预测端点已应用到这一个源。现在有限随机核的 mass 直接取原 actual Model.transition，证明它等于原 physicalSource 及实际 modeLaw 推前。对原允许 Option Bool 动作与预动作读出 $q(x)=x_i$，由实际 primitive 期望对任意长字词归纳，得到
+
+$$
+\begin{aligned}
+\operatorname{Future}_{K,q}(x)=\operatorname{Future}_{K,q}(y)
+&\Longleftrightarrow x_i=y_i\\
+&\Longleftrightarrow
+\operatorname{projectState}_i(x)=\operatorname{projectState}_i(y).
+\end{aligned}
+$$
+
+这里的 Future 使用原 controlledOutputTrace 的预动作 emission 约定；空字本身不能区分状态。两个实际单字测试 $[(\mathrm{none},\mathrm{false})]$、$[(\mathrm{none},\mathrm{true})]$ 重构每个真实预测类的指示函数，从而导出 hresolve、强合并及唯一正规化商核，不把它们作为证书输入。
+
+宏观 reward 取同一机制的真实 expectedModePayoff，先证明其在类内与代表选择无关，再实际调用原 predictiveFutureExactControlQuotient。构造出的整个 micro Model，包括转移、reward、界和折扣，都等于原 actual Register model。原 P-QUO 的精确最优值与宏观 greedy 提升由此作用于这个源，并支配原全部 fine causal 竞争者；这不表示每个隐藏读取控制器都可因子化。
+
+对检查器实际返回的综合对 $p,q$，宏观动作由这一个 $q$ 定义，提升后在每个 fine 状态恰好执行这一个 $p$。没有再以 choice 取另一条策略。商类的数学定义可选择代表，但实际动作已证明与代表无关。该规范值与既有活动端口值在全部非负价格下交换，同一实际 $p/q$ 的 GOD 与原 P9 缩尺度也接入这个准确 micro Model。
+
+独立原 $N=64$ 非零噪声形式例保留完整128训练词，实际 repair 与高费用 idle、真实返回 $q$、原六性质及规范控制均被实际调用。不同隐藏坐标的状态可以物理不同而预测签名相等；任意读取隐藏位的程序不能因此自动下降。$\varepsilon=1$ 时后动作转移可合并，预动作读数仍可区分当前活动位，所以不能删去时序条件。
+
+这只是固定同一机制及读协议内的状态商。$\varepsilon=0$ 时两个不同目标可具有相同 physical 行，却有不同实际出生 reward 和相反策略排序；物理预测不提供跨机制目的识别，也不识别祖先或 owner。原 birth／cost Batch 仍承担实际程序来源，选择器没有获得真参数 oracle。规范预测节点与实际控制／目的的具名缺箭已补上；其实际出生后带资亲本续行与完整共同 Price 由第 39.70 节另行构造。
+
+
+## 39.70 实际末亲本的带资续行与原角色共同来源
+
+第 39.68 节的来源不能把训练后状态假作人口实验完成后的状态。本节从原完整 training／future／reads 输入实际执行原请求 $[0,0,h]$，由真实末表 lookup 取得仍存活的 root0；证明其程序与历史保持，身份、受保护目标和实际存储钟来自该表，物理状态则取真实末状态。即使中间出生失败也不重置为 healthy，不换成新生对象。
+
+在这个 actual currentParent 上解释同一返回 AST，以新的原生故障 primitive 构造条件核，再与原完整有限输入律组成联合律。投影回有限阶段恰为原律：训练、假阳性、None、故障及所有读数都保留。条件原生字词律等于原始 $p$ 及同一返回 $q$ 从真实当前状态执行的源律，结合第 39.69 节把整个规范 micro Model、指定策略与实际过程相连。
+
+原始形式例的训练后钟139并非当前亲本钟：TFT／FFF 的真实 root 钟142且损坏，TTT 的真实 root 钟142且健康；计费转换索引195又不同于存储钟。一般定理从实际末 root 钟接 $t,t+1$，不会因读取计费或调度 phase 偷加物理故障，也不把新生钟0统一平移。
+
+资金连续使用同一初始钱包。记全部实际有限写费与读费之和为 $F(z)$，实际余额为 $R-F(z)$；不是另给一个预算证书。有限费用日程在 $S=2N+3+B$ 后为零，续行每笔费用等于原生实际 expenditure。明确另登记每个续行 tick 先到达的外部收入 $g\ge\mathrm{cap}$，由 $R\ge F(z)$ 与真实写费上界推导完整日程的原 P6 和逐笔先付能力。这是充分条件，不宣称其必要，也不声称有限零收入钱包能支付无限生命。TFT／FFF 的原实际余额仍分别为 $417/5,428/5$。
+
+原 P5 与原生组织来源保留各自的一般参数前提。最终定量共同消费者具体采用原 $N=64$ 登记参数：对每个返回 repair 的完整有限输入 $z$，条件原生律在每个 $t$ 的实际组织边缘，等于从真实当前亲本初态 $\mu_0(z)$ 出发的原 homeostaticMarginal；不是整个联合律等于某个固定初态的边缘。该条件律实际调用原 P5 均值定理及有限时域损坏占据界
+
+$$
+\kappa\sum_{t<K}\Pr(\mathrm{bad}_t)
+\le V_0+K\lambda.
+$$
+
+均值界来自同一实际组织边缘与原漂移证明，不从几乎处处频率反推。同一 $N=64$ 实例完整联合律上的每 tick 真实费用可测、有界且可积；对任意有限前缀，有限和与积分交换后，在同一 $R,g$ 账本得到期望费用的原 P6。这不声称无限总费用有界。这里的期望费用仍是写入、读取、原生续行的实际费用，没有换成独立费用过程。
+
+原生同 tick 组织记录重建同一父对象、程序和身份，真实下一次出生若存在则满足原父关系与新生钟0。repair 且 $\varepsilon<1$ 的原生频率／恢复几乎处处结论继续成立；目的最优性另使用原校准 Good。当前物理状态进入原价值积分，实际返回 $p/q$ 接入原 P9 六性质、规范商 GOD 与声明的保留亲本无限折扣评价。它没有成为有限人口终点最优：原有限终点 repair 值 $-3/40$、idle 值0的反例仍有效。
+
+同一 $h=1$ 实际 cohort 的历史深度、选择项与真实出生计数由执行产生，正出生时原矩形 Price 的响应为选择项加1；零出生只保留未归一公式。Price 恒等式不等于适应改进或长期趋同。实际标记等于真实首出生父且 child 存在时，返回标记绑定到真正执行的 store lookup，导出原 P8；无需从“标记正确”错误推断不可观察的 marked Good。
+
+原校准坏事件与实际父标记错误仍在同一联合律上只计一次，上界仍为 $5\exp(-8)$。原生资金、组织来源和精确运输为逐点或几乎处处事实，不再消耗统计失败预算。这个界不是出生成功率、全流程可靠率或接受后的条件风险。
+
+独立原 $N=72$、不同 owner、真实端口和目标的完整形式词，保留全训练与全读取，在原故障词的全部未来和后续两步原生字上逐项精确核对；有正质量的正确出生／读出原子，也有正质量的 FFF 假阳性原子。这是形式模型的非空见证，未生成或筛选现实样本。受保护程序初态匹配目标、可信解释语义、实际 owner／标记读权限、费用上界、初始余额、后续收入和评价合同均明确登记；程序执行、历史身份、条件核、排序与组织来源则由证明推导。
+
+## 39.71 原书具名来源义务的实际证明与消费
+
+总验收曾发现第 21.7、35.4、35.7 节仍仅有书面推导，故拒绝了当时的整体闭环草案。这一失败记录保留；随后新增的 ConflictParametricSource／Control／Stationary／QSD／Path／Infinite／CommonConsumer、ConflictOrganizationalSource 和 WaitingRepairControl 已逐项给出真实 Lean 证明与独立调用，不删除原题，也不以未来方向豁免。
+
+新增共同消费者严格区分原 M 与实际受限 R：前者原 GreedyInvariantGOASet 恰为 K 外的 μ1；后者完整 GOA 是所有 μθ，但从登记安全 δ 初态得到的原 CesaroLimitGOA 只有 μ0。θ<1 时，任意安全初态的正时域条件末分布均为该 QSD；零步保留初态、θ=1 零存活、实际完整路径的条件化、同一无限实验的有限圆柱以及 θ>0 的 AE 最终失败均分别核验。终端损坏 θ、两步曾失败 1−(1−θ)² 与真实返回 θ(1−θ) 来自同一完整记录，不能互换。
+
+独立的8/5等待／修复模型保留自身源、奖励和完整动作域。同非零奖励源的 P-ALG 终端分割、实际后验支持及两拍组织恢复也已有原接口消费者。来源、准确量词、反例、实际公共构建与独审身份见[具名来源包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/conflict_family_book_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。这些新增证明消除了本节列出的具名书面欠账。后续原范围总审又发现第 25.4 节完整 Perron 来源和第 10.4 节实际可逆谱展开／余项来源尚未推导，故再次拒绝当时的整体完成推断。旧负向裁决保留；随后的一般构造与原消费者现见第 39.72—39.74 节及对应独审。当前数学合同的逐项来源结算与发行采用分别记录，不能用一次局部通过或图书构建替代总验收。
+
+
+## 39.72 任意有限本原矩阵的完整 Perron 来源
+
+原第 25.4 节从同一非空有限本原非负 M 出发。PrimitivePerronSource 在非负单位单纯形上取可行增长率的紧集最大值；本原正幂把非零候选平滑成严格正向量。若特征残差仍非零，同一个正幂把残差送到全部严格正坐标，便可严格提高增长率，与最大性矛盾。由此构造原 RightEigenData，而非外给主根存在性。
+
+PrimitivePerronDoob 证明同一个原矩阵的所有幂运输：
+$$
+(H^n)_{ij}=\frac{(M^n)_{ij}r_j}{R^n r_i},\qquad
+H_{ij}=\frac{M_{ij}r_j}{Rr_i}.
+$$
+H 的随机性来自实际特征方程，本原性来自同一个正幂。原 Cesàro 存在定理产生 H 的实际平稳概率行，原矩阵的左向量与两项归一化由该行推导。PrimitiveMarkovMixing 对任意本原随机矩阵先在正幂上证明严格 Dobrushin 收缩，再由全步距离不增及共终子列得到全部原时刻的收敛；其极限绑定同一已构造平稳行。运输回 M 得 $R^{-n}M^n\to rl$。
+
+正方向唯一性由有限比率极值与实际正幂证明；严格复谱支配由上述实际幂极限推出。PrimitivePerronSimplicity 另外证明全特征空间及广义特征空间的主根维度，从而原实矩阵和复化的特征多项式在该根的重数都为一。这里没有全矩阵可对角化假设，非主模允许 Jordan 结构。
+
+终端 certificateOfPrimitive 只接收 M 和本原证明，返回原完整 KPF01Certificate。实际非对称表
+$$
+M=\begin{pmatrix}2&1\\2&3\end{pmatrix}
+$$
+的这个返回值被证明具有 $R=4$、$l=(1/2,1/2)$、$r=(2/3,4/3)$，并实际消费原非零计数的增长／组成定理。独立的不同矩阵、含零但本原矩阵及非主 Jordan 例也核验了相同一般接口。谱系传递仍需真实身份条件；本原性不替代出生记录。来源与原范围结算见[一般 Perron／实际紧谱来源](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/general_perron_compact_spectral_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。
+
+## 39.73 实际紧 resolvent 产生同一半群的谱展开
+
+在原实 Hilbert 空间上固定实际演化 $S_t$ 与紧自伴 resolvent R。源合同是 $S_0=I$ 以及在真实生成元域上的关系
+$$
+\frac{d}{dt}S_t(Rv)=S_t(Rv-v),\qquad t\ge0.
+$$
+它表达 $R=(I-L_D)^{-1}$ 的执行语义。实际收缩条件与原首模、正交谱界、第二模和严格间隔也明确登记。
+
+CompactSpectralSemigroupSource 对每个非零 resolvent 模 $Rv=av$ 从该微分关系证明
+$$
+S_tv=\exp\!\bigl((1-a^{-1})t\bigr)v.
+$$
+紧自伴谱的完备正交 Hilbert 和来自原 mathlib 定理。零时生成关系推出 R 注入，实际收缩推出非零谱模为正；完整 S 的坐标作用与 HasSum 展开由实际连续线性映射作用于该和取得。原正交 Rayleigh 界再给真实余项的 Parseval 衰减。
+
+CompactKilledSpectralBinding 以同一个源初始概率密度 $g$ 和实际 killed 演化实现为输入，构造原 SpectralData；$a_1=\langle g,\phi_1\rangle$ 与真实余项 $S_t(g-a_1\phi_1)$ 直接从源计算。主系数正性、主模总质量正性、零时恒等式、积分平方范数及两项原谱输出均由证明给出，随后调用原 P-QSD-04，条件律和生存律精确运输到该 killed 对象。
+
+一般实现合同绑定的是给定 g 的真实演化，不能仅由一个初态轨道辨识整个核。生成元／resolvent 的实际来源、紧自伴性、原谱条件和源算子语义是明确前提；这里不声称替任意 SDE 建造这些条件。下一节的共同实例另给整个算子的核实现。
+
+## 39.74 同一实际核的非零谱余项与条件律
+
+取 Bool 上的均匀参考测度 $m$，$\phi=1$、$\psi=(1,-1)$，实际 killed 核为
+$$
+k_t(x,y)=\frac12\begin{cases}
+ e^{-t}+e^{-2t},&x=y,\\
+ e^{-t}-e^{-2t},&x\ne y.
+\end{cases}
+$$
+由该表逐项证明非负、次概率、零时单位核与半群合成。相同加权 $L^2(m)$ 上的 R/S 满足上一节的实际生成关系，并证明对所有向量 v 的完整算子等式
+$$
+(S_tv)(y)=\sum_x k_t(x,y)v(x),
+$$
+以及非负密度的实际核推前等式。该有限可逆 killed 实例见证谱算子类，未被称作 Brownian 扩散。
+
+实际初态为 $(3/4,1/4)$，即 $g=1+\frac12\psi$。其主系数为一、初始余项范数为 $1/2$，同一源给出
+$$
+S_tg=e^{-t}\phi+\tfrac12e^{-2t}\psi,\qquad
+\|R_t\|_2=\tfrac12e^{-2t},
+$$
+$$
+\Pr(\tau>t)=e^{-t},\qquad
+D_{\rm TV}(\mu_t^c,m)=\tfrac14e^{-t}>0\quad(t<\infty).
+$$
+独立核验把初态登记为 $(5/8,3/8)$，保持完全相同的核、R 与 S，得到余项范数 $1/4$、实际 TV 为 $e^{-t}/8$，并真实调用同一原 P-QSD-04。二者是保留非零余项的形式模型核验，未重新抽取任何现实样本。
+
+本版原数学合同、前提分类、兼容共同来源及严格反例的逐项结算见[原合同差额消解审查](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/general_perron_compact_spectral_source_v1/independent/ueot-original-contract-general-gaps-discharge-review-20261103.json)。数学范围核验与实际发行采用分列，最终采用由匹配源版本、两书、真实数据绑定和 GI／索引的发行回执确认。外部经验支持仍为 UNVERIFIED。
 
 
 <a id="appendix-a"></a>
@@ -6935,7 +7095,11 @@ ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303
 
 | 本次正文 | 形式对应 | 当前范围 |
 |---|---|---|
-| M-21.1–M-21.7 | 源 UC.conflictRewardControl；一般 TC.InvariantLawGOA、TC.CesaroLimitGOA、TC.KilledQSDGOA、TC.GreedyInvariantGOASet；CMP.PositiveEigenstructure.BiEigenData | 新的参数化实例、显式数值、R 的完整 greedy 与混合不变律族为书面证明，尚无专门已编译端点 |
+| M-21.1–M-21.2 | UC.ConflictParametricStationary.actual_one_step、actual_invariant_unique、dobrushin_zero、cesaro_exact、cesaro_tv_exact、cesaro_residual；UC.ConflictParametricCommonConsumer.original_cesaro_limit_GOA | 同一原源，全 θ∈[0,1]；任意初态一步到 μθ，登记 δ 初态的 N=n+1 精确平均与 TV；消费原 CesaroLimitGOA |
+| M-21.3–M-21.4 | UC.ConflictParametricQSD.actual_qsd_goa、actual_doob_fair、actual_doob_invariant、actual_conditioned_terminal、actual_conditioned_time_zero | 实际安全子类型 killed 核／BiEigenData／原 GOA；任意安全初态，正 T 与 θ<1；零步及 θ=1 另证 |
+| M-21.5／完整条件路径／无限实验 | UC.ConflictParametricPath.full_conditioned_path_eq_zero_policy；UC.ConflictParametricCommonConsumer.terminal_damage_probability、two_step_return_probability；UC.ConflictParametricInfinite.finite_record_cylinder、actual_eventual_failure_ae | 完整状态—动作记录来自原因果 PMF；同一无限实验的全部有限圆柱；终端风险不等于曾失败 |
+| M-21.6–M-21.7 | UC.ConflictParametricControl；UC.ConflictParametricCommonConsumer.original_unrestricted_GOA_iff、original_restricted_GOA_all_rows、original_restricted_cesaro_GOA_iff | 原 M 的全部因果控制与实际 greedy；实际 R 域外保留两动作，完整原 GOA 是所有两闭类混合，安全 δ 的 Cesàro 仅 μ0 |
+| §35.4／§35.7 | UC.WaitingRepairControl.healthy_values_differ、actual_macro_optimal；UC.ConflictOrganizationalSource.terminal_relation、Posterior.actual_posterior_support、two_tick_recovered | 独立8/5源；同非零奖励源的原 P-ALG／实际后验／两拍组织恢复；不混淆物理时钟或删除过去失败 |
 | M-36.6 | UC.FiniteObservationEscapeCheck.tvDist_atomEncode_eq；tvDist_embedded_eq_encoded；tvDist_eq_of_live_reference_masses | 本版生产接口，含一侧有限载体与完整逃逸质量，不声称对任意两参考全局等距 |
 | M-36.7 | UC.PathObservationEscapeCheck.escape_path_tv；UC.ArbitraryObservationRiskCheck.coverage_arbitrary_observation_path_error 及其事件风险端点 | 本版生产接口，实际源、策略、完整占据和原 Q(F) 均保持；Y 有可测单点，F 可测 |
 | §36.8 正逃逸边界 | UC.FiniteObservationEscapeBoundaryCheck.infinite_ambient_positive_escape_boundary | 本版生产接口：对固定有限源的 TV 为 5/12，逃逸质量及两个原参考间 TV 为 1/4，两个编码参考间 TV 为零 |
@@ -6962,6 +7126,8 @@ ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303
 
 
 ## F.5 同源执行与可测预测的新增对应
+
+**当前数学合同：** 第 39.70—39.74 节及[全理论验收表](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/whole_theory_formal_closure_v1/FINAL_ACCEPTANCE.md)记录本版已证明的来源、修订、合法前提和发行采用条件。下列各段按历史集成次序保留 OPEN／待续表述，它们不是最终版本仍有相同欠账的声明。冻结 106、端点计数、单包 CLOSED 或两个 PDF 构建成功均不能单独推出总完成。
 
 第 39 章的来源分工如下：
 
@@ -6999,4 +7165,11 @@ C1 的源及传感器对应 UC.MeasurablePredictiveSource、UC.MeasurablePredict
 
 第 39.61—39.64 节对应 UC.RegisterFaultDynamicProbeClocked／RegisterFaultDynamicProbeP9Terminal、RegisterFaultDynamicProbePopulation／RegisterFaultDynamicProbeHistoryPrice 与 RegisterFaultNativeOrganization；准确源码、独立公共消费者、类型和边界见[实际六性质／有限后代 Price／同 tick 组织来源](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/p9_lineage_organization_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。第 39.65—39.67 节补登记运输、真实父标记及完整有限写费；含读取费的共同钱包与有限世代共同消费者尚未纳入本刊，全理论仍 OPEN / NOT_ESTABLISHED。
 
-第 39.65—39.67 节对应 UC.RegisterPopulationOwnerClockTransport、RegisterFaultDynamicProbeParentDiscovery 与 RegisterPopulationFiniteEpisodeResource；准确源码、独立公共消费者、类型及边界见[实际登记／出生父标记／有限资金来源](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/owner_discovery_resource_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。有限世代共同消费者仍承担同一钱包付全读取费及全部原角色的真实连接；全理论仍 OPEN / NOT_ESTABLISHED。
+第 39.65—39.67 节对应 UC.RegisterPopulationOwnerClockTransport、RegisterFaultDynamicProbeParentDiscovery 与 RegisterPopulationFiniteEpisodeResource；准确源码、独立公共消费者、类型及边界见[实际登记／出生父标记／有限资金来源](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/owner_discovery_resource_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。第 39.68—39.69 节进一步给同钱包／同首出生父角色与实际规范预测控制，见[同钱包共同角色／实际规范预测来源](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_predictive_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)；实际 episode 末亲本的带资续行及一般共同 Price 仍待来源连接；全理论仍 OPEN / NOT_ESTABLISHED。
+
+第 39.68—39.69 节对应 UC.RegisterFiniteGenerationCommonConsumer 与 RegisterPredictiveSource；准确源、独立公共消费者、类型和范围见[同钱包共同角色／实际规范预测来源](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_predictive_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。上述两源检查保留其历史准确范围；实际末亲本续行及定量共同角色现见第 39.70 节，总裁决与发行条件现见第 39.71 节。
+
+第 39.70—39.71 节采用 UC.RegisterPopulationCurrentParentContinuation、原 P5 均值／期望资源补充公共消费者与最终独立跨接口审查；准确声明、标准公理和实际输入／日志绑定见[三源共同来源](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/finite_predictive_source_v1/SOURCE_VALIDATION.json)。
+
+
+第 39.72—39.74 节对应 UC.PrimitivePerronClosure.certificateOfPrimitive、actual_p_evo_03、actual_root_simple，以及 UC.CompactSpectralSemigroupSource.actual_principal_expansion_and_remainder 和 UC.CompactKilledSpectralBinding.ofActualSource、actual_p_qsd_04。完整矩阵及实际半群来源、独立共同实例与准确语义边界见[一般来源核验](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/general_perron_compact_spectral_source_v1/SOURCE_VALIDATION.json)。这些工厂供应原接口的内部输出，未修改冻结 P-ID 或把计数作为理论完成度。
