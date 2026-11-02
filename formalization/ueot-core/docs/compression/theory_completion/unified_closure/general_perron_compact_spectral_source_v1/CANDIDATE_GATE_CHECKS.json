@@ -1,0 +1,58 @@
+{
+  "schema": "ueot.scientific-candidate-checks.v1",
+  "checked_scientific_commit": "de1e4394ca108a071ba0db83098d5ca02ec83819",
+  "baseline_main": "0dc7d2046ae135a83e74fd9f31a232af5695c08d",
+  "checks": [
+    {
+      "name": "preflight",
+      "actual_exit_code": 0,
+      "artifacts": [
+        {
+          "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/general-perron-compact-spectral-evidence-20261102/ueot-general-source-preflight-20261103.json",
+          "sha256": "7b8eafddb571c1a76a9a9b58bc284dfbe7803761e6730e5297a0df8785ac822b"
+        },
+        {
+          "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/general-perron-compact-spectral-evidence-20261102/ueot-general-source-preflight-20261103.md",
+          "sha256": "cbc02cf7fd7cf9a49edd1e4fcaf6e325f395cc74fb06e7bd8a54d612d3440e3a"
+        },
+        {
+          "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/general-perron-compact-spectral-evidence-20261102/ueot-general-source-preflight-20261103.log",
+          "sha256": "ca901353ba8e8544444a096a77aee1b2c2ef840640e061d9285fa3ae866d528d"
+        }
+      ]
+    },
+    {
+      "name": "finalization",
+      "actual_exit_code": 0,
+      "artifacts": [
+        {
+          "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/general-perron-compact-spectral-evidence-20261102/ueot-general-source-finalization-20261103.log",
+          "sha256": "86e13448cf1c83d50f1adc32b8e55b8e08bfdc3338aba03a09d8e55c54b1aef2"
+        }
+      ]
+    },
+    {
+      "name": "governance_after_actual_retirement",
+      "actual_exit_code": 0,
+      "artifacts": [
+        {
+          "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/general-perron-compact-spectral-evidence-20261102/ueot-general-source-governance-after-retirement-20261103.log",
+          "sha256": "9378fe8598b8208a8baf903c599075d2d40e295db5b64d3437e817c5834af363"
+        },
+        {
+          "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/general-perron-compact-spectral-evidence-20261102/ueot-general-source-governance-after-retirement-exit-20261103.json",
+          "sha256": "ef986fd7e09bae617a9bbafeaf8ecaa54ec93ce0d1090325ab34af7e633eba73"
+        }
+      ]
+    }
+  ],
+  "preflight_status": "PASS_WITH_TYPED_REUSE_REVIEW_REQUIRED, resolved by exact TYPED_REUSE_SOURCE_REVIEW and original-contract discharge; lexical hits alone not proof.",
+  "preserved_governance_failure": {
+    "log": "/tmp/ueot-general-source-governance-20261103.log",
+    "exit_code": 1,
+    "reason": "Two own already-normal-merged remote branches unretired. Exact PR/head/merge/tree checks preceded their authorized retirement; unchanged validator then actualexit0.",
+    "retirement": "MERGED_BRANCH_RETIREMENT.json"
+  },
+  "final_candidate_rule": "Subsequent commit documentation/evidence only; exact UEOT source and public-root bytes must remain equal to checked scientific commit.",
+  "whole_goal": "ACTIVE_NOT_COMPLETE"
+}
