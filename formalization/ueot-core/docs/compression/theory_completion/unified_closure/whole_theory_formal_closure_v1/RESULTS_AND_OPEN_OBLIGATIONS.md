@@ -1,3 +1,11 @@
+# Whole-theory scientific scope and release contract
+
+Scientific main: `2fc54a389827743f88ef5f6c9952f821ac437438` (#438). Original mandatory scientific source gaps are discharged by the exact whole-contract review and general constructions linked in [FINAL_ACCEPTANCE](FINAL_ACCEPTANCE.md). Real data/source identity, two-book publication, actual main and original GI/index adoption remain the separate release acceptance conditions there; no local count or scoped report supplies those facts. Empirical support is UNVERIFIED.
+
+The original checkpoint below is historical. Its then-open items are resolved only by the later exact sources/reviews, not by changing its original claims or deleting failures.
+
+---
+
 # Whole-theory source bridge checkpoint
 
 Overall goal: **OPEN / NOT_ESTABLISHED**. Original Core scope, P0–P12, C1–C7, UMC and both books remain in scope. This checkpoint does not supersede their contracts or old immutable matrices. Baseline main: ccc42a3c4b7b4817c24275235e85cdda73c2a295.
