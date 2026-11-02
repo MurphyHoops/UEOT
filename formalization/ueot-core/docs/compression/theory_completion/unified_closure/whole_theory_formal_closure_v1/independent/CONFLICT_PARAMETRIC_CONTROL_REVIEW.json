@@ -1,0 +1,120 @@
+{
+  "schema": "ueot.independent-source-chain-review.v1",
+  "verdict": "PASS_WITH_EXACT_ORIGINAL_SAFETY_RESTRICTION",
+  "reviewer": "block_infinite_review",
+  "author": "body_hitting",
+  "nonauthor": true,
+  "source": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ConflictParametricControl.lean",
+    "sha256": "1eb35818db6c4f5c7bd4a8d62d8c0a6b1d3e4f6faf86198549b8d8b5339a0242",
+    "bytes": 18542
+  },
+  "base": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ConflictParametricSource.lean",
+    "sha256": "7d006f58935e2a39d0ddc1f9b51c4fe63634ef127c43dadc9db4f96a782badb7",
+    "bytes": 6067
+  },
+  "author_receipt": {
+    "path": "/tmp/ueot-conflict-parametric-control-source-receipt.json",
+    "sha256": "78cf5b1a972f523fa59cba89d786466fec2192fa9411bbeb043648ab4e6921fa",
+    "bytes": 8824
+  },
+  "independent_fixture": {
+    "path": "/tmp/ueot-independent-conflict-parametric-control-consumer.lean",
+    "sha256": "5d888c78d6c20ec26065bf67a128f0ba72985d057450bc2906eee97323fa2c38",
+    "bytes": 5082
+  },
+  "checks": [
+    {
+      "kind": "fresh actual source direct",
+      "actual_exit_code": 0,
+      "log": {
+        "path": "/tmp/ueot-independent-conflict-parametric-control-direct.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "kind": "fresh public types/axioms",
+      "actual_exit_code": 0,
+      "fixture": {
+        "path": "/tmp/ueot-conflict-parametric-control-types.lean",
+        "sha256": "389620438cb48bcc9c937654cf93180f5485c8348657874a2053fd0d6f8dccc0",
+        "bytes": 9261
+      },
+      "log": {
+        "path": "/tmp/ueot-independent-conflict-parametric-control-types.log",
+        "sha256": "62a6dcbed472968b4ef053d20445ccfe24bdcb7ff4b9145383fc64ff6f70b9c4",
+        "bytes": 26103
+      },
+      "named_axiom_outputs": 42
+    },
+    {
+      "kind": "different theta7/11 fullmemory3 actual caller",
+      "actual_exit_code": 0,
+      "log": {
+        "path": "/tmp/ueot-independent-conflict-parametric-control-consumer2.log",
+        "sha256": "0ea3bade38788f427c2525416d0ae8941de531368a3ca034b58da71d1b7ba5b6",
+        "bytes": 2405
+      },
+      "named_axiom_outputs": 20,
+      "allowed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "warnings": 0
+    },
+    {
+      "kind": "independent Fraction primitive Bellman/path reproduction",
+      "actual_exit_code": 0,
+      "script": {
+        "path": "/tmp/ueot-independent-conflict-parametric-control-reproduction.py",
+        "sha256": "f46fee6961a822951b679a74b206fcdfe756cab1f7069f20427f6384144f2164",
+        "bytes": 2620
+      },
+      "output": {
+        "path": "/tmp/ueot-independent-conflict-parametric-control-reproduction.json",
+        "sha256": "9e1a5ab480f6bbb168ce30d3e42defba77b010fef371b41cc0861ad9f7a4d898",
+        "bytes": 748
+      },
+      "log": {
+        "path": "/tmp/ueot-independent-conflict-parametric-control-reproduction-final.log",
+        "sha256": "c3ced0ce1b4aae6ba6ff7fba69aa0e05842798e06556b83d65463a4bd8f4a17d",
+        "bytes": 56
+      }
+    }
+  ],
+  "findings": [],
+  "scientific_obligations_discharged": [
+    "M21.6: original reward 1-a and discount1/2 produce actual stationary and complete-history causal pi_theta value 2theta for every theta in[0,1] and every memory; equality uses the same actual pi_theta, not existential replacement. Original M.optimalValue=2, unique optimal action false, original actual greedy attainment and ALLcausal policy domination.",
+    "M21.7: R literally viableRestrictedModel of original M and actual original viability fixed-point K. Inside K onlytrue is admissible, OUTSIDE K bothfalse andtrue remain. Actual optimal value2 outside/0 inside, unique optimal action coerces to visible coordinate; arbitrary admissible causal domination and actual greedy attainment.",
+    "Actual unrestricted and restricted source laws are not conflated: restrictedRow equals original M.transitionPMF x x.1, and D is actual restricted greedy policyMatrix with half mass on each hidden state of unchanged visible fibre.",
+    "ALL invariant PMFs of actual full-domain D are precisely mu_theta, theta in[0,1], equivalent coordinate mixture (1-theta)mu0+theta mu1. Both endpoints distinct. Actual full-domain Dobrushin coefficient equals1; no unique global GOA or strict contraction.",
+    "For EVERY safe initial PMF and EVERY finite horizon, actual restricted greedy projected to original actions has COMPLETE STATE-ACTION path law equal pi0. This is support-dependent kernel equality induction, not just state marginal or stationary invariant equality. Actual unsafe pure(false,false),T1 disproves extension outside K."
+  ],
+  "independent_specialization": [
+    "theta7/11 versus author2/5, complete three-action memory starting(false,true), actual infinite value14/11; original q-values false2/true1.",
+    "Independent admitted outsideTRUE is legal but q-value0 versus outsideFALSE q-value2; safeFALSE illegal. Safe actualgreedy value0 and outside actualgreedy2.",
+    "Explicit actual source row equality, ALLinvariant interface and new7/11 mixture coordinates4/11 mu0 +7/11 mu1. Safe initial pure(true,true), arbitraryT complete path equality; unsafe counterexample consumed.",
+    "Exact Fraction Gaussian solve for all16 original deterministic selectors and4 admitted restricted selectors, actual theta7/11 policy value14/11, actualD idempotent andDobrushin1; complete state-action path equality at horizons0..4 and actualunsafeT1 inequality. These deterministic calculations corroborate primitives; Lean allcausal theorems carry general policy quantifiers."
+  ],
+  "scope_boundaries": [
+    "Does not replace the distinct waiting/repair s-a reward section35.4 model with this original conflict1-a model; 8/5 remains separate required source.",
+    "Does not claim theta-family survival/finite-conditioning/infinite path/Cesaro/QSD results from value or invariant calculations; separate mandatory leaves remain.",
+    "No global safe restriction outsideK, no all-initial fullpath equivalence, no unique full-state invariant.",
+    "Whole original-theory Goal remains OPEN until remaining original book obligations and integration are independently verified."
+  ],
+  "local_failure": [
+    {
+      "actual_exit_code": 1,
+      "log": {
+        "path": "/tmp/ueot-independent-conflict-parametric-control-consumer1.log",
+        "sha256": "64c69ed366b94d8193b5f6231c0fc36558ea3057eaef795f0cf8ffa01ef235fe",
+        "bytes": 3253
+      },
+      "classification": "Own fixture conjunction/rfl arithmetic elaboration and unnecessarySeqFocus warning, corrected without modifying source."
+    }
+  ],
+  "mutations": "Only /tmp fixture/reproduction/logs and this review; frozen source/base unchanged; no publicexports/Git/GI/books."
+}

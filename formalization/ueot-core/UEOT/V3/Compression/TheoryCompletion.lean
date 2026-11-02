@@ -283,6 +283,15 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterPopulationFin
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFiniteGenerationCommonConsumer
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterPredictiveSource
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterPopulationCurrentParentContinuation
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConflictParametricSource
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConflictParametricControl
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.WaitingRepairControl
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConflictOrganizationalSource
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConflictParametricPath
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConflictParametricInfinite
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConflictParametricStationary
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConflictParametricQSD
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConflictParametricCommonConsumer
 /-!
 # UEOT Theory Completion public root
 

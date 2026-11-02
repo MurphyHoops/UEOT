@@ -1,0 +1,103 @@
+{
+  "schema": "ueot.independent-source-chain-review.v1",
+  "verdict": "PASS_ORIGINAL_DISTINCT_WAITING_REPAIR_8_OVER_5_MODEL",
+  "reviewer": "block_infinite_review",
+  "author": "body_hitting",
+  "nonauthor": true,
+  "source": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/WaitingRepairControl.lean",
+    "sha256": "33a5bd1f68899c9d4aaa4996a8e2ab132f708ae5348e7135fb6cdd85db6ab725",
+    "bytes": 8864
+  },
+  "author_receipt": {
+    "path": "/tmp/ueot-waiting-repair-control-source-receipt.json",
+    "sha256": "55d409ef13b1da7bf7472542cdbce053517f8f5835822cfe34174f8956d657a6",
+    "bytes": 8677
+  },
+  "checks": [
+    {
+      "kind": "fresh actual source direct",
+      "actual_exit_code": 0,
+      "log": {
+        "path": "/tmp/ueot-independent-waiting-repair-direct.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "kind": "fresh nonempty public theoremtypes/axioms",
+      "actual_exit_code": 0,
+      "fixture": {
+        "path": "/tmp/ueot-independent-waiting-repair-types.lean",
+        "sha256": "c18a27f603535352b3a090b5e1e73d97456e11100aa88caca45179e86ff1bc42",
+        "bytes": 1849
+      },
+      "log": {
+        "path": "/tmp/ueot-independent-waiting-repair-types.log",
+        "sha256": "e489e7cf2157a01e16b6c8f2b5576f2ec1f336b84c697ecdf0d765d7f0d5d268",
+        "bytes": 10113
+      },
+      "named_axioms": 27
+    },
+    {
+      "kind": "different actual hidden=true t7 consumer",
+      "actual_exit_code": 0,
+      "fixture": {
+        "path": "/tmp/ueot-independent-waiting-repair-consumer.lean",
+        "sha256": "4c381647598b2cd839a82060d1822fb75b9a97bea6cade071d15ca8d81ae7ec9",
+        "bytes": 4648
+      },
+      "log": {
+        "path": "/tmp/ueot-independent-waiting-repair-consumer1.log",
+        "sha256": "35107a0f08c58e95f9540ea69fd39eca00103a2dfc6d5f914da7ad184f0b58ec",
+        "bytes": 1891
+      },
+      "named_axioms": 17,
+      "allowed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "warnings": 0
+    },
+    {
+      "kind": "exact Fraction primitive Bellman allselector reproduction",
+      "actual_exit_code": 0,
+      "script": {
+        "path": "/tmp/ueot-independent-waiting-repair-reproduction.py",
+        "sha256": "d8b32fb02eacc00dc3f4273c772cf0ba2a5f6abc7d55a74b25e375e50ae49429",
+        "bytes": 2178
+      },
+      "output": {
+        "path": "/tmp/ueot-independent-waiting-repair-reproduction.json",
+        "sha256": "ff748f0b625097fa62bd45681de42ee3742e5835291560a15572d34c712fbd17",
+        "bytes": 838
+      },
+      "log": {
+        "path": "/tmp/ueot-independent-waiting-repair-reproduction.log",
+        "sha256": "7a61c839b662380ebd7e921a11c1fdc9537d2b7b09d62e5ed0e372d9a160966e",
+        "bytes": 87
+      }
+    }
+  ],
+  "findings": [],
+  "original_contract_discharged": [
+    "Book35.4 exact separate controlled kernel: healthywait healthy probability3/4, badwait neverreturnshealthy, repair certainhealthy, hiddenfair in all rows; rewardhealth minusaction, discount1/2. Primitive normalized kernel constructs actual original ExactControlQuotient and microM. It is not conflict1-a reward source and not Register faultpreemptsrepair source.",
+    "SameactualM valuehealthy8/5,bad0 with strict qgap: healthywait8/5 vsrepair4/5; badwait0 vsrepair-1/5. Uniqueoptimalactionfalse, actualgreedywaits; original ALLcausal policy comparison and actualinfinitegreedy attainment consumed.",
+    "Actual K={healthy} source viability fixedpoint derived from THISphysical support. R is actual viableRestrictedModel; healthy onlyrepair, badoutside bothactionsallowed. ActualR valuezero everywhere, unique greedycoercion=health, ALLadmissible causal upperbound0 and actualinfiniteattainment.",
+    "Sameactualhealthy unrestrictedgreedy waiting has failure1/4 and isnotStaysInK; actualrestrictedgreedy repair isStaysInK. This is controlledsafe/unrestricted separation on original35.4 source.",
+    "Exactvisible control quotient proven from actualkernel stronglumpability, sameactualreward closure and actualtransitionfiber. Originalsamequotient macrovaluehealthy8/5 obtained from its controlvalue theorem, not asserted independentmacro."
+  ],
+  "independent_consumer_scope": [
+    "Hidden=true actualwaitingrows3/8 and1/8, badwait1/2 and0, repair1/2 and0 for ANYstate; explicit sourceinequality against previous ConflictParametricSource.",
+    "Originals-a rewardbadrepair-1/healthywait1, same discount; exact4qvalues and healthy8/5/bad0; actualgreedy t7 attainment, ALLcausal genericinterface.",
+    "Outsideactualrepair islegal butR q=-1, outsideactualwaitR q=0; actualR allcausal/greedyinfinite0, positivewaitingfailure1/4 and safevsunsafe conclusions, exactoriginalmacro reward/transition/value consumers.",
+    "ExactFraction Gaussian solve all16 originaldeterministic selectors and4 admittedrestricted selectors; maxvalues match and unique simultaneousselectorswait/unrestricted andhealth/restricted, actualsourcerows normalized/hiddenindependent. Lean genericcausaltheorems cover arbitraryhistory/randomized policies, not enumeratedselector extrapolation."
+  ],
+  "boundaries": [
+    "No claim one physicalwaiting tick equals programrepair organizationtick from another model.",
+    "No new empiricaldata/sample thresholds, modelparameter/timing/reward unchanged.",
+    "Does not alone close other originalM21 stationary/Cesaro/QSD/path/infinite obligations or wholeGoal."
+  ],
+  "mutations": "Only independent /tmp fixtures/reproduction/logs and thisreview; frozen source and all prior sources unchanged; no publicexports/Git/GI/books."
+}
