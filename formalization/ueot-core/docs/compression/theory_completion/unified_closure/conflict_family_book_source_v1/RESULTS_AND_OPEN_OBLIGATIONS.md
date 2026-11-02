@@ -4,7 +4,7 @@ Baseline: actual main `49d2d52f70c4255895769b1da92048b9849467eb` (Core #436). Th
 
 ## Original process, no replacement source
 
-`ConflictParametricSource` uses the original nonzero-reward `conflictRewardControl.micro`: state Bool×Bool, allowed Bool action, actual next visible coordinate equal to the action, fair resampled hidden coordinate, reward 1 on visible false and 0 on visible true, discount 1/2. For every real θ∈[0,1], the complete-history policy chooses false with probability θ. Its closed row and PMF μθ are derived from the actual original transition PMF, including θ=0/1. Source and public theorem hashes are in SOURCE_VALIDATION.json. Full-state histories and state-action records are retained.
+`ConflictParametricSource` uses the original nonzero-reward `conflictRewardControl.micro`: state Bool×Bool, allowed Bool action, actual next visible coordinate equal to the action, fair resampled hidden coordinate, reward 1 for action false and 0 for action true (independent of the current state), discount 1/2. For every real θ∈[0,1], the complete-history policy chooses false with probability θ. Its closed row and PMF μθ are derived from the actual original transition PMF, including θ=0/1. Source and public theorem hashes are in SOURCE_VALIDATION.json. Full-state histories and state-action records are retained.
 
 | Frozen source | Actual mathematical increment and original consumer |
 |---|---|
