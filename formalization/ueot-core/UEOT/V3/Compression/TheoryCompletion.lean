@@ -292,6 +292,16 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConflictParametricInf
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConflictParametricStationary
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConflictParametricQSD
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConflictParametricCommonConsumer
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PrimitivePerronSource
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PrimitivePerronDoob
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PrimitivePerronBiEigen
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PrimitivePerronUniqueness
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PrimitiveMarkovMixing
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PrimitivePerronSpectral
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PrimitivePerronSimplicity
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PrimitivePerronClosure
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CompactSpectralSemigroupSource
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CompactKilledSpectralBinding
 /-!
 # UEOT Theory Completion public root
 

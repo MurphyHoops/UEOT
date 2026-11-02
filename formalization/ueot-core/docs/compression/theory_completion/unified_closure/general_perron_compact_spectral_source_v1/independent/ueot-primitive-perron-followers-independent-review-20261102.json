@@ -1,0 +1,275 @@
+{
+  "schema": "ueot.independent-four-perron-successors-review.v1",
+  "verdict": "PASS_FOUR_EXACT_FROZEN_SUBARROWS_NOT_COMPLETE_KPF",
+  "reviewed_utc": "2026-11-02T15:26:40.794983+00:00",
+  "reviewer": "block_infinite_review",
+  "nonauthor_for_all_four": true,
+  "leaves": [
+    {
+      "module": "PrimitivePerronUniqueness",
+      "author": "body_hitting",
+      "nonauthor_reviewer": "block_infinite_review",
+      "source": {
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PrimitivePerronUniqueness.lean",
+        "sha256": "1f9492264412940b2bed25f3ec9caaf7da2659b198139cd7224552bdbccfed17",
+        "bytes": 5864
+      },
+      "receipt": {
+        "path": "/private/tmp/ueot-primitive-perron-uniqueness-source-receipt.json",
+        "sha256": "b41a3be283db8d085be16b94cb81800959200fcddccac6869a1fb7410660d296",
+        "bytes": 4269
+      },
+      "author_log_identities_verified": [
+        "direct4",
+        "build",
+        "types",
+        "consumer1"
+      ],
+      "fresh_actual_direct_exit_code": 0,
+      "fresh_direct_log": {
+        "path": "/private/tmp/ueot-independent-PrimitivePerronUniqueness-direct-20261102.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "verdict": "PASS_GENERAL_POSITIVE_ROOT_AND_PRIMITIVE_POSITIVE_RAY_UNIQUENESS",
+      "scope": "Any finite nonempty index carrier. Nonnegative M plus existing positive RightEigenData and any positive eigenvector v proves its eigenvalue equals the existing positive scale, without assuming the second eigenvalue positive. Primitive M then forces that positive eigenvector onto the same ray.",
+      "proof_review": [
+        "Min/max v_i/r_i and monotonicity of actual M compare eigenvalues at exact attaining coordinates; positive v/r makes division valid. No spectral theorem input.",
+        "For ray uniqueness take max ratio c>0, residual d=c*r-v>=0 with zero maximizing coordinate and same eigenrelation. If nonzero, an actual primitive power makes every output coordinate strictly positive, contradicting the zero coordinate of the eigenpower.",
+        "primitive_positive_right_unique actually uses the upstream same-M constructed RightEigenData; no new existence field."
+      ],
+      "actual_consumer": "Same returned D for M=[[2,1],[2,3]]; generic positive_root_ray_ALL plus explicit other vector[3,6]. Identity positive roots still equal1 but vectors[1,1] and[1,2] cannot share a positive ray; primitive condition is not dropped.",
+      "boundary": "Positive-ray uniqueness is not yet algebraic multiplicity1 or a proof of all complex spectral dominance."
+    },
+    {
+      "module": "PrimitiveMarkovMixing",
+      "author": "body_hitting",
+      "nonauthor_reviewer": "block_infinite_review",
+      "source": {
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PrimitiveMarkovMixing.lean",
+        "sha256": "29b74ebed87e3838727751a7845cba680da9b228dea9d6f3dd32e990e55bf980",
+        "bytes": 9723
+      },
+      "receipt": {
+        "path": "/private/tmp/ueot-primitive-markov-mixing-source-receipt.json",
+        "sha256": "cb14514612aee091027b8f36dbf5598c5950767ebaddc87ed757b8c2c5b4b434",
+        "bytes": 4085
+      },
+      "author_log_identities_verified": [
+        "direct6",
+        "build-final",
+        "types",
+        "consumer1"
+      ],
+      "fresh_actual_direct_exit_code": 0,
+      "fresh_direct_log": {
+        "path": "/private/tmp/ueot-independent-PrimitiveMarkovMixing-direct-20261102.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "verdict": "PASS_GENERAL_PRIMITIVE_STOCHASTIC_FULL_POWER_MIXING",
+      "scope": "ANY actual finite nonempty primitive row-stochastic real P. Derives positive stationary law and convergence of every original P^n coordinate at ALL natural n; ANY given invariant probability row is the same limit.",
+      "proof_review": [
+        "Actual finite Cesaro exists_invariant produces the stationary probability, not an input field. An actual positive P^k makes every stationary coordinate positive.",
+        "One-step TV alpha is bounded in[0,1]; a strictly positive P^k has alpha<1 by exact event-TV. No alpha(P)<1 premise is used.",
+        "Geometric contraction at n*k is proved for the same orbit using Q=P^k; k>0 implies n*k tends to infinity. Antitone TV along the original P orbit upgrades subsequence convergence to ALL times. Coordinate errors bounded by2TV yield the actual matrix-power limit.",
+        "Uniqueness uses same positive power. primitive_power_tendsto_invariant binds the output to ANY supplied actual invariant row, preventing a choice-based replacement of that law."
+      ],
+      "actual_consumer": "Same actual Doob H from constructed D; explicit pi=[1/3,2/3] is proved invariant and positive, ANY alternative invariant equals pi, and ALL H^n coordinates converge to THIS pi.",
+      "boundary": "Does not apply to merely nonnegative stochastic matrices; identity is nonprimitive. Finite test enumeration is not used as the proof of infinite convergence."
+    },
+    {
+      "module": "PrimitivePerronDoob",
+      "author": "root",
+      "nonauthor_reviewer": "block_infinite_review",
+      "source": {
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PrimitivePerronDoob.lean",
+        "sha256": "04f2a6e52d2712743faf6c73f0373ec033bbea229016ab42b194a62347b9c9c2",
+        "bytes": 4285
+      },
+      "receipt": {
+        "path": "/private/tmp/ueot-primitive-perron-doob-source-receipt.json",
+        "sha256": "4673d93bd9d6b690f828720b6d54fe29b027075a2e022f1597d382f2581c83d8",
+        "bytes": 2085
+      },
+      "author_log_identities_verified": [
+        "actual_check",
+        "actual_check",
+        "actual_check"
+      ],
+      "fresh_actual_direct_exit_code": 0,
+      "fresh_direct_log": {
+        "path": "/private/tmp/ueot-independent-PrimitivePerronDoob-direct-20261102.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "verdict": "PASS_SAME_MATRIX_ALL_POWER_DOOB_TRANSPORT_AND_POSITIVE_STATIONARY_SOURCE",
+      "scope": "Existing positive RightEigenData D on SAME M; nonnegative M yields actual row-stochastic hTransform. Primitive M yields primitive hTransform. No rank/symmetry restriction; positivity makes every division valid.",
+      "proof_review": [
+        "transform_power is exact for every n including0, with the same original M^n and diagonal reweighting r_j/(R^n r_i). Induction cancels only proved nonzero positive scale/vector factors.",
+        "Actual normalization comes from D.eigen, not another row-stochastic certificate. Positive original M^k transports to positive hTransform^k.",
+        "Finite Cesaro existence and actual power invariance force the Doob stationary law positive. No desired target law is input."
+      ],
+      "actual_consumer": "THIS M, THIS returned D, THIS H; all-n power identity, stochasticity/primitivity and actual positive stationary existence. Combined with mixing and explicit pi, derives original normalized M^n convergence; no time regrouping or source replacement.",
+      "boundary": "RightEigenData is an input to this reusable leaf, but that exact premise is supplied by reviewed PrimitivePerronSource in the independent caller. Left normalization/full KPF assembly remains separate."
+    },
+    {
+      "module": "PrimitivePerronSpectral",
+      "author": "body_hitting",
+      "nonauthor_reviewer": "block_infinite_review",
+      "source": {
+        "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PrimitivePerronSpectral.lean",
+        "sha256": "b9ce24ce303f7f2d655290523dbf325ef78b22166be84e9525f99237437acfa8",
+        "bytes": 3764
+      },
+      "receipt": {
+        "path": "/private/tmp/ueot-primitive-perron-spectral-source-receipt.json",
+        "sha256": "add36da389253a3876425f0d6b7b60ccbbd1b8e5f011eaff5d8b4afdc17ccaf3",
+        "bytes": 3149
+      },
+      "author_log_identities_verified": [
+        "direct",
+        "build",
+        "types",
+        "consumer8"
+      ],
+      "fresh_actual_direct_exit_code": 0,
+      "fresh_direct_log": {
+        "path": "/private/tmp/ueot-independent-PrimitivePerronSpectral-direct-20261102.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "verdict": "PASS_INTERMEDIATE_STRICT_COMPLEX_DOMINANCE_FROM_ACTUAL_POWER_LIMIT",
+      "scope": "ANY finite real M, positive R and convergent normalized original powers to arbitrary L. For any nonzero complex eigenvector with eigenvalue a != R, proves norm(a)<R. This theorem does NOT create the power limit.",
+      "proof_review": [
+        "Actual real matrix powers commute with Complex.ofRealHom; a nonzero vector coordinate supplies a nonzero denominator. Normalized powers imply q^n converges for q=a/R.",
+        "a != R gives q !=1. Shifted convergence and multiplication imply z=z*q, hence z=0. Mathlib complex power convergence then yields norm(q)<1, with positive R giving norm(a)<R.",
+        "No primitive/rank-one hypothesis is needed for this implication, but final primitive KPF factory must derive its hlim from the SAME source, not reintroduce it as an unexplained field."
+      ],
+      "actual_consumer": "Different actual primitive non-rank-one M=[[2,1],[2,3]]. The caller DERIVES hlim from reviewed actual Doob transport plus Markov mixing before invoking strict_of_power_limit. It proves the ALL complex-eigenpair conditional and consumes actual nonzero subdominant eigenvalue1 with vector[1,-1], not author diagonal/zero-mode example.",
+      "boundary": "Intermediate only. Does not by itself establish Perron existence, rank-one limit or algebraic multiplicity1."
+    }
+  ],
+  "upstream_positive_right_review": {
+    "path": "/private/tmp/ueot-primitive-perron-source-independent-review-20261102.json",
+    "sha256": "516211eea8ab6930c6e9893bd4f452f411f74e807023b1bcb48d0d08cb59bac4",
+    "bytes": 8438
+  },
+  "old_whole_negative_review": {
+    "path": "/private/tmp/ueot-whole-original-contract-current-source-review-20261102.json",
+    "sha256": "f7fee3c2c9a9b14b596fa8ba0c0a5c0a751b0ec71892eb7a392c6eb3566cfe51",
+    "bytes": 40697
+  },
+  "shared_actual_checks": [
+    {
+      "kind": "Different same-M formal composition",
+      "actual_exit_code": 0,
+      "fixture": {
+        "path": "/private/tmp/ueot-independent-perron-followers-consumer-20261102.lean",
+        "sha256": "31b98d74a949d4fce5544cac979c16f00c1b760965892df2e989d7652f9bbecd",
+        "bytes": 9218
+      },
+      "log": {
+        "path": "/private/tmp/ueot-independent-perron-followers-consumer-20261102-6.log",
+        "sha256": "f77ba926702b4ce3abada7cdc0c789b4bd048f140dcbf90194383f53a4a9b1e6",
+        "bytes": 3403
+      },
+      "named_axiom_outputs": 30,
+      "axioms_only": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "warnings": 0
+    },
+    {
+      "kind": "All14 public theorem types/axioms",
+      "actual_exit_code": 0,
+      "fixture": {
+        "path": "/private/tmp/ueot-independent-perron-followers-types-20261102.lean",
+        "sha256": "d53b8bd13d62b8cefd81d348e6667198b93597482335a8179c61a34f74d17e79",
+        "bytes": 3374
+      },
+      "log": {
+        "path": "/private/tmp/ueot-independent-perron-followers-types-20261102.log",
+        "sha256": "35e7f3605907116562e88542674bf9cbe6a7ea3e628bf46854dccbcaf6b3fee5",
+        "bytes": 7626
+      }
+    },
+    {
+      "kind": "Independent exact Fraction calculation",
+      "actual_exit_code": 0,
+      "script": {
+        "path": "/private/tmp/ueot-independent-perron-followers-reproduction-20261102.py",
+        "sha256": "a13d1ec01f780bcb89ed929c23530465f5d97651397f32f862627ab89bfaab7e",
+        "bytes": 1574
+      },
+      "output": {
+        "path": "/private/tmp/ueot-independent-perron-followers-reproduction-20261102.json",
+        "sha256": "539651e84d56c9bead5231594736486866febc117ce8668de9dd189a9be2c8a8",
+        "bytes": 1735
+      },
+      "log": {
+        "path": "/private/tmp/ueot-independent-perron-followers-reproduction-20261102.log",
+        "sha256": "4a9133cd09434f04ac1797bc92ba978f26eec3039edfc38567c1ca5788c2b2ff",
+        "bytes": 73
+      }
+    }
+  ],
+  "shared_actual_composition": "M=[[2,1],[2,3]], det4, row sums3/5, nonsymmetric. Actual constructed D.scale4 and vector ratio1:2 -> actual positive H=[[1/2,1/2],[1/4,3/4]] -> actual invariant pi=[1/3,2/3] and full H-power limit -> SAME original normalized powers4^-n M^n converge to L=[[1/3,1/3],[2/3,2/3]] -> every other complex eigenvalue strictly within4, with actual eigenvalue1 example. No power limit was provided as an unexplained input in this composed caller.",
+  "findings": [],
+  "retained_local_diagnostics": [
+    {
+      "attempt": 1,
+      "actual_exit_code": 1,
+      "log": {
+        "path": "/private/tmp/ueot-independent-perron-followers-consumer-20261102-1.log",
+        "sha256": "2a9eeac50568f75ec74c4217bb555578cde8140b961609f90fb6a9d4b96cdcc9",
+        "bytes": 6600
+      },
+      "classification": "Independent fixture syntax/simplification: invalid namespace-alias notation, finite identity matrix expansion, rational denominator nonzero simplification and unnecessary tactic warnings. Frozen sources were never edited; final shared caller6 has exit0 and no warnings."
+    },
+    {
+      "attempt": 2,
+      "actual_exit_code": 1,
+      "log": {
+        "path": "/private/tmp/ueot-independent-perron-followers-consumer-20261102-2.log",
+        "sha256": "14ebe2a0a8a623aa945543f54585865383f904cf0d8b7eb8ed11ce31544a30b4",
+        "bytes": 3973
+      },
+      "classification": "Independent fixture syntax/simplification: invalid namespace-alias notation, finite identity matrix expansion, rational denominator nonzero simplification and unnecessary tactic warnings. Frozen sources were never edited; final shared caller6 has exit0 and no warnings."
+    },
+    {
+      "attempt": 3,
+      "actual_exit_code": 1,
+      "log": {
+        "path": "/private/tmp/ueot-independent-perron-followers-consumer-20261102-3.log",
+        "sha256": "2f679d6983cec5d0947ba700bfff755c155a22b51f8086b5231a590f6fbf7174",
+        "bytes": 4044
+      },
+      "classification": "Independent fixture syntax/simplification: invalid namespace-alias notation, finite identity matrix expansion, rational denominator nonzero simplification and unnecessary tactic warnings. Frozen sources were never edited; final shared caller6 has exit0 and no warnings."
+    },
+    {
+      "attempt": 4,
+      "actual_exit_code": 1,
+      "log": {
+        "path": "/private/tmp/ueot-independent-perron-followers-consumer-20261102-4.log",
+        "sha256": "816dda2de29e35390afed8a1b1d01832ca5b6d8435fdc0bf7696688570eb6364",
+        "bytes": 4128
+      },
+      "classification": "Independent fixture syntax/simplification: invalid namespace-alias notation, finite identity matrix expansion, rational denominator nonzero simplification and unnecessary tactic warnings. Frozen sources were never edited; final shared caller6 has exit0 and no warnings."
+    },
+    {
+      "attempt": 5,
+      "actual_exit_code": 1,
+      "log": {
+        "path": "/private/tmp/ueot-independent-perron-followers-consumer-20261102-5.log",
+        "sha256": "f06c0eb6b966156c6bcf385cb653aa2c5f63761690e0f40f5cd3bca78b9c55a5",
+        "bytes": 3595
+      },
+      "classification": "Independent fixture syntax/simplification: invalid namespace-alias notation, finite identity matrix expansion, rational denominator nonzero simplification and unnecessary tactic warnings. Frozen sources were never edited; final shared caller6 has exit0 and no warnings."
+    }
+  ],
+  "remaining": "General left/right normalization and all-primitive original normalized-power limit must be actually assembled into the original KPF01Certificate; algebraic simplicity and original EVO consumers are separate. Spectral hlim cannot become a new assumed factory field. The old whole-contract negative report is immutable; these four passes alone do not make the entire Goal FULL.",
+  "mutations": "Only independent /tmp fixtures/reproduction/logs/reports; no production source/public exports/Git/GI/books changes."
+}

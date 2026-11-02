@@ -1,0 +1,88 @@
+{
+  "reviewer": "block_infinite_review; NONAUTHOR of all reviewed production proofs",
+  "verdict": "PASS_ALGEBRAIC_SIMPLICITY_REAL_AND_COMPLEX",
+  "source": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PrimitivePerronSimplicity.lean",
+    "sha256": "c5ad81324684fedecae675adc54d674ca947c0ac1bcf88f2b5069588a6198c93",
+    "bytes": 8412
+  },
+  "author_receipt": {
+    "path": "/tmp/ueot-primitive-perron-simplicity-source-receipt.json",
+    "sha256": "0fbf93b41e6eaac6adb1976aa7acd746508e20d4f9aab2af02b1f07be68508da",
+    "bytes": 4437
+  },
+  "scope": [
+    "ANY nonempty finite nonnegative primitive real M; positive normalized bi-eigen data actually constructed by primitive-only wrappers",
+    "signed real Perron eigenspace is span of positive right vector; no signed-candidate positivity assumed",
+    "left/right normalization excludes all nonzero generalized Perron predecessors; maximal generalized eigenspace equality yields actual real charpoly rootMultiplicity=1",
+    "injective real-to-complex polynomial coefficient map proves SAME complex matrix/root algebraic multiplicity1; no global diagonalizability assumption"
+  ],
+  "independent_actual_consumer": {
+    "path": "/tmp/ueot-independent-perron-simplicity-consumer-20261102.lean",
+    "sha256": "b7b01268604ac4d9e80cfa1275fb6af04197c55e4aa2ff0a6c7d5d80d5e28a51",
+    "bytes": 4113
+  },
+  "consumer_case": {
+    "carrier": "Bool ⊕ Unit",
+    "matrix": [
+      [
+        5,
+        5,
+        2
+      ],
+      [
+        3,
+        3,
+        6
+      ],
+      [
+        4,
+        4,
+        4
+      ]
+    ],
+    "derived_perron_value": 12,
+    "nonperron_Jordan_witness": "w=(1,0,-1); M*w != 0; M^2*w=0",
+    "negative_eigenvector": "(-3,-3,-3) has negative Perron ray coefficient"
+  },
+  "checks": [
+    {
+      "command": "lake env lean frozen PrimitivePerronSimplicity source",
+      "exit": 0,
+      "log": {
+        "path": "/tmp/ueot-independent-PrimitivePerronSimplicity-direct-20261102.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": "lake env lean independent consumer",
+      "exit": 0,
+      "log": {
+        "path": "/tmp/ueot-independent-perron-simplicity-consumer-20261102-1.log",
+        "sha256": "b6654f286d1b92d38a1948f9b3fcfadfb365b1029f11cfa9addbdf5ae685b62a",
+        "bytes": 1070
+      },
+      "named_axiom_outputs": 9
+    },
+    {
+      "command": "lake env lean current three-module public types/axioms fixture",
+      "exit": 0,
+      "fixture": {
+        "path": "/tmp/ueot-independent-simplicity-compact-source-types-20261102.lean",
+        "sha256": "16f6dd2a1220f089635811e16a6c1ab640faad8e2c909f673818e457ef6e6483",
+        "bytes": 8093
+      },
+      "log": {
+        "path": "/tmp/ueot-independent-simplicity-compact-source-types-20261102.log",
+        "sha256": "a9739a35969871039d3e6738f66417fb074dbce0824fa51832dfa228ee69c16b",
+        "bytes": 23489
+      },
+      "custom_or_sorry_axiom": false,
+      "warnings": false
+    }
+  ],
+  "dependencies": "Frozen BiEigen/Closure NONAUTHOR review 324903ecce62ee5d9ed9a27169cb87931f909abdcaa46877e06a2e5ee5c6cb2c; body authored upstream and Simplicity, root authored BiEigen/Closure. This report independently supplies Simplicity pending branch. Existing positive-source516211 and followers2e5fe6 remain unchanged.",
+  "findings": [],
+  "boundary": "Only this source arrow certified. Old whole-contract negative f7fee3 remains historically frozen; complete original-contract and source integration/delivery require separate validation."
+}

@@ -1,0 +1,156 @@
+{
+  "schema": "ueot.independent-primitive-perron-source-review.v1",
+  "verdict": "PASS_GENERAL_PRIMITIVE_TO_EXISTING_POSITIVE_RIGHT_EIGEN_DATA_ONLY",
+  "reviewer": "block_infinite_review",
+  "source_author": "body_hitting",
+  "nonauthor": true,
+  "reviewed_utc": "2026-11-02T15:11:29.915992+00:00",
+  "source": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PrimitivePerronSource.lean",
+    "sha256": "e2e3a65d0dadd1cf4753a17040d228b06c5690664593b3cd1a0956583dd09049",
+    "bytes": 11151
+  },
+  "author_receipt": {
+    "path": "/private/tmp/ueot-primitive-perron-source-receipt.json",
+    "sha256": "ad9ab05ced513fdc7df3618601972d8911a40d83c038380243d4b1364ad2330d",
+    "bytes": 4828
+  },
+  "author_logs_hash_verified": [
+    "direct-final",
+    "build-final",
+    "types",
+    "consumer-final"
+  ],
+  "existing_consumer_interface": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/PositiveEigenstructure.lean",
+    "sha256": "746a435146c4bc20721a1429085285492ac01a040b6090e186f8141b251f257b",
+    "bytes": 24385
+  },
+  "semantic_proof_review": [
+    {
+      "step": "Feasible compact problem",
+      "finding": "Actual feasible set is simplex x>=0,sumx=1 with a*x<=M*x, a>=0. Nonnegative entries give true upper bound total(M); closed finite inequalities inside compact interval times compact simplex. Nonempty is proved by a=0 and a one-hot simplex point using explicit Nonempty I, not a supplied eigenvector or maximizer."
+    },
+    {
+      "step": "Strictly positive feasible growth",
+      "finding": "Primitivity gives a positive entry in every row from a positive power. Minimum row sum >0, normalized all-ones vector is a feasible positive-growth subsolution. Thus actual compact maximum a>0, not merely a>=0."
+    },
+    {
+      "step": "Positive power smoothing",
+      "finding": "Same M^k>0 acts on a nonzero simplex vector to produce every coordinate positive. Powers commute with SAME M, preserving subsolution inequality; normalization preserves the same a and actual simplex property."
+    },
+    {
+      "step": "Residual strict improvement",
+      "finding": "If d=M*r-a*r>=0 is nonzero, the SAME positive power maps d to strict positivity in EVERY coordinate. z=M^k*r>0 and Mz-a*z=M^k*d. Finite minimum e=min_i((M^k*d)_i/z_i)>0 gives (a+e)z<=Mz; its normalization is feasible at greater nonnegative growth, contradicting actual maximality. No conclusion or existence assumed as a record field."
+    },
+    {
+      "step": "Public result and chosen output",
+      "finding": "ANY nonempty finite index type, ANY Matrix.IsPrimitive real M -> Nonempty(existing RightEigenData M). rightEigenDataOfPrimitive chooses from this proved nonempty type. Only propext/Classical.choice/Quot.sound; no new axiom, external spectral certificate, symmetry/rank/row-stochastic assumption. Classical choice is a mathematical constructor, not an executable numerical eigen-solver promise."
+    },
+    {
+      "step": "Nonempty/positivity boundary",
+      "finding": "Nonempty finite I is explicit and used to select an initial coordinate and positive finite minimum. Singleton positive matrices are included; Nontrivial I is not required. Zero/identity-nonprimitive cases cannot supply the primitive premise; nonnegative alone is not silently accepted."
+    }
+  ],
+  "independent_checks": [
+    {
+      "kind": "Fresh direct frozen source",
+      "actual_exit_code": 0,
+      "log": {
+        "path": "/private/tmp/ueot-independent-primitive-perron-direct-20261102.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "kind": "Fresh both public types and axioms",
+      "actual_exit_code": 0,
+      "fixture": {
+        "path": "/private/tmp/ueot-independent-primitive-perron-types-20261102.lean",
+        "sha256": "1fd99ddc8d11775a3320346df7675103c09b5398d75f4712b105a0836bf8e497",
+        "bytes": 336
+      },
+      "log": {
+        "path": "/private/tmp/ueot-independent-primitive-perron-types-20261102.log",
+        "sha256": "518961e736dfe541421daba52b868fef8b2df542a113393d887eb68cdc9e4463",
+        "bytes": 899
+      }
+    },
+    {
+      "kind": "Independent different actual matrix consumer",
+      "actual_exit_code": 0,
+      "fixture": {
+        "path": "/private/tmp/ueot-independent-primitive-perron-consumer-20261102.lean",
+        "sha256": "2647364be58715b95ecd82ebe2d90d27e541d9bff8ddf3973c318494ec40fb6f",
+        "bytes": 3253
+      },
+      "log": {
+        "path": "/private/tmp/ueot-independent-primitive-perron-consumer-20261102-4.log",
+        "sha256": "03bdaf7e3b64fea1c8a6344de1591a01045d484d122ae512616454d7dbe9311b",
+        "bytes": 1434
+      },
+      "named_axiom_outputs": 13,
+      "axioms_only": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "warnings": 0
+    },
+    {
+      "kind": "Deterministic exact Fraction primitive/eigen/Doob check",
+      "actual_exit_code": 0,
+      "script": {
+        "path": "/private/tmp/ueot-independent-primitive-perron-reproduction-20261102.py",
+        "sha256": "6781ddf7d29064669250bcb8b429d42b0a4a95f99783bd675ce30052fce68c1a",
+        "bytes": 1405
+      },
+      "output": {
+        "path": "/private/tmp/ueot-independent-primitive-perron-reproduction-20261102.json",
+        "sha256": "115e5dda7e24f997952fcce9d96acdc9b190711d3d3da2e7e90a60a4af3bf788",
+        "bytes": 657
+      },
+      "log": {
+        "path": "/private/tmp/ueot-independent-primitive-perron-reproduction-20261102.log",
+        "sha256": "5d0f3b0655c5ae4c7af1c0203b99e54aa6b50978e81f2774853fe243711204e1",
+        "bytes": 46
+      }
+    }
+  ],
+  "different_actual_consumer": "M=[[2,1],[2,3]], non-symmetric, det4 non-rank-one, unequal row sums3/5 (not stochastic). From THIS returned D.eigen/vector_pos derive D.scale=4 and D.vector1=2*D.vector0, without assuming an eigenanswer or normalization. Existing SAME-D hTransform is exactly [[1/2,1/2],[1/4,3/4]], row sums1 and nonnegative. Singleton7/2 output scale proven; identity2 not primitive.",
+  "findings": [],
+  "remaining": "ONLY positive-right sub-arrow closed. General left/normalization/ALLpower convergence/positive eigenvector uniqueness/complex strict dominance and actual complete KPF01Certificate remain separate obligations. Old negative whole-contract review f7fee remains unchanged; this PASS is not whole PF or total Goal FULL.",
+  "preserved_local_diagnostics": [
+    {
+      "attempt": 1,
+      "actual_exit_code": 1,
+      "log": {
+        "path": "/private/tmp/ueot-independent-primitive-perron-consumer-20261102-1.log",
+        "sha256": "1fee7d9b72192c63e37167fc47bcaaf677cea47831755e867efe71b558be4d1b",
+        "bytes": 3369
+      },
+      "classification": "Own fixture elaboration: Fin3 literal/notation reduction, then singleton norm_num produced a disjunction requiring resolve_right. No frozen source was changed; final different Fin2 matrix remains within exact same general theorem class."
+    },
+    {
+      "attempt": 2,
+      "actual_exit_code": 1,
+      "log": {
+        "path": "/private/tmp/ueot-independent-primitive-perron-consumer-20261102-2.log",
+        "sha256": "eeaa1aa1d85b1f11d69cd2d76f1d867b508659a223fbd7162c445fbd79d74d5d",
+        "bytes": 5239
+      },
+      "classification": "Own fixture elaboration: Fin3 literal/notation reduction, then singleton norm_num produced a disjunction requiring resolve_right. No frozen source was changed; final different Fin2 matrix remains within exact same general theorem class."
+    },
+    {
+      "attempt": 3,
+      "actual_exit_code": 1,
+      "log": {
+        "path": "/private/tmp/ueot-independent-primitive-perron-consumer-20261102-3.log",
+        "sha256": "e338ac8079ea4e614109830ade03d9d1bb8ba1b9e235fa8fa6a19fe0a45b519e",
+        "bytes": 1774
+      },
+      "classification": "Own fixture elaboration: Fin3 literal/notation reduction, then singleton norm_num produced a disjunction requiring resolve_right. No frozen source was changed; final different Fin2 matrix remains within exact same general theorem class."
+    }
+  ],
+  "mutations": "Only /tmp independent fixture/reproduction/logs/report; no source/public exports/Git/GI/books changes."
+}

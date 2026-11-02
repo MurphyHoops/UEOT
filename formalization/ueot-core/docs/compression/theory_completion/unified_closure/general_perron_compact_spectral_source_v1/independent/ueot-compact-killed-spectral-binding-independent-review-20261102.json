@@ -1,0 +1,205 @@
+{
+  "schema": "ueot.independent-source-review.v1",
+  "date": "2026-11-02",
+  "reviewer": "block_infinite_review; NONAUTHOR of the two production sources and frozen Bool author helpers",
+  "main_at_review": "0dc7d2046ae135a83e74fd9f31a232af5695c08d",
+  "frozen_helpers": [
+    {
+      "path": "/tmp/ueot-compact-killed-bool-fixture.lean",
+      "sha256": "6630a15fe8bfc7f5e6d2f80fda6e3d67e3130d09e4d5c60a753a00d1e56c8995",
+      "bytes": 10193
+    },
+    {
+      "path": "/tmp/ueot-compact-killed-bool-kernel.lean",
+      "sha256": "aa550785dbcf4bee3c6452920e805fcb851fdaa8a203d3852fcf338dd31402c5",
+      "bytes": 9790
+    },
+    {
+      "path": "/tmp/ueot-compact-killed-bool-common-consumer.lean",
+      "sha256": "01ba9949c84f5892c4266b682b2f74272c46912e9227058160d86062ef82cfbd",
+      "bytes": 6057
+    },
+    {
+      "path": "/tmp/ueot-compact-killed-bool-operator-binding.lean",
+      "sha256": "45353000079ab60c5811fc4b348539aa40753e486fb6f52705ca48e81cbddb4f",
+      "bytes": 3150
+    },
+    {
+      "path": "/tmp/ueot-compact-killed-bool-common-source-receipt.json",
+      "sha256": "f7332a889f661eb737bd895fe4945b55c3b62e05c67fc0503045a714e0585244",
+      "bytes": 6248
+    }
+  ],
+  "authorship_disclosure": "p12_common authored weighted-L2, common consumer, operator bridge, and both production sources. body_hitting authored actual killed kernel. Reviewer wrote no production proof. Independent different-initial fixture explicitly adapts their frozen proof templates with attribution and rechecks all proofs; no claim those generic helper proofs were independently invented. It proves same kernel/R/S by rfl and a genuinely different initial, then constructs THIS new source certificate. Original source/helper bytes unchanged.",
+  "checks": {
+    "public_types": {
+      "log": {
+        "path": "/tmp/ueot-independent-simplicity-compact-source-types-20261102.log",
+        "sha256": "a9739a35969871039d3e6738f66417fb074dbce0824fa51832dfa228ee69c16b",
+        "bytes": 23489
+      },
+      "actual_exit": 0,
+      "warnings": false,
+      "errors": false,
+      "axiom_outputs": 34,
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "fixture": {
+        "path": "/tmp/ueot-independent-simplicity-compact-source-types-20261102.lean",
+        "sha256": "16f6dd2a1220f089635811e16a6c1ab640faad8e2c909f673818e457ef6e6483",
+        "bytes": 8093
+      }
+    },
+    "nonzero_residual_actual_consumer": {
+      "log": {
+        "path": "/tmp/ueot-independent-compact-killed-newinitial-20261102-2.log",
+        "sha256": "bace37c4aa70ea9a6e7d160a0b41d20369afbda639ce0ffdc004802be861bce5",
+        "bytes": 2139
+      },
+      "actual_exit": 0,
+      "warnings": false,
+      "errors": false,
+      "axiom_outputs": 19,
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "fixture": {
+        "path": "/tmp/ueot-independent-compact-killed-newinitial-20261102.lean",
+        "sha256": "375ae0e7fc36644427788aac4f334918211ba3e79cdc22d839a9dd8dc5589f11",
+        "bytes": 28253
+      }
+    },
+    "whole_L2_actual_kernel_action": {
+      "log": {
+        "path": "/tmp/ueot-independent-compact-operator-direct-20261102.log",
+        "sha256": "6729d959d92f26d462520bd54aa0fd105e50fd9c84b5a77d2acaf01e6260772d",
+        "bytes": 235
+      },
+      "actual_exit": 0,
+      "warnings": false,
+      "errors": false,
+      "axiom_outputs": 2,
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "fixture": {
+        "path": "/tmp/ueot-compact-killed-bool-operator-binding.lean",
+        "sha256": "45353000079ab60c5811fc4b348539aa40753e486fb6f52705ca48e81cbddb4f",
+        "bytes": 3150
+      }
+    },
+    "exact_fraction": {
+      "path": "/tmp/ueot-independent-compact-killed-fraction-20261102.json",
+      "sha256": "f9d9c8420fb3bac3dd9fcd8a6f68efae906d0280655c8318cc1c21b3025e2c3a",
+      "bytes": 394
+    }
+  },
+  "nonempty_actual_consumer": {
+    "carrier": "Bool, fair reference measure",
+    "kernel": "k_t(x,y)=(exp(-t)+sign(x=y)*exp(-2t))/2",
+    "initial": "new registered (false5/8,true3/8), explicitly proved unequal to original fixed (3/4,1/4)",
+    "same_source_operator": "kernel, R, S definitionally equal to original frozen helper objects; only new initial is changed and named",
+    "resolvent": "R=(1/2)P+(1/3)Q; P constant projection, Q signed projection",
+    "actual_generator": "S_t=exp(-t)P+exp(-2t)Q and actual ResolventOrbit proved for all L2 vectors",
+    "actual_g": "density (5/4,3/4)=phi+(1/4)psi",
+    "nonzero_residual": "computed coefficient a1=1, residual norm1/4; actual remainder norm=exp(-2t)/4, all real t",
+    "actual_killed_law": "initial/evolved measures from same substochastic kernel proved equal to actual g/S_tg densities",
+    "actual_conditioned_law": "exact TV from fair q is exp(-t)/8>0 for all finite nonnegative t; t0=0 error1/8",
+    "original_terminal": "SpectralData.p_qsd_04 actually consumed for THIS new killed semigroup; conditioned_eq_actual transports to actual conditioned law",
+    "all_vector_bridge": "453530 helper separately proves all L2 S_t action equals actual kernel table and every nonnegative L2 density pushes to S_t density; actual fresh Lean exit0/std3"
+  },
+  "failed_attempts": [
+    {
+      "log": {
+        "path": "/tmp/ueot-independent-compact-killed-newinitial-20261102-1.log",
+        "sha256": "4947f108c759960c57c3ed31f1523b8e15af23a0c8f303ffc1e453e0522906fc",
+        "bytes": 1559
+      },
+      "actual_exit": 1,
+      "classification": "Independent caller final positivity line still used old coefficient1; corrected to mul_pos for new half-sized density difference. All source/certificate/actual law facts already elaborated. No mathematical no-go and no production edits."
+    }
+  ],
+  "findings": [],
+  "global_scope": "PASS applies to named source arrows. It is not whole-theory FULL, not integration/publication/GI approval, and does not retroactively recolor frozen negative original-contract review f7fee3. Generality is the registered compact symmetric resolvent/generator class with source realization and spectral gap, not all SDE or all killed processes.",
+  "verdict": "PASS_ACTUAL_KILLED_LAW_TO_ORIGINAL_P_QSD_04_WITH_DERIVED_SPECTRAL_FIELDS",
+  "source": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CompactKilledSpectralBinding.lean",
+    "sha256": "15041411aeba46406398b83989e5ee3e482355a9bc3eeeb304deebb15e751126",
+    "bytes": 12266
+  },
+  "author_receipt": {
+    "path": "/tmp/ueot-compact-killed-binding-source-receipt.json",
+    "sha256": "44ef0dfb37307e03f6f972c0049ee6df759054961a143616b1ec396fb39c46bb",
+    "bytes": 3872
+  },
+  "dependency": {
+    "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CompactSpectralSemigroupSource.lean",
+    "sha256": "c91a801e990fe3096c9489ad86b3beb89620e52cf34f8568b62a4f14db0b1970",
+    "bytes": 15258
+  },
+  "direct_check": {
+    "log": {
+      "path": "/tmp/ueot-independent-CompactKilledSpectralBinding-direct-20261102.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "actual_exit": 0,
+    "warnings": false,
+    "errors": false,
+    "axiom_outputs": 0,
+    "axioms": []
+  },
+  "exact_quantifiers": [
+    "Any measurable X with finite reference measure m, actual KilledSemigroup with positive finite-time survival, actual nonnegative L2 initial density g of mass1 and positive normalized principal L2 phi.",
+    "No existing SpectralData input; ofActualSource computes a1, residualL2, evolvedDensity=S_tg and remainder=S_t residual, and proves old initial/zero/expansion/remainder fields.",
+    "Generator injectivity is proved at t=0 from ResolventOrbit, not separately supplied. g mass1 plus phi positivity proves principal coefficient>0; finite m gives integrable phi and positive principal mass.",
+    "hinitial and hrealized are actual source realization identities for THIS g and ALL nonnegative times. The latter is exact measure equality, so desired conditioning/TV conclusion cannot be supplied by an unrelated law.",
+    "At every t, conditioned_eq_actual equates old certificate conditioned measure to THIS actual killed.conditioned. actual_p_qsd_04 uses original theorem for actual source survival/conditioned TV with positive constants and eventual-time bound.",
+    "Equalities of Lp representatives are a.e.; zero-time residual/initial identities are a.e. as required. No pointwise claim for arbitrary representatives."
+  ],
+  "proof_trace": [
+    {
+      "line": 51,
+      "symbol": "coefficient_pos",
+      "role": "a1 positivity derived from source probability and phi positivity"
+    },
+    {
+      "line": 73,
+      "symbol": "principal_mass_pos",
+      "role": "principal normalization mass derived"
+    },
+    {
+      "line": 91,
+      "symbol": "generator_injective",
+      "role": "no external injectivity field"
+    },
+    {
+      "line": 107,
+      "symbol": "ofActualSource",
+      "role": "actual law adapter constructs original SpectralData"
+    },
+    {
+      "line": 193,
+      "symbol": "conditioned_eq_actual",
+      "role": "same actual killed conditioning"
+    },
+    {
+      "line": 216,
+      "symbol": "actual_p_qsd_04",
+      "role": "actual original terminal consumer"
+    }
+  ],
+  "scope_precision": [
+    "The general hrealized contract binds THIS initial density orbit. It alone is not a theorem identifying the operator/kernel action for every alternative initial density. Such an all-vector identity is additionally proved for the actual nonempty Bool family by frozen453530 and freshly checked here.",
+    "No claim that compact resolvent, reversibility/symmetry, spectral gap or source realization automatically hold for arbitrary killed processes. They are explicit legitimate source/model conditions.",
+    "The independent5/8,3/8 fixture is a separately named allowed initial in the same kernel family; it does not mutate or reset the original3/4,1/4 source.",
+    "Initial/survival mass, exact nonzero transient TV and attained remainder all use the actual kernel, not a sampler or float result."
+  ]
+}
