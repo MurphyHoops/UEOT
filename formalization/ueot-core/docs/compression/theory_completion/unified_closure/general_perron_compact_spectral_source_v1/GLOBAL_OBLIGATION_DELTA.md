@@ -1,0 +1,7 @@
+# Original obligation delta
+
+The new source cut addresses the two precise necessary source arrows restored by the full original-contract review. K-PF-01 now has an arbitrary finite nonempty primitive-matrix constructor supplying all original outputs, algebraic simplicity and original growth consumers. P-QSD-04 now has a general same-resolvent/same-evolution expansion and L² remainder construction, an original-certificate adapter and a nonzero-residual actual killed common consumer.
+
+Legal primitivity, source/generator realization, compactness/symmetry, contractivity, original spectral conditions, initial density and actual transmission/evaluation inputs remain explicit. Desired PF limit/spectral conclusions and desired QSD expansion/remainder fields are not retained as inputs. Matrix types are not object identity; THIS-g source representation is not entire-kernel identification; finite killed models are not labelled Brownian paths. Existing strict counterexamples and corrected rectangular lineage remain.
+
+Scientific and final delivery adoption are distinct: exact independent scope/role reviews and the original-contract discharge must be adopted, then normal source integration/main build, final saved-data fingerprints, both books and original GI/index synchronization must actually be completed. No finite example, test/declaration count, new record or scoped PASS alone closes the whole Goal. Original Core/P/C/UMC and both-book scope is unchanged.

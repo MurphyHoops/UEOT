@@ -1,0 +1,228 @@
+{
+  "schema": "ueot.nonauthor-source-review.v1",
+  "reviewed_utc": "2026-11-02T15:41:23.857314+00:00",
+  "verdict": "PASS_TWO_FROZEN_LEAVES_WITH_ALGEBRAIC_SIMPLICITY_UPSTREAM_NONAUTHOR_REVIEW_PENDING",
+  "reviewer": "/root/body_hitting",
+  "source_author": "/root",
+  "nonauthor_for_reviewed_two_leaves": true,
+  "authorship_disclosure": {
+    "reviewer_authored_upstream": [
+      "PrimitivePerronSource",
+      "PrimitivePerronUniqueness",
+      "PrimitiveMarkovMixing",
+      "PrimitivePerronSpectral",
+      "PrimitivePerronSimplicity"
+    ],
+    "reviewer_did_not_author": [
+      "PrimitivePerronBiEigen",
+      "PrimitivePerronClosure",
+      "PrimitivePerronDoob"
+    ],
+    "upstream_independence": "Source/Uniqueness/Mixing/Spectral/Doob exact frozen block_infinite_review reports verified and reused; this review does not relabel these as newly independent.",
+    "simplicity": "Reviewer authored Simplicity c5ad81324684fedecae675adc54d674ca947c0ac1bcf88f2b5069588a6198c93; fresh actual type/caller confirms Closure delegation, but source-level independent algebraic-simplicity review is still pending; no such report supplied at review time."
+  },
+  "sources": [
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PrimitivePerronBiEigen.lean",
+      "sha256": "badb0a43a635c4c96c1a97f724d6e3ca086cdb259000c8c9099500b65a6cd709",
+      "bytes": 4172
+    },
+    {
+      "path": "/Users/murphyhoops/Documents/ueotlean-worktrees/core-books-handoff-20261020/total-kernel-memory-20261023/formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PrimitivePerronClosure.lean",
+      "sha256": "b667ebc4dcfff38b447655fd5c0c63fdc9d912b5a0a928e22f26b9556c542628",
+      "bytes": 6596
+    }
+  ],
+  "author_receipts_verified": [
+    {
+      "path": "/tmp/ueot-primitive-perron-bieigen-source-receipt.json",
+      "sha256": "559a690e8d639cd8796e1fba1d02687fdf69b7dbec1aa1b87723efd5e7da0cbb",
+      "bytes": 2093
+    },
+    {
+      "path": "/tmp/ueot-primitive-perron-closure-source-receipt.json",
+      "sha256": "8b2413cff1e82679bfd55c802a842babf1607aefa869c8443aec68c232a1d69f",
+      "bytes": 3380
+    }
+  ],
+  "upstream_reviews_reused": [
+    {
+      "report": {
+        "path": "/tmp/ueot-primitive-perron-source-independent-review-20261102.json",
+        "sha256": "516211eea8ab6930c6e9893bd4f452f411f74e807023b1bcb48d0d08cb59bac4",
+        "bytes": 8438
+      },
+      "verdict": "PASS_GENERAL_PRIMITIVE_TO_EXISTING_POSITIVE_RIGHT_EIGEN_DATA_ONLY",
+      "scope_reused": "Exact upstream subarrows only; NOT a fresh independent proof authored by this reviewer"
+    },
+    {
+      "report": {
+        "path": "/tmp/ueot-primitive-perron-followers-independent-review-20261102.json",
+        "sha256": "2e5fe6a0ac45122c6ea977ca41be69ad1eed2c335681b363dcc184746f87d014",
+        "bytes": 16802
+      },
+      "verdict": "PASS_FOUR_EXACT_FROZEN_SUBARROWS_NOT_COMPLETE_KPF",
+      "scope_reused": "Exact upstream subarrows only; NOT a fresh independent proof authored by this reviewer"
+    }
+  ],
+  "exact_source_analysis": {
+    "BiEigen": [
+      "raw_left_eigen follows stationary p of THIS hTransform D with exact factors p_i/r_i, using actual positive R and r to divide.",
+      "Actual primitive Doob invariant p is supplied by already independently reviewed source, then raw_i=p_i/r_i, c=sumraw>0.",
+      "Construct left=raw/c and right=r*c. Same-M right and left eigenrelations are proved; left sum1 and pairing1 use the SAME original p sum1.",
+      "Final biEigenDataOfPrimitive accepts only M,hM; positive right and positive actual invariant are derived, not caller-supplied result fields."
+    ],
+    "Closure": [
+      "invariantSimplex B is exactly B.left_i*B.right_i, stationary for THIS hTransform B.right via old invariantWeight_stationary.",
+      "Actual primitive Doob full power mixing is applied to that SAME given invariant, not another choice law or only a subsequence/Cesaro limit.",
+      "Exact actual transform_power yields original normalized M^n limit r_i*l_j for every i,j; positive factors justify division.",
+      "certificate_of_bieigen is intermediate; final certificateOfPrimitive accepts only arbitrary finite nonempty real M and Matrix.IsPrimitive M. No limit, positive eigen data, spectral dominance or uniqueness hypothesis is exposed at final boundary.",
+      "Every original KPF01Certificate field is filled from same matrix, actual constructed B, or proved sources; strict complex dominance consumes actual_power_limit of SAME M and literal complex coefficient cast.",
+      "actual_root_simple delegates exact constructed same B root to frozen Simplicity; actual new Lean tests real and complex multiplicity1, with independent scientific upstream gate explicitly pending.",
+      "Original p_evo_03 count initial row and original valuation remain exact inputs; neither random-population almost-sure growth nor extinction is claimed.",
+      "Original lineage_perron_bridge retains true ReproductiveTransmission and valuation inputs. Primitivity is not treated as a genealogy source."
+    ]
+  },
+  "independent_actual_fixture": {
+    "matrix": [
+      [
+        1,
+        2
+      ],
+      [
+        3,
+        2
+      ]
+    ],
+    "different_from_author_matrix": true,
+    "nonsymmetric": true,
+    "determinant": -4,
+    "constructed_full_certificate": {
+      "R": 4,
+      "left": [
+        "1/2",
+        "1/2"
+      ],
+      "right": [
+        "4/5",
+        "6/5"
+      ]
+    },
+    "actual_doob": [
+      [
+        "1/4",
+        "3/4"
+      ],
+      [
+        "1/2",
+        "1/2"
+      ]
+    ],
+    "actual_same_invariant": [
+      "2/5",
+      "3/5"
+    ],
+    "actual_nonzero_counts": [
+      2,
+      1
+    ],
+    "actual_value": [
+      2,
+      3
+    ],
+    "actual_other_mode": -1,
+    "verified": [
+      "Same returned certificate/B fields and positive eigen + both normalizations",
+      "Same H exact all powers and same paired mu stationary/full n convergence",
+      "ALL original M coordinate normalized-power limits, explicit atom limit2/5",
+      "ALL complex other eigenvalues strict norm<4; actual nonzero mode-1",
+      "Actual real and complex characteristic-polynomial root multiplicity1 (upstream independent gate pending)",
+      "Original actual P-EVO03 mean-growth and normalized composition consumers",
+      "Typed original conditional lineage consumer with htrans retained",
+      "Strict no-go on THIS positive-diagonal fixture: no LineageSemantics can satisfy ReproductiveTransmission A because same index cannot be its own offspring with new identity"
+    ]
+  },
+  "lineage_scope": "The conditional lineage interface is validated, not instantiated as a realizable genealogy for this positive-diagonal fixture. Its htrans is formally impossible here, and the explicit obstruction prevents a vacuous conditional from being advertised as actual genealogy.",
+  "fresh_actual_checks": [
+    {
+      "name": "ueot-pf-closure-review-PrimitivePerronBiEigen-direct",
+      "actual_exit": 0,
+      "log": {
+        "path": "/tmp/ueot-pf-closure-review-PrimitivePerronBiEigen-direct.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "ueot-pf-closure-review-PrimitivePerronClosure-direct",
+      "actual_exit": 0,
+      "log": {
+        "path": "/tmp/ueot-pf-closure-review-PrimitivePerronClosure-direct.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "ueot-pf-closure-independent-types",
+      "actual_exit": 0,
+      "log": {
+        "path": "/tmp/ueot-pf-closure-independent-types.log",
+        "sha256": "74ab45d372ee768458849bb1aaec50693aa030387cf0d565f81074e1026a5f47",
+        "bytes": 7522
+      }
+    },
+    {
+      "name": "ueot-pf-closure-independent-consumer2",
+      "actual_exit": 0,
+      "log": {
+        "path": "/tmp/ueot-pf-closure-independent-consumer2.log",
+        "sha256": "997574af5ed9557a9089104da070c267153569a8d709cafe5e903bea3650a547",
+        "bytes": 2972
+      }
+    },
+    {
+      "name": "ueot-pf-closure-independent-fractions",
+      "actual_exit": 0,
+      "log": {
+        "path": "/tmp/ueot-pf-closure-independent-fractions.log",
+        "sha256": "37d0b078ae2cbc43fba8489929d6a940fe20b61f9e8b7b5af23cff511d2a8452",
+        "bytes": 155
+      }
+    }
+  ],
+  "actual_caller": {
+    "path": "/tmp/ueot-pf-closure-independent-consumer.lean",
+    "sha256": "f54e32c4b13739a8b80a4ca05ec90355596b8a4c45b0f7e29489823a724f8114",
+    "bytes": 8200
+  },
+  "actual_types": {
+    "path": "/tmp/ueot-pf-closure-independent-types.lean",
+    "sha256": "241fba7d053d248ccaf438eaf534abf4b86333e2955dd122d195e23a019d3ad1",
+    "bytes": 2397
+  },
+  "fraction_replay": {
+    "path": "/tmp/ueot-pf-closure-independent-fractions.py",
+    "sha256": "bbad10879ce0588b56e4b6a5c3ec5e26be414c09193d4e120134368cda965b76",
+    "bytes": 1203
+  },
+  "retained_diagnostics": {
+    "namespace_failure_source": {
+      "path": "/tmp/ueot-pf-closure-independent-consumer-before-namespace-fix.lean",
+      "sha256": "d28ea49ff943ee430582a6d1d0ef327851ee75e880f21488def6b5cfe9eac424",
+      "bytes": 8050
+    },
+    "failure_log": {
+      "path": "/tmp/ueot-pf-closure-independent-consumer1.log",
+      "sha256": "239c59ffe7e433c3e9da0159df712c762d24efc2a4f0411d5a59be4ff31c40ff",
+      "bytes": 5678
+    },
+    "cause": "Both original namespaces export rowApply; fully qualified EvolutionPerronGrowth.rowApply fixed only review caller. No production edit; source failure was not a mathematical no-go."
+  },
+  "findings": [],
+  "remaining": [
+    "Independent source review of authored upstream PrimitivePerronSimplicity before adopting the complete algebraic-simplicity chain",
+    "Root public validation/integration and larger compact spectral common consumer remain outside this two-leaf review"
+  ],
+  "mutations": "Only /tmp independent caller/types/replay/logs/report. Frozen production sources, public root, Git, GI, books and saved data untouched.",
+  "head_observed": "0dc7d2046ae135a83e74fd9f31a232af5695c08d"
+}
