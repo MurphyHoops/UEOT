@@ -1,0 +1,126 @@
+{
+  "schema": "UEOT/JOINT_BOOKS_SELECTED_QA/V1",
+  "status": "PASS_SELECTED_QA",
+  "date": "2026-11-04",
+  "inputs": {
+    "mathematics/UEOT_MATHEMATICS.md": {
+      "sha256": "3874c6b9620a759aa2f8c438e0153b6dfa4d97260d8baa724bc8f2318996be01",
+      "bytes": 510792
+    },
+    "mathematics/UEOT_MATHEMATICS.tex": {
+      "sha256": "7994922eaf13b179c85ffaf4ef707739f69e01d83061caf9a4be76e85a80ccdc",
+      "bytes": 608882
+    },
+    "mathematics/UEOT_MATHEMATICS.pdf": {
+      "sha256": "2072145761a01084e7f5ab6f977d5b707e9742857ee01651d057fd4b9b40be3b",
+      "bytes": 1272765
+    },
+    "philosophy/UEOT_PHILOSOPHY.md": {
+      "sha256": "100df0b78481247303b4dc59ac22f71eb6a21e96c0842c5b52b2ed6734f25447",
+      "bytes": 153688
+    },
+    "philosophy/UEOT_PHILOSOPHY.tex": {
+      "sha256": "833614ea8a1ea22eabe931ad6b54ec7263b2732058dca6ffabadd239ae104862",
+      "bytes": 166902
+    },
+    "philosophy/UEOT_PHILOSOPHY.pdf": {
+      "sha256": "1181ec50049e211625b01370c2c179190072591953a53fcd2a548bd3386c45f3",
+      "bytes": 585154
+    }
+  },
+  "actual_build_command": [
+    "python3",
+    "tools/books/build_books.py",
+    "all",
+    "--texmf",
+    "tools/books/.cache/texmf2023"
+  ],
+  "local_TTFONTS": "tools/books/.cache/fonts//:",
+  "latex_environment": "XeTeX TeX Live 2023/Debian; matching local 2023 xeCJK/ctex, runtime DejaVu faces, pinned existing Noto fonts; no repository build-script or system-configuration change",
+  "package_archives": [
+    {
+      "name": "xecjk",
+      "url": "https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2023/tlnet-final/archive/xecjk.tar.xz",
+      "sha256": "3975a09d07169e9c2c3e66b85990a76de6879e635bf428ddfee17118233a2bd4",
+      "bytes": 221848,
+      "files": 6
+    },
+    {
+      "name": "ctex",
+      "url": "https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2023/tlnet-final/archive/ctex.tar.xz",
+      "sha256": "579b4ef5088987886287175d321e6d2de41d380122dafcecc3117d01a7770d06",
+      "bytes": 130980,
+      "files": 71
+    }
+  ],
+  "rendered_physical_pages": {
+    "mathematics": [
+      1,
+      10,
+      181,
+      182,
+      183,
+      184,
+      185,
+      186
+    ],
+    "philosophy": [
+      1,
+      3,
+      29,
+      30,
+      86,
+      87
+    ]
+  },
+  "root_actually_viewed": {
+    "mathematics": {
+      "full_pages": [
+        1,
+        10,
+        183
+      ],
+      "contact_sheet": [
+        181,
+        182,
+        183,
+        184,
+        185,
+        186
+      ]
+    },
+    "philosophy": {
+      "full_pages": [
+        1,
+        29,
+        86
+      ]
+    }
+  },
+  "independent_actual_pages": {
+    "mathematics": [
+      183,
+      184,
+      185,
+      186
+    ],
+    "philosophy": [
+      29,
+      30,
+      86
+    ]
+  },
+  "observations": [
+    "No missing glyphs in actual full build logs",
+    "Zero overfull hbox warnings in both builds",
+    "Selected formulae, Chinese glyphs, fractions, subscripts, footnotes, page numbers and page continuations readable without clipping/overlap",
+    "New math TOC entries and title date correctly rendered",
+    "Selected review only; not a claim of manually checking all 217 math or 88 philosophy pages"
+  ],
+  "preserved_engineering_attempts": [
+    "Initial local build lacked DejaVu italic face; supplied runtime existing faces in local cache",
+    "Local XeTeX lacked xeCJK; latest 2026 package required newer LaTeX, so used matching pinned historical 2023 archives",
+    "First historic FTP mirror returned HTTP503; Utah mirror retrieved the exact archived packages",
+    "Final original repository build script completed both PDFs with unchanged font pins"
+  ]
+}

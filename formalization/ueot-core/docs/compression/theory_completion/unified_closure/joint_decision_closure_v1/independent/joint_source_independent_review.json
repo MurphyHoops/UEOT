@@ -1,0 +1,101 @@
+{
+  "reviewer": "/root/register_source",
+  "review_date": "2026-11-04",
+  "review_kind": "Independent semantic and quantifier review of other authors new-contract source files",
+  "scope": "Only the new joint-decision closure and its frozen known-goal, positive-tariff, selected-parent, addresses-0-and-1 protocol. This review does not reopen or re-audit the previously completed Core closure.",
+  "source_files": [
+    {
+      "file": "FiniteJointDecisionBelief.lean",
+      "sha256": "221fe63aa66a09a169023965e89c22251c523ef2a4df1bcfcd78111304ac835d",
+      "findings": [
+        "A finite atom enumeration carries theta and hidden population together; posterior uses the same joint branch as observation and successor.",
+        "Zero mass returns the prior only on an impossible branch; posterior_identity and total_expectation include this branch without manufacturing positive mass.",
+        "No world realization, protected program, actual parent identity or realized hidden atom is returned as a policy observation."
+      ]
+    },
+    {
+      "file": "FiniteJointDecisionSolver.lean",
+      "sha256": "c1cd7e4ffdd03f5a8056b5f8dd4e59dc6f092be61349f439b5bb03ae5445ee4d",
+      "findings": [
+        "solve is a computable rational maximum over the explicit current action list; its returned observation-indexed table is the object bounded by optimality proofs.",
+        "Terminal payoff is zero and the frozen discount multiplies every remaining continuation.",
+        "The original Feasible/CausalPolicy definitions impose global off-path legality. This scope was identified as a real comparison-class gap and is not relabeled as support-local without the new SupportedPolicy proof."
+      ]
+    },
+    {
+      "file": "FiniteJointDecisionSolverExecution.lean",
+      "sha256": "f4682ddfbf95caca07dad310502dbe1f2aef1efdc48a336983cf7d24d5b372f3",
+      "findings": [
+        "tapeExpectation_eq_value binds the same returned table and finite observation law, not an existential substitute.",
+        "rows_exact binds every exported row to lookup in that table, including impossible rows.",
+        "WalletContract applies public prepayment before the outcome; feasible_prefix_ledger proves exact cumulative fees and balances at every supported prefix."
+      ]
+    },
+    {
+      "file": "FiniteJointDecisionFilteredModel.lean",
+      "sha256": "e6d53d1dff71cb84de46316c8bf939d55e9afdc3477057c937e6452482fabf4a",
+      "findings": [
+        "value_eq_source and the real causal analogue condition the same joint source; gain is the actual permitted receipt payoff.",
+        "traceExpectation_eq_source proves equality for every finite observation-tape test, not only scalar reward.",
+        "sourceTapeWeight/observedTape and observedTape_supported transfer every positive initial-atom/primitive-noise path to the model support needed by prefix-payment proofs."
+      ]
+    },
+    {
+      "file": "RegisterJointDecisionConsumer.lean",
+      "sha256": "94ea218ac0e7342256afb9da8a1ced08c13a83f9c526e5acb3cb03986767ffc8",
+      "findings": [
+        "The action menu checks public tariff times request cap against the public wallet before address lookup, mode or birth; genuine child-address None outcomes remain allowed.",
+        "The exact actual charge follows the paid-write receipt; tariff is strictly positive. A free tariff with the same fee flag would add information and is not covered.",
+        "advance clamps only impossible or unexecuted hypothetical rows; the supported wallet proof gives literal subtraction on every actual feasible branch.",
+        "initialBelief retains one theta and the hidden damaged founder; source.next never redraws theta. returned is the original solver output."
+      ]
+    },
+    {
+      "file": "RegisterJointDecisionFreeTail.lean",
+      "sha256": "11c16509bade8b4842703ab3b0bf29b1c605c4000b44d81b6d0a27481cb03b3b",
+      "findings": [
+        "Free continuation is derived from the exhausted wallet. It compares both legal candidate addresses 0 and 1, stop and all free choices.",
+        "World-side health is used for the upper bound only. The attaining freeSchedule starts from the known successful first-write receipt and updates its two bits using only later birth receipts.",
+        "receipt_updates_health and step_health connect that update to the original selected-parent evolution. The same schedule attains the fixed-theta upper bound for every rational rate and finite horizon.",
+        "Later newborn addresses beyond 1 are real but outside the frozen request menu. The result is not a claim about arbitrary all-address dispatch or global simultaneous population faulting."
+      ]
+    },
+    {
+      "file": "RegisterJointDecisionOptimality.lean",
+      "sha256": "bce517edc07c393303e7f56f4db7416092736703602140608f9c1d5655f00728",
+      "findings": [
+        "The main theorem has H+1 decisions, one tariff initially in the wallet and price*tariff at least the H-step geometric birth ceiling; there is no off-by-one strengthening.",
+        "A correct normal first write creates the real healthy root and child and exhausts the wallet. Every feasible success continuation is Free and bounded by twoBound.",
+        "A fault retains the actual failure slot and unspent wallet but leaves an all-damaged H-step process; the proved high-price no-go bounds every such continuation by zero.",
+        "Every other first action includes wrong paid writes, idle, stop and invalid child requests; each has no birth and leaves an all-damaged population.",
+        "The full fixed-theta process is evaluated before prior averaging. repairThenFree is one receipt-only attainer for all theta; its impossible branches are also feasible.",
+        "The exact formula is max(0, priorRepairScore). The two-sided positive-price boundary additionally assumes positive normalMean and retains its high-price regime. The small-wallet no-go applies at every finite horizon."
+      ]
+    }
+  ],
+  "resolved_finding": {
+    "id": "JD-SUPPORT-CLASS",
+    "problem": "Original Feasible/CausalPolicy require legal actions on impossible rows; actual protocol competitors only need legality on positive-probability histories.",
+    "resolution": "FiniteJointDecisionSupportedPolicy adds RawCausalPolicy, SupportedAdmissible, fullHistoryPolicy, supported-value bounds and the direct primitive expected-value bridge; new NativeLaw raw bridge connects original Store competitors.",
+    "authorship_note": "These corrective modules were authored by this reviewer, so they are excluded from this independent review. /root/finite_solver separately reviewed their semantics; root reports root-08 Lean compile exit 0.",
+    "solver_algorithm_changed": false
+  },
+  "validation_provenance": {
+    "independent_reviewer_reran_lean": false,
+    "compilation": "Root serially compiled the actual Mac repo. Root reports root-08 SupportedPolicy, raw NativeLaw and Optimality exit 0; earlier target module logs remain root-owned evidence.",
+    "review_inputs": "Exact shared scratch byte mirrors of actual repo files; hashes above bind this review snapshot.",
+    "remaining_integration": "RegisterJointDecisionNativeConsumer is authored by this reviewer and excluded from this independent audit; /root/finite_solver separately reviewed the final 401-line snapshot, and root reports root-11 actual Mac Lean compile exit 0 (3.75 seconds). THIS output checks, books, repository delivery and GI continuation remain root-owned integration evidence.",
+    "native_consumer_final_sha256": "1bb2319bc8e5eda862f19cd16df68174e01506a4fafeee27b88cd1d87f84ec9e"
+  },
+  "decision": "No unresolved semantic defect found in the listed source-file snapshots under the stated frozen protocol and theorem hypotheses.",
+  "mandatory_boundaries": [
+    "Known goal and aligned protected programs; no unknown-goal or hidden-program observation claim.",
+    "Source theta is drawn once; independent modes and fair birth labels are sampled conditionally on that retained theta.",
+    "Only the selected actual parent receives the original primitive fault/update in each serialized tick; other slots remain unchanged. This is not a parallel all-population-aging model.",
+    "No free parent identity, whole-Store read or physical-bit observation is added. Birth/charge prefix receipts are explicitly registered.",
+    "Stop means remaining actual root-idle steps; it does not freeze time or suppress physical births/faults.",
+    "J has frozen horizon, discount, full registered actual fees and zero terminal payoff. Solver hardware computation cost is not inserted into this physical objective.",
+    "Bayes-optimal expected net payoff, pathwise prepaid safety and probability of at least one birth are distinct claims.",
+    "Old counterexamples, actual original samples and empirical UNVERIFIED statuses must remain unchanged absent a located new error."
+  ]
+}

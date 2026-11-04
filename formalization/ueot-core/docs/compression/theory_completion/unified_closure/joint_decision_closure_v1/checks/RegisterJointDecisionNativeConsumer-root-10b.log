@@ -1,0 +1,113 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionNativeConsumer.lean:34:4: warning: Variable name `H` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _H
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionNativeConsumer.lean:38:4: warning: Variable name `H` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _H
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionNativeConsumer.lean:109:35: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  packedPayoff (P.price * P.tariff) P.discount
+    (packedExecute P.goal table (projectWorld j w) (tapeVector noise)).records
+in the target expression
+  ↑(packedPayoff (P.price * P.tariff) P.discount
+        (packedExecute (mechanism P).goal table (projectWorld j w) (tapeVector noise)).records) =
+    ↑(tapePayoff (model P) i table (observedTape (source P) table (projectWorld j w) noise))
+
+Theta : Type
+n : ℕ
+P : Family Theta
+j : Fin n
+H : ℕ
+i : Info Theta
+table : Table Act Obs H
+w : NativeWorld Theta n
+noise : Tape Noise H
+hw : Aligned P.goal w.store
+⊢ ↑(packedPayoff (P.price * P.tariff) P.discount
+        (packedExecute (mechanism P).goal table (projectWorld j w) (tapeVector noise)).records) =
+    ↑(tapePayoff (model P) i table (observedTape (source P) table (projectWorld j w) noise))
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionNativeConsumer.lean:204:21: error: Type mismatch: After simplification, term
+  congrArg
+ has type
+  ∀ (f : ?m.65 → ?m.66), ?m.67 = ?m.68 → f ?m.67 = f ?m.68
+but is expected to have type
+  ↑(f o) + (List.take k (List.map (fun o => ↑(f o)) os)).sum = ↑(f o) + ↑(List.take k (List.map f os)).sum
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionNativeConsumer.lean:205:19: error: unexpected token '('; expected command
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionNativeConsumer.lean:228:4: warning: Variable name `H` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _H
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionNativeConsumer.lean:238:6: error: Function expected at
+  nativeFee_project j (mechanism P) w a z
+but this term has type
+  nativeFee (nativeTransaction j (mechanism P) w a z) =
+    ↑(feeUnit (mechanism P).goal (projectWorld j w) a z) * ↑(mechanism P).writeCost
+
+Note: Expected a function because this term is being applied to the argument
+  hw
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionNativeConsumer.lean:237:71: error: unsolved goals
+Theta : Type
+n : ℕ
+P : Family Theta
+j : Fin n
+w : NativeWorld Theta n
+a : Act
+z : Noise
+hw : Aligned P.goal w.store
+⊢ nativeFee (nativeTransaction j (mechanism P) w a z) = ↑(charge P.tariff (observe P.goal (projectWorld j w) a z))
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionNativeConsumer.lean:331:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  expectReal (RawCausalPolicy.info ?pi ?h).1 (rawSourceValue (source P) (gain P) P.discount ?pi ?H ?h)
+in the target expression
+  expectReal (pi.info h).1 (rawSourceValue (source P) (gain P) P.discount pi H h) ≤
+    ↑(optimalValue (model P) H (pi.info h))
+
+Theta : Type
+n : ℕ
+P : Family Theta
+j : Fin n
+pi : RawCausalPolicy (model P)
+H : ℕ
+h : pi.Memory
+R : Realization P j (pi.info h).1
+hh : SupportedAdmissible (model P) pi H h
+⊢ expectReal (pi.info h).1 (rawSourceValue (source P) (gain P) P.discount pi H h) ≤
+    ↑(optimalValue (model P) H (pi.info h))
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionNativeConsumer.lean:374:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ∑ theta,
+    ↑(prior theta) *
+      nativeJ P 0 (returned P (H + 1) (initialBelief P prior hn ht, ⟨P.tariff, ⋯⟩)) (nativeInitial P theta)
+in the target expression
+  let i := RegisterJointDecisionOptimality.initialInfo P prior hn ht;
+  ∑ theta, ↑(prior theta) * nativeJ P 0 (returned P (H + 1) i) (nativeInitial P theta) =
+    ↑(max 0 (RegisterJointDecisionOptimality.priorRepairScore P prior H))
+
+Theta : Type
+inst✝ : Fintype Theta
+P : Family Theta
+prior : Theta → ℚ
+hn : ∀ (t : Theta), 0 ≤ prior t
+ht : ∑ t, prior t = 1
+H : ℕ
+hp : RegisterJointDecisionValueBounds.geometric P.discount H ≤ P.price * P.tariff
+⊢ let i := RegisterJointDecisionOptimality.initialInfo P prior hn ht;
+  ∑ theta, ↑(prior theta) * nativeJ P 0 (returned P (H + 1) i) (nativeInitial P theta) =
+    ↑(max 0 (RegisterJointDecisionOptimality.priorRepairScore P prior H))
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionNativeConsumer.lean:387:38: error: unsolved goals
+Theta : Type
+n : ℕ
+P : Family Theta
+j : Fin n
+H : ℕ
+i : Info Theta
+R : Realization P j i.1
+x : i.1.Atom
+noise : Tape Noise H
+⊢ packedExecute (mechanism P).goal (returned P H i) (i.1.state x) (tapeVector noise) =
+    packedExecute P.goal (returned P H i) (i.1.state x) (tapeVector noise)

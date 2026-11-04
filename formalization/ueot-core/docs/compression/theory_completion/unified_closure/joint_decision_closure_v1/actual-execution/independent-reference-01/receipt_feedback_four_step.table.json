@@ -1,0 +1,306 @@
+[
+  {
+    "id": 0,
+    "remaining": 4,
+    "value": "39525/524288",
+    "budget": "1",
+    "action": {
+      "kind": "dispatch",
+      "parent": 0,
+      "action": true
+    },
+    "committed_stop": false,
+    "branches": {
+      "0,0": {
+        "probability": "3/16",
+        "next": 1
+      },
+      "1,1": {
+        "probability": "13/16",
+        "next": 5
+      }
+    }
+  },
+  {
+    "id": 1,
+    "remaining": 3,
+    "value": "0",
+    "budget": "1",
+    "action": {
+      "kind": "stop"
+    },
+    "committed_stop": false,
+    "branches": {
+      "0,0": {
+        "probability": "1",
+        "next": 2
+      }
+    }
+  },
+  {
+    "id": 2,
+    "remaining": 2,
+    "value": "0",
+    "budget": "1",
+    "action": {
+      "kind": "stop"
+    },
+    "committed_stop": true,
+    "branches": {
+      "0,0": {
+        "probability": "1",
+        "next": 3
+      }
+    }
+  },
+  {
+    "id": 3,
+    "remaining": 1,
+    "value": "0",
+    "budget": "1",
+    "action": {
+      "kind": "stop"
+    },
+    "committed_stop": true,
+    "branches": {
+      "0,0": {
+        "probability": "1",
+        "next": 4
+      }
+    }
+  },
+  {
+    "id": 4,
+    "remaining": 0,
+    "value": "0",
+    "budget": "1",
+    "action": {
+      "kind": "stop"
+    },
+    "committed_stop": true,
+    "branches": {}
+  },
+  {
+    "id": 5,
+    "remaining": 3,
+    "value": "199543/106496",
+    "budget": "0",
+    "action": {
+      "kind": "dispatch",
+      "parent": 0,
+      "action": null
+    },
+    "committed_stop": false,
+    "branches": {
+      "0,0": {
+        "probability": "19/104",
+        "next": 6
+      },
+      "1,0": {
+        "probability": "85/104",
+        "next": 12
+      }
+    }
+  },
+  {
+    "id": 6,
+    "remaining": 2,
+    "value": "6197/4864",
+    "budget": "0",
+    "action": {
+      "kind": "dispatch",
+      "parent": 1,
+      "action": null
+    },
+    "committed_stop": false,
+    "branches": {
+      "0,0": {
+        "probability": "31/152",
+        "next": 7
+      },
+      "1,0": {
+        "probability": "121/152",
+        "next": 9
+      }
+    }
+  },
+  {
+    "id": 7,
+    "remaining": 1,
+    "value": "0",
+    "budget": "0",
+    "action": {
+      "kind": "stop"
+    },
+    "committed_stop": false,
+    "branches": {
+      "0,0": {
+        "probability": "1",
+        "next": 8
+      }
+    }
+  },
+  {
+    "id": 8,
+    "remaining": 0,
+    "value": "0",
+    "budget": "0",
+    "action": {
+      "kind": "stop"
+    },
+    "committed_stop": true,
+    "branches": {}
+  },
+  {
+    "id": 9,
+    "remaining": 1,
+    "value": "775/968",
+    "budget": "0",
+    "action": {
+      "kind": "dispatch",
+      "parent": 1,
+      "action": null
+    },
+    "committed_stop": false,
+    "branches": {
+      "0,0": {
+        "probability": "193/968",
+        "next": 10
+      },
+      "1,0": {
+        "probability": "775/968",
+        "next": 11
+      }
+    }
+  },
+  {
+    "id": 10,
+    "remaining": 0,
+    "value": "0",
+    "budget": "0",
+    "action": {
+      "kind": "stop"
+    },
+    "committed_stop": false,
+    "branches": {}
+  },
+  {
+    "id": 11,
+    "remaining": 0,
+    "value": "0",
+    "budget": "0",
+    "action": {
+      "kind": "stop"
+    },
+    "committed_stop": false,
+    "branches": {}
+  },
+  {
+    "id": 12,
+    "remaining": 2,
+    "value": "3913/2720",
+    "budget": "0",
+    "action": {
+      "kind": "dispatch",
+      "parent": 0,
+      "action": null
+    },
+    "committed_stop": false,
+    "branches": {
+      "0,0": {
+        "probability": "121/680",
+        "next": 13
+      },
+      "1,0": {
+        "probability": "559/680",
+        "next": 16
+      }
+    }
+  },
+  {
+    "id": 13,
+    "remaining": 1,
+    "value": "775/968",
+    "budget": "0",
+    "action": {
+      "kind": "dispatch",
+      "parent": 1,
+      "action": null
+    },
+    "committed_stop": false,
+    "branches": {
+      "0,0": {
+        "probability": "193/968",
+        "next": 14
+      },
+      "1,0": {
+        "probability": "775/968",
+        "next": 15
+      }
+    }
+  },
+  {
+    "id": 14,
+    "remaining": 0,
+    "value": "0",
+    "budget": "0",
+    "action": {
+      "kind": "stop"
+    },
+    "committed_stop": false,
+    "branches": {}
+  },
+  {
+    "id": 15,
+    "remaining": 0,
+    "value": "0",
+    "budget": "0",
+    "action": {
+      "kind": "stop"
+    },
+    "committed_stop": false,
+    "branches": {}
+  },
+  {
+    "id": 16,
+    "remaining": 1,
+    "value": "3697/4472",
+    "budget": "0",
+    "action": {
+      "kind": "stop"
+    },
+    "committed_stop": false,
+    "branches": {
+      "0,0": {
+        "probability": "775/4472",
+        "next": 17
+      },
+      "1,0": {
+        "probability": "3697/4472",
+        "next": 18
+      }
+    }
+  },
+  {
+    "id": 17,
+    "remaining": 0,
+    "value": "0",
+    "budget": "0",
+    "action": {
+      "kind": "stop"
+    },
+    "committed_stop": true,
+    "branches": {}
+  },
+  {
+    "id": 18,
+    "remaining": 0,
+    "value": "0",
+    "budget": "0",
+    "action": {
+      "kind": "stop"
+    },
+    "committed_stop": true,
+    "branches": {}
+  }
+]

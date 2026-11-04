@@ -1,0 +1,47 @@
+[
+  {
+    "id": 0,
+    "remaining": 2,
+    "value": "1/5",
+    "budget": "1",
+    "action": {
+      "kind": "dispatch",
+      "parent": 0,
+      "action": true
+    },
+    "committed_stop": false,
+    "branches": {
+      "1,1": {
+        "probability": "1",
+        "next": 1
+      }
+    }
+  },
+  {
+    "id": 1,
+    "remaining": 1,
+    "value": "1",
+    "budget": "0",
+    "action": {
+      "kind": "stop"
+    },
+    "committed_stop": false,
+    "branches": {
+      "1,0": {
+        "probability": "1",
+        "next": 2
+      }
+    }
+  },
+  {
+    "id": 2,
+    "remaining": 0,
+    "value": "0",
+    "budget": "0",
+    "action": {
+      "kind": "stop"
+    },
+    "committed_stop": true,
+    "branches": {}
+  }
+]

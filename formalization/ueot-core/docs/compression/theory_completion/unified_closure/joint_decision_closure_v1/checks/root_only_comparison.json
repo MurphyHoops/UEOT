@@ -1,0 +1,123 @@
+{
+  "status": "PASS",
+  "comparison": "Different dispatch permission: root-only. No claim of same-menu learning advantage.",
+  "reference_source_sha256": "73b82baeb0aaa78938344eeb7dc3f3560006ecbb954738994368bb263ada8e71",
+  "root_menu": [
+    {
+      "kind": "stop"
+    },
+    {
+      "kind": "dispatch",
+      "parent": 0,
+      "action": null
+    },
+    {
+      "kind": "dispatch",
+      "parent": 0,
+      "action": false
+    },
+    {
+      "kind": "dispatch",
+      "parent": 0,
+      "action": true
+    }
+  ],
+  "source_parameters": {
+    "r": [
+      "1/4",
+      "3/4"
+    ],
+    "prior": [
+      "1/2",
+      "1/2"
+    ],
+    "discount": "3/4",
+    "priced_write": "7/4",
+    "write_tariff": "1",
+    "wallet": "1",
+    "horizon": 3
+  },
+  "optimization": "Exact rational recursion over all legal root-only actions and every positive receipt history, with retained theta.",
+  "optimal_value": "0",
+  "returned_root_action": {
+    "kind": "stop"
+  },
+  "native_replay": {
+    "value": "0",
+    "mass": "1",
+    "at_least_one_birth": "0",
+    "mean_births": "0",
+    "mean_fee": "0",
+    "min_prefix_balance": "1",
+    "positive_full_tapes": 128
+  },
+  "noise_tapes_replayed": 128,
+  "planner_cache": {
+    "hits": 29,
+    "misses": 50,
+    "maxsize": null,
+    "currsize": 50
+  },
+  "table": [
+    {
+      "id": 0,
+      "remaining": 3,
+      "value": "0",
+      "budget": "1",
+      "action": {
+        "kind": "stop"
+      },
+      "committed_stop": false,
+      "branches": {
+        "0,0": {
+          "probability": "1",
+          "next": 1
+        }
+      }
+    },
+    {
+      "id": 1,
+      "remaining": 2,
+      "value": "0",
+      "budget": "1",
+      "action": {
+        "kind": "stop"
+      },
+      "committed_stop": true,
+      "branches": {
+        "0,0": {
+          "probability": "1",
+          "next": 2
+        }
+      }
+    },
+    {
+      "id": 2,
+      "remaining": 1,
+      "value": "0",
+      "budget": "1",
+      "action": {
+        "kind": "stop"
+      },
+      "committed_stop": true,
+      "branches": {
+        "0,0": {
+          "probability": "1",
+          "next": 3
+        }
+      }
+    },
+    {
+      "id": 3,
+      "remaining": 0,
+      "value": "0",
+      "budget": "1",
+      "action": {
+        "kind": "stop"
+      },
+      "committed_stop": true,
+      "branches": {}
+    }
+  ],
+  "limits": "Independent finite reference evidence; does not claim a newly compiled Lean theorem for the restricted menu."
+}

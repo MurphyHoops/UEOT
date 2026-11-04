@@ -1,0 +1,37 @@
+{
+  "reviewer": "/root/register_source",
+  "review_date": "2026-11-04",
+  "kind": "Independent review of the minimal posterior normalization cache and proof-only real bridge adjustment",
+  "decision": "PASS: the reviewed cache preserves the entire previous posterior structure, hence the same source, prior, support, model and complete returned policy table.",
+  "bindings": [
+    {
+      "file": "FiniteJointDecisionBelief.lean",
+      "sha256": "666e20bb89e6d7d6d67c18686affd77f3efe35db94edc267ae9cb857c59c516c",
+      "previous_sha256": "221fe63aa66a09a169023965e89c22251c523ef2a4df1bcfcd78111304ac835d"
+    },
+    {
+      "file": "FiniteJointDecisionFilteredModel.lean",
+      "sha256": "b776570849884cd2fe9f428d84d1b9beba9c54df2e280a02962ccf72c68d9270",
+      "previous_sha256": "e6d53d1dff71cb84de46316c8bf939d55e9afdc3477057c937e6452482fabf4a"
+    }
+  ],
+  "byte_diff_verification": [
+    "The retained before_normalizer byte mirror hashes to the previously audited 221fe63aa66a09a169023965e89c22251c523ef2a4df1bcfcd78111304ac835d.",
+    "The full Belief diff is limited to normalizeWeights/noinline and its rfl application lemma; a let-bound mass denominator passed by value; posterior_eq_inline proved by rfl; documentation; and one simp-only helper unfolding in posterior_identity.",
+    "FilteredModel contains exactly one new simp only [normalizeWeights_apply] line in posterior_identity_real before push_cast. Removing that line in memory reproduces the previously audited SHAe6d53d1dff71cb84de46316c8bf939d55e9afdc3477057c937e6452482fabf4a."
+  ],
+  "semantic_findings": [
+    "normalizeWeights denominator numerator x is definitionally numerator x / denominator; it adds no approximation, mutable state, reweighting or lookup default.",
+    "posterior tests the identical mass==0 condition and returns the identical prior b on zero-mass observations. The nonzero branch keeps exactly b.Atom*Z, its Fintype instance, K.next state, joint numerator and normalized rational weights.",
+    "posterior_eq_inline is rfl equality of the entire Belief structure with the old literal inline definition, not merely equality of normalized moments or expected payoff.",
+    "Source chance/next/observe, initial prior, persistent theta, wallet, request menu, costs, terminal reward and timing are untouched. No hidden variable is made observable.",
+    "The real-valued proof adjustment unfolds the same rfl helper; its theorem statement, source disintegration and supported randomized comparison class are unchanged.",
+    "The original solve and strict-cache fastSolve have unchanged denotation because the posterior remains definitionally identical. Existing whole-table equality and original-Store THIS value/payment/optimality/population proofs remain applicable after dependency recompilation."
+  ],
+  "scope_limits": [
+    "This review does not certify a runtime speedup; actual time/memory and output comparisons belong to retained root run evidence.",
+    "No source files were changed by this reviewer and no algorithm was rerun. Old source bytes, the original successful long run and the stopped unsuccessful cache-only attempt remain evidence.",
+    "The .cached.lean candidate and posterior_cache.patch are historical artifacts; the binding above is to the final formal Belief and FilteredModel files, including the required proof unfolding lines.",
+    "Actual Lean dependency compilation is recorded by root separately; this is an independent semantic and byte-diff review, not a claim that the reviewer reran Lean."
+  ]
+}

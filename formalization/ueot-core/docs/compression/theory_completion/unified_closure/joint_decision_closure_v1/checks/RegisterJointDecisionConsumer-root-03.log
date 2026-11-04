@@ -1,0 +1,10 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionConsumer.lean:94:2: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionConsumer.lean:162:8: error: Tactic `split` failed: Specifying multiple targets (the goal and hypothesis`hp`) is not supported
+
+Hint: Specify a single target to split, or use `split at *` to split the first target that can be automatically split

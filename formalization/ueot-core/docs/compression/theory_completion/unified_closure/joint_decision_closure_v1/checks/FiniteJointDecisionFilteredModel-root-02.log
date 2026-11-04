@@ -1,0 +1,18 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionFilteredModel.lean:76:19: error: Type mismatch: After simplification, term
+  primitive_expectation K b a fun o w => gain a o + d * sourceValue K gain d (children o) w
+ has type
+  @Eq ℚ
+    (expect b fun w =>
+      ∑ z,
+        K.chance w z *
+          (gain a (K.observe w a z) + d * sourceValue K gain d (children (K.observe w a z)) (K.next w a z)))
+    (∑ o, mass K b a o * expect (posterior K b a o) fun w => gain a o + d * sourceValue K gain d (children o) w)
+but is expected to have type
+  @Eq ℚ (expect b (sourceValue K gain d (Table.node a children)))
+    (∑ o, mass K b a o * expect (posterior K b a o) fun w => gain a o + d * sourceValue K gain d (children o) w)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionFilteredModel.lean:95:0: warning: automatically included section variable(s) unused in theorem `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionFilteredModel.traceExpectation_succ`:
+  [DecidableEq O]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq O] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`

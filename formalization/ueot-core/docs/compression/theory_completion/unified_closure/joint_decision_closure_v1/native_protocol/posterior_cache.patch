@@ -1,0 +1,56 @@
+--- a/FiniteJointDecisionBelief.lean
++++ b/FiniteJointDecisionBelief.lean
+@@ -78,19 +78,49 @@
+     simpa [h] using hx
+   · exact joint_nonneg K b a o x
+ 
++/-- A strict denominator argument is captured by the returned weight closure.
++`noinline` prevents moving the mass calculation back inside each atom lookup. -/
++@[noinline] def normalizeWeights {X : Type*} (denominator : ℚ)
++    (numerator : X → ℚ) : X → ℚ :=
++  fun x => numerator x / denominator
++
++@[simp] theorem normalizeWeights_apply {X : Type*} (denominator : ℚ)
++    (numerator : X → ℚ) (x : X) :
++    normalizeWeights denominator numerator x = numerator x / denominator := rfl
++
+ /-- Bayes update on (source index, hidden actual state), with an explicit
+-zero-mass default.  The enlarged finite atom type retains each primitive branch. -/
++zero-mass default.  The enlarged finite atom type retains each primitive branch.
++The normalization mass is evaluated once, before constructing the weight
++closure; this changes no atom, weight, observation or zero-mass default. -/
+ def posterior (K : Source W A O Z) (b : Belief W) (a : A) (o : O) : Belief W :=
+-  if h : mass K b a o = 0 then b else
++  let denominator := mass K b a o
++  if h : denominator = 0 then b else
+   { Atom := b.Atom × Z
+     atoms := inferInstance
+     state := fun x => K.next (b.state x.1) a x.2
+-    weight := fun x => joint K b a o x / mass K b a o
++    weight := normalizeWeights denominator (joint K b a o)
+     nonneg := fun x => div_nonneg (joint_nonneg K b a o x) (mass_nonneg K b a o)
+     total := by
++      change (∑ x : b.Atom × Z, joint K b a o x / denominator) = 1
+       rw [← Finset.sum_div]
+-      change mass K b a o / mass K b a o = 1
++      change denominator / denominator = 1
+       exact div_self h }
++
++/-- The cached implementation is definitionally the entire original inline
++posterior, including its finite atom carrier and impossible-observation branch.
++This equality is stronger than equality of expected values. -/
++theorem posterior_eq_inline (K : Source W A O Z) (b : Belief W) (a : A) (o : O) :
++    posterior K b a o =
++      if h : mass K b a o = 0 then b else
++      { Atom := b.Atom × Z
++        atoms := inferInstance
++        state := fun x => K.next (b.state x.1) a x.2
++        weight := fun x => joint K b a o x / mass K b a o
++        nonneg := fun x => div_nonneg (joint_nonneg K b a o x) (mass_nonneg K b a o)
++        total := by
++          rw [← Finset.sum_div]
++          change mass K b a o / mass K b a o = 1
++          exact div_self h } := rfl
+ 
+ /-- Exact joint-mass identity; it also holds at impossible observations. -/
+ theorem posterior_identity (K : Source W A O Z) (b : Belief W) (a : A) (o : O)

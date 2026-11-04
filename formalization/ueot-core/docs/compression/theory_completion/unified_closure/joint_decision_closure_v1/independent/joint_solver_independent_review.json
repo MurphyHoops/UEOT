@@ -1,0 +1,111 @@
+{
+  "schema": "UEOT/JOINT_DECISION_NON_AUTHOR_REVIEW/V1",
+  "reviewer": "/root/finite_solver",
+  "timestamp": "2026-11-04T16:23:09.634872+00:00",
+  "status": "PASS_NON_AUTHOR_SEMANTIC_REVIEW",
+  "reviewed_files": [
+    {
+      "filename": "FiniteJointDecisionSupportedPolicy.lean",
+      "sha256": "725811de7421ec35a180f2669ddbdd658557539c508055903ca8990e7eaaee5d",
+      "review_kind": "NON_AUTHOR_SEMANTIC_REVIEW",
+      "scope": [
+        "RawCausalPolicy has no global menu assumption; SupportedAdmissible constrains exactly positive-action, positive-observation continuation branches.",
+        "The upper bound explicitly discards zero action and observation weights. FullHistoryPolicy represents complete own-action/receipt histories with arbitrary real action weights.",
+        "rawSourceValue_eq_model derives the same-primitive value bridge using the joint posterior and total expectation; the final bound compares actual-source payoff of the unchanged solve output."
+      ]
+    },
+    {
+      "filename": "RegisterJointDecisionNativeLaw.lean",
+      "sha256": "37366b5d2bb9415dd0573a6946f9103673ac1974114002bc0f7f5ac0dccaf0f7",
+      "review_kind": "NON_AUTHOR_SEMANTIC_REVIEW",
+      "scope": [
+        "Original mode/fair-label probability identity at the same retained source parameter.",
+        "nativeCausalValue and rawNativeCausalValue execute original Store transactions; only nativeObs enters policy advance.",
+        "Native-to-packed value bridges assume only structural next/observe equality, tariff binding and protected-program alignment, not value or optimality conclusions."
+      ]
+    },
+    {
+      "filename": "RegisterJointDecisionConsumer.lean",
+      "sha256": "94ea218ac0e7342256afb9da8a1ced08c13a83f9c526e5acb3cb03986767ffc8",
+      "review_kind": "NON_AUTHOR_SEMANTIC_REVIEW",
+      "scope": [
+        "Menu filters the full seven-request list before outcomes using the single public tariff commitment.",
+        "Positive receipt mass yields a real joint primitive branch; its actual fee is bounded by prepayment. Supported balance updates equal literal subtraction, so the max-zero default does not hide actual overdraft.",
+        "returned_actual_prefix_payment transfers every positive initial atom and original primitive-noise path to the observed table support, then applies exact prefix accounting."
+      ]
+    },
+    {
+      "filename": "RegisterJointDecisionExecution.lean",
+      "sha256": "5cd9ab3b10e6d91c174179cb86b54f1c71a1074e4e0221aca16053c981cabd0e",
+      "review_kind": "NON_AUTHOR_SEMANTIC_REVIEW",
+      "scope": [
+        "Every node executes the action stored in THIS table; only the permitted birth/charge receipt selects the next row.",
+        "nativeExecute_project preserves final packed population, all action/receipt history and all transaction projections, including fault and None records.",
+        "native_fees_from_receipts and prefix_cost_eq bind every prefix to original literal fees, independently of expected payoff."
+      ]
+    },
+    {
+      "filename": "RegisterJointDecisionNativeConsumer.lean",
+      "sha256": "1bb2319bc8e5eda862f19cd16df68174e01506a4fafeee27b88cd1d87f84ec9e",
+      "review_kind": "NON_AUTHOR_SEMANTIC_REVIEW",
+      "scope": [
+        "Tape-to-Fin conversion preserves exact tick order; native records projected through nativeObs equal the same observedTape used by the filter and wallet proofs.",
+        "Actual original-record J, including failures and all priced native fees, is summed against the same persistent-theta primitive law and proved equal to THIS returned table value. No J or optimality identity is an input certificate.",
+        "NativePrepaid checks tariff times request cap before every native transaction, then subtracts its literal nativeFee. Every positive initial atom and original noise path satisfies this and the exact native prefix ledger.",
+        "The full supported-local real randomized comparison class is executed natively, then bounded by expectedNativeJ of the unchanged returned object on the same prior and native realization.",
+        "initialRealization is constructed from original founders; initial_returned_native_value and initial_returned_native_boundary instantiate the concrete prior and one-tariff general-horizon parameter result.",
+        "Full native execution preserves every record, own-action/receipt history and Store slot through H ticks, including after stop. Slot count includes None and is not falsely identified with living population size."
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "actual_support_policy_quantifier",
+      "original_issue": "Global menu legality alone excluded arbitrary requests in physically unreachable histories.",
+      "resolution": "SupportedPolicy adds a raw real randomized comparison class and supported-local admissibility, proving the same original solve output dominates it.",
+      "status": "SEMANTICALLY_RESOLVED"
+    },
+    {
+      "id": "protected_world_information",
+      "result": "No reviewed selector or memory update receives the true hidden parameter, protected resident program, true parent, or full Store; these occur only on the world side of source/equality proofs."
+    },
+    {
+      "id": "time_resource_scope",
+      "result": "Finite protocol time, per-request native physical updates and Store clocks remain distinct. Stop is remaining root-idle, and undispatched residents are not subjected to a newly invented global fault tick."
+    },
+    {
+      "id": "native_final_prefix_composition",
+      "status": "SEMANTICALLY_RESOLVED",
+      "result": "The actual tape, original record payoff, exact prefix native fees, supported real randomized optimality and original founder instantiation are explicitly composed in NativeConsumer; no final physical witness remains assumed."
+    }
+  ],
+  "pending": [],
+  "validation_limits": [
+    "This report records source semantic review; the reviewer did not independently rerun Lean for these non-author modules. Root performs and records actual compilation separately.",
+    "The reviewer authored FiniteJointDecisionSolver, its Execution helper, FilteredModel, RegisterJointDecisionOptimality, FiniteJointDecisionFastSolver, and the minimal posterior normalization-cache patch. This report does not claim independent review of those author changes.",
+    "Conditional Bayes optimality is restricted to the registered source, permitted information, finite protocol horizon, prepayment rule and objective. It is not a minimax, oracle, universal empirical, or all-population-scheduling claim."
+  ],
+  "book_review": {
+    "scope": "New mathematics sections 39.75–39.81 and philosophy chapter 10 / appendix C only",
+    "status": "PASS_AFTER_TARGETED_CORRECTIONS",
+    "mathematics_sha256": "3874c6b9620a759aa2f8c438e0153b6dfa4d97260d8baa724bc8f2318996be01",
+    "philosophy_sha256": "100df0b78481247303b4dc59ac22f71eb6a21e96c0842c5b52b2ed6734f25447",
+    "passed_scope_checks": [
+      "The total horizon is H+1 while the price exclusion uses only remaining-horizon S_H.",
+      "Theta-oracle zero value is limited to the successful zero-wallet free tail; whole-experiment information may still matter.",
+      "Stop continues original root-idle evolution; later born addresses remain in the Store but do not acquire dispatch permission.",
+      "Same-menu fixed workflow equality, receipt-feedback gain and root-only different-menu comparison are kept distinct."
+    ],
+    "requested_corrections_resolved": [
+      "Fix the missing backslash before left in the displayed prior expectation formula.",
+      "Explain no-go from the first charged tick t, since both future births and the fee carry d^t; using undiscounted p against total horizon payoff is not the full argument."
+    ],
+    "resolution": "Verified both display syntax and first-paid-tick discounted bound corrected. Root-only prose now claims only the proved repair candidate.",
+    "additional_root_only_reference": {
+      "file": "root_only_comparison.json",
+      "sha256": "b195fb422503ce180415f88fd7e60e12bb9ba626ef710ca9fbc45b7f3338979d",
+      "result": "Restricted root-only menu full exact recursion gives optimal value zero; literal native replay covers 128 noise tapes. This additional independent evidence is not needed by the narrowed book claim."
+    },
+    "endpoint_review": "Verified d>0 is now required for strict failure-threshold decrease, and feedback gain is nonnegative with strictness exactly when d>0 and the prior has positive mass on 0<r<1. Zero-discount and endpoint-source zero-gain cases are explicit."
+  }
+}
