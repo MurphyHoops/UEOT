@@ -1,0 +1,25 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionBelief.lean:52:0: warning: automatically included section variable(s) unused in theorem `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.joint_nonneg`:
+  [Fintype O]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype O] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionBelief.lean:134:2: error: unsolved goals
+case neg
+W : Type uW
+A : Type uA
+O : Type uO
+Z : Type
+inst✝² : Fintype Z
+inst✝¹ : Fintype O
+inst✝ : DecidableEq O
+K : Source W A O Z
+b : Belief W
+a : A
+o : O
+f : W → ℚ
+h : ¬mass K b a o = 0
+x : b.Atom × Z
+a✝ : x ∈ Finset.univ
+⊢ mass K b a o * normalizeWeights (mass K b a o) (joint K b a o) x * f (K.next (b.state x.1) a x.2) =
+    f (K.next (b.state x.1) a x.2) * joint K b a o x

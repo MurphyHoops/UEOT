@@ -1,0 +1,77 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionFreeTail.lean:91:68: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionFreeTail.lean:91:68: warning: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionFreeTail.lean:169:88: error: unsolved goals
+Theta : Type
+P : Family Theta
+H : ℕ
+a : Act
+cs : Obs → Table Act Obs H
+w : World Theta
+⊢ (if True then P.normal w.theta else 1 - P.normal w.theta) *
+            gain P a (packedObserve P.goal w.store (address (effective w.stopped a).1) (effective w.stopped a).2 true) +
+          (if True then P.normal w.theta else 1 - P.normal w.theta) * P.discount *
+            sourceValue
+              { chance := primitiveWeight P.normal, nonneg := ⋯, total := ⋯, next := step P.goal,
+                observe := observe P.goal }
+              (gain P) P.discount
+              (cs (packedObserve P.goal w.store (address (effective w.stopped a).1) (effective w.stopped a).2 true))
+              { theta := w.theta,
+                store := packedNext P.goal w.store (address (effective w.stopped a).1) (effective w.stopped a).2 true,
+                stopped := w.stopped || Option.isNone a } +
+        (P.discount * if false = true then P.normal w.theta else 1 - P.normal w.theta) *
+          sourceValue
+            { chance := primitiveWeight P.normal, nonneg := ⋯, total := ⋯, next := step P.goal,
+              observe := observe P.goal }
+            (gain P) P.discount
+            (cs (packedObserve P.goal w.store (address (effective w.stopped a).1) (effective w.stopped a).2 false))
+            { theta := w.theta,
+              store := packedNext P.goal w.store (address (effective w.stopped a).1) (effective w.stopped a).2 false,
+              stopped := w.stopped || Option.isNone a } +
+      (if false = true then P.normal w.theta else 1 - P.normal w.theta) *
+        gain P a (packedObserve P.goal w.store (address (effective w.stopped a).1) (effective w.stopped a).2 false) =
+    P.normal w.theta *
+                gain P a
+                  (packedObserve P.goal w.store (address (effective w.stopped a).1) (effective w.stopped a).2 true) +
+              P.normal w.theta * P.discount *
+                sourceValue
+                  { chance := primitiveWeight P.normal, nonneg := ⋯, total := ⋯, next := step P.goal,
+                    observe := observe P.goal }
+                  (gain P) P.discount
+                  (cs (packedObserve P.goal w.store (address (effective w.stopped a).1) (effective w.stopped a).2 true))
+                  { theta := w.theta,
+                    store :=
+                      packedNext P.goal w.store (address (effective w.stopped a).1) (effective w.stopped a).2 true,
+                    stopped := w.stopped || Option.isNone a } -
+            P.normal w.theta * P.discount *
+              sourceValue
+                { chance := primitiveWeight P.normal, nonneg := ⋯, total := ⋯, next := step P.goal,
+                  observe := observe P.goal }
+                (gain P) P.discount
+                (cs (packedObserve P.goal w.store (address (effective w.stopped a).1) (effective w.stopped a).2 false))
+                { theta := w.theta,
+                  store :=
+                    packedNext P.goal w.store (address (effective w.stopped a).1) (effective w.stopped a).2 false,
+                  stopped := w.stopped || Option.isNone a } -
+          P.normal w.theta *
+            gain P a
+              (packedObserve P.goal w.store (address (effective w.stopped a).1) (effective w.stopped a).2 false) +
+        P.discount *
+          sourceValue
+            { chance := primitiveWeight P.normal, nonneg := ⋯, total := ⋯, next := step P.goal,
+              observe := observe P.goal }
+            (gain P) P.discount
+            (cs (packedObserve P.goal w.store (address (effective w.stopped a).1) (effective w.stopped a).2 false))
+            { theta := w.theta,
+              store := packedNext P.goal w.store (address (effective w.stopped a).1) (effective w.stopped a).2 false,
+              stopped := w.stopped || Option.isNone a } +
+      gain P a (packedObserve P.goal w.store (address (effective w.stopped a).1) (effective w.stopped a).2 false)

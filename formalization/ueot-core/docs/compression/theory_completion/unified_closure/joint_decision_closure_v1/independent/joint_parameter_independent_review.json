@@ -1,0 +1,119 @@
+{
+  "schema": "UEOT/JOINT_DECISION_PARAMETER_INDEPENDENT_REVIEW/V1",
+  "reviewer": "parameter_results",
+  "review_type": "non-author semantic review of finite_solver Optimality; posterior exporter/checker correspondence review",
+  "status": "PASS_WITH_EXPLICIT_SCOPE",
+  "source_sha256": {
+    "RegisterJointDecisionOptimality.lean": "bce517edc07c393303e7f56f4db7416092736703602140608f9c1d5655f00728",
+    "RegisterJointDecisionExpectedBounds.lean": "6089b8e7a43757b4548a3da0bedba7012910fcaed4bf6fe2aa57c116b9e5a3ef",
+    "RegisterJointDecisionConsumer.lean": "94ea218ac0e7342256afb9da8a1ced08c13a83f9c526e5acb3cb03986767ffc8",
+    "FiniteJointDecisionSupportedPolicy.lean": "725811de7421ec35a180f2669ddbdd658557539c508055903ca8990e7eaaee5d",
+    "RegisterJointDecisionNativeLaw.lean": "37366b5d2bb9415dd0573a6946f9103673ac1974114002bc0f7f5ac0dccaf0f7",
+    "RETURN_POLICY.lean": "9dc35cf3df7336deee87de83ded2daafda39988713d2e17fcb8f56314f1e0e6b",
+    "verify_lean_output.py": "0fbd8ca46909e4d6e84991a9db190215a581ad7c08f1ff23135873a0403e9107"
+  },
+  "compiled_evidence": {
+    "module": "RegisterJointDecisionOptimality.lean",
+    "report": "parent root reported root-08 exit code 0; reviewer read exact shared source",
+    "independent_compiler_run": false
+  },
+  "exact_theorem": {
+    "name": "RegisterJointDecisionOptimality.optimal_initial_value",
+    "value": "V_(H+1) = max(0, sum_theta prior(theta)*r_theta*(1-p+d*U2(r_theta,d,H)))",
+    "assumptions": [
+      "finite rational prior; zero-mass theta atoms permitted",
+      "known public goal and one initially damaged root",
+      "0<=r_theta<=1; theta drawn once and retained",
+      "0<=d<=1; tariff c>0; price lambda>=0; p=lambda*c",
+      "wallet exactly c",
+      "p>=S_H(d)=sum_(t=0)^(H-1)d^t",
+      "registered actions root0/child1 writes or idle, and committed stop; no additional address or information rights"
+    ],
+    "upper_bound": [
+      "Every non-correct-root-write first action gives no birth and an all-damaged actual next store; its H-step continuation is <=0 by source_allDamaged_nonpos.",
+      "A correct-write fault is kept with actual zero fee, still damaged store and unspent wallet; high-price bound rules out positive continuation.",
+      "A correct normal write creates the actual healthy root and child1, charges c, and leaves wallet zero. Feasibility therefore forces free continuation.",
+      "free_table_upper bounds every continuation using actual source expectation for each fixed theta, before prior averaging."
+    ],
+    "attainment": [
+      "stopTable performs real root-idle ticks and has value zero only because initial population is damaged.",
+      "repairThenFree writes root now; failure stops paid intervention; success uses receipt-only freeSchedule.",
+      "freeSchedule is feasible from every public wallet and reaches the per-theta upper bound from the two healthy source-created slots simultaneously.",
+      "initial_repair_value averages the same persistent-theta source run; no averaged/redrawn transition kernel is substituted."
+    ],
+    "reverse_boundary": {
+      "name": "positive_price_boundary",
+      "statement": "Under the SAME high-price assumption and positive mu1, V>0 iff p<1+d*sum(prior*r*U2)/mu1.",
+      "qualification": "This is not a theorem for prices outside p>=S_H or wallets above c; equality and greater price imply V=0 via exact max formula."
+    },
+    "small_wallet": {
+      "name": "insufficient_wallet_optimal_zero",
+      "statement": "Any finite horizon, any supported all-damaged prior, and 0<=B<c give exact optimum zero without a high-price assumption.",
+      "reason": "Public prepayment excludes every write; zero-fee original primitive preserves damage and gives no births.",
+      "qualification": "No such zero claim for an initially healthy population."
+    }
+  },
+  "comparison_class": {
+    "deterministic": "Optimality module directly bounds all globally feasible finite tables, including impossible rows.",
+    "supported_randomized": "FiniteJointDecisionSupportedPolicy.supported_actual_causal_le_returned separately covers real randomized full-history policies legal only at positive-probability histories.",
+    "original_store": "RegisterJointDecisionNativeLaw.rawNativeCausalValue_eq_packed connects those causal kernels to the original Store transaction using the same permitted receipt memory updates.",
+    "privacy": "Complete hidden-world/store/identity fields appear only in semantics and audit records; action kernels receive permitted memory, action and (birth,paid-write) receipts, never theta or protected metadata."
+  },
+  "posterior_diagnostic": {
+    "exporter_branch": "posterior -> diagnosticFamily, horizon 3",
+    "parameters": {
+      "normal": [
+        "1/4",
+        "3/4"
+      ],
+      "prior": [
+        "1/2",
+        "1/2"
+      ],
+      "c": "1",
+      "lambda": "13/10",
+      "d": "1/2",
+      "B": "1"
+    },
+    "expected_actual_value": "27/320",
+    "legal_failure_receipt": [
+      false,
+      false
+    ],
+    "failure_posterior": [
+      "3/4",
+      "1/4"
+    ],
+    "prior_remaining_two_step_repair_score": "1/160",
+    "failed_remaining_two_step_repair_score": "-3/160",
+    "frozen_prior_retry_value": "51/640",
+    "loss_from_retry": "3/640",
+    "scope_warning": "p=13/10<3/2=S_2; global high-price theorem does NOT certify this H3 optimum. Its value must come from general Lean solve and exact THIS-table source replay.",
+    "fixed_baseline": "Best same-menu fixed three-step schedule also attains 27/320; no strict superiority over all fixed schedules is claimed."
+  },
+  "export_checker_correspondence": {
+    "exporter": "table is returned P H input; rows are serialized directly; no Python policy is imported.",
+    "rational_parameters": "JSON probabilities ordered false/true match the Family; prior, tariff, price, discount and wallet match registeredInput.",
+    "posterior_special_case_in_checker": false,
+    "checker_actions": "At each actual receipt history the exported row controls native replay; hidden projected state is only used for independent optimality evaluation and checked as determined by the same history.",
+    "checks": [
+      "complete four-observation tree",
+      "all serialized rows satisfy the same capped public wallet menu",
+      "positive-tape prepayment before inspecting the current mode",
+      "source index sampled once",
+      "all positive mode and fair-label tapes",
+      "original failures and None allocations",
+      "actual full J equals declared rational value and independent DP optimum",
+      "every reachable chosen action has optimal Q, with ties allowed"
+    ],
+    "pending_actual_execution": "Reviewer has not yet seen parent frozen H4 output or verifier execution; this semantic review does not report that execution as completed."
+  },
+  "findings": [],
+  "limits": [
+    "Conditional mathematical family only; no empirical biological claim.",
+    "No price-region extrapolation beyond explicit assumptions.",
+    "No standalone parent-read/program-read fee protocol was added.",
+    "Only declared addresses 0/1 can be selected; later native children remain in Store but are not free extra dispatch rights.",
+    "Actual final source/output hashes must be frozen by parent runner; this review binds only the listed shared-source bytes."
+  ]
+}

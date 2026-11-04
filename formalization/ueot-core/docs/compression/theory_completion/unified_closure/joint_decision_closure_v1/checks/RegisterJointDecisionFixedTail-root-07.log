@@ -1,0 +1,30 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionFixedTail.lean:44:17: error: unsolved goals
+case cons
+Theta : Type
+P : Family Theta
+j : Bool
+js : List Bool
+ih :
+  ∀ (w : World Theta),
+    w.stopped = false →
+      2 ≤ List.length w.store →
+        sourceValue (source P) (gain P) P.discount (fixedSchedule js) w =
+          bitFixedValue (P.normal w.theta) P.discount js (health P.goal w.store)
+w : World Theta
+hs : w.stopped = false
+hlen : 2 ≤ List.length w.store
+a : Act := some (j, none)
+ha : cap a = 0
+hx : ∀ (mode : Bool), health P.goal (step P.goal w a (mode, false)).store = bitNext (health P.goal w.store) j mode
+ho : ∀ (mode : Bool), observe P.goal w a (mode, false) = bitObs (health P.goal w.store) j mode
+ht :
+  ∀ (mode : Bool),
+    sourceValue (source P) (gain P) P.discount (fixedSchedule js) (step P.goal w a (mode, false)) =
+      bitFixedValue (P.normal w.theta) P.discount js (bitNext (health P.goal w.store) j mode)
+⊢ (1 - P.normal w.theta) *
+      (P.discount *
+        bitFixedValue (P.normal w.theta) P.discount js
+          (if j = true then ((health P.goal w.store).1, false) else (false, (health P.goal w.store).2))) =
+    (1 - P.normal w.theta) * P.discount *
+      bitFixedValue (P.normal w.theta) P.discount js
+        (if j = true then ((health P.goal w.store).1, false) else (false, (health P.goal w.store).2))

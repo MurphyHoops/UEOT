@@ -1,0 +1,175 @@
+[
+  {
+    "id": 0,
+    "remaining": 3,
+    "value": "9/256",
+    "budget": "1",
+    "action": {
+      "kind": "dispatch",
+      "parent": 0,
+      "action": true
+    },
+    "committed_stop": false,
+    "branches": {
+      "0,0": {
+        "probability": "1/2",
+        "next": 1
+      },
+      "1,1": {
+        "probability": "1/2",
+        "next": 4
+      }
+    }
+  },
+  {
+    "id": 1,
+    "remaining": 2,
+    "value": "0",
+    "budget": "1",
+    "action": {
+      "kind": "stop"
+    },
+    "committed_stop": false,
+    "branches": {
+      "0,0": {
+        "probability": "1",
+        "next": 2
+      }
+    }
+  },
+  {
+    "id": 2,
+    "remaining": 1,
+    "value": "0",
+    "budget": "1",
+    "action": {
+      "kind": "stop"
+    },
+    "committed_stop": true,
+    "branches": {
+      "0,0": {
+        "probability": "1",
+        "next": 3
+      }
+    }
+  },
+  {
+    "id": 3,
+    "remaining": 0,
+    "value": "0",
+    "budget": "1",
+    "action": {
+      "kind": "stop"
+    },
+    "committed_stop": true,
+    "branches": {}
+  },
+  {
+    "id": 4,
+    "remaining": 2,
+    "value": "35/32",
+    "budget": "0",
+    "action": {
+      "kind": "dispatch",
+      "parent": 0,
+      "action": null
+    },
+    "committed_stop": false,
+    "branches": {
+      "0,0": {
+        "probability": "3/8",
+        "next": 5
+      },
+      "1,0": {
+        "probability": "5/8",
+        "next": 8
+      }
+    }
+  },
+  {
+    "id": 5,
+    "remaining": 1,
+    "value": "1/2",
+    "budget": "0",
+    "action": {
+      "kind": "dispatch",
+      "parent": 1,
+      "action": null
+    },
+    "committed_stop": false,
+    "branches": {
+      "0,0": {
+        "probability": "1/2",
+        "next": 6
+      },
+      "1,0": {
+        "probability": "1/2",
+        "next": 7
+      }
+    }
+  },
+  {
+    "id": 6,
+    "remaining": 0,
+    "value": "0",
+    "budget": "0",
+    "action": {
+      "kind": "stop"
+    },
+    "committed_stop": false,
+    "branches": {}
+  },
+  {
+    "id": 7,
+    "remaining": 0,
+    "value": "0",
+    "budget": "0",
+    "action": {
+      "kind": "stop"
+    },
+    "committed_stop": false,
+    "branches": {}
+  },
+  {
+    "id": 8,
+    "remaining": 1,
+    "value": "7/10",
+    "budget": "0",
+    "action": {
+      "kind": "stop"
+    },
+    "committed_stop": false,
+    "branches": {
+      "0,0": {
+        "probability": "3/10",
+        "next": 9
+      },
+      "1,0": {
+        "probability": "7/10",
+        "next": 10
+      }
+    }
+  },
+  {
+    "id": 9,
+    "remaining": 0,
+    "value": "0",
+    "budget": "0",
+    "action": {
+      "kind": "stop"
+    },
+    "committed_stop": true,
+    "branches": {}
+  },
+  {
+    "id": 10,
+    "remaining": 0,
+    "value": "0",
+    "budget": "0",
+    "action": {
+      "kind": "stop"
+    },
+    "committed_stop": true,
+    "branches": {}
+  }
+]

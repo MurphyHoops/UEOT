@@ -1,0 +1,838 @@
+{
+  "schema": "UEOT/JOINT_DECISION_DELIVERY/V1",
+  "date": "2026-11-04",
+  "base_main": "e4a3ab85c33d1ba08625f7156d9cdebe769aca71",
+  "branch": "compression/joint-decision-closure-20261104",
+  "mathematical_and_local_delivery_acceptance": "PASS_IN_DECLARED_SCOPE",
+  "validation": {
+    "schema": "UEOT/JOINT_DECISION_FINAL_VALIDATION/V1",
+    "utc": "2026-11-04T16:56:26.206962+00:00",
+    "status": "PASS_IN_DECLARED_SCOPE",
+    "compiled_new_modules": 17,
+    "public_import_roots": 3,
+    "principal_axiom_checks": 18,
+    "axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "source_closure_files": 282,
+    "source_unchanged_before_after": true,
+    "new_admissions_or_axioms": false,
+    "all_four_actual_tables_pass": true,
+    "positive_full_noise_paths": 800,
+    "four_step_source": "Original successful actual solve output; reused through whole-posterior rfl and whole-table equality, not a claimed completion of the later cached timing attempt",
+    "final_first_three_byte_identity": true,
+    "original_existing_core_changed_paths": [
+      "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean"
+    ],
+    "old_samples_or_workflows_modified": false,
+    "disabled_workflows": [
+      "UEOT Compression Research Base Policy",
+      "UEOT Core Compression Guard",
+      "UEOT Core Lean"
+    ],
+    "books": "Both actual PDFs compiled with pinned Noto fonts, zero missing glyphs/overfull hbox; root and independent selected visual QA, not all-page manual audit",
+    "empirical_support": "UNVERIFIED"
+  },
+  "identities": {
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionBelief.lean": {
+      "sha256": "666e20bb89e6d7d6d67c18686affd77f3efe35db94edc267ae9cb857c59c516c",
+      "bytes": 7499
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionFastSolver.lean": {
+      "sha256": "452125851510ca2e1fb02b06d00c42426ef3779c58af5c05f59baff5c79a1c6e",
+      "bytes": 6139
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionFilteredModel.lean": {
+      "sha256": "b776570849884cd2fe9f428d84d1b9beba9c54df2e280a02962ccf72c68d9270",
+      "bytes": 17588
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionSolver.lean": {
+      "sha256": "c1cd7e4ffdd03f5a8056b5f8dd4e59dc6f092be61349f439b5bb03ae5445ee4d",
+      "bytes": 10904
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionSolverExecution.lean": {
+      "sha256": "f4682ddfbf95caca07dad310502dbe1f2aef1efdc48a336983cf7d24d5b372f3",
+      "bytes": 12181
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionSupportedPolicy.lean": {
+      "sha256": "725811de7421ec35a180f2669ddbdd658557539c508055903ca8990e7eaaee5d",
+      "bytes": 10488
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionBoundary.lean": {
+      "sha256": "3d0789e771a33e8b166c3ea6bfa1be055f7e3058ab2b1a6a5a172c10d9b7a25b",
+      "bytes": 25815
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionConsumer.lean": {
+      "sha256": "94ea218ac0e7342256afb9da8a1ced08c13a83f9c526e5acb3cb03986767ffc8",
+      "bytes": 9965
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionExecution.lean": {
+      "sha256": "2128ed2f43b6635351d90d3ba54a597c88d27f79013602816e52692a3ad045f3",
+      "bytes": 11274
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionExpectedBounds.lean": {
+      "sha256": "6089b8e7a43757b4548a3da0bedba7012910fcaed4bf6fe2aa57c116b9e5a3ef",
+      "bytes": 6761
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionFixedTail.lean": {
+      "sha256": "b53d7276f9f0ff7a5deaccdb07ce3cbceaf0e3c03b3c9282ae0a475d994f104f",
+      "bytes": 4737
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionFreeTail.lean": {
+      "sha256": "11c16509bade8b4842703ab3b0bf29b1c605c4000b44d81b6d0a27481cb03b3b",
+      "bytes": 13792
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionNativeConsumer.lean": {
+      "sha256": "1bb2319bc8e5eda862f19cd16df68174e01506a4fafeee27b88cd1d87f84ec9e",
+      "bytes": 22001
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionNativeLaw.lean": {
+      "sha256": "37366b5d2bb9415dd0573a6946f9103673ac1974114002bc0f7f5ac0dccaf0f7",
+      "bytes": 11150
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionOptimality.lean": {
+      "sha256": "bce517edc07c393303e7f56f4db7416092736703602140608f9c1d5655f00728",
+      "bytes": 19794
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionSource.lean": {
+      "sha256": "0bc3063d4651196dc7aac2a12e68916600cb48b1e10a26052d216bb5147035d5",
+      "bytes": 22617
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionValueBounds.lean": {
+      "sha256": "d32f9f26df6a70b3828a92009acad9b729dee674067d246b5ab106b2a1df17fd",
+      "bytes": 11068
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean": {
+      "sha256": "9965d138312fbdad8eb94ae03fdc39ef29d184756a4c9f10c361aacf35c78f46",
+      "bytes": 27457
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/CONTRACT.md": {
+      "sha256": "1bd5ba7a3cf006d0947b108934a3df2d3bf9528df1779ef327d7c4ef73dae45d",
+      "bytes": 6873
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/FINAL_ACCEPTANCE.md": {
+      "sha256": "810d570f440fbedb1526091bb8fdf1ae2732aa1a1c9ddd13d6d1fa99d10cb107",
+      "bytes": 3472
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/README.md": {
+      "sha256": "8f7553c8634be00ba8a6cecaeb2a612fbdc11a890dfe3869170fe25707b713e2",
+      "bytes": 9612
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/THIS-final-02/00-persistent_theta_two_step.THIS_LEAN_NATIVE_TRACES.json": {
+      "sha256": "b84b58f2fb9612861aa693871958a762af702e0972e529c77e40df1a57260ac0",
+      "bytes": 44262
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/THIS-final-02/01-population_backup_three_step.THIS_LEAN_NATIVE_TRACES.json": {
+      "sha256": "c783680e76d3ba8c1ee50f24242c0c31db566ee51b41e804b11d34dbff8d9ca0",
+      "bytes": 256346
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/THIS-final-02/02-posterior_changes_retry_three_step.THIS_LEAN_NATIVE_TRACES.json": {
+      "sha256": "207f9ad295c18c4ee59c5a2535380b6e21219d2a8313b4903a334afea1d27073",
+      "bytes": 256394
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/THIS-final-02/03-receipt_feedback_four_step.THIS_LEAN_NATIVE_TRACES.json": {
+      "sha256": "36a0305822d4e602bb503c442e54ef8adc1e8a1c161a1b6c4b6d48ea7b252c57",
+      "bytes": 1338866
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/THIS-final-02/THIS_LEAN_TABLE_CHECK.json": {
+      "sha256": "0b8c0f6cf0f2f0646b43449ca27f3066856e85a2b15ef7026e0d5dfa826604ae",
+      "bytes": 7579
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/THIS-lean-check-01/00-persistent_theta_two_step.THIS_LEAN_NATIVE_TRACES.json": {
+      "sha256": "b84b58f2fb9612861aa693871958a762af702e0972e529c77e40df1a57260ac0",
+      "bytes": 44262
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/THIS-lean-check-01/01-population_backup_three_step.THIS_LEAN_NATIVE_TRACES.json": {
+      "sha256": "c783680e76d3ba8c1ee50f24242c0c31db566ee51b41e804b11d34dbff8d9ca0",
+      "bytes": 256346
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/THIS-lean-check-01/02-posterior_changes_retry_three_step.THIS_LEAN_NATIVE_TRACES.json": {
+      "sha256": "207f9ad295c18c4ee59c5a2535380b6e21219d2a8313b4903a334afea1d27073",
+      "bytes": 256394
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/THIS-lean-check-01/THIS_LEAN_TABLE_CHECK.json": {
+      "sha256": "13e203128f0baf4f42ba317596cb2ff6465f5bf1c49179f42670769336fde5c7",
+      "bytes": 5687
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/independent-reference-01/REFERENCE_RESULTS.json": {
+      "sha256": "7c634f2ab3b3445ff9aca13d18dc31b447f6b49ae2668f03d64d05e05c2fcc46",
+      "bytes": 13127
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/independent-reference-01/all_fault.table.json": {
+      "sha256": "32490a43dc155cdcb6471e5158306148951de70e8ca15e6425551fb7170209af",
+      "bytes": 661
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/independent-reference-01/all_fault.traces.json": {
+      "sha256": "bdac5a661d78d9c7e41c2354bd65fca7e83d58e499379d9de56cbb576e14e813",
+      "bytes": 4058
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/independent-reference-01/insufficient_prepay.table.json": {
+      "sha256": "285811cd72785724a2fc03621e2437108358b413c3f050ebfd8e263f0d04a38a",
+      "bytes": 667
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/independent-reference-01/insufficient_prepay.traces.json": {
+      "sha256": "f006c72f3625421d62095304892f7221de81e486ea24a32e36601fb0e79557f2",
+      "bytes": 32482
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/independent-reference-01/known_reliable_source.table.json": {
+      "sha256": "c4b470fe79a19edd81ce84cdd9bbbd715c905afd45d62e0fa5105fc9e97a57f0",
+      "bytes": 709
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/independent-reference-01/known_reliable_source.traces.json": {
+      "sha256": "1e6ba718ec5044f5c5335ca14359513236f677cf6b48b1f609f87b28dfc56f9f",
+      "bytes": 4978
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/independent-reference-01/persistent_theta_two_step.table.json": {
+      "sha256": "3fa1eba67d62b0b320fbbe4103c7c69560b17ac51317ded13c7a84d4088cd400",
+      "bytes": 1446
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/independent-reference-01/persistent_theta_two_step.traces.json": {
+      "sha256": "8b5539ec233fed8ddbaf639b0dd79a14474a24e13145255234126de8d1bc356a",
+      "bytes": 35270
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/independent-reference-01/population_backup_three_step.table.json": {
+      "sha256": "c5c9038ff4f6bacbbeeae2d4a048e8a4d758afa92933440c8afdb292f3688870",
+      "bytes": 2771
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/independent-reference-01/population_backup_three_step.traces.json": {
+      "sha256": "d53789a940d3070f17f5a9744f07c0af59c157ba37720056c54a31b785812543",
+      "bytes": 201402
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/independent-reference-01/receipt_feedback_four_step.table.json": {
+      "sha256": "c0f541078c4d89fbba8cc9bf5ac800d24238a93d4ca5dc1298cc73ce6acb0e3f",
+      "bytes": 4975
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/independent-reference-01/receipt_feedback_four_step.traces.json": {
+      "sha256": "a987fea3b55459d2c9d69948f8128d8592201ef40800b2fbdec266d4e305555b",
+      "bytes": 1043826
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/independent-reference-01/zero_budget.table.json": {
+      "sha256": "e8f02dc93f5fb7f376a290dbc34991c7f2e7c4ca4b8de1d7d818bcc159bf6f26",
+      "bytes": 661
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/independent-reference-01/zero_budget.traces.json": {
+      "sha256": "cfd829d2a1903e6a8155da1576085ab23d387dce91acca7d840bce38d43b247b",
+      "bytes": 32418
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/independent-reference-01/zero_horizon.table.json": {
+      "sha256": "5f3048a7f83b7975ac694aa94ceb637df59db8b38f2dda159d1e7f7f7bffe680",
+      "bytes": 173
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/independent-reference-01/zero_horizon.traces.json": {
+      "sha256": "f470c2474ad64a743d41e3d54e93156e48808ddfa2d3ba9a79dabe4baa6b6853",
+      "bytes": 314
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-cached-final-01/RUNS.json": {
+      "sha256": "b13916e272d7135225d05d1574aac4e03c0ead540ecce386fa8c4277cec21847",
+      "bytes": 1389
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-cached-final-01/SOURCE_AFTER.json": {
+      "sha256": "c5d9826a2f6f231c7ef690533462fff44e8792ca885b495a4a6db79a0c8bbba4",
+      "bytes": 2938
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-cached-final-01/SOURCE_BEFORE.json": {
+      "sha256": "c5d9826a2f6f231c7ef690533462fff44e8792ca885b495a4a6db79a0c8bbba4",
+      "bytes": 2938
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-cached-final-01/four/RUN.json": {
+      "sha256": "e10833d4cb01e6c29ff61608b76afa39b22213d8b171e21df5b8454a9aca3056",
+      "bytes": 331
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-cached-final-01/four/stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-cached-final-01/four/stdout.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-cached-final-01/posterior/RUN.json": {
+      "sha256": "c9f0d37ef1ec350521fb5bf0a19b5d5144d93936dbe171b06bb570ac06687d2d",
+      "bytes": 333
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-cached-final-01/posterior/stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-cached-final-01/posterior/stdout.log": {
+      "sha256": "b847814ccf637cefec82b960ec2600cee5cd2570b52fe167aadfee75ea237391",
+      "bytes": 1971
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-cached-final-01/three/RUN.json": {
+      "sha256": "2140adb02b666a39b36afef223603c3d1aaecbd91cbec1a181bfc3b147431567",
+      "bytes": 329
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-cached-final-01/three/stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-cached-final-01/three/stdout.log": {
+      "sha256": "94b669f1fcf4506daf8316420f9fba1a052c24dea2b13fc537184c70bf7af3dc",
+      "bytes": 1951
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-cached-final-01/two/RUN.json": {
+      "sha256": "dd18c2af698a621405f894d0747150e480fdb748e165c3d65d13f4d42cbe7274",
+      "bytes": 325
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-cached-final-01/two/stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-cached-final-01/two/stdout.log": {
+      "sha256": "e3edc5935140f32189510a6a3dc74b7112771497e1f93b44c33a4919f5ca5c7e",
+      "bytes": 1042
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-final-02/RUNS.json": {
+      "sha256": "4509ceb3bdec33b04e286d3fa71c96a1443a10265a7b5e42c1563d88d0797f83",
+      "bytes": 1390
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-final-02/SOURCE_AFTER.json": {
+      "sha256": "4af346e8fe686a408774562b96c027f293ba8bafea002ab7b78527677880886e",
+      "bytes": 36626
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-final-02/SOURCE_BEFORE.json": {
+      "sha256": "4af346e8fe686a408774562b96c027f293ba8bafea002ab7b78527677880886e",
+      "bytes": 36626
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-final-02/TERMINATION.json": {
+      "sha256": "a1a35e5a9e7bd76f3e8cf3d229ec6467e4347798a90946c5df7fa0bdd4fac5fe",
+      "bytes": 1404
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-final-02/four/RUN.json": {
+      "sha256": "cec1d1c771148680ab3bc08a568248a762a4a69750d29b089ccecd33875fbd9b",
+      "bytes": 331
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-final-02/four/stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-final-02/four/stdout.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-final-02/posterior/RUN.json": {
+      "sha256": "3c337710ad8c9e69657ff358773690f6b32904f51f7914fcd512709f31cb31e9",
+      "bytes": 333
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-final-02/posterior/stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-final-02/posterior/stdout.log": {
+      "sha256": "a0d409b73dc286f8fdbda51e84862a3007b5772edd24810373a98ef8fc84dc80",
+      "bytes": 1411
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-final-02/three/RUN.json": {
+      "sha256": "20586ebad4cb463231ca19c3cc32ce4f9a4a6e7153e4a24e0286a4431ae80df1",
+      "bytes": 329
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-final-02/three/stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-final-02/three/stdout.log": {
+      "sha256": "73fb6ae4ff058303d10b965800a176f361256873e446c2f39c061852667321d8",
+      "bytes": 1391
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-final-02/two/RUN.json": {
+      "sha256": "0eeaf056cf6b145144aa996664ef2b1100e508ad755dddaf4817313befdd30db",
+      "bytes": 326
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-final-02/two/stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-final-02/two/stdout.log": {
+      "sha256": "d7e5bbe04306743410601cb328752ce88639271c167b769d7996f71095ccaf1c",
+      "bytes": 482
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-smoke-01/stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-smoke-01/stdout.log": {
+      "sha256": "d7e5bbe04306743410601cb328752ce88639271c167b769d7996f71095ccaf1c",
+      "bytes": 482
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-smoke-four-01/stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-smoke-four-01/stdout.log": {
+      "sha256": "9ace921a626a4658a1e0dbb98f78706da69b52917026851480b61c7987604f7b",
+      "bytes": 5871
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-smoke-posterior-01/stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-smoke-posterior-01/stdout.log": {
+      "sha256": "a0d409b73dc286f8fdbda51e84862a3007b5772edd24810373a98ef8fc84dc80",
+      "bytes": 1411
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-smoke-three-01/stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/lean-smoke-three-01/stdout.log": {
+      "sha256": "73fb6ae4ff058303d10b965800a176f361256873e446c2f39c061852667321d8",
+      "bytes": 1391
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/pre-normalizer-cache/FiniteJointDecisionBelief.lean": {
+      "sha256": "221fe63aa66a09a169023965e89c22251c523ef2a4df1bcfcd78111304ac835d",
+      "bytes": 5952
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/pre-normalizer-cache/FiniteJointDecisionFastSolver.lean": {
+      "sha256": "452125851510ca2e1fb02b06d00c42426ef3779c58af5c05f59baff5c79a1c6e",
+      "bytes": 6139
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/pre-normalizer-cache/FiniteJointDecisionFilteredModel.lean": {
+      "sha256": "e6d53d1dff71cb84de46316c8bf939d55e9afdc3477057c937e6452482fabf4a",
+      "bytes": 17549
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/pre-normalizer-cache/FiniteJointDecisionSolver.lean": {
+      "sha256": "c1cd7e4ffdd03f5a8056b5f8dd4e59dc6f092be61349f439b5bb03ae5445ee4d",
+      "bytes": 10904
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/pre-normalizer-cache/FiniteJointDecisionSolverExecution.lean": {
+      "sha256": "f4682ddfbf95caca07dad310502dbe1f2aef1efdc48a336983cf7d24d5b372f3",
+      "bytes": 12181
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/pre-normalizer-cache/FiniteJointDecisionSupportedPolicy.lean": {
+      "sha256": "725811de7421ec35a180f2669ddbdd658557539c508055903ca8990e7eaaee5d",
+      "bytes": 10488
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/pre-normalizer-cache/RETURN_POLICY.lean": {
+      "sha256": "9dc35cf3df7336deee87de83ded2daafda39988713d2e17fcb8f56314f1e0e6b",
+      "bytes": 3293
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/pre-normalizer-cache/RETURN_POLICY_CACHED.lean": {
+      "sha256": "1eda384ec8267a1d9655823e83ad12d41c4af0a227774b943dbbd8a119fd3f86",
+      "bytes": 4206
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/pre-normalizer-cache/RUNNING_BEFORE_TERMINATION.txt": {
+      "sha256": "128f598482e478245a3c2e4971abe099a06ccd3fe97f54685b6c74129b935853",
+      "bytes": 680
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/pre-normalizer-cache/RegisterJointDecisionBoundary.lean": {
+      "sha256": "3d0789e771a33e8b166c3ea6bfa1be055f7e3058ab2b1a6a5a172c10d9b7a25b",
+      "bytes": 25815
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/pre-normalizer-cache/RegisterJointDecisionConsumer.lean": {
+      "sha256": "94ea218ac0e7342256afb9da8a1ced08c13a83f9c526e5acb3cb03986767ffc8",
+      "bytes": 9965
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/pre-normalizer-cache/RegisterJointDecisionExecution.lean": {
+      "sha256": "2128ed2f43b6635351d90d3ba54a597c88d27f79013602816e52692a3ad045f3",
+      "bytes": 11274
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/pre-normalizer-cache/RegisterJointDecisionExpectedBounds.lean": {
+      "sha256": "6089b8e7a43757b4548a3da0bedba7012910fcaed4bf6fe2aa57c116b9e5a3ef",
+      "bytes": 6761
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/pre-normalizer-cache/RegisterJointDecisionFixedTail.lean": {
+      "sha256": "b53d7276f9f0ff7a5deaccdb07ce3cbceaf0e3c03b3c9282ae0a475d994f104f",
+      "bytes": 4737
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/pre-normalizer-cache/RegisterJointDecisionFreeTail.lean": {
+      "sha256": "11c16509bade8b4842703ab3b0bf29b1c605c4000b44d81b6d0a27481cb03b3b",
+      "bytes": 13792
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/pre-normalizer-cache/RegisterJointDecisionNativeConsumer.lean": {
+      "sha256": "1bb2319bc8e5eda862f19cd16df68174e01506a4fafeee27b88cd1d87f84ec9e",
+      "bytes": 22001
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/pre-normalizer-cache/RegisterJointDecisionNativeLaw.lean": {
+      "sha256": "37366b5d2bb9415dd0573a6946f9103673ac1974114002bc0f7f5ac0dccaf0f7",
+      "bytes": 11150
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/pre-normalizer-cache/RegisterJointDecisionOptimality.lean": {
+      "sha256": "bce517edc07c393303e7f56f4db7416092736703602140608f9c1d5655f00728",
+      "bytes": 19794
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/pre-normalizer-cache/RegisterJointDecisionSource.lean": {
+      "sha256": "0bc3063d4651196dc7aac2a12e68916600cb48b1e10a26052d216bb5147035d5",
+      "bytes": 22617
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/pre-normalizer-cache/RegisterJointDecisionValueBounds.lean": {
+      "sha256": "d32f9f26df6a70b3828a92009acad9b729dee674067d246b5ab106b2a1df17fd",
+      "bytes": 11068
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/actual-execution/pre-normalizer-cache/TERMINATION.json": {
+      "sha256": "5af4e51cc4b9999a3ff4582aab71148519ea63a69dc0a8cfbf64ec66df60e8db",
+      "bytes": 984
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/BOOK_AND_REVIEW_TRANSFER.json": {
+      "sha256": "54ec7da52fde62e280ea7ca0597bde5ad80f277d5f562cb5fc32a7168d8a2bd3",
+      "bytes": 4895
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/FINAL_MODULE_COMPILE.json": {
+      "sha256": "5e6d8b9a900586c22c93a353bda0d8280f16d72d0072380908ea4ee0e571960a",
+      "bytes": 3204
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/FINAL_VALIDATION.json": {
+      "sha256": "c5b57bbbbe9d00ca6a00b7811826613e0b54f95b4e995236bd5f0f7b574e8e54",
+      "bytes": 1222
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/FiniteJointDecisionBelief-final-14.log": {
+      "sha256": "83ee98fc0e5c400a7170598f65feeae43baff32086f2191b39514eb55fb3dcfe",
+      "bytes": 1014
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/FiniteJointDecisionBelief-final-15.log": {
+      "sha256": "a1b8693572a48cccb776a921f5f4bd59029dd170bf3b52f3a1e1d902711540c7",
+      "bytes": 501
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/FiniteJointDecisionFastSolver-final-15.log": {
+      "sha256": "fe2a88234ecfdc98167b256158e8d8d568576fe40b8bcb220fbe13195b03979e",
+      "bytes": 836
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/FiniteJointDecisionFastSolver-root-12.log": {
+      "sha256": "a67a7c613d78a3556382ffcdf7d03f1db095498a4b6d41a4454c7b1e4aee3c78",
+      "bytes": 1494
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/FiniteJointDecisionFastSolver-root-13.log": {
+      "sha256": "fe2a88234ecfdc98167b256158e8d8d568576fe40b8bcb220fbe13195b03979e",
+      "bytes": 836
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/FiniteJointDecisionFilteredModel-final-15.log": {
+      "sha256": "ee3aebd5a22b1a4f0c0498e3b812f70543b16053e7a0000125061ac048d165a6",
+      "bytes": 1101
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/FiniteJointDecisionFilteredModel-root-01.log": {
+      "sha256": "b5d8fd46df6bdebbcf1e93c341709ff43444567ab973e2a94cd0dbec0ee361fe",
+      "bytes": 5234
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/FiniteJointDecisionFilteredModel-root-02.log": {
+      "sha256": "2a08bcbdafdbdb234fd7950d265121f3e1bd6a86e0920698cdf57ebb5df35260",
+      "bytes": 1285
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/FiniteJointDecisionFilteredModel-root-03.log": {
+      "sha256": "92249c8cfd29b0a9e0c5263dcbd2aa3e24ae44582ca74635c54e0ce32a4207ba",
+      "bytes": 532
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/FiniteJointDecisionFilteredModel-root-04.log": {
+      "sha256": "6a94555f08c0a811b160fff6ca0d308aac6bb1ad7469e5b60432e344f775c71e",
+      "bytes": 1101
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/FiniteJointDecisionSolver-final-15.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/FiniteJointDecisionSolverExecution-final-15.log": {
+      "sha256": "96529a7990a25302b4ff6e3c4e0123777967d816bb254649c8cc7e58500be5df",
+      "bytes": 509
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/FiniteJointDecisionSupportedPolicy-final-15.log": {
+      "sha256": "a8b89e6ec99adde6bf6b30a1f0ac531d652d52ff1d259418fd41cd2d6947818c",
+      "bytes": 1056
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/FiniteJointDecisionSupportedPolicy-root-08.log": {
+      "sha256": "a8b89e6ec99adde6bf6b30a1f0ac531d652d52ff1d259418fd41cd2d6947818c",
+      "bytes": 1056
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/OUTPUT_IDENTITY_COMPARISON.json": {
+      "sha256": "3aa479a134e07b90bd494474be44626b2aa47a4c0c9d1b69fa4f155e91385083",
+      "bytes": 1387
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/PUBLIC_AXIOMS.log": {
+      "sha256": "e55905688f41e2621b08ec083afe0ba2112db839558ee7ea9ad207bd09e82bb9",
+      "bytes": 3103
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/PUBLIC_INTEGRATION.json": {
+      "sha256": "aac71d059e7bd2c27fbaa465e72139c64332b766f15cedb3a4a15a11c722a6b9",
+      "bytes": 2024
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionBoundary-final-15.log": {
+      "sha256": "a4af6751415d3b2da9e8bce09df8ced3895c0fcd3324e8e69073af77a1f661f3",
+      "bytes": 245
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionBoundary-root-03.log": {
+      "sha256": "0606638b7bc13b55222fcde2b2fb66c1fbfbabebbef40dae5ffa808acf1d0550",
+      "bytes": 399
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionBoundary-root-05.log": {
+      "sha256": "eb79f47fa8b294302a22d11d0c1ee5021e945b9ca4a1d82dba7ca013a34ec59c",
+      "bytes": 245
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionBoundary-root-08.log": {
+      "sha256": "89184c85d0afad0d127439393fdb056d39c0240f8a525e8e7c8c553fd4cdf07a",
+      "bytes": 2415
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionBoundary-root-09.log": {
+      "sha256": "a4af6751415d3b2da9e8bce09df8ced3895c0fcd3324e8e69073af77a1f661f3",
+      "bytes": 245
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionConsumer-final-15.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionConsumer-root-03.log": {
+      "sha256": "3601dc1b7afefd47dc0eb7677f0f0e44285c8c69776e9d99ec8b7ff48cd5cd13",
+      "bytes": 717
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionConsumer-root-04.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionConsumer-root-06.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionExecution-final-15.log": {
+      "sha256": "0218925fc0f2945ed0f8986081b2f394b05470c6dfc8657a4b942d9d9bd263e5",
+      "bytes": 784
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionExpectedBounds-final-15.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionExpectedBounds-root-06.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionFixedTail-final-15.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionFixedTail-root-07.log": {
+      "sha256": "d3ec899353f32fc6e7cf6dffacf4258ca9b6eca9e4015fb703248dabdb18e56e",
+      "bytes": 1383
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionFixedTail-root-08.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionFreeTail-final-15.log": {
+      "sha256": "55038bad3cdb73524158c920327a5de50341b39011a2714490e8b6b12a1eec10",
+      "bytes": 441
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionFreeTail-root-05.log": {
+      "sha256": "054f2aa6e5a266688a149191c3ebb3d973c45d886bcf958dde2271ddc6402796",
+      "bytes": 4787
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionFreeTail-root-06.log": {
+      "sha256": "7d92efd96a7e155e53cad22a5f9495db908265e2f5b1cb7661e09c836fbbd98e",
+      "bytes": 604
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionFreeTail-root-07.log": {
+      "sha256": "55038bad3cdb73524158c920327a5de50341b39011a2714490e8b6b12a1eec10",
+      "bytes": 441
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionNativeConsumer-final-15.log": {
+      "sha256": "2d745f80a7907c3c3f9575cfa7cab76c85dc87f9a01f3329333f10683ecc8b2d",
+      "bytes": 1192
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionNativeConsumer-root-10b.log": {
+      "sha256": "a4614e8f0c73b6e1cccbd7a2785e8f3b6627cb561d9b53506daa3a9a41a57de4",
+      "bytes": 5704
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionNativeConsumer-root-11.log": {
+      "sha256": "2d745f80a7907c3c3f9575cfa7cab76c85dc87f9a01f3329333f10683ecc8b2d",
+      "bytes": 1192
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionNativeLaw-final-15.log": {
+      "sha256": "3b56daa42931da243705f908a899e60170d28a445e8bb3c5340716368c7ed209",
+      "bytes": 443
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionNativeLaw-root-03.log": {
+      "sha256": "d092c946d3c9f8435812ed94bdc144eaa2d3007d5bd480e9c8070eb46365a5c9",
+      "bytes": 282
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionNativeLaw-root-05.log": {
+      "sha256": "a9b61cc14e9108d664e2b4b18da5ac80cdc6d67632d1ed8639c9fc243d9cc68e",
+      "bytes": 443
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionNativeLaw-root-08.log": {
+      "sha256": "3b56daa42931da243705f908a899e60170d28a445e8bb3c5340716368c7ed209",
+      "bytes": 443
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionOptimality-final-15.log": {
+      "sha256": "5fbd8243dca2acbd2555b87b9673ef4d6bc157bf2a43bc62d6dae857caa28429",
+      "bytes": 1195
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionOptimality-root-07.log": {
+      "sha256": "8dd719458568703f09eceaa0ac6bffc3c715e82d961d8377eed240e8a73b0307",
+      "bytes": 6622
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionOptimality-root-08.log": {
+      "sha256": "5fbd8243dca2acbd2555b87b9673ef4d6bc157bf2a43bc62d6dae857caa28429",
+      "bytes": 1195
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionSource-final-15.log": {
+      "sha256": "5d94875360de7db323e99ec74c5feaec3bdfcf5044bc86eefb39fc2dd1bb2d34",
+      "bytes": 552
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/RegisterJointDecisionValueBounds-final-15.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/THIS-final-02.log": {
+      "sha256": "0b8c0f6cf0f2f0646b43449ca27f3066856e85a2b15ef7026e0d5dfa826604ae",
+      "bytes": 7579
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/THIS-lean-check-01.log": {
+      "sha256": "13e203128f0baf4f42ba317596cb2ff6465f5bf1c49179f42670769336fde5c7",
+      "bytes": 5687
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/WORKFLOWS_BEFORE.json": {
+      "sha256": "9a03a5c41a9422af7dcaa87e5a6c10c2a636f9ec544b546b68157bf1245db2aa",
+      "bytes": 742
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/belief-author-attempt-01.log": {
+      "sha256": "05fef1bbf3c6dd0961d88b63571ff9ade50221a5f46e0fa6fe4630e47893117e",
+      "bytes": 9357
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/belief-author-attempt-02.log": {
+      "sha256": "05fef1bbf3c6dd0961d88b63571ff9ade50221a5f46e0fa6fe4630e47893117e",
+      "bytes": 9357
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/belief-author-attempt-03.log": {
+      "sha256": "a1b8693572a48cccb776a921f5f4bd59029dd170bf3b52f3a1e1d902711540c7",
+      "bytes": 501
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/public-UEOT.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/public-UEOT_V3_Compression.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/public-UEOT_V3_Compression_TheoryCompletion.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/root_only_comparison.json": {
+      "sha256": "b195fb422503ce180415f88fd7e60e12bb9ba626ef710ca9fbc45b7f3338979d",
+      "bytes": 2451
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/checks/valuebounds-root-01.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/independent/joint_books_independent_review.json": {
+      "sha256": "9495db75560896925d0a9f3c3256b23b1f58e336d5396771491e2db5f9b16ac5",
+      "bytes": 7323
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/independent/joint_fast_independent_review.json": {
+      "sha256": "0f13ba4e522d1aca3e6c790de9ab3fe59c4fb4dc59c8e36f41d2d422a9b1656e",
+      "bytes": 4252
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/independent/joint_output_checker_independent_review.json": {
+      "sha256": "36ccf2c5d7643b497779ec2cd7b4eac89fe989c8270bde02a77e72111679513a",
+      "bytes": 4318
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/independent/joint_parameter_independent_review.json": {
+      "sha256": "f3254217c07fd4300957827ee2e24924259d68141cc5110eac309f0263a7bd65",
+      "bytes": 7324
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/independent/joint_posterior_cache_independent_review.json": {
+      "sha256": "39900492c103548cdd947ada3e404f64dd30db174a855b6a276028821a073f0b",
+      "bytes": 3538
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/independent/joint_solver_independent_review.json": {
+      "sha256": "7ac64088ab7d0fbd3418be24cc3bc861735aabe2fbaf5ad4a277171b4d7aeefe",
+      "bytes": 8586
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/independent/joint_source_independent_review.json": {
+      "sha256": "b037e4026d320f3b893c0e9bde18a346492b52dd118c946083558d288699e14e",
+      "bytes": 8872
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/native_protocol/CHECK_PUBLIC.lean": {
+      "sha256": "9c2c566f0a17de995303443c895d3255d06031474cd6d942bc093c6234619918",
+      "bytes": 2234
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/native_protocol/RETURN_POLICY.lean": {
+      "sha256": "9dc35cf3df7336deee87de83ded2daafda39988713d2e17fcb8f56314f1e0e6b",
+      "bytes": 3293
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/native_protocol/RETURN_POLICY_CACHED.lean": {
+      "sha256": "6b849e159c6f94d0c0d42a1d90242c1db38bf8948d6f8f7b30d5c24dfa36ad04",
+      "bytes": 4173
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/native_protocol/exact_reference.py": {
+      "sha256": "b81f62cbe65c3d01d32b2d74910db0e6999b144f249d79e93a8367a2fa9cad5f",
+      "bytes": 14316
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/native_protocol/posterior_cache.patch": {
+      "sha256": "b798a14892261f9a0898cecf5e283683ed7f9a5dacd68bba8954ed96b463603d",
+      "bytes": 2717
+    },
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/native_protocol/verify_lean_output.py": {
+      "sha256": "0fbd8ca46909e4d6e84991a9db190215a581ad7c08f1ff23135873a0403e9107",
+      "bytes": 13308
+    },
+    "mathematics/BUILD.json": {
+      "sha256": "dad1205e8f928eef9fa5a95592a1b8322acd6274e3117386d0511c2049ab491e",
+      "bytes": 1138
+    },
+    "mathematics/LEAN_API_SCOPE.md": {
+      "sha256": "18349863ebed72b0157d8f76692cee89a73c96f724cd8359710f25be9147d7c4",
+      "bytes": 8609
+    },
+    "mathematics/README.md": {
+      "sha256": "32de69230d50d544e62f6fe25b7560d2870faa1d5ad552a65ded5a187fa7b71e",
+      "bytes": 2466
+    },
+    "mathematics/UEOT_MATHEMATICS.md": {
+      "sha256": "3874c6b9620a759aa2f8c438e0153b6dfa4d97260d8baa724bc8f2318996be01",
+      "bytes": 510792
+    },
+    "mathematics/UEOT_MATHEMATICS.pdf": {
+      "sha256": "2072145761a01084e7f5ab6f977d5b707e9742857ee01651d057fd4b9b40be3b",
+      "bytes": 1272765
+    },
+    "mathematics/UEOT_MATHEMATICS.tex": {
+      "sha256": "7994922eaf13b179c85ffaf4ef707739f69e01d83061caf9a4be76e85a80ccdc",
+      "bytes": 608882
+    },
+    "mathematics/UEOT_MATHEMATICS_SOURCES.md": {
+      "sha256": "06bbf86a54cb8070e0e6e22bd268bb0f41e3ae8a19351a969de6163c16f57eff",
+      "bytes": 43354
+    },
+    "mathematics/review/CORE_JOINT_DECISION_BOOKS_2026-11-04/INDEPENDENT_SELECTED_VISUAL_REVIEW.json": {
+      "sha256": "9495db75560896925d0a9f3c3256b23b1f58e336d5396771491e2db5f9b16ac5",
+      "bytes": 7323
+    },
+    "mathematics/review/CORE_JOINT_DECISION_BOOKS_2026-11-04/ROOT_SELECTED_VISUAL_REVIEW.json": {
+      "sha256": "982d1397a657bc4ceec95b7d129b518236921bc99b400452b036adf13838b2e3",
+      "bytes": 3618
+    },
+    "philosophy/BUILD.json": {
+      "sha256": "c54e5ab277bb2aee38d9c0bc01990423654e5371a96ebaa59e6f9fe74e3dc062",
+      "bytes": 1130
+    },
+    "philosophy/README.md": {
+      "sha256": "9ce20d8b70f92d7eda634d065b22d591a67b4896c5a42d664586ea09fe1f04fc",
+      "bytes": 1991
+    },
+    "philosophy/UEOT_PHILOSOPHY.md": {
+      "sha256": "100df0b78481247303b4dc59ac22f71eb6a21e96c0842c5b52b2ed6734f25447",
+      "bytes": 153688
+    },
+    "philosophy/UEOT_PHILOSOPHY.pdf": {
+      "sha256": "1181ec50049e211625b01370c2c179190072591953a53fcd2a548bd3386c45f3",
+      "bytes": 585154
+    },
+    "philosophy/UEOT_PHILOSOPHY.tex": {
+      "sha256": "833614ea8a1ea22eabe931ad6b54ec7263b2732058dca6ffabadd239ae104862",
+      "bytes": 166902
+    },
+    "tools/books/build_books.py": {
+      "sha256": "8f644dc7e4efff23f9f924ebf7c81060b7038218ebc97ae51d1b470cce1d41f8",
+      "bytes": 8323
+    },
+    "tools/books/preamble.tex": {
+      "sha256": "259d52576712e670f09d589ed95e5003cf8b138d662b2c3799927afd9c825762",
+      "bytes": 1044
+    },
+    "tools/books/print.lua": {
+      "sha256": "7d292c569c300f45ab4f31e24376f83b6ef27aca6e1e9ae2520333fd39d21ff2",
+      "bytes": 2856
+    }
+  },
+  "publication_and_gi": "Actual merge and original memory.py CAS/fresh-recall receipts are recorded after publication in the existing project-memory/ueot-core-philosophy/20261104-joint-decision-closure directory and unique CONTINUE.md; not prefilled here.",
+  "history": "Original whole Core completion, raw samples, failures, counterexamples and disabled workflows preserved."
+}

@@ -1,0 +1,122 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionFilteredModel.lean:76:77: error: unexpected token '('; expected ']'
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionFilteredModel.lean:76:19: error: Type mismatch: After simplification, term
+  primitive_expectation K b a
+ has type
+  ∀ (f : O → W → ℚ),
+    (expect b fun w => ∑ z, K.chance w z * f (K.observe w a z) (K.next w a z)) =
+      ∑ o, mass K b a o * expect (posterior K b a o) (f o)
+but is expected to have type
+  expect b (sourceValue K gain d (Table.node a children)) =
+    ∑ o, mass K b a o * expect (posterior K b a o) fun w => gain a o + d * sourceValue K gain d (children o) w
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionFilteredModel.lean:68:24: error: unsolved goals
+case succ.node
+W : Type uW
+A : Type uA
+O : Type uO
+Z : Type
+M : Type uM
+inst✝² : Fintype Z
+inst✝¹ : Fintype O
+inst✝ : DecidableEq O
+K : Source W A O Z
+actions : Belief W × M → List A
+hne : ∀ (i : Belief W × M), actions i ≠ []
+advance : M → A → O → M
+gain : A → O → ℚ
+d : ℚ
+hd : 0 ≤ d
+n : ℕ
+ih :
+  ∀ (p : Table A O n) (b : Belief W) (m : M),
+    value (filteredModel K actions hne advance gain d hd) (b, m) p = expect b (sourceValue K gain d p)
+b : Belief W
+m : M
+a : A
+children : O → Table A O n
+⊢ ∑ x, mass K b a x * (gain a x + d * expect (posterior K b a x) (sourceValue K gain d (children x))) =
+    ∑ o, mass K b a o * expect (posterior K b a o) fun w => gain a o + d * sourceValue K gain d (children o) w
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionFilteredModel.lean:95:0: warning: automatically included section variable(s) unused in theorem `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionFilteredModel.traceExpectation_succ`:
+  [DecidableEq O]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq O] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionFilteredModel.lean:184:74: error: unsolved goals
+W : Type uW
+A : Type uA
+O : Type uO
+Z : Type
+inst✝² : Fintype Z
+inst✝¹ : Fintype O
+inst✝ : DecidableEq O
+K : Source W A O Z
+b : Belief W
+a : A
+f : O → W → ℝ
+x : b.Atom × Z
+hx : x ∈ Finset.univ
+⊢ ∑ x_1,
+      ↑(if K.observe (b.state x.1) a x.2 = x_1 then b.weight x.1 * K.chance (b.state x.1) x.2 else 0) *
+        f x_1 (K.next (b.state x.1) a x.2) =
+    ↑(b.weight x.1) * ↑(K.chance (b.state x.1) x.2) * f (K.observe (b.state x.1) a x.2) (K.next (b.state x.1) a x.2)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionFilteredModel.lean:189:15: warning: This simp argument is unused:
+  ite_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [joint]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionFilteredModel.lean:226:26: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  expectReal ?b fun w => ∑ z, ↑(Source.chance ?K w z) * ?f (Source.observe ?K w ?a z) (Source.next ?K w ?a z)
+in the target expression
+  (pi.actionProb h a *
+      expectReal (pi.info h).1 fun x =>
+        ∑ z,
+          ↑(K.chance x z) *
+            (↑(gain a (K.observe x a z)) +
+              ↑d * sourceCausalValue K gain d pi n (pi.advance h a (K.observe x a z)) (K.next x a z))) =
+    pi.actionProb h a *
+      ∑ o,
+        ↑((filteredModel K actions hne advance gain d hd).prob (pi.info h) a o) *
+          (↑((filteredModel K actions hne advance gain d hd).reward (pi.info h) a o) +
+            ↑(filteredModel K actions hne advance gain d hd).discount *
+              causalValue (filteredModel K actions hne advance gain d hd) pi n (pi.advance h a o))
+
+case succ
+W : Type uW
+A : Type uA
+O : Type uO
+Z : Type
+M : Type uM
+inst✝³ : Fintype Z
+inst✝² : Fintype O
+inst✝¹ : DecidableEq O
+K : Source W A O Z
+actions : Belief W × M → List A
+hne : ∀ (i : Belief W × M), actions i ≠ []
+advance : M → A → O → M
+gain : A → O → ℚ
+d : ℚ
+hd : 0 ≤ d
+inst✝ : Fintype A
+pi : CausalPolicy (filteredModel K actions hne advance gain d hd)
+n : ℕ
+ih :
+  ∀ (h : pi.Memory),
+    expectReal (pi.info h).1 (sourceCausalValue K gain d pi n h) =
+      causalValue (filteredModel K actions hne advance gain d hd) pi n h
+h : pi.Memory
+a : A
+ha : a ∈ Finset.univ
+⊢ (pi.actionProb h a *
+      expectReal (pi.info h).1 fun x =>
+        ∑ z,
+          ↑(K.chance x z) *
+            (↑(gain a (K.observe x a z)) +
+              ↑d * sourceCausalValue K gain d pi n (pi.advance h a (K.observe x a z)) (K.next x a z))) =
+    pi.actionProb h a *
+      ∑ o,
+        ↑((filteredModel K actions hne advance gain d hd).prob (pi.info h) a o) *
+          (↑((filteredModel K actions hne advance gain d hd).reward (pi.info h) a o) +
+            ↑(filteredModel K actions hne advance gain d hd).discount *
+              causalValue (filteredModel K actions hne advance gain d hd) pi n (pi.advance h a o))

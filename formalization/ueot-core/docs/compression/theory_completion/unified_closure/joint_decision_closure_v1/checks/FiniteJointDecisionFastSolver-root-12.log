@@ -1,0 +1,16 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionFastSolver.lean:24:31: warning: Try `simp at h` instead of `simpa using h`
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionFastSolver.lean:41:20: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionFastSolver.lean:46:16: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Finset.toList', which is 'noncomputable'
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionFastSolver.lean:92:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'cache', which is 'noncomputable'
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionFastSolver.lean:106:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'actionData', which is 'noncomputable'
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionFastSolver.lean:128:10: error: Function expected at
+  M.actions i
+but this term has type
+  List A
+
+Note: Expected a function because this term is being applied to the argument
+  (M.actions_nonempty i)

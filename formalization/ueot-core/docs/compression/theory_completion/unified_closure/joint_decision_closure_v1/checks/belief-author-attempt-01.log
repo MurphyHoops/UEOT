@@ -1,0 +1,192 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionBelief.lean:52:0: warning: automatically included section variable(s) unused in theorem `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.joint_nonneg`:
+  [Fintype O]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype O] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionBelief.lean:67:2: error: `simp` made no progress
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionBelief.lean:105:4: error: Tactic `apply` failed: could not unify the conclusion of `Finset.sum_congr rfl`
+  Finset.sum ?m.109 ?m.106 = Finset.sum ?m.109 ?m.107
+with the goal
+  ∑ i,
+      mass K b a o *
+        ((if h : mass K b a o = 0 then b
+              else
+                { Atom := b.Atom × Z, atoms := inferInstance, state := fun x => K.next (b.state x.1) a x.2,
+                  weight := fun x => joint K b a o x / mass K b a o, nonneg := ⋯, total := ⋯ }).weight
+            i *
+          f
+            ((if h : mass K b a o = 0 then b
+                else
+                  { Atom := b.Atom × Z, atoms := inferInstance, state := fun x => K.next (b.state x.1) a x.2,
+                    weight := fun x => joint K b a o x / mass K b a o, nonneg := ⋯, total := ⋯ }).state
+              i)) =
+    ∑ x, joint K b a o x * f (K.next (b.state x.1) a x.2)
+
+Note: The full type of `Finset.sum_congr rfl` is
+  (∀ x ∈ ?m.109, ?m.106 x = ?m.107 x) → Finset.sum ?m.109 ?m.106 = Finset.sum ?m.109 ?m.107
+
+case neg
+W : Type uW
+A : Type uA
+O : Type uO
+Z : Type
+inst✝² : Fintype Z
+inst✝¹ : Fintype O
+inst✝ : DecidableEq O
+K : Source W A O Z
+b : Belief W
+a : A
+o : O
+f : W → ℚ
+h : ¬mass K b a o = 0
+⊢ ∑ i,
+      mass K b a o *
+        ((if h : mass K b a o = 0 then b
+              else
+                { Atom := b.Atom × Z, atoms := inferInstance, state := fun x => K.next (b.state x.1) a x.2,
+                  weight := fun x => joint K b a o x / mass K b a o, nonneg := ⋯, total := ⋯ }).weight
+            i *
+          f
+            ((if h : mass K b a o = 0 then b
+                else
+                  { Atom := b.Atom × Z, atoms := inferInstance, state := fun x => K.next (b.state x.1) a x.2,
+                    weight := fun x => joint K b a o x / mass K b a o, nonneg := ⋯, total := ⋯ }).state
+              i)) =
+    ∑ x, joint K b a o x * f (K.next (b.state x.1) a x.2)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionBelief.lean:103:26: warning: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [posterior, dite_false, expect]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionBelief.lean:103:29: warning: This simp argument is unused:
+  dite_false
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [posterior, h, expect]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionBelief.lean:142:26: error: Application type mismatch: The argument
+  x
+has type
+  (if h : mass K b a o = 0 then b
+    else
+      { Atom := b.Atom × Z, atoms := inferInstance, state := fun x => K.next (b.state x.1) a x.2,
+        weight := fun x => joint K b a o x / mass K b a o, nonneg := ⋯, total := ⋯ }).Atom
+but is expected to have type
+  b.Atom × Z
+in the application
+  joint K b a o x
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionBelief.lean:144:17: error: `simp` made no progress
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionBelief.lean:145:31: error: Invalid projection: Projection operates on types of the form `C ...` where C is a constant. The expression
+  x
+has type
+  (if h : mass K b a o = 0 then b
+    else
+      { Atom := b.Atom × Z, atoms := inferInstance, state := fun x => K.next (b.state x.1) a x.2,
+        weight := fun x => joint K b a o x / mass K b a o, nonneg := ⋯, total := ⋯ }).1
+which does not have the necessary form.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionBelief.lean:145:38: error: Invalid projection: Projection operates on types of the form `C ...` where C is a constant. The expression
+  x
+has type
+  (if h : mass K b a o = 0 then b
+    else
+      { Atom := b.Atom × Z, atoms := inferInstance, state := fun x => K.next (b.state x.1) a x.2,
+        weight := fun x => joint K b a o x / mass K b a o, nonneg := ⋯, total := ⋯ }).1
+which does not have the necessary form.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionBelief.lean:147:14: error: unsolved goals
+W : Type uW
+A : Type uA
+O : Type uO
+Z : Type
+inst✝² : Fintype Z
+inst✝¹ : Fintype O
+inst✝ : DecidableEq O
+K : Source W A O Z
+b : Belief W
+a : A
+o : O
+h : mass K b a o ≠ 0
+P : W → Prop
+hp :
+  ∀ (x : b.Atom) (z : Z),
+    b.weight x ≠ 0 → K.chance (b.state x) z ≠ 0 → K.observe (b.state x) a z = o → P (K.next (b.state x) a z)
+x :
+  (if h : mass K b a o = 0 then b
+    else
+      { Atom := b.Atom × Z, atoms := inferInstance, state := fun x => K.next (b.state x.1) a x.2,
+        weight := fun x => joint K b a o x / mass K b a o, nonneg := ⋯, total := ⋯ }).Atom
+hx :
+  (if h : mass K b a o = 0 then b
+        else
+          { Atom := b.Atom × Z, atoms := inferInstance, state := fun x => K.next (b.state x.1) a x.2,
+            weight := fun x => joint K b a o x / mass K b a o, nonneg := ⋯, total := ⋯ }).weight
+      x ≠
+    0
+hj : joint K b a o sorry ≠ 0
+hn : ¬K.observe (b.state sorry) a sorry = o
+⊢ K.observe (b.state (sorry ()).1) a (sorry ()).2 = o →
+    b.weight (sorry ()).1 = 0 ∨ K.chance (b.state (sorry ()).1) (sorry ()).2 = 0
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionBelief.lean:148:21: error: Invalid projection: Projection operates on types of the form `C ...` where C is a constant. The expression
+  x
+has type
+  (if h : mass K b a o = 0 then b
+    else
+      { Atom := b.Atom × Z, atoms := inferInstance, state := fun x => K.next (b.state x.1) a x.2,
+        weight := fun x => joint K b a o x / mass K b a o, nonneg := ⋯, total := ⋯ }).1
+which does not have the necessary form.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionBelief.lean:148:45: error: Invalid projection: Projection operates on types of the form `C ...` where C is a constant. The expression
+  x
+has type
+  (if h : mass K b a o = 0 then b
+    else
+      { Atom := b.Atom × Z, atoms := inferInstance, state := fun x => K.next (b.state x.1) a x.2,
+        weight := fun x => joint K b a o x / mass K b a o, nonneg := ⋯, total := ⋯ }).1
+which does not have the necessary form.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionBelief.lean:148:50: error: Invalid projection: Projection operates on types of the form `C ...` where C is a constant. The expression
+  x
+has type
+  (if h : mass K b a o = 0 then b
+    else
+      { Atom := b.Atom × Z, atoms := inferInstance, state := fun x => K.next (b.state x.1) a x.2,
+        weight := fun x => joint K b a o x / mass K b a o, nonneg := ⋯, total := ⋯ }).1
+which does not have the necessary form.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionBelief.lean:149:11: error: Invalid projection: Projection operates on types of the form `C ...` where C is a constant. The expression
+  x
+has type
+  (if h : mass K b a o = 0 then b
+    else
+      { Atom := b.Atom × Z, atoms := inferInstance, state := fun x => K.next (b.state x.1) a x.2,
+        weight := fun x => joint K b a o x / mass K b a o, nonneg := ⋯, total := ⋯ }).1
+which does not have the necessary form.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionBelief.lean:149:15: error: Invalid projection: Projection operates on types of the form `C ...` where C is a constant. The expression
+  x
+has type
+  (if h : mass K b a o = 0 then b
+    else
+      { Atom := b.Atom × Z, atoms := inferInstance, state := fun x => K.next (b.state x.1) a x.2,
+        weight := fun x => joint K b a o x / mass K b a o, nonneg := ⋯, total := ⋯ }).1
+which does not have the necessary form.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionBelief.lean:140:24: warning: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [posterior, dite_false]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionBelief.lean:140:27: warning: This simp argument is unused:
+  dite_false
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [posterior, h]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionBelief.lean:147:30: warning: This simp argument is unused:
+  hn
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [joint]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

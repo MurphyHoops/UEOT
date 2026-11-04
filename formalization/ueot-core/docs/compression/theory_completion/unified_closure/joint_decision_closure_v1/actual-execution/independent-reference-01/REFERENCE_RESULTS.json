@@ -1,0 +1,517 @@
+{
+  "scope": "independent exact finite reference; original labels and failures retained",
+  "source_contract": "known goal; one initial theta; single prepaid wallet; prefix birth/fee receipt; no parent/program oracle",
+  "source_script_sha256": "b81f62cbe65c3d01d32b2d74910db0e6999b144f249d79e93a8367a2fa9cad5f",
+  "results": [
+    {
+      "case": "persistent_theta_two_step",
+      "rs": [
+        "1/4",
+        "3/4"
+      ],
+      "prior": [
+        "1/2",
+        "1/2"
+      ],
+      "priced_write": "13/10",
+      "write_cost": "1",
+      "discount": "1/2",
+      "horizon": 2,
+      "budget": "1",
+      "observation": [
+        "birth_bool",
+        "paid_write_bool"
+      ],
+      "source_index_draws": 1,
+      "label_probability": "1/2",
+      "moments": {
+        "1": "1/2",
+        "2": "5/16",
+        "3": "7/32",
+        "4": "41/256"
+      },
+      "optimal": {
+        "value": "1/160",
+        "mass": "1",
+        "at_least_one_birth": "1/2",
+        "mean_births": "13/16",
+        "mean_fee": "1/2",
+        "min_prefix_balance": "0",
+        "positive_full_tapes": 32
+      },
+      "returned_table_nodes": 6,
+      "best_fixed_value": "1/160",
+      "best_fixed_sequence": [
+        {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": true
+        },
+        {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": null
+        }
+      ],
+      "joint_minus_fixed": "0",
+      "shortsighted_value_from_damaged_start": "0",
+      "seconds": 0.006222167000000001,
+      "planner_cache": {
+        "hits": 31,
+        "misses": 22,
+        "maxsize": null,
+        "currsize": 22
+      },
+      "persistent_two_step_formula": "1/160",
+      "incorrect_redrawn_theta_repair_value": "-1/40",
+      "table_sha256": "3fa1eba67d62b0b320fbbe4103c7c69560b17ac51317ded13c7a84d4088cd400",
+      "full_traces_sha256": "8b5539ec233fed8ddbaf639b0dd79a14474a24e13145255234126de8d1bc356a"
+    },
+    {
+      "case": "population_backup_three_step",
+      "rs": [
+        "1/4",
+        "3/4"
+      ],
+      "prior": [
+        "1/2",
+        "1/2"
+      ],
+      "priced_write": "7/4",
+      "write_cost": "1",
+      "discount": "3/4",
+      "horizon": 3,
+      "budget": "1",
+      "observation": [
+        "birth_bool",
+        "paid_write_bool"
+      ],
+      "source_index_draws": 1,
+      "label_probability": "1/2",
+      "moments": {
+        "1": "1/2",
+        "2": "5/16",
+        "3": "7/32",
+        "4": "41/256"
+      },
+      "optimal": {
+        "value": "9/256",
+        "mass": "1",
+        "at_least_one_birth": "1/2",
+        "mean_births": "9/8",
+        "mean_fee": "1/2",
+        "min_prefix_balance": "0",
+        "positive_full_tapes": 128
+      },
+      "returned_table_nodes": 11,
+      "best_fixed_value": "9/256",
+      "best_fixed_sequence": [
+        {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": true
+        },
+        {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": null
+        },
+        {
+          "kind": "dispatch",
+          "parent": 1,
+          "action": null
+        }
+      ],
+      "joint_minus_fixed": "0",
+      "shortsighted_value_from_damaged_start": "0",
+      "seconds": 0.043799208000000006,
+      "planner_cache": {
+        "hits": 93,
+        "misses": 82,
+        "maxsize": null,
+        "currsize": 82
+      },
+      "population_three_step_formula": "9/256",
+      "root_only_repair_value": "-9/512",
+      "table_sha256": "c5c9038ff4f6bacbbeeae2d4a048e8a4d758afa92933440c8afdb292f3688870",
+      "full_traces_sha256": "d53789a940d3070f17f5a9744f07c0af59c157ba37720056c54a31b785812543"
+    },
+    {
+      "case": "receipt_feedback_four_step",
+      "rs": [
+        "3/4",
+        "7/8"
+      ],
+      "prior": [
+        "1/2",
+        "1/2"
+      ],
+      "priced_write": "37/16",
+      "write_cost": "1",
+      "discount": "3/4",
+      "horizon": 4,
+      "budget": "1",
+      "observation": [
+        "birth_bool",
+        "paid_write_bool"
+      ],
+      "source_index_draws": 1,
+      "label_probability": "1/2",
+      "moments": {
+        "1": "13/16",
+        "2": "85/128",
+        "3": "559/1024",
+        "4": "3697/8192"
+      },
+      "optimal": {
+        "value": "39525/524288",
+        "mass": "1",
+        "at_least_one_birth": "13/16",
+        "mean_births": "22783/8192",
+        "mean_fee": "13/16",
+        "min_prefix_balance": "0",
+        "positive_full_tapes": 512
+      },
+      "returned_table_nodes": 19,
+      "best_fixed_value": "2325/65536",
+      "best_fixed_sequence": [
+        {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": true
+        },
+        {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": null
+        },
+        {
+          "kind": "dispatch",
+          "parent": 1,
+          "action": null
+        },
+        {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": null
+        }
+      ],
+      "joint_minus_fixed": "20925/524288",
+      "shortsighted_value_from_damaged_start": "0",
+      "seconds": 0.44419491699999997,
+      "planner_cache": {
+        "hits": 219,
+        "misses": 226,
+        "maxsize": null,
+        "currsize": 226
+      },
+      "population_four_step_formula": "39525/524288",
+      "feedback_raw_gain_over_alternating_fixed": "20925/524288",
+      "table_sha256": "c0f541078c4d89fbba8cc9bf5ac800d24238a93d4ca5dc1298cc73ce6acb0e3f",
+      "full_traces_sha256": "a987fea3b55459d2c9d69948f8128d8592201ef40800b2fbdec266d4e305555b"
+    },
+    {
+      "case": "zero_horizon",
+      "rs": [
+        "1/4",
+        "3/4"
+      ],
+      "prior": [
+        "1/2",
+        "1/2"
+      ],
+      "priced_write": "13/10",
+      "write_cost": "1",
+      "discount": "1/2",
+      "horizon": 0,
+      "budget": "1",
+      "observation": [
+        "birth_bool",
+        "paid_write_bool"
+      ],
+      "source_index_draws": 1,
+      "label_probability": "1/2",
+      "moments": {
+        "1": "1/2",
+        "2": "5/16",
+        "3": "7/32",
+        "4": "41/256"
+      },
+      "optimal": {
+        "value": "0",
+        "mass": "1",
+        "at_least_one_birth": "0",
+        "mean_births": "0",
+        "mean_fee": "0",
+        "min_prefix_balance": "1",
+        "positive_full_tapes": 2
+      },
+      "returned_table_nodes": 1,
+      "best_fixed_value": "0",
+      "best_fixed_sequence": [],
+      "joint_minus_fixed": "0",
+      "shortsighted_value_from_damaged_start": "0",
+      "seconds": 8.375000000004906e-05,
+      "planner_cache": {
+        "hits": 219,
+        "misses": 228,
+        "maxsize": null,
+        "currsize": 228
+      },
+      "table_sha256": "5f3048a7f83b7975ac694aa94ceb637df59db8b38f2dda159d1e7f7f7bffe680",
+      "full_traces_sha256": "f470c2474ad64a743d41e3d54e93156e48808ddfa2d3ba9a79dabe4baa6b6853"
+    },
+    {
+      "case": "zero_budget",
+      "rs": [
+        "1/4",
+        "3/4"
+      ],
+      "prior": [
+        "1/2",
+        "1/2"
+      ],
+      "priced_write": "13/10",
+      "write_cost": "1",
+      "discount": "1/2",
+      "horizon": 2,
+      "budget": "0",
+      "observation": [
+        "birth_bool",
+        "paid_write_bool"
+      ],
+      "source_index_draws": 1,
+      "label_probability": "1/2",
+      "moments": {
+        "1": "1/2",
+        "2": "5/16",
+        "3": "7/32",
+        "4": "41/256"
+      },
+      "optimal": {
+        "value": "0",
+        "mass": "1",
+        "at_least_one_birth": "0",
+        "mean_births": "0",
+        "mean_fee": "0",
+        "min_prefix_balance": "0",
+        "positive_full_tapes": 32
+      },
+      "returned_table_nodes": 3,
+      "best_fixed_value": "0",
+      "best_fixed_sequence": [
+        {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": null
+        },
+        {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": null
+        }
+      ],
+      "joint_minus_fixed": "0",
+      "shortsighted_value_from_damaged_start": "0",
+      "seconds": 0.0014885839999999595,
+      "planner_cache": {
+        "hits": 227,
+        "misses": 234,
+        "maxsize": null,
+        "currsize": 234
+      },
+      "persistent_two_step_formula": "1/160",
+      "incorrect_redrawn_theta_repair_value": "-1/40",
+      "table_sha256": "e8f02dc93f5fb7f376a290dbc34991c7f2e7c4ca4b8de1d7d818bcc159bf6f26",
+      "full_traces_sha256": "cfd829d2a1903e6a8155da1576085ab23d387dce91acca7d840bce38d43b247b"
+    },
+    {
+      "case": "insufficient_prepay",
+      "rs": [
+        "1/4",
+        "3/4"
+      ],
+      "prior": [
+        "1/2",
+        "1/2"
+      ],
+      "priced_write": "13/10",
+      "write_cost": "1",
+      "discount": "1/2",
+      "horizon": 2,
+      "budget": "3/4",
+      "observation": [
+        "birth_bool",
+        "paid_write_bool"
+      ],
+      "source_index_draws": 1,
+      "label_probability": "1/2",
+      "moments": {
+        "1": "1/2",
+        "2": "5/16",
+        "3": "7/32",
+        "4": "41/256"
+      },
+      "optimal": {
+        "value": "0",
+        "mass": "1",
+        "at_least_one_birth": "0",
+        "mean_births": "0",
+        "mean_fee": "0",
+        "min_prefix_balance": "3/4",
+        "positive_full_tapes": 32
+      },
+      "returned_table_nodes": 3,
+      "best_fixed_value": "0",
+      "best_fixed_sequence": [
+        {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": null
+        },
+        {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": null
+        }
+      ],
+      "joint_minus_fixed": "0",
+      "shortsighted_value_from_damaged_start": "0",
+      "seconds": 0.001495750000000018,
+      "planner_cache": {
+        "hits": 235,
+        "misses": 240,
+        "maxsize": null,
+        "currsize": 240
+      },
+      "persistent_two_step_formula": "1/160",
+      "incorrect_redrawn_theta_repair_value": "-1/40",
+      "table_sha256": "285811cd72785724a2fc03621e2437108358b413c3f050ebfd8e263f0d04a38a",
+      "full_traces_sha256": "f006c72f3625421d62095304892f7221de81e486ea24a32e36601fb0e79557f2"
+    },
+    {
+      "case": "all_fault",
+      "rs": [
+        "0"
+      ],
+      "prior": [
+        "1"
+      ],
+      "priced_write": "13/10",
+      "write_cost": "1",
+      "discount": "1/2",
+      "horizon": 2,
+      "budget": "1",
+      "observation": [
+        "birth_bool",
+        "paid_write_bool"
+      ],
+      "source_index_draws": 1,
+      "label_probability": "1/2",
+      "moments": {
+        "1": "0",
+        "2": "0",
+        "3": "0",
+        "4": "0"
+      },
+      "optimal": {
+        "value": "0",
+        "mass": "1",
+        "at_least_one_birth": "0",
+        "mean_births": "0",
+        "mean_fee": "0",
+        "min_prefix_balance": "1",
+        "positive_full_tapes": 4
+      },
+      "returned_table_nodes": 3,
+      "best_fixed_value": "0",
+      "best_fixed_sequence": [
+        {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": null
+        },
+        {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": null
+        }
+      ],
+      "joint_minus_fixed": "0",
+      "shortsighted_value_from_damaged_start": "0",
+      "seconds": 0.0010310000000000041,
+      "planner_cache": {
+        "hits": 255,
+        "misses": 246,
+        "maxsize": null,
+        "currsize": 246
+      },
+      "persistent_two_step_formula": "0",
+      "incorrect_redrawn_theta_repair_value": "0",
+      "table_sha256": "32490a43dc155cdcb6471e5158306148951de70e8ca15e6425551fb7170209af",
+      "full_traces_sha256": "bdac5a661d78d9c7e41c2354bd65fca7e83d58e499379d9de56cbb576e14e813"
+    },
+    {
+      "case": "known_reliable_source",
+      "rs": [
+        "1"
+      ],
+      "prior": [
+        "1"
+      ],
+      "priced_write": "13/10",
+      "write_cost": "1",
+      "discount": "1/2",
+      "horizon": 2,
+      "budget": "1",
+      "observation": [
+        "birth_bool",
+        "paid_write_bool"
+      ],
+      "source_index_draws": 1,
+      "label_probability": "1/2",
+      "moments": {
+        "1": "1",
+        "2": "1",
+        "3": "1",
+        "4": "1"
+      },
+      "optimal": {
+        "value": "1/5",
+        "mass": "1",
+        "at_least_one_birth": "1",
+        "mean_births": "2",
+        "mean_fee": "1",
+        "min_prefix_balance": "0",
+        "positive_full_tapes": 4
+      },
+      "returned_table_nodes": 3,
+      "best_fixed_value": "1/5",
+      "best_fixed_sequence": [
+        {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": true
+        },
+        {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": null
+        }
+      ],
+      "joint_minus_fixed": "0",
+      "shortsighted_value_from_damaged_start": "0",
+      "seconds": 0.0011230409999999358,
+      "planner_cache": {
+        "hits": 274,
+        "misses": 259,
+        "maxsize": null,
+        "currsize": 259
+      },
+      "persistent_two_step_formula": "1/5",
+      "incorrect_redrawn_theta_repair_value": "1/5",
+      "table_sha256": "c4b470fe79a19edd81ce84cdd9bbbd715c905afd45d62e0fa5105fc9e97a57f0",
+      "full_traces_sha256": "1e6ba718ec5044f5c5335ca14359513236f677cf6b48b1f609f87b28dfc56f9f"
+    }
+  ]
+}

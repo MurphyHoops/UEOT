@@ -1,0 +1,130 @@
+{
+  "schema": "UEOT/JOINT_BOOKS_INDEPENDENT_REVIEW/V1",
+  "reviewer": "parameter_results",
+  "review_kind": "independent selected-page visual QA and revised mathematical scope review",
+  "status": "PASS_SELECTED_QA",
+  "scope": "Selected rendered pages of the new joint-decision material only; not a visual review of every page of either book.",
+  "read_only": true,
+  "documents": {
+    "mathematics": {
+      "markdown_file": "/workspace/scratch/239595432413/books_workspace/mathematics/UEOT_MATHEMATICS.md",
+      "markdown_sha256": "3874c6b9620a759aa2f8c438e0153b6dfa4d97260d8baa724bc8f2318996be01",
+      "pdf_file": "/workspace/scratch/239595432413/books_workspace/mathematics/UEOT_MATHEMATICS.pdf",
+      "pdf_sha256": "2072145761a01084e7f5ab6f977d5b707e9742857ee01651d057fd4b9b40be3b",
+      "build_manifest_file": "/workspace/scratch/239595432413/books_workspace/mathematics/BUILD.json",
+      "build_manifest_sha256": "dad1205e8f928eef9fa5a95592a1b8322acd6274e3117386d0511c2049ab491e",
+      "source_and_pdf_match_BUILD_json": true,
+      "total_physical_pdf_pages": 217,
+      "inspected_pages": [
+        {
+          "physical_pdf_page_one_based": 183,
+          "printed_page_number": 172,
+          "image_file": "/workspace/scratch/239595432413/joint_book_review/mathematics-183.png",
+          "image_sha256": "9cbc5e235828437537d92efd376efb3808012ee13146aac1905637b423e58d79",
+          "actual_view_image_inspected": true
+        },
+        {
+          "physical_pdf_page_one_based": 184,
+          "printed_page_number": 173,
+          "image_file": "/workspace/scratch/239595432413/joint_book_review/mathematics-184.png",
+          "image_sha256": "065b1a47defd5ef7ec4194c87ed952639331f7a512d57bf4fce881b17c0d1de4",
+          "actual_view_image_inspected": true
+        },
+        {
+          "physical_pdf_page_one_based": 185,
+          "printed_page_number": 174,
+          "image_file": "/workspace/scratch/239595432413/joint_book_review/mathematics-185.png",
+          "image_sha256": "2f438ebf2b5fd59e18533f1138d5ecffea8f01cfdf59ee039f95759f8dc80742",
+          "actual_view_image_inspected": true
+        },
+        {
+          "physical_pdf_page_one_based": 186,
+          "printed_page_number": 175,
+          "image_file": "/workspace/scratch/239595432413/joint_book_review/mathematics-186.png",
+          "image_sha256": "f9e1db0527a92311f597961fbcafe24064840d60fef72c6b9454af63668c816e",
+          "actual_view_image_inspected": true
+        }
+      ],
+      "build_reported_overfull_hbox_warnings": 0
+    },
+    "philosophy": {
+      "markdown_file": "/workspace/scratch/239595432413/books_workspace/philosophy/UEOT_PHILOSOPHY.md",
+      "markdown_sha256": "100df0b78481247303b4dc59ac22f71eb6a21e96c0842c5b52b2ed6734f25447",
+      "pdf_file": "/workspace/scratch/239595432413/books_workspace/philosophy/UEOT_PHILOSOPHY.pdf",
+      "pdf_sha256": "1181ec50049e211625b01370c2c179190072591953a53fcd2a548bd3386c45f3",
+      "build_manifest_file": "/workspace/scratch/239595432413/books_workspace/philosophy/BUILD.json",
+      "build_manifest_sha256": "c54e5ab277bb2aee38d9c0bc01990423654e5371a96ebaa59e6f9fe74e3dc062",
+      "source_and_pdf_match_BUILD_json": true,
+      "total_physical_pdf_pages": 88,
+      "inspected_pages": [
+        {
+          "physical_pdf_page_one_based": 29,
+          "printed_page_number": 25,
+          "image_file": "/workspace/scratch/239595432413/joint_book_review/philosophy-29.png",
+          "image_sha256": "9499f326b25fa736fbbbad2baeef65343c946f18edfa67e0c9b008dfea82a2fb",
+          "actual_view_image_inspected": true
+        },
+        {
+          "physical_pdf_page_one_based": 30,
+          "printed_page_number": 26,
+          "image_file": "/workspace/scratch/239595432413/joint_book_review/philosophy-30.png",
+          "image_sha256": "82a7f5ba6e1966e6167185a1f3b55be584bb8415d9bc2a2510ab5d179f1ef942",
+          "actual_view_image_inspected": true
+        },
+        {
+          "physical_pdf_page_one_based": 86,
+          "printed_page_number": 82,
+          "image_file": "/workspace/scratch/239595432413/joint_book_review/philosophy-86.png",
+          "image_sha256": "6af15fc6b21796e26b37c48a02d298fd80fdf7d59c70074700231bd21227cf88",
+          "actual_view_image_inspected": true
+        }
+      ],
+      "build_reported_overfull_hbox_warnings": 0
+    }
+  },
+  "blocking_findings": [],
+  "corrections_confirmed": [
+    {
+      "section": "Mathematics 39.79",
+      "change": "Strict reduction of the posterior repair threshold explicitly assumes d>0.",
+      "confirmed_in_source": true,
+      "confirmed_visually_on_physical_pdf_page": 184
+    },
+    {
+      "section": "Mathematics 39.80",
+      "change": "The general raw feedback difference is nonnegative; strict positivity requires d>0 and positive probability of 0<r<1. Endpoint d=0 or support only in {0,1} gives zero.",
+      "confirmed_in_source": true,
+      "confirmed_visually_on_physical_pdf_page": 185
+    },
+    {
+      "section": "Mathematics 39.80",
+      "change": "The three fixed continuation addresses begin after successful initial repair and wallet exhaustion.",
+      "confirmed_in_source": true,
+      "confirmed_visually_on_physical_pdf_page": 185
+    }
+  ],
+  "content_checks": [
+    "Latest mathematics source sections 39.79-39.81 read; numerical values and price thresholds remain as independently reviewed.",
+    "Latest philosophy chapter-10 insertion and final new-contract summary read; conditional scope and empirical qualification are preserved.",
+    "Two-step value 1/160 and mean-kernel candidate -1/40; three-step 9/256 with same-menu fixed equivalence; root-only candidate -9/512 remain accurately distinguished.",
+    "Posterior three-step 27/320 versus frozen-prior retry 51/640, difference 3/640, is explicitly outside the p>=1+d closed-form range.",
+    "Four-step optimal 39525/524288, fixed 2325/65536, and difference 20925/524288 are legible and correct.",
+    "The old -3/40 finite counterexample and completed prior mathematical contract are retained; no claim of new empirical sampling is made."
+  ],
+  "visual_checks": [
+    "Displayed recursions, the boxed general-H result, fractions, subscripts, superscripts and expectation symbols are legible and fit inside margins.",
+    "No clipped Chinese text, missing-glyph boxes, overlapping lines, formula/footer collisions or truncated headings were observed on inspected pages.",
+    "The philosophy paragraph continues normally from physical page 29 to 30; footnotes 18 and 19 are separately legible with appropriate separation.",
+    "The mathematics closing reference paragraph is complete on physical page 186; it has substantial remaining whitespace before the next appendix, not truncated text.",
+    "Section/page transitions and visible page numbers are consistent with physical PDF offsets."
+  ],
+  "limitations": [
+    "No claim that all 217 mathematics pages or all 88 philosophy pages were visually inspected.",
+    "Title and contents thumbnails were available but not inspected in this review.",
+    "This visual review does not replace Lean proof verification, actual THIS-table execution, or final repository/GI release identity checks."
+  ],
+  "pdf_text_correspondence_checked": {
+    "mathematics_184_contains_39_79": true,
+    "mathematics_185_contains_39_80": true
+  }
+}

@@ -37,3 +37,9 @@ InvariantLawGOA、CesaroLimitGOA、KilledQSDGOA 的定义描述给定核，本�
 - [TheoryCompletion/GOA](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/GOA.lean)、[PositiveEigenstructure](../formalization/ueot-core/UEOT/V3/Compression/PositiveEigenstructure.lean)、[SameObjectViableGOA](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/SameObjectViableGOA.lean)：一般长期接口，具体调用仍需其完整来源字段。
 
 本批命题与验收范围的总入口是 [REGISTERED_INTERFACES_CLOSURE_V1](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/REGISTERED_INTERFACES_CLOSURE_V1.md)。以上相对链接按本说明位于 mathematics 目录设置；链接指向本版生产基线中的源码和说明，适用条件仍以完整定理类型为准。
+
+## 2026-11-04 新合同接口：有限钱包全流程联合决策
+
+前文模块数量与阶段表述保留各自历史时点；本增补不重开已完成的原条件数学合同。新增一般有限返回/过滤/支持支付接口与真实 Register 有限人口消费者，完整清单及实编译、源/输出身份见[交付包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/README.md)。
+
+`RegisterJointDecisionNativeConsumer` 的 `returned_native_value`、`returned_native_payment`、`returned_native_optimal`、`returned_native_population`、`initial_returned_native_value`、`initial_returned_native_boundary` 直接接原 Store 与 THIS 输出。比较类包括只在实际正概率历史合法的任意实数随机完整历史策略。公开目标、正固定收费、一次 θ、允许收据与地址 0/1 为实例范围；一般期限闭式另外要求 B=c 与 p≥S_H。未知程序、额外读取、全人口同时老化和无限内生资源未被覆盖。后验缓存与有限表缓存分别证明整个原后验和整张返回表相等；实测不预先宣称提速。

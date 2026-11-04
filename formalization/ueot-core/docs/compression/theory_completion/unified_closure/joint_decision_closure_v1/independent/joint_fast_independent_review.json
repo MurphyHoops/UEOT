@@ -1,0 +1,58 @@
+{
+  "reviewer": "/root/register_source",
+  "review_date": "2026-11-04",
+  "review_kind": "Independent finite source review of strict caching with literal original return-object equality",
+  "primary_source": {
+    "file": "FiniteJointDecisionFastSolver.lean",
+    "sha256": "452125851510ca2e1fb02b06d00c42426ef3779c58af5c05f59baff5c79a1c6e",
+    "lines": 148
+  },
+  "unchanged_dependencies": [
+    {
+      "file": "FiniteJointDecisionSolver.lean",
+      "sha256": "c1cd7e4ffdd03f5a8056b5f8dd4e59dc6f092be61349f439b5bb03ae5445ee4d"
+    },
+    {
+      "file": "RegisterJointDecisionNativeConsumer.lean",
+      "sha256": "1bb2319bc8e5eda862f19cd16df68174e01506a4fafeee27b88cd1d87f84ec9e"
+    }
+  ],
+  "decision": "PASS: no hidden semantic change found. The proved equality of both value and complete Table is sufficient to reuse the existing original-Store THIS theorems by equality substitution.",
+  "findings": [
+    {
+      "id": "FAST-OBS",
+      "finding": "cache consumes a concrete List O plus a proof that every observation occurs. lookupCached_map proves exact f(o) recovery. Zero-probability observations are not pruned. Duplicate enumeration entries would only repeat computation; probability sums still use the original Fintype enumeration and are not reweighted."
+    },
+    {
+      "id": "FAST-ACTION",
+      "finding": "chooseScored maps the same Model.actions list and selectScored uses the same right-recursive strict less-than comparison as selectBest. chooseScored_eq identifies the exact chosen payload, preserving action order and the earlier-action tie rule."
+    },
+    {
+      "id": "FAST-STATE",
+      "finding": "For every nonterminal child, actionData uses exactly M.next i a o and recursively caches the value/table pair. It retains the original M.prob, M.reward, M.discount, action menu and information state. No source, observation, budget, tariff, clock or terminal reward is changed."
+    },
+    {
+      "id": "FAST-LAST",
+      "finding": "The n=0 actionData specialization computes only the current sum prob*reward and installs .halt on every observation. actionData_spec proves equality to the original qValue and solve-zero children; omitted next/posterior calculations have no continuation effect at the already frozen zero terminal payoff."
+    },
+    {
+      "id": "FAST-PAIR",
+      "finding": "fastSolve_eq proves pair equality (returned value, entire dependent Table) = (optimalValue, solve) for every horizon and information state. The proof does not infer table equality from equal values. cache_apply and induction identify every child, including all impossible-history rows."
+    },
+    {
+      "id": "FAST-EXEC",
+      "finding": "fastSolve_table and Consumer.returned=solve allow direct substitution into nativeExecute, nativeJ, returned_native_value, returned_native_payment, returned_native_optimal and returned_native_population. Hence this acceleration returns the same policy to the existing original-Store interpreter and resource proofs."
+    },
+    {
+      "id": "FAST-CODE",
+      "finding": "The implementation is computable and uses explicit finite lists, rational comparisons and noinline cache boundaries. It introduces no axiom, admitted proof, unsafe implementation or noncomputable observation enumeration. noinline is an execution hint, not a replacement denotation."
+    }
+  ],
+  "validation_provenance": {
+    "reviewer_reran_lean": false,
+    "actual_compile": "Root and author report root-13 actual Mac Lean compile exit 0, 3.74 seconds, for SHA452125851510ca2e1fb02b06d00c42426ef3779c58af5c05f59baff5c79a1c6e; this is the exact reviewed snapshot.",
+    "performance_claim": "The source equality proof certifies semantics, not a wall-time or memory bound. Any speedup must be reported from the actual retained original/cached run evidence.",
+    "driver_scope": "RETURN_POLICY_CACHED.lean and its actual output bytes are not part of this source-only snapshot. Root is composing a producer that prints pair.1 and serializes pair.2, retaining the same JSON schema and original output comparisons.",
+    "preservation": "The original high-cost run and its resource outcome must remain recorded. No old data are redrawn or discarded, and no prior completed Core verdict is modified."
+  }
+}

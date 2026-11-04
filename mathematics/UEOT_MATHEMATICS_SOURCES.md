@@ -178,3 +178,17 @@
 ## 9. 原一般来源的实际构造
 
 第25.4节 K-PF-01／P-EVO-03 由 UC.PrimitivePerronClosure.certificateOfPrimitive 从任意非空有限本原 M 构造原完整证书，实际增长与谱系条件消费者、实复代数单重均有端点。第10.4节由 UC.CompactSpectralSemigroupSource 和 CompactKilledSpectralBinding 从同一实际生成关系构造展开、余项及原 killed 条件律结论；非零余项实例另证完整算子与实际核一致。准确来源、合法条件、独审及原合同结算见[一般来源包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/general_perron_compact_spectral_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)。旧标准接口与旧负向审查保留；本段不把标准旁引或现实经验重标为已执行的 UEOT 证明。
+
+## 2026-11-04：有限钱包下的全流程联合决策
+
+数学书 §39.75—39.81 的新来源，不改变冻结的 106 个 P-ID 或原全 Core 完成裁决。源目录统一为 `UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/`。
+
+| 主文 | Lean 来源与关键端点 |
+|---|---|
+| §39.75—76 同一源/信息/费用 | FiniteJointDecisionBelief、FiniteJointDecisionFilteredModel、RegisterJointDecisionSource、Execution、NativeLaw；联合质量/后验与原 Store 交易投影 |
+| §39.77 实际返回/完整比较类 | FiniteJointDecisionSolver、SolverExecution、SupportedPolicy；solve、rows_exact、supported_actual_causal_le_returned；FiniteJointDecisionFastSolver.fastSolve_eq |
+| §39.76—78 原生消费者 | [RegisterJointDecisionNativeConsumer](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionNativeConsumer.lean)：returned_native_value/payment/optimal/population、initial_returned_native_value/boundary |
+| §39.78 一般期限边界 | [RegisterJointDecisionOptimality](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionOptimality.lean)：optimal_initial_value、positive_price_boundary、insufficient_wallet_optimal_zero；FreeTail与ExpectedBounds提供源上界/达到 |
+| §39.79—80 参数/后验/对照 | [RegisterJointDecisionBoundary](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionBoundary.lean)、RegisterJointDecisionFixedTail：持久矩、真实故障后验与严格性条件、同菜单固定流程及状态反馈差 |
+
+实际输入、THIS 表、原四步成功运行、完整有理重放、编译失败与缓存尝试、非作者审查均见[联合决策交付包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/README.md)。本地检查不写成已禁用的云 CI 通过；形式结论不增加经验支持。

@@ -23,3 +23,7 @@
 数学证明接受给定模型与假设；从中得到现实对象、经验定律或规范结论，还要说明相应接口。独立的[哲学著作](../philosophy/README.md)对这些哲学问题给出自己的论证。
 
 生成方法见[两书构建说明](../tools/books/README.md)。文档编译记录与 Lean 证明证据分别维护。
+
+## 2026-11-04：有限钱包联合决策
+
+新增数学书 §39.75—39.81：一次持久未知源、同一钱包与信息协议的实际返回表、原生有限人口 Store、一般期限参数式及反向边界。原全 Core 条件数学合同和八项验收保持完成。证明、实际表、完整有理重放与准确边界见[联合决策交付包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/README.md)。本次两书构建与选页审查另见[审查目录](review/CORE_JOINT_DECISION_BOOKS_2026-11-04/)。
