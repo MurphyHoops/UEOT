@@ -1,0 +1,69 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserver.lean:127:12: error: Tactic `rfl` failed: The left-hand side
+  (have request := effective q.stopped a;
+      match selected q request.1 with
+      | none => (false, false)
+      | some bit => (Option.getD request.2 bit == goal, Option.isSome request.2)).1 ||
+    (have request := effective q.stopped a;
+      match selected q request.1 with
+      | none => (false, false)
+      | some bit => (Option.getD request.2 bit == goal, Option.isSome request.2)).2
+is not definitionally equal to the right-hand side
+  match none with
+  | none => false
+  | some bit => Option.isSome (effective q.stopped a).2 || bit == goal
+
+case none
+goal : Bool
+q : Local
+a : Act
+hs : selected q (effective q.stopped a).1 = none
+⊢ ((have request := effective q.stopped a;
+        match selected q request.1 with
+        | none => (false, false)
+        | some bit => (Option.getD request.2 bit == goal, Option.isSome request.2)).1 ||
+      (have request := effective q.stopped a;
+        match selected q request.1 with
+        | none => (false, false)
+        | some bit => (Option.getD request.2 bit == goal, Option.isSome request.2)).2) =
+    match none with
+    | none => false
+    | some bit => Option.isSome (effective q.stopped a).2 || bit == goal
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserver.lean:130:13: error: unsolved goals
+case some.none
+goal : Bool
+q : Local
+a : Act
+bit : Bool
+hs : selected q (effective q.stopped a).1 = some bit
+ha : (effective q.stopped a).2 = none
+⊢ ((match selected q (effective q.stopped a).1 with
+        | none => (false, false)
+        | some bit => (Option.getD (effective q.stopped a).2 bit == goal, Option.isSome (effective q.stopped a).2)).1 ||
+      (match selected q (effective q.stopped a).1 with
+        | none => (false, false)
+        | some bit => (Option.getD (effective q.stopped a).2 bit == goal, Option.isSome (effective q.stopped a).2)).2) =
+    (bit == goal)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserver.lean:131:19: error: unsolved goals
+case some.some
+goal : Bool
+q : Local
+a : Act
+bit : Bool
+hs : selected q (effective q.stopped a).1 = some bit
+value : Bool
+ha : (effective q.stopped a).2 = some value
+⊢ (match selected q (effective q.stopped a).1 with
+        | none => (false, false)
+        | some bit => (Option.getD (effective q.stopped a).2 bit == goal, Option.isSome (effective q.stopped a).2)).1 =
+      true ∨
+    (match selected q (effective q.stopped a).1 with
+        | none => (false, false)
+        | some bit => (Option.getD (effective q.stopped a).2 bit == goal, Option.isSome (effective q.stopped a).2)).2 =
+      true
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserver.lean:166:49: warning: This simp argument is unused:
+  Fintype.sum_bool
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [likelihood, hn, Fintype.sum_prod_type]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

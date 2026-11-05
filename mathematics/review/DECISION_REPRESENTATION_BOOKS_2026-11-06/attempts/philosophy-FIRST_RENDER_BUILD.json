@@ -1,0 +1,26 @@
+{
+  "document": "philosophy",
+  "status": "COMPILED_REQUIRES_VISUAL_REVIEW",
+  "source": "philosophy/UEOT_PHILOSOPHY.md",
+  "source_sha256": "19e70624ccc48aa85d03359acd41b502d6e5e187c897444e5a959ee8cfe17cd1",
+  "latex": "philosophy/UEOT_PHILOSOPHY.tex",
+  "latex_sha256": "3754307e939f1b316d8ae188e2063c106b17779b3b02dc64b31b65925fa88029",
+  "pdf": "philosophy/UEOT_PHILOSOPHY.pdf",
+  "pdf_sha256": "ee38687c9652c41477fbcd057ac1d020e834c1feed916042c1379f94ff90e299",
+  "tools": {
+    "pandoc": "pandoc 3.1.3",
+    "xelatex": "XeTeX 3.141592653-2.6-0.999995 (TeX Live 2023/Debian)"
+  },
+  "font_sha256": {
+    "NotoSerifCJKsc-Regular.otf": "2a2eae2628df83556c54018c41e20fa532c1b862c5256ae8b3f23feb918d12ca",
+    "NotoSerifCJKsc-Bold.otf": "8af07d4b6c2e82bcc72a30e066eaf295f11b9424f4aad2eaa9fe0e9c3b38fc73",
+    "NotoSansMonoCJKsc-Regular.otf": "ec04cc376b34887cedbdf84074e2e226ed2761eeabdcb9173fc1dd7bfd153ef7"
+  },
+  "overfull_hbox_warnings": 0,
+  "build_command": [
+    "python3",
+    "tools/books/build_books.py",
+    "philosophy"
+  ],
+  "scope": "Document compilation only; mathematical proof status is recorded separately."
+}

@@ -1,0 +1,245 @@
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.native_update.{u_1}
+  {Theta : Type u_1} {n : ℕ} (i : Fin n) (m : RegisterMechanismPurpose.Mechanism)
+  (w : RegisterJointDecisionSource.NativeWorld Theta n) (a : RegisterJointDecisionSource.Act)
+  (z : RegisterJointDecisionSource.Noise) (ha : RegisterJointDecisionSource.Aligned m.goal w.store)
+  (hr : RegisterDecisionObserverSource.Rooted (RegisterJointDecisionSource.projectWorld i w)) :
+  RegisterDecisionObserverSource.projectNative m.goal i (RegisterJointDecisionSource.nativeStep i m w a z) =
+    RegisterDecisionObserver.update m.goal (RegisterDecisionObserverSource.projectNative m.goal i w) a
+      (RegisterJointDecisionSource.nativeObs (RegisterJointDecisionSource.nativeTransaction i m w a z))
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.native_update' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.conditional_count_posterior.{u_1, u_2}
+  {Theta : Type} [Fintype Theta] {I : Type u_1} (r prior : Theta → ℚ) (goal : Bool)
+  {M : FiniteJointDecisionSolver.Model I RegisterJointDecisionSource.Act RegisterJointDecisionSource.Obs}
+  (pi : FiniteJointDecisionSupportedPolicy.RawCausalPolicy M) (h : pi.Memory)
+  (history : RegisterDecisionObserver.History)
+  (hp : 0 < RegisterDecisionCountHistory.rawPriorMass r prior goal pi h history) (theta : Theta) :
+  ↑(prior theta) *
+        RegisterDecisionCountHistory.rawWorldLikelihood r goal pi h
+          (RegisterDecisionCountHistory.initialWorld goal theta) history /
+      RegisterDecisionCountHistory.rawPriorMass r prior goal pi h history =
+    ↑(RegisterDecisionCountPosterior.posteriorWeight r prior (RegisterDecisionObserver.summarize goal history).s
+        (RegisterDecisionObserver.summarize goal history).f theta)
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.conditional_count_posterior' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.joint_observable_law
+  {Theta : Type} [Fintype Theta] (P : RegisterJointDecisionConsumer.Family Theta) (prior : Theta → ℚ)
+  (initial : RegisterJointDecisionConsumer.Wallet) (i : RegisterJointDecisionConsumer.Info Theta)
+  (st : RegisterDecisionObserver.Stat) (h : RegisterDecisionRepresentationModel.Rel P prior initial i st)
+  (a : RegisterJointDecisionSource.Act)
+  (test : RegisterJointDecisionSource.Obs → RegisterDecisionObserver.Stat → ℚ → ℚ → ℚ → ℚ) :
+  (FiniteJointDecisionBelief.expect i.1 fun w =>
+      ∑ z,
+        RegisterJointDecisionSource.primitiveWeight P.normal w z *
+          test (RegisterJointDecisionSource.observe P.goal w a z)
+            (RegisterDecisionObserver.updateStat P.goal st a (RegisterJointDecisionSource.observe P.goal w a z))
+            (if (RegisterJointDecisionSource.observe P.goal w a z).1 = true then 1 else 0)
+            (RegisterJointDecisionConsumer.charge P.tariff (RegisterJointDecisionSource.observe P.goal w a z))
+            ↑(RegisterJointDecisionConsumer.advance P.tariff i.2 a
+                (RegisterJointDecisionSource.observe P.goal w a z))) =
+    ∑ o,
+      RegisterDecisionCountPosterior.observationMass P.normal prior st.s st.f P.goal st.q a o *
+        test o (RegisterDecisionObserver.updateStat P.goal st a o) (if o.1 = true then 1 else 0)
+          (RegisterJointDecisionConsumer.charge P.tariff o)
+          ↑(RegisterDecisionRepresentationModel.wallet P.tariff initial
+              (RegisterDecisionObserver.updateStat P.goal st a o))
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.joint_observable_law' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.optimalValue_initial
+  {Theta : Type} [Fintype Theta] (P : RegisterJointDecisionConsumer.Family Theta) (prior : Theta → ℚ)
+  (hn : ∀ (t : Theta), 0 ≤ prior t) (ht : ∑ t, prior t = 1) (initial : RegisterJointDecisionConsumer.Wallet) (H : ℕ) :
+  FiniteJointDecisionSolver.optimalValue (RegisterJointDecisionConsumer.model P) H
+      (RegisterJointDecisionConsumer.initialBelief P prior hn ht, initial) =
+    FiniteJointDecisionSolver.optimalValue (RegisterDecisionRepresentationModel.model P prior hn ht initial) H
+      (RegisterDecisionObserver.initialStat P.goal)
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.optimalValue_initial' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionRefinement.tapeWeight_transfer.{uI, uJ, uA, uO}
+  {I : Type uI} {J : Type uJ} {A : Type uA} {O : Type uO} [Fintype O] {M : FiniteJointDecisionSolver.Model I A O}
+  {N : FiniteJointDecisionSolver.Model J A O} {R : I → J → Prop}
+  (T : FiniteJointDecisionRefinement.StepRefinement M N R) {H : ℕ} (i : I) (j : J) :
+  R i j →
+    ∀ (p : FiniteJointDecisionSolver.Table A O H),
+      FiniteJointDecisionSupportedPolicy.SupportedFeasible N j p →
+        ∀ (w : FiniteJointDecisionSolver.Tape O H),
+          FiniteJointDecisionSolver.tapeWeight M i p w = FiniteJointDecisionSolver.tapeWeight N j p w
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionRefinement.tapeWeight_transfer' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.check_sound.{uI, uA, uO} {I : Type uI}
+  {A : Type uA} {O : Type uO} [Fintype O] [Fintype A] [DecidableEq I] [DecidableEq A] [DecidableEq O]
+  (M : FiniteJointDecisionSolver.Model I A O) (G : FiniteJointDecisionDAG.Graph I A O)
+  (h : FiniteJointDecisionDAG.check M G = true) : FiniteJointDecisionDAG.Good M G
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.check_sound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.node_value_eq_optimal.{uI, uA, uO}
+  {I : Type uI} {A : Type uA} {O : Type uO} [Fintype O] [Fintype A] [DecidableEq I] [DecidableEq A] [DecidableEq O]
+  (M : FiniteJointDecisionSolver.Model I A O) (G : FiniteJointDecisionDAG.Graph I A O)
+  (hg : FiniteJointDecisionDAG.Good M G) (n : ℕ) (j : Fin (Array.size G)) :
+  G[↑j].remaining = n → G[↑j].value = FiniteJointDecisionSolver.optimalValue M n G[↑j].state
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.node_value_eq_optimal' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.certified_value.{uI, uA, uO}
+  {I : Type uI} {A : Type uA} {O : Type uO} [Fintype O] [Fintype A] [DecidableEq I] [DecidableEq A] [DecidableEq O]
+  [BEq I] [Hashable I] (M : FiniteJointDecisionSolver.Model I A O) (H : ℕ) (initial : I)
+  (c : FiniteJointDecisionDAGGenerator.Certified M H initial) :
+  c.graph[↑c.root].value = FiniteJointDecisionSolver.optimalValue M H initial
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.certified_value' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.nativeRun_eq {Theta : Type}
+  {n : ℕ} (j : Fin n) (m : RegisterMechanismPurpose.Mechanism)
+  (M :
+    FiniteJointDecisionSolver.Model RegisterDecisionObserver.Stat RegisterJointDecisionSource.Act
+      RegisterJointDecisionSource.Obs)
+  (G :
+    FiniteJointDecisionDAG.Graph RegisterDecisionObserver.Stat RegisterJointDecisionSource.Act
+      RegisterJointDecisionSource.Obs)
+  (H : ℕ) (st : RegisterDecisionObserver.Stat) (cursor : Option ℕ) (w : RegisterJointDecisionSource.NativeWorld Theta n)
+  (noise : Fin H → RegisterJointDecisionSource.Noise) :
+  RegisterDecisionRepresentationNative.nativeRun j m M G H st cursor w noise =
+    RegisterJointDecisionExecution.nativeExecute j m (FiniteJointDecisionDAG.denote M G H st cursor) w noise
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.nativeRun_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.checked_native_optimal.{u_1}
+  {Theta : Type} [Fintype Theta] {n : ℕ} (P : RegisterJointDecisionConsumer.Family Theta) (j : Fin n)
+  (prior : Theta → ℚ) (hn : ∀ (t : Theta), 0 ≤ prior t) (ht : ∑ t, prior t = 1)
+  (initial : RegisterJointDecisionConsumer.Wallet)
+  (G :
+    FiniteJointDecisionDAG.Graph RegisterDecisionObserver.Stat RegisterJointDecisionSource.Act
+      RegisterJointDecisionSource.Obs)
+  (hg : FiniteJointDecisionDAG.Good (RegisterDecisionRepresentationModel.model P prior hn ht initial) G) (H : ℕ)
+  (root : Fin (Array.size G)) (hr : G[↑root].remaining = H)
+  (pi : FiniteJointDecisionSupportedPolicy.RawCausalPolicy (RegisterJointDecisionConsumer.model P)) (h : pi.Memory)
+  (R : RegisterJointDecisionNativeConsumer.Realization P j (pi.info h).1)
+  (hi : RegisterDecisionRepresentationModel.Rel P prior initial (pi.info h) G[↑root].state)
+  (ha : FiniteJointDecisionSupportedPolicy.SupportedAdmissible (RegisterJointDecisionConsumer.model P) pi H h) :
+  RegisterJointDecisionNativeConsumer.expectedRawNativeJ P j pi H h R ≤
+    RegisterDecisionRepresentationNative.expectedGraphJ P j
+      (RegisterDecisionRepresentationModel.model P prior hn ht initial) G H (pi.info h) R G[↑root].state (some ↑root)
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.checked_native_optimal' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.graph_native_payment
+  {Theta : Type} [Fintype Theta] {n : ℕ} (P : RegisterJointDecisionConsumer.Family Theta) (j : Fin n)
+  (prior : Theta → ℚ) (hn : ∀ (t : Theta), 0 ≤ prior t) (ht : ∑ t, prior t = 1)
+  (initial : RegisterJointDecisionConsumer.Wallet)
+  (G :
+    FiniteJointDecisionDAG.Graph RegisterDecisionObserver.Stat RegisterJointDecisionSource.Act
+      RegisterJointDecisionSource.Obs)
+  (H : ℕ) (i : RegisterJointDecisionConsumer.Info Theta) (R : RegisterJointDecisionNativeConsumer.Realization P j i.1)
+  (st : RegisterDecisionObserver.Stat) (cursor : Option ℕ)
+  (hb : i.2 = RegisterDecisionRepresentationModel.wallet P.tariff initial st) (x : i.1.Atom)
+  (noise : FiniteJointDecisionSolver.Tape RegisterJointDecisionSource.Noise H) (hx : 0 < i.1.weight x)
+  (hz : 0 < RegisterDecisionRepresentationNative.primitiveTapeWeight P.normal (i.1.state x).theta noise) :
+  have M := RegisterDecisionRepresentationModel.model P prior hn ht initial;
+  RegisterDecisionRepresentationPayment.GraphPrepaid P j M G H (↑↑i.2) st cursor (R.world x) noise ∧
+    ∀ (k : ℕ),
+      have execution :=
+        RegisterDecisionRepresentationNative.nativeRun j (RegisterJointDecisionNativeConsumer.mechanism P) M G H st
+          cursor (R.world x) (RegisterJointDecisionNativeConsumer.tapeVector noise);
+      have paid := (List.take k (List.map RegisterJointDecisionSource.nativeFee execution.records)).sum;
+      have summary := RegisterDecisionObserver.summarizeFrom P.goal st (List.take k execution.history);
+      ↑↑(RegisterDecisionRepresentationModel.wallet P.tariff initial summary) = ↑↑i.2 - paid ∧ 0 ≤ paid ∧ paid ≤ ↑↑i.2
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.graph_native_payment' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.body_wallet_time_is_insufficient :
+  RegisterDecisionRepresentationWitnesses.equalPriorMass RegisterDecisionRepresentationWitnesses.insufficientA =
+      3 / 32 ∧
+    RegisterDecisionRepresentationWitnesses.equalPriorMass RegisterDecisionRepresentationWitnesses.insufficientB =
+        3 / 16 ∧
+      0 < RegisterDecisionRepresentationWitnesses.equalPriorMass RegisterDecisionRepresentationWitnesses.insufficientA ∧
+        0 <
+            RegisterDecisionRepresentationWitnesses.equalPriorMass
+              RegisterDecisionRepresentationWitnesses.insufficientB ∧
+          RegisterDecisionRepresentationWitnesses.lowPosterior RegisterDecisionRepresentationWitnesses.insufficientA =
+              1 / 4 ∧
+            RegisterDecisionRepresentationWitnesses.lowPosterior RegisterDecisionRepresentationWitnesses.insufficientB =
+                1 / 2 ∧
+              RegisterDecisionRepresentationWitnesses.conditionalNextBirth
+                    RegisterDecisionRepresentationWitnesses.insufficientA
+                    RegisterDecisionRepresentationWitnesses.childIdle =
+                  5 / 8 ∧
+                RegisterDecisionRepresentationWitnesses.conditionalNextBirth
+                    RegisterDecisionRepresentationWitnesses.insufficientB
+                    RegisterDecisionRepresentationWitnesses.childIdle =
+                  1 / 2
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.body_wallet_time_is_insufficient' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.merge_same_complete_summary :
+  RegisterDecisionObserver.summarize true RegisterDecisionRepresentationWitnesses.mergeA =
+      { elapsed := 3, s := 2, f := 1, paidCount := 1, q := RegisterDecisionRepresentationWitnesses.bodyAfterThree } ∧
+    RegisterDecisionObserver.summarize true RegisterDecisionRepresentationWitnesses.mergeB =
+      { elapsed := 3, s := 2, f := 1, paidCount := 1, q := RegisterDecisionRepresentationWitnesses.bodyAfterThree }
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.merge_same_complete_summary' does not depend on any axioms
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.native_dispatch2_boundary
+  (tariff : NNReal) (l0 l1 l2 label : Bool) :
+  have sa :=
+    (RegisterJointDecisionExecution.nativeExecute 0 { goal := true, writeCost := tariff }
+          RegisterDecisionRepresentationWitnesses.mergeTableA RegisterDecisionRepresentationWitnesses.nativeInitial
+          ![(true, l0), (false, l1), (true, l2)]).finalWorld.store;
+  have sb :=
+    (RegisterJointDecisionExecution.nativeExecute 0 { goal := true, writeCost := tariff }
+          RegisterDecisionRepresentationWitnesses.mergeTableB RegisterDecisionRepresentationWitnesses.nativeInitial
+          ![(true, l0), (true, l1), (false, l2)]).finalWorld.store;
+  RegisterPopulationHistorySource.transaction 0 { goal := true, writeCost := tariff } sa
+        { parent := 2, action := none, mode := true, label := label } =
+      none ∧
+    RegisterJointDecisionSource.nativeObs
+        (RegisterPopulationHistorySource.transaction 0 { goal := true, writeCost := tariff } sb
+          { parent := 2, action := none, mode := true, label := label }) =
+      (true, false)
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.native_dispatch2_boundary' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.actual_graph_node_bound
+  {A O : Type} (H : ℕ) (G : FiniteJointDecisionDAG.Graph RegisterDecisionObserver.Stat A O)
+  (hunique : Function.Injective fun j => (G[j].remaining, G[j].state))
+  (hb : RegisterDecisionRepresentationBounds.boundCheck H G = true) : Array.size G ≤ 24 * (H + 1) ^ 4
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.actual_graph_node_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.result_native_value {Theta : Type}
+  [Fintype Theta] (P : RegisterJointDecisionConsumer.Family Theta) (prior : Theta → ℚ) (hn : ∀ (t : Theta), 0 ≤ prior t)
+  (ht : ∑ t, prior t = 1) (initial : RegisterJointDecisionConsumer.Wallet) (H : ℕ)
+  (result : RegisterDecisionRepresentation.Result P prior hn ht initial H) :
+  ∑ theta,
+      ↑(prior theta) *
+        RegisterDecisionRepresentationNative.nativeGraphJ P 0
+          (RegisterDecisionRepresentationModel.model P prior hn ht initial) result.control.graph H
+          (RegisterDecisionObserver.initialStat P.goal) (some ↑result.control.root)
+          (RegisterJointDecisionNativeConsumer.nativeInitial P theta) =
+    ↑result.control.graph[↑result.control.root].value
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.result_native_value' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.result_native_optimal.{u_1}
+  {Theta : Type} [Fintype Theta] (P : RegisterJointDecisionConsumer.Family Theta) (prior : Theta → ℚ)
+  (hn : ∀ (t : Theta), 0 ≤ prior t) (ht : ∑ t, prior t = 1) (initial : RegisterJointDecisionConsumer.Wallet) (H : ℕ)
+  (result : RegisterDecisionRepresentation.Result P prior hn ht initial H)
+  (pi : FiniteJointDecisionSupportedPolicy.RawCausalPolicy (RegisterJointDecisionConsumer.model P)) (h : pi.Memory)
+  (hi : pi.info h = (RegisterJointDecisionConsumer.initialBelief P prior hn ht, initial))
+  (R : RegisterJointDecisionNativeConsumer.Realization P 0 (pi.info h).1)
+  (ha : FiniteJointDecisionSupportedPolicy.SupportedAdmissible (RegisterJointDecisionConsumer.model P) pi H h) :
+  RegisterJointDecisionNativeConsumer.expectedRawNativeJ P 0 pi H h R ≤
+    ↑result.control.graph[↑result.control.root].value
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.result_native_optimal' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.result_node_bound {Theta : Type}
+  [Fintype Theta] (P : RegisterJointDecisionConsumer.Family Theta) (prior : Theta → ℚ) (hn : ∀ (t : Theta), 0 ≤ prior t)
+  (ht : ∑ t, prior t = 1) (initial : RegisterJointDecisionConsumer.Wallet) (H : ℕ)
+  (result : RegisterDecisionRepresentation.Result P prior hn ht initial H) :
+  Array.size result.control.graph ≤ 24 * (H + 1) ^ 4
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.result_node_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

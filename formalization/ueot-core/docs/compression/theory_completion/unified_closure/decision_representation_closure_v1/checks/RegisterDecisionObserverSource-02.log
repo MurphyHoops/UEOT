@@ -1,0 +1,40 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserverSource.lean:63:13: error: unsolved goals
+case some.true
+Theta : Type u_1
+goal : Bool
+w : World Theta
+a : Act
+hw : Rooted w
+label bit : Bool
+hs : packedLookup w.store (address (effective w.stopped a).1) = some bit
+⊢ (if Option.getD (effective w.stopped a).2 bit = goal then some (Option.getD (effective w.stopped a).2 bit)
+      else none).isSome =
+    (Option.getD (effective w.stopped a).2 bit == goal)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserverSource.lean:99:75: warning: This simp argument is unused:
+  newborn_reconstructed
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [projectLocal, step, update, observe, hreq, packedNext, packedObserve, packedLookup, address,
+    postBit_reconstructed]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserverSource.lean:122:8: warning: This simp argument is unused:
+  Fintype.sum_bool
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [primitiveWeight, receipt, likelihood, Fintype.sum_prod_type, hn, hz]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserverSource.lean:122:38: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserverSource.lean:122:38: warning: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserverSource.lean:134:57: warning: This simp argument is unused:
+  Fintype.sum_bool
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [primitiveWeight, receipt, Fintype.sum_prod_type]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

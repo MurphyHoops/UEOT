@@ -1,0 +1,193 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean:91:0: warning: automatically included section variable(s) unused in theorem `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.check_sound`:
+  [DecidableEq O]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq O] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean:94:0: warning: automatically included section variable(s) unused in theorem `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.good_of_check`:
+  [DecidableEq O]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq O] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean:97:0: warning: automatically included section variable(s) unused in theorem `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.valid_succ`:
+  [Fintype A]
+  [DecidableEq I]
+  [DecidableEq A]
+  [DecidableEq O]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype A] [DecidableEq I] [DecidableEq A] [DecidableEq O] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean:119:24: error: Application type mismatch: The argument
+  he
+has type
+  r.next a o = some k
+but is expected to have type
+  some k = some ↑⟨k, hk⟩
+in the application
+  And.intro he
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean:119:31: error: Type mismatch: After simplification, term
+  h
+ has type
+  And (G[k].remaining + 1 = r.remaining) (G[k].state = M.next r.state a o)
+but is expected to have type
+  And (G[⟨k, hk⟩].remaining + 1 = r.remaining) (G[⟨k, hk⟩].state = M.next r.state a o)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean:122:0: warning: automatically included section variable(s) unused in theorem `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.edgeValue_at`:
+  [Fintype O]
+  [Fintype A]
+  [DecidableEq I]
+  [DecidableEq A]
+  [DecidableEq O]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype O] [Fintype A] [DecidableEq I] [DecidableEq A] [DecidableEq O] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean:181:0: warning: automatically included section variable(s) unused in theorem `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.selectBest_congr_on`:
+  [Fintype A]
+  [DecidableEq A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype A] [DecidableEq A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean:217:0: warning: automatically included section variable(s) unused in theorem `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.safeAction_mem`:
+  [Fintype A]
+  [DecidableEq I]
+  [DecidableEq A]
+  [DecidableEq O]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype A] [DecidableEq I] [DecidableEq A] [DecidableEq O] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean:254:8: error: Tactic `split` failed: Could not split an `if` or `match` expression in the goal
+
+Hint: Use `set_option trace.split.failure true` to display additional diagnostic information
+
+case h_1
+I : Type uI
+A : Type uA
+O : Type uO
+inst✝⁴ : Fintype O
+inst✝³ : Fintype A
+inst✝² : DecidableEq I
+inst✝¹ : DecidableEq A
+inst✝ : DecidableEq O
+M : Model I A O
+G : Graph I A O
+n : ℕ
+i : I
+j : ℕ
+x✝ : Option ℕ
+heq✝ : some j = none
+⊢ safeAction M i ∈ M.actions i
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean:257:8: error: Type mismatch
+  safeAction_mem M i
+has type
+  safeAction M i ∈ M.actions i
+but is expected to have type
+  (if hj : k✝ < Array.size G then
+      have r := G[k✝];
+      if r.remaining = n ∧ r.state = i ∧ r.choice ∈ M.actions i then r.choice else safeAction M i
+    else safeAction M i) ∈
+    M.actions i
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean:262:72: error: unsolved goals
+I : Type uI
+A : Type uA
+O : Type uO
+inst✝⁴ : Fintype O
+inst✝³ : Fintype A
+inst✝² : DecidableEq I
+inst✝¹ : DecidableEq A
+inst✝ : DecidableEq O
+M : Model I A O
+G : Graph I A O
+n : ℕ
+j : Fin (Array.size G)
+hn : G[j].remaining = n
+ha : G[j].choice ∈ M.actions G[j].state
+⊢ (G[↑j].remaining = n → G[↑j].choice ∉ M.actions G[↑j].state) → safeAction M G[↑j].state = G[↑j].choice
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean:263:34: warning: This simp argument is unused:
+  hn
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [controllerAction, j.isLt, ha]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean:263:38: warning: This simp argument is unused:
+  ha
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [controllerAction, j.isLt, hn]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean:269:37: error: unsolved goals
+I : Type uI
+A : Type uA
+O : Type uO
+inst✝⁴ : Fintype O
+inst✝³ : Fintype A
+inst✝² : DecidableEq I
+inst✝¹ : DecidableEq A
+inst✝ : DecidableEq O
+M : Model I A O
+G : Graph I A O
+n : ℕ
+j : Fin (Array.size G)
+hn : G[j].remaining = n
+o : O
+hp : 0 < M.prob G[j].state G[j].choice o
+⊢ (G[↑j].remaining = n → M.prob G[↑j].state G[↑j].choice o ≤ 0) → none = G[↑j].next G[↑j].choice o
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean:270:32: warning: This simp argument is unused:
+  hn
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [controllerNext, j.isLt, hp]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean:270:36: warning: This simp argument is unused:
+  hp
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [controllerNext, j.isLt, hn]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean:314:6: error: unsolved goals
+case pos
+I : Type uI
+A : Type uA
+O : Type uO
+inst✝⁴ : Fintype O
+inst✝³ : Fintype A
+inst✝² : DecidableEq I
+inst✝¹ : DecidableEq A
+inst✝ : DecidableEq O
+M : Model I A O
+G : Graph I A O
+hg : Good M G
+n : ℕ
+ih :
+  ∀ (j : Fin (Array.size G)), G[j].remaining = n → value M G[j].state (denote M G n G[j].state (some ↑j)) = G[j].value
+j : Fin (Array.size G)
+hn : G[j].remaining = n + 1
+hv :
+  G[j].choice = chooseBest (score M G G[j]) (M.actions G[j].state) ⋯ ∧
+    G[j].value = score M G G[j] G[j].choice ∧
+      ∀ a ∈ M.actions G[j].state, ∀ (o : O), 0 < M.prob G[j].state a o → EdgeValid M G G[j] a o
+ha : G[j].choice ∈ M.actions G[j].state
+hact : controllerAction M G (n + 1) G[j].state (some ↑j) = G[j].choice
+o : O
+ho : o ∈ Finset.univ
+hz : M.prob G[j].state G[j].choice o = 0
+⊢ (value M (M.next G[↑j].state G[↑j].choice o)
+          (denote M G n (M.next G[↑j].state G[↑j].choice o)
+            (controllerNext M G (n + 1) G[↑j].state (some ↑j) G[↑j].choice o)) =
+        edgeValue G G[↑j] G[↑j].choice o ∨
+      M.discount = 0) ∨
+    M.prob G[↑j].state G[↑j].choice o = 0
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean:314:14: warning: This simp argument is unused:
+  hz
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

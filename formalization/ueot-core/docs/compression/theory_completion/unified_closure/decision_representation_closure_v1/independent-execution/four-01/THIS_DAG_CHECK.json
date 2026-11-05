@@ -1,0 +1,74 @@
+{
+  "schema": "UEOT/THIS_REPRESENTATION_DAG_CHECK/V1",
+  "dag_output_sha256": "ee09a0999fd0ae4974c6145ca7111e66aef846adc15b5f91b6f7741f949da7e3",
+  "reference_result_sha256": "68e7b8ce1ed54912b0b8ff58044ba4a927d5afaf3af8fcffd38fd201e721fa61",
+  "checker_sha256": "b13697ae40b832dd9d29f8f27302796ddafc80e011d6404843348568558e5214",
+  "native_reference_source_sha256": "b81f62cbe65c3d01d32b2d74910db0e6999b144f249d79e93a8367a2fa9cad5f",
+  "all_action_certificate_seconds": 0.01481431399952271,
+  "native_check_seconds": 0.0468008589996316,
+  "status": "PASS",
+  "case": "receipt_feedback_four_step",
+  "root_value": "39525/524288",
+  "actual_graph_nodes": 104,
+  "actual_proof_edges": 287,
+  "conservative_node_bound": 15000,
+  "all_original_menu_alternatives_checked": true,
+  "earlier_action_tie_order_preserved": true,
+  "all_rows_reachable_in_proof_graph": true,
+  "execution_graph": {
+    "node_count": 16,
+    "edge_count": 16,
+    "at_least_one_birth": "13/16",
+    "expected_total_births": "22783/8192",
+    "expected_total_fee": "13/16",
+    "minimum_prefix_balance": "0",
+    "total_paid_count_distribution": {
+      "0": "3/16",
+      "1": "13/16"
+    }
+  },
+  "actual_merge": {
+    "applicable": true,
+    "merge_history_a_node": 86,
+    "merge_history_b_node": 86,
+    "actual_same_node": true,
+    "insufficient_summary_history_a_node": 86,
+    "insufficient_summary_history_b_node": 81,
+    "qualification": "Paths traverse the all-action proof graph; they need not both follow its chosen policy."
+  },
+  "native": {
+    "complete_enumeration": true,
+    "native_paths": 512,
+    "enumerated_mass": "1",
+    "actual_value": "39525/524288",
+    "at_least_one_birth": "13/16",
+    "max_paid_count_on_checked_paths": 1,
+    "qualification": "Complete mode/label/source replay"
+  },
+  "direct_lean_execution": {
+    "status": "PASS",
+    "checked_runs": [
+      {
+        "theta": 0,
+        "source_mass": "27/8192",
+        "payoff": "-21/64",
+        "paid_count": 1,
+        "final_balance": "0"
+      },
+      {
+        "theta": 1,
+        "source_mass": "343/131072",
+        "payoff": "-21/64",
+        "paid_count": 1,
+        "final_balance": "0"
+      }
+    ],
+    "scope": "Actual Lean packedRun output checked against the same THIS graph executed by the original full-record interpreter"
+  },
+  "traces_sha256": "dade21bc157892a52182e3b2a6ea341d69df589bf9ccc88e6a873c7b17cc8d75",
+  "traces_bytes": 1584914,
+  "dag_bytes": 43526,
+  "peak_process_rss_bytes": 26738688,
+  "total_seconds": 0.1242419529990002,
+  "qualification": "THIS indexed Lean artifact is checked and executed. Existing memo reference uses STOP as a justified representative after committed stop; THIS certificate checks the unreduced original requested-action menu. No old Lean observation tree was recomputed."
+}

@@ -1,0 +1,88 @@
+{
+  "schema": "UEOT/DECISION_REPRESENTATION_INPUTS/V1",
+  "frozen_before_execution_utc": "2026-11-05T17:47:50.066862+00:00",
+  "base_main": "39e9259f0c8f25c97a55239d852ff4d151f114ac",
+  "action_order": "RegisterJointDecisionConsumer.allActions",
+  "public_goal": true,
+  "cost": "1",
+  "instances": [
+    {
+      "name": "persistent_theta_two_step",
+      "horizon": 2,
+      "budget": "1",
+      "r": [
+        "1/4",
+        "3/4"
+      ],
+      "prior": [
+        "1/2",
+        "1/2"
+      ],
+      "discount": "1/2",
+      "price": "13/10"
+    },
+    {
+      "name": "population_backup_three_step",
+      "horizon": 3,
+      "budget": "1",
+      "r": [
+        "1/4",
+        "3/4"
+      ],
+      "prior": [
+        "1/2",
+        "1/2"
+      ],
+      "discount": "3/4",
+      "price": "7/4"
+    },
+    {
+      "name": "posterior_changes_retry_three_step",
+      "horizon": 3,
+      "budget": "1",
+      "r": [
+        "1/4",
+        "3/4"
+      ],
+      "prior": [
+        "1/2",
+        "1/2"
+      ],
+      "discount": "1/2",
+      "price": "13/10"
+    },
+    {
+      "name": "receipt_feedback_four_step",
+      "horizon": 4,
+      "budget": "1",
+      "r": [
+        "3/4",
+        "7/8"
+      ],
+      "prior": [
+        "1/2",
+        "1/2"
+      ],
+      "discount": "3/4",
+      "price": "37/16"
+    },
+    {
+      "name": "longer_two_payment_eight_step",
+      "horizon": 8,
+      "budget": "2",
+      "r": [
+        "1/4",
+        "3/4"
+      ],
+      "prior": [
+        "1/2",
+        "1/2"
+      ],
+      "discount": "3/4",
+      "price": "13/10"
+    }
+  ],
+  "solve_budget_seconds": 300,
+  "consumer_total_budget_seconds": 600,
+  "old_long_lean_rerun": false
+}

@@ -1,0 +1,16 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean:125:0: warning: automatically included section variable(s) unused in theorem `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.wallet_next`:
+  [Fintype Theta]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype Theta] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean:132:35: warning: This simp argument is unused:
+  Bool.true_eq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [wallet, updateStat, ↓reduceIte, Nat.cast_add, Nat.cast_one, advance, charge]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean:149:0: warning: Definition `refinement` is a proposition; use `theorem` instead of `def`
+
+Note: This linter can be disabled with `set_option linter.defProp false`

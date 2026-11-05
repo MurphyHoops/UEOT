@@ -1,0 +1,36 @@
+{
+  "case": "false_goal",
+  "command": [
+    "/usr/bin/time",
+    "-l",
+    "/Users/murphyhoops/.elan/bin/lake",
+    "env",
+    "lean",
+    "--run",
+    "docs/compression/theory_completion/unified_closure/decision_representation_closure_v1/native_protocol/RETURN_REPRESENTATION_DAG.lean",
+    "false_goal"
+  ],
+  "timeout_budget_seconds": 600,
+  "entry_sha256": "4b3537ff018ff234760dd1833ccacb7d0a0ccea392833b59730bf338e6d5763a",
+  "host": "macOS-26.6.2-arm64-arm-64bit",
+  "exit": 0,
+  "seconds": 4.308293040999999,
+  "timeout": false,
+  "value": "693/2560",
+  "metrics": {
+    "bound_check_ms": 0,
+    "cache_hits": 76,
+    "certificate_ms": 18,
+    "computed_nodes": 52,
+    "direct_run_ms": 1,
+    "memo_entries": 52,
+    "node_bound": 6144,
+    "node_count": 52,
+    "proof_edges": 127,
+    "serialization_prepare_ms": 18,
+    "solve_ms": 18
+  },
+  "bytes": 20746,
+  "stdout_sha256": "394ee1c8d2f6940262404579cd45c6c15e252cfd7f12667247e231d3af2277ab",
+  "solve_budget_satisfied": true
+}

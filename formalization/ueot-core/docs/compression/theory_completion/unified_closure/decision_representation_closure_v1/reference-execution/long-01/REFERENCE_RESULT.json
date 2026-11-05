@@ -1,0 +1,65 @@
+{
+  "schema": "UEOT/DECISION_REPRESENTATION_REFERENCE/V1",
+  "case": "registered_h8_two_write_wallet",
+  "parameters": {
+    "name": "registered_h8_two_write_wallet",
+    "r": [
+      "1/4",
+      "3/4"
+    ],
+    "prior": [
+      "1/2",
+      "1/2"
+    ],
+    "H": 8,
+    "B": "2",
+    "c": "1",
+    "price": "13/10",
+    "d": "3/4",
+    "prior_value": null,
+    "goal": true,
+    "initial_damaged": true
+  },
+  "baseline": "PR441 existing normalized-posterior / full-PackedStore lru_cache Planner",
+  "reference_source_sha256": "b81f62cbe65c3d01d32b2d74910db0e6999b144f249d79e93a8367a2fa9cad5f",
+  "adapter_sha256": "8c9a9cfcec198dedde9460e98c6c6836419f51e8ff9543e7531a349094c8a2e2",
+  "declared_frozen_contract_sha256": "d4c7134344f81a885265863a013a846af6a53829864877b3686eb1f16306de80",
+  "declared_frozen_inputs_sha256": "43bbea5dac37be2036977e2dc1ef7f3976ee10fec3db5196eb2a9e72270f8847",
+  "python": "3.12.14",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+  "single_solve_budget_seconds": 300,
+  "solve_seconds": 0.7172983680011384,
+  "cache_immediately_after_solve": {
+    "hits": 15057,
+    "misses": 12620,
+    "maxsize": null,
+    "currsize": 12620
+  },
+  "value": "884450457/1342177280",
+  "initial_action": {
+    "kind": "dispatch",
+    "parent": 0,
+    "action": true
+  },
+  "export_seconds": 0.010507351000342169,
+  "reference_policy_nodes": 333,
+  "reference_policy_edges": 332,
+  "reference_policy_bytes": 86443,
+  "reference_policy_sha256": "775c7a61b4ce3ade0853e2b7200d9d0bae1498e49641f664b929179b4b6a426e",
+  "complete_native_replay": {
+    "performed": false,
+    "reason": "Long instance uses exact memo DP and the general source bridge; no exhaustive mode-label tape expansion is required."
+  },
+  "status": "PASS",
+  "checking_seconds": 0.0009590760000719456,
+  "planner_cache": {
+    "hits": 15398,
+    "misses": 12621,
+    "maxsize": null,
+    "currsize": 12621
+  },
+  "peak_process_rss_bytes": 22740992,
+  "total_adapter_seconds": 0.7462259500007349,
+  "qualification": "Reference policy is distinct from THIS Lean DAG. Independent value comparison does not substitute it for the Lean returned artifact.",
+  "reference_loading_seconds": 0.010092234999319771
+}

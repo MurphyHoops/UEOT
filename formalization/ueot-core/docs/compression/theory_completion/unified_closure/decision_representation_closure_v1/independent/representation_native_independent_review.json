@@ -1,0 +1,45 @@
+{
+  "reviewer": "/root/register_source",
+  "review_date": "2026-11-05",
+  "kind": "Independent source semantics review of the new direct native graph interpreter and prefix-payment integration",
+  "files": [
+    {
+      "file": "RegisterDecisionRepresentationNative.lean",
+      "sha256": "75b6fd2dbfc99af15a666a7f2b3e4f641dde53af64f481b3160900d2f08b0f49"
+    },
+    {
+      "file": "RegisterDecisionRepresentationPayment.lean",
+      "sha256": "1ad07bfc79cbb51c05a9d113d6c36109173ae5a5c33c7373b4ffe0ab82625d0b"
+    },
+    {
+      "file": "RegisterDecisionRepresentationModel.lean",
+      "sha256": "8b9fac843eddd706d6bd4f52082323fe0f94db3124d75ee2c54c46b5e5bb1dde"
+    }
+  ],
+  "decision": "No semantic blocker found in these source snapshots. The exact actual compiler and output evidence is root-owned and recorded separately.",
+  "findings": [
+    "packedRun and nativeRun select each requested action from only current Stat, remaining horizon and graph cursor. Hidden physical state, original programs, actual owner/parent identity, labels and source theta are passed only to the original primitive.",
+    "nativeRun uses the original nativeTransaction/nativeStep and retains the entire original record list. nativeRun_eq is structural equality to the proof-only table interpreter for every graph and tape; generation and actual direct traversal need no tree expansion.",
+    "primitiveTapeWeight uses the same theta at every finite tick and independently integrates the original fair label. sourceTapeWeight_eq derives equality to the old registered source rather than assuming an independently resampled mixture law.",
+    "nativeGraphJ is the exact finite primitive-tape expectation of actualPayoff on direct nativeRun records. nativeGraphJ_eq and expectedGraphJ_eq bind this particular graph/cursor to the old native J. No unproved payoff-equality certificate is accepted.",
+    "checked_native_value combines the all-action Good graph certificate, the proved concrete representation relation, and original-Store expected value. The original damaged founder and once-drawn finite prior are instantiated by initial_checked_native_value.",
+    "checked_native_optimal retains every original RawCausalPolicy with real action probabilities and arbitrary permitted memory, requiring legality only on supported histories. It first uses the old native optimum bound and transfers the full all-action optimum; it does not restrict competitors to the new statistic or chosen edges.",
+    "The additional feasible_transfer_wallet lemma proves global menu compatibility even at zero-probability branches using only exact public wallet recursion. The source/observer relation is required separately only on positive branches; the two obligations are not confused.",
+    "GraphPrepaid checks the original requested-action cap against current real budget and subtracts the literal fee of the same native transaction for the next tick. This preserves prepayment for wrong writes, faults, nonexistent child requests and requests after stop.",
+    "graph_native_payment applies to every graph and cursor, not just optimal graphs, because controllerAction has a legal safe fallback. Actual positive initial-atom and primitive-tape support is transferred to the old observation support before using original prefix payment.",
+    "packed_summary_wallet/native_summary_wallet identify every receipt-fold wallet with the original filtered wallet; native_prefix_cost then identifies that wallet with sums of original record fees. Thus actual supported balances use literal subtraction despite total clamped off-path definitions.",
+    "initial_graph_native_payment concretely initializes the original founder/prior and B0, while nativeRun_population retains H records, H action/receipt entries and H new Store slots. Stop still consumes real idle source ticks and can produce births or failures."
+  ],
+  "boundaries": [
+    "Known public goal and aligned original protected programs; positive tariff; same 0/1 request menu; serialized selected-parent source; finite fixed horizon and frozen discount/zero terminal payoff.",
+    "Full native metadata remain world records. Statistical equivalence does not identify or reconstruct different true individual histories.",
+    "This review certifies the meaning of the new integration source, not runtime performance, actual JSON identity or empirical adequacy of the physical model."
+  ],
+  "authorship_note": "These new Native/Payment/Model modules are authored by root. Previously completed source/native bridges are reused; the reviewer does not relabel its own Observer or Count modules as independently reviewed here.",
+  "validation_provenance": {
+    "reviewer_reran_lean": false,
+    "actual_compilation": "Root reports actual Mac compilation PASS for Native75b6fd2dbfc99af15a666a7f2b3e4f641dde53af64f481b3160900d2f08b0f49 and Payment1ad07bfc79cbb51c05a9d113d6c36109173ae5a5c33c7373b4ffe0ab82625d0b. These are the exact source hashes bound above.",
+    "final_payment_adjustment": "The final initial_graph_native_payment let-expression is on one line to fix parsing; its execution term and all semantic arguments match the reviewed version. Final tail was reread after the correction.",
+    "actual_artifacts": "Producer/serialization/direct-run and exported artifact identity are checked separately, not inferred from this source review."
+  }
+}

@@ -1,0 +1,2732 @@
+{
+  "schema": "UEOT/DECISION_REPRESENTATION_THEOREM_INDEX/V1",
+  "created_utc": "2026-11-05T18:36:49.388012+00:00",
+  "module_count": 13,
+  "namespace_prefix": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.",
+  "source_directory_repo_relative": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/",
+  "index_repo_paths": {
+    "markdown": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/decision_representation_closure_v1/THEOREM_INDEX.md",
+    "json": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/decision_representation_closure_v1/representation_theorem_index.json"
+  },
+  "markdown_sha256": "e6d9b30c35ac4f2f79fe665c23c76420d0b44842cc3989cffa3b0d3b22d2185a",
+  "scope": {
+    "acceptance_items": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "index_only": true,
+    "new_compilation_or_experiments": false,
+    "declaration_inventory": "Explicit public theorem/lemma declarations plus selected explicit definitions, abbreviations and structures; auto-generated structure projections/instances are not enumerated.",
+    "dependency_inventory": "Exact source import lists and curated explicit proof/definition uses; not a complete Lean kernel dependency dump."
+  },
+  "modules": [
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver",
+      "short_name": "RegisterDecisionObserver",
+      "namespace": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver",
+      "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserver.lean",
+      "sha256": "50de0ef837ea9fa367ed20a7bd5532e2e70f3ec579b9cf5c79783b14fe7939a9",
+      "bytes": 8717,
+      "acceptance_items": [
+        1
+      ],
+      "role": "Executable permitted-history observer, allocation/stop state and informative count increments.",
+      "direct_imports": [
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource",
+          "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionSource.lean",
+          "classification": "reused_PR441_module"
+        }
+      ],
+      "public_theorems": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.update_fresh",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.update_stopped",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.missing_child_stays_missing",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.first_append_decides_child",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.informative_selected",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.uninformative_receipt",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.informative_receipt_identifies_mode",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.increments_le_one",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.uninformative_increments",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.likelihood_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.likelihood_total",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.likelihood_counts",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.positive_likelihood_compatible",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.summarizeFrom_nil",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.summarizeFrom_cons",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.summarizeFrom_append",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.summarize_append"
+      ],
+      "key_declarations": [
+        {
+          "name": "Local",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.Local",
+          "kind": "structure",
+          "noncomputable": false
+        },
+        {
+          "name": "Stat",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.Stat",
+          "kind": "structure",
+          "noncomputable": false
+        },
+        {
+          "name": "init",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.init",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "initialStat",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.initialStat",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "update",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.update",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "updateStat",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.updateStat",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "summarizeFrom",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.summarizeFrom",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "summarize",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.summarize",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "informative",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.informative",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "likelihood",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.likelihood",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "first_append_decides_child",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.first_append_decides_child",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "missing_child_stays_missing",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.missing_child_stays_missing",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "update_stopped",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.update_stopped",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "update_fresh",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.update_fresh",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "informative_selected",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.informative_selected",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "uninformative_receipt",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.uninformative_receipt",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "uninformative_increments",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.uninformative_increments",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "informative_receipt_identifies_mode",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.informative_receipt_identifies_mode",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "likelihood_nonneg",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.likelihood_nonneg",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "likelihood_total",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.likelihood_total",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "likelihood_counts",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.likelihood_counts",
+          "kind": "theorem",
+          "noncomputable": false
+        }
+      ]
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource",
+      "short_name": "RegisterDecisionObserverSource",
+      "namespace": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource",
+      "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserverSource.lean",
+      "sha256": "82440929ed9f3375bd749c10c0be82aea4988b67797b05f896e09aedb4ecd16c",
+      "bytes": 9623,
+      "acceptance_items": [
+        1,
+        2
+      ],
+      "role": "Derivation from the original packed primitive and existing native Store bridge; projections are proof-side only.",
+      "direct_imports": [
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver",
+          "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserver.lean",
+          "classification": "new_module"
+        },
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionExecution",
+          "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionExecution.lean",
+          "classification": "reused_PR441_module"
+        }
+      ],
+      "public_theorems": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.selected_project",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.postBit_reconstructed",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.newborn_reconstructed",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.observe_project",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.rooted_step",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.update_project",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.initial_project",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.initial_rooted",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.likelihood_expectation",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.primitive_likelihood",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.primitive_joint",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.native_observe",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.native_update",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.native_rooted_step",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.packed_summary"
+      ],
+      "key_declarations": [
+        {
+          "name": "Rooted",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.Rooted",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "projectLocal",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.projectLocal",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "projectNative",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.projectNative",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "observe_project",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.observe_project",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "update_project",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.update_project",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "rooted_step",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.rooted_step",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "initial_project",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.initial_project",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "initial_rooted",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.initial_rooted",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "primitive_likelihood",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.primitive_likelihood",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "primitive_joint",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.primitive_joint",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "native_observe",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.native_observe",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "native_update",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.native_update",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "native_rooted_step",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.native_rooted_step",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "packed_summary",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.packed_summary",
+          "kind": "theorem",
+          "noncomputable": false
+        }
+      ]
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior",
+      "short_name": "RegisterDecisionCountPosterior",
+      "namespace": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior",
+      "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionCountPosterior.lean",
+      "sha256": "025eb3d86c3a3d7d0664e7b369da2bd22f29f2b67ef123b06f25c0a613ffaffd",
+      "bytes": 9657,
+      "acceptance_items": [
+        1,
+        2
+      ],
+      "role": "Exact finite count posterior, endpoint/zero-prior behavior and positive supported denominator.",
+      "direct_imports": [
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver",
+          "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserver.lean",
+          "classification": "new_module"
+        },
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief",
+          "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionBelief.lean",
+          "classification": "reused_PR441_module"
+        }
+      ],
+      "public_theorems": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.countWeight_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.normalizer_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.countWeight_zero_zero",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.normalizer_zero_zero",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.posterior_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.posterior_total",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.posterior_zero_zero",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.prior_zero_remains_zero",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.countWeight_update",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.normalizer_update",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.observationMass_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.observationMass_total",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.observationMass_compatible",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.observationMass_ratio",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.positive_update",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.posterior_update",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.posterior_joint_identity",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.posterior_test_identity"
+      ],
+      "key_declarations": [
+        {
+          "name": "countWeight",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.countWeight",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "normalizer",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.normalizer",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "posteriorWeight",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.posteriorWeight",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "observationMass",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.observationMass",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "countBelief",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.countBelief",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "posterior_nonneg",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.posterior_nonneg",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "posterior_total",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.posterior_total",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "posterior_zero_zero",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.posterior_zero_zero",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "prior_zero_remains_zero",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.prior_zero_remains_zero",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "countWeight_update",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.countWeight_update",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "normalizer_update",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.normalizer_update",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "observationMass_ratio",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.observationMass_ratio",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "positive_update",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.positive_update",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "posterior_update",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.posterior_update",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "posterior_joint_identity",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.posterior_joint_identity",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "posterior_test_identity",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.posterior_test_identity",
+          "kind": "theorem",
+          "noncomputable": false
+        }
+      ]
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory",
+      "short_name": "RegisterDecisionCountHistory",
+      "namespace": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory",
+      "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionCountHistory.lean",
+      "sha256": "90f91bd2099aa40863fd93183a3bb83fea39e1c71bc627ed0b0ea4c8d83dc7b5",
+      "bytes": 12124,
+      "acceptance_items": [
+        1,
+        2
+      ],
+      "role": "Actual source history likelihood and count posterior for arbitrary raw real-randomized history kernels.",
+      "direct_imports": [
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior",
+          "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionCountPosterior.lean",
+          "classification": "new_module"
+        },
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource",
+          "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserverSource.lean",
+          "classification": "new_module"
+        },
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionSupportedPolicy",
+          "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionSupportedPolicy.lean",
+          "classification": "reused_PR441_module"
+        }
+      ],
+      "public_theorems": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.historyLikelihood_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.incompatible_likelihood_zero",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.countWeight_history",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.worldLikelihood_eq_local",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.initial_likelihood_counts",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.actionFactor_nonneg",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.rawWorldLikelihood_factor",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.rawPriorMass_eq",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.incompatible_prior_mass_zero",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.positive_history",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.conditional_count_posterior"
+      ],
+      "key_declarations": [
+        {
+          "name": "CompatibleHistory",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.CompatibleHistory",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "historyLikelihood",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.historyLikelihood",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "worldLikelihood",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.worldLikelihood",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "worldLikelihood_eq_local",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.worldLikelihood_eq_local",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "initial_likelihood_counts",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.initial_likelihood_counts",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "actionFactor",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.actionFactor",
+          "kind": "def",
+          "noncomputable": true
+        },
+        {
+          "name": "rawWorldLikelihood",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.rawWorldLikelihood",
+          "kind": "def",
+          "noncomputable": true
+        },
+        {
+          "name": "rawWorldLikelihood_factor",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.rawWorldLikelihood_factor",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "rawPriorMass",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.rawPriorMass",
+          "kind": "def",
+          "noncomputable": true
+        },
+        {
+          "name": "rawPriorMass_eq",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.rawPriorMass_eq",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "positive_history",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.positive_history",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "conditional_count_posterior",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.conditional_count_posterior",
+          "kind": "theorem",
+          "noncomputable": false
+        }
+      ]
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionRefinement",
+      "short_name": "FiniteJointDecisionRefinement",
+      "namespace": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionRefinement",
+      "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionRefinement.lean",
+      "sha256": "b791816f598419c0edfdecce20d5cea49b61002611762ae6ab195f8391af900e",
+      "bytes": 5667,
+      "acceptance_items": [
+        2
+      ],
+      "role": "Thin supported one-step adapter for existing finite-model semantics, receipt-tape laws and optimum.",
+      "direct_imports": [
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionSupportedPolicy",
+          "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionSupportedPolicy.lean",
+          "classification": "reused_PR441_module"
+        }
+      ],
+      "public_theorems": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionRefinement.feasible_supported",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionRefinement.supported_feasible_transfer",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionRefinement.value_transfer",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionRefinement.tapeWeight_transfer",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionRefinement.optimalValue_transfer"
+      ],
+      "key_declarations": [
+        {
+          "name": "StepRefinement",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionRefinement.StepRefinement",
+          "kind": "structure",
+          "noncomputable": false
+        },
+        {
+          "name": "feasible_supported",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionRefinement.feasible_supported",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "supported_feasible_transfer",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionRefinement.supported_feasible_transfer",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "value_transfer",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionRefinement.value_transfer",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "tapeWeight_transfer",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionRefinement.tapeWeight_transfer",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "optimalValue_transfer",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionRefinement.optimalValue_transfer",
+          "kind": "theorem",
+          "noncomputable": false
+        }
+      ]
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel",
+      "short_name": "RegisterDecisionRepresentationModel",
+      "namespace": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel",
+      "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean",
+      "sha256": "8b9fac843eddd706d6bd4f52082323fe0f94db3124d75ee2c54c46b5e5bb1dde",
+      "bytes": 12229,
+      "acceptance_items": [
+        2,
+        3
+      ],
+      "role": "Concrete source-derived Stat model, original cap/menu, belief relation and full joint observable law.",
+      "direct_imports": [
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource",
+          "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserverSource.lean",
+          "classification": "new_module"
+        },
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior",
+          "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionCountPosterior.lean",
+          "classification": "new_module"
+        },
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionConsumer",
+          "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionConsumer.lean",
+          "classification": "reused_PR441_module"
+        },
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionRefinement",
+          "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionRefinement.lean",
+          "classification": "new_module"
+        }
+      ],
+      "public_theorems": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.joint_theta",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.mass_eq",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.belief_next",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.clamp_sub",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.wallet_next",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.rel_next",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.initial_relation",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.optimalValue_initial",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.joint_observable_law",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.feasible_transfer_wallet"
+      ],
+      "key_declarations": [
+        {
+          "name": "wallet",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.wallet",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "model",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.model",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "BeliefMatches",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.BeliefMatches",
+          "kind": "structure",
+          "noncomputable": false
+        },
+        {
+          "name": "Rel",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.Rel",
+          "kind": "structure",
+          "noncomputable": false
+        },
+        {
+          "name": "joint_theta",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.joint_theta",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "mass_eq",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.mass_eq",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "belief_next",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.belief_next",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "wallet_next",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.wallet_next",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "rel_next",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.rel_next",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "refinement",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.refinement",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "initial_relation",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.initial_relation",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "optimalValue_initial",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.optimalValue_initial",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "joint_observable_law",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.joint_observable_law",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "feasible_transfer_wallet",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.feasible_transfer_wallet",
+          "kind": "theorem",
+          "noncomputable": false
+        }
+      ]
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG",
+      "short_name": "FiniteJointDecisionDAG",
+      "namespace": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG",
+      "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+      "sha256": "607de7f667582ebd4c6ce4cf3474da060a34eaef9aca0c034b03416e2394e1a5",
+      "bytes": 14861,
+      "acceptance_items": [
+        3,
+        4
+      ],
+      "role": "Actual node array, all-legal-action positive-successor checker, direct controller and certified exact values.",
+      "direct_imports": [
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionSupportedPolicy",
+          "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionSupportedPolicy.lean",
+          "classification": "reused_PR441_module"
+        }
+      ],
+      "public_theorems": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.check_sound",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.good_of_check",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.valid_succ",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.valid_choice_mem",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.edgeValid_witness",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.edgeValue_at",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.score_eq_qValue",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.node_value_eq_optimal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.selectBest_congr_on",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.chooseBest_congr_on",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.node_choice_eq_chosen",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.safeAction_mem",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.controllerAction_mem",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.controllerAction_at",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.controllerNext_at",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.denote_feasible",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.denote_value_eq_node",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.denote_optimal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.rawValue_le_node"
+      ],
+      "key_declarations": [
+        {
+          "name": "Node",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.Node",
+          "kind": "structure",
+          "noncomputable": false
+        },
+        {
+          "name": "Graph",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.Graph",
+          "kind": "abbrev",
+          "noncomputable": false
+        },
+        {
+          "name": "key",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.key",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "EdgeValid",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.EdgeValid",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "NodeValid",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.NodeValid",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "Good",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.Good",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "check",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.check",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "check_sound",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.check_sound",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "good_of_check",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.good_of_check",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "score_eq_qValue",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.score_eq_qValue",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "node_value_eq_optimal",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.node_value_eq_optimal",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "node_choice_eq_chosen",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.node_choice_eq_chosen",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "safeAction",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.safeAction",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "controllerAction",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.controllerAction",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "controllerNext",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.controllerNext",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "controllerAction_mem",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.controllerAction_mem",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "denote",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.denote",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "denote_feasible",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.denote_feasible",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "denote_value_eq_node",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.denote_value_eq_node",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "denote_optimal",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.denote_optimal",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "rawValue_le_node",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.rawValue_le_node",
+          "kind": "theorem",
+          "noncomputable": false
+        }
+      ]
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator",
+      "short_name": "FiniteJointDecisionDAGGenerator",
+      "namespace": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator",
+      "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAGGenerator.lean",
+      "sha256": "820a13e48a1d09b90234dbff4da2080ca40440a5fc39861187d99a9d90007bf3",
+      "bytes": 6359,
+      "acceptance_items": [
+        3
+      ],
+      "role": "Fresh cross-history memo candidate and executable accepted-certificate/root boundary.",
+      "direct_imports": [
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG",
+          "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+          "classification": "new_module"
+        }
+      ],
+      "public_theorems": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.certified_value",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.certified_policy_value",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.certified_policy_feasible",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.certified_randomized_upper"
+      ],
+      "key_declarations": [
+        {
+          "name": "Edge",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.Edge",
+          "kind": "abbrev",
+          "noncomputable": false
+        },
+        {
+          "name": "edgeLookup",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.edgeLookup",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "BuildState",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.BuildState",
+          "kind": "structure",
+          "noncomputable": false
+        },
+        {
+          "name": "emptyState",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.emptyState",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "insertNode",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.insertNode",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "build",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.build",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "Candidate",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.Candidate",
+          "kind": "structure",
+          "noncomputable": false
+        },
+        {
+          "name": "generate",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.generate",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "Certified",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.Certified",
+          "kind": "structure",
+          "noncomputable": false
+        },
+        {
+          "name": "certify",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.certify",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "plan",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.plan",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "certified_value",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.certified_value",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "certified_policy_value",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.certified_policy_value",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "certified_policy_feasible",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.certified_policy_feasible",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "certified_randomized_upper",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.certified_randomized_upper",
+          "kind": "theorem",
+          "noncomputable": false
+        }
+      ]
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative",
+      "short_name": "RegisterDecisionRepresentationNative",
+      "namespace": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative",
+      "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationNative.lean",
+      "sha256": "75b6fd2dbfc99af15a666a7f2b3e4f641dde53af64f481b3160900d2f08b0f49",
+      "bytes": 11330,
+      "acceptance_items": [
+        3
+      ],
+      "role": "Same-cursor direct packed/native semantics, actual value, old full-history real-randomized comparison and complete population.",
+      "direct_imports": [
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel",
+          "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean",
+          "classification": "new_module"
+        },
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG",
+          "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+          "classification": "new_module"
+        },
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionNativeConsumer",
+          "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionNativeConsumer.lean",
+          "classification": "reused_PR441_module"
+        }
+      ],
+      "public_theorems": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.packedRun_eq",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.nativeRun_eq",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.nativeRun_project",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.sourceTapeWeight_eq",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.nativeGraphJ_eq",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.expectedGraphJ_eq",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.checked_native_value",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.checked_native_optimal",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.initial_checked_native_value",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.nativeRun_population"
+      ],
+      "key_declarations": [
+        {
+          "name": "packedRun",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.packedRun",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "nativeRun",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.nativeRun",
+          "kind": "def",
+          "noncomputable": true
+        },
+        {
+          "name": "packedRun_eq",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.packedRun_eq",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "nativeRun_eq",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.nativeRun_eq",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "nativeRun_project",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.nativeRun_project",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "primitiveTapeWeight",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.primitiveTapeWeight",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "sourceTapeWeight_eq",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.sourceTapeWeight_eq",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "nativeGraphJ",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.nativeGraphJ",
+          "kind": "def",
+          "noncomputable": true
+        },
+        {
+          "name": "nativeGraphJ_eq",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.nativeGraphJ_eq",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "expectedGraphJ",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.expectedGraphJ",
+          "kind": "def",
+          "noncomputable": true
+        },
+        {
+          "name": "expectedGraphJ_eq",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.expectedGraphJ_eq",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "checked_native_value",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.checked_native_value",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "checked_native_optimal",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.checked_native_optimal",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "initial_checked_native_value",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.initial_checked_native_value",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "nativeRun_population",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.nativeRun_population",
+          "kind": "theorem",
+          "noncomputable": false
+        }
+      ]
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment",
+      "short_name": "RegisterDecisionRepresentationPayment",
+      "namespace": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment",
+      "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationPayment.lean",
+      "sha256": "1ad07bfc79cbb51c05a9d113d6c36109173ae5a5c33c7373b4ffe0ab82625d0b",
+      "bytes": 8891,
+      "acceptance_items": [
+        3
+      ],
+      "role": "Literal pre-outcome cap and actual native fee at every supported prefix of the direct graph controller.",
+      "direct_imports": [
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative",
+          "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationNative.lean",
+          "classification": "new_module"
+        }
+      ],
+      "public_theorems": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.graphPrepaid_eq",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.packed_summary_wallet",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.native_summary_wallet",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.graph_native_payment",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.initial_graph_native_payment"
+      ],
+      "key_declarations": [
+        {
+          "name": "GraphPrepaid",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.GraphPrepaid",
+          "kind": "def",
+          "noncomputable": true
+        },
+        {
+          "name": "graphPrepaid_eq",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.graphPrepaid_eq",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "packed_summary_wallet",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.packed_summary_wallet",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "native_summary_wallet",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.native_summary_wallet",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "graph_native_payment",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.graph_native_payment",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "initial_graph_native_payment",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.initial_graph_native_payment",
+          "kind": "theorem",
+          "noncomputable": false
+        }
+      ]
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds",
+      "short_name": "RegisterDecisionRepresentationBounds",
+      "namespace": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds",
+      "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationBounds.lean",
+      "sha256": "c70e8582717e1d237734931f14c60b98ffe25cdbc6b6597841273382c728fecb",
+      "bytes": 6694,
+      "acceptance_items": [
+        4
+      ],
+      "role": "Source count/horizon invariants and node bound on the actual all-row unique-key array.",
+      "direct_imports": [
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver",
+          "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserver.lean",
+          "classification": "new_module"
+        },
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG",
+          "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+          "classification": "new_module"
+        }
+      ],
+      "public_theorems": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.initial_count_bound",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.update_count_bound",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.summarizeFrom_count_bound",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.summarize_count_bound",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.summarizeFrom_elapsed",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.summarize_elapsed",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.initial_in_horizon",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.update_in_horizon",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.history_in_horizon",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.local_card",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.code_card",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.encode_injective",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.boundCheck_sound",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.actual_graph_node_bound"
+      ],
+      "key_declarations": [
+        {
+          "name": "CountBound",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.CountBound",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "initial_count_bound",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.initial_count_bound",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "update_count_bound",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.update_count_bound",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "summarize_count_bound",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.summarize_count_bound",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "summarize_elapsed",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.summarize_elapsed",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "InHorizon",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.InHorizon",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "initial_in_horizon",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.initial_in_horizon",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "update_in_horizon",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.update_in_horizon",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "history_in_horizon",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.history_in_horizon",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "local_card",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.local_card",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "Code",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.Code",
+          "kind": "abbrev",
+          "noncomputable": false
+        },
+        {
+          "name": "code_card",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.code_card",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "encode",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.encode",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "encode_injective",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.encode_injective",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "boundCheck",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.boundCheck",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "boundCheck_sound",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.boundCheck_sound",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "actual_graph_node_bound",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.actual_graph_node_bound",
+          "kind": "theorem",
+          "noncomputable": false
+        }
+      ]
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses",
+      "short_name": "RegisterDecisionRepresentationWitnesses",
+      "namespace": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses",
+      "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationWitnesses.lean",
+      "sha256": "800d533e3ce059e1e5b5e4680bdbaa9139fa9ef8edea55b4f43854c80f9d6ce0",
+      "bytes": 13076,
+      "acceptance_items": [
+        4
+      ],
+      "role": "Same-source reachable insufficient-statistic, positive merge, native identity and address-2 permission counterexamples.",
+      "direct_imports": [
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver",
+          "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserver.lean",
+          "classification": "new_module"
+        },
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionNativeLaw",
+          "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionNativeLaw.lean",
+          "classification": "reused_PR441_module"
+        }
+      ],
+      "public_theorems": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.insufficient_histories_actual",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.insufficient_counts_and_same_body",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.insufficient_same_time_wallet_body",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.native_history_integral_eq",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.insufficient_likelihoods",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.insufficient_joint_next_birth",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.body_wallet_time_is_insufficient",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.merge_histories_actual",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.merge_same_complete_summary",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.merge_different_actual_tails",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.merge_likelihoods",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.merge_both_positive_same_posterior",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.merge_old_menu_receipt",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.merge_old_menu_joint_summary",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.native_merge_keeps_distinct_records",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.dispatch2_breaks_merge",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.dispatch2_birth_laws",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.native_dispatch2_boundary"
+      ],
+      "key_declarations": [
+        {
+          "name": "insufficientA",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.insufficientA",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "insufficientB",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.insufficientB",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "mergeA",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.mergeA",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "mergeB",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.mergeB",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "insufficient_histories_actual",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.insufficient_histories_actual",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "insufficient_counts_and_same_body",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.insufficient_counts_and_same_body",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "insufficient_same_time_wallet_body",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.insufficient_same_time_wallet_body",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "native_history_integral_eq",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.native_history_integral_eq",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "insufficient_likelihoods",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.insufficient_likelihoods",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "insufficient_joint_next_birth",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.insufficient_joint_next_birth",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "body_wallet_time_is_insufficient",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.body_wallet_time_is_insufficient",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "merge_histories_actual",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.merge_histories_actual",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "merge_same_complete_summary",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.merge_same_complete_summary",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "merge_different_actual_tails",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.merge_different_actual_tails",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "merge_likelihoods",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.merge_likelihoods",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "merge_both_positive_same_posterior",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.merge_both_positive_same_posterior",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "merge_old_menu_receipt",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.merge_old_menu_receipt",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "merge_old_menu_joint_summary",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.merge_old_menu_joint_summary",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "native_merge_keeps_distinct_records",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.native_merge_keeps_distinct_records",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "dispatch2_breaks_merge",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.dispatch2_breaks_merge",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "dispatch2_birth_laws",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.dispatch2_birth_laws",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "native_dispatch2_boundary",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.native_dispatch2_boundary",
+          "kind": "theorem",
+          "noncomputable": false
+        }
+      ]
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation",
+      "short_name": "RegisterDecisionRepresentation",
+      "namespace": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation",
+      "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentation.lean",
+      "sha256": "79cd246bf4e6d91293a9ba3c293808a8f241a7ca78fa25a0e01fc2bfa7a1095d",
+      "bytes": 5479,
+      "acceptance_items": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "role": "Public accepted Result, fresh-memo return, actual initial native value, original comparison class and array bound.",
+      "direct_imports": [
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory",
+          "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionCountHistory.lean",
+          "classification": "new_module"
+        },
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment",
+          "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationPayment.lean",
+          "classification": "new_module"
+        },
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds",
+          "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationBounds.lean",
+          "classification": "new_module"
+        },
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses",
+          "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationWitnesses.lean",
+          "classification": "new_module"
+        },
+        {
+          "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator",
+          "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAGGenerator.lean",
+          "classification": "new_module"
+        }
+      ],
+      "public_theorems": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.result_node_bound",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.result_native_value",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.result_native_optimal"
+      ],
+      "key_declarations": [
+        {
+          "name": "Result",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.Result",
+          "kind": "structure",
+          "noncomputable": false
+        },
+        {
+          "name": "accept",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.accept",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "returned",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.returned",
+          "kind": "def",
+          "noncomputable": false
+        },
+        {
+          "name": "result_node_bound",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.result_node_bound",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "result_native_value",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.result_native_value",
+          "kind": "theorem",
+          "noncomputable": false
+        },
+        {
+          "name": "result_native_optimal",
+          "qualified_name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.result_native_optimal",
+          "kind": "theorem",
+          "noncomputable": false
+        }
+      ]
+    }
+  ],
+  "acceptance_mapping": [
+    {
+      "item": 1,
+      "title": "许可历史产生表示",
+      "claims": [
+        {
+          "claim": "Receipt-only executable summary, first allocation and stop updates",
+          "declarations": [
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.updateStat",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.summarize",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.first_append_decides_child",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.missing_child_stays_missing",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.update_stopped"
+          ]
+        },
+        {
+          "claim": "Source derivation, not a free Store observation",
+          "declarations": [
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.observe_project",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.update_project",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.native_observe",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.native_update",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.packed_summary"
+          ]
+        },
+        {
+          "claim": "Endpoint and zero-prior supported posterior",
+          "declarations": [
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.prior_zero_remains_zero",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.positive_update",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.posterior_update"
+          ]
+        },
+        {
+          "claim": "Raw real full-history action factors cancel in the actual conditional theta posterior",
+          "declarations": [
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.rawWorldLikelihood_factor",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.positive_history",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.conditional_count_posterior"
+          ]
+        }
+      ]
+    },
+    {
+      "item": 2,
+      "title": "表示保持完整决策语义",
+      "claims": [
+        {
+          "claim": "Joint receipt, successor summary, birth, actual fee and updated balance test law",
+          "declarations": [
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.joint_observable_law"
+          ]
+        },
+        {
+          "claim": "Actual source initial relation and all-action supported refinement",
+          "declarations": [
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.initial_relation",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.refinement",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.rel_next"
+          ]
+        },
+        {
+          "claim": "Every supported feasible adaptive Table has the same finite receipt-tape law and value",
+          "declarations": [
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionRefinement.tapeWeight_transfer",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionRefinement.value_transfer"
+          ]
+        },
+        {
+          "claim": "All-action finite optimum and global off-support wallet legality transfer",
+          "declarations": [
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.optimalValue_initial",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.feasible_transfer_wallet"
+          ]
+        }
+      ]
+    },
+    {
+      "item": 3,
+      "title": "真实紧凑最优策略",
+      "claims": [
+        {
+          "claim": "All legal alternatives and positive successors of the actual unique-key array are certified",
+          "declarations": [
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.NodeValid",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.Good",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.check_sound",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.node_value_eq_optimal"
+          ]
+        },
+        {
+          "claim": "Fresh memo and proof-carrying accepted graph/root, not generic always-acceptance",
+          "declarations": [
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.generate",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.certify",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.Certified",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.accept",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.returned"
+          ]
+        },
+        {
+          "claim": "Direct execution equality and same-object actual native value",
+          "declarations": [
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.packedRun_eq",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.nativeRun_eq",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.nativeRun_project",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.result_native_value"
+          ]
+        },
+        {
+          "claim": "Original belief-model raw real full-history competitors, legal on positive prefixes",
+          "declarations": [
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.checked_native_optimal",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.result_native_optimal"
+          ]
+        },
+        {
+          "claim": "Pre-outcome cap and actual native fee at every supported prefix",
+          "declarations": [
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.GraphPrepaid",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.graph_native_payment",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.initial_graph_native_payment"
+          ]
+        }
+      ]
+    },
+    {
+      "item": 4,
+      "title": "定量与必要边界",
+      "claims": [
+        {
+          "claim": "Actual all-row graph size bound 24*(H+1)^4 from actual unique keys and count/time check",
+          "declarations": [
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.actual_graph_node_bound",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.result_node_bound"
+          ]
+        },
+        {
+          "claim": "Same-source positive histories show body/wallet/time alone insufficient",
+          "declarations": [
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.insufficient_histories_actual",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.body_wallet_time_is_insufficient",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.native_history_integral_eq"
+          ]
+        },
+        {
+          "claim": "Reachable positive merge retains distinct complete native records",
+          "declarations": [
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.merge_same_complete_summary",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.merge_both_positive_same_posterior",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.merge_old_menu_joint_summary",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.native_merge_keeps_distinct_records"
+          ]
+        },
+        {
+          "claim": "Permission extension to address 2 separates the old-equivalent worlds",
+          "declarations": [
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.dispatch2_birth_laws",
+            "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.native_dispatch2_boundary"
+          ]
+        }
+      ]
+    }
+  ],
+  "selected_declaration_dependency_edges": [
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.native_observe",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.nativeObservation_project",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionSource.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.native_observe",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.observe_project",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserverSource.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.native_update",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.nativeStep_project",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionSource.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.native_update",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.update_project",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserverSource.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.native_update",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.nativeObservation_project",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionSource.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.posterior_update",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.positive_update",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionCountPosterior.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.posterior_update",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.countWeight_update",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionCountPosterior.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.posterior_update",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.observationMass_ratio",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionCountPosterior.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.worldLikelihood_eq_local",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.primitive_likelihood",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserverSource.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.worldLikelihood_eq_local",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.rooted_step",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserverSource.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.worldLikelihood_eq_local",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.update_project",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserverSource.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.initial_likelihood_counts",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.worldLikelihood_eq_local",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionCountHistory.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.initial_likelihood_counts",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.initial_rooted",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserverSource.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.initial_likelihood_counts",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.countWeight_history",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionCountHistory.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.rawWorldLikelihood_factor",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.rawWorldLikelihood",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionCountHistory.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.rawWorldLikelihood_factor",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.actionFactor",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionCountHistory.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.rawWorldLikelihood_factor",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.worldLikelihood",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionCountHistory.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.rawPriorMass_eq",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.rawWorldLikelihood_factor",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionCountHistory.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.rawPriorMass_eq",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.initial_likelihood_counts",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionCountHistory.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.conditional_count_posterior",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.positive_history",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionCountHistory.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.conditional_count_posterior",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.rawWorldLikelihood_factor",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionCountHistory.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.conditional_count_posterior",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.rawPriorMass_eq",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionCountHistory.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.conditional_count_posterior",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory.initial_likelihood_counts",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionCountHistory.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.joint_theta",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.primitive_likelihood",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserverSource.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.mass_eq",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.joint_theta",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.belief_next",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.mass_eq",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.belief_next",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.posterior_supported",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionBelief.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.belief_next",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.rooted_step",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserverSource.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.belief_next",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.update_project",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserverSource.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.belief_next",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.posterior_identity",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionBelief.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.belief_next",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.joint_theta",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.belief_next",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.posterior_test_identity",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionCountPosterior.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.rel_next",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.belief_next",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.rel_next",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.wallet_next",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.rel_next",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.positive_update",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionCountPosterior.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.rel_next",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.mass_eq",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.refinement",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.mass_eq",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.refinement",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.rel_next",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.initial_relation",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource.initial_rooted",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserverSource.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.initial_relation",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.posterior_zero_zero",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionCountPosterior.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.initial_relation",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior.normalizer_zero_zero",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionCountPosterior.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.optimalValue_initial",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionRefinement.optimalValue_transfer",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionRefinement.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.optimalValue_initial",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.refinement",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.optimalValue_initial",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.initial_relation",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.joint_observable_law",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionFilteredModel.primitive_expectation",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionFilteredModel.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.joint_observable_law",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.mass_eq",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.joint_observable_law",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.wallet_next",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.feasible_transfer_wallet",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.wallet_next",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.check_sound",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.check",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.check_sound",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.Good",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.score_eq_qValue",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.edgeValid_witness",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.score_eq_qValue",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.valid_succ",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.score_eq_qValue",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.edgeValue_at",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.node_value_eq_optimal",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.score_eq_qValue",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.node_value_eq_optimal",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.valid_succ",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.node_value_eq_optimal",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.valid_choice_mem",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.node_value_eq_optimal",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionSolver.qValue_le_optimalValue",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionSolver.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.node_value_eq_optimal",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionSolver.le_chooseBest",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionSolver.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.node_choice_eq_chosen",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.chooseBest_congr_on",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.node_choice_eq_chosen",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.score_eq_qValue",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.node_choice_eq_chosen",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.node_value_eq_optimal",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.denote_feasible",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.controllerAction_mem",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.denote_value_eq_node",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.controllerAction_at",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.denote_value_eq_node",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.controllerNext_at",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.denote_value_eq_node",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.edgeValid_witness",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.denote_optimal",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.denote_value_eq_node",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.denote_optimal",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.node_value_eq_optimal",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.rawValue_le_node",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionSupportedPolicy.rawValue_le_solve",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionSupportedPolicy.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.rawValue_le_node",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.node_value_eq_optimal",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.certify",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.check",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.certify",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.check_sound",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.certify",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.Certified",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAGGenerator.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.certified_value",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.node_value_eq_optimal",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.certified_policy_value",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.denote_value_eq_node",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.certified_policy_feasible",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.denote_feasible",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.certified_randomized_upper",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.rawValue_le_node",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.nativeRun_project",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.nativeRun_eq",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationNative.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.nativeRun_project",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.packedRun_eq",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationNative.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.nativeRun_project",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionExecution.nativeExecute_project",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionExecution.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.nativeGraphJ_eq",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.nativeRun_eq",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationNative.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.nativeGraphJ_eq",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.sourceTapeWeight_eq",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationNative.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.expectedGraphJ_eq",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.nativeGraphJ_eq",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationNative.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.checked_native_value",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.denote_feasible",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.checked_native_value",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.feasible_transfer_wallet",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.checked_native_value",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.expectedGraphJ_eq",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationNative.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.checked_native_value",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionNativeConsumer.expectedNativeJ_eq_value",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionNativeConsumer.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.checked_native_value",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionRefinement.value_transfer",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionRefinement.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.checked_native_value",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.refinement",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.checked_native_value",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionRefinement.feasible_supported",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionRefinement.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.checked_native_value",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.denote_value_eq_node",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.checked_native_optimal",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.checked_native_value",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationNative.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.checked_native_optimal",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionNativeConsumer.returned_native_optimal",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionNativeConsumer.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.checked_native_optimal",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionNativeConsumer.returned_native_value",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionNativeConsumer.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.checked_native_optimal",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionRefinement.optimalValue_transfer",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionRefinement.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.checked_native_optimal",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.refinement",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.checked_native_optimal",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.node_value_eq_optimal",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.initial_checked_native_value",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.checked_native_value",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationNative.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.initial_checked_native_value",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.initial_relation",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.initial_checked_native_value",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionNativeConsumer.initialRealization",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionNativeConsumer.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.nativeRun_population",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.nativeRun_eq",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationNative.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.nativeRun_population",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionExecution.nativeExecute_length",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionExecution.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.native_summary_wallet",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionExecution.native_history_eq",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionExecution.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.native_summary_wallet",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.packed_summary_wallet",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationPayment.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.graph_native_payment",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG.denote_feasible",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.graph_native_payment",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.feasible_transfer_wallet",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.graph_native_payment",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.sourceTapeWeight_eq",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationNative.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.graph_native_payment",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionFilteredModel.observedTape_supported",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionFilteredModel.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.graph_native_payment",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.graphPrepaid_eq",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationPayment.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.graph_native_payment",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionNativeConsumer.native_prepaid_of_supported",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionNativeConsumer.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.graph_native_payment",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.nativeRun_eq",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationNative.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.graph_native_payment",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.native_summary_wallet",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationPayment.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.graph_native_payment",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionNativeConsumer.native_prefix_cost",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionNativeConsumer.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.graph_native_payment",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionSolver.feasible_prefix_ledger",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionSolverExecution.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.initial_graph_native_payment",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.graph_native_payment",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationPayment.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.initial_graph_native_payment",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.initial_relation",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.initial_graph_native_payment",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionNativeConsumer.initialRealization",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionNativeConsumer.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.update_count_bound",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.increments_le_one",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserver.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.actual_graph_node_bound",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.encode",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationBounds.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.actual_graph_node_bound",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.encode_injective",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationBounds.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.actual_graph_node_bound",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.boundCheck_sound",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationBounds.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.actual_graph_node_bound",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.code_card",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationBounds.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.native_history_integral_eq",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.nativeObservation_project",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionSource.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.native_history_integral_eq",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.nativeStep_project",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionSource.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.body_wallet_time_is_insufficient",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.insufficient_likelihoods",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationWitnesses.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.body_wallet_time_is_insufficient",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.insufficient_joint_next_birth",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationWitnesses.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.merge_both_positive_same_posterior",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.merge_likelihoods",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationWitnesses.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.merge_old_menu_joint_summary",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.merge_same_complete_summary",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationWitnesses.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.merge_old_menu_joint_summary",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.merge_old_menu_receipt",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationWitnesses.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.dispatch2_birth_laws",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses.dispatch2_breaks_merge",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationWitnesses.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.accept",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.certify",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAGGenerator.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.accept",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.boundCheck",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationBounds.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.returned",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.accept",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentation.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.returned",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.generate",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAGGenerator.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.returned",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.model",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.returned",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver.initialStat",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserver.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.result_node_bound",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds.actual_graph_node_bound",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationBounds.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.result_native_value",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.initial_checked_native_value",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationNative.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.result_native_optimal",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.initial_relation",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.result_native_optimal",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.checked_native_optimal",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationNative.lean",
+      "kind": "selected_explicit_source_use"
+    },
+    {
+      "consumer": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation.result_native_optimal",
+      "provider": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative.checked_native_value",
+      "provider_repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationNative.lean",
+      "kind": "selected_explicit_source_use"
+    }
+  ],
+  "reused_direct_foundations": [
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief",
+      "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionBelief.lean"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionSupportedPolicy",
+      "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionSupportedPolicy.lean"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionConsumer",
+      "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionConsumer.lean"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionExecution",
+      "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionExecution.lean"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionNativeConsumer",
+      "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionNativeConsumer.lean"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionNativeLaw",
+      "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionNativeLaw.lean"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource",
+      "repo_path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionSource.lean"
+    }
+  ],
+  "actual_driver": {
+    "repo_path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/decision_representation_closure_v1/native_protocol/RETURN_REPRESENTATION_DAG.lean",
+    "sha256": "4b3537ff018ff234760dd1833ccacb7d0a0ccea392833b59730bf338e6d5763a",
+    "runtime_sequence": [
+      "generate",
+      "certify",
+      "boundCheck",
+      "packedRun on same graph/root",
+      "serialize same graph/root"
+    ],
+    "uses_public_returned_wrapper": false,
+    "expands_denote_or_old_solver": false,
+    "counted_in_13_modules": false
+  },
+  "scope_limits": {
+    "accepted_candidate": "Every accepted Certified/Result is sound for the exact graph, root and public model. There is no theorem that generic generate or plan accepts every input.",
+    "not_only_selected_edges": "NodeValid quantifies every legal alternative and every positive receipt; execution subgraph and optimality proof graph are different counted objects.",
+    "raw_real_history": "conditional_count_posterior handles real RawCausalPolicy action probabilities. Final native optimality compares the original belief-model RawCausalPolicy under SupportedAdmissible, not just compact-state policies.",
+    "joint_law": "joint_observable_law is an arbitrary joint test, not a product of independently assumed marginals. tapeWeight_transfer itself quantifies adaptive Tables; raw randomized coverage has separate declared interfaces.",
+    "world_relation": "Rel and StepRefinement are proof-side predicates. Concrete refinement and initial_relation are source-derived; no scheduler is given hidden world data or a sufficiency oracle.",
+    "payment": "graph_native_payment does not require Good or optimality. Native prepayment applies on positive prior/source tapes and uses requested cap before the outcome, then actual record fee.",
+    "safe_defaults": "controllerAction_mem and denote_feasible are global; no conditional world-law claim is made for impossible histories. Zero-normalizer prior and wallet clamp are total off-path definitions.",
+    "native_runtime": "packedRun is executable. nativeRun is a noncomputable original-record semantic definition; nativeRun_eq/nativeRun_project connect it to original native execution and the computable packed interpreter.",
+    "node_bound": "24*(H+1)^4 bounds the complete actual accepted array. It is not a bound on rational bit length, total bytes, wall time, or a minimal-state theorem.",
+    "denotation": "denote is used in proofs, absent from runtime generation, direct graph execution and serialization.",
+    "serialization": "No Lean JSON decoder/roundtrip theorem was added. The driver executes and serializes the same certified in-memory array; artifact SHA and independent checks bind the exported bytes.",
+    "scope": "This index covers acceptance items 1-4. Actual experiments/costs and repository/GI delivery are evidenced separately under items 5-6."
+  },
+  "integration_note": "Markdown renamed THEOREM_INDEX.md at repository integration; mathematical declarations and source hashes unchanged."
+}

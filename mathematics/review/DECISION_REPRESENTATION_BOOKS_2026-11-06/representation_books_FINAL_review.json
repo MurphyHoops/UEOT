@@ -1,0 +1,222 @@
+{
+  "schema": "UEOT/DECISION_REPRESENTATION_BOOKS_FINAL_LIMITED_REVIEW/V1",
+  "reviewer": "/root/final_books_review",
+  "author": "/root",
+  "reviewed_at_utc": "2026-11-05T18:41:23.181167+00:00",
+  "status": "PASS_SELECTED_FINAL_SOURCE_AND_PAGES",
+  "decision": "Final bounded prose corrections and the six requested rendered pages pass. No unresolved blocking finding was identified within this scope.",
+  "scope": {
+    "mathematics_source": "Sections 39.82 through 39.88, read in full.",
+    "philosophy_source": "Appendix C decision-representation closing paragraph with preceding joint-decision context; decision-representation footnote read as scope context.",
+    "mathematics_pdf_file_pages_actually_viewed": [
+      187,
+      188,
+      189,
+      190
+    ],
+    "philosophy_pdf_file_pages_actually_viewed": [
+      87,
+      88
+    ],
+    "actual_pdf_page_counts": {
+      "mathematics": 221,
+      "philosophy": 89
+    },
+    "pdf_page_counts_verified_by_pypdf": true,
+    "selected_pdf_text_openings_agree_with_rendered_page_content": true,
+    "whole_books_reviewed": false,
+    "new_lean_theorem_audit": false,
+    "new_solver_or_checker_execution": false,
+    "qualification": "This is an independent final delta and selected-page review. It confirms wording, saved-result consistency and the six directly viewed final images. It does not reopen the completed contract or certify unviewed pages, all boundary executions, or the whole books."
+  },
+  "source_identity": [
+    {
+      "path": "books_workspace/mathematics/UEOT_MATHEMATICS.md",
+      "sha256": "885834dd1386489b139ed279a6fa41af5b5d1fc272a3448e4987fdd369c575a9",
+      "matches_final_manifest": true
+    },
+    {
+      "path": "books_workspace/mathematics/UEOT_MATHEMATICS.pdf",
+      "sha256": "3386290aab3ac83d3e5ffc66c81f90d3ac8b8db0ad5cb7fb3fd59d8f9baf3507",
+      "matches_final_manifest": true
+    },
+    {
+      "path": "books_workspace/philosophy/UEOT_PHILOSOPHY.md",
+      "sha256": "cd094f93ef40a0f9ffda2dfde83cb9db0f04b8134397c110c7124939a901dd74",
+      "matches_final_manifest": true
+    },
+    {
+      "path": "books_workspace/philosophy/UEOT_PHILOSOPHY.pdf",
+      "sha256": "52815197a6ed3d43ffa82e203ee511768dc21c889d6bec4448082472564f716f",
+      "matches_final_manifest": true
+    }
+  ],
+  "final_render_manifest": {
+    "path": "representation_book_review/FINAL_RENDER_MANIFEST.json",
+    "sha256": "ae5b9b774c5619e9efee2364805f70d2273b9a18095d42d9e2f9fd61ff9f8091",
+    "all_four_book_hashes_match": true,
+    "all_six_viewed_png_hashes_match": true
+  },
+  "actual_viewed_pages": [
+    {
+      "book": "mathematics",
+      "pdf_file_page": 187,
+      "printed_page": 176,
+      "path": "representation_book_review/mathematics-final-187.png",
+      "sha256": "704832649141c6fad3ddaa4c78d9a1d1e9816f40585dc886829eb541c98960cc",
+      "matches_final_manifest": true,
+      "actually_viewed_with_image_tool": true
+    },
+    {
+      "book": "mathematics",
+      "pdf_file_page": 188,
+      "printed_page": 177,
+      "path": "representation_book_review/mathematics-final-188.png",
+      "sha256": "a096cc98854bb46569d0b69b7b3c9dbab1076994b9bdd738c9c0bda9e33cb88b",
+      "matches_final_manifest": true,
+      "actually_viewed_with_image_tool": true
+    },
+    {
+      "book": "mathematics",
+      "pdf_file_page": 189,
+      "printed_page": 178,
+      "path": "representation_book_review/mathematics-final-189.png",
+      "sha256": "f05d23a4fbf5f056c5d83d6e08c2d8cf2f7bf718db4dab51fd5054b16a1f12dd",
+      "matches_final_manifest": true,
+      "actually_viewed_with_image_tool": true
+    },
+    {
+      "book": "mathematics",
+      "pdf_file_page": 190,
+      "printed_page": 179,
+      "path": "representation_book_review/mathematics-final-190.png",
+      "sha256": "603dc29fb26ae04d1629641b6cc693bfd4d30e9329bae402abd3d78759a3ced7",
+      "matches_final_manifest": true,
+      "actually_viewed_with_image_tool": true
+    },
+    {
+      "book": "philosophy",
+      "pdf_file_page": 87,
+      "printed_page": 83,
+      "path": "representation_book_review/philosophy-final-87.png",
+      "sha256": "e62d7e53bdd02a4cbfc500e6be80e385bb94c00f8290fe4aff9c7b04440db174",
+      "matches_final_manifest": true,
+      "actually_viewed_with_image_tool": true
+    },
+    {
+      "book": "philosophy",
+      "pdf_file_page": 88,
+      "printed_page": 84,
+      "path": "representation_book_review/philosophy-final-88.png",
+      "sha256": "49ba7525567c3a5223f62caf066ef1debef57d7186ef256157567470a2cb2cc3",
+      "matches_final_manifest": true,
+      "actually_viewed_with_image_tool": true
+    }
+  ],
+  "prior_review_disposition": [
+    {
+      "finding": "History likelihood factorization omitted compatibility condition.",
+      "status": "CORRECTED",
+      "evidence": "Section 39.83 and PDF page 187 restrict the displayed factorization to receipt-compatible fixed histories, state incompatible-history actual mass zero, and derive compatibility, positive alpha and positive Z for positive actual histories."
+    },
+    {
+      "finding": "Checker soundness should be distinguished from universal generator acceptance.",
+      "status": "CORRECTED",
+      "evidence": "Section 39.85 and PDF page 188 explicitly use Option, prove correctness of accepted products, and say no theorem that the generic generator is accepted on every input was separately proved. Actual finite accepted cases remain a separate claim."
+    },
+    {
+      "finding": "JSON certification versus exported-byte bridge should remain explicit.",
+      "status": "CORRECTED",
+      "evidence": "Section 39.85 and PDF page 188 state that certification and direct execution use the same in-memory graph; no new Lean JSON decoding/roundtrip theorem is claimed, and output identity plus independent itemwise checking binds exported bytes."
+    },
+    {
+      "finding": "Timing prose could imply an isolated loading measurement.",
+      "status": "CORRECTED",
+      "evidence": "Section 39.88 and PDF page 190 report compilation records, loading-inclusive entry wall time and separately measured internal stages; pure loading time is explicitly not separately isolated."
+    },
+    {
+      "finding": "Exact old-path and long-path counts were absent.",
+      "status": "CORRECTED",
+      "evidence": "Section 39.88 and PDF page 190 state 26 positive-support decision histories; complete old native replay counts 32, 128, 128, 512 (800 total); H8 has 32 fixed distinguishing native paths and 2 additional Lean direct graph outputs. H8 finite paths are limited to identity, fees and controller wiring; all-action certificate and general native theorem carry exact optimality."
+    },
+    {
+      "finding": "Five-row receipt-information table split across pages.",
+      "status": "CORRECTED",
+      "evidence": "All five rows and their header are directly visible together on final mathematics PDF page 187; section 39.83 begins on that page."
+    },
+    {
+      "finding": "Philosophy appendix C closing paragraph and delivery-link label spilled into two lines on next page.",
+      "status": "CORRECTED",
+      "evidence": "The entire decision-representation closing paragraph and link are directly visible on final philosophy PDF page 87. Page 88 begins Appendix D with no appendix-C spill."
+    },
+    {
+      "finding": "Consumer table fraction rows were compact but readable.",
+      "status": "RECHECKED_READABLE",
+      "evidence": "Final mathematics PDF page 190 retains distinguishable exact numerators and denominators with no confirmed clipping or overlap."
+    },
+    {
+      "finding": "Earlier philosophy chapter-eight tail occupied four lines on an otherwise empty page.",
+      "status": "OUTSIDE_THIS_FINAL_VISUAL_SCOPE_NON_GATING",
+      "evidence": "The earlier review did not require a separate reflow gate for that observation. Final chapter-eight pages were not visually rechecked in this review."
+    }
+  ],
+  "substantive_checks": {
+    "limited_observer_and_conditional_source_scope": "PASS; source retains public parameters, own actions and receipts, without hidden-source or full-Store interface.",
+    "uninformative_zero_receipts_and_posterior_scope": "PASS; damaged idle and missing-slot zero receipts do not add failure counts; positive-mass conditioning and zero-denominator default remain separate.",
+    "all_action_joint_sufficiency": "PASS; statements preserve the joint receipt/statistic/cost/birth/balance law for every legal action and retain full-history real-randomized competitors.",
+    "actual_array_size_bound": "PASS; 24*(H+1)^4 is stated as a source-specific stored-node bound, with bit complexity, computational cost, temporary storage and native population records outside that bound.",
+    "true_merge_and_address2_boundary": "PASS; merge applies to conditional future behavior and continuation value under the original 0/1 menu, with distinct tails, identity, past birth times and realized past payoff retained. Address-2 permission is an explicit changed boundary.",
+    "five_numeric_table_rows": "PASS; all five exact values and proof/execution node counts match the saved independent summary.",
+    "h8_metrics": "PASS; 1661 proof nodes, 151 selected nodes, 8221 proof edges, 182 selected edges, 960155 output-file bytes, 215/256 at-least-one birth, 1233/4096 two payments, 57313/16384 expected births and 4673/4096 expected fee agree with saved evidence.",
+    "h8_timing_and_memory": "PASS; 852/1740/931/6 ms recorded generation/certificate/JSON preparation/encoding; 7.250 seconds entry wall; Mac RSS 5812731904 bytes; Linux all-action 0.285671182 s, total 0.304111594 s, RSS 27398144 bytes. No isolated-load or cross-runtime speed claim is added.",
+    "path_scope": "PASS; 26 compared positive decision histories; complete four-case old replay 800 total; H8 fixed 32 paths plus 2 direct outputs, explicitly nonexhaustive.",
+    "philosophy_scope": "PASS; appendix C keeps the source-specific count bound and finite permission boundary, leaves empirical support UNVERIFIED and avoids internal-hardware or arbitrary-address completion claims."
+  },
+  "evidence_identity": [
+    {
+      "path": "representation_books_independent_review_01.json",
+      "sha256": "c46f9b17eb445dcc714583f19ee6e685020fdd2f016ff6c0252bf6fa4ee37b10"
+    },
+    {
+      "path": "representation_math_consumer_book_review.json",
+      "sha256": "06d081983e65c8115db490e902b5e80e392ac8bafa6ace92c009ae4f14546e69"
+    },
+    {
+      "path": "representation_book_review/attempts/BOOK_CORRECTIONS_02.json",
+      "sha256": "25e69c58fa143b4834b6f2153c8ab442469143aaec6f4ce5bfc7105d3cb85d6f"
+    },
+    {
+      "path": "representation_actual_runs/long-01/stdout.json",
+      "sha256": "f9a762e2c941a229a5790528792872cc8a48905858fcc4d0bce6da58d9b42bae"
+    },
+    {
+      "path": "representation_actual_runs/long-01/RUN.json",
+      "sha256": "3263b7d55beb2f5ab6c5b5406fe0bea2697846fbc0eb7cd2601e85797fde0e1c"
+    },
+    {
+      "path": "representation_actual_runs/long-01/stderr.txt",
+      "sha256": "ef45737a078cdc498d2531f1e4e51a6384416904fc6b5a79e359492ac1de971b"
+    },
+    {
+      "path": "representation_dag_checks/INDEPENDENT_RESULTS_SUMMARY.json",
+      "sha256": "1a9afda198ec2c7a5dce609effdcf58c86239d553c1ae75b1612aa6494fe9c15"
+    },
+    {
+      "path": "representation_dag_checks/long-01/THIS_DAG_CHECK.json",
+      "sha256": "ca277505bd293b997bb5fd8fc0a9e8ba95f0277a28286ccca80961d79bc65067"
+    }
+  ],
+  "blocking_findings": [],
+  "new_nonblocking_findings": [],
+  "provenance": {
+    "books_or_evidence_modified": false,
+    "only_written_file": "representation_books_FINAL_review.json",
+    "actual_view_image_used": true,
+    "reran_lean_build_or_proofs": false,
+    "reran_solver_or_native_checker": false,
+    "reran_old_28_minute_entry": false,
+    "rerendered_pdf": false,
+    "numeric_crosscheck_method": "Read saved JSON and timing artifacts; compare displayed values and counts. No planner, checker or solve was invoked.",
+    "prior_review_snapshot_preserved": true
+  }
+}

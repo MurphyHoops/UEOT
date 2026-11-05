@@ -27,3 +27,7 @@
 ## 2026-11-04：有限钱包联合决策
 
 新增数学书 §39.75—39.81：一次持久未知源、同一钱包与信息协议的实际返回表、原生有限人口 Store、一般期限参数式及反向边界。原全 Core 条件数学合同和八项验收保持完成。证明、实际表、完整有理重放与准确边界见[联合决策交付包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/README.md)。本次两书构建与选页审查另见[审查目录](review/CORE_JOINT_DECISION_BOOKS_2026-11-04/)。
+
+## 2026-11-06：许可历史的决策充分表示
+
+新增 §39.82—39.88 与附录F：源导出的收据观察器、计数后验、全动作联合充分性、认证共享DAG、原生执行/逐前缀付款、实际节点界与可达正反例。四旧例与预登记八步双写钱包的THIS产物、成本和准确边界见[决策表示交付包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/decision_representation_closure_v1/README.md)。数学书221页、哲学书89页；实际选页范围及修订记录见[本轮两书审查](review/DECISION_REPRESENTATION_BOOKS_2026-11-06/)。原两项完成合同保持完成，经验支持仍UNVERIFIED。
