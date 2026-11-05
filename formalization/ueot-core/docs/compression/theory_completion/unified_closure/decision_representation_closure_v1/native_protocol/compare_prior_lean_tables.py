@@ -23,19 +23,19 @@ def sha(raw):
     return hashlib.sha256(raw).hexdigest()
 
 
-def compare(base, case, old_report):
+def compare(packet, prior_packet, case, old_report):
     name = NAMES[case]
     saved = next(x for x in old_report["results"] if x["case"] == name)
     assert saved["status"] == "PASS"
-    old_path = (base / "final_actual_outputs/actual-execution/lean-smoke-four-01/stdout.log"
-        if case == "four" else base / f"representation_preserved_old/{case}-stdout.log")
+    old_path = (prior_packet / "actual-execution/lean-smoke-four-01/stdout.log"
+        if case == "four" else prior_packet / f"actual-execution/lean-final-02/{case}/stdout.log")
     old_raw = old_path.read_bytes()
     assert sha(old_raw) == saved["lean_output_sha256"], "old table is not the preserved successful output"
     old = json.loads(old_raw)
-    new_path = base / f"representation_actual_runs/{case}-01/stdout.json"
+    new_path = packet / f"actual-execution/{case}-01/stdout.json"
     new_raw = new_path.read_bytes()
     new = json.loads(new_raw)
-    check_path = base / f"representation_dag_checks/{case}-01/THIS_DAG_CHECK.json"
+    check_path = packet / f"independent-execution/{case}-01/THIS_DAG_CHECK.json"
     check_raw = check_path.read_bytes()
     check = json.loads(check_raw)
     assert check["status"] == "PASS" and check["dag_output_sha256"] == sha(new_raw)
@@ -74,26 +74,30 @@ def compare(base, case, old_report):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--base", type=Path, default=Path(__file__).resolve().parent)
+    parser.add_argument("--packet", type=Path, default=Path(__file__).resolve().parent.parent)
+    parser.add_argument("--prior-packet", type=Path)
     parser.add_argument("--case", choices=NAMES, action="append")
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    if args.output.exists():
+    if args.output.exists() or args.output.is_symlink():
         parser.error("preserve prior attempts by choosing a new output file")
-    old_path = args.base / "final_actual_outputs/actual-execution/THIS-final-02/THIS_LEAN_TABLE_CHECK.json"
+    prior_packet = args.prior_packet or args.packet.parent / "joint_decision_closure_v1"
+    old_path = prior_packet / "actual-execution/THIS-final-02/THIS_LEAN_TABLE_CHECK.json"
     old_raw = old_path.read_bytes()
     result = {"schema": "UEOT/DECISION_REPRESENTATION_PRIOR_ACTION_COMPARISON/V1",
         "adapter_sha256": sha(Path(__file__).read_bytes()), "prior_success_report_sha256": sha(old_raw),
         "scope": "Actual old and new Lean artifacts, positive supported decision histories only; no solver call or old tree regeneration"}
     try:
-        result["results"] = [compare(args.base, case, json.loads(old_raw)) for case in (args.case or list(NAMES))]
+        result["results"] = [compare(args.packet, prior_packet, case, json.loads(old_raw))
+            for case in (args.case or list(NAMES))]
         result["status"] = "PASS"
         code = 0
     except (AssertionError, KeyError, ValueError, OSError) as exc:
         result.update(status="FAIL", reason=str(exc))
         code = 1
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n")
+    with args.output.open("x", encoding="utf-8") as output:
+        output.write(json.dumps(result, ensure_ascii=False, indent=2) + "\n")
     print(json.dumps(result, ensure_ascii=False, indent=2))
     return code
 

@@ -5,6 +5,7 @@ The successful actual graph is never modified on disk. One positive receipt
 edge of an unchosen root action is removed only from an in-memory JSON copy.
 """
 from pathlib import Path
+import argparse
 import hashlib
 import json
 
@@ -16,13 +17,16 @@ def sha(raw):
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--packet", type=Path, default=Path(__file__).resolve().parent.parent)
+    parser.add_argument("--output", type=Path, required=True)
+    args = parser.parse_args()
+    if args.output.exists() or args.output.is_symlink():
+        parser.error("preserve prior attempts by choosing a new output file")
     base = Path(__file__).resolve().parent
-    source = base / "representation_actual_runs/long-01/stdout.json"
-    reference = base / "representation_reference_runs/long-01/REFERENCE_RESULT.json"
-    successful = base / "representation_dag_checks/long-01/THIS_DAG_CHECK.json"
-    output = base / "representation_dag_checks/OMITTED_ALTERNATIVE_REJECTION_01.json"
-    if output.exists():
-        raise SystemExit("preserve the previous probe output")
+    source = args.packet / "actual-execution/long-01/stdout.json"
+    reference = args.packet / "reference-execution/long-01/REFERENCE_RESULT.json"
+    successful = args.packet / "independent-execution/long-01/THIS_DAG_CHECK.json"
     original = source.read_bytes()
     checked = json.loads(successful.read_bytes())
     assert checked["status"] == "PASS" and checked["dag_output_sha256"] == sha(original)
@@ -53,7 +57,9 @@ def main():
         result["status"] = "FAIL_MUTANT_ACCEPTED"
     assert source.read_bytes() == original
     result["original_artifact_unchanged"] = True
-    output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n")
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    with args.output.open("x", encoding="utf-8") as output:
+        output.write(json.dumps(result, ensure_ascii=False, indent=2) + "\n")
     print(json.dumps(result, ensure_ascii=False, indent=2))
     return 0 if result["status"] == "PASS_EXPECTED_REJECTION" else 1
 

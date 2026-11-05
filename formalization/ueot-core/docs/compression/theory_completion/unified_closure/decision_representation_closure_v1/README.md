@@ -49,3 +49,14 @@ H=0、零/不足钱包、端点率、零先验、重复率、公开 goal=false �
 在 Core 根目录、已有依赖环境中，运行 `lake env lean --run docs/compression/theory_completion/unified_closure/decision_representation_closure_v1/native_protocol/RETURN_REPRESENTATION_DAG.lean long` 可再次调用同一入口；本交付不要求重复运行。独立检查器接受 `--dag-output`、`--reference-result`、`--reference-source`、`--output`，输出须为新目录；原参考保留为 `native_protocol/exact_reference_pr441.py`。输入、源码、THIS产物、检查器、书稿和PDF的具体哈希统一列入 `DELIVERY.json`；运行日志里的原机器路径保留历史身份。
 
 两书正文见数学 §39.82—39.88、附录F，与哲学第八章/附录C；选页审查不冒称通阅全部221/89页。形式结论仍为条件数学，经验支持 UNVERIFIED。未知goal、任意地址主族、共同老化、无限期限及对象内部计算能耗未纳入。完成发行和原GI交接后本合同结束，不自动启动后续研究。
+
+### 仓库内复现辅助检查
+
+PR442审查发现两项辅助脚本保留了首次临时工作区路径；已改为由脚本位置定位正式交付目录，并要求 `--output` 指向新文件。原脚本快照、原执行结果和原样本保留。以下命令可以从任意工作目录运行（将 `<packet>` 替换为本包实际路径）：
+
+```sh
+python3 <packet>/native_protocol/check_representation_omitted_alternative.py --output <new-negative-result.json>
+python3 <packet>/native_protocol/compare_prior_lean_tables.py --output <new-comparison-result.json>
+```
+
+可选 `--packet` 指向本包，comparison另有 `--prior-packet` 指向旧包；默认值已指向仓库正式布局。修正后在Mac从 `/tmp` 实际运行两项均通过，仅重验这两个辅助入口，未重跑求解、Lean或原生全路径。见[定位修正与实际验证](checks/REPRODUCTION_PATH_VALIDATION.json)。
