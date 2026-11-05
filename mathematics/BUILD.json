@@ -1,12 +1,12 @@
 {
   "document": "mathematics",
-  "status": "COMPILED_REQUIRES_VISUAL_REVIEW",
+  "status": "COMPILED_AND_SELECTED_PAGES_REVIEWED",
   "source": "mathematics/UEOT_MATHEMATICS.md",
-  "source_sha256": "3874c6b9620a759aa2f8c438e0153b6dfa4d97260d8baa724bc8f2318996be01",
+  "source_sha256": "885834dd1386489b139ed279a6fa41af5b5d1fc272a3448e4987fdd369c575a9",
   "latex": "mathematics/UEOT_MATHEMATICS.tex",
-  "latex_sha256": "7994922eaf13b179c85ffaf4ef707739f69e01d83061caf9a4be76e85a80ccdc",
+  "latex_sha256": "db2f57b8b413876eb3cb50d6cdd279d08f76f50855b7316a339928bc40f3c13b",
   "pdf": "mathematics/UEOT_MATHEMATICS.pdf",
-  "pdf_sha256": "2072145761a01084e7f5ab6f977d5b707e9742857ee01651d057fd4b9b40be3b",
+  "pdf_sha256": "3386290aab3ac83d3e5ffc66c81f90d3ac8b8db0ad5cb7fb3fd59d8f9baf3507",
   "tools": {
     "pandoc": "pandoc 3.1.3",
     "xelatex": "XeTeX 3.141592653-2.6-0.999995 (TeX Live 2023/Debian)"
@@ -22,5 +22,26 @@
     "tools/books/build_books.py",
     "mathematics"
   ],
-  "scope": "Document compilation only; mathematical proof status is recorded separately."
+  "scope": "Document compilation only; mathematical proof status is recorded separately.",
+  "visual_review": {
+    "record": "mathematics/review/DECISION_REPRESENTATION_BOOKS_2026-11-06/ROOT_FINAL_VISUAL_REVIEW.json",
+    "reviewer": "root integrator",
+    "pages": [
+      187,
+      190
+    ],
+    "scope": "Selected final pages only; independent first-round findings and final differences recorded separately."
+  },
+  "actual_invocation": "TTFONTS=<task-local font cache>//: python tools/books/build_books.py all --texmf tools/books/.cache/texmf2023",
+  "independent_final_review": {
+    "record": "mathematics/review/DECISION_REPRESENTATION_BOOKS_2026-11-06/representation_books_FINAL_review.json",
+    "status": "PASS_SELECTED_FINAL_SOURCE_AND_PAGES",
+    "pages": [
+      187,
+      188,
+      189,
+      190
+    ],
+    "scope": "Independent final delta and selected-page review; no whole-book claim."
+  }
 }

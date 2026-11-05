@@ -1,0 +1,31 @@
+{
+  "reviewer": "/root/register_source",
+  "review_date": "2026-11-05",
+  "kind": "Independent source-side semantic review of the concrete count-model adapter",
+  "files": [
+    {
+      "file": "RegisterDecisionRepresentationModel.lean",
+      "sha256": "8b9fac843eddd706d6bd4f52082323fe0f94db3124d75ee2c54c46b5e5bb1dde"
+    },
+    {
+      "file": "FiniteJointDecisionRefinement.lean",
+      "sha256": "b791816f598419c0edfdecce20d5cea49b61002611762ae6ab195f8391af900e"
+    }
+  ],
+  "decision": "No semantic blocker found in this snapshot; actual compilation is owned and recorded separately by root.",
+  "findings": [
+    "BeliefMatches and Rel are world-side proof relations, not assumptions attached to the input source or returned optimum. initial_relation establishes them from the original founder/prior, and belief_next/rel_next derive their preservation on every positive receipt branch.",
+    "Support keeps Rooted and the deterministic receipt observer for every nonzero old atom. Theta marginal equality is asserted for every rational theta test and is propagated using the actual old joint primitive, not independent marginals.",
+    "joint_theta sums original mode/label outcomes via primitive_likelihood, preserves the fixed theta, discards only zero old weights algebraically, and uses the proved observer identity on all remaining atoms.",
+    "Count denominator positivity is proved initially from prior total=1 and propagated by positive_update; rates 0/1 and zero prior weights are not excluded. Impossible branches use the documented total defaults without being assigned source support.",
+    "The compact wallet is max(0,B0-k*c). wallet_next proves equality to the old repeated-clamp wallet; the old menu still charges the requested action cap even after stopped=true. Source-supported literal no-clamp payment is left to the unchanged native prepayment theorem, as intended.",
+    "The model preserves the original action-list order, reward, receipt charge, discount and next-summary update. It does not expose a realized Store, protected program, source theta or actual parent identity.",
+    "StepRefinement transfers supported feasibility, entire receipt-tape weights and values, and proves the all-action optimalValue equality by considering every legal alternative. It does not compare only summary-generated competitors or selected-policy paths.",
+    "joint_observable_law covers arbitrary simultaneous tests of receipt, next statistic, actual birth, fee and wallet from the same source. Arbitrary memory real-randomized optimality is supplied through the retained old theorem and the native compact integration, not claimed from this adapter alone."
+  ],
+  "remaining_integration": [
+    "Root actual Lean compile of the concrete adapter and final native/DAG consumer.",
+    "The compact graph and its certificate must bind the returned artifact and all legal alternatives; this source-model review does not substitute for that independent graph review."
+  ],
+  "authorship_note": "The reviewer authored Observer/ObserverSource/CountPosterior/CountHistory, which are excluded from this nonauthor review. Those source modules require another agent review."
+}

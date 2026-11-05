@@ -1,0 +1,75 @@
+{
+  "reviewer": "/root/register_source",
+  "review_date": "2026-11-05",
+  "kind": "Independent semantic review of the exact shared graph certificate, candidate generator and actual-array node bound",
+  "files": [
+    {
+      "file": "FiniteJointDecisionDAG.lean",
+      "sha256": "607de7f667582ebd4c6ce4cf3474da060a34eaef9aca0c034b03416e2394e1a5"
+    },
+    {
+      "file": "FiniteJointDecisionDAGGenerator.lean",
+      "sha256": "820a13e48a1d09b90234dbff4da2080ca40440a5fc39861187d99a9d90007bf3"
+    },
+    {
+      "file": "RegisterDecisionRepresentationBounds.lean",
+      "sha256": "c70e8582717e1d237734931f14c60b98ffe25cdbc6b6597841273382c728fecb"
+    }
+  ],
+  "decision": "No semantic blocker found in the reviewed source snapshots. Compilation, actual return bytes and native execution evidence are recorded separately by root.",
+  "findings": [
+    {
+      "id": "DAG-ALL-ACTIONS",
+      "detail": "NodeValid checks every original legal action and every positive-probability observation, including alternatives absent from the selected policy execution. Score uses the original finite observation sum, reward and discount."
+    },
+    {
+      "id": "DAG-SUCCESSOR",
+      "detail": "EdgeValid checks a real in-bounds target, exact M.next state and remaining horizon decreased by one. Induction therefore cannot accept a cycle or a correct-valued node with the wrong physical/statistical successor."
+    },
+    {
+      "id": "DAG-OPTIMAL",
+      "detail": "node_value_eq_optimal derives exact optimum at all certified proof-graph rows from all legal alternatives. node_choice_eq_chosen preserves the original action-list order and strict comparison tie rule. This is stronger than checking one chosen trajectory."
+    },
+    {
+      "id": "DAG-RUNTIME",
+      "detail": "controllerAction/controllerNext read the finite array and edge references directly. denote appears only in proof-facing statements and definitions; build, generate, certify and plan do not call denote, solve or fastSolve. Each stored Node.next captures a finite Edge list, not a recursive tree closure."
+    },
+    {
+      "id": "DAG-FALLBACK",
+      "detail": "Invalid indices, mismatched state/horizon and impossible observations take the safe menu action or absent cursor. For the unchanged Register menu the first action is stop, whose physical semantics remain actual root-idle ticks. No absorbing zero-reward world is introduced here."
+    },
+    {
+      "id": "DAG-INPUT",
+      "detail": "generate creates a fresh empty HashMap and array for each closed-over Model invocation. Cache keys are remaining,state, and no cache survives across public-input models. certify also binds the exact graph/root to the supplied Model, total H and initial state; empty or unrelated graphs cannot supply a certified root."
+    },
+    {
+      "id": "DAG-TRUST",
+      "detail": "HashMap construction is outside the theorem soundness boundary. A false memo hit, duplicate stored key, missing positive alternative edge, wrong target state, altered value or wrong root is rejected by the exact Lean checker. Certified proof fields are built by check_sound and the root checks, not supplied by Python."
+    },
+    {
+      "id": "DAG-SHARING",
+      "detail": "Recursive construction strictly decreases remaining horizon and inserts each completed state before later siblings can reuse it. In the concrete lawful structural hash/equality instances, convergent histories reuse the same index. The accepted graph independently satisfies key injectivity, so stored duplicates cannot be ignored in the size claim."
+    },
+    {
+      "id": "DAG-BOUND",
+      "detail": "The proved coarse bound is Graph.size <= 24*(H+1)^4, conditional on the executable all-row boundCheck and actual graph key injectivity. It counts every stored proof-graph node, including alternative-action nodes, via four bounded count coordinates and Local cardinal 24. It does not claim the stronger budget-sensitive candidate formula, arithmetic bit-complexity or a total memory bound."
+    }
+  ],
+  "bound_scope": {
+    "actual_array_counted": true,
+    "coarse_formula": "24*(H+1)^4",
+    "all_rows_checked": true,
+    "extra_costs_not_hidden": [
+      "exact rational numerator/denominator bit lengths",
+      "temporary hash/array and edge-list storage",
+      "checker execution",
+      "serialization",
+      "full native world records"
+    ]
+  },
+  "validation_provenance": {
+    "reviewer_reran_lean": false,
+    "source_only": "Root serially owns actual Mac compilation and actual-input run evidence. Final driver/JSON binding and independent actual artifact checks are not substituted by this review.",
+    "remaining_entry_check": "The actual driver must serialize the same successful Certified.graph/root and apply boundCheck to that same array; root/generator source already provides the required explicit inputs."
+  }
+}

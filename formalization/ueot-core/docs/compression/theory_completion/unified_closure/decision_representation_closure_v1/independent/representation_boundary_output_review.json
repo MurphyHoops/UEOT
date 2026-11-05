@@ -1,0 +1,192 @@
+{
+  "schema": "UEOT/DECISION_REPRESENTATION_BOUNDARY_REVIEW/V1",
+  "created_utc": "2026-11-05T18:20:57.109708+00:00",
+  "reviewer": "finite_solver",
+  "status": "PASS_WITH_EXPLICIT_SCOPE",
+  "review_kind": "Targeted review of the eight already-generated boundary outputs and accepted-certificate API. This reviewer authored DAG/Generator/driver, so this is not labelled an independent non-author source review of those files.",
+  "source_bindings": {
+    "FiniteJointDecisionDAG.lean": {
+      "sha256": "607de7f667582ebd4c6ce4cf3474da060a34eaef9aca0c034b03416e2394e1a5",
+      "bytes": 14861
+    },
+    "FiniteJointDecisionDAGGenerator.lean": {
+      "sha256": "820a13e48a1d09b90234dbff4da2080ca40440a5fc39861187d99a9d90007bf3",
+      "bytes": 6359
+    },
+    "RETURN_REPRESENTATION_DAG.lean": {
+      "sha256": "4b3537ff018ff234760dd1833ccacb7d0a0ccea392833b59730bf338e6d5763a",
+      "bytes": 12091
+    },
+    "RegisterDecisionRepresentation.lean": {
+      "sha256": "79cd246bf4e6d91293a9ba3c293808a8f241a7ca78fa25a0e01fc2bfa7a1095d",
+      "bytes": 5479
+    },
+    "RegisterDecisionRepresentationNative.lean": {
+      "sha256": "75b6fd2dbfc99af15a666a7f2b3e4f641dde53af64f481b3160900d2f08b0f49",
+      "bytes": 11330
+    },
+    "RegisterDecisionRepresentationPayment.lean": {
+      "sha256": "1ad07bfc79cbb51c05a9d113d6c36109173ae5a5c33c7373b4ffe0ab82625d0b",
+      "bytes": 8891
+    },
+    "RegisterDecisionRepresentationModel.lean": {
+      "sha256": "8b9fac843eddd706d6bd4f52082323fe0f94db3124d75ee2c54c46b5e5bb1dde",
+      "bytes": 12229
+    },
+    "RegisterDecisionObserver.lean": {
+      "sha256": "50de0ef837ea9fa367ed20a7bd5532e2e70f3ec579b9cf5c79783b14fe7939a9",
+      "bytes": 8717
+    },
+    "RegisterDecisionCountPosterior.lean": {
+      "sha256": "025eb3d86c3a3d7d0664e7b369da2bd22f29f2b67ef123b06f25c0a613ffaffd",
+      "bytes": 9657
+    },
+    "REPRESENTATION_API_BOUNDARIES.md": {
+      "sha256": "ea4cf80c6b2e05bd85d3f7cc9bf9fa5e59f0ce5a99bf74c7e1bd186eb0838194",
+      "bytes": 10876
+    }
+  },
+  "evidence_basis": {
+    "lean_compilation": "All listed Lean modules and driver reported exit 0 by root; no Lean compilation or generator run was repeated by this reviewer.",
+    "artifacts": "Read exactly the existing representation_actual_runs/*-01 outputs; SHA verified against each existing RUN.json.",
+    "arithmetic": "Python fractions used only to inspect emitted boundary rows and finite arithmetic identities, not to generate a replacement policy or claim a new native source oracle."
+  },
+  "completed_artifact_checks": [
+    "Eight RUN records exit=0 and timeout=false; stdout SHA matches each record.",
+    "Declared all-action and bound checks true; graph array size=computed_nodes=memo_entries.",
+    "Exact actual key uniqueness, remaining+elapsed=H, s+f<=elapsed, paidCount<=elapsed, literal B0-k*c>=0.",
+    "Every nonterminal menu equals the original seven requested actions filtered by request write cap, independently of stopped.",
+    "Every serialized positive alternative has positive, normalized edge masses and duplicate-free receipt keys.",
+    "All referenced successors have remaining reduced by one and paidCount advanced by the actual paid receipt.",
+    "Every Q recomputed from all serialized positive edges, actual gain birth-price*tariff*paid and discount; every selected action follows the original earliest tie order.",
+    "All eight expected finite values and boundary-specific receipt/store/menu features verified."
+  ],
+  "boundary_outputs": [
+    {
+      "case": "zero_horizon",
+      "source": "representation_actual_runs/zero_horizon-01/stdout.json",
+      "sha256": "13fd46c115c21ee47b846706f0b2e4822d1148c11563d8bc637cd5d062b57dad",
+      "value": "0",
+      "node_count": 1,
+      "positive_alternative_edges": 0,
+      "direct_runs": 2,
+      "root_action": "stop",
+      "status": "PASS"
+    },
+    {
+      "case": "zero_budget",
+      "source": "representation_actual_runs/zero_budget-01/stdout.json",
+      "sha256": "580f4c894addf5c57b6530afa9630d8eb77bf56e412bbd543d03c9de12c297bb",
+      "value": "0",
+      "node_count": 7,
+      "positive_alternative_edges": 15,
+      "direct_runs": 2,
+      "root_action": "stop",
+      "status": "PASS"
+    },
+    {
+      "case": "insufficient_prepay",
+      "source": "representation_actual_runs/insufficient_prepay-01/stdout.json",
+      "sha256": "2e92ebfcfbf0c016d19130dfb4bf9ec288327d98100d750ed0e1951362708c8b",
+      "value": "0",
+      "node_count": 7,
+      "positive_alternative_edges": 15,
+      "direct_runs": 2,
+      "root_action": "stop",
+      "status": "PASS"
+    },
+    {
+      "case": "all_fault",
+      "source": "representation_actual_runs/all_fault-01/stdout.json",
+      "sha256": "654e5219a4f6b5240e55bbd05def0c72e3465101f5d8d984c99596796b859258",
+      "value": "0",
+      "node_count": 16,
+      "positive_alternative_edges": 63,
+      "direct_runs": 2,
+      "root_action": "stop",
+      "status": "PASS"
+    },
+    {
+      "case": "all_normal",
+      "source": "representation_actual_runs/all_normal-01/stdout.json",
+      "sha256": "b19cb6b0821a19b0c9173d72af2d5d72d6b0d5360595bd820d0207047c3cd178",
+      "value": "81/80",
+      "node_count": 39,
+      "positive_alternative_edges": 99,
+      "direct_runs": 2,
+      "root_action": "root_write_true",
+      "status": "PASS"
+    },
+    {
+      "case": "zero_prior",
+      "source": "representation_actual_runs/zero_prior-01/stdout.json",
+      "sha256": "6535162beff0daeeb7930ca503699e346369e8009a4bda5b664233ca1eeabbf0",
+      "value": "2817/5120",
+      "node_count": 52,
+      "positive_alternative_edges": 127,
+      "direct_runs": 1,
+      "root_action": "root_write_true",
+      "status": "PASS"
+    },
+    {
+      "case": "duplicate_rates",
+      "source": "representation_actual_runs/duplicate_rates-01/stdout.json",
+      "sha256": "7aa2062b748aa58fdab0660b274ef102203d2af0bcbef358e18c48ac2b268bfb",
+      "value": "123/640",
+      "node_count": 52,
+      "positive_alternative_edges": 127,
+      "direct_runs": 2,
+      "root_action": "root_write_true",
+      "status": "PASS"
+    },
+    {
+      "case": "false_goal",
+      "source": "representation_actual_runs/false_goal-01/stdout.json",
+      "sha256": "394ee1c8d2f6940262404579cd45c6c15e252cfd7f12667247e231d3af2277ab",
+      "value": "693/2560",
+      "node_count": 52,
+      "positive_alternative_edges": 127,
+      "direct_runs": 2,
+      "root_action": "root_write_false",
+      "status": "PASS"
+    }
+  ],
+  "existing_formal_boundary_coverage": {
+    "zero_probability_or_bad_cursor": [
+      "FiniteJointDecisionDAG.controllerAction_mem",
+      "FiniteJointDecisionDAG.denote_feasible",
+      "RegisterDecisionRepresentationPayment.graph_native_payment"
+    ],
+    "zero_normalizer_and_endpoint_rates": [
+      "RegisterDecisionCountPosterior.posterior_total",
+      "RegisterDecisionCountPosterior.positive_update",
+      "RegisterDecisionCountPosterior.posterior_update",
+      "RegisterDecisionCountPosterior.prior_zero_remains_zero"
+    ],
+    "missing_slot_or_damaged_idle": [
+      "RegisterDecisionObserver.uninformative_receipt",
+      "RegisterDecisionObserver.uninformative_increments",
+      "RegisterDecisionObserver.likelihood_counts",
+      "RegisterDecisionObserver.missing_child_stays_missing"
+    ],
+    "native_value_and_full_history_class": [
+      "RegisterDecisionRepresentation.result_native_value",
+      "RegisterDecisionRepresentation.result_native_optimal"
+    ],
+    "source_specific_stored_node_count": [
+      "RegisterDecisionRepresentation.result_node_bound"
+    ]
+  },
+  "api_scope": [
+    "certify/accept prove soundness for every accepted exact graph and public root/input; returned is an Option.",
+    "Generic generate-always-accepts theorem was not added. All 13 frozen concrete cases did actually accept.",
+    "Runtime uses the actual checked graph directly; denote is a proof object and never evaluated by generator, serializer or direct interpreter.",
+    "No formal Lean JSON parser/roundtrip theorem was added; exported bytes are tied by SHA and artifact inspection to the actual checked in-memory graph.",
+    "Node count bound covers every accepted array row, including proof alternatives and any other checked rows; it does not prove bit-memory or wall-time complexity.",
+    "Off-support defaults ensure total feasible actions; they are not assertions of a conditional world distribution on impossible histories.",
+    "False-goal boundary has generic Lean source/native theorem coverage plus actual direct packed output. It was not claimed to pass the legacy Python goal=true-only native adapter."
+  ],
+  "new_lean_needed": false,
+  "reason_no_extra_boundary_module": "Existing generic feasibility/payment and observer/posterior endpoint theorems already cover the requested semantic boundaries; adding sample-only Lean mirrors would not strengthen the conclusion.",
+  "remaining_blocker": null
+}

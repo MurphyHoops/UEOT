@@ -1,0 +1,558 @@
+{
+  "schema": "UEOT/DECISION_REPRESENTATION_INDEPENDENT_SUMMARY/V1",
+  "status": "PASS",
+  "checker_sha256": "b13697ae40b832dd9d29f8f27302796ddafc80e011d6404843348568558e5214",
+  "prior_native_reference_source_sha256": "b81f62cbe65c3d01d32b2d74910db0e6999b144f249d79e93a8367a2fa9cad5f",
+  "frozen_contract_sha256": "d4c7134344f81a885265863a013a846af6a53829864877b3686eb1f16306de80",
+  "frozen_inputs_sha256": "43bbea5dac37be2036977e2dc1ef7f3976ee10fec3db5196eb2a9e72270f8847",
+  "results": [
+    {
+      "case": "two",
+      "status": "PASS",
+      "value": "1/160",
+      "actual_dag_sha256": "ee6064a238762871d4f10ed908eaee95f81c665dce0d4ad97a0ae5f58947fca8",
+      "independent_check_sha256": "ceb8a73fff3e6b61c61fdc2065abea92d9f26b5f3507c2ad5799fb2a83d3b794",
+      "reference_result_sha256": "bf0c7383df91f39a301bea16f39b1e0f1c31d9cb9c90c53eb8359f30960a0e39",
+      "all_action_nodes": 21,
+      "all_action_edges": 43,
+      "selected_execution_graph": {
+        "node_count": 6,
+        "edge_count": 5,
+        "at_least_one_birth": "1/2",
+        "expected_total_births": "13/16",
+        "expected_total_fee": "1/2",
+        "minimum_prefix_balance": "0",
+        "total_paid_count_distribution": {
+          "0": "1/2",
+          "1": "1/2"
+        }
+      },
+      "source_bound": 1944,
+      "actual_merge": {
+        "applicable": false,
+        "reason": "horizon is shorter than the registered three-tick witnesses"
+      },
+      "original_native_replay": {
+        "complete_enumeration": true,
+        "native_paths": 32,
+        "enumerated_mass": "1",
+        "actual_value": "1/160",
+        "at_least_one_birth": "1/2",
+        "max_paid_count_on_checked_paths": 1,
+        "qualification": "Complete mode/label/source replay"
+      },
+      "direct_lean_execution": {
+        "status": "PASS",
+        "checked_runs": [
+          {
+            "theta": 0,
+            "source_mass": "3/128",
+            "payoff": "-3/10",
+            "paid_count": 1,
+            "final_balance": "0"
+          },
+          {
+            "theta": 1,
+            "source_mass": "3/128",
+            "payoff": "-3/10",
+            "paid_count": 1,
+            "final_balance": "0"
+          }
+        ],
+        "scope": "Actual Lean packedRun output checked against the same THIS graph executed by the original full-record interpreter"
+      },
+      "producer_stages_ms": {
+        "bound_check_ms": 0,
+        "cache_hits": 23,
+        "certificate_ms": 7,
+        "computed_nodes": 21,
+        "direct_run_ms": 2,
+        "memo_entries": 21,
+        "node_bound": 1944,
+        "node_count": 21,
+        "proof_edges": 43,
+        "serialization_prepare_ms": 5,
+        "solve_ms": 12
+      },
+      "producer_process_seconds": 4.179314915999999,
+      "producer_macos_time_memory_raw_bytes": {
+        "maximum_resident_set_size": 5805539328,
+        "peak_memory_footprint": 137240152
+      },
+      "independent_checker_seconds": 0.008778154000538052,
+      "independent_checker_process_peak_rss_bytes": 15073280,
+      "original_memo_solve_seconds": 0.0009744090002641315,
+      "original_memo_keys_immediately_after_solve": 21,
+      "original_reference_policy_nodes": 6,
+      "original_reference_policy_edges": 5,
+      "artifact_bytes": 8293
+    },
+    {
+      "case": "three",
+      "status": "PASS",
+      "value": "9/256",
+      "actual_dag_sha256": "bf1448ee4a67fefaa4c06a5cce3ecb8b31e4ec97c4d8b6055cbb7f4924be7987",
+      "independent_check_sha256": "250b3139046d7f141ba5b447d3fd0b3bff3b311272fbf533089b85bb520bb97e",
+      "reference_result_sha256": "59eed2321c303d2709c170c863578e62fab49296b8dd1e2ccaddfc2570eb8236",
+      "all_action_nodes": 52,
+      "all_action_edges": 127,
+      "selected_execution_graph": {
+        "node_count": 11,
+        "edge_count": 10,
+        "at_least_one_birth": "1/2",
+        "expected_total_births": "9/8",
+        "expected_total_fee": "1/2",
+        "minimum_prefix_balance": "0",
+        "total_paid_count_distribution": {
+          "0": "1/2",
+          "1": "1/2"
+        }
+      },
+      "source_bound": 6144,
+      "actual_merge": {
+        "applicable": true,
+        "merge_history_a_node": 41,
+        "merge_history_b_node": 41,
+        "actual_same_node": true,
+        "insufficient_summary_history_a_node": 41,
+        "insufficient_summary_history_b_node": 39,
+        "qualification": "Paths traverse the all-action proof graph; they need not both follow its chosen policy."
+      },
+      "original_native_replay": {
+        "complete_enumeration": true,
+        "native_paths": 128,
+        "enumerated_mass": "1",
+        "actual_value": "9/256",
+        "at_least_one_birth": "1/2",
+        "max_paid_count_on_checked_paths": 1,
+        "qualification": "Complete mode/label/source replay"
+      },
+      "direct_lean_execution": {
+        "status": "PASS",
+        "checked_runs": [
+          {
+            "theta": 0,
+            "source_mass": "3/1024",
+            "payoff": "-3/16",
+            "paid_count": 1,
+            "final_balance": "0"
+          },
+          {
+            "theta": 1,
+            "source_mass": "9/1024",
+            "payoff": "-3/16",
+            "paid_count": 1,
+            "final_balance": "0"
+          }
+        ],
+        "scope": "Actual Lean packedRun output checked against the same THIS graph executed by the original full-record interpreter"
+      },
+      "producer_stages_ms": {
+        "bound_check_ms": 0,
+        "cache_hits": 76,
+        "certificate_ms": 17,
+        "computed_nodes": 52,
+        "direct_run_ms": 1,
+        "memo_entries": 52,
+        "node_bound": 6144,
+        "node_count": 52,
+        "proof_edges": 127,
+        "serialization_prepare_ms": 17,
+        "solve_ms": 17
+      },
+      "producer_process_seconds": 4.04596425,
+      "producer_macos_time_memory_raw_bytes": {
+        "maximum_resident_set_size": 5803261952,
+        "peak_memory_footprint": 138894936
+      },
+      "independent_checker_seconds": 0.018491238000933663,
+      "independent_checker_process_peak_rss_bytes": 17170432,
+      "original_memo_solve_seconds": 0.002737347000220325,
+      "original_memo_keys_immediately_after_solve": 59,
+      "original_reference_policy_nodes": 11,
+      "original_reference_policy_edges": 10,
+      "artifact_bytes": 20680
+    },
+    {
+      "case": "posterior",
+      "status": "PASS",
+      "value": "27/320",
+      "actual_dag_sha256": "dfbc4eb28446ada0f34932248bfa9466555c0a8e8361ec7d4ca1366d68d96b97",
+      "independent_check_sha256": "c244f7a77a419b8af4e0cf4821a23deadffb9db808f36bdb2f3c319fa850d34d",
+      "reference_result_sha256": "79907b6a2ce2ee42981bfc506ee72a4297d243686c63d8e4d6d648d93f2c0834",
+      "all_action_nodes": 52,
+      "all_action_edges": 127,
+      "selected_execution_graph": {
+        "node_count": 11,
+        "edge_count": 10,
+        "at_least_one_birth": "1/2",
+        "expected_total_births": "9/8",
+        "expected_total_fee": "1/2",
+        "minimum_prefix_balance": "0",
+        "total_paid_count_distribution": {
+          "0": "1/2",
+          "1": "1/2"
+        }
+      },
+      "source_bound": 6144,
+      "actual_merge": {
+        "applicable": true,
+        "merge_history_a_node": 41,
+        "merge_history_b_node": 41,
+        "actual_same_node": true,
+        "insufficient_summary_history_a_node": 41,
+        "insufficient_summary_history_b_node": 39,
+        "qualification": "Paths traverse the all-action proof graph; they need not both follow its chosen policy."
+      },
+      "original_native_replay": {
+        "complete_enumeration": true,
+        "native_paths": 128,
+        "enumerated_mass": "1",
+        "actual_value": "27/320",
+        "at_least_one_birth": "1/2",
+        "max_paid_count_on_checked_paths": 1,
+        "qualification": "Complete mode/label/source replay"
+      },
+      "direct_lean_execution": {
+        "status": "PASS",
+        "checked_runs": [
+          {
+            "theta": 0,
+            "source_mass": "3/1024",
+            "payoff": "-1/20",
+            "paid_count": 1,
+            "final_balance": "0"
+          },
+          {
+            "theta": 1,
+            "source_mass": "9/1024",
+            "payoff": "-1/20",
+            "paid_count": 1,
+            "final_balance": "0"
+          }
+        ],
+        "scope": "Actual Lean packedRun output checked against the same THIS graph executed by the original full-record interpreter"
+      },
+      "producer_stages_ms": {
+        "bound_check_ms": 0,
+        "cache_hits": 76,
+        "certificate_ms": 17,
+        "computed_nodes": 52,
+        "direct_run_ms": 1,
+        "memo_entries": 52,
+        "node_bound": 6144,
+        "node_count": 52,
+        "proof_edges": 127,
+        "serialization_prepare_ms": 16,
+        "solve_ms": 16
+      },
+      "producer_process_seconds": 4.033058916999999,
+      "producer_macos_time_memory_raw_bytes": {
+        "maximum_resident_set_size": 5804818432,
+        "peak_memory_footprint": 137322096
+      },
+      "independent_checker_seconds": 0.028997558998526074,
+      "independent_checker_process_peak_rss_bytes": 17170432,
+      "original_memo_solve_seconds": 0.0027241370007686783,
+      "original_memo_keys_immediately_after_solve": 59,
+      "original_reference_policy_nodes": 11,
+      "original_reference_policy_edges": 10,
+      "artifact_bytes": 20732
+    },
+    {
+      "case": "four",
+      "status": "PASS",
+      "value": "39525/524288",
+      "actual_dag_sha256": "ee09a0999fd0ae4974c6145ca7111e66aef846adc15b5f91b6f7741f949da7e3",
+      "independent_check_sha256": "1adcca20b238659d72295e8a52037cad23a9b969a20dc65649a73ce67111dc8a",
+      "reference_result_sha256": "68e7b8ce1ed54912b0b8ff58044ba4a927d5afaf3af8fcffd38fd201e721fa61",
+      "all_action_nodes": 104,
+      "all_action_edges": 287,
+      "selected_execution_graph": {
+        "node_count": 16,
+        "edge_count": 16,
+        "at_least_one_birth": "13/16",
+        "expected_total_births": "22783/8192",
+        "expected_total_fee": "13/16",
+        "minimum_prefix_balance": "0",
+        "total_paid_count_distribution": {
+          "0": "3/16",
+          "1": "13/16"
+        }
+      },
+      "source_bound": 15000,
+      "actual_merge": {
+        "applicable": true,
+        "merge_history_a_node": 86,
+        "merge_history_b_node": 86,
+        "actual_same_node": true,
+        "insufficient_summary_history_a_node": 86,
+        "insufficient_summary_history_b_node": 81,
+        "qualification": "Paths traverse the all-action proof graph; they need not both follow its chosen policy."
+      },
+      "original_native_replay": {
+        "complete_enumeration": true,
+        "native_paths": 512,
+        "enumerated_mass": "1",
+        "actual_value": "39525/524288",
+        "at_least_one_birth": "13/16",
+        "max_paid_count_on_checked_paths": 1,
+        "qualification": "Complete mode/label/source replay"
+      },
+      "direct_lean_execution": {
+        "status": "PASS",
+        "checked_runs": [
+          {
+            "theta": 0,
+            "source_mass": "27/8192",
+            "payoff": "-21/64",
+            "paid_count": 1,
+            "final_balance": "0"
+          },
+          {
+            "theta": 1,
+            "source_mass": "343/131072",
+            "payoff": "-21/64",
+            "paid_count": 1,
+            "final_balance": "0"
+          }
+        ],
+        "scope": "Actual Lean packedRun output checked against the same THIS graph executed by the original full-record interpreter"
+      },
+      "producer_stages_ms": {
+        "bound_check_ms": 0,
+        "cache_hits": 184,
+        "certificate_ms": 37,
+        "computed_nodes": 104,
+        "direct_run_ms": 1,
+        "memo_entries": 104,
+        "node_bound": 15000,
+        "node_count": 104,
+        "proof_edges": 287,
+        "serialization_prepare_ms": 35,
+        "solve_ms": 34
+      },
+      "producer_process_seconds": 3.8768942079999995,
+      "producer_macos_time_memory_raw_bytes": {
+        "maximum_resident_set_size": 5804457984,
+        "peak_memory_footprint": 137371320
+      },
+      "independent_checker_seconds": 0.1242419529990002,
+      "independent_checker_process_peak_rss_bytes": 26738688,
+      "original_memo_solve_seconds": 0.0064938900013657985,
+      "original_memo_keys_immediately_after_solve": 143,
+      "original_reference_policy_nodes": 19,
+      "original_reference_policy_edges": 18,
+      "artifact_bytes": 43526
+    },
+    {
+      "case": "long",
+      "status": "PASS",
+      "value": "884450457/1342177280",
+      "actual_dag_sha256": "f9a762e2c941a229a5790528792872cc8a48905858fcc4d0bce6da58d9b42bae",
+      "independent_check_sha256": "ca277505bd293b997bb5fd8fc0a9e8ba95f0277a28286ccca80961d79bc65067",
+      "reference_result_sha256": "d0af65ff9e761568ca94e0f77a1d9ec1d2cd24221b7adace3a5b172b89f3f143",
+      "all_action_nodes": 1661,
+      "all_action_edges": 8221,
+      "selected_execution_graph": {
+        "node_count": 151,
+        "edge_count": 182,
+        "at_least_one_birth": "215/256",
+        "expected_total_births": "57313/16384",
+        "expected_total_fee": "4673/4096",
+        "minimum_prefix_balance": "0",
+        "total_paid_count_distribution": {
+          "0": "41/256",
+          "1": "2207/4096",
+          "2": "1233/4096"
+        }
+      },
+      "source_bound": 157464,
+      "actual_merge": {
+        "applicable": true,
+        "merge_history_a_node": 1294,
+        "merge_history_b_node": 1294,
+        "actual_same_node": true,
+        "insufficient_summary_history_a_node": 1294,
+        "insufficient_summary_history_b_node": 1105,
+        "qualification": "Paths traverse the all-action proof graph; they need not both follow its chosen policy."
+      },
+      "original_native_replay": {
+        "complete_enumeration": false,
+        "native_paths": 32,
+        "enumerated_mass": "2173/2097152",
+        "actual_value": null,
+        "at_least_one_birth": null,
+        "max_paid_count_on_checked_paths": 2,
+        "qualification": "Fixed distinguishing native paths only; exact all-action certificate and general source theorem carry the long-instance value claim"
+      },
+      "direct_lean_execution": {
+        "status": "PASS",
+        "checked_runs": [
+          {
+            "theta": 0,
+            "source_mass": "27/33554432",
+            "payoff": "16203/20480",
+            "paid_count": 2,
+            "final_balance": "0"
+          },
+          {
+            "theta": 1,
+            "source_mass": "243/33554432",
+            "payoff": "16203/20480",
+            "paid_count": 2,
+            "final_balance": "0"
+          }
+        ],
+        "scope": "Actual Lean packedRun output checked against the same THIS graph executed by the original full-record interpreter"
+      },
+      "producer_stages_ms": {
+        "bound_check_ms": 1,
+        "cache_hits": 6561,
+        "certificate_ms": 1740,
+        "computed_nodes": 1661,
+        "direct_run_ms": 1,
+        "memo_entries": 1661,
+        "node_bound": 157464,
+        "node_count": 1661,
+        "proof_edges": 8221,
+        "serialization_prepare_ms": 931,
+        "solve_ms": 852
+      },
+      "producer_process_seconds": 7.2502392910000015,
+      "producer_macos_time_memory_raw_bytes": {
+        "maximum_resident_set_size": 5812731904,
+        "peak_memory_footprint": 137043496
+      },
+      "independent_checker_seconds": 0.30411159400136967,
+      "independent_checker_process_peak_rss_bytes": 27398144,
+      "original_memo_solve_seconds": 0.7172983680011384,
+      "original_memo_keys_immediately_after_solve": 12620,
+      "original_reference_policy_nodes": 333,
+      "original_reference_policy_edges": 332,
+      "artifact_bytes": 960155
+    }
+  ],
+  "old_native_complete_path_count": 800,
+  "prior_table_comparison": {
+    "status": "PASS",
+    "sha256": "9d8777ee486f40207dada443b1bda42922a9e7742c57a0e37760c9abdd6ff092",
+    "positive_decision_histories": 26
+  },
+  "concrete_incomplete_alternative_rejection": {
+    "status": "PASS_EXPECTED_REJECTION",
+    "sha256": "97408ccd4abc15a33fffdc0aa060d61b7143974837bdb07377b6bde7aa48bf6a"
+  },
+  "long_selected_graph_sharing": {
+    "actual_stored_nodes": 151,
+    "expanded_positive_prefix_count": 333,
+    "expanded_positive_decision_prefix_count": 207,
+    "nodes_with_multiple_positive_histories": 74,
+    "method": "Integer path-count propagation on the already returned DAG, without tree reconstruction or optimizer calls"
+  },
+  "long_actual_direct_two_payment_run": {
+    "final_stopped": true,
+    "final_store": [
+      false,
+      false,
+      null,
+      true,
+      true,
+      null,
+      true,
+      true,
+      null
+    ],
+    "noise": [
+      [
+        true,
+        true
+      ],
+      [
+        false,
+        false
+      ],
+      [
+        true,
+        true
+      ],
+      [
+        true,
+        false
+      ],
+      [
+        false,
+        true
+      ],
+      [
+        true,
+        false
+      ],
+      [
+        true,
+        true
+      ],
+      [
+        false,
+        false
+      ]
+    ],
+    "payoff": "16203/20480",
+    "receipts": [
+      [
+        true,
+        true
+      ],
+      [
+        false,
+        false
+      ],
+      [
+        true,
+        false
+      ],
+      [
+        true,
+        false
+      ],
+      [
+        false,
+        false
+      ],
+      [
+        true,
+        true
+      ],
+      [
+        true,
+        false
+      ],
+      [
+        false,
+        false
+      ]
+    ],
+    "requests": [
+      "root_write_true",
+      "root_idle",
+      "child1_idle",
+      "child1_idle",
+      "child1_idle",
+      "root_write_true",
+      "stop",
+      "stop"
+    ],
+    "source_mass": "27/33554432",
+    "theta": 0
+  },
+  "qualifications": [
+    "All five THIS Lean outputs passed on their first independent checking attempt; original stdout and all native traces remain intact.",
+    "The four old cases used complete original-native source/mode/label replay. H8 uses fixed distinguishing paths plus a complete all-action exact graph certificate and the general source/native theorem; it is not asserted to have exhaustive H8 tape replay.",
+    "The reference is the existing memoized full physical Store and normalized-posterior Planner. Its post-stop STOP representative reduction is documented; THIS graph checks every legal raw requested action, including after committed stop.",
+    "Counts describe actual stored graph rows. They do not assert a bound on rational bit complexity, total heap bytes or elapsed time.",
+    "The actual Mac Lean run and scratch Python reference have different runtime and host conditions. No cross-runtime speed ratio is inferred.",
+    "macOS maximum resident set size and peak memory footprint are copied as distinct raw /usr/bin/time labels, not reconciled or replaced by abstract node storage.",
+    "True merged histories agree in conditional future behavior under the frozen 0/1 dispatch menu; their full physical tails, identities, past birth times and realized past payoff are not claimed identical.",
+    "Extra endpoint and false-goal Lean boundary cases are outside this five-case independent Python-native PASS report."
+  ]
+}

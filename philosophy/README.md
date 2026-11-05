@@ -20,3 +20,7 @@
 ## 2026-11-04 更新
 
 第十章与附录 C 增补同一有限过程中的学习、修复、资源和停止干预：保留实际失败与持续未知原因，区分状态反馈、额外信息的零价值范围及固定流程已最优的情形。技术来源为数学书 §39.75—39.81 与[联合决策交付包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/README.md)。原完成合同和历史反例保留，数学最优性不替代目的的规范辩护或现实证据。
+
+## 2026-11-06 更新
+
+第八章与附录C增补记忆充分性相对于许可作用和评价成立、规划共享不抹去真实身份、扩大地址权限可能破坏表示。技术依据为数学书 §39.82—39.88 及[决策表示交付包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/decision_representation_closure_v1/README.md)。本次没有将外部计算成本写成对象内部认知能耗，也未将条件数学提升为经验验证。

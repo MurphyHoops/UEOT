@@ -1,0 +1,94 @@
+{
+  "reviewer": "/root/register_source",
+  "review_date": "2026-11-05",
+  "kind": "Independent review of new two-book prose and specified rendered pages",
+  "decision": "One mathematical prose qualification requires correction; the proved Lean result is unchanged. Explicit checker-soundness scope and timing wording are requested for precision. Two minor pagination defects were reported. No numeric discrepancy or source/theorem contradiction beyond the stated missing qualification was found.",
+  "scope": {
+    "mathematics_source": "New sections 39.82 through 39.88, read in full",
+    "philosophy_source": "Three new chapter-eight paragraphs, the new closing appendix-C paragraphs and decision-representation footnote, read in full with surrounding context",
+    "mathematics_pdf_file_pages_actually_viewed": [186, 187, 188, 189, 190],
+    "mathematics_printed_page_numbers": [175, 176, 177, 178, 179],
+    "philosophy_pdf_file_pages_actually_viewed": [25, 26, 87, 88],
+    "philosophy_printed_page_numbers": [21, 22, 83, 84],
+    "whole_books_reviewed": false,
+    "qualification": "The mathematics PDF has 221 pages and philosophy PDF 90 pages. Only the nine listed rendered pages were visually inspected. Hash-checking additional manifest PNGs is not a claim to have visually inspected them."
+  },
+  "source_identity": [
+    {"file": "books_workspace/mathematics/UEOT_MATHEMATICS.md", "sha256": "e97d92f206b73b71c8758c0042edf4498adb85f05c7eb8225239624c1459027c"},
+    {"file": "books_workspace/philosophy/UEOT_PHILOSOPHY.md", "sha256": "19e70624ccc48aa85d03359acd41b502d6e5e187c897444e5a959ee8cfe17cd1"},
+    {"file": "books_workspace/mathematics/UEOT_MATHEMATICS.pdf", "sha256": "5375a67ad3cef18a46712609768cf3f0dca33f852e4749241c51aa8a564a3678"},
+    {"file": "books_workspace/philosophy/UEOT_PHILOSOPHY.pdf", "sha256": "ee38687c9652c41477fbcd057ac1d020e834c1feed916042c1379f94ff90e299"}
+  ],
+  "required_prose_correction": {
+    "location": "Mathematics 39.83, displayed real-randomized history factorization",
+    "finding": "The prose says that a fixed history has mass alpha*pi0*r^s*(1-r)^f without explicitly restricting that displayed equality to compatible histories. For incompatible action/receipt words the actual mass is zero, while the displayed right-hand expression need not be zero. The preceding positive-history posterior formula helps context but does not make this separate fixed-history sentence unambiguous.",
+    "source_evidence": "RegisterDecisionCountHistory.initial_likelihood_counts and rawPriorMass_eq explicitly take CompatibleHistory. incompatible_prior_mass_zero proves the excluded case; positive_history then establishes compatibility and positive factors on actual positive histories.",
+    "requested_edit": "Write that this factorization holds for receipt-compatible fixed histories, and state that incompatible histories have actual mass zero; alternatively limit the displayed formula explicitly to positive-mass histories. Keep the derived positivity and cancellation argument."
+  },
+  "precision_edits": [
+    {
+      "location": "Mathematics 39.85, candidate/checker guarantee",
+      "finding": "Current conditional language is consistent with soundness, but the absence of a general generate-always-accepted theorem is not stated explicitly.",
+      "requested_edit": "State that the theorem proves correctness of a candidate accepted by the exact checker, while no theorem that generate is accepted for every lawful input is claimed; registered actual accepted runs remain separate evidence."
+    },
+    {
+      "location": "Mathematics 39.88, timing-report description",
+      "finding": "The wording separately reports compilation/loading could be read as a separately measured loading stage. The actual new entry provides total wall time including loading and separately measured internal stages.",
+      "requested_edit": "Say that records retain compilation results and an entry wall clock including loading, and separately report generation, serialization, checks and the other measured internal stages."
+    }
+  ],
+  "visual_findings": [
+    {
+      "pages": [186, 187],
+      "book": "mathematics",
+      "severity": "minor pagination",
+      "finding": "The five-row 39.83 receipt-information table breaks after its fourth row. The missing-slot row is alone at the top of the next page with a repeated header. Information is not lost, but the short comparison table should remain together if possible."
+    },
+    {
+      "pages": [87, 88],
+      "book": "philosophy",
+      "severity": "minor pagination",
+      "finding": "The last appendix-C paragraph leaves only two lines on page 88, splitting the delivery-link label at the page break. A modest tightening of the new appendix prose can keep the closing paragraph on page 87."
+    },
+    {
+      "pages": [26],
+      "book": "philosophy",
+      "severity": "observed, no separate reflow gate",
+      "finding": "The chapter ends with four lines on an otherwise empty page. This is a readable chapter-tail flow, not clipped text or a source defect; no global book reflow is requested solely for it."
+    },
+    {
+      "pages": [189],
+      "book": "mathematics",
+      "severity": "observed, readable",
+      "finding": "Consumer-table fraction rows are compact but the exact numerators and denominators remain distinguishable. No actual overlap was confirmed."
+    }
+  ],
+  "substantive_checks_passed": [
+    "The new observer is generated from own actions and receipt projection; no protected program, true parent, hidden label, whole-Store or theta oracle is supplied to the controller.",
+    "Normal/fault receipt coincidence is handled correctly: damaged idle and nonexistent slot 00 are uninformative, while healthy idle and existing-slot writes identify normal versus fault. Endpoint rates, zero priors, 0^0 and off-support default normalization are accurately separated from positive-mass conditioning.",
+    "The sufficient-statistic statement is joint and covers every legal action, not just a chosen policy. Original complete-history real-randomized supported-admissible competitors remain in scope.",
+    "The actual Array node bound is correctly stated as 24*(H+1)^4 under row bounds and key injectivity. It is not represented as a total-memory or total-polynomial-time bound; exact rational and external compute costs are retained.",
+    "The true-merge witness is explicitly equality of conditional future behavior and continuation value. Different native identities, tails, past birth times and possibly different realized past discounted payoff remain distinct.",
+    "The address-2 counterexample correctly arises from histories reachable under the original 0/1 protocol and marks a changed future permission boundary, not a free extension of the completed source family.",
+    "All five table values and proof/execution node counts match the actual independent result summary. H8 is 884450457/1342177280 with 1661 proof nodes, 151 selected-execution nodes, 8221 proof edges and 182 execution edges.",
+    "The H8 reported birth/payment quantities match the actual checker: at-least-one birth 215/256, two charges 1233/4096, expected total births 57313/16384 and expected literal total fee 4673/4096. They are not mistaken for discounted net payoff.",
+    "The stated H8 stage times, 7.250-second full entry wall time, output byte count and raw macOS/Linux memory figures match the saved execution/check artifacts. No cross-runtime or isolated-solve speed ratio is claimed.",
+    "H8 finite path replay is correctly limited to wiring/identity/payment evidence; exact all-action certification plus the general native theorem carries the global optimum. Old successful tree artifacts are reused without rerunning the old 28-minute entry.",
+    "Philosophy distinguishes decision memory, full world history and identity, and does not claim internal cognitive hardware, universal two drives, empirical validation or unrestricted new permissions."
+  ],
+  "numeric_evidence": {
+    "independent_summary": "representation_dag_checks/INDEPENDENT_RESULTS_SUMMARY.json",
+    "independent_summary_sha256": "1a9afda198ec2c7a5dce609effdcf58c86239d553c1ae75b1612aa6494fe9c15",
+    "long_actual_run": "representation_actual_runs/long-01/RUN.json",
+    "long_raw_timing": "representation_actual_runs/long-01/stderr.txt",
+    "long_actual_checker": "representation_dag_checks/long-01/THIS_DAG_CHECK.json"
+  },
+  "validation_provenance": {
+    "read_only_books": true,
+    "used_actual_view_image": true,
+    "pdf_hashes_match_parent_manifest": true,
+    "manifest_png_hashes_verified": true,
+    "reran_lean_or_old_tree": false,
+    "next_step": "Root makes the bounded source-prose corrections and any chosen pagination adjustment, then supplies final rendered pages/hashes for delta review. This report preserves the originally reviewed snapshot and observations."
+  }
+}

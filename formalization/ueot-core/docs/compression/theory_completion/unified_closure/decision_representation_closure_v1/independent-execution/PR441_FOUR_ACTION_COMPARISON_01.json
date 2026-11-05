@@ -1,0 +1,190 @@
+{
+  "schema": "UEOT/DECISION_REPRESENTATION_PRIOR_ACTION_COMPARISON/V1",
+  "adapter_sha256": "bd3e23720f044ca0d23e1af2ea99a3951ea1f8dccb17f8f1b68d05d0394b88f2",
+  "prior_success_report_sha256": "0b8c0f6cf0f2f0646b43449ca27f3066856e85a2b15ef7026e0d5dfa826604ae",
+  "scope": "Actual old and new Lean artifacts, positive supported decision histories only; no solver call or old tree regeneration",
+  "results": [
+    {
+      "case": "receipt_feedback_four_step",
+      "status": "PASS",
+      "prior_table_sha256": "9ace921a626a4658a1e0dbb98f78706da69b52917026851480b61c7987604f7b",
+      "current_dag_sha256": "ee09a0999fd0ae4974c6145ca7111e66aef846adc15b5f91b6f7741f949da7e3",
+      "current_check_sha256": "1adcca20b238659d72295e8a52037cad23a9b969a20dc65649a73ce67111dc8a",
+      "prior_serialized_rows": 85,
+      "positive_decision_histories": 11,
+      "same_action_at_every_positive_history": true,
+      "terminal_mass": "1",
+      "comparisons": [
+        {
+          "history": [],
+          "action": "root_write_true",
+          "current_node": 103,
+          "positive_history_mass": "1"
+        },
+        {
+          "history": [
+            [
+              false,
+              false
+            ]
+          ],
+          "action": "stop",
+          "current_node": 66,
+          "positive_history_mass": "3/16"
+        },
+        {
+          "history": [
+            [
+              true,
+              true
+            ]
+          ],
+          "action": "root_idle",
+          "current_node": 102,
+          "positive_history_mass": "13/16"
+        },
+        {
+          "history": [
+            [
+              false,
+              false
+            ],
+            [
+              false,
+              false
+            ]
+          ],
+          "action": "stop",
+          "current_node": 44,
+          "positive_history_mass": "3/16"
+        },
+        {
+          "history": [
+            [
+              true,
+              true
+            ],
+            [
+              false,
+              false
+            ]
+          ],
+          "action": "child1_idle",
+          "current_node": 87,
+          "positive_history_mass": "19/128"
+        },
+        {
+          "history": [
+            [
+              true,
+              true
+            ],
+            [
+              true,
+              false
+            ]
+          ],
+          "action": "root_idle",
+          "current_node": 95,
+          "positive_history_mass": "85/128"
+        },
+        {
+          "history": [
+            [
+              false,
+              false
+            ],
+            [
+              false,
+              false
+            ],
+            [
+              false,
+              false
+            ]
+          ],
+          "action": "stop",
+          "current_node": 21,
+          "positive_history_mass": "3/16"
+        },
+        {
+          "history": [
+            [
+              true,
+              true
+            ],
+            [
+              false,
+              false
+            ],
+            [
+              false,
+              false
+            ]
+          ],
+          "action": "stop",
+          "current_node": 83,
+          "positive_history_mass": "31/1024"
+        },
+        {
+          "history": [
+            [
+              true,
+              true
+            ],
+            [
+              false,
+              false
+            ],
+            [
+              true,
+              false
+            ]
+          ],
+          "action": "child1_idle",
+          "current_node": 86,
+          "positive_history_mass": "121/1024"
+        },
+        {
+          "history": [
+            [
+              true,
+              true
+            ],
+            [
+              true,
+              false
+            ],
+            [
+              false,
+              false
+            ]
+          ],
+          "action": "child1_idle",
+          "current_node": 86,
+          "positive_history_mass": "121/1024"
+        },
+        {
+          "history": [
+            [
+              true,
+              true
+            ],
+            [
+              true,
+              false
+            ],
+            [
+              true,
+              false
+            ]
+          ],
+          "action": "stop",
+          "current_node": 90,
+          "positive_history_mass": "559/1024"
+        }
+      ]
+    }
+  ],
+  "status": "PASS"
+}

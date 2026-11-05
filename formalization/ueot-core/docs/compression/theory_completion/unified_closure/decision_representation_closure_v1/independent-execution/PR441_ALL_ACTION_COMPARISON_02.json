@@ -1,0 +1,403 @@
+{
+  "schema": "UEOT/DECISION_REPRESENTATION_PRIOR_ACTION_COMPARISON/V1",
+  "adapter_sha256": "ab355bac13ae5ad1ecb0e7260ab481455d4712fe7ee146596486590bf1845217",
+  "prior_success_report_sha256": "0b8c0f6cf0f2f0646b43449ca27f3066856e85a2b15ef7026e0d5dfa826604ae",
+  "scope": "Actual old and new Lean artifacts, positive supported decision histories only; no solver call or old tree regeneration",
+  "results": [
+    {
+      "case": "persistent_theta_two_step",
+      "status": "PASS",
+      "prior_table_sha256": "d7e5bbe04306743410601cb328752ce88639271c167b769d7996f71095ccaf1c",
+      "current_dag_sha256": "ee6064a238762871d4f10ed908eaee95f81c665dce0d4ad97a0ae5f58947fca8",
+      "current_check_sha256": "ceb8a73fff3e6b61c61fdc2065abea92d9f26b5f3507c2ad5799fb2a83d3b794",
+      "prior_serialized_rows": 5,
+      "positive_decision_histories": 3,
+      "same_action_at_every_positive_history": true,
+      "terminal_mass": "1",
+      "comparisons": [
+        {
+          "history": [],
+          "action": "root_write_true",
+          "current_node": 20,
+          "positive_history_mass": "1"
+        },
+        {
+          "history": [
+            [
+              false,
+              false
+            ]
+          ],
+          "action": "stop",
+          "current_node": 11,
+          "positive_history_mass": "1/2"
+        },
+        {
+          "history": [
+            [
+              true,
+              true
+            ]
+          ],
+          "action": "stop",
+          "current_node": 19,
+          "positive_history_mass": "1/2"
+        }
+      ]
+    },
+    {
+      "case": "population_backup_three_step",
+      "status": "PASS",
+      "prior_table_sha256": "73fb6ae4ff058303d10b965800a176f361256873e446c2f39c061852667321d8",
+      "current_dag_sha256": "bf1448ee4a67fefaa4c06a5cce3ecb8b31e4ec97c4d8b6055cbb7f4924be7987",
+      "current_check_sha256": "250b3139046d7f141ba5b447d3fd0b3bff3b311272fbf533089b85bb520bb97e",
+      "prior_serialized_rows": 21,
+      "positive_decision_histories": 6,
+      "same_action_at_every_positive_history": true,
+      "terminal_mass": "1",
+      "comparisons": [
+        {
+          "history": [],
+          "action": "root_write_true",
+          "current_node": 51,
+          "positive_history_mass": "1"
+        },
+        {
+          "history": [
+            [
+              false,
+              false
+            ]
+          ],
+          "action": "stop",
+          "current_node": 31,
+          "positive_history_mass": "1/2"
+        },
+        {
+          "history": [
+            [
+              true,
+              true
+            ]
+          ],
+          "action": "root_idle",
+          "current_node": 50,
+          "positive_history_mass": "1/2"
+        },
+        {
+          "history": [
+            [
+              false,
+              false
+            ],
+            [
+              false,
+              false
+            ]
+          ],
+          "action": "stop",
+          "current_node": 20,
+          "positive_history_mass": "1/2"
+        },
+        {
+          "history": [
+            [
+              true,
+              true
+            ],
+            [
+              false,
+              false
+            ]
+          ],
+          "action": "child1_idle",
+          "current_node": 42,
+          "positive_history_mass": "3/16"
+        },
+        {
+          "history": [
+            [
+              true,
+              true
+            ],
+            [
+              true,
+              false
+            ]
+          ],
+          "action": "stop",
+          "current_node": 45,
+          "positive_history_mass": "5/16"
+        }
+      ]
+    },
+    {
+      "case": "posterior_changes_retry_three_step",
+      "status": "PASS",
+      "prior_table_sha256": "a0d409b73dc286f8fdbda51e84862a3007b5772edd24810373a98ef8fc84dc80",
+      "current_dag_sha256": "dfbc4eb28446ada0f34932248bfa9466555c0a8e8361ec7d4ca1366d68d96b97",
+      "current_check_sha256": "c244f7a77a419b8af4e0cf4821a23deadffb9db808f36bdb2f3c319fa850d34d",
+      "prior_serialized_rows": 21,
+      "positive_decision_histories": 6,
+      "same_action_at_every_positive_history": true,
+      "terminal_mass": "1",
+      "comparisons": [
+        {
+          "history": [],
+          "action": "root_write_true",
+          "current_node": 51,
+          "positive_history_mass": "1"
+        },
+        {
+          "history": [
+            [
+              false,
+              false
+            ]
+          ],
+          "action": "stop",
+          "current_node": 31,
+          "positive_history_mass": "1/2"
+        },
+        {
+          "history": [
+            [
+              true,
+              true
+            ]
+          ],
+          "action": "root_idle",
+          "current_node": 50,
+          "positive_history_mass": "1/2"
+        },
+        {
+          "history": [
+            [
+              false,
+              false
+            ],
+            [
+              false,
+              false
+            ]
+          ],
+          "action": "stop",
+          "current_node": 20,
+          "positive_history_mass": "1/2"
+        },
+        {
+          "history": [
+            [
+              true,
+              true
+            ],
+            [
+              false,
+              false
+            ]
+          ],
+          "action": "child1_idle",
+          "current_node": 42,
+          "positive_history_mass": "3/16"
+        },
+        {
+          "history": [
+            [
+              true,
+              true
+            ],
+            [
+              true,
+              false
+            ]
+          ],
+          "action": "stop",
+          "current_node": 45,
+          "positive_history_mass": "5/16"
+        }
+      ]
+    },
+    {
+      "case": "receipt_feedback_four_step",
+      "status": "PASS",
+      "prior_table_sha256": "9ace921a626a4658a1e0dbb98f78706da69b52917026851480b61c7987604f7b",
+      "current_dag_sha256": "ee09a0999fd0ae4974c6145ca7111e66aef846adc15b5f91b6f7741f949da7e3",
+      "current_check_sha256": "1adcca20b238659d72295e8a52037cad23a9b969a20dc65649a73ce67111dc8a",
+      "prior_serialized_rows": 85,
+      "positive_decision_histories": 11,
+      "same_action_at_every_positive_history": true,
+      "terminal_mass": "1",
+      "comparisons": [
+        {
+          "history": [],
+          "action": "root_write_true",
+          "current_node": 103,
+          "positive_history_mass": "1"
+        },
+        {
+          "history": [
+            [
+              false,
+              false
+            ]
+          ],
+          "action": "stop",
+          "current_node": 66,
+          "positive_history_mass": "3/16"
+        },
+        {
+          "history": [
+            [
+              true,
+              true
+            ]
+          ],
+          "action": "root_idle",
+          "current_node": 102,
+          "positive_history_mass": "13/16"
+        },
+        {
+          "history": [
+            [
+              false,
+              false
+            ],
+            [
+              false,
+              false
+            ]
+          ],
+          "action": "stop",
+          "current_node": 44,
+          "positive_history_mass": "3/16"
+        },
+        {
+          "history": [
+            [
+              true,
+              true
+            ],
+            [
+              false,
+              false
+            ]
+          ],
+          "action": "child1_idle",
+          "current_node": 87,
+          "positive_history_mass": "19/128"
+        },
+        {
+          "history": [
+            [
+              true,
+              true
+            ],
+            [
+              true,
+              false
+            ]
+          ],
+          "action": "root_idle",
+          "current_node": 95,
+          "positive_history_mass": "85/128"
+        },
+        {
+          "history": [
+            [
+              false,
+              false
+            ],
+            [
+              false,
+              false
+            ],
+            [
+              false,
+              false
+            ]
+          ],
+          "action": "stop",
+          "current_node": 21,
+          "positive_history_mass": "3/16"
+        },
+        {
+          "history": [
+            [
+              true,
+              true
+            ],
+            [
+              false,
+              false
+            ],
+            [
+              false,
+              false
+            ]
+          ],
+          "action": "stop",
+          "current_node": 83,
+          "positive_history_mass": "31/1024"
+        },
+        {
+          "history": [
+            [
+              true,
+              true
+            ],
+            [
+              false,
+              false
+            ],
+            [
+              true,
+              false
+            ]
+          ],
+          "action": "child1_idle",
+          "current_node": 86,
+          "positive_history_mass": "121/1024"
+        },
+        {
+          "history": [
+            [
+              true,
+              true
+            ],
+            [
+              true,
+              false
+            ],
+            [
+              false,
+              false
+            ]
+          ],
+          "action": "child1_idle",
+          "current_node": 86,
+          "positive_history_mass": "121/1024"
+        },
+        {
+          "history": [
+            [
+              true,
+              true
+            ],
+            [
+              true,
+              false
+            ],
+            [
+              true,
+              false
+            ]
+          ],
+          "action": "stop",
+          "current_node": 90,
+          "positive_history_mass": "559/1024"
+        }
+      ]
+    }
+  ],
+  "status": "PASS"
+}

@@ -1,0 +1,67 @@
+{
+  "schema": "UEOT/DECISION_REPRESENTATION_SOURCE_INDEPENDENT_REVIEW/V1",
+  "reviewer": "/root/parameter_results",
+  "author": "/root/register_source",
+  "review_kind": "non-author semantic source review, not a rerun of the full historical build",
+  "status": "PASS_NO_BLOCKING_SEMANTIC_FINDING",
+  "files": {
+    "RegisterDecisionObserver.lean": "50de0ef837ea9fa367ed20a7bd5532e2e70f3ec579b9cf5c79783b14fe7939a9",
+    "RegisterDecisionObserverSource.lean": "82440929ed9f3375bd749c10c0be82aea4988b67797b05f896e09aedb4ecd16c",
+    "RegisterDecisionCountPosterior.lean": "025eb3d86c3a3d7d0664e7b369da2bd22f29f2b67ef123b06f25c0a613ffaffd",
+    "RegisterDecisionCountHistory.lean": "90f91bd2099aa40863fd93183a3bb83fea39e1c71bc627ed0b0ea4c8d83dc7b5"
+  },
+  "findings": [
+    {
+      "topic": "Operational observer",
+      "result": "PASS",
+      "evidence": "summarize folds only initial public state, own requests and delivered receipts. No World, theta, protected program, true parent identity or Store is an input to the update program."
+    },
+    {
+      "topic": "First allocation and permanent None",
+      "result": "PASS",
+      "evidence": "fresh distinguishes length-one Store from an allocated empty slot1; first append sets child from the birth receipt, then fresh becomes false. Later child update uses Option.map and cannot revive None. update_project derives this by actual Store length cases."
+    },
+    {
+      "topic": "Stop and raw requested cap",
+      "result": "PASS",
+      "evidence": "effective(q.stopped,a) governs physics and source information; stopped is latched. Stop continues real root idle, including informative healthy-root ticks. The observer does not redefine request cap; the original cap/menu remains in the separate Consumer/Model."
+    },
+    {
+      "topic": "Uninformative zero receipts",
+      "result": "PASS",
+      "evidence": "informative is normalSeen(normalReceipt), so damaged idle and absent slot requests both have unit zero-receipt likelihood and zero s/f increments. Wrong normal writes remain informative through paid=true even with birth=false."
+    },
+    {
+      "topic": "Actual source derivation",
+      "result": "PASS",
+      "evidence": "observe_project/update_project/rooted_step are derived from original packed functions and inherited native bridges. primitive_likelihood sums mode and fair label from primitiveWeight. primitive_joint preserves receipt and successor Local together, rather than only reward expectation."
+    },
+    {
+      "topic": "Rates 0/1 and zero prior",
+      "result": "PASS",
+      "evidence": "countWeight keeps 0^0=1. Initial normalizer is one; zero prior atoms stay zero. positive_update derives positive next normalizer from positive current normalizer and actual positive receipt mass. No open-interval rate or strictly-positive atom assumption is added."
+    },
+    {
+      "topic": "Off-support total defaults",
+      "result": "PASS",
+      "evidence": "posteriorWeight uses the prior at a zero normalizer. Supported-update and conditional-history theorems establish a positive denominator before division, so the default does not manufacture support."
+    },
+    {
+      "topic": "Arbitrary real full-history action randomization",
+      "result": "PASS",
+      "evidence": "rawWorldLikelihood expands literal mode/label branches. actionFactor uses the same initial permitted memory h and same action/receipt history for every theta; pi never receives World. rawWorldLikelihood_factor proves factorization, positive_history proves compatibility plus positive common factor and count normalizer, and conditional_count_posterior cancels that factor. The proof is not restricted to summary policies or rational action probabilities."
+    },
+    {
+      "topic": "Source persistence",
+      "result": "PASS",
+      "evidence": "worldLikelihood_eq_local explicitly uses theta_preserved at every source step; the count posterior conditions the one initial parameter rather than drawing it again."
+    }
+  ],
+  "qualifications": [
+    "Sufficiency is relative to the original 0/1 dispatch and known-goal source. The counterexample/extension boundary is proved in a separately authored witness module, not used as a substitute for this review.",
+    "CountHistory algebra is valid more generally; its probability interpretation uses the registered nonnegative normalized prior, rates in [0,1], and causal information discipline.",
+    "This report does not itself certify the later actual DAG bytes, native consumer integration, runtime or repository publication.",
+    "Compilation is coordinated by root; this review binds the current shared-source bytes and makes no claim of independently recompiling them in scratch."
+  ],
+  "blocking_findings": []
+}

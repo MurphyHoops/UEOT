@@ -1,0 +1,105 @@
+{
+  "reviewer": "/root/register_source",
+  "review_date": "2026-11-05",
+  "kind": "Independent semantic review of the actual certified DAG producer and the exported-artifact/native-record checker",
+  "decision": "No semantic blocker found in the exact reviewed snapshots. Actual Lean compilation, exported bytes, runs and timing evidence remain separately recorded by root and the checker author.",
+  "files": [
+    {
+      "file": "RETURN_REPRESENTATION_DAG.lean",
+      "sha256": "4b3537ff018ff234760dd1833ccacb7d0a0ccea392833b59730bf338e6d5763a",
+      "role": "Actual Lean registered-input graph producer and direct indexed executor"
+    },
+    {
+      "file": "verify_representation_dag.py",
+      "sha256": "b13697ae40b832dd9d29f8f27302796ddafc80e011d6404843348568558e5214",
+      "role": "Independent exact all-action artifact check and original full-record replay"
+    },
+    {
+      "file": "exact_reference_executed.py",
+      "sha256": "b81f62cbe65c3d01d32b2d74910db0e6999b144f249d79e93a8367a2fa9cad5f",
+      "role": "Frozen pre-existing PR441 full-record native_step implementation loaded under a strict source hash check"
+    }
+  ],
+  "producer_findings": [
+    {
+      "id": "ACTUAL-SAME-GRAPH",
+      "detail": "runInput constructs one candidate under the public Model, checks its storage counters, and passes that candidate to certify. Only the some Certified branch proceeds. boundCheck, graphJson, proofEdgeCount and directRunsJson all use the same c.graph and c.root. The root value is read from that actual certified array row. No separately computed policy or graph is substituted."
+    },
+    {
+      "id": "ACTUAL-CERTIFICATE",
+      "detail": "Successful output requires both certify M horizon initial candidate and boundCheck horizon c.graph. The former binds the exact all-action Bellman certificate and root state/horizon; the latter checks the same stored array used by the proved 24*(H+1)^4 node bound. Boolean PASS fields are emitted only in this successful branch."
+    },
+    {
+      "id": "ACTUAL-INPUTS",
+      "detail": "Each run builds a fresh Model and generator from the same Input object used for source rates, prior, tariff, price, discount, initial wallet, public goal, horizon and output metadata. The four earlier cases retain their original exact parameters; the registered longer consumer is H8, B2, c1, equal prior on 1/4 and 3/4, discount 3/4, price 13/10. Input models do not share a memo table."
+    },
+    {
+      "id": "ACTUAL-EDGES",
+      "detail": "Serialization enumerates the actual original M.actions at each nonterminal row and all four explicit Boolean receipt pairs, retaining exactly positive-probability edges. Scores and targets come from the certified graph. It does not export merely the selected policy traversal, omit stopped-state syntactic requests or reorder the original action list."
+    },
+    {
+      "id": "ACTUAL-NATIVE-RUN",
+      "detail": "directRunJson calls RegisterDecisionRepresentationNative.packedRun on c.graph/c.root and the original damaged founder. That runtime follows graph indices directly and does not call denote, solve or fastSolve. Requested actions, actual receipts, discounted payoff and final packed world are read from this execution object."
+    },
+    {
+      "id": "ACTUAL-AUDIT-SEPARATION",
+      "detail": "Each supported initial theta receives a deterministic positive primitive noise word for audit, with its literal once-drawn prior times all mode/fair-label probabilities recorded. Hidden theta/noise and full slots are arguments to the primitive/audit, while controllerAction receives only public Stat, remaining horizon and graph cursor. No oracle input is added to the selected policy."
+    },
+    {
+      "id": "ACTUAL-COST-REPORTING",
+      "detail": "Generation, exact certification, all-row bound check, direct execution and serialization preparation are separate IO-measured stages; final JSON encoding is separately reported on stderr. These stage definitions do not establish a speedup by themselves, and actual wall/RSS/bytes evidence must accompany performance claims."
+    }
+  ],
+  "checker_findings": [
+    {
+      "id": "CHECK-ALL-ACTIONS",
+      "detail": "The independent ACTION order matches the old seven-action menu. menu charges the original requested syntactic write cap before outcome even after committed stop; it retains invalid-child requests when prepaid. Every exported nonterminal alternative must exactly equal that unreduced ordered menu."
+    },
+    {
+      "id": "CHECK-SOURCE-COUNTS",
+      "detail": "The checker reconstructs the exact count posterior prior*r^s*(1-r)^f, merges the normal and fault masses when both produce 00, and increments counts only when the effective existing-slot request is informative. Update reconstructs physical bits from birth, handles first append separately, and never resurrects a later missing child1. Positive graph vertices require a positive normalizer; zero prior weights and rate endpoints use exact Fraction powers."
+    },
+    {
+      "id": "CHECK-COMPLETE-JOINT",
+      "detail": "For every legal alternative the checker requires exactly every positive receipt and no others, exact receipt probability, exact next statistic, an in-bounds array target and horizon decrement. It recomputes Q with actual birth, price*tariff*paid flag and unchanged discount, then checks the all-action maximum and earlier-action tie. Terminal zero values plus strict horizon decrement make this a complete finite Bellman verification."
+    },
+    {
+      "id": "CHECK-THIS-STORAGE",
+      "detail": "Actual array IDs, unique (remaining,Stat) keys, source count/horizon/fresh bounds, literal nonnegative balances, all-action root reachability, root value and optional node/storage counters are cross-checked. All stored nodes, including alternatives absent from the chosen policy, count toward the 24*(H+1)^4 bound."
+    },
+    {
+      "id": "CHECK-THIS-NATIVE",
+      "detail": "replay_one selects the action from the supplied graph row before reading hidden fields for audit, applies the frozen original full-record native_step, subtracts literal actual fees, then follows the same graph edge indexed by the actual receipt. It checks prepayment before outcome, exact summary against physical slots, persistent stopped state, count ledger, H ticks and H appended optional slots. Full identities/clocks/lineage remain in stored native audit records."
+    },
+    {
+      "id": "CHECK-PERSISTENT-THETA",
+      "detail": "Both complete and distinguishing-path replay weight the entire mode word under a single initial theta, then integrate prior and independent fair labels. They do not replace the once-drawn source by a resampled prior mean. For H<=4 all supported theta/mode/label paths are enumerated and their total actual payoff must equal the same root value."
+    },
+    {
+      "id": "CHECK-DIRECT-OUTPUT",
+      "detail": "check_direct_packed_runs requires one actual Lean direct run for every supported initial theta, a positive declared primitive-word mass and exact H noise length. It compares requested actions, receipts, payoff and final packed slots/stopped flag with the full native interpreter executing this same graph. The Lean direct executor is not replaced by Python output."
+    },
+    {
+      "id": "CHECK-MERGER",
+      "detail": "The two registered distinct histories are followed through legal positive all-action edges and must yield the identical stored index. The insufficient-summary histories must remain different in informative normal count. The report correctly says these are paths in the proof graph, not necessarily both paths of its chosen policy."
+    },
+    {
+      "id": "CHECK-REFERENCE",
+      "detail": "The pre-existing reference module is loaded only if its exact executed source hash matches. The checker reads the preserved independent reference result, verifies matching case and public input parameters and compares the exact value; it never calls that Planner.solve or substitutes its policy for the Lean graph. The reference's after-stop STOP representative restriction is explicitly qualified, while the new certificate checks the full original requested-action menu."
+    }
+  ],
+  "limitations": [
+    "This is a source review, not a claim that the new producer or checker has already run successfully on the actual exported graph. Runtime output hashes and results are separate evidence.",
+    "For H8, native replay uses fixed distinguishing paths rather than enumerating every primitive tape. The general source/refinement/native theorem and exact all-action graph certificate support the entire value claim; the selected replay paths provide additional execution evidence only.",
+    "The Python native adapter covers the registered known-true-goal damaged founder cases. A false-goal boundary alias is explicitly UNKNOWN in this checker, rather than falsely validated by a true-goal interpreter. General Lean theorems are not restricted to true goal.",
+    "The independent reference wrapper registers the five primary cases. Extra producer boundary aliases require their own appropriately scoped evidence and are not silently covered by this report.",
+    "The graph node bound is a coarse stored-node count; it does not count exact rational bit lengths, temporary hash/edge storage, native records, checker effort or serialization as free."
+  ],
+  "validation_provenance": {
+    "reviewer_reran_lean": false,
+    "reviewer_reran_python_optimizer": false,
+    "reviewer_reran_old_long_tree": false,
+    "reviewer_executed_new_artifact": false,
+    "review_scope": "Read the complete producer and checker source, compared menu/receipt/update/native semantics with frozen source definitions, and verified the listed source hashes. The author confirms the producer hash is the frozen first-compilation snapshot."
+  }
+}

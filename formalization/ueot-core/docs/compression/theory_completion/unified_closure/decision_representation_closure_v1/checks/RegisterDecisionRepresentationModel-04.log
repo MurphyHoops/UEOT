@@ -1,0 +1,98 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean:100:4: error: Tactic `apply` failed: could not unify the conclusion of `posterior_supported (source P) b a o (ne_of_gt ho)`
+  ∀ (x : (posterior (source P) b a o).Atom),
+    (posterior (source P) b a o).weight x ≠ 0 → ?P ((posterior (source P) b a o).state x)
+with the goal
+  ∀ (x : (posterior (source P) b a o).Atom),
+    (posterior (source P) b a o).weight x ≠ 0 →
+      Rooted ((posterior (source P) b a o).state x) ∧
+        projectLocal P.goal ((posterior (source P) b a o).state x) = (updateStat P.goal st a o).q
+
+Note: The full type of `posterior_supported (source P) b a o (ne_of_gt ho)` is
+  ∀ (P_1 : World Theta → Prop),
+    (∀ (x : b.Atom) (z : Noise),
+        b.weight x ≠ 0 →
+          (source P).chance (b.state x) z ≠ 0 →
+            (source P).observe (b.state x) a z = o → P_1 ((source P).next (b.state x) a z)) →
+      ∀ (x : (posterior (source P) b a o).Atom),
+        (posterior (source P) b a o).weight x ≠ 0 → P_1 ((posterior (source P) b a o).state x)
+
+case support
+Theta : Type
+inst✝ : Fintype Theta
+P : Family Theta
+prior : Theta → ℚ
+st : Stat
+b : Belief (World Theta)
+h : BeliefMatches P prior st b
+hz : 0 < normalizer P.normal prior st.s st.f
+a : Act
+o : Obs
+ho : 0 < mass (source P) b a o
+hm : 0 < observationMass P.normal prior st.s st.f P.goal st.q a o
+⊢ ∀ (x : (posterior (source P) b a o).Atom),
+    (posterior (source P) b a o).weight x ≠ 0 →
+      Rooted ((posterior (source P) b a o).state x) ∧
+        projectLocal P.goal ((posterior (source P) b a o).state x) = (updateStat P.goal st a o).q
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean:124:0: warning: automatically included section variable(s) unused in theorem `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel.wallet_next`:
+  [Fintype Theta]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype Theta] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean:131:35: warning: This simp argument is unused:
+  Bool.true_eq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [wallet, updateStat, ↓reduceIte, Nat.cast_add, Nat.cast_one, advance, charge]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean:148:0: warning: Definition `refinement` is a proposition; use `theorem` instead of `def`
+
+Note: This linter can be disabled with `set_option linter.defProp false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean:166:2: error: unsolved goals
+case refine_2
+Theta : Type
+inst✝ : Fintype Theta
+P : Family Theta
+prior : Theta → ℚ
+hn : ∀ (t : Theta), 0 ≤ prior t
+ht : ∑ t, prior t = 1
+initial : Wallet
+test : Theta → ℚ
+⊢ ∑ x, prior x * test x = ∑ x, prior x * test x
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean:200:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  expect ?b fun w => ∑ z, Source.chance ?K w z * ?f (Source.observe ?K w ?a z) (Source.next ?K w ?a z)
+in the target expression
+  (expect i.1 fun w =>
+      ∑ z,
+        (source P).chance w z *
+          (fun o x =>
+              test o (updateStat P.goal st a o) (if o.1 = true then 1 else 0) (charge P.tariff o)
+                ↑(advance P.tariff i.2 a o))
+            ((source P).observe w a z) ((source P).next w a z)) =
+    ∑ o,
+      observationMass P.normal prior st.s st.f P.goal st.q a o *
+        test o (updateStat P.goal st a o) (if o.1 = true then 1 else 0) (charge P.tariff o)
+          ↑(wallet P.tariff initial (updateStat P.goal st a o))
+
+Theta : Type
+inst✝ : Fintype Theta
+P : Family Theta
+prior : Theta → ℚ
+initial : Wallet
+i : Info Theta
+st : Stat
+h : Rel P prior initial i st
+a : Act
+test : Obs → Stat → ℚ → ℚ → ℚ → ℚ
+⊢ (expect i.1 fun w =>
+      ∑ z,
+        (source P).chance w z *
+          (fun o x =>
+              test o (updateStat P.goal st a o) (if o.1 = true then 1 else 0) (charge P.tariff o)
+                ↑(advance P.tariff i.2 a o))
+            ((source P).observe w a z) ((source P).next w a z)) =
+    ∑ o,
+      observationMass P.normal prior st.s st.f P.goal st.q a o *
+        test o (updateStat P.goal st a o) (if o.1 = true then 1 else 0) (charge P.tariff o)
+          ↑(wallet P.tariff initial (updateStat P.goal st a o))

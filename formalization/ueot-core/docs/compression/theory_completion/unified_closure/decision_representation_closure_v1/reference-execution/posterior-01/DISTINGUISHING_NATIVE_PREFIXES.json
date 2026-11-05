@@ -1,0 +1,1143 @@
+{
+  "status": "PASS",
+  "scope": "Fixed distinguishing original-Store prefixes; no new optimality claim",
+  "two_actual_payments": {
+    "role": "Independent feasible diagnostic strategy, not asserted to be optimal",
+    "fixed_theta_mode_mass": "r^2",
+    "registered_prior_mode_mass": "5/16",
+    "specified_label_and_mode_mass": "5/64",
+    "execution": {
+      "requested_prefix": [
+        [
+          {
+            "kind": "dispatch",
+            "parent": 0,
+            "action": true
+          },
+          [
+            true,
+            true
+          ]
+        ],
+        [
+          {
+            "kind": "dispatch",
+            "parent": 0,
+            "action": true
+          },
+          [
+            true,
+            true
+          ]
+        ]
+      ],
+      "modes": [
+        true,
+        true
+      ],
+      "labels": [
+        false,
+        false
+      ],
+      "records": [
+        {
+          "tick": 1,
+          "request_parent": 0,
+          "executed": true,
+          "mode": true,
+          "label": false,
+          "parent_identity": [
+            [
+              0,
+              false
+            ]
+          ],
+          "parent_clock": 2,
+          "child_slot": 1,
+          "child_identity": [
+            [
+              0,
+              false
+            ],
+            [
+              1,
+              false
+            ]
+          ],
+          "expenditure": "1",
+          "balance": "1",
+          "requested_action": {
+            "kind": "dispatch",
+            "parent": 0,
+            "action": true
+          },
+          "stopped": false
+        },
+        {
+          "tick": 2,
+          "request_parent": 0,
+          "executed": true,
+          "mode": true,
+          "label": false,
+          "parent_identity": [
+            [
+              0,
+              false
+            ]
+          ],
+          "parent_clock": 3,
+          "child_slot": 2,
+          "child_identity": [
+            [
+              0,
+              false
+            ],
+            [
+              2,
+              false
+            ]
+          ],
+          "expenditure": "1",
+          "balance": "0",
+          "requested_action": {
+            "kind": "dispatch",
+            "parent": 0,
+            "action": true
+          },
+          "stopped": false
+        }
+      ],
+      "final_physical_store": [
+        true,
+        true,
+        true
+      ],
+      "final_balance": "0",
+      "paid_count": 2,
+      "final_store_size": 3,
+      "final_stopped": false
+    }
+  },
+  "merge_with_different_tail_a": {
+    "requested_prefix": [
+      [
+        {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": true
+        },
+        [
+          true,
+          true
+        ]
+      ],
+      [
+        {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": null
+        },
+        [
+          false,
+          false
+        ]
+      ],
+      [
+        {
+          "kind": "dispatch",
+          "parent": 1,
+          "action": null
+        },
+        [
+          true,
+          false
+        ]
+      ]
+    ],
+    "modes": [
+      true,
+      false,
+      true
+    ],
+    "labels": [
+      false,
+      false,
+      false
+    ],
+    "records": [
+      {
+        "tick": 1,
+        "request_parent": 0,
+        "executed": true,
+        "mode": true,
+        "label": false,
+        "parent_identity": [
+          [
+            0,
+            false
+          ]
+        ],
+        "parent_clock": 2,
+        "child_slot": 1,
+        "child_identity": [
+          [
+            0,
+            false
+          ],
+          [
+            1,
+            false
+          ]
+        ],
+        "expenditure": "1",
+        "balance": "0",
+        "requested_action": {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": true
+        },
+        "stopped": false
+      },
+      {
+        "tick": 2,
+        "request_parent": 0,
+        "executed": false,
+        "mode": false,
+        "label": false,
+        "parent_identity": [
+          [
+            0,
+            false
+          ]
+        ],
+        "parent_clock": 3,
+        "child_slot": null,
+        "child_identity": null,
+        "expenditure": "0",
+        "balance": "0",
+        "requested_action": {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": null
+        },
+        "stopped": false
+      },
+      {
+        "tick": 3,
+        "request_parent": 1,
+        "executed": true,
+        "mode": true,
+        "label": false,
+        "parent_identity": [
+          [
+            0,
+            false
+          ],
+          [
+            1,
+            false
+          ]
+        ],
+        "parent_clock": 4,
+        "child_slot": 3,
+        "child_identity": [
+          [
+            0,
+            false
+          ],
+          [
+            1,
+            false
+          ],
+          [
+            3,
+            false
+          ]
+        ],
+        "expenditure": "0",
+        "balance": "0",
+        "requested_action": {
+          "kind": "dispatch",
+          "parent": 1,
+          "action": null
+        },
+        "stopped": false
+      }
+    ],
+    "final_physical_store": [
+      false,
+      true,
+      null,
+      true
+    ],
+    "final_balance": "0",
+    "paid_count": 1,
+    "final_store_size": 4,
+    "final_stopped": false
+  },
+  "merge_with_different_tail_b": {
+    "requested_prefix": [
+      [
+        {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": true
+        },
+        [
+          true,
+          true
+        ]
+      ],
+      [
+        {
+          "kind": "dispatch",
+          "parent": 1,
+          "action": null
+        },
+        [
+          true,
+          false
+        ]
+      ],
+      [
+        {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": null
+        },
+        [
+          false,
+          false
+        ]
+      ]
+    ],
+    "modes": [
+      true,
+      true,
+      false
+    ],
+    "labels": [
+      false,
+      false,
+      false
+    ],
+    "records": [
+      {
+        "tick": 1,
+        "request_parent": 0,
+        "executed": true,
+        "mode": true,
+        "label": false,
+        "parent_identity": [
+          [
+            0,
+            false
+          ]
+        ],
+        "parent_clock": 2,
+        "child_slot": 1,
+        "child_identity": [
+          [
+            0,
+            false
+          ],
+          [
+            1,
+            false
+          ]
+        ],
+        "expenditure": "1",
+        "balance": "0",
+        "requested_action": {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": true
+        },
+        "stopped": false
+      },
+      {
+        "tick": 2,
+        "request_parent": 1,
+        "executed": true,
+        "mode": true,
+        "label": false,
+        "parent_identity": [
+          [
+            0,
+            false
+          ],
+          [
+            1,
+            false
+          ]
+        ],
+        "parent_clock": 3,
+        "child_slot": 2,
+        "child_identity": [
+          [
+            0,
+            false
+          ],
+          [
+            1,
+            false
+          ],
+          [
+            2,
+            false
+          ]
+        ],
+        "expenditure": "0",
+        "balance": "0",
+        "requested_action": {
+          "kind": "dispatch",
+          "parent": 1,
+          "action": null
+        },
+        "stopped": false
+      },
+      {
+        "tick": 3,
+        "request_parent": 0,
+        "executed": false,
+        "mode": false,
+        "label": false,
+        "parent_identity": [
+          [
+            0,
+            false
+          ]
+        ],
+        "parent_clock": 4,
+        "child_slot": null,
+        "child_identity": null,
+        "expenditure": "0",
+        "balance": "0",
+        "requested_action": {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": null
+        },
+        "stopped": false
+      }
+    ],
+    "final_physical_store": [
+      false,
+      true,
+      true,
+      null
+    ],
+    "final_balance": "0",
+    "paid_count": 1,
+    "final_store_size": 4,
+    "final_stopped": false
+  },
+  "insufficient_body_a": {
+    "requested_prefix": [
+      [
+        {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": true
+        },
+        [
+          true,
+          true
+        ]
+      ],
+      [
+        {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": null
+        },
+        [
+          true,
+          false
+        ]
+      ],
+      [
+        {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": null
+        },
+        [
+          false,
+          false
+        ]
+      ]
+    ],
+    "modes": [
+      true,
+      true,
+      false
+    ],
+    "labels": [
+      false,
+      false,
+      false
+    ],
+    "records": [
+      {
+        "tick": 1,
+        "request_parent": 0,
+        "executed": true,
+        "mode": true,
+        "label": false,
+        "parent_identity": [
+          [
+            0,
+            false
+          ]
+        ],
+        "parent_clock": 2,
+        "child_slot": 1,
+        "child_identity": [
+          [
+            0,
+            false
+          ],
+          [
+            1,
+            false
+          ]
+        ],
+        "expenditure": "1",
+        "balance": "0",
+        "requested_action": {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": true
+        },
+        "stopped": false
+      },
+      {
+        "tick": 2,
+        "request_parent": 0,
+        "executed": true,
+        "mode": true,
+        "label": false,
+        "parent_identity": [
+          [
+            0,
+            false
+          ]
+        ],
+        "parent_clock": 3,
+        "child_slot": 2,
+        "child_identity": [
+          [
+            0,
+            false
+          ],
+          [
+            2,
+            false
+          ]
+        ],
+        "expenditure": "0",
+        "balance": "0",
+        "requested_action": {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": null
+        },
+        "stopped": false
+      },
+      {
+        "tick": 3,
+        "request_parent": 0,
+        "executed": false,
+        "mode": false,
+        "label": false,
+        "parent_identity": [
+          [
+            0,
+            false
+          ]
+        ],
+        "parent_clock": 4,
+        "child_slot": null,
+        "child_identity": null,
+        "expenditure": "0",
+        "balance": "0",
+        "requested_action": {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": null
+        },
+        "stopped": false
+      }
+    ],
+    "final_physical_store": [
+      false,
+      true,
+      true,
+      null
+    ],
+    "final_balance": "0",
+    "paid_count": 1,
+    "final_store_size": 4,
+    "final_stopped": false
+  },
+  "insufficient_body_b": {
+    "requested_prefix": [
+      [
+        {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": true
+        },
+        [
+          true,
+          true
+        ]
+      ],
+      [
+        {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": null
+        },
+        [
+          false,
+          false
+        ]
+      ],
+      [
+        {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": null
+        },
+        [
+          false,
+          false
+        ]
+      ]
+    ],
+    "modes": [
+      true,
+      false,
+      true
+    ],
+    "labels": [
+      false,
+      false,
+      false
+    ],
+    "records": [
+      {
+        "tick": 1,
+        "request_parent": 0,
+        "executed": true,
+        "mode": true,
+        "label": false,
+        "parent_identity": [
+          [
+            0,
+            false
+          ]
+        ],
+        "parent_clock": 2,
+        "child_slot": 1,
+        "child_identity": [
+          [
+            0,
+            false
+          ],
+          [
+            1,
+            false
+          ]
+        ],
+        "expenditure": "1",
+        "balance": "0",
+        "requested_action": {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": true
+        },
+        "stopped": false
+      },
+      {
+        "tick": 2,
+        "request_parent": 0,
+        "executed": false,
+        "mode": false,
+        "label": false,
+        "parent_identity": [
+          [
+            0,
+            false
+          ]
+        ],
+        "parent_clock": 3,
+        "child_slot": null,
+        "child_identity": null,
+        "expenditure": "0",
+        "balance": "0",
+        "requested_action": {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": null
+        },
+        "stopped": false
+      },
+      {
+        "tick": 3,
+        "request_parent": 0,
+        "executed": true,
+        "mode": true,
+        "label": false,
+        "parent_identity": [
+          [
+            0,
+            false
+          ]
+        ],
+        "parent_clock": 4,
+        "child_slot": null,
+        "child_identity": null,
+        "expenditure": "0",
+        "balance": "0",
+        "requested_action": {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": null
+        },
+        "stopped": false
+      }
+    ],
+    "final_physical_store": [
+      false,
+      true,
+      null,
+      null
+    ],
+    "final_balance": "0",
+    "paid_count": 1,
+    "final_store_size": 4,
+    "final_stopped": false
+  },
+  "stop_preserves_world_ticks": {
+    "requested_prefix": [
+      [
+        {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": true
+        },
+        [
+          true,
+          true
+        ]
+      ],
+      [
+        {
+          "kind": "stop"
+        },
+        [
+          true,
+          false
+        ]
+      ],
+      [
+        {
+          "kind": "dispatch",
+          "parent": 1,
+          "action": null
+        },
+        [
+          true,
+          false
+        ]
+      ]
+    ],
+    "modes": [
+      true,
+      true,
+      true
+    ],
+    "labels": [
+      false,
+      false,
+      false
+    ],
+    "records": [
+      {
+        "tick": 1,
+        "request_parent": 0,
+        "executed": true,
+        "mode": true,
+        "label": false,
+        "parent_identity": [
+          [
+            0,
+            false
+          ]
+        ],
+        "parent_clock": 2,
+        "child_slot": 1,
+        "child_identity": [
+          [
+            0,
+            false
+          ],
+          [
+            1,
+            false
+          ]
+        ],
+        "expenditure": "1",
+        "balance": "0",
+        "requested_action": {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": true
+        },
+        "stopped": false
+      },
+      {
+        "tick": 2,
+        "request_parent": 0,
+        "executed": true,
+        "mode": true,
+        "label": false,
+        "parent_identity": [
+          [
+            0,
+            false
+          ]
+        ],
+        "parent_clock": 3,
+        "child_slot": 2,
+        "child_identity": [
+          [
+            0,
+            false
+          ],
+          [
+            2,
+            false
+          ]
+        ],
+        "expenditure": "0",
+        "balance": "0",
+        "requested_action": {
+          "kind": "stop"
+        },
+        "stopped": true
+      },
+      {
+        "tick": 3,
+        "request_parent": 0,
+        "executed": true,
+        "mode": true,
+        "label": false,
+        "parent_identity": [
+          [
+            0,
+            false
+          ]
+        ],
+        "parent_clock": 4,
+        "child_slot": 3,
+        "child_identity": [
+          [
+            0,
+            false
+          ],
+          [
+            3,
+            false
+          ]
+        ],
+        "expenditure": "0",
+        "balance": "0",
+        "requested_action": {
+          "kind": "dispatch",
+          "parent": 1,
+          "action": null
+        },
+        "stopped": true
+      }
+    ],
+    "final_physical_store": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "final_balance": "0",
+    "paid_count": 1,
+    "final_store_size": 4,
+    "final_stopped": true
+  },
+  "wrong_write_charged_and_child1_remains_none": {
+    "requested_prefix": [
+      [
+        {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": false
+        },
+        [
+          false,
+          true
+        ]
+      ],
+      [
+        {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": true
+        },
+        [
+          true,
+          true
+        ]
+      ],
+      [
+        {
+          "kind": "dispatch",
+          "parent": 1,
+          "action": null
+        },
+        [
+          false,
+          false
+        ]
+      ]
+    ],
+    "modes": [
+      true,
+      true,
+      true
+    ],
+    "labels": [
+      false,
+      false,
+      false
+    ],
+    "records": [
+      {
+        "tick": 1,
+        "request_parent": 0,
+        "executed": true,
+        "mode": true,
+        "label": false,
+        "parent_identity": [
+          [
+            0,
+            false
+          ]
+        ],
+        "parent_clock": 2,
+        "child_slot": null,
+        "child_identity": null,
+        "expenditure": "1",
+        "balance": "1",
+        "requested_action": {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": false
+        },
+        "stopped": false
+      },
+      {
+        "tick": 2,
+        "request_parent": 0,
+        "executed": true,
+        "mode": true,
+        "label": false,
+        "parent_identity": [
+          [
+            0,
+            false
+          ]
+        ],
+        "parent_clock": 3,
+        "child_slot": 2,
+        "child_identity": [
+          [
+            0,
+            false
+          ],
+          [
+            2,
+            false
+          ]
+        ],
+        "expenditure": "1",
+        "balance": "0",
+        "requested_action": {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": true
+        },
+        "stopped": false
+      },
+      {
+        "tick": 3,
+        "request_parent": 1,
+        "executed": false,
+        "mode": true,
+        "label": false,
+        "parent_identity": null,
+        "parent_clock": null,
+        "child_slot": null,
+        "child_identity": null,
+        "expenditure": "0",
+        "balance": "0",
+        "requested_action": {
+          "kind": "dispatch",
+          "parent": 1,
+          "action": null
+        },
+        "stopped": false
+      }
+    ],
+    "final_physical_store": [
+      true,
+      null,
+      true,
+      null
+    ],
+    "final_balance": "0",
+    "paid_count": 2,
+    "final_store_size": 4,
+    "final_stopped": false
+  },
+  "absent_child_request_keeps_allocated_none": {
+    "requested_prefix": [
+      [
+        {
+          "kind": "dispatch",
+          "parent": 1,
+          "action": true
+        },
+        [
+          false,
+          false
+        ]
+      ],
+      [
+        {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": true
+        },
+        [
+          true,
+          true
+        ]
+      ],
+      [
+        {
+          "kind": "dispatch",
+          "parent": 1,
+          "action": null
+        },
+        [
+          false,
+          false
+        ]
+      ]
+    ],
+    "modes": [
+      true,
+      true,
+      true
+    ],
+    "labels": [
+      false,
+      false,
+      false
+    ],
+    "records": [
+      {
+        "tick": 1,
+        "request_parent": 1,
+        "executed": false,
+        "mode": true,
+        "label": false,
+        "parent_identity": null,
+        "parent_clock": null,
+        "child_slot": null,
+        "child_identity": null,
+        "expenditure": "0",
+        "balance": "2",
+        "requested_action": {
+          "kind": "dispatch",
+          "parent": 1,
+          "action": true
+        },
+        "stopped": false
+      },
+      {
+        "tick": 2,
+        "request_parent": 0,
+        "executed": true,
+        "mode": true,
+        "label": false,
+        "parent_identity": [
+          [
+            0,
+            false
+          ]
+        ],
+        "parent_clock": 3,
+        "child_slot": 2,
+        "child_identity": [
+          [
+            0,
+            false
+          ],
+          [
+            2,
+            false
+          ]
+        ],
+        "expenditure": "1",
+        "balance": "1",
+        "requested_action": {
+          "kind": "dispatch",
+          "parent": 0,
+          "action": true
+        },
+        "stopped": false
+      },
+      {
+        "tick": 3,
+        "request_parent": 1,
+        "executed": false,
+        "mode": true,
+        "label": false,
+        "parent_identity": null,
+        "parent_clock": null,
+        "child_slot": null,
+        "child_identity": null,
+        "expenditure": "0",
+        "balance": "1",
+        "requested_action": {
+          "kind": "dispatch",
+          "parent": 1,
+          "action": null
+        },
+        "stopped": false
+      }
+    ],
+    "final_physical_store": [
+      true,
+      null,
+      true,
+      null
+    ],
+    "final_balance": "1",
+    "paid_count": 1,
+    "final_store_size": 4,
+    "final_stopped": false
+  }
+}

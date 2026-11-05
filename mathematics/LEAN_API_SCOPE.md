@@ -43,3 +43,9 @@ InvariantLawGOA、CesaroLimitGOA、KilledQSDGOA 的定义描述给定核，本�
 前文模块数量与阶段表述保留各自历史时点；本增补不重开已完成的原条件数学合同。新增一般有限返回/过滤/支持支付接口与真实 Register 有限人口消费者，完整清单及实编译、源/输出身份见[交付包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/README.md)。
 
 `RegisterJointDecisionNativeConsumer` 的 `returned_native_value`、`returned_native_payment`、`returned_native_optimal`、`returned_native_population`、`initial_returned_native_value`、`initial_returned_native_boundary` 直接接原 Store 与 THIS 输出。比较类包括只在实际正概率历史合法的任意实数随机完整历史策略。公开目标、正固定收费、一次 θ、允许收据与地址 0/1 为实例范围；一般期限闭式另外要求 B=c 与 p≥S_H。未知程序、额外读取、全人口同时老化和无限内生资源未被覆盖。后验缓存与有限表缓存分别证明整个原后验和整张返回表相等；实测不预先宣称提速。
+
+## 2026-11-06 新合同接口：源导出的决策充分表示
+
+`RegisterDecisionRepresentation` 连接实际收据观察器、计数后验、全动作充分性、共享DAG、原生Store与逐前缀预付，仍比较任意同信息同钱包完整历史实随机可行策略。准确声明与量词见[定理索引](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/decision_representation_closure_v1/THEOREM_INDEX.md)和[API边界](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/decision_representation_closure_v1/API_BOUNDARIES.md)。
+
+`plan`/`returned`是Option；主结论针对通过精确检查器的实际候选，不另外宣称generate对每个合法输入总通过。13个实际实例均被接受。实际数组界为24(H+1)^4，不是有理位长、总内存或一般POMDP时间界。执行直接走共享节点，理论展开只用于证明；没有新增Lean JSON往返定理，导出身份由实际哈希及独立全动作检查绑定。源权限保持公开goal与地址0/1；地址2可达反例证明权限扩展须细化表示。原完整身份/谱系/None继续保留。

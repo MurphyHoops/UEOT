@@ -1,0 +1,82 @@
+{
+  "schema": "UEOT/PR442_HELPER_PATH_CHANGE_REVIEW/V1",
+  "status": "PASS_STATIC_AND_CLI_REVIEW",
+  "scope": "Only the two scratch helper scripts were edited; their final repository copies and execution are owned by the root coordinator.",
+  "modified_files": [
+    {
+      "file": "check_representation_omitted_alternative.py",
+      "before_copy": "reproduction_path_fixes/before/check_representation_omitted_alternative.py",
+      "before_sha256": "d8d6e095c44aa4f32b13f6034695dbd7ccb779bfb64186e0bf61d4658da3fffe",
+      "after_sha256": "e6c9abe1d3b3dfeb5ced84e5e4da1065263bc09d38e781d79298f73ecdca6efa",
+      "before_bytes": 2785,
+      "after_bytes": 3104
+    },
+    {
+      "file": "compare_prior_lean_tables.py",
+      "before_copy": "reproduction_path_fixes/before/compare_prior_lean_tables.py",
+      "before_sha256": "ab355bac13ae5ad1ecb0e7260ab481455d4712fe7ee146596486590bf1845217",
+      "after_sha256": "39914ea7e25c63eaa30de23dc0118134330df09e84c18d3846ac3758897cd79b",
+      "before_bytes": 4834,
+      "after_bytes": 5080
+    }
+  ],
+  "changes": {
+    "check_representation_omitted_alternative.py": [
+      "Add argparse CLI with --packet defaulting to Path(__file__).resolve().parent.parent and required --output.",
+      "Read current long DAG from <packet>/actual-execution/long-01/stdout.json.",
+      "Read reference result from <packet>/reference-execution/long-01/REFERENCE_RESULT.json.",
+      "Read successful independent check from <packet>/independent-execution/long-01/THIS_DAG_CHECK.json.",
+      "Keep checker SHA sourced from verify_representation_dag.py alongside this helper.",
+      "Reject existing output paths and symlinks, create output parents, and use exclusive text creation to prevent overwrite."
+    ],
+    "compare_prior_lean_tables.py": [
+      "Replace temporary-workspace --base with --packet defaulting to Path(__file__).resolve().parent.parent.",
+      "Add --prior-packet; when omitted use packet.parent / joint_decision_closure_v1.",
+      "Preserve repeatable --case and required --output.",
+      "Read prior report from <prior-packet>/actual-execution/THIS-final-02/THIS_LEAN_TABLE_CHECK.json.",
+      "Read prior four-case stdout from <prior-packet>/actual-execution/lean-smoke-four-01/stdout.log.",
+      "Read prior two/three/posterior stdout from <prior-packet>/actual-execution/lean-final-02/<case>/stdout.log.",
+      "Read current DAG from <packet>/actual-execution/<case>-01/stdout.json and check from <packet>/independent-execution/<case>-01/THIS_DAG_CHECK.json.",
+      "Reject existing output paths and symlinks, retain parent creation, and use exclusive text creation to prevent overwrite."
+    ]
+  },
+  "preserved_logic": {
+    "all_assertion_ASTs_identical_in_each_script": true,
+    "negative_probe_core_identical_from_original_read_through_unchanged_artifact_receipt": true,
+    "compare_function_body_AST_identical_except_three_path_assignments": true,
+    "input_sha_validation_retained": true,
+    "original_DAG_only_mutated_in_memory": true,
+    "checker_semantics_changed": false,
+    "solver_executed": false
+  },
+  "verification": {
+    "python_AST_parse": "PASS for both edited scripts",
+    "CLI_help": "PASS; --packet and --output exposed, --base absent, comparison retains --case and adds --prior-packet",
+    "required_output_argument": "PASS; both return argparse exit code 2 when --output is omitted",
+    "existing_output_guard": "PASS; both return argparse exit code 2 before reading nonexistent packet input and preserve sentinel bytes",
+    "actual_certificate_helper_execution": "Not run here; root coordinator will run each helper once against the real Mac repository with new output paths"
+  },
+  "read_only_auxiliary_review": {
+    "representation_reference.py": {
+      "sha256": "8c9a9cfcec198dedde9460e98c6c6836419f51e8ff9543e7531a349094c8a2e2",
+      "edited": false,
+      "input_and_output_paths_via_CLI": true,
+      "temporary_workspace_path_residual_found": false
+    },
+    "verify_representation_dag.py": {
+      "sha256": "b13697ae40b832dd9d29f8f27302796ddafc80e011d6404843348568558e5214",
+      "edited": false,
+      "input_and_output_paths_via_CLI": true,
+      "temporary_workspace_path_residual_found": false
+    }
+  },
+  "untouched": [
+    "Lean sources",
+    "book manuscripts",
+    "existing original execution reports",
+    "Mac filesystem",
+    "git state",
+    "GI integrations",
+    "representation_delivery staging copies"
+  ]
+}

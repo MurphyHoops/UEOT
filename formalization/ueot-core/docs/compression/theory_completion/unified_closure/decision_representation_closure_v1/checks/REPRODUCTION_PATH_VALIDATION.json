@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "scope": "Actual committed repository layout, default input paths and fresh outputs, run with cwd /tmp. Only these two packaging helpers rerun; no planner, solver, Lean or original native trace enumeration. Original artifacts unchanged; original helpers and outputs retained.",
+  "review_url": "https://github.com/MurphyHoops/UEOT/pull/442#discussion_r4484604584",
+  "runs": [
+    {
+      "script": "check_representation_omitted_alternative.py",
+      "source_sha256": "e6c9abe1d3b3dfeb5ced84e5e4da1065263bc09d38e781d79298f73ecdca6efa",
+      "exit": 0,
+      "seconds": 0.2168755,
+      "result": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/decision_representation_closure_v1/independent-execution/OMITTED_ALTERNATIVE_REJECTION_REPO_02.json",
+      "result_sha256": "138a09eaa6cc0d340a0065f1accee8390558fa642d7f8ad2586fdbfd92d521ed",
+      "status": "PASS_EXPECTED_REJECTION"
+    },
+    {
+      "script": "compare_prior_lean_tables.py",
+      "source_sha256": "39914ea7e25c63eaa30de23dc0118134330df09e84c18d3846ac3758897cd79b",
+      "exit": 0,
+      "seconds": 0.03159508399999997,
+      "result": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/decision_representation_closure_v1/independent-execution/PR441_ALL_ACTION_COMPARISON_REPO_03.json",
+      "result_sha256": "6e55c6eaa016f705f2078f8b88ade83d1a2e2755a62d3445565e3c78cc46f38b",
+      "status": "PASS"
+    }
+  ]
+}

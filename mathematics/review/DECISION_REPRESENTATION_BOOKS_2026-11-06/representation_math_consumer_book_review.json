@@ -1,0 +1,42 @@
+{
+  "schema": "UEOT/DECISION_REPRESENTATION_MATH_CONSUMER_BOOK_REVIEW/V1",
+  "reviewer": "/root/parameter_results",
+  "author": "/root",
+  "status": "PASS_SELECTED_SNAPSHOT_WITH_ONE_NONBLOCKING_NOTE",
+  "scope": "Non-author section 39.88 numerical/scope review and direct selected-page visual QA; 39.87 read as context. No planner/checker was run and no whole-book review is claimed.",
+  "reviewed_markdown_sha256": "e97d92f206b73b71c8758c0042edf4498adb85f05c7eb8225239624c1459027c",
+  "reviewed_pdf_sha256": "5375a67ad3cef18a46712609768cf3f0dca33f852e4749241c51aa8a564a3678",
+  "actual_viewed_pages": [
+    {
+      "pdf_page": 189,
+      "printed_page": 178,
+      "render_sha256": "58639ffff1f4464dd144be36b3160b3164eb88ae74c78df0286b96824be4823a"
+    },
+    {
+      "pdf_page": 190,
+      "printed_page": 179,
+      "render_sha256": "79ccfbaba07573f96c6d619a7dfc4cb766ef70b40566b03ca7893d9bf20f5538"
+    }
+  ],
+  "evidence_summary_sha256": "1a9afda198ec2c7a5dce609effdcf58c86239d553c1ae75b1612aa6494fe9c15",
+  "checks": {
+    "five_values_and_node_counts": "PASS; all exact values and both proof/selected graph node counts agree, terminal rows explicitly included",
+    "h8_edges_output_size": "PASS; 8221 proof edges, 182 selected edges, 960155 bytes",
+    "h8_population_payment_totals": "PASS; 215/256 birth event, 1233/4096 two payments, 57313/16384 expected births, 4673/4096 expected actual fee, distinct from discounted value",
+    "time_and_rss": "PASS; Mac stages 852/1740/931/6 ms, entire process 7.250 s and max RSS 5812731904 bytes; independent Linux check 0.286/0.304 s and RSS 27398144 bytes. Environments and whole-process scope are explicit.",
+    "optimality_and_path_scope": "PASS; finite H8 paths do not replace the all-action certificate/general native theorem; old memo and stopped representative reduction are explicit",
+    "merge_scope_context": "PASS; future conditional law is shared while complete tails, identity, past birth times and realized past payoff may differ",
+    "visual": "PASS; directly inspected both rendered pages; no missing formula glyphs, clipped text, cropped table values or cutoff visible"
+  },
+  "blocking_findings": [],
+  "nonblocking_note": {
+    "location": "39.88 old-path/long-path paragraph",
+    "detail": "Exact path quantities are absent, although the stated scope is correct.",
+    "suggested_sentence": "旧四例完整原生重放分别32、128、128、512条，共800条；H8检查32条固定区别路径，并另核2条Lean直接图执行输出。"
+  },
+  "concurrent_revision_notice": {
+    "later_observed_markdown_sha256": "aa5dd21f6a428804ac24b29eaa801cbc344ebe2887746d57261f3d7624e8b28c",
+    "detail": "The book source changed concurrently after the reviewed snapshot; section 39.88 was reread and remained unchanged. This report does not relabel the old PDF as a build of that later source."
+  },
+  "source_not_modified_by_reviewer": true
+}

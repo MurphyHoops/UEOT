@@ -1,0 +1,71 @@
+{
+  "schema": "UEOT/DECISION_REPRESENTATION_REFERENCE/V1",
+  "case": "receipt_feedback_four_step",
+  "parameters": {
+    "name": "receipt_feedback_four_step",
+    "r": [
+      "3/4",
+      "7/8"
+    ],
+    "prior": [
+      "1/2",
+      "1/2"
+    ],
+    "H": 4,
+    "B": "1",
+    "c": "1",
+    "price": "37/16",
+    "d": "3/4",
+    "prior_value": "39525/524288",
+    "goal": true,
+    "initial_damaged": true
+  },
+  "baseline": "PR441 existing normalized-posterior / full-PackedStore lru_cache Planner",
+  "reference_source_sha256": "b81f62cbe65c3d01d32b2d74910db0e6999b144f249d79e93a8367a2fa9cad5f",
+  "adapter_sha256": "8c9a9cfcec198dedde9460e98c6c6836419f51e8ff9543e7531a349094c8a2e2",
+  "declared_frozen_contract_sha256": "d4c7134344f81a885265863a013a846af6a53829864877b3686eb1f16306de80",
+  "declared_frozen_inputs_sha256": "43bbea5dac37be2036977e2dc1ef7f3976ee10fec3db5196eb2a9e72270f8847",
+  "python": "3.12.14",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+  "single_solve_budget_seconds": 300,
+  "solve_seconds": 0.0064938900013657985,
+  "cache_immediately_after_solve": {
+    "hits": 99,
+    "misses": 143,
+    "maxsize": null,
+    "currsize": 143
+  },
+  "value": "39525/524288",
+  "initial_action": {
+    "kind": "dispatch",
+    "parent": 0,
+    "action": true
+  },
+  "export_seconds": 0.001320109999142005,
+  "reference_policy_nodes": 19,
+  "reference_policy_edges": 18,
+  "reference_policy_bytes": 4975,
+  "reference_policy_sha256": "c0f541078c4d89fbba8cc9bf5ac800d24238a93d4ca5dc1298cc73ce6acb0e3f",
+  "complete_native_replay": {
+    "value": "39525/524288",
+    "mass": "1",
+    "at_least_one_birth": "13/16",
+    "mean_births": "22783/8192",
+    "mean_fee": "13/16",
+    "min_prefix_balance": "0",
+    "positive_full_tapes": 512,
+    "traces_sha256": "a987fea3b55459d2c9d69948f8128d8592201ef40800b2fbdec266d4e305555b"
+  },
+  "status": "PASS",
+  "checking_seconds": 0.051654914999744506,
+  "planner_cache": {
+    "hits": 127,
+    "misses": 144,
+    "maxsize": null,
+    "currsize": 144
+  },
+  "peak_process_rss_bytes": 22020096,
+  "total_adapter_seconds": 0.07444870799918135,
+  "qualification": "Reference policy is distinct from THIS Lean DAG. Independent value comparison does not substitute it for the Lean returned artifact.",
+  "reference_loading_seconds": 0.008768349000092712
+}
