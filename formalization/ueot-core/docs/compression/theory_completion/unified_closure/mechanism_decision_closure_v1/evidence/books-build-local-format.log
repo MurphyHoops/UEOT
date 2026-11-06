@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/239595432413/books_workspace/tools/books/build_books.py", line 164, in <module>
+    main()
+  File "/workspace/scratch/239595432413/books_workspace/tools/books/build_books.py", line 160, in main
+    print(json.dumps(build(book, env), ensure_ascii=False), flush=True)
+                     ^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/239595432413/books_workspace/tools/books/build_books.py", line 118, in build
+    run(["xelatex", "-interaction=nonstopmode", "-halt-on-error", "-file-line-error",
+  File "/workspace/scratch/239595432413/books_workspace/tools/books/build_books.py", line 51, in run
+    raise RuntimeError(f"Command failed ({result.returncode}); inspect {log}")
+RuntimeError: Command failed (1); inspect /workspace/scratch/239595432413/books_workspace/tools/books/.cache/philosophy/111fcf9aa32625b5/xelatex-1.log

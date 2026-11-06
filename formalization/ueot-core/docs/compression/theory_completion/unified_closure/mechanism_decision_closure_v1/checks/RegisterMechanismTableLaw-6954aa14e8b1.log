@@ -1,0 +1,60 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismTableLaw.lean:81:82: error: unexpected token '('; expected ')', ',' or ':'
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismTableLaw.lean:81:17: error: mod_cast has type
+  ∀ (r : ?m.12 → ℚ),
+    (∀ (t : ?m.12), 0 ≤ r t ∧ r t ≤ 1) →
+      ∀ (w : RegisterJointDecisionSource.World ?m.12) (z : Noise), 0 ≤ RegisterJointDecisionSource.primitiveWeight r w z
+but is expected to have type
+  0 ≤ RegisterJointDecisionSource.primitiveWeight (fun x => P.normal) (initialWorld P.goal FaultMechanism.S) z
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismTableLaw.lean:87:59: error: unsolved goals
+P : Parameters
+w : World
+z : Noise
+⊢ ((sorry ()) z).toReal = ↑(if z.1 = true then P.normal else 1 - P.normal) / 2
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismTableLaw.lean:88:8: warning: declaration uses `sorry`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismTableLaw.lean:88:18: warning: This simp argument is unused:
+  FiniteProbabilityRow.ofRealRow_apply_toReal
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [noiseLaw, source, RegisterJointDecisionSource.primitiveWeight]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismTableLaw.lean:100:4: warning: Variable name `H` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _H
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismTableLaw.lean:133:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (sampleChildren ?p).bind fun children => ?f (children ?o)
+in the target expression
+  ((sampleChildren fun o => sampleTable pi H (pi.advance h a o)).bind fun a_1 =>
+      PMF.map (List.cons (a, observe goal w a z))
+        (tableHistoryLaw goal p (a_1 (observe goal w a z)) (step goal w a z))) =
+    PMF.map (List.cons (a, observe goal w a z))
+      (rawHistoryLaw goal p pi H (pi.advance h a (observe goal w a z)) (step goal w a z))
+
+case succ
+I : Type u_1
+M : FiniteJointDecisionSolver.Model I Act Obs
+goal : Bool
+p : PMF Noise
+pi : RawCausalPolicy M
+H : ℕ
+ih :
+  ∀ (h : pi.Memory) (w : World),
+    ((sampleTable pi H h).bind fun t => tableHistoryLaw goal p t w) = rawHistoryLaw goal p pi H h w
+h : pi.Memory
+w : World
+a : Act
+z : Noise
+⊢ ((sampleChildren fun o => sampleTable pi H (pi.advance h a o)).bind fun a_1 =>
+      PMF.map (List.cons (a, observe goal w a z))
+        (tableHistoryLaw goal p (a_1 (observe goal w a z)) (step goal w a z))) =
+    PMF.map (List.cons (a, observe goal w a z))
+      (rawHistoryLaw goal p pi H (pi.advance h a (observe goal w a z)) (step goal w a z))
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismTableLaw.lean:143:9: error: unsolved goals
+case zero.halt
+goal : Bool
+p : PMF Noise
+w : World
+⊢ PMF.pure [] = PMF.map (fun z => []) (PMF.pure Fin.elim0)

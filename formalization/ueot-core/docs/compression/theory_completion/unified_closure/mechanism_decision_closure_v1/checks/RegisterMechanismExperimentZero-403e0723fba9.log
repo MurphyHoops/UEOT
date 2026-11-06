@@ -1,0 +1,27 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentZero.lean:169:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  !decide (goal = b)
+in the target expression
+  (some !goal) :: List.map (Option.map fun x => !goal) s = some b :: s
+
+case cons.some
+goal : Bool
+s : List (Option Bool)
+ih : AllDamaged goal s → damagePacked goal s = s
+ht : AllDamaged goal s
+b : Bool
+h : AllDamaged goal (some b :: s)
+hb : b ≠ goal
+he : (!decide (goal = b)) = true
+⊢ (some !goal) :: List.map (Option.map fun x => !goal) s = some b :: s
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentZero.lean:183:50: error: unsolved goals
+case false.false
+goal : Bool
+w : World
+a : Act
+z : Noise
+hw : AllDamaged goal w.store
+ha : cap a = 0
+hs : AllDamaged goal (RegisterJointDecisionSource.step goal w a z).store
+hx : (RegisterJointDecisionSource.observe goal w a z).1 = false
+hy : (RegisterJointDecisionSource.observe goal w a z).2 = false
+⊢ RegisterJointDecisionSource.observe goal w a z = (false, false)

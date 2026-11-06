@@ -1,0 +1,99 @@
+{
+  "contract": "UEOT 2026-11-06 mechanism decision closure",
+  "review_kind": "IMPLEMENTER_SELF_REVIEW (regret, same-policy realization, short-horizon corollary); not an independent reviewer attestation",
+  "result": "PASS_WITH_DISCLOSED_NATIVE_DECIDE_TRUST",
+  "scope": {
+    "mechanisms": "One of S,G remains fixed for the whole run. Competitors use allowed receipt/action histories, independent private randomness, shared wallet and horizon. Neither mechanism nor full Store/label is exposed.",
+    "frozen": {
+      "r": "1/2",
+      "H": 3,
+      "B": 2,
+      "c": 1,
+      "lambda": "1/4",
+      "discount": 1,
+      "goal": true
+    }
+  },
+  "quantifiers": {
+    "general": "Any nonempty finite fixed mechanism family; any nonempty shared policy class; any nonnegative real weights summing to one. Weighted oracle minus a proved common Bayes upper bound lower-bounds infimum worst regret; any actual common achiever supplies the upper. Equality is asserted when the two match.",
+    "consumer": "All legal real full-history causal kernels, arbitrary controller memory, and all seven affordable alternatives on the registered joint model. every_raw_has_shared_realization preserves both per-mechanism J values simultaneously. The bound is not inferred from the two returned paths or table candidates."
+  },
+  "dual": {
+    "w_S_G": [
+      "3/4",
+      "1/4"
+    ],
+    "oracle_S_G": [
+      "41/32",
+      "5/4"
+    ],
+    "all_policy_weighted_upper": "5/4",
+    "calculation": "(3/4)(41/32)+(1/4)(5/4)-5/4 = 3/128",
+    "interpretation": "Dual witness only. It neither supplies the mechanism to the policy nor sets an empirical prior."
+  },
+  "deterministic": {
+    "lattice": "For each frozen deterministic table and world, 4*2^H*sourceValue is an integer. The two equally likely modes per tick affect value; primitive label is value-blind. Stage payoff is quarter-integral, including actual fees. At H=3 both per-model values, oracle differences, and their maximum lie in (1/32)Z.",
+    "conclusion": "The strictly positive all-policy 3/128 lower bound rounds up to 1/32 only for deterministic tables; returnedG has worst regret 1/32. deterministic_minimax_exact takes the infimum over supported-feasible deterministic tables."
+  },
+  "actual": {
+    "same_definition": "RegisterMechanismDecisionConsumer.returned : Fin 4 → Table Act Obs 3; one independent uniform draw, seed 0 chooses returnedS and seeds 1/2/3 choose returnedG. The input to this selector is only the seed.",
+    "payoff_rows_S_G": {
+      "returnedS": [
+        "41/32",
+        "37/32"
+      ],
+      "returnedG": [
+        "5/4",
+        "5/4"
+      ],
+      "rho": [
+        "161/128",
+        "157/128"
+      ]
+    },
+    "rho_regrets_S_G": [
+      "3/128",
+      "3/128"
+    ],
+    "comparison": "minimax_regret_exact plus returned_beats_every_raw_regret and native consumer bridge; source expected J also equals complete Store expected payoff.",
+    "execution_reported_by_coordinator": {
+      "full_paths": 512,
+      "nonempty_payment_prefixes": 1536,
+      "mass_per_seed_tape_given_fixed_mechanism": "1/256",
+      "this_policy_file": "actual-execution/THIS_POLICY.json",
+      "this_policy_sha256": "e679b9cb68b32e045482a88962fc880206eb956a3bbf875ed91c406d530a8c03",
+      "native_file": "actual-execution/NATIVE_RUN.json",
+      "native_sha256": "44ba23d605cdcd5d18cf7c06b039bc742fabf1ccaadc631a1bd2eeb762ab68f1",
+      "separate_exact_checker_output": "actual-execution/THIS_EXACT_CHECK.json"
+    }
+  },
+  "proof_trust": {
+    "closed_evaluations": [
+      "RegisterMechanismDecisionConsumer.exact_cached_data (frozen H3 scores and payoff matrix)",
+      "RegisterMechanismDecisionConsumer.exact_two_data (H2 positive common example)"
+    ],
+    "actual_print_axioms_reported_by_coordinator": {
+      "exact_cached_data": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound",
+        "exact_cached_data._native.native_decide.ax_1_1"
+      ],
+      "exact_two_data": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound",
+        "exact_two_data._native.native_decide.ax_1_1"
+      ]
+    },
+    "meaning": "The last item on each line is a generated native_decide evaluation axiom. These two closed calculations and corollaries that use them rely on compiler/native evaluation. The printed name is not Lean.ofReduceBool. Independent exact Fraction and complete execution checks corroborate the results; neither removes this trust dependency. Plain decide and the stopped high-memory kernel-expansion attempt did not establish these equalities."
+  },
+  "boundaries": "Short-horizon common policy attains 13/16 at the registered H2 input. No same-H3 learning benefit is inferred from a terminal test, no asymptotic result is claimed, and empirical applicability remains UNVERIFIED. Publication and GI are separately owned by the coordinator.",
+  "reviewed_lean_sha256": {
+    "FiniteMechanismRegretCertificate.lean": "2f6335d4f220acb47092982779c99f015fdd0dd3d8f1ebe7c4ff1acff590057a",
+    "RegisterMechanismDecisionConsumer.lean": "c338b59e2499866c6d8652e1609be1297dbe27ceb130f9a8f2159ba24bd478ca",
+    "RegisterMechanismDecisionRealization.lean": "b89e3c59a23f11c9ce01505c35db773733e8a8f41e834c9ff0ec1ab79994f901",
+    "RegisterMechanismDecisionRegret.lean": "ed7be23b721a2f4d39cca6f1afe6f56f782d2297fcd2528831506eba659202eb",
+    "RegisterMechanismDecisionShort.lean": "441efe828108d33df39fa9bfbb3baf165764623de0d1c5418eecee9b658fbd40"
+  }
+}

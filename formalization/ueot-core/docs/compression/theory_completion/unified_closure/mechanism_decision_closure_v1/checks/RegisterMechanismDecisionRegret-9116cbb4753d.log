@@ -1,0 +1,53 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionRegret.lean:140:43: error: Tactic `rfl` failed: The left-hand side
+  ∑ s, 1 / 4 * ↑(tableJ (returned s) m)
+is not definitionally equal to the right-hand side
+  ↑(1 / 4 * tableJ (returned 0) m +
+      (1 / 4 * tableJ (returned (Fin.succ 0)) m +
+        (1 / 4 * tableJ (returned (Fin.succ 0).succ) m +
+          (1 / 4 * tableJ (returned (Fin.succ 0).succ.succ) m +
+            ∑ i, 1 / 4 * tableJ (returned i.succ.succ.succ.succ) m))))
+
+m : FaultMechanism
+⊢ ∑ s, 1 / 4 * ↑(tableJ (returned s) m) =
+    ↑(1 / 4 * tableJ (returned 0) m +
+        (1 / 4 * tableJ (returned (Fin.succ 0)) m +
+          (1 / 4 * tableJ (returned (Fin.succ 0).succ) m +
+            (1 / 4 * tableJ (returned (Fin.succ 0).succ.succ) m +
+              ∑ i, 1 / 4 * tableJ (returned i.succ.succ.succ.succ) m))))
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionRegret.lean:139:32: warning: This simp argument is unused:
+  Rat.cast_sum
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [mixedJ, rho, rhoJ, Rat.cast_mul, Rat.cast_div, Rat.cast_one, Rat.cast_ofNat, Fin.sum_univ_succ]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionRegret.lean:139:46: warning: This simp argument is unused:
+  Rat.cast_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [mixedJ, rho, rhoJ, Rat.cast_sum, Rat.cast_div, Rat.cast_one, Rat.cast_ofNat, Fin.sum_univ_succ]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionRegret.lean:139:60: warning: This simp argument is unused:
+  Rat.cast_div
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [mixedJ, rho, rhoJ, Rat.cast_sum, Rat.cast_mul, Rat.cast_one, Rat.cast_ofNat, Fin.sum_univ_succ]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionRegret.lean:139:74: warning: This simp argument is unused:
+  Rat.cast_one
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [mixedJ, rho, rhoJ, Rat.cast_sum, Rat.cast_mul, Rat.cast_div, Rat.cast_ofNat, Fin.sum_univ_succ]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionRegret.lean:140:4: warning: This simp argument is unused:
+  Rat.cast_ofNat
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [mixedJ, rho, rhoJ, Rat.cast_sum, Rat.cast_mul, Rat.cast_div, Rat.cast_one, Fin.sum_univ_succ]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionRegret.lean:172:77: error: unsolved goals
+⊢ ¬FaultMechanism.G = FaultMechanism.S

@@ -1,0 +1,48 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:101:18: warning: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:102:34: warning: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:203:4: warning: Variable name `H` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _H
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:248:40: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  packedExecute goal ?m.121 w ?m.123
+in the target expression
+  prepend a (RegisterJointDecisionSource.observe goal w a (z 0)) (RegisterJointDecisionSource.observe goal w a (z 0))
+      (packedExecute goal (children (RegisterJointDecisionSource.observe goal w a (z 0)))
+        (RegisterJointDecisionSource.step goal w a (z 0)) fun j => z j.succ) =
+    prepend a (RegisterJointDecisionSource.observe goal w a (z 0)) (RegisterJointDecisionSource.observe goal w a (z 0))
+      (RegisterJointDecisionExecution.packedExecute goal (children (RegisterJointDecisionSource.observe goal w a (z 0)))
+        (RegisterJointDecisionSource.step goal w a (z 0)) fun j => z j.succ)
+
+case succ.node
+goal : Bool
+H : ℕ
+ih :
+  ∀ (table : Table Act Obs H) (w : World) (z : Fin H → Noise),
+    w.theta = FaultMechanism.S →
+      packedExecute goal table w z = RegisterJointDecisionExecution.packedExecute goal table w z
+w : World
+z : Fin (H + 1) → Noise
+hm : w.theta = FaultMechanism.S
+a : Act
+children : Obs → Table Act Obs H
+⊢ prepend a (RegisterJointDecisionSource.observe goal w a (z 0)) (RegisterJointDecisionSource.observe goal w a (z 0))
+      (packedExecute goal (children (RegisterJointDecisionSource.observe goal w a (z 0)))
+        (RegisterJointDecisionSource.step goal w a (z 0)) fun j => z j.succ) =
+    prepend a (RegisterJointDecisionSource.observe goal w a (z 0)) (RegisterJointDecisionSource.observe goal w a (z 0))
+      (RegisterJointDecisionExecution.packedExecute goal (children (RegisterJointDecisionSource.observe goal w a (z 0)))
+        (RegisterJointDecisionSource.step goal w a (z 0)) fun j => z j.succ)

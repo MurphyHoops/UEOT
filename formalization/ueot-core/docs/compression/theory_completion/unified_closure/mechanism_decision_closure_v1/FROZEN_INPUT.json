@@ -1,0 +1,105 @@
+{
+  "schema": "UEOT/MECHANISM_DECISION_CONTRACT/V1",
+  "status": "FROZEN_BEFORE_NEW_EXECUTION",
+  "baseline_head": "7f66c167a41c4f89c278431ae634218f7aaddda3",
+  "taskbook_sha256": "6d2fc3d70b8c7b5ebd0fc9e664c07426443374f47ec52391b41f9c04457086ff",
+  "parameters": {
+    "goal": true,
+    "r": "1/2",
+    "horizon": 3,
+    "initial_wallet": "2",
+    "write_tariff": "1",
+    "price": "1/4",
+    "discount": "1",
+    "terminal": "0"
+  },
+  "mechanisms": {
+    "S": "unchanged original local-fault transaction",
+    "G": "original S transaction followed on every fault tick by damageAll_i(!goal), including missing request and committed stop"
+  },
+  "persistent_hidden_mechanism": true,
+  "observations": [
+    "own requested action",
+    "birth receipt",
+    "paid-write receipt",
+    "actual wallet",
+    "independent private seed"
+  ],
+  "forbidden_controller_inputs": [
+    "mechanism",
+    "mode",
+    "birth label",
+    "full Store",
+    "protected program",
+    "true parent identity"
+  ],
+  "actions": [
+    "stop",
+    "root idle",
+    "child1 idle",
+    "root write false",
+    "root write true",
+    "child1 write false",
+    "child1 write true"
+  ],
+  "stop": "this and every remaining tick execute real root idle; world continues",
+  "prepay": "request cap checked before transaction/noise; charge actual fee afterward",
+  "G_preserves": [
+    "all other physical coordinates",
+    "program",
+    "identity",
+    "organism history",
+    "slot order and None",
+    "post-S transaction clocks",
+    "owner and genealogy"
+  ],
+  "private_seed": {
+    "support": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "probability_each": "1/4",
+    "seed0": "piS",
+    "seed1_2_3": "piG",
+    "independent_of": [
+      "fixed mechanism",
+      "world mode tape",
+      "birth label tape"
+    ],
+    "selected_before_run": true
+  },
+  "objective": "E sum_{t=0}^{H-1} d^t (actual birth_t - price * actual expenditure_t)",
+  "frozen_validation": {
+    "native_paths": 512,
+    "factors": "2 mechanisms * 4 private seeds * 4^3 mode/label tapes",
+    "independent_checker": "exact Fraction, no solver recursion import",
+    "empirical_support": "UNVERIFIED"
+  },
+  "exits": [
+    "native S/G source and joint information",
+    "all-policy distinguishability bounds and attaining experiment",
+    "general finite fixed-mechanism regret certificate",
+    "exact H3 all-policy minimax and deterministic boundary",
+    "THIS strategy native execution and independent full enumeration",
+    "public API, books, publication, original GI CAS/recall, unique CONTINUE"
+  ],
+  "excluded": [
+    "reopen original eight/PR441/PR442",
+    "H4/H5 learning benefit requirement",
+    "third mechanism",
+    "new compression platform",
+    "internal hardware",
+    "performance threshold",
+    "disabled CI",
+    "QM/physics/GI implementation changes"
+  ],
+  "prototype_identity": {
+    "current_python_sha256": "e379d8940e8e62e7dec3da4af6f672ecd9d8eb239e92c2db050098b0c491fa55",
+    "current_json_sha256": "64899293fe352aeaab90fcb164fb1344c8c96062a4ec4d49bd95ad8ab217fd77",
+    "taskbook_historical_python_sha256": "c5ae69293822a6bc3f74829e41edd0be658b3a15eac97b3d4b9774258a0356af",
+    "taskbook_historical_json_sha256": "1c950a89cbcd085230d1331cf7d1f2e9ea36c5192e301fcef5d03518ff9994fc",
+    "resolution": "Current actual bytes match review manifest and GI v53 source refs; historical hashes retained, not overwritten. Neither copy is formal/native evidence."
+  }
+}

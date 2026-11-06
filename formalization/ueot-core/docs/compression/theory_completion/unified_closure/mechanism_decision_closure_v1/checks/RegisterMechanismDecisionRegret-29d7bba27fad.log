@@ -1,0 +1,112 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionRegret.lean:75:2: error: mod_cast has type
+  (3 : ℚ) / 4 * tableJ table FaultMechanism.S + 1 / 4 * tableJ table FaultMechanism.G ≤ 5 / 4
+but is expected to have type
+  (3 : ℝ) / 4 * ↑(tableJ table FaultMechanism.S) + 1 / 4 * ↑(tableJ table FaultMechanism.G) ≤ 5 / 4
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionRegret.lean:136:73: error: unsolved goals
+m : FaultMechanism
+⊢ ∑ s, 1 / 4 * ↑(tableJ (returned s) m) = ∑ x, 1 / 4 * ↑(tableJ (returned x) m)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionRegret.lean:171:2: error: Tactic `decide` failed for proposition
+  sourceValue (source parameters) (gain parameters) 1
+        (Table.node RegisterMechanismDecisionInformation.childIdle fun x => Table.halt)
+        (RegisterMechanismDecisionInformation.ambiguousWorld true FaultMechanism.S) =
+      1 / 2 ∧
+    sourceValue (source parameters) (gain parameters) 1
+          (Table.node RegisterMechanismDecisionInformation.childIdle fun x => Table.halt)
+          (RegisterMechanismDecisionInformation.ambiguousWorld true FaultMechanism.G) =
+        0 ∧
+      sourceValue (source parameters) (gain parameters) 1
+            (Table.node (RegisterMechanismDecisionInformation.rootWrite true) fun x => Table.halt)
+            (RegisterMechanismDecisionInformation.ambiguousWorld true FaultMechanism.S) =
+          3 / 8 ∧
+        sourceValue (source parameters) (gain parameters) 1
+            (Table.node (RegisterMechanismDecisionInformation.rootWrite true) fun x => Table.halt)
+            (RegisterMechanismDecisionInformation.ambiguousWorld true FaultMechanism.G) =
+          3 / 8
+because its `Decidable` instance
+  instDecidableAnd
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `instDecidableAnd`, `instDecidableEqRat`, `Int.decEq`, `Int.instDecidableEq`, and `instDecidableEqRat.decEq`, reduction got stuck at the `Decidable` instance
+  match
+    (((fun z =>
+              (source parameters).chance (RegisterMechanismDecisionInformation.ambiguousWorld true FaultMechanism.S) z *
+                (gain parameters RegisterMechanismDecisionInformation.childIdle
+                    ((source parameters).observe
+                      (RegisterMechanismDecisionInformation.ambiguousWorld true FaultMechanism.S)
+                      RegisterMechanismDecisionInformation.childIdle z) +
+                  1 *
+                    sourceValue (source parameters) (gain parameters) 1
+                      ((fun x => Table.halt)
+                        ((source parameters).observe
+                          (RegisterMechanismDecisionInformation.ambiguousWorld true FaultMechanism.S)
+                          RegisterMechanismDecisionInformation.childIdle z))
+                      ((source parameters).next
+                        (RegisterMechanismDecisionInformation.ambiguousWorld true FaultMechanism.S)
+                        RegisterMechanismDecisionInformation.childIdle z)))
+            (true, true)).add
+        (List.foldr (fun x1 x2 => x1 + x2) 0
+          (List.map
+            (fun z =>
+              (source parameters).chance (RegisterMechanismDecisionInformation.ambiguousWorld true FaultMechanism.S) z *
+                (gain parameters RegisterMechanismDecisionInformation.childIdle
+                    ((source parameters).observe
+                      (RegisterMechanismDecisionInformation.ambiguousWorld true FaultMechanism.S)
+                      RegisterMechanismDecisionInformation.childIdle z) +
+                  1 *
+                    sourceValue (source parameters) (gain parameters) 1
+                      ((fun x => Table.halt)
+                        ((source parameters).observe
+                          (RegisterMechanismDecisionInformation.ambiguousWorld true FaultMechanism.S)
+                          RegisterMechanismDecisionInformation.childIdle z))
+                      ((source parameters).next
+                        (RegisterMechanismDecisionInformation.ambiguousWorld true FaultMechanism.S)
+                        RegisterMechanismDecisionInformation.childIdle z)))
+            ((List.map (Prod.mk true) [false]).append (List.map (Prod.mk false) [true, false] ++ []))))).num,
+    (Rat.mul 1 (Rat.inv 2)).num with
+  | Int.ofNat a, Int.ofNat b =>
+    match decEq a b with
+    | isTrue h => isTrue ⋯
+    | isFalse h => isFalse ⋯
+  | Int.ofNat a, Int.negSucc a_1 => isFalse ⋯
+  | Int.negSucc a, Int.ofNat a_1 => isFalse ⋯
+  | Int.negSucc a, Int.negSucc b =>
+    match decEq a b with
+    | isTrue h => isTrue ⋯
+    | isFalse h => isFalse ⋯
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionRegret.lean:181:4: error: Tactic `decide` failed for proposition
+  ↑(RegisterMechanismDecisionSource.historyInfo parameters (registeredInfo Input.dual)
+          (RegisterMechanismDecisionInformation.ambiguousHistory true)).2 =
+    1
+because its `Decidable` instance
+  instDecidableEqRat
+    (↑(RegisterMechanismDecisionSource.historyInfo parameters (registeredInfo Input.dual)
+          (RegisterMechanismDecisionInformation.ambiguousHistory true)).2)
+    1
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `instDecidableEqBool`, `instDecidableEqRat`, `Bool.decEq`, `Int.decEq`, `Int.decLt`, `Int.decNonneg`, `Int.instDecidableEq`, `Rat.instDecidableLe`, and `instDecidableEqRat.decEq`, reduction got stuck at the `Decidable` instance
+  match
+    (Decidable.rec (fun h => (fun x => 0) h)
+        (fun h =>
+          (fun x =>
+              ↑((fun i e => (model parameters).next i e.1 e.2) (registeredInfo Input.dual)
+                      (RegisterMechanismDecisionInformation.rootWrite true, true, true)).2 -
+                RegisterJointDecisionConsumer.charge parameters.tariff
+                  (RegisterMechanismDecisionInformation.rootIdle, false, false).2)
+            h)
+        (Rat.instDecidableLe 0
+          (↑((fun i e => (model parameters).next i e.1 e.2) (registeredInfo Input.dual)
+                  (RegisterMechanismDecisionInformation.rootWrite true, true, true)).2 -
+            RegisterJointDecisionConsumer.charge parameters.tariff
+              (RegisterMechanismDecisionInformation.rootIdle, false, false).2))).num,
+    ↑1 with
+  | Int.ofNat a, Int.ofNat b =>
+    match decEq a b with
+    | isTrue h => isTrue ⋯
+    | isFalse h => isFalse ⋯
+  | Int.ofNat a, Int.negSucc a_1 => isFalse ⋯
+  | Int.negSucc a, Int.ofNat a_1 => isFalse ⋯
+  | Int.negSucc a, Int.negSucc b =>
+    match decEq a b with
+    | isTrue h => isTrue ⋯
+    | isFalse h => isFalse ⋯
