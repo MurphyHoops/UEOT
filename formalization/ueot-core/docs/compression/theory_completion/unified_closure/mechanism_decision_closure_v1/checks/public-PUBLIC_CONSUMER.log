@@ -1,0 +1,448 @@
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecision.returned (seed : Fin 4) :
+  FiniteJointDecisionSolver.Table RegisterJointDecisionSource.Act RegisterJointDecisionSource.Obs 3
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecision.returned_contract :
+  FiniteMechanismRegretCertificate.minimax RegisterMechanismDecisionConsumer.oracle
+        RegisterMechanismDecisionRegret.mixedJ =
+      3 / 128 ∧
+    FiniteMechanismRegretCertificate.worst RegisterMechanismDecisionConsumer.oracle
+          RegisterMechanismDecisionNativeConsumer.nativeRhoJ =
+        3 / 128 ∧
+      FiniteMechanismRegretCertificate.minimax RegisterMechanismDecisionConsumer.oracle
+            RegisterMechanismDecisionRegret.deterministicJ =
+          1 / 32 ∧
+        RegisterMechanismDecisionNativeConsumer.nativeRhoJ RegisterMechanismDecisionSource.FaultMechanism.S =
+            161 / 128 ∧
+          RegisterMechanismDecisionNativeConsumer.nativeRhoJ RegisterMechanismDecisionSource.FaultMechanism.G =
+            157 / 128
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionNative.nativeExecute_S {n : ℕ} (i : Fin n)
+  (m : RegisterMechanismPurpose.Mechanism) {H : ℕ}
+  (table : FiniteJointDecisionSolver.Table RegisterJointDecisionSource.Act RegisterJointDecisionSource.Obs H)
+  (w : RegisterMechanismDecisionNative.NativeWorld n) (z : Fin H → RegisterJointDecisionSource.Noise) :
+  w.theta = RegisterMechanismDecisionSource.FaultMechanism.S →
+    RegisterMechanismDecisionNative.nativeExecute i m table w z =
+      RegisterJointDecisionExecution.nativeExecute i m table w z
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionNative.native_G_missing_fault {n : ℕ}
+  (i : Fin n) (m : RegisterMechanismPurpose.Mechanism) (w : RegisterMechanismDecisionNative.NativeWorld n)
+  (a : RegisterJointDecisionSource.Act) (label : Bool) (hm : w.theta = RegisterMechanismDecisionSource.FaultMechanism.G)
+  (hn :
+    RegisterPopulationHistorySource.lookup w.store
+        (RegisterJointDecisionSource.request w.stopped a (false, label)).parent =
+      none) :
+  RegisterMechanismDecisionNative.nativeTransaction i m w a (false, label) = none ∧
+    (RegisterMechanismDecisionNative.nativeStep i m w a (false, label)).store =
+      RegisterMechanismDecisionNative.damageStore i m.goal (w.store ++ [none])
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionNative.nativeStep_metadata {n : ℕ}
+  (i : Fin n) (m : RegisterMechanismPurpose.Mechanism) (w : RegisterMechanismDecisionNative.NativeWorld n)
+  (a : RegisterJointDecisionSource.Act) (z : RegisterJointDecisionSource.Noise) :
+  List.map (Option.map fun p => (p.identity, p.clock, p.organism.history, p.organism.program))
+      (RegisterMechanismDecisionNative.nativeStep i m w a z).store =
+    List.map (Option.map fun p => (p.identity, p.clock, p.organism.history, p.organism.program))
+      (RegisterJointDecisionSource.nativeStep i m w a z).store
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionNative.native_new_slot_is_actual_child
+  {n : ℕ} (i : Fin n) (m : RegisterMechanismPurpose.Mechanism) (w : RegisterMechanismDecisionNative.NativeWorld n)
+  (a : RegisterJointDecisionSource.Act) (z : RegisterJointDecisionSource.Noise) :
+  RegisterPopulationHistorySource.lookup (RegisterMechanismDecisionNative.nativeStep i m w a z).store
+      (List.length w.store) =
+    (RegisterMechanismDecisionNative.nativeTransaction i m w a z).bind
+      RegisterTimestampedBirthSource.ClockedRecord.child
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionInformation.real_policy_joint_posterior.{u_1}
+  (P : RegisterMechanismDecisionSource.Parameters)
+  {N :
+    FiniteJointDecisionSolver.Model RegisterMechanismDecisionSource.Info RegisterJointDecisionSource.Act
+      RegisterJointDecisionSource.Obs}
+  (pi : FiniteJointDecisionSupportedPolicy.RawCausalPolicy N) (f : RegisterMechanismDecisionSource.World → ℚ)
+  (h : RegisterMechanismDecisionInformation.History) (q : pi.Memory)
+  (b : FiniteJointDecisionBelief.Belief RegisterMechanismDecisionSource.World)
+  (hpos :
+    0 <
+      FiniteJointDecisionFilteredModel.expectReal b fun w =>
+        RegisterMechanismDecisionInformation.rawHistoryIntegral P pi (fun x => 1) q w h) :
+  ((FiniteJointDecisionFilteredModel.expectReal b fun w =>
+        RegisterMechanismDecisionInformation.rawHistoryIntegral P pi f q w h) /
+      FiniteJointDecisionFilteredModel.expectReal b fun w =>
+        RegisterMechanismDecisionInformation.rawHistoryIntegral P pi (fun x => 1) q w h) =
+    ↑(FiniteJointDecisionBelief.expect (RegisterMechanismDecisionInformation.jointFilter P b h) f)
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionInformation.ambiguous_joint_posterior
+  (P : RegisterMechanismDecisionSource.Parameters) (prior : RegisterMechanismDecisionSource.FaultMechanism → ℚ)
+  (hn : ∀ (m : RegisterMechanismDecisionSource.FaultMechanism), 0 ≤ prior m) (ht : ∑ m, prior m = 1) (h0 : 0 < P.normal)
+  (h1 : P.normal < 1) (f : RegisterMechanismDecisionSource.World → ℚ) :
+  FiniteJointDecisionBelief.expect
+      (RegisterMechanismDecisionInformation.jointFilter P
+        (RegisterMechanismDecisionSource.initialBelief P.goal prior hn ht)
+        (RegisterMechanismDecisionInformation.ambiguousHistory P.goal))
+      f =
+    ∑ m, prior m * f (RegisterMechanismDecisionInformation.ambiguousWorld P.goal m)
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionInformation.old_observer_migration_failure :
+  (RegisterDecisionObserver.summarize true (RegisterMechanismDecisionInformation.ambiguousHistory true)).q.child =
+      some true ∧
+    RegisterJointDecisionSource.packedLookup
+          (RegisterMechanismDecisionInformation.ambiguousWorld true
+              RegisterMechanismDecisionSource.FaultMechanism.S).store
+          1 =
+        some true ∧
+      RegisterJointDecisionSource.packedLookup
+            (RegisterMechanismDecisionInformation.ambiguousWorld true
+                RegisterMechanismDecisionSource.FaultMechanism.G).store
+            1 =
+          some false ∧
+        (RegisterDecisionObserver.summarize true (RegisterMechanismDecisionInformation.ambiguousHistory true)).q ≠
+          RegisterDecisionObserverSource.projectLocal true
+            (RegisterMechanismDecisionInformation.ambiguousWorld true RegisterMechanismDecisionSource.FaultMechanism.G)
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismTableLaw.sampled_table_historyLaw_eq_raw.{u_1, u_2}
+  {I : Type u_1} {M : FiniteJointDecisionSolver.Model I RegisterJointDecisionSource.Act RegisterJointDecisionSource.Obs}
+  (goal : Bool) (p : PMF RegisterJointDecisionSource.Noise) (pi : FiniteJointDecisionSupportedPolicy.RawCausalPolicy M)
+  (H : ℕ) (h : pi.Memory) (w : RegisterMechanismDecisionSource.World) :
+  ((RegisterMechanismTableLaw.sampleTable pi H h).bind fun t => RegisterMechanismTableLaw.tableHistoryLaw goal p t w) =
+    RegisterMechanismTableLaw.rawHistoryLaw goal p pi H h w
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismExperimentLaw.seeded_root_history_eq.{u_1}
+  {Seed : Type u_1} (P : RegisterMechanismExperimentRate.PhysicalExperiment) {H : ℕ} (μ : PMF Seed)
+  (choose : Seed → FiniteJointDecisionSolver.Table RegisterJointDecisionSource.Act RegisterJointDecisionSource.Obs H)
+  (hr :
+    ∀ s ∈ μ.support,
+      ∀ z ∈ (RegisterMechanismTableLaw.tapeLaw (RegisterMechanismExperimentRate.primitiveLaw P) H).support,
+        RegisterMechanismExperimentZero.RootHistory false
+          (RegisterMechanismDecisionSource.packedExecute P.goal (choose s)
+              (RegisterMechanismDecisionSource.initialWorld P.goal RegisterMechanismDecisionSource.FaultMechanism.S)
+              z).history) :
+  RegisterMechanismExperimentLaw.seededLaw P μ choose RegisterMechanismDecisionSource.FaultMechanism.S =
+    RegisterMechanismExperimentLaw.seededLaw P μ choose RegisterMechanismDecisionSource.FaultMechanism.G
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismExperimentLaw.seeded_short_eq.{u_1}
+  {Seed : Type u_1} (P : RegisterMechanismExperimentRate.PhysicalExperiment) (H : ℕ) (hH : H ≤ 2) (μ : PMF Seed)
+  (choose : Seed → FiniteJointDecisionSolver.Table RegisterJointDecisionSource.Act RegisterJointDecisionSource.Obs H) :
+  RegisterMechanismExperimentLaw.seededLaw P μ choose RegisterMechanismDecisionSource.FaultMechanism.S =
+    RegisterMechanismExperimentLaw.seededLaw P μ choose RegisterMechanismDecisionSource.FaultMechanism.G
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismExperimentLaw.seeded_insufficient_wallet_eq.{u_1}
+  {Seed : Type u_1} (P : RegisterMechanismExperimentRate.PhysicalExperiment) {H : ℕ} (μ : PMF Seed)
+  (choose : Seed → FiniteJointDecisionSolver.Table RegisterJointDecisionSource.Act RegisterJointDecisionSource.Obs H)
+  (tariff B : ℚ) (hB : B < tariff)
+  (hp :
+    ∀ (m : RegisterMechanismDecisionSource.FaultMechanism),
+      ∀ s ∈ μ.support,
+        ∀ z ∈ (RegisterMechanismTableLaw.tapeLaw (RegisterMechanismExperimentRate.primitiveLaw P) H).support,
+          RegisterMechanismExperimentZero.PrepaidHistory tariff B
+            (RegisterMechanismDecisionSource.packedExecute P.goal (choose s)
+                (RegisterMechanismDecisionSource.initialWorld P.goal m) z).history) :
+  RegisterMechanismExperimentLaw.seededLaw P μ choose RegisterMechanismDecisionSource.FaultMechanism.S =
+    RegisterMechanismExperimentLaw.seededLaw P μ choose RegisterMechanismDecisionSource.FaultMechanism.G
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismExperimentLaw.endpoint_TV_zero.{u_1}
+  {Seed : Type u_1} [Fintype Seed] [MeasurableSpace Seed] [MeasurableSingletonClass Seed]
+  (P : RegisterMechanismExperimentRate.PhysicalExperiment) (hr : P.normal = 0 ∨ P.normal = 1) {H : ℕ} (μ : PMF Seed)
+  (choose : Seed → FiniteJointDecisionSolver.Table RegisterJointDecisionSource.Act RegisterJointDecisionSource.Obs H) :
+  UEOT.V3.TotalVariation.tvDist
+      (RegisterMechanismExperimentLaw.seededLaw P μ choose RegisterMechanismDecisionSource.FaultMechanism.S).toMeasure
+      (RegisterMechanismExperimentLaw.seededLaw P μ choose RegisterMechanismDecisionSource.FaultMechanism.G).toMeasure =
+    0
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismExperimentLaw.raw_H3_TV_upper.{u_1, u_2}
+  {I : Type u_1} {M : FiniteJointDecisionSolver.Model I RegisterJointDecisionSource.Act RegisterJointDecisionSource.Obs}
+  (P : RegisterMechanismExperimentRate.PhysicalExperiment) (pi : FiniteJointDecisionSupportedPolicy.RawCausalPolicy M)
+  (h : pi.Memory) :
+  UEOT.V3.TotalVariation.tvDist
+      (RegisterMechanismTableLaw.rawHistoryLaw P.goal (RegisterMechanismExperimentRate.primitiveLaw P) pi 3 h
+          (RegisterMechanismDecisionSource.initialWorld P.goal
+            RegisterMechanismDecisionSource.FaultMechanism.S)).toMeasure
+      (RegisterMechanismTableLaw.rawHistoryLaw P.goal (RegisterMechanismExperimentRate.primitiveLaw P) pi 3 h
+          (RegisterMechanismDecisionSource.initialWorld P.goal
+            RegisterMechanismDecisionSource.FaultMechanism.G)).toMeasure ≤
+    P.normal ^ 2 * (1 - P.normal)
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismExperimentSharp.H3_experiment_sharp
+  (P : RegisterMechanismExperimentRate.PhysicalExperiment) (tariff B : ℚ) (hc : 0 < tariff) (hB : tariff ≤ B) :
+  (∀ (μ : PMF (FiniteJointDecisionSolver.Table RegisterJointDecisionSource.Act RegisterJointDecisionSource.Obs 3)),
+      UEOT.V3.TotalVariation.tvDist
+          (RegisterMechanismExperimentLaw.seededLaw P μ id RegisterMechanismDecisionSource.FaultMechanism.S).toMeasure
+          (RegisterMechanismExperimentLaw.seededLaw P μ id RegisterMechanismDecisionSource.FaultMechanism.G).toMeasure ≤
+        P.normal ^ 2 * (1 - P.normal)) ∧
+    (∀ (m : RegisterMechanismDecisionSource.FaultMechanism) (z : Fin 3 → RegisterJointDecisionSource.Noise),
+        RegisterMechanismExperimentZero.PrepaidHistory tariff B
+          (RegisterMechanismDecisionSource.packedExecute P.goal
+              (RegisterMechanismExperimentPaths.separationTable P.goal)
+              (RegisterMechanismDecisionSource.initialWorld P.goal m) z).history) ∧
+      UEOT.V3.TotalVariation.tvDist
+          (RegisterMechanismExperimentLaw.separationLaw P RegisterMechanismDecisionSource.FaultMechanism.S).toMeasure
+          (RegisterMechanismExperimentLaw.separationLaw P RegisterMechanismDecisionSource.FaultMechanism.G).toMeasure =
+        P.normal ^ 2 * (1 - P.normal)
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismExperimentLaw.classification_finite_lower.{u_1}
+  {Seed : Type u_1} [Fintype Seed] [MeasurableSpace Seed] [MeasurableSingletonClass Seed]
+  (P : RegisterMechanismExperimentRate.PhysicalExperiment) {H : ℕ} (μ : PMF Seed)
+  (choose : Seed → FiniteJointDecisionSolver.Table RegisterJointDecisionSource.Act RegisterJointDecisionSource.Obs H)
+  (A : Set (Seed × List (RegisterJointDecisionSource.Act × RegisterJointDecisionSource.Obs))) (hA : MeasurableSet A) :
+  1 / 2 * (1 - P.normal) ^ H ≤
+    UEOT.V3.BinaryTesting.binaryRisk
+      (RegisterMechanismExperimentLaw.seededLaw P μ choose RegisterMechanismDecisionSource.FaultMechanism.S).toMeasure
+      (RegisterMechanismExperimentLaw.seededLaw P μ choose RegisterMechanismDecisionSource.FaultMechanism.G).toMeasure A
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismExperimentLaw.H3_half_classification_lower.{u_1}
+  {Seed : Type u_1} [Fintype Seed] [MeasurableSpace Seed] [MeasurableSingletonClass Seed]
+  (P : RegisterMechanismExperimentRate.PhysicalExperiment) (hr : P.normal = 1 / 2) (μ : PMF Seed)
+  (choose : Seed → FiniteJointDecisionSolver.Table RegisterJointDecisionSource.Act RegisterJointDecisionSource.Obs 3)
+  (A : Set (Seed × List (RegisterJointDecisionSource.Act × RegisterJointDecisionSource.Obs))) (hA : MeasurableSet A) :
+  7 / 16 ≤
+    UEOT.V3.BinaryTesting.binaryRisk
+      (RegisterMechanismExperimentLaw.seededLaw P μ choose RegisterMechanismDecisionSource.FaultMechanism.S).toMeasure
+      (RegisterMechanismExperimentLaw.seededLaw P μ choose RegisterMechanismDecisionSource.FaultMechanism.G).toMeasure A
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismExperimentLaw.separation_test_exact
+  (P : RegisterMechanismExperimentRate.PhysicalExperiment) :
+  UEOT.V3.BinaryTesting.binaryRisk
+      (RegisterMechanismExperimentLaw.separationLaw P RegisterMechanismDecisionSource.FaultMechanism.S).toMeasure
+      (RegisterMechanismExperimentLaw.separationLaw P RegisterMechanismDecisionSource.FaultMechanism.G).toMeasure
+      {RegisterMechanismExperimentPaths.separationHistory P.goal}ᶜ =
+    1 / 2 * (1 - P.normal ^ 2 * (1 - P.normal))
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionShort.short_common_dominates_raw.{u_1}
+  (P : RegisterMechanismDecisionSource.Parameters) (wallet : RegisterJointDecisionConsumer.Wallet) (H : ℕ) (hH : H ≤ 2)
+  (m : RegisterMechanismDecisionSource.FaultMechanism)
+  (pi : FiniteJointDecisionSupportedPolicy.RawCausalPolicy (RegisterMechanismDecisionSource.model P)) (h : pi.Memory)
+  (hi : pi.info h = RegisterMechanismDecisionShort.knownInfo P wallet m)
+  (hl : FiniteJointDecisionSupportedPolicy.SupportedAdmissible (RegisterMechanismDecisionSource.model P) pi H h) :
+  FiniteJointDecisionSupportedPolicy.rawSourceValue (RegisterMechanismDecisionSource.source P)
+      (RegisterMechanismDecisionSource.gain P) P.discount pi H h
+      (RegisterMechanismDecisionSource.initialWorld P.goal m) ≤
+    ↑(FiniteJointDecisionFilteredModel.sourceValue (RegisterMechanismDecisionSource.source P)
+        (RegisterMechanismDecisionSource.gain P) P.discount (RegisterMechanismDecisionShort.commonReturned P wallet H)
+        (RegisterMechanismDecisionSource.initialWorld P.goal m))
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionRegret.nonzero_common_optimum :
+  FiniteJointDecisionSolver.Feasible
+      (RegisterMechanismDecisionSource.model RegisterMechanismDecisionConsumer.parameters)
+      (RegisterMechanismDecisionConsumer.registeredInfo RegisterMechanismDecisionConsumer.Input.dual)
+      RegisterMechanismDecisionConsumer.commonTwo ∧
+    RegisterMechanismDecisionConsumer.tableJ RegisterMechanismDecisionConsumer.commonTwo
+          RegisterMechanismDecisionSource.FaultMechanism.S =
+        FiniteJointDecisionSolver.optimalValue
+          (RegisterMechanismDecisionSource.model RegisterMechanismDecisionConsumer.parameters) 2
+          (RegisterMechanismDecisionConsumer.registeredInfo RegisterMechanismDecisionConsumer.Input.knownS) ∧
+      RegisterMechanismDecisionConsumer.tableJ RegisterMechanismDecisionConsumer.commonTwo
+            RegisterMechanismDecisionSource.FaultMechanism.G =
+          FiniteJointDecisionSolver.optimalValue
+            (RegisterMechanismDecisionSource.model RegisterMechanismDecisionConsumer.parameters) 2
+            (RegisterMechanismDecisionConsumer.registeredInfo RegisterMechanismDecisionConsumer.Input.knownG) ∧
+        0 <
+          RegisterMechanismDecisionConsumer.tableJ RegisterMechanismDecisionConsumer.commonTwo
+            RegisterMechanismDecisionSource.FaultMechanism.S
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMechanismRegretCertificate.certificate.{u_1, u_2}
+  {M : Type u_1} [Fintype M] [Nonempty M] {Policy : Type u_2} (oracle w : M → ℝ) (J : Policy → M → ℝ) (bayes : ℝ)
+  (rho : Policy) (hn : ∀ (m : M), 0 ≤ w m) (ht : ∑ m, w m = 1) (hb : ∀ (p : Policy), ∑ m, w m * J p m ≤ bayes) :
+  ∑ m, w m * oracle m - bayes ≤ FiniteMechanismRegretCertificate.minimax oracle J ∧
+    FiniteMechanismRegretCertificate.minimax oracle J ≤ FiniteMechanismRegretCertificate.worst oracle (J rho)
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMechanismRegretCertificate.worst_zero_iff.{u_1} {M : Type u_1}
+  [Fintype M] [Nonempty M] (oracle J : M → ℝ) (hu : ∀ (m : M), J m ≤ oracle m) :
+  FiniteMechanismRegretCertificate.worst oracle J = 0 ↔ ∀ (m : M), J m = oracle m
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.all_shared_weighted_upper.{u_1}
+  (pi :
+    FiniteJointDecisionSupportedPolicy.RawCausalPolicy
+      (RegisterMechanismDecisionSource.model RegisterMechanismDecisionConsumer.parameters))
+  (h : pi.Memory)
+  (hi : pi.info h = RegisterMechanismDecisionConsumer.registeredInfo RegisterMechanismDecisionConsumer.Input.dual)
+  (hl :
+    FiniteJointDecisionSupportedPolicy.SupportedAdmissible
+      (RegisterMechanismDecisionSource.model RegisterMechanismDecisionConsumer.parameters) pi 3 h) :
+  ∑ m, RegisterMechanismDecisionConsumer.dualWeight m * RegisterMechanismDecisionConsumer.actualJ pi h m ≤ 5 / 4
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.seed_noise_independent
+  (m : RegisterMechanismDecisionSource.FaultMechanism) (seed : Fin 4)
+  (noise : FiniteJointDecisionSolver.Tape RegisterJointDecisionSource.Noise 3) :
+  RegisterMechanismDecisionConsumer.jointSeedNoiseWeight m seed noise = 1 / 256
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionRealization.every_raw_has_shared_realization.{u_1}
+  (pi :
+    FiniteJointDecisionSupportedPolicy.RawCausalPolicy
+      (RegisterMechanismDecisionSource.model RegisterMechanismDecisionConsumer.parameters))
+  (h : pi.Memory)
+  (hi : pi.info h = RegisterMechanismDecisionConsumer.registeredInfo RegisterMechanismDecisionConsumer.Input.dual)
+  (hl :
+    FiniteJointDecisionSupportedPolicy.SupportedAdmissible
+      (RegisterMechanismDecisionSource.model RegisterMechanismDecisionConsumer.parameters) pi 3 h) :
+  ∃ p,
+    ∀ (m : RegisterMechanismDecisionSource.FaultMechanism),
+      RegisterMechanismDecisionRegret.mixedJ p m = RegisterMechanismDecisionConsumer.actualJ pi h m
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionRegret.minimax_regret_exact :
+  FiniteMechanismRegretCertificate.minimax RegisterMechanismDecisionConsumer.oracle
+        RegisterMechanismDecisionRegret.mixedJ =
+      3 / 128 ∧
+    FiniteMechanismRegretCertificate.worst RegisterMechanismDecisionConsumer.oracle
+        (RegisterMechanismDecisionRegret.mixedJ RegisterMechanismDecisionRegret.rho) =
+      3 / 128
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionRegret.deterministic_minimax_exact :
+  FiniteMechanismRegretCertificate.minimax RegisterMechanismDecisionConsumer.oracle
+      RegisterMechanismDecisionRegret.deterministicJ =
+    1 / 32
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionNativeConsumer.returned_nativeJ
+  (seed : Fin 4) (m : RegisterMechanismDecisionSource.FaultMechanism) :
+  RegisterMechanismDecisionNativeConsumer.nativeJ (RegisterMechanismDecisionConsumer.returned seed) m =
+    ↑(RegisterMechanismDecisionConsumer.tableJ (RegisterMechanismDecisionConsumer.returned seed) m)
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionNativeConsumer.returned_native_population
+  (seed : Fin 4) (m : RegisterMechanismDecisionSource.FaultMechanism)
+  (noise : FiniteJointDecisionSolver.Tape RegisterJointDecisionSource.Noise 3) :
+  RegisterJointDecisionExecution.eraseExecution 0
+        (RegisterMechanismDecisionNative.nativeExecute 0 RegisterMechanismDecisionNativeConsumer.nativeMechanism
+          (RegisterMechanismDecisionConsumer.returned seed) (RegisterMechanismDecisionNativeConsumer.nativeFounder m)
+          (RegisterJointDecisionNativeConsumer.tapeVector noise)) =
+      RegisterMechanismDecisionSource.packedExecute true (RegisterMechanismDecisionConsumer.returned seed)
+        (RegisterMechanismDecisionSource.initialWorld true m) (RegisterJointDecisionNativeConsumer.tapeVector noise) ∧
+    (RegisterMechanismDecisionNative.nativeExecute 0 RegisterMechanismDecisionNativeConsumer.nativeMechanism
+              (RegisterMechanismDecisionConsumer.returned seed)
+              (RegisterMechanismDecisionNativeConsumer.nativeFounder m)
+              (RegisterJointDecisionNativeConsumer.tapeVector noise)).records.length =
+        3 ∧
+      (RegisterMechanismDecisionNative.nativeExecute 0 RegisterMechanismDecisionNativeConsumer.nativeMechanism
+                (RegisterMechanismDecisionConsumer.returned seed)
+                (RegisterMechanismDecisionNativeConsumer.nativeFounder m)
+                (RegisterJointDecisionNativeConsumer.tapeVector noise)).history.length =
+          3 ∧
+        List.length
+            (RegisterMechanismDecisionNative.nativeExecute 0 RegisterMechanismDecisionNativeConsumer.nativeMechanism
+                  (RegisterMechanismDecisionConsumer.returned seed)
+                  (RegisterMechanismDecisionNativeConsumer.nativeFounder m)
+                  (RegisterJointDecisionNativeConsumer.tapeVector noise)).finalWorld.store =
+          4
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionNativeConsumer.returned_native_payment
+  (seed : Fin 4) (m : RegisterMechanismDecisionSource.FaultMechanism)
+  (noise : FiniteJointDecisionSolver.Tape RegisterJointDecisionSource.Noise 3) :
+  RegisterMechanismDecisionNativeConsumer.NativePrepaid 2 (RegisterMechanismDecisionConsumer.returned seed)
+      (RegisterMechanismDecisionNativeConsumer.nativeFounder m) noise ∧
+    ∀ (k : ℕ),
+      have paid :=
+        (List.take k
+            (List.map RegisterJointDecisionSource.nativeFee
+              (RegisterMechanismDecisionNative.nativeExecute 0 RegisterMechanismDecisionNativeConsumer.nativeMechanism
+                  (RegisterMechanismDecisionConsumer.returned seed)
+                  (RegisterMechanismDecisionNativeConsumer.nativeFounder m)
+                  (RegisterJointDecisionNativeConsumer.tapeVector noise)).records)).sum;
+      have path :=
+        FiniteJointDecisionFilteredModel.observedTape
+          (RegisterMechanismDecisionSource.source RegisterMechanismDecisionConsumer.parameters)
+          (RegisterMechanismDecisionConsumer.returned seed) (RegisterMechanismDecisionSource.initialWorld true m) noise;
+      ↑↑(FiniteJointDecisionSolver.prefixInfo
+                  (RegisterMechanismDecisionSource.model RegisterMechanismDecisionConsumer.parameters)
+                  (RegisterMechanismDecisionConsumer.registeredInfo RegisterMechanismDecisionConsumer.Input.dual)
+                  (RegisterMechanismDecisionConsumer.returned seed) path k).2 =
+          2 - paid ∧
+        0 ≤ paid ∧ paid ≤ 2
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionNativeConsumer.all_native_regret_lower.{u_1}
+  (pi :
+    FiniteJointDecisionSupportedPolicy.RawCausalPolicy
+      (RegisterMechanismDecisionSource.model RegisterMechanismDecisionConsumer.parameters))
+  (h : pi.Memory)
+  (hi : pi.info h = RegisterMechanismDecisionConsumer.registeredInfo RegisterMechanismDecisionConsumer.Input.dual)
+  (hl :
+    FiniteJointDecisionSupportedPolicy.SupportedAdmissible
+      (RegisterMechanismDecisionSource.model RegisterMechanismDecisionConsumer.parameters) pi 3 h) :
+  3 / 128 ≤
+    FiniteMechanismRegretCertificate.worst RegisterMechanismDecisionConsumer.oracle
+      (RegisterMechanismDecisionNativeConsumer.nativeRawJ pi h)
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecision.returned_contract' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ RegisterMechanismDecisionConsumer.exact_cached_data._native.native_decide.ax_1_1]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionNative.nativeExecute_S' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionNative.native_G_missing_fault' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionNative.nativeStep_metadata' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionNative.native_new_slot_is_actual_child' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionInformation.real_policy_joint_posterior' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionInformation.ambiguous_joint_posterior' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionInformation.old_observer_migration_failure' depends on axioms: [propext]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismTableLaw.sampled_table_historyLaw_eq_raw' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismExperimentLaw.seeded_root_history_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismExperimentLaw.seeded_short_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismExperimentLaw.seeded_insufficient_wallet_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismExperimentLaw.endpoint_TV_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismExperimentLaw.raw_H3_TV_upper' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismExperimentSharp.H3_experiment_sharp' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismExperimentLaw.classification_finite_lower' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismExperimentLaw.H3_half_classification_lower' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismExperimentLaw.separation_test_exact' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionShort.short_common_dominates_raw' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionRegret.nonzero_common_optimum' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ RegisterMechanismDecisionConsumer.exact_two_data._native.native_decide.ax_1_1]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMechanismRegretCertificate.certificate' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMechanismRegretCertificate.worst_zero_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.all_shared_weighted_upper' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ RegisterMechanismDecisionConsumer.exact_cached_data._native.native_decide.ax_1_1]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.seed_noise_independent' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionRealization.every_raw_has_shared_realization' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionRegret.minimax_regret_exact' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ RegisterMechanismDecisionConsumer.exact_cached_data._native.native_decide.ax_1_1]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionRegret.deterministic_minimax_exact' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ RegisterMechanismDecisionConsumer.exact_cached_data._native.native_decide.ax_1_1]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionNativeConsumer.returned_nativeJ' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionNativeConsumer.returned_native_population' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionNativeConsumer.returned_native_payment' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionNativeConsumer.all_native_regret_lower' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ RegisterMechanismDecisionConsumer.exact_cached_data._native.native_decide.ax_1_1]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismExperimentSharp.H3_distance_supremum
+  (P : RegisterMechanismExperimentRate.PhysicalExperiment) (tariff B : ℚ) (hc : 0 < tariff) (hB : tariff ≤ B) :
+  sSup (RegisterMechanismExperimentSharp.AttainableDistance P tariff B) = P.normal ^ 2 * (1 - P.normal)
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismExperimentSharp.H3_distance_supremum' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismExperimentSharp.arbitrary_private_H3_error.{u_1}
+  {Seed : Type u_1} [MeasurableSpace Seed] (ν : MeasureTheory.Measure Seed) [MeasureTheory.IsProbabilityMeasure ν]
+  (P : RegisterMechanismExperimentRate.PhysicalExperiment)
+  (choose : Seed → FiniteJointDecisionSolver.Table RegisterJointDecisionSource.Act RegisterJointDecisionSource.Obs 3)
+  (test : Seed → Set (List (RegisterJointDecisionSource.Act × RegisterJointDecisionSource.Obs))) :
+  ENNReal.ofReal (1 / 2 * (1 - P.normal ^ 2 * (1 - P.normal))) ≤
+    RegisterMechanismExperimentSharp.privateTestRisk ν P choose test
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismExperimentSharp.arbitrary_private_H3_error' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismExperimentSharp.arbitrary_private_finite_error.{u_1}
+  {Seed : Type u_1} [MeasurableSpace Seed] (ν : MeasureTheory.Measure Seed) [MeasureTheory.IsProbabilityMeasure ν]
+  (P : RegisterMechanismExperimentRate.PhysicalExperiment) {H : ℕ}
+  (choose : Seed → FiniteJointDecisionSolver.Table RegisterJointDecisionSource.Act RegisterJointDecisionSource.Obs H)
+  (test : Seed → Set (List (RegisterJointDecisionSource.Act × RegisterJointDecisionSource.Obs))) :
+  ENNReal.ofReal (1 / 2 * (1 - P.normal) ^ H) ≤ RegisterMechanismExperimentSharp.privateTestRisk ν P choose test
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismExperimentSharp.arbitrary_private_finite_error' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

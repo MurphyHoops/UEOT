@@ -1,0 +1,1433 @@
+{
+  "absolute_parameters": "fixed mechanism; one deterministic shared table",
+  "adapter_sha256": "29c6ace98ae5c0fb481ec9b210f3bfbe57a0a03db6f71890fc540a4df493ff25",
+  "all_native_world_ledger_sha256": "1db17289c91fa275ca995560a9d0bf09b2e53177a56c647c7ca94cd86a83e7df",
+  "complete_Store_examples": [
+    {
+      "labels": [
+        false,
+        false,
+        false
+      ],
+      "ledger": [
+        {
+          "actual_fee": "0",
+          "balance_after": "1",
+          "balance_before": "1",
+          "prefix": 1,
+          "request_cap": "1"
+        },
+        {
+          "actual_fee": "0",
+          "balance_after": "1",
+          "balance_before": "1",
+          "prefix": 2,
+          "request_cap": "0"
+        },
+        {
+          "actual_fee": "0",
+          "balance_after": "1",
+          "balance_before": "1",
+          "prefix": 3,
+          "request_cap": "0"
+        }
+      ],
+      "mechanism": "S",
+      "modes": [
+        false,
+        false,
+        false
+      ],
+      "world_events": [
+        {
+          "common_fault_damaged_slots": [],
+          "label": false,
+          "mode": false,
+          "request": [
+            0,
+            true
+          ],
+          "source_clock": 1,
+          "store_after": [
+            {
+              "clock": 2,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            },
+            null
+          ],
+          "store_after_transaction": [
+            {
+              "clock": 2,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            },
+            null
+          ],
+          "store_before": [
+            {
+              "clock": 0,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            }
+          ],
+          "tick": 0,
+          "transaction": {
+            "child_identity": null,
+            "child_slot": null,
+            "executed": false,
+            "expenditure": "0",
+            "label": false,
+            "mode": false,
+            "parent_clock": 2,
+            "parent_identity": [
+              [
+                0,
+                false
+              ]
+            ],
+            "request_parent": 0,
+            "tick": 1
+          }
+        },
+        {
+          "common_fault_damaged_slots": [],
+          "label": false,
+          "mode": false,
+          "request": [
+            0,
+            null
+          ],
+          "source_clock": 2,
+          "store_after": [
+            {
+              "clock": 3,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            },
+            null,
+            null
+          ],
+          "store_after_transaction": [
+            {
+              "clock": 3,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            },
+            null,
+            null
+          ],
+          "store_before": [
+            {
+              "clock": 2,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            },
+            null
+          ],
+          "tick": 1,
+          "transaction": {
+            "child_identity": null,
+            "child_slot": null,
+            "executed": false,
+            "expenditure": "0",
+            "label": false,
+            "mode": false,
+            "parent_clock": 3,
+            "parent_identity": [
+              [
+                0,
+                false
+              ]
+            ],
+            "request_parent": 0,
+            "tick": 2
+          }
+        },
+        {
+          "common_fault_damaged_slots": [],
+          "label": false,
+          "mode": false,
+          "request": [
+            1,
+            null
+          ],
+          "source_clock": 3,
+          "store_after": [
+            {
+              "clock": 3,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            },
+            null,
+            null,
+            null
+          ],
+          "store_after_transaction": [
+            {
+              "clock": 3,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            },
+            null,
+            null,
+            null
+          ],
+          "store_before": [
+            {
+              "clock": 3,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            },
+            null,
+            null
+          ],
+          "tick": 2,
+          "transaction": null
+        }
+      ]
+    },
+    {
+      "labels": [
+        false,
+        false,
+        false
+      ],
+      "ledger": [
+        {
+          "actual_fee": "1",
+          "balance_after": "0",
+          "balance_before": "1",
+          "prefix": 1,
+          "request_cap": "1"
+        },
+        {
+          "actual_fee": "0",
+          "balance_after": "0",
+          "balance_before": "0",
+          "prefix": 2,
+          "request_cap": "0"
+        },
+        {
+          "actual_fee": "0",
+          "balance_after": "0",
+          "balance_before": "0",
+          "prefix": 3,
+          "request_cap": "0"
+        }
+      ],
+      "mechanism": "S",
+      "modes": [
+        true,
+        false,
+        true
+      ],
+      "world_events": [
+        {
+          "common_fault_damaged_slots": [],
+          "label": false,
+          "mode": true,
+          "request": [
+            0,
+            true
+          ],
+          "source_clock": 1,
+          "store_after": [
+            {
+              "clock": 2,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": true,
+              "program": true
+            },
+            {
+              "clock": 0,
+              "history": [
+                false
+              ],
+              "identity": [
+                [
+                  0,
+                  false
+                ],
+                [
+                  1,
+                  false
+                ]
+              ],
+              "physical": true,
+              "program": true
+            }
+          ],
+          "store_after_transaction": [
+            {
+              "clock": 2,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": true,
+              "program": true
+            },
+            {
+              "clock": 0,
+              "history": [
+                false
+              ],
+              "identity": [
+                [
+                  0,
+                  false
+                ],
+                [
+                  1,
+                  false
+                ]
+              ],
+              "physical": true,
+              "program": true
+            }
+          ],
+          "store_before": [
+            {
+              "clock": 0,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            }
+          ],
+          "tick": 0,
+          "transaction": {
+            "child_identity": [
+              [
+                0,
+                false
+              ],
+              [
+                1,
+                false
+              ]
+            ],
+            "child_slot": 1,
+            "executed": true,
+            "expenditure": "1",
+            "label": false,
+            "mode": true,
+            "parent_clock": 2,
+            "parent_identity": [
+              [
+                0,
+                false
+              ]
+            ],
+            "request_parent": 0,
+            "tick": 1
+          }
+        },
+        {
+          "common_fault_damaged_slots": [],
+          "label": false,
+          "mode": false,
+          "request": [
+            0,
+            null
+          ],
+          "source_clock": 2,
+          "store_after": [
+            {
+              "clock": 3,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            },
+            {
+              "clock": 0,
+              "history": [
+                false
+              ],
+              "identity": [
+                [
+                  0,
+                  false
+                ],
+                [
+                  1,
+                  false
+                ]
+              ],
+              "physical": true,
+              "program": true
+            },
+            null
+          ],
+          "store_after_transaction": [
+            {
+              "clock": 3,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            },
+            {
+              "clock": 0,
+              "history": [
+                false
+              ],
+              "identity": [
+                [
+                  0,
+                  false
+                ],
+                [
+                  1,
+                  false
+                ]
+              ],
+              "physical": true,
+              "program": true
+            },
+            null
+          ],
+          "store_before": [
+            {
+              "clock": 2,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": true,
+              "program": true
+            },
+            {
+              "clock": 0,
+              "history": [
+                false
+              ],
+              "identity": [
+                [
+                  0,
+                  false
+                ],
+                [
+                  1,
+                  false
+                ]
+              ],
+              "physical": true,
+              "program": true
+            }
+          ],
+          "tick": 1,
+          "transaction": {
+            "child_identity": null,
+            "child_slot": null,
+            "executed": false,
+            "expenditure": "0",
+            "label": false,
+            "mode": false,
+            "parent_clock": 3,
+            "parent_identity": [
+              [
+                0,
+                false
+              ]
+            ],
+            "request_parent": 0,
+            "tick": 2
+          }
+        },
+        {
+          "common_fault_damaged_slots": [],
+          "label": false,
+          "mode": true,
+          "request": [
+            1,
+            null
+          ],
+          "source_clock": 3,
+          "store_after": [
+            {
+              "clock": 3,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            },
+            {
+              "clock": 4,
+              "history": [
+                false
+              ],
+              "identity": [
+                [
+                  0,
+                  false
+                ],
+                [
+                  1,
+                  false
+                ]
+              ],
+              "physical": true,
+              "program": true
+            },
+            null,
+            {
+              "clock": 0,
+              "history": [
+                false,
+                false
+              ],
+              "identity": [
+                [
+                  0,
+                  false
+                ],
+                [
+                  1,
+                  false
+                ],
+                [
+                  3,
+                  false
+                ]
+              ],
+              "physical": true,
+              "program": true
+            }
+          ],
+          "store_after_transaction": [
+            {
+              "clock": 3,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            },
+            {
+              "clock": 4,
+              "history": [
+                false
+              ],
+              "identity": [
+                [
+                  0,
+                  false
+                ],
+                [
+                  1,
+                  false
+                ]
+              ],
+              "physical": true,
+              "program": true
+            },
+            null,
+            {
+              "clock": 0,
+              "history": [
+                false,
+                false
+              ],
+              "identity": [
+                [
+                  0,
+                  false
+                ],
+                [
+                  1,
+                  false
+                ],
+                [
+                  3,
+                  false
+                ]
+              ],
+              "physical": true,
+              "program": true
+            }
+          ],
+          "store_before": [
+            {
+              "clock": 3,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            },
+            {
+              "clock": 0,
+              "history": [
+                false
+              ],
+              "identity": [
+                [
+                  0,
+                  false
+                ],
+                [
+                  1,
+                  false
+                ]
+              ],
+              "physical": true,
+              "program": true
+            },
+            null
+          ],
+          "tick": 2,
+          "transaction": {
+            "child_identity": [
+              [
+                0,
+                false
+              ],
+              [
+                1,
+                false
+              ],
+              [
+                3,
+                false
+              ]
+            ],
+            "child_slot": 3,
+            "executed": true,
+            "expenditure": "0",
+            "label": false,
+            "mode": true,
+            "parent_clock": 4,
+            "parent_identity": [
+              [
+                0,
+                false
+              ],
+              [
+                1,
+                false
+              ]
+            ],
+            "request_parent": 1,
+            "tick": 3
+          }
+        }
+      ]
+    },
+    {
+      "labels": [
+        false,
+        false,
+        false
+      ],
+      "ledger": [
+        {
+          "actual_fee": "0",
+          "balance_after": "1",
+          "balance_before": "1",
+          "prefix": 1,
+          "request_cap": "1"
+        },
+        {
+          "actual_fee": "0",
+          "balance_after": "1",
+          "balance_before": "1",
+          "prefix": 2,
+          "request_cap": "0"
+        },
+        {
+          "actual_fee": "0",
+          "balance_after": "1",
+          "balance_before": "1",
+          "prefix": 3,
+          "request_cap": "0"
+        }
+      ],
+      "mechanism": "G",
+      "modes": [
+        false,
+        false,
+        false
+      ],
+      "world_events": [
+        {
+          "common_fault_damaged_slots": [
+            0
+          ],
+          "label": false,
+          "mode": false,
+          "request": [
+            0,
+            true
+          ],
+          "source_clock": 1,
+          "store_after": [
+            {
+              "clock": 2,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            },
+            null
+          ],
+          "store_after_transaction": [
+            {
+              "clock": 2,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            },
+            null
+          ],
+          "store_before": [
+            {
+              "clock": 0,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            }
+          ],
+          "tick": 0,
+          "transaction": {
+            "child_identity": null,
+            "child_slot": null,
+            "executed": false,
+            "expenditure": "0",
+            "label": false,
+            "mode": false,
+            "parent_clock": 2,
+            "parent_identity": [
+              [
+                0,
+                false
+              ]
+            ],
+            "request_parent": 0,
+            "tick": 1
+          }
+        },
+        {
+          "common_fault_damaged_slots": [
+            0
+          ],
+          "label": false,
+          "mode": false,
+          "request": [
+            0,
+            null
+          ],
+          "source_clock": 2,
+          "store_after": [
+            {
+              "clock": 3,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            },
+            null,
+            null
+          ],
+          "store_after_transaction": [
+            {
+              "clock": 3,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            },
+            null,
+            null
+          ],
+          "store_before": [
+            {
+              "clock": 2,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            },
+            null
+          ],
+          "tick": 1,
+          "transaction": {
+            "child_identity": null,
+            "child_slot": null,
+            "executed": false,
+            "expenditure": "0",
+            "label": false,
+            "mode": false,
+            "parent_clock": 3,
+            "parent_identity": [
+              [
+                0,
+                false
+              ]
+            ],
+            "request_parent": 0,
+            "tick": 2
+          }
+        },
+        {
+          "common_fault_damaged_slots": [
+            0
+          ],
+          "label": false,
+          "mode": false,
+          "request": [
+            1,
+            null
+          ],
+          "source_clock": 3,
+          "store_after": [
+            {
+              "clock": 3,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            },
+            null,
+            null,
+            null
+          ],
+          "store_after_transaction": [
+            {
+              "clock": 3,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            },
+            null,
+            null,
+            null
+          ],
+          "store_before": [
+            {
+              "clock": 3,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            },
+            null,
+            null
+          ],
+          "tick": 2,
+          "transaction": null
+        }
+      ]
+    },
+    {
+      "labels": [
+        false,
+        false,
+        false
+      ],
+      "ledger": [
+        {
+          "actual_fee": "1",
+          "balance_after": "0",
+          "balance_before": "1",
+          "prefix": 1,
+          "request_cap": "1"
+        },
+        {
+          "actual_fee": "0",
+          "balance_after": "0",
+          "balance_before": "0",
+          "prefix": 2,
+          "request_cap": "0"
+        },
+        {
+          "actual_fee": "0",
+          "balance_after": "0",
+          "balance_before": "0",
+          "prefix": 3,
+          "request_cap": "0"
+        }
+      ],
+      "mechanism": "G",
+      "modes": [
+        true,
+        false,
+        true
+      ],
+      "world_events": [
+        {
+          "common_fault_damaged_slots": [],
+          "label": false,
+          "mode": true,
+          "request": [
+            0,
+            true
+          ],
+          "source_clock": 1,
+          "store_after": [
+            {
+              "clock": 2,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": true,
+              "program": true
+            },
+            {
+              "clock": 0,
+              "history": [
+                false
+              ],
+              "identity": [
+                [
+                  0,
+                  false
+                ],
+                [
+                  1,
+                  false
+                ]
+              ],
+              "physical": true,
+              "program": true
+            }
+          ],
+          "store_after_transaction": [
+            {
+              "clock": 2,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": true,
+              "program": true
+            },
+            {
+              "clock": 0,
+              "history": [
+                false
+              ],
+              "identity": [
+                [
+                  0,
+                  false
+                ],
+                [
+                  1,
+                  false
+                ]
+              ],
+              "physical": true,
+              "program": true
+            }
+          ],
+          "store_before": [
+            {
+              "clock": 0,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            }
+          ],
+          "tick": 0,
+          "transaction": {
+            "child_identity": [
+              [
+                0,
+                false
+              ],
+              [
+                1,
+                false
+              ]
+            ],
+            "child_slot": 1,
+            "executed": true,
+            "expenditure": "1",
+            "label": false,
+            "mode": true,
+            "parent_clock": 2,
+            "parent_identity": [
+              [
+                0,
+                false
+              ]
+            ],
+            "request_parent": 0,
+            "tick": 1
+          }
+        },
+        {
+          "common_fault_damaged_slots": [
+            0,
+            1
+          ],
+          "label": false,
+          "mode": false,
+          "request": [
+            0,
+            null
+          ],
+          "source_clock": 2,
+          "store_after": [
+            {
+              "clock": 3,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            },
+            {
+              "clock": 0,
+              "history": [
+                false
+              ],
+              "identity": [
+                [
+                  0,
+                  false
+                ],
+                [
+                  1,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            },
+            null
+          ],
+          "store_after_transaction": [
+            {
+              "clock": 3,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            },
+            {
+              "clock": 0,
+              "history": [
+                false
+              ],
+              "identity": [
+                [
+                  0,
+                  false
+                ],
+                [
+                  1,
+                  false
+                ]
+              ],
+              "physical": true,
+              "program": true
+            },
+            null
+          ],
+          "store_before": [
+            {
+              "clock": 2,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": true,
+              "program": true
+            },
+            {
+              "clock": 0,
+              "history": [
+                false
+              ],
+              "identity": [
+                [
+                  0,
+                  false
+                ],
+                [
+                  1,
+                  false
+                ]
+              ],
+              "physical": true,
+              "program": true
+            }
+          ],
+          "tick": 1,
+          "transaction": {
+            "child_identity": null,
+            "child_slot": null,
+            "executed": false,
+            "expenditure": "0",
+            "label": false,
+            "mode": false,
+            "parent_clock": 3,
+            "parent_identity": [
+              [
+                0,
+                false
+              ]
+            ],
+            "request_parent": 0,
+            "tick": 2
+          }
+        },
+        {
+          "common_fault_damaged_slots": [],
+          "label": false,
+          "mode": true,
+          "request": [
+            1,
+            null
+          ],
+          "source_clock": 3,
+          "store_after": [
+            {
+              "clock": 3,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            },
+            {
+              "clock": 4,
+              "history": [
+                false
+              ],
+              "identity": [
+                [
+                  0,
+                  false
+                ],
+                [
+                  1,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            },
+            null,
+            null
+          ],
+          "store_after_transaction": [
+            {
+              "clock": 3,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            },
+            {
+              "clock": 4,
+              "history": [
+                false
+              ],
+              "identity": [
+                [
+                  0,
+                  false
+                ],
+                [
+                  1,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            },
+            null,
+            null
+          ],
+          "store_before": [
+            {
+              "clock": 3,
+              "history": [],
+              "identity": [
+                [
+                  0,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            },
+            {
+              "clock": 0,
+              "history": [
+                false
+              ],
+              "identity": [
+                [
+                  0,
+                  false
+                ],
+                [
+                  1,
+                  false
+                ]
+              ],
+              "physical": false,
+              "program": true
+            },
+            null
+          ],
+          "tick": 2,
+          "transaction": {
+            "child_identity": null,
+            "child_slot": null,
+            "executed": true,
+            "expenditure": "0",
+            "label": false,
+            "mode": true,
+            "parent_clock": 4,
+            "parent_identity": [
+              [
+                0,
+                false
+              ],
+              [
+                1,
+                false
+              ]
+            ],
+            "request_parent": 1,
+            "tick": 3
+          }
+        }
+      ]
+    }
+  ],
+  "conditional_mass_each": "1/64",
+  "equal_prior_error": "7/16",
+  "exclusive_count": {
+    "G": 0,
+    "S": 8
+  },
+  "horizon": 3,
+  "induced_histograms": {
+    "G": {
+      "00/00/00": 32,
+      "11/00/00": 16,
+      "11/10/00": 8,
+      "11/10/10": 8
+    },
+    "S": {
+      "00/00/00": 32,
+      "11/00/00": 8,
+      "11/00/10": 8,
+      "11/10/00": 8,
+      "11/10/10": 8
+    }
+  },
+  "initial_wallet": "1",
+  "original_native_sha256": "b81f62cbe65c3d01d32b2d74910db0e6999b144f249d79e93a8367a2fa9cad5f",
+  "packed_native_atoms": 128,
+  "packed_sha256": "54c8b74778c682d64e7eea3a719ae8b5bc8f45bc8f84877f2439c34ecc640844",
+  "paid_fee_histograms": {
+    "G": {
+      "0": 32,
+      "1": 32
+    },
+    "S": {
+      "0": 32,
+      "1": 32
+    }
+  },
+  "prepaid_tick_checks": 384,
+  "rate": "1/2",
+  "schema": "UEOT/NATIVE_H3_SHARP_CHECK/V1",
+  "status": "PASS",
+  "tariff": "1",
+  "tv": "1/8"
+}

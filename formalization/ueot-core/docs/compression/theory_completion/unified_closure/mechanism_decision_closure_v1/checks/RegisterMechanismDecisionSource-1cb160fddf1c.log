@@ -1,0 +1,268 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:21:57: error: unknown namespace `FiniteJointDecisionSolverExecution`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:27:30: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  @Membership.mem ?m.6 (Finset ?m.6) SetLike.instMembership { val := ?m.8, nodup := ?m.9 } ?m.7
+in the target expression
+  @Membership.mem FaultMechanism (Finset FaultMechanism) SetLike.instMembership
+    { val := ↑FaultMechanism.enumList, nodup := FaultMechanism.enumList_nodup } x✝
+
+x✝ : FaultMechanism
+⊢ x✝ ∈ { val := ↑FaultMechanism.enumList, nodup := FaultMechanism.enumList_nodup }
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    FaultMechanism.enumList_nodup
+  has type
+    FaultMechanism.enumList.Nodup
+  but is expected to have type
+    (↑FaultMechanism.enumList).Nodup
+  in the application
+    { val := ↑FaultMechanism.enumList, nodup := FaultMechanism.enumList_nodup }
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:86:2: error: Tactic `split` failed: Could not split an `if` or `match` expression in the goal
+
+Hint: Use `set_option trace.split.failure true` to display additional diagnostic information
+
+goal : Bool
+w : World
+a : Act
+label : Bool
+⊢ (have q := effective w.stopped a;
+    match packedLookup w.store (address q.1) with
+    | none => (false, false)
+    | some bit => ((childBit goal bit q.2 (false, label).1).isSome, (false, label).1 && Option.isSome q.2)) =
+    (false, false)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:96:18: warning: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:97:34: warning: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:111:15: error(lean.unknownIdentifier): Unknown identifier `Belief`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:113:30: error: Function expected at
+  Source
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  World
+
+Hint: The identifier `Source` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:123:29: error: Function expected at
+  Model
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  Info
+
+Hint: The identifier `Model` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:131:54: error: Function expected at
+  Belief
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  World
+
+Hint: The identifier `Belief` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:141:3: error: don't know how to synthesize implicit argument `Belief`
+  @initialBelief (?m.19 P prior hn ht wallet) (?m.20 P prior hn ht wallet) P.goal prior ⋯ ⋯
+context:
+P : Parameters
+prior : FaultMechanism → ℚ
+hn : ∀ (m : FaultMechanism), 0 ≤ prior m
+ht : ∑ m, prior m = 1
+wallet : Wallet
+⊢ ?m.19 P prior hn ht wallet
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:141:3: error: don't know how to synthesize implicit argument
+  @initialBelief (?m.19 P prior hn ht wallet) (?m.20 P prior hn ht wallet) P.goal prior ⋯ ⋯
+context:
+P : Parameters
+prior : FaultMechanism → ℚ
+hn : ∀ (m : FaultMechanism), 0 ≤ prior m
+ht : ∑ m, prior m = 1
+wallet : Wallet
+⊢ Sort ?u.25
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:145:4: warning: declaration uses `sorry`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:148:55: error: Function expected at
+  Belief
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  World
+
+Hint: The identifier `Belief` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:150:4: error: Function expected at
+  mass
+but this term has type
+  ?m.2
+
+Note: Expected a function because this term is being applied to the argument
+  (source P)
+
+Hint: The identifier `mass` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:150:28: error: Function expected at
+  expect
+but this term has type
+  ?m.3
+
+Note: Expected a function because this term is being applied to the argument
+  (posterior (source P) b a o)
+
+Hint: The identifier `expect` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:151:28: error: Function expected at
+  joint
+but this term has type
+  ?m.4
+
+Note: Expected a function because this term is being applied to the argument
+  (source P)
+
+Hint: The identifier `joint` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:152:2: error(lean.unknownIdentifier): Unknown identifier `posterior_identity`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:154:46: error: Function expected at
+  Belief
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  World
+
+Hint: The identifier `Belief` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:155:14: error: Function expected at
+  mass
+but this term has type
+  ?m.2
+
+Note: Expected a function because this term is being applied to the argument
+  (source P)
+
+Hint: The identifier `mass` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:159:12: error: Function expected at
+  mass
+but this term has type
+  x✝
+
+Note: Expected a function because this term is being applied to the argument
+  (source P)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:165:54: error: Function expected at
+  Belief
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  World
+
+Hint: The identifier `Belief` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:166:14: error: Function expected at
+  mass
+but this term has type
+  ?m.2
+
+Note: Expected a function because this term is being applied to the argument
+  (source P)
+
+Hint: The identifier `mass` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:166:79: error: unsolved goals
+x✝¹ : Sort u_1
+Belief : x✝¹
+x✝ : Sort u_2
+mass : x✝
+P : Parameters
+b : sorry
+a : Act
+o : Obs
+ho : 0 < sorry
+x : sorry × Noise
+hx : observe P.goal sorry a x.2 = o
+⊢ charge P.tariff o ≤ P.tariff * cap a
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:179:38: error: Function expected at
+  WalletContract
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (model P)
+
+Hint: The identifier `WalletContract` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:196:14: error: Function expected at
+  Table
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  Act
+
+Hint: The identifier `Table` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:203:23: error: Function expected at
+  Table
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  Act
+
+Hint: The identifier `Table` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:215:23: error: Function expected at
+  Table
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  Act
+
+Hint: The identifier `Table` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:232:23: error: Function expected at
+  Table
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  Act
+
+Hint: The identifier `Table` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:246:58: error: Function expected at
+  Table
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  Act
+
+Hint: The identifier `Table` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:247:4: error: Function expected at
+  value
+but this term has type
+  ?m.2
+
+Note: Expected a function because this term is being applied to the argument
+  (model P)
+
+Hint: The identifier `value` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:247:30: error: Function expected at
+  expect
+but this term has type
+  ?m.3
+
+Note: Expected a function because this term is being applied to the argument
+  i.1
+
+Hint: The identifier `expect` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean:258:7: error: Function expected at
+  expect
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (pi.info h).1
+
+Hint: The identifier `expect` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.

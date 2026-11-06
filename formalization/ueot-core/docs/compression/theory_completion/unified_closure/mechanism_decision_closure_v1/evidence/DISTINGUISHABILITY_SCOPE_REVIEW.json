@@ -1,0 +1,178 @@
+{
+  "schema": "UEOT/S_G_SOURCE_QUANTIFIER_REVIEW/V1",
+  "review_scope": "Source-level adversarial review of six distinguishability production modules and cross-check of the frozen contract interfaces. The reviewing agent implemented the six experiment modules; the numerical regret, native bridge, original GI, and final publication are owned by other agents. This is not an independent third-party re-derivation of all Lean code or an attestation of a future release.",
+  "source_baseline": "7f66c167a41c4f89c278431ae634218f7aaddda3",
+  "primary_contract_sha256": "6d2fc3d70b8c7b5ebd0fc9e664c07426443374f47ec52391b41f9c04457086ff",
+  "redteam_sha256": "1c42a43fe5a99f1afb9b9bece498816b1b89fbe004e06a7f0e4303d665cef13b",
+  "experiment_production_inputs": [
+    {
+      "name": "RegisterMechanismExperimentLaw.lean",
+      "bytes": 26091,
+      "sha256": "2dc4895a06f9ce9d0bccf06a0df4a873007b4e61527255b36e0201a07ecb6e21"
+    },
+    {
+      "name": "RegisterMechanismExperimentPaths.lean",
+      "bytes": 8341,
+      "sha256": "58dfc79768e0f63236f6e9d0aa34144465bcaf5f5523c3f79faa48d233e69a42"
+    },
+    {
+      "name": "RegisterMechanismExperimentRate.lean",
+      "bytes": 3369,
+      "sha256": "5f68f7b67927a8a13d718cfd70b0507f28ff420f60c5b1f469830506931e3d69"
+    },
+    {
+      "name": "RegisterMechanismExperimentSharp.lean",
+      "bytes": 9804,
+      "sha256": "070939117ed0721d4675b345387757827440a5dd4a8e92209266285e6cb5d33f"
+    },
+    {
+      "name": "RegisterMechanismExperimentZero.lean",
+      "bytes": 12614,
+      "sha256": "d21f93ded954a789dfbfd25f24d7cd2390dc17d30a676e8869db15c9033f858d"
+    },
+    {
+      "name": "RegisterMechanismTableLaw.lean",
+      "bytes": 9888,
+      "sha256": "87ed379104eaa0b18466a82e42ec4606e56639e25c51e38ff96c2b70e1f01638"
+    }
+  ],
+  "formal_build_status": "All six listed experiment module identities passed the coordinator's Mac Lean build, including the final Sharp arbitrary-private-probability-space bridge. For actual logs, time, trust dependencies and publication identity use the coordinator's build/axiom/manifests.",
+  "adversarial_checks": [
+    {
+      "attack": "Use a different adaptive table or seed after inspecting the mechanism; match paths only on the maximizing experiment.",
+      "result": "REJECTED",
+      "why": "history_three_eq_unless_NFN quantifies over every Table and every primitive tape under the actual recursive execute. commonInput factors the same seed/table and noise laws before choosing a fixed start world. raw_H3_TV_upper quantifies over arbitrary-memory real action kernels even without a legality restriction. No maximizing policy is assumed in the upper bound.",
+      "declarations": [
+        "history_three_eq_unless_NFN",
+        "commonInput",
+        "raw_H3_TV_upper",
+        "H3_distance_greatest",
+        "H3_distance_supremum"
+      ]
+    },
+    {
+      "attack": "Use an unobservable mechanism tag, birth label, or parent as a controller coin; count only tapes of one hidden label.",
+      "result": "REJECTED",
+      "why": "Actions at each table node depend on own earlier actions/receipts via the table traversal; seededLaw exposes only own seed and controller history. Both labels are included in primitiveLaw, tapeLaw and modeWord_mass; primitiveLaw_ofParameters identifies the planning source at any registered rational rate. Native world retains records and hides them from the controller.",
+      "declarations": [
+        "primitiveLaw_ofParameters",
+        "modeWord_mass",
+        "history_label_irrelevant",
+        "seededLaw",
+        "native_history_eq"
+      ]
+    },
+    {
+      "attack": "Restrict stochastic controls to rational weights, finite memory, or independent fresh uniform choices at each actual decision.",
+      "result": "REJECTED",
+      "why": "Each original real causal policy has a common finite contingent-table PMF with identical allowed-history law for every world. Positive original actions and reachable receipt branches transfer supported legality. Any law on complete tables allows arbitrary correlation in an independent ex-ante private source. At fixed finite H the table space is finite; real weights are unrestricted.",
+      "declarations": [
+        "sampleTable",
+        "sampleTable_supported",
+        "sampled_table_historyLaw_eq_raw",
+        "rawHistoryLaw_eq_seed_tape",
+        "every_raw_has_shared_realization"
+      ]
+    },
+    {
+      "attack": "Forget the private seed at terminal classification or assume a nonatomic randomizer must have finitely many atoms.",
+      "result": "RESOLVED_IN_FINAL_SHARP",
+      "why": "For finite seeds the actual seed is already included in the classified output. For an arbitrary probability measure on Seed (including a nonatomic law), fix all private inputs including any terminal coin; each seed determines its own action tree AND its own terminal event. privateTestRisk averages the actual conditional binary risk against the same seed distribution and independent physical tape. The lower-integral formulation covers every measurable implementation without a separate integrability premise.",
+      "declarations": [
+        "classification_finite_lower",
+        "H3_half_classification_lower",
+        "arbitrary_private_finite_error",
+        "arbitrary_private_H3_error"
+      ]
+    },
+    {
+      "attack": "Use complete hidden Store equality to infer root-only indistinguishability; require unused table rows to dispatch only root.",
+      "result": "REJECTED",
+      "why": "SameRoot uses the root bit and stop status only; the path-level theorem accepts root dispatch along the positive S execution, not on unreachable rows. Full hidden tails may differ after global damage.",
+      "declarations": [
+        "SameRoot",
+        "root_history_same",
+        "seeded_root_history_eq"
+      ]
+    },
+    {
+      "attack": "Underpay a write that fails on a fault, or normalize an impossible short-budget observation.",
+      "result": "REJECTED",
+      "why": "PrepaidHistory checks the request cap before subtracting the receipt charge. A damaged founder and B<c disallow every write; supported shared experiments have the same all-00 receipts. Joint posterior divides only at strictly positive evidence; zero mass still satisfies the unnormalized identity.",
+      "declarations": [
+        "damaged_free_step",
+        "insufficient_wallet_zero_history",
+        "seeded_insufficient_wallet_eq",
+        "raw_joint_history_identity",
+        "real_policy_joint_posterior"
+      ]
+    },
+    {
+      "attack": "A fixed-word difference alone proves optimum TV; the all-fault equality entails positive decision regret.",
+      "result": "REJECTED",
+      "why": "TV upper is event-limited shared-noise coupling over all contingent choices; actual charged one-write protocol obtains an exclusive event of exactly r²(1-r). Fixed-goal H3 uses the discrepancy only on tick 3, not for a later action. All-fault classification overlap (1-r)^H gives a separate binary-error bound, not regret. Regret lower comes instead from Bayes full-class upper at w=(3/4,1/4).",
+      "declarations": [
+        "separation_event_mass_S",
+        "separation_event_mass_G",
+        "separation_TV_exact",
+        "separation_prepaid",
+        "separation_test_exact",
+        "all_shared_weighted_upper",
+        "minimax_regret_exact"
+      ]
+    },
+    {
+      "attack": "A zero short-history TV boundary prevents all useful action; identify the mechanism before planning.",
+      "result": "REJECTED",
+      "why": "For all registered rational planning parameters H≤2, old solve at known S returns a table feasible at either model under the same wallet. The actual source value coincides and dominates the original full real causal class; frozen H=2 attains 13/16, strictly positive.",
+      "declarations": [
+        "seeded_short_eq",
+        "short_common_dominates_raw",
+        "short_common_values",
+        "nonzero_common_optimum"
+      ]
+    },
+    {
+      "attack": "Change the model every tick or use a defect in old observer to unfreeze prior PR442 conclusions.",
+      "result": "REJECTED",
+      "why": "theta_preserved keeps m for the entire run. The only new world change is post-local-transaction G fault damage, even at missing addresses or stop. In the real 11/00 history child1 differs while mechanism likelihood r(1-r) agrees; the old singleton observer remains valid only on its previous local source.",
+      "declarations": [
+        "theta_preserved",
+        "native_G_missing_fault",
+        "native_new_slot_is_actual_child",
+        "ambiguous_joint_posterior",
+        "old_observer_migration_failure"
+      ]
+    },
+    {
+      "attack": "Claim all-policy minimax from a two-by-two payoff matrix, or claim expected payment is sufficient at each prefix.",
+      "result": "REJECTED",
+      "why": "The regret code proves all_shared_weighted_upper via original rawValue_le_solve for dual prior metadata; the actual deployed controller does not inspect a true prior. every_raw_has_shared_realization preserves both actual mechanism J values. The 1/32 lattice covers arbitrary deterministic contingent responses. NativePrepaid checks literal request before actual native fee and returned_native_payment holds for each seed and full tape.",
+      "declarations": [
+        "all_shared_weighted_upper",
+        "every_raw_has_shared_realization",
+        "deterministic_minimax_exact",
+        "minimax_regret_exact",
+        "returned_native_payment",
+        "returned_native_values"
+      ]
+    }
+  ],
+  "scope_boundaries": [
+    "Root-only equality is a law of permitted receipts/actions, not hidden Store equality.",
+    "The zero-budget boundary requires damaged initialization and actual request cap; it does not cover healthy initial backup or a new free repair action.",
+    "TV symbolic result is for a fixed common real r in [0,1] and independent physical ticks. Planning source parameters remain rational; the H3 main consumer is exact r=1/2. No additional finite rate mixture was implemented or claimed.",
+    "The using-H3 classifier chooses G when no exclusive event appears only as an optimal binary decision under registered equal test weights. It does not certify G or exhaust natural mechanisms.",
+    "The finite all-fault error bound is not a payoff or regret lower bound. The W witness is not a claim that 3/4 is nature's prior.",
+    "No N>3 learning-after-separation benefit, infinite-horizon identifiability, internal random hardware, or natural empirical support. Empirical scope UNVERIFIED."
+  ],
+  "traces": {
+    "deployed_return": "The distinct 512-path rho consumer and its 1,536 nonempty prefix payments are a runtime wiring check, not the universal comparison proof.",
+    "literal_separation": "A separate driver consumes the actual separationTable on 2×64 labeled primitive atoms at B=c=1, and verifier reuses the current complete-Store native adapter. Actual run status and exact receipts must be taken from the coordinator, not inferred from the source of this check."
+  },
+  "notes_for_final_acceptance": [
+    "The frozen H2/H3 closed oracle arithmetic uses native_decide/Lean.ofReduceBool; disclose compiler-evaluation trust separately from structural source quantifiers and the independent rational checker.",
+    "Do not count local source review as a release/GI receipt. CAS, separate full recall, and unique CONTINUE belong to the coordinator; this reviewer neither issued nor inspected them."
+  ],
+  "review_disposition": "No remaining source-level blocker in the six experiment modules. The final run/receipt, public imports, two books, release, GI CAS, independent recall and sole CONTINUE remain separate material outcomes and are not preapproved here."
+}

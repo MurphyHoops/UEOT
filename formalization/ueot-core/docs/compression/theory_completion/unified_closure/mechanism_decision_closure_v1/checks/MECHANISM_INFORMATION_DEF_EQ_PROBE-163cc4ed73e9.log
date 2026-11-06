@@ -1,0 +1,533 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MECHANISM_INFORMATION_DEF_EQ_PROBE.lean:48:82: error: unexpected token 'set_option'; expected 'lemma'
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MECHANISM_INFORMATION_DEF_EQ_PROBE.lean:72:6: error: unsolved goals
+case pos
+P : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters
+h :
+  List.{0}
+    (Prod.{0, 0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Act
+      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Obs)
+ih :
+  ∀
+    (b :
+      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.{0}
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World)
+    (f : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World → Rat),
+    @Eq.{1} Rat
+      (@HMul.hMul.{0, 0, 0} Rat Rat Rat (@instHMul.{0} Rat Rat.instMul)
+        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismInformationProbe.evidenceMass P b h)
+        (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.expect.{0}
+          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismInformationProbe.jointFilter P b h) f))
+      (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.expect.{0}
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b
+        fun (w : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World) =>
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismInformationProbe.historyIntegral
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.goal P)
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.normal P) f w
+          h)
+a : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Act
+o : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Obs
+b :
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.{0}
+    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World
+f : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World → Rat
+x :
+  @UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b
+hx :
+  @Membership.mem.{0, 0}
+    (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b)
+    (Finset.{0}
+      (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b))
+    (@SetLike.instMembership.{0, 0}
+      (Finset.{0}
+        (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b))
+      (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b)
+      (@Finset.instSetLike.{0}
+        (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b)))
+    (@Finset.univ.{0}
+      (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b)
+      (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.atoms.{0}
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b))
+    x
+z : Bool
+hz :
+  @Membership.mem.{0, 0} Bool (Finset.{0} Bool)
+    (@SetLike.instMembership.{0, 0} (Finset.{0} Bool) Bool (@Finset.instSetLike.{0} Bool))
+    (@Finset.univ.{0} Bool Bool.fintype) z
+label : Bool
+hlabel :
+  @Membership.mem.{0, 0} Bool (Finset.{0} Bool)
+    (@SetLike.instMembership.{0, 0} (Finset.{0} Bool) Bool (@Finset.instSetLike.{0} Bool))
+    (@Finset.univ.{0} Bool Bool.fintype) label
+heq :
+  @Eq.{1} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Obs
+    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.observe
+      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.goal P)
+      (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.state.{0}
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b x)
+      a (@Prod.mk.{0, 0} Bool Bool z label))
+    o
+⊢ @Eq.{1} Rat
+    (@HMul.hMul.{0, 0, 0} Rat Rat Rat
+      (@instHMul.{0} Rat
+        (@Distrib.toMul.{0} Rat (@instDistribOfSemiring.{0} Rat (@CommSemiring.toSemiring.{0} Rat Rat.commSemiring))))
+      (@ite.{1} Rat
+        (@Eq.{1} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Obs
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.observe
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.goal P)
+            (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.state.{0}
+              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b x)
+            a (@Prod.mk.{0, 0} Bool Bool z label))
+          o)
+        ((fun (a b : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Obs) =>
+            @instDecidableEqProd.{0, 0} Bool Bool instDecidableEqBool instDecidableEqBool a b)
+          (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Source.observe.{0, 0, 0, 0}
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Act
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Obs
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Noise
+            (@instFintypeProd.{0, 0} Bool Bool Bool.fintype Bool.fintype)
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.source P)
+            (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.state.{0}
+              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b
+              (@Prod.fst.{0, 0}
+                (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+                  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b)
+                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Noise
+                (@Prod.mk.{0, 0}
+                  (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+                    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b)
+                  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Noise x
+                  (@Prod.mk.{0, 0} Bool Bool z label))))
+            a
+            (@Prod.snd.{0, 0}
+              (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b)
+              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Noise
+              (@Prod.mk.{0, 0}
+                (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+                  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b)
+                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Noise x
+                (@Prod.mk.{0, 0} Bool Bool z label))))
+          o)
+        (@HMul.hMul.{0, 0, 0} Rat Rat Rat
+          (@instHMul.{0} Rat
+            (@Distrib.toMul.{0} Rat
+              (@instDistribOfSemiring.{0} Rat (@CommSemiring.toSemiring.{0} Rat Rat.commSemiring))))
+          (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.weight.{0}
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b x)
+          (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.primitiveWeight.{0}
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.FaultMechanism
+            (fun
+                (x :
+                  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.FaultMechanism) =>
+              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.normal P)
+            (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.state.{0}
+              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b x)
+            (@Prod.mk.{0, 0} Bool Bool z label)))
+        (@OfNat.ofNat.{0} Rat (nat_lit 0)
+          (@Zero.toOfNat0.{0} Rat
+            (@MulZeroClass.toZero.{0} Rat
+              (@instMulZeroClassOfSemiring.{0} Rat (@CommSemiring.toSemiring.{0} Rat Rat.commSemiring))))))
+      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismInformationProbe.historyIntegral
+        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.goal P)
+        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.normal P) f
+        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.step
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.goal P)
+          (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.state.{0}
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b x)
+          a (@Prod.mk.{0, 0} Bool Bool z label))
+        h))
+    (@HMul.hMul.{0, 0, 0} Rat Rat Rat
+      (@instHMul.{0} Rat
+        (@Distrib.toMul.{0} Rat (@instDistribOfSemiring.{0} Rat (@CommSemiring.toSemiring.{0} Rat Rat.commSemiring))))
+      (@HMul.hMul.{0, 0, 0} Rat Rat Rat
+        (@instHMul.{0} Rat
+          (@Distrib.toMul.{0} Rat (@instDistribOfSemiring.{0} Rat (@CommSemiring.toSemiring.{0} Rat Rat.commSemiring))))
+        (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.weight.{0}
+          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b x)
+        (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.primitiveWeight.{0}
+          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.FaultMechanism
+          (fun
+              (x :
+                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.FaultMechanism) =>
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.normal P)
+          (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.state.{0}
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b x)
+          (@Prod.mk.{0, 0} Bool Bool z label)))
+      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismInformationProbe.historyIntegral
+        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.goal P)
+        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.normal P) f
+        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.step
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.goal P)
+          (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.state.{0}
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b x)
+          a (@Prod.mk.{0, 0} Bool Bool z label))
+        h))
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MECHANISM_INFORMATION_DEF_EQ_PROBE.lean:74:6: error: unsolved goals
+case neg
+P : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters
+h :
+  List.{0}
+    (Prod.{0, 0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Act
+      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Obs)
+ih :
+  ∀
+    (b :
+      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.{0}
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World)
+    (f : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World → Rat),
+    @Eq.{1} Rat
+      (@HMul.hMul.{0, 0, 0} Rat Rat Rat (@instHMul.{0} Rat Rat.instMul)
+        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismInformationProbe.evidenceMass P b h)
+        (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.expect.{0}
+          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismInformationProbe.jointFilter P b h) f))
+      (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.expect.{0}
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b
+        fun (w : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World) =>
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismInformationProbe.historyIntegral
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.goal P)
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.normal P) f w
+          h)
+a : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Act
+o : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Obs
+b :
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.{0}
+    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World
+f : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World → Rat
+x :
+  @UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b
+hx :
+  @Membership.mem.{0, 0}
+    (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b)
+    (Finset.{0}
+      (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b))
+    (@SetLike.instMembership.{0, 0}
+      (Finset.{0}
+        (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b))
+      (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b)
+      (@Finset.instSetLike.{0}
+        (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b)))
+    (@Finset.univ.{0}
+      (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b)
+      (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.atoms.{0}
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b))
+    x
+z : Bool
+hz :
+  @Membership.mem.{0, 0} Bool (Finset.{0} Bool)
+    (@SetLike.instMembership.{0, 0} (Finset.{0} Bool) Bool (@Finset.instSetLike.{0} Bool))
+    (@Finset.univ.{0} Bool Bool.fintype) z
+label : Bool
+hlabel :
+  @Membership.mem.{0, 0} Bool (Finset.{0} Bool)
+    (@SetLike.instMembership.{0, 0} (Finset.{0} Bool) Bool (@Finset.instSetLike.{0} Bool))
+    (@Finset.univ.{0} Bool Bool.fintype) label
+heq :
+  Not
+    (@Eq.{1} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Obs
+      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.observe
+        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.goal P)
+        (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.state.{0}
+          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b x)
+        a (@Prod.mk.{0, 0} Bool Bool z label))
+      o)
+⊢ @Eq.{1} Rat
+    (@HMul.hMul.{0, 0, 0} Rat Rat Rat (@instHMul.{0} Rat Rat.instMul)
+      (@ite.{1} Rat
+        (@Eq.{1} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Obs
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.observe
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.goal P)
+            (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.state.{0}
+              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b x)
+            a (@Prod.mk.{0, 0} Bool Bool z label))
+          o)
+        ((fun (a b : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Obs) =>
+            @instDecidableEqProd.{0, 0} Bool Bool instDecidableEqBool instDecidableEqBool a b)
+          (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Source.observe.{0, 0, 0, 0}
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Act
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Obs
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Noise
+            (@instFintypeProd.{0, 0} Bool Bool Bool.fintype Bool.fintype)
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.source P)
+            (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.state.{0}
+              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b
+              (@Prod.fst.{0, 0}
+                (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+                  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b)
+                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Noise
+                (@Prod.mk.{0, 0}
+                  (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+                    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b)
+                  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Noise x
+                  (@Prod.mk.{0, 0} Bool Bool z label))))
+            a
+            (@Prod.snd.{0, 0}
+              (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b)
+              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Noise
+              (@Prod.mk.{0, 0}
+                (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+                  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b)
+                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Noise x
+                (@Prod.mk.{0, 0} Bool Bool z label))))
+          o)
+        (@HMul.hMul.{0, 0, 0} Rat Rat Rat (@instHMul.{0} Rat Rat.instMul)
+          (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.weight.{0}
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b x)
+          (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.primitiveWeight.{0}
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.FaultMechanism
+            (fun
+                (x :
+                  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.FaultMechanism) =>
+              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.normal P)
+            (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.state.{0}
+              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b x)
+            (@Prod.mk.{0, 0} Bool Bool z label)))
+        (@OfNat.ofNat.{0} Rat (nat_lit 0) (@Rat.instOfNat (nat_lit 0))))
+      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismInformationProbe.historyIntegral
+        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.goal P)
+        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.normal P) f
+        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.step
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.goal P)
+          (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.state.{0}
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b x)
+          a (@Prod.mk.{0, 0} Bool Bool z label))
+        h))
+    (@OfNat.ofNat.{0} Rat (nat_lit 0)
+      (@Zero.toOfNat0.{0} Rat (@MulZeroClass.toZero.{0} Rat (@instMulZeroClassOfSemiring.{0} Rat Rat.semiring))))
+case cons
+P : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters
+h :
+  List.{0}
+    (Prod.{0, 0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Act
+      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Obs)
+ih :
+  ∀
+    (b :
+      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.{0}
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World)
+    (f : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World → Rat),
+    @Eq.{1} Rat
+      (@HMul.hMul.{0, 0, 0} Rat Rat Rat (@instHMul.{0} Rat Rat.instMul)
+        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismInformationProbe.evidenceMass P b h)
+        (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.expect.{0}
+          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismInformationProbe.jointFilter P b h) f))
+      (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.expect.{0}
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b
+        fun (w : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World) =>
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismInformationProbe.historyIntegral
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.goal P)
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.normal P) f w
+          h)
+a : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Act
+o : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Obs
+b :
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.{0}
+    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World
+f : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World → Rat
+x :
+  @UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b
+hx :
+  @Membership.mem.{0, 0}
+    (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b)
+    (Finset.{0}
+      (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b))
+    (@SetLike.instMembership.{0, 0}
+      (Finset.{0}
+        (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b))
+      (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b)
+      (@Finset.instSetLike.{0}
+        (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b)))
+    (@Finset.univ.{0}
+      (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b)
+      (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.atoms.{0}
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b))
+    x
+z : Bool
+hz :
+  @Membership.mem.{0, 0} Bool (Finset.{0} Bool)
+    (@SetLike.instMembership.{0, 0} (Finset.{0} Bool) Bool (@Finset.instSetLike.{0} Bool))
+    (@Finset.univ.{0} Bool Bool.fintype) z
+label : Bool
+hlabel :
+  @Membership.mem.{0, 0} Bool (Finset.{0} Bool)
+    (@SetLike.instMembership.{0, 0} (Finset.{0} Bool) Bool (@Finset.instSetLike.{0} Bool))
+    (@Finset.univ.{0} Bool Bool.fintype) label
+⊢ @Eq.{1} Rat
+    (@HMul.hMul.{0, 0, 0} Rat Rat Rat (@instHMul.{0} Rat Rat.instMul)
+      (@ite.{1} Rat
+        (@Eq.{1} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Obs
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.observe
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.goal P)
+            (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.state.{0}
+              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b x)
+            a (@Prod.mk.{0, 0} Bool Bool z label))
+          o)
+        ((fun (a b : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Obs) =>
+            @instDecidableEqProd.{0, 0} Bool Bool instDecidableEqBool instDecidableEqBool a b)
+          (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Source.observe.{0, 0, 0, 0}
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Act
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Obs
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Noise
+            (@instFintypeProd.{0, 0} Bool Bool Bool.fintype Bool.fintype)
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.source P)
+            (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.state.{0}
+              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b
+              (@Prod.fst.{0, 0}
+                (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+                  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b)
+                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Noise
+                (@Prod.mk.{0, 0}
+                  (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+                    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b)
+                  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Noise x
+                  (@Prod.mk.{0, 0} Bool Bool z label))))
+            a
+            (@Prod.snd.{0, 0}
+              (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b)
+              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Noise
+              (@Prod.mk.{0, 0}
+                (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.Atom.{0}
+                  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b)
+                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Noise x
+                (@Prod.mk.{0, 0} Bool Bool z label))))
+          o)
+        (@HMul.hMul.{0, 0, 0} Rat Rat Rat (@instHMul.{0} Rat Rat.instMul)
+          (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.weight.{0}
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b x)
+          (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.primitiveWeight.{0}
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.FaultMechanism
+            (fun
+                (x :
+                  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.FaultMechanism) =>
+              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.normal P)
+            (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.state.{0}
+              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b x)
+            (@Prod.mk.{0, 0} Bool Bool z label)))
+        (@OfNat.ofNat.{0} Rat (nat_lit 0) (@Rat.instOfNat (nat_lit 0))))
+      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismInformationProbe.historyIntegral
+        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.goal P)
+        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.normal P) f
+        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.step
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.goal P)
+          (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.state.{0}
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b x)
+          a (@Prod.mk.{0, 0} Bool Bool z label))
+        h))
+    (@ite.{1} Rat
+      (@Eq.{1} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Obs
+        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.observe
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.goal P)
+          (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.state.{0}
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b x)
+          a (@Prod.mk.{0, 0} Bool Bool z label))
+        o)
+      (@instDecidableEqProd.{0, 0} Bool Bool instDecidableEqBool instDecidableEqBool
+        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.observe
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.goal P)
+          (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.state.{0}
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b x)
+          a (@Prod.mk.{0, 0} Bool Bool z label))
+        o)
+      (@HMul.hMul.{0, 0, 0} Rat Rat Rat
+        (@instHMul.{0} Rat
+          (@Distrib.toMul.{0} Rat
+            (@NonUnitalNonAssocSemiring.toDistrib.{0} Rat
+              (@NonUnitalNonAssocRing.toNonUnitalNonAssocSemiring.{0} Rat
+                (@NonUnitalNonAssocCommRing.toNonUnitalNonAssocRing.{0} Rat
+                  (@NonUnitalCommRing.toNonUnitalNonAssocCommRing.{0} Rat
+                    (@CommRing.toNonUnitalCommRing.{0} Rat Rat.commRing)))))))
+        (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.weight.{0}
+          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b x)
+        (@HMul.hMul.{0, 0, 0} Rat Rat Rat (@instHMul.{0} Rat Rat.instMul)
+          (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.primitiveWeight.{0}
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.FaultMechanism
+            (fun
+                (x :
+                  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.FaultMechanism) =>
+              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.normal P)
+            (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.state.{0}
+              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b x)
+            (@Prod.mk.{0, 0} Bool Bool z label))
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismInformationProbe.historyIntegral
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.goal P)
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.normal P) f
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.step
+              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.Parameters.goal P)
+              (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief.Belief.state.{0}
+                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.World b x)
+              a (@Prod.mk.{0, 0} Bool Bool z label))
+            h)))
+      (@OfNat.ofNat.{0} Rat (nat_lit 0)
+        (@Zero.toOfNat0.{0} Rat (@MulZeroClass.toZero.{0} Rat (@instMulZeroClassOfSemiring.{0} Rat Rat.semiring)))))
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MECHANISM_INFORMATION_DEF_EQ_PROBE.lean:63:24: warning: This simp argument is unused:
+  mul_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [expect, historyIntegral, source, joint, Fintype.sum_prod_type, Finset.mul_sum, mul_ite, ite_mul,
+    mul_zero, zero_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MECHANISM_INFORMATION_DEF_EQ_PROBE.lean:63:44: warning: This simp argument is unused:
+  ite_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [expect, historyIntegral, source, joint, Fintype.sum_prod_type, Finset.mul_sum, mul_assoc, mul_ite,
+    mul_zero, zero_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MECHANISM_INFORMATION_DEF_EQ_PROBE.lean:63:63: warning: This simp argument is unused:
+  zero_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [expect, historyIntegral, source, joint, Fintype.sum_prod_type, Finset.mul_sum, mul_assoc, mul_ite,
+    ite_mul, mul_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MECHANISM_INFORMATION_DEF_EQ_PROBE.lean:74:31: warning: This simp argument is unused:
+  mul_zero
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [if_neg heq, zero_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MECHANISM_INFORMATION_DEF_EQ_PROBE.lean:74:41: warning: This simp argument is unused:
+  zero_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [if_neg heq, mul_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

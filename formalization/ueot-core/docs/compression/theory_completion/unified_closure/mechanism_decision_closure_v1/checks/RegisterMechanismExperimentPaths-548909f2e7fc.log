@@ -1,0 +1,44 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentPaths.lean:39:80: error: unexpected token 'set_option'; expected 'lemma'
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentPaths.lean:47:75: error: unexpected token 'set_option'; expected 'lemma'
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentPaths.lean:138:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  observe goal (step goal (initialWorld goal FaultMechanism.S) a (z 0)) b (z 1)
+in the target expression
+  (a, observe goal (initialWorld goal FaultMechanism.G) a (z 0)) ::
+      (b, observe goal (step goal (initialWorld goal FaultMechanism.S) a (z 0)) b (z (Fin.succ 0))) ::
+        (packedExecute goal
+            (grandchildren (observe goal (step goal (initialWorld goal FaultMechanism.S) a (z 0)) b (z (Fin.succ 0))))
+            (step goal (step goal (initialWorld goal FaultMechanism.S) a (z 0)) b (z (Fin.succ 0))) fun j =>
+            z j.succ.succ).history =
+    (a, observe goal (initialWorld goal FaultMechanism.G) a (z 0)) ::
+      (b, observe goal (step goal (initialWorld goal FaultMechanism.G) a (z 0)) b (z (Fin.succ 0))) ::
+        (packedExecute goal
+            (grandchildren (observe goal (step goal (initialWorld goal FaultMechanism.G) a (z 0)) b (z (Fin.succ 0))))
+            (step goal (step goal (initialWorld goal FaultMechanism.G) a (z 0)) b (z (Fin.succ 0))) fun j =>
+            z j.succ.succ).history
+
+case node.node
+goal : Bool
+z : Fin 3 → Noise
+hmode : ¬((z 0).1 = true ∧ (z 1).1 = false ∧ (z 2).1 = true)
+a : Act
+children : Obs → Table Act Obs (0 + 2)
+h0 :
+  observe goal (initialWorld goal FaultMechanism.S) a (z 0) = observe goal (initialWorld goal FaultMechanism.G) a (z 0)
+b : Act
+grandchildren : Obs → Table Act Obs (0 + 1)
+hc : children (observe goal (initialWorld goal FaultMechanism.G) a (z 0)) = Table.node b grandchildren
+h1 :
+  observe goal (step goal (initialWorld goal FaultMechanism.S) a (z 0)) b (z 1) =
+    observe goal (step goal (initialWorld goal FaultMechanism.G) a (z 0)) b (z 1)
+⊢ (a, observe goal (initialWorld goal FaultMechanism.G) a (z 0)) ::
+      (b, observe goal (step goal (initialWorld goal FaultMechanism.S) a (z 0)) b (z (Fin.succ 0))) ::
+        (packedExecute goal
+            (grandchildren (observe goal (step goal (initialWorld goal FaultMechanism.S) a (z 0)) b (z (Fin.succ 0))))
+            (step goal (step goal (initialWorld goal FaultMechanism.S) a (z 0)) b (z (Fin.succ 0))) fun j =>
+            z j.succ.succ).history =
+    (a, observe goal (initialWorld goal FaultMechanism.G) a (z 0)) ::
+      (b, observe goal (step goal (initialWorld goal FaultMechanism.G) a (z 0)) b (z (Fin.succ 0))) ::
+        (packedExecute goal
+            (grandchildren (observe goal (step goal (initialWorld goal FaultMechanism.G) a (z 0)) b (z (Fin.succ 0))))
+            (step goal (step goal (initialWorld goal FaultMechanism.G) a (z 0)) b (z (Fin.succ 0))) fun j =>
+            z j.succ.succ).history

@@ -196,3 +196,7 @@
 ## 2026-11-06：许可历史到实际紧凑控制器
 
 数学书 §39.82—39.88 / 附录F 的13个新增模块、关键定理与源SHA统一见[精确定理索引](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/decision_representation_closure_v1/THEOREM_INDEX.md)。Observer/ObserverSource从原primitive导出收据更新；CountPosterior/CountHistory覆盖零先验、端点率和任意实随机完整历史；RepresentationModel与Refinement接原Belief全动作联合律。DAG/Generator、Native/Payment、Bounds与Witnesses分别提供可信全动作认证、原生执行/付款、实际Array四次界和可达正反见证。公开入口为RegisterDecisionRepresentation，经既有TheoryCompletion导入。源码、实际产物和消费者身份见[交付清单](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/decision_representation_closure_v1/DELIVERY.json)。冻结106项不变，旧完成合同不重开。
+
+## 2026-11-06：允许实验下的机制分辨与最坏决策损失
+
+§39.89—39.95 / 附录 F：从固定两个故障机制的真实源到可实现分辨和决策损失。[公共接口与精确端点](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/mechanism_decision_closure_v1/THEOREM_INDEX.md)、[发行身份](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/mechanism_decision_closure_v1/DELIVERY.json)和[实际原生核对](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/mechanism_decision_closure_v1/actual-execution/THIS_EXACT_CHECK.json)。旧源及冻结的 106 项不变。

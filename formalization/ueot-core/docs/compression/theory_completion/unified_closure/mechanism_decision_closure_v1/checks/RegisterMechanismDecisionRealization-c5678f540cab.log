@@ -1,0 +1,59 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionRealization.lean:33:36: error: unsolved goals
+X : Type u_1
+inst✝ : Fintype X
+x : X
+f : X → ℝ
+⊢ ∑ x_1, (if x_1 = x then 1 else 0).toReal * f x_1 = f x
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionRealization.lean:105:6: error: Tactic `rfl` failed: The left-hand side
+  ↑(sourceValue (source parameters) (gain parameters) parameters.discount Table.halt w)
+is not definitionally equal to the right-hand side
+  rawSourceValue (source parameters) (gain parameters) parameters.discount pi 0 h w
+
+case zero
+pi : RawCausalPolicy (model parameters)
+h : pi.Memory
+w : World
+⊢ ↑(sourceValue (source parameters) (gain parameters) parameters.discount Table.halt w) =
+    rawSourceValue (source parameters) (gain parameters) parameters.discount pi 0 h w
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionRealization.lean:124:64: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  average (sampleChildren ?p) fun cs => ?f (cs ?o)
+in the target expression
+  ↑((source parameters).chance w z) *
+      (↑(gain parameters a ((source parameters).observe w a z)) +
+        ↑parameters.discount *
+          average (sampleChildren fun o => sampleTable pi H (pi.advance h a o)) fun cs =>
+            ↑(sourceValue (source parameters) (gain parameters) parameters.discount
+                (cs ((source parameters).observe w a z)) ((source parameters).next w a z))) =
+    ↑((source parameters).chance w z) *
+      (↑(gain parameters a ((source parameters).observe w a z)) +
+        ↑parameters.discount *
+          rawSourceValue (source parameters) (gain parameters) parameters.discount pi H
+            (pi.advance h a ((source parameters).observe w a z)) ((source parameters).next w a z))
+
+case succ
+pi : RawCausalPolicy (model parameters)
+H : ℕ
+ih :
+  ∀ (h : pi.Memory) (w : World),
+    ∑ t,
+        ((sampleTable pi H h) t).toReal * ↑(sourceValue (source parameters) (gain parameters) parameters.discount t w) =
+      rawSourceValue (source parameters) (gain parameters) parameters.discount pi H h w
+h : pi.Memory
+w : World
+a : Act
+a✝¹ : a ∈ Finset.univ
+z : Noise
+a✝ : z ∈ Finset.univ
+⊢ ↑((source parameters).chance w z) *
+      (↑(gain parameters a ((source parameters).observe w a z)) +
+        ↑parameters.discount *
+          average (sampleChildren fun o => sampleTable pi H (pi.advance h a o)) fun cs =>
+            ↑(sourceValue (source parameters) (gain parameters) parameters.discount
+                (cs ((source parameters).observe w a z)) ((source parameters).next w a z))) =
+    ↑((source parameters).chance w z) *
+      (↑(gain parameters a ((source parameters).observe w a z)) +
+        ↑parameters.discount *
+          rawSourceValue (source parameters) (gain parameters) parameters.discount pi H
+            (pi.advance h a ((source parameters).observe w a z)) ((source parameters).next w a z))
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionRealization.lean:146:10: error(lean.unknownIdentifier): Unknown constant `PMF.mem_support_iff.mpr`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionRealization.lean:147:10: error: No goals to be solved

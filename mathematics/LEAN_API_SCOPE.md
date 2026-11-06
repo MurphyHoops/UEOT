@@ -49,3 +49,7 @@ InvariantLawGOA、CesaroLimitGOA、KilledQSDGOA 的定义描述给定核，本�
 `RegisterDecisionRepresentation` 连接实际收据观察器、计数后验、全动作充分性、共享DAG、原生Store与逐前缀预付，仍比较任意同信息同钱包完整历史实随机可行策略。准确声明与量词见[定理索引](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/decision_representation_closure_v1/THEOREM_INDEX.md)和[API边界](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/decision_representation_closure_v1/API_BOUNDARIES.md)。
 
 `plan`/`returned`是Option；主结论针对通过精确检查器的实际候选，不另外宣称generate对每个合法输入总通过。13个实际实例均被接受。实际数组界为24(H+1)^4，不是有理位长、总内存或一般POMDP时间界。执行直接走共享节点，理论展开只用于证明；没有新增Lean JSON往返定理，导出身份由实际哈希及独立全动作检查绑定。源权限保持公开goal与地址0/1；地址2可达反例证明权限扩展须细化表示。原完整身份/谱系/None继续保留。
+
+## 2026-11-06：允许实验下的机制分辨与最坏决策损失
+
+公共入口 RegisterMechanismDecision 暴露原返回控制器与完整 Store 达到定理；同信息同钱包对手包括仅在正概率历史合法的实概率动作核。精确分辨、连续私种子分类界、一般证书和原生付款的量词见[定理索引](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/mechanism_decision_closure_v1/THEOREM_INDEX.md)。冻结 H2/H3 数值用 native_decide；实际闭合证明的公理依赖见[审计](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/mechanism_decision_closure_v1/checks/AXIOM_AUDIT.json)。

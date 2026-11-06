@@ -321,6 +321,7 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecision
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionValueBounds
 
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecision
 
 /-!
 # UEOT Theory Completion public root

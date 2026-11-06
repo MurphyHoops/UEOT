@@ -31,3 +31,7 @@
 ## 2026-11-06：许可历史的决策充分表示
 
 新增 §39.82—39.88 与附录F：源导出的收据观察器、计数后验、全动作联合充分性、认证共享DAG、原生执行/逐前缀付款、实际节点界与可达正反例。四旧例与预登记八步双写钱包的THIS产物、成本和准确边界见[决策表示交付包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/decision_representation_closure_v1/README.md)。数学书221页、哲学书89页；实际选页范围及修订记录见[本轮两书审查](review/DECISION_REPRESENTATION_BOOKS_2026-11-06/)。原两项完成合同保持完成，经验支持仍UNVERIFIED。
+
+## 2026-11-06：允许实验下的机制分辨与最坏决策损失
+
+数学书新增 §39.89—39.95 和附录 F 入口：同源 S/G 故障、联合后验、实随机实验的分辨界以及未知机制时的最小最坏后悔。[定理与执行](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/mechanism_decision_closure_v1/README.md)；[本次两书实际选页审查](review/MECHANISM_DECISION_BOOKS_2026-11-06/ROOT_FINAL_VISUAL_REVIEW.json)。

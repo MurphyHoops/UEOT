@@ -1,0 +1,64 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionNative.lean:63:18: warning: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionNative.lean:64:34: warning: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionNative.lean:181:4: warning: Variable name `H` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _H
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionNative.lean:291:20: warning: This simp argument is unused:
+  hb
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hf]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionNative.lean:291:24: warning: This simp argument is unused:
+  hf
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hb]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionNative.lean:291:32: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionNative.lean:291:32: warning: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionNative.lean:390:6: error: Type mismatch: After simplification, term
+  hnew
+ has type
+  @Eq (Option (ClockedOrganism n))
+    (RegisterPopulationHistorySource.lookup
+      (RegisterPopulationHistorySource.next i m w.store (request w.stopped a (true, label))) (List.length w.store))
+    (RegisterPopulationHistorySource.child i m w.store (request w.stopped a (true, label)))
+but is expected to have type
+  @Eq (Option (ClockedOrganism n))
+    (RegisterPopulationHistorySource.lookup
+      (RegisterPopulationHistorySource.next i m w.store (request w.stopped a (true, label))) (List.length w.store))
+    ((nativeTransaction i m w a (true, label)).bind ClockedRecord.child)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionNative.lean:398:8: error: Type mismatch: After simplification, term
+  hnew
+ has type
+  @Eq (Option (ClockedOrganism n))
+    (RegisterPopulationHistorySource.lookup
+      (RegisterPopulationHistorySource.next i m w.store (request w.stopped a (false, label))) (List.length w.store))
+    (RegisterPopulationHistorySource.child i m w.store (request w.stopped a (false, label)))
+but is expected to have type
+  @Eq (Option (ClockedOrganism n))
+    (RegisterPopulationHistorySource.lookup
+      (RegisterPopulationHistorySource.next i m w.store (request w.stopped a (false, label))) (List.length w.store))
+    ((nativeTransaction i m w a (false, label)).bind ClockedRecord.child)

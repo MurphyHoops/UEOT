@@ -24,3 +24,7 @@
 ## 2026-11-06 更新
 
 第八章与附录C增补记忆充分性相对于许可作用和评价成立、规划共享不抹去真实身份、扩大地址权限可能破坏表示。技术依据为数学书 §39.82—39.88 及[决策表示交付包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/decision_representation_closure_v1/README.md)。本次没有将外部计算成本写成对象内部认知能耗，也未将条件数学提升为经验验证。
+
+## 2026-11-06：允许实验下的机制分辨与最坏决策损失
+
+第十章、第十六章与附录 C 新增：备份价值依赖共同故障结构；有限证据的可分辨性、应对未知机制的最优行动与目的的规范正当性须分别论证。数学书 §39.89—39.95 及[原生执行和定理](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/mechanism_decision_closure_v1/README.md)给出这一合成实例的范围。现实经验支持仍为 UNVERIFIED。

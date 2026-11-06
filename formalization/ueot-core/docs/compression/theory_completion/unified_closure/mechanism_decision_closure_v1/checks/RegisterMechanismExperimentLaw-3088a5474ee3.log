@@ -1,0 +1,296 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentLaw.lean:45:28: error: Application type mismatch: The argument
+  measurable_fst
+has type
+  Measurable Prod.fst
+of sort `Prop` but is expected to have type
+  PMF ?m.52
+of sort `Type ?u.61` in the application
+  PMF.toMeasure_map ?m.54 measurable_fst
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentLaw.lean:48:28: error: Application type mismatch: The argument
+  measurable_snd
+has type
+  Measurable Prod.snd
+of sort `Prop` but is expected to have type
+  PMF ?m.75
+of sort `Type ?u.74` in the application
+  PMF.toMeasure_map ?m.77 measurable_snd
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentLaw.lean:66:42: error: unsolved goals
+Seed : Type u_1
+μ : PMF Seed
+H : ℕ
+ν : PMF (Fin H → Noise)
+⊢ PMF.map (fun x => x) ν = ν
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentLaw.lean:67:68: warning: This simp argument is unused:
+  PMF.map_id
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [commonInput, PMF.map_bind, PMF.map_comp, Function.comp_def]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentLaw.lean:74:13: error: don't know how to synthesize implicit argument `mα`
+  @PMF.toMeasure_map_apply (Seed × (Fin H → Noise)) (Fin H → Noise) Prod.snd (commonInput μ ν) A
+    Prod.instMeasurableSpace MeasurableSpace.pi measurable_snd hA
+context:
+Seed : Type u_1
+inst✝² : Fintype Seed
+inst✝¹ : MeasurableSpace Seed
+inst✝ : MeasurableSingletonClass Seed
+μ : PMF Seed
+H : ℕ
+ν : PMF (Fin H → Noise)
+A : Set (Fin H → Noise)
+hA : MeasurableSet A
+⊢ MeasurableSpace (Seed × (Fin H → Noise))
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentLaw.lean:74:66: error: don't know how to synthesize implicit argument
+  @measurable_snd Seed (Fin H → Noise) ?m.42 MeasurableSpace.pi
+context:
+Seed : Type u_1
+inst✝² : Fintype Seed
+inst✝¹ : MeasurableSpace Seed
+inst✝ : MeasurableSingletonClass Seed
+μ : PMF Seed
+H : ℕ
+ν : PMF (Fin H → Noise)
+A : Set (Fin H → Noise)
+hA : MeasurableSet A
+⊢ MeasurableSpace Seed
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentLaw.lean:74:7: error: failed to infer `have` declaration type
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentLaw.lean:72:75: error: unsolved goals
+Seed : Type u_1
+inst✝² : Fintype Seed
+inst✝¹ : MeasurableSpace Seed
+inst✝ : MeasurableSingletonClass Seed
+μ : PMF Seed
+H : ℕ
+ν : PMF (Fin H → Noise)
+A : Set (Fin H → Noise)
+hA : MeasurableSet A
+⊢ (commonInput μ ν).toMeasure.real {x | x.2 ∈ A} = ν.toMeasure.real A
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentLaw.lean:94:30: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  Decidable (x ∈ A)
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentLaw.lean:98:2: error: unsolved goals
+case pos
+X : Type u_1
+inst✝² : Fintype X
+inst✝¹ : MeasurableSpace X
+inst✝ : MeasurableSingletonClass X
+p : PMF X
+A : Set X
+x : X
+hx : x ∈ Finset.univ
+h : x ∈ A
+⊢ (p x).toReal = sorry ()
+
+case neg
+X : Type u_1
+inst✝² : Fintype X
+inst✝¹ : MeasurableSpace X
+inst✝ : MeasurableSingletonClass X
+p : PMF X
+A : Set X
+x : X
+hx : x ∈ Finset.univ
+h : x ∉ A
+⊢ 0 = sorry ()
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentLaw.lean:134:78: error: unsolved goals
+case false
+P : PhysicalExperiment
+⊢ sorry () * 4 = 1 - P.normal
+
+case true
+P : PhysicalExperiment
+⊢ sorry () * 4 = P.normal
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentLaw.lean:137:10: warning: This simp argument is unused:
+  Fintype.sum_prod_type
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Fintype.sum_bool, noise_real_mode, modeChance]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentLaw.lean:137:33: warning: This simp argument is unused:
+  Fintype.sum_bool
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Fintype.sum_prod_type, noise_real_mode, modeChance]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentLaw.lean:137:51: warning: This simp argument is unused:
+  noise_real_mode
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Fintype.sum_prod_type, Fintype.sum_bool, modeChance]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentLaw.lean:151:31: error: failed to elaborate eliminator, insufficient number of arguments, expected type:
+  ((i : Fin ?m.46) → ?m.47 i.succ) → ?m.45
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentLaw.lean:152:10: error: Type mismatch
+  if z.1 = b 0 then modeWord fun j => b j.succ else ∅
+has type
+  Set (Fin H → Noise)
+but is expected to have type
+  Set ((i : Fin (?m.68 z)) → ?m.69 z i.succ)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentLaw.lean:147:42: warning: This simp argument is unused:
+  PMF.toMeasure_pure_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [tapeLaw, modeWord, Measure.real]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentLaw.lean:196:6: error: Tactic `apply` failed: could not unify the conclusion of `Prod.ext rfl`
+  ?m.71 = ?m.71
+with the goal
+  seedOutput P.goal choose FaultMechanism.S x = seedOutput P.goal choose FaultMechanism.G x
+
+Note: The full type of `Prod.ext rfl` is
+  ?m.71.2 = ?m.71.2 → ?m.71 = ?m.71
+
+Seed : Type u_1
+inst✝² : Fintype Seed
+inst✝¹ : MeasurableSpace Seed
+inst✝ : MeasurableSingletonClass Seed
+P : PhysicalExperiment
+μ : PMF Seed
+choose : Seed → Table Act Obs 3
+x : Seed × (Fin 3 → Noise)
+hx : x ∉ {x | x.2 ∈ NFN}
+⊢ seedOutput P.goal choose FaultMechanism.S x = seedOutput P.goal choose FaultMechanism.G x
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentLaw.lean:256:2: error: Tactic `apply` failed: could not unify the conclusion of `Prod.ext rfl`
+  ?m.45 = ?m.45
+with the goal
+  seedOutput P.goal choose FaultMechanism.S x = seedOutput P.goal choose FaultMechanism.G x
+
+Note: The full type of `Prod.ext rfl` is
+  ?m.45.2 = ?m.45.2 → ?m.45 = ?m.45
+
+Seed : Type u_1
+P : PhysicalExperiment
+H : ℕ
+μ : PMF Seed
+choose : Seed → Table Act Obs H
+hr :
+  ∀ s ∈ μ.support,
+    ∀ z ∈ (tapeLaw (primitiveLaw P) H).support,
+      RootHistory false (packedExecute P.goal (choose s) (initialWorld P.goal FaultMechanism.S) z).history
+x : Seed × (Fin H → Noise)
+hx : x ∈ (commonInput μ (tapeLaw (primitiveLaw P) H)).support
+hs : x.1 ∈ μ.support
+hz : x.2 ∈ (tapeLaw (primitiveLaw P) H).support
+⊢ seedOutput P.goal choose FaultMechanism.S x = seedOutput P.goal choose FaultMechanism.G x
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentLaw.lean:270:2: error: Tactic `apply` failed: could not unify the conclusion of `Prod.ext rfl`
+  ?m.48 = ?m.48
+with the goal
+  seedOutput P.goal choose FaultMechanism.S x = seedOutput P.goal choose FaultMechanism.G x
+
+Note: The full type of `Prod.ext rfl` is
+  ?m.48.2 = ?m.48.2 → ?m.48 = ?m.48
+
+Seed : Type u_1
+P : PhysicalExperiment
+H : ℕ
+μ : PMF Seed
+choose : Seed → Table Act Obs H
+tariff B : ℚ
+hB : B < tariff
+hp :
+  ∀ (m : FaultMechanism),
+    ∀ s ∈ μ.support,
+      ∀ z ∈ (tapeLaw (primitiveLaw P) H).support,
+        PrepaidHistory tariff B (packedExecute P.goal (choose s) (initialWorld P.goal m) z).history
+x : Seed × (Fin H → Noise)
+hx : x ∈ (commonInput μ (tapeLaw (primitiveLaw P) H)).support
+hs : x.1 ∈ μ.support
+hz : x.2 ∈ (tapeLaw (primitiveLaw P) H).support
+⊢ seedOutput P.goal choose FaultMechanism.S x = seedOutput P.goal choose FaultMechanism.G x
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentLaw.lean:294:57: warning: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentLaw.lean:296:6: error: Tactic `apply` failed: could not unify the conclusion of `Prod.ext rfl`
+  ?m.86 = ?m.86
+with the goal
+  seedOutput P.goal choose FaultMechanism.S x = seedOutput P.goal choose FaultMechanism.G x
+
+Note: The full type of `Prod.ext rfl` is
+  ?m.86.2 = ?m.86.2 → ?m.86 = ?m.86
+
+Seed : Type u_1
+inst✝² : Fintype Seed
+inst✝¹ : MeasurableSpace Seed
+inst✝ : MeasurableSingletonClass Seed
+P : PhysicalExperiment
+H : ℕ
+μ : PMF Seed
+choose : Seed → Table Act Obs H
+A : Set (Fin H → Noise) := modeWord fun x => false
+x : Seed × (Fin H → Noise)
+hx : x ∉ {x | x.2 ∈ Aᶜ}
+hz : ∀ (j : Fin H), (x.2 j).1 = false
+⊢ seedOutput P.goal choose FaultMechanism.S x = seedOutput P.goal choose FaultMechanism.G x
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentLaw.lean:304:2: error: linarith failed to find a contradiction
+Seed : Type u_1
+inst✝² : Fintype Seed
+inst✝¹ : MeasurableSpace Seed
+inst✝ : MeasurableSingletonClass Seed
+P : PhysicalExperiment
+H : ℕ
+μ : PMF Seed
+choose : Seed → Table Act Obs H
+A : Set (Fin H → Noise) := modeWord fun x => false
+hc : (tapeLaw (primitiveLaw P) H).toMeasure.real A + (tapeLaw (primitiveLaw P) H).toMeasure.real Aᶜ = 1
+hm : (tapeLaw (primitiveLaw P) H).toMeasure.real A = (1 - P.normal) ^ H
+hbound :
+  tvDist (PMF.map (seedOutput P.goal choose FaultMechanism.S) (commonInput μ (tapeLaw (primitiveLaw P) H))).toMeasure
+      (PMF.map (seedOutput P.goal choose FaultMechanism.G) (commonInput μ (tapeLaw (primitiveLaw P) H))).toMeasure ≤
+    (tapeLaw (primitiveLaw P) H).toMeasure.real Aᶜ
+a✝ :
+  1 - (1 - P.normal) ^ H <
+    tvDist (seededLaw P μ choose FaultMechanism.S).toMeasure (seededLaw P μ choose FaultMechanism.G).toMeasure
+⊢ False
+failed
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentLaw.lean:315:56: warning: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentLaw.lean:324:2: error: linarith failed to find a contradiction
+Seed : Type u_1
+inst✝² : Fintype Seed
+inst✝¹ : MeasurableSpace Seed
+inst✝ : MeasurableSingletonClass Seed
+P : PhysicalExperiment
+H : ℕ
+μ : PMF Seed
+choose : Seed → Table Act Obs H
+A : Set (Fin H → Noise) := modeWord fun x => true
+hc : (tapeLaw (primitiveLaw P) H).toMeasure.real A + (tapeLaw (primitiveLaw P) H).toMeasure.real Aᶜ = 1
+hm : (tapeLaw (primitiveLaw P) H).toMeasure.real A = P.normal ^ H
+hbound :
+  tvDist (PMF.map (seedOutput P.goal choose FaultMechanism.S) (commonInput μ (tapeLaw (primitiveLaw P) H))).toMeasure
+      (PMF.map (seedOutput P.goal choose FaultMechanism.G) (commonInput μ (tapeLaw (primitiveLaw P) H))).toMeasure ≤
+    (tapeLaw (primitiveLaw P) H).toMeasure.real Aᶜ
+a✝ :
+  1 - P.normal ^ H <
+    tvDist (seededLaw P μ choose FaultMechanism.S).toMeasure (seededLaw P μ choose FaultMechanism.G).toMeasure
+⊢ False
+failed
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentLaw.lean:454:2: error: Tactic `apply` failed: could not unify the conclusion of `Prod.ext rfl`
+  ?m.34 = ?m.34
+with the goal
+  seedOutput P.goal choose FaultMechanism.S x = seedOutput P.goal choose FaultMechanism.G x
+
+Note: The full type of `Prod.ext rfl` is
+  ?m.34.2 = ?m.34.2 → ?m.34 = ?m.34
+
+Seed : Type u_1
+P : PhysicalExperiment
+μ : PMF Seed
+choose : Seed → Table Act Obs 0
+x : Seed × (Fin 0 → Noise)
+⊢ seedOutput P.goal choose FaultMechanism.S x = seedOutput P.goal choose FaultMechanism.G x

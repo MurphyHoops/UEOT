@@ -1,0 +1,112 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionConsumer.lean:116:2: error: Tactic `decide` failed for proposition
+  let s := cachedResult Input.knownS;
+  let g := cachedResult Input.knownG;
+  let b := cachedResult Input.dual;
+  s.1 = 41 / 32 ∧
+    g.1 = 5 / 4 ∧
+      b.1 = 5 / 4 ∧
+        tableJ s.2 FaultMechanism.S = 41 / 32 ∧
+          tableJ s.2 FaultMechanism.G = 37 / 32 ∧
+            tableJ g.2 FaultMechanism.S = 5 / 4 ∧ tableJ g.2 FaultMechanism.G = 5 / 4
+because its `Decidable` instance
+  instDecidableAnd
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `decEq`, `instDecidableAnd`, `instDecidableEqBool`, `instDecidableEqNat`, `instDecidableEqRat`, `Bool.decEq`, `Int.decEq`, `Int.decLe`, `Int.decLt`, `Int.decNonneg`, `Int.instDecidableEq`, `Nat.decEq`, `Rat.instDecidableLe`, and `instDecidableEqRat.decEq`, reduction got stuck at the `Decidable` instance
+  match
+    (FiniteJointDecisionFastSolver.chooseScored
+          (FiniteJointDecisionFastSolver.actionData (model parameters) observations observations_complete 2
+            (FiniteJointDecisionFastSolver.fastSolve (model parameters) observations observations_complete 2)
+            (registeredInfo Input.knownS))
+          ((model parameters).actions (registeredInfo Input.knownS)) ⋯).1.num,
+    (Rat.mul 41 (Rat.inv 32)).num with
+  | Int.ofNat a, Int.ofNat b =>
+    match decEq a b with
+    | isTrue h => isTrue ⋯
+    | isFalse h => isFalse ⋯
+  | Int.ofNat a, Int.negSucc a_1 => isFalse ⋯
+  | Int.negSucc a, Int.ofNat a_1 => isFalse ⋯
+  | Int.negSucc a, Int.negSucc b =>
+    match decEq a b with
+    | isTrue h => isTrue ⋯
+    | isFalse h => isFalse ⋯
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionConsumer.lean:127:2: error: Tactic `decide` failed for proposition
+  (cachedAt Input.knownS 2).1 = 13 / 16 ∧
+    (cachedAt Input.knownG 2).1 = 13 / 16 ∧
+      tableJ commonTwo FaultMechanism.S = 13 / 16 ∧ tableJ commonTwo FaultMechanism.G = 13 / 16
+because its `Decidable` instance
+  instDecidableAnd
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `decEq`, `instDecidableAnd`, `instDecidableEqBool`, `instDecidableEqNat`, `instDecidableEqRat`, `Bool.decEq`, `Int.decEq`, `Int.decLe`, `Int.decLt`, `Int.decNonneg`, `Int.instDecidableEq`, `Nat.decEq`, `Rat.instDecidableLe`, and `instDecidableEqRat.decEq`, reduction got stuck at the `Decidable` instance
+  match
+    (FiniteJointDecisionFastSolver.chooseScored
+          (FiniteJointDecisionFastSolver.actionData (model parameters) observations observations_complete 1
+            (FiniteJointDecisionFastSolver.fastSolve (model parameters) observations observations_complete 1)
+            (registeredInfo Input.knownS))
+          ((model parameters).actions (registeredInfo Input.knownS)) ⋯).1.num,
+    (Rat.mul 13 (Rat.inv 16)).num with
+  | Int.ofNat a, Int.ofNat b =>
+    match decEq a b with
+    | isTrue h => isTrue ⋯
+    | isFalse h => isFalse ⋯
+  | Int.ofNat a, Int.negSucc a_1 => isFalse ⋯
+  | Int.negSucc a, Int.ofNat a_1 => isFalse ⋯
+  | Int.negSucc a, Int.negSucc b =>
+    match decEq a b with
+    | isTrue h => isTrue ⋯
+    | isFalse h => isFalse ⋯
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionConsumer.lean:216:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Real.instDivInvMonoid', which is 'noncomputable'
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionConsumer.lean:220:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Real.instDivInvMonoid', which is 'noncomputable'
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionConsumer.lean:242:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  rawValue
+    (filteredModel (source parameters) (fun i => RegisterJointDecisionConsumer.menu parameters.tariff i.2) ⋯
+      (RegisterJointDecisionConsumer.advance parameters.tariff) (gain parameters) parameters.discount ⋯)
+    pi 3 h
+in the target expression
+  ∑ m, dualWeight m * actualJ pi h m = rawValue (model parameters) pi 3 h
+
+pi : RawCausalPolicy (model parameters)
+h : pi.Memory
+hi : pi.info h = registeredInfo Input.dual
+⊢ ∑ m, dualWeight m * actualJ pi h m = rawValue (model parameters) pi 3 h
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionConsumer.lean:303:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  rawValue
+    (filteredModel (source parameters) (fun i => RegisterJointDecisionConsumer.menu parameters.tariff i.2) ⋯
+      (RegisterJointDecisionConsumer.advance parameters.tariff) (gain parameters) parameters.discount ⋯)
+    pi 3 h
+in the target expression
+  rawValue (model parameters) pi 3 h ≤ ↑(optimalValue (model parameters) 3 (pi.info h))
+
+pi : RawCausalPolicy (model parameters)
+h : pi.Memory
+hi : pi.info h = registeredInfo Input.knownS
+hl : SupportedAdmissible (model parameters) pi 3 h
+hu : rawValue (model parameters) pi 3 h ≤ ↑(optimalValue (model parameters) 3 (pi.info h))
+he :
+  expectReal (pi.info h).1 (rawSourceValue (source parameters) (gain parameters) parameters.discount pi 3 h) =
+    rawValue
+      (filteredModel (source parameters) (fun i => RegisterJointDecisionConsumer.menu parameters.tariff i.2) ⋯
+        (RegisterJointDecisionConsumer.advance parameters.tariff) (gain parameters) parameters.discount ⋯)
+      pi 3 h
+⊢ actualJ pi h FaultMechanism.S ≤ 41 / 32
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionConsumer.lean:319:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  rawValue
+    (filteredModel (source parameters) (fun i => RegisterJointDecisionConsumer.menu parameters.tariff i.2) ⋯
+      (RegisterJointDecisionConsumer.advance parameters.tariff) (gain parameters) parameters.discount ⋯)
+    pi 3 h
+in the target expression
+  rawValue (model parameters) pi 3 h ≤ ↑(optimalValue (model parameters) 3 (pi.info h))
+
+pi : RawCausalPolicy (model parameters)
+h : pi.Memory
+hi : pi.info h = registeredInfo Input.knownG
+hl : SupportedAdmissible (model parameters) pi 3 h
+hu : rawValue (model parameters) pi 3 h ≤ ↑(optimalValue (model parameters) 3 (pi.info h))
+he :
+  expectReal (pi.info h).1 (rawSourceValue (source parameters) (gain parameters) parameters.discount pi 3 h) =
+    rawValue
+      (filteredModel (source parameters) (fun i => RegisterJointDecisionConsumer.menu parameters.tariff i.2) ⋯
+        (RegisterJointDecisionConsumer.advance parameters.tariff) (gain parameters) parameters.discount ⋯)
+      pi 3 h
+⊢ actualJ pi h FaultMechanism.G ≤ 5 / 4
