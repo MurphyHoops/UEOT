@@ -1,0 +1,28 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeFormation.lean:94:6: error: Type mismatch
+  ht z
+has type
+  @ite ENNReal (true = (programStep (programBody h.1 h.2 false) z).newborn.isSome)
+      (instDecidableEqBool true (programStep (programBody h.1 h.2 false) z).newborn.isSome)
+      (ENNReal.ofReal (noiseWeight p z)) 0 =
+    ENNReal.ofReal (noiseWeight p z * if births (programAction h.1 h.2) z = true then 1 else 0)
+but is expected to have type
+  @ite ENNReal (true = (programStep (programBody h.1 h.2 false) z).newborn.isSome)
+      (Classical.propDecidable (true = (programStep (programBody h.1 h.2 false) z).newborn.isSome))
+      (ENNReal.ofReal (noiseWeight p z)) 0 =
+    ENNReal.ofReal (noiseWeight p z * if births (programAction h.1 h.2) z = true then 1 else 0)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeFormation.lean:123:6: warning: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeFormation.lean:129:6: warning: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`

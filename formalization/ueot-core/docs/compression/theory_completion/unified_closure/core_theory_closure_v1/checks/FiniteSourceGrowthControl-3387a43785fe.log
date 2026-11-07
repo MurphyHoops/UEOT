@@ -1,0 +1,36 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSourceGrowthControl.lean:45:8: warning: automatically included section variable(s) unused in theorem `_private.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSourceGrowthControl.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSourceGrowthControl.pairing_left_eigen`:
+  [Nonempty I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Nonempty I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSourceGrowthControl.lean:97:9: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  MulLeftStrictMono ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSourceGrowthControl.lean:118:54: error(lean.invalidField): Invalid field `mp`: The environment does not contain `Function.mp`, so it is not possible to project the field `mp` from an expression
+  mul_le_mul_right ?m.202
+of type
+  ∀ (a : ?m.191), a * ?m.195 ≤ a * ?m.196
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSourceGrowthControl.lean:118:26: error: Application type mismatch: The argument
+  positive_pairing pf r hr
+has type
+  0 < ∑ i, pf.l i * r i
+but is expected to have type
+  ?m.195 ≤ ?m.196
+in the application
+  mul_le_mul_right (positive_pairing pf r hr)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSourceGrowthControl.lean:123:0: warning: automatically included section variable(s) unused in theorem `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSourceGrowthControl.selector_maximal_of_rowwise_domination`:
+  [(i : I) → Fintype (A i)]
+  [∀ (i : I), Nonempty (A i)]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [(i : I) → Fintype (A i)] [∀ (i : I), Nonempty (A i)] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSourceGrowthControl.lean:141:0: warning: automatically included section variable(s) unused in theorem `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSourceGrowthControl.maximal_selector_row_bound`:
+  [(i : I) → Fintype (A i)]
+  [∀ (i : I), Nonempty (A i)]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [(i : I) → Fintype (A i)] [∀ (i : I), Nonempty (A i)] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`

@@ -1,0 +1,198 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:29:24: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  @Membership.mem ?m.6 (Finset ?m.6) SetLike.instMembership { val := ?m.8, nodup := ?m.9 } ?m.7
+in the target expression
+  @Membership.mem Action (Finset Action) SetLike.instMembership
+    { val := ↑Action.enumList, nodup := Action.enumList_nodup } x✝
+
+x✝ : Action
+⊢ x✝ ∈ { val := ↑Action.enumList, nodup := Action.enumList_nodup }
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    Action.enumList_nodup
+  has type
+    Action.enumList.Nodup
+  but is expected to have type
+    (↑Action.enumList).Nodup
+  in the application
+    { val := ↑Action.enumList, nodup := Action.enumList_nodup }
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:77:53: error: unexpected identifier; expected '}'
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:88:47: error: unexpected identifier; expected '}'
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:113:30: error: Tactic `rfl` failed: The left-hand side
+  decode (programBody false false tag)
+is not definitionally equal to the right-hand side
+  (false, false)
+
+case false.false
+tag : Bool
+⊢ decode (programBody false false tag) = (false, false)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:113:30: error: Tactic `rfl` failed: The left-hand side
+  decode (programBody true false tag)
+is not definitionally equal to the right-hand side
+  (true, false)
+
+case true.false
+tag : Bool
+⊢ decode (programBody true false tag) = (true, false)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:117:30: error: Tactic `rfl` failed: The left-hand side
+  diagnostic (programBody false false tag)
+is not definitionally equal to the right-hand side
+  false
+
+case false.false
+tag : Bool
+⊢ diagnostic (programBody false false tag) = false
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:117:30: error: Tactic `rfl` failed: The left-hand side
+  diagnostic (programBody true false tag)
+is not definitionally equal to the right-hand side
+  false
+
+case true.false
+tag : Bool
+⊢ diagnostic (programBody true false tag) = false
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:121:30: error: Tactic `rfl` failed: The left-hand side
+  restore (programBody false false tag)
+is not definitionally equal to the right-hand side
+  encode false false tag
+
+case false.false
+tag : Bool
+⊢ restore (programBody false false tag) = encode false false tag
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:121:30: error: Tactic `rfl` failed: The left-hand side
+  restore (programBody true false tag)
+is not definitionally equal to the right-hand side
+  encode true false tag
+
+case true.false
+tag : Bool
+⊢ restore (programBody true false tag) = encode true false tag
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:125:30: error: Expected type must not contain free variables
+  repairCost (programBody false false tag) = if false = true then 3 else 0
+
+Hint: Use the `+revert` option to automatically clean up and revert free variables
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:125:30: error: Expected type must not contain free variables
+  repairCost (programBody false true tag) = if true = true then 3 else 0
+
+Hint: Use the `+revert` option to automatically clean up and revert free variables
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:125:30: error: Expected type must not contain free variables
+  repairCost (programBody true false tag) = if false = true then 3 else 0
+
+Hint: Use the `+revert` option to automatically clean up and revert free variables
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:125:30: error: Expected type must not contain free variables
+  repairCost (programBody true true tag) = if true = true then 3 else 0
+
+Hint: Use the `+revert` option to automatically clean up and revert free variables
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:129:30: error: Tactic `rfl` failed: The left-hand side
+  requestOf (programBody false false tag)
+is not definitionally equal to the right-hand side
+  programAction false false
+
+case false.false
+tag : Bool
+⊢ requestOf (programBody false false tag) = programAction false false
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:129:30: error: Tactic `rfl` failed: The left-hand side
+  requestOf (programBody true false tag)
+is not definitionally equal to the right-hand side
+  programAction true false
+
+case true.false
+tag : Bool
+⊢ requestOf (programBody true false tag) = programAction true false
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:135:30: error: Tactic `rfl` failed: The left-hand side
+  rawExecute (restore (programBody false false tag)) (diagnostic (programBody false false tag))
+is not definitionally equal to the right-hand side
+  some (programAction false false)
+
+case false.false
+tag : Bool
+⊢ rawExecute (restore (programBody false false tag)) (diagnostic (programBody false false tag)) =
+    some (programAction false false)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:135:30: error: Tactic `rfl` failed: The left-hand side
+  rawExecute (restore (programBody true false tag)) (diagnostic (programBody true false tag))
+is not definitionally equal to the right-hand side
+  some (programAction true false)
+
+case true.false
+tag : Bool
+⊢ rawExecute (restore (programBody true false tag)) (diagnostic (programBody true false tag)) =
+    some (programAction true false)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:166:2: error: Expected type must not contain free variables
+  decode (restore (eraseCode (programBody true false tag))) ≠ (true, false)
+
+Hint: Use the `+revert` option to automatically clean up and revert free variables
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:195:30: error: Expected type must not contain free variables
+  canExecute (programBody false false tag) (programAction false false) = true
+
+Hint: Use the `+revert` option to automatically clean up and revert free variables
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:195:30: error: Expected type must not contain free variables
+  canExecute (programBody false true tag) (programAction false true) = true
+
+Hint: Use the `+revert` option to automatically clean up and revert free variables
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:195:30: error: Expected type must not contain free variables
+  canExecute (programBody true false tag) (programAction true false) = true
+
+Hint: Use the `+revert` option to automatically clean up and revert free variables
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:195:30: error: Expected type must not contain free variables
+  canExecute (programBody true true tag) (programAction true true) = true
+
+Hint: Use the `+revert` option to automatically clean up and revert free variables
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:199:18: error: Expected type must not contain free variables
+  canExecute (programBody false true tag) Action.bloom = false
+
+Hint: Use the `+revert` option to automatically clean up and revert free variables
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:199:18: error: Expected type must not contain free variables
+  canExecute (programBody true true tag) Action.bloom = false
+
+Hint: Use the `+revert` option to automatically clean up and revert free variables
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:203:18: error: Expected type must not contain free variables
+  canExecute
+      { rowH := (programBody false true tag).rowH, rowD := (programBody false true tag).rowD,
+        gate := (programBody false true tag).gate, bootstrap := false, tag := (programBody false true tag).tag }
+      Action.care =
+    false
+
+Hint: Use the `+revert` option to automatically clean up and revert free variables
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:203:18: error: Expected type must not contain free variables
+  canExecute
+      { rowH := (programBody true true tag).rowH, rowD := (programBody true true tag).rowD,
+        gate := (programBody true true tag).gate, bootstrap := false, tag := (programBody true true tag).tag }
+      Action.care =
+    false
+
+Hint: Use the `+revert` option to automatically clean up and revert free variables
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:277:50: error(lean.unknownIdentifier): Unknown constant `Bool.and_eq_true.mp`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:282:43: warning: This simp argument is unused:
+  Bool.true_eq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [step, hs, ↓reduceIte, he, executedResult, outputCapital]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:304:44: error: unsolved goals
+theta i tag : Bool
+a : Action
+z : Noise
+hr : retains a z = true
+⊢ damageBody (encode theta false tag) z.2.1 = programBody theta z.2.1 tag
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:305:28: warning: This simp argument is unused:
+  copied_code_faithful
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [executedResult, hr]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:310:44: error: unsolved goals
+theta i tag : Bool
+a : Action
+z : Noise
+hb : births a z = true
+⊢ damageBody (encode theta false tag) z.2.2 = programBody theta z.2.2 tag
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:311:28: warning: This simp argument is unused:
+  copied_code_faithful
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [executedResult, hb]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:424:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Real.instDivInvMonoid', which is 'noncomputable'

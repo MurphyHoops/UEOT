@@ -1,0 +1,39 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativePopulation.lean:33:63: error: Application type mismatch: The argument
+  h
+has type
+  childIdentity t x = childIdentity t y
+but is expected to have type
+  x = y
+in the application
+  congrArg Identity.founder h
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativePopulation.lean:131:53: error: unsolved goals
+case none.none
+t : ℕ
+old : Member
+r : LocalResult
+⊢ r.retained.toList.length + r.newborn.toList.length =
+    (if r.retained.isSome = true then 1 else 0) + if r.newborn.isSome = true then 1 else 0
+
+case none.some
+t : ℕ
+old : Member
+r : LocalResult
+val✝ : Body
+⊢ r.retained.toList.length + r.newborn.toList.length =
+    (if r.retained.isSome = true then 1 else 0) + if r.newborn.isSome = true then 1 else 0
+
+case some.none
+t : ℕ
+old : Member
+r : LocalResult
+val✝ : Body
+⊢ r.retained.toList.length + r.newborn.toList.length =
+    (if r.retained.isSome = true then 1 else 0) + if r.newborn.isSome = true then 1 else 0
+
+case some.some
+t : ℕ
+old : Member
+r : LocalResult
+val✝¹ val✝ : Body
+⊢ r.retained.toList.length + r.newborn.toList.length =
+    (if r.retained.isSome = true then 1 else 0) + if r.newborn.isSome = true then 1 else 0

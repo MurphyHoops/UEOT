@@ -1,0 +1,90 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeOneStep.lean:110:80: error: unsolved goals
+case care.false.false
+p : Parameters
+theta tag : Bool
+z : Noise
+hh : retains Action.care z = false
+hb : retains Action.bloom z = false
+⊢ ¬z.1.1 = 1 ∧ ¬z.1.1 = 2
+
+case care.false.true
+p : Parameters
+theta tag : Bool
+z : Noise
+hh : retains Action.care z = false
+hb : retains Action.bloom z = true
+⊢ ¬z.1.1 = 1 ∧ ¬z.1.1 = 2
+
+case care.true.false
+p : Parameters
+theta tag : Bool
+z : Noise
+hh : retains Action.care z = true
+hb : retains Action.bloom z = false
+⊢ z.1.1 = 1 ∨ z.1.1 = 2
+
+case care.true.true
+p : Parameters
+theta tag : Bool
+z : Noise
+hh : retains Action.care z = true
+hb : retains Action.bloom z = true
+⊢ z.1.1 = 1 ∨ z.1.1 = 2
+
+case bloom.false.false
+p : Parameters
+theta tag : Bool
+z : Noise
+hh : retains Action.care z = false
+hb : retains Action.bloom z = false
+⊢ ¬z.1.1 = 2
+
+case bloom.false.true
+p : Parameters
+theta tag : Bool
+z : Noise
+hh : retains Action.care z = false
+hb : retains Action.bloom z = true
+⊢ z.1.1 = 2
+
+case bloom.true.false
+p : Parameters
+theta tag : Bool
+z : Noise
+hh : retains Action.care z = true
+hb : retains Action.bloom z = false
+⊢ ¬z.1.1 = 2
+
+case bloom.true.true
+p : Parameters
+theta tag : Bool
+z : Noise
+hh : retains Action.care z = true
+hb : retains Action.bloom z = true
+⊢ z.1.1 = 2
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeOneStep.lean:114:24: warning: This simp argument is unused:
+  hh
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [step, canExecute_program_care, canExecute_program_bloom, executedResult, hb, retains]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeOneStep.lean:114:28: warning: This simp argument is unused:
+  hb
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [step, canExecute_program_care, canExecute_program_bloom, executedResult, hh, retains]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeOneStep.lean:127:2: error: linarith failed to find a contradiction
+p : Parameters
+hp : Valid p
+tag : Bool
+a✝ :
+  p.survival ≤
+    match if false = true then Action.care else Action.bloom with
+    | Action.care => p.survival
+    | Action.bloom => p.survival - p.careOnly
+    | Action.stop => 0
+⊢ False
+failed

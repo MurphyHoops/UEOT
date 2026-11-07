@@ -1,0 +1,23 @@
+{
+  "schema": "UEOT/CORE_STATIC_VALIDATOR_CORRECTION/V1",
+  "reason": "A legal Lean module tactic in a theorem body was incorrectly treated as a module header. Production Lean sources and successful build are unchanged.",
+  "original_script": {
+    "name": "inspect_public_source.py",
+    "sha256": "48db24c9b3781b4f4ddcc82d6a41423f998de7e50380483761de3f706d4d50ae"
+  },
+  "corrected_script": {
+    "name": "inspect_public_source_v2.py",
+    "sha256": "f945350bce0a82a6f1742e729c3205f97b5dce87e15d71555c72157a061dc6bd",
+    "bytes": 9271,
+    "lines": 149
+  },
+  "root_reported_original_error": "UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CompactSpectralSemigroupSource.lean: unsupported module/import syntax at line 69: (Real.exp (-a*s) * -a) • f s = 0 := by module",
+  "targeted_parser_check": {
+    "original_rejects_actual_fragment": "unsupported module/import syntax at line 3: (Real.exp (-a*s) * -a) • f s = 0 := by module",
+    "v2_accepts_actual_fragment": true,
+    "v2_rejects_unsupported_headers": true,
+    "incomplete_snapshot_still_fails": true
+  },
+  "status": "AWAITING_ACTUAL_MAC_FULL_SOURCE_RUN",
+  "native_runtime_or_production_source_changed": false
+}

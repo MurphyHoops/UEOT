@@ -1,0 +1,191 @@
+{
+  "schema": "UEOT/CORE_REGENERATIVE_NATIVE_CHECK/V1",
+  "status": "PASS",
+  "empirical_support": "UNVERIFIED",
+  "input": {
+    "native_sha256": "af8e82ff6a6f4b227cf4421b4b112a54c26fa3b071e16a8bf47497aeacada75b",
+    "native_bytes": 965141,
+    "prototype_sha256": "793c3da74167d51d42f4c8410ee2b3a8b941200b2bd04538a96ad71b077b9203",
+    "source_lean_sha256": "75e76b0673918186de3aac253e0c4810f9bd4895236f150d408cf27a9a8ed793",
+    "population_lean_sha256": "b6e62acd425e1c1bc5c2d289836f4d32052a65716715b00e8a24f227801a64f3",
+    "runner_lean_sha256": "3c77f685af31126fdc54a530788f42a3311b1b0e39cb8c321a8cd4f5e395d44d",
+    "checker_sha256": "e6ad98d525a80c8098a253a250cd86dc0f0a263b95b29fc93fe75fc072542004"
+  },
+  "checked_ports": 864,
+  "checked_program_paths": 288,
+  "complete_cartesian_coverage": true,
+  "full_store_identity_parent_ancestry_checks": true,
+  "payment_prefixes_checked": 5508,
+  "minimum_prefix_balance": 0,
+  "statuses": {
+    "executed": 720,
+    "stopped": 288,
+    "rejected": 144
+  },
+  "actual_program_rows": {
+    "(False, False, False)": {
+      "L": [
+        "1/2",
+        "1/4"
+      ],
+      "B": [
+        "1/4",
+        "1/8"
+      ],
+      "M": [
+        "3/4",
+        "3/8"
+      ]
+    },
+    "(False, False, True)": {
+      "L": [
+        "1/2",
+        "1/4"
+      ],
+      "B": [
+        "1/4",
+        "1/8"
+      ],
+      "M": [
+        "3/4",
+        "3/8"
+      ]
+    },
+    "(False, True, False)": {
+      "L": [
+        "1/2",
+        "1/4"
+      ],
+      "B": [
+        "1/4",
+        "1/8"
+      ],
+      "M": [
+        "3/4",
+        "3/8"
+      ]
+    },
+    "(False, True, True)": {
+      "L": [
+        "1/2",
+        "1/4"
+      ],
+      "B": [
+        "1/4",
+        "1/8"
+      ],
+      "M": [
+        "3/4",
+        "3/8"
+      ]
+    },
+    "(True, False, False)": {
+      "L": [
+        "5/12",
+        "5/24"
+      ],
+      "B": [
+        "5/12",
+        "5/24"
+      ],
+      "M": [
+        "5/6",
+        "5/12"
+      ]
+    },
+    "(True, False, True)": {
+      "L": [
+        "5/12",
+        "5/24"
+      ],
+      "B": [
+        "5/12",
+        "5/24"
+      ],
+      "M": [
+        "5/6",
+        "5/12"
+      ]
+    },
+    "(True, True, False)": {
+      "L": [
+        "1/2",
+        "1/4"
+      ],
+      "B": [
+        "1/4",
+        "1/8"
+      ],
+      "M": [
+        "3/4",
+        "3/8"
+      ]
+    },
+    "(True, True, True)": {
+      "L": [
+        "1/2",
+        "1/4"
+      ],
+      "B": [
+        "1/4",
+        "1/8"
+      ],
+      "M": [
+        "3/4",
+        "3/8"
+      ]
+    }
+  },
+  "growth_rates": [
+    "9/8",
+    "29/24"
+  ],
+  "two_round_finance": [
+    {
+      "old_members": 2,
+      "source_inflow": 10,
+      "fees": 5,
+      "refunds": 3,
+      "output_wallets": 4
+    },
+    {
+      "old_members": 4,
+      "source_inflow": 20,
+      "fees": 11,
+      "refunds": 5,
+      "output_wallets": 8
+    }
+  ],
+  "two_round_final_count": 8,
+  "oracle_free_runtime_inspection": [
+    "requestOf",
+    "rawExecute",
+    "restore",
+    "programStep"
+  ],
+  "causal_cuts_checked": [
+    "bootstrap",
+    "main_gate",
+    "active_code",
+    "erasure"
+  ],
+  "negative_mutations_rejected": [
+    "unpaid_request_cap",
+    "fabricated_newborn_parent",
+    "rejection_advances_execution_age",
+    "wrong_physical_inherited_code",
+    "conflated_retention_birth_mark"
+  ],
+  "same_source_counterexamples": {
+    "zero_population": "45/2048",
+    "best_extinct_inferior_nonzero": "243/2048",
+    "expected_ratio_zero_extension": "2095/4096",
+    "expected_ratio_given_nonzero": "2095/4006",
+    "ratio_expected_counts": "10/19"
+  },
+  "limits": [
+    "Exact native-source verification, not empirical support",
+    "No inference of permanent survival from a positive first-round count",
+    "Cohort concentration requires separately funded independent source tapes"
+  ]
+}

@@ -1,0 +1,119 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeControlPopulation.lean:624:0: warning: Definition `erasedLength` is a proposition; use `theorem` instead of `def`
+
+Note: This linter can be disabled with `set_option linter.defProp false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeControlPopulation.lean:669:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  actualStep ?t (eraseMember ?old) ?a ?z
+in the target expression
+  generation t (List.map eraseMember (old :: xs)) (a, eraseWord xs tailA) (z, eraseWord xs tailZ) =
+    List.map eraseMember (actualStep t old a z ++ generation t xs tailA tailZ)
+
+case cons
+t : ℕ
+old : Member
+xs : List Member
+ih :
+  ∀ (a : RequestWord xs.length) (z : NoiseWord xs.length),
+    generation t (List.map eraseMember xs) (eraseWord xs a) (eraseWord xs z) =
+      List.map eraseMember (generation t xs a z)
+a : CoreRegenerativeSource.Action
+tailA : Samples CoreRegenerativeSource.Action xs.length
+z : Noise
+tailZ : Samples Noise xs.length
+⊢ generation t (List.map eraseMember (old :: xs)) (a, eraseWord xs tailA) (z, eraseWord xs tailZ) =
+    List.map eraseMember (actualStep t old a z ++ generation t xs tailA tailZ)
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    (a, eraseWord xs tailA)
+  has type
+    CoreRegenerativeSource.Action × Samples CoreRegenerativeSource.Action (List.map eraseMember xs).length
+  but is expected to have type
+    RequestWord (List.map eraseMember (old :: xs)).length
+  in the application
+    generation t (List.map eraseMember (old :: xs)) (a, eraseWord xs tailA)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeControlPopulation.lean:668:15: warning: This simp argument is unused:
+  List.map_cons
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [eraseWord_cons, generation]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeControlPopulation.lean:682:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  receipts (List.map eraseMember xs) (eraseWord xs ?a) (eraseWord xs ?z)
+in the target expression
+  receipts (List.map eraseMember (old :: xs)) (a, eraseWord xs tailA) (z, eraseWord xs tailZ) =
+    publicReceipt old a z :: receipts xs tailA tailZ
+
+case cons
+old : Member
+xs : List Member
+ih :
+  ∀ (a : RequestWord xs.length) (z : NoiseWord xs.length),
+    receipts (List.map eraseMember xs) (eraseWord xs a) (eraseWord xs z) = receipts xs a z
+a : CoreRegenerativeSource.Action
+tailA : Samples CoreRegenerativeSource.Action xs.length
+z : Noise
+tailZ : Samples Noise xs.length
+⊢ receipts (List.map eraseMember (old :: xs)) (a, eraseWord xs tailA) (z, eraseWord xs tailZ) =
+    publicReceipt old a z :: receipts xs tailA tailZ
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    (a, eraseWord xs tailA)
+  has type
+    CoreRegenerativeSource.Action × Samples CoreRegenerativeSource.Action (List.map eraseMember xs).length
+  but is expected to have type
+    RequestWord (List.map eraseMember (old :: xs)).length
+  in the application
+    receipts (List.map eraseMember (old :: xs)) (a, eraseWord xs tailA)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeControlPopulation.lean:681:15: warning: This simp argument is unused:
+  List.map_cons
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [eraseWord_cons, receipts, publicReceipt_eraseMember]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeControlPopulation.lean:681:56: warning: This simp argument is unused:
+  publicReceipt_eraseMember
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [List.map_cons, eraseWord_cons, receipts]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeControlPopulation.lean:690:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  observations (List.map eraseMember xs)
+in the target expression
+  observations (List.map eraseMember (old :: xs)) = (observe old.body, eraseWord xs (observations xs))
+
+case cons
+old : Member
+xs : List Member
+ih : observations (List.map eraseMember xs) = eraseWord xs (observations xs)
+⊢ observations (List.map eraseMember (old :: xs)) = (observe old.body, eraseWord xs (observations xs))
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    (observe old.body, eraseWord xs (observations xs))
+  has type
+    Observation × Samples Observation (List.map eraseMember xs).length
+  but is expected to have type
+    ObservationWord (List.map eraseMember (old :: xs)).length
+  in the application
+    observations (List.map eraseMember (old :: xs)) = (observe old.body, eraseWord xs (observations xs))
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeControlPopulation.lean:689:15: warning: This simp argument is unused:
+  List.map_cons
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [observations, eraseWord_cons]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeControlPopulation.lean:828:19: error: unsolved goals
+case cons
+i : Kind
+old : Member
+xs : List Member
+ih : censusCount (List.map eraseMember xs) i = censusCount xs i
+⊢ (if diagnostic old.body = i then 1 else 0) = if diagnostic old.body = i then 1 else 0

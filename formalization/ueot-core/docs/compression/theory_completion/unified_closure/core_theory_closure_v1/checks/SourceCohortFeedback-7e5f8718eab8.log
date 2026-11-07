@@ -1,0 +1,49 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourceCohortFeedback.lean:113:8: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourceCohortFeedback.lean:113:8: warning: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourceCohortFeedback.lean:192:6: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourceCohortFeedback.lean:283:6: error: 'change' tactic failed, pattern
+  w = PUnit.unit
+is not definitionally equal to target
+  w ∈ {PUnit.unit}
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourceCohortFeedback.lean:286:12: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ∑ x ∈ {?a}, ?f x
+in the target expression
+  ∑ w ∈ {PUnit.unit}, iidWeight p 0 w = 1
+
+case zero
+Ω : Type u_1
+inst✝ : Fintype Ω
+p : Ω → ℝ
+hp : ∑ ω, p ω = 1
+hu : Finset.univ = {PUnit.unit}
+⊢ ∑ w ∈ {PUnit.unit}, iidWeight p 0 w = 1
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    Finset.instSingleton
+  has type
+    Singleton (Samples Ω 0) (Finset (Samples Ω 0))
+  but is expected to have type
+    Singleton PUnit.{(max u_1 u_2) + 1} (Finset (Samples Ω 0))
+  in the application
+    @singleton PUnit.{(max u_1 u_2) + 1} (Finset (Samples Ω 0)) Finset.instSingleton
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourceCohortFeedback.lean:282:34: warning: This simp argument is unused:
+  Finset.mem_singleton
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Finset.mem_univ, true_iff]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourceCohortFeedback.lean:351:8: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourceCohortFeedback.lean:351:8: warning: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`

@@ -1,0 +1,72 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourceCohortFeedback.lean:113:8: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourceCohortFeedback.lean:113:8: warning: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourceCohortFeedback.lean:192:6: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourceCohortFeedback.lean:202:60: error: unsolved goals
+Ω : Type u_1
+Ψ : Type u_2
+inst✝¹ : Fintype Ω
+inst✝ : Fintype Ψ
+p : Ω → ℝ
+q : Ψ → ℝ
+⊢ ∑ x, ∑ x_1, p x * q x_1 = ∑ x, ∑ i, p i * q x
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourceCohortFeedback.lean:211:2: error: Tactic `apply` failed: could not unify the conclusion of `Finset.sum_congr rfl`
+  Finset.sum ?m.53 ?m.50 = Finset.sum.{?u.74, ?u.73} ?m.53 ?m.51
+with the goal
+  ∑ x, ∑ x_1, p x * q x_1 * (X x + Y x_1) =
+    Finset.sum.{u_2, 0} Finset.univ fun x => ∑ x_1, (p x_1 * X x_1 * q x + p x_1 * (q x * Y x))
+
+Note: The full type of `Finset.sum_congr rfl` is
+  (∀ x ∈ ?m.53, ?m.50 x = ?m.51 x) → Finset.sum ?m.53 ?m.50 = Finset.sum ?m.53 ?m.51
+
+Ω : Type u_1
+Ψ : Type u_2
+inst✝¹ : Fintype Ω
+inst✝ : Fintype Ψ
+p : Ω → ℝ
+q : Ψ → ℝ
+X : Ω → ℝ
+Y : Ψ → ℝ
+⊢ ∑ x, ∑ x_1, p x * q x_1 * (X x + Y x_1) = ∑ x, ∑ x_1, (p x_1 * X x_1 * q x + p x_1 * (q x * Y x))
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourceCohortFeedback.lean:225:2: error: Tactic `apply` failed: could not unify the conclusion of `Finset.sum_congr rfl`
+  Finset.sum ?m.85 ?m.82 = Finset.sum.{?u.102, ?u.101} ?m.85 ?m.83
+with the goal
+  ∑ x, ∑ x_1, p x * q x_1 * (X x + Y x_1 - (μ + ν)) ^ 2 =
+    Finset.sum.{u_2, 0} Finset.univ fun x =>
+      ∑ x_1,
+        (p x_1 * (X x_1 - μ) ^ 2 * q x + p x_1 * (q x * (Y x - ν) ^ 2) + 2 * (p x_1 * (X x_1 - μ)) * (q x * (Y x - ν)))
+
+Note: The full type of `Finset.sum_congr rfl` is
+  (∀ x ∈ ?m.85, ?m.82 x = ?m.83 x) → Finset.sum ?m.85 ?m.82 = Finset.sum ?m.85 ?m.83
+
+Ω : Type u_1
+Ψ : Type u_2
+inst✝¹ : Fintype Ω
+inst✝ : Fintype Ψ
+p : Ω → ℝ
+q : Ψ → ℝ
+X : Ω → ℝ
+Y : Ψ → ℝ
+μ ν : ℝ
+⊢ ∑ x, ∑ x_1, p x * q x_1 * (X x + Y x_1 - (μ + ν)) ^ 2 =
+    ∑ x,
+      ∑ x_1,
+        (p x_1 * (X x_1 - μ) ^ 2 * q x + p x_1 * (q x * (Y x - ν) ^ 2) + 2 * (p x_1 * (X x_1 - μ)) * (q x * (Y x - ν)))
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourceCohortFeedback.lean:276:9: error: unsolved goals
+case zero
+Ω : Type u_1
+inst✝ : Fintype Ω
+p : Ω → ℝ
+hp : ∑ ω, p ω = 1
+⊢ Finset.univ.card = 1
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourceCohortFeedback.lean:340:8: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourceCohortFeedback.lean:340:8: warning: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`

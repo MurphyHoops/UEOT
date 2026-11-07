@@ -1,0 +1,48 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:485:4: error: unsolved goals
+case pos
+p : Parameters
+theta i tag : Bool
+a : Action
+j : Kind
+hr : (i && decide (decide (a = Action.bloom) = true)) = true
+hj : i = j
+⊢ (if j = true ∧ a = Action.bloom then 1 else ∑ x, noiseWeight p x * ↑(eventCount a x j)) =
+    if j = true ∧ a = Action.bloom then 1 else row p a j
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:486:4: error: unsolved goals
+case neg
+p : Parameters
+theta i tag : Bool
+a : Action
+j : Kind
+hr : (i && decide (decide (a = Action.bloom) = true)) = true
+hj : ¬i = j
+⊢ (if i = true ∧ a = Action.bloom then 0 else ∑ x, noiseWeight p x * ↑(eventCount a x j)) =
+    if i = true ∧ a = Action.bloom then 0 else row p a j
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:487:50: error: Type mismatch
+  Bool.eq_false_iff.mpr hr
+has type
+  (i && decide (decide (a = Action.bloom) = true)) = false
+but is expected to have type
+  (i && decide (decide (a = Action.bloom) = false)) = true
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:488:4: error: Type mismatch: After simplification, term
+  eventMean_eq_row p a j
+ has type
+  ∑ z, noiseWeight p z * ↑(eventCount a z j) = row p a j
+but is expected to have type
+  (if i = true ∧ a = Action.bloom then if i = j then ∑ x, noiseWeight p x else 0
+    else ∑ x, noiseWeight p x * ↑(eventCount a x j)) =
+    if i = true ∧ a = Action.bloom then if i = j then 1 else 0 else row p a j
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:485:40: warning: This simp argument is unused:
+  hr
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [realizedCount, realizedRow, hj, noiseWeight_sum]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:486:40: warning: This simp argument is unused:
+  hr
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [realizedCount, realizedRow, hj]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
