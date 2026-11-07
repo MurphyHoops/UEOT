@@ -200,3 +200,11 @@
 ## 2026-11-06：允许实验下的机制分辨与最坏决策损失
 
 §39.89—39.95 / 附录 F：从固定两个故障机制的真实源到可实现分辨和决策损失。[公共接口与精确端点](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/mechanism_decision_closure_v1/THEOREM_INDEX.md)、[发行身份](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/mechanism_decision_closure_v1/DELIVERY.json)和[实际原生核对](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/mechanism_decision_closure_v1/actual-execution/THIS_EXACT_CHECK.json)。旧源及冻结的 106 项不变。
+
+## Core 定本的同源来源消费者（2026-11-06）
+
+公共入口新增 `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreTheoryClosure`，通过既有 `TheoryCompletion`、`Compression`、`V3`、`UEOT` 根导出。原 106 个 P-ID 的冻结映射不改。
+
+`CoreRegenerativeSource` 从真实物理码、执行门、预付费用和 36 个局部噪声原子构造完整事件；`CoreRegenerativeRepair`/`Formation` 复用原修复秩与内生形成；`FiniteSourceGrowthControl`/`ControlPopulation` 消费旧 Perron 工厂并从实际人口推导任意允许历史核的有限条件超鞅与最优达到；`SourceCohortFeedback`/`CoreRegenerativeFeedback`/`FeedbackBoundary` 推出同源独立 cohort 的有限概率反馈及精确失效边界；`Population`/`Lineage` 从真实身份、父指针与标记连接有限 many-to-one；`Quotient` 保持完整事务与允许历史。
+
+新定理没有裸给 success、fitness、条件均值或最优性。C1、C5、连续过程与原 Price 源结果继续按原条件复用，不冒称此有限新消费者重新实例化了每条旧定理。本文的有限条件鞅不是新增无限路径 Mathlib Martingale 实例；期望增长、原身份续存、实际份额、加权谱系和规范价值分别定型。具体可检查声明与信任范围以[定理索引](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_theory_closure_v1/THEOREM_INDEX.md)及[公理审计](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_theory_closure_v1/checks/AXIOM_AUDIT.json)为准。

@@ -1,0 +1,32 @@
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.actual_formed_candidate_family_nonempty
+  (p : Parameters) (hp : Valid p) :
+  (V3.Compression.CrossTrack.responseFormedCandidateFamily physicalReadout (sourceResponse p hp)
+      componentRegion).Nonempty
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.bootstrap_cut_changes_future (p : Parameters)
+  (hp : Valid p) :
+  sourceResponse p hp (true, true) () ≠
+    newbornResponse p hp
+      (have __src := programBody true true false;
+      { rowH := __src.rowH, rowD := __src.rowD, gate := __src.gate, bootstrap := false, tag := __src.tag })
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourceCohortFeedback.iid_badRatio_mass_le.{u_1} {Ω : Type u_1}
+  [Fintype Ω] (p N Z : Ω → ℝ) (μ ν ε : ℝ) (n : ℕ) (hp0 : ∀ (ω : Ω), 0 ≤ p ω) (hp : ∑ ω, p ω = 1) (hμ : expect p N = μ)
+  (hν : expect p Z = ν) (hμ0 : 0 < μ) (hν0 : 0 ≤ ν) (hνμ : ν ≤ μ) (hε0 : 0 < ε) (hε1 : ε ≤ 1) (hn : 0 < n) :
+  (eventMass (iidWeight p n) fun w =>
+      sampleSum N n w = 0 ∨ 0 < sampleSum N n w ∧ ε < |sampleSum Z n w / sampleSum N n w - ν / μ|) ≤
+    9 * (centeredSecond p Z ν + centeredSecond p N μ) / (↑n * ε ^ 2 * μ ^ 2)
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeQuotient.dropping_diagnostic_is_not_lawful
+  (theta tag : Bool) :
+  canExecute (programBody theta false tag) Action.bloom = true ∧
+    canExecute (programBody theta true tag) Action.bloom = false
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeQuotient.code_only_prediction_loses_execution
+  (tag : Bool) :
+  decode (encode true false tag) =
+      decode
+        (have __src := encode true false tag;
+        { rowH := __src.rowH, rowD := __src.rowD, gate := false, bootstrap := __src.bootstrap, tag := __src.tag }) ∧
+    rawExecute (encode true false tag) false = some Action.bloom ∧
+      rawExecute
+          (have __src := encode true false tag;
+          { rowH := __src.rowH, rowD := __src.rowD, gate := false, bootstrap := __src.bootstrap, tag := __src.tag })
+          false =
+        none

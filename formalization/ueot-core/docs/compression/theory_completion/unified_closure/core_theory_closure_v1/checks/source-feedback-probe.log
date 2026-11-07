@@ -1,0 +1,56 @@
+{
+  "schema": "UEOT/CORE_ACTUAL_COHORT_FEEDBACK_PROBE/V1",
+  "status": "PASS_EXACT_SOURCE_CHECK_NOT_EMPIRICAL_SUPPORT",
+  "empirical_support": "UNVERIFIED",
+  "source_sha256": "793c3da74167d51d42f4c8410ee2b3a8b941200b2bd04538a96ad71b077b9203",
+  "parameters": {
+    "survival": "3/4",
+    "care_only_survival": "1/8",
+    "common_birth": "3/8",
+    "bloom_only_birth": "1/4",
+    "damage": "1/3",
+    "supply": 5,
+    "reserve": 1
+  },
+  "actual_one_step_count_laws": [
+    {
+      "0": "5/32",
+      "1": "9/16",
+      "2": "9/32"
+    },
+    {
+      "0": "9/64",
+      "1": "15/32",
+      "2": "25/64"
+    }
+  ],
+  "same_source_counterexamples": {
+    "zero_population_probability": "45/2048",
+    "expected_upper_ratio_with_zero_extension": "2095/4096",
+    "expected_upper_ratio_given_nonzero": "2095/4006",
+    "ratio_of_expected_counts": "10/19",
+    "best_extinct_inferior_nonzero_first_round": "243/2048",
+    "no_claim_of_inferior_permanent_survival": true
+  },
+  "horizons_checked": 65,
+  "mean_closed_form_checked_from_actual_outputs": true,
+  "cohort_moments_from_actual_independent_subtree_slots": true,
+  "selection_example": {
+    "epsilon": "1/5",
+    "eta": "1/10",
+    "T_chosen_first": 31,
+    "outside_mean_share": "78551672112789411833022577315290546060373041/823180656529540640855952759587285222740579051",
+    "lower_mean": "381520424476945831628649898809/9903520314283042199192993792",
+    "upper_mean": "372314492208375614511465091135997338340103005/1019523504615044810511095319707635106709504",
+    "total_mean": "823180656529540640855952759587285222740579051/2039047009230089621022190639415270213419008",
+    "lower_variance": "425338317056842817385823826899787160302516676929290123274259/98079714615416886934934209737619787751599303819750539264",
+    "upper_variance": "484073108490374055889189223935070022670537782082190063551130469691620624950583653136410615/2078856352925086594073711962778571893911873323404069936895626837342646225996487852032",
+    "total_variance": "986176800899618827460889596734578599952109773768202365349796599253306036624366756951094289/4157712705850173188147423925557143787823746646808139873791253674685292451992975704064",
+    "outside_variance_plus_total_variance": "251051846204622385785850186399754288640785995843006150899333064780842705836891551907341837/1039428176462543297036855981389285946955936661702034968447813418671323112998243926016",
+    "cohorts_chosen_second": 13338,
+    "cohort_count_uses_exact_moments_not_D_power_bound": true,
+    "exact_failure_bound": "50210369240924477157170037279950857728157199168601230179866612956168541167378310381468367400/502121157423744520343349294644286977498713513038726959666851549423722230768281847312024905341",
+    "worst_case_initial_capital_plus_source_inflow": 286431368863536,
+    "resource_limit": "This is a required bound, not free replication or a claim that a fixed budget can fund it."
+  }
+}

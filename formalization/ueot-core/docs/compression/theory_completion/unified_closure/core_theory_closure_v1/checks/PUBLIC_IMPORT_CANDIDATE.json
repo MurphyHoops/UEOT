@@ -1,0 +1,66 @@
+{
+  "schema": "UEOT/CORE_PUBLIC_IMPORT_CANDIDATE/V1",
+  "status": "SOURCE_CANDIDATE_AWAITING_MAC_BUILD",
+  "changed_files": [
+    {
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean",
+      "before_sha256": "b816e7f111980d6f5c17496b6115ada065550072626d4eab29cc85987e440636",
+      "after_sha256": "dc3759eff9c9f6fd13bba3acdf254c9f9f99bae1895e7bcda6226ecff54d4556",
+      "before_bytes": 27633,
+      "after_bytes": 27710,
+      "change": "Add the single final CoreTheoryClosure import to the lowest existing public aggregation root."
+    }
+  ],
+  "new_modules_reached_from_CoreTheoryClosure": [
+    "CoreRegenerativeControlPopulation",
+    "CoreRegenerativeFeedback",
+    "CoreRegenerativeFeedbackBoundary",
+    "CoreRegenerativeFormation",
+    "CoreRegenerativeLineage",
+    "CoreRegenerativeOneStep",
+    "CoreRegenerativePopulation",
+    "CoreRegenerativeQuotient",
+    "CoreRegenerativeRepair",
+    "CoreRegenerativeSource",
+    "CoreTheoryClosure",
+    "FiniteSourceGrowthControl",
+    "SourceCohortFeedback"
+  ],
+  "unchanged_other_public_roots": true,
+  "reason": "CoreTheoryClosure transitively imports all 13 added production modules. The existing UEOT -> Compression -> TheoryCompletion public path exposes them with one additional edge. UEOT.V3 is a separate public aggregate, not the parent of Compression; it is left unchanged as required by the original minimal-import handoff.",
+  "build_advice": {
+    "cwd": "formalization/ueot-core",
+    "command": "lake build UEOT",
+    "meaning": "The default lean_lib UEOT target traverses its dependency graph and incrementally rebuilds changed/new dependencies. It includes all four public roots. Preserve current toolchain, Lake manifest and cache; do not lake clean.",
+    "do_not_claim": "Do not describe incremental Lake reuse as a fresh full recompilation."
+  },
+  "existing_public_edges": [
+    [
+      "UEOT",
+      "UEOT.V3"
+    ],
+    [
+      "UEOT",
+      "UEOT.V3.Compression"
+    ],
+    [
+      "UEOT.V3.Compression",
+      "UEOT.V3.Compression.TheoryCompletion"
+    ]
+  ],
+  "new_public_edge": [
+    "UEOT.V3.Compression.TheoryCompletion",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreTheoryClosure"
+  ],
+  "public_export_claim": "All 13 new modules become reachable from UEOT, UEOT.V3.Compression and UEOT.V3.Compression.TheoryCompletion. No new exports are asserted for the separate UEOT.V3 root.",
+  "candidate_origin": "EXTERNAL_ENGINEERING_CANDIDATE",
+  "native_attribution": {
+    "basis": "root-reported observation of the existing private G1 result metadata; the integration author did not read or export the private result",
+    "prior_native_candidate_status": "REJECTED",
+    "reason": "EDIT_ROOT_NOT_PUBLICLY_REACHABLE",
+    "patch": null,
+    "claim_consumption": "NONE",
+    "status_of_this_patch": "New external engineering candidate under existing Core authorization, not native candidate adoption",
+    "native_request_reused": false
+  }
+}

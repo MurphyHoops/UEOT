@@ -1,0 +1,142 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeFeedback.lean:125:2: error: 'change' tactic failed, pattern
+  ∑ x, 1 * 1 = 1
+is not definitionally equal to target
+  treeMean p 0 x = 1
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeFeedback.lean:140:6: error: Tactic `apply` failed: could not unify the conclusion of `Finset.sum_congr rfl`
+  Finset.sum ?m.80 ?m.77 = Finset.sum ?m.80 ?m.78
+with the goal
+  ∑ ω,
+      noiseWeight p ω.1 * (treeWeight p T ω.2.1 * treeWeight p T ω.2.2) *
+        (↑(optionValue (fun y => treeCount T y ω.2.1) (programStep x ω.1).retained) +
+          ↑(optionValue (fun y => treeCount T y ω.2.2) (programStep x ω.1).newborn)) =
+    ∑ x_1,
+      ∑ y,
+        ∑ x_2,
+          ∑ y_1,
+            ∑ x_3,
+              ∑ i,
+                noiseWeight p ((x_1, y), x_2, y_1) *
+                  (treeWeight p T x_3 * treeWeight p T i *
+                    (optionValue (fun y => ↑(treeCount T y x_3)) (programStep x ((x_1, y), x_2, y_1)).retained +
+                      optionValue (fun y => ↑(treeCount T y i)) (programStep x ((x_1, y), x_2, y_1)).newborn))
+
+Note: The full type of `Finset.sum_congr rfl` is
+  (∀ x ∈ ?m.80, ?m.77 x = ?m.78 x) → Finset.sum ?m.80 ?m.77 = Finset.sum ?m.80 ?m.78
+
+p : Parameters
+T : ℕ
+x : Body
+⊢ ∑ ω,
+      noiseWeight p ω.1 * (treeWeight p T ω.2.1 * treeWeight p T ω.2.2) *
+        (↑(optionValue (fun y => treeCount T y ω.2.1) (programStep x ω.1).retained) +
+          ↑(optionValue (fun y => treeCount T y ω.2.2) (programStep x ω.1).newborn)) =
+    ∑ x_1,
+      ∑ y,
+        ∑ x_2,
+          ∑ y_1,
+            ∑ x_3,
+              ∑ i,
+                noiseWeight p ((x_1, y), x_2, y_1) *
+                  (treeWeight p T x_3 * treeWeight p T i *
+                    (optionValue (fun y => ↑(treeCount T y x_3)) (programStep x ((x_1, y), x_2, y_1)).retained +
+                      optionValue (fun y => ↑(treeCount T y i)) (programStep x ((x_1, y), x_2, y_1)).newborn))
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeFeedback.lean:150:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  expect (productWeight ?p ?q) fun w => ?X w.1 + ?Y w.2
+in the target expression
+  (noiseWeight p z *
+      expect (productWeight (treeWeight p T) (treeWeight p T)) fun v =>
+        optionValue (fun y => ↑(treeCount T y v.1)) (programStep x z).retained +
+          optionValue (fun y => ↑(treeCount T y v.2)) (programStep x z).newborn) =
+    noiseWeight p z *
+      (optionValue (treeMean p T) (programStep x z).retained + optionValue (treeMean p T) (programStep x z).newborn)
+
+p : Parameters
+T : ℕ
+x : Body
+z : Noise
+a✝ : z ∈ Finset.univ
+⊢ (noiseWeight p z *
+      expect (productWeight (treeWeight p T) (treeWeight p T)) fun v =>
+        optionValue (fun y => ↑(treeCount T y v.1)) (programStep x z).retained +
+          optionValue (fun y => ↑(treeCount T y v.2)) (programStep x z).newborn) =
+    noiseWeight p z *
+      (optionValue (treeMean p T) (programStep x z).retained + optionValue (treeMean p T) (programStep x z).newborn)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeFeedback.lean:156:47: error: unsolved goals
+case true.true.false.false
+a : CoreRegenerativeSource.Action
+z : Noise
+f : Kind → ℝ
+hr : retains a z = true
+hb : births a z = true
+hdp : z.2.1 = false
+hdc : z.2.2 = false
+⊢ (1 + 1) * f false = f false + f false
+
+case true.true.false.true
+a : CoreRegenerativeSource.Action
+z : Noise
+f : Kind → ℝ
+hr : retains a z = true
+hb : births a z = true
+hdp : z.2.1 = false
+hdc : z.2.2 = true
+⊢ f true + f false = f false + f true
+
+case true.true.true.true
+a : CoreRegenerativeSource.Action
+z : Noise
+f : Kind → ℝ
+hr : retains a z = true
+hb : births a z = true
+hdp : z.2.1 = true
+hdc : z.2.2 = true
+⊢ (1 + 1) * f true = f true + f true
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeFeedback.lean:189:104: error: unsolved goals
+case false.true
+p : Parameters
+T : ℕ
+theta i tag : Bool
+z : Noise
+hr : retains (programAction theta i) z = false
+hb : births (programAction theta i) z = true
+⊢ treeMean p T (damageBody (encode theta false tag) z.2.2) = treeMean p T (programBody theta z.2.2 tag)
+
+case true.false
+p : Parameters
+T : ℕ
+theta i tag : Bool
+z : Noise
+hr : retains (programAction theta i) z = true
+hb : births (programAction theta i) z = false
+⊢ treeMean p T (damageBody (encode theta false tag) z.2.1) = treeMean p T (programBody theta z.2.1 tag)
+
+case true.true
+p : Parameters
+T : ℕ
+theta i tag : Bool
+z : Noise
+hr : retains (programAction theta i) z = true
+hb : births (programAction theta i) z = true
+⊢ treeMean p T (damageBody (encode theta false tag) z.2.1) + treeMean p T (damageBody (encode theta false tag) z.2.2) =
+    treeMean p T (programBody theta z.2.1 tag) + treeMean p T (programBody theta z.2.2 tag)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeFeedback.lean:194:49: warning: This simp argument is unused:
+  copied_code_faithful
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [executedResult, optionValue, hr, hb]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeFeedback.lean:281:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  expect (productWeight ?p ?q) fun w => ?X w.1 + ?Y w.2
+in the target expression
+  (expect (productWeight (treeWeight p T) (treeWeight p T)) fun w =>
+      ↑(treeCount T (programBody false false false) w.1) + ↑(treeCount T (programBody true false false) w.2)) =
+    (expect (treeWeight p T) fun w => ↑(treeCount T (programBody false false false) w)) +
+      expect (treeWeight p T) fun w => ↑(treeCount T (programBody true false false) w)
+
+p : Parameters
+T : ℕ
+⊢ (expect (productWeight (treeWeight p T) (treeWeight p T)) fun w =>
+      ↑(treeCount T (programBody false false false) w.1) + ↑(treeCount T (programBody true false false) w.2)) =
+    (expect (treeWeight p T) fun w => ↑(treeCount T (programBody false false false) w)) +
+      expect (treeWeight p T) fun w => ↑(treeCount T (programBody true false false) w)

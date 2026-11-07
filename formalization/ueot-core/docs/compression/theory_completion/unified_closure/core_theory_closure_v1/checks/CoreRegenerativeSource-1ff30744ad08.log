@@ -1,0 +1,17 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:485:4: error: unsolved goals
+case pos
+p : Parameters
+theta i tag : Bool
+a : Action
+j : Kind
+hr : (i && decide (a = Action.bloom)) = true
+hj : i = j
+⊢ (if j = true ∧ a = Action.bloom then 1 else ∑ x, noiseWeight p x * ↑(eventCount a x j)) =
+    if j = true ∧ a = Action.bloom then 1 else row p a j
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean:485:40: warning: This simp argument is unused:
+  hr
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [realizedCount, realizedRow, hj, noiseWeight_sum]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

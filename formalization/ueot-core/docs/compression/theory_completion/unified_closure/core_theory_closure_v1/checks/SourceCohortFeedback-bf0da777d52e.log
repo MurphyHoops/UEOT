@@ -1,0 +1,36 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourceCohortFeedback.lean:113:8: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourceCohortFeedback.lean:113:8: warning: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourceCohortFeedback.lean:192:6: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourceCohortFeedback.lean:283:12: error: typeclass instance problem is stuck
+  Subsingleton ?m.48
+
+Note: Lean will not try to resolve this typeclass instance problem because the type argument to `Subsingleton` is a metavariable. This argument must be fully determined before Lean will try to resolve the typeclass.
+
+Hint: Adding type annotations and supplying implicit arguments to functions can give Lean more information for typeclass resolution. For example, if you have a variable `x` that you intend to be a `Nat`, but Lean reports it as having an unresolved type like `?m`, replacing `x` with `(x : Nat)` can get typeclass resolution un-stuck.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourceCohortFeedback.lean:279:9: error: unsolved goals
+case zero
+Ω : Type u_1
+inst✝ : Fintype Ω
+p : Ω → ℝ
+hp : ∑ ω, p ω = 1
+hu : Finset.univ = {PUnit.unit}
+⊢ {PUnit.unit}.card = 1
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourceCohortFeedback.lean:282:34: warning: This simp argument is unused:
+  Finset.mem_singleton
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Finset.mem_univ, true_iff]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourceCohortFeedback.lean:349:8: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourceCohortFeedback.lean:349:8: warning: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`

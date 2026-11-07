@@ -1,0 +1,99 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeControlPopulation.lean:42:52: error: Invalid `←` modifier: `programBody` is a declaration name to be unfolded
+
+Hint: The simplifier cannot "refold" definitions by name. Use `rw` for this instead,
+                      or use the `←` simp modifier with an equational lemma for `programBody`.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeControlPopulation.lean:42:52: error: Invalid `←` modifier: `programBody` is a declaration name to be unfolded
+
+Hint: The simplifier cannot "refold" definitions by name. Use `rw` for this instead,
+                      or use the `←` simp modifier with an equational lemma for `programBody`.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeControlPopulation.lean:42:52: error: Invalid `←` modifier: `programBody` is a declaration name to be unfolded
+
+Hint: The simplifier cannot "refold" definitions by name. Use `rw` for this instead,
+                      or use the `←` simp modifier with an equational lemma for `programBody`.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeControlPopulation.lean:42:52: error: Invalid `←` modifier: `programBody` is a declaration name to be unfolded
+
+Hint: The simplifier cannot "refold" definitions by name. Use `rw` for this instead,
+                      or use the `←` simp modifier with an equational lemma for `programBody`.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeControlPopulation.lean:41:4: error: unsolved goals
+case pos.false.true
+theta i tag : Bool
+a : CoreRegenerativeSource.Action
+z : Noise
+hs : ¬a = Action.stop
+he : canExecute (programBody theta i tag) a = true
+hr : retains a z = false
+hb : births a z = true
+⊢ Canonical (damageBody (encode theta false tag) z.2.2)
+
+case pos.true.false
+theta i tag : Bool
+a : CoreRegenerativeSource.Action
+z : Noise
+hs : ¬a = Action.stop
+he : canExecute (programBody theta i tag) a = true
+hr : retains a z = true
+hb : births a z = false
+⊢ Canonical (damageBody (encode theta false tag) z.2.1)
+
+case pos.true.true
+theta i tag : Bool
+a : CoreRegenerativeSource.Action
+z : Noise
+hs : ¬a = Action.stop
+he : canExecute (programBody theta i tag) a = true
+hr : retains a z = true
+hb : births a z = true
+⊢ Canonical (damageBody (encode theta false tag) z.2.1) ∧ Canonical (damageBody (encode theta false tag) z.2.2)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeControlPopulation.lean:468:52: error: Invalid `←` modifier: `programBody` is a declaration name to be unfolded
+
+Hint: The simplifier cannot "refold" definitions by name. Use `rw` for this instead,
+                      or use the `←` simp modifier with an equational lemma for `programBody`.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeControlPopulation.lean:468:52: error: Invalid `←` modifier: `programBody` is a declaration name to be unfolded
+
+Hint: The simplifier cannot "refold" definitions by name. Use `rw` for this instead,
+                      or use the `←` simp modifier with an equational lemma for `programBody`.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeControlPopulation.lean:468:52: error: Invalid `←` modifier: `programBody` is a declaration name to be unfolded
+
+Hint: The simplifier cannot "refold" definitions by name. Use `rw` for this instead,
+                      or use the `←` simp modifier with an equational lemma for `programBody`.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeControlPopulation.lean:468:52: error: Invalid `←` modifier: `programBody` is a declaration name to be unfolded
+
+Hint: The simplifier cannot "refold" definitions by name. Use `rw` for this instead,
+                      or use the `←` simp modifier with an equational lemma for `programBody`.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeControlPopulation.lean:467:4: error: unsolved goals
+case pos.false.true
+theta i tag : Bool
+a : CoreRegenerativeSource.Action
+z : Noise
+hs : ¬a = Action.stop
+he : canExecute (programBody theta i tag) a = true
+hr : retains a z = false
+hb : births a z = true
+⊢ CarriesProgram theta (damageBody (encode theta false tag) z.2.2)
+
+case pos.true.false
+theta i tag : Bool
+a : CoreRegenerativeSource.Action
+z : Noise
+hs : ¬a = Action.stop
+he : canExecute (programBody theta i tag) a = true
+hr : retains a z = true
+hb : births a z = false
+⊢ CarriesProgram theta (damageBody (encode theta false tag) z.2.1)
+
+case pos.true.true
+theta i tag : Bool
+a : CoreRegenerativeSource.Action
+z : Noise
+hs : ¬a = Action.stop
+he : canExecute (programBody theta i tag) a = true
+hr : retains a z = true
+hb : births a z = true
+⊢ CarriesProgram theta (damageBody (encode theta false tag) z.2.1) ∧
+    CarriesProgram theta (damageBody (encode theta false tag) z.2.2)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeControlPopulation.lean:593:67: error: unsolved goals
+old : Member
+a : CoreRegenerativeSource.Action
+z : Noise
+⊢ Option.map (observe ∘ eraseTag) (step old.body a z).retained = Option.map observe (step old.body a z).retained ∧
+    Option.map (observe ∘ eraseTag) (step old.body a z).newborn = Option.map observe (step old.body a z).newborn

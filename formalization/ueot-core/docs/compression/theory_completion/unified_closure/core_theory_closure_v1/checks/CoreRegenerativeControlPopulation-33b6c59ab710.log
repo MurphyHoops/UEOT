@@ -1,0 +1,135 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeControlPopulation.lean:41:4: error: unsolved goals
+case pos.false.true
+theta i tag : Bool
+a : CoreRegenerativeSource.Action
+z : Noise
+hs : ¬a = Action.stop
+he : canExecute (programBody theta i tag) a = true
+hr : retains a z = false
+hb : births a z = true
+⊢ Canonical (damageBody (encode theta false tag) z.2.2)
+
+case pos.true.false
+theta i tag : Bool
+a : CoreRegenerativeSource.Action
+z : Noise
+hs : ¬a = Action.stop
+he : canExecute (programBody theta i tag) a = true
+hr : retains a z = true
+hb : births a z = false
+⊢ Canonical (damageBody (encode theta false tag) z.2.1)
+
+case pos.true.true
+theta i tag : Bool
+a : CoreRegenerativeSource.Action
+z : Noise
+hs : ¬a = Action.stop
+he : canExecute (programBody theta i tag) a = true
+hr : retains a z = true
+hb : births a z = true
+⊢ Canonical (damageBody (encode theta false tag) z.2.1) ∧ Canonical (damageBody (encode theta false tag) z.2.2)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeControlPopulation.lean:42:52: warning: This simp argument is unused:
+  copied_code_faithful
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [step, hs, he, executedResult, hr, hb]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeControlPopulation.lean:162:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  expect (productWeight ?p ?q) fun w => ?X w.1 + ?Y w.2
+in the target expression
+  (expect (productWeight (noiseWeight p) (iidWeight (noiseWeight p) xs.length)) fun z =>
+      potential p (actualStep t old a.1 z.1) + potential p (generation t xs a.2 z.2)) ≤
+    growthRate p true * potential p (old :: xs)
+
+case cons
+p : Parameters
+hp : Valid p
+t : ℕ
+old : Member
+xs : List Member
+ih :
+  GoodPopulation xs →
+    ∀ (a : RequestWord xs.length),
+      (expect (iidWeight (noiseWeight p) xs.length) fun z => potential p (generation t xs a z)) ≤
+        growthRate p true * potential p xs
+hg : GoodPopulation (old :: xs)
+a : RequestWord (old :: xs).length
+hh : Canonical old.body
+ht : GoodPopulation xs
+⊢ (expect (productWeight (noiseWeight p) (iidWeight (noiseWeight p) xs.length)) fun z =>
+      potential p (actualStep t old a.1 z.1) + potential p (generation t xs a.2 z.2)) ≤
+    growthRate p true * potential p (old :: xs)
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    a
+  has type
+    RequestWord (old :: xs).length
+  but is expected to have type
+    CoreRegenerativeSource.Action × Samples CoreRegenerativeSource.Action xs.length
+  in the application
+    a.1
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeControlPopulation.lean:183:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  expect (productWeight ?p ?q) fun w => ?X w.1 + ?Y w.2
+in the target expression
+  (expect (productWeight (noiseWeight p) (iidWeight (noiseWeight p) xs.length)) fun z =>
+      potential p (actualStep t old (programAction true (diagnostic old.body)) z.1) +
+        potential p (generation t xs (bestRequests xs) z.2)) =
+    growthRate p true * potential p (old :: xs)
+
+case cons
+p : Parameters
+t : ℕ
+old : Member
+xs : List Member
+ih :
+  GoodPopulation xs →
+    (expect (iidWeight (noiseWeight p) xs.length) fun z => potential p (generation t xs (bestRequests xs) z)) =
+      growthRate p true * potential p xs
+hg : GoodPopulation (old :: xs)
+hh : Canonical old.body
+ht : GoodPopulation xs
+⊢ (expect (productWeight (noiseWeight p) (iidWeight (noiseWeight p) xs.length)) fun z =>
+      potential p (actualStep t old (programAction true (diagnostic old.body)) z.1) +
+        potential p (generation t xs (bestRequests xs) z.2)) =
+    growthRate p true * potential p (old :: xs)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeControlPopulation.lean:228:19: error: unsolved goals
+case cons
+old : Member
+xs : List Member
+ih : bestObservedRequests xs.length (observations xs) = bestRequests xs
+⊢ (programAction true (diagnostic old.body), bestRequests xs) =
+    (programAction true (diagnostic old.body), bestRequests xs)
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeControlPopulation.lean:322:62: error(lean.invalidField): Invalid field notation: Type of
+  s
+is not known; cannot resolve field `population`
+
+Hint: Consider replacing the field projection `.population` with a call to the function `State.population`.
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeControlPopulation.lean:345:4: error: Type mismatch
+  mul_nonneg (inv_nonneg.mpr (LT.lt.le (pow_pos hr ?m.64))) (potential_nonneg p hp s.population)
+has type
+  0 ≤ (growthRate p true ^ ?m.64)⁻¹ * potential p s.population
+but is expected to have type
+  0 ≤ W p n s
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeControlPopulation.lean:347:4: error: Type mismatch
+  historyConditional_normalized_le next (branchWeight p K) (growthRate p true) hr (fun x s => potential p s.population)
+    n s (next_expected_bound p hp K n s)
+has type
+  ∑ u,
+      branchWeight p K n s u *
+        normalizedValue (growthRate p true) (fun x s => potential p s.population) (n + 1) (next n s u) ≤
+    normalizedValue (growthRate p true) (fun x s => potential p s.population) n s
+but is expected to have type
+  ∑ w, branchWeight p K n s w * W p (n + 1) (next n s w) ≤ W p n s
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeControlPopulation.lean:353:2: error: Type mismatch
+  historyConditional_normalized_eq next (branchWeight p bestPolicy) (growthRate p true)
+    (lt_trans zero_lt_one (sourceRate_gt_one p hp)) (fun x s => potential p s.population) n s (next_expected_eq p n s)
+has type
+  ∑ u,
+      branchWeight p bestPolicy n s u *
+        normalizedValue (growthRate p true) (fun x s => potential p s.population) (n + 1) (next n s u) =
+    normalizedValue (growthRate p true) (fun x s => potential p s.population) n s
+but is expected to have type
+  ∑ w, branchWeight p bestPolicy n s w * W p (n + 1) (next n s w) = W p n s

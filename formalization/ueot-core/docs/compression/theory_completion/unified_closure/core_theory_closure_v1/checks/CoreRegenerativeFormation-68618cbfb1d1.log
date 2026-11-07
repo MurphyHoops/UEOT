@@ -1,0 +1,27 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeFormation.lean:89:2: error: `simp` made no progress
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeFormation.lean:117:6: warning: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeFormation.lean:114:4: error: unsolved goals
+case mp
+p : Parameters
+hp : Valid p
+h : SourceHistory
+u : Unit
+he : physicalReadout Finset.univ h = physicalReadout Finset.univ h
+this : IsProbabilityMeasure (sourceResponse p hp h u) := sourceResponse_probability p hp h u
+⊢ tvDist (sourceResponse p hp h u) (sourceResponse p hp h u) = 0
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeFormation.lean:123:6: warning: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeFormation.lean:124:6: error: `simp` made no progress

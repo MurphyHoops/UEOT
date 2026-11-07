@@ -28,3 +28,9 @@
 ## 2026-11-06：允许实验下的机制分辨与最坏决策损失
 
 第十章、第十六章与附录 C 新增：备份价值依赖共同故障结构；有限证据的可分辨性、应对未知机制的最优行动与目的的规范正当性须分别论证。数学书 §39.89—39.95 及[原生执行和定理](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/mechanism_decision_closure_v1/README.md)给出这一合成实例的范围。现实经验支持仍为 UNVERIFIED。
+
+## 2026-11-06：Core 理论定本
+
+本版完成核心声明的分型：已证条件命题、同一真实组织源的正类、精确反例和公开收窄、独立哲学论证及经验未验证分别陈述。数学书新增可独立阅读的七部分核心总论，保留 106 个原 P-ID 与既有章节；哲学书保留六编三十章，以对象—组织—目的为主线补足正面论证、强反对和修订。增长最优仅是有来源的目的分支。
+
+同一受损真实程序在六单位账本下恢复并达到期望增长率最优；实际继承树给出有限时域人口比例概率界，带标记真实谱系和合法表示相容分别证明。代码、完整运行记录、适用范围见[Core 定本交付包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_theory_closure_v1/README.md)。PDF 的实际构建与选页结果见[两书审查](../mathematics/review/CORE_THEORY_BOOKS_2026-11-06/ROOT_FINAL_VISUAL_REVIEW.json)。原全 Core 条件合同及 PR441、PR442、PR443 保持完成；经验支持 UNVERIFIED。

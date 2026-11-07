@@ -1,0 +1,61 @@
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSourceGrowthControl.lean:45:8: warning: automatically included section variable(s) unused in theorem `_private.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSourceGrowthControl.0.UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSourceGrowthControl.pairing_left_eigen`:
+  [Nonempty I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Nonempty I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSourceGrowthControl.lean:125:0: warning: automatically included section variable(s) unused in theorem `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSourceGrowthControl.selector_maximal_of_rowwise_domination`:
+  [(i : I) → Fintype (A i)]
+  [∀ (i : I), Nonempty (A i)]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [(i : I) → Fintype (A i)] [∀ (i : I), Nonempty (A i)] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSourceGrowthControl.lean:143:0: warning: automatically included section variable(s) unused in theorem `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSourceGrowthControl.maximal_selector_row_bound`:
+  [(i : I) → Fintype (A i)]
+  [∀ (i : I), Nonempty (A i)]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [(i : I) → Fintype (A i)] [∀ (i : I), Nonempty (A i)] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSourceGrowthControl.lean:256:0: warning: automatically included section variable(s) unused in theorem `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSourceGrowthControl.record_value_eq_row_value`:
+  [DecidableEq I]
+  [Nonempty I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq I] [Nonempty I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSourceGrowthControl.lean:317:2: error: Unnecessary `generalizing` argument: Variable `f` is generalized automatically
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSourceGrowthControl.lean:317:2: error: Unnecessary `generalizing` argument: Variable `g` is generalized automatically
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSourceGrowthControl.lean:331:2: error: Unnecessary `generalizing` argument: Variable `f` is generalized automatically
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSourceGrowthControl.lean:333:14: error: unsolved goals
+case succ
+H : ℕ → Type h
+O : (n : ℕ) → H n → Type o
+inst✝ : (n : ℕ) → (x : H n) → Fintype (O n x)
+initial : H 0
+next : (n : ℕ) → (x : H n) → O n x → H (n + 1)
+prob : (n : ℕ) → (x : H n) → O n x → ℝ
+c : ℝ
+n : ℕ
+ih :
+  ∀ (f : H n → ℝ),
+    (historyExpectation initial next prob n fun x => c * f x) = c * historyExpectation initial next prob n f
+f : H (n + 1) → ℝ
+he : (fun x => ∑ u, prob n x u * (c * f (next n x u))) = fun x => c * ∑ u, prob n x u * f (next n x u)
+⊢ (c * historyExpectation initial next prob n fun x => ∑ u, prob n x u * f (next n x u)) =
+    c * historyExpectation initial next prob (n + 1) f
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSourceGrowthControl.lean:443:0: warning: automatically included section variable(s) unused in theorem `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSourceGrowthControl.count_value_bounds`:
+  [DecidableEq I]
+  [Nonempty I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq I] [Nonempty I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSourceGrowthControl.lean:461:0: warning: automatically included section variable(s) unused in theorem `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSourceGrowthControl.history_population_upper`:
+  [DecidableEq I]
+  [Nonempty I]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq I] [Nonempty I] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
