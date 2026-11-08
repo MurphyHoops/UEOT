@@ -1,0 +1,82 @@
+{
+  "schema": "UEOT/CORE_READER_ENTRY_CORRECTION/V1",
+  "status": "VERIFIED_DOCUMENTARY_CORRECTION",
+  "date_beijing": "2026-11-08",
+  "scope": "Three current reader entries only; Core mathematical content remains CLASSIFIED_CORE_CLOSED. Existing proof, execution and PDF evidence is reused at identical bytes. No new native GI contribution.",
+  "predecessor": {
+    "pr": "https://github.com/MurphyHoops/UEOT/pull/444",
+    "commit": "71b2daea4503d7558ce3d2414522783a7f1d6006",
+    "tree": "f389d863d88cc0b76eda14e20f078f075dc2b665",
+    "delivery_path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_theory_closure_v1/DELIVERY.json",
+    "delivery_sha256": "f66ee6650502844e07c1ae03ff8c0377c20e88d56bd2f7d8ce9a8d959035a09e",
+    "binding_rule": "The original frozen DELIVERY describes PR444. At a successor tree apply these three replacement rows to its payload; all other original payload bytes are unchanged. This correction file is an additive record, bound by the successor Git commit."
+  },
+  "replacements": [
+    {
+      "path": "mathematics/LEAN_API_SCOPE.md",
+      "before_sha256": "3b26dfa66ed49c7ddc5879cb1ff1f76a8f1953bbef0a660071ff426e5698ff7a",
+      "before_bytes": 12035,
+      "after_sha256": "4031d2e6b4b4ac662f7e7e338a496249df18de0ce70e5a8918eb9d16cacfd316",
+      "after_bytes": 12121
+    },
+    {
+      "path": "mathematics/README.md",
+      "before_sha256": "62d32a736c4738e893f3c0f3c8101eaddfc90ff0381e597eb379f9ae13e56dc5",
+      "before_bytes": 4699,
+      "after_sha256": "6cdf58461cb8482fa66d01bff28127be9dfee47a581ca71cbb398ac927245180",
+      "after_bytes": 4892
+    },
+    {
+      "path": "philosophy/README.md",
+      "before_sha256": "8337278ed6ef4194b66bc3669a993b003843cf7ae81b49558f5116459efd776d",
+      "before_bytes": 4053,
+      "after_sha256": "d718c886ad92cdcf6f791e911fea6b137970e77192f83a185281470fc093f82d",
+      "after_bytes": 4246
+    }
+  ],
+  "public_imports": {
+    "UEOT": {
+      "production_reachable": 1048,
+      "new_modules_reachable": 13
+    },
+    "UEOT.V3": {
+      "production_reachable": 205,
+      "new_modules_reachable": 0
+    },
+    "UEOT.V3.Compression": {
+      "production_reachable": 1032,
+      "new_modules_reachable": 13
+    },
+    "UEOT.V3.Compression.TheoryCompletion": {
+      "production_reachable": 820,
+      "new_modules_reachable": 13
+    }
+  },
+  "current_visual_review": {
+    "path": "mathematics/review/CORE_THEORY_BOOKS_2026-11-08/ROOT_FINAL_VISUAL_REVIEW.json",
+    "sha256": "6176f31af64989dc2228dc32209849415e1520aa67ce1b0e3fb47758ec770633",
+    "scope": "Mathematics identical-byte selected-page review reused; final philosophy pages 1,4,86-96 reviewed in the existing receipt. Not a new full 334-page visual review."
+  },
+  "pdfs": [
+    {
+      "path": "mathematics/UEOT_MATHEMATICS.pdf",
+      "sha256": "f3813ee21dd01e4bc56d880a5f65c557b9e6ed2b329c62e09c1b3da948cdf23a",
+      "byte_count": 1347545
+    },
+    {
+      "path": "philosophy/UEOT_PHILOSOPHY.pdf",
+      "sha256": "c5ea00a7db17ef9109480efc98a105b9a9ae69ce7f165a6748c0fe8c873d41a8",
+      "byte_count": 626870
+    }
+  ],
+  "verification": {
+    "predecessor_git_and_worktree_files": 1306,
+    "predecessor_bytes": 39464616,
+    "predecessor_mismatches": 0,
+    "new_builds": 0,
+    "new_native_path_runs": 0,
+    "reason": "Only entry prose/links changed; all production Lean and both MD/TeX/PDF sets retain their verified hashes."
+  },
+  "empirical_status": "UNVERIFIED",
+  "historical_records_rewritten": false
+}
