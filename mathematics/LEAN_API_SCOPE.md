@@ -56,7 +56,7 @@ InvariantLawGOA、CesaroLimitGOA、KilledQSDGOA 的定义描述给定核，本�
 
 ## Core 定本的同源来源消费者（2026-11-06）
 
-公共入口新增 `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreTheoryClosure`，通过既有 `TheoryCompletion`、`Compression`、`V3`、`UEOT` 根导出。原 106 个 P-ID 的冻结映射不改。
+公共入口 `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreTheoryClosure` 可经 `UEOT`、`UEOT.V3.Compression` 或 `UEOT.V3.Compression.TheoryCompletion` 导入。`UEOT.V3` 保持原有并行子集的范围，不导出这 13 个新增模块。原 106 个 P-ID 的冻结映射不改。
 
 `CoreRegenerativeSource` 从真实物理码、执行门、预付费用和 36 个局部噪声原子构造完整事件；`CoreRegenerativeRepair`/`Formation` 复用原修复秩与内生形成；`FiniteSourceGrowthControl`/`ControlPopulation` 消费旧 Perron 工厂并从实际人口推导任意允许历史核的有限条件超鞅与最优达到；`SourceCohortFeedback`/`CoreRegenerativeFeedback`/`FeedbackBoundary` 推出同源独立 cohort 的有限概率反馈及精确失效边界；`Population`/`Lineage` 从真实身份、父指针与标记连接有限 many-to-one；`Quotient` 保持完整事务与允许历史。
 
