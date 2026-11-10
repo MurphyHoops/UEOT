@@ -116,7 +116,7 @@
 \makeatother
 \subtitle{从原始对象---演化思想到预测、实现、持续、组合、目的与学习的统一架构}
 \author{}
-\date{2026-11-06}
+\date{2026-11-11}
 
 \begin{document}
 \frontmatter
@@ -228,8 +228,8 @@
   \protect\hyperlink{appendix-f}{附录 F. 维护版源码对应与证据层次}
 \end{itemize}
 
-\hypertarget{ux5b9aux672cux6838ux5fc3ux603bux8bbaux7ec4ux7ec7ux884cux52a8ux4e0eux7ee7ux627fux7684ux540cux6e90ux5173ux7cfb}{%
-\chapter{定本核心总论：组织、行动与继承的同源关系}\label{ux5b9aux672cux6838ux5fc3ux603bux8bbaux7ec4ux7ec7ux884cux52a8ux4e0eux7ee7ux627fux7684ux540cux6e90ux5173ux7cfb}}
+\hypertarget{core-theory}{%
+\chapter{定本核心总论：组织、行动与继承的同源关系}\label{core-theory}}
 
 本总论给出本版 Core 的独立阅读入口。它以钱德桂（Degui Qian）原论文的对象---演化问题为思想来源，保留后文已经完成的全部条件数学体系，同时公开修订原来超过证明范围的普遍断言。第 0---39 章、106 个稳定 P 编号及其形式化映射继续保留；本总论把已经可共同成立的主线置于发展记录之前。所谓定本，是主张、条件、反例和解释责任有了确定版本，不是自然普适性已经得到实验确认。经验支持仍为 \textbf{UNVERIFIED}。
 
@@ -288,7 +288,53 @@ D / bloom & 3 & 2 & 2 & 7 & 拒绝 \\
 
 恢复的因果性可以直接检验。关闭主执行门会使原始执行返回空结果；只翻转健康程序当前读取的 H 行活动位会改变其原始动作。切断 bootstrap 后，损坏状态在修复核中成为目标外自环；固定余额只有 2 且本阶段不再追加供给时亦然，因而不可强修复。这不是声称未来另获足额资源仍不可恢复。全码擦除使两个原程序具有相同可见物理态，在没有额外正确副本或区分历史时，任何只读该态的确定恢复器都不能同时恢复两个不同目标。私随机也不能把相同输入可靠地还原为两个相反答案。这些是信息和执行边界，而不是未通过某个证书的同义定义。
 
-形成桥在两个编译程序乘以 H/D 的四个真实初态上构造，固定无效标签为 false；参数 p 仍遍历整个正类。它从实际部件读出和实际新生响应律出发。完整可读物理载体决定真实有限响应，因此零缺陷不是外置假设；物理部件区域覆盖该载体，再由已有有限最小化与 child-cover 定理产生非空形成候选族。不同实际程序的未来新生概率不同，故不是恒定响应的空消费者。真实 bootstrap cut 改变损坏体的后继能力。这个结果不声称唯一自然边界，也不把带非零死亡的全人口过程装进要求必然永存的旧结构。
+形成桥在两个编译程序乘以 H/D 的四个真实初态上构造，固定无效标签为 false；参数 p 仍遍历整个正类。它从实际部件读出和实际新生响应律出发。完整可读物理载体决定真实有限响应，因此零缺陷不是外置假设；物理部件区域覆盖该载体，再由已有有限最小化与 child-cover 定理产生非空形成候选族。这个一次新生响应族非恒定：健康第二程序的新生率与其余三个初态不同。它不把所有程序或身体状态两两分开，也不等于完整未来预测身份。真实 bootstrap cut 改变损坏体的后继能力。这个结果不声称唯一自然边界，也不把带非零死亡的全人口过程装进要求必然永存的旧结构。
+
+\hypertarget{task-dependent-representation}{%
+\subsection{一次形成响应与有限未来的最小表示}\label{task-dependent-representation}}
+
+固定上节正类中的同一个参数 \(p\)、内部程序执行、六单位事务规则和无效标签 false；只比较单个创始体的四个初态 \(X=\{\theta_0H,\theta_0D,\theta_1H,\theta_1D\}\)。 令 \(B_t\) 为第 \(t\ge1\) 次普查中\textbf{整个实际人口产生的严格新生数}，死亡和零人口保留；\(R_1\) 为创始体首个事务实际支付的修复费。后继继续忠实运行原程序，按原规则各持一单位资本并获得下一次环境流入。
+
+对一个指定任务，两初态等价指该任务的全部记录有相同分布。以下``最小表示''是这四个初态的最粗充分分割，不是物理载体的唯一选择。
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3000}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+所保护的任务
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+准确等价类
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+类数
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+仅 \(B_1\) & \(\{\theta_0H,\theta_0D,\theta_1D\}\)；\(\{\theta_1H\}\) & 2 \\
+对每个有限 \(T\) 的联合记录 \((B_1,\ldots,B_T)\) & \(\{\theta_0H,\theta_0D\}\)；\(\{\theta_1D\}\)；\(\{\theta_1H\}\) & 3 \\
+上一任务再加入 \(R_1\)，或保留完整公开观察记录 & 四个单点类 & 4 \\
+\end{longtable}
+
+\textbf{证明。} 第一期 \(\theta_0H,\theta_0D,\theta_1D\) 均实际执行 care，所以 \(B_1\sim\mathrm{Bernoulli}(b)\)；\(\theta_1H\) 实际执行 bloom，故 \(B_1\sim\mathrm{Bernoulli}(b+\gamma)\)。正类给出 \(\gamma>0\)，第一行恰有两类。
+
+将 \(\theta_0H\) 与 \(\theta_0D\) 放在同一个原始噪声树上。首步都执行 care，恢复后码相同；对每一个局部噪声原子，实际 retained/newborn 两个身体槽相同，每个实际输出的资本均为一。首期修复费、退款及审计 ancestry 中的来源类型可以不同，但内部程序不读取这些差别。以后在对应身体槽使用相同噪声，逐次得到相同的身体槽与新生数。因此对每个有限 \(T\)，两者的整个新生计数记录逐路径相同，而非仅均值相同。
+
+另两个初态不能再合并。\(\theta_1H\) 已由第一期区分；对同样首期执行 care 的 \(\theta_1D\) 和 \(\theta_0D\)，首期后继总均值为 \(s+b\)，其中健康、损坏后继的均值分别为 \((s+b)(1-q)\)、\((s+b)q\)。下一期健康第二程序比第一程序多 \(\gamma\) 的新生率，损坏时二者均为 \(b\)。于是
+
+\[\begin{aligned}
+E_{\theta_0D} B_2&=(s+b)b,\\
+E_{\theta_1D} B_2&=(s+b)\{b+(1-q)\gamma\},\\
+E_{\theta_1D} B_2-E_{\theta_0D} B_2&=(s+b)(1-q)\gamma>0.
+\end{aligned}\]
+
+二期新生数至多为二，均值不同必使记录律不同，第二行的三类因此既充分又最粗。在上述有理参数点，两个二期均值为 \(27/64\) 与 \(39/64\)，差为 \(3/16\)。
+
+最后，\(\theta_0H\) 与 \(\theta_0D\) 的 \(R_1\) 分别恒为 0 和 3；它们的 cap 分别为 3 和 6，均在同一六单位规则下接受，费用在读噪声前支付。第三行因此分成四类。完整公开观察也直接看到不同程序码和 H/D，故其分割同样为四个单点。若只加到一步任务 \((B_1,R_1)\)，两个损坏程序仍不可区分，不能把该较小任务误写为四类。\(\blacksquare\)
+
+任何充分表示都不能合并不同记录律的初态，而按上述类编码本身充分，这说明这里确为完整分类。该结果针对\textbf{固定内部程序的新生预测任务}，没有缩小原外部允许控制策略类来保存旧最优结论，也不把一次形成响应升级为原 C1 的全任务最小状态。源执行、真实后继和一阶矩已有 Lean 端点；上述完整 2／3／4 分类在本次加固中给出书面证明与独立精确核验，未登记为新增 Lean 形式定理。
 
 \hypertarget{ux56dbux673aux5236ux751fux6210ux6392ux5e8fux4e0eux53efux5b9eux73b0ux589eux957fux63a7ux5236}{%
 \section{四、机制生成排序与可实现增长控制}\label{ux56dbux673aux5236ux751fux6210ux6392ux5e8fux4e0eux53efux5b9eux73b0ux589eux957fux63a7ux5236}}
@@ -380,8 +426,8 @@ M_a(i,j)=(s_a+b_a)\nu_j.\]
 
 定本的正向结论限于上述非空源类和已声明一般条件。超出类的普遍自创生、从全擦除无信息发明正确程序、封闭有限钱包无限增长、固定有限群体必然选优、二维自然普适性、唯一 GOA，以及增长推出道德义务，都不是被隐含证明的结论。已有反例的强版公开撤回或收窄；规范与主体论证保留独立责任；未履行的经验校准保持 UNVERIFIED。以下发展正文保留各阶段的精确内容和历史状态，当前核心阅读以本总论及最终发行回执为准。
 
-\hypertarget{ux6587ux6863ux5b9aux4f4dux4e0eux539fux59cbux601dux60f3ux7684ux6570ux5b66ux5316}{%
-\chapter{0. 文档定位与原始思想的数学化}\label{ux6587ux6863ux5b9aux4f4dux4e0eux539fux59cbux601dux60f3ux7684ux6570ux5b66ux5316}}
+\hypertarget{ch-0}{%
+\chapter{0. 文档定位与原始思想的数学化}\label{ch-0}}
 
 本文件是 UEOT（Universal Evolutionary Object Theory）的完整通用数学主文。它从原始论文提出的问题出发：对象为何能在材料和状态变化中持续存在；多个过程如何组成一个个体；对象通过什么接口与环境交互；功能、目标、学习与演化怎样在同一架构中获得严格表达。
 
@@ -486,8 +532,8 @@ GOA & 最优闭环的长期集合、占据分布或条件生存结构 & 唯一�
 
 附录 D 的 2371 项数值检查及其输出按 v3.0 历史记录保留。本轮新 Lean 检查是另一个证据集合，见第 38.8 节；不把旧代码输出冒称本轮重新运行。
 
-\hypertarget{ux57faux7840ux7ea6ux5b9aux4e0eux53efux590dux7528ux6570ux5b66ux5de5ux5177}{%
-\chapter{1. 基础约定与可复用数学工具}\label{ux57faux7840ux7ea6ux5b9aux4e0eux53efux590dux7528ux6570ux5b66ux5de5ux5177}}
+\hypertarget{ch-1}{%
+\chapter{1. 基础约定与可复用数学工具}\label{ch-1}}
 
 \hypertarget{ux7a7aux95f4ux6838ux4e0eux7b26ux53f7}{%
 \section{1.1 空间、核与符号}\label{ux7a7aux95f4ux6838ux4e0eux7b26ux53f7}}
@@ -512,6 +558,8 @@ D_{\rm TV}(P,Q)=\sup_A|P(A)-Q(A)|.
 D_{\rm KL}(P\|Q)=\int\log\frac{dP}{dQ}\,dP;
 \] 否则定义为 \(+\infty\)。\(0\log0=0\)。
 
+\hypertarget{p-met-01}{}
+
 \textbf{P-MET-01：核与读出的数据处理。} 对可测映射 \(f\) 和概率核 \(K\)， \[
 D_{\rm TV}(f_\#P,f_\#Q)\le D_{\rm TV}(P,Q),\qquad
 D_{\rm TV}(PK,QK)\le D_{\rm TV}(P,Q).
@@ -520,6 +568,8 @@ D_{\rm TV}(PK,QK)\le D_{\rm TV}(P,Q).
 \textbf{证明。} 第一式将事件限制为逆像 \(f^{-1}A\)。第二式写成对 \(0\le K(x,A)\le1\) 的积分，使用有界函数形式的 TV 对偶式。双射情形应用 \(f^{-1}\) 得反向不等式。\(\blacksquare\)
 
 KL 数据处理是 \textbf{K-INF-01}：共同随机通道处理不增加 KL；可由条件 KL 链式法则证明。对有限变量，该链式法则直接来自联合概率的乘法分解；标准 Borel 版本由正则条件核与相对熵分解得到。
+
+\hypertarget{p-met-02}{}
 
 \textbf{P-MET-02：跨度估计。} 对有界实函数 \(v\)，记 \(\operatorname{sp}(v)=\sup v-\inf v\)，则 \[
 |Pv-Qv|\le\operatorname{sp}(v)D_{\rm TV}(P,Q).
@@ -558,8 +608,8 @@ D_{\rm TV}(P,Q)\le\sqrt{\tfrac12D_{\rm KL}(P\|Q)}.
 
 Lean 对应为 \nolinkurl{MinCore.RelationDefectPresentation} 与 DefectCalibration，以及 \nolinkurl{UnifiedClosure.selectedTrainingDeployment} 和 coverageDeploymentRowLaw；完整命名与来源见附录 F。
 
-\hypertarget{ux4e16ux754cux8fc7ux7a0bux5b9eux9a8cux534fux8baeux4e0eux65f6ux95f4}{%
-\chapter{2. 世界过程、实验协议与时间}\label{ux4e16ux754cux8fc7ux7a0bux5b9eux9a8cux534fux8baeux4e0eux65f6ux95f4}}
+\hypertarget{ch-2}{%
+\chapter{2. 世界过程、实验协议与时间}\label{ch-2}}
 
 \hypertarget{ux4e00ux822cux53d7ux63a7ux8fc7ux7a0b}{%
 \section{2.1 一般受控过程}\label{ux4e00ux822cux53d7ux63a7ux8fc7ux7a0b}}
@@ -571,6 +621,8 @@ q_t(dx'\mid h,a)
 \] 给定，策略为因果核 \(\pi_t(da\mid h)\)。先给初始分布，再依次乘接策略与状态核。
 
 \textbf{K-PROC-01：路径律存在。} 可数时间索引、标准 Borel 空间和可测概率核下，Ionescu--Tulcea 扩张给出唯一的相应路径概率律。它保证指定过程模型的概率一致性，不保证模型对应自然系统。
+
+\hypertarget{p-proc-01}{}
 
 \textbf{P-PROC-01：历史状态化。} 任意上述历史依赖过程，在增广状态 \(Z_t=(t,H_t)\) 上都是时间齐次 Markov 控制过程。
 
@@ -626,8 +678,8 @@ q_t(dx'\mid h,a)
 
 固定候选未来的边缘分布吻合，不足以推出数据选择后的条件吻合。第 38 章证明真实 joint 的 tower，再讨论错误条件律为何会破坏风险结论。这样``学习→控制→未来''由时间顺序实现，而不把要证明的风险等式存入一个证书字段。
 
-\hypertarget{ux56e0ux5b50ux8868ux793aux534fux53d8ux4e0eux5bf9ux8c61ux5019ux9009}{%
-\chapter{3. 因子、表示协变与对象候选}\label{ux56e0ux5b50ux8868ux793aux534fux53d8ux4e0eux5bf9ux8c61ux5019ux9009}}
+\hypertarget{ch-3}{%
+\chapter{3. 因子、表示协变与对象候选}\label{ch-3}}
 
 \hypertarget{ux5d4cux5165ux56e0ux5b50}{%
 \section{3.1 嵌入因子}\label{ux5d4cux5165ux56e0ux5b50}}
@@ -642,6 +694,8 @@ q_t(dx'\mid h,a)
 
 \hypertarget{ux8868ux793aux534fux53d8}{%
 \section{3.2 表示协变}\label{ux8868ux793aux534fux53d8}}
+
+\hypertarget{p-fac-01}{}
 
 \textbf{P-FAC-01。} 设 \(T:\mathcal X\to\mathcal X'\) 为双可测双射，同时运输 \[
 P'(Tx,a,T B)=P(x,a,B),\qquad f'=f\circ T^{-1},
@@ -672,8 +726,8 @@ P'(Tx,a,T B)=P(x,a,B),\qquad f'=f\circ T^{-1},
 
 \nolinkurl{OrganizationalCoreAssembly} 的 \nolinkurl{organizational_terminal_preserves_registered_interfaces} 与 \nolinkurl{organizational_terminal_is_coarsest} 分别证明属性保持和指定初始区分下的最粗性。其组织标签的物理含义仍需建模，最粗性也只相对于注册输出、动作、奖励和真实核。第 35 章将此入口接到实际源上的生存和安全控制。
 
-\hypertarget{ux89c4ux8303ux9884ux6d4bux8eabux4efdux5b58ux5728ux6700ux5c0fux6027ux7ec6ux5316ux4e0eux66f4ux65b0}{%
-\chapter{4. 规范预测身份：存在、最小性、细化与更新}\label{ux89c4ux8303ux9884ux6d4bux8eabux4efdux5b58ux5728ux6700ux5c0fux6027ux7ec6ux5316ux4e0eux66f4ux65b0}}
+\hypertarget{ch-4}{%
+\chapter{4. 规范预测身份：存在、最小性、细化与更新}\label{ch-4}}
 
 \hypertarget{ux6982ux7387ux6d4bux5ea6ux503cux7684ux89c4ux8303ux72b6ux6001}{%
 \section{4.1 概率测度值的规范状态}\label{ux6982ux7387ux6d4bux5ea6ux503cux7684ux89c4ux8303ux72b6ux6001}}
@@ -686,6 +740,8 @@ C_{\mathcal I}(h)=\bigl(K_{i_1}(h,\cdot),K_{i_2}(h,\cdot),\ldots\bigr).
 
 \hypertarget{ux6700ux5c0fux6027ux5b9aux7406}{%
 \section{4.2 最小性定理}\label{ux6700ux5c0fux6027ux5b9aux7406}}
+
+\hypertarget{p-pred-01}{}
 
 \textbf{P-PRED-01：共同协议的规范最小性。} 若统计量 \(S=s(H)\) 取值于标准 Borel，并对每个 \(i\) 存在核 \(L_i\) 满足 \[
 K_i(H,\cdot)=L_i(S,\cdot)\quad\mu\text{-a.s.},
@@ -713,6 +769,8 @@ K_i(h,\{1\})=\mathbf1_{\{h=i\}}.
 \hypertarget{ux76eeux6807ux5b8cux5907ux6027ux4e0eux7ec6ux5316}{%
 \section{4.4 目标完备性与细化}\label{ux76eeux6807ux5b8cux5907ux6027ux4e0eux7ec6ux5316}}
 
+\hypertarget{p-pred-02}{}
+
 \textbf{P-PRED-02：目标推送与协议细化。} 若 \(Y_1=T(Y_2)\)，则其规范预测核满足 \[
 C_1=T_\#C_2.
 \] 若 \(\mathcal I_1\subseteq\mathcal I_2\)，则 \[
@@ -727,6 +785,8 @@ C_1=T_\#C_2.
 
 \hypertarget{ux5168ux672aux6765ux72b6ux6001ux7684ux9012ux5f52ux66f4ux65b0}{%
 \section{4.5 全未来状态的递归更新}\label{ux5168ux672aux6765ux72b6ux6001ux7684ux9012ux5f52ux66f4ux65b0}}
+
+\hypertarget{p-pred-03}{}
 
 \textbf{P-PRED-03：有限字母过程的递归更新。} 假设所有响应来自同一个因果过程；协议族对行动前缀和正概率观察后的允许延续封闭，并包含相应联合未来柱集。则预测等价在下一步更新中保持，存在 \[
 C_{t+1}=\mathcal U_t(C_t,a_t,o_{t+1})
@@ -748,13 +808,15 @@ P-PRED-03 的 Lean 源 PredictionUpdate 证明分子、分母已经通过当前�
 
 有限受控源还可以抽取一个较弱但很有用的对象：给定粗历史的微观末状态支持。第 37 章从真实历史条件分布证明，该支持恰好等于按已记录动作和新观察递推的 traceSupport。此支持递推只表达哪些状态仍可能；完整后验权重仍由概率决定。正历史与零历史的区分不能省去。
 
-\hypertarget{ux9884ux6d4bux4fe1ux606fux8bb0ux5fc6ux590dux6742ux5ea6ux4e0eux53efux538bux7f29ux6027}{%
-\chapter{5. 预测信息、记忆复杂度与可压缩性}\label{ux9884ux6d4bux4fe1ux606fux8bb0ux5fc6ux590dux6742ux5ea6ux4e0eux53efux538bux7f29ux6027}}
+\hypertarget{ch-5}{%
+\chapter{5. 预测信息、记忆复杂度与可压缩性}\label{ch-5}}
 
 \hypertarget{ux4fe1ux606fux4fddux7559ux6052ux7b49ux5f0f}{%
 \section{5.1 信息保留恒等式}\label{ux4fe1ux606fux4fddux7559ux6052ux7b49ux5f0f}}
 
 令 \(M=f(H)\)，暂固定一个实验分布，并假设有关互信息有限。
+
+\hypertarget{p-info-01}{}
 
 \textbf{P-INFO-01。} \[
 I(H;Y)=I(M;Y)+I(H;Y\mid M).
@@ -770,6 +832,8 @@ H(M)\ge I(H;Y)-\varepsilon.
 
 \hypertarget{ux4eceux4fe1ux606fux6b8bux5deeux5230ux9884ux6d4bux8befux5dee}{%
 \section{5.2 从信息残差到预测误差}\label{ux4eceux4fe1ux606fux6b8bux5deeux5230ux9884ux6d4bux8befux5dee}}
+
+\hypertarget{p-info-02}{}
 
 \textbf{P-INFO-02。} 对标准 Borel 变量 \(H,Y,M,U\)，若 \(M,U\) 是历史的函数，令 \[
 \varepsilon=I(H;Y\mid M,U).
@@ -796,6 +860,8 @@ E D_{\rm TV}\bigl(P(Y\mid H,U),Q(\cdot\mid M,U)\bigr)
 \le\varepsilon.
 \] 编码器不能读取尚未发生的 \(Y\)。该量衡量指定平均预测误差所需的记忆信息。
 
+\hypertarget{p-info-03}{}
+
 \textbf{P-INFO-03：零失真复杂度。} 若 \(C=P(Y\in\cdot\mid H,U)\) 是离散随机元且 \(H(C\mid U)<\infty\)，则 \[
 R_{\rm obj}(0)=H(C\mid U).
 \]
@@ -808,6 +874,8 @@ I(H;M\mid U)\ge I(C;M\mid U)=H(C\mid U).
 
 \hypertarget{ux8eabux4efdux4fddux7559ux7684ux4fe1ux606fux4e0bux754c}{%
 \section{5.4 身份保留的信息下界}\label{ux8eabux4efdux4fddux7559ux7684ux4fe1ux606fux4e0bux754c}}
+
+\hypertarget{p-info-04}{}
 
 \textbf{P-INFO-04：Fano 型身份下界。} 令 \(J\) 均匀取 \(K\ge2\) 个身份，未来记录 \(Y_T\) 可解码 \(\widehat J\)，错误率为 \(e\)。则 \[
 I(J;Y_T)\ge\log K-h_2(e)-e\log(K-1).
@@ -822,6 +890,8 @@ I(M;B\mid U)\ge H(B\mid U)-h_2(\epsilon).
 \hypertarget{ux9057ux6f0fux4e0e-packing-ux4e0bux754c}{%
 \section{5.5 遗漏与 packing 下界}\label{ux9057ux6f0fux4e0e-packing-ux4e0bux754c}}
 
+\hypertarget{p-info-05}{}
+
 \textbf{P-INFO-05。} 若两历史被同一表示 \(R\) 合并，但某协议的未来核相距 \(\delta>0\)，则任意仅依赖 \(R\) 的解码核至少在其中一个历史上有 TV 误差 \(\delta/2\)。
 
 \textbf{证明。} 两个误差的和至少为两真实核的距离。\(\blacksquare\)
@@ -835,8 +905,8 @@ InformationPacking 的 \nolinkurl{common_decoder_half_distance}、packing\_force
 
 这些下界解释为何某些区别不能在指定精度下被合并。它们不决定计算时间、能耗或唯一信息驱动力；将 \(\Phi\) 选成 TV、Bayes 风险或记忆率之后，还需证明该量怎样进入同一策略评价和具体测量。第 23、33、34 章分别处理规范、定量校准和目的忠实性。
 
-\hypertarget{ux7ed3ux6784ux5316ux5f00ux653eux73afux5883ux63a5ux53e3ux4e0eux56e0ux679cux8fb9ux754c}{%
-\chapter{6. 结构化开放、环境接口与因果边界}\label{ux7ed3ux6784ux5316ux5f00ux653eux73afux5883ux63a5ux53e3ux4e0eux56e0ux679cux8fb9ux754c}}
+\hypertarget{ch-6}{%
+\chapter{6. 结构化开放、环境接口与因果边界}\label{ch-6}}
 
 \hypertarget{ux8054ux5408ux95edux5408ux5224ux636e}{%
 \section{6.1 联合闭合判据}\label{ux8054ux5408ux95edux5408ux5224ux636e}}
@@ -845,6 +915,8 @@ InformationPacking 的 \nolinkurl{common_decoder_half_distance}、packing\_force
 \varepsilon_{\rm joint}
 =I(H^S,H^E;Y_f^+\mid M,U).
 \]
+
+\hypertarget{p-int-01}{}
 
 \textbf{P-INT-01：结构化充分性的充要条件。} \[
 Y_f^+\perp H\mid(M,U)
@@ -870,6 +942,8 @@ x\sim_Sx'\iff K_i(x,e)=K_i(x',e)\quad\forall e,i,
 \] \[
 e\sim_Ee'\iff K_i(x,e)=K_i(x,e')\quad\forall x,i.
 \] 相应等价类为 \(M^*(x),U^*(e)\)。
+
+\hypertarget{p-int-02}{}
 
 \textbf{P-INT-02。} 存在良定义核 \[
 K_i(x,e)=Q_i(M^*(x),U^*(e)).
@@ -906,6 +980,8 @@ E_2[Y\mid do(X=x)]=0.
 
 相对于有限变量集 \(W\)，\(B\subseteq W\) 是目标 \(Y\) 的 blanket，若 \(Y\perp W\setminus B\mid B\)；极小 blanket 称边界。
 
+\hypertarget{p-int-03}{}
+
 \textbf{P-INT-03。} 若条件独立满足半图公理与 intersection，极小边界唯一。
 
 \textbf{证明。} 假设 \(B,C\) 都是边界。记 \(A=B\setminus C\)，\(D=C\setminus B\)，\(F=B\cap C\)，\(R=W\setminus(B\cup C)\)。blanket 性给 \(Y\perp D\mid A,F\) 与 \(Y\perp A\mid D,F\)。 intersection 得 \(Y\perp(A,D)\mid F\)；再与 \(Y\perp R\mid A,D,F\) 用 contraction，得 \(F\) 也是 blanket。极小性迫使 \(F=B=C\)。\(\blacksquare\)
@@ -919,11 +995,13 @@ P-INT-02 的两个输入商只证明响应核有良定义的双侧因子化。�
 
 形成可交换不蕴含 binding 可交换，源码已有有限反例。因而``内外接口已闭合→父对象已生成''的叙述必须补齐这些独立条件。第 34.4 节给出完整组合命题及证明。
 
-\hypertarget{ux52a8ux6001ux95edux5408ux4e00ux822cux8fc7ux7a0bux4e0eux591aux5c3aux5ea6ux4e00ux81f4ux6027}{%
-\chapter{7. 动态闭合、一般过程与多尺度一致性}\label{ux52a8ux6001ux95edux5408ux4e00ux822cux8fc7ux7a0bux4e0eux591aux5c3aux5ea6ux4e00ux81f4ux6027}}
+\hypertarget{ch-7}{%
+\chapter{7. 动态闭合、一般过程与多尺度一致性}\label{ch-7}}
 
 \hypertarget{ux7cbeux786e-markov-ux5546}{%
 \section{7.1 精确 Markov 商}\label{ux7cbeux786e-markov-ux5546}}
+
+\hypertarget{p-dyn-01}{}
 
 \textbf{P-DYN-01：strong lumpability。} 设 \(X_t\) 为 Markov 链，\(f:\mathcal X\to\mathcal M\) 为可测满射，并已存在可测候选宏观核 \(\bar P\)。以下等价：
 
@@ -945,6 +1023,8 @@ P-INT-02 的两个输入商只证明响应核有良定义的双侧因子化。�
 \hypertarget{ux8fdeux7eedux65f6ux95f4ux751fux6210ux5143ux5224ux636e}{%
 \section{7.2 连续时间生成元判据}\label{ux8fdeux7eedux65f6ux95f4ux751fux6210ux5143ux5224ux636e}}
 
+\hypertarget{p-dyn-02}{}
+
 \textbf{P-DYN-02。} 有限 CTMC 生成元 \(L\) 与分块 \(B_1,\ldots,B_m\) 满足精确分块商，当且仅当 \[
 \sum_{y\in B_j}l_{xy}
 \] 对同一 \(B_i\) 中所有 \(x\) 不变。公共值构成宏观生成元 \(\bar L\)。
@@ -958,6 +1038,8 @@ P-INT-02 的两个输入商只证明响应核有良定义的双侧因子化。�
 \epsilon(f)=\sup_{f(x)=f(x'),a}
 D_{\rm TV}(f_\#P_{x,a},f_\#P_{x',a})
 \] 小，且有可测截面 \(s(m)\)，取 \(\bar P_{m,a}=f_\#P_{s(m),a}\)，得到统一投影误差不超过 \(\epsilon(f)\)。有限空间总有截面；一般空间不能无条件假定。
+
+\hypertarget{p-dyn-03}{}
 
 \textbf{P-DYN-03：同策略路径误差。} 两套有限字母因果记录过程在相同已发生历史上的下一步核差不超过 \(\epsilon_t\in[0,1]\)，使用同一因果策略且初始记录相同，则 \[
 D_{\rm TV}(P_{0:T},\widehat P_{0:T})
@@ -973,6 +1055,8 @@ D_{\rm TV}(P_{0:T},\widehat P_{0:T})
 \section{7.4 同一底过程的跨尺度商}\label{ux540cux4e00ux5e95ux8fc7ux7a0bux7684ux8de8ux5c3aux5ea6ux5546}}
 
 设 \(f_r=c_{sr}\circ f_s\)，两尺度对同一底核的误差分别为 \(\epsilon_r,\epsilon_s\)。
+
+\hypertarget{p-dyn-04}{}
 
 \textbf{P-DYN-04。} 在可达像 \(f_s(\mathcal X)\) 上， \[
 \sup_{m,a}D_{\rm TV}
@@ -1006,8 +1090,8 @@ D_{\rm TV}(P_{0:T},\widehat P_{0:T})
 
 这不是用平均误差偷换统一误差：平均所用的 \(\nu_t\) 就是比较中的真实过程访问律，证明保留了它的来源。训练行分布不相同的情况下仍需 P-STAT-09 或新的覆盖结论。
 
-\hypertarget{ux6301ux7eedux6027ux4e0dux53d8ux7ed3ux6784ux53efux884cux6027ux4e0eux76f8ux5bf9ux8eabux4efd}{%
-\chapter{8. 持续性：不变结构、可行性与相对身份}\label{ux6301ux7eedux6027ux4e0dux53d8ux7ed3ux6784ux53efux884cux6027ux4e0eux76f8ux5bf9ux8eabux4efd}}
+\hypertarget{ch-8}{%
+\chapter{8. 持续性：不变结构、可行性与相对身份}\label{ch-8}}
 
 \hypertarget{ux8eabux4efdux5206ux652fux4e0eux6301ux7eedux57df}{%
 \section{8.1 身份分支与持续域}\label{ux8eabux4efdux5206ux652fux4e0eux6301ux7eedux57df}}
@@ -1018,6 +1102,8 @@ D_{\rm TV}(P_{0:T},\widehat P_{0:T})
 
 \hypertarget{ux786eux5b9aux6027ux6301ux7eedux7684ux5fc5ux8981ux4e0dux53d8ux6838}{%
 \section{8.2 确定性持续的必要不变核}\label{ux786eux5b9aux6027ux6301ux7eedux7684ux5fc5ux8981ux4e0dux53d8ux6838}}
+
+\hypertarget{p-per-01}{}
 
 \textbf{P-PER-01。} 连续半流 \(\phi_t\) 的轨道长期位于闭集 \(\mathcal V\)，且轨道预紧，则 \[
 \omega(x)=\bigcap_{T>0}\overline{\{\phi_t(x):t\ge T\}}
@@ -1039,6 +1125,8 @@ D_{\rm TV}(P_{0:T},\widehat P_{0:T})
 \hypertarget{ux968fux673aux6301ux7eedux4e0eux5360ux636eux6838}{%
 \section{8.4 随机持续与占据核}\label{ux968fux673aux6301ux7eedux4e0eux5360ux636eux6838}}
 
+\hypertarget{p-per-02}{}
+
 \textbf{P-PER-02。} 设 \(P_t\) 为 Polish 空间上将 \(C_b\) 映入 \(C_b\) 的 Feller 半群。若 \[
 \bar\mu_T=\frac1T\int_0^T\mu_0P_t\,dt
 \] 在 \(T\ge1\) 上紧，则沿 \(T_n\to\infty\) 存在弱收敛子列；任一这样的极限 \(\nu\) 不变。若各时刻分布均支撑在闭集 \(\mathcal V\)，则 \(\nu(\mathcal V)=1\)。
@@ -1057,6 +1145,8 @@ D_{\rm TV}(P_{0:T},\widehat P_{0:T})
 K_{n+1}=\{x\in K_n:\exists a,\ P(K_n\mid x,a)=1\}.
 \]
 
+\hypertarget{p-per-03}{}
+
 \textbf{P-PER-03。} 递推在有限步稳定于 \(K_\infty\)。它恰为存在策略使系统以概率一永不退出 \(\mathcal V\) 的状态集，并存在保持它的平稳确定性策略。
 
 \textbf{证明。} 集合单调递减且有限。稳定后每点存在把下一状态留在同一集的动作，逐点选取即可归纳保证永不退出。反向，若某状态能永不退出，则第一步必须以概率一进入同样有此能力的状态；归纳它不可能在任何删除步骤被剔除。\(\blacksquare\)
@@ -1071,6 +1161,8 @@ T_{\mathcal V}(x)=
 \left\{v:\liminf_{h\downarrow0}\frac{d(x+hv,\mathcal V)}h=0\right\}.
 \]
 
+\hypertarget{p-per-04}{}
+
 \textbf{P-PER-04：切向必要性。} 若一条在零点可微的可行轨迹从 \(x\) 出发并留在 \(\mathcal V\)，则 \(\dot x(0)\in T_{\mathcal V}(x)\)。
 
 \textbf{证明。} \(x(h)=x+h\dot x(0)+o(h)\in\mathcal V\)，故距离比不超过 \(o(h)/h\)。\(\blacksquare\)
@@ -1084,11 +1176,13 @@ P-PER-03 的现有源 ViabilitySource.p\_per\_03 已构造真正的无限轨迹�
 
 部分观察时，动作只能依赖粗历史，不可以对未观测微观状态分别选择。第 37 章因此在真实后验支持上要求一个共同认证动作，并对它的全部正概率后继支持作后向递推，证明有限时域策略存在的充要条件。它与本章完全观察、平稳无限时域核是不同定理，不能把有限支持结果直接取 \(T\to\infty\)。
 
-\hypertarget{ux6062ux590dux6270ux52a8ux4e0eux89c4ux8303ux6062ux590dux52bf}{%
-\chapter{9. 恢复、扰动与规范恢复势}\label{ux6062ux590dux6270ux52a8ux4e0eux89c4ux8303ux6062ux590dux52bf}}
+\hypertarget{ch-9}{%
+\chapter{9. 恢复、扰动与规范恢复势}\label{ch-9}}
 
 \hypertarget{ux79bbux6563ux6062ux590dux7ba1ux9053}{%
 \section{9.1 离散恢复管道}\label{ux79bbux6563ux6062ux590dux7ba1ux9053}}
+
+\hypertarget{p-rec-01}{}
 
 \textbf{P-REC-01。} 设 \(R_n\ge0\)，\(ER_0<\infty\)，且 \[
 E[R_{n+1}\mid\mathcal F_n]\le\kappa R_n+\eta,
@@ -1107,6 +1201,8 @@ P(R_n\ge a)\le
 \hypertarget{ux8fdeux7eedux968fux673aux6062ux590d}{%
 \section{9.2 连续随机恢复}\label{ux8fdeux7eedux968fux673aux6062ux590d}}
 
+\hypertarget{p-rec-02}{}
+
 \textbf{P-REC-02。} 设 \(W\ge c\,d(\cdot,\mathcal V)^2\)，属于生成元 \(\mathcal L\) 的适当定义域，并具备 Dynkin 公式、局部化极限与可积条件，使 \(m(t)=EW(X_t)\) 局部绝对连续。若 \[
 \mathcal LW\le-aW+b,\qquad a,c>0,\ b\ge0,
 \] 则 \[
@@ -1122,11 +1218,15 @@ EW(X_t)\le e^{-at}W(x)+\frac ba(1-e^{-at}),
 
 令 \(\tau_A=\inf\{n\ge0:X_n\in A\}\)， \(V_A(x)=E_x\tau_A\in[0,\infty]\)，且在 \(A\) 上取零。
 
+\hypertarget{p-rec-03}{}
+
 \textbf{P-REC-03。} 对 \(x\notin A\) 且 \(V_A(x)<\infty\)， \[
 PV_A(x)-V_A(x)=-1.
 \]
 
 \textbf{证明。} 第一步分析与 Markov 性给 \(V_A(x)=1+E_xV_A(X_1)\)。有限性也同时保证右侧可积。\(\blacksquare\)
+
+\hypertarget{p-rec-04}{}
 
 \textbf{P-REC-04：漂移推出恢复时间。} 若有限非负函数 \(V\) 在 \(A^c\) 满足 \(PV-V\le-c<0\)，则 \[
 E_x\tau_A\le V(x)/c.
@@ -1152,8 +1252,8 @@ E V(X_{\tau_A\wedge N})+cE(\tau_A\wedge N)\le V(x).
 
 因此可先用生存固定点证明存在安全动作，再用程序桥证明该动作由恢复的程序实现。程序来源、解释器与编解码正确性仍必须说明；它们不能由 P-REC 的收缩或漂移不等式生成。连续分支的 RecoveryDynkin 也显式消费过程特定的 \nolinkurl{DynkinExpectationCertificate}，然后证明标量微分不等式的后果。
 
-\hypertarget{ux51c6ux5e73ux7a33ux8c31ux4e0eux6301ux7eedux65f6ux95f4ux7a97}{%
-\chapter{10. 准平稳、谱与持续时间窗}\label{ux51c6ux5e73ux7a33ux8c31ux4e0eux6301ux7eedux65f6ux95f4ux7a97}}
+\hypertarget{ch-10}{%
+\chapter{10. 准平稳、谱与持续时间窗}\label{ch-10}}
 
 \hypertarget{killed-ux8fc7ux7a0bux4e0e-qsd}{%
 \section{10.1 killed 过程与 QSD}\label{killed-ux8fc7ux7a0bux4e0e-qsd}}
@@ -1161,6 +1261,8 @@ E V(X_{\tau_A\wedge N})+cE(\tau_A\wedge N)\le V(x).
 在评估域 \(\mathcal V\) 上，定义次概率半群 \[
 P_t^{\mathcal V}f(x)=E_x[f(X_t)\mathbf1_{\{t<\tau_{\mathcal V}\}}].
 \] 概率 \(q\) 为 QSD，若存活条件下分布始终为 \(q\)。
+
+\hypertarget{p-qsd-01}{}
 
 \textbf{P-QSD-01：条件稳定化的逆向结论。} 若 \[
 \mu_t^c=\frac{\mu P_t^{\mathcal V}}{\mu P_t^{\mathcal V}\mathbf1}
@@ -1187,6 +1289,8 @@ qP_s^{\mathcal V}=e^{-\lambda s}q.
 qQ=\rho q,\quad Qh=\rho h,\quad q\mathbf1=1,\quad qh=1.
 \]
 
+\hypertarget{p-qsd-02}{}
+
 \textbf{P-QSD-02。} \(q\) 是 QSD；Doob 变换 \[
 Q^\uparrow_{ij}=\frac{Q_{ij}h_j}{\rho h_i}
 \] 是随机核，且其不变概率为 \(\varpi_i=q_i h_i\)。
@@ -1202,6 +1306,8 @@ K^\uparrow=\operatorname{diag}(h)^{-1}K\operatorname{diag}(h)+\lambda I.
 
 \hypertarget{ux540cux521dux6001ux7684ux6301ux7eedux65f6ux95f4ux7a97}{%
 \section{10.3 同初态的持续时间窗}\label{ux540cux521dux6001ux7684ux6301ux7eedux65f6ux95f4ux7a97}}
+
+\hypertarget{p-qsd-03}{}
 
 \textbf{P-QSD-03。} 对同一初态 \(\mu\)，假设在 \(t\ge t_0\) 上 \[
 \|\mu_t^c-q\|_{\rm TV}\le Ce^{-\gamma t},\qquad
@@ -1223,6 +1329,8 @@ P_\mu(\tau>t)\ge ce^{-\lambda t},
 0<\lambda_1<\lambda_2\le\cdots.
 \] 取 \(\|\phi_1\|_2=1\)，初始概率密度 \(g\in L^2(m)\) 满足 \(g\ge0\)、\(\int g\,dm=1\)，并记 \(a_1=\langle g,\phi_1\rangle>0\)。
 
+\hypertarget{p-qsd-04}{}
+
 \textbf{P-QSD-04。} 存在 \(C_g,c_g>0,t_0\)，使 \[
 q(dx)=\frac{\phi_1(x)m(dx)}{\int\phi_1\,dm},\qquad
 \|\mu_t^c-q\|_{\rm TV}\le C_ge^{-(\lambda_2-\lambda_1)t},
@@ -1243,8 +1351,8 @@ M-PE-01 重用本章的归一化代数：给定正的左右特征数据，就能
 
 这解释为什么``统一正特征结构''与``所有长期结果被一个谱定理生成''不同。P-QSD-01 的条件极限、P-QSD-03 的同初态窗口、P-QSD-04 的可逆谱分析以及一般 GOA 稳定性仍各有适配。模型改变了支撑或失去谱隙时，应回到这些独立条件。
 
-\hypertarget{ux5386ux53f2ux8eabux4efdux8fd0ux8f93ux4e0eux53d1ux5c55ux5b9aux5f8b}{%
-\chapter{11. 历史身份、运输与发展定律}\label{ux5386ux53f2ux8eabux4efdux8fd0ux8f93ux4e0eux53d1ux5c55ux5b9aux5f8b}}
+\hypertarget{ch-11}{%
+\chapter{11. 历史身份、运输与发展定律}\label{ch-11}}
 
 \hypertarget{ux6709ux5411ux5ef6ux7eed}{%
 \section{11.1 有向延续}\label{ux6709ux5411ux5ef6ux7eed}}
@@ -1261,6 +1369,8 @@ M-PE-01 重用本章的归一化代数：给定正的左右特征数据，就能
 对不同时刻的冻结结构模型，用端核 \(K_t:\mathcal M_t\to\mathcal P(\mathcal M_t)\)； 运输 \(\Gamma_{s,t}:\mathcal M_s\to\mathcal M_t\) 满足 \(\Gamma_{r,t}=\Gamma_{s,t}\circ\Gamma_{r,s}\)。 精确交换为 \[
 (\Gamma_{s,t})_\#K_s(m,\cdot)=K_t(\Gamma_{s,t}m,\cdot).
 \]
+
+\hypertarget{p-id-01}{}
 
 \textbf{P-ID-01：运输缺损累计。} 若相邻端核交换误差至多 \(\epsilon_t\)，则 \[
 \sup_mD_{\rm TV}\bigl((\Gamma_{0,n})_\#K_0(m),
@@ -1286,6 +1396,8 @@ r_t=d(\Theta_{t+1},\Psi_t(\Theta_t,E_t,a_t))
 \] 在冻结模型下评价，并检查预测到的因果后果，而不只检查描述子拟合。
 
 任意有限轨迹都能被时间查表模型零残差拟合，因此零训练残差不证明发展机制。
+
+\hypertarget{p-id-02}{}
 
 \textbf{P-ID-02：发展管道。} 在相同已声明外部输入下，参考轨迹 \(\bar\Theta_{t+1}=\Psi_t(\bar\Theta_t)\)。若实际模型残差至多 \(\epsilon_t\)，且 \(\Psi_t\) 是 \(L_t\)-Lipschitz，则 \[
 e_{t+1}\le L_te_t+\epsilon_t,
@@ -1317,8 +1429,8 @@ LineageSemantics 中 SameObject 比较身份，OffspringOf 同时要求真实父
 
 P12 的 \nolinkurl{homeostaticMarginals_preserve_lifecycleParent} 从 carrier 上每个组织对象均满足与同一 parent 的 SameObject 前提，推出各有限时刻被支持边缘的身份保持。这是一条条件身份桥，不是从边缘分布接近自动推出身份相同。第 33 章的缺陷界也不应直接解释成身份的百分比。
 
-\hypertarget{ux5bf9ux8c61ux8bc1ux4e66ux4e0eux56e0ux679cux5b8cux6574ux6027-ux3c9}{%
-\chapter{12. 对象证书与因果完整性 Ω}\label{ux5bf9ux8c61ux8bc1ux4e66ux4e0eux56e0ux679cux5b8cux6574ux6027-ux3c9}}
+\hypertarget{ch-12}{%
+\chapter{12. 对象证书与因果完整性 Ω}\label{ch-12}}
 
 \hypertarget{ux5206ux5c42ux8bb0ux5f55}{%
 \section{12.1 分层记录}\label{ux5206ux5c42ux8bb0ux5f55}}
@@ -1361,6 +1473,8 @@ D\subseteq D',\ \chi(D)=0\Rightarrow\chi(D')=0,
 \Omega_T(O)=(\mathcal M,\mathcal C_{\Omega,T}).
 \]
 
+\hypertarget{p-omg-01}{}
+
 \textbf{P-OMG-01：极小毁损重建。} \[
 \chi_{O,T}(D)=0
 \iff \exists C\in\mathcal C_{\Omega,T},\ C\subseteq D.
@@ -1374,6 +1488,8 @@ D\subseteq D',\ \chi(D)=0\Rightarrow\chi(D')=0,
 在预先给定模型距离 \(d\) 与非空失败模型集 \(\mathcal F_O\) 下， \[
 \Gamma_O(T)=\inf_{F\in\mathcal F_O}d(T,F).
 \]
+
+\hypertarget{p-omg-02}{}
 
 \textbf{P-OMG-02。} \[
 |\Gamma_O(T)-\Gamma_O(S)|\le d(T,S).
@@ -1408,8 +1524,8 @@ OperationalObject 分别记录预测身份、形成出处、相互作用区分�
 
 第 34 章将 P0--P12 的终端写为有条件的对象生命周期。P12 最终审计为 PARTIAL / EXPLICIT BOUNDARY：已有组织构造、平均稳态、资源可行性与历史身份链，但输入仍包含程序来源与可信实现。工作包 CLOSED 不能被改写为无前提的生命起源或任意对象自生产定理。
 
-\hypertarget{ux9884ux6d4bux8eabux4efdux7684ux5b9eux73b0ux5197ux4f59ux4e0eux6bc1ux635fux5bf9ux5076}{%
-\chapter{13. 预测身份的实现、冗余与毁损对偶}\label{ux9884ux6d4bux8eabux4efdux7684ux5b9eux73b0ux5197ux4f59ux4e0eux6bc1ux635fux5bf9ux5076}}
+\hypertarget{ch-13}{%
+\chapter{13. 预测身份的实现、冗余与毁损对偶}\label{ch-13}}
 
 \hypertarget{ux5355ux8c03ux8bbfux95eeux7cfbux7edf}{%
 \section{13.1 单调访问系统}\label{ux5355ux8c03ux8bbfux95eeux7cfbux7edf}}
@@ -1421,6 +1537,8 @@ OperationalObject 分别记录预测身份、形成出处、相互作用区分�
 \qquad
 \mathcal M_0=\min_{\subseteq}\mathcal A_0.
 \] 等式采用统一点态或同一参考测度下的共同模零语义。
+
+\hypertarget{p-car-01}{}
 
 \textbf{P-CAR-01。} \(\mathcal A_0\) 向上闭合，且在有限 \(V\) 上每个充分集包含一个极小充分集。
 
@@ -1436,9 +1554,13 @@ b_V(\mathcal M)=
 \min_{\subseteq}\{D\subseteq V:\forall M\in\mathcal M,\ D\cap M\ne\varnothing\}.
 \]
 
+\hypertarget{p-car-02}{}
+
 \textbf{P-CAR-02。} 在纯访问擦除中，删除 \(D\) 后仍能恢复 \(C\)，当且仅当存在 \(M\in\mathcal M_0\) 与 \(D\) 不交。因此极小访问毁损集为 \(b_V(\mathcal M_0)\)。
 
 \textbf{证明。} 剩余访问集为 \(V\setminus D\)。其充分当且仅当包含极小充分集。否定这一命题恰为击中全部极小充分集。\(\blacksquare\)
+
+\hypertarget{p-car-03}{}
 
 \textbf{P-CAR-03：双 blocker。} \[
 b_V(b_V(\mathcal M))=\mathcal M.
@@ -1483,6 +1605,8 @@ r(S)=\inf_{\{q_{z,i}\}}\max_{h,i}
 D_{\rm TV}(p_{h,i},q_{R_S(h),i}).
 \]
 
+\hypertarget{p-car-04}{}
+
 \textbf{P-CAR-04。} \[
 \tfrac12e(S)\le r(S)\le e(S).
 \] \textbf{证明。} 对任何中心，同纤维两真实分布的距离不超过两个中心误差之和，给下界。每个读出纤维选一个代表历史的响应作为中心，给上界。\(\blacksquare\)
@@ -1496,8 +1620,8 @@ D_{\rm TV}(p_{h,i},q_{R_S(h),i}).
 
 例如同样的两个冗余读出可由独立供电或共享单一电源实现；其访问 blocker 相同，实际毁损族不同。即便下游策略已被形式化证明维持源模型安全，模型是否遗漏共同电源仍是物理适配问题。对失效阈值的数值比较还需第 33 章的缺陷校准。
 
-\hypertarget{ux5206ux8fa8ux7387ux7c97ux7c92ux5316ux4e0eux5faeux89c2ux5b9eux73b0ux7684ux4e0dux786eux5b9aux533aux95f4}{%
-\chapter{14. 分辨率、粗粒化与微观实现的不确定区间}\label{ux5206ux8fa8ux7387ux7c97ux7c92ux5316ux4e0eux5faeux89c2ux5b9eux73b0ux7684ux4e0dux786eux5b9aux533aux95f4}}
+\hypertarget{ch-14}{%
+\chapter{14. 分辨率、粗粒化与微观实现的不确定区间}\label{ch-14}}
 
 \hypertarget{ux4e00ux822cux95edux5305ux7cfbux7edf}{%
 \section{14.1 一般闭包系统}\label{ux4e00ux822cux95edux5305ux7cfbux7edf}}
@@ -1509,12 +1633,16 @@ D_{\rm TV}(p_{h,i},q_{R_S(h),i}).
 
 对固定向上闭合性质 \(\mathcal A\)，令 \(\mathcal M_r=\min(\mathcal A\cap\mathcal L_r)\)。
 
+\hypertarget{p-res-01}{}
+
 \textbf{P-RES-01：极小性质的粗粒化。} \[
 \mathcal M_r=
 \min_{\subseteq}\{\operatorname{cl}_r(M):M\in\mathcal M_s\}.
 \]
 
 \textbf{证明。} 每个粗极小充分集 \(A\) 在精细族中也充分，故包含一个精细极小充分集 \(M\)。其粗闭包仍包含 \(M\)、属于粗族且仍充分，又位于 \(A\) 内；粗极小性使它等于 \(A\)。反向，每个精细极小集的粗闭包充分，因而包含一个粗极小集。两族产生同一上闭包，极小元相同。\(\blacksquare\)
+
+\hypertarget{p-res-02}{}
 
 \textbf{P-RES-02：复合律。} 若 \(\mathcal L_r\subseteq\mathcal L_s\subseteq\mathcal L_t\)，则 \[
 \operatorname{cl}_r\operatorname{cl}_s=\operatorname{cl}_r.
@@ -1539,6 +1667,8 @@ D_{\rm TV}(p_{h,i},q_{R_S(h),i}).
 \pi_*\mathcal M=\min\{\pi(M):M\in\mathcal M\}.
 \]
 
+\hypertarget{p-res-03}{}
+
 \textbf{P-RES-03：blocker 的尺度自然性。} \[
 b_W(\pi_*\mathcal M)=\pi_*b_V(\mathcal M).
 \]
@@ -1560,6 +1690,8 @@ b_W(\pi_*\mathcal M)=\pi_*b_V(\mathcal M).
 \operatorname{Ext}_\pi^+(\mathcal A_r)
 =\{S\subseteq V:\pi(S)\in\mathcal A_r\}.
 \]
+
+\hypertarget{p-res-04}{}
 
 \textbf{P-RES-04：伴随三元组。} \[
 \operatorname{Ext}^-_\pi\dashv\operatorname{Res}_\pi
@@ -1584,6 +1716,8 @@ J^+_\pi(\mathcal D)=
 \min\{S\subseteq V:\pi(S)\in\uparrow\mathcal D\}.
 \]
 
+\hypertarget{p-res-05}{}
+
 \textbf{P-RES-05。} \[
 \pi_*\mathcal C=\mathcal D
 \iff
@@ -1593,6 +1727,8 @@ J^+_\pi(\mathcal D)=
 \]
 
 \textbf{证明。} 若粗像为 \(\mathcal D\)，每个 \(D\) 是某精细极小边的像，所以完整原像含精细充分边；而每个精细充分边的像含粗极小边，得两包含。反向，左包含对每个 \(D\) 给出 \(F\in\mathcal C\) 且 \(F\subseteq\pi^{-1}D\)；右包含给某 \(D'\in\mathcal D\) 满足 \(D'\subseteq\pi(F)\subseteq D\)。极小族内无严格包含，故 \(D'=D=\pi(F)\)。同时所有精细边的像都包含粗极小边，所以粗极小像恰为 \(\mathcal D\)。\(\blacksquare\)
+
+\hypertarget{p-res-06}{}
 
 \textbf{P-RES-06：对象相关的唯一性。} 上述两端相同，当且仅当 \[
 |\pi^{-1}(w)|=1
@@ -1610,8 +1746,8 @@ J^+_\pi(\mathcal D)=
 
 ObjectScaleCalculus 能复合尺度映射，并在分别给定身份、目的、GOD、GOA、修复、稳态保持证书后运输这些性质。当前 \nolinkurl{WilsonianRGInterpretation} 仅记录 couplingFlow，未提供它与某个实际尺度映射或源动力学的相容关系；其两个常值流不同的定理不能称作给定物理粗粒化的 Wilson 流非唯一性定理。
 
-\hypertarget{ux7ec4ux5408ux91cdux53e0ux4e0eux7236ux5bf9ux8c61ux7684ux751fux6210}{%
-\chapter{15. 组合、重叠与父对象的生成}\label{ux7ec4ux5408ux91cdux53e0ux4e0eux7236ux5bf9ux8c61ux7684ux751fux6210}}
+\hypertarget{ch-15}{%
+\chapter{15. 组合、重叠与父对象的生成}\label{ch-15}}
 
 \hypertarget{ux4e09ux79cdux5171ux540cux6027}{%
 \section{15.1 三种共同性}\label{ux4e09ux79cdux5171ux540cux6027}}
@@ -1623,6 +1759,8 @@ I_\pi=
 E_U D_{\rm KL}\left(P_{\mathbf X_{1:m}\mid U}
 \middle\|\bigotimes_{B\in\pi}P_{\mathbf X_B\mid U}\right).
 \]
+
+\hypertarget{p-comp-01}{}
 
 \textbf{P-COMP-01。} \(I_\pi=0\) 当且仅当该划分的路径块给定 \(U\) 后独立。有限个非平凡划分中， \[
 \Sigma_{\rm path}=\min_\pi I_\pi>0
@@ -1642,6 +1780,8 @@ JS(P,Q)=\tfrac12D_{\rm KL}(P\|M)+\tfrac12D_{\rm KL}(Q\|M),
 \quad M=(P+Q)/2.
 \]
 
+\hypertarget{p-comp-02}{}
+
 \textbf{P-COMP-02。} \(0\le JS(P,Q)\le\log2\)，且 \(JS=0\iff P=Q\)。 因此有限切割族的最小 JS 正，当且仅当每项切割都改变声明记录律。
 
 \textbf{证明。} 非负性来自 KL。\(M\ge P/2,Q/2\) 给上界；零值迫使 \(P=M=Q\)。\(\blacksquare\)
@@ -1652,6 +1792,8 @@ JS(P,Q)=\tfrac12D_{\rm KL}(P\|M)+\tfrac12D_{\rm KL}(Q\|M),
 \section{15.3 组合裕量}\label{ux7ec4ux5408ux88d5ux91cf}}
 
 令模型距离 \(d\)，且每个切割操作满足 \(d(\mathcal K_\pi T,\mathcal K_\pi S)\le L_\pi d(T,S)\)。 定义 \(\Gamma_{\rm comp}(T)=\min_\pi d(T,\mathcal K_\pi T)\)。
+
+\hypertarget{p-comp-03}{}
 
 \textbf{P-COMP-03。} 若 \(L=\max_\pi L_\pi<\infty\)，则 \[
 |\Gamma_{\rm comp}(T)-\Gamma_{\rm comp}(S)|
@@ -1668,6 +1810,8 @@ JS(P,Q)=\tfrac12D_{\rm KL}(P\|M)+\tfrac12D_{\rm KL}(Q\|M),
 令子层规范核心 \(C_1,\ldots,C_m\)、父层核心 \(C_P\)、接口 \(U\)，均采用有限条件熵。定义 \[
 \Delta_P=H(C_P\mid C_1,\ldots,C_m,U).
 \]
+
+\hypertarget{p-comp-04}{}
 
 \textbf{P-COMP-04。} 若父层表示 \(M_P\) 精确充分，则 \[
 H(M_P\mid C_1,\ldots,C_m,U)\ge\Delta_P.
@@ -1693,6 +1837,8 @@ X'_1=R,\qquad X'_2=R\oplus S.
 s(x)=\{i:x\in V_i\},\quad A_J=\{x:s(x)=J\}.
 \]
 
+\hypertarget{p-comp-05}{}
+
 \textbf{P-COMP-05。} 非空 \(A_J\) 构成唯一最小包含全部 \(V_i\) 的 Boolean 代数的原子。
 
 \textbf{证明。} 每点有唯一签名，故这些集合分割 \(V\)。又 \[
@@ -1702,6 +1848,8 @@ A_J=\bigcap_{i\in J}V_i\cap\bigcap_{i\notin J}V_i^c.
 只记录哪些交集非空的 nerve，一般不能恢复完整成员签名和物理删除语义。
 
 对子联盟 \(S\)，令 \(V(S)=\bigcup_{i\in S}V_i\)。若联盟充分性恰由其并区域充分性定义，则
+
+\hypertarget{p-comp-06}{}
 
 \textbf{P-COMP-06：物理载体到联盟的提升。} \[
 \mathcal M_P^{\rm child}
@@ -1736,6 +1884,8 @@ A_J=\bigcap_{i\in J}V_i\cap\bigcap_{i\notin J}V_i^c.
 \hypertarget{ux4fddux7559ux4e2aux4f53ux6027ux7684ux7ec4ux5408ux7a97ux53e3}{%
 \section{15.8 保留个体性的组合窗口}\label{ux4fddux7559ux4e2aux4f53ux6027ux7684ux7ec4ux5408ux7a97ux53e3}}
 
+\hypertarget{p-comp-07}{}
+
 \textbf{P-COMP-07。} 在紧耦合参数区间 \(K\) 上，整合量 \(D(k)\) 连续非减、子保真度 \(F(k)\) 连续非增。阈值可行集均非空，令 \[
 k_D=\min\{k:D(k)\ge d_*\},\quad
 k_F=\max\{k:F(k)\ge f_*\}.
@@ -1754,13 +1904,15 @@ k_F=\max\{k:F(k)\ge f_*\}.
 
 证明插入 \(B_1(t_f(f_0x))\)，对第一段用 Lipschitz，第二段用 binding 传输界。C4 的 \nolinkurl{certified_formed_structural_continuation} 还要求两端实际形成关系及预算在 margin 内；它不把结构距离界等同于父 token 身份相等。完整类型见第 34.4 节。
 
-\hypertarget{ux6709ux9650ux6570ux636eux8ba4ux8bc1ux54cdux5e94ux8f7dux4f53ux4e0eux534fux8bae}{%
-\chapter{16. 有限数据认证：响应、载体与协议}\label{ux6709ux9650ux6570ux636eux8ba4ux8bc1ux54cdux5e94ux8f7dux4f53ux4e0eux534fux8bae}}
+\hypertarget{ch-16}{%
+\chapter{16. 有限数据认证：响应、载体与协议}\label{ch-16}}
 
 \hypertarget{ux6709ux9650ux54cdux5e94ux8868ux4e0eux540cux65f6ux7f6eux4fe1ux754c}{%
 \section{16.1 有限响应表与同时置信界}\label{ux6709ux9650ux54cdux5e94ux8868ux4e0eux540cux65f6ux7f6eux4fe1ux754c}}
 
 给 \(L\) 个历史---协议单元、每单元 \(N\) 个独立未来样本、共同结果字母表大小 \(K\)。独立性只需各单元内；单元间并合界不要求独立。真实和经验响应为 \(p_j,\widehat p_j\)。
+
+\hypertarget{p-stat-01}{}
 
 \textbf{P-STAT-01：有限字母 TV 同时界。} \[
 P\left(\max_{j\le L}D_{\rm TV}(p_j,\widehat p_j)>\eta\right)
@@ -1780,6 +1932,8 @@ Bernoulli 响应可直接取更紧的 \[
 \hypertarget{ux7f3aux635fux8befux5deeux4e0dux989dux5916ux4f9dux8d56ux8f7dux4f53ux5019ux9009ux6570ux91cf}{%
 \section{16.2 缺损误差不额外依赖载体候选数量}\label{ux7f3aux635fux8befux5deeux4e0dux989dux5916ux4f9dux8d56ux8f7dux4f53ux5019ux9009ux6570ux91cf}}
 
+\hypertarget{p-stat-02}{}
+
 \textbf{P-STAT-02。} 在同时响应误差事件上， \[
 |\widehat e(S)-e(S)|\le2\eta
 \quad\text{对所有载体 }S.
@@ -1796,11 +1950,15 @@ Bernoulli 响应可直接取更紧的 \[
 \mathcal M_\delta=\min\{S:e(S)\le\delta\}.
 \]
 
+\hypertarget{p-stat-03}{}
+
 \textbf{P-STAT-03：固定容差族恢复。} 若 \[
 \min_S|e(S)-\delta|>2\eta,
 \] 则经验阈值 \(\widehat e(S)\le\delta\) 恢复 \(\mathcal M_\delta\)。
 
 \textbf{证明。} 每个真缺损与阈值间的距离大于可能估计误差，全部分类不变，再取极小元。\(\blacksquare\)
+
+\hypertarget{p-stat-04}{}
 
 \textbf{P-STAT-04：精确族恢复。} 若非零缺损间隔 \[
 \Delta=\min_{S:e(S)>0}e(S)>0
@@ -1827,6 +1985,8 @@ Bernoulli 响应可直接取更紧的 \[
 \hypertarget{ux89c4ux8303ux9884ux6d4bux7c7bux6062ux590d}{%
 \section{16.5 规范预测类恢复}\label{ux89c4ux8303ux9884ux6d4bux7c7bux6062ux590d}}
 
+\hypertarget{p-stat-05}{}
+
 \textbf{P-STAT-05。} 对有限历史集合，若不同真实预测类在 \[
 d(h,h')=\max_iD_{\rm TV}(p_{h,i},p_{h',i})
 \] 下至少相距 \(\gamma>0\)，且 \(2\eta<\gamma/2\)，则以 \(\gamma/2\) 为经验距离阈值可恢复精确类。
@@ -1843,6 +2003,8 @@ d(h,h')=\max_iD_{\rm TV}(p_{h,i},p_{h',i})
 \operatorname{MMD}_k(P,Q)=\|\mu_P-\mu_Q\|.
 \] \textbf{K-KER-01。} 在声明分布类上 characteristic 意味着 \(\mu_P=\mu_Q\iff P=Q\)。它给连续未来响应的忠实表示，不自动提供连续历史条件律的学习保证。\href{https://www.jmlr.org/papers/volume13/gretton12a/gretton12a.pdf}{原始研究}
 
+\hypertarget{p-stat-06}{}
+
 \textbf{P-STAT-06：嵌入同时误差。} 对 \(L\) 个固定条件响应，各 \(N\) 个独立样本， \[
 \max_j\|\widehat\mu_j-\mu_j\|
 \le r_N(\alpha)=
@@ -1852,6 +2014,8 @@ d(h,h')=\max_iD_{\rm TV}(p_{h,i},p_{h',i})
 \textbf{证明。} 独立中心化特征的交叉内积均值为零，故 \(E\|\widehat\mu-\mu\|^2\le1/N\)，再由 Jensen 得均值不超过 \(N^{-1/2}\)。替换一个样本使范数统计量变化至多 \(2/N\)。McDiarmid 给偏离均值 \(t\) 的概率至多 \(e^{-Nt^2/2}\)；对 \(L\) 个响应并合。\(\blacksquare\)
 
 类间 MMD 间隔为 \(\gamma\) 且 \(r_N<\gamma/4\) 时，用 \(\gamma/2\) 阈值恢复类，证明与 P-STAT-05 相同。
+
+\hypertarget{p-stat-07}{}
 
 \textbf{P-STAT-07：核运输协变。} 对双可测双射 \(T\)，同步定义 \(k_T(Tx,Ty)=k(x,y)\)，则 \[
 \operatorname{MMD}_{k_T}(T_\#P,T_\#Q)
@@ -1870,6 +2034,8 @@ MMD 小一般不推出 TV 小；使用控制价值界时，可直接对 RKHS 范
 \hypertarget{ux76f8ux5173ux8f68ux8ff9ux53d1ux73b0ux4e00ux81f4ux6027ux4e0eux6a21ux578bux9009ux62e9}{%
 \section{16.8 相关轨迹、发现一致性与模型选择}\label{ux76f8ux5173ux8f68ux8ff9ux53d1ux73b0ux4e00ux81f4ux6027ux4e0eux6a21ux578bux9009ux62e9}}
 
+\hypertarget{p-stat-08}{}
+
 \textbf{P-STAT-08：有限候选发现。} 对 \(m\) 个候选，有界损失 \(\ell_f\in[0,1]\)，独立验证样本数 \(N\)。令 \[
 u=\sqrt{\frac{\log(2m/\alpha)}{2N}}.
 \] 经验风险最小候选 \(\widehat f\) 满足 \[
@@ -1884,6 +2050,8 @@ R(\widehat f)\le\min_fR(f)+2u
 
 \hypertarget{ux90e8ux7f72ux5206ux5e03ux4e0eux8986ux76d6}{%
 \section{16.9 部署分布与覆盖}\label{ux90e8ux7f72ux5206ux5e03ux4e0eux8986ux76d6}}
+
+\hypertarget{p-stat-09}{}
 
 \textbf{P-STAT-09：平均误差运输。} 对 \(0\le e\le1\)，若部署分布 \(\nu\ll\mu\) 且 \(d\nu/d\mu\le C\)，则 \[
 E_\nu e\le C E_\mu e.
@@ -1902,13 +2070,15 @@ E_\nu e\le E_\mu e+\delta.
 
 第 38 章直接构造训练---部署联合律，证明这种 Good-only 前提足以给整体风险 \(\alpha+(1-\alpha)\beta\)。不要求所有极罕见坏样本也满足小预算。只采样部分注册行仍不自动保证部署访问受覆盖：第 36 章保留真实 \(\nu_n(C_n^c)\)，第 37 章给出一类可以从实际支持可行性导出的零覆盖罚项。
 
-\hypertarget{ux9006ux5bf9ux8c61ux9006ux52a8ux529bux5b66ux4e0eux9006ux76eeux7684ux7684ux53efux8bc6ux522bux6027}{%
-\chapter{17. 逆对象、逆动力学与逆目的的可识别性}\label{ux9006ux5bf9ux8c61ux9006ux52a8ux529bux5b66ux4e0eux9006ux76eeux7684ux7684ux53efux8bc6ux522bux6027}}
+\hypertarget{ch-17}{%
+\chapter{17. 逆对象、逆动力学与逆目的的可识别性}\label{ch-17}}
 
 \hypertarget{ux5b9eux9a8cux7b49ux4ef7ux7c7bux4e0eux6700ux4f18ux68c0ux9a8c}{%
 \section{17.1 实验等价类与最优检验}\label{ux5b9eux9a8cux7b49ux4ef7ux7c7bux4e0eux6700ux4f18ux68c0ux9a8c}}
 
 两个模型若对所有允许实验产生相同记录律，则任何只用这些记录的统计规则都不能区分它们。
+
+\hypertarget{p-inv-01}{}
 
 \textbf{P-INV-01：二元检验下界。} 两模型等先验，数据律为 \(P_0,P_1\)，最小平均错误为 \[
 R^*=\tfrac12(1-D_{\rm TV}(P_0,P_1)).
@@ -1926,9 +2096,13 @@ R(A)=\tfrac12[P_0(A)+P_1(A^c)]
 
 正则统计模型 \(p_\theta\) 有 score \(s_\theta=\nabla\log p_\theta\)， \(\mathcal I=E_\theta s_\theta s_\theta^\top\)。
 
+\hypertarget{p-inv-02}{}
+
 \textbf{P-INV-02。} 若沿光滑群轨道的似然不变，轨道切向量属于 \(\ker\mathcal I\)。
 
 \textbf{证明。} 对任意轨道切向 \(v\)，似然方向导数为零，故 \(v^\top s_\theta=0\) 几乎处处，进而 \(\mathcal I v=0\)。\(\blacksquare\)
+
+\hypertarget{p-inv-03}{}
 
 \textbf{P-INV-03。} 对条件独立、满足零均值 score 条件的实验， \[
 \mathcal I_{\rm total}=\sum_e\mathcal I_e,\qquad
@@ -1949,6 +2123,8 @@ Y_t=\phi_t^\top\theta_*+\xi_t,\quad
 G_N=\sum_{t=1}^N\phi_t\phi_t^\top.
 \]
 
+\hypertarget{p-inv-04}{}
+
 \textbf{P-INV-04。} 在无噪声、参数取整个 \(\mathbb R^d\) 的指定模型中，参数由该设计唯一识别，当且仅当 \(G_N\succ0\)。
 
 \textbf{证明。} 写设计矩阵 \(\Phi\)，有 \(G_N=\Phi^\top\Phi\)。正定等价于 \(\ker\Phi=\{0\}\)。若奇异，取非零 \(v\in\ker\Phi\)，所有 \(\theta_*+cv\) 产生同样响应。\(\blacksquare\)
@@ -1957,6 +2133,8 @@ G_N=\sum_{t=1}^N\phi_t\phi_t^\top.
 
 \hypertarget{ux53efux9884ux6d4bux8bbeux8ba1ux7684-ols-ux754c}{%
 \section{17.4 可预测设计的 OLS 界}\label{ux53efux9884ux6d4bux8bbeux8ba1ux7684-ols-ux754c}}
+
+\hypertarget{p-inv-05}{}
 
 \textbf{P-INV-05。} 假设 \(\phi_t\) 对 \(\mathcal F_{t-1}\) 可测， \(\|\phi_t\|_\infty\le B\)，并且 \[
 E[e^{\lambda\xi_t}\mid\mathcal F_{t-1}]
@@ -1992,8 +2170,8 @@ E[e^{\lambda\xi_t}\mid\mathcal F_{t-1}]
 
 机制观察若要识别目的，C6 要求同观测机制诱导相同策略排序。训练后使用某候选时，则要求给定训练记录的未来条件核与声明实际源吻合。任何固定候选的边缘拟合都不能省去这种条件同源性。应先判断当前证据要识别哪个商，再设计区分实验。
 
-\hypertarget{ux53efux884cux672aux6765ux4ef7ux503cux4e0eux76eeux7684ux6865ux63a5}{%
-\chapter{18. 可行未来、价值与目的桥接}\label{ux53efux884cux672aux6765ux4ef7ux503cux4e0eux76eeux7684ux6865ux63a5}}
+\hypertarget{ch-18}{%
+\chapter{18. 可行未来、价值与目的桥接}\label{ch-18}}
 
 \hypertarget{ux53efux884cux8defux5f84ux4e0eux53efux5b9eux65bdux7b56ux7565}{%
 \section{18.1 可行路径与可实施策略}\label{ux53efux884cux8defux5f84ux4e0eux53efux5b9eux65bdux7b56ux7565}}
@@ -2025,6 +2203,8 @@ J_a=\mathbf1_{\{A_0=a\}},\qquad J_b=\mathbf1_{\{A_0=b\}}
 \section{18.4 价值等价与奖励塑形}\label{ux4ef7ux503cux7b49ux4ef7ux4e0eux5956ux52b1ux5851ux5f62}}
 
 两个评价在指定策略类与初态范围上诱导相同最优策略集合，称操作目的等价。若动态实现与最优策略集合都保持，相应 GOD 与定义良好的 GOA 家族也保持。
+
+\hypertarget{p-tel-01}{}
 
 \textbf{P-TEL-01：折扣势函数等价。} 有界势函数 \(\psi\)、常数 \(c\)、\(a>0\)，将一步随机奖励改为 \[
 r'(x,a_t,x')=a\,r(x,a_t,x')+\beta\psi(x')-\psi(x)+c.
@@ -2066,8 +2246,8 @@ D(P_{\rm obs},P^\pi),
 
 C6 的 \nolinkurl{mechanismObservation_identifies_teleologicalClass} 只在机制---目的忠实性下识别排序等价类。它不提供奖励数值、Bellman 可实现性或生存可行性。这三项分别由评价校准、控制理论与生存理论承担。第 33.5 节给同一数值目标的完整规范刻画，第 34.2 节给排序层边界。
 
-\hypertarget{ux6700ux4f18ux63a7ux5236ux4e0e-god}{%
-\chapter{19. 最优控制与 GOD}\label{ux6700ux4f18ux63a7ux5236ux4e0e-god}}
+\hypertarget{ch-19}{%
+\chapter{19. 最优控制与 GOD}\label{ch-19}}
 
 \hypertarget{ux6709ux9650ux6298ux6263ux63a7ux5236ux7684ux5b8cux6574ux6784ux9020}{%
 \section{19.1 有限折扣控制的完整构造}\label{ux6709ux9650ux6298ux6263ux63a7ux5236ux7684ux5b8cux6574ux6784ux9020}}
@@ -2075,6 +2255,8 @@ C6 的 \nolinkurl{mechanismObservation_identifies_teleologicalClass} 只在机�
 有限状态、每状态有限非空动作集，奖励 \(|r|\le R\)，折扣 \(0<\beta<1\)。定义 \[
 (Tv)(x)=\max_a[r(x,a)+\beta P_{x,a}v].
 \]
+
+\hypertarget{p-ctl-01}{}
 
 \textbf{P-CTL-01：Bellman 存在与最优性。} \(T\) 有唯一固定点 \(V^*\)，值迭代从任意有界初值收敛；存在平稳确定性策略在每个状态对所有因果策略最优。
 
@@ -2106,6 +2288,8 @@ V_{h+1}(x)=\mathbf1_{\mathcal V}(x)\max_a\int V_h(y)P(dy\mid x,a).
 \hypertarget{ux7d27-feller-ux63a7ux5236}{%
 \section{19.3 紧 Feller 控制}\label{ux7d27-feller-ux63a7ux5236}}
 
+\hypertarget{p-ctl-02}{}
+
 \textbf{K-CTL-01 / P-CTL-02。} 状态、动作均为紧度量空间，动作集合固定非空，奖励连续，转移核对状态动作弱连续。则 \(T:C(\mathcal X)\to C(\mathcal X)\) 为 \(\beta\)-压缩，有唯一连续固定点，并有可测平稳最优选择。
 
 \textbf{证明。} 对连续有界 \(v\)，积分项连续；紧动作上的 maximum theorem 给最大值连续且 argmax 非空紧。可测选择定理给选择器；压缩与最优性证明同上。\(\blacksquare\)
@@ -2116,6 +2300,8 @@ V_{h+1}(x)=\mathbf1_{\mathcal V}(x)\max_a\int V_h(y)P(dy\mid x,a).
 \section{19.4 连续时间 HJB 验证}\label{ux8fdeux7eedux65f6ux95f4-hjb-ux9a8cux8bc1}}
 
 设可实施扩散 \(dX_t=b(X_t,a_t)dt+\sigma(X_t,a_t)dW_t\)， 收益 \(E\int_0^\infty e^{-\rho t}r(X_t,a_t)dt\)，\(\rho>0\)。
+
+\hypertarget{p-ctl-03}{}
 
 \textbf{P-CTL-03。} 若有有界 \(C^2\) 函数 \(V\)，满足 \[
 \rho V(x)=\sup_a\{r(x,a)+\mathcal L^aV(x)\},
@@ -2146,13 +2332,15 @@ Q^*(x,a)=r(x,a)+\beta P_{x,a}V^*,\qquad
 
 有限模型可以得到另一条已完成的加强：先由生存固定点构造保留源核的动作子类型，再对同一奖励和转移的受限模型做 Bellman。\nolinkurl{SafeOptimalControlFromViability.viable_restricted_optimal_dominates_all_causal_policies} 比较所有遵守该约束的历史依赖随机策略；其最优性不是在未受限策略全集上宣称。第 35.3 节给完整证明。
 
-\hypertarget{ux5bf9ux8c61ux5546ux5982ux4f55ux4fddux6301ux51b3ux7b56ux4e0eux4ef7ux503c}{%
-\chapter{20. 对象商如何保持决策与价值}\label{ux5bf9ux8c61ux5546ux5982ux4f55ux4fddux6301ux51b3ux7b56ux4e0eux4ef7ux503c}}
+\hypertarget{ch-20}{%
+\chapter{20. 对象商如何保持决策与价值}\label{ch-20}}
 
 本章采用第 19 章已经保证 Bellman 压缩、最优值和所用最优策略存在的有限模型，或满足该章相应紧性与可测选择条件的模型。奖励有界、折扣相同；一般非紧模型须另证这些前提，不能只凭以下商等式取得最优策略存在性。
 
 \hypertarget{ux7cbeux786eux63a7ux5236ux5546}{%
 \section{20.1 精确控制商}\label{ux7cbeux786eux63a7ux5236ux5546}}
+
+\hypertarget{p-quo-01}{}
 
 \textbf{P-QUO-01。} 满射 \(f:\mathcal X\to\mathcal M\) 满足同纤维动作集相同、 \[
 r(x,a)=\bar r(f(x),a),\qquad
@@ -2174,6 +2362,8 @@ w=\bar V^*\circ f,\quad
 D=\delta/(1-\beta).
 \]
 
+\hypertarget{p-quo-02}{}
+
 \textbf{P-QUO-02。} \[
 \|V^*-w\|_\infty\le D,
 \] 宏观最优策略 \(\bar\pi^*\) 的提升 \(\widehat\pi\) 满足 \[
@@ -2190,6 +2380,8 @@ D\le\frac{\epsilon_r}{1-\beta}
 \hypertarget{ux52a8ux4f5cux95f4ux9694ux4e0eux8fd1ux6700ux4f18ux8befux5dee}{%
 \section{20.3 动作间隔与近最优误差}\label{ux52a8ux4f5cux95f4ux9694ux4e0eux8fd1ux6700ux4f18ux8befux5dee}}
 
+\hypertarget{p-quo-03}{}
+
 \textbf{P-QUO-03。} 若 \(\max_a|Q^*(x,a)-\widehat Q(x,a)|\le\eta\)，且估计最优动作与其余动作间隔大于 \(2\eta\)，则它也是真实唯一最优动作。
 
 \textbf{证明。} 估计最佳动作的真实值最多下降 \(\eta\)，竞争动作最多上升 \(\eta\)，严格差仍为正。\(\blacksquare\)
@@ -2205,6 +2397,8 @@ D\le\frac{\epsilon_r}{1-\beta}
 b_\pi=r^\pi+\beta P^\pi w-w,\quad
 d_{\mu}^\pi=(1-\beta)\sum_{t\ge0}\beta^t\mu(P^\pi)^t.
 \]
+
+\hypertarget{p-quo-04}{}
 
 \textbf{P-QUO-04。} \[
 V^\pi-w=(I-\beta P^\pi)^{-1}b_\pi,
@@ -2223,6 +2417,8 @@ V^\pi-w=(I-\beta P^\pi)^{-1}b_\pi,
 \delta(x,a)=\epsilon_r(x,a)+
 \beta\epsilon_p(x,a)\operatorname{sp}(\bar V^*).
 \]
+
+\hypertarget{p-quo-05}{}
 
 \textbf{P-QUO-05：占据加权的商策略后悔。} \[
 J(\pi^*;\mu)-J(\widehat\pi;\mu)
@@ -2246,8 +2442,8 @@ b(x,a)=r(x,a)+\beta P_{x,a}w-w(x).
 
 这也解释占据界为什么必须使用实际策略：估计策略和真实最优策略通常访问不同状态。P-QUO-05 的两个占据项各保留其来源；本轮有限风险中的 \(\nu_n\) 则由给定实际前缀和同一粗历史策略生成。不同公式的误差槽位必须按状态空间、时域和策略类型分别对齐。
 
-\hypertarget{goaux957fux671fux7ed3ux6784ux7684ux5b58ux5728ux4e0eux7a33ux5b9aux6027}{%
-\chapter{21. GOA：长期结构的存在与稳定性}\label{goaux957fux671fux7ed3ux6784ux7684ux5b58ux5728ux4e0eux7a33ux5b9aux6027}}
+\hypertarget{ch-21}{%
+\chapter{21. GOA：长期结构的存在与稳定性}\label{ch-21}}
 
 \hypertarget{ux7c7bux578bux5316ux7684-goa-ux5bb6ux65cf}{%
 \section{21.1 类型化的 GOA 家族}\label{ux7c7bux578bux5316ux7684-goa-ux5bb6ux65cf}}
@@ -2273,6 +2469,8 @@ GOD 决定当下最优动作，最优策略生成路径，GOA 描述这些路径
 \hypertarget{ux6709ux9650ux94feux7684ux5360ux636eux6781ux9650}{%
 \section{21.2 有限链的占据极限}\label{ux6709ux9650ux94feux7684ux5360ux636eux6781ux9650}}
 
+\hypertarget{p-goa-01}{}
+
 \textbf{P-GOA-01。} 固定有限随机核 \(P\)，时间平均 \[
 \bar\mu_N=N^{-1}\sum_{t=0}^{N-1}\mu_0P^t
 \] 至少有收敛子列，每个极限 \(\nu\) 满足 \(\nu P=\nu\)。
@@ -2290,6 +2488,8 @@ GOD 决定当下最优动作，最优策略生成路径，GOA 描述这些路径
 \alpha(P)=\max_{x,x'}D_{\rm TV}(P_x,P_{x'}).
 \] 标准有限核收缩系数满足 \(D_{\rm TV}(\mu P,\nu P)\le\alpha(P)D_{\rm TV}(\mu,\nu)\)； 可将输入有符号差分为等质量正负部分并对行混合使用凸性证明。
 
+\hypertarget{p-goa-02}{}
+
 \textbf{P-GOA-02。} 若 \(\alpha(P)<1\)，不变概率唯一。若 \(\mu P=\mu,\widehat\mu\widehat P=\widehat\mu\)，且行误差至多 \(\epsilon\)，则 \[
 D_{\rm TV}(\mu,\widehat\mu)\le\frac{\epsilon}{1-\alpha(P)}.
 \]
@@ -2304,6 +2504,8 @@ D_{\rm TV}(\mu,\widehat\mu)\le\frac{\epsilon}{1-\alpha(P)}.
 假定扰动前后相同瞬态集和相同复归类。令瞬态转移块 \(Q\)，直接进入各类的概率矩阵 \(R\)， \[
 N=(I-Q)^{-1},\quad H=NR.
 \] 使用矩阵最大绝对行和范数，设 \(\|\widehat Q-Q\|_\infty\le\epsilon_Q\)， \(\|\widehat R-R\|_\infty\le\epsilon_R\)， \(\|N\|_\infty\epsilon_Q<1\)。
+
+\hypertarget{p-goa-03}{}
 
 \textbf{P-GOA-03。} \[
 \|\widehat H-H\|_\infty\le
@@ -2324,6 +2526,8 @@ D_{\rm TV}(\nu,\widehat\nu)
 \section{21.5 对称 killed 核的谱稳定性}\label{ux5bf9ux79f0-killed-ux6838ux7684ux8c31ux7a33ux5b9aux6027}}
 
 设 \(Q\) 对称、非负、不可约、次随机，单位正主向量 \(u\)，谱间隔 \(g=\rho-\lambda_2>0\)。对称扰动 \(E\) 满足 \(\|E\|_2\le\eta<g/2\)，且 \(\widehat Q=Q+E\) 保持同类性质。
+
+\hypertarget{p-goa-04}{}
 
 \textbf{P-GOA-04。} \[
 |\widehat\rho-\rho|\le\eta,\qquad
@@ -2382,6 +2586,8 @@ p_\theta(0)=\theta,\quad p_\theta(1)=1-\theta,\qquad
 \hypertarget{ux65e0ux6761ux4ef6ux95edux73afux6240ux6709ux53c2ux6570ux5747ux4e00ux6b65ux5230ux8fbeux552fux4e00ux4e0dux53d8ux5f8b}{%
 \subsection{21.7.2 无条件闭环：所有参数均一步到达唯一不变律}\label{ux65e0ux6761ux4ef6ux95edux73afux6240ux6709ux53c2ux6570ux5747ux4e00ux6b65ux5230ux8fbeux552fux4e00ux4e0dux53d8ux5f8b}}
 
+\hypertarget{m-21-1}{}
+
 \textbf{M-21.1。} 对所有 \(\theta\in[0,1]\)，从（21.7-1）及（21.7-2）诱导的真实闭环转移为 \[
 L_\theta(x,y)
 =\sum_{a\in A}\pi_\theta(a)P(x,a)\{y\}
@@ -2391,6 +2597,8 @@ L_\theta(x,y)
 \textbf{证明。} 固定 \(y=(b',u')\)，求和中只有 \(a=b'\) 一项可能非零，得到 \(p_\theta(b')/2\)。对 \(x\) 求和， \[
 (\eta L_\theta)(y)=\sum_x\eta(x)\mu_\theta(y)=\mu_\theta(y).
 \] 取 \(\eta=\mu_\theta\) 得不变性；若 \(\eta L_\theta=\eta\)，则同一等式给 \(\eta=\mu_\theta\)。各行相同，行间 TV 均为零。\(\blacksquare\)
+
+\hypertarget{m-21-2}{}
 
 \textbf{M-21.2。} 记实际第 t 步边际为 \(\nu_t=\nu_0L_\theta^t\)。对正整数 \(N\)， \[
 \bar\nu_N=\frac1N\sum_{t=0}^{N-1}\nu_t
@@ -2428,6 +2636,8 @@ H(u,u')=\tfrac12,\quad \rho=1-\theta,\quad
 q_*(u)=\tfrac12,\quad h_*(u)=1.
 \] 于是 \(Q_\theta=\rho H\)，且 \(H^2=H\)。
 
+\hypertarget{m-21-3}{}
+
 \textbf{M-21.3。} 当 \(0\le\theta<1\) 时，以上数据逐项满足现有 BiEigenData 与 KilledQSDGOA 的要求： \[
 Q_\theta\ge0,\quad Q_\theta{\bf1}=\rho{\bf1},\quad
 0<\rho\le1,\quad q_*Q_\theta=\rho q_*,
@@ -2445,6 +2655,8 @@ Q_\theta^{h_*}(u,u')
 
 不用 Perron--Frobenius 存在定理来假设一个未知正特征向量；这个有限实例把正特征数据明确算出，然后复用正特征结构生成器的后果。
 
+\hypertarget{m-21-4}{}
+
 \textbf{M-21.4。} 对任意 K 内初始概率行 \(\eta\)，以及任意 \(T\ge1\)， \[
 \eta Q_\theta^T=\rho^Tq_*,\qquad
 \sum_{u'}(\eta Q_\theta^T)(u')=\rho^T.                \tag{21.7-10}
@@ -2456,6 +2668,8 @@ Q_\theta^{h_*}(u,u')
 
 \hypertarget{ux5b9eux9645ux6709ux9650ux98ceux9669ux4e0eux6761ux4ef6ux6837ux672cux7a7aux95f4}{%
 \subsection{21.7.4 实际有限风险与条件样本空间}\label{ux5b9eux9645ux6709ux9650ux98ceux9669ux4e0eux6761ux4ef6ux6837ux672cux7a7aux95f4}}
+
+\hypertarget{m-21-5}{}
 
 \textbf{M-21.5。} 对 \(\theta\in[0,1]\) 和 \(T\ge0\)，同一个 \((P,\pi_\theta,\nu_0)\) 的有限路径满足 \[
 \Pr_{\pi_\theta}(S_T)=(1-\theta)^T,\qquad
@@ -2496,6 +2710,8 @@ persistent\_survival\_null、\nolinkurl{actual_eventual_failure_ae} 和 zero\_th
 \hypertarget{ux6700ux4f18ux6027ux53efux884cux6027ux4e0eux5168ux7a7aux95f4ux4e0dux53d8ux5f8b}{%
 \subsection{21.7.5 最优性、可行性与全空间不变律}\label{ux6700ux4f18ux6027ux53efux884cux6027ux4e0eux5168ux7a7aux95f4ux4e0dux53d8ux5f8b}}
 
+\hypertarget{m-21-6}{}
+
 \textbf{M-21.6。} 对所有 \(\theta\in[0,1]\)， \[
 J_M(\pi_\theta;\nu_0)
 =\mathbb E\!\left[\sum_{n=0}^\infty2^{-n}(1-A_n)\right]
@@ -2516,6 +2732,8 @@ A_K(x)=\{1\}\ \ (x\in K),\qquad A_K(x)=\{0,1\}\ \ (x\notin K). \tag{21.7-15}
 \]
 
 令 R 为这个实际受限模型，它保留 M 的转移、奖励、折扣。\textbf{不能把（21.7-15）改写为对所有 x 都只许动作 1。}
+
+\hypertarget{m-21-7}{}
 
 \textbf{M-21.7。} R 的最优值及唯一 greedy 为 \[
 V_R(b,u)=2(1-b),\qquad g_R(b,u)=b.                   \tag{21.7-16}
@@ -2575,19 +2793,21 @@ T=0 时所有参数的存活概率为 1、曾失败概率为 0；使用约定 \(
 
 InvariantLawGOA、CesaroLimitGOA 和 KilledQSDGOA 描述给定核的长期对象，本身没有最优性字段。GreedyInvariantGOASet 则明确使用所给控制模型的 Bellman-greedy 闭环。本节每个名称都按这个区别使用，不因一个稳定分布存在而给它附加奖励最优或规范价值。
 
-现有 \href{../formalization/ueot-core/UEOT/V3/FiniteCesaroInvariant.lean}{FiniteCesaroInvariant} 与 \href{../formalization/ueot-core/UEOT/V3/Compression/OccupationLimitInvariance.lean}{\nolinkurl{OccupationLimitInvariance}} 可消费本节的随机矩阵、初始单纯形和 Cesàro 极限。现有 \href{../formalization/ueot-core/UEOT/V3/Compression/PositiveEigenstructure.lean}{PositiveEigenstructure} 的 BiEigenData、qsdDoob\_bundle 与 killed wrapper 可消费本节明确算出的正特征数据。一般接口已经证明；把 Lθ 与真实策略路径、Qθ 与实际 killed 源、R 的 greedy 与其真实状态相关动作域逐项对齐，是本实例仍需补的形式化。
+现有 \href{../formalization/ueot-core/UEOT/V3/FiniteCesaroInvariant.lean}{FiniteCesaroInvariant} 与 \href{../formalization/ueot-core/UEOT/V3/Compression/OccupationLimitInvariance.lean}{\nolinkurl{OccupationLimitInvariance}} 可消费本节的随机矩阵、初始单纯形和 Cesàro 极限。现有 \href{../formalization/ueot-core/UEOT/V3/Compression/PositiveEigenstructure.lean}{PositiveEigenstructure} 的 BiEigenData、qsdDoob\_bundle 与 killed wrapper 可消费本节明确算出的正特征数据。一般接口已经证明；把 Lθ 与真实策略路径、Qθ 与实际 killed 源、R 的 greedy 与其真实状态相关动作域逐项对齐，是本节最初登记的形式化义务。该义务随后由 ConflictParametric 系列及其共同消费者完成，准确范围见第 39.71 节；此处保留来源要求，不再将它列为当前未决。
 
 \href{../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/SameObjectViableGOA.lean}{SameObjectViableGOA} 已证明：真实同对象 greedy 保持非空持续域时，存在支持在该域内的不变律。这个接口还需要完整 Objecthood parent、control spec 及其来源等式，本节没有仅凭四状态类型构造这些字段。它的结论也不要求完整状态空间只有一个不变律。更强的全局唯一与混合端点另外要求真实收缩或孤立条件，不能用于本节拥有两个闭类的 D。
 
 同源实例由此把 M-QD 的准确观察商、有限路径传播、M-OI 的无条件占据和 M-PE 的条件存活结构接在一起。它没有改变四生成机制及 106 个 P-ID 的分类，也没有由此补齐物理程序来源、父对象形成、谱系或经验双驱动的其他条件。
 
-\hypertarget{ux8defux5f84ux4fe1ux606fux4ee3ux4ef7ux53efux8fbeux4f5cux7528ux4e0eux53d8ux5206ux5b9eux73b0}{%
-\chapter{22. 路径信息代价、可达作用与变分实现}\label{ux8defux5f84ux4fe1ux606fux4ee3ux4ef7ux53efux8fbeux4f5cux7528ux4e0eux53d8ux5206ux5b9eux73b0}}
+\hypertarget{ch-22}{%
+\chapter{22. 路径信息代价、可达作用与变分实现}\label{ch-22}}
 
 \hypertarget{ux751fux5b58ux4e8bux4ef6ux7684ux4fe1ux606fux4e0bux754c}{%
 \section{22.1 生存事件的信息下界}\label{ux751fux5b58ux4e8bux4ef6ux7684ux4fe1ux606fux4e0bux754c}}
 
 给基线路径律 \(P^0\)、可达路径律 \(Q\ll P^0\) 和事件 \(A\)，记 \(q=P^0(A),p=Q(A)\)。
+
+\hypertarget{p-kl-01}{}
 
 \textbf{P-KL-01。} \[
 D_{\rm KL}(Q\|P^0)\ge
@@ -2598,6 +2818,8 @@ d_{\rm Bern}(p\|q).
 
 \hypertarget{ux7cbeux786eux4e8bux4ef6-i-projection}{%
 \section{22.2 精确事件 I-projection}\label{ux7cbeux786eux4e8bux4ef6-i-projection}}
+
+\hypertarget{p-kl-02}{}
 
 \textbf{P-KL-02。} 给 \(0<q<1\)、目标 \(0\le p\le1\)，在全部绝对连续路径律中， \[
 \inf_{Q:Q(A)\ge p}D_{\rm KL}(Q\|P^0)
@@ -2625,6 +2847,8 @@ D_{\rm KL}(P_{0:T}\|Q_{0:T})
 D_{\rm KL}(P_t(\cdot\mid H_t)\|Q_t(\cdot\mid H_t)).
 \]
 
+\hypertarget{p-kl-03}{}
+
 \textbf{P-KL-03，证明。} 路径密度比为逐步条件密度比之积。取对数变成和，再逐步条件期望。不同初态另加初始 KL。\(\blacksquare\)
 
 该链式法则也适用于历史依赖核，是一般过程的可执行误差账本。
@@ -2633,6 +2857,8 @@ D_{\rm KL}(P_t(\cdot\mid H_t)\|Q_t(\cdot\mid H_t)).
 \section{22.4 CTMC 的显式公式}\label{ctmc-ux7684ux663eux5f0fux516cux5f0f}}
 
 对有限非爆炸 CTMC、相同初态，受控速率 \(l^u_{ij}\) 的正支撑包含于基线 \(l^0_{ij}\) 的正支撑，记 \(\lambda_i^u=\sum_{j\ne i}l^u_{ij}\)。则
+
+\hypertarget{p-kl-04}{}
 
 \textbf{P-KL-04。} \[
 D_{\rm KL}(P^u_{[0,T]}\|P^0_{[0,T]})
@@ -2658,6 +2884,8 @@ dX_t=b^0(t,X_t)dt+\sigma(t,X_t)dW_t^0.
 Z_T=\exp\left(\int_0^T u_t\,dW_t^0-
 \tfrac12\int_0^T\|u_t\|^2dt\right)
 \] 是真鞅且 \(EZ_T=1\)，例如满足适用的 Novikov 条件。用 \(d\mathbf Q=Z_Td\mathbf P^0\) 变换后，\(W^u=W^0-\int u\,dt\) 为 Brownian motion，\(X\) 的漂移变为 \(b^0+\sigma u\)。
+
+\hypertarget{p-kl-05}{}
 
 \textbf{P-KL-05：可观测性修正的控制能量关系。} 若 \(E_{\mathbf Q}\int_0^T\|u_t\|^2dt<\infty\)，则完整概率空间上的 \[
 D_{\rm KL}(\mathbf Q\|\mathbf P^0)
@@ -2690,8 +2918,8 @@ StochasticSubstrate 将这些接口接入 P11，仍不把控制能量变成无�
 
 第 39.9---39.15 节给出实际全时间 Gaussian／连续 Brownian 源、自然过滤条件矩及真正 predictable L² 终点积分。第 39.17、39.19 节进一步构造同一输入的实际连续积分过程，并从真实时间能量和条件二阶关系推导平方补偿鞅；Brownian 分割平方和也有原源网格误差界。自然过滤的指数密度已规范化并与实际 RN 导数相接。第 39.22 节现已从同一完整可预测标量输入推导确定性零网格分割的实际二次变差及实际加权一、二阶随机和。第 39.26---39.28 节进一步从实际 Taylor 和推导同输入标量 Itô／Dynkin、向量完整可预测域与条件过程、原 OU 条件核及常控制的实际 TerminalGirsanovData／原 KL 消费者。第 39.30 节进一步构造实际有限反馈表的完整换测度路径与原 KL 消费者，第 39.31 节补同一完整向量输入的连续版本。全局一、二阶导数界等条件明确保留；第 39.34 节现进一步导出同一有界可预测输入的实际完整换测度路径、所构造的 \(Q\) 积分及原终端 KL；第 39.35 节给同一固定完整联合输入的确定性分割 QV。第 39.39 节进一步从同一实际测度构造原 ItoRun 并接非恒定评价合同的原控制消费者，第 39.42---39.43 节接实际有限状态演算与 Q 闭包上的真实鞅。一般受控 SDE、未覆盖的控制域及 HJB 模型仍承担来源责任。
 
-\hypertarget{ux3c0ux3c6ux7ea6ux675fux51e0ux4f55ux4e0eux53ccux9a71ux52a8ux7684ux4e25ux683cux7248ux672c}{%
-\chapter{23. Π/Φ、约束几何与双驱动的严格版本}\label{ux3c0ux3c6ux7ea6ux675fux51e0ux4f55ux4e0eux53ccux9a71ux52a8ux7684ux4e25ux683cux7248ux672c}}
+\hypertarget{ch-23}{%
+\chapter{23. Π/Φ、约束几何与双驱动的严格版本}\label{ch-23}}
 
 \hypertarget{ux8d44ux6e90ux4e0eux4fe1ux606fux7684ux5171ux540cux63a5ux53e3}{%
 \section{23.1 资源与信息的共同接口}\label{ux8d44ux6e90ux4e0eux4fe1ux606fux7684ux5171ux540cux63a5ux53e3}}
@@ -2704,6 +2932,8 @@ J=\Pi-\lambda_\Phi\Phi-C.
 
 \hypertarget{ux89c4ux8303ux81eaux7531ux5ea6}{%
 \section{23.2 规范自由度}\label{ux89c4ux8303ux81eaux7531ux5ea6}}
+
+\hypertarget{p-ddh-01}{}
 
 \textbf{P-DDH-01。} \[
 \Pi'=\Pi+\lambda\chi,\qquad
@@ -2723,12 +2953,16 @@ J=\Pi-\lambda_\Phi\Phi-C.
 q_\lambda(\gamma)=p_0(\gamma)e^{\lambda^\top F(\gamma)-\psi(\lambda)}.
 \]
 
+\hypertarget{p-ddh-02}{}
+
 \textbf{P-DDH-02。} \[
 \nabla\psi=E_{q_\lambda}F,\qquad
 \nabla^2\psi=\operatorname{Cov}_{q_\lambda}(F).
 \]
 
 \textbf{证明。} 有限和逐项求导；一阶导为归一化加权均值，二阶导为二阶矩减去均值外积。\(\blacksquare\)
+
+\hypertarget{p-ddh-03}{}
 
 \textbf{P-DDH-03：矩约束下的变分最小性。} 若目标矩 \(b=E_{q_\lambda}F\)，则 \(q_\lambda\) 在所有 \(q\) 满足 \(E_qF=b\) 中唯一最小化 \(D_{\rm KL}(q\|p_0)\)。
 
@@ -2747,6 +2981,8 @@ D(q\|p_0)=D(q\|q_\lambda)+\lambda^\top E_qF-\psi(\lambda).
 m_e(B)=g_e(z(B)).
 \]
 
+\hypertarget{p-ddh-04}{}
+
 \textbf{P-DDH-04。} 在同一预算点 \(B\)，各环境响应 Jacobian 纵向堆叠的秩不超过 2。
 
 \textbf{证明。} 链式法则给 \(J_e=Dg_e\,Dz\)。堆叠后仍右乘同一个 \(2\times k\) 矩阵 \(Dz\)。\(\blacksquare\)
@@ -2757,12 +2993,29 @@ m_e(B)=g_e(z(B)).
 J(a,B)=-\tfrac12\|a-B\|^2
 \] 给最优响应 \(a^*=B\)，维数可任意高。因此``目标数''``部门数''``潜变量维数''和``响应秩''须分开。
 
+\hypertarget{ux540cux4e00ux518dux751fux6e90ux7684ux4e09ux54cdux5e94ux8fb9ux754c}{%
+\subsection{同一再生源的三响应边界}\label{ux540cux4e00ux518dux751fux6e90ux7684ux4e09ux54cdux5e94ux8fb9ux754c}}
+
+这个维数限制也可在核心总论的同一实际源内检验。固定 \(\delta,\gamma\)，让合法开集中的 \((s,b,q)\) 变化；从健康 \(\theta_0\) 开始，固定运行其实际 care 程序。取公开记录中的三个事件概率：原身份被续存、有严格新生、有严格新生且该新生为损坏型。36 个原始原子及独立输出损伤给出
+
+\[F(s,b,q)=(s,b,bq),\qquad
+DF=\begin{pmatrix}1&0&0\\0&1&0\\0&q&b\end{pmatrix},\qquad
+\det DF=b>0.\]
+
+三者分别读取实际 retained、newborn 和 newborn 的 H/D。公开收据的 \texttt{PublicReceipt.newborn} 保留输出观察，\texttt{diagnostic\_observedBody} 保证由该观察可读出真实 H/D；不需要增加传感权限。第三项为联合事件概率，不能误读为条件损伤率 \(q\)。固定 \(\delta=1/8,\gamma=1/4\) 时，\((s,b,q)=(3/4,3/8,1/3)\) 是正类的内点，邻域内仍满足全部原始条件。
+
+若在这样的三维邻域存在共同 \(C^1\) 编码 \(h\) 到 \(\mathbb R^2\) 和共同 \(C^1\) 解码 \(g\)，使 \(F=g\circ h\)，链式法则给 \(\operatorname{rank}DF\le2\)，与上式矛盾。因此这三个公开响应不能在该邻域由同一个光滑二维潜变量完整生成。证明只需原有限事件律和链式法则；本源计算在本次加固中作为书面推论与精确核验给出，未新增对应的 Lean 端点。
+
+这是源参数响应的局部维数边界。它不赋予参数现实中独立可操纵的预算含义，也不排除明确受限的二维参数子族、满足额外条件的 Π／Φ 模型或非光滑编码。一般 C5 条件定理与本源的组织、恢复和增长正结果均保留；需要撤下的是无条件把所有这些响应压到共同光滑二维空间的外推。
+
 \hypertarget{ux951aux70b9ux4e0eux8c31ux8ba4ux8bc1}{%
 \section{23.5 锚点与谱认证}\label{ux951aux70b9ux4e0eux8c31ux8ba4ux8bc1}}
 
 若响应秩二分解为 \(J=AB^\top\)，任意 \(R\in GL(2)\) 给同一矩阵 \[
 J=(AR)(BR^{-\top})^\top.
 \] 给两条独立、预先定义且定向的干预轴后，允许基变换缩减为各轴正比例缩放。若还给量纲单位，则可进一步固定尺度。
+
+\hypertarget{p-ddh-05}{}
 
 \textbf{P-DDH-05：有效维数阈值。} 若 \(\|\widehat S-S\|_2\le\eta\)，则奇异值误差至多 \(\eta\)。若 \[
 \sigma_3(S)+\eta<\tau<\sigma_2(S)-\eta,
@@ -2786,8 +3039,8 @@ J=(AR)(BR^{-\top})^\top.
 
 这个代数 iff 不证明自然系统存在共同二维响应瓶颈。C5 的共同秩必要性、奇异值误差和三值结论承担另一任务：兼容表示``该测试未排除''，不能当作潜变量唯一识别；两条独立物理轴还需独立测量和干预。
 
-\hypertarget{ux591aux5c42ux7ea7ux4ef7ux503cux53efux79efux6027ux4e0eux534fux8c03ux673aux5236}{%
-\chapter{24. 多层级价值、可积性与协调机制}\label{ux591aux5c42ux7ea7ux4ef7ux503cux53efux79efux6027ux4e0eux534fux8c03ux673aux5236}}
+\hypertarget{ch-24}{%
+\chapter{24. 多层级价值、可积性与协调机制}\label{ch-24}}
 
 \hypertarget{ux591aux76eeux6807ux4e0eux5171ux540cux6700ux4f18}{%
 \section{24.1 多目标与共同最优}\label{ux591aux76eeux6807ux4e0eux5171ux540cux6700ux4f18}}
@@ -2802,6 +3055,8 @@ J=(AR)(BR^{-\top})^\top.
 \section{24.2 方向场什么时候有全局势}\label{ux65b9ux5411ux573aux4ec0ux4e48ux65f6ux5019ux6709ux5168ux5c40ux52bf}}
 
 在连通光滑流形上，给 \(C^1\) 一形式 \(\omega\)。
+
+\hypertarget{p-ali-01}{}
 
 \textbf{P-ALI-01：全局可积判据。} \[
 \omega=dV
@@ -2825,6 +3080,8 @@ e_i=\nabla_iJ_i-g_i,\quad
 \dot a_i=\alpha_i\nabla_iJ_i,\quad\alpha_i>0.
 \]
 
+\hypertarget{p-ali-02}{}
+
 \textbf{P-ALI-02。} \[
 \frac{dJ_P}{dt}
 =\sum_i\alpha_i(\|g_i\|^2+\langle g_i,e_i\rangle)
@@ -2839,6 +3096,8 @@ e_i=\nabla_iJ_i-g_i,\quad
 \section{24.4 协调阈值}\label{ux534fux8c03ux9608ux503c}}
 
 将联合子场 \(G\) 改为 \(G_\eta=(1-\eta)G+\eta g\)，\(g=\nabla J_P\)，\(0\le\eta\le1\)。
+
+\hypertarget{p-ali-03}{}
 
 \textbf{P-ALI-03。} 若 \(\langle g,G\rangle<0\)，父价值的瞬时导数转正恰需 \[
 \eta>
@@ -2857,8 +3116,8 @@ H0-VAL 与预测商、物理分辨率和选择层级不同。本章父价值的�
 
 P-ALI-01 的全局周期障碍尤其不能被局部``驱动方向''术语掩盖。数学上已给的漂移可来自梯度、循环与调和部分；哲学上要解释哪个部分与目的有关，还须有明确的评价机制。第 34 章保留这种忠实性端口。
 
-\hypertarget{ux7e41ux6b96ux9057ux4f20ux4e0eux6b63ux7b97ux5b50ux6f14ux5316}{%
-\chapter{25. 繁殖、遗传与正算子演化}\label{ux7e41ux6b96ux9057ux4f20ux4e0eux6b63ux7b97ux5b50ux6f14ux5316}}
+\hypertarget{ch-25}{%
+\chapter{25. 繁殖、遗传与正算子演化}\label{ch-25}}
 
 \hypertarget{ux4eceux5bf9ux8c61ux5230ux540eux4ee3ux673aux5236}{%
 \section{25.1 从对象到后代机制}\label{ux4eceux5bf9ux8c61ux5230ux540eux4ee3ux673aux5236}}
@@ -2880,6 +3139,8 @@ K_{ij}=\frac{EN_j^{(i)}}{E\sum_kN_k^{(i)}}
 p'=\frac{pM}{\bar b}.
 \] 这不是一般有限随机种群中 \(E[Z_{n+1}/|Z_{n+1}|]\) 的精确公式；随机比值与期望比值必须分开。
 
+\hypertarget{p-evo-01}{}
+
 \textbf{P-EVO-01：选择与传递的精确分解。} 对父类型数值性状 \(z_i\) 和后代类型性状 \(z'_j\)，令 \((Kz')_i=\sum_jK_{ij}z'_j\)。则 \[
 p'z'-pz=
 \frac{\operatorname{Cov}_p(b,z)}{\bar b}
@@ -2894,6 +3155,8 @@ p'z'-pz=
 \section{25.3 遗传信息与可遗传预测核}\label{ux9057ux4f20ux4fe1ux606fux4e0eux53efux9057ux4f20ux9884ux6d4bux6838}}
 
 单纯增长不能推出遗传：若所有 \(K_{i\cdot}\) 相同，后代类型与亲本类型独立，即使 \(b_i\) 很大也不改变这一事实。在指定亲子联合分布下，可报告 \(I(F;F')\)，但它依赖类型划分。
+
+\hypertarget{p-evo-02}{}
 
 \textbf{P-EVO-02：无关标签会膨胀遗传信息。} 若有限标签 \(T\) 独立于 \((F,F')\)，并被无差错复制，则 \[
 I((F,T);(F',T))=I(F;F')+H(T).
@@ -2911,6 +3174,8 @@ I((F,T);(F',T))=I(F;F')+H(T).
 \textbf{K-PF-01（复用并展开）：有限本原非负矩阵定理。} 固定非空有限类型上的非负矩阵 M；若某个正整数幂 \(M^k\) 的所有元素严格正，则存在 \(R>0\)、正列向量 \(r\)、正行向量 \(l\)，满足 \[
 Mr=Rr,\quad lM=Rl,\quad l\mathbf1=1,\quad lr=1.
 \] \(R\) 是单重主特征值，其他特征值模严格小于 \(R\)，且 \(R^{-n}M^n\to rl\)。本章仅在此明确有限本原假设下调用 Perron--Frobenius 定理。
+
+\hypertarget{p-evo-03}{}
 
 \textbf{P-EVO-03：平均增长和繁殖价值。} 对非零非负初始计数行向量 \(z_0\)， \[
 R^{-n}z_0M^n\to(z_0r)l,\qquad
@@ -2930,6 +3195,8 @@ R^{-n}z_0M^n\to(z_0r)l,\qquad
 E[Z_{n+1}\mid\mathcal F_n]=Z_nM.
 \]
 
+\hypertarget{p-evo-04}{}
+
 \textbf{P-EVO-04：繁殖价值鞅。} 有限初始计数下， \[
 W_n=R^{-n}Z_nr
 \] 是非负可积鞅，且 \(EW_n=Z_0r\)。
@@ -2945,8 +3212,8 @@ LineageEvolution 的 lineage\_price\_bridge 消费与 Price 代数相同的传�
 
 修复同一个身份与产生一个不同身份的后代被形式化为互斥角色。谱的存在性、增长与随机种群结果仍保持本章条件；``任意客体都自发形成满足 Perron 假设的谱系''不在结论中。
 
-\hypertarget{ux4e2aux4f53ux6027ux8f6cux53d8ux4e0eux5185ux751fux76eeux7684ux6865}{%
-\chapter{26. 个体性转变与内生目的桥}\label{ux4e2aux4f53ux6027ux8f6cux53d8ux4e0eux5185ux751fux76eeux7684ux6865}}
+\hypertarget{ch-26}{%
+\chapter{26. 个体性转变与内生目的桥}\label{ch-26}}
 
 \hypertarget{ux5bf9ux8c61ux5c3aux5ea6ux4e0dux7b49ux4e8eux9009ux62e9ux5c42ux7ea7}{%
 \section{26.1 对象尺度不等于选择层级}\label{ux5bf9ux8c61ux5c3aux5ea6ux4e0dux7b49ux4e8eux9009ux62e9ux5c42ux7ea7}}
@@ -2984,6 +3251,8 @@ LineageEvolution 的 lineage\_price\_bridge 消费与 Price 代数相同的传�
 R_e(\theta)=\mathcal R_e(Q_\theta^e)>0.
 \] 这里从行为到复制的 \(\mathcal R_e\) 是\textbf{目的桥}。它可以依据生存、产出或其他明确机制定义；对象证书本身并不唯一指定它。
 
+\hypertarget{p-brg-01}{}
+
 \textbf{P-BRG-01：无突变的固定适合度集中。} 有限类型、固定 \(R_i>0\) 下， \[
 p_i(n+1)=\frac{p_i(n)R_i}{\sum_jp_j(n)R_j}
 \quad\Longrightarrow\quad
@@ -3004,6 +3273,8 @@ p_i(n)=\frac{p_i(0)R_i^n}{\sum_jp_j(0)R_j^n}.
 \] 非中心内部轨道不可能趋向边界或唯一内部平衡，因为其乘积为固定的正数且小于中心值；因此``所有选择轨道都收敛到一个最优点''不成立。反对称性也阻止将该动力学一般解释为单一严格上升势函数流。
 
 若两个环境交换 \(R_1,R_2\) 的大小，就不存在由这两个固定适合度排序共同指定的唯一最优类型。跨环境泛化必须明确环境分布、最坏情况目标或适应机制。
+
+\hypertarget{p-brg-02}{}
 
 \textbf{P-BRG-02：行为等价的选择不可分辨性。} 在同一环境、复制完全通过 \(Q_\theta^e\) 决定且无类型依赖突变或其他复制通道时，若 \(Q_\theta^e=Q_{\theta'}^e\)，则 \(R_e(\theta)=R_e(\theta')\)，二者不能仅由该复制桥被差异筛选。
 
@@ -3026,8 +3297,8 @@ P7/P12 从包含物理载体和程序来源的 OntogeneticSeed 出发，经过�
 
 因此内生可以表示机制在明确时间过程中逐步被当前系统维持或传递；它不能表示证明中出现过的程序、解释器、目标和环境规律从未需要来源。第 34.5 节把已经连接的生命周期及保留前提完整列出。
 
-\hypertarget{ux53cdux8eabux7ed3ux6784ux4fe1ux5ff5ux5b66ux4e60ux4e0eux80fdux52a8ux6027}{%
-\chapter{27. 反身结构、信念学习与能动性}\label{ux53cdux8eabux7ed3ux6784ux4fe1ux5ff5ux5b66ux4e60ux4e0eux80fdux52a8ux6027}}
+\hypertarget{ch-27}{%
+\chapter{27. 反身结构、信念学习与能动性}\label{ch-27}}
 
 \hypertarget{ux628aux53efux4feeux6539ux7ed3ux6784ux7eb3ux5165ux72b6ux6001}{%
 \section{27.1 把可修改结构纳入状态}\label{ux628aux53efux4feeux6539ux7ed3ux6784ux7eb3ux5165ux72b6ux6001}}
@@ -3036,6 +3307,8 @@ P7/P12 从包含物理载体和程序来源的 OntogeneticSeed 出发，经过�
 P(X_{t+1},S_{t+1}\mid H_t,a_t)
 =K(X_t,S_t,a_t;\cdot),
 \] 则 \(Z_t=(X_t,S_t)\) 是受控 Markov 状态。自修改并不在数学上排斥状态空间描述，但可能使状态空间很大或不可有限压缩。
+
+\hypertarget{p-ref-01}{}
 
 \textbf{P-REF-01：反身状态增广。} 在上述条件和可测核条件下，给定任意因果策略，\(Z\) 的路径律由初始律及 \(K\) 唯一确定；确定性修改 \(S_{t+1}=F(S_t,X_t,a_t,\xi_t)\) 是其特例。
 
@@ -3052,6 +3325,8 @@ b_{t+1}(\theta,x')=
 \sum_xP_\vartheta(z|x,a_t)b_t(\vartheta,x)}.
 \] 分母为零的观测在当前模型下不可能：接口应返回模型冲突，不能任意填一个后验并继续声称已认证。
 
+\hypertarget{p-ref-02}{}
+
 \textbf{P-REF-02：信念充分性。} 上述模型下，下一观测的条件律和更新信念的条件律只依赖 \(b_t,a_t\)。有界折扣任务因此可转写为信念状态控制问题。
 
 \textbf{证明。} 对隐状态和参数求全概率得到分母中的预测观测律；Bayes 公式给更新。下一信念是当前信念、动作和观测的确定函数，故其核仅依赖 \((b_t,a_t)\)。有界奖励的条件期望同理。\(\blacksquare\)
@@ -3060,6 +3335,8 @@ b_{t+1}(\theta,x')=
 
 \hypertarget{ux4fe1ux606fux4ef7ux503cux4e0dux662fux4fe1ux606fux589eux76ca}{%
 \section{27.3 信息价值不是信息增益}\label{ux4fe1ux606fux4ef7ux503cux4e0dux662fux4fe1ux606fux589eux76ca}}
+
+\hypertarget{p-ref-03}{}
 
 \textbf{P-REF-03：免费信息的决策价值非负。} 在一次决策问题中，信号 \(Y\) 不改变世界分布或动作集、无成本，且允许忽略它。对有限动作集和可积收益， \[
 E_Y\max_a E[u(a,\theta)\mid Y]
@@ -3072,6 +3349,8 @@ E_Y\max_a E[u(a,\theta)\mid Y]
 
 \hypertarget{ux76eeux6807ux4feeux8ba2ux4e0eux8befux6307ux5b9aux98ceux9669}{%
 \section{27.4 目标修订与误指定风险}\label{ux76eeux6807ux4feeux8ba2ux4e0eux8befux6307ux5b9aux98ceux9669}}
+
+\hypertarget{p-ref-04}{}
 
 \textbf{P-REF-04：统一目标误差的后悔界。} 若同一策略集上 \[
 \sup_\pi|J_g(\pi)-J_{\hat g}(\pi)|
@@ -3103,6 +3382,8 @@ J_g(\pi_g)-J_g(\pi_{\hat g})\le2L d(g,\hat g).
   在代价和安全约束下恢复、回滚和停止的能力。
 \end{itemize}
 
+\hypertarget{p-ref-05}{}
+
 \textbf{P-REF-05：可行选择扩展的单调性。} 若同一评价 \(J\) 下 \(\Pi_1\subseteq\Pi_2\)，则 \(\sup_{\Pi_2}J\ge\sup_{\Pi_1}J\)。
 
 \textbf{证明。} 在较大的集合上取上确界。\(\blacksquare\)
@@ -3128,8 +3409,8 @@ C1ParametricBelief 在标准 Borel 潜在空间及明确的可数生成条件下
 
 有限支持控制的策略存在还需另外的可行性递推。先固定一个策略验证其实际支持，是证明该策略安全；把这个支持当作不变输入去另选策略可能改变未来可达集。第 37 章的后向递推加前向实际支撑证明避免这种循环，且没有依赖未知最优策略的支持假设。
 
-\hypertarget{ux5b8cux6574ux63a5ux53e3ux7b97ux6cd5ux4e0eux7ec4ux5408ux5951ux7ea6}{%
-\chapter{28. 完整接口、算法与组合契约}\label{ux5b8cux6574ux63a5ux53e3ux7b97ux6cd5ux4e0eux7ec4ux5408ux5951ux7ea6}}
+\hypertarget{ch-28}{%
+\chapter{28. 完整接口、算法与组合契约}\label{ch-28}}
 
 \hypertarget{ux6a21ux5757ux5951ux7ea6ux603bux8868}{%
 \section{28.1 模块契约总表}\label{ux6a21ux5757ux5951ux7ea6ux603bux8868}}
@@ -3231,6 +3512,8 @@ Learning & 模型族、观测核、结构更新、成本 & 信念更新和可行
   \]
 \end{itemize}
 
+\hypertarget{p-api-01}{}
+
 \textbf{P-API-01：精确与近似过程接口的复合。} 若 \(A\to B\) 和 \(B\to C\) 具有上述类型，则 \[
 J_{AC}=J_{AB}\circ J_{BC},\qquad
 C_{AC}=C_{BC}\circ C_{AB}.
@@ -3257,6 +3540,8 @@ C_{AC}=C_{BC}\circ C_{AB}.
 =\left(\text{当前块}(x),
 \left(\sum_{y\in B}P_a(x,y)\right)_{a\in A,B\in\mathcal P_n}\right)
 \] 重新分割，直到不再改变。
+
+\hypertarget{p-alg-01}{}
 
 \textbf{P-ALG-01：有限稳定分割的正确性与最粗性。} 算法有限终止，终止分割是所有细化 \(\mathcal P_0\) 的受控可合并分割中最粗者。因此其商保留原输出、奖励和所有动作下的一步分布，并由归纳保留相应全部有限时域输出律。
 
@@ -3307,8 +3592,8 @@ repeat:
 
 输出 True 的精确含义是所有非空初始观察支持可行，进而存在实际零未认证占据策略；False 只否定同一模型、同一时域、同一认证条件下的该性质。浮点阈值或有限样本未出现的边不提供``恰等于支持''的证书。第 37 章给完整递推、正确性证明、算法代码和真实死路例。
 
-\hypertarget{ux5e94ux7528ux65b9ux6cd5ux4eceux6a21ux578bux5230ux53efux68c0ux9a8cux8bc1ux4e66}{%
-\chapter{29. 应用方法：从模型到可检验证书}\label{ux5e94ux7528ux65b9ux6cd5ux4eceux6a21ux578bux5230ux53efux68c0ux9a8cux8bc1ux4e66}}
+\hypertarget{ch-29}{%
+\chapter{29. 应用方法：从模型到可检验证书}\label{ch-29}}
 
 \hypertarget{ux5197ux4f59ux8bbeux5907ux4e0eux5bb9ux9519ux7ef4ux62a4}{%
 \section{29.1 冗余设备与容错维护}\label{ux5197ux4f59ux8bbeux5907ux4e0eux5bb9ux9519ux7ef4ux62a4}}
@@ -3391,8 +3676,8 @@ dX_t=b(X_t,u_t)dt+\sigma(X_t,u_t)dW_t,
 
 C2/C5 的三值方法允许认证、拒绝或未决；C7 将协议、模型、解释和核心数学失败分开。当前科学闭合状态仍保留现实支持未验证。下一步真实系统研究应以可失败的模型合同和竞争解释开展，不能把合成模型的正确性直接报告为自然界的普遍结论。
 
-\hypertarget{ux5b8cux6574ux7b97ux4f8bux4e0eux72ecux7acbux53efux6267ux884cux68c0ux9a8c}{%
-\chapter{30. 完整算例与独立可执行检验}\label{ux5b8cux6574ux7b97ux4f8bux4e0eux72ecux7acbux53efux6267ux884cux68c0ux9a8c}}
+\hypertarget{ch-30}{%
+\chapter{30. 完整算例与独立可执行检验}\label{ch-30}}
 
 本章全部为明确给定的数学模型或合成实验，不是自然系统实证。附录 D 内嵌 v3.0 历史运行的完整代码和输出。数值检验是实现一致性和反例检查，不代替前文一般证明。
 
@@ -3550,13 +3835,15 @@ v3.0 原文记录代码通过 2371 项断言，包括三顶点全部 20 个反�
 
 后一个模型的选择概率为 \(7/8,1/8\)，实际联合失败率精确为 \(9/64\)；Good-only 校准给通用保证 \(17/32<1\)。其罕见 all-true 记录具有正概率却不满足小预算，说明所有记录都必须通过数值检查的前提过强。精确值、通用界和 Lean 原件分别列在第 38 章，不能与本章旧浮点输出合并为同一次实验。
 
-\hypertarget{ux7edfux4e00ux88c5ux914dux6838ux5fc3ux80fdux5171ux540cux63a8ux51faux4ec0ux4e48}{%
-\chapter{31. 统一装配：核心能共同推出什么}\label{ux7edfux4e00ux88c5ux914dux6838ux5fc3ux80fdux5171ux540cux63a8ux51faux4ec0ux4e48}}
+\hypertarget{ch-31}{%
+\chapter{31. 统一装配：核心能共同推出什么}\label{ch-31}}
 
 \hypertarget{ux6709ux9650ux64cdux4f5cux6027ux6838ux5fc3ux7684ux88c5ux914dux5b9aux7406}{%
 \section{31.1 有限操作性核心的装配定理}\label{ux6709ux9650ux64cdux4f5cux6027ux6838ux5fc3ux7684ux88c5ux914dux5b9aux7406}}
 
 将多个模块组织成一个可检验结论，比单独罗列相似数学工具更接近本项目所需的``统一''。
+
+\hypertarget{p-core-01}{}
 
 \textbf{P-CORE-01：有限对象---实现---控制认证装配。} 给定：
 
@@ -3659,8 +3946,8 @@ v3.0 原文记录代码通过 2371 项断言，包括三顶点全部 20 个反�
 
 第 21.7、35.7 节又把同一源的准确观察商、实际策略、占据极限与 killed 条件结构接到一起。结果既提供正向装配，也辨明其不同问题：同一策略可以具有唯一稳定分布而不断积累曾失败风险；安全受限最优可以从指定初态持续，却在整个状态空间拥有多个不变律。第 36.8、38.10 节分别检验有限表示是否保留全部逃逸质量、统计选择是否仍消费同一真实采样与部署。这些联系使 MINCORE 的定量责任、H0 的层级区分和具体定理在真实来源上彼此约束，并没有取消目的、形成与经验验证仍需提供的条件。
 
-\hypertarget{ux6709ux7c7bux578bux7684ux7edfux4e00ux516bux7c7bux5c42ux7ea7ux4e0eux56dbux4e2aux751fux6210ux673aux5236}{%
-\chapter{32. 有类型的统一：八类层级与四个生成机制}\label{ux6709ux7c7bux578bux7684ux7edfux4e00ux516bux7c7bux5c42ux7ea7ux4e0eux56dbux4e2aux751fux6210ux673aux5236}}
+\hypertarget{ch-32}{%
+\chapter{32. 有类型的统一：八类层级与四个生成机制}\label{ch-32}}
 
 \hypertarget{ux7edfux4e00ux95eeux9898ux7684ux6570ux5b66ux5f62ux5f0f}{%
 \section{32.1 统一问题的数学形式}\label{ux7edfux4e00ux95eeux9898ux7684ux6570ux5b66ux5f62ux5f0f}}
@@ -3711,6 +3998,8 @@ Lean 对应的代表源分别为 QuotientDescent、DynamicsKernel、PathError、
 
 \[q(x)=q(x')\Longrightarrow g(x)=g(x').\]
 
+\hypertarget{m-32-1}{}
+
 \textbf{M-32.1：集合层的唯一降落。} 纤维相容当且仅当存在唯一 \(\bar g:Y\to Z\) 使 \(g=\bar g\circ q\)。
 
 \textbf{证明。} 相容时，对每个 \(y\) 选 \(x_y\) 满足 \(q(x_y)=y\)，令 \(\bar g(y)=g(x_y)\)。相容性使选取不影响值，并给出 \(\bar g(q(x))=g(x)\)。若 \(h\circ q=g\)，则对 \(x_y\) 代入得 \(h(y)=g(x_y)=\bar g(y)\)。反向由同一个 \(\bar g\) 直接得到纤维相容。\(\blacksquare\)
@@ -3729,6 +4018,8 @@ Lean 对应的代表源分别为 QuotientDescent、DynamicsKernel、PathError、
 设各阶段比较量 \(e_n\ge0\)，传输常数 \(L_n\ge0\)，局部缺陷 \(\epsilon_n\ge0\)，并有
 
 \[e_{n+1}\le L_ne_n+\epsilon_n.\]
+
+\hypertarget{m-32-2}{}
 
 \textbf{M-32.2：加权误差链。} 对任意 \(N\)，
 
@@ -3752,6 +4043,8 @@ M-TC-01 的五个计数端点为 P-API-01、P-ID-01、P-DYN-04、P-DYN-03、P-ID
 
 \[\mu_k(Pf)-\mu_k(f)\longrightarrow0.\]
 
+\hypertarget{m-32-3}{}
+
 \textbf{M-32.3：可观测残差推出不变性。} 若该测试类决定概率测度，则 \(\mu P=\mu\)。
 
 \textbf{证明。} 弱收敛分别作用于 \(f\) 与 \(Pf\)，给出 \(\mu(Pf)-\mu(f)=0\)。测试类决定测度，所以两测度相同。\(\blacksquare\)
@@ -3766,6 +4059,8 @@ M-TC-01 的五个计数端点为 P-API-01、P-ID-01、P-DYN-04、P-DYN-03、P-ID
 给有限非负矩阵 \(M\)、\(\rho>0\) 和逐项正的行向量 \(q\)、列向量 \(h\)，满足
 
 \[qM=\rho q,\qquad Mh=\rho h,\qquad q\mathbf1=1,\quad qh=1.\]
+
+\hypertarget{m-32-4}{}
 
 \textbf{M-32.4：QSD/Doob 与随机读出。} 令
 
@@ -3802,8 +4097,8 @@ M-TC-01 的五个计数端点为 P-API-01、P-ID-01、P-DYN-04、P-DYN-03、P-ID
 
 早期 633 模块与后来的 650 模块均为源快照计数；模块数量不会提高定理的逻辑强度。面向读者的规范入口可以简化，但不能通过删除保留适配使其前提消失。
 
-\hypertarget{ux5173ux7cfbux7f3aux9677ux5b9aux91cfux6821ux51c6ux4e0eux89c4ux8303ux534fux53d8}{%
-\chapter{33. 关系缺陷、定量校准与规范协变}\label{ux5173ux7cfbux7f3aux9677ux5b9aux91cfux6821ux51c6ux4e0eux89c4ux8303ux534fux53d8}}
+\hypertarget{ch-33}{%
+\chapter{33. 关系缺陷、定量校准与规范协变}\label{ch-33}}
 
 \hypertarget{ux96f6ux5173ux7cfbux4e0eux5b9aux91cfux7f3aux9677}{%
 \section{33.1 零关系与定量缺陷}\label{ux96f6ux5173ux7cfbux4e0eux5b9aux91cfux7f3aux9677}}
@@ -3813,6 +4108,8 @@ M-TC-01 的五个计数端点为 P-API-01、P-ID-01、P-DYN-04、P-DYN-03、P-ID
 \[d(x,y)=0\iff R(x,y).\]
 
 这里只要求零集对应；对称性、三角不等式与动力学收缩必须另外证明。\nolinkurl{RelationDefectPresentation} 正是这种最小接口。
+
+\hypertarget{m-33-1}{}
 
 \textbf{M-33.1：关系不能唯一恢复定量缺陷。} 若 \(d(x_0,y_0)>0\)，则对每个 \(c>0\)，\(d_c=cd\) 有相同零关系，而 \(c\ne1\) 时 \(d_c(x_0,y_0)\ne d(x_0,y_0)\)。因此不存在只读取关系、却能对所有这样的表示恢复其原始缺陷数值的规则。
 
@@ -3828,6 +4125,8 @@ M-TC-01 的五个计数端点为 P-API-01、P-ID-01、P-DYN-04、P-DYN-03、P-ID
 设 \(d_P,d_Q\) 为同一对输入上的缺陷。给 \(a>0,b\ge0\)，校准条件是
 
 \[a d_P(x,y)\le d_Q(x,y)\le b d_P(x,y)\quad\forall x,y.\]
+
+\hypertarget{m-33-2}{}
 
 \textbf{M-33.2：零关系、预算和趋零的运输。} 在校准条件下：
 
@@ -3852,6 +4151,8 @@ M-TC-01 的五个计数端点为 P-API-01、P-ID-01、P-DYN-04、P-DYN-03、P-ID
 
 \hypertarget{ux51c6ux4e09ux89d2ux4e0eux8de8ux9636ux6bb5ux6536ux7f29}{%
 \section{33.3 准三角与跨阶段收缩}\label{ux51c6ux4e09ux89d2ux4e0eux8de8ux9636ux6bb5ux6536ux7f29}}
+
+\hypertarget{m-33-3}{}
 
 \textbf{M-33.3：校准后的三角常数。} 若 \(d_P\) 满足三角不等式，则
 
@@ -3880,6 +4181,8 @@ M-TC-01 的五个计数端点为 P-API-01、P-ID-01、P-DYN-04、P-DYN-03、P-ID
 
 一般双边校准只给界；若每阶段确有精确标度 \(d'_n=c_nd_n\)，\(c_n>0\)，则系数可精确运输。
 
+\hypertarget{m-33-4}{}
+
 \textbf{M-33.4：阶段标度与误差链。} 从 \(e_{n+1}\le L_ne_n+\epsilon_n\) 及 \(e'_n=c_ne_n\) 得
 
 \[e'_{n+1}\le L'_ne'_n+\epsilon'_n,
@@ -3901,6 +4204,8 @@ M-32.2 的展开随之变成原展开整体乘 \(c_N\)。
 
 \[J(\pi)=\Pi(\pi)-\lambda\Phi(\pi).\]
 
+\hypertarget{m-33-5}{}
+
 \textbf{M-33.5：完整规范刻画。} 对另一对 \(\Pi',\Phi'\)，
 
 \[J'=J\iff\exists\chi:\mathfrak P\to\mathbb R,
@@ -3921,8 +4226,8 @@ M-32.2 的展开随之变成原展开整体乘 \(c_N\)。
 
 所以本章带来两个互补结论：没有校准时哪些量不能识别；有明确校准时哪些预算、极限和规范可以合法运输。二者共同约束统一理论的定量表达。
 
-\hypertarget{ux64cdux4f5cux5bf9ux8c61ux76eeux7684ux4e0eux6761ux4ef6ux751fux547dux5468ux671fux7684ux5b8cux6574ux63a5ux53e3}{%
-\chapter{34. 操作对象、目的与条件生命周期的完整接口}\label{ux64cdux4f5cux5bf9ux8c61ux76eeux7684ux4e0eux6761ux4ef6ux751fux547dux5468ux671fux7684ux5b8cux6574ux63a5ux53e3}}
+\hypertarget{ch-34}{%
+\chapter{34. 操作对象、目的与条件生命周期的完整接口}\label{ch-34}}
 
 \hypertarget{ux516dux79cdux5bf9ux8c61ux89d2ux8272}{%
 \section{34.1 六种对象角色}\label{ux516dux79cdux5bf9ux8c61ux89d2ux8272}}
@@ -3965,6 +4270,8 @@ OperationalObject 的 PredictiveIdentity、FormedProvenance、InteractionDelimit
 \[\pi\preceq\pi'\iff J(\pi)\le J(\pi'),\]
 
 实数序的总性和传递性就成为 \(\preceq\) 必须满足的条件。
+
+\hypertarget{m-34-1}{}
 
 \textbf{M-34.1：不可比较合同的数值表示障碍。} 两个不同策略只各自与自身可比较时，不存在这样的实值完全表示。
 
@@ -4030,6 +4337,8 @@ CLOSED 表示该包的约定交付已完成，可以包括条件命题和 no-go�
 
 \[d_P(B_1u,B_1v)\le Ld_F(u,v),\qquad L\ge0.\]
 
+\hypertarget{m-34-2}{}
+
 \textbf{M-34.2：实现结构的 FBT 界。}
 
 \[d_P(B_1(f_1(t_Xx)),t_P(B_0(f_0x)))\le L\epsilon_F+\epsilon_B.\]
@@ -4070,6 +4379,8 @@ c_m+c_v\frac\lambda\kappa\le s.\]
 
 该条件终端并非真实 append-history 个体族的已完成实现：若再要求有限永久个体全集上的正规化繁殖核每次严格增加真实代数，该组合不可能。第 39.2 节保留其严格反例，第 39.20---39.21 节采用亲本类型与子代事件的矩形通道及正真实出生质量的正确替代；不能把代数增长折回有限循环以套用本终端。
 
+\hypertarget{m-34-3}{}
+
 \textbf{M-34.3：程序来源不能从不可区分物理部分恢复。} 若两个合法种子具有同一物理部分却要求不同程序输出，则不存在只读取物理部分而同时正确输出二者的确定性合成器。
 
 \textbf{证明。} 同一输入只能有同一函数值，与两个不同正确输出矛盾。\(\blacksquare\)
@@ -4102,8 +4413,8 @@ ObjectScaleMap 可复合；若某谓词在第一个映射和第二个映射下�
 
 当前 \nolinkurl{wilsonianCouplingFlow_nontrivial_of_twoCouplings} 仅说明：耦合域有两个不同点，就能构造两个不同常值流记录。该记录没有与实际商映射、动力学或缺陷校准的相容方程。因此本书不将它升级为``给定尺度映射存在两个合法 Wilson 流''。新研究若要提出这一命题，必须先给出相容定义，再证明相容流存在或非唯一。
 
-\hypertarget{ux540cux4e00ux6709ux9650ux6e90ux4e0aux7684ux9884ux6d4bux8f7dux4f53ux751fux5b58ux4feeux590dux4e0eux6700ux4f18ux63a7ux5236}{%
-\chapter{35. 同一有限源上的预测、载体、生存、修复与最优控制}\label{ux540cux4e00ux6709ux9650ux6e90ux4e0aux7684ux9884ux6d4bux8f7dux4f53ux751fux5b58ux4feeux590dux4e0eux6700ux4f18ux63a7ux5236}}
+\hypertarget{ch-35}{%
+\chapter{35. 同一有限源上的预测、载体、生存、修复与最优控制}\label{ch-35}}
 
 \hypertarget{ux5171ux540cux6570ux5b66ux5e95ux5ea7}{%
 \section{35.1 共同数学底座}\label{ux5171ux540cux6570ux5b66ux5e95ux5ea7}}
@@ -4120,6 +4431,8 @@ ObjectScaleMap 可复合；若某谓词在第一个映射和第二个映射下�
 给安全集合 \(V\subseteq X\)，使用第 8 章删除递推得到最大固定点 \(K\)。其动作条件为
 
 \[x\in K\Longrightarrow\exists a:\operatorname{supp}P(x,a)\subseteq K.\]
+
+\hypertarget{m-35-1}{}
 
 \textbf{M-35.1：同源所有时刻安全。} 对任何 \(\mu_0\) 支撑在 \(K\)，存在确定性平稳策略 \(\pi\)，其由原始 \(P\) 和 \(\mu_0\) 构造的无限轨迹满足
 
@@ -4139,6 +4452,8 @@ ObjectScaleMap 可复合；若某谓词在第一个映射和第二个映射下�
 \[A_K(x)=\{a\in A: x\in K\Rightarrow\operatorname{supp}P(x,a)\subseteq K\}.\]
 
 在 \(K\) 内非空性来自固定点；在 \(K\) 外任意动作满足蕴涵。受限模型保留原奖励与原核，只缩小动作域。
+
+\hypertarget{m-35-2}{}
 
 \textbf{M-35.2：安全约束内对所有因果策略的最优性。} 受限 Bellman 算子
 
@@ -4171,6 +4486,8 @@ actual\_macro\_optimal 同时消费原精确控制商。它与第 21.7 节的零
 \section{35.5 恢复程序返回同一安全核}\label{ux6062ux590dux7a0bux5e8fux8fd4ux56deux540cux4e00ux5b89ux5168ux6838}}
 
 设 \(T\) 为可信程序执行底座，程序 \(p\) 对上节某个安全动作选择有效。修复过程联合更新物理状态与程序表示；在已经证明的编解码及恢复条件下，投影到下一物理状态的核恰好是 \(P(x,a_p(x))\)。
+
+\hypertarget{m-35-3}{}
 
 \textbf{M-35.3：程序恢复的源核一致性桥。} 若恢复程序的执行核与原安全源动作核相同，则从 \(K\) 内状态执行恢复程序后仍支撑在 \(K\)。
 
@@ -4215,8 +4532,8 @@ actual\_macro\_optimal 同时消费原精确控制商。它与第 21.7 节的零
 
 \textbf{来源。} \href{../formalization/ueot-core/docs/compression/theory_completion/unified_closure/interface_research_v1/UNIFIED_FINITE_SOURCE_EXAMPLE.md}{统一有限源研究及逐箭头表}、\href{../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SafeRewardConflictWitness.lean}{\nolinkurl{SafeRewardConflictWitness}}、\href{../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OrganizationalSufficiencyWitness.lean}{\nolinkurl{OrganizationalSufficiencyWitness}}。本节新增的非零奖励分割、后验与两时钟恢复，以及第 21.7 节的完整参数族，见\href{../formalization/ueot-core/docs/compression/theory_completion/unified_closure/conflict_family_book_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md}{原书具名来源包}；具体量词和端点仍按第 21.7 节及附录 F 阅读。
 
-\hypertarget{ux5b9eux9645ux6709ux9650ux8defux5f84ux540eux9a8cux5206ux89e3ux4e0eux90e8ux7f72ux8986ux76d6}{%
-\chapter{36. 实际有限路径、后验分解与部署覆盖}\label{ux5b9eux9645ux6709ux9650ux8defux5f84ux540eux9a8cux5206ux89e3ux4e0eux90e8ux7f72ux8986ux76d6}}
+\hypertarget{ch-36}{%
+\chapter{36. 实际有限路径、后验分解与部署覆盖}\label{ch-36}}
 
 \hypertarget{ux5148ux786eux5b9aux5b9eux9a8cux7684ux751fux6210ux5f8b}{%
 \section{36.1 先确定实验的生成律}\label{ux5148ux786eux5b9aux5b9eux9a8cux7684ux751fux6210ux5f8b}}
@@ -4262,6 +4579,8 @@ K_n(g,a)(y)=\sum_x\rho_n^g(x)\,[q_\#P_n(x,a)](y).
 
 这不是任意训练---部署耦合下的独立性声明。它由本节已指定的动作生成顺序推出。策略如果还读取未包含在 \(g\) 中的隐藏微观信息，此因子分解一般不成立。
 
+\hypertarget{m-36-1}{}
+
 \textbf{M-36.1：有限纤维分解与零质量分支。} 对正质量粗历史，\(\rho_n^g\) 是概率分布，并满足
 
 \[
@@ -4292,6 +4611,8 @@ K_n(g,a)(y)=\sum_x\rho_n^g(x)\,[q_\#P_n(x,a)](y).
 \[
 (p\ltimes K)(h,z)=p(h)K(h)(z).
 \]
+
+\hypertarget{m-36-2}{}
 
 \textbf{M-36.2：共同前缀的精确行误差公式。}
 
@@ -4328,6 +4649,8 @@ d_n(x,a)=\operatorname{TV}\bigl(q_\#P_n(x,a),\widehat P_n(qx,a)\bigr).
 
 它是实际前缀和动作联合 PMF 沿 \((h,a)\mapsto(\operatorname{last}h,a)\) 的推送，因而总质量为一。
 
+\hypertarget{m-36-3}{}
+
 \textbf{M-36.3：同策略、实际占据加权的路径界。}
 
 \[
@@ -4350,6 +4673,8 @@ d_n(x,a)=\operatorname{TV}\bigl(q_\#P_n(x,a),\widehat P_n(qx,a)\bigr).
 \section{36.5 仅认证一部分部署行}\label{ux4ec5ux8ba4ux8bc1ux4e00ux90e8ux5206ux90e8ux7f72ux884c}}
 
 令 \(C_n(x,a)\) 为被认证的源行。设 \(0\le\varepsilon_n\le1\)，且在这些行上 \(d_n(x,a)\le\varepsilon_n\)；对其余行只使用概率距离的一般上界 \(d_n\le1\)。
+
+\hypertarget{m-36-4}{}
 
 \textbf{M-36.4：未认证占据的精确线性收费。}
 
@@ -4395,6 +4720,8 @@ a\in\Gamma_n(g),\quad \rho_n^g(x)>0
 \pi_n(g)(\Gamma_n(g)^c)\le\kappa_n.
 \]
 
+\hypertarget{m-36-5}{}
+
 \textbf{M-36.5：支持认证的动作预算推出实际覆盖预算。}
 
 \[
@@ -4436,6 +4763,8 @@ a\in\Gamma_n(g),\quad \rho_n^g(x)>0
 \section{36.8 有限实际观察像与必须保留的逃逸质量}\label{ux6709ux9650ux5b9eux9645ux89c2ux5bdfux50cfux4e0eux5fc5ux987bux4fddux7559ux7684ux9003ux9038ux8d28ux91cf}}
 
 有限 X 的读出 \(q:X\to Y\) 具有有限完整像 \(S=q(X)\)，即使 Y 本身无限。参考核可能把质量送到 S 外，因此不能直接删除这些点并重新归一化。本节给出保留原参考过程、原实际策略及占据的书面扩展；完整路径适配的 Lean 状态与较基础的有限编码引理分开记录。
+
+\hypertarget{m-36-6}{}
 
 \textbf{M-36.6：一侧有限支撑的精确 TV 编码。} 设 Y 的单点可测，S 有限，概率测度 \(\mu,\nu\) 满足 \(\mu(S^c)=0\)。把每个 S 内点独立保留，并把全部外部点送到一个额外符号 \(\bot\)，得到可测映射 \(c:Y\to S\sqcup\{\bot\}\)。则
 
@@ -4483,6 +4812,8 @@ a\in\Gamma_n(g),\quad \rho_n^g(x)>0
 
 再把两个完整历史空间都编码到同一个 \(L_n\sqcup\{\bot\}\)：保留点各自对应同一 \(\ell\)，非保留历史统一送到 \(\bot\)。两参考在所有保留点质量相等，归一化给剩余质量也相等。实际观察路径全部落在保留历史上，分别应用 M-36.6，得到原路径 TV 与有限参考比较 TV 精确相等。这里把``曾逃逸后返回''仍视为非保留完整历史，不能只看末观察。
 
+\hypertarget{m-36-7}{}
+
 \textbf{M-36.7：保持原来源的有限观察像路径界。} 在上述条件下，沿用原源 P、完整策略 π、初始律和原参考 Q，记实际状态---动作占据为 \(w_n\)，则
 
 \[
@@ -4508,8 +4839,8 @@ M-36.6 的基本编码结论适用于一般概率测度，可以包括非原子�
 
 \textbf{Lean 范围。} 本版生产接口包括：\nolinkurl{FiniteObservationEscapeCheck} 的精确编码，\nolinkurl{PathObservationEscapeCheck.escape_path_tv} 的同策略完整路径等式，以及 \nolinkurl{ArbitraryObservationRiskCheck} 的原空间路径、认证占据与微观事件风险端点。\nolinkurl{FiniteObservationEscapeBoundary} 同时证明上述正逃逸数值边界。原有限 Y 接口仍保留，新端点沿本节的来源等式扩展其范围。编码使用非计算定义，不新增一个已经执行的通用算法。书面证明来源见 \href{../formalization/ueot-core/docs/compression/theory_completion/unified_closure/interface_research_v1/FINITE_OBSERVATION_ESCAPE.md}{\nolinkurl{FINITE_OBSERVATION_ESCAPE}}，当前声明和验收范围见 \href{../formalization/ueot-core/docs/compression/theory_completion/unified_closure/REGISTERED_INTERFACES_CLOSURE_V1.md}{接口闭环} 及 \href{LEAN_API_SCOPE.md}{LEAN\_API\_SCOPE}。
 
-\hypertarget{ux90e8ux5206ux89c2ux5bdfux4e0bux7684ux6709ux9650ux652fux6301ux751fux5b58ux53ccux5411ux5b9aux7406ux4e0eux53efux6267ux884cux68c0ux9a8c}{%
-\chapter{37. 部分观察下的有限支持生存：双向定理与可执行检验}\label{ux90e8ux5206ux89c2ux5bdfux4e0bux7684ux6709ux9650ux652fux6301ux751fux5b58ux53ccux5411ux5b9aux7406ux4e0eux53efux6267ux884cux68c0ux9a8c}}
+\hypertarget{ch-37}{%
+\chapter{37. 部分观察下的有限支持生存：双向定理与可执行检验}\label{ch-37}}
 
 \hypertarget{ux652fux6301ux9012ux63a8ux7684ux5bf9ux8c61ux4e0eux5fc5ux8981ux8fb9ux754c}{%
 \section{37.1 支持递推的对象与必要边界}\label{ux652fux6301ux9012ux63a8ux7684ux5bf9ux8c61ux4e0eux5fc5ux8981ux8fb9ux754c}}
@@ -4545,6 +4876,8 @@ S_{n+1}(g,(a,y))=\operatorname{Succ}_n(S_n(g),a,y).
 
 定义与第 36 章相同的 microLaw、coarseLaw。以下所有结论针对任意一个给定完整策略 \(\pi\)。
 
+\hypertarget{m-37-1}{}
+
 \textbf{M-37.1：正历史下的实际支持桥。}
 
 \begin{enumerate}
@@ -4577,6 +4910,8 @@ S_{n+1}(g,(a,y))=\operatorname{Succ}_n(S_n(g),a,y).
 \textbf{Lean。} \nolinkurl{mem_microLaw_succ_support_iff}、\nolinkurl{mem_coarseLaw_zero_support_iff}、\nolinkurl{mem_traceSupport_iff_realized}、\nolinkurl{mem_coarseLaw_succ_support_iff}、\nolinkurl{traceSupport_eq_fiberTerminalPosterior_support}、\nolinkurl{successorSupport_eq_fiberTerminalPosterior_support}。
 
 定理只识别支持，不声称不同策略在同一可达粗历史上的完整后验概率相同。对零质量历史，trace support 仍有组合定义，但实际后验补全可以不同；当前第二、第四项没有向零质量历史延伸。
+
+\hypertarget{m-37-2}{}
 
 \textbf{M-37.2：零未认证占据的逐支持刻画。}
 
@@ -4632,6 +4967,8 @@ V(n,k+1,S):\iff \exists a\in A:\;&
 \hypertarget{ux5fc5ux8981ux4e14ux5145ux5206ux7684ux7b56ux7565ux5b58ux5728ux6027}{%
 \section{37.4 必要且充分的策略存在性}\label{ux5fc5ux8981ux4e14ux5145ux5206ux7684ux7b56ux7565ux5b58ux5728ux6027}}
 
+\hypertarget{m-37-3}{}
+
 \textbf{M-37.3：有限支持生存与真实零占据策略等价。} 给定完整 \(\pi_{\rm base}\)，以下两项等价：
 
 \[
@@ -4666,6 +5003,8 @@ R_n(x,a,x')\iff P_n(x,a)(x')>0.
 这是一项确切表示定理。有限样本中``没有看见 \(x'\)''不满足这个等价式。
 
 对有限集合 \(S\)，先按 \(R\) 枚举所有后继，按观察相等合并；再对动作枚举做``存在一个共同认证动作且所有非空后继都通过''的递归检验。即使 \(Y\) 未作为有限类型枚举，也只需遍历 \(q(X)\)。
+
+\hypertarget{m-37-4}{}
 
 \textbf{M-37.4：可执行检验的正确性。} 若关系表精确表示实际 \(P\) 支持，则有限关系检验返回 true 当且仅当 \(V(n,k,S)\) 成立。因此对所有非空初始支持返回 true，当且仅当 M-37.3 的真实零占据策略存在。
 
@@ -4710,6 +5049,8 @@ q(1,0)=q(1,1)=\mathrm{none}.
 
 第一动作固定为零；第二动作记住初始观察并选侧别 \(s\)。起始阶段所有动作都认证，后续阶段仅 \(a=s\) 认证。
 
+\hypertarget{m-37-5}{}
+
 \textbf{M-37.5：真实后验支持严格优于整个当前纤维。} 两个实际正质量粗历史
 
 \[
@@ -4736,6 +5077,8 @@ C_n(x,a)\iff(n=0)\ \lor\ (x=0).
 
 时域 \(T=2\)。第一步所有动作都认证；第二步仅状态零上的动作认证。
 
+\hypertarget{m-37-6}{}
+
 \textbf{M-37.6：存在完整可行策略，不蕴含每个已认证前缀都可延长。} 总选动作零的完整策略使两步未认证占据都为零。但是第一步选择动作一也是一个已认证前缀；它实际到达支持 \(\{1\}\)，第二步没有任何认证动作。
 
 \textbf{证明。} 第一动作零导致 \(X_1=0\)，故第二步所有动作认证。第一动作一则导致 \(X_1=1\)，且 \(C_1(1,a)\) 对全部动作为假。第一步本身的认证与动作无关，故坏前缀确为``已认证但不能安全延长''。\(\blacksquare\)
@@ -4753,8 +5096,8 @@ C_n(x,a)\iff(n=0)\ \lor\ (x=0).
 
 这个反例区分两种量词：要求``每个已经覆盖的部分策略都存在下一步延长''是较强的充分合同；后向 \(V\) 则在当前就排除会进入死路的动作，并给必要充分条件。它不能被改述为``一次只检查当前动作安全就足够''。
 
-\hypertarget{ux4eceux6ce8ux518cux91c7ux6837ux5230ux6570ux636eux9009ux62e9ux540eux7684ux771fux5b9eux8054ux5408ux98ceux9669}{%
-\chapter{38. 从注册采样到数据选择后的真实联合风险}\label{ux4eceux6ce8ux518cux91c7ux6837ux5230ux6570ux636eux9009ux62e9ux540eux7684ux771fux5b9eux8054ux5408ux98ceux9669}}
+\hypertarget{ch-38}{%
+\chapter{38. 从注册采样到数据选择后的真实联合风险}\label{ch-38}}
 
 \hypertarget{ux8badux7ec3ux8bb0ux5f55ux4e0eux672aux6765ux8defux5f84ux7684ux8054ux5408ux5b9eux9a8c}{%
 \section{38.1 训练记录与未来路径的联合实验}\label{ux8badux7ec3ux8bb0ux5f55ux4e0eux672aux6765ux8defux5f84ux7684ux8054ux5408ux5b9eux9a8c}}
@@ -4768,6 +5111,8 @@ J(\omega,h)=\mu(\omega)K_{s(\omega)}(h).
 \]
 
 它表示先实际生成训练记录，再按所选条件部署核生成未来路径。训练和所选模型当然可以相关；不要求选择器独立于训练。这里有限 \(\Omega\) 保证所选有限未来律可测，候选索引本身不必强加有限性。
+
+\hypertarget{m-38-1}{}
 
 \textbf{M-38.1：真实联合律的边缘与塔式公式。} \(J\) 是概率分布，训练边缘为 \(\mu\)，未来边缘为 \(\sum_\omega\mu(\omega)K_{s(\omega)}\)。对共同未来事件 \(E\subseteq H\)，
 
@@ -4788,6 +5133,8 @@ J(\Omega\times E)
 
 设 \(G\subseteq\Omega\) 是好事件。在 \(G\) 上已有真实条件风险上界 \(r(\omega)\le b(\omega)\)。
 
+\hypertarget{m-38-2}{}
+
 \textbf{M-38.2：数据依赖预算的联合界。}
 
 \[
@@ -4801,6 +5148,8 @@ J(\Omega\times E)
 \textbf{证明。} 将 M-38.1 的和分成 \(G\) 与 \(G^c\)。好事件上代入给定条件界；坏事件上用风险不超过一。\(\blacksquare\)
 
 若在 \(G\) 上统一有 \(r\le\beta\)，\(0\le\beta\le1\)，并有 \(\mu(G^c)\le\alpha\)，则得到
+
+\hypertarget{m-38-3}{}
 
 \textbf{M-38.3：固定好事件预算的精确混合形式。}
 
@@ -4887,6 +5236,8 @@ r(\omega)\le b(\omega):=
 
 \hypertarget{ux7528ux652fux6301ux751fux5b58ux5b9aux7406ux6d88ux9664ux8986ux76d6ux8f93ux5165}{%
 \section{38.5 用支持生存定理消除覆盖输入}\label{ux7528ux652fux6301ux751fux5b58ux5b9aux7406ux6d88ux9664ux8986ux76d6ux8f93ux5165}}
+
+\hypertarget{m-38-4}{}
 
 \textbf{M-38.4：支持可行性接入统计联合风险。} 假定在同一个 \(G\) 上，对每个选定候选的实际 \(p_0^\omega,q_\omega,P,C\)，其全部非空初始观察支持满足 M-37.3 的后向可行性；使用对应 viablePolicy，且保留完整 fallback 策略作为输入。则不再需要另行输入 \(\kappa\) 或实际 \(\nu\) 上界：定理内部得到
 
@@ -5077,6 +5428,8 @@ I_N=\{(j,k):j\in J,\ 0\le k<N_j\},\qquad
 
 样本 \(S_{j,k}(\omega)=\omega(j,k)\) 的真实边缘恰为 \(p_j\)，每行样本独立。于是实际经验律由属于该行的 \(N_j\) 个坐标组成，不是给统一长度数组补上没有采样含义的重复项。
 
+\hypertarget{m-38-5}{}
+
 \textbf{M-38.5：逐行真实注册校准。} 上述实验满足
 
 \[
@@ -5109,6 +5462,8 @@ E\subseteq H_{q_{s(\omega)}}^{-1}(F_{s(\omega)}).
 
 这不是对所有候选 c 的包络要求，也不要求坏训练记录上的所选候选满足包络。失败事件 E 仍是同一个固定微观事件；不能在看到记录以后重定义何谓失败。
 
+\hypertarget{m-38-6}{}
+
 \textbf{M-38.6：不等样本的选中 Good 联合风险。} 若上述共同 G 上所选策略的参考事件风险加实际路径预算经截断后至多 \(\beta\in[0,1]\)，则真实训练---选择---部署联合律满足
 
 \[
@@ -5124,6 +5479,8 @@ J(E)\le \min\{1,\alpha_N+(1-\alpha_N)\beta\}.
 \hypertarget{ux540cux4e00ux652fux6301ux751fux5b58ux7b56ux7565ux5185ux90e8ux6d88ux53bbux5360ux636e}{%
 \subsection{38.10.3 同一支持生存策略内部消去占据}\label{ux540cux4e00ux652fux6301ux751fux5b58ux7b56ux7565ux5185ux90e8ux6d88ux53bbux5360ux636e}}
 
+\hypertarget{m-38-7}{}
+
 \textbf{M-38.7：可行策略接入逐行 Good 联合风险。} 若 M-38.6 所选候选的全部非空初始观察支持在同一个 G 上满足第 37 章的 Viable 条件，并以显式 fallback 构造 viableFamilyPolicy，则该策略自己的未认证占据在 G 上每步为零。其联合风险只需使用参考事件风险加
 
 \[
@@ -5138,8 +5495,8 @@ J(E)\le \min\{1,\alpha_N+(1-\alpha_N)\beta\}.
 
 这些新连接不把相关单轨迹采样、训练后自行改变 N、额外未注册行或任意非原子参考核纳入结论。它们把已经明确的实际采样与部署条件进一步接紧，使第 31.1 节的共同证书装配少一组重复前提，而不是通过重命名输入消去真实研究问题。
 
-\hypertarget{ux6267ux884cux6545ux969cux590dux5236ux4e0eux76eeux7684ux7684ux540cux6e90ux6784ux9020}{%
-\chapter{39. 执行、故障、复制与目的的同源构造}\label{ux6267ux884cux6545ux969cux590dux5236ux4e0eux76eeux7684ux7684ux540cux6e90ux6784ux9020}}
+\hypertarget{ch-39}{%
+\chapter{39. 执行、故障、复制与目的的同源构造}\label{ch-39}}
 
 \hypertarget{ux54eaux4e9bux6761ux4ef6ux4ecdux7531ux6a21ux578bux627fux62c5}{%
 \section{39.1 哪些条件仍由模型承担}\label{ux54eaux4e9bux6761ux4ef6ux4ecdux7531ux6a21ux578bux627fux62c5}}
@@ -6539,8 +6896,8 @@ B=(\mathrm{bad},\mathrm{good},\mathrm{good},\mathrm{None}).\] 在原0/1菜单下
 
 S/G 是合成数学机制，经验支持仍为 \textbf{UNVERIFIED}。H3 的分离收据出现在终端，未证明也未要求该信息改善同一 H3 的后续决策。外层随机控制器的可靠随机源与计算资源是登记条件，没有被内化为对象硬件。六项合同完成即停止，不自动增加 H、第三机制、权限、压缩平台或性能门。
 
-\hypertarget{ux9644ux5f55-a.-ux7b26ux53f7ux4e0eux7c7bux578bux7d22ux5f15}{%
-\chapter{附录 A. 符号与类型索引}\label{ux9644ux5f55-a.-ux7b26ux53f7ux4e0eux7c7bux578bux7d22ux5f15}}
+\hypertarget{appendix-a}{%
+\chapter{附录 A. 符号与类型索引}\label{appendix-a}}
 
 同一字符在不同章节可能是局部变量；下表给主类型。实际引用必须以所在定义为准。
 
@@ -6596,8 +6953,8 @@ ETI & 本文四分量的演化个体性转变证书 & 第 26 章 \\
 \(b_t(\theta,x)\) & 参数---状态后验信念 & 第 27 章 \\
 \end{longtable}
 
-\hypertarget{ux9644ux5f55-b.-ux8bc1ux660eux7ed3ux679cux6ce8ux518cux8868}{%
-\chapter{附录 B. 证明结果注册表}\label{ux9644ux5f55-b.-ux8bc1ux660eux7ed3ux679cux6ce8ux518cux8868}}
+\hypertarget{appendix-b}{%
+\chapter{附录 B. 证明结果注册表}\label{appendix-b}}
 
 第 0--31 章保留原 v3.0 的 106 个 P 编号结果，均有原有证明或明确组合。编号本身不表示原创或无条件性。现有 Core 对这套冻结源端点有独立形式化追踪；具体 Lean 假设与本文的标准数学条件仍须按逐章对应阅读。新增 M 编号结果另见附录 F，不改变下面这张 106 项稳定索引。点击编号可回到陈述。
 
@@ -6716,8 +7073,8 @@ ETI & 本文四分量的演化个体性转变证书 & 第 26 章 \\
 \protect\hyperlink{p-core-01}{P-CORE-01} & 31 & 有限对象---实现---控制认证装配 \\
 \end{longtable}
 
-\hypertarget{ux9644ux5f55-c.-ux6765ux6e90ux56deux5f52ux6838ux5fc3ux7684ux6539ux8fdbux4e0eux6807ux51c6ux4f9dux8d56}{%
-\chapter{附录 C. 来源、回归核心的改进与标准依赖}\label{ux9644ux5f55-c.-ux6765ux6e90ux56deux5f52ux6838ux5fc3ux7684ux6539ux8fdbux4e0eux6807ux51c6ux4f9dux8d56}}
+\hypertarget{appendix-c}{%
+\chapter{附录 C. 来源、回归核心的改进与标准依赖}\label{appendix-c}}
 
 \hypertarget{c.1-ux6765ux6e90ux7684ux89d2ux8272}{%
 \section{C.1 来源的角色}\label{c.1-ux6765ux6e90ux7684ux89d2ux8272}}
@@ -6862,8 +7219,8 @@ Hodge 分解 & 紧定向无边界流形、Riemann 度量及相应光滑性 & 局
   有限熵 Girsanov：Léonard 的研究提供相对熵条件下变换的标准背景；观察映射仍受数据处理约束。\href{https://leonard.perso.math.cnrs.fr/papers/2012-Leonard-Girsanov\%20theory\%20under\%20a\%20finite\%20entropy\%20condition.pdf}{作者原文}
 \end{itemize}
 
-\hypertarget{ux9644ux5f55-d.-v3.0-ux5b8cux6574ux53efux6267ux884cux9a8cux8bc1ux4e0eux5386ux53f2ux8f93ux51fa}{%
-\chapter{附录 D. v3.0 完整可执行验证与历史输出}\label{ux9644ux5f55-d.-v3.0-ux5b8cux6574ux53efux6267ux884cux9a8cux8bc1ux4e0eux5386ux53f2ux8f93ux51fa}}
+\hypertarget{appendix-d}{%
+\chapter{附录 D. v3.0 完整可执行验证与历史输出}\label{appendix-d}}
 
 \hypertarget{d.1-ux8fd0ux884cux65b9ux6cd5ux4e0eux4ee3ux7801ux8eabux4efd}{%
 \section{D.1 运行方法与代码身份}\label{d.1-ux8fd0ux884cux65b9ux6cd5ux4e0eux4ee3ux7801ux8eabux4efd}}
@@ -7318,8 +7675,8 @@ print(json.dumps(results,ensure_ascii=False,indent=2))
 }
 \end{verbatim}
 
-\hypertarget{ux9644ux5f55-e.-ux7ef4ux62a4ux6269ux5c55ux4e0eux590dux73b0ux7ea6ux5b9a}{%
-\chapter{附录 E. 维护、扩展与复现约定}\label{ux9644ux5f55-e.-ux7ef4ux62a4ux6269ux5c55ux4e0eux590dux73b0ux7ea6ux5b9a}}
+\hypertarget{appendix-e}{%
+\chapter{附录 E. 维护、扩展与复现约定}\label{appendix-e}}
 
 \hypertarget{e.1-ux5355ux4e00ux4e3bux6587ux7684ux7ef4ux62a4ux65b9ux5f0f}{%
 \section{E.1 单一主文的维护方式}\label{e.1-ux5355ux4e00ux4e3bux6587ux7684ux7ef4ux62a4ux65b9ux5f0f}}
@@ -7363,8 +7720,8 @@ v3.0 完整主文包含第 0--31 章、附录 A--E、来源谱系、正文证明
 
 v3.0 历史验证使用合成数据和有限模型，原文记录通过 2371 项断言，其中 2316 项来自分辨率结构的有限枚举；这不表示机器形式化验证了所有定理。维护版 3.1 保留原代码与输出，并另增已编译的形式化连接和见证。若数据、协议、实现或评价改变，应重新生成相关证书，不能仅沿用历史通过标记。
 
-\hypertarget{ux9644ux5f55-f.-ux7ef4ux62a4ux7248-3.1-ux7684ux6e90ux7801ux5bf9ux5e94ux4e0eux8bc1ux636eux5c42ux6b21}{%
-\chapter{附录 F. 维护版 3.1 的源码对应与证据层次}\label{ux9644ux5f55-f.-ux7ef4ux62a4ux7248-3.1-ux7684ux6e90ux7801ux5bf9ux5e94ux4e0eux8bc1ux636eux5c42ux6b21}}
+\hypertarget{appendix-f}{%
+\chapter{附录 F. 维护版 3.1 的源码对应与证据层次}\label{appendix-f}}
 
 \hypertarget{f.1-ux5e95ux672cux7a33ux5b9aux7f16ux53f7ux4e0eux67e5ux9605ux89c4ux5219}{%
 \section{F.1 底本、稳定编号与查阅规则}\label{f.1-ux5e95ux672cux7a33ux5b9aux7f16ux53f7ux4e0eux67e5ux9605ux89c4ux5219}}
@@ -7412,8 +7769,8 @@ VIABLE-JOINT & \nolinkurl{UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.Vi
 
 例如，\nolinkurl{SV.initial_viability_iff_exists_zero_uncovered_policy} 的全名为 \nolinkurl{UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SupportViabilityClosure.initial_viability_iff_exists_zero_uncovered_policy}。文件名可以不同于命名空间：本轮模块拆分保留原有公开数学名称，不通过复制声明来制造新的证明端点。
 
-\hypertarget{f.2-ux5168-core-ux7684ux9605ux8bfbux4e0eux5047ux8bbeux5730ux56fe}{%
-\section{F.2 全 Core 的阅读与假设地图}\label{f.2-ux5168-core-ux7684ux9605ux8bfbux4e0eux5047ux8bbeux5730ux56fe}}
+\hypertarget{f-core-map}{%
+\section{F.2 全 Core 的阅读与假设地图}\label{f-core-map}}
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}

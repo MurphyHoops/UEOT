@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "checked_at_utc": "2026-11-10T19:45:28.202862+00:00",
+  "scope": "Packaging reproducibility only; no new mathematical proof, Lean theorem, or Lean compilation.",
+  "bound_commit_as_supplied": "de8efdd7d9009d48cd64c005e209b158f2c66d42",
+  "original_script": {
+    "file": "boundary_math_check.py",
+    "sha256": "4119e70e968a6b128d464d25ebe4367818fd618df6331b2d89e52a8cc9e1c4a4",
+    "unchanged": true
+  },
+  "historical_original_copy": {
+    "file": "boundary_math_check_original.py",
+    "sha256": "4119e70e968a6b128d464d25ebe4367818fd618df6331b2d89e52a8cc9e1c4a4",
+    "byte_identical_to_original": true
+  },
+  "published_script": {
+    "file": "check_boundaries.py",
+    "sha256": "98d2791ce371079f18bb47db85d6568ac4f02b2eab14f81dacb10611b9cf3e11"
+  },
+  "permitted_packaging_changes": [
+    "Find the source directory from __file__ ancestors, including an enclosing repository or ueot-review bound copy.",
+    "Hash exactly the six explicit source filenames instead of globbing all CoreRegenerative files."
+  ],
+  "all_code_outside_source_location_and_hash_list_block_unchanged": true,
+  "source_files_explicitly_selected": [
+    "CoreRegenerativeControlPopulation.lean",
+    "CoreRegenerativeFormation.lean",
+    "CoreRegenerativeOneStep.lean",
+    "CoreRegenerativePopulation.lean",
+    "CoreRegenerativeQuotient.lean",
+    "CoreRegenerativeSource.lean"
+  ],
+  "execution": {
+    "exit_code": 0,
+    "working_directory": "/tmp",
+    "invocation": "python <absolute published check_boundaries.py path>"
+  },
+  "original_output": {
+    "file": "boundary_math_check.json",
+    "sha256": "7aff11ed3390402b8aaa85237b3570dcd82cff446136379ab0ae516edd52c53c"
+  },
+  "published_output": {
+    "file": "checks.json",
+    "sha256": "7aff11ed3390402b8aaa85237b3570dcd82cff446136379ab0ae516edd52c53c"
+  },
+  "outputs_byte_identical": true,
+  "original_report": {
+    "file": "boundary_math_report.md",
+    "sha256": "14c2f6dde79ff327848a41fe011a64e8a386de79b000f5c49dad024bf5a19269",
+    "unchanged_by_packaging": true
+  },
+  "source_snapshots_added": false
+}

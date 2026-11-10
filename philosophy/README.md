@@ -7,9 +7,15 @@
 - [完整 Markdown 主文](./UEOT_PHILOSOPHY.md)
 - [PDF 阅读版](./UEOT_PHILOSOPHY.pdf)
 - [LaTeX 排版源](./UEOT_PHILOSOPHY.tex)
-- [编译与审页记录](./BUILD.json)
+- [编译记录](./BUILD.json)
 
 本书以 Degui Qian 的原始 UEOT 论文为思想来源，在完整 Core 数学与后续形式化成果的约束下修订原来的概念关系与强断言。新增哲学立场由正文给出理由，技术证明在独立的[数学著作](../mathematics/README.md)中展开。两书通过附录中的问题对应互相参照。
+
+## 2026-11-11：有限加固后冻结
+
+当前 Core 保持 `CLASSIFIED_CORE_CLOSED`，本版完成有限定本加固并停止自动扩题。两书将一次新生与完整未来预测、任务依赖的 2／3／4 最小表示，以及同源三公开响应的局部秩三归入现有正文；明确同一程序的实际恢复、增长目标和比较类，修正历史来源义务的时态。新增补充属于书面证明与精确计算，未冒称新增完整 Lean 端点；经验支持仍为 `UNVERIFIED`。
+
+本轮[冻结报告与独立读者验收](../mathematics/review/CORE_DEFINITIVE_FREEZE_2026-11-11/README.md)、[实际验证](../mathematics/review/CORE_DEFINITIVE_FREEZE_2026-11-11/VALIDATION.json)和[最终选页审查](../mathematics/review/CORE_DEFINITIVE_FREEZE_2026-11-11/VISUAL_REVIEW.json)绑定当前产物。数学书239页，哲学书97页；旧审查和 PR444 交付清单继续保留各自发行身份。PDF 导出同时修复了数学书原有的 HTML 锚点丢失，全部内部命名链接均已核对。
 
 ## 来源与维护
 
