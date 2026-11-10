@@ -1,0 +1,69 @@
+{
+  "scope": "Byte-preserving archive of this round's reader and finite-mathematics evidence; not a source snapshot, Lean audit, build receipt, visual review, or publication receipt.",
+  "archived_at_beijing": "2026-11-11T03:51:20.580764+08:00",
+  "bound_base_commit_as_supplied": "de8efdd7d9009d48cd64c005e209b158f2c66d42",
+  "frozen_book_sha256": {
+    "../../UEOT_MATHEMATICS.md": "6dc2340516b5d79986a3190c8238640d0786883424504d6e12bc1bbb2bd39bad",
+    "../../../philosophy/UEOT_PHILOSOPHY.md": "94118431665c4ed7794cb19a42ca9f66f46c8d11e3c42e14ea327c8393a50b35"
+  },
+  "copied_files": [
+    {
+      "file": "math_reader_initial.md",
+      "bytes": 23445,
+      "sha256": "2325e7a36e86ee45706c28f34403a9aa75bb2f8f65bd8ffd90e9cf73f284f308",
+      "copy_mode": "byte-identical; source unmodified"
+    },
+    {
+      "file": "math_reader_final.md",
+      "bytes": 13578,
+      "sha256": "667f62bf55e445de0721d8a355220e3a8b57b3433e19980ae98e5badb34205ba",
+      "copy_mode": "byte-identical; source unmodified"
+    },
+    {
+      "file": "philosophy_reader_initial.md",
+      "bytes": 21263,
+      "sha256": "60faf5734db996abee7461f41644849c3d7f356a72636cb5a5aa1e68e5f026bf",
+      "copy_mode": "byte-identical; source unmodified"
+    },
+    {
+      "file": "philosophy_reader_final.md",
+      "bytes": 11975,
+      "sha256": "a0e59d380bd89f7b3caf2196220d49a8ea1973ba48ec17fca65dd1c55f45ce78",
+      "copy_mode": "byte-identical; source unmodified"
+    },
+    {
+      "file": "boundary_math_report.md",
+      "bytes": 13065,
+      "sha256": "14c2f6dde79ff327848a41fe011a64e8a386de79b000f5c49dad024bf5a19269",
+      "copy_mode": "byte-identical; source unmodified"
+    },
+    {
+      "file": "math_reader_two_tick_check.py",
+      "bytes": 3429,
+      "sha256": "f203aabee8e15747535cb3902312ebff156afdca2b7fcf4f765a16f4829a6c9c",
+      "copy_mode": "byte-identical; source unmodified"
+    },
+    {
+      "file": "math_reader_two_tick_check.json",
+      "bytes": 287,
+      "sha256": "8c22409c46b7df0b4195a1a26fcd2940501170be213096341c84dde1512226fb",
+      "copy_mode": "byte-identical; source unmodified"
+    }
+  ],
+  "historical_name_mapping": {
+    "boundary_math_check.py": "boundary_math_check_original.py",
+    "boundary_math_check.json": "checks.json"
+  },
+  "portable_check_script": "check_boundaries.py",
+  "independent_check_invocation": "python math_reader_two_tick_check.py checks.json",
+  "packaging_receipt": "PACKAGING_CHECK.json",
+  "build_and_visual_status": "Recorded separately by the coordinator in final VALIDATION.json and VISUAL_REVIEW.json; not asserted by this archive.",
+  "archived_independent_check_replay": {
+    "command": "python math_reader_two_tick_check.py checks.json",
+    "working_directory": ".",
+    "exit_code": 0,
+    "stdout_byte_identical_to_archived_output": true,
+    "stdout_sha256": "8c22409c46b7df0b4195a1a26fcd2940501170be213096341c84dde1512226fb",
+    "scope": "Packaging invocation and exact saved finite witness only; no new mathematical or Lean proof."
+  }
+}

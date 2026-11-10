@@ -1,0 +1,116 @@
+{
+  "status": "PASS",
+  "edition_status": "FROZEN",
+  "content_status": "CLASSIFIED_CORE_CLOSED",
+  "empirical_support": "UNVERIFIED",
+  "checked_at_beijing": "2026-11-11T04:01:03.183110+08:00",
+  "base_commit": "de8efdd7d9009d48cd64c005e209b158f2c66d42",
+  "base_tree": "05ad7dc5f31e9e27e8832f4fe124e0f27c9cce49",
+  "branch": "core/definitive-freeze-20261111",
+  "tracked_changed_files": [
+    "formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_theory_closure_v1/README.md",
+    "mathematics/BUILD.json",
+    "mathematics/README.md",
+    "mathematics/UEOT_MATHEMATICS.md",
+    "mathematics/UEOT_MATHEMATICS.pdf",
+    "mathematics/UEOT_MATHEMATICS.tex",
+    "philosophy/BUILD.json",
+    "philosophy/README.md",
+    "philosophy/UEOT_PHILOSOPHY.md",
+    "philosophy/UEOT_PHILOSOPHY.pdf",
+    "philosophy/UEOT_PHILOSOPHY.tex",
+    "tools/books/print.lua"
+  ],
+  "source_integrity": {
+    "production_Lean_changed": false,
+    "Lean_dependency_or_toolchain_changed": false,
+    "CI_configuration_changed": false,
+    "bound_six_source_sha256": {
+      "CoreRegenerativeControlPopulation.lean": "533c9cdedccc2f5016cec438c5fcd9a84f00abd18dcd78c251e21df7ca6441aa",
+      "CoreRegenerativeFormation.lean": "daa2b899b5016446bc15a1e9d6df353f1e2703e31a1192a768890aa7c19decd9",
+      "CoreRegenerativeOneStep.lean": "dfd341b0a7d381b138cebc98c3725f594d047cc28b234f49506222dfaf97789c",
+      "CoreRegenerativePopulation.lean": "b6e62acd425e1c1bc5c2d289836f4d32052a65716715b00e8a24f227801a64f3",
+      "CoreRegenerativeQuotient.lean": "9e8965d43f36d27eb36a56d68d2a70fd564bd0a1170b2a7352990eba50666cce",
+      "CoreRegenerativeSource.lean": "75e76b0673918186de3aac253e0c4810f9bd4895236f150d408cf27a9a8ed793"
+    },
+    "each_bound_source_equal_to_git_base": true,
+    "old_DELIVERY_and_historical_receipts_unchanged": true
+  },
+  "new_mathematics": {
+    "status": "WRITTEN_PROVED_AND_EXACT_FINITE_CHECKED",
+    "new_complete_Lean_endpoints": false,
+    "all_finite_horizons": "Written coupling induction; finite enumeration is only a cross-check",
+    "classification": [
+      2,
+      3,
+      4
+    ],
+    "public_response_determinant": "b > 0",
+    "second_period_gap": "(s+b)(1-q) gamma > 0"
+  },
+  "computational_evidence": {
+    "checks_json_sha256": "7aff11ed3390402b8aaa85237b3570dcd82cff446136379ab0ae516edd52c53c",
+    "packaging_receipt": "PACKAGING_CHECK.json",
+    "independent_two_tick_script_sha256": "f203aabee8e15747535cb3902312ebff156afdca2b7fcf4f765a16f4829a6c9c",
+    "independent_two_tick_output_sha256": "8c22409c46b7df0b4195a1a26fcd2940501170be213096341c84dde1512226fb",
+    "execution_location": "Cloud scratch, with six source files bound to the base Git blobs; not described as a Mac Lean execution."
+  },
+  "independent_readers": {
+    "mathematics": "PASS; no mandatory remaining revision",
+    "philosophy": "PASS; no mandatory remaining revision",
+    "original_reports_preserved": "TEXT_EVIDENCE_MANIFEST.json",
+    "scope": "Independent native reader tasks with initially separate book context; not external academic peer review."
+  },
+  "document_build": {
+    "tools": {
+      "pandoc": "pandoc 3.1.3",
+      "xelatex": "XeTeX 3.141592653-2.6-0.999998 (TeX Live 2026)"
+    },
+    "actual_command": [
+      "/usr/bin/python3",
+      "tools/books/build_books.py",
+      "all",
+      "--font-dir",
+      "<existing pinned Noto font cache>"
+    ],
+    "source_builder_unchanged": true,
+    "print_lua_changed": "Recognize the actual Pandoc Para/two-RawInline HTML anchor shape; preserve existing target handling.",
+    "print_lua_sha256": "cbe89843d17694a89352c1cd5e177b90d969185cbec14f4a03ce687447dd1dec",
+    "math_cross_reference_stability": "One extra targeted XeLaTeX pass: AUX, TOC and PDF byte-identical; no rebuild-script change required.",
+    "books": {
+      "mathematics": {
+        "pages": 239,
+        "source_sha256": "6dc2340516b5d79986a3190c8238640d0786883424504d6e12bc1bbb2bd39bad",
+        "latex_sha256": "29a45d0d9ce048a7a9235730e670041abffa9012a1a755164eafc630c00ba47d",
+        "pdf_sha256": "745cc550d3a1b2efffb489bc67360d0f6a7c0d97ddc861c84647619a52516352",
+        "BUILD_json_sha256": "c1f135ac218fbd6f3682dbcd46a8f171bd8ffad86f3dffed2a897213b6bad481"
+      },
+      "philosophy": {
+        "pages": 97,
+        "source_sha256": "94118431665c4ed7794cb19a42ca9f66f46c8d11e3c42e14ea327c8393a50b35",
+        "latex_sha256": "c29426f5b4c6020aa25ad416cb4303e368fc4311e867c950bb24e7604207e2f4",
+        "pdf_sha256": "c8c9a6c7451cdc6c4e8018a24d86fc02177335ee37bdc6f953d637d1a52872a4",
+        "BUILD_json_sha256": "3432d1aed959f11cd5087dcfde601c9f616edefeebd84d003f25ff9108c3a704"
+      }
+    }
+  },
+  "visual_review_sha256": "53b6c2493004fef2871ac27ca932d28f6888bfbcd929e429a0fd0219ff673545",
+  "navigation_receipt_sha256": "1d826d274beaf341bed6fe5fb1d2cd1c852f9995b9b81a1390d36319554d2d37",
+  "local_readme_link_check": {
+    "checked_paths": 105,
+    "all_exist": true,
+    "scope": "Four changed reader entry/report Markdown files; path existence, not remote link availability."
+  },
+  "git_diff_check": {
+    "exit_code": 0,
+    "output": ""
+  },
+  "not_rerun": [
+    "Full Lean build",
+    "Historical Core path/census long runs",
+    "Historical global axiom census",
+    "Cloud CI"
+  ],
+  "stop_conditions": "All six original finite-hardening stop conditions satisfied within disclosed review scope; see README section 7. No automatic new research gate.",
+  "publication_scope": "This record binds content and validation. The containing Git commit and normal PR merge record identify remote publication; GI continuity is recorded separately in the original project memory."
+}

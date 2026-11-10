@@ -47,6 +47,15 @@ function Pandoc(document)
     local id = nil
     if block.t == 'RawBlock' and block.format == 'html' then
       id = block.text:match('^%s*<a id="([%w_.:%-]+)"></a>%s*$')
+    elseif block.t == 'Para' and #block.content == 2 then
+      -- Pandoc 3.1 parses a standalone <a id="..."></a> as two raw
+      -- inlines in a paragraph. Preserve its target just like a raw block.
+      local first, last = block.content[1], block.content[2]
+      if first.t == 'RawInline' and first.format == 'html'
+          and last.t == 'RawInline' and last.format == 'html'
+          and last.text == '</a>' then
+        id = first.text:match('^<a id="([%w_.:%-]+)">$')
+      end
     end
     if id then
       anchor = id

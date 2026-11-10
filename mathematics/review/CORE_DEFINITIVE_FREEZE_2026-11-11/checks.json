@@ -1,0 +1,161 @@
+{
+  "bound_commit_as_supplied": "de8efdd7d9009d48cd64c005e209b158f2c66d42",
+  "source_sha256": {
+    "CoreRegenerativeControlPopulation.lean": "533c9cdedccc2f5016cec438c5fcd9a84f00abd18dcd78c251e21df7ca6441aa",
+    "CoreRegenerativeFormation.lean": "daa2b899b5016446bc15a1e9d6df353f1e2703e31a1192a768890aa7c19decd9",
+    "CoreRegenerativeOneStep.lean": "dfd341b0a7d381b138cebc98c3725f594d047cc28b234f49506222dfaf97789c",
+    "CoreRegenerativePopulation.lean": "b6e62acd425e1c1bc5c2d289836f4d32052a65716715b00e8a24f227801a64f3",
+    "CoreRegenerativeQuotient.lean": "9e8965d43f36d27eb36a56d68d2a70fd564bd0a1170b2a7352990eba50666cce",
+    "CoreRegenerativeSource.lean": "75e76b0673918186de3aac253e0c4810f9bd4895236f150d408cf27a9a8ed793"
+  },
+  "parameter_point": [
+    "3/4",
+    "1/8",
+    "3/8",
+    "1/4",
+    "1/3"
+  ],
+  "actual_program_requests": {
+    "theta0H": "care",
+    "theta0D": "care",
+    "theta1H": "bloom",
+    "theta1D": "care"
+  },
+  "actual_request_caps": {
+    "theta0H": 3,
+    "theta0D": 6,
+    "theta1H": 4,
+    "theta1D": 6
+  },
+  "actual_initial_repair_paid": {
+    "theta0H": 0,
+    "theta0D": 3,
+    "theta1H": 0,
+    "theta1D": 3
+  },
+  "newborn_means_B1_B2": {
+    "theta0H": [
+      "3/8",
+      "27/64"
+    ],
+    "theta0D": [
+      "3/8",
+      "27/64"
+    ],
+    "theta1H": [
+      "5/8",
+      "65/96"
+    ],
+    "theta1D": [
+      "3/8",
+      "39/64"
+    ]
+  },
+  "second_tick_newborn_gap": "-gamma*(b + s)*(q - 1)",
+  "second_tick_gap_at_point": "3/16",
+  "finite_birth_record_partitions": {
+    "1": [
+      [
+        "theta0H",
+        "theta0D",
+        "theta1D"
+      ],
+      [
+        "theta1H"
+      ]
+    ],
+    "2": [
+      [
+        "theta0H",
+        "theta0D"
+      ],
+      [
+        "theta1H"
+      ],
+      [
+        "theta1D"
+      ]
+    ],
+    "3": [
+      [
+        "theta0H",
+        "theta0D"
+      ],
+      [
+        "theta1H"
+      ],
+      [
+        "theta1D"
+      ]
+    ]
+  },
+  "birth_records_plus_initial_repair_partition": [
+    [
+      "theta0H"
+    ],
+    [
+      "theta0D"
+    ],
+    [
+      "theta1H"
+    ],
+    [
+      "theta1D"
+    ]
+  ],
+  "one_birth_plus_initial_repair_partition": [
+    [
+      "theta0H"
+    ],
+    [
+      "theta0D",
+      "theta1D"
+    ],
+    [
+      "theta1H"
+    ]
+  ],
+  "public_response_map": [
+    "s",
+    "b",
+    "b*q"
+  ],
+  "jacobian_parameters_s_delta_b_gamma_q": "Matrix([[1, 0, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, q, 0, b]])",
+  "s_b_q_minor_determinant": "b",
+  "public_response_at_point": [
+    "3/4",
+    "3/8",
+    "1/8"
+  ],
+  "two_tick_joint_laws": {
+    "theta0H": {
+      "(0, 0)": "115/256",
+      "(0, 1)": "45/256",
+      "(1, 0)": "345/2048",
+      "(1, 1)": "171/1024",
+      "(1, 2)": "81/2048"
+    },
+    "theta0D": {
+      "(0, 0)": "115/256",
+      "(0, 1)": "45/256",
+      "(1, 0)": "345/2048",
+      "(1, 1)": "171/1024",
+      "(1, 2)": "81/2048"
+    },
+    "theta1H": {
+      "(0, 0)": "127/512",
+      "(0, 1)": "65/512",
+      "(1, 0)": "6985/36864",
+      "(1, 1)": "5915/18432",
+      "(1, 2)": "4225/36864"
+    },
+    "theta1D": {
+      "(0, 0)": "95/256",
+      "(0, 1)": "65/256",
+      "(1, 0)": "209/2048",
+      "(1, 1)": "195/1024",
+      "(1, 2)": "169/2048"
+    }
+  },
+  "status": "All finite exact checks passed. All-horizon equality and C1-factor obstruction are written proofs; no new Lean theorem or compilation claimed."
+}

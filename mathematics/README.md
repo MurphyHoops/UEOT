@@ -7,10 +7,16 @@
 - [现行 Lean 接口的范围说明](./LEAN_API_SCOPE.md)
 - [PDF 阅读版](./UEOT_MATHEMATICS.pdf)
 - [LaTeX 排版源](./UEOT_MATHEMATICS.tex)
-- [编译与审页记录](./BUILD.json)
+- [编译记录](./BUILD.json)
 - [2026-10-26 数学闭环审查与执行方案](./review/MATHEMATICAL_CLOSURE_AUDIT_2026-10-26.md)：当前证明范围、未发布候选、详细数学义务与后续接续卡；独立于本书出版版本。
 
 本版保留原 Core 第 0—31 章和附录，并逐章补充后续形式化的实际范围。第 32—38 章进一步展开层级压缩、关系缺陷与校准、客体和目的接口、同源统一闭合、实际占据、有限支持可行性与注册选择后的联合风险。历史代码与历史运行输出保留各自的身份；新的编译和检验不能替代旧的执行记录。
+
+## 2026-11-11：有限加固后冻结
+
+当前 Core 保持 `CLASSIFIED_CORE_CLOSED`，本版完成有限定本加固并停止自动扩题。两书将一次新生与完整未来预测、任务依赖的 2／3／4 最小表示，以及同源三公开响应的局部秩三归入现有正文；明确同一程序的实际恢复、增长目标和比较类，修正历史来源义务的时态。新增补充属于书面证明与精确计算，未冒称新增完整 Lean 端点；经验支持仍为 `UNVERIFIED`。
+
+本轮[冻结报告与独立读者验收](review/CORE_DEFINITIVE_FREEZE_2026-11-11/README.md)、[实际验证](review/CORE_DEFINITIVE_FREEZE_2026-11-11/VALIDATION.json)和[最终选页审查](review/CORE_DEFINITIVE_FREEZE_2026-11-11/VISUAL_REVIEW.json)绑定当前产物。数学书239页，哲学书97页；旧审查和 PR444 交付清单继续保留各自发行身份。PDF 导出同时修复了数学书原有的 HTML 锚点丢失，全部内部命名链接均已核对。
 
 ## 冻结来源与新增工作
 

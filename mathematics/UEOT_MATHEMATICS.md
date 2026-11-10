@@ -1,8 +1,8 @@
 ---
 title: "UEOT Core 完整数学理论"
 subtitle: "从原始对象—演化思想到预测、实现、持续、组合、目的与学习的统一架构"
-version: "4.0（核心定本）"
-date: "2026-11-06"
+version: "4.0（核心定本；有限加固）"
+date: "2026-11-11"
 status: "核心定本；已证条件、同源正类与反例公开，实际发行采用以匹配回执为准"
 format: "UTF-8 Markdown + LaTeX math"
 scope: "通用 Core；保留已有接口，不新增领域应用"
@@ -113,7 +113,41 @@ $$0<\delta<s<1,\quad 0<b,\quad b+\gamma<1,\quad
 
 恢复的因果性可以直接检验。关闭主执行门会使原始执行返回空结果；只翻转健康程序当前读取的 H 行活动位会改变其原始动作。切断 bootstrap 后，损坏状态在修复核中成为目标外自环；固定余额只有 2 且本阶段不再追加供给时亦然，因而不可强修复。这不是声称未来另获足额资源仍不可恢复。全码擦除使两个原程序具有相同可见物理态，在没有额外正确副本或区分历史时，任何只读该态的确定恢复器都不能同时恢复两个不同目标。私随机也不能把相同输入可靠地还原为两个相反答案。这些是信息和执行边界，而不是未通过某个证书的同义定义。
 
-形成桥在两个编译程序乘以 H/D 的四个真实初态上构造，固定无效标签为 false；参数 p 仍遍历整个正类。它从实际部件读出和实际新生响应律出发。完整可读物理载体决定真实有限响应，因此零缺陷不是外置假设；物理部件区域覆盖该载体，再由已有有限最小化与 child-cover 定理产生非空形成候选族。不同实际程序的未来新生概率不同，故不是恒定响应的空消费者。真实 bootstrap cut 改变损坏体的后继能力。这个结果不声称唯一自然边界，也不把带非零死亡的全人口过程装进要求必然永存的旧结构。
+形成桥在两个编译程序乘以 H/D 的四个真实初态上构造，固定无效标签为 false；参数 p 仍遍历整个正类。它从实际部件读出和实际新生响应律出发。完整可读物理载体决定真实有限响应，因此零缺陷不是外置假设；物理部件区域覆盖该载体，再由已有有限最小化与 child-cover 定理产生非空形成候选族。这个一次新生响应族非恒定：健康第二程序的新生率与其余三个初态不同。它不把所有程序或身体状态两两分开，也不等于完整未来预测身份。真实 bootstrap cut 改变损坏体的后继能力。这个结果不声称唯一自然边界，也不把带非零死亡的全人口过程装进要求必然永存的旧结构。
+
+<a id="task-dependent-representation"></a>
+
+### 一次形成响应与有限未来的最小表示
+
+固定上节正类中的同一个参数 $p$、内部程序执行、六单位事务规则和无效标签 false；只比较单个创始体的四个初态
+$X=\{\theta_0H,\theta_0D,\theta_1H,\theta_1D\}$。
+令 $B_t$ 为第 $t\ge1$ 次普查中**整个实际人口产生的严格新生数**，死亡和零人口保留；$R_1$ 为创始体首个事务实际支付的修复费。后继继续忠实运行原程序，按原规则各持一单位资本并获得下一次环境流入。
+
+对一个指定任务，两初态等价指该任务的全部记录有相同分布。以下“最小表示”是这四个初态的最粗充分分割，不是物理载体的唯一选择。
+
+| 所保护的任务 | 准确等价类 | 类数 |
+|---|---|---:|
+| 仅 $B_1$ | $\{\theta_0H,\theta_0D,\theta_1D\}$；$\{\theta_1H\}$ | 2 |
+| 对每个有限 $T$ 的联合记录 $(B_1,\ldots,B_T)$ | $\{\theta_0H,\theta_0D\}$；$\{\theta_1D\}$；$\{\theta_1H\}$ | 3 |
+| 上一任务再加入 $R_1$，或保留完整公开观察记录 | 四个单点类 | 4 |
+
+**证明。** 第一期 $\theta_0H,\theta_0D,\theta_1D$ 均实际执行 care，所以 $B_1\sim\mathrm{Bernoulli}(b)$；$\theta_1H$ 实际执行 bloom，故 $B_1\sim\mathrm{Bernoulli}(b+\gamma)$。正类给出 $\gamma>0$，第一行恰有两类。
+
+将 $\theta_0H$ 与 $\theta_0D$ 放在同一个原始噪声树上。首步都执行 care，恢复后码相同；对每一个局部噪声原子，实际 retained/newborn 两个身体槽相同，每个实际输出的资本均为一。首期修复费、退款及审计 ancestry 中的来源类型可以不同，但内部程序不读取这些差别。以后在对应身体槽使用相同噪声，逐次得到相同的身体槽与新生数。因此对每个有限 $T$，两者的整个新生计数记录逐路径相同，而非仅均值相同。
+
+另两个初态不能再合并。$\theta_1H$ 已由第一期区分；对同样首期执行 care 的 $\theta_1D$ 和 $\theta_0D$，首期后继总均值为 $s+b$，其中健康、损坏后继的均值分别为 $(s+b)(1-q)$、$(s+b)q$。下一期健康第二程序比第一程序多 $\gamma$ 的新生率，损坏时二者均为 $b$。于是
+
+$$\begin{aligned}
+E_{\theta_0D} B_2&=(s+b)b,\\
+E_{\theta_1D} B_2&=(s+b)\{b+(1-q)\gamma\},\\
+E_{\theta_1D} B_2-E_{\theta_0D} B_2&=(s+b)(1-q)\gamma>0.
+\end{aligned}$$
+
+二期新生数至多为二，均值不同必使记录律不同，第二行的三类因此既充分又最粗。在上述有理参数点，两个二期均值为 $27/64$ 与 $39/64$，差为 $3/16$。
+
+最后，$\theta_0H$ 与 $\theta_0D$ 的 $R_1$ 分别恒为 0 和 3；它们的 cap 分别为 3 和 6，均在同一六单位规则下接受，费用在读噪声前支付。第三行因此分成四类。完整公开观察也直接看到不同程序码和 H/D，故其分割同样为四个单点。若只加到一步任务 $(B_1,R_1)$，两个损坏程序仍不可区分，不能把该较小任务误写为四类。∎
+
+任何充分表示都不能合并不同记录律的初态，而按上述类编码本身充分，这说明这里确为完整分类。该结果针对**固定内部程序的新生预测任务**，没有缩小原外部允许控制策略类来保存旧最优结论，也不把一次形成响应升级为原 C1 的全任务最小状态。源执行、真实后继和一阶矩已有 Lean 端点；上述完整 2／3／4 分类在本次加固中给出书面证明与独立精确核验，未登记为新增 Lean 形式定理。
 
 ## 四、机制生成排序与可实现增长控制
 
@@ -2771,7 +2805,7 @@ T=0 时所有参数的存活概率为 1、曾失败概率为 0；使用约定 $0
 
 InvariantLawGOA、CesaroLimitGOA 和 KilledQSDGOA 描述给定核的长期对象，本身没有最优性字段。GreedyInvariantGOASet 则明确使用所给控制模型的 Bellman-greedy 闭环。本节每个名称都按这个区别使用，不因一个稳定分布存在而给它附加奖励最优或规范价值。
 
-现有 [FiniteCesaroInvariant](../formalization/ueot-core/UEOT/V3/FiniteCesaroInvariant.lean) 与 [OccupationLimitInvariance](../formalization/ueot-core/UEOT/V3/Compression/OccupationLimitInvariance.lean) 可消费本节的随机矩阵、初始单纯形和 Cesàro 极限。现有 [PositiveEigenstructure](../formalization/ueot-core/UEOT/V3/Compression/PositiveEigenstructure.lean) 的 BiEigenData、qsdDoob_bundle 与 killed wrapper 可消费本节明确算出的正特征数据。一般接口已经证明；把 Lθ 与真实策略路径、Qθ 与实际 killed 源、R 的 greedy 与其真实状态相关动作域逐项对齐，是本实例仍需补的形式化。
+现有 [FiniteCesaroInvariant](../formalization/ueot-core/UEOT/V3/FiniteCesaroInvariant.lean) 与 [OccupationLimitInvariance](../formalization/ueot-core/UEOT/V3/Compression/OccupationLimitInvariance.lean) 可消费本节的随机矩阵、初始单纯形和 Cesàro 极限。现有 [PositiveEigenstructure](../formalization/ueot-core/UEOT/V3/Compression/PositiveEigenstructure.lean) 的 BiEigenData、qsdDoob_bundle 与 killed wrapper 可消费本节明确算出的正特征数据。一般接口已经证明；把 Lθ 与真实策略路径、Qθ 与实际 killed 源、R 的 greedy 与其真实状态相关动作域逐项对齐，是本节最初登记的形式化义务。该义务随后由 ConflictParametric 系列及其共同消费者完成，准确范围见第 39.71 节；此处保留来源要求，不再将它列为当前未决。
 
 [SameObjectViableGOA](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/SameObjectViableGOA.lean) 已证明：真实同对象 greedy 保持非空持续域时，存在支持在该域内的不变律。这个接口还需要完整 Objecthood parent、control spec 及其来源等式，本节没有仅凭四状态类型构造这些字段。它的结论也不要求完整状态空间只有一个不变律。更强的全局唯一与混合端点另外要求真实收缩或孤立条件，不能用于本节拥有两个闭类的 D。
 
@@ -2996,6 +3030,20 @@ $$
 J(a,B)=-\tfrac12\|a-B\|^2
 $$
 给最优响应 $a^*=B$，维数可任意高。因此“目标数”“部门数”“潜变量维数”和“响应秩”须分开。
+
+### 同一再生源的三响应边界
+
+这个维数限制也可在核心总论的同一实际源内检验。固定 $\delta,\gamma$，让合法开集中的 $(s,b,q)$ 变化；从健康 $\theta_0$ 开始，固定运行其实际 care 程序。取公开记录中的三个事件概率：原身份被续存、有严格新生、有严格新生且该新生为损坏型。36 个原始原子及独立输出损伤给出
+
+$$F(s,b,q)=(s,b,bq),\qquad
+DF=\begin{pmatrix}1&0&0\\0&1&0\\0&q&b\end{pmatrix},\qquad
+\det DF=b>0.$$
+
+三者分别读取实际 retained、newborn 和 newborn 的 H/D。公开收据的 `PublicReceipt.newborn` 保留输出观察，`diagnostic_observedBody` 保证由该观察可读出真实 H/D；不需要增加传感权限。第三项为联合事件概率，不能误读为条件损伤率 $q$。固定 $\delta=1/8,\gamma=1/4$ 时，$(s,b,q)=(3/4,3/8,1/3)$ 是正类的内点，邻域内仍满足全部原始条件。
+
+若在这样的三维邻域存在共同 $C^1$ 编码 $h$ 到 $\mathbb R^2$ 和共同 $C^1$ 解码 $g$，使 $F=g\circ h$，链式法则给 $\operatorname{rank}DF\le2$，与上式矛盾。因此这三个公开响应不能在该邻域由同一个光滑二维潜变量完整生成。证明只需原有限事件律和链式法则；本源计算在本次加固中作为书面推论与精确核验给出，未新增对应的 Lean 端点。
+
+这是源参数响应的局部维数边界。它不赋予参数现实中独立可操纵的预算含义，也不排除明确受限的二维参数子族、满足额外条件的 Π／Φ 模型或非光滑编码。一般 C5 条件定理与本源的组织、恢复和增长正结果均保留；需要撤下的是无条件把所有这些响应压到共同光滑二维空间的外推。
 
 ## 23.5 锚点与谱认证
 
