@@ -6,13 +6,14 @@ a particular state of the theory.
 
 ## Maintained books
 
-The two books are developed independently in their own directories and inform
+The three books are developed independently in their own directories and inform
 one another through explicit cross-references:
 
 | Book | Maintained manuscript | Reading formats and source history |
 |---|---|---|
 | *客体、演化与意义：一种开放的统一自然哲学* | [UEOT_PHILOSOPHY.md](../philosophy/UEOT_PHILOSOPHY.md) | [philosophy/](../philosophy/README.md) |
 | UEOT Core Mathematics | [UEOT_MATHEMATICS.md](../mathematics/UEOT_MATHEMATICS.md) | [mathematics/](../mathematics/README.md) |
+| *UEOT物理学* | [UEOT_PHYSICS.md](../physics/qm/book/UEOT_PHYSICS.md) | [physics/qm/book/](../physics/qm/book/README.md) |
 
 Revise the maintained sources when developing a new edition. A released
 edition can be recorded here together with its source identity and build
@@ -49,3 +50,13 @@ texts and former book scaffolding are archived under
 The retired root `book/` and `source/` layouts are historical references. The
 current book entries are `philosophy/` and `mathematics/`; historical RFCs and
 decisions continue to record the repository state in which they were written.
+
+## Release licensing checklist
+
+Each release must include a license/rights statement, attribution and
+third-party material inventory alongside its source commit and hashes.
+Previously CC BY 4.0 licensed text remains licensed regardless of a new
+edition. New copyrighted book material is edition-specific, original open
+research prose normally CC BY 4.0, and software/data require separate
+explicit grants. See [license scope](../LICENSE_SCOPE.md) and the
+[three book inventories](../COPYRIGHT.md).
