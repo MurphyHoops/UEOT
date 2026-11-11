@@ -1,0 +1,2493 @@
+{
+  "schema": "ueot_physics.source_manifest.v1",
+  "book_document_id": "UEOT-PHYSICS",
+  "canonical_source": "physics/qm/book/UEOT_PHYSICS.md",
+  "historical_text_witness_policy": "Recovered v23–v30 views are text witnesses with their own bytes; no original-upload byte identity is inferred. Two v28.1 views are retained separately.",
+  "historical_text_witness_catalog": "evidence/v3.0/advanced-source-catalog.json",
+  "historical_code_baselines": [
+    {
+      "edition": "3.0",
+      "current_code_baseline": "0c093e9fae990d6ef8d670163b84ec93bd6fb025",
+      "current_code_manifest": "../kernel/evidence/v31.4/source-manifest.json",
+      "role": "ORIGINAL_VERSION_SOURCE_IDENTITY_RETAINED_NOT_CURRENT_EXECUTION"
+    },
+    {
+      "edition": "3.1",
+      "current_code_baseline": "97d033ff83125822e9926f5bd36afd08dbd153ef",
+      "current_code_manifest": "../kernel/evidence/v31.5/source-manifest.json",
+      "current_code_identity": {
+        "edition": "3.1",
+        "status": "MAIN_VERIFIED",
+        "manifest_sha256": "932e63e5082b93321011a2f0e4706b3f54ca993215b88007333e999598ee59df",
+        "source_set_sha256": "41375f6703b03d95623f7f2fd80006def004b3386c611a12b503ca8d7f8e333e",
+        "source_count": 64,
+        "identity_rule": "Authoring baseline records development origin; the 64 source hashes match published source and tested main. Later navigation/evidence metadata is not another mathematical execution.",
+        "local_verification": "../kernel/evidence/v31.5/lean-verification.json",
+        "remote_verified": true,
+        "source_commit": "57283f4efdac02584a36713ae419dc9d439b1686",
+        "source_tree": "a674eff10e615e70ec622c987d52a9c1e01a725b",
+        "tested_main_commit": "be90695c53d337574470b454e3f74479ee934e38",
+        "tested_main_tree": "a674eff10e615e70ec622c987d52a9c1e01a725b",
+        "integration_receipt": "../kernel/evidence/v31.5/integration-verification.json"
+      },
+      "canonical_identity": {
+        "edition": "3.1",
+        "sha256": "d0d495c2d31680ea12f958367eeefcffb44f6df8dd4114884d51f2e2f0da1587",
+        "bytes": 411815,
+        "chapters": 54,
+        "appendices": 6,
+        "numbered_results": 101
+      },
+      "role": "ORIGINAL_VERSION_SOURCE_AND_MAIN_ACCEPTANCE_RETAINED_NOT_CURRENT_EXECUTION"
+    }
+  ],
+  "recorded_at_utc": "2026-11-11T06:37:12.799988+00:00",
+  "edition": "3.7",
+  "entries": [
+    {
+      "id": "S1",
+      "name": "01-UEOT_v3_top.pdf",
+      "bytes": 333671,
+      "sha256": "6c2acdf8d8232377066c3363ce3f0b0a14b3b60608c485ce70f2089c8a2263c3",
+      "evidence_level": "ACTUAL_RAW_BYTES",
+      "use": "原始理论思想与物理研究纲领；43页；强推断经Core与本书逐项重述"
+    },
+    {
+      "id": "S2",
+      "name": "02-UEOT_Core_Mathematics_v3.0_Complete.md",
+      "bytes": 183440,
+      "sha256": "ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303",
+      "evidence_level": "ACTUAL_RAW_BYTES",
+      "use": "冻结Core的定义、前提与通用数学"
+    },
+    {
+      "id": "S3",
+      "name": "03-CORE_V3_OPEN_PORT_MATRIX.md",
+      "bytes": 28951,
+      "sha256": "f71ba345602ee750116b0481dce7d78cf212a0fb02bccac79d482703ada0b20a",
+      "evidence_level": "ACTUAL_RAW_BYTES",
+      "use": "七科学端口与106项映射"
+    },
+    {
+      "id": "S4",
+      "name": "04-CORE_V3_POST_CORE_SCIENTIFIC_CLOSURE.md",
+      "bytes": 21843,
+      "sha256": "669ec5667575c9dbe75645fa2c00501e4cfbec68ca8a3420825f4b6d08f41569",
+      "evidence_level": "ACTUAL_RAW_BYTES",
+      "use": "四生成器的声明推导系统范围与post-Core科学责任"
+    },
+    {
+      "id": "S5",
+      "name": "05-THEORY_COMPLETION_ROADMAP_V2.md",
+      "bytes": 16453,
+      "sha256": "64ab8d688f7ddfc7c739dd4af3b7760eba362190cd8897a605644b0fbd95cd07",
+      "evidence_level": "ACTUAL_RAW_BYTES",
+      "use": "整体科学完成路线"
+    },
+    {
+      "id": "Q2-MD",
+      "name": "UEOT_Physics_Unified_v2.0.md",
+      "bytes": 260407,
+      "sha256": "2fa47d663bb212153a2829e816444e99805348266eefd5a27882e8dbbf4e58a1",
+      "evidence_level": "ACTUAL_RAW_BYTES",
+      "use": "本版完整连续正文的直接继承源，49章78编号结果"
+    },
+    {
+      "id": "Q2-TEX",
+      "name": "UEOT_Physics_Unified_v2.0.tex",
+      "bytes": 311222,
+      "sha256": "2b7d85a6c4629d629318d8b191a91015c2d44b504b2418af640a2661ffcf085a",
+      "evidence_level": "ACTUAL_RAW_BYTES",
+      "use": "继承源的完整排版文本"
+    },
+    {
+      "id": "Q2-PDF",
+      "name": "UEOT_Physics_Unified_v2.0.pdf",
+      "bytes": 832671,
+      "sha256": "18187b7b949901867260d795d1840bf597669167cd8da86f1740c5b0c128dff2",
+      "evidence_level": "ACTUAL_RAW_BYTES",
+      "use": "独立现有135页阅读版；与源包内PDF不同字节"
+    },
+    {
+      "id": "Q2-ZIP",
+      "name": "UEOT_Physics_Unified_v2.0_Source_and_Verification.zip",
+      "bytes": 4443142,
+      "sha256": "bde734fc240f88b2c984f345ed2e73abae47d37f4aadf895870abab28b25acb9",
+      "evidence_level": "ACTUAL_RAW_BYTES",
+      "use": "完整章源、构建与三套验证程序"
+    },
+    {
+      "id": "Q2-ZIP-PDF",
+      "name": "UEOT_Physics_Unified_v2.0.pdf",
+      "bytes": 657100,
+      "sha256": "9c448ea5e4c2027e678d3b91d9fe7e48401aa86ffda315f5a618b040e5a6de36",
+      "evidence_level": "ACTUAL_RAW_BYTES",
+      "use": "源包内历史PDF；独立身份，不等同另一阅读版"
+    },
+    {
+      "id": "Q1-MD",
+      "name": "UEOT_Quantum_Physics_Complete_v1.0.md",
+      "bytes": 174250,
+      "sha256": "6640e0be8e3b615dadbe01dcf8063a0ad1ab458b765f1ec0f4e8fcafd0cad9b5",
+      "evidence_level": "ACTUAL_RAW_BYTES",
+      "use": "已恢复的早期量子主文，沿革参考；当前从Q2完整主源整合"
+    },
+    {
+      "id": "CFW-R1",
+      "name": "Making rare events typical in Markovian open quantum systems",
+      "authors": [
+        "Federico Carollo",
+        "Juan P. Garrahan",
+        "Igor Lesanovsky",
+        "Carlos Pérez-Espigares"
+      ],
+      "year": 2018,
+      "url": "https://arxiv.org/abs/1711.10951",
+      "doi": "10.1103/PhysRevA.98.010103",
+      "evidence_level": "PRIMARY_RESEARCH_REFERENCE",
+      "use": "Prior quantum Doob/rare-trajectory transformation; not a substitute for chapter 66 proofs."
+    }
+  ],
+  "prior_complete_manifest": {
+    "path": "physics/qm/book/evidence/v3.7/source-manifest-prior-v3.6.json",
+    "sha256": "fa5bbc8f2df9ccc148488c7cc872aec444e7037bbaa4329a725fee9558e609f3",
+    "bytes": 14113
+  },
+  "current_code_baseline": "3d443ec29eb17af1fc00699a74e2d42d73516d81",
+  "current_code_baseline_role": "Read-only main authoring baseline; current execution is bound to the v31.10 source manifest.",
+  "current_code_manifest": "../kernel/evidence/v31.10/source-manifest.json",
+  "current_publication_code_manifest": "../kernel/evidence/v31.10/source-manifest.json",
+  "current_code_identity": {
+    "edition": "3.6",
+    "status": "MAIN_VERIFIED",
+    "manifest": {
+      "path": "physics/qm/kernel/evidence/v31.10/source-manifest.json",
+      "sha256": "12a2cda45490c915c5c6c3ef3bf5963b738a5c793acc4b82ed0b16a4f78c03f6",
+      "bytes": 31511
+    },
+    "verification": {
+      "path": "physics/qm/kernel/evidence/v31.10/lean-verification.json",
+      "sha256": "1888f3c1a3409fa90dcda2797b6387b1e9bf65f36a2dcee0a2e93241401fd941",
+      "bytes": 1882
+    },
+    "source_count": 155,
+    "source_set_sha256": "a3c49afc9a3e8be0fffd0892ffc5e175bd17a00eb7a93c6adad8febc4cb4e3a6",
+    "scope": "Recursive public QM/Core source closure and eight proof configuration/verifier files; runtime sources have their own nine-file execution receipt.",
+    "current_bytes_match_executed_bytes": true,
+    "remote_verified": true,
+    "integration": {
+      "source_pr": 450,
+      "source_commit": "4e5de046ad59eaa37856027af6547ca26bdea1c2",
+      "source_tree": "2d771dbb0b4b9be9e759bdde0a70cce3d58deddb",
+      "tested_main_commit": "dee9bfa68c5fc60bed2853356c28011b0d3c53a0",
+      "tested_main_tree": "2d771dbb0b4b9be9e759bdde0a70cce3d58deddb",
+      "pr_run": 42966223125,
+      "main_run": 42967294067,
+      "pr_ci_status": "success",
+      "main_ci_status": "success",
+      "source_and_tested_main_trees_equal": true,
+      "state": "MAIN_VERIFIED",
+      "target_branch": "main",
+      "receipt": "physics/qm/kernel/evidence/v31.10/integration-verification.json",
+      "artifact_contents_inspected": true,
+      "raw_zip_bytes_hashed": false,
+      "metadata_commit_is_not_ci_tested_source_commit": true
+    }
+  },
+  "canonical_identity": {
+    "path": "physics/qm/book/UEOT_PHYSICS.md",
+    "sha256": "fd651a93cc4f38b755409f184bab231c43e889f648efda852340f8b594fb9060",
+    "bytes": 706234,
+    "status": "BYTES_IDENTIFIED",
+    "chapters": 67,
+    "appendices": 6,
+    "numbered_results": 173,
+    "inherited_result_ids": 173,
+    "new_result_ids": 0,
+    "identity_scope": "ACTUAL_LOCAL_BILINGUAL_SOURCE_BYTES",
+    "installation_status": "PR_SOURCE_VERIFIED_UNMERGED",
+    "language": "zh-CN"
+  },
+  "unified_source_identity": {
+    "manifest": {
+      "path": "physics/qm/kernel/evidence/v31.10/source-manifest.json",
+      "sha256": "12a2cda45490c915c5c6c3ef3bf5963b738a5c793acc4b82ed0b16a4f78c03f6",
+      "bytes": 31511
+    },
+    "verification": {
+      "path": "physics/qm/kernel/evidence/v31.10/lean-verification.json",
+      "sha256": "1888f3c1a3409fa90dcda2797b6387b1e9bf65f36a2dcee0a2e93241401fd941",
+      "bytes": 1882
+    },
+    "source_count": 155,
+    "source_set_sha256": "a3c49afc9a3e8be0fffd0892ffc5e175bd17a00eb7a93c6adad8febc4cb4e3a6",
+    "scope": "Recursive public QM/Core source closure and eight proof configuration/verifier files; runtime sources have their own nine-file execution receipt.",
+    "current_bytes_match_executed_bytes": true
+  },
+  "publication_source_identity": {
+    "manifest": {
+      "path": "physics/qm/kernel/evidence/v31.10/source-manifest.json",
+      "sha256": "12a2cda45490c915c5c6c3ef3bf5963b738a5c793acc4b82ed0b16a4f78c03f6",
+      "bytes": 31511
+    },
+    "verification": {
+      "path": "physics/qm/kernel/evidence/v31.10/lean-verification.json",
+      "sha256": "1888f3c1a3409fa90dcda2797b6387b1e9bf65f36a2dcee0a2e93241401fd941",
+      "bytes": 1882
+    },
+    "source_count": 155,
+    "source_set_sha256": "a3c49afc9a3e8be0fffd0892ffc5e175bd17a00eb7a93c6adad8febc4cb4e3a6",
+    "scope": "Recursive public QM/Core source closure and eight proof configuration/verifier files; runtime sources have their own nine-file execution receipt.",
+    "current_bytes_match_executed_bytes": true,
+    "remote_readback": "PASS_FOR_SOURCE_AND_TESTED_MAIN"
+  },
+  "remote_metadata_completion": {
+    "edition": "3.6",
+    "status": "MAIN_VERIFIED",
+    "remote_verified": true,
+    "scientific_source_commit": "4e5de046ad59eaa37856027af6547ca26bdea1c2",
+    "integration_receipt": "physics/qm/kernel/evidence/v31.10/integration-verification.json"
+  },
+  "current_remote_code_identity": {
+    "source_pr": 450,
+    "source_commit": "4e5de046ad59eaa37856027af6547ca26bdea1c2",
+    "source_tree": "2d771dbb0b4b9be9e759bdde0a70cce3d58deddb",
+    "tested_main_commit": "dee9bfa68c5fc60bed2853356c28011b0d3c53a0",
+    "tested_main_tree": "2d771dbb0b4b9be9e759bdde0a70cce3d58deddb",
+    "pr_run": 42966223125,
+    "main_run": 42967294067,
+    "pr_ci_status": "success",
+    "main_ci_status": "success",
+    "source_and_tested_main_trees_equal": true,
+    "state": "MAIN_VERIFIED",
+    "target_branch": "main",
+    "receipt": "physics/qm/kernel/evidence/v31.10/integration-verification.json",
+    "artifact_contents_inspected": true,
+    "raw_zip_bytes_hashed": false,
+    "metadata_commit_is_not_ci_tested_source_commit": true
+  },
+  "current_release_stage": "PUBLICATION_PR_VERIFIED_UNMERGED",
+  "local_release_receipt": "physics/qm/book/evidence/v3.7/local-acceptance.json",
+  "local_release_receipt_scope": "Terminal publication acceptance, to be issued or refreshed after metadata identities are final; not the v31.10 research execution gate",
+  "scientific_execution_partition": {
+    "current_public_proofs": {
+      "public_modules": 49,
+      "public_explicit_theorems": 959,
+      "public_named_axiom_reports": 1285,
+      "new_modules": 8,
+      "new_explicit_theorems": 105,
+      "new_named_axiom_reports": 162,
+      "semantic_runtime_tests": 19,
+      "exact_symbolic_checks": 95,
+      "runtime_receipt": {
+        "path": "physics/qm/kernel/evidence/v31.10/runtime/execution_receipt.json",
+        "sha256": "2e16fd056d90eb939ce13784bed77fc76cda3763e681296b966a7ca89b88c20f",
+        "bytes": 3295
+      },
+      "proof_receipt": {
+        "path": "physics/qm/kernel/evidence/v31.10/lean-verification.json",
+        "sha256": "1888f3c1a3409fa90dcda2797b6387b1e9bf65f36a2dcee0a2e93241401fd941",
+        "bytes": 1882
+      },
+      "new_hardware_data": false,
+      "ordinary_lean_linter_warnings_present": true,
+      "historical_witnesses_rerun_locally": false
+    },
+    "current_runtime": {
+      "path": "physics/qm/kernel/evidence/v31.10/runtime/execution_receipt.json",
+      "sha256": "2e16fd056d90eb939ce13784bed77fc76cda3763e681296b966a7ca89b88c20f",
+      "bytes": 3295
+    },
+    "historical_witnesses_reexecuted_locally": false,
+    "complete_prior_partition": "physics/qm/book/evidence/v3.6/source-manifest-prior-v3.5.json"
+  },
+  "original_entry_preservation": {
+    "entry_count": 11,
+    "all_entry_records_identical_to_v3_5": true,
+    "prior_manifest": {
+      "path": "physics/qm/book/evidence/v3.6/source-manifest-prior-v3.5.json",
+      "sha256": "c651ed0e093a835f3a3191b029bc42f64cd6274e75a39d1ad5b9750857d19e75",
+      "bytes": 27100
+    }
+  },
+  "legacy_program_reuse": {
+    "reexecuted_this_edition": false,
+    "appendix_d_exact_bytes_unchanged": false,
+    "preservation_receipt": "physics/qm/book/evidence/v3.6/prior-text-preservation.json",
+    "historical_receipt": {
+      "receipt": "physics/qm/book/evidence/v3.5/legacy-source-reuse.json",
+      "receipt_sha256": "d4989efed9facced85456d0943a57ee55c478e56d9b94d16353fa031d4c1062c",
+      "reexecuted_this_edition": false,
+      "historical_checks": 757
+    },
+    "program_blocks_exact_bytes_unchanged": true,
+    "program_blocks": {
+      "count": 3,
+      "both_languages_exact_payload_bytes": true,
+      "sha256": [
+        "79dc78035c239957a8ac4f5b2f6a9d1c1a6b2a84d2cee094f831bad531f983c0",
+        "6719d3340fdbfc305f3b0b1266a012c976843d1862cba8e476a151e40d160401",
+        "c2107ac235f0d87faee246412c6478a0405113cb0113b647027820106d95ad32"
+      ],
+      "whole_appendix_bytes_equal_prior": {
+        "zh": false,
+        "en": false
+      },
+      "scope": "Python fenced payloads only; surrounding prose and receipt descriptions were edited; no historical programs rerun"
+    },
+    "scope": "3.7 preserves the three exact program payloads in both languages; Appendix D prose is edited. The older preservation_receipt and historical_receipt below keep their original scope.",
+    "publication_preservation_receipt": "physics/qm/book/evidence/v3.7/publication-metadata-update.json"
+  },
+  "prior_v31_9_publication_reconciliation": "physics/qm/kernel/evidence/v31.10/prior-v31.9-publication-reconciliation.json",
+  "canonical_english_identity": {
+    "path": "physics/qm/book/UEOT_PHYSICS.en.md",
+    "sha256": "437d4239be7a4239e701b760af1fcccdaf30f5b7ab976e9703c532990acb9a91",
+    "bytes": 858402,
+    "status": "BYTES_IDENTIFIED",
+    "chapters": 67,
+    "appendices": 6,
+    "numbered_results": 173,
+    "inherited_result_ids": 173,
+    "new_result_ids": 0,
+    "identity_scope": "ACTUAL_LOCAL_BILINGUAL_SOURCE_BYTES",
+    "installation_status": "PR_SOURCE_VERIFIED_UNMERGED",
+    "language": "en"
+  },
+  "publication_revision": {
+    "edition": "3.7",
+    "generator": "ueot-physics-bilingual-publication-metadata-3.7",
+    "recorded_at_utc": "2026-11-11T06:37:12.799988+00:00",
+    "scope": "Publication metadata and bilingual correspondence only; all scientific result/source objects retain their historical responsibility",
+    "local_artifact_state": "BOUND_TO_ACTUAL_BUILD_AND_SCOPED_VISUAL_RECEIPTS",
+    "pending_gates": [],
+    "remote_publication": {
+      "status": "PR_SOURCE_VERIFIED_UNMERGED",
+      "observed_at_utc": "2026-11-11T06:53:45.316Z",
+      "pr": 454,
+      "pr_url": "https://github.com/MurphyHoops/UEOT/pull/454",
+      "source_commit": "17b8959154d0459efd44cb9d7d30233e847d4e8f",
+      "source_tree": "c8464ea2cd3f4f1aaca52aba97f7085ab626be53",
+      "pr_ci": {
+        "run_id": 42974391710,
+        "run_attempt": 1,
+        "name": "UEOT QM Kernel",
+        "workflow_path": ".github/workflows/ueot-qm.yml",
+        "url": "https://github.com/MurphyHoops/UEOT/actions/runs/42974391710",
+        "event": "pull_request",
+        "head_sha": "17b8959154d0459efd44cb9d7d30233e847d4e8f",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-11T06:43:09Z",
+        "updated_at": "2026-11-11T06:52:41Z",
+        "run_started_at": "2026-11-11T06:43:09Z",
+        "jobs": [
+          {
+            "id": 130369971767,
+            "name": "runtime",
+            "run_id": 42974391710,
+            "head_sha": "17b8959154d0459efd44cb9d7d30233e847d4e8f",
+            "status": "completed",
+            "conclusion": "success",
+            "url": "https://github.com/MurphyHoops/UEOT/actions/runs/42974391710/job/130369971767",
+            "started_at": "2026-11-11T06:43:13Z",
+            "completed_at": "2026-11-11T06:43:42Z",
+            "steps": [
+              {
+                "number": 1,
+                "name": "Set up job",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:13Z",
+                "completed_at": "2026-11-11T06:43:14Z"
+              },
+              {
+                "number": 2,
+                "name": "Checkout",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:14Z",
+                "completed_at": "2026-11-11T06:43:19Z"
+              },
+              {
+                "number": 3,
+                "name": "Install Python",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:19Z",
+                "completed_at": "2026-11-11T06:43:19Z"
+              },
+              {
+                "number": 4,
+                "name": "Install finite conditioning reference dependencies",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:19Z",
+                "completed_at": "2026-11-11T06:43:34Z"
+              },
+              {
+                "number": 5,
+                "name": "Verify finite conditioning source, records, implementations and costs",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:34Z",
+                "completed_at": "2026-11-11T06:43:36Z"
+              },
+              {
+                "number": 6,
+                "name": "Verify canonical physics book structure",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:36Z",
+                "completed_at": "2026-11-11T06:43:36Z"
+              },
+              {
+                "number": 7,
+                "name": "Verify exact kernel and independent negative controls",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:36Z",
+                "completed_at": "2026-11-11T06:43:38Z"
+              },
+              {
+                "number": 8,
+                "name": "Run complete kernel example",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:38Z",
+                "completed_at": "2026-11-11T06:43:38Z"
+              },
+              {
+                "number": 9,
+                "name": "Run representation and spectrum witnesses",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:38Z",
+                "completed_at": "2026-11-11T06:43:38Z"
+              },
+              {
+                "number": 10,
+                "name": "Export exact Lean certificate examples",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:38Z",
+                "completed_at": "2026-11-11T06:43:38Z"
+              },
+              {
+                "number": 11,
+                "name": "Run mixture and persistence witnesses",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:38Z",
+                "completed_at": "2026-11-11T06:43:39Z"
+              },
+              {
+                "number": 12,
+                "name": "Archive runtime evidence",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:39Z",
+                "completed_at": "2026-11-11T06:43:40Z"
+              },
+              {
+                "number": 23,
+                "name": "Post Install Python",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:40Z",
+                "completed_at": "2026-11-11T06:43:40Z"
+              },
+              {
+                "number": 24,
+                "name": "Post Checkout",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:40Z",
+                "completed_at": "2026-11-11T06:43:40Z"
+              },
+              {
+                "number": 25,
+                "name": "Complete job",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:40Z",
+                "completed_at": "2026-11-11T06:43:40Z"
+              }
+            ]
+          },
+          {
+            "id": 130369972115,
+            "name": "lean",
+            "run_id": 42974391710,
+            "head_sha": "17b8959154d0459efd44cb9d7d30233e847d4e8f",
+            "status": "completed",
+            "conclusion": "success",
+            "url": "https://github.com/MurphyHoops/UEOT/actions/runs/42974391710/job/130369972115",
+            "started_at": "2026-11-11T06:43:13Z",
+            "completed_at": "2026-11-11T06:52:40Z",
+            "steps": [
+              {
+                "number": 1,
+                "name": "Set up job",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:14Z",
+                "completed_at": "2026-11-11T06:43:14Z"
+              },
+              {
+                "number": 2,
+                "name": "Checkout",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:14Z",
+                "completed_at": "2026-11-11T06:43:19Z"
+              },
+              {
+                "number": 3,
+                "name": "Record source identity",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:19Z",
+                "completed_at": "2026-11-11T06:43:19Z"
+              },
+              {
+                "number": 4,
+                "name": "Check inherited dependency lock",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:19Z",
+                "completed_at": "2026-11-11T06:43:19Z"
+              },
+              {
+                "number": 5,
+                "name": "Install and verify official pinned Lean",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:19Z",
+                "completed_at": "2026-11-11T06:43:27Z"
+              },
+              {
+                "number": 6,
+                "name": "Restore pinned dependencies",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:27Z",
+                "completed_at": "2026-11-11T06:43:59Z"
+              },
+              {
+                "number": 7,
+                "name": "Restore Mathlib proof cache",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:59Z",
+                "completed_at": "2026-11-11T06:44:13Z"
+              },
+              {
+                "number": 8,
+                "name": "Save pinned dependency cache",
+                "status": "completed",
+                "conclusion": "skipped",
+                "started_at": "2026-11-11T06:44:13Z",
+                "completed_at": "2026-11-11T06:44:13Z"
+              },
+              {
+                "number": 9,
+                "name": "Reject proof escapes",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:44:13Z",
+                "completed_at": "2026-11-11T06:44:14Z"
+              },
+              {
+                "number": 10,
+                "name": "Build all QM proofs",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:44:14Z",
+                "completed_at": "2026-11-11T06:49:20Z"
+              },
+              {
+                "number": 11,
+                "name": "Audit theorem axioms",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:49:20Z",
+                "completed_at": "2026-11-11T06:49:25Z"
+              },
+              {
+                "number": 12,
+                "name": "Verify generated exact certificates and false witnesses",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:49:25Z",
+                "completed_at": "2026-11-11T06:50:43Z"
+              },
+              {
+                "number": 13,
+                "name": "Verify retained finite and quantum Lean witnesses",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:50:43Z",
+                "completed_at": "2026-11-11T06:52:32Z"
+              },
+              {
+                "number": 14,
+                "name": "Archive proof evidence",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:52:32Z",
+                "completed_at": "2026-11-11T06:52:38Z"
+              },
+              {
+                "number": 28,
+                "name": "Post Checkout",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:52:38Z",
+                "completed_at": "2026-11-11T06:52:38Z"
+              },
+              {
+                "number": 29,
+                "name": "Complete job",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:52:38Z",
+                "completed_at": "2026-11-11T06:52:38Z"
+              }
+            ]
+          }
+        ]
+      },
+      "merged_main_commit": null,
+      "main_ci": null,
+      "merged_main_status": "PENDING_PUBLICATION_MAIN",
+      "receipt": {
+        "path": "physics/qm/book/evidence/v3.7/remote-delivery.json",
+        "sha256": "0c98f0c147a4cf2ffeaf0d1e7f1cc80705d3da958c630f5291e11a9f6843c678",
+        "bytes": 13244
+      },
+      "evidence": {
+        "git_payload_readback": {
+          "path": "physics/qm/book/evidence/v3.7/git-payload-readback.json",
+          "sha256": "59390a4a79e95a48d6da4b82acb9d29b323845daab256d61a30fea2c758eddc4",
+          "bytes": 39945
+        },
+        "publication_preflight": {
+          "path": "physics/qm/book/evidence/v3.7/publication-preflight.json",
+          "sha256": "e43a255c7af5ec198d1c461347edaaf94b61f2b943188cb3b00f869b8d59939c",
+          "bytes": 1433
+        }
+      },
+      "scope": "Exact source commit and its completed source CI only; no merged-main acceptance. Delivery metadata follow-up has separate CI recorded in the PR body.",
+      "observation_responsibility": "Root-supplied GitHub observation; this helper validates local identities and receipt consistency, without a new network query",
+      "metadata_followup": {
+        "status": "SEPARATE_FOLLOWUP_COMMIT_NOT_COVERED_BY_SOURCE_CI",
+        "final_ci_record": "PR_BODY",
+        "recursive_receipt_commits_required": false,
+        "frozen_six_artifacts_changed": false
+      }
+    },
+    "scientific_reuse": {
+      "research_version": "v31.10-kernel1.10",
+      "research_book_edition": "3.6",
+      "status": "MAIN_VERIFIED",
+      "status_source": "Inherited exact research metadata/receipts; not a new remote observation by this updater",
+      "publication_baseline": "925e3a8a411c0b1bab99dd9150bf005893656140",
+      "local_heavy_science_rerun_for_publication": false,
+      "kernel_or_lean_modified_by_updater": false,
+      "new_hardware_data": false,
+      "reused_inventory": {
+        "public_modules": 49,
+        "public_explicit_theorems": 959,
+        "public_named_axiom_reports": 1285,
+        "new_modules": 8,
+        "new_explicit_theorems": 105,
+        "new_named_axiom_reports": 162,
+        "semantic_runtime_tests": 19,
+        "exact_symbolic_checks": 95,
+        "runtime_receipt": {
+          "path": "physics/qm/kernel/evidence/v31.10/runtime/execution_receipt.json",
+          "sha256": "2e16fd056d90eb939ce13784bed77fc76cda3763e681296b966a7ca89b88c20f",
+          "bytes": 3295
+        },
+        "proof_receipt": {
+          "path": "physics/qm/kernel/evidence/v31.10/lean-verification.json",
+          "sha256": "1888f3c1a3409fa90dcda2797b6387b1e9bf65f36a2dcee0a2e93241401fd941",
+          "bytes": 1882
+        },
+        "new_hardware_data": false,
+        "ordinary_lean_linter_warnings_present": true,
+        "historical_witnesses_rerun_locally": false
+      },
+      "historical_counts": {
+        "757": "Three inherited Appendix D programs: actual edition-3.0 execution, later byte reuse",
+        "1123": "Historical v31.9 named-axiom prefix, not current total; v31.10 total is 1285"
+      },
+      "remote_identity": {
+        "source_pr": 450,
+        "source_commit": "4e5de046ad59eaa37856027af6547ca26bdea1c2",
+        "source_tree": "2d771dbb0b4b9be9e759bdde0a70cce3d58deddb",
+        "tested_main_commit": "dee9bfa68c5fc60bed2853356c28011b0d3c53a0",
+        "tested_main_tree": "2d771dbb0b4b9be9e759bdde0a70cce3d58deddb",
+        "pr_run": 42966223125,
+        "main_run": 42967294067,
+        "pr_ci_status": "success",
+        "main_ci_status": "success",
+        "source_and_tested_main_trees_equal": true,
+        "state": "MAIN_VERIFIED",
+        "target_branch": "main",
+        "receipt": "physics/qm/kernel/evidence/v31.10/integration-verification.json",
+        "artifact_contents_inspected": true,
+        "raw_zip_bytes_hashed": false,
+        "metadata_commit_is_not_ci_tested_source_commit": true
+      }
+    },
+    "prior_snapshots": {
+      "manifest": {
+        "path": "physics/qm/book/evidence/v3.7/source-manifest-prior-v3.6.json",
+        "sha256": "fa5bbc8f2df9ccc148488c7cc872aec444e7037bbaa4329a725fee9558e609f3",
+        "bytes": 14113
+      },
+      "dossier": {
+        "path": "physics/qm/book/evidence/v3.7/dossier-prior-v3.6.json",
+        "sha256": "1a2e8c985eb75bd8a267fc69824b219bfe86acef20baf5dd3bb81b7df5fea611",
+        "bytes": 1106189
+      }
+    },
+    "preservation": {
+      "numbered_results": {
+        "count": 173,
+        "all_objects_exactly_preserved": true,
+        "canonical_json_sha256": "75335af693f6768412db0ef2ac730592a2c16b219e405fa2f4cfc7a4f53a398c",
+        "scope": "JSON values, including all historical status fields; not source-file whitespace"
+      },
+      "manifest_entries": {
+        "count": 12,
+        "all_objects_exactly_preserved": true,
+        "canonical_json_sha256": "80df626d656595a640b7b499886b0a0bda2ebf64830d51303377d8b6b81d5917",
+        "scope": "JSON values, including all historical status fields; not source-file whitespace"
+      },
+      "source_catalog": {
+        "entry_count": 22,
+        "exactly_preserved": true,
+        "canonical_json_sha256": "4169a38256f5de449d6497784258c8e8ff4ef713a9cd64739906e4e770b2920c",
+        "scope": "JSON values, including all historical status fields; not source-file whitespace"
+      },
+      "appendix_d_programs": {
+        "count": 3,
+        "both_languages_exact_payload_bytes": true,
+        "sha256": [
+          "79dc78035c239957a8ac4f5b2f6a9d1c1a6b2a84d2cee094f831bad531f983c0",
+          "6719d3340fdbfc305f3b0b1266a012c976843d1862cba8e476a151e40d160401",
+          "c2107ac235f0d87faee246412c6478a0405113cb0113b647027820106d95ad32"
+        ],
+        "whole_appendix_bytes_equal_prior": {
+          "zh": false,
+          "en": false
+        },
+        "scope": "Python fenced payloads only; surrounding prose and receipt descriptions were edited; no historical programs rerun"
+      }
+    },
+    "artifacts": {
+      "zh": {
+        "markdown": {
+          "path": "physics/qm/book/UEOT_PHYSICS.md",
+          "sha256": "fd651a93cc4f38b755409f184bab231c43e889f648efda852340f8b594fb9060",
+          "bytes": 706234,
+          "status": "BYTES_IDENTIFIED"
+        },
+        "latex": {
+          "path": "physics/qm/book/UEOT_PHYSICS.tex",
+          "sha256": "112cc6dba989a09202bc78d9dba263bb95c19183ffcac86bdb2f3eac6ad372ce",
+          "bytes": 761729,
+          "status": "BYTES_IDENTIFIED"
+        },
+        "pdf": {
+          "path": "physics/qm/book/UEOT_PHYSICS.pdf",
+          "sha256": "b102ae01d9212babebfff6fafc12e6785809d32f199bf4c66b42d9fb6c8673a4",
+          "bytes": 1444561,
+          "status": "BYTES_IDENTIFIED"
+        }
+      },
+      "en": {
+        "markdown": {
+          "path": "physics/qm/book/UEOT_PHYSICS.en.md",
+          "sha256": "437d4239be7a4239e701b760af1fcccdaf30f5b7ab976e9703c532990acb9a91",
+          "bytes": 858402,
+          "status": "BYTES_IDENTIFIED"
+        },
+        "latex": {
+          "path": "physics/qm/book/UEOT_PHYSICS.en.tex",
+          "sha256": "fefd2b4320d8c0db52f5430cb0c8f32af582ac140bb9c1442c000635e062df23",
+          "bytes": 912331,
+          "status": "BYTES_IDENTIFIED"
+        },
+        "pdf": {
+          "path": "physics/qm/book/UEOT_PHYSICS.en.pdf",
+          "sha256": "c4a83dead20fe701196dcc2a3f6fde69693e4c06eb03e9802499165d0a865240",
+          "bytes": 1204221,
+          "status": "BYTES_IDENTIFIED"
+        }
+      }
+    },
+    "build_receipts": {
+      "zh": {
+        "path": "physics/qm/book/evidence/v3.7/pdf-zh/pdf-build.json",
+        "sha256": "5e513617017efcebcd7e246db182e7bcee82887d2b833428486dfa2b24940040",
+        "bytes": 5122,
+        "status": "PASS_BOUND_THREE_PASSES",
+        "bound_to_installed_artifacts": true,
+        "issues": [],
+        "scope": "Read existing build receipt and matched actual Markdown, TeX and PDF bytes; this updater did not compile"
+      },
+      "en": {
+        "path": "physics/qm/book/evidence/v3.7/pdf-en/pdf-build.json",
+        "sha256": "864def86181c536efbba615a50d0f68d6ef13ded6b8239bb04dcb384bed6fc37",
+        "bytes": 5169,
+        "status": "PASS_BOUND_THREE_PASSES",
+        "bound_to_installed_artifacts": true,
+        "issues": [],
+        "scope": "Read existing build receipt and matched actual Markdown, TeX and PDF bytes; this updater did not compile"
+      }
+    },
+    "visual_review": {
+      "path": "physics/qm/book/evidence/v3.7/pdf-visual-review.json",
+      "sha256": "5e778c24b262398683dbe0878038227ed610b3243456a6eca4bb60e31481f919",
+      "bytes": 28757,
+      "status": "PASS_WITH_STATED_SCOPE",
+      "bound_to_installed_artifacts": true,
+      "issues": [],
+      "editions": {
+        "zh": {
+          "pdf_sha256": "b102ae01d9212babebfff6fafc12e6785809d32f199bf4c66b42d9fb6c8673a4",
+          "source_sha256": "fd651a93cc4f38b755409f184bab231c43e889f648efda852340f8b594fb9060",
+          "pages": 267,
+          "overview_pages_viewed": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115,
+            116,
+            117,
+            118,
+            119,
+            120,
+            121,
+            122,
+            123,
+            124,
+            125,
+            126,
+            127,
+            128,
+            129,
+            130,
+            131,
+            132,
+            133,
+            134,
+            135,
+            136,
+            137,
+            138,
+            139,
+            140,
+            141,
+            142,
+            143,
+            144,
+            145,
+            146,
+            147,
+            148,
+            149,
+            150,
+            151,
+            152,
+            153,
+            154,
+            155,
+            156,
+            157,
+            158,
+            159,
+            160,
+            161,
+            162,
+            163,
+            164,
+            165,
+            166,
+            167,
+            168,
+            169,
+            170,
+            171,
+            172,
+            173,
+            174,
+            175,
+            176,
+            177,
+            178,
+            179,
+            180,
+            181,
+            182,
+            183,
+            184,
+            185,
+            186,
+            187,
+            188,
+            189,
+            190,
+            191,
+            192,
+            193,
+            194,
+            195,
+            196,
+            197,
+            198,
+            199,
+            200,
+            201,
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219,
+            220,
+            221,
+            222,
+            223,
+            224,
+            225,
+            226,
+            227,
+            228,
+            229,
+            230,
+            231,
+            232,
+            233,
+            234,
+            235,
+            236,
+            237,
+            238,
+            239,
+            240,
+            241,
+            242,
+            243,
+            244,
+            245,
+            246,
+            247,
+            248,
+            249,
+            250,
+            251,
+            252,
+            253,
+            254,
+            255,
+            256,
+            257,
+            258,
+            259,
+            260,
+            261,
+            262,
+            263,
+            264,
+            265,
+            266,
+            267
+          ],
+          "overview_sheets": [
+            {
+              "file": "overview-001-036.png",
+              "first_page": 1,
+              "last_page": 36,
+              "sha256": "54ae5f38e41a4c3576875018086cc7eb2620985dd7e3008d1cc12800f3801dee"
+            },
+            {
+              "file": "overview-037-072.png",
+              "first_page": 37,
+              "last_page": 72,
+              "sha256": "ece2f2e846f6b9cf585c9ce21bcdefdeaef468dbee1c995f1ae28a93ab06712d"
+            },
+            {
+              "file": "overview-073-108.png",
+              "first_page": 73,
+              "last_page": 108,
+              "sha256": "7823fcd1c4d77fdbe582e1a96beee36864e4a98d601488ca356355a6bd19b169"
+            },
+            {
+              "file": "overview-109-144.png",
+              "first_page": 109,
+              "last_page": 144,
+              "sha256": "27b2c6c9c02450746902c9a0567f9cce1a4d6eda2948243a8a59b1d90aecc6e9"
+            },
+            {
+              "file": "overview-145-180.png",
+              "first_page": 145,
+              "last_page": 180,
+              "sha256": "3e1b8b3c62dcee5b283cd1cfd6fd11ac03a3bb294a63916dbe5496430a9b9056"
+            },
+            {
+              "file": "overview-181-216.png",
+              "first_page": 181,
+              "last_page": 216,
+              "sha256": "1fc09163a3263d81464c9d5a5d1d765a459336f3e3bfcdfdf495af61e258f2aa"
+            },
+            {
+              "file": "overview-217-252.png",
+              "first_page": 217,
+              "last_page": 252,
+              "sha256": "054187017408874c01cf21766792c145bd183b646c026d74d98765b2fabc8016"
+            },
+            {
+              "file": "overview-253-267.png",
+              "first_page": 253,
+              "last_page": 267,
+              "sha256": "8f2f5e77536b54e89d235afcf98ecd112888cc1427f66cd0bad562eba34da1d1"
+            }
+          ],
+          "selected_full_pages_viewed": [
+            1,
+            4,
+            10,
+            16,
+            33,
+            34,
+            43,
+            81,
+            105,
+            108,
+            111,
+            112,
+            121,
+            175,
+            204,
+            214,
+            217,
+            218,
+            220,
+            221,
+            224,
+            227,
+            232,
+            233,
+            245,
+            267
+          ],
+          "selected_full_page_images": [
+            {
+              "page": 1,
+              "file": "page-001.png",
+              "sha256": "04e2bede3017e536e1425b29e080a6082512c07059de8156b482b049b1c435d0",
+              "dpi": 110
+            },
+            {
+              "page": 4,
+              "file": "page-004.png",
+              "sha256": "73c5022585b011e899e2bf281bb1e0d5557e593cdea3830f312072078f5ed617",
+              "dpi": 110
+            },
+            {
+              "page": 10,
+              "file": "page-010.png",
+              "sha256": "83fd4b71ef80e2e075e96dc5997cd71d597e2956802fae524b8883d5850a2c9f",
+              "dpi": 110
+            },
+            {
+              "page": 16,
+              "file": "page-016.png",
+              "sha256": "e0ee054b2d126f5a89aa704e0785c43891a2cf721ce2af2955e82458d322ffb4",
+              "dpi": 110
+            },
+            {
+              "page": 33,
+              "file": "page-033.png",
+              "sha256": "d81d83dd4dfe1c964c14afb9c5316f4c228ec7bad4cb091ec677b5af913c538f",
+              "dpi": 110
+            },
+            {
+              "page": 34,
+              "file": "page-034.png",
+              "sha256": "5794047f1d8f36a3c351724976b368f84a7f267ec1b3063a06b9d80be9c9aaf6",
+              "dpi": 110
+            },
+            {
+              "page": 43,
+              "file": "page-043.png",
+              "sha256": "0167fa0411b860f9580bdeb262037347b51cef347470ad708002b714b874e667",
+              "dpi": 110
+            },
+            {
+              "page": 81,
+              "file": "page-081.png",
+              "sha256": "43d71a9aa8e16c8f558683235117b1510e728a8c53131c70f27756a3db7588d1",
+              "dpi": 110
+            },
+            {
+              "page": 105,
+              "file": "page-105.png",
+              "sha256": "8334aa8d0c510497d81be2001877c59dbe608fcc92c187fcd881bbf659a5fc95",
+              "dpi": 110
+            },
+            {
+              "page": 108,
+              "file": "page-108.png",
+              "sha256": "478d2a2c4927fb2d3295696a9fbc79a3c0595fe637126a8efe7497c55c8050f2",
+              "dpi": 110
+            },
+            {
+              "page": 111,
+              "file": "page-111.png",
+              "sha256": "0851747a1b75208ede652bac67b438d1e2e9d79780382267c9eef13ccbb7e99d",
+              "dpi": 110
+            },
+            {
+              "page": 112,
+              "file": "page-112.png",
+              "sha256": "d42f0ead43972d7e9b3ade6a7d3ef45d1035653bf2b01a0de1aa33b5f4204da6",
+              "dpi": 110
+            },
+            {
+              "page": 121,
+              "file": "page-121.png",
+              "sha256": "e441328f7adca906f979c3d2d888748ebb653af8540c368e13d9d4e47544ca80",
+              "dpi": 110
+            },
+            {
+              "page": 175,
+              "file": "page-175.png",
+              "sha256": "5699ba9a0c23b945c476eb8acc8cc864ed6d9ad3f502c61397f5557ea5bd1aa8",
+              "dpi": 110
+            },
+            {
+              "page": 204,
+              "file": "page-204.png",
+              "sha256": "de0257392c1f4db77680f6c2de2ce9f0c59319a5adee49661249a8e062a92581",
+              "dpi": 110
+            },
+            {
+              "page": 214,
+              "file": "page-214.png",
+              "sha256": "bf0803067856ed7036de28b2dd18a388b9a31c6fabf806b540fe8321f66e630f",
+              "dpi": 110
+            },
+            {
+              "page": 217,
+              "file": "page-217.png",
+              "sha256": "4484e525fb6115dae91f099a3ebe58f0c7373f8e80232dfe7feb033ef530695b",
+              "dpi": 110
+            },
+            {
+              "page": 218,
+              "file": "page-218.png",
+              "sha256": "1b143ebbadfadebf13f1864f9611ba33aa291a2c9e2fe5cf6efa388191540b08",
+              "dpi": 110
+            },
+            {
+              "page": 220,
+              "file": "page-220.png",
+              "sha256": "c00aa20bdb09ad703e88f18755059bad6be8ce69a0938897b84646d7136c3b22",
+              "dpi": 110
+            },
+            {
+              "page": 221,
+              "file": "page-221.png",
+              "sha256": "d2f81d257fc4cb5838a014ca7f5c9c76c6cb65f34de2f191f16fb77d56f9093f",
+              "dpi": 110
+            },
+            {
+              "page": 224,
+              "file": "page-224.png",
+              "sha256": "49fb3f43a2013970282c2fcd6a9b154e3313da123de89f68fd462de00e990cfd",
+              "dpi": 110
+            },
+            {
+              "page": 227,
+              "file": "page-227.png",
+              "sha256": "d7d98c6eafc04bb8be80af6251b5ad457285196cdb9c65e2137a3cd0e2184e2e",
+              "dpi": 110
+            },
+            {
+              "page": 232,
+              "file": "page-232.png",
+              "sha256": "ae309c51d4ef5a8eb4504909a3d01b8f8abef8bbe793e46664cc802d2ac10672",
+              "dpi": 110
+            },
+            {
+              "page": 233,
+              "file": "page-233.png",
+              "sha256": "dcc1039fb82951dc5c5847079d0d85327cfb014eb74385157a09fa63a72f074a",
+              "dpi": 110
+            },
+            {
+              "page": 245,
+              "file": "page-245.png",
+              "sha256": "ddcc5be2d3d6bd24b13733815011fc7770fc1661bd79d0fc1517ff41166c5ecd",
+              "dpi": 110
+            },
+            {
+              "page": 267,
+              "file": "page-267.png",
+              "sha256": "7b0b52d3ade2bc8f9639fd54f4db69ae378b88be13bd5562f7e6c570c66a1757",
+              "dpi": 110
+            }
+          ],
+          "reviewers": {
+            "root": [
+              1,
+              4,
+              10,
+              81,
+              175,
+              204,
+              227,
+              233
+            ],
+            "B": [
+              33,
+              34,
+              105,
+              108,
+              111,
+              112,
+              121,
+              218,
+              220,
+              221
+            ],
+            "C": [
+              1,
+              16,
+              43,
+              214,
+              217,
+              224,
+              232,
+              245,
+              267
+            ]
+          },
+          "build_receipt": "evidence/v3.7/pdf-zh/pdf-build.json",
+          "render_receipt": "evidence/v3.7/pdf-zh/render.json",
+          "geometry_and_internal_links": "PASS",
+          "identity_transfer": "evidence/v3.7/zh-pdf-pixel-equivalence.json"
+        },
+        "en": {
+          "pdf_sha256": "c4a83dead20fe701196dcc2a3f6fde69693e4c06eb03e9802499165d0a865240",
+          "source_sha256": "437d4239be7a4239e701b760af1fcccdaf30f5b7ab976e9703c532990acb9a91",
+          "pages": 312,
+          "overview_pages_viewed": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115,
+            116,
+            117,
+            118,
+            119,
+            120,
+            121,
+            122,
+            123,
+            124,
+            125,
+            126,
+            127,
+            128,
+            129,
+            130,
+            131,
+            132,
+            133,
+            134,
+            135,
+            136,
+            137,
+            138,
+            139,
+            140,
+            141,
+            142,
+            143,
+            144,
+            145,
+            146,
+            147,
+            148,
+            149,
+            150,
+            151,
+            152,
+            153,
+            154,
+            155,
+            156,
+            157,
+            158,
+            159,
+            160,
+            161,
+            162,
+            163,
+            164,
+            165,
+            166,
+            167,
+            168,
+            169,
+            170,
+            171,
+            172,
+            173,
+            174,
+            175,
+            176,
+            177,
+            178,
+            179,
+            180,
+            181,
+            182,
+            183,
+            184,
+            185,
+            186,
+            187,
+            188,
+            189,
+            190,
+            191,
+            192,
+            193,
+            194,
+            195,
+            196,
+            197,
+            198,
+            199,
+            200,
+            201,
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219,
+            220,
+            221,
+            222,
+            223,
+            224,
+            225,
+            226,
+            227,
+            228,
+            229,
+            230,
+            231,
+            232,
+            233,
+            234,
+            235,
+            236,
+            237,
+            238,
+            239,
+            240,
+            241,
+            242,
+            243,
+            244,
+            245,
+            246,
+            247,
+            248,
+            249,
+            250,
+            251,
+            252,
+            253,
+            254,
+            255,
+            256,
+            257,
+            258,
+            259,
+            260,
+            261,
+            262,
+            263,
+            264,
+            265,
+            266,
+            267,
+            268,
+            269,
+            270,
+            271,
+            272,
+            273,
+            274,
+            275,
+            276,
+            277,
+            278,
+            279,
+            280,
+            281,
+            282,
+            283,
+            284,
+            285,
+            286,
+            287,
+            288,
+            289,
+            290,
+            291,
+            292,
+            293,
+            294,
+            295,
+            296,
+            297,
+            298,
+            299,
+            300,
+            301,
+            302,
+            303,
+            304,
+            305,
+            306,
+            307,
+            308,
+            309,
+            310,
+            311,
+            312
+          ],
+          "overview_sheets": [
+            {
+              "file": "overview-001-036.png",
+              "first_page": 1,
+              "last_page": 36,
+              "sha256": "c76ad14d5892c71a7f71a6c2430307b37cebbe18cc6bc3b4a46dd748ab6031bb"
+            },
+            {
+              "file": "overview-037-072.png",
+              "first_page": 37,
+              "last_page": 72,
+              "sha256": "813c4336319b623cea9fb038982097f40b17a70ea9fec77816b27da2c83c4f0f"
+            },
+            {
+              "file": "overview-073-108.png",
+              "first_page": 73,
+              "last_page": 108,
+              "sha256": "e7602c542f29091b0c09361138eea2c45a046e5d54d22db0c9eb2a9fe432d0bf"
+            },
+            {
+              "file": "overview-109-144.png",
+              "first_page": 109,
+              "last_page": 144,
+              "sha256": "48b63bbbe12178b9abb3b010d4d3a45be356844634eb7c5a004f2379efdcd103"
+            },
+            {
+              "file": "overview-145-180.png",
+              "first_page": 145,
+              "last_page": 180,
+              "sha256": "cd6cae3c405f4d8a84b5976b49db64dc193c2a90521db1f2b7c7c23be1753db3"
+            },
+            {
+              "file": "overview-181-216.png",
+              "first_page": 181,
+              "last_page": 216,
+              "sha256": "59811fcd4792e848a81385d4cd59c4a1873fd44c675d67290c43ffc96d215dc5"
+            },
+            {
+              "file": "overview-217-252.png",
+              "first_page": 217,
+              "last_page": 252,
+              "sha256": "906e87d0d693f4cd7fba4bc8b79bbfaa30142fef861589138eb5d0fbebeb56fd"
+            },
+            {
+              "file": "overview-253-288.png",
+              "first_page": 253,
+              "last_page": 288,
+              "sha256": "f06d23b92a677b9c6ae22700e78d62f6cf411157d31323b0f657c316c53cee74"
+            },
+            {
+              "file": "overview-289-312.png",
+              "first_page": 289,
+              "last_page": 312,
+              "sha256": "c79671662f4c500ae47255be9a0965b7b5a8998d508b69ca99fc5f14210c6c3d"
+            }
+          ],
+          "selected_full_pages_viewed": [
+            1,
+            2,
+            3,
+            9,
+            11,
+            17,
+            18,
+            19,
+            37,
+            38,
+            39,
+            50,
+            55,
+            90,
+            119,
+            122,
+            126,
+            127,
+            138,
+            204,
+            221,
+            239,
+            240,
+            252,
+            254,
+            257,
+            258,
+            259,
+            260,
+            261,
+            265,
+            266,
+            269,
+            274,
+            275,
+            276,
+            289,
+            291,
+            312
+          ],
+          "selected_full_page_images": [
+            {
+              "page": 1,
+              "file": "page-001.png",
+              "sha256": "4318d71380811622743929215a09f405fef902a2beda53e0946397cb1b7e3094",
+              "dpi": 110
+            },
+            {
+              "page": 2,
+              "file": "page-002.png",
+              "sha256": "25912a1d3e8ad1f8cb498315598e61c03fe8131abaf84c39c4160e9359335d53",
+              "dpi": 110
+            },
+            {
+              "page": 3,
+              "file": "page-003.png",
+              "sha256": "dcf0b6f09e1485c9bfa822b53231c4b9c7599c6b14eea63184b9f2054ad58553",
+              "dpi": 110
+            },
+            {
+              "page": 9,
+              "file": "page-009.png",
+              "sha256": "1469b33dac3da23f905e33d0323411d8e228de237ce451d714d360cf80469433",
+              "dpi": 110
+            },
+            {
+              "page": 11,
+              "file": "page-011.png",
+              "sha256": "7d8ccb11f1798e1a309cf2fcc1b6f0b6eb208c98ec0c1df5b3d8458ffbba297f",
+              "dpi": 110
+            },
+            {
+              "page": 17,
+              "file": "page-017.png",
+              "sha256": "5286ed38fe3111736f979339678bc085af960f6c238821f77b899b387f8ca534",
+              "dpi": 110
+            },
+            {
+              "page": 18,
+              "file": "page-018.png",
+              "sha256": "199c636c3640a6529d321d2c35c1bbaccd6954d8291372fbb6cfa5151a760ece",
+              "dpi": 110
+            },
+            {
+              "page": 19,
+              "file": "page-019.png",
+              "sha256": "74446694eb028c817ecb29ccf71adc6a33ebc2e01dfec975b315f48704b38d8c",
+              "dpi": 110
+            },
+            {
+              "page": 37,
+              "file": "page-037.png",
+              "sha256": "2432710a4bb783c4557f5354cee8cefe6595765d1b548596c8e6f368c8f5fa45",
+              "dpi": 110
+            },
+            {
+              "page": 38,
+              "file": "page-038.png",
+              "sha256": "981a67e4ca4f107cdaa54e7b07eb8251cd1770e05089a4ef609884ff3ab01b56",
+              "dpi": 110
+            },
+            {
+              "page": 39,
+              "file": "page-039.png",
+              "sha256": "1879ca82c03124e772c297f8a28611a9ff23bb30130a2cbb3a07143a04d34978",
+              "dpi": 110
+            },
+            {
+              "page": 50,
+              "file": "page-050.png",
+              "sha256": "773309922c02187c34ec55d96d7a94146409cb54f69d9a980b2e0a4ede757e1a",
+              "dpi": 110
+            },
+            {
+              "page": 55,
+              "file": "page-055.png",
+              "sha256": "30ebcb9a9170b97cc42dc4092e941099df26eb03a6647d30cb7b043000156089",
+              "dpi": 110
+            },
+            {
+              "page": 90,
+              "file": "page-090.png",
+              "sha256": "aa0e3bed5c91551f922e0a5370628b25296c686717050af0d4229cbf817a3af3",
+              "dpi": 110
+            },
+            {
+              "page": 119,
+              "file": "page-119.png",
+              "sha256": "1100a3dda0889c22eeefee1dfdaafbe60deaa4b48b931816b4d6288d081e8025",
+              "dpi": 110
+            },
+            {
+              "page": 122,
+              "file": "page-122.png",
+              "sha256": "51a06cd19acebfe3c6329ed283c9dc707e3cbcd89d573f313e0559c79f3c9826",
+              "dpi": 110
+            },
+            {
+              "page": 126,
+              "file": "page-126.png",
+              "sha256": "52e469e816f355b9c620c6876ef055a232199a0dfd4814cae6e122ef4f3f0c78",
+              "dpi": 110
+            },
+            {
+              "page": 127,
+              "file": "page-127.png",
+              "sha256": "c67f6ae99a5e99d0c6a5651ec823c33de99682323ecc1612a0a63144175a37f3",
+              "dpi": 110
+            },
+            {
+              "page": 138,
+              "file": "page-138.png",
+              "sha256": "37c46b8c883b8781872f55ba7c282daacde3c54fe218ef8096d39357de4a8d5e",
+              "dpi": 110
+            },
+            {
+              "page": 204,
+              "file": "page-204.png",
+              "sha256": "bdb856763aa6235a1bb735c93142090a807dc18f2f00da7851dc68cd00bf5bea",
+              "dpi": 110
+            },
+            {
+              "page": 221,
+              "file": "page-221.png",
+              "sha256": "6c42963fd12d66aef231d1c8cdf88d49dfb121fc4383b7d97c1d01a1c56b1adf",
+              "dpi": 110
+            },
+            {
+              "page": 239,
+              "file": "page-239.png",
+              "sha256": "78ef7d4cb4948c62fe829dd0c27997457a572eee455db5a56b0eaf3a7dd7c099",
+              "dpi": 110
+            },
+            {
+              "page": 240,
+              "file": "page-240.png",
+              "sha256": "894f80c44300c3484733c0041d10540db29b605c21947fda76a6ad4c56508952",
+              "dpi": 110
+            },
+            {
+              "page": 252,
+              "file": "page-252.png",
+              "sha256": "b1b86a82dd5852016936b9e177aaef868f418dd22e98ac98b0903721762d2fad",
+              "dpi": 110
+            },
+            {
+              "page": 254,
+              "file": "page-254.png",
+              "sha256": "390b1708fa447d67fee0c392bcc857d9078306fc46f020f846423ae486d59c46",
+              "dpi": 110
+            },
+            {
+              "page": 257,
+              "file": "page-257.png",
+              "sha256": "9eca3601358b25a8674a99db0eb8dab45e57663ce914ffe89b991b61dd9a1ebc",
+              "dpi": 110
+            },
+            {
+              "page": 258,
+              "file": "page-258.png",
+              "sha256": "61ab3ad481c97a22f576d435768a27bd9188795a57af2be6dce3a511e8e2cf1a",
+              "dpi": 110
+            },
+            {
+              "page": 259,
+              "file": "page-259.png",
+              "sha256": "da875769ba132ea5e83b5d8facd0cc3f69719c8c89ac5f17710f2b32ded04088",
+              "dpi": 110
+            },
+            {
+              "page": 260,
+              "file": "page-260.png",
+              "sha256": "e81b6dd310db5106b01479c78b1a996e56b8fe26688626f589040eca39bd92ba",
+              "dpi": 110
+            },
+            {
+              "page": 261,
+              "file": "page-261.png",
+              "sha256": "0dff4c0f1c0e758b439a58b8553265f646e312a082797bb588327ac9cda3f4d7",
+              "dpi": 110
+            },
+            {
+              "page": 265,
+              "file": "page-265.png",
+              "sha256": "e9c4fb09da9a04666880a18d01d7686d13a4afdf5f3f5b877426badc0fc23f4e",
+              "dpi": 110
+            },
+            {
+              "page": 266,
+              "file": "page-266.png",
+              "sha256": "e3180a66e7edb3fbf4c2c8c943f5d8d05bf4adc3cbb59fa560474e0cbf902d99",
+              "dpi": 110
+            },
+            {
+              "page": 269,
+              "file": "page-269.png",
+              "sha256": "9a7267568edeeb8a171e5d8f20422f50b7ba621dddcebff875a38f3b699a1344",
+              "dpi": 110
+            },
+            {
+              "page": 274,
+              "file": "page-274.png",
+              "sha256": "94fbc29268839343ca67f5c5142b3e1881ad08a50be6d3dea2e6bce59f7c46cd",
+              "dpi": 110
+            },
+            {
+              "page": 275,
+              "file": "page-275.png",
+              "sha256": "b3493b084b060426c3bc7915e68c44e784e19fa4190799304a53091e5d623468",
+              "dpi": 110
+            },
+            {
+              "page": 276,
+              "file": "page-276.png",
+              "sha256": "39e7272dbba725272cc8ea0134ba8affe264791b5838f31656509fab4d581911",
+              "dpi": 110
+            },
+            {
+              "page": 289,
+              "file": "page-289.png",
+              "sha256": "2d2a332e6ac1c7ba5c33430c4b5925b0395779fed9ad925553004f40629aa216",
+              "dpi": 110
+            },
+            {
+              "page": 291,
+              "file": "page-291.png",
+              "sha256": "7000d67f61d090f598b9ec6f0eb91a0c55d5620daee772990495b9f57a44c8bb",
+              "dpi": 110
+            },
+            {
+              "page": 312,
+              "file": "page-312.png",
+              "sha256": "21ebaecd1b4577970cdc7aa25be91b4b00ccab6b017c33113696fae5ce4cd776",
+              "dpi": 110
+            }
+          ],
+          "reviewers": {
+            "root": [
+              2,
+              9,
+              11,
+              17,
+              55,
+              90,
+              204,
+              221,
+              266,
+              276
+            ],
+            "B": [
+              37,
+              38,
+              39,
+              119,
+              122,
+              126,
+              127,
+              138,
+              259,
+              260
+            ],
+            "C": [
+              1,
+              3,
+              18,
+              19,
+              50,
+              55,
+              239,
+              240,
+              252,
+              254,
+              257,
+              258,
+              261,
+              265,
+              269,
+              274,
+              275,
+              289,
+              291,
+              312
+            ]
+          },
+          "build_receipt": "evidence/v3.7/pdf-en/pdf-build.json",
+          "render_receipt": "evidence/v3.7/pdf-en/render.json",
+          "geometry_and_internal_links": "PASS",
+          "identity_transfer": "Final PDF rendered and actually viewed directly"
+        }
+      },
+      "reviewer_reports": [
+        {
+          "path": "review/PDF_EMPIRICAL_VISUAL_REVIEW.md",
+          "sha256": "806dfb6e2a9b104fa42ae0cf5cc46f7b0517fde00958b394e29ff2af1ab608c3"
+        },
+        {
+          "path": "evidence/v3.7/PDF_EMPIRICAL_VISUAL_REVIEW.json",
+          "sha256": "a29fb1d5eacdbad64422423527cc595fa91cfab0bc037c2d60c4e6854c79d0f5"
+        },
+        {
+          "path": "review/PDF_EDITORIAL_VISUAL_REVIEW.md",
+          "sha256": "5c792399165e7ed96c716ad31db6a310f97cefd96b763ff8ff9427224cb8e464"
+        },
+        {
+          "path": "evidence/v3.7/PDF_EDITORIAL_VISUAL_REVIEW.json",
+          "sha256": "dc3a2eb8efd982d00c9cb2ea70b10a05c97719f41a8637678a55311a32dad587"
+        },
+        {
+          "path": "evidence/v3.7/root-zh-visual-observations.json",
+          "sha256": "551de0a60529fa7780f729ce49aa4f5300633b824b419e0f868c1607e9b377c8"
+        },
+        {
+          "path": "evidence/v3.7/root-en-visual-observations.json",
+          "sha256": "b533bca8aded236c602db8bd5760c65c82c31a864dda7ac2cc38d3bd77913668"
+        },
+        {
+          "path": "evidence/v3.7/zh-pdf-pixel-equivalence.json",
+          "sha256": "4706b10db5f06150a68edf198cb3066d410132f9450a1237da2a6d9e1062697f"
+        }
+      ],
+      "scope": "579 pages actually viewed on 17 overview sheets. Full-page observations cover the explicitly listed 65 distinct pages at 110 dpi. This is internal AI visual review, not proof correctness, external human peer review, or a claim of full-page reading of every page. Chinese observed images are reused only through exact final PNG identity and all-page 110-dpi pixel equality. Rendered images are reproducible outputs; not all are committed as PNG files.",
+      "review_performed_by_metadata_updater": false,
+      "pixel_equivalence_or_actual_viewing_responsibility": "As stated by the visual reviewer in this receipt; not independently inferred by this metadata updater"
+    },
+    "local_acceptance_receipt": {
+      "path": "physics/qm/book/evidence/v3.7/local-acceptance.json",
+      "direction": "Downstream terminal acceptance; path only to avoid circular hashes",
+      "scope": "Downstream terminal local acceptance: regenerate after this metadata update; path only. The old pre-PR receipt is separately preserved by its immutable source-commit identity"
+    },
+    "metadata_update_receipt": {
+      "path": "physics/qm/book/evidence/v3.7/publication-remote-metadata-update.json",
+      "direction": "Downstream; path only"
+    },
+    "review_materials": [
+      {
+        "path": "physics/qm/book/review/BILINGUAL_PHYSICS_TERMINOLOGY.md",
+        "sha256": "516262fce99ad0388f28645dcd1727a659bf51bc386f494d2d163bc81b8f8564",
+        "bytes": 14390
+      },
+      {
+        "path": "physics/qm/book/review/B_TRANSLATION_FIDELITY.md",
+        "sha256": "9655438eef74b086f9f2c788baa4d4fb4d41acd6fc0b92d3a1f04daa247f561b",
+        "bytes": 5760
+      },
+      {
+        "path": "physics/qm/book/review/CH66_CLAIM_SOURCE_MATRIX.md",
+        "sha256": "d1ac60b032db7f6efb1469bd2db82c25a54381087388ad6bdab6a1e36d7729e4",
+        "bytes": 12571
+      },
+      {
+        "path": "physics/qm/book/review/CH66_EMPIRICAL_REVIEW.md",
+        "sha256": "721d8f57ddc89ff0ceae4e142176bd241ff8adfcc502d0833a7d9c5be5eed200",
+        "bytes": 20553
+      },
+      {
+        "path": "physics/qm/book/review/CH66_THEORY_REVIEW.md",
+        "sha256": "ff440b30b3f259bb70bbb74f0df678b8ba99ab2246a2edfb86a541995074c9ef",
+        "bytes": 15980
+      },
+      {
+        "path": "physics/qm/book/review/EMPIRICAL_AND_FALSIFIABILITY_AUDIT.md",
+        "sha256": "a727315acfd7376fdfc7d40af2170a3f58c34f61da43f9545770a457b26fae63",
+        "bytes": 33352
+      },
+      {
+        "path": "physics/qm/book/review/FINAL_THEORETICAL_RED_TEAM_REVIEW.md",
+        "sha256": "4f073aa1b4f7e18bf4e82d4c735716f10670294fa58f63f2fccac26e618f3dbd",
+        "bytes": 23911
+      },
+      {
+        "path": "physics/qm/book/review/INLINE_MATH_FIDELITY.md",
+        "sha256": "0f69d353111e65817621590f7ae8a3e98bb1596decde3318ab9b0c156ee3edd1",
+        "bytes": 11885
+      },
+      {
+        "path": "physics/qm/book/review/INTEGRATED_EMPIRICAL_RED_TEAM.md",
+        "sha256": "7d934326a9cea4b2fe0399e7e39ea1059a618f97666f04f757750992de49ef8c",
+        "bytes": 18888
+      },
+      {
+        "path": "physics/qm/book/review/PDF_EDITORIAL_VISUAL_REVIEW.md",
+        "sha256": "5c792399165e7ed96c716ad31db6a310f97cefd96b763ff8ff9427224cb8e464",
+        "bytes": 7521
+      },
+      {
+        "path": "physics/qm/book/review/PDF_EMPIRICAL_VISUAL_REVIEW.md",
+        "sha256": "806dfb6e2a9b104fa42ae0cf5cc46f7b0517fde00958b394e29ff2af1ab608c3",
+        "bytes": 8311
+      },
+      {
+        "path": "physics/qm/book/review/PDF_VISUAL_ACCEPTANCE.md",
+        "sha256": "fd00d2735d3745dc31428569b3b3d6c21dedcf03496fd65a1cffdfe4d910a21d",
+        "bytes": 3797
+      },
+      {
+        "path": "physics/qm/book/review/PHYSICAL_DERIVATION_AUDIT.md",
+        "sha256": "df931cd886f184d8fcd8240163cce146556e6fc9f19438b91c19c9750e278c3a",
+        "bytes": 22999
+      },
+      {
+        "path": "physics/qm/book/review/PHYSICS_CLAIM_SOURCE_MATRIX.md",
+        "sha256": "814ad8cf43b83177078c21b264a4536fb6018ce4b8448d8d8903d7c6744f7c4f",
+        "bytes": 126087
+      },
+      {
+        "path": "physics/qm/book/review/PHYSICS_TRANSLATION_FIDELITY.md",
+        "sha256": "8518b0d51625c6067dc5666d07c69c4921f28a17ed0d72525c138fe0e053d573",
+        "bytes": 31079
+      },
+      {
+        "path": "physics/qm/book/review/PRIOR_ART_AND_EXPERIMENTAL_STATUS.md",
+        "sha256": "9a249a15a354589c4ef262cc70d9b84ba6742f2d00752dce310537eb9d9adcc2",
+        "bytes": 23823
+      },
+      {
+        "path": "physics/qm/book/review/PUBLICATION_3_7_EMPIRICAL_CLOSEOUT.md",
+        "sha256": "d4a772a88b74d7188f4bab0e3eea14569e5225f84ec4cccb4134b9b645625b59",
+        "bytes": 8561
+      },
+      {
+        "path": "physics/qm/book/review/PUBLICATION_METADATA_UPDATE_README.md",
+        "sha256": "86bd6a13d3bd6a49a63df014b83719d4239c2d008a436692b90c4cdc9f432a26",
+        "bytes": 9098
+      },
+      {
+        "path": "physics/qm/book/review/README.md",
+        "sha256": "df26a819c22e82363a784215dde0c0a3272d4e6628a130d845e2b2aae271a09e",
+        "bytes": 6341
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.7/review-integration.json",
+        "sha256": "eda70b73143cc39c4c90c351a33f066b444456da6db7456e5dbd143424e855a9",
+        "bytes": 978
+      }
+    ],
+    "publication_evidence": [
+      {
+        "path": "physics/qm/book/evidence/v3.7/source-reuse.json",
+        "sha256": "1707024e763f8e725e2882d592dd6cbc3363d10aa59afe91f1e055c24f6b6019",
+        "bytes": 110128
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.7/v31.10-remote-observation.json",
+        "sha256": "465174b776811aa6defb8c737fb8a7a987bcf006144c9f43b64ca3c01db5dda2",
+        "bytes": 14234
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.7/book-structure.zh.json",
+        "sha256": "58a3a02b18a0fcfe748fd791611349bfcccee2dc98c51b5b27b1158831a24efc",
+        "bytes": 21240
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.7/book-structure.en.json",
+        "sha256": "705eb4a3043dcb9caa004c7968dc98480898e56114058dc62ecc331935c8e582",
+        "bytes": 23057
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.7/bilingual-fidelity.json",
+        "sha256": "a091c2555486953c9c855fa87d5647a508f9e1b92cd81bb984e09ce010ac0f20",
+        "bytes": 45284
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.7/inline_math_fidelity.json",
+        "sha256": "cede73259d2dc665b352383a38a280b3f67aa236ba7300f441a775011c201b52",
+        "bytes": 2655774
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.7/theory_review_closure.json",
+        "sha256": "586f212dde73b2f37a8b703b0e3ba762da5954473ceb123e2c9b848ac2eff5c2",
+        "bytes": 17832
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.7/axiom_inventory_v31_10_identity.json",
+        "sha256": "042d5a2cd992b10aee90f05a34119745770729e900cdcee1919f59185577fa1a",
+        "bytes": 215108
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.7/ch66_source_bindings.json",
+        "sha256": "b84cd114cf41df043c10ca89e4eaa6806877ca1127490f412746771b54a5abbc",
+        "bytes": 69199
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.7/ch66_translation_fidelity.json",
+        "sha256": "068976140049872aeb7d5998a78382b3ecb713d229e13bed7e414976502b3e40",
+        "bytes": 1910
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.7/claim_matrix_increment_identity.json",
+        "sha256": "69fd6b5d16d4df753f7f1fb280a75b06084668b4889021283557b47f5248a8c1",
+        "bytes": 892
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.7/inherited_formal_source_v31_10_identity.json",
+        "sha256": "508db3d8b753c7e81b010d42d5b00f215059b1dae1c72ea1c45b58f2c3f2825d",
+        "bytes": 10406
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.7/review-integration.json",
+        "sha256": "eda70b73143cc39c4c90c351a33f066b444456da6db7456e5dbd143424e855a9",
+        "bytes": 978
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.7/A_FINAL_DELIVERABLES.json",
+        "sha256": "350546948ef6d527ed5ce40df8f95e4bcf8f34045961ca89e85e625785e33b36",
+        "bytes": 3071
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.7/PUBLICATION_3_7_EMPIRICAL_CLOSEOUT.json",
+        "sha256": "b585dbbf6ff78adb03b6a3af93f56fded9a8f29199ae74a102d033290ddc45d6",
+        "bytes": 2270
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.7/EDITORIAL_REVIEW_CLOSEOUT_3_7.json",
+        "sha256": "87d8e7a64629608ce6b7e96f166e6447425a6dbd391a158c09f5b5c92269b941",
+        "bytes": 2617
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.7/EMPIRICAL_NUMBER_CHECK.json",
+        "sha256": "5edfb0f65cfcfc125e6cb43461e5d7a25999ef9ee819a9c15878bb953541389f",
+        "bytes": 4008
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.7/INCREMENTAL_EDITORIAL_MECHANICAL_QA_3_7.json",
+        "sha256": "e90cbe7c7e6f74c2f76b83e75aadcc718bbb978924b58ede668baa9dbe04ee77",
+        "bytes": 34822
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.7/WHOLE_BOOK_DISPLAY_LABEL_FIDELITY_3_7.json",
+        "sha256": "0deff392037e519bc410bf84a8d6d115b66839cb3528d9bbfb54113ed6db59f3",
+        "bytes": 3322
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.7/CHAPTER_66_FIDELITY_QA.json",
+        "sha256": "6ae4b1c9fc914b30d5706471236d71f625f9c2ad49a104558ec9afe80cce6ad5",
+        "bytes": 1192
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.7/record-example-check.json",
+        "sha256": "2fcb99aa31834c5bdaecee29b094208ab8b5cb6225b23533928f70f85cd90815",
+        "bytes": 1151
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.7/build-environment.json",
+        "sha256": "afdb77cd48e8d8be9957557b3e633bcb69d953786998731be6b0960ca96cad53",
+        "bytes": 1077
+      },
+      {
+        "path": "physics/qm/book/evidence/v3.7/pdf-technical-check.json",
+        "sha256": "0c6870b6080755232bcf41a7dc49c90527f7c95dfae9f0148f3e3a9868d96a21",
+        "bytes": 7166
+      }
+    ],
+    "publication_evidence_scope": "Exact installed receipt identities, retaining each receipt's own scope and historical/current distinction; the A handoff inventory is not a byte-identity assertion for adapted integrated reports",
+    "review_identity_policy": "Current installed report bytes are identified here. Original A handoff manifest describes pre-integration copies; relative-link adaptation is separately recorded and is not falsely treated as byte identity.",
+    "hash_direction": "Immutable source-commit files and remote-delivery/payload/preflight evidence -> SOURCE_MANIFEST -> CHAPTER_DOSSIER -> publication-remote-metadata-update; the final report is referenced by path only. Source CI does not cover the later metadata commit; its CI is recorded in the PR body, without recursive receipt commits.",
+    "structure_verifier": {
+      "path": "physics/qm/book/build/verify_book.py",
+      "sha256": "f2a0f6e3b3eebb976fa576563dbcd9740ead8e38baba677b7019f130df1a65c7",
+      "bytes": 5010
+    },
+    "new_scientific_results_in_publication": 0,
+    "renumbered_or_withdrawn_results": [],
+    "not_inferred": [
+      "external peer review or new hardware experiments",
+      "new local heavy scientific execution by this helper",
+      "publication main merge or main CI acceptance",
+      "CI acceptance of the subsequent delivery-metadata commit from the source run",
+      "independent download/hash/content verification of remote CI artifact ZIPs"
+    ],
+    "prior_current_fields": {
+      "edition": "3.6",
+      "recorded_at_utc": "2026-11-11T05:51:02.562595+00:00",
+      "canonical_identity": {
+        "path": "physics/qm/book/UEOT_PHYSICS.md",
+        "sha256": "eabce172cd32773e21fa5373359d0fef7e52442b5d0368e11268130b4f89e921",
+        "bytes": 659270,
+        "chapters": 67,
+        "appendices": 6,
+        "numbered_results": 173,
+        "inherited_result_ids": 161,
+        "new_result_ids": 12,
+        "identity_scope": "INSTALLED_CANONICAL_BYTES",
+        "installation_status": "MAIN_VERIFIED"
+      },
+      "prior_complete_manifest": {
+        "path": "physics/qm/book/evidence/v3.6/source-manifest-prior-v3.5.json",
+        "sha256": "c651ed0e093a835f3a3191b029bc42f64cd6274e75a39d1ad5b9750857d19e75",
+        "bytes": 27100
+      },
+      "current_release_stage": "MAIN_VERIFIED",
+      "local_release_receipt": "physics/qm/book/evidence/v3.6/local-release-gates.json",
+      "local_release_receipt_scope": "Original local checkpoint at scientific source commit 4e5de046ad59eaa37856027af6547ca26bdea1c2; current remote metadata has a separate binding receipt.",
+      "legacy_program_reuse": {
+        "reexecuted_this_edition": false,
+        "appendix_d_exact_bytes_unchanged": true,
+        "preservation_receipt": "physics/qm/book/evidence/v3.6/prior-text-preservation.json",
+        "historical_receipt": {
+          "receipt": "physics/qm/book/evidence/v3.5/legacy-source-reuse.json",
+          "receipt_sha256": "d4989efed9facced85456d0943a57ee55c478e56d9b94d16353fa031d4c1062c",
+          "reexecuted_this_edition": false,
+          "historical_checks": 757
+        }
+      }
+    },
+    "prior_publication_metadata_checkpoint": {
+      "stage": "PUBLICATION_PR_PENDING",
+      "files": {
+        "source_manifest": {
+          "path": "physics/qm/book/SOURCE_MANIFEST.json",
+          "sha256": "c7b493aa7dfb29d0bab2eeb0c35d5289a3add603229942542a3b6da884f4d9ff",
+          "bytes": 68711,
+          "source_commit": "17b8959154d0459efd44cb9d7d30233e847d4e8f",
+          "immutable_url": "https://github.com/MurphyHoops/UEOT/blob/17b8959154d0459efd44cb9d7d30233e847d4e8f/physics/qm/book/SOURCE_MANIFEST.json"
+        },
+        "chapter_dossier": {
+          "path": "physics/qm/book/CHAPTER_DOSSIER.json",
+          "sha256": "13f68e5d6102f14e4215a715bb0dc56ff0ec3b686be518d6d1456708c7914c33",
+          "bytes": 1489494,
+          "source_commit": "17b8959154d0459efd44cb9d7d30233e847d4e8f",
+          "immutable_url": "https://github.com/MurphyHoops/UEOT/blob/17b8959154d0459efd44cb9d7d30233e847d4e8f/physics/qm/book/CHAPTER_DOSSIER.json"
+        },
+        "metadata_update_receipt": {
+          "path": "physics/qm/book/evidence/v3.7/publication-metadata-update.json",
+          "sha256": "f76a5b3549fafa05eb16e9151a7195720fe4f9ab0e4c6c75743ddfdb2c656c79",
+          "bytes": 4079,
+          "source_commit": "17b8959154d0459efd44cb9d7d30233e847d4e8f",
+          "immutable_url": "https://github.com/MurphyHoops/UEOT/blob/17b8959154d0459efd44cb9d7d30233e847d4e8f/physics/qm/book/evidence/v3.7/publication-metadata-update.json"
+        },
+        "local_acceptance_receipt": {
+          "path": "physics/qm/book/evidence/v3.7/local-acceptance.json",
+          "sha256": "4109fbec633e6ce21f0da8098c26879be552636332c5b5aa57a6992b12ba5fe5",
+          "bytes": 18359,
+          "source_commit": "17b8959154d0459efd44cb9d7d30233e847d4e8f",
+          "immutable_url": "https://github.com/MurphyHoops/UEOT/blob/17b8959154d0459efd44cb9d7d30233e847d4e8f/physics/qm/book/evidence/v3.7/local-acceptance.json"
+        }
+      },
+      "scope": "Old receipts are preserved at the immutable tested source commit. The original pre-PR metadata report stays unchanged; the current terminal local-acceptance receipt is regenerated downstream after this transition"
+    },
+    "followup_documents": {
+      "files": [
+        {
+          "path": "physics/qm/book/README.md",
+          "sha256": "e97ed2f6ca50ed20897a2f58bdb323988f286e0780c66a7541d24aae27249004",
+          "bytes": 10160
+        },
+        {
+          "path": "physics/qm/book/review/README.md",
+          "sha256": "df26a819c22e82363a784215dde0c0a3272d4e6628a130d845e2b2aae271a09e",
+          "bytes": 6341
+        },
+        {
+          "path": "physics/qm/book/build/record_remote_publication.py",
+          "sha256": "2fdc51565d418f1deb52116478e82d228012f5f1ae2f6a081824d890411af1dc",
+          "bytes": 23135
+        },
+        {
+          "path": "physics/qm/book/review/REMOTE_PUBLICATION_METADATA_README.md",
+          "sha256": "10c070f7d8766d9ffec32520714440bd36ddf421fc8d1678f298339fd11e95e0",
+          "bytes": 8880
+        },
+        {
+          "path": "physics/qm/book/evidence/v3.7/remote-publication-guard-check.json",
+          "sha256": "4665429c789ace8cca23c3b14223995e3711aa30086441a67e9bbca487c18fa2",
+          "bytes": 4001
+        }
+      ],
+      "scope": "Actual current delivery documentation/helper identities; subsequent metadata commit, not source-CI acceptance"
+    }
+  }
+}

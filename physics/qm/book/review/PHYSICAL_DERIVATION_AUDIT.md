@@ -126,3 +126,7 @@ The initial source-bound findings in this report were applied and re-read in the
 ## v31.10 / 双语出版3.7的最终增量
 
 原66章审查保留为初始检查点。新增第66章全部16节、12结果及8个新Lean模块已独立读审；完整结论、推导与前提见 `CH66_THEORY_REVIEW.md`，新增ID来源见 `CH66_CLAIM_SOURCE_MATRIX.md`。总主张矩阵已扩至67章/173结果，原161行逐字不改。最终双稿中文 SHA256 `fd651a93cc4f38b755409f184bab231c43e889f648efda852340f8b594fb9060`、英文 SHA256 `437d4239be7a4239e701b760af1fcccdaf30f5b7ab976e9703c532990acb9a91`；理论红队最终闭环 PASS，范围及所有身份检查见 `FINAL_THEORETICAL_RED_TEAM_REVIEW.md` §9 和 `theory_review_closure.json`。无新的正文科学阻断；未验证物理机制及真实设备责任继续OPEN。此PASS不包含PDF、外部同行评议或GitHub新发布的验收。
+
+## Edition3.8 / chapter67 increment
+
+The source-to-output arrows are now specified in the same probe–oscillator model. P-OPT-02 has actual-map/statistics/Choi endpoints; P-OPT-03's complete finite-OPT/tree argument remains partly paper-level. CP composition assumes all persistent memory is in the state carrier or independently reset auxiliaries. P-MICRO-01 derives branch preservation from microscopic conservation, then full adaptive-CQ contraction; it does not assume the sought intertwining field. Normal trace-class postselection and selfadjoint block-direct-sum dynamics remain paper proofs. P-ROB-01 is a bound for a given legal simplex candidate, not an existence theorem for a low-residual policy. The exact design-region adaptive certificate is bound separately from a realized narrower calibration set. See the [nine-result bindings](../../audits/OPERATIONAL_MICRO_ROBUST_v31.11/chapter67_formal_bindings.json) and current source-matched receipts. Core is unchanged.

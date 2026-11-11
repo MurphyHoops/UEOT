@@ -1,12 +1,22 @@
-# UEOT-QM Lean package — v31.10
+# UEOT-QM Lean package — v31.11
 
 Finite complex quantum physics and typed read-only Core interfaces, pinned to Lean **4.33.1** and Mathlib **0df444a360eaa60ab8c11dca51a86af692955474**.
 
-Actual unified local acceptance: **49 public modules, 959 explicit theorems, 1285 named axiom reports**. The eight new modules add 105 explicit theorems and 162 named reports. [Proof receipt](../../physics/qm/kernel/evidence/v31.10/lean-verification.json), [155-file recursive source identity](../../physics/qm/kernel/evidence/v31.10/source-manifest.json) and [CURRENT](../../physics/qm/status/CURRENT.json) distinguish execution from publication. Ordinary linter warnings remain. Allowed axioms are only `propext`, `Classical.choice`, `Quot.sound`.
+Current new-source acceptance: **OperationalEquivalence**, 28 explicit theorems, 43 explicitly named declarations and 80 exported namespace constants audited. The actual targeted build and exhaustive namespace axiom audit passed with only `propext`, `Classical.choice`, `Quot.sound`; ordinary linter warnings remain. [Current scoped receipt](../../physics/qm/kernel/evidence/v31.11/lean-verification.json), [recursive input identity](../../physics/qm/kernel/evidence/v31.11/source-manifest.json), and [nine-result bindings](../../physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/chapter67_formal_bindings.json) state exactly what was checked.
 
-The new chain constructs the conditioned finite process from original instruments, retains complete visible records and terminal memory, characterizes allowed randomization and observation constraints, and connects physical initialization, retry costs and sharp posterior error. Exact scope and paper-only components are in the [12-result binding ledger](../../physics/qm/audits/FINITE_CONDITIONING_v31.10/chapter66_formal_bindings.json). No tracked Core source is modified.
+The public source inventory is 50 modules, 987 explicit theorems and 1365 named axiom requests. This is an inventory, not a claim that the entire historical local gate was rerun. The inherited v31.10 unified acceptance covers 49 modules, 959 theorems and 1285 requests at its own [proof receipt](../../physics/qm/kernel/evidence/v31.10/lean-verification.json). Its original finite-conditioning chain is retained. All 49 old QM module files and all consumed Core sources remain unchanged; the new public import and audit/configuration additions have separate current source identities.
+
+The new bridge proves raw single-system/complete-ancillary statistics iff actual complex-linear map equality iff rectangular Choi equality. It derives rectangular Kraus event positivity, trace nonincrease and actual ancillary amplification. Labelled sequential composition and sum congruence are formalized. Full finite Test/parallel/quotient-tree packaging and abstract OPT reconstruction remain paper responsibilities. No finite-precision or infinite-dimensional theorem is inferred from these exact finite proofs.
 
 ## Build and verify
+
+The current targeted gate is:
+
+```bash
+python3 scripts/verify_operational_equivalence.py --output-dir /tmp/qm-operational-equivalence-proof
+```
+
+It records actual target compilation and every exported constant in the new namespace. The inherited full public-package gate remains available with its original finite-conditioning increment labels:
 
 ```bash
 python3 scripts/verify_finite_conditioning.py --output-dir /tmp/qm-finite-conditioning-proof
@@ -67,7 +77,7 @@ The new runtime requires NumPy/SciPy/SymPy. CI installs pinned tested versions a
 | [PurificationDimension](UEOTQM/PurificationDimension.lean) | 14 | Actual matrix-rank lower bound, spectral-support compression and exact attained minimal auxiliary dimension |
 | [StoppingProtocols](UEOTQM/StoppingProtocols.lean) | 21 | Actual absorbing completion of finite stopping trees, exact decoder and zero invalid history blocks |
 | [StoppingRecordBudget](UEOTQM/StoppingRecordBudget.lean) | 29 | Legal effect extension, original leaf-memory isometry and true remaining-probability action budgets |
-| **Total** | **854** | 41 package modules; witnesses and generated instances are separate |
+| **Historical v31.9 subtotal** | **854** |41 modules; witnesses and generated instances are separate |
 | [QuantumFiniteWindow](UEOTQM/QuantumFiniteWindow.lean) | 39 | Original finite instruments, singular support completion and complete conditional CQ output |
 | [QuantumFiniteWindowSpectral](UEOTQM/QuantumFiniteWindowSpectral.lean) | 10 | PSD spectral factory, backward Gram kernel elimination and source-only endpoint |
 | [QuantumActionRealizability](UEOTQM/QuantumActionRealizability.lean) | 12 | Flagged Choi maps and the actual Core convex-hull/PMF bridge |
@@ -77,4 +87,6 @@ The new runtime requires NumPy/SciPy/SymPy. CI installs pinned tested versions a
 | [QuantumInitializationCost](UEOTQM/QuantumInitializationCost.lean) | 16 | Physical scaled filters, original source weights and retry cost recurrence |
 | [QuantumPostselectionError](UEOTQM/QuantumPostselectionError.lean) | 6 | Sharp complete-output to postselected trace-distance bounds |
 
-The companion [《UEOT物理学》3.6](../../physics/qm/book/UEOT_PHYSICS.md) has 67 chapters, 6 appendices, 173 numbered results and 256 PDF pages. Its paper arguments, physical inputs and open responsibilities exceed this formal package. All 161 previous numbered-result objects and 84 prior claim objects are preserved exactly. Hardware confirmation and fundamental selection of the complex sector remain separate research responsibilities.
+| [OperationalEquivalence](UEOTQM/OperationalEquivalence.lean) |28 | Positive physical systems, unnormalized all-effect separation, actual-map and rectangular Choi equality, complete finite ancillary statistics, rectangular TNI events, labelled congruence |
+
+The companion [《UEOT物理学》3.8](../../physics/qm/book/UEOT_PHYSICS.md) has 68 chapters, six appendices and 182 numbered results in complete Chinese and English texts. All 173 previous numbered-result objects and 96 previous claim objects are preserved exactly. Paper arguments, microscopic infinite-dimensional domains, robust model certificates and empirical responsibilities extend beyond this formal package. Hardware confirmation and independent complex-sector selection remain open.

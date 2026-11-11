@@ -15,6 +15,7 @@ on:
       - "formalization/ueot-core/lake-manifest.json"
       - "formalization/ueot-core/lean-toolchain"
       - "physics/qm/conditioning/**"
+      - "physics/qm/operational_micro_robust/**"
       - "physics/qm/book/build/**"
       - "physics/qm/book/UEOT_PHYSICS.md"
       - "physics/qm/kernel/*.py"
@@ -35,6 +36,7 @@ on:
       - "formalization/ueot-core/lake-manifest.json"
       - "formalization/ueot-core/lean-toolchain"
       - "physics/qm/conditioning/**"
+      - "physics/qm/operational_micro_robust/**"
       - "physics/qm/book/build/**"
       - "physics/qm/book/UEOT_PHYSICS.md"
       - "physics/qm/kernel/*.py"
@@ -70,6 +72,10 @@ jobs:
         run: python physics/qm/conditioning/verify_runtime.py --output-dir /tmp/ueot-qm-finite-conditioning
       - name: Verify canonical physics book structure
         run: python physics/qm/book/build/verify_book.py
+      - name: Verify operational microscopic robust increment
+        run: python physics/qm/operational_micro_robust/run_verification.py --output-dir /tmp/ueot-qm-operational-micro-robust
+      - name: Verify bilingual chapter67 identities and evidence boundaries
+        run: python physics/qm/book/build/verify_v3_8_increment.py --repo-root . --output /tmp/ueot-qm-book3.8-increment.json --require-complete
       - name: Verify exact kernel and independent negative controls
         run: python physics/qm/kernel/verify_kernel.py --output /tmp/ueot-qm-runtime-verification.json
       - name: Run complete kernel example
@@ -87,6 +93,8 @@ jobs:
           name: ueot-qm-runtime-${{ github.run_id }}
           path: |
             /tmp/ueot-qm-finite-conditioning/
+            /tmp/ueot-qm-operational-micro-robust/
+            /tmp/ueot-qm-book3.8-increment.json
             /tmp/ueot-qm-runtime-verification.json
             /tmp/ueot-qm-demo.json
             /tmp/ueot-qm-demo-v312.json

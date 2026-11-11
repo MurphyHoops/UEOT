@@ -216,3 +216,7 @@ A编写第66章英文并做作者自查；C跨作者逐字读取全部16节，B�
 新章的一般初始化分类、任意参考否定、Kraus算子范数充分界及无限iid重试期望识别仍明确属于书面证明；节点依赖补全及整链组装不因相邻模块通过Lean而被升级成一个已经存在的总Lean定理。量子域选择、未认证的数值支撑、实际允许动作及硬件成本、无限/相干控制扩展等责任继续OPEN。未发现本次出版需要继续修改正文的科学阻断。
 
 本结论不验收PDF构建/视觉或出版PR/CI。主编独立完成这些实际交付。当前机器可读最终回执为 `theory_review_closure.json`；旧66章回执已保留为 `theory_review_closure_initial_66_chapter_checkpoint.json`。
+
+## Edition3.8 / chapter67 internal follow-up
+
+Exactly three native research tasks reviewed A→B, B→C, C→A, followed by primary-agent integration. Findings corrected in the canonical bilingual text: physical-filter failure flags cannot use the smaller normalized-projection bound alone; full-design minimax cannot be transferred to every narrower realized calibration set; robust bounds require a given simplex candidate and do not prove existence; per-attempt and per-output calibration costs must not be mixed; single-slot event equality does not identify reused hidden-environment processes. The G=1 marginal mixing result was independently checked against exact Bloch matrices and distinct whole-oscillator fixed states; complete records retain trace distance. Full review files, revisions and actual narrow reruns are in [the increment audit](../../audits/OPERATIONAL_MICRO_ROBUST_v31.11/). This remains internal AI review, not human peer review. The strongest open risks are physical common-gate validation, leakage/model error and empirical data absence.

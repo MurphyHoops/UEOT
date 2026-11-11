@@ -1,0 +1,154 @@
+{
+  "schema": "ueot-qm.micro-robust-independent-check/1",
+  "classification": "exact symbolic/rational finite check, not hardware evidence",
+  "sympy_version": "1.14.0",
+  "all_verified": true,
+  "checks": [
+    {
+      "name": "model_identity",
+      "verified": true,
+      "detail": "Candidate bound to the exact frozen inputs"
+    },
+    {
+      "name": "frozen_domain",
+      "verified": true,
+      "detail": "Symmetric interval and monotonicity domain are exact"
+    },
+    {
+      "name": "all_seven_raw_leaves_complete",
+      "verified": true,
+      "detail": "f,0f,1f,00,01,10,11 retained; probabilities derived from source"
+    },
+    {
+      "name": "source_acceptance",
+      "verified": true,
+      "detail": "Backward effect H0=s^2 I, independent of input"
+    },
+    {
+      "name": "conditional_source_derived",
+      "verified": true,
+      "detail": "Target divided by actual scalar source acceptance, not supplied as certificate"
+    },
+    {
+      "name": "memoryless_tv_polynomial_factors",
+      "verified": true,
+      "detail": "Absolute-value cases yield |q-w|(1+|q+w-1|) for 0<=q,w<=1"
+    },
+    {
+      "name": "memoryless_uniform_bound",
+      "verified": true,
+      "detail": "Exact endpoint bound; paper supplies monotonicity over entire interval"
+    },
+    {
+      "name": "adaptive_legal_conditional_weights",
+      "verified": true,
+      "detail": "One policy from visible first label only; no hidden q access"
+    },
+    {
+      "name": "adaptive_word_construction",
+      "verified": true,
+      "detail": "Actual controller probabilities produce minimax word weights"
+    },
+    {
+      "name": "adaptive_signed_blocks",
+      "verified": true,
+      "detail": "Exact trace distance is max(|t|,u)+u when |t|<=d"
+    },
+    {
+      "name": "adaptive_uniform_inequality_factors",
+      "verified": true,
+      "detail": "Both remainders nonnegative on 0<=x<=d<=1/2; explicit paper cases"
+    },
+    {
+      "name": "minimax_lower_bound",
+      "verified": true,
+      "detail": "Over full frozen design interval only, endpoint marginals differ by 2d; not a lower bound on every narrower calibration set"
+    },
+    {
+      "name": "exact_physical_gates",
+      "verified": true,
+      "detail": "Both actual rational unitaries preserve the excitation cutoff"
+    },
+    {
+      "name": "retained_reference_input",
+      "verified": true,
+      "detail": "Positive rank-one 3x2 joint input; reference is retained and untouched"
+    },
+    {
+      "name": "all_path_states_are_densities",
+      "verified": true,
+      "detail": "Each exact path block is a nonnegative scalar times a genuine density"
+    },
+    {
+      "name": "complete_raw_quantum_trace",
+      "verified": true,
+      "detail": "Complete source quantum output including f,0f,1f has trace one"
+    },
+    {
+      "name": "raw_source_not_conditional_target",
+      "verified": true,
+      "detail": "Full raw-vs-conditional CQ distance at q=1/2 is 7/16, not zero"
+    },
+    {
+      "name": "support_false_success_control",
+      "verified": true,
+      "detail": "Vacuum input agreement cannot certify full-support maps; excited pure-state distance=4/5"
+    },
+    {
+      "name": "label_swap_control",
+      "verified": true,
+      "detail": "Identical terminal channel with labels 0 vs 1 has full-CQ distance one"
+    },
+    {
+      "name": "physical_filter_error_values",
+      "verified": true,
+      "detail": "Exact safe sqrt(delta_tail)+delta_tail failure-retaining preparation allowance"
+    },
+    {
+      "name": "frozen_precision_pass",
+      "verified": true,
+      "detail": "Both mathematical complete-output guarantees beat the preregistered 1/20 target"
+    },
+    {
+      "name": "source_success_floor",
+      "verified": true,
+      "detail": "Same q controls source success probability and conditional law"
+    },
+    {
+      "name": "calibration_coverage_exact_tail",
+      "verified": true,
+      "detail": "Written iid mgf proof plus exp(4)>finite Taylor sum>40 yields error <1/20"
+    },
+    {
+      "name": "holdout_union_allowance",
+      "verified": true,
+      "detail": "Fourteen fixed cell testers, two-sided union error <=28 exp(-8)<1/20"
+    },
+    {
+      "name": "quantifier_control",
+      "verified": true,
+      "detail": "No uniform .01 policy on full design region; no impossibility inherited by a smaller data interval; singleton-0 excludes every design q"
+    },
+    {
+      "name": "generic_robust_sum",
+      "verified": true,
+      "detail": "Exact arithmetic only; general trace-norm theorem proved in paper"
+    },
+    {
+      "name": "insufficient_certificate_controls",
+      "verified": true,
+      "detail": "Insufficient upper bounds are not called physical impossibility"
+    }
+  ],
+  "input_hashes": {
+    "frozen_model.json": "33fff2dd4298816553ce0009c022c314600c644df2167355d6c3f366721572ab",
+    "candidate.json": "38c9695e5567b19cdd73ab4b14fe8ccb50a464959caa04eb0d31f9c107160124",
+    "exact_checker.py": "3f838e85d76bf73426b540066446a13ba59363d0b414ce50758843b364b55d2e"
+  },
+  "not_covered": [
+    "general infinite-dimensional proof assistant acceptance",
+    "actual gate matching",
+    "real calibration/model membership",
+    "measured full-CQ error"
+  ]
+}

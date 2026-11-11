@@ -1,182 +1,158 @@
 {
-  "schema": "ueot-qm-current/5",
+  "schema": "ueot-qm-current/6",
   "date": "2026-11-11",
-  "version": "v31.10-kernel1.10",
-  "layer": "P — finite complex quantum physics and typed read-only Core interfaces",
-  "objective": "推进UEOT物理中原仪器—完整条件记录与末态—允许实现—成本与误差的有限闭环。",
-  "research_baseline": "3d443ec29eb17af1fc00699a74e2d42d73516d81",
-  "baseline_tree": "a694f88c91ed21f034c3270535c155fc6e6328c7",
+  "version": "v31.11-kernel1.11",
+  "layer": "P — selected complex quantum physics; Core read-only; GI excluded",
+  "objective": "Same-source operational identity, microscopic finite-CQ approximation, robust deployment and full costs",
+  "research_baseline": "16a89154183c22030d4526413167d095d94e6890",
   "core_policy": {
     "tracked_core_modified": false,
-    "role": "Read-only source-bound dependency; no Core or GI task initiated."
+    "role": "read-only mathematical dependency"
   },
-  "entrypoint": "physics/qm/UEOT_QM_KERNEL_v31.10.md",
-  "execution_contract": "physics/qm/UEOT_QM_EXECUTION_v31.10.md",
-  "runtime_entrypoint": "physics/qm/conditioning/README.md",
+  "entrypoint": "physics/qm/UEOT_QM_KERNEL_v31.11.md",
+  "execution_contract": "physics/qm/UEOT_QM_EXECUTION_v31.11.md",
+  "runtime_entrypoint": "physics/qm/operational_micro_robust/README.md",
   "formalization": "formalization/ueot-qm/README.md",
   "roadmap": "physics/qm/ROADMAP.md",
-  "claim_ledger": "physics/qm/status/CLAIM_LEDGER_v31.10.json",
-  "previous_claim_ledger": "physics/qm/status/CLAIM_LEDGER_v31.9.json",
-  "verification_state": "MAIN_VERIFIED",
+  "claim_ledger": "physics/qm/status/CLAIM_LEDGER_v31.11.json",
+  "previous_claim_ledger": "physics/qm/status/CLAIM_LEDGER_v31.10.json",
+  "verification_state": "LOCAL_VERIFIED",
   "local_checkpoint_state": "PASS",
-  "acceptance_marker": {
-    "state": "MAIN_VERIFIED",
-    "finite_conditional_chain": "CLOSED_WITH_STATED_ASSUMPTIONS",
-    "local_machine_acceptance": "PASS",
-    "book_local_acceptance": "PASS",
-    "integration_acceptance": "PASS"
+  "status_axes": {
+    "mathematical": "DECLARED_MODEL_PAPER_PROOFS_AND_COUNTEREXAMPLES",
+    "physical_selection": "COMPLEX_MODEL_AND_CONTROL_INPUTS_REMAIN_INDEPENDENT",
+    "computational": "PASS_SCOPED",
+    "empirical": "UNTESTED_NO_REAL_DEVICE_DATA"
   },
   "source_identity": {
-    "manifest": {
-      "path": "physics/qm/kernel/evidence/v31.10/source-manifest.json",
-      "sha256": "12a2cda45490c915c5c6c3ef3bf5963b738a5c793acc4b82ed0b16a4f78c03f6",
-      "bytes": 31511
-    },
-    "verification": {
-      "path": "physics/qm/kernel/evidence/v31.10/lean-verification.json",
-      "sha256": "1888f3c1a3409fa90dcda2797b6387b1e9bf65f36a2dcee0a2e93241401fd941",
-      "bytes": 1882
-    },
-    "source_count": 155,
-    "source_set_sha256": "a3c49afc9a3e8be0fffd0892ffc5e175bd17a00eb7a93c6adad8febc4cb4e3a6",
-    "scope": "Recursive public QM/Core source closure and eight proof configuration/verifier files; runtime sources have their own nine-file execution receipt.",
-    "current_bytes_match_executed_bytes": true,
-    "remote_readback": "PASS_FOR_SOURCE_AND_TESTED_MAIN"
+    "manifest": "physics/qm/kernel/evidence/v31.11/source-manifest.json",
+    "verification": "physics/qm/kernel/evidence/v31.11/lean-verification.json",
+    "source_count": 158,
+    "source_set_sha256": "f9ea1e3e9bc695e3916d764e8f005d98556e4541653d439a60e57a5fb8c4cacf",
+    "scope": "New-source targeted build and exhaustive new-namespace audit; old executions separately preserved",
+    "current_bytes_match_executed_bytes": true
   },
-  "proof_receipt": "physics/qm/kernel/evidence/v31.10/lean-verification.json",
-  "source_manifest": "physics/qm/kernel/evidence/v31.10/source-manifest.json",
-  "runtime_receipt": "physics/qm/kernel/evidence/v31.10/runtime/execution_receipt.json",
+  "proof_receipt": "physics/qm/kernel/evidence/v31.11/lean-verification.json",
+  "source_manifest": "physics/qm/kernel/evidence/v31.11/source-manifest.json",
+  "runtime_receipt": "physics/qm/kernel/evidence/v31.11/runtime/execution_receipt.json",
+  "integration": {
+    "state": "NOT_PUBLISHED",
+    "remote_verified": false
+  },
   "local_verification": {
-    "public_modules": 49,
-    "public_explicit_theorems": 959,
-    "public_named_axiom_reports": 1285,
-    "new_modules": 8,
-    "new_explicit_theorems": 105,
-    "new_named_axiom_reports": 162,
-    "semantic_runtime_tests": 19,
-    "exact_symbolic_checks": 95,
-    "runtime_receipt": {
-      "path": "physics/qm/kernel/evidence/v31.10/runtime/execution_receipt.json",
-      "sha256": "2e16fd056d90eb939ce13784bed77fc76cda3763e681296b966a7ca89b88c20f",
-      "bytes": 3295
+    "new_lean": {
+      "schema": "ueot_qm.operational_equivalence_increment.v1",
+      "status": "PASS",
+      "recorded_at_utc": "2026-11-11T09:31:58.034904+00:00",
+      "gates": [
+        {
+          "name": "dependencies",
+          "argv": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+            "scripts/check_dependencies.py"
+          ],
+          "cwd": "/workspace/scratch/a6fba8f7e18e/UEOT/formalization/ueot-qm",
+          "started_at_utc": "2026-11-11T09:30:44.906073+00:00",
+          "seconds": 0.04138994700042531,
+          "exit_code": 0,
+          "log": "dependencies.log",
+          "log_sha256": "13b2789bac066054afc6c40049fbe3f815a83927cd6bfcc1d3331946153d96cf"
+        },
+        {
+          "name": "new_module_build",
+          "argv": [
+            "lake",
+            "build",
+            "UEOTQM.OperationalEquivalence"
+          ],
+          "cwd": "/workspace/scratch/a6fba8f7e18e/UEOT/formalization/ueot-qm",
+          "started_at_utc": "2026-11-11T09:30:44.947649+00:00",
+          "seconds": 9.142012544001773,
+          "exit_code": 0,
+          "log": "new_module_build.log",
+          "log_sha256": "09c624633d83e1d56dc9df7bf9e205f3ca36bbc0c13e03e97054138bcc1e5791"
+        },
+        {
+          "name": "new_namespace_axioms",
+          "argv": [
+            "lake",
+            "env",
+            "lean",
+            "scripts/OperationalEquivalenceAxiomAudit.lean"
+          ],
+          "cwd": "/workspace/scratch/a6fba8f7e18e/UEOT/formalization/ueot-qm",
+          "started_at_utc": "2026-11-11T09:30:54.091704+00:00",
+          "seconds": 63.61929809499998,
+          "exit_code": 0,
+          "log": "new_namespace_axioms.log",
+          "log_sha256": "f6d1a81e542d6edca0fe8b18c697403d70c3cd99178ff04950942f797d2c23c8"
+        }
+      ],
+      "source_sha256": "99fd7ecfa58322321269c7504b27923f36e5c7f36fadad6a938b640c78c14f37",
+      "source_set_sha256": "f9ea1e3e9bc695e3916d764e8f005d98556e4541653d439a60e57a5fb8c4cacf",
+      "source_count": 158,
+      "identity_unchanged_during_execution": true,
+      "new_modules": 1,
+      "new_explicit_theorems": 28,
+      "new_explicit_named_declarations": 43,
+      "new_named_axiom_reports": 80,
+      "allowed_axioms_only": true,
+      "all_new_exported_namespace_constants_audited": true,
+      "ordinary_lean_linter_warnings_present": true,
+      "new_hardware_data": false,
+      "scope": "Actual new-module build and all exported constants in its namespace; full OPT, trace-class and robust paper proofs are not inferred",
+      "historical_gate_policy": "Unchanged historical execution identity is reused; no claim of a fresh local unified historical gate"
     },
-    "proof_receipt": {
-      "path": "physics/qm/kernel/evidence/v31.10/lean-verification.json",
-      "sha256": "1888f3c1a3409fa90dcda2797b6387b1e9bf65f36a2dcee0a2e93241401fd941",
-      "bytes": 1882
-    },
-    "new_hardware_data": false,
-    "ordinary_lean_linter_warnings_present": true,
-    "historical_witnesses_rerun_locally": false
+    "new_runtime": "PASS",
+    "proof_inputs_match": true,
+    "runtime_inputs_outputs_logs_match": true,
+    "publication_matches_visual_review": true,
+    "historical_heavy_suites_rerun_locally": false
   },
   "completed_in_this_delivery": [
-    "Original finite instruments and accepted leaves construct spectral support filters and the same-source complete conditional CQ output.",
-    "Allowed action randomization is characterized with visible-outcome Choi families, support restrictions, reachable inputs and shared observation fibres; both realization and separation witnesses are included.",
-    "Physical initial filters, source-leaf retry costs and sharp conditional trace-distance error are connected with explicit resource and success conditions.",
-    "Eight new public Lean modules, exact finite controls, numerical reference and chapter 66 are integrated with preserved historical objects."
+    "Four equivalent operational identities with explicit finite-complex scope",
+    "Microscopic conserving source to full adaptive-CQ truncation; trace-class posterior and physical filter flags",
+    "Shared-parameter robust certificate and exact design-region minimax policy",
+    "Single-excitation marginal mixing, full-record isometry and whole-system nonuniqueness"
   ],
-  "integration": {
-    "source_pr": 450,
-    "source_commit": "4e5de046ad59eaa37856027af6547ca26bdea1c2",
-    "source_tree": "2d771dbb0b4b9be9e759bdde0a70cce3d58deddb",
-    "tested_main_commit": "dee9bfa68c5fc60bed2853356c28011b0d3c53a0",
-    "tested_main_tree": "2d771dbb0b4b9be9e759bdde0a70cce3d58deddb",
-    "pr_run": 42966223125,
-    "main_run": 42967294067,
-    "pr_ci_status": "success",
-    "main_ci_status": "success",
-    "source_and_tested_main_trees_equal": true,
-    "state": "MAIN_VERIFIED",
-    "target_branch": "main",
-    "receipt": "physics/qm/kernel/evidence/v31.10/integration-verification.json",
-    "artifact_contents_inspected": true,
-    "raw_zip_bytes_hashed": false,
-    "metadata_commit_is_not_ci_tested_source_commit": true
-  },
   "book": {
-    "title": "UEOT物理学",
-    "edition": "3.6",
-    "state": "MAIN_VERIFIED",
-    "canonical": "physics/qm/book/UEOT_PHYSICS.md",
-    "pdf": "physics/qm/book/UEOT_PHYSICS.pdf",
-    "latex": "physics/qm/book/UEOT_PHYSICS.tex",
-    "chapters": 67,
+    "edition": "3.8",
+    "chapters": 68,
     "appendices": 6,
-    "numbered_results": 173,
-    "pdf_pages": 256,
-    "inherited_numbered_results": 161,
-    "new_numbered_results": 12,
-    "new_result_chapters": [
-      66
-    ],
-    "dossier": "physics/qm/book/CHAPTER_DOSSIER.json",
-    "release_gates": "physics/qm/book/evidence/v3.6/local-release-gates.json",
-    "current_source_hashes": {
-      "canonical": {
-        "path": "physics/qm/book/UEOT_PHYSICS.md",
-        "sha256": "eabce172cd32773e21fa5373359d0fef7e52442b5d0368e11268130b4f89e921",
-        "bytes": 659270
-      },
-      "pdf": {
-        "path": "physics/qm/book/UEOT_PHYSICS.pdf",
-        "sha256": "4b2e80a974bf9d9df9dfd8b050f68fcf7fbf5826533037bf1758430651695fc4",
-        "bytes": 1253907
-      },
-      "latex": {
-        "path": "physics/qm/book/UEOT_PHYSICS.tex",
-        "sha256": "6a701d747fc5012d2925ecc75b1a8e1df56399c0e98c296aec08221423c87233",
-        "bytes": 739934
-      }
+    "numbered_results": 182,
+    "inherited_numbered_results": 173,
+    "new_numbered_results": 9,
+    "canonical": "physics/qm/book/UEOT_PHYSICS.md",
+    "english": "physics/qm/book/UEOT_PHYSICS.en.md",
+    "dossier": {
+      "path": "physics/qm/book/CHAPTER_DOSSIER.json",
+      "sha256": "34fb91ec7845f5102f47b358c8e5bdc4e480ef20a78df1069fcc05d7854be47a",
+      "bytes": 1572055
     },
     "whole_book_formalized": false,
-    "remote_publication": "MAIN_VERIFIED",
-    "remote_release_receipt": "physics/qm/kernel/evidence/v31.10/integration-verification.json"
-  },
-  "scope_limits": [
-    "Finite-dimensional complex quantum structure, complete original instruments and a fixed accepted finite tree are explicit physical inputs.",
-    "The Lean source-tree interpreter uses uniform finite carriers and one fixed fallback per tree; node-dependent fallback is a paper consequence of the same local identity.",
-    "Allowed-library convex-hull criteria distinguish full maps, support-restricted maps and prescribed reachable inputs; the local criteria are not a universal iff for all terminal-only simulators.",
-    "All-input deterministic normalization classification and the external-reference exception are paper proofs with exact finite controls; they classify the prescribed initialization map.",
-    "The finite retry-cost recurrence is in Lean; identification with an infinite iid trial-space expectation is a paper monotone-convergence argument requiring fresh preparation.",
-    "The Kraus norm sufficient defect bound and spectral-gap perturbation constants are paper results; exact examples and floating diagnostics do not certify a general eigensolver.",
-    "No new hardware data, complete natural theory, fundamental complex-sector selection, unrestricted coherent controller or unbounded-time conditioning is claimed."
-  ],
-  "known_open_items": [
-    "Independent physical selection of the complex quantum sector and its reconstruction premises.",
-    "Certified numerical support/spectral computations and all-input implementation refinement.",
-    "Measured device operations, preparation/reset/record costs and calibration with an independently frozen experiment.",
-    "General unbounded conditioning, coherent controllers, continuous-variable and QFT limits."
-  ],
-  "next_execution": {
-    "status": "FINITE_CONDITIONAL_CHAIN_COMPLETE",
-    "current_contract_status": "COMPLETE",
-    "current_remaining_work": [],
-    "next_research": "Device-specific allowed instruments, observation permissions, independent calibration and measured resource costs; see ROADMAP."
-  },
-  "prior_publication_reconciliation": {
-    "version": "v31.9",
-    "state": "MERGED_AND_CI_VERIFIED_FOR_INSPECTED_SCOPE",
-    "pull_request": 356,
-    "source_commit": "27f6ac776c562512451000d5957087d3ecdcd086",
-    "merge_commit": "e9b61ca9c35955028c4bfa425dfa278fd1864029",
-    "merged_at_utc": "2026-10-21T08:37:29Z",
-    "pr_run": 39569411258,
-    "main_run": 39570687643,
-    "pr_conclusion": "success",
-    "main_conclusion": "success",
-    "scope": "Actual PR/main run identities and steps; old 41 QM modules, listed scripts/toolchain, three canonical book files and 56 previously consumed Core source blobs matched during the 2026-11-11 review.",
-    "not_checked": [
-      "all 255 historical publication payload files",
-      "artifact ZIP contents"
-    ],
-    "historical_pending_words_preserved_in_original_receipts": true
+    "local_acceptance": "physics/qm/book/evidence/v3.8/local-acceptance.json"
   },
   "historical_current_checkpoint": {
-    "path": "physics/qm/kernel/evidence/v31.10/prior/CURRENT_v31.9.json",
-    "sha256": "6757e045ab023bf650d01d79d2c06420e9a2c9b7968c1c0922bb519f6bdefd93",
-    "bytes": 11997
+    "path": "physics/qm/book/evidence/v3.8/prior/CURRENT.json",
+    "sha256": "74c1c20973a1845d7b7e1b8543a0483ce58fb5a0198fb1894d729ad0442f69f7",
+    "bytes": 9379
   },
-  "historical_claim_scope": "All 84 v31.9 claim objects and all 161 old book result objects are unchanged; present acceptance is recorded separately.",
+  "historical_claim_scope": "All96 old claim objects and173 old book result objects retain exact historical identity",
+  "scope_limits": [
+    "Finite classical protocols and finite untouched references",
+    "No leakage or excitation growth without a new defect budget",
+    "Full OPT/reconstruction only partially formalized",
+    "Normal trace-class and long-time proofs remain paper arguments",
+    "Full-design minimax is not every realized calibration-set optimum",
+    "Flag counts do not certify quantum gate matching or terminal-state distance",
+    "Unknown quantum inputs are not free repeatable resources",
+    "No real data or empirical closure"
+  ],
+  "next_execution": {
+    "theory": "Weak leakage or finite-bath deletion bound for the same interventions and complete records",
+    "operations": "Complete finite Test quotient and independently justified sector principles",
+    "data": "Protocol-matched raw calibration, ordered failures/leakage, gate identity, terminal testers and full costs"
+  },
   "new_hardware_data": false,
-  "metadata_updated_at_utc": "2026-11-11T05:51:02.562595+00:00"
+  "metadata_updated_at_utc": "2026-11-11T09:45:45.297883+00:00"
 }

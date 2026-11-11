@@ -92,7 +92,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\small UEOT PHYSICS}
-\fancyhead[R]{\small Bilingual revision 3.7}
+\fancyhead[R]{\small Bilingual revision 3.8}
 \fancyfoot[C]{\small\thepage}
 \setlength{\headheight}{16pt}
 \renewcommand{\headrulewidth}{0.3pt}
@@ -120,11 +120,11 @@
   \vspace{10mm}
   {\color{teal}\rule{\textwidth}{1pt}\par}
   \vspace{7mm}
-  {\large Third edition\quad Bilingual revision 3.7\par}
+  {\large Third edition\quad Bilingual revision 3.8\par}
   \vspace{6mm}
   {Degui Qian\par}
   \vspace{5mm}
-  {67 chapters\quad 6 appendices\quad UEOT-QM Kernel 1.10\par}
+  {68 chapters\quad 6 appendices\quad UEOT-QM Kernel 1.11\par}
   \vfill
   {Objects and protocols\quad Quantum operations and fields\par}
   \vspace{3mm}
@@ -642,7 +642,7 @@ their original literature, and machine-verification and experimental
 identities are recorded separately.
 
 Readers interested in the theoretical core can start with Chapters 0--5
-and 49--66, then turn to the relevant physical domain. An assessment of
+and 49--67, then turn to the relevant physical domain. An assessment of
 the three-generation question must read Chapters 31, 36--37, and §49.7
 together. Appendix A provides notation and responsibility for external
 theorems; Appendix B preserves the stable result register; Appendix C
@@ -793,6 +793,26 @@ acceptance with the precise reuse of existing heavy proof evidence.
 Newly executed book checks, bilingual comparisons, and PDF builds are
 recorded separately. Data not obtained, mechanisms not established, and
 unproved limits remain open.
+
+\section{0.13 The present physical bridges and their scope}
+
+Edition 3.8 continues from main
+\texttt{16a89154183c\allowbreak 22030d452641\allowbreak 3167d095d94e\allowbreak 6890}, reread on 11 November
+2026. Chapter 67 adds nine stable results connecting operational
+identity within the selected complex model, a microscopic
+probe--oscillator source, full-record truncation, and robust deployment
+over a joint parameter set. The same model also separates marginal
+mixing from preservation of information in the complete record. The
+current manuscript contains 68 chapters, six appendices, and 182
+registered results; these counts are not a percentage of physics
+completed. The scientific version is v31.11 / Kernel 1.11, with actual
+proof and program receipts bound to their consumed source bytes. Earlier
+receipts keep their original execution identities. Machine coverage of
+the new module, paper proofs in infinite dimension, exact finite
+examples, floating diagnostics, and synthetic data are registered
+separately. No new raw device data have been obtained, so there is no
+empirical closure and no inference that Core must select complex quantum
+structure.
 
 \chapter{1. Bridging UEOT Core and quantum physics}\label{ch-1}
 
@@ -8379,10 +8399,10 @@ into generic Core would make the claimed derivation circular.
 
 The book's fixed title is \emph{UEOT Physics}, its stable document
 identity is \texttt{UEOT-\allowbreak PHYSICS}, and its current bilingual revision is
-3.7. The canonical text is \texttt{physics/\allowbreak qm/\allowbreak book/\allowbreak UEOT\_\allowbreak PHYSICS.\allowbreak md};
+3.8. The canonical text is \texttt{physics/\allowbreak qm/\allowbreak book/\allowbreak UEOT\_\allowbreak PHYSICS.\allowbreak md};
 the Chinese PDF is generated from that text. The complete English
 counterpart is \texttt{UEOT\_\allowbreak PHYSICS.\allowbreak en.\allowbreak md}, and its PDF is compiled
-from that English source. Chapters 0--66 and appendices A--F form one
+from that English source. Chapters 0--67 and appendices A--F form one
 continuous, complete document. All earlier physical topics are retained,
 and new proofs are integrated into the corresponding arguments. Readers
 should not have to reconstruct a proof from several old versions.
@@ -8429,12 +8449,12 @@ Statement, domain and checking evidence must be retrieved together.
 \begin{Verbatim}[breaklines,breakanywhere,fontsize=\scriptsize]
 document:
   id: UEOT-PHYSICS
-  edition: "3.7"
+  edition: "3.8"
   canonical_source: physics/qm/book/UEOT_PHYSICS.md
   derivative_pdf: physics/qm/book/UEOT_PHYSICS.pdf
   english_source: physics/qm/book/UEOT_PHYSICS.en.md
   english_pdf: physics/qm/book/UEOT_PHYSICS.en.pdf
-  chapter_range: [0, 66]
+  chapter_range: [0, 67]
   fundamental_unique_derivation_complete: false
   four_dimensional_nonperturbative_qft_complete: false
   quantum_gravity_complete: false
@@ -15941,6 +15961,590 @@ path construction, or provide new hardware data. Future experiments can
 test whether a specified implementation meets the full-record, cost, and
 error contracts established here.
 
+\chapter{67. Operational identity, microscopic truncation, and robust
+implementation with shared parameters}\label{ch-67}
+
+This chapter continues the finite conditioning chain already closed in
+Chapter 66. The new responsibility is to connect the statistical
+identity of actual transformations, oscillator dynamics, finite
+computation, and one legal deployment under unknown parameters to the
+same complete output. Generic Core, selection of the complex sector, a
+physical device, and empirical support remain separate layers. No frozen
+Core statement is changed, and internal consistency of standard quantum
+structure is not presented as an independent selection of nature's
+theory.
+
+\section{67.1 Inheritance, quantifiers, and evidence}
+
+Purification, local tomography, effect separation, and trace distance in
+Chapters 54--64, together with Chapter 66's complete conditional CQ
+chain, are inherited with their original sources and receipts. The
+research baseline is \texttt{16a89154183c\allowbreak 22030d452641\allowbreak 3167d095d94e\allowbreak 6890};
+at entry, all 155 historical proof/configuration inputs and nine runtime
+inputs matched their historical receipts byte for byte; the new public
+imports and audit configuration have separate current identities.
+Analytic proof, Lean, exact finite arithmetic, floating diagnostics,
+synthetic records, and real measurements are registered separately.
+
+The dependency classes here are B, P, E, and O. The selected complex
+quantum structure is an explicit physical input; this chapter has not
+reduced that independent premise. Implementation error concerns complete
+CQ outputs with the same record alphabet and terminal space; §67.10
+separately studies a discarded-record marginal distance. Records include
+failure, stopping, and preparation-filter failure; the reference is
+untouched. Universal state/effect quantifiers do not assert that an
+experimentalist has acquired all those measurement capabilities.
+
+\section{67.2 Operational identity of actual events}
+
+\phantomsection\label{p-opt-02}{}
+
+\textbf{P-OPT-02 (Four equivalent identities for events in
+positive-dimensional finite complex systems).} Let the input and output
+be positive-dimensional finite complex Hilbert spaces, and let events be
+complex-linear, completely positive, trace-nonincreasing maps. The
+following are equivalent: equality of raw statistics in every finite
+positive-dimensional auxiliary context; equality on every single-system
+density and effect; equality of the actual complex-linear maps; and
+equality of their fixed-basis unnormalized Choi matrices.
+
+\[
+\begin{gathered}
+\forall R,\rho_{AR},\ 0\le E_{BR}\le I:\quad
+\operatorname{Tr}\!\left[E_{BR}(\Phi\otimes\mathrm{id}_R)(\rho_{AR})\right]
+=\operatorname{Tr}\!\left[E_{BR}(\Psi\otimes\mathrm{id}_R)(\rho_{AR})\right],\\
+J(\Phi)_{(i,a),(j,b)}=\Phi(|i\rangle\langle j|)_{a,b}.
+\end{gathered}
+\]
+
+\textbf{Proof.} A one-dimensional auxiliary gives the single-system
+condition. For each fixed input, the two event outputs are Hermitian and
+may have unequal traces. A nonzero difference is distinguished by its
+positive or negative spectral projector, an allowed effect. Hence the
+outputs coincide on every density. Every nonzero PSD input is its trace
+times a density, and a zero-trace PSD input is zero. Every Hermitian
+matrix is a difference of PSD matrices; every complex matrix is a
+Hermitian real part plus the imaginary unit times a Hermitian imaginary
+part. Complex linearity therefore determines the whole map. Equality
+survives tensoring with an identity, including entangled inputs. Each
+input block of the Choi matrix recovers one matrix unit's image, and
+matrix units form a complex basis, proving the remaining equivalence.
+\(\square\)
+
+The zero event has no posterior but is included. Normalizing an event
+first loses its probability: one quarter of the identity event and one
+half of it have identical positive-branch posteriors but are different
+events. Restricted effects or inputs do not satisfy the universal
+premise. Approximate Choi entries cannot simply be renamed a worst-case
+operational error.
+
+\section{67.3 Visible labels and the operational quotient}
+
+\phantomsection\label{p-opt-03}{}
+
+\textbf{P-OPT-03 (Composition respects identity at every visible
+label).} Fix a visible outcome alphabet. Two complete instruments have
+identical labelled auxiliary statistics exactly when their actual CP
+maps agree at every visible label. Sequential and parallel composition,
+specified outcome coarse graining, classical randomization, conditional
+tests, and bounded classical adaptive trees preserve this equivalence.
+
+The state carrier used for composition must contain all persistent
+memory, or auxiliaries must be independently reset as in this chapter's
+example. Equality of single-slot channels does not identify multitime
+hardware with different reused hidden environments.
+
+\textbf{Proof.} Each diagonal record block of the complete CQ output is
+its unnormalized event output; apply P-OPT-02 to each block.
+Composition, tensor product, and finite sums preserve map equality.
+Induction on finite tree height proves adaptive substitution.
+Conditional completeness follows from trace preservation of each
+successor test's sum and completeness of its parent instrument. Control
+weights must agree within one observation fibre; hidden Kraus indices
+are unavailable. \(\square\)
+
+One identity Kraus operator and two identity Kraus operators scaled by
+three fifths and four fifths represent the same CP map. Swapping visible
+projective outcomes does not represent the same instrument: on a
+suitable input its complete CQ distance is one even though the forgotten
+channels agree. A rectangular event can be completed by mapping the
+probability of its missing effect to a fixed output density. Positive
+output dimension ensures that such a density exists. Empty matrix
+carriers remain mathematical boundary tests, rather than physical
+objects without normalized states.
+
+This supplies operational semantics inside the chosen complex model. The
+Chiribella--D'Ariano--Perinotti reconstruction still requires the
+complete finite causal OPT background and its selection principles; see
+the \href{https://arxiv.org/abs/1011.6451v3}{2011 original} and
+\href{https://arxiv.org/abs/0908.1583v5}{2010 framework}. Neutral
+principles of parent-state existence, complete access, and additive
+resources also hold in full classical probability theory: use a product
+parent distribution, all stochastic maps, and additive nonnegative
+costs. These principles do not exclude the classical candidate, and the
+complete reconstruction has not been machine-checked here.
+
+\section{67.4 Deriving a uniform truncation from microscopic dynamics}
+
+The system is a two-level probe and one oscillator; its reference is any
+finite positive-dimensional system. Excitation number and its budget are
+dimensionless. Physical energy requires a separate operator relation to
+excitation.
+
+\[
+\mathcal H_S=\mathbb C^2\otimes\ell^2(\mathbb N_0),\qquad
+G=a^\dagger a+P_e,\qquad
+\Pi_N=1_{G\le N},\qquad \operatorname{rank}\Pi_N=2N+1.
+\]
+
+Jaynes--Cummings exchange, probe phase, and excitation-preserving free
+terms form finite Hermitian blocks in each total-excitation sector.
+Their Hilbert direct sum is self-adjoint on vectors for which the
+squared norms of all block actions sum finitely: block resolvents are
+uniformly bounded, yielding self-adjointness and the unitary group.
+These controls strongly preserve the spectral projections. When this
+Hamiltonian is used as a device model, rotating-wave and other
+approximation errors remain separate obligations.
+
+A vacuum auxiliary with nonnegative excitation ensures that an
+excitation-conserving joint unitary, started below the cutoff, leaves
+every hidden branch of a complete readout within the system cutoff. The
+readout need not be diagonal in auxiliary excitation: its component
+along any fixed readout vector cannot create higher system excitation.
+
+\phantomsection\label{p-micro-01}{}
+
+\textbf{P-MICRO-01 (A microscopic bridge to complete adaptive CQ
+truncation).} For this actual action family, finite outcome/hidden
+refinements, fixed observation permissions, and a maximum finite height,
+every legal classical controller, finite reference, and
+budget-admissible joint input satisfies:
+
+\[
+\begin{gathered}
+K_{aok}\Pi_N=\Pi_NK_{aok}\Pi_N,\qquad
+s_N=\operatorname{Tr}[(\Pi_N\otimes I_R)\rho_{SR}]>0,\\
+\rho_N=\frac{(V_N^\dagger\otimes I_R)\rho_{SR}(V_N\otimes I_R)}{s_N},\qquad
+\operatorname{Tr}(G\rho_S)\le\bar n<N+1,\\
+D\!\left(\Omega^\pi(\rho_{SR}),\iota_N\Omega_N^\pi(\rho_N)\right)
+\le\sqrt{\frac{\bar n}{N+1}}.
+\end{gathered}
+\]
+
+\textbf{Proof.} The first identity is derived from microscopic
+conservation, auxiliary preparation, and readout. The spectral
+inequality bounds the tail mass, and the purification argument of
+P-QINF-02 bounds the initial normalized projected state. Define finite
+branches by compressing the actual Kraus operators. Invariance derives
+branch intertwining and finite completeness; intertwining is not
+supplied as a certificate field. Multiplying and summing along the tree,
+while retaining all terminal labels, derives complete-output
+intertwining for the same controller. A complete finite tree is normal
+CPTP and contracts Hermitian trace-class differences, proving the
+estimate. \(\square\)
+
+There is no step-count multiplier on the tail error because the subspace
+remains invariant. Excitation injection, leakage, and unbounded stopping
+are outside the proof. Normalized projection depends on the input; the
+expression is not an energy-constrained diamond norm of a difference
+between two fixed channels.
+
+\section{67.5 Necessary premises, normal trace class, and actual
+filtering}
+
+\phantomsection\label{c-micro-01}{}
+
+\textbf{C-MICRO-01 (Mean-energy preservation does not imply branchwise
+truncation).} On three levels with energies zero, one, and two, a
+measure-and-prepare channel fixes levels zero and two, sends level one
+to an equal mixture of zero and two, and removes off-diagonal entries.
+It preserves mean excitation for every input. One Kraus operator
+nevertheless raises level one to level two, escaping the first cutoff.
+Mean-energy nonincrease cannot replace P-MICRO-01's branchwise premise.
+
+A separate actual-operation counterexample exchanges one probe
+excitation into the oscillator and then completely damps it, producing
+vacuum. Reversing those operations produces an excited oscillator. The
+CP compositions have distance one on the same input. This checks actual
+channels; anticommutation of two Kraus matrices would not suffice.
+
+\phantomsection\label{p-micro-02}{}
+
+\textbf{P-MICRO-02 (Normal trace-class postselection and complete
+preparation records).} For the same normal CP trace-nonincreasing
+acceptance extractor, complete normal outputs, and positive acceptance
+probabilities, the sharp finite postselection constant extends to
+trace-class outputs. For a physical projection filter, the ideal
+always-pass output and actual complete pass/fail output also satisfy the
+following preparation bound:
+
+\[
+\begin{gathered}
+D(\omega,\sigma)\le\varepsilon,\quad
+A=\mathcal E(\omega),\ B=\mathcal E(\sigma),\quad
+p=\operatorname{Tr}A>0,\ q=\operatorname{Tr}B>0,\\
+|p-q|\le\varepsilon,\qquad
+D(A/p,B/q)\le\min\{1,\varepsilon/\max(p,q)\},\\
+\delta_N=1-s_N,\qquad
+D_{\mathrm{prep}}\le
+\frac{\sqrt{\delta_N(4-3\delta_N)}+\delta_N}{2}
+\le\min\{1,\sqrt{\delta_N}+\delta_N\}.
+\end{gathered}
+\]
+
+\textbf{Proof.} Complete the extractor using its missing effect and an
+orthogonal failure flag. Contractivity bounds the accepted-block
+trace-norm difference plus the success-probability difference by twice
+the original error. If the first probability is larger, write the
+normalized difference as the accepted-block difference divided by that
+probability plus the second positive block times the difference in
+normalization factors. The triangle inequality proves the sharp
+estimate; exchange the outputs in the other case. Only trace-class norms
+and normal maps are used.
+
+For preparation, purify the input and separate its orthogonal pass and
+fail components. In the pass block, ideal minus filtered input is a
+two-dimensional Hermitian matrix with diagonal entries zero and the tail
+mass, and off-diagonal entries equal to the product of the two
+amplitudes. Its trace norm is the displayed square root. Add the
+orthogonal fail block's tail mass and divide by two. Partial trace and
+the common subsequent channel contract the result. \(\square\)
+
+The common record space must include a preparation-failure label and
+pass-prefixed original records. A general energy-bounded input can have
+a larger normalized energy budget after passing. Failed filtering of an
+unknown state supplies no fresh copy. The trace-class extension and
+direct-sum self-adjointness are analytic proofs; a nearby finite-matrix
+Lean compilation does not extend their machine-checked domain.
+
+\section{67.6 One source with shared parameters}
+
+The frozen unknown parameter consists of the source flag probability,
+phase pulse, and exchange pulse. The last two may be uncertain, but
+source, target, and action library must share the same actual gates. Two
+original steps stop at the first failure.
+
+\[
+\begin{gathered}
+\theta=(q,\phi,\alpha),\quad q\in[12/25,13/25],\quad s=1-q/2,\\
+U_0=e^{-i\phi P_e},\qquad
+U_1=e^{-i\alpha(a\sigma_++a^\dagger\sigma_-)},\\
+K_0=\sqrt{s(1-q)}U_0,\quad
+K_1=\sqrt{sq}U_1,\quad K_f=\sqrt{1-s}I,\\
+\mathcal R=\{f,0f,1f,00,01,10,11\}.
+\end{gathered}
+\]
+
+The microscopic realization uses a fresh independent three-state
+degenerate logical flag with zero excitation operator. Two real plane
+rotations prepare the three amplitudes; flag-controlled gates apply
+either actual gate or the identity, and the flag is completely read out.
+The joint process preserves system excitation. Logical degeneracy does
+not make preparation, readout, or reset free. The original two-success
+probability and backward effects are derived from this source:
+
+\[
+H_t=s^{2-t}I,\qquad p_{\mathrm{src}}=s^2\ge1369/2500,
+\qquad t\in\{0,1,2\}.
+\]
+
+The backward-effect formula applies only to successful prefixes; a
+failure leaf has zero acceptance effect. The conditional target has
+independent Bernoulli probabilities on its four successful histories,
+zero blocks on its three original failure histories, and terminal states
+obtained by the respective ordered gate products on the original joint
+input. Its normalization is input-independent, making it CPTP.
+Consequently this example's cutoff comparison contracts directly,
+without division by the source success probability. The complete raw
+source still fails and must not be identified with its conditioned
+target.
+
+\section{67.7 Joint calibration and robust certificates}
+
+\phantomsection\label{p-rob-01}{}
+
+\textbf{P-ROB-01 (Deployment error and separation on one parameter
+set).} Fix complete outputs, input/reference scope, and observation
+permissions. Calibration produces a joint set. Given a deployment
+candidate \(w(D_{\mathrm{cal}})\) depending only on calibration and
+legal visible history, require \(w_a\ge0\) and \(\sum_a w_a=1\), with
+its nominal residual certified. If target and actions have uniform
+errors relative to nominal objects on that common set, then for this
+given candidate:
+
+\[
+\begin{gathered}
+d_{\mathcal X}(T_\theta,\widehat T)\le\eta_T,\quad
+d_{\mathcal X}(A_{a,\theta},\widehat A_a)\le\eta_a,\quad
+d_{\mathcal X}(\widehat T,\sum_a w_a\widehat A_a)\le r_{\mathrm{nom}},\\
+\forall\theta\in C(D_{\mathrm{cal}}),\\
+d_{\mathcal X}\!\left(T_\theta,\sum_a w_aA_{a,\theta}\right)
+\le r_{\mathrm{nom}}+\eta_T+\sum_a w_a\eta_a.
+\end{gathered}
+\]
+
+Deployment design requires
+\(\exists w(D_{\mathrm{cal}})\,\forall\theta\in C(D_{\mathrm{cal}})\).
+This sufficient bound does not itself guarantee a small-residual
+candidate.
+
+\textbf{Proof.} For the same input and parameter, insert the nominal
+target and nominal mixture between the actual target and mixture. Apply
+the triangle inequality and convexity of the norm, then take the
+declared input and parameter suprema. Convex mixing preserves instrument
+completeness. History-dependent policies may be treated as members of a
+complete policy library, or certified fibre by fibre and then composed
+using a separate finite error-propagation theorem. That composition step
+cannot be omitted. \(\square\)
+
+For a fixed legal input and a complete-record effect, a certified target
+expectation lower bound exceeding all action expectation upper bounds
+plus the allowed error yields a separation certificate for every
+candidate and every mixture. A general linear functional requires its
+actual dual norm. If neither upper nor lower bounds decide the requested
+precision, report insufficient certification, rather than identifying
+solver failure with physical impossibility.
+
+\phantomsection\label{c-rob-01}{}
+
+\textbf{C-ROB-01 (Pointwise realizability does not imply one robust
+deployment).} For this chapter's conditional target, each known
+parameter permits exact realization by setting each step's label-one
+weight to that parameter. When the parameter is unknown and visible
+records are generated by the chosen actions, with no additional
+parameter-sensitive query, the deployed first-label distribution is
+fixed. Targets at two different parameters have different first-label
+probabilities and cannot both be reproduced exactly. This establishes
+absence of one uniform policy, not impossibility for each physical
+candidate.
+
+Forgetting labels creates a different false positive: two instruments
+can both have the identity as forgotten channel while always emitting
+zero and always emitting one, respectively. Their complete record
+distance is one. Changing observation permissions changes the feasible
+set; hidden nodes must not be disclosed to the controller. Certified
+support and spectral-gap premises likewise cannot be replaced by
+floating thresholds.
+
+\section{67.8 Exact benefit of visible history and the complete error}
+
+\phantomsection\label{p-rob-02}{}
+
+\textbf{P-ROB-02 (An exact design-region certificate for the same
+source).} At each step the library implements an actual gate and emits
+its label. The random coin result is that visible label; no additional
+action record is deleted. On a design interval of half-width one
+fiftieth, constant half weights have two-step worst complete error
+fifty-one over twenty-five hundred. A legal policy using the first
+visible label improves it to one fiftieth, attaining the minimax value
+on the full design region for this labelled-action library.
+
+\[
+\begin{gathered}
+\Delta=1/50,\qquad
+w_1=1/2,\quad w_{2|0}=312/625,\quad w_{2|1}=313/625,\\
+Q_{00}=Q_{11}=1/4+\Delta^2,\qquad
+Q_{01}=Q_{10}=1/4-\Delta^2,\\
+t=q-1/2,\quad u=\Delta^2-t^2,\qquad
+D_{\mathrm{CQ}}=\max\{|t|,u\}+u\le\Delta.
+\end{gathered}
+\]
+
+\textbf{Proof.} The target and implementation use the same actual gates
+along each history, so the corresponding terminal states coincide. Each
+block's trace-norm difference is therefore exactly its probability
+difference, for every input and finite reference. Substitution gives the
+formula. If the absolute offset is at least the remainder, the
+difference between the half-width and the error factors into two
+nonnegative terms; otherwise the error is at most twice the half-width
+squared. The endpoint target record laws have TV distance twice the
+half-width. By the triangle inequality, every parameter-independent
+record law has worst error at least the half-width. This policy attains
+it. \(\square\)
+
+Optimality concerns the entire prefrozen design interval and the
+specified library without additional parameter-sensitive in-run queries.
+A smaller realized calibration set can admit a better policy. At the
+central parameter this policy sacrifices an error of \(1/1250\) to
+reduce the worst-case error; it is not better than constant weights at
+every parameter value.
+
+For a general input of excitation budget one and cutoff four thousand
+ninety-five, retaining preparation-failure records gives the following
+analytic sufficient bound within the previously frozen precision one
+twentieth:
+
+\[
+\begin{gathered}
+\delta_N\le1/4096,\\
+D_{\mathrm{full}}\le65/4096+1/50
+=3673/102400\\
+=0.035869140625<1/20,\\
+\varepsilon_{\mathrm{remaining}}=1/20-3673/102400=1447/102400.
+\end{gathered}
+\]
+
+The remaining allowance can accommodate independently proved
+common-output bounds for actual gate mismatch or unmodelled dynamics.
+Without such measurements or model bounds, there is no device-precision
+certificate. No thousands-dimensional matrix allocation is offered as a
+substitute for the universal proof. The actual finite computation uses a
+state known to lie in the single-excitation sector, with an entangled
+reference, and checks source, backward effect, every record, and ordered
+gates; cutoff and preparation-failure errors vanish in that calculation.
+
+\section{67.9 Calibration, holdout, costs, and mechanism identification}
+
+The model calibration retains the order of eighty thousand single-step
+source flags and estimates the source parameter from failure frequency.
+Independence, identical distribution, a fixed parameter, and the correct
+source relation are coverage premises.
+
+\[
+\begin{gathered}
+\widehat q=2k_f/n,\qquad n=80000,\\
+C_q=[\widehat q-1/100,\widehat q+1/100]\cap[0,1],\\
+\Pr(q\notin C_q)\le2e^{-4}<1/20.
+\end{gathered}
+\]
+
+The executed synthetic run yielded 19844 failures, estimate 0.4961, and
+interval {[}0.4861,0.5061{]}, inside the design region. Flag data do not
+calibrate gate mismatch. The full joint set also contains the allowed
+phase/exchange nuisance domain and an independently justified
+shared-gate contract. Two separate held-out sets of 4096 trials test the
+seven-label source law and compiled-policy records; neither is rejected
+by the frozen finite record testers. These data are model-generated,
+without terminal-state tomography, and are neither empirical closure nor
+a measured full trace distance.
+
+A negative control repeats one latent flag through all trials. It has
+the same one-shot marginal but destroys the stated coverage, showing
+that marginals alone do not support iid concentration. Real analysis
+requires independent calibration, ordered raw records, all
+failures/leakage/stopping, input/reference preparations, gate-matching
+evidence, terminal tester settings, and complete costs. Missing items
+retain their unverified responsibilities.
+
+If the source is genuinely independently re-preparable, one attempt has
+expected action count one plus the one-step success probability. The
+action cost per successful output divides by two-step success. With a
+common comprehensive per-step cost, the full expectation is:
+
+\[
+C_{\mathrm{src}}=
+\frac{c_{\mathrm{prep}}+(1+s)c_{\mathrm{step}}+(1-s^2)c_{\mathrm{reset}}+c_{\mathrm{other}}}{s^2}.
+\]
+
+Here the additional term is an expected cost per original-source
+attempt. It includes auxiliary preparation, readout, recording, and
+classical computation not already counted in a step or preparation term.
+Unequal leaf costs require the actual source-leaf weighting. A one-time
+calibration batch cost \(C_{\mathrm{cal}}\) instead contributes
+\(C_{\mathrm{cal}}/M\) when amortized over \(M\) delivered successful
+outputs; a cost already amortized per output must not enter the
+numerator and be divided by the success probability again. The compiled
+policy likewise pays for filter failures, two gates, randomization,
+reset, and storage. Unknown quantum inputs do not permit free
+independent retries. No measured advantage in seconds, joules, or
+currency is claimed. The microscopic process already has an ordinary
+quantum-environment realization and does not itself distinguish
+objective actualization from standard environmental mechanisms.
+
+\section{67.10 Long-time marginal mixing versus complete memory}
+
+\phantomsection\label{p-micro-03}{}
+
+\textbf{P-MICRO-03 (Single-excitation marginal mixing without
+full-record forgetting).} Further fix the single-excitation basis order
+as oscillator excitation followed by probe excitation, and choose the
+actual gates below. Uniformly over the source parameter's design
+interval, the record-forgotten conditional channel contracts every two
+steps and has the sector's maximally mixed state as its unique invariant
+density. When the complete successful history is retained, the CQ
+distance between any two inputs is instead exactly preserved.
+
+\[
+\begin{gathered}
+U_0=\operatorname{diag}(1,(3+4i)/5),\qquad U_1=(3I-4iX)/5,\\
+M(q)=(1-q)
+\begin{pmatrix}3/5&-4/5&0\\4/5&3/5&0\\0&0&1\end{pmatrix}
++q\begin{pmatrix}1&0&0\\0&-7/25&-24/25\\0&24/25&-7/25\end{pmatrix},\\
+\|M(q)^2\|_2\le49/50,\qquad
+D(\mathcal T_q^n(\rho),I_2/2)
+\le(49/50)^{\lfloor n/2\rfloor}D(\rho,I_2/2),\\
+D(\Omega_n(\rho_{SR}),\Omega_n(\sigma_{SR}))
+=D(\rho_{SR},\sigma_{SR}).
+\end{gathered}
+\]
+
+\textbf{Proof.} Pauli conjugation by the actual two-dimensional gates
+gives the displayed real matrices. At the central parameter, nine tenths
+squared times the identity minus the Gram matrix of the two-step matrix
+has leading principal minors 4941/12500, 422733249/3906250000, and
+29552508909/390625000000, all strictly positive. Thus the central
+two-step norm is less than nine tenths. A convex combination of
+rotations has norm at most one; changing the parameter changes the
+squared matrix by at most four times its offset. This yields the uniform
+bound. Bloch-vector distance proves marginal contraction and uniqueness.
+
+In the full record, each block is a unitary conjugate of the input
+difference times the same history probability. Trace norm is unitarily
+invariant, and the probabilities sum to one, proving the last identity
+with finite references. The marginal contraction factor does not thereby
+become a bound in an arbitrary-reference channel norm. \(\square\)
+
+The entire oscillator retains invariant excitation weights: vacuum and
+the single-excitation maximally mixed state are distinct invariant
+states. There is no corresponding global oscillator uniqueness or
+mixing. The original source's infinite-success probability tends to
+zero; a Doob stationary state, a time-conditioned state limit, and a
+path law conditioned on an original zero-probability infinite event are
+distinct. This result identifies precisely what a complete record
+retains as memory and how discarding that record allows finite-system
+mixing.
+
+\section{67.11 Physical arrows that remain open}
+
+The continuing task graph remains in the current ROADMAP. The next
+microscopic problem is a full-record error for weak nonconserving terms
+or deletion of finite bath modes under the same intervention slots.
+Gaussian/regulated free fields, complete same-order EFT observables, and
+continuum limits follow only with their additional controls. The
+particle line retains both three-colour and five-colour candidates.
+Rank-one FCNC structure must connect to a common-parameter low-energy
+relation not used for fitting, with the full operator running, matrix
+elements, and covariance.
+
+The original direct Fisher--Lorentzian identification has a precise
+obstruction: a regular real-parameter Fisher matrix is an expected score
+outer product, hence PSD, and its real coordinate pullback remains PSD.
+Reparameterization alone cannot produce a nondegenerate Lorentzian
+metric. This rejects only direct identification or real pullback; other
+information-gravity bridges must supply independent causal or signed
+structure. A globally hyperbolic background, free field, Hadamard state,
+and local probe response form a separately testable next target;
+gravitational feedback additionally requires renormalization and
+stress-energy conservation.
+
+\section{67.12 Actual evidence limits}
+
+The new operational-equivalence source, compilation, and named axiom
+audit are bound individually by the v31.11 receipts. For P-OPT-02 the
+machine endpoints concern equality of actual maps, single-system and
+ancillary statistics, and Choi matrices. For P-OPT-03 machine coverage
+is limited to labelled sequential composition and sum congruence.
+Complete parallel-test bundling, quotient-tree induction, all abstract
+OPT coherence laws, and reconstruction retain their paper-level
+responsibilities. Infinite-dimensional dynamics, normal trace class,
+robust bounds, and mixing retain their separate analytic scopes. Exact
+finite checkers and the root agent's independent calculation complement
+one another. Synthetic calibration and finite-tester holdout do not
+replace actual data. Three native research subagents performed internal
+AI cross-review, not external human peer review. Complete source
+identities, corrections after failed checks, and uncovered domains
+remain in this iteration's audit and execution records.
+
 \chapter{Appendix A. Notation, units, and responsibilities of standard
 theorems}\label{appendix-a}
 
@@ -16148,7 +16752,10 @@ in Chapters 60--62, and 14 in Chapters 63--65. The registry counts
 analytic statements in the text, not original discoveries, Lean
 declarations, or experimental confirmations. Each chapter supplies the
 full hypotheses, proof, and open obligations. The bilingual map
-separately binds the titles and anchors in both languages.
+separately binds the titles and anchors in both languages. Edition 3.8
+appends the nine Chapter 67 results, giving 182 in total; all 173
+previous result objects and their historical verification identities are
+preserved.
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2400}}
@@ -16477,6 +17084,25 @@ error from full outputs to conditioned outputs). \\
 error bound for valid Kraus approximations). \\
 \hyperref[c-fcond-01]{C-FCOND-01} & 66 & C-FCOND-01 (Small positive
 eigenvalues cannot be treated as zero). \\
+\hyperref[p-opt-02]{P-OPT-02} & 67 & P-OPT-02 (Four equivalent
+identities for events in positive-dimensional finite complex
+systems). \\
+\hyperref[p-opt-03]{P-OPT-03} & 67 & P-OPT-03 (Composition respects
+identity at every visible label). \\
+\hyperref[p-micro-01]{P-MICRO-01} & 67 & P-MICRO-01 (A microscopic
+bridge to complete adaptive CQ truncation). \\
+\hyperref[c-micro-01]{C-MICRO-01} & 67 & C-MICRO-01 (Mean-energy
+preservation does not imply branchwise truncation). \\
+\hyperref[p-micro-02]{P-MICRO-02} & 67 & P-MICRO-02 (Normal trace-class
+postselection and complete preparation records). \\
+\hyperref[p-rob-01]{P-ROB-01} & 67 & P-ROB-01 (Deployment error and
+separation on one parameter set). \\
+\hyperref[c-rob-01]{C-ROB-01} & 67 & C-ROB-01 (Pointwise realizability
+does not imply one robust deployment). \\
+\hyperref[p-rob-02]{P-ROB-02} & 67 & P-ROB-02 (An exact design-region
+certificate for the same source). \\
+\hyperref[p-micro-03]{P-MICRO-03} & 67 & P-MICRO-03 (Single-excitation
+marginal mixing without full-record forgetting). \\
 \end{longtable}
 
 \chapter{Appendix C. Sources, inheritance, and research
@@ -16512,7 +17138,7 @@ executed verification is registered separately. This does not claim that
 every historical attachment was reread or that the unchanged inherited
 monograph programs were rerun.
 
-The current 3.7 publication baseline and the verified v31.9/v31.10
+The historical 3.7 publication baseline and the verified v31.9/v31.10
 remote outcomes are stated separately in §C.8. Historical dates and
 acceptance states are not silently promoted to current facts.
 
@@ -17828,13 +18454,13 @@ contract}\label{appendix-e}
 
 The maintained Chinese source \texttt{UEOT\_\allowbreak PHYSICS.\allowbreak md} and its complete
 English counterpart \texttt{UEOT\_\allowbreak PHYSICS.\allowbreak en.\allowbreak md} each contain Chapters
-0--66 and Appendices A--F. Their corresponding \texttt{.\allowbreak tex} and
+0--67 and Appendices A--F. Their corresponding \texttt{.\allowbreak tex} and
 \texttt{.\allowbreak pdf} files are actual derivatives of those sources, with
 mathematical typesetting, a full chapter contents list, stable result
-IDs, original derivations, and embedded code. Edition 3.7 is a complete
-bilingual editorial revision of the third edition. The edition number
-identifies a publication; the text and evidence determine which physical
-questions are resolved or open.
+IDs, original derivations, and embedded code. Edition 3.8 adds the
+Chapter 67 research increment to the complete bilingual third-edition
+manuscript. The edition number identifies a publication; the text and
+evidence determine which physical questions are resolved or open.
 
 Both languages carry the same scientific commitments. Their prose is
 adapted for natural reading, while assumptions, formulas, constants,
@@ -19535,6 +20161,117 @@ UEOTQM.QuantumActionRealizability.branchOutputFamily
 UEOTQM.QuantumActionRealizability.mixture_branchOutputFamily
 UEOTQM.QuantumActionRealizability.fixed_input_branch_realizable_iff
 UEOTQM.QuantumActionRealizability.fixed_input_observation_realizable_iff
+\end{Verbatim}
+
+\section{F.6 The v31.11 operational-identity increment}
+
+This increment adds one public module,
+\texttt{Operational\allowbreak Equivalence.\allowbreak lean}, with 28 explicit theorems and 43
+explicitly named declarations. The actual namespace audit covers 80
+exported constants, including generated constants. The target module
+compiled successfully; only \texttt{propext}, \texttt{Classical.\allowbreak choice},
+and \texttt{Quot.\allowbreak sound} are accepted as foundations. Exact execution and
+source hashes are in
+\texttt{.\allowbreak .\allowbreak /\allowbreak kernel/\allowbreak evidence/\allowbreak v31.\allowbreak 11/\allowbreak lean-\allowbreak verification.\allowbreak json}. The 8730
+build jobs are dependency-graph work items, not a count of new theorems.
+Ordinary linter warnings remain.
+
+The current public source inventory is 50 modules, 987 explicit theorems
+and 1365 named axiom requests. These inventory totals do not claim a
+fresh local rerun of every historical gate. The old 49 source modules
+and 1285 requests retain their historical identities; the new module and
+public entrypoints have separately bound current evidence. Chapter 67's
+ledger gives P-OPT-02's actual-map, single-system, complete
+ancillary-statistics and Choi endpoints and rectangular-event coverage.
+P-OPT-03's Lean subset covers sequential composition and sum congruence
+only. The complete finite Test/parallel/quotient-tree background and the
+infinite-dimensional, trace-class, robust and mixing paper arguments are
+not made machine theorems by a neighboring build.
+
+The following is the complete list of constants actually audited in the
+new namespace, matching the added public audit requests:
+
+\begin{Verbatim}[breaklines,breakanywhere,fontsize=\scriptsize]
+UEOTQM.OperationalEquivalence.ContextStatistics
+UEOTQM.OperationalEquivalence.Event
+UEOTQM.OperationalEquivalence.Event._sizeOf_1
+UEOTQM.OperationalEquivalence.Event._sizeOf_inst
+UEOTQM.OperationalEquivalence.Event.amplify
+UEOTQM.OperationalEquivalence.Event.amplify._proof_1
+UEOTQM.OperationalEquivalence.Event.amplify._simp_1
+UEOTQM.OperationalEquivalence.Event.amplify.eq_1
+UEOTQM.OperationalEquivalence.Event.amplify_operator_apply
+UEOTQM.OperationalEquivalence.Event.amplify_operator_eq
+UEOTQM.OperationalEquivalence.Event.amplify_posSemidef
+UEOTQM.OperationalEquivalence.Event.casesOn
+UEOTQM.OperationalEquivalence.Event.ctorIdx
+UEOTQM.OperationalEquivalence.Event.defect_positive
+UEOTQM.OperationalEquivalence.Event.kraus
+UEOTQM.OperationalEquivalence.Event.mass_operator_le
+UEOTQM.OperationalEquivalence.Event.mk
+UEOTQM.OperationalEquivalence.Event.mk._flat_ctor
+UEOTQM.OperationalEquivalence.Event.mk.congr_simp
+UEOTQM.OperationalEquivalence.Event.mk.inj
+UEOTQM.OperationalEquivalence.Event.mk.injEq
+UEOTQM.OperationalEquivalence.Event.mk.noConfusion
+UEOTQM.OperationalEquivalence.Event.mk.sizeOf_spec
+UEOTQM.OperationalEquivalence.Event.noConfusion
+UEOTQM.OperationalEquivalence.Event.noConfusionType
+UEOTQM.OperationalEquivalence.Event.ofChannel
+UEOTQM.OperationalEquivalence.Event.ofChannel._proof_1
+UEOTQM.OperationalEquivalence.Event.ofChannel_operator
+UEOTQM.OperationalEquivalence.Event.operatorLinear
+UEOTQM.OperationalEquivalence.Event.operatorLinear._proof_1
+UEOTQM.OperationalEquivalence.Event.operatorLinear._proof_2
+UEOTQM.OperationalEquivalence.Event.operatorLinear.eq_1
+UEOTQM.OperationalEquivalence.Event.operator_posSemidef
+UEOTQM.OperationalEquivalence.Event.rec
+UEOTQM.OperationalEquivalence.Event.recOn
+UEOTQM.OperationalEquivalence.Event.statistics_iff_map_eq
+UEOTQM.OperationalEquivalence.Event.trace_operator
+UEOTQM.OperationalEquivalence.PhysicalSystem
+UEOTQM.OperationalEquivalence.SingleStatistics
+UEOTQM.OperationalEquivalence.amplify
+UEOTQM.OperationalEquivalence.amplify._proof_1
+UEOTQM.OperationalEquivalence.amplify._proof_2
+UEOTQM.OperationalEquivalence.amplify_congr
+UEOTQM.OperationalEquivalence.choi
+UEOTQM.OperationalEquivalence.choi_injective
+UEOTQM.OperationalEquivalence.complex_linear_eq_of_eq_on_densities
+UEOTQM.OperationalEquivalence.contextStatistics_iff_choi_eq
+UEOTQM.OperationalEquivalence.contextStatistics_iff_map_eq
+UEOTQM.OperationalEquivalence.contextStatistics_iff_singleStatistics
+UEOTQM.OperationalEquivalence.context_statistics_of_singleStatistics
+UEOTQM.OperationalEquivalence.hermitian_eq_of_all_effect_pairings_eq
+UEOTQM.OperationalEquivalence.imaginaryUnit
+UEOTQM.OperationalEquivalence.imaginaryUnit.eq_1
+UEOTQM.OperationalEquivalence.imaginaryUnit_hermitian
+UEOTQM.OperationalEquivalence.imaginaryUnit_hermitian._simp_1_2
+UEOTQM.OperationalEquivalence.labelled_comp_congr
+UEOTQM.OperationalEquivalence.labelled_sum_congr
+UEOTQM.OperationalEquivalence.map_eq_iff_choi_eq
+UEOTQM.OperationalEquivalence.matrixUnit
+UEOTQM.OperationalEquivalence.matrixUnit.congr_simp
+UEOTQM.OperationalEquivalence.matrixUnit.eq_1
+UEOTQM.OperationalEquivalence.matrixUnit_hermitian_expansion
+UEOTQM.OperationalEquivalence.matrixUnit_hermitian_expansion._simp_1_4
+UEOTQM.OperationalEquivalence.matrix_expansion
+UEOTQM.OperationalEquivalence.physicalState
+UEOTQM.OperationalEquivalence.physicalState._proof_1
+UEOTQM.OperationalEquivalence.real_maps_eq_on_hermitian_of_eq_on_densities
+UEOTQM.OperationalEquivalence.real_maps_eq_on_positive_of_eq_on_densities
+UEOTQM.OperationalEquivalence.scalarDensity
+UEOTQM.OperationalEquivalence.scalarDensity._proof_1
+UEOTQM.OperationalEquivalence.scalarDensity._proof_2
+UEOTQM.OperationalEquivalence.scalarEffect
+UEOTQM.OperationalEquivalence.scalarEffect._proof_1
+UEOTQM.OperationalEquivalence.scalarEffect._proof_2
+UEOTQM.OperationalEquivalence.scalar_context_pairing
+UEOTQM.OperationalEquivalence.singleStatistics_iff_map_eq
+UEOTQM.OperationalEquivalence.sub_kronecker
+UEOTQM.OperationalEquivalence.symmetricUnit
+UEOTQM.OperationalEquivalence.symmetricUnit.eq_1
+UEOTQM.OperationalEquivalence.symmetricUnit_hermitian
 \end{Verbatim}
 
 \backmatter

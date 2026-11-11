@@ -1,0 +1,284 @@
+{
+  "schema": "ueot-qm.result-binding/2",
+  "version": "v31.11-kernel1.11",
+  "chapter": 67,
+  "baseline": "16a89154183c22030d4526413167d095d94e6890",
+  "common_contract": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/SHARED_MODEL.md",
+  "scope_rule": "An exact declaration binding is only machine evidence when the current source-matched Lean receipt passes. Nearby builds do not extend theorem domains. Counts are not a physics completion fraction.",
+  "results": [
+    {
+      "id": "P-OPT-02",
+      "title": "正维有限复系统中的四种事件等价",
+      "dependency_class": [
+        "B",
+        "P",
+        "O"
+      ],
+      "question_and_quantifiers": "For every two TNI CP events between positive-dimensional finite complex systems, complete finite ancillary statistics agree iff all single-system density/effect statistics agree iff actual complex-linear maps agree iff input-first unnormalized Choi matrices agree.",
+      "premises": [
+        "Selected finite complex matrix model with all density states and all PSD effects bounded by identity",
+        "Positive physical dimensions; zero mathematical carriers remain excluded only in the adapter",
+        "Raw unnormalized event outputs and probabilities, including the zero event",
+        "All finite untouched ancillary contexts, not restricted observed data"
+      ],
+      "formal_file": "formalization/ueot-qm/UEOTQM/OperationalEquivalence.lean",
+      "formal_namespace": "UEOTQM.OperationalEquivalence",
+      "formal_names": [
+        "contextStatistics_iff_singleStatistics",
+        "singleStatistics_iff_map_eq",
+        "contextStatistics_iff_map_eq",
+        "contextStatistics_iff_choi_eq",
+        "Event.amplify_operator_eq",
+        "Event.amplify_posSemidef",
+        "Event.mass_operator_le"
+      ],
+      "paper_only": [
+        "Identification of every abstract CP event with a finite Kraus presentation invokes the standard finite-dimensional Kraus representation theorem; no new Choi-positivity/Kraus-surjectivity theorem is claimed",
+        "Finite-precision stability and restricted-access inference require another contract"
+      ],
+      "controls": [
+        "Same actual CP map with different hidden Kraus refinements",
+        "Unequal event masses with equal normalized posteriors",
+        "Rectangular map and entangled reference",
+        "Restricted effects and restricted inputs give false identification"
+      ],
+      "mathematical_status": "PROVED_WITH_DECLARED_STANDARD_MODEL_INPUTS",
+      "physical_selection_status": "COMPLEX_SECTOR_ASSUMED_NOT_DERIVED",
+      "empirical_status": "NOT_TESTED"
+    },
+    {
+      "id": "P-OPT-03",
+      "title": "逐可见标签的组合相容性",
+      "dependency_class": [
+        "B",
+        "P",
+        "O"
+      ],
+      "question_and_quantifiers": "For every pair of finite instruments on one visible alphabet, equality of all labelled statistics is equality of each actual event; equality is preserved by sequential/parallel composition, specified coarse graining, randomization, conditional tests, and bounded classical adaptive trees.",
+      "premises": [
+        "P-OPT-02 and complete finite tests",
+        "Same visible labels and specified observation fibres",
+        "Finite classical controls and common weights on indistinguishable histories",
+        "All persistent memory is included in the state carrier, or auxiliaries are independently reset; a single-slot equality is not a reused-environment process theorem"
+      ],
+      "formal_file": "formalization/ueot-qm/UEOTQM/OperationalEquivalence.lean",
+      "formal_namespace": "UEOTQM.OperationalEquivalence",
+      "formal_names": [
+        "labelled_comp_congr",
+        "labelled_sum_congr"
+      ],
+      "paper_only": [
+        "Complete parallel-test bundle and tensor coherence",
+        "Conditional-test completeness and full quotient-tree induction",
+        "All reconstruction background and independent selection principles"
+      ],
+      "controls": [
+        "Visible label swap has complete-CQ distance one despite equal discarded-record channels",
+        "Promoting a hidden Kraus index changes the output contract",
+        "No normalized state in a zero-dimensional physical carrier"
+      ],
+      "mathematical_status": "PAPER_PROOF_WITH_PARTIAL_FORMAL_ENDPOINTS",
+      "physical_selection_status": "COMPLEX_SECTOR_ASSUMED_NOT_DERIVED",
+      "empirical_status": "NOT_TESTED"
+    },
+    {
+      "id": "P-MICRO-01",
+      "title": "微观来源到完整适应CQ的截断桥",
+      "dependency_class": [
+        "B",
+        "P",
+        "E",
+        "O"
+      ],
+      "question_and_quantifiers": "For every fixed finite action/result/observation/height contract, every legal classical controller, finite untouched reference and joint trace-class input with Tr(G rho_S)<=nbar<N+1, the full output on the original input differs from the embedded compressed process on its normalized projected input by at most sqrt(nbar/(N+1)).",
+      "premises": [
+        "G has nonnegative integer spectrum and finite-rank spectral cutoffs",
+        "Actual selfadjoint block-direct-sum Hamiltonians strongly conserve total excitation",
+        "Independent vacuum or zero-excitation auxiliary preparation with nonnegative auxiliary excitation",
+        "Complete legal readout derives every branch's K Pi=Pi K Pi relation",
+        "No unbudgeted excitation injection or leakage; maximum height finite"
+      ],
+      "formal_names": [],
+      "paper_only": [
+        "Selfadjointness/domain and normal trace-class contraction",
+        "Source-derived branch intertwining and finite adaptive-tree induction",
+        "Infinite-dimensional microscopic theorem; finite controls are witnesses"
+      ],
+      "controls": [
+        "Exact finite source construction",
+        "Complete record comparison with a finite entangled reference",
+        "Actual CP noncommutation, not Kraus anticommutation"
+      ],
+      "mathematical_status": "PAPER_PROVED_WITH_EXACT_FINITE_CONTROLS",
+      "physical_selection_status": "MICROSCOPIC_CONTROL_MODEL_ASSUMED",
+      "empirical_status": "NOT_TESTED"
+    },
+    {
+      "id": "C-MICRO-01",
+      "title": "平均能量保持不保证逐分支截断",
+      "dependency_class": [
+        "B",
+        "P"
+      ],
+      "question_and_quantifiers": "There exists a three-level CPTP channel preserving mean excitation on all inputs whose level-one input has a branch escaping the level-one cutoff.",
+      "premises": [
+        "Three levels with excitation 0,1,2",
+        "Measure-prepare channel fixing levels0 and2 and sending level1 to the equal0/2 mixture"
+      ],
+      "formal_names": [],
+      "paper_only": [
+        "Explicit symbolic Kraus counterexample; no new general Lean binding"
+      ],
+      "controls": [
+        "Phi*(G)=G but K_up Pi_1 leaves range Pi_1"
+      ],
+      "mathematical_status": "POSITIVE_IMPLICATION_REFUTED",
+      "physical_selection_status": "COUNTEREXAMPLE_IN_STANDARD_CP_MODEL",
+      "empirical_status": "NOT_APPLICABLE_AS_AN_EXPERIMENTAL_CLAIM"
+    },
+    {
+      "id": "P-MICRO-02",
+      "title": "正常迹类后选择和完整准备记录",
+      "dependency_class": [
+        "B",
+        "P",
+        "O"
+      ],
+      "question_and_quantifiers": "For the same normal CPTNI extractor and complete normal outputs at distance<=epsilon with positive success masses p,q, |p-q|<=epsilon and posterior distance<=min(1,epsilon/max(p,q)). A physical projection filter, including its failure flag, has the stated sharp pure-state upper bound for every input tail mass delta.",
+      "premises": [
+        "Trace-class states and normal maps",
+        "Same extractor completed by a distinguishable failure flag",
+        "Positive success masses; uniform conditional accuracy requires a positive floor",
+        "Preparation alphabet is prep_fail disjoint union pass-prefixed original records"
+      ],
+      "formal_names": [],
+      "paper_only": [
+        "Normal trace-class extension of the finite sharp posterior theorem",
+        "Purification calculation of (sqrt(delta*(4-3delta))+delta)/2 physical-preparation error"
+      ],
+      "controls": [
+        "delta=1/4 gives complete preparation error (sqrt13+1)/8, exceeding normalized-projection error1/2",
+        "Unknown input is not assumed repeatable after filter failure"
+      ],
+      "mathematical_status": "PAPER_PROVED_WITH_SHARP_FINITE_CONTROL",
+      "physical_selection_status": "FILTER_AND_RESET_CAPABILITIES_REQUIRE_PHYSICAL_VALIDATION",
+      "empirical_status": "NOT_TESTED"
+    },
+    {
+      "id": "P-ROB-01",
+      "title": "同一参数集上的部署误差与分离",
+      "dependency_class": [
+        "B",
+        "P",
+        "E",
+        "O"
+      ],
+      "question_and_quantifiers": "For each given legal simplex candidate w(Dcal) with certified nominal residual, uniformly for theta in the same joint set, actual complete-output error <=r_nom+eta_T+sum(w_a eta_a). A common legal tester with uniform strict separation gives a lower-bound certificate. The desired deployment order is exists w for all theta; the bound does not create a feasible w.",
+      "premises": [
+        "w_a>=0, sum w_a=1; no unknown-theta oracle or hidden-node access",
+        "One complete CQ output and one stated input/reference family",
+        "Uniform target/action errors derived from explicit calibration or model inputs",
+        "For a separating effect, one common legal input and effect; other functionals require a certified dual norm",
+        "Statistical coverage requires stated assumptions, distinct from deterministic-set validity"
+      ],
+      "formal_names": [],
+      "paper_only": [
+        "Triangle/convexity proof and normalized separating-functional bound",
+        "No full quantum tomography inferred from scalar flag counts"
+      ],
+      "controls": [
+        "Independent exact candidate checker",
+        "Three outcomes: certified feasible, certified infeasible, insufficient certificate",
+        "Correlated-shot failure of iid coverage"
+      ],
+      "mathematical_status": "PAPER_PROVED_AND_FINITE_ALGORITHM_CHECKED",
+      "physical_selection_status": "JOINT_MODEL_AND_GATE_IDENTITY_UNVALIDATED_ON_HARDWARE",
+      "empirical_status": "SYNTHETIC_PIPELINE_ONLY"
+    },
+    {
+      "id": "C-ROB-01",
+      "title": "逐参数可实现不推出一次鲁棒部署",
+      "dependency_class": [
+        "B",
+        "P",
+        "O"
+      ],
+      "question_and_quantifiers": "For each known q the source conditional record law is exactly implementable; no single q-independent policy in the declared label-action library implements all distinct q exactly. This is forall w exists theta failure, not forall theta forall w failure.",
+      "premises": [
+        "Visible first label is generated by a chosen coin",
+        "No additional q-sensitive in-run query",
+        "One deployed controller for the whole parameter set"
+      ],
+      "formal_names": [],
+      "paper_only": [
+        "First-label marginal counterexample"
+      ],
+      "controls": [
+        "Different deterministic labels give distance1 while unlabelled identity channels coincide"
+      ],
+      "mathematical_status": "QUANTIFIER_EXCHANGE_REFUTED",
+      "physical_selection_status": "DECLARED_ACCESS_CLASS_ONLY",
+      "empirical_status": "NOT_TESTED"
+    },
+    {
+      "id": "P-ROB-02",
+      "title": "同一原源的精确设计区间证书",
+      "dependency_class": [
+        "B",
+        "P",
+        "E",
+        "O"
+      ],
+      "question_and_quantifiers": "Over q in[12/25,13/25], the legal adaptive two-step coin policy has worst full-CQ error exactly1/50 for all stated inputs/references, and no q-independent record law in this library has smaller worst error. For nbar=1,N=4095, complete preparation plus this policy has sufficient bound3673/102400<1/20.",
+      "premises": [
+        "Same actual source and target gates U0(phi),U1(alpha); wordwise unitary equality",
+        "Actual visible history is available; no additional erased action record",
+        "Whole frozen design interval, not arbitrary narrower calibration sets",
+        "Preparation-failure output retained; source acceptance >=1369/2500",
+        "All further physical/model/numerical errors need separate certified budgets"
+      ],
+      "formal_names": [],
+      "paper_only": [
+        "Uniform interval polynomial inequality and endpoint minimax lower bound",
+        "General energy-budget propagation uses P-MICRO-01/02"
+      ],
+      "controls": [
+        "Exact rational policy and independent checker",
+        "Nominal tradeoff1/1250",
+        "Design/calibration lower-bound nontransfer",
+        "Finite source-interpreter execution with entangled reference"
+      ],
+      "mathematical_status": "PAPER_PROVED_WITH_INDEPENDENT_EXACT_CERTIFICATES",
+      "physical_selection_status": "IDEAL_COMMON_SOURCE_MODEL_ONLY",
+      "empirical_status": "SYNTHETIC_CALIBRATION_AND_RECORD_HOLDOUT_ONLY"
+    },
+    {
+      "id": "P-MICRO-03",
+      "title": "单激发边缘混合，完整记录不遗忘",
+      "dependency_class": [
+        "B",
+        "P",
+        "O"
+      ],
+      "question_and_quantifiers": "For the specified rational gates on G=1 and every q in the design interval, the discarded-record channel has two-step Bloch contraction<=49/50 and unique densityI/2. For every finite number of steps and every pair of inputs with a finite untouched reference, complete retained successful records preserve trace distance exactly. The whole oscillator has distinct fixed states.",
+      "premises": [
+        "Fixed G=1 support and the stated gate phases/angles",
+        "Record-forgotten marginal and complete retained-CQ maps are distinct objects",
+        "Conditional probabilities are input independent; source survival s^n tends to zero"
+      ],
+      "formal_names": [],
+      "paper_only": [
+        "Bloch contraction and uniform perturbation bound",
+        "Unitary block trace-norm equality and full-space nonuniqueness"
+      ],
+      "controls": [
+        "Exact positive Sylvester principal minors",
+        "Actual CP maps noncommute on a density input",
+        "Vacuum and G=1 maximally mixed state are distinct fixed states"
+      ],
+      "mathematical_status": "PAPER_PROVED_WITH_EXACT_MATRIX_CERTIFICATES",
+      "physical_selection_status": "FIXED_GATE_SINGLE_EXCITATION_SECTOR",
+      "empirical_status": "NOT_TESTED"
+    }
+  ]
+}

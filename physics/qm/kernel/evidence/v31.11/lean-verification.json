@@ -1,0 +1,63 @@
+{
+  "schema": "ueot_qm.operational_equivalence_increment.v1",
+  "status": "PASS",
+  "recorded_at_utc": "2026-11-11T09:31:58.034904+00:00",
+  "gates": [
+    {
+      "name": "dependencies",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "scripts/check_dependencies.py"
+      ],
+      "cwd": "/workspace/scratch/a6fba8f7e18e/UEOT/formalization/ueot-qm",
+      "started_at_utc": "2026-11-11T09:30:44.906073+00:00",
+      "seconds": 0.04138994700042531,
+      "exit_code": 0,
+      "log": "dependencies.log",
+      "log_sha256": "13b2789bac066054afc6c40049fbe3f815a83927cd6bfcc1d3331946153d96cf"
+    },
+    {
+      "name": "new_module_build",
+      "argv": [
+        "lake",
+        "build",
+        "UEOTQM.OperationalEquivalence"
+      ],
+      "cwd": "/workspace/scratch/a6fba8f7e18e/UEOT/formalization/ueot-qm",
+      "started_at_utc": "2026-11-11T09:30:44.947649+00:00",
+      "seconds": 9.142012544001773,
+      "exit_code": 0,
+      "log": "new_module_build.log",
+      "log_sha256": "09c624633d83e1d56dc9df7bf9e205f3ca36bbc0c13e03e97054138bcc1e5791"
+    },
+    {
+      "name": "new_namespace_axioms",
+      "argv": [
+        "lake",
+        "env",
+        "lean",
+        "scripts/OperationalEquivalenceAxiomAudit.lean"
+      ],
+      "cwd": "/workspace/scratch/a6fba8f7e18e/UEOT/formalization/ueot-qm",
+      "started_at_utc": "2026-11-11T09:30:54.091704+00:00",
+      "seconds": 63.61929809499998,
+      "exit_code": 0,
+      "log": "new_namespace_axioms.log",
+      "log_sha256": "f6d1a81e542d6edca0fe8b18c697403d70c3cd99178ff04950942f797d2c23c8"
+    }
+  ],
+  "source_sha256": "99fd7ecfa58322321269c7504b27923f36e5c7f36fadad6a938b640c78c14f37",
+  "source_set_sha256": "f9ea1e3e9bc695e3916d764e8f005d98556e4541653d439a60e57a5fb8c4cacf",
+  "source_count": 158,
+  "identity_unchanged_during_execution": true,
+  "new_modules": 1,
+  "new_explicit_theorems": 28,
+  "new_explicit_named_declarations": 43,
+  "new_named_axiom_reports": 80,
+  "allowed_axioms_only": true,
+  "all_new_exported_namespace_constants_audited": true,
+  "ordinary_lean_linter_warnings_present": true,
+  "new_hardware_data": false,
+  "scope": "Actual new-module build and all exported constants in its namespace; full OPT, trace-class and robust paper proofs are not inferred",
+  "historical_gate_policy": "Unchanged historical execution identity is reused; no claim of a fresh local unified historical gate"
+}
