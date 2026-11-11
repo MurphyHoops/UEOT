@@ -1,0 +1,1874 @@
+{
+  "reviewer": "B, native AI Chinese editorial reviewer",
+  "date_utc": "2026-11-11",
+  "status": "PASS_DOCUMENT_CONSISTENCY_WITH_DECLARED_PENDING_GENERATION",
+  "scope": "只读检查指定交付说明与正式Markdown的版本、作者、范围、结构计数、权利表述和本地Markdown链接；不作新的法律结论。",
+  "scope_documents": [
+    {
+      "path": "philosophy/README.md",
+      "sha256": "99a509f0a06945336c4c099eab7ff4c4ea259d201e27c3cbe0888791c8b5e51e",
+      "bytes": 7854,
+      "inline_link_occurrences": 32
+    },
+    {
+      "path": "philosophy/PUBLICATION_RIGHTS.md",
+      "sha256": "bb6eb551ebd05225a6ce45fe30e1bb9dc0f244c8dda3ae17c7d12399424016f2",
+      "bytes": 4062,
+      "inline_link_occurrences": 6
+    },
+    {
+      "path": "philosophy/BUILDING.md",
+      "sha256": "9f1428d509c0b4e5ea9c6bf352d13a964d98840b4b5b20362b2921c4cd8cdcd6",
+      "bytes": 5014,
+      "inline_link_occurrences": 1
+    },
+    {
+      "path": "philosophy/EDITION_CHANGES.md",
+      "sha256": "790cbd03c982f780cae0c20123c27987fe0fa97df0b2c32109d7077f26ccc0ac",
+      "bytes": 5716,
+      "inline_link_occurrences": 4
+    },
+    {
+      "path": "philosophy/CHAPTER_ALIGNMENT.md",
+      "sha256": "0c82db87a2effb569136e497ece7a304bc4a0897c1f967938f43dbc763987a4c",
+      "bytes": 13129,
+      "inline_link_occurrences": 63
+    },
+    {
+      "path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "sha256": "4cbcf51807b8bc37f07f10dfa612fdb7bd8835f7f8cd051d1c6a5fdd2c4dfb00",
+      "bytes": 8741,
+      "inline_link_occurrences": 38
+    }
+  ],
+  "books": {
+    "zh": {
+      "path": "philosophy/UEOT_PHILOSOPHY.md",
+      "sha256": "50420af62ed5c9d3b9ba5da4fe24bf6fb9794d6722d1ac9f7913b29a8866da98",
+      "version": "3.0（双语学术修订版）",
+      "author_yaml": "钱德桂（Degui Qian）",
+      "date": "2026-11-11",
+      "part_count": 6,
+      "chapter_count": 30,
+      "appendix_count": 4,
+      "chapter_prose_paragraphs": 324,
+      "chapter_paragraph_counts": [
+        6,
+        13,
+        9,
+        9,
+        7,
+        7,
+        19,
+        11,
+        9,
+        17,
+        17,
+        9,
+        7,
+        19,
+        10,
+        10,
+        11,
+        8,
+        14,
+        10,
+        9,
+        8,
+        10,
+        11,
+        13,
+        9,
+        10,
+        13,
+        9,
+        10
+      ],
+      "footnote_definitions": 68,
+      "footnote_calls": 78,
+      "duplicate_note_definitions": [],
+      "undefined_calls": [],
+      "unused_definitions": [],
+      "new_literature_footnotes": 10,
+      "explicit_anchors": 47
+    },
+    "en": {
+      "path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "sha256": "e06a5a8e75cc620bf41da712408037c40ce609ee65cb8bef283d840325e8db1c",
+      "version": "3.0 — Bilingual Scholarly Revision",
+      "author_yaml": "Degui Qian (钱德桂)",
+      "date": "2026-11-11",
+      "part_count": 6,
+      "chapter_count": 30,
+      "appendix_count": 4,
+      "chapter_prose_paragraphs": 324,
+      "chapter_paragraph_counts": [
+        6,
+        13,
+        9,
+        9,
+        7,
+        7,
+        19,
+        11,
+        9,
+        17,
+        17,
+        9,
+        7,
+        19,
+        10,
+        10,
+        11,
+        8,
+        14,
+        10,
+        9,
+        8,
+        10,
+        11,
+        13,
+        9,
+        10,
+        13,
+        9,
+        10
+      ],
+      "footnote_definitions": 68,
+      "footnote_calls": 78,
+      "duplicate_note_definitions": [],
+      "undefined_calls": [],
+      "unused_definitions": [],
+      "new_literature_footnotes": 10,
+      "explicit_anchors": 47
+    }
+  },
+  "checks": [
+    {
+      "topic": "edition_identity",
+      "status": "consistent",
+      "finding": "两稿与六份交付说明均将当前哲学双语修订标为3.0，日期2026-11-11；2.0明确是编辑基线，不是当前版号。"
+    },
+    {
+      "topic": "attribution",
+      "status": "consistent",
+      "finding": "原始UEOT思想及论文作者统一为钱德桂／Degui Qian；ChatGPT及三个原生AI审查者被标为协助者，未称三位人类同行或已获出版认可。"
+    },
+    {
+      "topic": "content_counts",
+      "status": "verified",
+      "finding": "两稿各6编30章4附录；30章正文324段，68条脚注定义、78次调用、47显式锚点；逐章段数和调用相同；10条lit脚注。"
+    },
+    {
+      "topic": "editing_log_count",
+      "status": "verified",
+      "finding": "APPLIED_EDITS.json实际为60项，与EDITION_CHANGES及review/README一致。"
+    },
+    {
+      "topic": "historical_rights_notice",
+      "status": "textually_consistent",
+      "finding": "两稿与PUBLICATION_RIGHTS、README和EDITION_CHANGES均明确保留历史有效CC BY4.0表达的授权，并否认翻译或修订自动使旧表达独占；未提出新的法律判断。"
+    },
+    {
+      "topic": "different_baseline_hashes",
+      "status": "not_a_conflict",
+      "finding": "3776da6…用于历史权利边界及既有Git内容身份；3d443ec…用于本次哲学2.0编辑起点，各自用途明确。"
+    },
+    {
+      "topic": "working_scope",
+      "status": "verified_at_check_time",
+      "finding": "分支pub/philosophy-bilingual-edition；对编辑基线的可见改动与新文件均在philosophy/，无philosophy/source/改动。"
+    },
+    {
+      "topic": "build_documentation",
+      "status": "consistent",
+      "finding": "BUILDING列出的Pandoc3.1.11.1及XeTeX/TeXLive2025/dev与两份BUILD回执相符；68完整注加10重复回链与正文78调用一致；编译状态未冒充视觉验收。"
+    },
+    {
+      "topic": "historical_page_counts",
+      "status": "not_a_conflict",
+      "finding": "README中的97／98页、review/README中的104／101页明确属于历史发行或审查轮次，未被冒称最终100页中文PDF。英文最终目录重编仍在主编流程中。"
+    },
+    {
+      "topic": "local_navigation",
+      "status": "verified_with_declared_pending_outputs",
+      "finding": "六份文档共144处本地Markdown链接；136处目标已存在，60处章节片段均存在；8处调用仅指向4个已获知待生成文件，无真正拼错。"
+    }
+  ],
+  "chapters": [
+    {
+      "chapter": 1,
+      "zh_paragraphs": 6,
+      "en_paragraphs": 6,
+      "calls_match": true
+    },
+    {
+      "chapter": 2,
+      "zh_paragraphs": 13,
+      "en_paragraphs": 13,
+      "calls_match": true
+    },
+    {
+      "chapter": 3,
+      "zh_paragraphs": 9,
+      "en_paragraphs": 9,
+      "calls_match": true
+    },
+    {
+      "chapter": 4,
+      "zh_paragraphs": 9,
+      "en_paragraphs": 9,
+      "calls_match": true
+    },
+    {
+      "chapter": 5,
+      "zh_paragraphs": 7,
+      "en_paragraphs": 7,
+      "calls_match": true
+    },
+    {
+      "chapter": 6,
+      "zh_paragraphs": 7,
+      "en_paragraphs": 7,
+      "calls_match": true
+    },
+    {
+      "chapter": 7,
+      "zh_paragraphs": 19,
+      "en_paragraphs": 19,
+      "calls_match": true
+    },
+    {
+      "chapter": 8,
+      "zh_paragraphs": 11,
+      "en_paragraphs": 11,
+      "calls_match": true
+    },
+    {
+      "chapter": 9,
+      "zh_paragraphs": 9,
+      "en_paragraphs": 9,
+      "calls_match": true
+    },
+    {
+      "chapter": 10,
+      "zh_paragraphs": 17,
+      "en_paragraphs": 17,
+      "calls_match": true
+    },
+    {
+      "chapter": 11,
+      "zh_paragraphs": 17,
+      "en_paragraphs": 17,
+      "calls_match": true
+    },
+    {
+      "chapter": 12,
+      "zh_paragraphs": 9,
+      "en_paragraphs": 9,
+      "calls_match": true
+    },
+    {
+      "chapter": 13,
+      "zh_paragraphs": 7,
+      "en_paragraphs": 7,
+      "calls_match": true
+    },
+    {
+      "chapter": 14,
+      "zh_paragraphs": 19,
+      "en_paragraphs": 19,
+      "calls_match": true
+    },
+    {
+      "chapter": 15,
+      "zh_paragraphs": 10,
+      "en_paragraphs": 10,
+      "calls_match": true
+    },
+    {
+      "chapter": 16,
+      "zh_paragraphs": 10,
+      "en_paragraphs": 10,
+      "calls_match": true
+    },
+    {
+      "chapter": 17,
+      "zh_paragraphs": 11,
+      "en_paragraphs": 11,
+      "calls_match": true
+    },
+    {
+      "chapter": 18,
+      "zh_paragraphs": 8,
+      "en_paragraphs": 8,
+      "calls_match": true
+    },
+    {
+      "chapter": 19,
+      "zh_paragraphs": 14,
+      "en_paragraphs": 14,
+      "calls_match": true
+    },
+    {
+      "chapter": 20,
+      "zh_paragraphs": 10,
+      "en_paragraphs": 10,
+      "calls_match": true
+    },
+    {
+      "chapter": 21,
+      "zh_paragraphs": 9,
+      "en_paragraphs": 9,
+      "calls_match": true
+    },
+    {
+      "chapter": 22,
+      "zh_paragraphs": 8,
+      "en_paragraphs": 8,
+      "calls_match": true
+    },
+    {
+      "chapter": 23,
+      "zh_paragraphs": 10,
+      "en_paragraphs": 10,
+      "calls_match": true
+    },
+    {
+      "chapter": 24,
+      "zh_paragraphs": 11,
+      "en_paragraphs": 11,
+      "calls_match": true
+    },
+    {
+      "chapter": 25,
+      "zh_paragraphs": 13,
+      "en_paragraphs": 13,
+      "calls_match": true
+    },
+    {
+      "chapter": 26,
+      "zh_paragraphs": 9,
+      "en_paragraphs": 9,
+      "calls_match": true
+    },
+    {
+      "chapter": 27,
+      "zh_paragraphs": 10,
+      "en_paragraphs": 10,
+      "calls_match": true
+    },
+    {
+      "chapter": 28,
+      "zh_paragraphs": 13,
+      "en_paragraphs": 13,
+      "calls_match": true
+    },
+    {
+      "chapter": 29,
+      "zh_paragraphs": 9,
+      "en_paragraphs": 9,
+      "calls_match": true
+    },
+    {
+      "chapter": 30,
+      "zh_paragraphs": 10,
+      "en_paragraphs": 10,
+      "calls_match": true
+    }
+  ],
+  "applied_edit_decision_count": 60,
+  "links": [
+    {
+      "document": "philosophy/README.md",
+      "target": "UEOT_PHILOSOPHY.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "UEOT_PHILOSOPHY.tex",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.tex",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "UEOT_PHILOSOPHY.pdf",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.pdf",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "BUILD.json",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/BUILD.json",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "UEOT_PHILOSOPHY.en.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "UEOT_PHILOSOPHY.en.tex",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.tex",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "UEOT_PHILOSOPHY.en.pdf",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.pdf",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "BUILD.en.json",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/BUILD.en.json",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "EDITION_MANIFEST.json",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/EDITION_MANIFEST.json",
+      "exists": false,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "pending_authorized_generation"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "EDITION_CHANGES.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/EDITION_CHANGES.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "CHAPTER_ALIGNMENT.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/CHAPTER_ALIGNMENT.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "BILINGUAL_TERMINOLOGY.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/BILINGUAL_TERMINOLOGY.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "BUILDING.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/BUILDING.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "PUBLICATION_RIGHTS.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/PUBLICATION_RIGHTS.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/README.md",
+      "kind": "repository",
+      "resolved_repository_path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/README.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "../mathematics/review/CORE_DEFINITIVE_FREEZE_2026-11-11/README.md",
+      "kind": "repository",
+      "resolved_repository_path": "mathematics/review/CORE_DEFINITIVE_FREEZE_2026-11-11/README.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "../mathematics/review/CORE_DEFINITIVE_FREEZE_2026-11-11/VALIDATION.json",
+      "kind": "repository",
+      "resolved_repository_path": "mathematics/review/CORE_DEFINITIVE_FREEZE_2026-11-11/VALIDATION.json",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "../mathematics/review/CORE_DEFINITIVE_FREEZE_2026-11-11/VISUAL_REVIEW.json",
+      "kind": "repository",
+      "resolved_repository_path": "mathematics/review/CORE_DEFINITIVE_FREEZE_2026-11-11/VISUAL_REVIEW.json",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "../UEOT_v3_top.pdf",
+      "kind": "repository",
+      "resolved_repository_path": "UEOT_v3_top.pdf",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "../UEOT_v3_top%5B1%5D.zip",
+      "kind": "repository",
+      "resolved_repository_path": "UEOT_v3_top[1].zip",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "./source/original/README.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/source/original/README.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "./source/legacy/README.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/source/legacy/README.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "./source/SOURCE_PROVENANCE.json",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/source/SOURCE_PROVENANCE.json",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "../tools/books/README.md",
+      "kind": "repository",
+      "resolved_repository_path": "tools/books/README.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "../formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/README.md",
+      "kind": "repository",
+      "resolved_repository_path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/README.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "../formalization/ueot-core/docs/compression/theory_completion/unified_closure/decision_representation_closure_v1/README.md",
+      "kind": "repository",
+      "resolved_repository_path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/decision_representation_closure_v1/README.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "../formalization/ueot-core/docs/compression/theory_completion/unified_closure/mechanism_decision_closure_v1/README.md",
+      "kind": "repository",
+      "resolved_repository_path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/mechanism_decision_closure_v1/README.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_theory_closure_v1/README.md",
+      "kind": "repository",
+      "resolved_repository_path": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_theory_closure_v1/README.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "../mathematics/review/CORE_THEORY_BOOKS_2026-11-08/ROOT_FINAL_VISUAL_REVIEW.json",
+      "kind": "repository",
+      "resolved_repository_path": "mathematics/review/CORE_THEORY_BOOKS_2026-11-08/ROOT_FINAL_VISUAL_REVIEW.json",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "../mathematics/review/CORE_READER_ENTRIES_2026-11-08/CORRECTION.json",
+      "kind": "repository",
+      "resolved_repository_path": "mathematics/review/CORE_READER_ENTRIES_2026-11-08/CORRECTION.json",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/README.md",
+      "target": "PUBLICATION_RIGHTS.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/PUBLICATION_RIGHTS.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/PUBLICATION_RIGHTS.md",
+      "target": "../LICENSE",
+      "kind": "repository",
+      "resolved_repository_path": "LICENSE",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/PUBLICATION_RIGHTS.md",
+      "target": "../COPYRIGHT.md",
+      "kind": "repository",
+      "resolved_repository_path": "COPYRIGHT.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/PUBLICATION_RIGHTS.md",
+      "target": "../LICENSE_SCOPE.md",
+      "kind": "repository",
+      "resolved_repository_path": "LICENSE_SCOPE.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/PUBLICATION_RIGHTS.md",
+      "target": "EDITION_MANIFEST.json",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/EDITION_MANIFEST.json",
+      "exists": false,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "pending_authorized_generation"
+    },
+    {
+      "document": "philosophy/PUBLICATION_RIGHTS.md",
+      "target": "EDITION_CHANGES.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/EDITION_CHANGES.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/PUBLICATION_RIGHTS.md",
+      "target": "review/BILINGUAL_EDITION_2026-11-11/APPLIED_EDITS.json",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/APPLIED_EDITS.json",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/BUILDING.md",
+      "target": "review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/EDITION_CHANGES.md",
+      "target": "BILINGUAL_TERMINOLOGY.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/BILINGUAL_TERMINOLOGY.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/EDITION_CHANGES.md",
+      "target": "CHAPTER_ALIGNMENT.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/CHAPTER_ALIGNMENT.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/EDITION_CHANGES.md",
+      "target": "review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/EDITION_CHANGES.md",
+      "target": "PUBLICATION_RIGHTS.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/PUBLICATION_RIGHTS.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.md#ph-ch-01",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": "ph-ch-01",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.en.md#ph-ch-01",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": "ph-ch-01",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.md#ph-ch-02",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": "ph-ch-02",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.en.md#ph-ch-02",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": "ph-ch-02",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.md#ph-ch-03",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": "ph-ch-03",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.en.md#ph-ch-03",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": "ph-ch-03",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.md#ph-ch-04",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": "ph-ch-04",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.en.md#ph-ch-04",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": "ph-ch-04",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.md#ph-ch-05",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": "ph-ch-05",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.en.md#ph-ch-05",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": "ph-ch-05",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.md#ph-ch-06",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": "ph-ch-06",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.en.md#ph-ch-06",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": "ph-ch-06",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.md#ph-ch-07",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": "ph-ch-07",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.en.md#ph-ch-07",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": "ph-ch-07",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.md#ph-ch-08",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": "ph-ch-08",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.en.md#ph-ch-08",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": "ph-ch-08",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.md#ph-ch-09",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": "ph-ch-09",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.en.md#ph-ch-09",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": "ph-ch-09",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.md#ph-ch-10",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": "ph-ch-10",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.en.md#ph-ch-10",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": "ph-ch-10",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.md#ph-ch-11",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": "ph-ch-11",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.en.md#ph-ch-11",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": "ph-ch-11",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.md#ph-ch-12",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": "ph-ch-12",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.en.md#ph-ch-12",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": "ph-ch-12",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.md#ph-ch-13",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": "ph-ch-13",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.en.md#ph-ch-13",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": "ph-ch-13",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.md#ph-ch-14",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": "ph-ch-14",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.en.md#ph-ch-14",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": "ph-ch-14",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.md#ph-ch-15",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": "ph-ch-15",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.en.md#ph-ch-15",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": "ph-ch-15",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.md#ph-ch-16",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": "ph-ch-16",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.en.md#ph-ch-16",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": "ph-ch-16",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.md#ph-ch-17",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": "ph-ch-17",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.en.md#ph-ch-17",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": "ph-ch-17",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.md#ph-ch-18",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": "ph-ch-18",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.en.md#ph-ch-18",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": "ph-ch-18",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.md#ph-ch-19",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": "ph-ch-19",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.en.md#ph-ch-19",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": "ph-ch-19",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.md#ph-ch-20",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": "ph-ch-20",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.en.md#ph-ch-20",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": "ph-ch-20",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.md#ph-ch-21",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": "ph-ch-21",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.en.md#ph-ch-21",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": "ph-ch-21",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.md#ph-ch-22",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": "ph-ch-22",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.en.md#ph-ch-22",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": "ph-ch-22",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.md#ph-ch-23",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": "ph-ch-23",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.en.md#ph-ch-23",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": "ph-ch-23",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.md#ph-ch-24",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": "ph-ch-24",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.en.md#ph-ch-24",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": "ph-ch-24",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.md#ph-ch-25",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": "ph-ch-25",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.en.md#ph-ch-25",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": "ph-ch-25",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.md#ph-ch-26",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": "ph-ch-26",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.en.md#ph-ch-26",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": "ph-ch-26",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.md#ph-ch-27",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": "ph-ch-27",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.en.md#ph-ch-27",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": "ph-ch-27",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.md#ph-ch-28",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": "ph-ch-28",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.en.md#ph-ch-28",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": "ph-ch-28",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.md#ph-ch-29",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": "ph-ch-29",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.en.md#ph-ch-29",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": "ph-ch-29",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.md#ph-ch-30",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": "ph-ch-30",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "UEOT_PHILOSOPHY.en.md#ph-ch-30",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": "ph-ch-30",
+      "fragment_exists": true,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "EDITION_MANIFEST.json",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/EDITION_MANIFEST.json",
+      "exists": false,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "pending_authorized_generation"
+    },
+    {
+      "document": "philosophy/CHAPTER_ALIGNMENT.md",
+      "target": "review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "../../UEOT_PHILOSOPHY.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "../../UEOT_PHILOSOPHY.en.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/UEOT_PHILOSOPHY.en.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "../../EDITION_MANIFEST.json",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/EDITION_MANIFEST.json",
+      "exists": false,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "pending_authorized_generation"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "../../CHAPTER_ALIGNMENT.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/CHAPTER_ALIGNMENT.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "../../BILINGUAL_TERMINOLOGY.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/BILINGUAL_TERMINOLOGY.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "../../EDITION_CHANGES.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/EDITION_CHANGES.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "../../BUILDING.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/BUILDING.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "../../BUILD.json",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/BUILD.json",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "../../BUILD.en.json",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/BUILD.en.json",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "VALIDATION.json",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/VALIDATION.json",
+      "exists": false,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "pending_authorized_generation"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "BASELINE.json",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/BASELINE.json",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "REVIEW_A_BASELINE.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/REVIEW_A_BASELINE.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "FINAL_REVIEW_A.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/FINAL_REVIEW_A.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "CHINESE_EDITORIAL_REVIEW.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/CHINESE_EDITORIAL_REVIEW.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "BILINGUAL_CROSS_REVIEW_B.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/BILINGUAL_CROSS_REVIEW_B.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "INTEGRATED_COMPLETENESS.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/INTEGRATED_COMPLETENESS.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "INITIAL_REVIEW_C.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/INITIAL_REVIEW_C.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "FINAL_REVIEW_C.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/FINAL_REVIEW_C.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "REPAIR_LOG_C.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/REPAIR_LOG_C.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "APPLIED_EDITS.json",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/APPLIED_EDITS.json",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "../../EDITION_CHANGES.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/EDITION_CHANGES.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "VALIDATION.json",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/VALIDATION.json",
+      "exists": false,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "pending_authorized_generation"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "APPLIED_EDITS.json",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/APPLIED_EDITS.json",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "ORIGINAL_THEORY_CORRECTIONS.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/ORIGINAL_THEORY_CORRECTIONS.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "LITERATURE_VERIFICATION.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/LITERATURE_VERIFICATION.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "VERIFIED_CONCEPT_SOURCES.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/VERIFIED_CONCEPT_SOURCES.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "INTEGRATED_COMPLETENESS.json",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/INTEGRATED_COMPLETENESS.json",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "EXTERNAL_LINK_CHECK.json",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/EXTERNAL_LINK_CHECK.json",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "FINAL_REVIEW_C_RECEIPT.json",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/FINAL_REVIEW_C_RECEIPT.json",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "ANCHORS.zh.json",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/ANCHORS.zh.json",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "ANCHORS.en.json",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/ANCHORS.en.json",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "PDF_REVIEW_A.final.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/PDF_REVIEW_A.final.md",
+      "exists": false,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "pending_authorized_generation"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "PDF_REVIEW_B.final.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/PDF_REVIEW_B.final.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "PDF_REVIEW_C.final.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/PDF_REVIEW_C.final.md",
+      "exists": false,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "pending_authorized_generation"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "LAYOUT_VALIDATION.json",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/LAYOUT_VALIDATION.json",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "FINAL_PDF_PIXEL_DIFF.json",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/FINAL_PDF_PIXEL_DIFF.json",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "ROOT_VISUAL_REVIEW.json",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/ROOT_VISUAL_REVIEW.json",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    },
+    {
+      "document": "philosophy/review/BILINGUAL_EDITION_2026-11-11/README.md",
+      "target": "../../PUBLICATION_RIGHTS.md",
+      "kind": "repository",
+      "resolved_repository_path": "philosophy/PUBLICATION_RIGHTS.md",
+      "exists": true,
+      "fragment": null,
+      "fragment_exists": null,
+      "status": "ok"
+    }
+  ],
+  "link_status_counts": {
+    "ok": 136,
+    "pending_authorized_generation": 8
+  },
+  "local_fragment_link_occurrences": 60,
+  "pending_generation_files": [
+    {
+      "path": "philosophy/EDITION_MANIFEST.json",
+      "link_occurrences": 4,
+      "status": "explicitly_declared_pending_by_root_not_a_missing_deliverable_finding"
+    },
+    {
+      "path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/VALIDATION.json",
+      "link_occurrences": 2,
+      "status": "explicitly_declared_pending_by_root_not_a_missing_deliverable_finding"
+    },
+    {
+      "path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/PDF_REVIEW_A.final.md",
+      "link_occurrences": 1,
+      "status": "explicitly_declared_pending_by_root_not_a_missing_deliverable_finding"
+    },
+    {
+      "path": "philosophy/review/BILINGUAL_EDITION_2026-11-11/PDF_REVIEW_C.final.md",
+      "link_occurrences": 1,
+      "status": "explicitly_declared_pending_by_root_not_a_missing_deliverable_finding"
+    }
+  ],
+  "hard_conflicts": [],
+  "missing_or_misspelled_local_targets": [],
+  "working_scope_snapshot": {
+    "branch": "pub/philosophy-bilingual-edition",
+    "head": "3d443ec29eb17af1fc00699a74e2d42d73516d81",
+    "base_main_sha": "3d443ec29eb17af1fc00699a74e2d42d73516d81",
+    "changed_or_new_file_count": 60,
+    "outside_philosophy": [],
+    "philosophy_source_changes": [],
+    "zh_published_pdf_sha256": "ad5b6c69dd5858612878ec567032f1b6f5e02c394992bd81955281aa7efd2039",
+    "root_governance_files": {
+      "LICENSE": "d26cc9e877bbf7b50426f3c58546ab17d5f2d44cc57afc4d9beb1f0fb76fe091",
+      "LICENSE_SCOPE.md": "243cb6d2c225505d6f92f70c63ca98ca391cd218f9eec1471815145b821434c1",
+      "COPYRIGHT.md": "ab403b4b1ed928c784784621fd6ba566308ca919a8f281ecba7daf6456320b2d"
+    }
+  },
+  "final_chinese_pdf_sha256": "ad5b6c69dd5858612878ec567032f1b6f5e02c394992bd81955281aa7efd2039",
+  "english_pdf_note": "Final TOC-only rebuild is in progress; no final English PDF acceptance or hash is inferred by this document check.",
+  "limitations": [
+    "Pending manifests, validation and A/C final reports were not assessed before generation. Root should bind their final identities when written.",
+    "This report checks consistency with existing repository rights notices; it does not determine ownership, copyrightability, legal enforceability or grant new permissions.",
+    "Only local Markdown-link targets and fragments in the six named documents were checked here. External web-link verification belongs to the already separate literature/link records.",
+    "Hashes bind this read-only snapshot; later document edits need a targeted recheck."
+  ]
+}

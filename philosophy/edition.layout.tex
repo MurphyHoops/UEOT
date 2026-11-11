@@ -1,0 +1,21 @@
+% Philosophy-only book typography. No shared build semantics are changed.
+\makeatletter
+\newcommand{\UEOTChapterHeading}[1]{%
+  \vspace*{28\p@}%
+  {\parindent\z@\raggedright\normalfont
+   \hyphenpenalty=10000\exhyphenpenalty=10000
+   \interlinepenalty\@M
+   \fontsize{18}{23}\selectfont\bfseries #1\par\nobreak
+   \vskip 24\p@}}
+\let\@makechapterhead\UEOTChapterHeading
+\let\@makeschapterhead\UEOTChapterHeading
+\renewcommand\@pnumwidth{3em}
+\renewcommand\@tocrmarg{4em}
+\renewcommand\section{\@startsection{section}{1}{\z@}%
+  {-3.0ex\@plus-1ex\@minus-.2ex}%
+  {1.5ex\@plus.2ex}%
+  {\normalfont\Large\bfseries\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000}}
+\makeatother
+% A long note stays with a text-bearing page rather than leaving an orphan tail.
+\interfootnotelinepenalty=10000
+\counterwithout{footnote}{chapter}

@@ -1,15 +1,17 @@
 {
   "document": "philosophy",
+  "language": "zh",
+  "edition": "3.0",
   "status": "COMPILED_REQUIRES_VISUAL_REVIEW",
   "source": "philosophy/UEOT_PHILOSOPHY.md",
-  "source_sha256": "61cf6feacf69e49f722b5bcd2f0e8163fad4d3feae8bb7e404c63642e8537b8a",
+  "source_sha256": "50420af62ed5c9d3b9ba5da4fe24bf6fb9794d6722d1ac9f7913b29a8866da98",
   "latex": "philosophy/UEOT_PHILOSOPHY.tex",
-  "latex_sha256": "e08ba1abd448e516fc30b74a5bbbbfa403f14f86401e5dabd3e27f709838f4b7",
+  "latex_sha256": "f5587596873c0e0e1c86b88e8e90b50aefbf32fa95ba6a6c8f43da54f29fbdc5",
   "pdf": "philosophy/UEOT_PHILOSOPHY.pdf",
-  "pdf_sha256": "448675c4d73d6cc8ddb28d8f2f8f454e20bdc444327a16f69416bf0dc1101fe9",
+  "pdf_sha256": "ad5b6c69dd5858612878ec567032f1b6f5e02c394992bd81955281aa7efd2039",
   "tools": {
-    "pandoc": "pandoc 3.1.3",
-    "xelatex": "XeTeX 3.141592653-2.6-0.999998 (TeX Live 2026)"
+    "pandoc": "pandoc 3.1.11.1",
+    "xelatex": "XeTeX 3.141592653-2.6-0.999996 (TeX Live 2025/dev/Debian)"
   },
   "font_sha256": {
     "NotoSerifCJKsc-Regular.otf": "2a2eae2628df83556c54018c41e20fa532c1b862c5256ae8b3f23feb918d12ca",
@@ -17,10 +19,23 @@
     "NotoSansMonoCJKsc-Regular.otf": "ec04cc376b34887cedbdf84074e2e226ed2761eeabdcb9173fc1dd7bfd153ef7"
   },
   "overfull_hbox_warnings": 0,
+  "overfull_vbox_warnings": 0,
+  "undefined_reference_warnings": 0,
   "build_command": [
     "python3",
-    "tools/books/build_books.py",
-    "philosophy"
+    "philosophy/build_edition.py",
+    "zh"
   ],
-  "scope": "Document compilation only; mathematical proof status is recorded separately."
+  "shared_inputs": {
+    "tools/books/build_books.py": "8f644dc7e4efff23f9f924ebf7c81060b7038218ebc97ae51d1b470cce1d41f8",
+    "tools/books/print.lua": "cbe89843d17694a89352c1cd5e177b90d969185cbec14f4a03ce687447dd1dec",
+    "tools/books/preamble.tex": "259d52576712e670f09d589ed95e5003cf8b138d662b2c3799927afd9c825762"
+  },
+  "edition_inputs": {
+    "philosophy/build_edition.py": "ea1369df70ee392d54b06171e874dc29df64bda0a06b9cf4073e704e61a3a8f0",
+    "philosophy/edition.lua": "5539c45178622b37532c3ea7d8f9425c1d837334657d7c883a60117420683fd8",
+    "philosophy/edition.layout.tex": "7139935ee26dc832dbec5e09e5b851f5cd88e28158e8a5f236c2b574f2c00ec3",
+    "philosophy/edition.en.tex": "f1829f92263f146bf034b38af353d42a96d76e2e864306b9197341006b93751e"
+  },
+  "scope": "Document build only; semantic, scholarly and visual review are separately recorded."
 }

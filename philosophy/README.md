@@ -1,18 +1,37 @@
-# 客体、演化与意义
+# 客体、演化与意义 / Objects, Evolution, and Meaning
 
-## 一种开放的统一自然哲学
+## 3.0 双语学术修订版 · 2026-11-11
 
-这是一部独立的哲学著作。六编三十章围绕客体与过程、关系与身份、生命与修复、目的与评价、组合与演化、心灵与自由、社会与共同求真展开连续论证。
+原始 UEOT 思想及原始论文作者：钱德桂（Degui Qian）。这是一部围绕客体、
+过程、关系、组织、目的、意义与共同生活展开的独立自然哲学著作。
+本版完整保留六编三十章、四个附录及全部注释，并以修订后的中文为语义基线
+完成整部英文书。ChatGPT 协助写作、编辑与三个原生 AI 审查者的分工检查
+已在正文披露；这不构成外部同行评议或出版认可。
 
-- [完整 Markdown 主文](./UEOT_PHILOSOPHY.md)
-- [PDF 阅读版](./UEOT_PHILOSOPHY.pdf)
-- [LaTeX 排版源](./UEOT_PHILOSOPHY.tex)
-- [编译记录](./BUILD.json)
-- [当前 Core 状态与数学合同索引](../core/status/CURRENT.md)
+| 语言 | 编辑源 | 排印源 | 阅读版 | 编译回执 |
+| --- | --- | --- | --- | --- |
+| 中文 | [Markdown](UEOT_PHILOSOPHY.md) | [LaTeX](UEOT_PHILOSOPHY.tex) | [PDF](UEOT_PHILOSOPHY.pdf) | [BUILD.json](BUILD.json) |
+| English | [Markdown](UEOT_PHILOSOPHY.en.md) | [LaTeX](UEOT_PHILOSOPHY.en.tex) | [PDF](UEOT_PHILOSOPHY.en.pdf) | [BUILD.en.json](BUILD.en.json) |
 
-本书以 Degui Qian 的原始 UEOT 论文为思想来源，在完整 Core 数学与后续形式化成果的约束下修订原来的概念关系与强断言。新增哲学立场由正文给出理由，技术证明在独立的[数学著作](../mathematics/README.md)中展开。两书通过附录中的问题对应互相参照。
+[版本与权利清单](EDITION_MANIFEST.json) · [实际变更](EDITION_CHANGES.md) ·
+[三十章论证与双语对应](CHAPTER_ALIGNMENT.md) · [中英术语](BILINGUAL_TERMINOLOGY.md) ·
+[学术审查、文献核验与逐页检查](review/BILINGUAL_EDITION_2026-11-11/README.md) ·
+[可复现构建](BUILDING.md) · [版权边界](PUBLICATION_RIGHTS.md)
 
-当前 PR #447 的哲学 PDF 为 **98 页**，对应[新增页视觉验收](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/VISUAL_REVIEW.json)和[导航检查](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/PDF_NAVIGATION.json)已经完成。BUILD.json 保留构建阶段的原始回执；历史段落中的页数、审查与指纹仍指各自发行版本。原生分离读者复核不称为外部学术同行评议。
+本版以 main `3d443ec29eb17af1fc00699a74e2d42d73516d81` 的哲学 2.0 为编辑基线。
+原始 43 页论文、ZIP、展开来源、数学书、物理书、Lean 和冻结研究证据只读。
+正文分别说明原始思想、条件数学结论、独立哲学论证、外部文献与尚待经验检验的主张。
+数学状态仍按该基线为 `CLASSIFIED_CORE_CLOSED`，经验支持仍为 `UNVERIFIED`；
+本次哲学编辑与英文写作不改变这两个判断。
+
+最终 PDF 的物理页数为中文 **100 页**、英文 **147 页**，两卷各自编号。
+正文与附录印刷页分别为 1—96、1—143；封面和三页目录另计。
+
+## 历史版本记录
+
+以下条目记载各自发行时点。PR #447 的中文哲学 PDF 为 98 页；
+旧回执、页数和指纹只绑定相应历史产物，不用于本次 3.0 的验收。
+当前版的实际文件身份和检查范围见上方清单与审查目录。
 
 ## 2026-11-11：精确增长参数分类
 
@@ -54,6 +73,6 @@
 
 ## 出版许可说明
 
-[现有公开版本及未来新增内容的版权边界](PUBLICATION_RIGHTS.md)
-保留历史 CC BY 4.0 已授予权利。未来正式版中确属新增、权属清楚
-的著作表达可单独确定授权；本次未修改书籍正文或旧许可证。
+[PUBLICATION_RIGHTS.md](PUBLICATION_RIGHTS.md) 保留历史 CC BY 4.0 已授予权利，
+并说明本次中文修订和英文新版本的新增表达边界。翻译不使此前合法授权的表达
+自动成为独占内容。本次没有修改根 LICENSE、LICENSE_SCOPE.md 或 COPYRIGHT.md。
