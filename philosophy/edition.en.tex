@@ -1,0 +1,24 @@
+% English conventions apply only to the philosophy English edition.
+\renewcommand{\contentsname}{Contents}
+\renewcommand{\figurename}{Figure}
+\renewcommand{\tablename}{Table}
+\hyphenation{self-maintenance object-hood counter-factual}
+% Keep long contents titles intact; retain right-aligned page numbers.
+\makeatletter
+\let\UEOTOriginalTOC\tableofcontents
+\renewcommand\tableofcontents{\begingroup
+  \hyphenpenalty=10000\exhyphenpenalty=10000
+  \UEOTOriginalTOC\endgroup}
+\patchcmd{\l@chapter}{\rightskip\@pnumwidth}
+  {\rightskip\@pnumwidth plus 1fil}{}
+  {\PackageError{ueot-philosophy}{Cannot apply chapter TOC layout}{Check book.cls compatibility.}}
+\patchcmd{\l@chapter}{\parfillskip-\@pnumwidth}
+  {\parfillskip-\rightskip}{}
+  {\PackageError{ueot-philosophy}{Cannot apply chapter TOC page alignment}{Check book.cls compatibility.}}
+\patchcmd{\l@part}{\rightskip\@pnumwidth}
+  {\rightskip\@pnumwidth plus 1fil}{}
+  {\PackageError{ueot-philosophy}{Cannot apply part TOC layout}{Check book.cls compatibility.}}
+\patchcmd{\l@part}{\parfillskip-\@pnumwidth}
+  {\parfillskip-\rightskip}{}
+  {\PackageError{ueot-philosophy}{Cannot apply part TOC page alignment}{Check book.cls compatibility.}}
+\makeatother

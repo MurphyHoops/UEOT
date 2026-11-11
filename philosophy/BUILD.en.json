@@ -1,0 +1,41 @@
+{
+  "document": "philosophy",
+  "language": "en",
+  "edition": "3.0",
+  "status": "COMPILED_REQUIRES_VISUAL_REVIEW",
+  "source": "philosophy/UEOT_PHILOSOPHY.en.md",
+  "source_sha256": "e06a5a8e75cc620bf41da712408037c40ce609ee65cb8bef283d840325e8db1c",
+  "latex": "philosophy/UEOT_PHILOSOPHY.en.tex",
+  "latex_sha256": "d7a2e90845156ae9af6a2689c86de310d8960d6fa40bcbddbd68394ebeda60ab",
+  "pdf": "philosophy/UEOT_PHILOSOPHY.en.pdf",
+  "pdf_sha256": "98964413cb3bb60bb81295e81b69e4fa6f5106565a7d0c161777f91cff350b69",
+  "tools": {
+    "pandoc": "pandoc 3.1.11.1",
+    "xelatex": "XeTeX 3.141592653-2.6-0.999996 (TeX Live 2025/dev/Debian)"
+  },
+  "font_sha256": {
+    "NotoSerifCJKsc-Regular.otf": "2a2eae2628df83556c54018c41e20fa532c1b862c5256ae8b3f23feb918d12ca",
+    "NotoSerifCJKsc-Bold.otf": "8af07d4b6c2e82bcc72a30e066eaf295f11b9424f4aad2eaa9fe0e9c3b38fc73",
+    "NotoSansMonoCJKsc-Regular.otf": "ec04cc376b34887cedbdf84074e2e226ed2761eeabdcb9173fc1dd7bfd153ef7"
+  },
+  "overfull_hbox_warnings": 0,
+  "overfull_vbox_warnings": 0,
+  "undefined_reference_warnings": 0,
+  "build_command": [
+    "python3",
+    "philosophy/build_edition.py",
+    "en"
+  ],
+  "shared_inputs": {
+    "tools/books/build_books.py": "8f644dc7e4efff23f9f924ebf7c81060b7038218ebc97ae51d1b470cce1d41f8",
+    "tools/books/print.lua": "cbe89843d17694a89352c1cd5e177b90d969185cbec14f4a03ce687447dd1dec",
+    "tools/books/preamble.tex": "259d52576712e670f09d589ed95e5003cf8b138d662b2c3799927afd9c825762"
+  },
+  "edition_inputs": {
+    "philosophy/build_edition.py": "ea1369df70ee392d54b06171e874dc29df64bda0a06b9cf4073e704e61a3a8f0",
+    "philosophy/edition.lua": "5539c45178622b37532c3ea7d8f9425c1d837334657d7c883a60117420683fd8",
+    "philosophy/edition.layout.tex": "7139935ee26dc832dbec5e09e5b851f5cd88e28158e8a5f236c2b574f2c00ec3",
+    "philosophy/edition.en.tex": "f1829f92263f146bf034b38af353d42a96d76e2e864306b9197341006b93751e"
+  },
+  "scope": "Document build only; semantic, scholarly and visual review are separately recorded."
+}

@@ -1,0 +1,87 @@
+{
+  "reviewer": "Lead native AI editor; not a human typesetter or external reviewer",
+  "method": "Actual inspection of full-page PNGs rendered with Poppler pdftoppm at 120 dpi, plus earlier diagnostic pages at 110 dpi. Whole-volume coverage belongs to A/B/C reports.",
+  "zh": {
+    "pdf_sha256": "ad5b6c69dd5858612878ec567032f1b6f5e02c394992bd81955281aa7efd2039",
+    "physical_pages": 100,
+    "pages_actually_viewed": [
+      1,
+      4,
+      5,
+      11,
+      27,
+      86,
+      90,
+      97,
+      100
+    ],
+    "observations": [
+      "Title and author correctly displayed",
+      "TOC page numbers and appendix navigation legible",
+      "Bilingual edition/rights notice legible",
+      "Chapter 1 ending is a complete paragraph",
+      "Dense notes and growth-factor subscripts readable",
+      "Appendix A and C tables stay within the page",
+      "Appendix C Greek letters and mathematical notation readable",
+      "All twelve references fit legibly on final page"
+    ],
+    "open_layout_issues": []
+  },
+  "en_before_toc_fix": {
+    "pdf_sha256": "8532189308fc3699355f2e77978cfdf1d122fb86aa8836ee6e6b37f835d3ca5c",
+    "physical_pages": 147,
+    "pages_actually_viewed": [
+      1,
+      4,
+      5,
+      17,
+      34,
+      100,
+      128,
+      129,
+      143,
+      146,
+      147
+    ],
+    "observations": [
+      "Title, author and edition/rights notice correctly displayed",
+      "Chapter 2 final paragraph intact with note",
+      "Dense chapter 7 and 25 notes readable and separated from body",
+      "C.1 follows its table onto the same page",
+      "C.3 mathematical displays and title readable",
+      "Twelve bibliography entries retained and readable"
+    ],
+    "issue_found": "TOC headings still hyphenate Failure, Mathematical and References; English-only TOC patch requested.",
+    "status": "BODY_AND_APPENDICES_ACCEPTED; TOC_REVIEW_PENDING"
+  },
+  "en": {
+    "pdf_sha256": "98964413cb3bb60bb81295e81b69e4fa6f5106565a7d0c161777f91cff350b69",
+    "physical_pages": 147,
+    "pages_actually_viewed_in_final_version": [
+      2,
+      3,
+      4
+    ],
+    "prior_viewed_pages_with_identical_final_pixels": [
+      1,
+      5,
+      17,
+      34,
+      100,
+      128,
+      129,
+      143,
+      146,
+      147
+    ],
+    "pixel_binding": "FINAL_PDF_PIXEL_DIFF.json/en_toc_delta; only pages 2,3,4 changed from 853218…",
+    "observations": [
+      "Actual 120 dpi review confirms no automatic word division in all three TOC pages",
+      "Page numbers remain right-aligned",
+      "Full-page RGB equality carries the prior actual body/appendix review to this file"
+    ],
+    "open_layout_issues": [],
+    "status": "ACCEPTED_FOR_THE_STATED_SELECTED_PAGE_SCOPE"
+  },
+  "overall_status": "ACCEPTED_SELECTED_PAGES; whole-volume visual coverage is supplied by A/B/C"
+}
