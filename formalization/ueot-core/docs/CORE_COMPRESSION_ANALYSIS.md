@@ -1,5 +1,14 @@
 # UEOT Core v3 — Post-106 Compression Analysis
 
+> **Historical compression proposal — current routing updated 2026-11-11.**
+> The baseline branch and active-research wording below belong to the original
+> post-106 investigation. For adopted counted compression claims, use the
+> [compression ledger](compression/COMPRESSION_LEDGER.yaml) and its declared
+> derivation-system limits. For current Core results, use
+> [core/status/CURRENT.md](../../../core/status/CURRENT.md) and the current task's accepted evidence.
+> This proposal does not activate `ops/core-compression-v0` or supersede the
+> later [classified Core](compression/theory_completion/unified_closure/core_theory_closure_v1/README.md) and [growth classification](compression/theory_completion/unified_closure/core_growth_classification_v1/README.md).
+
 Status: **active research / meta-formalization**
 
 Baseline:

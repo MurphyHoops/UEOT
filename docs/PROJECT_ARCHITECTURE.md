@@ -4,7 +4,7 @@
 
 UEOT develops a unified account of objects and their evolution through philosophical argument, mathematical theory, formal proof and empirical investigation. These activities inform one another while retaining distinct standards of justification.
 
-Two independently maintained books organize the present work. The philosophical book develops a continuous argument about process, objects, identity, purpose, value and knowledge. The mathematical book develops precise definitions, assumptions, theorems, counterexamples and unresolved obligations. Lean supplies machine-checked evidence for the formal statements. Model and empirical work determine which interpretations apply to particular systems.
+Two independently maintained Core books organize the domain-neutral work. The philosophical book develops a continuous argument about process, objects, identity, purpose, value and knowledge. The mathematical book develops precise definitions, assumptions, theorems, counterexamples and unresolved obligations. Lean supplies machine-checked evidence for the formal statements. Model and empirical work determine which interpretations apply to particular systems. Sector books and programs retain their own scopes and evidence.
 
 The feedback is substantive: a philosophical distinction can motivate a new mathematical question; a theorem or counterexample can require a philosophical revision. Neither book is reduced to a directory of the other book's results. Governance records source identity and change decisions without turning an adopted position into a theorem or an empirical result.
 
@@ -33,7 +33,7 @@ The structure makes every mathematical or scientific claim answer four questions
 | `docs/` | Repository-wide architecture and contributor documentation |
 | `.github/` | CI and repository automation |
 
-### The two independently maintained books
+### The two independently maintained Core books
 
 The current philosophical manuscript is
 [philosophy/UEOT_PHILOSOPHY.md](../philosophy/UEOT_PHILOSOPHY.md).
@@ -73,17 +73,18 @@ mathematical exposition lives in `mathematics/`; the identity of the frozen
 specification is recorded by
 [core/specifications/manifest.yaml](../core/specifications/manifest.yaml).
 
-Internal responsibilities:
+Existing registry structure:
 
 ```text
 core/
 ├── specifications/      # specification identities, manifests and source pointers
 ├── propositions/        # stable proposition/P-ID registry and dependency graph
-├── bridges/             # domain-neutral bridge statements
-├── models/              # canonical models/countermodels
 ├── status/              # coverage, consistency and release state
 └── README.md
 ```
+
+Bridge statements, models and counterexamples are maintained in the books and
+formal library. Separate registry directories need not duplicate that content.
 
 The Core must stay independent of any one application domain. A physical or biological example may motivate a definition, but it cannot silently become part of the generic theorem.
 
@@ -93,6 +94,21 @@ source P-IDs for frozen v3.0. The compression disposition is 11 generated,
 therefore do not constitute a rederivation of every source contract. Completion
 of these conditional contracts does not by itself establish an unconditional
 unified theory or empirical confirmation of the program.
+
+The post-106 [whole-Core conditional contract](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/whole_theory_formal_closure_v1/FINAL_ACCEPTANCE.md),
+the subsequent decision contracts and the [same-source Core definitive edition](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_theory_closure_v1/README.md)
+are completed within their stated scopes. The latter's content status is
+`CLASSIFIED_CORE_CLOSED`; its positive results, counterexamples, public
+narrowings and independent philosophical arguments are separately identified.
+
+The [PR #446 hardening](../mathematics/review/CORE_DEFINITIVE_FREEZE_2026-11-11/README.md)
+adds written and exactly checked representation boundaries. The
+[PR #447 growth classification](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/README.md)
+adds three production Lean modules for the strict-positive parameter domain,
+the full permitted-history policy bound and the two existing internal programs'
+attainment conditions. These are completed units, not pending tasks from an old
+roadmap. The old `Valid` and selection-feedback contracts retain their original
+domains. Empirical support remains `UNVERIFIED`.
 
 ### 2.3 `formalization/`
 
@@ -111,11 +127,25 @@ formalization/ueot-core/
 
 Rules:
 
-- all official modules must be imported by the default build target or explicitly checked by CI;
+- production modules must be exposed by an official public import; evidence must identify the actual source and checked target;
 - `sorry`, `sorryAx`, and UEOT-specific proof axioms are forbidden for proved status;
 - theorem count is not source coverage;
 - proposition status is promoted only after semantic matching to the source P-ID;
 - dependency locks are preserved.
+
+The [current branch-governance policy](REPOSITORY_BRANCH_GOVERNANCE.md#11-ci-efficiency-rules)
+requires local-only Core verification; the Core Lean, Compression Guard and
+Compression Research Base Policy GitHub workflows are disabled. Follow the
+[operations guidance](../formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md)
+for applicable local checks and source-bound evidence. Check changed modules
+and their affected public integration, and reuse still-matching evidence for
+unchanged dependencies. A documentation-only update does not imply another full
+Lean build. An absent cloud run is not a successful check, and a governance-only
+CI result is not a Lean run.
+
+`UEOT`, `UEOT.V3.Compression` and `UEOT.V3.Compression.TheoryCompletion` expose
+the current Core closure entry. `UEOT.V3` alone retains its smaller parallel
+subset; it does not automatically export every post-106 module.
 
 Future sector libraries should be separate packages or clearly separated namespaces, for example `formalization/ueot-qm/`, rather than smuggling physical axioms into the generic Core.
 
@@ -246,9 +276,14 @@ Required:
 1. exact source statement identified;
 2. Lean statement semantically matched;
 3. theorem imported into an official build target;
-4. pinned build passes;
-5. no prohibited axioms;
-6. coverage ledger updated.
+4. pinned local verification covers the changed source and affected public integration;
+5. the actual theorem's trust dependencies are checked and disclosed, with no prohibited axioms;
+6. the applicable coverage ledger or post-106 contract is updated from evidence.
+
+The 106-P-ID ledger remains frozen for work outside that inventory. Written
+proofs, finite exact computations and machine-checked endpoints have distinct
+evidence labels. A later result does not rewrite a historical validation receipt
+or imply that every theorem in its import graph has identical trust dependencies.
 
 ### 4.2 Core → physics bridge
 
@@ -296,19 +331,28 @@ and [Core specification manifest](../core/specifications/manifest.yaml)
 identify the retained sources. New work should use the current book paths;
 archival references continue to document earlier states.
 
-## 6. Current development order
+## 6. Current development and stopping rules
 
-1. Develop the remaining mathematical connections from the completed frozen
-   Core contracts, using the existing proof infrastructure and explicit
-   assumptions.
-2. Check each connection through concrete models, counterexamples and the
-   distinction between an existence theorem and an executable construction.
-3. Integrate precise proofs and open obligations into the mathematical book,
-   then reconsider the philosophical arguments they support or constrain.
-4. Develop philosophical questions and objections in their own right, and
-   translate mathematical consequences into explicit research problems.
-5. Validate implementation changes locally before publishing the necessary
-   commits and PRs; release each book with its own version and provenance.
+The Core definitive edition, finite hardening and exact growth classification
+have reached their stated exits. Preserve those completed contracts and use
+[Current Core state](../core/status/CURRENT.md) to recover the applicable
+evidence. An old audit's `OPEN`, `pending` or proposed next step records that
+audit's date; it is not an instruction to redo a subsequently completed unit.
+
+For a separately scoped research or maintenance task:
+
+1. Refresh actual `main` and identify the precise new question or correction,
+   its existing consumers and a finite completion condition.
+2. Reuse the integrated proofs and actual source semantics; check concrete
+   witnesses and counterexamples without changing permissions, resources or
+   failure meanings merely to preserve a desired conclusion.
+3. Update the mathematical exposition and the philosophical arguments that
+   actually depend on the result, preserving their different kinds of claim.
+4. Verify the affected change locally, publish a coherent reviewed change,
+   and bind adoption to the actual merged source and applicable book artifacts.
+5. Stop at the task's exits. Stronger scientific claims, new domains and broader
+   foundations require their own question and evidence rather than automatic
+   expansion of a completed Core contract.
 
 The central objective is a progressively stronger UEOT mathematical theory and
 philosophical account, with each claimed advance supported by the appropriate

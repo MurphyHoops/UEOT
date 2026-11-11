@@ -8,8 +8,11 @@
 - [PDF 阅读版](./UEOT_PHILOSOPHY.pdf)
 - [LaTeX 排版源](./UEOT_PHILOSOPHY.tex)
 - [编译记录](./BUILD.json)
+- [当前 Core 状态与数学合同索引](../core/status/CURRENT.md)
 
 本书以 Degui Qian 的原始 UEOT 论文为思想来源，在完整 Core 数学与后续形式化成果的约束下修订原来的概念关系与强断言。新增哲学立场由正文给出理由，技术证明在独立的[数学著作](../mathematics/README.md)中展开。两书通过附录中的问题对应互相参照。
+
+当前 PR #447 的哲学 PDF 为 **98 页**，对应[新增页视觉验收](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/VISUAL_REVIEW.json)和[导航检查](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/PDF_NAVIGATION.json)已经完成。BUILD.json 保留构建阶段的原始回执；历史段落中的页数、审查与指纹仍指各自发行版本。原生分离读者复核不称为外部学术同行评议。
 
 ## 2026-11-11：精确增长参数分类
 
@@ -47,7 +50,7 @@
 
 同一受损真实程序在六单位账本下恢复并达到期望增长率最优；实际继承树给出有限时域人口比例概率界，带标记真实谱系和合法表示相容分别证明。代码、完整运行记录、适用范围见[Core 定本交付包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_theory_closure_v1/README.md)。PDF 的实际构建与选页结果见[两书审查](../mathematics/review/CORE_THEORY_BOOKS_2026-11-08/ROOT_FINAL_VISUAL_REVIEW.json)。原全 Core 条件合同及 PR441、PR442、PR443 保持完成；经验支持 UNVERIFIED。
 
-2026-11-08 的[入口校正记录](../mathematics/review/CORE_READER_ENTRIES_2026-11-08/CORRECTION.json)绑定本版三个入口文件；PR444 的原交付清单继续绑定原发行提交。
+2026-11-08 的[入口校正记录](../mathematics/review/CORE_READER_ENTRIES_2026-11-08/CORRECTION.json)绑定当时版本的三个入口文件；PR444 的原交付清单继续绑定原发行提交，后继入口更新不回写该历史清单。
 
 ## 出版许可说明
 

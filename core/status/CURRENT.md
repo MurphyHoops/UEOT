@@ -1,6 +1,13 @@
 # UEOT Core — Current State
 
-Date: 2026-10-20
+Updated: 2026-11-11 (Asia/Shanghai)
+
+Adoption checked on main `783f645286f288552c101be102a0e80f66ee70f8`:
+PR #447 supplies the latest Core mathematical extension; PR #448 adds the
+repository's layered licensing. This dated checkpoint is not a branch pin:
+refresh actual main and open work before a new task.
+
+**Content: CLASSIFIED_CORE_CLOSED. Empirical support: UNVERIFIED.**
 
 Frozen mathematical specification: UEOT Core Mathematics v3.0
 
@@ -20,6 +27,12 @@ The [source specification manifest](../specifications/manifest.yaml) records
 the frozen v3.0 identity. The authoritative source-level proof ledger is
 [V3_COVERAGE_STATUS.md](../../formalization/ueot-core/docs/V3_COVERAGE_STATUS.md).
 
+For current claims, read the [classified claim table](../../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_theory_closure_v1/CLAIM_STATUS.md)
+and [claim/premise/consumer matrix](../../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_theory_closure_v1/CLAIM_PREMISE_CONSUMER_MATRIX.md),
+then the [growth-classification extension](../../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/README.md)
+and [current Lean scope](../../mathematics/LEAN_API_SCOPE.md). The original source,
+the two maintained Core books and each evidence packet have distinct identities.
+
 ## Formal coverage of the frozen specification
 
 | Source P-ID status | Count |
@@ -38,6 +51,56 @@ The count does not establish an unconditional unified theory or empirical
 confirmation of its interpretations. A source P-ID, a Lean declaration, a
 compiler-generated constant and a book proposition are different units. New
 proofs and book chapters do not silently change the frozen 106-item registry.
+
+## Completed contracts and their evidence
+
+| Layer | Current disposition | Evidence / scope |
+|---|---|---|
+| Whole Core conditional mathematical contract | Completed in its declared mathematical classes; retained by later work | [Source-scope acceptance](../../formalization/ueot-core/docs/compression/theory_completion/unified_closure/whole_theory_formal_closure_v1/FINAL_ACCEPTANCE.md), adopted publication [PR #440](https://github.com/MurphyHoops/UEOT/pull/440). The acceptance document preserves its earlier source checkpoint; later adoption does not rewrite that historical receipt. |
+| Finite-wallet joint decision | Completed; original comparison class, resources and information retained | [PR #441 contract and execution](../../formalization/ueot-core/docs/compression/theory_completion/unified_closure/joint_decision_closure_v1/README.md) |
+| Decision representation | Completed; allowed-history sufficient representation and certified shared planning | [PR #442 contract and execution](../../formalization/ueot-core/docs/compression/theory_completion/unified_closure/decision_representation_closure_v1/README.md) |
+| S/G mechanism discrimination and regret | Completed under the frozen consumer and general bounds stated in its contract | [PR #443 contract, numerical trust and execution](../../formalization/ueot-core/docs/compression/theory_completion/unified_closure/mechanism_decision_closure_v1/README.md) |
+| Same-source Core definitive theory | Classified closure: conditional positive results, counterexamples, public narrowing and independent philosophical arguments | [PR #444 theory delivery](../../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_theory_closure_v1/README.md); PR #445 corrected reading entries |
+| Finite reader hardening | Completed, with historical editions and reviews preserved | [PR #446 freeze](../../mathematics/review/CORE_DEFINITIVE_FREEZE_2026-11-11/README.md) |
+| Exact growth parameters and internal attainment | Five exits complete; three new production modules publicly imported | [PR #447 source, theorems and validation](../../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/README.md) |
+
+### What the newest extension proves
+
+On the strictly positive 36-atom domain, set
+`k_c = s+b`, `k_b = s-delta+b+gamma`,
+`lambda_0 = k_c` and `lambda_1 = (1-q)k_b+q*k_c`.
+For any finite nonempty canonical initial population, the optimal expected
+population factor is `max(1, lambda_0, lambda_1)`.
+The full original observed-history Policy class is retained, including real
+joint randomization, stop and the actual rejected D/bloom request.
+
+The existing internal programs attain exactly when:
+
+- theta0: `gamma <= delta` and `k_c >= 1`;
+- theta1: `gamma >= delta` and `lambda_1 >= 1`.
+
+The actual Lean contract consists of all-finite-time positive exponential
+bounds, a common upper bound over all original policies and the least positive
+common exponential base. Each internal attainment result is connected to its
+own actual damaged founder, paid repair and inherited execution. Positive
+nth-root limits and limsup descriptions are written analytical consequences,
+not separate new Lean limit endpoints. Old Valid and selection-feedback
+conditions remain unchanged; zero-probability boundaries are outside this unit.
+
+### Proof and reading formats remain distinct
+
+| Claim / artifact | Current evidence level |
+|---|---|
+| Original Core and later conditional modules | Their exact source-matched Lean endpoints and recorded assumptions; no theorem-count substitute |
+| PR #447 growth extension | Three new modules, affected public entry and boundary consumer checked; 15 listed axiom prints, exact source probe and independent readers ([validation](../../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/VALIDATION.json)) |
+| PR #446 task-dependent 2/3/4 classes and `(s,b,bq)` rank-three example | Written proofs plus independent exact checks; no new complete dedicated Lean endpoints claimed |
+| Current Core books | PR #447 mathematics 241 pages and philosophy 98 pages; [navigation](../../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/PDF_NAVIGATION.json) and [selected-page visual review](../../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/VISUAL_REVIEW.json) complete |
+| Philosophical/normative positions | Independent arguments, commitments and objections; not inferred from growth optimality |
+| Natural empirical support | UNVERIFIED; neither Lean, synthetic enumeration nor native separated readers is external empirical confirmation |
+
+Use `import UEOT`, `import UEOT.V3.Compression`, or the specific
+TheoryCompletion entry to reach CoreTheoryClosure and its growth extension.
+`UEOT.V3` alone retains an older subset and does not export that module family.
 
 ## Compression and retained assumptions
 
@@ -78,21 +141,28 @@ The original philosophical paper and its source history are retained under
 [philosophy/source/](../../philosophy/source/), with historical root artifacts
 preserved at their existing addresses.
 
-## Current development focus
+## Historical records and future work
 
-1. Strengthen the mathematical connections between source contracts,
-   compression, objecthood, control, identity and statistical deployment;
-   state the assumptions consumed at each connection.
-2. Use explicit models and counterexamples to distinguish sufficient
-   conditions, existence claims, executable constructions and empirical
-   interpretations. In particular, certified deployment occupancy and
-   physical failure are separate quantities.
-3. Maintain the two books as independent works: use mathematical findings to
-   refine philosophical arguments, and use philosophical questions to expose
-   missing definitions or mathematical obligations.
-4. Validate implementation changes locally against the pinned package and
-   existing evidence before publishing the necessary commits and PRs.
+The earlier 49/57, 54/106 and 19/106 checkpoints, original active lanes,
+October scientific-port roadmaps and the [2026-10-26 audit](../../mathematics/review/MATHEMATICAL_CLOSURE_AUDIT_2026-10-26.md)
+remain evidence of their own dates. A historical OPEN or PLANNED field is not
+the current task queue. Original statements and failed attempts remain intact;
+later proof/adoption records resolve only the obligations they actually cover.
+This does not close all possible C1-C7 scientific questions or remove empirical
+UNVERIFIED status.
 
-The previous 49/57 checkpoint and its active-lane list are superseded. Current
-work proceeds from the completed frozen coverage record rather than reopening
-those items as pending.
+The source contract, PR #441-447 results and their termination conditions remain
+completed. In particular, exact growth classification is no longer a proposed
+next task. Further research must state a new question and bounded exits before
+implementation. Possible independent questions include dedicated formalization
+of the written representation supplements, an external assessment of the
+same-source contribution, or one explicitly chosen change in source assumptions;
+none is automatically a missing exit of the frozen Core.
+
+Current maintenance follows [repository branch governance](../../docs/REPOSITORY_BRANCH_GOVERNANCE.md)
+and [Core operations](../../formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md):
+reuse unchanged source-bound evidence, check the actual difference locally,
+review and merge one coherent change, and verify the resulting main. Historical
+cloud runs are not rerun merely to update prose. The [historical startup and
+handoff records](../../formalization/ueot-core/docs/NEW_CHAT_BOOTSTRAP.md) route
+back here before any old branch or task instruction is reused.

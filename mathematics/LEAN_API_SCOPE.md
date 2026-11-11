@@ -1,6 +1,8 @@
 ## 阅读说明：数学论证与 Lean 接口范围
 
-本说明逐项区分已发布的生产接口，以及已有书面证明但尚无专门形式端点的连接。本版生产接口包含有限观察编码与路径风险、逐行注册采样及共同 Good 组合的七个扩展模块。这里不是完整前提清单，调用仍须读取完整定理类型。
+本说明逐项区分已发布的生产接口，以及已有书面证明但尚无专门形式端点的连接。**当前数学合同采用至 PR #447（2026-11-11）**：Core 定本保持 `CLASSIFIED_CORE_CLOSED`，严格正概率域的增长分类已完成新增 Lean 合同；经验支持仍为 `UNVERIFIED`。调用仍须读取完整定理类型。
+
+当前总入口为[Core 定本](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_theory_closure_v1/README.md)及其后继[增长参数分类](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/README.md)。以下按来源批次保留接口演进：第 1 节的七个扩展模块和 666 模块统计是当时的范围，不是当前全仓统计；第 2 节已按后继证明更正旧书面义务的状态。冻结的 106 个 P-ID 不因这些后继模块重新编号。
 
 ### 1. 概率接口的实际范围
 
@@ -14,7 +16,7 @@
 | 选中事件包络 | 旧通用与 Viable 组合的 henvelope 对所有候选 c 成立 | 新 VariableRegisteredJointCheck 的 hfit、hcap、henvelope、hchecked 只在同一个 RegisteredCalibrationGood 上要求；任意 Y 版本的 hF 也限定于同一个 Good。henvelope 仅涉及该好记录实际选中的候选。共同微观失败事件 E 固定于采样前 |
 | 同 Good 消去占据 | 旧 ViableRegisteredJointCheck 已在内部证明同一 viableFamilyPolicy 的零占据 | ViableVariableRegisteredJointCheck.viable_registered_selected_joint_failure_on_good 的当前任意 Y 版本已编译；hinit、hfit、hF、henvelope、hchecked 限定同一个 VariableRegisteredJointCheck.RegisteredCalibrationGood。策略、参考路径、真实部署核和内部零占据使用同一个 viableFamilyPolicy，不另传 hcap |
 
-本版引用的 Core 生产范围为 666 模块（655 维护、11 改编）。原 #354 研究原型与首版有限 Y 的编译记录保留其历史身份，当前接口的源码与证据由文末入口定位。固定采样分配不包括数据后决定 N 的停止规则，也不包括任意相关单轨迹样本。
+该接口批次的历史 Core 生产范围为 666 模块（655 维护、11 改编），不代表当前总模块数。原 #354 研究原型与首版有限 Y 的编译记录保留其历史身份，当前接口的源码与证据由文末入口定位。固定采样分配不包括数据后决定 N 的停止规则，也不包括任意相关单轨迹样本。
 
 有限编码目前使用非计算定义与 Classical.choose；证明精确保持的是相对于所给有限载体源的 TV，不是所有外部参考之间的全局等距，也不是新可执行的通用编码算法。它与已经实际执行的有限支持 checker 分别说明。
 
@@ -22,11 +24,11 @@
 
 ### 2. 同源长期实例的范围
 
-数学书 §21.7 的 Lθ、显式 μθ、killed Qθ、参数边界、曾失败风险，以及受限 R 的值和完整 greedy 不变律族，给出完整书面推导。源 survivalMicroKernel、conflictRewardControl、真实安全固定点与一般控制/GOA/QSD 接口已经生产成立；这些新的完整参数化实例尚不称为已有专门 Lean 端点。
+数学书 §21.7 的 Lθ、显式 μθ、killed Qθ、参数边界、曾失败风险，以及受限 R 的值和完整 greedy 不变律族，最初在本说明登记为书面实例；后继 `ConflictParametricSource`、`Control`、`Stationary`、`QSD`、`Path`、`Infinite` 与 `CommonConsumer` 已接通真实源、完整策略路径及同一无限实验，不能继续列为当前未形式化。准确端点、来源绑定和验证见[原书具名来源包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/conflict_family_book_source_v1/RESULTS_AND_OPEN_OBLIGATIONS.md)及数学书 §39.71。
 
 InvariantLawGOA、CesaroLimitGOA、KilledQSDGOA 的定义描述给定核，本身没有最优性字段；GreedyInvariantGOASet 绑定所给模型的 Bellman-greedy。受限 R 的动作在 K 外不受保持 K 的蕴含约束，所以其完整 greedy 保持可见位，具有两个闭类及其全部混合不变律。仅从指定 K 初始的实际路径与恒定维持策略相同；不能宣称完整受限 greedy 与全空间恒定策略相同或有唯一全局 GOA。
 
-数学书 §35.7 的非零奖励 P-ALG 注册实例、额外程序表示与两个组织时钟的具体适配亦保留书面范围。该四状态源不展示严格历史记忆增益，第 37 章独立后验与死路见证仍需保留。
+数学书 §35.7 的非零奖励 P-ALG 注册实例、受保护程序表示、实际后验和两组织时钟恢复，已由 `ConflictOrganizationalSource` 的来源等式与实际消费者形式化。§35.4 的 8/5 等待／修复模型则由独立的 `WaitingRepairControl` 形式化，不能与 §21.7 的源混为同一过程。这些后继结果解除相应的旧书面义务；四状态源不展示严格历史记忆增益的边界保持，第 37 章独立后验与死路见证仍需保留。
 
 ### 3. 源码入口
 
@@ -61,3 +63,22 @@ InvariantLawGOA、CesaroLimitGOA、KilledQSDGOA 的定义描述给定核，本�
 `CoreRegenerativeSource` 从真实物理码、执行门、预付费用和 36 个局部噪声原子构造完整事件；`CoreRegenerativeRepair`/`Formation` 复用原修复秩与内生形成；`FiniteSourceGrowthControl`/`ControlPopulation` 消费旧 Perron 工厂并从实际人口推导任意允许历史核的有限条件超鞅与最优达到；`SourceCohortFeedback`/`CoreRegenerativeFeedback`/`FeedbackBoundary` 推出同源独立 cohort 的有限概率反馈及精确失效边界；`Population`/`Lineage` 从真实身份、父指针与标记连接有限 many-to-one；`Quotient` 保持完整事务与允许历史。
 
 新定理没有裸给 success、fitness、条件均值或最优性。C1、C5、连续过程与原 Price 源结果继续按原条件复用，不冒称此有限新消费者重新实例化了每条旧定理。本文的有限条件鞅不是新增无限路径 Mathlib Martingale 实例；期望增长、原身份续存、实际份额、加权谱系和规范价值分别定型。具体可检查声明与信任范围以[定理索引](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_theory_closure_v1/THEOREM_INDEX.md)及[公理审计](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_theory_closure_v1/checks/AXIOM_AUDIT.json)为准。
+
+
+## 2026-11-11：定本书面补充与新增增长分类的不同证明层次
+
+PR #446 的固定内部程序 2／3／4 任务表示分类，以及公开响应 `(s,b,bq)` 的局部秩三边界，已有书面证明和独立精确核对，**尚未新增各自完整的专门 Lean 端点**。它们使用的原事务、后继和矩来源已有形式证明；具体范围见[定本冻结包](review/CORE_DEFINITIVE_FREEZE_2026-11-11/README.md)。不能将固定程序预测等价当作完整外部控制等价。
+
+PR #447 另有三个新增生产模块，由原 `CoreTheoryClosure` 公共入口导出；它们不是上述书面分类的形式化替代。原定本的 13 个模块及原 106 个 P-ID 合同保留。
+
+| 模块 | 已证接口及责任 |
+|---|---|
+| [CoreRegenerativeGrowthClassification](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeGrowthClassification.lean) | `ProbabilityValid`；`valid_iff_probability_advantage_supercritical` 保留旧 `Valid` 的精确拆分；`optimalRate_formula` 给出 `max(1, λ₀, λ₁)`；原完整请求菜单的真实行界与所选行等式 |
+| [CoreRegenerativeGrowthPopulation](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeGrowthPopulation.lean) | 原 `Policy`、`State`、人口递归上的 `optimal_population_upper`、`optimal_hasExpectedGrowth`；公开可执行达到策略、实际继承程序桥和受损创始体收费 |
+| [CoreRegenerativeGrowthAttainment](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeGrowthAttainment.lean) | `optimalRate_isLeast_uniform_upper`；两个程序的 `false_program_attains_iff`、`true_program_attains_iff`；同一受损程序的 `same_damaged_program_repairs_and_attains_iff` 及亚临界失败、旧 `Valid` 特例 |
+
+基本域要求原 36 个噪声原子严格为正，不包含零概率端点。对有限非空 canonical 初始人口，一个常数同时覆盖所有原允许历史实随机联合请求策略及全部有限期限；达到者另有正的双边指数常数。`HasExpectedGrowth` 与最小统一底数是已证 Lean 合同；正次根极限、任意策略的 limsup 解释是书面分析推论，没有另称专门的 Lean 极限端点。
+
+两个程序的内部达到解释使用各自的真实受损创始体、`founder_program`、原继承不变式和 `programPolicy_positive_branch_is_internal`。一般 canonical 人口上的 `programPolicy theta` 首先是公开请求规则，不能无条件改称全体成员已带有该内部程序。原 stop、真实拒绝、观察、六单位事务、身份与遗传未改变；旧选择反馈常数和 cohort 合同未扩大。指数最优不等于每个有限期限人数最优，两个固定程序失优不等于所有含真实修复的政策失优。
+
+[实际 Lean 验证](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/LEAN_VALIDATION.json)绑定三个新模块、受影响公共入口和边界消费者的五次成功检查；15 个所列关键端点仅使用 `propext`、`Classical.choice`、`Quot.sound`。未重跑历史全工程，且该端点范围不改写 PR #443 已披露的数值信任。八组有理数源探针是独立交叉核对，不是新的 Lean 原生执行或经验验证。五项出口的实际状态见[最终验证](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/VALIDATION.json)；该研究单元已完成并停止自动扩题。

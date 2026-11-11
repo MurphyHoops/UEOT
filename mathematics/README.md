@@ -8,9 +8,12 @@
 - [PDF 阅读版](./UEOT_MATHEMATICS.pdf)
 - [LaTeX 排版源](./UEOT_MATHEMATICS.tex)
 - [编译记录](./BUILD.json)
-- [2026-10-26 数学闭环审查与执行方案](./review/MATHEMATICAL_CLOSURE_AUDIT_2026-10-26.md)：当前证明范围、未发布候选、详细数学义务与后续接续卡；独立于本书出版版本。
+- [当前 Core 状态与合同索引](../core/status/CURRENT.md)：已完成合同、后继增长分类、证明层次及当前阅读顺序。
+- [2026-10-26 数学闭环审查与执行方案](./review/MATHEMATICAL_CLOSURE_AUDIT_2026-10-26.md)：保留当时的证明范围、未发布候选和待办；后继完成事实以当前合同索引为准，不将旧接续卡重新当成任务队列。
 
-本版保留原 Core 第 0—31 章和附录，并逐章补充后续形式化的实际范围。第 32—38 章进一步展开层级压缩、关系缺陷与校准、客体和目的接口、同源统一闭合、实际占据、有限支持可行性与注册选择后的联合风险。历史代码与历史运行输出保留各自的身份；新的编译和检验不能替代旧的执行记录。
+本版保留原 Core 第 0—31 章和附录，并逐章补充后续形式化的实际范围。第 32—39 章及核心总论展开后继数学、来源与消费者；原 106 个 P-ID 不随新章节增加。历史代码与历史运行输出保留各自的身份；新的编译和检验不能替代旧的执行记录。
+
+当前 PR #447 产物为数学书 **241 页**、哲学书 **98 页**；对应[导航检查](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/PDF_NAVIGATION.json)和[选页视觉验收](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/VISUAL_REVIEW.json)已经完成。BUILD.json 保留构建阶段的原始回执，视觉验收由后继记录承担；下面各历史版本的页数与指纹保留其原时点。
 
 ## 2026-11-11：精确增长参数分类
 
@@ -54,7 +57,7 @@
 
 同一受损真实程序在六单位账本下恢复并达到期望增长率最优；实际继承树给出有限时域人口比例概率界，带标记真实谱系和合法表示相容分别证明。代码、完整运行记录、适用范围见[Core 定本交付包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_theory_closure_v1/README.md)。PDF 的实际构建与选页结果见[两书审查](../mathematics/review/CORE_THEORY_BOOKS_2026-11-08/ROOT_FINAL_VISUAL_REVIEW.json)。原全 Core 条件合同及 PR441、PR442、PR443 保持完成；经验支持 UNVERIFIED。
 
-2026-11-08 的[入口校正记录](../mathematics/review/CORE_READER_ENTRIES_2026-11-08/CORRECTION.json)绑定本版三个入口文件；PR444 的原交付清单继续绑定原发行提交。
+2026-11-08 的[入口校正记录](../mathematics/review/CORE_READER_ENTRIES_2026-11-08/CORRECTION.json)绑定当时版本的三个入口文件；PR444 的原交付清单继续绑定原发行提交，后继入口更新不回写该历史清单。
 
 ## 出版许可说明
 
