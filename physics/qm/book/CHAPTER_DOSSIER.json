@@ -877,9 +877,9 @@
       "use": "Prior quantum Doob/rare-trajectory transformation; not a substitute for chapter 66 proofs."
     }
   },
-  "recorded_at_utc": "2026-11-11T05:28:05.475471+00:00",
+  "recorded_at_utc": "2026-11-11T05:51:02.562595+00:00",
   "edition": "3.6",
-  "editorial_status": "LOCAL_VERIFIED_REMOTE_PENDING",
+  "editorial_status": "MAIN_VERIFIED",
   "canonical": {
     "path": "physics/qm/book/UEOT_PHYSICS.md",
     "sha256": "eabce172cd32773e21fa5373359d0fef7e52442b5d0368e11268130b4f89e921",
@@ -890,7 +890,7 @@
     "inherited_result_ids": 161,
     "new_result_ids": 12,
     "identity_scope": "INSTALLED_CANONICAL_BYTES",
-    "installation_status": "LOCAL_VERIFIED_REMOTE_PENDING"
+    "installation_status": "MAIN_VERIFIED"
   },
   "derivatives": {
     "pdf": {
@@ -904,7 +904,7 @@
         "sha256": "1c02521b519685405e99ac4cdb89a62cd2c6a2f9ada07c312adab2f6a0a8ebb5",
         "bytes": 1032
       },
-      "remote_publication_status": "PENDING",
+      "remote_publication_status": "MAIN_VERIFIED",
       "pages": 256
     },
     "latex": {
@@ -918,7 +918,7 @@
         "sha256": "1c02521b519685405e99ac4cdb89a62cd2c6a2f9ada07c312adab2f6a0a8ebb5",
         "bytes": 1032
       },
-      "remote_publication_status": "PENDING"
+      "remote_publication_status": "MAIN_VERIFIED"
     },
     "visual_review": {
       "path": "physics/qm/book/evidence/v3.6/pdf-visual-review.json",
@@ -24070,29 +24070,29 @@
     "scope": "Recursive public QM/Core source closure and eight proof configuration/verifier files; runtime sources have their own nine-file execution receipt.",
     "current_bytes_match_executed_bytes": true
   },
-  "current_release_stage": "LOCAL_VERIFIED_REMOTE_PENDING",
+  "current_release_stage": "MAIN_VERIFIED",
   "current_remote_code_identity": {
-    "state": "REMOTE_PENDING",
+    "source_pr": 450,
+    "source_commit": "4e5de046ad59eaa37856027af6547ca26bdea1c2",
+    "source_tree": "2d771dbb0b4b9be9e759bdde0a70cce3d58deddb",
+    "tested_main_commit": "dee9bfa68c5fc60bed2853356c28011b0d3c53a0",
+    "tested_main_tree": "2d771dbb0b4b9be9e759bdde0a70cce3d58deddb",
+    "pr_run": 42966223125,
+    "main_run": 42967294067,
+    "pr_ci_status": "success",
+    "main_ci_status": "success",
+    "source_and_tested_main_trees_equal": true,
+    "state": "MAIN_VERIFIED",
     "target_branch": "main",
-    "temporary_branch": "physics/finite-conditional-closure-20261111",
-    "authoring_baseline": "3d443ec29eb17af1fc00699a74e2d42d73516d81",
-    "source_commit": null,
-    "source_tree": null,
-    "source_pr": null,
-    "pr_run": null,
-    "tested_main_commit": null,
-    "tested_main_tree": null,
-    "main_run": null,
-    "pr_ci_status": "PENDING",
-    "main_ci_status": "PENDING",
     "receipt": "physics/qm/kernel/evidence/v31.10/integration-verification.json",
-    "artifact_zip_contents_verified": false,
+    "artifact_contents_inspected": true,
+    "raw_zip_bytes_hashed": false,
     "metadata_commit_is_not_ci_tested_source_commit": true
   },
   "book_source_manifest": {
     "path": "physics/qm/book/SOURCE_MANIFEST.json",
-    "sha256": "7fc7a6655c39c223565fd2823170db6799540317ab97d632afbd85f50a54b624",
-    "bytes": 12954
+    "bytes": 14113,
+    "sha256": "fa5bbc8f2df9ccc148488c7cc872aec444e7037bbaa4329a725fee9558e609f3"
   },
   "validation": {
     "status": "PASS_CURRENT_LOCAL_DOSSIER",
@@ -24188,11 +24188,13 @@
     "core_bindings_match_compiled_read_only_source_closure": [
       "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.pmf_barycenter_exists_iff_mem_convexHull"
     ],
-    "remote_verified": false,
+    "remote_verified": true,
     "whole_physics_formalized": false,
     "new_experimental_data": false,
     "historical_programs_reexecuted": false,
-    "current_dossier_hash_receipt": "physics/qm/book/evidence/v3.6/dossier-review.json"
+    "current_dossier_hash_receipt": "physics/qm/book/evidence/v3.6/remote-metadata-binding.json",
+    "remote_status": "MAIN_VERIFIED",
+    "original_local_dossier_review": "physics/qm/book/evidence/v3.6/dossier-review.json"
   },
   "completion_boundary": [
     "Finite-dimensional complex quantum structure, complete original instruments and a fixed accepted finite tree are explicit physical inputs.",
@@ -24211,8 +24213,8 @@
     "old_numbered_results_and_program_appendix": "PRESERVED",
     "pdf_build": "PASS_THREE_PASSES",
     "pdf_visual_review": "PASS_SCOPED_REVIEW",
-    "source_pr_ci": "PENDING",
-    "merged_main_ci": "PENDING"
+    "source_pr_ci": "PASS_ACTUAL_CURRENT_SOURCE",
+    "merged_main_ci": "PASS_ACTUAL_INDEPENDENT_PUSH"
   },
   "next_execution_contract": "physics/qm/UEOT_QM_EXECUTION_v31.10.md"
 }

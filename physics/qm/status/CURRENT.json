@@ -17,14 +17,14 @@
   "roadmap": "physics/qm/ROADMAP.md",
   "claim_ledger": "physics/qm/status/CLAIM_LEDGER_v31.10.json",
   "previous_claim_ledger": "physics/qm/status/CLAIM_LEDGER_v31.9.json",
-  "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING",
-  "local_checkpoint_state": "LOCAL_VERIFIED_REMOTE_PENDING",
+  "verification_state": "MAIN_VERIFIED",
+  "local_checkpoint_state": "PASS",
   "acceptance_marker": {
-    "state": "LOCAL_VERIFIED_REMOTE_PENDING",
+    "state": "MAIN_VERIFIED",
     "finite_conditional_chain": "CLOSED_WITH_STATED_ASSUMPTIONS",
     "local_machine_acceptance": "PASS",
     "book_local_acceptance": "PASS",
-    "integration_acceptance": "PENDING"
+    "integration_acceptance": "PASS"
   },
   "source_identity": {
     "manifest": {
@@ -40,7 +40,8 @@
     "source_count": 155,
     "source_set_sha256": "a3c49afc9a3e8be0fffd0892ffc5e175bd17a00eb7a93c6adad8febc4cb4e3a6",
     "scope": "Recursive public QM/Core source closure and eight proof configuration/verifier files; runtime sources have their own nine-file execution receipt.",
-    "current_bytes_match_executed_bytes": true
+    "current_bytes_match_executed_bytes": true,
+    "remote_readback": "PASS_FOR_SOURCE_AND_TESTED_MAIN"
   },
   "proof_receipt": "physics/qm/kernel/evidence/v31.10/lean-verification.json",
   "source_manifest": "physics/qm/kernel/evidence/v31.10/source-manifest.json",
@@ -75,27 +76,27 @@
     "Eight new public Lean modules, exact finite controls, numerical reference and chapter 66 are integrated with preserved historical objects."
   ],
   "integration": {
-    "state": "REMOTE_PENDING",
+    "source_pr": 450,
+    "source_commit": "4e5de046ad59eaa37856027af6547ca26bdea1c2",
+    "source_tree": "2d771dbb0b4b9be9e759bdde0a70cce3d58deddb",
+    "tested_main_commit": "dee9bfa68c5fc60bed2853356c28011b0d3c53a0",
+    "tested_main_tree": "2d771dbb0b4b9be9e759bdde0a70cce3d58deddb",
+    "pr_run": 42966223125,
+    "main_run": 42967294067,
+    "pr_ci_status": "success",
+    "main_ci_status": "success",
+    "source_and_tested_main_trees_equal": true,
+    "state": "MAIN_VERIFIED",
     "target_branch": "main",
-    "temporary_branch": "physics/finite-conditional-closure-20261111",
-    "authoring_baseline": "3d443ec29eb17af1fc00699a74e2d42d73516d81",
-    "source_commit": null,
-    "source_tree": null,
-    "source_pr": null,
-    "pr_run": null,
-    "tested_main_commit": null,
-    "tested_main_tree": null,
-    "main_run": null,
-    "pr_ci_status": "PENDING",
-    "main_ci_status": "PENDING",
     "receipt": "physics/qm/kernel/evidence/v31.10/integration-verification.json",
-    "artifact_zip_contents_verified": false,
+    "artifact_contents_inspected": true,
+    "raw_zip_bytes_hashed": false,
     "metadata_commit_is_not_ci_tested_source_commit": true
   },
   "book": {
     "title": "UEOT物理学",
     "edition": "3.6",
-    "state": "LOCAL_VERIFIED_REMOTE_PENDING",
+    "state": "MAIN_VERIFIED",
     "canonical": "physics/qm/book/UEOT_PHYSICS.md",
     "pdf": "physics/qm/book/UEOT_PHYSICS.pdf",
     "latex": "physics/qm/book/UEOT_PHYSICS.tex",
@@ -128,7 +129,8 @@
       }
     },
     "whole_book_formalized": false,
-    "remote_publication": "PENDING"
+    "remote_publication": "MAIN_VERIFIED",
+    "remote_release_receipt": "physics/qm/kernel/evidence/v31.10/integration-verification.json"
   },
   "scope_limits": [
     "Finite-dimensional complex quantum structure, complete original instruments and a fixed accepted finite tree are explicit physical inputs.",
@@ -146,11 +148,10 @@
     "General unbounded conditioning, coherent controllers, continuous-variable and QFT limits."
   ],
   "next_execution": {
-    "status": "REMOTE_PUBLICATION_PENDING",
-    "current_remaining_work": [
-      "Publish this exact source branch, inspect actual PR CI, merge, inspect independent main CI and reconcile frozen bytes.",
-      "Record completed remote identities in a separate metadata-only follow-up."
-    ]
+    "status": "FINITE_CONDITIONAL_CHAIN_COMPLETE",
+    "current_contract_status": "COMPLETE",
+    "current_remaining_work": [],
+    "next_research": "Device-specific allowed instruments, observation permissions, independent calibration and measured resource costs; see ROADMAP."
   },
   "prior_publication_reconciliation": {
     "version": "v31.9",
@@ -177,5 +178,5 @@
   },
   "historical_claim_scope": "All 84 v31.9 claim objects and all 161 old book result objects are unchanged; present acceptance is recorded separately.",
   "new_hardware_data": false,
-  "metadata_updated_at_utc": "2026-11-11T05:28:05.475471+00:00"
+  "metadata_updated_at_utc": "2026-11-11T05:51:02.562595+00:00"
 }

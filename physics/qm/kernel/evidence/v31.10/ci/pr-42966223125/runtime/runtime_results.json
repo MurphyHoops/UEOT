@@ -1,0 +1,106 @@
+{
+  "schema": "ueot-qm.finite-conditioning-numerical-run/1",
+  "status": "PASS_NUMERICAL_REFERENCE_NOT_CERTIFIED_GENERAL_ALGORITHM",
+  "executed_at_utc": "2026-11-11T05:31:10.438031+00:00",
+  "versions": {
+    "numpy": "2.3.5",
+    "scipy": "1.17.0"
+  },
+  "source_sha256": {
+    "finite_conditioning.py": "33d573b3049538bedbcd7ff60f15e566fb17358f0b91d8f76a0d645f1ab0c6c4",
+    "fixtures.py": "6fcce554206764b9d018ab98dcc8f616ec3177d9238aa1fca87dfbdf7f9659f7",
+    "frozen_plan.json": "f80cf34c3f989c193938f02cc793eaf5e8da7f6905a0273b21df8d1acb6c7b70",
+    "positive_chain_plan.json": "904e8966dc099817bcedb3b414ef20e1740fc83236cc88e93a9f8e4e9e433e81",
+    "exact_witnesses.py": "0810858724eb7bba337dfb87c9f042113c64d3342eca8cb5767ebae69bfb2d5d",
+    "test_finite_conditioning.py": "02381404914b19e31dd866e8d8ede6b1171479cbd417dd85795fcf7d2ef371fd",
+    "run_reference.py": "e022757e7e1cc45497038d125cd01084b055251651e65b0beadf3d0ec7682678"
+  },
+  "plan_sha256": "f80cf34c3f989c193938f02cc793eaf5e8da7f6905a0273b21df8d1acb6c7b70",
+  "t3": {
+    "source_acceptance_probability": 0.028564453125,
+    "accepted_visible_leaves": 8,
+    "all_original_visible_leaves": 15,
+    "full_CQ_trace_distance_residual": 4.476556828224977e-16,
+    "maximum_completeness_residual": 9.937891504146011e-16,
+    "source_early_stop_cost": {
+      "acceptance_probability": 0.028564453125,
+      "attempts_per_output": 35.00854700854701,
+      "action_cost_per_attempt": 1.369140625,
+      "all_cost_per_attempt": 1.369140625,
+      "all_cost_per_output": 47.93162393162393,
+      "reset_convention": "charge only unsuccessful trials"
+    },
+    "best_scaled_filter_success_probability": 0.6213186011795317,
+    "all_space_implementation_available": "not inferred from formal CPTP legality",
+    "original_only_failure_probability_on_I_over_2": 0.71875,
+    "original_only_uniform_failure_lower_bound": 0.625,
+    "hidden_kraus_labels_in_records": false
+  },
+  "positive_complete_chain": {
+    "source_acceptance_probability": 0.125,
+    "initial_state_change_residual": 1.3018518929051675e-16,
+    "accepted_visible_records": 8,
+    "actual_allowed_randomization": {
+      "status": "NUMERICAL_FEASIBLE_MIXTURE",
+      "weights": {
+        "A0": 0.4999999999999999,
+        "A1": 0.4999999999999999
+      },
+      "residual": 2.220446049250313e-16,
+      "scope": "same weights on supplied fibre; one-step full-space labelled instruments",
+      "exact_certificate": false
+    },
+    "implemented_full_CQ_residual": 2.7755575615628914e-16,
+    "source_early_stop_cost": {
+      "acceptance_probability": 0.125,
+      "attempts_per_output": 8.0,
+      "action_cost_per_attempt": 1.75,
+      "all_cost_per_attempt": 1.75,
+      "all_cost_per_output": 14.0,
+      "reset_convention": "charge only unsuccessful trials"
+    },
+    "target_actual_Pauli_action_count": 2.999999999999999,
+    "extra_randomization_cost": "3*r",
+    "action_only_advantage_condition": "3*(1+r)<14",
+    "all_additional_costs": "unmeasured; no hardware advantage claim"
+  },
+  "singular_positive_mass": {
+    "p": 0.5,
+    "two_completion_CQ_distance": 0.0
+  },
+  "variable_early_stop_cost": {
+    "acceptance_probability": 0.75,
+    "attempts_per_output": 1.3333333333333333,
+    "action_cost_per_attempt": 1.5,
+    "all_cost_per_attempt": 1.5,
+    "all_cost_per_output": 2.0,
+    "reset_convention": "charge only unsuccessful trials"
+  },
+  "numerical_library_checks": {
+    "out_of_library": {
+      "status": "NUMERICAL_NO_FEASIBLE_MIXTURE",
+      "solver_status": 2,
+      "scope": "same weights on supplied fibre; one-step full-space labelled instruments",
+      "exact_certificate": false
+    },
+    "shared_observation": {
+      "status": "NUMERICAL_NO_FEASIBLE_MIXTURE",
+      "solver_status": 2,
+      "scope": "same weights on supplied fibre; one-step full-space labelled instruments",
+      "exact_certificate": false
+    },
+    "same_T3_original_only": {
+      "status": "NUMERICAL_NO_FEASIBLE_MIXTURE",
+      "solver_status": 2,
+      "scope": "same weights on supplied fibre; one-step full-space labelled instruments",
+      "exact_certificate": false
+    }
+  },
+  "limits": [
+    "all residuals and LP statuses are numerical, not exact certificates",
+    "the separate exact_witnesses.json contains exact finite symbolic checks",
+    "no universal parser or numerical eigensolver correctness theorem",
+    "preparation, reset, ancilla and calibration costs unmeasured",
+    "no real experiment, external-reference guarantee or new natural-law claim"
+  ]
+}

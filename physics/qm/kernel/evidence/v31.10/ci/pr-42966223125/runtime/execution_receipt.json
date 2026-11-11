@@ -1,0 +1,75 @@
+{
+  "schema": "ueot-qm.finite-reference-execution/1",
+  "status": "PASS",
+  "evidence_scope": "actual numerical/semantic tests and exact finite symbolic witnesses; not general Lean or hardware evidence",
+  "executed_at_utc": "2026-11-11T05:31:10.477556+00:00",
+  "source_directory": "/home/runner/work/UEOT/UEOT/physics/qm/conditioning",
+  "versions": {
+    "python": "3.12.16 (main, Oct 26 2026, 02:50:49) [GCC 13.3.0]",
+    "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "sympy": "1.14.0"
+  },
+  "source_sha256": {
+    "finite_conditioning.py": "33d573b3049538bedbcd7ff60f15e566fb17358f0b91d8f76a0d645f1ab0c6c4",
+    "fixtures.py": "6fcce554206764b9d018ab98dcc8f616ec3177d9238aa1fca87dfbdf7f9659f7",
+    "frozen_plan.json": "f80cf34c3f989c193938f02cc793eaf5e8da7f6905a0273b21df8d1acb6c7b70",
+    "positive_chain_plan.json": "904e8966dc099817bcedb3b414ef20e1740fc83236cc88e93a9f8e4e9e433e81",
+    "test_finite_conditioning.py": "02381404914b19e31dd866e8d8ede6b1171479cbd417dd85795fcf7d2ef371fd",
+    "exact_witnesses.py": "0810858724eb7bba337dfb87c9f042113c64d3342eca8cb5767ebae69bfb2d5d",
+    "run_reference.py": "e022757e7e1cc45497038d125cd01084b055251651e65b0beadf3d0ec7682678",
+    "verify_runtime.py": "1b230499b618274e549e79dbd084a06592be0d00e62c24addab1c9feb1b45692",
+    "README.md": "af47416ceb6d4dd596f937885b9a558de592416ff0f3151c20c029ff684fd031"
+  },
+  "source_unchanged_during_execution": true,
+  "gates": [
+    {
+      "name": "semantic_tests",
+      "status": "PASS",
+      "returncode": 0,
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+        "-m",
+        "unittest",
+        "-v",
+        "test_finite_conditioning.py"
+      ],
+      "started_at_utc": "2026-11-11T05:31:08.271130+00:00",
+      "seconds": 0.915918142999999,
+      "log": "semantic_tests.log",
+      "log_sha256": "1b864d605f15ba801019aa0b93e730088b7c3eb7082352e96e8e578de3edc84f"
+    },
+    {
+      "name": "exact_witnesses",
+      "status": "PASS",
+      "returncode": 0,
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+        "exact_witnesses.py",
+        "--output-dir",
+        "/tmp/ueot-qm-finite-conditioning"
+      ],
+      "started_at_utc": "2026-11-11T05:31:09.187087+00:00",
+      "seconds": 0.8830639819999959,
+      "log": "exact_witnesses.log",
+      "log_sha256": "fce1a0040f3688ea29f34229906e96bdd80349d17477e756e429b40043349423"
+    },
+    {
+      "name": "numerical_reference",
+      "status": "PASS",
+      "returncode": 0,
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+        "run_reference.py",
+        "--output-dir",
+        "/tmp/ueot-qm-finite-conditioning"
+      ],
+      "started_at_utc": "2026-11-11T05:31:10.070186+00:00",
+      "seconds": 0.4070705669999981,
+      "log": "numerical_reference.log",
+      "log_sha256": "1cf3f09efa6b217cf176b4596492adf97816faa6e8e0935b56ef0b355edf261b"
+    }
+  ],
+  "real_hardware_data": false
+}

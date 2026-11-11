@@ -1,0 +1,934 @@
+{
+  "schema": "ueot_qm.release_ci_verification.v1",
+  "status": "PASS",
+  "repository": "MurphyHoops/UEOT",
+  "run_id": 42967294067,
+  "label": "main",
+  "expected_head": "dee9bfa68c5fc60bed2853356c28011b0d3c53a0",
+  "expected_event": "push",
+  "local_head_at_verification": "dee9bfa68c5fc60bed2853356c28011b0d3c53a0",
+  "run": {
+    "id": 42967294067,
+    "name": "UEOT QM Kernel",
+    "node_id": "WFR_kwLORFmJQM8AAAAKAQzgcw",
+    "head_branch": "main",
+    "head_sha": "dee9bfa68c5fc60bed2853356c28011b0d3c53a0",
+    "path": ".github/workflows/ueot-qm.yml",
+    "display_title": "Merge pull request #450 from MurphyHoops/physics/finite-conditional-c…",
+    "run_number": 141,
+    "event": "push",
+    "status": "completed",
+    "conclusion": "success",
+    "workflow_id": 389473407,
+    "check_suite_id": 116360433901,
+    "check_suite_node_id": "CS_kwDORFmJQM8AAAAbF59Q7Q",
+    "url": "https://api.github.com/repos/MurphyHoops/UEOT/actions/runs/42967294067",
+    "html_url": "https://github.com/MurphyHoops/UEOT/actions/runs/42967294067",
+    "pull_requests": [],
+    "created_at": "2026-11-11T05:40:31Z",
+    "updated_at": "2026-11-11T05:50:37Z",
+    "actor": {
+      "login": "MurphyHoops",
+      "id": 86187309,
+      "node_id": "MDQ6VXNlcjg2MTg3MzA5",
+      "avatar_url": "https://avatars.githubusercontent.com/u/86187309?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/MurphyHoops",
+      "html_url": "https://github.com/MurphyHoops",
+      "followers_url": "https://api.github.com/users/MurphyHoops/followers",
+      "following_url": "https://api.github.com/users/MurphyHoops/following{/other_user}",
+      "gists_url": "https://api.github.com/users/MurphyHoops/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/MurphyHoops/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/MurphyHoops/subscriptions",
+      "organizations_url": "https://api.github.com/users/MurphyHoops/orgs",
+      "repos_url": "https://api.github.com/users/MurphyHoops/repos",
+      "events_url": "https://api.github.com/users/MurphyHoops/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/MurphyHoops/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "run_attempt": 1,
+    "referenced_workflows": [],
+    "run_started_at": "2026-11-11T05:40:31Z",
+    "triggering_actor": {
+      "login": "MurphyHoops",
+      "id": 86187309,
+      "node_id": "MDQ6VXNlcjg2MTg3MzA5",
+      "avatar_url": "https://avatars.githubusercontent.com/u/86187309?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/MurphyHoops",
+      "html_url": "https://github.com/MurphyHoops",
+      "followers_url": "https://api.github.com/users/MurphyHoops/followers",
+      "following_url": "https://api.github.com/users/MurphyHoops/following{/other_user}",
+      "gists_url": "https://api.github.com/users/MurphyHoops/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/MurphyHoops/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/MurphyHoops/subscriptions",
+      "organizations_url": "https://api.github.com/users/MurphyHoops/orgs",
+      "repos_url": "https://api.github.com/users/MurphyHoops/repos",
+      "events_url": "https://api.github.com/users/MurphyHoops/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/MurphyHoops/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "jobs_url": "https://api.github.com/repos/MurphyHoops/UEOT/actions/runs/42967294067/jobs",
+    "logs_url": "https://api.github.com/repos/MurphyHoops/UEOT/actions/runs/42967294067/logs",
+    "check_suite_url": "https://api.github.com/repos/MurphyHoops/UEOT/check-suites/116360433901",
+    "artifacts_url": "https://api.github.com/repos/MurphyHoops/UEOT/actions/runs/42967294067/artifacts",
+    "cancel_url": "https://api.github.com/repos/MurphyHoops/UEOT/actions/runs/42967294067/cancel",
+    "rerun_url": "https://api.github.com/repos/MurphyHoops/UEOT/actions/runs/42967294067/rerun",
+    "previous_attempt_url": null,
+    "workflow_url": "https://api.github.com/repos/MurphyHoops/UEOT/actions/workflows/389473407",
+    "head_commit": {
+      "id": "dee9bfa68c5fc60bed2853356c28011b0d3c53a0",
+      "tree_id": "2d771dbb0b4b9be9e759bdde0a70cce3d58deddb",
+      "message": "Merge pull request #450 from MurphyHoops/physics/finite-conditional-closure-20261111\n\nfeat(physics): close finite conditional quantum process chain",
+      "timestamp": "2026-11-11T05:40:28Z",
+      "author": {
+        "name": "MurphyHoops",
+        "email": "86187309+MurphyHoops@users.noreply.github.com"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com"
+      }
+    },
+    "repository": {
+      "id": 1146718528,
+      "node_id": "R_kgDORFmJQA",
+      "name": "UEOT",
+      "full_name": "MurphyHoops/UEOT",
+      "private": false,
+      "owner": {
+        "login": "MurphyHoops",
+        "id": 86187309,
+        "node_id": "MDQ6VXNlcjg2MTg3MzA5",
+        "avatar_url": "https://avatars.githubusercontent.com/u/86187309?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/MurphyHoops",
+        "html_url": "https://github.com/MurphyHoops",
+        "followers_url": "https://api.github.com/users/MurphyHoops/followers",
+        "following_url": "https://api.github.com/users/MurphyHoops/following{/other_user}",
+        "gists_url": "https://api.github.com/users/MurphyHoops/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/MurphyHoops/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/MurphyHoops/subscriptions",
+        "organizations_url": "https://api.github.com/users/MurphyHoops/orgs",
+        "repos_url": "https://api.github.com/users/MurphyHoops/repos",
+        "events_url": "https://api.github.com/users/MurphyHoops/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/MurphyHoops/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/MurphyHoops/UEOT",
+      "description": null,
+      "fork": false,
+      "url": "https://api.github.com/repos/MurphyHoops/UEOT",
+      "forks_url": "https://api.github.com/repos/MurphyHoops/UEOT/forks",
+      "keys_url": "https://api.github.com/repos/MurphyHoops/UEOT/keys{/key_id}",
+      "collaborators_url": "https://api.github.com/repos/MurphyHoops/UEOT/collaborators{/collaborator}",
+      "teams_url": "https://api.github.com/repos/MurphyHoops/UEOT/teams",
+      "hooks_url": "https://api.github.com/repos/MurphyHoops/UEOT/hooks",
+      "issue_events_url": "https://api.github.com/repos/MurphyHoops/UEOT/issues/events{/number}",
+      "events_url": "https://api.github.com/repos/MurphyHoops/UEOT/events",
+      "assignees_url": "https://api.github.com/repos/MurphyHoops/UEOT/assignees{/user}",
+      "branches_url": "https://api.github.com/repos/MurphyHoops/UEOT/branches{/branch}",
+      "tags_url": "https://api.github.com/repos/MurphyHoops/UEOT/tags",
+      "blobs_url": "https://api.github.com/repos/MurphyHoops/UEOT/git/blobs{/sha}",
+      "git_tags_url": "https://api.github.com/repos/MurphyHoops/UEOT/git/tags{/sha}",
+      "git_refs_url": "https://api.github.com/repos/MurphyHoops/UEOT/git/refs{/sha}",
+      "trees_url": "https://api.github.com/repos/MurphyHoops/UEOT/git/trees{/sha}",
+      "statuses_url": "https://api.github.com/repos/MurphyHoops/UEOT/statuses/{sha}",
+      "languages_url": "https://api.github.com/repos/MurphyHoops/UEOT/languages",
+      "stargazers_url": "https://api.github.com/repos/MurphyHoops/UEOT/stargazers",
+      "contributors_url": "https://api.github.com/repos/MurphyHoops/UEOT/contributors",
+      "subscribers_url": "https://api.github.com/repos/MurphyHoops/UEOT/subscribers",
+      "subscription_url": "https://api.github.com/repos/MurphyHoops/UEOT/subscription",
+      "commits_url": "https://api.github.com/repos/MurphyHoops/UEOT/commits{/sha}",
+      "git_commits_url": "https://api.github.com/repos/MurphyHoops/UEOT/git/commits{/sha}",
+      "comments_url": "https://api.github.com/repos/MurphyHoops/UEOT/comments{/number}",
+      "issue_comment_url": "https://api.github.com/repos/MurphyHoops/UEOT/issues/comments{/number}",
+      "contents_url": "https://api.github.com/repos/MurphyHoops/UEOT/contents/{+path}",
+      "compare_url": "https://api.github.com/repos/MurphyHoops/UEOT/compare/{base}...{head}",
+      "merges_url": "https://api.github.com/repos/MurphyHoops/UEOT/merges",
+      "archive_url": "https://api.github.com/repos/MurphyHoops/UEOT/{archive_format}{/ref}",
+      "downloads_url": "https://api.github.com/repos/MurphyHoops/UEOT/downloads",
+      "issues_url": "https://api.github.com/repos/MurphyHoops/UEOT/issues{/number}",
+      "pulls_url": "https://api.github.com/repos/MurphyHoops/UEOT/pulls{/number}",
+      "milestones_url": "https://api.github.com/repos/MurphyHoops/UEOT/milestones{/number}",
+      "notifications_url": "https://api.github.com/repos/MurphyHoops/UEOT/notifications{?since,all,participating}",
+      "labels_url": "https://api.github.com/repos/MurphyHoops/UEOT/labels{/name}",
+      "releases_url": "https://api.github.com/repos/MurphyHoops/UEOT/releases{/id}",
+      "deployments_url": "https://api.github.com/repos/MurphyHoops/UEOT/deployments"
+    },
+    "head_repository": {
+      "id": 1146718528,
+      "node_id": "R_kgDORFmJQA",
+      "name": "UEOT",
+      "full_name": "MurphyHoops/UEOT",
+      "private": false,
+      "owner": {
+        "login": "MurphyHoops",
+        "id": 86187309,
+        "node_id": "MDQ6VXNlcjg2MTg3MzA5",
+        "avatar_url": "https://avatars.githubusercontent.com/u/86187309?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/MurphyHoops",
+        "html_url": "https://github.com/MurphyHoops",
+        "followers_url": "https://api.github.com/users/MurphyHoops/followers",
+        "following_url": "https://api.github.com/users/MurphyHoops/following{/other_user}",
+        "gists_url": "https://api.github.com/users/MurphyHoops/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/MurphyHoops/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/MurphyHoops/subscriptions",
+        "organizations_url": "https://api.github.com/users/MurphyHoops/orgs",
+        "repos_url": "https://api.github.com/users/MurphyHoops/repos",
+        "events_url": "https://api.github.com/users/MurphyHoops/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/MurphyHoops/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/MurphyHoops/UEOT",
+      "description": null,
+      "fork": false,
+      "url": "https://api.github.com/repos/MurphyHoops/UEOT",
+      "forks_url": "https://api.github.com/repos/MurphyHoops/UEOT/forks",
+      "keys_url": "https://api.github.com/repos/MurphyHoops/UEOT/keys{/key_id}",
+      "collaborators_url": "https://api.github.com/repos/MurphyHoops/UEOT/collaborators{/collaborator}",
+      "teams_url": "https://api.github.com/repos/MurphyHoops/UEOT/teams",
+      "hooks_url": "https://api.github.com/repos/MurphyHoops/UEOT/hooks",
+      "issue_events_url": "https://api.github.com/repos/MurphyHoops/UEOT/issues/events{/number}",
+      "events_url": "https://api.github.com/repos/MurphyHoops/UEOT/events",
+      "assignees_url": "https://api.github.com/repos/MurphyHoops/UEOT/assignees{/user}",
+      "branches_url": "https://api.github.com/repos/MurphyHoops/UEOT/branches{/branch}",
+      "tags_url": "https://api.github.com/repos/MurphyHoops/UEOT/tags",
+      "blobs_url": "https://api.github.com/repos/MurphyHoops/UEOT/git/blobs{/sha}",
+      "git_tags_url": "https://api.github.com/repos/MurphyHoops/UEOT/git/tags{/sha}",
+      "git_refs_url": "https://api.github.com/repos/MurphyHoops/UEOT/git/refs{/sha}",
+      "trees_url": "https://api.github.com/repos/MurphyHoops/UEOT/git/trees{/sha}",
+      "statuses_url": "https://api.github.com/repos/MurphyHoops/UEOT/statuses/{sha}",
+      "languages_url": "https://api.github.com/repos/MurphyHoops/UEOT/languages",
+      "stargazers_url": "https://api.github.com/repos/MurphyHoops/UEOT/stargazers",
+      "contributors_url": "https://api.github.com/repos/MurphyHoops/UEOT/contributors",
+      "subscribers_url": "https://api.github.com/repos/MurphyHoops/UEOT/subscribers",
+      "subscription_url": "https://api.github.com/repos/MurphyHoops/UEOT/subscription",
+      "commits_url": "https://api.github.com/repos/MurphyHoops/UEOT/commits{/sha}",
+      "git_commits_url": "https://api.github.com/repos/MurphyHoops/UEOT/git/commits{/sha}",
+      "comments_url": "https://api.github.com/repos/MurphyHoops/UEOT/comments{/number}",
+      "issue_comment_url": "https://api.github.com/repos/MurphyHoops/UEOT/issues/comments{/number}",
+      "contents_url": "https://api.github.com/repos/MurphyHoops/UEOT/contents/{+path}",
+      "compare_url": "https://api.github.com/repos/MurphyHoops/UEOT/compare/{base}...{head}",
+      "merges_url": "https://api.github.com/repos/MurphyHoops/UEOT/merges",
+      "archive_url": "https://api.github.com/repos/MurphyHoops/UEOT/{archive_format}{/ref}",
+      "downloads_url": "https://api.github.com/repos/MurphyHoops/UEOT/downloads",
+      "issues_url": "https://api.github.com/repos/MurphyHoops/UEOT/issues{/number}",
+      "pulls_url": "https://api.github.com/repos/MurphyHoops/UEOT/pulls{/number}",
+      "milestones_url": "https://api.github.com/repos/MurphyHoops/UEOT/milestones{/number}",
+      "notifications_url": "https://api.github.com/repos/MurphyHoops/UEOT/notifications{?since,all,participating}",
+      "labels_url": "https://api.github.com/repos/MurphyHoops/UEOT/labels{/name}",
+      "releases_url": "https://api.github.com/repos/MurphyHoops/UEOT/releases{/id}",
+      "deployments_url": "https://api.github.com/repos/MurphyHoops/UEOT/deployments"
+    }
+  },
+  "jobs": [
+    {
+      "id": 130347357543,
+      "run_id": 42967294067,
+      "workflow_name": "UEOT QM Kernel",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/MurphyHoops/UEOT/actions/runs/42967294067",
+      "run_attempt": 1,
+      "node_id": "CR_kwDORFmJQM8AAAAeWU7VZw",
+      "head_sha": "dee9bfa68c5fc60bed2853356c28011b0d3c53a0",
+      "url": "https://api.github.com/repos/MurphyHoops/UEOT/actions/jobs/130347357543",
+      "html_url": "https://github.com/MurphyHoops/UEOT/actions/runs/42967294067/job/130347357543",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-11T05:40:31Z",
+      "started_at": "2026-11-11T05:40:34Z",
+      "completed_at": "2026-11-11T05:50:37Z",
+      "name": "lean",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-11T05:40:35Z",
+          "completed_at": "2026-11-11T05:40:36Z"
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-11T05:40:36Z",
+          "completed_at": "2026-11-11T05:40:41Z"
+        },
+        {
+          "name": "Record source identity",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-11T05:40:41Z",
+          "completed_at": "2026-11-11T05:40:41Z"
+        },
+        {
+          "name": "Check inherited dependency lock",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-11T05:40:41Z",
+          "completed_at": "2026-11-11T05:40:41Z"
+        },
+        {
+          "name": "Install and verify official pinned Lean",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-11T05:40:41Z",
+          "completed_at": "2026-11-11T05:40:51Z"
+        },
+        {
+          "name": "Restore pinned dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-11T05:40:51Z",
+          "completed_at": "2026-11-11T05:41:30Z"
+        },
+        {
+          "name": "Restore Mathlib proof cache",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-11T05:41:30Z",
+          "completed_at": "2026-11-11T05:41:47Z"
+        },
+        {
+          "name": "Save pinned dependency cache",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 8,
+          "started_at": "2026-11-11T05:41:47Z",
+          "completed_at": "2026-11-11T05:41:47Z"
+        },
+        {
+          "name": "Reject proof escapes",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-11T05:41:47Z",
+          "completed_at": "2026-11-11T05:41:47Z"
+        },
+        {
+          "name": "Build all QM proofs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-11T05:41:47Z",
+          "completed_at": "2026-11-11T05:47:10Z"
+        },
+        {
+          "name": "Audit theorem axioms",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-11T05:47:10Z",
+          "completed_at": "2026-11-11T05:47:16Z"
+        },
+        {
+          "name": "Verify generated exact certificates and false witnesses",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-11-11T05:47:16Z",
+          "completed_at": "2026-11-11T05:48:37Z"
+        },
+        {
+          "name": "Verify retained finite and quantum Lean witnesses",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-11-11T05:48:37Z",
+          "completed_at": "2026-11-11T05:50:31Z"
+        },
+        {
+          "name": "Archive proof evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-11-11T05:50:31Z",
+          "completed_at": "2026-11-11T05:50:33Z"
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 28,
+          "started_at": "2026-11-11T05:50:33Z",
+          "completed_at": "2026-11-11T05:50:33Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29,
+          "started_at": "2026-11-11T05:50:33Z",
+          "completed_at": "2026-11-11T05:50:33Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/MurphyHoops/UEOT/check-runs/130347357543",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000007392,
+      "runner_name": "GitHub Actions 1000007392",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 130347357914,
+      "run_id": 42967294067,
+      "workflow_name": "UEOT QM Kernel",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/MurphyHoops/UEOT/actions/runs/42967294067",
+      "run_attempt": 1,
+      "node_id": "CR_kwDORFmJQM8AAAAeWU7W2g",
+      "head_sha": "dee9bfa68c5fc60bed2853356c28011b0d3c53a0",
+      "url": "https://api.github.com/repos/MurphyHoops/UEOT/actions/jobs/130347357914",
+      "html_url": "https://github.com/MurphyHoops/UEOT/actions/runs/42967294067/job/130347357914",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-11T05:40:31Z",
+      "started_at": "2026-11-11T05:40:34Z",
+      "completed_at": "2026-11-11T05:41:11Z",
+      "name": "runtime",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-11T05:40:36Z",
+          "completed_at": "2026-11-11T05:40:37Z"
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-11T05:40:37Z",
+          "completed_at": "2026-11-11T05:40:44Z"
+        },
+        {
+          "name": "Install Python",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-11T05:40:44Z",
+          "completed_at": "2026-11-11T05:40:44Z"
+        },
+        {
+          "name": "Install finite conditioning reference dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-11T05:40:44Z",
+          "completed_at": "2026-11-11T05:41:00Z"
+        },
+        {
+          "name": "Verify finite conditioning source, records, implementations and costs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-11T05:41:00Z",
+          "completed_at": "2026-11-11T05:41:02Z"
+        },
+        {
+          "name": "Verify canonical physics book structure",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-11T05:41:02Z",
+          "completed_at": "2026-11-11T05:41:02Z"
+        },
+        {
+          "name": "Verify exact kernel and independent negative controls",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-11T05:41:02Z",
+          "completed_at": "2026-11-11T05:41:04Z"
+        },
+        {
+          "name": "Run complete kernel example",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-11T05:41:04Z",
+          "completed_at": "2026-11-11T05:41:04Z"
+        },
+        {
+          "name": "Run representation and spectrum witnesses",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-11T05:41:04Z",
+          "completed_at": "2026-11-11T05:41:04Z"
+        },
+        {
+          "name": "Export exact Lean certificate examples",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-11T05:41:04Z",
+          "completed_at": "2026-11-11T05:41:05Z"
+        },
+        {
+          "name": "Run mixture and persistence witnesses",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-11T05:41:05Z",
+          "completed_at": "2026-11-11T05:41:05Z"
+        },
+        {
+          "name": "Archive runtime evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-11-11T05:41:05Z",
+          "completed_at": "2026-11-11T05:41:07Z"
+        },
+        {
+          "name": "Post Install Python",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-11-11T05:41:07Z",
+          "completed_at": "2026-11-11T05:41:07Z"
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24,
+          "started_at": "2026-11-11T05:41:07Z",
+          "completed_at": "2026-11-11T05:41:07Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25,
+          "started_at": "2026-11-11T05:41:07Z",
+          "completed_at": "2026-11-11T05:41:07Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/MurphyHoops/UEOT/check-runs/130347357914",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000007393,
+      "runner_name": "GitHub Actions 1000007393",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ],
+  "runtime": {
+    "status": "PASS",
+    "semantic_tests": 19,
+    "exact_finite_checks": 95,
+    "source_files": 9,
+    "versions": {
+      "python": "3.12.16 (main, Oct 26 2026, 02:50:49) [GCC 13.3.0]",
+      "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "numpy": "2.3.5",
+      "scipy": "1.17.0",
+      "sympy": "1.14.0"
+    },
+    "executed_at_utc": "2026-11-11T05:41:02.859856+00:00",
+    "source_sha256": {
+      "finite_conditioning.py": "33d573b3049538bedbcd7ff60f15e566fb17358f0b91d8f76a0d645f1ab0c6c4",
+      "fixtures.py": "6fcce554206764b9d018ab98dcc8f616ec3177d9238aa1fca87dfbdf7f9659f7",
+      "frozen_plan.json": "f80cf34c3f989c193938f02cc793eaf5e8da7f6905a0273b21df8d1acb6c7b70",
+      "positive_chain_plan.json": "904e8966dc099817bcedb3b414ef20e1740fc83236cc88e93a9f8e4e9e433e81",
+      "test_finite_conditioning.py": "02381404914b19e31dd866e8d8ede6b1171479cbd417dd85795fcf7d2ef371fd",
+      "exact_witnesses.py": "0810858724eb7bba337dfb87c9f042113c64d3342eca8cb5767ebae69bfb2d5d",
+      "run_reference.py": "e022757e7e1cc45497038d125cd01084b055251651e65b0beadf3d0ec7682678",
+      "verify_runtime.py": "1b230499b618274e549e79dbd084a06592be0d00e62c24addab1c9feb1b45692",
+      "README.md": "af47416ceb6d4dd596f937885b9a558de592416ff0f3151c20c029ff684fd031"
+    },
+    "gates": [
+      {
+        "name": "semantic_tests",
+        "status": "PASS",
+        "returncode": 0,
+        "command": [
+          "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+          "-m",
+          "unittest",
+          "-v",
+          "test_finite_conditioning.py"
+        ],
+        "started_at_utc": "2026-11-11T05:41:00.517277+00:00",
+        "seconds": 0.6407190420000006,
+        "log": "semantic_tests.log",
+        "log_sha256": "8a3fa25166c08c8591f071d2e153259217519f2bebf67a45a9f70a29ef9cac2d"
+      },
+      {
+        "name": "exact_witnesses",
+        "status": "PASS",
+        "returncode": 0,
+        "command": [
+          "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+          "exact_witnesses.py",
+          "--output-dir",
+          "/tmp/ueot-qm-finite-conditioning"
+        ],
+        "started_at_utc": "2026-11-11T05:41:01.158041+00:00",
+        "seconds": 1.185898850000001,
+        "log": "exact_witnesses.log",
+        "log_sha256": "fce1a0040f3688ea29f34229906e96bdd80349d17477e756e429b40043349423"
+      },
+      {
+        "name": "numerical_reference",
+        "status": "PASS",
+        "returncode": 0,
+        "command": [
+          "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+          "run_reference.py",
+          "--output-dir",
+          "/tmp/ueot-qm-finite-conditioning"
+        ],
+        "started_at_utc": "2026-11-11T05:41:02.343983+00:00",
+        "seconds": 0.5154401979999932,
+        "log": "numerical_reference.log",
+        "log_sha256": "1cf3f09efa6b217cf176b4596492adf97816faa6e8e0935b56ef0b355edf261b"
+      }
+    ],
+    "evidence_scope": "actual numerical/semantic tests and exact finite symbolic witnesses; not general Lean or hardware evidence"
+  },
+  "lean": {
+    "status": "PASS",
+    "named_axiom_reports": 1285,
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "axiom_requests_sha256": "8f4cf9ab1b8eaeb79f7019fc91704fc9984a88cbaa0062f5a15514971492f071",
+    "source_identity_hashed_files": 53,
+    "scope": "actual complete public build and 1285 requested named declarations; not a census of compiler-generated constants"
+  },
+  "artifacts": {
+    "runtime": {
+      "github_metadata": {
+        "id": 13832260221,
+        "node_id": "MDg6QXJ0aWZhY3QxMzgzMjI2MDIyMQ==",
+        "name": "ueot-qm-runtime-42967294067",
+        "size_in_bytes": 22971,
+        "url": "https://api.github.com/repos/MurphyHoops/UEOT/actions/artifacts/13832260221",
+        "archive_download_url": "https://api.github.com/repos/MurphyHoops/UEOT/actions/artifacts/13832260221/zip",
+        "expired": false,
+        "digest": "sha256:f3c6414e81d66729b4181ca0345b81e5e51bf4aed5cb33aebdb38a1994bfc4ff",
+        "created_at": "2026-11-11T05:41:07Z",
+        "updated_at": "2026-11-11T05:41:07Z",
+        "expires_at": "2026-12-11T05:41:05Z",
+        "workflow_run": {
+          "id": 42967294067,
+          "repository_id": 1146718528,
+          "head_repository_id": 1146718528,
+          "head_branch": "main",
+          "head_sha": "dee9bfa68c5fc60bed2853356c28011b0d3c53a0"
+        }
+      },
+      "download_mode": "FRESH_SUCCESSFUL_GH_DOWNLOAD",
+      "local_directory": ".physics-staging/ci/main-42967294067/runtime",
+      "downloaded_file_count": 11,
+      "hash_scope": "SHA256 of every extracted file; remote API digest is retained as metadata, not a locally verified raw-zip hash"
+    },
+    "lean": {
+      "github_metadata": {
+        "id": 13831689760,
+        "node_id": "MDg6QXJ0aWZhY3QxMzgzMTY4OTc2MA==",
+        "name": "ueot-qm-lean-42967294067",
+        "size_in_bytes": 147289,
+        "url": "https://api.github.com/repos/MurphyHoops/UEOT/actions/artifacts/13831689760",
+        "archive_download_url": "https://api.github.com/repos/MurphyHoops/UEOT/actions/artifacts/13831689760/zip",
+        "expired": false,
+        "digest": "sha256:5541167fd6e89d327cbdd064dea5aa36c599ba8df00c00a7ecf9a80025ff6ace",
+        "created_at": "2026-11-11T05:50:33Z",
+        "updated_at": "2026-11-11T05:50:33Z",
+        "expires_at": "2026-12-11T05:50:32Z",
+        "workflow_run": {
+          "id": 42967294067,
+          "repository_id": 1146718528,
+          "head_repository_id": 1146718528,
+          "head_branch": "main",
+          "head_sha": "dee9bfa68c5fc60bed2853356c28011b0d3c53a0"
+        }
+      },
+      "download_mode": "FRESH_SUCCESSFUL_GH_DOWNLOAD",
+      "local_directory": ".physics-staging/ci/main-42967294067/lean",
+      "downloaded_file_count": 59,
+      "hash_scope": "SHA256 of every extracted file; remote API digest is retained as metadata, not a locally verified raw-zip hash"
+    }
+  },
+  "counts": {
+    "ci_jobs": 2,
+    "runtime_semantic_tests": 19,
+    "runtime_exact_finite_checks": 95,
+    "runtime_source_files": 9,
+    "requested_named_axiom_reports": 1285
+  },
+  "count_scope": "19 actual unittest tests; 95 exact finite symbolic checks; 9 runtime source files; 1285 named axiom requests/reports. No new count of the separate 155-file proof closure is inferred.",
+  "head_sha": "dee9bfa68c5fc60bed2853356c28011b0d3c53a0",
+  "event": "push",
+  "run_url": "https://github.com/MurphyHoops/UEOT/actions/runs/42967294067",
+  "run_attempt": 1,
+  "verified_at_utc": "2026-11-11T05:51:02.459259+00:00",
+  "commands": [
+    {
+      "command": [
+        "git",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "gh",
+        "api",
+        "--method",
+        "GET",
+        "repos/MurphyHoops/UEOT/actions/runs/42967294067"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "gh",
+        "api",
+        "--method",
+        "GET",
+        "repos/MurphyHoops/UEOT/actions/runs/42967294067/attempts/1/jobs?per_page=100&page=1"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "gh",
+        "api",
+        "--method",
+        "GET",
+        "repos/MurphyHoops/UEOT/actions/runs/42967294067/artifacts?per_page=100&page=1"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "gh",
+        "run",
+        "download",
+        "42967294067",
+        "--repo",
+        "MurphyHoops/UEOT",
+        "--name",
+        "ueot-qm-runtime-42967294067",
+        "--dir",
+        "/Users/murphyhoops/Documents/ueot-physics-closure-20261111/.physics-staging/ci/main-42967294067/runtime"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "git",
+        "show",
+        "dee9bfa68c5fc60bed2853356c28011b0d3c53a0:physics/qm/conditioning/README.md"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "git",
+        "show",
+        "dee9bfa68c5fc60bed2853356c28011b0d3c53a0:physics/qm/conditioning/exact_witnesses.py"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "git",
+        "show",
+        "dee9bfa68c5fc60bed2853356c28011b0d3c53a0:physics/qm/conditioning/finite_conditioning.py"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "git",
+        "show",
+        "dee9bfa68c5fc60bed2853356c28011b0d3c53a0:physics/qm/conditioning/fixtures.py"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "git",
+        "show",
+        "dee9bfa68c5fc60bed2853356c28011b0d3c53a0:physics/qm/conditioning/frozen_plan.json"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "git",
+        "show",
+        "dee9bfa68c5fc60bed2853356c28011b0d3c53a0:physics/qm/conditioning/positive_chain_plan.json"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "git",
+        "show",
+        "dee9bfa68c5fc60bed2853356c28011b0d3c53a0:physics/qm/conditioning/run_reference.py"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "git",
+        "show",
+        "dee9bfa68c5fc60bed2853356c28011b0d3c53a0:physics/qm/conditioning/test_finite_conditioning.py"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "git",
+        "show",
+        "dee9bfa68c5fc60bed2853356c28011b0d3c53a0:physics/qm/conditioning/verify_runtime.py"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "gh",
+        "run",
+        "download",
+        "42967294067",
+        "--repo",
+        "MurphyHoops/UEOT",
+        "--name",
+        "ueot-qm-lean-42967294067",
+        "--dir",
+        "/Users/murphyhoops/Documents/ueot-physics-closure-20261111/.physics-staging/ci/main-42967294067/lean"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "git",
+        "show",
+        "dee9bfa68c5fc60bed2853356c28011b0d3c53a0:formalization/ueot-qm/scripts/AxiomAudit.lean"
+      ],
+      "returncode": 0
+    }
+  ],
+  "verifier_sha256": "04fd93efc04be4fe2139588a9a9f76566541e549e826620ad4c5ac3063eb13f6",
+  "raw_zip_hash_computed": false,
+  "scientific_gates_reexecuted": false,
+  "copied_raw_evidence": [
+    {
+      "path": "runtime/execution_receipt.json",
+      "sha256": "030d57d745cb6fe5d4d93d477d7c6f6a105f1418e1515f868344a2485ac58a09",
+      "artifact_relative_path": "ueot-qm-finite-conditioning/execution_receipt.json"
+    },
+    {
+      "path": "runtime/semantic_tests.log",
+      "sha256": "8a3fa25166c08c8591f071d2e153259217519f2bebf67a45a9f70a29ef9cac2d",
+      "artifact_relative_path": "ueot-qm-finite-conditioning/semantic_tests.log"
+    },
+    {
+      "path": "runtime/exact_witnesses.json",
+      "sha256": "26f47f9a501f6cf9567e686b310523cd01ae73c91801655e202010402e2c86ad",
+      "artifact_relative_path": "ueot-qm-finite-conditioning/exact_witnesses.json"
+    },
+    {
+      "path": "runtime/exact_witnesses.log",
+      "sha256": "fce1a0040f3688ea29f34229906e96bdd80349d17477e756e429b40043349423",
+      "artifact_relative_path": "ueot-qm-finite-conditioning/exact_witnesses.log"
+    },
+    {
+      "path": "runtime/runtime_results.json",
+      "sha256": "ffe1a3b6c32e20d52718d572a5251f1b398c18ea4475b1b5344f0ae1ce462b64",
+      "artifact_relative_path": "ueot-qm-finite-conditioning/runtime_results.json"
+    },
+    {
+      "path": "runtime/numerical_reference.log",
+      "sha256": "1cf3f09efa6b217cf176b4596492adf97816faa6e8e0935b56ef0b355edf261b",
+      "artifact_relative_path": "ueot-qm-finite-conditioning/numerical_reference.log"
+    },
+    {
+      "path": "lean/source-identity.log",
+      "sha256": "108f7dfac2dc76936c4401774801b2c5dd4cf31ef3e59b5b185b768b176d940e",
+      "artifact_relative_path": "UEOT/UEOT/formalization/ueot-qm/source-identity.log"
+    },
+    {
+      "path": "lean/lean-build.log",
+      "sha256": "cb85cfddcc674f02ba13a75cc3a77234f303e177a5b6a2220e6e172fac2f071a",
+      "artifact_relative_path": "UEOT/UEOT/formalization/ueot-qm/lean-build.log"
+    },
+    {
+      "path": "lean/axiom-audit.log",
+      "sha256": "b7284b9dbbd01626b81a35a5bbe056418515c137d0170e6b20a60b1f65e33892",
+      "artifact_relative_path": "UEOT/UEOT/formalization/ueot-qm/axiom-audit.log"
+    },
+    {
+      "path": "lean/proof-axioms.json",
+      "sha256": "a902bd1a7d4f7e00df6e71132451e7e981d0a4ac553d0956787841c3565677de",
+      "artifact_relative_path": "UEOT/UEOT/formalization/ueot-qm/proof-axioms.json"
+    },
+    {
+      "path": "lean/source-manifest.json",
+      "sha256": "8f3c2404b36795459ed43a53ea207560c25234e136d819f4122a52fcfbcc8444",
+      "artifact_relative_path": "UEOT/UEOT/formalization/ueot-qm/source-manifest.json"
+    },
+    {
+      "path": "lean/lean-install.log",
+      "sha256": "27b8e6e815842bab0d00f65108f9baa6a0a16058da67bdc06d26dbe2845e07e0",
+      "artifact_relative_path": "UEOT/UEOT/formalization/ueot-qm/lean-install.log"
+    },
+    {
+      "path": "lean/lake-manifest.json",
+      "sha256": "c4c658c455aaca9504eee020c16cb2fcec375b1c5d9a014adcf8f3f40897d4ff",
+      "artifact_relative_path": "UEOT/UEOT/formalization/ueot-qm/lake-manifest.json"
+    },
+    {
+      "path": "api/artifacts-page-1.json",
+      "sha256": "399743ec4ab993481fb99d2a96237e4e3c8f3c2cd009da7c94784886b2e959ba"
+    },
+    {
+      "path": "api/jobs-page-1.json",
+      "sha256": "406db9cc6fa9b75a88444a96e9a9594c83c161c41388b073ee17b5501bc842f3"
+    },
+    {
+      "path": "api/run.json",
+      "sha256": "46515600974795917089bb4ba90213c3acf24970c21cdf2c30dbf8fd2cad8891"
+    }
+  ],
+  "artifact_inventory_sha256": "fdfbc4e8e70b77f15f790117657294754773dcb1da61e68a07d94a5630929f7a"
+}
