@@ -26,7 +26,7 @@
 | 7. 重要数学内容有导读与解释 | PASS | 46 对经非作者复核的导读、第 39 章主题路径、[依赖总审查](ROOT_EDITORIAL_REVIEW.md)及既有完整证明 |
 | 8. 双语 PDF 实际构建与版面验收 | PASS | [实际构建/PDF 验收](BUILD_AND_PDF_ACCEPTANCE.md)，两次相同输入实际生成的 TeX/PDF 逐字节一致，578 页完整视觉覆盖与变页复验 |
 | 9. 参考文献真实、来源可追踪 | PASS | [15 项完整书目核验](BIBLIOGRAPHY_AUDIT.md)及[全外链补核](EXTERNAL_REFERENCE_SUPPLEMENT.md)：17 URL / 16 作品；访问层次分别记录 |
-| 10. GitHub PR 与准确交付身份 | PENDING_PUBLICATION | 本地全部内容已审定；远端提交和 PR 创建后补入确切身份，不提前冒称完成 |
+| 10. GitHub PR 与准确交付身份 | PASS | [PR #453](https://github.com/MurphyHoops/UEOT/pull/453) 已创建并回读；源码提交、实际作者、完整远端树及未触发云端检查的事实见 [GitHub 交付回执](GITHUB_DELIVERY.json) |
 
 ## 内容、语义与源码证据
 
@@ -52,3 +52,11 @@
 书目核验区分作者正文、出版社元数据及目录，没有宣称读过无法取得的付费全文。多智能体非作者交叉审查是本轮团队内部审阅；不等于外部人类同行评议。重大后续数学变更仍需要单独研究、消费者影响分析和新的证明验收。
 
 新材料的版权表达和历史 CC BY 授权边界见 [PUBLICATION_RIGHTS.md](../../PUBLICATION_RIGHTS.md)；根许可证、哲学、物理和共享出版配置保持原样。已有远端分支数量超过仓库治理上限的情况记在 [分支预检](BRANCH_PREFLIGHT.json)：依用户明确要求只建立这一出版分支，没有为整理数量删除其他研究分支。
+
+## 已完成的远端交付
+
+[PR #453](https://github.com/MurphyHoops/UEOT/pull/453) 已开放，回读时 `mergeable=true`、`mergeable_state=clean`；本轮没有合并。不可变的正文/构建/审计提交为 `a2756e163686717350bd21755ea6d33008c08cf9`，完整树为 `849426042fcf32dd05e00ae5c54448197269d387`。提交作者和提交者均为 `MurphyHoops <86187309+MurphyHoops@users.noreply.github.com>`；提交未签名，未冒称 GPG 验证。辅助编辑与审查身份已在提交及书中说明。
+
+正文及原审计提交的 100 个文件全部位于 mathematics；最终 PR 另增加 GitHub 回执，共 101 个路径；远端每个 blob 以及完整树与本地候选相同。本页、验收 JSON、GitHub 回执及校验清单的后续提交补齐真实 PR 身份，并修正一次已暂存文件未被清单枚举的工具错误：现以两个不可变提交的差异列出全部 97 个静态文件，而非对暂存区运行 `--modified`。正文、TeX、PDF、工具及静态审计证据均未改变。最终提交身份见 PR head。
+
+远端实际查询得到 0 个 check run、0 个 commit status。空状态的 `pending` 不能写成 CI 通过或失败；本轮未触发新的云端证明检查。实际出版构建和本地核验由上述原始回执承担。
