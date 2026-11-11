@@ -1,0 +1,68 @@
+% Publication typesetting template. See COPYRIGHT_AND_LICENSE.md.
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=26mm,headheight=15pt,headsep=8mm]{geometry}
+\usepackage{fontspec}
+\setmainfont{Liberation Serif}
+\setsansfont{Liberation Sans}
+\setmonofont[Scale=0.87]{DejaVu Sans Mono}
+\usepackage{amsmath,amssymb}
+\usepackage{microtype}
+\usepackage{setspace}
+\setstretch{1.12}
+\usepackage{longtable,booktabs,array,calc}
+\usepackage{needspace}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage[authoryear,round]{natbib}
+\usepackage{xcolor}
+\definecolor{linkblue}{HTML}{244A66}
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[unicode,colorlinks=true,allcolors=linkblue,bookmarksnumbered=true]{hyperref}
+\usepackage{xurl}
+\urlstyle{same}
+\hypersetup{pdftitle={$title$},pdfauthor={$author$},pdfsubject={A reconstruction of UEOT; version $version$}}
+\setlength{\parindent}{1.15em}
+\setlength{\parskip}{2pt}
+\setlength{\emergencystretch}{2em}
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
+\widowpenalty=10000
+\clubpenalty=10000
+\displaywidowpenalty=10000
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\providecommand{\passthrough}[1]{#1}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\footnotesize Qian: Objecthood and Purpose}
+\fancyhead[R]{\footnotesize Research article \textperiodcentered{} $version$}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.25pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\small\thepage}\renewcommand{\headrulewidth}{0pt}}
+\begin{document}
+\thispagestyle{plain}
+\begin{center}
+{\fontsize{21}{25}\selectfont\bfseries $title$\par}
+\vspace{11pt}
+{\large $author$\par}
+\vspace{3pt}
+{\small Independent Researcher\par}
+\vspace{6pt}
+{\small $date$ \textperiodcentered{} Version $version$\par}
+\end{center}
+\begin{abstract}
+\noindent $abstract$
+\end{abstract}
+\noindent{\small\textbf{Keywords:} $keywords$}
+\vspace{10pt}
+
+$body$
+
+\clearpage
+\begingroup
+\setstretch{1.0}
+\small
+\setlength{\bibsep}{6pt}
+\bibliographystyle{plainnat}
+\bibliography{references}
+\endgroup
+\end{document}
