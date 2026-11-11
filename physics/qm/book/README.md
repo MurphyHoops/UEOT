@@ -1,14 +1,144 @@
-# 《UEOT物理学》正式整合版 3.6
+# 《UEOT物理学》 / UEOT Physics
 
-作者：**钱德桂（Degui Qian）**。
+## 3.7 完整双语出版修订 / Complete bilingual revision
 
-正文连续覆盖第0–66章和附录A–F，67章、362小节、246稳定锚点、173项编号，实际PDF为256页。第66章新增11项命题与1项反例；原161项编号、11项原始来源记录和附录D程序字节保持原身份。
+本目录维护中文与完整英文对应本，均覆盖 **第0–66章、附录A–F、173个稳定结果**。
+本次工作最初基于3.5版的66章和161项结果；交付前刷新真实main后，完整纳入
+PR #450／#451已经合并并验收的3.6研究修订和第66章，没有回退新研究成果。
+3.7是出版版本；它所依据的现行物理研究仍为 **v31.10 / UEOT-QM Kernel 1.10**。
 
-- [完整正文](UEOT_PHYSICS.md)、[PDF](UEOT_PHYSICS.pdf)和[LaTeX排印源](UEOT_PHYSICS.tex)。
-- [逐章档案](CHAPTER_DOSSIER.json)与[来源清单](SOURCE_MANIFEST.json)。
-- [本版结构门](evidence/v3.6/book-structure.json)、[三遍实际排印](evidence/v3.6/pdf-build.json)、[视觉审查范围](evidence/v3.6/pdf-visual-review.json)与[本地发布门](evidence/v3.6/local-release-gates.json)。
-- [第66章逐项形式绑定](../audits/FINITE_CONDITIONING_v31.10/chapter66_formal_bindings.json)区分Lean、书面证明、精确有限控制与浮点诊断。
+| Language | Complete Markdown source | Generated LaTeX | Reading PDF |
+|---|---|---|---|
+| 中文 | [UEOT_PHYSICS.md](UEOT_PHYSICS.md) | [UEOT_PHYSICS.tex](UEOT_PHYSICS.tex) | [UEOT_PHYSICS.pdf](UEOT_PHYSICS.pdf) |
+| English | [UEOT_PHYSICS.en.md](UEOT_PHYSICS.en.md) | [UEOT_PHYSICS.en.tex](UEOT_PHYSICS.en.tex) | [UEOT_PHYSICS.en.pdf](UEOT_PHYSICS.en.pdf) |
 
-49个公开模块、959条显式定理、1285项具名声明公理审计；新增8模块、105条显式定理、162项具名审计。运行验收19项测试、95项精确符号检查通过。 全书不因此成为全形式化自然理论。本版没有新硬件数据。任意节点fallback、初始化全输入分类、Kraus算子范数界、谱隙扰动和无限iid期望解释的书面范围均明确列出。
+This is a complete English monograph alongside the revised Chinese text, not an
+English overview. Both versions contain the derivations, counterexamples,
+numerical conventions, source responsibilities, experimental limits and complete
+named audit inventory. The [result map](PHYSICS_RESULT_MAPPING.md) binds every
+one of the 173 stable IDs to the actual statement in both languages. No ID is
+renumbered, withdrawn, or newly created by this publication revision.
 
-旧3.5完整章节档案与来源清单保存在本版证据目录，原编号对象不重写其历史论证/执行身份。当前发布状态以[CURRENT](../status/CURRENT.json)与实际远端集成回执为准。
+## Scientific scope
+
+The book distinguishes standard mathematics and physics, conditional UEOT Core,
+additional physical-sector assumptions, conditional deductions, model calculations,
+extra testable hypotheses, and actual empirical standing. These distinctions
+extend the existing dossier's status/dependency axes. They do not turn standard
+quantum results into UEOT discoveries or mathematical consistency into evidence
+that nature realizes a proposed mechanism.
+
+Specific model calculations, finite formal contracts, source-bound numerical
+witnesses and useful counterexamples are retained. Complex quantum selection,
+actualization strength and activation, new QDRR hardware data, general continuum
+and unbounded limits, and quantum gravity retain their stated OPEN boundaries.
+Quantum Darwinism experiments are source-resolved observations within their
+actual protocols; they are not described as confirmations of UEOT or objective
+collapse. Chapter 66's realizability and resource results remain conditional on
+the declared instruments, action library, observation permissions and costs.
+
+## Review and evidence
+
+The [scientific editorial changelog](SCIENTIFIC_EDITORIAL_CHANGELOG.md) explains
+the corrections and remaining obligations. The existing
+[CHAPTER_DOSSIER.json](CHAPTER_DOSSIER.json) and
+[SOURCE_MANIFEST.json](SOURCE_MANIFEST.json) remain the publication's central
+source structures. Historical claim objects and evidence keep their original
+identities. Publication reports are derived views, not a competing truth ledger.
+
+| Responsibility | Report |
+|---|---|
+| Theory, mathematical domains and derivations | [PHYSICAL_DERIVATION_AUDIT.md](review/PHYSICAL_DERIVATION_AUDIT.md) |
+| All chapters and stable claims | [PHYSICS_CLAIM_SOURCE_MATRIX.md](review/PHYSICS_CLAIM_SOURCE_MATRIX.md) |
+| Testability, statistics and competing explanations | [EMPIRICAL_AND_FALSIFIABILITY_AUDIT.md](review/EMPIRICAL_AND_FALSIFIABILITY_AUDIT.md) |
+| Primary literature and actual experimental status | [PRIOR_ART_AND_EXPERIMENTAL_STATUS.md](review/PRIOR_ART_AND_EXPERIMENTAL_STATUS.md) |
+| Bilingual terminology | [BILINGUAL_PHYSICS_TERMINOLOGY.md](review/BILINGUAL_PHYSICS_TERMINOLOGY.md) |
+| Language, formula fidelity and independent cross-reading | [PHYSICS_TRANSLATION_FIDELITY.md](review/PHYSICS_TRANSLATION_FIDELITY.md) |
+
+Three independently assigned native AI collaborators reviewed theory, empirical
+claims, and bilingual publication. Their authoring and independent reading scopes
+are recorded explicitly. This is **internal cross-review**, not external human
+peer review, journal acceptance, or experimental confirmation.
+
+New publication checks and final artifact identities are in
+[evidence/v3.7/](evidence/v3.7/), including the
+[local acceptance record](evidence/v3.7/local-acceptance.json),
+[bilingual fidelity](evidence/v3.7/bilingual-fidelity.json),
+[exact source reuse](evidence/v3.7/source-reuse.json), and
+[scoped PDF visual review](evidence/v3.7/pdf-visual-review.json).
+The `initial-0-65-checkpoint/` subdirectory retains intermediate review identities
+from before the independently merged Chapter 66 was incorporated. Its provisional
+edition label is not a competing final publication.
+
+## Actual scientific-source acceptance
+
+The v31.10 scientific source is
+`4e5de046ad59eaa37856027af6547ca26bdea1c2`, merged by
+[PR #450](https://github.com/MurphyHoops/UEOT/pull/450) as
+`dee9bfa68c5fc60bed2853356c28011b0d3c53a0`. The source and tested-main trees
+are identical. [PR CI 42966223125](https://github.com/MurphyHoops/UEOT/actions/runs/42966223125)
+and [independent main CI 42967294067](https://github.com/MurphyHoops/UEOT/actions/runs/42967294067)
+both succeeded. [PR #451](https://github.com/MurphyHoops/UEOT/pull/451) recorded
+the completed metadata; the refreshed publication baseline is
+`925e3a8a411c0b1bab99dd9150bf005893656140`.
+
+The publication checks all 155 proof/configuration inputs, including 97 consumed
+Core sources, and nine runtime inputs against executed and current bytes.
+All 5033 tracked Core blobs remain unchanged across the initial and refreshed
+research baselines. Existing evidence covers 49 public modules, 959 explicit
+theorems, 1285 named axiom reports, 19 semantic/numerical controls and 95 exact
+finite checks. These are source-scoped verification counts, not new natural
+laws, hardware experiments, or a claim that every sentence is formalized.
+
+The older v31.9 pending metadata is historical: its source was already merged
+through [PR #356](https://github.com/MurphyHoops/UEOT/pull/356), with successful
+PR and independent main runs. The initial publication checkpoint checked that
+identity separately. Appendix D's 757 checks remain the actual v3.0 execution;
+the unchanged embedded programs were not rerun for translation.
+
+The research status file outside this publication directory continues to describe
+the v31.10 research release. The current bilingual publication identities are
+recorded here, separately from that research-release metadata. This revision
+changes only `physics/qm/book/`.
+
+## Reproduction
+
+Use Python 3, Pandoc, XeLaTeX and the fonts identified in the build receipts.
+The Chinese layout uses Noto Serif CJK SC, Noto Sans CJK SC and DejaVu Serif.
+The English layout uses Latin Modern Roman/Sans and DejaVu Sans Mono, with
+CJK fallback for original source titles. `--font` can select a local CJK
+font for Chinese text; it does not replace the English Latin text fonts.
+**Typesetting clarification to Appendix E.2:** its generic Noto CJK default
+describes the inherited Chinese template. The final English edition overrides
+that default as specified above and in `header.en.tex`; the build receipts and
+embedded-font inventory identify the actual fonts in each delivered PDF.
+PyMuPDF and Pillow are needed for rendered-page inspection; SymPy is needed only
+for the exact new teaching-example check.
+
+```bash
+python3 physics/qm/book/build/verify_book.py --source physics/qm/book/UEOT_PHYSICS.md
+python3 physics/qm/book/build/verify_book.py --source physics/qm/book/UEOT_PHYSICS.en.md
+python3 physics/qm/book/build/verify_bilingual.py \
+  --output /tmp/bilingual-fidelity.json --map-output /tmp/PHYSICS_RESULT_MAPPING.md
+python3 physics/qm/book/build/verify_source_reuse.py --output /tmp/source-reuse.json
+python3 physics/qm/book/build/verify_record_example.py --output /tmp/record-example.json
+python3 physics/qm/book/build/verify_inline_math.py \
+  --book-dir physics/qm/book --output /tmp/inline-math.json
+python3 physics/qm/book/build/verify_axiom_inventory.py \
+  --book-dir physics/qm/book --repo . --output /tmp/axiom-inventory.json
+python3 physics/qm/book/build/build_pdf.py \
+  --source physics/qm/book/UEOT_PHYSICS.md --output-dir /tmp/ueot-physics-zh
+python3 physics/qm/book/build/build_pdf.py \
+  --source physics/qm/book/UEOT_PHYSICS.en.md --output-dir /tmp/ueot-physics-en
+```
+
+The PDF builder uses three actual XeLaTeX passes without shell escape, retains
+stable anchors, checks the frozen source identity and records font/output hashes.
+The English §1.6 dependency chain is reflowed only in the derived print source.
+Rendering a page is separate from actually inspecting it: the visual receipt
+lists every overview sheet and every full page that was viewed, with limits.
+
+See [PUBLICATION_RIGHTS.md](PUBLICATION_RIGHTS.md) and Appendix E.4 for rights.
+Earlier lawful CC BY grants remain effective. The new edition does not grant a
+blanket new licence for translation or new expression, and does not relicense
+third-party papers, data, programs or dependencies.

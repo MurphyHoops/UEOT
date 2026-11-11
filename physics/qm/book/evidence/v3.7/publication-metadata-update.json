@@ -1,0 +1,95 @@
+{
+  "schema": "ueot_physics.publication_metadata_update.v1",
+  "edition": "3.7",
+  "status": "PASS_INSTALLED_METADATA",
+  "recorded_at_utc": "2026-11-11T06:37:12.799988+00:00",
+  "baseline_commit": "925e3a8a411c0b1bab99dd9150bf005893656140",
+  "manuscripts": {
+    "zh": {
+      "path": "physics/qm/book/UEOT_PHYSICS.md",
+      "sha256": "fd651a93cc4f38b755409f184bab231c43e889f648efda852340f8b594fb9060",
+      "bytes": 706234,
+      "status": "BYTES_IDENTIFIED"
+    },
+    "en": {
+      "path": "physics/qm/book/UEOT_PHYSICS.en.md",
+      "sha256": "437d4239be7a4239e701b760af1fcccdaf30f5b7ab976e9703c532990acb9a91",
+      "bytes": 858402,
+      "status": "BYTES_IDENTIFIED"
+    }
+  },
+  "candidate_metadata": {
+    "source_manifest": {
+      "path": "physics/qm/book/SOURCE_MANIFEST.json",
+      "sha256": "c7b493aa7dfb29d0bab2eeb0c35d5289a3add603229942542a3b6da884f4d9ff",
+      "bytes": 68711
+    },
+    "chapter_dossier": {
+      "path": "physics/qm/book/CHAPTER_DOSSIER.json",
+      "sha256": "13f68e5d6102f14e4215a715bb0dc56ff0ec3b686be518d6d1456708c7914c33",
+      "bytes": 1489494
+    }
+  },
+  "preservation": {
+    "numbered_results": {
+      "count": 173,
+      "all_objects_exactly_preserved": true,
+      "canonical_json_sha256": "75335af693f6768412db0ef2ac730592a2c16b219e405fa2f4cfc7a4f53a398c",
+      "scope": "JSON values, including all historical status fields; not source-file whitespace"
+    },
+    "manifest_entries": {
+      "count": 12,
+      "all_objects_exactly_preserved": true,
+      "canonical_json_sha256": "80df626d656595a640b7b499886b0a0bda2ebf64830d51303377d8b6b81d5917",
+      "scope": "JSON values, including all historical status fields; not source-file whitespace"
+    },
+    "source_catalog": {
+      "entry_count": 22,
+      "exactly_preserved": true,
+      "canonical_json_sha256": "4169a38256f5de449d6497784258c8e8ff4ef713a9cd64739906e4e770b2920c",
+      "scope": "JSON values, including all historical status fields; not source-file whitespace"
+    },
+    "appendix_d_programs": {
+      "count": 3,
+      "both_languages_exact_payload_bytes": true,
+      "sha256": [
+        "79dc78035c239957a8ac4f5b2f6a9d1c1a6b2a84d2cee094f831bad531f983c0",
+        "6719d3340fdbfc305f3b0b1266a012c976843d1862cba8e476a151e40d160401",
+        "c2107ac235f0d87faee246412c6478a0405113cb0113b647027820106d95ad32"
+      ],
+      "whole_appendix_bytes_equal_prior": {
+        "zh": false,
+        "en": false
+      },
+      "scope": "Python fenced payloads only; surrounding prose and receipt descriptions were edited; no historical programs rerun"
+    }
+  },
+  "prior_snapshots": {
+    "manifest": {
+      "path": "physics/qm/book/evidence/v3.7/source-manifest-prior-v3.6.json",
+      "sha256": "fa5bbc8f2df9ccc148488c7cc872aec444e7037bbaa4329a725fee9558e609f3",
+      "bytes": 14113
+    },
+    "dossier": {
+      "path": "physics/qm/book/evidence/v3.7/dossier-prior-v3.6.json",
+      "sha256": "1a2e8c985eb75bd8a267fc69824b219bfe86acef20baf5dd3bb81b7df5fea611",
+      "bytes": 1106189
+    }
+  },
+  "pending_gates": [],
+  "scientific_execution": "NOT_RERUN; EXISTING_SOURCE_BOUND_RESEARCH_RECEIPTS_REUSED",
+  "research_status": "MAIN_VERIFIED",
+  "publication_pr_status": "PENDING",
+  "local_acceptance_observation": {
+    "path": "physics/qm/book/evidence/v3.7/local-acceptance.json",
+    "exists": false,
+    "scope": "Downstream only; not embedded into either metadata object"
+  },
+  "terminal_acceptance_action": "Issue or refresh local-acceptance.json after these exact metadata hashes are final; do not feed its hash/status back into the metadata",
+  "review_materials_identified_from_installed_bytes": 20,
+  "hash_direction": "MD/TeX/PDF, independent build/visual receipts and immutable prior snapshots -> SOURCE_MANIFEST -> CHAPTER_DOSSIER -> external metadata-update receipt -> terminal local-acceptance; no reverse hashes",
+  "generator": {
+    "path": "/workspace/scratch/72c5fa46d8a6/ueot-physics-final/physics/qm/book/build/update_publication_metadata.py",
+    "sha256": "be61179a381d1b195f6e5d1e8c244c7c4a5407f213e4b990a10e3b9fc910fcfe"
+  }
+}

@@ -1,0 +1,2480 @@
+{
+  "schema": "ueot_physics.chapter66.static_binding_review.v1",
+  "scope": "Read-only SHA256 agreement with accepted source manifest and declaration-head lookup; not a fresh Lean run and not a proof that every paper claim is formalized. Full namespace/type/premise review is documented separately.",
+  "commit": "925e3a8a411c0b1bab99dd9150bf005893656140",
+  "dossier": {
+    "path": "physics/qm/book/CHAPTER_DOSSIER.json",
+    "sha256": "1a2e8c985eb75bd8a267fc69824b219bfe86acef20baf5dd3bb81b7df5fea611"
+  },
+  "source_manifest": {
+    "path": "physics/qm/kernel/evidence/v31.10/source-manifest.json",
+    "sha256": "12a2cda45490c915c5c6c3ef3bf5963b738a5c793acc4b82ed0b16a4f78c03f6",
+    "source_set_sha256": "a3c49afc9a3e8be0fffd0892ffc5e175bd17a00eb7a93c6adad8febc4cb4e3a6",
+    "source_count": 155
+  },
+  "existing_proof_receipt": {
+    "path": "physics/qm/kernel/evidence/v31.10/lean-verification.json",
+    "sha256": "1888f3c1a3409fa90dcda2797b6387b1e9bf65f36a2dcee0a2e93241401fd941",
+    "status": "PASS",
+    "public_named_axiom_reports": 1285,
+    "new_named_axiom_reports": 162,
+    "fresh_execution_by_this_script": false
+  },
+  "stable_result_ids": [
+    "P-FCOND-01",
+    "P-FCOND-02",
+    "P-FCOND-03",
+    "P-FCOND-04",
+    "P-FCOND-05",
+    "P-FCOND-06",
+    "P-FCOND-07",
+    "P-FCOND-08",
+    "P-FCOND-09",
+    "P-FCOND-10",
+    "P-FCOND-11",
+    "C-FCOND-01"
+  ],
+  "files": {
+    "formalization/ueot-qm/UEOTQM/QuantumFiniteWindowSpectral.lean": {
+      "sha256": "aa0f7841377455932e4c4cc2ad42a2804a1715e56c78093b20c01bb4e207b102",
+      "bytes": 9395,
+      "lines": 228,
+      "manifest_sha256": "aa0f7841377455932e4c4cc2ad42a2804a1715e56c78093b20c01bb4e207b102",
+      "manifest_bytes": 9395,
+      "manifest_match": true,
+      "declarations": [
+        {
+          "kind": "def",
+          "token": "spectralFilter",
+          "line": 24
+        },
+        {
+          "kind": "theorem",
+          "token": "spectralFilter_matrix_posSemidef",
+          "line": 59
+        },
+        {
+          "kind": "theorem",
+          "token": "spectralFilter_metric",
+          "line": 66
+        },
+        {
+          "kind": "theorem",
+          "token": "matrix_projection",
+          "line": 85
+        },
+        {
+          "kind": "theorem",
+          "token": "matrix_complement",
+          "line": 88
+        },
+        {
+          "kind": "theorem",
+          "token": "gram_sum_zero_component",
+          "line": 95
+        },
+        {
+          "kind": "theorem",
+          "token": "support_of_backward",
+          "line": 117
+        },
+        {
+          "kind": "def",
+          "token": "StepCertificate.of_backward",
+          "line": 140
+        },
+        {
+          "kind": "inductive",
+          "token": "SourceTree",
+          "line": 149
+        },
+        {
+          "kind": "def",
+          "token": "backwardGram",
+          "line": 154
+        },
+        {
+          "kind": "theorem",
+          "token": "backwardGram_posSemidef",
+          "line": 157
+        },
+        {
+          "kind": "def",
+          "token": "canonical",
+          "line": 170
+        },
+        {
+          "kind": "theorem",
+          "token": "canonical_valid",
+          "line": 177
+        },
+        {
+          "kind": "def",
+          "token": "erase",
+          "line": 192
+        },
+        {
+          "kind": "theorem",
+          "token": "canonical_erases_to_source",
+          "line": 200
+        },
+        {
+          "kind": "theorem",
+          "token": "source_node_conditional_joint",
+          "line": 215
+        }
+      ]
+    },
+    "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean": {
+      "sha256": "9f661d832f434c0744efb6f5ecfeb236f1947e998ac01eb216c31ec555c5aec0",
+      "bytes": 25548,
+      "lines": 601,
+      "manifest_sha256": "9f661d832f434c0744efb6f5ecfeb236f1947e998ac01eb216c31ec555c5aec0",
+      "manifest_bytes": 25548,
+      "manifest_match": true,
+      "declarations": [
+        {
+          "kind": "structure",
+          "token": "SupportFilter",
+          "line": 33
+        },
+        {
+          "kind": "def",
+          "token": "identity",
+          "line": 45
+        },
+        {
+          "kind": "def",
+          "token": "zero",
+          "line": 55
+        },
+        {
+          "kind": "def",
+          "token": "apply",
+          "line": 65
+        },
+        {
+          "kind": "def",
+          "token": "metric",
+          "line": 68
+        },
+        {
+          "kind": "def",
+          "token": "complement",
+          "line": 70
+        },
+        {
+          "kind": "theorem",
+          "token": "apply_posSemidef",
+          "line": 72
+        },
+        {
+          "kind": "theorem",
+          "token": "apply_smul",
+          "line": 76
+        },
+        {
+          "kind": "theorem",
+          "token": "apply_zero",
+          "line": 80
+        },
+        {
+          "kind": "theorem",
+          "token": "identity_apply",
+          "line": 83
+        },
+        {
+          "kind": "theorem",
+          "token": "zero_apply",
+          "line": 86
+        },
+        {
+          "kind": "theorem",
+          "token": "complement_adjoint",
+          "line": 89
+        },
+        {
+          "kind": "theorem",
+          "token": "complement_sq",
+          "line": 92
+        },
+        {
+          "kind": "theorem",
+          "token": "complement_matrix",
+          "line": 97
+        },
+        {
+          "kind": "theorem",
+          "token": "inverse_metric",
+          "line": 100
+        },
+        {
+          "kind": "structure",
+          "token": "StepCertificate",
+          "line": 114
+        },
+        {
+          "kind": "def",
+          "token": "tiltedKraus",
+          "line": 121
+        },
+        {
+          "kind": "theorem",
+          "token": "tilted_main_gram",
+          "line": 126
+        },
+        {
+          "kind": "theorem",
+          "token": "tilted_fallback_gram",
+          "line": 139
+        },
+        {
+          "kind": "def",
+          "token": "tiltedInstrument",
+          "line": 153
+        },
+        {
+          "kind": "theorem",
+          "token": "tilted_main_transport",
+          "line": 163
+        },
+        {
+          "kind": "theorem",
+          "token": "tilted_fallback_zero",
+          "line": 181
+        },
+        {
+          "kind": "theorem",
+          "token": "tilted_branch_transport",
+          "line": 195
+        },
+        {
+          "kind": "inductive",
+          "token": "FilterTree",
+          "line": 209
+        },
+        {
+          "kind": "def",
+          "token": "rootFilter",
+          "line": 218
+        },
+        {
+          "kind": "def",
+          "token": "Valid",
+          "line": 223
+        },
+        {
+          "kind": "def",
+          "token": "Leaf",
+          "line": 228
+        },
+        {
+          "kind": "def",
+          "token": "accepts",
+          "line": 239
+        },
+        {
+          "kind": "def",
+          "token": "sourceWord",
+          "line": 244
+        },
+        {
+          "kind": "theorem",
+          "token": "sourceWord_injective",
+          "line": 249
+        },
+        {
+          "kind": "def",
+          "token": "sourceLeafOperator",
+          "line": 267
+        },
+        {
+          "kind": "theorem",
+          "token": "sourceLeafOperator_eq_recordOperator",
+          "line": 272
+        },
+        {
+          "kind": "def",
+          "token": "acceptedLeafOperator",
+          "line": 282
+        },
+        {
+          "kind": "def",
+          "token": "tiltedLeafOperator",
+          "line": 287
+        },
+        {
+          "kind": "theorem",
+          "token": "leaf_transport",
+          "line": 296
+        },
+        {
+          "kind": "theorem",
+          "token": "tiltedLeafOperator_smul",
+          "line": 313
+        },
+        {
+          "kind": "theorem",
+          "token": "tiltedLeafOperator_posSemidef",
+          "line": 325
+        },
+        {
+          "kind": "theorem",
+          "token": "sum_tiltedLeafOperator_trace",
+          "line": 335
+        },
+        {
+          "kind": "def",
+          "token": "successMass",
+          "line": 356
+        },
+        {
+          "kind": "theorem",
+          "token": "successMass_eq_filtered_mass",
+          "line": 359
+        },
+        {
+          "kind": "theorem",
+          "token": "successMass_nonneg",
+          "line": 371
+        },
+        {
+          "kind": "def",
+          "token": "initialState",
+          "line": 378
+        },
+        {
+          "kind": "theorem",
+          "token": "initialState_matrix",
+          "line": 383
+        },
+        {
+          "kind": "theorem",
+          "token": "conditional_leaf",
+          "line": 392
+        },
+        {
+          "kind": "theorem",
+          "token": "zero_success_filter",
+          "line": 398
+        },
+        {
+          "kind": "theorem",
+          "token": "zero_success_no_positive",
+          "line": 404
+        },
+        {
+          "kind": "theorem",
+          "token": "tiltedLeafOperator_zero",
+          "line": 408
+        },
+        {
+          "kind": "theorem",
+          "token": "zero_success_all_accepted_blocks_zero",
+          "line": 413
+        },
+        {
+          "kind": "theorem",
+          "token": "sourceLeafOperator_posSemidef",
+          "line": 420
+        },
+        {
+          "kind": "theorem",
+          "token": "sum_sourceLeafOperator_trace",
+          "line": 429
+        },
+        {
+          "kind": "def",
+          "token": "sourceWeights",
+          "line": 448
+        },
+        {
+          "kind": "theorem",
+          "token": "sourceWeights_accepted_sum",
+          "line": 458
+        },
+        {
+          "kind": "theorem",
+          "token": "successMass_le_one",
+          "line": 467
+        },
+        {
+          "kind": "theorem",
+          "token": "metric_complement_posSemidef",
+          "line": 487
+        },
+        {
+          "kind": "theorem",
+          "token": "block_eq_sum_lifts",
+          "line": 518
+        },
+        {
+          "kind": "theorem",
+          "token": "block_posSemidef",
+          "line": 531
+        },
+        {
+          "kind": "theorem",
+          "token": "block_smul",
+          "line": 537
+        },
+        {
+          "kind": "def",
+          "token": "jointState",
+          "line": 551
+        },
+        {
+          "kind": "def",
+          "token": "acceptedJointOperator",
+          "line": 559
+        },
+        {
+          "kind": "theorem",
+          "token": "conditional_joint",
+          "line": 564
+        },
+        {
+          "kind": "theorem",
+          "token": "conditional_record_probability",
+          "line": 577
+        },
+        {
+          "kind": "theorem",
+          "token": "fallback_independent",
+          "line": 588
+        }
+      ]
+    },
+    "formalization/ueot-qm/UEOTQM/QuantumInitializationCost.lean": {
+      "sha256": "ca717f614ce478dac9064f91ce63cd1066d1b6aee115546d2a4ea9f0a3133aa7",
+      "bytes": 9867,
+      "lines": 227,
+      "manifest_sha256": "ca717f614ce478dac9064f91ce63cd1066d1b6aee115546d2a4ea9f0a3133aa7",
+      "manifest_bytes": 9867,
+      "manifest_match": true,
+      "declarations": [
+        {
+          "kind": "def",
+          "token": "gramFactor",
+          "line": 29
+        },
+        {
+          "kind": "theorem",
+          "token": "gramFactor_gram",
+          "line": 32
+        },
+        {
+          "kind": "def",
+          "token": "filterInstrument",
+          "line": 39
+        },
+        {
+          "kind": "theorem",
+          "token": "filter_success_branch",
+          "line": 51
+        },
+        {
+          "kind": "theorem",
+          "token": "gram_filter_mass",
+          "line": 58
+        },
+        {
+          "kind": "theorem",
+          "token": "filter_success_probability",
+          "line": 63
+        },
+        {
+          "kind": "theorem",
+          "token": "filter_success_probability_pos",
+          "line": 70
+        },
+        {
+          "kind": "theorem",
+          "token": "filter_posterior_matrix",
+          "line": 78
+        },
+        {
+          "kind": "theorem",
+          "token": "scaled_filter_mean_attempts",
+          "line": 89
+        },
+        {
+          "kind": "def",
+          "token": "successProbability",
+          "line": 99
+        },
+        {
+          "kind": "def",
+          "token": "meanTrialCost",
+          "line": 102
+        },
+        {
+          "kind": "def",
+          "token": "retryTreeCost",
+          "line": 106
+        },
+        {
+          "kind": "theorem",
+          "token": "successProbability_nonneg",
+          "line": 111
+        },
+        {
+          "kind": "theorem",
+          "token": "failureWeight_eq",
+          "line": 117
+        },
+        {
+          "kind": "theorem",
+          "token": "successProbability_le_one",
+          "line": 128
+        },
+        {
+          "kind": "theorem",
+          "token": "retryTreeCost_succ",
+          "line": 139
+        },
+        {
+          "kind": "theorem",
+          "token": "retryTreeCost_closed",
+          "line": 151
+        },
+        {
+          "kind": "theorem",
+          "token": "retryTreeCost_tendsto",
+          "line": 165
+        },
+        {
+          "kind": "def",
+          "token": "sourceInitialFilter",
+          "line": 196
+        },
+        {
+          "kind": "theorem",
+          "token": "sourceInitialFilter_probability",
+          "line": 201
+        },
+        {
+          "kind": "theorem",
+          "token": "source_successProbability",
+          "line": 209
+        },
+        {
+          "kind": "theorem",
+          "token": "source_retryTreeCost_tendsto",
+          "line": 213
+        }
+      ]
+    },
+    "formalization/ueot-qm/UEOTQM/QuantumActionRealizability.lean": {
+      "sha256": "6086178fad01777c8fd06549515aabc415f648697f9f68097f9c4ff8aec1da66",
+      "bytes": 10981,
+      "lines": 242,
+      "manifest_sha256": "6086178fad01777c8fd06549515aabc415f648697f9f68097f9c4ff8aec1da66",
+      "manifest_bytes": 10981,
+      "manifest_match": true,
+      "declarations": [
+        {
+          "kind": "def",
+          "token": "matrixUnit",
+          "line": 32
+        },
+        {
+          "kind": "theorem",
+          "token": "matrix_expansion",
+          "line": 35
+        },
+        {
+          "kind": "def",
+          "token": "branchLinear",
+          "line": 42
+        },
+        {
+          "kind": "theorem",
+          "token": "branchLinear_apply",
+          "line": 52
+        },
+        {
+          "kind": "def",
+          "token": "choi",
+          "line": 56
+        },
+        {
+          "kind": "theorem",
+          "token": "choi_injective",
+          "line": 61
+        },
+        {
+          "kind": "def",
+          "token": "conjugationLinear",
+          "line": 78
+        },
+        {
+          "kind": "def",
+          "token": "instrumentChoiAfter",
+          "line": 84
+        },
+        {
+          "kind": "def",
+          "token": "targetChoiAfter",
+          "line": 88
+        },
+        {
+          "kind": "theorem",
+          "token": "instrumentChoiAfter_eq_iff",
+          "line": 92
+        },
+        {
+          "kind": "theorem",
+          "token": "mixture_instrumentChoiAfter",
+          "line": 110
+        },
+        {
+          "kind": "def",
+          "token": "weightsOfPMF",
+          "line": 120
+        },
+        {
+          "kind": "theorem",
+          "token": "realizes_of_weights",
+          "line": 127
+        },
+        {
+          "kind": "theorem",
+          "token": "realizable_after_iff_mem_convexHull",
+          "line": 138
+        },
+        {
+          "kind": "theorem",
+          "token": "full_instrument_realizable_iff",
+          "line": 158
+        },
+        {
+          "kind": "theorem",
+          "token": "support_realizable_iff",
+          "line": 169
+        },
+        {
+          "kind": "theorem",
+          "token": "observation_realizable_iff_fiber_choi",
+          "line": 181
+        },
+        {
+          "kind": "theorem",
+          "token": "separator_excludes_convexHull",
+          "line": 212
+        },
+        {
+          "kind": "theorem",
+          "token": "support_agreement_on_fixed_input",
+          "line": 232
+        }
+      ]
+    },
+    "formalization/ueot-qm/UEOTQM/QuantumReachableActionRealizability.lean": {
+      "sha256": "653e658e0a5651654a0d9c69093c9a293c1a9b8b4ee01c6c72db3102e53c2c70",
+      "bytes": 3905,
+      "lines": 90,
+      "manifest_sha256": "653e658e0a5651654a0d9c69093c9a293c1a9b8b4ee01c6c72db3102e53c2c70",
+      "manifest_bytes": 3905,
+      "manifest_match": true,
+      "declarations": [
+        {
+          "kind": "def",
+          "token": "branchOutputFamily",
+          "line": 23
+        },
+        {
+          "kind": "theorem",
+          "token": "mixture_branchOutputFamily",
+          "line": 26
+        },
+        {
+          "kind": "theorem",
+          "token": "fixed_input_branch_realizable_iff",
+          "line": 35
+        },
+        {
+          "kind": "theorem",
+          "token": "fixed_input_observation_realizable_iff",
+          "line": 57
+        }
+      ]
+    },
+    "formalization/ueot-qm/UEOTQM/QuantumActionPauliWitness.lean": {
+      "sha256": "07851d932132f2ce5fb176dcae7fb6bfdff4a3503d278c7fdee6a547765c452e",
+      "bytes": 4730,
+      "lines": 119,
+      "manifest_sha256": "07851d932132f2ce5fb176dcae7fb6bfdff4a3503d278c7fdee6a547765c452e",
+      "manifest_bytes": 4730,
+      "manifest_match": true,
+      "declarations": [
+        {
+          "kind": "def",
+          "token": "pauliZ",
+          "line": 19
+        },
+        {
+          "kind": "def",
+          "token": "pauliX",
+          "line": 22
+        },
+        {
+          "kind": "theorem",
+          "token": "pauliZ_gram",
+          "line": 25
+        },
+        {
+          "kind": "theorem",
+          "token": "pauliX_gram",
+          "line": 31
+        },
+        {
+          "kind": "def",
+          "token": "labelUnitary",
+          "line": 37
+        },
+        {
+          "kind": "theorem",
+          "token": "labelUnitary_branch",
+          "line": 42
+        },
+        {
+          "kind": "def",
+          "token": "allowed",
+          "line": 48
+        },
+        {
+          "kind": "def",
+          "token": "targetWeighted",
+          "line": 52
+        },
+        {
+          "kind": "def",
+          "token": "target",
+          "line": 59
+        },
+        {
+          "kind": "theorem",
+          "token": "target_branch",
+          "line": 61
+        },
+        {
+          "kind": "theorem",
+          "token": "fair_allowed_realizes_target",
+          "line": 68
+        },
+        {
+          "kind": "theorem",
+          "token": "target_choi_positive_certificate",
+          "line": 74
+        },
+        {
+          "kind": "def",
+          "token": "sourceWeighted",
+          "line": 83
+        },
+        {
+          "kind": "def",
+          "token": "source",
+          "line": 99
+        },
+        {
+          "kind": "theorem",
+          "token": "source_success_eq_half_target",
+          "line": 103
+        },
+        {
+          "kind": "theorem",
+          "token": "source_failure_branch",
+          "line": 109
+        }
+      ]
+    },
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizability.lean": {
+      "sha256": "fc45d67c59111e4f262a28d850306d3782801116ad01bb403c3dea4ef12a655f",
+      "bytes": 10623,
+      "lines": 229,
+      "manifest_sha256": "fc45d67c59111e4f262a28d850306d3782801116ad01bb403c3dea4ef12a655f",
+      "manifest_bytes": 10623,
+      "manifest_match": true,
+      "declarations": [
+        {
+          "kind": "def",
+          "token": "realRow",
+          "line": 34
+        },
+        {
+          "kind": "theorem",
+          "token": "realRow_injective",
+          "line": 36
+        },
+        {
+          "kind": "def",
+          "token": "actionMixture",
+          "line": 45
+        },
+        {
+          "kind": "theorem",
+          "token": "realRow_actionMixture",
+          "line": 49
+        },
+        {
+          "kind": "theorem",
+          "token": "pmf_barycenter_exists_iff_mem_convexHull",
+          "line": 62
+        },
+        {
+          "kind": "theorem",
+          "token": "row_realizable_iff_mem_convexHull",
+          "line": 91
+        },
+        {
+          "kind": "theorem",
+          "token": "observation_realizable_iff_fiber_convexHull",
+          "line": 109
+        },
+        {
+          "kind": "theorem",
+          "token": "stationary_row_eq_actionMixture",
+          "line": 139
+        },
+        {
+          "kind": "theorem",
+          "token": "actual_next_state_eq_target",
+          "line": 153
+        },
+        {
+          "kind": "theorem",
+          "token": "actual_state_path_eq_target",
+          "line": 165
+        },
+        {
+          "kind": "def",
+          "token": "initialRecord",
+          "line": 183
+        },
+        {
+          "kind": "theorem",
+          "token": "causalLaw_initial_marginal",
+          "line": 189
+        },
+        {
+          "kind": "theorem",
+          "token": "path_implementation_requires_initial",
+          "line": 204
+        },
+        {
+          "kind": "theorem",
+          "token": "initial_tv_le_path_tv",
+          "line": 213
+        }
+      ]
+    },
+    "formalization/ueot-qm/UEOTQM/QuantumActionCounterexamples.lean": {
+      "sha256": "b20b8825bad0658f5db59e631205ac297bc18057463ffd7b1d6d87537407639b",
+      "bytes": 5811,
+      "lines": 138,
+      "manifest_sha256": "b20b8825bad0658f5db59e631205ac297bc18057463ffd7b1d6d87537407639b",
+      "manifest_bytes": 5811,
+      "manifest_match": true,
+      "declarations": [
+        {
+          "kind": "def",
+          "token": "labelInstrument",
+          "line": 21
+        },
+        {
+          "kind": "theorem",
+          "token": "labelInstrument_branch",
+          "line": 26
+        },
+        {
+          "kind": "theorem",
+          "token": "labelInstrument_channel",
+          "line": 30
+        },
+        {
+          "kind": "def",
+          "token": "fairWeights",
+          "line": 35
+        },
+        {
+          "kind": "theorem",
+          "token": "fair_label_mixture_branch",
+          "line": 40
+        },
+        {
+          "kind": "theorem",
+          "token": "swapped_labels_same_channel",
+          "line": 47
+        },
+        {
+          "kind": "theorem",
+          "token": "swapped_labels_distinct_visible_branch",
+          "line": 51
+        },
+        {
+          "kind": "theorem",
+          "token": "swapped_labels_not_realizable",
+          "line": 58
+        },
+        {
+          "kind": "theorem",
+          "token": "hidden_nodes_individually_realizable",
+          "line": 69
+        },
+        {
+          "kind": "theorem",
+          "token": "proves",
+          "line": 81
+        },
+        {
+          "kind": "theorem",
+          "token": "shared_observation_not_realizable",
+          "line": 82
+        },
+        {
+          "kind": "def",
+          "token": "visibleTrueChoiMass",
+          "line": 93
+        },
+        {
+          "kind": "theorem",
+          "token": "visibleTrueChoiMass_label",
+          "line": 100
+        },
+        {
+          "kind": "theorem",
+          "token": "swapped_labels_choi_separation",
+          "line": 109
+        },
+        {
+          "kind": "def",
+          "token": "fiberDifferenceChoiMass",
+          "line": 119
+        },
+        {
+          "kind": "theorem",
+          "token": "shared_observation_choi_separation",
+          "line": 127
+        }
+      ]
+    },
+    "formalization/ueot-qm/UEOTQM/QuantumPostselectionError.lean": {
+      "sha256": "9480cdc52b772e690b247999681cf58c0af5b00ddcee8ee28e817434e3b8acd3",
+      "bytes": 4934,
+      "lines": 108,
+      "manifest_sha256": "9480cdc52b772e690b247999681cf58c0af5b00ddcee8ee28e817434e3b8acd3",
+      "manifest_bytes": 4934,
+      "manifest_match": true,
+      "declarations": [
+        {
+          "kind": "theorem",
+          "token": "binary_gap_le_div_of_le",
+          "line": 18
+        },
+        {
+          "kind": "theorem",
+          "token": "binary_gap_le_div_max",
+          "line": 36
+        },
+        {
+          "kind": "theorem",
+          "token": "probability_mul_posterior",
+          "line": 56
+        },
+        {
+          "kind": "theorem",
+          "token": "posterior_effectDistance_le_div_max",
+          "line": 66
+        },
+        {
+          "kind": "theorem",
+          "token": "posterior_effectDistance_le_min",
+          "line": 84
+        },
+        {
+          "kind": "theorem",
+          "token": "posterior_half_traceAbsolute_le_min",
+          "line": 96
+        }
+      ]
+    },
+    "formalization/ueot-qm/UEOTQM/Stability.lean": {
+      "sha256": "de253ab45a4e45e2c8457dcbf3ad0c5cfd553e13a3a1dbc791f7d59eb2b5d389",
+      "bytes": 14431,
+      "lines": 307,
+      "manifest_sha256": "de253ab45a4e45e2c8457dcbf3ad0c5cfd553e13a3a1dbc791f7d59eb2b5d389",
+      "manifest_bytes": 14431,
+      "manifest_match": true,
+      "declarations": [
+        {
+          "kind": "def",
+          "token": "effectGapSet",
+          "line": 28
+        },
+        {
+          "kind": "theorem",
+          "token": "Effect.probability_abs_sub_le_one",
+          "line": 31
+        },
+        {
+          "kind": "theorem",
+          "token": "effectGapSet_nonempty",
+          "line": 40
+        },
+        {
+          "kind": "theorem",
+          "token": "effectGapSet_bddAbove",
+          "line": 44
+        },
+        {
+          "kind": "def",
+          "token": "effectDistance",
+          "line": 50
+        },
+        {
+          "kind": "theorem",
+          "token": "Effect.probability_sub_le_effectDistance",
+          "line": 52
+        },
+        {
+          "kind": "theorem",
+          "token": "effectDistance_nonneg",
+          "line": 56
+        },
+        {
+          "kind": "theorem",
+          "token": "effectDistance_le_iff",
+          "line": 59
+        },
+        {
+          "kind": "theorem",
+          "token": "effectDistance_le_one",
+          "line": 69
+        },
+        {
+          "kind": "theorem",
+          "token": "effectDistance_self",
+          "line": 74
+        },
+        {
+          "kind": "theorem",
+          "token": "effectDistance_comm",
+          "line": 78
+        },
+        {
+          "kind": "theorem",
+          "token": "effectDistance_triangle",
+          "line": 89
+        },
+        {
+          "kind": "theorem",
+          "token": "effectDistance_eq_zero_iff",
+          "line": 97
+        },
+        {
+          "kind": "theorem",
+          "token": "response_sub_le_effectDistance",
+          "line": 111
+        },
+        {
+          "kind": "def",
+          "token": "channelDefect",
+          "line": 119
+        },
+        {
+          "kind": "theorem",
+          "token": "channelDefect_bddAbove",
+          "line": 122
+        },
+        {
+          "kind": "theorem",
+          "token": "channelDefect_nonneg",
+          "line": 129
+        },
+        {
+          "kind": "theorem",
+          "token": "channelDefect_le_one",
+          "line": 132
+        },
+        {
+          "kind": "theorem",
+          "token": "effectDistance_le_channelDefect",
+          "line": 138
+        },
+        {
+          "kind": "theorem",
+          "token": "channelDefect_self",
+          "line": 142
+        },
+        {
+          "kind": "theorem",
+          "token": "channelState_effectDistance_le",
+          "line": 152
+        },
+        {
+          "kind": "theorem",
+          "token": "probability_sub_le_effectDistance",
+          "line": 159
+        },
+        {
+          "kind": "theorem",
+          "token": "probability_pos_of_effectDistance_lt",
+          "line": 165
+        },
+        {
+          "kind": "theorem",
+          "token": "channelState_perturbation_bound",
+          "line": 174
+        },
+        {
+          "kind": "theorem",
+          "token": "normalized_probability_difference_le",
+          "line": 186
+        },
+        {
+          "kind": "theorem",
+          "token": "posterior_effectDistance_le",
+          "line": 207
+        },
+        {
+          "kind": "theorem",
+          "token": "posterior_effectDistance_le_of_probability_lower_bound",
+          "line": 231
+        },
+        {
+          "kind": "def",
+          "token": "channelTrajectory",
+          "line": 244
+        },
+        {
+          "kind": "theorem",
+          "token": "channelTrajectory_zero",
+          "line": 248
+        },
+        {
+          "kind": "theorem",
+          "token": "channelTrajectory_succ",
+          "line": 251
+        },
+        {
+          "kind": "theorem",
+          "token": "channelTrajectory_transport_certificate",
+          "line": 256
+        },
+        {
+          "kind": "theorem",
+          "token": "scalarBudget_one_eq_sum",
+          "line": 279
+        },
+        {
+          "kind": "theorem",
+          "token": "channelTrajectory_effectDistance_le_sum",
+          "line": 286
+        },
+        {
+          "kind": "theorem",
+          "token": "channelTrajectory_response_sub_le_sum",
+          "line": 297
+        }
+      ]
+    },
+    "formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean": {
+      "sha256": "c8b3e48862f4a62b6e68e8419f611f8e9967ba17256fb2d1d899e9cc7c814aa0",
+      "bytes": 11940,
+      "lines": 240,
+      "manifest_sha256": "c8b3e48862f4a62b6e68e8419f611f8e9967ba17256fb2d1d899e9cc7c814aa0",
+      "manifest_bytes": 11940,
+      "manifest_match": true,
+      "declarations": [
+        {
+          "kind": "def",
+          "token": "unitaryDiagonal",
+          "line": 26
+        },
+        {
+          "kind": "theorem",
+          "token": "unitaryDiagonal_add",
+          "line": 29
+        },
+        {
+          "kind": "theorem",
+          "token": "unitaryDiagonal_sub",
+          "line": 33
+        },
+        {
+          "kind": "theorem",
+          "token": "unitaryDiagonal_mul",
+          "line": 37
+        },
+        {
+          "kind": "theorem",
+          "token": "unitaryDiagonal_zero",
+          "line": 41
+        },
+        {
+          "kind": "theorem",
+          "token": "unitaryDiagonal_one",
+          "line": 45
+        },
+        {
+          "kind": "theorem",
+          "token": "unitaryDiagonal_posSemidef",
+          "line": 49
+        },
+        {
+          "kind": "theorem",
+          "token": "mass_unitaryDiagonal",
+          "line": 58
+        },
+        {
+          "kind": "def",
+          "token": "positivePart",
+          "line": 65
+        },
+        {
+          "kind": "def",
+          "token": "negativePart",
+          "line": 68
+        },
+        {
+          "kind": "theorem",
+          "token": "positivePart_posSemidef",
+          "line": 71
+        },
+        {
+          "kind": "theorem",
+          "token": "negativePart_posSemidef",
+          "line": 75
+        },
+        {
+          "kind": "theorem",
+          "token": "positivePart_sub_negativePart",
+          "line": 79
+        },
+        {
+          "kind": "theorem",
+          "token": "max_add_max_neg",
+          "line": 85
+        },
+        {
+          "kind": "theorem",
+          "token": "abs_eq_positivePart_add_negativePart",
+          "line": 92
+        },
+        {
+          "kind": "def",
+          "token": "traceAbsolute",
+          "line": 100
+        },
+        {
+          "kind": "theorem",
+          "token": "traceAbsolute_nonneg",
+          "line": 102
+        },
+        {
+          "kind": "theorem",
+          "token": "traceAbsolute_eq_sum_abs_eigenvalues",
+          "line": 105
+        },
+        {
+          "kind": "def",
+          "token": "positiveSpectrumEffect",
+          "line": 114
+        },
+        {
+          "kind": "theorem",
+          "token": "positiveSpectrumEffect_matrix",
+          "line": 121
+        },
+        {
+          "kind": "theorem",
+          "token": "positiveSpectrumEffect_idempotent",
+          "line": 125
+        },
+        {
+          "kind": "theorem",
+          "token": "positiveSpectrumEffect_mul_positivePart",
+          "line": 133
+        },
+        {
+          "kind": "theorem",
+          "token": "positiveSpectrumEffect_mul_negativePart",
+          "line": 142
+        },
+        {
+          "kind": "theorem",
+          "token": "positiveSpectrumEffect_pairing",
+          "line": 152
+        },
+        {
+          "kind": "theorem",
+          "token": "difference_parts_mass_eq",
+          "line": 165
+        },
+        {
+          "kind": "theorem",
+          "token": "effectDistance_le_mass_of_psd_split",
+          "line": 172
+        },
+        {
+          "kind": "theorem",
+          "token": "effectDistance_eq_positivePart_mass",
+          "line": 189
+        },
+        {
+          "kind": "theorem",
+          "token": "positiveSpectrumEffect_attains",
+          "line": 209
+        },
+        {
+          "kind": "theorem",
+          "token": "effectDistance_eq_half_traceAbsolute",
+          "line": 219
+        },
+        {
+          "kind": "theorem",
+          "token": "effectDistance_eq_half_sum_abs_eigenvalues",
+          "line": 232
+        }
+      ]
+    },
+    "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean": {
+      "sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+      "bytes": 21325,
+      "lines": 433,
+      "manifest_sha256": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+      "manifest_bytes": 21325,
+      "manifest_match": true,
+      "declarations": [
+        {
+          "kind": "def",
+          "token": "isometryChannel",
+          "line": 27
+        },
+        {
+          "kind": "theorem",
+          "token": "isometryChannel_operator",
+          "line": 32
+        },
+        {
+          "kind": "theorem",
+          "token": "isometry_complement_positive",
+          "line": 37
+        },
+        {
+          "kind": "def",
+          "token": "extendEffect",
+          "line": 52
+        },
+        {
+          "kind": "theorem",
+          "token": "pullback_extendEffect",
+          "line": 60
+        },
+        {
+          "kind": "theorem",
+          "token": "isometry_state_distance",
+          "line": 71
+        },
+        {
+          "kind": "def",
+          "token": "embeddingChannel",
+          "line": 83
+        },
+        {
+          "kind": "theorem",
+          "token": "embedding_operator_image",
+          "line": 87
+        },
+        {
+          "kind": "theorem",
+          "token": "embedding_operator_outside_left",
+          "line": 92
+        },
+        {
+          "kind": "theorem",
+          "token": "embedding_operator_outside_right",
+          "line": 98
+        },
+        {
+          "kind": "theorem",
+          "token": "embedding_state_distance",
+          "line": 104
+        },
+        {
+          "kind": "def",
+          "token": "someMemoryEmbedding",
+          "line": 116
+        },
+        {
+          "kind": "theorem",
+          "token": "active_state_eq_embedding",
+          "line": 124
+        },
+        {
+          "kind": "theorem",
+          "token": "active_state_distance",
+          "line": 148
+        },
+        {
+          "kind": "theorem",
+          "token": "active_defect",
+          "line": 157
+        },
+        {
+          "kind": "theorem",
+          "token": "idle_state_eq",
+          "line": 170
+        },
+        {
+          "kind": "theorem",
+          "token": "idle_defect",
+          "line": 180
+        },
+        {
+          "kind": "def",
+          "token": "leafEmbedding",
+          "line": 198
+        },
+        {
+          "kind": "theorem",
+          "token": "outside_leafEmbedding",
+          "line": 206
+        },
+        {
+          "kind": "theorem",
+          "token": "run_eq_embedding",
+          "line": 217
+        },
+        {
+          "kind": "theorem",
+          "token": "original_joint_distance_eq",
+          "line": 248
+        },
+        {
+          "kind": "theorem",
+          "token": "weight_run_encode",
+          "line": 257
+        },
+        {
+          "kind": "theorem",
+          "token": "weight_run_decode_none",
+          "line": 265
+        },
+        {
+          "kind": "theorem",
+          "token": "original_record_tv_eq",
+          "line": 275
+        },
+        {
+          "kind": "def",
+          "token": "activeDefect",
+          "line": 303
+        },
+        {
+          "kind": "theorem",
+          "token": "lift_defect_eq",
+          "line": 307
+        },
+        {
+          "kind": "def",
+          "token": "activeCost",
+          "line": 314
+        },
+        {
+          "kind": "theorem",
+          "token": "actionCost_eq_activeCost",
+          "line": 320
+        },
+        {
+          "kind": "theorem",
+          "token": "activeCost_eq_sum_active",
+          "line": 328
+        },
+        {
+          "kind": "theorem",
+          "token": "original_joint_distance_le_activeCost_sum",
+          "line": 342
+        },
+        {
+          "kind": "theorem",
+          "token": "original_record_tv_le_activeCost_sum",
+          "line": 352
+        },
+        {
+          "kind": "theorem",
+          "token": "terminal_memory_distance_le_activeCost_sum",
+          "line": 361
+        },
+        {
+          "kind": "def",
+          "token": "activeProbability",
+          "line": 374
+        },
+        {
+          "kind": "theorem",
+          "token": "activeProbability_nonneg",
+          "line": 380
+        },
+        {
+          "kind": "theorem",
+          "token": "activeProbability_le_one",
+          "line": 387
+        },
+        {
+          "kind": "theorem",
+          "token": "activeCost_le_probability_mul",
+          "line": 401
+        },
+        {
+          "kind": "theorem",
+          "token": "original_joint_distance_le_probability_budget",
+          "line": 417
+        }
+      ]
+    }
+  },
+  "bindings": [
+    {
+      "result_id": "P-FCOND-01",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindowSpectral.lean",
+      "declaration": "UEOTQM.QuantumFiniteWindow.backwardGram_posSemidef",
+      "kind": "theorem",
+      "role": "后向原 Gram 和为 PSD。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "backwardGram_posSemidef",
+          "line": 157
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-01",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindowSpectral.lean",
+      "declaration": "UEOTQM.QuantumFiniteWindow.spectralFilter_metric",
+      "kind": "theorem",
+      "role": "谱工厂的 S†S 精确等于输入后向效应。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "spectralFilter_metric",
+          "line": 66
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-01",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+      "declaration": "UEOTQM.QuantumFiniteWindow.FilterTree.successMass_eq_filtered_mass",
+      "kind": "theorem",
+      "role": "原接受叶质量和等于根过滤矩阵的质量，对任意复矩阵输入成立。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "successMass_eq_filtered_mass",
+          "line": 359
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-01",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumInitializationCost.lean",
+      "declaration": "UEOTQM.QuantumInitializationCost.gram_filter_mass",
+      "kind": "theorem",
+      "role": "mass(B X B†)=pairing(B†B,X)，连接上述等式与 Tr(HX)。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "gram_filter_mass",
+          "line": 58
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-01",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+      "declaration": "UEOTQM.QuantumFiniteWindow.FilterTree.metric_complement_posSemidef",
+      "kind": "theorem",
+      "role": "从原完整性及树有效性导出 I-H 为 PSD。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "metric_complement_posSemidef",
+          "line": 487
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-01",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+      "declaration": "UEOTQM.QuantumFiniteWindow.FilterTree.sum_sourceLeafOperator_trace",
+      "kind": "theorem",
+      "role": "原完整仪器树的所有叶迹和等于输入迹。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "sum_sourceLeafOperator_trace",
+          "line": 429
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-01",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+      "declaration": "UEOTQM.QuantumFiniteWindow.FilterTree.sourceWeights_accepted_sum",
+      "kind": "theorem",
+      "role": "实际原叶概率 law 的接受质量是同一 successMass。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "sourceWeights_accepted_sum",
+          "line": 458
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-01",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+      "declaration": "UEOTQM.QuantumFiniteWindow.FilterTree.successMass_le_one",
+      "kind": "theorem",
+      "role": "密度输入的原接受质量不超过 1。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "successMass_le_one",
+          "line": 467
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-02",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindowSpectral.lean",
+      "declaration": "UEOTQM.QuantumFiniteWindow.gram_sum_zero_component",
+      "kind": "theorem",
+      "role": "有限正 Gram 和为零推出每个原矩阵为零。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "gram_sum_zero_component",
+          "line": 95
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-02",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindowSpectral.lean",
+      "declaration": "UEOTQM.QuantumFiniteWindow.SupportFilter.matrix_complement",
+      "kind": "theorem",
+      "role": "S(I-P)=0。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "matrix_complement",
+          "line": 88
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-02",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindowSpectral.lean",
+      "declaration": "UEOTQM.QuantumFiniteWindow.support_of_backward",
+      "kind": "theorem",
+      "role": "从原后向 Gram 关系导出 S_child K P = S_child K。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "support_of_backward",
+          "line": 117
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-02",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindowSpectral.lean",
+      "declaration": "UEOTQM.QuantumFiniteWindow.StepCertificate.of_backward",
+      "kind": "definition",
+      "role": "只输入后向 Gram 等式，即构造含已证明 support 关系的局部证书。",
+      "declaration_heads": [
+        {
+          "kind": "def",
+          "token": "StepCertificate.of_backward",
+          "line": 140
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-03",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+      "declaration": "UEOTQM.QuantumFiniteWindow.tilted_main_gram",
+      "kind": "theorem",
+      "role": "原变换主 Kraus 家族的 Gram 和等于支撑投影 P。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "tilted_main_gram",
+          "line": 126
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-03",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+      "declaration": "UEOTQM.QuantumFiniteWindow.tilted_fallback_gram",
+      "kind": "theorem",
+      "role": "完整补全的 Gram 和等于 I-P。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "tilted_fallback_gram",
+          "line": 139
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-03",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+      "declaration": "UEOTQM.QuantumFiniteWindow.tiltedInstrument",
+      "kind": "definition",
+      "role": "实际完整 Instrument 构造；complete 字段由上述 Gram 定理证明，可见结果仍为 O。",
+      "declaration_heads": [
+        {
+          "kind": "def",
+          "token": "tiltedInstrument",
+          "line": 153
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-03",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+      "declaration": "UEOTQM.QuantumFiniteWindow.tilted_fallback_zero",
+      "kind": "theorem",
+      "role": "补全作用在过滤输入上为零。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "tilted_fallback_zero",
+          "line": 181
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-03",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+      "declaration": "UEOTQM.QuantumFiniteWindow.tilted_branch_transport",
+      "kind": "theorem",
+      "role": "对所有复矩阵的带可见标签分支运输等式。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "tilted_branch_transport",
+          "line": 195
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-04",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindowSpectral.lean",
+      "declaration": "UEOTQM.QuantumFiniteWindow.SourceTree.canonical",
+      "kind": "definition",
+      "role": "仅从原仪器及接受/拒绝叶构造后向谱证书树。",
+      "declaration_heads": [
+        {
+          "kind": "def",
+          "token": "canonical",
+          "line": 170
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-04",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindowSpectral.lean",
+      "declaration": "UEOTQM.QuantumFiniteWindow.SourceTree.canonical_valid",
+      "kind": "theorem",
+      "role": "规范原树工厂输出有效。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "canonical_valid",
+          "line": 177
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-04",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindowSpectral.lean",
+      "declaration": "UEOTQM.QuantumFiniteWindow.canonical_erases_to_source",
+      "kind": "theorem",
+      "role": "擦除数学证书后精确返回同一原仪器树。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "canonical_erases_to_source",
+          "line": 200
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-04",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindowSpectral.lean",
+      "declaration": "UEOTQM.QuantumFiniteWindow.source_node_conditional_joint",
+      "kind": "theorem",
+      "role": "非平凡原树的 source-only 完整 CQ 条件端点，根原仪器提供 fallback。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "source_node_conditional_joint",
+          "line": 215
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-04",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+      "declaration": "UEOTQM.QuantumFiniteWindow.FilterTree.conditional_leaf",
+      "kind": "theorem",
+      "role": "每个原叶量子块等于其原接受块除以原 successMass。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "conditional_leaf",
+          "line": 392
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-04",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+      "declaration": "UEOTQM.QuantumFiniteWindow.FilterTree.conditional_joint",
+      "kind": "theorem",
+      "role": "完整原叶标签与终端量子记忆的联合态等式。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "conditional_joint",
+          "line": 564
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-04",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+      "declaration": "UEOTQM.QuantumFiniteWindow.FilterTree.fallback_independent",
+      "kind": "theorem",
+      "role": "两个全树固定 fallback 可有不同隐藏载体，条件联合态仍相同。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "fallback_independent",
+          "line": 588
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-04",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+      "declaration": "UEOTQM.QuantumFiniteWindow.FilterTree.zero_success_all_accepted_blocks_zero",
+      "kind": "theorem",
+      "role": "p=0 时全部原接受块为零。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "zero_success_all_accepted_blocks_zero",
+          "line": 413
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-04",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+      "declaration": "UEOTQM.QuantumFiniteWindow.FilterTree.sourceWord_injective",
+      "kind": "theorem",
+      "role": "完整原可见叶词可区分；隐藏 Kraus 不进入叶。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "sourceWord_injective",
+          "line": 249
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-05",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumActionRealizability.lean",
+      "declaration": "UEOTQM.QuantumActionRealizability.choi_injective",
+      "kind": "theorem",
+      "role": "真实复线性矩阵映射的 Choi 坐标注入。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "choi_injective",
+          "line": 61
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-05",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumActionRealizability.lean",
+      "declaration": "UEOTQM.QuantumActionRealizability.mixture_instrumentChoiAfter",
+      "kind": "theorem",
+      "role": "现有平方根 Kraus 随机化的实际 Choi 家族等于实权重凸组合。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "mixture_instrumentChoiAfter",
+          "line": 110
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-05",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumActionRealizability.lean",
+      "declaration": "UEOTQM.QuantumActionRealizability.realizable_after_iff_mem_convexHull",
+      "kind": "theorem",
+      "role": "任意声明复线性输入限制下的实际仪器实现 iff。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "realizable_after_iff_mem_convexHull",
+          "line": 138
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-05",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumActionRealizability.lean",
+      "declaration": "UEOTQM.QuantumActionRealizability.full_instrument_realizable_iff",
+      "kind": "theorem",
+      "role": "指定全空间仪器的实现 iff。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "full_instrument_realizable_iff",
+          "line": 158
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-05",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumActionRealizability.lean",
+      "declaration": "UEOTQM.QuantumActionRealizability.support_realizable_iff",
+      "kind": "theorem",
+      "role": "PXP† 限制下的实现 iff；正交 P 时为全支撑任务。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "support_realizable_iff",
+          "line": 169
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-05",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumActionRealizability.lean",
+      "declaration": "UEOTQM.QuantumActionRealizability.observation_realizable_iff_fiber_choi",
+      "kind": "theorem",
+      "role": "整条观察纤维使用同一权重的精确 iff。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "observation_realizable_iff_fiber_choi",
+          "line": 181
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-05",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumReachableActionRealizability.lean",
+      "declaration": "UEOTQM.QuantumActionRealizability.fixed_input_observation_realizable_iff",
+      "kind": "theorem",
+      "role": "指定未归一可达输入的逐分支输出家族 iff，不等同仅最终输出任务。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "fixed_input_observation_realizable_iff",
+          "line": 57
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-05",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumActionRealizability.lean",
+      "declaration": "UEOTQM.QuantumActionRealizability.realizes_of_weights",
+      "kind": "theorem",
+      "role": "已给正权重 Choi 证书构造实际完整仪器。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "realizes_of_weights",
+          "line": 127
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-05",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumActionPauliWitness.lean",
+      "declaration": "UEOTQM.QuantumActionPauliWitness.fair_allowed_realizes_target",
+      "kind": "theorem",
+      "role": "实际 Z/X 允许库正权重映射见证。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "fair_allowed_realizes_target",
+          "line": 68
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-05",
+      "file": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizability.lean",
+      "declaration": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.pmf_barycenter_exists_iff_mem_convexHull",
+      "kind": "upstream_theorem",
+      "role": "直接消费的 Core 实模凸包定理；E 实例化为可见标签和整观察纤维的复矩阵家族。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "pmf_barycenter_exists_iff_mem_convexHull",
+          "line": 62
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-06",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumActionRealizability.lean",
+      "declaration": "UEOTQM.QuantumActionRealizability.separator_excludes_convexHull",
+      "kind": "theorem",
+      "role": "有限实模中，给定实线性分离泛函及逐动作界即排除目标凸包。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "separator_excludes_convexHull",
+          "line": 212
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-06",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumActionCounterexamples.lean",
+      "declaration": "UEOTQM.QuantumActionRealizability.swapped_labels_same_channel",
+      "kind": "theorem",
+      "role": "丢弃结果后通道相同的对照事实。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "swapped_labels_same_channel",
+          "line": 47
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-06",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumActionCounterexamples.lean",
+      "declaration": "UEOTQM.QuantumActionRealizability.swapped_labels_choi_separation",
+      "kind": "theorem",
+      "role": "真实可见仪器 Choi 向量的标签交换分离证书。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "swapped_labels_choi_separation",
+          "line": 109
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-06",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumActionCounterexamples.lean",
+      "declaration": "UEOTQM.QuantumActionRealizability.shared_observation_choi_separation",
+      "kind": "theorem",
+      "role": "耦合隐藏节点坐标的观察纤维分离证书。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "shared_observation_choi_separation",
+          "line": 127
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-06",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumActionCounterexamples.lean",
+      "declaration": "UEOTQM.QuantumActionRealizability.hidden_nodes_individually_realizable",
+      "kind": "theorem",
+      "role": "每节点单独可行，与共同观察不可行严格区分。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "hidden_nodes_individually_realizable",
+          "line": 69
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-08",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumInitializationCost.lean",
+      "declaration": "UEOTQM.QuantumInitializationCost.filterInstrument",
+      "kind": "definition",
+      "role": "从 B、c>0 与 I-c⁻¹B†B 的 PSD 构造实际完整二结果仪器。",
+      "declaration_heads": [
+        {
+          "kind": "def",
+          "token": "filterInstrument",
+          "line": 39
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-08",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumInitializationCost.lean",
+      "declaration": "UEOTQM.QuantumInitializationCost.filter_success_probability",
+      "kind": "theorem",
+      "role": "实际成功率为 pairing(B†B,ρ)/c。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "filter_success_probability",
+          "line": 63
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-08",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumInitializationCost.lean",
+      "declaration": "UEOTQM.QuantumInitializationCost.filter_posterior_matrix",
+      "kind": "theorem",
+      "role": "成功后态为 BρB†/p，尺度抵消。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "filter_posterior_matrix",
+          "line": 78
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-08",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumInitializationCost.lean",
+      "declaration": "UEOTQM.QuantumInitializationCost.sourceInitialFilter",
+      "kind": "definition",
+      "role": "原树证明 I-H≥0 后直接构造 c=1 源初始滤波器。",
+      "declaration_heads": [
+        {
+          "kind": "def",
+          "token": "sourceInitialFilter",
+          "line": 196
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-08",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumInitializationCost.lean",
+      "declaration": "UEOTQM.QuantumInitializationCost.sourceInitialFilter_probability",
+      "kind": "theorem",
+      "role": "该源专用完整滤波器的成功率等于同一原 successMass。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "sourceInitialFilter_probability",
+          "line": 201
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-08",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumInitializationCost.lean",
+      "declaration": "UEOTQM.QuantumInitializationCost.scaled_filter_mean_attempts",
+      "kind": "theorem",
+      "role": "仅证明代数恒等式 (p/c)⁻¹=c/p；该声明本身不是等待时间概率定理。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "scaled_filter_mean_attempts",
+          "line": 89
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-08",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindowSpectral.lean",
+      "declaration": "UEOTQM.QuantumFiniteWindow.spectralFilter_metric",
+      "kind": "theorem",
+      "role": "在规范取 B=√H 时，把实际滤波 Gram 连接到原效应。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "spectralFilter_metric",
+          "line": 66
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-09",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+      "declaration": "UEOTQM.QuantumFiniteWindow.FilterTree.sourceWeights",
+      "kind": "definition",
+      "role": "从实际原叶量子块的质量构造归一有限记录 law。",
+      "declaration_heads": [
+        {
+          "kind": "def",
+          "token": "sourceWeights",
+          "line": 448
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-09",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumInitializationCost.lean",
+      "declaration": "UEOTQM.QuantumInitializationCost.source_successProbability",
+      "kind": "theorem",
+      "role": "成本 law 的接受概率等于条件过程使用的原 successMass。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "source_successProbability",
+          "line": 209
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-09",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumInitializationCost.lean",
+      "declaration": "UEOTQM.QuantumInitializationCost.retryTreeCost",
+      "kind": "definition",
+      "role": "显式有限源记录加权的截断重试树成本。",
+      "declaration_heads": [
+        {
+          "kind": "def",
+          "token": "retryTreeCost",
+          "line": 106
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-09",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumInitializationCost.lean",
+      "declaration": "UEOTQM.QuantumInitializationCost.retryTreeCost_succ",
+      "kind": "theorem",
+      "role": "从有限记录求和推导 V_(n+1)=μ+(1-p)V_n。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "retryTreeCost_succ",
+          "line": 139
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-09",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumInitializationCost.lean",
+      "declaration": "UEOTQM.QuantumInitializationCost.retryTreeCost_closed",
+      "kind": "theorem",
+      "role": "截断成本 μ/p·[1-(1-p)^n]。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "retryTreeCost_closed",
+          "line": 151
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-09",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumInitializationCost.lean",
+      "declaration": "UEOTQM.QuantumInitializationCost.retryTreeCost_tendsto",
+      "kind": "theorem",
+      "role": "有限重试树成本趋于 μ/p。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "retryTreeCost_tendsto",
+          "line": 165
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-09",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumInitializationCost.lean",
+      "declaration": "UEOTQM.QuantumInitializationCost.source_retryTreeCost_tendsto",
+      "kind": "theorem",
+      "role": "上述极限直接消费实际原叶 law 及原 successMass。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "source_retryTreeCost_tendsto",
+          "line": 213
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-10",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumPostselectionError.lean",
+      "declaration": "UEOTQM.QuantumPostselectionError.posterior_effectDistance_le_div_max",
+      "kind": "theorem",
+      "role": "从实际分支 effects 推导 δ/max(p,q)。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "posterior_effectDistance_le_div_max",
+          "line": 66
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-10",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumPostselectionError.lean",
+      "declaration": "UEOTQM.QuantumPostselectionError.posterior_effectDistance_le_min",
+      "kind": "theorem",
+      "role": "给定完整输入误差 ε 后，证明 min(1,ε/max(p,q))。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "posterior_effectDistance_le_min",
+          "line": 84
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-10",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumPostselectionError.lean",
+      "declaration": "UEOTQM.QuantumPostselectionError.posterior_half_traceAbsolute_le_min",
+      "kind": "theorem",
+      "role": "连接已有半迹绝对值识别后的实际矩阵版本。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "posterior_half_traceAbsolute_le_min",
+          "line": 96
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-10",
+      "file": "formalization/ueot-qm/UEOTQM/Stability.lean",
+      "declaration": "UEOTQM.Instrument.probability_sub_le_effectDistance",
+      "kind": "theorem",
+      "role": "同一实际接受分支的 |p-q|≤输入全效应距离。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "probability_sub_le_effectDistance",
+          "line": 159
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-10",
+      "file": "formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean",
+      "declaration": "UEOTQM.QuantumTraceDistance.effectDistance_eq_half_traceAbsolute",
+      "kind": "theorem",
+      "role": "已有全效应距离与实际密度差半迹绝对值识别。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "effectDistance_eq_half_traceAbsolute",
+          "line": 219
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-11",
+      "file": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+      "declaration": "UEOTQM.StoppingRecordBudget.original_joint_distance_le_activeCost_sum",
+      "kind": "theorem",
+      "role": "已有定理：共同控制器完整原叶/记忆距离受初态误差加参考活动前缀实际动作缺陷加权和控制；不证明本章新的 Kraus 算子范数公式。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "original_joint_distance_le_activeCost_sum",
+          "line": 342
+        }
+      ],
+      "unique_static_match": true
+    },
+    {
+      "result_id": "P-FCOND-11",
+      "file": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+      "declaration": "UEOTQM.StoppingRecordBudget.original_joint_distance_le_probability_budget",
+      "kind": "theorem",
+      "role": "已有定理：已给有效逐动作缺陷界后，按参考实现仍活动的概率传播到完整原记录。",
+      "declaration_heads": [
+        {
+          "kind": "theorem",
+          "token": "original_joint_distance_le_probability_budget",
+          "line": 417
+        }
+      ],
+      "unique_static_match": true
+    }
+  ],
+  "summary": {
+    "stable_results": 12,
+    "formal_bindings": 62,
+    "files": 12,
+    "files_matching_manifest": 12,
+    "unique_declaration_matches": 62,
+    "issues": []
+  },
+  "status": "PASS_STATIC_ATTRIBUTION"
+}

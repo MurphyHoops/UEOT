@@ -1,0 +1,28 @@
+{
+  "schema": "ueot_physics.record_example_check.v1",
+  "status": "PASS",
+  "executed_at_utc": "2026-11-11T06:07:35.911114+00:00",
+  "arithmetic": "exact SymPy algebra with sqrt(2)",
+  "python": "3.12.14",
+  "sympy": "1.14.0",
+  "script_sha256": "421163d315d76f0577757ec1887fbbaab20ef166f7d778d3f7844ad0fc0d7a1f",
+  "section": "0.11",
+  "source_sha256": {
+    "UEOT_PHYSICS.md": "fd651a93cc4f38b755409f184bab231c43e889f648efda852340f8b594fb9060",
+    "UEOT_PHYSICS.en.md": "437d4239be7a4239e701b760af1fcccdaf30f5b7ab976e9703c532990acb9a91"
+  },
+  "checks": {
+    "H_unitary": true,
+    "two_qubit_write_unitary": true,
+    "Bell_state_exact": true,
+    "global_density_pure": true,
+    "local_density_I_over_2": true,
+    "complete_two_qubit_inverse_returns_00": true,
+    "reader_copies_GHZ_record": true,
+    "inverse_ignoring_reader_fails_to_restore_000": true,
+    "ignored_reader_leaves_system_I_over_2": true,
+    "full_three_qubit_inverse_returns_000": true
+  },
+  "new_hardware_data": false,
+  "scope": "Ideal standard quantum circuits only; no experimental validation, general record-reversal theorem, or new actualization law is claimed."
+}

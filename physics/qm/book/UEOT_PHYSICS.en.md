@@ -1,0 +1,11695 @@
+---
+title: "UEOT Physics"
+subtitle: "From Object Mathematics to Quantum Physics: Derivations, Formal Proofs, and Research Boundaries"
+author: "Degui Qian"
+version: "3.7"
+date: "2026-11-11"
+language: "en"
+document_id: "UEOT-PHYSICS"
+status: "Complete bilingual revision; proved results, physical inputs, and open questions distinguished"
+rights: "Historical CC BY 4.0 grants remain; no additional blanket grant for new edition-specific expression; see Appendix E.4"
+---
+
+## Full navigation
+
+- [0. Scope, domains, and responsibilities of proof](#ch-0)
+- [1. Bridging UEOT Core and quantum physics](#ch-1)
+- [2. Quantum selection: when complex quantum theory is selected](#ch-2)
+- [3. Fisher action, complex amplitudes, and conditional Born arguments](#ch-3)
+- [4. Finite-dimensional quantum operations: states, effects, channels, and instruments](#ch-4)
+- [5. Quantum FFIPS and realizations of quantum objects](#ch-5)
+- [6. Measurement: coherent parents, public quotients, and conditional predictive states](#ch-6)
+- [7. Complete classification of strong record-nondisturbing dynamics](#ch-7)
+- [8. QDRR: record writing, erasure by inversion, and finite data](#ch-8)
+- [9. Quantum information, error correction, and metrology](#ch-9)
+- [10. Infinite-dimensional quantum theory: domains and normal states](#ch-10)
+- [11. Phase space, Weyl–CCR structure, and the action scale](#ch-11)
+- [12. Standard nonrelativistic calculation models](#ch-12)
+- [13. The finite-mode Gaussian sector](#ch-13)
+- [14. Symmetry, spin, and nonrelativistic particles](#ch-14)
+- [15. Identical particles, Fock space, and superselection](#ch-15)
+- [16. Many-body structure, locality, and phases](#ch-16)
+- [17. Open systems: GKSL dynamics, thermal baths, and trajectories](#ch-17)
+- [18. Non-Markovian processes and memory objects](#ch-18)
+- [19. Thermal equilibrium, response, and entropy production](#ch-19)
+- [20. Quantum GOD/GOA: tasks, control, and long-term structure](#ch-20)
+- [21. Relativistic quantum fields: domains and additional assumptions](#ch-21)
+- [22. The free scalar field: modes, propagation, and causality](#ch-22)
+- [23. Dirac and Maxwell fields and their physical degrees of freedom](#ch-23)
+- [24. Interactions, generating functionals, and scattering](#ch-24)
+- [25. Renormalization: explicit one-loop benchmarks and schemes](#ch-25)
+- [26. Wilsonian RG, effective field theory, and bridges to Core](#ch-26)
+- [27. QED: gauge structure, BRST, and Ward identities](#ch-27)
+- [28. Computable QED applications: scattering, running, and magnetic moments](#ch-28)
+- [29. Non-Abelian gauge fields and a candidate Standard Model structure](#ch-29)
+- [30. Higgs, Yukawa, flavour, and neutrino structures](#ch-30)
+- [31. Three generations and three colours: conditional theorems and simpler premises](#ch-31)
+- [32. Further results, topological routes, and open boundaries](#ch-32)
+- [33. Interface contracts for the complete architecture](#ch-33)
+- [34. Complete application paths](#ch-34)
+- [35. Assembling the quantum framework: errors and extensions](#ch-35)
+- [36. The generation problem: calculations must use the correct gauge group](#ch-36)
+- [37. Testable flavour constraints from generation nonuniversality](#ch-37)
+- [38. Coherence phases impose constraints on the dynamics](#ch-38)
+- [39. A four-level criterion: excluding the entire random-phase noise class](#ch-39)
+- [40. Actualization dynamics: from assumed single-branch selection to a conditional theorem](#ch-40)
+- [41. Why coherence loss alone still does not establish objective collapse](#ch-41)
+- [42. Executable research protocols and the status of the arguments](#ch-42)
+- [43. Global phase, boundary conditions, and topological quantization](#ch-43)
+- [44. Topological quantum objects: Berry bundles and SSH edge states](#ch-44)
+- [45. A nonperturbative starting point: finite lattice gauge models and interfaces across scales](#ch-45)
+- [46. Experimental statistics with history dependence and optional stopping](#ch-46)
+- [47. Research programme: from closed modules to distinguishable physics](#ch-47)
+- [48. The integrated monograph, status interfaces, and continuing maintenance](#ch-48)
+- [49. The verified finite quantum kernel of UEOT-QM](#ch-49)
+- [50. From Born probabilities to quantum error propagation](#ch-50)
+- [51. Randomized quantum realizations and certified error budgets](#ch-51)
+- [52. Long-time averages, compactness, and stationary quantum states](#ch-52)
+- [53. Conditional survival, diagonal quantum realizations, and the Core spectral bridge](#ch-53)
+- [54. The classical purification boundary on the same Core process](#ch-54)
+- [55. A local-tomography separation for the real quantum sector](#ch-55)
+- [56. Coherence-preserving conditional evolution and quantum Doob channels](#ch-56)
+- [57. Purification and operational principles in the complete state space](#ch-57)
+- [58. Joint records, quantum memory, and finite adaptive protocols](#ch-58)
+- [59. Exact dynamics of noncommutative conditional persistence](#ch-59)
+- [60. Separation by all effects and universal local tomography in the complex model](#ch-60)
+- [61. Complete purity and unitary equivalence of finite purifications](#ch-61)
+- [62. Per-action record-error budgets with retained history](#ch-62)
+- [63. Full-effect distance, trace absolute value, and optimal binary discrimination](#ch-63)
+- [64. Minimum auxiliary dimension and direct isometries for purification](#ch-64)
+- [65. Variable-length stopping protocols, original joint leaf states, and budgets weighted by continued activity](#ch-65)
+- [66. Finite conditional processes of the original instrument, allowed implementations, and full costs](#ch-66)
+- [Appendix A. Notation, units, and responsibilities of standard theorems](#appendix-a)
+- [Appendix B. Registry of numbered results](#appendix-b)
+- [Appendix C. Sources, inheritance, and research integrity](#appendix-c)
+- [Appendix D. Complete inherited verification code and versioned receipts](#appendix-d)
+- [Appendix E. Reading editions, compilation, and revision contract](#appendix-e)
+- [Appendix F. Formalized scope and the complete named axiom audit](#appendix-f)
+
+<a id="ch-0"></a>
+
+# 0. Scope, domains, and responsibilities of proof
+
+Reading this book begins by distinguishing mathematical validity of a model from evidence that the model describes nature. This chapter explains how to track those responsibilities and how UEOT organizes standard physics, conditional derivations, and mechanisms awaiting tests; these distinctions remain in force throughout.
+
+Like the complete UEOT Core mathematical text, this book uses a continuous, self-contained Markdown source with stable identifiers. It contains definitions, derivations, the conditions under which standard theorems apply, counterexamples, applications, interfaces, and executable checks. It is not a collection of historical patches: the reader should not have to recover an older edition to find an essential formula.
+
+The starting questions remain those of the original UEOT paper: how objects persist, how openness acquires structure, and how phase consistency, prediction, and resource constraints enter an account of physical systems. The quantum branch supplies particular physical realizations of these ideas. The book connects to the general mathematical Core, but **does not treat general object mathematics as an axiom system already sufficient to select quantum physics uniquely**.
+
+The quantum programme assembled here covers finite-dimensional objects and measurement, P2 quantum selection, continuous variables, spin and identical particles, many-body and open systems, free relativistic fields, interactions and renormalization, QED, and candidate Standard Model structures and generation-counting arguments. “Complete” refers to a complete main text for this stated architecture. It does not mean completion of every specialty in quantum physics, a rigorous construction of interacting four-dimensional QFT, quantum gravity, or a final unified theory.
+
+## 0.1 The role of a claim and its burden of proof
+
+| Label | Meaning | Required justification |
+|---|---|---|
+| D | Definition, convention, or protocol | Specify types, support, and units |
+| P | Proof or explicit derivation supplied in this book | A conditional mathematical result; the label does not itself assert originality |
+| K | Standard mathematical or physical result | State its domain; do not present an imported major theorem as a complete proof given here |
+| H | Additional principle for a quantum or particle sector | Not an automatic consequence of Core; requires independent justification |
+| S | UEOT interpretation or connection between modules | Do not call it a new law of nature when it leaves the physical predictions unchanged |
+| E | Experimental or numerical evidence | Distinguish real observations, synthetic data, and algebraic checks |
+| N / O | Counterexample or impossibility result / open problem | Excluded from the established positive dependency chain |
+
+The P-labelled results have proofs or derivations in the text. Major imported K theorems are listed in the appendices. A numerical check is neither a machine-checked proof nor empirical evidence about nature.
+
+An independent **verification axis** distinguishes a proof in prose, a proof checked by a formal kernel, exact finite computation, floating-point checks, synthetic-data tests, and actual experimental data. An item can be both a P result under additional physical assumptions and a conditional theorem checked by the Lean kernel. Kernel checking does not remove its physical assumptions. Conversely, an experiment supports a specified model, apparatus, protocol, and error range; finite empirical support does not become an unconditional mathematical theorem. P/K/H labels identify argumentative roles, whereas the verification axis records how an item has been checked. Chapter 48 adds the `dependency_class` field for Core, bridge, sector, standard-physics, effective-model, observable-consequence, and open-conjecture roles. These three axes remain distinct. [S2, §§0.3, 28.2; S3, §§1–2; S4, §§2, 8–9]
+
+## 0.2 Precise realizations of the original ideas
+
+| Original idea | Valid quantum realization | Unlicensed inference |
+|---|---|---|
+| An object is a persistent relational structure | Equivalence of protocol futures, effective factors, transport along histories | A name or wavefunction label automatically defines an object |
+| Phase closure | Projective representations, holonomy, boundary conditions, and gauge-anomaly consistency | A closed-orbit integral directly establishes the CCR |
+| Π/Φ | A conditional Fisher–action model, quantum-information costs, and control objectives | Any two functions uniquely select QM |
+| Parent objects and child interfaces | Tensor composition, purification, and instrument dilation | Every general parent object is a pure quantum parent system |
+| Observation and resolution | POVMs, instruments, a public commutative algebra, and process coarse-graining | Coarse-graining itself causes objective collapse |
+| GOD/GOA | Optimal control and long-term structure for a specified quantum-control task | Every quantum state naturally optimizes the same objective |
+| A particle as a “minimal closure” | Irreducible representations and anomaly-free physical realization packages | A Betti number equals the number of generations |
+| Unity across scales | Explicitly typed bridges between Core, processes, and QFT | Transformations called RG are therefore the same transformation |
+
+## 0.3 How to use the main text
+
+Chapters 1–9 introduce foundations and measurement; Chapters 10–15 cover continuous variables and symmetry; Chapters 16–20 cover many-body systems, environments, and control; Chapters 21–28 cover QFT, RG, and QED; Chapters 29–32 address particle structure and research boundaries; and Chapters 33–35 assemble interfaces, applications, and error budgets. The appendices contain verification code and actual receipts with version identities. Section 0.5 locates the additional modules.
+
+The logical direction is **declare a physical realization → define implementable protocols → calculate responses → establish object and prediction certificates → solve control problems under additional task specifications → test the sector assumptions**. A desired conclusion must not be inserted into a definition of what an object “must” be and then reported as a derivation.
+
+## 0.4 Three different senses of completion
+
+UEOT now has an assemblable architecture for research in quantum physics. Once a quantum realization and its sector assumptions are specified, many modules can be fully defined, derived, and computed. General Core alone has not uniquely selected the quantum axioms, nature’s gauge group, or all physical parameters. Nor has this work rigorously constructed interacting four-dimensional field theory or quantum gravity. The completed deliverable is therefore an integrated theoretical text and runnable benchmarks within the declared scope. Completeness of a document is not completion of fundamental physics.
+
+Each module is assessed by four questions. Are its definitions and proofs complete? Are its physical inputs independently stated? Can its outputs be calculated? Does a candidate admit a discriminating test? We do not assign “completion percentages” without an objective denominator.
+
+| Module | Established position | Remaining conditions or work |
+|---|---|---|
+| Core to quantum selection | Classical countermodels are given; the OPT background and selection principles are stated | Major reconstruction theorems remain external dependencies; the physical necessity of the principles is unproved |
+| States, effects, channels, and instruments | Finite-dimensional definitions, constructive proofs, composition, and error bounds | Availability and calibration of real preparations and measurements remain experimental inputs |
+| Objects, records, and prediction | Future equivalence, public records, SRN, and interfaces with memory | Object partitions depend on the allowed protocols and need not be unconditionally unique |
+| Measurement and actualization | Coherent dilation, conditional states, and absorption and conditional Born results for a specified SSE | Core does not select that stochastic equation; arbitrary system channels cannot distinguish the ontological interpretations |
+| Continuous variables and global phase | Self-adjoint domains, Weyl representations, energy truncation, and holonomy on a ring | Physical boundary conditions and the action scale are inputs; integer closed-orbit conditions do not establish the CCR in reverse |
+| Spin, statistics, and many-body systems | Symmetry representations, Fock spaces, finite models, and thermal-environment benchmarks | Relativistic spin–statistics is an external theorem; this book provides no general guarantee of efficient solution for arbitrary many-body problems |
+| Open systems, control, and thermodynamics | GKSL/Davies conditions, process memory, control gradients, and free energy | Strong coupling and infinite systems require model-specific work |
+| Topology and stability | Controlled, complete examples using Berry bundles and SSH edge states | No general interacting topological classification or selection of particle generations |
+| Free fields and perturbative QFT | Fields, propagation, causality, scattering, one-loop renormalization, and QED benchmarks | Higher orders, infrared issues, and nonperturbative continuum limits are not all completed |
+| Lattice gauge theory | A finite pure-gauge measure, gauge invariance, continuum expansion, and an exhaustively enumerable model | The four-dimensional continuum limit, the QCD mass gap, chiral fermions, and real-time error control require dedicated research |
+| Candidate Standard Model structure | Gauge representations, local anomalies, Higgs, Yukawa, and neutrino interfaces | The group, its global form, couplings, masses, and mixing parameters are not uniquely derived |
+| Three generations and flavour structure | Conditional low-energy selection, two high-energy candidates, and rank-one FCNC sum rules and lower bounds | The origin of HGP, an independent exclusion of five colours, a complete spectrum, and constraints from nature |
+| Identification of new physics | A three-branch CP bound, a four-level witness, and model relations and protocols for joint energy/decoherence tests | No new real experiment was performed for this edition; excluding a noise subclass does not establish a new law of nature |
+| Gravity and cosmology | Chapter 47 provides controlled starting points and necessary interfaces | No construction of quantum gravity or derivation of dark matter, dark energy, or the cosmological initial state |
+
+“Based on UEOT” has a precise meaning here. A physical model supplies intervention probabilities. Core organizes future equivalence, carriers, persistence, resources, and control; sector bridges specify when these structures can be composed. If removing the UEOT interpretation leaves exactly the predictions of standard QM, that part is an S/K-level organization or reconstruction. Only an additional assumption producing different, identifiable probability constraints enters the testing programme as a candidate H for new physics.
+
+## 0.5 Assembly of the text and successive additions
+
+Chapters 1–35 supply foundations, calculations, and interfaces. Chapters 36–42 connect the high-energy generation audit, flavour constraints, coherence witnesses, actualization proofs, and research protocols to that foundation. Chapters 43–46 add global phase, topology, lattice models, and statistics for correlated trials. Chapters 47–48 define research acceptance contracts and maintenance of the integrated text. Chapters 49–56 develop the finite kernel, errors, randomization, long-time averages, conditional survival, quantum-selection separations, and the general finite quantum Doob construction. Chapters 57–59 establish full finite complex purification, genuine record memory, and conditional dynamics in a specified noncommutative model. Chapters 60–62 develop separation by all effects, complex local tomography for arbitrary joint states, full convex purity, auxiliary-unitary relations, and action-by-action budgets for a common fixed-depth controller. Chapters 63–65 add the trace-distance expression and optimal binary discrimination, minimal auxiliary dimension and directed isometries, and original finite stopping trees with a budget for unstopped weight. The appendices preserve notation, sources, all stable result identifiers, reproduction code, and the complete audit of named assumptions.
+
+The conditional three-generation theorem in Chapter 31 must be read with Chapter 36’s distinction between low and high energy. Chapter 40 supplies an absorption proof within a specific SSE for the conditional martingale argument in Chapter 3. Chapters 38–39 turn the SRN and tomography results of Chapters 7–8 into witnesses against noise classes. Chapter 45 gives the cross-scale interface of Chapter 26 an actual carrier in a finite gauge model. These connections are all contained in this document.
+
+The v2.0 appendices preserve the quantum-mainline, frontier, global-phase, SSH-edge, finite-lattice, and correlated-trial checks executed at that time. They are historical receipts tied to a version. Subsequent kernel results and exact certificates have their own source manifests, execution logs, and audit receipts. External experimental evidence must be traced to its original papers and data descriptions; any future hardware experiment by the project will require its own acquisition and calibration records. A historical pass is not a fresh check of the current version, and a new local proof does not retrospectively formalize older chapters outside its scope. Finite numerical checks neither prove imported major theorems nor replace universal proofs or actual experimental data.
+
+The research revision published as edition 3.6 connects, in Chapter 66, the original finite quantum instrument, the complete conditioned record and terminal state, randomization over allowed actions, initial-state preparation, early-stopping costs, and errors. The original acceptance tree, singular support, zero-probability events, visible labels, and observation permissions remain explicit. General formal proofs, exact finite examples, floating-point diagnostics, and physical empirical evidence are recorded separately. The v31.9 source had already been merged through PR #356; its outdated pending wording is corrected using the available CI records and source identities. Verification newly performed for the v31.10 research revision retains its own execution identity rather than borrowing that of earlier runs.
+
+## 0.6 From a research ambition to a falsifiable question
+
+Represent each candidate theory by a quadruple $(\mathfrak M,\Theta,\mathcal U,\mathcal P)$: a model class, parameter domain, allowed protocols, and response law. Given a record $D$, an “explanation” must specify which parameters are fixed by training data and which quantities are held-out predictions. If the model, environment, or protocol may be changed arbitrarily for every possible $D$, the model class has no discriminating content.
+
+For two candidates, define their separation over a specified protocol family by
+$$
+\Delta_{\mathcal U}(M_0,M_1)
+=\sup_{u\in\mathcal U}\operatorname{TV}(p_0(\cdot|u),p_1(\cdot|u)).
+$$
+Here $\operatorname{TV}(P,Q)=\sup_B|P(B)-Q(B)|$; for a finite outcome space it is $\tfrac12\sum_y|p_y-q_y|$. The comparison is between probability laws on the same record space under the same protocol.
+If both candidates contain adjustable parameters, the relevant objects are the distance and intersection between their response sets, not merely a favoured example from each. The environmental-equivalence obstruction in Chapter 41 concerns set inclusion; the witness in Chapter 39 supplies an explicit separating hyperplane. Every research contract in Chapter 47 follows this distinction.
+
+## 0.7 The central philosophical question: identifying objects through change
+
+UEOT begins with a question that can be made precise: when material constituents, microscopic states, and environmental inputs continually change, why can we still track an object and predict its next response? The original paper locates an answer in persistent relations, feedback, openness, and hierarchical composition. These ideas determine what this book investigates first, but do not by themselves specify a Hamiltonian, a set of quantum instruments, or a particle-representation spectrum. [S1, §1.3, PDF pp. 2–4; §§2.2–2.4, pp. 4–8]
+
+We adopt the mathematical reformulation completed in Core. First fix a process, implementable protocols, and the candidate’s own future, and identify the information needed to determine the common responses. Then ask separately whether this information admits recursive updating, what physical apparatus realizes it, how it withstands interventions, and how it is transported along histories. “Relational identity” now has checkable content: a change of coordinates leaves the probabilities of the same experiments invariant; retaining an appropriate state makes information removed from the full history irrelevant to the declared future. Existence certificates for objects may be strong or weak. Claims of recovery, self-maintenance, inheritance, or optimal control require the corresponding additional mechanisms. [S2, §§0.1, 3–4, 12.1]
+
+This gives a specific meaning to the original phrase “Being is persistent Becoming.” What persists is a verified relation between response and realization; the state itself may change. A moving wave packet need not remain at a fixed location. A logical qubit exposed to noise and recovery need not occupy the same physical state throughout. Different hardware may realize the same input–output responses. Predictive identity, physical carrier, and historical instance are therefore connected but distinct concepts.
+
+The original paper associated general stable existence with nonzero first homology, $H_1\ne0$. This cannot serve as a universal theorem here. For $\dot x=-x$, the solution is $x(t)=x(0)e^{-t}$: the origin is globally asymptotically stable, but both the state space $\mathbb R$ and the attractor $\{0\}$ are contractible, with $H_1=0$. Conversely, on the cylinder $\mathbb R\times S^1$, let $\dot u=u,\ \dot\theta=1$. The state space has nontrivial first homology and $u=0$ is a closed orbit, yet transverse perturbations grow as $e^t$. Topological cycles, feedback edges in a causal-dependence graph, and dynamical stability need separate definitions and bridging proofs. [S1, §2.2, p. 4, printed lines 147–160; S2, §§9.4, 12.2]
+
+Likewise, stationary action does not mean that a system monotonically increases a benefit in physical time. A harmonic oscillator satisfies a variational stationarity condition while its phase-space trajectory can be periodic; that fact does not make it converge to a unique maximum-payoff state. The scale parameter of an RG flow is also distinct from physical time. Interpreting a scale flow as dynamics requires a process bridge; interpreting a drift as optimal behaviour requires an evaluation bridge. [S1, §2.3, pp. 6–7; S2, §§18–23, 28.3–4]
+
+Unity in UEOT physics therefore begins with a common language for identification, realization, transport, and certification. Standard quantum models supply the actual probability laws. UEOT asks which state distinctions matter to a task, how to prove that compression preserves every allowed future, and when the memory, operation library, or object boundary must be enlarged. Any added probability constraint beyond the standard model becomes a physical hypothesis to be tested.
+
+## 0.8 Source hierarchy and stable texts
+
+The meaning of the theory follows an explicit source hierarchy. The frozen definitions, assumptions, and proofs of Core v3 determine the general mathematical semantics. Quantum chapters add their own physical structures. Executable code and Lean declarations identify the particular claims checked and the method of checking. The original paper preserves the research motivations and conjectures that remain incomplete. Its philosophical wording does not override subsequently corrected mathematical definitions. [S2, §0 and Appendix E; S4, §§1–2]
+
+The foundational chapters use the following stable source identifiers so that readers can locate the original responsibility directly.
+
+| ID | Original material | Role in this book |
+|---|---|---|
+| S1 | `UEOT_v3_top.pdf`, 43 pages, user-supplied copy | Motivation for objects, dual drives, and physical conjectures; citations use actual PDF pages and printed line numbers |
+| S2 | `UEOT_Core_Mathematics_v3.0_Complete.md`, 2026-09-05 | Frozen general definitions, stable P-IDs, mathematical proofs, and adaptation conditions |
+| S3 | `CORE_V3_OPEN_PORT_MATRIX.md`, 2026-10-07 | Precise gaps at seven ports, work packages, and historical source-to-Lean mappings |
+| S4 | `CORE_V3_POST_CORE_SCIENTIFIC_CLOSURE.md`, 2026-10-07 | Independent review of the Core interpretation, four-generator boundaries, and scientific closure |
+| S5 | `THEORY_COMPLETION_ROADMAP_V2.md`, 2026-10-07 | Dependencies and acceptance rules for subsequent research; PLANNED entries are not completion receipts |
+| Q2 | `UEOT_Physics_Unified_v2.0.md`, 2026-09-06 | Direct source of the continuous derivations inherited in Chapters 0–48 |
+
+Dates, branches, phases, and CI counts in S3–S5 describe the time those records were written; they are not automatically the running status of this edition. Formal revisions preserve existing identifiers and useful proofs, adding assumptions or correcting formulas at the relevant location. A new version number does not turn an open conjecture into a theorem.
+
+## 0.9 Structure and reading paths of the integrated edition
+
+This edition carries forward all 49 chapters of *UEOT PHYSICS: Unified Text 2.0*. It does not abbreviate the inherited quantum foundations, QFT/QED, generation-counting, actualization, topology, lattice, or experimental-statistics derivations. Chapters 0–13 clarify the original ideas, rigorous Core, the background to quantum selection, and measurement/prediction interfaces. Chapters 14–32 and 36–46 retain advanced physics and countermodels. Chapters 33–35 and 47–48 update concrete interfaces, errors, research paths, and maintenance of the integrated text. Chapters 49–50 develop the existing finite quantum kernel and stability proofs, while Chapters 51–53 supply actual mixing, Cesàro, and Core conditional-survival bridges.
+
+The theory’s author is Degui Qian. Appendix C and the source manifest preserve attribution for the original ideas and project results. This edition continues their integration, completion of derivations, and collaborative review. Standard physical theorems remain attributed to their original literature, and machine-verification and experimental identities are recorded separately.
+
+Readers interested in the theoretical core can start with Chapters 0–5 and 49–66, then turn to the relevant physical domain. An assessment of the three-generation question must read Chapters 31, 36–37, and §49.7 together. Appendix A provides notation and responsibility for external theorems; Appendix B preserves the stable result register; Appendix C records sources; Appendix D contains all inherited verification code and the actual v3.0 execution receipts. Editions 3.1–3.7 checked the identity of unchanged programs without rerunning them. Appendix E gives the compilation and maintenance contract. Appendix F lists the actual formalization scope and all requests for named-axiom audits, distinguishing executions in the relevant edition from reuse tied to historical receipts.
+
+## 0.10 Seven evidence levels: from established mathematics to tests of nature
+
+The argument begins with established mathematics and physics, passes through conditional Core interfaces and independent physical-sector choices, and reaches provable conclusions, computable models, and hypotheses that might differ from existing theory. The levels below tell the reader what to examine at each stage. They do not constitute seven completed parts of a single unification proof.
+
+| Level | Content and principal entry points | Responsibility to examine |
+|---|---|---|
+| Level 1: standard mathematics and physics | Linear algebra, probability, standard QM, QFT/EFT; Chapters 4, 9–30 and Appendices A, C | Original precedents, theorem hypotheses, units, and domains; using an established result does not confer priority |
+| Level 2: UEOT Core | Future-response factors, valid updates, transport, conditional survival, and control interfaces; Chapters 1, 5, 49–56 | Frozen definitions, exact quantifiers, common support, and domain neutrality |
+| Level 3: physical-sector selection | Complex Hilbert space, state/effect cones, Born pairing, composition, symmetry, action, and spectrum | Which structures are independent inputs and which follow from a reconstruction theorem with its complete background |
+| Level 4: rigorous conditional derivation | Measurement, channels, purification, separation, finite protocols, and spectral-model theorems | Whether the actual model meets the premises and whether the prose proof matches the Lean declaration |
+| Level 5: models and numerical verification | Rational witnesses, finite matrices, cutoffs, one-loop benchmarks, and synthetic sampling; Appendices D, F | Inputs, errors, execution dates, and source identities; numerical agreement does not identify a unique mechanism |
+| Level 6: additional testable hypotheses | Actualization strength, record activation, extra spectral selection, or independent dynamical relations | Additional assumptions, parameter-fixing rules, differing predictions, and failure conditions; an underived mechanism remains OPEN |
+| Level 7: empirical standing | Original experiments, calibration, raw counts or sufficient statistics, and competing models; Chapters 8, 39–42, 46 | What an observation actually supports, constrains, or excludes; absent data cannot be recorded as experimental success |
+
+These levels supplement the argument markers and verification axis of §0.1 and the `dependency_class` of Chapter 48. They do not replace `CHAPTER_DOSSIER.json` or `SOURCE_MANIFEST.json`. A formula may use standard physical inputs, implement a Core bridge, and undergo numerical checks without thereby discharging the independent tasks of physical selection and empirical validation. The 173 entries in the stable result registry are likewise not 173 original discoveries or experimental confirmations.
+
+**What this book currently supports.** Within the explicitly specified finite complex quantum realization, predictive responses, actual quantum operations, error transport, purification, and finite history protocols form an inspectable mathematical structure. The generation results depend on their representation spectra and effective windows. Object-RG, Wilsonian RG, and parameter running retain distinct types. Generic Core has not uniquely derived complex quantum theory without additional premises, nor has this book selected the gauge group, all masses and couplings, or quantum gravity. Reproduction of standard physics is useful for checking and reconstruction, but does not alone supply a new UEOT-specific prediction about nature. [Chapters 1–2, 26, 31, 36, 47, 54–65]
+
+## 0.11 A guiding example: local records and global reversal
+
+Consider two ideal qubits in standard QM: a system $S$ and a record $R$. Starting from $|00\rangle$, apply a Hadamard gate to the system, then a controlled NOT with the system as control. The recorded joint state and reduced system state are
+$$
+|\Psi\rangle_{SR}=\frac{|00\rangle+|11\rangle}{\sqrt2},
+\qquad
+\rho_S=\operatorname{Tr}_R|\Psi\rangle\langle\Psi|=\frac{I_2}{2}.
+$$
+An observer reading the record label can predict the corresponding pointer outcome of the system. An observer restricted to the system cannot access the joint state's phase coherence. If both qubits are fully controlled, applying the controlled NOT first and then the Hadamard to the system returns the joint state exactly to $|00\rangle$. This reversal protocol does not first measure the record and retain the outcome in an external apparatus. If the label has been copied to an external reader, that reader must also be included in the inverse; control of the system and record qubits alone is no longer sufficient. The public label, conditional state, and global pure state answer different experimental questions without contradiction.
+
+This example is a conditional calculation in standard QM. UEOT's role is to specify the allowed future operations, which records must be retained, and whether a compressed description preserves their responses. An added actualization mechanism that changes the statistics after complete reversal would be a new Level 6 hypothesis. It must provide dynamics, strength, and activation conditions, and its Level 7 test must independently calibrate, control, or conservatively bound ordinary gate errors, leakage, and uncontrolled environments. A local mixed state does not itself identify that mechanism. Chapters 6–8 and 38–41 extend this distinction to general record structures and testable protocols.
+
+## 0.12 Bilingual revision, review, and authorship
+
+Edition 3.7 retains Chapters 0–66, Appendices A–F, and all 173 stable result IDs of the current research edition 3.6, including every one of the initial 161 IDs and the 12 subsequently merged results. The Chinese edition adds chapter-specific reading guides and corrects identified terminology and outdated cross-references. The English edition retains every derivation, counterexample, source entry, and verification boundary in independently readable academic prose. Linguistic labels within formulas may be translated; mathematical structure and numerical responsibility do not change with language. The translation-fidelity report records correspondence and exceptions.
+
+Three review lines address theoretical derivation, empirical evidence and prior art, and language and pedagogy. They are internal AI-assisted cross-reviews, not external peer review. The theoretical author is Degui Qian; established scholarly results remain attributed to their original sources. Appendix E.4 and `PUBLICATION_RIGHTS.md` state the boundary between historical CC BY 4.0 expression and new edition-specific contributions. Both languages and their typeset editions carry the same notice.
+
+This publication revision changes neither the physical kernel nor the Lean source. Appendices C.8, F.2, and F.4 reconcile the observed remote acceptance with the precise reuse of existing heavy proof evidence. Newly executed book checks, bilingual comparisons, and PDF builds are recorded separately. Data not obtained, mechanisms not established, and unproved limits remain open.
+
+<a id="ch-1"></a>
+
+# 1. Bridging UEOT Core and quantum physics
+
+A quantum device can accumulate a long history even when predicting a particular future task does not require retaining it all. We construct predictive factors from allowed experimental responses, then identify which Core structures carry over to quantum models and why this transfer does not itself select the quantum axioms.
+
+## 1.1 Operational histories and quantum responses
+
+A protocol $u$ is a sequence of implementable preparations, transformations, measurements, and permitted conditional feedback. Write $h$ for the record history. For a fixed future target $Y^+$, define the canonical response
+$$
+C(h)=\bigl(P(Y^+\in\cdot\mid h,u)\bigr)_{u\in\mathcal U}.
+$$
+The “future” is a declared record target, which may include an entire experimental path; it does not mean every future fact about the universe. The general probabilistic formulation uses standard Borel history and record spaces, a common reference law $\mu$ for histories, a finite or countable protocol family, and chosen measurable response kernels $K_u(h,\cdot)$. Protocols applied only subsequently share the same reference history law. An intervention that changes how the history is generated requires a common structural model and an explicit account of support. [S2, §§1, 2.3–4, 4.1]
+
+Suppose a statistic $M$ is sufficient for each protocol: kernels $L_u$ satisfy $K_u(H,\cdot)=L_u(M(H),\cdot)$ almost surely. Intersect the probability-one sets for all protocols and the countable determining event classes of their future spaces. On that common set,
+$$
+C(H)=\bigl(L_u(M(H),\cdot)\bigr)_{u\in\mathcal U}=\varphi(M(H)).
+$$
+The right-hand side is measurable. Conversely, each $K_u$ is a coordinate of $C$, so $C$ itself is sufficient. This establishes a minimal predictive factor for specified protocols, target, and reference law. It neither presupposes a classical or quantum state space nor uniquely specifies a physical carrier. [S2, P-PRED-01]
+
+Countability matters. Let $H$ be uniform on $[0,1]$. For every protocol $u\in[0,1]$, change a kernel version only at $h=u$. Each version is still separately equal almost everywhere to the original, but the union of exceptional points is the entire interval. Protocol-by-protocol equality modulo null sets therefore does not imply a common pointwise equality for uncountably many protocols. Pointwise specified structural kernels can instead follow a pointwise argument. A countable dense protocol set and a common continuous version can also support an extension, but these conditions must be supplied explicitly. [S2, N-PRED-01]
+
+A quantum realization provides a concrete probability generator, for example
+$$
+p(a_1,\ldots,a_T)=
+\operatorname{Tr}\bigl[
+\mathcal M_{a_T}^{(T)}\circ\cdots\circ
+\mathcal M_{a_1}^{(1)}(\rho_0)\bigr].
+$$
+In an adaptive protocol, later instruments may depend on records already observed, never on future outcomes.
+
+For discrete records, if the protocol family is closed under action prefixes and permitted continuations after positive-probability observations, the current response also determines the updated response:
+$$
+P(B\mid h,a,o)=\frac{P(o,B\mid h,a)}{P(o\mid h,a)},\qquad P(o\mid h,a)>0.
+$$
+Both numerator and denominator are retained by the current canonical response. On a zero-probability branch the ratio does not determine a conditional state; choosing an arbitrary mathematical extension adds no empirical support. This denominator condition recurs in quantum instruments, finite coordinates, and postselection errors. [S2, P-PRED-03]
+
+## 1.2 General Core does not select a quantum sector
+
+<a id="p-qbr-01"></a>
+
+**P-QBR-01: A classical realization countermodel.** General predictive factors, state closure, access carriers, persistence, and control structures can coexist in a finite classical Markov system. These structures alone therefore do not logically entail noncommuting observables, a complex Hilbert sector, or quantum purification.
+
+**Proof.** Take a finite controlled chain, partition histories by all their future responses, and realize them by state readout and classical probability kernels. Sufficient access families, their minimal members, and hitting sets can all be defined. An attracting recurrent class supplies persistence, and a finite discounted task admits an optimal policy. Yet the state space remains a probability simplex, and all classical effects admit joint readout. A mixed classical state cannot be the marginal of a pure classical joint state, since a pure joint state is a deterministic point. The quantum-specific conclusions are thus not logical consequences of the general premises. ∎
+
+This countermodel does not negate UEOT’s unifying organizational role. It identifies the physical content that requires sector-specific principles.
+
+## 1.3 Representation, gauge, and observable equivalence
+
+A representation change $T$ must transport preparations, channels, effects, and composition rules together. If every allowed protocol probability is preserved, the realizations belong to the same operational equivalence class for those protocols. An invertible coordinate change is not automatically a physical gauge symmetry. Whether a gauge orbit represents redundancy is determined by the particular physical model.
+
+For a fixed target and protocol family, physical gauge invisibility can allow a response to descend to a quotient. However, “no experiment performed so far has distinguished them” is weaker than “no physical experiment can ever distinguish them.” Finite tests supply finite certificates.
+
+## 1.4 How the four counted generators enter physical derivations
+
+Section 6.2 of S4 gives the exact scope of the four-generator register: of 106 items, 11 are `generated`, 89 are `retained_adapter`, and 6 are `retained_boundary`. Their nonredundancy means `nonredundant_under_declared_derivation_system` within the registered derivation system. It is not absolute independence in every mathematical proof language, nor an unconditional derivation of 106 conclusions from four physical axioms. The four mechanisms have the following concrete roles in quantum applications.
+
+**M-QD: Quotient and descent.** Given maps $q:X\to C$ and $F:X\to Y$, suppose
+$$
+q(x)=q(x')\Longrightarrow F(x)=F(x'),
+$$
+Then define $\bar F(q(x))=F(x)$ on $q(X)$. It is independent of the representative, and $F=\bar F\circ q$. For finite sets this completes the construction; measurable spaces additionally require suitable measurable-factorization conditions. Core predictive minimality and structured internal–environmental decompositions use this pattern. The quantum question is whether the Born responses of all allowed records depend only on the retained finite coordinates. Proving descent does not also select the complex scalar field or the Born pairing. [S2, P-PRED-01, P-INT-02; S3, appendix mapping all 106 items]
+
+**M-TC: Finite quantitative transport.** Let the reference trajectory satisfy $y_{t+1}=F_t(y_t)$ and define $e_t=d(x_t,y_t)$ in the common metric. If the defect between the actual evolution $x_{t+1}$ and a reference update $F_t(x_t)$ is at most $\varepsilon_t$, and $F_t$ has Lipschitz constant $L_t$, inserting the intermediate reference image $F_t(x_t)$ gives
+$$
+e_{t+1}\le L_te_t+\varepsilon_t,
+$$
+Induction yields
+$$
+e_n\le\left(\prod_{j<n}L_j\right)e_0+
+\sum_{k<n}\varepsilon_k\prod_{j=k+1}^{n-1}L_j.
+$$
+If quantum channels contract the chosen operational distance, then $L_t\le1$ and the error is bounded by the initial error plus the sum of stepwise defects. But contraction in that distance must be proved from quantum positivity, normalization, and effect pullback. It is not supplied automatically by the transport template. Postselection denominators, memory ancillas, and protocol support also remain necessary. [S2, P-DYN-03–04, P-ID-01–02; §4.4 of this book]
+
+**M-PE: Positive eigenstructure.** For a primitive nonnegative substochastic matrix $Q$, positive left and right Perron data satisfy
+$$
+qQ=rq,\quad Qh=rh,\quad q\mathbf1=1,\quad qh=1.
+$$
+Consequently $qQ^n=r^nq$, and conditioning on survival preserves $q$. Moreover,
+$$
+Q^\uparrow_{ij}=\frac{Q_{ij}h_j}{rh_i},\qquad
+\sum_jQ^\uparrow_{ij}=1,\qquad
+\sum_iq_i h_iQ^\uparrow_{ij}=q_jh_j.
+$$
+Positivity, spectral data, and normalization jointly produce a quasi-stationary distribution and a conditioned process. Quantum CP maps also act on positive cones, so analogous positive-operator spectral questions can be studied. Irreducibility, primitivity, positive eigenoperators, spectral gaps, and the type of conditioning must nevertheless be established for the map at issue. Entrywise nonnegativity of a classical matrix and complete positivity of a quantum map are different input types. Chapter 53 proves a concrete bridge in a diagonal measure-and-prepare model, directly using the Core spectral theorem. General noncommutative spectral obligations remain separate. [S2, §10.2, P-QSD-02; S4, §6.2]
+
+**M-OI: Occupation limits and invariant closure.** For a fixed CPTP channel $\mathcal T$ on a finite quantum system, form the Cesàro average of time-indexed states,
+$$
+\bar\rho_N=\frac1N\sum_{t=0}^{N-1}\mathcal T^t(\rho_0).
+$$
+The finite-dimensional density-matrix set is compact, hence a convergent subsequence exists. Also,
+$$
+\mathcal T(\bar\rho_N)-\bar\rho_N=
+\frac{\mathcal T^N(\rho_0)-\rho_0}{N},\qquad
+\|\mathcal T(\bar\rho_N)-\bar\rho_N\|_1\le\frac2N.
+$$
+Continuity of the linear map implies that every subsequential limit is invariant. This constructs invariant structure from occupation averages. It does not prove uniqueness, convergence of the state at each time, or an empirical limit along every random trajectory. Compactness cannot be transferred unchanged to infinite dimension. A periodic unitary evolution may have such an averaged limit without ever converging to a single state. [S2, P-PER-02, P-GOA-01; the finite quantum version here is a direct derivation in the declared CPTP model]
+
+Chapter 52 formalizes compactness of the actual density set, the Cesàro matrix residual, the $1/N$ bound for all effects, and existence of a stationary subsequential limit in Lean. Its machine proof uses a $2/N$ bound in the Euclidean operator norm to show that the matrix residual tends to zero. The trace-norm formula in this section retains its analytical proof responsibility; equality of the constants does not make it part of that formalization automatically.
+
+These mechanisms explain why the kernel is reusable. The quantum layer must still supply complex matrices, positive semidefiniteness, instrument completeness, the actual trace pairing, and experimental interfaces. A reusable proof is not another fundamental law of nature, and retaining a specialized adapter is not a failure of Core.
+
+## 1.5 Objects, realizations, and the quantum meaning of Ω
+
+A quantum object certificate first records a candidate, its own future, the permitted operations, and its environmental interfaces. It then records predictive and recursive closure, intervention conditions, transport along histories, and errors. Recovery, error correction, self-maintenance, and functional objectives are additional modules when the claim requires them. A pure-state label, a topological number, or a finite matrix cannot replace this certificate. [S2, D-OBJ, D-OBJ-STRONG]
+
+For a finite set $V$ of access interfaces, suppose adding accessible interfaces only enlarges the set of permitted experiments. The sufficient-access family is then upward closed. Let $\mathcal M_0$ be its minimal members. After deleting access permissions $D$, the target remains predictable exactly when
+$$
+\exists M\in\mathcal M_0:\ M\cap D=\varnothing.
+$$
+Negating this statement gives the condition that every minimal realization is hit. Minimal hitting sets are access blockers. A quantum realization must specify whether access means classical records, local measurement, joint measurement, or coherent control. Stronger access cannot simply be assumed implementable. [S2, §§13.1–2]
+
+Physical deletion is defined separately. For a fixed certificate and horizon $T$, let $\chi_{O,T}(D)=1$ mean that the certificate survives removal of mechanism set $D$. If failure is upward monotone, then
+$$
+\mathcal C_{\Omega,T}=\min_{\subseteq}\{D:\chi_{O,T}(D)=0\},\qquad
+\chi_{O,T}(D)=0\iff\exists C\in\mathcal C_{\Omega,T},\ C\subseteq D.
+$$
+The forward direction chooses a minimal member among finite failure subsets; the reverse uses monotonicity. Here $\Omega_T=(\mathcal M,\mathcal C_{\Omega,T})$ is the failure hypergraph for the specified mechanisms and certificate. It connects to the original geometric-cycle intuition without making nonzero homology a universal threshold for existence. If deleting an inhibitor restores the system, failure is no longer monotone and the full intervention response must be retained. [S2, P-OMG-01]
+
+Interpreting an access blocker as physical failure additionally requires a frame condition: surviving readouts and dynamics are preserved; deletion semantics match the sets; recovery, power supply, and other relevant mechanisms are included; and sufficiency of the remaining access is actually equivalent to the target certificate. Disconnecting a power port may also destroy a memory that is still nominally “accessible.” This is why the bridge is necessary. [S2, §13.3]
+
+## 1.6 The additional tasks behind GOD, GOA, and Π/Φ
+
+Specifying a quantum preparation and instruments does not specify a payoff. An evaluation bridge must at least give the permitted policies, reward or risk functional, horizon, resource budget, and evaluating agent or level. On the same quantum memory, preserving an unknown state, rapidly reading a label, estimating an external field, and cooling to the ground state may call for different actions. Neither the object nor the device need change. [S2, D-BRIDGE, N-TEL-01; Q2, §20]
+
+A minimal counterexample uses the same process with available actions $a,b$. The objectives $J_a=\mathbf1_{\{A_0=a\}}$ and $J_b=\mathbf1_{\{A_0=b\}}$ select opposite optimal actions. The dependency used here is therefore
+$$
+(\text{quantum process},\text{object certificate},\text{evaluation bridge})
+\longrightarrow V^*\longrightarrow\mathcal A^*\longrightarrow\text{typed long-term structure}.
+$$
+For example, with finitely many actions, discount $0<\beta<1$, and bounded reward, the Bellman operator on conditional states is
+$$
+(TV)(\rho)=\max_a\left\{r(\rho,a)+\beta\sum_o p(o\mid\rho,a)
+V(\rho_{a,o})\right\}.
+$$
+An arbitrary placeholder state may be assigned on a zero-probability branch because its weighted contribution is zero. Since $p_o\ge0$ and the probabilities sum to one, $\|TV-TW\|_\infty\le\beta\|V-W\|_\infty$. Under the required measurability and state-space conditions, the fixed point and optimal selector follow from standard discounted-control constructions. GOD is first the set of maximizing actions; it need not be single-valued or a gradient in Euclidean space. [S2, §19; Q2, §20.2]
+
+GOA must specify whether the subject is an invariant state, a Cesàro limit, an orbit’s $\omega$-limit set, a QSD, or a nonautonomous tracking object. Even a unique invariant probability need not imply mixing at individual times: deterministic alternation between two states oscillates outside its unique uniform invariant law. Unitary conjugation likewise permits periodic or quasiperiodic motion. Thus “following an optimal direction must converge to a unique optimal fixed point” is not a general theorem. [S1, §2.3.2, pp. 6–7; S2, §21; S4, §4]
+
+If $J=\Pi-\lambda\Phi-C$ is used, the dimensions, signs, and independent measurements of $\Pi,\Phi,C$ must first be specified. An arbitrary $\chi$ gives
+$$
+\Pi'=\Pi+\lambda\chi,\quad \Phi'=\Phi+\chi,
+\qquad \Pi'-\lambda\Phi'-C=J.
+$$
+The same optimal behaviour therefore cannot uniquely identify a physical axis and an informational axis. Energy costs of quantum control, preparation time, memory requirements, predictive KL divergence, or Bayesian risk can define concrete bridges. Fisher information, entropy, information deficit, and information gain cannot be added with the same sign merely because each is called “information.” [S2, §§23.1–3, 23.6]
+
+Suppose one further proposes a two-dimensional drive $z(B)\in\mathbb R^2$ shared across environments, with responses $m_e(B)=g_e(z(B))$. At the same budget point, the chain rule gives only
+$$
+\begin{bmatrix}Dm_1(B)\\\vdots\\Dm_E(B)\end{bmatrix}
+=\begin{bmatrix}Dg_1(z(B))\\\vdots\\Dg_E(z(B))\end{bmatrix}Dz(B),
+\qquad\operatorname{rank}\le2.
+$$
+This is a falsifiable necessary condition, not a universal two-dimensional law derived from quantum formalism. Rank two in each environment separately, or low rank after combining derivatives from different budget points, does not replace the shared same-point test. A scalar reward also does not force a two-dimensional response: $J(a,B)=-\|a-B\|^2/2$ has optimizer $a=B$ in any dimension. [S2, P-DDH-04; S3, C5 work package; S4, §5]
+
+## 1.7 Seven scientific ports and the quantum kernel
+
+The seven ports organize open research questions. They are neither new axioms nor seven stages that must be completed sequentially. In the quantum branch, they assign the following concrete responsibilities. [S2, §31.2; S3, §§3–10; S5, §§2–7]
+
+| Port | Precise connection to QM | Claim that the connection can support |
+|---|---|---|
+| C1: existence and general states | Infinite-dimensional normal states, measurable conditional versions, hidden memory, and noncompact limits; explicit extension conditions for each finite-dimensional proof | Existence, recursion, or limit theorems in a specified mathematical model |
+| C2: object and protocol discovery | Find sufficient response spaces from permitted instruments and records; separate candidate search from independent verification | A certificate within a given operation library, not identification of every unknown device |
+| C3: realization and damage | Access permissions, joint quantum readout, correction/recovery mechanisms, and physical failure graphs | Minimal realization or failure families under stated operational semantics |
+| C4: identity and long-term transport | Encoding changes, drifting devices, time-dependent channels, and transport of stationary or metastable states | Transport bounds for a fixed distance, support, and time range |
+| C5: shared low-dimensional mechanisms | Independently anchor energy/information budgets and test cross-environment response rank at the same point | Rejection or support of a specified local low-dimensional hypothesis, not a unique naming of drives |
+| C6: identifying the purpose bridge | Independently determine the control task or actual learning/selection mechanism; predict actions at budgets not used for fitting | Behavioural support for a specified mechanism, not an intention inferred from state stability |
+| C7: statistics and reproduction | Freeze protocols, errors, and stopping rules; preserve raw records, source versions, and rejection criteria | Separate mathematical proof, model checking, experimental support, or hypothesis rejection |
+
+An exact finite matrix can completely settle a computational instance. Its Lean proof may also establish properties of that instance for every finite record length. Whether a device realizes that matrix, its noise belongs to the declared model, and training and testing are independent remain physical and statistical responsibilities under C2/C7. Historical work packages labelled PLANNED in S5 do not become complete merely because a kernel now exists. [S5, status notes; §5.5 and the later kernel-evidence chapters]
+
+<a id="ch-2"></a>
+
+# 2. Quantum selection: when complex quantum theory is selected
+
+Classical probability, real quantum theory, and complex quantum theory can each describe operational statistics; the question is which additional principles distinguish them. After fixing the operational background, purification and local-tomography countermodels clarify the conditions of a reconstruction theorem without turning its use into an unconditional derivation of QM from Core.
+
+## 2.1 A fixed operational-theory background
+
+We work in a finite-dimensional causal operational probabilistic theory. The reconstruction background includes systems and finite-outcome tests, the trivial probabilistic system, sequential and parallel composition with compatibility laws, nonempty normalizable states, deterministic effects, coarse-graining and conditional tests, finite-dimensional closed normalized state sets, nontrivial distinguishable systems, and equivalence under exchanging the order of composite systems. Equality of transformations is defined by complete operational statistics **including arbitrary auxiliary systems**. This is stronger than comparing only single-system inputs and outputs. The full background is fixed by the definitions and twelve conditions in Appendices A.1–A.2 of the original paper cited below.
+
+The background does not presuppose Hilbert spaces, purification, local tomography, unrestricted measurement, or all CPTP channels. Defining channel equality at the outset solely by local input–output equality would make CIT a restatement of a definition, removing the substantive condition required by the reconstruction theorem.
+
+Quantum selection must be stated in a complete operational theory of this kind. A state cone alone cannot reconstruct every physical transformation.
+
+## 2.2 Two independent sector principles
+
+**H-QSEL-1: Local equivalence / CIT.** For channels $\Lambda,\mathcal E$ from system $A$ to system $B$, if $f(\Lambda\rho)=f(\mathcal E\rho)$ for every input state $\rho$ and every output effect $f$, then $\Lambda=\mathcal E$, including operational equivalence in the presence of every auxiliary system. Within the fixed background above, this is equivalent to local distinguishability of composite states.
+
+**H-QSEL-2: Equivalent-system purification (ESP).** For each system $A$, there is an operationally equivalent purifying system $\widetilde A$ such that every normalized state is a marginal of a pure state of $A\widetilde A$. Any two purifications of the same state in this purifying system differ only by a reversible channel on $\widetilde A$.
+
+**K-QSEL-01.** Under that fixed background and these two principles, Nakahira’s Theorem 1 characterizes finite-dimensional complex operational quantum theory: all density matrices, POVMs, the Born pairing, Hilbert-space tensor products, and CPTP channels for the systems in question. This book invokes the external reconstruction; its full proof is not included in the UEOT Lean kernel. See the [original preprint](https://arxiv.org/abs/2605.23217) and [v1 text with Appendices A–D](https://arxiv.org/html/2605.23217v1). Appendix A.3 explicitly distinguishes recovering quantum structure for the systems present in a theory from proving that a physical system of every natural-number dimension must exist.
+
+To keep later chapters self-contained, we state and use these quantum structures explicitly. The external paper is not a substitute for explaining the calculation rules to the reader. It supplies the source for the claim that this set of selection principles is sufficient.
+
+## 2.3 Independence and satisfaction in quantum theory
+
+<a id="p-qsel-01"></a>
+
+**P-QSEL-01: Classical and real-quantum deletion witnesses.** Finite classical probability theory satisfies local tomography but cannot purify a nontrivial mixed state. Real quantum theory has equivalent-system purification but does not satisfy general local tomography.
+
+**Proof.** A classical joint distribution is recovered from products of local deterministic-event probabilities. A pure joint distribution is a deterministic point, whose marginals cannot be mixed. A real symmetric density matrix admits purification by real spectral decomposition; two purification matrix factors differ by an orthogonal transformation on the purifying space. For two rebits, let
+$$
+\rho_\pm=\tfrac14(I\otimes I\pm Y\otimes Y).
+$$
+The matrix $Y\otimes Y$ is real symmetric, and $\rho_\pm$ are distinct positive semidefinite states. Single-rebit real symmetric effects are spanned by $I,X,Z$ and are orthogonal to $Y$. Every product effect therefore assigns the same probability to both states. ∎
+
+The counterexample can be checked explicitly. Take $Y=\left(\begin{smallmatrix}0&-i\\i&0\end{smallmatrix}\right)$. Although $Y$ itself is not a real-quantum observable, $Y\otimes Y$ is real symmetric, squares to $I$, and has trace zero. Its eigenvalues are $+1,-1$, each with multiplicity two. Both $\rho_\pm$ consequently have spectrum $\{1/2,1/2,0,0\}$. For real symmetric $E,F$, $\operatorname{Tr}(EY)=\operatorname{Tr}(FY)=0$, so
+$$
+\operatorname{Tr}[(E\otimes F)(\rho_+-\rho_-)]=
+\tfrac12\operatorname{Tr}(EY)\operatorname{Tr}(FY)=0.
+$$
+The joint effect $(I+Y\otimes Y)/2$, however, gives probabilities 1 and 0. Local effects thus fail to separate all joint states. No forbidden single-rebit effect has been inserted into the experiment: the gap in local tomography is exhibited within the allowed real joint-state space. [Q2, P-QSEL-01, with the explicit calculation added here]
+
+In complex QM, local tomography follows because tensor products of Hermitian bases span the full composite Hermitian space. Spectral decomposition
+$\rho=\sum_i p_i|i\rangle\langle i|$ gives the purification
+$|\Psi\rangle=\sum_i\sqrt{p_i}|i\rangle|i\rangle$.
+Uniqueness of purification follows from Schmidt decomposition and factorization with the same spectrum.
+
+The relative indispensability of these two principles does not mean that “QM requires exactly two axioms in every language.” Combining them into one conjunction or moving them into the background changes the axiom count without changing the logic. Purification and local-tomography mathematics in the historical CRP/CIT formulation belong to existing theory; UEOT supplies an interpretation in terms of parent systems and interfaces.
+
+## 2.4 Limits on the use of reconstruction
+
+There are two explicit routes to the formulas used later. The reconstruction route accepts the fixed OPT background, CIT, and ESP, and invokes K-QSEL-01. The direct modelling route instead takes finite-dimensional complex Hilbert space, Born probabilities, tensor composition, and CP instruments as quantum-sector inputs. Either supports the subsequent mathematics. Inputs of the latter route must not be relabelled as conclusions already derived from Core by the former.
+
+A finite or countable collection of experiments constrains a device’s response set. Finite success alone cannot establish the universal quantifiers over systems, states, and transformations in CIT or ESP. One successful purification preparation also does not determine a unique ontology of the actual environment. Approximate purification or tomography at finite precision requires a separate stability theorem for reconstruction. Replacing exact equalities by small numerical errors is not sufficient to transfer an exact reconstruction theorem.
+
+<a id="ch-3"></a>
+
+# 3. Fisher action, complex amplitudes, and conditional Born arguments
+
+How do a probability density and phase combine into Schrödinger dynamics, and when does a statistical inequality become quantum uncertainty? The selected action, momentum operator, and branch-martingale assumptions carry different parts of the argument and must not be collapsed into a single claim that an information principle yields the Born rule.
+
+## 3.1 A continuous statistical action
+
+On a smooth region without nodes, take $\rho>0$ and a real phase action $S$, with the required decay or boundary conditions. Given a mass $m>0$, potential $V$, and action scale $\hbar>0$, define
+$$
+\mathcal A[\rho,S]=\int dt\,dx\left[
+\rho\left(\partial_tS+\frac{|\nabla S|^2}{2m}+V\right)
++\frac{\hbar^2}{8m}\frac{|\nabla\rho|^2}{\rho}\right].
+$$
+This local, second-order action with its particular Fisher coefficient is an **H** input. Arbitrary object closure does not select it automatically. Electromagnetic coupling additionally requires an independent specification of $\nabla S-qA$, $q\phi$, and gauge transformations.
+
+<a id="p-qact-01"></a>
+
+**P-QACT-01: Conditional Madelung–Schrödinger equivalence.** Compactly supported variations of the action yield
+$$
+\partial_t\rho+\nabla\cdot(\rho\nabla S/m)=0,
+$$
+$$
+\partial_tS+\frac{|\nabla S|^2}{2m}+V
+-\frac{\hbar^2}{2m}\frac{\Delta\sqrt\rho}{\sqrt\rho}=0.
+$$
+For $\psi=\sqrt\rho\,e^{iS/\hbar}$, these are equivalent to the real and imaginary parts of
+$$
+i\hbar\partial_t\psi=
+-\frac{\hbar^2}{2m}\Delta\psi+V\psi
+$$
+on that smooth, node-free region.
+
+**Proof.** Put $S\mapsto S+\epsilon\eta$, where $\eta$ has compact support. Then
+$$
+\left.\frac{d\mathcal A}{d\epsilon}\right|_0
+=\int\rho\left(\partial_t\eta+\frac{\nabla S}{m}\cdot\nabla\eta\right)\,dt\,dx
+=-\int\eta\left[\partial_t\rho+\nabla\cdot(\rho\nabla S/m)\right]dt\,dx.
+$$
+Arbitrary $\eta$ gives the continuity equation. Next vary $\rho$, taking the parameter sufficiently small to retain local $\rho>0$. The Euler derivative of the Fisher term is
+$$
+\frac{\hbar^2}{8m}
+\left(-2\frac{\Delta\rho}{\rho}
++\frac{|\nabla\rho|^2}{\rho^2}\right)
+=-\frac{\hbar^2}{2m}\frac{\Delta\sqrt\rho}{\sqrt\rho}.
+$$
+Writing $R=\sqrt\rho$, direct differentiation gives
+$$
+\partial_t\psi=e^{iS/\hbar}(\partial_tR+iR\partial_tS/\hbar),
+$$
+$$
+\Delta\psi=e^{iS/\hbar}\left[\Delta R+
+\frac{2i}{\hbar}\nabla R\cdot\nabla S+
+\frac{iR}{\hbar}\Delta S-\frac{R}{\hbar^2}|\nabla S|^2\right].
+$$
+Substitute into the Schrödinger equation. Dividing its real part by $R>0$ gives the Hamilton–Jacobi equation; multiplying its imaginary part by $2R$ gives continuity. Each step is reversible on the declared region. ∎
+
+Here $|\psi|^2=\rho$ is part of the change of variables. It shows how the specified statistical action is consistent with wavefunction dynamics; it does not independently prove the POVM Born rule for every observable or handle nodes, vortices, and globally multivalued phases. A global wavefunction must satisfy suitable line-bundle or boundary conditions. Integer phase winding on a closed path constrains only the phase integral.
+
+The coefficient and units are premises of the result. Both $S$ and $\hbar$ have units of action, and $|\nabla S|^2/(2m)$ has units of energy. The Fisher coefficient $\hbar^2/(8m)$ is what combines the two equations into the stated linear Schrödinger equation. A different coefficient, a different meaning of probability density, or additional gradient terms require a fresh derivation. The original Π/Φ motivation does not uniquely fix these choices. [S1, §4.2.1, pp. 30–32; S2, §23; Q2, P-QACT-01]
+
+## 3.2 When a Fisher bound becomes position–momentum uncertainty
+
+Let a normalized one-dimensional density $\rho$ have finite variance and position Fisher information
+$I_x=\int(\rho')^2/\rho\,dx$, with vanishing boundary terms.
+
+<a id="p-qact-02"></a>
+
+**P-QACT-02.**
+$$
+\operatorname{Var}(X)I_x\ge1.
+$$
+If we also use the wavefunction above and quantum momentum $P=-i\hbar\partial_x$ on the required Sobolev domain, then
+$$
+\operatorname{Var}(P)=\operatorname{Var}_\rho(S')
++\frac{\hbar^2}{4}I_x,
+\quad \Delta X\Delta P\ge\hbar/2.
+$$
+
+**Proof.** Integration by parts gives $\int(x-\bar x)\rho'=-1$, hence
+$$
+1=\left|\int(x-\bar x)\sqrt\rho\frac{\rho'}{\sqrt\rho}\,dx\right|^2
+\le\left[\int(x-\bar x)^2\rho\,dx\right]
+\left[\int\frac{(\rho')^2}{\rho}\,dx\right].
+$$
+For $\psi=\sqrt\rho e^{iS/\hbar}$,
+$$
+P\psi=e^{iS/\hbar}\left(\sqrt\rho\,S'-i\hbar\frac{\rho'}{2\sqrt\rho}\right).
+$$
+Vanishing boundary terms give $\langle P\rangle=E_\rho S'$. The real and imaginary parts have no cross term in the squared modulus, so $\|P\psi\|^2=E_\rho(S')^2+\hbar^2I_x/4$. As a second moment of the self-adjoint momentum spectral measure, this is meaningful for $\psi\in D(P)$ with the relevant integrals finite; $P^2\psi$ need not already exist. Subtracting the squared mean yields the variance decomposition. The first inequality then gives $\Delta X\Delta P\ge\hbar/2$. ∎
+
+Estimation theory and quantum uncertainty are thus explicitly connected, but the momentum operator and amplitude–phase structure supply an additional bridge. Finite information capacity alone does not establish the CCR.
+
+In general probability theory, the distributions of $X$ and another real random variable $P$ can be independently specified with both variances arbitrarily small. Fisher information does not identify them as canonically conjugate variables. The momentum-variance identity above is precisely the bridge from a statistical inequality to physical uncertainty; “finite information” cannot replace it. [S1, §4.2.1, p. 30, printed lines 1468–1487]
+
+## 3.3 Quadratic forms and the meaning of a “two-phase test”
+
+**K-QBORN-01.** On a complex vector space, let a continuous nonnegative function $F$ satisfy $F(\lambda x)=|\lambda|^2F(x)$ and the parallelogram identity for all $x,y$. Complex polarization gives a unique positive semidefinite Hermitian form $B$ with $F(x)=B(x,x)$. In finite dimension this is $F(x)=x^\dagger Ax,A\succeq0$. This is the standard characterization of quadratic forms and inner products, not a global conclusion automatically proved by finitely many observations.
+
+Using the convention that the inner product is linear in its second argument,
+$$
+B(x,y)=\frac14\{F(x+y)-F(x-y)
+-iF(x+iy)+iF(x-iy)\}.
+$$
+If each event $a$ has such a form $F_a(x)=x^\dagger E_ax$, and $\sum_aF_a(x)=\|x\|^2$ for every vector $x$, then
+$$
+x^\dagger\left(\sum_aE_a-I\right)x=0\quad\forall x.
+$$
+Uniqueness under polarization implies $\sum_aE_a=I$; together with $E_a\succeq0$, this gives $E_a\preceq I$. We have therefore obtained a POVM. If classical random mixtures are transported convex-linearly, the probability for $\rho=\sum_ip_i|\psi_i\rangle\langle\psi_i|$ is $\sum_ip_iF_a(\psi_i)=\operatorname{Tr}(E_a\rho)$. The derivation explicitly depends on quadraticity, complex-vector structure, total probability, and the mixing rule.
+
+In a finite experiment, “two phases” generally means recovering a declared quadratic model through real and imaginary interference coordinates. It does not mean that two measured numbers exclude every nonquadratic theory.
+
+A response function can be changed outside a finite tested set while retaining every measured value. The valid conclusion of the original two-angle programme must therefore retain its model family, quantifiers, and errors. A finite pass is not unconditional uniqueness of the Born rule.
+
+## 3.4 Unbiased branch weights and actual outcomes
+
+<a id="p-qborn-02"></a>
+
+**P-QBORN-02: Probabilities of an unbiased final branch.** Suppose branch weights $p_a(t)\in[0,1]$ are martingales with respect to a common filtration and converge almost surely to a one-hot vector $1_{\{A=a\}}$. Then
+$$
+P(A=a\mid\mathcal F_0)=p_a(0).
+$$
+
+**Proof.** For every $B\in\mathcal F_0$, the martingale property gives $E[\mathbf1_Bp_a(t)]=E[\mathbf1_Bp_a(0)]$. Boundedness permits dominated convergence, yielding $E[\mathbf1_B\mathbf1_{\{A=a\}}]=E[\mathbf1_Bp_a(0)]$, exactly the conditional-probability identity. If the initial preparation is fixed so that $p_a(0)$ is constant, expectation gives $P(A=a)=p_a(0)$. With a random initial preparation, $P(A=a)=Ep_a(0)$. ∎
+
+When the initial weights are $|c_a|^2$, this gives Born outcome probabilities for that actualization model. Unbiased martingales, eventual selection of a single branch, and a concrete physical mechanism are independent premises. Objectivity of public records has not established them.
+
+<a id="ch-4"></a>
+
+# 4. Finite-dimensional quantum operations: states, effects, channels, and instruments
+
+Every later finite quantum calculation uses the operational grammar introduced here: states describe preparations, effects describe events, and instruments determine both probabilities and postmeasurement states. Choi–Kraus constructions make these objects checkable as matrices, while distance bounds connect implementation errors to final experimental probabilities.
+
+## 4.1 Basic conventions
+
+Let $\mathcal H\cong\mathbb C^d$ be a finite-dimensional complex Hilbert space, with inner product linear in the second argument. States satisfy $\rho\succeq0,\operatorname{Tr}\rho=1$, effects satisfy $0\preceq E\preceq I$, and probabilities are
+$$
+p(E|\rho)=\operatorname{Tr}(\rho E).
+$$
+This trace is real and belongs to $[0,1]$. Indeed, $\rho^{1/2}E\rho^{1/2}\succeq0$ has nonnegative trace, so cyclicity gives $\operatorname{Tr}(\rho E)\ge0$. Replacing $E$ by $I-E$ gives $1-\operatorname{Tr}(\rho E)\ge0$. This reasoning uses the declared quantum states, effects, and pairing; an arbitrary complex matrix expression is not thereby a probability model.
+
+A POVM is a family $\{E_a\}$ with $\sum_aE_a=I$. Projective measurement is the special case of mutually orthogonal projections. A general POVM does not determine the postmeasurement state.
+
+Composite systems use $\mathcal H_A\otimes\mathcal H_B$. The local state is uniquely determined by
+$\operatorname{Tr}(\rho_AE)=\operatorname{Tr}[\rho_{AB}(E\otimes I)]$.
+A separable state has the form $\sum_i p_i\rho_i^A\otimes\rho_i^B$; states without such a representation are entangled.
+
+## 4.2 Complete positivity, Choi matrices, and Kraus operators
+
+A linear map $\mathcal E:\mathcal B(\mathcal H_A)\to\mathcal B(\mathcal H_B)$ is completely positive if $\operatorname{id}_n\otimes\mathcal E$ preserves positivity for every auxiliary dimension $n$. We use the unnormalized Choi convention
+$$
+J(\mathcal E)=\sum_{ij}|i\rangle\langle j|\otimes
+\mathcal E(|i\rangle\langle j|),\qquad
+\mathcal E(\rho)=\operatorname{Tr}_A[(\rho^\top\otimes I)J].
+$$
+
+<a id="p-qop-01"></a>
+
+**P-QOP-01: Finite Choi–Kraus equivalence.**
+$$
+\mathcal E\ {\rm CP}\iff J(\mathcal E)\succeq0
+\iff\mathcal E(\rho)=\sum_\mu K_\mu\rho K_\mu^\dagger.
+$$
+Trace preservation is equivalent to $\sum_\mu K_\mu^\dagger K_\mu=I_A$, and also to
+$\operatorname{Tr}_B J=I_A$.
+
+**Proof.** Applying a CP map to the unnormalized maximally entangled projector gives a positive Choi matrix. A positive Choi matrix has a spectral decomposition $\sum_\mu|K_\mu\rangle\rangle\langle\langle K_\mu|$, where
+$|K\rangle\rangle=\sum_i|i\rangle\otimes K|i\rangle$.
+Substitution into the reconstruction formula, entry by entry, gives the Kraus representation. With any auxiliary space, the Kraus expression remains a sum of positive terms. Cyclicity of the trace for arbitrary inputs gives the trace-preservation condition. ∎
+
+More explicitly, write $J=\sum_\mu\lambda_\mu|v_\mu\rangle\langle v_\mu|$ and reshape $\sqrt{\lambda_\mu}v_\mu$ into $K_\mu$ using the input and output indices. Then
+$$
+\operatorname{Tr}\mathcal E(X)
+=\operatorname{Tr}\left[X\sum_\mu K_\mu^\dagger K_\mu\right]
+$$
+equals $\operatorname{Tr}X$ for every $X$ exactly when the bracketed operator is $I$. Changing to a normalized maximally entangled vector or reversing input/output order in the Choi convention requires the corresponding change of coefficients or transpose placement in the partial-trace and reconstruction formulas.
+
+Positivity alone is insufficient. Transposition preserves positivity of a single-system density matrix, but applying it on one side of a Bell state gives a partial transpose with a negative eigenvalue. With arbitrary entangled ancillas allowed, CP is therefore a physical compatibility condition arising from the specified composite sector.
+
+## 4.3 Instruments and normalization
+
+Each branch of an instrument $\{\mathcal M_a\}$ is CP and trace-nonincreasing, and their sum is CPTP:
+$$
+p_a=\operatorname{Tr}\mathcal M_a(\rho),\quad
+E_a=\mathcal M_a^\dagger(I),\quad
+\rho_a=\mathcal M_a(\rho)/p_a\quad(p_a>0).
+$$
+At $p_a=0$, division by zero cannot define a certified posterior. The Lüders update
+$\mathcal M_a(\rho)=P_a\rho P_a$ is a particular instrument, not a consequence of the POVM alone.
+
+A finite Kraus realization is $\mathcal M_o(X)=\sum_kK_{o,k}XK_{o,k}^\dagger$. Completeness of the whole instrument requires $\sum_o\sum_kK_{o,k}^\dagger K_{o,k}=I$, giving $E_o=\sum_kK_{o,k}^\dagger K_{o,k}$. Different branches may have different numbers of Kraus terms. Padding a common array with zero terms leaves the channel unchanged; omitting a branch or a term does not establish completeness.
+
+<a id="p-qop-02"></a>
+
+**P-QOP-02: No signalling.** A local CPTP map $\mathcal E_A$ does not change the unconditioned state of $B$.
+
+**Proof.** For every effect $F$ on $B$, unitality of the dual gives
+$(\mathcal E_A^\dagger\otimes\operatorname{id})(I\otimes F)=I\otimes F$,
+so all local probabilities remain unchanged. Selecting a measurement outcome can change a conditional state, but a receiver without the outcome label still observes the sum. ∎
+
+## 4.4 Distances and errors
+
+The trace distance is $D(\rho,\sigma)=\frac12\|\rho-\sigma\|_1$. For a channel difference we use the diamond norm
+$$
+\|\Phi\|_\diamond=\sup_{\|X\|_1=1}
+\|(\operatorname{id}_d\otimes\Phi)(X)\|_1,
+$$
+where auxiliary dimension equal to the finite input dimension $d$ suffices. The channel discrimination distance is half this norm.
+
+<a id="p-qop-03"></a>
+
+**P-QOP-03: Operational error and propagation.** Any effect-probability difference is bounded by trace distance, and CPTP maps contract state trace distance. If the channel diamond distance at step $t$ is at most $\epsilon_t$, the same causal quantum controller and initial state give a final distinguishable-probability error at most $\sum_t\epsilon_t$.
+
+**Proof.** Write the positive–negative spectral decomposition $\Delta=\rho-\sigma=\Delta_+-\Delta_-$. Since $\operatorname{Tr}\Delta=0$, both parts have trace $\|\Delta\|_1/2$. For $0\preceq E\preceq I$,
+$$
+-\operatorname{Tr}\Delta_-\le\operatorname{Tr}(E\Delta)
+\le\operatorname{Tr}\Delta_+.
+$$
+Taking $E$ to be the positive spectral-support projection attains the upper bound, hence
+$$
+\sup_{0\preceq E\preceq I}|\operatorname{Tr}[E(\rho-\sigma)]|
+=\tfrac12\|\rho-\sigma\|_1.
+$$
+For CPTP $\mathcal T$, the dual is positive and unital, so $0\preceq\mathcal T^*(E)\preceq I$. Trace duality identifies an output effect-probability difference with that of its pulled-back input effect. Taking the supremum proves contraction.
+
+For multiple steps, include the existing classical record, controller, and permitted quantum memory in the circuit. Both circuits use the same causal control rule. Replace their channels one step at a time to form intermediate circuits. Each replacement has half-diamond-norm bound $\epsilon_t$; identical CPTP processing before and after it and the final effect do not increase discrimination distance. The triangle inequality gives the final probability bound $\min(1,\sum_t\epsilon_t)$. ∎
+
+Instrument comparisons must retain the outcome label in the channel:
+$\rho\mapsto\sum_o|o\rangle\langle o|\otimes\mathcal M_o(\rho)$.
+Bounding only the total channel after forgetting labels does not guarantee closeness of conditional-feedback circuits. The maximal response difference over a finite protocol family also defines an operational pseudodistance, but generally only a lower bound on the full effect supremum. Tomographic completeness cannot be assumed for both without justification.
+
+Postselection amplifies error. If unnormalized posteriors $\sigma,\tau\succeq0$ satisfy
+$\|\sigma-\tau\|_1\le\delta$, and $p=\operatorname{Tr}\sigma,q=\operatorname{Tr}\tau\ge p_{\min}>0$, then
+$$
+D(\sigma/p,\tau/q)\le\delta/p_{\min}.
+$$
+Add and subtract $\tau/p$ and use $|p-q|\le\delta$ to obtain the bound. Rare outcomes do not retain the unconditioned error radius.
+
+Trace distance, the diamond norm, and Choi equivalence are presented here as complete finite-dimensional mathematics. Their particular coverage by the machine kernel must be checked declaration by declaration against Lean sources and audit receipts. An exact numerical check of one model does not automatically formalize all the spectral and norm theory used here. [Q2, §4; S4, §§2, 9]
+
+<a id="ch-5"></a>
+
+# 5. Quantum FFIPS and realizations of quantum objects
+
+Whether a density matrix contains all predictive information depends on the allowed future experiments and on environmental memory. This chapter uses that dependence to show how branchwise intertwining and finite effect-space closure preserve every finite record, with a counterexample to comparing total channels alone.
+
+## 5.1 States as representations of complete future predictions
+
+<a id="p-qff-01"></a>
+
+**P-QFF-01: Finite quantum FFIPS.** Assume the current $\rho_h$ is sufficient for every future process, and future protocols contain a family of effects separating Hermitian operators. Then
+$$
+h\sim h'\iff\rho_h=\rho_{h'}.
+$$
+
+**Proof.** Equal states give equal probabilities under the same future instrument sequence. Conversely, equality of all allowed future probabilities makes every pairing of the separating effects with $\Delta=\rho_h-\rho_{h'}$ vanish, so $\Delta=0$. If all effects are allowed, the positive spectral-support projection $P_+$ of a nonzero traceless Hermitian $\Delta$ directly distinguishes the states because $\operatorname{Tr}(P_+\Delta)>0$. A finite separating family need not contain every such $P_+$; its spanning property suffices. ∎
+
+If the actual protocols only measure $Z$, the current responses of $|+\rangle,|-\rangle$ agree. Allowing a future Hadamard followed by $Z$ immediately distinguishes them. The canonical state is therefore relative to the protocols, not to the analyst’s preferred coordinates.
+
+With environmental memory or initial system–environment correlations, $\rho_h$ need not be sufficient. Chapter 18 provides an explicit causal-break counterexample. One must then use the process response rather than insist that the reduced state represents every future.
+
+## 5.2 Quantum readout and general carriers
+
+Fix finite physical readout blocks $V$ and a target response $C$. An access set $S\subseteq V$ supplies implementable quantum or classical interfaces; sufficiency requires recovery of all specified future responses. Minimal sufficient families and access blockers retain their Core definitions, but quantum interfaces must state whether joint measurements, ancillas, and coherent access are permitted.
+
+Logically deleting an output port, physically erasing a subsystem, and measuring it while forgetting the outcome are different operations. They may preserve, restrict, or destroy coherence in different ways; a damage result without specified semantics cannot cover them indiscriminately.
+
+## 5.3 A quotient of quantum dynamics
+
+Let encoding $\mathcal E:M\to X$ and decoding $\mathcal D:X\to M$ between logical and physical systems be CPTP, with $\mathcal D\mathcal E=\operatorname{id}$ on the declared logical state class. For each permitted action $a$ and outcome $o$, let $\mathcal M_{a,o}$ and $\overline{\mathcal M}_{a,o}$ be the physical and logical instrument branches. Require branchwise commutation:
+$$
+\mathcal M_{a,o}\mathcal E=\mathcal E\overline{\mathcal M}_{a,o}.
+$$
+This must hold on the full logical operator space, or at least on a closed class containing every reachable branch output. If a terminal effect $F$ is tested, its logical effect must be $\bar F=\mathcal E^*(F)$, or have the same pairing on the specified input class.
+
+<a id="p-qff-02"></a>
+
+**P-QFF-02: Path preservation by a quantum quotient.** Under branchwise commutation, a physical initial state $\mathcal E(\bar\rho)$ has, for every permitted finite record, an unnormalized branch state exactly corresponding by encoding to the logical one. Record probabilities agree, as do joint probabilities with corresponding terminal effects.
+
+**Proof.** For $w=((a_1,o_1),\ldots,(a_t,o_t))$, successive branchwise substitutions give
+$$
+\mathcal M_{a_t,o_t}\cdots\mathcal M_{a_1,o_1}\mathcal E(\bar\rho)
+=\mathcal E\bigl(\overline{\mathcal M}_{a_t,o_t}\cdots
+\overline{\mathcal M}_{a_1,o_1}(\bar\rho)\bigr).
+$$
+Trace preservation of the encoding makes the traces equal. A terminal effect is handled by $\operatorname{Tr}[F\mathcal E(X)]=\operatorname{Tr}[\bar F X]$. An adaptive protocol selects the same action on a shared observed record path, so the branchwise equality remains valid. Summing over a finite leaf set gives equal probabilities for every leaf event. Zero-probability branches retain the zero unnormalized operator, without division. ∎
+
+The requirement cannot be weakened to equal total channels and equal single-step POVMs. On a qubit, let
+$$
+\mathcal M_0(X)=\tfrac12\operatorname{Tr}(X)|0\rangle\langle0|,
+\quad\mathcal M_1(X)=\tfrac12\operatorname{Tr}(X)|1\rangle\langle1|,
+$$
+and $\mathcal N_0=\mathcal M_1,\ \mathcal N_1=\mathcal M_0$. Both instruments are CP, every branch effect is $I/2$, and both total channels are $X\mapsto\operatorname{Tr}(X)I/2$. Yet a subsequent $Z$ readout always agrees with the first label for $\mathcal M$ and always disagrees for $\mathcal N$. This exact counterexample shows that one-step marginals and unconditioned evolution alone do not preserve multitime predictions. [Q2, §5.3, revised premises; S2, §§7.5, 28.3–4]
+
+A quotient valid on the encoding image does not cover arbitrary physical initial states. Leakage, encoding error, and ancillary completeness need separate treatment. Approximate commutation should use a restricted or full diamond norm with its input class stated.
+
+## 5.4 Persistence and quantum existence
+
+Possible persistent structures include invariant subspaces, noiseless subsystems, stationary states, metastable states, correctable logical states, topologically protected sectors, and effective quasiparticles. Each has its own mechanism conditions. A wavefunction need not exhibit a classical closed loop to qualify as an object, and a stable spectral gap does not automatically imply topological protection.
+
+Chapter 20 adds control value to quantum objects under further task specifications. An object certificate alone does not select a unique reward function.
+
+## 5.5 From finite closure checks to every finite future
+
+A finite quantum system need not have its proof re-enumerated for every future length. The key is closure of the effect space generated by the actual instruments, not calling a finite-horizon test table the “complete future.” Fix a finite operation library. For event $e=(a,o)$, the Heisenberg pullback is
+$$
+\mathcal M_e^*(E)=\sum_kK_{e,k}^\dagger E K_{e,k}.
+$$
+For records ordered chronologically, define
+$$
+E_{\varnothing}=I,\qquad E_{e::w}=\mathcal M_e^*(E_w).
+$$
+Cyclicity gives $\operatorname{Tr}[E\mathcal M_e(X)]=\operatorname{Tr}[\mathcal M_e^*(E)X]$. Induction on word length then gives
+$$
+p(w\mid\rho)=\operatorname{Tr}(E_w\rho).
+$$
+Define the real linear space $\mathcal O=\operatorname{span}_{\mathbb R}\{E_w\}$. Every $E_w$ is Hermitian, so a $d$-dimensional quantum system has $\dim\mathcal O\le d^2$. This counts real coordinates of Hermitian matrices; it does not say that arbitrarily few measurements recover every state.
+
+A finite candidate list $B_1,\ldots,B_r$ requires three kinds of finite checks: some $B_{j_0}=I$; every $B_j$ is an actual word effect $E_{w_j}$; and, for every allowed event and candidate element, real coefficients satisfy
+$$
+\mathcal M_e^*(B_j)=\sum_iT_{e,ji}B_i.
+$$
+The first two conditions prevent insertion of free operators unrelated to the operation library. The third establishes one-step pullback closure. Induction places every $E_w$ in the candidate real span: the empty word uses the identity, and the prefix step uses linearity and the checked local equations. Thus the candidate span is exactly $\mathcal O$.
+
+With unnormalized coordinates $x_j(X)=\operatorname{Tr}(B_jX)$,
+$$
+x_j(\mathcal M_e(X))=\sum_iT_{e,ji}x_i(X),\qquad
+x(\mathcal M_e(X))=T_ex(X).
+$$
+For $w=(e_1,\ldots,e_t)$, event $e_1$ occurs first, hence
+$$
+p(w\mid\rho)=\bigl[T_{e_t}\cdots T_{e_1}x(\rho)\bigr]_{j_0}.
+$$
+Two states have equal finite coordinates exactly when all finite-word probabilities agree. The forward implication follows from closure and recursion; the reverse follows because every $B_j$ is itself a word effect. The candidate list may be linearly redundant. Sufficiency remains valid, but the certificate alone does not establish minimality or independence of the coordinates.
+
+The result also covers complete finite adaptive trees. Each leaf is an actual record word with actions chosen from its history, and its probability is computed from the same initial coordinates. Summing leaf probabilities gives record-event probabilities. Conditional coordinates at a positive-probability leaf are divided by its probability; zero-probability leaves retain unnormalized semantics. Posterior closure and all-word equivalence are conclusions of local pullback identities, not assumptions.
+
+The UEOT-QM files `Observables.lean`, `FiniteCoordinates.lean`, and `Adaptive.lean` implement this actual Kraus–trace-pairing chain. `Exact.lean` soundly interprets pairs of matrices with rational real and imaginary parts as complex matrices and proves preservation of addition, multiplication, adjoint, real rational scaling, and finite sums. `ExactCertificate.lean` additionally checks nonnegative weights, completeness of every instrument, the empty word, an actual word witness for each basis matrix, and local closure, then constructs ordinary complex quantum instruments and a `FiniteObservablePresentation`. The finite data can be proved valid by `decide +kernel`; the general soundness theorem then lifts the result to every finite record. [Source interfaces: `UEOTQM.recordEffect`, `observableSpace`, `response_eq_iff_pairing_observableSpace`; `ExactCertificate.Conditions`, `exactRecordEffect_toMatrix`, `coordinates_eq_iff_response_eq`, `adaptive_leafProbability_eq`]
+
+These guarantees concern the finite model bound to those sources. They do not automatically verify external JSON parsers, search algorithms, or all exporters; nor do they show that a real device realizes the input numbers. They do not derive particle generations, a mass spectrum, or full QFT from a finite quantum response space. Source binding and negative controls answer which data were compiled. Experiments and sector bridges answer how those data correspond to physics.
+
+<a id="ch-6"></a>
+
+# 6. Measurement: coherent parents, public quotients, and conditional predictive states
+
+Measurement involves joint quantum evolution, publicly readable labels, and conditional prediction once an outcome is known. Separating these aspects shows how local records can be stable and mutually consistent while the joint system retains coherence, setting up the dynamics and inversion protocols of the next two chapters.
+
+## 6.1 Coherent completion of any finite instrument
+
+Let $\mathcal M_a(\rho)=\sum_\mu A_{a\mu}\rho A_{a\mu}^\dagger$, with trace-preserving sum. Define
+$$
+V|\psi\rangle=\sum_{a,\mu}A_{a\mu}|\psi\rangle\otimes|a,\mu\rangle,\qquad
+Q_a=\sum_\mu|a,\mu\rangle\langle a,\mu|.
+$$
+
+<a id="p-qmeas-01"></a>
+
+**P-QMEAS-01: Parent-system completion.** $V^\dagger V=I$, and
+$$
+\mathcal M_a(\rho)=
+\operatorname{Tr}_R[(I\otimes Q_a)V\rho V^\dagger(I\otimes Q_a)].
+$$
+After a finite enlargement, $V$ is realizable by a unitary operation and a fixed initial ancilla.
+
+**Proof.** Orthogonality of the auxiliary basis gives $V^\dagger V=\sum A_{a\mu}^\dagger A_{a\mu}=I$. The projection selects label $a$, and the partial trace retains only equal-$\mu$ terms, giving the instrument. Complete the image basis of the isometry to an orthonormal basis of the full space to obtain a unitary extension. ∎
+
+A pure input gives a pure joint parent state. Whether this parent can actually be preserved reversibly depends on environmental access and noise. A mathematical dilation alone does not establish that the inverse can be implemented experimentally.
+
+## 6.2 Conditioning as the predictive state of an outcome-extended history
+
+<a id="p-qmeas-02"></a>
+
+**P-QMEAS-02.** After outcome $a$ occurs, with $p_a>0$, every future quantum effect $F$ has conditional probability
+$$
+P(F|h,a)=\operatorname{Tr}(F\rho_a).
+$$
+If future protocols separate states, $\rho_a$ is the unique quantum FFIPS for the outcome-extended history.
+
+**Proof.** Divide the joint probability $\operatorname{Tr}[F\mathcal M_a(\rho)]$ by $p_a$. Uniqueness follows from P-QFF-01. ∎
+
+The standard measurement chain is thus organized as coherent parent completion, access to a record algebra, and conditioning on an outcome. This agrees with standard instrument predictions in QM. The UEOT connection organizes those steps; it does not add collapse dynamics.
+
+## 6.3 What public records cannot see
+
+Let $\Delta_R(\Omega)=\sum_a(I\otimes Q_a)\Omega(I\otimes Q_a)$.
+
+<a id="p-qmeas-03"></a>
+
+**P-QMEAS-03: Public blindness.** If
+$[B,I\otimes Q_a]=0$ for every $a$, then
+$$
+\operatorname{Tr}(B\Omega)=\operatorname{Tr}[B\Delta_R(\Omega)].
+$$
+
+**Proof.** The observable $B$ is block diagonal in the records. Expanding the projection decomposition and using cyclicity makes every cross term with distinct labels vanish. ∎
+
+The coherent parent and its dephased state therefore have the same public-record statistics. Redundant records, stable pointers, and observer agreement alone cannot decide whether global coherence has fundamentally disappeared. Distinguishing the states requires coherent tests across record blocks, such as complete erasure or inversion.
+
+This blindness holds for all record-block-diagonal effects. The block-diagonal operator algebra $\bigoplus_a\mathcal B(\mathcal H_a)$ can remain noncommutative when a branch has internal dimension greater than one; the whole algebra is not classical. The next section uses only $\mathcal Z=\operatorname{span}\{P_a\}$, generated by label projections. This smaller algebra is automatically commutative. Classical public labels can coexist with quantum information inside branches.
+
+## 6.4 Classical dynamics on a commutative algebra
+
+Public projections $P_a$ span a commutative algebra $\mathcal Z$. If
+$\mathcal T^\dagger(\mathcal Z)\subseteq\mathcal Z$, then
+$$
+\mathcal T^\dagger(P_b)=\sum_a M_{ab}P_a,\quad
+M_{ab}\ge0,\quad\sum_bM_{ab}=1.
+$$
+The row vector of public probabilities consequently evolves as $p'=pM$.
+
+<a id="p-qmeas-04"></a>
+
+**P-QMEAS-04.** The matrix $M$ is a classical stochastic matrix.
+
+**Proof.** Positivity gives nonnegative expansion coefficients, unitality gives row sums equal to one, and trace pairing gives the probability update. ∎
+
+This directly connects quantum public classicality to the classical predictive quotient of Core. The entire parent system need not become a classical probabilistic mixture.
+
+A multitime classical record process also requires an appropriate measurement implementation or closure of the record branches on the algebra. Invariance under one unconditioned $\mathcal T^*$ directly guarantees only Markov updates of public probabilities under its repeated action. Other intermediate instruments or feedback require the branchwise checks of §5.3.
+
+## 6.5 Objective record certificates (ORCs)
+
+Specify the labels, error $\delta$, persistence window $T$, number of records $m$, and confidence level in advance. A certificate requires at least a commutative public algebra; $m$ disjoint fragments that can each identify the label; persistence and transport of the records along histories; a positive margin to a defined failure class; and remaining confidence margin in every statistical condition.
+
+An ORC is operationally defined. A mutual-information plateau in environmental fragments is relevant evidence, but does not replace independent accessibility, nondisturbing readout, or a complete failure model. Nor does it determine the strength of an additional actualization channel considered below.
+
+**Public records and total correlations.** Quantum mutual information includes both classical and quantum correlations. A plateau for an environment fragment does not by itself establish that an observer can read the required pointer label without disturbing the stipulated record. Strong Quantum Darwinism and spectrum broadcast structure impose further conditions on accessible information, distinguishable records, and conditional fragment structure. In particular, pairwise conditional independence does not ensure full factorization of the conditional joint state of all fragments; the 2021 Comment and Reply clarified this point in the 2019 equivalence statement. [Le–Olaya-Castro 2018](https://doi.org/10.1103/PhysRevA.98.032103), [2019](https://doi.org/10.1103/PhysRevLett.122.010403), [Feller et al., Comment](https://doi.org/10.1103/PhysRevLett.126.188901), [authors' Reply](https://doi.org/10.1103/PhysRevLett.126.188902). The public quotient, strong record nondisturbance, and empirical record criteria in this book are related but distinct conditions; terminology alone does not make them interchangeable.
+
+<a id="ch-7"></a>
+
+# 7. Complete classification of strong record-nondisturbing dynamics
+
+If a channel leaves every quantum state within each record branch untouched, how can it still change coherence between branches? A correlation matrix captures this freedom completely, and the semigroup analysis derives its global compatibility conditions: individually plausible pairwise behaviour need not assemble into a physical channel.
+
+Later connections: Chapter 38 gives cycle-phase bounds, Chapter 39 a four-level noise-class witness, and Chapter 46 tests for correlated trials.
+
+## 7.1 SRN and the Schur form
+
+Let finite-dimensional $\mathcal H=\bigoplus_{a=1}^m\mathcal H_a$ have nonzero branches and $\sum_aP_a=I$. A CPTP channel satisfies **SRN** if it fixes every density matrix within each branch pointwise, not merely each branch’s total probability. Remove zero-dimensional branches first to avoid assigning spurious independent parameters to unobservable blocks.
+
+<a id="p-qsrn-01"></a>
+
+**P-QSRN-01: Complete SRN classification.** SRN holds exactly for channels
+$$
+\mathcal A_K(X)=\sum_{a,b}K_{ab}P_aXP_b,\qquad
+K\succeq0,\quad K_{aa}=1.
+$$
+
+**Proof.** Choose Kraus operators $L_\mu$. Every pure-state projector in a branch is fixed. The positive terms
+$L_\mu|\psi\rangle\langle\psi|L_\mu^\dagger$ sum to a rank-one operator, so every
+$L_\mu|\psi\rangle$ is parallel to $|\psi\rangle$. Applying linearity to two independent vectors in the same branch and their sum forces the same proportionality constant: $L_\mu P_a=c_{\mu a}P_a$. Hence
+$K_{ab}=\sum_\mu c_{\mu a}\overline{c_{\mu b}}$ is a Gram matrix, with unit diagonal by trace preservation. Conversely, any such Gram decomposition gives
+$L_\mu=\sum_ac_{\mu a}P_a$, a CPTP channel fixing every branch state pointwise. ∎
+
+This operator structure agrees with existing theory of Schur channels, nondisturbed algebras, and genuinely incoherent operations. We re-prove it to establish a complete parameterization for the measurement extension; it is not claimed as an original UEOT operator theorem.
+
+## 7.2 Composition, blindness, and underdetermination
+
+<a id="p-qsrn-02"></a>
+
+**P-QSRN-02.**
+$$
+\mathcal A_K\mathcal A_L=\mathcal A_{K\odot L}.
+$$
+Every block-diagonal effect has the same statistics under $\mathcal A_K$ as under the identity channel.
+
+**Proof.** Each $(a,b)$ block is multiplied successively by $L_{ab}$ and $K_{ab}$. Public effects read only the $a=b$ blocks, whose coefficients are one. ∎
+
+The all-ones matrix $J$ represents the identity channel, while the identity matrix $I$ represents complete branch dephasing. They have the same public records. An ORC therefore does not determine a unique $K=F(\mathrm{ORC})$. If standard fully coherent dynamics have already been assumed, the corresponding channel has already been selected; it has not then been independently derived from objectivity.
+
+## 7.3 Global generators of continuous semigroups
+
+Continuity and $K(t+s)=K(t)\odot K(s),K(0)=J$ imply entrywise
+$K_{ab}(t)=e^{t\lambda_{ab}}$. A zero at finite time would, by repeated halving, contradict continuity at zero. A nonzero continuous multiplicative function admits a local logarithm and hence the exponential form.
+
+<a id="p-qsrn-03"></a>
+
+**P-QSRN-03: Necessary and sufficient generator-cone conditions.** These maps are CPTP for every $t\ge0$ exactly when
+$$
+\Lambda=\Lambda^\dagger,\quad\lambda_{aa}=0,\quad
+z^\dagger\Lambda z\ge0\quad(\mathbf1^\dagger z=0).
+$$
+
+**Proof.** Necessity follows by writing $K(t)=J+t\Lambda+o(t)$, restricting to the zero-sum subspace to eliminate $J$, and taking the right derivative of positivity. Sufficiency has a direct construction, without invoking Schoenberg’s theorem as a black box. Fix an anchor $r$ and define
+$$
+G_{ab}=\lambda_{ab}-\lambda_{ar}-\lambda_{rb}.
+$$
+For any $x$, $x^\dagger Gx$ equals $z^\dagger\Lambda z$ with $z=x-(\sum_ax_a)e_r$, hence $G\succeq0$. Put
+$\theta_a=\operatorname{Im}\lambda_{ar}$. Then
+$$
+\lambda_{ab}=G_{ab}-\tfrac12G_{aa}-\tfrac12G_{bb}
++i(\theta_a-\theta_b).
+$$
+Schur products preserve positivity, so
+$\exp_\odot(tG)=J+tG+t^2G\odot G/2+\cdots\succeq0$.
+Multiplying on the left by the diagonal matrix
+$D_{aa}=e^{-tG_{aa}/2+it\theta_a}$
+and on the right by its adjoint gives exactly $K(t)$. Its diagonal is one; P-QSRN-01 gives CPTP, and the semigroup law holds entrywise. ∎
+
+This is an explicit global compatibility proof. Nonnegative pairwise decay rates are insufficient. For example,
+$$
+\Lambda=\begin{pmatrix}0&-1&-1\\-1&0&-10\\-1&-10&0\end{pmatrix}
+$$
+gives $z^\top\Lambda z=-12$ for $z=(2,-1,-1)$, so its small-time map is not physical.
+
+In the real symmetric case, put $D_{ab}=-\lambda_{ab}$. The Gram construction gives
+$D_{ab}=\|v_a-v_b\|^2$. General complex generators also contain the complex geometry of the Gram matrix; arbitrary phase differences alone do not capture it.
+
+Explicitly, if $G_{ab}=\langle u_a,u_b\rangle$ is a real Gram representation, then $D_{ab}=\|u_a-u_b\|^2/2$. Setting $v_a=u_a/\sqrt2$ gives the stated distance form. In the complex case, imaginary cycle phases are constrained by the same positive Gram structure. Arbitrary phases added to nonnegative pairwise decay rates need not generate a CP semigroup. The classification assumes a fixed branch decomposition, finite dimension, continuity, and a time-homogeneous semigroup. Changing records or environmental memory require a different model.
+
+<a id="ch-8"></a>
+
+# 8. QDRR: record writing, erasure by inversion, and finite data
+
+QDRR writes a record and then reverses the writing to probe coherence invisible to public labels. We derive what it reconstructs within SRN, quantify finite-sample errors, and state the hardware-control requirements; residual loss must first be distinguished from incomplete reversal and ordinary noise.
+
+## 8.1 The interface for complete inversion
+
+Distinguish two types. The full unitary $U_W$ acts on the system and record register, initialized at $|0\rangle_R$. The actual writing isometry is
+$$
+W:\mathcal H\to\mathcal H\otimes\mathcal R,\qquad
+W|\psi\rangle=U_W(|\psi\rangle\otimes|0\rangle_R).
+$$
+Its image branch projections are $\widetilde P_a=WP_aW^\dagger$. They sum to $WW^\dagger$, not automatically to the identity on the enlarged space. The intermediate channel is SRN with kernel $K$ on these orthogonal image branches and does not leak input outside the image. Defining it on the whole space requires an explicit action on the orthogonal complement.
+
+<a id="p-qqdr-01"></a>
+
+**P-QQDR-01: Coherent pullback.**
+$$
+W^\dagger\widetilde{\mathcal A}_K(WXW^\dagger)W=\mathcal A_K(X).
+$$
+
+The corresponding full physical inverse satisfies
+$$
+U_W^\dagger\widetilde{\mathcal A}_K
+\bigl[U_W(X\otimes|0\rangle\langle0|)U_W^\dagger\bigr]U_W
+=\mathcal A_K(X)\otimes|0\rangle\langle0|.
+$$
+
+**Proof.** Expand $X=\sum_{a,b}P_aXP_b$. Since $W^\dagger W=I$,
+$$
+\widetilde P_a(WXW^\dagger)\widetilde P_b=WP_aXP_bW^\dagger.
+$$
+The intermediate SRN map multiplies this block by $K_{ab}$, yielding $W\mathcal A_K(X)W^\dagger$. Multiplication by $W^\dagger,W$ gives the first identity. Using $U_W^\dagger W|\psi\rangle=|\psi\rangle\otimes|0\rangle$ gives the second. ∎
+
+Inversion must include every relevant environment that actually retains which-branch information. Residual decoherence after reversing only some registers cannot be attributed directly to fundamental collapse.
+
+## 8.2 Tomography of the full SRN class
+
+Prepare $(|a\rangle+e^{i\phi}|b\rangle)/\sqrt2$ and measure
+$X_{ab}=|a\rangle\langle b|+|b\rangle\langle a|$.
+
+<a id="p-qqdr-02"></a>
+
+**P-QQDR-02.**
+$$
+\langle X_{ab}\rangle_\phi
+=\operatorname{Re}(e^{-i\phi}K_{ab}).
+$$
+Phases $\phi=0,\pi/2$ give the real and imaginary parts. The $m(m-1)$ real coordinates for all $a<b$ recover the entire SRN channel.
+
+**Proof.** The input $(a,b)$ entry is $e^{-i\phi}/2$ and is multiplied by $K_{ab}$. Adding its conjugate gives the expression. The diagonal is already known to be one, so reconstruction is unique. ∎
+
+Completeness here concerns a single finite-dimensional CPTP-SRN map. It does not cover population transfer, leakage, disturbance within branches, or arbitrary history-dependent new physics.
+
+## 8.3 Finite sampling and projection onto physical matrices
+
+Let $m\ge2$. At each setting obtain $n\ge1$ independent samples in $[-1,1]$ with that setting’s fixed mean. Set $L=m(m-1)$ and $0<\alpha<1$. The union bound does not require independence between settings, but the sampling assumptions for Hoeffding within each setting must hold. When $m=1$ there are no off-diagonal parameters; $L=0$ must not be inserted into the logarithmic formula below.
+
+<a id="p-qqdr-03"></a>
+
+**P-QQDR-03: Simultaneous error.** With probability at least $1-\alpha$,
+$$
+\max_\ell|\widehat\mu_\ell-\mu_\ell|
+\le\epsilon_n=\sqrt{\frac{2\log(2L/\alpha)}n},
+$$
+and
+$$
+\|\widehat K-K\|_{\rm op}\le\|\widehat K-K\|_F
+\le\epsilon_n\sqrt{2m(m-1)}.
+$$
+
+**Proof.** Hoeffding gives $2e^{-n\epsilon^2/2}$ for a variable of range width two; take the union bound over $L$ settings. Each complex off-diagonal squared error is at most $2\epsilon^2$, and Hermitian symmetry counts each pair twice. ∎
+
+For $m=3,\epsilon=.12,\alpha=.05$, each setting requires $n\ge762$. The coefficient for $[0,1]$ variables cannot be used without rescaling the measurement outputs.
+
+An empirical matrix need not be positive semidefinite. Projection onto the nearest correlation matrix can improve physical usability, but the projection residual must remain as a model-consistency diagnostic; it cannot be discarded while reporting only a postprojection pass. Euclidean projection onto a closed convex set containing the true $K$ does not increase its Frobenius error. It does not turn an incorrect SRN model into an empirically validated model.
+
+## 8.4 Identifiability of hardware effects and new physics
+
+Only when hardware noise and candidate actualization are independent SRN processes does
+$K_{\rm obs}=K_{\rm hw}\odot K_{\rm act}$ hold.
+Entrywise division is unstable near zeros of $K_{\rm hw}$, and general noise need not admit this factorization.
+
+An experiment requires, at minimum, matched no-record and immediate-inversion controls, scrambled redundancy, physical-qubit permutations, randomized interleaving, and independent calibration. Existing quantum-Darwinism data generally test public records. Without coherent inversion and matched calibration, record redundancy cannot retrospectively be interpreted as evidence for fundamental collapse. No new hardware experiment was performed for this text.
+
+## 8.5 What existing experiments establish
+
+
+Quantum Darwinism has been investigated experimentally in controlled settings. Each result should be cited with its actual model and readout; these studies do not collectively constitute experimental confirmation of UEOT.
+
+| Original experiment | System and readout | Evidence relevant here |
+|---|---|---|
+| Ciampini et al., 2018, [PRA 98, 020101(R)](https://doi.org/10.1103/PhysRevA.98.020101) | Information distribution in photonic cluster states | Redundant-record signatures in a specified model |
+| Chen et al., 2019, [Science Bulletin 64, 580–585](https://doi.org/10.1016/j.scib.2019.03.032) | Six-photon quantum simulator | Classical records in controlled environment fragments |
+| Unden et al., 2019, [PRL 123, 140402](https://doi.org/10.1103/PhysRevLett.123.140402) | NV centre and nuclear-spin environment | Redundant information in a specified system–environment setting |
+| Zhu et al., 2025, [Science Advances 11, eadx6857](https://doi.org/10.1126/sciadv.adx6857) | Branching structure and correlations in superconducting circuits | Record formation under standard quantum operations |
+| Zheng et al., 2026, [PRL 137, 150201](https://doi.org/10.1103/t2yx-9bqh) | Coherence revival of a mesoscopic cat state in a controlled reservoir | Suppression of spontaneous revival with increasing reservoir size over the measured time window |
+
+These are laboratory studies, including quantum simulations on physical devices. They are distinct from the synthetic computer calculations in Appendix D. Neither record formation nor revival suppression alone establishes the elimination of global coherence by fundamental nonunitary dynamics. The fully controlled inversion in §8.1 is also a different operation from waiting for a spontaneous revival.
+
+Data-processing conventions must accompany the results. For example, Zhu et al. reconstruct logical states using postselection that excludes outcomes outside the logical subspace; this cannot directly certify an unconditional channel. Experimental points, numerical curves, and the definitions of error bars must also remain distinct. This book has not obtained the studies' raw counts for a common reanalysis, inferred a new actualization-strength bound from them, or performed a QDRR hardware experiment.
+
+<a id="ch-9"></a>
+
+# 9. Quantum information, error correction, and metrology
+
+Copyable public records and the impossibility of cloning arbitrary unknown quantum states are compatible because they preserve different information. Entanglement, correction, and metrology are placed in their respective operational tasks, using standard quantum-information results to assess maintenance and estimation without making one task’s optimum a universal purpose.
+
+## 9.1 Entanglement and information
+
+The von Neumann entropy is $S(\rho)=-\operatorname{Tr}\rho\log\rho$. Quantum relative entropy is
+$$
+D(\rho\|\sigma)=\operatorname{Tr}\rho(\log\rho-\log\sigma)
+$$
+with value infinity when the required support inclusion fails. **K-QINFO-01:** relative-entropy data processing under CPTP maps, strong subadditivity, and the Holevo bound on accessible information are invoked as standard quantum-information theorems.
+
+Schmidt coefficients $p_i$ of a pure parent state give $S(\rho_A)=S(\rho_B)$. Entanglement can produce local mixedness, but local mixedness alone does not show that the actual purifying environment has been experimentally identified.
+
+Quantum mutual information $I(A:B)=S(A)+S(B)-S(AB)$ measures total correlations. Entanglement, shared classical records, accessible mutual information, and irreducibility under a parent-object partition answer different questions.
+
+## 9.2 No cloning
+
+<a id="p-qinfo-01"></a>
+
+**P-QINFO-01.** No single unitary implements
+$|\psi\rangle|0\rangle\mapsto|\psi\rangle|\psi\rangle$
+for every unknown pure state.
+
+**Proof.** For two states with inner product $c$, unitary preservation of inner products would require $c=c^2$, impossible for $0<|c|<1$. Allowing an input-dependent final environment requires pure-state cloning to have joint output $|\psi\rangle|\psi\rangle|e_\psi\rangle$. Inner-product preservation becomes $c=c^2\langle e_\psi|e_\varphi\rangle$; absolute values and Cauchy–Schwarz give $|c|\le|c|^2$, again impossible for $0<|c|<1$. An isometric dilation reduces general deterministic CPTP cloning to the same argument. ∎
+
+Orthogonal classical records can be copied redundantly without violating no cloning. An ORC copies distinguishable public labels, not arbitrary unknown quantum states.
+
+## 9.3 Error-correction conditions and object maintenance
+
+**K-QEC-01: Knill–Laflamme.** On a code projection $P$, noise Kraus operators $E_a$ admit a common perfect recovery exactly when
+$$
+PE_a^\dagger E_bP=c_{ab}P.
+$$
+This requires coherence with a full auxiliary system, not merely separate recoverability of two basis states.
+
+For sufficiency, diagonalize the positive matrix $c$ to obtain mutually orthogonal error images of the code. Measure the error syndrome, then reverse each isometric error without reading logical information. Necessity follows because the complementary environment of a recoverable channel cannot distinguish logical states. The full general proof is invoked as a standard K result.
+
+In UEOT terms, the code subspace is a candidate realization, recovery is a maintenance protocol, and logical futures are the prediction target. Code distance and thresholds depend on noise, geometry, and implementable gates; general Ω does not determine their numerical values.
+
+## 9.4 Quantum Fisher information and metrology
+
+For a parameterized state $\rho_\theta$, the symmetric logarithmic derivative satisfies
+$\partial_\theta\rho=(L\rho+\rho L)/2$, and quantum Fisher information is
+$F_Q=\operatorname{Tr}\rho L^2$. The classical Fisher information of a given POVM does not exceed $F_Q$. Locally unbiased estimators obey the corresponding Cramér–Rao bound, subject to support and regularity conditions.
+
+For a pure unitary family $|\psi_\theta\rangle=e^{-i\theta G}|\psi\rangle$:
+
+<a id="p-qinfo-02"></a>
+
+**P-QINFO-02.**
+$$
+F_Q=4(\langle G^2\rangle-\langle G\rangle^2).
+$$
+
+**Proof.** Substitute $|\dot\psi\rangle=-iG|\psi\rangle$ into the pure-state tangent-projection formula
+$F_Q=4(\langle\dot\psi|\dot\psi\rangle-
+|\langle\psi|\dot\psi\rangle|^2)$.
+This formula can also be derived directly by solving for the SLD on the state support and its orthogonal tangent subspace. ∎
+
+Metrological optimality is not GOD for every task. Optimal measurements for several parameters may be incompatible, so individual single-parameter Fisher bounds cannot automatically be attained simultaneously.
+
+<a id="ch-10"></a>
+
+# 10. Infinite-dimensional quantum theory: domains and normal states
+
+When finite matrices give way to continuous position or momentum, familiar formulas may remain while operator domains and state types become part of the proof. Normal states, self-adjoint Hamiltonians, and energy truncation provide legitimate calculation interfaces, with finite energy alone still insufficient to guarantee a finite-dimensional model.
+
+## 10.1 Infinite Hilbert dimension and infinitely many degrees of freedom
+
+A single harmonic oscillator already has infinite-dimensional $\mathcal H=L^2(\mathbb R)$, but only one canonical pair. A quantum field has infinitely many modes, so the finite-degree-of-freedom Stone–von Neumann uniqueness theorem cannot be applied directly. Finite-dimensional operational reconstruction also does not uniquely specify an infinite-dimensional extension.
+
+We use a separable complex Hilbert space. **H-QINF** selects the normal operational sector: normal states on $\mathcal B(\mathcal H)$ are represented by positive trace-class density operators of trace one. Schrödinger-picture operations act on trace-class operators, and the dual picture uses the corresponding normal CP maps. General operator algebras may also have singular states; these are not silently identified with density matrices. This infinite-dimensional structure is an additional domain, not something supplied directly by finite-dimensional reconstruction or finite `Fin d` matrix certificates.
+
+Bounded effects retain the Born pairing. A POVM is a weakly countably additive positive-operator-valued measure. Continuous position probabilities are
+$\int_B|\psi(x)|^2dx$.
+The generalized $|x\rangle$ is not a unit vector in the Hilbert space, and a zero-probability point cannot be normalized as a discrete posterior.
+
+## 10.2 Self-adjointness is part of the physical specification
+
+An unbounded operator is specified by both its action and its dense domain. Symmetry, $A\subseteq A^\dagger$, is not self-adjointness, $A=A^\dagger$.
+
+**K-QINF-01: Spectral theorem.** A self-adjoint $A$ has a unique PVM $E_A$ with
+$$
+A=\int\lambda\,dE_A(\lambda),\quad
+D(A)=\{\psi:\int\lambda^2d\langle\psi,E_A(\lambda)\psi\rangle<\infty\}.
+$$
+Measurement probabilities are defined through the PVM. Means and variances additionally require finite corresponding spectral moments.
+
+On $L^2(\mathbb R)$, position has domain $x\psi\in L^2$, and momentum is
+$-i\hbar\partial_x$ on the Sobolev domain $H^1(\mathbb R)$. On an interval, the same derivative expression with
+$\psi(L)=e^{i\vartheta}\psi(0)$ gives different self-adjoint extensions and momentum spectra. The boundary phase belongs to the model, not to the symbol $-i\partial_x$ alone.
+
+**K-QINF-02.** A closed symmetric operator has self-adjoint extensions when its deficiency indices $n_\pm=\dim\ker(A^\dagger\mp i)$ agree. A semibounded operator admits the Friedrichs extension. Kato–Rellich requires a perturbation relatively bounded with respect to an already self-adjoint $A$, with relative bound less than one. A closed semibounded quadratic form can also generate a self-adjoint Hamiltonian through the representation theorem. These are standard routes to a legitimate Hamiltonian.
+
+## 10.3 Stone’s theorem and the strong Schrödinger equation
+
+**K-QINF-03: Stone.** A strongly continuous one-parameter unitary group is uniquely $U(t)=e^{-itA}$ with self-adjoint $A$. Defining energy by $H=\hbar A$, for $\psi_0\in D(H)$ one has
+$$
+i\hbar\partial_t\psi_t=H\psi_t.
+$$
+An initial state outside the domain still has a continuous unitary orbit, but need not have a strong derivative. Stone’s theorem supplies the time generator, not the numerical value of $\hbar$.
+
+<a id="p-qinf-01"></a>
+
+**P-QINF-01: Trace-norm continuity of normal states.** For strongly continuous $U(t)$ and any trace-class $\rho$,
+$U(t)\rho U(t)^\dagger$ is trace-norm continuous.
+
+**Proof.** Start with a finite-rank expansion and use
+$\||x\rangle\langle y|\|_1=\|x\|\|y\|$.
+Approximate any trace-class operator by finite-rank operators, use unitary invariance of the trace norm, and apply the triangle inequality. ∎
+
+The von Neumann equation
+$\dot\rho=-i[H,\rho]/\hbar$
+is a strong equation in trace norm only on the domain of the trace-class conjugation-group generator. For an arbitrary trace-class state, two potentially undefined products cannot be treated as an ordinary matrix formula.
+
+## 10.4 Infinite-dimensional FFIPS and energy truncation
+
+For a countable orthonormal basis, expectations of projections onto $|i\rangle$, $(|i\rangle+|j\rangle)/\sqrt2$, and
+$(|i\rangle+i|j\rangle)/\sqrt2$ determine every density-matrix entry. Under separating protocols, a normal state therefore still uniquely represents a sufficient future. Countable identifiability does not imply efficient learning from finite samples.
+
+<a id="p-qinf-02"></a>
+
+**P-QINF-02: Energy-truncation error.** Let $H\ge0$, let a truncation projection $\Pi$ commute with $H$, and assume $H\ge E_{\rm cut}(I-\Pi)$ outside the cutoff. If
+$\operatorname{Tr}\rho H\le E$, then
+$$
+\epsilon=\operatorname{Tr}[(I-\Pi)\rho]\le E/E_{\rm cut}.
+$$
+When $p=1-\epsilon>0$, the normalized truncation $\rho_\Pi=\Pi\rho\Pi/p$ satisfies
+$$
+D(\rho,\rho_\Pi)\le\sqrt{\epsilon}.
+$$
+
+**Proof.** The first inequality follows by integrating the operator-order inequality. Purify $\rho$ as $|\Psi\rangle$, project its system factor, and normalize. The purification overlap is $\sqrt p$, so their pure-state trace distance is $\sqrt{1-p}$. Contraction under partial trace gives the result. ∎
+
+A finite-dimensional computable model additionally requires finite rank of $\Pi$. An energy bound alone does not guarantee finitely many states below the cutoff. Multistep truncation must control the energy tail and dynamical defect at each step.
+
+<a id="ch-11"></a>
+
+# 11. Phase space, Weyl–CCR structure, and the action scale
+
+This chapter asks which physical inputs produce position–momentum noncommutativity. The argument proceeds from projective phase-space displacements to Weyl relations and then CCR on a common domain, keeping irreducibility, regularity, and calibration of the action scale as separate responsibilities.
+
+## 11.1 Starting from a projective action
+
+On classical phase space $V=\mathbb R^{2n}$, define
+$\sigma((q,p),(q',p'))=q\cdot p'-p\cdot q'$.
+A projective unitary action obeys
+$$
+W(z)W(z')=m(z,z')W(z+z').
+$$
+Associativity requires the 2-cocycle equation. Rephasing $W'(z)=f(z)W(z)$ changes $m$ by a coboundary without changing the physical ray action.
+
+**K-QCCR-01.** The relevant continuous multiplier classes of a finite-dimensional real vector group are represented by real alternating bilinear forms. Full linear symplectic covariance further restricts that form to $\kappa\sigma$. These are representation-theoretic and kinematic conditions, not consequences of quantizing an action integral.
+
+To fix coefficients, after rephasing choose $m(z,z')=\exp[iB(z,z')/2]$. The exponent containing $B$ must be dimensionless. If $q,p$ have physical position and momentum units, $\kappa$ has inverse-action units. A different sign or factor-of-two convention for the multiplier requires a corresponding change in the definition of $\kappa$ below.
+
+<a id="p-qccr-01"></a>
+
+**P-QCCR-01: A single scale from symplectic covariance.** If every symplectic transformation preserves the alternating form $B$, then $B=\kappa\sigma$.
+
+**Proof.** Write $B(u,v)=\sigma(Au,v)$. Covariance makes $A$ commute with all symplectic transformations. In Darboux blocks, commutation with
+$\operatorname{diag}(\lambda I,\lambda^{-1}I)$ eliminates off-diagonal blocks; commutation with
+$\operatorname{diag}(R,R^{-T})$ makes each diagonal block scalar; and commutation with symplectic shears
+$\left(\begin{smallmatrix}I&C\\0&I\end{smallmatrix}\right)$, $C=C^\top$, makes the two scalars equal. ∎
+
+The possibility $\kappa=0$ remains. Projectivity and symplectic covariance alone therefore do not force quantum noncommutativity.
+
+## 11.2 Conditional nontriviality under UCA
+
+**H-UCA.** There is no nontrivial invariant orthogonal projection for all canonical displacements, and the canonical factor has dimension greater than one. This is the projection formulation of irreducibility, imposed only on the orbital canonical factor; it does not exclude additional internal multiplicities such as spin.
+
+<a id="p-qccr-02"></a>
+
+**P-QCCR-02.** In a complex Hilbert representation, UCA and dimension greater than one exclude the trivial multiplier class.
+
+**Proof.** A trivial class can be rephased to an ordinary Abelian unitary representation, whose unitaries commute. If all are scalar, every nontrivial projection is invariant. If one is nonscalar, a nontrivial spectral projection of that unitary commutes with the whole family. Either case violates UCA. ∎
+
+Together with symplectic covariance this gives $\kappa\ne0$. With this chapter’s multiplier convention, choose the orientation so that $\kappa=-1/\hbar$, where $\hbar=1/|\kappa|>0$. A direct nonzero-cocycle assumption has been replaced by a specific irreducible-sector assumption. General objecthood has not unconditionally established UCA or the action scale.
+
+## 11.3 Weyl relations and rigorous CCR
+
+We use
+$$
+W(q,p)=\exp[i(p\cdot Q-q\cdot P)/\hbar],\qquad
+W(z)W(z')=e^{-i\sigma(z,z')/(2\hbar)}W(z+z').
+$$
+In the Schrödinger representation, these bounded unitaries can be defined directly by
+$$
+[W(q,p)\psi](x)=e^{ip\cdot(x-q/2)/\hbar}\psi(x-q).
+$$
+Successive application verifies the Weyl phase.
+
+**K-QCCR-02: Stone–von Neumann.** For finitely many canonical degrees of freedom, a nondegenerate symplectic form, a fixed nonzero central character, and a regular irreducible Weyl representation, the representation is unitarily equivalent to the Schrödinger representation. Dropping irreducibility introduces a multiplicity factor. Dropping regularity or passing to field theory with infinitely many degrees of freedom removes this uniqueness conclusion.
+
+<a id="p-qccr-03"></a>
+
+**P-QCCR-03.** On the common invariant dense Schwartz domain,
+$$
+[Q_j,P_k]\psi=i\hbar\delta_{jk}\psi.
+$$
+
+**Proof.** Apply the product rule to $Q_j\psi=x_j\psi$ and $P_k\psi=-i\hbar\partial_k\psi$. Both compositions are defined on this domain. ∎
+
+Finite matrices cannot satisfy $[Q,P]=i\hbar I$ exactly: the left-hand trace vanishes and the right-hand trace does not. A truncated oscillator must report its boundary correction, rather than treating finite matrices as an exact CCR realization.
+
+## 11.4 Uncertainty and the limits of closed-orbit arguments
+
+For normalized $\psi$ in the relevant product-operator domains, Cauchy–Schwarz gives
+$$
+\Delta A\,\Delta B\ge\tfrac12|\langle[A,B]\rangle|.
+$$
+Take the imaginary part of the inner product of $(A-\langle A\rangle)\psi$ and $(B-\langle B\rangle)\psi$. Retaining the real part gives the stronger Robertson–Schrödinger bound.
+
+A classical periodic orbit can also satisfy a chosen action integral $nh$ while its functions still commute under ordinary multiplication. Thus
+$\oint p\,dq=nh$ does not establish operator CCR. WKB closed-orbit quantization can also contain a Maslov correction; it is not an exact universal spectral formula.
+
+## 11.5 A common $\hbar$ across sectors
+
+Two independent phase spaces may have $B=\kappa_1\sigma_1\oplus\kappa_2\sigma_2$; compositional consistency does not force the coefficients to agree. If full symplectic covariance mixing the sectors on the joint phase space is added, P-QCCR-01 gives a common $\kappa$ and hence one scale. Global physical mixing and numerical calibration remain sector facts, not consequences of tensor composition alone.
+
+<a id="ch-12"></a>
+
+# 12. Standard nonrelativistic calculation models
+
+An abstract quantum structure becomes usable when it calculates wave packets, transmission probabilities, and bound energies. Free particles, the oscillator, wells, and the Coulomb problem show the steps from a Hamiltonian and boundary conditions to concrete results, while supplying simple checks for numerical truncation.
+
+## 12.1 Free wave packets and interference
+
+The free Hamiltonian $H=P^2/(2m)$ is self-adjoint on the appropriate second-order Sobolev domain. Its Fourier components acquire phase $e^{-ip^2t/(2m\hbar)}$. An initially minimum-uncertainty Gaussian has
+$$
+\sigma_x^2(t)=\sigma_0^2+\frac{\hbar^2t^2}{4m^2\sigma_0^2},
+\quad \langle X_t\rangle=x_0+p_0t/m.
+$$
+This follows directly from $X_t=X_0+tP_0/m$, zero initial covariance, and
+$\operatorname{Var}P=\hbar^2/(4\sigma_0^2)$.
+
+For two paths the final amplitude is $\psi_1+e^{i\phi}\psi_2$, giving interference term
+$2\operatorname{Re}(e^{i\phi}\psi_2\overline{\psi_1})$.
+If the paths are correlated with environmental states $|E_1\rangle,|E_2\rangle$, the cross term is multiplied by
+$\langle E_1|E_2\rangle$.
+This is a visibility factor after partial tracing, not automatically a fundamental actualization rate.
+
+## 12.2 The harmonic oscillator
+
+$$
+H=\frac{P^2}{2m}+\frac{m\omega^2Q^2}{2},\quad
+a=\sqrt{\frac{m\omega}{2\hbar}}Q+\frac{iP}{\sqrt{2m\hbar\omega}}.
+$$
+On a common domain, $[a,a^\dagger]=I$ and
+$H=\hbar\omega(a^\dagger a+1/2)$.
+The ground-state equation $a\psi_0=0$ gives a Gaussian; successive raising operators give
+$$
+E_n=\hbar\omega(n+1/2),\quad
+a|n\rangle=\sqrt n|n-1\rangle.
+$$
+The standard spectral theorem for the self-adjoint harmonic oscillator establishes the full spectrum and completeness of the basis.
+
+Truncation to $0,\ldots,N-1$ gives
+$$
+[a_N,a_N^\dagger]=I-N|N-1\rangle\langle N-1|.
+$$
+Entrywise evaluation of the two diagonal products proves this exact diagnostic of the finite numerical boundary.
+
+## 12.3 Wells and barriers
+
+The Dirichlet infinite well on $(0,L)$ has
+$$
+\psi_n=\sqrt{2/L}\sin(n\pi x/L),\quad
+E_n=\frac{\hbar^2\pi^2n^2}{2mL^2}.
+$$
+Solve the second-order eigenvalue equation and impose the two zero boundary values to obtain this spectrum.
+
+For the finite well $V=-V_0$ on $|x|<a$, bound energies obey $-V_0<E<0$. Write
+$k=\sqrt{2m(E+V_0)}/\hbar,\kappa=\sqrt{-2mE}/\hbar$.
+Matching the wavefunction and its derivative gives
+$$
+k\tan(ka)=\kappa\quad\text{even states},\qquad
+-k\cot(ka)=\kappa\quad\text{odd states}.
+$$
+Root searches must respect continuous branches of the trigonometric functions. Crossing a pole can produce a false eigenvalue.
+
+A rectangular barrier of height $V_0>E$ and width $a$ has transmission
+$$
+T(E)=\left[1+
+\frac{V_0^2\sinh^2(\kappa a)}{4E(V_0-E)}
+\right]^{-1},\quad
+\kappa=\sqrt{2m(V_0-E)}/\hbar.
+$$
+Match plane and exponential waves in the three regions and take the current ratio. Different asymptotic potentials require an additional velocity ratio. The current
+$j=(\hbar/m)\operatorname{Im}\bar\psi\nabla\psi$
+checks conservation of reflected and transmitted flux.
+
+When both exterior potentials vanish, let $k=\sqrt{2mE}/\hbar$. Inside $0<x<a$, the wavefunction and derivative obey
+$$
+\begin{pmatrix}\psi(a)\\\psi'(a)\end{pmatrix}
+=\begin{pmatrix}\cosh\kappa a&\sinh(\kappa a)/\kappa\\
+\kappa\sinh(\kappa a)&\cosh\kappa a\end{pmatrix}
+\begin{pmatrix}\psi(0)\\\psi'(0)\end{pmatrix}.
+$$
+Insert boundary values from $e^{ikx}+re^{-ikx}$ on the left and $te^{ikx}$ on the right, then eliminate $r$:
+$$
+|t|^{-2}=\cosh^2(\kappa a)+
+\frac{(\kappa^2-k^2)^2}{4\kappa^2k^2}\sinh^2(\kappa a)
+=1+\frac{(\kappa^2+k^2)^2}{4\kappa^2k^2}\sinh^2(\kappa a).
+$$
+Using $\kappa^2+k^2=2mV_0/\hbar^2$ gives the stated $T=|t|^2$. Energy, width, and mass all come from the specified model.
+
+## 12.4 The Coulomb problem and atoms
+
+Given a Coulomb potential and reduced mass $\mu$,
+$$
+H=-\frac{\hbar^2}{2\mu}\Delta-\frac{Ze^2}{4\pi\epsilon_0r}.
+$$
+Separate spherical harmonics and require radial regularity at the origin and integrability at infinity. Termination of the confluent hypergeometric series gives
+$$
+E_n=-\frac{\mu Z^2e^4}{2(4\pi\epsilon_0)^2\hbar^2n^2}.
+$$
+With $a_0=4\pi\epsilon_0\hbar^2/(\mu Ze^2)$, the ground state is
+$\psi_{100}=(\pi a_0^3)^{-1/2}e^{-r/a_0}$.
+This is a standard calculation after choosing the electromagnetic potential, mass, spatial dimension, and quantum sector. It does not count hydrogenic spectral constants from Ω.
+
+Put $g=Ze^2/(4\pi\epsilon_0)$ and $\psi=u(r)Y_{\ell m}/r$. The bound-state radial equation is
+$$
+u''+\left[-\kappa^2+\frac{2\mu g}{\hbar^2r}
+-\frac{\ell(\ell+1)}{r^2}\right]u=0,
+\qquad \kappa=\frac{\sqrt{-2\mu E}}{\hbar}.
+$$
+Substitute $s=2\kappa r$ and $u=e^{-s/2}s^{\ell+1}v(s)$ to obtain
+$$
+s v''+(2\ell+2-s)v'+\left(\frac{\mu g}{\hbar^2\kappa}-\ell-1\right)v=0.
+$$
+In the usual regular self-adjoint Coulomb realization, regularity at the origin and square integrability at infinity require the series to terminate:
+$\mu g/(\hbar^2\kappa)=n_r+\ell+1=n$.
+Eliminating $\kappa$ yields $E_n=-\mu g^2/(2\hbar^2n^2)$. The discrete energies thus come from a concrete differential operator and global boundary conditions. Local phase-closure intuition cannot replace the eigenvalue problem.
+
+Many-electron problems also require antisymmetry, electron interactions, and approximation errors. Hartree–Fock, configuration interaction, and density-functional theory can be connected to this framework; a one-body solution does not automatically certify their accuracy.
+
+<a id="ch-13"></a>
+
+# 13. The finite-mode Gaussian sector
+
+Gaussian models compress a restricted family of infinite-dimensional quantum states into means and covariances, making them especially tractable. This relies on CCR, Gaussian assumptions, and complete positivity; the chapter derives the covariance uncertainty condition and explains why checking one input does not certify a channel.
+
+Let $R=(Q_1,P_1,\ldots,Q_n,P_n)$ satisfy
+$[R_j,R_k]=i\hbar\Omega_{jk}$.
+Define the mean $d=\langle R\rangle$ and symmetric covariance
+$V_{jk}=\langle\{R_j-d_j,R_k-d_k\}\rangle/2$.
+
+<a id="p-qgauss-01"></a>
+
+**P-QGAUSS-01: A necessary covariance condition.**
+$$
+V+\frac{i\hbar}{2}\Omega\succeq0.
+$$
+
+**Proof.** For any complex vector $z$, the operator
+$A=\sum_jz_j(R_j-d_j)$ satisfies $\langle A^\dagger A\rangle\ge0$.
+Expansion gives the stated quadratic form. ∎
+
+**K-QGAUSS-01.** A positive-definite covariance matrix has Williamson form
+
+$$
+V=S\operatorname{diag}(\nu_1,\nu_1,\ldots,\nu_n,\nu_n)S^\top,
+$$
+
+with symplectic $S$. A physical Gaussian state requires $\nu_j\ge\hbar/2$; a pure Gaussian state has every $\nu_j=\hbar/2$. First and second moments do not determine a non-Gaussian state.
+
+A Gaussian channel acts by
+$$
+d'=Xd+d_0,\quad V'=XVX^\top+Y,
+$$
+where $X,d_0$ are real and $Y$ is real symmetric, with input/output mode numbers and their symplectic forms fixed. For equal input and output mode numbers with the same standard symplectic form, its CP condition is
+$$
+Y+\frac{i\hbar}{2}(\Omega-X\Omega X^\top)\succeq0.
+$$
+For different input and output mode numbers, the first $\Omega$ in the parentheses is the output symplectic form, while the second, between $X$ and $X^\top$, is the input symplectic form; $X$ is a rectangular real matrix from the input phase space to the output phase space.
+
+This standard condition is stronger than covariance positivity for one output state: consistency with arbitrary auxiliary modes is essential.
+
+A quadratic Hamiltonian $H=R^\top GR/2+g^\top R$ gives
+$\dot d=\Omega(Gd+g)$ and $\dot V=\Omega GV+VG^\top\Omega^\top$
+from the Heisenberg equation in the declared units. Damping and noise add drift and diffusion terms subject to CP.
+
+Here $G$ is real symmetric, the quadratic term is symmetrically ordered, and $g$ is real. Using $[R_j,R_k]=i\hbar\Omega_{jk}$ term by term gives $\dot R=(i/\hbar)[H,R]=\Omega(GR+g)$. Expectations yield the mean equation. The centred operator $\delta R=R-d$ satisfies $\dot{\delta R}=A\delta R$, $A=\Omega G$, so differentiating the anticommutator covariance gives $\dot V=AV+VA^\top$. These equations depend on the established CCR and the chosen quadratic Hamiltonian; information geometry alone does not supply them.
+
+The physical covariance condition can be expanded as
+$$
+\left\langle\delta R_j\delta R_k\right\rangle
+=V_{jk}+\tfrac12\langle[R_j,R_k]\rangle
+=V_{jk}+\frac{i\hbar}{2}\Omega_{jk}.
+$$
+Thus $\langle A^\dagger A\rangle=z^\dagger(V+i\hbar\Omega/2)z\ge0$, fixing the sign and factor of one half. The Gaussian-channel CP condition applies to every input and every auxiliary mode and is a standard Gaussian-channel theorem. A single output covariance check establishes only that this input’s second moments violate no necessary condition. Numerical truncation must also use the tail bound of §10.4; approximate CCR of finite matrices do not replace the actual infinite-dimensional modes.
+
+<a id="ch-14"></a>
+
+# 14. Symmetry, spin, and nonrelativistic particles
+
+Spin labels, free-particle energies, and time reversal arise from concrete symmetry representations rather than geometric metaphors alone. We track the distinct inputs of Wigner, rotation, and Galilei structure, then reconnect representation theory to computable probabilities through Rabi and CHSH benchmarks.
+
+This chapter and Chapters 15–32 and 36–46 start from the standard quantum sector and the additional physical inputs stated in each chapter. Propositions proved in prose, imported major theorems, exact-arithmetic regression checks, floating-point calculations, and Lean theorems are registered as different evidence types. The finite Kraus kernel makes some operational contracts machine-checkable. It does not automatically prove the infinite-dimensional representations, self-adjoint domains, field theory, or thermodynamic limits introduced from this chapter onward. Formalized-proposition registers and frozen receipts define the precise coverage.
+
+## 14.1 Wigner’s theorem and generators
+
+**K-QSYM-01: Wigner.** A bijection preserving all ray transition probabilities is implemented by a unitary or antiunitary operator, unique up to phase. This standard theorem assumes a complex Hilbert ray space already exists. It does not reconstruct quantum theory from a general state set, object names, or tests at finitely many angles.
+
+For a suitably continuous group action on rays and a continuous choice of implementation near the identity, the connected identity component has a unitary projective representation. The projective multiplier still matters; this does not establish a globally single-valued ordinary unitary representation. Where applicable, one passes to a covering group or central extension. Discrete time reversal can be antiunitary.
+
+Unbounded generators are not freely manipulable matrices. Stone’s theorem supplies a self-adjoint generator for each strongly continuous one-parameter unitary subgroup. A strongly continuous unitary representation of a finite-dimensional Lie group has a dense space of smooth vectors on which a common infinitesimal representation and Lie brackets can be defined. Commutators involving $P,J,K,H$ below are first used on such a common invariant domain; closures and domains of the operators require subsequent treatment. Formal commutation relations alone do not establish the existence of a global group representation.
+
+A reversible finite-dimensional CPTP map whose inverse is also CPTP is unitary conjugation. Differentiating continuous dynamics gives
+$$
+\dot\rho=-i[H,\rho]/\hbar.
+$$
+This standard quantum order-isomorphism result excludes antiunitary-transpose channels and does not select $H$. For example, complex-matrix transposition preserves single-system positivity, but its Choi operator is the swap, with a negative eigenvalue on the antisymmetric subspace, so transposition is not CP. Antiunitarity describes an implementation of a ray symmetry; it does not thereby belong to an implementable CPTP control library on arbitrary systems.
+
+## 14.2 Rotations and spin
+
+Finite-dimensional irreducible unitary representations of
+$$
+[J_i,J_j]=i\hbar\epsilon_{ijk}J_k
+$$
+are labelled by $s=0,\tfrac12,1,\ldots$ and satisfy
+$$
+J^2=\hbar^2s(s+1),\qquad J_z=\hbar m,
+\qquad m=-s,-s+1,\ldots,s.
+$$
+With $J_\pm=J_x\pm iJ_y$, the algebra gives
+$$
+\|J_\pm|s,m\rangle\|^2
+=\hbar^2[s(s+1)-m(m\pm1)].
+$$
+Nonnegative norms, termination at highest and lowest weights, and unit spacing of adjacent weights require $2s\in\mathbb N$. This explains the discrete representation labels. Single-valued orbital scalar spherical harmonics have integer $\ell$; intrinsic spin is a separately specified internal representation.
+
+A half-integer-spin vector changes sign under a $2\pi$ rotation while its ray is unchanged. The $SU(2)$ cover handles the corresponding projective representation of $SO(3)$. A picture of a half twist in space does not replace representation theory. An $SU(2)$ representation alone also does not fix a particle’s mass, magnetic moment, or $g$ factor; these require a Hamiltonian, matter model, or experimental input.
+
+## 14.3 The Galilei central extension and massive particles
+
+For generators $P_i,J_i,K_i,H$, write on a common smooth domain
+$$
+[K_i,P_j]=i\hbar\delta_{ij}M,\qquad
+[K_i,H]=i\hbar P_i,\qquad [P_i,H]=0,
+$$
+where $M$ commutes with every generator. Irreducibility makes this central operator scalar, $M=mI$. We explicitly choose the free massive branch $m>0$. Massless and other singular Galilei representations are not covered by the divisions by $m$ below.
+
+Define
+$$
+Q_i=K_i/m,\qquad
+\mathbf S=\mathbf J-\mathbf Q\times\mathbf P,
+\qquad C_E=H-\frac{P^2}{2m}.
+$$
+The first equation gives orbital CCR. The full Galilei commutation relations make $\mathbf S$ commute with $\mathbf Q,\mathbf P$, while satisfying its own angular-momentum algebra. Also,
+$$
+[K_i,P^2/(2m)]=i\hbar P_i,
+$$
+so $C_E$ commutes with boosts, as well as spatial translations, rotations, and time translations. A Schur argument in the specified irreducible representation gives $C_E=E_{\rm int}I$. For a regular orbital representation and finite spin factor,
+$$
+\mathcal H_1=L^2(\mathbb R^3)\otimes\mathbb C^{2s+1},\qquad
+H=P^2/(2m)+E_{\rm int}.
+$$
+The labels are $(m,s,E_{\rm int})$, not a mass spectrum computed from winding numbers. Particle irreducibility refers to the centrally extended symmetry group. Weyl displacements act only on the orbital factor, so their reducibility on the full space including spin is consistent.
+
+The central extension also has a directly checkable consequence: interchanging a boost and a spatial translation produces a phase proportional to $m\mathbf v\cdot\mathbf a/\hbar$, with sign fixed by exponential conventions. The historical benchmark applied both operator sequences independently to check this phase instead of inserting the same target formula twice. It verifies the chosen representation, not the numerical values of $m$ or $\hbar$.
+
+## 14.4 Time reversal and standard benchmarks
+
+Time reversal sends $Q\to Q,P\to-P$. A unitary implementation would change the sign of the CCR’s left side without changing $i$, a contradiction. An antiunitary also sends $i\to-i$, restoring consistency. In the standard spin representation,
+$T=e^{-i\pi J_y/\hbar}K$ and $T^2=(-1)^{2s}$.
+If $T^2=-1$ and the Hamiltonian is time-reversal invariant, orthogonality of $\psi,T\psi$ gives Kramers degeneracy.
+
+For Stern–Gerlach measurement of spin one half along $\mathbf n$, effects
+$(I\pm\mathbf n\cdot\boldsymbol\sigma)/2$
+give $p_\pm=(1\pm\mathbf r\cdot\mathbf n)/2$ for Bloch vector $\mathbf r$.
+The Rabi Hamiltonian $H=\hbar(\Delta Z+\Omega X)/2$ gives the transition probability between computational basis states
+$$
+P_{0\to1}(t)=\frac{\Omega^2}{\Omega^2+\Delta^2}
+\sin^2\left(\frac{\sqrt{\Omega^2+\Delta^2}\,t}{2}\right).
+$$
+Expand the exponential using $(\Delta Z+\Omega X)^2=(\Delta^2+\Omega^2)I$.
+
+CHSH has absolute bound two for local deterministic $\pm1$ assignments. A quantum Bell state and appropriate Pauli directions attain $2\sqrt2$. The identity
+$\mathcal B^2=4I-[A_0,A_1]\otimes[B_0,B_1]$
+gives the norm bound $2\sqrt2$. Experimental violation depends on actual measurement-choice, detection, and no-signalling conditions. A simulation is not a substitute for their realization.
+
+<a id="ch-15"></a>
+
+# 15. Identical particles, Fock space, and superselection
+
+Indifference to particle labels is not enough to determine which exchange statistics nature realizes. We first examine permutation representations and their commutants, then construct Bose/Fermi Fock spaces and explain why superselection depends on observables, reference frames, and allowed operations.
+
+## 15.1 Indistinguishability alone does not select Bose or Fermi statistics
+
+The labelled tensor product is an auxiliary representation. If observables commute with the permutation representation of $S_N$, decompose the carrier as
+$$
+\mathcal h^{\otimes N}\simeq\bigoplus_\lambda V_\lambda\otimes M_\lambda,
+\qquad U_\pi=\bigoplus_\lambda U_\lambda(\pi)\otimes I.
+$$
+Permutation-invariant observables belong to the representation’s commutant algebra and have the form $\bigoplus_\lambda I_{V_\lambda}\otimes A_\lambda$, where $A_\lambda$ acts on $M_\lambda$. This algebra is generally noncommutative. If the density matrix itself is permutation invariant, a Schur argument gives
+$$
+\rho=\bigoplus_\lambda\frac{I_{V_\lambda}}{\dim V_\lambda}\otimes\tau_\lambda,
+\qquad \tau_\lambda\succeq0,\qquad\sum_\lambda\operatorname{Tr}\tau_\lambda=1.
+$$
+For $N\ge3$, $S_N$ has irreducible representations beyond the trivial and sign representations. Invariance of observables under exchanging labels therefore does not alone exclude other sectors or force states into only the Bose or Fermi subspace.
+
+Standard Bose/Fermi selection adds a physical-sector condition using
+$$
+P_\pm=\frac1{N!}\sum_{\pi\in S_N}
+(\operatorname{sgn}\pi)^{(1\mp1)/2}U_\pi.
+$$
+Group and sign multiplication give $P_\pm^2=P_\pm=P_\pm^\dagger$. State support in one of these subspaces must be explicit. The literature also studies stronger permutation invariance under all auxiliary extensions, quantum-controlled permutations, and related selection conditions. Their quantifiers and permitted operations differ from ordinary permutation invariance and from uniqueness of purification up to an auxiliary reversible transformation. They cannot be compressed into one assumption-free indistinguishability principle.
+
+In three-dimensional nonrelativistic theory, spin and statistics remain independent labels: one can formally construct spin-$1/2$ Bose sectors or spin-$0$ Fermi sectors. These are countermodels to the strength of a nonrelativistic derivation, not assertions that nature contains such fundamental particles. The relativistic spin–statistics connection requires locality, positive energy, positive metric, and appropriate domain assumptions. In two dimensions, exchange-configuration topology replaces the ordinary permutation group by the braid group and permits anyons. This chapter’s three-dimensional symmetrization formulas do not exclude them.
+
+## 15.2 Fock construction
+
+$$
+\mathcal F_\pm(\mathcal h)=\bigoplus_{N=0}^\infty
+P_\pm\mathcal h^{\otimes N}.
+$$
+Bosonic modes obey $[a_i,a_j^\dagger]=\delta_{ij}$; fermionic modes obey
+$\{c_i,c_j^\dagger\}=\delta_{ij}$ and $\{c_i,c_j\}=0$.
+For fermions, $(c_i^\dagger)^2=0$ restricts single-mode occupation to zero or one. Bosonic occupation is any nonnegative integer.
+
+Bosonic creation and annihilation operators are unbounded and are first defined on the common domain of finite-particle vectors. A single fermionic mode operator is bounded. The number operator is
+$N=\sum_i a_i^\dagger a_i$, and second quantization of a one-body operator is
+$d\Gamma(h)=\sum_{ij}h_{ij}a_i^\dagger a_j$.
+This organizes a many-body Hilbert space; it does not by itself constitute relativistic field theory.
+
+For orthogonal orbitals $u,v$, the two-particle wavefunction
+$$
+\Psi_\pm(x_1,x_2)=
+[u(x_1)v(x_2)\pm v(x_1)u(x_2)]/\sqrt2
+$$
+contains exchange interference. For nonorthogonal orbitals, replace the normalization denominator by
+$\sqrt{2(1\pm|\langle u,v\rangle|^2)}$.
+
+## 15.3 Operational types of superselection
+
+Superselection is defined relative to the observable algebra and allowed operations. If central projections of $\mathcal A$ define mutually exclusive sectors and no allowed operation accesses intersector coherence, the realization has that superselection structure. Distinguish the centre $Z(\mathcal A)$ from the commutant $\mathcal A'$. A projection in $\mathcal A'$ may merely select an unobservable multiplicity factor; it does not automatically define a new fundamental charge. In algebraic QFT, superselection can also appear through inequivalent representations and is not exhausted by central projections on one fixed Hilbert space.
+
+An enlarged reference frame, operation set, or boundary degrees of freedom can change operational superselection. Bargmann mass superselection depends on the chosen Galilei representation and reference framework. It does not prohibit every formal superposition involving different masses in every extended theory. Fock construction itself does not force universal particle-number superselection. A number-related conclusion requires, for example, a fixed species of mass $m$, the corresponding mass-superselection rule, and total mass $mN$.
+
+Finite-mode Fock spaces and infinite-mode field representations also differ. Stone–von Neumann uniqueness for finitely many canonical degrees of freedom cannot directly control all representations of infinite-mode CCR. Chapter 21 states separate contracts for vacuum, thermal-state, and other phase representations in quantum fields.
+
+<a id="ch-16"></a>
+
+# 16. Many-body structure, locality, and phases
+
+Many-body difficulty is not merely larger matrices: locality, thermodynamic limits, and controlled approximations must fit together. Using Ising, Heisenberg, and Hubbard-type models, this chapter separates single-truncation errors, long-time dynamical errors, and genuine phase classification, and states what an object certificate must retain.
+
+## 16.1 Local Hamiltonians and infinite volume
+
+On a finite lattice $\Lambda$ with space $\bigotimes_{x\in\Lambda}\mathcal H_x$, let
+$$
+H_\Lambda=\sum_{X\subseteq\Lambda}\Phi(X),
+$$
+where $\Phi(X)$ is self-adjoint and supported on $X$. Finite-dimensional local spaces and finite-range or sufficiently rapidly decaying interactions form an important controlled class.
+
+**K-QMB-01: Lieb–Robinson interface.** Under bounded local terms, controlled lattice growth, and suitable interaction decay, local operators in separated regions obey a bound of the form
+$$
+\|[A_X(t),B_Y]\|
+\le C\|A_X\|\|B_Y\||X|
+e^{-\mu(d(X,Y)-v|t|)}.
+$$
+The constants depend on the interaction norm. This is not a relativistic light cone and does not apply unconditionally to unbounded bosonic modes or arbitrary long-range interactions.
+
+Infinite volume is usually described by a quasilocal $C^*$ algebra and state functionals. One must not assume a single trace-one Gibbs matrix for the entire infinite system. Infinite-volume, long-time, and zero-external-field limits may fail to commute.
+
+## 16.2 Ising and Heisenberg models
+
+The transverse-field Ising Hamiltonian is
+$$
+H=-J\sum_iZ_iZ_{i+1}-h\sum_iX_i.
+$$
+For the uniform infinite one-dimensional chain, standard conventions and Jordan–Wigner, Fourier, and Bogoliubov transformations give dispersion
+$$
+\epsilon(k)=2\sqrt{J^2+h^2-2Jh\cos k}.
+$$
+The thermodynamic gap closes at $|h|=|J|$. For a finite periodic chain, fermionic boundary conditions depend on the parity sector. A single momentum grid does not describe every finite state.
+
+For two Heisenberg spins,
+$H=(J/4)(X_1X_2+Y_1Y_2+Z_1Z_2)$,
+total-spin decomposition gives singlet energy $-3J/4$ and triplet energy $J/4$, directly from
+$\mathbf S_1\cdot\mathbf S_2=(\mathbf S_{\rm tot}^2-\mathbf S_1^2-\mathbf S_2^2)/2$.
+
+The Bose–Hubbard model
+$$
+H=-t\sum_{\langle ij\rangle}(a_i^\dagger a_j+\mathrm{h.c.})
++\frac U2\sum_i n_i(n_i-1)-\mu\sum_i n_i
+$$
+also needs occupation-truncation error control. Fermionic hopping must preserve CAR signs. Multiplying independent site matrices naively loses anticommutation; use a fixed-order Jordan–Wigner map or an explicit Fock basis.
+
+## 16.3 Correlations, entanglement, and phase classification
+
+Correlation length, spectral gap, order parameters, entanglement entropy, and topological indices address different questions. A finite-system level crossing or a peak in local fluctuations is not automatically a thermodynamic phase-transition proof. Spontaneous symmetry breaking generally selects infinite-volume states in the order
+$$
+\lim_{h\to0^\pm}\lim_{|\Lambda|\to\infty}
+$$
+Reversing the limits may recover a symmetric state. Finite-size extrapolation must therefore state boundaries, symmetry-breaking fields, initial states, and observables. A finite-chain curve cannot replace a limit theorem.
+
+An MPS representation is
+$$
+|\psi\rangle=\sum_{i_1\cdots i_L}
+ v_L^\dagger A_1^{i_1}\cdots A_L^{i_L}v_R
+ |i_1\cdots i_L\rangle,
+$$
+The bond dimension bounds the Schmidt rank across each cut. For one cut, discarding Schmidt weight $\delta<1$ from a normalized pure state gives overlap $\sqrt{1-\delta}$ with the normalized truncation and pure-state trace distance exactly $\sqrt\delta$. This one-cut result is not a uniform error bound for an entire chain at every time. Sequential compression, time discretization, Trotter error, finite volume, and initial approximation must still be combined.
+
+In one dimension, finite local dimension, controlled local interactions, and a uniform spectral gap can support area-law and MPS approximation results. Existence of an approximation, computational complexity of finding it, and low-bond-dimension representation of arbitrary highly entangled real-time states are separate claims. An MPS description of a low-energy ground state does not establish efficient general many-body dynamics.
+
+Benchmarks must discriminate between correct and incorrect implementations. Single-particle hopping never exchanges two fermions. A fermionic backend therefore needs genuinely multiparticle CAR checks or an explicitly antisymmetric Fock basis, for example a fixed-$N=2$ chain compared with an independent second-quantized construction.
+
+## 16.4 Many-body object certificates
+
+Candidates may be localized excitations, logical subspaces, effective order-parameter states, or spatial regions. First fix the target future, initial-state/environment class, permitted interventions, persistence window, and resource scale; then specify each certificate’s distance and estimator. One reusable register is
+$$
+(\epsilon_{\rm pred},\epsilon_{\rm mem},\epsilon_{\rm leak},
+\Pi_{\rm pers},R_\delta,C_{\rm glob}).
+$$
+These record predictive error for the chosen protocols, residual error after selecting a memory model, leakage, persistence, accessible record redundancy, and global coherence. They are not undefined platform-independent numbers. The quantity $\epsilon_{\rm mem}$ measures omitted memory; it does not require the true physical process to be Markovian.
+
+Shared correlations do not prove causal irreducibility of a parent object. Deriving effective object dynamics from a many-body Hamiltonian requires a projection, a reachable input class, and memory control. A band diagram or correlation plot does not complete the Core interface. A response-sufficient general object also need not be a strong $\Omega$ object with internal repair and resource maintenance; the latter needs explicit contracts for legitimate damage, repair, and persistence.
+
+Likewise, a Holevo-information plateau in environmental fragments, total mutual information, the smallest fragment needed for a specified record accuracy, and the number of independently accessible redundant fragments are not interchangeable. Strong objectivity requires the relevant operational conditions. Several fragments may carry the same public record while their joint parent retains global coherence invisible to public readout. The nonidentifiability bounds of Chapters 6–8 and 41 continue to apply to many-body systems.
+
+<a id="ch-17"></a>
+
+# 17. Open systems: GKSL dynamics, thermal baths, and trajectories
+
+Tracing out an environment yields a channel under suitable initial-state assumptions, but not necessarily a memoryless semigroup. This distinction organizes the role of GKSL structure, the physical inputs of the Davies weak-coupling limit, and the existence of different conditional trajectories for the same master equation.
+
+## 17.1 Microscopic reduction and the semigroup assumption
+
+For initial state $\rho_S\otimes\sigma_E$ and joint unitary evolution,
+$$
+\Lambda_t(\rho_S)=\operatorname{Tr}_E[
+U_t(\rho_S\otimes\sigma_E)U_t^\dagger]
+$$
+is CPTP. In general, however, $\Lambda_{t+s}=\Lambda_t\Lambda_s$ fails because the environment retains correlations. If changing the input also changes the initial correlations, there need not be a common CP assignment on every system state.
+
+**K-QOPEN-01: Finite-dimensional GKSL.** The generator of a continuous CPTP semigroup has exactly the form
+$$
+\mathcal L(\rho)=-i[H,\rho]/\hbar+
+\sum_\mu\left(L_\mu\rho L_\mu^\dagger-
+\tfrac12\{L_\mu^\dagger L_\mu,\rho\}\right).
+$$
+This characterizes physical semigroups. It does not derive the microscopic origin of particular $L_\mu$.
+
+## 17.2 Two explicit channels
+
+Amplitude damping with $\eta=e^{-\gamma t}$ has Kraus operators
+$$
+K_0=|0\rangle\langle0|+\sqrt\eta|1\rangle\langle1|,
+\quad K_1=\sqrt{1-\eta}|0\rangle\langle1|.
+$$
+The excited-state population becomes $\eta\rho_{11}$ and coherence becomes $\sqrt\eta\rho_{01}$.
+
+Pure dephasing with $L=\sqrt{\gamma/2}Z$ gives
+$\dot\rho=(\gamma/2)(Z\rho Z-\rho)$.
+The diagonal is unchanged and off-diagonal entries acquire $e^{-\gamma t}$. This is also ordinary two-branch SRN noise. Its SRN form does not make it evidence for a new collapse mechanism.
+
+## 17.3 The Davies interface
+
+GKSL characterizes continuous CPTP semigroups in finite dimension. Deriving one from a particular bath requires microscopic conditions. Let
+$$
+H_S=\sum_\epsilon\epsilon\Pi_\epsilon,\qquad
+H_{
+\rm int}=\lambda\sum_\alpha A_\alpha\otimes B_\alpha,
+$$
+Specify the stationary bath state, correlation decay or mixing, coupling-operator conditions, and the weak-coupling limit $\lambda\to0$ with macroscopic time scaled as $\lambda^{-2}$. Finite but long times, nonzero coupling, and error ranges require additional estimates. The limiting generator is not an exact equation at every coupling strength.
+
+Define Bohr-frequency components by
+$$
+A_\alpha(\omega)=
+\sum_{\epsilon'-\epsilon=\hbar\omega}
+\Pi_\epsilon A_\alpha\Pi_{\epsilon'},
+\qquad [H_S,A_\alpha(\omega)]=-\hbar\omega A_\alpha(\omega).
+$$
+With consistent Fourier conventions, the bath spectral matrix $\gamma_{\alpha\beta}(\omega)$ is positive semidefinite. Each frequency block
+$$
+\sum_{\alpha\beta}\gamma_{\alpha\beta}(\omega)
+\left[A_\beta(\omega)\rho A_\alpha(\omega)^\dagger
+-\tfrac12\{A_\alpha(\omega)^\dagger A_\beta(\omega),\rho\}\right]
+$$
+then has GKSL form. The thermal KMS relation is
+$$
+\gamma_{\alpha\beta}(-\omega)
+=e^{-\beta_T\hbar\omega}\gamma_{\beta\alpha}(\omega),
+\qquad \beta_T=(k_BT)^{-1}.
+$$
+In this standard weak-coupling limit, the Lamb shift commutes with $H_S$. Degenerate or equal-frequency transitions must be treated together; cross terms within one Bohr block cannot be dropped arbitrarily.
+
+Using $A_\alpha(\omega)\rho_T=e^{-\beta_T\hbar\omega}\rho_T A_\alpha(\omega)$ and the thermal relation between positive and negative frequencies verifies Gibbs stationarity block by block. Stationarity means only $\mathcal L(\rho_T)=0$. Uniqueness, mixing rates, and thermalization from arbitrary initial states require further irreducibility or ergodicity conditions. Extra conserved quantities or noiseless subspaces can leave multiple stationary states.
+
+For a two-level gap $\Delta>0$, thermal Bose occupation
+$$
+n_T=(e^{\beta_T\Delta}-1)^{-1}
+$$
+gives $\gamma_\downarrow=\kappa(n_T+1)$ and $\gamma_\uparrow=\kappa n_T$, with upward/downward ratio $e^{-\beta_T\Delta}$. Rates are thus tied to the specified bath rather than fitted arbitrarily to a desired equilibrium state.
+
+## 17.4 Quantum trajectories and computation
+
+In a short interval $dt$, the jump probability is
+$dp_\mu=dt\,\langle L_\mu^\dagger L_\mu\rangle$.
+After a jump, normalize $L_\mu|\psi\rangle$; no-jump evolution uses
+$H_{\rm eff}=H-i\hbar\sum L_\mu^\dagger L_\mu/2$.
+Averaging outcomes to order $dt$ gives GKSL.
+
+Different measurements of the environment produce different unravellings with the same unconditioned master equation. Mathematical existence of a stochastic trajectory is therefore not experimental selection of an ontological collapse account.
+
+Numerical checks should include trace, Hermiticity, positivity, step-size convergence, and stationary residual
+$\|\mathcal L(\rho_*)\|$.
+A small residual alone does not bound distance to a unique stationary state; control of an inverse generator or a mixing gap is needed.
+
+<a id="ch-18"></a>
+
+# 18. Non-Markovian processes and memory objects
+
+Two histories can leave the same current system state while their environments retain information that changes the future. A two-qubit causal-break example makes the omission explicit; process tensors and memory kernels then explain when the state description must be enlarged instead of refining an incorrect Markov approximation.
+
+## 18.1 Why one-time channels are insufficient
+
+CP divisibility requires, for $t\ge s$, a CPTP map $V_{t:s}$ with $\Lambda_t=V_{t:s}\Lambda_s$. It constrains a family of one-time maps, usually measured under a fixed initial system–environment preparation. Interventions change intermediate correlations. Divisibility of one-time maps therefore does not determine all multitime intervention statistics.
+
+A process tensor maps a sequence of CP interventions to a final state or record probabilities. With explicit input/output leg order, Choi normalization, and transpose convention, it is characterized by a positive Choi operator and sequential causal trace constraints: tracing out the final output yields the identity on the corresponding input tensored with the preceding comb. For history-dependent instruments, retain every outcome and only then select the required complete-record event. Interchanging an input and output leg or omitting a transpose changes the pairing; it is not a harmless notation change.
+
+**K-QMEM-01.** Under complete instrument protocols, operational Markovianity requires future conditional statistics after a current causal break to be independent of earlier operations and outcomes. In a common Choi convention, a Markov process has the temporal-product form of an initial state and successive channel Choi operators. This multitime operational criterion is used with the conditions of its original theorem; CP divisibility cannot replace it. [Original research](https://arxiv.org/abs/1512.00589)
+
+“Complete” carries a quantifier. A small set of passive readouts can hide environmental memory that an enlarged set of active interventions reveals. Sufficiency proved by the finite Kraus kernel for all finite words and complete finite adaptive trees of a fixed time-homogeneous operation library does not automatically extend to new environmental access, drift, a time-inhomogeneous library, or undeclared process slots.
+
+## 18.2 A fully executable memory counterexample
+
+Let system $S$ and environment $E$ be qubits. The historical input is $S=|b\rangle$ and the environment starts at zero. First,
+$\mathrm{CNOT}_{S\to E}$ writes $b$ to the environment. Discard and reprepare the system as $|0\rangle$, then apply
+$\mathrm{CNOT}_{E\to S}$ to write the memory back. Both histories have the same system state at the break but futures $|0\rangle$ and $|1\rangle$.
+
+<a id="p-qmem-01"></a>
+
+**P-QMEM-01: Irreducible error from omitted memory.** If the true future states of two histories have trace distance $d$, any predictor using only their common current state has worst-case trace-distance error at least $d/2$.
+
+**Proof.** The predictor returns the same $\tau$, and
+$d\le D(\sigma_0,\tau)+D(\tau,\sigma_1)$. ∎
+
+Here $d=1$, so the lower bound is $1/2$. This standard quantum process refutes an incorrect Markov compression; it does not violate standard QM.
+
+## 18.3 Memory kernels and simulation choices
+
+Let the joint linear evolution be $\dot R=\mathcal LR$, with projection superoperator $\mathcal P$ and $\mathcal Q=1-\mathcal P$. Where the operators and semigroups are well defined, solve
+$$
+\mathcal QR(t)=e^{t\mathcal Q\mathcal L}\mathcal QR(0)
++\int_0^t e^{(t-s)\mathcal Q\mathcal L}
+\mathcal Q\mathcal L\mathcal PR(s)\,ds.
+$$
+Substitution into the $\mathcal P$ equation gives the Nakajima–Zwanzig identity
+$$
+\frac d{dt}\mathcal PR(t)=\mathcal P\mathcal L\mathcal PR(t)
++\int_0^t\mathcal P\mathcal L e^{(t-s)\mathcal Q\mathcal L}
+\mathcal Q\mathcal L\mathcal PR(s)\,ds
++\mathcal P\mathcal L e^{t\mathcal Q\mathcal L}\mathcal QR(0).
+$$
+For a concrete system projection it can be written
+$$
+\dot\rho_S(t)=\mathcal L_0\rho_S(t)
++\int_0^t\mathcal K(t-s)\rho_S(s)\,ds+\mathcal I(t).
+$$
+The kernel and inhomogeneous term depend on the projection and initial correlations. They are not a universal, unique number measuring non-Markovianity. Nor does the exact identity guarantee CP for an arbitrarily truncated approximate kernel; appropriate structural conditions or actual protocol probabilities must establish it separately.
+
+Excitation exchange with a single environment gives $G(t)=\cos gt$, with revivals in excited-state distinguishability $D(t)=\cos^2gt$. The time-local rate $2g\tan gt$ is singular where the map is noninvertible and cannot be treated across its zeros as an ordinary smooth semigroup generator. A distinguishability revival is evidence within this model, not a replacement for the process criterion over all permitted interventions.
+
+HEOM, pseudomodes, chain mappings, and tensor networks are possible simulation backends. Their errors arise from bath-spectrum approximation, auxiliary-level truncation, time integration, and initial-state assumptions. Compare them only after translating errors into a common target response. Process tensors provide an operational comparison language, not a guarantee of lower computational cost in every problem.
+
+<a id="ch-19"></a>
+
+# 19. Thermal equilibrium, response, and entropy production
+
+Free-energy minimality of a Gibbs state, stationarity under a thermal bath, and actual thermalization are different questions. Relative entropy, KMS, and linear response connect them here while retaining the limits imposed by degeneracies, finite-system recurrence, and heat/work definitions at strong coupling.
+
+## 19.1 The variational meaning of Gibbs equilibrium
+
+For a finite system, let
+$\rho_T=e^{-\beta_TH}/Z$ and
+$F_T(\rho)=\operatorname{Tr}\rho H-\beta_T^{-1}S(\rho)$.
+
+<a id="p-qtherm-01"></a>
+
+**P-QTHERM-01: Free energy and relative entropy.**
+$$
+F_T(\rho)-F_T(\rho_T)
+=\beta_T^{-1}D(\rho\|\rho_T)\ge0.
+$$
+
+**Proof.** Substitute $\log\rho_T=-\beta_TH-\log Z$ and rearrange. Nonnegativity of relative entropy gives minimality. ∎
+
+Given a Hamiltonian, temperature, and entropy definition, equilibrium thus has an exact resource–information variational expression. This does not prove that isolated unitary systems converge to Gibbs states from arbitrary initial states. Unitary evolution preserves the global spectrum and entropy.
+
+## 19.2 KMS and spectral detailed balance
+
+Define $\tau_t(B)=e^{iHt/\hbar}Be^{-iHt/\hbar}$. The equilibrium KMS boundary condition is
+$$
+F(t)=\langle A\tau_t(B)\rangle_T,\quad
+F(t+i\beta_T\hbar)=\langle\tau_t(B)A\rangle_T.
+$$
+
+<a id="p-qtherm-02"></a>
+
+**P-QTHERM-02: KMS for finite Gibbs systems.** The stated boundary condition holds.
+
+**Proof.** Analytic continuation gives
+$\tau_{t+i\beta_T\hbar}(B)=
+e^{-\beta_TH}\tau_t(B)e^{\beta_TH}$.
+Insert this into the Gibbs trace and cyclically move factors to obtain the other boundary. Finite dimension guarantees analyticity. ∎
+
+For Hermitian $B$, define
+$S_B(\omega)=\int dt\,e^{i\omega t}\langle B(t)B(0)\rangle_T$.
+The Lehmann expansion gives
+$$
+S_B(\omega)=2\pi\sum_{nm}p_n|B_{nm}|^2
+\delta(\omega-(E_m-E_n)/\hbar),
+\quad S_B(-\omega)=e^{-\beta_T\hbar\omega}S_B(\omega).
+$$
+For infinite systems, KMS is defined through $C^*$ dynamics and analytic elements. It cannot require a nonexistent finite global partition function.
+
+## 19.3 Kubo response and fluctuation–dissipation
+
+With perturbation $H(t)=H_0-f(t)B$, the first-order interaction-picture expansion yields
+$$
+\delta\langle A(t)\rangle=
+\int_{-\infty}^tds\,f(s)\chi_{AB}(t-s),\quad
+\chi_{AB}(t)=\frac{i}{\hbar}\theta(t)\langle[A(t),B]\rangle_T.
+$$
+The equilibrium spectral expansion gives
+$$
+\chi_{BB}''(\omega)
+=\frac{1-e^{-\beta_T\hbar\omega}}{2\hbar}S_B(\omega)
+$$
+with the Fourier convention above. Response signs depend on the perturbation convention; $+fB$ and $-fB$ cannot be interchanged silently.
+
+## 19.4 Stationarity, equilibration, and thermalization
+
+The long-time average of a finite closed system retains complete degenerate energy blocks:
+$$
+\overline\rho=\lim_{T\to\infty}\frac1T\int_0^T
+ e^{-iHt/\hbar}\rho_0e^{iHt/\hbar}\,dt
+=\sum_E P_E\rho_0P_E.
+$$
+In an energy basis, a coefficient with $E\ne E'$ averages as
+$T^{-1}\int_0^T e^{-i(E-E')t/\hbar}dt\to0$,
+whereas within one energy block it stays one. Coherence inside a degenerate block cannot be removed arbitrarily. Retaining only the diagonal in a chosen eigenvector basis would give the wrong result.
+
+Existence of the average does not imply convergence of instantaneous states. For $H=\hbar\omega Z/2$ and initial $|+x\rangle$, $\langle X\rangle_t=\cos\omega t$. Its mean is zero, but late-time oscillations persist. Finite spectra also allow recurrence. Statements that most late-time local observations lie near equilibrium, or bounds on mean-square deviations, require additional effective-dimension, gap-structure, observable-class, and initial-state assumptions.
+
+ETH is a hypothesis about local matrix-element structure in particular nonintegrable systems, not a theorem for every Hamiltonian. Integrability and extra conserved quantities can require generalized Gibbs or other stationary descriptions. Variational existence of finite-system Gibbs states, stationarity in an open thermal bath, dynamical equilibration, and Gibbs thermalization must be registered separately.
+
+## 19.5 Spohn’s inequality and physical entropy production
+
+<a id="p-qtherm-03"></a>
+
+**P-QTHERM-03.** If a CPTP semigroup $\Lambda_t$ has a full-rank stationary state $\sigma$, then
+$D(\Lambda_t\rho\|\sigma)$ is nonincreasing. Along differentiable full-rank trajectories,
+$$
+-\operatorname{Tr}[\mathcal L(\rho)(\log\rho-\log\sigma)]\ge0.
+$$
+
+**Proof.** Relative-entropy data processing gives
+$D(\Lambda_{t+s}\rho\|\Lambda_s\sigma)
+\le D(\Lambda_t\rho\|\sigma)$.
+Use stationarity of $\sigma$ and take the right derivative. ∎
+
+For $\sigma=\rho_T$, a fixed Hamiltonian, and a valid heat/work split, this becomes
+$\dot S-\beta_T\dot Q\ge0$.
+For an arbitrary reference state, strong coupling, or a non-Markovian reduction, declining relative entropy is not automatically total thermodynamic entropy production.
+
+<a id="ch-20"></a>
+
+# 20. Quantum GOD/GOA: tasks, control, and long-term structure
+
+Existence of a quantum object does not specify the task a controller wants it to perform. Once rewards, resources, and feedback are fixed, Bellman values and pulse gradients become meaningful; the resulting long-term structure can be a fixed state, periodic motion, or conditional survival rather than a compulsory unique endpoint.
+
+## 20.1 A task is needed to pass from objects to purposes
+
+Fix permitted actions, resources, measurement feedback, and reward $r(\rho,a)$. Target-state fidelity, logical survival, energy consumption, and information acquisition may favour different actions. Stability of a quantum object does not automatically maximize all these criteria.
+
+Without observed feedback, states update as CPTP $\rho'=\mathcal T_a(\rho)$. With observations, each action specifies an instrument, posterior $\rho_{a,o}$, and probability $p(o|\rho,a)$. A control state may also include a classical budget, device mode, and belief about the environment.
+
+## 20.2 Bellman equations and a quantum goal direction
+
+For finite actions, bounded rewards, and discount $0<\beta_C<1$, define
+$$
+(TV)(\rho)=\max_a\left[r(\rho,a)+
+\beta_C\sum_op(o|\rho,a)V(\rho_{a,o})\right].
+$$
+
+<a id="p-qctl-01"></a>
+
+**P-QCTL-01.** The operator $T$ is a $\beta_C$ contraction on bounded functions and has a unique bounded fixed point. Under the required measurability conditions, finite actions admit a measurable optimal policy.
+
+**Proof.** For each action, the difference of conditional expectations is at most $\|V-W\|_\infty$; taking a maximum preserves the bound. Banach’s fixed-point theorem gives the fixed point. A fixed ordering of the finite actions breaks ties measurably. Iteration or discounted telescoping proves optimality. ∎
+
+GOD is the set of optimal actions. If actions correspond to Hamiltonian directions or Lindblad generators, map it to the corresponding set of dynamics rather than forcing it to be a Euclidean vector. Changes to future actions, instruments, or rewards require recomputing value.
+
+## 20.3 Finite-time quantum-control gradients
+
+For a closed system with $H(t)=H_0+\sum_k u_k(t)H_k$ and objective
+$J=\langle\psi_T|O|\psi_T\rangle-\int c(u)dt$,
+define the adjoint state $|\chi_t\rangle=U(T,t)^\dagger O|\psi_T\rangle$. Duhamel variation gives
+$$
+\frac{\delta J}{\delta u_k(t)}
+=\frac2\hbar\operatorname{Im}\langle\chi_t|H_k|\psi_t\rangle
+-\partial_{u_k}c.
+$$
+The sign follows directly from $\delta\psi_T=-(i/\hbar)U(T,t)H_k\psi_t\,\delta u_kdt$ and its conjugate contribution. Discrete-pulse gradients must also state approximations to derivatives of matrix exponentials. Nonconvex control does not guarantee discovery of a global GOD.
+
+## 20.4 GOA and stability
+
+After optimal feedback is fixed, GOA may be a stationary-state set, limit cycle, noiseless subspace, occupation distribution, or conditional-survival structure. It is not a universally unique pure state.
+
+Finite-time approximate channels use the error composition of Chapter 4. If a closed-loop channel has a uniform trace-distance contraction coefficient $\alpha<1$, it has a unique fixed state, and a perturbed channel’s fixed state is within
+$\epsilon/(1-\alpha)$.
+As in Core, insert a common channel output to obtain
+$d\le\alpha d+\epsilon$.
+Without contraction, near degeneracy, or at a bifurcation, a small one-step error need not imply long-term identity stability.
+
+Chapter 52 proves finite-channel stationary-state existence without optimal control or strict contraction, and gives periodic-orbit and multiple-stationary-state counterexamples. Chapter 53 first specifies survival outcomes, then proves a QSD survival law and a different invariant distribution for the Doob process. These results give actual matrix certificates for persistence structures; they do not supply an undeclared evaluation function.
+
+<a id="ch-21"></a>
+
+# 21. Relativistic quantum fields: domains and additional assumptions
+
+Relativistic field theory does not arise simply by enlarging finite matrices: local algebras, operator distributions, and representation choices impose new obligations. We state these inputs before free-field calculations and perturbation theory and explain why restricting a region is not generally an ordinary partial trace.
+
+Unless stated otherwise, from this chapter onward we use $\hbar=c=1$, metric $\eta=\operatorname{diag}(1,-1,-1,-1)$, and $p x=p^0x^0-\mathbf p\cdot\mathbf x$. Mass, momentum, and energy have the same dimension; length and time have inverse-energy dimension. Uniqueness results for finitely many continuous-variable degrees of freedom cannot be transferred directly to fields with infinitely many degrees of freedom.
+
+## 21.1 Physical inputs for a field-theoretic realization
+
+**H-QFT-1.** Specify a Minkowski background, a strongly continuous unitary implementation of Poincaré symmetry, a joint energy–momentum spectrum in the closed forward light cone, locality, a positive-definite physical state space, and the existence, cyclicity, regularity, and any required uniqueness conditions of the vacuum. An interacting model also requires field content, an action, a regulator, and renormalization conditions. These physical and mathematical inputs select the field-theory sector; they do not follow from general object closure. The spectrum condition alone does not guarantee vacuum uniqueness.
+
+A field $\phi(x)$ is generally an operator-valued distribution. For a specified test-function class, such as Schwartz functions, define
+$$
+\phi(f)=\int d^4x\,f(x)\phi(x),
+$$
+and discuss closability, products, and distributional matrix elements on a common invariant dense domain. Point fields, coincident-point products, and time-ordered products are not automatically everywhere-bounded matrices; the latter two may require separate extension or renormalization.
+
+For a bounded region $\mathcal O$, local observable algebras $\mathcal A(\mathcal O)$ satisfy isotony, covariance, and spacelike commutativity. Bounded Weyl operators generate local algebras of free bosonic fields. Fermion fields have graded locality, while physical even observables obey ordinary spacelike commutativity. An object interface can record the region, algebra, restricted state, and allowed local instruments:
+$$
+(\mathcal O,\mathcal A(\mathcal O),\omega|_{\mathcal A(\mathcal O)},\mathfrak I_{\mathcal O}).
+$$
+Time/energy resolution and approximation errors are then added. A sharp region is not assumed in advance to have an independent Hilbert tensor factor.
+
+## 21.2 Infinite degrees of freedom, representations, and local algebras
+
+Uniqueness of regular irreducible CCR representations for finitely many canonical degrees of freedom does not extend to infinitely many modes. In a bosonic Fock representation, unitary implementability of an appropriate linear canonical Bogoliubov transformation is controlled by the Hilbert–Schmidt condition on its creation–annihilation mixing part $\beta$:
+$$
+\|\beta\|_{\rm HS}^2<\infty.
+$$
+For compatible diagonal transformations of independent modes, $\beta_n=1/n$ is square summable whereas $\beta_n=1/\sqrt n$ is not. Transformations legitimate mode by mode can thus differ in implementability on the infinite system. This diagnostic does not truncate every mode and silently interchange an infinite limit. Vacua, thermal states, and distinct phases may require inequivalent representations.
+
+Under standard conditions in usual continuum relativistic models, regional local algebras have Type III structures rather than those of finite matrix algebras. Even if $\mathcal B(\mathcal H)$ on the full Fock space is Type I, this does not make every local algebra $\mathcal B(\mathcal H_{\mathcal O})\otimes I$. A state restricted to a sharp region need not have a density matrix relative to an ordinary local trace, and ordinary reduced entanglement entropy need not be finite.
+
+“Tracing out the exterior” therefore needs an implementation. One may use a lattice or energy cutoff; alternatively, under additional split/nuclearity conditions, separated inner and outer regions admit an intermediate Type I factor. Such a split is conditional and generally nonunique. The algebraic restriction
+$$
+\omega\longmapsto\omega|_{\mathcal A(\mathcal O)},
+$$
+remains available in general. Relative entropy or modular-theoretic quantities may then be used in their proper framework, without asserting a nonexistent finite local partition function or ordinary local trace.
+
+The Reeh–Schlieder cyclicity result requires its spectrum, vacuum, and suitable generating assumptions. Cyclicity does not allow arbitrary remote control. If an observable $B$ in a spacelike region commutes with all local Kraus operators $K_\mu$, and $\sum_\mu K_\mu^\dagger K_\mu=I$, then
+$$
+\sum_\mu K_\mu^\dagger B K_\mu=B.
+$$
+A nonselective local operation leaves the other region’s expectation unchanged. Conditional states depending on a particular measurement result must include the outcome probability and communication of the classical result.
+
+Under its vacuum, covariance, and field assumptions, Haag’s theorem obstructs a naive global unitary equivalence between free and interacting fields. It does not make interaction impossible. It requires distinguishing finitely regulated models, perturbative interaction-picture constructions, and rigorous theories after regulator removal. Core’s response and restriction language can accommodate these realizations. Extensions of finite-dimensional density, entropy, diamond-norm, or matrix methods still need explicit topology, energy constraints, and limit contracts.
+
+## 21.3 Three distinct states of completion
+
+Free fields admit explicit constructions; finitely regulated models can be defined and computed directly; perturbative series for interacting four-dimensional theories yield formal or asymptotic predictions order by order. These are not interchangeable with rigorous nonperturbative completion. This book does not prove the four-dimensional Yang–Mills mass gap, full nonperturbative existence of QED, or quantum gravity.
+
+<a id="ch-22"></a>
+
+# 22. The free scalar field: modes, propagation, and causality
+
+The free scalar field provides an explicit starting point for modes, propagators, and causality. Distinguishing vacuum correlations, Feynman propagation, and causal response prevents nonzero spacelike correlations from being mistaken for controllable faster-than-light signals.
+
+## 22.1 The Klein–Gordon field
+
+Take
+$$
+\mathcal L=\tfrac12\partial_\mu\phi\,\partial^\mu\phi-\tfrac12m^2\phi^2,\qquad
+(\Box+m^2)\phi=0,\qquad E_{\mathbf p}=\sqrt{\mathbf p^2+m^2}.
+$$
+Define
+$$
+[a(\mathbf p),a^\dagger(\mathbf q)]=(2\pi)^3\,2E_{\mathbf p}\,
+\delta^3(\mathbf p-\mathbf q),\quad [a,a]=0,
+$$
+$$
+\phi(x)=\int\frac{d^3p}{(2\pi)^3\,2E_{\mathbf p}}
+\left[a(\mathbf p)e^{-ipx}+a^\dagger(\mathbf p)e^{ipx}\right].
+$$
+The vacuum obeys $a(\mathbf p)|0\rangle=0$. The normal-ordered Hamiltonian is
+$$
+:H: =\int\frac{d^3p}{(2\pi)^3\,2E_{\mathbf p}}\,
+E_{\mathbf p}a^\dagger(\mathbf p)a(\mathbf p).
+$$
+This selects a positive-frequency decomposition in a flat background. A general curved spacetime need not have a unique global vacuum.
+
+<a id="p-qkg-01"></a>
+
+**P-QKG-01: Canonical relations and propagation.** Distributionally, these modes give
+$$
+[\phi(t,\mathbf x),\pi(t,\mathbf y)]=i\delta^3(\mathbf x-\mathbf y),
+\quad \pi=\partial_t\phi.
+$$
+Substitute the two mode expansions and retain the only nonzero $a,a^\dagger$ commutators. The time-derivative factor $E_{\mathbf p}$ cancels the measure denominator, and the two terms each supply half the Fourier delta. Other equal-time commutators vanish by momentum reversal. ∎
+
+## 22.2 Three different kernels
+
+$$
+\Delta^+(x)=\langle0|\phi(x)\phi(0)|0\rangle
+=\int\frac{d^3p}{(2\pi)^3\,2E_{\mathbf p}}e^{-ipx},
+$$
+$$
+[\phi(x),\phi(y)]=\Delta^+(x-y)-\Delta^+(y-x)=i\Delta(x-y),
+$$
+$$
+\Delta_F(x)=\langle0|T\phi(x)\phi(0)|0\rangle
+=\int\frac{d^4p}{(2\pi)^4}\frac{i\,e^{-ipx}}{p^2-m^2+i0}.
+$$
+Multiplying by the denominator gives $(\Box+m^2)\Delta_F=-i\delta^4$. Causal response uses a retarded kernel. The Feynman kernel is not a classical probability for signal propagation.
+
+<a id="p-qkg-02"></a>
+
+**P-QKG-02: Spacelike causality.** For $x^2<0$, an orthochronous Lorentz transformation takes $x$ to $x^0=0$. The commutator integral is then odd under momentum reversal and vanishes. Covariance returns the result to the original coordinates. Suitably smeared observables with spacelike-separated supports therefore commute. ∎
+
+The spacelike Wightman function need not vanish. For example, with $m>0$ and $r=|\mathbf x|$,
+$$
+\Delta^+(0,\mathbf x)=\frac{m}{4\pi^2r}K_1(mr).
+$$
+Vacuum correlations are not controllable faster-than-light signals. If a local operation commutes with an effect in another region, the nonselective operation preserves that effect’s expectation. Exploiting selective conditional statistics still requires communication of the classical result.
+
+## 22.3 Sources and detectors
+
+For an external source $J$ coupled as $\int J\phi$, the commutator determines linear response. A localized two-level detector can be modelled by
+$H_I(\tau)=g\chi(\tau)\mu(\tau)\phi(x(\tau))$.
+Its second-order transition probability is an integral of the smeared $\Delta^+$. Switching function, trajectory, gap, and regulator are inputs. An instantaneous point-detector limit may diverge.
+
+<a id="ch-23"></a>
+
+# 23. Dirac and Maxwell fields and their physical degrees of freedom
+
+Dirac and Maxwell fields show how spin, statistics, and gauge constraints alter the physical degrees of freedom. Mode and constraint calculations lead to antiparticles, transverse polarizations, and Gauss’s law while identifying which field variables serve only as auxiliary descriptions.
+
+## 23.1 Spinors and antiparticles
+
+The Clifford relations and Dirac Lagrangian
+$$
+\{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu}I,\quad
+\bar\psi=\psi^\dagger\gamma^0,\quad
+\mathcal L_D=\bar\psi(i\gamma^\mu\partial_\mu-m)\psi
+$$
+give $(i\not\partial-m)\psi=0$. Momentum spinors satisfy
+$$
+(\not p-m)u_s(p)=0,\quad(\not p+m)v_s(p)=0,
+$$
+$$
+\sum_su_s\bar u_s=\not p+m,\quad
+\sum_sv_s\bar v_s=\not p-m
+$$
+in the usual covariant normalization. The mode expansion is
+$$
+\psi(x)=\sum_s\int\frac{d^3p}{(2\pi)^3\,2E_p}
+\left[b_s(p)u_s(p)e^{-ipx}+d_s^\dagger(p)v_s(p)e^{ipx}\right],
+$$
+with $b,d$ obeying CAR in the same normalization. Normal-ordered energy counts positive-energy particle and antiparticle excitations; normal-ordered charge assigns opposite signs.
+
+<a id="p-qdir-01"></a>
+
+**P-QDIR-01.** Multiplication of the Dirac operator by its conjugate factor gives
+$(i\not\partial-m)(i\not\partial+m)=-(\Box+m^2)$.
+Each spinor component therefore satisfies the KG equation, and
+$$
+S_F(x)=(i\not\partial+m)\Delta_F(x),\qquad
+S_F(p)=\frac{i(\not p+m)}{p^2-m^2+i0}.
+$$
+The Clifford relation cancels the antisymmetric part of mixed derivatives. ∎
+
+The same mode expansion verifies graded causality. Let
+$$
+D_0(x)=\Delta^+(x)-\Delta^+(-x)=i\Delta(x),
+$$
+With Chapter 22’s normalization and signs,
+$$
+\{\psi_\alpha(x),\bar\psi_\beta(y)\}
+=\bigl[(i\not\partial_x+m)D_0(x-y)\bigr]_{\alpha\beta}.
+$$
+Use the spin sums $u\bar u=\not p+m$ and $v\bar v=\not p-m$; $i\partial$ supplies opposite momentum signs on positive- and negative-frequency terms. Differentiation preserves the causal support of $D_0$, so spacelike-separated fermion fields anticommute. Appropriate local observables with even fermion parity obey ordinary commutativity. A massive-model check must retain the $m$ term; a numerical massless substitute does not verify the entire massive interface.
+
+**K-QSTAT-01: Spin–statistics.** Under relativistic locality, a positive-energy spectrum, a positive-definite state space, and the relevant vacuum/domain assumptions, integer and half-integer spins obey Bose and Fermi statistics, respectively. This is an imported standard major theorem, not an independent Core proof. It is stronger than ordinary indistinguishability in Chapter 15 and does not transfer unchanged to unchecked two-dimensional braid statistics or other models outside its domain.
+
+## 23.2 Maxwell constraints and transverse modes
+
+Take
+$$
+\mathcal L_M=-\tfrac14F_{\mu\nu}F^{\mu\nu},\qquad
+F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu,
+\qquad A_\mu\sim A_\mu+\partial_\mu\alpha.
+$$
+The potential $A_0$ has no independent kinetic term and its canonical conjugate vanishes. Preserving the constraint in time yields Gauss’s constraint. Constraints and gauge redundancy reduce the four potential components at each nonzero momentum to two physical transverse polarizations, the Maxwell photon helicities $\pm1$. Polarization-vector phases and local frames are representation choices; changing a frame does not create another physical polarization.
+
+In Coulomb gauge the transverse projector is
+$$
+P^T_{ij}(\mathbf k)=\delta_{ij}-k_i k_j/|\mathbf k|^2.
+$$
+It is nonlocal in position space, but this does not establish superluminal observable signals. The causal algebra of physical electromagnetic fields $F_{\mu\nu}$ is treated as in Chapter 21. An auxiliary propagator of a gauge potential, a field-strength commutator, and preparable or detectable photon states are different objects.
+
+One cannot unconditionally require a nontrivial $A_\mu$ to be point-local, Lorentz covariant, subject to the strict Maxwell equations, and represented on a positive-definite Hilbert space simultaneously. Standard no-go results for Maxwell potentials explain the use of an auxiliary indefinite-metric space in covariant gauges, followed by a subsidiary condition or BRST quotient to obtain a positive physical state space. An alternative works directly with transverse modes or local gauge-invariant fields. Treating all four $A_\mu$ modes as positive-norm photons overcounts unphysical degrees of freedom.
+
+## 23.3 Charged objects, Gauss’s law, and boundaries
+
+Gauss’s law relates charge to flux through a surrounding surface, qualifying the intuition that a charged particle is wholly localized in an independent Hilbert factor. Regional partitions may require flux centres, edge variables, or dressed operators. Different choices change entropy and carrier decompositions and must be included in protocol interfaces. Eliminating gauge redundancy and deleting physical boundary degrees of freedom are different operations.
+
+<a id="ch-24"></a>
+
+# 24. Interactions, generating functionals, and scattering
+
+Calculations with interactions first require a distinction between bare and renormalized parameters, regulators, and perturbative order. On that basis we introduce Dyson expansion, generating functionals, and scattering, retaining the asymptotic-state and infrared conditions needed to turn formal expressions into observable cross sections.
+
+## 24.1 A regulated $\lambda\phi^4$ benchmark
+
+Fix notation for bare and renormalized parameters first. The bare Lagrangian is
+$$
+\mathcal L_0=\tfrac12(\partial\phi_0)^2
+-\tfrac12m_0^2\phi_0^2-\frac{\lambda_0}{4!}\phi_0^4.
+$$
+An additional independent set of counterterms must not be added to this expression. With dimensional regularization in $d=4-\epsilon$, define a renormalized field and dimensionless coupling by
+$$
+\phi_0=Z_\phi^{1/2}\phi,\qquad
+Z_\phi m_0^2=m^2+\delta m^2,\qquad
+Z_\phi^2\lambda_0=\mu^\epsilon(\lambda+\delta\lambda),
+\qquad Z_\phi=1+\delta Z_\phi.
+$$
+The same bare expression decomposes as
+$$
+\begin{aligned}
+\mathcal L={}&\tfrac12(\partial\phi)^2-\tfrac12m^2\phi^2
+-\frac{\mu^\epsilon\lambda}{4!}\phi^4+\mathcal L_{\rm ct},\\
+\mathcal L_{\rm ct}={}&\tfrac12\delta Z_\phi(\partial\phi)^2
+-\tfrac12\delta m^2\phi^2-\frac{\mu^\epsilon\delta\lambda}{4!}\phi^4.
+\end{aligned}
+$$
+This is a reparameterization, not two independent sets of masses and couplings. In the four-dimensional limit, the two-point counterterm vertex is $i(\delta Z_\phi p^2-\delta m^2)$ and the four-point vertex is $-i\delta\lambda$; before $\epsilon\to0$, the latter retains $\mu^\epsilon$. QED in Chapter 27 uses $d=4-2\epsilon_{\rm DR}$, requiring a corresponding conversion of pole notation. The two epsilon conventions cannot be mixed.
+
+Global stability of the classical real-scalar potential requires an appropriate positive quartic term. This is distinct from relations between bare and renormalized parameters in a perturbative scheme. Chapter 25’s Euclidean hard-cutoff mass benchmark uses an explicit subtraction scheme. Parameters obtained with different regulators must be matched before comparing observables.
+
+The interaction-picture notation is
+$$
+U_I(t,t_0)=T\exp\left[-i\int_{t_0}^{t}H_I(s)\,ds\right].
+$$
+Its $n$th term is a time-ordered integral; writing it over the full integration region introduces $1/n!$. With finite regulation and suitable operator conditions, dynamics can first be defined directly. In four-dimensional continuum theory the Dyson series is generally used perturbatively. Regulator removal, asymptotic-state limits, and series summation cannot be interchanged because an exponential symbol appears, nor does that notation evade Haag’s theorem in Chapter 21.
+
+## 24.2 Wick expansion and Feynman rules
+
+Even time-ordered free-vacuum correlation functions equal the sum of all pairwise contractions; odd ones vanish (K: Gaussian/Wick theorem). Combining this with the Dyson series gives scalar internal lines $i/(p^2-m^2+i0)$, vertices $-i\lambda$, independent loop integrals $\int d^4\ell/(2\pi)^4$, and symmetry factors from graph automorphisms and expansion counting.
+
+The vacuum-normalized generating functionals are
+$$
+\begin{gathered}
+Z[J]=\frac{\int\mathcal D\phi\,
+e^{iS[\phi]+i\int J\phi}}{\int\mathcal D\phi\,e^{iS[\phi]}},
+\\ W[J]=-i\log Z[J],\\
+\Gamma[\varphi]=W[J]-\int J\varphi,\\
+\varphi=\frac{\delta W}{\delta J}.
+\end{gathered}
+$$
+These expressions are used with finite regulation or perturbatively. A Lorentzian path integral is not automatically an ordinary probability measure. The functional $W$ generates connected diagrams; $\Gamma$ generates 1PI vertices.
+
+## 24.3 LSZ and cross sections
+
+**K-QLSZ-01.** With suitable stable one-particle mass shells, nonzero pole residues, asymptotic states, and spectral assumptions, amputating external propagators from connected correlation functions and inserting external-leg residue factors gives scattering amplitudes. Infrared problems for long-range charged fields prevent unqualified use of the simplest charged Fock-asymptotic-state version.
+
+Use $S=I+iT$ and
+$\langle f|iT|i\rangle=i(2\pi)^4\delta^4(P_f-P_i)\mathcal M$.
+The two-particle incident flux is $4\sqrt{(p_1p_2)^2-m_1^2m_2^2}$, with final-state measure
+$$
+d\Phi_n=(2\pi)^4\delta^4(P-\sum k_i)
+\prod_i\frac{d^3k_i}{(2\pi)^3\,2E_i}.
+$$
+Divide by the appropriate factorials for identical final particles. For centre-of-mass two-to-two scattering,
+$$
+\frac{d\sigma}{d\Omega}=\frac1{64\pi^2s}
+\frac{|\mathbf p_f|}{|\mathbf p_i|}\overline{|\mathcal M|^2}
+$$
+with identical-particle factors and angular-domain conventions handled consistently. Average initial spins only when the preparation does not resolve them.
+
+<a id="p-qunit-01"></a>
+
+**P-QUNIT-01: Optical theorem.** From $S^\dagger S=I$,
+$-i(T-T^\dagger)=T^\dagger T$.
+Take the initial-state diagonal element and insert a complete final-state set. Then $2\operatorname{Im}\mathcal M_{ii}$ equals the phase-space integral of squared intermediate-state amplitudes, including statistical factors. ∎
+This constrains perturbation theory order by order; it does not make every truncated amplitude exactly unitary.
+
+<a id="ch-25"></a>
+
+# 25. Renormalization: explicit one-loop benchmarks and schemes
+
+One-loop integrals make renormalization concrete: regulator dependence enters parameter relations, while matched quantities enter physical comparisons. Mass subtraction, bubbles, thresholds, and running are checked step by step, showing why beta functions from different schemes cannot be mixed without conversion.
+
+## 25.1 The two-point function
+
+With a Euclidean spherical hard cutoff,
+$$
+I_\Lambda(m)=\int_{|q|<\Lambda}\frac{d^4q}{(2\pi)^4}
+\frac1{q^2+m^2}
+=\frac1{16\pi^2}\left[\Lambda^2-m^2\log(1+\Lambda^2/m^2)\right].
+$$
+<a id="p-qren-01"></a>
+
+**P-QREN-01.** The four-dimensional unit-sphere area is $2\pi^2$. Setting $u=q^2$ and integrating $u/(u+m^2)$ gives the expression above. The quartic tadpole has combinatorial factor $1/2$, hence $\Sigma^{(1)}=\lambda I_\Lambda/2$. Absorb this constant using a zero-momentum mass condition:
+$m_0^2=m_R^2-\lambda I_\Lambda(m_R)/2+O(\lambda^2)$,
+which gives $\Gamma_R^{(2)}(p_E)=p_E^2+m_R^2+O(\lambda^2)$.
+The one-loop diagram is momentum independent, so its wavefunction-renormalization contribution at this order vanishes. ∎
+
+The quadratic cutoff term is a scheme-dependent parameter relation, not an independent observable. A regulator change need not change physical predictions.
+
+## 25.2 The four-point function and thresholds
+
+At a specified subtraction configuration with three equivalent Euclidean channels, define
+$$
+B_R(Q;\mu,m)=\frac1{16\pi^2}\int_0^1dx
+\log\frac{m^2+x(1-x)\mu^2}{m^2+x(1-x)Q^2},
+$$
+$$
+F(Q)=\lambda-\tfrac32\lambda^2 B_R(Q;\mu,m)+O(\lambda^3).
+$$
+Here $F_{\rm tree}=\lambda$, whereas the Minkowski tree amplitude is $\mathcal M_{\rm tree}=-\lambda$. The sign difference is conventional, not a physical inconsistency. General kinematics requires three separate channels; $s=t=u$ cannot be imposed arbitrarily.
+
+<a id="p-qren-02"></a>
+
+**P-QREN-02: Subtracted bubble.** Use
+$1/(AB)=\int_0^1dx/[xA+(1-x)B]^2$.
+After shifting the loop variable, the denominator is
+$(\ell^2+m^2+x(1-x)Q^2)^2$.
+Subtract the $\mu$ configuration with the same regulator. Divergent constants cancel, and radial integration gives the logarithm above. Each of the three channels has factor $1/2$. ∎
+
+At $(\lambda,m,\mu,Q)=(0.4,1,2,5)$,
+
+$$
+B_R=-0.00668304090527,\qquad F=0.401603929817.
+$$
+
+These are one-loop truncated values, not exact all-order results.
+
+For a Minkowski channel $z$, analytic continuation gives
+$$
+B_R(z;z_0)=\frac1{16\pi^2}\int_0^1dx
+\log\frac{m^2-x(1-x)z_0-i0}{m^2-x(1-x)z-i0},
+\quad z_0=-\mu^2,
+$$
+$$
+\mathcal M(s,t,u)=-\lambda+
+\frac{\lambda^2}{2}\bigl[B_R(s)+B_R(t)+B_R(u)\bigr]+O(\lambda^3).
+$$
+<a id="p-qren-03"></a>
+
+**P-QREN-03: Two-particle cut.** For $s>4m^2$, the interval where the logarithm’s denominator is negative has length
+$\beta_s=\sqrt{1-4m^2/s}$, so
+$$
+\operatorname{Im}\mathcal M^{(1)}=\frac{\lambda^2\beta_s}{32\pi}.
+$$
+Meanwhile $\int d\Phi_2=\beta_s/(8\pi)$, with division by $2!$ for identical scalars. The optical theorem’s right side is $\lambda^2\beta_s/(16\pi)$, exactly twice the imaginary part. ∎
+
+## 25.3 Running and critical points
+
+**K-QREN-01.** In the massless/UV MS scheme for a four-dimensional real scalar,
+$$
+\beta_\lambda=\mu\frac{d\lambda}{d\mu}
+=\frac{3\lambda^2}{16\pi^2}+O(\lambda^3).
+$$
+The positive sign means growth toward high energy. A massive momentum-subtraction scheme has a threshold function
+$$
+\beta_{\rm MOM}=\frac{3\lambda^2}{16\pi^2}\,
+T(\mu/m)+O(\lambda^3),\quad
+T(r)=\int_0^1\frac{x(1-x)r^2}{1+x(1-x)r^2}\,dx.
+$$
+It obeys $T(r)\sim r^2/6$ in the infrared and tends to one in the UV. A scheme’s beta function at all scales cannot be transferred unchanged to another scheme.
+
+For a connected renormalized $n$-point function, let $\phi_0=Z_\phi^{1/2}\phi_R$ and
+$\gamma_\phi=\tfrac12\mu d\log Z_\phi/d\mu$.
+Holding bare quantities fixed gives
+$$
+[\mu\partial_\mu+\beta_\lambda\partial_\lambda+
+\beta_{m^2}\partial_{m^2}+n\gamma_\phi]G_R^{(n)}=0
+$$
+The anomalous-field-dimension term has the opposite sign for 1PI vertices.
+
+In the $d=4-\epsilon$ expansion,
+$\beta_\lambda=-\epsilon\lambda+3\lambda^2/(16\pi^2)+\cdots$,
+with nontrivial fixed point $\lambda_*=16\pi^2\epsilon/3+O(\epsilon^2)$.
+This is controlled for small $\epsilon$. Using $\epsilon=1$ requires reported truncation and resummation uncertainties.
+
+## 25.4 Scheme matching, expansion parameters, and independent RG checks
+
+Equality of leading beta coefficients has its own conditions. Suppose two massless, mass-independent schemes differ only by an explicitly scale-independent finite redefinition
+$$
+\lambda'=\lambda+c\lambda^2+O(\lambda^3),
+$$
+The chain rule gives
+$$
+\beta_{\lambda'}=(1+2c\lambda+\cdots)\beta_\lambda
+=b\lambda'^2+O(\lambda'^3)
+$$
+when $\beta_\lambda=b\lambda^2+\cdots$. If $c$ depends on $\mu/m$, the explicit $\mu\partial_\mu c$ adds a term at the same order. This explains why a massive MOM threshold need not equal the MS beta function at all scales. Physical comparisons must convert couplings, masses, and external-leg normalizations together and fix matching conditions.
+
+For the Wilson–Fisher expansion, write
+$$
+g=\frac{\lambda}{16\pi^2},\qquad
+\beta_g=-\epsilon g+3g^2+O(g^3)
+$$
+which displays the loop expansion parameter directly: $g_*=\epsilon/3+O(\epsilon^2)$. One must also tune to the critical mass surface. The derivative $\beta_g'(g_*)=\epsilon+O(\epsilon^2)$ refers to the chosen direction of the RG parameter; stability cannot be interpreted without specifying UV versus IR direction. Application at $\epsilon=1$ still needs higher-order and resummation analysis, not an error-free three-dimensional number inferred from a small-$\epsilon$ proof.
+
+Chapter 26’s thin-shell integration toward the IR gives
+$$
+\int_{\rm shell}\frac{d^4q}{(2\pi)^4q^4}=\frac{ds}{8\pi^2},
+\qquad\delta\lambda=-\frac32\lambda^2\int_{\rm shell}\frac{d^4q}{(2\pi)^4q^4}.
+$$
+This follows from three-channel combinatorics and an independent radial integral. Differentiating the subtracted bubble of §25.2 with respect to $\log\mu$ obtains the corresponding UV coefficient by another calculation. They agree in matched massless schemes with opposite flow directions. The historical regression used independent differentiation/integration and order-scaling checks, rather than duplicating one known beta formula on both sides. Agreement at first order does not identify the full Wilsonian action flow with every nonperturbative datum of Callan–Symanzik evolution.
+
+<a id="ch-26"></a>
+
+# 26. Wilsonian RG, effective field theory, and bridges to Core
+
+Low-energy observations need not retain a heavy field explicitly, but its effects must enter effective coefficients. Schur complements and scattering matching demonstrate this process before distinguishing the data preserved by Wilsonian RG, process coarse-graining, and Core object coarse-graining.
+
+## 26.1 Integrating out fast modes
+
+With a Euclidean regulator, split $\phi=\phi_<+\phi_>$ and define, up to normalization,
+$$
+e^{-S_k[\phi_<]}=\int\mathcal D\phi_>\,e^{-S_\Lambda[\phi_<+\phi_>]}
+$$
+The resulting $S_k$ generally contains infinitely many allowed operators. After rescaling, organize them as relevant, marginal, or irrelevant. “Irrelevant” describes scaling near a specified fixed point, not dispensability at every requested accuracy.
+
+With IR-directed $s=\log(\Lambda/k)$, a four-dimensional thin shell gives
+$\int_{\rm shell}d^4q/(2\pi)^4q^{-4}=ds/(8\pi^2)$.
+In a matched massless normalization scheme,
+$d\lambda/ds=-3\lambda^2/(16\pi^2)+\cdots$,
+opposite to the UV-directed parameter of Chapter 25.
+
+## 26.2 A fully checkable heavy-field matching example
+
+<a id="p-qeft-01"></a>
+
+**P-QEFT-01: Quadratic Schur complement.** Eliminating the heavy field from the two-real-field momentum kernel
+$$
+K(p)=\begin{pmatrix}p^2-m^2&-\kappa\\-\kappa&p^2-M^2\end{pmatrix}
+$$
+gives
+$$
+K_{\rm eff}(p)=p^2-m^2+\frac{\kappa^2}{M^2-p^2}.
+$$
+**Proof.** The heavy-field equation is
+$\chi=(p^2-M^2)^{-1}\kappa\phi$.
+Substituting into the quadratic form yields the Schur complement. ∎
+
+For $|p^2|<M^2$,
+$$
+\frac{\kappa^2}{M^2-p^2}
+=\frac{\kappa^2}{M^2}\sum_{j=0}^{n}(p^2/M^2)^j+R_n,\quad
+|R_n|\le\frac{\kappa^2}{M^2}
+\frac{|p^2/M^2|^{n+1}}{1-|p^2/M^2|}.
+$$
+The parameter $\kappa$ has mass dimension two; it is not dimensionless. For $m=0.7,M=10,\kappa=3,p^2=4$, the exact correction is 0.09375; LO, NLO, and NNLO give 0.09, 0.0936, and 0.093744. Positive definiteness of the original quadratic mass matrix also requires
+$m^2M^2>\kappa^2$.
+The derivative expansion fails near the heavy pole.
+
+A general EFT has
+$$
+\mathcal L_{\rm EFT}=\sum_{d,i}\frac{C_i^{(d)}(\mu)}
+{\Lambda_*^{d-4}}\mathcal O_i^{(d)}.
+$$
+The operator basis, redundancy relations, renormalization scheme, matching scale, power counting, and fit data are all part of the model specification.
+
+### A scattering matching test at the same heavy scale
+
+The quadratic mixing coefficient $\kappa$ has mass dimension two. A separate, discriminating benchmark uses heavy exchange through $-g\chi\phi^2/2$, where $g$ has mass dimension one. A locally stable vacuum and the required complete potential must be declared. The calculation below includes only tree-level heavy-$\chi$ exchange and does not prove global stability of a complete potential.
+
+Standard vertices and propagators give
+$$
+\mathcal M_\chi(s,t,u)=g^2\left[\frac1{M^2-s}+\frac1{M^2-t}+\frac1{M^2-u}\right].
+$$
+When every $|z|/M^2\le r<1$, channelwise expansion gives
+$$
+\mathcal M_\chi=
+\frac{3g^2}{M^2}+\frac{g^2(s+t+u)}{M^4}
++\frac{g^2(s^2+t^2+u^2)}{M^6}+\cdots.
+$$
+Truncating each channel after $z^n$ bounds the absolute total remainder by
+$$
+\frac{3g^2}{M^2}\frac{r^{n+1}}{1-r}.
+$$
+For identical external particles of mass $m$, on-shell kinematics imposes $s+t+u=4m^2$. Match lower-dimensional local and derivative terms under this constraint rather than treating the three invariants as arbitrary independent values. For $M=10,g=2,m=1,s=9,t=u=-2.5$, the exchange amplitude is approximately $0.12200482444$. This compares a full tree diagram with its EFT series, independently of the preceding Schur complement, which changes only a two-point kernel.
+
+Removing a heavy field from the low-energy active-field list requires matching Wilson coefficients and running them in the appropriate theory. Smooth threshold suppression of a full-theory MOM coupling is not automatic EFT matching, nor does it make every heavy-field effect exactly zero.
+
+## 26.3 Three types of RG
+
+| Transformation | Input and output | Preserved content |
+|---|---|---|
+| Core object coarse-graining | Maps between declared protocol responses and predictive factors | Responses, or bounded errors, for specified future tasks |
+| Quantum-process coarse-graining | Multitime instrument slots, initial states, and memory processes | Record probabilities under allowed interventions |
+| Wilsonian RG | Regulated actions, fields, and couplings | Low-energy correlation functions or matched amplitudes at stated accuracy |
+
+Bridges can connect them, but their domains, codomains, and preserved data differ. Fixed points, spectral gaps, Markov order, and object minimality are concepts belonging to their respective settings. No general theorem identifies them unconditionally one to one.
+
+<a id="p-qeft-02"></a>
+
+**P-QEFT-02: A restricted real-time bridge.** Fix the same system–environment partition, initial state, joint unitary evolution, allowed slot interventions, and terminal readout. Direct partial tracing and integration of the environment into a Schwinger–Keldysh influence functional give the same protocol probabilities when both calculations are exact and the required sums, integrals, and limits are legitimate.
+
+**Proof.** In a finite-dimensional, finitely regulated realization, the probability of a complete record $\mathbf o$ is a linear pairing of joint operators: insert successive joint unitaries and system CP branches into the same initial state in time order, then trace over all final states. Expanding matrix elements puts the amplitude and its conjugate on the two closed-time-path legs. The initial environmental state and final trace supply the same environmental index contractions. Contracting the environment first gives the influence functional; contracting system indices afterwards or first composing the joint operator and then tracing are merely different orders of the same finite sum. Passing this equality to a controlled continuum limit requires additional convergence and interchange conditions. ∎
+
+The common responses can then be quotiented by Core predictive equivalence. Approximate influence functionals, memory truncation, or discarded interventions require probability-error bounds; exact equality no longer applies. Euclidean fast-mode integration is not itself general CPTP time evolution. Initial correlations, external insertions, gauge constraints, and nonlocal memory can all defeat a naive channel interpretation. A shared coarse-graining intuition does not replace these interfaces.
+
+<a id="ch-27"></a>
+
+# 27. QED: gauge structure, BRST, and Ward identities
+
+Gauge redundancy must remain consistent in quantum calculations, or longitudinal terms and counterterms can produce spurious results. The Ward–Takahashi identity connects gauge fixing, BRST, and one-loop UV checks here, with the complete theorem distinguished from evidence at a particular perturbative order.
+
+## 27.1 Action and symmetry
+
+$$
+D_\mu=\partial_\mu+ieA_\mu,\quad
+\mathcal L=-\tfrac14F^2+\bar\psi(i\not D-m)\psi,
+\quad \psi\mapsto e^{-ie\alpha}\psi,\quad A_\mu\mapsto A_\mu+\partial_\mu\alpha.
+$$
+The interaction is $-e\bar\psi\gamma^\mu A_\mu\psi$, with vertex $-ie\gamma^\mu$.
+Linear covariant gauge fixing adds $-(\partial A)^2/(2\xi)$, giving free photon propagator
+$$
+D_{\mu\nu}(q)=\frac{-i}{q^2+i0}
+\left[\eta_{\mu\nu}-(1-\xi)\frac{q_\mu q_\nu}{q^2+i0}\right].
+$$
+The local nonzero modes of the Abelian Faddeev–Popov determinant are independent of $A$, so the corresponding ghosts decouple in ordinary perturbative QED. Global zero modes and boundaries require separate treatment.
+
+With auxiliary field $B$, take
+$sA=\partial c,\ s\psi=-iec\psi,\ sc=0,\ s\bar c=B,\ sB=0$.
+Gauge-fixing and ghost terms can be written
+$s[\bar c(\partial A+\xi B/2)]$.
+Eliminating $B$ gives the stated gauge-fixing term. The BRST quotient constructs a physical sector under declared quantum-consistency assumptions; it does not treat arbitrary indefinite-metric states as probability states.
+
+## 27.2 The Ward–Takahashi identity
+
+**K-QWARD-01.** With the overall charge factored out of the full vertex $\Gamma^\mu$, a regulator and renormalization prescription preserving vector gauge symmetry give
+$$
+q_\mu\Gamma^\mu(p+q,p)=S^{-1}(p+q)-S^{-1}(p).
+$$
+The proof mechanism is an anomaly-free local phase change of variables in the sourced path integral, differentiation with respect to fermion sources, and external-leg amputation. Contact terms produce the two inverse propagators. We invoke the standard complete identity explicitly; a tree-level check is not an all-loop proof.
+
+At tree level it is simply $q_\mu\gamma^\mu=\not p+\not q-m-(\not p-m)$. Vacuum polarization obeys
+$q_\mu\Pi^{\mu\nu}=0$.
+The identity constrains longitudinal structure, not every finite transverse vertex form factor.
+
+For $d=4-2\epsilon_{\rm DR}$,
+$$
+\psi_0=Z_2^{1/2}\psi,\quad A_0=Z_3^{1/2}A,\quad
+e_0=\mu^{\epsilon_{\rm DR}}Z_e e,\quad
+Z_1=Z_eZ_2Z_3^{1/2}.
+$$
+The Ward identity gives $Z_1=Z_2$ and therefore $Z_e=Z_3^{-1/2}$.
+
+## 27.3 A one-loop UV consistency benchmark
+
+Fix Feynman gauge, one unit-charge Dirac fermion, and the one-loop MS-bar UV-pole convention
+$$
+a=\frac{\alpha}{4\pi\bar\epsilon},\qquad
+\frac1{\bar\epsilon}=\frac1{\epsilon_{\rm DR}}-\gamma_E+\log4\pi.
+$$
+The purpose is an independent consistency calculation of counterterms, not all finite self-energy and vertex parts in an arbitrary gauge.
+
+First simplify the fermion self-energy numerator with
+$\gamma_\mu\gamma_\alpha\gamma^\mu=(2-d)\gamma_\alpha$.
+After Feynman parameterization and the loop shift, the UV coefficient is
+$$
+\Sigma_{\rm UV}(p)=a\int_0^1(-2x\not p+4m)dx
+=a(-\not p+4m).
+$$
+For inverse-propagator convention
+$$
+\Gamma^{(2)}=\not p-m+\delta Z_2\not p
+-\delta m_{\rm direct}\,m-\Sigma_{\rm loop},
+$$
+cancelling the separate $\not p$ and $m$ UV residuals gives
+$$
+\delta Z_2=-a,\qquad\delta m_{\rm direct}=-4a.
+$$
+Multiplicative mass renormalization, $m_0=Z_m m$, satisfies
+$$
+1+\delta m_{\rm direct}=Z_2Z_m,
+\qquad\delta Z_m=\delta m_{\rm direct}-\delta Z_2=-3a.
+$$
+The direct mass coefficient is not $Z_m-1$. Confusing them creates a spurious Ward-identity conflict.
+
+There is an independent check of the vertex’s logarithmic UV part. Symmetric loop-momentum tensor integration contracts with the metric, and on the four-dimensional pole residue,
+$$
+\frac14\gamma_\alpha\gamma_\rho\gamma^\mu
+\gamma^\rho\gamma^\alpha=\gamma^\mu.
+$$
+Apply the four-dimensional identity $\gamma_\rho\gamma^\mu\gamma^\rho=-2\gamma^\mu$ twice. Terms of order $d-4$ can affect finite parts, so this residue cannot replace the full dimension-dependent vertex. It gives $\Lambda^\mu_{\rm UV}=a\gamma^\mu$, hence $\delta Z_1=-a$. Comparison with $\delta Z_2$ from the independent self-energy calculation confirms $\delta Z_1=\delta Z_2$ in this gauge and at this order.
+
+The photon UV coefficient is
+$$
+\frac{2\alpha}{\pi\bar\epsilon}\int_0^1x(1-x)dx
+=\frac{\alpha}{3\pi\bar\epsilon},
+$$
+so $\delta Z_3=-\alpha/(3\pi\bar\epsilon)$. The full Ward relation $Z_e=Z_3^{-1/2}$ then gives the charge pole. The historical regression separately integrated self-energy coefficients, contracted the vertex Dirac tensor, and checked the photon coefficient. Assuming $Z_1=Z_2$ and then comparing them would not be an independent loop calculation.
+
+This does not cover all finite parts at arbitrary $\xi$, infrared structure of on-shell $Z_2$, or precision multiloop QED. The tree-level Ward check, this one-loop UV check, and the complete Ward–Takahashi theorem invoked in §27.2 are three distinct forms of evidence.
+
+<a id="ch-28"></a>
+
+# 28. Computable QED applications: scattering, running, and magnetic moments
+
+The preceding rules now calculate three quantities: a cross section, an effective charge, and an anomalous magnetic moment. These reproduce standard QED benchmarks; each number retains its mass approximation, perturbative order, units, and constant version and does not thereby become a new UEOT prediction.
+
+## 28.1 Electron–positron annihilation
+
+For $e^-e^+\to\mu^-\mu^+$, neglect both lepton masses and retain only one-photon tree exchange:
+$$
+\mathcal M=\frac{e^2}{s}
+[\bar v(p_2)\gamma^\mu u(p_1)]
+[\bar u(k_1)\gamma_\mu v(k_2)].
+$$
+<a id="p-qqed-01"></a>
+
+**P-QQED-01.** Spin completeness and
+$$
+\operatorname{Tr}(\not a\gamma^\mu\not b\gamma^\nu)
+=4(a^\mu b^\nu+a^\nu b^\mu-\eta^{\mu\nu}a\cdot b)
+$$
+give, after dividing by four for the initial-state average,
+$$
+\overline{|\mathcal M|^2}=\frac{2e^4}{s^2}(t^2+u^2)
+=e^4(1+\cos^2\theta).
+$$
+Insert the two-body phase space and integrate:
+$$
+\frac{d\sigma}{d\Omega}=\frac{\alpha^2}{4s}(1+\cos^2\theta),
+\qquad \sigma=\frac{4\pi\alpha^2}{3s}.
+$$
+The angular integral is $16\pi/3$, directly checking the coefficient. ∎
+
+The longitudinal propagator term vanishes by external-leg Dirac equations and current conservation, so the tree cross section is independent of $\xi$. Finite masses, Z exchange, radiative corrections, and detector acceptance are outside this benchmark. With frozen reproduction input $\alpha^{-1}=137.035999084$ and $\sqrt s=10$ energy units,
+$\sigma=2.2305875\times10^{-6}$ inverse-energy-squared units.
+This does not claim the latest constant determination or a precision experimental prediction.
+
+The fixed inverse fine-structure constant is the central value from CODATA 2018, retained solely to preserve the reproducibility of this benchmark. [NIST 2018 archive](https://physics.nist.gov/cuu/Constants/archive2018.html), [original adjustment report](https://doi.org/10.1103/RevModPhys.93.025010).
+
+## 28.2 Vacuum polarization and decoupling
+
+For spacelike $Q^2>0$, define the positive screening function
+$$
+\widehat\Pi(Q^2)=\frac{2\alpha}{\pi}\int_0^1dx\,x(1-x)
+\log\!\left[1+\frac{Q^2}{m^2}x(1-x)\right],\quad
+\alpha_{\rm eff}=\frac{\alpha}{1-\widehat\Pi}.
+$$
+This fixes a subtraction and sign convention. For small $a_Q=Q^2/m^2$,
+$\widehat\Pi=\alpha a_Q/(15\pi)+O(a_Q^2)$;
+for large $a_Q$,
+$$
+\widehat\Pi=\frac{\alpha}{3\pi}\left(\log a_Q-\frac53\right)+O(a_Q^{-1}).
+$$
+The first uses $\int x^2(1-x)^2dx=1/30$; the second uses
+$\int x(1-x)dx=1/6$ and its logarithmic moment.
+
+<a id="p-qqed-02"></a>
+
+**P-QQED-02: Threshold beta function.** Differentiating with respect to $\log Q$, through $O(\alpha^2)$, gives
+$$
+\frac{d\alpha_{\rm eff}}{d\log Q}
+=\frac{4\alpha^2}{\pi}\int_0^1dx\,
+\frac{a_Qx^2(1-x)^2}{1+a_Qx(1-x)}.
+$$
+It vanishes in the infrared and tends to $2\alpha^2/(3\pi)$ in the UV. For several active Dirac fields, multiply each contribution by its $N_cQ_f^2$ and sum, treating thresholds with the corresponding masses. ∎
+The one-loop Landau pole warns against extrapolation; it is not a proved physical energy singularity.
+
+## 28.3 Schwinger’s magnetic moment and infrared boundaries
+
+Decompose the on-shell vertex as
+$$
+\bar u(p')\Gamma^\mu u(p)=\bar u(p')
+\left[\gamma^\mu F_1(q^2)
++\frac{i\sigma^{\mu\nu}q_\nu}{2m}F_2(q^2)\right]u(p),
+\quad a_\ell=F_2(0).
+$$
+The standard one-loop starting point, with external legs on shell, overall $-ie$ factored out, and fixed momentum flow, is for example
+$$
+\Lambda^\mu(p',p)=-ie^2\int\frac{d^d\ell}{(2\pi)^d}
+\frac{\gamma_\rho(\not p'-\not\ell+m)\gamma^\mu
+(\not p-\not\ell+m)\gamma^\rho}
+{[\ell^2+i0][(p'-\ell)^2-m^2+i0][(p-\ell)^2-m^2+i0]}.
+$$
+Dimensional regularization also retains $\mu^{2\epsilon_{\rm DR}}$, with consistent infrared treatment where needed. Feynman parameterization, a loop shift, Gordon decomposition, and projection onto the Pauli structure reduce the finite $F_2$ contribution as $q^2\to0$ to the integral below. This analytical reduction is a standard QED input. The subsequent two-dimensional numerical integral does not machine-prove every interchange, regularization step, and limit in the reduction.
+
+**K-QQED-01.** Standard one-loop vertex parameterization and Pauli projection give
+$$
+F_2(0)=\frac{\alpha}{\pi}
+\int_0^1dz\int_0^{1-z}dy\,\frac{z}{1-z}
+=\frac{\alpha}{2\pi}.
+$$
+Integrating over $y$ cancels $1-z$, after which the integral over $z$ gives the result. The independent checks here concern this parameter integral and its numerical value, not a machine derivation of all regularization and on-shell limits from the full loop graph.
+
+Virtual photon loops and real soft radiation can separately diverge in the infrared. Physical inclusive observables require fixed energy/angular resolution and combined real and virtual terms. Cancellation of a vector gauge anomaly does not eliminate axial-current anomalies. The QED sector has not supplied a new independent UEOT prediction of physical constants.
+
+<a id="ch-29"></a>
+
+# 29. Non-Abelian gauge fields and a candidate Standard Model structure
+
+Gauge anomalies strongly constrain candidate particle tables but generally leave several consistent solutions. After fixing non-Abelian conventions, we calculate representation and hypercharge conditions and distinguish evidence for local cancellation, global consistency, and nature’s actual choice.
+
+## 29.1 Yang–Mills definitions and calculation responsibilities
+
+Use Hermitian generators $[T^a,T^b]=if^{abc}T^c$ and
+$\operatorname{Tr}_R(T^aT^b)=T(R)\delta^{ab}$.
+Consistently with QED’s $D=\partial+igA$, define
+$$
+F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu+ig[A_\mu,A_\nu],
+\quad [D_\mu,D_\nu]=igF_{\mu\nu},
+\quad\mathcal L_{\rm YM}=-\tfrac12\operatorname{Tr}(F_{\mu\nu}F^{\mu\nu})
+$$
+with fundamental trace normalization $T=1/2$. The nonlinear component term is
+$-g f^{abc}A_\mu^bA_\nu^c$.
+Changing to $D=\partial-igA$ requires the corresponding sign changes throughout.
+
+Non-Abelian self-coupling gives three- and four-gauge-boson vertices. Ghosts no longer decouple. Gauge fixing and BRST transformations use covariant derivatives and Lie brackets; nilpotency depends on Jacobi. Quantum constraints are Slavnov–Taylor identities, not QED’s $Z_1=Z_2$ applied to every vertex. Perturbative BRST does not solve the global Gribov problem.
+
+**K-QYM-01.** For Dirac fermions and complex scalars,
+$$
+\beta(g)=-\frac{g^3}{16\pi^2}b_0+O(g^5),\quad
+b_0=\frac{11}{3}C_A-\frac43\sum_{\rm Dirac}T(R_f)
+-\frac13\sum_{\rm complex}T(R_s).
+$$
+A Weyl fermion contributes half the Dirac value. Six-flavour QCD in the fundamental representation gives $b_0=7$. Asymptotic freedom proves neither confinement nor a mass gap. Strong-coupling low-energy predictions generally need lattice methods, effective theories, or other nonperturbative techniques with error control.
+
+## 29.2 The Standard Model as a concrete candidate
+
+Declare the gauge Lie algebra
+$\mathfrak{su}(3)_C\oplus\mathfrak{su}(2)_L\oplus\mathfrak u(1)_Y$.
+The global group may have a representation-compatible discrete quotient. The local Lagrangian does not determine line operators or every global sector. The table uses exclusively left-handed Weyl fields and $Q=T_3+Y$.
+
+| Field | $SU(3)_C,SU(2)_L$ | $Y$ | Weyl components per generation |
+|---|---|---:|---:|
+| $Q$ | $3,2$ | $1/6$ | 6 |
+| $U^c$ | $\bar3,1$ | $-2/3$ | 3 |
+| $D^c$ | $\bar3,1$ | $1/3$ | 3 |
+| $L$ | $1,2$ | $-1/2$ | 2 |
+| $E^c$ | $1,1$ | 1 | 1 |
+| $H$ | $1,2$ | $1/2$ | Complex scalar, not Weyl |
+
+Gauge and fermion kinetic terms, Higgs kinetic and potential terms, and Yukawa couplings form the usual operator-dimension-at-most-four renormalizable structure; topological theta terms may also occur. “Minimal object” does not automatically set the strong-CP parameter to zero. This field table is a sector input, not the unique particle table derived from Core.
+
+## 29.3 Exact anomaly equations
+
+For general $N_c$ and the same multiplet types, local anomalies require
+$$
+2y_Q+y_U+y_D=0,\quad N_cy_Q+y_L=0,
+$$
+$$
+2N_cy_Q+N_cy_U+N_cy_D+2y_L+y_E=0,
+$$
+$$
+2N_cy_Q^3+N_cy_U^3+N_cy_D^3+2y_L^3+y_E^3=0.
+$$
+The pure-colour cubic anomaly cancels between the doublet’s two fundamentals and two antifundamentals. $SU(2)$ has no perturbative cubic anomaly, but its Witten global anomaly requires an even total number of fundamental doublets, here $N_f(N_c+1)$.
+
+<a id="p-qsm-01"></a>
+
+**P-QSM-01: Anomaly solutions and nonuniqueness.** The three linear equations give
+$y_L=-N_cy_Q,\ y_D=-2y_Q-y_U,\ y_E=2N_cy_Q$.
+The cubic equation factors as
+$$
+6N_cy_Q[(N_c-1)y_Q-y_U][(N_c+1)y_Q+y_U].
+$$
+Expansion or substitution verifies this directly. Besides the SM-type branch and its up/down interchange, a degenerate $y_Q=0$ branch remains. Anomaly cancellation alone does not uniquely select hypercharge. ∎
+
+Ordinary Yukawa gauge invariance of
+$QHU^c,QH^\dagger D^c,LH^\dagger E^c$
+gives $y_H=N_cy_Q$. Normalize $y_H=1/2$ to obtain
+$$
+Y_Q=\frac1{2N_c},\quad
+Y_U=-\frac{N_c+1}{2N_c},\quad
+Y_D=\frac{N_c-1}{2N_c},\quad Y_L=-\frac12,\quad Y_E=1.
+$$
+Any $N_c$ satisfying the other conditions admits this local solution branch; three has not been selected. Adding $N^c$ can reopen Abelian mixing directions, requiring all conditions to be solved again.
+
+## 29.4 Local and global anomalies and identity transport
+
+Vanishing perturbative anomaly coefficients are only the first layer. The global gauge group, spin structure, discrete symmetries, background bundles, boundaries, and possible inflow affect the complete anomaly problem.
+
+**S-QGOIT: Gauge-Orbit Identity Transport.** Once a physical realization identifies a gauge transformation as representational redundancy, complete physical responses must descend consistently to the orbit quotient. An uncancelled curvature or holonomy obstruction in the chiral-fermion determinant/Pfaffian line prevents the isolated candidate from being a consistent realization of that dynamical gauge theory. Legitimate additional matter, counterterms, or inflow may complete it.
+
+This locates standard anomaly obstructions within UEOT identity transport; it does not identify arbitrary Core holonomy with a gauge anomaly. A ’t Hooft anomaly of an ungauged global symmetry is not the same as inconsistent dynamical gauge redundancy. Mathematical sources include [Yonekura’s determinant-line discussion](https://arxiv.org/abs/1607.01873) and the [Dai–Freed particle-physics analysis](https://arxiv.org/abs/1808.00009).
+
+<a id="ch-30"></a>
+
+# 30. Higgs, Yukawa, flavour, and neutrino structures
+
+The Higgs mechanism explains how mass terms arise in a chosen model without automatically fixing Yukawa values. Explicit mass matrices lead to flavour mixing and neutrino realizations, separating conditional relations, fitted parameters, and the mass-hierarchy questions that still require a mechanism.
+
+## 30.1 An explicit realization of electroweak breaking
+
+For a single complex doublet, take
+$$
+\begin{gathered}
+V(H)=-\mu_H^2H^\dagger H+\lambda_H(H^\dagger H)^2,
+\\ \lambda_H>0,\\ \mu_H^2>0,\\
+H=\frac1{\sqrt2}\binom{0}{v+h},\\ v^2=\mu_H^2/\lambda_H.
+\end{gathered}
+$$
+This is unitary-gauge parameterization near a particular vacuum, not a proof of global gauge fixing.
+
+<a id="p-qhig-01"></a>
+
+**P-QHIG-01: Mass matrices.** Expanding $(D_\mu H)^\dagger D^\mu H$ gives
+$$
+m_W^2=\frac{g^2v^2}{4},\qquad
+M_{\rm neutral}^2=\frac{v^2}{4}
+\begin{pmatrix}g^2&-gg'\\-gg'&g'^2\end{pmatrix}
+$$
+in a compatible $W^3,B$ neutral-field basis. Its determinant is zero, and its other eigenvalue is $(g^2+g'^2)v^2/4$. Define
+$$
+\tan\theta_W=g'/g,\quad
+A=\sin\theta_W W^3+\cos\theta_W B,\quad
+Z=\cos\theta_W W^3-\sin\theta_W B,
+$$
+Then $m_A=0,m_Z=v\sqrt{g^2+g'^2}/2$ and
+$e=g\sin\theta_W=g'\cos\theta_W$.
+The quadratic potential expansion gives $m_h^2=2\lambda_Hv^2$.
+At tree level, $\rho=m_W^2/(m_Z^2\cos^2\theta_W)=1$. ∎
+
+Several suitable doublets can also preserve tree-level $\rho=1$, so the relation does not uniquely select one Higgs. A “topologically trivial scalar” does not determine a doublet, potential, or vacuum scale either.
+
+## 30.2 Free flavour parameters and CP
+
+In four-component notation,
+$$
+\mathcal L_Y=-\bar Q_LY_dd_RH-\bar Q_LY_uu_R\widetilde H
+-\bar L_LY_ee_RH+\mathrm{h.c.},\quad \widetilde H=i\sigma_2H^*.
+$$
+After symmetry breaking, $M_f=vY_f/\sqrt2$. Singular-value decomposition gives
+$$
+U_{fL}^\dagger M_fU_{fR}=D_f\ge0,\qquad
+V_{\rm CKM}=U_{uL}^\dagger U_{dL}.
+$$
+Flavour diagonality of neutral currents, charged-current mixing, and GIM cancellation follow from this structure. Degenerate masses enlarge the residual basis-change group.
+
+<a id="p-qflav-01"></a>
+
+**P-QFLAV-01: Generic nondegenerate $N$-generation quark counting.** Two complex Yukawa matrices contain $4N^2$ real parameters. Basis transformations
+$U(N)_Q\times U(N)_u\times U(N)_d$
+remove $3N^2-1$, since a common baryon phase leaves Yukawa matrices unchanged. The remaining $N^2+1$ consist of
+$$
+2N\text{ masses}+\frac{N(N-1)}2\text{ angles}
++\frac{(N-1)(N-2)}2\text{ CP phases}.
+$$
+Three generations give six masses, three angles, and one phase. ∎
+
+This counts Yukawa flavour parameters only; the strong-CP parameter is not among those ten. Nonzero KM-type CP violation requires at least three generations, not exactly three. Physical CP violation also requires a suitable nondegenerate structure and a nonzero rephasing invariant, such as appropriate combinations of
+$J=\operatorname{Im}(V_{ij}V_{kl}V^*_{il}V^*_{kj})$.
+
+## 30.3 Neutrinos: distinct realizations
+
+Adding $N_R$ permits Dirac masses. A Majorana EFT may use the explicit convention
+$$
+\mathcal L_5=-\frac{C_{ij}}{2\Lambda_*}(L_iH)(L_jH)+\mathrm{h.c.},
+\qquad m_\nu=\frac{v^2}{2\Lambda_*}C
+$$
+with spin and $SU(2)$ contractions implicit and $C=C^T$. The factor of two depends on the operator definition and must agree with the mass formula.
+
+<a id="p-qnu-01"></a>
+
+**P-QNU-01: Type-I seesaw.** With invertible $M_R$ and heavy–light separation $\|M_D M_R^{-1}\|\ll1$,
+$$
+\mathcal M=\begin{pmatrix}0&M_D\\M_D^T&M_R\end{pmatrix},
+\quad m_\nu^{\rm eff}=-M_DM_R^{-1}M_D^T
+$$
+is the Schur complement of the zero-momentum quadratic kernel. Dynamics and mixing matrices have additional higher-order corrections. Physical masses of a complex symmetric mass matrix come from Takagi factorization, not ordinary eigenvalues of a general complex matrix. ∎
+
+Ultrarelativistic vacuum oscillations are approximated by
+$$
+P_{\alpha\to\beta}(L)=
+\left|\sum_i U_{\beta i}U_{\alpha i}^*
+e^{-im_i^2L/(2E)}\right|^2,
+$$
+under suitable preparation, coherent-propagation, and detection approximations. Matter effects, wave-packet decoherence, and nonunitary extensions must be added separately. Oscillation probabilities do not uniquely determine Dirac versus Majorana character or the high-energy seesaw realization.
+
+## 30.4 Flavour models and the original nesting intuition
+
+A discrete depth $d=1,2,3$ becomes testable only after an independent map $d\mapsto Y$ is specified. For example, equal-step exponential masses $m(d)=Me^{\kappa d}$ require $m_2^2=m_1m_3$. This is a falsifiable relation, not a restatement that deeper nesting means larger mass.
+
+An ansatz $Y_{ij}=c_{ij}\epsilon^{n_{ij}}$ already has Froggatt–Nielsen structure. To add physical content, UEOT must independently select the integers, $\epsilon$, and coefficient constraints, then predict flavour observables not used to select the realization. An arbitrarily fitted relabelling is not a mass theory.
+
+<a id="ch-31"></a>
+
+# 31. Three generations and three colours: conditional theorems and simpler premises
+
+Selecting exactly three generations first faces replication: conditions closed under copying families cannot determine a unique positive count. A specified representation assignment and weak-running budget break that freedom here, while countermodels preserve the role of each premise; Chapter 36 supplies the distinct high-energy-window analysis.
+
+Reading note: this chapter retains a low-energy weak-asymptotic-freedom premise. Chapter 36 shows that a different set of high-energy asymptotic-freedom conditions does not automatically imply it and supplies a five-colour countermodel. Cite the two chapters together.
+
+We retain the valid arithmetic of the available v30.11 mainline and strengthen it by removing the “primitive package” assumption. The result remains a conditional theorem, not a three-generation theorem of general UEOT Core.
+
+## 31.1 The replication-invariance obstruction
+
+<a id="p-qg3-01"></a>
+
+**P-QG3-01.** Suppose an axiom class $\mathcal A$ contains a model $T$ and is closed under family replication by some $r>1$: the replicated model satisfies every axiom and
+$N_f(R_rT)=rN_f(T)$.
+Then the class cannot select a unique fixed positive integer generation count.
+
+**Proof.** If the unique value were $N_0>0$, the replicated model in the same class would have $rN_0\ne N_0$, a contradiction. ∎
+
+Independent anomaly cancellation in each generation, general Born kinematics, and replication-closed object certificates therefore cannot explain three by themselves. A successful selector needs a premise that genuinely breaks replication freedom. An upper bound, an intergenerational anomaly, or a coupling structure could serve that role.
+
+## 31.2 A fixed representation class for a horizontal gauge parent
+
+**H-QG3-1 (HGP and representation assignment).** There is a dynamical chiral horizontal or extended-weak gauge carrier $G_H$, with a complex representation $R$ whose cubic anomaly coefficient obeys
+$A(R)=a\ne0,A(\bar R)=-a$.
+Each lepton generation is one colourless $R$. Quarks have colour multiplicity $N_c$, with $k$ generations in $R$ and the remaining $N_f-k$ in $\bar R$. This specifies more than the existence of a parent object: it fixes its chiral representation assignment and assumes no other uncounted contribution to that cubic anomaly.
+
+<a id="p-qg3-02"></a>
+
+**P-QG3-02: All integer solutions.**
+$$
+A_H/a=N_f+N_c(2k-N_f)=0
+\iff 2N_ck=(N_c-1)N_f.
+$$
+Let $d=\gcd(2N_c,N_c-1)=\gcd(2,N_c-1)$. All positive solutions are
+$$
+k=t\frac{N_c-1}{d},\qquad N_f=t\frac{2N_c}{d},\qquad
+t\in\mathbb Z_{>0}.
+$$
+**Proof.** Divide by the greatest common divisor. The remaining coefficients are coprime, so divisibility forces the indicated common multiple. For odd $N_c$, $d=2$; for even $N_c$, $d=1$. ∎
+
+A primitive package means $t=1$. General Core atomicity does not force the universe to realize exactly one package. The anomaly assignment has a clear precedent in the classic 331 mechanism and is not original to this book: see [Pisano–Pleitez](https://arxiv.org/abs/hep-ph/9206242) and the [extension with right-handed neutrinos](https://link.aps.org/doi/10.1103/PhysRevD.50.R34).
+
+## 31.3 Conditional selection without a primitive-package premise
+
+Add the following explicit assumptions.
+
+- **H-QG3-2:** The colour group is $SU(N_c)$ with a genuinely complex fundamental representation, so $N_c\ge3$. Excluding the pseudoreal fundamental of $SU(2)$ is a physical-class choice.
+- **H-QG3-3:** In a declared perturbative window with every ordinary generation active and fixed gauge structure and matter content, require the one-loop weak $SU(2)_L$ coefficient to point toward asymptotic freedom. Ordinary fermions give the necessary condition
+  $$
+  N_f(N_c+1)<22.
+  $$
+  Scalars and additional ordinary weakly charged matter add screening. A changed gauge group or new vector structure requires recalculation; the bound is not unconditional.
+
+<a id="p-qg3-03"></a>
+
+**P-QG3-03: Selection without primitivity.** Within the intersection of H-QG3-1, 2, and 3, the unique positive integer anomaly solution is
+$$
+(N_c,N_f,k)=(3,3,1).
+$$
+No separate $t=1$ premise is needed.
+
+**Proof.** For odd $N_c\ge3$, $N_f=tN_c$, so
+$tN_c(N_c+1)<22$.
+For $N_c\ge5$, the left side is at least 30, impossible. For $N_c=3$, $12t<22$ forces the positive integer $t$ to be one, hence $N_f=3,k=1$. For even $N_c\ge4$, $N_f=2tN_c$ makes the left side at least 40, also impossible. ∎
+
+This removes a redundant premise within a fixed model class. It does not establish HGP, uniqueness of the representation class, or the necessity of asymptotic freedom for every weak effective theory in nature. Relaxing complex colour admits $(2,4,1)$ under the arithmetic bound; removing the weak bound restores $t>1$ and larger odd colour counts. Additional horizontal anomaly-cancelling matter changes the integer equation itself.
+
+Adding one Higgs doublet at the candidate point gives the complete ordinary weak coefficient
+$$
+b_2=\frac{22}{3}-\frac{N_f(N_c+1)}3-\frac16
+=\frac{19}{6}>0.
+$$
+This checks one permitted weak-matter configuration. It is not an existence proof for every high-energy HGP completion.
+
+## 31.4 An explicit 331 realization and anomaly inventory
+
+One RHN-type branch of $SU(3)_C\times SU(3)_L\times U(1)_X$ has the all-left-handed representations
+
+| Multiplicity | Representation $(C,L,X)$ |
+|---:|---|
+| 3 | $(1,3,-1/3)$ |
+| 3 | $(1,1,1)$ |
+| 1 | $(3,3,1/3)$ |
+| 2 | $(3,\bar3,0)$ |
+| 4 | $(\bar3,1,-2/3)$ |
+| 5 | $(\bar3,1,1/3)$ |
+
+The pure $C^3,L^3$ anomalies, mixed $C^2X,L^2X$, mixed gravitational $X$, and $X^3$ all vanish. Fundamental and antifundamental representations have opposite cubic non-Abelian anomaly signs but the same quadratic Dynkin index $1/2$. The $U(1)$ contributions include the dimensions of the other representations. These rules reproduce the appendix’s rational checks. The table demonstrates that a locally anomaly-free carrier exists. It is neither evidence that nature selects it nor a complete global-anomaly or phenomenological assessment.
+
+## 31.5 Another conditional branch with fixed ordinary charges
+
+For general $N_c$, take $Q=T_3+\beta_8T_8+X$ and fix ordinary charges
+$Q_\nu=0,Q_e=-1,Q_u=2/3,Q_d=-1/3$.
+Then
+$$
+X_L=-\tfrac12-\frac{\beta_8}{2\sqrt3},\quad
+X_{Q+}=\tfrac16-\frac{\beta_8}{2\sqrt3},\quad
+X_{Q-}=\tfrac16+\frac{\beta_8}{2\sqrt3},
+$$
+and third-component charges are
+$$
+q_E=-\tfrac12-\frac{\sqrt3\beta_8}{2},\quad
+q_{J+}=\tfrac16-\frac{\sqrt3\beta_8}{2},\quad
+q_{J-}=\tfrac16+\frac{\sqrt3\beta_8}{2}.
+$$
+A complete chiral table for arbitrary $\beta_8$ includes the left-handed conjugate singlets of every corresponding right-handed field, **including charged $E^c$**, not just $e^c,u^c,d^c,J^c$. For $q_E=0$, the neutral singlet contributes nothing to these local anomalies.
+
+<a id="p-qg3-04"></a>
+
+**P-QG3-04.** For this full representation table, imposing the $L^3$ anomaly equation and summing directly gives
+$$
+\begin{gathered}
+A_{L^2X}=\frac{N_f(N_c-3)}{12},\\
+A_{X^3}=-\frac{N_f(N_c-3)(1+\beta_8^2)}4,
+\\ A_{\mathrm{grav}^2X}=A_{C^2X}=A_{C^3}=0.
+\end{gathered}
+$$
+To verify this, the triplet $X^3$ contributions are $3X_L^3$ and $3N_cX_{Q\pm}^3$. Add the cubes of the singlets’ negative physical charges, substitute
+$k=N_f(N_c-1)/(2N_c)$,
+and expand to obtain the factors above. Mixed terms use $T(3)=1/2$ directly. ∎
+
+For $N_f>0$, local cancellation within this class forces $N_c=3$, then $N_f=3k$. An upper bound or another replication-breaking principle is still needed to select $k=1$. Replacing the ordinary quark charges by the $N_c$-dependent solution of Chapter 29 removes the mixed-anomaly argument forcing three colours. Ordinary charges and three colours have not both been derived from nothing.
+
+## 31.6 Exact kernel correspondence and permanent countermodels
+
+The integer content of the §31.3 selector is implemented in the finite UEOT-QM kernel as `Selector.selects_three_without_atomicity`. Its inputs explicitly include natural numbers $N_c,N_f,k$, $N_c\ge3$, $N_f>0$, $k\le N_f$, the stated cubic equation, and the strict weak budget. It does not generate these physical premises from general Core.
+
+`Spectrum.spectrum_selects_three` further connects finite spectrum-row sums to the selector. Its contract requires homogeneous lepton orientation, a nonzero anomaly unit, ordinary lepton and quark doublets in every row active in the same weak window, nonnegative additional screening, and positivity of the complete weak coefficient. Any anomaly compensation outside the ordinary rows must separately sum to zero. These are substantive conditions. The theorem does not construct an $SU(3)_L$ quantum field theory, prove an additional compensation mechanism effective, or preserve the original window after thresholds change.
+
+For example, relax homogeneous leptons by placing $l$ generations in $R$ and the others in $\bar R$. The cubic equation becomes
+$$
+(2l-N_f)+N_c(2k-N_f)=0.
+$$
+The point $(N_c,N_f,l,k)=(3,2,1,1)$ satisfies it and has $N_f(N_c+1)=8<22$. This explicitly refutes the claim that spectrum orientation is immaterial. The kernel verifies the corresponding row counts and weak coefficient. Under a separately specified generalized 331 charge table, $\beta_8=0$, and further conditions, Python exact arithmetic also checks six local anomalies. That calculation is not thereby a complete six-anomaly theorem in Lean or an already viable full particle model.
+
+Similarly, at the three-generation point with ordinary fermions, a total of twenty complex Higgs doublets reduces the weak coefficient to zero. Passing the ordinary necessary budget therefore does not guarantee positivity after arbitrary scalar additions. Allowing additional cubic compensation for a nonzero ordinary-row anomaly can admit one-generation and other points in a wider class. Counterexamples must remain alongside positive results so that summaries do not erase physical premises.
+
+The complete six-local-anomaly sums of §§31.4–31.5, the framing/index route of Chapter 32, and the classification on the correct high-energy gauge group in Chapter 36 are distinct mathematical objects. Each retains its own analytical and exact-regression evidence. A count of formalized theorems cannot replace these precise coverage relations.
+
+<a id="ch-32"></a>
+
+# 32. Further results, topological routes, and open boundaries
+
+Topological and framing ideas yield testable selection only after their realizations, maps, and completion conditions are specified. This chapter retains checkable conditional classifications and removes invalid shortcuts such as deriving generations directly from Betti numbers, keeping open research distinct from the established chain.
+
+## 32.1 Conditional classification of framing completions
+
+The following candidate route is independent of HGP. The two premise sets cannot be interchanged without explanation.
+
+**H-QFR-1 (FAD).** Specify a dimensional-reduction or defect realization whose descendant must forget a chosen framing autonomously, without additional inflow. Assume completion contributions are additive per generation and recorded as
+$\chi=2c_-^{\mathcal C}\in\mathbb R/48\mathbb Z$,
+with the designated descent of the ordinary $4N_c+3$ Weyl components per generation contributing the same number of units. The resulting condition is
+$$
+N_f(4N_c+3+\chi)=0\quad\text{in }\mathbb R/48\mathbb Z.
+$$
+This is one compatibility equation within a complete physical assumption package, not a general four-dimensional anomaly-cancellation formula.
+
+Complex colour $N_c\ge3$, KM-type CP requiring $N_f\ge3$, and the necessary weak-AF bound leave seven candidates:
+$$
+(3,3),(3,4),(3,5),(4,3),(4,4),(5,3),(6,3).
+$$
+
+<a id="p-qfr-01"></a>
+
+**P-QFR-01.** On this seven-point set, the framing equation selects exactly $(3,3)$ if and only if $\chi=1\bmod48$.
+
+**Proof.** Acceptance of $(3,3)$ requires $3(15+\chi)=0\bmod48$, leaving residues 1, 17, or 33 modulo 48. For 1, the condition is $12\mid N_f(N_c+1)$, and only $(3,3)$ among the seven has product 12. Residue 17 also admits $(4,4)$, while 33 also admits $(3,4),(3,5)$. ∎
+
+For $\chi=0$, oddness of $4N_c+3$ requires $16\mid N_f$, contradicting the upper bound. If completions are restricted to zero or one singlet Weyl field per generation, the narrow class selects one. This does not exclude coupled TQFTs or completions not additive generation by generation.
+
+The same four-dimensional anomaly class need not yield the same descendant $\chi$. A concrete natural descent map and a proof of framing response are needed. That universal bridge has not been established.
+
+## 32.2 Autonomy, object partitions, and external completions
+
+<a id="p-qfr-02"></a>
+
+**P-QFR-02.** If a joint process factorizes exactly as $\mathbf T_{FC}=\mathbf T_F\otimes\mathbf T_C$, and a legitimate cut deletes only cross-couplings, the cut leaves the process unchanged. Its distance is zero in every operational distance.
+
+**Proof.** No cross term exists to delete, so the compared responses are equal. ∎
+
+This prevents a wholly decoupled external system from being called a causally integrated parent merely by naming it so. Coupled topological sectors, shared gauge variables, and line/surface protocols can have real cross-structure and are not excluded. Parent autonomy also does not imply autonomy of every descendant with a boundary: bulk inflow can cancel a boundary anomaly.
+
+A flavour-space dimension $N_f$ does not automatically supply a gauge-independent basis of generation subobjects. Masses, interactions, and implementable protocols may select structures, but they need certificates. An arbitrary coordinate basis is not nature’s decomposition.
+
+## 32.3 The retained topological research route
+
+**K-QIDX-01.** For a closed spin manifold and an appropriate twisting bundle,
+$$
+\operatorname{Index}D_E=\int_M\widehat A(TM)\operatorname{ch}(E)
+$$
+taking the top-degree component. On $S^2$, a line bundle of degree
+$n=(2\pi)^{-1}\int F$ gives $\operatorname{Index}D_E=n$, while $b_1(S^2)=0$.
+The index counts the difference between positive- and negative-chirality zero modes, not an arbitrary Betti number.
+
+The legitimate chain is: independently select $M,E,D$; calculate the index; connect it to net chiral zero modes; then check paired extra zero modes and the low-energy spectrum. Choosing a degree-three bundle and computing three is a conditional realization, not generation selection. The original implication $b_1=3\Rightarrow\operatorname{Index}D=3$ is excluded from this book’s proof system.
+
+## 32.4 Claims removed from the established dependency chain
+
+| Claim | Status here | What would be required to restore it |
+|---|---|---|
+| A closed-orbit phase integral directly establishes CCR | N | Regular operations, representations, continuity, and a nontrivial central character |
+| Finite information automatically yields the standard uncertainty constant | N | Physical operators, state domains, and calibration of $\hbar$ |
+| Public records imply a unique objective collapse | O | Dynamics and experiments distinguishable from open-system accounts |
+| Arbitrary two-angle tests prove the global Born rule | N | Global quantifiers or a fixed finite-parameter model |
+| $b_1$ directly determines three generations | N | An index realization and independent selection mechanism |
+| Common-$q$ or CP capacity alone selects three | N | Independent conditions excluding other consistent candidates |
+| An autonomous parent forces an autonomous descendant | N | Additional no-inflow conditions |
+| Gauge-anomaly cancellation automatically selects the full SM | N | Selection of the gauge group, representations, global structure, and parameters |
+| General object mathematics has proved HGP/FAD | O | An explicit realization theorem and exclusion of countermodels |
+
+QBX or other quantum-foundations breakthrough candidates can advance only through mathematical model, simulation evidence, hardware protocol, real blinded testing, and independent reproduction. This book contains no new hardware data and announces no discovery of objective collapse, supraquantum performance, or particles beyond the Standard Model.
+
+<a id="ch-33"></a>
+
+# 33. Interface contracts for the complete architecture
+
+Composition across chapters can easily lose types, normalization, system identity, or evidential scope. Interface contracts make finite quantum programs, memory processes, field models, and data exchange checkable results, while distinguishing specifications from implemented features.
+
+## 33.1 Layers and responsibilities
+
+| Layer | Main objects | Outputs | Unlicensed upgrade |
+|---|---|---|---|
+| Core | Protocols, histories, response equivalence, resources, and control | Predictive factors, carriers, persistence certificates | Assuming complex Hilbert space, Born probabilities, or a particle table |
+| Q-Selector | Finite causal OPT and additional principles | Conditional selection of a quantum realization | Calling sector principles Core theorems |
+| Q-Operations | States, channels, instruments, and effects | Sequential probabilities, posteriors, error bounds | Assuming a one-time channel is automatically multitime memoryless |
+| Q-Objects | Encoding/decoding, access, coherent parents | Effective factors, public records, SRN kernels | Equating protocol invisibility with ontological nonexistence |
+| Q-Dynamics | Self-adjoint operators, CPTP evolution, process tensors | Time responses, control, stationary states | Hiding domains, initial correlations, or truncation |
+| Q-Fields | Local algebras, field distributions, regulators, actions | Correlators, amplitudes, EFT coefficients | Equating a formal series with a nonperturbative construction |
+| Q-Particles | Gauge groups, representations, anomalies, Higgs/flavour | Candidate consistency and conditional selection | Equating consistency with a unique realization in nature |
+| Q-Evidence | Data, calibration, blinded tests, statistical plans | Intervals, model comparisons, failure explanations | Equating synthetic validation with experimental evidence |
+
+Every layer carries model identity, units, domain, assumptions, and certificates. Interfaces exchange typed results, not merely shared abbreviations.
+
+## 33.2 A minimal API for finite quantum operations
+
+The following specification covers the full quantum architecture. Section 33.8 maps the implemented finite exact kernel to actual names. Completion of that kernel does not automatically implement the specification’s general Choi, continuous-domain, or process-tensor interfaces. Matrices are two-dimensional complex arrays with globally fixed vectorization and tensor-factor order.
+
+~~~text
+SystemSpec:
+  labels: ordered subsystem labels
+  dims: positive integers
+  basis_id: immutable string
+  units: explicit energy/time/action convention
+
+State:
+  system: SystemSpec
+  rho: Hermitian positive matrix
+  trace: 1, or separately tagged subnormalized
+  validity: tolerance + minimum eigenvalue + trace residual
+
+Channel:
+  input, output: SystemSpec
+  choi: input-first, UNNORMALIZED Choi
+  validate: J >= 0; Tr_output J = I_input
+  apply(rho): Tr_input[(rho^T tensor I_output) J]
+  compose(after, before): match system identities, not just dimensions
+
+Instrument:
+  maps: outcome -> CP trace-nonincreasing map
+  validate: sum of maps is TP
+  observe(rho): outcome probabilities + subnormalized branches
+  condition(outcome): normalized state only if probability > 0
+
+Protocol:
+  initialization
+  causal history -> permitted instrument/action
+  terminal effects
+  resource/time budget
+  target and stopping rule
+
+Certificate:
+  model_id, protocol_id, target_id
+  assumptions, theorem_ids, estimator_spec
+  domain, tolerances, confidence, failure_modes
+  evidence_kind: proof | exact_arithmetic | synthetic | experiment
+~~~
+
+`Channel.compose` is sequential composition, not a Kronecker product; tensor composition is parallel. Our vectorization convention is
+$|A\rangle\rangle=\sum_i|i\rangle_{\rm in}\otimes A|i\rangle_{\rm out}$,
+so $J=\sum_\mu|A_\mu\rangle\rangle\langle\langle A_\mu|$.
+An unnormalized Choi matrix has trace equal to the input dimension. A state-normalized Choi matrix is a different, explicitly labelled object.
+
+Invalid inputs should return interpretable errors such as INVALID_STATE, NOT_CP, NOT_TP, BASIS_MISMATCH, or ZERO_PROBABILITY_BRANCH. A nonpositive matrix must not be silently clipped into a valid model. Requested projection-based repair should also return the original residual and the constraint problem solved.
+
+## 33.3 Memory processes and combs
+
+In temporal order, let the input leg of process step $j$ be $2j-2$ and its output leg $2j-1$. A deterministic $n$-comb has Choi operator $R^{(n)}$ satisfying
+$$
+R^{(n)}\succeq0,\qquad
+\operatorname{Tr}_{2n-1}R^{(n)}
+=I_{2n-2}\otimes R^{(n-1)},\quad R^{(0)}=1.
+$$
+Compare each recursive relation after the specified leg permutation, not an array’s default ordering. Insert instruments using compatible Choi link contractions; transposes on shared legs must agree with §33.2. Only the sum over selectable-outcome combs has deterministic normalization.
+
+A process tensor absorbs initialization, free system propagation, and environmental memory into a comb-like object assigning probabilities or final states to slot operations. Its API includes slot times, input/output legs, the controllable operation set, and the allowed initial correlations. Compare two processes only on a common tester set. Complete positivity, CP divisibility, Markov factorization, and future sufficiency must be reported separately.
+
+## 33.4 Object interfaces and algorithms
+
+~~~text
+QuantumObjectSpec:
+  carrier: physical system or accessible algebra
+  protocol_family: allowed future interventions/readouts
+  target: predicted observable/history
+  encoder, decoder: optional CP maps
+  lifecycle: initialization, survival, recovery, termination
+  cuts: legal access restrictions or physical interventions
+  records: pointer projectors + fragment specification
+  tolerance: metric, horizon, confidence
+
+certify_predictive_factor(spec):
+  verify admissibility and common protocol identity
+  compare future response laws or derive exact intertwining
+  distinguish exact equality from finite-test agreement
+  return factor certificate, unresolved directions, witness protocols
+
+certify_SRN(channel, projectors):
+  check each branch's entire operator algebra, not only diagonal populations
+  recover block coefficients K_ab
+  test Hermiticity, diagonal=1, PSD and model residual
+  return K, generator status if time data available, deviations
+
+discover_access_carriers(spec):
+  enumerate permitted access subsets or use a declared search algorithm
+  test target sufficiency for each
+  output minimal certified subsets relative to this finite universe
+  do not claim global minimality beyond searched cuts
+~~~
+
+Restricted access reduces available effects; physical cutting or erasure changes the process. Keeping these interfaces separate prevents inaccessible coherence from being mistaken for vanished coherence.
+
+## 33.5 Continuous variables, operators, and numerical backends
+
+An `OperatorSpec` records at least the Hilbert space, dense domain, boundary conditions, symmetric/self-adjoint status, spectral lower bound, common invariant core, and chosen extension. A differential expression without boundary conditions is not a self-adjoint Hamiltonian.
+
+A `CVBackend` records phase-space ordering, $\hbar$, symplectic form, Weyl multiplier, Gaussian mean/covariance conventions, and truncation. Finite Fock truncation approximates low-energy behaviour only; it cannot claim exact CCR. Separate tail probability, truncated-dynamics error, integration error, and statistical error. A static energy-tail bound does not automatically replace the latter two.
+
+## 33.6 Field and particle backends
+
+~~~text
+QFTModel:
+  spacetime, metric, units
+  local_fields + representations + statistics
+  global_gauge_group and permitted bundles
+  regulated_action and gauge_fixing
+  scheme, scale, renormalization_conditions
+  perturbative_order or nonperturbative_definition
+  operator_basis, boundary_conditions, infrared_resolution
+
+AmplitudeRequest:
+  external states, mass/charge convention
+  spin preparation or averaging
+  kinematic domain and phase-space cuts
+  inclusive/exclusive definition
+  requested order, EFT power and uncertainty
+
+AnomalyCertificate:
+  all-left-handed representation table
+  multiplicities, Dynkin and cubic normalizations
+  local anomaly polynomial coefficients
+  global/discrete/boundary/inflow checks: done or unresolved
+  assumptions under which quotient is defined
+~~~
+
+Checking six vanishing local coefficients for a field table should return LOCAL_ANOMALIES_CANCELLED, not FULL_QUANTUM_THEORY_CONSISTENT. Perturbative computability, global gauge questions, a stable vacuum, unitarity, the actual spectrum, and experimental exclusions require further checks.
+
+## 33.7 Data, versions, and evidence interfaces
+
+Every experimental datum must point to raw counts or a justified sufficient statistic, preparation/measurement calibration, acquisition times, randomization, exclusion rules, and a data freeze. Preserve noisy response-matrix estimates, not just their PSD-projected “physical” versions.
+
+A version change records the previous claim, reason for change, added or removed premises, affected downstream results, and regression outcomes. Changes in protocol, target, basis, units, or action-operator basis are semantic changes; a file version alone is insufficient without an updated model identity.
+
+## 33.8 Implemented finite-kernel interfaces
+
+| Research interface | Actual entry point | Implemented scope |
+|---|---|---|
+| Exact states and operations | `QComplex`, `Matrix`, `KrausTerm`, `Instrument` | Gaussian-rational matrices and nonnegative rational weights; Python PSD checking in dimensions 1–4 |
+| Allowed library and finite trees | `InstrumentLibrary`, `ProtocolNode` | Context fingerprints, complete outcomes, exact finite leaf laws |
+| Response representation | `PredictiveModel`, `EncodedState` | Word-effect closure search, exact coordinates, branch and posterior updates |
+| Portable representation certificates | `export_representation_certificate`, `verify_representation_certificate` | Independent checks of numerical bases, generating words, every local identity, and context |
+| Numerical Lean entry | `export_lean_representation`, `ExactCertificate.check` | Generate a concrete finite model, then kernel-check its truth proof and consequences |
+| Actual effects and error mathematics | `Effect`, `effectDistance`, `channelDefect` | Supremum over all effects, complete-channel contraction, positive-event posteriors, and trajectory theorems; the supremum is not a runtime optimizer |
+| Particle spectra | `Spectrum`, `inspect_spectrum`, `local_331_anomalies` | Exact arithmetic on explicit spectrum rows and windows; separate scope labels for six local anomalies and Lean conditional selection |
+
+Python exact arithmetic, general Lean theorems, and compilation of a particular exported model are three independent evidence layers. The representation checker accepts dimensions 1–4, at most $d^2$ word effects, and witness words of length at most $d^2-1$. These limits constrain the certificate format, not the length of all future responses certified by it. The Lean exporter additionally limits input rationals to 4096 bits, padded scalar storage to 65536 entries, and source size to 8 MiB. These software boundaries are not physical constants.
+
+The minimal reproduction path is: construct an instrument library with fixed context; generate a representation certificate; independently check the local matrix conditions; export concrete Lean data; actually compile its `checked` proof; read axiom and source-hash receipts; and only then cite the corresponding all-word, posterior, or error result in Chapters 49–50. Export alone retains status `LEAN_SOURCE_EXPORTED_NOT_COMPILED`, not formal verification.
+
+<a id="ch-34"></a>
+
+# 34. Complete application paths
+
+An application must connect preparation, calculation, measurement, error, and controls rather than stop at a result formula. Calibration, record reversal, correction, many-body models, and particle candidates become executable paths, with fitting data distinguished from observations reserved for testing.
+
+## 34.1 Single-qubit and channel calibration
+
+Inputs are an unknown preparation, three calibrated Pauli measurement settings, and counts. Linear reconstruction uses
+$\hat r_j=(n_{j,+}-n_{j,-})/n_j$
+and $\hat\rho=(I+\sum_j\hat r_j\sigma_j)/2$.
+Retain the raw estimate and confidence intervals. A value $|\hat r|>1$ may result from sampling noise, drift, or model mismatch; clipping alone does not establish experimental agreement with the model.
+
+Channel tomography reconstructs $J$ from a linear input basis and informationally complete output measurements, then checks CP, TP, and held-out inputs. Without independent SPAM calibration, gate error cannot be uniquely separated from preparation and measurement error. Use joint estimation or an explicit gauge-equivalence report. Metrics can include average fidelity, worst-case protocol error, leakage, and drift; one high-fidelity number does not replace all certificates.
+
+## 34.2 Quantum records, QDRR, and actualization tests
+
+The full sequence is coherent preparation, pointer/environment record writing, a specified waiting period and public readout, inverse writing within a controllable boundary, and phase tomography of coherence. Record access, leakage to uncontrolled environments, and inverse-operation errors are recorded separately.
+
+Within SRN for $m$ branches, reconstruct $K$ from the $m(m-1)/2$ branch pairs, with real and imaginary phase settings for each. Chapter 8’s bound assumes $n$ independent bounded outcomes per phase. For $m=3,\epsilon=0.12,\alpha=0.05$, this requires 762 shots per setting, six settings and 4572 shots in total, excluding calibration and controls. Test SRN itself as well; exact SRN cannot simply be assumed before claiming discovery or exclusion of new physics.
+
+Important controls vary storage duration, environmental access, echo accuracy, record redundancy, randomized order, and the empty protocol. If additional irreversible loss appears, first compare frozen open-system and device-noise models. A new actualization model needs independent parameters, scale dependence, and falsifiable held-out predictions. Without real counts, the result is a protocol design.
+
+## 34.3 Distinct uses of two-phase Gram and Choi tests
+
+Internal labels such as Paper-A/B/C are not proof categories. Their applications reduce to three kinds of objects:
+
+| Application | Data and reconstruction | Supported conclusion |
+|---|---|---|
+| Quadratic interference structure | Basis states and pairwise responses at 0 and $\pi/2$ | A Gram estimate within a declared finite quadratic model |
+| Operational process | Input basis, complete output readout, and Choi constraints | CP/TP compatibility at specified dimension and calibration |
+| Coherence after public records | Write–store–reverse and $K_{ab}$ | SRN parameters and differences from control models |
+
+Freeze the model and test statistic, retain raw residuals, perform any needed constrained estimation, and test on unused data. Projecting data onto a quantum set and observing that the projection is quantum does not prove that every probability law must be quantum.
+
+## 34.4 Quantum memory, correction, and control
+
+For encoding $V:\mathcal H_L\to\mathcal H_P$, noise $\mathcal E$, and recovery $\mathcal R$, the logical channel is
+$\mathcal N_L=\mathcal D\mathcal R\mathcal E\mathcal V$.
+Knill–Laflamme specifies ideal correctable classes. Approximate correction must directly assess logical errors and leakage.
+
+A three-qubit repetition code corrects a single $X$ error, not arbitrary single-qubit quantum errors. Ignoring this difference misreports classical-bit protection as full quantum error correction. Fault-tolerance thresholds require a particular code, noise-correlation model, decoder, and gate schedule. No model-independent threshold is given here.
+
+Closed-loop control uses Chapter 20’s value or pulse-gradient calculations. A real controller may depend only on records already acquired; computation latency and bandwidth are resources. GOA is reported as logical survival probability, a stationary-state set, or a recoverable domain, without presupposing a universal ultimate state.
+
+## 34.5 Many-body quenches and thermal environments
+
+For a finite TFIM, specify boundaries, $J,h$, initial state, and quench time, then calculate magnetization, correlations, and entropy. Exact diagonalization of small systems checks tensor networks; short-time series check integrators. Converge finite volume, bond dimension, Trotter step, and observation error separately.
+
+With an environment, first check the scale separation needed for GKSL. If distinct preparation histories yield different futures after the same causal break, the system state is not a sufficient predictive state: add memory variables or use a process tensor. Finer time steps cannot repair an incorrect memoryless model.
+
+## 34.6 Interfaces for semiconductor and superconducting devices
+
+A quantum dot may start from a finite-orbital Anderson-type Hamiltonian with declared Coulomb energies, tunnelling, temperature, bias, and readout. A common effective BdG model for a proximitized semiconductor nanowire is
+$$
+H_{\rm BdG}(k)=
+\left(\frac{k^2}{2m_*}-\mu\right)\tau_z
++\alpha_R k\,\sigma_y\tau_z+V_Z\sigma_x+\Delta\tau_x,
+$$
+with fixed Nambu/spin basis and phase conventions. This is an effective device-model input, not a Core theorem. Disorder, multiple bands, orbital effects, self-energies, and contacts can alter the simplified predictions. See the theoretical precedents of [Lutchyn–Sau–Das Sarma](https://arxiv.org/abs/1002.4033) and [Oreg–Refael–von Oppen](https://arxiv.org/abs/1003.1145).
+
+The gap-closing condition $V_Z^2=\mu^2+\Delta^2$ holds within the assumptions of the closed, uniform, single-band model. A local zero-bias peak or an Andreev-bound-state signal alone does not prove a topological Majorana mode. Trivial mechanisms must be excluded through more discriminating protocols. No experimental discovery in such a device is claimed for this project.
+
+## 34.7 Comparing scattering, EFTs, and particle candidates
+
+For QED, calculate the Born cross section first, then add masses, radiation, acceptance, and their uncertainties in controlled stages. For EFTs, specify $E/\Lambda_*<1$ and operator truncation, match coefficients, and compare held-out processes. Do not force a low-order local expansion to fit near a heavy pole.
+
+For HGP/331 candidates, anomaly freedom starts further work: scalar breaking, spectra and mixing, additional gauge bosons and exotic particles, flavour-changing neutral currents, precision observables, vacuum stability, global anomalies, and running windows. Framing candidates first require descent and completion classifications. Freeze predictions, fitted parameters, and exclusion criteria separately. Passing three-generation arithmetic does not establish the complete model’s success.
+
+<a id="ch-35"></a>
+
+# 35. Assembling the quantum framework: errors and extensions
+
+After modules are assembled, the framework must show whether local errors still control final records. This chapter combines channel and confidence bounds under common protocols and targets, states what historical verification receipts support, and provides precise entry points to the later finite-kernel proofs.
+
+## 35.1 A common assembly rule
+
+In a finite memoryless realization,
+$$
+p(\mathbf a\mid\pi)=
+\operatorname{Tr}\!\left[
+\mathcal M_{a_T|\mathbf a_{<T}}\circ\cdots\circ
+\mathcal M_{a_1}(\rho_0)\right].
+$$
+With memory, replace this by pairing a legitimate comb with its tester. Continuous variables require energy and operator domains. Field theory connects preparation, detection, and phase-space resolution to correlators or amplitudes. Core then uses these probability responses to define objects, future sufficiency, and control tasks.
+
+The common structure is therefore the composition of realization, intervention, response, and certificate. It makes each physical layer’s independent content traceable; it does not collapse all physics into one untyped formula.
+
+## 35.2 Composable error certificates
+
+First state the analytical contract including ancillary systems. An instrument retains every label in a CPTP channel, rather than only a selected branch $\mathcal M_o$:
+$$
+\widehat{\mathcal M}(X)=\sum_o|o\rangle\langle o|\otimes\mathcal M_o(X).
+$$
+Adaptive control stores the prior classical history explicitly and selects the next instrument by history block. Stopped paths retain an absorbing stop marker. Completeness makes every full step CPTP on a common classical–quantum carrier. Compared models need matching labels, registers, and allowed protocols. Channels equal only after outcomes are discarded can still have different multitime record laws, as §5.3 shows.
+
+For a common protocol and target, suppose the initial-state trace-distance error, including the compared initial memory, is at most $\epsilon_0$. Suppose each complete step satisfies
+$$
+\tfrac12\|\widehat{\mathcal E}_j-\widehat{\widetilde{\mathcal E}}_j\|_\diamond
+\le\epsilon_j,
+$$
+with arbitrary quantum ancillas, and the terminal-readout total-variation defect is uniformly at most $\epsilon_M$. Then
+$$
+\operatorname{TV}(p,\widetilde p)
+\le\min\left\{1,\epsilon_0+\sum_j\epsilon_j+\epsilon_M\right\}.
+$$
+Replace channels successively in the actual composition. Use the diamond defect on the common ancilla, contraction by subsequent complete channels, the triangle inequality, and measurement contraction. This argument does not treat an unnormalized selected branch as TP or omit adaptive memory from a model without a record register.
+
+Chapter 50 supplies a **Lean-checked finite portion** of this analytical contract: actual complete Kraus channels contract the all-effect distance $d_E$; their actual output defect $\Delta_E$ gives a one-step recursion; and existing Core error-transport theorems propagate it. That portion does not formalize the diamond norm, arbitrary-ancilla stability, or general history-register assembly. The phrase “channel error” does not supply these properties by implication.
+
+Sector-model approximation, truncation, and estimation errors can be added only after each is bounded in the same target-probability metric. Energy error, fidelity error, log likelihood, and Wilson-coefficient error first need proved conversions. Postselection separately requires a positive-event lower bound. The actual-Born-branch result developed in Chapter 50 is $d_E(\rho_o,\sigma_o)\le2d_E(\rho,\sigma)/p_o(\rho)$. At small probabilities it may be uninformative, and zero-probability events have no normalized posterior.
+
+A union bound combines confidence events with total failure probability at most the sum. Independence cannot be assumed without checking. Estimates of unknown higher orders in an asymptotic series are model uncertainty, not automatically frequentist confidence intervals with guaranteed coverage.
+
+## 35.3 Scope of the inherited independent checks
+
+Appendix D contains the complete code and actual historical execution results. The three inherited programs were rerun for edition 3.0, comprising 757 finite checks. This bilingual publication reuses those receipts for unchanged programs and does not claim a fresh execution. The NumPy/SciPy and rational-arithmetic programs cover:
+
+- CPTP/Choi relations, non-CP counterexamples, local rebit blindness, coherent records, and inverse writing;
+- SRN block structure, complex Gram kernels, generator positivity and counterexamples, and phase recovery;
+- truncated CCR, Gaussian positivity, Rabi dynamics, spin, CHSH, and control gradients;
+- open dynamics, KMS, free energy, and causal-break memory;
+- Clifford relations, tree-level QED Ward identities, scattering traces, loop parameter integrals, and EFT remainders;
+- Higgs/seesaw benchmarks, rational SM and 331 anomalies, the three-generation search without primitive packages, and framing classification.
+
+These are finite numerical and exact-arithmetic regression checks, not formal verification of every theorem. In particular, they do not independently machine-prove the reconstruction theorem, Stone–von Neumann, GKSL, LSZ, spin–statistics, or a four-dimensional nonperturbative construction. They contain no real experimental data. Finite integer searches are cross-checks; the all-integer three-generation result rests on Chapter 31’s analytical proof, with separate formal support from `Selector`’s integer theorem with full premises and `Spectrum`’s conditional spectral bridge. The Lean results in Chapters 49–50 cover their exact definitions and theorem inventories, not every physical calculation listed here.
+
+## 35.4 Completed work, improvements, and open questions
+
+The book maintains a continuous formal text covering every declared module and integrates the finite quantum kernel and error proofs in Chapters 49–50. Substantive improvements preserve Core’s neutrality across domains; give coherent-parent, public-record, and posterior aspects of measurement distinct interfaces; state SRN complex-generator conditions, continuous-variable domains, process memory, the three types of RG, and anomaly responsibilities explicitly; remove the redundant primitive-package premise from the conditional three-generation theorem; and complete the general 331 representation inventory.
+
+Open questions include an assumption-free derivation of nature’s quantum physics from Core, an objective actualization mechanism, a complete nonperturbative quantum-field construction, selection of gauge groups and all particle parameters, independent physical necessity of HGP/FAD, and an unconditional explanation of mass hierarchies and three generations. They remain open; a higher version number is not a proof.
+
+The later constructions in Chapters 58, 62, and 65 complete the specified finite history-memory and common-controller cases mentioned in §35.2. They retain their explicit hypotheses and do not supply a general diamond-distance theorem.
+
+<a id="ch-36"></a>
+
+# 36. The generation problem: calculations must use the correct gauge group
+
+The same field content has different gauge carriers and running coefficients in different energy regimes, so generation selection first requires a model and threshold specification. This chapter recalculates anomaly and asymptotic-freedom conditions for the correct high-energy group and retains the five-colour counterexample; read it alongside the low-energy conditional selection in Chapter 31.
+
+## 36.1 The fixed representation content
+
+Consider
+$$
+G=SU(N_c)_C\times SU(3)_L\times U(1)_X,\qquad N_c\ge3.
+$$
+Here $SU(3)_L$ is a physical input; it does not follow from the general UEOT Core. Each lepton generation occupies a colourless $3_L$; $k$ quark generations occupy $(N_c,3_L)$, and the remaining $N_f-k$ occupy $(N_c,\bar3_L)$. Each quark triplet is accompanied by three corresponding colour-antifundamental, right-handed conjugate singlets. A general charge embedding also requires the appropriate singlet for the third lepton component. All fermions are written as left-handed Weyl fields.
+
+The pure $SU(3)_L^3$ anomaly is
+$$
+A_L=N_f+N_c(2k-N_f).
+$$
+Cancellation therefore requires
+$$
+2N_ck=(N_c-1)N_f.
+$$
+Writing $d=\gcd(2,N_c-1)$, all positive-integer solutions are
+$$
+N_f=\frac{2N_c}{d}t,\qquad
+k=\frac{N_c-1}{d}t,\qquad t=1,2,\ldots
+\tag{36.1}
+$$
+This follows by divisibility of the coprime coefficients. Odd colour number gives $N_f=tN_c$, while even colour number gives $N_f=2tN_c$. The simplicity of the smallest solution is not a reason to assert that nature must choose $t=1$.
+
+This representation pattern has precedents in 331 research. Flipped models can instead place generation nonuniversality in the lepton sector, so it is not the unique form of every extended gauge theory. [Original 331 paper](https://arxiv.org/abs/hep-ph/9206242), [flipped 331](https://arxiv.org/abs/1606.01109).
+
+## 36.2 Why the earlier weak-sector bound is not a high-energy requirement
+
+The conditional theorem in the quantum treatment uses
+$$
+N_f(N_c+1)<22,
+\tag{36.2}
+$$
+a necessary one-loop asymptotic-freedom bound for a particular low-energy $SU(2)_L$ field content. The arithmetic selecting $(3,3,1)$ under this premise is correct.
+
+Above a scale $M_B$, however, the weak group may already have enlarged to $SU(3)_L$, changing the gauge-boson self-interaction contribution. Requiring a well-behaved high-energy theory does not automatically make low-energy $b_2>0$ necessary. An effective low-energy coupling can grow over a finite window and then match to a different high-energy group; a negative effective coefficient $b_2$ alone does not rule out that matching.
+
+The coefficients must therefore be recalculated. Stronger wording cannot preserve a three-generation conclusion that the revised premises do not imply.
+
+## 36.3 One-loop coefficients for the full active field content
+
+Use the convention
+$$
+\mu\frac{dg}{d\mu}=-\frac{b\,g^3}{16\pi^2}+O(g^5),\quad
+b=\frac{11}{3}C_A-\frac23\sum_{\rm Weyl}T(R)
+-\frac13\sum_{\rm complex\ scalar}T(R).
+\tag{36.3}
+$$
+Assume that all exotic fermions are active, that there are no additional coloured scalars, and that the scalar sector contains $n_s$ complex $SU(3)_L$ fundamentals with no other matter carrying $L$ charge.
+
+For the colour group, each generation has three fundamental and three antifundamental Weyl fields, equivalent to three Dirac colour flavours. Thus
+$$
+b_C=\frac{11N_c}{3}-2N_f.
+\tag{36.4}
+$$
+For $SU(3)_L$, the sum of Weyl quadratic indices is $N_f(N_c+1)/2$, and each complex scalar has index $1/2$. Hence
+$$
+b_L=11-\frac{N_f(N_c+1)}3-\frac{n_s}{6}.
+\tag{36.5}
+$$
+This is consistent with the known contribution of extra quarks to QCD running in extended weak-group models, but the counting here is performed afresh for the stated $N_c,N_f$ content. [Original research on extended gauge groups](https://arxiv.org/abs/1205.4483).
+
+The conditions $b_C,b_L>0$ establish only the one-loop asymptotically free direction of the two non-Abelian factors. The $U(1)_X$ coupling, Yukawa interactions, scalar potential and higher orders require separate analysis; two coefficient signs are not a complete UV completion.
+
+## 36.4 High-energy classification and a five-colour counterexample
+
+<a id="g-01"></a>
+
+**G-01: All integer solutions for the three-scalar content.** Under (36.1), $N_c\ge3$, $n_s=3$ and $b_C>0,b_L>0$,
+$$
+(N_c,N_f,k)=(3,3,1)\quad\text{or}\quad(5,5,2).
+\tag{36.6}
+$$
+
+**Proof.** The inequality $b_L>0$ gives $N_f(N_c+1)<31.5$.
+
+For even $N_c\ge4$, $N_f\ge2N_c$, so the product is at least 40 and is excluded. For odd $N_c\ge7$, the product is at least 56 and is excluded. Only 3 and 5 remain.
+
+For $N_c=3$, $N_f=3t$ and $b_C=11-6t>0$ force $t=1$.
+For $N_c=5$, $N_f=5t$ and $b_L>0$ force $30t<31.5$, hence $t=1$; also $b_C=25/3>0$. Both points satisfy the conditions. ∎
+
+Explicitly,
+$$
+\begin{array}{c|ccc}
+(N_c,N_f,k)&b_C&b_L&b_2\text{ (low-energy, one doublet)}\\\hline
+(3,3,1)&5&13/2&19/6\\
+(5,5,2)&25/3&1/2&-17/6
+\end{array}
+\tag{36.7}
+$$
+The final column shows precisely that asymptotically free directions for both high-energy non-Abelian factors do not imply low-energy $b_2>0$.
+
+This does not assert that nature has five colours. It is a countermodel to the claim that high-energy physical consistency has already independently selected three colours and three generations. When the five-colour branch has charges different from those of observed quarks, it cannot be presented as a fit to nature.
+
+## 36.5 All local anomalies can also cancel in the five-colour counterexample
+
+To avoid checking only one anomaly, introduce
+$$
+Q_u=\frac{N_c+1}{2N_c},\qquad
+Q_d=-\frac{N_c-1}{2N_c},\quad Q_\nu=0,\quad Q_e=-1.
+$$
+With $Q=T_3+\beta_8T_8+X$,
+$$
+X_L=-\frac12-\frac{\beta_8}{2\sqrt3},\quad
+X_{Q+}=\frac1{2N_c}-\frac{\beta_8}{2\sqrt3},\quad
+X_{Q-}=\frac1{2N_c}+\frac{\beta_8}{2\sqrt3}.
+$$
+The third-component charges are
+$$
+q_E=-\frac12-\frac{\sqrt3\beta_8}{2},\quad
+q_{J+}=\frac1{2N_c}-\frac{\sqrt3\beta_8}{2},\quad
+q_{J-}=\frac1{2N_c}+\frac{\sqrt3\beta_8}{2}.
+$$
+Include $e^c,E^c,u^c,d^c,J^c$ with the required multiplicities.
+
+<a id="g-02"></a>
+
+**G-02: Local completion for general colour number.** Under (36.1), all six local anomalies,
+$C^3,L^3,C^2X,L^2X,\mathrm{grav}^2X,X^3$, vanish.
+
+**Proof.** The three colour fundamentals and three antifundamentals cancel the cubic colour anomaly generation by generation. The sum of physical charges in each triplet is $3X$, so the addition of oppositely charged singlets cancels the mixed gravitational and colour anomalies. The $L^2X$ anomaly is
+$$
+\tfrac12[N_fX_L+N_c kX_{Q+}+N_c(N_f-k)X_{Q-}]=0
+$$
+because the constant and $\beta_8$ terms vanish separately by the chosen charges and (36.1).
+
+For one triplet, write its charges as $X+t_i$, with $\sum_i t_i=0$. After adding oppositely charged singlets, its cubic contribution is
+$3X^3-\sum_i(X+t_i)^3=-3X\sum_i t_i^2-\sum_i t_i^3$.
+The quadratic sums are equal for the fundamental and antifundamental, while the cubic sums have opposite signs. In the total, the first term vanishes by $L^2X=0$ and the second by $L^3=0$. ∎
+
+This construction establishes compatibility of local anomaly cancellation with the one-loop counting. It does not establish cancellation of global anomalies, stable symmetry breaking, all masses, or experimental viability. Fixing $Q_u=2/3,Q_d=-1/3$ directly restores the three-colour selection condition of Chapter 31; the measured charges are then inputs.
+
+## 36.6 Which premises remain unresolved
+
+Within this fixed family, both points survive for $0\le n_s\le5$; only $(3,3,1)$ survives for $6\le n_s\le41$; and no solution survives for $n_s\ge42$. The same inequality proves this: $b_L=7-n_s/6$ at the three-colour point and $b_L=1-n_s/6$ at the five-colour point. Introducing six scalars solely to exclude five colours would require an independent justification.
+
+If three colours are already fixed by experiment or another independent principle, (36.1) and the correctly computed high-energy colour coefficient give
+$N_f=3t,\ b_C=11-6t>0\Rightarrow t=1$. This is a conditional three-generation route with a clearer physical premise. Why the extended weak carrier exists, and why it has this representation content, remain open.
+
+<a id="ch-37"></a>
+
+# 37. Testable flavour constraints from generation nonuniversality
+
+For a specified neutral-vector candidate with generation-dependent couplings, unknown flavour rotations do not make every observation freely adjustable. Rank-one structure yields sum rules and bounds, while matching them to measured low-energy processes still requires masses, couplings, running, and other contributions; no new particle observation is reported.
+
+This chapter does not require a complete solution to the origin of three generations. It asks a more direct question: once the preceding three-generation carrier is adopted, what structure must it leave at low energy?
+
+## 37.1 Fixing a neutral-vector candidate
+
+Suppose a heavy neutral vector $Z'$ couples to ordinary left-handed quark doublets in the weak basis through
+$$
+G_{\rm weak}=g_0I+\Delta g\,P,\qquad P^2=P=P^\dagger,\quad
+\operatorname{rank}P=1,\quad \Delta g\ne0.
+\tag{37.1}
+$$
+The projector $P$ selects the generation that differs from the other two, and $g_0,\Delta g$ are real. This structure arises from a particular difference in generation representations; not every HGP or flipped model has it.
+
+Assume unitary mass rotations for the three ordinary generations, neglect significant mixing with exotic states, and compare gauge couplings of the same left-handed doublets. Set
+$$
+V=U_{uL}^\dagger U_{dL},\quad
+P_u=U_{uL}^\dagger PU_{uL}=uu^\dagger,\quad
+P_d=V^\dagger P_uV=dd^\dagger,\quad d=V^\dagger u.
+\tag{37.2}
+$$
+Here $u^\dagger u=d^\dagger d=1$. Tree-level FCNCs in general 331 models have long been studied. The specific algebraic relations and bounds below are derived step by step; the existence of FCNCs is not claimed as an original discovery. [Liu's original analysis](https://arxiv.org/abs/hep-ph/9312312).
+
+## 37.2 Rank-one sum rules constrain the unknown parameters
+
+<a id="f-01"></a>
+
+**F-01.** For $B=G-g_0I=\Delta g\,uu^\dagger$,
+$$
+B_{ij}B_{kl}=B_{il}B_{kj},\qquad
+|B_{ij}|^2=B_{ii}B_{jj},\qquad
+B_{12}B_{23}B_{31}=(\Delta g)^3|u_1u_2u_3|^2\in\mathbb R.
+\tag{37.3}
+$$
+Moreover,
+$$
+B_d=V^\dagger B_uV.
+\tag{37.4}
+$$
+
+**Proof.** Substitute $B_{ij}=\Delta g\,u_i\bar u_j$ term by term; the common factors give each equality directly. The phase around a closed triangle is invariant under rephasing of the individual quark fields. ∎
+
+These are three potentially falsifiable constraints: matrix rank, magnitudes, and cyclic phase. If couplings of the same heavy vector extracted from different processes violate them, the fixed rank-one candidate is excluded. Refitting a mutually incompatible $u$ separately for each process would not preserve that candidate.
+
+## 37.3 FCNCs cannot vanish in both up and down sectors
+
+<a id="f-02"></a>
+
+**F-02.** In a nondegenerate mass basis, if both $P_u$ and $P_d$ are diagonal, at least one entry of $V$ has modulus one, and every other entry in its row and column vanishes. Hence, when $c=\max_{ij}|V_{ij}|<1$, at least one sector has a nonzero off-diagonal gauge coupling.
+
+**Proof.** A diagonal rank-one projection must be $|e_i\rangle\langle e_i|$. If
+$V^\dagger|e_i\rangle\langle e_i|V=|e_j\rangle\langle e_j|$, then
+$V^\dagger e_i=e^{i\theta}e_j$, so $|V_{ij}|=1$. Unitarity forces every other entry in that row and column to vanish. ∎
+
+The statement is stronger than the possibility of FCNCs: under the stated assumptions, simultaneously aligning the distinguished generation with both mass bases cannot hide all of them. Degenerate masses or a nonunitary light sector require a new analysis.
+
+## 37.4 A quantitative bound independent of the unknown orientation
+
+Let $\operatorname{off}(A)$ denote the matrix obtained by removing the diagonal, and let $p_i=|u_i|^2,q_j=|(V^\dagger u)_j|^2$.
+
+<a id="f-03"></a>
+
+**F-03.**
+$$
+\|\operatorname{off}G_u\|_F^2+
+\|\operatorname{off}G_d\|_F^2
+\ge |\Delta g|^2(1-c),\qquad c=\max_{ij}|V_{ij}|.
+\tag{37.5}
+$$
+
+**Proof.** A rank-one projection has squared Frobenius norm one. The left-hand side divided by $|\Delta g|^2$ is therefore
+$2-\sum_i p_i^2-\sum_jq_j^2$.
+Choose $p_i,q_j$ at their respective maxima. Normalization gives
+$\sum p_i^2\le p_i,\sum q_j^2\le q_j$.
+The sum of the two rank-one projections
+$$
+|e_i\rangle\langle e_i|+
+V|e_j\rangle\langle e_j|V^\dagger
+$$
+has largest eigenvalue $1+|V_{ij}|$, obtained directly from the quadratic characteristic equation on the span of the two vectors. Thus
+$p_i+q_j\le1+|V_{ij}|\le1+c$. Rearrangement proves (37.5). ∎
+
+The bound is generally conservative; it is not the exact minimum for every $V$. It is small when $c$ is close to one, so strict positivity does not imply easy experimental discovery. More precise candidate comparisons can optimize over the four real degrees of freedom of projective $u$, but a numerical optimum does not replace the proved lower bound.
+
+## 37.5 EFT matching and observable meaning
+
+With
+$\mathcal L\supset \tfrac12M_{Z'}^2Z'_\mu Z'^\mu+Z'_\mu J^\mu$, integrating out $Z'$ below its mass gives
+$$
+\mathcal L_{\rm EFT}=-\frac{J_\mu J^\mu}{2M_{Z'}^2}
++O(\partial^2/M_{Z'}^4).
+\tag{37.6}
+$$
+For the fixed chiral operator
+$O_{ij}^{u,d}=(\bar q_{Li}\gamma_\mu q_{Lj})
+(\bar q_{Li}\gamma^\mu q_{Lj})$,
+$$
+C_{ij}^{u,d}=-\frac{(G_{u,d})_{ij}^{\,2}}{2M_{Z'}^2}.
+\tag{37.7}
+$$
+Recording both the operator and its conjugate with directed indices $i\ne j$ gives
+$$
+\sum_{i\ne j}(|C_{ij}^u|+|C_{ij}^d|)
+\ge\frac{|\Delta g|^2}{2M_{Z'}^2}(1-c).
+\tag{37.8}
+$$
+If only independent unordered pairs are listed, divide both sides by two.
+
+This is a relation among coefficients at the matching scale, not a direct sum rule for measured meson mixing. Running, hadronic matrix elements, interference with the SM, right-handed couplings and other heavy-particle contributions require separate calculations; multiple vectors can cancel. These equations do not predict $M_{Z'}$ or a specific decay rate here. They address whether this candidate can leave no flavour structure at all; they do not identify a new particle already found in nature.
+
+## 37.6 Lepton universality is a condition on the full matrix
+
+If a heavy neutral vector has the same representation coupling to all three ordinary lepton generations, and their mass rotation remains unitary after exotic mixing is neglected, its weak-basis coupling must be
+$$
+G_\ell=g_\ell I.
+$$
+For any mass-basis rotation $U$, $U^\dagger G_\ell U=g_\ell I$. This term therefore generates no tree-level flavour-changing neutral current through that rotation. It is a useful way to distinguish candidates, not a conclusion valid for every HGP, flipped-331, or substantial heavy–light mixing model.
+
+Equal diagonal entries alone are insufficient. In a two-dimensional subblock, take $G=\operatorname{diag}(g_1,g_2)$ and rotate with
+$$
+U=\frac1{\sqrt2}\begin{pmatrix}1&1\\1&-1\end{pmatrix}
+$$
+The result is
+$$
+U^\dagger GU=
+\begin{pmatrix}
+(g_1+g_2)/2&(g_1-g_2)/2\\
+(g_1-g_2)/2&(g_1+g_2)/2
+\end{pmatrix}.
+$$
+The diagonal entries coincide, but the off-diagonal coupling remains whenever $g_1\ne g_2$. Embedding this block in three dimensions gives the same kind of counterexample. Universality therefore requires testing that the full matrix is a scalar multiple of the identity, or checking its spectrum and all relevant entries. A diagonal-only fit cannot establish the absence of flavour change. Running, operator mixing and other meson/heavy-vector contributions to low-energy processes still follow the contract in §37.5.
+
+<a id="ch-38"></a>
+
+# 38. Coherence phases impose constraints on the dynamics
+
+Coherent phases cannot be chosen independently of decay: complete positivity constrains their joint behaviour. A sharp three-branch bound quantifies this restriction, and a classical Poisson phase-jump counterexample shows why even saturation does not identify a new physical mechanism.
+
+## 38.1 The minimal physical definition of SRN
+
+Take a complete family of nonzero orthogonal pointer projections $P_a$. Strong record nondisturbance (SRN) requires a channel to fix every state within each branch, rather than merely preserve the total population. In finite dimension, the CPTP channels with this property are precisely
+$$
+\mathcal A_K(\rho)=\sum_{ab}K_{ab}P_a\rho P_b,\qquad
+K\succeq0,\quad K_{aa}=1.
+\tag{38.1}
+$$
+To prove this, each Kraus operator must act as a scalar on every pure state fixed pointwise. Linearity forces that scalar to be constant throughout a branch. Hence
+$L_\mu=\sum_a l_{\mu a}P_a$, and
+$K_{ab}=\sum_\mu l_{\mu a}\bar l_{\mu b}$ is a Gram matrix. Conversely, a Gram decomposition constructs the Kraus operators.
+
+Public readout of a coherent parent system can be completely insensitive to $K_{ab},a\ne b$. New measurement dynamics must therefore be probed through coherence, not solely by counting public records.
+
+## 38.2 Continuous generators and cycle phases
+
+A continuous time-homogeneous semigroup has
+$$
+K_{ab}(t)=e^{t\lambda_{ab}},\qquad
+\lambda_{ab}=-\gamma_{ab}+i\omega_{ab}.
+$$
+Here $\gamma_{ab}=\gamma_{ba}\ge0,\omega_{ab}=-\omega_{ba}$, and the diagonal entries vanish. Complete positivity at all times requires $\Lambda$ to be positive semidefinite on the zero-sum subspace.
+
+For three branches, define
+$$
+\Omega_{abc}=\omega_{ab}+\omega_{bc}+\omega_{ca}.
+\tag{38.2}
+$$
+Changing branch energies or choosing a diagonal rotating frame linear in time only adds a difference $h_a-h_b$ to $\omega_{ab}$; its cycle sum is zero. Such a Hamiltonian redefinition therefore cannot remove $\Omega$. It is also unaffected by redundancies of the Lindblad representation, since $\lambda_{ab}$ is a coefficient of the fixed physical channel.
+
+This is the same type of Hamiltonian obstruction studied by Fagnola, Gough, Nurdin and Viola; it is not a first discovery by UEOT. [Original research](https://arxiv.org/abs/1811.11784).
+
+## 38.3 A sharp CP bound for three branches
+
+<a id="m-01"></a>
+
+**M-01.** Every three branches must satisfy
+$$
+\boxed{\ 
+\Omega_{abc}^{\,2}
+\le
+4\gamma_{ac}\gamma_{bc}
+-(\gamma_{ac}+\gamma_{bc}-\gamma_{ab})^2.\ }
+\tag{38.3}
+$$
+For exactly three branches, this condition together with $\gamma\ge0$ for each rate is necessary and sufficient for the generator to yield CP evolution.
+
+**Proof.** Anchor at $c$ and set
+$G_{ij}=\lambda_{ij}-\lambda_{ic}-\lambda_{cj}$.
+Its nonzero $2\times2$ block is
+$$
+G=
+\begin{pmatrix}
+2\gamma_{ac}&
+\gamma_{ac}+\gamma_{bc}-\gamma_{ab}+i\Omega_{abc}\\
+\gamma_{ac}+\gamma_{bc}-\gamma_{ab}-i\Omega_{abc}&
+2\gamma_{bc}
+\end{pmatrix}.
+$$
+Positivity on the zero-sum subspace is equivalent to positive semidefiniteness of this matrix. Nonnegativity of its second-order principal minor is exactly (38.3), and the two nonnegative diagonal entries supply the remaining conditions. Conversely, this positive Gram matrix constructs
+$\lambda_{ij}=G_{ij}-(G_{ii}+G_{jj})/2+i(\theta_i-\theta_j)$.
+Schur positivity shows that its entrywise exponential is a correlation matrix, giving CPTP evolution for every $t\ge0$. ∎
+
+With more branches, all triangle conditions remain necessary but do not replace the higher-order principal-minor conditions of the full Gram matrix.
+
+## 38.4 Phase accumulation entails coherence loss
+
+Write $S=\gamma_{ab}+\gamma_{bc}+\gamma_{ca}$. The right-hand side can be expressed as
+$$
+S^2-2(\gamma_{ab}^2+\gamma_{bc}^2+\gamma_{ca}^2)\le S^2/3.
+$$
+Consequently:
+
+<a id="m-02"></a>
+
+**M-02.**
+$$
+S\ge\sqrt3\,|\Omega_{abc}|.
+\tag{38.4}
+$$
+For the cyclic coherence product $B(t)=K_{ab}(t)K_{bc}(t)K_{ca}(t)$,
+$$
+|B(t)|=e^{-St}
+\le e^{-\sqrt3|\Omega_{abc}|t}
+=e^{-\sqrt3|\arg_{\rm unwrap} B(t)|}.
+\tag{38.5}
+$$
+The proof follows directly from (38.3) and the lower bound on the sum of squares. The phase must be unwrapped continuously; using a principal value modulo $2\pi$ cannot justify a spurious long-time conclusion. ∎
+
+For three coherences at a fixed finite time, complete positivity also provides a test that requires no Markov assumption:
+$$
+1-|K_{ab}|^2-|K_{bc}|^2-|K_{ca}|^2
++2\operatorname{Re}(K_{ab}K_{bc}K_{ca})\ge0.
+\tag{38.6}
+$$
+This is the determinant of the $3\times3$ correlation matrix. The semigroup and single-time bounds have different hypotheses. Violating the former may indicate memory or time-dependent dynamics, rather than a failure of QM.
+
+## 38.5 Why a nonzero cycle phase still does not establish quantum noise
+
+For real diagonal Hermitian noise operators
+$L_\mu=\operatorname{diag}(\ell_{\mu a}),\ell_{\mu a}\in\mathbb R$,
+$$
+\lambda_{ab}=-\tfrac12\sum_\mu(\ell_{\mu a}-\ell_{\mu b})^2
+-i(h_a-h_b),
+$$
+so $\Omega=0$. Conversely, if every cycle vanishes, $\omega_{ab}$ is a branch-potential difference. The remaining anchored Gram matrix is real and positive, so it can be factored into real vectors, yielding a Gaussian diffusion representation of this form.
+
+Classical Poisson phase jumps, however, give
+$$
+\mathcal L(\rho)=r(U\rho U^\dagger-\rho),\qquad
+U=\operatorname{diag}(e^{i\theta_a}),
+$$
+$$
+\lambda_{ab}=r(e^{i(\theta_a-\theta_b)}-1).
+\tag{38.7}
+$$
+For $\theta=(0,2\pi/3,4\pi/3)$, every $\gamma=3r/2$ and
+$|\Omega|=3\sqrt3r/2$, exactly saturating (38.4).
+
+A nonzero cycle phase therefore excludes a model consisting solely of diagonal Gaussian white noise plus a Hamiltonian, but even saturation of the sharp bound can arise from classical Poisson noise. This counterexample motivates the stronger four-level criterion in the next chapter.
+
+<a id="ch-39"></a>
+
+# 39. A four-level criterion: excluding the entire random-phase noise class
+
+This chapter turns the question of which noise class is excluded into a concrete four-level test, with a channel, witness constants, and a zero-event protocol. Pointer preservation and calibration are essential: the witness excludes classical random phases, while the constructed channel remains realizable by a standard quantum environment.
+
+## 39.1 The question and the minimum dimension
+
+At a fixed time, arbitrary classical diagonal phase noise can be written as
+$$
+\mathcal R(\rho)=\mathbb E[U_\theta\rho U_\theta^\dagger],
+\quad U_\theta=\operatorname{diag}(z_1,\ldots,z_m),\quad |z_a|=1,
+$$
+and therefore
+$$
+K_{\rm cl}=\mathbb E[zz^\dagger].
+\tag{39.1}
+$$
+The phase distribution may have arbitrary correlations and may be non-Gaussian or non-Markovian; it is not restricted to exponential decay.
+
+<a id="m-03"></a>
+
+**M-03: Four is the minimum number of branches for single-time separation.** For $m\le3$, every correlation matrix $K\succeq0,K_{aa}=1$ has form (39.1). Even complete single-time SRN tomography on two or three branches therefore cannot exclude all classical random-phase noise.
+
+**Proof.** Write a rank-$r$ matrix as $K=VV^\dagger$. If $r^2>m$, the space of $r\times r$ Hermitian matrices contains a nonzero $A$ such that $v_aAv_a^\dagger=0$ for every row. For sufficiently small $\epsilon>0$,
+$V(I\pm\epsilon A)V^\dagger$ are two distinct correlation matrices whose mean is $K$. Thus $K$ is not extreme. An extreme point must therefore satisfy $r^2\le m$. For $m\le3$, only $r=1$ is possible, and unit diagonal forces the form $zz^\dagger$. A compact convex set in finite dimension is the convex hull of its extreme points, proving the claim. ∎
+
+This dimension bound and the four-dimensional matrix below have explicit precedents, particularly the 2005 work of Buscemi, Chiribella and D’Ariano. This chapter supplies an explicit analytical witness, calibration bounds and a counting protocol for use in tests; it does not rename a known counterexample as a new law of nature. [Original paper](https://doi.org/10.1103/PhysRevLett.95.090501).
+
+## 39.2 A physical channel requiring only a two-dimensional environment
+
+Take
+$$
+V=\begin{pmatrix}
+1&0\\0&1\\1/\sqrt2&1/\sqrt2\\1/\sqrt2&i/\sqrt2
+\end{pmatrix},\qquad K_*=VV^\dagger.
+\tag{39.2}
+$$
+Every row has unit norm, so $K_*$ is a valid correlation matrix of rank two. Kraus operators can be read off directly:
+$$
+L_1=\operatorname{diag}(1,0,1/\sqrt2,1/\sqrt2),\quad
+L_2=\operatorname{diag}(0,1,1/\sqrt2,i/\sqrt2).
+\tag{39.3}
+$$
+Since $\sum L_\mu^\dagger L_\mu=I$, this is a standard CPTP-SRN channel.
+
+An isometric implementation is
+$$
+|a\rangle|0\rangle_E\longmapsto |a\rangle|e_a\rangle_E,
+$$
+where the two components of $|e_a\rangle$ are the entries of row $a$ of $V$. The environmental Gram relation is
+$\langle e_b|e_a\rangle=K_{*,ab}$. Four controlled environmental unitaries can each send $|0\rangle_E$ to its corresponding $|e_a\rangle_E$, completing the joint evolution unitarily. This is a finite model consisting of a four-level system and one environmental qubit.
+
+Because $K_{*,12}=0$, it is not the kernel of a continuous time-homogeneous SRN semigroup with finite rates at a finite time. This chapter makes no Markov assumption.
+
+## 39.3 An analytical separating witness with rigorous constants
+
+Define
+$$
+B=\begin{pmatrix}
+-1/\sqrt2&-1/\sqrt2&1&0\\
+-1/\sqrt2&-i/\sqrt2&0&1
+\end{pmatrix},\qquad W=B^\dagger B.
+\tag{39.4}
+$$
+Since $BV=0$,
+$$
+\operatorname{Tr}(WK_*)=0.
+\tag{39.5}
+$$
+
+<a id="m-04"></a>
+
+**M-04: A sharp classical lower bound.**
+$$
+\boxed{\operatorname{Tr}(WK_{\rm cl})\ge
+\kappa:=3-2\sqrt2=0.171572875\ldots}
+\tag{39.6}
+$$
+The bound holds throughout class (39.1), and the constant is attainable.
+
+**Proof.** First consider any phase vector $z$. Put
+$$
+r_1=\left|z_3-\frac{z_1+z_2}{\sqrt2}\right|,\qquad
+r_2=\left|z_4-\frac{z_1+iz_2}{\sqrt2}\right|.
+$$
+Then $z^\dagger Wz=r_1^2+r_2^2$. Write $w=z_1\bar z_2$, with $|w|=1$. The reverse triangle inequality gives
+$$
+|\operatorname{Re}w|
+=\left|\left|\frac{z_1+z_2}{\sqrt2}\right|^2-1\right|
+\le(\sqrt2+1)r_1,
+$$
+$$
+|\operatorname{Im}w|
+=\left|\left|\frac{z_1+iz_2}{\sqrt2}\right|^2-1\right|
+\le(\sqrt2+1)r_2.
+$$
+Squaring and adding, and using $(\operatorname{Re}w)^2+(\operatorname{Im}w)^2=1$, yields
+$r_1^2+r_2^2\ge1/(\sqrt2+1)^2=3-2\sqrt2$.
+Averaging over a probability distribution proves (39.6). The choice
+$z=(1,1,1,(1+i)/\sqrt2)$ gives $r_1=\sqrt2-1,r_2=0$ and attains the bound. ∎
+
+Thus no classical random distribution of diagonal phases produces $K_*$. Moreover,
+$$
+\|W\|_F=3,\qquad \|W\|_{\rm op}=2+1/\sqrt2=:w_{\max}.
+$$
+By Cauchy–Schwarz,
+$$
+\inf_{K_{\rm cl}}\|K_*-K_{\rm cl}\|_F\ge\kappa/3.
+\tag{39.7}
+$$
+This is a proved conservative distance bound, not a conjecture obtained from an optimizer.
+
+## 39.4 Tolerance to additional dephasing
+
+<a id="m-05"></a>
+
+**M-05.** For
+$K_\epsilon=(1-\epsilon)K_*+\epsilon I$,
+$$
+\operatorname{Tr}(WK_\epsilon)=4\epsilon.
+$$
+The witness therefore still strictly excludes (39.1) whenever
+$$
+\epsilon<\frac{3-2\sqrt2}{4}=0.0428932188\ldots
+\tag{39.8}
+$$
+
+Here $I$ is the kernel of complete pointer dephasing, not the kernel of the identity channel; the latter is the all-ones matrix. Other noise forms require separate calculations. The value 4.29% is not a universal hardware error threshold. Above it, this witness no longer guarantees detection; that alone does not show that the channel has become random-unitary.
+
+If a raw tomographic estimate satisfies $\|\widehat K-K\|_F\le\eta$, then
+$$
+\operatorname{Tr}(WK)\le \operatorname{Tr}(W\widehat K)+3\eta.
+$$
+An exclusion allowing for error requires this upper bound to lie below $\kappa$. A PSD projection cannot replace that confidence guarantee.
+
+## 39.5 A zero-event protocol with one input and one effect
+
+Prepare
+$|+\!_4\rangle=(1,1,1,1)^T/2$. The SRN output is $\rho_K=K/4$.
+Choose the valid binary measurement effect
+$$
+E=\frac{W}{w_{\max}},\qquad 0\preceq E\preceq I.
+\tag{39.9}
+$$
+Then
+$$
+p_E(K_*)=0,\qquad
+p_E(K_{\rm cl})\ge
+p_{\rm cl}:=\frac{\kappa}{4w_{\max}}
+=0.0158446719\ldots
+\tag{39.10}
+$$
+One can measure $W$ spectrally and accept with probability $\lambda/w_{\max}$ conditional on its eigenvalue, or implement the binary POVM with an ancillary qubit. The complexity has moved into trusted preparation and effect calibration; it has not disappeared.
+
+<a id="e-01"></a>
+
+**E-01: A finite-sample rejection test.** For independent identically distributed trials with the model and measurement fixed in advance, the probability of no accepted events in $n$ trials under any classical hypothesis is at most
+$(1-p_{\rm cl})^n$. Thus, with ideal calibration, zero events in $n=188$ trials exclude the entire classical phase class at significance level 0.05.
+
+**Proof.** The Bernoulli zero-event probability decreases monotonically with $p$. Substitute the smallest allowed value $p_{\rm cl}$, require
+$n\ge\log(0.05)/\log(1-p_{\rm cl})$, and round up. ∎
+
+If $k>0$ events are observed, use the prespecified
+$$
+p\text{-value}=\sum_{j=0}^k{n\choose j}p_{\rm cl}^{\,j}(1-p_{\rm cl})^{n-j}.
+\tag{39.11}
+$$
+For a conservative error allowance $\delta$, replace $p_{\rm cl}$ with
+$\max(0,p_{\rm cl}-\delta)$. The count 188 excludes calibration trials, SRN validation, drift control and reproducibility checks; it is not a performance promise for existing devices.
+
+## 39.6 Ordinary nondiagonal unitaries must not imitate witness success
+
+An arbitrary unitary can send the single chosen input into $\ker W$. Equation (39.10) is therefore not an unconditional test of all random-unitary channels. The physical class of pointer-state-preserving channels must be validated independently.
+
+If a random-unitary channel preserves every $|a\rangle\langle a|$ exactly, its positive rank-one summands force every constituent unitary to be diagonal in this basis. Only then does it belong to (39.1).
+
+<a id="e-02"></a>
+
+**E-02: A robust bound for approximate population preservation.** If a general random-unitary channel
+$\sum_\nu p_\nu U_\nu(\cdot)U_\nu^\dagger$ satisfies
+$\Pr(a|a)\ge1-\ell$ for every basis state, then, for any fixed input, its output is within trace distance
+$$
+\sqrt{2m\ell}.
+\tag{39.12}
+$$
+of the output of some diagonal random-unitary channel. For the four-level protocol, the event-probability lower bound over this broader class is therefore
+$p_{\rm cl}-\sqrt{8\ell}$, before subtracting preparation and measurement errors.
+
+**Proof.** For every $U_\nu$, choose the diagonal unitary
+$D_{\nu,aa}=U_{\nu,aa}/|U_{\nu,aa}|$, assigning an arbitrary phase when the entry is zero.
+$$
+\|U_\nu-D_\nu\|_F^2=2\sum_a(1-|U_{\nu,aa}|)
+\le2\sum_a(1-|U_{\nu,aa}|^2).
+$$
+Its average over $\nu$ is at most $2m\ell$. The trace distance between pure outputs is bounded by their vector distance; the operator norm is bounded by the Frobenius norm; Jensen's inequality then bounds the average. Convexity extends the result to mixed inputs. ∎
+
+This conservative bound exposes a substantial calibration requirement: 99% population preservation is far from sufficient for the ideal 188-trial conclusion. Even with no additional error, it requires
+$\ell<p_{\rm cl}^2/8$ merely to make the lower bound positive. Tighter calibration bounds are a legitimate research goal; omitting model validation is not.
+
+## 39.7 What the criterion establishes and what remains open
+
+The criterion resolves a task that single-time two- or three-level SRN data cannot accomplish: excluding all classical random-phase noise. Four levels suffice, with an explicit physical channel, a sharp witness, a noise radius and a finite-data protocol.
+
+It does not exclude ordinary quantum environments. Such an environment produces $K_*$ itself. A successful witness shows that the specified classical noise class is inadequate; it does not show that standard QM is wrong or that objective collapse has been discovered. This construction is a candidate tool for quantum-noise spectroscopy and QCVV, not an established new law of nature.
+
+<a id="ch-40"></a>
+
+# 40. Actualization dynamics: from assumed single-branch selection to a conditional theorem
+
+For an explicitly specified stochastic state equation, can absorption into spectral branches be proved rather than assumed? This chapter answers that mathematical question within the stated finite model, while keeping the choice of equation, strength, record activation, and energy cost as separate physical obligations.
+
+## 40.1 First exclude an apparently plausible signalling rule
+
+Suppose the intuition that stronger superposition should produce faster actualization motivates the nonlinear single-qubit rule
+$$
+\dot x=-\gamma(1-z^2)x,\quad
+\dot y=-\gamma(1-z^2)y,\quad \dot z=0
+\tag{40.1}
+$$
+and suppose this rule acts separately on each pure preparation branch before averaging with the usual Born weights. This is not an equivalent rewriting of a linear quantum channel.
+
+<a id="c-01"></a>
+
+**C-01: An explicit contradiction from remote preparation.** The same density matrix
+$\rho=(I+0.6X)/2$ has two decompositions:
+$$
+\mathcal E_1=\{0.8,|+x\rangle;\ 0.2,|-x\rangle\},
+$$
+$$
+\mathcal E_2=\{1/2,\mathbf r_+=(0.6,0,0.8);\
+1/2,\mathbf r_-=(0.6,0,-0.8)\}.
+$$
+Applying (40.1) branch by branch gives the averages
+$$
+x_1(t)=0.6e^{-\gamma t},\qquad
+x_2(t)=0.6e^{-0.36\gamma t}.
+\tag{40.2}
+$$
+They differ.
+
+**Proof and operational implementation.** Share the pure state
+$$
+|\Psi\rangle=\sqrt{0.8}|0\rangle_A|+x\rangle_B
++\sqrt{0.2}|1\rangle_A|-x\rangle_B.
+$$
+Alice chooses to measure either $Z_A$ or $X_A$ without communicating the outcome. These choices prepare the two decompositions on Bob's side, both with marginal $\rho$. After $\gamma t=1$, Bob measures $X$; the difference between the probabilities of its positive outcome is
+$$
+\Delta p=0.3(e^{-0.36}-e^{-1})=0.0989390655\ldots
+$$
+It is nonzero. Combined with standard remote preparation and the stated branch-averaging rule, the dynamics would therefore allow signalling. ∎
+
+This is not an unconditional assertion that every mathematical nonlinearity entails faster-than-light signalling. The contradiction uses specified pure-state dynamics, composite states and a probability interpretation. Original no-signalling theorems address these constraints. [Simon–Bužek–Gisin](https://arxiv.org/abs/quant-ph/0102125).
+
+Directly inserting ORC redundancy, state entropy or branch weights into a deterministic collapse rate must pass the same decomposition-independence test. Without a declared composite-system rule and stochastic structure, an appealing single-system trajectory does not define viable new physics.
+
+## 40.2 A norm-preserving stochastic candidate with linear unconditional dynamics
+
+In finite dimension, take Hermitian $A$ and $\gamma>0$, and use the Itō equation
+$$
+d|\psi\rangle=
+\left[-\frac{i}{\hbar}Hdt
+-\frac{\gamma}{2}(A-\bar a)^2dt
++\sqrt\gamma(A-\bar a)dW_t\right]|\psi\rangle,
+\quad \bar a=\langle\psi|A|\psi\rangle.
+\tag{40.3}
+$$
+Here $W_t$ is a standard Wiener process under the physical probability measure. If $A$ is dimensionless, $\gamma$ has units of inverse time; in general, $[\gamma]=[A]^{-2}[t]^{-1}$.
+
+This is a standard class of continuous-measurement/stochastic-reduction models. The equation itself is not claimed as original. The aim is to derive fully which parts of the UEOT measurement problem it resolves and which it leaves open. [Continuous quantum measurement](https://arxiv.org/abs/1301.3626), [original martingale-reduction research](https://arxiv.org/abs/quant-ph/0107153).
+
+<a id="c-02"></a>
+
+**C-02: Norm preservation and a linear ensemble average.** A normalized initial state remains normalized, and
+$$
+\bar\rho=\mathbb E|\psi\rangle\langle\psi|
+$$
+satisfies
+$$
+\frac{d\bar\rho}{dt}
+=-\frac{i}{\hbar}[H,\bar\rho]
+-\frac{\gamma}{2}[A,[A,\bar\rho]].
+\tag{40.4}
+$$
+
+**Proof.** Apply the Itō product rule to $\langle\psi|\psi\rangle$. The real drift is
+$-\gamma\langle(A-\bar a)^2\rangle dt$, canceled by the quadratic variation. The stochastic term is
+$2\sqrt\gamma\langle A-\bar a\rangle dW=0$, so the norm is unchanged.
+The same calculation for the pure-state projection gives
+$$
+d\rho=-i[H,\rho]dt/\hbar-\tfrac\gamma2[A,[A,\rho]]dt
++\sqrt\gamma\{A-\bar a,\rho\}dW.
+$$
+The stochastic integral has an adapted bounded integrand and hence zero mean, yielding the linear equation (40.4). In finite dimension the coefficients are smooth and bounded on the unit sphere, providing a global process. No decomposition-dependent term is silently retained by the averaging. ∎
+
+For local $A$, the averaged channel is CPTP and compatible with ordinary composition, so unconditional statistics do not allow signalling. Nonlinearity of individual trajectories does not by itself produce the contradiction in C-01.
+
+## 40.3 Proving spectral-branch absorption
+
+Now add the crucial condition $[H,A]=0$. Write
+$A=\sum_a aP_a$, with distinct labels for distinct eigenvalues. The projections $P_a$ may be degenerate; the conclusion concerns spectral subspaces.
+
+Define $p_a(t)=\langle P_a\rangle_t$ and
+$V(t)=\langle A^2\rangle_t-\bar a_t^2$.
+
+<a id="c-03"></a>
+
+**C-03: A single spectral branch with Born weights.** Under (40.3) and the conditions just stated,
+$$
+dp_a=2\sqrt\gamma(a-\bar a)p_a\,dW_t,
+\tag{40.5}
+$$
+each $p_a$ is a bounded martingale, and the weight vector converges almost surely to a one-hot vector:
+$$
+p_a(t)\longrightarrow 1_{\{A_\infty=a\}},\qquad
+\Pr(A_\infty=a)=p_a(0).
+\tag{40.6}
+$$
+
+**Full proof.** Taking the trace against $P_a$ in the trajectory-density equation, commutation removes the Hamiltonian and double-commutator drifts and gives (40.5). Each $p_a$ is bounded, so the martingale convergence theorem gives almost-sure and $L^1$ convergence.
+
+Equation (40.5) implies
+$d\bar a=2\sqrt\gamma VdW$. Applying Itō's rule to $\langle A^2\rangle-\bar a^2$ gives
+$$
+dV=2\sqrt\gamma\langle(A-\bar a)^3\rangle dW
+-4\gamma V^2dt.
+\tag{40.7}
+$$
+The bounded nonnegative supermartingale $V$ therefore converges. Its mean $v(t)=\mathbb EV(t)$ satisfies
+$v'\le-4\gamma v^2$, hence
+$$
+\mathbb EV(t)\le\frac{V(0)}{1+4\gamma V(0)t}\longrightarrow0.
+\tag{40.8}
+$$
+Bounded convergence shows that the nonnegative limit $V_\infty$ has zero mean and is thus zero almost surely. A probability distribution on finitely many distinct eigenvalues has zero variance exactly when all weight is concentrated at one eigenvalue. The martingale limit is consequently one-hot. Finally,
+$\mathbb E p_a(\infty)=p_a(0)$ proves (40.6). ∎
+
+This advances beyond Chapter 3's conditional statement that an unbiased martingale has Born weights if it ultimately selects one branch: for a specified dynamics, single-branch selection is now also proved. Core still does not select these $A,\gamma$ or this stochastic equation. If $[H,A]\ne0$, the Hamiltonian can continually drive the state away from eigenbranches, so the absorption proof cannot be transferred unchanged.
+
+Spectral-branch absorption here is an almost-sure limit as $t\to\infty$, not an exact projection at a finite time. Indeed, when $p_a(0)>0$, writing $b_a(t)=2\sqrt\gamma[a-\bar a_t]$ gives
+$$
+p_a(t)=p_a(0)\exp\left[
+\int_0^t b_a(s)dW_s-\frac12\int_0^t b_a(s)^2ds\right]>0
+$$
+almost surely at every finite time, because the finite spectrum makes $b_a$ bounded. An initially zero weight remains zero, whereas multiple initially nonzero weights generally separate only in the infinite-time limit. A finite experiment needs an error or confidence bound of the following kind; C-03 does not assert exact finite-time collapse.
+
+## 40.4 A computable finite-time concentration rate
+
+<a id="c-04"></a>
+
+**C-04: Decay of pairwise uncertainty.** Retain the finite-spectrum and $[H,A]=0$ conditions of §40.3. Then
+$$
+\mathbb E\sqrt{p_a(t)p_b(t)}
+=\sqrt{p_a(0)p_b(0)}
+ e^{-\frac\gamma2(a-b)^2t}.
+\tag{40.9}
+$$
+Consequently,
+$$
+\mathbb E[1-\max_a p_a(t)]
+\le\sum_{a<b}\sqrt{p_a(0)p_b(0)}
+ e^{-\frac\gamma2(a-b)^2t}.
+\tag{40.10}
+$$
+
+**Proof.** Apply (40.5) and Itō's formula to $q_{ab}=\sqrt{p_ap_b}$. The difference of the two multiplicative-noise coefficients is $2\sqrt\gamma(a-b)$, and the second-order term gives drift
+$-\frac\gamma2(a-b)^2q_{ab}$. The stochastic integral has a bounded integrand and hence zero mean. Its expectation therefore solves a first-order linear equation, giving (40.9). Positive initial probabilities stay positive at finite times; initially zero probabilities stay zero, so the boundary cases are handled separately. For any probability vector, let its largest entry be $p_{\max}$. The sum of pairwise minima involving this entry already equals $1-p_{\max}$. Thus
+$$
+1-p_{\max}\le\sum_{a<b}\min(p_a,p_b)
+\le\sum_{a<b}\sqrt{p_ap_b}.
+$$
+Taking expectations gives (40.10). ∎
+
+If $A$ is degenerate, choose a common eigenbasis $|a,\alpha\rangle$ such that
+$$
+A|a,\alpha\rangle=a|a,\alpha\rangle,
+\qquad H|a,\alpha\rangle=E_{a\alpha}|a,\alpha\rangle.
+$$
+The unconditional master equation then gives
+$$
+\bar\rho_{a\alpha,b\beta}(t)=
+ e^{-i(E_{a\alpha}-E_{b\beta})t/\hbar}
+ e^{-\frac\gamma2(a-b)^2t}
+\bar\rho_{a\alpha,b\beta}(0).
+$$
+An eigenvalue label of the chosen observable need not specify a unique energy of the Hamiltonian; coherence within one spectral subspace may continue to evolve unitarily. The model links selection between different spectral branches to the rate of nonselective coherence loss. It does not select a unique pure state within a degenerate subspace.
+
+These weights can be simulated with an exact filtering representation that requires no Euler time step. First draw a label $A_*$ according to $p_a(0)$, take an independent standard Brownian process $B_t$ on the simulation probability space, and generate
+$$
+Y_t=2\sqrt\gamma\,a_{A_*}t+B_t,
+$$
+Bayes' rule gives
+$$
+p_a(t)=
+\frac{p_a(0)e^{2\sqrt\gamma aY_t-2\gamma a^2t}}
+{\sum_b p_b(0)e^{2\sqrt\gamma bY_t-2\gamma b^2t}}.
+\tag{40.11}
+$$
+In the filtration generated by the observation record, the innovation process
+$$
+W_t=Y_t-2\sqrt\gamma\int_0^t\bar a_s\,ds
+$$
+is Wiener under the physical mixture measure, and the weights satisfy (40.5). The processes $B_t$ and $W_t$ have different roles. Drawing a label is a simulation representation of the same filtering law; it does not replace C-03's dynamical absorption proof by assuming the outcome in advance.
+
+## 40.5 A new physical candidate must account for its energy cost
+
+Equation (40.4) and valid cyclicity of the trace give the extra noise contribution to energy:
+$$
+\frac{d\langle H\rangle}{dt}\bigg|_{\rm noise}
+=-\frac\gamma2\langle[A,[A,H]]\rangle.
+\tag{40.12}
+$$
+This identity does not itself require $[H,A]=0$. In a one-dimensional nonrelativistic extension with $A=X$ and $H=P^2/(2m)+V(X)$, one must separately supply common domains for the unbounded operators, energy conditions on states, and justification for interchanging the trace and generator. Under those conditions,
+$$
+[X,[X,H]]=-\hbar^2/m,
+\qquad\frac{d\langle H\rangle}{dt}=\frac{\gamma\hbar^2}{2m}.
+\tag{40.13}
+$$
+For two positions separated by $d\ne0$, the coherence decay rate contributed by this additional double-commutator dissipator is $\Gamma(d)=\gamma d^2/2$. Therefore
+$$
+\boxed{\frac{d\langle H\rangle}{dt}
+=\frac{\hbar^2}{md^2}\Gamma(d).}
+\tag{40.14}
+$$
+This is a constraint linking two observables within the same linear position-noise model, not a universal heating formula for all CSL, dissipative or coloured-noise models. The $[H,A]=0$ condition from §40.3 is not used here: position noise for a free particle can cause continuing heating and cannot simultaneously be described as permanent absorption into fixed position eigenstates. Exact global CCR do not hold for finite matrices, so a numerical position truncation cannot inherit (40.13) without error analysis.
+
+If an independent experiment supplies an upper bound $\dot E_{\max}$ on extra heating, this particular model must satisfy $\gamma\le2m\dot E_{\max}/\hbar^2$, also constraining the corresponding additional interference decay. A record-triggered model that fits a larger decay without the associated energy effect must explicitly change $A$, the noise spectrum or the dissipative structure and submit that new model to testing. The second consequence of the same noise parameter cannot simply be removed from the contract.
+
+## 40.6 Record dependence can be introduced through physical registers
+
+If a record $R$ is an actual local register with fixed projections $Q_r$, define on the joint space
+$$
+L_r=\sqrt{\gamma_r}\,A\otimes Q_r,\qquad\gamma_r\ge0,
+$$
+and use a standard Lindblad equation. In a branch already classically conditioned on record value $r$, the system acquires the corresponding rate. Averaging over all record outcomes leaves the overall evolution linear and CPTP.
+
+Here $\gamma_r$ is a fixed model parameter and $Q_r$ is an implementable physical variable. If the register remains in a coherent superposition, the calculation must retain the joint model rather than first imposing a classical label. This differs from inserting an analyst's entropy, redundancy or “degree of objecthood,” computed from an unobserved global state, arbitrarily into a nonlinear single-system rate.
+
+Independently selecting $A,Q_r,\gamma_r$ from resources, self-maintenance, actually accessible records and specified tasks remains the responsibility of an additional physical bridge. Standard quantum models with record feedback, fundamental stochastic-field candidates, and calibrated device control are distinct realizations. Their comparison requires common responses and experimentally distinguishable conditions.
+
+<a id="ch-41"></a>
+
+# 41. Why coherence loss alone still does not establish objective collapse
+
+Different system–environment realizations can produce the same system channel, limiting what system-only statistics can identify about collapse. This chapter separates exclusion of a noise subclass, controlled inversion of the full environment, and tests of fundamental nonunitarity, so that failures are assessed against an explicit model and control specification.
+
+## 41.1 Identifiability limits of system-only statistics
+
+<a id="c-05"></a>
+
+**C-05: Equivalence with an unrestricted quantum environment.** Every finite CPTP channel
+$\mathcal E(\rho)=\sum_\mu L_\mu\rho L_\mu^\dagger$
+can be written as
+$$
+\mathcal E(\rho)=\operatorname{Tr}_E[V\rho V^\dagger],
+\quad V=\sum_\mu L_\mu\otimes|\mu\rangle,\quad V^\dagger V=I.
+\tag{41.1}
+$$
+Protocols observing only the system therefore cannot uniquely attribute this channel to fundamental collapse rather than an unobserved quantum environment.
+
+**Proof.** Expanding the partial trace gives the Kraus sum. Trace preservation makes the map an isometry, which can be completed to a unitary on an extended space. The Born pairing with every system effect is identical. For finitely many interventions at multiple times, a sequential environment with memory dilates the causal comb, giving the same conclusion; the entire process must be matched, not merely its single-time states. ∎
+
+This obstruction does not make collapse models experimentally untestable. It means that ordinary-environment hypotheses must be constrained, or that an additional relation must link systems, energy, space and time, or parameters shared across different experiments, before two physical theories can be compared. The unrestricted class of all finite CPTP explanations already contains every individual such channel.
+
+## 41.2 What a complete reversal measures
+
+If all standard environmental degrees of freedom, writing operations and dynamics have been independently characterized, and the complete $U^\dagger$ can be implemented, the standard model predicts a return to the initial state. A failed return can reject this complete model-and-control package, but it can also reflect omitted environmental degrees of freedom or inversion error. Evidence for a specified additional noise model must come from distinctive scale dependence or parameter relations predicted in preregistered controls.
+
+Chapter 39 addresses a narrower, explicit hypothesis test: rejecting all diagonal classical random-phase models. It does not overcome C-05's environmental equivalence. Three-branch cycle tests, four-branch random-unitary tests, inversion of the complete environment, and tests of fundamental collapse belong to different experimental levels and should be labelled accordingly.
+
+## 41.3 Existing experimental constraints on collapse models
+
+Specified collapse models can be constrained through the additional force noise, diffusion or radiation that they predict. Vinante et al. used low-temperature nanocantilever noise measurements to constrain a specified CSL model; Donadi et al. tested their Diósi–Penrose formulation against underground radiation data; and Altamura et al. analyzed existing LISA Pathfinder angular-motion data to obtain CSL constraints dependent on the model and apparatus geometry. These are published experiments or analyses of measured data, not this book's synthetic benchmarks or experimental confirmation of UEOT. [Vinante et al., 2016](https://doi.org/10.1103/PhysRevLett.116.090402), [Donadi et al., 2021](https://doi.org/10.1038/s41567-020-1008-4), [Altamura et al., 2025](https://doi.org/10.1103/PhysRevA.111.L020203).
+
+An upper bound and a discovery require different evidence. Conservatively allowing the candidate mechanism to account for all measured noise can constrain it without asserting its detection. A stronger limit based on a smaller residual requires an explicit ordinary-background model, independent calibration and propagated uncertainty. The LISA study distinguishes these approaches. Noise or coherence loss alone identifies neither its source nor environmental parameters that have not been independently measured.
+
+These limits cannot be transferred directly to an undefined UEOT actualization strength. Chapter 40's position-noise parameter is not automatically the CSL collapse rate, spatial correlation length, or a parameter of another model. The actualization operator, noise spectrum, composite-system rule and testable parameter correspondence must first be specified. This book has neither refitted UEOT parameters from these papers nor performed a QDRR hardware experiment. QDRR remains a proposed test with explicit controls, calibration and failure conditions.
+
+<a id="ch-42"></a>
+
+# 42. Executable research protocols and the status of the arguments
+
+After deriving a candidate curve, one must still specify which parameters may be fitted, which data are held out, and what would count as failure. This chapter consolidates experimental, numerical, and attribution obligations; historical computational receipts are not relabelled as new executions or experimental confirmations.
+
+## 42.1 Experimental and fitting contracts
+
+~~~text
+ExperimentContract:
+  model_family:
+    classical_diagonal_phase | approximately_pointer_preserving_random_unitary
+    | Gaussian_diffusion | calibrated_quantum_environment | specified_collapse
+  system: 4 levels, fixed pointer basis, fixed preparation
+  channel: duration, control sequence, environment access
+  measurement: E=W/(2+1/sqrt(2)), calibration bound
+  assumptions:
+    conditional per-shot null lower bound (chapter 46), or IID
+    no post-hoc choice of witness or exclusion rules
+    pointer survival and SPAM calibration data kept separate
+  data:
+    raw accept/reject counts
+    time order, randomization, rejected-shot reasons
+    calibration runs and their confidence allocation
+  test:
+    predeclared n and alpha
+    lower null probability after systematic-error allowance
+    lower-tail binomial test, no optional stopping without valid adjustment
+  outputs:
+    rejected family, unresolved larger families
+    parameter intervals, calibration failures, reproducibility record
+~~~
+
+Using data to choose $W$ and then computing an unadjusted p-value from the same data introduces selection bias. One can fix the chapter's $W$ in advance or use training and held-out data. Postselection losses must be represented in the instrument; trials containing an event cannot simply be removed.
+
+The particle-physics contract fixes the complete representation table, global group, active mass thresholds, scalar count, beta-function scheme, $Z'$ mixing and right-handed couplings. Flavor data require matching to Wilson coefficients before running and conversion through matrix elements. No unprovided experimental spectrum, meson dataset or device dataset has been used as “validation” here.
+
+## 42.2 Independent checks and formalization boundaries of these advanced derivations
+
+The appendices preserve independently written numerical/rational verification programs, fixed inputs and results. The principal checks compare expressions obtained in different ways:
+
+- Compute all six anomalies from the complete left-handed representation table and compare them with the analytical factors.
+- Enumerate a finite integer domain and compare it with the all-integer classification proved in the text.
+- Construct matrices directly from unitary mass rotations and check the rank-one sum rules, CKM conjugation and FCNC lower bound.
+- Construct generators from complex Lindblad vectors and independently compute triangle positivity and Poisson saturation.
+- Construct the Kraus operators, environmental dilation, four-dimensional $W$ and actual statistical effect directly.
+- Check the sharp witness's saturation point, random phases, mixtures and calibration-distance bounds.
+- Recheck the decomposition-dependent counterexample through two remote measurements on the same joint pure state.
+- Use exact QND filtering samples to check martingale means, pairwise decay and the finite-time absorption-error bound.
+
+Historically retained results and executions in the present edition are recorded separately, bound to program SHA, inputs, runtime environment and actual exit status. A success flag in old JSON does not certify a new execution. Integer/rational equalities, finite-dimensional floating-point residuals and Monte Carlo coverage are also different kinds of evidence.
+
+The universal mathematical claims in these advanced sections rest on the analytical arguments and cited external theorems; sampling and finite searches do not replace them. The finite Kraus kernel does use Lean and has separate build, axiom-audit, positive/negative instance checks and remote-CI receipts. This does not mean that G-01, F-03, M-04, Itō absorption, Berry/SSH results, history-dependent statistics, or every other advanced proposition has been formalized. Selectors and spectral-row contracts with actual source mappings are handled according to §31.6 and the formalization registry.
+
+These programs presently provide model regression and arithmetic checks, not new hardware data. A real device must execute the preregistered physical and statistical contract. Passing a simulation is not empirical confirmation of a classical-noise, fundamental-collapse, five-colour or new-particle model.
+
+## 42.3 Explicit answers about new physics and earlier questions
+
+| Earlier question | Progress in these advanced derivations | Unresolved responsibility |
+|---|---|---|
+| Are three generations and three colours derived unconditionally? | Correct high-energy counting gives the complete two-candidate classification and exposes the difference between low- and high-energy premises. | HGP, representation selection and an independent physical principle excluding five colours. |
+| Does the candidate three-generation parent structure have low-energy consequences? | Rank-one sum rules, impossibility of simultaneous up/down flavour alignment, and a total FCNC lower bound. | Heavy masses and couplings, actual signals and complete competing models. |
+| Can coherence cycles be assigned arbitrarily? | A sharp CP phase–decay bound and a Poisson counterexample. | A nonzero cycle does not establish fundamentally new physics. |
+| Can two quadratures or few levels identify every classical noise model? | Single-time three-level data remain insufficient; an explicit sharp four-level witness and finite-sample protocol are provided. | Hardware execution and experimental comparison with existing methods. |
+| Does Born actualization merely assume eventual absorption? | Absorption and Born weights are proved for a specified stochastic model, with finite-time bounds. | Whether nature uses this as a fundamental stochastic mechanism. |
+| Does extra dephasing establish collapse? | An unrestricted-environment equivalence obstruction and a two-observable energy constraint are given. | Identification of a specified fundamental model using independent calibration and parameters shared across experiments. |
+
+These are calculable research outputs, but the evidence does not justify announcing a new law of nature. At UEOT's present stage, substantive progress consists in reducing an untestable interpretation to fewer, clearer physical premises and deriving the quantitative consequences they must satisfy. Those derivations can also disprove a preferred conjecture.
+
+## 42.4 Sources and originality boundaries
+
+These advanced derivations build on the original research programme, the existing complete quantum treatment and the integrated v2 monograph, including their SRN, HGP and QFT interfaces. The maintenance work also checked accessible historical v23–v30.11 texts, two complementary v28.1 sources, the formal Core–Physics contract and v31-series kernel reports. Appendix C records material identities and the scope actually obtained. Cached readable text, complete original files and executed verification are separately identified; none is substituted for another, and access to every historical conversation is not claimed. External technical dependencies retain their original-paper or author-source attribution.
+
+- **331 representations, intergeneration anomalies and FCNCs:** Pisano–Pleitez 1992; Liu 1993; Frampton–Ho–Kephart 2012; Fonseca–Hirsch 2016. Links are given in Chapters 36 and 37.
+- **Four-dimensional decoherence outside random-unitary models and its precedent matrix:** Buscemi–Chiribella–D’Ariano 2005; see also the geometric study by [Kayser–Luoma–Strunz](https://arxiv.org/abs/1508.04027). This book claims no priority for those underlying phenomena.
+- **Cycle phases and the Hamiltonian obstruction:** Fagnola et al., 2018 preprint, revised in 2019. A dynamically displayed date encountered during webpage retrieval is not treated as a new publication date.
+- **No-signalling and linear CP dynamics:** Simon–Bužek–Gisin 2001.
+- **Continuous measurement and stochastic reduction:** the martingale work of Adler et al. and the stochastic-equation work of Barchielli. The finite-time expressions here are derived for the explicitly stated model; stochastic reduction is not presented as a newly proposed mechanism.
+
+The specific conservative bound F-03, sharp witness M-04, experimental assembly E-01/E-02 and their combination receive complete independent derivations here. The literature search does not prove that these exact expressions have never appeared elsewhere. A submission would require further focused prior-art searches, independent checking and experimental performance comparisons. Deriving something independently does not by itself establish scholarly priority.
+
+<a id="ch-43"></a>
+
+# 43. Global phase, boundary conditions, and topological quantization
+
+Local amplitude and phase equations do not replace the global boundary conditions of a wavefunction. The ring with twisted boundary conditions places holonomy, operator domains, and observable spectra in one calculation, showing both a valid use of phase closure and why it does not determine the action scale.
+
+## 43.1 What a local Madelung representation leaves unspecified
+
+Chapter 3 uses $\psi=\sqrt\rho e^{iS/\hbar}$ in regions where $\rho>0$. Phases on different patches may differ by constants or gauge transition functions; in the presence of nodes, $S$ need not be a globally single-valued real function. A complete model should specify the configuration space $X$, a Hermitian line bundle $L\to X$, a connection, the Hilbert space $L^2(X,L)$, and the domain of a particular self-adjoint Hamiltonian. Models with the same local differential expression can still have different spectra because of their boundaries or holonomy.
+
+For a fixed ordinary complex scalar wavefunction with no nodes on a closed curve $C$, single-valuedness implies
+$$
+\oint_C dS=2\pi\hbar n,\qquad n\in\mathbb Z.
+$$
+This constrains the phase winding of a given wavefunction; it does not construct all position and momentum operators from an integer condition. For a charged system, the observable mechanical momentum is $dS-qA$. Its circulation includes a magnetic-flux term and is not unconditionally $2\pi\hbar n$.
+
+## 43.2 The full spectrum on a ring with twisted boundary conditions
+
+Take $X=[0,L]$ with its endpoints identified, mass $m>0$, and a constant tangential potential $A$. On $L^2([0,L])$, define
+$$
+P_\theta=-i\hbar\partial_x,
+\quad D(P_\theta)=\{f\in H^1:f(L)=e^{i\theta}f(0)\}.
+$$
+The boundary form is $-i\hbar[\bar f g]_0^L$, and this domain makes it vanish. Requiring the boundary form to vanish against every $f$ satisfying the boundary condition imposes the same condition on the adjoint domain. Thus the domain is self-adjoint, not merely formally symmetric.
+
+<a id="p-ugl-01"></a>
+
+**P-UGL-01: Ring spectrum and gauge invariance.**
+$$
+f_n(x)=L^{-1/2}e^{i(2\pi n+\theta)x/L},\quad
+E_n=\frac{[\hbar(2\pi n+\theta)/L-qA]^2}{2m}.
+$$
+The domain of $H=(P_\theta-qA)^2/(2m)$ consists of $H^2$ functions whose values and first derivatives satisfy the same twisted boundary condition. Multiplying the ordinary Fourier basis by $e^{i\theta x/L}$ produces this basis, proving completeness. The spectrum depends only on
+$$
+\eta=\theta-\frac{qAL}{\hbar}\pmod {2\pi}.
+$$
+For a gauge transformation that preserves the constant-potential representation, with $A'=A+\partial_x\chi$ and $f'=e^{iq\chi/\hbar}f$, one has $\theta'=\theta+q[\chi(L)-\chi(0)]/\hbar$, so $\eta$ is invariant. The shift $\theta\mapsto\theta+2\pi$ merely relabels $n$. If a periodic domain was fixed initially, changing a boundary label must be accompanied by transporting the operator domain in the Hilbert space. ∎
+
+For example, set $\hbar=m=L=q=1$. At $\theta=0$, $A=0$, the ground-state energy is zero. At $A=\pi$, the lowest energy is $\pi^2/2$ and is twofold degenerate. If $\theta$ is also changed to $\pi$, the spectrum returns to that for $\eta=0$. This illustrates gauge transport; it does not imply that magnetic flux has no physical effect.
+
+## 43.3 Refining the original phase-closure route
+
+Phase closure should be separated into four ingredients: local curvature of the connection, global holonomy, transition functions of the wavefunction bundle, and operator domains. The original closed-curve intuition now has a calculable realization, but the quantum action scale, complex state space and physical choice of boundary conditions remain inputs. Core can receive gauge-invariant spectra and responses to allowed interference protocols as a response object; naming the protocols does not derive the numerical value of $\hbar$.
+
+<a id="ch-44"></a>
+
+# 44. Topological quantum objects: Berry bundles and SSH edge states
+
+Topological protection becomes an inspectable physical property only with a specified Hamiltonian, symmetry, and boundary termination. The Berry and SSH examples derive geometric quantities, spectra, and edge states while retaining finite-chain errors, lifetimes, and symmetry-breaking perturbations in the certificate.
+
+## 44.1 A complete two-level Berry-curvature calculation
+
+Take $H(\mathbf n)=\Delta\mathbf n\cdot\boldsymbol\sigma$, with $\Delta>0$ and $\mathbf n\in S^2$, and consider the instantaneous eigenline of energy $+\Delta$. In spherical coordinates, a northern-patch choice is
+$$
+|u_N\rangle=(\cos(\vartheta/2),e^{i\varphi}\sin(\vartheta/2))^T.
+$$
+Define the connection by $\mathcal A=i\langle u|du\rangle$. On the southern patch take $u_S=e^{-i\varphi}u_N$. Then
+$$
+\mathcal A_N=-\frac{1-\cos\vartheta}{2}d\varphi,
+\quad \mathcal A_S=\frac{1+\cos\vartheta}{2}d\varphi.
+$$
+
+<a id="p-utp-01"></a>
+
+**P-UTP-01: Chern number of this eigenline.** Direct differentiation gives
+$$
+\mathcal F=-\tfrac12\sin\vartheta\,d\vartheta\wedge d\varphi,
+\qquad C_1=\frac1{2\pi}\int_{S^2}\mathcal F=-1.
+$$
+The difference between the local connections, $\mathcal A_S-\mathcal A_N=d\varphi$, agrees with the transition function. The nonzero total flux prevents an everywhere smooth choice of eigenvector over the sphere. The negative-energy band has the opposite sign. The sign here depends on the explicitly stated connection, band and orientation of the sphere. ∎
+
+The geometric phase in adiabatic evolution is $\oint\mathcal A$; the dynamical phase must be separated from the total phase. Finite-speed errors require separate control in terms of the gap, path regularity and speed. This example uses Berry's established geometric-phase structure; the calculation here is not its first discovery. [Berry's original paper](https://doi.org/10.1098/rspa.1984.0023).
+
+## 44.2 SSH bulk spectrum and winding number
+
+Fix the unit cell, boundary termination, and real positive hopping amplitudes $t_1,t_2$. The single-particle Hamiltonian is
+$$
+H=\sum_{n\ge1}(t_1|n,A\rangle\langle n,B|
++t_2|n+1,A\rangle\langle n,B|+\mathrm{h.c.}).
+$$
+For the infinite translation-invariant system, the chosen Fourier convention gives the Bloch matrix
+$$
+H(k)=\begin{pmatrix}0&t_1+t_2e^{-ik}\\t_1+t_2e^{ik}&0\end{pmatrix},
+\quad E_\pm(k)=\pm\sqrt{t_1^2+t_2^2+2t_1t_2\cos k}.
+$$
+The chiral operator $\Gamma=\operatorname{diag}(1,-1)$ satisfies $\Gamma H\Gamma=-H$. With $q(k)=t_1+t_2e^{-ik}$, the winding number
+$$
+\nu=\frac{1}{2\pi i}\int_{-\pi}^{\pi}q^{-1}\partial_kq\,dk
+$$
+is $-1$ for $t_2>t_1$ and zero for $t_2<t_1$. Indeed, $q(k)$ traces a clockwise circle of radius $t_2$ centred at $t_1$. At $t_1=t_2$ the gap closes and the winding number is undefined. Changing the Fourier or sublattice convention can reverse the winding sign. Reselecting the unit cell must be accompanied by the corresponding change in boundary termination; changing a number alone does not remove the physical edge state.
+
+## 44.3 A semi-infinite boundary and finite-chain errors
+
+<a id="p-utp-02"></a>
+
+**P-UTP-02: A semi-infinite zero mode.** For a chain terminated on the left at $A_1$, if $t_1<t_2$,
+$$
+|\psi_L\rangle=\sqrt{1-r^2}\sum_{n=1}^\infty(-r)^{n-1}|n,A\rangle,
+\qquad r=t_1/t_2
+$$
+is a normalized zero-energy eigenstate. To prove this, every $B_n$ component requires $t_1a_n+t_2a_{n+1}=0$. The geometric series converges exactly when $r<1$, with the normalization factor shown. Every $A_n$ equation holds automatically because $b_n=0$. ∎
+
+On a finite chain of $N$ unit cells, truncate and normalize this vector to obtain $\psi_{L,N}$, with coefficient $c_N=\sqrt{(1-r^2)/(1-r^{2N})}$. Only the final $B_N$ component has a residual, so
+$$
+\|H_N\psi_{L,N}\|=c_Nt_1r^{N-1}.
+$$
+The spectral theorem gives $\operatorname{dist}(0,\operatorname{spec}H_N)\le\|H_N\psi_{L,N}\|$. A near-zero mode in a finite chain with equal sublattice sizes is not generally an exact zero mode: coupling between its ends produces a small energy splitting. Sublattice imbalance and special boundaries require separate treatment. The established SSH model originates in the [Su–Schrieffer–Heeger paper](https://link.aps.org/doi/10.1103/PhysRevLett.42.1698).
+
+## 44.4 The UEOT interface and possible experiments
+
+Take the boundary subspace as a candidate carrier, with protocols for local injection, finite-time propagation, boundary survival and perturbation response. A certificate should record the bulk gap, degree of chiral-symmetry preservation, boundary termination, finite size and lifetime. A localized peak alone is not a topological certificate.
+
+A practical sequence is to verify the residual by exact diagonalization on a small chain, vary $t_1/t_2$ to observe gap closing and the boundary distribution, and then introduce known symmetry-preserving or symmetry-breaking perturbations and compare preregistered spectral and survival curves. The original paper's idea of a persistent structure becomes a concrete question about a protected low-energy subspace. It does not directly derive the number of electron generations, fundamental particles or an absolutely everlasting object.
+
+<a id="ch-45"></a>
+
+# 45. A nonperturbative starting point: finite lattice gauge models and interfaces across scales
+
+A finite lattice provides a well-defined, computable starting point for nonperturbative work, but existence of its measure does not construct continuum QCD. This chapter establishes gauge invariance, action normalization, and an enumerable example before separating the obligations for lattice spacing, volume, fermions, and real-time extrapolation.
+
+## 45.1 An exact definition of a finite pure-gauge model
+
+Take a finite four-dimensional Euclidean hypercubic lattice, with $U_{x\mu}\in SU(N)$ on oriented links and $U^\dagger$ on the reverse links. The oriented plaquette is
+$$
+U_p=U_{x\mu}U_{x+\hat\mu,\nu}U^\dagger_{x+\hat\nu,\mu}U^\dagger_{x\nu}.
+$$
+Define the Wilson action and normalized measure by
+$$
+\begin{gathered}
+S_W=\beta\sum_p\left(1-\frac1N\operatorname{ReTr}U_p\right),
+\\ Z=\int\prod_l dU_l\,e^{-S_W},\\ d\mu=Z^{-1}e^{-S_W}\prod_l dU_l,
+\\\beta=\frac{2N}{g^2}>0.
+\end{gathered}
+$$
+Here $dU_l$ is normalized Haar measure, and one orientation is chosen for each unoriented plaquette. There is no fermion determinant, chemical potential or real-time phase factor in this section.
+
+<a id="p-ulg-01"></a>
+
+**P-ULG-01: Existence and gauge invariance of the finite model.** On the finite product of compact groups, $0\le S_W\le2\beta N_p$, hence $e^{-2\beta N_p}\le Z\le1$, so the measure is well defined. A local transformation $U_{xy}\mapsto G_xU_{xy}G_y^\dagger$ conjugates each closed-loop product at its starting point. The trace and left/right Haar measure are invariant, so all Wilson-loop expectations are gauge invariant. ∎
+
+This existence statement requires no global gauge choice. It establishes only a finite Euclidean statistical model. Reconstructing a positive-energy real-time quantum theory requires reflection positivity, continuity and suitable limits, among other conditions. The positivity condition $e^{-S}>0$ alone does not prove them all. Wilson's original lattice construction and strong-coupling study appear in [*Confinement of quarks*](https://link.aps.org/doi/10.1103/PhysRevD.10.2445).
+
+## 45.2 Checking the continuum gauge-action coefficient
+
+Use Chapter 29's convention $D_\mu=\partial_\mu+igA_\mu$, with Hermitian generators normalized by $\operatorname{Tr}T^aT^b=\delta^{ab}/2$. Then
+$$
+F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu+ig[A_\mu,A_\nu].
+$$
+For a smooth field, regard link variables as path-ordered exponentials consistent with this transport convention. The local expansion gives
+$$
+U_p=\exp\{iga^2F_{\mu\nu}+O(a^3)\},\quad
+1-\frac1N\operatorname{ReTr}U_p
+=\frac{g^2a^4}{2N}\operatorname{Tr}F_{\mu\nu}^2+O(a^5).
+$$
+The linear term vanishes because $F$ is traceless, and the quadratic term comes from the exponential expansion. For a smooth field at fixed volume, with controlled boundaries, multiplication by $\beta$ and summation give
+$$
+S_W\longrightarrow\int d^4x\sum_{\mu<\nu}\operatorname{Tr}F_{\mu\nu}^2
+=\frac14\int d^4x\sum_{\mu,\nu,a}(F_{\mu\nu}^a)^2.
+$$
+This establishes consistency of the action on classical smooth fields. Typical quantum fields are not smooth, so it does not establish a continuum limit of the quantum measure. Symmetric summation permits the study of higher-order lattice-spacing improvements, but boundary and smoothness assumptions must be specified. The expansion order is not automatically a strong-coupling quantum error bound.
+
+## 45.3 An exactly enumerable gauge-invariant example
+
+To make the finite computation explicit, take the $\mathbb Z_2$ submodel on the four links of a single square: $u_l=\pm1$, plaquette $P=\prod_{l=1}^4u_l$, and action $S=-\beta P$. With unnormalized counting measure, there are 16 configurations, eight each with $P=\pm1$.
+
+<a id="p-ulg-02"></a>
+
+**P-ULG-02: Exact partition function and response.**
+$$
+Z=16\cosh\beta,\qquad \langle P\rangle=\tanh\beta,
+\qquad\partial_\beta\langle P\rangle=1-\langle P\rangle^2.
+$$
+Summing the two eightfold sectors proves the expressions. A vertex transformation multiplies each of its two adjacent links by the same $g_x=\pm1$, so $P$ is unchanged. Every single-link expectation is zero, as follows by flipping a transformation at one endpoint and using invariance of the measure. Normalized Haar counting divides $Z$ by 16 but leaves normalized expectations unchanged. ∎
+
+This gives a concrete UEOT readout: if all observables $f(P)$ are allowed, $P$ is a complete carrier of invariant information. Orbit completeness follows by successively gauge-fixing the first three links to $+1$; the final link is then exactly $P$. Configurations with the same $P$ therefore lie on the same gauge orbit. This example concerns only the stated finite group and single loop; it is neither $SU(3)$ QCD nor a proof of four-dimensional confinement.
+
+## 45.4 Lattice coarse-graining and a valid connection to Core
+
+Define each coarse link as an ordered product along a fine path, obtaining a map $B:U_f\mapsto U_c$. The coarse measure in the finite model is directly defined as the pushforward $\mu_c=B_*\mu_f$. For every bounded coarse observable,
+$$
+\mathbb E_{\mu_c}f(U_c)=\mathbb E_{\mu_f}f(B(U_f)).
+$$
+This is the defining identity of the pushforward measure and gives exact readout consistency. It does not imply that the coarse action retains only single-plaquette terms: multi-loop and nonlocal terms generally appear. Truncation to a finite operator family must report the error in discarded responses rather than assert closure in the same functional form.
+
+A deterministic map of Euclidean configurations is classical statistical coarse-graining; it is not automatically a real-time CPTP channel. Connecting it to the quantum-process interface of Chapter 26 requires a transfer matrix or controlled real-time model, an initial state and the same intervention slots, after which responses can be compared. Three distinct questions can then be studied: exact readout pushforward, approximate effective actions, and quantum-intervention coarse-graining.
+
+## 45.5 Explicit tasks toward QCD
+
+First validate local updates, gauge invariance, thermalization and autocorrelation on finite $SU(2)$/$SU(3)$ lattices. Then add a specified fermion discretization and sea-quark weight, checking the treatment of doubling, chirality and anomalies. Finally, extrapolate the same dimensionless observable jointly in volume, lattice spacing, mass and statistical error. Noisy Euclidean data do not provide an unconditionally stable inversion to real-time response. Neither existence of a finite pure-gauge measure nor local one-loop asymptotic freedom proves the mass gap of four-dimensional continuum Yang–Mills theory.
+
+<a id="ch-46"></a>
+
+# 46. Experimental statistics with history dependence and optional stopping
+
+Device drift and history-dependent choices can invalidate a simple independent-trial analysis. Conditional null hypotheses and supermartingales incorporate temporal order and optional stopping into the statistical guarantee; inadequate calibration can make the resulting bound explicitly powerless.
+
+## 46.1 Replacing independent trials with a conditional null hypothesis
+
+With the input and effect fixed, the classical diagonal random-phase model in Chapter 39 gives the four-level witness's event-probability lower bound
+$$
+p_* =\frac{3-2\sqrt2}{4(2+1/\sqrt2)}.
+$$
+Let $X_t\in\{0,1\}$ denote the event on trial $t$, and let $\mathcal F_{t-1}$ contain the entire preceding record and allowed feedback. The new null hypothesis is explicitly
+$$
+\Pr(X_t=1\mid\mathcal F_{t-1})\ge p_0\quad\text{almost surely, for every }t.
+$$
+Here $0<p_0<1$, and $p_0$ already accounts for calibration, leakage and identifiable systematic errors. The condition holds if every history-conditioned channel belongs to the tested class. Knowing only that time-averaged noise belongs to that class is insufficient.
+
+<a id="p-ust-01"></a>
+
+**P-UST-01: A fixed-sample test for correlated trials.** Under these conditions, for fixed $n$,
+$$
+\Pr\left(\sum_{t=1}^nX_t\le k\right)
+\le\sum_{j=0}^k{n\choose j}p_0^j(1-p_0)^{n-j}.
+$$
+A sequential coupling proves the result. On an enlarged probability space, take independent $U_t\sim\mathrm{Unif}[0,1]$ and realize $X_t=1\{U_t\le p_t\}$ with the corresponding history-conditioned probability $p_t$. Set $Y_t=1\{U_t\le p_0\}$. Pathwise, $X_t\ge Y_t$, while the $Y_t$ are independent Bernoulli variables, giving lower-tail domination. Additional history variables are generated sequentially using their conditional kernels; the marginal joint law of the binary trials is unchanged. ∎
+
+The zero-event case also follows directly by iterated conditional expectation, giving $(1-p_0)^n$. Thus, with ideal $p_0=p_*$, 188 trials with zero accepted events still provide a fixed-sample 5% test, even with history dependence satisfying the conditional lower bound. The conclusion does not cover arbitrary drift or memory.
+
+## 46.2 Why single-trial marginal bounds are insufficient
+
+Let all trials equal the same hidden Bernoulli variable $Z$, with $\Pr(Z=1)=p_0$. Each trial has marginal probability $p_0$, but the probability that all trials are zero remains $1-p_0$, however many trials are taken; it does not decay as $(1-p_0)^n$. After the first zero, the next conditional event probability is zero, violating precisely the condition in §46.1. This counterexample must accompany the statistical certificate.
+
+## 46.3 A rigorous version allowing continuous inspection
+
+For a prefixed $q\in[0,p_0)$, define
+$$
+L_n=\prod_{t=1}^n
+\left(\frac q{p_0}\right)^{X_t}
+\left(\frac{1-q}{1-p_0}\right)^{1-X_t},\quad L_0=1.
+$$
+
+<a id="p-ust-02"></a>
+
+**P-UST-02: An optional-stopping certificate.** Under the null hypothesis, $L_n$ is a nonnegative supermartingale, because the conditional expectation of its one-step factor is
+$$
+1+\frac{(p_t-p_0)(q-p_0)}{p_0(1-p_0)}\le1.
+$$
+Let $\tau=\inf\{n:L_n\ge1/\alpha\}$. Applying iterated conditional expectation to the nonnegative supermartingale at the truncated stopping time $\tau\wedge N$ gives $1\ge E L_{\tau\wedge N}\ge\alpha^{-1}\Pr(\tau\le N)$. Letting $N\to\infty$ yields $\Pr(\tau<\infty)\le\alpha$. This permits inspection at any time and stopping at the stated threshold while retaining a valid test. ∎
+
+For $q=0$, the no-event factor is defined as $1/(1-p_0)$, and the entire product becomes zero as soon as an event occurs. This choice is best suited to an explicit zero-event target. To allow a few events, fix $q>0$ or mix several $q$ values with weights fixed in advance. Maximizing $L_n(q)$ after seeing the data requires an adjustment.
+
+## 46.4 Calibration, leakage and the physical contract
+
+Suppose a simultaneous calibration event with probability at least $1-\alpha_{\rm cal}$ guarantees the lower bound for every trial used. The total error probability is then at most $\alpha_{\rm cal}+\alpha_{\rm test}$. The null must be shown to remain valid under that good event and the relevant conditioning information, or one can use an independently calibrated, frozen confidence set of physically consistent models. A calibration event selected afterward cannot simply be treated as independent of the test. Taking the worst lower bound over the entire confidence set is more direct.
+
+Execution should fix $W$, preparation, pointer basis, randomization, failure rate and stopping rule, and preserve the time series. Chapter 39's approximate pointer-preservation bound $p_0\ge p_*-\sqrt{8\ell}-\delta_{\rm SPAM}$ is very conservative. If the right-hand side is nonpositive, this witness does not establish exclusion capability for the current experiment. A useful improvement would optimize over a complete calibration confidence set with certified bounds, rather than arbitrarily shrink error bars.
+
+This chapter removes the IID requirement under explicit conditions and provides a test valid under optional stopping. No hardware experiment has been performed, and no new decoherence mechanism in nature has been established.
+
+<a id="ch-47"></a>
+
+# 47. Research programme: from closed modules to distinguishable physics
+
+A research roadmap should be organized around propositions or experiments that can be delivered, checked, and rejected, rather than around version numbers. This chapter specifies inputs, outputs, and failure conditions across quantum selection, dynamics, fields, particles, and gravity, distinguishing completed finite results from larger open goals.
+
+## 47.1 Dependencies and priorities
+
+The research programme advances according to testable dependencies, without promising dates for solving open problems. P0 denotes foundations required before any new-physics claim. P1 denotes directions already supported by theorems or calculable models and most likely to produce definite outputs. P2 denotes longer-term directions requiring a new physical selection principle or a substantial mathematical advance.
+
+| Work package | Priority | Prerequisites | Deliverable |
+|---|---|---|---|
+| R1 Quantum selection and minimal premises | P0 | OPT background; classical and real-quantum countermodels | Dependency graph, individual assumption-deletion certificates, and an auditable reconstruction chain |
+| R2 Global phase and continuous domains | P0 | Self-adjoint domains, line bundles and energy bounds | Models with explicit boundaries and convergence certificates |
+| R3 Record witnesses and QCVV | P1 | SRN, witnesses, calibration and statistical contracts | Valid confidence bounds, preregistered experiments and raw data |
+| R4 Actualization and new dynamics | P1/P2 | CP, no-signalling, absorption and heating constraints | Excludable models and predictions sharing parameters across observables |
+| R5 Memory processes and object compression | P1 | Combs, intervention sufficiency and resource constraints | Prediction-compression errors and upper/lower memory-dimension bounds |
+| R6 Many-body topology and control | P1 | Finite models, spectral gaps, stability and noise | Reproducible edge-state lifetimes, logical errors and control gains |
+| R7 Precise QFT/EFT interfaces | P0/P1 | Actions, regulators, schemes and infrared definitions | Scattering and matching benchmarks with order and error statements |
+| R8 Lattice and nonperturbative physics | P1/P2 | Finite gauge measures and update algorithms | Finite-volume observables and controlled extrapolation; continuum limits remain a separate goal |
+| R9 Gauge and generation selection | P2 | Complete field tables, thresholds, global groups and countermodels | An independent mechanism excluding five colours, or an explicit set of surviving candidates |
+| R10 Flavor, masses and neutrinos | P1/P2 | Symmetry-breaking spectra, rank-one structure and EFT matching | Held-out sum rules, correlations between processes and competing-model comparisons |
+| R11 Global anomalies and geometry | P2 | Specified bundles, operators and completion | Calculable anomaly maps; retention or withdrawal of conditional framing conclusions |
+| R12 Gravity and cosmology interfaces | P2 | Quantum fields, locality, energy and geometric inputs | Controlled-background models and consistency checks; no claim of completed gravitational unification |
+| R13 Proof and software reproducibility | P0 | The book's status IDs and code | Type checking, counterexample collections, a small formal core and version tracking |
+
+The first stage fixes definitions and benchmarks for R1/R2/R7/R13. The second prioritizes parallel finite-model work on R3/R5/R6/R8 that does not require new fundamental axioms. Only then do the candidates in R4/R9/R10/R11 compete with experiments and mathematical counterexamples. R12 begins as interface research; a unification goal cannot bypass preceding unresolved steps. Parallelism here describes dependencies between research tasks. Every result still requires a concrete proof, source files and independent review.
+
+## 47.2 R1: Quantum selection and minimality
+
+**Goal.** Distinguish UEOT's ability to organize quantum theory from a necessity for UEOT to select quantum theory, and seek reductions in the genuinely independent quantum-domain inputs.
+
+**Mathematical starting point.** Form a background package $\mathcal B$ from the objects, tests, composition, equivalence, convex closure and finite-dimensional conditions of a complete causal OPT. Choose a set of selection hypotheses $\mathcal H$, and state the conclusion as $\mathcal B\cup\mathcal H\Rightarrow\mathrm{CQM}_{\rm fd}$. Every change of background counts toward the cost of minimality. Chapter 2's external reconstruction theorem is not a general Core theorem.
+
+**Steps.** First compare each lemma with the original reconstruction paper and tabulate the background it actually uses. Next perform deletion tests in classical, real-quantum, restricted-effect/transformation quantum subtheories and other concrete OPTs. Check whether a quantum-looking state space also supplies all quantum processes and composition rules. Finally investigate whether UEOT's original resource/access conditions independently imply a domain principle. Every proposed implication must also face an attempt to construct a classical countermodel.
+
+**Acceptance.** Produce a noncircular proof chain traceable to its basic quantifiers, or an explicit counterexample showing that the proposed weaker package is insufficient. A counterexample is a valid deliverable. Renaming purification “parent-object completeness” is not progress; hiding the target quantum structure in the meaning of “realizable” is likewise insufficient. If a revision of the cited preprint changes its background, update the K dependency instead of silently retaining a stronger conclusion.
+
+## 47.3 R2: Global phase, operator domains and numerical convergence
+
+**Goal.** Extend Chapter 3's local statistical action safely to actual boundaries, nodes and multiply connected configuration spaces.
+
+**Steps.** Begin with Chapter 43's ring and a punctured plane. Fix the line bundle and connection, then enumerate the Hamiltonian's self-adjoint extensions. Use ring spectra, flux periodicity and interference phases as benchmarks. At $\rho=0$, use weak-solution or wavefunction-domain formulations; do not divide by zero density. Numerical truncation must control the initial-state tail, generator approximation and time integration together. Small $D(\rho,\rho_{\rm cut})$ alone does not establish a small long-time dynamical error.
+
+If $\|H-\widetilde H\|\le\delta_H$ on a common invariant finite domain, the Duhamel identity
+$$
+U(t)-\widetilde U(t)
+=-\frac{i}{\hbar}\int_0^tU(t-s)(H-\widetilde H)\widetilde U(s)\,ds
+$$
+gives $\|U-\widetilde U\|\le |t|\delta_H/\hbar$. For unbounded problems, estimate the integrated norms on the states being used; a nonexistent global operator norm cannot be retained. This is a minimal prototype for a dynamical-error contract.
+
+**Acceptance.** Spectra and responses agree before and after consistent boundary transport; grid or energy-truncation errors converge over the specified time window; and the treatment of global nodes no longer relies on singular Madelung division. If distinct self-adjoint extensions predict different outcomes without an independent physical selection, retain several models rather than choose the spectrum closest to the desired answer.
+
+## 47.4 R3: SRN witnesses, QDRR and experimental statistics
+
+**Goal.** Turn the question of coherence loss associated with records into experiments that exclude explicit model classes, without jumping directly to ontological collapse.
+
+**Order of candidate tests.** Test the full SRN class first, then time-homogeneous semigroups. Next use three-branch cycles to distinguish Gaussian diagonal diffusion from broader classical jumps, and finally use a four-branch witness to exclude the entire classical diagonal random-phase class. Each level leaves a broader class unexcluded. Chapter 39's $K_*$ has zero entries, so its exact channel is not a finite-time member of a homogeneous SRN semigroup with finite rates. Implement it through a controlled environmental channel rather than fit it incorrectly to that semigroup.
+
+**Steps.** Prepare $|+_4\rangle$ in a known four-level system or a two-qubit encoding; implement the specified Kraus dilation with an environmental qubit; measure $E=W/(2+1/\sqrt2)$; independently calibrate pointer survival and SPAM and freeze $p_0$; acquire time-ordered data using Chapter 46's fixed-sample or supermartingale procedure; and reserve different storage times and environment controls for model checks. Leakage must be recorded as an output or probability loss, not discarded to improve the signal.
+
+**Optimization.** Let $\mathcal C(D_{\rm cal})$ be a channel/instrument set with a coverage guarantee, and compute
+$$
+p_{\min}=\inf_{M\in\mathcal C(D_{\rm cal})\cap\mathfrak M_0}p_M(E).
+$$
+The convex hull of random phases does not automatically have an exact small SDP representation. Certified outer approximations can provide conservative lower bounds. Rejection requires that this lower bound exceed the measured held-out upper bound; one local minimum returned by an optimizer is insufficient.
+
+**Acceptance and stopping.** Calibrate error rates on simulated null, drifting and approximately SRN data. A real experiment must report raw counts and worst-case errors together. If $p_{\min}\le0$, or if preparation and the effect cannot be independently calibrated, improve the experimental contract before publishing a claim that classical noise has been excluded. Recalculate the sample size from calibrated $p_0$; 188 is not a universal hardware promise.
+
+## 47.5 R4: Actualization and new dynamics
+
+**Goal.** Develop Chapter 40's standard stochastic candidate into physical predictions that differ from a calibrated environment and share parameters across observables.
+
+**Fix the model first.** Specify the probability space, observable $A$, rate $\gamma$, temporal and spatial correlations, composite-system rule, energy budget, and how records enter the dynamics. The finite-dimensional QND model is a closed starting point. It can represent a continuous-measurement trajectory or a fundamental stochastic hypothesis; identical unconditional channels do not experimentally distinguish those interpretations.
+
+**Steps.** Prove norm preservation, averaged CP/TP and local no-signalling; then determine absorption or stationary behaviour. When $[H,A]\ne0$, repeat the analysis rather than import the QND theorem. Derive common relations among heating, momentum diffusion, interference contrast and spectra. Finally apply the same parameter domain across experimental classes, independently constrain ordinary environmental models, and reserve a set of observables for prediction. A mass-density-field model needs a spatial smoothing scale to control the UV, together with checks of amplification for composites and particle-permutation symmetry.
+
+**Critical comparison.** Chapter 40's position noise gives $\dot E=\gamma\hbar^2/(2m)$ and $\Gamma(d)=\gamma d^2/2$, hence $\dot E=\hbar^2\Gamma(d)/(md^2)$. A candidate asserting this dephasing law without the corresponding energy cost must specify the additional dissipation or feedback that changes the model. It cannot retain only the favourable half of the prediction.
+
+**Acceptance.** Obtain reproducible held-out predictions from one fixed model, including independent bounds on allowed environments. If arbitrary environmental dilation can always absorb the candidate completely and no cross-observable constraint is supplied, only an interpretive difference has been established. A relativistically covariant extension also requires local consistency and energy control; this book has not completed that extension.
+
+## 47.6 R5: Non-Markovian memory and predictive-object compression
+
+**Goal.** Use UEOT's future sufficiency to determine when a density matrix is enough and when environmental memory must be retained.
+
+**Steps.** Construct a finite system with a controllable memory environment and enumerate a tomographically complete intervention set. Use a causal break to create the same present state with different future responses. Fit a finite-memory comb and test predictive error with independent testers. For an allowed protocol family $\mathcal U$, define $d_{\mathcal U}(R,\widetilde R)=\sup_{T\in\mathcal U}\operatorname{TV}(p_R^T,p_{\widetilde R}^T)$. Compression should minimize this error under the resource constraints, rather than merely minimize single-time state-reconstruction error.
+
+**Mathematical tasks.** Establish composition bounds for approximate sufficient-factor errors; derive upper and lower memory-dimension bounds for different access sets; and use numbers of distinguishable histories or certified matrix ranks to obtain compression lower bounds. A rank of a process Choi matrix does not unconditionally equal the minimum physical environment dimension. The correspondence between representation and implementation needs proof.
+
+**Acceptance.** Verify Choi positivity and causal recursion of the compressed model; obtain certified errors for adaptive protocols excluded from training; and outperform a model retaining only $\rho_t$ at the same resource budget. A good fit to trajectories without interventions does not establish complete future sufficiency.
+
+## 47.7 R6: Many-body topology, thermodynamics and control applications
+
+**Goal.** Starting from known concrete Hamiltonians, assess whether object persistence, encoding and control yield comparable performance improvements.
+
+**Steps.** Use SSH, TFIM, Hubbard and small codes as four benchmarks. Solve small volumes exactly before extending them with MPS/tensor-network or other stated methods. Converge the time step, bond dimension, truncation and volume separately. Topological tasks must retain symmetry and boundary specifications; thermal tasks must retain bath and detailed-balance assumptions; error-correction tasks must retain noise correlations and decoder latency.
+
+**Objective function.** For example, given storage time $T$, control-energy cost $C[u]$ and a logical-channel error, define $J[u]=1-F_e(\mathcal N_L^u)+\lambda C[u]$. The application specifies its weights and task; no claim follows that every natural system minimizes this $J$. Check dynamical gradients independently by finite differences or an adjoint method, then compare with a baseline using the same resources.
+
+**Acceptance.** The SSH finite-chain residual satisfies Chapter 44's formula; many-body observables have a stated convergence window; control gains survive held-out noise, temperature and initial states; and logical errors are actually below the unencoded baseline. If the gain comes solely from increased resources, attribute it to those resources. Infinite-volume phase transitions, universal fault-tolerance thresholds and complete classifications of interacting topological systems remain separate problems.
+
+## 47.8 R7: QFT, gauge fixing, EFT and the infrared
+
+**Goal.** Make the field-theory modules into computational interfaces with defined quantities, orders and errors.
+
+**Steps.** Fix the action, metric, generators, gauge parameter, regulator and subtraction conditions. Extend the one-loop benchmarks in Chapters 25/28 to complete amplitudes at the same order. Verify Ward/Slavnov–Taylor identities and gauge-parameter independence of physical outputs. For soft/collinear divergences, specify inclusive observables and resolution, and display cancellation between real and virtual contributions term by term. A formal LSZ expression cannot dispose of the problem of charged asymptotic states.
+
+**EFT tasks.** Fix the operator basis and treatment of redundancies, retaining cancellation of light-field loops between the two sides of matching. Run coefficients and convert across thresholds in the same scheme. Separate loop-order errors, powers of $E/\Lambda_*$, parameter errors and input matrix-element errors. The heavy-field Schur complement in Chapter 26 is an exact algebraic test, not a convergence theorem for all EFTs.
+
+**Acceptance.** Two compatible representations give the same physical cross section; arbitrary renormalization-scale dependence remains beyond the retained order; and the optical theorem and symmetry identities hold to that accuracy. A numerical difference caused by changing schemes without rematching parameters is not new physics. Local perturbative BRST closure does not automatically solve Gribov or global-gauge problems.
+
+## 47.9 R8: Nonperturbative physics across scales
+
+**Goal.** Express unification across scales as provable consistency of the same specified observable.
+
+**First step: finite models.** Use Chapter 45's exact single-loop model to test code and normalization. Then implement finite $SU(N)$ link updates and test detailed balance, thermalization and autocorrelation, recording effective sample size and error. A correct stationary distribution without sufficient mixing does not make a sampling estimate reliable.
+
+**Second step: controlled limits.** Select a definite Euclidean observable, keeping the same physical scale across several volumes, lattice spacings and bare parameters. Separate statistical, discretization, finite-volume and parameter-tuning errors. Investigate the conditions for reflection positivity and transfer matrices; existence of a finite measure does not by itself establish a complete continuum QFT.
+
+**Third step: the Core bridge.** First prove the readout-pushforward identity for the coarse map. Intervention responses additionally require a real-time realization and operation slots. When comparing truncated effective actions, bound the influence of omitted multi-loop terms on the specified observable. A Core quotient and Wilsonian integration are not interchangeable names for one construction.
+
+**Acceptance.** Obtain checks by independent algorithms and traceable limits for the selected quantity. If no continuum limit is established, publish only the finite-lattice result. Computing a finite spectrum does not solve the four-dimensional mass gap, general chiral gauge theory or real-time analytic continuation.
+
+## 47.10 R9: Gauge groups, generations and high-energy consistency
+
+**Goal.** Treat Chapter 31's conditional three-generation theorem and Chapter 36's high-energy two-candidate classification as comparable candidates, with their distinct premises retained.
+
+**Fixed table.** Specify the global group $G$, all left-handed Weyl representations, scalars, allowed Yukawa terms, mass thresholds and gauge embeddings. Beta functions must count every field active in the relevant energy range. UV asymptotic freedom of $SU(3)_L$ is not the same as asymptotic freedom of the broken $SU(2)_L$ sector under every hypothetical high-energy extrapolation.
+
+**Route A.** With three colours fixed by independent observations, determine whether horizontal anomaly constraints reduce the independent information compared with directly assuming three generations, and derive extra-particle and flavour predictions. Three colours remain an input. A conditional result can still have research value.
+
+**Route B.** To select the colour number as well, start from an independent physical selection rule that does not use the desired $(3,3)$ answer, and ask whether it excludes $(5,5,2)$: for example, vacuum stability, realizable breaking, or a rigorous global-anomaly constraint. Compute each rule for the complete candidates. Do not add scalars or change charges simply because five colours are unwanted.
+
+**Route C.** Enlarge the representation class and investigate countermodels. Nonminimal spectra, vectorlike partners or multiple horizontal factors may change the arithmetic. The existing classification applies only to its fixed class; an enlarged class requires a new classification and cannot retain an unsupported uniqueness title.
+
+**Acceptance.** Supply local and required global anomaly certificates for the complete field table, a symmetry-breaking minimum, mass matrices and a running window, plus at least one low-energy prediction not used in selection. If every extra condition merely re-encodes known colour/generation counts, the result is a compatibility reformulation.
+
+## 47.11 R10: Flavor, masses, neutrinos and observable matching
+
+**Goal.** Turn Chapter 37's rank-one coupling restrictions into correlations between actual processes using common parameters, and seek a physically motivated reduction of Yukawa freedom.
+
+**Steps.** With specified scalars and symmetries, list every renormalizable mass term and derive mass matrices, unitary transformations and heavy–light mixing. Then derive the left-handed, right-handed and mixing couplings of $Z'$. Chapter 37 assumes a unitary light sector, common doublets and one rank-one splitting. Significant exotic mixing requires extra nonunitarity corrections; the original lower bound cannot simply be reused.
+
+**From couplings to data.** Match the $\Delta F=2$ Wilson coefficients, run them in the same operator basis to the hadronic scale, and use matrix elements with traceable sources and covariance. Fit multiple neutral-meson systems and rare decays jointly. Include other bosons, right-handed currents and cancellation regions in the competing models. A conservative total FCNC lower bound is not a positive lower bound on any one channel amplitude.
+
+**Mass route.** For a proposed geometric/family structure, first count the free parameters in the allowed Yukawa sector and compare that dimension with the observables. Arbitrary complex matrices do not predict mixing. If genuine restrictions remain, fit part of the spectrum and hold out CKM/PMNS and CP quantities. Count Dirac, Weinberg and seesaw implementations separately. The light-neutrino mass matrix alone does not uniquely determine heavy seesaw parameters.
+
+**Acceptance.** Produce at least one sum rule or held-out prediction that the remaining parameters cannot adjust arbitrarily, with complete uncertainty propagation and explicit exclusion conditions. An attractive fit point is not a proof of the origin of mass.
+
+## 47.12 R11: Global anomalies, framing and geometric indices
+
+**Goal.** Determine whether the original phase/topology ideas can yield a concrete and natural particle selection, without conflating distinct topological invariants.
+
+**Starting point.** Specify a manifold with the required tangent-bundle structure and gauge bundle, a concrete Dirac-type operator, boundary conditions and a completion theory. Distinguish the local anomaly polynomial, global phase, eta invariant, chiral index and framing response. A Betti number cannot replace an unconstructed Dirac index.
+
+**Steps.** Compute spectral flow or boundary response in a tractable low-dimensional model; construct an explicit inflow/descent map and check gluing, naturality and background transport; then feed the resulting response class into Chapter 32's arithmetic conditions. The value of $\chi$ must actually be derived, rather than setting $\chi=1$ to make three generations unique and seeking a justification afterward.
+
+**Acceptance.** Give the same completion's full calculation on generating backgrounds, prove the necessary natural map, and test whether an external theory really cannot change the object's autonomy certificate. If $\chi$ is not unique, or distinct completions produce several classes, retain the corresponding candidates. Local anomaly cancellation neither automatically excludes global anomalies nor proves that this topological route exists.
+
+## 47.13 R12: Controlled entry points for gravity and cosmology
+
+**Scope.** This book does not construct quantum gravity. A unification programme involving gravity must first add spacetime geometry dynamics and a quantum-measurement interface, rather than rename the existing Hilbert-space theory.
+
+**First entry point.** Study free fields and local detectors on a given globally hyperbolic background, specifying states, renormalized stress–energy and local observables. Compare observer-dependent particle notions through the same detector response. A nonunique particle decomposition is not by itself a contradiction.
+
+**Second entry point.** The semiclassical equation $G_{\mu\nu}+\Lambda g_{\mu\nu}=8\pi G_N\langle T_{\mu\nu}\rangle_{\rm ren}$ is an additional candidate interface, requiring counterterms, conservation and a suitable fluctuation scale. It is not a complete solution to quantum gravity and does not automatically handle nonlinear feedback after conditioning on a measurement. Coupling any stochastic actualization mechanism to geometry requires checking compatibility of the Bianchi identity with energy exchange.
+
+**Third entry point.** For a cosmological candidate, specify the background initial state, perturbations, observable transfer functions and parameter priors before claiming held-out power-spectrum predictions. Dark matter, dark energy, the cosmological constant and black-hole information each require new concrete models and criteria; they do not follow from a statement that objects exist.
+
+**Acceptance.** Establish at least one calculable, conservation-consistent background model within declared errors before extending the geometric dynamics. Without that starting point, a broad unification diagram is not part of a completed theory.
+
+## 47.14 R13: Formal proofs, code and literature responsibility
+
+Begin with finite matrices and integer classifications. Choi–Kraus structure, SRN Gram matrices, the triangle CP bound, the four-dimensional witness, rank-one FCNCs and global integer inequalities are possible formalization targets. Encode types, conjugation/transposition conventions and premises before proving theorems; random numerical testing is no substitute.
+
+Separate code into model, computation and certificate layers. The model layer rejects incompatible units or bases; computation returns approximations with errors; certificates preserve assumptions and failure states. Non-CP data may be accompanied by an explicitly labelled fitted model, while retaining the original residual. The proof registry must distinguish standard prior art from new combinations made by this project. Before submission, search for prior appearances of the exact expressions and obtain independent review.
+
+**Additional results in research edition 3.6.** Chapter 66 proves the full conditioned classical–quantum (CQ) law of the same original experimental tree, constructs spectral data for singular support, and establishes a Choi convex-hull criterion that retains the allowed action library and observation fibres. It also treats an actual initial filter, retry costs computed from the original leaf probabilities, and a sharp conditioning-error bound, while preserving both positive realization certificates and certificates of impossibility. The source, separate internal review, and execution receipts for that research revision are recorded in `physics/qm/kernel/evidence/v31.10`. No actual hardware validation has been performed.
+
+**Stage already reached in edition 3.5 (historical execution counts).** Chapters 49–62 retain finite operations, responses, representations, certificates, errors, mixture averaging, conditional survival, full complex purification, physical record memory, specified conditional dynamics, tomography of full complex states, full purity and common fixed-depth-controller budgets. Chapter 63 identifies the full-effect distance with half the trace of the matrix absolute value of the density difference, constructs a spectral effect attaining the bound, proves optimal equal-prior binary discrimination, and supplies noncircular matrix certificates. Chapter 64 proves that purification on a given ancillary carrier exists exactly when its dimension is at least the density matrix's complex rank, and constructs an actual ancillary isometry under an explicit dimension ordering. Chapter 65 constructs an absorbing completion of a finite stopping tree, proves isometric recovery of the joint state at the original leaves, and gives a per-action budget weighted by the reference realization's unstopped mass. At that stage, the main package contained 41 modules, 854 explicit theorems and 1123 unique named axiom-audit targets. The three new witness groups were actually executed in the recorded kernel revision. The ten unchanged older witness groups, six certificates, 100 runtime methods and four demonstrations reuse genuine earlier gates on the basis of file identities and dependency-closure identities. The 757 checks from the three monograph programs retain their edition-3.0 execution identity. None of these counts denotes new physical laws or experiments.
+
+**Next verifiable obligations.** Finite quantum properties continue to assume complete complex matrices, valid effects, finite dimension and the stated control processes. Quantum selection requires checking the candidate class and all background premises of the reconstruction theorem, and independently explaining why a UEOT physical realization satisfies the selection principles. A trace-distance expression is not a general effective numerical algorithm. Arbitrary priors, stabilized or diamond distances, coherent controllers, arbitrary external memory and unbounded stopping times require new contracts. Dynamical work should pursue checkable finite contraction or primitivity conditions, existence of general positive spectral objects and infinite conditioned processes. Exact program refinement, actual QDRR data, complete spectra and thresholds, and continuous-variable energy bridges each have separate acceptance gates.
+
+Real hardware data require their own source and raw-count labels; synthetic outputs cannot be relabelled as empirical evidence. A declaration receives a FORMAL label only after its proof script actually succeeds and its input identity and domain are explicit.
+
+## 47.15 Common completion criteria and conditions for stopping a research direction
+
+Every completed work package should provide a problem definition, dependencies, model/parameters, proof or counterexample, algorithm and error, observable contract, independent verification, and uncovered domains. Integrate new results into the same monograph and update their dependencies instead of producing several incomplete documents each called final.
+
+Stop a direction and record the reason if it only adds untestable assumptions, feeds data back into selection premises, or repeatedly fits without fixing a model. Retain counterexamples that defeat the original conjecture and weaken the conclusion accordingly. Progress toward a unified theory includes rigorously ruling out incorrect routes, not only obtaining desired numbers.
+
+## 47.16 The dependency ledger toward a complete physical theory
+
+The overarching project goal is a complete quantum physical theory based on UEOT. To make progress assessable, this edition tracks four separate levels: mathematical definitions and logical closure; the ability to select physical realizations; composable prediction across models and scales; and independent experimental constraints. Progress at one level does not replace progress at another.
+
+| Current interface | Substantive results obtained | Remaining obligations | Next outcome that can succeed or fail |
+|---|---|---|---|
+| Core → quantum sector | Separation of three models; tomography of full complex states, full purity, ancillary unitaries and minimum dimension, full-effect trace distance | Independent origin of selection principles, all reconstruction backgrounds, and alternative candidate models | Check reconstruction premises within an explicit candidate class; provide a testable UEOT physical bridge |
+| Quantum sector → kernel | Valid operations, all words and finite representations, certificate soundness | General runtime refinement, continuous domains and infinite protocols | A general refinement theorem and error bound for the same input |
+| Kernel → persistence and error | Physical record memory, unstopped-weight budget under a common finite stopping rule, exact convergence of specified conditional states | Coherent or unbounded stopping, external environments, general positive spectral objects and mixing | Prove the control and distance contracts required by broader quantifiers; check general sufficient dynamical conditions |
+| Known QFT → independent physical selection | Actions, QED/EFT derivations, anomalies and candidate spectra | Gauge group, observed spectrum, masses, vacuum and thresholds | One prediction sharing parameters in a complete fixed model, not used for fitting |
+| Candidate → nature | Witnesses, calibration and sequential statistical procedures | Actual raw data and constraints on competing models | An auditable experimental conclusion that can reject the candidate |
+
+Acceptance in this ledger consists of a concrete proposition or counterexample, not an adjective implying proximity to ultimate truth. New derivations return to their appropriate chapters, with countermodels and applicability conditions preserved. Evidence closes open entries, and failed directions retain traceable reasons.
+
+<a id="ch-48"></a>
+
+# 48. The integrated monograph, status interfaces, and continuing maintenance
+
+A maintainable monograph must keep its text, stable IDs, sources, and verification status aligned. This chapter specifies how those interfaces are updated and explains why inserting physical selection conditions into generic Core would make the claimed derivation circular.
+
+## 48.1 One canonical theoretical source
+
+The book's fixed title is *UEOT Physics*, its stable document identity is `UEOT-PHYSICS`, and its current bilingual revision is 3.7. The canonical text is `physics/qm/book/UEOT_PHYSICS.md`; the Chinese PDF is generated from that text. The complete English counterpart is `UEOT_PHYSICS.en.md`, and its PDF is compiled from that English source. Chapters 0–66 and appendices A–F form one continuous, complete document. All earlier physical topics are retained, and new proofs are integrated into the corresponding arguments. Readers should not have to reconstruct a proof from several old versions.
+
+Version reports, PRs, logs and mathematical modules each retain their own identity, without competing with the monograph as the authoritative theoretical text. The source manifest, chapter dossiers and evidence receipts record the basis of a statement and the part actually checked. Historical files preserve provenance. Their old statuses do not override a more recent verified kernel, and a new kernel does not retroactively confer machine proof on earlier unformalized physical propositions.
+
+## 48.2 Three independent status axes
+
+The text's argument-status axis remains D/P/K/H/S/E/N/O: definition, handwritten proposition/derivation, substantial external theorem, additional hypothesis, interpretation, empirical input, negative result, and open problem. It answers what the passage is doing. Physical dependencies use the repository contract C/B/S/P/E/O/X: Core result, domain bridge, sector selection, standard-physics input, effective-model assumption, observable consequence, and open scientific conjecture. This axis records the dependence and physical role of a conclusion. An observable consequence labelled O does not by itself indicate existing experimental data. The two alphabets have different meanings at P, S, E, O and other shared letters; the field name must accompany a label.
+
+Edition 3.1 explicitly corrected edition 3.0's conflicting use of E for empirical, O for open and X for counterexample in the dependency field, preserving the migration reason in the chapter dossiers. Empirical sources continue to be recorded through argument status and data identity. A counterexample has argument status N and must not be migrated to an open conjecture X. A standard mathematical result not yet formalized by this project is a development obligation; that alone does not make it X. The upstream contract was not rewritten, and the label correction neither added nor revoked a mathematical theorem.
+
+The third axis, `verification_kind`, records analytical derivation, exact arithmetic, synthetic numerics, Lean checking or actual experiment. A handwritten theorem with argument status P is not thereby Lean-checked; a formalized conclusion supported by standard-physics input P is not thereby an unconditional Core theorem. Statement, domain and checking evidence must be retrieved together.
+
+~~~yaml
+document:
+  id: UEOT-PHYSICS
+  edition: "3.7"
+  canonical_source: physics/qm/book/UEOT_PHYSICS.md
+  derivative_pdf: physics/qm/book/UEOT_PHYSICS.pdf
+  english_source: physics/qm/book/UEOT_PHYSICS.en.md
+  english_pdf: physics/qm/book/UEOT_PHYSICS.en.pdf
+  chapter_range: [0, 66]
+  fundamental_unique_derivation_complete: false
+  four_dimensional_nonperturbative_qft_complete: false
+  quantum_gravity_complete: false
+  new_experimental_data_in_this_edition: false
+  formal_proof_assistant_used_for_listed_kernel_claims: true
+claim_schema:
+  required:
+    - id
+    - argument_status
+    - dependency_class
+    - statement_and_hypotheses
+    - domain_units_protocol
+    - proof_or_primary_source
+    - countermodels_and_exclusions
+    - verification_kind_and_receipt
+  argument_status: [D, P, K, H, S, E, N, O]
+  dependency_class: [C, B, S, P, E, O, X]
+  verification_kind: [analytic, exact_arithmetic, synthetic, lean, experiment]
+maintenance:
+  preserve_existing_result_ids: true
+  update_affected_chapters_and_dossier: true
+  bind_verification_to_actual_source_hashes: true
+  require_separate_evidence_for_stronger_scope: true
+~~~
+
+This schema organizes the document and its evidence; a full research knowledge graph still requires item-by-item development. Counts use their actual counting units. Multiple parameter points within a test are not multiple universal physical theorems.
+
+## 48.3 High-risk conclusions must carry their premises
+
+| Retrievable conclusion | Conditions that must accompany it |
+|---|---|
+| Conditional uniqueness of three generations and three colours | All spectral and low-energy weak-window assumptions in Chapter 31; the five-colour counterexample from the correct high-energy calculation in Chapter 36 |
+| Born-weight absorption | Finite spectrum, specified SSE and QND condition; degeneracy permits selection only of an eigensubspace |
+| Nonzero cycle phase | Excludes a specific diagonal Gaussian diffusion class; broader classical jumps can still explain it |
+| Four-level witness | Fixed pointers, SRN and calibration; excludes classical diagonal random phases, not quantum environments |
+| 188 zero-event trials | Ideal event lower bound, fixed sample or valid supermartingale; actual calibration can increase the required sample size |
+| Finite coordinates cover every future | Actual generating words and all local pullback identities; fixed allowed library and context |
+| Channel-error accumulation | Complete Kraus operators, common carrier and actual defect bounds; general memory/ancillary-system contracts need separate proofs |
+| Bounded posterior error | Positive conditioning events on both sides and explicit lower bounds; rare events may make the bound uninformative |
+| Existence of a lattice model | The specified finite Euclidean gauge model; continuum limits and the four-dimensional mass gap remain separate |
+| Existence of a formalized kernel | Source, toolchain and actual audit for the listed theorems and instances; not machine proof of the entire physical theory |
+
+## 48.4 Review, revision and feedback to Core
+
+Before each change, identify the proposition and its affected domain. Is the edit correcting an error, adding an omitted premise, or proving a stronger result? A correction should retain the defect in the earlier wording and a minimal counterexample. An extension should supply its new proof and the affected downstream chapters. Check the complete text, build scripts and evidence locally before the necessary coordinated submission and remote acceptance.
+
+The revisions recorded here add a branchwise intertwining condition and counterexample to the former §5.3; distinguish the writing isometry from the full unitary in Chapter 8; repair parameter decompositions and restore the vertex UV derivation in Chapters 24 and 27; specify the full cq channel in Chapter 35; and correct the norm and degeneracy labels in Chapter 40. Together with the additions of Chapters 49–50, these are substantive theoretical improvements: eliminating invalid inferences makes the kernel more reliable.
+
+Results suitable for feedback to the general mathematical Core should first be abstracted as general theorems whose premises do not presuppose the desired physical outcome—for example, theorems about response factors, valid recursion, error composition, persistence events or nonidentifiability. Complex Hilbert structure, Born probabilities, particular gauge groups, the action scale and mass spectra are domain inputs. Inserting them into object-mathematical axioms does not yield an unconditional derivation of the target. Changes to the frozen Core continue through its governance process; the developments recorded here concern QM-domain implementation and integration into the monograph.
+
+<a id="ch-49"></a>
+
+# 49. The verified finite quantum kernel of UEOT-QM
+
+The finite quantum kernel begins here: matrices generate record probabilities, states may agree on every allowed future, and finite coordinates can preserve all finite-word responses. Formal proofs establish universal statements and exact certificates check specified instances; both presuppose the chosen complex quantum realization.
+
+## 49.1 The scientific role of the kernel
+
+This chapter connects the object and quantum-operation framework of Chapters 1, 4, 5, and 33 to mathematical implementations that have actually been checked. The kernel consists of finite quantum structures with shared types, dependencies, and composable theorems. Valid states and operations generate record probabilities; all future records determine a response object relative to a protocol library; finite representation certificates make that object computable; positive-probability posterior updates remain within the space of realizable representations; and complete finite adaptive trees preserve normalization. Chapter 50 develops error contracts for these quantum objects.
+
+The construction implements a central UEOT method: specify the allowed interventions and future targets before asking which distinctions can affect future responses. It neither identifies a physical object in advance with a particular kind of particle nor identifies equal response coordinates with identical microscopic states. Its physical inputs are finite complex Hilbert spaces, density operators, Kraus operations, and the Born pairing. These belong to the quantum sector and its standard physical realization. The reconstruction framework and additional principles in Chapter 2 bear the separate responsibility of selecting that sector.
+
+The formal source is in `formalization/ueot-qm`; executable rational models and exporters are in `physics/qm/kernel`. The book supplies a continuous theoretical account, while the code and itemized logs provide inspectable proof artifacts for the corresponding propositions. These physical realizations do not alter the frozen mathematics or counts of Core v3.
+
+## 49.2 Matrices, records, and the response quotient
+
+Fix a finite index set $\iota$ and write $\mathcal H=\mathbb C^{\iota}$. A state is a matrix satisfying $\rho\succeq0$ and $\operatorname{Tr}\rho=1$. For an allowed action $a$, a complete instrument supplies a finite family $K_{aok}$ satisfying
+$$
+\sum_{o,k}K_{aok}^{\dagger}K_{aok}=I,
+\qquad \Phi_{a,o}(X)=\sum_kK_{aok}XK_{aok}^{\dagger}.
+$$
+The validity fields of `Density` and `Instrument` state these local mathematical conditions. They do not assume in advance that every future response is correct. Positivity of each branch follows from $X\succeq0\Rightarrow KXK^\dagger\succeq0$ and finite addition; preservation of total trace follows from cyclicity of the trace and completeness. In particular,
+$$
+p_{a,o}(\rho)=\operatorname{Tr}\Phi_{a,o}(\rho)\ge0,
+\qquad \sum_op_{a,o}(\rho)=1.
+$$
+
+A word $w=((a_1,o_1),\ldots,(a_n,o_n))$ records operations in their actual temporal order. Define
+$$
+R_\rho(\varnothing)=1,\qquad
+R_\rho(w)=\operatorname{Tr}\bigl[\Phi_{a_n,o_n}\circ\cdots\circ\Phi_{a_1,o_1}(\rho)\bigr].
+$$
+Once the protocol library is fixed, $\rho\sim\sigma$ means that $R_\rho(w)=R_\sigma(w)$ for **every finite word**. This quantifier is not restricted to the finite depths listed in a certificate. For a target factor $S$, if $S(\rho)=S(\sigma)$ implies equality of responses, the response function factors uniquely through the reachable image of $S$. Arbitrary extensions to unreachable elements are outside the uniqueness claim. This is the quantum instance of protocol-relative sufficiency developed in Chapter 1.
+
+<a id="p-qkr-01"></a>
+
+**P-QKR-01 (Posterior closure of the response object).** For the same action and outcome, suppose the probability is $p>0$. The actual posterior is $\rho_{a,o}=\Phi_{a,o}(\rho)/p$, and
+$$
+R_{\rho_{a,o}}(w)=\frac{R_\rho((a,o)::w)}{R_\rho([(a,o)])}.
+$$
+Thus response-equivalent states assign the same probability to a branch, and their posteriors remain response-equivalent on every positive-probability branch. The update is determined by the response class itself and remains in the response image of an actual density operator.
+
+**Proof.** The branch map and all subsequent operations are linear. Pulling the scalar $1/p$ out of the composition and trace gives the formula. Both numerator and denominator are determined by the current response function, so changing the representative state within a response class leaves the posterior response unchanged. The posterior matrix is positive semidefinite and has trace one, hence the updated response is realizable. If the branch probability is zero, positivity and zero trace imply that the branch matrix is zero. No normalized posterior then exists, and the interface returns `none`. ∎
+
+The Lean results include `response_posterior`, `posterior_response_eq`, `nextResponse_eq_none_iff`, and `existsUnique_closedReachableUpdate`. They establish more than the existence of a set-theoretic quotient: the actual update is independent of the chosen representative and preserves the realizable domain.
+
+## 49.3 Finite generating spaces and coordinates for all words
+
+Define the Heisenberg pullback and word effects by
+$$
+\Phi_{a,o}^*(E)=\sum_kK_{aok}^{\dagger}EK_{aok},\qquad
+E_{\varnothing}=I,\quad E_{(a,o)::w}=\Phi_{a,o}^*(E_w).
+$$
+Repeated use of trace cyclicity gives $R_\rho(w)=\operatorname{Re}\operatorname{Tr}(E_w\rho)$. Every word effect is Hermitian. Let
+$$
+W=\operatorname{span}_{\mathbb R}\{E_w:w\text{ is a finite word}\}.
+$$
+This is the smallest real subspace containing $I$ and closed under every allowed branch pullback. Containment of the identity and closure put every word effect in the subspace by induction; conversely, the linear span of word effects is closed under pullback. Finite dimensionality of the matrix space guarantees that $W$ has a finite generating family consisting of actual word effects.
+
+<a id="p-qkr-02"></a>
+
+**P-QKR-02 (A local finite representation determines every future response).** Choose a finite generating family $B_j=E_{w_j}$ with $B_u=I$. Suppose every branch satisfies the matrix identity
+$$
+\Phi_{a,o}^*(B_j)=\sum_i A_{a,o;ji}B_i,
+$$
+Define $x_j(\rho)=\operatorname{Re}\operatorname{Tr}(B_j\rho)$. Then
+$$
+x(\rho)=x(\sigma)\ \Longleftrightarrow\ R_\rho=R_\sigma.
+$$
+The unnormalized branch coordinates are $y=A_{a,o}x$, with probability $p=y_u$. When $p>0$, the posterior coordinates are $y/p$ and belong to the reachable image of coordinates of actual states.
+
+**Proof.** The generating words ensure that every $B_j$ belongs to $W$. The identity and local closure ensure that every word effect belongs to $\operatorname{span}\{B_j\}$, so the two spaces coincide. Equal coordinates therefore give equal pairings with every word effect. The converse follows by reading the responses to the generating words. Pairing the pullback identity with $\rho$ gives the branch-coordinate formula. The posterior formula follows from the actual normalization in P-QKR-01. ∎
+
+Here row $j$ of the coefficient matrix expands the pullback of effect $j$, so the update is $Ax$. Changing the row/column convention requires corresponding changes to the certificate, interpreter, and proof. Lean's `FiniteObservablePresentation` permits redundant generating families; it does not require an unproved claim that the supplied basis is minimal. The exact Gram independence check in Python provides additional information, but the search and elimination procedure has no general Lean refinement proof.
+
+In a standard $d$-dimensional Hilbert space, diagonal matrix units together with the real and imaginary Hermitian units for each off-diagonal pair form a real basis of size $d+2\binom d2=d^2$. Ordinary linear algebra therefore gives $\dim_{\mathbb R}W\le d^2$. The present Lean interface proves finite dimensionality and the existence of finitely many generating words; this specific dimension count and termination of the Python search are not included in its machine-checked scope.
+
+A qubit illustrates the meaning of protocol relativity. With only a Z-projective readout, $W=\operatorname{span}\{I,Z\}$. Adding a Hadamard operation provides the X direction; adding the phase gate S also provides the Y direction, giving four real coordinates for the full Hermitian response space. The same two-level carrier thus has different predictive representations under different access libraries. Fewer response coordinates do not by themselves supply a realization in a smaller Hilbert space, fewer physical controls, or a lower information cost.
+
+## 49.4 The complete record law of a finite adaptive protocol
+
+An allowed finite deterministic adaptive protocol is a finite tree that selects an action at every nonterminal node and supplies a continuation subtree for **every outcome** of that action. The tree may be unbalanced: different paths need not have the same length. Branch choices depend only on records already obtained. A leaf probability is the trace after composing the branch maps along its path.
+
+<a id="p-qkr-03"></a>
+
+**P-QKR-03 (All-word coordinates determine a complete finite adaptive tree).** For the same protocol described above, leaf probabilities are nonnegative and sum to one. If the initial states have equal responses to all words, or equal coordinates as in P-QKR-02, every corresponding leaf has equal probability.
+
+**Proof.** At a leaf, the leaf mass is the trace of the current positive matrix. At an internal node, apply the induction hypothesis separately to each outcome and then sum using the total-trace identity of the complete instrument. The result is the incoming mass. For a density operator, the mass at the root is one. Every leaf corresponds to a unique finite path word, and its probability equals the response to that word. Equal responses therefore give equal probabilities for all corresponding leaves. ∎
+
+`Adaptive.lean` formalizes this induction, injectivity of leaf words, and the coordinate representation of the leaf law. Deleting unfavourable leaves, changing the stopping rule after observing the data, or retaining only surviving outcomes changes this normalization contract. A new conditional protocol must specify its event probability and postselection error. Termination and limits for an infinite stopping time require separate proofs. The statistical supermartingales of Chapter 46 address a different conditional sampling problem; the shared word “adaptive” does not make the theorems interchangeable.
+
+## 49.5 Rational weights and variable finite index sets
+
+The exact program stores $q_{aok}\in\mathbb Q_{\ge0}$ and $M_{aok}\in M_d(\mathbb Q[i])$ and defines branches by
+$$
+\Phi_{a,o}(X)=\sum_kq_{aok}M_{aok}XM_{aok}^{\dagger}
+$$
+Take the complex matrices $K_{aok}=\sqrt{q_{aok}}M_{aok}$. Termwise multiplication proves $KXK^\dagger=qMXM^\dagger$, with corresponding identities for pullback and completeness. Existence of the square root is established over the reals; the numerical certificate does not approximate it. For example, an integer Hadamard matrix with weight $1/2$ represents the standard Hadamard channel exactly.
+
+Different outcomes may have different numbers of Kraus terms, and different actions may have different numbers of outcomes. `RaggedInstrument` first allows an outcome-dependent finite type of terms, then pads with zeros along an explicit injection into a common type. Reindexing the finite sums along that injection preserves each branch, its pullback, and Gram completeness, because the added terms vanish. Padding outcomes likewise adds only zero-probability outcomes. The theorem requires an actual injection and a specified zero extension. Vague compatibility of array lengths is insufficient, and out-of-range word indices are not repaired by taking them modulo an array length.
+
+## 49.6 Mathematical soundness of the computable checker
+
+A complex rational matrix is represented as $A+iB$, with multiplication $(AC-BD)+i(AD+BC)$ and conjugate transpose $A^T-iB^T$. `Exact.MatrixData.toMatrix` interprets the data as a complex matrix. Its injectivity and preservation of these algebraic operations, finite sums, and rational real scaling are proved.
+
+A numerical certificate $D$ stores Kraus weights and matrices, generating words $w_j$, basis matrices $B_j$, an identity index $u$, and local coefficients $A_{a,o;ji}$. The independent Lean checker verifies only five finite conditions: nonnegative weights; completeness of each action; an empty identity word; equality of each basis matrix to its actual word effect; and equality of every local pullback to the supplied finite expansion. It contains no assumption field asserting correctness of predictions for all futures.
+
+<a id="p-qkr-04"></a>
+
+**P-QKR-04 (Soundness of an exact certificate).** If the actual computable check returns $\operatorname{check}(D)=\mathrm{true}$, the interpreted complex matrices form a valid instrument and a finite observable presentation. The response, posterior-closure, and complete finite-tree conclusions of P-QKR-01 through P-QKR-03 then hold.
+
+**Proof.** `check_sound` converts Boolean truth into the five finite mathematical conditions. The algebraic interpretation turns them into identities of complex matrices. Recursion on words proves that interpretation preserves actual word effects, binding the numerical generating words to the actual basis. Apply the local closure theorem P-QKR-02 and then P-QKR-03. ∎
+
+The six checked instances are Z, H+Z, H+S+Z, a ragged example with variable outcome and Kraus counts, a complex example with $d=1$, and a coarse-projection example with $d=4$. They cover rational weights, nonzero imaginary entries, zero-probability outcomes, and response spaces of less than full dimension. Lean's kernel accepted the `checked` declaration for each data set, after which the all-word and tree consequences were derived. Four classes of post-export corruption were also examined: weights, numerical basis matrices, local pullback coefficients, and word order. Each class required both rejection of the original true-value proof and successful proof of a false checker value for **the same corrupted data**. This guards against spurious negative controls caused by import or resource failures.
+
+These are a soundness theorem for a mathematical checker and acceptance records for concrete numerical instances. All behaviours of the Python implementation, JSON parser, search procedure, and output format have not been jointly formalized. Acceptance of six instances cannot establish that stronger claim. Chapter 33 distinguishes implemented interfaces from future interfaces in the specification.
+
+## 49.7 Connections to generation spectra and other physical layers
+
+`Spectrum.lean` sums explicitly specified finite family rows and additional matter rows under effective-window assumptions. A homogeneous lepton template, a nonzero anomaly unit, and conditions on compensating terms imply the selector's cubic equation; nonnegative additional screening contributions enter the weak-sector budget. `Selector.lean` then proves conditional uniqueness of $(N_c,N_f,k)=(3,3,1)$ under the complete integer premises. This goes beyond finding one triple in a bounded search box, but the premises have not been derived unconditionally from physical representation theory, thresholds, and a vacuum mechanism.
+
+The distinction between Chapters 31 and 36 remains essential. Conditional uniqueness under a low-energy effective weak-sector budget does not exclude the five-colour candidate under the appropriate high-energy $SU(3)_L$ assumptions. The kernel does not silently remove that independent high-energy candidate from the model class or identify a topological index with three generations. The physical selection of masses, mixing, global anomalies, and the observed particle spectrum remains the responsibility of the relevant chapters.
+
+Continuous variables, general process tensors, relativistic quantum fields, and the stochastic actualization model of Chapter 40 retain their own analytic derivations and domain assumptions. The finite matrix kernel can check controlled finite models within those settings. Passing from a finite truncation to unbounded operators, infinite volume, or a continuum limit requires the corresponding error and existence theorems.
+
+<a id="ch-50"></a>
+
+# 50. From Born probabilities to quantum error propagation
+
+An error can be composed along dynamics only after the compared objects and metric are specified. Born probabilities for all valid effects yield channel contraction and trajectory budgets, while rare events explain why normalized posteriors need not contract; Chapters 60 and 63 complete separation and trace-distance identification.
+
+## 50.1 All effects and bounds on probabilities
+
+This chapter establishes a specific mathematical part of the QMU-04 programme: for complete Kraus channels on a common finite quantum carrier, it constructs an observable probability distance from the matrices themselves, then proves one-step contraction, model-defect bounds, trajectory estimates, and postselection bounds for positive-probability events. The quantities are defined from quantum objects; contraction is proved rather than supplied as a certificate field.
+
+An effect $E$ is a matrix satisfying $E\succeq0$ and $I-E\succeq0$. Write
+$$
+P_E(\rho)=\operatorname{Re}\operatorname{Tr}(E\rho).
+$$
+This is the actual definition of `Effect`, covering the entire matrix-order interval $[0,I]$.
+
+<a id="p-qst-01"></a>
+
+**P-QST-01 (Positive pairing and effect bounds).** For every $X\succeq0$ and effect $E$,
+$$
+0\le\operatorname{Re}\operatorname{Tr}(EX)\le\operatorname{Tr}X.
+$$
+In particular, $0\le P_E(\rho)\le1$, and $P_{I-E}(\rho)=1-P_E(\rho)$.
+
+**Proof.** Positivity of a finite complex matrix gives a factorization $E=B^\dagger B$. Trace cyclicity yields $\operatorname{Tr}(EX)=\operatorname{Tr}(BXB^\dagger)$. The right-hand side is the trace of a positive semidefinite matrix and is therefore nonnegative. Apply the same argument to $I-E$ and expand the linear pairing to obtain the upper bound. For a density operator, use trace one. ∎
+
+In Lean, `pairing_nonneg` obtains $B$ from the existing PSD predicate through Mathlib's matrix-order factorization. The user need not supply a separate Gram factor. `Effect.probability_nonneg`, `probability_le_one`, and `probability_complement` consequently apply to any valid density operator.
+
+## 50.2 Outcome-dependent pullbacks and all finite records
+
+For a complete instrument and a continuation effect $E_o$ for each outcome, define
+$$
+F=\sum_o\Phi_o^*(E_o)=\sum_{o,k}K_{ok}^{\dagger}E_oK_{ok}.
+$$
+
+<a id="p-qst-02"></a>
+
+**P-QST-02 (Complete pullback of continuation effects).** $F$ is an effect, and
+$$
+\operatorname{Re}\operatorname{Tr}(FX)
+=\sum_o\operatorname{Re}\operatorname{Tr}(E_o\Phi_o(X)).
+$$
+
+**Proof.** Every summand is positive semidefinite, so $F\succeq0$. Completeness gives
+$$
+I-F=\sum_{o,k}K_{ok}^{\dagger}(I-E_o)K_{ok}\succeq0.
+$$
+The pairing identity follows term by term from trace cyclicity. ∎
+
+Setting all $E_o=E$ gives the effect pullback for the complete channel $\Phi=\sum_o\Phi_o$ that forgets the outcome. Taking $E$ at one selected outcome and zero at the others gives the branch effect $\Phi_o^*(E)\in[0,I]$. Starting from $E_\varnothing=I$ and applying this branch result recursively proves that every word effect $E_w$ is PSD and that $I-E_w$ is also PSD. Every finite-word response is therefore an actual effect probability, automatically in $[0,1]$.
+
+The corresponding interfaces are `Instrument.pullbackEffects`, `branchEffect`, `recordTest`, and `recordEffect_complement_posSemidef`. They connect all-word responses to the distance construction. The result allows outcome-dependent continuation effects. A proof only for the total channel, with outcome labels discarded, would not establish this stronger interface.
+
+## 50.3 The all-effect response distance and its scope
+
+Define
+$$
+d_E(\rho,\sigma)=\sup_{0\preceq E\preceq I}|P_E(\rho)-P_E(\sigma)|.
+$$
+The zero effect makes the set nonempty, and P-QST-01 bounds it. This is a supremum over all effects. Neither finitely many tomographic measurements nor a training or test set is substituted for that supremum.
+
+<a id="p-qst-03"></a>
+
+**P-QST-03 (Basic contract for the observable distance).** The distance satisfies $0\le d_E\le1$, symmetry, $d_E(\rho,\rho)=0$, and the triangle inequality. Moreover,
+$$
+d_E(\rho,\sigma)=0
+\iff \forall E\in[0,I],\ P_E(\rho)=P_E(\sigma).
+$$
+Every finite record in any allowed library satisfies
+$$
+|R_\rho(w)-R_\sigma(w)|\le d_E(\rho,\sigma).
+$$
+
+**Proof.** Every absolute probability difference lies in $[0,1]$ and obeys the ordinary triangle inequality. Apply it effect by effect and take suprema to obtain the basic bounds, symmetry, and triangle inequality. The supremum is zero exactly when all the nonnegative probability differences vanish. For the record bound, use $E_w\in[0,I]$ from P-QST-02. ∎
+
+The standard spectral argument in Chapter 4 identifies $d_E=\tfrac12\|\rho-\sigma\|_1$ in finite dimensions. The positive spectral projector of the difference attains its positive mass, and zero trace makes the positive and negative masses equal. The interface originally introduced in this chapter stopped at the probability pseudometric contract above. Chapter 60 subsequently proved that zero distance is equivalent to equality of density operators, and Chapter 63 proved the half-trace-absolute-value formula and constructed an optimal effect. Registration as a Lean `MetricSpace` instance is a separate implementation question. A restricted access library may still fail to distinguish different density operators; its protocol-relative space must not be confused with the set of all effects.
+
+## 50.4 Channel contraction and model defects
+
+<a id="p-qst-04"></a>
+
+**P-QST-04 (One-step stability of a complete Kraus channel).** The channel $\Phi$ defined by a complete instrument satisfies
+$$
+d_E(\Phi(\rho),\Phi(\sigma))\le d_E(\rho,\sigma).
+$$
+For any two state maps on the same carrier, define the worst output discrepancy by
+$$
+\Delta_E(\Phi,\Psi)=\sup\bigl(\{0\}\cup
+\{d_E(\Phi(\tau),\Psi(\tau)):\tau\text{ is a density operator}\}\bigr).
+$$
+If $\Phi,\Psi$ are complete channels as above, then
+$$
+d_E(\Phi(\rho),\Psi(\sigma))
+\le d_E(\rho,\sigma)+\Delta_E(\Phi,\Psi).
+$$
+
+**Proof.** Pullback by $\Phi^*$ sends every output effect to an input effect and preserves the Born pairing. Each output probability difference is therefore bounded by the input $d_E$; taking the supremum proves contraction. Insert the intermediate state $\Phi(\sigma)$ and apply the triangle inequality, contraction, and the upper-bound property of $\Delta_E$. Including zero in the defining set makes it nonempty even when the density type is empty. It does not change the value for an ordinary positive-dimensional physical system. ∎
+
+`channelState_effectDistance_le` and `channelState_perturbation_bound` prove these relations between the actual objects. $\Delta_E$ is a noncomputable supremum, not an implemented efficient error estimator. Chapter 51 gives a rational upper bound in the specific model of randomization over a common library. Any numerical upper bound $\widehat\Delta$ supplied at runtime still requires an independent proof that it covers $\Delta_E$. A maximum over finitely sampled inputs gives only a lower bound on the worst-case discrepancy; it cannot be used as a certified upper bound.
+
+## 50.5 Connecting the one-step quantum theorem to Core transport certificates
+
+Given two sequences of complete channels $\Phi_j,\Psi_j$, define them in their actual temporal order by
+$$
+\rho_{j+1}=\Phi_j(\rho_j),\qquad
+\sigma_{j+1}=\Psi_j(\sigma_j),\qquad
+\delta_j=\Delta_E(\Phi_j,\Psi_j).
+$$
+
+<a id="p-qst-05"></a>
+
+**P-QST-05 (Composable error for quantum trajectories).** For every finite $n$,
+$$
+d_E(\rho_n,\sigma_n)
+\le d_E(\rho_0,\sigma_0)+\sum_{j=0}^{n-1}\delta_j.
+$$
+For every finite word $w$ in the same future instrument library,
+$$
+|R_{\rho_n}(w)-R_{\sigma_n}(w)|
+\le d_E(\rho_0,\sigma_0)+\sum_{j=0}^{n-1}\delta_j.
+$$
+Since a probability difference cannot exceed one, the bound may be capped at one in applications.
+
+**Proof.** Set $e_j=d_E(\rho_j,\sigma_j)$. P-QST-04 gives the recurrence $e_{j+1}\le e_j+\delta_j$, with nonnegative probability distance and defect. Apply the existing `Transport.scalar_transport_certificate` as the case $L_j=1$ to obtain its recursive budget bound. Induction on $n$ identifies that budget with $e_0+\sum_{j<n}\delta_j$. Apply P-QST-03 for the second inequality. ∎
+
+The substantive step is that the recurrence follows from the definition of Kraus channels: the caller no longer has to supply the one-step quantum inequality that is to be proved. The Core composition theorem is unchanged; its quantum premises are discharged. The Lean declarations are `channelTrajectory_transport_certificate`, `channelTrajectory_effectDistance_le_sum`, and `channelTrajectory_response_sub_le_sum`.
+
+This formal trajectory contract uses a common finite carrier. The two sequences may have different outcome and Kraus index types, but the types are fixed within each sequence; the matrices may change from step to step. Changing index sets can be handled by explicit zero-padding into a common finite type and the preservation theorem of Section 49.5. The contract does not include a supremum over inputs entangled with arbitrary external ancillary systems, so it is not a diamond-distance theorem. General adaptive instrument errors require explicitly retained classical histories, outcomes, and quantum memories, followed by construction of a common complete channel. Section 35.2 gives the corresponding analytic assembly contract; Chapters 58, 62, and 65 formalize the stated finite cases. Comparing only channels with their outcomes discarded can miss label information used by a controller.
+
+## 50.6 Conditioning on positive events and rare branches
+
+For the same instrument and outcome $o$, suppose $p=p_o(\rho)>0$ and $q=p_o(\sigma)>0$, with posteriors $\rho_o,\sigma_o$.
+
+<a id="p-qst-06"></a>
+
+**P-QST-06 (Postselection error and preservation of positive support).** We have
+$$
+|p-q|\le d_E(\rho,\sigma),\qquad
+d_E(\rho_o,\sigma_o)\le \frac{2d_E(\rho,\sigma)}{p}.
+$$
+If $p\ge\eta>0$, the right-hand side can be replaced by $2d_E(\rho,\sigma)/\eta$. If $d_E(\rho,\sigma)<p$ is known, then $q>0$, so the approximate model also has a valid posterior.
+
+**Proof.** For an output effect $E$, write $a=P_{\Phi_o^*(E)}(\rho)$ and $b=P_{\Phi_o^*(E)}(\sigma)$. P-QST-02 makes the pullback an effect, so $|a-b|\le d_E(\rho,\sigma)$. Taking $E=I$ gives the bound on $|p-q|$. The posterior pairings are $a/p,b/q$, with $0\le b/q\le1$. The identity
+$$
+\frac ap-\frac bq=
+\frac{a-b+(q-p)(b/q)}p
+$$
+and the triangle inequality give
+$$
+\left|\frac ap-\frac bq\right|
+\le\frac{|a-b|+|p-q|}{p}.
+$$
+Substitute the bounds for each effect and take the supremum. A lower bound on the probability controls the denominator; $q\ge p-d_E>0$ preserves positive support. ∎
+
+This is not a contraction theorem for selective normalization, and no optimality claim is made for the constant two. The estimate in Chapter 4, based on the trace norm of subnormalized operators, uses a different input-error definition. The estimates are not interchangeable merely because their numerators look similar. If a branch has probability zero in one model, its posterior remains undefined; assigning an arbitrary state would not continue the proof legitimately.
+
+Consider a purely illustrative application of the contract. Suppose independent certificates give initial error $10^{-3}$ and a defect bound $2\times10^{-4}$ at each of twenty steps. The final error is at most $0.005$. Postselecting an event with probability at least $0.2$ gives posterior-error bound $0.05$. If the event probability in the first model is guaranteed only to be $10^{-3}$, the error bound $0.005$ no longer guarantees a positive probability in the second model, whose posterior may therefore be undefined. The conditioning theorem applies only after positivity in both models is separately established. A bound greater than one is merely trivial and indicates that the certificate is inadequate for this rare-event task. These numbers illustrate the contract; they are neither measurements nor performance claims for an existing device.
+
+## 50.7 Proof, execution, and physical claims
+
+The first layer of this chapter consists of analytic propositions and their Lean counterparts. The second consists of actual builds, axiom checks, and compatibility checks for certificates under a pinned toolchain. The third asks whether a physical device or domain model satisfies the quantum realization and numerical error bounds supplied as inputs. The first two provide a reusable mathematical kernel. The third requires evidence about preparation, control, noise, thresholds, and data.
+
+QMU-04 therefore includes a completed slice for complete Kraus channels on a common finite carrier and for positive-event posteriors. The later finite-memory and common-controller results are developed in Chapters 58, 62, and 65. General coherent or unequal controllers, ancillary-system-stabilized norm identification, executable worst-case error certification, unbounded-energy control, and continuum limits retain separate obligations in Chapter 47. Further progress must discharge those explicit obligations; stronger titles for existing theorems cannot do so.
+
+<a id="ch-51"></a>
+
+# 51. Randomized quantum realizations and certified error budgets
+
+A worst-case supremum over unknown channels is not generally an executable algorithm; probability mixtures over a common operation library provide an exactly tractable case. This chapter derives the factor of one half in the total-variation budget from normalization and separates weight changes from errors in library members.
+
+Chapter 50 defines quantum errors through suprema over all effects and all input states. This specifies what is compared but does not provide a computable upper bound for every device. Here we establish a common, exactly tractable case: a classical random choice selects a complete quantum operation from a fixed finite library. Models may differ in their selection weights or in individually controlled errors of the library members. Randomization is an explicitly specified operational mechanism; arbitrary unknown noise is not assumed to have this form.
+
+## 51.1 Constructing quantum objects from probability weights
+
+Fix a finite index set $B$, a common finite-dimensional complex Hilbert space, and probability weights
+$$
+p_b\ge0,\qquad \sum_{b\in B}p_b=1.
+$$
+Each library member is a complete instrument $\{K^{(b)}_{ok}\}_{o,k}$ satisfying $\sum_{o,k}K^{(b)\dagger}_{ok}K^{(b)}_{ok}=I$. We use a common finite outcome set and Kraus index set. If the index sets differ, the verified zero-padding construction of Section 49.5 may be applied first.
+
+<a id="p-qmx-01"></a>
+
+**P-QMX-01 (An actual realization of a probability mixture).** For any library of density operators $\rho_b$, $\rho_p=\sum_b p_b\rho_b$ is a density operator. With the new index $(b,k)$, define
+$$
+L^{(p)}_{o,(b,k)}=\sqrt{p_b}\,K^{(b)}_{ok},
+$$
+This gives a complete quantum instrument. Its branch maps, Heisenberg pullbacks, and outcome-forgetting channel are, respectively,
+$$
+\begin{aligned}
+\Phi^{(p)}_o(X)&=\sum_b p_b\Phi^{(b)}_o(X),\\
+\Phi^{(p)*}_o(E)&=\sum_b p_b\Phi^{(b)*}_o(E),\\
+\Phi^{(p)}(X)&=\sum_b p_b\Phi^{(b)}(X).
+\end{aligned}
+$$
+
+**Proof.** The positive semidefinite cone is closed under nonnegative weighted sums. Trace linearity and normalized weights give $\operatorname{Tr}\rho_p=1$. The new instrument satisfies
+$$
+\sum_{o,b,k}L^{(p)\dagger}_{o,(b,k)}L^{(p)}_{o,(b,k)}
+=\sum_b p_b\sum_{o,k}K^{(b)\dagger}_{ok}K^{(b)}_{ok}
+=\Bigl(\sum_b p_b\Bigr)I=I.
+$$
+Expanding $LXL^\dagger$ or $L^\dagger EL$ term by term gives the three linear identities. ∎
+
+Lean's `Mixture.Weights` stores only the weights, nonnegativity, and normalization. `density` and `weightedInstrument` implement the formulas above, deriving completeness from the existing instruments. `instrument` obtains the square roots through the verified conversion from weighted operations to ordinary Kraus operators. A zero weight has zero square root and remains a valid term; no outcome need be deleted and the protocol identity need not change. The runtime kernel stores rational weights and unscaled matrices. It can therefore represent operations such as Hadamard gates using rational weights without pretending that $\sqrt2$ is rational.
+
+## 51.2 Normalization supplies the factor of one half
+
+For two distributions on the same index set, define
+$$
+\operatorname{TV}(p,q)=\frac12\sum_b|p_b-q_b|.
+$$
+Then $0\le\operatorname{TV}\le1$. The key estimate applies to all functions taking values in $[0,1]$, with a representative function denoted by $f_b$:
+$$
+\left|\sum_b(p_b-q_b)f_b\right|
+=\left|\sum_b(p_b-q_b)(f_b-\tfrac12)\right|
+\le\frac12\sum_b|p_b-q_b|.
+$$
+The first step uses $\sum_b(p_b-q_b)=0$; the second uses $|f_b-1/2|\le1/2$. Bounding $|f_b|\le1$ separately would give the looser $\ell^1$ estimate. The formal proof includes the factor of one half obtained from normalization.
+
+<a id="p-qmx-02"></a>
+
+**P-QMX-02 (A uniform bound for changed weights in a common library).** For a common density-operator library and a common complete-channel library, respectively,
+$$
+d_E\left(\sum_b p_b\rho_b,\sum_b q_b\rho_b\right)
+\le\operatorname{TV}(p,q),
+$$
+$$
+\Delta_E\left(\sum_b p_b\Phi_b,\sum_b q_b\Phi_b\right)
+\le\operatorname{TV}(p,q).
+$$
+
+**Proof.** Fix an arbitrary effect $E$ and set $f_b=P_E(\rho_b)$. Chapter 50 proves that every $f_b\in[0,1]$, so the centring estimate bounds the probability difference for every effect. Taking the supremum over effects gives the first inequality. For the second, take any input state $\tau$, apply the first result to the density-operator library $\Phi_b(\tau)$, and then take the supremum over input states. ∎
+
+This is not a maximum over finitely sampled states. The quantifiers assert that the same budget controls every valid input and every effect; this is what permits both suprema. The Lean entry points are `expectation_sub_le_tv`, `density_weight_change_le_tv`, and `channelDefect_weight_change_le_tv`.
+
+## 51.3 Decomposing the budget when library members also change
+
+<a id="p-qmx-03"></a>
+
+**P-QMX-03 (A joint bound for weight and member errors).** Given two complete-channel libraries $\Phi_b,\Psi_b$ on a common carrier, write $\delta_b=\Delta_E(\Phi_b,\Psi_b)$. Then
+$$
+\Delta_E\left(\sum_b p_b\Phi_b,\sum_b q_b\Psi_b\right)
+\le\operatorname{TV}(p,q)+\sum_b q_b\delta_b.
+$$
+For fixed weights $p=q$, the right-hand side becomes $\sum_b p_b\delta_b$. The two libraries may have different outcome and Kraus index types because the comparison concerns their respective outcome-forgetting channels on the common carrier.
+
+**Proof.** Fix an input and an effect, and insert the intermediate channel $\sum_b q_b\Phi_b$. P-QMX-02 bounds the first difference. Expand the second as a nonnegative weighted sum of member probability differences, apply the triangle inequality, and use the true uniform defect bound for each member. Both suprema preserve this right-hand side, which is independent of the input and effect. ∎
+
+Exchanging the models gives the symmetric version weighted by $p_b$. An implementation may use the smaller of the proved budgets. In either direction, member bounds require evidence. Equal weights do not establish equivalence of different libraries: the single-member distribution $p=q=(1)$ has zero TV distance from itself, but the identity channel and the Pauli $X$ channel send $|0\rangle\langle0|$ to outputs distinguishable by the $|0\rangle\langle0|$ effect with probability difference one. Omitting the common-library premise would therefore make the conclusion false.
+
+## 51.4 Rational budgets and composition over time
+
+<a id="p-qmx-04"></a>
+
+**P-QMX-04 (Interpretation of an exact rational budget).** Suppose the weights are rational, nonnegative, and normalized. Define, using only finite rational arithmetic,
+$$
+b_{\rm TV}=\frac12\sum_b|p_b-q_b|\in\mathbb Q.
+$$
+Its real interpretation is exactly the TV distance of the real-valued distributions. If $b_{\rm TV}\le b$, the common-library channel defect satisfies $\Delta_E\le b$. More generally, if each member also has a proved rational upper bound $\delta_b\le\varepsilon_b$, then
+$$
+b_{\rm joint}=b_{\rm TV}+\sum_b q_b\varepsilon_b
+$$
+is a valid upper bound after interpretation over the reals.
+
+**Proof.** The embedding of the rationals into the reals preserves finite sums, multiplication, subtraction, absolute values, and order. Convert each term and apply P-QMX-02 or P-QMX-03. ∎
+
+The corresponding declarations are `RationalWeights.toWeights`, `tv_toWeights`, `channelDefect_weight_change_le_rational_budget`, and `channelDefect_joint_change_le_rational_budget`. They prove the mathematical interpretation of finite rational expressions. They do not automatically verify the Python parser, loops, sequence indexing, or external file transfer.
+
+If step $j$ has a budget $b_j$ of this form, the trajectory certificate of Section 50.5 gives
+$$
+d_E(\rho_n,\sigma_n)\le d_E(\rho_0,\sigma_0)+\sum_{j<n}b_j.
+$$
+This supplies a concrete connection from actual quantum evolution through a computable local budget to the Core composition certificate. A time-dependent library may be specified at each step, provided the models share the declared correspondence between components at that step. The existing Lean trajectory interface fixes the finite outcome and Kraus index types within each sequence; left and right sequences may differ but share a matrix carrier. Index changes over a finite horizon require explicit zero-padding or reindexing adaptations.
+
+## 51.5 Sharp witnesses, implementation obligations, and extensions
+
+Take $\Phi_0=\mathrm{id}$, $\Phi_1(\rho)=X\rho X$, $p=(3/4,1/4)$, and $q=(1/4,3/4)$. For input $\rho=|0\rangle\langle0|$, the outputs are $\operatorname{diag}(3/4,1/4)$ and $\operatorname{diag}(1/4,3/4)$. Measuring $E=|0\rangle\langle0|$ gives probability difference $1/2$, attaining the TV bound. If both components are instead the identity channel, the same weights still give budget $1/2$, while the actual channel defect is zero. The budget is thus a proved upper bound, generally not an exact-distance algorithm.
+
+The runtime entry `MixtureWeightBudget` binds two weight tables to the same collection of verified complete instruments. It computes the budget exactly from the inputs and does not accept an arbitrarily supplied smaller number. It records fingerprints of the actual Kraus representations; different but physically equivalent representations can have different fingerprints. Tests also cover negative weights, failure of normalization, floating-point inputs, dimension or outcome-label mismatches, and context checks for zero-weight components. Runtime tests provide independent finite witnesses; the universal quantifiers are discharged by the Lean theorems.
+
+The chapter assumes a specified quantum realization and randomization model. Its conditional results depend on standard physical input P, effective-model assumptions E, and domain bridges B; testable probability constraints belong to dependency class O. It neither selects complex quantum theory nor supplies a universal algorithm for unknown channels. It also does not automatically bound instrument distances retaining outcomes or diamond distances on arbitrary ancillary systems. The finite history-and-memory developments in Chapters 58, 62, and 65 explicitly retain random branches and control histories as classical registers before comparing the complete joint channels.
+
+<a id="ch-52"></a>
+
+# 52. Long-time averages, compactness, and stationary quantum states
+
+Stationarity of long-time averages and convergence of the state at every step are different assertions. Finite-dimensional compactness yields invariant subsequential Cesàro limits; periodic orbits and multiple stationary states explain why mixing and uniqueness need additional conditions.
+
+UEOT's notion of object persistence needs a dynamical meaning that can be checked. Given a complete quantum channel, a basic question is whether an invariant average structure exists even when the state keeps changing. This chapter proves such a result in the actual topology of finite complex matrices and distinguishes it from pointwise convergence, uniqueness, conditional survival, and optimization.
+
+## 52.1 Iterates and average states
+
+Fix a complete Kraus channel $\Phi$ and an initial density operator $\rho_0$. Define
+$$
+\rho_{n+1}=\Phi(\rho_n),\qquad
+\bar\rho_N=\frac1N\sum_{n=0}^{N-1}\rho_n,\qquad N>0.
+$$
+Every iterate is a density operator. Positivity, trace linearity, and $N>0$ also make the average a density operator. The average includes the initial state and ends at $N-1$, fixing the endpoints in the telescoping identity below.
+
+<a id="p-qce-01"></a>
+
+**P-QCE-01 (Exact residual and all-effect budget for an average state).** We have
+$$
+\Phi(\bar\rho_N)-\bar\rho_N=\frac{\rho_N-\rho_0}{N},
+\qquad
+d_E\bigl(\Phi(\bar\rho_N),\bar\rho_N\bigr)\le\frac1N.
+$$
+
+**Proof.** By channel linearity,
+$$
+\Phi\left(\sum_{n=0}^{N-1}\rho_n\right)-\sum_{n=0}^{N-1}\rho_n
+=\sum_{n=0}^{N-1}(\rho_{n+1}-\rho_n)=\rho_N-\rho_0.
+$$
+Divide by $N$ for the first identity. For every effect $E$, both endpoint probabilities lie in $[0,1]$, so the absolute probability residual is at most $1/N$. Taking the supremum over all effects gives the second result. ∎
+
+This is not a distance bound to a proposed stationary state. It compares the average after one additional channel application with the average itself. Without a stability constant or a spectral gap, a small residual does not imply proximity to a specified stationary state. `matrix_residual`, `probability_residual`, and `effectDistance_residual_le` formalize precisely this contract.
+
+## 52.2 Why the density-operator set is compact
+
+In the usual finite-dimensional topology on complex $d\times d$ matrices, let
+$$
+\mathcal D_d=\{\rho:\rho\succeq0,\ \operatorname{Tr}\rho=1\}.
+$$
+Here $\|\cdot\|_{\rm op}$ is the operator norm induced by the complex Euclidean vector norm, not the trace norm. Lean uses Mathlib's `Matrix.Norms.L2Operator` scope. This structure preserves the usual matrix topology; one cannot replace it by an artificial topology that makes every sequence converge.
+
+<a id="p-qce-02"></a>
+
+**P-QCE-02 (Compactness of the actual density-operator set).** $\mathcal D_d$ is closed and bounded, hence compact in finite dimensions. Every $\rho\in\mathcal D_d$ satisfies $\|\rho\|_{\rm op}\le1$, and
+$$
+\|\Phi(\bar\rho_N)-\bar\rho_N\|_{\rm op}\le\frac2N.
+$$
+
+**Proof.** The positive semidefinite cone is closed. Equivalently, for every vector $v$, nonnegativity of the continuous function $\rho\mapsto v^\dagger\rho v$ is preserved under limits. The trace is continuous and linear, so the trace-one set is closed. Their intersection is closed. The finite-dimensional Hermitian spectral theorem gives nonnegative eigenvalues $\lambda_i$ with $\sum_i\lambda_i=1$. Thus every $\lambda_i\le1$. Unitary conjugation preserves the operator norm, giving the norm bound. Closed and bounded subsets of a finite-dimensional normed space are compact. Finally, take norms in the matrix residual of P-QCE-01 and use $\|\rho_N-\rho_0\|_{\rm op}\le2$. ∎
+
+Compactness, the norm bound, and continuity are established for the matrices themselves; they are not supplied as “persistence certificate” fields that a caller must first accept. The Lean declarations are `density_operatorNorm_le_one`, `densityMatrices_closed`, `densityMatrices_compact`, `continuous_channel`, and `matrix_residual_norm_le`. Mathlib supplies general results in spectral theory, C*-order, and finite-dimensional topology; the project proves that density operators and Kraus channels satisfy their premises.
+
+## 52.3 Invariant subsequential limits and existence of stationary states
+
+<a id="p-qce-03"></a>
+
+**P-QCE-03 (A stationary density operator for a finite complete channel).** For every initial state $\rho_0$, there exist a density operator $\sigma$ and a strictly increasing subsequence of natural numbers $N_k\to\infty$ such that
+$$
+\bar\rho_{N_k}\longrightarrow\sigma,\qquad \Phi(\sigma)=\sigma.
+$$
+The limit of any convergent average-state subsequence of this kind is stationary. In particular, when $d>0$, every complete finite Kraus channel has at least one stationary density operator.
+
+**Proof.** All average states lie in the compact set $\mathcal D_d$, so a convergent subsequence exists. Closedness makes its limit positive semidefinite with trace one. The linear map $\Phi$ is continuous in finite dimensions, giving
+$$
+\Phi(\sigma)-\sigma
+=\lim_k\bigl(\Phi(\bar\rho_{N_k})-\bar\rho_{N_k}\bigr)=0,
+$$
+The final term tends to zero by the $2/N_k$ bound in P-QCE-02. The same argument applies to any convergent subsequence whose indices tend to infinity. If a channel is given without an initial state, positive dimension supplies $I/d$ as a seed, and the result follows. ∎
+
+`exists_stationary_subsequence` returns the density operator, its stationarity, and a strictly increasing subsequence. `subsequence_limit_density` and `subsequence_limit_invariant` establish physical validity and invariance of the limit separately. `exists_stationary` constructs the normalized identity on a nonempty finite carrier. This is an existence theorem, not an implemented stationary-state solver, and it supplies no general complexity bound for finding a sufficiently long subsequence.
+
+Core's P-PER-02/M-OI and the associated persistence chapters provide a general interface linking averages, residuals, and invariant structures. This chapter independently establishes the required premises and finite-matrix proof for quantum density operators and channels. The source does not directly invoke Core's occupation-measure theorem, so a conceptual correspondence is not reported as a code dependency. The QSD bridge in Chapter 53 does directly use a frozen Core theorem; the two kinds of connection are recorded separately. [S2, Sections 7–8; S3, persistence interface]
+
+## 52.4 Counterexamples: periodic orbits and multiple stationary states
+
+<a id="n-qce-01"></a>
+
+**N-QCE-01 (Average invariance does not imply orbit convergence or uniqueness).** The premises of P-QCE-01 through P-QCE-03 imply neither convergence of the original sequence $\rho_n$ nor uniqueness of the stationary state.
+
+**Proof and exact witnesses.** Take $\Phi(\rho)=X\rho X$ and $\rho_0=|0\rangle\langle0|$. Even iterates are $\rho_0$, and odd iterates are $\rho_1=|1\rangle\langle1|$. The $P_0$ effect distinguishes them with probability difference one, so the orbit does not converge. Nevertheless,
+$$
+\bar\rho_N=\operatorname{diag}\left(\frac{\lceil N/2\rceil}{N},
+\frac{\lfloor N/2\rfloor}{N}\right)\longrightarrow I/2.
+$$
+For odd $N$, the one-step residual of $P_0$ is exactly $1/N$; for even $N$, it is zero. Alternatively, take the identity channel. Every density operator is stationary, and at least $\rho_0$ and $\rho_1$ are distinct, ruling out uniqueness. ∎
+
+Both counterexamples have the algebraic proofs above and rational runtime witnesses. Runtime checks are not counted as universal Lean theorems. The implementation rejects averages with $N=0$, noninteger step counts, and invalid initial states. Its averaging endpoints agree exactly with P-QCE-01.
+
+## 52.5 The place of long-time averages in the physical framework
+
+Existence of a stationary state, uniqueness of that state, mixing from every initial state, and almost-sure empirical convergence of quantum trajectories are different statements. The finite-dimensional channel literature distinguishes ergodicity from mixing. The present existence theorem is consistent with that distinction; a subsequence proof does not automatically establish the stronger spectral or mean-ergodic conclusions. [Original study by Burgarth et al.](https://arxiv.org/abs/1210.5625)
+
+The chapter gives object persistence a concrete certificate without a circular definition: within a declared physical realization, there is a valid quantum state invariant in the average-limit sense proved above. This does not determine which object should persist, choose a value function, or imply optimal control. GOD/GOA requires separately specified actions, costs, constraints, and evaluation. A lifetime claim also requires a specified survival event, which is the subject of the next chapter.
+
+A further step could prove uniqueness and suitable spectral conditions for a particular finite channel, then derive a convergence rate. Another could formalize the projection limit of the entire Cesàro sequence. Stronger standard tools are available for the latter in finite-dimensional linear theory, but only the actual subsequence and existence results are recorded here as machine-checked. In infinite dimensions, the density-operator set generally lacks the compactness used above. Energy compactness, tail control, and operator-domain contracts must then be supplied.
+
+<a id="ch-53"></a>
+
+# 53. Conditional survival, diagonal quantum realizations, and the Core spectral bridge
+
+Survival must first correspond to an actual instrument outcome before lifetime or conditional state is discussed. A diagonal quantum realization connects the same survival record to Core quasi-stationary and Doob formulas, with an exact example distinguishing the quasi-stationary distribution, Doob stationary law, and initial-state dependence.
+
+“The object still exists” becomes a probability statement only after a survival event is specified. A complete quantum channel preserves total probability, yet it may include both a continuing-survival outcome and an outcome that leaves the task domain. The survival probability generally decays, and the state conditioned on survival need not equal the unconditional state of the complete channel. This chapter constructs a finite realization that connects the frozen Core substochastic and QSD theorems to actual quantum instruments and record probabilities.
+
+## 53.1 Conventions, outcomes, and completion by failure
+
+Fix a finite state index set $i=1,\ldots,d$ and use the row-distribution convention
+$$
+(pQ)_j=\sum_i p_iQ_{ij}.
+$$
+Let a nonnegative substochastic matrix be given:
+$$
+Q_{ij}\ge0,\qquad s_i:=\sum_jQ_{ij}\le1.
+$$
+The diagonal embedding is $D(p)=\operatorname{diag}(p_1,\ldots,p_d)$. A nonnegative normalized $p$ gives a complex density operator. The matrix unit $U_{ji}=|j\rangle\langle i|$ measures the source $i$ and prepares the destination $j$. Interchanging these indices while retaining the same $Q$ would change the convention and the model.
+
+<a id="p-qsv-01"></a>
+
+**P-QSV-01 (A complete quantum instrument for a substochastic kernel).** Take survival and failure Kraus matrices
+$$
+A_{ji}=\sqrt{Q_{ij}}\,|j\rangle\langle i|,
+\qquad B_i=\sqrt{1-s_i}\,|i\rangle\langle i|.
+$$
+Together they form a complete instrument, whose survival branch is
+$$
+\mathcal K_Q(X)=\sum_{i,j}Q_{ij}U_{ji}XU_{ji}^{\dagger}.
+$$
+
+**Proof.** Since $U_{ji}^{\dagger}U_{ji}=|i\rangle\langle i|$, the Gram sum of the survival terms is $\operatorname{diag}(s_i)$, and that of the failure terms is $\operatorname{diag}(1-s_i)$. Their sum is $I$. Nonnegativity and the row-sum bound make all weights valid, so both branches are completely positive and their total channel preserves trace. ∎
+
+`Survival.weightedInstrument` and `instrument` construct this instrument. The two Lean outcomes are `true` and `false`; the runtime names them `survive` and `lost`. Lean uses the full $(i,j)$ index set even for failure, with nonzero weights only on the diagonal. Python omits the zero off-diagonal failure terms. The operations coincide, while their representation fingerprints need not.
+
+Using the same matrix carrier after failure is an encoding of the complete outcome set. “Dead” is marked by the classical record, not by an undeclared absorbing Hilbert-space state. The lifetime task ends at the first failure, so applying a survival operation again after failure is not interpreted as resurrection.
+
+## 53.2 Quantum and classical descriptions of the same survival record
+
+<a id="p-qsv-02"></a>
+
+**P-QSV-02 (Intertwining diagonal dynamics with finite success words).** For every complex operator $X$,
+$$
+\mathcal K_Q(X)=\operatorname{diag}\left(\sum_iQ_{ij}X_{ii}\right)_j.
+$$
+Consequently, for every real vector $p$ and every $n\ge0$,
+$$
+\mathcal K_Q(D(p))=D(pQ),\qquad
+\mathcal K_Q^n(D(p))=D(pQ^n).
+$$
+If $p$ is a probability distribution, the probability of $n$ consecutive survival outcomes is $pQ^n\mathbf1$. When this mass is positive, the conditional state is
+$$
+D\left(\frac{pQ^n}{pQ^n\mathbf1}\right).
+$$
+
+**Proof.** Compute $U_{ji}XU_{ji}^{\dagger}=X_{ii}|j\rangle\langle j|$ directly and sum to obtain the first identity. Substitute $D(p)$ to obtain one-step intertwining, then induct in the temporal order of the records using $(pQ)Q^n=pQ^{n+1}$. The trace of a diagonal state is the sum of its components, giving the record probability. Normalize by the positive mass to obtain the conditional state. ∎
+
+Here $\mathcal K_Q^n$ is the existing `recordOperator` for the all-success word of length $n$. `survivalMass_eq_response` identifies it with `response` for the same operation library; it is not an unrelated scalar process. For every $p,n$, Lean supplies `killedIterate_diagonal` and `survivalMass_diagonal`. The explicit one-step normalization identity is `success_posterior_matrix`. The general multistep conditional formula follows analytically by the same normalization construction; the QSD case below has its own fully named formal theorems.
+
+The first identity also displays the physical restriction of this model: a single survival measure-and-prepare step removes any input coherence. It is a valid quantum realization of a classical process, not a model of every noncommuting survival channel. Use of complex matrices alone does not establish a general quantum Perron theory.
+
+## 53.3 The QSD survival law and lifetime
+
+Suppose a nonnegative normalized distribution $q$ and a positive number $r$ satisfy the explicitly required left-eigenvector relation
+$$
+qQ=rq,\qquad q_i\ge0,\quad \sum_iq_i=1,\quad r>0.
+$$
+These spectral data are inputs. This chapter does not first prove that every $Q$ has the required positive spectral data, nor does it assume convergence from every initial state to $q$. Here $r$ is a survival eigenfactor satisfying the relation. Its identification with the global spectral radius and uniqueness as a dominant eigenvalue are not outputs of the theorem below.
+
+<a id="p-qsv-03"></a>
+
+**P-QSV-03 (The geometric survival law of the actual all-success record).** Under these premises, $0<r\le1$, and
+$$
+\mathcal K_Q^n(D(q))=r^nD(q),\qquad
+\Pr_q(\text{survival for the first }n\text{ steps})=r^n.
+$$
+Survival has positive probability for every finite $n$, and the actual quantum state conditioned on that event remains $D(q)$.
+
+**Proof.** Core's frozen `leftPerron_pow` obtains $qQ^n=r^nq$ from the left-eigenvector relation. Transporting it to the quantum record through P-QSV-02 gives the first identity. Normalization of $\sum q_i=1$ and taking the trace give the second; this step directly invokes Core's `qsd_survival_mass_pow`. Positivity $r>0$ makes every finite-step mass positive. Core's `qsd_all_steps` says that the normalized distribution remains $q$. Diagonal embedding and extensional equality of density operators then establish equality of the quantum conditional states. Finally,
+$$
+r=\sum_j(qQ)_j=\sum_iq_is_i\le\sum_iq_i=1,
+$$
+This is consumed formally through Core's `perron_root_le_one_of_substochastic`. ∎
+
+The quantum entry points are `qsd_killedIterate`, `qsd_survival_pow`, `qsd_survival_pos`, `qsd_conditionalState`, and `qsd_rate_le_one`. The dependency chain first constructs the quantum model, then invokes the frozen Core results, and finally returns to actual records and conditional states. Quantum–classical equality is proved, not supplied as a structure field.
+
+A direct analytic consequence is a lifetime formula. Let $\tau\in\{1,2,\ldots\}\cup\{\infty\}$ be the step of the first failure, with infinity assigned if failure never occurs. Then $\Pr(\tau>n)=r^n$. When $r<1$, $\tau$ is almost surely finite and
+$$
+\Pr(\tau=m)=(1-r)r^{m-1},\qquad
+\mathbb E\tau=\sum_{n=0}^{\infty}\Pr(\tau>n)=\frac1{1-r}.
+$$
+If each step represents a calibrated duration $\Delta t$, the mean physical lifetime is $\Delta t/(1-r)$. The Lean results recorded here establish the finite-record law $r^n$ and the conditional state. The infinite tail-sum expectation is an analytic consequence, and time calibration is a physical input; neither is reported as an additional machine proof. The ideal case $r=1$ has no finite-step failure.
+
+## 53.4 The Doob realization and its different invariant distribution
+
+Suppose also that a strictly positive right eigenvector $h$ satisfies
+$$
+Qh=rh,\qquad h_i>0,\qquad \sum_iq_ih_i=1.
+$$
+Define
+$$
+\widetilde Q_{ij}=\frac{Q_{ij}h_j}{rh_i},\qquad \pi_i=q_ih_i.
+$$
+
+<a id="p-qsv-04"></a>
+
+**P-QSV-04 (A complete realization of the Doob kernel and invariant success records).** $\widetilde Q$ is nonnegative with each row summing to one; $\pi$ is a probability distribution satisfying $\pi\widetilde Q=\pi$. Realizing $\widetilde Q$ by P-QSV-01 gives a quantum instrument. For every normalized diagonal input, one-step success has probability one. Starting from $D(\pi)$, the success branch and every finite all-success word preserve $D(\pi)$, their record probability is one, and the conditional state is $D(\pi)$.
+
+**Proof.** Strict positivity of the denominators gives nonnegativity. The right-eigenvector relation gives
+$$
+\sum_j\widetilde Q_{ij}=\frac{\sum_jQ_{ij}h_j}{rh_i}=1.
+$$
+Normalization ensures $\sum_i\pi_i=1$. The left-eigenvector relation yields
+$$
+(\pi\widetilde Q)_j
+=\sum_iq_ih_i\frac{Q_{ij}h_j}{rh_i}
+=\frac{h_j}{r}(qQ)_j=q_jh_j=\pi_j.
+$$
+Apply P-QSV-01 and P-QSV-02 to these Core results for row sums, normalization of the invariant distribution, and stationarity. This produces the actual instrument, probability, and success-branch identity. Induction gives every finite success word; normalization by mass one gives the conditional state. ∎
+
+The implementation directly uses `doobTransform_row_sum`, `doobInvariant_sum`, and `doobInvariant_stationary`. The quantum declarations are `doobInstrument`, `doobDensity`, `doob_success_probability`, `doob_success_branch`, `doob_killedIterate`, `doob_survivalMass`, and `doob_conditionalState`. These names cover branches, records, and conditional states. No separate stationarity corollary for the outcome-forgetting `channelState` is registered here as an additional named machine theorem.
+
+Doob transforms are often used to study conditioned trajectories or alternative dynamics for rare events. General quantum versions involve noncommuting spectral data and suitable trajectory limits. [Original study by Carollo et al.](https://arxiv.org/abs/1711.10951) The present chapter proves only the finite construction under the stated spectral premises and the invariant relations above. It does not establish a process theorem equating this transform with the limit of conditioning on survival to an increasingly distant future. In particular, the finite-time survival-conditioned law $q$ cannot be interchanged with the Doob stationary law $\pi=qh$.
+
+## 53.5 An exact model separating the QSD, Doob law, and initial-state premise
+
+Take
+$$
+Q=\begin{pmatrix}1/4&1/2\\1/8&1/4\end{pmatrix},\quad
+q=(1/3,2/3),\quad r=1/2,\quad h=(3/2,3/4).
+$$
+The two row survival probabilities are $3/4$ and $3/8$, so losses are unequal. Direct calculation gives
+$$
+qQ=(1/6,1/3)=rq,\qquad
+Qh=(3/4,3/8)=rh,\qquad \sum_iq_ih_i=1.
+$$
+Starting from $D(q)$, the all-success record of length $n$ has probability $2^{-n}$, and every conditional state remains $D(q)$. The unconditional state also contains the failure-branch contribution.
+
+<a id="n-qsv-01"></a>
+
+**N-QSV-01 (The QSD, Doob invariant law, and an arbitrary initial state are distinct).** In this example,
+$$
+\widetilde Q=\begin{pmatrix}1/2&1/2\\1/2&1/2\end{pmatrix},\qquad
+\pi=(1/2,1/2)\ne q.
+$$
+Starting from the uniform state $p=(1/2,1/2)$ gives first-step survival probability $9/16\ne r$. Incorrectly transposing $Q$ while retaining the row-distribution interpretation means that, starting from $q$, the first-step survival probability instead becomes $5/8\ne r$.
+
+**Proof.** Substitution into the Doob formula gives the displayed rows, and each product $q_ih_i$ is $1/2$. Also, $pQ=(3/16,3/8)$ has sum $9/16$, whereas $qQ^T=(5/12,5/24)$ has sum $5/8$. Each of the three substitutions therefore changes the proposition or the actual probability. ∎
+
+The rational runtime witness computes the first six success words, obtaining $1/2,1/4,\ldots,1/64$ and the same conditional state. It also checks that the Doob dynamics fixes $\pi$ but does not fix $q$. The model has analytic mean failure step two, but six runtime checks are not a proof of an infinite expectation. Negative controls include row sums exceeding one, negative entries, nonsquare matrices, and inexact inputs. Deleting the failure branch breaks completeness. For $Q=0$, survival probability is zero and the runtime returns an undefined posterior; $q$ cannot be assigned by fiat.
+
+## 53.6 The contribution to the UEOT programme
+
+The chapter separates three checkable meanings of persistence: probability conservation under a complete operation; probability and conditional state for a specified survival event; and an invariant structure of alternative dynamics constructed from given left and right spectral data. The abstract language of object persistence thereby acquires calculable quantum-record content, together with explicit diagnoses of which missing premise makes a conclusion fail.
+
+In the dependency classification, frozen QSD algebra belongs to C; complex density operators and Kraus instruments are standard physical input P; the choice of diagonal measure-and-prepare dynamics and a termination event is effective model E; actual intertwining is bridge B; and lifetime and record-probability constraints are O. General noncommuting Perron existence, irreducibility or primitivity conditions, conditional limits, and spectral gaps retain obligations in standard mathematics, domain bridges, or specific models. Being unformalized does not by itself make them scientific conjectures X. Only an additional, unproved claim that a UEOT mechanism is necessary or physically selected is separately classified as X. The original dual-drive philosophy may guide which persistence mechanisms to study, but these finite theorems do not directly determine an objective function or natural optimization. [S1; S2, QSD/Perron and GOA sections; S4, the separation of persistence and evaluation]
+
+Chapter 56 supplies a coherence-preserving finite CP survival map, explicit left and right spectral objects, a noncommuting Doob realization, and a finite conditioning connection for arbitrary initial states. Existence and uniqueness of the required spectral data, conditional limits, and rates remain separate problems under suitable assumptions. Only after combining such results with perturbation budgets of the kind in Chapter 51 can one ask whether lifetime and conditional predictions transfer stably under errors in preparation, transitions, or survival classification. This develops reusable physical contracts while preserving the independent question of why UEOT should select quantum structure.
+
+<a id="ch-54"></a>
+
+# 54. The classical purification boundary on the same Core process
+
+If generic Core interfaces admit a complete classical model in which a mixed state cannot be purified, those interfaces do not automatically imply universal purification. This chapter binds the countermodel to one actual process and terminal quotient, and explains how deleting readout changes the proposition being tested.
+
+Chapters 1 and 2 distinguish object mathematics from selection of a quantum sector. Realizability of a general object interface by a quantum system does not establish that only quantum systems can realize it. This chapter makes the distinction concrete using an actual frozen Core finite stochastic kernel, terminal stable quotient, control quotient, and infinite trajectory. The classical interpretation is explicit. Failure of purification is proved using convex extremality in the full state space, for the actual quotient marginal of the same trajectory.
+
+## 54.1 The complete classical state space and its operational interpretation
+
+For a finite carrier $Z$, define
+$$
+\Delta(Z)=\{p:Z\to\mathbb R\mid p_z\ge0,\ \sum_zp_z=1\}.
+$$
+The allowed states form the entire simplex; effects are all $e:Z\to[0,1]$, with probability pairing
+$$
+P_e(p)=\sum_zp_ze_z.
+$$
+Composite systems use $\Delta(Z\times B)$, and discarding the right system is the actual sum marginal
+$$
+(\operatorname{marg}_Z\omega)_z=\sum_b\omega_{zb}.
+$$
+These choices specify a classical domain interpretation B. The H1–H6 interface group listed below does not itself select or exclude this composition rule; it is not a necessary physical consequence of Core.
+
+<a id="p-qcl-01"></a>
+
+**P-QCL-01 (States, responses, and transport on the full simplex).** The pairing above lies in $[0,1]$, and all effects separate states. Dirac preparation, valid convex combinations, pushforward along any finite function, and the stated marginal preserve normalized states. Pushforward commutes with an equal mixture of two states, and the marginal is pushforward along the projection.
+
+**Proof.** Termwise nonnegativity gives $P_e(p)\ge0$. From $e_z\le1$ we obtain $P_e(p)\le\sum_zp_z=1$. If two states agree on all effects, the point-indicator effect $e^{(x)}_z=\mathbf1_{z=x}$ makes their individual coordinates equal. For a function $f:Z\to W$,
+$$
+(f_*p)_w=\sum_{z:f(z)=w}p_z.
+$$
+Interchanging finite sums proves normalization: each source point occurs in exactly one fibre. The same interchange proves compatibility with the equal mixture and the marginal identity. ∎
+
+Lean's `Classical.State` reuses the three purely scalar fields of `Mixture.Weights`. It does not assume complex density matrices or the Born structure in these classical theorems. Quantum modules occur in the transitive import closure, which is a software dependency fact; the new state definition and its proof premises concern finite nonnegative real sums. `all_effects_separate` quantifies over the entire `Effect` type. A few sampled measurements do not establish the same statement.
+
+For any actual finite Core stochastic kernel $K$, any $p\in\Delta(Z)$, and a fixed action $a$, `stepState` defines the stochastic action on the complete simplex:
+$$
+(T_ap)_y=\sum_xp_xK(x,a,y).
+$$
+Nonnegativity is termwise; normalization follows from unit row sums and interchange of finite sums. `toPMF` uses Core's existing construction from real probability rows. `toPMF_stepState` proves
+$$
+\operatorname{toPMF}(T_ap)
+=\operatorname{toPMF}(p)\mathbin{\mathrm{bind}}
+\bigl(x\mapsto\operatorname{toPMF}(K(x,a,\cdot))\bigr).
+$$
+Thus the classical state action agrees with the actual PMF transition for every input state. The trajectory connection below chooses an explicit policy for the same model. This fixed-action identity alone does not formalize arbitrary history-dependent feedback.
+
+A state $p$ is pure exactly when it is an extreme point of the entire allowed state space: for every $q,r\in\Delta(Z)$ and $0<t<1$, $p=tq+(1-t)r$ implies $q=r=p$. `IsPure` uses precisely these quantifiers. Purity of a Dirac state is proved separately. At each zero coordinate, two nonnegative weighted terms sum to zero, so both vanish. Normalization forces the remaining coordinates to be one. Purity is not defined to mean “Dirac” and then presented as a classification theorem.
+
+## 54.2 Failure of purification for every finite ancillary system
+
+<a id="n-qcl-01"></a>
+
+**N-QCL-01 (A two-point mixed state has no finite classical purification).** Suppose $z_0\ne z_1$ and $p=\tfrac12\delta_{z_0}+\tfrac12\delta_{z_1}$. For every finite type $B$, no $\omega\in\Delta(Z\times B)$ is both a convex extreme point and satisfies $\operatorname{marg}_Z\omega=p$.
+
+**Proof.** Suppose such a joint state exists. Its marginal has support at $z_0,z_1$, with mass $1/2$ at each point and zero mass in every other row. Nonnegativity makes every entry in the other rows zero. Define
+$$
+\omega_i(z,b)=2\mathbf1_{z=z_i}\omega(z,b),\quad i=0,1.
+$$
+Both states are nonnegative. In row $z_i$, mass $1/2$ gives $\sum_{z,b}\omega_i(z,b)=1$. Coordinatewise,
+$$
+\omega=\tfrac12\omega_0+\tfrac12\omega_1,
+\qquad \operatorname{marg}_Z\omega_i=\delta_{z_i}.
+$$
+Extremality forces $\omega_0=\omega$. Taking marginal coordinate $z_1$ gives $0=1/2$, a contradiction. ∎
+
+The proof does not require $B$ to be nonempty. If $B$ is empty, no normalized joint state exists in the first place. Lean's `no_pure_extension_halfMix` quantifies over every finite ancillary type, not just one selected dimension. It refutes the existence part of purification, so reversible uniqueness need not first be formalized.
+
+Removing purity changes the claim entirely. Given an ancillary point $b$, $p\otimes\delta_b$ is an ordinary joint extension of any $p$. For a Dirac preparation, $\delta_{(z,b)}$ is a pure joint extension. `marginalLeft_attach` and `dirac_has_pure_extension` establish these two facts separately. Existence of a parent carrier, a record extension, and a pure joint state imposes different mathematical requirements.
+
+## 54.3 An actual terminal quotient that retains operational mixing
+
+Use the same frozen Core kernel `survivalMicroKernel`, with states $x=(s,h)\in\mathrm{Bool}^2$ and actions $a\in\mathrm{Bool}$:
+$$
+K(x,a,z)=\begin{cases}1/2,&z_1=a,\\0,&z_1\ne a.\end{cases}
+$$
+Write $x_0=(\mathrm{true},\mathrm{false})$ and $x_1=(\mathrm{true},\mathrm{true})$. The first bit is the registered safety predicate. The new instance `fullyObservedSurvivalModel` registers the full readout $x\mapsto x$, together with the safety bit, trivial program/resource fields, and zero reward. Full readout is this model's B interpretation; it does not assert that every conceivable physical label is measurable.
+
+<a id="p-qcl-02"></a>
+
+**P-QCL-02 (The actual terminal quotient retains two-point support).** The model's actual `terminalSetoid` satisfies $x\sim y\iff x=y$. Consequently the control-quotient map $f$ constructed by `organizationalTerminalControl` is injective. The first row of the original kernel,
+$$
+p_* = K((\mathrm{true},\mathrm{false}),\mathrm{true},\cdot)
+=\tfrac12\delta_{x_0}+\tfrac12\delta_{x_1}
+$$
+is pushed forward to $\bar p=\tfrac12\delta_{f(x_0)}+\tfrac12\delta_{f(x_1)}$, where $f(x_0)\ne f(x_1)$.
+
+**Proof.** Terminal equivalence preserves registered outputs. The first output is the full source state, so terminal equivalence implies equality of source states; reflexivity gives the converse. If two images under the actual control quotient are equal, extract the quotient-class component and use quotient-equality elimination to obtain terminal equivalence, then equality of source states. The two-point formula for the original kernel row is checked from its four entries. Apply compatibility with equal mixtures from P-QCL-01 and the Dirac pushforward formula. ∎
+
+An identity quotient has not been substituted by hand for the algorithm. The carrier is `ReachableState` of the actual stable relation, and the map is the actual `terminalControl.f`. Full observation means that this example gives no strict reduction in state count, which is a valid algorithmic output. Compression ratio and retention of operationally relevant mixing are distinct questions.
+
+## 54.4 The same control quotient, actual trajectories, and the first-time marginal
+
+Fix initial state $\delta_{x_0}$ and the explicit always-true policy $\pi_*(x)=\mathrm{true}$. The transition PMF comes directly from `micro.transitionPMF` of the same control quotient. Let $\mathbb P_*$ be its actual `stationaryTrajMeasure`. No separate trajectory is invented merely to satisfy the desired conclusion.
+
+<a id="p-qcl-03"></a>
+
+**P-QCL-03 (A common-source safe trajectory and a purification-separation certificate).** This model satisfies the finite Core interface group listed below, and
+$$
+\mathbb P_*\{\omega:\forall n\in\mathbb N,\ (\omega_n)_1=\mathrm{true}\}=1,
+$$
+$$
+(\omega\mapsto f(\omega_1))_*\mathbb P_*
+=\operatorname{Measure}(\operatorname{toPMF}\bar p).
+$$
+The state $\bar p$ on the right has no purification using any finite classical ancillary system.
+
+| Interface | What the example establishes |
+|---|---|
+| H1: normalized controlled process | Every row of the same $K$ is nonnegative and sums to one. |
+| H2: registered interface | The transition is exactly $K$; outputs are the full readout and the declared attributes. |
+| H3: terminal stable quotient | The actual `terminalSetoid` is stable, and terminal equivalence is exactly equality. |
+| H4: exact control | The actual control quotient, discount $1/2$, and zero reward are used; microscopic and macroscopic optimal values are transported by $f$. |
+| H5: nonempty safety | $x_0$ belongs to the actual viability set at every finite horizon, with the required initial PMF support. |
+| H6: actual safe trajectory | An explicit always-true policy, equality to the actual source PMF, safety at all discrete times, and the displayed actual measure marginal are supplied. |
+
+**Proof.** Kernel normalization follows from its frozen definition. Preservation of the registered interface, terminal stability, and optimal-value transport use the actual theorems of the frozen interfaces. Prove viability by induction on the horizon. After action `true`, every positive-probability destination has first bit `true`, giving recursive safety. For trajectories, the initial distribution is supported on the safe set, and the always-true policy maps that support back to the same set. The actual coordinate-distribution theorem gives safety probability one at every time. Then `all_times_safe_of_coordinate_one` gives probability one for the countable intersection over all times.
+
+The first-time marginal is not inferred from mere existence of some safe policy. First use the actual coordinate theorem to identify the distribution of $\omega_1$ with one transition from $\delta_{x_0}$ under the always-true policy, namely $K(x_0,\mathrm{true},\cdot)$. Push this measure forward by the measurable $f$. Composition of measure pushforwards and `toPMF_pushforward` give the displayed measure identity. Finally instantiate N-QCL-01 at the two distinct quotient points supplied by P-QCL-02. ∎
+
+`FiniteCoreSlice` expresses these concrete facts as a conjunction, and `finiteCoreSlice_holds` proves them individually from the actual theorems. `classical_purification_separation` then connects the actual trajectory marginal to the nonexistence quantifier over every finite ancillary space. Neither failure of purification nor marginal equality is assumed as an input when constructing the object.
+
+Zero reward is a valid control instance; optimal-value transport here selects no nontrivial preference. The actions nevertheless have different safety consequences. For the same $K$, action `false` sets the first bit to `false`, and the formal witness gives an unsafe destination probability $1/2$. Safety at all times means preservation in probability of this registered predicate. It does not establish material repair, self-production, lineage persistence, or endogenous goal selection. [S2, S4; QM316]
+
+## 54.5 Why removing the readout must remove this counterexample
+
+<a id="n-qcl-02"></a>
+
+**N-QCL-02 (An operational quotient can remove microscopic mixing).** Keep exactly the same $K$, but use the existing `registeredSurvivalModel`, which reads only the first bit. Its actual terminal control quotient merges $x_0,x_1$. The actual quotient pushforward of $p_*$ is therefore a Dirac state, pure according to the convex-extreme-point definition.
+
+**Proof.** The frozen theorem `registered_survival_two_hidden_states_merge` gives terminal equivalence of the two points. Quotient introduction then gives equal images under the actual control quotient. Hence
+$$
+f_*p_* = \tfrac12\delta_{f(x_0)}+\tfrac12\delta_{f(x_0)}
+=\delta_{f(x_0)}.
+$$
+Apply the independently proved purity of a Dirac state. ∎
+
+This deletion witness shows that the identity of the operational object changes which mixing is visible. The microscopic second bit remains random, but the specified readout and actual quotient identify it completely. Continuing to call this quotient state operationally mixed would change the object of the purification argument. Conversely, the main model retains the distinction by full registered readout and bears responsibility for that domain interpretation. Failure of this particular mixed-state counterexample under restricted readout does not prove universal purification for every state of the restricted model.
+
+## 54.6 The established boundary and the next quantum-selection problem
+
+| Result in the text | Main Lean entry points |
+|---|---|
+| All effects, pushforwards, and marginals | `all_effects_separate`, `pushforward_halfMix`, `marginalLeft_eq_pushforward` |
+| Common-source stochastic action on arbitrary states | `stepState`, `toPMF_stepState`, `toPMF_pushforward` |
+| Extremality and nonexistence for every finite ancilla | `dirac_isPure`, `no_pure_extension_halfMix` |
+| Actual terminal quotient and separation of states | `terminal_eq_iff`, `terminalControl_injective`, `firstQuotientState_halfMix` |
+| Actual common-source trajectory | `actualPath_all_times_safe`, `actualPath_first_quotient_marginal` |
+| Interface conjunction and separation | `finiteCoreSlice_holds`, `classical_purification_separation` |
+| Removal of the readout | `restrictedFirstQuotientState_dirac`, `restrictedFirstQuotientState_pure` |
+
+The precise conclusion is that this finite Core interface group is compatible with the explicit full classical interpretation, while a reachable operationally mixed state of the same model violates purification existence. Obtaining universal purification from those interfaces therefore requires an independent principle that excludes the example, or an additional physical bridge proved with its actual premises. A finite certificate does not replace the entire reconstruction problem of Chapter 1. This is not a model of all 106 Core statements and every physical interpretation, nor does it rule out quantum reconstruction from a richer UEOT theory.
+
+Chapter 57 makes the candidate principle's system types, complete state sets, composition, and discarding into actual interfaces. It proves that the adapted classical example still violates purification existence and establishes purification for every finite complex density operator in the full density space. Exclusion of the real sector in Chapter 55 concerns local tomography instead. Purification existence and essential uniqueness remain separate properties. Further work must not describe complex Hilbert, Born, or Kraus structure already supplied as input as an origin derived from Core.
+
+<a id="ch-55"></a>
+
+# 55. A local-tomography separation for the real quantum sector
+
+Local tomography asks whether all local product tests determine an arbitrary joint state; a finite sample of tests cannot replace that quantifier. Two joint states give an exact counterexample in the real quantum sector, while allowing complex local effects makes the difference observable.
+
+Purification and local tomography impose different selection requirements. Chapter 54 refutes purification existence in a complete classical interpretation. Here the usual restriction to real states and real effects is fixed, and two joint states are constructed directly: every real local product test gives the same statistics, while one valid real joint test distinguishes them perfectly. The proof uses concrete matrices and quantification over all effects; failure of one measurement is not presented as failure of every local measurement.
+
+The composition of two rebits and the additional $Y\otimes Y$ direction have established precedents; see pages 4–5 and equations (1.6)–(1.12) of the original paper by Caves, Fuchs, and Rungta. The contribution here is to connect the specified state pair, universal effect quantifiers, and deletion witnesses to the formal kernel. The standard mathematical phenomenon is not classified as a new law of nature. [Original paper](https://arxiv.org/abs/quant-ph/0009063)
+
+## 55.1 Reality is an additional restriction; composition must be specified
+
+Within the finite complex-matrix realization already used, a matrix is real when every entry has zero imaginary part. Local density operators and effects must satisfy their existing positivity, trace, or upper-bound conditions, together with this reality condition. A real Hermitian matrix is real symmetric. The joint carrier of two local systems is a four-dimensional real Hilbert space, with real symmetric $4\times4$ density matrices as joint states.
+
+Fix
+$$
+Y=\begin{pmatrix}0&-i\\i&0\end{pmatrix},\qquad H=Y\otimes Y.
+$$
+In basis order $(00,01,10,11)$,
+$$
+H=\begin{pmatrix}
+0&0&0&-1\\
+0&0&1&0\\
+0&1&0&0\\
+-1&0&0&0
+\end{pmatrix}.
+$$
+A single $Y$ is Hermitian but not real, whereas $Y\otimes Y$ is real symmetric. Excluding the local $Y$ does not automatically exclude its tensor product from the full real joint system. This is precisely why the composition rule must be explicit.
+
+Define
+$$
+P_\pm=\frac{I\pm H}{2},\qquad
+\rho_\pm=\frac{P_\pm}{2}=\frac{I\pm H}{4}.
+$$
+
+<a id="p-qrt-01"></a>
+
+**P-QRT-01 (Two valid, distinct real joint states).** Both $\rho_+,\rho_-$ are real, Hermitian, positive semidefinite density matrices of trace one, and $\rho_+\ne\rho_-$.
+
+**Proof.** We have $Y^\dagger=Y$ and $Y^2=I$, hence $H^\dagger=H$ and $H^2=I$. Therefore
+$$
+P_\pm^2=P_\pm,\quad P_+P_-=0,\quad P_++P_-=I.
+$$
+A Hermitian idempotent satisfies $P=P^\dagger P$ and is positive semidefinite. From $\operatorname{Tr}H=0$ and joint dimension four, $\operatorname{Tr}P_\pm=2$ follows; division by two gives trace one. Reality follows from the displayed entries of $H$. The difference of the two states is $H/2$, whose $(00,11)$ entry equals $-1/2$, so the states are distinct. ∎
+
+Lean's `involutionEffect` constructs an actual effect from a Hermitian involution. Positivity is proved through a Gram expression, and the upper bound through the complementary projection. `rhoPlus` and `rhoMinus` are actual `Density` objects, not names for matrices whose validity remains unproved.
+
+## 55.2 Every real local product effect gives identical statistics
+
+Arbitrary local effects $E,F$ satisfy $0\le E,F\le I$. Their tensor product is a valid joint effect: tensor products preserve positive semidefiniteness, and
+$$
+I-E\otimes F=(I-E)\otimes I+E\otimes(I-F)\ge0.
+$$
+`productEffect` proves this upper bound; validity of a local product is not supplied as an unchecked additional input.
+
+Every real symmetric local matrix satisfies
+$$
+E=\begin{pmatrix}a&b\\b&d\end{pmatrix},
+\qquad \operatorname{Tr}(EY)=ib-ib=0.
+$$
+This identity holds for all real Hermitian local matrices, not merely for a few commonly used projections.
+
+<a id="n-qrt-01"></a>
+
+**N-QRT-01 (Real local product tests do not determine the joint state).** For every pair of real local effects $E,F$,
+$$
+\operatorname{Tr}[(E\otimes F)\rho_+]
+=\operatorname{Tr}[(E\otimes F)\rho_-].
+$$
+Nevertheless, the joint states are distinct by P-QRT-01.
+
+**Proof.** Multiplication and trace identities for finite Kronecker products give
+$$
+\begin{aligned}
+\operatorname{Tr}[(E\otimes F)(\rho_+-\rho_-)]
+&=\tfrac12\operatorname{Tr}[(E\otimes F)(Y\otimes Y)]\\
+&=\tfrac12\operatorname{Tr}(EY)\operatorname{Tr}(FY)=0.
+\end{aligned}
+$$
+The two states therefore have equal Born responses to these tests. Analytically, the common value is $\tfrac14\operatorname{Tr}E\operatorname{Tr}F$. ∎
+
+`all_real_product_probabilities_equal` quantifies over actual `Effect` objects, with `IsReal` specifying the allowed local subset. `real_local_tomography_fails` combines universal equality of responses with inequality of states. Local tomography here means determination of a joint state by all local product responses. The claim is not extended to a classification of arbitrary unmodelled communication, adaptive protocols, or external ancillary resources.
+
+A dimension argument explains the obstruction. A single two-dimensional real symmetric matrix space has dimension three. Products of two such local spaces span nine dimensions, whereas the four-dimensional real symmetric joint matrix space has dimension ten. The additional direction can be chosen as $Y\otimes Y$. The main Lean result proves the universal response equality directly rather than substituting an unformalized dimension count for it.
+
+## 55.3 A valid real joint test distinguishes the states perfectly
+
+<a id="p-qrt-02"></a>
+
+**P-QRT-02 (Deterministic discrimination by a joint effect).** $P_+$ is a valid real joint effect, and
+$$
+\operatorname{Tr}(P_+\rho_+)=1,\qquad
+\operatorname{Tr}(P_+\rho_-)=0.
+$$
+
+**Proof.** Positivity of the projection in P-QRT-01 gives $P_+\ge0$, while $I-P_+=P_-\ge0$, so the full effect conditions hold. Idempotence gives $P_+\rho_+=P_+/2=\rho_+$, with trace one; orthogonality gives $P_+\rho_-=P_+P_-/2=0$. ∎
+
+The example is therefore not a pair of different mathematical labels for the same operational state. Joint allowed effects yield different statistics; only the local product-effect set fails to reconstruct the difference. `jointTest` and its two probability theorems establish this distinction.
+
+## 55.4 Removing local reality restores a distinguishing test
+
+<a id="n-qrt-02"></a>
+
+**N-QRT-02 (Discrimination when complex local effects are allowed).** Take the complex local effect
+$$
+E_Y=\frac{I+Y}{2}.
+$$
+It is a valid Hermitian projection although it is not real. Its product test satisfies
+$$
+\operatorname{Tr}[(E_Y\otimes E_Y)\rho_+]=\tfrac12,
+\qquad \operatorname{Tr}[(E_Y\otimes E_Y)\rho_-]=0.
+$$
+
+**Proof.** $Y$ is a Hermitian involution, so $E_Y$ and $I-E_Y$ are orthogonal positive semidefinite projections. Using $\operatorname{Tr}E_Y=1$ and $\operatorname{Tr}(E_YY)=1$ in the tensor-trace expression for $\rho_\pm$ gives $(1\pm1)/4$. ∎
+
+This deletion control distinguishes the particular state pair above. It is not the complete theorem of complex quantum local tomography. The joint states remain unchanged; only the allowed local test set changes. The witness identifies the actual role of the reality restriction and prevents N-QRT-01 from being misread as a failure of local tomography in complex quantum theory itself.
+
+## 55.5 Linear postprocessing cannot recover the missing joint effect
+
+<a id="n-qrt-03"></a>
+
+**N-QRT-03 (The distinguishing effect is outside the finite real span of product effects).** There is no finite index set $J$, no collection of real coefficients $c_j$, and no real local effects $E_j,F_j$ such that
+$$
+P_+=\sum_{j\in J}c_j(E_j\otimes F_j).
+$$
+
+**Proof.** If such an expansion existed, real linearity of the trace pairing and N-QRT-01 would make the right-hand side respond equally to $\rho_+,\rho_-$. P-QRT-02 instead gives left-hand-side responses one and zero, a contradiction. ∎
+
+The coefficients may be negative, so this is stronger than exclusion of a convex combination of product effects. It concerns the specified finite linear span, not every physical implementation or infinite operational protocol. The dedicated `RealTomographyTwoRebit` witness connects this linear consequence to the main module's states, effects, and universal equality.
+
+## 55.6 Its exact position in the UEOT quantum-selection chain
+
+| Selection question | Established result | Remaining responsibility |
+|---|---|---|
+| Excluding the full classical interpretation | Chapter 54 proves failure of purification on the specified common-source Core interfaces. | Why nature must satisfy the proposed purification principle. |
+| Excluding this real composition rule | This chapter proves failure of local tomography for jointly distinguishable states. | Why a physical realization of UEOT must satisfy local tomography. |
+| Uniquely selecting complex quantum structure | A necessary separation witness is supplied here. | The candidate-theory domain, other reconstruction premises, and a complete reconstruction theorem. |
+| Describing nature | Exact probability separation is proved. | Actual preparation and measurement capabilities, with calibrated data. |
+
+The machine proof represents the real-entry subspace inside complex matrices. Chapter 57 supplies an operational presentation of all finite real states, real effects, real Kraus processes, composition, and partial trace, and proves seven basic laws. This still does not formalize every OPT reconstruction premise, categorical coherence, or essential uniqueness of purification. Nor is the present example a second complete certificate for the H1–H6 Core interface group of Chapter 54.
+
+In the dependency classification, standard finite states and effects are P. The reality restriction and selected composition interpretation carry B/E responsibilities. Requiring physical systems to satisfy local tomography is an additional sector-selection principle S, and the displayed response difference is O. Any further unproved assertion that a UEOT mechanism necessarily generates these selection principles must be separately classified as X. Comparing independence and physical meaning of candidate principles turns the question of quantum selection into a mathematical problem with explicit exclusion obligations. [S2, S3; QM316]
+
+<a id="ch-56"></a>
+
+# 56. Coherence-preserving conditional evolution and quantum Doob channels
+
+Discarding off-diagonal entries while conditioning on survival would lose quantum coherence. Explicit left and right spectral objects construct a coherence-preserving Doob channel, separating finite-time intertwining from stronger long-time convergence and providing an exactly computable noncommuting example.
+
+Chapter 53 realizes a classical substochastic process diagonally, removing input coherence after every successful step. This chapter starts instead from an actual success branch of a quantum instrument. Under explicit positive spectral and invertible-filter premises, it constructs a complete quantum Doob channel. The main connection is not confined to a specially chosen stationary state: for every initial state, the actual finite-time conditional state is related, by a specified normalization transform, to an iterate of the Doob channel.
+
+Quantum Doob transforms have precedents in open-system research. Carollo et al. relate rare dynamics to an alternative Markov dynamics. The finite discrete-instrument propositions below are proved here; citation of that work does not replace the required finite proofs or establish an infinite-time conditioning limit. [Original paper](https://arxiv.org/abs/1711.10951)
+
+## 56.1 The success branch, actual records, and left/right spectral premises
+
+Fix a finite complex-matrix carrier and a complete instrument, and select a success outcome $o$. Its branch and Heisenberg adjoint are
+$$
+\Phi(X)=\sum_kK_kXK_k^\dagger,
+\qquad \Phi^*(A)=\sum_kK_k^\dagger AK_k.
+$$
+The complete instrument also has other outcomes, so this branch generally preserves or decreases the trace of positive operators. `successOperator` uses the existing `recordOperator` for the actual record in which the same success outcome occurs $n$ times. It is not an unrelated iteration proxy. Define
+$$
+m_n(\rho)=\operatorname{Tr}\Phi^n(\rho),\qquad
+\rho_n^{\mathrm{cond}}=\frac{\Phi^n(\rho)}{m_n(\rho)}
+$$
+The second expression requires a strictly positive actual mass. `successMass_eq_response` connects the first expression to the record probability in the same instrument library.
+
+The right-eigenstate condition is $\Phi(\rho_*)=r\rho_*$. The left-eigenoperator condition concerns the observable matrix $H$ and reads $\Phi^*(H)=rH$. They serve different purposes. The former gives the geometric survival law of a quasi-stationary state; the latter gives Doob completeness and the finite conditioning relation for arbitrary initial states. Existence of one spectral object does not establish existence of the other.
+
+## 56.2 Invertible conjugation and normalized state transforms
+
+Let $S,T$ be inverse matrices satisfying $TS=ST=I$. Write
+$$
+F(X)=SXS^\dagger,\quad F^{-1}(X)=TXT^\dagger,
+\quad H=S^\dagger S.
+$$
+For a density operator $\rho$, set
+$$
+c_\rho=\operatorname{Tr}F(\rho),\qquad
+\mathcal F(\rho)=F(\rho)/c_\rho.
+$$
+
+<a id="p-qqd-01"></a>
+
+**P-QQD-01 (Validity of filter normalization).** $F$ and $F^{-1}$ are inverses and preserve positive semidefiniteness. For every density operator, $c_\rho>0$, so $\mathcal F(\rho)$ is a valid density operator; furthermore, $c_\rho=\operatorname{Tr}(H\rho)$.
+
+**Proof.** Conjugation preserves positive semidefiniteness. Substitution of $TS=ST=I$ gives the two inverse identities. If the positive operator $F(\rho)$ had zero trace, the PSD zero-trace criterion would make it zero. Applying $F^{-1}$ would then give $\rho=0$, contradicting trace one. Finally, finite-matrix trace cyclicity gives $\operatorname{Tr}(S\rho S^\dagger)=\operatorname{Tr}(S^\dagger S\rho)$. ∎
+
+`InvertibleFilter` assumes only the two matrices and their actual inverse identities. `mass_apply_pos` derives positive mass; positive mass is not inserted as a field of the input structure. There is no requirement that $S$ be a previously chosen positive square root of $H$, avoiding an additional unproved choice of canonical form.
+
+This mathematical transform must be distinguished from a physical operation. $F$ is linear and completely positive, but need not preserve or decrease trace; normalization makes $\mathcal F$ generally nonlinear. The factor $c_\rho$ can exceed one and therefore is not directly a filtering success probability. The complete quantum channel actually proved in this chapter is $\widetilde\Phi$ in the next section.
+
+## 56.3 Deriving Kraus completeness from the left spectral condition
+
+Explicitly require
+$$
+r>0,\qquad \Phi^*(H)=rH.
+$$
+
+<a id="p-qqd-02"></a>
+
+**P-QQD-02 (An actual quantum Doob instrument).** Define
+$$
+\widetilde K_k=r^{-1/2}SK_kT.
+$$
+These matrices form a complete single-outcome instrument, whose channel satisfies
+$$
+\widetilde\Phi(X)=r^{-1}F\bigl(\Phi(F^{-1}(X))\bigr),
+\qquad \widetilde\Phi(F(X))=r^{-1}F(\Phi(X)).
+$$
+
+**Proof.** Compute the Gram sum directly:
+$$
+\begin{aligned}
+\sum_k\widetilde K_k^\dagger\widetilde K_k
+&=r^{-1}T^\dagger\Bigl(\sum_kK_k^\dagger S^\dagger SK_k\Bigr)T\\
+&=r^{-1}T^\dagger\Phi^*(H)T
+=T^\dagger HT=(ST)^\dagger(ST)=I.
+\end{aligned}
+$$
+Expand $\widetilde K_kX\widetilde K_k^\dagger$ term by term to obtain the channel formula, then use $F^{-1}F=\mathrm{id}$ for one-step intertwining. ∎
+
+Lean first constructs `doobWeighted` with explicit real weight $r^{-1}$ and matrices $SK_kT$, then uses the existing verified conversion to obtain `doobInstrument` with square-root Kraus operators. `doob_complete` is a derived completeness theorem. The visible outcome type is `Unit`; Kraus indices are summed within the branch. These indices have not been made visible monitoring outcomes, and equivalence of arbitrary fine-grained record processes is not proved here.
+
+## 56.4 Finite-time conditioning for an arbitrary initial state
+
+<a id="p-qqd-03"></a>
+
+**P-QQD-03 (Finite intertwining on all operators and the actual conditional state).** Under P-QQD-02, for every complex operator $X$ and every finite $n$,
+$$
+\widetilde\Phi^n(F(X))=r^{-n}F(\Phi^n(X)),
+\qquad \operatorname{Re}\operatorname{Tr}F(\Phi^n(X))=r^n\operatorname{Re}\operatorname{Tr}F(X).
+$$
+For every initial density operator $\rho$ and every finite $n$, $m_n(\rho)>0$, and
+$$
+\mathcal F\bigl(\rho_n^{\mathrm{cond}}\bigr)
+=\widetilde\Phi^n\bigl(\mathcal F(\rho)\bigr).
+$$
+
+**Proof.** Induction on $n$ using one-step intertwining gives the first identity. The left spectral relation and adjoint pairing give
+$$
+\operatorname{Tr}F(\Phi(X))
+=\operatorname{Tr}(H\Phi(X))
+=\operatorname{Tr}(\Phi^*(H)X)
+=r\operatorname{Tr}F(X),
+$$
+Iteration gives the real-part trace relation in the second identity. The same cyclic-trace calculation also gives the corresponding full complex-trace identity analytically; the named Lean theorem has the real-valued `mass` type. For a density operator, the relevant operators are PSD, their traces are real, and the right-hand side is $r^nc_\rho>0$. If $m_n(\rho)=0$, the PSD operator $\Phi^n(\rho)$ would vanish by the zero-trace criterion, forcing the left-hand side to vanish as well, a contradiction. All finite conditional states are therefore well defined.
+
+Finally substitute the actual normalizations:
+$$
+\begin{aligned}
+\mathcal F\!\left(\frac{\Phi^n(\rho)}{m_n(\rho)}\right)
+&=\frac{F(\Phi^n(\rho))}{\operatorname{Tr}F(\Phi^n(\rho))}\\
+&=\frac{r^{-n}}{c_\rho}F(\Phi^n(\rho))
+=\widetilde\Phi^n\!\left(\frac{F(\rho)}{c_\rho}\right).
+\end{aligned}
+$$
+Cancellation of $m_n$ in the first step requires strict positivity and cannot be used for a zero-probability event. ∎
+
+The Lean declarations are `doob_successOperator_apply`, `eigenmetric_successMass`, `eigenmetric_successMass_pos`, and `doob_finite_conditioning`. The first two hold on all operators; the conditional-state conclusion explicitly uses actual `Density` objects. Normalization refers to the originally defined success record, not to similar notation in a different evolution.
+
+The left-hand side still contains $\mathcal F$. The theorem does not equate the original conditional state directly with a Doob orbit starting from the untransformed input. Nor does it assert survival rate $r^n$ for every initial state. Inverting the first identity analytically also gives
+$$
+m_n(\rho)=r^nc_\rho\operatorname{Tr}\!\left[
+T\,\widetilde\Phi^n(\mathcal F(\rho))T^\dagger\right].
+$$
+Thus actual survival mass for a general input has an additional state-dependent factor. This analytic consequence is not counted as a separate named Lean theorem.
+
+## 56.5 A right eigenstate supplies the quasi-stationary and Doob-stationary states
+
+<a id="p-qqd-04"></a>
+
+**P-QQD-04 (Quasi-stationarity, geometric survival, and stationarity of the actual channel).** Suppose $r>0$. If a density operator $\rho_*$ is additionally supplied with $\Phi(\rho_*)=r\rho_*$, then
+$$
+\Phi^n(\rho_*)=r^n\rho_*,\quad m_n(\rho_*)=r^n,
+\quad \rho_{*,n}^{\mathrm{cond}}=\rho_*.
+$$
+The probability bound of the actual instrument gives $r\le1$. If the preceding left spectral condition also holds, then
+$$
+\widetilde\Phi(\mathcal F(\rho_*))=\mathcal F(\rho_*).
+$$
+Hence $\mathcal F(\rho_*)$ is a stationary density operator of the actual `channelState`. Every finite repeated single-outcome record preserves this state and has mass one.
+
+**Proof.** Induction on the number of steps gives the first identity from the right-eigenstate relation. Taking traces and using $\operatorname{Tr}\rho_*=1$ gives geometric mass. Strict positivity of $r^n$ makes normalization return $\rho_*$. The one-step success probability is $r$, which is at most one by completeness of the instrument. Substitute the right-eigenstate relation into one-step intertwining and normalize by $c_{\rho_*}$ to obtain the Doob fixed point. The single branch is the whole channel, so the conclusion applies to the actual `channelState`. ∎
+
+Unit mass of the Doob single-outcome record follows from trace preservation. The substantive construction is its all-operator intertwining with the original success branch, the conditioning relation for every input, and the explicit stationary matrix. No theorem here asserts that every CP branch has the required positive invertible left spectral matrix, identifies the spectral radius, proves simplicity of the leading eigenvalue, or proves long-time attraction.
+
+## 56.6 An exact rational example retaining input coherence
+
+Take a two-dimensional source instrument with success Kraus operators
+$$
+K_0=\tfrac14I,\quad
+K_1=\begin{pmatrix}1/4&0\\1/2&0\end{pmatrix},\quad
+K_2=\begin{pmatrix}0&1/8\\0&1/4\end{pmatrix},\quad K_3=0.
+$$
+and failure Kraus operators
+$$
+L_0=\operatorname{diag}(3/4,7/8),\quad
+L_1=\operatorname{diag}(1/4,1/4),\quad
+L_2=L_3=\operatorname{diag}(0,1/8).
+$$
+Direct calculation gives
+$$
+\sum_kK_k^\dagger K_k=\operatorname{diag}(3/8,9/64),
+\quad \sum_kL_k^\dagger L_k=\operatorname{diag}(5/8,55/64),
+$$
+Their sum is the identity. For every complex matrix $X$, the success branch is
+$$
+\Phi(X)=\begin{pmatrix}
+X_{00}/8+X_{11}/64&X_{01}/16+X_{00}/8+X_{11}/32\\
+X_{10}/16+X_{00}/8+X_{11}/32&X_{00}/4+X_{11}/8
+\end{pmatrix}.
+$$
+Thus the off-diagonal input $|0\rangle\langle1|$ is multiplied by $1/16$ rather than erased; also, $K_1K_2\ne K_2K_1$. These exact witnesses show that the example extends beyond the one-step diagonal measure-and-prepare model of Chapter 53. They do not constitute a classification of every nonclassical resource.
+
+Choose
+$$
+\begin{aligned}
+\rho_* &=\tfrac15\begin{pmatrix}1&2\\2&4\end{pmatrix},\qquad r=3/16,\\
+S&=\operatorname{diag}(2,1),\quad T=\operatorname{diag}(1/2,1),\quad H=\operatorname{diag}(4,1).
+\end{aligned}
+$$
+The exact identities are
+$$
+\Phi(\rho_*)=r\rho_*,\qquad \Phi^*(H)=rH,\qquad
+c_{\rho_*}=8/5,
+$$
+$$
+\sigma_*:=\mathcal F(\rho_*)=\tfrac12\begin{pmatrix}1&1\\1&1\end{pmatrix}
+=|+\rangle\langle+|.
+$$
+The normalization factor $8/5$ illustrates the interpretive boundary of Section 56.2: it exceeds one and is therefore not an outcome probability of the source instrument.
+
+<a id="p-qqd-05"></a>
+
+**P-QQD-05 (A nondiagonal Doob witness computable on all matrices).** For every complex operator $X$, the actual Doob channel in this example satisfies
+$$
+\widetilde\Phi(X)=\tfrac13X+\tfrac23\operatorname{Tr}(X)\,\sigma_*.
+$$
+Starting from the source quasi-stationary state, the probability of $n$ consecutive successes is $(3/16)^n$, and the conditional state remains $\rho_*$. The transformed channel preserves $\sigma_*$. The arbitrary-input finite-conditioning theorem P-QQD-03 also applies to this example.
+
+**Proof.** Substitute $S,T,r$ and the source-branch formula on all matrices. Simplifying the four entries gives the displayed linear-operator identity. The remaining conclusions instantiate P-QQD-03 and P-QQD-04. ∎
+
+The dedicated `QuantumDoobExamples` proves `source_branch_formula` and `transformed_branch_formula` for arbitrary complex $X$. The latter uses the complex trace explicitly. The real-valued `mass`, which agrees with trace on Hermitian inputs, must not be substituted for trace on all complex operators. All matrices and coefficients are exact rational inputs. Square roots enter only through the verified conversion to an ordinary instrument; floating-point approximations do not enter the proof.
+
+<a id="n-qqd-01"></a>
+
+**N-QQD-01 (Three distinctions that must be retained).** In this example, removing the failure Kraus operators breaks completeness of the source instrument; the original quasi-stationary state $\rho_*$ differs from the filtered stationary state $\sigma_*$; and from the uniform initial state $I/2$, the one-step success probability is $33/128$, not $r=3/16$.
+
+**Proof.** The success Gram sum has diagonal entries $3/8,9/64$, neither equal to one. The two states have off-diagonal entries $2/5$ and $1/2$, respectively. Finally,
+$$
+\operatorname{Tr}\Phi(I/2)=\tfrac12(3/8+9/64)=33/128\ne3/16.
+$$
+All three conclusions have dedicated Lean witnesses. ∎
+
+## 56.7 The next dynamical obligations
+
+This construction extends the diagonal success embedding of Chapter 53 to a conditional construction for general finite Kraus branches and completes the all-matrix calculation in a nondiagonal example. It complements Chapters 54 and 55: those chapters examine exclusion obligations for quantum-selection principles, while this one strengthens usable dynamics after quantum structure is supplied. The tasks do not replace one another.
+
+The results are conditional on standard quantum structure P and actual operational bridges B. The selected success task and source instrument are E, and record probabilities are O. Core is not directly invoked to select complex quantum structure, so thematic connections to QSD or persistence do not place every result in C. Spectral existence, irreducibility, uniqueness, and conditional limits remain obligations in standard mathematics or domain bridging; additional claims of physical necessity specific to UEOT would be classified separately as X.
+
+For the same rational nondiagonal model, Chapter 59 proves exact iterates, uniqueness of the Doob invariant state, and a geometric convergence rate for the actual conditional state. A valid identity Doob channel also shows that a positive spectral metric does not by itself guarantee mixing. General progress requires verifiable finite irreducibility, primitivity, or contraction conditions before establishing spectral objects and long-time conditioned processes. The original dual-drive idea can suggest persistence mechanisms to study, but success events, inputs, control costs, and actual observations still require separate definitions. [S1, S2, S4; QM316; QM317]
+
+<a id="ch-57"></a>
+
+# 57. Purification and operational principles in the complete state space
+
+A purification principle concerns the full state space and an actual discard operation, not only a selected class of vector states. Positive semidefinite matrices yield purifications of arbitrary finite complex states; common operational interfaces then compare classical, real, and complex presentations while separating existence from a full reconstruction principle.
+
+Chapter 54 showed that a collection of concrete finite Core process interfaces admits a complete classical interpretation, while mixed states in that interpretation have no finite classical pure extension. This result creates a constructive obligation. If purification is proposed as a principle for selecting a quantum sector, systems, all allowed states, composition, and discarding must first be specified in a common operational language. One must then prove that the complex quantum model satisfies the principle as stated. This chapter constructs purifications of finite-dimensional complex density states and identifies the remaining distance between that construction and a quantum reconstruction.
+
+## 57.1 A Complete Operational Presentation Before Selection Principles
+
+An operational presentation of a system must at least specify its states, effects, effect probabilities, convex mixtures, processes with explicit input and output types, and the action of those processes on states. Composite systems also require product states, product effects, and concrete discard maps. A separate package contains seven basic laws: probability bounds; affinity of probability under mixtures; multiplication of product probabilities; marginal identities for product states; affinity of processes; the state action of identity processes; and the state action of sequential composition. These laws must be proved in each concrete model. A structure field having the required type does not establish all the model's physical properties.
+
+System types must genuinely represent composition. For finite carriers $\iota$ and $\alpha$, the joint matrix carrier in this chapter is $\iota\times\alpha$. This avoids equating equal dimensions with equal types and makes the summation index in a partial trace correspond directly to the discarded system. Processes with different input and output spaces use the rectangular Kraus channels of Chapter 58: their Kraus matrices are actual linear maps from the input vector space to the output vector space.
+
+For a finite complex quantum system, the state space remains
+
+$$
+\mathcal D(\iota)=\{\rho\in M_\iota(\mathbb C):\rho\succeq0,\ \operatorname{Tr}\rho=1\}.
+$$
+
+Effects comprise all matrices satisfying $0\preceq E\preceq I$, with probability $\operatorname{Re}\operatorname{Tr}(E\rho)$. The matrix product $E\rho$ is generally not Hermitian. Its trace is real by the PSD Gram factorization, cyclicity of trace, and the reality of the trace of a positive matrix; one cannot replace that argument by asserting that the product remains positive. Taking the real part makes the probability function explicitly real-valued in its type. For $0\le t\le1$, a mixture is the actual matrix $t\rho+(1-t)\sigma$; positivity and unit trace follow from the corresponding linear identities.
+
+Purity is defined as extremality in this complete convex set:
+
+$$
+\begin{aligned}
+\operatorname{Pure}(\rho)\iff{}&
+\forall\sigma,\tau\in\mathcal D(\iota),\ \forall 0<t<1,\\
+&\rho=t\sigma+(1-t)\tau
+\ \Longrightarrow\ \sigma=\rho\ \land\ \tau=\rho.
+\end{aligned}
+$$
+
+This property quantifies over every valid density state. Merely calling rank-one matrices “pure states,” or checking extremality in a selected subset of states, does not discharge the proof obligation here.
+
+## 57.2 Why Unit-Vector States Are Extreme Points of the Complete Convex Set
+
+<a id="p-pur-01"></a>
+
+**P-PUR-01 (Vector purity in the complete density-state space).** Let $P=|v\rangle\langle v|$ with $\operatorname{Tr}P=1$. Then $P$ is an extreme point of the complete set $\mathcal D(\iota)$.
+
+**Proof.** Normalization gives $P^2=P$. Set $Q=I-P$; then $Q=Q^\dagger$ and $QP=0$. Suppose $P=t\sigma+(1-t)\tau$, where $0<t<1$ and $\sigma,\tau$ are arbitrary density states. Compression on both sides gives
+
+$$
+0=QPQ=tQ\sigma Q+(1-t)Q\tau Q.
+$$
+
+Both terms on the right are positive semidefinite. Antisymmetry of the positive cone, together with the two strictly positive coefficients, forces $Q\sigma Q=Q\tau Q=0$.
+
+The vanishing positive compression must still be converted into a statement about the entire support. For any positive semidefinite $X$, finite-matrix $C^*$ positivity supplies $X=B^\dagger B$. If $QXQ=0$, then
+
+$$
+\operatorname{Tr}\bigl((BQ)^\dagger(BQ)\bigr)=0,
+$$
+
+so $BQ=0$, and hence $XQ=B^\dagger BQ=0$. Hermiticity also gives $QX=0$. Therefore $XP=PX=X$. For rank-one $P$, direct matrix multiplication yields
+
+$$
+PXP=\operatorname{Tr}(XP)P.
+$$
+
+Substituting $X=\sigma$ and using $\operatorname{Tr}\sigma=1$ gives $\sigma=P$; the same argument applies to $\tau$. At no point are $\sigma,\tau$ restricted to rank-one states, diagonal states, or a finite sample. ∎
+
+In Lean, `IsPure` quantifies over the actual `Density` type. The declarations `positive_compression_zero`, `density_eq_vector_of_compression_zero`, and `vectorState_isPure` establish, respectively, the compression-support step, identification using unit trace, and extremality in the complete set. The invoked matrix-positivity theorems are explicit mathematical dependencies, not new physical selection principles. [QM317]
+
+## 57.3 The Actual Partial Trace and Gram Purification of Any Finite State
+
+Let the discarded auxiliary system have carrier $\alpha$. For each $a\in\alpha$, define the rectangular Kraus matrix
+
+$$
+L_a(i,(j,b))=\delta_{ij}\delta_{ab}.
+$$
+
+Direct summation gives $\sum_aL_a^\dagger L_a=I_{\iota\times\alpha}$, so these matrices define a concrete channel. Its action on an arbitrary complex matrix is
+
+$$
+\operatorname{Tr}_{\alpha}(X)_{ij}
+=\sum_aX_{(i,a),(j,a)}.
+$$
+
+Thus the partial trace preserves positivity and the complex trace. Every finite ancillary amplification also preserves positivity on all positive joint inputs; the check is not restricted to product states. For product density states, $\operatorname{Tr}\sigma=1$ further gives $\operatorname{Tr}_{\alpha}(\rho\otimes\sigma)=\rho$.
+
+<a id="p-pur-02"></a>
+
+**P-PUR-02 (Existence of a purification for every finite complex density state).** For every $\rho\in\mathcal D(\iota)$, there exists $\Psi\in\mathcal D(\iota\times\iota)$ such that $\Psi$ is pure in the complete joint density-state space and satisfies $\operatorname{Tr}_{2}\Psi=\rho$.
+
+**Proof.** From $\rho\succeq0$, obtain a matrix $A$ such that $\rho=AA^\dagger$, and define the joint vector $\psi(i,a)=A_{ia}$. Its outer product $\Psi=|\psi\rangle\langle\psi|$ is positive, and
+
+$$
+\operatorname{Tr}\Psi
+=\sum_{i,a}|A_{ia}|^2
+=\operatorname{Tr}(AA^\dagger)=1.
+$$
+
+P-PUR-01 establishes that $\Psi$ is an extreme point of the complete joint state space. Entrywise, the actual partial trace gives
+
+$$
+(\operatorname{Tr}_{2}\Psi)_{ij}
+=\sum_a A_{ia}\overline{A_{ja}}
+=(AA^\dagger)_{ij}=\rho_{ij}.
+$$
+
+The existence of $A$ follows from positivity of the original density state; it is not an additional assumption that a caller must supply. ∎
+
+The formal construction `purification` selects a Gram factor supplied by PSD existence. The declarations `purification_isPure` and `purification_marginal` prove purity and the marginal identity, and `exists_purification` combines them. This selection uses `Classical.choice`, already included in the foundational audit. It establishes existence and provides a noncomputable choice in Lean; it does not include a certified numerical matrix-square-root algorithm. On an empty carrier, there is no unit-trace density state in the first place. The theorem does not manufacture states through a hidden nonemptiness assumption. [QM317]
+
+The Bell vector $\psi=(|00\rangle+|11\rangle)/\sqrt2$ supplies the familiar two-dimensional positive control, with marginal $I/2$. The concrete Lean witness uses $(1+i)/2$ at its two nonzero positions to retain rational complex coefficients. This differs from the standard vector only by a global phase and gives the same Bell projector. The general theorem covers every finite dimension and every valid initial state. The small example checks indices and marginals; it cannot replace the general proof.
+
+## 57.4 Three Concrete Models and Separate Candidate Principles
+
+<a id="p-opt-01"></a>
+
+**P-OPT-01 (Three concrete presentations in one operational language).** The complete classical simplex, complete real density-matrix model, and complete complex density-matrix model each have concrete states, effects, convex mixtures, products, discards, and their declared processes. The seven basic laws above are proved from their respective data as `classical_laws`, `real_laws`, and `complex_laws`. Purification existence and local tomography are defined separately as candidate properties, not required fields of a presentation.
+
+In the classical model, states are all finite probability distributions and effects are all $[0,1]$-valued functions. Composite systems contain all distributions on Cartesian products, discarding is marginal summation, and processes are concrete stochastic kernels. The real model uses all real symmetric PSD unit-trace matrices, real effects, and real Kraus processes. The complex model uses the complex matrix objects above. Multiplication of product probabilities follows from classical product summation or the Kronecker-product trace identity; process affinity follows from the actual linear action. When real matrices are embedded into complex matrices, their real-valuedness and joint carrier must be preserved. The full complex state set must not be mistaken for the real model's state space.
+
+In this language, purification existence means
+
+$$
+\forall A\ \forall\rho\in\operatorname{State}(A),\
+\exists B\ \exists\Psi\in\operatorname{State}(A\otimes B),\
+\operatorname{Pure}(\Psi)\ \land\ \operatorname{discard}_{B}\Psi=\rho.
+$$
+
+Local tomography instead requires that two joint states with identical probabilities for every product effect be the same joint state. The former concerns pure extensions; the latter concerns identification of joint states from local-test statistics. They impose different logical obligations.
+
+## 57.5 How Countermodels Constrain Quantum Selection Without Presupposing It
+
+<a id="n-opt-01"></a>
+
+**N-OPT-01 (Basic operational laws do not automatically select a quantum theory).** The complete classical model satisfies the declared basic laws, but the nontrivial half-mixture of Chapter 54 has no pure extension with any finite auxiliary system. In the real quantum model, the two states of Chapter 55 give identical probabilities for all real local product effects, yet a valid real joint effect distinguishes them. Once these witnesses are connected to the same operational presentation, the first refutes purification existence for that classical model and the second refutes local tomography for that real model.
+
+The classical mixed state in Chapter 54 still has ordinary extensions—for example, its product with a deterministic auxiliary state. What fails is the additional requirement that the extension be pure. Conversely, if the allowed state set is deliberately reduced to a singleton containing one mixed state, that state becomes an extreme point of the reduced set. This negative control shows why quantification over the complete state space is itself substantive scientific content and cannot be silently weakened.
+
+Nor may the real quantum counterexample be rewritten as “real quantum theory does not admit purification.” The property rejected here is local tomography: the two real joint states of Chapter 55 have identical statistics for every real product test. Once the specified complex local effects are allowed, their difference becomes visible. This removal-of-restriction control identifies precisely the local reality assumption on which the counterexample depends.
+
+A rigorous research path follows: formulate selection principles independently, test their satisfaction or failure model by model, and investigate whether UEOT itself or empirical evidence provides an independent justification for them. The fact that the complex model performs appropriately among three examined models does not exclude every alternative theory. Nor does this chapter exhaust all interpretations of the complete 106 Core propositions by those three models.
+
+## 57.6 From Purification Existence to Full Quantum Reconstruction
+
+Purification principles in quantum-reconstruction work usually include essential uniqueness up to reversible transformations on the auxiliary system. The reconstruction of Chiribella, D’Ariano, and Perinotti also uses background principles including causality, perfect distinguishability, ideal compression, local distinguishability, and pure conditioning. Selecting only the names “purification existence” and “local tomography” does not make its conclusion a proved consequence of this project. [CDP2010; CDP2011]
+
+This chapter supplies the existence construction and the extremality proof for vector states in a finite complex matrix realization. The converse-purity and uniqueness gaps left here in edition 3.3 are closed in Chapter 61: every fully convex-pure state has a normalized vector representation; arbitrary purifications on the same auxiliary carrier are related by an actual auxiliary unitary; and different auxiliary carriers are handled separately through isometric embedding and common extension. Chapter 60 proves local tomography for arbitrary joint states in the present complex operational presentation. These results are bound to their new actual source files and acceptance records; they do not retrospectively enlarge this chapter's original proof. The complete reconstruction background, and why UEOT must satisfy its principles, remain separate bridging obligations.
+
+The original idea that a parent object can support a mixed description of a child now has a concrete construction and a clear boundary: the actual partial trace of a pure parent state gives any finite complex density state, whereas the same assertion does not hold universally in the complete classical model. Advancing this difference into a physical selection requires proof or empirical constraints on the source of the additional principles themselves.
+
+<a id="ch-58"></a>
+
+# 58. Joint records, quantum memory, and finite adaptive protocols
+
+When later actions depend on earlier outcomes, comparing outcome-forgetting quantum channels can miss real predictive differences. Joint classical records and quantum memory make a complete finite adaptive tree a comparable physical object and allow exact control of record distance over all events.
+
+An instrument maps an input state to several unnormalized branches carrying outcome labels. Summing the branches produces an unconditional quantum channel, but discards the outcome information. The complete record laws of Chapter 49 and the effect distance of Chapter 50 therefore need a common carrier: a joint state retaining both the actual classical record and the quantum memory associated with each record. This chapter constructs that carrier from actual Kraus matrices and extends it to the existing class of arbitrary finite adaptive protocols.
+
+## 58.1 Kraus Channels with Different Input and Output Types
+
+Let the input carrier be $\iota$ and the output carrier $\omega$. A finite rectangular Kraus channel specifies $K_k\in M_{\omega\times\iota}(\mathbb C)$ satisfying completeness on the input space:
+
+$$
+\sum_kK_k^\dagger K_k=I_\iota.
+$$
+
+Its actual operator map is $\mathcal C(X)=\sum_kK_kXK_k^\dagger$. Input and output dimensions may differ; the trace identities remain meaningful on their respective spaces.
+
+<a id="p-cq-01"></a>
+
+**P-CQ-01 (Complete positivity, trace preservation, and effect contraction for rectangular channels).** This map preserves the complex trace of every complex matrix. For every finite auxiliary carrier $\nu$, the actual amplification defined by $K_k\otimes I_\nu$ preserves positivity of every $X\succeq0$. For every output effect $E$, the pullback $\mathcal C^*(E)=\sum_kK_k^\dagger E K_k$ is a valid input effect, and
+
+$$
+\operatorname{Tr}(E\mathcal C(X))=\operatorname{Tr}(\mathcal C^*(E)X),\qquad
+d_{\rm eff}(\mathcal C(\rho),\mathcal C(\sigma))\le d_{\rm eff}(\rho,\sigma).
+$$
+
+**Proof.** Each term $K_kXK_k^\dagger$ is positive for positive input. Cyclicity of trace and completeness give
+
+$$
+\operatorname{Tr}\mathcal C(X)
+=\operatorname{Tr}\!\left(\left(\sum_kK_k^\dagger K_k\right)X\right)
+=\operatorname{Tr}X.
+$$
+
+The amplified Kraus completeness relation is $\sum_k(K_k^\dagger K_k)\otimes I=I$, so the same positivity proof applies to every positive joint input. An entrywise expansion also identifies this map with the actual identity amplification, rather than a different map agreeing only on product states.
+
+For effects, $\mathcal C^*(E)\succeq0$, while $I-\mathcal C^*(E)=\mathcal C^*(I-E)\succeq0$. The trace-pairing identity turns each output test into an input test. Taking the supremum over all output effects proves contraction. Identity processes and sequential composition also have actual Kraus realizations: the Kraus matrices for $\mathcal C$ followed by $\mathcal D$ are $D_lC_k$. ∎
+
+Complete positivity here includes positive inputs on every finite auxiliary system. The error measure remains the full-effect distance on the stated input space. This positivity result does not, by itself, turn the later defect supremum into a diamond distance. [QM317]
+
+## 58.2 A Single Instrument's Record Register and Two Marginals
+
+Given a complete instrument $I$ with Kraus matrices $K_{o,k}$, take the outcome set $O$ as the record carrier. Define
+
+$$
+V_{o,k}((p,i),j)=\delta_{po}K_{o,k}(i,j).
+$$
+
+These are actual rectangular matrices from $\iota$ to $O\times\iota$. Summing over the label yields $V_{o,k}^\dagger V_{o,k}=K_{o,k}^\dagger K_{o,k}$, so completeness follows directly from the original instrument.
+
+<a id="p-cq-02"></a>
+
+**P-CQ-02 (Joint block state and marginals of an actual instrument).** These Kraus matrices define the channel
+
+$$
+\mathcal R_I(X)=\bigoplus_{o\in O}\Phi_{I,o}(X),\qquad
+\Phi_{I,o}(X)=\sum_kK_{o,k}XK_{o,k}^\dagger.
+$$
+
+The block identity holds for every complex input $X$. For a density state $\rho$, $\Omega_{I,\rho}=\mathcal R_I(\rho)$ is a valid joint density state, with quantum and record marginals
+
+$$
+\operatorname{Tr}_{O}\Omega_{I,\rho}=\sum_o\Phi_{I,o}(\rho),\qquad
+\operatorname{Tr}_{\iota}\Omega_{I,\rho}
+=\operatorname{diag}\bigl(p_I(o\mid\rho)\bigr).
+$$
+
+**Proof.** Compute the output entry indexed by $(p,i),(q,j)$. The two label constraints make blocks with $p\ne q$ vanish; the block with $p=q=o$ is precisely the actual branch $\Phi_{I,o}(X)$. The two partial traces sum over the label or memory indices, respectively, giving the displayed identities. The trace of each record block is the existing instrument probability. ∎
+
+If $p_I(o\mid\rho)>0$, dividing that block by its trace gives the existing `posterior`; no different conditional update is introduced. If the probability is zero, the entire positive block is zero, since a positive semidefinite matrix with zero trace vanishes. A zero-probability event is therefore not assigned an arbitrary “actual posterior state.”
+
+This is an operationally explicit representation of a measurement record. It establishes consistency between the declared instrument and the public record; it does not derive an objective-collapse mechanism from discarding or block diagonalization alone.
+
+## 58.3 Actual Leaf Blocks in Any Finite Adaptive Tree
+
+The existing protocol type is defined recursively by a stop node or an action node $\operatorname{node}(a,\pi_o)$. Each leaf $\ell$ has its prescribed chronological word $\operatorname{word}_\pi(\ell)$; different outcomes may enter subtrees of different depths. The joint output uses the actual carrier $\operatorname{Leaf}(\pi)\times\iota$, preserving the complete record and terminal memory.
+
+Define a Kraus-path type for each leaf. A stop leaf has one empty path, with matrix $I$. At a leaf $(o,\ell')$, a path consists of the current Kraus index $k$ and a subtree path. Its chronological matrix product is
+
+$$
+K_{\text{path}}=K_{\text{tail}}K_{a,o,k}.
+$$
+
+The total Kraus index is $\sum_{\ell:\operatorname{Leaf}(\pi)}\operatorname{Path}(\pi,\ell)$. Embedding each path matrix in its actual leaf-label block gives the protocol's rectangular channel. This dependent index retains the leaf label, path length, and chosen subtree simultaneously; it does not require all leaves to have equal depth.
+
+<a id="p-cq-03"></a>
+
+**P-CQ-03 (Record-and-memory realization of every finite protocol).** For any current complete finite protocol $\pi$, actual instrument family $I$, and density state $\rho$, the constructed joint density state satisfies
+
+$$
+\Omega_{\pi,\rho}[\ell,\ell]
+=\operatorname{recordOperator}\bigl(I,\operatorname{word}_\pi(\ell),\rho\bigr),
+\qquad
+\Omega_{\pi,\rho}[\ell,m]=0\quad(\ell\ne m).
+$$
+
+The trace of this block is therefore the existing `leafProbability`; the record marginal is the complete leaf distribution, and the quantum marginal is the sum of all actual terminal unnormalized memories.
+
+**Proof.** Induct on the protocol tree. At a stop node, the identity Kraus matrix preserves the input state. At an action node, apply subtree completeness for each outcome, then sum over the current Kraus matrices:
+
+$$
+\sum_{o,k}K_{a,o,k}^\dagger
+\left(\sum_{\ell',\text{tail}}K_{\text{tail}}^\dagger K_{\text{tail}}\right)
+K_{a,o,k}
+=\sum_{o,k}K_{a,o,k}^\dagger K_{a,o,k}=I.
+$$
+
+For a fixed leaf, the sum of subtree-path conjugations equals its record operator. Substitution of the current branch then agrees with the existing chronologically defined `recordOperator`. The label embedding gives the joint block identities, after which the partial traces can be taken. This leaf-block relation follows from path products and tree induction; it is not an input field of the channel construction. ∎
+
+Retaining the entire unnormalized branch matrix makes this result stronger than retaining leaf probabilities alone. A subsequent effect may depend on the complete leaf record and act on its corresponding quantum memory. The model still concerns the stated finite protocol and memory carrier, rather than an arbitrary unmodelled external environment.
+
+## 58.4 Actual Record Defect, Event Effects, and the Exact TV Constant
+
+For rectangular channels with common input and output carriers, define the actual defect
+
+$$
+\delta(\mathcal C,\mathcal D)=
+\sup\left(\{0\}\cup\{d_{\rm eff}(\mathcal C(\tau),\mathcal D(\tau)):
+\tau\in\mathcal D(\iota)\}\right).
+$$
+
+Including $0$ gives the boundary case of an empty input-state set an explicit meaning. All actual distances lie in $[0,1]$, so the supremum is bounded. For record channels, set $\delta_{\rm rec}(I,J)=\delta(\mathcal R_I,\mathcal R_J)$. This is defined from the actual channels, rather than by renaming a user-supplied tolerance “the defect.”
+
+For an outcome event $S\subseteq O$, the joint effect is
+
+$$
+E_S=\operatorname{diag}(\mathbf1_S)\otimes I_\iota.
+$$
+
+Both it and its complement are positive, and its probability on the joint block state is exactly the actual record probability of $S$.
+
+<a id="p-cq-04"></a>
+
+**P-CQ-04 (Joint-distance and perturbation control of record distributions).** Let $p_{I,\rho}$ be the actual record distribution. Then
+
+$$
+\operatorname{TV}(p_{I,\rho},p_{J,\sigma})
+\le d_{\rm eff}(\mathcal R_I(\rho),\mathcal R_J(\sigma))
+\le d_{\rm eff}(\rho,\sigma)+\delta_{\rm rec}(I,J).
+$$
+
+The same statement applies to the complete finite-protocol joint channel constructed in §58.3 and its actual leaf distribution. In that case, the defect is the actual defect of the entire protocol channel.
+
+**Proof.** For the second inequality, split the triangle inequality at $\mathcal R_I(\sigma)$, then use the input-distance contraction of P-CQ-01 and the supremum property of the defect. For the first inequality, apply $E_S$ to every event to obtain
+
+$$
+|p(S)-q(S)|\le d_{\rm eff}(\Omega_p,\Omega_q).
+$$
+
+For finite normalized distributions, let $S_+=\{o:p(o)\ge q(o)\}$. Since $\sum_o(p(o)-q(o))=0$, the total positive and negative differences agree, so
+
+$$
+p(S_+)-q(S_+)=\frac12\sum_o|p(o)-q(o)|=\operatorname{TV}(p,q).
+$$
+
+This actual event attains TV. Thus “every event difference is at most $\varepsilon$” is equivalent to “the TV of the complete distributions is at most $\varepsilon$.” Taking $S_+$ proves the first inequality. ∎
+
+`RecordProbability` proves this event equivalence separately; the joint quantum module constructs the actual effects and verifies the matching probabilities. This preserves the constant in the bound. Bounding individual outcomes and then summing directly gives a different bound that may grow with the number of outcomes; it cannot retain the constant above without proof. [QM317]
+
+## 58.5 Discarding Labels Erases Actual Distinguishability
+
+<a id="n-cq-01"></a>
+
+**N-CQ-01 (Equal unconditional channels do not control record error).** Use the same two-dimensional quantum memory. Instrument $I$ deterministically outputs label $0$ while preserving the input state; instrument $J$ deterministically outputs label $1$ while preserving it. Both have complete Kraus realizations. After labels are discarded, both channels are the identity and their earlier unlabelled channel defect is zero. Their actual record distributions have TV $1$, and their joint record defect is $1$.
+
+**Proof.** For $I$, use the identity Kraus matrix in the label-$0$ branch and a zero matrix in the label-$1$ branch; exchange the labels for $J$. Both completeness identities are $I^\dagger I=I$, and both unconditional maps return the input matrix. For any common initial state, the record laws are two distinct Dirac distributions. The effect $E_{\{0\}}$ has probabilities $1$ and $0$, so the joint distance is at least $1$. The full-effect distance is at most $1$, and hence equals $1$. Taking the supremum over initial states gives the defect. ∎
+
+If a common controller selects the second action from the first label, the record difference enters the subsequent actual protocol. For example, after reading label $o$, it can choose an action that deterministically outputs $o$; the second output again distinguishes the instrument families. This two-step control has been checked using actual protocol leaf words, the subsequent event effect, and complete record probabilities: the event that the second outcome is zero has probabilities 1 and 0, and complete-record TV is 1. Quantum memory remains the same in this label-deletion control; the proved difference lies in the actual records and their subsequent selections.
+
+## 58.6 Established Interfaces and the Next Error Obligation
+
+This chapter places the existing single-step instruments, complete finite record laws, and quantum-state errors on one concrete joint system. That is enough to discuss each finite protocol's entire output and all-event error, although its actual defect may still be difficult to compute.
+
+Chapter 62 completes the fixed-depth common causal-controller task posed here. It constructs actual history-label–quantum-memory channels step by step, connects them to the original `Protocol` leaf and word order, and derives action-record budgets from common-input PSD blocks, normalized weights, zero blocks, and valid effects. Chapter 65 further supplies actual absorbing padding for finite stopping trees, the connection to the original joint leaf state, and budgets weighted by the probability of remaining active. Those new proofs carry the extension obligations; this chapter's whole-protocol defect has not simply been renamed a per-action conclusion. Coherent controllers, arbitrary additional environments, and unbounded stopping times remain open.
+
+This also identifies a structural requirement for UEOT predictive objects. When allowed future actions depend on a record, discarding that record generally changes the available future tests and object equivalence. The restricted-readout counterexample of Chapter 54 and the label counterexample here show, from two directions, that the selected interface determines distinguishability. A complete physical theory must retain allowed observations and allowed controls as substantive model content.
+
+<a id="ch-59"></a>
+
+# 59. Exact dynamics of noncommutative conditional persistence
+
+An exactly solvable noncommuting model tests whether the objects used in conditioned dynamics actually fit together. Explicit Doob trajectories, success probabilities, and conditional states establish geometric approach in this model; a positive spectral metric alone does not ensure mixing in general.
+
+Chapter 56 constructed an actual Doob channel from a given positive left eigenmetric and proved its intertwining relation with finite conditioned evolution. The general construction does not guarantee a unique stationary state or attraction. Here we fix the same rational, nondiagonal model with noncommuting Kraus matrices used in Chapter 56, derive closed forms and convergence rates for its actual iterates, record probabilities, and conditional states, and use a valid identity-Doob model to test which conclusions do not generalize.
+
+## 59.1 The Fixed Model and Two State Coordinates
+
+Retain
+
+$$
+r=\frac3{16},\qquad S=\operatorname{diag}(2,1),\qquad T=S^{-1},\qquad
+H=S^\dagger S=\operatorname{diag}(4,1),
+$$
+
+$$
+\rho_* =\frac15\begin{pmatrix}1&2\\2&4\end{pmatrix},\qquad
+\sigma_+=\frac12\begin{pmatrix}1&1\\1&1\end{pmatrix}.
+$$
+
+Write the source's actual success branch as $\Phi$. Its verified right eigendensity is $\rho_*$, with $\Phi(\rho_*)=r\rho_*$, while the left spectral relation is $\Phi^*(H)=rH$. The complete source instrument also contains an actual failure branch. This chapter leaves its Kraus matrices unchanged and does not replace the example by a simpler diagonal classical model.
+
+The Doob channel is
+
+$$
+D(X)=\frac13X+\frac23\operatorname{Tr}(X)\sigma_+.
+$$
+
+This formula holds for every complex matrix. For non-Hermitian inputs the trace may be complex, so its imaginary part cannot be discarded in advance. For density states, the normalized coordinate transformation is
+
+$$
+F(\tau)=\frac{S\tau S^\dagger}{\operatorname{Tr}(H\tau)}.
+$$
+
+Since its denominator depends on the input, $F$ is generally not a linear channel. The success probability of $\Phi$, the normalization factor of $F$, and trace preservation of $D$ have different meanings.
+
+The public module `QuantumDoobModel` extracts the same model from the preceding edition's concrete witness, so the general dynamics source no longer depends on a witness script. The extracted definitions and proofs retain their provenance; moving them into a public module does not count as another new physical result. [QM317]
+
+## 59.2 Closed Form, Uniqueness, and Exact Contraction of the Full Doob Orbit
+
+Let $a_n=3^{-n}$.
+
+<a id="p-qdd-01"></a>
+
+**P-QDD-01 (Exact dynamics of the present Doob channel).** For every complex matrix $X$ and every $n\ge0$,
+
+$$
+D^n(X)=a_nX+(1-a_n)\operatorname{Tr}(X)\sigma_+.
+$$
+
+The unique invariant density state is $\sigma_+$. For any density states $\tau,\upsilon$,
+
+$$
+d_{\rm eff}(D^n\tau,D^n\upsilon)
+=a_n d_{\rm eff}(\tau,\upsilon),
+\qquad D^n\tau\longrightarrow\sigma_+.
+$$
+
+The final limit is convergence of the entire orbit in the usual topology of the actual finite matrix space.
+
+**Proof.** Trace preservation gives $\operatorname{Tr}D(X)=\operatorname{Tr}X$. The formula holds at $n=0$. Applying it to $D(X)$ and combining coefficients using $a_{n+1}=a_n/3$ proves the closed form for all complex operators by induction. If $D(\tau)=\tau$, then $\tau=\frac13\tau+\frac23\sigma_+$. Rearranging each matrix entry gives $\tau=\sigma_+$. This uniqueness argument directly rearranges matrix entries. Chapter 60 separately proves separation by the full-effect distance, without changing the present proof.
+
+Subtracting two density-state orbits gives $D^n\tau-D^n\upsilon=a_n(\tau-\upsilon)$. For every effect, the absolute probability difference scales by $a_n$. When the coefficient is strictly positive, division by it proves the reverse supremum inequality; a zero coefficient is handled directly. The full-effect supremum therefore scales exactly, rather than merely satisfying an upper bound. Since $a_n\to0$, continuity of matrix addition and real scalar multiplication gives the limit of the whole orbit. ∎
+
+This full-effect scaling argument uses only probability pairings and suprema. It does not hide an identification with another matrix norm among its assumptions, and it does not relabel convergence of a Cesàro subsequence as convergence of the whole orbit.
+
+## 59.3 From Intertwining Back to Actual Success Records
+
+For any input density state $\tau$, define
+
+$$
+c_\tau=\operatorname{Tr}(H\tau),\qquad
+b_\tau=\frac58c_\tau,\qquad
+z_n(\tau)=a_n+(1-a_n)b_\tau.
+$$
+
+Since $\tau_{00},\tau_{11}\ge0$ and $\tau_{00}+\tau_{11}=1$,
+
+$$
+c_\tau=4\tau_{00}+\tau_{11},\qquad
+1\le c_\tau\le4,\qquad
+\frac58\le b_\tau\le\frac52.
+$$
+
+Also $0<a_n\le1$, so $z_n$ is a convex combination of $1$ and $b_\tau$, giving
+
+$$
+\frac58\le z_n(\tau)\le\frac52.
+$$
+
+These bounds follow from positivity and unit trace in the complete density-state space; they are not checks only on diagonal states or finitely sampled inputs. The filter normalization factor $c_\tau$ may exceed $1$ and is not a physical success probability.
+
+<a id="p-qdd-02"></a>
+
+**P-QDD-02 (Closed forms for the actual source success operator and its mass).** For the same source model,
+
+$$
+\Phi^n(\tau)
+=r^n\left[a_n\tau+(1-a_n)b_\tau\rho_*\right],
+$$
+
+$$
+m_n(\tau)=\operatorname{Tr}\Phi^n(\tau)
+=r^nz_n(\tau).
+$$
+
+Here $\Phi^n$ is the existing `successOperator`, and $m_n$ is the existing `successMass`, also equal to the `response` of the actual instrument family to the repeated-success word.
+
+**Proof.** Chapter 56's intertwining relation gives, for every complex matrix,
+
+$$
+D^n(SXS^\dagger)=r^{-n}S\Phi^n(X)S^\dagger.
+$$
+
+Multiply on the left and right by $T,T^\dagger$, substitute P-QDD-01, and use
+
+$$
+T\sigma_+T^\dagger=\frac58\rho_*.
+$$
+
+This yields the pullback formula for every complex $X$. Taking $X=\tau$ and using $\operatorname{Tr}(S\tau S^\dagger)=c_\tau$ gives the density-state version. Taking its trace and using unit trace of both states yields the actual mass identity. ∎
+
+The proof first connects actual operator iterates and only then takes the trace. It does not define a separate, similar-looking sequence and treat it as the original record probability. The success mass is strictly positive everywhere, and
+
+$$
+\frac58r^n\le m_n(\tau)\le\frac52r^n.
+$$
+
+These are uniform bounds; they do not assert $m_n=r^n$ for a general initial state.
+
+## 59.4 Exact Geometric Approach of the Actual Conditional State
+
+Since the success mass is strictly positive at every finite $n$, the existing `conditionalState` is well defined for every density input.
+
+<a id="p-qdd-03"></a>
+
+**P-QDD-03 (The actual conditional state and its quantitative convergence).** Write $\tau_{\mid n}=\Phi^n(\tau)/m_n(\tau)$. Then
+
+$$
+\tau_{\mid n}
+=\frac{a_n}{z_n(\tau)}\tau
++\frac{(1-a_n)b_\tau}{z_n(\tau)}\rho_*.
+$$
+
+Both coefficients are nonnegative and sum to $1$. Moreover,
+
+$$
+d_{\rm eff}(\tau_{\mid n},\rho_*)
+=\frac{a_n}{z_n(\tau)}d_{\rm eff}(\tau,\rho_*)
+\le\frac85\,3^{-n}d_{\rm eff}(\tau,\rho_*).
+$$
+
+The actual conditional-state matrix converges to $\rho_*$, and its full-effect distance from that state tends to zero.
+
+**Proof.** Divide P-QDD-02 by the strictly positive $r^nz_n$ and cancel the common factor $r^n$ to obtain the conditional-state formula. By the definition of the normalization factor, the second coefficient is $1-a_n/z_n$, so
+
+$$
+\tau_{\mid n}-\rho_*
+=\frac{a_n}{z_n(\tau)}(\tau-\rho_*).
+$$
+
+Repeating the full-effect supremum-scaling argument of P-QDD-01 gives the exact equality. The bound $z_n\ge5/8$ implies $a_n/z_n\le(8/5)a_n$. Since $z_n\to b_\tau>0$, the coefficient $a_n/z_n\to0$, giving both actual limits: the matrix limit and the effect-distance limit. ∎
+
+In this specified model, normalized source conditioning has a nonlinear denominator, while the Doob orbit is generated by a linear trace-preserving channel. Intertwining makes the two comparable. It does not make their physical probabilities or stationary states interchangeable.
+
+## 59.5 Different Limits for the Conditional Steady State and Unconditional Success Mass
+
+<a id="p-qdd-04"></a>
+
+**P-QDD-04 (Decay of finite-success probabilities and the role of the initial state).** For every density state $\tau$ and each finite $n$, one has $m_n(\tau)>0$, but
+
+$$
+m_n(\tau)\longrightarrow0.
+$$
+
+For $\tau=\rho_*$, $c_{\rho_*}=8/5$ and $b_{\rho_*}=1$, so $m_n(\rho_*)=r^n$. For the uniform initial state $\tau_0=I/2$,
+
+$$
+c_{\tau_0}=\frac52,\qquad b_{\tau_0}=\frac{25}{16},\qquad
+m_1(\tau_0)=\frac{33}{128}\ne\frac3{16}.
+$$
+
+**Proof.** The sequence $z_n(\tau)$ converges to the finite positive number $b_\tau$, while $0<r<1$; hence $r^nz_n\to0$. The special initial-state identities follow by substituting the actual matrix entries into the general mass formula. ∎
+
+A conditional distribution can therefore approach a steady state while finite records satisfying the condition become increasingly rare. What is proved here is the limit of a sequence of finite-event probabilities. This chapter does not construct an infinite-path measure or an infinite-time conditioning event, and it does not describe the conditional limit as unconditional permanent existence.
+
+This distinction is essential to UEOT's original interest in persistence. Increasing stability of an organization among surviving samples does not, by itself, show that the overall survival probability retains a positive lower bound. To ask which controls can increase lifetime or change success rates, one must also specify the available actions, success event, constraints, and costs. The present solvable uncontrolled model does not select an objective function that nature must optimize. [S1; S2; S4; QM317]
+
+## 59.6 A Positive Spectral Metric Does Not Guarantee a Unique Attractor
+
+<a id="n-qdd-01"></a>
+
+**N-QDD-01 (A valid identity-Doob negative control).** There exists an actual complete source instrument whose success branch strictly decreases the trace of every nonzero PSD input and has a positive left eigenmetric, but whose Doob channel is the identity. Every density state is stationary, so there is no common unique attracting state. The success probability of a normalized density input is always $1/4$.
+
+**Construction and proof.** In two dimensions, take one success Kraus matrix $I/2$ and three failure Kraus matrices $I/2$, filling any remaining required indices with zero matrices. The sum of $K^\dagger K$ for the four nonzero matrices is $I$, so this is a complete instrument. Its success branch is $\Phi(X)=X/4$. Choose $H=I$, $S=T=I$, and $r=1/4$. The left spectral relation follows immediately, and the actual Doob construction of Chapter 56 gives $D(X)=X$.
+
+Every density state's entire Doob orbit consequently remains at that state. Two distinct density states give two distinct stationary states. If all initial states converged to one matrix, uniqueness of the limit of a constant orbit would force those two initial states to coincide, a contradiction. The source success mass is still $(1/4)^n$, and the actual finite conditional state always equals the input state. ∎
+
+The counterexample retains the success branch, complete instrument, strict decay, positive eigenmetric, and actual Doob construction. It refutes precisely an inference of uniqueness or mixing from those conditions alone. A general convergence theorem needs explicit irreducibility, primitivity, contraction, or spectral conditions and their proofs. The original GOA picture of a unique fixed point cannot be made a universal conclusion about every object.
+
+## 59.7 From a Concrete Dynamics Kernel to Broader Physical Connections
+
+This chapter establishes finite dynamics for repeated application of the specified success branch in one noncommutative model, together with long-time limits of its Doob orbit and conditional state. Existence of general positive spectral objects, identification of spectral radii, uniqueness of general quasistationary states, and infinite conditioned processes remain separate obligations. They cannot be extrapolated from the formulas of this solvable model. Physical implementation of the finite model, experimental readout of its success event, and parameter calibration also require separate verification.
+
+Together with the preceding two chapters, the kernel gains three complementary capabilities: representing any finite complex mixed state by an actual pure state and partial trace; retaining protocol history and quantum memory in a joint record register; and quantitatively explaining conditional persistence in a specified model through actual spectral intertwining. All three hold within the declared quantum realization. The resulting research priorities are rigorous logical connections between selection principles, composable record-error budgets, and dynamical extensions under explicit general conditions, followed by experimentally implementable observables. The finite common-controller budgets are developed later in Chapters 62 and 65; the broader physical and dynamical obligations remain. In this way, model counterexamples, formal proofs, and empirical requirements jointly constrain UEOT's explanatory aims.
+
+<a id="ch-60"></a>
+
+# 60. Separation by all effects and universal local tomography in the complex model
+
+When does the all-effect distance actually separate density matrices? Valid effects first span all Hermitian operators; real and imaginary matrix entries then recover the joint state, establishing local tomography for arbitrary joint states in the finite complex model.
+
+Chapter 50 constructed the full-effect distance from actual Born probabilities and proved probability bounds, symmetry, the triangle inequality, and channel contraction. Its zero-distance conclusion stopped precisely at “all effects give the same probabilities.” Chapter 55 showed that, in the complete real quantum model, even the statistics of all local product effects may fail to determine the joint state. Chapter 57 presented the complete complex model in the same operational language, leaving the constructive obligation to establish local tomography for all its joint states.
+
+This chapter closes both obligations in the original complete finite complex density-state space. The essential step is not to treat matrix entries directly as measurable quantities. We first express any Hermitian test as a real linear combination of valid effects, then recover the matrix from actual effect probabilities. The joint result holds for arbitrary density states, including nonproduct inputs. Its information consists of joint probabilities for effects on both sides, including correlations, rather than merely the two marginals.
+
+## 60.1 Complete States, Complete Effects, and the Real-Valued Pairing
+
+Fix an arbitrary finite carrier $\iota$. The matrix, state, and effect spaces are
+
+$$
+\begin{aligned}
+M_\iota&=M_\iota(\mathbb C),\\
+\mathcal D(\iota)&=\{\rho\in M_\iota:\rho\succeq0,\ \operatorname{Tr}\rho=1\},\\
+\mathcal E(\iota)&=\{E\in M_\iota:E\succeq0,\ I-E\succeq0\}.
+\end{aligned}
+$$
+
+Positivity uses the full positive-semidefinite cone of complex matrices. States are not restricted to diagonal states, vector states, supplied Gram factors, or finite samples; effects are not restricted to tests realizable by one chosen instrument library. Lean's `Density` and `Effect` are the actual types already in use. The new proofs do not change their definitions.
+
+For any matrices $H,X$, write the real-valued trace pairing as
+
+$$
+\langle H,X\rangle_{\mathbb R}
+=\operatorname{Re}\operatorname{Tr}(HX).
+$$
+
+The effect probability is $p_\rho(E)=\langle E,\rho\rangle_{\mathbb R}$. This pairing is real-linear in both arguments. Multiplying complex matrices by complex scalars and then taking the real part does not produce a complex-linear, complex-valued probability function. All probability extensions below therefore use real coefficients.
+
+The positive-operator order $H\preceq K$ means that $K-H$ is positive semidefinite. For Hermitian $H$, the finite-matrix operator norm gives
+
+$$
+-\|H\|_{\rm op}I\preceq H\preceq\|H\|_{\rm op}I.
+$$
+
+This is the matrix operator norm on complex Euclidean space; the relevant Lean proof section explicitly uses `Matrix.Norms.L2Operator`. These order bounds follow from the pinned finite-matrix $C^*$ dependencies. They are not additional physical spectral assumptions, and they do not require the caller to supply a separating effect in advance. [QM318]
+
+## 60.2 Every Hermitian Operator Lies in the Real Span of Valid Effects
+
+<a id="p-sep-01"></a>
+
+**P-SEP-01 (Representation of a Hermitian operator by valid effects).** For every finite carrier $\iota$ and every Hermitian matrix $H$, there exist a real number $r>0$ and an actual effect $E\in\mathcal E(\iota)$ such that
+
+$$
+H=2rE-rI.
+$$
+
+Consequently, every Hermitian matrix lies in the real linear span of all effect matrices.
+
+**Proof.** Set $r=\|H\|_{\rm op}+1$. Nonnegativity of the norm gives $r>0$. Adding the positive-semidefinite $I$ to each of the preceding order bounds yields
+
+$$
+H+rI\succeq0,\qquad rI-H\succeq0.
+$$
+
+Define
+
+$$
+E=\frac{H+rI}{2r}.
+$$
+
+The coefficient $(2r)^{-1}$ is strictly positive, so $E\succeq0$. The effect's upper bound must also be verified; positivity alone is insufficient. The actual matrix identity gives
+
+$$
+I-E=\frac{rI-H}{2r}\succeq0.
+$$
+
+This establishes both positivity fields required by `Effect`. Since $2r\ne0$, rearranging the definition gives $H=2rE-rI$. The identity matrix is itself a valid effect, so $H$ is a real linear combination of two effect matrices. ∎
+
+“Span” does not mean that every Hermitian matrix is a convex mixture of effects. The coefficient $-r$ may be negative. The reconstruction formula allows signed real arithmetic on probabilities from different effects; it does not define that arithmetic as a new random-mixture experiment.
+
+In the formalization, `boundedHermitianEffect` first handles any supplied two-sided order bounds. `boundedHermitianEffect_affine` proves the actual matrix identity; `exists_effect_affine_of_hermitian` derives the necessary bounds from $H$ itself; and `hermitian_mem_real_span_effects` states the conclusion explicitly in `Submodule.span ℝ`. The use of real coefficients is part of the declaration. [QM318]
+
+The construction remains meaningful for an empty carrier. Its only matrix is zero, its identity matrix is also zero, and one can still choose $r=1$. Later assumptions about density states automatically exclude fictitious normalized states on an empty carrier; see §60.6.
+
+## 60.3 Agreement on Every Effect Forces Equality of the Actual Density States
+
+First obtain a reusable intermediate step from P-SEP-01. If any two matrices $X,Y$ satisfy
+
+$$
+\langle E,X\rangle_{\mathbb R}
+=\langle E,Y\rangle_{\mathbb R}
+\quad\text{for all }E\in\mathcal E(\iota),
+$$
+
+that is, for every valid effect, then their pairings with any Hermitian $H$ also agree. Indeed, write $H=2rE-rI$. Real linearity gives
+
+$$
+\langle H,X\rangle_{\mathbb R}
+=2r\langle E,X\rangle_{\mathbb R}
+-r\langle I,X\rangle_{\mathbb R},
+$$
+
+and similarly for $Y$. The hypothesis covers both the actual effect $E$ and the identity effect $I$, so the two expressions coincide. This intermediate step does not require $X,Y$ to be density states. Hermiticity is needed for the valid-effect representation of the test $H$.
+
+<a id="p-sep-02"></a>
+
+**P-SEP-02 (Separation by all effects and the matrix meaning of zero distance).** For any $\rho,\sigma\in\mathcal D(\iota)$,
+
+$$
+\rho=\sigma
+\quad\Longleftrightarrow\quad
+\forall E\in\mathcal E(\iota),\ p_\rho(E)=p_\sigma(E).
+$$
+
+For the full-effect distance actually defined in Chapter 50,
+
+$$
+d_{\rm eff}(\rho,\sigma)
+=\sup_{E\in\mathcal E(\iota)}
+|p_\rho(E)-p_\sigma(E)|,
+$$
+
+one accordingly has $d_{\rm eff}(\rho,\sigma)=0$ if and only if $\rho=\sigma$.
+
+**Proof.** Equal density states plainly give equal probabilities. Conversely, set $D=\rho-\sigma$. Positivity of both states implies their Hermiticity, so $D$ is Hermitian. The real-linear extension above can be applied with $H=D$, giving
+
+$$
+\langle D,\rho\rangle_{\mathbb R}
+=\langle D,\sigma\rangle_{\mathbb R}.
+$$
+
+Subtracting in the right argument of the pairing yields
+
+$$
+\operatorname{Re}\operatorname{Tr}(D^\dagger D)
+=\operatorname{Re}\operatorname{Tr}(DD)=0.
+$$
+
+The matrix $D^\dagger D$ is positive semidefinite, and its trace has zero imaginary part. Thus its full complex trace is zero. The finite-matrix identity
+
+$$
+\operatorname{Tr}(D^\dagger D)
+=\sum_{i,j}|D_{ij}|^2
+$$
+
+shows that every entry vanishes. Hence $D=0$, or $\rho=\sigma$. The formal proof uses `Matrix.trace_conjTranspose_mul_self_eq_zero_iff` for this step, after separately justifying the passage from zero real part to zero full trace.
+
+The distance conclusion uses the supremum property already proved in Chapter 50: distance is zero exactly when every effect has equal probabilities. Combining it with the separation result gives the equivalence. ∎
+
+The new public declaration `QuantumSeparation.effectDistance_eq_zero_iff_density_eq` is named separately from the earlier `UEOTQM.effectDistance_eq_zero_iff`. The earlier theorem still states agreement of all effect probabilities precisely; the new theorem supplies the previously missing connection to equality of the actual densities. It requires no rewriting of earlier contraction, conditioning, or perturbation proofs, and does not itself assert identification with another matrix norm. [QM318]
+
+## 60.4 From Four Valid Product Tests to Hermitian Products
+
+Now fix two arbitrary finite carriers $\iota,\nu$, with actual joint carrier $\iota\times\nu$. For local effects $E,F$, the matrix of the existing `RealLocalTomography.productEffect` is $E\otimes F$. That historical module name does not restrict the inputs to real matrices: the definition accepts arbitrary complex effects. The real-model restriction is carried separately by a real-valuedness field.
+
+Validity of the product effect follows from Kronecker positivity and the identity
+
+$$
+I_{\iota\times\nu}-E\otimes F
+=(I_\iota-E)\otimes I_\nu
++E\otimes(I_\nu-F).
+$$
+
+Both terms on the right are positive semidefinite. The joint test is therefore an actual effect whose positivity and upper bound have both been proved.
+
+Suppose two arbitrary joint density states $\rho,\sigma$ give the same probabilities for all local product effects. For any local Hermitian matrices $H,K$, apply P-SEP-01 separately to write
+
+$$
+H=2rE-rI_\iota,\qquad K=2sF-sI_\nu,
+\qquad r,s>0.
+$$
+
+Distributivity of the actual Kronecker product gives a four-term real expansion:
+
+$$
+\begin{aligned}
+H\otimes K={}&4rs\,E\otimes F
+-2rs\,E\otimes I_\nu\\
+&-2rs\,I_\iota\otimes F
++rs\,I_\iota\otimes I_\nu.
+\end{aligned}
+$$
+
+The hypothesis covers the four actual local-test combinations $(E,F)$, $(E,I_\nu)$, $(I_\iota,F)$, and $(I_\iota,I_\nu)$. Real linearity of the real-valued pairing applied to those terms gives
+
+$$
+\langle H\otimes K,\rho\rangle_{\mathbb R}
+=\langle H\otimes K,\sigma\rangle_{\mathbb R}.
+$$
+
+This is the actual conclusion of `hermitian_product_pairing_eq`. The four tests depend on the representations of $H,K$. The proof does not assume that $\rho$ or $\sigma$ can be written as a probabilistic mixture of product states. It expands test operators without imposing separability on the inputs.
+
+## 60.5 Recovering Real Parts, Imaginary Parts, and Every Joint Matrix Entry
+
+Let $e_{ij}$ be the matrix unit whose $(i,j)$ entry is one and whose other entries are zero. Define the Hermitian matrices
+
+$$
+S_{ij}=e_{ij}+e_{ji},\qquad
+T_{ij}=\mathrm i(e_{ij}-e_{ji}).
+$$
+
+Here $\mathrm i$ is the imaginary unit. Conjugate transposition gives $S_{ij}^\dagger=S_{ij}$ and $T_{ij}^\dagger=T_{ij}$. For any Hermitian $X$, write $X_{ij}=u+\mathrm i v$; then $X_{ji}=u-\mathrm i v$. The trace pairings of matrix units give
+
+$$
+\begin{aligned}
+\langle S_{ij},X\rangle_{\mathbb R}
+&=2\operatorname{Re}X_{ij},\\
+\langle T_{ij},X\rangle_{\mathbb R}
+&=2\operatorname{Im}X_{ij}.
+\end{aligned}
+$$
+
+The second sign is positive: $\operatorname{Tr}(T_{ij}X)=\mathrm i(X_{ji}-X_{ij})=2v$. If one instead used $\mathrm i(e_{ji}-e_{ij})$, the reconstruction sign would have to reverse. The declaration `pairing_imaginaryUnit` fixes the present convention and prevents the two conventions from being mixed.
+
+These matrix units on the two local carriers also satisfy
+
+$$
+S_{(i,a),(j,b)}
+=\frac12\bigl(S_{ij}\otimes S_{ab}
+-T_{ij}\otimes T_{ab}\bigr),
+$$
+
+$$
+T_{(i,a),(j,b)}
+=\frac12\bigl(T_{ij}\otimes S_{ab}
++S_{ij}\otimes T_{ab}\bigr).
+$$
+
+They can be checked by expansion. In the first identity, the cross terms $e_{ij}\otimes e_{ba}$ and $e_{ji}\otimes e_{ab}$ cancel, leaving the joint matrix unit and its transpose. In the second, what remains is $\mathrm i$ times their difference. All external coefficients are still real.
+
+These identities do not require $i\ne j$ or $a\ne b$. For example, $S_{ii}=2e_{ii}$ and $T_{ii}=0$. When both index pairs repeat, the first identity is still exactly twice the joint diagonal matrix unit, and both sides of the second are zero. For Hermitian $X$, the diagonal imaginary parts vanish in any case. These boundaries are included in the actual general declarations.
+
+<a id="p-clt-01"></a>
+
+**P-CLT-01 (Universal local tomography of the complete finite complex model).** For any finite carriers $\iota,\nu$ and any $\rho,\sigma\in\mathcal D(\iota\times\nu)$, if
+
+$$
+\forall E\in\mathcal E(\iota),\ 
+\forall F\in\mathcal E(\nu),\qquad
+p_\rho(E\otimes F)=p_\sigma(E\otimes F),
+$$
+
+then $\rho=\sigma$. Hence `OperationalSystems.complexModel`, already constructed in Chapter 57, satisfies the complete `LocalTomography` principle of the original interface.
+
+**Proof.** Section 60.4 extends agreement on product-effect probabilities to agreement on all local Hermitian-product pairings. For arbitrary joint row and column indices $(i,a),(j,b)$, use the product identity for $S$ and real linearity to obtain
+
+$$
+\langle S_{(i,a),(j,b)},\rho\rangle_{\mathbb R}
+=\langle S_{(i,a),(j,b)},\sigma\rangle_{\mathbb R}.
+$$
+
+Both states are Hermitian, so the matrix-unit reconstruction formula equates the real parts of the corresponding joint entries. Applying the product identity for $T$ in the same way equates their imaginary parts. Every complex entry therefore agrees, and the two actual `Density` objects are equal.
+
+The joint-state type of the original `complexModel` is exactly this complete joint density space; its local effects and product probabilities are also the definitions used here. Substitution of the theorem into the universal quantifiers of the original `LocalTomography` establishes the declared model principle. No replacement presentation with a smaller state space is introduced. ∎
+
+Thus, in the complete complex matrix model, the joint statistics of all product effects identify the entire joint state. The result requires neither prior access to a global entangled effect nor an invalid strengthening from knowledge of the two marginals alone. Designing a finite test set for a particular device, estimating sampling error, controlling ill-conditioned reconstruction, and proving completeness of a measurement library remain tasks with additional inputs.
+
+## 60.6 Empty Carriers, Singleton Carriers, and Unequal Local Dimensions
+
+A finite type may be empty. The trace sum on an empty carrier is zero, so no unit-trace density state exists there; the concrete witness `empty_carrier_has_no_density` retains this fact. The general theorems accept arbitrary finite carriers. Statements about density inputs remain logically valid over an empty state domain, without a hidden `Nonempty` assumption that would manufacture a state.
+
+On a singleton carrier, the only matrix entry is the trace. Unit trace therefore forces that entry to equal one, so any two density states coincide. The witness `singleton_densities_equal` follows from actual unit trace, rather than from an undeclared nontrivial two-dimensional test.
+
+The two local dimensions may differ. Their indices are separated from the outset as $\iota$ and $\nu$, with product carrier $\iota\times\nu$; every distributive and matrix-unit identity preserves both index sets. The witness `unequal_local_dimensions_tomography` instantiates the general theorem at $\operatorname{Fin}2\times\operatorname{Fin}3$. It checks the type boundary; the general conclusion still holds for any two finite dimensions.
+
+These witnesses are counted separately from the general theorems. Empty-state exclusion inherits an existing result; the singleton calculation and $2\times3$ instance check their respective boundaries. They are not three new laws of nature. [QM318]
+
+## 60.7 Diagonal-Effect Negative Controls and the Inherited Obstruction in the Complete Real Model
+
+The quantifier over all effects cannot be reduced to “some commonly used effects.” To check both real and imaginary coherence information, take the two-dimensional Hermitian involutions
+
+$$
+X=\begin{pmatrix}0&1\\1&0\end{pmatrix},\qquad
+Y=\begin{pmatrix}0&-\mathrm i\\\mathrm i&0\end{pmatrix}.
+$$
+
+They satisfy $X^2=Y^2=I$ and $\operatorname{Tr}X=\operatorname{Tr}Y=0$. In the present convention, $T_{01}$ is $-Y$, so using standard $Y$ here does not alter the reconstruction sign fixed in §60.5.
+
+<a id="n-sep-01"></a>
+
+**N-SEP-01 (Even all diagonal effects fail to identify coherent states).** Define
+
+$$
+\rho_{x,\pm}=\frac12(I\pm X),\qquad
+\rho_{y,\pm}=\frac12(I\pm Y).
+$$
+
+All four matrices are actual density states. For every valid diagonal effect $E$,
+
+$$
+p_{\rho_{x,+}}(E)=p_{\rho_{x,-}}(E),\qquad
+p_{\rho_{y,+}}(E)=p_{\rho_{y,-}}(E).
+$$
+
+Nevertheless, the two states in each pair are distinct. Actual effects give probabilities one and zero for each pair, and
+
+$$
+d_{\rm eff}(\rho_{x,+},\rho_{x,-})
+=d_{\rm eff}(\rho_{y,+},\rho_{y,-})=1.
+$$
+
+**Construction and proof.** For any Hermitian involution $A$, the operators $P_\pm=(I\pm A)/2$ are complementary orthogonal projections. Direct multiplication gives $P_\pm^2=P_\pm$ and $P_+P_-=0$; Hermiticity and $P_\pm=P_\pm^\dagger P_\pm$ give positivity. For $A=X,Y$, zero trace and the trace two of the two-dimensional identity further imply $\operatorname{Tr}P_\pm=1$, yielding the four density states above.
+
+Both diagonal entries of each state are $1/2$. Write an arbitrary diagonal effect as $E=\operatorname{diag}(e_0,e_1)$. Its probability depends only on those diagonal entries:
+
+$$
+\operatorname{Re}\operatorname{Tr}(E\rho)
+=\frac12(e_0+e_1).
+$$
+
+Hermiticity of a valid effect makes $e_0,e_1$ real, while positivity of the effect and its complement gives $0\le e_0,e_1\le1$. The equal-probability conclusion therefore covers every valid diagonal effect, not merely two selected examples.
+
+Now take $E_x=(I+X)/2$ and $E_y=(I+Y)/2$. Their complementary-positive-projection properties also prove they are valid effects. From $P_+^2=P_+$ and $P_+P_-=0$, the respective probabilities are one and zero, directly distinguishing both pairs. Each full-effect distance is at least the probability difference one of this valid test; Chapter 50 bounds it above by one. The distance is therefore exactly one. ∎
+
+The diagonal measurement family is entirely valid within its declared scope, but a statistical equivalence class for that family can contain distinct complete density states. This counterexample retains the loss of both real and imaginary off-diagonal information; testing only one coherence direction would not establish completeness of the measurement library.
+
+The complete real-model obstruction of Chapter 55 also remains valid, and is not reduced to a diagonal library. Its two valid real joint states are
+
+$$
+\omega_\pm=\frac14(I\pm Y\otimes Y).
+$$
+
+Although $Y\otimes Y$ is formed from two local matrices with imaginary entries, the joint matrix itself is a real Hermitian involution. For any real local effects $E,F$, real Hermiticity gives symmetry and thus $\operatorname{Tr}(EY)=\operatorname{Tr}(FY)=0$. Consequently,
+
+$$
+p_{\omega_+}(E\otimes F)
+=p_{\omega_-}(E\otimes F)
+=\frac14\operatorname{Tr}E\operatorname{Tr}F.
+$$
+
+The valid joint effect $(I+Y\otimes Y)/2$ still distinguishes the states with probabilities one and zero. If the complex local effect $(I+Y)/2$ is allowed, its product on the two sides has probabilities $1/2$ and zero. These are already numbered and proved results from Chapter 55, used here only for inherited cross-checking. `full_real_model_not_localTomography` calls the original `OperationalSystems.real_not_localTomography` directly. It neither changes the real-model fields nor counts the inherited result as a new numbered counterexample in this chapter. [QM316; QM317; QM318]
+
+This identifies the concrete role of imaginary-part tests in complex local tomography. The local Hermitian tests of type $T$ in §60.5 can be expressed as real combinations of valid effects within the complex model. The real model does not thereby permit the silent addition of local effects with imaginary matrix entries. The models share actual composition and trace operations, but their allowed tests differ.
+
+## 60.8 Public Declarations, Actual Evidence, and the Remaining Physical Connection
+
+The four numbered results correspond to actual code as follows. The first two groups of declarations are in `UEOTQM.QuantumSeparation`, the third in `UEOTQM.ComplexLocalTomography`, and the final witness group in `UEOTQM.QuantumSeparationExamples`. The namespace and local declaration together determine each stable name.
+
+| Numbered result or proof step | Public declarations and actual responsibility |
+|---|---|
+| P-SEP-01: two-sided positivity and effect representation | `boundedHermitianEffect`; `boundedHermitianEffect_matrix`; `boundedHermitianEffect_affine`; `exists_effect_affine_of_hermitian` |
+| P-SEP-01: span over the real field | `hermitian_mem_real_span_effects` |
+| P-SEP-02: real extension and density separation | `pairing_eq_of_all_effect_pairings_eq`; `pairing_sub_right`; `density_eq_of_all_effect_probabilities_eq`; `density_eq_iff_all_effect_probabilities_eq` |
+| P-SEP-02: actual meaning of zero distance | `effectDistance_eq_zero_iff_density_eq` |
+| P-CLT-01: local matrix units | `symmetricUnit`; `imaginaryUnit`; their `_hermitian` theorems; `pairing_symmetricUnit`; `pairing_imaginaryUnit` |
+| P-CLT-01: real product expansion | `sub_kronecker`; `kronecker_sub`; `symmetricUnit_product`; `imaginaryUnit_product`; `hermitian_product_pairing_eq` |
+| P-CLT-01: arbitrary joint states and the original model | `density_eq_of_all_product_effect_probabilities_eq`; `complex_localTomography` |
+| N-SEP-01: equal statistics for all diagonal effects | `diagonal_effect_pairing_eq`; `all_diagonal_effects_agree_x`; `all_diagonal_effects_agree_y` |
+| N-SEP-01: actual distinction and distance | `xTest_probability_plus`, `xTest_probability_minus`; the corresponding `yTest` probability theorems; `xPlus_ne_xMinus`, `yPlus_ne_yMinus`; `x_effectDistance_exact`, `y_effectDistance_exact` |
+| Dimension boundaries and inherited-principle cross-checks | `empty_carrier_has_no_density`; `singleton_densities_equal`; `unequal_local_dimensions_tomography`; `full_complex_model_localTomography`; `full_real_model_not_localTomography` |
+
+The two new public modules contain 20 explicit `theorem` declarations and 3 definitions. The separate concrete witness contains 19 `theorem` declarations, 8 definitions, and 1 abbreviation. The actual focused receipts for that stage check the named axiom outputs for all 23 public declarations and all 28 witness declarations, binding them to the source bytes that compiled successfully. The permitted foundations are only `propext`, `Classical.choice`, and `Quot.sound`. Ordinary linter warnings remain in the actual compilation. The records are stored in `physics/qm/kernel/evidence/v31.8/A`; integrated acceptance, public-source identity, and remote-release status are recorded separately in the unified v31.8 receipts. Focused success, integrated acceptance, and actual remote identity are distinct evidence facts. Definitions, witnesses, and numbered results are also distinct counts. [QM318]
+
+Scientifically, this chapter completes identifiability inside the supplied complex quantum model: all effects distinguish complete density states, and complete joint statistics of local products distinguish complete joint states. In the predictive-object language, equal full-effect responses can now identify the same density object within an explicit complex matrix realization. For a restricted instrument library, the quotient must still be defined through the responses actually available; N-SEP-01 retains the possibility of a strictly coarser quotient.
+
+The finite complex vector spaces, complete PSD state cone, complete effect cone, tensor composition, and trace probabilities are the already declared mathematical and quantum-sector inputs. The results belong principally to standard quantum structure P and actual operational connections B, with concrete probabilities carrying O. Requiring nature to satisfy local tomography would additionally require registering and justifying that selection principle and its background under S. The frozen 106 Core items and four generators have not thereby acquired a “must be complex” axiom. This chapter does not show that the candidate principles uniquely exclude every other operational model, establish an infinite-dimensional or continuum limit, or supply new experimental data.
+
+The next physical connection must identify which UEOT mechanisms select these states, effects, and composition rules; which real devices implement the required tests; and which empirical predictions distinguish the candidate theories. This chapter provides a complete, checkable finite realization for that work. Completeness of the finite realization is not final completion of a theory of nature.
+
+<a id="ch-61"></a>
+
+# 61. Complete purity and unitary equivalence of finite purifications
+
+The assertion that a pure state is a vector state must follow from extremality in the full density-state convex set, rather than being assumed. This chapter proves that characterization and constructs actual ancilla unitaries or isometries from equal Gram data, carefully checking transposes, conjugation, and matrix direction.
+
+Chapter 57 derived a Gram factor from positivity of an arbitrary finite complex density state and proved purification existence using the actual partial trace. Proving that certain vector states are pure, however, does not yet compare all purifications defined by complete convex extremality. Nor does constructing one Gram purification explain its relation to other purifications of the same marginal. This chapter supplies both obligations, treating equal and unequal auxiliary carriers separately.
+
+The conclusions concern the explicitly selected finite complex density model. Its complete convex extreme points are exactly normalized vector outer products. Any two purifications on the same auxiliary carrier are connected by an actual auxiliary unitary. Purifications on different carriers can first be embedded by actual isometric channels into a common direct sum and then compared there. These last two statements have different matrix types. They cannot be merged into a dimension-free assertion about a “rectangular unitary matrix.” [QM318]
+
+## 61.1 Complete State Quantifiers and Normalization
+
+Continue to use
+
+$$
+\mathcal D(\iota)=\{\rho\in M_\iota(\mathbb C):\rho\succeq0,\ \operatorname{Tr}\rho=1\}.
+$$
+
+Here $\iota$ is any finite carrier. The two conditions in `Density` are positivity of the actual matrix and complex trace one. `IsPure` retains Chapter 57's extreme-point definition over all density states and all $0<t<1$. The allowed state set is not reduced, and vector representation is not inserted as a defining field.
+
+For a vector $v:\iota\to\mathbb C$, write
+
+$$
+P_v=|v\rangle\langle v|,
+\qquad (P_v)_{ij}=v_i\overline{v_j}.
+$$
+
+In this chapter's Lean declarations, normalization is written $\operatorname{Tr}P_v=1$. Expanding it gives $\sum_i|v_i|^2=1$, the unit-vector condition in finite complex Euclidean space. The vector norm here is the two-norm; a different default norm on a function type must not be substituted silently.
+
+For a positive matrix $X$, retain the mass notation
+
+$$
+m(X)=\operatorname{Re}\operatorname{Tr}X\ge0.
+$$
+
+The inherited zero-mass theorem for positive matrices gives $m(X)=0\iff X=0$. Only when $m(X)>0$ do we use the valid normalized density $\widehat X=X/m(X)$. This condition is checked explicitly in the convex decompositions below. A zero remainder is never assigned a fictitious normalized state. [QM317; QM318]
+
+## 61.2 Every Positive-Mass Positive Component of an Extreme Point Gives the Same State
+
+First prove an intermediate statement that directly reflects the complete extremality quantifier. Suppose $\rho$ is a pure density state and
+
+$$
+\rho=X+Y,\qquad X,Y\succeq0,\qquad m(X)>0.
+$$
+
+Then $\widehat X=\rho$. Unit trace gives $m(X)+m(Y)=1$. The proof separates two genuinely different cases.
+
+If $m(Y)=0$, positivity forces $Y=0$, so $m(X)=1$ and $X=\rho$; normalization leaves $X$ unchanged. If $m(Y)>0$, then $0<m(X)<1$ and
+
+$$
+\rho=m(X)\widehat X+m(Y)\widehat Y
+=m(X)\widehat X+(1-m(X))\widehat Y.
+$$
+
+Both normalized states lie in the complete $\mathcal D(\iota)$, so they can be substituted directly into the original `IsPure` definition, giving $\widehat X=\rho$ and $\widehat Y=\rho$. No additional rank, support, or diagonal-form assumption is imposed on $X$ or $Y$. The Lean theorem `IsPure.normalize_eq_of_positive_summand` handles positivity, strictly positive mass, normalized recombination, and the zero-remainder branch explicitly. [QM318]
+
+The result converts extremality into a constraint usable in a Gram-column decomposition. It does not assume the desired rank-one conclusion. Whether a component comes from a vector must still be established by an actual positive-matrix decomposition in the next step.
+
+## 61.3 Deriving a Normalized Vector from Any Convex Extreme Point
+
+<a id="p-puc-01"></a>
+
+**P-PUC-01 (Purity characterization in the complete finite complex density space).** For every $\rho\in\mathcal D(\iota)$,
+
+$$
+\operatorname{Pure}(\rho)
+\iff
+\exists v:\iota\to\mathbb C,\quad
+\operatorname{Tr}P_v=1\ \land\ \rho=P_v.
+$$
+
+**Proof.** The reverse implication—that a normalized vector state is an extreme point of the complete set—was proved in P-PUR-01. Now let $\rho$ be any extreme point under the original definition. Positivity supplies an actual matrix $A$ with $\rho=AA^\dagger$. For each column $a$, write $u_a(i)=A_{ia}$. Entrywise multiplication gives
+
+$$
+\rho=AA^\dagger=\sum_a |u_a\rangle\langle u_a|
+=\sum_a P_a,\qquad P_a\succeq0.
+$$
+
+Taking traces gives $\sum_a m(P_a)=1$, so at least one column has $m(P_a)>0$. If no column had positive mass, their finite sum would be at most zero, contradicting unit trace. For a chosen such column, define the actual remainder
+
+$$
+R=\sum_{b\ne a}P_b\succeq0.
+$$
+
+Deletion and recombination of the finite sum give $\rho=P_a+R$. The two-case result of the preceding section then yields $\rho=P_a/m(P_a)$. Set
+
+$$
+v=\frac{u_a}{\sqrt{m(P_a)}}.
+$$
+
+Since $m(P_a)>0$, the square of its real square root is $m(P_a)$. Real scaling contributes one coefficient on each side of the outer product. Thus
+
+$$
+P_v=\frac1{m(P_a)}P_a=\rho,
+\qquad\operatorname{Tr}P_v=1.
+$$
+
+A normalized vector has therefore been derived from any extreme point of the complete set, rather than supplied by the caller as a witness. ∎
+
+In Lean, `gram_eq_sum_outer` proves the column-outer-product sum for the actual Gram matrix; `outer_real_smul` proves the squared scaling law for real scalars; `IsPure.exists_vector` completes the construction; and `isPure_iff_exists_vector` reconnects it to the earlier implication. Choosing a positive-mass column and a Gram factor uses the permitted classical foundations, without a new rank-one axiom or physical spectral assumption.
+
+An empty carrier is not silently excluded. If a unit-trace density exists, the total-mass-one argument itself supplies a positive-mass column. This is impossible on an empty carrier, so there is no valid $\rho$ to input in that case. No extra nonemptiness field is needed to hide this boundary. [QM318]
+
+## 61.4 How Equal Gram Data Produce an Actual Unitary
+
+Next consider a purely linear-algebraic problem. Let $F,G:\mathbb C^{\iota}\to\mathbb C^{\alpha}$ be arbitrary finite complex matrices satisfying
+
+$$
+F^\dagger F=G^\dagger G.
+$$
+
+For every input $x$, the actual Gram quadratic forms give the squared Euclidean norms:
+
+$$
+\|Fx\|_2^2=x^\dagger F^\dagger Fx
+=x^\dagger G^\dagger Gx=\|Gx\|_2^2.
+$$
+
+Hence $Fx=0$ implies $Gx=0$. This makes
+
+$$
+L:\operatorname{ran}F\longrightarrow\mathbb C^\alpha,
+\qquad L(Fx)=Gx
+$$
+
+a well-defined complex-linear map. Two representations of the same $Fx$ differ by an element of $\ker F$, and therefore of $\ker G$. The norm equality further makes $L$ a linear isometry on its actual generated support.
+
+The Lean construction does not leave well-definedness of $L$ as an unproved comment. It first defines an induced map through the quotient by $\ker F$, then uses the linear equivalence from the quotient by the kernel to the range to return to $\operatorname{ran}F$. It next proves norm preservation for each range vector. `LinearIsometry.extend` extends this subspace isometry to a linear isometry of the same full finite auxiliary space. Injectivity of a finite-dimensional endomorphism implies surjectivity, producing a linear isometric equivalence.
+
+Taking its actual matrix $U$ in the standard orthonormal basis gives
+
+$$
+U^\dagger U=I_\alpha,\qquad UU^\dagger=I_\alpha,
+\qquad UF=G.
+$$
+
+Both unitary identities are conclusions. Neither $F$ nor $G$ is assumed full rank or required to fill the auxiliary space. Finite-dimensional isometric extension handles directions outside the generated support. The only input to `exists_unitary_of_column_gram` is the actual Gram equality: its inputs contain no desired unitary matrix, extendibility field, or unitary-equivalence conclusion. [QM318]
+
+This is a mathematical existence construction. It uses the quotient-space and finite isometric-extension theorems proved in the pinned Mathlib and checks its foundations through exact named axiom auditing. It does not additionally claim a certified matrix-decomposition algorithm with numerical stability bounds.
+
+## 61.5 Row Grams, Transposes, and the Direction of Auxiliary Action
+
+Use the fixed vectorization convention for purification vectors:
+
+$$
+\psi(i,a)=A_{ia},\qquad\phi(i,a)=B_{ia}.
+$$
+
+Their actual system marginals are $AA^\dagger$ and $BB^\dagger$. Equal marginals therefore give a **row-Gram** equality:
+
+$$
+AA^\dagger=BB^\dagger.
+$$
+
+The source implementation transposes this equality and takes $F=A^\mathsf T$, $G=B^\mathsf T$. Since
+
+$$
+(A^\mathsf T)^\dagger A^\mathsf T
+=\overline A A^\mathsf T=(AA^\dagger)^\mathsf T,
+$$
+
+the preceding section directly supplies an auxiliary unitary satisfying $UA^\mathsf T=B^\mathsf T$. Entrywise, this is
+
+$$
+B_{ia}=\sum_bU_{ab}A_{ib},
+\qquad
+\phi(i,a)=\sum_bU_{ab}\psi(i,b).
+$$
+
+Thus the matrix acting on the second vector index is $U$, while right multiplication of the matrix factor is written $B=AU^\mathsf T$. The corresponding joint-vector relation is
+
+$$
+\phi=(I_\iota\otimes U)\psi.
+$$
+
+`exists_auxiliary_unitary_of_gram` derives the required $U$ from the actual transposed Gram equality. `auxiliary_action_apply` computes every entry of the tensor-matrix action, and `auxiliary_action_vectorize` proves the transpose in the right-hand factor explicitly. The matrices $U$, $U^\dagger$, $U^\mathsf T$, and $\overline U$ are therefore not silently interchanged between representations.
+
+An alternative mathematical route can begin with $F=A^\dagger$, but the conjugation must then be tracked when converting the support-isometry matrix back into the vector's auxiliary action. The implementation here uses the transpose route above. Alternative routes discussed during preparation are not presented as proof executions performed by this source. [QM318]
+
+## 61.6 Arbitrary Purifications on the Same Auxiliary Carrier
+
+<a id="p-pun-01"></a>
+
+**P-PUN-01 (Unitary equivalence of all purifications on the same auxiliary carrier).** Suppose $\Psi,\Phi\in\mathcal D(\iota\times\alpha)$ are pure in the complete joint density space and their actual partial traces satisfy
+
+$$
+\operatorname{Tr}_\alpha\Psi=\operatorname{Tr}_\alpha\Phi.
+$$
+
+Then there is an actual matrix $U\in M_\alpha(\mathbb C)$ such that
+
+$$
+U^\dagger U=UU^\dagger=I_\alpha,
+\qquad
+\Phi=(I_\iota\otimes U)\Psi(I_\iota\otimes U)^\dagger.
+$$
+
+**Proof.** Apply P-PUC-01 to $\Psi$ and $\Phi$ to obtain normalized vectors $\psi$ and $\phi$ whose actual outer products are the two joint densities. Substituting these outer products into the partial-trace equality gives the row-Gram equality for their matrix factors. The preceding section supplies $U$ with $\phi=(I\otimes U)\psi$. Finally, the actual outer-product identity
+
+$$
+|K\psi\rangle\langle K\psi|
+=K|\psi\rangle\langle\psi|K^\dagger
+$$
+
+gives the unitary conjugation of joint densities. ∎
+
+The intermediate vector theorem `exists_auxiliary_unitary_of_equal_marginal` does not even require normalization. Any two joint vectors on the same carriers with equal actual outer-product partial traces satisfy the exact vector-action relation. The final theorem `pure_states_unitarily_equivalent` uses P-PUC-01 to handle all pure densities defined by complete convex extremality. “Arbitrary purifications” is therefore not reduced to “purifications for which the caller has already supplied vector representatives.” [QM318]
+
+“Uniqueness” here means equivalence under auxiliary unitary action. It asserts neither $\Psi=\Phi$ nor uniqueness of the connecting matrix $U$. Unused auxiliary directions allow different unitary extensions, and a vector representative's global phase can be absorbed into the auxiliary unitary. Together, existence in Chapter 57 and equivalence here provide the full chain within this finite complex model: purifications exist, and all purifications on a common auxiliary carrier can be compared.
+
+## 61.7 Different Carriers Require Actual Rectangular Isometric Channels
+
+<a id="p-aux-01"></a>
+
+**P-AUX-01 (Actual channel, marginal, and purity of an auxiliary isometric embedding).** Let $J:\mathbb C^\alpha\to\mathbb C^\beta$ be an actual rectangular matrix satisfying $J^\dagger J=I_\alpha$. Then
+
+$$
+\mathcal E_J(X)=(I_\iota\otimes J)X(I_\iota\otimes J)^\dagger
+$$
+
+is an actual single-Kraus CPTP channel from $\iota\times\alpha$ to $\iota\times\beta$, and for **every complex input matrix** $X$,
+
+$$
+\operatorname{Tr}_\beta\mathcal E_J(X)
+=\operatorname{Tr}_\alpha X.
+$$
+
+If the input is pure in the complete joint state space, the output is pure in the complete enlarged state space.
+
+**Proof.** Put $K=I_\iota\otimes J$. Tensor multiplication and conjugate transposition give
+
+$$
+K^\dagger K=I_\iota\otimes(J^\dagger J)
+=I_{\iota\times\alpha},
+$$
+
+so the actual Kraus matrix satisfies rectangular-channel completeness. Chapter 58's rectangular-channel theory applies, including complete positivity under every finite ancillary amplification.
+
+Fix system indices $i,j$, and set $X^{ij}_{cd}=X_{(i,c),(j,d)}$, an actual complex matrix on the auxiliary carrier. Direct calculation of the corresponding output block gives
+
+$$
+(\mathcal E_JX)^{ij}=JX^{ij}J^\dagger.
+$$
+
+The actual partial trace takes the trace of that block. By cyclicity,
+
+$$
+\operatorname{Tr}(JX^{ij}J^\dagger)
+=\operatorname{Tr}(J^\dagger JX^{ij})
+=\operatorname{Tr}X^{ij}.
+$$
+
+Applying this at every $i,j$ proves the marginal identity. No positivity, unit-trace, purity, or product-form restriction is imposed on $X$ in this calculation.
+
+Finally, if $\Psi$ is pure in the complete convex set, P-PUC-01 gives $\Psi=P_\psi$. The channel output is $P_{K\psi}$. Trace preservation gives normalization, and P-PUR-01—or the reverse implication of P-PUC-01—makes the output an extreme point with respect to all density states in the enlarged space. ∎
+
+`auxiliaryEmbeddingChannel` constructs the channel with actual input and output types. `auxiliaryEmbeddingChannel_operator_apply` gives the block formula; `auxiliaryEmbeddingChannel_discard_operator` quantifies over all complex matrices; and `auxiliaryEmbeddingChannel_discard_state` and `auxiliaryEmbeddingChannel_preserves_purity` reconnect the result to actual densities and complete purity. The only matrix assumption is $J^\dagger J=I_\alpha$. When the output space is larger, $JJ^\dagger=I_\beta$ generally fails and must not be added to the conclusion. [QM318]
+
+## 61.8 Comparing Different Auxiliary Dimensions After a Common Direct-Sum Extension
+
+Take the common auxiliary carrier to be the disjoint sum $\alpha\sqcup\beta$, whose complex vector space is the direct sum of the two auxiliary spaces. Define the actual rectangular matrices
+
+$$
+J_\alpha=\begin{bmatrix}I_\alpha\\0\end{bmatrix},
+\qquad
+J_\beta=\begin{bmatrix}0\\I_\beta\end{bmatrix}.
+$$
+
+They satisfy $J_\alpha^\dagger J_\alpha=I_\alpha$ and $J_\beta^\dagger J_\beta=I_\beta$, respectively. The right-hand identities belong to different source carriers. Construct
+
+$$
+\widetilde\Psi=\mathcal E_{J_\alpha}(\Psi),
+\qquad
+\widetilde\Phi=\mathcal E_{J_\beta}(\Phi).
+$$
+
+<a id="p-pun-02"></a>
+
+**P-PUN-02 (Unitary equivalence after common extension for different finite auxiliary carriers).** Suppose $\Psi\in\mathcal D(\iota\times\alpha)$ and $\Phi\in\mathcal D(\iota\times\beta)$ are pure in their respective complete joint density spaces and have the same actual system marginal. Then there is $U\in M_{\alpha\sqcup\beta}(\mathbb C)$ satisfying both unitary identities and
+
+$$
+\widetilde\Phi
+=(I_\iota\otimes U)\widetilde\Psi(I_\iota\otimes U)^\dagger.
+$$
+
+**Proof.** Block-matrix multiplication directly establishes the isometry identities of the canonical embeddings. P-AUX-01 makes $\widetilde\Psi$ and $\widetilde\Phi$ pure densities in the same complete common state space and preserves their original system marginals. Those marginals are equal, so P-PUN-01 applies on the common auxiliary carrier $\alpha\sqcup\beta$. ∎
+
+The formal definitions `auxiliaryInl` and `auxiliaryInr` give the actual rectangular embeddings; `extendAuxiliaryLeft` and `extendAuxiliaryRight` give their actual channel outputs. Four purity and marginal theorems first establish the required premises independently. Only then does `pure_states_common_extension_unitary` invoke the same-carrier unitary-equivalence theorem.
+
+The result requires no comparison between $|\alpha|$ and $|\beta|$, and does not treat the carriers as the same type. The common dimension here is $|\alpha|+|\beta|$; the result does not claim it is minimal or infer a two-sided unitary directly between unequal-dimensional spaces. Chapter 64 supplies new proofs of minimum auxiliary dimension and, when $|\alpha|\le|\beta|$, an actual isometry from $\alpha$ to $\beta$. Strict enlargement still has no two-sided inverse, and a reverse full-space isometry may still fail to exist. Those later results do not change the quantifiers of the present proposition. [QM318][QM319]
+
+## 61.9 An Exact Positive Control: Equal Marginals, Different Joint States
+
+The chosen auxiliary matrix has mixed real and imaginary entries, making the directions of conjugation and transposition testable:
+
+$$
+U=\begin{bmatrix}3/5&4i/5\\4/5&-3i/5\end{bmatrix}.
+$$
+
+Its columns are $(3,4)^\mathsf T/5$ and $i(4,-3)^\mathsf T/5$. Each has squared norm one, and their inner product is zero. The actual witness verifies both $U^\dagger U=I$ and $UU^\dagger=I$.
+
+Take
+
+$$
+\psi_1=\tfrac35|00\rangle+\tfrac45|11\rangle,
+$$
+
+and compute using the fixed second-index action:
+
+$$
+\begin{aligned}
+\psi_2=(I\otimes U)\psi_1
+={}&\tfrac9{25}|00\rangle+\tfrac{12}{25}|01\rangle\\
+&+\tfrac{16i}{25}|10\rangle-\tfrac{12i}{25}|11\rangle.
+\end{aligned}
+$$
+
+The corresponding vectorization matrices are
+
+$$
+A=\begin{bmatrix}3/5&0\\0&4/5\end{bmatrix},
+\qquad
+B=\begin{bmatrix}9/25&12/25\\16i/25&-12i/25\end{bmatrix}.
+$$
+
+Exact multiplication gives
+
+$$
+AA^\dagger=BB^\dagger
+=\begin{bmatrix}9/25&0\\0&16/25\end{bmatrix}=\rho.
+$$
+
+For example, the off-diagonal entry of $BB^\dagger$ is $-144i/625+144i/625=0$. Both vectors have total squared norm one, so their joint densities are pure in the complete convex sense and both have actual partial trace $\rho$.
+
+The two joint vectors and densities are indeed different: their $|00\rangle\langle00|$ entries are $9/25$ and $81/625$. Equal marginals thus do not imply equal joint densities; the correct conclusion is that an auxiliary unitary connects them. `exact_auxiliary_vector_action` checks the exact vector equality, `same_actual_marginal` checks the original actual discard channel, and `general_uniqueness_instantiated` actually invokes the general complete-pure-state uniqueness theorem. This avoids checking only the small matrices calculated specifically for this example. [QM318]
+
+## 61.10 Joint-Density Negative Controls for Three Incorrect Action Directions
+
+<a id="n-pun-01"></a>
+
+**N-PUN-01 (The adjoint, transpose, and entrywise conjugate cannot replace the actual auxiliary action).** For the fixed $U$ and $\psi_1$ above, replacing the correct auxiliary matrix by $U^\dagger$, $U^\mathsf T$, or $\overline U$ produces a joint density different from $P_{\psi_2}$ in each case.
+
+**Proof.** Define $\chi_T=(I\otimes T)\psi_1$. The following three actual complex-matrix entries have each been calculated exactly:
+
+| Auxiliary matrix $T$ | Compared joint-density entry | Value in $P_{\chi_T}$ | Correct value in $P_{\psi_2}$ |
+|---|---|---|---|
+| $U^\dagger$ | $((0,0),(0,1))$ | $108i/625$ | $108/625$ |
+| $U^\mathsf T$ | $((0,0),(0,1))$ | $-108i/625$ | $108/625$ |
+| $\overline U$ | $((0,0),(1,0))$ | $144i/625$ | $-144i/625$ |
+
+The imaginary parts differ in every row, proving inequality of each actual joint density. ∎
+
+`wrong_adjoint_joint_density`, `wrong_transpose_joint_density`, and `wrong_conjugate_joint_density` are three separately axiom-audited negative-control theorems. Their entry values have corresponding exact-calculation theorems. They compare joint densities, so a wrong vector differing only by a global phase would not be mistaken for a physical distinction merely because its expression looked different. Actual density inequality in this example excludes that ambiguity.
+
+Testing only the system marginal cannot detect these direction errors. The unitary identities of $U$ and the transpose/conjugation relations show that all three substitute matrices are also auxiliary unitaries, so their action still preserves the system marginal. The negative controls ask whether the specified joint purification is obtained. Their evidence must therefore concern exact joint vectors or densities. They do not claim that marginal tests identify a unitary choice on the discarded auxiliary system. [QM318]
+
+## 61.11 An Actual Embedding from Two to Three Dimensions and a Nonunitarity Control
+
+Take $\alpha=\mathrm{Fin}\,2$ and $\beta=\mathrm{Unit}$, so the common carrier $\alpha\sqcup\beta$ has dimension three. The actual left canonical embedding is
+
+$$
+J=\begin{bmatrix}1&0\\0&1\\0&0\end{bmatrix}.
+$$
+
+<a id="n-aux-01"></a>
+
+**N-AUX-01 (Strict auxiliary enlargement is an isometric embedding, not a two-sided unitary equivalence).** This actual $3\times2$ matrix satisfies $J^\dagger J=I_2$, but $JJ^\dagger\ne I_3$.
+
+**Proof.** Column orthogonality gives the first identity directly. The second product is $\operatorname{diag}(1,1,0)$: its third diagonal entry is zero, whereas the corresponding entry of $I_3$ is one. ∎
+
+The witnesses `strict_embedding_isometry` and `strict_embedding_not_coisometry` prove the two claims separately, and `auxiliary_dimensions_differ` proves that the carrier cardinalities really differ. Embedding the second joint pure state of §61.9 along this $J$ gives `largerState`. It remains pure in the complete six-dimensional joint space, has a three-dimensional auxiliary carrier, and preserves the original system marginal. Together with `firstState` on the original two-dimensional auxiliary carrier, it forms a pair of purifications with genuinely different auxiliary dimensions.
+
+`different_auxiliary_common_unitary` applies P-PUN-02 to these actual densities. Their common auxiliary carrier is $\mathrm{Fin}\,2\sqcup(\mathrm{Fin}\,2\sqcup\mathrm{Unit})$, of dimension five. The general theorem supplies a matrix on that carrier satisfying both unitary identities. This five-dimensional matrix is obtained by the proved existence construction. The witness does not additionally display a numerically solved five-dimensional unitary, and it does not conflate the two original auxiliary dimensions. [QM318]
+
+## 61.12 Source, Declaration-Level Auditing, and Evidence Scope
+
+The new public sources for this chapter are `UEOTQM/PureStateCharacterization.lean` and `UEOTQM/PurificationUniqueness.lean`; the concrete witness is `scripts/witnesses/PurificationUniquenessExamples.lean`. Their counts are:
+
+| Source file | Explicit `theorem` | `def` | `abbrev` | Exact named axiom audits |
+|---|---:|---:|---:|---:|
+| `PureStateCharacterization.lean` | 5 | 0 | 0 | 5 |
+| `PurificationUniqueness.lean` | 22 | 5 | 0 | 27 |
+| `PurificationUniquenessExamples.lean` | 28 | 10 | 0 | 38 |
+
+The two public modules contain 27 explicit theorems and 5 definitions in total; the witness adds 28 theorems and 10 definitions. All 70 distinct stable named public and witness declarations were checked in the actual focused audit for this workstream and depend only on `propext`, `Classical.choice`, and `Quot.sound`. Every witness `theorem`, `def`, and `abbrev` has its axiom dependencies printed in source order; the audit does not merely sample the final combined theorem.
+
+Actual acceptance logs, final source hashes, source-to-olean bindings, and the named inventory are recorded in `physics/qm/kernel/evidence/v31.8/B/focused-verification.json` and `declaration_inventory.json`. Focused module validation corresponds to `pure-005` and `uniqueness-005`; the final concrete witness to `witness-003`; and the exact public audit to `public-audit-001`. These are actual invocations with exit status zero. Earlier informative failures and their available source snapshots are preserved separately and are not counted as accepted results.
+
+This workstream receipt establishes focused proof acceptance. The version-wide build, full axiom audit, inherited witnesses, and remote CI have their own completion and identity records in the main version receipts. Local results cannot substitute for a remote run not actually read back. Ordinary linter notices must also be distinguished from logical acceptance; permitted ordinary warnings must not be rewritten as “zero warnings.” No new real experiment is supplied here. Rational complex-matrix positive and negative controls are formal witnesses, not empirical confirmation by nature. [QM318]
+
+## 61.13 Closed Mathematical Obligations and Open Theory Selection
+
+Chapter 57's existence construction and this chapter's converse purity, same-auxiliary-carrier unitary equivalence, and different-carrier common extension now connect within one finite complex density model. Pure-state definition, Gram factor, joint vector, actual partial trace, and actual rectangular channel each have an explicit interface. The conclusions no longer rely on assuming all pure states are vector states or requiring the caller to provide the desired auxiliary unitary.
+
+Uniqueness of the auxiliary unitary itself, minimum dimension of a common extension, direct isometric extension under additional dimensional conditions, and certified numerical construction are distinct questions. Chapter 64 subsequently addresses minimum purification dimension and direct isometry under the required dimension ordering; those are separate new proofs. Closed ranges, nonfinite rank, and extendibility in infinite dimensions also cannot simply use this chapter's finite-dimensional surjectivity argument. If a reconstruction principle imposes more specific requirements on auxiliary completion, allowed reversible processes, or system isomorphisms, its fields must be connected individually to the actual proved types. The name “essential uniqueness” alone does not establish every literature contract.
+
+These results principally concern mathematics under standard finite complex quantum structure P and actual operational connections B. They strengthen the candidate model's internal completeness and test interfaces, but do not establish a bridge uniquely selecting complex quantum structure from the frozen 106 Core items and four generators. The complete classical model's purification obstruction and the real model's local-tomography counterexample continue to constrain selection principles. Excluding these two examined models does not exclude every possible theory of nature.
+
+The generation-count conclusions continue to depend on their spectral, representation, threshold, and effective-window assumptions. This chapter neither changes those assumptions nor supplies new empirical data. UEOT's aim remains to connect theoretical ideas, actual derivations, counterexamples, and empirical obligations into a reviewable whole. This chapter completes one finite quantum-mathematical segment of that task. Further claims about nature still require independent premises, actual proofs, and testable physical correspondences. [QM318]
+
+<a id="ch-62"></a>
+
+# 62. Per-action record-error budgets with retained history
+
+Resolving protocol error into individual actions requires causal histories and quantum memory. Under a common fixed-depth controller, actual PSD history blocks and weights from the realization chosen for the common-input comparison yield actionwise budgets; a label-deletion counterexample explains why the common-control contract matters.
+
+Chapter 58 constructed a joint channel for actual instruments, all finite adaptive leaf records, and quantum memory, and bounded complete-record TV by its whole-channel defect. That defect defines how two protocols differ, but usually still needs to be calculated or estimated. Under a fixed finite depth and a common causal controller, this chapter traces the error to the instrument actually selected at each step. It first constructs a history-reading rectangular Kraus channel, then derives action budgets from a common input's PSD principal blocks, actual block weights, and valid block effects.
+
+The controller actually reads and dephases its history register. The formal channel can act on any history–memory density matrix, and the proof uses all input principal blocks. This does not turn classical-history control into coherent quantum control. The original finite-tree interpreter retains its more general variable-length leaf semantics; the present construction is connected to it through an explicit fixed-depth subclass. [QM318]
+
+## 62.1 Finite Time, Actual Histories, and a Common Controller
+
+Fix a finite outcome carrier $O$, a finite complex quantum-memory carrier $\iota$, and a finite depth $N\in\mathbb N$. The complete outcome history before step $t$ is
+
+$$
+\mathsf H_t=\{h:\operatorname{Fin}(t)\to O\}.
+$$
+
+The subscript counts recorded outcomes; $\mathsf H_0$ contains only the empty history. Let $A$ be the action carrier. Finite depth requires the controller to choose actions at the relevant times and histories, but does not require $A$ itself to be finite. Its actual type is
+
+$$
+C:\prod_{t:\operatorname{Fin}(N)}(\mathsf H_t\to A).
+$$
+
+The two implementations use $I_a$ and $J_a$, respectively, but both select the same $C_t(h)$ at that history. A common outcome alphabet alone does not imply a common controller; here the same function value is used. Each instrument has a complete Kraus family, for example
+
+$$
+\Phi^I_{a,o}(X)=\sum_{k:\kappa}K^I_{a,o,k}X(K^I_{a,o,k})^\dagger,
+\qquad
+\sum_{o,k}(K^I_{a,o,k})^\dagger K^I_{a,o,k}=I_\iota.
+$$
+
+The Kraus indices for $J$ may have a different finite carrier $\eta$. Actual channels are compared; identical Kraus representations are not required. The outcome-retaining joint channel for a single action remains the one from Chapter 58:
+
+$$
+\mathcal R^I_a(X)=\sum_o|o\rangle\langle o|\otimes\Phi^I_{a,o}(X).
+$$
+
+Write the full-effect distance as $d_{\rm eff}$ and define the actual action-record defect
+
+$$
+\delta_{\rm rec}(I_a,J_a)
+=\sup\left(\{0\}\cup
+ \{d_{\rm eff}(\mathcal R^I_a(\rho),\mathcal R^J_a(\rho)):
+   \rho\in\mathcal D(\iota)\}\right).
+$$
+
+The common-input quantifier in the supremum is essential, and record labels must not be discarded before the defect is defined. Inserting zero makes the set explicitly nonempty even when the input-state type is empty. When a uniform upper bound is imposed on a history-channel defect, the source explicitly retains nonnegativity of that upper bound.
+
+## 62.2 PSD History Blocks, Actual Weights, and Valid Effects
+
+For any finite history carrier $H$ and any $X\in M_{H\times\iota}(\mathbb C)$, define the principal block
+
+$$
+X_h(i,j)=X((h,i),(h,j)).
+$$
+
+This is not a selection of arbitrary entries subsequently declared to be a state. Writing the embedding $V_h:e_i\mapsto e_{(h,i)}$ gives $X_h=V_h^\dagger XV_h$. The same principal-submatrix construction is used for output effects.
+
+<a id="p-arb-01"></a>
+
+**P-ARB-01 (History blocks, normalized weights, and valid block effects).** If $\zeta\in\mathcal D(H\times\iota)$, every principal block $\zeta_h$ is PSD, and
+
+$$
+p_h=\operatorname{Tr}\zeta_h\ge0,
+\qquad \sum_h p_h=1,
+\qquad p_h=0\ \Longleftrightarrow\ \zeta_h=0.
+$$
+
+If $E\in\mathcal E(H\times\nu)$ is any valid output effect, its principal block $E_h$ is a valid member of $\mathcal E(\nu)$. For any block family $B_h$, the actual trace-pairing identity is
+
+$$
+\left\langle E,\operatorname{diag}_hB_h\right\rangle_{\mathbb R}
+=\sum_h\langle E_h,B_h\rangle_{\mathbb R}.
+$$
+
+**Proof.** Principal submatrices preserve PSD, so $\zeta_h\succeq0$. Summing the full trace over product indices gives $\sum_h\operatorname{Tr}\zeta_h=\operatorname{Tr}\zeta=1$. A PSD matrix has zero trace exactly when it is zero. This existing theorem applies to every block without forcing a posterior state onto a zero-weight history.
+
+For an effect, restrict both $E\succeq0$ and $I-E\succeq0$ to history $h$. Since $i\mapsto(h,i)$ is injective, the principal block of the identity is $I_\nu$, giving $E_h\succeq0$ and $I_\nu-E_h\succeq0$. Finally, expand matrix multiplication and the trace. The block output has zero off-diagonal history entries, leaving precisely the sum of principal-block pairings. ∎
+
+The input $\zeta$ may have nonzero coherences between histories. Principal-block positivity and trace normalization do not require it to be block diagonal in advance. The channel constructed next actually removes those coherences; this explicit action determines the proof's scope.
+
+## 62.3 From Actual Reading Kraus Operators to the Weighted Action Bound
+
+First consider general history-dependent rectangular channels $\mathcal C_h:M_\iota\to M_\nu$. If their Kraus matrices are $L_{h,k}$, define on joint history–memory spaces
+
+$$
+\widetilde L_{h,k}((g,a),(g',i))
+=\mathbf 1_{g=h}\mathbf 1_{g'=h}\,L_{h,k}(a,i).
+$$
+
+This matrix reads input history $h$, applies $\mathcal C_h$ to memory, and writes the same $h$ to the output. Summing Kraus terms over different $h$ is an incoherent channel sum, implementing actual history dephasing.
+
+<a id="p-arb-02"></a>
+
+**P-ARB-02 (Action-weighted bound for the actual history-reading channel).** This Kraus family forms a trace-preserving completely positive channel $\mathcal S_{\mathcal C}$ satisfying, for every actual matrix input,
+
+$$
+\mathcal S_{\mathcal C}(X)
+=\operatorname{diag}_h\mathcal C_h(X_h).
+$$
+
+If $\mathcal D_h$ is another channel family with the same input and output carriers, every $\zeta\in\mathcal D(H\times\iota)$ satisfies
+
+$$
+d_{\rm eff}(\mathcal S_{\mathcal C}(\zeta),
+             \mathcal S_{\mathcal D}(\zeta))
+\le \sum_h p_h\,\delta(\mathcal C_h,\mathcal D_h),
+\qquad p_h=\operatorname{Tr}\zeta_h.
+$$
+
+In particular, if the actual defect at every $h$ is at most $\varepsilon$, this common-input distance is at most $\varepsilon$. If $\varepsilon\ge0$ is also explicit, the actual history-channel defect is at most $\varepsilon$, including the empty-input-carrier boundary of the supremum.
+
+**Proof.** For fixed input indices $(g,i),(g',j)$, the matrix product $\widetilde L_{h,k}^\dagger\widetilde L_{h,k}$ is nonzero only if $g=g'=h$. First sum over $k$ using completeness of each $\mathcal C_h$, then sum over $h$, obtaining the joint identity matrix. Complete positivity follows from the proved finite-ancilla amplification theorem for rectangular channels. Similarly expanding $\widetilde L_{h,k}X\widetilde L_{h,k}^\dagger$ shows that only $X_h$ enters the corresponding output block, giving the action formula.
+
+For each PSD block $X_h$, distinguish two cases. If $p_h=0$, P-ARB-01 gives $X_h=0$, and both linear channel outputs vanish. If $p_h>0$, set $\rho_h=X_h/p_h$, with actual PSD and unit-trace proofs. For every valid effect $F$, real linearity and the defect definition give
+
+$$
+\begin{aligned}
+&\left|\langle F,\mathcal C_h(X_h)\rangle_{\mathbb R}
+ -\langle F,\mathcal D_h(X_h)\rangle_{\mathbb R}\right|\\
+&\quad=p_h\left|p_{\mathcal C_h(\rho_h)}(F)
+                 -p_{\mathcal D_h(\rho_h)}(F)\right|\\
+&\quad\le p_h\delta(\mathcal C_h,\mathcal D_h).
+\end{aligned}
+$$
+
+Now take any joint output effect $E$. P-ARB-01 makes every $E_h$ valid and expands the total probability difference into the sum of principal-block differences. The triangle inequality for absolute values gives the weighted bound, followed by the supremum over all effects. The uniform bound uses $\sum_hp_h=1$. For the history-channel defect, take the supremum over all input states and also check the inserted zero. ∎
+
+The crucial weights come from the same $\zeta$. The argument does not assume that two different evolution histories have identical distributions. It supplies a legitimate common input for the triangle decomposition below.
+
+## 62.4 Chronological Outcome Appending and the Original Protocol
+
+For a length-$t$ history $h$ and a new outcome $o$, write $h\mathbin{\|}o$ for the history obtained by appending $o$, of length $t+1$. The actual carrier bijection is
+
+$$
+\mathsf H_t\times(O\times\iota)
+\longleftrightarrow\mathsf H_{t+1}\times\iota,
+\qquad(h,(o,i))\longmapsto(h\mathbin{\|}o,i).
+$$
+
+Its inverse reads the first $t$ entries and the last entry. An actual rectangular permutation Kraus matrix implements the bijection, and the inverse bijection also gives a channel. Relabelling consequently preserves complete states and full-effect distance, not merely trace.
+
+At time $t$, the actual step $S^I_t$ first reads the history and uses $\mathcal C_h=\mathcal R^I_{C_t(h)}$, then appends the outcome by that permutation. Thus
+
+$$
+S^I_t(X)_{h\|o,h\|o}
+=\Phi^I_{C_t(h),o}(X_h),
+$$
+
+and output blocks between distinct complete histories vanish. An actual permutation embeds the initial state through $\iota\simeq\mathsf H_0\times\iota$. Successive steps produce the joint density $\zeta^I_{C,\rho}$. At depth zero no action is called, so nonemptiness of the action carrier is unnecessary.
+
+<a id="p-arb-03"></a>
+
+**P-ARB-03 (Matrix agreement between finite-history evolution and the original complete protocol).** For any fixed $N$, controller $C$, actual instrument family $I$, and initial state $\rho$, the constructed actual output satisfies
+
+$$
+\zeta^I_{C,\rho}
+=\operatorname{diag}_{h\in\mathsf H_N}
+ \operatorname{recordOperator}(I,\operatorname{word}_C(h),\rho).
+$$
+
+From the same $C$, construct the protocol $\pi_C$ in the original type. There is an actual leaf bijection $e_C:\operatorname{Leaf}(\pi_C)\simeq\mathsf H_N$ with
+
+$$
+\operatorname{word}_{\pi_C}(\ell)
+=\operatorname{word}_C(e_C\ell).
+$$
+
+After the actual permutation $e_C\times\operatorname{id}_\iota$, the two joint density states coincide. The associated leaf probabilities, complete-record TV, and terminal quantum marginals all agree. In particular, the quantum marginal is
+
+$$
+\operatorname{Tr}_{\mathsf H_N}\zeta^I_{C,\rho}
+=\sum_{\ell:\operatorname{Leaf}(\pi_C)}
+ \operatorname{recordOperator}(I,\operatorname{word}_{\pi_C}(\ell),\rho).
+$$
+
+**Proof.** The original protocol recurses from the first letter of a word: stopping corresponds to the empty history, and an action node supplies a successor controller for every $o\in O$. The leaf-to-history map places the current outcome first and recursively handles the tail. Its inverse reads the first entry and recursively recovers the tail leaf. Both composites are identities, establishing an actual bijection.
+
+Channel execution instead appends at the end, so agreement of these recursion orders must also be proved. The source first establishes
+
+$$
+\operatorname{word}_{C}(h\|o)
+=\operatorname{word}_{C_{<t}}(h)
+ \mathbin{+\!+}[(C_t(h),o)],
+$$
+
+where $C_{<t}$ is the same controller with its last action time removed. For the original interpreter it separately proves
+
+$$
+\operatorname{recordOperator}(I,w\mathbin{+\!+}v,X)
+=\operatorname{recordOperator}
+  (I,v,\operatorname{recordOperator}(I,w,X)).
+$$
+
+At depth zero, the permutation embedding preserves the original matrix. In the inductive step, combine the principal-block formula for the actual $S^I_t$, the induction hypothesis, and the two word-order identities. This identifies the full output matrix, not just probabilities. Reindexing the finite sum by the leaf bijection then gives the original protocol's complete-state permutation identity and quantum marginal. ∎
+
+The original `Protocol` permits leaves of different lengths, whereas $\pi_C$ is the complete subclass constructed from one fixed $N$. Even zero-probability outcomes retain valid successor actions. This chapter does not prove padding semantics for an arbitrary stopping tree, and a leaf-type conversion alone cannot supply that broader result.
+
+## 62.5 Per-Action Recursion, the Finite Sum, and Complete-Record TV
+
+For the same $C$, let the two initial states be $\rho,\sigma$. Write $\zeta^I_t$ for the actual joint state reached from $\rho$ through $I$ and the first $t$ controller steps, and $\zeta^J_t$ for the state reached from $\sigma$ through $J$. Define
+
+$$
+\begin{aligned}
+q^J_t(h)&=\operatorname{Tr}(\zeta^J_t)_h,\\
+a_t&=\sum_{h\in\mathsf H_t}q^J_t(h)
+ \delta_{\rm rec}(I_{C_t(h)},J_{C_t(h)}).
+\end{aligned}
+$$
+
+This is `actionCost` in the source. Its prefix state is actually constructed as `run J (C.truncate t) σ`. The value $a_t$ is nonnegative, and a zero-mass history contributes zero by the zero-block theorem. It is not the whole-protocol defect under a different name.
+
+<a id="p-arb-04"></a>
+
+**P-ARB-04 (Actual per-action sum budget and complete-record TV).** Under the stated fixed finite depth, common controller, and common record and memory carriers, any initial states $\rho,\sigma$ satisfy
+
+$$
+\begin{aligned}
+d_{\rm eff}(\zeta^I_N,\zeta^J_N)
+&\le d_{\rm eff}(\rho,\sigma)+\sum_{t=0}^{N-1}a_t,\\
+\operatorname{TV}(p^I_N,p^J_N)
+&\le d_{\rm eff}(\rho,\sigma)+\sum_{t=0}^{N-1}a_t.
+\end{aligned}
+$$
+
+If, for every time $t$ and every length-$t$ history $h$, one has actually proved
+
+$$
+\delta_{\rm rec}(I_{C_t(h)},J_{C_t(h)})\le\varepsilon_t,
+$$
+
+both right-hand sides may be replaced by $d_{\rm eff}(\rho,\sigma)+\sum_{t<N}\varepsilon_t$. Here $p^I_N,p^J_N$ are complete-history distributions. After the leaf bijection of P-ARB-03, the same bounds apply to the original protocol's complete leaf laws.
+
+**Proof.** Put $D_t=d_{\rm eff}(\zeta^I_t,\zeta^J_t)$. Apply the triangle inequality at the common intermediate state $S^I_t(\zeta^J_t)$:
+
+$$
+\begin{aligned}
+D_{t+1}
+&\le d_{\rm eff}(S^I_t(\zeta^I_t),S^I_t(\zeta^J_t))\\
+&\quad+d_{\rm eff}(S^I_t(\zeta^J_t),S^J_t(\zeta^J_t))\\
+&\le D_t+a_t.
+\end{aligned}
+$$
+
+Actual CPTP effect pullback contracts the first term. In the second, both instrument implementations are compared on the same $\zeta^J_t$. P-ARB-02 gives the action bound with common weights $q^J_t(h)$, and the outcome-appending permutation preserves distance. Induction and finite summation give $D_N\le D_0+\sum_ta_t$. The empty-history initial permutation yields $D_0=d_{\rm eff}(\rho,\sigma)$. If each action defect is bounded by $\varepsilon_t$, weight normalization in P-ARB-01 gives $a_t\le\varepsilon_t$, and summing proves the stated alternative.
+
+For any finite record event $S\subseteq\mathsf H_N$, construct the actual effect
+
+$$
+E_S=\sum_{h\in S}|h\rangle\langle h|\otimes I_\iota.
+$$
+
+Both it and its complement are PSD. Its probability on any joint state is exactly the sum of principal-block masses over $S$. Thus $|p^I_N(S)-p^J_N(S)|\le D_N$. The all-event characterization of finite normalized distributions gives $\operatorname{TV}(p^I_N,p^J_N)\le D_N$, retaining coefficient one instead of multiplying an individual-outcome bound by the number of histories. Finally, use the proved TV relabelling identity in P-ARB-03 to return to the original protocol. ∎
+
+Here $J$ specifies the chosen direction of the triangle decomposition and its common input. The formula requires neither $\zeta^I_t=\zeta^J_t$ nor equal history weights for the two implementations. Actual $a_t$ can reflect histories rarely visited by the $J$ prefix. A uniform $\varepsilon_t$ only requires checking every underlying action selected by the controller, giving a more conservative bound that may be easier to estimate externally. It still needs a genuine instrument-error proof, calibration, or other independent error input. Defining a number as a supremum does not automatically compute it numerically.
+
+## 62.6 An Exact Rational Two-Step Positive Control
+
+Fix $O=\iota=\operatorname{Fin}(2)$, with four Kraus indices per instrument. Let $\mathsf D_b$ deterministically output $b\in\{0,1\}$. Its sole nonzero Kraus matrix is the identity at index zero of that label, so every matrix input satisfies
+
+$$
+\Phi_{\mathsf D_b,o}(X)=\mathbf1_{o=b}X.
+$$
+
+Define a biased instrument $\mathsf B$ with Kraus quadruple $(I/2,I/2,I/2,0)$ at label zero and $(0,0,0,I/2)$ at label one. The four nonzero Gram terms sum to $I$, making it an actual complete instrument with
+
+$$
+\Phi_{\mathsf B,0}(X)=\tfrac34X,
+\qquad \Phi_{\mathsf B,1}(X)=\tfrac14X.
+$$
+
+All matrix coefficients are exact rationals. Neither floating-point approximation nor an estimated square root is used to set the Kraus matrices.
+
+The controller chooses action $\mathrm{none}$ first. After reading outcome $o$, it chooses $\mathrm{some}(o)$ on the second step. The reference implementation takes $I_{\mathrm{none}}=\mathsf D_0$; the approximate implementation takes $J_{\mathrm{none}}=\mathsf B$; both take $I_{\mathrm{some}(o)}=J_{\mathrm{some}(o)}=\mathsf D_o$. The controller thus actually reads the previous record and changes the subsequent instrument accordingly.
+
+<a id="p-arb-05"></a>
+
+**P-ARB-05 (An exact rational witness saturating the stepwise budget).** For every two-dimensional input density state, the first action's actual record defect is $1/4$, and the second action's corresponding defect is zero. The actual weighted costs are $a_0=1/4$ and $a_1=0$, and complete two-step record TV is exactly $1/4$. For different initial states,
+
+$$
+d_{\rm eff}(\zeta^I_{2,\rho},\zeta^J_{2,\sigma})
+\le d_{\rm eff}(\rho,\sigma)+\tfrac14.
+$$
+
+For a common input state $\rho$, both terminal quantum marginals are exactly $\rho$. Complete-record TV in the original protocol's leaf representation is also exactly $1/4$.
+
+**Proof.** For any valid joint effect $E$, set $x=p_\rho(E_0)$ and $y=p_\rho(E_1)$. P-ARB-01 gives $0\le x,y\le1$. The probabilities of the two first-step outputs are
+
+$$
+x,\qquad \tfrac34x+\tfrac14y.
+$$
+
+Their absolute difference is $|x-y|/4\le1/4$, an upper bound over all input states and all valid joint effects. The record event “output zero” has probabilities $1$ and $3/4$, supplying a matching lower bound. Taking the input-state supremum gives the actual action defect $1/4$, without mistaking a single tested input for a supremum proof.
+
+On the second step, at the common history $h$, both parties use the same instrument $\mathsf D_{h(0)}$, so the action defect is zero. Normalized prefix weights give $a_0=1/4,a_1=0$, and P-ARB-04 gives the full-process upper bound. The complete history $(0,0)$ has actual probabilities $1$ and $3/4$, whose event difference supplies TV lower bound $1/4$, equal to the upper bound.
+
+For the terminal quantum marginal, sum the actual `run_matrix` over all four length-two histories. The reference sum is $\rho$, and the approximate sum is $3\rho/4+\rho/4=\rho$. The leaf-TV identity then gives the original-protocol conclusion. ∎
+
+The example checks the actual order: the current outcome enters the history, the controller reads that existing history, and the next action depends on it. It also checks weights, summation, and the TV coefficient. This exact calculation is a finite formal witness, not empirical confirmation. [QM318]
+
+## 62.7 A Label-Deletion Counterexample Under the Same Feedback Rule
+
+Keep the controller and reference implementation $I$ above. Instead take $\widehat J_{\mathrm{none}}=\mathsf D_1$ and $\widehat J_{\mathrm{some}(o)}=\mathsf D_o$. For every action, the two implementations have the same actual quantum channel after labels are discarded: the identity channel.
+
+<a id="n-arb-01"></a>
+
+**N-ARB-01 (Zero unlabelled action defects can coexist with maximum complete-record error).** Every unlabelled action defect of these actual instrument families is zero, but their two-step complete-record TV is $1$ for any common initial state. The event that the second outcome is zero has probabilities $1$ and $0$. Both terminal quantum density states equal the input $\rho$, and hence each other.
+
+**Proof.** The unlabelled channels of $\mathsf D_0$ and $\mathsf D_1$ both send every input matrix $X$ to $X$; later actions even use the same instrument on both sides. Their unlabelled channels are equal as functions, and the existing `channelDefect_self` gives zero defect.
+
+The reference implementation deterministically records $(0,0)$; the other records $(1,1)$. These probabilities follow from the original chronological words and actual branch formulas. The history event $\{(0,0)\}$ has probability difference $1$, giving the same lower bound on complete TV. TV between finite probability distributions is at most $1$, so it is exactly $1$. Expanding the actual event $\{h:h(1)=0\}$ over the four histories gives second-outcome probabilities $1$ and $0$. Summing the actual record blocks on either side gives terminal quantum marginal $\rho$. The actual leaf bijection preserves original-protocol leaf TV. ∎
+
+The counterexample connects Chapter 58's label obligation to the new stepwise realization and the old protocol; it does not reinterpret the result as unequal terminal quantum states. Replacing $\delta_{\rm rec}$ in P-ARB-04 by the zero unlabelled action defects would incorrectly predict zero record error for a common initial state. The actual labelled action defects do not permit that replacement.
+
+## 62.8 Public Interfaces, Actual Evidence, and Physical Obligations
+
+The new public modules are `UEOTQM.HistoryChannels` and `UEOTQM.ActionRecordBudget`. The table lists stable entry points for their responsibilities; concrete positive and negative controls are in `UEOTQM.ActionRecordBudgetExamples`. [QM318]
+
+| Numbered result or interface | Actual source responsibility |
+|---|---|
+| P-ARB-01: PSD, mass, and zero blocks | `principal_posSemidef`, `sum_mass_principal`, `weight_nonneg`, `sum_weight`, `zero_weight_iff_zero_principal` |
+| P-ARB-01: valid block effects and actual pairing | `restrictEffect`, `restrictEffect_matrix`, `pairing_block` |
+| P-ARB-02: reading Kraus matrices and actual block action | `readKraus`, `readKraus_gram`, `readKraus_conjugation`, `controlled`, `controlled_operator_eq_block` |
+| P-ARB-02: from PSD blocks to the action bound | `pairing_operator_difference_le_mass_mul_defect`, `controlled_state_distance_le_weighted_defect`, `controlled_defect_le_uniform` |
+| P-ARB-03: finite controller and chronology | `Controller.leafEquiv`, `Controller.protocol_word_eq`, `Controller.word_snoc`, `recordOperator_append` |
+| P-ARB-03: actual steps and the original complete state | `step`, `step_operator_eq_block`, `run_matrix`, `run_eq_protocol_state`, `terminal_memory_matrix`, `weight_run_leaf` |
+| P-ARB-04: actual per-action sum | `actionCost`, `run_succ_distance_le`, `run_distance_le_actionCost_sum`, `actionCost_le`, `run_distance_le_budget_sum` |
+| P-ARB-04: complete records and original leaf laws | `record_tv_le_actionCost_sum`, `record_tv_le_budget_sum`, `protocol_record_tv_eq`, `protocol_record_tv_le_budget_sum` |
+| P-ARB-05: exact rational positive control | `biased_record_defect_exact`, `first_actionCost_exact`, `second_actionCost_exact`, `two_step_record_tv_exact`, `original_protocol_record_tv_exact` |
+| N-ARB-01: deleted labels and quantum marginals | `negative_unlabelled_defect_zero`, `negative_two_step_record_tv`, `exact_second_record_zero`, `flipped_second_record_zero`, `negative_terminal_memories_equal` |
+
+The two public modules contain 54 explicit `theorem` declarations, 20 definitions, and 1 abbreviation, giving 75 actual named axiom-audit targets. The separate witness contains 36 `theorem` declarations, 14 definitions, and 2 abbreviations, giving 52 targets. All three source files have actual successful focused-compilation receipts. The two complete audit sequences follow actual source order and use only `propext`, `Classical.choice`, and `Quot.sound`, or subsets thereof. Development failures and final success logs are preserved; ordinary linter warnings remain in the final logs. An independent internal B→C review covered the public proofs and complete concrete witness, respectively. Actual evidence is in `physics/qm/kernel/evidence/v31.8/C`. Integrated acceptance and remote publication are recorded separately by the coordinator's complete receipts; local success does not substitute for those identities.
+
+The closed mathematical obligation is precise: given explicit finite complex quantum instruments and a common causal action rule, prediction error can be decomposed through actual history channels into action-record defects and passed to the complete record distribution. A protocol that is difficult to assess as a whole thus has individually reviewable error inputs. Memory dimension, completeness of each action, record scope, the actual controller, and input-state error remain premises.
+
+Chapter 65 supplies the finite-stopping-tree responsibility left by the fixed-depth result: the common stopping rule, uniform finite bound, actual absorbing padding, and original joint leaf state all receive explicit proofs. Coherent controllers, arbitrary environmental memory outside the present carrier, diamond distance, unbounded stopping, and continuous-time limits still require their own definitions and proofs. Real-device calibration of action defects, leakage outside the model, and empirical applicability also remain separate responsibilities. This chapter adds no experiment, does not derive a complete natural theory from a finite kernel, and does not change the spectral, representation, threshold, or effective-window conditions of the generation-count results. The frozen 106 Core items and four generators retain their identity.
+
+<a id="ch-63"></a>
+
+# 63. Full-effect distance, trace absolute value, and optimal binary discrimination
+
+The probability distance defined by a supremum has a concrete spectral expression in the finite complex model, and an optimal test attains it. A valid positive-spectral effect proves the half-trace-absolute-value formula and optimal equal-prior binary discrimination: formal proofs of established quantum-information results in this project's matrix interfaces.
+
+Chapter 50 constructed the full-effect distance from actual Born probabilities and proved symmetry, the triangle inequality, and channel contraction. Chapter 60 then proved that all effects separate complete density states. This chapter determines its exact numerical expression and whether its supremum is attained. For all finite complex density states, the original full-effect supremum equals half the trace of the standard matrix absolute value, and an actual valid positive-spectral projection attains it.
+
+This connection has two uses. Theoretically, it relates the greatest distinction available to valid effects to the spectrum of a concrete matrix. In applications, it permits certain distance questions to be reduced to finite matrix certificates. The mathematical library's spectral decomposition, however, is a noncomputable existence choice. Its existence proof is not a general numerical eigensolver. [QM319]
+
+## 63.1 The Original Distance and the Standard Matrix Absolute Value
+
+Fix any finite carrier $\iota$ and retain the complete density space $\mathcal D(\iota)$ and effect space $\mathcal E(\iota)$. The probability of an actual effect $E$ in density state $\rho$ is
+
+$$
+p_\rho(E)=\operatorname{Re}\operatorname{Tr}(E\rho).
+$$
+
+The distance from Chapter 50 is
+
+$$
+d_{\rm eff}(\rho,\sigma)
+=\sup_{0\preceq E\preceq I}|p_\rho(E)-p_\sigma(E)|.
+$$
+
+It quantifies over all valid effects. A maximum probability difference over a fixed instrument library, finite measurement sample, or diagonal effects alone is not a substitute for this definition. This chapter neither changes the supremum nor places the desired conclusion into a new alias.
+
+The standard matrix absolute value is defined by the positive square root:
+
+$$
+|X|=\sqrt{X^\dagger X},
+\qquad
+\tau(X)=\operatorname{Re}\operatorname{Tr}|X|.
+$$
+
+Since $|X|\succeq0$, its trace is real and nonnegative. Lean's `CFC.abs X` is this square root, and `traceAbsolute X` here is its actual real trace. Although $\tau$ is the usual numerical expression for the trace norm, this work does not establish all norm axioms on the arbitrary matrix space or add a new `NormedSpace` instance. The actual distance theorem uses Hermiticity and zero trace of a density difference.
+
+## 63.2 Actual Finite Spectral Transport and Positive and Negative Parts
+
+Let $H=H^\dagger$. The pinned finite-matrix spectral theorem supplies an actual unitary $U$ and real eigenvalue family $(\lambda_i)_{i\in\iota}$ such that
+
+$$
+U^\dagger U=UU^\dagger=I,
+\qquad
+H=U\operatorname{diag}(\lambda_i)U^\dagger.
+$$
+
+These data follow from the spectral theorem. No physical axiom asserting existence of the required spectral decomposition is added to the quantum model, and the caller need not supply an optimal effect in advance.
+
+To distinguish actual matrix multiplication from scalar operations on the spectrum, write
+
+$$
+T_U(d)=U\operatorname{diag}(d_i)U^\dagger,
+\qquad d_i\in\mathbb R.
+$$
+
+Entrywise matrix algebra gives
+
+$$
+\begin{aligned}
+T_U(d+e)&=T_U(d)+T_U(e),\\
+T_U(d-e)&=T_U(d)-T_U(e),\\
+T_U(d)T_U(e)&=T_U(de),\\
+T_U(0)&=0,\qquad T_U(1)=I.
+\end{aligned}
+$$
+
+The third identity uses $U^\dagger U=I$ in the middle. An unverified similarity matrix cannot replace the unitary. If every $d_i\ge0$, the diagonal matrix is PSD and unitary conjugation preserves PSD, giving $T_U(d)\succeq0$. Cyclicity of trace also gives
+
+$$
+\operatorname{Re}\operatorname{Tr}T_U(d)=\sum_i d_i.
+$$
+
+<a id="p-tdist-01"></a>
+
+**P-TDIST-01 (Positive and negative spectral parts and the actual absolute value of a finite Hermitian matrix).** For any finite Hermitian matrix $H$, define
+
+$$
+P=T_U\bigl(\max(\lambda_i,0)\bigr),
+\qquad
+N=T_U\bigl(\max(-\lambda_i,0)\bigr).
+$$
+
+Then $P,N\succeq0$, and
+
+$$
+H=P-N,\qquad |H|=P+N,
+\qquad
+\tau(H)=\sum_i|\lambda_i|.
+$$
+
+**Proof.** Positivity follows from nonnegativity of the two scalar coefficient families. For each eigenvalue,
+
+$$
+\max(\lambda,0)-\max(-\lambda,0)=\lambda,
+$$
+
+so the subtraction identity of $T_U$ gives $P-N=H$. Meanwhile, matrix continuous functional calculus identifies the absolute value of the Hermitian matrix exactly as
+
+$$
+|H|=T_U(|\lambda_i|).
+$$
+
+This uses the actual agreement of the defined $\sqrt{H^\dagger H}$ with the functional-calculus absolute value, not a new spectral-absolute-value definition for this chapter. The scalar identity
+
+$$
+|\lambda|=\max(\lambda,0)+\max(-\lambda,0)
+$$
+
+and additivity of $T_U$ give $|H|=P+N$. Taking the actual trace and using its invariance under unitary conjugation gives the finite sum of absolute eigenvalues. ∎
+
+The formal counterparts are `positivePart`, `negativePart`, `positivePart_sub_negativePart`, `abs_eq_positivePart_add_negativePart`, and `traceAbsolute_eq_sum_abs_eigenvalues`. Zero eigenvalues contribute zero to both parts. No eigenvalue is divided by, and no full-rank assumption is added. [QM319]
+
+## 63.3 First Establishing the Positive-Spectral Projection as a Valid Effect
+
+Define the real indicator coefficients
+
+$$
+e_i=\begin{cases}
+1,&\lambda_i>0,\\
+0,&\lambda_i\le0,
+\end{cases}
+\qquad E_+=T_U(e).
+$$
+
+Every $e_i$ and $1-e_i$ is nonnegative, so
+
+$$
+E_+\succeq0,
+\qquad
+I-E_+=T_U(1-e)\succeq0.
+$$
+
+Together, these two positivity statements make $E_+$ an actual effect in the original `Effect` type. PSD alone is insufficient: without the upper bound, pairing with a positive operator can exceed the probability range.
+
+Since $e_i^2=e_i$, one also has $E_+^2=E_+$. The support relations needed for optimality are actual matrix identities:
+
+$$
+E_+P=P,
+\qquad
+E_+N=0.
+$$
+
+They follow by checking scalar coefficients. If $\lambda_i>0$, then $e_i=1$ and the negative-part coefficient vanishes. If $\lambda_i\le0$, then $e_i=0$ and the positive-part coefficient vanishes. Zero eigenvalues are assigned to the complementary effect without changing any pairing value.
+
+Consequently,
+
+$$
+\operatorname{Re}\operatorname{Tr}(E_+H)
+=\operatorname{Re}\operatorname{Tr}(E_+P-E_+N)
+=\operatorname{Tr}P.
+$$
+
+This evaluates the actual performance of a concrete candidate effect. An upper bound for all effects is still needed to prove optimality. The formalization proves validity, idempotence, both support identities, and the pairing separately, rather than hiding optimality in the effect structure's input fields. [QM319]
+
+## 63.4 From the All-Effect Bound to Exact Distance and Attainment
+
+First consider any actual PSD decomposition $H=P-N$, without requiring a spectral decomposition. For every valid effect $E$, Chapter 50 already proved
+
+$$
+0\le\operatorname{Re}\operatorname{Tr}(EP)\le\operatorname{Tr}P,
+\qquad
+0\le\operatorname{Re}\operatorname{Tr}(EN)\le\operatorname{Tr}N.
+$$
+
+Thus
+
+$$
+-\operatorname{Tr}N
+\le\operatorname{Re}\operatorname{Tr}(EH)
+\le\operatorname{Tr}P.
+$$
+
+Only now use normalization. If $H=\rho-\sigma$, then
+
+$$
+\operatorname{Tr}H=1-1=0,
+\qquad
+\operatorname{Tr}P=\operatorname{Tr}N.
+$$
+
+Every effect therefore satisfies
+
+$$
+|p_\rho(E)-p_\sigma(E)|\le\operatorname{Tr}P.
+$$
+
+Any PSD decomposition gives this valid upper bound. Equality requires a further effect that attains it.
+
+<a id="p-tdist-02"></a>
+
+**P-TDIST-02 (Half-trace-absolute-value formula and an optimal effect for full-effect distance).** For any complete finite complex density states $\rho,\sigma$, set $H=\rho-\sigma$ and construct $E_+$ as above. Then
+
+$$
+\begin{aligned}
+d_{\rm eff}(\rho,\sigma)
+&=\operatorname{Tr}P\\
+&=\frac12\operatorname{Tr}|\rho-\sigma|\\
+&=\frac12\sum_i|\lambda_i(\rho-\sigma)|.
+\end{aligned}
+$$
+
+The actual signed probability difference also satisfies
+
+$$
+p_\rho(E_+)-p_\sigma(E_+)
+=d_{\rm eff}(\rho,\sigma).
+$$
+
+**Proof.** Applying the all-effect bound to the spectral positive and negative parts gives an upper bound $\operatorname{Tr}P$ on the original supremum. The actual valid $E_+$ has pairing $\operatorname{Tr}P\ge0$. Its value belongs to the set defining the supremum, so that supremum is at least $\operatorname{Tr}P$. Both bounds coincide and are actually attained.
+
+From $|H|=P+N$ and equality of the two part traces implied by zero trace,
+
+$$
+\operatorname{Tr}|H|
+=\operatorname{Tr}P+\operatorname{Tr}N
+=2\operatorname{Tr}P.
+$$
+
+This supplies the factor $1/2$. P-TDIST-01 gives the sum of absolute eigenvalues. ∎
+
+The corresponding Lean results are `effectDistance_eq_positivePart_mass`, `positiveSpectrumEffect_attains`, `effectDistance_eq_half_traceAbsolute`, and `effectDistance_eq_half_sum_abs_eigenvalues`. They all use the original `Density`, `Effect`, and `effectDistance`; the input pair is not restricted to pure, diagonal, or simultaneously diagonalizable states. [QM319]
+
+## 63.5 Equal-Prior Binary Discrimination
+
+Suppose each candidate state has prior probability $1/2$. Decide for the first state on the outcome of effect $E$ and for the second on its complement $I-E$. The actual success probability is
+
+$$
+s(E;\rho,\sigma)
+=\frac12\bigl(p_\rho(E)+p_\sigma(I-E)\bigr).
+$$
+
+The complementary probability is $p_\sigma(I-E)=1-p_\sigma(E)$, so
+
+$$
+s(E;\rho,\sigma)
+=\frac{1+p_\rho(E)-p_\sigma(E)}2.
+$$
+
+<a id="p-dec-01"></a>
+
+**P-DEC-01 (Actual optimal success probability for equal-prior binary discrimination).** Every valid effect satisfies
+
+$$
+s(E;\rho,\sigma)\le\frac{1+d_{\rm eff}(\rho,\sigma)}2,
+$$
+
+and the actual $E_+$ constructed above attains the bound. Hence
+
+$$
+s_{\max}
+=\frac{1+d_{\rm eff}(\rho,\sigma)}2
+=\frac12+\frac14\operatorname{Tr}|\rho-\sigma|.
+$$
+
+**Proof.** The signed probability difference is at most its absolute value, which is at most the original full-effect supremum. Substitute this into the success-probability identity to obtain the upper bound. The attainment statement in P-TDIST-02 makes the success probability of $E_+$ equal to that bound. An actual optimal decision therefore exists. ∎
+
+The proof concerns binary effects and their probabilities, without imposing a unique postmeasurement state-update rule. Different instruments can have the same effect probabilities and different postmeasurement dynamics. Discrimination optimality alone does not imply uniqueness of those dynamics.
+
+The contract is limited to equal priors. With priors $p$ and $1-p$, the weighted difference is $p\rho-(1-p)\sigma$, whose trace is $2p-1$. When $p\ne1/2$, this chapter's zero-trace half-absolute pairing formula cannot be applied directly to that matrix. The general-prior optimal discrimination formula requires a separate nonzero-trace argument and is not counted among the completed results here. [QM319]
+
+## 63.6 Finite Matrix Certificates and Supplied Spectral Data
+
+A noncomputable existence proof and a finite certificate checkable component by component serve different purposes. The certificate here takes neither the final distance nor an assertion that all effects satisfy the final bound as input. Its inputs are matrix positivity and multiplication identities.
+
+<a id="p-tcert-01"></a>
+
+**P-TCERT-01 (Distance certificate from a PSD support decomposition).** Given actual density states $\rho,\sigma$, matrices $P,N$, and a valid effect $E$, suppose
+
+$$
+P,N\succeq0,\qquad
+\rho-\sigma=P-N,\qquad
+EP=P,\qquad EN=0,
+$$
+
+Then
+
+$$
+d_{\rm eff}(\rho,\sigma)=\operatorname{Tr}P,
+\qquad
+s(E;\rho,\sigma)=\frac{1+d_{\rm eff}(\rho,\sigma)}2.
+$$
+
+**Proof.** Normalization gives $\operatorname{Tr}P=\operatorname{Tr}N$. The arbitrary-PSD-decomposition bound of §63.4 gives $d_{\rm eff}\le\operatorname{Tr}P$. The two support identities make the actual probability difference $\operatorname{Tr}P$. This is nonnegative, so the original full-effect supremum is at least that value. Both bounds coincide. The actual identity of §63.5 gives the success probability. ∎
+
+An external tool need not certify that $P,N$ are outputs of a named eigensolver. The certificate requires actual positivity, an actual matrix difference, and actual support relations. Whenever they hold, the proved theorem guarantees the conclusion. Conversely, positivity and a difference decomposition without the support relations generally provide only an upper bound; see §63.8.
+
+If the input already includes a concrete finite unitary decomposition
+
+$$
+\rho-\sigma=U\operatorname{diag}(d_i)U^\dagger,
+\qquad U^\dagger U=UU^\dagger=I,
+\qquad d_i\in\mathbb R,
+$$
+
+one can construct $P,N,E$ from those actual data and verify the certificate, obtaining
+
+$$
+d_{\rm eff}(\rho,\sigma)
+=\sum_i\max(d_i,0)
+=\frac12\sum_i|d_i|.
+$$
+
+This corollary accepts any actual unitary spectral data satisfying the displayed identities; their eigenvector order need not match the mathematical library's chosen order. The formal declarations are `effectDistance_eq_mass_of_support_certificate`, `success_eq_optimum_of_support_certificate`, `effectDistance_eq_sum_positive_of_unitary_data`, and `effectDistance_eq_half_sum_abs_of_unitary_data`. [QM319]
+
+## 63.7 Noncommuting Mixed States, Complex Phase, and Actual Constants
+
+The first exact witness uses
+
+$$
+\rho=\begin{pmatrix}4/5&1/5\\1/5&1/5\end{pmatrix},
+\qquad
+\sigma=\begin{pmatrix}1/2&-1/5\\-1/5&1/2\end{pmatrix}.
+$$
+
+Positivity is not inferred backwards from the desired distance. The state $\rho$ is a nonnegative sum of a basis projection and a rank-one positive matrix; $\sigma$ is a nonnegative sum of a positive scalar identity and another rank-one positive matrix. Both have trace one. Their commutator is
+
+$$
+\rho\sigma-\sigma\rho
+=\begin{pmatrix}0&-3/25\\3/25&0\end{pmatrix}\ne0,
+$$
+
+so this is not a test confined to a common diagonal family.
+
+Set
+
+$$
+E=\begin{pmatrix}4/5&2/5\\2/5&1/5\end{pmatrix}.
+$$
+
+It is the positive projection of a Hermitian involution and satisfies $E^2=E$, $E\succeq0$, and $I-E\succeq0$. Take
+
+$$
+P=\frac12E,\qquad N=\frac12(I-E).
+$$
+
+The actual matrix difference is $\rho-\sigma=P-N$, with $EP=P$ and $EN=0$. The certificate therefore gives
+
+$$
+d_{\rm eff}(\rho,\sigma)=\frac12.
+$$
+
+Direct matrix-trace calculation also gives
+
+$$
+p_\rho(E)=\frac{21}{25},
+\qquad
+p_\sigma(E)=\frac{17}{50},
+\qquad
+s(E;\rho,\sigma)=\frac34.
+$$
+
+P-TDIST-02 yields $\operatorname{Tr}|\rho-\sigma|=1$. This witness cross-checks positivity, noncommutativity, actual effect probabilities, the support certificate, the absolute-value trace, and the constants in the success probability.
+
+The second witness uses the two spectral pure states of Pauli $Y$:
+
+$$
+\rho_{+i}=\frac{I+Y}{2},
+\qquad
+\rho_{-i}=\frac{I-Y}{2}.
+$$
+
+The corresponding complex-phase effect $E=(I+Y)/2$ gives distance $1$, trace absolute value $2$, and success probability $1$. Yet every real valid effect assigns equal probabilities to the two states, as does every diagonal valid effect. Discarding imaginary parts or restricting measurement to diagonal entries therefore loses a fully distinguishable difference.
+
+A further concrete complex unitary and two rational diagonal-density coefficient families instantiate the supplied-spectrum certificate and give distance $1/2$. This checks the actual unitary direction and matrix-difference decomposition. Approximate eigenvalues returned by a numerical library are not treated as exact input. [QM319]
+
+## 63.8 Negative Controls: Zero Trace and Support Conditions Are Both Necessary
+
+For the first negative control, take $H=I$ on a one-dimensional carrier. Its absolute value is still $I$, so
+
+$$
+\frac12\operatorname{Tr}|H|=\frac12.
+$$
+
+But the valid effect $E=I$ already gives
+
+$$
+|\operatorname{Tr}(EH)|=1>\frac12.
+$$
+
+Without zero trace, even the assertion that half the trace absolute value bounds every valid-effect pairing fails. Section 63.4 first uses $\operatorname{Tr}\rho=\operatorname{Tr}\sigma=1$ and only then obtains the factor $1/2$; that step has substantive logical force.
+
+For the second control, again in one dimension, compare a state with itself, whose actual distance is zero. Nevertheless one can write
+
+$$
+0=P-N,\qquad P=N=\frac12I,
+$$
+
+with both parts PSD and $\operatorname{Tr}P=1/2$. A PSD difference decomposition therefore gives a general upper bound, not automatically the optimum. Requiring $EP=P$ and $EN=0$ would immediately contradict $P=N\ne0$, so the support certificate correctly rejects this decomposition.
+
+For equal states the actual matrix difference and its standard matrix-absolute-value trace are zero. For the orthogonal phase states, the distance is one and that trace is two. These endpoint controls check zero-eigenvalue handling and the normalization constant. [QM319]
+
+## 63.9 Scope and Remaining Obligations
+
+Within the complete finite complex matrix model, this chapter closes three precise obligations: the original full-effect distance has the standard matrix-absolute-value expression; an actual valid effect attains the original supremum; and equal-prior binary discrimination and concrete finite matrix certificates have checkable optimal values. No new physical selection principle is added, and neither the complete state space nor the complete effect space is redefined.
+
+The remaining boundaries are explicit. Mathematical existence of spectral data is not an executable numerical algorithm. Approximate matrices, rounding error, and automatic certificate generation need new error contracts. A state-distance formula does not automatically establish a channel distance on arbitrary auxiliary environments or a diamond norm. Coherent controllers, infinite-dimensional spectra, and unbounded operators are also outside this chapter.
+
+A more complete internal derivation in the complex quantum model clarifies which observational differences follow from the model and which come from apparatus errors or a restricted test library. A completed finite mathematical segment does not establish that the model is nature's unique complete theory. There are no new real experiments here; every concrete example is exact arithmetic or a formal witness. [QM319]
+
+<a id="ch-64"></a>
+
+# 64. Minimum auxiliary dimension and direct isometries for purification
+
+The ancilla dimension needed for purification, and direct comparison of different ancillas, depend on exact rank and isometry direction. This chapter proves attainment and the lower bound for the minimum dimension; experimental questions involving small eigenvalues require a separate approximation tolerance rather than a silent change to exact rank.
+
+Chapter 57 proved that every finite complex density state has a purification. Chapter 61 further characterized complete convex extreme points as normalized vector states and compared all purifications on the same auxiliary carrier. The earlier existence construction, however, usually uses an auxiliary space as large as the system itself. It does not determine the auxiliary dimension needed for a particular state. Nor does comparison through a common direct sum say when one auxiliary space can be embedded isometrically into the other directly.
+
+This chapter resolves the two questions separately. In the declared complete finite complex density model, a purification on a specified auxiliary carrier exists exactly when its dimension is at least the original state's complex matrix rank. For any two actual purifications, an actual auxiliary isometry connects them directly whenever the target auxiliary space is no smaller than the source. The minimum dimension is neither the number of terms in a prespecified decomposition nor a “minimum” named after an auxiliary type selected in a file. It is determined by the original density matrix. [QM319]
+
+## 64.1 The Original State Space, Actual Rank, and the Problem to Be Proved
+
+Continue to write
+
+$$
+\mathcal D(\iota)=\{\rho\in M_\iota(\mathbb C):\rho\succeq0,\quad
+\operatorname{Tr}\rho=1\}.
+$$
+
+The carriers $\iota,\alpha,\beta$ are arbitrary finite types, with auxiliary complex dimensions $|\alpha|,|\beta|$. The rank $\operatorname{rank}_{\mathbb C}\rho$ is the dimension of the actual linear map's image. Every purity assertion uses convex extremality in the original complete density-state space. A normalized vector representative is obtained through the direction of P-PUC-01 that takes complete convex purity to a vector representation.
+
+For a given $\rho\in\mathcal D(\iota)$, purification on a specified $\alpha$ means finding
+
+$$
+\Psi\in\mathcal D(\iota\times\alpha),\qquad
+\operatorname{Pure}(\Psi),\qquad
+\operatorname{Tr}_\alpha\Psi=\rho.
+$$
+
+The partial trace remains the rectangular Kraus channel implemented in Chapter 58. No different partial trace valid only on vector states is introduced, and the allowed joint-state set is not reduced. The main theorem does not additionally assume a nonempty input carrier: existence of a unit-trace density already excludes the relevant empty-state case.
+
+## 64.2 The Actual Coordinate-Inclusion Matrix and the Necessary Direction
+
+First handle finite-dimensional geometry independently of any input quantum state. For an injection $e:\alpha\hookrightarrow\beta$, define
+
+$$
+(J_e)_{ba}=\begin{cases}1,&b=e(a),\\0,&b\ne e(a).\end{cases}
+$$
+
+For every $a,a'\in\alpha$,
+
+$$
+(J_e^\dagger J_e)_{aa'}
+=\sum_{b\in\beta}\overline{(J_e)_{ba}}(J_e)_{ba'}
+=\mathbf1_{e(a)=e(a')}=\mathbf1_{a=a'}.
+$$
+
+Thus $J_e^\dagger J_e=I_\alpha$. The finite-cardinality inequality $|\alpha|\le|\beta|$ supplies an actual injection and therefore an actual rectangular isometry. This step does not invoke purification existence or place the desired matrix into an assumption field.
+
+<a id="p-pdm-01"></a>
+
+**P-PDM-01 (Exact dimension ordering for a rectangular isometry).** For finite carriers $\alpha,\beta$,
+
+$$
+\exists J\in M_{\beta\times\alpha}(\mathbb C),\quad J^\dagger J=I_\alpha
+\quad\Longleftrightarrow\quad |\alpha|\le|\beta|.
+$$
+
+**Proof.** Coordinate inclusion proves sufficiency. Necessity does not depend on constructing the matrix that way. For any $J^\dagger J=I_\alpha$,
+
+$$
+|\alpha|=\operatorname{rank}(I_\alpha)
+=\operatorname{rank}(J^\dagger J)
+\le\operatorname{rank}(J)\le|\beta|.
+$$
+
+The product-rank and row-count bounds are actual complex-linear-algebra theorems. ∎
+
+If $|\alpha|<|\beta|$, one cannot also have $JJ^\dagger=I_\beta$. Applying the same necessity argument to $J^\dagger$ would then imply $|\beta|\le|\alpha|$. The one-sided isometry condition for strict enlargement is therefore the exact dimension-forced scope, not a notational preference.
+
+## 64.3 From Same-Carrier Unitary Equivalence to a Direct Isometry Between Different Carriers
+
+First let $\psi:\iota\times\alpha\to\mathbb C$ and $\phi:\iota\times\beta\to\mathbb C$ have outer products with the same system marginal, and assume $|\alpha|\le|\beta|$. Choose $J_0:\mathbb C^\alpha\to\mathbb C^\beta$ as above and set
+
+$$
+\chi=(I_\iota\otimes J_0)\psi.
+$$
+
+The actual rectangular-channel theorem P-AUX-01 guarantees
+
+$$
+\operatorname{Tr}_\beta |\chi\rangle\langle\chi|
+=\operatorname{Tr}_\alpha|\psi\rangle\langle\psi|
+=\operatorname{Tr}_\beta|\phi\rangle\langle\phi|.
+$$
+
+Now $\chi,\phi$ use the same auxiliary carrier $\beta$. Chapter 61's actual vector-unitary comparison therefore gives $U^\dagger U=UU^\dagger=I_\beta$ and $\phi=(I_\iota\otimes U)\chi$. Put
+
+$$
+J=UJ_0.
+$$
+
+Then $J^\dagger J=J_0^\dagger U^\dagger UJ_0=I_\alpha$, and Kronecker multiplication gives
+
+$$
+\phi=(I_\iota\otimes J)\psi,
+\qquad
+\phi(i,b)=\sum_{a\in\alpha}J_{ba}\psi(i,a).
+$$
+
+If $\psi$ is rearranged into the matrix $A_{ia}=\psi(i,a)$, the transformed factor is $AJ^{\mathsf T}$. This is an ordinary transpose because $J$ acts on the vector's auxiliary index; the factor is not $AJ^\dagger$. Conjugation belongs in outer products and isometry identities and cannot be moved to the wrong position.
+
+<a id="p-pdm-02"></a>
+
+**P-PDM-02 (A dimension-directed direct isometry for arbitrary actual purifications).** Suppose $\Psi\in\mathcal D(\iota\times\alpha)$ and $\Phi\in\mathcal D(\iota\times\beta)$ are pure in the complete convex sense, have equal actual system marginals, and satisfy $|\alpha|\le|\beta|$. There is then $J\in M_{\beta\times\alpha}(\mathbb C)$ such that
+
+$$
+J^\dagger J=I_\alpha,\qquad
+\Phi=(I_\iota\otimes J)\Psi(I_\iota\otimes J)^\dagger.
+$$
+
+**Proof.** P-PUC-01 supplies normalized vectors $\psi,\phi$ from the two complete convex-pure states. The actual marginal equality becomes the equality of vector-outer-product marginals used above, yielding an actual $J$ and its vector action. The identity $|Tv\rangle\langle Tv|=T|v\rangle\langle v|T^\dagger$ gives the required density-matrix relation. ∎
+
+The rank may be smaller than either auxiliary dimension; neither auxiliary support is assumed to fill its space. When the dimension direction is reversed, the common-direct-sum comparison of Chapter 61 remains valid. A correspondence on lower-dimensional supports has not been silently extended into a full-space isometry from a larger auxiliary space to a smaller one.
+
+## 64.4 An Auxiliary-Dimension Lower Bound for Every Purification
+
+Let $\Psi\in\mathcal D(\iota\times\alpha)$ be any pure state in the complete sense. P-PUC-01 gives $\Psi=|\psi\rangle\langle\psi|$. Define the rectangular factor $A\in M_{\iota\times\alpha}(\mathbb C)$ by $A_{ia}=\psi(i,a)$. Entrywise, the actual partial trace is
+
+$$
+\rho_{ij}=
+\sum_{a\in\alpha}\psi(i,a)\overline{\psi(j,a)}
+=(AA^\dagger)_{ij}.
+$$
+
+<a id="p-pdm-03"></a>
+
+**P-PDM-03 (Actual rank lower bound for all convex-pure extensions).** For every such pure state and actual marginal,
+
+$$
+\operatorname{rank}_{\mathbb C}(\operatorname{Tr}_\alpha\Psi)
+=\operatorname{rank}_{\mathbb C}(AA^\dagger)
+=\operatorname{rank}_{\mathbb C}A
+\le |\alpha|.
+$$
+
+**Proof.** For any complex matrix $A$, the equality $A^\dagger A x=0$ implies $\|Ax\|_2^2=0$, hence $Ax=0$; the reverse implication is immediate. Equality of kernels and finite-dimensional rank–nullity give $\operatorname{rank}(A^\dagger A)=\operatorname{rank}A$. Applying this to $A^\dagger$ yields the row-Gram rank identity. The image dimension is at most the domain dimension, giving the last inequality. The actual Lean proof invokes the corresponding matrix-rank theorems in the pinned mathematical library. ∎
+
+The bound covers all purifications defined by complete convex extremality. Different vector representatives, nonorthogonal columns, or complex phases cannot evade it: every such representation has the same actual system marginal.
+
+## 64.5 Actual Gram Compression onto Nonzero Spectral Support
+
+Let $\rho\in\mathcal D(\iota)$. The finite Hermitian spectral theorem supplies an actual unitary $U$ and real eigenvalues $\lambda_a$ satisfying
+
+$$
+\rho=U\operatorname{diag}(\lambda_a)U^\dagger,
+\qquad \lambda_a\ge0,
+\qquad \sum_a\lambda_a=1.
+$$
+
+Spectral existence follows from the actual positive matrix and the pinned mathematical library; it is not an additional physical assumption. Define the nonzero-eigenvalue index set and factor
+
+$$
+S_\rho=\{a\in\iota:\lambda_a\ne0\},
+\qquad
+G_{ia}=U_{ia}\sqrt{\lambda_a}\quad(a\in S_\rho).
+$$
+
+The spectral decomposition also gives $|S_\rho|=\operatorname{rank}_{\mathbb C}\rho$. For every $i,j$,
+
+$$
+\begin{aligned}
+(GG^\dagger)_{ij}
+&=\sum_{a\in S_\rho}U_{ia}\sqrt{\lambda_a}
+  \overline{U_{ja}\sqrt{\lambda_a}}\\
+&=\sum_{a\in S_\rho}U_{ia}\lambda_a\overline{U_{ja}}\\
+&=\sum_{a\in\iota}U_{ia}\lambda_a\overline{U_{ja}}
+=\rho_{ij}.
+\end{aligned}
+$$
+
+The second line uses $\lambda_a\ge0$, ensuring that the square of the real square root equals the eigenvalue. The third uses, term by term, that every discarded eigenvalue is exactly zero. The chosen subtype is not a “numerical support” selected by an arbitrary approximate threshold. Very small but nonzero eigenvalues are retained.
+
+After vectorizing as $g(i,a)=G_{ia}$, the trace and partial-trace identities already proved in Chapter 57 give
+
+$$
+\operatorname{Tr}|g\rangle\langle g|
+=\operatorname{Tr}(GG^\dagger)=1,
+\qquad
+\operatorname{Tr}_{S_\rho}|g\rangle\langle g|=\rho.
+$$
+
+Thus $|g\rangle\langle g|$ is an actual pure state of the complete joint state space, with auxiliary dimension equal to the actual rank. After compression, normalization, purity, and the original matrix marginal are all established from the actual construction; they are not verbally inherited from the uncompressed vector.
+
+## 64.6 Attainment of the Minimum and the Criterion for a Specified Carrier
+
+<a id="p-pdm-04"></a>
+
+**P-PDM-04 (Exact minimum auxiliary dimension of finite complex purification).** For every finite complex density state $\rho$ and every specified finite auxiliary carrier $\alpha$,
+
+$$
+\begin{aligned}
+&\exists\Psi\in\mathcal D(\iota\times\alpha),\quad
+  \operatorname{Pure}(\Psi)\ \land\ \operatorname{Tr}_\alpha\Psi=\rho\\
+&\hspace{18mm}\Longleftrightarrow\quad
+  \operatorname{rank}_{\mathbb C}\rho\le|\alpha|.
+\end{aligned}
+$$
+
+**Proof.** P-PDM-03 proves necessity. For sufficiency, use the actual purification on $S_\rho$ from the preceding section. From $|S_\rho|=\operatorname{rank}\rho\le|\alpha|$ and P-PDM-01, obtain an actual coordinate isometry associated with $S_\rho\hookrightarrow\alpha$. The corresponding single-Kraus CPTP channel of P-AUX-01 preserves purity and the system marginal, giving the required purification on the specified $\alpha$. ∎
+
+Take $\alpha=\operatorname{Fin}(\operatorname{rank}\rho)$. The right side becomes a tautological rank inequality, so the lower bound is actually attained. If $|\alpha|<\operatorname{rank}\rho$, necessity rules out purification. Unit trace also excludes rank zero: at rank zero the construction would produce a density state on an empty auxiliary carrier, but all matrices on the empty product carrier have trace zero. Thus every input density state has $\operatorname{rank}\rho\ge1$, and an empty auxiliary system cannot perform the purification task here.
+
+## 64.7 Exact Matrix Witnesses, Dimension Counterexamples, and Actual Auditing
+
+The finite witnesses use exact rational complex numbers. The first vector comes from the factor
+
+$$
+A=\begin{pmatrix}3/5&0\\0&4/5\end{pmatrix},
+\qquad
+AA^\dagger=\begin{pmatrix}9/25&0\\0&16/25\end{pmatrix}=\rho.
+$$
+
+Its two nonzero diagonal entries give $\det\rho=144/625\ne0$, so $\operatorname{rank}\rho=2$. Vectorizing $A$ gives a normalized purification with a two-dimensional auxiliary space and actual partial trace $\rho$. P-PDM-04 also proves that a one-dimensional `Unit` auxiliary cannot purify this state. This is not the classical purification obstruction; it is the exact resource lower bound within the current complete complex model.
+
+Now take $v=(1,0)$. Its normalized outer product $\rho_0=|v\rangle\langle v|=\operatorname{diag}(1,0)$ is pure in the complete convex sense. A rank-one outer product has rank at most one, while positivity of density-state rank gives the opposite bound. Hence the actual rank is $\operatorname{rank}\rho_0=1$. P-PDM-04 supplies an actual purification on the auxiliary carrier `Unit` and excludes the empty carrier `Fin 0`. A one-dimensional ancillary Hilbert space is the tensor unit and adds no nontrivial ancillary degree of freedom. It nevertheless differs from the zero-dimensional space, on which no normalized state exists.
+
+Take the matrix from two to three dimensions
+
+$$
+J=\begin{pmatrix}
+3/5&4i/5\\
+4/5&-3i/5\\
+0&0
+\end{pmatrix}.
+$$
+
+Direct calculation gives $J^\dagger J=I_2$, but $JJ^\dagger\ne I_3$, since its third diagonal entry is zero. The correct right-factor direction gives
+
+$$
+B=AJ^{\mathsf T}
+=\begin{pmatrix}
+9/25&12/25&0\\
+16i/25&-12i/25&0
+\end{pmatrix}.
+$$
+
+Actual multiplication gives $BB^\dagger=AA^\dagger=\rho$, and the two normalized vectors satisfy $\operatorname{vec}B=(I\otimes J)\operatorname{vec}A$. This checks the direction of the actual auxiliary matrix and the complete joint-density relation. Its complex phases cannot be discarded without conditions. Chapter 61's negative controls for three wrong action directions remain in force.
+
+<a id="n-pdm-01"></a>
+
+**N-PDM-01 (Equal marginals do not remove the dimension direction required by a direct isometry).** The pure states with two- and three-dimensional auxiliaries above have the same marginal. Yet no $K\in M_{2\times3}(\mathbb C)$ satisfies $K^\dagger K=I_3$. Their reverse comparison therefore cannot be interpreted as an isometry from the entire three-dimensional space into the entire two-dimensional space.
+
+**Proof.** Such a $K$ would imply $3\le2$ by necessity in P-PDM-01, a contradiction. A common-direct-sum comparison or a correspondence on supports can still exist; neither removes the dimensional obstruction for a full-space isometry. ∎
+
+The actual source is concentrated in `PurificationIsometry` and `PurificationDimension`. Together, the two modules contain 23 explicit theorems, 3 definitions, 1 abbreviation, and 2 named typeclass instances: 29 named audit targets, each with actual successful focused compilation and axiom auditing. The separate witness `PurificationDimensionExamples` contains 25 theorems and 9 definitions, giving 34 named audits actually passed. All these declarations use only the permitted foundations `propext`, `Classical.choice`, and `Quot.sound`. Ordinary linter warnings remain in the public modules. Focused execution, package-wide acceptance, official book typesetting, and remote publication each retain their own actual identities and cannot substitute for one another. [QM319]
+
+## 64.8 Closed Obligations and Remaining Physical Meaning
+
+Within the complete finite complex model, this chapter closes exact purification dimension and dimension-directed direct isometry. It completes two finite obligations expressly left by Chapter 61 at that stage, without retrospectively rewriting that chapter's historical machine receipts. Spectral-support selection and finite-unitary existence use noncomputable mathematical choice. No eigenvalue decision procedure with rounding-error bounds, stable-rank estimator, or optimal preparation circuit is provided.
+
+A tiny nonzero eigenvalue and an exactly zero eigenvalue have different consequences for the exact minimum dimension. If a real apparatus needs only approximate purification, its state distance, allowed error, and preparation operations must first be specified before approximate resource costs are studied. A numerical threshold cannot be inserted silently into this rank definition. Infinite dimensions, infinite rank, and finite-energy approximations also require new analytic conditions.
+
+Finally, the mathematically complete finite complex purification properties still presuppose the complex matrix state space and allowed operational model. They cannot alone establish that UEOT Core must select complex quantum theory, and a successful formal-kernel check is not a new experiment confirming nature. The complete reconstruction background, independent physical-selection grounds, applicability to actual systems, and testable predictions retain their separate open obligations.
+
+<a id="ch-65"></a>
+
+# 65. Variable-length stopping protocols, original joint leaf states, and budgets weighted by continued activity
+
+A protocol that stops early should not continue charging action error to branches that have already stopped. The original finite stopping tree is completed to an actual absorbing process, then joint states and effects are transported back to the original leaves; reference active weights give the budget, without extending the theorem to unbounded stopping or coherent control.
+
+Chapter 58 constructed the actual leaf records and quantum memory of arbitrary complete finite adaptive trees. Chapter 62 then proved per-action error sums under a common fixed-depth controller. This chapter connects the two. It retains the stopping time on each original leaf path, pads already stopped paths with actual identity operations, and proves that padding is related to the original joint leaf state by an actual isometric embedding. The fixed-depth budget therefore returns rigorously to the original variable-length stopping tree, and stopped paths incur no later action error. [QM319]
+
+A common stopping rule is a mathematical input. The two action-instrument families may differ, but use the same complete history to select an action or stop. These histories remain classical records that are read and dephased. They are not upgraded to a coherent quantum controller, and stopping times without a uniform finite upper bound are not treated.
+
+## 65.1 The Original Complete Tree and Actual Stopping Times
+
+Write the original protocol as $\pi$. It either stops immediately or performs action $a$ at a node and for every possible outcome $o\in O$, supplies a continuation $\pi_o$. Every outcome requires a definition, including outcomes whose actual probability is zero. The original leaf type $L(\pi)$ is built recursively from the tree. Each leaf $l$ has an actual action–outcome word
+
+$$
+w_\pi(l)=((a_0,o_0),\ldots,(a_{\tau(l)-1},o_{\tau(l)-1})),
+\qquad \tau(l)=|w_\pi(l)|.
+$$
+
+The quantity $\tau(l)$ is the actual stopping time; padding does not change it into a uniform depth $N$. Since the outcome type is finite, the tree's maximum height can be defined recursively:
+
+$$
+H(\mathrm{stop})=0,
+\qquad H(\mathrm{node}(a,\pi_\cdot))=1+\max_{o\in O}H(\pi_o),
+$$
+
+where an empty finite maximum takes the natural-number bottom value $0$. Induction through the tree gives $\tau(l)\le H(\pi)$. Fixing $N\ge H(\pi)$ allows every original leaf to fit completely into a length-$N$ history.
+
+## 65.2 An Absorbing Stop Symbol and Actual Kraus Completeness
+
+Extend the action, outcome, and Kraus-index types to $A_\bot=\mathrm{Option}(A)$, $O_\bot=\mathrm{Option}(O)$, and $K_\bot=\mathrm{Option}(K)$. The values `some a` and `some o` denote original actions and outcomes; `none` is an explicit idle symbol after stopping.
+
+For an original action $a$, the extended instrument takes a nonzero value only at $(\mathrm{some}\ o,\mathrm{some}\ k)$, where it uses the original Kraus matrix $K_{a,o,k}$; all other terms vanish. The idle action has exactly one nonzero Kraus matrix: $I$ at `(none, none)`. Thus
+
+$$
+\begin{aligned}
+\widehat\Phi_{\mathrm{some}\ a,\mathrm{some}\ o}(X)&=\Phi_{a,o}(X),&
+\widehat\Phi_{\mathrm{some}\ a,\mathrm{none}}(X)&=0,\\
+\widehat\Phi_{\mathrm{none},\mathrm{none}}(X)&=X,&
+\widehat\Phi_{\mathrm{none},\mathrm{some}\ o}(X)&=0.
+\end{aligned}
+$$
+
+These four identities quantify over arbitrary complex matrices $X$, not only normalized states or their traces. Completeness of active actions follows from the original Kraus sum, and idle completeness from $I^\dagger I=I$. Every step is therefore an actual valid instrument; idle identity operations preserve quantum memory.
+
+Starting from the original tree, the controller follows recorded `some` outcomes and continues to select `none` after reaching a stop leaf. Illegal histories also receive continuations so that the controller is a total function on all finite histories. However, an outcome `none` at an active node, or `some o` after stopping, immediately makes the branch matrix zero. Every later linear record operator keeps it zero.
+
+## 65.3 Original-Leaf Encoding, Legal Histories, and Blockwise Identities
+
+Encode an original leaf $l$ by wrapping each outcome of its word in `some`, then appending $N-\tau(l)$ copies of `none`. This gives $e_N(l)\in O_\bot^N$:
+
+$$
+e_N(l)=\bigl(\mathrm{some}\ o_0,\ldots,
+\mathrm{some}\ o_{\tau(l)-1},
+\underbrace{\mathrm{none},\ldots,\mathrm{none}}_{N-\tau(l)}\bigr).
+$$
+
+The decoder requires the history to follow the original tree exactly to a leaf, with all remaining positions equal to `none`. A complete history is illegal if it has not stopped by depth $N$, contains `none` prematurely, or contains a real outcome after stopping. Decoding an encoded leaf is proved to return that leaf. Conversely, any history decoding to $l$ is proved equal to $e_N(l)$. Thus encoding is injective, and the legal complete histories are exactly the image of original-leaf encoding.
+
+<a id="p-stop-01"></a>
+
+**P-STOP-01 (Actual absorbing padding of an original finite stopping tree).** For any $N\ge H(\pi)$, any original input matrix $X$, and any padded history $h$, the record operator generated by the extended action family under the common padded controller satisfies
+
+$$
+\widehat\Phi_h(X)=
+\begin{cases}
+\Phi_{w_\pi(l)}(X),& h=e_N(l),\\
+0,&h\notin e_N(L(\pi)).
+\end{cases}
+$$
+
+**Proof.** Induct on remaining depth and the original tree. At an immediate stop, the only legal continuation is entirely `none`, and every step is the identity; any `some` makes the matrix zero. At an active node, the `none` branch vanishes, while a `some o` branch first applies the original $\Phi_{a,o}$ and then recursively follows the subtree. The subtree height is at most the remaining depth, so induction applies. The encoding and decoding inverse identities exclude two different leaves producing the same legal complete history. The proof compares matrices throughout; it never infers matrix equality from equal traces. □
+
+The original and padded joint states are respectively
+
+$$
+\Omega_I^\pi(\rho)
+=\sum_{l\in L(\pi)}|l\rangle\langle l|\otimes
+\Phi_{w_\pi(l)}^I(\rho),
+$$
+
+$$
+\widehat\Omega_{I,N}^\pi(\rho)
+=\sum_{h\in O_\bot^N}|h\rangle\langle h|\otimes
+\widehat\Phi_h^I(\rho).
+$$
+
+P-STOP-01 therefore identifies the complete joint matrices: each legal block equals its original block, and every illegal block is zero. The encoding preserves stopping times and original labels.
+
+## 65.4 Isometric Extension of Valid Effects and Distance Preservation
+
+To return a padded error bound to the original leaf space, one cannot merely name a “decoder” and assume contraction. Let $J$ be any actual rectangular isometry satisfying $J^\dagger J=I$. It defines the actual single-Kraus CPTP channel $\rho\mapsto J\rho J^\dagger$.
+
+For an original valid effect $0\preceq E\preceq I$, define its extension $\widetilde E=JEJ^\dagger$. Conjugation preserves PSD, giving positivity. Its complement is
+
+$$
+I-JEJ^\dagger
+=(I-JJ^\dagger)+J(I-E)J^\dagger.
+$$
+
+The matrix $JJ^\dagger$ is a self-adjoint idempotent projection. Thus $Q=I-JJ^\dagger$ is also self-adjoint and idempotent, with $Q=QQ^\dagger\succeq0$. Both terms on the right are PSD, so $\widetilde E$ is valid on the entire enlarged space. Its actual effect pullback is
+
+$$
+J^\dagger\widetilde E J
+=(J^\dagger J)E(J^\dagger J)=E.
+$$
+
+<a id="p-stop-02"></a>
+
+**P-STOP-02 (Full-effect distance preservation and the connection to the original joint leaf state).** For any finite rectangular isometry $J$ and complete density states $\rho,\sigma$,
+
+$$
+d_{\rm eff}(J\rho J^\dagger,J\sigma J^\dagger)
+=d_{\rm eff}(\rho,\sigma).
+$$
+
+For the coordinate isometry $V_N:|l\rangle\otimes|i\rangle\mapsto|e_N(l)\rangle\otimes|i\rangle$,
+
+$$
+\widehat\Omega_{I,N}^\pi(\rho)
+=V_N\Omega_I^\pi(\rho)V_N^\dagger,
+$$
+
+The original and padded joint-state distances therefore agree, as do TV of the original complete-leaf distributions and TV of the padded-record distributions.
+
+**Proof.** CPTP contraction gives one distance inequality. Extend each original effect by the valid construction above; its Born-probability difference is unchanged. Taking the supremum over all effects gives the reverse inequality. The coordinate-isometry columns are orthonormal. Its joint-state matrix equals the original matrix on the encoded image and vanishes outside it, so P-STOP-01 gives the displayed actual-state identity. For TV, reindex by injective leaf encoding: probabilities agree term by term on legal histories, and both probabilities vanish on illegal histories. No default leaf is chosen, and no object is silently added to a possibly empty type. □
+
+## 65.5 Actual Active-Action Defects and Zero Idle Cost
+
+The original record defect $\delta_{\rm rec}(I_a,J_a)$ is the actual joint-output distance maximized over all input density states. For the extended action `some a`, its record–memory state is exactly the isometric image of the original output under the coordinate inclusion $O\hookrightarrow O_\bot$. P-STOP-02 gives equality of distances for each input. Taking the supremum over the same original input set yields
+
+$$
+\delta_{\rm rec}(\widehat I_{\mathrm{some}\ a},
+\widehat J_{\mathrm{some}\ a})
+=\delta_{\rm rec}(I_a,J_a).
+$$
+
+The two implementations may use different Kraus-index carriers. Their idle output nevertheless contains the same deterministic stop label and original quantum memory, so
+
+$$
+\delta_{\rm rec}(\widehat I_{\mathrm{none}},
+\widehat J_{\mathrm{none}})=0.
+$$
+
+Actual states are compared first, the zero supremum is proved next, and only then are idle terms removed from the cost sum. “Stopping has no charge” is not an additional assumption.
+
+## 65.6 The Reference Implementation's Probability of Remaining Active
+
+Write the common padded controller as $C_t(h)$. Let $\widehat\omega_t^J(\sigma)$ be the actual joint history state obtained by reference implementation $J$ from initial state $\sigma$ after the first $t$ steps. Define
+
+$$
+q_t^J(h;\sigma)
+=\operatorname{Tr}\bigl[\widehat\omega_t^J(\sigma)\bigr]_{h,h}.
+$$
+
+Chapter 62's PSD-block, zero-trace-if-and-only-if-zero-block, and normalization results give $q_t^J(h;\sigma)\ge0$ and $\sum_hq_t^J(h;\sigma)=1$. The controller still executes an original action at history $h$ exactly when $C_t(h)=\mathrm{some}\ a$. Define
+
+$$
+\mathcal A_t^J
+=\sum_{\substack{h\in O_\bot^t\\ C_t(h)=\mathrm{some}\ a}}
+q_t^J(h;\sigma)\,\delta_{\rm rec}(I_a,J_a),
+\qquad
+s_t^J=\sum_{h:\ C_t(h)\text{ is active}}q_t^J(h;\sigma).
+$$
+
+The quantity $s_t^J$ is the actual probability that an original action will still be executed at that time. It is not a posterior-renormalized survival distribution: stopped mass remains in the complete record state.
+
+<a id="p-stop-03"></a>
+
+**P-STOP-03 (Per-action error budget under a common finite stopping rule).** For the same original complete finite tree $\pi$, two action families $I,J$, any input density states $\rho,\sigma$, and $N\ge H(\pi)$,
+
+$$
+d_{\rm eff}(\Omega_I^\pi(\rho),\Omega_J^\pi(\sigma))
+\le d_{\rm eff}(\rho,\sigma)+\sum_{t=0}^{N-1}\mathcal A_t^J.
+$$
+
+Complete original-leaf record TV and terminal quantum-memory distance are each at most the same right-hand side. This main weighted budget needs no uniform action bound. Suppose additionally that, at time $t$, for every history $h$, including zero-weight histories, whenever the common controller chooses $C_t(h)=\mathrm{some}\ a$, one has $\delta_{\rm rec}(I_a,J_a)\le\varepsilon_t$. Then
+
+$$
+d_{\rm eff}(\Omega_I^\pi(\rho),\Omega_J^\pi(\sigma))
+\le d_{\rm eff}(\rho,\sigma)+\sum_{t=0}^{N-1}s_t^J\varepsilon_t.
+$$
+
+**Proof.** Apply the proved recursion of Chapter 62 in the padded model. First propagate the preceding input error through I's actual CPTP step, then compare both actions on the same reference-prefix state of J. Normalized PSD principal blocks and valid block effects give defects weighted by $q_t^J$. After summing the time recursion, active extended defects equal the original defects and idle defects vanish, leaving exactly $\sum_t\mathcal A_t^J$. P-STOP-02 replaces the padded joint distance by the original joint-leaf distance. Valid event effects bound leaf-record TV, and actual partial-trace contraction bounds terminal-memory distance. Finally, multiply each active-action bound by its nonnegative $q_t^J$ and sum to obtain $s_t^J\varepsilon_t$. □
+
+The reference implementation and initial state cannot be exchanged without a separate argument: the displayed weights belong to J's actual process started at $\sigma$. Nor can the uniform finite bound N be replaced by the verbal condition “eventually stops almost surely.” No infinite stopped process or unbounded optional-stopping theorem is constructed here.
+
+## 65.7 Exact Rational Positive Control: Charging Only Continuing Paths
+
+On the first step, both implementations use the same rational Kraus instrument, which preserves quantum memory and records outcomes 0 and 1 with probabilities $3/4,1/4$. Outcome 0 stops immediately; outcome 1 proceeds to a second action and then stops. I's second action deterministically records 0; J's records 0 and 1 with probabilities $3/4,1/4$. The second action's actual record defect over all inputs is $1/4$.
+
+The three actual original leaves are the early stop $(0)$ and late stops $(1,0)$ and $(1,1)$. Their probabilities are
+
+$$
+p_I=(3/4,1/4,0),\qquad p_J=(3/4,3/16,1/16).
+$$
+
+<a id="p-stop-04"></a>
+
+**P-STOP-04 (Exact $1/16$ record difference in a stopping protocol).** For these actual qubit instruments and their common stopping tree, complete original-leaf record TV and padded-record TV are both $1/16$, and the sum of per-action costs is also $1/16$.
+
+**Proof.** The first action is identical, so its cost is 0. At the second step, only the path whose first outcome is 1 remains active; its reference-J weight is $1/4$. Multiplication by the original action defect $1/4$ gives $1/16$. This sum bounds TV above. The event “the final leaf is $(1,1)$” has probability difference $1/16$, giving a matching lower bound. The padded records are $(\mathrm{some}\ 0,\mathrm{none})$, $(\mathrm{some}\ 1,\mathrm{some}\ 0)$, and $(\mathrm{some}\ 1,\mathrm{some}\ 1)$, so P-STOP-02 preserves their TV. □
+
+This example checks that the actual probability of remaining active enters the theorem. Charging the worst-case error at each time level would give a looser bound and cannot replace the exact accounting here.
+
+## 65.8 A Boundary Control for the Common Stopping Rule
+
+<a id="p-stop-05"></a>
+
+**P-STOP-05 (Identical quantum actions do not control all records under different stopping rules).** Use identical identity quantum operations and an original instrument that deterministically outputs 0. One controller stops immediately, while another performs one step before stopping. At common padded depth 1, their records are deterministically `none` and `some 0`, so TV is 1. Their terminal quantum memories coincide and both equal the original input state.
+
+**Proof.** The immediately stopping controller gives probability 1 to “record is none.” The one-step controller has a zero branch matrix for none during its active action, giving that event probability 0. Probability-distribution TV is at most 1, so it is exactly 1. The first controller makes no quantum change; the second's actual sole nonzero quantum branch is also the identity. Their terminal quantum states are therefore equal. □
+
+This negative control uses different stopping rules, explicitly outside the common-controller premise of P-STOP-03. Comparing only the defects of identical original action families, or deleting the stopping record, is insufficient to compare the complete outputs of different stopping rules. Replacing the equal-memory conclusion with a claim of unequal quantum memory would also destroy the role of the counterexample.
+
+## 65.9 Completed Scope and Open Obligations
+
+Actual focused Lean acceptance closes the following scope: original complete finite stopping trees; finite classical-history controllers; actual `Option` absorbing padding; all joint leaf matrices; valid effect transport; actual original-action defects; and the action budget weighted by reference J's probability of remaining active. The two public modules contain 50 explicit `theorem` declarations, with 69 named declarations passing actual axiom auditing. The concrete witness contains 45 `theorem` declarations, 15 definitions, and 2 abbreviations, giving 62 targets actually executed and audited by name. The allowed foundations are only `propext`, `Classical.choice`, and `Quot.sound`; ordinary linter warnings remain. This is local mathematical acceptance of the listed finite-model obligations. Integrated and remote-release identities are recorded separately in their actual receipts. [QM319]
+
+Coherent controllers, unmodelled external quantum environments, stabilized or diamond distance, unbounded stopping times, infinite conditioned processes, and empirical applicability remain open. Exact rational witnesses built from quantum instruments are mathematical positive and negative controls; they add no real experiment. They neither alter the frozen Core responsibilities nor promote the finite quantum model into a complete theory of nature.
+
+<a id="ch-66"></a>
+
+# 66. Finite conditional processes of the original instrument, allowed implementations, and full costs
+
+**Reading guide.** Constructing a new process in which an original experiment's rare accepted records become typical requires preserving the full conditioned joint state of the visible record and terminal quantum system, and proving that the new operations belong to the allowed library. Building on Chapter 56's conditioning constructions and the record-error budgets of Chapters 62 and 65, this chapter connects backward acceptance effects, singular support, labelled Choi criteria, initialization, and retry costs. The conclusions apply to the stated finite complex models; realizability, no resource advantage, and impossibility under the specified access constraints can each be valid outcomes.
+
+This chapter completes a finite but general chain of physical reasoning. An original complete quantum instrument and a prespecified acceptance event determine the full conditioned record and terminal state. The allowed actions and observation permissions determine whether that process can be implemented. Initialization, failures, resets, and numerical errors determine its actual cost. The conclusions are conditional theorems within finite-dimensional complex quantum theory. Quantum Doob constructions already provide precedents for changing the dynamics so that rare trajectories of the original process become typical trajectories of another process, including finite-time, time-dependent constructions [CFW-R1]. The task here is to connect the original experimental process, visible records, singular support, the actual action library, resources, and formal proofs. These connections do not establish a new law of nature.
+
+## 66.1 The original experiment and its distinct outputs
+
+Fix a finite-dimensional complex Hilbert space and an initial state $\rho$. Each internal node $h$ of a finite classical control tree carries a complete instrument
+$$
+\mathcal I_{h,o}(X)=\sum_\mu K_{h,o,\mu}XK_{h,o,\mu}^{\dagger},\qquad
+\sum_{o,\mu}K_{h,o,\mu}^{\dagger}K_{h,o,\mu}=I.
+$$
+Here $o$ is an outcome that is actually visible in the original experiment; $\mu$ is a hidden Kraus index. The tree specifies the action after each outcome, the stopping rule, and the set $G$ of accepted leaves. Every rejected leaf remains part of the original experiment. Write $X_\ell(\rho)$ for the unnormalized quantum block at leaf $\ell$, after summing all hidden paths compatible with the same visible record. The output of the original experiment is
+$$
+\Omega(\rho)=\sum_\ell |\ell\rangle\langle\ell|\otimes X_\ell(\rho).
+$$
+When $p_G>0$, the object of study is the full joint state conditioned on acceptance,
+$$
+\Omega_G(\rho)=p_G^{-1}\sum_{\ell\in G}
+ |\ell\rangle\langle\ell|\otimes X_\ell(\rho),\qquad
+p_G=\sum_{\ell\in G}\operatorname{Tr}X_\ell(\rho).
+$$
+This state retains correlations between the record and the terminal state. Matching only the final quantum marginal, or only the success probability, is insufficient. Leaves may have different depths. An operation's internal random seed does not automatically belong to the target visible record either. If the experiment requires that seed to be retained, the record space must be enlarged and the object of comparison specified again.
+
+## 66.2 Backward acceptance effects come from the original experiment
+
+Set $H_\ell=I$ at an accepted leaf and $H_\ell=0$ at a rejected leaf. Define the effects backwards, node by node:
+$$
+H_h=\sum_{o,\mu}K_{h,o,\mu}^{\dagger}H_{ho}K_{h,o,\mu}.
+$$
+
+<a id="p-fcond-01"></a>
+**P-FCOND-01 (Acceptance effects of the same finite original experiment).** At every node, $0\preceq H_h\preceq I$. For any unnormalized positive input $X$, the total mass of all accepted leaves in that subtree is exactly $\operatorname{Tr}(H_hX)$. In particular, $p_G=\operatorname{Tr}(H_0\rho)$.
+
+**Proof.** The claim holds directly at the leaves. Suppose it holds at the child nodes. The CP dual preserves positivity, and completeness gives
+$$
+I-H_h=\sum_{o,\mu}K_{h,o,\mu}^{\dagger}(I-H_{ho})K_{h,o,\mu}\succeq0.
+$$
+Sum the accepted masses of the branches and use cyclicity of the trace to obtain $\operatorname{Tr}(H_hX)$. Induction on the finite tree completes the proof. Here $p_G$ is the original record probability, not an independently supplied spectral parameter. ∎
+
+A special case accepts exactly those paths whose outcomes lie in $S$ for $T$ consecutive uses of a fixed instrument:
+$$
+H_T=I,\qquad H_t=\Phi_S^*(H_{t+1}),\qquad
+\Phi_S=\sum_{o\in S}\mathcal I_o.
+$$
+A general adaptive tree requires the nodewise recurrence. It cannot be replaced by a power of one fixed $\Phi_S^*$.
+
+## 66.3 Singular support cannot be discarded as a zero-row detail
+
+Let $S_h=H_h^{1/2}$, let $P_h$ be the support projection of $H_h$, and let $T_h$ be the inverse of $S_h$ on its support, extended by zero on its kernel. The finite-dimensional spectral theorem gives
+$$
+T_hS_h=S_hT_h=P_h,\quad P_h^2=P_h=P_h^{\dagger},\quad P_hS_h=S_h.
+$$
+
+<a id="p-fcond-02"></a>
+**P-FCOND-02 (Kernel annihilation from the backward Gram sum).** The original backward recurrence implies, for every hidden branch,
+$$
+S_{ho}K_{h,o,\mu}(I-P_h)=0.
+$$
+Consequently, $S_{ho}K_{h,o,\mu}P_h=S_{ho}K_{h,o,\mu}$. This is a derived identity, not an additional assumption about paths.
+
+**Proof.** For any $v\in\ker H_h$,
+$$
+0=\langle v,H_hv\rangle
+=\sum_{o,\mu}\|S_{ho}K_{h,o,\mu}v\|^2.
+$$
+A finite sum of nonnegative numbers is zero only if every term is zero. Take $v=(I-P_h)u$. ∎
+
+The formal interface allows matrices $S,T,P$ and local Gram identities to be supplied and checked individually. It does not require the desired conditioned record law to be included in the input structure. The canonical spectral construction produces these matrices from the original $H$. A noncomputable spectral existence proof and the reliability of a floating-point eigendecomposition algorithm are separate obligations.
+
+## 66.4 A complete conditioned instrument with the original visible labels
+
+First take the principal branches
+$$
+L_{h,o,\mu}=S_{ho}K_{h,o,\mu}T_h.
+$$
+Choose any complete instrument $J_{h,o,\nu}$ with the same visible label set, and add the hidden completion branches $J_{h,o,\nu}(I-P_h)$. The label remains $o$, while the hidden index is enlarged to the disjoint sum of the two types of Kraus index.
+
+<a id="p-fcond-03"></a>
+**P-FCOND-03 (Support transformation and a valid completion on the full space).** The Gram sum of the principal branches is $P_h$, and that of the completion branches is $I-P_h$. The resulting $\widetilde{\mathcal I}_{h,o}$ is a complete CP instrument and satisfies, for every complex matrix $X$,
+$$
+\widetilde{\mathcal I}_{h,o}(S_hXS_h)
+=S_{ho}\mathcal I_{h,o}(X)S_{ho}.
+$$
+
+**Proof.** The backward recurrence gives
+$$
+\sum_{o,\mu}L_{h,o,\mu}^{\dagger}L_{h,o,\mu}
+=T_hH_hT_h=P_h.
+$$
+The Gram sum of the completion branches is $(I-P_h)I(I-P_h)=I-P_h$. By P-FCOND-02, $L_{h,o,\mu}S_h=S_{ho}K_{h,o,\mu}$; moreover, $(I-P_h)S_h=0$. Summing over the hidden indices yields the branch transport identity. The proof holds for all complex matrices and does not depend on taking traces first. ∎
+
+At a rejected leaf, $S_\ell=0$, so the conditioned mass reaching it is zero. Completion at a node with zero support must still be valid. An incomplete or undefined operation cannot substitute for a complete instrument.
+
+## 66.5 The full conditioned joint state is independent of the completion
+
+For $p_G>0$, define the actual initial state
+$$
+\widetilde\rho_0=S_0\rho S_0/p_G.
+$$
+Positivity and P-FCOND-01 ensure that its trace is one.
+
+<a id="p-fcond-04"></a>
+**P-FCOND-04 (Conditioning the full leaf record and terminal state from the same original experiment).** Running the complete instrument tree constructed above gives, at every original leaf,
+$$
+\widetilde X_\ell(\widetilde\rho_0)=
+\begin{cases}X_\ell(\rho)/p_G,&\ell\in G,\\0,&\ell\notin G.\end{cases}
+$$
+The full classical–quantum (CQ) joint state therefore equals $\Omega_G(\rho)$ and is independent of the completion instrument $J$ chosen at each node. If $p_G=0$, every original accepted block is zero and the conditioned state is undefined.
+
+**Proof.** Apply P-FCOND-03 repeatedly along the tree, transporting the filtering relation through the successive levels. At an accepted leaf, $S_\ell=I$; at a rejected leaf, $S_\ell=0$. Normalization is performed only once, at the start, with the original $p_G$ as denominator. For positive inputs, zero total accepted trace implies that every positive accepted block has zero trace. A positive matrix with zero trace is zero. Different completions yield the same formula for each block, hence the same full joint state. ∎
+
+At an intermediate time, the state incorporates the future acceptance effect $H_h$. It generally differs from the original experiment's state conditioned only on the prefix observed so far. Inserting a new measurement, changing future actions, or changing the acceptance event changes the problem itself and the effects $H_h$. This theorem does not assert that a single fixed conditioned process preserves every counterfactual intervention simultaneously.
+
+Independence from the completion also requires exact confinement to the reachable support. If the input leaks into $I-P_h$, different completions can produce different records; on an input entirely in that complement, their TV distance can even be one. Error analysis must retain both valid complete operations and leakage terms.
+
+## 66.6 An exact criterion for realization by allowed actions
+
+Fix a finite allowed action library $\{\mathcal A_{h,a,o}\}_a$. An allowed controller chooses a common set of classical randomization weights $w_y(a)$ from its observation $y=q(h)$; it may not depend on an unobserved node. Each action is itself a complete instrument. The actual Kraus representation of the randomization is $\sqrt{w_y(a)}A_{h,a,o,\nu}$.
+
+Use the following Choi coordinates for a complex-linear map:
+$$
+C(F)_{(i,r),(j,s)}=F(|i\rangle\langle j|)_{r,s}.
+$$
+Matrix units span all complex matrices, so $C(F)=C(G)$ if and only if $F=G$. The vector representing an instrument must retain the Choi block for every visible $o$.
+
+<a id="p-fcond-05"></a>
+**P-FCOND-05 (A convex-hull equivalence preserving outcomes and observation permissions).** Given complex-linear input restrictions $R_h$ at the nodes, an allowed randomization satisfying
+$$
+\sum_a w_{q(h)}(a)\,\mathcal A_{h,a,o}\circ R_h
+=\widetilde{\mathcal I}_{h,o}\circ R_h\quad(\forall h,o),
+$$
+exists if and only if, on every observation fibre, the entire target Choi family lies in the real convex hull of the action Choi families on that fibre.
+
+**Proof.** Summing the actual Kraus terms with square-root weights yields a convex combination of maps, and their Choi coordinates are linear term by term. Conversely, a finite convex combination supplies weights and constructs a complete randomized instrument. Injectivity of the Choi representation then gives the branch identities for every input matrix. Treating all nodes and labels within one observation fibre as coordinates of a single vector forces all of them to share the same weights. This uses Core's general convex-hull theorem for real modules directly, taking a family of complex matrices as the real module. It does not identify classical state matrices with general quantum CP maps. ∎
+
+Three tasks must be distinguished:
+
+| Input restriction and target | Exact meaning of the criterion |
+|---|---|
+| $R_h=\operatorname{id}$, with a specified complete target instrument | Reproduce that specified completion on the full space. |
+| $R_h(X)=P_hXP_h$ | Reproduce the conditioned process on all declared support inputs; the allowed mixture found by the criterion itself supplies a valid completion on the full space. |
+| The actually reachable set for a fixed initial state, or a requirement only on the final output | A weaker task than matching all support inputs at every node; it requires a separately specified criterion. |
+
+Failure in the first row does not rule out a different completion. Failure in the second does not automatically rule out the third. Matching at each node guarantees realization of the whole protocol, but is not a universal necessary condition for matching only its final output. The allowed class in this criterion is one round of classical randomization over a finite library. The result is not a controllability theorem for quantum circuits of arbitrary length.
+
+## 66.7 Positive certificates, separation certificates, and observation constraints
+
+<a id="p-fcond-06"></a>
+**P-FCOND-06 (A finite negative separation certificate for the allowed class).** Suppose a real-linear functional $f$ and a real number $b$ satisfy $f(v_a)\le b$ for every allowed action vector $v_a$, whereas $f(z)>b$ for the target $z$. Then the target is not in that allowed convex hull.
+
+**Proof.** Any nonnegative normalized weights give $f(\sum_aw_av_a)=\sum_aw_af(v_a)\le b$, contradicting the target inequality. ∎
+
+An actual positive certificate consists of nonnegative normalized weights, complete action instruments, and all Choi equalities with visible labels retained. A status message from an LP solver cannot replace those equalities. A negative certificate likewise requires independently checkable separating inequalities.
+
+Two counterexamples are essential. First, deterministically outputting label 0 and applying the identity channel is identical, after discarding the label, to deterministically outputting label 1 and applying the identity channel. Yet the records have TV distance one. Second, suppose two hidden nodes share the same observation. The target at the first node requires action 0 with probability one; at the second, it requires action 1 with probability one. Each node is feasible separately, but no common randomization works. Checking convex-hull membership only node by node therefore gives an incorrect conclusion about the physically permitted controller.
+
+## 66.8 When initialization can be deterministic
+
+Consider the map
+$$
+F_H(\rho)=\frac{\sqrt H\rho\sqrt H}{\operatorname{Tr}(H\rho)},\qquad
+\operatorname{Tr}(H\rho)>0,
+$$
+and ask whether it admits a deterministic channel valid for all unknown inputs. Checking a single known input cannot establish such a channel.
+
+<a id="p-fcond-07"></a>
+**P-FCOND-07 (Classification of deterministic initialization on all unknown inputs).** Let $H\succeq0$, $H\ne0$ be a finite-dimensional matrix. If only the system output marginal is required, one deterministic CPTP map realizes $F_H$ on every density state with positive success probability if and only if either $H=cI$, $c>0$, or $\operatorname{rank}H=1$. If the conditioned joint state with an arbitrary external reference must also be preserved, only the nonzero scalar case $H=cI$ remains.
+
+**Proof.** In the scalar case, $F_H$ is the identity map. In the rank-one case, the output is a fixed pure state, which a replacement channel can prepare. Conversely, if there are two distinct positive eigenvalues, take the corresponding eigenstate projectors. Each is unchanged by the filter, but their equal mixture is reweighted according to the eigenvalues after normalized filtering, violating affinity. If all positive eigenvalues are equal and $2\le\operatorname{rank}H<d$, choose two distinct pure states $u,v$ in the support and a pure state $k$ in the kernel. The inputs $u$ and $t v+(1-t)k$, $0<t<1$, have success probabilities $c,ct$ and conditioned outputs $u,v$, respectively. Filtering their equal mixture gives conditional weights $1/(1+t),t/(1+t)$, again violating affinity. This covers every case other than the two listed classes.
+
+If a reference system is retained, a local deterministic channel cannot change its marginal. Classically correlate eigenstate branches of the system having different success weights with orthogonal reference labels. Filtering with a nonscalar $H$ changes those label weights. Thus, even when the system output is a fixed rank-one state, a local replacement channel cannot reproduce the full conditioned joint state. In the scalar case, local normalized filtering is the identity and preserves all reference correlations. ∎
+
+This result classifies only the specified initialization map $F_H$. It does not directly rule out other algorithms required to match only the final CQ output, nor does rank-one replacement automatically reproduce the original success probability and filtering flag. The classification is a paper proof in this chapter. Specific failures of affinity, the rank-one marginal exception, and counterexamples involving reference correlations are covered separately by finite checks. If $\rho$ is known and can be prepared repeatedly, one may also prepare $F_H(\rho)$ directly, but its preparation cost must be recorded. With only one copy of an unknown state, a failed attempt does not provide a free identical unknown input for another attempt.
+
+## 66.9 A valid initial filter and the cost of scaling
+
+This section retains the assumption of positive acceptance probability. Choose $c>0$ with $c\ge\|H_0\|$, and take the success Kraus operator
+$$
+A=\sqrt{H_0/c}.
+$$
+Since $I-A^{\dagger}A\succeq0$, a failure Kraus operator can be added to form an actual complete instrument.
+
+<a id="p-fcond-08"></a>
+**P-FCOND-08 (Actual success probability and posterior state of the scaled filter).** This complete filtering instrument succeeds with probability $p_G/c$. Its state after success is $\widetilde\rho_0$, independently of the scale $c$. If independent preparation of the same input is available, the mean number of filtering attempts is $c/p_G$.
+
+**Proof.** The success probability is $\operatorname{Tr}(A\rho A^{\dagger})=\operatorname{Tr}(H_0\rho)/c$. The factors $1/c$ in the numerator and denominator cancel on normalization. The waiting time for independent attempts has a geometric distribution with success probability $p_G/c$. ∎
+
+Within the implementation family in which this scaling is the only permitted change to the success Kraus operator, $c=\|H_0\|$ maximizes the success probability. This is not a theorem of globally optimal cost over all implementations. In particular, the scalar or rank-one marginal tasks in P-FCOND-07 admit deterministic schemes; directly preparing a known state is another resource option.
+
+## 66.10 Early stopping on failure must enter the actual cost
+
+Let $R$ be the full record of one original attempt, let its success probability be $p>0$, and let $C(R)$ be its actual nonnegative cost, with mean $\mu$. The cost includes the actions, preparation, failure detection, and reset actually carried out during that attempt. Within a single attempt, cost may be correlated with success or failure.
+
+<a id="p-fcond-09"></a>
+**P-FCOND-09 (Full cost of independent resets until success).** If each reset produces the same independent trial, the expected total cost until the first success is $\mu/p$. Truncating at no more than $n$ attempts gives expected cost
+$$
+\frac{\mu}{p}\bigl[1-(1-p)^n\bigr].
+$$
+
+**Proof.** The first attempt incurs unconditional expected cost $\mu$. It fails with probability $1-p$, after which the new trial is independent of the preceding outcome. Thus $V_{n+1}=\mu+(1-p)V_n$, with $V_0=0$. Solving this finite recurrence gives the closed form. Nonnegativity of the costs permits monotone convergence to identify the limit with the expected total cost. Independence between cost and success within a single trial is not required. ∎
+
+A comparison budget for the new process can be written as
+$$
+C_{\rm new}=C_{\rm init}+\sum_{h\,\mathrm{active}}
+ \widetilde q_h\,C_h+C_{\rm record}+C_{\rm calibration},
+$$
+where $\widetilde q_h$ is the probability that the actual conditioned process visits the corresponding node. The term $C_{\rm init}$ should include all failed initial filtering attempts and repeated preparations. Compare $C_{\rm new}$ with $\mu/p$ only after specifying the allowed actions and common resource units. The conclusion may be that there is no advantage, or that implementation is impossible. Frequent production of accepted records by the new process does not increase the success probability of the unchanged original experiment.
+
+## 66.11 A sharp error bound for conditioning on acceptance
+
+Let $\Omega,\Omega'$ be two full CQ outputs of original processes, with the same acceptance extractor and positive success probabilities $p,q>0$. Write $D$ for the trace distance, with the one-half normalization used in this book, equivalently the distance defined by all effects.
+
+<a id="p-fcond-10"></a>
+**P-FCOND-10 (Propagation of error from full outputs to conditioned outputs).** If $D(\Omega,\Omega')\le\varepsilon$, then
+$$
+|p-q|\le\varepsilon,\qquad
+D(\Omega_G,\Omega'_G)\le
+\min\left\{1,\frac{\varepsilon}{\max(p,q)}\right\}.
+$$
+
+**Proof.** The acceptance effect gives the probability-difference bound. For any effect $E$ on the conditioned output, write its two conditional probabilities as $a,b\in[0,1]$. Placing $E$ and its complementary effect within the accepted branch and pulling each back to the original input gives valid effects. Therefore
+$$
+|pa-qb|\le\varepsilon,\quad
+|p(1-a)-q(1-b)|\le\varepsilon.
+$$
+If $p\ge q$, the first inequality and $(p-q)b\ge0$ give $p(a-b)\le\varepsilon$; the second inequality and $(p-q)(1-b)\ge0$ give $p(b-a)\le\varepsilon$. Hence $|a-b|\le\varepsilon/p$. Exchanging the two states yields the denominator $\max(p,q)$. Take the supremum over all effects and combine this with the bound of one on the distance. ∎
+
+This statement applies the same acceptance rule to two full outputs. The premise $\varepsilon$ cannot be estimated by retaining only attractive samples after filtering. A classical three-outcome distribution already attains the amplification factor. For $p>0$, $0\le\delta\le p\le1$, take the distributions $(p,0,1-p)$ and $(p-\delta,\delta,1-p)$, accepting the first two outcomes. Their original distance is $\delta$, and their conditioned distance is $\delta/p$. Reporting the unamplified source error when acceptance is rare can substantially overstate predictive precision.
+
+## 66.12 From errors in allowed operations to the full-record budget
+
+Chapters 62 and 65 already provide budgets for individual actions under a common classical controller, weighted by the actual active-prefix masses of the reference implementation. Here each step must be compared as a complete CP instrument retaining its visible labels, with the initial-state error recorded separately.
+
+<a id="p-fcond-11"></a>
+**P-FCOND-11 (A usable local error bound for valid Kraus approximations).** Consider two actual complete Kraus families $\{L_j\},\{M_j\}$ with the same visible labels and with their hidden indices aligned by zero padding. For every normalized input, the distance between their outputs with visible labels retained is bounded by
+$$
+\delta_{\rm step}\le\min\left\{1,
+\frac12\sum_j(\|L_j\|+\|M_j\|)\|L_j-M_j\|\right\}.
+$$
+If valid budgets of this form are available at every node of the same fixed controller, the full-output distance is bounded by the initial-state error plus the local budgets weighted by the reference prefix masses.
+
+**Proof.** Insert and subtract $M_j\rho L_j^{\dagger}$ in each Kraus term:
+$$
+L_j\rho L_j^{\dagger}-M_j\rho M_j^{\dagger}
+=(L_j-M_j)\rho L_j^{\dagger}
++M_j\rho(L_j-M_j)^{\dagger}.
+$$
+Apply $\|AXB\|_1\le\|A\|\|X\|_1\|B\|$, the triangle inequality, and $\|\rho\|_1=1$. Sum over the hidden indices, then over the visible direct-sum blocks, and divide by two. The additional bound of one is valid because both outputs are normalized. Propagation through the finite tree follows either from the existing common-controller budgets or from replacement one level at a time and CPTP contraction. ∎
+
+The same operator-norm derivation remains valid when each local operation is extended by the identity on an explicitly retained reference system. It does not control unmodelled additional couplings or physical errors that change the controller. This Kraus-norm estimate is a paper-level sufficient bound in the present chapter, not a definition of the optimal distance. Numerical implementations must provide evidence for their matrix-error and norm upper bounds; machine residuals cannot simply be treated as rigorous real-number bounds. Nor may an incomplete floating-point Kraus family be treated as an actual CPTP action without a valid correction.
+
+## 66.13 Small eigenvalues, exact certificates, and numerical failure
+
+For two certified positive-definite effects $H,H'\succeq\eta I>0$, standard sufficient bounds for the square root and inverse square root are
+$$
+\|\sqrt H-\sqrt{H'}\|\le\frac{\|H-H'\|}{2\sqrt\eta},\qquad
+\|H^{-1/2}-{H'}^{-1/2}\|\le
+\frac{\|H-H'\|}{2\eta^{3/2}}.
+$$
+The first follows from the Sylvester equation for the difference of the square roots and its semigroup integral; the second additionally uses the identity for the difference of inverse matrices. Substitution into the product difference for $S_{ho}KT_h$ yields local Kraus errors. In the singular case, the support must be fixed and certified before applying the corresponding lower bound on that support. Floating-point sorting alone cannot determine the exact rank.
+
+<a id="c-fcond-01"></a>
+**C-FCOND-01 (Small positive eigenvalues cannot be treated as zero).** Let $H_\epsilon=\operatorname{diag}(1,\epsilon)$ and $H_0=\operatorname{diag}(1,0)$, with $\epsilon>0$. Although $\|H_\epsilon-H_0\|=\epsilon\to0$, the distance between its inverse square root on the support and that of $H_0$ is $\epsilon^{-1/2}$, which diverges.
+
+**Proof.** The two inverse square roots on the supports are $\operatorname{diag}(1,\epsilon^{-1/2})$ and $\operatorname{diag}(1,0)$. Subtract them and take the operator norm. ∎
+
+When the smallest positive support eigenvalue is too small relative to the largest positive eigenvalue and reaches the current inverse-square-root precision threshold, this chapter's reference program explicitly reports unreliable numerical conditioning. It does not convert a positive-probability event into a zero event merely because its overall scale is small. Rigorous finite examples use rational or algebraic matrices and checks of the actual backward Gram sums and support identities. Floating-point completeness and recordwise residuals are recorded separately as numerical diagnostics. Exact finite SymPy computations and Lean kernel checks are also recorded separately, without treating either as the other.
+
+## 66.14 A realizable positive example connecting the whole chain
+
+On a two-level system, take the Pauli matrices $Z,X$. The original visible outcomes are $0,1,f$, with hidden Kraus operators
+$$
+K_0=Z/2,\quad K_1=X/2,\quad
+K_{f,0}=I/2,\quad K_{f,1}=I/2.
+$$
+The complete Gram sum is $I$. The two hidden paths for $f$ retain the same visible failure label. Accept a three-step run if every outcome lies in $\{0,1\}$. Then
+$$
+H_t=2^{-(3-t)}I,\quad p_G=1/8,\quad\widetilde\rho_0=\rho.
+$$
+At each step, the conditioned instrument outputs 0 and applies $Z$ with probability one half, and outputs 1 and applies $X$ with probability one half. Choose the allowed library to consist of exactly these two unitary actions with deterministic labels. The weights $(1/2,1/2)$ give an actual positive Choi certificate, matching the quantum blocks of all eight successful records simultaneously. Each record retains the full quantum state after its corresponding unitary evolution. Although $XZ=-ZX$, the two conjugation channels commute because the global phase cancels. This example therefore does not test noncommuting CP superoperators.
+
+Suppose one call to the original complete instrument and one call to an allowed Pauli action each cost one unit, with no additional preparation or recording charge. The mean action cost of one original attempt with early stopping is $1+1/2+1/4=7/4$, giving cost 14 per successful sample. The new process requires three actions, or $3+3r$ if each randomization costs $r\ge0$. Under this explicit resource convention, an advantage requires $3+3r<14$. Any conclusion about real devices additionally requires measured operation, randomization, preparation, calibration, and reset costs. No hardware data are supplied here.
+
+## 66.15 A nonscalar, noncommuting example and implementation obstructions
+
+In another original instrument, the two success Kraus operators are
+$$
+K_0=\begin{pmatrix}1/2&0\\0&1/4\end{pmatrix},\qquad
+K_1=\frac14\begin{pmatrix}1&1\\1&-1\end{pmatrix}.
+$$
+The failure label contains the two hidden Kraus operators $\operatorname{diag}(3/4,3/4)$ and $\operatorname{diag}(1/4,1/2)$, so the instrument is again exactly complete. For $\rho=\frac12\begin{pmatrix}1&-i\\i&1\end{pmatrix}$, the backward effect and probability of three consecutive successes are
+$$
+H_0=\frac1{4096}\begin{pmatrix}183&27\\27&51\end{pmatrix},\qquad
+p_G=\frac{117}{4096}.
+$$
+All eight visible success words retain their full complex quantum blocks. With $P_0=\operatorname{diag}(1,0)$, reversing the order of the two success CP branches gives the difference
+$$
+\mathcal I_0(\mathcal I_1(P_0))-\mathcal I_1(\mathcal I_0(P_0))
+=\begin{pmatrix}0&-1/128\\-1/128&-3/256\end{pmatrix}\ne0,
+$$
+so this example tests genuinely noncommuting branch maps. One original attempt has action cost $701/512$; the expected cost until success is $5608/117$, approximately 47.93. The best valid scale for this single-Kraus filtering family, $c=\|H_0\|=(117+3\sqrt{565})/4096$, gives initial filtering success probability $39/(39+\sqrt{565})$. The original $117/4096$ is the filtering success probability only when the unscaled choice $c=1$ is used.
+
+This conditioned process does not automatically belong to the original action library. If the library contains only the original instrument, its failure effect has probability $23/32$ on the maximally mixed state. At a positive-definite node, the target conditioned instrument instead has zero failure probability. The negative of the failure probability is a real-linear separating functional that excludes exact realization by this library. Furthermore, the original failure effect is $\operatorname{diag}(5/8,13/16)\succeq(5/8)I$, so the original instrument still has failure probability at least $5/8$ on the actual filtered initial state. In this particular case, that bound also directly excludes matching the full record for the fixed initial state. It does not exclude broader implementation classes containing additional filters or new actions. A formally complete Doob instrument must not be assumed to be available on a device.
+
+Singular examples, zero events, alternative hidden Kraus decompositions, conflicts within an observation fibre, leakage into the support complement, rare-event error amplification, and changes of controller are retained separately in the corresponding execution records. They are mathematical and program controls, not experimental support from nature.
+
+## 66.16 What this chapter establishes
+
+The original experimental tree determines the backward effects. Spectral support yields valid conditioned instruments. Matrix identities at every leaf give the full conditioned CQ law. Choi families and observation fibres give a necessary and sufficient criterion for allowed randomization. Initialization and early stopping determine the resource account. Errors in valid complete operations, together with the acceptance extractor, determine the final error. Each step has its own input objects, proof, or counterexample. The chain may terminate with a precise negative answer: the specified library cannot realize the process.
+
+The formal sources are `QuantumFiniteWindow`, `QuantumFiniteWindowSpectral`, `QuantumActionRealizability`, `QuantumReachableActionRealizability`, `QuantumPostselectionError`, and `QuantumInitializationCost`, together with explicit action and Pauli witnesses. The current Lean tree uses uniform finite carriers for the system, outcomes, and Kraus indices, and one fixed arbitrary complete fallback instrument $J$. If the root contains an action, its original instrument can itself be chosen as the fallback. Equality of the joint states has already been proved for two fixed fallbacks with different hidden carriers. The node-dependent $J_h$ allowed in the text is a paper generalization of the same local transport identity. Zero padding between different node carriers still requires an explicit adapter.
+
+The full initialization classification, the impossibility argument for arbitrary references, the sufficient Kraus operator-norm error bound, and the monotone-convergence interpretation of the expected cost of independent retries until the first success are paper proofs. Their verification status does not change because neighbouring modules pass Lean. Actual builds, named axioms, execution records, and source identities are documented in this edition's verification ledger.
+
+Finiteness, an explicitly chosen complex quantum domain, a fixed original controller, randomization over a finite action library, and the resource assumptions of independent resetting remain substantive premises. This chapter does not derive the quantum domain uniquely from Core, prove a general quantum Perron theorem or an unbounded conditioned path construction, or provide new hardware data. Future experiments can test whether a specified implementation meets the full-record, cost, and error contracts established here.
+
+<a id="appendix-a"></a>
+
+# Appendix A. Notation, units, and responsibilities of standard theorems
+
+## A.1 Common notation
+
+| Symbol | Meaning and convention |
+|---|---|
+| $\rho,\sigma$ | Density operators; subnormalization is stated explicitly when allowed. |
+| $\mathcal E,\mathcal M_a$ | A CPTP channel and a CP branch map of an instrument. |
+| $E_a,P_a$ | A POVM effect and an orthogonal branch projector; generally different objects. |
+| $J_{\mathcal E}$ | Unnormalized input-first Choi operator, with trace equal to the input dimension. |
+| $D(\rho,\sigma)$ | Trace distance where so defined in the text; relative entropy is written $D(\rho\|\sigma)$. |
+| $\delta_\diamond$ | Half the diamond-norm difference, unless otherwise specified. |
+| $C(h)$ | Canonical response for a fixed future target and protocol. |
+| FFIPS | Future/intervention predictive equivalence and its canonical sufficient representation. |
+| ORC | Objective Record Certificate: an operational certificate for a public record. |
+| SRN | Strong record nondisturbance: preservation of every state within each branch. |
+| QDRR | The project's record-writing and inverse-writing/recovery protocol, used with the precise definition in Chapter 8. |
+| $K,\Lambda$ | An SRN correlation matrix and an entrywise-exponential generator; not a general Kraus operator. |
+| $\mathsf G$ or $G$ | A Gram matrix, Gaussian quadratic kernel, or group, according to context; these types cannot be mixed across chapters. |
+| $\beta_T,\beta_C,\beta_8$ | Inverse temperature, control discount, and the 331 charge-embedding parameter: three distinct quantities. |
+| $\hbar$ | Calibration of the unit of action; set to one in natural units in the field-theory chapters and restored explicitly where needed. |
+| $\sigma,\Omega$ | The phase-space symplectic bilinear form and its matrix representation. |
+| $\Phi,\Pi$ | Core structure/resource symbols whose specific function must be declared; not a fixed physical entropy. |
+| $\Pi_{\rm cut}$ | Energy-cutoff projector, kept distinct from a resource cost. |
+| $\Gamma$ | A field-theory effective action or vertex; not an undefined general Core complexity. |
+| $\lambda,\lambda_H$ | Scalar quartic and Higgs quartic couplings. |
+| $\mu,\Lambda_*$ | Renormalization scale and EFT high-energy scale in the stated context; chemical potential is separately identified. |
+| $N_c,N_f,k,t$ | Number of colours, number of generations, number of quark generations in the horizontal representation $R$, and the anomaly-solution multiplier. |
+| $\chi$ | A framing-completion response class, not an ordinary four-dimensional chiral index. |
+| HGP, FAD | The separate physical premise packages in Chapters 31 and 32. |
+| GOIT | The UEOT interpretive interface for gauge-orbit identity transport. |
+| D/P/K/H/S/E/N/O | The argument-status classes of Chapter 0; P does not imply originality or machine verification. |
+
+## A.2 Units
+
+Chapters 1–20 and the actualization and global-phase chapters retain $\hbar$. A Hamiltonian has units of energy and a Lindblad generator has units of inverse time. In
+$\mathcal L\rho=-i[H,\rho]/\hbar+\sum L\rho L^\dagger-\frac12\{L^\dagger L,\rho\}$
+the operator $L$ has units of inverse square root of time. Position Fisher information has units of inverse length squared, and an action has units of action.
+
+In four-dimensional natural units, $[\phi]=[A_\mu]=1,[\psi]=3/2,[\partial_\mu]=1$ and $[\mathcal L]=4$. Gauge and quartic couplings have mass dimension zero; a cross section has mass dimension minus two. In an EFT, an operator, its Wilson coefficient, and any explicit high-energy scale must combine to total mass dimension four in the Lagrangian density.
+
+Entropy defined with natural logarithms is measured in nats. Conversion to bits divides by $\log2$. For thermodynamic entropy, inclusion of $k_B$ must be specified. Here $\beta_T=(k_BT)^{-1}$, and information entropy is dimensionless by default.
+
+## A.3 Major results invoked without full reproving
+
+| Standard tool | Required assumptions and use here | Outside the proof supplied here |
+|---|---|---|
+| Two-principle finite OPT reconstruction | The original preprint's complete background, LE/CIT, and ESP. | Treating the abstract as a complete axiom list or an established final theorem. |
+| Complex polarization and quadratic-form characterization | Global homogeneity, parallelogram relations, and continuity. | Replacing global quantifiers with finite samples. |
+| Relative-entropy data processing | CPTP maps and appropriate support; primarily finite-dimensional use. | Arbitrary non-CP approximations or undefined entropy differences. |
+| Knill–Laflamme | A fixed code and noise linear span, with perfect recovery. | Universal hardware fault tolerance without a specified noise model. |
+| Spectral theorem and Stone's theorem | Self-adjointness, strong continuity, and appropriate operator domains. | Automatic self-adjointness of formal differential expressions. |
+| Kato–Rellich/Friedrichs | Symmetry, relative bounds, semiboundedness, and closed-form assumptions as applicable. | Validity of a Hamiltonian without domain conditions. |
+| Stone–von Neumann | Finitely many degrees of freedom, regularity, irreducibility, and nonzero central character. | A globally unique representation for infinitely many QFT degrees of freedom. |
+| Williamson theorem and Gaussian CP conditions | Finitely many modes, positive-definite covariance, and a declared symplectic convention. | Determination of arbitrary non-Gaussian operations by second moments. |
+| Wigner's theorem | A transition-probability-preserving ray bijection and applicable continuity assumptions. | Identifying every noisy channel with a reversible symmetry. |
+| Lieb–Robinson bounds | Suitable local bounded interactions and spatial summability. | One unconditional light cone for all long-range or unbounded fields. |
+| GKSL | The conditions of the chosen version, such as a norm-continuous finite-dimensional CPTP semigroup. | Assuming every reduced dynamics is a semigroup. |
+| Davies weak-coupling limit | Equilibrium bath, correlation decay, and the stated scaling limit. | Automatic thermal Lindblad dynamics at strong coupling or with long memory. |
+| Process tensors/combs | Complete positivity, causal recursion, and specified intervention slots. | Recovering a full process from correlations without interventions. |
+| Spin–statistics and LSZ | Relativistic locality, spectrum and positivity, or stable-particle asymptotic-state assumptions. | Arbitrary nonrelativistic models or an uncomplicated charged infrared limit. |
+| Perturbative renormalization and Ward/ST identities | Specified regulator, scheme, and absence of the relevant gauge anomaly. | Nonperturbative existence and global gauge fixing. |
+| Atiyah–Singer/Dai–Freed | Specified manifolds, bundles, operators, boundaries, and anomaly types. | Substituting Betti numbers for indices or arbitrary framing maps. |
+
+Invoking a substantial theorem under its conditions records a dependency; it does not remove a proof obligation. The book supplies explicit calculable realizations so that basic formulas can be used without first studying every source. Extending a conclusion beyond its stated domain requires returning to the relevant rigorous theorem.
+
+## A.4 Notation for the global and topological models
+
+$\theta$ is the boundary twist on a ring, and $\eta$ its gauge-invariant twist. In Chapter 44, $\mathcal A,\mathcal F$ denote the Berry connection and curvature, and $t_1,t_2$ the SSH hoppings. In the lattice chapter, $a$ is the lattice spacing and $U_l$ a group-valued link variable. The symbol $p_0$ is a calibrated lower bound on a conditional event probability; $L_n$ is a statistical supermartingale, not a Lindblad operator or a line bundle. Reused symbols always take their types from the chapter in which they occur.
+
+## A.5 Notation for the verified kernel
+
+In Chapters 49–50, $R_\rho(w)$ denotes the response to all finite words, $W$ the real span of actual word effects, and $x(\rho)$ finite response coordinates. The quantity $d_E$ is the supremum of probability differences over all effects $0\preceq E\preceq I$, while $\Delta_E$ is the supremum of actual channel-output discrepancies. Neither is a maximum over a finite sample. The quantities $p,q$ are Born probabilities for the same outcome from two inputs, and $\eta$ is a specified positive probability lower bound. Sections 50.3 and 50.5 distinguish the original distance interfaces from stronger norm claims; Chapters 60 and 63 establish state separation and the half-trace-absolute-value identity. An arbitrary-ancilla diamond-norm identification remains a separate obligation.
+
+<a id="appendix-b"></a>
+
+# Appendix B. Registry of numbered results
+
+The 3.7 bilingual revision preserves all 173 stable result IDs of research edition 3.6, without adding or withdrawing another result. These comprise the 161 results of edition 3.5 and the 11 propositions and one counterexample added in Chapter 66 by the 3.6 research revision. The earlier composition is 78 from edition 2.0, 10 in Chapters 49–50, 13 in Chapters 51–53, 16 in Chapters 54–56, 14 in Chapters 57–59, 16 in Chapters 60–62, and 14 in Chapters 63–65. The registry counts analytic statements in the text, not original discoveries, Lean declarations, or experimental confirmations. Each chapter supplies the full hypotheses, proof, and open obligations. The bilingual map separately binds the titles and anchors in both languages.
+
+| ID | Chapter | Result |
+|---|---:|---|
+| [P-QBR-01](#p-qbr-01) | 1 | P-QBR-01: A classical realization countermodel. |
+| [P-QSEL-01](#p-qsel-01) | 2 | P-QSEL-01: Classical and real-quantum deletion witnesses. |
+| [P-QACT-01](#p-qact-01) | 3 | P-QACT-01: Conditional Madelung–Schrödinger equivalence. |
+| [P-QACT-02](#p-qact-02) | 3 | P-QACT-02. |
+| [P-QBORN-02](#p-qborn-02) | 3 | P-QBORN-02: Probabilities of an unbiased final branch. |
+| [P-QOP-01](#p-qop-01) | 4 | P-QOP-01: Finite Choi–Kraus equivalence. |
+| [P-QOP-02](#p-qop-02) | 4 | P-QOP-02: No signalling. |
+| [P-QOP-03](#p-qop-03) | 4 | P-QOP-03: Operational error and propagation. |
+| [P-QFF-01](#p-qff-01) | 5 | P-QFF-01: Finite quantum FFIPS. |
+| [P-QFF-02](#p-qff-02) | 5 | P-QFF-02: Path preservation by a quantum quotient. |
+| [P-QMEAS-01](#p-qmeas-01) | 6 | P-QMEAS-01: Parent-system completion. |
+| [P-QMEAS-02](#p-qmeas-02) | 6 | P-QMEAS-02. |
+| [P-QMEAS-03](#p-qmeas-03) | 6 | P-QMEAS-03: Public blindness. |
+| [P-QMEAS-04](#p-qmeas-04) | 6 | P-QMEAS-04. |
+| [P-QSRN-01](#p-qsrn-01) | 7 | P-QSRN-01: Complete SRN classification. |
+| [P-QSRN-02](#p-qsrn-02) | 7 | P-QSRN-02. |
+| [P-QSRN-03](#p-qsrn-03) | 7 | P-QSRN-03: Necessary and sufficient generator-cone conditions. |
+| [P-QQDR-01](#p-qqdr-01) | 8 | P-QQDR-01: Coherent pullback. |
+| [P-QQDR-02](#p-qqdr-02) | 8 | P-QQDR-02. |
+| [P-QQDR-03](#p-qqdr-03) | 8 | P-QQDR-03: Simultaneous error. |
+| [P-QINFO-01](#p-qinfo-01) | 9 | P-QINFO-01. |
+| [P-QINFO-02](#p-qinfo-02) | 9 | P-QINFO-02. |
+| [P-QINF-01](#p-qinf-01) | 10 | P-QINF-01: Trace-norm continuity of normal states. |
+| [P-QINF-02](#p-qinf-02) | 10 | P-QINF-02: Energy-truncation error. |
+| [P-QCCR-01](#p-qccr-01) | 11 | P-QCCR-01: A single scale from symplectic covariance. |
+| [P-QCCR-02](#p-qccr-02) | 11 | P-QCCR-02. |
+| [P-QCCR-03](#p-qccr-03) | 11 | P-QCCR-03. |
+| [P-QGAUSS-01](#p-qgauss-01) | 13 | P-QGAUSS-01: A necessary covariance condition. |
+| [P-QMEM-01](#p-qmem-01) | 18 | P-QMEM-01: Irreducible error from omitted memory. |
+| [P-QTHERM-01](#p-qtherm-01) | 19 | P-QTHERM-01: Free energy and relative entropy. |
+| [P-QTHERM-02](#p-qtherm-02) | 19 | P-QTHERM-02: KMS for finite Gibbs systems. |
+| [P-QTHERM-03](#p-qtherm-03) | 19 | P-QTHERM-03. |
+| [P-QCTL-01](#p-qctl-01) | 20 | P-QCTL-01. |
+| [P-QKG-01](#p-qkg-01) | 22 | P-QKG-01: Canonical relations and propagation. |
+| [P-QKG-02](#p-qkg-02) | 22 | P-QKG-02: Spacelike causality. |
+| [P-QDIR-01](#p-qdir-01) | 23 | P-QDIR-01. |
+| [P-QUNIT-01](#p-qunit-01) | 24 | P-QUNIT-01: Optical theorem. |
+| [P-QREN-01](#p-qren-01) | 25 | P-QREN-01. |
+| [P-QREN-02](#p-qren-02) | 25 | P-QREN-02: Subtracted bubble. |
+| [P-QREN-03](#p-qren-03) | 25 | P-QREN-03: Two-particle cut. |
+| [P-QEFT-01](#p-qeft-01) | 26 | P-QEFT-01: Quadratic Schur complement. |
+| [P-QEFT-02](#p-qeft-02) | 26 | P-QEFT-02: A restricted real-time bridge. |
+| [P-QQED-01](#p-qqed-01) | 28 | P-QQED-01. |
+| [P-QQED-02](#p-qqed-02) | 28 | P-QQED-02: Threshold beta function. |
+| [P-QSM-01](#p-qsm-01) | 29 | P-QSM-01: Anomaly solutions and nonuniqueness. |
+| [P-QHIG-01](#p-qhig-01) | 30 | P-QHIG-01: Mass matrices. |
+| [P-QFLAV-01](#p-qflav-01) | 30 | P-QFLAV-01: Generic nondegenerate $N$-generation quark counting. |
+| [P-QNU-01](#p-qnu-01) | 30 | P-QNU-01: Type-I seesaw. |
+| [P-QG3-01](#p-qg3-01) | 31 | P-QG3-01. |
+| [P-QG3-02](#p-qg3-02) | 31 | P-QG3-02: All integer solutions. |
+| [P-QG3-03](#p-qg3-03) | 31 | P-QG3-03: Selection without primitivity. |
+| [P-QG3-04](#p-qg3-04) | 31 | P-QG3-04. |
+| [P-QFR-01](#p-qfr-01) | 32 | P-QFR-01. |
+| [P-QFR-02](#p-qfr-02) | 32 | P-QFR-02. |
+| [G-01](#g-01) | 36 | G-01: All integer solutions for the three-scalar content. |
+| [G-02](#g-02) | 36 | G-02: Local completion for general colour number. |
+| [F-01](#f-01) | 37 | F-01. |
+| [F-02](#f-02) | 37 | F-02. |
+| [F-03](#f-03) | 37 | F-03. |
+| [M-01](#m-01) | 38 | M-01. |
+| [M-02](#m-02) | 38 | M-02. |
+| [M-03](#m-03) | 39 | M-03: Four is the minimum number of branches for single-time separation. |
+| [M-04](#m-04) | 39 | M-04: A sharp classical lower bound. |
+| [M-05](#m-05) | 39 | M-05. |
+| [E-01](#e-01) | 39 | E-01: A finite-sample rejection test. |
+| [E-02](#e-02) | 39 | E-02: A robust bound for approximate population preservation. |
+| [C-01](#c-01) | 40 | C-01: An explicit contradiction from remote preparation. |
+| [C-02](#c-02) | 40 | C-02: Norm preservation and a linear ensemble average. |
+| [C-03](#c-03) | 40 | C-03: A single spectral branch with Born weights. |
+| [C-04](#c-04) | 40 | C-04: Decay of pairwise uncertainty. |
+| [C-05](#c-05) | 41 | C-05: Equivalence with an unrestricted quantum environment. |
+| [P-UGL-01](#p-ugl-01) | 43 | P-UGL-01: Ring spectrum and gauge invariance. |
+| [P-UTP-01](#p-utp-01) | 44 | P-UTP-01: Chern number of this eigenline. |
+| [P-UTP-02](#p-utp-02) | 44 | P-UTP-02: A semi-infinite zero mode. |
+| [P-ULG-01](#p-ulg-01) | 45 | P-ULG-01: Existence and gauge invariance of the finite model. |
+| [P-ULG-02](#p-ulg-02) | 45 | P-ULG-02: Exact partition function and response. |
+| [P-UST-01](#p-ust-01) | 46 | P-UST-01: A fixed-sample test for correlated trials. |
+| [P-UST-02](#p-ust-02) | 46 | P-UST-02: An optional-stopping certificate. |
+| [P-QKR-01](#p-qkr-01) | 49 | P-QKR-01 (Posterior closure of the response object). |
+| [P-QKR-02](#p-qkr-02) | 49 | P-QKR-02 (A local finite representation determines every future response). |
+| [P-QKR-03](#p-qkr-03) | 49 | P-QKR-03 (All-word coordinates determine a complete finite adaptive tree). |
+| [P-QKR-04](#p-qkr-04) | 49 | P-QKR-04 (Soundness of an exact certificate). |
+| [P-QST-01](#p-qst-01) | 50 | P-QST-01 (Positive pairing and effect bounds). |
+| [P-QST-02](#p-qst-02) | 50 | P-QST-02 (Complete pullback of continuation effects). |
+| [P-QST-03](#p-qst-03) | 50 | P-QST-03 (Basic contract for the observable distance). |
+| [P-QST-04](#p-qst-04) | 50 | P-QST-04 (One-step stability of a complete Kraus channel). |
+| [P-QST-05](#p-qst-05) | 50 | P-QST-05 (Composable error for quantum trajectories). |
+| [P-QST-06](#p-qst-06) | 50 | P-QST-06 (Postselection error and preservation of positive support). |
+| [P-QMX-01](#p-qmx-01) | 51 | P-QMX-01 (An actual realization of a probability mixture). |
+| [P-QMX-02](#p-qmx-02) | 51 | P-QMX-02 (A uniform bound for changed weights in a common library). |
+| [P-QMX-03](#p-qmx-03) | 51 | P-QMX-03 (A joint bound for weight and member errors). |
+| [P-QMX-04](#p-qmx-04) | 51 | P-QMX-04 (Interpretation of an exact rational budget). |
+| [P-QCE-01](#p-qce-01) | 52 | P-QCE-01 (Exact residual and all-effect budget for an average state). |
+| [P-QCE-02](#p-qce-02) | 52 | P-QCE-02 (Compactness of the actual density-operator set). |
+| [P-QCE-03](#p-qce-03) | 52 | P-QCE-03 (A stationary density operator for a finite complete channel). |
+| [N-QCE-01](#n-qce-01) | 52 | N-QCE-01 (Average invariance does not imply orbit convergence or uniqueness). |
+| [P-QSV-01](#p-qsv-01) | 53 | P-QSV-01 (A complete quantum instrument for a substochastic kernel). |
+| [P-QSV-02](#p-qsv-02) | 53 | P-QSV-02 (Intertwining diagonal dynamics with finite success words). |
+| [P-QSV-03](#p-qsv-03) | 53 | P-QSV-03 (The geometric survival law of the actual all-success record). |
+| [P-QSV-04](#p-qsv-04) | 53 | P-QSV-04 (A complete realization of the Doob kernel and invariant success records). |
+| [N-QSV-01](#n-qsv-01) | 53 | N-QSV-01 (The QSD, Doob invariant law, and an arbitrary initial state are distinct). |
+| [P-QCL-01](#p-qcl-01) | 54 | P-QCL-01 (States, responses, and transport on the full simplex). |
+| [N-QCL-01](#n-qcl-01) | 54 | N-QCL-01 (A two-point mixed state has no finite classical purification). |
+| [P-QCL-02](#p-qcl-02) | 54 | P-QCL-02 (The actual terminal quotient retains two-point support). |
+| [P-QCL-03](#p-qcl-03) | 54 | P-QCL-03 (A common-source safe trajectory and a purification-separation certificate). |
+| [N-QCL-02](#n-qcl-02) | 54 | N-QCL-02 (An operational quotient can remove microscopic mixing). |
+| [P-QRT-01](#p-qrt-01) | 55 | P-QRT-01 (Two valid, distinct real joint states). |
+| [N-QRT-01](#n-qrt-01) | 55 | N-QRT-01 (Real local product tests do not determine the joint state). |
+| [P-QRT-02](#p-qrt-02) | 55 | P-QRT-02 (Deterministic discrimination by a joint effect). |
+| [N-QRT-02](#n-qrt-02) | 55 | N-QRT-02 (Discrimination when complex local effects are allowed). |
+| [N-QRT-03](#n-qrt-03) | 55 | N-QRT-03 (The distinguishing effect is outside the finite real span of product effects). |
+| [P-QQD-01](#p-qqd-01) | 56 | P-QQD-01 (Validity of filter normalization). |
+| [P-QQD-02](#p-qqd-02) | 56 | P-QQD-02 (An actual quantum Doob instrument). |
+| [P-QQD-03](#p-qqd-03) | 56 | P-QQD-03 (Finite intertwining on all operators and the actual conditional state). |
+| [P-QQD-04](#p-qqd-04) | 56 | P-QQD-04 (Quasi-stationarity, geometric survival, and stationarity of the actual channel). |
+| [P-QQD-05](#p-qqd-05) | 56 | P-QQD-05 (A nondiagonal Doob witness computable on all matrices). |
+| [N-QQD-01](#n-qqd-01) | 56 | N-QQD-01 (Three distinctions that must be retained). |
+| [P-PUR-01](#p-pur-01) | 57 | P-PUR-01 (Vector purity in the complete density-state space). |
+| [P-PUR-02](#p-pur-02) | 57 | P-PUR-02 (Existence of a purification for every finite complex density state). |
+| [P-OPT-01](#p-opt-01) | 57 | P-OPT-01 (Three concrete presentations in one operational language). |
+| [N-OPT-01](#n-opt-01) | 57 | N-OPT-01 (Basic operational laws do not automatically select a quantum theory). |
+| [P-CQ-01](#p-cq-01) | 58 | P-CQ-01 (Complete positivity, trace preservation, and effect contraction for rectangular channels). |
+| [P-CQ-02](#p-cq-02) | 58 | P-CQ-02 (Joint block state and marginals of an actual instrument). |
+| [P-CQ-03](#p-cq-03) | 58 | P-CQ-03 (Record-and-memory realization of every finite protocol). |
+| [P-CQ-04](#p-cq-04) | 58 | P-CQ-04 (Joint-distance and perturbation control of record distributions). |
+| [N-CQ-01](#n-cq-01) | 58 | N-CQ-01 (Equal unconditional channels do not control record error). |
+| [P-QDD-01](#p-qdd-01) | 59 | P-QDD-01 (Exact dynamics of the present Doob channel). |
+| [P-QDD-02](#p-qdd-02) | 59 | P-QDD-02 (Closed forms for the actual source success operator and its mass). |
+| [P-QDD-03](#p-qdd-03) | 59 | P-QDD-03 (The actual conditional state and its quantitative convergence). |
+| [P-QDD-04](#p-qdd-04) | 59 | P-QDD-04 (Decay of finite-success probabilities and the role of the initial state). |
+| [N-QDD-01](#n-qdd-01) | 59 | N-QDD-01 (A valid identity-Doob negative control). |
+| [P-SEP-01](#p-sep-01) | 60 | P-SEP-01 (Representation of a Hermitian operator by valid effects). |
+| [P-SEP-02](#p-sep-02) | 60 | P-SEP-02 (Separation by all effects and the matrix meaning of zero distance). |
+| [P-CLT-01](#p-clt-01) | 60 | P-CLT-01 (Universal local tomography of the complete finite complex model). |
+| [N-SEP-01](#n-sep-01) | 60 | N-SEP-01 (Even all diagonal effects fail to identify coherent states). |
+| [P-PUC-01](#p-puc-01) | 61 | P-PUC-01 (Purity characterization in the complete finite complex density space). |
+| [P-PUN-01](#p-pun-01) | 61 | P-PUN-01 (Unitary equivalence of all purifications on the same auxiliary carrier). |
+| [P-AUX-01](#p-aux-01) | 61 | P-AUX-01 (Actual channel, marginal, and purity of an auxiliary isometric embedding). |
+| [P-PUN-02](#p-pun-02) | 61 | P-PUN-02 (Unitary equivalence after common extension for different finite auxiliary carriers). |
+| [N-PUN-01](#n-pun-01) | 61 | N-PUN-01 (The adjoint, transpose, and entrywise conjugate cannot replace the actual auxiliary action). |
+| [N-AUX-01](#n-aux-01) | 61 | N-AUX-01 (Strict auxiliary enlargement is an isometric embedding, not a two-sided unitary equivalence). |
+| [P-ARB-01](#p-arb-01) | 62 | P-ARB-01 (History blocks, normalized weights, and valid block effects). |
+| [P-ARB-02](#p-arb-02) | 62 | P-ARB-02 (Action-weighted bound for the actual history-reading channel). |
+| [P-ARB-03](#p-arb-03) | 62 | P-ARB-03 (Matrix agreement between finite-history evolution and the original complete protocol). |
+| [P-ARB-04](#p-arb-04) | 62 | P-ARB-04 (Actual per-action sum budget and complete-record TV). |
+| [P-ARB-05](#p-arb-05) | 62 | P-ARB-05 (An exact rational witness saturating the stepwise budget). |
+| [N-ARB-01](#n-arb-01) | 62 | N-ARB-01 (Zero unlabelled action defects can coexist with maximum complete-record error). |
+| [P-TDIST-01](#p-tdist-01) | 63 | P-TDIST-01 (Positive and negative spectral parts and the actual absolute value of a finite Hermitian matrix). |
+| [P-TDIST-02](#p-tdist-02) | 63 | P-TDIST-02 (Half-trace-absolute-value formula and an optimal effect for full-effect distance). |
+| [P-DEC-01](#p-dec-01) | 63 | P-DEC-01 (Actual optimal success probability for equal-prior binary discrimination). |
+| [P-TCERT-01](#p-tcert-01) | 63 | P-TCERT-01 (Distance certificate from a PSD support decomposition). |
+| [P-PDM-01](#p-pdm-01) | 64 | P-PDM-01 (Exact dimension ordering for a rectangular isometry). |
+| [P-PDM-02](#p-pdm-02) | 64 | P-PDM-02 (A dimension-directed direct isometry for arbitrary actual purifications). |
+| [P-PDM-03](#p-pdm-03) | 64 | P-PDM-03 (Actual rank lower bound for all convex-pure extensions). |
+| [P-PDM-04](#p-pdm-04) | 64 | P-PDM-04 (Exact minimum auxiliary dimension of finite complex purification). |
+| [N-PDM-01](#n-pdm-01) | 64 | N-PDM-01 (Equal marginals do not remove the dimension direction required by a direct isometry). |
+| [P-STOP-01](#p-stop-01) | 65 | P-STOP-01 (Actual absorbing padding of an original finite stopping tree). |
+| [P-STOP-02](#p-stop-02) | 65 | P-STOP-02 (Full-effect distance preservation and the connection to the original joint leaf state). |
+| [P-STOP-03](#p-stop-03) | 65 | P-STOP-03 (Per-action error budget under a common finite stopping rule). |
+| [P-STOP-04](#p-stop-04) | 65 | P-STOP-04 (Exact $1/16$ record difference in a stopping protocol). |
+| [P-STOP-05](#p-stop-05) | 65 | P-STOP-05 (Identical quantum actions do not control all records under different stopping rules). |
+| [P-FCOND-01](#p-fcond-01) | 66 | P-FCOND-01 (Acceptance effects of the same finite original experiment). |
+| [P-FCOND-02](#p-fcond-02) | 66 | P-FCOND-02 (Kernel annihilation from the backward Gram sum). |
+| [P-FCOND-03](#p-fcond-03) | 66 | P-FCOND-03 (Support transformation and a valid completion on the full space). |
+| [P-FCOND-04](#p-fcond-04) | 66 | P-FCOND-04 (Conditioning the full leaf record and terminal state from the same original experiment). |
+| [P-FCOND-05](#p-fcond-05) | 66 | P-FCOND-05 (A convex-hull equivalence preserving outcomes and observation permissions). |
+| [P-FCOND-06](#p-fcond-06) | 66 | P-FCOND-06 (A finite negative separation certificate for the allowed class). |
+| [P-FCOND-07](#p-fcond-07) | 66 | P-FCOND-07 (Classification of deterministic initialization on all unknown inputs). |
+| [P-FCOND-08](#p-fcond-08) | 66 | P-FCOND-08 (Actual success probability and posterior state of the scaled filter). |
+| [P-FCOND-09](#p-fcond-09) | 66 | P-FCOND-09 (Full cost of independent resets until success). |
+| [P-FCOND-10](#p-fcond-10) | 66 | P-FCOND-10 (Propagation of error from full outputs to conditioned outputs). |
+| [P-FCOND-11](#p-fcond-11) | 66 | P-FCOND-11 (A usable local error bound for valid Kraus approximations). |
+| [C-FCOND-01](#c-fcond-01) | 66 | C-FCOND-01 (Small positive eigenvalues cannot be treated as zero). |
+
+<a id="appendix-c"></a>
+
+# Appendix C. Sources, inheritance, and research integrity
+
+## C.1 The source boundary of this edition
+
+The inherited editorial record documents direct checks of five original/Core sources: the original UEOT PDF, the complete Core v3 mathematical text, the open-port matrix, the post-Core scientific-closure account, and the theory-completion roadmap. It also records the recovery and inspection of the unified version 2.0 Markdown, LaTeX, PDF, and complete source/verification package. The Markdown and LaTeX files were byte-identical to the corresponding package members. The standalone PDF and packaged PDF differed in bytes and retain separate identities; they are not presented as the same rendered artifact.
+
+The mathematics and runtime code incorporated from the v31.10 research revision are identified by that revision's file-level source manifest and actual verification records. Its research baseline was main commit `3d443ec29eb17af1fc00699a74e2d42d73516d81`. The earlier v31.9 scientific source `27f6ac776c562512451000d5957087d3ecdcd086` had been merged through PR #356 as `e9b61ca9c35955028c4bfa425dfa278fd1864029`; PR CI `39569411258` and main CI `39570687643` both succeeded. The previously registered pending status was outdated and must not be interpreted as evidence that the source remained unpublished. Work in that research revision's isolated checkout was confined to physics, with Core retained as a read-only dependency. Earlier scientific sources, literature, and evidence retain their version identities, and newly executed verification is registered separately. This does not claim that every historical attachment was reread or that the unchanged inherited monograph programs were rerun.
+
+The current 3.7 publication baseline and the verified v31.9/v31.10 remote outcomes are stated separately in §C.8. Historical dates and acceptance states are not silently promoted to current facts.
+
+## C.2 Project-source map
+
+| Source | Use in this book |
+|---|---|
+| UEOT_v3_top.pdf | Original motivation concerning objects, phase, resources, and physical unification; physical claims require subsequent rigorous treatment |
+| UEOT_v1.0_核心理论正式版.md | Original definitions, Core, and directions for physical research |
+| UEOT_数学基础_统一正式版_v1.1(1).md | Early mathematical support, compared with later precise boundaries |
+| UEOT_Core_Mathematics_v3.0_Complete.md | Generic bridges between protocols, prediction, carriers, and control; quantum assumptions are not inserted into the generic axioms |
+| UEOT-QOD_Interface_v1.0; Core v2.2 dual track | Separation of physical realization from generic object mathematics |
+| UEOT-QM v8.1 and the v9–20 sequence | Historical sources for purification, predictive objects, access carriers, process RG, and blind theory competition; the generic part is developed in the mathematics volume |
+| UEOT-QM v21, v22, v23.0 | Coherent measurement parent layer, public blindness, SRN classification/generators, and QDRR; Chapters 4–9 |
+| P2_Quantum_Selection_Minimality_Frozen.md | Two-principle selection and relative independence within a fixed OPT background; Chapter 2 |
+| UEOT-QM v24.4 P1-CrossStage-Harmonized | Self-adjoint domains, Weyl relations, UCA, finite canonical degrees of freedom, and a common action-scale condition; Chapters 10–13 |
+| UEOT-QM v25.2 P3-CrossStage-Harmonized | Symmetry, spin, identical particles, and cross-stage boundaries; Chapters 14–15 |
+| UEOT-QM v26.3 P4-Final-Closure | Many-body systems, open dynamics, process memory, and statistical physics; Chapters 16–20 |
+| UEOT-QM v27.1 Relativistic-Free-Fields | Relativistic assumptions, free fields, and locality; Chapters 21–23 |
+| UEOT-QM v28.1 Interacting-QFT-RG-EFT | Interactions, loop calculations, renormalization, and bridges among three kinds of RG; Chapters 24–26 |
+| UEOT-QM v29.2 Gauge-QED-Final-Closure | QED, Ward identities, UV poles, scattering, thresholds, and magnetic moments; Chapters 27–28 |
+| UEOT-QM v30.0 P8A, v30.2 P8C, v30.3 P8D | Non-Abelian/SM candidates, anomalies, Higgs/flavour, and the limits of earlier selectors; Chapters 29–30 |
+| UEOT-QM v30.4–v30.9 and the v30.10 synthesis | Assessment of CP, common-q, framing, autonomy, and completion routes; Chapter 32 |
+| UEOT-QM v30.11 Gauge-Orbit-Horizontal-Anomaly-Atomicity | GOIT, the replication obstruction, HGP, 331 models, and conditional algebra; Chapters 29 and 31 |
+
+Some early materials in this table serve as historical sources through later syntheses and interface documents. Their presence does not mean that their entire historical texts were reread for this revision. Earlier versions' reported PASS counts are not carried over as newly executed verification results.
+
+## C.3 External original research and author resources
+
+The following references locate mathematical and physical precedents. Their use does not make established theory an original UEOT result.
+
+1. Kenji Nakahira, *Two Operational Principles Single Out Quantum Theory*, 2026 preprint. Chapter 2 depends on its complete OPT theorem background. A preprint and an experimentally validated theory have different evidential status. [Original](https://arxiv.org/abs/2605.23217).
+2. John Watrous, *The Theory of Quantum Information*, the 2018 version supplied by the author. The standard tools concerning channels, norms, and information in Chapters 4 and 9 can be checked against this source. [Author's page](https://cs.uwaterloo.ca/~watrous/TQI/).
+3. F. A. Pollock et al., *Operational Markov Condition for Quantum Processes*, Physical Review Letters **120**, 040405 (2018). The causal-intervention criterion in Chapter 18 belongs to established process theory. [Original paper](https://doi.org/10.1103/PhysRevLett.120.040405).
+4. F. A. Pollock et al., *Non-Markovian quantum processes: Complete framework and efficient characterization*, Physical Review A **97**, 012127 (2018). This is an original framework for multi-time process tensors and is distinct from reference 3. [DOI](https://doi.org/10.1103/PhysRevA.97.012127), [author preprint](https://arxiv.org/abs/1512.00589).
+5. David Tong, *Quantum Field Theory*, author lecture notes. These supply standard background on free fields, scattering, and gauge fields; this book's derivations and numerical benchmarks are stated separately. [Author's page](https://www.damtp.cam.ac.uk/user/tong/qft.htm), [current teaching locator](https://davidtong.org/teaching/quantum-field-theory/).
+6. Kazuya Yonekura, *Dai-Freed theorem and topological phases of matter*. A mathematical-physics source for the determinant-line interpretation in Chapter 29. [Original](https://arxiv.org/abs/1607.01873).
+7. I. García-Etxebarria and M. Montero, *Dai-Freed anomalies in particle physics*. Used to distinguish local from global anomaly checks. [Original](https://arxiv.org/abs/1808.00009).
+8. F. Pisano and V. Pleitez, *SU(3)⊗U(1) Model for Electroweak Interactions* (1992). The organization of 331 representations has established precedents. [Original](https://arxiv.org/abs/hep-ph/9206242).
+9. R. Foot et al., *SU(3)L⊗U(1)N and SU(4)L⊗U(1)N gauge models with right-handed neutrinos* (1994). A precedent for the 331RHN family. [Original paper](https://doi.org/10.1103/PhysRevD.50.R34).
+10. R. M. Lutchyn, J. D. Sau, and S. Das Sarma, *Majorana Fermions and a Topological Phase Transition in Semiconductor-Superconductor Heterostructures*. A theoretical source for the effective device model in Chapter 34, not a new experimental claim. [Original](https://arxiv.org/abs/1002.4033).
+11. Y. Oreg, G. Refael, and F. von Oppen, *Helical liquids and Majorana bound states in quantum wires*. An independent theoretical precedent for the same application. [Original](https://arxiv.org/abs/1003.1145).
+12. D. Burgarth, G. Chiribella, V. Giovannetti, P. Perinotti, and K. Yuasa, *Ergodic and Mixing Quantum Channels in Finite Dimensions*. A reference for the distinction between stationarity, ergodicity, and mixing in Chapter 52. The actual scope of this project's machine proofs is stated separately. [Original](https://arxiv.org/abs/1210.5625).
+13. F. Carollo, J. P. Garrahan, I. Lesanovsky, and C. Pérez-Espigares, *Making rare events typical in Markovian open quantum systems*. Broader background on quantum conditioned dynamics beyond Chapter 53; it does not certify that this project has implemented a general infinite-conditioning limit. [Original](https://arxiv.org/abs/1711.10951).
+14. [CDP2010] G. Chiribella, G. M. D'Ariano, and P. Perinotti, *Probabilistic theories with purification*, Physical Review A **81**, 062348 (2010). Chapter 57 uses it to distinguish purification existence from the full principle including essential uniqueness. [Original](https://arxiv.org/abs/0908.1583).
+15. [CDP2011] The same authors, *Informational derivation of Quantum Theory*, Physical Review A **84**, 012311 (2011). Its reconstruction invokes explicit background axioms and is not replaced by this book's finite purification-existence result. [Original](https://arxiv.org/abs/1011.6451).
+16. W. H. Zurek, *Quantum Darwinism*, Nature Physics **5**, 181–188 (2009). The established environmental-redundancy framework used in the discussion of records. [DOI](https://doi.org/10.1038/nphys1202).
+17. T. P. Le and A. Olaya-Castro, *Objectivity (or lack thereof): Comparison between predictions of quantum Darwinism and spectrum broadcast structure*, Physical Review A **98**, 032103 (2018). A total-mutual-information plateau alone need not certify accessible classical records. [DOI](https://doi.org/10.1103/PhysRevA.98.032103).
+18. T. P. Le and A. Olaya-Castro, *Strong Quantum Darwinism and Strong Independence are Equivalent to Spectrum Broadcast Structure*, Physical Review Letters **122**, 010403 (2019); A. Feller et al., Comment, **126**, 188901 (2021); Le and Olaya-Castro, Reply, **126**, 188902 (2021). The corrected independence requirement concerns the full conditional joint state, not merely pairwise independence. [Original](https://doi.org/10.1103/PhysRevLett.122.010403), [Comment](https://doi.org/10.1103/PhysRevLett.126.188901), [Reply](https://doi.org/10.1103/PhysRevLett.126.188902).
+19. E. Tiesinga et al., *CODATA recommended values of the fundamental physical constants: 2018*, Reviews of Modern Physics **93**, 025010 (2021). This identifies the frozen constant used in §28.1; it is not a claim to use the most recent adjustment. [DOI](https://doi.org/10.1103/RevModPhys.93.025010), [NIST archive](https://physics.nist.gov/cuu/Constants/archive2018.html).
+
+The five laboratory studies relevant to Chapter 8 are cited with their actual systems and evidential limits in §8.5. The accompanying `PRIOR_ART_AND_EXPERIMENTAL_STATUS.md` gives the source-review depth and further original references. A bibliography entry does not mean that raw data were obtained or that all derivations in that work were independently reproduced.
+
+## C.4 The status of the book's synthesis and logical improvements
+
+This book is not an unedited collection of historical articles. Its publication lineage reorganizes units, Choi leg order, process interfaces, physical/public layers, conditional proofs, failure conditions, and responsibility for application errors. Chapter 31 proves that the primitive-package premise is redundant under the stated weak upper bound. The general 331 presentation explicitly includes the charged $E^c$ fields so that their anomaly contributions are not omitted.
+
+These are contributions to organization, calculation, and conditional derivation. They do not claim the discovery of new 331 arithmetic or new particle physics. A scholarly priority claim would require an independent prior-art search, an exact statement of the new theorem, peer scrutiny, and any claimed distinguishable physical consequences. A self-contained exposition can still depend explicitly on established theorems.
+
+## C.5 Inherited advanced modules and sources added along the way
+
+All numbered results from the quantum-foundations text and the frontier derivations are incorporated into the main text. The global-cycle model, Berry/SSH analysis, finite lattice calculations, and conditional-trial tests were subsequently added. The standard physical sources for Chapters 44–45 are Berry (1984), Su–Schrieffer–Heeger (1979), and Wilson (1974), linked next to the relevant derivations. A newly written analytic proof or a new combination of uses is not evidence of first discovery. Standard literature and project materials carry different source responsibilities.
+
+No new complete historical conversation or new hardware dataset was obtained for this publication revision. Original attachments, accessible evolving manuscripts, and the two earlier complete texts document the research history. Inaccessible material is not used as an undisclosed proof premise.
+
+## C.6 Third-edition code and original-source checks
+
+Chapters 49–59 retain the finite kernels, stability, probability mixtures and long-time averages, survival, selection separation, purification, actual protocols, and conditioned dynamics of Kernel 1.1–1.7. Chapters 60–62 incorporate Kernel 1.8: all-effect separation, complex local tomography, full purity, ancilla comparison, and action budgets under a common controller. Chapters 63–65 incorporate Kernel 1.9: trace distance, optimal equal-prior discrimination, minimum ancilla dimension, directed isometries, and finite stopping protocols. Chapter 66 incorporates Kernel 1.10: finite conditioned processes of the original instrument, realizability under allowed actions, and complete resource and error accounting. The relevant entry points are `formalization/ueot-qm` and `physics/qm/kernel/evidence/v31.10`. Historical receipts keep their original inputs and execution scopes. Frozen Core and domain interfaces determine classification; a property within the quantum sector is not inserted into the generic axioms.
+
+The edition 3.0 revision directly checked Theorem 1 and Appendix A.2–A.3 of Nakahira's preprint. Its complete OPT background is required for invoking the theorem, and the conclusion does not require a physical system of every natural-number dimension. Chapter 2 retains the external-theorem status K and does not count this theorem among the project's generic Lean results. [Original HTML](https://arxiv.org/html/2605.23217v1). Standard channel and norm theory can be consulted in [Watrous's author resources](https://cs.uwaterloo.ca/~watrous/TQI/). This project's Lean proofs proceed from their actual matrix constructions; they neither reproduce his book nor certify that all of its theory has been re-proved here.
+
+The stronger inferences on pages 30–33 of the original paper—Fisher information to uncertainty relations, closed action to CCR, Betti numbers to an index and three generations, and Massey products to a gauge group—require the bridges, domain inputs, or open obligations distinguished throughout this book. Retaining an idea does not reinstate a withdrawn inference. The precise premises, countermodels, and inspectable proofs in the rigorous version determine what follows.
+
+Source label QM316 identifies the classical sector, the Core/purification boundary, real tomography, and general quantum Doob dynamics. QM317 identifies full-state purification, operational presentations of the classical, real, and complex models, rectangular channels, joint record memory, and specified conditioned dynamics. QM318 identifies all-effect separation, complex local tomography, full purity, ancilla-unitary comparison, history channels, and action-record budgets. QM319 identifies `QuantumTraceDistance`, `BinaryDiscrimination`, `PurificationIsometry`, `PurificationDimension`, `StoppingProtocols`, and `StoppingRecordBudget`, together with three new exact witnesses, cross-review, and the unified verification gate. Mathlib lemmas have the proof responsibility of their pinned library source; the text states the conditions actually invoked and the conclusions actually exported. Substantial library theorems are not relabelled as original physical discoveries by this project. Earlier citations retain their registered scope.
+
+## C.7 Original research on finite conditioned processes
+
+[CFW-R1] Federico Carollo, Juan P. Garrahan, Igor Lesanovsky, and Carlos Pérez-Espigares. *Making rare events typical in Markovian open quantum systems*. Physical Review A **98**, 010103(R) (2018). [Original paper](https://arxiv.org/abs/1711.10951), [journal DOI](https://doi.org/10.1103/PhysRevA.98.010103). This reference identifies prior work on quantum Doob transformations of rare-trajectory dynamics, including finite-time, time-dependent constructions. The finite-tree, support, action-realizability, and cost relations in this book are proved separately in Chapter 66; the external article's abstract is not a substitute for proofs of the complete chain presented here.
+
+## C.8 The 3.7 bilingual publication and the observed remote record
+
+This bilingual project began with edition 3.5 at main commit `3d443ec29eb17af1fc00699a74e2d42d73516d81`. A refresh before delivery found that main had advanced to `925e3a8a411c0b1bab99dd9150bf005893656140`: PR #450 incorporated the v31.10 research and Chapter 66, and PR #451 completed its observed remote metadata. Publication revision 3.7 incorporates that advance in full, retaining all 173 results of edition 3.6, including the original 161 and the 12 added in Chapter 66. It does not replace the new main manuscript with the older edition.
+
+| Research release | Actual source and merge identities | Actual CI |
+|---|---|---|
+| v31.9 | PR #356; source `27f6ac776c562512451000d5957087d3ecdcd086`; tested main `e9b61ca9c35955028c4bfa425dfa278fd1864029` | PR `39569411258`; independent main push `39570687643`, both successful |
+| v31.10 | PR #450; source `4e5de046ad59eaa37856027af6547ca26bdea1c2`; tested main `dee9bfa68c5fc60bed2853356c28011b0d3c53a0` | PR `42966223125`; independent main push `42967294067`, both successful |
+
+The PR, run, job, and step statuses above were actually read from the remote service during publication work. The tested v31.10 source and tested main have identical Git trees. All 155 proof and configuration inputs, including 97 transitively imported Core sources, and all nine runtime inputs match their recorded SHA-256 values at the tested source, tested main, publication baseline, and current working copy. All 5033 tracked Core blobs are unchanged between the initial and current research baselines. The exact inventories and comparisons are in `evidence/v3.7/source-reuse.json`.
+
+These identities permit reuse of existing heavy scientific receipts without relabelling them as newly executed publication checks. The existing v31.10 remote-acceptance receipts record inspection of original artifact contents. This publication separately checks remote metadata and source identities; it does not claim to have downloaded and byte-checked the original ZIP archives again. Newly executed book-structure checks, bilingual mathematics checks, the teaching example, PDF builds, and page inspection have separate receipts. If the subsequent publication PR automatically triggers repository CI, its outcome is recorded only after it actually occurs.
+
+The current mathematics volume is consulted to locate the maintained Core and its boundaries; the actual Core-to-Physics contract remains `physics/interfaces/CORE_PHYSICS_CONTRACT.md`. The seven evidence levels in §0.10 are a reading aid over the existing chapter dossier and source manifest, not a competing scientific ledger. Acceptance of source code, completion of a publication, and support from nature are distinct outcomes.
+
+<a id="appendix-d"></a>
+
+# Appendix D. Complete inherited verification code and versioned receipts
+
+## D.1 Execution contract
+
+Edition 3.0 actually reran the three inherited programs at 2026-10-19T23:13:31.030592+00:00, passing 757 checks in groups of 237, 423, and 97. Editions 3.1, 3.2, 3.3, 3.4, and 3.5 preserved their bytes and checked their hashes. Edition 3.7 likewise reuses this versioned execution evidence without relabeling it as a new run. The checks consist of finite exact arithmetic, deterministic numerical regressions, and fixed-seed synthetic sampling. They are not 757 universal theorems or experimental results. The complete code and the actual historical environment/output are retained below; itemized results are in `evidence/v3.0`.
+
+The Lean formalization, 100 runtime tests, four demonstrations, and concrete proof witnesses associated with Chapters 49–65 are described separately in Appendix F and are not combined with these counts. The following scripts do not access the network or experimental data. They require Python 3, NumPy, and SciPy, and can be saved and run individually. Their literal code is preserved, including comments and historical output strings.
+
+## D.2 verify_ueot_quantum.py
+
+Code SHA-256: 79dc78035c239957a8ac4f5b2f6a9d1c1a6b2a84d2cee094f831bad531f983c0
+
+~~~python
+"""UEOT quantum master: deterministic finite/numerical regression, not formal proof."""
+import json
+import math
+import platform
+from fractions import Fraction as F
+import numpy as np
+import scipy
+from scipy.linalg import expm, logm
+from scipy.integrate import quad, dblquad
+from numpy.polynomial.legendre import leggauss
+
+rng = np.random.default_rng(31011)
+checks = []
+metrics = {}
+I = np.eye(2, dtype=complex)
+X = np.array([[0, 1], [1, 0]], complex)
+Y = np.array([[0, -1j], [1j, 0]], complex)
+Z = np.diag([1, -1]).astype(complex)
+paulis = [I, X, Y, Z]
+
+def check(name, value, detail=None):
+    ok = bool(value)
+    checks.append({"name": name, "passed": ok})
+    if not ok:
+        raise AssertionError((name, detail))
+
+def close(name, a, b, atol=1e-10, rtol=1e-9):
+    check(name, np.allclose(a, b, atol=atol, rtol=rtol),
+          float(np.max(np.abs(np.asarray(a)-np.asarray(b)))))
+
+def state(d):
+    a = rng.normal(size=(d,d)) + 1j*rng.normal(size=(d,d))
+    a = a@a.conj().T
+    return a/np.trace(a)
+
+def pure(v):
+    return np.outer(v, np.conj(v))
+
+def apply(ks, rho):
+    return sum(k@rho@k.conj().T for k in ks)
+
+def trace_out_second(rho, da, db):
+    return np.einsum("abcb->ac",rho.reshape(da,db,da,db))
+
+def td(a,b):
+    return float(np.sum(np.abs(np.linalg.eigvalsh((a-b+(a-b).conj().T)/2)))/2)
+
+def choi(ks):
+    d = ks[0].shape[1]
+    blocks = []
+    for i in range(d):
+        row = []
+        for j in range(d):
+            e = np.zeros((d,d),complex); e[i,j] = 1
+            row.append(apply(ks,e))
+        blocks.append(row)
+    return np.block(blocks)
+
+def herm_min(a):
+    return float(np.linalg.eigvalsh((a+a.conj().T)/2).min())
+
+# Complex channel construction and input-first Choi reconstruction.
+for rep in range(12):
+    z = rng.normal(size=(6,2))+1j*rng.normal(size=(6,2))
+    v,_ = np.linalg.qr(z)
+    ks = [v[i*2:(i+1)*2] for i in range(3)]
+    j = choi(ks); rho = state(2)
+    close(f"channel_TP_{rep}",sum(k.conj().T@k for k in ks),I)
+    check(f"channel_Choi_PSD_{rep}",herm_min(j)>-1e-12)
+    close(f"channel_Choi_partial_trace_{rep}",trace_out_second(j,2,2),I)
+    product = np.kron(rho.T,I)@j
+    recovered = np.einsum("iaib->ab",product.reshape(2,2,2,2))
+    close(f"channel_reconstruction_{rep}",recovered,apply(ks,rho))
+    sig=state(2)
+    check(f"channel_trace_contraction_{rep}",
+          td(apply(ks,rho),apply(ks,sig)) <= td(rho,sig)+1e-12)
+
+bell=np.array([1,0,0,1],complex)/np.sqrt(2)
+bellrho=pure(bell)
+pt=bellrho.reshape(2,2,2,2).transpose(0,3,2,1).reshape(4,4)
+close("transpose_nonCP_eigenvalue",np.linalg.eigvalsh(pt).min(),-0.5)
+rho=state(2)
+r=[np.trace(rho@s).real for s in [X,Y,Z]]
+close("Pauli_state_tomography",rho,(I+sum(a*s for a,s in zip(r,[X,Y,Z])))/2)
+
+# Rebit deletion witness.
+rplus=(np.eye(4)+np.kron(Y,Y))/4
+rminus=(np.eye(4)-np.kron(Y,Y))/4
+check("rebit_positive",min(herm_min(rplus),herm_min(rminus))>-1e-12)
+check("rebit_distinct_real",td(rplus,rminus)>0.99 and np.max(abs(rplus.imag))<1e-12)
+for aidx,a in enumerate([I,X,Z]):
+    for bidx,b in enumerate([I,X,Z]):
+        close(f"rebit_local_blind_{aidx}_{bidx}",np.trace((rplus-rminus)@np.kron(a,b)),0)
+
+# Coherent write / public records / inverse write.
+cnot=np.array([[1,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,1,0]],complex)
+initial=pure(np.array([1,0,1,0],complex)/np.sqrt(2))
+written=cnot@initial@cnot
+public=sum(p@written@p for p in [np.diag([1,1,0,0]),np.diag([0,0,1,1])])
+close("write_isometry",written,bellrho)
+close("public_record_probabilities",np.diag(written),np.diag(public))
+close("coherent_parent_distinguishability",td(written,public),0.5)
+close("inverse_write_exact",cnot@written@cnot,initial)
+close("inverse_write_dephased_X",np.trace((cnot@public@cnot)@np.kron(X,I)),0)
+
+# SRN Gram kernel, block-scalar Kraus, phase-sensitive tomography.
+m=3
+env=rng.normal(size=(m,4))+1j*rng.normal(size=(m,4))
+env/=np.linalg.norm(env,axis=1)[:,None]
+K=env@env.conj().T
+dims=[2,1,2]; labels=np.repeat(np.arange(m),dims)
+ks=[np.diag(env[labels,mu]) for mu in range(4)]
+rho=state(5)
+expected=K[labels[:,None],labels[None,:]]*rho
+close("SRN_block_Kraus_Schur",apply(ks,rho),expected)
+for a in range(m):
+    idx=np.where(labels==a)[0]
+    rr=np.zeros((5,5),complex)
+    rr[np.ix_(idx,idx)]=state(len(idx))
+    close(f"SRN_fixes_branch_internal_{a}",apply(ks,rr),rr)
+close("SRN_composition",apply(ks,apply(ks,rho)),
+      (K*K)[labels[:,None],labels[None,:]]*rho)
+for a in range(m):
+    for b in range(a+1,m):
+        for phase in [0,np.pi/2]:
+            v=np.zeros(m,complex);v[a]=1/np.sqrt(2);v[b]=np.exp(1j*phase)/np.sqrt(2)
+            out=K*pure(v)
+            xx=np.zeros((m,m),complex);xx[a,b]=xx[b,a]=1
+            close(f"QDRR_phase_{a}_{b}_{phase:.3f}",
+                  np.trace(xx@out).real,(np.exp(-1j*phase)*K[a,b]).real)
+n=math.ceil(2*math.log(2*m*(m-1)/0.05)/0.12**2)
+metrics["QDRR_shots_per_pair_phase"]=n
+check("QDRR_sample_count",n==762)
+
+for rep in range(12):
+    u=rng.normal(size=(4,3))+1j*rng.normal(size=(4,3))
+    G=u@u.conj().T; diag=G.diagonal().real
+    theta=rng.normal(size=4)
+    lam=G-(diag[:,None]+diag[None,:])/2+1j*(theta[:,None]-theta[None,:])
+    C=np.eye(4)-np.ones((4,4))/4
+    check(f"SRN_generator_CPSD_{rep}",herm_min(C@lam@C)>-1e-10)
+    kt=np.exp(0.4*lam)
+    check(f"SRN_generator_exponential_PSD_{rep}",herm_min(kt)>-1e-10)
+    close(f"SRN_generator_diagonal_{rep}",kt.diagonal(),np.ones(4))
+bad=np.array([[0,-1,-1],[-1,0,-10],[-1,-10,0]],float)
+z=np.array([2,-1,-1])
+close("invalid_generator_quadratic",z@bad@z,-12)
+check("invalid_generator_fails_CP",herm_min(np.exp(0.001*bad))<0)
+
+# Finite CV boundary, Gaussian, spin, Bell and control.
+N=9
+a=np.diag(np.sqrt(np.arange(1,N)),1)
+close("truncated_CCR_boundary",a@a.T-a.T@a,
+      np.eye(N)-N*np.diag([0]*(N-1)+[1]))
+q=(a+a.T)/np.sqrt(2);p=(a-a.T)/(1j*np.sqrt(2))
+close("oscillator_vacuum_uncertainty",(q@q)[0,0]*(p@p)[0,0],0.25)
+Omega=np.array([[0,1],[-1,0]],float)
+check("Gaussian_vacuum_covariance",herm_min(np.eye(2)/2+1j*Omega/2)>-1e-12)
+check("Gaussian_subvacuum_rejected",herm_min(np.eye(2)*0.2+1j*Omega/2)<0)
+eta=.7
+check("Gaussian_loss_CP",herm_min((1-eta)*np.eye(2)/2+
+      1j*(Omega-eta*Omega)/2)>-1e-12)
+for t in [.1,.7,1.5]:
+    H=(.8*X+.6*Z)/2
+    u=expm(-1j*H*t)
+    close(f"Rabi_{t}",abs(u[1,0])**2,.8**2*np.sin(t/2)**2)
+close("spin_commutator",(X@Y-Y@X)/4,1j*Z/2)
+close("spin_time_reversal_square",(1j*Y)@(1j*Y).conj(),-I)
+B=np.kron(Z,(Z+X)/np.sqrt(2))+np.kron(Z,(Z-X)/np.sqrt(2))+np.kron(X,(Z+X)/np.sqrt(2))-np.kron(X,(Z-X)/np.sqrt(2))
+close("CHSH_Tsirelson",np.vdot(bell,B@bell),2*np.sqrt(2))
+Hs=(np.kron(X,X)+np.kron(Y,Y)+np.kron(Z,Z))/4
+close("Heisenberg_spectrum",np.linalg.eigvalsh(Hs),[-.75,.25,.25,.25])
+H=.3*X+.4*Z; O=Z; psi=np.array([1,0],complex); T=.7
+U=expm(-1j*H*T); psit=U@psi
+chi=U.conj().T@O@psit
+# integrated derivative for constant pulse, compared to central finite difference
+def grad_integrand(t):
+    pt=expm(-1j*H*t)@psi
+    ct=expm(-1j*H*(T-t)).conj().T@O@psit
+    return 2*np.imag(np.vdot(ct,X@pt))
+g=quad(grad_integrand,0,T)[0]
+def objective(e):
+    v=expm(-1j*(H+e*X)*T)@psi
+    return np.vdot(v,O@v).real
+close("control_gradient_sign",g,(objective(1e-6)-objective(-1e-6))/2e-6,atol=1e-8)
+
+# Open dynamics, KMS, causal breaks, thermodynamics.
+eta=np.exp(-.7)
+damp=[np.diag([1,np.sqrt(eta)]),np.array([[0,np.sqrt(1-eta)],[0,0]])]
+close("amplitude_damping_TP",sum(k.conj().T@k for k in damp),I)
+close("amplitude_damping_population",apply(damp,np.diag([0,1]))[1,1],eta)
+beta=.8; H=np.diag([0,1.3]); th=expm(-beta*H);th/=np.trace(th)
+A=X+.2*Z; BB=Y+.3*X; t=.4
+def tau(t):
+    return expm(1j*H*t)@BB@expm(-1j*H*t)
+close("Gibbs_KMS_complex_boundary",np.trace(th@A@tau(t+1j*beta)),
+      np.trace(th@tau(t)@A))
+def relent(r,s):
+    return np.trace(r@(logm(r)-logm(s))).real
+def entropy(r):
+    ev=np.linalg.eigvalsh(r);ev=ev[ev>1e-14]
+    return -np.sum(ev*np.log(ev))
+rho=state(2)
+free=lambda r:np.trace(r@H).real-entropy(r)/beta
+close("Gibbs_free_energy_identity",free(rho)-free(th),relent(rho,th)/beta)
+relax=lambda r:.63*r+.37*th*np.trace(r)
+check("relative_entropy_stationary_contraction",relent(relax(rho),th)<=relent(rho,th)+1e-12)
+# causal break resets S, leaves previous record in E; then E controls S
+reverse=np.array([[1,0,0,0],[0,0,0,1],[0,0,1,0],[0,1,0,0]],complex)
+outs=[]
+for bit in [0,1]:
+    inp=np.zeros(4);inp[2*bit]=1
+    joint=cnot@pure(inp)@cnot
+    env=np.einsum("abad->bd",joint.reshape(2,2,2,2))
+    reset=np.kron(np.diag([1,0]),env)
+    final=reverse@reset@reverse
+    outs.append(trace_out_second(final,2,2))
+close("causal_break_memory_witness",td(*outs),1)
+
+# Clifford and Dirac mass shell.
+zero=np.zeros((2,2),complex)
+gam=[np.block([[I,zero],[zero,-I]])]
+gam += [np.block([[zero,s],[-s,zero]]) for s in [X,Y,Z]]
+metric=[1,-1,-1,-1]
+for mu in range(4):
+    for nu in range(4):
+        close(f"Clifford_{mu}_{nu}",gam[mu]@gam[nu]+gam[nu]@gam[mu],
+              2*metric[mu]*np.eye(4) if mu==nu else np.zeros((4,4)))
+def slash(v):
+    return sum(metric[i]*v[i]*gam[i] for i in range(4))
+pp=np.array([np.sqrt(1+.2**2+.3**2),.2,.3,0])
+close("Dirac_mass_shell_factorization",(slash(pp)-np.eye(4))@(slash(pp)+np.eye(4)),np.zeros((4,4)))
+qq=np.array([.4,.2,-.1,.3])
+close("QED_tree_Ward",slash(qq),(slash(pp+qq)-np.eye(4))-(slash(pp)-np.eye(4)))
+
+# Independent numerical spin traces for e+e- -> mu+mu-.
+for costh in [-.7,0,.4,.9]:
+    E=2.0; st=np.sqrt(1-costh**2)
+    p1=np.array([E,0,0,E]);p2=np.array([E,0,0,-E])
+    k1=np.array([E,E*st,0,E*costh]);k2=np.array([E,-E*st,0,-E*costh])
+    traces=0j
+    for mu in range(4):
+        for nu in range(4):
+            L=np.trace(slash(p2)@gam[mu]@slash(p1)@gam[nu])/4
+            R=np.trace(slash(k1)@gam[mu]@slash(k2)@gam[nu])
+            traces+=metric[mu]*metric[nu]*L*R
+    close(f"QED_scattering_trace_{costh}",traces/(4*E*E)**2,1+costh**2)
+alpha=1/137.035999084
+sigma=quad(lambda c:2*np.pi*alpha**2/(4*100)*(1+c*c),-1,1)[0]
+close("QED_integrated_cross_section",sigma,4*np.pi*alpha**2/300)
+metrics["QED_tree_cross_section_inverse_energy_squared"]=sigma
+
+# phi4 renormalization and EFT.
+mass=1.3; cutoff=5.0
+numeric=quad(lambda q:q**3/(q*q+mass*mass),0,cutoff)[0]/(8*np.pi**2)
+closed=(cutoff**2-mass**2*np.log1p(cutoff**2/mass**2))/(16*np.pi**2)
+close("phi4_tadpole_radial_integral",numeric,closed)
+f=lambda x:np.log((1+x*(1-x)*4)/(1+x*(1-x)*25))/(16*np.pi**2)
+bubble=quad(f,0,1,epsabs=1e-13)[0]
+gx,gw=leggauss(100)
+close("phi4_bubble_two_quadratures",bubble,np.dot(gw,[f((x+1)/2) for x in gx])/2)
+close("phi4_bubble_benchmark",bubble,-.006683040905266517)
+metrics["phi4_one_loop_F"]=.4-1.5*.4**2*bubble
+s=5.;lam=.2;vel=np.sqrt(1-4/s)
+im=lam**2*vel/(32*np.pi)
+phase=quad(lambda c:vel/(16*np.pi),-1,1)[0]
+close("phi4_optical_cut",2*im,lam**2*phase/2)
+mass=.7;M=10.;kap=3.;p2=4.
+kernel=np.array([[p2-mass**2,-kap],[-kap,p2-M*M]])
+schur=kernel[0,0]-kernel[0,1]*kernel[1,0]/kernel[1,1]
+close("EFT_Schur_inverse",1/schur,np.linalg.inv(kernel)[0,0])
+errors=[]
+for order in range(3):
+    approx=kap**2/M**2*sum((p2/M**2)**j for j in range(order+1))
+    err=abs(kap**2/(M*M-p2)-approx)
+    bound=kap**2/M**2*(p2/M**2)**(order+1)/(1-p2/M**2)
+    close(f"EFT_remainder_{order}",err,bound)
+    errors.append(err)
+metrics["EFT_errors_LO_NLO_NNLO"]=errors
+def pi_hat(aq):
+    return 2*alpha/np.pi*quad(lambda x:x*(1-x)*np.log1p(aq*x*(1-x)),0,1,epsabs=1e-13)[0]
+aq=1e-5
+close("QED_polarization_IR",pi_hat(aq)/(alpha*aq/(15*np.pi)),1,atol=2e-6)
+aq=1e7
+close("QED_polarization_UV",pi_hat(aq),alpha/(3*np.pi)*(np.log(aq)-5/3),atol=1e-8)
+def threshold(aq):
+    return 4*alpha**2/np.pi*quad(lambda x:aq*x*x*(1-x)**2/(1+aq*x*(1-x)),0,1)[0]
+close("QED_threshold_UV",threshold(1e7)/(2*alpha**2/(3*np.pi)),1,atol=2e-6)
+aq=3.;step=1e-4
+close("QED_threshold_derivative",threshold(aq),
+      alpha*(pi_hat(aq*np.exp(2*step))-pi_hat(aq*np.exp(-2*step)))/(2*step),
+      atol=1e-11)
+schwinger=dblquad(lambda y,z:z/(1-z),0,1,lambda z:0,lambda z:1-z)[0]*alpha/np.pi
+close("Schwinger_parameter_integral",schwinger,alpha/(2*np.pi))
+metrics["Schwinger_one_loop"]=schwinger
+
+# Higgs and seesaw.
+g=.65;gp=.36;v=246.
+mat=v*v/4*np.array([[g*g,-g*gp],[-g*gp,gp*gp]])
+close("Higgs_neutral_eigenvalues",np.linalg.eigvalsh(mat),[0,v*v*(g*g+gp*gp)/4],atol=1e-9)
+md=.1;mr=20.;ev=np.linalg.eigvalsh([[0,md],[md,mr]])
+check("seesaw_controlled_error",abs(ev[0]+md*md/mr)<md**4/mr**3*1.01)
+
+# Exact local anomaly functions; rows = multiplicity, C dimension/sign, L dimension/sign, X.
+def anomalies(rows):
+    out=[F(0) for _ in range(6)]
+    for mult,dc,sc,dl,sl,x in rows:
+        x=F(x)
+        out[0]+=mult*dl*sc
+        out[1]+=mult*dc*sl
+        out[2]+=mult*dl*(F(1,2) if dc>1 else 0)*x
+        out[3]+=mult*dc*(F(1,2) if dl>1 else 0)*x
+        out[4]+=mult*dc*dl*x
+        out[5]+=mult*dc*dl*x**3
+    return out
+rows331=[(3,1,0,3,1,F(-1,3)),(3,1,0,1,0,1),
+         (1,3,1,3,1,F(1,3)),(2,3,1,3,-1,0),
+         (4,3,-1,1,0,F(-2,3)),(5,3,-1,1,0,F(1,3))]
+check("331RHN_all_six_local_anomalies",anomalies(rows331)==[0]*6)
+metrics["331RHN_local_anomalies"]=[str(x) for x in anomalies(rows331)]
+for nc in range(3,16):
+    q=F(1,2*nc); u=-F(nc+1,2*nc);d=F(nc-1,2*nc);l=F(-1,2);e=F(1)
+    vals=[2*q+u+d,nc*q+l,2*nc*q+nc*u+nc*d+2*l+e,
+          2*nc*q**3+nc*u**3+nc*d**3+2*l**3+e**3]
+    check(f"generalized_SM_local_anomalies_{nc}",vals==[0]*4)
+# Generic beta8=sqrt(3)*b, exact rational grid, including E^c.
+for nc in range(3,9):
+    nf=2*nc; k=nc-1
+    for b in [F(-1),F(-1,3),F(0),F(2,3),F(1)]:
+        xl=-F(1,2)-b/2;xp=F(1,6)-b/2;xm=F(1,6)+b/2
+        qe=-F(1,2)-3*b/2;jp=F(1,6)-3*b/2;jm=F(1,6)+3*b/2
+        rows=[(nf,1,0,3,1,xl),(nf,1,0,1,0,1),(nf,1,0,1,0,-qe),
+              (k,nc,1,3,1,xp),(nf-k,nc,1,3,-1,xm),
+              (nf,nc,-1,1,0,F(-2,3)),(nf,nc,-1,1,0,F(1,3)),
+              (k,nc,-1,1,0,-jp),(nf-k,nc,-1,1,0,-jm)]
+        pred=[0,0,0,F(nf*(nc-3),12),0,-F(nf*(nc-3),4)*(1+3*b*b)]
+        check(f"generalized_331_full_anomaly_{nc}_{b}",anomalies(rows)==pred)
+survivors=[];loose=[]
+for nc in range(2,31):
+    for nf in range(1,101):
+        for k in range(nf+1):
+            if 2*nc*k==(nc-1)*nf and nf*(nc+1)<22:
+                loose.append((nc,nf,k))
+                if nc>=3:survivors.append((nc,nf,k))
+check("G3_no_primitive_filter",survivors==[(3,3,1)])
+check("G3_complex_color_needed",(2,4,1) in loose)
+check("G3_AF_needed",2*3*2==(3-1)*6)
+metrics["G3_survivors_without_atomicity"]=survivors
+candidates=[(nc,nf) for nc in range(3,23) for nf in range(3,23) if nf*(nc+1)<22]
+close("framing_candidate_count",len(candidates),7)
+framing={str(chi):[(nc,nf) for nc,nf in candidates if nf*(4*nc+3+chi)%48==0] for chi in [0,1,17,33]}
+check("framing_zero_empty",framing["0"]==[])
+check("framing_one_unique",framing["1"]==[(3,3)])
+check("framing_seventeen_competitor",(4,4) in framing["17"])
+check("framing_thirtythree_competitors",all(x in framing["33"] for x in [(3,3),(3,4),(3,5)]))
+metrics["framing_survivors"]=framing
+
+result={"summary":{"status":"all_passed","checks":len(checks),"seed":31011,
+                   "formal_proof_assistant_checked":False,"experimental_data_used":False},
+        "environment":{"python":platform.python_version(),"numpy":np.__version__,"scipy":scipy.__version__},
+        "metrics":metrics,"checks":checks}
+print(json.dumps(result,ensure_ascii=False,indent=2))
+~~~
+
+Actual edition 3.0 result summary; the code remains unchanged in editions 3.1–3.7:
+
+~~~json
+{
+  "summary": {
+    "status": "all_passed",
+    "checks": 237,
+    "seed": 31011,
+    "formal_proof_assistant_checked": false,
+    "experimental_data_used": false
+  },
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0"
+  },
+  "metrics": {
+    "QDRR_shots_per_pair_phase": 762,
+    "QED_tree_cross_section_inverse_energy_squared": 2.230587522067968e-06,
+    "phi4_one_loop_F": 0.40160392981726395,
+    "EFT_errors_LO_NLO_NNLO": [
+      0.0037500000000000033,
+      0.00014999999999999736,
+      5.999999999992123e-06
+    ],
+    "Schwinger_one_loop": 0.0011614097328858596,
+    "331RHN_local_anomalies": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "G3_survivors_without_atomicity": [
+      [
+        3,
+        3,
+        1
+      ]
+    ],
+    "framing_survivors": {
+      "0": [],
+      "1": [
+        [
+          3,
+          3
+        ]
+      ],
+      "17": [
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          4
+        ]
+      ],
+      "33": [
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ]
+    }
+  }
+}
+~~~
+
+## D.3 verify_frontier.py
+
+Code SHA-256: f0eb63e7d743bb9e807526a47708fc36b73e6762ab4fbd27510927f3876094d2
+
+~~~python
+"""Independent checks for UEOT physics frontier. No experimental data."""
+import json, math, platform
+from fractions import Fraction as F
+import numpy as np
+import scipy
+from scipy.linalg import expm
+from scipy.special import logsumexp
+from scipy.stats import binom
+
+rng=np.random.default_rng(9062026)
+checks=[];metrics={}
+def test(name,truth,detail=None):
+    if not bool(truth):raise AssertionError((name,detail))
+    checks.append({"name":name,"passed":True})
+def close(name,a,b,tol=1e-10):
+    test(name,np.allclose(a,b,atol=tol,rtol=tol),float(np.max(abs(np.asarray(a)-np.asarray(b)))))
+def pure(v):return np.outer(v,v.conj())
+def td(a,b):return np.linalg.eigvalsh((a-b+(a-b).conj().T)/2).__abs__().sum()/2
+def off(a):return a-np.diag(np.diag(a))
+def haar(n):
+    z=rng.normal(size=(n,n))+1j*rng.normal(size=(n,n))
+    q,r=np.linalg.qr(z)
+    return q@np.diag(np.diag(r)/abs(np.diag(r)))
+def psd(a):return np.linalg.eigvalsh((a+a.conj().T)/2).min()
+def anomalies(rows):
+    val=[F(0) for _ in range(6)]
+    for n,dc,sc,dl,sl,x in rows:
+        x=F(x)
+        val[0]+=n*dl*sc
+        val[1]+=n*dc*sl
+        val[2]+=n*dl*(F(1,2) if dc>1 else 0)*x
+        val[3]+=n*dc*(F(1,2) if dl>1 else 0)*x
+        val[4]+=n*dc*dl*x
+        val[5]+=n*dc*dl*x**3
+    return val
+def spectrum(nc,nf,b):
+    k=F((nc-1)*nf,2*nc)
+    assert k.denominator==1
+    k=int(k)
+    qu=F(nc+1,2*nc);qd=-F(nc-1,2*nc)
+    xl=-F(1,2)-b/2;xp=F(1,2*nc)-b/2;xm=F(1,2*nc)+b/2
+    qe=-F(1,2)-3*b/2;jp=F(1,2*nc)-3*b/2;jm=F(1,2*nc)+3*b/2
+    return [(nf,1,0,3,1,xl),(nf,1,0,1,0,1),(nf,1,0,1,0,-qe),
+            (k,nc,1,3,1,xp),(nf-k,nc,1,3,-1,xm),
+            (nf,nc,-1,1,0,-qu),(nf,nc,-1,1,0,-qd),
+            (k,nc,-1,1,0,-jp),(nf-k,nc,-1,1,0,-jm)]
+def survivors(ns):
+    ans=[]
+    for nc in range(3,31):
+        for nf in range(1,121):
+            if (nc-1)*nf%(2*nc):continue
+            bc=F(11*nc,3)-2*nf
+            bl=11-F(nf*(nc+1),3)-F(ns,6)
+            if bc>0 and bl>0:ans.append((nc,nf,(nc-1)*nf//(2*nc)))
+    return ans
+for ns in range(46):
+    expected=[(3,3,1),(5,5,2)] if ns<=5 else ([(3,3,1)] if ns<=41 else [])
+    test(f"UV_integer_classification_ns_{ns}",survivors(ns)==expected)
+metrics["UV_three_scalar_survivors"]=survivors(3)
+for nc in range(3,11):
+    nf=2*nc
+    for b in [F(-1),F(-1,3),F(0),F(1,2)]:
+        test(f"generalized_complete_anomalies_{nc}_{b}",anomalies(spectrum(nc,nf,b))==[0]*6)
+test("five_color_five_family_all_local_anomalies",anomalies(spectrum(5,5,F(-1,3)))==[0]*6)
+metrics["five_color_coefficients"]={"bC":str(F(25,3)),"bL":str(F(1,2)),"low_b2":str(F(-17,6))}
+# The zero-U(1) anomaly identities fail if generic charged exotic E^c is omitted.
+rows=spectrum(5,5,F(0))
+test("omitted_charged_Ec_detected",anomalies(rows[:2]+rows[3:])!=[0]*6)
+
+# Flavor, computed through independent mass-basis rotations.
+for rep in range(30):
+    uu=haar(3);ud=haar(3);P=np.diag([1,0,0]);V=uu.conj().T@ud
+    Pu=uu.conj().T@P@uu;Pd=ud.conj().T@P@ud
+    close(f"flavor_CKM_transport_{rep}",Pd,V.conj().T@Pu@V)
+    close(f"flavor_rank_one_minor_{rep}",Pu[0,1]*Pu[1,2],Pu[0,2]*Pu[1,1])
+    close(f"flavor_cycle_real_{rep}",np.imag(Pu[0,1]*Pu[1,2]*Pu[2,0]),0)
+    strength=np.linalg.norm(off(Pu))**2+np.linalg.norm(off(Pd))**2
+    test(f"flavor_universal_lower_bound_{rep}",strength>=1-abs(V).max()-1e-12)
+    C_u=-Pu**2/2;C_d=-Pd**2/2
+    test(f"flavor_EFT_coefficient_bound_{rep}",
+         np.sum(abs(off(C_u)))+np.sum(abs(off(C_d)))>=(1-abs(V).max())/2-1e-12)
+# Illustrative, frozen angles; these are not a fresh fit to data.
+t12,t23,t13,delta=.227,.041,.0035,1.2
+c12,c23,c13=np.cos([t12,t23,t13]);s12,s23,s13=np.sin([t12,t23,t13])
+V=np.array([[c12*c13,s12*c13,s13*np.exp(-1j*delta)],
+            [-s12*c23-c12*s23*s13*np.exp(1j*delta),
+             c12*c23-s12*s23*s13*np.exp(1j*delta),s23*c13],
+            [s12*s23-c12*c23*s13*np.exp(1j*delta),
+             -c12*s23-s12*c23*s13*np.exp(1j*delta),c23*c13]])
+close("illustrative_CKM_unitarity",V.conj().T@V,np.eye(3))
+metrics["illustrative_flavor_lower_bound_over_delta_g_squared"]=float(1-abs(V).max())
+
+# Three-cycle complete positivity, phase loss, and the classical Poisson counterexample.
+for rep in range(24):
+    L=rng.normal(size=(3,2))+1j*rng.normal(size=(3,2))
+    G=L@L.conj().T;di=np.diag(G).real;h=rng.normal(size=3)
+    lam=G-(di[:,None]+di[None,:])/2-1j*(h[:,None]-h[None,:])
+    rates=-lam.real
+    omega=(lam[0,1]+lam[1,2]+lam[2,0]).imag
+    bound=4*rates[0,2]*rates[1,2]-(rates[0,2]+rates[1,2]-rates[0,1])**2
+    test(f"cycle_sharp_CP_{rep}",omega**2<=bound+1e-10)
+    total=rates[0,1]+rates[1,2]+rates[2,0]
+    test(f"cycle_phase_loss_{rep}",total>=np.sqrt(3)*abs(omega)-1e-10)
+    K=np.exp(.3*lam)
+    test(f"cycle_finite_CP_{rep}",psd(K)>-1e-10)
+    determinant=1-abs(K[0,1])**2-abs(K[1,2])**2-abs(K[2,0])**2+2*np.real(K[0,1]*K[1,2]*K[2,0])
+    close(f"cycle_determinant_identity_{rep}",determinant,np.linalg.det(K))
+theta=np.array([0,2*np.pi/3,4*np.pi/3])
+lam=np.exp(1j*(theta[:,None]-theta[None,:]))-1
+omega=(lam[0,1]+lam[1,2]+lam[2,0]).imag
+close("Poisson_saturates_phase_loss",sum(-lam.real[i,(i+1)%3] for i in range(3)),np.sqrt(3)*abs(omega))
+test("Poisson_nonzero_cycle",abs(omega)>2)
+metrics["classical_Poisson_cycle"]=float(omega)
+bad=np.array([[0,-1+2j,-1],[-1-2j,0,-1],[-1,-1,0]])
+test("excess_cycle_not_CP",psd(np.exp(.001*bad))<-1e-6)
+
+# Four-level channel and witness.
+V=np.array([[1,0],[0,1],[1,1],[1,1j]],complex);V[2:]/=np.sqrt(2)
+K=V@V.conj().T
+B=np.array([[-1/np.sqrt(2),-1/np.sqrt(2),1,0],
+            [-1/np.sqrt(2),-1j/np.sqrt(2),0,1]],complex)
+W=B.conj().T@B;kappa=3-2*np.sqrt(2);wmax=2+1/np.sqrt(2);E=W/wmax
+close("four_level_nullspace",B@V,np.zeros((2,2)))
+close("four_level_witness_zero",np.trace(W@K),0)
+close("witness_frobenius",np.linalg.norm(W),3)
+close("witness_operator_norm",np.linalg.eigvalsh(W).max(),wmax)
+test("effect_valid",psd(E)>-1e-12 and psd(np.eye(4)-E)>-1e-12)
+ks=[np.diag(V[:,mu]) for mu in range(2)]
+close("four_level_Kraus_TP",sum(a.conj().T@a for a in ks),np.eye(4))
+psi=np.ones(4)/2;rho=pure(psi)
+out=sum(a@rho@a.conj().T for a in ks)
+close("four_level_output",out,K/4)
+joint=np.zeros((8,4),complex)
+for a in range(4):joint[a*2:(a+1)*2,a]=V[a]
+close("joint_isometry",joint.conj().T@joint,np.eye(4))
+jointstate=joint@rho@joint.conj().T
+reduced=np.einsum("abcb->ac",jointstate.reshape(4,2,4,2))
+close("environment_dilation",reduced,out)
+zsat=np.array([1,1,1,(1+1j)/np.sqrt(2)])
+close("classical_bound_attained",np.vdot(zsat,W@zsat),kappa)
+min_random=1e9
+for rep in range(20):
+    zz=np.exp(1j*rng.uniform(-np.pi,np.pi,size=(5000,4)))
+    vals=np.einsum("ni,ij,nj->n",zz.conj(),W,zz).real
+    min_random=min(min_random,float(vals.min()))
+    test(f"classical_witness_random_batch_{rep}",vals.min()>=kappa-1e-12)
+for eps in [0,.01,.04,kappa/4,.08,1]:
+    Ke=(1-eps)*K+eps*np.eye(4)
+    close(f"mixture_witness_{eps}",np.trace(W@Ke),4*eps)
+pcl=kappa/(4*wmax)
+n=math.ceil(math.log(.05)/math.log(1-pcl))
+test("zero_event_exact_n",n==188)
+test("zero_event_size",binom.cdf(0,n,pcl)<=.05)
+test("one_less_shot_insufficient",binom.cdf(0,n-1,pcl)>.05)
+metrics["four_level"]={"kappa":kappa,"p_classical_min":pcl,"ideal_zero_event_n95":n,
+                      "noise_mixture_threshold":kappa/4,"random_min_witness":min_random,
+                      "classical_pvalue_zero_188":float(binom.cdf(0,n,pcl)),
+                      "population_leakage_positive_bound_limit":pcl**2/8}
+# Verify the approximate population-preserving random-unitary bound on genuine unitary samples.
+for rep in range(12):
+    us=[]
+    for j in range(4):
+        h=rng.normal(size=(4,4))+1j*rng.normal(size=(4,4));h=(h+h.conj().T)/2
+        us.append(expm(-1j*.002*h))
+    weights=rng.dirichlet(np.ones(4))
+    surv=sum(p*abs(np.diag(u))**2 for p,u in zip(weights,us))
+    ell=1-surv.min()
+    rout=sum(p*u@rho@u.conj().T for p,u in zip(weights,us))
+    ds=[np.diag(np.diag(u)/abs(np.diag(u))) for u in us]
+    rdiag=sum(p*d@rho@d.conj().T for p,d in zip(weights,ds))
+    test(f"approximate_RU_distance_{rep}",td(rout,rdiag)<=np.sqrt(8*ell)+1e-12)
+    test(f"approximate_RU_effect_{rep}",np.trace(E@rout).real>=pcl-np.sqrt(8*ell)-1e-12)
+
+# Nonlinear ensemble inconsistency.
+x1=.8*np.exp(-1)+.2*(-np.exp(-1))
+x2=.5*.6*np.exp(-.36)+.5*.6*np.exp(-.36)
+close("initial_ensemble_same_bloch",.8-.2,.6)
+close("signalling_probability_difference",(x2-x1)/2,.0989390654698766)
+metrics["nonlinear_signal_probability_difference"]=(x2-x1)/2
+
+# Exact physical filtering sampler, no Euler step or negative probabilities.
+p0=np.array([.2,.3,.5]);aval=np.array([-1.,.2,1.3]);gamma=.7;nsamp=120000
+v0=np.dot(p0,aval**2)-np.dot(p0,aval)**2
+filter_metrics=[]
+for t in [.2,1.,4.]:
+    labels=rng.choice(3,size=nsamp,p=p0)
+    yt=2*np.sqrt(gamma)*aval[labels]*t+np.sqrt(t)*rng.normal(size=nsamp)
+    logs=np.log(p0)[None,:]+2*np.sqrt(gamma)*yt[:,None]*aval-2*gamma*aval**2*t
+    pp=np.exp(logs-logsumexp(logs,axis=1)[:,None])
+    close(f"filter_normalization_{t}",pp.sum(axis=1),np.ones(nsamp))
+    for a in range(3):
+        stderr=pp[:,a].std(ddof=1)/np.sqrt(nsamp)
+        test(f"filter_Born_martingale_{t}_{a}",abs(pp[:,a].mean()-p0[a])<=6*stderr+1e-4)
+    bound=0.
+    for a in range(3):
+        for b in range(a+1,3):
+            samples=np.sqrt(pp[:,a]*pp[:,b])
+            theory=np.sqrt(p0[a]*p0[b])*np.exp(-gamma*(aval[a]-aval[b])**2*t/2)
+            stderr=samples.std(ddof=1)/np.sqrt(nsamp)
+            test(f"filter_pair_decay_{t}_{a}_{b}",abs(samples.mean()-theory)<=6*stderr+1e-4)
+            bound+=theory
+    variance=pp@(aval**2)-(pp@aval)**2
+    test(f"filter_variance_bound_{t}",variance.mean()<=v0/(1+4*gamma*v0*t)+.004)
+    err=1-pp.max(axis=1)
+    test(f"filter_localization_bound_{t}",err.mean()<=bound+.002)
+    filter_metrics.append({"t":t,"mean_p":pp.mean(axis=0).tolist(),
+        "mean_variance":float(variance.mean()),"mean_unresolved":float(err.mean()),
+        "proved_unresolved_bound":float(bound)})
+metrics["exact_filtering"]=filter_metrics
+# Heating commutator checked on an interior state, not as false full finite CCR.
+a=np.diag(np.sqrt(np.arange(1,12)),1);q=(a+a.T)/np.sqrt(2);p=(a-a.T)/(1j*np.sqrt(2))
+H=(p@p+q@q)/2
+comm=lambda x,y:x@y-y@x
+close("position_noise_heating_interior",-comm(q,comm(q,H))[0,0]/2,.5)
+result={"summary":{"status":"all_passed","checks":len(checks),"seed":9062026,
+        "experimental_data":False,"formal_proof_assistant":False},
+        "environment":{"python":platform.python_version(),"numpy":np.__version__,"scipy":scipy.__version__},
+        "metrics":metrics,"checks":checks}
+print(json.dumps(result,ensure_ascii=False,indent=2))
+~~~
+
+Actual edition 3.0 result summary; the code remains unchanged in editions 3.1–3.7:
+
+~~~json
+{
+  "summary": {
+    "status": "all_passed",
+    "checks": 423,
+    "seed": 9062026,
+    "experimental_data": false,
+    "formal_proof_assistant": false
+  },
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0"
+  },
+  "metrics": {
+    "UV_three_scalar_survivors": [
+      [
+        3,
+        3,
+        1
+      ],
+      [
+        5,
+        5,
+        2
+      ]
+    ],
+    "five_color_coefficients": {
+      "bC": "25/3",
+      "bL": "1/2",
+      "low_b2": "-17/6"
+    },
+    "illustrative_flavor_lower_bound_over_delta_g_squared": 0.0008465021129667738,
+    "classical_Poisson_cycle": -2.598076211353316,
+    "four_level": {
+      "kappa": 0.1715728752538097,
+      "p_classical_min": 0.0158446719248555,
+      "ideal_zero_event_n95": 188,
+      "noise_mixture_threshold": 0.04289321881345243,
+      "random_min_witness": 0.17513824113339804,
+      "classical_pvalue_zero_188": 0.04965532503989115,
+      "population_leakage_positive_bound_limit": 3.1381703550788005e-05
+    },
+    "nonlinear_signal_probability_difference": 0.0989390654698766,
+    "exact_filtering": [
+      {
+        "t": 0.2,
+        "mean_p": [
+          0.19907099901956785,
+          0.29966622147876876,
+          0.5012627795016538
+        ],
+        "mean_variance": 0.5373589168712367,
+        "mean_unresolved": 0.40514124557832,
+        "proved_unresolved_bound": 0.7956706280194334
+      },
+      {
+        "t": 1.0,
+        "mean_p": [
+          0.19923581748426195,
+          0.30010875188535324,
+          0.5006554306303944
+        ],
+        "mean_variance": 0.2081865339186897,
+        "mean_unresolved": 0.21236481946950928,
+        "proved_unresolved_bound": 0.4512082432205973
+      },
+      {
+        "t": 4.0,
+        "mean_p": [
+          0.19889313068851436,
+          0.2987103279415504,
+          0.5023965413698956
+        ],
+        "mean_variance": 0.034615822280499135,
+        "mean_unresolved": 0.03598012354677628,
+        "proved_unresolved_bound": 0.10399501336004843
+      }
+    ]
+  }
+}
+~~~
+
+## D.4 verify_completion.py
+
+Code SHA-256: c2107ac235f0d87faee246412c6478a0405113cb0113b647027820106d95ad32
+
+~~~python
+"""Independent finite checks for the unified additions; no experimental data."""
+import itertools, json, platform
+import numpy as np
+import scipy
+from scipy.integrate import quad
+from scipy.linalg import expm
+from scipy.stats import binom
+
+rng=np.random.default_rng(9062048)
+checks=[];metrics={}
+def test(name,ok):
+    if not bool(ok): raise AssertionError(name)
+    checks.append(name)
+def close(name,a,b,tol=1e-10):
+    test(name,np.max(np.abs(np.asarray(a)-np.asarray(b)))<tol)
+
+# Spectral gauge transport and flux periodicity, not finite exact CCR.
+n=np.arange(-8,9);hbar=1.3;L=2.1;m=.7;q=.8
+for j in range(5):
+    theta,A,chi=rng.normal(size=3)
+    energy=lambda th,aa: (hbar*(2*np.pi*n+th)/L-q*aa)**2/(2*m)
+    close(f"ring_gauge_transport_{j}",energy(theta,A),energy(theta+q*chi*L/hbar,A+chi))
+    close(f"ring_spectral_relabel_{j}",energy(theta+2*np.pi,A)[:-1],energy(theta,A)[1:])
+close("Berry_Chern_integral",quad(lambda t:-.5*np.sin(t),0,np.pi)[0],-1)
+for theta in [.2,.9,2.5]:
+    close(f"Berry_patch_difference_{theta}",.5*(1+np.cos(theta))+.5*(1-np.cos(theta)),1)
+
+for ratio in [.2,.7,1.4,2.0]:
+    k=np.linspace(-np.pi,np.pi,10001)
+    z=ratio+np.exp(-1j*k)
+    winding=(np.unwrap(np.angle(z))[-1]-np.unwrap(np.angle(z))[0])/(2*np.pi)
+    close(f"SSH_winding_{ratio}",winding,-1 if ratio<1 else 0)
+for N,r in [(8,.4),(12,.7),(24,.8)]:
+    H=np.zeros((2*N,2*N))
+    for j in range(N):
+        H[2*j,2*j+1]=H[2*j+1,2*j]=r
+        if j+1<N:H[2*j+1,2*j+2]=H[2*j+2,2*j+1]=1.
+    norm=np.sqrt((1-r*r)/(1-r**(2*N)))
+    psi=np.zeros(2*N);psi[::2]=norm*(-r)**np.arange(N)
+    residual=norm*r**N
+    close(f"SSH_normalization_{N}",np.linalg.norm(psi),1)
+    close(f"SSH_finite_residual_{N}",np.linalg.norm(H@psi),residual)
+    test(f"SSH_near_zero_spectrum_{N}",min(abs(np.linalg.eigvalsh(H)))<=residual+1e-12)
+
+# Direct noncommutative plaquette gauge covariance using SU(2) matrices.
+pauli=[np.array([[0,1],[1,0]]),np.array([[0,-1j],[1j,0]]),np.diag([1,-1])]
+def su2():
+    v=rng.normal(size=3)
+    return expm(1j*sum(v[i]*pauli[i] for i in range(3)))
+for j in range(12):
+    U=[su2() for _ in range(4)];G=[su2() for _ in range(4)]
+    transformed=[G[k]@U[k]@G[(k+1)%4].conj().T for k in range(4)]
+    prod=lambda a:a[0]@a[1]@a[2]@a[3]
+    close(f"plaquette_gauge_covariance_{j}",prod(transformed),G[0]@prod(U)@G[0].conj().T)
+    close(f"plaquette_trace_invariance_{j}",np.trace(prod(transformed)),np.trace(prod(U)))
+F=(.3*pauli[0]+.7*pauli[2])/2;g=.8
+for a in [.1,.05,.025]:
+    exact=(1-np.trace(expm(1j*g*a*a*F)).real/2)*4/g**2
+    predicted=a**4*np.trace(F@F).real
+    test(f"Wilson_continuum_coefficient_{a}",abs(exact-predicted)/predicted<2e-6)
+
+configs=np.array(list(itertools.product([-1,1],repeat=4)))
+P=configs.prod(axis=1)
+for beta in [0,.2,.7,1.4,3.]:
+    weights=np.exp(beta*P);Z=weights.sum()
+    close(f"Z2_partition_{beta}",Z,16*np.cosh(beta))
+    close(f"Z2_plaquette_{beta}",weights@P/Z,np.tanh(beta))
+    close(f"Z2_link_expectation_{beta}",weights@configs/Z,np.zeros(4))
+for vertex in range(4):
+    gauged=configs.copy();gauged[:,vertex]*=-1;gauged[:,(vertex-1)%4]*=-1
+    close(f"Z2_vertex_gauge_{vertex}",gauged.prod(axis=1),P)
+
+# Enumerate all histories in a genuinely history-dependent binary model.
+p0=.13;ntrial=10;qalt=.02
+histories=[((),1.)]
+for t in range(ntrial):
+    new=[]
+    for hist,prob in histories:
+        pt=p0+.3*((sum(hist)+t)%3)/2
+        new += [(hist+(0,),prob*(1-pt)),(hist+(1,),prob*pt)]
+    histories=new
+distribution=np.zeros(ntrial+1)
+for hist,prob in histories:distribution[sum(hist)]+=prob
+close("history_tree_normalization",distribution.sum(),1)
+for k in range(ntrial+1):
+    test(f"dependent_binomial_domination_{k}",distribution[:k+1].sum()<=binom.cdf(k,ntrial,p0)+1e-12)
+for pt in [p0,.3,.7,1.]:
+    factor=pt*qalt/p0+(1-pt)*(1-qalt)/(1-p0)
+    close(f"supermartingale_conditional_identity_{pt}",factor,1+(pt-p0)*(qalt-p0)/(p0*(1-p0)))
+    test(f"supermartingale_factor_{pt}",factor<=1+1e-12)
+likelihood=lambda k:(qalt/p0)**k*((1-qalt)/(1-p0))**(ntrial-k)
+test("dependent_likelihood_mean",sum(distribution[k]*likelihood(k) for k in range(ntrial+1))<=1+1e-12)
+test("marginal_bound_counterexample",1-p0>(1-p0)**ntrial)
+pstar=(3-2*np.sqrt(2))/(4*(2+1/np.sqrt(2)))
+test("ideal_zero_188_valid",(1-pstar)**188<.05)
+test("ideal_zero_187_insufficient",(1-pstar)**187>.05)
+metrics.update({"ideal_pstar":pstar,"zero_event_188_pvalue":(1-pstar)**188,
+    "Berry_upper_band_Chern":-1,"history_model_zero_probability":distribution[0],
+    "history_null_zero_bound":(1-p0)**ntrial})
+result={"summary":{"status":"all_passed","checks":len(checks),"seed":9062048,
+    "experimental_data":False,"formal_proof_assistant":False},
+    "environment":{"python":platform.python_version(),"numpy":np.__version__,"scipy":scipy.__version__},
+    "metrics":metrics,"checks":checks}
+print(json.dumps(result,ensure_ascii=False,indent=2))
+~~~
+
+Actual edition 3.0 result summary; the code remains unchanged in editions 3.1–3.7:
+
+~~~json
+{
+  "summary": {
+    "status": "all_passed",
+    "checks": 97,
+    "seed": 9062048,
+    "experimental_data": false,
+    "formal_proof_assistant": false
+  },
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0"
+  },
+  "metrics": {
+    "ideal_pstar": 0.0158446719248555,
+    "zero_event_188_pvalue": 0.04965532503989112,
+    "Berry_upper_band_Chern": -1,
+    "history_model_zero_probability": 0.039600353867614305,
+    "history_null_zero_bound": 0.24842341419143568
+  }
+}
+~~~
+
+<a id="appendix-e"></a>
+
+# Appendix E. Reading editions, compilation, and revision contract
+
+## E.1 Complete semantic sources and derived reading editions
+
+The maintained Chinese source `UEOT_PHYSICS.md` and its complete English counterpart `UEOT_PHYSICS.en.md` each contain Chapters 0–66 and Appendices A–F. Their corresponding `.tex` and `.pdf` files are actual derivatives of those sources, with mathematical typesetting, a full chapter contents list, stable result IDs, original derivations, and embedded code. Edition 3.7 is a complete bilingual editorial revision of the third edition. The edition number identifies a publication; the text and evidence determine which physical questions are resolved or open.
+
+Both languages carry the same scientific commitments. Their prose is adapted for natural reading, while assumptions, formulas, constants, result IDs, source identities, and empirical qualifications are checked together. Mathematical symbols are not silently changed in translation. Purely linguistic labels inside formulas and recorded editorial corrections are listed in the fidelity report.
+
+## E.2 Reproducible compilation
+
+The existing builder `physics/qm/book/build/build_pdf.py` compiles one complete current source at a time. It does not invoke an old assembler or silently fetch another manuscript. It requires Pandoc, XeLaTeX, ordinary TeX packages, and suitable fonts. The default publication uses Noto Serif CJK SC for the main text and Noto Sans CJK SC for supplementary roles, including the inherited source-code comments. A local CJK font file can be supplied through `--font`. Shell escape is disabled. Font identity is part of the build receipt, not part of the physical theory.
+
+~~~bash
+python3 physics/qm/book/build/build_pdf.py \
+  --source physics/qm/book/UEOT_PHYSICS.md \
+  --output-dir /tmp/ueot-physics-zh-build
+
+python3 physics/qm/book/build/build_pdf.py \
+  --source physics/qm/book/UEOT_PHYSICS.en.md \
+  --output-dir /tmp/ueot-physics-en-build
+~~~
+
+The builder first checks consecutive chapters, matching appendices, stable anchors, internal links, and incomplete authoring placeholders. It produces a print source and LaTeX, then runs XeLaTeX three times to stabilize the contents list. Source, font, TeX, PDF, and logs are identified separately. The resulting pages must also be inspected for text, equations, tables, and code wrapping; a successful exit code alone does not complete the publication review.
+
+## E.3 Maintenance rules
+
+New theoretical work belongs in the relevant chapters and result registry. Code changes must be reflected in the formalization scope and actual receipts. Changes to cross-chapter dependencies belong in `CHAPTER_DOSSIER.json` and the review record. The publication's status depends on continuous content, traceable evidence, and completed checks; it does not require unresolved physical questions to be written as solved.
+
+PDF hashes are stored in external receipts rather than embedded in the PDFs themselves. Remote source commits, PRs, and main workflows have their own observed records. A local build is not called a remote execution. The current revision reuses the verified, unchanged scientific-source identities described in §C.8 and distinguishes them from the newly executed publication checks.
+
+## E.4 Rights and the scope of this revision
+
+The theoretical author is Degui Qian. The English translation, scientific editing, and three specialist reviews were produced with AI assistance under the author's project instructions; they do not establish outside endorsement. Historical expression already validly licensed under CC BY 4.0 retains that license, including its lawful adaptations. New edition-specific expression and translation are identified by this revision's source manifest and change history. This edition makes no additional blanket license grant for those new contributions; rights, to the extent they subsist, remain with the respective rightsholders pending an express grant. It makes no claim of exclusive ownership over physical laws, mathematical results, or third-party material.
+
+`PUBLICATION_RIGHTS.md` provides the edition-specific inventory and the preserved historical baseline. Referenced articles, figures, datasets, software, and dependencies retain their own terms. This revision does not redistribute new third-party figures or raw experimental data and does not change the licenses of Lean or numerical code. The same notice appears in the Chinese and English sources and their generated reading editions.
+
+<a id="appendix-f"></a>
+
+# Appendix F. Formalized scope and the complete named axiom audit
+
+## F.1 Verified identity and counts
+
+The inherited v31.9 proof evidence uses Lean 4.33.1 (compiler commit `819816b2e0a3bf405af45ae5c7af2491d8f5bee6`) and Mathlib `0df444a360eaa60ab8c11dca51a86af692955474`; the identities of nine Git dependencies matched the lock file. The unified build of 41 modules exited with code zero after 8805 jobs. The evidence checks 854 explicit theorems and 1123 unique fully named axiom reports. The only allowed foundations are `propext`, `Classical.choice`, and `Quot.sound`. Ordinary linter warnings are retained; a warning-free build is not claimed. These counts describe historical v31.9 acceptance; F.4–F.5 give the current v31.10 increment and totals. Publication revision 3.7 reuses the source-bound heavy proof evidence locally; any actual automatic CI has its own remote receipt.
+
+The six modules added in v31.9 contain 107 explicit theorems and 138 named audit targets; the 985 inherited requests were preserved. Explicit declarations, named nonlocal instances, and actual structure constructors are registered from the source. The 1123 targets consist of 854 explicit theorems and 269 other listed targets. They do not enumerate every compiler-generated internal constant and are not a count of new physical laws.
+
+| Module | Explicit theorems | Exact responsibility |
+|---|---:|---|
+| Basic | 7 | Density operators, positive trace, and normalization. |
+| Instrument | 14 | Actual Kraus branches, probabilities, and posteriors. |
+| Operational | 20 | All-record responses, response quotients, and reachable updates. |
+| Observables | 25 | Actual word effects, minimal closure, and finite generation. |
+| FiniteCoordinates | 21 | Local presentations, all-word coordinates, and closed posterior updates. |
+| Adaptive | 11 | Complete finite adaptive trees, leaf laws, and coordinates. |
+| Weighted | 16 | Nonnegative weights converted to ordinary complex Kraus operations. |
+| Ragged | 19 | Outcome-dependent finite indices and preservation under zero-padding. |
+| Exact | 24 | Injectivity and algebraic preservation of complex rational interpretation. |
+| ExactCertificate | 9 | Soundness of a finite computable checker and instance interfaces. |
+| Transport | 4 | Scalar instances of existing Core error transport. |
+| Selector | 11 | Conditional generation selection over all integers and premise-deletion counterexamples. |
+| Spectrum | 15 | Actual finite spectrum rows mapped to anomaly and effective-window budgets. |
+| Effects | 30 | All actual effects, branch/channel pullbacks, and word-effect bounds. |
+| Stability | 30 | All-effect pseudodistance, channel defects, trajectories, and posteriors. |
+| Mixture | 23 | Actual mixtures, exact TV bounds, and rational budgets. |
+| Cesaro | 23 | Matrix-average residuals, compactness, continuity, and stationary subsequences. |
+| Survival | 32 | Actual diagonal survival records and use of Core QSD/Doob results. |
+| ClassicalSector | 24 | The full classical simplex, all effects, and purification obstruction for every finite ancilla. |
+| CorePurificationBoundary | 32 | One actual Core kernel, terminal quotient, safe trajectory, and purification separation. |
+| RealLocalTomography | 37 | Indistinguishability under all real local effects and joint/complex-local deletion witnesses. |
+| QuantumDoob | 32 | Actual Doob completeness, finite conditioning, and stationarity with additional spectral premises. |
+| RecordProbability | 9 | TV attained by actual finite record events and equivalence over all events. |
+| RectangularChannels | 29 | Rectangular Kraus channels, arbitrary finite ancillary amplification, partial trace, and effect contraction. |
+| QuantumPurification | 25 | Full convex extremality, Gram factors derived from PSD, and purification of every finite density operator. |
+| OperationalSystems | 25 | Three complete state-space presentations, seven laws, and independent candidate principles. |
+| ClassicalQuantumMemory | 39 | Actual joint records, finite-tree memory, all-event TV, and label defects. |
+| QuantumDoobModel | 17 | Extraction of the previous nondiagonal model and explicit public states; no independent new physics. |
+| QuantumDoobDynamics | 43 | Closed forms for specified success records, exact conditional-state distance decay, and probability limits. |
+| QuantumSeparation | 9 | The Hermitian real span of valid effects, full density separation, and the zero-distance criterion. |
+| ComplexLocalTomography | 11 | Actual product effects, real/imaginary matrix units, and local tomography for arbitrary joint complex states. |
+| PureStateCharacterization | 5 | Full convex-pure-state vector characterization from a PSD positive-column decomposition. |
+| PurificationUniqueness | 22 | Equal-Gram support isometry, common-ancilla unitaries, rectangular embeddings, and actual tensor actions. |
+| HistoryChannels | 23 | Actual history-reading channels, common PSD block weights, zero blocks, and valid effect bounds. |
+| ActionRecordBudget | 31 | Original fixed-depth protocol semantics, step/action error sums, and complete-record TV. |
+| QuantumTraceDistance | 25 | Positive/negative Hermitian spectral parts, valid optimal effects, and the half-trace-absolute-value formula. |
+| BinaryDiscrimination | 9 | Optimal equal-prior binary discrimination, PSD-support certificates, and actual unitary spectral data. |
+| PurificationIsometry | 9 | Necessary and sufficient ancillary dimension order, directed isometries, and actual purification maps. |
+| PurificationDimension | 14 | Positive spectral-support Gram construction, rank lower bounds, and the exact minimum-ancilla criterion. |
+| StoppingProtocols | 21 | Actual Option instruments, causal absorbing control, original-leaf encoding, and all-matrix record identities. |
+| StoppingRecordBudget | 29 | Isometric extension of valid effects, transport to original-leaf joint states, and active-weight action budgets. |
+
+## F.2 Historical execution and evidence reuse
+
+The v31.9 local acceptance actually built the main package on the frozen 98-file source set, checked all 1123 public named audits, and compiled the three newly added witnesses. Those three witnesses contain 105 concrete theorems, 39 definitions, three abbreviations, and 147 named audit targets.
+
+The ten older witnesses retain their original actual receipts for 193 theorems, 71 definitions, five abbreviations, and 269 audits. The v31.9 reuse review checked 86 unchanged scientific inputs, 56 Core sources, nine dependency versions, and the actual transitive import closures of the older witnesses and certificates. New umbrella imports, the public audit list, and witness registration/selection interfaces were outside those older mathematical import closures. Six exact certificates with 42 audits, four classes of rejected proofs asserting a true checker result with successful proofs that the checker returns false on the same corrupted data, 100 runtime methods, and four demonstrations therefore retained the verified v31.8 local and main evidence. They were not reported as rerun in that local acceptance. `legacy-reuse.json` records the exact scope and identities. The 757 inherited text-program checks separately retain their edition 3.0 execution identity.
+
+The complete witness registry has thirteen groups: 298 concrete theorems, 110 definitions, eight abbreviations, and 416 named targets. The ten inherited and three newly executed groups are distinguished; their counts are not added to the main package's 854/1123. The new witnesses cover a noncommuting rational distance, optimal binary decisions, a complex-phase restriction negative control, matrix direction and minimum rank under different ancilla dimensions, an exact stopped-tree budget of 1/16, and record TV equal to one for different stopping rules. These are formal mathematical instances, not new experiments.
+
+The v31.9 source-set SHA-256 is `bf026d2a1f7d8c8bd1f9f6c1ad9015aa20bdae6bd36b9d432c7ce6f0581effc0`; its 98 scientific input files retained their bytes through that acceptance. The local source/olean binding and the 56 recursively imported Core sources have their own receipts. This is not reacceptance of all 106 Core responsibilities. Local execution, historical reuse, PR/main CI, and later metadata are distinct evidence events.
+
+For this publication, the repository was refreshed to `3d443ec29eb17af1fc00699a74e2d42d73516d81`. [PR #356](https://github.com/MurphyHoops/UEOT/pull/356) had already merged source `27f6ac776c562512451000d5957087d3ecdcd086` as main `e9b61ca9c35955028c4bfa425dfa278fd1864029`. The actual [PR run 39569411258](https://github.com/MurphyHoops/UEOT/actions/runs/39569411258) and independent [main push run 39570687643](https://github.com/MurphyHoops/UEOT/actions/runs/39570687643) both report successful runtime and Lean jobs. All 98 scientific files and all 56 imported Core files match their recorded hashes in the source commit, merged commit, and refreshed main. The older `LOCAL_VERIFIED_REMOTE_PENDING` metadata is therefore a historical checkpoint, not the observed publication state. This review checked repository bytes and workflow/job metadata; it did not inspect the archived artifact ZIPs or rerun the heavy proof suite.
+
+## F.3 All 1123 named axiom requests
+
+The following reproduces every request from the actual v31.9 `AxiomAudit.lean`, in order. Each request must have a unique identically named actual output. Missing or duplicate outputs, unreviewed axioms, or build errors are failures. The declaration types and premises in Chapters 49–65 determine scientific scope. The literal request blocks remain unchanged in this bilingual publication.
+
+### F.3.1 Requests 1–60
+
+~~~text
+UEOTQM.Density.ext
+UEOTQM.mass_nonneg
+UEOTQM.trace_im_eq_zero
+UEOTQM.mass_smul
+UEOTQM.Density.mass_one
+UEOTQM.mass_eq_zero_iff
+UEOTQM.normalize_matrix
+UEOTQM.krausMap_posSemidef
+UEOTQM.krausMap_smul
+UEOTQM.trace_krausMap
+UEOTQM.Instrument.branch_posSemidef
+UEOTQM.Instrument.branch_smul
+UEOTQM.Instrument.sum_trace_branch
+UEOTQM.Instrument.sum_mass_branch
+UEOTQM.Instrument.probability_nonneg
+UEOTQM.Instrument.sum_probability
+UEOTQM.Instrument.probability_le_one
+UEOTQM.Instrument.posterior_matrix
+UEOTQM.Instrument.zero_probability_iff_zero_branch
+UEOTQM.ancillaKrausMap_posSemidef
+UEOTQM.ancillaKrausMap_entry
+UEOTQM.recordOperator_posSemidef
+UEOTQM.recordOperator_smul
+UEOTQM.response_nonneg
+UEOTQM.response_nil
+UEOTQM.response_singleton
+UEOTQM.totalRecordMass_eq_mass
+UEOTQM.totalRecordMass_density
+UEOTQM.responseClass_surjective
+UEOTQM.existsUnique_responseDecoder
+UEOTQM.probability_eq_of_response_eq
+UEOTQM.response_posterior
+UEOTQM.posterior_response_eq
+UEOTQM.nextResponse_eq_none_iff
+UEOTQM.nextResponse_eq_of_response_eq
+UEOTQM.nextResponse_inputFiberCompatible
+UEOTQM.existsUnique_reachableResponseUpdate
+UEOTQM.Selector.selector_finite_bounds
+UEOTQM.Selector.selects_three_without_atomicity
+UEOTQM.Selector.dropping_color_bound_admits_four_families
+UEOTQM.Selector.dropping_weak_budget_admits_six_families
+UEOTQM.Selector.dropping_cubic_equation_admits_one_family
+UEOTQM.Selector.dropping_nonempty_family_count_admits_empty_spectrum
+UEOTQM.Selector.homogeneous_leptons_recover_cubic_equation
+UEOTQM.Selector.mixed_lepton_template_admits_two_families
+UEOTQM.Selector.cubic_cancellation_replicates
+UEOTQM.Selector.replicated_weak_screening
+UEOTQM.Selector.two_or_more_three_family_packets_fail_weak_budget
+UEOTQM.Transport.scalarBudget_zero
+UEOTQM.Transport.scalarBudget_succ
+UEOTQM.Transport.scalarBudget_nonneg
+UEOTQM.Transport.scalar_transport_certificate
+UEOTQM.normalize
+UEOTQM.Instrument.posterior
+UEOTQM.nextReachableResponse_map_val
+UEOTQM.nextReachableResponse_eq_of_response_eq
+UEOTQM.nextReachableResponse_inputFiberCompatible
+UEOTQM.existsUnique_closedReachableUpdate
+UEOTQM.nextReachableResponse
+UEOTQM.pairing_one
+~~~
+
+### F.3.2 Requests 61–120
+
+~~~text
+UEOTQM.pairing_zero_left
+UEOTQM.pairing_add_left
+UEOTQM.pairing_smul_left
+UEOTQM.pairing_smul_right
+UEOTQM.pairing_sum_left
+UEOTQM.heisenberg_zero
+UEOTQM.heisenberg_add
+UEOTQM.heisenberg_smul
+UEOTQM.trace_heisenberg
+UEOTQM.pairing_heisenberg
+UEOTQM.heisenberg_posSemidef
+UEOTQM.recordEffect_posSemidef
+UEOTQM.recordEffect_isHermitian
+UEOTQM.mass_recordOperator_eq_pairing
+UEOTQM.response_eq_pairing
+UEOTQM.recordEffect_mem
+UEOTQM.one_mem_observableSpace
+UEOTQM.recordEffect_mem_of_closed
+UEOTQM.observableSpace_le_of_closed
+UEOTQM.observableSpace_pullbackClosed
+UEOTQM.isHermitian_of_mem_observableSpace
+UEOTQM.response_eq_iff_pairing_observableSpace
+UEOTQM.observableSpace_finiteDimensional
+UEOTQM.exists_finite_wordEffect_generators
+UEOTQM.FiniteObservablePresentation.observable_mem_span
+UEOTQM.FiniteObservablePresentation.observable_unit
+UEOTQM.FiniteObservablePresentation.one_mem_span
+UEOTQM.FiniteObservablePresentation.pullback_observable
+UEOTQM.FiniteObservablePresentation.span_pullbackClosed
+UEOTQM.FiniteObservablePresentation.span_eq_observableSpace
+UEOTQM.FiniteObservablePresentation.recordEffect_mem_span
+UEOTQM.FiniteObservablePresentation.operatorCoordinates_unit
+UEOTQM.FiniteObservablePresentation.coordinates_unit
+UEOTQM.FiniteObservablePresentation.coordinates_apply
+UEOTQM.FiniteObservablePresentation.coordinates_eq_iff_response_eq
+UEOTQM.FiniteObservablePresentation.operatorCoordinates_branch
+UEOTQM.FiniteObservablePresentation.operatorCoordinates_record
+UEOTQM.FiniteObservablePresentation.response_eq_recordCoordinates_unit
+UEOTQM.FiniteObservablePresentation.probability_eq_applyBranch_unit
+UEOTQM.FiniteObservablePresentation.coordinates_posterior
+UEOTQM.FiniteObservablePresentation.coordinates_posterior_eq_normalizedBranch
+UEOTQM.FiniteObservablePresentation.normalizedBranch_mem_range
+UEOTQM.FiniteObservablePresentation.closedCoordinateUpdate_map_val
+UEOTQM.FiniteObservablePresentation.coordinateUpdate_eq_posterior
+UEOTQM.FiniteObservablePresentation.coordinateUpdate_eq_none_iff
+UEOTQM.Adaptive.Protocol.word_injective
+UEOTQM.Adaptive.sum_leafWeight
+UEOTQM.Adaptive.leafWeight_nonneg
+UEOTQM.Adaptive.leafProbability_eq_response
+UEOTQM.Adaptive.leafProbability_nonneg
+UEOTQM.Adaptive.sum_leafProbability
+UEOTQM.Adaptive.leafProbability_le_one
+UEOTQM.Adaptive.leafProbability_eq_of_response_eq
+UEOTQM.Adaptive.leafProbability_eq_recordCoordinates_unit
+UEOTQM.Adaptive.leafProbability_eq_of_coordinates_eq
+UEOTQM.Adaptive.leafProbability_posterior
+UEOTQM.Spectrum.quarkCount_le_length
+UEOTQM.Spectrum.familyCubic_eq_counts
+UEOTQM.Spectrum.leptonCount_eq_length_of_homogeneous
+UEOTQM.Spectrum.ExtraMatter.screening_nonneg
+~~~
+
+### F.3.3 Requests 121–180
+
+~~~text
+UEOTQM.Spectrum.extraScreening_nonneg
+UEOTQM.Spectrum.familyScreening_eq_of_active
+UEOTQM.Spectrum.selector_anomaly_of_spectrum
+UEOTQM.Spectrum.selector_budget_of_spectrum
+UEOTQM.Spectrum.spectrum_selects_three
+UEOTQM.Spectrum.canonical_rows_and_higgs
+UEOTQM.Spectrum.mixed_two_family_rows
+UEOTQM.Spectrum.replicated_six_family_rows
+UEOTQM.Spectrum.compensated_one_family_rows
+UEOTQM.Spectrum.zero_anomaly_unit_one_family_rows
+UEOTQM.Spectrum.extra_screening_closes_positive_window
+UEOTQM.pairingLinear
+UEOTQM.heisenbergLinear
+UEOTQM.FiniteObservablePresentation.closedCoordinateUpdate
+UEOTQM.Adaptive.Protocol.leafFintype
+UEOTQM.Spectrum.oneHiggs
+UEOTQM.Spectrum.twentyHiggs
+UEOTQM.sqrt_smul_gram
+UEOTQM.sqrt_smul_krausTerm
+UEOTQM.sqrt_smul_heisenbergTerm
+UEOTQM.krausMap_sqrtWeightedKraus
+UEOTQM.heisenberg_sqrtWeightedKraus
+UEOTQM.weightedKrausMap_posSemidef
+UEOTQM.weightedHeisenberg_posSemidef
+UEOTQM.pairing_weightedKrausMap
+UEOTQM.WeightedInstrument.toInstrument
+UEOTQM.WeightedInstrument.toInstrument_kraus
+UEOTQM.WeightedInstrument.toInstrument_branch
+UEOTQM.WeightedInstrument.toInstrument_heisenberg
+UEOTQM.WeightedInstrument.toInstrument_complete
+UEOTQM.WeightedInstrument.branch_posSemidef
+UEOTQM.WeightedInstrument.toInstrument_probability
+UEOTQM.WeightedInstrument.sum_mass_branch
+UEOTQM.WeightedInstrument.toInstrument_posterior_matrix
+UEOTQM.zeroExtend_apply
+UEOTQM.zeroExtend_of_not_mem_range
+UEOTQM.sum_zeroExtend
+UEOTQM.zeroExtend_nonneg
+UEOTQM.weightedKrausMap_zeroExtend
+UEOTQM.weightedHeisenberg_zeroExtend
+UEOTQM.weightedGram_zeroExtend
+UEOTQM.RaggedInstrument.toWeighted
+UEOTQM.RaggedInstrument.toWeighted_weight_apply
+UEOTQM.RaggedInstrument.toWeighted_kraus_apply
+UEOTQM.RaggedInstrument.toWeighted_branch
+UEOTQM.RaggedInstrument.toWeighted_toInstrument_branch
+UEOTQM.RaggedInstrument.toWeighted_heisenberg
+UEOTQM.RaggedInstrument.toWeighted_toInstrument_kraus_of_not_mem_range
+UEOTQM.WeightedInstrument.padOutcomes
+UEOTQM.WeightedInstrument.padOutcomes_branch_apply
+UEOTQM.WeightedInstrument.padOutcomes_branch_of_not_mem_range
+UEOTQM.WeightedInstrument.padOutcomes_heisenberg_apply
+UEOTQM.WeightedInstrument.padOutcomes_heisenberg_of_not_mem_range
+UEOTQM.WeightedInstrument.padOutcomes_probability_apply
+UEOTQM.WeightedInstrument.padOutcomes_probability_of_not_mem_range
+UEOTQM.Exact.MatrixData.ext
+UEOTQM.Exact.MatrixData.toMatrix_re
+UEOTQM.Exact.MatrixData.toMatrix_im
+UEOTQM.Exact.MatrixData.toMatrix_injective
+UEOTQM.Exact.MatrixData.toMatrix_eq_iff
+~~~
+
+### F.3.4 Requests 181–240
+
+~~~text
+UEOTQM.Exact.MatrixData.toMatrix_zero
+UEOTQM.Exact.MatrixData.toMatrix_one
+UEOTQM.Exact.MatrixData.toMatrix_add
+UEOTQM.Exact.MatrixData.toMatrix_neg
+UEOTQM.Exact.MatrixData.toMatrix_sub
+UEOTQM.Exact.MatrixData.toMatrix_mul
+UEOTQM.Exact.MatrixData.toMatrix_adjoint
+UEOTQM.Exact.MatrixData.toMatrix_scale
+UEOTQM.Exact.MatrixData.toMatrix_sum
+UEOTQM.Exact.MatrixData.instDecidableEq
+UEOTQM.Exact.toMatrix_weightedBranch
+UEOTQM.Exact.toMatrix_weightedPullback
+UEOTQM.Exact.toMatrix_weightedCompleteness
+UEOTQM.Exact.toMatrix_weightedBranch_univ
+UEOTQM.Exact.toMatrix_weightedPullback_univ
+UEOTQM.Exact.Examples.imaginaryUnit_square_exact
+UEOTQM.Exact.Examples.imaginaryUnit_adjoint_exact
+UEOTQM.Exact.Examples.imaginaryUnit_square_complex
+UEOTQM.Exact.Examples.hadamard_complete_exact
+UEOTQM.Exact.Examples.hadamard_complete_complex
+UEOTQM.ExactCertificate.check_eq_true_iff
+UEOTQM.ExactCertificate.check_sound
+UEOTQM.ExactCertificate.branch_eq_exact
+UEOTQM.ExactCertificate.heisenberg_eq_exact
+UEOTQM.ExactCertificate.exactRecordEffect_toMatrix
+UEOTQM.ExactCertificate.basis_toMatrix
+UEOTQM.ExactCertificate.coordinates_eq_iff_response_eq
+UEOTQM.ExactCertificate.response_eq_recordCoordinates_unit
+UEOTQM.ExactCertificate.adaptive_leafProbability_eq
+UEOTQM.ExactCertificate.conditionsDecidable
+UEOTQM.ExactCertificate.weightedInstrument
+UEOTQM.ExactCertificate.instrumentFamily
+UEOTQM.ExactCertificate.presentation
+UEOTQM.pairing_sub_left
+UEOTQM.pairing_add_right
+UEOTQM.pairing_sum_right
+UEOTQM.pairing_nonneg
+UEOTQM.Effect.ext
+UEOTQM.Effect.zero
+UEOTQM.Effect.one
+UEOTQM.Effect.complement
+UEOTQM.Effect.zero_matrix
+UEOTQM.Effect.one_matrix
+UEOTQM.Effect.complement_matrix
+UEOTQM.Effect.pairing_nonneg
+UEOTQM.Effect.pairing_le_mass
+UEOTQM.Effect.probability
+UEOTQM.Effect.probability_nonneg
+UEOTQM.Effect.probability_le_one
+UEOTQM.Effect.probability_zero
+UEOTQM.Effect.probability_one
+UEOTQM.Effect.probability_complement
+UEOTQM.Instrument.channel
+UEOTQM.Instrument.channel_posSemidef
+UEOTQM.Instrument.trace_channel
+UEOTQM.Instrument.channelState
+UEOTQM.Instrument.channelState_matrix
+UEOTQM.Instrument.pullbackEffects
+UEOTQM.Instrument.pullbackEffects_matrix
+UEOTQM.Instrument.pairing_pullbackEffects
+~~~
+
+### F.3.5 Requests 241–300
+
+~~~text
+UEOTQM.Instrument.pullbackEffect
+UEOTQM.Instrument.pairing_pullbackEffect
+UEOTQM.Instrument.probability_channelState
+UEOTQM.Instrument.branchEffect
+UEOTQM.Instrument.branchEffect_matrix
+UEOTQM.Instrument.pairing_branchEffect
+UEOTQM.Instrument.probability_branchEffect_one
+UEOTQM.Instrument.probability_posterior
+UEOTQM.recordTest
+UEOTQM.recordTest_matrix
+UEOTQM.recordEffect_complement_posSemidef
+UEOTQM.response_eq_effect_probability
+UEOTQM.response_le_one
+UEOTQM.effectGapSet
+UEOTQM.Effect.probability_abs_sub_le_one
+UEOTQM.effectGapSet_nonempty
+UEOTQM.effectGapSet_bddAbove
+UEOTQM.effectDistance
+UEOTQM.Effect.probability_sub_le_effectDistance
+UEOTQM.effectDistance_nonneg
+UEOTQM.effectDistance_le_iff
+UEOTQM.effectDistance_le_one
+UEOTQM.effectDistance_self
+UEOTQM.effectDistance_comm
+UEOTQM.effectDistance_triangle
+UEOTQM.effectDistance_eq_zero_iff
+UEOTQM.response_sub_le_effectDistance
+UEOTQM.channelDefect
+UEOTQM.channelDefect_bddAbove
+UEOTQM.channelDefect_nonneg
+UEOTQM.channelDefect_le_one
+UEOTQM.effectDistance_le_channelDefect
+UEOTQM.channelDefect_self
+UEOTQM.Instrument.channelState_effectDistance_le
+UEOTQM.Instrument.probability_sub_le_effectDistance
+UEOTQM.Instrument.probability_pos_of_effectDistance_lt
+UEOTQM.Instrument.channelState_perturbation_bound
+UEOTQM.normalized_probability_difference_le
+UEOTQM.Instrument.posterior_effectDistance_le
+UEOTQM.Instrument.posterior_effectDistance_le_of_probability_lower_bound
+UEOTQM.channelTrajectory
+UEOTQM.channelTrajectory_zero
+UEOTQM.channelTrajectory_succ
+UEOTQM.channelTrajectory_transport_certificate
+UEOTQM.scalarBudget_one_eq_sum
+UEOTQM.channelTrajectory_effectDistance_le_sum
+UEOTQM.channelTrajectory_response_sub_le_sum
+UEOTQM.Mixture.tv
+UEOTQM.Mixture.tv_nonneg
+UEOTQM.Mixture.tv_self
+UEOTQM.Mixture.tv_comm
+UEOTQM.Mixture.tv_le_one
+UEOTQM.Mixture.expectation_sub_le_tv
+UEOTQM.Mixture.density
+UEOTQM.Mixture.density_matrix
+UEOTQM.Mixture.probability_density
+UEOTQM.Mixture.density_weight_change_le_tv
+UEOTQM.Mixture.density_fixed_weights_le_sum
+UEOTQM.Mixture.density_joint_change_le
+UEOTQM.Mixture.weightedInstrument
+~~~
+
+### F.3.6 Requests 301–360
+
+~~~text
+UEOTQM.Mixture.instrument
+UEOTQM.Mixture.instrument_kraus
+UEOTQM.Mixture.instrument_branch
+UEOTQM.Mixture.instrument_heisenberg
+UEOTQM.Mixture.instrument_channel
+UEOTQM.Mixture.instrument_channelState
+UEOTQM.Mixture.channelDefect_weight_change_le_tv
+UEOTQM.Mixture.channelDefect_fixed_weights_le_sum
+UEOTQM.Mixture.channelDefect_joint_change_le
+UEOTQM.Mixture.RationalWeights.toWeights
+UEOTQM.Mixture.rationalTV
+UEOTQM.Mixture.tv_toWeights
+UEOTQM.Mixture.density_weight_change_le_rational_budget
+UEOTQM.Mixture.channelDefect_weight_change_le_rational_budget
+UEOTQM.Mixture.channelDefect_fixed_weights_le_rational_sum
+UEOTQM.Mixture.rationalJointBudget
+UEOTQM.Mixture.channelDefect_joint_change_le_rational_budget
+UEOTQM.Cesaro.iterateState
+UEOTQM.Cesaro.iterateState_zero
+UEOTQM.Cesaro.iterateState_succ
+UEOTQM.Cesaro.channelLinear
+UEOTQM.Cesaro.channelLinear_apply
+UEOTQM.Cesaro.orbitSum
+UEOTQM.Cesaro.orbitSum_positive
+UEOTQM.Cesaro.orbitSum_trace
+UEOTQM.Cesaro.averageState
+UEOTQM.Cesaro.averageState_matrix
+UEOTQM.Cesaro.orbitSum_telescope
+UEOTQM.Cesaro.matrix_residual
+UEOTQM.Cesaro.pairing_sub_right
+UEOTQM.Cesaro.probability_residual
+UEOTQM.Cesaro.probability_residual_le
+UEOTQM.Cesaro.effectDistance_residual_le
+UEOTQM.Cesaro.density_operatorNorm_le_one
+UEOTQM.Cesaro.densityMatrices
+UEOTQM.Cesaro.densityMatrices_closed
+UEOTQM.Cesaro.densityMatrices_compact
+UEOTQM.Cesaro.continuous_channel
+UEOTQM.Cesaro.matrix_residual_norm_le
+UEOTQM.Cesaro.averageSequence
+UEOTQM.Cesaro.matrix_residual_tendsto_zero
+UEOTQM.Cesaro.subsequence_limit_invariant
+UEOTQM.Cesaro.subsequence_limit_density
+UEOTQM.Cesaro.exists_stationary_subsequence
+UEOTQM.Cesaro.exists_stationary_of_density
+UEOTQM.Cesaro.normalizedIdentity
+UEOTQM.Cesaro.exists_stationary
+UEOTQM.Survival.diagonalOperator
+UEOTQM.Survival.diagonalOperator_posSemidef
+UEOTQM.Survival.mass_diagonalOperator
+UEOTQM.Survival.diagonalOperator_injective
+UEOTQM.Survival.diagonalOperator_smul
+UEOTQM.Survival.diagonalDensity
+UEOTQM.Survival.diagonalDensity_matrix
+UEOTQM.Survival.matrixUnit
+UEOTQM.Survival.matrixUnit_gram
+UEOTQM.Survival.matrixUnit_sandwich
+UEOTQM.Survival.measurePrepare
+UEOTQM.Survival.measurePrepare_apply
+UEOTQM.Survival.measurePrepare_diagonal
+~~~
+
+### F.3.7 Requests 361–420
+
+~~~text
+UEOTQM.Survival.measurePrepare_gram
+UEOTQM.Survival.failureKernel
+UEOTQM.Survival.failureKernel_nonneg
+UEOTQM.Survival.outcomeKernel
+UEOTQM.Survival.outcomeKernel_complete
+UEOTQM.Survival.weightedInstrument
+UEOTQM.Survival.instrument
+UEOTQM.Survival.instrument_branch
+UEOTQM.Survival.success_branch
+UEOTQM.Survival.rowApply_nonneg
+UEOTQM.Survival.success_probability
+UEOTQM.Survival.success_posterior_matrix
+UEOTQM.Survival.killedIterate
+UEOTQM.Survival.killedIterate_posSemidef
+UEOTQM.Survival.killedIterate_diagonal
+UEOTQM.Survival.survivalMass
+UEOTQM.Survival.survivalMass_eq_response
+UEOTQM.Survival.survivalMass_diagonal
+UEOTQM.Survival.conditionalState
+UEOTQM.Survival.qsd_killedIterate
+UEOTQM.Survival.qsd_survival_pow
+UEOTQM.Survival.qsd_survival_pos
+UEOTQM.Survival.qsd_conditionalState
+UEOTQM.Survival.qsd_rate_le_one
+UEOTQM.Survival.doobTransform_nonneg
+UEOTQM.Survival.doobInstrument
+UEOTQM.Survival.doobDensity
+UEOTQM.Survival.doob_success_branch
+UEOTQM.Survival.doob_success_probability
+UEOTQM.Survival.doob_killedIterate
+UEOTQM.Survival.doob_survivalMass
+UEOTQM.Survival.doob_conditionalState
+UEOTQM.Classical.State
+UEOTQM.Classical.Effect
+UEOTQM.Classical.Effect.mk
+UEOTQM.Classical.state_ext
+UEOTQM.Classical.evaluate
+UEOTQM.Classical.evaluate_nonneg
+UEOTQM.Classical.evaluate_le_one
+UEOTQM.Classical.indicator
+UEOTQM.Classical.evaluate_indicator
+UEOTQM.Classical.all_effects_separate
+UEOTQM.Classical.dirac
+UEOTQM.Classical.dirac_weight
+UEOTQM.Classical.evaluate_dirac
+UEOTQM.Classical.mix
+UEOTQM.Classical.mix_weight
+UEOTQM.Classical.halfMix
+UEOTQM.Classical.halfMix_weight
+UEOTQM.Classical.pushforward
+UEOTQM.Classical.pushforward_weight
+UEOTQM.Classical.pushforward_dirac
+UEOTQM.Classical.pushforward_halfMix
+UEOTQM.Classical.marginalLeft
+UEOTQM.Classical.marginalLeft_weight
+UEOTQM.Classical.marginalLeft_eq_pushforward
+UEOTQM.Classical.marginalLeft_dirac
+UEOTQM.Classical.marginalLeft_halfMix
+UEOTQM.Classical.IsPure
+UEOTQM.Classical.dirac_isPure
+~~~
+
+### F.3.8 Requests 421–480
+
+~~~text
+UEOTQM.Classical.dirac_ne
+UEOTQM.Classical.halfMix_not_pure
+UEOTQM.Classical.halfRow
+UEOTQM.Classical.halfRow_weight
+UEOTQM.Classical.marginalLeft_halfRow
+UEOTQM.Classical.no_pure_extension_halfMix
+UEOTQM.Classical.attach
+UEOTQM.Classical.marginalLeft_attach
+UEOTQM.Classical.dirac_has_pure_extension
+UEOTQM.Classical.toPMF
+UEOTQM.Classical.toPMF_apply
+UEOTQM.Classical.toPMF_apply_toReal
+UEOTQM.Classical.toPMF_dirac
+UEOTQM.Classical.toPMF_pushforward
+UEOTQM.Classical.rowState
+UEOTQM.Classical.rowState_weight
+UEOTQM.Classical.stepState
+UEOTQM.Classical.stepState_dirac
+UEOTQM.Classical.toPMF_stepState
+UEOTQM.CorePurificationBoundary.Micro
+UEOTQM.CorePurificationBoundary.fullyObservedSurvivalModel
+UEOTQM.CorePurificationBoundary.terminal_eq_iff
+UEOTQM.CorePurificationBoundary.Terminal
+UEOTQM.CorePurificationBoundary.terminalFintype
+UEOTQM.CorePurificationBoundary.terminalMeasurableSpace
+UEOTQM.CorePurificationBoundary.terminalControl
+UEOTQM.CorePurificationBoundary.terminalGood
+UEOTQM.CorePurificationBoundary.terminalControl_source
+UEOTQM.CorePurificationBoundary.terminalControl_reward
+UEOTQM.CorePurificationBoundary.terminalControl_optimalValue
+UEOTQM.CorePurificationBoundary.terminalControl_injective
+UEOTQM.CorePurificationBoundary.terminalGood_source
+UEOTQM.CorePurificationBoundary.viable_all_horizons
+UEOTQM.CorePurificationBoundary.initial_support_viable
+UEOTQM.CorePurificationBoundary.firstRow
+UEOTQM.CorePurificationBoundary.firstRow_halfMix
+UEOTQM.CorePurificationBoundary.firstQuotientState
+UEOTQM.CorePurificationBoundary.quotient_support_distinct
+UEOTQM.CorePurificationBoundary.firstQuotientState_halfMix
+UEOTQM.CorePurificationBoundary.firstQuotientState_not_pure
+UEOTQM.CorePurificationBoundary.firstQuotientState_no_pure_extension
+UEOTQM.CorePurificationBoundary.sourcePMF
+UEOTQM.CorePurificationBoundary.piStar
+UEOTQM.CorePurificationBoundary.actualPathLaw
+UEOTQM.CorePurificationBoundary.sourcePMF_toReal
+UEOTQM.CorePurificationBoundary.sourcePMF_firstRow
+UEOTQM.CorePurificationBoundary.sourcePMF_rowState
+UEOTQM.CorePurificationBoundary.piStar_preserves
+UEOTQM.CorePurificationBoundary.actualPath_all_times_safe
+UEOTQM.CorePurificationBoundary.actualPath_first_quotient_marginal
+UEOTQM.CorePurificationBoundary.false_action_destructive
+UEOTQM.CorePurificationBoundary.FiniteCoreSlice
+UEOTQM.CorePurificationBoundary.finiteCoreSlice_holds
+UEOTQM.CorePurificationBoundary.classical_purification_separation
+UEOTQM.CorePurificationBoundary.RestrictedTerminal
+UEOTQM.CorePurificationBoundary.restrictedTerminalFintype
+UEOTQM.CorePurificationBoundary.restrictedFirstQuotientState
+UEOTQM.CorePurificationBoundary.restricted_support_merge
+UEOTQM.CorePurificationBoundary.restrictedFirstQuotientState_dirac
+UEOTQM.CorePurificationBoundary.restrictedFirstQuotientState_pure
+~~~
+
+### F.3.9 Requests 481–540
+
+~~~text
+UEOTQM.RealLocalTomography.IsReal
+UEOTQM.RealLocalTomography.symmetric_of_real_hermitian
+UEOTQM.RealLocalTomography.productEffect
+UEOTQM.RealLocalTomography.productEffect_matrix
+UEOTQM.RealLocalTomography.plusProjector
+UEOTQM.RealLocalTomography.minusProjector
+UEOTQM.RealLocalTomography.plusProjector_hermitian
+UEOTQM.RealLocalTomography.minusProjector_hermitian
+UEOTQM.RealLocalTomography.plusProjector_square
+UEOTQM.RealLocalTomography.minusProjector_square
+UEOTQM.RealLocalTomography.plusProjector_mul_minusProjector
+UEOTQM.RealLocalTomography.one_sub_plusProjector
+UEOTQM.RealLocalTomography.plusProjector_posSemidef
+UEOTQM.RealLocalTomography.minusProjector_posSemidef
+UEOTQM.RealLocalTomography.involutionEffect
+UEOTQM.RealLocalTomography.Qubit
+UEOTQM.RealLocalTomography.TwoQubit
+UEOTQM.RealLocalTomography.pauliY
+UEOTQM.RealLocalTomography.parity
+UEOTQM.RealLocalTomography.pauliY_hermitian
+UEOTQM.RealLocalTomography.pauliY_square
+UEOTQM.RealLocalTomography.parity_hermitian
+UEOTQM.RealLocalTomography.parity_square
+UEOTQM.RealLocalTomography.pauliY_trace
+UEOTQM.RealLocalTomography.parity_trace
+UEOTQM.RealLocalTomography.parity_isReal
+UEOTQM.RealLocalTomography.rhoPlus
+UEOTQM.RealLocalTomography.rhoMinus
+UEOTQM.RealLocalTomography.rhoPlus_matrix
+UEOTQM.RealLocalTomography.rhoMinus_matrix
+UEOTQM.RealLocalTomography.rhoPlus_isReal
+UEOTQM.RealLocalTomography.rhoMinus_isReal
+UEOTQM.RealLocalTomography.rhoPlus_symmetric
+UEOTQM.RealLocalTomography.rhoMinus_symmetric
+UEOTQM.RealLocalTomography.density_difference
+UEOTQM.RealLocalTomography.trace_mul_pauliY_zero
+UEOTQM.RealLocalTomography.trace_product_density_difference_zero
+UEOTQM.RealLocalTomography.all_real_product_probabilities_equal
+UEOTQM.RealLocalTomography.jointTest
+UEOTQM.RealLocalTomography.jointTest_matrix
+UEOTQM.RealLocalTomography.jointTest_isReal
+UEOTQM.RealLocalTomography.jointTest_probability_plus
+UEOTQM.RealLocalTomography.jointTest_probability_minus
+UEOTQM.RealLocalTomography.rhoPlus_ne_rhoMinus
+UEOTQM.RealLocalTomography.real_local_tomography_fails
+UEOTQM.RealLocalTomography.complexLocalTest
+UEOTQM.RealLocalTomography.complexLocalTest_not_real
+UEOTQM.RealLocalTomography.complex_product_probability_plus
+UEOTQM.RealLocalTomography.complex_product_probability_minus
+UEOTQM.RealLocalTomography.complex_product_distinguishes
+UEOTQM.QuantumDoob.successOperator
+UEOTQM.QuantumDoob.successOperator_zero
+UEOTQM.QuantumDoob.successOperator_succ
+UEOTQM.QuantumDoob.successOperator_smul
+UEOTQM.QuantumDoob.successOperator_posSemidef
+UEOTQM.QuantumDoob.eigen_successOperator
+UEOTQM.QuantumDoob.successMass
+UEOTQM.QuantumDoob.successMass_eq_response
+UEOTQM.QuantumDoob.eigen_successMass
+UEOTQM.QuantumDoob.eigen_successMass_pos
+~~~
+
+### F.3.10 Requests 541–600
+
+~~~text
+UEOTQM.QuantumDoob.conditionalState
+UEOTQM.QuantumDoob.eigen_conditionalState
+UEOTQM.QuantumDoob.eigen_rate_nonneg
+UEOTQM.QuantumDoob.eigen_rate_le_one
+UEOTQM.QuantumDoob.InvertibleFilter
+UEOTQM.QuantumDoob.InvertibleFilter.mk
+UEOTQM.QuantumDoob.InvertibleFilter.apply
+UEOTQM.QuantumDoob.InvertibleFilter.unapply
+UEOTQM.QuantumDoob.InvertibleFilter.metric
+UEOTQM.QuantumDoob.InvertibleFilter.apply_smul
+UEOTQM.QuantumDoob.InvertibleFilter.unapply_apply
+UEOTQM.QuantumDoob.InvertibleFilter.apply_unapply
+UEOTQM.QuantumDoob.InvertibleFilter.apply_posSemidef
+UEOTQM.QuantumDoob.InvertibleFilter.mass_apply_pos
+UEOTQM.QuantumDoob.InvertibleFilter.state
+UEOTQM.QuantumDoob.InvertibleFilter.state_matrix
+UEOTQM.QuantumDoob.InvertibleFilter.mass_apply_eq_pairing
+UEOTQM.QuantumDoob.InvertibleFilter.metric_conjugate
+UEOTQM.QuantumDoob.transformed_gram
+UEOTQM.QuantumDoob.transformed_map
+UEOTQM.QuantumDoob.doob_complete
+UEOTQM.QuantumDoob.doobWeighted
+UEOTQM.QuantumDoob.doobInstrument
+UEOTQM.QuantumDoob.doob_branch
+UEOTQM.QuantumDoob.doob_branch_apply
+UEOTQM.QuantumDoob.doob_branch_state
+UEOTQM.QuantumDoob.doob_channelState
+UEOTQM.QuantumDoob.doob_successOperator_apply
+UEOTQM.QuantumDoob.eigenmetric_successMass
+UEOTQM.QuantumDoob.eigenmetric_successMass_pos
+UEOTQM.QuantumDoob.doob_finite_conditioning
+UEOTQM.QuantumDoob.doob_successOperator_state
+UEOTQM.QuantumDoob.doob_successMass_state
+UEOTQM.RecordProbability.eventProbability
+UEOTQM.RecordProbability.positiveEvent
+UEOTQM.RecordProbability.eventProbability_empty
+UEOTQM.RecordProbability.eventProbability_univ
+UEOTQM.RecordProbability.eventProbability_nonneg
+UEOTQM.RecordProbability.eventProbability_le_one
+UEOTQM.RecordProbability.eventProbability_eq_indicator
+UEOTQM.RecordProbability.eventProbability_abs_sub_le_tv
+UEOTQM.RecordProbability.positiveEvent_sub_eq_tv
+UEOTQM.RecordProbability.positiveEvent_abs_sub_eq_tv
+UEOTQM.RecordProbability.tv_le_iff_events
+UEOTQM.RectangularChannel
+UEOTQM.RectangularChannel.operator
+UEOTQM.RectangularChannel.operator_posSemidef
+UEOTQM.RectangularChannel.operator_zero
+UEOTQM.RectangularChannel.operator_add
+UEOTQM.RectangularChannel.operator_smul
+UEOTQM.RectangularChannel.operator_real_smul
+UEOTQM.RectangularChannel.operatorLinear
+UEOTQM.RectangularChannel.operator_sum
+UEOTQM.RectangularChannel.trace_operator
+UEOTQM.RectangularChannel.mass_operator
+UEOTQM.RectangularChannel.state
+UEOTQM.RectangularChannel.state_matrix
+UEOTQM.RectangularChannel.adjoint
+UEOTQM.RectangularChannel.adjoint_posSemidef
+UEOTQM.RectangularChannel.adjoint_one
+~~~
+
+### F.3.11 Requests 601–660
+
+~~~text
+UEOTQM.RectangularChannel.adjoint_sub
+UEOTQM.RectangularChannel.trace_adjoint
+UEOTQM.RectangularChannel.pullbackEffect
+UEOTQM.RectangularChannel.pullbackEffect_matrix
+UEOTQM.RectangularChannel.probability_state
+UEOTQM.RectangularChannel.state_effectDistance_le
+UEOTQM.RectangularChannel.identity
+UEOTQM.RectangularChannel.identity_operator
+UEOTQM.RectangularChannel.identity_state
+UEOTQM.RectangularChannel.comp
+UEOTQM.RectangularChannel.comp_operator
+UEOTQM.RectangularChannel.comp_state
+UEOTQM.RectangularChannel.amplify
+UEOTQM.RectangularChannel.amplify_posSemidef
+UEOTQM.RectangularChannel.amplify_operator_apply
+UEOTQM.RectangularChannel.discardRightKraus
+UEOTQM.RectangularChannel.discardRight
+UEOTQM.RectangularChannel.discardRight_operator_apply
+UEOTQM.RectangularChannel.discardLeftKraus
+UEOTQM.RectangularChannel.discardLeft
+UEOTQM.RectangularChannel.discardLeft_operator_apply
+UEOTQM.RectangularChannel.defect
+UEOTQM.RectangularChannel.defect_bddAbove
+UEOTQM.RectangularChannel.defect_nonneg
+UEOTQM.RectangularChannel.defect_le_one
+UEOTQM.RectangularChannel.state_distance_le_defect
+UEOTQM.RectangularChannel.perturbation_bound
+UEOTQM.QuantumPurification.mix
+UEOTQM.QuantumPurification.mix_matrix
+UEOTQM.QuantumPurification.IsPure
+UEOTQM.QuantumPurification.outer
+UEOTQM.QuantumPurification.outer_apply
+UEOTQM.QuantumPurification.outer_positive
+UEOTQM.QuantumPurification.outer_hermitian
+UEOTQM.QuantumPurification.outer_trace
+UEOTQM.QuantumPurification.outer_square
+UEOTQM.QuantumPurification.outer_sandwich
+UEOTQM.QuantumPurification.vectorState
+UEOTQM.QuantumPurification.vectorState_matrix
+UEOTQM.QuantumPurification.exists_gram
+UEOTQM.QuantumPurification.positive_compression_zero
+UEOTQM.QuantumPurification.density_eq_vector_of_compression_zero
+UEOTQM.QuantumPurification.vectorState_isPure
+UEOTQM.QuantumPurification.vectorize
+UEOTQM.QuantumPurification.vectorize_outer_trace
+UEOTQM.QuantumPurification.discard_vectorize_outer
+UEOTQM.QuantumPurification.gram
+UEOTQM.QuantumPurification.gram_spec
+UEOTQM.QuantumPurification.purificationVector
+UEOTQM.QuantumPurification.purificationVector_normalized
+UEOTQM.QuantumPurification.purification
+UEOTQM.QuantumPurification.purification_matrix
+UEOTQM.QuantumPurification.purification_isPure
+UEOTQM.QuantumPurification.purification_marginal
+UEOTQM.QuantumPurification.exists_purification
+UEOTQM.QuantumPurification.density_empty_elim
+UEOTQM.QuantumPurification.product
+UEOTQM.QuantumPurification.product_matrix
+UEOTQM.QuantumPurification.discard_product
+UEOTQM.QuantumPurification.probability_mix
+~~~
+
+### F.3.12 Requests 661–720
+
+~~~text
+UEOTQM.QuantumPurification.state_mix
+UEOTQM.OperationalSystems.FiniteSystem
+UEOTQM.OperationalSystems.FiniteSystem.of
+UEOTQM.OperationalSystems.FiniteSystem.product
+UEOTQM.OperationalSystems.Presentation
+UEOTQM.OperationalSystems.Presentation.discardRight
+UEOTQM.OperationalSystems.Laws
+UEOTQM.OperationalSystems.IsPure
+UEOTQM.OperationalSystems.Purifies
+UEOTQM.OperationalSystems.PurificationExistence
+UEOTQM.OperationalSystems.LocalTomography
+UEOTQM.OperationalSystems.ClassicalModel.product
+UEOTQM.OperationalSystems.ClassicalModel.productEffect
+UEOTQM.OperationalSystems.ClassicalModel.act
+UEOTQM.OperationalSystems.ClassicalModel.probability_mix
+UEOTQM.OperationalSystems.ClassicalModel.product_probability
+UEOTQM.OperationalSystems.ClassicalModel.marginal_product
+UEOTQM.OperationalSystems.ClassicalModel.act_discard
+UEOTQM.OperationalSystems.ClassicalModel.act_mix
+UEOTQM.OperationalSystems.ClassicalModel.act_identity
+UEOTQM.OperationalSystems.ClassicalModel.act_comp
+UEOTQM.OperationalSystems.classicalModel
+UEOTQM.OperationalSystems.classical_laws
+UEOTQM.OperationalSystems.classical_pure_iff
+UEOTQM.OperationalSystems.classical_discard_eq
+UEOTQM.OperationalSystems.classical_not_purification
+UEOTQM.OperationalSystems.coreSystem
+UEOTQM.OperationalSystems.core_first_marginal_no_purifies
+UEOTQM.OperationalSystems.QuantumProcess
+UEOTQM.OperationalSystems.QuantumModel.trace_product_im_zero
+UEOTQM.OperationalSystems.QuantumModel.product_probability
+UEOTQM.OperationalSystems.complexModel
+UEOTQM.OperationalSystems.complex_laws
+UEOTQM.OperationalSystems.complex_pure_iff
+UEOTQM.OperationalSystems.complex_purification
+UEOTQM.OperationalSystems.RealModel.IsRealMatrix
+UEOTQM.OperationalSystems.RealModel.real_add
+UEOTQM.OperationalSystems.RealModel.real_smul
+UEOTQM.OperationalSystems.RealModel.real_mul
+UEOTQM.OperationalSystems.RealModel.real_conjTranspose
+UEOTQM.OperationalSystems.RealModel.real_kronecker
+UEOTQM.OperationalSystems.RealModel.State
+UEOTQM.OperationalSystems.RealModel.Effect
+UEOTQM.OperationalSystems.RealModel.mix
+UEOTQM.OperationalSystems.RealModel.product
+UEOTQM.OperationalSystems.RealModel.productEffect
+UEOTQM.OperationalSystems.RealModel.Process
+UEOTQM.OperationalSystems.RealModel.operator_real
+UEOTQM.OperationalSystems.RealModel.act
+UEOTQM.OperationalSystems.RealModel.identity
+UEOTQM.OperationalSystems.RealModel.compose
+UEOTQM.OperationalSystems.RealModel.discardProcess
+UEOTQM.OperationalSystems.realModel
+UEOTQM.OperationalSystems.real_laws
+UEOTQM.OperationalSystems.real_not_localTomography
+UEOTQM.ClassicalQuantumMemory.taggedKraus
+UEOTQM.ClassicalQuantumMemory.taggedKraus_gram
+UEOTQM.ClassicalQuantumMemory.taggedKraus_conjugation
+UEOTQM.ClassicalQuantumMemory.block
+UEOTQM.ClassicalQuantumMemory.block_apply_same
+~~~
+
+### F.3.13 Requests 721–780
+
+~~~text
+UEOTQM.ClassicalQuantumMemory.block_apply_ne
+UEOTQM.ClassicalQuantumMemory.trace_block
+UEOTQM.ClassicalQuantumMemory.channel
+UEOTQM.ClassicalQuantumMemory.channel_operator_apply
+UEOTQM.ClassicalQuantumMemory.channel_amplify_operator_apply
+UEOTQM.ClassicalQuantumMemory.channel_operator_eq_block
+UEOTQM.ClassicalQuantumMemory.state
+UEOTQM.ClassicalQuantumMemory.state_matrix
+UEOTQM.ClassicalQuantumMemory.discard_record_operator
+UEOTQM.ClassicalQuantumMemory.discard_record_state
+UEOTQM.ClassicalQuantumMemory.discard_memory_operator
+UEOTQM.ClassicalQuantumMemory.discard_memory_state_matrix
+UEOTQM.ClassicalQuantumMemory.state_block_mass
+UEOTQM.ClassicalQuantumMemory.positive_block_posterior
+UEOTQM.ClassicalQuantumMemory.zero_probability_iff_zero_block
+UEOTQM.ClassicalQuantumMemory.eventEffect
+UEOTQM.ClassicalQuantumMemory.eventEffect_matrix
+UEOTQM.ClassicalQuantumMemory.eventEffect_pairing_block
+UEOTQM.ClassicalQuantumMemory.weights
+UEOTQM.ClassicalQuantumMemory.weights_weight
+UEOTQM.ClassicalQuantumMemory.event_probability
+UEOTQM.ClassicalQuantumMemory.record_tv_le_joint_distance
+UEOTQM.ClassicalQuantumMemory.defect
+UEOTQM.ClassicalQuantumMemory.perturbation_bound
+UEOTQM.ClassicalQuantumMemory.record_tv_perturbation_bound
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.Leaf
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.KrausPath
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.pathKraus
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.path_complete
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.path_branch_eq_recordOperator
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.channel
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.channel_operator_apply
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.channel_amplify_operator_apply
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.channel_operator_eq_block
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.state
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.state_matrix
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.discard_record_operator
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.discard_memory_operator
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.discard_memory_state_matrix
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.state_block_mass
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.zero_probability_iff_zero_block
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.weights
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.weights_weight
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.event_probability
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.record_tv_le_joint_distance
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.defect
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.perturbation_bound
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.record_tv_perturbation_bound
+UEOTQM.QuantumDoobModel.successK
+UEOTQM.QuantumDoobModel.failureK
+UEOTQM.QuantumDoobModel.success_gram
+UEOTQM.QuantumDoobModel.failure_gram
+UEOTQM.QuantumDoobModel.sourceK
+UEOTQM.QuantumDoobModel.source_complete
+UEOTQM.QuantumDoobModel.sourceInstrument
+UEOTQM.QuantumDoobModel.source_branch_formula
+UEOTQM.QuantumDoobModel.rhoMatrix
+UEOTQM.QuantumDoobModel.rhoMatrix_positive
+UEOTQM.QuantumDoobModel.rhoMatrix_trace
+UEOTQM.QuantumDoobModel.rho
+~~~
+
+### F.3.14 Requests 781–840
+
+~~~text
+UEOTQM.QuantumDoobModel.S
+UEOTQM.QuantumDoobModel.T
+UEOTQM.QuantumDoobModel.inverse_mul
+UEOTQM.QuantumDoobModel.mul_inverse
+UEOTQM.QuantumDoobModel.filter
+UEOTQM.QuantumDoobModel.metric_exact
+UEOTQM.QuantumDoobModel.source_right_eigen
+UEOTQM.QuantumDoobModel.source_left_eigen
+UEOTQM.QuantumDoobModel.filtered_mass_exact
+UEOTQM.QuantumDoobModel.plusMatrix
+UEOTQM.QuantumDoobModel.filtered_state_exact
+UEOTQM.QuantumDoobModel.plus
+UEOTQM.QuantumDoobModel.plus_matrix
+UEOTQM.QuantumDoobModel.transformedInstrument
+UEOTQM.QuantumDoobModel.transformed_branch_formula
+UEOTQM.QuantumDoobModel.success_kraus_noncommuting
+UEOTQM.QuantumDoobModel.input_coherence_retained
+UEOTQM.QuantumDoobDynamics.decay
+UEOTQM.QuantumDoobDynamics.decay_zero
+UEOTQM.QuantumDoobDynamics.decay_pos
+UEOTQM.QuantumDoobDynamics.decay_le_one
+UEOTQM.QuantumDoobDynamics.decay_succ
+UEOTQM.QuantumDoobDynamics.decay_tendsto
+UEOTQM.QuantumDoobDynamics.effectDistance_eq_of_matrix_sub_smul
+UEOTQM.QuantumDoobDynamics.doob_branch_formula
+UEOTQM.QuantumDoobDynamics.doob_branch_trace
+UEOTQM.QuantumDoobDynamics.doob_successOperator_formula
+UEOTQM.QuantumDoobDynamics.doob_iterateState_matrix
+UEOTQM.QuantumDoobDynamics.doob_stationary_plus
+UEOTQM.QuantumDoobDynamics.doob_stationary_unique
+UEOTQM.QuantumDoobDynamics.doob_effectDistance_exact
+UEOTQM.QuantumDoobDynamics.doob_matrix_tendsto
+UEOTQM.QuantumDoobDynamics.filterMass
+UEOTQM.QuantumDoobDynamics.pullbackWeight
+UEOTQM.QuantumDoobDynamics.normalizer
+UEOTQM.QuantumDoobDynamics.filterMass_diag
+UEOTQM.QuantumDoobDynamics.filterMass_trace
+UEOTQM.QuantumDoobDynamics.filterMass_metric_trace
+UEOTQM.QuantumDoobDynamics.filterMass_bounds
+UEOTQM.QuantumDoobDynamics.pullbackWeight_bounds
+UEOTQM.QuantumDoobDynamics.normalizer_bounds
+UEOTQM.QuantumDoobDynamics.normalizer_pos
+UEOTQM.QuantumDoobDynamics.unapply_plus
+UEOTQM.QuantumDoobDynamics.source_successOperator_formula
+UEOTQM.QuantumDoobDynamics.source_successOperator_density
+UEOTQM.QuantumDoobDynamics.source_successMass_formula
+UEOTQM.QuantumDoobDynamics.source_response_formula
+UEOTQM.QuantumDoobDynamics.source_successMass_pos
+UEOTQM.QuantumDoobDynamics.source_successMass_bounds
+UEOTQM.QuantumDoobDynamics.source_conditionalState_matrix
+UEOTQM.QuantumDoobDynamics.conditioned
+UEOTQM.QuantumDoobDynamics.conditioned_matrix
+UEOTQM.QuantumDoobDynamics.conditioned_matrix_affine
+UEOTQM.QuantumDoobDynamics.conditioned_matrix_sub
+UEOTQM.QuantumDoobDynamics.conditioned_effectDistance_exact
+UEOTQM.QuantumDoobDynamics.conditioned_effectDistance_le
+UEOTQM.QuantumDoobDynamics.normalizer_tendsto
+UEOTQM.QuantumDoobDynamics.conditionalWeight_tendsto
+UEOTQM.QuantumDoobDynamics.conditioned_matrix_tendsto
+UEOTQM.QuantumDoobDynamics.conditioned_effectDistance_tendsto
+~~~
+
+### F.3.15 Requests 841–900
+
+~~~text
+UEOTQM.QuantumDoobDynamics.source_successMass_tendsto_zero
+UEOTQM.QuantumDoobDynamics.filterMass_rho
+UEOTQM.QuantumDoobDynamics.pullbackWeight_rho
+UEOTQM.QuantumDoobDynamics.normalizer_rho
+UEOTQM.QuantumDoobDynamics.source_successMass_rho
+UEOTQM.OperationalSystems.finiteSystemCoeSort
+UEOTQM.ClassicalQuantumMemory.ProtocolMemory.krausPathFintype
+UEOTQM.OperationalSystems.FiniteSystem.finite
+UEOTQM.OperationalSystems.FiniteSystem.decidableEq
+UEOTQM.RectangularChannel.mk
+UEOTQM.OperationalSystems.FiniteSystem.mk
+UEOTQM.OperationalSystems.Presentation.mk
+UEOTQM.OperationalSystems.Laws.mk
+UEOTQM.OperationalSystems.QuantumProcess.mk
+UEOTQM.OperationalSystems.RealModel.Process.mk
+UEOTQM.QuantumSeparation.boundedHermitianEffect
+UEOTQM.QuantumSeparation.boundedHermitianEffect_matrix
+UEOTQM.QuantumSeparation.boundedHermitianEffect_affine
+UEOTQM.QuantumSeparation.exists_effect_affine_of_hermitian
+UEOTQM.QuantumSeparation.hermitian_mem_real_span_effects
+UEOTQM.QuantumSeparation.pairing_eq_of_all_effect_pairings_eq
+UEOTQM.QuantumSeparation.pairing_sub_right
+UEOTQM.QuantumSeparation.density_eq_of_all_effect_probabilities_eq
+UEOTQM.QuantumSeparation.density_eq_iff_all_effect_probabilities_eq
+UEOTQM.QuantumSeparation.effectDistance_eq_zero_iff_density_eq
+UEOTQM.ComplexLocalTomography.symmetricUnit
+UEOTQM.ComplexLocalTomography.imaginaryUnit
+UEOTQM.ComplexLocalTomography.symmetricUnit_hermitian
+UEOTQM.ComplexLocalTomography.imaginaryUnit_hermitian
+UEOTQM.ComplexLocalTomography.sub_kronecker
+UEOTQM.ComplexLocalTomography.kronecker_sub
+UEOTQM.ComplexLocalTomography.pairing_symmetricUnit
+UEOTQM.ComplexLocalTomography.pairing_imaginaryUnit
+UEOTQM.ComplexLocalTomography.symmetricUnit_product
+UEOTQM.ComplexLocalTomography.imaginaryUnit_product
+UEOTQM.ComplexLocalTomography.hermitian_product_pairing_eq
+UEOTQM.ComplexLocalTomography.density_eq_of_all_product_effect_probabilities_eq
+UEOTQM.ComplexLocalTomography.complex_localTomography
+UEOTQM.QuantumPurification.outer_real_smul
+UEOTQM.QuantumPurification.gram_eq_sum_outer
+UEOTQM.QuantumPurification.IsPure.normalize_eq_of_positive_summand
+UEOTQM.QuantumPurification.IsPure.exists_vector
+UEOTQM.QuantumPurification.isPure_iff_exists_vector
+UEOTQM.QuantumPurification.inner_matrix_image
+UEOTQM.QuantumPurification.norm_matrix_image_eq_of_gram
+UEOTQM.QuantumPurification.exists_unitary_of_column_gram
+UEOTQM.QuantumPurification.exists_auxiliary_unitary_of_gram
+UEOTQM.QuantumPurification.auxiliary_action_apply
+UEOTQM.QuantumPurification.auxiliary_action_vectorize
+UEOTQM.QuantumPurification.outer_mulVec
+UEOTQM.QuantumPurification.exists_auxiliary_unitary_of_equal_marginal
+UEOTQM.QuantumPurification.pure_states_unitarily_equivalent
+UEOTQM.QuantumPurification.auxiliary_tensor_isometry
+UEOTQM.QuantumPurification.auxiliaryEmbeddingChannel
+UEOTQM.QuantumPurification.auxiliaryEmbeddingChannel_operator
+UEOTQM.QuantumPurification.auxiliaryEmbeddingChannel_operator_apply
+UEOTQM.QuantumPurification.auxiliaryEmbeddingChannel_discard_operator
+UEOTQM.QuantumPurification.auxiliaryEmbeddingChannel_discard_state
+UEOTQM.QuantumPurification.auxiliaryEmbeddingChannel_preserves_purity
+UEOTQM.QuantumPurification.auxiliaryInl
+~~~
+
+### F.3.16 Requests 901–960
+
+~~~text
+UEOTQM.QuantumPurification.auxiliaryInr
+UEOTQM.QuantumPurification.auxiliaryInl_isometry
+UEOTQM.QuantumPurification.auxiliaryInr_isometry
+UEOTQM.QuantumPurification.extendAuxiliaryLeft
+UEOTQM.QuantumPurification.extendAuxiliaryRight
+UEOTQM.QuantumPurification.extendAuxiliaryLeft_pure
+UEOTQM.QuantumPurification.extendAuxiliaryRight_pure
+UEOTQM.QuantumPurification.extendAuxiliaryLeft_marginal
+UEOTQM.QuantumPurification.extendAuxiliaryRight_marginal
+UEOTQM.QuantumPurification.pure_states_common_extension_unitary
+UEOTQM.HistoryChannels.principal
+UEOTQM.HistoryChannels.principal_apply
+UEOTQM.HistoryChannels.principal_posSemidef
+UEOTQM.HistoryChannels.sum_mass_principal
+UEOTQM.HistoryChannels.weight
+UEOTQM.HistoryChannels.weight_nonneg
+UEOTQM.HistoryChannels.sum_weight
+UEOTQM.HistoryChannels.zero_weight_iff_zero_principal
+UEOTQM.HistoryChannels.restrictEffect
+UEOTQM.HistoryChannels.restrictEffect_matrix
+UEOTQM.HistoryChannels.pairing_block
+UEOTQM.HistoryChannels.readKraus
+UEOTQM.HistoryChannels.readKraus_gram
+UEOTQM.HistoryChannels.readKraus_conjugation
+UEOTQM.HistoryChannels.controlled
+UEOTQM.HistoryChannels.controlled_operator_apply
+UEOTQM.HistoryChannels.controlled_operator_eq_block
+UEOTQM.HistoryChannels.pairing_operator_difference_le_mass_mul_defect
+UEOTQM.HistoryChannels.controlled_state_distance_le_weighted_defect
+UEOTQM.HistoryChannels.controlled_state_distance_le_uniform
+UEOTQM.HistoryChannels.controlled_defect_le_uniform
+UEOTQM.HistoryChannels.weights
+UEOTQM.HistoryChannels.weights_weight
+UEOTQM.HistoryChannels.event_probability
+UEOTQM.HistoryChannels.record_tv_le_joint_distance
+UEOTQM.HistoryChannels.relabelKraus
+UEOTQM.HistoryChannels.relabelKraus_gram
+UEOTQM.HistoryChannels.relabel
+UEOTQM.HistoryChannels.relabel_operator_apply
+UEOTQM.HistoryChannels.relabel_state_matrix
+UEOTQM.HistoryChannels.relabel_state_distance
+UEOTQM.ActionRecordBudget.History
+UEOTQM.ActionRecordBudget.Controller
+UEOTQM.ActionRecordBudget.Controller.dropLast
+UEOTQM.ActionRecordBudget.Controller.shift
+UEOTQM.ActionRecordBudget.Controller.dropLast_shift
+UEOTQM.ActionRecordBudget.Controller.word
+UEOTQM.ActionRecordBudget.Controller.word_length
+UEOTQM.ActionRecordBudget.Controller.protocol
+UEOTQM.ActionRecordBudget.Controller.leafEquiv
+UEOTQM.ActionRecordBudget.Controller.protocol_word_eq
+UEOTQM.ActionRecordBudget.Controller.snoc_head
+UEOTQM.ActionRecordBudget.Controller.tail_snoc
+UEOTQM.ActionRecordBudget.Controller.word_snoc
+UEOTQM.ActionRecordBudget.Controller.truncate
+UEOTQM.ActionRecordBudget.Controller.truncate_last
+UEOTQM.ActionRecordBudget.Controller.truncate_dropLast
+UEOTQM.ActionRecordBudget.initialEquiv
+UEOTQM.ActionRecordBudget.extendEquiv
+UEOTQM.ActionRecordBudget.step
+~~~
+
+### F.3.17 Requests 961–1020
+
+~~~text
+UEOTQM.ActionRecordBudget.step_defect_le_uniform
+UEOTQM.ActionRecordBudget.record_defect_self
+UEOTQM.ActionRecordBudget.step_state_distance_le_weighted
+UEOTQM.ActionRecordBudget.step_state_distance_le_uniform
+UEOTQM.ActionRecordBudget.step_operator_apply
+UEOTQM.ActionRecordBudget.step_operator_eq_block
+UEOTQM.ActionRecordBudget.run
+UEOTQM.ActionRecordBudget.recordOperator_append
+UEOTQM.ActionRecordBudget.run_matrix
+UEOTQM.ActionRecordBudget.run_eq_protocol_state
+UEOTQM.ActionRecordBudget.terminal_memory_matrix
+UEOTQM.ActionRecordBudget.weight_run
+UEOTQM.ActionRecordBudget.weight_run_leaf
+UEOTQM.ActionRecordBudget.actionCost
+UEOTQM.ActionRecordBudget.actionCost_nonneg
+UEOTQM.ActionRecordBudget.actionCost_castSucc
+UEOTQM.ActionRecordBudget.actionCost_last
+UEOTQM.ActionRecordBudget.run_succ_distance_le
+UEOTQM.ActionRecordBudget.run_distance_le_actionCost_sum
+UEOTQM.ActionRecordBudget.actionCost_le
+UEOTQM.ActionRecordBudget.run_distance_le_budget_sum
+UEOTQM.ActionRecordBudget.record_tv_le_actionCost_sum
+UEOTQM.ActionRecordBudget.record_tv_le_budget_sum
+UEOTQM.ActionRecordBudget.protocol_record_tv_eq
+UEOTQM.ActionRecordBudget.protocol_record_tv_le_budget_sum
+UEOTQM.QuantumTraceDistance.unitaryDiagonal
+UEOTQM.QuantumTraceDistance.unitaryDiagonal_add
+UEOTQM.QuantumTraceDistance.unitaryDiagonal_sub
+UEOTQM.QuantumTraceDistance.unitaryDiagonal_mul
+UEOTQM.QuantumTraceDistance.unitaryDiagonal_zero
+UEOTQM.QuantumTraceDistance.unitaryDiagonal_one
+UEOTQM.QuantumTraceDistance.unitaryDiagonal_posSemidef
+UEOTQM.QuantumTraceDistance.mass_unitaryDiagonal
+UEOTQM.QuantumTraceDistance.positivePart
+UEOTQM.QuantumTraceDistance.negativePart
+UEOTQM.QuantumTraceDistance.positivePart_posSemidef
+UEOTQM.QuantumTraceDistance.negativePart_posSemidef
+UEOTQM.QuantumTraceDistance.positivePart_sub_negativePart
+UEOTQM.QuantumTraceDistance.max_add_max_neg
+UEOTQM.QuantumTraceDistance.abs_eq_positivePart_add_negativePart
+UEOTQM.QuantumTraceDistance.traceAbsolute
+UEOTQM.QuantumTraceDistance.traceAbsolute_nonneg
+UEOTQM.QuantumTraceDistance.traceAbsolute_eq_sum_abs_eigenvalues
+UEOTQM.QuantumTraceDistance.positiveSpectrumEffect
+UEOTQM.QuantumTraceDistance.positiveSpectrumEffect_matrix
+UEOTQM.QuantumTraceDistance.positiveSpectrumEffect_idempotent
+UEOTQM.QuantumTraceDistance.positiveSpectrumEffect_mul_positivePart
+UEOTQM.QuantumTraceDistance.positiveSpectrumEffect_mul_negativePart
+UEOTQM.QuantumTraceDistance.positiveSpectrumEffect_pairing
+UEOTQM.QuantumTraceDistance.difference_parts_mass_eq
+UEOTQM.QuantumTraceDistance.effectDistance_le_mass_of_psd_split
+UEOTQM.QuantumTraceDistance.effectDistance_eq_positivePart_mass
+UEOTQM.QuantumTraceDistance.positiveSpectrumEffect_attains
+UEOTQM.QuantumTraceDistance.effectDistance_eq_half_traceAbsolute
+UEOTQM.QuantumTraceDistance.effectDistance_eq_half_sum_abs_eigenvalues
+UEOTQM.BinaryDiscrimination.equalPriorSuccess
+UEOTQM.BinaryDiscrimination.equalPriorSuccess_eq
+UEOTQM.BinaryDiscrimination.equalPriorSuccess_le
+UEOTQM.BinaryDiscrimination.positiveSpectrumEffect_success
+UEOTQM.BinaryDiscrimination.exists_optimal_equalPriorDecision
+~~~
+
+### F.3.18 Requests 1021–1080
+
+~~~text
+UEOTQM.BinaryDiscrimination.optimal_equalPriorSuccess_traceAbsolute
+UEOTQM.BinaryDiscrimination.effectDistance_eq_mass_of_support_certificate
+UEOTQM.BinaryDiscrimination.success_eq_optimum_of_support_certificate
+UEOTQM.BinaryDiscrimination.effectDistance_eq_sum_positive_of_unitary_data
+UEOTQM.BinaryDiscrimination.effectDistance_eq_half_sum_abs_of_unitary_data
+UEOTQM.QuantumPurification.coordinateIsometry
+UEOTQM.QuantumPurification.coordinateIsometry_adjoint_mul
+UEOTQM.QuantumPurification.exists_matrix_isometry_of_card_le
+UEOTQM.QuantumPurification.card_le_of_matrix_isometry
+UEOTQM.QuantumPurification.exists_matrix_isometry_iff_card_le
+UEOTQM.QuantumPurification.matrix_isometry_not_coisometry_of_card_lt
+UEOTQM.QuantumPurification.auxiliary_tensor_mul
+UEOTQM.QuantumPurification.exists_auxiliary_isometry_of_equal_marginal
+UEOTQM.QuantumPurification.exists_auxiliary_isometry_action
+UEOTQM.QuantumPurification.pure_states_isometrically_equivalent
+UEOTQM.QuantumPurification.SpectralSupport
+UEOTQM.QuantumPurification.spectralSupport_card
+UEOTQM.QuantumPurification.supportedGram
+UEOTQM.QuantumPurification.density_spectral_expansion
+UEOTQM.QuantumPurification.supportedGram_spec
+UEOTQM.QuantumPurification.supportedGram_vector_normalized
+UEOTQM.QuantumPurification.supportPurification
+UEOTQM.QuantumPurification.supportPurification_matrix
+UEOTQM.QuantumPurification.supportPurification_isPure
+UEOTQM.QuantumPurification.supportPurification_marginal
+UEOTQM.QuantumPurification.rank_marginal_le_auxiliary_card
+UEOTQM.QuantumPurification.exists_purification_of_rank_le
+UEOTQM.QuantumPurification.exists_purification_iff_rank_le
+UEOTQM.QuantumPurification.exists_minimal_purification
+UEOTQM.QuantumPurification.no_purification_of_card_lt_rank
+UEOTQM.QuantumPurification.density_rank_pos
+UEOTQM.QuantumPurification.no_purification_empty_auxiliary
+UEOTQM.StoppingProtocols.Leaf
+UEOTQM.StoppingProtocols.height
+UEOTQM.StoppingProtocols.height_next_le
+UEOTQM.StoppingProtocols.action
+UEOTQM.StoppingProtocols.advance
+UEOTQM.StoppingProtocols.follow
+UEOTQM.StoppingProtocols.controller
+UEOTQM.StoppingProtocols.controller_truncate
+UEOTQM.StoppingProtocols.controller_dropLast
+UEOTQM.StoppingProtocols.controller_zero
+UEOTQM.StoppingProtocols.controller_shift
+UEOTQM.StoppingProtocols.controller_word_succ
+UEOTQM.StoppingProtocols.encode
+UEOTQM.StoppingProtocols.decode
+UEOTQM.StoppingProtocols.decode_encode
+UEOTQM.StoppingProtocols.encode_of_decode
+UEOTQM.StoppingProtocols.encode_injective
+UEOTQM.StoppingProtocols.decode_eq_some_iff
+UEOTQM.StoppingProtocols.word_length_le_height
+UEOTQM.StoppingProtocols.stopTime
+UEOTQM.StoppingProtocols.stopTime_le
+UEOTQM.StoppingProtocols.encode_record
+UEOTQM.StoppingProtocols.liftKraus
+UEOTQM.StoppingProtocols.lift
+UEOTQM.StoppingProtocols.lift_branch_active
+UEOTQM.StoppingProtocols.lift_branch_active_none
+UEOTQM.StoppingProtocols.lift_branch_idle
+UEOTQM.StoppingProtocols.lift_branch_idle_some
+~~~
+
+### F.3.19 Requests 1081–1123
+
+~~~text
+UEOTQM.StoppingProtocols.record_zero
+UEOTQM.StoppingProtocols.record_eq_decode
+UEOTQM.StoppingProtocols.record_encode
+UEOTQM.StoppingProtocols.run_matrix
+UEOTQM.StoppingRecordBudget.isometryChannel
+UEOTQM.StoppingRecordBudget.isometryChannel_operator
+UEOTQM.StoppingRecordBudget.isometry_complement_positive
+UEOTQM.StoppingRecordBudget.extendEffect
+UEOTQM.StoppingRecordBudget.pullback_extendEffect
+UEOTQM.StoppingRecordBudget.isometry_state_distance
+UEOTQM.StoppingRecordBudget.embeddingChannel
+UEOTQM.StoppingRecordBudget.embedding_operator_image
+UEOTQM.StoppingRecordBudget.embedding_operator_outside_left
+UEOTQM.StoppingRecordBudget.embedding_operator_outside_right
+UEOTQM.StoppingRecordBudget.embedding_state_distance
+UEOTQM.StoppingRecordBudget.someMemoryEmbedding
+UEOTQM.StoppingRecordBudget.active_state_eq_embedding
+UEOTQM.StoppingRecordBudget.active_state_distance
+UEOTQM.StoppingRecordBudget.active_defect
+UEOTQM.StoppingRecordBudget.idle_state_eq
+UEOTQM.StoppingRecordBudget.idle_defect
+UEOTQM.StoppingRecordBudget.leafEmbedding
+UEOTQM.StoppingRecordBudget.outside_leafEmbedding
+UEOTQM.StoppingRecordBudget.run_eq_embedding
+UEOTQM.StoppingRecordBudget.original_joint_distance_eq
+UEOTQM.StoppingRecordBudget.weight_run_encode
+UEOTQM.StoppingRecordBudget.weight_run_decode_none
+UEOTQM.StoppingRecordBudget.original_record_tv_eq
+UEOTQM.StoppingRecordBudget.activeDefect
+UEOTQM.StoppingRecordBudget.lift_defect_eq
+UEOTQM.StoppingRecordBudget.activeCost
+UEOTQM.StoppingRecordBudget.actionCost_eq_activeCost
+UEOTQM.StoppingRecordBudget.activeCost_eq_sum_active
+UEOTQM.StoppingRecordBudget.original_joint_distance_le_activeCost_sum
+UEOTQM.StoppingRecordBudget.original_record_tv_le_activeCost_sum
+UEOTQM.StoppingRecordBudget.terminal_memory_distance_le_activeCost_sum
+UEOTQM.StoppingRecordBudget.activeProbability
+UEOTQM.StoppingRecordBudget.activeProbability_nonneg
+UEOTQM.StoppingRecordBudget.activeProbability_le_one
+UEOTQM.StoppingRecordBudget.activeCost_le_probability_mul
+UEOTQM.StoppingRecordBudget.original_joint_distance_le_probability_budget
+UEOTQM.QuantumPurification.spectralSupportFintype
+UEOTQM.QuantumPurification.spectralSupportDecidableEq
+~~~
+
+## F.4 Actual increment from the v31.10 finite-conditioning research revision
+
+The research revision published as edition 3.6 added eight public modules. For the same original finite experiment, they supply a spectral construction for singular support, the full conditioned CQ state, allowed-action and observation-fibre interfaces, criteria on specified reachable inputs, actual filtering and retry costs based on the original leaves, and sharp conditioning-error bounds. Concrete action counterexamples and the positive Pauli certificate retain separate names. The actual integrated build, axiom whitelist, source manifest, 19 semantic/numerical controls, and 95 exact finite checks are recorded in `physics/qm/kernel/evidence/v31.10` and `physics/qm/conditioning`, with their respective evidence scopes. Successful compilation is not a new law of nature, and floating-point diagnostics are not rigorous numerical certificates. Actual execution status is determined by the receipts bound to the corresponding source bytes.
+
+The spectral construction for arbitrary original experimental trees and the full CQ endpoint theorem are formalized in Lean. The classification of initialization over all inputs, the impossibility argument when arbitrary reference correlations must be preserved, the sufficient Kraus-norm error bound, and the monotone-convergence justification of the expected cost of independent retries until success are handwritten proofs in Chapter 66. The eight records and costs of the concrete three-step model are checked by an exact finite program. No separate Lean theorem verifying all of that runtime program is claimed. The earlier 161 numbered results, 11 original-source entries, and three inherited programs retain their original identities.
+
+The current public package contains 49 modules, 959 explicit theorems, and 1285 named axiom requests. The v31.10 increment consists of eight modules, 105 explicit theorems, and 162 requests. The publication revision adds no mathematical declaration and does not rerun these local scientific gates. Section C.8 records the actual PR/main identities and exact reuse conditions.
+
+## F.5 The 162 named axiom requests added in v31.10
+
+The names below follow the order of the current `AxiomAudit.lean`. Appending them to the 1123 requests in F.3 gives exactly the current 1285 unique requests. They retain the actual v31.10 acceptance identity and are not new proofs produced by translation.
+
+~~~text
+UEOTQM.QuantumActionRealizability.labelInstrument
+UEOTQM.QuantumActionRealizability.labelInstrument_branch
+UEOTQM.QuantumActionRealizability.labelInstrument_channel
+UEOTQM.QuantumActionRealizability.fairWeights
+UEOTQM.QuantumActionRealizability.fair_label_mixture_branch
+UEOTQM.QuantumActionRealizability.swapped_labels_same_channel
+UEOTQM.QuantumActionRealizability.swapped_labels_distinct_visible_branch
+UEOTQM.QuantumActionRealizability.swapped_labels_not_realizable
+UEOTQM.QuantumActionRealizability.hidden_nodes_individually_realizable
+UEOTQM.QuantumActionRealizability.shared_observation_not_realizable
+UEOTQM.QuantumActionRealizability.visibleTrueChoiMass
+UEOTQM.QuantumActionRealizability.visibleTrueChoiMass_label
+UEOTQM.QuantumActionRealizability.swapped_labels_choi_separation
+UEOTQM.QuantumActionRealizability.fiberDifferenceChoiMass
+UEOTQM.QuantumActionRealizability.shared_observation_choi_separation
+UEOTQM.QuantumActionPauliWitness.pauliZ
+UEOTQM.QuantumActionPauliWitness.pauliX
+UEOTQM.QuantumActionPauliWitness.pauliZ_gram
+UEOTQM.QuantumActionPauliWitness.pauliX_gram
+UEOTQM.QuantumActionPauliWitness.labelUnitary
+UEOTQM.QuantumActionPauliWitness.labelUnitary_branch
+UEOTQM.QuantumActionPauliWitness.allowed
+UEOTQM.QuantumActionPauliWitness.targetWeighted
+UEOTQM.QuantumActionPauliWitness.target
+UEOTQM.QuantumActionPauliWitness.target_branch
+UEOTQM.QuantumActionPauliWitness.fair_allowed_realizes_target
+UEOTQM.QuantumActionPauliWitness.target_choi_positive_certificate
+UEOTQM.QuantumActionPauliWitness.sourceWeighted
+UEOTQM.QuantumActionPauliWitness.source
+UEOTQM.QuantumActionPauliWitness.source_success_eq_half_target
+UEOTQM.QuantumActionPauliWitness.source_failure_branch
+UEOTQM.QuantumActionRealizability.matrixUnit
+UEOTQM.QuantumActionRealizability.matrix_expansion
+UEOTQM.QuantumActionRealizability.branchLinear
+UEOTQM.QuantumActionRealizability.branchLinear_apply
+UEOTQM.QuantumActionRealizability.choi
+UEOTQM.QuantumActionRealizability.choi_injective
+UEOTQM.QuantumActionRealizability.conjugationLinear
+UEOTQM.QuantumActionRealizability.instrumentChoiAfter
+UEOTQM.QuantumActionRealizability.targetChoiAfter
+UEOTQM.QuantumActionRealizability.instrumentChoiAfter_eq_iff
+UEOTQM.QuantumActionRealizability.mixture_instrumentChoiAfter
+UEOTQM.QuantumActionRealizability.weightsOfPMF
+UEOTQM.QuantumActionRealizability.realizes_of_weights
+UEOTQM.QuantumActionRealizability.realizable_after_iff_mem_convexHull
+UEOTQM.QuantumActionRealizability.full_instrument_realizable_iff
+UEOTQM.QuantumActionRealizability.support_realizable_iff
+UEOTQM.QuantumActionRealizability.observation_realizable_iff_fiber_choi
+UEOTQM.QuantumActionRealizability.separator_excludes_convexHull
+UEOTQM.QuantumActionRealizability.support_agreement_on_fixed_input
+UEOTQM.QuantumFiniteWindow.SupportFilter
+UEOTQM.QuantumFiniteWindow.SupportFilter.identity
+UEOTQM.QuantumFiniteWindow.SupportFilter.zero
+UEOTQM.QuantumFiniteWindow.SupportFilter.apply
+UEOTQM.QuantumFiniteWindow.SupportFilter.metric
+UEOTQM.QuantumFiniteWindow.SupportFilter.complement
+UEOTQM.QuantumFiniteWindow.SupportFilter.apply_posSemidef
+UEOTQM.QuantumFiniteWindow.SupportFilter.apply_smul
+UEOTQM.QuantumFiniteWindow.SupportFilter.apply_zero
+UEOTQM.QuantumFiniteWindow.SupportFilter.identity_apply
+UEOTQM.QuantumFiniteWindow.SupportFilter.zero_apply
+UEOTQM.QuantumFiniteWindow.SupportFilter.complement_adjoint
+UEOTQM.QuantumFiniteWindow.SupportFilter.complement_sq
+UEOTQM.QuantumFiniteWindow.SupportFilter.complement_matrix
+UEOTQM.QuantumFiniteWindow.SupportFilter.inverse_metric
+UEOTQM.QuantumFiniteWindow.StepCertificate
+UEOTQM.QuantumFiniteWindow.tiltedKraus
+UEOTQM.QuantumFiniteWindow.tilted_main_gram
+UEOTQM.QuantumFiniteWindow.tilted_fallback_gram
+UEOTQM.QuantumFiniteWindow.tiltedInstrument
+UEOTQM.QuantumFiniteWindow.tilted_main_transport
+UEOTQM.QuantumFiniteWindow.tilted_fallback_zero
+UEOTQM.QuantumFiniteWindow.tilted_branch_transport
+UEOTQM.QuantumFiniteWindow.FilterTree
+UEOTQM.QuantumFiniteWindow.FilterTree.rootFilter
+UEOTQM.QuantumFiniteWindow.FilterTree.Valid
+UEOTQM.QuantumFiniteWindow.FilterTree.Leaf
+UEOTQM.QuantumFiniteWindow.FilterTree.leafFintype
+UEOTQM.QuantumFiniteWindow.FilterTree.accepts
+UEOTQM.QuantumFiniteWindow.FilterTree.sourceWord
+UEOTQM.QuantumFiniteWindow.FilterTree.sourceWord_injective
+UEOTQM.QuantumFiniteWindow.FilterTree.sourceLeafOperator
+UEOTQM.QuantumFiniteWindow.FilterTree.sourceLeafOperator_eq_recordOperator
+UEOTQM.QuantumFiniteWindow.FilterTree.acceptedLeafOperator
+UEOTQM.QuantumFiniteWindow.FilterTree.tiltedLeafOperator
+UEOTQM.QuantumFiniteWindow.FilterTree.leaf_transport
+UEOTQM.QuantumFiniteWindow.FilterTree.tiltedLeafOperator_smul
+UEOTQM.QuantumFiniteWindow.FilterTree.tiltedLeafOperator_posSemidef
+UEOTQM.QuantumFiniteWindow.FilterTree.sum_tiltedLeafOperator_trace
+UEOTQM.QuantumFiniteWindow.FilterTree.successMass
+UEOTQM.QuantumFiniteWindow.FilterTree.successMass_eq_filtered_mass
+UEOTQM.QuantumFiniteWindow.FilterTree.successMass_nonneg
+UEOTQM.QuantumFiniteWindow.FilterTree.initialState
+UEOTQM.QuantumFiniteWindow.FilterTree.initialState_matrix
+UEOTQM.QuantumFiniteWindow.FilterTree.conditional_leaf
+UEOTQM.QuantumFiniteWindow.FilterTree.zero_success_filter
+UEOTQM.QuantumFiniteWindow.FilterTree.zero_success_no_positive
+UEOTQM.QuantumFiniteWindow.FilterTree.tiltedLeafOperator_zero
+UEOTQM.QuantumFiniteWindow.FilterTree.zero_success_all_accepted_blocks_zero
+UEOTQM.QuantumFiniteWindow.FilterTree.sourceLeafOperator_posSemidef
+UEOTQM.QuantumFiniteWindow.FilterTree.sum_sourceLeafOperator_trace
+UEOTQM.QuantumFiniteWindow.FilterTree.sourceWeights
+UEOTQM.QuantumFiniteWindow.FilterTree.sourceWeights_accepted_sum
+UEOTQM.QuantumFiniteWindow.FilterTree.successMass_le_one
+UEOTQM.QuantumFiniteWindow.FilterTree.metric_complement_posSemidef
+UEOTQM.QuantumFiniteWindow.FilterTree.leafDecidableEq
+UEOTQM.QuantumFiniteWindow.block_eq_sum_lifts
+UEOTQM.QuantumFiniteWindow.block_posSemidef
+UEOTQM.QuantumFiniteWindow.block_smul
+UEOTQM.QuantumFiniteWindow.FilterTree.jointState
+UEOTQM.QuantumFiniteWindow.FilterTree.acceptedJointOperator
+UEOTQM.QuantumFiniteWindow.FilterTree.conditional_joint
+UEOTQM.QuantumFiniteWindow.FilterTree.conditional_record_probability
+UEOTQM.QuantumFiniteWindow.FilterTree.fallback_independent
+UEOTQM.QuantumFiniteWindow.spectralFilter
+UEOTQM.QuantumFiniteWindow.spectralFilter_matrix_posSemidef
+UEOTQM.QuantumFiniteWindow.spectralFilter_metric
+UEOTQM.QuantumFiniteWindow.SupportFilter.matrix_projection
+UEOTQM.QuantumFiniteWindow.SupportFilter.matrix_complement
+UEOTQM.QuantumFiniteWindow.gram_sum_zero_component
+UEOTQM.QuantumFiniteWindow.support_of_backward
+UEOTQM.QuantumFiniteWindow.StepCertificate.of_backward
+UEOTQM.QuantumFiniteWindow.SourceTree
+UEOTQM.QuantumFiniteWindow.backwardGram
+UEOTQM.QuantumFiniteWindow.backwardGram_posSemidef
+UEOTQM.QuantumFiniteWindow.SourceTree.canonical
+UEOTQM.QuantumFiniteWindow.SourceTree.canonical_valid
+UEOTQM.QuantumFiniteWindow.FilterTree.erase
+UEOTQM.QuantumFiniteWindow.canonical_erases_to_source
+UEOTQM.QuantumFiniteWindow.source_node_conditional_joint
+UEOTQM.QuantumInitializationCost.gramFactor
+UEOTQM.QuantumInitializationCost.gramFactor_gram
+UEOTQM.QuantumInitializationCost.filterInstrument
+UEOTQM.QuantumInitializationCost.filter_success_branch
+UEOTQM.QuantumInitializationCost.gram_filter_mass
+UEOTQM.QuantumInitializationCost.filter_success_probability
+UEOTQM.QuantumInitializationCost.filter_success_probability_pos
+UEOTQM.QuantumInitializationCost.filter_posterior_matrix
+UEOTQM.QuantumInitializationCost.scaled_filter_mean_attempts
+UEOTQM.QuantumInitializationCost.successProbability
+UEOTQM.QuantumInitializationCost.meanTrialCost
+UEOTQM.QuantumInitializationCost.retryTreeCost
+UEOTQM.QuantumInitializationCost.successProbability_nonneg
+UEOTQM.QuantumInitializationCost.failureWeight_eq
+UEOTQM.QuantumInitializationCost.successProbability_le_one
+UEOTQM.QuantumInitializationCost.retryTreeCost_succ
+UEOTQM.QuantumInitializationCost.retryTreeCost_closed
+UEOTQM.QuantumInitializationCost.retryTreeCost_tendsto
+UEOTQM.QuantumInitializationCost.sourceInitialFilter
+UEOTQM.QuantumInitializationCost.sourceInitialFilter_probability
+UEOTQM.QuantumInitializationCost.source_successProbability
+UEOTQM.QuantumInitializationCost.source_retryTreeCost_tendsto
+UEOTQM.QuantumPostselectionError.binary_gap_le_div_of_le
+UEOTQM.QuantumPostselectionError.binary_gap_le_div_max
+UEOTQM.QuantumPostselectionError.probability_mul_posterior
+UEOTQM.QuantumPostselectionError.posterior_effectDistance_le_div_max
+UEOTQM.QuantumPostselectionError.posterior_effectDistance_le_min
+UEOTQM.QuantumPostselectionError.posterior_half_traceAbsolute_le_min
+UEOTQM.QuantumActionRealizability.branchOutputFamily
+UEOTQM.QuantumActionRealizability.mixture_branchOutputFamily
+UEOTQM.QuantumActionRealizability.fixed_input_branch_realizable_iff
+UEOTQM.QuantumActionRealizability.fixed_input_observation_realizable_iff
+~~~

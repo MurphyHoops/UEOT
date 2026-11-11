@@ -1,0 +1,84 @@
+{
+  "arithmetic": "decimal transcendental arithmetic, 80 decimal digits",
+  "inputs": {
+    "branches_m": 3,
+    "real_settings_L": 6,
+    "alpha": "0.05",
+    "epsilon": "0.12",
+    "measurement_outcome_interval": [
+      -1,
+      1
+    ],
+    "SPAM_allowance_for_pointer_threshold": "0"
+  },
+  "formulas": {
+    "hoeffding_n": "ceil(2 ln(2 L / alpha) / epsilon^2)",
+    "hoeffding_union_bound": "2 L exp(-n epsilon^2 / 2)",
+    "kappa": "3 - 2 sqrt(2)",
+    "witness_operator_norm": "2 + 1 / sqrt(2)",
+    "p_star": "(3 - 2 sqrt(2)) / (4 (2 + 1 / sqrt(2)))",
+    "zero_event_n": "ceil(ln(alpha) / ln(1 - p_star))",
+    "zero_event_tail": "(1 - p_star)^n",
+    "positive_conservative_pointer_bound": "ell < p_star^2 / 8, when delta_SPAM = 0"
+  },
+  "results": {
+    "hoeffding_n_before_ceiling": "761.19985046416545884235181333075272451042950687948447085139753653961774566736743",
+    "hoeffding_n_per_setting": 762,
+    "hoeffding_union_bound_at_761": "0.050071997954445529900371544453379688111700312080197114597159276077525847004871931",
+    "hoeffding_union_bound_at_762": "0.049712774326080370403413466860899614507386546660221967458759853294882653696002106",
+    "kappa": "0.1715728752538099023966225515806038428606562492461038536466405240185350430757860",
+    "witness_operator_norm": "2.7071067811865475244008443621048490392848359376884740365883398689953662392310535",
+    "p_star": "0.015844671924855516542193715489047183419057477530484685537732960075069383461315099",
+    "zero_event_n_before_ceiling": "187.56689405989411497014328999314768996061985748422427659110403843890971177553816",
+    "ideal_zero_event_n": 188,
+    "zero_event_probability_at_187": "0.050454764226099464817216705399347502127877033733321908110680447305756671475701746",
+    "zero_event_probability_at_188": "0.049655325039890982153568014285867386462450416028387909279101872559158465896754214",
+    "pointer_error_strict_threshold_with_zero_SPAM": "0.000031381703550788077456245069863883345579639647212097933961851439295626208759298869"
+  },
+  "checks": {
+    "hoeffding_sample_count_is_762_per_setting": true,
+    "hoeffding_761_union_bound_exceeds_0_05": true,
+    "hoeffding_762_union_bound_at_most_0_05": true,
+    "ideal_event_lower_bound_positive": true,
+    "zero_event_sample_count_is_188": true,
+    "187_zero_event_probability_exceeds_0_05": true,
+    "188_zero_event_probability_at_most_0_05": true,
+    "pointer_threshold_cancels_conservative_bound": true
+  },
+  "status": "PASS",
+  "interpretive_limits": [
+    "762 is per setting, not a total shot count.",
+    "Hoeffding assumes independent fixed-expectation trials within each setting.",
+    "The union bound does not require independence between settings.",
+    "188 uses ideal calibration and a fixed-sample null; Chapter 46 states the conditional-null extension.",
+    "188 excludes calibration, model validation, drift control, and reproducibility trials.",
+    "The pointer threshold is sufficient for positivity of this conservative bound; it is not a universal hardware impossibility threshold.",
+    "No actualization mechanism or experimental claim is established by this arithmetic."
+  ],
+  "schema": "ueot.physics.publication.empirical_arithmetic.v1",
+  "executed_at_utc": "2026-11-11T05:28:42.744455+00:00",
+  "script": "empirical_number_check.py",
+  "script_sha256": "b9b958b9f94cd23543567732e78f8ddd73195fe60c31ce5086135792d21ba953",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "invocation": [
+    "python",
+    "empirical_number_check.py",
+    "--output",
+    "EMPIRICAL_NUMBER_CHECK.json"
+  ],
+  "bound_source": {
+    "commit": "3d443ec29eb17af1fc00699a74e2d42d73516d81",
+    "path": "physics/qm/book/UEOT_PHYSICS.md",
+    "sha256": "b726e3b9033d79ef949b8e83469901fe728aa28ab204b2e4d55bf36a18b412f0",
+    "sections": [
+      "8.3",
+      "39.3",
+      "39.5",
+      "39.6",
+      "46.1"
+    ]
+  },
+  "new_hardware_data": false,
+  "heavy_validation_rerun": false
+}
