@@ -23,6 +23,25 @@ preserves this source and adds subsequent results, qualifications and Lean
 correspondences under its own version. Its additions do not retroactively change
 the frozen v3.0 inventory or turn the new manuscript into a new coverage receipt.
 
+## Independent successor reference supplement
+
+The [successor specification 1.0](successor/README.md) adds 30 separately identified
+contracts for mature results beyond the frozen source. Read the
+[Chinese specification](successor/UEOT_Core_Successor_Specification.md) or the
+[English specification](successor/UEOT_Core_Successor_Specification.en.md), then
+follow the exact source and consumer obligations for the result being used.
+
+This is an additive **exit B** supplement, not a replacement Core v4.0 or an
+`active_core` promotion. The original 106 P-IDs retain their bytes, semantics and
+coverage denominator. The [per-item source map](successor/V3_PROPOSITION_INTERFACE_MAP.json)
+preserves every old anchor; the [claim index](successor/CLAIM_INDEX.json) binds
+successor contracts to actual defining files, public imports and evidence levels.
+
+The [architecture decision](successor/CORE_V3_TO_CURRENT_DELTA.md),
+[review record](successor/REVIEW.md) and [validation record](successor/VALIDATION.md)
+state the real audit and proof scope. Book adoption is a separate action described
+in [the downstream adoption list](successor/DOWNSTREAM_BOOK_ADOPTION.md).
+
 ## Integrity rule
 
 A replacement canonical specification must either:
