@@ -21,7 +21,7 @@ CC BY 4.0 授权，因此此前合法授权的书籍表达继续受 CC BY 4.0
 内容及第三方材料，并在 Markdown/TeX/PDF 与发行清单中一致标注。
 不能仅更换封面、版式或文件格式就撤回已授权文本。
 
-物理著作的版权与 `../../formalization/ueot-qm/` 的 Lean 软件、
+物理著作的版权与 `../../../formalization/ueot-qm/` 的 Lean 软件、
 `../kernel/` 的 Python 计算内核、`../benchmarks/` 的脚本、
 外部实验数据分别管理。本文件不修改这些软件或数据的实际许可，
 也不宣称物理理论已经得到实验证实。
