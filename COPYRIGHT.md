@@ -1,69 +1,110 @@
-# UEOT copyright, licensing and publication policy
+# UEOT copyright, research openness and publication rights
 
-Effective notice date: **2026-11-11**. Repository: `MurphyHoops/UEOT`.
+Prepared: **2026-11-11**. Repository: `MurphyHoops/UEOT`.
 
-## Principles
+## Legal and scientific separation
 
-- Preserve and honor **previously granted CC BY 4.0** rights, including
-  commercial reuse, translations and adaptations under the license conditions.
-- Distinguish *copyrightable expression* from ideas, mathematical results,
-  methods and independent implementations. This policy claims no monopoly on
-  uncopyrightable concepts.
-- Treat copyright ownership, license scope and the authority to grant a new
-  license as separate factual questions.
-- Avoid implying that a new file path, format change or new book cover
-  extinguishes earlier licensing of underlying text.
+The UEOT project has six distinct categories: (1) historical licensed
+research, (2) continuing open research, (3) three formal authored books,
+(4) Lean/code and executable research, (5) experiments/data/third-party
+assets, and (6) commercial implementations owned separately.
 
-## Scope and status
+**Open research and controlled book publishing are compatible**, but not
+through retroactive revocation. CC BY 4.0 already permits commercial reuse
+of covered expression. Prior recipients and later lawful recipients of
+the already licensed versions retain these rights.
 
-| Material | Existing / historical treatment | Future treatment |
-| --- | --- | --- |
-| `UEOT_v3_top.pdf`, historical manuscript sources and covered original research | Prior CC BY 4.0 grant preserved | A new edition may separately license genuinely new owned expression |
-| `philosophy/UEOT_PHILOSOPHY.{md,tex,pdf}` and `mathematics/UEOT_MATHEMATICS.{md,tex,pdf}` | Previously public books: review their historical commit/version coverage under the prior broad license; do not claim exclusive control over reused CC BY text | New original edition material receives separate terms only through clear, edition-specific notices after a rights review |
-| `core/`, `research/`, `validation/`, `publications/`, and research notes | Historical repository-authored materials may be covered by the prior license | New contributions require explicit project/file/publication license decision |
-| `formalization/` (Lean and associated source code) | Prior license scope and contributor ownership require review; do not presume all code is Apache-2.0 | Select a suitable software license (Apache-2.0 is one candidate) **only after** source and contributor audit and explicit notices |
-| `physics/`, `applications/`, tools and experiment scripts | Mixed material and code; individual provenance must be assessed | No blanket relicensing pending audit |
-| Third-party templates, style files, bibliography assets, datasets, dependencies | Excluded from original CC BY grant to extent not owned; their own conditions govern | Maintain attribution and upstream license notices |
-| Separately maintained `UEOT-GI` private implementation | Not licensed by a statement in this separate UEOT repository | Govern only in its own repository, contracts and distribution terms |
+See the operative [LICENSE](LICENSE), [scope matrix](LICENSE_SCOPE.md)
+and [preserved original notice](LICENSES/LEGACY-CC-BY-4.0-NOTICE.txt).
 
-**Unknown does not mean proprietary:** If content was already released under
-the prior broad CC BY license, an incomplete inventory does not remove that
-permission. Likewise, a public repository is not a universal grant for newly
-published content without a specific permission.
+## A precise baseline, not an invented exclusive-rights ledger
 
-## Version boundaries and evidence
+Before this policy, the root LICENSE's exact Git blob was
+`dfdadd423fa3bfe39c87e4ed8233c978a6ddf265`.
+The main baseline was
+`3776da6caf06a1c99837b15313d18857346f4baa`
+(2026-11-11). The archived copy has the same exact Git blob, verifying
+byte-for-byte preservation.
 
-- The authoritative historical license text is
-  [LICENSES/LEGACY-CC-BY-4.0-NOTICE.txt](LICENSES/LEGACY-CC-BY-4.0-NOTICE.txt).
-- The baseline for preparing this policy was `main` commit
-  `3776da6caf06a1c99837b15313d18857346f4baa` (2026-11-11), with prior
-  root `LICENSE` Git blob `dfdadd423fa3bfe39c87e4ed8233c978a6ddf265`.
-  These Git identifiers are **not** a complete copyright inventory or a
-  substitute for dated release and contributor records.
-- Authors, contributors and recipients should use the exact historical Git
-  commit/tag/release and relevant notices to establish the applicable license.
-- The published philosophy and mathematics book Markdown, TeX and PDF editions
-  are related representations of copyrighted expression; new formats do not
-  reset history.
+This snapshot does **not** prove that all files were first published on that
+date, that all authors had authority to grant rights, or that every covered
+piece of historical text is uniquely identifiable without further review.
+Historical licensing is assessed through actual earlier notices, dates,
+releases, commits and contributor ownership.
 
-## Future publication and licensing procedure
+## Three independent books
 
-1. Before publishing an edition under new terms, create a content/version
-   manifest identifying exact files, author ownership, dates, newly authored
-   passages, and portions derived from previously CC BY materials.
-2. Place the edition's specific license and copyright notice **inside the
-   publication files or edition manifest**, with consistent PDF, TeX and
-   Markdown metadata. Never rely on a changed root LICENSE alone.
-3. Disclose earlier CC BY editions and any third-party content to a publisher.
-   Negotiate only rights actually available for an exclusive grant.
-4. For Lean/software licensing, inventory imported code, generated files,
-   contributor agreements, third-party license and notice obligations. Do not
-   change the license header or add Apache-2.0 without authority.
-5. Preserve history and attribution, and seek appropriate jurisdiction-specific
-   legal review before exclusive book agreements, significant relicensing, or
-   patent decisions.
+- **Philosophy:** [rights inventory](philosophy/PUBLICATION_RIGHTS.md).
+- **Mathematics:** [rights inventory](mathematics/PUBLICATION_RIGHTS.md).
+- **Physics:** [rights inventory](physics/qm/book/PUBLICATION_RIGHTS.md).
 
-For licensing and publication inquiries, open a repository issue; no commercial
-or exclusive license is represented as granted unless separately documented.
+Each book exists in Markdown, LaTeX and PDF. Its underlying expression
+does not lose prior license rights by being converted between formats.
 
-This is a public policy notice, not legal advice.
+New *copyrightable expression* written for a later expressly identified
+book edition can receive a different license when the author has the right
+to grant it. An editor or publisher cannot lawfully treat previously
+CC BY 4.0 licensed passages as newly exclusive merely by repackaging them.
+A new edition must expressly and visibly distinguish old licensed material
+from new additions. If a publisher wants exclusivity, disclose earlier
+open versions and negotiate only rights genuinely available.
+
+An edition-specific choice (all rights reserved, CC BY, or another license)
+has not yet been made for any *future edition* of these books. The current
+books are not newly designated all-rights-reserved by this policy.
+
+## Physics-specific licenses
+
+The physics program has **different artifacts with different responsibilities**:
+
+- `physics/qm/book/` — the third maintained formal book, not automatically
+  covered by the *prospective open research* category.
+- `physics/qm/UEOT_QM_*.md`, `physics/interfaces/`, and other original
+  research explanations — future owned research prose is CC BY 4.0.
+- `formalization/ueot-qm/` — Lean software/proofs, requiring independent
+  code licensing and provenance review.
+- `physics/qm/kernel/`, `physics/qm/benchmarks/`, `validation/` code —
+  scripts, dependencies and computational artifacts require explicit
+  software terms; reports and prose may be CC BY 4.0.
+- Raw experimental data and third-party artifacts — specific data licenses,
+  attribution and conditions; neither datasets nor restricted data are
+  automatically relicensed.
+
+See [physics/LICENSING.md](physics/LICENSING.md). Scientific availability
+and a reproducible result do not establish copyright ownership in its
+underlying experimental dataset.
+
+## Software and patent caution
+
+Creative Commons explicitly recommends software-specific licenses rather
+than using CC licenses as a new default for software. **Apache-2.0 is a
+candidate**, particularly for open Lean and research code, but has
+substantive patent-license and contributor implications. MIT and other
+options also need an explicit decision. No Apache-2.0 notice is added to
+existing code until a documented rights/dependency audit.
+
+A CC BY copyright grant is not a general patent grant. Conversely, a public
+paper or source release may affect patent novelty under applicable national
+rules even where copyright ownership is retained. Have patent counsel review
+potentially patentable inventions *before* further disclosure if protection
+is contemplated.
+
+## Contribution and release control
+
+Before accepting external code/text, ask contributors to confirm ownership
+or authorization, identify pre-existing source material and accept the
+appropriate license for the target file. Preserve attribution; do not assume
+a GitHub PR transfers copyright ownership.
+
+For new scientific prose in designated research areas, follow CC BY 4.0
+unless an explicit exception is properly recorded. For future formal book
+material, create an edition-specific source manifest, copyright/third-party
+inventory and identical Markdown/TeX/PDF notices **before publication**.
+For software and datasets, release only with an audited explicit license.
+
+Separate UEOT-GI implementations, private model configurations, credentials
+and proprietary data are not distributed or licensed by this repository.
+Open scientific ideas may nevertheless be independently implemented by others.
+
+This is a project policy and a planning instrument, not jurisdiction-specific
+legal advice.
