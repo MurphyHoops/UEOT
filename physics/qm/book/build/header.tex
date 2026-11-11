@@ -4,7 +4,7 @@
   \setsansfont{UEOT_CJK.ttf}[BoldFont=UEOT_CJK.ttf,BoldFeatures={FakeBold=2}]
   \setmonofont{UEOT_CJK.ttf}
 }{
-  \setmainfont{Noto Sans CJK SC}[ItalicFont={Noto Sans CJK SC},ItalicFeatures={FakeSlant=.15}]
+  \setmainfont{Noto Serif CJK SC}[ItalicFont={Noto Serif CJK SC},ItalicFeatures={FakeSlant=.15}]
   \setsansfont{Noto Sans CJK SC}
   \setmonofont{Noto Sans CJK SC}
 }
@@ -14,16 +14,16 @@
 \usepackage{fvextra}
 \usepackage{etoolbox}
 \usepackage{newunicodechar}
+\newfontfamily\UEOTLatinFallback{DejaVu Serif}
+\newunicodechar{ž}{{\UEOTLatinFallback ž}}
+\newunicodechar{ℝ}{\ensuremath{\mathbb{R}}}
 \newunicodechar{ℏ}{\ensuremath{\hbar}}
 \newunicodechar{∎}{\ensuremath{\square}}
-\newfontfamily\UEOTLatinFallback{DejaVu Sans}
-\newunicodechar{ž}{{\UEOTLatinFallback\char"017E}}
-\newunicodechar{ℝ}{\ensuremath{\mathbb{R}}}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\small UEOT PHYSICS}
-\fancyhead[R]{\small 物理学 · 第三版}
+\fancyhead[R]{\small 物理学 · 3.7 双语修订版}
 \fancyfoot[C]{\small\thepage}
 \setlength{\headheight}{16pt}
 \renewcommand{\headrulewidth}{0.3pt}
@@ -51,7 +51,7 @@
   \vspace{10mm}
   {\color{teal}\rule{\textwidth}{1pt}\par}
   \vspace{7mm}
-  {\large 第三版\quad 3.6 正式整合版\par}
+  {\large 第三版\quad 3.7 双语修订版\par}
   \vspace{6mm}
   {钱德桂（Degui Qian）\par}
   \vspace{5mm}

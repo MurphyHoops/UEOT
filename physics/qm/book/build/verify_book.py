@@ -37,7 +37,7 @@ def inspect_book(source):
     anchors = re.findall(r'<a id="([^"]+)"></a>', source)
     if len(anchors) != len(set(anchors)):
         raise ValueError('Duplicate stable anchors')
-    appendix_headers = list(re.finditer(r'^# 附录 ([^\n]*)$', source, re.M))
+    appendix_headers = list(re.finditer(r'^# (?:附录|Appendix) ([^\n]*)$', source, re.M))
     appendix_letters = []
     for header in appendix_headers:
         label = re.fullmatch(r'([A-Z])\. .+', header.group(1))
@@ -67,14 +67,14 @@ def inspect_book(source):
     if len(sections) != len(set(sections)):
         raise ValueError('Duplicate numbered sections')
     claims = actual_claims(source)
-    rows = re.findall(r'^\| \[([^\]]+)\]\(#([^)]*)\) \| (\d+) \| (.+) \|$',
-                      source.split('# 附录 B.', 1)[1].split('<a id="appendix-c">', 1)[0], re.M)
+    registry = source.split('<a id="appendix-b"></a>', 1)[1].split('<a id="appendix-c">', 1)[0]
+    rows = re.findall(r'^\| \[([^\]]+)\]\(#([^)]*)\) \| (\d+) \| (.+) \|$', registry, re.M)
     expected = [(x['id'], x['id'].lower(), str(x['chapter']), x['title']) for x in claims]
     if rows != expected:
         differences = [{'actual': a, 'expected': b} for a, b in zip(rows, expected) if a != b]
         raise ValueError('Result registry identity mismatch: '+repr(differences[:8]))
     if len(claims) != 173:
-        raise ValueError('This edition requires all 161 inherited and 12 new result IDs')
+        raise ValueError('The bilingual edition preserves all 173 stable result IDs')
     return {'schema': 'ueot_physics.book_structure.v1', 'status': 'PASS',
             'source_sha256': hashlib.sha256(source.encode()).hexdigest(),
             'chapters': len(chapters), 'appendices': len(appendix_headers),

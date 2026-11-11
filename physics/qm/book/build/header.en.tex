@@ -1,0 +1,80 @@
+\usepackage{fontspec}
+% Use Latin text metrics for the English edition. CJK occurs only in a few
+% original source titles and is selected explicitly below.
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+\setmonofont{DejaVu Sans Mono}
+\IfFileExists{UEOT_CJK.ttf}{
+  \newfontfamily\UEOTCJK{UEOT_CJK.ttf}[BoldFont=UEOT_CJK.ttf,BoldFeatures={FakeBold=2}]
+}{
+  \newfontfamily\UEOTCJK{Noto Serif CJK SC}
+}
+\usepackage{mathtools}
+\usepackage{fvextra}
+\usepackage{etoolbox}
+\usepackage{newunicodechar}
+\newunicodechar{核}{{\UEOTCJK 核}}
+\newunicodechar{心}{{\UEOTCJK 心}}
+\newunicodechar{理}{{\UEOTCJK 理}}
+\newunicodechar{论}{{\UEOTCJK 论}}
+\newunicodechar{正}{{\UEOTCJK 正}}
+\newunicodechar{式}{{\UEOTCJK 式}}
+\newunicodechar{版}{{\UEOTCJK 版}}
+\newunicodechar{数}{{\UEOTCJK 数}}
+\newunicodechar{学}{{\UEOTCJK 学}}
+\newunicodechar{基}{{\UEOTCJK 基}}
+\newunicodechar{础}{{\UEOTCJK 础}}
+\newunicodechar{统}{{\UEOTCJK 统}}
+\newunicodechar{一}{{\UEOTCJK 一}}
+\AtBeginDocument{\lefthyphenmin=3\righthyphenmin=3}
+\newunicodechar{ℝ}{\ensuremath{\mathbb{R}}}
+\newunicodechar{ℏ}{\ensuremath{\hbar}}
+\newunicodechar{∎}{\ensuremath{\square}}
+\newunicodechar{□}{\ensuremath{\square}}
+\newunicodechar{⊗}{\ensuremath{\otimes}}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small UEOT PHYSICS}
+\fancyhead[R]{\small Bilingual revision 3.7}
+\fancyfoot[C]{\small\thepage}
+\setlength{\headheight}{16pt}
+\renewcommand{\headrulewidth}{0.3pt}
+\setcounter{tocdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\emergencystretch}{8em}
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.16}
+\AtBeginEnvironment{longtable}{\small}
+\allowdisplaybreaks[2]
+\renewcommand{\contentsname}{Contents}
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{titlepage}
+  \thispagestyle{empty}
+  \vspace*{30mm}
+  {\color{teal}\fontsize{46}{52}\selectfont UEOT\par}
+  \vspace{5mm}
+  {\fontsize{32}{40}\selectfont\bfseries PHYSICS\par}
+  \vspace{11mm}
+  {\Large From Object Mathematics to Quantum Physics\par}
+  \vspace{4mm}
+  {\large Derivations, Formal Proofs, and Research Boundaries\par}
+  \vspace{10mm}
+  {\color{teal}\rule{\textwidth}{1pt}\par}
+  \vspace{7mm}
+  {\large Third edition\quad Bilingual revision 3.7\par}
+  \vspace{6mm}
+  {Degui Qian\par}
+  \vspace{5mm}
+  {67 chapters\quad 6 appendices\quad UEOT-QM Kernel 1.10\par}
+  \vfill
+  {Objects and protocols\quad Quantum operations and fields\par}
+  \vspace{3mm}
+  {Proofs, countermodels, and empirical limits\par}
+  \vspace{7mm}
+  {11 November 2026\par}
+  \end{titlepage}
+}
+\makeatother
