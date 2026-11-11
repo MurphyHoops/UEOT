@@ -11,6 +11,7 @@ import json
 from pathlib import Path
 import re
 import subprocess
+import unicodedata
 import fitz
 
 HERE = Path(__file__).resolve().parent
@@ -67,13 +68,22 @@ def main():
         doc=fitz.open(pdf)
         names=doc.resolve_names()
         toc=doc.get_toc()
-        aux=HERE/'.build'/lang/sha(tex)[:16]/(stem.name+'.aux')
-        aux_text=aux.read_text() if aux.exists() else ''
+        detailed_toc=doc.get_toc(simple=False)
+        source_headings=re.findall(r'<a id="([^"]+)"></a>\s*\n#+\s+([^\n]+)',text)
+        tex_anchor_order=re.findall(r'\\(?:label|hypertarget)\{(ph-(?!note-)[^}]+)\}',latex)
+        check([item[0] for item in source_headings]==anchors, f'{lang}: source heading/anchor order')
+        check(tex_anchor_order==anchors, f'{lang}: TeX heading/anchor order')
+        normalized_title=lambda s:re.sub(r'[\W_]+','',unicodedata.normalize('NFKC',s)).casefold()
         label_targets={}
-        for line in aux_text.splitlines():
-            match=re.match(r'\\newlabel\{(ph-[^}]+)\}\{\{[^}]*\}\{[^}]*\}\{.*\}\{([^}]+)\}\{\}\}',line)
-            if match:
-                label_targets[match[1]]=match[2]
+        # The committed PDF contains its named bookmark destinations. Match
+        # those to the source headings and TeX labels, so a clean checkout can
+        # be validated without uncommitted XeLaTeX auxiliary files.
+        for (anchor,title),entry in zip(source_headings,detailed_toc):
+            check(normalized_title(title)==normalized_title(entry[1]), f'{lang}: bookmark title differs for {anchor}')
+            destination=entry[3].get('nameddest','')
+            label_targets[anchor]=destination
+            check(destination in names and names[destination].get('page',-1)==entry[2]-1,
+                  f'{lang}: bookmark destination differs for {anchor}')
         check(len(toc)==47, f'{lang}: bookmark count')
         check(all(1<=row[2]<=len(doc) for row in toc), f'{lang}: invalid bookmark destination')
         for name in anchors+[f'ph-note-{n}' for n in range(1,69)]:

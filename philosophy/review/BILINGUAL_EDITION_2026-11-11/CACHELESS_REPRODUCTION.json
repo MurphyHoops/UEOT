@@ -1,0 +1,18 @@
+{
+  "date_utc": "2026-11-11T06:02:43.017176+00:00",
+  "purpose": "Validate the published files in a fresh directory containing no TeX build cache. This is a concrete regression check, not a new mathematical or empirical test.",
+  "fixture_file_count": 96,
+  "tex_build_cache_present": false,
+  "old_validator_commit": "e151924d73341f0ffa39fdf7833e02ff7956ee8e",
+  "old_exit_code": 1,
+  "old_failure_count": 82,
+  "old_failure_kind": "82 unresolved non-part label destinations due solely to missing uncommitted .aux files.",
+  "fixed_validator_sha256": "8eeb2cb472b13617af5c775b5946d11e3b55c16c45934bfede43d66297fdbeea",
+  "fixed_exit_code": 0,
+  "fixed_status": "PASS_MACHINE_CHECKS_ONLY",
+  "fixed_failures": [],
+  "fixed_layout_report_sha256": "f0f60636dc566324739ecdb53121e7f639e6f2ef93928380b682210fabb39dad",
+  "fresh_and_original_directory_reports_identical": true,
+  "all_six_book_file_hashes_unchanged": true,
+  "method": "Cross-check Markdown anchor/heading order with the committed TeX label/part-target order and PDF bookmark titles; read actual PDF named destinations. Also retain font, link, footer, hash and note checks."
+}

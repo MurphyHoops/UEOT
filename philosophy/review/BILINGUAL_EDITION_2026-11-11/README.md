@@ -109,3 +109,9 @@ Pandoc 的 LaTeX `label` 通常映射到 PDF 的 `chapter*.N` 或 `section*.N`
 
 这些限制已进入正文，不作为掩盖已发现错误的替代说明。历史 CC BY 4.0
 权利及新表达边界见[出版许可说明](../../PUBLICATION_RIGHTS.md)。
+
+## 交付后工具复核
+
+PR #452 的自动代码审查指出干净检出缺少临时 `.aux` 时的导航误报。
+[实际处理](PR_REVIEW_DISPOSITION.md)与[无缓存回归检查](CACHELESS_REPRODUCTION.json)
+记录修复；正式两卷的六个文件均未变化。新逻辑另经 C 的只读独立检查。
