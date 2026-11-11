@@ -1,0 +1,48 @@
+{
+  "schema": "ueot-qm.growing-cutoff-c-root-review/1",
+  "reviewer": "native research agent C",
+  "baseline": "aea2fceef3c62cc8dc749b6cbb1b40a7d89df80d",
+  "status": "PASS_AFTER_CORRECTIONS",
+  "scope": "read of source and complete filtering contract, independent execution of root finite pipeline, and three frozen-contract rejection controls",
+  "main_execution": {
+    "receipt": "root_integration_independent_run.json",
+    "checks": 114,
+    "parameter_rows": 9,
+    "status": "PASS"
+  },
+  "rejection_controls": [
+    {
+      "control": "changed_policy",
+      "expected_rejection_observed": true,
+      "exit_code": 1,
+      "reason_fragment": "frozen policy is the reviewed design policy",
+      "meaning": "rejection of a changed frozen contract, not a physical impossibility verdict"
+    },
+    {
+      "control": "changed_gate_order",
+      "expected_rejection_observed": true,
+      "exit_code": 1,
+      "reason_fragment": "model semantics differ",
+      "meaning": "rejection of a changed frozen contract, not a physical impossibility verdict"
+    },
+    {
+      "control": "loosened_tolerance",
+      "expected_rejection_observed": true,
+      "exit_code": 1,
+      "reason_fragment": "frozen floating tolerance",
+      "meaning": "rejection of a changed frozen contract, not a physical impossibility verdict"
+    }
+  ],
+  "resolved_findings": [
+    "compiled weights now consumed from the frozen model and passed to recursion",
+    "source semantics now explicitly checked",
+    "small cutoff filter witness is separately labeled and no analytic N4095 execution is claimed"
+  ],
+  "reviewed_sha256": {
+    "physics/qm/growing_cutoff/frozen_model.json": "884ea9d3cafc584659a596105834b636fccd6747750376e99012cbfc045a9f6f",
+    "physics/qm/growing_cutoff/model.py": "ded0c80c0a4167e1a8ff871342d98c0f4f7c7530e7ed7bfd22b6a02cb05532b8",
+    "physics/qm/growing_cutoff/verify_integration.py": "33251d49cd23a6314099ae7576361ab34c4d5971e8144ba535428169fe409afb"
+  },
+  "new_hardware_data": false,
+  "not_external_human_peer_review": true
+}
