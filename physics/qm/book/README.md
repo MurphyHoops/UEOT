@@ -103,6 +103,29 @@ changes only `physics/qm/book/`.
 
 ## Reproduction
 
+### Publication delivery and its exact CI scope
+
+The complete bilingual source was delivered in
+[PR #454](https://github.com/MurphyHoops/UEOT/pull/454), source commit
+`17b8959154d0459efd44cb9d7d30233e847d4e8f`. Its
+[publication CI 42974391710](https://github.com/MurphyHoops/UEOT/actions/runs/42974391710)
+completed successfully, with both `runtime` and `lean` jobs passing. All 110
+source-commit file blobs were read back from the PR and matched the local staged
+objects; the complete remote commit tree also matched the local tree.
+The [remote delivery receipt](evidence/v3.7/remote-delivery.json) records that
+exact source identity, completed CI jobs and the observation's unmerged status.
+The existing workflow ran automatically for this PR; no heavy scientific suite
+was manually rerun locally for the translation.
+
+The subsequent receipt and metadata commit leaves all six book artifacts
+unchanged. Its own head and CI result are recorded in the PR description, so a
+receipt does not claim to contain its own future commit or acceptance. The
+source receipt does not establish merged-main acceptance. Publication CI verifies
+the repository's configured checks; it does not establish a new physical law,
+hardware observation or external peer review.
+
+### Local build
+
 Use Python 3, Pandoc, XeLaTeX and the fonts identified in the build receipts.
 The Chinese layout uses Noto Serif CJK SC, Noto Sans CJK SC and DejaVu Serif.
 The English layout uses Latin Modern Roman/Sans and DejaVu Sans Mono, with

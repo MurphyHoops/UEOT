@@ -1,0 +1,107 @@
+{
+  "schema": "ueot_physics.remote_publication_guard_check.v1",
+  "status": "PASS",
+  "source_commit": "17b8959154d0459efd44cb9d7d30233e847d4e8f",
+  "source_ci_run": 42974391710,
+  "helper": {
+    "name": "record_remote_publication.py",
+    "sha256": "2fdc51565d418f1deb52116478e82d228012f5f1ae2f6a081824d890411af1dc"
+  },
+  "guard_driver": {
+    "name": "verify_remote_publication_guards.py",
+    "sha256": "f8638e4367eacf87f655ba75c39dcda7311147c386508f5a8bc60cf4f9902325"
+  },
+  "actual_remote_receipt": {
+    "path": "physics/qm/book/evidence/v3.7/remote-delivery.json",
+    "sha256": "0c98f0c147a4cf2ffeaf0d1e7f1cc80705d3da958c630f5291e11a9f6843c678",
+    "bytes": 13244
+  },
+  "actual_receipt_positive_check": "PASS_READ_ONLY",
+  "already_generated_candidate_before_terminal_regeneration": "PASS_REPRODUCIBLE",
+  "partial_manifest_first_install_recovery": "PASS_REPRODUCIBLE",
+  "negative_controls": [
+    {
+      "name": "source_run_in_progress",
+      "status": "PASS_REJECTED",
+      "reason": "Source CI is not completed success on the source head"
+    },
+    {
+      "name": "source_run_failed",
+      "status": "PASS_REJECTED",
+      "reason": "Source CI is not completed success on the source head"
+    },
+    {
+      "name": "wrong_source_run_head",
+      "status": "PASS_REJECTED",
+      "reason": "Source CI is not completed success on the source head"
+    },
+    {
+      "name": "lean_job_in_progress",
+      "status": "PASS_REJECTED",
+      "reason": "Job not completed success: lean"
+    },
+    {
+      "name": "wrong_job_source_head",
+      "status": "PASS_REJECTED",
+      "reason": "Job belongs to another run/head"
+    },
+    {
+      "name": "missing_lean_job",
+      "status": "PASS_REJECTED",
+      "reason": "Both runtime and lean jobs are required exactly once"
+    },
+    {
+      "name": "merged_pr_cannot_be_recorded_as_unmerged",
+      "status": "PASS_REJECTED",
+      "reason": "Expected the open, unmerged publication PR"
+    },
+    {
+      "name": "observation_before_completion",
+      "status": "PASS_REJECTED",
+      "reason": "Observation precedes job completion"
+    },
+    {
+      "name": "skipped_certificate_check",
+      "status": "PASS_REJECTED",
+      "reason": "A required source verification step was not successful"
+    },
+    {
+      "name": "modified_frozen_english_manuscript",
+      "status": "PASS_REJECTED",
+      "reason": "Identity mismatch: physics/qm/book/UEOT_PHYSICS.en.md"
+    },
+    {
+      "name": "modified_numbered_result",
+      "status": "PASS_REJECTED",
+      "reason": "Current metadata is neither exact pre-PR source nor this exact update: physics/qm/book/CHAPTER_DOSSIER.json"
+    },
+    {
+      "name": "modified_source_catalog",
+      "status": "PASS_REJECTED",
+      "reason": "Current metadata is neither exact pre-PR source nor this exact update: physics/qm/book/CHAPTER_DOSSIER.json"
+    },
+    {
+      "name": "modified_manifest_entry",
+      "status": "PASS_REJECTED",
+      "reason": "Current metadata is neither exact pre-PR source nor this exact update: physics/qm/book/SOURCE_MANIFEST.json"
+    },
+    {
+      "name": "modified_research_acceptance",
+      "status": "PASS_REJECTED",
+      "reason": "Current metadata is neither exact pre-PR source nor this exact update: physics/qm/book/SOURCE_MANIFEST.json"
+    },
+    {
+      "name": "modified_scientific_audit_report",
+      "status": "PASS_REJECTED",
+      "reason": "Identity mismatch: unchanged scientific review: physics/qm/book/review/PHYSICAL_DERIVATION_AUDIT.md"
+    },
+    {
+      "name": "incorrect_payload_receipt_hash",
+      "status": "PASS_REJECTED",
+      "reason": "Identity mismatch: git_payload_readback"
+    }
+  ],
+  "negative_controls_count": 16,
+  "formal_worktree_modified_by_this_check": false,
+  "scope": "Actual root-supplied receipt positive validation and synthetic in-memory negative controls only; no remote observation or science rerun. No candidate metadata hash is included, so this report can be an upstream input without a cycle."
+}

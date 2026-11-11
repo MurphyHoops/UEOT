@@ -69,6 +69,12 @@ separate observation: its receipt identifies the actual publication commit, PR,
 remote readback and CI outcome when available. Scientific-source MAIN_VERIFIED
 does not imply that this publication PR has been merged.
 
+The [completed source-PR observation](../evidence/v3.7/remote-delivery.json)
+records PR #454, source commit `17b8959154d0459efd44cb9d7d30233e847d4e8f`
+and successful CI run 42974391710. The source is unmerged at that observation.
+The later metadata commit retains the same six book artifacts; its final-head
+CI is recorded in the PR description, separately from the source receipt.
+
 ## Historical checkpoints and integration
 
 The [initial 0–65 checkpoint](../evidence/v3.7/initial-0-65-checkpoint/) preserves

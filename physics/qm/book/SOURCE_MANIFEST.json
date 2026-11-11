@@ -205,7 +205,7 @@
     "inherited_result_ids": 173,
     "new_result_ids": 0,
     "identity_scope": "ACTUAL_LOCAL_BILINGUAL_SOURCE_BYTES",
-    "installation_status": "LOCAL_BYTES_IDENTIFIED_PUBLICATION_REMOTE_PENDING",
+    "installation_status": "PR_SOURCE_VERIFIED_UNMERGED",
     "language": "zh-CN"
   },
   "unified_source_identity": {
@@ -266,7 +266,7 @@
     "raw_zip_bytes_hashed": false,
     "metadata_commit_is_not_ci_tested_source_commit": true
   },
-  "current_release_stage": "PUBLICATION_PR_PENDING",
+  "current_release_stage": "PUBLICATION_PR_VERIFIED_UNMERGED",
   "local_release_receipt": "physics/qm/book/evidence/v3.7/local-acceptance.json",
   "local_release_receipt_scope": "Terminal publication acceptance, to be issued or refreshed after metadata identities are final; not the v31.10 research execution gate",
   "scientific_execution_partition": {
@@ -350,7 +350,7 @@
     "inherited_result_ids": 173,
     "new_result_ids": 0,
     "identity_scope": "ACTUAL_LOCAL_BILINGUAL_SOURCE_BYTES",
-    "installation_status": "LOCAL_BYTES_IDENTIFIED_PUBLICATION_REMOTE_PENDING",
+    "installation_status": "PR_SOURCE_VERIFIED_UNMERGED",
     "language": "en"
   },
   "publication_revision": {
@@ -361,13 +361,330 @@
     "local_artifact_state": "BOUND_TO_ACTUAL_BUILD_AND_SCOPED_VISUAL_RECEIPTS",
     "pending_gates": [],
     "remote_publication": {
-      "status": "PENDING",
-      "pr": null,
-      "source_commit": null,
-      "pr_ci": null,
+      "status": "PR_SOURCE_VERIFIED_UNMERGED",
+      "observed_at_utc": "2026-11-11T06:53:45.316Z",
+      "pr": 454,
+      "pr_url": "https://github.com/MurphyHoops/UEOT/pull/454",
+      "source_commit": "17b8959154d0459efd44cb9d7d30233e847d4e8f",
+      "source_tree": "c8464ea2cd3f4f1aaca52aba97f7085ab626be53",
+      "pr_ci": {
+        "run_id": 42974391710,
+        "run_attempt": 1,
+        "name": "UEOT QM Kernel",
+        "workflow_path": ".github/workflows/ueot-qm.yml",
+        "url": "https://github.com/MurphyHoops/UEOT/actions/runs/42974391710",
+        "event": "pull_request",
+        "head_sha": "17b8959154d0459efd44cb9d7d30233e847d4e8f",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-11T06:43:09Z",
+        "updated_at": "2026-11-11T06:52:41Z",
+        "run_started_at": "2026-11-11T06:43:09Z",
+        "jobs": [
+          {
+            "id": 130369971767,
+            "name": "runtime",
+            "run_id": 42974391710,
+            "head_sha": "17b8959154d0459efd44cb9d7d30233e847d4e8f",
+            "status": "completed",
+            "conclusion": "success",
+            "url": "https://github.com/MurphyHoops/UEOT/actions/runs/42974391710/job/130369971767",
+            "started_at": "2026-11-11T06:43:13Z",
+            "completed_at": "2026-11-11T06:43:42Z",
+            "steps": [
+              {
+                "number": 1,
+                "name": "Set up job",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:13Z",
+                "completed_at": "2026-11-11T06:43:14Z"
+              },
+              {
+                "number": 2,
+                "name": "Checkout",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:14Z",
+                "completed_at": "2026-11-11T06:43:19Z"
+              },
+              {
+                "number": 3,
+                "name": "Install Python",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:19Z",
+                "completed_at": "2026-11-11T06:43:19Z"
+              },
+              {
+                "number": 4,
+                "name": "Install finite conditioning reference dependencies",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:19Z",
+                "completed_at": "2026-11-11T06:43:34Z"
+              },
+              {
+                "number": 5,
+                "name": "Verify finite conditioning source, records, implementations and costs",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:34Z",
+                "completed_at": "2026-11-11T06:43:36Z"
+              },
+              {
+                "number": 6,
+                "name": "Verify canonical physics book structure",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:36Z",
+                "completed_at": "2026-11-11T06:43:36Z"
+              },
+              {
+                "number": 7,
+                "name": "Verify exact kernel and independent negative controls",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:36Z",
+                "completed_at": "2026-11-11T06:43:38Z"
+              },
+              {
+                "number": 8,
+                "name": "Run complete kernel example",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:38Z",
+                "completed_at": "2026-11-11T06:43:38Z"
+              },
+              {
+                "number": 9,
+                "name": "Run representation and spectrum witnesses",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:38Z",
+                "completed_at": "2026-11-11T06:43:38Z"
+              },
+              {
+                "number": 10,
+                "name": "Export exact Lean certificate examples",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:38Z",
+                "completed_at": "2026-11-11T06:43:38Z"
+              },
+              {
+                "number": 11,
+                "name": "Run mixture and persistence witnesses",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:38Z",
+                "completed_at": "2026-11-11T06:43:39Z"
+              },
+              {
+                "number": 12,
+                "name": "Archive runtime evidence",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:39Z",
+                "completed_at": "2026-11-11T06:43:40Z"
+              },
+              {
+                "number": 23,
+                "name": "Post Install Python",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:40Z",
+                "completed_at": "2026-11-11T06:43:40Z"
+              },
+              {
+                "number": 24,
+                "name": "Post Checkout",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:40Z",
+                "completed_at": "2026-11-11T06:43:40Z"
+              },
+              {
+                "number": 25,
+                "name": "Complete job",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:40Z",
+                "completed_at": "2026-11-11T06:43:40Z"
+              }
+            ]
+          },
+          {
+            "id": 130369972115,
+            "name": "lean",
+            "run_id": 42974391710,
+            "head_sha": "17b8959154d0459efd44cb9d7d30233e847d4e8f",
+            "status": "completed",
+            "conclusion": "success",
+            "url": "https://github.com/MurphyHoops/UEOT/actions/runs/42974391710/job/130369972115",
+            "started_at": "2026-11-11T06:43:13Z",
+            "completed_at": "2026-11-11T06:52:40Z",
+            "steps": [
+              {
+                "number": 1,
+                "name": "Set up job",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:14Z",
+                "completed_at": "2026-11-11T06:43:14Z"
+              },
+              {
+                "number": 2,
+                "name": "Checkout",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:14Z",
+                "completed_at": "2026-11-11T06:43:19Z"
+              },
+              {
+                "number": 3,
+                "name": "Record source identity",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:19Z",
+                "completed_at": "2026-11-11T06:43:19Z"
+              },
+              {
+                "number": 4,
+                "name": "Check inherited dependency lock",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:19Z",
+                "completed_at": "2026-11-11T06:43:19Z"
+              },
+              {
+                "number": 5,
+                "name": "Install and verify official pinned Lean",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:19Z",
+                "completed_at": "2026-11-11T06:43:27Z"
+              },
+              {
+                "number": 6,
+                "name": "Restore pinned dependencies",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:27Z",
+                "completed_at": "2026-11-11T06:43:59Z"
+              },
+              {
+                "number": 7,
+                "name": "Restore Mathlib proof cache",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:43:59Z",
+                "completed_at": "2026-11-11T06:44:13Z"
+              },
+              {
+                "number": 8,
+                "name": "Save pinned dependency cache",
+                "status": "completed",
+                "conclusion": "skipped",
+                "started_at": "2026-11-11T06:44:13Z",
+                "completed_at": "2026-11-11T06:44:13Z"
+              },
+              {
+                "number": 9,
+                "name": "Reject proof escapes",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:44:13Z",
+                "completed_at": "2026-11-11T06:44:14Z"
+              },
+              {
+                "number": 10,
+                "name": "Build all QM proofs",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:44:14Z",
+                "completed_at": "2026-11-11T06:49:20Z"
+              },
+              {
+                "number": 11,
+                "name": "Audit theorem axioms",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:49:20Z",
+                "completed_at": "2026-11-11T06:49:25Z"
+              },
+              {
+                "number": 12,
+                "name": "Verify generated exact certificates and false witnesses",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:49:25Z",
+                "completed_at": "2026-11-11T06:50:43Z"
+              },
+              {
+                "number": 13,
+                "name": "Verify retained finite and quantum Lean witnesses",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:50:43Z",
+                "completed_at": "2026-11-11T06:52:32Z"
+              },
+              {
+                "number": 14,
+                "name": "Archive proof evidence",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:52:32Z",
+                "completed_at": "2026-11-11T06:52:38Z"
+              },
+              {
+                "number": 28,
+                "name": "Post Checkout",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:52:38Z",
+                "completed_at": "2026-11-11T06:52:38Z"
+              },
+              {
+                "number": 29,
+                "name": "Complete job",
+                "status": "completed",
+                "conclusion": "success",
+                "started_at": "2026-11-11T06:52:38Z",
+                "completed_at": "2026-11-11T06:52:38Z"
+              }
+            ]
+          }
+        ]
+      },
       "merged_main_commit": null,
       "main_ci": null,
-      "scope": "The new bilingual publication PR; research PR450/main acceptance is separate and remains inherited MAIN_VERIFIED"
+      "merged_main_status": "PENDING_PUBLICATION_MAIN",
+      "receipt": {
+        "path": "physics/qm/book/evidence/v3.7/remote-delivery.json",
+        "sha256": "0c98f0c147a4cf2ffeaf0d1e7f1cc80705d3da958c630f5291e11a9f6843c678",
+        "bytes": 13244
+      },
+      "evidence": {
+        "git_payload_readback": {
+          "path": "physics/qm/book/evidence/v3.7/git-payload-readback.json",
+          "sha256": "59390a4a79e95a48d6da4b82acb9d29b323845daab256d61a30fea2c758eddc4",
+          "bytes": 39945
+        },
+        "publication_preflight": {
+          "path": "physics/qm/book/evidence/v3.7/publication-preflight.json",
+          "sha256": "e43a255c7af5ec198d1c461347edaaf94b61f2b943188cb3b00f869b8d59939c",
+          "bytes": 1433
+        }
+      },
+      "scope": "Exact source commit and its completed source CI only; no merged-main acceptance. Delivery metadata follow-up has separate CI recorded in the PR body.",
+      "observation_responsibility": "Root-supplied GitHub observation; this helper validates local identities and receipt consistency, without a new network query",
+      "metadata_followup": {
+        "status": "SEPARATE_FOLLOWUP_COMMIT_NOT_COVERED_BY_SOURCE_CI",
+        "final_ci_record": "PR_BODY",
+        "recursive_receipt_commits_required": false,
+        "frozen_six_artifacts_changed": false
+      }
     },
     "scientific_reuse": {
       "research_version": "v31.10-kernel1.10",
@@ -1830,10 +2147,11 @@
     },
     "local_acceptance_receipt": {
       "path": "physics/qm/book/evidence/v3.7/local-acceptance.json",
-      "direction": "Downstream terminal acceptance; path only to avoid circular hashes"
+      "direction": "Downstream terminal acceptance; path only to avoid circular hashes",
+      "scope": "Downstream terminal local acceptance: regenerate after this metadata update; path only. The old pre-PR receipt is separately preserved by its immutable source-commit identity"
     },
     "metadata_update_receipt": {
-      "path": "physics/qm/book/evidence/v3.7/publication-metadata-update.json",
+      "path": "physics/qm/book/evidence/v3.7/publication-remote-metadata-update.json",
       "direction": "Downstream; path only"
     },
     "review_materials": [
@@ -1929,8 +2247,8 @@
       },
       {
         "path": "physics/qm/book/review/README.md",
-        "sha256": "b907291328a21ef3c3b216b37eeac19e7bce78118eb2ee15fa8b9fe951303c52",
-        "bytes": 5958
+        "sha256": "df26a819c22e82363a784215dde0c0a3272d4e6628a130d845e2b2aae271a09e",
+        "bytes": 6341
       },
       {
         "path": "physics/qm/book/evidence/v3.7/review-integration.json",
@@ -2057,7 +2375,7 @@
     ],
     "publication_evidence_scope": "Exact installed receipt identities, retaining each receipt's own scope and historical/current distinction; the A handoff inventory is not a byte-identity assertion for adapted integrated reports",
     "review_identity_policy": "Current installed report bytes are identified here. Original A handoff manifest describes pre-integration copies; relative-link adaptation is separately recorded and is not falsely treated as byte identity.",
-    "hash_direction": "MD/TeX/PDF, independent build/visual receipts and immutable prior snapshots -> SOURCE_MANIFEST -> CHAPTER_DOSSIER -> external metadata-update receipt -> terminal local-acceptance; no reverse hashes",
+    "hash_direction": "Immutable source-commit files and remote-delivery/payload/preflight evidence -> SOURCE_MANIFEST -> CHAPTER_DOSSIER -> publication-remote-metadata-update; the final report is referenced by path only. Source CI does not cover the later metadata commit; its CI is recorded in the PR body, without recursive receipt commits.",
     "structure_verifier": {
       "path": "physics/qm/book/build/verify_book.py",
       "sha256": "f2a0f6e3b3eebb976fa576563dbcd9740ead8e38baba677b7019f130df1a65c7",
@@ -2066,10 +2384,11 @@
     "new_scientific_results_in_publication": 0,
     "renumbered_or_withdrawn_results": [],
     "not_inferred": [
-      "external peer review",
-      "new Lean execution",
-      "new runtime/experimental execution",
-      "new publication PR or main acceptance"
+      "external peer review or new hardware experiments",
+      "new local heavy scientific execution by this helper",
+      "publication main merge or main CI acceptance",
+      "CI acceptance of the subsequent delivery-metadata commit from the source run",
+      "independent download/hash/content verification of remote CI artifact ZIPs"
     ],
     "prior_current_fields": {
       "edition": "3.6",
@@ -2105,6 +2424,70 @@
           "historical_checks": 757
         }
       }
+    },
+    "prior_publication_metadata_checkpoint": {
+      "stage": "PUBLICATION_PR_PENDING",
+      "files": {
+        "source_manifest": {
+          "path": "physics/qm/book/SOURCE_MANIFEST.json",
+          "sha256": "c7b493aa7dfb29d0bab2eeb0c35d5289a3add603229942542a3b6da884f4d9ff",
+          "bytes": 68711,
+          "source_commit": "17b8959154d0459efd44cb9d7d30233e847d4e8f",
+          "immutable_url": "https://github.com/MurphyHoops/UEOT/blob/17b8959154d0459efd44cb9d7d30233e847d4e8f/physics/qm/book/SOURCE_MANIFEST.json"
+        },
+        "chapter_dossier": {
+          "path": "physics/qm/book/CHAPTER_DOSSIER.json",
+          "sha256": "13f68e5d6102f14e4215a715bb0dc56ff0ec3b686be518d6d1456708c7914c33",
+          "bytes": 1489494,
+          "source_commit": "17b8959154d0459efd44cb9d7d30233e847d4e8f",
+          "immutable_url": "https://github.com/MurphyHoops/UEOT/blob/17b8959154d0459efd44cb9d7d30233e847d4e8f/physics/qm/book/CHAPTER_DOSSIER.json"
+        },
+        "metadata_update_receipt": {
+          "path": "physics/qm/book/evidence/v3.7/publication-metadata-update.json",
+          "sha256": "f76a5b3549fafa05eb16e9151a7195720fe4f9ab0e4c6c75743ddfdb2c656c79",
+          "bytes": 4079,
+          "source_commit": "17b8959154d0459efd44cb9d7d30233e847d4e8f",
+          "immutable_url": "https://github.com/MurphyHoops/UEOT/blob/17b8959154d0459efd44cb9d7d30233e847d4e8f/physics/qm/book/evidence/v3.7/publication-metadata-update.json"
+        },
+        "local_acceptance_receipt": {
+          "path": "physics/qm/book/evidence/v3.7/local-acceptance.json",
+          "sha256": "4109fbec633e6ce21f0da8098c26879be552636332c5b5aa57a6992b12ba5fe5",
+          "bytes": 18359,
+          "source_commit": "17b8959154d0459efd44cb9d7d30233e847d4e8f",
+          "immutable_url": "https://github.com/MurphyHoops/UEOT/blob/17b8959154d0459efd44cb9d7d30233e847d4e8f/physics/qm/book/evidence/v3.7/local-acceptance.json"
+        }
+      },
+      "scope": "Old receipts are preserved at the immutable tested source commit. The original pre-PR metadata report stays unchanged; the current terminal local-acceptance receipt is regenerated downstream after this transition"
+    },
+    "followup_documents": {
+      "files": [
+        {
+          "path": "physics/qm/book/README.md",
+          "sha256": "e97ed2f6ca50ed20897a2f58bdb323988f286e0780c66a7541d24aae27249004",
+          "bytes": 10160
+        },
+        {
+          "path": "physics/qm/book/review/README.md",
+          "sha256": "df26a819c22e82363a784215dde0c0a3272d4e6628a130d845e2b2aae271a09e",
+          "bytes": 6341
+        },
+        {
+          "path": "physics/qm/book/build/record_remote_publication.py",
+          "sha256": "2fdc51565d418f1deb52116478e82d228012f5f1ae2f6a081824d890411af1dc",
+          "bytes": 23135
+        },
+        {
+          "path": "physics/qm/book/review/REMOTE_PUBLICATION_METADATA_README.md",
+          "sha256": "10c070f7d8766d9ffec32520714440bd36ddf421fc8d1678f298339fd11e95e0",
+          "bytes": 8880
+        },
+        {
+          "path": "physics/qm/book/evidence/v3.7/remote-publication-guard-check.json",
+          "sha256": "4665429c789ace8cca23c3b14223995e3711aa30086441a67e9bbca487c18fa2",
+          "bytes": 4001
+        }
+      ],
+      "scope": "Actual current delivery documentation/helper identities; subsequent metadata commit, not source-CI acceptance"
     }
   }
 }
