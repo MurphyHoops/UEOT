@@ -27,6 +27,9 @@ def source_paths() -> list[Path]:
     paths.update(kernel.rglob("*.py"))
     paths.update(p for p in (kernel / "certificates").rglob("*")
                  if p.is_file() and p.suffix in {".lean", ".json"})
+    conditioning = REPOSITORY / "physics/qm/conditioning"
+    paths.update(p for p in conditioning.glob("*")
+                 if p.is_file() and p.suffix in {".py", ".json", ".md"})
     paths.add(REPOSITORY / ".github/workflows/ueot-qm.yml")
     return sorted(paths)
 

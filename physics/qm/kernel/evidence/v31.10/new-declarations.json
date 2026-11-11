@@ -1,0 +1,666 @@
+{
+  "QuantumFiniteWindow": [
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.SupportFilter",
+      "kind": "structure"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.SupportFilter.identity",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.SupportFilter.zero",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.SupportFilter.apply",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.SupportFilter.metric",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.SupportFilter.complement",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.SupportFilter.apply_posSemidef",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.SupportFilter.apply_smul",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.SupportFilter.apply_zero",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.SupportFilter.identity_apply",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.SupportFilter.zero_apply",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.SupportFilter.complement_adjoint",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.SupportFilter.complement_sq",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.SupportFilter.complement_matrix",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.SupportFilter.inverse_metric",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.StepCertificate",
+      "kind": "structure"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.tiltedKraus",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.tilted_main_gram",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.tilted_fallback_gram",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.tiltedInstrument",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.tilted_main_transport",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.tilted_fallback_zero",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.tilted_branch_transport",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree",
+      "kind": "inductive"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.rootFilter",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.Valid",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.Leaf",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.leafFintype",
+      "kind": "instance"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.accepts",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.sourceWord",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.sourceWord_injective",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.sourceLeafOperator",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.sourceLeafOperator_eq_recordOperator",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.acceptedLeafOperator",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.tiltedLeafOperator",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.leaf_transport",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.tiltedLeafOperator_smul",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.tiltedLeafOperator_posSemidef",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.sum_tiltedLeafOperator_trace",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.successMass",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.successMass_eq_filtered_mass",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.successMass_nonneg",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.initialState",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.initialState_matrix",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.conditional_leaf",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.zero_success_filter",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.zero_success_no_positive",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.tiltedLeafOperator_zero",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.zero_success_all_accepted_blocks_zero",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.sourceLeafOperator_posSemidef",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.sum_sourceLeafOperator_trace",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.sourceWeights",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.sourceWeights_accepted_sum",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.successMass_le_one",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.metric_complement_posSemidef",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.leafDecidableEq",
+      "kind": "instance"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.block_eq_sum_lifts",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.block_posSemidef",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.block_smul",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.jointState",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.acceptedJointOperator",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.conditional_joint",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.conditional_record_probability",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.fallback_independent",
+      "kind": "theorem"
+    }
+  ],
+  "QuantumFiniteWindowSpectral": [
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.spectralFilter",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.spectralFilter_matrix_posSemidef",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.spectralFilter_metric",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.SupportFilter.matrix_projection",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.SupportFilter.matrix_complement",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.gram_sum_zero_component",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.support_of_backward",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.StepCertificate.of_backward",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.SourceTree",
+      "kind": "inductive"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.backwardGram",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.backwardGram_posSemidef",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.SourceTree.canonical",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.SourceTree.canonical_valid",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.FilterTree.erase",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.canonical_erases_to_source",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumFiniteWindow.source_node_conditional_joint",
+      "kind": "theorem"
+    }
+  ],
+  "QuantumActionRealizability": [
+    {
+      "name": "UEOTQM.QuantumActionRealizability.matrixUnit",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.matrix_expansion",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.branchLinear",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.branchLinear_apply",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.choi",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.choi_injective",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.conjugationLinear",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.instrumentChoiAfter",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.targetChoiAfter",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.instrumentChoiAfter_eq_iff",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.mixture_instrumentChoiAfter",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.weightsOfPMF",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.realizes_of_weights",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.realizable_after_iff_mem_convexHull",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.full_instrument_realizable_iff",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.support_realizable_iff",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.observation_realizable_iff_fiber_choi",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.separator_excludes_convexHull",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.support_agreement_on_fixed_input",
+      "kind": "theorem"
+    }
+  ],
+  "QuantumReachableActionRealizability": [
+    {
+      "name": "UEOTQM.QuantumActionRealizability.branchOutputFamily",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.mixture_branchOutputFamily",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.fixed_input_branch_realizable_iff",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.fixed_input_observation_realizable_iff",
+      "kind": "theorem"
+    }
+  ],
+  "QuantumActionCounterexamples": [
+    {
+      "name": "UEOTQM.QuantumActionRealizability.labelInstrument",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.labelInstrument_branch",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.labelInstrument_channel",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.fairWeights",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.fair_label_mixture_branch",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.swapped_labels_same_channel",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.swapped_labels_distinct_visible_branch",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.swapped_labels_not_realizable",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.hidden_nodes_individually_realizable",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.shared_observation_not_realizable",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.visibleTrueChoiMass",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.visibleTrueChoiMass_label",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.swapped_labels_choi_separation",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.fiberDifferenceChoiMass",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumActionRealizability.shared_observation_choi_separation",
+      "kind": "theorem"
+    }
+  ],
+  "QuantumActionPauliWitness": [
+    {
+      "name": "UEOTQM.QuantumActionPauliWitness.pauliZ",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumActionPauliWitness.pauliX",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumActionPauliWitness.pauliZ_gram",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumActionPauliWitness.pauliX_gram",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumActionPauliWitness.labelUnitary",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumActionPauliWitness.labelUnitary_branch",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumActionPauliWitness.allowed",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumActionPauliWitness.targetWeighted",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumActionPauliWitness.target",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumActionPauliWitness.target_branch",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumActionPauliWitness.fair_allowed_realizes_target",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumActionPauliWitness.target_choi_positive_certificate",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumActionPauliWitness.sourceWeighted",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumActionPauliWitness.source",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumActionPauliWitness.source_success_eq_half_target",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumActionPauliWitness.source_failure_branch",
+      "kind": "theorem"
+    }
+  ],
+  "QuantumInitializationCost": [
+    {
+      "name": "UEOTQM.QuantumInitializationCost.gramFactor",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumInitializationCost.gramFactor_gram",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumInitializationCost.filterInstrument",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumInitializationCost.filter_success_branch",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumInitializationCost.gram_filter_mass",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumInitializationCost.filter_success_probability",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumInitializationCost.filter_success_probability_pos",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumInitializationCost.filter_posterior_matrix",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumInitializationCost.scaled_filter_mean_attempts",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumInitializationCost.successProbability",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumInitializationCost.meanTrialCost",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumInitializationCost.retryTreeCost",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumInitializationCost.successProbability_nonneg",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumInitializationCost.failureWeight_eq",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumInitializationCost.successProbability_le_one",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumInitializationCost.retryTreeCost_succ",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumInitializationCost.retryTreeCost_closed",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumInitializationCost.retryTreeCost_tendsto",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumInitializationCost.sourceInitialFilter",
+      "kind": "def"
+    },
+    {
+      "name": "UEOTQM.QuantumInitializationCost.sourceInitialFilter_probability",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumInitializationCost.source_successProbability",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumInitializationCost.source_retryTreeCost_tendsto",
+      "kind": "theorem"
+    }
+  ],
+  "QuantumPostselectionError": [
+    {
+      "name": "UEOTQM.QuantumPostselectionError.binary_gap_le_div_of_le",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumPostselectionError.binary_gap_le_div_max",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumPostselectionError.probability_mul_posterior",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumPostselectionError.posterior_effectDistance_le_div_max",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumPostselectionError.posterior_effectDistance_le_min",
+      "kind": "theorem"
+    },
+    {
+      "name": "UEOTQM.QuantumPostselectionError.posterior_half_traceAbsolute_le_min",
+      "kind": "theorem"
+    }
+  ]
+}

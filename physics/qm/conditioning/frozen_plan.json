@@ -1,0 +1,50 @@
+{
+  "schema": "ueot-qm.finite-conditioning-reference/1",
+  "source_contract": "UEOT_Physics_Closure_Review_and_Plan_2026-11-11.txt, section 6",
+  "scope": "finite square carriers, fixed finite classical visible protocol, hidden Kraus sums",
+  "model": "two noncommuting visible success outcomes, three registered steps",
+  "source_instrument": {
+    "0": [ [["1/2", "0"], ["0", "1/4"]] ],
+    "1": [ [["1/4", "1/4"], ["1/4", "-1/4"]] ],
+    "failure": [ [["3/4", "0"], ["0", "3/4"]], [["1/4", "0"], ["0", "1/2"]] ]
+  },
+  "initial_density": {
+    "real": [["1/2", "0"], ["0", "1/2"]],
+    "imag": [["0", "-1/2"], ["1/2", "0"]]
+  },
+  "protocol": {
+    "kind": "repeated_success_with_early_failure",
+    "horizon": 3,
+    "success_labels": ["0", "1"],
+    "stop_on_failure": true,
+    "visible_records": "original outcome strings only; hidden Kraus indices are never appended"
+  },
+  "preparation": {
+    "input_class": "known repeatably preparable density",
+    "independent_reset_trials": true,
+    "unknown_input_deterministic_normalized_filter": "not assumed",
+    "external_reference": "not modelled; no stabilized or diamond guarantee"
+  },
+  "resource_units": {
+    "source_action": 1,
+    "preparation": "report separately; not assigned zero for physical advantage claims",
+    "failed_reset": "report separately",
+    "ancilla_and_calibration": "report separately"
+  },
+  "implementation_scope": {
+    "general_convex_test": "one-step randomization with the same weights on each declared observation fibre",
+    "quantifier": "full-space labelled instruments unless a separate support/fixed-input certificate explicitly says otherwise",
+    "long_circuit_controllability": "not claimed"
+  },
+  "comparison": {
+    "observable": "full visible-record and terminal-quantum CQ state",
+    "failure_records": "retained in original source law",
+    "acceptance_event": "all three original outcomes are in the registered success set"
+  },
+  "evidence_policy": {
+    "numpy_scipy": "numerical residuals and LP candidates only",
+    "sympy": "exact symbolic witness identities, not a general Lean proof",
+    "real_hardware_data": false,
+    "new_physics": false
+  }
+}

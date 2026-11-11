@@ -14,6 +14,9 @@ on:
       - "formalization/ueot-core/lakefile.lean"
       - "formalization/ueot-core/lake-manifest.json"
       - "formalization/ueot-core/lean-toolchain"
+      - "physics/qm/conditioning/**"
+      - "physics/qm/book/build/**"
+      - "physics/qm/book/UEOT_PHYSICS.md"
       - "physics/qm/kernel/*.py"
       - "physics/qm/kernel/ueot_qm/**"
       - "physics/qm/kernel/tests/**"
@@ -31,6 +34,9 @@ on:
       - "formalization/ueot-core/lakefile.lean"
       - "formalization/ueot-core/lake-manifest.json"
       - "formalization/ueot-core/lean-toolchain"
+      - "physics/qm/conditioning/**"
+      - "physics/qm/book/build/**"
+      - "physics/qm/book/UEOT_PHYSICS.md"
       - "physics/qm/kernel/*.py"
       - "physics/qm/kernel/ueot_qm/**"
       - "physics/qm/kernel/tests/**"
@@ -58,6 +64,12 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: "3.12"
+      - name: Install finite conditioning reference dependencies
+        run: python -m pip install numpy==2.3.5 scipy==1.17.0 sympy==1.14.0
+      - name: Verify finite conditioning source, records, implementations and costs
+        run: python physics/qm/conditioning/verify_runtime.py --output-dir /tmp/ueot-qm-finite-conditioning
+      - name: Verify canonical physics book structure
+        run: python physics/qm/book/build/verify_book.py
       - name: Verify exact kernel and independent negative controls
         run: python physics/qm/kernel/verify_kernel.py --output /tmp/ueot-qm-runtime-verification.json
       - name: Run complete kernel example
@@ -74,6 +86,7 @@ jobs:
         with:
           name: ueot-qm-runtime-${{ github.run_id }}
           path: |
+            /tmp/ueot-qm-finite-conditioning/
             /tmp/ueot-qm-runtime-verification.json
             /tmp/ueot-qm-demo.json
             /tmp/ueot-qm-demo-v312.json

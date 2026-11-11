@@ -1,102 +1,84 @@
 {
-  "schema": "ueot-qm-current/4",
-  "date": "2026-10-20",
-  "version": "v31.9-kernel1.9",
-  "layer": "P — finite quantum sector and typed Core interfaces",
-  "objective": "基于UEOT追求完备、可解释、可检验的量子物理理论，并持续维护含全部前提、推导、反例和开放责任的正式著作《UEOT物理学》。",
-  "research_baseline": "6b3ba80ec418ff04c4b6e2cd5c321b654540e9d1",
-  "baseline_tree": "d900109f97fd032bb3682ecbd5fdf7577b415307",
-  "frozen_core": {
-    "modified": false,
-    "coverage_items": 106,
-    "counted_generators": 4
+  "schema": "ueot-qm-current/5",
+  "date": "2026-11-11",
+  "version": "v31.10-kernel1.10",
+  "layer": "P — finite complex quantum physics and typed read-only Core interfaces",
+  "objective": "推进UEOT物理中原仪器—完整条件记录与末态—允许实现—成本与误差的有限闭环。",
+  "research_baseline": "3d443ec29eb17af1fc00699a74e2d42d73516d81",
+  "baseline_tree": "a694f88c91ed21f034c3270535c155fc6e6328c7",
+  "core_policy": {
+    "tracked_core_modified": false,
+    "role": "Read-only source-bound dependency; no Core or GI task initiated."
   },
-  "entrypoint": "physics/qm/UEOT_QM_KERNEL_v31.9.md",
-  "execution_contract": "physics/qm/UEOT_QM_EXECUTION_v31.9.md",
-  "runtime_entrypoint": "physics/qm/kernel/README.md",
+  "entrypoint": "physics/qm/UEOT_QM_KERNEL_v31.10.md",
+  "execution_contract": "physics/qm/UEOT_QM_EXECUTION_v31.10.md",
+  "runtime_entrypoint": "physics/qm/conditioning/README.md",
   "formalization": "formalization/ueot-qm/README.md",
   "roadmap": "physics/qm/ROADMAP.md",
-  "claim_ledger": "physics/qm/status/CLAIM_LEDGER_v31.9.json",
-  "previous_claim_ledger": "physics/qm/status/CLAIM_LEDGER_v31.8.json",
+  "claim_ledger": "physics/qm/status/CLAIM_LEDGER_v31.10.json",
+  "previous_claim_ledger": "physics/qm/status/CLAIM_LEDGER_v31.9.json",
   "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING",
   "local_checkpoint_state": "LOCAL_VERIFIED_REMOTE_PENDING",
   "acceptance_marker": {
     "state": "LOCAL_VERIFIED_REMOTE_PENDING",
-    "change_class": "SCIENTIFIC_INCREMENT_AND_CONTINUOUS_MONOGRAPH",
-    "authority": "Actual source-bound unified public proof, three new witnesses, explicitly bound legacy reuse, independent review and completed book gates",
+    "finite_conditional_chain": "CLOSED_WITH_STATED_ASSUMPTIONS",
     "local_machine_acceptance": "PASS",
     "book_local_acceptance": "PASS",
-    "integration_acceptance": "PENDING",
-    "does_not_promote": [
-      "full_natural_theory_proved",
-      "complex_quantum_selection_from_frozen_Core",
-      "unconditional_physical_three_generations",
-      "new_experimental_confirmation",
-      "arbitrary_coherent_controller_budget",
-      "unequal_dimensional_rectangular_unitary",
-      "infinite_or_unbounded_stopping_process",
-      "general_certified_numerical_spectral_algorithm",
-      "general_diamond_norm_identification",
-      "all_input_runtime_program_correctness"
-    ]
+    "integration_acceptance": "PENDING"
+  },
+  "source_identity": {
+    "manifest": {
+      "path": "physics/qm/kernel/evidence/v31.10/source-manifest.json",
+      "sha256": "12a2cda45490c915c5c6c3ef3bf5963b738a5c793acc4b82ed0b16a4f78c03f6",
+      "bytes": 31511
+    },
+    "verification": {
+      "path": "physics/qm/kernel/evidence/v31.10/lean-verification.json",
+      "sha256": "1888f3c1a3409fa90dcda2797b6387b1e9bf65f36a2dcee0a2e93241401fd941",
+      "bytes": 1882
+    },
+    "source_count": 155,
+    "source_set_sha256": "a3c49afc9a3e8be0fffd0892ffc5e175bd17a00eb7a93c6adad8febc4cb4e3a6",
+    "scope": "Recursive public QM/Core source closure and eight proof configuration/verifier files; runtime sources have their own nine-file execution receipt.",
+    "current_bytes_match_executed_bytes": true
+  },
+  "proof_receipt": "physics/qm/kernel/evidence/v31.10/lean-verification.json",
+  "source_manifest": "physics/qm/kernel/evidence/v31.10/source-manifest.json",
+  "runtime_receipt": "physics/qm/kernel/evidence/v31.10/runtime/execution_receipt.json",
+  "local_verification": {
+    "public_modules": 49,
+    "public_explicit_theorems": 959,
+    "public_named_axiom_reports": 1285,
+    "new_modules": 8,
+    "new_explicit_theorems": 105,
+    "new_named_axiom_reports": 162,
+    "semantic_runtime_tests": 19,
+    "exact_symbolic_checks": 95,
+    "runtime_receipt": {
+      "path": "physics/qm/kernel/evidence/v31.10/runtime/execution_receipt.json",
+      "sha256": "2e16fd056d90eb939ce13784bed77fc76cda3763e681296b966a7ca89b88c20f",
+      "bytes": 3295
+    },
+    "proof_receipt": {
+      "path": "physics/qm/kernel/evidence/v31.10/lean-verification.json",
+      "sha256": "1888f3c1a3409fa90dcda2797b6387b1e9bf65f36a2dcee0a2e93241401fd941",
+      "bytes": 1882
+    },
+    "new_hardware_data": false,
+    "ordinary_lean_linter_warnings_present": true,
+    "historical_witnesses_rerun_locally": false
   },
   "completed_in_this_delivery": [
-    "Finite Hermitian absolute-value spectral formula, density trace-distance equality, legal attained optimal effect, equal-prior binary discrimination and exact support certificates.",
-    "All-density purification existence iff actual rank fits the auxiliary carrier, attained minimal dimension and direct isometry under the required cardinal direction.",
-    "Actual finite stopping-tree completion, invalid zero blocks, legal distance transport and shared-stopping per-action record budgets weighted by the true reference prefix.",
-    "Continuous monograph edition 3.5 with 147 preserved and 14 new numbered results; 70 historical claim objects are inherited without rewriting their mathematical or historical scope."
-  ],
-  "proof_receipt": "physics/qm/kernel/evidence/v31.9/lean-verification.json",
-  "source_manifest": "physics/qm/kernel/evidence/v31.9/source-manifest.json",
-  "source_identity": {
-    "manifest": "physics/qm/kernel/evidence/v31.9/source-manifest.json",
-    "source_count": 98,
-    "source_set_sha256": "bf026d2a1f7d8c8bd1f9f6c1ad9015aa20bdae6bd36b9d432c7ce6f0581effc0",
-    "unified_and_publication_inputs_identical": true,
-    "rule": "The same current 98 source files and raw hashes identify the actual unified local acceptance and the release candidate. No comment-only reconciliation bridge is used."
-  },
-  "finite_witness_receipt": "physics/qm/kernel/evidence/v31.9/finite-witnesses/verification.json",
-  "instance_receipt": "physics/qm/kernel/evidence/v31.8/lean-exports/verification.json",
-  "legacy_reuse_receipt": "physics/qm/kernel/evidence/v31.9/legacy-reuse.json",
-  "next_execution": {
-    "contract": "physics/qm/UEOT_QM_EXECUTION_v31.9.md",
-    "status": "REMOTE_PUBLICATION_PENDING",
-    "current_contract_status": "LOCAL_VERIFIED_REMOTE_PENDING",
-    "current_remaining_work": [
-      "Publish the frozen scientific source PR",
-      "Verify the actual PR CI and merge",
-      "Verify independent main push CI and every frozen source/Core/book/payload byte",
-      "Publish separate current remote metadata with actual identities"
-    ]
-  },
-  "known_open_items": [
-    "Independent UEOT physical reasons for selecting the complex model and all reconstruction premises; excluding classical and real candidates is not uniqueness among all theories.",
-    "General certified computation of channel-defect suprema, stabilized/diamond distances, coherent controllers and explicitly modelled external environments.",
-    "Infinite or unbounded stopping/conditioning, general spectral existence and mixing conditions, continuous-variable energy and operator-domain control.",
-    "Executable spectral algorithms with exactness or rounding guarantees, approximate/stable-rank questions and physical preparation complexity.",
-    "All-input refinement of parsers, exporters, index programs, search/elimination, PSD decision procedures and adaptive-tree runtimes.",
-    "Real QDRR observations, full physical spectra and representations, thresholds/effective windows, global anomalies, vacuum, masses and continuum/QFT limits."
+    "Original finite instruments and accepted leaves construct spectral support filters and the same-source complete conditional CQ output.",
+    "Allowed action randomization is characterized with visible-outcome Choi families, support restrictions, reachable inputs and shared observation fibres; both realization and separation witnesses are included.",
+    "Physical initial filters, source-leaf retry costs and sharp conditional trace-distance error are connected with explicit resource and success conditions.",
+    "Eight new public Lean modules, exact finite controls, numerical reference and chapter 66 are integrated with preserved historical objects."
   ],
   "integration": {
-    "target_branch": "main",
-    "temporary_branch": "qm/v31.9-trace-distance-minimal-purification-stopping-20261020",
     "state": "REMOTE_PENDING",
-    "scope": [
-      "formalization/ueot-qm/**",
-      "physics/qm/**",
-      ".github/workflows/ueot-qm.yml"
-    ],
-    "published_research_baseline": "6b3ba80ec418ff04c4b6e2cd5c321b654540e9d1",
-    "baseline_tree": "d900109f97fd032bb3682ecbd5fdf7577b415307",
-    "source_count": 98,
-    "source_set_sha256": "bf026d2a1f7d8c8bd1f9f6c1ad9015aa20bdae6bd36b9d432c7ce6f0581effc0",
-    "source_identity": {
-      "manifest": "physics/qm/kernel/evidence/v31.9/source-manifest.json",
-      "source_count": 98,
-      "source_set_sha256": "bf026d2a1f7d8c8bd1f9f6c1ad9015aa20bdae6bd36b9d432c7ce6f0581effc0",
-      "unified_and_publication_inputs_identical": true,
-      "rule": "The same current 98 source files and raw hashes identify the actual unified local acceptance and the release candidate. No comment-only reconciliation bridge is used."
-    },
+    "target_branch": "main",
+    "temporary_branch": "physics/finite-conditional-closure-20261111",
+    "authoring_baseline": "3d443ec29eb17af1fc00699a74e2d42d73516d81",
     "source_commit": null,
     "source_tree": null,
     "source_pr": null,
@@ -106,133 +88,94 @@
     "main_run": null,
     "pr_ci_status": "PENDING",
     "main_ci_status": "PENDING",
-    "receipt": null,
+    "receipt": "physics/qm/kernel/evidence/v31.10/integration-verification.json",
     "artifact_zip_contents_verified": false,
-    "metadata_commit_is_not_ci_tested_source_commit": true,
-    "previous_version": {
-      "version": "v31.8",
-      "state": "MAIN_VERIFIED",
-      "integration_receipt": "physics/qm/kernel/evidence/v31.8/integration-verification.json",
-      "accepted_baseline_commit": "6b3ba80ec418ff04c4b6e2cd5c321b654540e9d1",
-      "scope": "Historical v31.8 CI identities remain separate. Source-closed legacy reuse does not make old CI a v31.9 run."
-    }
+    "metadata_commit_is_not_ci_tested_source_commit": true
   },
   "book": {
     "title": "UEOT物理学",
-    "edition": "3.5",
+    "edition": "3.6",
     "state": "LOCAL_VERIFIED_REMOTE_PENDING",
     "canonical": "physics/qm/book/UEOT_PHYSICS.md",
     "pdf": "physics/qm/book/UEOT_PHYSICS.pdf",
     "latex": "physics/qm/book/UEOT_PHYSICS.tex",
-    "chapters": 66,
+    "chapters": 67,
     "appendices": 6,
-    "numbered_results": 161,
-    "pdf_pages": 248,
-    "inherited_numbered_results": 147,
-    "new_numbered_results": 14,
+    "numbered_results": 173,
+    "pdf_pages": 256,
+    "inherited_numbered_results": 161,
+    "new_numbered_results": 12,
     "new_result_chapters": [
-      63,
-      64,
-      65
+      66
     ],
     "dossier": "physics/qm/book/CHAPTER_DOSSIER.json",
-    "release_gates": "physics/qm/book/evidence/v3.5/local-release-gates.json",
-    "whole_book_formalized": false,
-    "remote_publication": "PENDING",
+    "release_gates": "physics/qm/book/evidence/v3.6/local-release-gates.json",
     "current_source_hashes": {
       "canonical": {
         "path": "physics/qm/book/UEOT_PHYSICS.md",
-        "sha256": "b726e3b9033d79ef949b8e83469901fe728aa28ab204b2e4d55bf36a18b412f0",
-        "bytes": 631531
+        "sha256": "eabce172cd32773e21fa5373359d0fef7e52442b5d0368e11268130b4f89e921",
+        "bytes": 659270
       },
       "pdf": {
         "path": "physics/qm/book/UEOT_PHYSICS.pdf",
-        "sha256": "3668cb3094d3813c6a4657f2f2cfb187ae5f4e25d8184c3b7ab2ab1a820bc256",
-        "bytes": 1246121
+        "sha256": "4b2e80a974bf9d9df9dfd8b050f68fcf7fbf5826533037bf1758430651695fc4",
+        "bytes": 1253907
       },
       "latex": {
         "path": "physics/qm/book/UEOT_PHYSICS.tex",
-        "sha256": "c8dfe618864abade0ef5d11aa6ed607522a9c94a79e12a0a7e863d6becc0637e",
-        "bytes": 743425
+        "sha256": "6a701d747fc5012d2925ecc75b1a8e1df56399c0e98c296aec08221423c87233",
+        "bytes": 739934
       }
     },
-    "visual_review_scope": "The actual visual receipt states overview and selected complete-page review. No page-by-page full close reading is inferred.",
-    "previous_edition": {
-      "edition": "3.4",
-      "state": "MAIN_VERIFIED",
-      "local_gates": "physics/qm/book/evidence/v3.4/local-release-gates.json",
-      "remote_receipt": "physics/qm/book/evidence/v3.4/remote-publication.json"
-    }
+    "whole_book_formalized": false,
+    "remote_publication": "PENDING"
   },
-  "local_verification": {
-    "state": "PASS",
-    "checked_at_utc": "2026-10-20T16:09:02.393844+00:00",
-    "generic_modules": 41,
-    "explicit_theorems": 854,
-    "named_axiom_reports": 1123,
-    "listed_non_theorem_audit_targets": 269,
-    "new_theorems": 107,
-    "new_audit_targets": 138,
-    "actual_build_exit_code": 0,
-    "actual_build_jobs": 8805,
-    "actual_axiom_audit_exit_code": 0,
-    "allowed_foundation": [
-      "Classical.choice",
-      "Quot.sound",
-      "propext"
+  "scope_limits": [
+    "Finite-dimensional complex quantum structure, complete original instruments and a fixed accepted finite tree are explicit physical inputs.",
+    "The Lean source-tree interpreter uses uniform finite carriers and one fixed fallback per tree; node-dependent fallback is a paper consequence of the same local identity.",
+    "Allowed-library convex-hull criteria distinguish full maps, support-restricted maps and prescribed reachable inputs; the local criteria are not a universal iff for all terminal-only simulators.",
+    "All-input deterministic normalization classification and the external-reference exception are paper proofs with exact finite controls; they classify the prescribed initialization map.",
+    "The finite retry-cost recurrence is in Lean; identification with an infinite iid trial-space expectation is a paper monotone-convergence argument requiring fresh preparation.",
+    "The Kraus norm sufficient defect bound and spectral-gap perturbation constants are paper results; exact examples and floating diagnostics do not certify a general eigensolver.",
+    "No new hardware data, complete natural theory, fundamental complex-sector selection, unrestricted coherent controller or unbounded-time conditioning is claimed."
+  ],
+  "known_open_items": [
+    "Independent physical selection of the complex quantum sector and its reconstruction premises.",
+    "Certified numerical support/spectral computations and all-input implementation refinement.",
+    "Measured device operations, preparation/reset/record costs and calibration with an independently frozen experiment.",
+    "General unbounded conditioning, coherent controllers, continuous-variable and QFT limits."
+  ],
+  "next_execution": {
+    "status": "REMOTE_PUBLICATION_PENDING",
+    "current_remaining_work": [
+      "Publish this exact source branch, inspect actual PR CI, merge, inspect independent main CI and reconcile frozen bytes.",
+      "Record completed remote identities in a separate metadata-only follow-up."
+    ]
+  },
+  "prior_publication_reconciliation": {
+    "version": "v31.9",
+    "state": "MERGED_AND_CI_VERIFIED_FOR_INSPECTED_SCOPE",
+    "pull_request": 356,
+    "source_commit": "27f6ac776c562512451000d5957087d3ecdcd086",
+    "merge_commit": "e9b61ca9c35955028c4bfa425dfa278fd1864029",
+    "merged_at_utc": "2026-10-21T08:37:29Z",
+    "pr_run": 39569411258,
+    "main_run": 39570687643,
+    "pr_conclusion": "success",
+    "main_conclusion": "success",
+    "scope": "Actual PR/main run identities and steps; old 41 QM modules, listed scripts/toolchain, three canonical book files and 56 previously consumed Core source blobs matched during the 2026-11-11 review.",
+    "not_checked": [
+      "all 255 historical publication payload files",
+      "artifact ZIP contents"
     ],
-    "ordinary_lean_linter_warnings_present": true,
-    "finite_witness_theorems": 298,
-    "finite_witness_definitions": 110,
-    "finite_witness_abbreviations": 8,
-    "finite_witness_audit_reports": 416,
-    "finite_witness_bound_modules": 98,
-    "finite_witness_execution_mode": "ACTUAL_NEW_AND_BOUND_HISTORICAL_REUSE",
-    "actually_executed_new_witness_files": 3,
-    "actually_executed_new_witness_audits": 147,
-    "reused_legacy_witness_files": 10,
-    "reused_legacy_witness_audits": 269,
-    "runtime_test_methods": 100,
-    "demos": 4,
-    "positive_instances": 6,
-    "positive_instance_audit_reports": 42,
-    "corrupted_true_proofs_rejected": 4,
-    "same_data_false_witnesses": 4,
-    "legacy_execution_mode": "REUSED_UNCHANGED_SCIENTIFIC_INPUTS",
-    "legacy_reuse_receipt": "physics/qm/kernel/evidence/v31.9/legacy-reuse.json",
-    "legacy_gates_receipt": "physics/qm/kernel/evidence/v31.9/legacy-gates-summary.json",
-    "new_legacy_lean_compiler_invocations": 0,
-    "new_legacy_runtime_test_invocations": 0,
-    "historical_actual_main_ci_for_reuse": 39424068985,
-    "core_import_count": 56,
-    "source_count": 98,
-    "source_set_sha256": "bf026d2a1f7d8c8bd1f9f6c1ad9015aa20bdae6bd36b9d432c7ce6f0581effc0",
-    "proof_receipt": "physics/qm/kernel/evidence/v31.9/lean-verification.json",
-    "source_manifest": "physics/qm/kernel/evidence/v31.9/source-manifest.json",
-    "current_remote_ci": "PENDING",
-    "current_main_integration": "PENDING"
+    "historical_pending_words_preserved_in_original_receipts": true
   },
-  "nonclaims": {
-    "full_natural_theory_proved": "NOT_CLAIMED",
-    "complex_quantum_selection_from_frozen_Core": "NOT_CLAIMED",
-    "unconditional_physical_three_generations": "NOT_CLAIMED",
-    "new_experimental_confirmation": "NOT_CLAIMED",
-    "arbitrary_coherent_controller_budget": "NOT_CLAIMED",
-    "unequal_dimensional_rectangular_unitary": "NOT_CLAIMED",
-    "infinite_or_unbounded_stopping_process": "NOT_CLAIMED",
-    "general_certified_numerical_spectral_algorithm": "NOT_CLAIMED",
-    "general_diamond_norm_identification": "NOT_CLAIMED",
-    "all_input_runtime_program_correctness": "NOT_CLAIMED"
-  },
-  "metadata_updated_at_utc": "2026-10-20T16:23:39.093802+00:00",
   "historical_current_checkpoint": {
-    "version": "31.8-kernel.1.8",
-    "state": "MAIN_VERIFIED",
-    "commit": "6b3ba80ec418ff04c4b6e2cd5c321b654540e9d1",
-    "path": "physics/qm/status/CURRENT.json",
-    "git_blob_sha1": "0021218e93e4d8dc0dbcb2d7aaa5317af8e73c21",
-    "sha256": "1d91d9718e88e3ddceea21a5823aa850417068224a42b829ac100ae1472746f0",
-    "scope": "The previous CURRENT bytes remain recoverable from their actual closed baseline commit. They are not the current v31.9 checkpoint."
+    "path": "physics/qm/kernel/evidence/v31.10/prior/CURRENT_v31.9.json",
+    "sha256": "6757e045ab023bf650d01d79d2c06420e9a2c9b7968c1c0922bb519f6bdefd93",
+    "bytes": 11997
   },
-  "historical_claim_scope": "All 70 inherited claim objects keep their original values, premises, proof identity and local/remote checkpoint words. New current acceptance and newly resolved subresponsibilities are recorded separately."
+  "historical_claim_scope": "All 84 v31.9 claim objects and all 161 old book result objects are unchanged; present acceptance is recorded separately.",
+  "new_hardware_data": false,
+  "metadata_updated_at_utc": "2026-11-11T05:28:05.475471+00:00"
 }

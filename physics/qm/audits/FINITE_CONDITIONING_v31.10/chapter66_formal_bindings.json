@@ -1,0 +1,779 @@
+[
+  {
+    "id": "P-FCOND-01",
+    "chapter": 66,
+    "anchor": "p-fcond-01",
+    "title": "同一有限原实验的接受效应",
+    "verification_scope": "Lean endpoints for actual source mass and effect bounds; trace-pairing identification by listed endpoint composition",
+    "formal_audit_ref": "physics/qm/kernel/evidence/v31.10/lean-verification.json",
+    "formal_bindings": [
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindowSpectral.lean",
+        "declaration": "UEOTQM.QuantumFiniteWindow.backwardGram_posSemidef",
+        "kind": "theorem",
+        "role": "后向原 Gram 和为 PSD。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindowSpectral.lean",
+        "declaration": "UEOTQM.QuantumFiniteWindow.spectralFilter_metric",
+        "kind": "theorem",
+        "role": "谱工厂的 S†S 精确等于输入后向效应。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+        "declaration": "UEOTQM.QuantumFiniteWindow.FilterTree.successMass_eq_filtered_mass",
+        "kind": "theorem",
+        "role": "原接受叶质量和等于根过滤矩阵的质量，对任意复矩阵输入成立。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumInitializationCost.lean",
+        "declaration": "UEOTQM.QuantumInitializationCost.gram_filter_mass",
+        "kind": "theorem",
+        "role": "mass(B X B†)=pairing(B†B,X)，连接上述等式与 Tr(HX)。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+        "declaration": "UEOTQM.QuantumFiniteWindow.FilterTree.metric_complement_posSemidef",
+        "kind": "theorem",
+        "role": "从原完整性及树有效性导出 I-H 为 PSD。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+        "declaration": "UEOTQM.QuantumFiniteWindow.FilterTree.sum_sourceLeafOperator_trace",
+        "kind": "theorem",
+        "role": "原完整仪器树的所有叶迹和等于输入迹。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+        "declaration": "UEOTQM.QuantumFiniteWindow.FilterTree.sourceWeights_accepted_sum",
+        "kind": "theorem",
+        "role": "实际原叶概率 law 的接受质量是同一 successMass。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+        "declaration": "UEOTQM.QuantumFiniteWindow.FilterTree.successMass_le_one",
+        "kind": "theorem",
+        "role": "密度输入的原接受质量不超过 1。"
+      }
+    ],
+    "paper_only": [
+      "每个内部节点的 H 与其规范谱根的统一正文记号，由 canonical 工厂及上述端点组合识别；不另声称存在以 P-FCOND-01 命名的单一定理。"
+    ],
+    "limits": [
+      "有限、固定复矩阵载体及经典原仪器树；p 来自原接受叶质量。",
+      "在规范工厂中不额外供应 H、p 或条件记录等式。"
+    ],
+    "executable_evidence": [
+      {
+        "file": "physics/qm/kernel/evidence/v31.10/runtime/exact_witnesses.json",
+        "inspected_artifact": "closure_candidates/runtime/evidence_final/exact_witnesses.json",
+        "kind": "exact_symbolic_finite_witness",
+        "check_names": [
+          "T3 backward acceptance is 117/4096",
+          "exact accepted visible leaf sum equals backward pairing",
+          "all visible leaf mass is one, including early failures"
+        ],
+        "scope": "具体原源后向效应、原叶质量和与原概率的精确有限核对。",
+        "provenance": "Check names and PASS_EXACT_SYMBOLIC records read from the Linux artifact; final Mac path confirmed by release owner, not directly inspected by this reviewer."
+      }
+    ]
+  },
+  {
+    "id": "P-FCOND-02",
+    "chapter": 66,
+    "anchor": "p-fcond-02",
+    "title": "后向 Gram 和导出核消去",
+    "verification_scope": "General Lean theorem, including singular supports",
+    "formal_audit_ref": "physics/qm/kernel/evidence/v31.10/lean-verification.json",
+    "formal_bindings": [
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindowSpectral.lean",
+        "declaration": "UEOTQM.QuantumFiniteWindow.gram_sum_zero_component",
+        "kind": "theorem",
+        "role": "有限正 Gram 和为零推出每个原矩阵为零。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindowSpectral.lean",
+        "declaration": "UEOTQM.QuantumFiniteWindow.SupportFilter.matrix_complement",
+        "kind": "theorem",
+        "role": "S(I-P)=0。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindowSpectral.lean",
+        "declaration": "UEOTQM.QuantumFiniteWindow.support_of_backward",
+        "kind": "theorem",
+        "role": "从原后向 Gram 关系导出 S_child K P = S_child K。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindowSpectral.lean",
+        "declaration": "UEOTQM.QuantumFiniteWindow.StepCertificate.of_backward",
+        "kind": "definition",
+        "role": "只输入后向 Gram 等式，即构造含已证明 support 关系的局部证书。"
+      }
+    ],
+    "paper_only": [],
+    "limits": [
+      "support_of_backward 的结论等价于 S_child K(I-P)=0；没有正定或全秩前提。",
+      "谱根、支撑逆的数值计算正确性不随该一般代数定理自动获得。"
+    ],
+    "executable_evidence": [
+      {
+        "file": "physics/qm/kernel/evidence/v31.10/runtime/exact_witnesses.json",
+        "inspected_artifact": "closure_candidates/runtime/evidence_final/exact_witnesses.json",
+        "kind": "exact_symbolic_finite_witness",
+        "check_names": [
+          "singular Moore-Penrose support identities",
+          "singular source support annihilation"
+        ],
+        "scope": "实际奇异有限源的支撑及核消去证书。",
+        "provenance": "Check names and PASS_EXACT_SYMBOLIC records read from the Linux artifact; final Mac path confirmed by release owner, not directly inspected by this reviewer."
+      }
+    ]
+  },
+  {
+    "id": "P-FCOND-03",
+    "chapter": 66,
+    "anchor": "p-fcond-03",
+    "title": "支撑变换及合法全空间补全",
+    "verification_scope": "General Lean local instrument construction and all-operator transport",
+    "formal_audit_ref": "physics/qm/kernel/evidence/v31.10/lean-verification.json",
+    "formal_bindings": [
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+        "declaration": "UEOTQM.QuantumFiniteWindow.tilted_main_gram",
+        "kind": "theorem",
+        "role": "原变换主 Kraus 家族的 Gram 和等于支撑投影 P。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+        "declaration": "UEOTQM.QuantumFiniteWindow.tilted_fallback_gram",
+        "kind": "theorem",
+        "role": "完整补全的 Gram 和等于 I-P。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+        "declaration": "UEOTQM.QuantumFiniteWindow.tiltedInstrument",
+        "kind": "definition",
+        "role": "实际完整 Instrument 构造；complete 字段由上述 Gram 定理证明，可见结果仍为 O。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+        "declaration": "UEOTQM.QuantumFiniteWindow.tilted_fallback_zero",
+        "kind": "theorem",
+        "role": "补全作用在过滤输入上为零。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+        "declaration": "UEOTQM.QuantumFiniteWindow.tilted_branch_transport",
+        "kind": "theorem",
+        "role": "对所有复矩阵的带可见标签分支运输等式。"
+      }
+    ],
+    "paper_only": [],
+    "limits": [
+      "局部定理允许任意完整 fallback J；隐藏指标扩为 κ⊕ξ，可见标签不变。",
+      "物理 CP 性由已有实际 Kraus Instrument 体系提供，不是额外输入的后果字段。"
+    ],
+    "executable_evidence": [
+      {
+        "file": "physics/qm/kernel/evidence/v31.10/runtime/exact_witnesses.json",
+        "inspected_artifact": "closure_candidates/runtime/evidence_final/exact_witnesses.json",
+        "kind": "exact_symbolic_finite_witness",
+        "check_names": [
+          "support completeness via actual Gram sum at t=0",
+          "both distinct support completions are complete",
+          "rational local inverse, Gram and transformed completeness",
+          "rational local branch intertwining"
+        ],
+        "scope": "正定与奇异具体源的完整性及逐分支运输。",
+        "provenance": "Check names and PASS_EXACT_SYMBOLIC records read from the Linux artifact; final Mac path confirmed by release owner, not directly inspected by this reviewer."
+      }
+    ]
+  },
+  {
+    "id": "P-FCOND-04",
+    "chapter": 66,
+    "anchor": "p-fcond-04",
+    "title": "完整叶记录与末态的同源条件化",
+    "verification_scope": "General Lean complete-CQ conditioning for a fixed fallback; arbitrary nodewise fallback remains paper generalization",
+    "formal_audit_ref": "physics/qm/kernel/evidence/v31.10/lean-verification.json",
+    "formal_bindings": [
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindowSpectral.lean",
+        "declaration": "UEOTQM.QuantumFiniteWindow.SourceTree.canonical",
+        "kind": "definition",
+        "role": "仅从原仪器及接受/拒绝叶构造后向谱证书树。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindowSpectral.lean",
+        "declaration": "UEOTQM.QuantumFiniteWindow.SourceTree.canonical_valid",
+        "kind": "theorem",
+        "role": "规范原树工厂输出有效。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindowSpectral.lean",
+        "declaration": "UEOTQM.QuantumFiniteWindow.canonical_erases_to_source",
+        "kind": "theorem",
+        "role": "擦除数学证书后精确返回同一原仪器树。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindowSpectral.lean",
+        "declaration": "UEOTQM.QuantumFiniteWindow.source_node_conditional_joint",
+        "kind": "theorem",
+        "role": "非平凡原树的 source-only 完整 CQ 条件端点，根原仪器提供 fallback。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+        "declaration": "UEOTQM.QuantumFiniteWindow.FilterTree.conditional_leaf",
+        "kind": "theorem",
+        "role": "每个原叶量子块等于其原接受块除以原 successMass。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+        "declaration": "UEOTQM.QuantumFiniteWindow.FilterTree.conditional_joint",
+        "kind": "theorem",
+        "role": "完整原叶标签与终端量子记忆的联合态等式。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+        "declaration": "UEOTQM.QuantumFiniteWindow.FilterTree.fallback_independent",
+        "kind": "theorem",
+        "role": "两个全树固定 fallback 可有不同隐藏载体，条件联合态仍相同。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+        "declaration": "UEOTQM.QuantumFiniteWindow.FilterTree.zero_success_all_accepted_blocks_zero",
+        "kind": "theorem",
+        "role": "p=0 时全部原接受块为零。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+        "declaration": "UEOTQM.QuantumFiniteWindow.FilterTree.sourceWord_injective",
+        "kind": "theorem",
+        "role": "完整原可见叶词可区分；隐藏 Kraus 不进入叶。"
+      }
+    ],
+    "paper_only": [
+      "每个节点可各自选择任意 J_h 的补全无关，由同一局部运输等式作书面树归纳；当前 Lean 解释器在一棵树内使用一个固定 J。",
+      "改变各节点结果/隐藏载体需明确零填充或同构适配；这里不声称已有任意变载体总解释器。"
+    ],
+    "limits": [
+      "p>0 才构造条件密度；拒绝原叶在条件态中保留为零块。",
+      "完整 CQ 等式不意味着中间过滤态等于原实验仅依已有前缀条件化的态，也不保持任意反事实干预。"
+    ],
+    "executable_evidence": [
+      {
+        "file": "physics/qm/kernel/evidence/v31.10/runtime/exact_witnesses.json",
+        "inspected_artifact": "closure_candidates/runtime/evidence_final/exact_witnesses.json",
+        "kind": "exact_symbolic_finite_witness",
+        "check_names": [
+          "exactly eight accepted and fifteen total visible leaves",
+          "positive chain full visible conditional leaf 000",
+          "positive chain full visible conditional leaf 111",
+          "support completions agree on every retained visible block",
+          "support completions differ on the full input space",
+          "zero probability witness",
+          "hidden Kraus split invariance"
+        ],
+        "scope": "完整有限记录块、补全无关的正确支撑范围及零事件、隐藏细化负控。",
+        "provenance": "Check names and PASS_EXACT_SYMBOLIC records read from the Linux artifact; final Mac path confirmed by release owner, not directly inspected by this reviewer."
+      },
+      {
+        "file": "physics/qm/kernel/evidence/v31.10/runtime/execution_receipt.json",
+        "inspected_artifact": "closure_candidates/runtime/evidence_final/execution_receipt.json",
+        "kind": "executed_semantic_or_numerical_control",
+        "gate": "semantic_tests",
+        "test_names": [
+          "test_t3_noncommuting_full_visible_cq",
+          "test_singular_positive_support_completion_independence",
+          "test_zero_probability_is_rejected",
+          "test_hidden_kraus_not_observable"
+        ],
+        "scope": "执行型数值/语义控制；不升级为一般符号证明。",
+        "provenance": "Linux execution receipt and test source read directly; final Mac path confirmed by release owner, not directly inspected by this reviewer."
+      }
+    ]
+  },
+  {
+    "id": "P-FCOND-05",
+    "chapter": 66,
+    "anchor": "p-fcond-05",
+    "title": "保留结果及观察权限的凸包 iff",
+    "verification_scope": "General Lean actual-instrument iff, with separately typed full-space, support, observation-fiber and fixed-input tasks",
+    "formal_audit_ref": "physics/qm/kernel/evidence/v31.10/lean-verification.json",
+    "formal_bindings": [
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumActionRealizability.lean",
+        "declaration": "UEOTQM.QuantumActionRealizability.choi_injective",
+        "kind": "theorem",
+        "role": "真实复线性矩阵映射的 Choi 坐标注入。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumActionRealizability.lean",
+        "declaration": "UEOTQM.QuantumActionRealizability.mixture_instrumentChoiAfter",
+        "kind": "theorem",
+        "role": "现有平方根 Kraus 随机化的实际 Choi 家族等于实权重凸组合。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumActionRealizability.lean",
+        "declaration": "UEOTQM.QuantumActionRealizability.realizable_after_iff_mem_convexHull",
+        "kind": "theorem",
+        "role": "任意声明复线性输入限制下的实际仪器实现 iff。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumActionRealizability.lean",
+        "declaration": "UEOTQM.QuantumActionRealizability.full_instrument_realizable_iff",
+        "kind": "theorem",
+        "role": "指定全空间仪器的实现 iff。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumActionRealizability.lean",
+        "declaration": "UEOTQM.QuantumActionRealizability.support_realizable_iff",
+        "kind": "theorem",
+        "role": "PXP† 限制下的实现 iff；正交 P 时为全支撑任务。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumActionRealizability.lean",
+        "declaration": "UEOTQM.QuantumActionRealizability.observation_realizable_iff_fiber_choi",
+        "kind": "theorem",
+        "role": "整条观察纤维使用同一权重的精确 iff。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumReachableActionRealizability.lean",
+        "declaration": "UEOTQM.QuantumActionRealizability.fixed_input_observation_realizable_iff",
+        "kind": "theorem",
+        "role": "指定未归一可达输入的逐分支输出家族 iff，不等同仅最终输出任务。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumActionRealizability.lean",
+        "declaration": "UEOTQM.QuantumActionRealizability.realizes_of_weights",
+        "kind": "theorem",
+        "role": "已给正权重 Choi 证书构造实际完整仪器。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumActionPauliWitness.lean",
+        "declaration": "UEOTQM.QuantumActionPauliWitness.fair_allowed_realizes_target",
+        "kind": "theorem",
+        "role": "实际 Z/X 允许库正权重映射见证。"
+      },
+      {
+        "file": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizability.lean",
+        "declaration": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteActionRealizabilityCheck.pmf_barycenter_exists_iff_mem_convexHull",
+        "kind": "upstream_theorem",
+        "role": "直接消费的 Core 实模凸包定理；E 实例化为可见标签和整观察纤维的复矩阵家族。"
+      }
+    ],
+    "paper_only": [
+      "将每节点支撑上精确匹配的允许混合替换进整棵条件树并保持完整 CQ 输出，是正文逐层归纳的组装；没有声称一个总 Lean 定理同时封装全部原树、动作库、观察策略与实现后整树解释器。",
+      "全支撑复矩阵映射等式与所有支撑密度输入等式的张成论证按正文数学解释；当前正式端点直接量化所有输入矩阵。"
+    ],
+    "limits": [
+      "只判断声明的一轮有限动作库经典随机化；不涵盖任意量子电路控制能力。",
+      "某个全空间补全失败不能否定另一补全；全支撑失败不能自动否定指定初态或仅最终输出的实现。",
+      "内部抽样动作与 Kraus 指标保持隐藏；若要求记录它们，须扩大可见标签并重订任务。"
+    ],
+    "executable_evidence": [
+      {
+        "file": "physics/qm/kernel/evidence/v31.10/runtime/exact_witnesses.json",
+        "inspected_artifact": "closure_candidates/runtime/evidence_final/exact_witnesses.json",
+        "kind": "exact_symbolic_finite_witness",
+        "check_names": [
+          "positive chain shared weights are exact probabilities",
+          "positive chain labelled Choi realization from its own allowed library",
+          "positive exact randomized flagged Choi implementation",
+          "observation-fibre exact separator"
+        ],
+        "scope": "同源实际正权重证书及共同观察约束的精确有限检查。",
+        "provenance": "Check names and PASS_EXACT_SYMBOLIC records read from the Linux artifact; final Mac path confirmed by release owner, not directly inspected by this reviewer."
+      }
+    ]
+  },
+  {
+    "id": "P-FCOND-06",
+    "chapter": 66,
+    "anchor": "p-fcond-06",
+    "title": "允许类的有限负分离证书",
+    "verification_scope": "General Lean supplied-separator implication, with actual-instrument negative witnesses",
+    "formal_audit_ref": "physics/qm/kernel/evidence/v31.10/lean-verification.json",
+    "formal_bindings": [
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumActionRealizability.lean",
+        "declaration": "UEOTQM.QuantumActionRealizability.separator_excludes_convexHull",
+        "kind": "theorem",
+        "role": "有限实模中，给定实线性分离泛函及逐动作界即排除目标凸包。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumActionCounterexamples.lean",
+        "declaration": "UEOTQM.QuantumActionRealizability.swapped_labels_same_channel",
+        "kind": "theorem",
+        "role": "丢弃结果后通道相同的对照事实。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumActionCounterexamples.lean",
+        "declaration": "UEOTQM.QuantumActionRealizability.swapped_labels_choi_separation",
+        "kind": "theorem",
+        "role": "真实可见仪器 Choi 向量的标签交换分离证书。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumActionCounterexamples.lean",
+        "declaration": "UEOTQM.QuantumActionRealizability.shared_observation_choi_separation",
+        "kind": "theorem",
+        "role": "耦合隐藏节点坐标的观察纤维分离证书。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumActionCounterexamples.lean",
+        "declaration": "UEOTQM.QuantumActionRealizability.hidden_nodes_individually_realizable",
+        "kind": "theorem",
+        "role": "每节点单独可行，与共同观察不可行严格区分。"
+      }
+    ],
+    "paper_only": [
+      "没有在 Lean 中额外证明每个不可行目标都能由一个数值求解器输出分离证书；这里形式化的是给定可检查证书到不可能性的方向。"
+    ],
+    "limits": [
+      "否定结论只覆盖声明的可见标签、输入限制及允许动作类。",
+      "浮点 LP 的 infeasible 状态不是严格线性分离证书。"
+    ],
+    "executable_evidence": [
+      {
+        "file": "physics/qm/kernel/evidence/v31.10/runtime/exact_witnesses.json",
+        "inspected_artifact": "closure_candidates/runtime/evidence_final/exact_witnesses.json",
+        "kind": "exact_symbolic_finite_witness",
+        "check_names": [
+          "non-scalar T3 original-only exact separating observable",
+          "observation-fibre exact separator",
+          "outside-library exact Choi separator",
+          "outside-library fixed-input state witness",
+          "label swap changes certain original record"
+        ],
+        "scope": "具体实线性分离和固定输入反例；与一般 Lean 证书定理分层登记。",
+        "provenance": "Check names and PASS_EXACT_SYMBOLIC records read from the Linux artifact; final Mac path confirmed by release owner, not directly inspected by this reviewer."
+      }
+    ]
+  },
+  {
+    "id": "P-FCOND-07",
+    "chapter": 66,
+    "anchor": "p-fcond-07",
+    "title": "全部未知输入上的确定性初始化分类",
+    "verification_scope": "Paper-only universal classification; exact finite examples do not constitute a general Lean classification",
+    "formal_audit_ref": null,
+    "formal_bindings": [],
+    "paper_only": [
+      "完整 iff：非零 H≥0 的规范归一滤波在全部正成功率系统输入上可由同一确定 CPTP 实现，当且仅当 H=cI(c>0) 或 rank(H)=1。",
+      "不同正特征值的仿射反例，以及 H=cP、2≤rank(P)<d 的核方向混合反例。",
+      "要求局部 Φ⊗id_R 保留任意参考条件联合态时，只有 H=cI；rank1 replacement 通常改变不了参考边缘，不能复制筛选后的参考权重。",
+      "rank1 边缘 replacement 不自动复现原成功概率或成功/失败标志；H=0 没有正概率条件任务。"
+    ],
+    "limits": [
+      "本编号没有直接 Lean formal_binding；不能把邻近滤波概率定理或有限 rank1 例追认为一般分类的机器证明。",
+      "只持有一份未知输入时，失败后不能假设免费得到同一输入的新副本。"
+    ],
+    "executable_evidence": [
+      {
+        "file": "physics/qm/kernel/evidence/v31.10/runtime/exact_witnesses.json",
+        "inspected_artifact": "closure_candidates/runtime/evidence_final/exact_witnesses.json",
+        "kind": "exact_symbolic_finite_witness",
+        "check_names": [
+          "normalized filtering is nonaffine on unknown inputs",
+          "scalar effect exception",
+          "rank-one marginal replacement channel is complete",
+          "rank-one normalized marginal agrees with replacement",
+          "rank-one replacement and filter identities on arbitrary matrices",
+          "rank-one replacement fails retained reference with exact distance one half"
+        ],
+        "scope": "有限维具体非仿射、标量、rank1 边缘及参考相关反例；不是全域分类证明。",
+        "provenance": "Check names and PASS_EXACT_SYMBOLIC records read from the Linux artifact; final Mac path confirmed by release owner, not directly inspected by this reviewer."
+      }
+    ]
+  },
+  {
+    "id": "P-FCOND-08",
+    "chapter": 66,
+    "anchor": "p-fcond-08",
+    "title": "缩放滤波的实际成功率与后验",
+    "verification_scope": "Lean actual filter/probability/posterior identities; probabilistic waiting-time interpretation remains paper-level",
+    "formal_audit_ref": "physics/qm/kernel/evidence/v31.10/lean-verification.json",
+    "formal_bindings": [
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumInitializationCost.lean",
+        "declaration": "UEOTQM.QuantumInitializationCost.filterInstrument",
+        "kind": "definition",
+        "role": "从 B、c>0 与 I-c⁻¹B†B 的 PSD 构造实际完整二结果仪器。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumInitializationCost.lean",
+        "declaration": "UEOTQM.QuantumInitializationCost.filter_success_probability",
+        "kind": "theorem",
+        "role": "实际成功率为 pairing(B†B,ρ)/c。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumInitializationCost.lean",
+        "declaration": "UEOTQM.QuantumInitializationCost.filter_posterior_matrix",
+        "kind": "theorem",
+        "role": "成功后态为 BρB†/p，尺度抵消。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumInitializationCost.lean",
+        "declaration": "UEOTQM.QuantumInitializationCost.sourceInitialFilter",
+        "kind": "definition",
+        "role": "原树证明 I-H≥0 后直接构造 c=1 源初始滤波器。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumInitializationCost.lean",
+        "declaration": "UEOTQM.QuantumInitializationCost.sourceInitialFilter_probability",
+        "kind": "theorem",
+        "role": "该源专用完整滤波器的成功率等于同一原 successMass。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumInitializationCost.lean",
+        "declaration": "UEOTQM.QuantumInitializationCost.scaled_filter_mean_attempts",
+        "kind": "theorem",
+        "role": "仅证明代数恒等式 (p/c)⁻¹=c/p；该声明本身不是等待时间概率定理。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindowSpectral.lean",
+        "declaration": "UEOTQM.QuantumFiniteWindow.spectralFilter_metric",
+        "kind": "theorem",
+        "role": "在规范取 B=√H 时，把实际滤波 Gram 连接到原效应。"
+      }
+    ],
+    "paper_only": [
+      "c≥||H|| 足以保证残余 PSD、以及在仅允许缩放的族内 c=||H|| 最优，使用算子谱范数的正文线性代数论证。",
+      "独立重新准备后的滤波等待次数服从成功率 p/c 的几何律及均值 c/p，其无限概率空间解释不由 scaled_filter_mean_attempts 的代数等式单独证明。"
+    ],
+    "limits": [
+      "每次需新副本或真实独立复位；成功态与成功率是不同指标。",
+      "缩放族内最优不等于所有物理实现的全局最小成本。"
+    ],
+    "executable_evidence": [
+      {
+        "file": "physics/qm/kernel/evidence/v31.10/runtime/exact_witnesses.json",
+        "inspected_artifact": "closure_candidates/runtime/evidence_final/exact_witnesses.json",
+        "kind": "exact_symbolic_finite_witness",
+        "check_names": [
+          "best filter scale is the maximal actual eigenvalue",
+          "scaled filter exact probability",
+          "positive chain actual probability and unchanged initialization"
+        ],
+        "scope": "具体谱尺度、p/c 与标量效应无需改变初态的精确有限核对。",
+        "provenance": "Check names and PASS_EXACT_SYMBOLIC records read from the Linux artifact; final Mac path confirmed by release owner, not directly inspected by this reviewer."
+      }
+    ]
+  },
+  {
+    "id": "P-FCOND-09",
+    "chapter": 66,
+    "anchor": "p-fcond-09",
+    "title": "独立重置直到成功的完整成本",
+    "verification_scope": "Lean finite source-weighted retry-tree recurrence, closed form and limit; iid infinite expectation identification is paper-only",
+    "formal_audit_ref": "physics/qm/kernel/evidence/v31.10/lean-verification.json",
+    "formal_bindings": [
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean",
+        "declaration": "UEOTQM.QuantumFiniteWindow.FilterTree.sourceWeights",
+        "kind": "definition",
+        "role": "从实际原叶量子块的质量构造归一有限记录 law。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumInitializationCost.lean",
+        "declaration": "UEOTQM.QuantumInitializationCost.source_successProbability",
+        "kind": "theorem",
+        "role": "成本 law 的接受概率等于条件过程使用的原 successMass。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumInitializationCost.lean",
+        "declaration": "UEOTQM.QuantumInitializationCost.retryTreeCost",
+        "kind": "definition",
+        "role": "显式有限源记录加权的截断重试树成本。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumInitializationCost.lean",
+        "declaration": "UEOTQM.QuantumInitializationCost.retryTreeCost_succ",
+        "kind": "theorem",
+        "role": "从有限记录求和推导 V_(n+1)=μ+(1-p)V_n。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumInitializationCost.lean",
+        "declaration": "UEOTQM.QuantumInitializationCost.retryTreeCost_closed",
+        "kind": "theorem",
+        "role": "截断成本 μ/p·[1-(1-p)^n]。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumInitializationCost.lean",
+        "declaration": "UEOTQM.QuantumInitializationCost.retryTreeCost_tendsto",
+        "kind": "theorem",
+        "role": "有限重试树成本趋于 μ/p。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumInitializationCost.lean",
+        "declaration": "UEOTQM.QuantumInitializationCost.source_retryTreeCost_tendsto",
+        "kind": "theorem",
+        "role": "上述极限直接消费实际原叶 law 及原 successMass。"
+      }
+    ],
+    "paper_only": [
+      "把有限递归/嵌套求和解释为独立重复实验的截断期望，并在无限 iid 概率空间上以非负性和单调收敛识别完整总期望 μ/p。",
+      "没有形式化一个无限产品源的构造、其独立性或其停止时间概率空间。",
+      "真实设备的准备、动作、失败检测、随机化、记录、校准与复位计价需外部物理数据。"
+    ],
+    "limits": [
+      "单次成本可与同次成功相关；跨试次必须真实独立重置。",
+      "C(R) 计入真实早停动作与实际执行的复位，不能按最大时域补收未执行步骤。",
+      "μ/p 是原源重试成本，不是所有驱动实现的普适下界。"
+    ],
+    "executable_evidence": [
+      {
+        "file": "physics/qm/kernel/evidence/v31.10/runtime/exact_witnesses.json",
+        "inspected_artifact": "closure_candidates/runtime/evidence_final/exact_witnesses.json",
+        "kind": "exact_symbolic_finite_witness",
+        "check_names": [
+          "positive chain original early-stop cost is fourteen",
+          "positive chain target has three actual Pauli actions",
+          "T3 exact early-stop action cost",
+          "T3 maximum-depth cost would overcount",
+          "separate early-stop source full law",
+          "separate early-stop tree derived costs"
+        ],
+        "scope": "同源与变深度有限树的实际早停资源公式。",
+        "provenance": "Check names and PASS_EXACT_SYMBOLIC records read from the Linux artifact; final Mac path confirmed by release owner, not directly inspected by this reviewer."
+      }
+    ]
+  },
+  {
+    "id": "P-FCOND-10",
+    "chapter": 66,
+    "anchor": "p-fcond-10",
+    "title": "完整输出到条件输出的误差传播",
+    "verification_scope": "General Lean sharp posterior bound for one actual common acceptance instrument",
+    "formal_audit_ref": "physics/qm/kernel/evidence/v31.10/lean-verification.json",
+    "formal_bindings": [
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumPostselectionError.lean",
+        "declaration": "UEOTQM.QuantumPostselectionError.posterior_effectDistance_le_div_max",
+        "kind": "theorem",
+        "role": "从实际分支 effects 推导 δ/max(p,q)。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumPostselectionError.lean",
+        "declaration": "UEOTQM.QuantumPostselectionError.posterior_effectDistance_le_min",
+        "kind": "theorem",
+        "role": "给定完整输入误差 ε 后，证明 min(1,ε/max(p,q))。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumPostselectionError.lean",
+        "declaration": "UEOTQM.QuantumPostselectionError.posterior_half_traceAbsolute_le_min",
+        "kind": "theorem",
+        "role": "连接已有半迹绝对值识别后的实际矩阵版本。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/Stability.lean",
+        "declaration": "UEOTQM.Instrument.probability_sub_le_effectDistance",
+        "kind": "theorem",
+        "role": "同一实际接受分支的 |p-q|≤输入全效应距离。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean",
+        "declaration": "UEOTQM.QuantumTraceDistance.effectDistance_eq_half_traceAbsolute",
+        "kind": "theorem",
+        "role": "已有全效应距离与实际密度差半迹绝对值识别。"
+      }
+    ],
+    "paper_only": [
+      "将原完整 CQ 输出及接受叶投影组成同一接受提取仪器，再实例化上述一般端点，是正文组装；不宣称已新增一个包含整个原树和接受投影装配的总 Lean 定理。",
+      "经典三结果例的尖锐性说明为正文证明并有精确有限检查。"
+    ],
+    "limits": [
+      "两态使用相同接受规则且 p,q>0；只分析筛选后样本不能建立完整输出误差前提。",
+      "先保留完整 CQ 输出，再条件化；若接受标签语义改变，需重新定义比较任务。"
+    ],
+    "executable_evidence": [
+      {
+        "file": "physics/qm/kernel/evidence/v31.10/runtime/exact_witnesses.json",
+        "inspected_artifact": "closure_candidates/runtime/evidence_final/exact_witnesses.json",
+        "kind": "exact_symbolic_finite_witness",
+        "check_names": [
+          "unequal acceptance exact sharp error bound"
+        ],
+        "scope": "实际不等接受质量的有限精确条件误差检查。",
+        "provenance": "Check names and PASS_EXACT_SYMBOLIC records read from the Linux artifact; final Mac path confirmed by release owner, not directly inspected by this reviewer."
+      },
+      {
+        "file": "physics/qm/kernel/evidence/v31.10/runtime/execution_receipt.json",
+        "inspected_artifact": "closure_candidates/runtime/evidence_final/execution_receipt.json",
+        "kind": "executed_semantic_or_numerical_control",
+        "gate": "semantic_tests",
+        "test_names": [
+          "test_rare_acceptance_error_retains_failures_and_sharp_amplification"
+        ],
+        "scope": "保留拒绝块的稀有事件放大语义控制。",
+        "provenance": "Linux execution receipt and test source read directly; final Mac path confirmed by release owner, not directly inspected by this reviewer."
+      }
+    ]
+  },
+  {
+    "id": "P-FCOND-11",
+    "chapter": 66,
+    "anchor": "p-fcond-11",
+    "title": "合法 Kraus 近似的可用局部误差界",
+    "verification_scope": "New operator-norm sufficient bound is paper-only; existing Lean stopping-tree theorems support the propagation component",
+    "formal_audit_ref": "physics/qm/kernel/evidence/v31.10/lean-verification.json",
+    "formal_bindings": [
+      {
+        "file": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+        "declaration": "UEOTQM.StoppingRecordBudget.original_joint_distance_le_activeCost_sum",
+        "kind": "theorem",
+        "role": "已有定理：共同控制器完整原叶/记忆距离受初态误差加参考活动前缀实际动作缺陷加权和控制；不证明本章新的 Kraus 算子范数公式。"
+      },
+      {
+        "file": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean",
+        "declaration": "UEOTQM.StoppingRecordBudget.original_joint_distance_le_probability_budget",
+        "kind": "theorem",
+        "role": "已有定理：已给有效逐动作缺陷界后，按参考实现仍活动的概率传播到完整原记录。"
+      }
+    ],
+    "paper_only": [
+      "新公式 δ_step≤min{1,(1/2)Σ_j(||L_j||+||M_j||)||L_j-M_j||} 的全部 Schatten-1 理想不等式及三角估计。",
+      "局部恒等参考扩张下算子范数不变及同一充分界的推广。",
+      "从上述书面 Kraus 范数界实例化已有实际动作缺陷预算，再组装特定条件过程的整链误差。",
+      "相邻 §66.13 的 η 下界根/逆根稳定性常数及 Sylvester/半群积分论证，未由这些传播定理形式化。"
+    ],
+    "limits": [
+      "两 Kraus 家族都必须为合法完整仪器且可见标签对齐；隐藏索引零填充与配对需明确。",
+      "表示相关的充分界不是最优通道距离定义；浮点残差不是严格实数上界。",
+      "不控制未建模的额外耦合或不同的经典控制器。"
+    ],
+    "executable_evidence": []
+  },
+  {
+    "id": "C-FCOND-01",
+    "chapter": 66,
+    "anchor": "c-fcond-01",
+    "title": "小谱值不能当零谱处理",
+    "verification_scope": "Paper counterexample with executed numerical-semantic control; no direct general Lean binding",
+    "formal_audit_ref": null,
+    "formal_bindings": [],
+    "paper_only": [
+      "对所有 ε>0，diag(1,ε) 与 diag(1,0) 的支撑逆根距离恰为 ε^(-1/2)，并在 ε→0+ 时发散的参数化反例。",
+      "邻近正文的正定公共下界 η 下，sqrt 与 inverse-sqrt 的算子范数 Lipschitz 常数，依靠 Sylvester 方程/半群积分与逆差恒等式。",
+      "奇异稳定性仅可在同一个经认证的支撑上直接应用；不同支撑变化需另计投影扰动。"
+    ],
+    "limits": [
+      "谱工厂的一般存在定理不构成数值秩判定或伪逆连续性的定理。",
+      "小正谱不得无声改为零；整体很稀有的标量效应与相对病态支撑要区分。"
+    ],
+    "executable_evidence": [
+      {
+        "file": "physics/qm/kernel/evidence/v31.10/runtime/execution_receipt.json",
+        "inspected_artifact": "closure_candidates/runtime/evidence_final/execution_receipt.json",
+        "kind": "executed_semantic_or_numerical_control",
+        "gate": "semantic_tests",
+        "test_names": [
+          "test_small_positive_eigenvalue_not_deleted"
+        ],
+        "scope": "程序对 diag(1,1e-15) 显式报告数值条件不可靠，同时保留 1e-20·I 的全支撑；该有限控制不代替参数发散证明。",
+        "provenance": "Linux execution receipt and test source read directly; final Mac path confirmed by release owner, not directly inspected by this reviewer."
+      }
+    ]
+  }
+]

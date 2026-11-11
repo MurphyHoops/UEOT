@@ -1,0 +1,59 @@
+{
+  "schema": "ueot_qm.finite_conditioning_integration.v1",
+  "status": "PASS",
+  "recorded_at_utc": "2026-11-11T05:14:38.455449+00:00",
+  "gates": [
+    {
+      "name": "dependencies",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "scripts/check_dependencies.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.018637125147506595,
+      "started_at_utc": "2026-11-11T05:13:41.056561+00:00",
+      "log": "dependencies.log",
+      "log_sha256": "13b2789bac066054afc6c40049fbe3f815a83927cd6bfcc1d3331946153d96cf"
+    },
+    {
+      "name": "public_build",
+      "command": [
+        "lake",
+        "build",
+        "UEOTQM"
+      ],
+      "exit_code": 0,
+      "seconds": 53.093627833994105,
+      "started_at_utc": "2026-11-11T05:13:41.075426+00:00",
+      "log": "public_build.log",
+      "log_sha256": "741103507050a972b721ecab87d8f9c1de77e10942e301ef9dde83be39cfae23"
+    },
+    {
+      "name": "public_axioms",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "scripts/AxiomAudit.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 4.139479750068858,
+      "started_at_utc": "2026-11-11T05:14:34.172250+00:00",
+      "log": "public_axioms.log",
+      "log_sha256": "b7284b9dbbd01626b81a35a5bbe056418515c137d0170e6b20a60b1f65e33892"
+    }
+  ],
+  "public_modules": 49,
+  "public_explicit_theorems": 959,
+  "public_named_axiom_reports": 1285,
+  "new_modules": 8,
+  "new_explicit_theorems": 105,
+  "new_named_axiom_reports": 162,
+  "new_names_all_audited": true,
+  "source_set_sha256": "a3c49afc9a3e8be0fffd0892ffc5e175bd17a00eb7a93c6adad8febc4cb4e3a6",
+  "source_count": 155,
+  "identity_unchanged_during_execution": true,
+  "allowed_axioms_only": true,
+  "new_hardware_data": false,
+  "scope": "actual complete public Lean build and named audit; not validation of every book statement or Python implementation"
+}

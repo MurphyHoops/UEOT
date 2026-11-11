@@ -1,0 +1,75 @@
+{
+  "schema": "ueot-qm.finite-reference-execution/1",
+  "status": "PASS",
+  "evidence_scope": "actual numerical/semantic tests and exact finite symbolic witnesses; not general Lean or hardware evidence",
+  "executed_at_utc": "2026-11-11T05:13:40.866317+00:00",
+  "source_directory": "/Users/murphyhoops/Documents/ueot-physics-closure-20261111/physics/qm/conditioning",
+  "versions": {
+    "python": "3.14.4 (main, Apr  7 2026, 13:13:20) [Clang 21.0.0 (clang-2100.0.123.102)]",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "sympy": "1.14.0"
+  },
+  "source_sha256": {
+    "finite_conditioning.py": "33d573b3049538bedbcd7ff60f15e566fb17358f0b91d8f76a0d645f1ab0c6c4",
+    "fixtures.py": "6fcce554206764b9d018ab98dcc8f616ec3177d9238aa1fca87dfbdf7f9659f7",
+    "frozen_plan.json": "f80cf34c3f989c193938f02cc793eaf5e8da7f6905a0273b21df8d1acb6c7b70",
+    "positive_chain_plan.json": "904e8966dc099817bcedb3b414ef20e1740fc83236cc88e93a9f8e4e9e433e81",
+    "test_finite_conditioning.py": "02381404914b19e31dd866e8d8ede6b1171479cbd417dd85795fcf7d2ef371fd",
+    "exact_witnesses.py": "0810858724eb7bba337dfb87c9f042113c64d3342eca8cb5767ebae69bfb2d5d",
+    "run_reference.py": "e022757e7e1cc45497038d125cd01084b055251651e65b0beadf3d0ec7682678",
+    "verify_runtime.py": "1b230499b618274e549e79dbd084a06592be0d00e62c24addab1c9feb1b45692",
+    "README.md": "af47416ceb6d4dd596f937885b9a558de592416ff0f3151c20c029ff684fd031"
+  },
+  "source_unchanged_during_execution": true,
+  "gates": [
+    {
+      "name": "semantic_tests",
+      "status": "PASS",
+      "returncode": 0,
+      "command": [
+        "/Users/murphyhoops/Documents/ueot-physics-closure-20261111/.physics-venv/bin/python",
+        "-m",
+        "unittest",
+        "-v",
+        "test_finite_conditioning.py"
+      ],
+      "started_at_utc": "2026-11-11T05:13:00.083739+00:00",
+      "seconds": 40.14122395799495,
+      "log": "semantic_tests.log",
+      "log_sha256": "9922136ffc9c391b45467d32b560eb69ae6f54c118ed26a75898c95db185fde8"
+    },
+    {
+      "name": "exact_witnesses",
+      "status": "PASS",
+      "returncode": 0,
+      "command": [
+        "/Users/murphyhoops/Documents/ueot-physics-closure-20261111/.physics-venv/bin/python",
+        "exact_witnesses.py",
+        "--output-dir",
+        "/Users/murphyhoops/Documents/ueot-physics-closure-20261111/physics/qm/kernel/evidence/v31.10/runtime"
+      ],
+      "started_at_utc": "2026-11-11T05:13:40.225365+00:00",
+      "seconds": 0.4320515829604119,
+      "log": "exact_witnesses.log",
+      "log_sha256": "290031817ef6708e5c31c161c08846c1427f2605402b83a1fdb3895637d39edd"
+    },
+    {
+      "name": "numerical_reference",
+      "status": "PASS",
+      "returncode": 0,
+      "command": [
+        "/Users/murphyhoops/Documents/ueot-physics-closure-20261111/.physics-venv/bin/python",
+        "run_reference.py",
+        "--output-dir",
+        "/Users/murphyhoops/Documents/ueot-physics-closure-20261111/physics/qm/kernel/evidence/v31.10/runtime"
+      ],
+      "started_at_utc": "2026-11-11T05:13:40.657466+00:00",
+      "seconds": 0.20857349992729723,
+      "log": "numerical_reference.log",
+      "log_sha256": "82462308a7b8061cee8b5017be5c1a071f20b368d910ec60d637668f5f047dcb"
+    }
+  ],
+  "real_hardware_data": false
+}
