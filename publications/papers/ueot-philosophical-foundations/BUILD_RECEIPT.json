@@ -1,0 +1,47 @@
+{
+  "schema": "ueot-philosophy-build/1",
+  "built_at_utc": "2026-11-11T05:23:15.119849+00:00",
+  "source_commit": "3d443ec29eb17af1fc00699a74e2d42d73516d81",
+  "commands": [
+    "pandoc manuscript.md --standalone --number-sections --natbib --template=template.tex --lua-filter=layout.lua --to=latex --output=manuscript.tex",
+    "latexmk -xelatex -interaction=nonstopmode -halt-on-error -outdir=build manuscript.tex"
+  ],
+  "tools": {
+    "pandoc": [
+      "pandoc 3.1.11.1",
+      "Features: -server +lua",
+      "Scripting engine: Lua 5.4"
+    ],
+    "xelatex": [
+      "XeTeX 3.141592653-2.6-0.999996 (TeX Live 2025/dev/Debian)",
+      "kpathsea version 6.4.0/dev",
+      "Copyright 2024 SIL International, Jonathan Kew and Khaled Hosny."
+    ],
+    "latexmk": [
+      "Latexmk, John Collins, 11 Dec. 2024. Version 4.86"
+    ],
+    "bibtex": [
+      "BibTeX 0.99d (TeX Live 2025/dev/Debian)",
+      "kpathsea version 6.4.0/dev",
+      "Copyright 2024 Oren Patashnik."
+    ]
+  },
+  "inputs": {
+    "manuscript.md": "58c905e593130e89d7c5d50187d52d91e21fb9116be84422356fb0213658c4e5",
+    "references.bib": "b9281a00b6d112487860accff388b492208ab1f8e8fa5d39d2311461dc0e93d2",
+    "template.tex": "120b19299371736c43aa78601cd8e182baafb143ab67bcc284fa69a857db4e9c",
+    "layout.lua": "fe43b69ca5e3e94cc5b1740d6fdd540f4c8d934dcaec617f144352da53842c31",
+    "build.py": "d6a403d2d7aa8b534b53b672f52ba6ff6e3590feb4c78512094436db0bbbab7b"
+  },
+  "outputs": {
+    "manuscript.tex": "33abecfa1bade41d68af7267e43f472bc38d85f77958e0f062f4e6fa34ea7418",
+    "manuscript.pdf": "eea14e0db1e99b360a80f9a603a2cc221d316c3ccdcfb5c17f095cd3e94f8e1c"
+  },
+  "pages": 21,
+  "undefined_references_or_tex_errors": [],
+  "missing_glyphs": [],
+  "overfull_boxes": [],
+  "lean_invocations": 0,
+  "visual_review": "Separate human-visible rendering inspection required; see VISUAL_REVIEW.md",
+  "runtime_note": "Optional UEOT_TEXMF/UEOT_TEXFORMATS used"
+}
