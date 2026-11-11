@@ -95,6 +95,22 @@ The original LaTeX files are also available in [philosophy/source/original](./ph
 
 Active development is integrated through `main`. Complete and verify a coherent local change before submitting the necessary commits and PRs. The Core cloud build has a manual entry; the local build and evidence workflow is described in [Compression Operations](./formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md).
 
-## License
+## Copyright, licenses and publication
 
-Repository-authored manuscript material is released under the terms described in [LICENSE](./LICENSE). Third-party bundled source files retain their own licenses.
+UEOT preserves earlier **CC BY 4.0** grants for historical research material
+and previously released versions, including material incorporated in its two
+publicly available books. Those earlier grants remain effective for the
+covered material; a future book edition or different file format does not
+cancel them.
+
+For material first authored and released after 2026-11-11, the project does
+not make a blanket new copyright-license grant. Specific future publications
+and software components will identify their applicable terms after provenance
+and contributor-rights review. In particular, **Lean code has not been
+relicensed to Apache-2.0** by this clarification; new book editions have not
+yet been assigned a restrictive license. Third-party materials retain their
+own terms. Separately maintained commercial UEOT-GI implementations are not
+licensed by the UEOT research repository.
+
+Read the [root LICENSE](./LICENSE), [copyright and publication policy](./COPYRIGHT.md),
+and [historical notice archive](./LICENSES/README.md) before reuse or publication.
