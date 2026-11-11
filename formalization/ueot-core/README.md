@@ -5,11 +5,11 @@ UEOT Core Mathematics v3.0 source specification.
 
 The canonical source identity is registered in
 [core/specifications/manifest.yaml](../../core/specifications/manifest.yaml).
-The exact v3.0 source file still needs
-byte-for-byte synchronization into the public repository; no regenerated
-substitute is treated as canonical. Until that synchronization is completed,
-source-facing promotion must preserve the registered source hash and the audited
-P-ID proof contract; a chat summary or stale roadmap is never a source substitute.
+The exact [v3.0 source](../../mathematics/source/core-v3.0/UEOT_Core_Mathematics_v3.0_Complete.md)
+is synchronized byte for byte with the registered SHA-256. The current-main
+bytes were rechecked on 2026-11-11; the earlier pending-synchronization notes
+remain historical checkpoints. A regenerated substitute, chat summary or stale
+roadmap is never a source replacement. The 106 P-ID proof contracts are unchanged.
 
 ## Role in the repository
 
@@ -41,6 +41,12 @@ A module that merely exists on disk is not accepted as verified evidence.
 
 ## Start here: current state
 
+Read [current Core status](../../core/status/CURRENT.md) first. It separates the
+frozen 106 contracts, whole conditional mathematical closure, the same-source
+definitive theory, PR #446's written supplements and PR #447's completed growth
+extension. Content remains **CLASSIFIED_CORE_CLOSED** and empirical support
+**UNVERIFIED**. A completed contract is not reopened by an old roadmap.
+
 The frozen Core v3 source baseline is **106/106 FULL-GREEN**: 106 proved,
 0 partial, 0 pending. The authoritative count is maintained in
 [V3_COVERAGE_STATUS.md](docs/V3_COVERAGE_STATUS.md). Post-106 Compression and
@@ -62,31 +68,41 @@ Recover using the existing
 4. **Integrated implementation:** canonical
    [main source](https://github.com/MurphyHoops/UEOT/tree/main), the relevant
    [pull requests](https://github.com/MurphyHoops/UEOT/pulls) and
-   [Actions/CI](https://github.com/MurphyHoops/UEOT/actions). Match evidence to
-   the actual commit before treating a branch or theorem as integrated.
+   source-bound local validation receipts. Historical [Actions/CI](https://github.com/MurphyHoops/UEOT/actions)
+   remain evidence for their own commits. Match evidence to actual source bytes
+   before treating a branch or theorem as integrated; current Core verification
+   follows the repository's local-validation policy.
 5. **Path and track policy:**
    [COMPRESSION_RESEARCH_TRACKS.json](docs/compression/COMPRESSION_RESEARCH_TRACKS.json)
    and [COMPRESSION_OPERATIONS.md](docs/compression/COMPRESSION_OPERATIONS.md).
-6. **Current intent and task recovery:**
+6. **Current intent and task recovery:** begin with the current user task,
+   [Core state](../../core/status/CURRENT.md), actual main and open branches/PRs.
    [Issue #146](https://github.com/MurphyHoops/UEOT/issues/146) and its linked
-   task trackers. The issue is a recovery index, not authority to promote a
-   theorem or override source, ledger or CI evidence.
+   trackers are recovery indexes; reconcile their dates with later adopted
+   contracts. An issue cannot promote a theorem or override source and evidence.
 
-[PID_STATUS.yaml](docs/PID_STATUS.yaml) and
-[FORMALIZATION_STATE.md](docs/FORMALIZATION_STATE.md) are lower-frequency
-lifecycle records and historical checkpoints. Their old active-lane fields are
-not the current task queue, and the latter's historical “Live” title does not
-make it a live PR/CI feed. Consult them for provenance after reconciling the
+[FORMALIZATION_STATE.md](docs/FORMALIZATION_STATE.md) identifies the current
+layers and preserves its earlier checkpoint. [PID_STATUS.yaml](docs/PID_STATUS.yaml)
+is the frozen source-lifecycle record; old active-lane fields are historical,
+not a current queue. Consult them for provenance after reconciling the
 authorities above.
 
 ## Read the integrated theory
 
-- [UEOT.lean](UEOT.lean) and [UEOT/V3.lean](UEOT/V3.lean) expose the official
-  imported library; [TheoryCompletion.lean](UEOT/V3/Compression/TheoryCompletion.lean)
-  is the integrated entry for its conditional theory and scientific-closure modules.
+- [UEOT.lean](UEOT.lean) imports [Compression](UEOT/V3/Compression.lean), then
+  [TheoryCompletion](UEOT/V3/Compression/TheoryCompletion.lean) and
+  [CoreTheoryClosure](UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreTheoryClosure.lean).
+  This route exports the original 13 definitive-theory modules and the three
+  PR #447 growth modules. [UEOT/V3.lean](UEOT/V3.lean) remains an older subset;
+  it does not alone export that family.
+- [Same-source definitive theory](docs/compression/theory_completion/unified_closure/core_theory_closure_v1/README.md)
+  and [growth/attainment classification](docs/compression/theory_completion/unified_closure/core_growth_classification_v1/README.md)
+  provide current claims, actual consumers and their distinct validation receipts.
 - [TheoryCompletion mission](docs/compression/theory_completion/THEORY_COMPLETION_MISSION.md)
   and [Unified Closure mission](docs/compression/theory_completion/unified_closure/UNIFIED_CLOSURE_MISSION_V1.md)
-  explain the scientific interfaces and their remaining assumptions.
+  preserve the original scientific contracts and assumptions. Their initial
+  stage statuses and immediate-objective paragraphs are historical; use the
+  current contract map before scheduling work.
 - [FKRG reading/search entry](docs/compression/theory_completion/knowledge/README.md)
   and [proof-reuse evidence](docs/compression/theory_completion/knowledge/reuse/README.md)
   locate existing declarations and compiled reuse evidence before new proof work.
@@ -109,26 +125,36 @@ neither describes the current 106/106 baseline or current research assignment.
 Historical `pending` means “not yet counted proved” at that checkpoint, not a
 present-day missing-proof obligation.
 
-## Proof-status gate
+## Proof-status and validation scope
 
-A source P-ID can be promoted to `proved` only when all of the following hold:
+The original 106 source P-IDs are already frozen FULL-GREEN. Their historical
+promotion gates and no-proof-bypass requirements remain in the
+[coverage ledger](docs/V3_COVERAGE_STATUS.md) and
+[original source operations](docs/UEOT_CORE3_LEAN_OPERATIONS.md). This status
+refresh does not promote a P-ID, change counted semantics or recreate old CI events.
 
-1. the exact frozen source statement and assumptions are identified;
-2. an explicit proof contract records existing reusable theorems and the actual
-   missing obligations;
-3. the Lean theorem is semantically source-faithful, or a source correction is
-   explicitly audited;
-4. the theorem is reachable from `UEOT` / `UEOT.V3`;
-5. feature full-target CI is green;
-6. a minimal clean port is made onto the newest green Lean-affecting `main`;
-7. clean-port CI and PR CI are green;
-8. the change is serialized into `main`;
-9. post-main `lake build UEOT` is green;
-10. no `sorry`, UEOT-specific proof axiom, `native_decide`, or hidden weakening
-    has been introduced;
-11. the source ledger and machine-readable state are synchronized.
+For a current change:
 
+1. identify its exact source statement, assumptions, reused endpoints and actual
+   missing obligation;
+2. expose new production results through the appropriate public target and
+   check semantic correspondence, proof trust and the affected consumer;
+3. record actual local commands, source identity, toolchain, exit status and
+   necessary axiom checks, following the applicable task and governance scope;
+4. review and merge one coherent candidate, then verify resulting-main adoption;
+5. reuse still-applicable evidence for unchanged sources; documentation-only
+   changes verify content, references and protected-byte preservation.
+
+The [current local-validation policy](../../docs/REPOSITORY_BRANCH_GOVERNANCE.md#11-ci-efficiency-rules)
+does not require repeated cloud builds for ordinary maintenance. No absent run
+is recorded as a successful run. Frozen/counting changes still require their
+own original promotion lifecycle; this paragraph does not weaken those gates.
 Helpers and isolated green files do not increment source coverage.
+
+Trust is attached to exact endpoints: PR #447's 15 audited endpoints use the
+standard three axioms; this does not erase PR #443's disclosed numerical trust.
+The PR #446 2/3/4 classification and concrete rank-three supplement remain
+written proof plus exact checks, rather than new complete dedicated Lean endpoints.
 
 ## Anti-churn rule
 
@@ -146,14 +172,11 @@ and reuse the active branch when it already owns the objective.
 
 ## Commit discipline
 
-Each independent proof advance is committed separately:
-
-1. theorem/definition commit;
-2. repair commit(s), if CI exposes actual errors;
-3. source-facing theorem/integration commit;
-4. proof-status documentation only after successful verification.
-
-Failed intermediate CI runs and repair commits are retained as audit evidence.
+Use commits for meaningful, reviewable stages and one PR for a coherent objective.
+Theorem, repair and integration changes do not each require a new branch or
+duplicated full regression. Publish status only after the corresponding checks;
+retain failed attempts and original receipts as historical evidence. See the
+[current workstream guidance](../../docs/FORMALIZATION_WORKSTREAMS.md).
 
 ## Repository preservation
 

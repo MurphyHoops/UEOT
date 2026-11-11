@@ -1,3 +1,73 @@
+# UEOT Core — Current Cross-Chat Bootstrap
+
+Updated: **2026-11-11**. The current status index is
+[core/status/CURRENT.md](../../../core/status/CURRENT.md); this page is its recovery procedure.
+The original 106-P-ID construction workflow is retained below as history.
+
+## 1. Start from the actual current task
+
+A sufficient user prompt is:
+
+```text
+继续 UEOT Core。先刷新真实 main、工作树和当前任务，读取 core/status/CURRENT.md
+及其对应合同、验收和必要补充；保留已完成状态，复用仍适用的证据，按本次授权目标继续。
+不要按历史 SHA 回退，不从旧路线图重开已经完成的工作。
+```
+
+The assistant should:
+
+1. Inspect current `main`, the actual worktree, applicable `AGENTS.md`, open work
+   and current repository policy. Protect another session's uncommitted work.
+2. Read [the current Core index](../../../core/status/CURRENT.md) and follow the exact adopted package
+   for this request. A larger version label, attachment date or historical chat
+   does not establish which contract is current.
+3. Use [V3_COVERAGE_STATUS.md](V3_COVERAGE_STATUS.md) for the frozen 106 P-ID
+   ledger only. The [classified Core](compression/theory_completion/unified_closure/core_theory_closure_v1/README.md), PR #446
+   [reader hardening](../../../mathematics/review/CORE_DEFINITIVE_FREEZE_2026-11-11/README.md) and PR #447 [growth classification](compression/theory_completion/unified_closure/core_growth_classification_v1/README.md)
+   are completed packages with distinct evidence and scope.
+4. Match the current implementation and book bytes to the relevant validation
+   before reporting completion. The growth classification is no longer merely
+   a suggested next task; its finite exponential contracts and internal-program
+   iff results are in production Lean. The written 2/3/4 classification and
+   source-specific rank-three supplement have a different proof status.
+5. Inspect the relevant existing branch and PR before starting another one.
+   Follow current branch ownership and protection rules; do not turn a new
+   conversation into a global branch cleanup or an unsolicited new proof lane.
+6. Reuse accepted evidence when its source and assumptions are unchanged.
+   Validate actual changes under the current local-validation/CI policy and
+   task contract; do not automatically re-enable or repeat global CI.
+7. Report a concise factual recovery summary, then execute the authorized task.
+   If the named package is already complete, report that fact and use the
+   user's current objective rather than manufacturing another closure debt.
+
+A useful recovery summary records the actual main/head/tree, working changes,
+applicable package, completed results being reused, in-flight ownership,
+remaining authorized work and the evidence needed for its exit.
+
+## 2. Preserve a concrete handoff
+
+At a meaningful stable point, preserve unfinished work and its source identity,
+actual validation, remaining obligations and safe resumption location in the
+current task's existing handoff. Keep old failures and review corrections.
+Use the authorized publication/handoff workflow, and do not label a WIP commit
+as a completed theorem or a merged package.
+
+Issue #56 remains provenance for the original 106-P-ID lifecycle. Issue trackers
+and older handoffs can locate evidence, but neither overrides current code,
+adopted contracts, exact validation or the user's current instructions. A
+completed package does not require another issue update or reconstruction just
+because a new conversation begins.
+
+## 3. Historical construction workflow
+
+The following original text records the former 106-P-ID workflow. Its active
+lane fields, Issue #56 routing and CI/promotion sequence are historical in this
+context; they are not the post-106 startup procedure above. The frozen source
+semantics and accepted proof evidence remain preserved.
+
+<details>
+<summary>Original Core 3 construction and handoff procedure</summary>
+
 # UEOT Core 3 Lean — New Chat Bootstrap
 
 This file defines the user-facing cross-chat workflow. The user should need only two short commands.
@@ -149,3 +219,5 @@ This single command means both **recover the work state** and **automatically re
 ```
 
 Everything else is the AI's responsibility.
+
+</details>

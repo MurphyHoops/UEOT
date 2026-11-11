@@ -1,5 +1,13 @@
 # UEOT Core Lean Restoration Status
 
+> **Historical restoration record — current routing updated 2026-11-11.**
+> The dated counts, in-flight claims and CI runs below record the reconstruction
+> process beginning on 2026-09-09. They are not current coverage or pending work.
+> The frozen source surface is now [106/106 FULL-GREEN](V3_COVERAGE_STATUS.md).
+> Current post-106 results and the active task are routed through
+> [core/status/CURRENT.md](../../../core/status/CURRENT.md). Preserve the original reconstruction
+> provenance; do not re-run it merely because this historical file is opened.
+
 Date: 2026-09-09
 Branch: `main`
 Package: `formalization/ueot-core/`
@@ -32,7 +40,7 @@ passes.
 
 Restoration and source coverage are separate ledgers.
 
-Current v3 source coverage remains:
+At the initial 2026-09-09 checkpoint, v3 source coverage was:
 
 - proved: 19
 - partial: 1

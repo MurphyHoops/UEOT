@@ -1,5 +1,13 @@
 # UEOT Core v3.0 — Parallel Lean Completion Roadmap
 
+> **Historical execution plan — current routing updated 2026-11-11.**
+> The 54/106 checkpoint, pending proof lanes and CI references below describe the
+> 2026-09-13 construction stage. The frozen source ledger subsequently reached
+> [106/106 FULL-GREEN](V3_COVERAGE_STATUS.md); do not reopen those lanes from this
+> roadmap. Follow [core/status/CURRENT.md](../../../core/status/CURRENT.md) and the adopted
+> [classified Core](compression/theory_completion/unified_closure/core_theory_closure_v1/README.md) / [growth classification](compression/theory_completion/unified_closure/core_growth_classification_v1/README.md) packages for
+> current results. Historical proof targets and failures are preserved below.
+
 This is the execution plan for completing all 106 frozen source P-IDs in
 `UEOT_Core_Mathematics_v3.0_Complete.md`.
 
@@ -20,7 +28,7 @@ A P-ID is counted `proved` only after:
 Public canonical-source byte synchronization is a separate reproducibility task;
 it is not allowed to masquerade as a mathematical proof gate.
 
-## 2. Current checkpoint — 2026-09-13
+## 2. Historical checkpoint — 2026-09-13
 
 - integrated proved: **54/106**
 - pending: **52/106**

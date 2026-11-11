@@ -1,10 +1,29 @@
 # UEOT Core 3 Lean — Fallback Handoff Snapshot
 
+## Current handoff routing — 2026-11-11
+
+Start from [core/status/CURRENT.md](../../../core/status/CURRENT.md), then the specific task package and
+actual `main`/worktree/PR state. [FORMALIZATION_STATE.md](FORMALIZATION_STATE.md)
+separates the frozen 106-P-ID ledger from the classified Core and later growth
+extension. PR #447's [growth classification package](compression/theory_completion/unified_closure/core_growth_classification_v1/README.md) is completed and
+publicly imported; do not restart it from the earlier proposal or probe.
+
+This file retains the original final 106-P-ID handoff below. Issue #56 and the
+old branch/CI fields describe that completed lifecycle; they are not a current
+owner, an active writer declaration, or the post-106 next-action authority.
+For an ongoing task, preserve its actual unfinished work and named handoff;
+for a completed package, reuse the release and validation without creating a
+replacement work item. No historical SHA here is a checkout instruction.
+
+## Retained final 106-P-ID handoff
+
+---
+
 > GitHub Issue #56 is the live cross-chat construction state when available.
 > This file is the fallback archival snapshot and is updated at meaningful
 > lifecycle transitions.
 
-## Current authoritative checkpoint
+## Completed frozen-ledger checkpoint
 
 - frozen source P-IDs: **106**;
 - counted FULL-GREEN: **106/106**;

@@ -21,7 +21,7 @@ The project aims to determine how far a single UEOT object/process framework can
 This imposes four disciplines:
 
 1. **Core before analogy.** Domain applications do not define the core.
-2. **Proof before promotion.** A theorem is not marked proved until its source statement is semantically matched and the imported Lean target builds.
+2. **Explicit proof status.** Written mathematical proofs and machine-checked results have distinct evidence. Formal promotion requires semantic matching to the source statement and an actually checked public Lean target.
 3. **Bridges are explicit.** Generic UEOT, quantum-specific assumptions, physical constants, symmetry inputs, and effective-theory assumptions must not be silently identified.
 4. **Validation closes the loop.** Physical extensions must terminate in benchmarks, observables, data, or falsification criteria.
 
@@ -47,14 +47,19 @@ See [Project Architecture](./docs/PROJECT_ARCHITECTURE.md) for the target struct
 
 ## Formal verification
 
-The active Lean package is under:
+**Current Core status — 2026-11-11:** start at the [current state and reading route](./core/status/CURRENT.md), then the [Lean package](./formalization/ueot-core/README.md). Core content is **CLASSIFIED_CORE_CLOSED** within its stated conditional scope; empirical support remains **UNVERIFIED**.
 
-- [formalization/ueot-core](./formalization/ueot-core)
-- [v3 coverage ledger](./formalization/ueot-core/docs/V3_COVERAGE_STATUS.md)
+| Layer | Adopted state and evidence |
+|---|---|
+| Frozen Core Mathematics v3.0 | [106/106 FULL-GREEN source contracts](./formalization/ueot-core/docs/V3_COVERAGE_STATUS.md); the exact source is synchronized. Later results do not increase this frozen P-ID count. |
+| Whole Core conditional mathematics and decision contracts | The whole conditional contract and the finite-wallet, decision-representation and S/G mechanism-decision results remain completed under their registered assumptions. [Current contract map](./core/status/CURRENT.md#completed-contracts-and-their-evidence) |
+| Same-source Core definitive theory | [Classified claims, real regenerative source, permitted control, inheritance and representation](./formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_theory_closure_v1/README.md). Growth optimality is one sourced purpose branch; philosophical and normative arguments retain their own justification. |
+| PR #446: finite hardening | [Task-dependent 2/3/4 representation and the public-response rank-three boundary](./mathematics/review/CORE_DEFINITIVE_FREEZE_2026-11-11/README.md) have written proofs and exact checks; no new complete dedicated Lean endpoints were claimed for them. |
+| PR #447: exact growth and internal attainment | [Completed, publicly imported extension](./formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/README.md): three Lean modules prove the optimal factor max(1, λ₀, λ₁), full permitted-history population bounds and the two existing internal programs' attainment iff conditions on the strictly positive probability domain. |
 
-The source-level completion gate is based on the UEOT Core v3 proposition inventory, not on Lean theorem count or Lake job count.
+The growth extension's formal contract uses finite-time positive exponential bounds and the least common positive upper base. Root-limit/limsup interpretations are written analysis consequences. Its scope does not enlarge the original selection-feedback contract, assert almost-sure survival, or establish natural universality.
 
-The [2026-10-26 mathematical closure audit and execution plan](./mathematics/review/MATHEMATICAL_CLOSURE_AUDIT_2026-10-26.md) distinguishes merged proofs, the unpublished total-kernel/memory candidate, and remaining mathematical obligations. Its next proposed mathematical step is executable support-controller synthesis; strong unified closure remains unestablished.
+The [2026-10-26 audit](./mathematics/review/MATHEMATICAL_CLOSURE_AUDIT_2026-10-26.md) is preserved as a historical checkpoint. Its unpublished-candidate and next-step descriptions are not the current task queue. Completed Core contracts are not reopened merely because an older roadmap says OPEN; new research needs a stated question and bounded completion conditions.
 
 ## Physics status
 
@@ -75,6 +80,8 @@ Repository claims should use explicit maturity labels:
 
 - **canonical** — accepted governance/core statement
 - **proved** — source-matched and machine-checked theorem
+- **written proof** — an explicit mathematical argument whose dedicated formal endpoint has not necessarily been added
+- **philosophical argument** — a reasoned conceptual or normative claim, assessed independently of a Lean build
 - **partial** — a strict subset or weakened form is machine-checked
 - **pending** — formal target exists or is identified but not proved
 - **conjecture** — mathematically/physically proposed but not established
@@ -94,7 +101,7 @@ The original LaTeX files are also available in [philosophy/source/original](./ph
 
 ## Branch policy
 
-Active development is integrated through `main`. Complete and verify a coherent local change before submitting the necessary commits and PRs. The Core cloud build has a manual entry; the local build and evidence workflow is described in [Compression Operations](./formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md).
+Active development is integrated through `main`. Complete and verify a coherent local change before submitting the necessary commits and PRs. Current Core validation is local under the [branch-governance policy](./docs/REPOSITORY_BRANCH_GOVERNANCE.md#11-ci-efficiency-rules) and [Compression Operations](./formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md). Documentation-only maintenance checks its changed content and links; unchanged proof evidence is reused with matching source identities. Historical CI receipts remain historical, and an absent cloud run is not a successful build.
 
 ## Copyright, research licensing and publication
 

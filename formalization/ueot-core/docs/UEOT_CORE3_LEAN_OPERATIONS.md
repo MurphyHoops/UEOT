@@ -1,5 +1,34 @@
 # UEOT Core 3 Lean Formalization — Cross-Chat Operations Manual
 
+## Current applicability — 2026-11-11
+
+This manual retains the original **106-P-ID construction and promotion**
+workflow. That source ledger is complete. Its Issue #56 authority, proof-lane
+preflight and historical CI sequence are scoped to that lifecycle; they do not
+make every post-106 documentation or research task a new P-ID promotion.
+
+For current work, first read [core/status/CURRENT.md](../../../core/status/CURRENT.md),
+[NEW_CHAT_BOOTSTRAP.md](NEW_CHAT_BOOTSTRAP.md), the repository's current branch
+policy, and the applicable adopted task contract. Confirm live `main`, existing
+work and permissions before mutation. Apply the current local-validation/CI
+policy and the task's actual gates; the historical workflow below is not an
+instruction to restart disabled global CI or repeat unchanged accepted builds.
+The frozen theorem-semantic, source-audit and coverage gates remain intact.
+
+The [classified Core](compression/theory_completion/unified_closure/core_theory_closure_v1/README.md) and PR #447's
+[growth classification](compression/theory_completion/unified_closure/core_growth_classification_v1/README.md) have their own completed acceptance records.
+Neither is waiting for a new 106-P-ID ledger promotion. Numeric proof trust is
+reported per endpoint/package; this manual's original prohibited-proof record
+must not erase the separately disclosed PR443 boundary.
+
+## Original frozen-source operations manual
+
+The following numbered sections preserve the original workflow and its source
+contracts for provenance and any specifically authorized frozen-P-ID repair.
+They are not a declaration of a current active branch or unfinished P-ID.
+
+---
+
 > Purpose: make UEOT Core 3 Lean formalization resumable across arbitrarily many ChatGPT conversations while keeping theorem semantics, coverage accounting, branches, CI and handoff state auditable. No chat and no temporary branch may become a single point of failure.
 
 ## 0. Project identity
