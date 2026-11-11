@@ -1,0 +1,46 @@
+{
+  "schema": "ueot-qm.finite-conditioning-reference/1",
+  "scope": "finite fixed visible protocol with a supplied two-action physical library",
+  "model": "Pauli flagged three-step conditioning with a complete realization certificate",
+  "source_instrument": {
+    "0": [ [["1/2", "0"], ["0", "-1/2"]] ],
+    "1": [ [["0", "1/2"], ["1/2", "0"]] ],
+    "failure": [ [["1/2", "0"], ["0", "1/2"]], [["1/2", "0"], ["0", "1/2"]] ]
+  },
+  "initial_density": {
+    "real": [["3/5", "1/5"], ["1/5", "2/5"]],
+    "imag": [["0", "0"], ["0", "0"]]
+  },
+  "protocol": {
+    "kind": "repeated_success_with_early_failure",
+    "horizon": 3,
+    "success_labels": ["0", "1"],
+    "stop_on_failure": true,
+    "visible_records": "original visible strings; both failure Kraus remain hidden"
+  },
+  "allowed_library": {
+    "A0": {"0": [ [["1", "0"], ["0", "-1"]] ], "1": [ [["0", "0"], ["0", "0"]] ], "failure": [ [["0", "0"], ["0", "0"]] ]},
+    "A1": {"0": [ [["0", "0"], ["0", "0"]] ], "1": [ [["0", "1"], ["1", "0"]] ], "failure": [ [["0", "0"], ["0", "0"]] ]}
+  },
+  "shared_randomization": {"A0": "1/2", "A1": "1/2"},
+  "preparation": {
+    "initial_state_unchanged": true,
+    "reason": "H0=(1/8)I; no nonlinear initialization or postselection filter needed",
+    "independent_reset_trials_for_source_baseline": true
+  },
+  "resource_contract": {
+    "one_source_action_cost": "1",
+    "one_allowed_Pauli_action_cost": "1",
+    "randomization_overhead_per_target_action": "r >= 0",
+    "source_action_cost_per_success": "14",
+    "target_action_plus_randomization_cost": "3*(1+r)",
+    "action_only_advantage_condition": "3*(1+r)<14",
+    "other_costs": "preparation, resets, ancillas, calibration and control hardware measured separately",
+    "hardware_advantage_claim": false
+  },
+  "evidence_policy": {
+    "numpy_scipy": "numerical diagnostics only",
+    "sympy": "exact finite symbolic witness checks",
+    "real_hardware_data": false
+  }
+}
