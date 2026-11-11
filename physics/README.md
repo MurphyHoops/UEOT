@@ -24,3 +24,13 @@ Quantum-specific structure must not be claimed as a consequence of generic UEOT 
 ## Validation
 
 Known-theory recovery and new predictions belong in `validation/`. A physics document is incomplete if it cannot identify what calculation, benchmark, or experiment would pressure it.
+
+## Copyright and research reuse
+
+For the third formal book `qm/book/UEOT_PHYSICS.{md,tex,pdf}` and the
+separate physics research, Lean source, Python kernel, experiments and data,
+see [Physics licensing](LICENSING.md) and
+[book-version rights](qm/book/PUBLICATION_RIGHTS.md). Historically licensed
+CC BY 4.0 expression remains available under its earlier grant. Future
+original research explanations remain open under the root policy; no code,
+third-party material or formal-book addition is silently relicensed.
