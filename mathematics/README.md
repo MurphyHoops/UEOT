@@ -12,11 +12,17 @@
 
 本版保留原 Core 第 0—31 章和附录，并逐章补充后续形式化的实际范围。第 32—38 章进一步展开层级压缩、关系缺陷与校准、客体和目的接口、同源统一闭合、实际占据、有限支持可行性与注册选择后的联合风险。历史代码与历史运行输出保留各自的身份；新的编译和检验不能替代旧的执行记录。
 
+## 2026-11-11：精确增长参数分类
+
+在已冻结 Core 之上完成一个另行授权的有限数学单元：只放宽概率参数前提，保留原物理事务、两个内部程序、全部公开历史实随机策略、钱包、stop、拒绝与忠实遗传。精确全策略增长因子为 max(1, λ₀, λ₁)，并给出两个既有内部程序达到的充要条件、平手和临界边界。三个新增 Lean 模块由原公共入口导出；数学总论第四部分和哲学第七、十一章消费结果。
+
+[定理、实际端点与本轮验证](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/README.md)绑定这次变更；前一冻结包继续绑定 PR #446 的原发行产物。原 Valid 与选择反馈合同保持，CLASSIFIED_CORE_CLOSED 和经验 UNVERIFIED 不变。完成五项出口后本单元停止，不自动启动其他研究。
+
 ## 2026-11-11：有限加固后冻结
 
 当前 Core 保持 `CLASSIFIED_CORE_CLOSED`，本版完成有限定本加固并停止自动扩题。两书将一次新生与完整未来预测、任务依赖的 2／3／4 最小表示，以及同源三公开响应的局部秩三归入现有正文；明确同一程序的实际恢复、增长目标和比较类，修正历史来源义务的时态。新增补充属于书面证明与精确计算，未冒称新增完整 Lean 端点；经验支持仍为 `UNVERIFIED`。
 
-本轮[冻结报告与独立读者验收](review/CORE_DEFINITIVE_FREEZE_2026-11-11/README.md)、[实际验证](review/CORE_DEFINITIVE_FREEZE_2026-11-11/VALIDATION.json)和[最终选页审查](review/CORE_DEFINITIVE_FREEZE_2026-11-11/VISUAL_REVIEW.json)绑定当前产物。数学书239页，哲学书97页；旧审查和 PR444 交付清单继续保留各自发行身份。PDF 导出同时修复了数学书原有的 HTML 锚点丢失，全部内部命名链接均已核对。
+本轮[冻结报告与独立读者验收](review/CORE_DEFINITIVE_FREEZE_2026-11-11/README.md)、[实际验证](review/CORE_DEFINITIVE_FREEZE_2026-11-11/VALIDATION.json)和[最终选页审查](review/CORE_DEFINITIVE_FREEZE_2026-11-11/VISUAL_REVIEW.json)绑定 PR #446 的冻结产物（当时数学书239页、哲学书97页）；旧审查和 PR444 交付清单继续保留各自发行身份。PDF 导出同时修复了数学书原有的 HTML 锚点丢失，全部内部命名链接均已核对。
 
 ## 冻结来源与新增工作
 

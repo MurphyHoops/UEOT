@@ -4,6 +4,7 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeOneSt
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeFeedbackBoundary
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeLineage
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment
 
 /-!
 # Public common-source consumer for the definitive Core closure
@@ -13,6 +14,8 @@ identifies the very same damaged founder, physical code, paid repair and actual
 population execution; it does not supply a success, mean, fitness or optimality
 certificate to a source. All parameters in the open `Valid` class are admitted.
 The old conditional Core results and their interfaces remain unchanged.
+The separately named growth-classification endpoints admit primitive probability
+validity and classify both inherited programs; they do not widen feedback contracts.
 -/
 
 namespace UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreTheoryClosure
