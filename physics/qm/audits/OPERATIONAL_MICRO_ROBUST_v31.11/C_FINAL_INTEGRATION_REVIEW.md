@@ -323,3 +323,116 @@ are closed for the exact sources and executions identified here. This does
 not decide still-separate publication metadata, PDF visual acceptance,
 remote integration, or empirical validation. Earlier observations remain
 preserved as the history of how these concrete gaps were resolved.
+
+## 9. Bounded follow-up: execution-context schema v2 and preserved PR artifact
+
+**Read-back time:** 2026-11-11 09:55:44 UTC / 2026-11-11 17:55:44 Asia/Shanghai.
+**Scope:** execution-provenance correction only, within scientific v31.11.
+Reviewer: the same native agent C. This follow-up was read-only outside this
+isolated report. No Lean gate, runtime experiment, publication build, or
+remote action was rerun by C.
+
+### Why a correction was necessary
+
+The initial PR #457 runtime artifact used the old runner, whose actor string
+was unconditionally `primary agent on Linux workspace`. That described the
+original local execution but was inaccurate when the same program ran under
+GitHub Actions. C inspected the retained raw ZIP rather than inferring this
+from a later corrected local receipt.
+
+The unchanged raw artifact is
+`/workspace/scratch/a6fba8f7e18e/remote_ci/pr457/runtime.zip`, SHA-256
+`7c5097db497e24d6b7e6dd5e326e74bfcf94fa46edb780f8181ad1d9d5845150`.
+Its member `ueot-qm-operational-micro-robust/execution_receipt.json` has
+SHA-256
+`f690fc1e53f34ec1eb6a1ba088353963d4b2a03256b14843792e0bf5bc20a8a7`,
+schema `ueot-qm.runtime-increment/1`, seven commands, and recorded status PASS.
+It was created at 09:52:18.012022 UTC and records command working directory
+`/home/runner/work/UEOT/UEOT` while retaining the inaccurate hard-coded actor.
+The old field is still present in those raw bytes; it has not been rewritten
+to claim that the later metadata correction was already part of that run.
+
+The separate legacy finite-conditioning member in the ZIP has its own
+`ueot-qm.finite-reference-execution/1` schema and identity. It was not confused
+with the v31.11 increment's actor field. This bounded review did not make a
+new GitHub API query or independently re-establish the remote PR head; the
+supplied first-head reference is
+`78aad3c7859084a918c00e655cf198b7b5beecf2`.
+
+### Corrected runner logic and actual new local execution
+
+The current `run_verification.py` has SHA-256
+`6baf8614aca24ca0170ecb606b8e33c84cd5c1631a38c4dc81b0be65fafa6b37`.
+C read its actual logic:
+
+- `GITHUB_ACTIONS == "true"` selects provider `github_actions` and actor
+  `GitHub Actions runner`; otherwise provider and actor describe a local
+  Python process without assuming which agent launched it.
+- The CI branch records the repository, run ID, run attempt, job, event name
+  and `GITHUB_SHA` from their explicit environment variables.
+- `git rev-parse HEAD` records the observed checkout head, or null on a
+  failed lookup. The receipt explicitly states that consumed-input hashes
+  bind actual bytes and that HEAD alone does not identify a dirty worktree.
+- Before/after consumed-input identities must agree. The runner itself is
+  one of those inputs. Output enumeration excludes the preserved `prior`
+  archive, so historical outputs are not relabelled as fresh outputs.
+
+The current canonical runtime receipt has schema
+`ueot-qm.runtime-increment/2`, SHA-256
+`44c4d1a1e06144c1b8f7932fc576cba5e17e0fdf669a0198f480e390c5547523`.
+It records a real new **local** execution completed at
+09:54:18.614635 UTC, provider `local_python_process`, actor `local Python
+process`, and observed git HEAD
+`16a89154183c22030d4526413167d095d94e6890`. A read-only current HEAD check
+returned that same commit, and the working tree contains the staged increment;
+the new warning about source-hash authority therefore matters in this actual
+case. This local run is not presented as a new GitHub Actions execution.
+
+C verified all seven command exit codes are zero, all **13 input hashes**,
+all **18 output hashes**, and all **seven command-log hashes** against the
+current files. There were no mismatches. Compared with the prior local
+receipt's 13 inputs, the **only changed consumed input is the runner**:
+its previous hash was
+`9e90ed3d1e44028ac645d8852988b3f98d5c6f19321ff184f18e78ce0f1b166d`.
+The exact/numerical scientific inputs were not silently revised to obtain
+another result. The regenerated integration receipt has current SHA-256
+`433bd5e5525889dd878cfe54f3544b886ab6ed9e2f6b32378218bba0eb257024`;
+its different execution identity is kept separate from the earlier receipt.
+
+The corrected CI branch was **source-reviewed**, while the supplied new
+execution is the local branch. Actual provider/run/job fields from a future
+CI run must be read from that run's new receipt. The old schema-1 CI artifact
+cannot serve as evidence that schema 2 was already executed remotely.
+
+### Original local receipt and all outputs are preserved byte-for-byte
+
+The original local outputs now reside in
+`physics/qm/kernel/evidence/v31.11/runtime/prior/before-execution-context-v2/`.
+Its original `execution_receipt.json` has SHA-256
+`b5398b9536e0c0f38bd19f79353907f08a61c3ff1511fb1049d6638352c710ce`,
+exactly the identity reviewed in §8. It retains schema 1 and the original
+local actor string. C matched every one of its 18 output entries and seven
+log entries to the corresponding archived files, with zero mismatches.
+The archive README explicitly says its original paths and scientific-commit
+reference identify the original run, not the current regenerated files.
+
+### Lean source identity remains valid without another build
+
+C read the current recorded 158-item Lean source manifest and checked the
+SHA-256 and byte size of every entry against current files. All **158/158**
+match; the aggregate identity remains
+`f9ea1e3e9bc695e3916d764e8f005d98556e4541653d439a60e57a5fb8c4cacf`.
+The Lean verification receipt remains
+`45afc9ee3bc2d02fd0c687c60910b5775831844a68416373e05f32fcdf21af8c`,
+and the axiom receipt remains
+`38c39683f99e1707ae3841457858e46d11066f4a73816326249d49c8a553cf60`.
+This is a byte-identity readback, not a repeat Lean execution. The source-bound
+machine acceptance and its limited theorem scope from §8 are unchanged.
+
+**Bounded follow-up verdict:** PASS for the corrected execution-identity logic,
+the actually executed local schema-2 receipt, current file/log bindings, and
+preservation of the original local and raw remote identities. The provenance
+defect is accurately recorded and repaired for the new runner. Remote
+schema-2 acceptance awaits its own actual CI receipt; mathematical conclusions,
+machine-proof scope, synthetic classification and lack of hardware evidence
+are unchanged.

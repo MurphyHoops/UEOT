@@ -1,0 +1,235 @@
+{
+  "schema": "ueot-qm.v31.11.independent-integration/1",
+  "status": "PASS",
+  "executed_at_utc": "2026-11-11T09:31:23.435839+00:00",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "/workspace/scratch/a6fba8f7e18e/UEOT/physics/qm/operational_micro_robust/verify_integration.py",
+    "--output-dir",
+    "/workspace/scratch/a6fba8f7e18e/UEOT/physics/qm/kernel/evidence/v31.11/runtime"
+  ],
+  "versions": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "numpy": "2.3.5",
+    "sympy": "1.14.0"
+  },
+  "source_sha256": {
+    "operational_micro_robust/verify_integration.py": "5e8d79c6184162526e23223644fa8aab2bf3c8238c178d52eeb4bb19e933c361",
+    "conditioning/finite_conditioning.py": "33d573b3049538bedbcd7ff60f15e566fb17358f0b91d8f76a0d645f1ab0c6c4",
+    "audits/OPERATIONAL_MICRO_ROBUST_v31.11/SHARED_MODEL.md": "fea750cf4c6002c5a6aa306a8b698b91be71d80ede5cb44a0eb1341952ded027"
+  },
+  "source_unchanged_during_execution": true,
+  "exact": {
+    "checks": [
+      {
+        "name": "all seven raw terminal masses sum to one",
+        "status": "PASS_EXACT",
+        "detail": null
+      },
+      {
+        "name": "source accepted mass is derived as s squared",
+        "status": "PASS_EXACT",
+        "detail": null
+      },
+      {
+        "name": "raw accepted block normalization 00",
+        "status": "PASS_EXACT",
+        "detail": null
+      },
+      {
+        "name": "raw accepted block normalization 01",
+        "status": "PASS_EXACT",
+        "detail": null
+      },
+      {
+        "name": "raw accepted block normalization 10",
+        "status": "PASS_EXACT",
+        "detail": null
+      },
+      {
+        "name": "raw accepted block normalization 11",
+        "status": "PASS_EXACT",
+        "detail": null
+      },
+      {
+        "name": "success floor",
+        "status": "PASS_EXACT",
+        "detail": null
+      },
+      {
+        "name": "legal adaptive law 00",
+        "status": "PASS_EXACT",
+        "detail": null
+      },
+      {
+        "name": "legal adaptive law 01",
+        "status": "PASS_EXACT",
+        "detail": null
+      },
+      {
+        "name": "legal adaptive law 10",
+        "status": "PASS_EXACT",
+        "detail": null
+      },
+      {
+        "name": "legal adaptive law 11",
+        "status": "PASS_EXACT",
+        "detail": null
+      },
+      {
+        "name": "uniform adaptive upper bound, first case factorization",
+        "status": "PASS_EXACT",
+        "detail": null
+      },
+      {
+        "name": "first case remaining factor nonnegative",
+        "status": "PASS_EXACT",
+        "detail": null
+      },
+      {
+        "name": "uniform adaptive upper bound, second case",
+        "status": "PASS_EXACT",
+        "detail": null
+      },
+      {
+        "name": "minimax lower bound from endpoint record laws",
+        "status": "PASS_EXACT",
+        "detail": null
+      },
+      {
+        "name": "memoryless worst-case comparison",
+        "status": "PASS_EXACT",
+        "detail": null
+      },
+      {
+        "name": "adaptive nominal tradeoff",
+        "status": "PASS_EXACT",
+        "detail": null
+      },
+      {
+        "name": "complete physical preparation plus robust policy meets frozen precision",
+        "status": "PASS_EXACT",
+        "detail": "3673/102400"
+      },
+      {
+        "name": "actual gates are unitary",
+        "status": "PASS_EXACT",
+        "detail": null
+      },
+      {
+        "name": "derived Bloch matrices are rotations",
+        "status": "PASS_EXACT",
+        "detail": null
+      },
+      {
+        "name": "actual CP composition noncommutes on a state",
+        "status": "PASS_EXACT",
+        "detail": "576/3125"
+      },
+      {
+        "name": "Sylvester certificate for two-step contraction below 9/10",
+        "status": "PASS_EXACT",
+        "detail": [
+          "4941/12500",
+          "422733249/3906250000",
+          "29552508909/390625000000"
+        ]
+      },
+      {
+        "name": "uniform perturbation contraction is 49/50",
+        "status": "PASS_EXACT",
+        "detail": null
+      },
+      {
+        "name": "independent checker basis bridge",
+        "status": "PASS_EXACT",
+        "detail": "C uses [g0,e0,g1]; root and the Bloch proof use [g0,g1,e0]."
+      },
+      {
+        "name": "whole-system distinct fixed state: vacuum",
+        "status": "PASS_EXACT",
+        "detail": null
+      },
+      {
+        "name": "whole-system distinct fixed state: G=1 mixed",
+        "status": "PASS_EXACT",
+        "detail": null
+      }
+    ],
+    "count": 26,
+    "adaptive_bound": "1/50",
+    "full_physical_bound": "3673/102400",
+    "full_physical_bound_decimal": "0.035869140625",
+    "precision": "1/20",
+    "contraction_bound": "49/50",
+    "source_success_floor": "1369/2500",
+    "real_hardware_data": false
+  },
+  "floating": {
+    "rows": [
+      {
+        "q": 0.48,
+        "source_success": 0.5776,
+        "seven_records_retained": true,
+        "backward_effect_residual": 2.751414089240479e-16,
+        "inherited_interpreter_conditional_residual": 2.7873712317591175e-16,
+        "adaptive_full_cq_error": 0.020000000000000132,
+        "analytic_value": 0.020000000000000018,
+        "raw_source_vs_conditional_distance": 0.4224,
+        "illustrative_dimensionless_full_cost": 17.3601108033241
+      },
+      {
+        "q": 0.49,
+        "source_success": 0.5700249999999999,
+        "seven_records_retained": true,
+        "backward_effect_residual": 4.4220905324893964e-17,
+        "inherited_interpreter_conditional_residual": 2.539695333574318e-16,
+        "adaptive_full_cq_error": 0.01030000000000017,
+        "analytic_value": 0.010300000000000009,
+        "raw_source_vs_conditional_distance": 0.4299750000000001,
+        "illustrative_dimensionless_full_cost": 17.621902548133857
+      },
+      {
+        "q": 0.5,
+        "source_success": 0.5624999999999998,
+        "seven_records_retained": true,
+        "backward_effect_residual": 3.8664551249161895e-16,
+        "inherited_interpreter_conditional_residual": 5.490302999282455e-16,
+        "adaptive_full_cq_error": 0.0008000000000001041,
+        "analytic_value": 0.0008,
+        "raw_source_vs_conditional_distance": 0.43750000000000006,
+        "illustrative_dimensionless_full_cost": 17.888888888888896
+      },
+      {
+        "q": 0.51,
+        "source_success": 0.555025,
+        "seven_records_retained": true,
+        "backward_effect_residual": 2.7583748607679146e-16,
+        "inherited_interpreter_conditional_residual": 2.8346834539830554e-16,
+        "adaptive_full_cq_error": 0.010300000000000087,
+        "analytic_value": 0.010300000000000009,
+        "raw_source_vs_conditional_distance": 0.444975,
+        "illustrative_dimensionless_full_cost": 18.161208954551597
+      },
+      {
+        "q": 0.52,
+        "source_success": 0.5475999999999999,
+        "seven_records_retained": true,
+        "backward_effect_residual": 2.220886598609723e-16,
+        "inherited_interpreter_conditional_residual": 5.404480033298536e-16,
+        "adaptive_full_cq_error": 0.02000000000000017,
+        "analytic_value": 0.020000000000000018,
+        "raw_source_vs_conditional_distance": 0.4524000000000001,
+        "illustrative_dimensionless_full_cost": 18.439006574141715
+      }
+    ],
+    "reference_dimension": 2,
+    "system_dimension": 3,
+    "input": "entangled |g,1;0_R>+|e,0;1_R>, normalized",
+    "scope": "floating execution of inherited source-only finite interpreter; universal claims are analytic",
+    "cost_units": "illustrative dimensionless bookkeeping, not measured hardware cost",
+    "real_hardware_data": false
+  },
+  "new_hardware_data": false
+}

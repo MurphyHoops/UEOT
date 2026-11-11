@@ -1,0 +1,58 @@
+{
+  "classification": "exact symbolic rational controls, not empirical evidence",
+  "sympy_version": "1.14.0",
+  "source_sha256": "973d0546fc0741af30ebf06acdf1226634d454994ccbe3ea55b91c6294ff60e5",
+  "checks": [
+    {
+      "name": "same_cp_distinct_kraus",
+      "verified": true,
+      "detail": "Kraus counts 1 and 2; exact 9/25+16/25=1; Choi matrices equal."
+    },
+    {
+      "name": "rectangular_same_cp",
+      "verified": true,
+      "detail": "Actual qubit-to-qutrit maps, input-first 6x6 Choi, equal exactly."
+    },
+    {
+      "name": "entangled_reference_positive_control",
+      "verified": true,
+      "detail": "Same rectangular CP map on an entangled 2x2 input; output dimension 6."
+    },
+    {
+      "name": "same_forgotten_channel",
+      "verified": true,
+      "detail": "Outcome-forgetting channels coincide."
+    },
+    {
+      "name": "visible_label_swap_detected",
+      "verified": true,
+      "detail": "Complete CQ trace distance is exactly 1."
+    },
+    {
+      "name": "normalized_posterior_false_success",
+      "verified": true,
+      "detail": "Posterior equal while raw event masses are 1/4 and 1/2."
+    },
+    {
+      "name": "hidden_index_is_not_visible_label",
+      "verified": true,
+      "detail": "Hidden refinement has one visible block; promoted refinement has two."
+    },
+    {
+      "name": "zero_event",
+      "verified": true,
+      "detail": "Zero Kraus event has zero probability; no normalized posterior created."
+    },
+    {
+      "name": "restricted_effect_false_success",
+      "verified": true,
+      "detail": "All diagonal effects agree but full outputs are orthogonal."
+    },
+    {
+      "name": "restricted_input_false_success",
+      "verified": true,
+      "detail": "One supported input agrees; full-space Choi maps differ."
+    }
+  ],
+  "all_verified": true
+}

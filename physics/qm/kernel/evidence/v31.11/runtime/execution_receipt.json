@@ -1,10 +1,15 @@
 {
-  "schema": "ueot-qm.runtime-increment/1",
+  "schema": "ueot-qm.runtime-increment/2",
   "version": "v31.11",
   "status": "PASS",
-  "created_at_utc": "2026-11-11T09:31:23.726849+00:00",
+  "created_at_utc": "2026-11-11T09:54:18.614635+00:00",
   "baseline": "16a89154183c22030d4526413167d095d94e6890",
-  "execution_actor": "primary agent on Linux workspace",
+  "execution_actor": "local Python process",
+  "execution_context": {
+    "provider": "local_python_process",
+    "observed_git_head": "16a89154183c22030d4526413167d095d94e6890",
+    "identity_authority": "The consumed-input hashes bind actual bytes; git HEAD alone does not identify a dirty worktree"
+  },
   "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
   "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
   "commands": [
@@ -15,8 +20,8 @@
         "/workspace/scratch/a6fba8f7e18e/UEOT/physics/qm/operational_micro_robust/check_operational_controls.py"
       ],
       "cwd": "/workspace/scratch/a6fba8f7e18e/UEOT",
-      "started_at_utc": "2026-11-11T09:31:18.421290+00:00",
-      "finished_at_utc": "2026-11-11T09:31:18.853519+00:00",
+      "started_at_utc": "2026-11-11T09:54:14.374012+00:00",
+      "finished_at_utc": "2026-11-11T09:54:14.776189+00:00",
       "exit_code": 0,
       "log": {
         "path": "physics/qm/kernel/evidence/v31.11/runtime/operational-controls.log",
@@ -33,8 +38,8 @@
         "/workspace/scratch/a6fba8f7e18e/UEOT/physics/qm/kernel/evidence/v31.11/runtime/micro-truncation.json"
       ],
       "cwd": "/workspace/scratch/a6fba8f7e18e/UEOT",
-      "started_at_utc": "2026-11-11T09:31:18.853892+00:00",
-      "finished_at_utc": "2026-11-11T09:31:20.586486+00:00",
+      "started_at_utc": "2026-11-11T09:54:14.776909+00:00",
+      "finished_at_utc": "2026-11-11T09:54:16.150925+00:00",
       "exit_code": 0,
       "log": {
         "path": "physics/qm/kernel/evidence/v31.11/runtime/micro-truncation.log",
@@ -53,8 +58,8 @@
         "/workspace/scratch/a6fba8f7e18e/UEOT/physics/qm/kernel/evidence/v31.11/runtime/candidate.json"
       ],
       "cwd": "/workspace/scratch/a6fba8f7e18e/UEOT",
-      "started_at_utc": "2026-11-11T09:31:20.586669+00:00",
-      "finished_at_utc": "2026-11-11T09:31:20.628080+00:00",
+      "started_at_utc": "2026-11-11T09:54:16.151115+00:00",
+      "finished_at_utc": "2026-11-11T09:54:16.193359+00:00",
       "exit_code": 0,
       "log": {
         "path": "physics/qm/kernel/evidence/v31.11/runtime/certificate-producer.log",
@@ -75,8 +80,8 @@
         "/workspace/scratch/a6fba8f7e18e/UEOT/physics/qm/kernel/evidence/v31.11/runtime/exact-certificate.json"
       ],
       "cwd": "/workspace/scratch/a6fba8f7e18e/UEOT",
-      "started_at_utc": "2026-11-11T09:31:20.628336+00:00",
-      "finished_at_utc": "2026-11-11T09:31:22.412830+00:00",
+      "started_at_utc": "2026-11-11T09:54:16.193572+00:00",
+      "finished_at_utc": "2026-11-11T09:54:17.561274+00:00",
       "exit_code": 0,
       "log": {
         "path": "physics/qm/kernel/evidence/v31.11/runtime/certificate-independent-checker.log",
@@ -90,13 +95,13 @@
         "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
         "/workspace/scratch/a6fba8f7e18e/UEOT/physics/qm/operational_micro_robust/review_c_exact.py",
         "--c-dir",
-        "/tmp/ueot-v31-11-crosscheck-aattp187",
+        "/tmp/ueot-v31-11-crosscheck-io1th0n0",
         "--output",
         "/workspace/scratch/a6fba8f7e18e/UEOT/physics/qm/kernel/evidence/v31.11/runtime/independent-b-check.json"
       ],
       "cwd": "/workspace/scratch/a6fba8f7e18e/UEOT",
-      "started_at_utc": "2026-11-11T09:31:22.413369+00:00",
-      "finished_at_utc": "2026-11-11T09:31:22.460124+00:00",
+      "started_at_utc": "2026-11-11T09:54:17.561936+00:00",
+      "finished_at_utc": "2026-11-11T09:54:17.591827+00:00",
       "exit_code": 0,
       "log": {
         "path": "physics/qm/kernel/evidence/v31.11/runtime/independent-b-review-check.log",
@@ -113,8 +118,8 @@
         "/workspace/scratch/a6fba8f7e18e/UEOT/physics/qm/kernel/evidence/v31.11/runtime"
       ],
       "cwd": "/workspace/scratch/a6fba8f7e18e/UEOT",
-      "started_at_utc": "2026-11-11T09:31:22.460539+00:00",
-      "finished_at_utc": "2026-11-11T09:31:23.649436+00:00",
+      "started_at_utc": "2026-11-11T09:54:17.592124+00:00",
+      "finished_at_utc": "2026-11-11T09:54:18.526469+00:00",
       "exit_code": 0,
       "log": {
         "path": "physics/qm/kernel/evidence/v31.11/runtime/source-to-cq-integration.log",
@@ -133,8 +138,8 @@
         "/workspace/scratch/a6fba8f7e18e/UEOT/physics/qm/kernel/evidence/v31.11/runtime/synthetic"
       ],
       "cwd": "/workspace/scratch/a6fba8f7e18e/UEOT",
-      "started_at_utc": "2026-11-11T09:31:23.649626+00:00",
-      "finished_at_utc": "2026-11-11T09:31:23.725659+00:00",
+      "started_at_utc": "2026-11-11T09:54:18.526661+00:00",
+      "finished_at_utc": "2026-11-11T09:54:18.611316+00:00",
       "exit_code": 0,
       "log": {
         "path": "physics/qm/kernel/evidence/v31.11/runtime/synthetic-calibration-and-holdout.log",
@@ -181,8 +186,8 @@
     },
     {
       "path": "physics/qm/operational_micro_robust/run_verification.py",
-      "sha256": "9e90ed3d1e44028ac645d8852988b3f98d5c6f19321ff184f18e78ce0f1b166d",
-      "bytes": 5495
+      "sha256": "6baf8614aca24ca0170ecb606b8e33c84cd5c1631a38c4dc81b0be65fafa6b37",
+      "bytes": 6363
     },
     {
       "path": "physics/qm/operational_micro_robust/synthetic_calibration.py",
@@ -244,12 +249,12 @@
     },
     {
       "path": "physics/qm/kernel/evidence/v31.11/runtime/independent-integration.json",
-      "sha256": "0424cfab7334403aaac6f787a44c404a9b1c3da2a1f8c2711faa595dd0774b5f",
+      "sha256": "433bd5e5525889dd878cfe54f3544b886ab6ed9e2f6b32378218bba0eb257024",
       "bytes": 7730
     },
     {
       "path": "physics/qm/kernel/evidence/v31.11/runtime/micro-truncation.json",
-      "sha256": "010c6d93f4192fe6a558045ade62847d197f7d1c870a24ec439c47c75761474f",
+      "sha256": "c587c9c23b39c5818fd66a43f01054c564106b1fa6bd5156d5573f3f695f37c2",
       "bytes": 9039
     },
     {

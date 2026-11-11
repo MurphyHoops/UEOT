@@ -8,6 +8,7 @@ from datetime import datetime, timezone
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path
 import platform
 import shutil
@@ -81,10 +82,23 @@ def main():
             ["--model", HERE / "frozen_model.json", "--output-dir", out / "synthetic"])
     after = [identity(p) for p in inputs]
     assert before == after, "Consumed source changed during execution"
-    receipt = {"schema": "ueot-qm.runtime-increment/1", "version": "v31.11",
+    github_actions = os.environ.get("GITHUB_ACTIONS") == "true"
+    checkout = subprocess.run(["git", "rev-parse", "HEAD"], cwd=REPO,
+                              capture_output=True, text=True)
+    execution_context = {
+        "provider": "github_actions" if github_actions else "local_python_process",
+        "observed_git_head": checkout.stdout.strip() if checkout.returncode == 0 else None,
+        "identity_authority": "The consumed-input hashes bind actual bytes; git HEAD alone does not identify a dirty worktree",
+    }
+    if github_actions:
+        execution_context["workflow"] = {key: os.environ.get(key) for key in
+            ["GITHUB_REPOSITORY", "GITHUB_RUN_ID", "GITHUB_RUN_ATTEMPT",
+             "GITHUB_JOB", "GITHUB_EVENT_NAME", "GITHUB_SHA"]}
+    receipt = {"schema": "ueot-qm.runtime-increment/2", "version": "v31.11",
                "status": "PASS", "created_at_utc": datetime.now(timezone.utc).isoformat(),
                "baseline": "16a89154183c22030d4526413167d095d94e6890",
-               "execution_actor": "primary agent on Linux workspace",
+               "execution_actor": "GitHub Actions runner" if github_actions else "local Python process",
+               "execution_context": execution_context,
                "python": sys.version, "platform": platform.platform(),
                "commands": commands, "inputs": before, "inputs_stable_during_execution": True,
                "outputs": [identity(p) for p in sorted(out.rglob("*"))

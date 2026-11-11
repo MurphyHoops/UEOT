@@ -1,0 +1,18 @@
+{
+  "schema": "ueot-qm.remote-runtime-inspection/1",
+  "observed_at_utc": "2026-11-11T09:55:34.478551+00:00",
+  "status": "COMPUTATION_PASS_EXECUTOR_LABEL_DEFECT",
+  "run_id": 42998720245,
+  "artifact_id": 13844793326,
+  "workflow_url": "https://github.com/MurphyHoops/UEOT/actions/runs/42998720245",
+  "scientific_head": "78aad3c7859084a918c00e655cf198b7b5beecf2",
+  "artifact_sha256": "7c5097db497e24d6b7e6dd5e326e74bfcf94fa46edb780f8181ad1d9d5845150",
+  "input_hashes_matched_to_exact_remote_commit": 13,
+  "output_hashes_matched_in_archive": 18,
+  "command_logs_matched": 7,
+  "all_seven_commands_passed": true,
+  "bilingual_increment_status": "PASS",
+  "defect": "The v1 runner hard-coded a local primary-agent actor label even when executed on GitHub Actions. Actual remote run/job identity comes from GitHub, platform/cwd and command records. The old artifact is unmodified.",
+  "disposition": "Runner schema/2 now records observed local/GitHub execution context; a new execution is required. Mathematical calculations and Lean sources are unchanged.",
+  "new_hardware_data": false
+}

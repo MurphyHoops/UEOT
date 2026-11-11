@@ -1,0 +1,143 @@
+{
+  "schema": "ueot-physics.v3.8-local-publication/1",
+  "status": "PASS",
+  "executed_at_utc": "2026-11-11T09:45:45.939483+00:00",
+  "execution_actor": "primary AI research agent on Linux workspace",
+  "commands": [
+    {
+      "label": "metadata",
+      "argv": [
+        "python3",
+        "physics/qm/book/build/update_v3_8_metadata.py",
+        "--require-evidence"
+      ],
+      "cwd": "/workspace/scratch/a6fba8f7e18e/UEOT",
+      "started_at_utc": "2026-11-11T09:45:45.245409+00:00",
+      "finished_at_utc": "2026-11-11T09:45:45.643601+00:00",
+      "exit_code": 0,
+      "log": "physics/qm/book/evidence/v3.8/metadata.log",
+      "log_sha256": "d34614446344264aca922cdc62d82aae940d799d355e689a7a3177f6a3bba0ee"
+    },
+    {
+      "label": "book-structure",
+      "argv": [
+        "python3",
+        "physics/qm/book/build/verify_book.py"
+      ],
+      "cwd": "/workspace/scratch/a6fba8f7e18e/UEOT",
+      "started_at_utc": "2026-11-11T09:45:45.643787+00:00",
+      "finished_at_utc": "2026-11-11T09:45:45.744983+00:00",
+      "exit_code": 0,
+      "log": "physics/qm/book/evidence/v3.8/book-structure.log",
+      "log_sha256": "5ac90bf3facefee3525d65eea1360d9daef0d11c9d1777bb4e35ac81a1b636b6"
+    },
+    {
+      "label": "independent-increment",
+      "argv": [
+        "python3",
+        "physics/qm/book/build/verify_v3_8_increment.py",
+        "--repo-root",
+        ".",
+        "--output",
+        "/workspace/scratch/a6fba8f7e18e/UEOT/physics/qm/book/evidence/v3.8/independent-increment.json",
+        "--require-complete"
+      ],
+      "cwd": "/workspace/scratch/a6fba8f7e18e/UEOT",
+      "started_at_utc": "2026-11-11T09:45:45.745138+00:00",
+      "finished_at_utc": "2026-11-11T09:45:45.939371+00:00",
+      "exit_code": 0,
+      "log": "physics/qm/book/evidence/v3.8/independent-increment.log",
+      "log_sha256": "a31661caffe237d0c1b6a1599d423e30e57612dd910700ffb7eee4bdb698a8f6"
+    }
+  ],
+  "current_artifacts": [
+    {
+      "path": "physics/qm/book/UEOT_PHYSICS.md",
+      "sha256": "9a93ce491e9b5001146e17103086f24628a8f7491fda44ae990a97efc485f6b5",
+      "bytes": 736030
+    },
+    {
+      "path": "physics/qm/book/UEOT_PHYSICS.en.md",
+      "sha256": "1e88f5d8d624a3a945b24dce5ef057ed5d9c45e8494a7215db1c471947dc94b8",
+      "bytes": 894714
+    },
+    {
+      "path": "physics/qm/book/UEOT_PHYSICS.pdf",
+      "sha256": "13ff91072ed4471d00c394a9c1f6bcf479620c87abda514420e70b4e1162b81f",
+      "bytes": 1486089
+    },
+    {
+      "path": "physics/qm/book/UEOT_PHYSICS.en.pdf",
+      "sha256": "f68ead6c84e0f0e8dfafbb3cb433094eda03c362ad194eabe3adde6082eb7d30",
+      "bytes": 1244358
+    },
+    {
+      "path": "physics/qm/book/UEOT_PHYSICS.tex",
+      "sha256": "a74b26f1b4a37db95c855e654a929d8124d18d3334d2b871081726a0946a1bb4",
+      "bytes": 792235
+    },
+    {
+      "path": "physics/qm/book/UEOT_PHYSICS.en.tex",
+      "sha256": "ba3b650e725b89d4eb1c59c349f36f4011fc7730f09d7c702ee8843cdad1a998",
+      "bytes": 949302
+    },
+    {
+      "path": "physics/qm/book/CHAPTER_DOSSIER.json",
+      "sha256": "34fb91ec7845f5102f47b358c8e5bdc4e480ef20a78df1069fcc05d7854be47a",
+      "bytes": 1572055
+    },
+    {
+      "path": "physics/qm/book/SOURCE_MANIFEST.json",
+      "sha256": "e4ccb35fe9f9a95bfe6c8ad79cbe04840d11c5a5db39e7a78a02917074c6ee50",
+      "bytes": 13166
+    },
+    {
+      "path": "physics/qm/book/PHYSICS_RESULT_MAPPING.md",
+      "sha256": "896e5dda79d7b18395cc518e19aa6b02c5cdb3bff9b397148e7daa252326a96f",
+      "bytes": 27985
+    },
+    {
+      "path": "physics/qm/status/CURRENT.json",
+      "sha256": "b219bf60f61c0b8fcb1bb164002c027f11d8f31f7e9c32afa5a2df76a7579cd5",
+      "bytes": 7282
+    },
+    {
+      "path": "physics/qm/status/CLAIM_LEDGER_v31.11.json",
+      "sha256": "07b80ac0726dd230465fb5890f8956a5e06a29dfe96f973c0aa793e3ef755b7b",
+      "bytes": 412799
+    },
+    {
+      "path": "physics/qm/book/build/update_v3_8_metadata.py",
+      "sha256": "918fcfb687a5b6dec66d295ce4af44022f016454e57477ab99b0ef573023dc08",
+      "bytes": 24238
+    },
+    {
+      "path": "physics/qm/book/build/verify_book.py",
+      "sha256": "cf39d97ad62f8a9a5d076a3dbf84cc5d3c5c14365c73105f22799014df4de9fc",
+      "bytes": 5420
+    },
+    {
+      "path": "physics/qm/book/build/verify_v3_8_increment.py",
+      "sha256": "970cc08ccf299ba151d421b3a9ed5a3d7bb6dce07d1939972d4de547b0049334",
+      "bytes": 15397
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.8/visual-review.json",
+      "sha256": "36ec11b03814b4bbd7ea8099435151d9d99f3721f9fdf0dbaab3c2e0c011d8c5",
+      "bytes": 3809
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.8/independent-increment.json",
+      "sha256": "6e92676f4d2bca88b2b41a146e4a306b38d8621996e710e1ca4b8dcc905e8e13",
+      "bytes": 16988
+    },
+    {
+      "path": "physics/qm/book/evidence/v3.8/inherited-content-preservation.json",
+      "sha256": "d177e279387d7d66e6d35727931386089ace2ad4bcc6f2b7e34ecbb7a1bb96c5",
+      "bytes": 3161
+    }
+  ],
+  "scope": "Current bilingual publication, exact inherited objects and scoped scientific-evidence references; not a new proof or empirical validation",
+  "new_hardware_data": false,
+  "remote_state": "NOT_PUBLISHED"
+}

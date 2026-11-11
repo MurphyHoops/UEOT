@@ -95,6 +95,16 @@ The historical 25-check root calculation is retained under runtime `prior/`;
 the current 26-check calculation adds the explicit basis bridge. These are
 different execution identities.
 
+Inspection of the first PR #457 runtime artifact found a receipt-generator
+metadata defect: a hard-coded local-agent actor string persisted on GitHub
+Actions. Its computations and source hashes passed, but the actor label was
+inaccurate. The runner now observes local versus GitHub execution, records
+workflow IDs and actual checkout HEAD, and explicitly gives consumed-file
+hashes priority over a possibly dirty local HEAD. The original local receipts
+and the first remote artifact retain their original bytes; the corrected
+runner has a new local seven-command execution and requires its own remote
+CI identity. No Lean source or mathematical statement changed in this fix.
+
 ## Evidence decisions
 
 - Mathematical: the nine numbered increments are proofs or counterexamples

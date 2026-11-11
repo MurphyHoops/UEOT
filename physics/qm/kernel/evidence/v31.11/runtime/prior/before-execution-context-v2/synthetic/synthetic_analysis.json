@@ -1,0 +1,224 @@
+{
+  "classification": "SYNTHETIC_ONLY",
+  "new_hardware_data": false,
+  "calibration": {
+    "counts": {
+      "0": 30401,
+      "1": 29755,
+      "f": 19844
+    },
+    "shots": 80000,
+    "qhat": "4961/10000",
+    "q_confidence_interval": [
+      "4861/10000",
+      "5061/10000"
+    ],
+    "nonempty": true,
+    "joint_set": "C_q x allowed phase x allowed exchange; s=1-q/2",
+    "phase_exchange_identified": false,
+    "gate_matching_calibrated": false,
+    "deployment_status": "CERTIFIED_MODEL_BOUND",
+    "claim": "coverage conditional on iid fixed-q ideal-flag model; not hardware model validation",
+    "minimax_claim": "design-region policy reused conservatively; not optimized for this narrower interval"
+  },
+  "source_holdout": {
+    "shots": 4096,
+    "all_records_retained": true,
+    "cells": [
+      {
+        "record": "f",
+        "count": 986,
+        "frequency": "493/2048",
+        "predicted_probability_outer_interval": [
+          "4861/20000",
+          "5061/20000"
+        ],
+        "distance_to_interval": "2979/1280000",
+        "within_frozen_radius": true
+      },
+      {
+        "record": "0f",
+        "count": 425,
+        "frequency": "425/4096",
+        "predicted_probability_outer_interval": [
+          "358662667781/4000000000000",
+          "393742363581/4000000000000"
+        ],
+        "distance_to_interval": "21296698919/4000000000000",
+        "within_frozen_radius": true
+      },
+      {
+        "record": "1f",
+        "count": 366,
+        "frequency": "183/2048",
+        "predicted_probability_outer_interval": [
+          "352998426419/4000000000000",
+          "387766122219/4000000000000"
+        ],
+        "distance_to_interval": "0",
+        "within_frozen_radius": true
+      },
+      {
+        "record": "00",
+        "count": 528,
+        "frequency": "33/256",
+        "predicted_probability_outer_interval": [
+          "5444037484605841/40000000000000000",
+          "6052734348061041/40000000000000000"
+        ],
+        "distance_to_interval": "287787484605841/40000000000000000",
+        "within_frozen_radius": true
+      },
+      {
+        "record": "01",
+        "count": 626,
+        "frequency": "313/2048",
+        "predicted_probability_outer_interval": [
+          "5358061593980359/40000000000000000",
+          "5960865642252759/40000000000000000"
+        ],
+        "distance_to_interval": "152415607747241/40000000000000000",
+        "within_frozen_radius": true
+      },
+      {
+        "record": "10",
+        "count": 589,
+        "frequency": "589/4096",
+        "predicted_probability_outer_interval": [
+          "5358061593980359/40000000000000000",
+          "5960865642252759/40000000000000000"
+        ],
+        "distance_to_interval": "0",
+        "within_frozen_radius": true
+      },
+      {
+        "record": "11",
+        "count": 576,
+        "frequency": "9/64",
+        "predicted_probability_outer_interval": [
+          "5273443492273441/40000000000000000",
+          "5870391324273441/40000000000000000"
+        ],
+        "distance_to_interval": "0",
+        "within_frozen_radius": true
+      }
+    ],
+    "status": "NOT_REJECTED_BY_FINITE_RECORD_TESTERS",
+    "classification": "synthetic record-law check, not empirical verification or full-CQ tomography",
+    "limitations": "cell intervals are conservative images of one shared-q set; passing is not joint model identification"
+  },
+  "compiled_holdout": {
+    "shots": 4096,
+    "all_records_retained": true,
+    "cells": [
+      {
+        "record": "f",
+        "count": 0,
+        "frequency": "0",
+        "predicted_probability_outer_interval": [
+          "0",
+          "0"
+        ],
+        "distance_to_interval": "0",
+        "within_frozen_radius": true
+      },
+      {
+        "record": "0f",
+        "count": 0,
+        "frequency": "0",
+        "predicted_probability_outer_interval": [
+          "0",
+          "0"
+        ],
+        "distance_to_interval": "0",
+        "within_frozen_radius": true
+      },
+      {
+        "record": "1f",
+        "count": 0,
+        "frequency": "0",
+        "predicted_probability_outer_interval": [
+          "0",
+          "0"
+        ],
+        "distance_to_interval": "0",
+        "within_frozen_radius": true
+      },
+      {
+        "record": "00",
+        "count": 1032,
+        "frequency": "129/512",
+        "predicted_probability_outer_interval": [
+          "313/1250",
+          "313/1250"
+        ],
+        "distance_to_interval": "497/320000",
+        "within_frozen_radius": true
+      },
+      {
+        "record": "01",
+        "count": 1030,
+        "frequency": "515/2048",
+        "predicted_probability_outer_interval": [
+          "156/625",
+          "156/625"
+        ],
+        "distance_to_interval": "2387/1280000",
+        "within_frozen_radius": true
+      },
+      {
+        "record": "10",
+        "count": 992,
+        "frequency": "31/128",
+        "predicted_probability_outer_interval": [
+          "156/625",
+          "156/625"
+        ],
+        "distance_to_interval": "593/80000",
+        "within_frozen_radius": true
+      },
+      {
+        "record": "11",
+        "count": 1042,
+        "frequency": "521/2048",
+        "predicted_probability_outer_interval": [
+          "313/1250",
+          "313/1250"
+        ],
+        "distance_to_interval": "5113/1280000",
+        "within_frozen_radius": true
+      }
+    ],
+    "status": "NOT_REJECTED_BY_FINITE_RECORD_TESTERS",
+    "classification": "synthetic record-law check, not empirical verification or full-CQ tomography",
+    "limitations": "cell intervals are conservative images of one shared-q set; passing is not joint model identification"
+  },
+  "fixed_error_allocation": {
+    "calibration": "<=1/20",
+    "record_testers": "<=1/20",
+    "union_total": "<=1/10 conditional on correct model"
+  },
+  "resource_counts": {
+    "calibration_flag_shots": 80000,
+    "source_holdout_attempts": 4096,
+    "compiled_holdout_attempts": 4096,
+    "cost_units": "counts only; no measured time/energy/money"
+  },
+  "dependent_shot_failure_control": {
+    "construction": "One latent flag repeated for all 80000 shots",
+    "same_marginals": true,
+    "coverage_at_q_one_half": "0",
+    "reason": "marginals alone do not imply iid concentration"
+  },
+  "source_action_mismatch_control": {
+    "calibrated_by_flag_counts": false,
+    "status": "UNVERIFIED_PHYSICAL_PREMISE"
+  },
+  "raw_data_hashes": {
+    "synthetic_compiled_holdout.txt": "5ea32d5bc5a1cf8356b91dac8d97f4ad8380d57022403c58293196377dd11370",
+    "synthetic_source_holdout.txt": "5f472bd9834ddb28f5952efa128b7c8e3e3e3a3e287eb0984c4e900376dbea5e",
+    "synthetic_calibration_flags.txt": "0cc68ef4c3eb95114e8bfe4fb86e4ba26a0ddf68cbdbbdc1c4d178ef1c5022f9"
+  },
+  "analysis_source_sha256": "90cf1a54057a5885bc4a3407f2e9773003e3730e583eaedce921e12affa51e76",
+  "model_sha256": "33fff2dd4298816553ce0009c022c314600c644df2167355d6c3f366721572ab"
+}
