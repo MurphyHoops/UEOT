@@ -1,0 +1,328 @@
+{
+  "base_commit": "3d443ec29eb17af1fc00699a74e2d42d73516d81",
+  "scope": "editorial additions only; no theorem or formula changes",
+  "patches": [
+    {
+      "id": "ch-0",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 0. ",
+      "text": "**本章问题。** 这套数学架构究竟承诺解释什么，哪些解释仍需要独立证据？\n\n**阅读路线。** 先把原始研究问题对应到明确数学对象，再辨认定义、证明、标准定理、机制假设和经验结论的不同责任。下文的每条连接都应按自己的前提阅读；“完整”首先指已声明范围的完整陈述。\n",
+      "text_en": "**Chapter question.** What does this mathematical architecture undertake to explain, and which interpretations still require independent evidence?\n\n**Reading route.** First relate the original research questions to explicit mathematical objects, then distinguish the responsibilities of definitions, proofs, standard theorems, mechanism assumptions, and empirical conclusions. Each connection below must be read under its own hypotheses; completeness primarily means a complete statement of the declared scope.\n"
+    },
+    {
+      "id": "ch-1",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 1. ",
+      "text": "**本章问题。** 同一个概率或误差符号，在后续章节中怎样保持同一含义？\n\n**阅读路线。** 先固定空间、概率核、推送、总变差和单位，再读取两条反复使用的估计：共同读出不增加差异，有界函数的期望差由其跨度控制。平均误差、最坏误差和采样置信度始终分开。\n",
+      "text_en": "**Chapter question.** How can a probability or error symbol retain the same meaning throughout the later chapters?\n\n**Reading route.** Fix the spaces, probability kernels, pushforwards, total variation, and units before using the two recurring estimates: a common readout cannot increase discrepancy, and the span of a bounded function controls its expectation difference. Average error, worst-case error, and sampling confidence remain distinct.\n"
+    },
+    {
+      "id": "ch-2",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 2. ",
+      "text": "**本章问题。** 动作、观察和未来以什么顺序生成，何时能够谈论同一个实验？\n\n**阅读路线。** 从初始分布和因果核逐步构造路径律，再声明协议允许读取的信息。历史增广说明一般过程可以写成 Markov 形式；它并不提供有限记忆。训练后选择的部署必须保留其条件生成次序。\n",
+      "text_en": "**Chapter question.** In what order are actions, observations, and futures generated, and when do they belong to the same experiment?\n\n**Reading route.** Construct the path law from the initial distribution and causal kernels, then declare the information available to each protocol. History augmentation makes a general process Markovian but does not provide finite memory. Deployment selected after training must retain its conditional order of generation.\n"
+    },
+    {
+      "id": "ch-3",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 3. ",
+      "text": "**本章问题。** 改变描述坐标后，什么仍是同一个预测对象？\n\n**阅读路线。** 嵌入因子记录同一历史中保留的信息，可逆重编码只改变表达方式。证明通过同步运输动力学、观察与奖励保持路径律；物理载体、极小坐标数和对象实例需要分别判断。\n",
+      "text_en": "**Chapter question.** What remains the same predictive object after a change of descriptive coordinates?\n\n**Reading route.** An embedded factor records the information retained from the same history; invertible recoding changes its expression. The proof preserves path laws by transporting dynamics, observations, and rewards together. Physical carriers, minimal coordinate counts, and object instances require separate judgments.\n"
+    },
+    {
+      "id": "ch-4",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 4. ",
+      "text": "**本章问题。** 对声明的全部测试，历史至少要保留什么信息？\n\n**阅读路线。** 把各协议的条件未来律收集成状态，先证明任一充分表示都能恢复它，再证明它本身充分。可数性保证共同的概率一集合；递归更新还需要同一因果源和允许延续封闭，不能只凭单步边缘相同。\n",
+      "text_en": "**Chapter question.** What information must history retain for all the declared tests?\n\n**Reading route.** Collect the conditional future laws of the protocols into a state. First show that every sufficient representation recovers it, then show that it is itself sufficient. Countability supplies a common probability-one set; recursive updating additionally requires the same causal source and closure under admissible continuation, not merely equal one-step marginals.\n"
+    },
+    {
+      "id": "ch-5",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 5. ",
+      "text": "**本章问题。** 压缩历史会失去什么，何时存在不可消除的记忆下限？\n\n**阅读路线。** 先用信息链式法则把保留量与残差分开，再把残差转成预测距离。零失真和可区分历史的下界解释哪些压缩不可能；这些信息界不直接等于计算时间、能耗或唯一的信息驱动力。\n",
+      "text_en": "**Chapter question.** What is lost when history is compressed, and when is a memory lower bound unavoidable?\n\n**Reading route.** The information chain rule separates retained information from residual information, which is then converted into predictive distance. Zero-distortion and distinguishability bounds identify impossible compressions. They do not directly quantify computation time, energy use, or a unique information drive.\n"
+    },
+    {
+      "id": "ch-6",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 6. ",
+      "text": "**本章问题。** 内部状态与环境接口合在一起，是否足以预测对象未来？\n\n**阅读路线。** 先检查联合条件核，再研究内部与环境的分离表示。异或反例说明分别检查两侧可能漏掉协同信息；因果屏蔽则另需干预语义，不能从被动预测充分性中取得。\n",
+      "text_en": "**Chapter question.** Do the internal state and environmental interface together suffice to predict the object’s future?\n\n**Reading route.** Check the joint conditional kernel before studying separated internal and environmental representations. The XOR counterexample shows how separate tests can miss synergistic information. Causal shielding additionally requires intervention semantics; predictive sufficiency alone does not establish it.\n"
+    },
+    {
+      "id": "ch-7",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 7. ",
+      "text": "**本章问题。** 压缩后的状态能否自行演化，并在不同尺度间保持相容？\n\n**阅读路线。** 精确结论来自同一观察纤维内的投影行一致；近似结论通过共同策略下逐步耦合累计。跨尺度证明必须插入同一个底过程，有限路径误差也不能直接变为无限时间稳定性。\n",
+      "text_en": "**Chapter question.** Can a compressed state evolve autonomously and remain compatible across scales?\n\n**Reading route.** Exact results come from equality of projected rows within each observation fiber; approximate results accumulate through stepwise coupling under the same policy. Cross-scale proofs must insert the same underlying process. Finite-path error does not by itself yield infinite-time stability.\n"
+    },
+    {
+      "id": "ch-8",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 8. ",
+      "text": "**本章问题。** “持续存在”可以用哪些彼此不同的数学要求表达？\n\n**阅读路线。** 依次区分预紧轨道的不变极限、平均时刻分布的不变极限，以及概率一保持域的可行核。有限模型用删除递推找安全动作；部分观察、有限时域和路径频率结论需使用各自额外条件。\n",
+      "text_en": "**Chapter question.** Which distinct mathematical requirements can express persistence?\n\n**Reading route.** Distinguish invariant limits of precompact trajectories, invariant limits of averaged time marginals, and viability kernels for almost-sure confinement. Finite models obtain safe actions by successive elimination. Partial observation, finite horizons, and pathwise empirical frequencies have their own additional conditions.\n"
+    },
+    {
+      "id": "ch-9",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 9. ",
+      "text": "**本章问题。** 扰动后怎样证明恢复，恢复速度又怎样与返回时间相连？\n\n**阅读路线。** 先展开离散或连续漂移不等式，再由实际命中时间构造恢复势。持续噪声通常留下误差底；势的存在与可执行修复程序的存在是两项义务，后一项还要接回真实转移核。\n",
+      "text_en": "**Chapter question.** How can recovery after perturbation be proved, and how does recovery rate relate to return time?\n\n**Reading route.** Expand the discrete or continuous drift inequality, then construct a recovery potential from the actual hitting time. Persistent noise generally leaves an error floor. A potential and an executable repair program are separate obligations; the latter must also be linked to the actual transition kernel.\n"
+    },
+    {
+      "id": "ch-10",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 10. ",
+      "text": "**本章问题。** 一个最终可能失效的系统，为何在存活条件下呈现稳定形态？\n\n**阅读路线。** 先保留 killed 核的次概率质量缺额，再分别使用条件极限或正特征数据。左特征向量给 QSD，左右向量乘积给 Doob 过程的不变权重；同初态的混合与生存界共同决定有效时间窗。\n",
+      "text_en": "**Chapter question.** Why can a system that may eventually fail exhibit a stable form conditional on survival?\n\n**Reading route.** Retain the mass deficit of the substochastic killed kernel, then use either a conditional limit or positive eigenstructure. A left eigenvector gives the QSD, whereas the product of left and right eigenvectors gives the invariant weight of the Doob process. Mixing and survival bounds for the same initial law determine the useful time window.\n"
+    },
+    {
+      "id": "ch-11",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 11. ",
+      "text": "**本章问题。** 结构改变、分裂和融合之后，怎样陈述可检验的身份延续？\n\n**阅读路线。** 有向历史边保存前后实例关系，运输映射比较它们的结构。证明沿声明的运输链累计误差；冻结端核与真实一步演化的类型不同，结构相似或共同祖先也不能替代同一实例。\n",
+      "text_en": "**Chapter question.** How can identity continuation be tested through structural change, fission, and fusion?\n\n**Reading route.** Directed historical edges record relations between instances, while transport maps compare their structures. The proofs accumulate error along the declared transport chain. Frozen endpoint kernels differ in type from actual one-step evolution, and neither resemblance nor common ancestry establishes identity of instances.\n"
+    },
+    {
+      "id": "ch-12",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 12. ",
+      "text": "**本章问题。** 一个“对象已认证”的判断，具体包含哪些独立主张？\n\n**阅读路线。** 先列出预测、因果、历史及实现责任，再相对于冻结证书定义机制移除后的失败。有限且单调的失败族由极小毁损集重建；若移除可能恢复功能，应保留完整响应，不能强套单调超图。\n",
+      "text_en": "**Chapter question.** What independent claims are included when an object is said to be certified?\n\n**Reading route.** List predictive, causal, historical, and realization obligations before defining failure under mechanism removal relative to a fixed certificate. A finite monotone failure family is reconstructed from its minimal destructive sets. When removal can restore function, retain the full response instead of imposing a monotone hypergraph.\n"
+    },
+    {
+      "id": "ch-13",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 13. ",
+      "text": "**本章问题。** 身份信息可由哪些读出恢复，冗余怎样决定访问毁损？\n\n**阅读路线。** 充分读出形成上闭族，其极小成员描述最小实现；击中每个实现便得到 blocker。全章须同时跟踪操作语义：访问擦除改变可读信息，真实部件删除还可能改变供能、动力学和修复能力。\n",
+      "text_en": "**Chapter question.** Which readouts recover identity information, and how does redundancy determine access destruction?\n\n**Reading route.** Sufficient readouts form an upward-closed family whose minimal members describe minimal realizations; hitting every realization produces the blocker. Keep the operation semantics explicit: access erasure changes readable information, whereas physical removal may also change power supply, dynamics, and repair capacity.\n"
+    },
+    {
+      "id": "ch-14",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 14. ",
+      "text": "**本章问题。** 只在粗尺度观察实现结构时，能确定多少微观信息？\n\n**阅读路线。** 闭包先给极小充分集的粗化；Boolean 删除再给 blocker 的自然性。两个伴随扩张界定所有相容微观实现，活跃纤维是否为单点决定唯一性；目标、时域和底载体在比较中必须固定。\n",
+      "text_en": "**Chapter question.** How much microscopic structure is determined by observations at a coarse resolution?\n\n**Reading route.** Closure first gives the coarsening of minimal sufficient sets; Boolean deletion then gives blocker naturality. Two adjoint extensions bound all compatible microscopic realizations. Singleton active fibers characterize uniqueness, while the target, horizon, and underlying carrier remain fixed throughout the comparison.\n"
+    },
+    {
+      "id": "ch-15",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 15. ",
+      "text": "**本章问题。** 多个子系统何时形成具有自己预测与干预结构的父对象？\n\n**阅读路线。** 先控制共同外因造成的伪不可约性，再分别检查路径不可因子化、切割效应和父层新增信息。物理载体提升到子联盟还需覆盖关系；父形成、实现绑定和历史运输只有在各自条件齐备时才能组合。\n",
+      "text_en": "**Chapter question.** When do subsystems form a parent object with its own predictive and intervention structure?\n\n**Reading route.** First control for spurious irreducibility caused by common external drivers, then check path nonfactorization, cut effects, and additional parent-level information separately. Lifting physical carriers to child coalitions requires a coverage relation. Formation, binding, and historical transport combine only when their respective conditions are supplied.\n"
+    },
+    {
+      "id": "ch-16",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 16. ",
+      "text": "**本章问题。** 有限样本能认证哪些结构，哪些结论必须保留“未决”？\n\n**阅读路线。** 先对固定响应行建立共同置信事件，再在该事件内运输距离、阈值和载体结论。精确结构恢复依赖独立给出的间隔；训练分布、部署占据和数据后选择各有来源，不能互相代换。\n",
+      "text_en": "**Chapter question.** Which structures can finite samples certify, and which judgments must remain unresolved?\n\n**Reading route.** Establish a simultaneous confidence event for fixed response rows, then transport distances, thresholds, and carrier conclusions within that event. Exact structural recovery relies on an independently supplied separation gap. Training distributions, deployment occupancy, and post-data selection retain their separate sources.\n"
+    },
+    {
+      "id": "ch-17",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 17. ",
+      "text": "**本章问题。** 从允许的记录反推模型时，究竟识别的是参数、机制还是目的等价类？\n\n**阅读路线。** 先用实验等价确定不能区分的对象，再用检验距离、Fisher 零方向与设计矩阵研究可分辨性。局部满秩不是全局唯一性；可预测设计条件也不能由噪声边缘分布替代。\n",
+      "text_en": "**Chapter question.** When records are used to infer a model, is the identified object a parameter, a mechanism, or a purpose-equivalence class?\n\n**Reading route.** Use experimental equivalence to identify what cannot be distinguished, then study separation through testing distance, Fisher null directions, and design matrices. Local full rank is not global uniqueness. A predictable-design condition cannot be replaced by a statement about the marginal noise law.\n"
+    },
+    {
+      "id": "ch-18",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 18. ",
+      "text": "**本章问题。** 一个已经存在的对象，为何还不能自动决定应采取的行动？\n\n**阅读路线。** 先规定可实施策略和评价桥，再比较数值目标、策略排序与最优集合。奖励塑形用望远镜相消证明一类目的等价；该等价既不唯一识别奖励，也不从对象证书产生规范价值。\n",
+      "text_en": "**Chapter question.** Why does the existence of an object not automatically determine what it should do?\n\n**Reading route.** Specify implementable policies and a value bridge before comparing numerical objectives, policy orderings, and optimal sets. Reward shaping proves one class of purpose equivalence by telescoping. This equivalence neither uniquely identifies rewards nor derives normative value from an object certificate.\n"
+    },
+    {
+      "id": "ch-19",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 19. ",
+      "text": "**本章问题。** 给定评价与允许行动，最优控制怎样真正存在并支配竞争策略？\n\n**阅读路线。** 有限折扣模型先用压缩映射原理得到 Bellman 固定点，再沿任意实际因果策略求和验证上界与达到。GOD 因而首先是动作对应；连续控制还需选择器、过程存在性及 Itô 条件，安全最优则有明确比较类。\n",
+      "text_en": "**Chapter question.** Given an evaluation and admissible actions, how does an optimal control exist and dominate competing policies?\n\n**Reading route.** In a finite discounted model, the contraction mapping theorem first yields a Bellman fixed point. Summation along arbitrary actual causal policies then verifies the upper bound and its attainment. GOD is therefore primarily an action correspondence. Continuous control additionally requires a selector, a well-defined process, and Itô conditions; safe optimality uses an explicit comparison class.\n"
+    },
+    {
+      "id": "ch-20",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 20. ",
+      "text": "**本章问题。** 预测压缩何时足以保持决策，近似压缩又造成多大价值损失？\n\n**阅读路线。** 精确商同时保持动作、奖励和转移，Bellman 交换据此给价值等式。近似商先控制单步残差，再用 Bellman 算子的压缩性传播；占据加权的精细界必须分别使用真实最优策略和实际提升策略自己的访问律。\n",
+      "text_en": "**Chapter question.** When does predictive compression preserve decisions, and what value loss follows from approximate compression?\n\n**Reading route.** An exact quotient preserves actions, rewards, and transitions, so Bellman commutation gives equality of values. An approximate quotient first bounds the one-step residual and then propagates it using contraction of the Bellman operator. Refined occupancy bounds must use the respective visitation laws of the true optimal policy and the actual lifted policy.\n"
+    },
+    {
+      "id": "ch-21",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 21. ",
+      "text": "**本章问题。** 最优策略的长期行为可以是什么，哪些稳定性需要额外条件？\n\n**阅读路线。** 先按不变律、占据极限、复归类和 QSD 分型，再分别使用收缩或谱裕量。第 21.7 节把这些对象放入同一有限源，逐项比较无条件路径、条件生存与受限最优，尤其保留安全域外的动作。\n",
+      "text_en": "**Chapter question.** What can the long-term behavior of an optimal policy be, and which stability claims need additional assumptions?\n\n**Reading route.** Distinguish invariant laws, occupancy limits, recurrent classes, and QSDs before applying contraction or spectral margins. Section 21.7 places these objects in one finite source and compares unconditional paths, conditional survival, and constrained optimality while retaining the actions outside the safe set.\n"
+    },
+    {
+      "id": "ch-22",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 22. ",
+      "text": "**本章问题。** 改变一个未来事件的概率，至少需要多少路径信息代价？\n\n**阅读路线。** 把路径投影到事件指示可得必要下界；事件倾斜说明在全部绝对连续路径律中何时达到。实际控制只能在可实施路径律类中优化；扩散投影还可能丢失噪声信息，因此控制能量与状态路径 KL 不能无条件相等。\n",
+      "text_en": "**Chapter question.** How much path information cost is necessary to change the probability of a future event?\n\n**Reading route.** Projection to an event indicator gives a necessary lower bound; event tilting shows when it is attained among all absolutely continuous path laws. An actual control problem optimizes over its implementable subclass of path laws. Projection of a diffusion may also discard noise information, so control energy need not equal state-path KL divergence.\n"
+    },
+    {
+      "id": "ch-23",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 23. ",
+      "text": "**本章问题。** 资源与信息能否成为共同驱动，它们的数值和维数怎样识别？\n\n**阅读路线。** 先区分保持目标的代数规范、固定特征下的变分对偶，以及共同二维表示的秩条件。三者承担不同任务；同一再生源的三响应反例说明，组织与增长结论并不要求所有响应都能光滑压到二维。\n",
+      "text_en": "**Chapter question.** Can resources and information serve as common drives, and how are their values and dimension identified?\n\n**Reading route.** Distinguish an algebraic gauge preserving the objective, variational duality for fixed features, and the rank condition for a common two-dimensional representation. These are separate tasks. The three-response counterexample from the same regenerative source shows that organization and growth do not require every response to admit a smooth two-dimensional representation.\n"
+    },
+    {
+      "id": "ch-24",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 24. ",
+      "text": "**本章问题。** 多个层级的评价何时相容，局部行动何时提高父层价值？\n\n**阅读路线。** 先保留多目标的偏序，再检查方向场是否具有全局势。链式法则给瞬时价值变化和协调阈值；这些局部充分条件不保证全局最优，也不为某种协调制度自动提供规范正当性。\n",
+      "text_en": "**Chapter question.** When are evaluations at different levels compatible, and when do local actions increase parent-level value?\n\n**Reading route.** Retain the partial order of multiple objectives before checking whether a direction field has a global potential. The chain rule gives instantaneous value change and a coordination threshold. These local sufficient conditions guarantee neither global optimality nor the normative justification of a coordination institution.\n"
+    },
+    {
+      "id": "ch-25",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 25. ",
+      "text": "**本章问题。** 实际亲子机制怎样产生平均增长、遗传传递和选择分解？\n\n**阅读路线。** 先固定个体、类型、世代和抽样单位，再从后代计数定义同一个平均算子。Price 是该算子的代数分解，Perron 描述本原平均模型；真实随机人口的灭绝、鞅极限和平均频率仍需分别处理。\n",
+      "text_en": "**Chapter question.** How do actual parent–offspring mechanisms generate mean growth, hereditary transmission, and selection decompositions?\n\n**Reading route.** Fix individuals, types, generations, and sampling units before defining the same mean operator from offspring counts. Price’s identity is an algebraic decomposition of that operator, and Perron theory describes a primitive mean model. Extinction, martingale limits, and mean frequencies of actual random populations remain separate issues.\n"
+    },
+    {
+      "id": "ch-26",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 26. ",
+      "text": "**本章问题。** 父对象的形成、复制优势与内生目的怎样在时间中连接？\n\n**阅读路线。** 先分开对象尺度和选择层级，再明确行为到复制的目的桥。固定适合度的集中由显式频率公式证明，频率依赖循环标出其边界；内生机制仍须说明程序、资源与外部脚手架的来源。\n",
+      "text_en": "**Chapter question.** How can parent-object formation, reproductive advantage, and endogenous purpose be connected over time?\n\n**Reading route.** Separate object scale from level of selection, then specify the bridge from behavior to reproduction. An explicit frequency formula proves concentration under fixed fitness; frequency-dependent cycles mark its boundary. An endogenous mechanism must still account for its program, resources, and external scaffolding.\n"
+    },
+    {
+      "id": "ch-27",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 27. ",
+      "text": "**本章问题。** 一个能学习或修改自己的系统，怎样保持合法的状态与决策描述？\n\n**阅读路线。** 把结构纳入状态，再在给定模型族内构造 Bayes 递推。免费可忽略信息的价值非负，但信息增益未必带来任务收益；目标误差、资源成本和权限约束必须在实际决策问题中明确处理。\n",
+      "text_en": "**Chapter question.** How can a system that learns or modifies itself retain a valid state and decision description?\n\n**Reading route.** Include structure in the state, then construct Bayesian updating within a specified model class. Free information that may be ignored has nonnegative decision value, but information gain need not improve task return. Objective error, resource costs, and permission constraints must be explicitly accounted for in the actual decision problem.\n"
+    },
+    {
+      "id": "ch-28",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 28. ",
+      "text": "**本章问题。** 怎样把前面的证明接口交给下游模型而不遗失前提？\n\n**阅读路线。** 契约表先规定输入与输出，过程接口再通过路径推送复合。有限稳定分割以逐轮细化证明终止和最粗性；控制提升、精确支持判断和物理解释各需要自己的额外证明。\n",
+      "text_en": "**Chapter question.** How can proved interfaces be passed to downstream models without losing their assumptions?\n\n**Reading route.** The contract table specifies inputs and outputs, and process interfaces compose by path pushforward. Successive refinement proves termination and coarseness of finite stable partitioning. Control lifting, exact support decisions, and physical interpretations each require their own additional proof.\n"
+    },
+    {
+      "id": "ch-29",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 29. ",
+      "text": "**本章问题。** 一个真实研究项目怎样从机制模型走到可失败的证书？\n\n**阅读路线。** 每类应用都先声明对象、输入、操作与预算，再给构造、比较基线和失败标准。这里提供的是使用前文定理的方法；合成模型、模型内证明和真实系统的经验支持应始终分别报告。\n",
+      "text_en": "**Chapter question.** How does an actual research project move from a mechanism model to a falsifiable certificate?\n\n**Reading route.** Each application declares its objects, inputs, operations, and budget before specifying a construction, baseline comparisons, and failure criteria. This chapter explains how to use the preceding theorems. Synthetic models, within-model proofs, and empirical support from real systems are reported separately.\n"
+    },
+    {
+      "id": "ch-30",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 30. ",
+      "text": "**本章问题。** 抽象接口在具体有限模型中能否逐步算清，并暴露边界？\n\n**阅读路线。** 从同一个四状态核计算预测商、冗余载体、控制价值与稳态，再用连续和繁殖算例核对不同机制。数值输出保留其历史身份；有限枚举检验实现一致性，不能代替一般证明或自然系统实验。\n",
+      "text_en": "**Chapter question.** Can the abstract interfaces be computed step by step in finite models while exposing their limits?\n\n**Reading route.** Compute the predictive quotient, redundant carriers, control value, and stationary law from one four-state kernel, then compare other mechanisms through continuous and reproductive examples. Numerical outputs retain their historical identity. Finite enumeration checks implementation consistency but replaces neither general proof nor experiments on natural systems.\n"
+    },
+    {
+      "id": "ch-31",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 31. ",
+      "text": "**本章问题。** 多个分别正确的模块，在共同条件下能共同保证什么？\n\n**阅读路线。** 先明确共享事件和各模块前提，再逐条调用预测、载体、控制、路径与长期定理。并合界只合成失效概率；它不会创造未测协议覆盖、真实物理实现或额外的长期稳定条件。\n",
+      "text_en": "**Chapter question.** What can separately correct modules jointly guarantee under common conditions?\n\n**Reading route.** Specify the shared event and each module’s hypotheses before invoking predictive, carrier, control, path, and long-term results. A union bound combines failure probabilities. It does not create coverage of untested protocols, physical realization, or additional long-term stability conditions.\n"
+    },
+    {
+      "id": "ch-32",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 32. ",
+      "text": "**本章问题。** 如何复用证明机制，同时保持不同层级关系的类型？\n\n**阅读路线。** 八类关系先区分作用对象，四个生成机制再提取可复用的降落、误差链、极限残差和正特征代数。106 个源结果的分解描述登记路线上的复用，不能解释为四条公理无条件推出全部理论。\n",
+      "text_en": "**Chapter question.** How can proof mechanisms be reused while retaining the types of different hierarchical relations?\n\n**Reading route.** Eight relations first distinguish their objects, and four generators then extract reusable descent, error-chain, limit-residual, and positive-eigenstructure arguments. The decomposition of 106 source results describes reuse along registered routes; it is not an unconditional derivation of the entire theory from four axioms.\n"
+    },
+    {
+      "id": "ch-33",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 33. ",
+      "text": "**本章问题。** 两个表示即使给出相同的“零差异”，为何仍不能共享数值预算？\n\n**阅读路线。** 先用正比例反例揭示定量不唯一，再以双边校准运输零关系、误差和极限。精确标度支持更强的链协变；同一数值目标的完整规范仍不同于同排序，也不证明自然响应具有二维瓶颈。\n",
+      "text_en": "**Chapter question.** Why can two representations with the same zero-discrepancy relation still not share numerical budgets?\n\n**Reading route.** A positive-rescaling counterexample first shows quantitative nonuniqueness. Two-sided calibration then transports zero relations, errors, and limits. Exact scaling supports a stronger covariance of error chains. The complete gauge of one numerical objective still differs from equality of ordering and does not establish a two-dimensional bottleneck in natural responses.\n"
+    },
+    {
+      "id": "ch-34",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 34. ",
+      "text": "**本章问题。** “对象”“目的”和“生命周期”这些总称分别需要哪些来源责任？\n\n**阅读路线。** 六种对象角色和 P0—P12 的职责先给阅读地图，形成—绑定—运输随后给可核对的组合证明。程序不可识别反例说明哪些输入不能被删除；工作包完成和现实机制获得支持不是同一结论。\n",
+      "text_en": "**Chapter question.** What source obligations are carried by the terms object, purpose, and lifecycle?\n\n**Reading route.** Six object roles and the responsibilities of P0–P12 provide a reading map, followed by a checkable formation–binding–transport proof. The program nonidentifiability counterexample identifies inputs that cannot be deleted. Completion of a work package is distinct from empirical support for a real mechanism.\n"
+    },
+    {
+      "id": "ch-35",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 35. ",
+      "text": "**本章问题。** 预测、物理安全、修复和控制能否确实消费同一个有限源？\n\n**阅读路线。** 先固定核、奖励与注册读出，再构造稳定商、安全固定点及受限 Bellman 问题。修复核的来源等式连接程序与安全；安全、最优和同一对象保持各自仍有明确前提，不能互赠结论。\n",
+      "text_en": "**Chapter question.** Can prediction, physical safety, repair, and control genuinely consume the same finite source?\n\n**Reading route.** Fix the kernel, reward, and registered readout before constructing a stable quotient, a safety fixed point, and a constrained Bellman problem. A source-kernel equality links the repair program to safety. Safety, optimality, and identity preservation retain their own hypotheses; none automatically grants the others.\n"
+    },
+    {
+      "id": "ch-36",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 36. ",
+      "text": "**本章问题。** 逐行模型误差怎样沿实际策略进入整条部署路径的风险？\n\n**阅读路线。** 从真实微观前缀构造后验和占据，保留前缀的 TV 恒等式再给逐步累计。未认证行按自己的实际占据收费；观察像有限时，逃逸质量必须保留，不能删除并归一化。\n",
+      "text_en": "**Chapter question.** How does rowwise model error enter the risk of an entire deployment path under the actual policy?\n\n**Reading route.** Construct the posterior and occupancy from the actual microscopic prefix. A TV identity retaining the prefix then yields stepwise accumulation. Uncertified rows are charged according to their own actual occupancy. With a finite observation image, escape mass must be retained rather than deleted and renormalized.\n"
+    },
+    {
+      "id": "ch-37",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 37. ",
+      "text": "**本章问题。** 只看粗历史的控制器，何时能在有限时域始终使用已认证行？\n\n**阅读路线。** 正概率历史上的实际后验支持先与组合递推对齐，再用后向可行性选一个共同动作，并覆盖全部非空后继。必要性与充分性共用同一来源；当前动作通过检查，不等于它能安全延长。\n",
+      "text_en": "**Chapter question.** When can a controller reading only coarse history use certified rows throughout a finite horizon?\n\n**Reading route.** First identify actual posterior support on histories of positive probability with the combinatorial recursion. Backward viability then selects one common action and covers every nonempty successor. Necessity and sufficiency use the same source. Certification of the current action does not imply that its prefix can be safely extended.\n"
+    },
+    {
+      "id": "ch-38",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 38. ",
+      "text": "**本章问题。** 训练后选择模型和策略，如何仍对真实部署失败给出统一保证？\n\n**阅读路线。** 先构造训练—所选部署联合律，再将其拆成同一个 Good 事件及补集。逐行校准、所选策略自己的占据和共同失败事件在 Good 上连接；坏样本按实际质量收费，无需假装全部记录都通过小预算。\n",
+      "text_en": "**Chapter question.** How can a model and policy selected after training still receive a guarantee on actual deployment failure?\n\n**Reading route.** Construct the training–selected-deployment joint law, then split it over one Good event and its complement. Rowwise calibration, the selected policy’s own occupancy, and a common failure event are connected on Good. Bad samples are charged by their actual probability mass; they need not all satisfy a small budget.\n"
+    },
+    {
+      "id": "ch-39",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 39. ",
+      "text": "**本章问题。** 此前接口要求的程序、路径、出生、支付与后验，哪些能从同一实际构造中导出？\n\n**阅读路线。** 本章按来源构造记录后继加强，篇幅长于前章。阅读时先辨认该节沿用的源、时钟、信息权限和比较策略类，再追踪它供应哪个既有消费者；不同来源包不能仅凭相似术语拼成一个更强模型。\n",
+      "text_en": "**Chapter question.** Which program, path, birth, payment, and posterior inputs can be derived from one actual construction?\n\n**Reading route.** This chapter records successive source constructions and is longer than the preceding chapters. Identify the source, clock, available information, and comparison policy class retained by each section before tracing the existing consumer it supplies. Similar terminology does not permit different source packages to be combined into a stronger model.\n"
+    },
+    {
+      "id": "appendix-a",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 附录 A.",
+      "text": "**查阅说明。** 本附录用于查清符号所指的空间、单位和角色。相同字母在局部模型中重新使用时，应以该节明示定义为准；符号相同不是两个源、策略或度量相同的证据。\n",
+      "text_en": "**How to use this appendix.** This appendix identifies the spaces, units, and roles attached to symbols. Where a letter is reused in a local model, its explicit local definition applies. Shared notation is not evidence that two sources, policies, or metrics are identical.\n"
+    },
+    {
+      "id": "appendix-b",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 附录 B.",
+      "text": "**查阅说明。** 本注册表连接稳定命题编号与正文位置。它是检索入口；证明的前提、标准依赖和适用范围仍须回到相应正文，后继章内命题也不计入原始 106 个 P-ID。\n",
+      "text_en": "**How to use this appendix.** This register connects stable proposition identifiers to their locations in the text. It is a retrieval aid: hypotheses, standard dependencies, and scope must still be checked in the corresponding statements. Later chapter-local propositions are not counted among the original 106 P-IDs.\n"
+    },
+    {
+      "id": "appendix-c",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 附录 C.",
+      "text": "**查阅说明。** 本附录分开原始思想来源、标准数学依赖与本书的具体连接。引用既说明使用了什么，也说明未将既有定理重新归为 UEOT 的原创成果。\n",
+      "text_en": "**How to use this appendix.** This appendix separates the original conceptual sources, standard mathematical dependencies, and the specific connections made in this book. Citations identify what is used and prevent existing theorems from being reassigned to UEOT as original discoveries.\n"
+    },
+    {
+      "id": "appendix-d",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 附录 D.",
+      "text": "**查阅说明。** 本附录保留可执行代码与其原始运行记录，便于重现实例计算。历史输出只证明其所标识代码和环境下的有限检查；本次出版构建与新增检验另有回执。\n",
+      "text_en": "**How to use this appendix.** This appendix retains executable code and its original run record for reproducibility of example calculations. Historical output establishes only the finite checks associated with its identified code and environment. The present publication build and any new checks have separate receipts.\n"
+    },
+    {
+      "id": "appendix-e",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 附录 E.",
+      "text": "**查阅说明。** 本附录规定如何修改和检验这部著作。编辑、数学证明改变与源码改变有不同责任；复现时先确定具体文件身份，再判断旧回执是否仍适用。\n",
+      "text_en": "**How to use this appendix.** This appendix specifies how the monograph is modified and checked. Editorial changes, changes to mathematical proofs, and source-code changes carry different responsibilities. Reproduction starts by identifying the exact files and deciding whether an earlier receipt still applies.\n"
+    },
+    {
+      "id": "appendix-f",
+      "operation": "insert_after_heading",
+      "heading_prefix": "# 附录 F.",
+      "text": "**查阅说明。** 本附录把自然语言主张连接到形式声明和证据层次。查阅时同时核对源码类型、调用前提与构建身份，不能只看到同名 Lean 声明便认定正文所有解释均已形式化。\n",
+      "text_en": "**How to use this appendix.** This appendix connects natural-language claims to formal declarations and evidence levels. Check the source type, invocation hypotheses, and build identity together. A similarly named Lean declaration does not establish that every interpretation in the prose has been formalized.\n"
+    }
+  ]
+}

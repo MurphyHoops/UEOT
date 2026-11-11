@@ -1,0 +1,1653 @@
+{
+  "schema": "UEOT bilingual separate-review ledger v1",
+  "source_commit": "3d443ec29eb17af1fc00699a74e2d42d73516d81",
+  "review_date_utc": "2026-11-11",
+  "scope": "C separately reviewed all B-authored prose, proofs, examples and scope notes in Chapters 18–31 and Sections 39.61–39.95; the rows below give claim-specific emphasis. Chapter 29 application paragraphs and Chapter 30 numerical examples are covered in full even when no P-ID is present.",
+  "artifacts": [
+    {
+      "path": "publication-work/base.zh.md",
+      "sha256": "dcd175a938da4cfd0b63ea1f642e3c794187a7c7ebdecb4175089c8cae53b01f"
+    },
+    {
+      "path": "publication-work/b_18_31.source.md",
+      "sha256": "7d3980e708d028d191e19f4ac33cd7d48fab8668bf15120605be8db83536ee78"
+    },
+    {
+      "path": "publication-work/english-c/reviewed_18_31.en.md",
+      "sha256": "a1b9b53e627f98f7c920597b6b6067cf20de4d3c88d9fb482d6ec2d6e087ae87"
+    },
+    {
+      "path": "publication-work/english-c/source_39_61_95.zh.md",
+      "sha256": "db47565241c59a3befdfd5093f1b6f9d490982cc9f780ad81ca88dd41f9c60e6"
+    },
+    {
+      "path": "publication-work/english-c/reviewed_39_61_95.en.md",
+      "sha256": "da5ca15d6a05c54a494d4f4a81d955076987340b1f5d53569f4051371e13bd8c"
+    }
+  ],
+  "not_claimed": [
+    "new Lean compilation",
+    "independent external human peer review",
+    "semantic equivalence established by structural counting alone",
+    "final assembled-book acceptance before integrated revision checks"
+  ],
+  "entries": [
+    {
+      "identifier": "D-BRIDGE",
+      "section": "18.2",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "评价桥保留可行策略类、评价层级、时域和预算；路径期望与风险函数没有互换，Bellman递推仍须动态一致性。"
+    },
+    {
+      "identifier": "N-TEL-01",
+      "section": "18.3",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "在同一对象证书和两可行动作上反向指定目标；只否定对象存在唯一决定价值，不否定有机制来源的目的桥。"
+    },
+    {
+      "identifier": "P-TEL-01",
+      "section": "18.4",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "有界势、正缩放、常数和折扣伸缩均保留；证明保留终端望远镜项，有限时域须调整终端奖励。"
+    },
+    {
+      "identifier": "P-CTL-01",
+      "section": "19.1",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "有限状态、各态非空有限动作、奖励有界及0<β<1；平稳确定性最优比较所有因果策略，证明保留终端项消失。"
+    },
+    {
+      "identifier": "K-CTL-01",
+      "section": "19.3",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "紧度量状态/动作、固定非空动作集、连续奖励和弱连续核；最优选择可测而非必连续，后续闭环Feller性质单独核验。"
+    },
+    {
+      "identifier": "P-CTL-02",
+      "section": "19.3",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "紧度量状态/动作、固定非空动作集、连续奖励和弱连续核；最优选择可测而非必连续，后续闭环Feller性质单独核验。"
+    },
+    {
+      "identifier": "P-CTL-03",
+      "section": "19.4",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "有界C²候选、达到sup的可测选择、闭环SDE良定性及局部化/可积/随机积分条件；结论不是任意SDE自动适用。"
+    },
+    {
+      "identifier": "D-GOD",
+      "section": "19.5",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "GOD首先是argmax动作对应，可为集合；局部漂移像是条件性次级读出，未翻译成唯一欧氏方向。"
+    },
+    {
+      "identifier": "P-QUO-01",
+      "section": "20.1",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "同纤维动作、奖励和推前转移一致；依赖第19章存在性，结论保留全部细层最优比较类。"
+    },
+    {
+      "identifier": "P-QUO-02",
+      "section": "20.2",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "统一奖励/转移误差、原动作对应与相同折扣；跨度δ、D和值/提升策略2D界完整，未替成平均误差。"
+    },
+    {
+      "identifier": "P-QUO-03",
+      "section": "20.3",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "每个动作Q误差统一≤η且估计最佳动作间隔严格>2η；唯一最优性和未决情形保持。"
+    },
+    {
+      "identifier": "P-QUO-04",
+      "section": "20.4",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "固定策略与有界参考函数；Neumann级数和真实折扣占据积分恒等式保持，没有把占据律当一次时点边缘。"
+    },
+    {
+      "identifier": "P-QUO-05",
+      "section": "20.5",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "两个不同实际策略的占据分别加权局部缺陷；覆盖密度常数未知时不得宣称已算出保证。"
+    },
+    {
+      "identifier": "P-GOA-01",
+      "section": "21.2",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "固定有限核的Cesàro子列极限不变；没有擅自增强为全轨迹吸引或唯一不变律。"
+    },
+    {
+      "identifier": "P-GOA-02",
+      "section": "21.3",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "Dobrushin系数严格<1和逐行误差；平稳扰动分母及估计核附加混合裕量保持。"
+    },
+    {
+      "identifier": "P-GOA-03",
+      "section": "21.4",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "扰动保留瞬态/常返类分解，resolvent小扰动条件及同一初始律；支持改变时不适用。"
+    },
+    {
+      "identifier": "P-GOA-04",
+      "section": "21.5",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "对称非负不可约次随机核、谱隙与对称小扰动；u²是Q-process占据而非一般非自伴QSD通式。"
+    },
+    {
+      "identifier": "M-21.1",
+      "section": "21.7.2",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "由同一源/策略得实际闭环Lθ；θ在[0,1]及实际观察商保持，未把同类型当成同来源。"
+    },
+    {
+      "identifier": "M-21.2",
+      "section": "21.7.2",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "实际边缘与Cesàro平均含初始项，N>0；修订仅将t≥1放回内联公式原顺序，不改概率含义。"
+    },
+    {
+      "identifier": "M-21.3",
+      "section": "21.7.3",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "正生存谱条件保留θ<1；θ=1不伪造正归一化Doob核。"
+    },
+    {
+      "identifier": "M-21.4",
+      "section": "21.7.3",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "任意安全初始分布且T≥1的条件终端律；零步保留初态，条件完整路径另列。"
+    },
+    {
+      "identifier": "M-21.5",
+      "section": "21.7.4",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "同一源/实际策略/初态的有限路径、曾失败概率、终端概率和无限AE最终失败分开。"
+    },
+    {
+      "identifier": "M-21.6",
+      "section": "21.7.5",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "原非受限模型M的价值与greedy结论不被移到受限R；奖励最优不被写成安全。"
+    },
+    {
+      "identifier": "M-21.7",
+      "section": "21.7.5.1",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "受限R的动作域、初态依赖Cesàro极限与全空间多个不变律保持；不宣称全局唯一GOA。"
+    },
+    {
+      "identifier": "P-KL-01",
+      "section": "22.1",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "同一路径事件的数据处理、Q绝对连续及q=0/1支持边界保持。"
+    },
+    {
+      "identifier": "P-KL-02",
+      "section": "22.2",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "0<q<1及0≤p≤1；最小化在所有绝对连续路径律上，不自动等于受约束反馈控制可达到最小费用。"
+    },
+    {
+      "identifier": "P-KL-03",
+      "section": "22.3",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "相同初始律、逐行绝对连续；历史依赖核可用，不同初始律须加初始KL项。"
+    },
+    {
+      "identifier": "P-KL-04",
+      "section": "22.4",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "有限非爆炸CTMC、相同初始律、受控正率支持包含；跳跃补偿器积分及0log0约定保持。"
+    },
+    {
+      "identifier": "P-KL-05",
+      "section": "22.5",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "真指数鞅和Q下有限二次能量；完整噪声空间KL等式、状态路径投影不等式分开，可观察性等号条件保留。"
+    },
+    {
+      "identifier": "N-KL-01",
+      "section": "22.5",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "不可见第二噪声漂移保持状态路径律但能量正；仅反驳无可观察性的一般等式，未否定数据处理界。"
+    },
+    {
+      "identifier": "P-DDH-01",
+      "section": "23.2",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "固定λ的Π/Φ规范变换保留同一数值目标；行为并不唯一锚定两语义轴。"
+    },
+    {
+      "identifier": "P-DDH-02",
+      "section": "23.3",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "有限路径集、严格正基线和预先给定特征；导数/协方差恒等式及标准理论归属保持。"
+    },
+    {
+      "identifier": "P-DDH-03",
+      "section": "23.3",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "目标矩来自qλ；对全部满足该矩约束的q唯一最小KL，边界矩有限参数不一定达到。"
+    },
+    {
+      "identifier": "H-DDH",
+      "section": "23.4",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "全部环境在同预算点共享可微二维中间图；秩结论仅必要条件，跨预算点堆叠须额外共线性空间前提。"
+    },
+    {
+      "identifier": "P-DDH-04",
+      "section": "23.4",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "全部环境在同预算点共享可微二维中间图；秩结论仅必要条件，跨预算点堆叠须额外共线性空间前提。"
+    },
+    {
+      "identifier": "P-DDH-05",
+      "section": "23.5",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "算子范数扰动≤η及严格阈值夹于第二/第三奇异值；阈值下有效维数不等于无条件精确真秩。"
+    },
+    {
+      "identifier": "P-ALI-01",
+      "section": "24.2",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "连通光滑流形上的C¹一形式；每条分段光滑闭曲线周期为零充要于全局势，局部闭性未被提升。"
+    },
+    {
+      "identifier": "K-GEO-01",
+      "section": "24.2",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "紧致定向无边界Riemannian条件；有边界须给边界条件，度量作为模型结构保留。"
+    },
+    {
+      "identifier": "P-ALI-02",
+      "section": "24.3",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "同实Hilbert直和策略空间、可微价值和正更新率；严格瞬时改进的非零梯度条件不变，不推全局收敛。"
+    },
+    {
+      "identifier": "P-ALI-03",
+      "section": "24.4",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "g与G负内积及η∈[0,1]；阈值是瞬时父价值正导数的充要条件，不代替具体机制或规范正当性。"
+    },
+    {
+      "identifier": "P-EVO-01",
+      "section": "25.2",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "确定性平均强度模型、正平均繁殖和既定亲子抽样；Price为代数恒等式而非随机比例期望或独立因果机制。"
+    },
+    {
+      "identifier": "P-EVO-02",
+      "section": "25.3",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "有限标签独立于父子类型且无误复制；额外H(T)仅说明与目标无关标签会增大互信息。"
+    },
+    {
+      "identifier": "K-PF-01",
+      "section": "25.4",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "非空有限非负本原矩阵；左右正向量归一、幂极限、严格复谱支配与主根单重范围保留。"
+    },
+    {
+      "identifier": "P-EVO-03",
+      "section": "25.4",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "非零非负初始计数、同一M/左右谱向量；增长是平均算子增长，不宣称所有随机种群生存。"
+    },
+    {
+      "identifier": "P-EVO-04",
+      "section": "25.5",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "逐型独立且世代不变繁殖、有限初始计数和一阶矩；非负可积鞅均值恒定，不推出极限均值相等。"
+    },
+    {
+      "identifier": "K-MAR-01",
+      "section": "25.5",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "非负鞅仅给有限极限AE收敛；L¹、保均值、非灭绝上的严格正性仍需额外条件。"
+    },
+    {
+      "identifier": "P-BRG-01",
+      "section": "26.3",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "有限类型、固定正适合度、无突变和原正支持；只在既有支持最大者间集中，不创造新控制器。"
+    },
+    {
+      "identifier": "N-BRG-01",
+      "section": "26.4",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "频率依赖RPS反例的守恒乘积保持；不推全部演化都有周期，也不把固定适合度定理推翻。"
+    },
+    {
+      "identifier": "P-BRG-02",
+      "section": "26.4",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "同环境、复制仅依同路径律且无类型依赖额外通道；新突变邻域/材料成本会改变模型。"
+    },
+    {
+      "identifier": "P-REF-01",
+      "section": "27.1",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "增广结构状态在给定可测受控Markov核条件下唯一生成路径；再次压缩须重证闭合。"
+    },
+    {
+      "identifier": "P-REF-02",
+      "section": "27.2",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "有限静态参数/隐状态的既定模型内信念充分性；零分母模型冲突和模型失配边界完整。"
+    },
+    {
+      "identifier": "P-REF-03",
+      "section": "27.3",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "有限动作、可积收益、无成本且可忽略、不影响世界/动作集的信号；决策价值≠任意互信息增益。"
+    },
+    {
+      "identifier": "P-REF-04",
+      "section": "27.4",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "同策略集上的统一目标误差及各自最优者；2Ld后悔界不变，非一致误差不可替用。"
+    },
+    {
+      "identifier": "P-REF-05",
+      "section": "27.5",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "同评价和真实策略集包含；新增能力消耗资源而破坏包含时结论不适用。"
+    },
+    {
+      "identifier": "P-API-01",
+      "section": "28.3",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "相应协议提升与可测路径读出，自然性或统一TV缺陷；复合次序、min(1,误差和)及逐协议量词保持。"
+    },
+    {
+      "identifier": "P-ALG-01",
+      "section": "28.5",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "已知有限模型、各态同一有限动作集及输出/奖励初分割；终止和最粗细化证明完整，不冒称全历史FFIPS。"
+    },
+    {
+      "identifier": "P-CORE-01",
+      "section": "31.1",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "六组输入前提、真实正间隔、统一事件及物理解释额外条件全保留；并合无需独立、不重复收费，有限路径不直接取无限极限。"
+    },
+    {
+      "identifier": null,
+      "locator": "23.4 / same-regenerative-source three-response boundary",
+      "section": "23.4",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH",
+      "specific_review": "F=(s,b,bq)的局部秩三障碍保留固定δ/γ、正参数邻域、共同C¹编码/解码；第三读出是联合事件而非条件q；明列书面推论与exact核验而非新Lean端点，非光滑/二维受限族不被排除。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.61 / all claims and scope paragraphs",
+      "section": "39.61",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "同一对象/实际AST/尺度的六性质；执行恢复、ε<1的AE推导、Good最优校准与外部每笔收入分别保留。零质量词不能推出真噪声条件。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.62 / all claims and scope paragraphs",
+      "section": "39.62",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "完整训练与两步原语律；同一程序、真实store lookup、实际失败Some和无交易None分开；不借用无限固定亲本的资金/全局GOD。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.63 / all claims and scope paragraphs",
+      "section": "39.63",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "同一实际cohort的Price项保留TFT/TTF/FFF正支持和B=0不归一；正样本不提升为普遍或期望选择优势。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.64 / all claims and scope paragraphs",
+      "section": "39.64",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "实际物理/程序和一交易一组织tick的完整路径交换；非可逆投影、错误代码与费用差保留。OPEN句按已批准历史状态增量审查。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.65 / all claims and scope paragraphs",
+      "section": "39.65",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "根前缀/epoch登记运输保留新生零钟；phase不是交易数；有限终点−3/40反例不否定原无限折扣最优。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.66 / all claims and scope paragraphs",
+      "section": "39.66",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "同一episode额外有费标记传感器；单预登记slot风险、全部B读数和正残余错率；共同支持不可区分与完全读通道同律分开。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.67 / all claims and scope paragraphs",
+      "section": "39.67",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "全部2N训练加有限派发同钱包零收入的逐笔支付；训练-only资金反例保留，零延拓不冒充无限执行。OPEN句作历史增量。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.68 / all claims and scope paragraphs",
+      "section": "39.68",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "写费与全部读费同钱包；同首出生父条件、错误事件并界不是接受后条件风险/成功率，有限零收入不资助无限维持。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.69 / all claims and scope paragraphs",
+      "section": "39.69",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "固定机制/预动作读协议的预测商；同实际返回p/q精确最优比较全部fine causal策略，未声称任意隐藏控制器均可因子化。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.70 / all claims and scope paragraphs",
+      "section": "39.70",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "实际末parent、当前余额和后续外部收入；条件μ0(z)边缘不等于固定初态联合律，有限期望成本/AE频率/校准风险分开。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.71 / all claims and scope paragraphs",
+      "section": "39.71",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "旧书面欠账和后继实际Lean来源分时记录；M/R模型、θ<1正时域QSD、零步及θ=1失败保留，局部通过不替总验收。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.72 / all claims and scope paragraphs",
+      "section": "39.72",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "任意非空有限本原非负M的一般来源；无全矩阵可对角化前提，原证书消费与非主Jordan边界保留。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.73 / all claims and scope paragraphs",
+      "section": "39.73",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "紧自伴resolvent、实际S生成关系/收缩/谱条件；澄清正性属于非零特征值，单g实现不识别整个核，任意SDE仍须来源。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.74 / all claims and scope paragraphs",
+      "section": "39.74",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "同实际Bool次概率核和全算子恒等式；非零余项、条件律TV与生存精确式保持，有限实例不被称Brownian或实证。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.75 / all claims and scope paragraphs",
+      "section": "39.75",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "θ一次抽取、理性有限源、公开目标和唯一钱包；新收据权限、原实际费用与stop继续世界，有限终端合同区别于旧无限协议。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.76 / all claims and scope paragraphs",
+      "section": "39.76",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "同联合权重过滤，正质量条件化和零质量默认值；实际支持上逐前缀账本，平均支付不能替代。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.77 / all claims and scope paragraphs",
+      "section": "39.77",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "全允许历史任意实随机权因果策略，仅正概率历史须合法；原译额外合法性要求不缩小类的错误已修正。Bayes≠minimax/无限最优。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.78 / all claims and scope paragraphs",
+      "section": "39.78",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "固定B=c且p≥S_H子族，路径上no-go、两对象同收据策略上界达到、严格正收益充要界及低预算不可能性全保留。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.79 / all claims and scope paragraphs",
+      "section": "39.79",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "持久θ矩与真实失败后验；同核均值替代误差、非退化先验条件和高价式不适用的三步计算分别说明。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.80 / all claims and scope paragraphs",
+      "section": "39.80",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "相同权限/先验/费用的固定与反馈比较；原始差须取正部，参数额外信息值零不推广任意传感器；三次请求序列已消歧。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.81 / all claims and scope paragraphs",
+      "section": "39.81",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "旧无限固定亲本合同与有限单钱包新合同并存；不借固定样本风险作适应停止，不取消目标/费率/地址/老化等限制。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.82 / all claims and scope paragraphs",
+      "section": "39.82",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "局部状态只由公开目标、自身动作与收据更新；source projectLocal只在证明，不授隐藏Store访问；fresh冗余解释保持。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.83 / all claims and scope paragraphs",
+      "section": "39.83",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "仅有信息模式计s/f；任意完整历史实随机策略因子消去须正质量，端点率/零先验/0^0及默认值边界保留。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.84 / all claims and scope paragraphs",
+      "section": "39.84",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "同剩余期/统计的正质量历史对每个合法动作具有完整联合律；澄清positive conditional mass而非数值非零收据；全比较类不缩窄。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.85 / all claims and scope paragraphs",
+      "section": "39.85",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "实际Option返回图仅保证所有accepted产物正确，不额外断言通用生成器每输入必被接受；全动作证书/字节检查/前缀支付层次完整。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.86 / all claims and scope paragraphs",
+      "section": "39.86",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "24(H+1)^4作用于实际唯一键Array；只节点数界而非一般POMDP多项式时间、总内存或内生硬件能耗。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.87 / all claims and scope paragraphs",
+      "section": "39.87",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "两对真正可达历史的必要区别与可合并区别；条件未来价值等价不抹去过去折扣收益/身份，新增地址2权限要求细化。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.88 / all claims and scope paragraphs",
+      "section": "39.88",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "历史实际运行数值与本轮翻译分开；节点/边/字节/墙钟/RSS口径保留，有限重放不替一般最优证明，不制造跨环境速度倍数。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.89 / all claims and scope paragraphs",
+      "section": "39.89",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "S局部故障/G全活体相关坐标故障两个新固定机制；私随机独立，菜单/预付/终端/stop/world时间条件不变。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.90 / all claims and scope paragraphs",
+      "section": "39.90",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "同收据不同身体的正支持反例；机制与体态需联合条件律，不能独立乘边缘，反例不否定旧S源定理。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.91 / all claims and scope paragraphs",
+      "section": "39.91",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "同一合法策略及任意实私随机比较；固定H/B/初态边界、三步精确TV、终端判别私随机保留，分类错率≠同数值后悔。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.92 / all claims and scope paragraphs",
+      "section": "39.92",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "机制先于私种子固定；oracle仍受原信息/钱包/时域限制，Bayes权只作下界见证，零inf不自动有共同达到者。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.93 / all claims and scope paragraphs",
+      "section": "39.93",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "固定有理参数，实际两策略表与下界w不同于混合权；全历史实随机对手上界/下界合一，非仅比较两表。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.94 / all claims and scope paragraphs",
+      "section": "39.94",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "独立四点私种子实现完整表混合；固定参数格点严格区别确定/随机最坏后悔，实际native所有前缀支付不换平均。"
+    },
+    {
+      "identifier": null,
+      "locator": "39.95 / all claims and scope paragraphs",
+      "section": "39.95",
+      "reviewer": "native agent C / english_editor",
+      "translation_author": "native agent B / chinese_editor",
+      "review_type": "separate translator-reviewer comparison; not external human peer review",
+      "scope_checks": [
+        "hypotheses",
+        "quantifiers",
+        "definitions",
+        "symbols and conclusions",
+        "applicability domain",
+        "proof and source references"
+      ],
+      "finding": "MATCH_AFTER_RECORDED_EDITORIAL_CORRECTIONS",
+      "specific_review": "native_decide有限计算证书与一般逻辑证明区别；全枚举检查接线而非普遍证明，历史编译失败/回执保留，经验UNVERIFIED。"
+    }
+  ]
+}

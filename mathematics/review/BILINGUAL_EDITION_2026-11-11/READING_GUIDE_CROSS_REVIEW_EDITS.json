@@ -1,0 +1,63 @@
+{
+  "reviewer": "C; not the guide author",
+  "source": "publication-work/editor-b/CHAPTER_READING_GUIDES.json",
+  "source_sha256": "b205c9ccb3c01184a143cc51adcd6a474720369e372399e99644ad61b4cdeef7",
+  "changes": [
+    {
+      "id": "ch-10",
+      "zh_old": "先把退出质量保留在 killed 核中，再分别使用条件极限或正特征数据。",
+      "zh_new": "先保留 killed 核的次概率质量缺额，再分别使用条件极限或正特征数据。",
+      "en_old": "Retain the lost mass in the killed kernel, then use either a conditional limit or positive eigenstructure.",
+      "en_new": "Retain the mass deficit of the substochastic killed kernel, then use either a conditional limit or positive eigenstructure.",
+      "reason": "Killing mass is represented by a substochastic deficit, not by retained live-state mass."
+    },
+    {
+      "id": "ch-15",
+      "zh_old": "先排除共同外因，再分别检查路径不可因子化、切割效应和父层新增信息。",
+      "zh_new": "先控制共同外因造成的伪不可约性，再分别检查路径不可因子化、切割效应和父层新增信息。",
+      "en_old": "Exclude common external causes before checking path nonfactorization, cut effects, and additional parent-level information separately.",
+      "en_new": "First control for spurious irreducibility caused by common external drivers, then check path nonfactorization, cut effects, and additional parent-level information separately.",
+      "reason": "Conditional comparison controls spurious attribution; the theorem does not require removing all external causes."
+    },
+    {
+      "id": "ch-19",
+      "zh_old": "有限折扣模型先用压缩得到 Bellman 固定点",
+      "zh_new": "有限折扣模型先用压缩映射原理得到 Bellman 固定点",
+      "en_old": "In a finite discounted model, contraction first yields a Bellman fixed point.",
+      "en_new": "In a finite discounted model, the contraction mapping theorem first yields a Bellman fixed point.",
+      "reason": "Disambiguate contraction from representation compression."
+    },
+    {
+      "id": "ch-20",
+      "zh_old": "近似商先控制单步残差，再用压缩传播",
+      "zh_new": "近似商先控制单步残差，再用 Bellman 算子的压缩性传播",
+      "en_old": "An approximate quotient first bounds the one-step residual and then propagates it by contraction.",
+      "en_new": "An approximate quotient first bounds the one-step residual and then propagates it using contraction of the Bellman operator.",
+      "reason": "Name the contraction being used rather than conflating it with state compression."
+    },
+    {
+      "id": "ch-22",
+      "zh_old": "真实控制只访问其中一部分路径律",
+      "zh_new": "实际控制只能在可实施路径律类中优化",
+      "en_old": "An actual controller reaches only part of that class.",
+      "en_new": "An actual control problem optimizes over its implementable subclass of path laws.",
+      "reason": "The implementable class may be restricted; it is not asserted to be a proper subset for every possible control model."
+    },
+    {
+      "id": "ch-27",
+      "zh_old": "目标误差、资源成本和权限约束必须进入实际可行策略域。",
+      "zh_new": "目标误差、资源成本和权限约束必须在实际决策问题中明确处理。",
+      "en_old": "Objective error, resource costs, and permission constraints belong in the actual admissible policy domain.",
+      "en_new": "Objective error, resource costs, and permission constraints must be explicitly accounted for in the actual decision problem.",
+      "reason": "Objective approximation is an evaluation error, whereas costs and permissions may constrain the policy class; do not identify their mathematical types."
+    },
+    {
+      "id": "ch-37",
+      "zh_old": "正历史上的实际后验支持",
+      "zh_new": "正概率历史上的实际后验支持",
+      "en_old": "actual posterior support on positive histories",
+      "en_new": "actual posterior support on histories of positive probability",
+      "reason": "Positivity concerns the probability of the history, not its numerical observations or its safety status."
+    }
+  ]
+}

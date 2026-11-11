@@ -1,0 +1,749 @@
+{
+  "source_commit": "3d443ec29eb17af1fc00699a74e2d42d73516d81",
+  "source_sha256": "dcd175a938da4cfd0b63ea1f642e3c794187a7c7ebdecb4175089c8cae53b01f",
+  "count": 106,
+  "statements": [
+    {
+      "pid": "P-MET-01",
+      "line": 440,
+      "section": "1.2 信息、距离与单位",
+      "statement_line": "**P-MET-01：核与读出的数据处理。** 对可测映射 $f$ 和概率核 $K$，",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-MET-02",
+      "line": 453,
+      "section": "1.2 信息、距离与单位",
+      "statement_line": "**P-MET-02：跨度估计。** 对有界实函数 $v$，记",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-PROC-01",
+      "line": 507,
+      "section": "2.1 一般受控过程",
+      "statement_line": "**P-PROC-01：历史状态化。** 任意上述历史依赖过程，在增广状态 $Z_t=(t,H_t)$ 上都是时间齐次 Markov 控制过程。",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-FAC-01",
+      "line": 572,
+      "section": "3.2 表示协变",
+      "statement_line": "**P-FAC-01。** 设 $T:\\mathcal X\\to\\mathcal X'$ 为双可测双射，同时运输",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-PRED-01",
+      "line": 618,
+      "section": "4.2 最小性定理",
+      "statement_line": "**P-PRED-01：共同协议的规范最小性。** 若统计量 $S=s(H)$ 取值于标准 Borel，并对每个 $i$ 存在核 $L_i$ 满足",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-PRED-02",
+      "line": 654,
+      "section": "4.4 目标完备性与细化",
+      "statement_line": "**P-PRED-02：目标推送与协议细化。** 若 $Y_1=T(Y_2)$，则其规范预测核满足",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-PRED-03",
+      "line": 675,
+      "section": "4.5 全未来状态的递归更新",
+      "statement_line": "**P-PRED-03：有限字母过程的递归更新。** 假设所有响应来自同一个因果过程；协议族对行动前缀和正概率观察后的允许延续封闭，并包含相应联合未来柱集。则预测等价在下一步更新中保持，存在",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-INFO-01",
+      "line": 708,
+      "section": "5.1 信息保留恒等式",
+      "statement_line": "**P-INFO-01。**",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-INFO-02",
+      "line": 729,
+      "section": "5.2 从信息残差到预测误差",
+      "statement_line": "**P-INFO-02。** 对标准 Borel 变量 $H,Y,M,U$，若 $M,U$ 是历史的函数，令",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-INFO-03",
+      "line": 764,
+      "section": "5.3 预测率失真",
+      "statement_line": "**P-INFO-03：零失真复杂度。** 若",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-INFO-04",
+      "line": 782,
+      "section": "5.4 身份保留的信息下界",
+      "statement_line": "**P-INFO-04：Fano 型身份下界。** 令 $J$ 均匀取 $K\\ge2$ 个身份，未来记录 $Y_T$ 可解码 $\\widehat J$，错误率为 $e$。则",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-INFO-05",
+      "line": 800,
+      "section": "5.5 遗漏与 packing 下界",
+      "statement_line": "**P-INFO-05。** 若两历史被同一表示 $R$ 合并，但某协议的未来核相距 $\\delta>0$，则任意仅依赖 $R$ 的解码核至少在其中一个历史上有 TV 误差 $\\delta/2$。",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-INT-01",
+      "line": 826,
+      "section": "6.1 联合闭合判据",
+      "statement_line": "**P-INT-01：结构化充分性的充要条件。**",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-INT-02",
+      "line": 862,
+      "section": "6.2 有限结构核的最小内部—环境分解",
+      "statement_line": "**P-INT-02。** 存在良定义核",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-INT-03",
+      "line": 908,
+      "section": "6.5 最小 Markov 边界的唯一性条件",
+      "statement_line": "**P-INT-03。** 若条件独立满足半图公理与 intersection，极小边界唯一。",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-DYN-01",
+      "line": 931,
+      "section": "7.1 精确 Markov 商",
+      "statement_line": "**P-DYN-01：strong lumpability。** 设 $X_t$ 为 Markov 链，$f:\\mathcal X\\to\\mathcal M$ 为可测满射，并已存在可测候选宏观核 $\\bar P$。以下等价：",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-DYN-02",
+      "line": 947,
+      "section": "7.2 连续时间生成元判据",
+      "statement_line": "**P-DYN-02。** 有限 CTMC 生成元 $L$ 与分块 $B_1,\\ldots,B_m$ 满足精确分块商，当且仅当",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-DYN-03",
+      "line": 967,
+      "section": "7.3 近似核与路径界",
+      "statement_line": "**P-DYN-03：同策略路径误差。** 两套有限字母因果记录过程在相同已发生历史上的下一步核差不超过 $\\epsilon_t\\in[0,1]$，使用同一因果策略且初始记录相同，则",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-DYN-04",
+      "line": 984,
+      "section": "7.4 同一底过程的跨尺度商",
+      "statement_line": "**P-DYN-04。** 在可达像 $f_s(\\mathcal X)$ 上，",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-PER-01",
+      "line": 1035,
+      "section": "8.2 确定性持续的必要不变核",
+      "statement_line": "**P-PER-01。** 连续半流 $\\phi_t$ 的轨道长期位于闭集 $\\mathcal V$，且轨道预紧，则",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-PER-02",
+      "line": 1061,
+      "section": "8.4 随机持续与占据核",
+      "statement_line": "**P-PER-02。** 设 $P_t$ 为 Polish 空间上将 $C_b$ 映入 $C_b$ 的 Feller 半群。若",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-PER-03",
+      "line": 1085,
+      "section": "8.5 有限状态的可行核",
+      "statement_line": "**P-PER-03。** 递推在有限步稳定于 $K_\\infty$。它恰为存在策略使系统以概率一永不退出 $\\mathcal V$ 的状态集，并存在保持它的平稳确定性策略。",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-PER-04",
+      "line": 1101,
+      "section": "8.6 连续状态的切向条件",
+      "statement_line": "**P-PER-04：切向必要性。** 若一条在零点可微的可行轨迹从 $x$ 出发并留在 $\\mathcal V$，则 $\\dot x(0)\\in T_{\\mathcal V}(x)$。",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-REC-01",
+      "line": 1122,
+      "section": "9.1 离散恢复管道",
+      "statement_line": "**P-REC-01。** 设 $R_n\\ge0$，$ER_0<\\infty$，且",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-REC-02",
+      "line": 1145,
+      "section": "9.2 连续随机恢复",
+      "statement_line": "**P-REC-02。** 设 $W\\ge c\\,d(\\cdot,\\mathcal V)^2$，属于生成元 $\\mathcal L$ 的适当定义域，并具备 Dynkin 公式、局部化极限与可积条件，使 $m(t)=EW(X_t)$ 局部绝对连续。若",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-REC-03",
+      "line": 1166,
+      "section": "9.3 恢复时间生成规范势",
+      "statement_line": "**P-REC-03。** 对 $x\\notin A$ 且 $V_A(x)<\\infty$，",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-REC-04",
+      "line": 1176,
+      "section": "9.3 恢复时间生成规范势",
+      "statement_line": "**P-REC-04：漂移推出恢复时间。** 若有限非负函数 $V$ 在 $A^c$ 满足 $PV-V\\le-c<0$，则",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-QSD-01",
+      "line": 1215,
+      "section": "10.1 killed 过程与 QSD",
+      "statement_line": "**P-QSD-01：条件稳定化的逆向结论。** 若",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-QSD-02",
+      "line": 1247,
+      "section": "10.2 有限 Perron 表示",
+      "statement_line": "**P-QSD-02。** $q$ 是 QSD；Doob 变换",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-QSD-03",
+      "line": 1269,
+      "section": "10.3 同初态的持续时间窗",
+      "statement_line": "**P-QSD-03。** 对同一初态 $\\mu$，假设在 $t\\ge t_0$ 上",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-QSD-04",
+      "line": 1296,
+      "section": "10.4 可逆扩散的谱版本",
+      "statement_line": "**P-QSD-04。** 存在 $C_g,c_g>0,t_0$，使",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-ID-01",
+      "line": 1347,
+      "section": "11.2 冻结模型的 TCIC",
+      "statement_line": "**P-ID-01：运输缺损累计。** 若相邻端核交换误差至多 $\\epsilon_t$，则",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-ID-02",
+      "line": 1383,
+      "section": "11.3 发展运输 DTRC",
+      "statement_line": "**P-ID-02：发展管道。** 在相同已声明外部输入下，参考轨迹",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-OMG-01",
+      "line": 1459,
+      "section": "12.2 由证书导出 Ω",
+      "statement_line": "**P-OMG-01：极小毁损重建。**",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-OMG-02",
+      "line": 1477,
+      "section": "12.3 完整性裕量",
+      "statement_line": "**P-OMG-02。**",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-CAR-01",
+      "line": 1523,
+      "section": "13.1 单调访问系统",
+      "statement_line": "**P-CAR-01。** $\\mathcal A_0$ 向上闭合，且在有限 $V$ 上每个充分集包含一个极小充分集。",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-CAR-02",
+      "line": 1539,
+      "section": "13.2 访问擦除与 blocker",
+      "statement_line": "**P-CAR-02。** 在纯访问擦除中，删除 $D$ 后仍能恢复 $C$，当且仅当存在 $M\\in\\mathcal M_0$ 与 $D$ 不交。因此极小访问毁损集为 $b_V(\\mathcal M_0)$。",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-CAR-03",
+      "line": 1545,
+      "section": "13.2 访问擦除与 blocker",
+      "statement_line": "**P-CAR-03：双 blocker。**",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-CAR-04",
+      "line": 1584,
+      "section": "13.4 缺损直径与解码半径",
+      "statement_line": "**P-CAR-04。**",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-RES-01",
+      "line": 1617,
+      "section": "14.1 一般闭包系统",
+      "statement_line": "**P-RES-01：极小性质的粗粒化。**",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-RES-02",
+      "line": 1627,
+      "section": "14.1 一般闭包系统",
+      "statement_line": "**P-RES-02：复合律。** 若",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-RES-03",
+      "line": 1661,
+      "section": "14.2 Boolean 删除语义",
+      "statement_line": "**P-RES-03：blocker 的尺度自然性。**",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-RES-04",
+      "line": 1688,
+      "section": "14.3 三个伴随操作",
+      "statement_line": "**P-RES-04：伴随三元组。**",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-RES-05",
+      "line": 1718,
+      "section": "14.4 精确微观不确定区间",
+      "statement_line": "**P-RES-05。**",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-RES-06",
+      "line": 1731,
+      "section": "14.4 精确微观不确定区间",
+      "statement_line": "**P-RES-06：对象相关的唯一性。** 上述两端相同，当且仅当",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-COMP-01",
+      "line": 1764,
+      "section": "15.1 三种共同性",
+      "statement_line": "**P-COMP-01。** $I_\\pi=0$ 当且仅当该划分的路径块给定 $U$ 后独立。有限个非平凡划分中，",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-COMP-02",
+      "line": 1786,
+      "section": "15.2 干预不可约性",
+      "statement_line": "**P-COMP-02。** $0\\le JS(P,Q)\\le\\log2$，且 $JS=0\\iff P=Q$。",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-COMP-03",
+      "line": 1802,
+      "section": "15.3 组合裕量",
+      "statement_line": "**P-COMP-03。** 若 $L=\\max_\\pi L_\\pi<\\infty$，则",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-COMP-04",
+      "line": 1822,
+      "section": "15.4 父层新增预测信息",
+      "statement_line": "**P-COMP-04。** 若父层表示 $M_P$ 精确充分，则",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-COMP-05",
+      "line": 1851,
+      "section": "15.6 重叠几何的规范 Boolean 化",
+      "statement_line": "**P-COMP-05。** 非空 $A_J$ 构成唯一最小包含全部 $V_i$ 的 Boolean 代数的原子。",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-COMP-06",
+      "line": 1865,
+      "section": "15.6 重叠几何的规范 Boolean 化",
+      "statement_line": "**P-COMP-06：物理载体到联盟的提升。**",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-COMP-07",
+      "line": 1891,
+      "section": "15.8 保留个体性的组合窗口",
+      "statement_line": "**P-COMP-07。** 在紧耦合参数区间 $K$ 上，整合量 $D(k)$ 连续非减、子保真度 $F(k)$ 连续非增。阈值可行集均非空，令",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-STAT-01",
+      "line": 1920,
+      "section": "16.1 有限响应表与同时置信界",
+      "statement_line": "**P-STAT-01：有限字母 TV 同时界。**",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-STAT-02",
+      "line": 1944,
+      "section": "16.2 缺损误差不额外依赖载体候选数量",
+      "statement_line": "**P-STAT-02。** 在同时响应误差事件上，",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-STAT-03",
+      "line": 1963,
+      "section": "16.3 近似族与精确族",
+      "statement_line": "**P-STAT-03：固定容差族恢复。** 若",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-STAT-04",
+      "line": 1973,
+      "section": "16.3 近似族与精确族",
+      "statement_line": "**P-STAT-04：精确族恢复。** 若非零缺损间隔",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-STAT-05",
+      "line": 2004,
+      "section": "16.5 规范预测类恢复",
+      "statement_line": "**P-STAT-05。** 对有限历史集合，若不同真实预测类在",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-STAT-06",
+      "line": 2025,
+      "section": "16.6 连续未来的 characteristic 嵌入",
+      "statement_line": "**P-STAT-06：嵌入同时误差。** 对 $L$ 个固定条件响应，各 $N$ 个独立样本，",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-STAT-07",
+      "line": 2040,
+      "section": "16.6 连续未来的 characteristic 嵌入",
+      "statement_line": "**P-STAT-07：核运输协变。** 对双可测双射 $T$，同步定义",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-STAT-08",
+      "line": 2061,
+      "section": "16.8 相关轨迹、发现一致性与模型选择",
+      "statement_line": "**P-STAT-08：有限候选发现。** 对 $m$ 个候选，有界损失 $\\ell_f\\in[0,1]$，独立验证样本数 $N$。令",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-STAT-09",
+      "line": 2081,
+      "section": "16.9 部署分布与覆盖",
+      "statement_line": "**P-STAT-09：平均误差运输。** 对 $0\\le e\\le1$，若部署分布 $\\nu\\ll\\mu$ 且 $d\\nu/d\\mu\\le C$，则",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-INV-01",
+      "line": 2110,
+      "section": "17.1 实验等价类与最优检验",
+      "statement_line": "**P-INV-01：二元检验下界。** 两模型等先验，数据律为 $P_0,P_1$，最小平均错误为",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-INV-02",
+      "line": 2131,
+      "section": "17.2 Fisher 的规范零方向",
+      "statement_line": "**P-INV-02。** 若沿光滑群轨道的似然不变，轨道切向量属于 $\\ker\\mathcal I$。",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-INV-03",
+      "line": 2137,
+      "section": "17.2 Fisher 的规范零方向",
+      "statement_line": "**P-INV-03。** 对条件独立、满足零均值 score 条件的实验，",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-INV-04",
+      "line": 2161,
+      "section": "17.3 发展定律的设计识别",
+      "statement_line": "**P-INV-04。** 在无噪声、参数取整个 $\\mathbb R^d$ 的指定模型中，参数由该设计唯一识别，当且仅当 $G_N\\succ0$。",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-INV-05",
+      "line": 2171,
+      "section": "17.4 可预测设计的 OLS 界",
+      "statement_line": "**P-INV-05。** 假设 $\\phi_t$ 对 $\\mathcal F_{t-1}$ 可测，",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-TEL-01",
+      "line": 2252,
+      "section": "18.4 价值等价与奖励塑形",
+      "statement_line": "**P-TEL-01：折扣势函数等价。** 有界势函数 $\\psi$、常数 $c$、$a>0$，将一步随机奖励改为",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-CTL-01",
+      "line": 2303,
+      "section": "19.1 有限折扣控制的完整构造",
+      "statement_line": "**P-CTL-01：Bellman 存在与最优性。** $T$ 有唯一固定点 $V^*$，值迭代从任意有界初值收敛；存在平稳确定性策略在每个状态对所有因果策略最优。",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-CTL-02",
+      "line": 2344,
+      "section": "19.3 紧 Feller 控制",
+      "statement_line": "**K-CTL-01 / P-CTL-02。** 状态、动作均为紧度量空间，动作集合固定非空，奖励连续，转移核对状态动作弱连续。则 $T:C(\\mathcal X)\\to C(\\mathcal X)$ 为 $\\beta$-压缩，有唯一连续固定点，并有可测平稳最优选择。",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-CTL-03",
+      "line": 2358,
+      "section": "19.4 连续时间 HJB 验证",
+      "statement_line": "**P-CTL-03。** 若有有界 $C^2$ 函数 $V$，满足",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-QUO-01",
+      "line": 2405,
+      "section": "20.1 精确控制商",
+      "statement_line": "**P-QUO-01。** 满射 $f:\\mathcal X\\to\\mathcal M$ 满足同纤维动作集相同、",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-QUO-02",
+      "line": 2433,
+      "section": "20.2 跨度敏感的近似商界",
+      "statement_line": "**P-QUO-02。**",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-QUO-03",
+      "line": 2456,
+      "section": "20.3 动作间隔与近最优误差",
+      "statement_line": "**P-QUO-03。** 若 $\\max_a|Q^*(x,a)-\\widehat Q(x,a)|\\le\\eta$，且估计最优动作与其余动作间隔大于 $2\\eta$，则它也是真实唯一最优动作。",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-QUO-04",
+      "line": 2474,
+      "section": "20.4 占据加权的精确恒等式",
+      "statement_line": "**P-QUO-04。**",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-QUO-05",
+      "line": 2495,
+      "section": "20.5 从局部模型误差到策略后悔",
+      "statement_line": "**P-QUO-05：占据加权的商策略后悔。**",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-GOA-01",
+      "line": 2541,
+      "section": "21.2 有限链的占据极限",
+      "statement_line": "**P-GOA-01。** 固定有限随机核 $P$，时间平均",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-GOA-02",
+      "line": 2567,
+      "section": "21.3 Dobrushin 混合裕量",
+      "statement_line": "**P-GOA-02。** 若 $\\alpha(P)<1$，不变概率唯一。若",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-GOA-03",
+      "line": 2593,
+      "section": "21.4 保持复归分解的多结构稳定性",
+      "statement_line": "**P-GOA-03。**",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-GOA-04",
+      "line": 2624,
+      "section": "21.5 对称 killed 核的谱稳定性",
+      "statement_line": "**P-GOA-04。**",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-KL-01",
+      "line": 2924,
+      "section": "22.1 生存事件的信息下界",
+      "statement_line": "**P-KL-01。**",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-KL-02",
+      "line": 2937,
+      "section": "22.2 精确事件 I-projection",
+      "statement_line": "**P-KL-02。** 给 $0<q<1$、目标 $0\\le p\\le1$，在全部绝对连续路径律中，",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-KL-03",
+      "line": 2970,
+      "section": "22.3 离散 Markov 路径的 KL",
+      "statement_line": "**P-KL-03，证明。** 路径密度比为逐步条件密度比之积。取对数变成和，再逐步条件期望。不同初态另加初始 KL。∎",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-KL-04",
+      "line": 2981,
+      "section": "22.4 CTMC 的显式公式",
+      "statement_line": "**P-KL-04。**",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-KL-05",
+      "line": 3012,
+      "section": "22.5 扩散：噪声空间与状态路径须分开",
+      "statement_line": "**P-KL-05：可观测性修正的控制能量关系。** 若",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-DDH-01",
+      "line": 3066,
+      "section": "23.2 规范自由度",
+      "statement_line": "**P-DDH-01。**",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-DDH-02",
+      "line": 3088,
+      "section": "23.3 有限指数族与约束对偶",
+      "statement_line": "**P-DDH-02。**",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-DDH-03",
+      "line": 3098,
+      "section": "23.3 有限指数族与约束对偶",
+      "statement_line": "**P-DDH-03：矩约束下的变分最小性。** 若目标矩",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-DDH-04",
+      "line": 3120,
+      "section": "23.4 共同二维瓶颈",
+      "statement_line": "**P-DDH-04。** 在同一预算点 $B$，各环境响应 Jacobian 纵向堆叠的秩不超过 2。",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-DDH-05",
+      "line": 3158,
+      "section": "23.5 锚点与谱认证",
+      "statement_line": "**P-DDH-05：有效维数阈值。** 若 $\\|\\widehat S-S\\|_2\\le\\eta$，则奇异值误差至多 $\\eta$。若",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-ALI-01",
+      "line": 3200,
+      "section": "24.2 方向场什么时候有全局势",
+      "statement_line": "**P-ALI-01：全局可积判据。**",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-ALI-02",
+      "line": 3227,
+      "section": "24.3 子层更新与父层价值",
+      "statement_line": "**P-ALI-02。**",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-ALI-03",
+      "line": 3245,
+      "section": "24.4 协调阈值",
+      "statement_line": "**P-ALI-03。** 若 $\\langle g,G\\rangle<0$，父价值的瞬时导数转正恰需",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-EVO-01",
+      "line": 3295,
+      "section": "25.2 平均频率动力学与 Price 恒等式",
+      "statement_line": "**P-EVO-01：选择与传递的精确分解。** 对父类型数值性状 $z_i$ 和后代类型性状 $z'_j$，令 $(Kz')_i=\\sum_jK_{ij}z'_j$。则",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-EVO-02",
+      "line": 3312,
+      "section": "25.3 遗传信息与可遗传预测核",
+      "statement_line": "**P-EVO-02：无关标签会膨胀遗传信息。** 若有限标签 $T$ 独立于 $(F,F')$，并被无差错复制，则",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-EVO-03",
+      "line": 3333,
+      "section": "25.4 Perron 增长与组成",
+      "statement_line": "**P-EVO-03：平均增长和繁殖价值。** 对非零非负初始计数行向量 $z_0$，",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-EVO-04",
+      "line": 3355,
+      "section": "25.5 随机种群与平均模型的边界",
+      "statement_line": "**P-EVO-04：繁殖价值鞅。** 有限初始计数下，",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-BRG-01",
+      "line": 3404,
+      "section": "26.3 选择如何诱导控制目标",
+      "statement_line": "**P-BRG-01：无突变的固定适合度集中。** 有限类型、固定 $R_i>0$ 下，",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-BRG-02",
+      "line": 3432,
+      "section": "26.4 不存在无条件的“演化即最优化”",
+      "statement_line": "**P-BRG-02：行为等价的选择不可分辨性。** 在同一环境、复制完全通过 $Q_\\theta^e$ 决定且无类型依赖突变或其他复制通道时，若 $Q_\\theta^e=Q_{\\theta'}^e$，则 $R_e(\\theta)=R_e(\\theta')$，二者不能仅由该复制桥被差异筛选。",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-REF-01",
+      "line": 3468,
+      "section": "27.1 把可修改结构纳入状态",
+      "statement_line": "**P-REF-01：反身状态增广。** 在上述条件和可测核条件下，给定任意因果策略，$Z$ 的路径律由初始律及 $K$ 唯一确定；确定性修改 $S_{t+1}=F(S_t,X_t,a_t,\\xi_t)$ 是其特例。",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-REF-02",
+      "line": 3487,
+      "section": "27.2 有限隐状态模型的 Bayes 接口",
+      "statement_line": "**P-REF-02：信念充分性。** 上述模型下，下一观测的条件律和更新信念的条件律只依赖 $b_t,a_t$。有界折扣任务因此可转写为信念状态控制问题。",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-REF-03",
+      "line": 3497,
+      "section": "27.3 信息价值不是信息增益",
+      "statement_line": "**P-REF-03：免费信息的决策价值非负。** 在一次决策问题中，信号 $Y$ 不改变世界分布或动作集、无成本，且允许忽略它。对有限动作集和可积收益，",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-REF-04",
+      "line": 3511,
+      "section": "27.4 目标修订与误指定风险",
+      "statement_line": "**P-REF-04：统一目标误差的后悔界。** 若同一策略集上",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-REF-05",
+      "line": 3537,
+      "section": "27.5 能动性的操作性分量",
+      "statement_line": "**P-REF-05：可行选择扩展的单调性。** 若同一评价 $J$ 下 $\\Pi_1\\subseteq\\Pi_2$，则 $\\sup_{\\Pi_2}J\\ge\\sup_{\\Pi_1}J$。",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-API-01",
+      "line": 3642,
+      "section": "28.3 路径接口的可组合性",
+      "statement_line": "**P-API-01：精确与近似过程接口的复合。** 若 $A\\to B$ 和 $B\\to C$ 具有上述类型，则",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-ALG-01",
+      "line": 3675,
+      "section": "28.5 已知有限模型的最粗稳定分割算法",
+      "statement_line": "**P-ALG-01：有限稳定分割的正确性与最粗性。** 算法有限终止，终止分割是所有细化 $\\mathcal P_0$ 的受控可合并分割中最粗者。因此其商保留原输出、奖励和所有动作下的一步分布，并由归纳保留相应全部有限时域输出律。",
+      "method": "unique line-initial explicit bold statement label"
+    },
+    {
+      "pid": "P-CORE-01",
+      "line": 3980,
+      "section": "31.1 有限操作性核心的装配定理",
+      "statement_line": "**P-CORE-01：有限对象—实现—控制认证装配。** 给定：",
+      "method": "unique line-initial explicit bold statement label"
+    }
+  ]
+}

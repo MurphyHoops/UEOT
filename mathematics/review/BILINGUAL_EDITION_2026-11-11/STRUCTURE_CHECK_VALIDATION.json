@@ -1,0 +1,123 @@
+{
+  "checker_sha256": "b458fba926a8cc230a33c77400350eec07f5b0ee554ed53be71fb535bcc27430",
+  "all_expected_outcomes": true,
+  "results": [
+    {
+      "case": "paired_baseline",
+      "returncode": 0,
+      "expected": 0,
+      "correct": true,
+      "hard_checks": [],
+      "diagnostics": []
+    },
+    {
+      "case": "wrong_formula",
+      "returncode": 1,
+      "expected": 1,
+      "correct": true,
+      "hard_checks": [
+        "formulas"
+      ],
+      "diagnostics": []
+    },
+    {
+      "case": "tex_control_word_boundary",
+      "returncode": 1,
+      "expected": 1,
+      "correct": true,
+      "hard_checks": [
+        "formulas"
+      ],
+      "diagnostics": []
+    },
+    {
+      "case": "missing_proof_end",
+      "returncode": 1,
+      "expected": 1,
+      "correct": true,
+      "hard_checks": [
+        "proof_end"
+      ],
+      "diagnostics": []
+    },
+    {
+      "case": "missing_number",
+      "returncode": 1,
+      "expected": 1,
+      "correct": true,
+      "hard_checks": [
+        "heading_identity_and_order"
+      ],
+      "diagnostics": []
+    },
+    {
+      "case": "missing_section",
+      "returncode": 1,
+      "expected": 1,
+      "correct": true,
+      "hard_checks": [
+        "heading_identity_and_order"
+      ],
+      "diagnostics": []
+    },
+    {
+      "case": "altered_code",
+      "returncode": 1,
+      "expected": 1,
+      "correct": true,
+      "hard_checks": [
+        "fenced_code"
+      ],
+      "diagnostics": []
+    },
+    {
+      "case": "altered_inline_code",
+      "returncode": 1,
+      "expected": 1,
+      "correct": true,
+      "hard_checks": [
+        "inline_code"
+      ],
+      "diagnostics": []
+    },
+    {
+      "case": "missing_linked_reference",
+      "returncode": 1,
+      "expected": 1,
+      "correct": true,
+      "hard_checks": [
+        "link_targets"
+      ],
+      "diagnostics": []
+    },
+    {
+      "case": "missing_theorem_id",
+      "returncode": 1,
+      "expected": 1,
+      "correct": true,
+      "hard_checks": [
+        "identifiers"
+      ],
+      "diagnostics": []
+    },
+    {
+      "case": "ordinary_cross_reference_changed",
+      "returncode": 0,
+      "expected": 0,
+      "correct": true,
+      "hard_checks": [],
+      "diagnostics": [
+        "cross_reference_numbers"
+      ]
+    },
+    {
+      "case": "semantic_quantifier_change_outside_scope",
+      "returncode": 0,
+      "expected": 0,
+      "correct": true,
+      "hard_checks": [],
+      "diagnostics": []
+    }
+  ],
+  "scope": "Mutation tests of structure only. The last negative control deliberately demonstrates that prose quantifiers require mathematical review."
+}
