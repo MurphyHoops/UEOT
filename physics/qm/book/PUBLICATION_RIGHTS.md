@@ -1,7 +1,9 @@
 # 《UEOT物理学》：公开版本与未来出版许可
 
-作品：《UEOT物理学》／*UEOT Physics*。本次为 v3.7 完整双语出版修订，
-67 章、6 附录，继承现行 v3.6 的全部173项结果。
+作品：《UEOT物理学》／*UEOT Physics*。现行为 v3.8 双语研究增量，
+68 章、6 附录，保留 v3.7 的全部173项结果并追加第67章的9项结果。
+新增科学文字、AI辅助推导与程序、翻译和出版维护均按作者本轮项目指示完成；
+本说明不裁决可能存在的著作权归属，也不增加一般软件或专利许可。
 历史公开许可身份基准（不是本次出版源码基线）：仓库 `main` 提交
 `3776da6caf06a1c99837b15313d18857346f4baa`（2026-11-11）。
 
@@ -27,10 +29,10 @@ CC BY 4.0 授权，因此此前合法授权的书籍表达继续受 CC BY 4.0
 | 材料类别 | 本次处理 |
 | --- | --- |
 | v3.5及更早已经合法按CC BY 4.0公开的文字 | 原授权持续有效；继承、翻译和重新排版不撤回原授权。 |
-| 刚合并的v3.6／v31.10研究内容 | 保留原始权属、来源及适用许可；本出版修订不对其他研究线的材料重新授权。 |
+| 继承的v3.7／v31.10及更早研究内容 | 保留原始权属、来源及适用许可；本出版修订不对其他研究线的材料重新授权。 |
 | 新增双语导读、科学编辑文字、英文译文和新排印表达 | 依仓库现行范围政策，本次不提供额外的概括性许可授予；其依法存在的权利由相应权利人保留，另行明确授权前不得从公开可读推断商业出版许可。 |
 | 第三方论文、图表、数据、程序及依赖 | 保留各自许可。本书使用引用和独立说明，不据此将第三方材料改成项目许可。 |
-| Lean、Python物理内核及原始实验数据 | 本次不修改；原软件和数据许可继续分别适用。 |
+| v31.11新增Lean、Python及合成记录 | 新增操作等价模块、微观/鲁棒计算和证据脚本；依根LICENSE D项不额外授予一般软件许可，不将新代码声明为Apache-2.0。继承代码与Mathlib、NumPy、SciPy、SymPy等依赖保留原条款。只有明确标记的自生成合成记录，没有新增第三方原始实验数据，也没有声明新的CC0授权。 |
 
 The historical CC BY 4.0 grant remains effective for expression already released
 under it. This edition does not withdraw that grant or relicense third-party
@@ -44,6 +46,21 @@ express grant. Public availability is not, by itself, a new publishing licence.
 `CHAPTER_DOSSIER.json`及双语结果映射记录。历史版本快照保留其原字节，
 不因本修订重写旧许可记录。内部AI协作审查不表示出版社、期刊或外部
 同行已经认可本书，也不构成作者权属裁决。
+
+v3.8的新增与继承划分由第67章、九项稳定编号、现行源清单及
+`evidence/v3.8/prior/`中的原v3.7清单共同给出。三名研究子智能体的独立草案、
+交叉审查及主智能体集成在`../audits/OPERATIONAL_MICRO_ROBUST_v31.11/`登记。
+原始论文只被引用与独立解释，没有把论文全文、出版社图表或依赖软件包复制
+进本版。源代码的公开可读与可复现不构成一次新的通用软件许可发布；
+未来另选软件许可仍须遵循既有贡献、依赖与授权审查要求。
+
+Edition 3.8 appends Chapter 67 and nine stable results while retaining all
+173 prior result identities. Its existing historical grants and edition-specific
+notice remain unchanged. The new AI-assisted code and synthetic records are
+identified by the source and execution manifests; this revision grants no
+additional general software, patent, or CC0 permission. Dependencies retain
+their own terms. No third-party paper, publisher figure, or raw experimental
+dataset is newly redistributed by this increment.
 
 物理著作的版权与 `../../../formalization/ueot-qm/` 的 Lean 软件、
 `../kernel/` 的 Python 计算内核、`../benchmarks/` 的脚本、
