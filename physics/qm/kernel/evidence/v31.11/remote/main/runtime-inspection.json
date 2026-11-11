@@ -1,0 +1,51 @@
+{
+  "checker_sha256": "6557d3279ef573e194c76d7f9e63594e12128440b1eb0b5e301d22df6403b8cb",
+  "command": [
+    "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/verify_remote_runtime_artifact.py",
+    "--zip",
+    "/workspace/scratch/a6fba8f7e18e/remote_ci/main/runtime.zip",
+    "--sha256",
+    "d15065d7da65457ae8d1fe9f2fdd018c143851f6a470f2531e1ec7e42cfa1478",
+    "--head",
+    "06ca0dce8b03cd34e86785e97fdc3c7aa2c582bd",
+    "--run",
+    "43001276385",
+    "--artifact",
+    "13846600865",
+    "--output",
+    "/workspace/scratch/a6fba8f7e18e/remote_ci/main/runtime-inspection.json"
+  ],
+  "schema": "ueot-qm.remote-runtime-inspection/2",
+  "observed_at_utc": "2026-11-11T10:12:54.202053+00:00",
+  "status": "PASS",
+  "run_id": 43001276385,
+  "artifact_id": 13846600865,
+  "workflow_url": "https://github.com/MurphyHoops/UEOT/actions/runs/43001276385",
+  "scientific_head": "06ca0dce8b03cd34e86785e97fdc3c7aa2c582bd",
+  "artifact_sha256": "d15065d7da65457ae8d1fe9f2fdd018c143851f6a470f2531e1ec7e42cfa1478",
+  "runtime_receipt_sha256": "d2344636cda7f77e9af69f14f6dd8082b425635e19a40fca011212bcea4e39e6",
+  "execution_context": {
+    "provider": "github_actions",
+    "observed_git_head": "06ca0dce8b03cd34e86785e97fdc3c7aa2c582bd",
+    "identity_authority": "The consumed-input hashes bind actual bytes; git HEAD alone does not identify a dirty worktree",
+    "workflow": {
+      "GITHUB_REPOSITORY": "MurphyHoops/UEOT",
+      "GITHUB_RUN_ID": "43001276385",
+      "GITHUB_RUN_ATTEMPT": "1",
+      "GITHUB_JOB": "runtime",
+      "GITHUB_EVENT_NAME": "push",
+      "GITHUB_SHA": "06ca0dce8b03cd34e86785e97fdc3c7aa2c582bd"
+    }
+  },
+  "input_hashes_matched_to_exact_remote_commit": 13,
+  "output_hashes_matched_in_archive": 18,
+  "command_logs_matched": 7,
+  "all_seven_commands_passed": true,
+  "bilingual_increment_status": "PASS",
+  "bilingual_increment_inputs_matched": 7,
+  "inherited_conditioning_status": "PASS",
+  "inherited_kernel_test_methods": 100,
+  "inherited_kernel_status": "PASS",
+  "new_hardware_data": false,
+  "scope": "Actual archived runtime outputs, logs, source bytes and GitHub execution identity; does not infer paper theorems or device evidence"
+}

@@ -73,6 +73,22 @@ so its cutoff/preparation error vanishes. The nonzero-tail physical-filter
 control is separate. Neither finite computation claims to numerically solve
 the entire oscillator at cutoff 4095 or prove universal input quantifiers.
 
+For a full fresh attempt that first filters and runs the original source only
+on pass, the success probability is `s_N s²`, as B's §6.2 states. In the
+declared budget this is at least `(4095/4096)(1369/2500)`.
+Writing `c0` for fresh input plus filter cost, `rF` for the failed-filter
+reset, `cs` for an outcome-independent source-step cost, `rS` for the
+failed-source reset, and `co` for other conditional per-attempt source costs,
+the actual mean attempt cost is
+`mu = c0 + (1-s_N) rF + s_N [(1+s) cs + (1-s²) rS + co]`.
+Independent fresh repetition gives `mu/(s_N s²)`; a one-time calibration
+campaign contributes separately as `Ccal/M`. For outcome-dependent costs
+one uses the full leaf-cost expectation in place of this constant-step
+specialization. Apply the formula to a declared single resource unit or
+componentwise resource vector. Unknown inputs still do not permit free
+repreparation. This expands the existing cost contract, without claiming a
+measured cost advantage.
+
 ## Cross-review corrections and dispositions
 
 | Attack or finding | Actual resolution | Remaining boundary |

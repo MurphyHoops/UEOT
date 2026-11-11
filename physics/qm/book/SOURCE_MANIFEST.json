@@ -41,7 +41,7 @@
       "role": "ORIGINAL_VERSION_SOURCE_AND_MAIN_ACCEPTANCE_RETAINED_NOT_CURRENT_EXECUTION"
     }
   ],
-  "recorded_at_utc": "2026-11-11T09:56:19.138060+00:00",
+  "recorded_at_utc": "2026-11-11T10:20:35.048149+00:00",
   "edition": "3.8",
   "entries": [
     {
@@ -176,7 +176,7 @@
     "path": "physics/qm/book/UEOT_PHYSICS.md",
     "sha256": "9a93ce491e9b5001146e17103086f24628a8f7491fda44ae990a97efc485f6b5",
     "bytes": 736030,
-    "status": "LOCAL_VERIFIED",
+    "status": "MAIN_SCIENTIFIC_SOURCE_AND_CI_VERIFIED",
     "chapters": 68,
     "appendices": 6,
     "numbered_results": 182,
@@ -202,14 +202,446 @@
     "current_bytes_match_executed_bytes": true
   },
   "remote_metadata_completion": {
-    "state": "NOT_PUBLISHED",
-    "remote_verified": false
+    "schema": "ueot-qm.integration-verification/1",
+    "recorded_at_utc": "2026-11-11T10:20:34.596288+00:00",
+    "state": "MAIN_SCIENTIFIC_SOURCE_AND_CI_VERIFIED",
+    "remote_verified": true,
+    "research_entry_baseline": "16a89154183c22030d4526413167d095d94e6890",
+    "integration_parent_after_main_refresh": "74081ffe13a59f551fa803e229d6cc7455e3f59d",
+    "scientific_pr": {
+      "number": 457,
+      "url": "https://github.com/MurphyHoops/UEOT/pull/457",
+      "accepted_head": "366e0bbf0e895d0d3125d7769cb4b4d1d6d17069",
+      "merge_commit": "06ca0dce8b03cd34e86785e97fdc3c7aa2c582bd",
+      "reviewed_and_merged_tree": "91e109cf69c93f5eb6e6c6774f04e009c29e0678",
+      "exact_tree_readback": {
+        "path": "physics/qm/kernel/evidence/v31.11/remote/scientific-main-tree-readback.json",
+        "sha256": "ff8c6693e5984cd91dad974772f345e89de4731ecd613e65257e53cf24043ecf",
+        "bytes": 555
+      }
+    },
+    "observed_executions": {
+      "local_new_lean": {
+        "path": "physics/qm/kernel/evidence/v31.11/lean-verification.json",
+        "sha256": "45afc9ee3bc2d02fd0c687c60910b5775831844a68416373e05f32fcdf21af8c",
+        "bytes": 2444
+      },
+      "local_runtime": {
+        "path": "physics/qm/kernel/evidence/v31.11/runtime/execution_receipt.json",
+        "sha256": "44c4d1a1e06144c1b8f7932fc576cba5e17e0fdf669a0198f480e390c5547523",
+        "bytes": 13549
+      },
+      "pr_ci": {
+        "path": "physics/qm/kernel/evidence/v31.11/remote/pr457/github-run.json",
+        "sha256": "0868470d205f0b8e9d38a7bec8df04b1047368f49b1be1a296627a8687e29862",
+        "bytes": 382
+      },
+      "scientific_main_ci": {
+        "path": "physics/qm/kernel/evidence/v31.11/remote/main/github-run.json",
+        "sha256": "d9d60b2f3859f7acf4730cd774c7b67ebc4ab556f118fa35e98aba61342b5cbf",
+        "bytes": 374
+      }
+    },
+    "downloaded_and_inspected_artifacts": [
+      {
+        "stage": "pr457",
+        "kind": "runtime",
+        "inspection": {
+          "path": "physics/qm/kernel/evidence/v31.11/remote/pr457/runtime-inspection.json",
+          "sha256": "09f6b162298f5cfa44b2b1d8a35bcdde07c9bd4c0bc4ba86b81f19f1448a2ca9",
+          "bytes": 2206
+        },
+        "archive": {
+          "path": "physics/qm/kernel/evidence/v31.11/remote/pr457/runtime.zip",
+          "sha256": "76b4fcfaa2cf7d9dffefda634f53897846cfb8ff8a2f679beb5b2d76dcd6f10f",
+          "bytes": 69075
+        },
+        "run_id": 42999640248,
+        "artifact_id": 13844894270
+      },
+      {
+        "stage": "pr457",
+        "kind": "lean",
+        "inspection": {
+          "path": "physics/qm/kernel/evidence/v31.11/remote/pr457/lean-inspection.json",
+          "sha256": "cea695c4cca13e5ae7aae925579e4f409273d64d54db32886fb8a0b454c54e94",
+          "bytes": 2180
+        },
+        "archive": {
+          "path": "physics/qm/kernel/evidence/v31.11/remote/pr457/lean.zip",
+          "sha256": "56bf3392892c47d4ef31c79dcb5dccd29af25f491055f48f9e19b310c23fac73",
+          "bytes": 150336
+        },
+        "run_id": 42999640248,
+        "artifact_id": 13846265906
+      },
+      {
+        "stage": "main",
+        "kind": "runtime",
+        "inspection": {
+          "path": "physics/qm/kernel/evidence/v31.11/remote/main/runtime-inspection.json",
+          "sha256": "09ee790d3d4556fe67fa9a90f62ab1ceb2dcce96dc6a5bdec0354d9dca623bdd",
+          "bytes": 2176
+        },
+        "archive": {
+          "path": "physics/qm/kernel/evidence/v31.11/remote/main/runtime.zip",
+          "sha256": "d15065d7da65457ae8d1fe9f2fdd018c143851f6a470f2531e1ec7e42cfa1478",
+          "bytes": 69030
+        },
+        "run_id": 43001276385,
+        "artifact_id": 13846600865
+      },
+      {
+        "stage": "main",
+        "kind": "lean",
+        "inspection": {
+          "path": "physics/qm/kernel/evidence/v31.11/remote/main/lean-inspection.json",
+          "sha256": "f32d0a4e5b1320e87cb3cf63f6fa22d005aaf225e4c3c29409b569f8feb77575",
+          "bytes": 2158
+        },
+        "archive": {
+          "path": "physics/qm/kernel/evidence/v31.11/remote/main/lean.zip",
+          "sha256": "777978d60e6991a748299be8a8ab58acf668cab084130fc7eef8c6dc946de3d0",
+          "bytes": 150385
+        },
+        "run_id": 43001276385,
+        "artifact_id": 13846622363
+      }
+    ],
+    "identity_checks": {
+      "local_recursive_proof_config_inputs_match_scientific_merge": 158,
+      "runtime_inputs_match_scientific_merge": 13,
+      "public_ci_source_inventory": 130,
+      "recursive_module_sources_inspected_in_ci": 148,
+      "public_axiom_requests_and_reports": 1365,
+      "new_operational_namespace_constants": 80,
+      "allowed_axioms_only": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "distinct_inventory_scopes_not_conflated": true,
+      "read_only_core_and_interface_paths_preserved": 5057
+    },
+    "review": {
+      "native_research_tasks": 3,
+      "kind": "internal AI cross-review, not external human peer review",
+      "documents": [
+        {
+          "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/A_OPERATIONAL_SEMANTICS.md",
+          "sha256": "5f9227106b09f05235c390556305f2e20da056069a248dd240ab200eda1f4a20",
+          "bytes": 17244
+        },
+        {
+          "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/B_MICRO_TRUNCATION.md",
+          "sha256": "69cf8100f0ca09b5fef9a62779beb0420607bff46b4a8cd43bea92487c0877fc",
+          "bytes": 34716
+        },
+        {
+          "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/C_ROBUST_CALIBRATION.md",
+          "sha256": "0e253c0fd01c7f5b43587cfffba48c52dcbc734e8f68a59a2ff54eed640051ba",
+          "bytes": 21668
+        },
+        {
+          "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/A_REVIEW_OF_B.md",
+          "sha256": "febb551290aa29175216e8f8ff9371f8192166cc014ccd0ee4d94df17a192a6e",
+          "bytes": 4506
+        },
+        {
+          "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/B_REVIEW_OF_C.md",
+          "sha256": "d7cc8ef168d9cc2c5c299557f7fc8f64f371f5f63950c954fca816aeb6f42d23",
+          "bytes": 6362
+        },
+        {
+          "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/C_REVIEW_OF_A.md",
+          "sha256": "ffe8232960abf11b70616714e4252bdbc837dac3642b70b109613df382f00402",
+          "bytes": 5123
+        },
+        {
+          "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/B_FINAL_INTEGRATION_REVIEW.md",
+          "sha256": "731fb690261f6659e3637a019caaecb162902e7246b222bbcac3680733916195",
+          "bytes": 17805
+        },
+        {
+          "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/C_FINAL_INTEGRATION_REVIEW.md",
+          "sha256": "03db396191dd4a8a303612e52da3be3988e2fe01de424475f4e758245c411ee1",
+          "bytes": 24254
+        },
+        {
+          "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/ROOT_INTEGRATION_REVIEW.md",
+          "sha256": "9ade27aabc810eb19cb0be59319abb37acf56043c68a4350f213a4dad4bb2a2f",
+          "bytes": 13977
+        }
+      ]
+    },
+    "superseded_execution": {
+      "first_head": "78aad3c7859084a918c00e655cf198b7b5beecf2",
+      "run_id": 42998720245,
+      "workflow_conclusion": "cancelled_after_corrected_head_push",
+      "runtime_computation": "PASS",
+      "known_defect": "Hard-coded local actor label on CI; corrected in schema/2 and actually rerun",
+      "unchanged_original_artifact": {
+        "path": "physics/qm/kernel/evidence/v31.11/remote/pr457-first-head/runtime.zip",
+        "sha256": "7c5097db497e24d6b7e6dd5e326e74bfcf94fa46edb780f8181ad1d9d5845150",
+        "bytes": 68782
+      },
+      "inspection": {
+        "path": "physics/qm/kernel/evidence/v31.11/remote/pr457-first-head/runtime-inspection.json",
+        "sha256": "4a6f6354f75ff6b3c928fd1136b2fc720f291a50681f8c04d19b56eed54623bf",
+        "bytes": 1091
+      }
+    },
+    "publication": {
+      "edition": "3.8",
+      "chapters": 68,
+      "appendices": 6,
+      "numbered_results": 182,
+      "inherited_result_objects": 173,
+      "new_results": 9,
+      "visual_receipt": {
+        "path": "physics/qm/book/evidence/v3.8/visual-review.json",
+        "sha256": "36ec11b03814b4bbd7ea8099435151d9d99f3721f9fdf0dbaab3c2e0c011d8c5",
+        "bytes": 3809
+      }
+    },
+    "metadata_completion_contract": {
+      "basis": "This receipt records the already observed scientific merge and CI runs. Its containing follow-up commit is a later metadata/publication-provenance commit, not a new scientific execution.",
+      "scientific_sources_and_book_bodies_remain_bound_to_tested_bytes": true,
+      "metadata_receipt_reconciled_separately": "physics/qm/book/evidence/v3.8/local-acceptance.json"
+    },
+    "status_axes": {
+      "mathematical": "DECLARED_MODEL_PAPER_PROOFS_AND_COUNTEREXAMPLES",
+      "physical_selection": "COMPLEX_SECTOR_AND_CONTROL_INPUTS_REMAIN_INDEPENDENT",
+      "computational": "LOCAL_INCREMENT_AND_PR_MAIN_CI_PASSED_WITH_SCOPED_BINDINGS",
+      "empirical": "UNTESTED_NO_REAL_DEVICE_DATA"
+    },
+    "nonclaims": [
+      "No promotion of paper-only infinite-dimensional or robust statements to Lean coverage",
+      "No new device data, measured cost advantage or empirical closure",
+      "No full quantum, field, particle or gravity completion"
+    ]
   },
   "current_remote_code_identity": {
-    "state": "NOT_PUBLISHED",
-    "remote_verified": false
+    "schema": "ueot-qm.integration-verification/1",
+    "recorded_at_utc": "2026-11-11T10:20:34.596288+00:00",
+    "state": "MAIN_SCIENTIFIC_SOURCE_AND_CI_VERIFIED",
+    "remote_verified": true,
+    "research_entry_baseline": "16a89154183c22030d4526413167d095d94e6890",
+    "integration_parent_after_main_refresh": "74081ffe13a59f551fa803e229d6cc7455e3f59d",
+    "scientific_pr": {
+      "number": 457,
+      "url": "https://github.com/MurphyHoops/UEOT/pull/457",
+      "accepted_head": "366e0bbf0e895d0d3125d7769cb4b4d1d6d17069",
+      "merge_commit": "06ca0dce8b03cd34e86785e97fdc3c7aa2c582bd",
+      "reviewed_and_merged_tree": "91e109cf69c93f5eb6e6c6774f04e009c29e0678",
+      "exact_tree_readback": {
+        "path": "physics/qm/kernel/evidence/v31.11/remote/scientific-main-tree-readback.json",
+        "sha256": "ff8c6693e5984cd91dad974772f345e89de4731ecd613e65257e53cf24043ecf",
+        "bytes": 555
+      }
+    },
+    "observed_executions": {
+      "local_new_lean": {
+        "path": "physics/qm/kernel/evidence/v31.11/lean-verification.json",
+        "sha256": "45afc9ee3bc2d02fd0c687c60910b5775831844a68416373e05f32fcdf21af8c",
+        "bytes": 2444
+      },
+      "local_runtime": {
+        "path": "physics/qm/kernel/evidence/v31.11/runtime/execution_receipt.json",
+        "sha256": "44c4d1a1e06144c1b8f7932fc576cba5e17e0fdf669a0198f480e390c5547523",
+        "bytes": 13549
+      },
+      "pr_ci": {
+        "path": "physics/qm/kernel/evidence/v31.11/remote/pr457/github-run.json",
+        "sha256": "0868470d205f0b8e9d38a7bec8df04b1047368f49b1be1a296627a8687e29862",
+        "bytes": 382
+      },
+      "scientific_main_ci": {
+        "path": "physics/qm/kernel/evidence/v31.11/remote/main/github-run.json",
+        "sha256": "d9d60b2f3859f7acf4730cd774c7b67ebc4ab556f118fa35e98aba61342b5cbf",
+        "bytes": 374
+      }
+    },
+    "downloaded_and_inspected_artifacts": [
+      {
+        "stage": "pr457",
+        "kind": "runtime",
+        "inspection": {
+          "path": "physics/qm/kernel/evidence/v31.11/remote/pr457/runtime-inspection.json",
+          "sha256": "09f6b162298f5cfa44b2b1d8a35bcdde07c9bd4c0bc4ba86b81f19f1448a2ca9",
+          "bytes": 2206
+        },
+        "archive": {
+          "path": "physics/qm/kernel/evidence/v31.11/remote/pr457/runtime.zip",
+          "sha256": "76b4fcfaa2cf7d9dffefda634f53897846cfb8ff8a2f679beb5b2d76dcd6f10f",
+          "bytes": 69075
+        },
+        "run_id": 42999640248,
+        "artifact_id": 13844894270
+      },
+      {
+        "stage": "pr457",
+        "kind": "lean",
+        "inspection": {
+          "path": "physics/qm/kernel/evidence/v31.11/remote/pr457/lean-inspection.json",
+          "sha256": "cea695c4cca13e5ae7aae925579e4f409273d64d54db32886fb8a0b454c54e94",
+          "bytes": 2180
+        },
+        "archive": {
+          "path": "physics/qm/kernel/evidence/v31.11/remote/pr457/lean.zip",
+          "sha256": "56bf3392892c47d4ef31c79dcb5dccd29af25f491055f48f9e19b310c23fac73",
+          "bytes": 150336
+        },
+        "run_id": 42999640248,
+        "artifact_id": 13846265906
+      },
+      {
+        "stage": "main",
+        "kind": "runtime",
+        "inspection": {
+          "path": "physics/qm/kernel/evidence/v31.11/remote/main/runtime-inspection.json",
+          "sha256": "09ee790d3d4556fe67fa9a90f62ab1ceb2dcce96dc6a5bdec0354d9dca623bdd",
+          "bytes": 2176
+        },
+        "archive": {
+          "path": "physics/qm/kernel/evidence/v31.11/remote/main/runtime.zip",
+          "sha256": "d15065d7da65457ae8d1fe9f2fdd018c143851f6a470f2531e1ec7e42cfa1478",
+          "bytes": 69030
+        },
+        "run_id": 43001276385,
+        "artifact_id": 13846600865
+      },
+      {
+        "stage": "main",
+        "kind": "lean",
+        "inspection": {
+          "path": "physics/qm/kernel/evidence/v31.11/remote/main/lean-inspection.json",
+          "sha256": "f32d0a4e5b1320e87cb3cf63f6fa22d005aaf225e4c3c29409b569f8feb77575",
+          "bytes": 2158
+        },
+        "archive": {
+          "path": "physics/qm/kernel/evidence/v31.11/remote/main/lean.zip",
+          "sha256": "777978d60e6991a748299be8a8ab58acf668cab084130fc7eef8c6dc946de3d0",
+          "bytes": 150385
+        },
+        "run_id": 43001276385,
+        "artifact_id": 13846622363
+      }
+    ],
+    "identity_checks": {
+      "local_recursive_proof_config_inputs_match_scientific_merge": 158,
+      "runtime_inputs_match_scientific_merge": 13,
+      "public_ci_source_inventory": 130,
+      "recursive_module_sources_inspected_in_ci": 148,
+      "public_axiom_requests_and_reports": 1365,
+      "new_operational_namespace_constants": 80,
+      "allowed_axioms_only": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "distinct_inventory_scopes_not_conflated": true,
+      "read_only_core_and_interface_paths_preserved": 5057
+    },
+    "review": {
+      "native_research_tasks": 3,
+      "kind": "internal AI cross-review, not external human peer review",
+      "documents": [
+        {
+          "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/A_OPERATIONAL_SEMANTICS.md",
+          "sha256": "5f9227106b09f05235c390556305f2e20da056069a248dd240ab200eda1f4a20",
+          "bytes": 17244
+        },
+        {
+          "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/B_MICRO_TRUNCATION.md",
+          "sha256": "69cf8100f0ca09b5fef9a62779beb0420607bff46b4a8cd43bea92487c0877fc",
+          "bytes": 34716
+        },
+        {
+          "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/C_ROBUST_CALIBRATION.md",
+          "sha256": "0e253c0fd01c7f5b43587cfffba48c52dcbc734e8f68a59a2ff54eed640051ba",
+          "bytes": 21668
+        },
+        {
+          "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/A_REVIEW_OF_B.md",
+          "sha256": "febb551290aa29175216e8f8ff9371f8192166cc014ccd0ee4d94df17a192a6e",
+          "bytes": 4506
+        },
+        {
+          "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/B_REVIEW_OF_C.md",
+          "sha256": "d7cc8ef168d9cc2c5c299557f7fc8f64f371f5f63950c954fca816aeb6f42d23",
+          "bytes": 6362
+        },
+        {
+          "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/C_REVIEW_OF_A.md",
+          "sha256": "ffe8232960abf11b70616714e4252bdbc837dac3642b70b109613df382f00402",
+          "bytes": 5123
+        },
+        {
+          "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/B_FINAL_INTEGRATION_REVIEW.md",
+          "sha256": "731fb690261f6659e3637a019caaecb162902e7246b222bbcac3680733916195",
+          "bytes": 17805
+        },
+        {
+          "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/C_FINAL_INTEGRATION_REVIEW.md",
+          "sha256": "03db396191dd4a8a303612e52da3be3988e2fe01de424475f4e758245c411ee1",
+          "bytes": 24254
+        },
+        {
+          "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/ROOT_INTEGRATION_REVIEW.md",
+          "sha256": "9ade27aabc810eb19cb0be59319abb37acf56043c68a4350f213a4dad4bb2a2f",
+          "bytes": 13977
+        }
+      ]
+    },
+    "superseded_execution": {
+      "first_head": "78aad3c7859084a918c00e655cf198b7b5beecf2",
+      "run_id": 42998720245,
+      "workflow_conclusion": "cancelled_after_corrected_head_push",
+      "runtime_computation": "PASS",
+      "known_defect": "Hard-coded local actor label on CI; corrected in schema/2 and actually rerun",
+      "unchanged_original_artifact": {
+        "path": "physics/qm/kernel/evidence/v31.11/remote/pr457-first-head/runtime.zip",
+        "sha256": "7c5097db497e24d6b7e6dd5e326e74bfcf94fa46edb780f8181ad1d9d5845150",
+        "bytes": 68782
+      },
+      "inspection": {
+        "path": "physics/qm/kernel/evidence/v31.11/remote/pr457-first-head/runtime-inspection.json",
+        "sha256": "4a6f6354f75ff6b3c928fd1136b2fc720f291a50681f8c04d19b56eed54623bf",
+        "bytes": 1091
+      }
+    },
+    "publication": {
+      "edition": "3.8",
+      "chapters": 68,
+      "appendices": 6,
+      "numbered_results": 182,
+      "inherited_result_objects": 173,
+      "new_results": 9,
+      "visual_receipt": {
+        "path": "physics/qm/book/evidence/v3.8/visual-review.json",
+        "sha256": "36ec11b03814b4bbd7ea8099435151d9d99f3721f9fdf0dbaab3c2e0c011d8c5",
+        "bytes": 3809
+      }
+    },
+    "metadata_completion_contract": {
+      "basis": "This receipt records the already observed scientific merge and CI runs. Its containing follow-up commit is a later metadata/publication-provenance commit, not a new scientific execution.",
+      "scientific_sources_and_book_bodies_remain_bound_to_tested_bytes": true,
+      "metadata_receipt_reconciled_separately": "physics/qm/book/evidence/v3.8/local-acceptance.json"
+    },
+    "status_axes": {
+      "mathematical": "DECLARED_MODEL_PAPER_PROOFS_AND_COUNTEREXAMPLES",
+      "physical_selection": "COMPLEX_SECTOR_AND_CONTROL_INPUTS_REMAIN_INDEPENDENT",
+      "computational": "LOCAL_INCREMENT_AND_PR_MAIN_CI_PASSED_WITH_SCOPED_BINDINGS",
+      "empirical": "UNTESTED_NO_REAL_DEVICE_DATA"
+    },
+    "nonclaims": [
+      "No promotion of paper-only infinite-dimensional or robust statements to Lean coverage",
+      "No new device data, measured cost advantage or empirical closure",
+      "No full quantum, field, particle or gravity completion"
+    ]
   },
-  "current_release_stage": "LOCAL_VERIFIED",
+  "current_release_stage": "MAIN_SCIENTIFIC_SOURCE_AND_CI_VERIFIED",
   "local_release_receipt": "physics/qm/book/evidence/v3.8/local-acceptance.json",
   "local_release_receipt_scope": "Book3.8 publication only; not a substitute for scientific gates",
   "scientific_execution_partition": {
@@ -267,7 +699,7 @@
     "path": "physics/qm/book/UEOT_PHYSICS.en.md",
     "sha256": "1e88f5d8d624a3a945b24dce5ef057ed5d9c45e8494a7215db1c471947dc94b8",
     "bytes": 894714,
-    "status": "LOCAL_VERIFIED",
+    "status": "MAIN_SCIENTIFIC_SOURCE_AND_CI_VERIFIED",
     "chapters": 68,
     "appendices": 6,
     "numbered_results": 182,
@@ -279,7 +711,7 @@
   "publication_revision": {
     "edition": "3.8",
     "generator": "physics/qm/book/build/update_v3_8_metadata.py",
-    "recorded_at_utc": "2026-11-11T09:56:19.138060+00:00",
+    "recorded_at_utc": "2026-11-11T10:20:35.048149+00:00",
     "scope": "Chapter67 scientific increment with bilingual publication",
     "new_scientific_results_in_publication": 9,
     "new_experimental_data": false,
@@ -288,10 +720,226 @@
       "sha256": "dc91293f87333c20d0d96897137981456b1dbf8710f58a1818461d503057d960",
       "bytes": 1507951
     },
-    "local_artifact_state": "LOCAL_VERIFIED",
+    "local_artifact_state": "MAIN_SCIENTIFIC_SOURCE_AND_CI_VERIFIED",
     "remote_publication": {
-      "state": "NOT_PUBLISHED",
-      "remote_verified": false
+      "schema": "ueot-qm.integration-verification/1",
+      "recorded_at_utc": "2026-11-11T10:20:34.596288+00:00",
+      "state": "MAIN_SCIENTIFIC_SOURCE_AND_CI_VERIFIED",
+      "remote_verified": true,
+      "research_entry_baseline": "16a89154183c22030d4526413167d095d94e6890",
+      "integration_parent_after_main_refresh": "74081ffe13a59f551fa803e229d6cc7455e3f59d",
+      "scientific_pr": {
+        "number": 457,
+        "url": "https://github.com/MurphyHoops/UEOT/pull/457",
+        "accepted_head": "366e0bbf0e895d0d3125d7769cb4b4d1d6d17069",
+        "merge_commit": "06ca0dce8b03cd34e86785e97fdc3c7aa2c582bd",
+        "reviewed_and_merged_tree": "91e109cf69c93f5eb6e6c6774f04e009c29e0678",
+        "exact_tree_readback": {
+          "path": "physics/qm/kernel/evidence/v31.11/remote/scientific-main-tree-readback.json",
+          "sha256": "ff8c6693e5984cd91dad974772f345e89de4731ecd613e65257e53cf24043ecf",
+          "bytes": 555
+        }
+      },
+      "observed_executions": {
+        "local_new_lean": {
+          "path": "physics/qm/kernel/evidence/v31.11/lean-verification.json",
+          "sha256": "45afc9ee3bc2d02fd0c687c60910b5775831844a68416373e05f32fcdf21af8c",
+          "bytes": 2444
+        },
+        "local_runtime": {
+          "path": "physics/qm/kernel/evidence/v31.11/runtime/execution_receipt.json",
+          "sha256": "44c4d1a1e06144c1b8f7932fc576cba5e17e0fdf669a0198f480e390c5547523",
+          "bytes": 13549
+        },
+        "pr_ci": {
+          "path": "physics/qm/kernel/evidence/v31.11/remote/pr457/github-run.json",
+          "sha256": "0868470d205f0b8e9d38a7bec8df04b1047368f49b1be1a296627a8687e29862",
+          "bytes": 382
+        },
+        "scientific_main_ci": {
+          "path": "physics/qm/kernel/evidence/v31.11/remote/main/github-run.json",
+          "sha256": "d9d60b2f3859f7acf4730cd774c7b67ebc4ab556f118fa35e98aba61342b5cbf",
+          "bytes": 374
+        }
+      },
+      "downloaded_and_inspected_artifacts": [
+        {
+          "stage": "pr457",
+          "kind": "runtime",
+          "inspection": {
+            "path": "physics/qm/kernel/evidence/v31.11/remote/pr457/runtime-inspection.json",
+            "sha256": "09f6b162298f5cfa44b2b1d8a35bcdde07c9bd4c0bc4ba86b81f19f1448a2ca9",
+            "bytes": 2206
+          },
+          "archive": {
+            "path": "physics/qm/kernel/evidence/v31.11/remote/pr457/runtime.zip",
+            "sha256": "76b4fcfaa2cf7d9dffefda634f53897846cfb8ff8a2f679beb5b2d76dcd6f10f",
+            "bytes": 69075
+          },
+          "run_id": 42999640248,
+          "artifact_id": 13844894270
+        },
+        {
+          "stage": "pr457",
+          "kind": "lean",
+          "inspection": {
+            "path": "physics/qm/kernel/evidence/v31.11/remote/pr457/lean-inspection.json",
+            "sha256": "cea695c4cca13e5ae7aae925579e4f409273d64d54db32886fb8a0b454c54e94",
+            "bytes": 2180
+          },
+          "archive": {
+            "path": "physics/qm/kernel/evidence/v31.11/remote/pr457/lean.zip",
+            "sha256": "56bf3392892c47d4ef31c79dcb5dccd29af25f491055f48f9e19b310c23fac73",
+            "bytes": 150336
+          },
+          "run_id": 42999640248,
+          "artifact_id": 13846265906
+        },
+        {
+          "stage": "main",
+          "kind": "runtime",
+          "inspection": {
+            "path": "physics/qm/kernel/evidence/v31.11/remote/main/runtime-inspection.json",
+            "sha256": "09ee790d3d4556fe67fa9a90f62ab1ceb2dcce96dc6a5bdec0354d9dca623bdd",
+            "bytes": 2176
+          },
+          "archive": {
+            "path": "physics/qm/kernel/evidence/v31.11/remote/main/runtime.zip",
+            "sha256": "d15065d7da65457ae8d1fe9f2fdd018c143851f6a470f2531e1ec7e42cfa1478",
+            "bytes": 69030
+          },
+          "run_id": 43001276385,
+          "artifact_id": 13846600865
+        },
+        {
+          "stage": "main",
+          "kind": "lean",
+          "inspection": {
+            "path": "physics/qm/kernel/evidence/v31.11/remote/main/lean-inspection.json",
+            "sha256": "f32d0a4e5b1320e87cb3cf63f6fa22d005aaf225e4c3c29409b569f8feb77575",
+            "bytes": 2158
+          },
+          "archive": {
+            "path": "physics/qm/kernel/evidence/v31.11/remote/main/lean.zip",
+            "sha256": "777978d60e6991a748299be8a8ab58acf668cab084130fc7eef8c6dc946de3d0",
+            "bytes": 150385
+          },
+          "run_id": 43001276385,
+          "artifact_id": 13846622363
+        }
+      ],
+      "identity_checks": {
+        "local_recursive_proof_config_inputs_match_scientific_merge": 158,
+        "runtime_inputs_match_scientific_merge": 13,
+        "public_ci_source_inventory": 130,
+        "recursive_module_sources_inspected_in_ci": 148,
+        "public_axiom_requests_and_reports": 1365,
+        "new_operational_namespace_constants": 80,
+        "allowed_axioms_only": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "distinct_inventory_scopes_not_conflated": true,
+        "read_only_core_and_interface_paths_preserved": 5057
+      },
+      "review": {
+        "native_research_tasks": 3,
+        "kind": "internal AI cross-review, not external human peer review",
+        "documents": [
+          {
+            "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/A_OPERATIONAL_SEMANTICS.md",
+            "sha256": "5f9227106b09f05235c390556305f2e20da056069a248dd240ab200eda1f4a20",
+            "bytes": 17244
+          },
+          {
+            "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/B_MICRO_TRUNCATION.md",
+            "sha256": "69cf8100f0ca09b5fef9a62779beb0420607bff46b4a8cd43bea92487c0877fc",
+            "bytes": 34716
+          },
+          {
+            "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/C_ROBUST_CALIBRATION.md",
+            "sha256": "0e253c0fd01c7f5b43587cfffba48c52dcbc734e8f68a59a2ff54eed640051ba",
+            "bytes": 21668
+          },
+          {
+            "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/A_REVIEW_OF_B.md",
+            "sha256": "febb551290aa29175216e8f8ff9371f8192166cc014ccd0ee4d94df17a192a6e",
+            "bytes": 4506
+          },
+          {
+            "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/B_REVIEW_OF_C.md",
+            "sha256": "d7cc8ef168d9cc2c5c299557f7fc8f64f371f5f63950c954fca816aeb6f42d23",
+            "bytes": 6362
+          },
+          {
+            "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/C_REVIEW_OF_A.md",
+            "sha256": "ffe8232960abf11b70616714e4252bdbc837dac3642b70b109613df382f00402",
+            "bytes": 5123
+          },
+          {
+            "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/B_FINAL_INTEGRATION_REVIEW.md",
+            "sha256": "731fb690261f6659e3637a019caaecb162902e7246b222bbcac3680733916195",
+            "bytes": 17805
+          },
+          {
+            "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/C_FINAL_INTEGRATION_REVIEW.md",
+            "sha256": "03db396191dd4a8a303612e52da3be3988e2fe01de424475f4e758245c411ee1",
+            "bytes": 24254
+          },
+          {
+            "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/ROOT_INTEGRATION_REVIEW.md",
+            "sha256": "9ade27aabc810eb19cb0be59319abb37acf56043c68a4350f213a4dad4bb2a2f",
+            "bytes": 13977
+          }
+        ]
+      },
+      "superseded_execution": {
+        "first_head": "78aad3c7859084a918c00e655cf198b7b5beecf2",
+        "run_id": 42998720245,
+        "workflow_conclusion": "cancelled_after_corrected_head_push",
+        "runtime_computation": "PASS",
+        "known_defect": "Hard-coded local actor label on CI; corrected in schema/2 and actually rerun",
+        "unchanged_original_artifact": {
+          "path": "physics/qm/kernel/evidence/v31.11/remote/pr457-first-head/runtime.zip",
+          "sha256": "7c5097db497e24d6b7e6dd5e326e74bfcf94fa46edb780f8181ad1d9d5845150",
+          "bytes": 68782
+        },
+        "inspection": {
+          "path": "physics/qm/kernel/evidence/v31.11/remote/pr457-first-head/runtime-inspection.json",
+          "sha256": "4a6f6354f75ff6b3c928fd1136b2fc720f291a50681f8c04d19b56eed54623bf",
+          "bytes": 1091
+        }
+      },
+      "publication": {
+        "edition": "3.8",
+        "chapters": 68,
+        "appendices": 6,
+        "numbered_results": 182,
+        "inherited_result_objects": 173,
+        "new_results": 9,
+        "visual_receipt": {
+          "path": "physics/qm/book/evidence/v3.8/visual-review.json",
+          "sha256": "36ec11b03814b4bbd7ea8099435151d9d99f3721f9fdf0dbaab3c2e0c011d8c5",
+          "bytes": 3809
+        }
+      },
+      "metadata_completion_contract": {
+        "basis": "This receipt records the already observed scientific merge and CI runs. Its containing follow-up commit is a later metadata/publication-provenance commit, not a new scientific execution.",
+        "scientific_sources_and_book_bodies_remain_bound_to_tested_bytes": true,
+        "metadata_receipt_reconciled_separately": "physics/qm/book/evidence/v3.8/local-acceptance.json"
+      },
+      "status_axes": {
+        "mathematical": "DECLARED_MODEL_PAPER_PROOFS_AND_COUNTEREXAMPLES",
+        "physical_selection": "COMPLEX_SECTOR_AND_CONTROL_INPUTS_REMAIN_INDEPENDENT",
+        "computational": "LOCAL_INCREMENT_AND_PR_MAIN_CI_PASSED_WITH_SCOPED_BINDINGS",
+        "empirical": "UNTESTED_NO_REAL_DEVICE_DATA"
+      },
+      "nonclaims": [
+        "No promotion of paper-only infinite-dimensional or robust statements to Lean coverage",
+        "No new device data, measured cost advantage or empirical closure",
+        "No full quantum, field, particle or gravity completion"
+      ]
     },
     "review_identity_policy": "Internal AI cross-review, not external human peer review"
   }
