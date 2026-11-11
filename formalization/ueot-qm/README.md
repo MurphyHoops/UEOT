@@ -410,3 +410,11 @@ The complete finite state/effect/composite/discard models, full convex-purity ch
 
 这些历史身份及原本地/发布注释对应关系见[原整合回执](../../physics/qm/kernel/evidence/v31.8/integration-verification.json)，不作为本轮 v31.9 的 CI 运行。当前旧门复用另有逐项源码、依赖和既往实际执行闭包；本轮新证明和新见证须有各自实际执行。远端 artifact ZIP 内部内容不由这些本地元数据推断。
 
+
+## Licensing note
+
+The present policy update does **not** relicense this Lean package to
+Apache-2.0. Historical licensed content retains its existing permissions;
+new code requires an explicit file/package grant after contributor, dependency
+and patent review. See [repository license scope](../../LICENSE_SCOPE.md)
+and [physics license map](../../physics/LICENSING.md).

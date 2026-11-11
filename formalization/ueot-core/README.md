@@ -172,3 +172,10 @@ research uses the registered branches in the
 [Compression branch model](docs/compression/COMPRESSION_OPERATIONS.md#3-branch-model).
 A green feature branch is candidate evidence; source/count promotions and
 scientific claims still require their respective audited gates.
+
+## Licensing note
+
+The present repository policy update does **not** by itself relicense
+this Lean code to Apache-2.0. Existing historical grants, any imported
+code notices and contributor rights require review before a new code license
+is issued. See [license scope](../../LICENSE_SCOPE.md).

@@ -24,3 +24,12 @@ A validation artifact should identify:
 7. conclusion without silently promoting a conjecture to theorem.
 
 A successful benchmark shows consistency with that benchmark. It does not by itself establish UEOT as a unique explanation.
+
+## Rights and dataset provenance
+
+Original future scientific research reports and owned diagrams are generally
+CC BY 4.0 under the root policy. Executable analysis code, raw measurement
+data, third-party figures and external datasets are **not** automatically
+relicensed; each must identify its actual source, terms and permissions.
+See [license scope](../LICENSE_SCOPE.md) and
+[physics licensing](../physics/LICENSING.md).
