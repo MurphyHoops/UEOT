@@ -1,0 +1,40 @@
+{
+  "source_commit": "3d443ec29eb17af1fc00699a74e2d42d73516d81",
+  "edits": [
+    {
+      "id": "A1",
+      "section": "9.2",
+      "old": "**P-REC-02。** 设",
+      "new": "**P-REC-02。** 固定初态 $X_0=x$。设",
+      "reason": "Restore the existing fixed-initial-state condition explicitly; RecoveryDynkin.p_rec_02 hinit."
+    },
+    {
+      "id": "A2",
+      "section": "13.2",
+      "old": "**P-CAR-03：双 blocker。**",
+      "new": "**P-CAR-03：双 blocker。** 设 $\\mathcal M$ 为有限 $V$ 上的 clutter，即其成员互不严格包含。",
+      "reason": "Restate the existing clutter hypothesis; Blocker.blocker_involution hG."
+    },
+    {
+      "id": "A3",
+      "section": "36.8.1",
+      "old": "### 36.8.1 从有限编码到同一实际路径\n",
+      "new": "### 36.8.1 从有限编码到同一实际路径\n\n本小节将参考动力学核记为 $Q_n$（即前文的 $\\widehat P_n$）；它不同于第36.1节的历史投影 $Q_n:H_n^X\\to H_n^Y$。本小节不再用后一记号表示投影。\n",
+      "reason": "Disambiguate local kernel notation from the earlier history projection; formulas unchanged."
+    },
+    {
+      "id": "A4",
+      "section": "39.42",
+      "old": "真实网格的最大格比趋零，加上同一状态平方增量和的原能量界，推出实际 Taylor 余项和依测度趋零。",
+      "new": "当时间网格趋零时，各格二阶 Taylor 余项绝对值与状态增量平方范数之比的最大值趋零（零增量时该比值取零）；加上同一状态平方增量和的原能量界，推出实际 Taylor 余项和依测度趋零。",
+      "reason": "Define gridRatio as the maximum normalized second-order Taylor remainder; not state oscillation."
+    },
+    {
+      "id": "A8",
+      "section": "38.10.2",
+      "old": "最后分解同一个联合律在 G 与补集上的质量，应用 M-38.1 的混合界。",
+      "new": "最后分解同一个联合律在 G 与补集上的质量，应用 M-38.1 的塔式公式与 M-38.3 的混合界。",
+      "reason": "M-38.1 is the tower identity; the mixture bound is M-38.3. The proof already uses both facts; only the proof reference is corrected."
+    }
+  ]
+}

@@ -1,0 +1,1958 @@
+[
+  {
+    "pid": "P-PRED-01",
+    "name": "UEOT.V3.PredictionDependent.canonical_ae_minimal",
+    "entry_path": "formalization/ueot-core/UEOT/V3/PredictionDependent.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/PredictionDependent.lean",
+        "line": 40,
+        "header": "theorem canonical_ae_minimal [Countable I]\n    (μ : Measure H)\n    (K : (i : I) → Kernel H (Y i))\n    (s : H → S)\n    (L : (i : I) → Kernel S (Y i))\n    (hL : ∀ i, ∀ᵐ h ∂μ, K i h = L i (s h)) :\n    PredictionAE.AEFactors μ (fun h i => K i h) s"
+      }
+    ]
+  },
+  {
+    "pid": "P-PRED-01",
+    "name": "UEOT.V3.PredictionDependent.canonical_ae_sigma_minimal",
+    "entry_path": "formalization/ueot-core/UEOT/V3/PredictionDependent.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/PredictionDependent.lean",
+        "line": 50,
+        "header": "theorem canonical_ae_sigma_minimal [Countable I]\n    (μ : Measure H)\n    (K : (i : I) → Kernel H (Y i))\n    (s : H → S)\n    (L : (i : I) → Kernel S (Y i))\n    (hL : ∀ i, ∀ᵐ h ∂μ, K i h = L i (s h)) :\n    PredictionAE.AESigmaLE μ (fun h i => K i h) s"
+      }
+    ]
+  },
+  {
+    "pid": "P-PRED-01",
+    "name": "UEOT.V3.PredictionDependent.canonical_kernel_sufficient",
+    "entry_path": "formalization/ueot-core/UEOT/V3/PredictionDependent.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/PredictionDependent.lean",
+        "line": 68,
+        "header": "theorem canonical_kernel_sufficient\n    (K : (i : I) → Kernel H (Y i)) :\n    ∀ i, ∃ L : Kernel (∀ j, Measure (Y j)) (Y i),\n      ∀ h, K i h = L (fun j => K j h)"
+      }
+    ]
+  },
+  {
+    "pid": "P-QUO-01",
+    "name": "UEOT.V3.FiniteDiscountedControl.ExactControlQuotient.p_quo_01",
+    "entry_path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedControl.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedExactQuotient.lean",
+        "line": 206,
+        "header": "theorem p_quo_01 :\n    (∀ x : X, Q.micro.optimalValue x = Q.macroModel.optimalValue (Q.f x)) ∧\n    (∀ (x : X) (a : Abar (Q.f x)),\n      Q.micro.qValue Q.micro.optimalValue x a =\n        Q.macroModel.qValue Q.macroModel.optimalValue (Q.f x) a) ∧\n    (∀ {t : ℕ} (x : X),\n      infiniteValue (selectorPolicy (Q.liftSelector Q.macroModel.greedyAction))\n        Q.micro (t := t) x = Q.micro.optimalValue x) ∧\n    (∀ (π : CausalPolicy X (fun x => Abar (Q.f x))) {t : ℕ} (h : π.Memory t),\n      infiniteValue π Q.micro h ≤ Q.micro.optimalValue (π.current h))"
+      }
+    ]
+  },
+  {
+    "pid": "P-ALG-01",
+    "name": "UEOT.V3.PAlg01.p_alg_01",
+    "entry_path": "formalization/ueot-core/UEOT/V3/PAlg01.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/PAlg01.lean",
+        "line": 38,
+        "header": "theorem p_alg_01\n    [Fintype X] [Fintype A]\n    (M : Model X A R O) :\n    ∃ (S : Setoid X)\n      (hinit : Refines S (initialSetoid M))\n      (hstable : Stable M S),\n      refineSetoid M S = S ∧\n      (∀ Q : Setoid X,\n        Refines Q (initialSetoid M) → Stable M Q → Refines Q S) ∧\n      (∀ x : X,\n        quotientOutput M S hinit ⟦x⟧ = M.output x) ∧\n      (∀ (a : A) (x : X),\n        quotientReward M S hinit a ⟦x⟧ = M.reward x a) ∧\n      (∀ (a : A) (x z : X),\n        quotientTransition M S hstable a ⟦x⟧ ⟦z⟧ =\n          blockMass M S a x z) ∧\n      (∀ (a : A) (x : X),\n        (∑ t ∈ quotientClassBlocks S,\n          ∑ y ∈ t, M.transition a x y) = 1) ∧\n      (∀ (actions : List A) (word : List O) (x x' : X),\n        S.r x x' →\n          finiteHorizonOutputWordMass M actions word x =\n            finiteHorizonOutputWordMass M actions word x')"
+      }
+    ]
+  },
+  {
+    "pid": "P-DYN-01",
+    "name": "UEOT.V3.DynamicsKernel.strongLumpability_iff_pathLaw_of_surjective",
+    "entry_path": "formalization/ueot-core/UEOT/V3/DynamicsKernel.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/DynamicsKernel.lean",
+        "line": 637,
+        "header": "theorem strongLumpability_iff_pathLaw_of_surjective\n    (P : Kernel X X) (Pbar : Kernel M M)\n    [IsMarkovKernel P] [IsMarkovKernel Pbar]\n    (f : X → M) (hf : Measurable f) (_hsurj : Function.Surjective f) :\n    StrongLumpability P Pbar f hf ↔\n      PathLawLumpability P Pbar f hf"
+      }
+    ]
+  },
+  {
+    "pid": "P-ID-01",
+    "name": "UEOT.V3.TransportDefect.FrozenTransportSystem.p_id_01",
+    "entry_path": "formalization/ueot-core/UEOT/V3/TransportDefect.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/TransportDefect.lean",
+        "line": 149,
+        "header": "theorem p_id_01\n    (S : FrozenTransportSystem M) (ε : ℕ → ℝ)\n    [Nonempty (M 0)] (hadj : S.AdjacentBound ε) (n : ℕ) :\n    sSup (Set.range fun m : M 0 =>\n      tvDist ((S.K 0 m).map (S.Γ 0 n))\n        (S.K n (S.Γ 0 n m))) ≤\n      ∑ i ∈ Finset.range n, ε i"
+      }
+    ]
+  },
+  {
+    "pid": "P-API-01",
+    "name": "UEOT.V3.ProcessInterface.p_api_01_exact",
+    "entry_path": "formalization/ueot-core/UEOT/V3/ProcessInterface.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/ProcessInterface.lean",
+        "line": 79,
+        "header": "theorem p_api_01_exact\n    (AB : Interface UA UB ΩA ΩB)\n    (BC : Interface UB UC ΩB ΩC)\n    (PA : UA → Measure ΩA)\n    (PB : UB → Measure ΩB)\n    (PC : UC → Measure ΩC)\n    (hAB : ExactNatural AB PA PB)\n    (hBC : ExactNatural BC PB PC) :\n    (AB.comp BC).protocol = AB.protocol ∘ BC.protocol ∧\n    (AB.comp BC).readout = BC.readout ∘ AB.readout ∧\n    ExactNatural (AB.comp BC) PA PC"
+      }
+    ]
+  },
+  {
+    "pid": "P-API-01",
+    "name": "UEOT.V3.ProcessInterface.p_api_01_approx",
+    "entry_path": "formalization/ueot-core/UEOT/V3/ProcessInterface.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/ProcessInterface.lean",
+        "line": 101,
+        "header": "theorem p_api_01_approx\n    (AB : Interface UA UB ΩA ΩB)\n    (BC : Interface UB UC ΩB ΩC)\n    (PA : UA → Measure ΩA)\n    (PB : UB → Measure ΩB)\n    (PC : UC → Measure ΩC)\n    (hPA : ∀ u, IsProbabilityMeasure (PA u))\n    (hPB : ∀ u, IsProbabilityMeasure (PB u))\n    (hPC : ∀ u, IsProbabilityMeasure (PC u))\n    (εAB εBC : ℝ)\n    (hAB : ∀ u,\n      tvDist ((PA (AB.protocol u)).map AB.readout) (PB u) ≤ εAB)\n    (hBC : ∀ u,\n      tvDist ((PB (BC.protocol u)).map BC.readout) (PC u) ≤ εBC) :\n    ∀ u,\n      tvDist\n          ((PA ((AB.comp BC).protocol u)).map (AB.comp BC).readout)\n          (PC u) ≤\n        min 1 (εAB + εBC)"
+      }
+    ]
+  },
+  {
+    "pid": "P-DYN-03",
+    "name": "UEOT.V3.PathError.p_dyn_03_finite_path_error",
+    "entry_path": "formalization/ueot-core/UEOT/V3/PathError.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/PathError.lean",
+        "line": 679,
+        "header": "theorem p_dyn_03_finite_path_error\n    {H₀ Z : Type uHist}\n    [Fintype H₀] [Fintype Z]\n    [MeasurableSpace H₀] [MeasurableSingletonClass H₀]\n    [MeasurableSpace Z] [MeasurableSingletonClass Z]\n    (p₀ : PMF H₀)\n    (K L : ∀ n, CausalHistory H₀ Z n → PMF Z)\n    (ε : ℕ → ℝ)\n    (hε0 : ∀ n, 0 ≤ ε n)\n    (hε1 : ∀ n, ε n ≤ 1)\n    (hTV : ∀ n h,\n      tvDist (K n h).toMeasure (L n h).toMeasure ≤ ε n) :\n    ∀ T,\n      tvDist\n          (causalLaw p₀ K T).toMeasure\n          (causalLaw p₀ L T).toMeasure\n        ≤ 1 - (∏ i ∈ Finset.range T, (1 - ε i)) ∧\n      1 - (∏ i ∈ Finset.range T, (1 - ε i))\n        ≤ ∑ i ∈ Finset.range T, ε i"
+      }
+    ]
+  },
+  {
+    "pid": "P-DYN-04",
+    "name": "UEOT.V3.DynamicsCrossScale.p_dyn_04_cross_scale_tv",
+    "entry_path": "formalization/ueot-core/UEOT/V3/DynamicsCrossScale.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/DynamicsCrossScale.lean",
+        "line": 31,
+        "header": "theorem p_dyn_04_cross_scale_tv\n    (P : X → A → Measure X)\n    (Ps : Ms → A → Measure Ms)\n    (Pr : Mr → A → Measure Mr)\n    (fs : X → Ms) (fr : X → Mr) (c : Ms → Mr)\n    (hfs : Measurable fs) (hfr : Measurable fr) (hc : Measurable c)\n    (hcomp : ∀ x, fr x = c (fs x))\n    (hP : ∀ x a, IsProbabilityMeasure (P x a))\n    (hPs : ∀ m a, IsProbabilityMeasure (Ps m a))\n    (hPr : ∀ m a, IsProbabilityMeasure (Pr m a))\n    (εs εr : ℝ)\n    (hs : ∀ x a,\n      tvDist ((P x a).map fs) (Ps (fs x) a) ≤ εs)\n    (hr : ∀ x a,\n      tvDist ((P x a).map fr) (Pr (fr x) a) ≤ εr) :\n    ∀ m ∈ Set.range fs, ∀ a,\n      tvDist ((Ps m a).map c) (Pr (c m) a) ≤ εs + εr"
+      }
+    ]
+  },
+  {
+    "pid": "P-DYN-04",
+    "name": "UEOT.V3.DynamicsCrossScale.p_dyn_04_exact_intertwining",
+    "entry_path": "formalization/ueot-core/UEOT/V3/DynamicsCrossScale.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/DynamicsCrossScale.lean",
+        "line": 90,
+        "header": "theorem p_dyn_04_exact_intertwining\n    (P : X → A → Measure X)\n    (Ps : Ms → A → Measure Ms)\n    (Pr : Mr → A → Measure Mr)\n    (fs : X → Ms) (fr : X → Mr) (c : Ms → Mr)\n    (hfs : Measurable fs) (hc : Measurable c)\n    (hcomp : ∀ x, fr x = c (fs x))\n    (hs : ∀ x a, (P x a).map fs = Ps (fs x) a)\n    (hr : ∀ x a, (P x a).map fr = Pr (fr x) a) :\n    ∀ m ∈ Set.range fs, ∀ a,\n      (Ps m a).map c = Pr (c m) a"
+      }
+    ]
+  },
+  {
+    "pid": "P-STAT-09",
+    "name": "UEOT.V3.AverageErrorTransport.p_stat_09",
+    "entry_path": "formalization/ueot-core/UEOT/V3/AverageErrorTransport.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/AverageErrorTransport.lean",
+        "line": 77,
+        "header": "theorem p_stat_09\n    (μ ν : Measure X)\n    [IsProbabilityMeasure μ] [IsProbabilityMeasure ν]\n    (e : X → ℝ) (he : Measurable e)\n    (he0 : ∀ x, 0 ≤ e x) (he1 : ∀ x, e x ≤ 1)\n    (C δ : ℝ)\n    (hAC : ν ≪ μ)\n    (hC : ∀ᵐ x ∂μ, (ν.rnDeriv μ x).toReal ≤ C)\n    (hδ : tvDist ν μ ≤ δ) :\n    (∫ x, e x ∂ν) ≤ C * (∫ x, e x ∂μ) ∧\n      (∫ x, e x ∂ν) ≤ (∫ x, e x ∂μ) + δ"
+      }
+    ]
+  },
+  {
+    "pid": "P-PRED-02",
+    "name": "UEOT.V3.PredictionRefinement.pushTargetDependent_apply",
+    "entry_path": "formalization/ueot-core/UEOT/V3/PredictionRefinement.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/PredictionRefinement.lean",
+        "line": 133,
+        "header": "theorem pushTargetDependent_apply\n    (K : (j : J) → Kernel H (Yd₂ j))\n    (T : (j : J) → Yd₂ j → Yd₁ j)\n    (hT : ∀ j, Measurable (T j))\n    (j : J) (h : H) :\n    pushTargetDependent K T hT j h = (K j h).map (T j)"
+      }
+    ]
+  },
+  {
+    "pid": "P-PRED-02",
+    "name": "UEOT.V3.PredictionRefinement.protocol_refinement_sigma_le_dependent",
+    "entry_path": "formalization/ueot-core/UEOT/V3/PredictionRefinement.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/PredictionRefinement.lean",
+        "line": 156,
+        "header": "theorem protocol_refinement_sigma_le_dependent\n    (K : (j : J) → Kernel H (Yd₂ j))\n    {S T : Set J} (hST : S ⊆ T) :\n    sigmaCanonicalDependent K S ≤ sigmaCanonicalDependent K T"
+      }
+    ]
+  },
+  {
+    "pid": "P-PRED-02",
+    "name": "UEOT.V3.PredictionRefinement.sigmaCanonicalDependent_iUnion_of_monotone",
+    "entry_path": "formalization/ueot-core/UEOT/V3/PredictionRefinement.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/PredictionRefinement.lean",
+        "line": 196,
+        "header": "theorem sigmaCanonicalDependent_iUnion_of_monotone\n    (K : (j : J) → Kernel H (Yd₂ j))\n    (S : ℕ → Set J) (_hS : Monotone S) :\n    sigmaCanonicalDependent K (⋃ n, S n) =\n      ⨆ n, sigmaCanonicalDependent K (S n)"
+      }
+    ]
+  },
+  {
+    "pid": "P-PRED-03",
+    "name": "UEOT.V3.PredictionUpdate.p_pred_03_recursive_update",
+    "entry_path": "formalization/ueot-core/UEOT/V3/PredictionUpdate.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/PredictionUpdate.lean",
+        "line": 327,
+        "header": "theorem p_pred_03_recursive_update\n    {J : Type*}\n    [Countable I]\n    [MeasurableSpace A] [MeasurableSpace O]\n    [Fintype A] [Fintype O]\n    [MeasurableSingletonClass A] [MeasurableSingletonClass O]\n    (cl : RecursiveCoordinateClosure A O I J)\n    (C : H → (J → ℝ))\n    (jointH : H → A → O → I → ℝ)\n    (obsH : H → A → O → ℝ)\n    (hJoint :\n      ∀ h a o i,\n        jointH h a o i = C h (cl.jointIndex a o i))\n    (hObs :\n      ∀ h a o,\n        obsH h a o = C h (cl.obsIndex a o)) :\n    ∃ U : (J → ℝ) × (A × O) → (I → ℝ),\n      Measurable U ∧\n      (∀ h a o,\n        historyBayesResponseVector jointH obsH h a o =\n          U (C h, (a, o))) ∧\n      (∀ {h h' : H}, C h = C h' →\n        ∀ a o,\n          historyBayesResponseVector jointH obsH h a o =\n            historyBayesResponseVector jointH obsH h' a o)"
+      }
+    ]
+  },
+  {
+    "pid": "P-REF-02",
+    "name": "UEOT.V3.PRef02.p_ref_02_general_joint",
+    "entry_path": "formalization/ueot-core/UEOT/V3/PRef02.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/PRef02.lean",
+        "line": 34,
+        "header": "theorem p_ref_02_general_joint\n    {Z : Type uZ} {A : Type uA} {Y : Type uY}\n    [MeasurableSpace Z] [StandardBorelSpace Z] [Nonempty Z]\n    [MeasurableSpace A] [MeasurableSpace Y]\n    (b : Measure Z) [IsProbabilityMeasure b]\n    (P : Kernel (Z × A) Z) [IsMarkovKernel P]\n    (O : Kernel (Z × A) Y) [IsMarkovKernel O]\n    (a : A) :\n    GeneralBayesPosterior.observationLaw b P O a ⊗ₘ\n        GeneralBayesPosterior.posteriorKernel b P O a =\n      (GeneralBayesPosterior.jointLaw b P O a).map Prod.swap"
+      }
+    ]
+  },
+  {
+    "pid": "P-REF-02",
+    "name": "UEOT.V3.PRef02.p_ref_02_general_update",
+    "entry_path": "formalization/ueot-core/UEOT/V3/PRef02.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/PRef02.lean",
+        "line": 49,
+        "header": "theorem p_ref_02_general_update\n    {Z : Type uZ} {A : Type uA} {Y : Type uY}\n    [MeasurableSpace Z] [StandardBorelSpace Z] [Nonempty Z]\n    [MeasurableSpace A] [MeasurableSpace Y]\n    (b : Measure Z) [IsProbabilityMeasure b]\n    (P : Kernel (Z × A) Z) [IsMarkovKernel P]\n    (O : Kernel (Z × A) Y) [IsMarkovKernel O]\n    (a : A) :\n    GeneralBayesPosterior.posteriorKernel b P O a ∘ₘ\n        GeneralBayesPosterior.observationLaw b P O a =\n      GeneralBayesPosterior.predictedLaw b P a"
+      }
+    ]
+  },
+  {
+    "pid": "P-REF-02",
+    "name": "UEOT.V3.PRef02.p_ref_02_discrete_observation",
+    "entry_path": "formalization/ueot-core/UEOT/V3/PRef02.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/PRef02.lean",
+        "line": 69,
+        "header": "theorem p_ref_02_discrete_observation\n    (M : FiniteBayesBelief.Model Theta X A Y)\n    (b : FiniteBayesBelief.Belief Theta X) (a : A) :\n    (∑ y : Y, FiniteBayesBelief.evidence M b a y) = 1"
+      }
+    ]
+  },
+  {
+    "pid": "P-REF-02",
+    "name": "UEOT.V3.PRef02.p_ref_02_discrete_posterior",
+    "entry_path": "formalization/ueot-core/UEOT/V3/PRef02.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/PRef02.lean",
+        "line": 76,
+        "header": "theorem p_ref_02_discrete_posterior\n    (M : FiniteBayesBelief.Model Theta X A Y)\n    (b : FiniteBayesBelief.Belief Theta X) (a : A) (y : Y)\n    (h : FiniteBayesBelief.evidence M b a y ≠ 0)\n    (theta : Theta) (x' : X) :\n    (FiniteBayesBelief.posterior M b a y h).mass theta x' =\n      FiniteBayesBelief.jointObservationMass M b a y theta x' /\n        FiniteBayesBelief.evidence M b a y"
+      }
+    ]
+  },
+  {
+    "pid": "P-REF-02",
+    "name": "UEOT.V3.PRef02.p_ref_02_discrete_modelConflict",
+    "entry_path": "formalization/ueot-core/UEOT/V3/PRef02.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/PRef02.lean",
+        "line": 88,
+        "header": "theorem p_ref_02_discrete_modelConflict\n    (M : FiniteBayesBelief.Model Theta X A Y)\n    (b : FiniteBayesBelief.Belief Theta X) (a : A) (y : Y) :\n    FiniteBayesBelief.updateResult M b a y =\n        FiniteBayesBelief.UpdateResult.modelConflict ↔\n      FiniteBayesBelief.evidence M b a y = 0"
+      }
+    ]
+  },
+  {
+    "pid": "P-REF-02",
+    "name": "UEOT.V3.PRef02.p_ref_02_discounted_step",
+    "entry_path": "formalization/ueot-core/UEOT/V3/PRef02.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/PRef02.lean",
+        "line": 99,
+        "header": "theorem p_ref_02_discounted_step\n    (M : FiniteBayesBelief.Model Theta X A Y)\n    (r : Theta → X → A → ℝ) (beta : ℝ)\n    (V : FiniteBayesBelief.Belief Theta X → ℝ)\n    (b : FiniteBayesBelief.Belief Theta X) (a : A) :\n    FiniteBayesBelief.beliefControlStep M r beta V b a =\n      FiniteBayesBelief.beliefReward r b a +\n        beta * FiniteBayesBelief.continuationExpectation M b a V"
+      }
+    ]
+  },
+  {
+    "pid": "P-MET-01",
+    "name": "UEOT.V3.TotalVariation.tvDist_map_le",
+    "entry_path": "formalization/ueot-core/UEOT/V3/TotalVariation.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/TotalVariation.lean",
+        "line": 98,
+        "header": "theorem tvDist_map_le\n    (μ ν : Measure X)\n    [IsProbabilityMeasure μ] [IsProbabilityMeasure ν]\n    (f : X → Y) (hf : Measurable f) :\n    tvDist (μ.map f) (ν.map f) ≤ tvDist μ ν"
+      }
+    ]
+  },
+  {
+    "pid": "P-MET-01",
+    "name": "UEOT.V3.TVKernel.tvDist_comp_le",
+    "entry_path": "formalization/ueot-core/UEOT/V3/TVKernel.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/TVKernel.lean",
+        "line": 35,
+        "header": "theorem tvDist_comp_le\n    (μ ν : Measure X)\n    [IsProbabilityMeasure μ] [IsProbabilityMeasure ν]\n    (κ : Kernel X Y) [IsMarkovKernel κ] :\n    UEOT.V3.TotalVariation.tvDist (κ ∘ₘ μ) (κ ∘ₘ ν) ≤\n      UEOT.V3.TotalVariation.tvDist μ ν"
+      }
+    ]
+  },
+  {
+    "pid": "P-MET-01",
+    "name": "UEOT.V3.TotalVariation.tvDist_map_measurableEquiv",
+    "entry_path": "formalization/ueot-core/UEOT/V3/TotalVariation.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/TotalVariation.lean",
+        "line": 112,
+        "header": "theorem tvDist_map_measurableEquiv\n    (μ ν : Measure X)\n    [IsProbabilityMeasure μ] [IsProbabilityMeasure ν]\n    (e : X ≃ᵐ Y) :\n    tvDist (μ.map e) (ν.map e) = tvDist μ ν"
+      }
+    ]
+  },
+  {
+    "pid": "P-FAC-01",
+    "name": "UEOT.V3.RepresentationCovariance.p_fac_01_covariance_bundle",
+    "entry_path": "formalization/ueot-core/UEOT/V3/RepresentationCovariance.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/RepresentationCovariance.lean",
+        "line": 368,
+        "header": "theorem p_fac_01_covariance_bundle\n    {A : Type uA} {E : Type uE} {Y : E → Type*}\n    [∀ e, MeasurableSpace (Y e)]\n    (P : A → Kernel X X) (Pbar : A → Kernel M M)\n    (Q : ∀ e, Kernel X (Y e))\n    (Qbar : ∀ e, Kernel M (Y e))\n    (f : X → M) (hf : Measurable f) (T : X ≃ᵐ X') :\n    ((∀ a, UEOT.V3.DynamicsKernel.StrongLumpability (P a) (Pbar a) f hf) ↔\n      ∀ a,\n        UEOT.V3.DynamicsKernel.StrongLumpability\n          (transportKernel (P a) T) (Pbar a)\n          (transportReadout f T)\n          (measurable_transportReadout f hf T)) ∧\n    ((∀ e x, Q e x = Qbar e (f x)) ↔\n      ∀ e x',\n        transportResponse (Q e) T x' =\n          Qbar e (transportReadout f T x'))"
+      }
+    ]
+  },
+  {
+    "pid": "P-FAC-01",
+    "name": "UEOT.V3.RepresentationCovariance.homTrajMeasure_transport_covariance",
+    "entry_path": "formalization/ueot-core/UEOT/V3/RepresentationCovariance.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/RepresentationCovariance.lean",
+        "line": 127,
+        "header": "theorem homTrajMeasure_transport_covariance\n    (μ : Measure X) [IsProbabilityMeasure μ]\n    (P : Kernel X X) [IsMarkovKernel P]\n    (T : X ≃ᵐ X') :\n    (UEOT.V3.DynamicsKernel.homTrajMeasure μ P).map\n        (UEOT.V3.DynamicsKernel.mapPath T) =\n      UEOT.V3.DynamicsKernel.homTrajMeasure\n        (μ.map T) (transportKernel P T)"
+      }
+    ]
+  },
+  {
+    "pid": "P-FAC-01",
+    "name": "UEOT.V3.RepresentationCovariance.causalLaw_transport_equiv",
+    "entry_path": "formalization/ueot-core/UEOT/V3/RepresentationCovariance.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/RepresentationCovariance.lean",
+        "line": 438,
+        "header": "theorem causalLaw_transport_equiv\n    {H₀ H₀' Z Z' : Type uHist}\n    [Fintype H₀] [Fintype H₀'] [Fintype Z] [Fintype Z']\n    (p₀ : PMF H₀)\n    (K : ∀ n, CausalHistory H₀ Z n → PMF Z)\n    (K' : ∀ n, CausalHistory H₀' Z' n → PMF Z')\n    (e₀ : H₀ ≃ H₀') (eZ : Z ≃ Z')\n    (hK : ∀ n h,\n      K' n (causalHistoryEquiv e₀ eZ n h) = (K n h).map eZ) :\n    ∀ n,\n      (causalLaw p₀ K n).map (causalHistoryEquiv e₀ eZ n) =\n        causalLaw (p₀.map e₀) K' n"
+      }
+    ]
+  },
+  {
+    "pid": "P-FAC-01",
+    "name": "UEOT.V3.RepresentationCovariance.causalPolicyValue_transport_bundle",
+    "entry_path": "formalization/ueot-core/UEOT/V3/RepresentationCovariance.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/RepresentationCovarianceFiniteValue.lean",
+        "line": 88,
+        "header": "theorem causalPolicyValue_transport_bundle\n    {Pol : Type uPol}\n    (p₀ : PMF H₀)\n    (K : Pol → ∀ n, CausalHistory H₀ Z n → PMF Z)\n    (K' : Pol → ∀ n, CausalHistory H₀' Z' n → PMF Z')\n    (e₀ : H₀ ≃ H₀') (eZ : Z ≃ Z')\n    (hK : ∀ π n h,\n      K' π n (causalHistoryEquiv e₀ eZ n h) = (K π n h).map eZ)\n    (n : ℕ) (reward : CausalHistory H₀ Z n → ℝ) :\n    (∀ π,\n      policyExpectedValue\n          (fun π => (causalLaw (p₀.map e₀) (K' π) n).toMeasure)\n          (reward ∘ (causalHistoryMeasurableEquiv e₀ eZ n).symm) π =\n        policyExpectedValue\n          (fun π => (causalLaw p₀ (K π) n).toMeasure)\n          reward π) ∧\n      optimalExpectedValue\n          (fun π => (causalLaw (p₀.map e₀) (K' π) n).toMeasure)\n          (reward ∘ (causalHistoryMeasurableEquiv e₀ eZ n).symm) =\n        optimalExpectedValue\n          (fun π => (causalLaw p₀ (K π) n).toMeasure)\n          reward"
+      }
+    ]
+  },
+  {
+    "pid": "P-STAT-07",
+    "name": "UEOT.V3.MMDTransportSource.p_stat_07_source",
+    "entry_path": "formalization/ueot-core/UEOT/V3/MMDTransportSource.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/MMDTransportSource.lean",
+        "line": 26,
+        "header": "theorem p_stat_07_source\n    (e : X ≃ᵐ X') (phi : X → H) (P Q : Measure X) :\n    featureKernel (transportedFeature e phi) =\n        transportedKernel e (featureKernel phi) ∧\n      featureMMD (transportedFeature e phi) (P.map e) (Q.map e) =\n        featureMMD phi P Q"
+      }
+    ]
+  },
+  {
+    "pid": "P-STAT-07",
+    "name": "UEOT.V3.MMDTransport.p_stat_07",
+    "entry_path": "formalization/ueot-core/UEOT/V3/MMDTransport.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/MMDTransport.lean",
+        "line": 129,
+        "header": "theorem p_stat_07\n    (e : X ≃ᵐ X') (k : X → X → ℝ) (P Q : Measure X) :\n    mmd (transportedKernel e k) (P.map e) (Q.map e) =\n      mmd k P Q"
+      }
+    ]
+  },
+  {
+    "pid": "P-MET-02",
+    "name": "UEOT.V3.TVSpan.abs_integral_sub_le_span",
+    "entry_path": "formalization/ueot-core/UEOT/V3/TVSpan.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/TVSpan.lean",
+        "line": 110,
+        "header": "theorem abs_integral_sub_le_span\n    (μ ν : Measure X)\n    [IsProbabilityMeasure μ] [IsProbabilityMeasure ν]\n    (g : X → ℝ) (hg : Measurable g)\n    (hbelow : BddBelow (Set.range g))\n    (habove : BddAbove (Set.range g)) :\n    |(∫ x, g x ∂μ) - ∫ x, g x ∂ν| ≤\n      span g * UEOT.V3.TotalVariation.tvDist μ ν"
+      }
+    ]
+  },
+  {
+    "pid": "P-PROC-01",
+    "name": "UEOT.V3.ConcreteHistoryMarkovization.p_proc_01_history_markovization",
+    "entry_path": "formalization/ueot-core/UEOT/V3/ConcreteHistoryMarkovization.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/ConcreteHistoryMarkovization.lean",
+        "line": 181,
+        "header": "theorem p_proc_01_history_markovization\n    (q : ∀ n, Kernel (HistoryFiber X A n × A) X)\n    (hq : ∀ n, IsMarkovKernel (q n)) :\n    IsMarkovKernel (augmentedKernel q) ∧\n      ∀ n (z : HistoryFiber X A n × A),\n        (augmentedKernel q ⟨n, z⟩).map Carrier.current = q n z"
+      }
+    ]
+  },
+  {
+    "pid": "P-INFO-01",
+    "name": "UEOT.V3.InformationStatistic.mutualInfo_eq_statistic_add_conditional",
+    "entry_path": "formalization/ueot-core/UEOT/V3/InformationStatistic.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/InformationStatistic.lean",
+        "line": 216,
+        "header": "theorem mutualInfo_eq_statistic_add_conditional\n    [StandardBorelSpace H] [Nonempty H]\n    (μ : Measure (H × Y)) [IsProbabilityMeasure μ]\n    (f : H → M) (hf : Measurable f) :\n    mutualInfo μ =\n      mutualInfo (statisticJoint μ f hf) +\n        conditionalMutualInfoStatistic μ f"
+      }
+    ]
+  },
+  {
+    "pid": "P-INFO-01",
+    "name": "UEOT.V3.InformationStatistic.mutualInfo_statistic_ge_sub_of_conditional_le",
+    "entry_path": "formalization/ueot-core/UEOT/V3/InformationStatistic.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/InformationStatistic.lean",
+        "line": 261,
+        "header": "theorem mutualInfo_statistic_ge_sub_of_conditional_le\n    [StandardBorelSpace H] [Nonempty H]\n    (μ : Measure (H × Y)) [IsProbabilityMeasure μ]\n    (f : H → M) (hf : Measurable f)\n    {ε : ENNReal}\n    (hε : conditionalMutualInfoStatistic μ f ≤ ε) :\n    mutualInfo μ ≤ mutualInfo (statisticJoint μ f hf) + ε"
+      }
+    ]
+  },
+  {
+    "pid": "P-INFO-01",
+    "name": "UEOT.V3.InformationMemoryBound.p_info_01_discrete_entropy",
+    "entry_path": "formalization/ueot-core/UEOT/V3/InformationMemoryBound.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/InformationMemoryBound.lean",
+        "line": 81,
+        "header": "theorem p_info_01_discrete_entropy\n    [StandardBorelSpace H] [Nonempty H]\n    [Countable M] [MeasurableSingletonClass M]\n    [StandardBorelSpace Y] [Nonempty Y]\n    (μ : Measure (H × Y)) [IsProbabilityMeasure μ]\n    (f : H → M) (hf : Measurable f)\n    {ε : ENNReal}\n    (hε : conditionalMutualInfoStatistic μ f ≤ ε) :\n    mutualInfo μ - ε ≤\n      discreteShannonEntropy (statisticJoint μ f hf).fst"
+      }
+    ]
+  },
+  {
+    "pid": "P-INFO-02",
+    "name": "UEOT.V3.InformationPInfo02.p_info_02_finite",
+    "entry_path": "formalization/ueot-core/UEOT/V3/InformationPInfo02.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/InformationPInfo02.lean",
+        "line": 49,
+        "header": "theorem p_info_02_finite\n    [StandardBorelSpace H] [StandardBorelSpace Y]\n    [StandardBorelSpace M] [StandardBorelSpace U]\n    [Nonempty Y]\n    (μ : Measure (H × Y)) [IsProbabilityMeasure μ]\n    (fM : H → M) (fU : H → U)\n    (hfM : Measurable fM) (hfU : Measurable fU)\n    (hfin :\n      predictiveConditionalInfoStatistic μ\n        (historyInterfaceStatistic fM fU)\n        (measurable_historyInterfaceStatistic hfM hfU) ≠ ⊤) :\n    (∫ h, tvDist\n        (historyPredictiveKernel μ h)\n        (statisticPredictiveKernel μ\n          (historyInterfaceStatistic fM fU)\n          (measurable_historyInterfaceStatistic hfM hfU) h) ∂μ.fst) ≤\n      Real.sqrt\n        ((predictiveConditionalInfoStatistic μ\n          (historyInterfaceStatistic fM fU)\n          (measurable_historyInterfaceStatistic hfM hfU)).toReal / 2)"
+      }
+    ]
+  },
+  {
+    "pid": "P-INFO-02",
+    "name": "UEOT.V3.InformationPInfo02.p_info_02_ennreal",
+    "entry_path": "formalization/ueot-core/UEOT/V3/InformationPInfo02.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/InformationPInfo02.lean",
+        "line": 82,
+        "header": "theorem p_info_02_ennreal\n    [StandardBorelSpace H] [StandardBorelSpace Y]\n    [StandardBorelSpace M] [StandardBorelSpace U]\n    [Nonempty Y]\n    (μ : Measure (H × Y)) [IsProbabilityMeasure μ]\n    (fM : H → M) (fU : H → U)\n    (hfM : Measurable fM) (hfU : Measurable fU) :\n    ENNReal.ofReal\n        (∫ h, tvDist\n          (historyPredictiveKernel μ h)\n          (statisticPredictiveKernel μ\n            (historyInterfaceStatistic fM fU)\n            (measurable_historyInterfaceStatistic hfM hfU) h) ∂μ.fst) ≤\n      (predictiveConditionalInfoStatistic μ\n          (historyInterfaceStatistic fM fU)\n          (measurable_historyInterfaceStatistic hfM hfU) / 2) ^\n        (1 / 2 : ℝ)"
+      }
+    ]
+  },
+  {
+    "pid": "P-INFO-03",
+    "name": "UEOT.V3.InformationPredictiveRateZero.predictiveObjectRateZero_eq_sourceEntropy",
+    "entry_path": "formalization/ueot-core/UEOT/V3/InformationPredictiveRateZero.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/InformationPredictiveRateZero.lean",
+        "line": 213,
+        "header": "theorem predictiveObjectRateZero_eq_sourceEntropy\n    (μ : Measure (U × H)) [IsProbabilityMeasure μ]\n    (c : U × H → C) (hc : Measurable c)\n    (κC : Kernel C Y) [IsMarkovKernel κC]\n    (hinj : Function.Injective (fun x => κC x)) :\n    predictiveObjectRateZero μ c hc κC =\n      sourceConditionalCoreEntropy μ c hc"
+      }
+    ]
+  },
+  {
+    "pid": "P-INFO-04",
+    "name": "UEOT.V3.InformationPInfo04.p_info_04",
+    "entry_path": "formalization/ueot-core/UEOT/V3/InformationPInfo04.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/InformationPInfo04.lean",
+        "line": 111,
+        "header": "theorem p_info_04\n    {K : ℕ} [NeZero K] (hK : 2 ≤ K)\n    (ρ : Measure (Fin K × Y)) [IsProbabilityMeasure ρ]\n    (d : Y → Fin K) (hd : Measurable d)\n    (hJ : ρ.fst = (uniformIdentityLaw K : Measure (Fin K))) :\n    ENNReal.ofReal\n        (Real.log (K : ℝ) - Real.binEntropy (decoderError ρ d) -\n          decoderError ρ d * Real.log ((K : ℝ) - 1)) ≤\n      mutualInfo ρ"
+      }
+    ]
+  },
+  {
+    "pid": "P-INFO-04",
+    "name": "UEOT.V3.InformationConditionalBinaryMutualEntropy.p_info_04_conditional_binary",
+    "entry_path": "formalization/ueot-core/UEOT/V3/InformationConditionalBinaryMutualEntropy.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/InformationConditionalBinaryMutualEntropy.lean",
+        "line": 99,
+        "header": "theorem p_info_04_conditional_binary\n    (ρ : Measure (U × (M × Fin 2))) [IsProbabilityMeasure ρ]\n    (d : U × M → Fin 2) (hd : Measurable d)\n    (ε : ℝ)\n    (herr : conditionalBinaryDecoderError ρ d ≤ ε)\n    (hhalf : ε ≤ (2 : ℝ)⁻¹) :\n    ENNReal.ofReal (conditionalBinaryEntropy ρ - Real.binEntropy ε) ≤\n      conditionalBinaryMutualInfo ρ"
+      }
+    ]
+  },
+  {
+    "pid": "P-INFO-05",
+    "name": "UEOT.V3.InformationPacking.merged_histories_decoder_lower_bound",
+    "entry_path": "formalization/ueot-core/UEOT/V3/InformationPacking.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/InformationPacking.lean",
+        "line": 80,
+        "header": "theorem merged_histories_decoder_lower_bound\n    {H : Type uH} {S : Type uS}\n    (K : H → Measure Y) (R : H → S) (decode : S → Measure Y)\n    (hK : ∀ h, IsProbabilityMeasure (K h))\n    (hdecode : ∀ s, IsProbabilityMeasure (decode s))\n    {h₁ h₂ : H} (hmerge : R h₁ = R h₂) :\n    tvDist (K h₁) (K h₂) / 2 ≤\n      max (tvDist (K h₁) (decode (R h₁)))\n        (tvDist (K h₂) (decode (R h₂)))"
+      }
+    ]
+  },
+  {
+    "pid": "P-INFO-05",
+    "name": "UEOT.V3.InformationPacking.packing_ncard_image",
+    "entry_path": "formalization/ueot-core/UEOT/V3/InformationPacking.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/InformationPacking.lean",
+        "line": 126,
+        "header": "theorem packing_ncard_image\n    {H : Type uH} {S : Type uS}\n    (K : H → Measure Y) (R : H → S) (decode : S → Measure Y)\n    (hK : ∀ h, IsProbabilityMeasure (K h))\n    (hdecode : ∀ s, IsProbabilityMeasure (decode s))\n    (F : Finset H) (ε : ℝ)\n    (hsep : ∀ ⦃h₁⦄, h₁ ∈ F → ∀ ⦃h₂⦄, h₂ ∈ F →\n      h₁ ≠ h₂ → 2 * ε < tvDist (K h₁) (K h₂))\n    (herr : ∀ h ∈ F, tvDist (K h) (decode (R h)) ≤ ε) :\n    Set.ncard (R '' (F : Set H)) = F.card"
+      }
+    ]
+  },
+  {
+    "pid": "P-INFO-05",
+    "name": "UEOT.V3.InformationEntropy.p_info_05_uniform_entropy",
+    "entry_path": "formalization/ueot-core/UEOT/V3/InformationEntropy.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/InformationEntropy.lean",
+        "line": 133,
+        "header": "theorem p_info_05_uniform_entropy\n    {H : Type*} {S : Type*} {Y : Type*} [MeasurableSpace Y]\n    (K : H → Measure Y) (R : H → S) (decode : S → Measure Y)\n    (hK : ∀ h, IsProbabilityMeasure (K h))\n    (hdecode : ∀ s, IsProbabilityMeasure (decode s))\n    (F : Finset H) (hF : F.Nonempty) (ε : ℝ)\n    (hsep : ∀ ⦃h₁⦄, h₁ ∈ F → ∀ ⦃h₂⦄, h₂ ∈ F →\n      h₁ ≠ h₂ → 2 * ε < tvDist (K h₁) (K h₂))\n    (herr : ∀ h ∈ F, tvDist (K h) (decode (R h)) ≤ ε) :\n    pmfShannonEntropy ((PMF.uniformOfFinset F hF).map R) =\n      Real.log (F.card : ℝ)"
+      }
+    ]
+  },
+  {
+    "pid": "P-INT-01",
+    "name": "UEOT.V3.InformationPInt01Common.p_int_01",
+    "entry_path": "formalization/ueot-core/UEOT/V3/InformationPInt01Common.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/InformationPInt01Common.lean",
+        "line": 229,
+        "header": "theorem p_int_01\n    [Countable I]\n    (ν : Measure (HS × HE)) [IsProbabilityMeasure ν]\n    (K : I → Kernel (HS × HE) Y)\n    (hK : ∀ i, IsMarkovKernel (K i))\n    (f : HS → M) (hf : Measurable f)\n    (g : HE → U) (hg : Measurable g) :\n    StructuredCommonProtocolClosure ν K hK f hf g hg ↔\n      StructuredCommonVersionFactorization ν K f g"
+      }
+    ]
+  },
+  {
+    "pid": "P-INT-01",
+    "name": "UEOT.V3.InformationPInt01Common.p_int_01_common_decoder",
+    "entry_path": "formalization/ueot-core/UEOT/V3/InformationPInt01Common.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/InformationPInt01Common.lean",
+        "line": 243,
+        "header": "theorem p_int_01_common_decoder\n    [Countable I]\n    (ν : Measure (HS × HE)) [IsProbabilityMeasure ν]\n    (K : I → Kernel (HS × HE) Y)\n    (hK : ∀ i, IsMarkovKernel (K i))\n    (f : HS → M) (hf : Measurable f)\n    (g : HE → U) (hg : Measurable g)\n    (hclose : StructuredCommonProtocolClosure ν K hK f hf g hg) :\n    ∃ decoder : (M × U) → (I → Measure Y), Measurable decoder ∧\n      ∀ᵐ h ∂ν, (fun i => K i h) = decoder (f h.1, g h.2)"
+      }
+    ]
+  },
+  {
+    "pid": "P-INT-02",
+    "name": "UEOT.V3.StructuredQuotient.p_int_02",
+    "entry_path": "formalization/ueot-core/UEOT/V3/StructuredQuotient.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/StructuredQuotient.lean",
+        "line": 109,
+        "header": "theorem p_int_02\n    [Fintype X] [Fintype E] [Fintype I]\n    (K : I → X → E → R) :\n    (∀ i x e,\n      K i x e =\n        quotientResponse K i (internalClass K x) (environmentClass K e)) ∧\n    (∀ {S : Type uS} {U : Type uU}\n      (f : X → S) (g : E → U) (Q : I → S → U → R),\n      (∀ i x e, K i x e = Q i (f x) (g e)) →\n      (∀ {x x'}, f x = f x' → (internalSetoid K).r x x') ∧\n      (∀ {e e'}, g e = g e' → (environmentSetoid K).r e e'))"
+      }
+    ]
+  },
+  {
+    "pid": "P-INT-03",
+    "name": "UEOT.V3.MarkovBoundary.p_int_03_boundary_unique",
+    "entry_path": "formalization/ueot-core/UEOT/V3/MarkovBoundary.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/MarkovBoundary.lean",
+        "line": 128,
+        "header": "theorem p_int_03_boundary_unique\n    [Fintype W]\n    (CI : Set W → Set W → Prop) (hCI : CIAxioms CI)\n    {B C : Set W}\n    (hB : IsBoundary CI B) (hC : IsBoundary CI C) :\n    B = C"
+      }
+    ]
+  },
+  {
+    "pid": "P-DYN-02",
+    "name": "UEOT.V3.CTMCSemigroupNonnegative.p_dyn_02_nonnegative_semigroup_iff_blockSum",
+    "entry_path": "formalization/ueot-core/UEOT/V3/CTMCSemigroupNonnegative.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/CTMCSemigroupNonnegative.lean",
+        "line": 89,
+        "header": "theorem p_dyn_02_nonnegative_semigroup_iff_blockSum\n    (L : Matrix X X ℝ) (Lbar : Matrix B B ℝ) (block : X → B) :\n    (∀ t : ℝ, 0 ≤ t →\n      NormedSpace.exp (t • L) * blockIndicator block =\n        blockIndicator block * NormedSpace.exp (t • Lbar)) ↔\n      ∀ x b, blockSum L block x b = Lbar (block x) b"
+      }
+    ]
+  },
+  {
+    "pid": "P-DYN-02",
+    "name": "UEOT.V3.CTMCSemigroupNonnegative.exists_macro_ctmc_semigroup_of_blockSum_constant",
+    "entry_path": "formalization/ueot-core/UEOT/V3/CTMCSemigroupNonnegative.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/CTMCSemigroupNonnegative.lean",
+        "line": 101,
+        "header": "theorem exists_macro_ctmc_semigroup_of_blockSum_constant\n    (L : Matrix X X ℝ) (block : X → B)\n    (hsurj : Function.Surjective block)\n    (hgen : IsCTMCGenerator L)\n    (hconst : ∀ {x x'}, block x = block x' →\n      ∀ b, blockSum L block x b = blockSum L block x' b) :\n    ∃ Lbar : Matrix B B ℝ,\n      IsCTMCGenerator Lbar ∧\n      ∀ t : ℝ, 0 ≤ t →\n        NormedSpace.exp (t • L) * blockIndicator block =\n          blockIndicator block * NormedSpace.exp (t • Lbar)"
+      }
+    ]
+  },
+  {
+    "pid": "P-PER-01",
+    "name": "UEOT.V3.PersistenceOmega.p_per_01",
+    "entry_path": "formalization/ueot-core/UEOT/V3/PersistenceOmega.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/PersistenceOmega.lean",
+        "line": 165,
+        "header": "theorem p_per_01\n    (φ : Flow ℝ≥0 X) (x : X)\n    {V : Set X}\n    (hV : IsClosed V)\n    (hstay : ∀ᶠ t in (atTop : Filter ℝ≥0), φ t x ∈ V)\n    (hpre : IsCompact (closure (range fun t : ℝ≥0 => φ t x))) :\n    (ω (atTop : Filter ℝ≥0) φ ({x} : Set X)).Nonempty ∧\n      IsCompact (ω (atTop : Filter ℝ≥0) φ ({x} : Set X)) ∧\n      ω (atTop : Filter ℝ≥0) φ ({x} : Set X) ⊆ V ∧\n      ∀ s : ℝ≥0,\n        φ s '' ω (atTop : Filter ℝ≥0) φ ({x} : Set X) =\n          ω (atTop : Filter ℝ≥0) φ ({x} : Set X)"
+      }
+    ]
+  },
+  {
+    "pid": "P-PER-02",
+    "name": "UEOT.V3.PersistenceOccupation.FellerOccupationSystem.p_per_02",
+    "entry_path": "formalization/ueot-core/UEOT/V3/PersistenceOccupation.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/PersistenceOccupation.lean",
+        "line": 402,
+        "header": "theorem p_per_02\n    (S : FellerOccupationSystem X)\n    (hTight : IsTightMeasureSet\n      {((ν : ProbabilityMeasure X) : Measure X) | ν ∈ occupationFamily S})\n    (Tseq : ℕ → NNReal) (hTseq : Tendsto Tseq atTop atTop) :\n    ∃ (ν : ProbabilityMeasure X) (φ : ℕ → ℕ),\n      StrictMono φ ∧\n      Tendsto (fun n => S.occupation (Tseq (φ n))) atTop (𝓝 ν) ∧\n      Tendsto (fun n => Tseq (φ n)) atTop atTop ∧\n      (∀ s : NNReal, S.P s ∘ₘ (ν : Measure X) = (ν : Measure X)) ∧\n      (∀ K : Set X, IsClosed K →\n        (∀ t : NNReal, (S.marginal t : Measure X) K = 1) →\n        (ν : Measure X) K = 1) ∧\n      (∀ (U : ℕ → NNReal) (ν' : ProbabilityMeasure X),\n        Tendsto U atTop atTop →\n        Tendsto (fun n => S.occupation (U n)) atTop (𝓝 ν') →\n        (∀ s : NNReal, S.P s ∘ₘ (ν' : Measure X) = (ν' : Measure X)) ∧\n        (∀ K : Set X, IsClosed K →\n          (∀ t : NNReal, (S.marginal t : Measure X) K = 1) →\n          (ν' : Measure X) K = 1))"
+      }
+    ]
+  },
+  {
+    "pid": "P-PER-03",
+    "name": "UEOT.V3.ViabilitySource.p_per_03",
+    "entry_path": "formalization/ueot-core/UEOT/V3/ViabilitySource.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/ViabilitySource.lean",
+        "line": 38,
+        "header": "theorem p_per_03\n    [Nonempty A]\n    (P : X → A → PMF X) (V : Set X) :\n    ∃ (n : ℕ) (K : Set X),\n      K = viabilityIter P V n ∧\n      K ⊆ V ∧\n      viabilityStep P K = K ∧\n      K = winningSet P V ∧\n      (∃ π : X → A, ∀ x ∈ K, StaysIn (P x (π x)) K) ∧\n      (∀ μ : PMF X, StaysIn μ K →\n        ∃ π : X → A,\n          stationaryTrajMeasure P π μ {ω | ∀ k : ℕ, ω k ∈ K} = 1)"
+      }
+    ]
+  },
+  {
+    "pid": "P-PER-04",
+    "name": "UEOT.V3.ViabilityTangency.p_per_04",
+    "entry_path": "formalization/ueot-core/UEOT/V3/ViabilityTangency.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/ViabilityTangency.lean",
+        "line": 37,
+        "header": "theorem p_per_04\n    (V : Set E) (_hV : IsClosed V)\n    (x : ℝ → E) (v : E)\n    (hdiff : HasDerivAt x v 0)\n    (hstay : ∀ t : ℝ, 0 ≤ t → x t ∈ V) :\n    v ∈ posTangentConeAt V (x 0)"
+      }
+    ]
+  },
+  {
+    "pid": "P-REC-01",
+    "name": "UEOT.V3.RecoveryProbability.p_rec_01_mean_bound",
+    "entry_path": "formalization/ueot-core/UEOT/V3/RecoveryProbability.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/RecoveryProbability.lean",
+        "line": 138,
+        "header": "theorem p_rec_01_mean_bound\n    (P : Measure Ω) [IsProbabilityMeasure P]\n    (ℱ : Filtration ℕ mΩ)\n    (R : ℕ → Ω → ℝ≥0∞)\n    (κ η : NNReal)\n    (hκ : (κ : ℝ) < 1)\n    (hR : ∀ n, Measurable (R n))\n    (hcond : ∀ n,\n      P⁻[R (n + 1) | ℱ n] ≤ᵐ[P]\n        fun ω => (κ : ℝ≥0∞) * R n ω + (η : ℝ≥0∞))\n    (h0 : ennMean P R 0 < ∞) :\n    ∀ n, realMean P R n ≤\n      (κ : ℝ) ^ n * realMean P R 0 +\n        (η : ℝ) * ((1 - (κ : ℝ) ^ n) / (1 - (κ : ℝ)))"
+      }
+    ]
+  },
+  {
+    "pid": "P-REC-01",
+    "name": "UEOT.V3.RecoveryProbability.p_rec_01_tail_bound",
+    "entry_path": "formalization/ueot-core/UEOT/V3/RecoveryProbability.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/RecoveryProbability.lean",
+        "line": 159,
+        "header": "theorem p_rec_01_tail_bound\n    (P : Measure Ω) [IsProbabilityMeasure P]\n    (ℱ : Filtration ℕ mΩ)\n    (R : ℕ → Ω → ℝ≥0∞)\n    (κ η a : NNReal)\n    (hκ : (κ : ℝ) < 1)\n    (ha : 0 < a)\n    (hR : ∀ n, Measurable (R n))\n    (hcond : ∀ n,\n      P⁻[R (n + 1) | ℱ n] ≤ᵐ[P]\n        fun ω => (κ : ℝ≥0∞) * R n ω + (η : ℝ≥0∞))\n    (h0 : ennMean P R 0 < ∞) :\n    ∀ n,\n      P.real {ω | (a : ℝ≥0∞) ≤ R n ω} ≤\n        ((κ : ℝ) ^ n * realMean P R 0 +\n          (η : ℝ) * ((1 - (κ : ℝ) ^ n) / (1 - (κ : ℝ)))) / (a : ℝ)"
+      }
+    ]
+  },
+  {
+    "pid": "P-REC-02",
+    "name": "UEOT.V3.RecoveryDynkin.p_rec_02",
+    "entry_path": "formalization/ueot-core/UEOT/V3/RecoveryDynkin.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/RecoveryDynkin.lean",
+        "line": 118,
+        "header": "theorem p_rec_02\n    {X : Type*} [MeasurableSpace X]\n    (law : ℝ → Measure X)\n    (W LW d2 : X → ℝ) (x0 : X)\n    (a b c T : ℝ)\n    (ha : 0 < a) (_hb : 0 ≤ b) (hc : 0 < c) (hT : 0 ≤ T)\n    (hprob : ∀ t ∈ Icc 0 T, IsProbabilityMeasure (law t))\n    (hWint : ∀ t ∈ Icc 0 T, Integrable W (law t))\n    (hLWint : ∀ t ∈ Icc 0 T, Integrable LW (law t))\n    (hd2int : ∀ t ∈ Icc 0 T, Integrable d2 (law t))\n    (hDynkin : DynkinExpectationCertificate\n      (fun t => ∫ x, W x ∂law t)\n      (fun t => ∫ x, LW x ∂law t) T)\n    (hinit : (∫ x, W x ∂law 0) = W x0)\n    (hgenerator : ∀ x, LW x ≤ -a * W x + b)\n    (hdom : ∀ x, c * d2 x ≤ W x) :\n    ∀ t ∈ Icc 0 T,\n      (∫ x, d2 x ∂law t) ≤\n        (Real.exp (-a * t) * W x0 +\n          (b / a) * (1 - Real.exp (-a * t))) / c"
+      }
+    ]
+  },
+  {
+    "pid": "P-REC-03",
+    "name": "UEOT.V3.RecoveryHittingPoisson.p_rec_03",
+    "entry_path": "formalization/ueot-core/UEOT/V3/RecoveryHittingPoisson.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/RecoveryHittingPoisson.lean",
+        "line": 140,
+        "header": "theorem p_rec_03\n    (P : Kernel X X) [IsMarkovKernel P]\n    (x : X) (A : Set X) (hA : MeasurableSet A)\n    (hx : x ∉ A)\n    (hfinite : expectedHittingTime P x A ≠ ∞) :\n    (∫⁻ y, expectedHittingTime P y A ∂P x).toReal -\n        (expectedHittingTime P x A).toReal = -1"
+      }
+    ]
+  },
+  {
+    "pid": "P-REC-04",
+    "name": "UEOT.V3.RecoveryHittingBound.p_rec_04_hitting_time_bound",
+    "entry_path": "formalization/ueot-core/UEOT/V3/RecoveryHittingBound.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/RecoveryHittingBound.lean",
+        "line": 188,
+        "header": "theorem p_rec_04_hitting_time_bound\n    (P : Kernel X X) [IsMarkovKernel P]\n    (x : X) (A : Set X) (V : X → ℝ≥0∞) (c : ℝ≥0∞)\n    (hA : MeasurableSet A) (hV : Measurable V)\n    (hc0 : c ≠ 0) (hctop : c ≠ ∞)\n    (hdrift : ∀ z, z ∉ A → (∫⁻ y, V y ∂P z) + c ≤ V z) :\n    expectedHittingTime P x A ≤ V x / c"
+      }
+    ]
+  },
+  {
+    "pid": "P-GOA-01",
+    "name": "UEOT.V3.FiniteCesaroInvariant.p_goa_01",
+    "entry_path": "formalization/ueot-core/UEOT/V3/FiniteCesaroInvariant.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/FiniteCesaroInvariant.lean",
+        "line": 191,
+        "header": "theorem p_goa_01\n    (P : Matrix S S ℝ) (hP : P ∈ Matrix.rowStochastic ℝ S)\n    (μ0 : stdSimplex ℝ S) :\n    (∃ ν : stdSimplex ℝ S, ∃ φ : ℕ → ℕ,\n        StrictMono φ ∧ Tendsto (cesaroRow P hP μ0 ∘ φ) atTop (𝓝 ν)) ∧\n      (∀ (ν : stdSimplex ℝ S) (φ : ℕ → ℕ),\n        StrictMono φ →\n        Tendsto (cesaroRow P hP μ0 ∘ φ) atTop (𝓝 ν) →\n        Matrix.vecMul ν.1 P = ν.1)"
+      }
+    ]
+  },
+  {
+    "pid": "P-QSD-01",
+    "name": "UEOT.V3.QSDTVLimit.p_qsd_01",
+    "entry_path": "formalization/ueot-core/UEOT/V3/QSDTVLimit.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/QSDTVLimit.lean",
+        "line": 486,
+        "header": "theorem p_qsd_01\n    (S : KilledSemigroup X)\n    (q : ProbabilityMeasure X)\n    (hTV : Tendsto\n      (fun t : NNReal => UEOT.V3.TotalVariation.tvDist\n        (S.conditioned t : Measure X) (q : Measure X)) atTop (𝓝 0))\n    (hpos : ∀ t : NNReal, t ≠ 0 → 0 < qSurvival S q t)\n    (hcont : ContinuousAt (fun t : NNReal => (qSurvival S q t).toReal) 0) :\n    ∃ rate : ℝ, 0 ≤ rate ∧\n      (∀ s : NNReal,\n        S.P s ∘ₘ (q : Measure X) = qSurvival S q s • (q : Measure X)) ∧\n      (∀ s : NNReal,\n        (qSurvival S q s).toReal = Real.exp (-rate * (s : ℝ))) ∧\n      (∀ s : NNReal,\n        S.P s ∘ₘ (q : Measure X) =\n          ENNReal.ofReal (Real.exp (-rate * (s : ℝ))) • (q : Measure X))"
+      }
+    ]
+  },
+  {
+    "pid": "P-QSD-02",
+    "name": "UEOT.V3.QSDPerron.p_qsd_02",
+    "entry_path": "formalization/ueot-core/UEOT/V3/QSDPerron.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/QSDPerron.lean",
+        "line": 246,
+        "header": "theorem p_qsd_02\n    (Q : Matrix S S ℝ) (q h : S → ℝ) (ρ : ℝ)\n    (hQ : ∀ i j, 0 ≤ Q i j)\n    (hq0 : ∀ i, 0 ≤ q i)\n    (hρ : 0 < ρ)\n    (hh : ∀ i, 0 < h i)\n    (hqsum : ∑ i : S, q i = 1)\n    (hqh : ∑ i : S, q i * h i = 1)\n    (hleft : ∀ j, rowApply q Q j = ρ * q j)\n    (hright : ∀ i, colApply Q h i = ρ * h i) :\n    (∀ n j, rowApply q (Q ^ n) j / ρ ^ n = q j) ∧\n    (∀ n, ∑ j : S, rowApply q (Q ^ n) j = ρ ^ n) ∧\n    (∀ i, ∑ j : S, doobTransform Q h ρ i j = 1) ∧\n    (∀ i j, 0 ≤ doobTransform Q h ρ i j) ∧\n    (∑ i : S, doobInvariant q h i = 1) ∧\n    (∀ i, 0 ≤ doobInvariant q h i) ∧\n    (∀ j,\n      rowApply (doobInvariant q h) (doobTransform Q h ρ) j =\n        doobInvariant q h j)"
+      }
+    ]
+  },
+  {
+    "pid": "P-QSD-02",
+    "name": "UEOT.V3.QSDPerron.p_qsd_02_killed",
+    "entry_path": "formalization/ueot-core/UEOT/V3/QSDPerron.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/QSDPerron.lean",
+        "line": 282,
+        "header": "theorem p_qsd_02_killed\n    (Q : Matrix S S ℝ) (q h : S → ℝ) (ρ : ℝ)\n    (hQ : ∀ i j, 0 ≤ Q i j)\n    (hrows : ∀ i, ∑ j : S, Q i j ≤ 1)\n    (hq0 : ∀ i, 0 ≤ q i)\n    (hρ : 0 < ρ)\n    (hh : ∀ i, 0 < h i)\n    (hqsum : ∑ i : S, q i = 1)\n    (hqh : ∑ i : S, q i * h i = 1)\n    (hleft : ∀ j, rowApply q Q j = ρ * q j)\n    (hright : ∀ i, colApply Q h i = ρ * h i) :\n    ρ ≤ 1 ∧\n    (∀ n j, rowApply q (Q ^ n) j / ρ ^ n = q j) ∧\n    (∀ n, ∑ j : S, rowApply q (Q ^ n) j = ρ ^ n) ∧\n    (∀ i, ∑ j : S, doobTransform Q h ρ i j = 1) ∧\n    (∀ i j, 0 ≤ doobTransform Q h ρ i j) ∧\n    (∑ i : S, doobInvariant q h i = 1) ∧\n    (∀ i, 0 ≤ doobInvariant q h i) ∧\n    (∀ j,\n      rowApply (doobInvariant q h) (doobTransform Q h ρ) j =\n        doobInvariant q h j)"
+      }
+    ]
+  },
+  {
+    "pid": "P-QSD-03",
+    "name": "UEOT.V3.QSDDurationWindow.p_qsd_03",
+    "entry_path": "formalization/ueot-core/UEOT/V3/QSDDurationWindow.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/QSDDurationWindow.lean",
+        "line": 84,
+        "header": "theorem p_qsd_03\n    {Init : Type*}\n    (condError survival : Init → ℝ → ℝ)\n    (μ : Init)\n    (t0 C c γ lam ε p : ℝ)\n    (hC : 0 < C) (hc : 0 < c) (hγ : 0 < γ) (hlam : 0 < lam)\n    (hε : 0 < ε) (hp : 0 < p) (_hpc : p ≤ c)\n    (hmix : ∀ t, t0 ≤ t → condError μ t ≤ C * Real.exp (-(γ * t)))\n    (hsurv : ∀ t, t0 ≤ t → c * Real.exp (-(lam * t)) ≤ survival μ t)\n    (_hwindow : lowerEndpoint t0 C ε γ ≤ upperEndpoint c p lam) :\n    ∀ t ∈ Set.Icc (lowerEndpoint t0 C ε γ) (upperEndpoint c p lam),\n      condError μ t ≤ ε ∧ p ≤ survival μ t"
+      }
+    ]
+  },
+  {
+    "pid": "P-QSD-03",
+    "name": "UEOT.V3.QSDDurationWindow.window_nonempty_iff",
+    "entry_path": "formalization/ueot-core/UEOT/V3/QSDDurationWindow.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/QSDDurationWindow.lean",
+        "line": 107,
+        "header": "theorem window_nonempty_iff\n    (t0 C ε γ c p lam : ℝ) :\n    (Set.Icc (lowerEndpoint t0 C ε γ) (upperEndpoint c p lam)).Nonempty ↔\n      lowerEndpoint t0 C ε γ ≤ upperEndpoint c p lam"
+      }
+    ]
+  },
+  {
+    "pid": "P-QSD-04",
+    "name": "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.p_qsd_04",
+    "entry_path": "formalization/ueot-core/UEOT/V3/ReversibleKilledSpectralQSD.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/ReversibleKilledSpectralQSD.lean",
+        "line": 711,
+        "header": "theorem p_qsd_04 (D : SpectralData m) :\n    ∃ (Cg cg : ℝ) (t0 : NNReal),\n      0 < Cg ∧ 0 < cg ∧\n      (D.q : Measure X) =\n        m.withDensity\n          (fun x => ENNReal.ofReal (D.phi1 x / D.phiMass)) ∧\n      (∀ t : NNReal, t0 ≤ t →\n        tvDist (D.conditioned t : Measure X) (D.q : Measure X) ≤\n          Cg * Real.exp (-(D.lambda2 - D.lambda1) * (t : ℝ))) ∧\n      (∀ t : NNReal, t0 ≤ t →\n        (D.killed.survival t).toReal ≥\n          cg * Real.exp (-D.lambda1 * (t : ℝ)))"
+      }
+    ]
+  },
+  {
+    "pid": "P-EVO-03",
+    "name": "UEOT.V3.EvolutionPerronGrowth.p_evo_03",
+    "entry_path": "formalization/ueot-core/UEOT/V3/EvolutionPerronGrowth.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/EvolutionPerronGrowth.lean",
+        "line": 279,
+        "header": "theorem p_evo_03\n    (M : Matrix I I ℝ) (pf : KPF01Certificate M)\n    (z0 : I → ℕ) (hz0 : z0 ≠ 0)\n    (ρ : ℝ) (w : I → ℝ)\n    (hw : ∀ i, 0 < w i)\n    (hval : ∀ z : I → ℝ, (∀ i, 0 ≤ z i) →\n      rowDot (rowApply z M) w = ρ * rowDot z w) :\n    Tendsto\n      (fun n : ℕ => fun j : I =>\n        (pf.R ^ n)⁻¹ * rowApply (natRow z0) (M ^ n) j)\n      atTop\n      (𝓝 (fun j : I => rowDot (natRow z0) pf.r * pf.l j))\n    ∧ Tendsto\n      (fun n : ℕ => fun j : I =>\n        rowApply (natRow z0) (M ^ n) j /\n          rowMass (rowApply (natRow z0) (M ^ n)))\n      atTop\n      (𝓝 pf.l)\n    ∧ ρ = pf.R\n    ∧ ∃ c : ℝ, 0 < c ∧ ∀ i, w i = c * pf.r i"
+      }
+    ]
+  },
+  {
+    "pid": "P-EVO-04",
+    "name": "UEOT.V3.EvolutionReproductiveMartingale.p_evo_04",
+    "entry_path": "formalization/ueot-core/UEOT/V3/EvolutionReproductiveMartingale.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/EvolutionReproductiveMartingale.lean",
+        "line": 251,
+        "header": "theorem p_evo_04\n    (M : Matrix I I ℝ) (R : ℝ) (r : I → ℝ)\n    (Z : ℕ → Ω → (I → ℝ))\n    (z0 : I → ℕ)\n    (hR : 0 < R)\n    (hr : ∀ i, 0 < r i)\n    (hZnonneg : ∀ n ω i, 0 ≤ Z n ω i)\n    (hZadapt : StronglyAdapted ℱ Z)\n    (hZint : ∀ n, Integrable (Z n) μ)\n    (hmean : ∀ n,\n      μ[Z (n + 1) | ℱ n] =ᵐ[μ]\n        fun ω => Matrix.vecMul (Z n ω) M)\n    (hperron : ∀ i, ∑ j : I, M i j * r j = R * r i)\n    (hinit : ∀ ω i, Z 0 ω i = (z0 i : ℝ)) :\n    Martingale (W R r Z) ℱ μ ∧\n      (∀ n ω, 0 ≤ W R r Z n ω) ∧\n      (∀ n, Integrable (W R r Z n) μ) ∧\n      (∀ n, ∫ ω, W R r Z n ω ∂μ = ∑ i : I, (z0 i : ℝ) * r i)"
+      }
+    ]
+  },
+  {
+    "pid": "P-ID-02",
+    "name": "UEOT.V3.DevelopmentTransport.development_pipeline",
+    "entry_path": "formalization/ueot-core/UEOT/V3/DevelopmentTransport.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/DevelopmentTransport.lean",
+        "line": 59,
+        "header": "theorem development_pipeline\n    (θ θbar : ℕ → X)\n    (Ψ : ℕ → X → X)\n    (L ε : ℕ → ℝ)\n    (href : ∀ t, θbar (t + 1) = Ψ t (θbar t))\n    (hres : ∀ t, dist (θ (t + 1)) (Ψ t (θ t)) ≤ ε t)\n    (hlip : ∀ t x y, dist (Ψ t x) (Ψ t y) ≤ L t * dist x y)\n    (hL0 : ∀ t, 0 ≤ L t)\n    (n : ℕ) :\n    dist (θ n) (θbar n) ≤\n      (∏ j ∈ Finset.range n, L j) * dist (θ 0) (θbar 0) +\n        ∑ k ∈ Finset.range n,\n          ε k * ∏ j ∈ Finset.Ico (k + 1) n, L j"
+      }
+    ]
+  },
+  {
+    "pid": "P-OMG-01",
+    "name": "UEOT.V3.OmegaMinimalFailure.p_omg_01",
+    "entry_path": "formalization/ueot-core/UEOT/V3/OmegaMinimalFailure.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/OmegaMinimalFailure.lean",
+        "line": 35,
+        "header": "theorem p_omg_01\n    (Failure : Finset V → Prop)\n    (hmono : FailureMonotone Failure)\n    (D : Finset V) :\n    Failure D ↔ ∃ C, C ∈ minimalFailures Failure ∧ C ⊆ D"
+      }
+    ]
+  },
+  {
+    "pid": "P-OMG-02",
+    "name": "UEOT.V3.OmegaIntegrityMargin.p_omg_02",
+    "entry_path": "formalization/ueot-core/UEOT/V3/OmegaIntegrityMargin.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/OmegaIntegrityMargin.lean",
+        "line": 25,
+        "header": "theorem p_omg_02\n    (F : Set X) (_hF : F.Nonempty) (T S : X) :\n    |integrityMargin F T - integrityMargin F S| ≤ dist T S"
+      }
+    ]
+  },
+  {
+    "pid": "P-CAR-01",
+    "name": "UEOT.V3.Access.sufficient_mono",
+    "entry_path": "formalization/ueot-core/UEOT/V3/Access.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/Access.lean",
+        "line": 23,
+        "header": "theorem sufficient_mono {V H Z : Type*} [MeasurableSpace Z]\n    (R : Finset V → Type*) [∀ S, MeasurableSpace (R S)]\n    (F : Filter H) (target : H → Z) (read : ∀ S, H → R S)\n    (consistent : ∀ S T, S ⊆ T → FactorsAt F (read S) (read T))\n    {S T : Finset V} (hST : S ⊆ T) (hS : FactorsAt F target (read S)) :\n    FactorsAt F target (read T)"
+      }
+    ]
+  },
+  {
+    "pid": "P-CAR-01",
+    "name": "UEOT.V3.Access.contains_minimal",
+    "entry_path": "formalization/ueot-core/UEOT/V3/Access.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/Access.lean",
+        "line": 30,
+        "header": "theorem contains_minimal {V H Z : Type*} [MeasurableSpace Z]\n    (R : Finset V → Type*) [∀ S, MeasurableSpace (R S)]\n    (F : Filter H) (target : H → Z) (read : ∀ S, H → R S)\n    (consistent : ∀ S T, S ⊆ T → FactorsAt F (read S) (read T)) (S : Finset V) :\n    FactorsAt F target (read S) ↔\n      ∃ M, M ⊆ S ∧ Finite.Minimal (fun T => FactorsAt F target (read T)) M"
+      }
+    ]
+  },
+  {
+    "pid": "P-CAR-02",
+    "name": "UEOT.V3.Access.erasure_survives",
+    "entry_path": "formalization/ueot-core/UEOT/V3/Access.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/Access.lean",
+        "line": 41,
+        "header": "theorem erasure_survives {V H Z : Type*} [DecidableEq V] [Fintype V]\n    [MeasurableSpace Z] (R : Finset V → Type*) [∀ S, MeasurableSpace (R S)]\n    (F : Filter H) (target : H → Z) (read : ∀ S, H → R S)\n    (consistent : ∀ S T, S ⊆ T → FactorsAt F (read S) (read T)) (D : Finset V) :\n    FactorsAt F target (read (Finset.univ \\ D)) ↔\n      ∃ M, Finite.Minimal (fun T => FactorsAt F target (read T)) M ∧\n        ∀ v ∈ M, v ∉ D"
+      }
+    ]
+  },
+  {
+    "pid": "P-CAR-02",
+    "name": "UEOT.V3.Access.erasure_failure",
+    "entry_path": "formalization/ueot-core/UEOT/V3/Access.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/Access.lean",
+        "line": 55,
+        "header": "theorem erasure_failure {V H Z : Type*} [DecidableEq V] [Fintype V]\n    [MeasurableSpace Z] (R : Finset V → Type*) [∀ S, MeasurableSpace (R S)]\n    (F : Filter H) (target : H → Z) (read : ∀ S, H → R S)\n    (consistent : ∀ S T, S ⊆ T → FactorsAt F (read S) (read T)) (D : Finset V) :\n    (¬ FactorsAt F target (read (Finset.univ \\ D))) ↔\n      Blocker.Hits {M | Finite.Minimal (fun T => FactorsAt F target (read T)) M} D"
+      }
+    ]
+  },
+  {
+    "pid": "P-CAR-02",
+    "name": "UEOT.V3.Access.minimal_erasure",
+    "entry_path": "formalization/ueot-core/UEOT/V3/Access.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/Access.lean",
+        "line": 64,
+        "header": "theorem minimal_erasure {V H Z : Type*} [DecidableEq V] [Fintype V]\n    [MeasurableSpace Z] (R : Finset V → Type*) [∀ S, MeasurableSpace (R S)]\n    (F : Filter H) (target : H → Z) (read : ∀ S, H → R S)\n    (consistent : ∀ S T, S ⊆ T → FactorsAt F (read S) (read T)) (D : Finset V) :\n    Finite.Minimal (fun E => ¬ FactorsAt F target (read (Finset.univ \\ E))) D ↔\n      D ∈ Blocker.blocker {M | Finite.Minimal (fun T => FactorsAt F target (read T)) M}"
+      }
+    ]
+  },
+  {
+    "pid": "P-CAR-03",
+    "name": "UEOT.Blocker.blocker_involution",
+    "entry_path": "formalization/ueot-core/UEOT/Core/Blocker.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/Core/Blocker.lean",
+        "line": 72,
+        "header": "theorem blocker_involution [Fintype V] (G : Set (Finset V)) (hG : IsClutter G) :\n    blocker (blocker G) = G"
+      }
+    ]
+  },
+  {
+    "pid": "P-CAR-03",
+    "name": "UEOT.Blocker.blocker_empty",
+    "entry_path": "formalization/ueot-core/UEOT/Core/Blocker.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/Core/Blocker.lean",
+        "line": 87,
+        "header": "theorem blocker_empty : blocker (∅ : Set (Finset V)) = {∅}"
+      }
+    ]
+  },
+  {
+    "pid": "P-CAR-03",
+    "name": "UEOT.Blocker.blocker_singleton_empty",
+    "entry_path": "formalization/ueot-core/UEOT/Core/Blocker.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/Core/Blocker.lean",
+        "line": 102,
+        "header": "theorem blocker_singleton_empty : blocker ({∅} : Set (Finset V)) = ∅"
+      }
+    ]
+  },
+  {
+    "pid": "P-CAR-04",
+    "name": "UEOT.V3.DecoderRadius.decoder_radius_bounds",
+    "entry_path": "formalization/ueot-core/UEOT/V3/DecoderRadius.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/DecoderRadius.lean",
+        "line": 99,
+        "header": "theorem decoder_radius_bounds\n    (R : H → Z) (p : H → I → A) {e r : ℝ}\n    (he : IsLUB (FiberDistances R p) e)\n    (hr : IsGLB (DecoderBounds R p) r) :\n    e / 2 ≤ r ∧ r ≤ e"
+      }
+    ]
+  },
+  {
+    "pid": "P-RES-01",
+    "name": "UEOT.V3.ClosureResolution.minimal_property_coarse_graining",
+    "entry_path": "formalization/ueot-core/UEOT/V3/ClosureResolution.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/ClosureResolution.lean",
+        "line": 201,
+        "header": "theorem minimal_property_coarse_graining\n    (Lr Ls : ClosureSystem V)\n    (hrs : Lr.carrier ⊆ Ls.carrier)\n    {A : Set (Set V)}\n    (hA : UEOT.Resolution.Upward A)\n    (hFinite : (A ∩ Ls.carrier).Finite) :\n    admissibleMin Lr A =\n      resolutionMap Lr (admissibleMin Ls A)"
+      }
+    ]
+  },
+  {
+    "pid": "P-RES-02",
+    "name": "UEOT.V3.ClosureResolution.closure_comp_of_nested",
+    "entry_path": "formalization/ueot-core/UEOT/V3/ClosureResolution.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/ClosureResolution.lean",
+        "line": 70,
+        "header": "theorem closure_comp_of_nested\n    (Lr Ls : ClosureSystem V)\n    (hrs : Lr.carrier ⊆ Ls.carrier)\n    (S : Set V) :\n    closure Lr (closure Ls S) = closure Lr S"
+      }
+    ]
+  },
+  {
+    "pid": "P-RES-02",
+    "name": "UEOT.V3.ClosureResolution.resolutionMap_comp",
+    "entry_path": "formalization/ueot-core/UEOT/V3/ClosureResolution.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/ClosureResolution.lean",
+        "line": 177,
+        "header": "theorem resolutionMap_comp\n    (Lr Ls : ClosureSystem V)\n    (hrs : Lr.carrier ⊆ Ls.carrier)\n    {M : Set (Set V)} (hM : M.Finite) :\n    resolutionMap Lr M =\n      resolutionMap Lr (resolutionMap Ls M)"
+      }
+    ]
+  },
+  {
+    "pid": "P-RES-03",
+    "name": "UEOT.V3.BlockerNaturality.blocker_naturality",
+    "entry_path": "formalization/ueot-core/UEOT/V3/BlockerNaturality.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/BlockerNaturality.lean",
+        "line": 82,
+        "header": "theorem blocker_naturality {V W : Type*} [Fintype V] [DecidableEq W]\n    (π : V → W) (G : Set (Finset V)) : blocker (push π G) = push π (blocker G)"
+      }
+    ]
+  },
+  {
+    "pid": "P-RES-04",
+    "name": "UEOT.Resolution.lower_adjunction",
+    "entry_path": "formalization/ueot-core/UEOT/Core/Resolution.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/Core/Resolution.lean",
+        "line": 36,
+        "header": "theorem lower_adjunction (π : V → W) (C : Set (Set W))\n    (F : Set (Set V)) (hF : Upward F) :\n    lower π C ⊆ F ↔ C ⊆ restrict π F"
+      }
+    ]
+  },
+  {
+    "pid": "P-RES-04",
+    "name": "UEOT.Resolution.upper_adjunction",
+    "entry_path": "formalization/ueot-core/UEOT/Core/Resolution.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/Core/Resolution.lean",
+        "line": 45,
+        "header": "theorem upper_adjunction (π : V → W) (F : Set (Set V)) (C : Set (Set W))\n    (hF : Upward F) (hC : Upward C) :\n    restrict π F ⊆ C ↔ F ⊆ upper π C"
+      }
+    ]
+  },
+  {
+    "pid": "P-RES-05",
+    "name": "UEOT.V3.Resolution.pushFamily_realization_interval",
+    "entry_path": "formalization/ueot-core/UEOT/V3/Resolution.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/Resolution.lean",
+        "line": 195,
+        "header": "theorem pushFamily_realization_interval {V W : Type*} (π : V → W)\n    (C : Set (Set V)) (D : Set (Set W))\n    (hC : C.Finite) (hD : IsAntichain D) :\n    pushFamily π C = D ↔\n      lower π (UpClosure D) ⊆ UpClosure C ∧\n      UpClosure C ⊆ upper π (UpClosure D)"
+      }
+    ]
+  },
+  {
+    "pid": "P-RES-06",
+    "name": "UEOT.V3.Resolution.endpoint_equality_iff_unique_active_fibers",
+    "entry_path": "formalization/ueot-core/UEOT/V3/Resolution.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/Resolution.lean",
+        "line": 222,
+        "header": "theorem endpoint_equality_iff_unique_active_fibers {V W : Type*}\n    (π : V → W) (D : Set (Set W))\n    (surj : Function.Surjective π) (hD : IsAntichain D) :\n    lower π (UpClosure D) = upper π (UpClosure D) ↔\n      ∀ w, Active D w → UniqueFiber π w"
+      }
+    ]
+  },
+  {
+    "pid": "P-COMP-01",
+    "name": "UEOT.V3.CompositionPathSource.p_comp_01",
+    "entry_path": "formalization/ueot-core/UEOT/V3/CompositionPathSource.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/CompositionPathSource.lean",
+        "line": 128,
+        "header": "theorem p_comp_01\n    (ρ : Measure (U × (∀ i, X i))) [IsProbabilityMeasure ρ]\n    (hI : 2 ≤ Fintype.card I) :\n    (∀ π : ChildPartition I,\n      0 ≤ sourcePartitionInformation (X := X) ρ π) ∧\n    (∀ π : ChildPartition I,\n      sourcePartitionInformation (X := X) ρ π = 0 ↔\n        SourcePathFactorizes (X := X) ρ π) ∧\n    (0 < sourcePathIntegrationMargin (X := X) ρ hI ↔\n      ∀ π : ChildPartition I,\n        IsNontrivialPartition π →\n          ¬ SourcePathFactorizes (X := X) ρ π)"
+      }
+    ]
+  },
+  {
+    "pid": "P-COMP-02",
+    "name": "UEOT.V3.CompositionInterventionJS.jsDiv_mem_Icc_logTwo",
+    "entry_path": "formalization/ueot-core/UEOT/V3/CompositionInterventionJS.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/CompositionInterventionJS.lean",
+        "line": 214,
+        "header": "theorem jsDiv_mem_Icc_logTwo (P Q : Measure X)\n    [IsProbabilityMeasure P] [IsProbabilityMeasure Q] :\n    jsDiv P Q ∈ Set.Icc 0 logTwo"
+      }
+    ]
+  },
+  {
+    "pid": "P-COMP-02",
+    "name": "UEOT.V3.CompositionInterventionJS.jsDiv_eq_zero_iff",
+    "entry_path": "formalization/ueot-core/UEOT/V3/CompositionInterventionJS.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/CompositionInterventionJS.lean",
+        "line": 220,
+        "header": "theorem jsDiv_eq_zero_iff (P Q : Measure X)\n    [IsProbabilityMeasure P] [IsProbabilityMeasure Q] :\n    jsDiv P Q = 0 ↔ P = Q"
+      }
+    ]
+  },
+  {
+    "pid": "P-COMP-02",
+    "name": "UEOT.V3.CompositionInterventionJS.cutJSMargin_pos_iff",
+    "entry_path": "formalization/ueot-core/UEOT/V3/CompositionInterventionJS.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/CompositionInterventionJS.lean",
+        "line": 249,
+        "header": "theorem cutJSMargin_pos_iff (P : Measure X) (Pcut : I → Measure X)\n    [IsProbabilityMeasure P] [∀ π, IsProbabilityMeasure (Pcut π)] :\n    0 < cutJSMargin P Pcut ↔ ∀ π, Pcut π ≠ P"
+      }
+    ]
+  },
+  {
+    "pid": "P-COMP-03",
+    "name": "UEOT.V3.CompositionMargin.p_comp_03",
+    "entry_path": "formalization/ueot-core/UEOT/V3/CompositionMargin.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/CompositionMargin.lean",
+        "line": 58,
+        "header": "theorem p_comp_03\n    (K : I → X → X) (Lπ : I → ℝ)\n    (hLip : ∀ π T S, dist (K π T) (K π S) ≤ Lπ π * dist T S)\n    (T S : X) :\n    |compositionMargin K T - compositionMargin K S| ≤\n      (1 + maxCutLipschitz Lπ) * dist T S"
+      }
+    ]
+  },
+  {
+    "pid": "P-COMP-04",
+    "name": "UEOT.V3.CompositionParentInformation.p_comp_04",
+    "entry_path": "formalization/ueot-core/UEOT/V3/CompositionParentInformation.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/CompositionParentInformation.lean",
+        "line": 96,
+        "header": "theorem p_comp_04\n    (μ : Measure ((S × U) × M)) [IsProbabilityMeasure μ]\n    (g : M × U → C) (hg : Measurable g) :\n    sourceConditionalCoreEntropy μ\n        (parentCoreMap (S := S) g)\n        (measurable_parentCoreMap (S := S) g hg) ≤\n      representationConditionalEntropy μ"
+      }
+    ]
+  },
+  {
+    "pid": "P-COMP-05",
+    "name": "UEOT.V3.CompositionBooleanAtoms.p_comp_05",
+    "entry_path": "formalization/ueot-core/UEOT/V3/CompositionBooleanAtoms.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/CompositionBooleanAtoms.lean",
+        "line": 224,
+        "header": "theorem p_comp_05 (V : I → Set X) :\n    (∀ x : X, ∃! J : Finset I, x ∈ signatureAtom V J) ∧\n    (∀ i : I, V i = ⋃ J : {J : Finset I // i ∈ J}, signatureAtom V J.1) ∧\n    (∀ J : Finset I, (signatureAtom V J).Nonempty →\n      IsBooleanAtom (generatedBoolean V) (signatureAtom V J)) ∧\n    (∀ A : Set X, IsBooleanAtom (generatedBoolean V) A →\n      ∃ J : Finset I, (signatureAtom V J).Nonempty ∧ A = signatureAtom V J) ∧\n    (∀ L : BooleanSubalgebra (Set X),\n      (∀ i, V i ∈ L) → generatedBoolean V ≤ L)"
+      }
+    ]
+  },
+  {
+    "pid": "P-COMP-06",
+    "name": "UEOT.V3.CompositionCarrierLift.p_comp_06",
+    "entry_path": "formalization/ueot-core/UEOT/V3/CompositionCarrierLift.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/CompositionCarrierLift.lean",
+        "line": 83,
+        "header": "theorem p_comp_06\n    (R : I → Finset V) (physicalMin : Set (Finset V)) :\n    childMinimalFamily R physicalMin =\n      liftedMinimalCoverFamily R physicalMin"
+      }
+    ]
+  },
+  {
+    "pid": "P-COMP-07",
+    "name": "UEOT.V3.CompositionWindow.p_comp_07",
+    "entry_path": "formalization/ueot-core/UEOT/V3/CompositionWindow.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/CompositionWindow.lean",
+        "line": 27,
+        "header": "theorem p_comp_07\n    (a b dStar fStar : ℝ) (D F : ℝ → ℝ)\n    (hDcont : ContinuousOn D (Icc a b))\n    (hFcont : ContinuousOn F (Icc a b))\n    (hDmono : MonotoneOn D (Icc a b))\n    (hFanti : AntitoneOn F (Icc a b))\n    (hDfeas : ∃ k ∈ Icc a b, dStar ≤ D k)\n    (hFfeas : ∃ k ∈ Icc a b, fStar ≤ F k) :\n    ∃ kD kF : Icc a b,\n      IsLeast {k : Icc a b | dStar ≤ D k} kD ∧\n      IsGreatest {k : Icc a b | fStar ≤ F k} kF ∧\n      ({k : Icc a b | dStar ≤ D k ∧ fStar ≤ F k} =\n        if kD ≤ kF then Icc kD kF else ∅)"
+      }
+    ]
+  },
+  {
+    "pid": "P-STAT-01",
+    "name": "UEOT.V3.FiniteAlphabetPStat01.p_stat_01_tail",
+    "entry_path": "formalization/ueot-core/UEOT/V3/FiniteAlphabetPStat01.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/FiniteAlphabetPStat01.lean",
+        "line": 139,
+        "header": "theorem p_stat_01_tail\n    [Fintype J] [Fintype Y]\n    {N : ℕ} (hN : 0 < N)\n    (μ : Measure Ω) [IsProbabilityMeasure μ]\n    (p : J → Measure Y)\n    (hp : ∀ j, IsProbabilityMeasure (p j))\n    (sample : J → Fin N → Ω → Y)\n    (hmeas : ∀ j n, Measurable (sample j n))\n    (hindep : ∀ j, iIndepFun (sample j) μ)\n    (hlaw : ∀ j n, μ.map (sample j n) = p j)\n    {η : ℝ} (hη : 0 ≤ η) :\n    μ.real {ω | ∃ j : J,\n      η < tvDist (p j) (empiricalMeasure hN (sample j) ω)} ≤\n      (Fintype.card J : ℝ) *\n        (2 ^ (Fintype.card Y + 1) : ℝ) *\n        exp (-2 * (N : ℝ) * η ^ 2)"
+      }
+    ]
+  },
+  {
+    "pid": "P-STAT-01",
+    "name": "UEOT.V3.FiniteAlphabetPStat01Radius.p_stat_01_radius",
+    "entry_path": "formalization/ueot-core/UEOT/V3/FiniteAlphabetPStat01Radius.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/FiniteAlphabetPStat01Radius.lean",
+        "line": 101,
+        "header": "theorem p_stat_01_radius\n    [Fintype J] [Nonempty J] [Fintype Y]\n    {N : ℕ} (hN : 0 < N)\n    (μ : Measure Ω) [IsProbabilityMeasure μ]\n    (p : J → Measure Y)\n    (hp : ∀ j, IsProbabilityMeasure (p j))\n    (sample : J → Fin N → Ω → Y)\n    (hmeas : ∀ j n, Measurable (sample j n))\n    (hindep : ∀ j, iIndepFun (sample j) μ)\n    (hlaw : ∀ j n, μ.map (sample j n) = p j)\n    {α : ℝ} (hα0 : 0 < α) (hα1 : α ≤ 1) :\n    μ.real {ω | ∃ j : J,\n      pStat01Radius N (Fintype.card Y) (Fintype.card J) α <\n        tvDist (p j) (empiricalMeasure hN (sample j) ω)} ≤ α"
+      }
+    ]
+  },
+  {
+    "pid": "P-STAT-02",
+    "name": "UEOT.V3.StatisticalDefect.p_stat_02",
+    "entry_path": "formalization/ueot-core/UEOT/V3/StatisticalDefect.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/StatisticalDefect.lean",
+        "line": 181,
+        "header": "theorem p_stat_02\n    [Nonempty H] [Nonempty I]\n    (readout : Finset V → H → R)\n    (p pHat : H → I → Measure Y)\n    (hp : ∀ h i, IsProbabilityMeasure (p h i))\n    (hpHat : ∀ h i, IsProbabilityMeasure (pHat h i))\n    (η : ℝ)\n    (hresp : ∀ h i, tvDist (p h i) (pHat h i) ≤ η) :\n    ∀ S : Finset V,\n      |responseDefect readout pHat S - responseDefect readout p S| ≤ 2 * η"
+      }
+    ]
+  },
+  {
+    "pid": "P-STAT-03",
+    "name": "UEOT.V3.Threshold.approximate_family",
+    "entry_path": "formalization/ueot-core/UEOT/V3/Threshold.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/Threshold.lean",
+        "line": 24,
+        "header": "theorem approximate_family {V : Type*} (e estimate : Finset V → ℝ) (δ η : ℝ)\n    (error : ∀ S, |estimate S - e S| ≤ 2 * η)\n    (margin : ∀ S, 2 * η < |e S - δ|) :\n    {S | Finite.Minimal (fun T => estimate T ≤ δ) S} =\n      {S | Finite.Minimal (fun T => e T ≤ δ) S}"
+      }
+    ]
+  },
+  {
+    "pid": "P-STAT-04",
+    "name": "UEOT.V3.Threshold.exact_family",
+    "entry_path": "formalization/ueot-core/UEOT/V3/Threshold.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/Threshold.lean",
+        "line": 50,
+        "header": "theorem exact_family {V : Type*} (e estimate : Finset V → ℝ) (Δ τ η : ℝ)\n    (nonneg : ∀ S, 0 ≤ e S) (error : ∀ S, |estimate S - e S| ≤ 2 * η)\n    (gap : ∀ S, 0 < e S → Δ ≤ e S)\n    (lower : 2 * η < τ) (upper : τ < Δ - 2 * η) :\n    {S | Finite.Minimal (fun T => estimate T ≤ τ) S} =\n      {S | Finite.Minimal (fun T => e T = 0) S}"
+      }
+    ]
+  },
+  {
+    "pid": "P-STAT-05",
+    "name": "UEOT.V3.PredictiveClassRecovery.p_stat_05",
+    "entry_path": "formalization/ueot-core/UEOT/V3/PredictiveClassRecovery.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/PredictiveClassRecovery.lean",
+        "line": 151,
+        "header": "theorem p_stat_05\n    [Fintype H] [Fintype I] [Nonempty I]\n    (p pHat : H → I → Measure Y)\n    (hp : ∀ h i, IsProbabilityMeasure (p h i))\n    (hpHat : ∀ h i, IsProbabilityMeasure (pHat h i))\n    (η γ : ℝ)\n    (hresp : ∀ h i, tvDist (p h i) (pHat h i) ≤ η)\n    (hsep : ∀ h h', ¬ trueEquivalent p h h' →\n      γ ≤ protocolDistance p h h')\n    (hgap : 2 * η < γ / 2) :\n    ∀ h h' : H,\n      protocolDistance pHat h h' ≤ γ / 2 ↔ trueEquivalent p h h'"
+      }
+    ]
+  },
+  {
+    "pid": "P-STAT-06",
+    "name": "UEOT.V3.HilbertMeanSourceRadius.source_meanError_tail_exact_radius",
+    "entry_path": "formalization/ueot-core/UEOT/V3/HilbertMeanSourceRadius.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/HilbertMeanSourceRadius.lean",
+        "line": 53,
+        "header": "theorem source_meanError_tail_exact_radius\n    [BorelSpace H] [StandardBorelSpace H] [CompleteSpace H]\n    [MeasurableAdd₂ H] [MeasurableSub H] [Nonempty H]\n    {N L : ℕ} (hN : 0 < N) (hL : 0 < L)\n    {alpha : ℝ} (halpha0 : 0 < alpha) (halpha1 : alpha ≤ 1)\n    (μ : Fin N → Measure H) [∀ j, IsProbabilityMeasure (μ j)]\n    (μH : H) (hμH : ‖μH‖ ≤ 1)\n    (hInt : ∀ j, Integrable (fun x : H => x) (μ j))\n    (hmean : ∀ j, (∫ x : H, x ∂μ j) = μH)\n    (hunit : ∀ j, ∀ᵐ x ∂μ j, ‖x‖ ≤ 1) :\n    (Measure.pi μ).real\n      {ω | pStat06SourceRadius N L alpha ≤ ‖empiricalMean ω - μH‖}\n      ≤ alpha / (L : ℝ)"
+      }
+    ]
+  },
+  {
+    "pid": "P-STAT-06",
+    "name": "UEOT.V3.HilbertMeanSourceSimultaneous.source_simultaneous_exact_radius",
+    "entry_path": "formalization/ueot-core/UEOT/V3/HilbertMeanSourceSimultaneous.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/HilbertMeanSourceSimultaneous.lean",
+        "line": 26,
+        "header": "theorem source_simultaneous_exact_radius\n    {N L : ℕ} (hL : 0 < L)\n    (μ : Measure Ω)\n    (alpha : ℝ)\n    (err : Fin L → Ω → ℝ)\n    (h_each : ∀ j,\n      μ.real {ω | pStat06SourceRadius N L alpha ≤ err j ω} ≤\n        alpha / (L : ℝ)) :\n    μ.real {ω | ∃ j : Fin L, pStat06SourceRadius N L alpha ≤ err j ω} ≤ alpha"
+      }
+    ]
+  },
+  {
+    "pid": "P-STAT-08",
+    "name": "UEOT.V3.FiniteCandidatePStat08.p_stat_08",
+    "entry_path": "formalization/ueot-core/UEOT/V3/FiniteCandidatePStat08.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/FiniteCandidatePStat08.lean",
+        "line": 77,
+        "header": "theorem p_stat_08\n    [Fintype F] [Nonempty F]\n    {N : ℕ} (hN : 0 < N)\n    (μ : Measure Ω) [IsProbabilityMeasure μ]\n    (P : Measure Z)\n    (loss : F → Z → ℝ)\n    (hloss : ∀ f, Measurable (loss f))\n    (hloss01 : ∀ f z, loss f z ∈ Set.Icc (0 : ℝ) 1)\n    (sample : Fin N → Ω → Z)\n    (hmeas : ∀ n, Measurable (sample n))\n    (hindep : iIndepFun sample μ)\n    (hlaw : ∀ n, μ.map (sample n) = P)\n    (fHat : Ω → F) (fStar : F)\n    (hERM : ∀ ω f,\n      empiricalRisk (loss (fHat ω)) sample ω ≤ empiricalRisk (loss f) sample ω)\n    (hStar : ∀ f, trueRisk P (loss fStar) ≤ trueRisk P (loss f))\n    {α : ℝ} (hα0 : 0 < α) (hα1 : α ≤ 1) :\n    μ.real {ω |\n      trueRisk P (loss (fHat ω)) >\n        trueRisk P (loss fStar) +\n          2 * pStat08Radius N (Fintype.card F) α} ≤ α"
+      }
+    ]
+  },
+  {
+    "pid": "P-INV-01",
+    "name": "UEOT.V3.BinaryTesting.p_inv_01",
+    "entry_path": "formalization/ueot-core/UEOT/V3/BinaryTesting.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/BinaryTesting.lean",
+        "line": 131,
+        "header": "theorem p_inv_01\n    (P₀ P₁ : Measure X)\n    [IsProbabilityMeasure P₀] [IsProbabilityMeasure P₁] :\n    ∃ A : Set X, MeasurableSet A ∧\n      binaryRisk P₀ P₁ A = (1 / 2 : ℝ) * (1 - tvDist P₀ P₁) ∧\n      ∀ B : Set X, MeasurableSet B →\n        binaryRisk P₀ P₁ A ≤ binaryRisk P₀ P₁ B"
+      }
+    ]
+  },
+  {
+    "pid": "P-INV-02",
+    "name": "UEOT.V3.FisherGauge.p_inv_02",
+    "entry_path": "formalization/ueot-core/UEOT/V3/FisherGauge.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/FisherGauge.lean",
+        "line": 76,
+        "header": "theorem p_inv_02 {d : ℕ}\n    (μ : Measure Ω) (score : Ω → Fin d → ℝ) (v : Fin d → ℝ)\n    (logLik : ℝ → Ω → ℝ)\n    (hinv : ∀ ω t, logLik t ω = logLik 0 ω)\n    (hderiv : ∀ᵐ ω ∂μ,\n      HasDerivAt (fun t : ℝ => logLik t ω) (directionalScore score v ω) 0) :\n    fisherAction μ score v = 0"
+      }
+    ]
+  },
+  {
+    "pid": "P-INV-03",
+    "name": "UEOT.V3.FisherIntersection.p_inv_03",
+    "entry_path": "formalization/ueot-core/UEOT/V3/FisherIntersection.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/FisherIntersection.lean",
+        "line": 326,
+        "header": "theorem p_inv_03\n    {E d : ℕ}\n    (μ : Measure Ω) [IsProbabilityMeasure μ]\n    (s : Fin E → Ω → Fin d → ℝ)\n    (h_int : ∀ e f i j,\n      Integrable (fun ω => s e ω i * s f ω j) μ)\n    (h_indep : ∀ e f, e ≠ f → ∀ i j,\n      (fun ω => s e ω i) ⟂ᵢ[μ] (fun ω => s f ω j))\n    (h_meas : ∀ e i, AEStronglyMeasurable (fun ω => s e ω i) μ)\n    (h_centered : ∀ e i, ∫ ω, s e ω i ∂μ = 0)\n    (v : Fin d → ℝ) :\n    fisherAction μ (scoreSum s) v = 0 ↔\n      ∀ e, fisherAction μ (s e) v = 0"
+      }
+    ]
+  },
+  {
+    "pid": "P-INV-04",
+    "name": "UEOT.V3.DesignIdentifiability.p_inv_04",
+    "entry_path": "formalization/ueot-core/UEOT/V3/DesignIdentifiability.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/DesignIdentifiability.lean",
+        "line": 59,
+        "header": "theorem p_inv_04 {N d : ℕ} (phi : Fin N → Fin d → ℝ) :\n    UniquelyIdentifies phi ↔ GramPositive phi"
+      }
+    ]
+  },
+  {
+    "pid": "P-INV-05",
+    "name": "UEOT.V3.PredictableOLSSourceConfidence.measure_source_goodGram_and_euclidean_error_gt_le_alpha",
+    "entry_path": "formalization/ueot-core/UEOT/V3/PredictableOLSSourceConfidence.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/PredictableOLSSourceConfidence.lean",
+        "line": 60,
+        "header": "theorem measure_source_goodGram_and_euclidean_error_gt_le_alpha\n    {N d : ℕ} (hN : 0 < N) (hd : 0 < d)\n    (μ : Measure Ω) [IsProbabilityMeasure μ]\n    (F : Filtration ℕ mΩ)\n    (phi : ℕ → Ω → Fin d → ℝ)\n    (xi : ℕ → Ω → ℝ)\n    (thetaStar : Fin d → ℝ)\n    (thetaHat : Ω → Fin d → ℝ)\n    {sigma B kappa alpha : ℝ}\n    (hsigma : 0 < sigma) (hB : 0 < B) (hkappa : 0 < kappa)\n    (halpha0 : 0 < alpha) (halpha1 : alpha ≤ 1)\n    (hphi : ∀ n j, @Measurable Ω ℝ (F n) inferInstance\n      (fun ω => phi (n + 1) ω j))\n    (hxi_meas : ∀ n, @Measurable Ω ℝ (F (n + 1)) inferInstance\n      (xi (n + 1)))\n    (hbound : ∀ n ω j, |phi (n + 1) ω j| ≤ B)\n    (hnoise : ∀ n,\n      HasCondSubgaussianMGF (F n) (F.le n)\n        (xi (n + 1)) (noiseParam sigma) μ)\n    (hOLS : ∀ ω,\n      IsOLSNormalEq\n        (finDesign (N := N) phi ω)\n        (linearResponse\n          (finDesign (N := N) phi ω) thetaStar\n          (finNoise (N := N) xi ω))\n        (thetaHat ω)) :\n    μ.real {ω |\n      GoodGram (finDesign (N := N) phi ω) kappa ∧\n      errorRadius N d sigma B kappa alpha <\n        sqrt (sqNorm (thetaHat ω - thetaStar))} ≤ alpha"
+      }
+    ]
+  },
+  {
+    "pid": "P-TEL-01",
+    "name": "UEOT.V3.RewardInfinite.shaping_limit_value",
+    "entry_path": "formalization/ueot-core/UEOT/V3/RewardInfinite.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/RewardInfinite.lean",
+        "line": 118,
+        "header": "theorem shaping_limit_value\n    (β a c M V V' : ℝ) (r ψ : ℕ → ℝ)\n    (hβ : |β| < 1)\n    (hψ : ∀ n, |ψ n| ≤ M)\n    (hr : Tendsto (fun n => discounted β r n) atTop (𝓝 V))\n    (hr' : Tendsto\n      (fun n => discounted β\n        (fun t => a * r t + β * ψ (t + 1) - ψ t + c) n)\n      atTop (𝓝 V')) :\n    V' = a * V - ψ 0 + c * (1 - β)⁻¹"
+      }
+    ]
+  },
+  {
+    "pid": "P-TEL-01",
+    "name": "UEOT.V3.RewardInfinite.policy_values_affine_from_bounded_state_potential",
+    "entry_path": "formalization/ueot-core/UEOT/V3/RewardInfinite.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/RewardInfinite.lean",
+        "line": 161,
+        "header": "theorem policy_values_affine_from_bounded_state_potential\n    {P X : Type*} [MeasurableSpace X]\n    (μ : P → ℕ → Measure X)\n    [∀ p n, IsProbabilityMeasure (μ p n)]\n    (ψState : X → ℝ) (x : X)\n    (β a c M : ℝ)\n    (r : P → ℕ → ℝ)\n    (V V' : P → ℝ)\n    (hβ : |β| < 1)\n    (ha : 0 < a)\n    (hψm : StronglyMeasurable ψState)\n    (hψ : ∀ y, |ψState y| ≤ M)\n    (hμ0 : ∀ p, μ p 0 = Measure.dirac x)\n    (hr : ∀ p,\n      Tendsto (fun n => discounted β (r p) n) atTop (𝓝 (V p)))\n    (hr' : ∀ p,\n      Tendsto\n        (fun n => discounted β\n          (fun t =>\n            a * r p t\n              + β * expectedPotential (μ p) ψState (t + 1)\n              - expectedPotential (μ p) ψState t\n              + c) n)\n        atTop (𝓝 (V' p))) :\n    (∀ p, V' p = a * V p - ψState x + c * (1 - β)⁻¹) ∧\n      ∀ p, IsMaximizer V' p ↔ IsMaximizer V p"
+      }
+    ]
+  },
+  {
+    "pid": "P-CTL-01",
+    "name": "UEOT.V3.FiniteDiscountedControl.p_ctl_01_causal_optimality",
+    "entry_path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedControl.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedGreedy.lean",
+        "line": 154,
+        "header": "theorem p_ctl_01_causal_optimality (M : Model X A) :\n    (∀ (π : CausalPolicy X A) {t : ℕ} (h : π.Memory t),\n      infiniteValue π M h ≤ M.optimalValue (π.current h)) ∧\n    (∀ {t : ℕ} (x : X),\n      infiniteValue (greedyPolicy M) M (t := t) x = M.optimalValue x)"
+      }
+    ]
+  },
+  {
+    "pid": "P-CTL-01",
+    "name": "UEOT.V3.FiniteDiscountedControl.Model.fixedPoint_unique",
+    "entry_path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedControl.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedControl.lean",
+        "line": 149,
+        "header": "theorem fixedPoint_unique {v : X → ℝ} (hv : M.bellman v = v) :\n    v = M.optimalValue"
+      }
+    ]
+  },
+  {
+    "pid": "P-CTL-01",
+    "name": "UEOT.V3.FiniteDiscountedControl.Model.valueIteration_tendsto",
+    "entry_path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedControl.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedControl.lean",
+        "line": 154,
+        "header": "theorem valueIteration_tendsto (v₀ : X → ℝ) :\n    Tendsto (fun n => M.bellman^[n] v₀) atTop (𝓝 M.optimalValue)"
+      }
+    ]
+  },
+  {
+    "pid": "P-CTL-01",
+    "name": "UEOT.V3.FiniteDiscountedControl.Model.valueError_le_residual",
+    "entry_path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedControl.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedControl.lean",
+        "line": 190,
+        "header": "theorem valueError_le_residual (v : X → ℝ) :\n    dist v M.optimalValue ≤ dist v (M.bellman v) / (1 - M.discount)"
+      }
+    ]
+  },
+  {
+    "pid": "P-CTL-01",
+    "name": "UEOT.V3.FiniteDiscountedControl.CausalPolicy.infiniteValue_le_optimal",
+    "entry_path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedControl.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedCausalInfinite.lean",
+        "line": 183,
+        "header": "theorem infiniteValue_le_optimal (π : CausalPolicy X A) (M : Model X A)\n    {t : ℕ} (h : π.Memory t) :\n    infiniteValue π M h ≤ M.optimalValue (π.current h)"
+      }
+    ]
+  },
+  {
+    "pid": "P-CTL-01",
+    "name": "UEOT.V3.FiniteDiscountedControl.greedy_infiniteValue_eq_optimal",
+    "entry_path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedControl.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedGreedy.lean",
+        "line": 146,
+        "header": "theorem greedy_infiniteValue_eq_optimal (M : Model X A) {t : ℕ} (x : X) :\n    infiniteValue (greedyPolicy M) M (t := t) x = M.optimalValue x"
+      }
+    ]
+  },
+  {
+    "pid": "P-CTL-02",
+    "name": "UEOT.V3.CompactFellerControl.Model.p_ctl_02",
+    "entry_path": "formalization/ueot-core/UEOT/V3/CompactFellerControl.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/CompactFellerControl.lean",
+        "line": 303,
+        "header": "theorem p_ctl_02 (M : UEOT.V3.CompactFellerControl.Model X A) :\n    ContractingWith M.discountNN M.bellman ∧\n    M.bellman M.optimalValue = M.optimalValue ∧\n    (∀ v : C(X, ℝ), M.bellman v = v → v = M.optimalValue) ∧\n    Measurable M.greedySelector ∧\n    (∀ x,\n      M.qValue M.optimalValue x (M.greedySelector x) = M.optimalValue x) ∧\n    (∀ (π : CausalPolicy X A) [∀ n, IsMarkovKernel (π n)] (x : X),\n      M.causalModel.infiniteValue π 0\n        (UEOT.V3.CompactCausalOptimalityCore.initialHistory (A := A) x) ≤\n          M.optimalValue x) ∧\n    (∀ x : X,\n      M.causalModel.infiniteValue M.stationaryPolicy 0\n        (UEOT.V3.CompactCausalOptimalityCore.initialHistory (A := A) x) =\n          M.optimalValue x)"
+      }
+    ]
+  },
+  {
+    "pid": "P-CTL-03",
+    "name": "UEOT.V3.DiffusionHJBVerification.p_ctl_03",
+    "entry_path": "formalization/ueot-core/UEOT/V3/DiffusionHJBVerification.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/DiffusionHJBVerification.lean",
+        "line": 307,
+        "header": "theorem p_ctl_03\n    (M : Model X A) {Policy : Type*} (F : M.ControlFamily Policy) :\n    F.IsOptimalValue"
+      }
+    ]
+  },
+  {
+    "pid": "P-QUO-02",
+    "name": "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.p_quo_02",
+    "entry_path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedControl.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedApproxQuotientBounds.lean",
+        "line": 282,
+        "header": "theorem p_quo_02 :\n    dist Q.micro.optimalValue (Q.pullback Q.macroModel.optimalValue) ≤ Q.D ∧\n    (∀ {t : ℕ} (x : X),\n      0 ≤ Q.micro.optimalValue x -\n        infiniteValue\n          (selectorPolicy (Q.liftSelector Q.macroModel.greedyAction))\n          Q.micro (t := t) x ∧\n      Q.micro.optimalValue x -\n        infiniteValue\n          (selectorPolicy (Q.liftSelector Q.macroModel.greedyAction))\n          Q.micro (t := t) x ≤ 2 * Q.D)"
+      }
+    ]
+  },
+  {
+    "pid": "P-QUO-03",
+    "name": "UEOT.V3.CoreOperationalAssembly.macro_gap_certifies_micro_action",
+    "entry_path": "formalization/ueot-core/UEOT/V3/CoreOperationalAssembly.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/CoreOperationalAssembly.lean",
+        "line": 253,
+        "header": "theorem macro_gap_certifies_micro_action\n    {X : Type uX} [Fintype X]\n    {M : Type uM} [Fintype M]\n    {Abar : M → Type uA}\n    [∀ m, Fintype (Abar m)] [∀ m, Nonempty (Abar m)]\n    (Q : ApproxControlQuotient X M Abar)\n    (x : X)\n    (hgap : ∀ a, a ≠ Q.macroModel.greedyAction (Q.f x) →\n      2 * Q.D <\n        Q.macroModel.qValue Q.macroModel.optimalValue (Q.f x)\n          (Q.macroModel.greedyAction (Q.f x)) -\n        Q.macroModel.qValue Q.macroModel.optimalValue (Q.f x) a) :\n    ∀ a, a ≠ Q.macroModel.greedyAction (Q.f x) →\n      Q.micro.qValue Q.micro.optimalValue x a <\n        Q.micro.qValue Q.micro.optimalValue x\n          (Q.macroModel.greedyAction (Q.f x))"
+      }
+    ]
+  },
+  {
+    "pid": "P-QUO-04",
+    "name": "UEOT.V3.FiniteDiscountedControl.Model.p_quo_04",
+    "entry_path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedControl.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedOccupancy.lean",
+        "line": 398,
+        "header": "theorem p_quo_04\n    (π : StationaryPolicy A) (μ : ProbabilityRow X) (w : X → ℝ) :\n    (M.policyValue π - w = M.policyResolvent π (M.policyReferenceResidual π w)) ∧\n    (M.policyResolvent π (M.policyReferenceResidual π w) =\n      M.policyNeumannSeries π (M.policyReferenceResidual π w)) ∧\n    (∀ x,\n      (M.discountedStateOccupancy π μ).prob x =\n        (1 - M.discount) * ∑' t : ℕ,\n          M.discount ^ t * (M.policyStateRow π μ t).prob x) ∧\n    (∀ y,\n      (M.discountedStateOccupancy π μ).prob y =\n        (1 - M.discount) * μ.prob y +\n          M.discount * ∑ x,\n            (M.discountedStateOccupancy π μ).prob x * M.policyTransition π x y) ∧\n    (μ.expect (M.policyValue π - w) =\n      (M.discountedStateOccupancy π μ).expect (M.policyReferenceResidual π w) /\n        (1 - M.discount)) ∧\n    (∀ x,\n      ∑ a, M.discountedStateActionOccupancy π μ x a =\n        (M.discountedStateOccupancy π μ).prob x) ∧\n    (∑ x, ∑ a, M.discountedStateActionOccupancy π μ x a = 1)"
+      }
+    ]
+  },
+  {
+    "pid": "P-QUO-05",
+    "name": "UEOT.V3.FiniteDiscountedControl.LocalApproxControlQuotient.p_quo_05",
+    "entry_path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedControl.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/FiniteDiscountedOccupancyRegret.lean",
+        "line": 377,
+        "header": "theorem p_quo_05\n    (πstar : StationaryPolicy (fun x => Abar (Q.f x)))\n    (hπstar : Q.micro.policyValue πstar = Q.micro.optimalValue)\n    (σbar : ∀ y, Abar y)\n    (hσbar : ∀ y,\n      Q.macroModel.qValue Q.macroModel.optimalValue y (σbar y) =\n        Q.macroModel.optimalValue y)\n    (μ : ProbabilityRow X) :\n    μ.expect Q.micro.optimalValue -\n        μ.expect (Q.micro.policyValue (Q.liftedPolicy σbar)) ≤\n      (Q.localErrorExpect πstar μ +\n        Q.localErrorExpect (Q.liftedPolicy σbar) μ) /\n          (1 - Q.micro.discount)"
+      }
+    ]
+  },
+  {
+    "pid": "P-GOA-02",
+    "name": "UEOT.V3.FiniteDobrushin.p_goa_02",
+    "entry_path": "formalization/ueot-core/UEOT/V3/FiniteDobrushin.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/FiniteDobrushin.lean",
+        "line": 363,
+        "header": "theorem p_goa_02\n    (P : Matrix S S ℝ) (hP : P ∈ Matrix.rowStochastic ℝ S)\n    (halpha : dobrushinAlpha P hP < 1) :\n    (∃! mu : stdSimplex ℝ S, step P hP mu = mu) ∧\n      ∀ (Q : Matrix S S ℝ) (hQ : Q ∈ Matrix.rowStochastic ℝ S)\n        (mu muhat : stdSimplex ℝ S) (epsilon : ℝ),\n        step P hP mu = mu →\n        step Q hQ muhat = muhat →\n        (∀ x, crossRowTV P hP Q hQ x ≤ epsilon) →\n        lawTV mu muhat ≤ epsilon / (1 - dobrushinAlpha P hP)"
+      }
+    ]
+  },
+  {
+    "pid": "P-GOA-02",
+    "name": "UEOT.V3.FiniteDobrushin.tv_step_le_dobrushin",
+    "entry_path": "formalization/ueot-core/UEOT/V3/FiniteDobrushin.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/FiniteDobrushin.lean",
+        "line": 263,
+        "header": "theorem tv_step_le_dobrushin\n    (P : Matrix S S ℝ) (hP : P ∈ Matrix.rowStochastic ℝ S)\n    (mu nu : stdSimplex ℝ S) :\n    lawTV (step P hP mu) (step P hP nu) ≤\n      dobrushinAlpha P hP * lawTV mu nu"
+      }
+    ]
+  },
+  {
+    "pid": "P-GOA-03",
+    "name": "UEOT.V3.FiniteRecurrentDecompositionStability.p_goa_03",
+    "entry_path": "formalization/ueot-core/UEOT/V3/FiniteRecurrentDecompositionStability.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/FiniteRecurrentDecompositionStability.lean",
+        "line": 1299,
+        "header": "theorem p_goa_03\n    {R : Type uS} {C : Type uC}\n    [Fintype R] [Fintype C] [DecidableEq R] [DecidableEq C]\n    (K : RecurrentPartition R C)\n    (M Mhat : FiniteRecurrentDecomposition (T := T) K)\n    (epsQ epsR : ℝ)\n    (hQ : ‖Mhat.block.Q - M.block.Q‖ ≤ epsQ)\n    (hR : ‖Mhat.block.R - M.block.R‖ ≤ epsR)\n    (hsmall : ‖M.block.N‖ * epsQ < 1)\n    (x0 : FullState T R)\n    (epsStat : C → ℝ)\n    (hstat : ∀ j,\n      UEOT.V3.FiniteDobrushin.lawTV (M.classLaw j) (Mhat.classLaw j) ≤ epsStat j) :\n    let nu := recurrentMixture (initialClassWeights K M.block x0) M.classLaw\n    let nuhat := recurrentMixture (initialClassWeights K Mhat.block x0) Mhat.classLaw\n    ‖Mhat.block.H - M.block.H‖ ≤\n        (‖M.block.N‖ ^ 2 * epsQ + ‖M.block.N‖ * epsR) /\n          (1 - ‖M.block.N‖ * epsQ) ∧\n      Tendsto\n        (UEOT.V3.FiniteCesaroInvariant.cesaroRow M.P M.stochastic (FiniteRecurrentDecomposition.pureFullLaw x0))\n        atTop (𝓝 nu) ∧\n      Tendsto\n        (UEOT.V3.FiniteCesaroInvariant.cesaroRow Mhat.P Mhat.stochastic (FiniteRecurrentDecomposition.pureFullLaw x0))\n        atTop (𝓝 nuhat) ∧\n      UEOT.V3.FiniteDobrushin.lawTV nu nuhat ≤\n        (1 / 2 : ℝ) *\n            ((‖M.block.N‖ ^ 2 * epsQ + ‖M.block.N‖ * epsR) /\n              (1 - ‖M.block.N‖ * epsQ)) +\n          ∑ j, (initialClassWeights K Mhat.block x0).1 j * epsStat j"
+      }
+    ]
+  },
+  {
+    "pid": "P-GOA-04",
+    "name": "UEOT.V3.SymmetricKilledSpectralStability.p_goa_04",
+    "entry_path": "formalization/ueot-core/UEOT/V3/SymmetricKilledSpectralStability.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/SymmetricKilledSpectralStability.lean",
+        "line": 383,
+        "header": "theorem p_goa_04\n    {ι : Type*} [Fintype ι] [DecidableEq ι]\n    (K Khat : SymmetricKilledKernel ι)\n    (u uhat : EuclideanSpace ℝ ι)\n    (rho rhohat lambda2 g eta : ℝ)\n    (hu : PrincipalGap K.operator u rho lambda2)\n    (huhat : PrincipalEigenpair Khat.operator uhat rhohat)\n    (hu_pos : ∀ i, 0 < u i) (huhat_pos : ∀ i, 0 < uhat i)\n    (hgap : g = rho - lambda2) (hg : 0 < g)\n    (hpert : ‖Khat.matrix - K.matrix‖ ≤ eta)\n    (heta : eta < g / 2) :\n    |rhohat - rho| ≤ eta ∧\n      letI : MeasurableSpace ι := ⊤\n      tvDist (squarePMF u hu.unit).toMeasure (squarePMF uhat huhat.unit).toMeasure ≤\n        2 * Real.sqrt 2 * eta / g"
+      }
+    ]
+  },
+  {
+    "pid": "P-KL-01",
+    "name": "UEOT.V3.PathEventKL.p_kl_01",
+    "entry_path": "formalization/ueot-core/UEOT/V3/PathEventKL.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/PathEventKL.lean",
+        "line": 40,
+        "header": "theorem p_kl_01\n    (Q P0 : Measure X)\n    [IsProbabilityMeasure Q] [IsProbabilityMeasure P0]\n    (A : Set X) (hA : MeasurableSet A)\n    (_hQP0 : Q ≪ P0) :\n    dBern (Q.real A) (P0.real A) ≤ klDiv Q P0"
+      }
+    ]
+  },
+  {
+    "pid": "P-KL-02",
+    "name": "UEOT.V3.PathEventIProjection.p_kl_02",
+    "entry_path": "formalization/ueot-core/UEOT/V3/PathEventIProjection.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/PathEventIProjectionGlobal.lean",
+        "line": 180,
+        "header": "theorem p_kl_02\n    (P0 : Measure X) [IsProbabilityMeasure P0]\n    (A : Set X) (p : ℝ) (hA : MeasurableSet A)\n    (hp0 : 0 ≤ p) (hp1 : p ≤ 1)\n    (hq0 : 0 < P0.real A) (hq1 : P0.real A < 1) :\n    (p ≤ P0.real A →\n      eventKLIInf P0 A p = 0 ∧ klDiv P0 P0 = 0) ∧\n    (P0.real A < p →\n      eventKLIInf P0 A p = dBern p (P0.real A) ∧\n        IsProbabilityMeasure (eventIProjection P0 A p) ∧\n        eventIProjection P0 A p ≪ P0 ∧\n        (eventIProjection P0 A p).real A = p ∧\n        ((eventIProjection P0 A p).rnDeriv P0 =ᵐ[P0]\n          eventTiltDensity P0 A p) ∧\n        klDiv (eventIProjection P0 A p) P0 = dBern p (P0.real A))"
+      }
+    ]
+  },
+  {
+    "pid": "P-KL-03",
+    "name": "UEOT.V3.PathKLChain.p_kl_03",
+    "entry_path": "formalization/ueot-core/UEOT/V3/PathKLChain.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/PathKLChain.lean",
+        "line": 138,
+        "header": "theorem p_kl_03\n    (μ0 : Measure X) [IsProbabilityMeasure μ0]\n    (P Q : ∀ n, Kernel (History X n) X)\n    [∀ n, IsMarkovKernel (P n)] [∀ n, IsMarkovKernel (Q n)]\n    (hPQ : ∀ n h, P n h ≪ Q n h) :\n    ∀ T : ℕ,\n      klDiv (pathLaw μ0 P T) (pathLaw μ0 Q T) =\n        ∑ t ∈ Finset.range T,\n          ∫⁻ h, klDiv (P t h) (Q t h) ∂pathLaw μ0 P t"
+      }
+    ]
+  },
+  {
+    "pid": "P-KL-03",
+    "name": "UEOT.V3.PathKLChain.p_kl_03_general",
+    "entry_path": "formalization/ueot-core/UEOT/V3/PathKLChain.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/PathKLChain.lean",
+        "line": 180,
+        "header": "theorem p_kl_03_general\n    (μ0 ν0 : Measure X) [IsProbabilityMeasure μ0] [IsProbabilityMeasure ν0]\n    (P Q : ∀ n, Kernel (History X n) X)\n    [∀ n, IsMarkovKernel (P n)] [∀ n, IsMarkovKernel (Q n)]\n    (hPQ : ∀ n h, P n h ≪ Q n h) :\n    ∀ T : ℕ,\n      klDiv (pathLaw μ0 P T) (pathLaw ν0 Q T) =\n        klDiv μ0 ν0 +\n          ∑ t ∈ Finset.range T,\n            ∫⁻ h, klDiv (P t h) (Q t h) ∂pathLaw μ0 P t"
+      }
+    ]
+  },
+  {
+    "pid": "P-KL-04",
+    "name": "UEOT.V3.FiniteCTMCPathKL.p_kl_04_holding",
+    "entry_path": "formalization/ueot-core/UEOT/V3/FiniteCTMCPathKL.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/FiniteCTMCPathKL.lean",
+        "line": 3053,
+        "header": "theorem p_kl_04_holding\n    (Gu G0 : FiniteJumpGenerator X) (T : NNReal) (x : X)\n    (hsupport : SupportIncluded Gu G0) :\n    klDiv (Gu.pathLawFrom T x) (G0.pathLawFrom T x) =\n      ENNReal.ofReal\n        (∫ γ, fullSourceRateHolding Gu G0 γ ∂Gu.pathLawFrom T x)"
+      }
+    ]
+  },
+  {
+    "pid": "P-KL-04",
+    "name": "UEOT.V3.FiniteCTMCPathKL.p_kl_04_clock",
+    "entry_path": "formalization/ueot-core/UEOT/V3/FiniteCTMCPathKL.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/FiniteCTMCPathKL.lean",
+        "line": 3068,
+        "header": "theorem p_kl_04_clock\n    (Gu G0 : FiniteJumpGenerator X) (T : NNReal) (x : X)\n    (hsupport : SupportIncluded Gu G0) :\n    klDiv (Gu.pathLawFrom T x) (G0.pathLawFrom T x) =\n      ENNReal.ofReal\n        (∫ γ, sourceClockIntegral Gu G0 T γ ∂Gu.pathLawFrom T x)"
+      }
+    ]
+  },
+  {
+    "pid": "P-KL-04",
+    "name": "UEOT.V3.FiniteCTMCPathKL.p_kl_04",
+    "entry_path": "formalization/ueot-core/UEOT/V3/FiniteCTMCPathKL.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/FiniteCTMCPathKL.lean",
+        "line": 3083,
+        "header": "theorem p_kl_04\n    (Gu G0 : FiniteJumpGenerator X) (T : NNReal) (x : X)\n    (hsupport : SupportIncluded Gu G0) :\n    klDiv (Gu.pathLawFrom T x) (G0.pathLawFrom T x) =\n      ENNReal.ofReal\n        (∫ γ,\n          (∫ t : ℝ in (0 : ℝ)..(T : ℝ),\n            ∑ j : X,\n              ((Gu.jumpRate (FullPath.trajectory γ t) j : ℝ) *\n                    jumpLogRatio Gu G0 (FullPath.trajectory γ t) j -\n                (Gu.jumpRate (FullPath.trajectory γ t) j : ℝ) +\n                (G0.jumpRate (FullPath.trajectory γ t) j : ℝ)))\n          ∂Gu.pathLawFrom T x)"
+      }
+    ]
+  },
+  {
+    "pid": "P-KL-05",
+    "name": "UEOT.V3.GirsanovPathKL.TerminalGirsanovData.p_kl_05",
+    "entry_path": "formalization/ueot-core/UEOT/V3/GirsanovPathKL.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/GirsanovPathKL.lean",
+        "line": 191,
+        "header": "theorem p_kl_05\n    [IsProbabilityMeasure P0] [IsProbabilityMeasure Q]\n    (h : TerminalGirsanovData P0 Q T u)\n    (statePath : Ω → Γ) (hstate : Measurable statePath) :\n    klDiv Q P0 =\n        ENNReal.ofReal\n          ((2 : ℝ)⁻¹ * ∫ ω, controlEnergy T u ω ∂Q) ∧\n      klDiv (Q.map statePath) (P0.map statePath) ≤\n        ENNReal.ofReal\n          ((2 : ℝ)⁻¹ * ∫ ω, controlEnergy T u ω ∂Q)"
+      }
+    ]
+  },
+  {
+    "pid": "P-DDH-01",
+    "name": "UEOT.V3.DualDriveGauge.p_ddh_01",
+    "entry_path": "formalization/ueot-core/UEOT/V3/DualDriveGauge.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/DualDriveGauge.lean",
+        "line": 17,
+        "header": "theorem p_ddh_01 (piVal phiVal lambdaVal chiVal : ℝ) :\n    (piVal + lambdaVal * chiVal) - lambdaVal * (phiVal + chiVal) =\n      piVal - lambdaVal * phiVal"
+      }
+    ]
+  },
+  {
+    "pid": "P-DDH-02",
+    "name": "UEOT.V3.ExponentialFamilyCalculus.p_ddh_02",
+    "entry_path": "formalization/ueot-core/UEOT/V3/ExponentialFamilyCalculus.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/ExponentialFamilyCalculus.lean",
+        "line": 268,
+        "header": "theorem p_ddh_02 {k : ℕ}\n    (p0 : PMF Γ) (hp0 : ∀ γ, 0 < p0 γ)\n    (F : Γ → Param k) (theta : Param k) :\n    HasGradientAt (logPartition p0 F) (meanVec p0 F theta) theta ∧\n      HasFDerivAt (gradientDual p0 F)\n        (covarianceDual p0 F theta) theta"
+      }
+    ]
+  },
+  {
+    "pid": "P-DDH-03",
+    "name": "UEOT.V3.ExponentialFamilyIProjection.p_ddh_03",
+    "entry_path": "formalization/ueot-core/UEOT/V3/ExponentialFamilyIProjection.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/ExponentialFamilyIProjection.lean",
+        "line": 210,
+        "header": "theorem p_ddh_03\n    {k : ℕ}\n    (p0 : PMF Γ) (Q : Measure Γ) [IsProbabilityMeasure Q]\n    (hp0 : ∀ γ, 0 < p0 γ)\n    (F : Γ → Fin k → ℝ) (m : Fin k → ℝ) (theta : Fin k → ℝ)\n    (htheta : ∀ j,\n      moment (p0.toMeasure.tilted (score theta F)) F j = m j)\n    (hQ : ∀ j, moment Q F j = m j) :\n    klDiv (p0.toMeasure.tilted (score theta F)) p0.toMeasure ≤\n        klDiv Q p0.toMeasure ∧\n      (klDiv Q p0.toMeasure =\n          klDiv (p0.toMeasure.tilted (score theta F)) p0.toMeasure ↔\n        Q = p0.toMeasure.tilted (score theta F))"
+      }
+    ]
+  },
+  {
+    "pid": "P-DDH-04",
+    "name": "UEOT.V3.CommonBottleneckRank.p_ddh_04",
+    "entry_path": "formalization/ueot-core/UEOT/V3/CommonBottleneckRank.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/CommonBottleneckRank.lean",
+        "line": 114,
+        "header": "theorem p_ddh_04\n    (m : Row → Budget k → ℝ)\n    (z : Budget k → Latent)\n    (g : Row → Latent → ℝ)\n    (B : Budget k)\n    (hm : ∀ r x, m r x = g r (z x))\n    (hz : DifferentiableAt ℝ z B)\n    (hg : ∀ r, DifferentiableAt ℝ (g r) (z B)) :\n    (stackedJacobian m B).rank ≤ 2"
+      }
+    ]
+  },
+  {
+    "pid": "P-DDH-05",
+    "name": "UEOT.V3.SingularValueEffectiveDimension.p_ddh_05",
+    "entry_path": "formalization/ueot-core/UEOT/V3/SingularValueEffectiveDimension.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/SingularValueEffectiveDimension.lean",
+        "line": 470,
+        "header": "theorem p_ddh_05\n    (S Shat : Matrix m n ℝ) (eta tau : ℝ)\n    (hpert : ‖Shat - S‖ ≤ eta)\n    (hwindow : matrixSingularValue S 2 + eta < tau ∧\n      tau < matrixSingularValue S 1 - eta) :\n    (∀ i, |matrixSingularValue Shat i - matrixSingularValue S i| ≤ eta) ∧\n      (∀ i, tau < matrixSingularValue Shat i ↔ i < 2)"
+      }
+    ]
+  },
+  {
+    "pid": "P-ALI-01",
+    "name": "UEOT.V3.AlignmentGlobalExactness.p_ali_01",
+    "entry_path": "formalization/ueot-core/UEOT/V3/AlignmentGlobalExactness.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/AlignmentGlobalExactness.lean",
+        "line": 569,
+        "header": "theorem p_ali_01 [ConnectedSpace M] (form : C1OneForm (E := E) (M := M)) :\n    IsExactForm form ↔ ClosedPeriods form"
+      }
+    ]
+  },
+  {
+    "pid": "P-ALI-02",
+    "name": "UEOT.V3.AlignmentParentValue.p_ali_02",
+    "entry_path": "formalization/ueot-core/UEOT/V3/AlignmentParentValue.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/AlignmentParentValue.lean",
+        "line": 72,
+        "header": "theorem p_ali_02\n    (alpha : I → ℝ)\n    (JP : PiLp 2 H → ℝ)\n    (Ji : ∀ i, H i → ℝ)\n    (a : ℝ → PiLp 2 H)\n    (t : ℝ) (g childGrad : ∀ i, H i)\n    (halpha : ∀ i, 0 < alpha i)\n    (hJP : HasGradientAt JP (WithLp.toLp 2 g) (a t))\n    (hJi : ∀ i, HasGradientAt (Ji i) (childGrad i) (a t i))\n    (ha : HasDerivAt a\n      (WithLp.toLp 2 (fun i => alpha i • childGrad i)) t) :\n    HasDerivAt (JP ∘ a)\n        (∑ i, alpha i *\n          (‖g i‖ ^ 2 + inner ℝ (g i) (childGrad i - g i))) t ∧\n    (∑ i, alpha i *\n        (‖g i‖ ^ 2 + inner ℝ (g i) (childGrad i - g i))) ≥\n      ∑ i, alpha i * ‖g i‖ * (‖g i‖ - ‖childGrad i - g i‖)"
+      }
+    ]
+  },
+  {
+    "pid": "P-ALI-03",
+    "name": "UEOT.V3.AlignmentThreshold.p_ali_03",
+    "entry_path": "formalization/ueot-core/UEOT/V3/AlignmentThreshold.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/AlignmentThreshold.lean",
+        "line": 57,
+        "header": "theorem p_ali_03\n    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]\n    (g G : H) (eta : ℝ)\n    (halign : inner ℝ g G < 0)\n    (heta0 : 0 ≤ eta) (heta1 : eta ≤ 1) :\n    0 < inner ℝ g ((1 - eta) • G + eta • g) ↔\n      -inner ℝ g G / (‖g‖ ^ 2 - inner ℝ g G) < eta"
+      }
+    ]
+  },
+  {
+    "pid": "P-EVO-01",
+    "name": "UEOT.V3.EvolutionPrice.p_evo_01",
+    "entry_path": "formalization/ueot-core/UEOT/V3/EvolutionPrice.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/EvolutionPrice.lean",
+        "line": 139,
+        "header": "theorem p_evo_01\n    (p b z : I → ℝ) (K : I → J → ℝ) (z' : J → ℝ)\n    (hp0 : ∀ i, 0 ≤ p i)\n    (hpsum : ∑ i, p i = 1)\n    (hb0 : ∀ i, 0 ≤ b i)\n    (hK0 : ∀ i j, 0 ≤ K i j)\n    (hKsum : ∀ i, ∑ j, K i j = 1)\n    (hbar : 0 < weightedMean p b) :\n    offspringTraitMean (nextFrequency p b K) z' - weightedMean p z =\n      weightedCov p b z / weightedMean p b +\n      weightedMean p\n        (fun i => b i * (transmittedTrait K z' i - z i)) /\n        weightedMean p b"
+      }
+    ]
+  },
+  {
+    "pid": "P-EVO-02",
+    "name": "UEOT.V3.EvolutionSharedLabel.p_evo_02",
+    "entry_path": "formalization/ueot-core/UEOT/V3/EvolutionSharedLabel.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/EvolutionSharedLabel.lean",
+        "line": 185,
+        "header": "theorem p_evo_02\n    (ρ : Measure (F × G)) [IsProbabilityMeasure ρ]\n    (τ : Measure T) [IsProbabilityMeasure τ] :\n    mutualInfo (sharedLabelJoint ρ τ) =\n      mutualInfo ρ + discreteShannonEntropy τ"
+      }
+    ]
+  },
+  {
+    "pid": "P-BRG-01",
+    "name": "UEOT.V3.FixedFitnessRecurrenceUniqueness.p_brg_01_closedForm_of_recurrence",
+    "entry_path": "formalization/ueot-core/UEOT/V3/FixedFitnessRecurrenceUniqueness.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/FixedFitnessRecurrenceUniqueness.lean",
+        "line": 64,
+        "header": "theorem p_brg_01_closedForm_of_recurrence\n    (p R : I → ℝ)\n    (hp : ∀ i, 0 ≤ p i) (hpsum : ∑ i, p i = 1)\n    (hR : ∀ i, 0 < R i)\n    (q : ℕ → I → ℝ)\n    (h0 : ∀ i, q 0 i = p i)\n    (hrec : ∀ n i,\n      q (n + 1) i =\n        q n i * R i / (∑ j, q n j * R j)) :\n    ∀ n i,\n      q n i = p i * R i ^ n / (∑ j, p j * R j ^ n)"
+      }
+    ]
+  },
+  {
+    "pid": "P-BRG-01",
+    "name": "UEOT.V3.FixedFitnessConcentration.p_brg_01",
+    "entry_path": "formalization/ueot-core/UEOT/V3/FixedFitnessConcentration.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/FixedFitnessConcentration.lean",
+        "line": 194,
+        "header": "theorem p_brg_01\n    (p R : I → ℝ)\n    (hp : ∀ i, 0 ≤ p i) (hpsum : ∑ i, p i = 1)\n    (hR : ∀ i, 0 < R i) :\n    ∃ k,\n      0 < p k ∧\n      (∀ i, 0 < p i → R i ≤ R k) ∧\n      (∀ n i,\n        closedFrequency p R (n + 1) i =\n          closedFrequency p R n i * R i /\n            (∑ j, closedFrequency p R n j * R j)) ∧\n      (∀ n i, p i = 0 → closedFrequency p R n i = 0) ∧\n      Tendsto (fun n : ℕ => suboptimalMass p R k n) atTop (𝓝 0) ∧\n      (∀ i, 0 < p i → R i < R k → ∀ n,\n        closedFrequency p R n i ≤\n          (p i / p k) * (R i / R k) ^ n) ∧\n      (∀ i, 0 < p i → R i = R k → ∀ n,\n        closedFrequency p R n i / closedFrequency p R n k = p i / p k)"
+      }
+    ]
+  },
+  {
+    "pid": "P-BRG-02",
+    "name": "UEOT.V3.SelectionBridge.ReplicationBridge.behavior_equiv_fitness_eq",
+    "entry_path": "formalization/ueot-core/UEOT/V3/SelectionBridge.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/SelectionBridge.lean",
+        "line": 44,
+        "header": "theorem behavior_equiv_fitness_eq\n    (B : ReplicationBridge Θ Q) {θ θ' : Θ}\n    (h : B.BehaviorEquivalent θ θ') :\n    B.fitness θ = B.fitness θ'"
+      }
+    ]
+  },
+  {
+    "pid": "P-BRG-02",
+    "name": "UEOT.V3.SelectionBridge.ReplicationBridge.behavior_equiv_same_multiplier",
+    "entry_path": "formalization/ueot-core/UEOT/V3/SelectionBridge.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/SelectionBridge.lean",
+        "line": 54,
+        "header": "theorem behavior_equiv_same_multiplier\n    (B : ReplicationBridge Θ Q) {θ θ' : Θ}\n    (h : B.BehaviorEquivalent θ θ') :\n    B.fitness θ = B.fitness θ'"
+      }
+    ]
+  },
+  {
+    "pid": "P-BRG-02",
+    "name": "UEOT.V3.SelectionBridge.ReplicationBridge.behavior_equiv_positive_ratio_preserved",
+    "entry_path": "formalization/ueot-core/UEOT/V3/SelectionBridge.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/SelectionBridge.lean",
+        "line": 69,
+        "header": "theorem behavior_equiv_positive_ratio_preserved\n    (B : ReplicationBridge Θ Q) (mass : Θ → ℝ) {θ θ' : Θ}\n    (h : B.BehaviorEquivalent θ θ')\n    (hfit : 0 < B.fitness θ)\n    (hmass : mass θ' ≠ 0) :\n    B.selectionWeight mass θ / B.selectionWeight mass θ' =\n      mass θ / mass θ'"
+      }
+    ]
+  },
+  {
+    "pid": "P-REF-01",
+    "name": "UEOT.V3.ReflexivePRef01.p_ref_01",
+    "entry_path": "formalization/ueot-core/UEOT/V3/ReflexivePRef01.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/ReflexivePRef01.lean",
+        "line": 44,
+        "header": "theorem p_ref_01\n    (mu0 : Measure (Z (X := X) (S := S)))\n    (K : Kernel (Z (X := X) (S := S) × A) (Z (X := X) (S := S)))\n    (pi : CausalPolicy (Z (X := X) (S := S)) A)\n    [IsProbabilityMeasure mu0]\n    [IsMarkovKernel K]\n    [∀ n, IsMarkovKernel (pi n)] :\n    ∃! rho : Measure (ℕ → Z (X := X) (S := S)),\n      IsReflexivePathLaw mu0 K pi rho"
+      }
+    ]
+  },
+  {
+    "pid": "P-REF-01",
+    "name": "UEOT.V3.ReflexivePRef01.p_ref_01_structureModification",
+    "entry_path": "formalization/ueot-core/UEOT/V3/ReflexivePRef01.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/ReflexivePRef01.lean",
+        "line": 63,
+        "header": "theorem p_ref_01_structureModification\n    (mu0 : Measure (Z (X := X) (S := S)))\n    (noise : Kernel (Z (X := X) (S := S) × A) Ξ)\n    (xNext : ((Z (X := X) (S := S) × A) × Ξ) → X)\n    (F : (((S × X) × A) × Ξ) → S)\n    (pi : CausalPolicy (Z (X := X) (S := S)) A)\n    [IsProbabilityMeasure mu0]\n    [IsMarkovKernel noise]\n    [∀ n, IsMarkovKernel (pi n)]\n    (hx : Measurable xNext)\n    (hF : Measurable F) :\n    ∃! rho : Measure (ℕ → Z (X := X) (S := S)),\n      IsReflexivePathLaw mu0\n        (structureModificationKernel noise xNext F) pi rho"
+      }
+    ]
+  },
+  {
+    "pid": "P-REF-01",
+    "name": "UEOT.V3.ReflexivePRef01.p_ref_01_compression_closure_iff_kernel",
+    "entry_path": "formalization/ueot-core/UEOT/V3/ReflexivePRef01.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/ReflexivePRef01.lean",
+        "line": 86,
+        "header": "theorem p_ref_01_compression_closure_iff_kernel\n    {M : Type uM} [MeasurableSpace M]\n    (K : Kernel (Z (X := X) (S := S) × A) (Z (X := X) (S := S)))\n    (Kbar : Kernel (M × A) M)\n    (φ : Z (X := X) (S := S) → M)\n    (hφ : Measurable φ) :\n    ControlledStrongLumpability K Kbar φ hφ ↔\n      ∀ a : A, ∀ z : Z (X := X) (S := S),\n        (K (z, a)).map φ = Kbar (φ z, a)"
+      }
+    ]
+  },
+  {
+    "pid": "P-REF-01",
+    "name": "UEOT.V3.ReflexivePRef01.p_ref_01_compression_closure_iff_pathLaw",
+    "entry_path": "formalization/ueot-core/UEOT/V3/ReflexivePRef01.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/ReflexivePRef01.lean",
+        "line": 101,
+        "header": "theorem p_ref_01_compression_closure_iff_pathLaw\n    {M : Type uM} [MeasurableSpace M]\n    (K : Kernel (Z (X := X) (S := S) × A) (Z (X := X) (S := S)))\n    (Kbar : Kernel (M × A) M)\n    [IsMarkovKernel K]\n    [IsMarkovKernel Kbar]\n    (φ : Z (X := X) (S := S) → M)\n    (hφ : Measurable φ) :\n    ControlledStrongLumpability K Kbar φ hφ ↔\n      ∀ a : A,\n        PathLawLumpability\n          (fixedActionKernel K a)\n          (fixedActionKernel Kbar a)\n          φ hφ"
+      }
+    ]
+  },
+  {
+    "pid": "P-REF-03",
+    "name": "UEOT.V3.FreeInformationValue.p_ref_03",
+    "entry_path": "formalization/ueot-core/UEOT/V3/FreeInformationValue.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/FreeInformationValue.lean",
+        "line": 48,
+        "header": "theorem p_ref_03\n    (μ : Measure Ω) [IsProbabilityMeasure μ]\n    (mY : MeasurableSpace Ω) (hmY : mY ≤ mΩ)\n    (u : A → Ω → ℝ)\n    (hu : ∀ a, Integrable (u a) μ) :\n    Finset.univ.sup' Finset.univ_nonempty (fun a => ∫ ω, u a ω ∂μ) ≤\n      ∫ ω, Finset.univ.sup' Finset.univ_nonempty\n        (fun a => MeasureTheory.condExp (m₀ := mΩ) mY μ (u a) ω) ∂μ"
+      }
+    ]
+  },
+  {
+    "pid": "P-REF-04",
+    "name": "UEOT.V3.Decision.goal_regret",
+    "entry_path": "formalization/ueot-core/UEOT/V3/Decision.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/Decision.lean",
+        "line": 17,
+        "header": "theorem goal_regret {P : Type*} (J estimate : P → ℝ) (ε : ℝ)\n    (err : ∀ p, |J p - estimate p| ≤ ε) (chosen : P)\n    (optimal : Reward.IsMaximizer estimate chosen) (competitor : P) :\n    J competitor - J chosen ≤ 2 * ε"
+      }
+    ]
+  },
+  {
+    "pid": "P-REF-05",
+    "name": "UEOT.V3.Agency.feasibleValue_mono",
+    "entry_path": "formalization/ueot-core/UEOT/V3/Agency.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/Agency.lean",
+        "line": 25,
+        "header": "theorem feasibleValue_mono\n    (J : P → ℝ) {S T : Set P} (hST : S ⊆ T) :\n    feasibleValue J S ≤ feasibleValue J T"
+      }
+    ]
+  },
+  {
+    "pid": "P-REF-05",
+    "name": "UEOT.V3.Agency.feasibleValueReal_mono",
+    "entry_path": "formalization/ueot-core/UEOT/V3/Agency.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/Agency.lean",
+        "line": 37,
+        "header": "theorem feasibleValueReal_mono\n    (J : P → ℝ) {S T : Set P}\n    (hS : S.Nonempty)\n    (hT : BddAbove (J '' T))\n    (hST : S ⊆ T) :\n    feasibleValueReal J S ≤ feasibleValueReal J T"
+      }
+    ]
+  },
+  {
+    "pid": "P-REF-05",
+    "name": "UEOT.V3.Agency.extension_optimalValue_mono",
+    "entry_path": "formalization/ueot-core/UEOT/V3/Agency.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/Agency.lean",
+        "line": 56,
+        "header": "theorem extension_optimalValue_mono\n    {D₁ D₂ : FeasibleDecision P} (h : Extends D₁ D₂) :\n    optimalValue D₁ ≤ optimalValue D₂"
+      }
+    ]
+  },
+  {
+    "pid": "P-CORE-01",
+    "name": "UEOT.V3.CoreOperationalAssembly.p_core_01",
+    "entry_path": "formalization/ueot-core/UEOT/V3/CoreOperationalAssembly.lean",
+    "candidates": [
+      {
+        "path": "formalization/ueot-core/UEOT/V3/CoreOperationalAssembly.lean",
+        "line": 769,
+        "header": "theorem p_core_01\n    {Ω : Type uΩ} [MeasurableSpace Ω]\n    {K : Type uK} [Fintype K]\n    (μ : Measure Ω) [IsProbabilityMeasure μ]\n    (E : K → Set Ω) (α : K → ℝ)\n    (hE : ∀ k, MeasurableSet (E k))\n    (hfail : ∀ k, μ.real (E k)ᶜ ≤ α k)\n    {V : Type uV} [Fintype V] [DecidableEq V]\n    {H : Type uH} [Fintype H] [Nonempty H]\n    {I : Type uI} [Fintype I] [Nonempty I]\n    {R : Type uR} {Y : Type uY} [MeasurableSpace Y]\n    (readout : Finset V → H → R)\n    (p : H → I → Measure Y)\n    (hp : ∀ h i, IsProbabilityMeasure (p h i))\n    (pHat : GoodSample E → H → I → Measure Y)\n    (hpHat : ∀ ω h i, IsProbabilityMeasure (pHat ω h i))\n    (η γ Δ τ : ℝ)\n    (hresp : ∀ ω h i, tvDist (p h i) (pHat ω h i) ≤ η)\n    (hsep : ∀ h h',\n      ¬PredictiveClassRecovery.trueEquivalent p h h' →\n        γ ≤ PredictiveClassRecovery.protocolDistance p h h')\n    (hpredGap : 2 * η < γ / 2)\n    (hcarrierGap : ∀ S,\n      0 < StatisticalDefect.responseDefect readout p S →\n        Δ ≤ StatisticalDefect.responseDefect readout p S)\n    (hlower : 2 * η < τ) (hupper : τ < Δ - 2 * η)\n    {X : Type uX} [Fintype X] [DecidableEq X] [Nonempty X]\n    [MeasurableSpace X] [MeasurableSingletonClass X]\n    {M : Type uM} [Fintype M]\n    {Abar : M → Type uA}\n    [∀ m, Fintype (Abar m)] [∀ m, Nonempty (Abar m)]\n    (f : X → M) (hf : Function.Surjective f)\n    (micro : Model X (fun x => Abar (f x)))\n    (εr εp : ℝ) (hεr : 0 ≤ εr) (hεp : 0 ≤ εp)\n    (QHat : GoodSample E → FixedSourceApproximation f micro εr εp)\n    (microHat : GoodSample E → Model X (fun x => Abar (f x)))\n    (p₀ : PMF X) (εPath : ℕ → ℝ)\n    (hε0 : ∀ n, 0 ≤ εPath n) (hε1 : ∀ n, εPath n ≤ 1)\n    (hpath : ∀ ω n x,\n      let Q := (QHat ω).toApproxControlQuotient hf hεr hεp\n      tvDist\n        (policyTransitionPMF micro (quotientLiftedPolicy Q) x).toMeasure\n        (policyTransitionPMF (microHat ω) (quotientLiftedPolicy Q) x).toMeasure\n          ≤ εPath n)\n    {Obj : Type uObj} [PseudoMetricSpace Obj]\n    (failure : Set Obj) (hFailure : failure.Nonempty)\n    (object : Obj) (objectHat : GoodSample E → Obj)\n    (ηObj : ℝ)\n    (hobject : ∀ ω, dist object (objectHat ω) ≤ ηObj)\n    (hestimatedMargin : ∀ ω,\n      ηObj < OmegaIntegrityMargin.integrityMargin failure (objectHat ω)) :\n    1 - ∑ k, α k ≤ μ.real (commonGoodEvent E) ∧\n      ∀ ω : GoodSample E,\n        let Q := (QHat ω).toApproxControlQuotient hf hεr hεp\n        CorePointwiseCertificate\n          readout p (pHat ω) γ τ Q\n          (microHat ω) p₀ εPath failure object (objectHat ω)"
+      }
+    ]
+  }
+]

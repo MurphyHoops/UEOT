@@ -1,0 +1,40 @@
+{
+  "latin_fonts_sha256": {
+    "DejaVuSansMono-Bold.ttf": "0d3c03d1b667192f91223660a3163325cf83132662fe4d9f7d6e596bf7a995c2",
+    "DejaVuSansMono-BoldOblique.ttf": "2084995adab143b149258f5944b7f863804796b753014526bd7f7915b1b20770",
+    "DejaVuSansMono-Oblique.ttf": "710323dd803666c37988df68e736c233d96efdf5c770c8ee28f4c4f4b84fb32d",
+    "DejaVuSansMono.ttf": "54bf827eb99404e8f430c330ad30f063334f637eba0109b6a18d4f566a8e9dd8",
+    "DejaVuSerif-Bold.ttf": "aac3f559445d23f0f567a243f91f3f6ad6cb4b5cafa1521a3479fffe0637f0bd",
+    "DejaVuSerif-BoldItalic.ttf": "ed336a3d81f5a2d6a3d12c16dda400b28ba7304792254fc9e96c0d6835fbeab2",
+    "DejaVuSerif-Italic.ttf": "d843bf414381dd64b89e6c7c954075657b74168521f02b30e11d308558eda1d2",
+    "DejaVuSerif.ttf": "8cb29f7db250ebb2551a6ce2c1e0bfd5a0eb520e9e233370db0493e82e1f36f7"
+  },
+  "runtime": {
+    "packages": {
+      "xecjk.tar.xz": {
+        "url": "https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2024/tlnet-final/archive/xecjk.tar.xz",
+        "sha256": "3975a09d07169e9c2c3e66b85990a76de6879e635bf428ddfee17118233a2bd4"
+      },
+      "ctex.tar.xz": {
+        "url": "https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2024/tlnet-final/archive/ctex.tar.xz",
+        "sha256": "2d8e9bf9ffa0fe0588caf425f2cb8cef3d642b99d7ca54e8fd56feae7ab48f98"
+      }
+    },
+    "format_command": [
+      "xetex",
+      "-ini",
+      "-etex",
+      "-interaction=nonstopmode",
+      "-halt-on-error",
+      "-jobname=xelatex",
+      "-output-directory=<REPOSITORY>/mathematics/tools/.cache/tex-runtime",
+      "xelatex.ini"
+    ],
+    "format_sha256": "a541966519facbd5f0bd565fe3032277b5e423a81fd775fcfcedcbb39d312e01",
+    "source_date_epoch": "1794355200",
+    "system_tree_modified": false
+  },
+  "engine_version": "XeTeX 3.141592653-2.6-0.999996 (TeX Live 2025/dev/Debian)",
+  "pandoc_version": "pandoc 3.1.11.1",
+  "binary_equality_scope": "Same engine, exact fonts, packages, format and fixed source epoch; cross-distribution equality not claimed."
+}

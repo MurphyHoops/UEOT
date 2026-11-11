@@ -2,7 +2,9 @@
 
 本目录维护独立的数学主文，包括定义、明确假设、定理与证明、反例、算法，以及可核查的 Lean 对应。
 
-- [完整 Markdown 主文](./UEOT_MATHEMATICS.md)
+- [完整中文 Markdown 主文](./UEOT_MATHEMATICS.md)
+- [Complete English manuscript](./UEOT_MATHEMATICS.en.md)
+- [English PDF](./UEOT_MATHEMATICS.en.pdf) · [English LaTeX](./UEOT_MATHEMATICS.en.tex) · [English build receipt](./BUILD.en.json)
 - [完整来源与 Lean 对应索引](./UEOT_MATHEMATICS_SOURCES.md)
 - [现行 Lean 接口的范围说明](./LEAN_API_SCOPE.md)
 - [PDF 阅读版](./UEOT_MATHEMATICS.pdf)
@@ -13,7 +15,21 @@
 
 本版保留原 Core 第 0—31 章和附录，并逐章补充后续形式化的实际范围。第 32—39 章及核心总论展开后继数学、来源与消费者；原 106 个 P-ID 不随新章节增加。历史代码与历史运行输出保留各自的身份；新的编译和检验不能替代旧的执行记录。
 
-当前 PR #447 产物为数学书 **241 页**、哲学书 **98 页**；对应[导航检查](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/PDF_NAVIGATION.json)和[选页视觉验收](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/VISUAL_REVIEW.json)已经完成。BUILD.json 保留构建阶段的原始回执，视觉验收由后继记录承担；下面各历史版本的页数与指纹保留其原时点。
+历史 PR #447 产物为数学书 **241 页**、哲学书 **98 页**；对应[导航检查](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/PDF_NAVIGATION.json)和[选页视觉验收](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/VISUAL_REVIEW.json)已经完成。BUILD.json 保留构建阶段的原始回执，视觉验收由后继记录承担；下面各历史版本的页数与指纹保留其原时点。
+
+## 2026-11-11：v4.1 完整中英双语学术编辑版
+
+本版依据主干 `3d443ec29eb17af1fc00699a74e2d42d73516d81` 的 v4.0 编订。中文与英文均含核心总论、40 章（0—39）及附录 A—F；保留全部 106 个原 P-ID、42 个 M 编号与第 39 章 95 节。46 个章/附录导读、后继章节主题索引、局部假设澄清和 15 条完整书目帮助读者独立理解正文。历史代码与回执保留原身份，英文没有省略附录或用摘要代替正文。
+
+- [总验收与本轮证据](review/BILINGUAL_EDITION_2026-11-11/README.md)
+- [数学语义与 Lean 审计](FORMAL_SEMANTIC_AUDIT.md) · [完整定理来源矩阵](THEOREM_SOURCE_MATRIX.md)
+- [中英数学术语](BILINGUAL_MATHEMATICAL_TERMINOLOGY.md) · [翻译保真审计](TRANSLATION_EQUIVALENCE_AUDIT.md)
+- [主编依赖与数学总审查](review/BILINGUAL_EDITION_2026-11-11/ROOT_EDITORIAL_REVIEW.md)
+- [逐节中英映射与实际结构检查](review/BILINGUAL_EDITION_2026-11-11/BILINGUAL_STRUCTURE_REPORT.json)
+- [历史 Lean 源身份精确复用](review/BILINGUAL_EDITION_2026-11-11/SOURCE_IDENTITY_REUSE_AUDIT.md)
+- [本版版权与版本边界](PUBLICATION_RIGHTS.md)
+
+本轮没有修改 Lean、冻结 Core v3.0、哲学或物理著作，也没有新增 P-ID 或扩大数学合同。中英分离审译来自本轮原生智能体与主编，不能称为外部人类同行评议；结构 PASS 也不能代替量词及数学语义读审。当前内容分类仍为 `CLASSIFIED_CORE_CLOSED`，经验支持仍为 `UNVERIFIED`。
 
 ## 2026-11-11：精确增长参数分类
 
@@ -37,7 +53,7 @@
 
 数学证明接受给定模型与假设；从中得到现实对象、经验定律或规范结论，还要说明相应接口。独立的[哲学著作](../philosophy/README.md)对这些哲学问题给出自己的论证。
 
-生成方法见[两书构建说明](../tools/books/README.md)。文档编译记录与 Lean 证明证据分别维护。
+v4.1 双语数学定本的生成与结构核验见[数学专用构建说明](tools/README.md)；历史两书入口见[原构建说明](../tools/books/README.md)。文档编译记录与 Lean 证明证据分别维护。
 
 ## 2026-11-04：有限钱包联合决策
 
@@ -63,4 +79,4 @@
 
 [现有公开版本及未来新增内容的版权边界](PUBLICATION_RIGHTS.md)
 保留历史 CC BY 4.0 已授予权利。数学著作的新增版权表达与 Lean
-软件许可分开管理；本次未修改正式正文或证明源码。
+软件许可分开管理。上述许可政策修订当时未修改正文；本次 v4.1 明确修改数学出版文字并增加完整英译，冻结证明源码保持不变。

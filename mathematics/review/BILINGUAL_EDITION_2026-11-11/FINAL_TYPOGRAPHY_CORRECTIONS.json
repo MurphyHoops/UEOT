@@ -1,0 +1,57 @@
+{
+  "reviewer": "B and C, actual PDF enlargement; adopted by root",
+  "semantic_scope": "Mathematical typesetting and equivalent English conjunction only; no theorem, quantity, quantifier or Lean changes",
+  "changes": [
+    {
+      "path": "mathematics/UEOT_MATHEMATICS.md",
+      "change": "Wrap five prose q_* tokens in inline mathematics; already mathematical formulas unchanged",
+      "original_lines": [
+        2878,
+        2878,
+        2878,
+        2981,
+        2995
+      ]
+    },
+    {
+      "path": "mathematics/UEOT_MATHEMATICS.en.md",
+      "change": "Wrap five prose q_* tokens in inline mathematics; already mathematical formulas unchanged",
+      "original_lines": [
+        2881,
+        2881,
+        2881,
+        2984,
+        2998
+      ]
+    },
+    {
+      "path": "mathematics/UEOT_MATHEMATICS.en.md",
+      "old": "measurable transition/observation kernels",
+      "new": "measurable transition and observation kernels",
+      "reason": "Avoid a spurious URL-like intra-word break in the Process table row; preserve joint measurability requirements."
+    },
+    {
+      "path": "mathematics/UEOT_MATHEMATICS.en.md",
+      "old": "\\quad\\text{a.e.}.",
+      "new": "\\quad\\text{a.e.}",
+      "occurrences": 2,
+      "original_lines": [
+        6182,
+        6214
+      ],
+      "reason": "C observed doubled sentence-final periods in the enlarged printed formulas; exact bilingual whitelist records the abbreviation punctuation."
+    },
+    {
+      "path": "mathematics/tools/print.lua",
+      "location": "Chinese Appendix D chapter title",
+      "change": "Use an explicit chapter-title line break after v3.0, retaining the unchanged optional contents/bookmark title and appendix-d label.",
+      "reason": "Root inspected PDF page 220 at 140 dpi and found the final Chinese character alone on a second line. This is a print-only correction; Markdown heading and mathematical content are unchanged."
+    },
+    {
+      "path": "mathematics/tools/print.lua",
+      "location": "Chinese and English §21.7.6 endpoint table",
+      "change": "Insert a print-only page break before this exact subsection so the heading and following endpoint table start together.",
+      "reason": "B observed the English heading alone at PDF page 113, and root confirmed the same issue in Chinese page 86. The exact two headings now stay with their tables; no mathematical content changes."
+    }
+  ]
+}
