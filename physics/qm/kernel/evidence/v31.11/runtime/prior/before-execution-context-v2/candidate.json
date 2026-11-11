@@ -1,0 +1,52 @@
+{
+  "schema": "ueot-qm.micro-robust-candidate/1",
+  "scope": "complete tagged CQ, all declared finite references and inputs; exact shared gates",
+  "optimization_scope": "minimax/lower bounds over frozen design interval, not every narrower realized calibration interval",
+  "new_hardware_data": false,
+  "policy_word_weights": {
+    "00": "313/1250",
+    "01": "156/625",
+    "10": "156/625",
+    "11": "313/1250"
+  },
+  "memoryless_error": "51/2500",
+  "adaptive_error": "1/50",
+  "uniform_policy_lower_bound": "1/50",
+  "source_acceptance_lower": "1369/2500",
+  "tail_mass_upper": "1/4096",
+  "normalized_truncation_upper": "1/64",
+  "complete_preparation_upper": "65/4096",
+  "memoryless_full_output_upper": "92849/2560000",
+  "adaptive_full_output_upper": "3673/102400",
+  "remaining_unmeasured_physical_error_margin": "1447/102400",
+  "required_precision": "1/20",
+  "classification": {
+    "adaptive_model": "CERTIFIED_FEASIBLE",
+    "memoryless_model": "CERTIFIED_FEASIBLE",
+    "design_region_uniform_precision_1_over_100": "CERTIFIED_INFEASIBLE",
+    "singleton_zero_action_precision_1_over_100": "CERTIFIED_INFEASIBLE",
+    "generic_insufficient_bound": "INSUFFICIENT_CERTIFICATE",
+    "maximum_distance_bound": "INSUFFICIENT_CERTIFICATE"
+  },
+  "generic_triangle_example": {
+    "r_nominal": "1/100",
+    "eta_T": "1/200",
+    "weights": [
+      "1/3",
+      "2/3"
+    ],
+    "eta_actions": [
+      "1/100",
+      "1/50"
+    ],
+    "derived_upper": "19/600"
+  },
+  "not_certified": [
+    "actual device membership in this model",
+    "actual gate matching",
+    "measured full-CQ distance",
+    "measured resource advantage"
+  ],
+  "model_sha256": "33fff2dd4298816553ce0009c022c314600c644df2167355d6c3f366721572ab",
+  "producer_sha256": "a6fc896288e1716a1048cf26c685b25aa6152e2febeaf10ee8c6c94d8f8353eb"
+}

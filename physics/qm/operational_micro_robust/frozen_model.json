@@ -1,0 +1,40 @@
+{
+  "schema": "ueot-qm.micro-robust-example/1",
+  "classification": "mathematical model, not measured device calibration",
+  "baseline_main": "16a89154183c22030d4526413167d095d94e6890",
+  "theta": ["q", "phi", "alpha"],
+  "q_interval": ["12/25", "13/25"],
+  "s_relation": "1-q/2",
+  "source_height": 2,
+  "source_records": ["f", "0f", "1f", "00", "01", "10", "11"],
+  "stop_on": "f",
+  "accept": ["00", "01", "10", "11"],
+  "memoryless_label1_weight": "1/2",
+  "adaptive_first_label1_weight": "1/2",
+  "adaptive_second_label1_given_0": "312/625",
+  "adaptive_second_label1_given_1": "313/625",
+  "supported_basis": ["g0", "e0", "g1"],
+  "phase_real": "3/5",
+  "phase_imag": "4/5",
+  "exchange_cos": "3/5",
+  "exchange_sin": "4/5",
+  "reference_dimension": 2,
+  "analytic_energy_budget": "1",
+  "analytic_cutoff_N": 4095,
+  "required_full_output_precision": "1/20",
+  "calibration": {
+    "shots": 80000,
+    "q_confidence_radius": "1/100",
+    "maximum_coverage_error": "1/20",
+    "iid_fixed_parameter_required": true,
+    "synthetic_seed": 31112026
+  },
+  "holdout": {
+    "shots_per_protocol": 4096,
+    "cell_frequency_radius": "1/32",
+    "maximum_test_error": "1/20",
+    "source_seed": 31112027,
+    "compiled_seed": 31112028
+  },
+  "new_hardware_data": false
+}

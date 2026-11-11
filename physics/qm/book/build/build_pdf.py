@@ -65,7 +65,7 @@ def main():
     out = args.output_dir.resolve()
     out.mkdir(parents=True, exist_ok=True)
     raw = source.read_text(encoding='utf-8')
-    inspect_book(raw)
+    structure = inspect_book(raw)
     english = source.name.endswith('.en.md')
     stem = 'UEOT_PHYSICS.en' if english else 'UEOT_PHYSICS'
     header = BOOK / ('build/header.en.tex' if english else 'build/header.tex')
@@ -76,8 +76,8 @@ def main():
     if set(targets) - set(anchors):
         raise ValueError(f'Unresolved internal targets: {set(targets)-set(anchors)}')
     chapters = re.findall(r'^# (\d+)\. (.+)$', raw, re.M)
-    if [int(n) for n, _ in chapters] != list(range(67)):
-        raise ValueError('Expected the complete consecutive chapters 0–66')
+    if [int(n) for n, _ in chapters] != list(range(structure['chapters'])):
+        raise ValueError('Expected the complete consecutive chapters of the validated edition')
     if re.search(r'\b(TODO|PLACEHOLDER)\b', re.sub(r'(?ms)^~~~.*?^~~~\s*$', '', raw)):
         raise ValueError('Unresolved authoring placeholder')
 
@@ -171,7 +171,7 @@ def main():
                'created_at_utc': datetime.now(timezone.utc).isoformat(),
                'source_name': source.name, 'source_sha256': digest(source),
                'tex_sha256': digest(tex), 'pdf_sha256': digest(pdf),
-               'edition': '3.7', 'language': 'en' if english else 'zh-CN',
+               'edition': re.search(r'^version: \"([^\"]+)\"$', raw, re.M).group(1), 'language': 'en' if english else 'zh-CN',
                'chapters': len(chapters), 'appendices': len(re.findall(r'^# (?:附录|Appendix) ', raw, re.M)),
                'internal_links_valid': True, 'font': font_info, 'compile_passes': logs,
                'builder_sha256': digest(Path(__file__)), 'header_sha256': digest(header),

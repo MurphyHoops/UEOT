@@ -108,3 +108,7 @@ reuse of previously executed science, rendered-page inspection, and remote
 publication. Internal reviewers were independently assigned within this AI
 collaboration; they are not external journal referees. Neither this log nor a
 successful CI run changes the empirical status of an untested mechanism.
+
+## 3.8 / v31.11 — same-source physical bridges
+
+Added chapter67 and nine stable results without altering the 173 inherited result objects. The chapter integrates actual-map operational equivalence, microscopic finite-CQ truncation, normal trace-class posterior and physical-filter bounds, legal joint-parameter deployment, an exact minimax policy and a same-model long-time distinction. The two languages share the twelve new displayed formulas. Corrected deployment simplex/quantifier wording and calibration cost amortization after cross-review. Current execution, publication and empirical states remain separate; no real data or independent complex-sector selection was added. Complete prior dossier and manifest snapshots are retained under evidence/v3.8/prior.

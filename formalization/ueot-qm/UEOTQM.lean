@@ -55,3 +55,4 @@ import UEOTQM.QuantumInitializationCost
 import UEOTQM.QuantumPostselectionError
 
 import UEOTQM.QuantumReachableActionRealizability
+import UEOTQM.OperationalEquivalence

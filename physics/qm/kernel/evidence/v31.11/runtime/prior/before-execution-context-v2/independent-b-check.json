@@ -1,0 +1,53 @@
+{
+  "reviewer": "native research agent B",
+  "date": "2026-11-11",
+  "baseline": "16a89154183c22030d4526413167d095d94e6890",
+  "scope": "independent exact arithmetic and a design/calibration quantifier counterexample; no empirical data",
+  "checks": [
+    {
+      "name": "actual_controller_law",
+      "pass": true
+    },
+    {
+      "name": "full_design_endpoint_lower_bound",
+      "pass": true
+    },
+    {
+      "name": "endpoints_attained",
+      "pass": true
+    },
+    {
+      "name": "center_has_smaller_positive_error",
+      "pass": true
+    },
+    {
+      "name": "source_success_lower",
+      "pass": true
+    },
+    {
+      "name": "physical_failure_added",
+      "pass": true
+    },
+    {
+      "name": "joint_full_output_precision",
+      "pass": true
+    },
+    {
+      "name": "calibration_lower_bound_nontransfer_counterexample",
+      "pass": true
+    },
+    {
+      "name": "revised_candidate_scope",
+      "pass": true
+    }
+  ],
+  "passed": true,
+  "not_a_universal_numerical_proof": true,
+  "source_sha256": "658e130c5646667dc080e355e7a17417d306d0ff3a377038c3c6052aeb07383c",
+  "paper_upper_bound_argument": "For x=|q-1/2|<=d and u=d^2-x^2, TV=max(x,u)+u; d-(x+u)=(d-x)(1-d-x)>=0; d-2u=d(1-2d)+2x^2>=0.",
+  "reviewed_inputs": {
+    "frozen_model.json": "33fff2dd4298816553ce0009c022c314600c644df2167355d6c3f366721572ab",
+    "candidate.json": "38c9695e5567b19cdd73ab4b14fe8ccb50a464959caa04eb0d31f9c107160124",
+    "C_ROBUST_CALIBRATION.md": "0e253c0fd01c7f5b43587cfffba48c52dcbc734e8f68a59a2ff54eed640051ba"
+  }
+}

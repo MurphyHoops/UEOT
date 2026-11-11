@@ -1,0 +1,48 @@
+{
+  "schema": "ueot-qm.micro-robust-data-contract/1",
+  "status": "NO_PROTOCOL_MATCHED_HARDWARE_DATA_ACQUIRED",
+  "synthetic_artifacts": {
+    "calibration": "synthetic_output/synthetic_calibration_flags.txt",
+    "source_holdout": "synthetic_output/synthetic_source_holdout.txt",
+    "compiled_holdout": "synthetic_output/synthetic_compiled_holdout.txt",
+    "analysis": "synthetic_output/synthetic_analysis.json",
+    "provenance": "synthetic_output/synthetic_provenance.json"
+  },
+  "required_real_shot_fields": [
+    "shot_id", "ordered_timestamp", "calibration_or_holdout", "device_and_protocol_id",
+    "source_or_compiled", "preparation_outcome", "full_visible_record",
+    "leakage_flag", "terminal_stop_reason", "permitted_action_history",
+    "terminal_tester_setting_if_any", "terminal_tester_result_if_any",
+    "declared_reference_preparation", "reset_outcome"
+  ],
+  "source_records": ["f", "0f", "1f", "00", "01", "10", "11"],
+  "physical_preparation_record_extension": ["prep_fail", "pass/f", "pass/0f", "pass/1f", "pass/00", "pass/01", "pass/10", "pass/11"],
+  "required_calibration_inputs": [
+    "All source flag shots, including nonaccepted flags",
+    "Preparation failure and readout confusion probabilities or a joint nuisance model",
+    "Source/library matching of the actual phase and exchange gates",
+    "Excitation budget, pulse/JC validity regime and drift window",
+    "Projection/filter instrument implementation including failed output"
+  ],
+  "joint_parameter_rule": {
+    "theta": ["q", "phi", "alpha"],
+    "source_relation": "s=1-q/2",
+    "flag_calibration_identifies": ["q"],
+    "unidentified_shared_nuisance": ["phi", "alpha"],
+    "source_action_gate_identity": "Independent physical premise until matching tests bound its error",
+    "correct_quantifier": "One policy from D_cal, uniformly valid for theta in the same joint set",
+    "design_optimality_scope": "Full [.48,.52] only; not every narrower realized confidence interval"
+  },
+  "cost_fields_with_units_and_uncertainty": [
+    "fresh_input_and_reference_preparation", "cutoff_filter", "failed_filter_output",
+    "auxiliary_preparation", "randomization", "phase_gate", "exchange_gate",
+    "readout", "failure_reset", "classical_processing", "record_storage",
+    "calibration", "data_transfer_and_analysis"
+  ],
+  "symbolic_source_expected_cost": "[c_p+(1+s)c_s+(1-s^2)c_r]/s^2 under fresh independent trials",
+  "compiled_cost": "physical preparation plus two actual gates, randomizations, readouts, classical updates and records; calibration amortized explicitly",
+  "unknown_quantum_input_retries": "NOT_ASSUMED",
+  "heldout_scope": "Finite record-cell testers; terminal full-CQ trace distance additionally needs valid state/reference information",
+  "empirical_status": "UNVERIFIED",
+  "measured_resource_advantage": false
+}

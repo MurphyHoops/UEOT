@@ -79,7 +79,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\small UEOT PHYSICS}
-\fancyhead[R]{\small 物理学 · 3.7 双语修订版}
+\fancyhead[R]{\small 物理学 · 3.8 双语修订版}
 \fancyfoot[C]{\small\thepage}
 \setlength{\headheight}{16pt}
 \renewcommand{\headrulewidth}{0.3pt}
@@ -107,11 +107,11 @@
   \vspace{10mm}
   {\color{teal}\rule{\textwidth}{1pt}\par}
   \vspace{7mm}
-  {\large 第三版\quad 3.7 双语修订版\par}
+  {\large 第三版\quad 3.8 双语修订版\par}
   \vspace{6mm}
   {钱德桂（Degui Qian）\par}
   \vspace{5mm}
-  {67章\quad 6个附录\quad UEOT-QM Kernel 1.10\par}
+  {68章\quad 6个附录\quad UEOT-QM Kernel 1.11\par}
   \vfill
   {对象与协议\quad 量子操作与场论\quad 证明与反例\par}
   \vspace{7mm}
@@ -425,7 +425,7 @@ S3--S5 中的日期、分支、阶段和 CI
 理论作者为钱德桂（Degui
 Qian）；原始思想及项目成果的身份由附录C和源清单保留。本版是在该理论工作上进行的持续整合、推导补全与协作审查。标准物理定理仍明确归属于其原始文献，机器验证和实验身份分别记录。
 
-从理论核心入手，可依次阅读第0--5、49--66章，再按所需物理域进入后续章节。核查三代问题时必须把第31、36--37与49.7一起阅读。附录A给符号和外部定理责任，附录B保留稳定结果注册，附录C记录来源，附录D包含全部继承验证代码及3.0版实际执行回执；3.1--3.7版仅对未变程序核对身份。附录E给编译维护合同，附录F列出本版实际形式化范围和全部命名公理请求，并区分相应内核版本的实际执行与后续精确身份复用。
+从理论核心入手，可依次阅读第0--5、49--67章，再按所需物理域进入后续章节。核查三代问题时必须把第31、36--37与49.7一起阅读。附录A给符号和外部定理责任，附录B保留稳定结果注册，附录C记录来源，附录D包含全部继承验证代码及3.0版实际执行回执；3.1--3.7版仅对未变程序核对身份。附录E给编译维护合同，附录F列出本版实际形式化范围和全部命名公理请求，并区分相应内核版本的实际执行与后续精确身份复用。
 
 \section{0.10 七个证据层次：从已知数学到自然检验}
 
@@ -513,6 +513,15 @@ Qian），标准学术成果的归属仍由原始文献确定。版权、历史 
 出版升级没有修改物理核或 Lean
 源码。附录C.8、F.2与F.4核对实际远端接受事实，并把既有重型证明回执的精确源码复用与本次新执行的书籍检查、双语核对、PDF
 构建分别记录。未获得的新数据、未建立的机制和未完成的极限证明继续保持开放。
+
+\section{0.13 本轮物理桥与现行范围}
+
+3.8版从2026年11月11日重新读取的 main
+\texttt{16a89154183c\allowbreak 22030d452641\allowbreak 3167d095d94e\allowbreak 6890}
+继续。第67章增加九项稳定结果，接通选定复模型内的操作身份、探针---振子微观来源、完整记录截断和联合参数鲁棒部署，并给出同一模型中边缘混合与完整记忆不遗忘的区别。当前共68章、6附录、182项结果；计数不表示物理完成比例。科学版本为v31.11
+/ Kernel
+1.11，其实际证明与程序回执逐项绑定源码；v31.10及更早回执保持原执行身份。新模块的机器覆盖、书面无限维推广、精确有限算例、浮点诊断和合成数据分开登记。没有取得新的器件原始数据，因此没有经验闭环，也没有从本章反推出
+Core 必须选择复量子结构。
 
 \chapter{1. UEOT Core 到量子物理的桥接}\label{ch-1}
 
@@ -5997,10 +6006,10 @@ Core，会使所谓推导变成循环论证。
 \section{48.1 唯一理论主源}
 
 本书固定名称为《UEOT物理学》，稳定文档身份为
-\texttt{UEOT-\allowbreak PHYSICS}，当前正式双语修订版为3.7。规范正文固定在仓库
+\texttt{UEOT-\allowbreak PHYSICS}，当前正式双语修订版为3.8。规范正文固定在仓库
 \texttt{physics/\allowbreak qm/\allowbreak book/\allowbreak UEOT\_\allowbreak PHYSICS.\allowbreak md}；同目录中文 PDF
 由该正文生成；完整英文对应本为 \texttt{UEOT\_\allowbreak PHYSICS.\allowbreak en.\allowbreak md}，其 PDF
-由英文主源独立编译。第0--66章、附录A--F构成连续完整文档，保留全部原有物理主题，并把新证明整合进入相应论证。不要求读者从若干旧版本补齐一个证明。
+由英文主源独立编译。第0--67章、附录A--F构成连续完整文档，保留全部原有物理主题，并把新证明整合进入相应论证。不要求读者从若干旧版本补齐一个证明。
 
 版本报告、PR、日志和数学模块各有自己的身份，但不再与总著争夺理论正文的权威。源文件清单、章节修订档案及证据回执记录``这句话依据什么、哪一部分被检查过''。历史文件保留沿革责任；它们的旧状态不会覆盖较新的已验证内核，新的内核也不会为历史上未形式化的物理命题追授机器证明。
 
@@ -6027,12 +6036,12 @@ X。上游合同未被改写，标签修订不新增或撤销数学定理。
 \begin{Verbatim}[breaklines,breakanywhere,fontsize=\scriptsize]
 document:
   id: UEOT-PHYSICS
-  edition: "3.7"
+  edition: "3.8"
   canonical_source: physics/qm/book/UEOT_PHYSICS.md
   derivative_pdf: physics/qm/book/UEOT_PHYSICS.pdf
   english_source: physics/qm/book/UEOT_PHYSICS.en.md
   english_pdf: physics/qm/book/UEOT_PHYSICS.en.pdf
-  chapter_range: [0, 66]
+  chapter_range: [0, 67]
   fundamental_unique_derivation_complete: false
   four_dimensional_nonperturbative_qft_complete: false
   quantum_gravity_complete: false
@@ -11440,6 +11449,353 @@ Lean 而改变。实际构建、命名公理、运行记录和源身份见本版
 Core 唯一导出量子域，没有证明一般量子 Perron
 或无界条件路径，没有获得新的硬件数据；后续实验可以检验指定实现是否达到本章所给完整记录、成本和误差合同。
 
+\chapter{67. 操作等价、微观截断与共同参数下的鲁棒实现}\label{ch-67}
+
+本章接续第66章已经闭合的有限条件过程。新增责任是把实际变换的统计身份、振子微观动力学、有限计算和未知参数下的一次合法部署接到同一完整输出。一般
+Core、复量子扇区选择、实验装置和经验支持仍是不同层次；本章不改变冻结
+Core，也不把标准量子结构的内部一致性称作自然界的独立选择。
+
+\section{67.1 继承、量词与证据}
+
+第54--64章的纯化、局部层析、效应分离和迹距离，以及第66章的完整条件 CQ
+链，均按原源码和回执继承。研究基线为
+\texttt{16a89154183c\allowbreak 22030d452641\allowbreak 3167d095d94e\allowbreak 6890}；入场基线的155个证明/配置输入与9个运行输入逐字节符合历史回执；新增公开导入及审计配置另记当前身份。书面证明、Lean、精确有限算术、浮点诊断、合成记录和真实测量分开登记。
+
+本章依赖类别为
+B、P、E、O；所选复量子结构是明确物理输入，不是本章降低了的独立前提。实现误差使用同一记录字母表和末态空间上的完整
+CQ
+迹距离；第67.10节另行明确研究丢弃记录后的边缘距离。记录包括失败、停止和准备过滤失败，参考系统不受操作。证明量词中的全部态/效应不是实验者已经取得的测量能力。
+
+\section{67.2 实际事件的操作身份}
+
+\phantomsection\label{p-opt-02}{}
+
+\textbf{P-OPT-02（正维有限复系统中的四种事件等价）。}
+令输入、输出系统为正维有限复 Hilbert
+空间，事件为复线性、完全正、迹不增映射。下列四项等价：所有有限正维辅助上下文中的原始统计相同；单系统全部密度态和全部效应的统计相同；实际复线性映射相同；固定基底下的未归一
+Choi 矩阵相同。
+
+\[
+\begin{gathered}
+\forall R,\rho_{AR},\ 0\le E_{BR}\le I:\quad
+\operatorname{Tr}\!\left[E_{BR}(\Phi\otimes\mathrm{id}_R)(\rho_{AR})\right]
+=\operatorname{Tr}\!\left[E_{BR}(\Psi\otimes\mathrm{id}_R)(\rho_{AR})\right],\\
+J(\Phi)_{(i,a),(j,b)}=\Phi(|i\rangle\langle j|)_{a,b}.
+\end{gathered}
+\]
+
+\textbf{证明。} 辅助系统取一维即得单系统条件。对固定输入，两个事件输出为
+Hermitian
+矩阵，允许迹不相等；若差不为零，其正或负谱投影效应便能区分。因此全部密度输入的输出相同。任何非零
+PSD 输入都是其迹乘一个密度态，零迹 PSD 输入为零；Hermitian 矩阵是两个
+PSD 矩阵之差，任意复矩阵是 Hermitian 实部加上虚数单位乘 Hermitian
+虚部，故复线性给出全映射相同。全映射相同在张量恒等扩张后仍相同，包含纠缠输入。Choi
+的每个输入块恢复一个矩阵单位的像，而矩阵单位构成复基，故 Choi
+相同亦等价于映射相同。\(\square\)
+
+零事件没有后验态，但属于定理。先归一化事件输出会丢失发生概率：四分之一恒等事件与二分之一恒等事件有相同正分支后验，却不是同一事件。受限效应或受限输入不能使用这里的全态/全效应结论。有限精度
+Choi 元素相近，也不能直接换名为最坏操作误差。
+
+\section{67.3 可见标签与操作商}
+
+\phantomsection\label{p-opt-03}{}
+
+\textbf{P-OPT-03（逐可见标签的组合相容性）。}
+固定可见结果字母表，两个完整仪器的全部带标签辅助统计相同，当且仅当每个可见标签对应的实际
+CP
+映射相同。顺序、并行、指定结果粗化、经典随机化、条件测试和有界经典适应树保持该等价。
+
+组合使用的状态载体必须包含全部持续记忆，或辅助系统必须像本章实例一样逐步独立重置。单槽通道相等不识别具有不同复用隐藏环境的多时硬件。
+
+\textbf{证明。} 完整 CQ
+输出的每个对角记录块就是相应未归一事件输出；逐块应用
+P-OPT-02。复合、张量和有限求和保持映射相等；有限树对高度归纳。条件完整性由每个后继测试的总映射迹保持，再由父仪器完整性得到。观察纤维内必须使用相同控制权重，不能利用隐藏
+Kraus 指标。\(\square\)
+
+一个恒等 Kraus 与两个分别乘以3/5和4/5的恒等 Kraus 给出同一 CP
+映射；交换可见投影结果则不是同一仪器。后者在适当输入上完整 CQ
+距离为一，即使忘记标签后的通道相同。矩形事件还可用``缺失效应的概率乘固定输出态''补成完整测试；正维输出空间保证该固定密度态存在。空矩阵载体保留为数学边界，不作为没有归一态的物理对象。
+
+这补齐所选复模型的操作语义。Chiribella--D'Ariano--Perinotti
+的重构仍依赖完整有限因果 OPT 背景和其选择原则，见
+\href{https://arxiv.org/abs/1011.6451v3}{2011年原文}与\href{https://arxiv.org/abs/0908.1583v5}{2010年框架}。中性的``存在父状态''``访问完整''``可加资源''原则也由完整经典概率理论满足：取产品父分布、全部随机映射和可加非负成本即可。本章没有由这些原则排除经典理论，也没有将完整重构机器化。
+
+\section{67.4 从微观动力学导出统一截断}
+
+系统为二能级探针和一个振子，参考系统为任意有限正维系统。激发数和预算无量纲；实际能量必须另给与激发数的算子关系。
+
+\[
+\mathcal H_S=\mathbb C^2\otimes\ell^2(\mathbb N_0),\qquad
+G=a^\dagger a+P_e,\qquad
+\Pi_N=1_{G\le N},\qquad \operatorname{rank}\Pi_N=2N+1.
+\]
+
+Jaynes--Cummings 交换、探针相位及保激发自由项在每个总激发扇区形成有限
+Hermitian 块。以所有块作用后平方范数可求和的向量为定义域，其 Hilbert
+直和是自伴算子：逐块分解的预解式一致有界，得到自伴性及相应酉群。所用控制因而强保持谱投影。将此
+Hamiltonian 当作器件模型时，旋波近似等误差仍需独立控制。
+
+真空辅助与非负辅助激发数共同保证：保总激发联合酉从初始总激发不超过截断的态出发，完整读出的每个隐藏分支仍落在系统截断内。读出未必对角于辅助激发，但固定的每个读出向量所得分量都不能产生更高系统激发。
+
+\phantomsection\label{p-micro-01}{}
+
+\textbf{P-MICRO-01（微观来源到完整适应 CQ 的截断桥）。}
+对上述实际动作族、有限结果/隐藏细化、固定观察权限和最大有限高度，对每个合法经典控制器、每个有限参考和每个满足预算的联合输入，都有：
+
+\[
+\begin{gathered}
+K_{aok}\Pi_N=\Pi_NK_{aok}\Pi_N,\qquad
+s_N=\operatorname{Tr}[(\Pi_N\otimes I_R)\rho_{SR}]>0,\\
+\rho_N=\frac{(V_N^\dagger\otimes I_R)\rho_{SR}(V_N\otimes I_R)}{s_N},\qquad
+\operatorname{Tr}(G\rho_S)\le\bar n<N+1,\\
+D\!\left(\Omega^\pi(\rho_{SR}),\iota_N\Omega_N^\pi(\rho_N)\right)
+\le\sqrt{\frac{\bar n}{N+1}}.
+\end{gathered}
+\]
+
+\textbf{证明。}
+第一个等式由刚述微观守恒、辅助制备及读出导出。谱不等式给出尾质量上界，第10章
+P-QINF-02 的纯化论证给出初始归一投影态距离。定义有限分支为原 Kraus
+的压缩；保持截断导出分支交织和有限完整性，而非把交织作为证书输入。沿树逐分支相乘、求和并保留全部终止标签，得到同一控制器的完整输出交织。完整有限树是正常
+CPTP 映射；其对 Hermitian 迹类差收缩，遂得结论。\(\square\)
+
+因为截断子空间保持，不出现随步数线性增加的重复截断损失。注入激发、存在泄漏或无限停止的协议不在该证明内。归一投影依赖输入，因此本式不是两个固定通道之差的能量约束
+diamond 范数。
+
+\section{67.5 必要前提、正常迹类与真实过滤}
+
+\phantomsection\label{c-micro-01}{}
+
+\textbf{C-MICRO-01（平均能量保持不保证逐分支截断）。}
+在能量零、一、二的三态空间，测量制备通道固定零态、二态，把一态送到零态与二态的等概率混合，并消去非对角元。其对所有输入保持平均激发数，但其中一个
+Kraus 把一态升至二态，离开一阶截断。因此平均能量不增加不能替代
+P-MICRO-01 的逐分支前提。
+
+另一个实际操作反例是：单激发探针先交换到振子再完全损耗得到真空；先损耗振子再交换得到单激发振子。两种
+CP 复合在同一输入上的距离为一。这里只检验实际通道，不能以两个 Kraus
+矩阵反对易代替通道不交换。
+
+\phantomsection\label{p-micro-02}{}
+
+\textbf{P-MICRO-02（正常迹类后选择和完整准备记录）。} 对同一正常 CP
+迹不增接受提取器、完整正常输出及正接受概率，有限维锐后选择界原常数推广到迹类输出。另对真实投影过滤，理想总是通过输出与实际通过/失败完整输出满足下列准备界：
+
+\[
+\begin{gathered}
+D(\omega,\sigma)\le\varepsilon,\quad
+A=\mathcal E(\omega),\ B=\mathcal E(\sigma),\quad
+p=\operatorname{Tr}A>0,\ q=\operatorname{Tr}B>0,\\
+|p-q|\le\varepsilon,\qquad
+D(A/p,B/q)\le\min\{1,\varepsilon/\max(p,q)\},\\
+\delta_N=1-s_N,\qquad
+D_{\mathrm{prep}}\le
+\frac{\sqrt{\delta_N(4-3\delta_N)}+\delta_N}{2}
+\le\min\{1,\sqrt{\delta_N}+\delta_N\}.
+\end{gathered}
+\]
+
+\textbf{证明。}
+将接受提取器用缺失效应补上一个独立失败旗，迹距离收缩给出接受块迹范数差加成功概率差不超过两倍原误差。若第一成功概率较大，把归一差写成接受块差除以该概率，加上另一正块的归一系数差；三角不等式即得锐界。交换两者处理另一情形，整个论证只用迹类范数和正常映射。
+
+准备界可在输入纯化上计算。通过/失败正交分量的理想与过滤差，在通过块上是对角元为零、尾质量，非对角元为两分量振幅乘积的二阶
+Hermitian
+矩阵；其迹范数为根号内二次式。再加独立失败块的尾质量并除二；偏迹和后继共同通道收缩。\(\square\)
+
+完整记录空间必须扩大为准备失败标签加通过前缀下的原记录。一般能量有界输入在通过后可能增加归一能量预算；未知输入失败后不能凭空重备。这里的迹类推广和自伴直和论证为书面证明，原有限矩阵
+Lean 定理不因邻近编译而自动扩域。
+
+\section{67.6 一个共参数原源}
+
+冻结未知但固定的共同参数为源旗概率、相位脉冲和交换脉冲。后两个参数可以不确定，但原源、目标及动作库必须共享相同实际门。两个原步骤在首次失败时停止。
+
+\[
+\begin{gathered}
+\theta=(q,\phi,\alpha),\quad q\in[12/25,13/25],\quad s=1-q/2,\\
+U_0=e^{-i\phi P_e},\qquad
+U_1=e^{-i\alpha(a\sigma_++a^\dagger\sigma_-)},\\
+K_0=\sqrt{s(1-q)}U_0,\quad
+K_1=\sqrt{sq}U_1,\quad K_f=\sqrt{1-s}I,\\
+\mathcal R=\{f,0f,1f,00,01,10,11\}.
+\end{gathered}
+\]
+
+微观实现使用初态独立、激发算子为零的三态简并逻辑旗。两个实平面旋转先制备三个所需振幅，再受旗控制施加两个门或恒等，最后完整读出旗。这个联合过程保持系统激发；逻辑简并并不表示制备、读出或复位免费。两步全成功的原概率和后向效应由原源求出：
+
+\[
+H_t=s^{2-t}I,\qquad p_{\mathrm{src}}=s^2\ge1369/2500,
+\qquad t\in\{0,1,2\}.
+\]
+
+这里的后向效应公式只用于尚未失败的成功前缀；失败叶的接受效应为零。条件目标在四个成功历史上具有独立
+Bernoulli
+概率，三个原失败块为零，末态为相应有序门乘积作用于原联合态。它是一个输入无关归一的
+CPTP
+过程。因此本例截断误差直接收缩，不需要再除以原成功概率。原始完整源仍有失败，不能与这个条件目标混同。
+
+\section{67.7 联合校准与鲁棒证书}
+
+\phantomsection\label{p-rob-01}{}
+
+\textbf{P-ROB-01（同一参数集上的部署误差与分离）。}
+固定完整输出、输入/参考范围和观察权限；校准产生联合集合。给定一个只由校准和合法可见历史确定的部署候选
+\(w(D_{\mathrm{cal}})\)，要求
+\(w_a\ge0\)、\(\sum_a w_a=1\)，并已认证其名义残差。若目标及各动作在该共同集合内分别有相对于名义对象的统一误差，则对该给定候选有：
+
+\[
+\begin{gathered}
+d_{\mathcal X}(T_\theta,\widehat T)\le\eta_T,\quad
+d_{\mathcal X}(A_{a,\theta},\widehat A_a)\le\eta_a,\quad
+d_{\mathcal X}(\widehat T,\sum_a w_a\widehat A_a)\le r_{\mathrm{nom}},\\
+\forall\theta\in C(D_{\mathrm{cal}}),\\
+d_{\mathcal X}\!\left(T_\theta,\sum_a w_aA_{a,\theta}\right)
+\le r_{\mathrm{nom}}+\eta_T+\sum_a w_a\eta_a.
+\end{gathered}
+\]
+
+部署设计所需量词是
+\(\exists w(D_{\mathrm{cal}})\,\forall\theta\in C(D_{\mathrm{cal}})\)；本充分界不自动保证存在小残差权重。
+
+\textbf{证明。}
+对同一输入与同一参数，在实际目标和实际混合之间插入名义目标与名义混合，应用三角不等式及范数凸性，再取规定输入和参数范围的上确界。完整仪器的凸混合保持完整性。历史依赖策略可作为完整策略库中的对象，或先对每个观察纤维认证，再另用有限误差传播定理，不能省略组合步骤。\(\square\)
+
+对固定合法输入和完整记录上的效应，若目标期望的认证下界严格大于全部动作期望的认证上界加允许误差，则该效应给出所有候选、所有混合均不可实现的分离证书。一般线性泛函必须另带实际对偶范数。上界、下界均不足时返回``当前证书不足''，而不是把求解器失败写成物理不可能。
+
+\phantomsection\label{c-rob-01}{}
+
+\textbf{C-ROB-01（逐参数可实现不推出一次鲁棒部署）。}
+对本章条件目标，每个已知参数都可令每一步标签一的权重等于该参数，实现精确输出。若参数未知且可见记录由动作选择产生，控制器没有额外参数敏感查询，那么其第一个标签分布在部署前固定；两个不同参数的目标首标签概率不同，故不可能同时精确实现。这是没有统一权重，不是每个物理候选都不可实现。
+
+忘记可见标签会制造另一类假成功：两个恒等事件总通道都为恒等，但分别总是输出零和总是输出一，完整记录距离为一。观察权限改变后可实现集合也改变，不能向控制器透露隐藏节点。严格支撑证书与谱隙条件同样不得被浮点阈值代替。
+
+\section{67.8 可见历史的精确收益与完整误差}
+
+\phantomsection\label{p-rob-02}{}
+
+\textbf{P-ROB-02（同一原源的精确设计区间证书）。}
+允许每一步选择实际门并输出相同标签；随机币结果就是该可见标签，没有额外被删掉的动作记录。设设计区间半宽为五十分之一。常数二分之一权重的两步最坏完整误差为五十一除二千五百；使用第一步可见标签的合法策略，将它改善为五十分之一，且在规定的标签动作库内达到整个设计区间的极小极大值。
+
+\[
+\begin{gathered}
+\Delta=1/50,\qquad
+w_1=1/2,\quad w_{2|0}=312/625,\quad w_{2|1}=313/625,\\
+Q_{00}=Q_{11}=1/4+\Delta^2,\qquad
+Q_{01}=Q_{10}=1/4-\Delta^2,\\
+t=q-1/2,\quad u=\Delta^2-t^2,\qquad
+D_{\mathrm{CQ}}=\max\{|t|,u\}+u\le\Delta.
+\end{gathered}
+\]
+
+\textbf{证明。}
+每条历史中的目标和实现使用相同实际门，故对应末态完全相同；块迹范数差正好等于概率差，对全部输入及有限参考都成立。代入四个概率得到显示公式。若绝对偏移不小于余量，误差上界与目标半宽之差分解为两个非负因子；否则误差不超过半宽平方的两倍。区间两端目标记录律的
+TV
+距离为半宽的两倍，三角不等式给任何参数无关记录律至少半宽的最坏误差。该策略达到下界。\(\square\)
+
+最优性限于整个预先冻结的设计区间，以及没有额外参数敏感在程查询的规定动作库。校准得到的较小集合可能有更优策略。该策略在中心参数上牺牲\(1/1250\)的精确性，换取更小的最坏误差；不是每个参数点都优于常数权重。
+
+对一般预算为一、截断为四千零九十五的输入，把准备失败记录一并保留，得到先前冻结精度二十分之一内的解析充分界：
+
+\[
+\begin{gathered}
+\delta_N\le1/4096,\\
+D_{\mathrm{full}}\le65/4096+1/50
+=3673/102400\\
+=0.035869140625<1/20,\\
+\varepsilon_{\mathrm{remaining}}=1/20-3673/102400=1447/102400.
+\end{gathered}
+\]
+
+余量可供真实门失配、未建模动力学等经过证明的共同输出误差使用；没有相应测量或模型界，就没有设备精度认证。这里没有分配数千维矩阵来冒充一般证明。实际有限计算使用已知支持于单激发空间的态，连同纠缠参考检查原源、后向效应、全部记录及有序门作用，截断和准备失败误差在该计算中恰为零。
+
+\section{67.9 校准、留出、成本与机制识别}
+
+模型校准保留八万次单步原旗的逻辑试次顺序（不是实测硬件时间戳），使用失败率估计源参数；独立同分布、参数固定、源关系正确都是覆盖前提。
+
+\[
+\begin{gathered}
+\widehat q=2k_f/n,\qquad n=80000,\\
+C_q=[\widehat q-1/100,\widehat q+1/100]\cap[0,1],\\
+\Pr(q\notin C_q)\le2e^{-4}<1/20.
+\end{gathered}
+\]
+
+实际合成执行得到失败数19844、估计值0.4961和区间{[}0.4861,0.5061{]}，该区间包含在设计域内。旗数据不校准门失配，完整联合集合还包含合法相位/交换
+nuisance
+范围和独立的同源门合同。两个各4096次的分离留出集检查原七标签分布与编译策略记录；未被预先冻结的有限记录测试拒绝。所有这些数据均由模型生成，未作末态层析，不能称作经验闭环或实测完整迹距离。
+
+反控制把一个潜在旗复制到所有试次：单次边缘相同，但上述覆盖完全失效，说明仅有边缘频率不足以支持
+iid
+浓缩。实际数据入口需要独立校准、原始时间顺序、全部失败/泄漏/停止、输入与参考制备、门匹配证据、末态测试设置和全成本；缺任一项就保留相应未验证责任。
+
+若原源可真正独立重备，单次动作次数期望为一加单步成功率，原成功输出的动作成本为该期望除以两步成功率。对每次相同动作综合成本，完整期望为：
+
+\[
+C_{\mathrm{src}}=
+\frac{c_{\mathrm{prep}}+(1+s)c_{\mathrm{step}}+(1-s^2)c_{\mathrm{reset}}+c_{\mathrm{other}}}{s^2}.
+\]
+
+这里的附加项是每次原源尝试的期望成本，应包含尚未计入步骤或准备项的辅助准备、读出、记录与经典计算。不相同的叶成本应使用原完整叶加权。一次性校准批次成本
+\(C_{\mathrm{cal}}\) 应在交付 \(M\) 个成功输出时另加
+\(C_{\mathrm{cal}}/M\)，不能先按输出摊销再放入分子重复除以成功概率。编译策略同样计入过滤失败、两个门、随机币、复位与存储。未知量子输入没有免费独立重复。本文没有实测秒、焦耳或金额优势。整个微观过程已有普通量子环境实现；它本身不区分客观实际化与标准环境机制。
+
+\section{67.10 长期边缘混合与完整记忆的反差}
+
+\phantomsection\label{p-micro-03}{}
+
+\textbf{P-MICRO-03（单激发边缘混合，完整记录不遗忘）。}
+进一步固定单激发基底次序为振子激发、探针激发，并取下列实际门。对设计区间内全部源参数，忘记记录后的条件通道每两步有统一收缩界，其唯一不变态为该扇区的最大混合态；保留完整成功历史时，任意两输入的
+CQ 距离则恰好保持。
+
+\[
+\begin{gathered}
+U_0=\operatorname{diag}(1,(3+4i)/5),\qquad U_1=(3I-4iX)/5,\\
+M(q)=(1-q)
+\begin{pmatrix}3/5&-4/5&0\\4/5&3/5&0\\0&0&1\end{pmatrix}
++q\begin{pmatrix}1&0&0\\0&-7/25&-24/25\\0&24/25&-7/25\end{pmatrix},\\
+\|M(q)^2\|_2\le49/50,\qquad
+D(\mathcal T_q^n(\rho),I_2/2)
+\le(49/50)^{\lfloor n/2\rfloor}D(\rho,I_2/2),\\
+D(\Omega_n(\rho_{SR}),\Omega_n(\sigma_{SR}))
+=D(\rho_{SR},\sigma_{SR}).
+\end{gathered}
+\]
+
+\textbf{证明。} 从实际二阶门的 Pauli
+共轭计算显示中的实矩阵。中心参数处，十分之九平方乘恒等减二步矩阵的 Gram
+矩阵，三个顺序主子式分别为4941/12500、422733249/3906250000、29552508909/390625000000，均严格正。因此中心二步范数小于十分之九。两个旋转凸混合范数不超过一；参数偏离中心带来的二步差不超过偏离的四倍，得到统一上界。Bloch
+向量距离给出边缘态收缩及唯一性。
+
+完整记录块却是输入差的酉共轭乘同一历史概率。迹范数对酉共轭不变，所有概率求和为一，即得最后一式，含有限参考。边缘收缩系数没有因此推广到任意参考通道范数。\(\square\)
+
+整个振子仍有不变的激发权重，真空和单激发最大混合态是两个不同不变态，故不存在上述意义的全振子唯一混合。原源无限连续成功概率趋零；Doob
+平稳态、条件逐时态与原源零概率无限事件的路径律不能互换。这里准确说明了记录作为记忆保留了什么，也说明忘记记录如何产生有限系统中的混合。
+
+\section{67.11 尚未关闭的物理箭头}
+
+长期图继续以现行 ROADMAP
+为入口。下一个微观题是弱非守恒项或有限浴删模对同一干预槽和完整记录的误差；之后才扩到
+Gaussian/调节自由场、同阶完整 EFT
+可观测量及连续极限。粒子线保留三色与五色两个候选，秩一 FCNC
+应连接未参与拟合的同参数低能关系，完整算符
+running、矩阵元和协方差不可省略。
+
+原始信息引力中的直接 Fisher---Lorentzian 认同有明确障碍：正则实参数
+Fisher 矩阵为 score
+外积的期望，故半正定，其实坐标拉回仍半正定，不能仅靠重参数化成为非退化
+Lorentzian
+度规。这只否定直接认同/实拉回路线；其他信息引力桥必须提供独立因果或带符号结构。固定全局双曲背景上的自由场、Hadamard
+态和局域探针响应，是可分离验证的后继目标；引力反馈另需重整化及应力守恒。
+
+\section{67.12 实际证据边界}
+
+新增操作等价源码与其编译、公理审计由v31.11专用回执逐项绑定；P-OPT-02
+对应实际映射、单系统统计、辅助统计及 Choi 等价的机器端点；P-OPT-03
+的机器部分仅为带标签顺序复合与求和相容性。完整并行测试束、操作商有限树归纳、抽象
+OPT
+全部一致性律及重构仍是书面责任。微观无限维、正常迹类、鲁棒上界与混合证明分别保留其书面范围。精确有限
+checker 与主智能体独立路径检查相互补充；合成校准及有限 tester
+留出不代替真实数据。三名原生子智能体交叉审查为内部 AI
+审查，不是外部人类同行评议。完整来源、失败后修正和未覆盖域均保存在本轮审计与执行记录中。
+
 \chapter{附录 A. 符号、单位与标准定理责任表}\label{appendix-a}
 
 \section{A.1 常用符号}
@@ -11575,7 +11931,7 @@ Lindblad 算符或线丛。所有重用符号以本章类型为准。
 
 \chapter{附录 B. 编号证明结果注册表}\label{appendix-b}
 
-3.7双语修订完整保留3.6研究版的173个稳定编号，没有另行新增或撤销结果。其中161项来自3.5版，第66章的11项命题与1项反例在3.6研究修订中新增。更早的组成是：2.0版78项，第49--50章10项，第51--53章13项，第54--56章16项，第57--59章14项，第60--62章16项，第63--65章14项。编号登记正文解析结果，不表示原创性、Lean声明或实验确认的计数；完整前提、证明和开放责任见对应章节。两种语言的标题与锚点另有逐项映射。
+3.7双语修订完整保留3.6研究版的173个稳定编号，没有另行新增或撤销结果。其中161项来自3.5版，第66章的11项命题与1项反例在3.6研究修订中新增。更早的组成是：2.0版78项，第49--50章10项，第51--53章13项，第54--56章16项，第57--59章14项，第60--62章16项，第63--65章14项。编号登记正文解析结果，不表示原创性、Lean声明或实验确认的计数；完整前提、证明和开放责任见对应章节。两种语言的标题与锚点另有逐项映射。3.8版在这些原有记录之后增列第67章九项结果，合计182项；原173项结果的账本对象及历史验证身份保持不变。
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2400}}
@@ -11863,6 +12219,24 @@ P-FCOND-10（完整输出到条件输出的误差传播）。 \\
 近似的可用局部误差界）。 \\
 \hyperref[c-fcond-01]{C-FCOND-01} & 66 &
 C-FCOND-01（小谱值不能当零谱处理）。 \\
+\hyperref[p-opt-02]{P-OPT-02} & 67 &
+P-OPT-02（正维有限复系统中的四种事件等价）。 \\
+\hyperref[p-opt-03]{P-OPT-03} & 67 &
+P-OPT-03（逐可见标签的组合相容性）。 \\
+\hyperref[p-micro-01]{P-MICRO-01} & 67 & P-MICRO-01（微观来源到完整适应
+CQ 的截断桥）。 \\
+\hyperref[c-micro-01]{C-MICRO-01} & 67 &
+C-MICRO-01（平均能量保持不保证逐分支截断）。 \\
+\hyperref[p-micro-02]{P-MICRO-02} & 67 &
+P-MICRO-02（正常迹类后选择和完整准备记录）。 \\
+\hyperref[p-rob-01]{P-ROB-01} & 67 &
+P-ROB-01（同一参数集上的部署误差与分离）。 \\
+\hyperref[c-rob-01]{C-ROB-01} & 67 &
+C-ROB-01（逐参数可实现不推出一次鲁棒部署）。 \\
+\hyperref[p-rob-02]{P-ROB-02} & 67 &
+P-ROB-02（同一原源的精确设计区间证书）。 \\
+\hyperref[p-micro-03]{P-MICRO-03} & 67 &
+P-MICRO-03（单激发边缘混合，完整记录不遗忘）。 \\
 \end{longtable}
 
 \chapter{附录 C. 来源、继承关系与研究诚实性}\label{appendix-c}
@@ -13013,9 +13387,9 @@ print(json.dumps(result,ensure_ascii=False,indent=2))
 \section{E.1 完整语义主源与派生阅读版}
 
 稳定中文主文件 \texttt{UEOT\_\allowbreak PHYSICS.\allowbreak md} 与完整英文对应本
-\texttt{UEOT\_\allowbreak PHYSICS.\allowbreak en.\allowbreak md} 均包含第0--66章和附录A--F。各自的
+\texttt{UEOT\_\allowbreak PHYSICS.\allowbreak en.\allowbreak md} 均包含第0--67章和附录A--F。各自的
 \texttt{.\allowbreak tex}、\allowbreak \texttt{.\allowbreak pdf}
-是这些主源的实际派生阅读版，包含数学排版、全文章目录、稳定结果编号、原始推导和内嵌代码。3.7版是第三版的完整双语出版修订。版本号标识出版物，已解决与未解决的物理问题由正文和证据分别决定。
+是这些主源的实际派生阅读版，包含数学排版、全文章目录、稳定结果编号、原始推导和内嵌代码。3.8版在第三版的完整双语书稿中加入第67章研究增量。版本号标识出版物，已解决与未解决的物理问题由正文和证据分别决定。
 
 两种语言承担相同的科学责任。文字为自然阅读作适当调整，前提、公式、常数、结果编号、源码身份与经验限定则共同核对。翻译不静默改变数学符号；公式中的纯文字标签和有记录的编辑更正列入忠实性报告。
 
@@ -14577,6 +14951,100 @@ UEOTQM.QuantumActionRealizability.branchOutputFamily
 UEOTQM.QuantumActionRealizability.mixture_branchOutputFamily
 UEOTQM.QuantumActionRealizability.fixed_input_branch_realizable_iff
 UEOTQM.QuantumActionRealizability.fixed_input_observation_realizable_iff
+\end{Verbatim}
+
+\section{F.6 v31.11 操作身份增量}
+
+本轮增加 \texttt{Operational\allowbreak Equivalence.\allowbreak lean}
+一个公开模块，含28个显式定理、43个显式命名声明；实际审计覆盖其命名空间的80个导出常量（含生成常量）。模块目标实际编译通过；公理审计只接受
+\texttt{propext}、\allowbreak \texttt{Classical.\allowbreak choice}、\allowbreak \texttt{Quot.\allowbreak sound}，确切执行和源哈希见
+\texttt{.\allowbreak .\allowbreak /\allowbreak kernel/\allowbreak evidence/\allowbreak v31.\allowbreak 11/\allowbreak lean-\allowbreak verification.\allowbreak json}。8730个构建jobs是消费依赖图中的工作项，不是新增定理数量。普通linter警告保留。
+
+当前公开源码清单为50模块、987个显式定理、1365个具名公理请求；这些清单总数不表示本轮重新执行了全部历史门。旧49模块源码与旧1285条请求保持原身份，新模块及公开入口另有当前执行绑定。P-OPT-02的映射、单系统统计、完整辅助统计与Choi端点及矩形事件覆盖已列于第67章账本；P-OPT-03的Lean子覆盖仅为顺序复合和求和相容性。完整有限Test/并行/商树背景、无限维、正常迹类、鲁棒性与混合的书面结果不因邻近编译成为机器定理。
+
+以下为新命名空间实际审计的完整常量列表，与公开审计文件新增请求逐项对应：
+
+\begin{Verbatim}[breaklines,breakanywhere,fontsize=\scriptsize]
+UEOTQM.OperationalEquivalence.ContextStatistics
+UEOTQM.OperationalEquivalence.Event
+UEOTQM.OperationalEquivalence.Event._sizeOf_1
+UEOTQM.OperationalEquivalence.Event._sizeOf_inst
+UEOTQM.OperationalEquivalence.Event.amplify
+UEOTQM.OperationalEquivalence.Event.amplify._proof_1
+UEOTQM.OperationalEquivalence.Event.amplify._simp_1
+UEOTQM.OperationalEquivalence.Event.amplify.eq_1
+UEOTQM.OperationalEquivalence.Event.amplify_operator_apply
+UEOTQM.OperationalEquivalence.Event.amplify_operator_eq
+UEOTQM.OperationalEquivalence.Event.amplify_posSemidef
+UEOTQM.OperationalEquivalence.Event.casesOn
+UEOTQM.OperationalEquivalence.Event.ctorIdx
+UEOTQM.OperationalEquivalence.Event.defect_positive
+UEOTQM.OperationalEquivalence.Event.kraus
+UEOTQM.OperationalEquivalence.Event.mass_operator_le
+UEOTQM.OperationalEquivalence.Event.mk
+UEOTQM.OperationalEquivalence.Event.mk._flat_ctor
+UEOTQM.OperationalEquivalence.Event.mk.congr_simp
+UEOTQM.OperationalEquivalence.Event.mk.inj
+UEOTQM.OperationalEquivalence.Event.mk.injEq
+UEOTQM.OperationalEquivalence.Event.mk.noConfusion
+UEOTQM.OperationalEquivalence.Event.mk.sizeOf_spec
+UEOTQM.OperationalEquivalence.Event.noConfusion
+UEOTQM.OperationalEquivalence.Event.noConfusionType
+UEOTQM.OperationalEquivalence.Event.ofChannel
+UEOTQM.OperationalEquivalence.Event.ofChannel._proof_1
+UEOTQM.OperationalEquivalence.Event.ofChannel_operator
+UEOTQM.OperationalEquivalence.Event.operatorLinear
+UEOTQM.OperationalEquivalence.Event.operatorLinear._proof_1
+UEOTQM.OperationalEquivalence.Event.operatorLinear._proof_2
+UEOTQM.OperationalEquivalence.Event.operatorLinear.eq_1
+UEOTQM.OperationalEquivalence.Event.operator_posSemidef
+UEOTQM.OperationalEquivalence.Event.rec
+UEOTQM.OperationalEquivalence.Event.recOn
+UEOTQM.OperationalEquivalence.Event.statistics_iff_map_eq
+UEOTQM.OperationalEquivalence.Event.trace_operator
+UEOTQM.OperationalEquivalence.PhysicalSystem
+UEOTQM.OperationalEquivalence.SingleStatistics
+UEOTQM.OperationalEquivalence.amplify
+UEOTQM.OperationalEquivalence.amplify._proof_1
+UEOTQM.OperationalEquivalence.amplify._proof_2
+UEOTQM.OperationalEquivalence.amplify_congr
+UEOTQM.OperationalEquivalence.choi
+UEOTQM.OperationalEquivalence.choi_injective
+UEOTQM.OperationalEquivalence.complex_linear_eq_of_eq_on_densities
+UEOTQM.OperationalEquivalence.contextStatistics_iff_choi_eq
+UEOTQM.OperationalEquivalence.contextStatistics_iff_map_eq
+UEOTQM.OperationalEquivalence.contextStatistics_iff_singleStatistics
+UEOTQM.OperationalEquivalence.context_statistics_of_singleStatistics
+UEOTQM.OperationalEquivalence.hermitian_eq_of_all_effect_pairings_eq
+UEOTQM.OperationalEquivalence.imaginaryUnit
+UEOTQM.OperationalEquivalence.imaginaryUnit.eq_1
+UEOTQM.OperationalEquivalence.imaginaryUnit_hermitian
+UEOTQM.OperationalEquivalence.imaginaryUnit_hermitian._simp_1_2
+UEOTQM.OperationalEquivalence.labelled_comp_congr
+UEOTQM.OperationalEquivalence.labelled_sum_congr
+UEOTQM.OperationalEquivalence.map_eq_iff_choi_eq
+UEOTQM.OperationalEquivalence.matrixUnit
+UEOTQM.OperationalEquivalence.matrixUnit.congr_simp
+UEOTQM.OperationalEquivalence.matrixUnit.eq_1
+UEOTQM.OperationalEquivalence.matrixUnit_hermitian_expansion
+UEOTQM.OperationalEquivalence.matrixUnit_hermitian_expansion._simp_1_4
+UEOTQM.OperationalEquivalence.matrix_expansion
+UEOTQM.OperationalEquivalence.physicalState
+UEOTQM.OperationalEquivalence.physicalState._proof_1
+UEOTQM.OperationalEquivalence.real_maps_eq_on_hermitian_of_eq_on_densities
+UEOTQM.OperationalEquivalence.real_maps_eq_on_positive_of_eq_on_densities
+UEOTQM.OperationalEquivalence.scalarDensity
+UEOTQM.OperationalEquivalence.scalarDensity._proof_1
+UEOTQM.OperationalEquivalence.scalarDensity._proof_2
+UEOTQM.OperationalEquivalence.scalarEffect
+UEOTQM.OperationalEquivalence.scalarEffect._proof_1
+UEOTQM.OperationalEquivalence.scalarEffect._proof_2
+UEOTQM.OperationalEquivalence.scalar_context_pairing
+UEOTQM.OperationalEquivalence.singleStatistics_iff_map_eq
+UEOTQM.OperationalEquivalence.sub_kronecker
+UEOTQM.OperationalEquivalence.symmetricUnit
+UEOTQM.OperationalEquivalence.symmetricUnit.eq_1
+UEOTQM.OperationalEquivalence.symmetricUnit_hermitian
 \end{Verbatim}
 
 \backmatter

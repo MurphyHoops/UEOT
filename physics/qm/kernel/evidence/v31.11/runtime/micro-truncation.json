@@ -1,0 +1,410 @@
+{
+  "schema": "ueot-micro-truncation-check/1",
+  "completed_at_utc": "2026-11-11T09:54:16.002941+00:00",
+  "baseline_commit": "16a89154183c22030d4526413167d095d94e6890",
+  "source_sha256": "0cad730f5e53627e8247fad3b07f8474d6a898c0c1a5a455ca440257fd89ba6c",
+  "python": "3.12.14",
+  "sympy": "1.14.0",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "validation_kind": {
+    "exact": "finite symbolic matrix identities",
+    "floating": "explicit finite diagnostics; not interval certificates",
+    "empirical": "none",
+    "Lean": "not executed by this script"
+  },
+  "exact_count": 46,
+  "floating_count": 12,
+  "exact": [
+    {
+      "name": "phase_unitary",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "jc_unitary",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "phase_conserves_G",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "jc_conserves_G",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "ordered_actual_CP_maps_differ",
+      "pass": true,
+      "detail": "Tests outputs of actual conjugation maps, not Kraus anticommutation."
+    },
+    {
+      "name": "ordered_actual_CP_distance_squared",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Bloch_R0_derived",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Bloch_R1_derived",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "two_step_contraction_principal_minors",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "two_step_contraction_strict_positive",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "uniform_two_step_bound_rational",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "flag_preparation_unitary:12/25",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "joint_unitary:12/25",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "joint_conservation:12/25",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "instrument_derived_from_joint_unitary:12/25",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "source_completeness:12/25",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "seven_leaf_completeness:12/25",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "acceptance_effect_derived:12/25",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "source_failed_labels_retained:12/25",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "flag_preparation_unitary:1/2",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "joint_unitary:1/2",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "joint_conservation:1/2",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "instrument_derived_from_joint_unitary:1/2",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "source_completeness:1/2",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "seven_leaf_completeness:1/2",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "acceptance_effect_derived:1/2",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "source_failed_labels_retained:1/2",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "flag_preparation_unitary:13/25",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "joint_unitary:13/25",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "joint_conservation:13/25",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "instrument_derived_from_joint_unitary:13/25",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "source_completeness:13/25",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "seven_leaf_completeness:13/25",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "acceptance_effect_derived:13/25",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "source_failed_labels_retained:13/25",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "vacuum_exchange_joint_unitary",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "vacuum_exchange_joint_conservation",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "vacuum_exchange_complete",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "vacuum_exchange_readout_derived",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "loss_after_JC_is_vacuum",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "JC_after_loss_is_oscillator_excitation",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "noncommuting_channel_distance_one",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "mean_energy_control_complete",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "mean_energy_control_preserves_G_for_all_inputs",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "mean_energy_control_escapes_cutoff",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "naive_restriction_loses_half_mass",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "floating": [
+    {
+      "name": "tail_probability_is_one_quarter",
+      "value": 1.1102230246251565e-16,
+      "limit": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "projection_bound_is_saturated",
+      "value": 0.0,
+      "limit": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "adaptive_complete",
+      "value": 2.2266700028042815e-16,
+      "limit": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "finite_adaptive_complete",
+      "value": 2.2264068769325e-16,
+      "limit": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "leaf_intertwining:1:stop_click",
+      "value": 0.0,
+      "limit": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "leaf_intertwining:00:timeout",
+      "value": 1.5700924586837752e-16,
+      "limit": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "leaf_intertwining:01:stop_click",
+      "value": 5.551115123125783e-17,
+      "limit": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "adaptive_full_CQ_truncation",
+      "value": 0.44626205004203534,
+      "upper_bound": 0.5,
+      "pass": true
+    },
+    {
+      "name": "flagged_conditional_channel_complete",
+      "value": 6.661411056184352e-16,
+      "limit": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "flagged_conditional_truncation_saturates",
+      "value": 1.1102230246251565e-16,
+      "limit": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "filter_flag_bound_is_saturated",
+      "value": 0.0,
+      "limit": 2e-12,
+      "pass": true
+    },
+    {
+      "name": "filter_fail_cannot_be_erased",
+      "normalized_projection_distance": 0.5000000000000001,
+      "full_physical_distance": 0.5756939094329987,
+      "pass": true
+    }
+  ],
+  "symbolic_summary": {
+    "source_rows": [
+      {
+        "q": "12/25",
+        "s": "19/25",
+        "acceptance": "361/625",
+        "mean_source_calls": "44/25",
+        "raw_leaves": [
+          "f",
+          "0f",
+          "1f",
+          "00",
+          "01",
+          "10",
+          "11"
+        ]
+      },
+      {
+        "q": "1/2",
+        "s": "3/4",
+        "acceptance": "9/16",
+        "mean_source_calls": "7/4",
+        "raw_leaves": [
+          "f",
+          "0f",
+          "1f",
+          "00",
+          "01",
+          "10",
+          "11"
+        ]
+      },
+      {
+        "q": "13/25",
+        "s": "37/50",
+        "acceptance": "1369/2500",
+        "mean_source_calls": "87/50",
+        "raw_leaves": [
+          "f",
+          "0f",
+          "1f",
+          "00",
+          "01",
+          "10",
+          "11"
+        ]
+      }
+    ],
+    "rational_CP_order_distance_squared": "576/3125",
+    "G1_bloch_basis": [
+      "|g,1>",
+      "|e,0>"
+    ],
+    "G1_two_step_sylvester_minors": [
+      "4941/12500",
+      "422733249/3906250000",
+      "29552508909/390625000000"
+    ],
+    "G1_uniform_two_step_contraction_bound": "49/50",
+    "source_model_is_state_independent_flagging": true
+  },
+  "floating_summary": {
+    "reference_dimension": 2,
+    "full_excitation_cutoff_for_diagnostic": 3,
+    "target_cutoff": 1,
+    "input_mean_excitation": 0.5,
+    "input_filter_success": 0.7499999999999999,
+    "adaptive_full_CQ_distance": 0.44626205004203534,
+    "normalized_projection_bound": 0.5,
+    "physical_filter_flag_distance": 0.5756939094329987,
+    "physical_filter_sharp_bound": 0.5756939094329987,
+    "N4095_memoryless_bound_safe": 0.036269140625,
+    "N4095_memoryless_bound_sharp": 0.03614563973553578,
+    "N4095_adaptive_bound_safe": 0.035869140625000004,
+    "N4095_adaptive_bound_sharp": 0.03574563973553578
+  },
+  "status": "PASS",
+  "not_covered": [
+    "infinite-dimensional universal quantifiers",
+    "infinite references",
+    "unbounded stopping times",
+    "coherent controllers",
+    "real-device calibration",
+    "rotating-wave model discrepancy",
+    "hardware costs"
+  ]
+}

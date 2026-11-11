@@ -60,9 +60,14 @@ def inspect_book(source):
     targets = re.findall(r'\]\(#([^)]*)\)', source)
     if set(targets)-set(anchors):
         raise ValueError('Unresolved internal targets: '+str(set(targets)-set(anchors)))
+    version = re.search(r'^version: \"([^\"]+)\"$', source, re.M)
+    contracts = {'3.7': (67, 173), '3.8': (68, 182)}
+    if version is None or version.group(1) not in contracts:
+        raise ValueError('Unknown book edition; supply an explicitly reviewed structure contract')
+    expected_chapters, expected_results = contracts[version.group(1)]
     chapters = [int(n) for n in re.findall(r'^# (\d+)\.', source, re.M)]
-    if chapters != list(range(67)):
-        raise ValueError('Expected complete chapters 0–66')
+    if chapters != list(range(expected_chapters)):
+        raise ValueError(f'Expected complete chapters 0–{expected_chapters-1}')
     sections = re.findall(r'^## (\d+\.\d+)\b', source, re.M)
     if len(sections) != len(set(sections)):
         raise ValueError('Duplicate numbered sections')
@@ -73,8 +78,8 @@ def inspect_book(source):
     if rows != expected:
         differences = [{'actual': a, 'expected': b} for a, b in zip(rows, expected) if a != b]
         raise ValueError('Result registry identity mismatch: '+repr(differences[:8]))
-    if len(claims) != 173:
-        raise ValueError('The bilingual edition preserves all 173 stable result IDs')
+    if len(claims) != expected_results:
+        raise ValueError(f'Expected {expected_results} stable result IDs in the declared edition')
     return {'schema': 'ueot_physics.book_structure.v1', 'status': 'PASS',
             'source_sha256': hashlib.sha256(source.encode()).hexdigest(),
             'chapters': len(chapters), 'appendices': len(appendix_headers),

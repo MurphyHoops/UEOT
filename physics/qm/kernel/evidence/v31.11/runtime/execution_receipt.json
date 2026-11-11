@@ -1,0 +1,326 @@
+{
+  "schema": "ueot-qm.runtime-increment/2",
+  "version": "v31.11",
+  "status": "PASS",
+  "created_at_utc": "2026-11-11T09:54:18.614635+00:00",
+  "baseline": "16a89154183c22030d4526413167d095d94e6890",
+  "execution_actor": "local Python process",
+  "execution_context": {
+    "provider": "local_python_process",
+    "observed_git_head": "16a89154183c22030d4526413167d095d94e6890",
+    "identity_authority": "The consumed-input hashes bind actual bytes; git HEAD alone does not identify a dirty worktree"
+  },
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "commands": [
+    {
+      "label": "operational-controls",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/a6fba8f7e18e/UEOT/physics/qm/operational_micro_robust/check_operational_controls.py"
+      ],
+      "cwd": "/workspace/scratch/a6fba8f7e18e/UEOT",
+      "started_at_utc": "2026-11-11T09:54:14.374012+00:00",
+      "finished_at_utc": "2026-11-11T09:54:14.776189+00:00",
+      "exit_code": 0,
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.11/runtime/operational-controls.log",
+        "sha256": "bab10b2e86fbb779203e25fbd38e7b9bd1652e10469c1b9c034d5f647a6302f0",
+        "bytes": 1829
+      }
+    },
+    {
+      "label": "micro-truncation",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/a6fba8f7e18e/UEOT/physics/qm/operational_micro_robust/check_micro_truncation.py",
+        "--output",
+        "/workspace/scratch/a6fba8f7e18e/UEOT/physics/qm/kernel/evidence/v31.11/runtime/micro-truncation.json"
+      ],
+      "cwd": "/workspace/scratch/a6fba8f7e18e/UEOT",
+      "started_at_utc": "2026-11-11T09:54:14.776909+00:00",
+      "finished_at_utc": "2026-11-11T09:54:16.150925+00:00",
+      "exit_code": 0,
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.11/runtime/micro-truncation.log",
+        "sha256": "769c4937c646e0e70a32fc2913bfc39bd2a598b9eacdb76f5be9a850b053453a",
+        "bytes": 791
+      }
+    },
+    {
+      "label": "certificate-producer",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/a6fba8f7e18e/UEOT/physics/qm/operational_micro_robust/robust_certificate.py",
+        "--model",
+        "/workspace/scratch/a6fba8f7e18e/UEOT/physics/qm/operational_micro_robust/frozen_model.json",
+        "--output",
+        "/workspace/scratch/a6fba8f7e18e/UEOT/physics/qm/kernel/evidence/v31.11/runtime/candidate.json"
+      ],
+      "cwd": "/workspace/scratch/a6fba8f7e18e/UEOT",
+      "started_at_utc": "2026-11-11T09:54:16.151115+00:00",
+      "finished_at_utc": "2026-11-11T09:54:16.193359+00:00",
+      "exit_code": 0,
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.11/runtime/certificate-producer.log",
+        "sha256": "bba672ece80338992a48ebacf5fa0481fc3ca0b7739b9e9ae1f33cfd2d66a0a4",
+        "bytes": 462
+      }
+    },
+    {
+      "label": "certificate-independent-checker",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/a6fba8f7e18e/UEOT/physics/qm/operational_micro_robust/exact_checker.py",
+        "--model",
+        "/workspace/scratch/a6fba8f7e18e/UEOT/physics/qm/operational_micro_robust/frozen_model.json",
+        "--candidate",
+        "/workspace/scratch/a6fba8f7e18e/UEOT/physics/qm/kernel/evidence/v31.11/runtime/candidate.json",
+        "--output",
+        "/workspace/scratch/a6fba8f7e18e/UEOT/physics/qm/kernel/evidence/v31.11/runtime/exact-certificate.json"
+      ],
+      "cwd": "/workspace/scratch/a6fba8f7e18e/UEOT",
+      "started_at_utc": "2026-11-11T09:54:16.193572+00:00",
+      "finished_at_utc": "2026-11-11T09:54:17.561274+00:00",
+      "exit_code": 0,
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.11/runtime/certificate-independent-checker.log",
+        "sha256": "4f030ad7c88a01b4ba03cbf153cd7ba023c64cd64785e085f9cc9b1e49d1fe48",
+        "bytes": 152
+      }
+    },
+    {
+      "label": "independent-b-review-check",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/a6fba8f7e18e/UEOT/physics/qm/operational_micro_robust/review_c_exact.py",
+        "--c-dir",
+        "/tmp/ueot-v31-11-crosscheck-io1th0n0",
+        "--output",
+        "/workspace/scratch/a6fba8f7e18e/UEOT/physics/qm/kernel/evidence/v31.11/runtime/independent-b-check.json"
+      ],
+      "cwd": "/workspace/scratch/a6fba8f7e18e/UEOT",
+      "started_at_utc": "2026-11-11T09:54:17.561936+00:00",
+      "finished_at_utc": "2026-11-11T09:54:17.591827+00:00",
+      "exit_code": 0,
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.11/runtime/independent-b-review-check.log",
+        "sha256": "c1b23c0f4d4a4036ec45a4c4ee900148b2533550b03e2968e568faceb3adfd4d",
+        "bytes": 158
+      }
+    },
+    {
+      "label": "source-to-cq-integration",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/a6fba8f7e18e/UEOT/physics/qm/operational_micro_robust/verify_integration.py",
+        "--output-dir",
+        "/workspace/scratch/a6fba8f7e18e/UEOT/physics/qm/kernel/evidence/v31.11/runtime"
+      ],
+      "cwd": "/workspace/scratch/a6fba8f7e18e/UEOT",
+      "started_at_utc": "2026-11-11T09:54:17.592124+00:00",
+      "finished_at_utc": "2026-11-11T09:54:18.526469+00:00",
+      "exit_code": 0,
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.11/runtime/source-to-cq-integration.log",
+        "sha256": "af27963a8bbe2a5d4215d13e80f47e5419e4f222897bd20eec6396f121dd3b1c",
+        "bytes": 146
+      }
+    },
+    {
+      "label": "synthetic-calibration-and-holdout",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/a6fba8f7e18e/UEOT/physics/qm/operational_micro_robust/synthetic_calibration.py",
+        "--model",
+        "/workspace/scratch/a6fba8f7e18e/UEOT/physics/qm/operational_micro_robust/frozen_model.json",
+        "--output-dir",
+        "/workspace/scratch/a6fba8f7e18e/UEOT/physics/qm/kernel/evidence/v31.11/runtime/synthetic"
+      ],
+      "cwd": "/workspace/scratch/a6fba8f7e18e/UEOT",
+      "started_at_utc": "2026-11-11T09:54:18.526661+00:00",
+      "finished_at_utc": "2026-11-11T09:54:18.611316+00:00",
+      "exit_code": 0,
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.11/runtime/synthetic-calibration-and-holdout.log",
+        "sha256": "757a2e77f9fb08c885322f675b705aac54909a4fa46ae392272c9bc72c1aaa7e",
+        "bytes": 715
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "path": "physics/qm/operational_micro_robust/DATA_AND_COST_CONTRACT.json",
+      "sha256": "4f85f4d91e8d8e5f6af3caeb89429d33efc6ae60517bafef04e6575182f93200",
+      "bytes": 2833
+    },
+    {
+      "path": "physics/qm/operational_micro_robust/check_micro_truncation.py",
+      "sha256": "0cad730f5e53627e8247fad3b07f8474d6a898c0c1a5a455ca440257fd89ba6c",
+      "bytes": 16375
+    },
+    {
+      "path": "physics/qm/operational_micro_robust/check_operational_controls.py",
+      "sha256": "973d0546fc0741af30ebf06acdf1226634d454994ccbe3ea55b91c6294ff60e5",
+      "bytes": 3783
+    },
+    {
+      "path": "physics/qm/operational_micro_robust/exact_checker.py",
+      "sha256": "3f838e85d76bf73426b540066446a13ba59363d0b414ce50758843b364b55d2e",
+      "bytes": 10298
+    },
+    {
+      "path": "physics/qm/operational_micro_robust/frozen_model.json",
+      "sha256": "33fff2dd4298816553ce0009c022c314600c644df2167355d6c3f366721572ab",
+      "bytes": 1269
+    },
+    {
+      "path": "physics/qm/operational_micro_robust/review_c_exact.py",
+      "sha256": "658e130c5646667dc080e355e7a17417d306d0ff3a377038c3c6052aeb07383c",
+      "bytes": 3425
+    },
+    {
+      "path": "physics/qm/operational_micro_robust/robust_certificate.py",
+      "sha256": "a6fc896288e1716a1048cf26c685b25aa6152e2febeaf10ee8c6c94d8f8353eb",
+      "bytes": 5024
+    },
+    {
+      "path": "physics/qm/operational_micro_robust/run_verification.py",
+      "sha256": "6baf8614aca24ca0170ecb606b8e33c84cd5c1631a38c4dc81b0be65fafa6b37",
+      "bytes": 6363
+    },
+    {
+      "path": "physics/qm/operational_micro_robust/synthetic_calibration.py",
+      "sha256": "90cf1a54057a5885bc4a3407f2e9773003e3730e583eaedce921e12affa51e76",
+      "bytes": 8977
+    },
+    {
+      "path": "physics/qm/operational_micro_robust/verify_integration.py",
+      "sha256": "5e8d79c6184162526e23223644fa8aab2bf3c8238c178d52eeb4bb19e933c361",
+      "bytes": 11041
+    },
+    {
+      "path": "physics/qm/conditioning/finite_conditioning.py",
+      "sha256": "33d573b3049538bedbcd7ff60f15e566fb17358f0b91d8f76a0d645f1ab0c6c4",
+      "bytes": 16378
+    },
+    {
+      "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/SHARED_MODEL.md",
+      "sha256": "fea750cf4c6002c5a6aa306a8b698b91be71d80ede5cb44a0eb1341952ded027",
+      "bytes": 10951
+    },
+    {
+      "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/C_ROBUST_CALIBRATION.md",
+      "sha256": "0e253c0fd01c7f5b43587cfffba48c52dcbc734e8f68a59a2ff54eed640051ba",
+      "bytes": 21668
+    }
+  ],
+  "inputs_stable_during_execution": true,
+  "outputs": [
+    {
+      "path": "physics/qm/kernel/evidence/v31.11/runtime/candidate.json",
+      "sha256": "38c9695e5567b19cdd73ab4b14fe8ccb50a464959caa04eb0d31f9c107160124",
+      "bytes": 1817
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.11/runtime/certificate-independent-checker.log",
+      "sha256": "4f030ad7c88a01b4ba03cbf153cd7ba023c64cd64785e085f9cc9b1e49d1fe48",
+      "bytes": 152
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.11/runtime/certificate-producer.log",
+      "sha256": "bba672ece80338992a48ebacf5fa0481fc3ca0b7739b9e9ae1f33cfd2d66a0a4",
+      "bytes": 462
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.11/runtime/exact-certificate.json",
+      "sha256": "cdc8fbc522a5e6a810d78cb2aa17783b837109b67367f6f155aa062761605a4e",
+      "bytes": 5226
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.11/runtime/independent-b-check.json",
+      "sha256": "f7d1a310771f067010ddd2497b3ab9e166f90fd6f6e3bd3dbbdcf622f666bf47",
+      "bytes": 1539
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.11/runtime/independent-b-review-check.log",
+      "sha256": "c1b23c0f4d4a4036ec45a4c4ee900148b2533550b03e2968e568faceb3adfd4d",
+      "bytes": 158
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.11/runtime/independent-integration.json",
+      "sha256": "433bd5e5525889dd878cfe54f3544b886ab6ed9e2f6b32378218bba0eb257024",
+      "bytes": 7730
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.11/runtime/micro-truncation.json",
+      "sha256": "c587c9c23b39c5818fd66a43f01054c564106b1fa6bd5156d5573f3f695f37c2",
+      "bytes": 9039
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.11/runtime/micro-truncation.log",
+      "sha256": "769c4937c646e0e70a32fc2913bfc39bd2a598b9eacdb76f5be9a850b053453a",
+      "bytes": 791
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.11/runtime/operational-controls.log",
+      "sha256": "bab10b2e86fbb779203e25fbd38e7b9bd1652e10469c1b9c034d5f647a6302f0",
+      "bytes": 1829
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.11/runtime/operational_controls_receipt.json",
+      "sha256": "bab10b2e86fbb779203e25fbd38e7b9bd1652e10469c1b9c034d5f647a6302f0",
+      "bytes": 1829
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.11/runtime/source-to-cq-integration.log",
+      "sha256": "af27963a8bbe2a5d4215d13e80f47e5419e4f222897bd20eec6396f121dd3b1c",
+      "bytes": 146
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.11/runtime/synthetic/synthetic_analysis.json",
+      "sha256": "1409cdbef6e2bd796f126a19011b4858ea7dc74ced4c7f852450c18a1418edf5",
+      "bytes": 6909
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.11/runtime/synthetic/synthetic_calibration_flags.txt",
+      "sha256": "0cc68ef4c3eb95114e8bfe4fb86e4ba26a0ddf68cbdbbdc1c4d178ef1c5022f9",
+      "bytes": 80001
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.11/runtime/synthetic/synthetic_compiled_holdout.txt",
+      "sha256": "5ea32d5bc5a1cf8356b91dac8d97f4ad8380d57022403c58293196377dd11370",
+      "bytes": 12288
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.11/runtime/synthetic/synthetic_provenance.json",
+      "sha256": "43c09ea35932370ff330a1f9ca40446786ef2605bdbfd2ede08c7fe7eac4ea7b",
+      "bytes": 673
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.11/runtime/synthetic/synthetic_source_holdout.txt",
+      "sha256": "5f472bd9834ddb28f5952efa128b7c8e3e3e3a3e287eb0984c4e900376dbea5e",
+      "bytes": 11302
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.11/runtime/synthetic-calibration-and-holdout.log",
+      "sha256": "757a2e77f9fb08c885322f675b705aac54909a4fa46ae392272c9bc72c1aaa7e",
+      "bytes": 715
+    }
+  ],
+  "evidence_classes": [
+    "exact finite symbolic arithmetic",
+    "floating diagnostics",
+    "synthetic iid coverage and finite-record holdout",
+    "synthetic correlated-trial failure control"
+  ],
+  "not_evidence_of": [
+    "hardware accuracy",
+    "new natural law",
+    "experimental closure",
+    "universal proof by finite sampling",
+    "full-state tomography"
+  ],
+  "historical_suites_reexecuted": false,
+  "new_hardware_data": false
+}

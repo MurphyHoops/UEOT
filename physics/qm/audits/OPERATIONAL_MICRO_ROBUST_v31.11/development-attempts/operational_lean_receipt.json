@@ -1,0 +1,688 @@
+{
+  "schema": "ueot-new-module-axiom-audit-v1",
+  "execution_time_utc": "2026-11-11T09:30:01.857352+00:00",
+  "baseline_commit": "16a89154183c22030d4526413167d095d94e6890",
+  "lean_version": "Lean 4.33.1, x86_64-unknown-linux-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release",
+  "source": "formalization/ueot-qm/UEOTQM/OperationalEquivalence.lean",
+  "source_sha256": "99fd7ecfa58322321269c7504b27923f36e5c7f36fadad6a938b640c78c14f37",
+  "build_command": "lake build UEOTQM.OperationalEquivalence",
+  "build_exit_code": 0,
+  "build_log_sha256": "47e11da9f92cebdbb9ac54334c1b41cd80f9277c6e5f8608a9841bba16d54183",
+  "axiom_audit_command": "lake env lean /workspace/scratch/a6fba8f7e18e/research_a/OperationalEquivalenceAxiomAudit.lean",
+  "axiom_audit_exit_code": 0,
+  "audit_driver_sha256": "9aedc243baa075ca80d1ff46748edc026e17c37d3d927549fae22fc7805c18ba",
+  "audit_log_sha256": "f6d1a81e542d6edca0fe8b18c697403d70c3cd99178ff04950942f797d2c23c8",
+  "audited_namespace": "UEOTQM.OperationalEquivalence.",
+  "audited_exported_constants_count": 80,
+  "authored_declaration_count": 43,
+  "authored_theorem_count": 28,
+  "generated_constants_included": true,
+  "allowed_foundational_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "unexpected_axioms": [],
+  "no_escape_scan": {
+    "comments": "nested block and line comments stripped",
+    "tokens": [
+      "sorry",
+      "admit",
+      "axiom",
+      "unsafe",
+      "native_decide",
+      "sorryAx"
+    ],
+    "matches": []
+  },
+  "covered": [
+    "unnormalized Hermitian full-effect separation",
+    "positive and Hermitian input spanning from normalized densities",
+    "single statistics iff actual complex-linear positive map equality",
+    "all finite context statistics iff single statistics iff map equality iff rectangular input-first Choi equality",
+    "positive-dimensional physical adapter and tensor-unit density",
+    "Kraus TNI Event: trace inequality, actual tensor-id equality, positivity for every finite auxiliary",
+    "per-visible-label linear-map composition and finite sums"
+  ],
+  "not_covered": [
+    "bundled causal OPT and all reconstruction axioms",
+    "full labelled rectangular Test construction/closure/coherence",
+    "parallel labelled-test congruence, operational quotient construction and bounded-tree induction (paper only)",
+    "finite-precision stability theorem",
+    "infinite-dimensional trace-class theory",
+    "empirical tomography or validation"
+  ],
+  "constants": [
+    {
+      "name": "UEOTQM.OperationalEquivalence.ContextStatistics",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event._sizeOf_1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event._sizeOf_inst",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.amplify",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.amplify._proof_1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.amplify._simp_1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.amplify.eq_1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.amplify_operator_apply",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.amplify_operator_eq",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.amplify_posSemidef",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.casesOn",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.ctorIdx",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.defect_positive",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.kraus",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.mass_operator_le",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.mk",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.mk._flat_ctor",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.mk.congr_simp",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.mk.inj",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.mk.injEq",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.mk.noConfusion",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.mk.sizeOf_spec",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.noConfusion",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.noConfusionType",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.ofChannel",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.ofChannel._proof_1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.ofChannel_operator",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.operatorLinear",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.operatorLinear._proof_1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.operatorLinear._proof_2",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.operatorLinear.eq_1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.operator_posSemidef",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.rec",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.recOn",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.statistics_iff_map_eq",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.Event.trace_operator",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.PhysicalSystem",
+      "axioms": []
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.SingleStatistics",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.amplify",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.amplify._proof_1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.amplify._proof_2",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.amplify_congr",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.choi",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.choi_injective",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.complex_linear_eq_of_eq_on_densities",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.contextStatistics_iff_choi_eq",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.contextStatistics_iff_map_eq",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.contextStatistics_iff_singleStatistics",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.context_statistics_of_singleStatistics",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.hermitian_eq_of_all_effect_pairings_eq",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.imaginaryUnit",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.imaginaryUnit.eq_1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.imaginaryUnit_hermitian",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.imaginaryUnit_hermitian._simp_1_2",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.labelled_comp_congr",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.labelled_sum_congr",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.map_eq_iff_choi_eq",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.matrixUnit",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.matrixUnit.congr_simp",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.matrixUnit.eq_1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.matrixUnit_hermitian_expansion",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.matrixUnit_hermitian_expansion._simp_1_4",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.matrix_expansion",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.physicalState",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.physicalState._proof_1",
+      "axioms": []
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.real_maps_eq_on_hermitian_of_eq_on_densities",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.real_maps_eq_on_positive_of_eq_on_densities",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.scalarDensity",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.scalarDensity._proof_1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.scalarDensity._proof_2",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.scalarEffect",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.scalarEffect._proof_1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.scalarEffect._proof_2",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.scalar_context_pairing",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.singleStatistics_iff_map_eq",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.sub_kronecker",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.symmetricUnit",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.symmetricUnit.eq_1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "UEOTQM.OperationalEquivalence.symmetricUnit_hermitian",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "working_directory": "/workspace/scratch/a6fba8f7e18e/UEOT/formalization/ueot-qm",
+  "toolchain_bin": "/workspace/scratch/a6fba8f7e18e/toolchain/lean-4.33.1-linux/bin"
+}

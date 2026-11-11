@@ -1,23 +1,29 @@
 # 《UEOT物理学》 / UEOT Physics
 
-## 3.7 完整双语出版修订 / Complete bilingual revision
+## 3.8 同源物理桥 / Same-source physical bridges
 
-本目录维护中文与完整英文对应本，均覆盖 **第0–66章、附录A–F、173个稳定结果**。
-本次工作最初基于3.5版的66章和161项结果；交付前刷新真实main后，完整纳入
-PR #450／#451已经合并并验收的3.6研究修订和第66章，没有回退新研究成果。
-3.7是出版版本；它所依据的现行物理研究仍为 **v31.10 / UEOT-QM Kernel 1.10**。
+当前连续中英文主文均有 **第0–67章、附录A–F、182项稳定结果**，对应科学增量 **v31.11 / Kernel 1.11**。本轮重新读取main `16a89154183c22030d4526413167d095d94e6890`，继承3.7版全部173项结果和v31.10的第66章闭环，新增第67章九项结果。旧结果对象与历史执行身份不改写。
 
 | Language | Complete Markdown source | Generated LaTeX | Reading PDF |
 |---|---|---|---|
 | 中文 | [UEOT_PHYSICS.md](UEOT_PHYSICS.md) | [UEOT_PHYSICS.tex](UEOT_PHYSICS.tex) | [UEOT_PHYSICS.pdf](UEOT_PHYSICS.pdf) |
 | English | [UEOT_PHYSICS.en.md](UEOT_PHYSICS.en.md) | [UEOT_PHYSICS.en.tex](UEOT_PHYSICS.en.tex) | [UEOT_PHYSICS.en.pdf](UEOT_PHYSICS.en.pdf) |
 
-This is a complete English monograph alongside the revised Chinese text, not an
-English overview. Both versions contain the derivations, counterexamples,
-numerical conventions, source responsibilities, experimental limits and complete
-named audit inventory. The [result map](PHYSICS_RESULT_MAPPING.md) binds every
-one of the 173 stable IDs to the actual statement in both languages. No ID is
-renumbered, withdrawn, or newly created by this publication revision.
+The current increment connects operational event identity, microscopic excitation-preserving dynamics, full-record truncation and one robust deployment over a common unknown parameter set. Its exact design-region policy has worst full-CQ error1/50; including physical preparation failure gives the stated energy-budget sufficient bound3673/102400. The same model also separates single-excitation marginal mixing from exact preservation of distinguishability in complete records.
+
+The ideal physical inputs remain explicit. This is not an independent derivation of complex quantum structure, a completed reconstruction, or hardware validation. All calibration and holdout data newly produced here are synthetic. QFT, particle, gravity and cosmology responsibilities remain in the [continuous roadmap](../ROADMAP.md).
+
+| Current responsibility | Source |
+|---|---|
+| Actual execution state and four status axes | [CURRENT](../status/CURRENT.json) |
+| Same-source scientific integration | [v31.11 report](../UEOT_QM_KERNEL_v31.11.md) |
+| Nine claims and exact formal/paper boundaries | [chapter67 binding ledger](../audits/OPERATIONAL_MICRO_ROBUST_v31.11/chapter67_formal_bindings.json) |
+| Runtime, raw synthetic records and independent checks | [runtime evidence](../kernel/evidence/v31.11/runtime/execution_receipt.json) |
+| New-source compiler and exhaustive namespace audit | [Lean evidence](../kernel/evidence/v31.11/lean-verification.json) |
+| Bilingual preservation, PDF builds and visual review | [edition3.8 evidence](evidence/v3.8/) |
+| Stable bilingual statements | [result map](PHYSICS_RESULT_MAPPING.md) |
+
+Exactly three native research tasks performed A→B, B→C and C→A cross-review. This is internal AI review, not external human peer review. The existing dossier, source manifest and claim ledger remain authoritative; no parallel final-state ledger is introduced. The following sections retain inherited scope and historical acceptance rather than relabeling old runs as this increment.
 
 ## Scientific scope
 
@@ -37,7 +43,7 @@ actual protocols; they are not described as confirmations of UEOT or objective
 collapse. Chapter 66's realizability and resource results remain conditional on
 the declared instruments, action library, observation permissions and costs.
 
-## Review and evidence
+## Inherited 3.7 publication review and evidence
 
 The [scientific editorial changelog](SCIENTIFIC_EDITORIAL_CHANGELOG.md) explains
 the corrections and remaining obligations. The existing
@@ -70,7 +76,7 @@ The `initial-0-65-checkpoint/` subdirectory retains intermediate review identiti
 from before the independently merged Chapter 66 was incorporated. Its provisional
 edition label is not a competing final publication.
 
-## Actual scientific-source acceptance
+## Inherited v31.10 scientific-source acceptance
 
 The v31.10 scientific source is
 `4e5de046ad59eaa37856027af6547ca26bdea1c2`, merged by
