@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "method": "Coordinator visually inspected selected rendered PDF pages; JPEG display derivatives preserve complete page geometry. Bound PNGs are retained in PDF_RENDER.json.",
+  "selected_pdf_pages_1_based": {
+    "mathematics": [
+      1,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "philosophy": [
+      1,
+      25,
+      26,
+      27,
+      39,
+      40
+    ]
+  },
+  "pdf_sha256": {
+    "mathematics": "9e692ff6f39cead5ee28bdca2b8ce98fbe1798ca8b8d4e3c2a65973d6eb04a48",
+    "philosophy": "448675c4d73d6cc8ddb28d8f2f8f454e20bdc444327a16f69416bf0dc1101fe9"
+  },
+  "render_receipt": "PDF_RENDER.json",
+  "not_a_full_book_page_by_page_review": true,
+  "issues_resolved": [
+    {
+      "book": "philosophy",
+      "original_pdf_sha256": "ffd3e6a674ce5d35b46f3d350198ca285c9ef174a973058712775e2953f319f2",
+      "original_page": 40,
+      "issue": "Repeated old chapter 11 source footnote spilled to an otherwise empty page.",
+      "fix": "Removed only the duplicate core-regenerative reference at the end of chapter 11; retained the adjacent full growth-classification citation, all paragraph prose, the original note definition and its other occurrences.",
+      "followup": "Only philosophy rebuilt; final pages 39 and 40 visually checked. Page 40 now begins chapter 12. Philosophy reader verified this exact one-reference delta and updated the final source fingerprint.",
+      "build_receipt": "checks/BOOK_BUILD_PHILOSOPHY_FIX.json"
+    }
+  ],
+  "remaining_selected_page_layout_blockers": []
+}

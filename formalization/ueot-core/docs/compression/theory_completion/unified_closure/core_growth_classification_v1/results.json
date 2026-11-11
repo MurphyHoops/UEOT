@@ -1,0 +1,3224 @@
+{
+  "status": "passed",
+  "bound_source_commit_as_supplied_by_coordinator": "827be44cd14c63d9d13e33493eee07c5f1afa5fe",
+  "remote_git_identity_independently_checked_by_this_script": false,
+  "source_sha256": {
+    "CoreRegenerativeControlPopulation.lean": "533c9cdedccc2f5016cec438c5fcd9a84f00abd18dcd78c251e21df7ca6441aa",
+    "CoreRegenerativeFormation.lean": "daa2b899b5016446bc15a1e9d6df353f1e2703e31a1192a768890aa7c19decd9",
+    "CoreRegenerativeOneStep.lean": "dfd341b0a7d381b138cebc98c3725f594d047cc28b234f49506222dfaf97789c",
+    "CoreRegenerativePopulation.lean": "b6e62acd425e1c1bc5c2d289836f4d32052a65716715b00e8a24f227801a64f3",
+    "CoreRegenerativeQuotient.lean": "9e8965d43f36d27eb36a56d68d2a70fd564bd0a1170b2a7352990eba50666cce",
+    "CoreRegenerativeSource.lean": "75e76b0673918186de3aac253e0c4810f9bd4895236f150d408cf27a9a8ed793"
+  },
+  "historical_transaction_checker": {
+    "repository_relative_path": "mathematics/review/CORE_DEFINITIVE_FREEZE_2026-11-11/boundary_math_check_original.py",
+    "sha256": "4119e70e968a6b128d464d25ebe4367818fd618df6331b2d89e52a8cc9e1c4a4",
+    "modified": false
+  },
+  "check_script_sha256": "e1ad4fd827c272807fc4a70c4e8021439ef55f22f76459c77ecbca3a3345d8c9",
+  "point_count": 8,
+  "requested_point_count": 5,
+  "tested_horizons": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "exact_arithmetic": "fractions.Fraction; no floating-point comparisons",
+  "local_menu_cases_total": 6912,
+  "internal_program_cases_total": 2304,
+  "required_two_tick_counterexample": {
+    "finite_optimum_from_D": "279/250",
+    "fixed_theta1_from_D": "549/500",
+    "difference": "9/500",
+    "rho": "61/50"
+  },
+  "critical_counterexample": {
+    "rho": "1",
+    "fixed_theta1_from_D_all_positive_T": "11/12",
+    "reject_D_population_pathwise_all_T": "1"
+  },
+  "probes": [
+    {
+      "name": "old_valid_theta1",
+      "purpose": "old Valid; theta1 uniquely attains the exponent",
+      "p_s_delta_b_gamma_q": [
+        "3/4",
+        "1/8",
+        "3/8",
+        "1/4",
+        "1/3"
+      ],
+      "basic_probability_region": true,
+      "old_Valid_region": true,
+      "kc": "9/8",
+      "kb": "5/4",
+      "k_star": "5/4",
+      "mu": "29/24",
+      "rho": "29/24",
+      "lambda0": "9/8",
+      "lambda1": "29/24",
+      "positive_potential_H_D": [
+        "5/4",
+        "9/8"
+      ],
+      "attaining_external_selector": {
+        "H": "bloom",
+        "D": "care",
+        "D_bloom_means_rejected": false
+      },
+      "full_request_rows_H_D": {
+        "H": {
+          "care": [
+            "3/4",
+            "3/8"
+          ],
+          "bloom": [
+            "5/6",
+            "5/12"
+          ],
+          "stop": [
+            "0",
+            "0"
+          ]
+        },
+        "D": {
+          "care": [
+            "3/4",
+            "3/8"
+          ],
+          "bloom": [
+            "0",
+            "1"
+          ],
+          "stop": [
+            "0",
+            "0"
+          ]
+        }
+      },
+      "row_super_eigen_gaps": {
+        "H": {
+          "care": "29/192",
+          "bloom": "0",
+          "stop": "145/96"
+        },
+        "D": {
+          "care": "0",
+          "bloom": "15/64",
+          "stop": "87/64"
+        }
+      },
+      "correlated_joint_request_gap": "37/144",
+      "literal_checks": {
+        "local_menu_cases": 864,
+        "internal_program_cases": 288,
+        "all_36_noise_weights_positive_and_sum_one": true,
+        "full_menu_rows_from_literal_transactions": true,
+        "rejection_is_noise_independent_same_body_with_refund_five": true
+      },
+      "stationary_expected_population_T0_to_T12": {
+        "one_H": [
+          "1",
+          "5/4",
+          "145/96",
+          "4205/2304",
+          "121945/55296",
+          "3536405/1327104",
+          "102555745/31850496",
+          "2974116605/764411904",
+          "86249381545/18345885696",
+          "2501232064805/440301256704",
+          "72535729879345/10567230160896",
+          "2103536166501005/253613523861504",
+          "61002548828529145/6086724572676096"
+        ],
+        "one_D": [
+          "1",
+          "9/8",
+          "87/64",
+          "841/512",
+          "24389/12288",
+          "707281/294912",
+          "20511149/7077888",
+          "594823321/169869312",
+          "17249876309/4076863488",
+          "500246412961/97844723712",
+          "14507145975869/2348273369088",
+          "420707233300201/56358560858112",
+          "12200509765705829/1352605460594688"
+        ],
+        "mixed_2H_1D": [
+          "3",
+          "29/8",
+          "841/192",
+          "24389/4608",
+          "707281/110592",
+          "20511149/2654208",
+          "594823321/63700992",
+          "17249876309/1528823808",
+          "500246412961/36691771392",
+          "14507145975869/880602513408",
+          "420707233300201/21134460321792",
+          "12200509765705829/507227047723008",
+          "353814783205469041/12173449145352192"
+        ],
+        "empty": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      "internal_programs": {
+        "theta0": {
+          "growth_factor": "9/8",
+          "attains_rho": false,
+          "mean_population_from_D_T0_to_T12": [
+            "1",
+            "9/8",
+            "81/64",
+            "729/512",
+            "6561/4096",
+            "59049/32768",
+            "531441/262144",
+            "4782969/2097152",
+            "43046721/16777216",
+            "387420489/134217728",
+            "3486784401/1073741824",
+            "31381059609/8589934592",
+            "282429536481/68719476736"
+          ]
+        },
+        "theta1": {
+          "growth_factor": "29/24",
+          "attains_rho": true,
+          "mean_population_from_D_T0_to_T12": [
+            "1",
+            "9/8",
+            "87/64",
+            "841/512",
+            "24389/12288",
+            "707281/294912",
+            "20511149/7077888",
+            "594823321/169869312",
+            "17249876309/4076863488",
+            "500246412961/97844723712",
+            "14507145975869/2348273369088",
+            "420707233300201/56358560858112",
+            "12200509765705829/1352605460594688"
+          ]
+        }
+      },
+      "finite_dp": [
+        {
+          "T": 0,
+          "value_H_D": [
+            "1",
+            "1"
+          ],
+          "optimal_next_requests": null
+        },
+        {
+          "T": 1,
+          "value_H_D": [
+            "5/4",
+            "9/8"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 2,
+          "value_H_D": [
+            "145/96",
+            "87/64"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 3,
+          "value_H_D": [
+            "4205/2304",
+            "841/512"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 4,
+          "value_H_D": [
+            "121945/55296",
+            "24389/12288"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 5,
+          "value_H_D": [
+            "3536405/1327104",
+            "707281/294912"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 6,
+          "value_H_D": [
+            "102555745/31850496",
+            "20511149/7077888"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 7,
+          "value_H_D": [
+            "2974116605/764411904",
+            "594823321/169869312"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 8,
+          "value_H_D": [
+            "86249381545/18345885696",
+            "17249876309/4076863488"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 9,
+          "value_H_D": [
+            "2501232064805/440301256704",
+            "500246412961/97844723712"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 10,
+          "value_H_D": [
+            "72535729879345/10567230160896",
+            "14507145975869/2348273369088"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 11,
+          "value_H_D": [
+            "2103536166501005/253613523861504",
+            "420707233300201/56358560858112"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 12,
+          "value_H_D": [
+            "61002548828529145/6086724572676096",
+            "12200509765705829/1352605460594688"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        }
+      ],
+      "paid_care_once_then_external_selector": {
+        "first_repair_paid": 3,
+        "first_request_cap": 6,
+        "positive_weight_after_first_care": "87/64",
+        "expected_population_T1_to_T12": [
+          "9/8",
+          "87/64",
+          "841/512",
+          "24389/12288",
+          "707281/294912",
+          "20511149/7077888",
+          "594823321/169869312",
+          "17249876309/4076863488",
+          "500246412961/97844723712",
+          "14507145975869/2348273369088",
+          "420707233300201/56358560858112",
+          "12200509765705829/1352605460594688"
+        ],
+        "same_optimal_growth_factor_by_written_bounds": "29/24"
+      }
+    },
+    {
+      "name": "subcritical_bloom_advantage",
+      "purpose": "both internal exponents below the full-menu factor one",
+      "p_s_delta_b_gamma_q": [
+        "1/2",
+        "1/8",
+        "1/4",
+        "1/4",
+        "1/3"
+      ],
+      "basic_probability_region": true,
+      "old_Valid_region": false,
+      "kc": "3/4",
+      "kb": "7/8",
+      "k_star": "7/8",
+      "mu": "5/6",
+      "rho": "1",
+      "lambda0": "3/4",
+      "lambda1": "5/6",
+      "positive_potential_H_D": [
+        "7/10",
+        "1"
+      ],
+      "attaining_external_selector": {
+        "H": "bloom",
+        "D": "bloom",
+        "D_bloom_means_rejected": true
+      },
+      "full_request_rows_H_D": {
+        "H": {
+          "care": [
+            "1/2",
+            "1/4"
+          ],
+          "bloom": [
+            "7/12",
+            "7/24"
+          ],
+          "stop": [
+            "0",
+            "0"
+          ]
+        },
+        "D": {
+          "care": [
+            "1/2",
+            "1/4"
+          ],
+          "bloom": [
+            "0",
+            "1"
+          ],
+          "stop": [
+            "0",
+            "0"
+          ]
+        }
+      },
+      "row_super_eigen_gaps": {
+        "H": {
+          "care": "1/10",
+          "bloom": "0",
+          "stop": "7/10"
+        },
+        "D": {
+          "care": "2/5",
+          "bloom": "0",
+          "stop": "1"
+        }
+      },
+      "correlated_joint_request_gap": "1/5",
+      "literal_checks": {
+        "local_menu_cases": 864,
+        "internal_program_cases": 288,
+        "all_36_noise_weights_positive_and_sum_one": true,
+        "full_menu_rows_from_literal_transactions": true,
+        "rejection_is_noise_independent_same_body_with_refund_five": true
+      },
+      "stationary_expected_population_T0_to_T12": {
+        "one_H": [
+          "1",
+          "7/8",
+          "77/96",
+          "875/1152",
+          "10157/13824",
+          "119483/165888",
+          "1416989/1990656",
+          "16886219/23887872",
+          "201811085/286654464",
+          "2415968219/3439853568",
+          "28951265021/41278242816",
+          "347132705003/495338913792",
+          "4163615133293/5944066965504"
+        ],
+        "one_D": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "mixed_2H_1D": [
+          "3",
+          "11/4",
+          "125/48",
+          "1451/576",
+          "17069/6912",
+          "202427/82944",
+          "2412317/995328",
+          "28830155/11943936",
+          "345138317/143327232",
+          "4135895003/1719926784",
+          "49590386429/20639121408",
+          "594802161899/247669456896",
+          "7135648616045/2972033482752"
+        ],
+        "empty": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      "internal_programs": {
+        "theta0": {
+          "growth_factor": "3/4",
+          "attains_rho": false,
+          "mean_population_from_D_T0_to_T12": [
+            "1",
+            "3/4",
+            "9/16",
+            "27/64",
+            "81/256",
+            "243/1024",
+            "729/4096",
+            "2187/16384",
+            "6561/65536",
+            "19683/262144",
+            "59049/1048576",
+            "177147/4194304",
+            "531441/16777216"
+          ]
+        },
+        "theta1": {
+          "growth_factor": "5/6",
+          "attains_rho": false,
+          "mean_population_from_D_T0_to_T12": [
+            "1",
+            "3/4",
+            "5/8",
+            "25/48",
+            "125/288",
+            "625/1728",
+            "3125/10368",
+            "15625/62208",
+            "78125/373248",
+            "390625/2239488",
+            "1953125/13436928",
+            "9765625/80621568",
+            "48828125/483729408"
+          ]
+        }
+      },
+      "finite_dp": [
+        {
+          "T": 0,
+          "value_H_D": [
+            "1",
+            "1"
+          ],
+          "optimal_next_requests": null
+        },
+        {
+          "T": 1,
+          "value_H_D": [
+            "7/8",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 2,
+          "value_H_D": [
+            "77/96",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 3,
+          "value_H_D": [
+            "875/1152",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 4,
+          "value_H_D": [
+            "10157/13824",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 5,
+          "value_H_D": [
+            "119483/165888",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 6,
+          "value_H_D": [
+            "1416989/1990656",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 7,
+          "value_H_D": [
+            "16886219/23887872",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 8,
+          "value_H_D": [
+            "201811085/286654464",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 9,
+          "value_H_D": [
+            "2415968219/3439853568",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 10,
+          "value_H_D": [
+            "28951265021/41278242816",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 11,
+          "value_H_D": [
+            "347132705003/495338913792",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 12,
+          "value_H_D": [
+            "4163615133293/5944066965504",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        }
+      ],
+      "paid_care_once_then_external_selector": {
+        "first_repair_paid": 3,
+        "first_request_cap": 6,
+        "positive_weight_after_first_care": "3/5",
+        "expected_population_T1_to_T12": [
+          "3/4",
+          "11/16",
+          "125/192",
+          "1451/2304",
+          "17069/27648",
+          "202427/331776",
+          "2412317/3981312",
+          "28830155/47775744",
+          "345138317/573308928",
+          "4135895003/6879707136",
+          "49590386429/82556485632",
+          "594802161899/990677827584"
+        ],
+        "same_optimal_growth_factor_by_written_bounds": "1"
+      }
+    },
+    {
+      "name": "critical_bloom_advantage",
+      "purpose": "theta1 reaches factor one but loses every finite D horizon",
+      "p_s_delta_b_gamma_q": [
+        "2/3",
+        "1/8",
+        "1/4",
+        "1/4",
+        "1/3"
+      ],
+      "basic_probability_region": true,
+      "old_Valid_region": false,
+      "kc": "11/12",
+      "kb": "25/24",
+      "k_star": "25/24",
+      "mu": "1",
+      "rho": "1",
+      "lambda0": "11/12",
+      "lambda1": "1",
+      "positive_potential_H_D": [
+        "25/24",
+        "11/12"
+      ],
+      "attaining_external_selector": {
+        "H": "bloom",
+        "D": "care",
+        "D_bloom_means_rejected": false
+      },
+      "full_request_rows_H_D": {
+        "H": {
+          "care": [
+            "11/18",
+            "11/36"
+          ],
+          "bloom": [
+            "25/36",
+            "25/72"
+          ],
+          "stop": [
+            "0",
+            "0"
+          ]
+        },
+        "D": {
+          "care": [
+            "11/18",
+            "11/36"
+          ],
+          "bloom": [
+            "0",
+            "1"
+          ],
+          "stop": [
+            "0",
+            "0"
+          ]
+        }
+      },
+      "row_super_eigen_gaps": {
+        "H": {
+          "care": "1/8",
+          "bloom": "0",
+          "stop": "25/24"
+        },
+        "D": {
+          "care": "0",
+          "bloom": "0",
+          "stop": "11/12"
+        }
+      },
+      "correlated_joint_request_gap": "1/12",
+      "literal_checks": {
+        "local_menu_cases": 864,
+        "internal_program_cases": 288,
+        "all_36_noise_weights_positive_and_sum_one": true,
+        "full_menu_rows_from_literal_transactions": true,
+        "rejection_is_noise_independent_same_body_with_refund_five": true
+      },
+      "stationary_expected_population_T0_to_T12": {
+        "one_H": [
+          "1",
+          "25/24",
+          "25/24",
+          "25/24",
+          "25/24",
+          "25/24",
+          "25/24",
+          "25/24",
+          "25/24",
+          "25/24",
+          "25/24",
+          "25/24",
+          "25/24"
+        ],
+        "one_D": [
+          "1",
+          "11/12",
+          "11/12",
+          "11/12",
+          "11/12",
+          "11/12",
+          "11/12",
+          "11/12",
+          "11/12",
+          "11/12",
+          "11/12",
+          "11/12",
+          "11/12"
+        ],
+        "mixed_2H_1D": [
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3"
+        ],
+        "empty": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      "internal_programs": {
+        "theta0": {
+          "growth_factor": "11/12",
+          "attains_rho": false,
+          "mean_population_from_D_T0_to_T12": [
+            "1",
+            "11/12",
+            "121/144",
+            "1331/1728",
+            "14641/20736",
+            "161051/248832",
+            "1771561/2985984",
+            "19487171/35831808",
+            "214358881/429981696",
+            "2357947691/5159780352",
+            "25937424601/61917364224",
+            "285311670611/743008370688",
+            "3138428376721/8916100448256"
+          ]
+        },
+        "theta1": {
+          "growth_factor": "1",
+          "attains_rho": true,
+          "mean_population_from_D_T0_to_T12": [
+            "1",
+            "11/12",
+            "11/12",
+            "11/12",
+            "11/12",
+            "11/12",
+            "11/12",
+            "11/12",
+            "11/12",
+            "11/12",
+            "11/12",
+            "11/12",
+            "11/12"
+          ]
+        }
+      },
+      "finite_dp": [
+        {
+          "T": 0,
+          "value_H_D": [
+            "1",
+            "1"
+          ],
+          "optimal_next_requests": null
+        },
+        {
+          "T": 1,
+          "value_H_D": [
+            "25/24",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 2,
+          "value_H_D": [
+            "925/864",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 3,
+          "value_H_D": [
+            "33925/31104",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 4,
+          "value_H_D": [
+            "1236925/1119744",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 5,
+          "value_H_D": [
+            "44919925/40310784",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 6,
+          "value_H_D": [
+            "1626882925/1451188224",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 7,
+          "value_H_D": [
+            "58811925925/52242776064",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 8,
+          "value_H_D": [
+            "2123332848925/1880739938304",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 9,
+          "value_H_D": [
+            "76592570451925/67706637778944",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 10,
+          "value_H_D": [
+            "2761147233534925/2437438960041984",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 11,
+          "value_H_D": [
+            "99496667838897925/87747802561511424",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 12,
+          "value_H_D": [
+            "3584264227991340925/3158920892214411264",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        }
+      ],
+      "paid_care_once_then_external_selector": {
+        "first_repair_paid": 3,
+        "first_request_cap": 6,
+        "positive_weight_after_first_care": "11/12",
+        "expected_population_T1_to_T12": [
+          "11/12",
+          "11/12",
+          "11/12",
+          "11/12",
+          "11/12",
+          "11/12",
+          "11/12",
+          "11/12",
+          "11/12",
+          "11/12",
+          "11/12",
+          "11/12"
+        ],
+        "same_optimal_growth_factor_by_written_bounds": "1"
+      }
+    },
+    {
+      "name": "reversed_advantage_theta0",
+      "purpose": "theta0 attains; theta1 remains supercritical but is slower",
+      "p_s_delta_b_gamma_q": [
+        "3/4",
+        "1/4",
+        "3/8",
+        "1/8",
+        "1/3"
+      ],
+      "basic_probability_region": true,
+      "old_Valid_region": false,
+      "kc": "9/8",
+      "kb": "1",
+      "k_star": "9/8",
+      "mu": "9/8",
+      "rho": "9/8",
+      "lambda0": "9/8",
+      "lambda1": "25/24",
+      "positive_potential_H_D": [
+        "9/8",
+        "9/8"
+      ],
+      "attaining_external_selector": {
+        "H": "care",
+        "D": "care",
+        "D_bloom_means_rejected": false
+      },
+      "full_request_rows_H_D": {
+        "H": {
+          "care": [
+            "3/4",
+            "3/8"
+          ],
+          "bloom": [
+            "2/3",
+            "1/3"
+          ],
+          "stop": [
+            "0",
+            "0"
+          ]
+        },
+        "D": {
+          "care": [
+            "3/4",
+            "3/8"
+          ],
+          "bloom": [
+            "0",
+            "1"
+          ],
+          "stop": [
+            "0",
+            "0"
+          ]
+        }
+      },
+      "row_super_eigen_gaps": {
+        "H": {
+          "care": "0",
+          "bloom": "9/64",
+          "stop": "81/64"
+        },
+        "D": {
+          "care": "0",
+          "bloom": "9/64",
+          "stop": "81/64"
+        }
+      },
+      "correlated_joint_request_gap": "9/64",
+      "literal_checks": {
+        "local_menu_cases": 864,
+        "internal_program_cases": 288,
+        "all_36_noise_weights_positive_and_sum_one": true,
+        "full_menu_rows_from_literal_transactions": true,
+        "rejection_is_noise_independent_same_body_with_refund_five": true
+      },
+      "stationary_expected_population_T0_to_T12": {
+        "one_H": [
+          "1",
+          "9/8",
+          "81/64",
+          "729/512",
+          "6561/4096",
+          "59049/32768",
+          "531441/262144",
+          "4782969/2097152",
+          "43046721/16777216",
+          "387420489/134217728",
+          "3486784401/1073741824",
+          "31381059609/8589934592",
+          "282429536481/68719476736"
+        ],
+        "one_D": [
+          "1",
+          "9/8",
+          "81/64",
+          "729/512",
+          "6561/4096",
+          "59049/32768",
+          "531441/262144",
+          "4782969/2097152",
+          "43046721/16777216",
+          "387420489/134217728",
+          "3486784401/1073741824",
+          "31381059609/8589934592",
+          "282429536481/68719476736"
+        ],
+        "mixed_2H_1D": [
+          "3",
+          "27/8",
+          "243/64",
+          "2187/512",
+          "19683/4096",
+          "177147/32768",
+          "1594323/262144",
+          "14348907/2097152",
+          "129140163/16777216",
+          "1162261467/134217728",
+          "10460353203/1073741824",
+          "94143178827/8589934592",
+          "847288609443/68719476736"
+        ],
+        "empty": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      "internal_programs": {
+        "theta0": {
+          "growth_factor": "9/8",
+          "attains_rho": true,
+          "mean_population_from_D_T0_to_T12": [
+            "1",
+            "9/8",
+            "81/64",
+            "729/512",
+            "6561/4096",
+            "59049/32768",
+            "531441/262144",
+            "4782969/2097152",
+            "43046721/16777216",
+            "387420489/134217728",
+            "3486784401/1073741824",
+            "31381059609/8589934592",
+            "282429536481/68719476736"
+          ]
+        },
+        "theta1": {
+          "growth_factor": "25/24",
+          "attains_rho": false,
+          "mean_population_from_D_T0_to_T12": [
+            "1",
+            "9/8",
+            "75/64",
+            "625/512",
+            "15625/12288",
+            "390625/294912",
+            "9765625/7077888",
+            "244140625/169869312",
+            "6103515625/4076863488",
+            "152587890625/97844723712",
+            "3814697265625/2348273369088",
+            "95367431640625/56358560858112",
+            "2384185791015625/1352605460594688"
+          ]
+        }
+      },
+      "finite_dp": [
+        {
+          "T": 0,
+          "value_H_D": [
+            "1",
+            "1"
+          ],
+          "optimal_next_requests": null
+        },
+        {
+          "T": 1,
+          "value_H_D": [
+            "9/8",
+            "9/8"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 2,
+          "value_H_D": [
+            "81/64",
+            "81/64"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 3,
+          "value_H_D": [
+            "729/512",
+            "729/512"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 4,
+          "value_H_D": [
+            "6561/4096",
+            "6561/4096"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 5,
+          "value_H_D": [
+            "59049/32768",
+            "59049/32768"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 6,
+          "value_H_D": [
+            "531441/262144",
+            "531441/262144"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 7,
+          "value_H_D": [
+            "4782969/2097152",
+            "4782969/2097152"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 8,
+          "value_H_D": [
+            "43046721/16777216",
+            "43046721/16777216"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 9,
+          "value_H_D": [
+            "387420489/134217728",
+            "387420489/134217728"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 10,
+          "value_H_D": [
+            "3486784401/1073741824",
+            "3486784401/1073741824"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 11,
+          "value_H_D": [
+            "31381059609/8589934592",
+            "31381059609/8589934592"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 12,
+          "value_H_D": [
+            "282429536481/68719476736",
+            "282429536481/68719476736"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        }
+      ],
+      "paid_care_once_then_external_selector": {
+        "first_repair_paid": 3,
+        "first_request_cap": 6,
+        "positive_weight_after_first_care": "81/64",
+        "expected_population_T1_to_T12": [
+          "9/8",
+          "81/64",
+          "729/512",
+          "6561/4096",
+          "59049/32768",
+          "531441/262144",
+          "4782969/2097152",
+          "43046721/16777216",
+          "387420489/134217728",
+          "3486784401/1073741824",
+          "31381059609/8589934592",
+          "282429536481/68719476736"
+        ],
+        "same_optimal_growth_factor_by_written_bounds": "9/8"
+      }
+    },
+    {
+      "name": "care_subcritical_global_supercritical",
+      "purpose": "two-census DP from D is 279/250, not fixed theta1",
+      "p_s_delta_b_gamma_q": [
+        "3/5",
+        "1/10",
+        "3/10",
+        "1/2",
+        "1/5"
+      ],
+      "basic_probability_region": true,
+      "old_Valid_region": false,
+      "kc": "9/10",
+      "kb": "13/10",
+      "k_star": "13/10",
+      "mu": "61/50",
+      "rho": "61/50",
+      "lambda0": "9/10",
+      "lambda1": "61/50",
+      "positive_potential_H_D": [
+        "13/10",
+        "9/10"
+      ],
+      "attaining_external_selector": {
+        "H": "bloom",
+        "D": "care",
+        "D_bloom_means_rejected": false
+      },
+      "full_request_rows_H_D": {
+        "H": {
+          "care": [
+            "18/25",
+            "9/50"
+          ],
+          "bloom": [
+            "26/25",
+            "13/50"
+          ],
+          "stop": [
+            "0",
+            "0"
+          ]
+        },
+        "D": {
+          "care": [
+            "18/25",
+            "9/50"
+          ],
+          "bloom": [
+            "0",
+            "1"
+          ],
+          "stop": [
+            "0",
+            "0"
+          ]
+        }
+      },
+      "row_super_eigen_gaps": {
+        "H": {
+          "care": "61/125",
+          "bloom": "0",
+          "stop": "793/500"
+        },
+        "D": {
+          "care": "0",
+          "bloom": "99/500",
+          "stop": "549/500"
+        }
+      },
+      "correlated_joint_request_gap": "343/750",
+      "literal_checks": {
+        "local_menu_cases": 864,
+        "internal_program_cases": 288,
+        "all_36_noise_weights_positive_and_sum_one": true,
+        "full_menu_rows_from_literal_transactions": true,
+        "rejection_is_noise_independent_same_body_with_refund_five": true
+      },
+      "stationary_expected_population_T0_to_T12": {
+        "one_H": [
+          "1",
+          "13/10",
+          "793/500",
+          "48373/25000",
+          "2950753/1250000",
+          "179995933/62500000",
+          "10979751913/3125000000",
+          "669764866693/156250000000",
+          "40855656868273/7812500000000",
+          "2492195068964653/390625000000000",
+          "152023899206843833/19531250000000000",
+          "9273457851617473813/976562500000000000",
+          "565680928948665902593/48828125000000000000"
+        ],
+        "one_D": [
+          "1",
+          "9/10",
+          "549/500",
+          "33489/25000",
+          "2042829/1250000",
+          "124612569/62500000",
+          "7601366709/3125000000",
+          "463683369249/156250000000",
+          "28284685524189/7812500000000",
+          "1725365816975529/390625000000000",
+          "105247314835507269/19531250000000000",
+          "6420086204965943409/976562500000000000",
+          "391625258502922547949/48828125000000000000"
+        ],
+        "mixed_2H_1D": [
+          "3",
+          "7/2",
+          "427/100",
+          "26047/5000",
+          "1588867/250000",
+          "96920887/12500000",
+          "5912174107/625000000",
+          "360642620527/31250000000",
+          "21999199852147/1562500000000",
+          "1341951190980967/78125000000000",
+          "81859022649838987/3906250000000000",
+          "4993400381640178207/195312500000000000",
+          "304597423280050870627/9765625000000000000"
+        ],
+        "empty": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      "internal_programs": {
+        "theta0": {
+          "growth_factor": "9/10",
+          "attains_rho": false,
+          "mean_population_from_D_T0_to_T12": [
+            "1",
+            "9/10",
+            "81/100",
+            "729/1000",
+            "6561/10000",
+            "59049/100000",
+            "531441/1000000",
+            "4782969/10000000",
+            "43046721/100000000",
+            "387420489/1000000000",
+            "3486784401/10000000000",
+            "31381059609/100000000000",
+            "282429536481/1000000000000"
+          ]
+        },
+        "theta1": {
+          "growth_factor": "61/50",
+          "attains_rho": true,
+          "mean_population_from_D_T0_to_T12": [
+            "1",
+            "9/10",
+            "549/500",
+            "33489/25000",
+            "2042829/1250000",
+            "124612569/62500000",
+            "7601366709/3125000000",
+            "463683369249/156250000000",
+            "28284685524189/7812500000000",
+            "1725365816975529/390625000000000",
+            "105247314835507269/19531250000000000",
+            "6420086204965943409/976562500000000000",
+            "391625258502922547949/48828125000000000000"
+          ]
+        }
+      },
+      "finite_dp": [
+        {
+          "T": 0,
+          "value_H_D": [
+            "1",
+            "1"
+          ],
+          "optimal_next_requests": null
+        },
+        {
+          "T": 1,
+          "value_H_D": [
+            "13/10",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 2,
+          "value_H_D": [
+            "403/250",
+            "279/250"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 3,
+          "value_H_D": [
+            "24583/12500",
+            "17019/12500"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 4,
+          "value_H_D": [
+            "1499563/625000",
+            "1038159/625000"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 5,
+          "value_H_D": [
+            "91473343/31250000",
+            "63327699/31250000"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 6,
+          "value_H_D": [
+            "5579873923/1562500000",
+            "3862989639/1562500000"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 7,
+          "value_H_D": [
+            "340372309303/78125000000",
+            "235642367979/78125000000"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 8,
+          "value_H_D": [
+            "20762710867483/3906250000000",
+            "14374184446719/3906250000000"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 9,
+          "value_H_D": [
+            "1266525362916463/195312500000000",
+            "876825251249859/195312500000000"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 10,
+          "value_H_D": [
+            "77258047137904243/9765625000000000",
+            "53486340326241399/9765625000000000"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 11,
+          "value_H_D": [
+            "4712740875412158823/488281250000000000",
+            "3262666759900725339/488281250000000000"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 12,
+          "value_H_D": [
+            "287477193400141688203/24414062500000000000",
+            "199022672353944245679/24414062500000000000"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        }
+      ],
+      "paid_care_once_then_external_selector": {
+        "first_repair_paid": 3,
+        "first_request_cap": 6,
+        "positive_weight_after_first_care": "549/500",
+        "expected_population_T1_to_T12": [
+          "9/10",
+          "549/500",
+          "33489/25000",
+          "2042829/1250000",
+          "124612569/62500000",
+          "7601366709/3125000000",
+          "463683369249/156250000000",
+          "28284685524189/7812500000000",
+          "1725365816975529/390625000000000",
+          "105247314835507269/19531250000000000",
+          "6420086204965943409/976562500000000000",
+          "391625258502922547949/48828125000000000000"
+        ],
+        "same_optimal_growth_factor_by_written_bounds": "61/50"
+      }
+    },
+    {
+      "name": "equal_advantage_critical",
+      "purpose": "gamma equals delta; both internal programs attain the critical factor",
+      "p_s_delta_b_gamma_q": [
+        "3/4",
+        "1/8",
+        "1/4",
+        "1/8",
+        "1/3"
+      ],
+      "basic_probability_region": true,
+      "old_Valid_region": false,
+      "kc": "1",
+      "kb": "1",
+      "k_star": "1",
+      "mu": "1",
+      "rho": "1",
+      "lambda0": "1",
+      "lambda1": "1",
+      "positive_potential_H_D": [
+        "1",
+        "1"
+      ],
+      "attaining_external_selector": {
+        "H": "care",
+        "D": "care",
+        "D_bloom_means_rejected": false
+      },
+      "full_request_rows_H_D": {
+        "H": {
+          "care": [
+            "2/3",
+            "1/3"
+          ],
+          "bloom": [
+            "2/3",
+            "1/3"
+          ],
+          "stop": [
+            "0",
+            "0"
+          ]
+        },
+        "D": {
+          "care": [
+            "2/3",
+            "1/3"
+          ],
+          "bloom": [
+            "0",
+            "1"
+          ],
+          "stop": [
+            "0",
+            "0"
+          ]
+        }
+      },
+      "row_super_eigen_gaps": {
+        "H": {
+          "care": "0",
+          "bloom": "0",
+          "stop": "1"
+        },
+        "D": {
+          "care": "0",
+          "bloom": "0",
+          "stop": "1"
+        }
+      },
+      "correlated_joint_request_gap": "0",
+      "literal_checks": {
+        "local_menu_cases": 864,
+        "internal_program_cases": 288,
+        "all_36_noise_weights_positive_and_sum_one": true,
+        "full_menu_rows_from_literal_transactions": true,
+        "rejection_is_noise_independent_same_body_with_refund_five": true
+      },
+      "stationary_expected_population_T0_to_T12": {
+        "one_H": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "one_D": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "mixed_2H_1D": [
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3"
+        ],
+        "empty": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      "internal_programs": {
+        "theta0": {
+          "growth_factor": "1",
+          "attains_rho": true,
+          "mean_population_from_D_T0_to_T12": [
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1"
+          ]
+        },
+        "theta1": {
+          "growth_factor": "1",
+          "attains_rho": true,
+          "mean_population_from_D_T0_to_T12": [
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1"
+          ]
+        }
+      },
+      "finite_dp": [
+        {
+          "T": 0,
+          "value_H_D": [
+            "1",
+            "1"
+          ],
+          "optimal_next_requests": null
+        },
+        {
+          "T": 1,
+          "value_H_D": [
+            "1",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care",
+              "bloom"
+            ],
+            "D": [
+              "care",
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 2,
+          "value_H_D": [
+            "1",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care",
+              "bloom"
+            ],
+            "D": [
+              "care",
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 3,
+          "value_H_D": [
+            "1",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care",
+              "bloom"
+            ],
+            "D": [
+              "care",
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 4,
+          "value_H_D": [
+            "1",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care",
+              "bloom"
+            ],
+            "D": [
+              "care",
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 5,
+          "value_H_D": [
+            "1",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care",
+              "bloom"
+            ],
+            "D": [
+              "care",
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 6,
+          "value_H_D": [
+            "1",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care",
+              "bloom"
+            ],
+            "D": [
+              "care",
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 7,
+          "value_H_D": [
+            "1",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care",
+              "bloom"
+            ],
+            "D": [
+              "care",
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 8,
+          "value_H_D": [
+            "1",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care",
+              "bloom"
+            ],
+            "D": [
+              "care",
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 9,
+          "value_H_D": [
+            "1",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care",
+              "bloom"
+            ],
+            "D": [
+              "care",
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 10,
+          "value_H_D": [
+            "1",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care",
+              "bloom"
+            ],
+            "D": [
+              "care",
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 11,
+          "value_H_D": [
+            "1",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care",
+              "bloom"
+            ],
+            "D": [
+              "care",
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 12,
+          "value_H_D": [
+            "1",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care",
+              "bloom"
+            ],
+            "D": [
+              "care",
+              "bloom"
+            ]
+          }
+        }
+      ],
+      "paid_care_once_then_external_selector": {
+        "first_repair_paid": 3,
+        "first_request_cap": 6,
+        "positive_weight_after_first_care": "1",
+        "expected_population_T1_to_T12": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "same_optimal_growth_factor_by_written_bounds": "1"
+      }
+    },
+    {
+      "name": "subcritical_with_large_healthy_row",
+      "purpose": "mu below one despite k_star above one; r_H is 9/7",
+      "p_s_delta_b_gamma_q": [
+        "1/2",
+        "1/8",
+        "1/4",
+        "1/2",
+        "1/2"
+      ],
+      "basic_probability_region": true,
+      "old_Valid_region": false,
+      "kc": "3/4",
+      "kb": "9/8",
+      "k_star": "9/8",
+      "mu": "15/16",
+      "rho": "1",
+      "lambda0": "3/4",
+      "lambda1": "15/16",
+      "positive_potential_H_D": [
+        "9/7",
+        "1"
+      ],
+      "attaining_external_selector": {
+        "H": "bloom",
+        "D": "bloom",
+        "D_bloom_means_rejected": true
+      },
+      "full_request_rows_H_D": {
+        "H": {
+          "care": [
+            "3/8",
+            "3/8"
+          ],
+          "bloom": [
+            "9/16",
+            "9/16"
+          ],
+          "stop": [
+            "0",
+            "0"
+          ]
+        },
+        "D": {
+          "care": [
+            "3/8",
+            "3/8"
+          ],
+          "bloom": [
+            "0",
+            "1"
+          ],
+          "stop": [
+            "0",
+            "0"
+          ]
+        }
+      },
+      "row_super_eigen_gaps": {
+        "H": {
+          "care": "3/7",
+          "bloom": "0",
+          "stop": "9/7"
+        },
+        "D": {
+          "care": "1/7",
+          "bloom": "0",
+          "stop": "1"
+        }
+      },
+      "correlated_joint_request_gap": "1/3",
+      "literal_checks": {
+        "local_menu_cases": 864,
+        "internal_program_cases": 288,
+        "all_36_noise_weights_positive_and_sum_one": true,
+        "full_menu_rows_from_literal_transactions": true,
+        "rejection_is_noise_independent_same_body_with_refund_five": true
+      },
+      "stationary_expected_population_T0_to_T12": {
+        "one_H": [
+          "1",
+          "9/8",
+          "153/128",
+          "2529/2048",
+          "41193/32768",
+          "665649/524288",
+          "10709433/8388608",
+          "171882369/134217728",
+          "2754900873/2147483648",
+          "44121460689/34359738368",
+          "706330791513/549755813888",
+          "11304779448609/8796093022208",
+          "180907852237353/140737488355328"
+        ],
+        "one_D": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "mixed_2H_1D": [
+          "3",
+          "13/4",
+          "217/64",
+          "3553/1024",
+          "57577/16384",
+          "927793/262144",
+          "14903737/4194304",
+          "238991233/67108864",
+          "3828642697/1073741824",
+          "61301329873/17179869184",
+          "981208698457/274877906944",
+          "15702825959713/4398046511104",
+          "251276596415017/70368744177664"
+        ],
+        "empty": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      "internal_programs": {
+        "theta0": {
+          "growth_factor": "3/4",
+          "attains_rho": false,
+          "mean_population_from_D_T0_to_T12": [
+            "1",
+            "3/4",
+            "9/16",
+            "27/64",
+            "81/256",
+            "243/1024",
+            "729/4096",
+            "2187/16384",
+            "6561/65536",
+            "19683/262144",
+            "59049/1048576",
+            "177147/4194304",
+            "531441/16777216"
+          ]
+        },
+        "theta1": {
+          "growth_factor": "15/16",
+          "attains_rho": false,
+          "mean_population_from_D_T0_to_T12": [
+            "1",
+            "3/4",
+            "45/64",
+            "675/1024",
+            "10125/16384",
+            "151875/262144",
+            "2278125/4194304",
+            "34171875/67108864",
+            "512578125/1073741824",
+            "7688671875/17179869184",
+            "115330078125/274877906944",
+            "1729951171875/4398046511104",
+            "25949267578125/70368744177664"
+          ]
+        }
+      },
+      "finite_dp": [
+        {
+          "T": 0,
+          "value_H_D": [
+            "1",
+            "1"
+          ],
+          "optimal_next_requests": null
+        },
+        {
+          "T": 1,
+          "value_H_D": [
+            "9/8",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 2,
+          "value_H_D": [
+            "153/128",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 3,
+          "value_H_D": [
+            "2529/2048",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 4,
+          "value_H_D": [
+            "41193/32768",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 5,
+          "value_H_D": [
+            "665649/524288",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 6,
+          "value_H_D": [
+            "10709433/8388608",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 7,
+          "value_H_D": [
+            "171882369/134217728",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 8,
+          "value_H_D": [
+            "2754900873/2147483648",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 9,
+          "value_H_D": [
+            "44121460689/34359738368",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 10,
+          "value_H_D": [
+            "706330791513/549755813888",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 11,
+          "value_H_D": [
+            "11304779448609/8796093022208",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        },
+        {
+          "T": 12,
+          "value_H_D": [
+            "180907852237353/140737488355328",
+            "1"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "bloom"
+            ],
+            "D": [
+              "bloom"
+            ]
+          }
+        }
+      ],
+      "paid_care_once_then_external_selector": {
+        "first_repair_paid": 3,
+        "first_request_cap": 6,
+        "positive_weight_after_first_care": "6/7",
+        "expected_population_T1_to_T12": [
+          "3/4",
+          "51/64",
+          "843/1024",
+          "13731/16384",
+          "221883/262144",
+          "3569811/4194304",
+          "57294123/67108864",
+          "918300291/1073741824",
+          "14707153563/17179869184",
+          "235443597171/274877906944",
+          "3768259816203/4398046511104",
+          "60302617412451/70368744177664"
+        ],
+        "same_optimal_growth_factor_by_written_bounds": "1"
+      }
+    },
+    {
+      "name": "equal_advantage_supercritical",
+      "purpose": "gamma equals delta; both internal programs attain above one",
+      "p_s_delta_b_gamma_q": [
+        "3/4",
+        "1/8",
+        "3/8",
+        "1/8",
+        "1/3"
+      ],
+      "basic_probability_region": true,
+      "old_Valid_region": false,
+      "kc": "9/8",
+      "kb": "9/8",
+      "k_star": "9/8",
+      "mu": "9/8",
+      "rho": "9/8",
+      "lambda0": "9/8",
+      "lambda1": "9/8",
+      "positive_potential_H_D": [
+        "9/8",
+        "9/8"
+      ],
+      "attaining_external_selector": {
+        "H": "care",
+        "D": "care",
+        "D_bloom_means_rejected": false
+      },
+      "full_request_rows_H_D": {
+        "H": {
+          "care": [
+            "3/4",
+            "3/8"
+          ],
+          "bloom": [
+            "3/4",
+            "3/8"
+          ],
+          "stop": [
+            "0",
+            "0"
+          ]
+        },
+        "D": {
+          "care": [
+            "3/4",
+            "3/8"
+          ],
+          "bloom": [
+            "0",
+            "1"
+          ],
+          "stop": [
+            "0",
+            "0"
+          ]
+        }
+      },
+      "row_super_eigen_gaps": {
+        "H": {
+          "care": "0",
+          "bloom": "0",
+          "stop": "81/64"
+        },
+        "D": {
+          "care": "0",
+          "bloom": "9/64",
+          "stop": "81/64"
+        }
+      },
+      "correlated_joint_request_gap": "3/32",
+      "literal_checks": {
+        "local_menu_cases": 864,
+        "internal_program_cases": 288,
+        "all_36_noise_weights_positive_and_sum_one": true,
+        "full_menu_rows_from_literal_transactions": true,
+        "rejection_is_noise_independent_same_body_with_refund_five": true
+      },
+      "stationary_expected_population_T0_to_T12": {
+        "one_H": [
+          "1",
+          "9/8",
+          "81/64",
+          "729/512",
+          "6561/4096",
+          "59049/32768",
+          "531441/262144",
+          "4782969/2097152",
+          "43046721/16777216",
+          "387420489/134217728",
+          "3486784401/1073741824",
+          "31381059609/8589934592",
+          "282429536481/68719476736"
+        ],
+        "one_D": [
+          "1",
+          "9/8",
+          "81/64",
+          "729/512",
+          "6561/4096",
+          "59049/32768",
+          "531441/262144",
+          "4782969/2097152",
+          "43046721/16777216",
+          "387420489/134217728",
+          "3486784401/1073741824",
+          "31381059609/8589934592",
+          "282429536481/68719476736"
+        ],
+        "mixed_2H_1D": [
+          "3",
+          "27/8",
+          "243/64",
+          "2187/512",
+          "19683/4096",
+          "177147/32768",
+          "1594323/262144",
+          "14348907/2097152",
+          "129140163/16777216",
+          "1162261467/134217728",
+          "10460353203/1073741824",
+          "94143178827/8589934592",
+          "847288609443/68719476736"
+        ],
+        "empty": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      "internal_programs": {
+        "theta0": {
+          "growth_factor": "9/8",
+          "attains_rho": true,
+          "mean_population_from_D_T0_to_T12": [
+            "1",
+            "9/8",
+            "81/64",
+            "729/512",
+            "6561/4096",
+            "59049/32768",
+            "531441/262144",
+            "4782969/2097152",
+            "43046721/16777216",
+            "387420489/134217728",
+            "3486784401/1073741824",
+            "31381059609/8589934592",
+            "282429536481/68719476736"
+          ]
+        },
+        "theta1": {
+          "growth_factor": "9/8",
+          "attains_rho": true,
+          "mean_population_from_D_T0_to_T12": [
+            "1",
+            "9/8",
+            "81/64",
+            "729/512",
+            "6561/4096",
+            "59049/32768",
+            "531441/262144",
+            "4782969/2097152",
+            "43046721/16777216",
+            "387420489/134217728",
+            "3486784401/1073741824",
+            "31381059609/8589934592",
+            "282429536481/68719476736"
+          ]
+        }
+      },
+      "finite_dp": [
+        {
+          "T": 0,
+          "value_H_D": [
+            "1",
+            "1"
+          ],
+          "optimal_next_requests": null
+        },
+        {
+          "T": 1,
+          "value_H_D": [
+            "9/8",
+            "9/8"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care",
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 2,
+          "value_H_D": [
+            "81/64",
+            "81/64"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care",
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 3,
+          "value_H_D": [
+            "729/512",
+            "729/512"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care",
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 4,
+          "value_H_D": [
+            "6561/4096",
+            "6561/4096"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care",
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 5,
+          "value_H_D": [
+            "59049/32768",
+            "59049/32768"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care",
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 6,
+          "value_H_D": [
+            "531441/262144",
+            "531441/262144"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care",
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 7,
+          "value_H_D": [
+            "4782969/2097152",
+            "4782969/2097152"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care",
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 8,
+          "value_H_D": [
+            "43046721/16777216",
+            "43046721/16777216"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care",
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 9,
+          "value_H_D": [
+            "387420489/134217728",
+            "387420489/134217728"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care",
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 10,
+          "value_H_D": [
+            "3486784401/1073741824",
+            "3486784401/1073741824"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care",
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 11,
+          "value_H_D": [
+            "31381059609/8589934592",
+            "31381059609/8589934592"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care",
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        },
+        {
+          "T": 12,
+          "value_H_D": [
+            "282429536481/68719476736",
+            "282429536481/68719476736"
+          ],
+          "optimal_next_requests": {
+            "H": [
+              "care",
+              "bloom"
+            ],
+            "D": [
+              "care"
+            ]
+          }
+        }
+      ],
+      "paid_care_once_then_external_selector": {
+        "first_repair_paid": 3,
+        "first_request_cap": 6,
+        "positive_weight_after_first_care": "81/64",
+        "expected_population_T1_to_T12": [
+          "9/8",
+          "81/64",
+          "729/512",
+          "6561/4096",
+          "59049/32768",
+          "531441/262144",
+          "4782969/2097152",
+          "43046721/16777216",
+          "387420489/134217728",
+          "3486784401/1073741824",
+          "31381059609/8589934592",
+          "282429536481/68719476736"
+        ],
+        "same_optimal_growth_factor_by_written_bounds": "9/8"
+      }
+    }
+  ],
+  "proof_status": {
+    "finite_checks": "Exact at the listed points and horizons; complete local menu at each point.",
+    "general_history_real_kernel_bounds": "Written row inequality, linearity, and finite-history induction; not established by enumerating policies.",
+    "all_T_and_all_basic_parameters": "Written proof in BOUNDARY_REVIEW.md; finite numerical probes are only witnesses.",
+    "new_Lean_proof_or_compilation": false,
+    "empirical_validation": false,
+    "old_Valid_or_frozen_source_modified": false
+  }
+}

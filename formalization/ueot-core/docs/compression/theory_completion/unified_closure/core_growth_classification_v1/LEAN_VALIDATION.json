@@ -1,0 +1,133 @@
+{
+  "status": "PASS",
+  "lean_version": "Lean (version 4.33.1, arm64-apple-darwin24.6.0, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)",
+  "checked_modules": [
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeGrowthClassification.lean",
+      "source_sha256": "ce5f6f1119a3a1c209148280200fed532377ba4b28a6745813ab3dcae0bd7dcb",
+      "exit_code": 0,
+      "seconds": 26.534,
+      "receipt": "checks/CoreRegenerativeGrowthClassification-ce5f6f1119a3.json",
+      "log": "checks/CoreRegenerativeGrowthClassification-ce5f6f1119a3.log"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeGrowthPopulation.lean",
+      "source_sha256": "e69d2ef25be8a7ea0a74bc6e8c7d24580cd1d614691c5e38d9c5292848864b54",
+      "exit_code": 0,
+      "seconds": 17.986,
+      "receipt": "checks/CoreRegenerativeGrowthPopulation-e69d2ef25be8.json",
+      "log": "checks/CoreRegenerativeGrowthPopulation-e69d2ef25be8.log"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeGrowthAttainment.lean",
+      "source_sha256": "952740533202112b37765f3a887dbe1e65dbee1864f386abb7b3abf759529edd",
+      "exit_code": 0,
+      "seconds": 22.28,
+      "receipt": "checks/CoreRegenerativeGrowthAttainment-952740533202.json",
+      "log": "checks/CoreRegenerativeGrowthAttainment-952740533202.log"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreTheoryClosure",
+      "source": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreTheoryClosure.lean",
+      "source_sha256": "c14befb44ce0d87a7db3d044671c1f88ca9415a822597c1bca0eedd9eaec50ac",
+      "exit_code": 0,
+      "seconds": 22.552,
+      "receipt": "checks/CoreTheoryClosure-c14befb44ce0.json",
+      "log": "checks/CoreTheoryClosure-c14befb44ce0.log"
+    },
+    {
+      "module": "docs.compression.theory_completion.unified_closure.core_growth_classification_v1.GrowthClassificationCheck",
+      "source": "formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/GrowthClassificationCheck.lean",
+      "source_sha256": "80e83ae1a7b6b774e605bf7d7d2b55a75419ad45b96fd99c50460db2e9e6dfec",
+      "exit_code": 0,
+      "seconds": 3.545,
+      "receipt": "checks/GrowthClassificationCheck-80e83ae1a7b6.json",
+      "log": "checks/GrowthClassificationCheck-80e83ae1a7b6.log"
+    }
+  ],
+  "checked_axiom_endpoints": {
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.valid_iff_probability_advantage_supercritical": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.noiseWeight_pos": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.actual_one_step_value_le": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.actual_selected_one_step_value_eq": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.optimal_population_upper": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.optimal_hasExpectedGrowth": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.programPolicy_positive_branch_is_internal": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment.optimalRate_isLeast_uniform_upper": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment.false_program_attains_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment.true_program_attains_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment.same_damaged_program_repairs_and_attains_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment.subcritical_existing_programs_do_not_attain": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment.old_valid_damaged_program_attains": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UEOTGrowthClassificationCheck.enlarged_domain_actual_internal": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UEOTGrowthClassificationCheck.subcritical_actual_internal_failure": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "all_listed_axioms_standard": true,
+  "warning_count": 0,
+  "new_sources_have_sorry_admit_axiom_unsafe_or_native_decide": false,
+  "full_historical_build_rerun": false,
+  "scope": "Kernel compilation of changed production modules, affected public entry, and concrete boundary consumers; old immutable dependency evidence reused."
+}

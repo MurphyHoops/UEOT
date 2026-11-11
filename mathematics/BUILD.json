@@ -2,11 +2,11 @@
   "document": "mathematics",
   "status": "COMPILED_REQUIRES_VISUAL_REVIEW",
   "source": "mathematics/UEOT_MATHEMATICS.md",
-  "source_sha256": "6dc2340516b5d79986a3190c8238640d0786883424504d6e12bc1bbb2bd39bad",
+  "source_sha256": "dcd175a938da4cfd0b63ea1f642e3c794187a7c7ebdecb4175089c8cae53b01f",
   "latex": "mathematics/UEOT_MATHEMATICS.tex",
-  "latex_sha256": "29a45d0d9ce048a7a9235730e670041abffa9012a1a755164eafc630c00ba47d",
+  "latex_sha256": "847ba719d096eb2ce2b899e5709bce90c7283258126d0af998933df8ef7837d4",
   "pdf": "mathematics/UEOT_MATHEMATICS.pdf",
-  "pdf_sha256": "745cc550d3a1b2efffb489bc67360d0f6a7c0d97ddc861c84647619a52516352",
+  "pdf_sha256": "9e692ff6f39cead5ee28bdca2b8ce98fbe1798ca8b8d4e3c2a65973d6eb04a48",
   "tools": {
     "pandoc": "pandoc 3.1.3",
     "xelatex": "XeTeX 3.141592653-2.6-0.999998 (TeX Live 2026)"
@@ -22,5 +22,27 @@
     "tools/books/build_books.py",
     "mathematics"
   ],
-  "scope": "Document compilation only; mathematical proof status is recorded separately."
+  "scope": "Document compilation only; mathematical proof status is recorded separately.",
+  "additional_cross_reference_validation_pass": {
+    "reason": "third-pass cross-reference rerun warning",
+    "command": [
+      "xelatex",
+      "-interaction=nonstopmode",
+      "-halt-on-error",
+      "-file-line-error",
+      "-output-directory=/Users/murphyhoops/Documents/ueotlean-worktrees/core-growth-classification-20261111/tools/books/.cache/mathematics/847ba719d096eb2c",
+      "mathematics/UEOT_MATHEMATICS.tex"
+    ],
+    "exit_code": 0,
+    "auxiliary_hashes_before": {
+      "UEOT_MATHEMATICS.aux": "b9462df82478c0b311da70ea07a3581d25c2675949ae5d4216f133d4d525f70f",
+      "UEOT_MATHEMATICS.toc": "9e32f7fbe054d00b6067a3309ff39ad6fcae355e5cbd9a614b802c585ce6ab81"
+    },
+    "auxiliary_hashes_after": {
+      "UEOT_MATHEMATICS.aux": "b9462df82478c0b311da70ea07a3581d25c2675949ae5d4216f133d4d525f70f",
+      "UEOT_MATHEMATICS.toc": "9e32f7fbe054d00b6067a3309ff39ad6fcae355e5cbd9a614b802c585ce6ab81"
+    },
+    "auxiliary_files_stable": true,
+    "rerun_warning_after": true
+  }
 }
