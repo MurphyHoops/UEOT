@@ -13,7 +13,7 @@ notices. Read the original notice in
 | Content | Existing/publicly released materials | Newly authored materials first published under this policy |
 | --- | --- | --- |
 | `UEOT_v3_top.pdf`, original manuscript and owned historical research | Historical CC BY 4.0; third-party exceptions remain | New owned research prose: CC BY 4.0 if in designated research scope |
-| `core/`, `research/`, scientific `physics/` documents outside the formal physics book | Prior grants remain | Original research text/figures: CC BY 4.0, subject to explicit exceptions and rights |
+| `core/`, `research/`, `mathematics/review/`, `philosophy/review/`, non-code `formalization/*/docs/`, and scientific `physics/` documents outside the formal physics book | Prior grants remain | Original research text/figures: CC BY 4.0, subject to explicit exceptions and rights |
 | `philosophy/UEOT_PHILOSOPHY.{md,tex,pdf}` | Historical CC BY expression remains licensed | Newly authored future *edition-specific* expression: rights set in that edition; not automatically relicensed by root policy |
 | `mathematics/UEOT_MATHEMATICS.{md,tex,pdf}` | Same rule | Same rule |
 | `physics/qm/book/UEOT_PHYSICS.{md,tex,pdf}` | Same rule, including physics book v3.5 snapshot | Same rule |
