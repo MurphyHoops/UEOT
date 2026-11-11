@@ -1,15 +1,16 @@
 # UEOT — Universal Evolutionary Object Theory
 
-UEOT studies objects, persistence, evolution and purpose through **two independently maintained books**, a machine-checked mathematical core, and explicit scientific interfaces. The books develop different kinds of argument and can each be read on their own.
+UEOT studies objects, persistence, evolution and purpose through **three independently maintained books**, a machine-checked mathematical core, and explicit scientific interfaces. The books develop different kinds of argument and can each be read on their own.
 
-## The two books
+## Three independently maintained books
 
 | Work | Scope | Read |
 |---|---|---|
 | **客体、演化与意义 — 一种开放的统一自然哲学** | Philosophical arguments about process, relation, identity, life, purpose, meaning, freedom and a shared world; six parts and thirty chapters | [Markdown](./philosophy/UEOT_PHILOSOPHY.md) · [PDF](./philosophy/UEOT_PHILOSOPHY.pdf) · [LaTeX](./philosophy/UEOT_PHILOSOPHY.tex) |
 | **UEOT 数学著作** | Definitions, assumptions, proofs, counterexamples, algorithms and explicit Lean correspondences; the complete original Core together with later mathematical developments | [Markdown](./mathematics/UEOT_MATHEMATICS.md) · [PDF](./mathematics/UEOT_MATHEMATICS.pdf) · [LaTeX](./mathematics/UEOT_MATHEMATICS.tex) |
+| **《UEOT物理学》 v3.5** | Physical assumptions, quantum/QFT derivations, falsifiable predictions, proof status and limits; maintained separately from Core mathematics | [Markdown](./physics/qm/book/UEOT_PHYSICS.md) · [PDF](./physics/qm/book/UEOT_PHYSICS.pdf) · [LaTeX](./physics/qm/book/UEOT_PHYSICS.tex) |
 
-Philosophy develops and defends concepts and normative arguments. Mathematics tests precise statements, derives their consequences and exhibits their limits. A theorem can require a philosophical claim to be revised; the interpretation of that theorem still needs an argument. Scientific applications add their own identification, measurement and empirical obligations.
+Philosophy develops concepts and normative arguments; mathematics verifies conditional claims and their limits; physics separately records sector-specific assumptions, derivations, and falsifiable tests. The three books remain independent reading works, not mutually interchangeable certificates.
 
 The historical [43-page philosophical paper](./UEOT_v3_top.pdf) is preserved, and the exact [Core Mathematics v3.0 source](./mathematics/source/core-v3.0/UEOT_Core_Mathematics_v3.0_Complete.md) is now synchronized byte for byte. The maintained books have their own version history; neither silently replaces a frozen historical source.
 
@@ -95,22 +96,23 @@ The original LaTeX files are also available in [philosophy/source/original](./ph
 
 Active development is integrated through `main`. Complete and verify a coherent local change before submitting the necessary commits and PRs. The Core cloud build has a manual entry; the local build and evidence workflow is described in [Compression Operations](./formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md).
 
-## Copyright, licenses and publication
+## Copyright, research licensing and publication
 
-UEOT preserves earlier **CC BY 4.0** grants for historical research material
-and previously released versions, including material incorporated in its two
-publicly available books. Those earlier grants remain effective for the
-covered material; a future book edition or different file format does not
-cancel them.
+This repository uses **layered licensing**. The earlier CC BY 4.0 grant
+remains valid for historically licensed research expression, including
+material already published in the three books. Future original **open
+scientific research prose and figures** are generally CC BY 4.0 where the
+contributor has the rights to grant it; future *new book edition content*,
+Lean/Python code, raw data and third-party assets have separately
+identified terms.
 
-For material first authored and released after 2026-11-11, the project does
-not make a blanket new copyright-license grant. Specific future publications
-and software components will identify their applicable terms after provenance
-and contributor-rights review. In particular, **Lean code has not been
-relicensed to Apache-2.0** by this clarification; new book editions have not
-yet been assigned a restrictive license. Third-party materials retain their
-own terms. Separately maintained commercial UEOT-GI implementations are not
-licensed by the UEOT research repository.
+The physics sector is not excluded: see its
+[license map](./physics/LICENSING.md) and the
+[《UEOT物理学》 edition-rights record](./physics/qm/book/PUBLICATION_RIGHTS.md).
+Current Lean or research-code files have **not** been blanket-relicensed
+to Apache-2.0. Existing book contents have **not** become exclusive.
 
-Read the [root LICENSE](./LICENSE), [copyright and publication policy](./COPYRIGHT.md),
-and [historical notice archive](./LICENSES/README.md) before reuse or publication.
+Start at [LICENSE](./LICENSE), [LICENSE_SCOPE.md](./LICENSE_SCOPE.md),
+[COPYRIGHT.md](./COPYRIGHT.md), and the
+[original notice archive](./LICENSES/README.md). Future publication
+and software releases must carry their own precise rights metadata.
