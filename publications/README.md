@@ -48,8 +48,9 @@ texts and former book scaffolding are archived under
 [source/legacy/](../philosophy/source/legacy/README.md).
 
 The retired root `book/` and `source/` layouts are historical references. The
-current book entries are `philosophy/` and `mathematics/`; historical RFCs and
-decisions continue to record the repository state in which they were written.
+current book entries are `philosophy/`, `mathematics/` and
+`physics/qm/book/`; historical RFCs and decisions continue to record the
+repository state in which they were written.
 
 ## Release licensing checklist
 
