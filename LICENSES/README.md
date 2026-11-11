@@ -1,16 +1,19 @@
-# UEOT license directory
+# UEOT licenses and historical rights
 
-The historical repository-wide CC BY 4.0 notice is preserved verbatim in
+The original root license is preserved **verbatim** in
 [LEGACY-CC-BY-4.0-NOTICE.txt](LEGACY-CC-BY-4.0-NOTICE.txt).
+It is a historical grant, not an obsolete permission. Under CC BY 4.0,
+covered copies and adaptations may continue to be reused commercially
+subject to the license.
 
-**Historical grants persist.** The new root [LICENSE](../LICENSE) is a
-prospective clarification and is not a retraction or cancellation of permission
-already granted for prior releases. The CC BY 4.0 legal code is available at
-https://creativecommons.org/licenses/by/4.0/.
+The complete official CC BY 4.0 legal code is maintained at
+https://creativecommons.org/licenses/by/4.0/legalcode.
 
-A license directory is **not** a declaration that all repository contents are
-under one license. See [COPYRIGHT.md](../COPYRIGHT.md) for the scope, author
-attribution, code and third-party review status, and publication policy.
+The current [root LICENSE](../LICENSE) clarifies prior rights and
+prospective defaults. [LICENSE_SCOPE.md](../LICENSE_SCOPE.md)
+identifies three formal books, open research, code, physics, data,
+third-party content and UEOT-GI as distinct license categories.
 
-No Apache-2.0 or restrictive Creative Commons license has been automatically
-applied to existing Lean files or to book revisions by creating this directory.
+**Do not infer** Apache-2.0 for current Lean code, CC0 for a public
+dataset, exclusivity for any presently published book, or a license
+for the separate UEOT-GI codebase. Those require separate actions.
