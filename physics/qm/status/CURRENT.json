@@ -12,12 +12,12 @@
   "roadmap": "physics/qm/ROADMAP.md",
   "claim_ledger": "physics/qm/status/CLAIM_LEDGER_v31.12.json",
   "previous_claim_ledger": "physics/qm/status/CLAIM_LEDGER_v31.11.json",
-  "verification_state": "LOCAL_INCREMENT_AND_PUBLICATION_VERIFIED_REMOTE_PENDING",
+  "verification_state": "MAIN_SCIENTIFIC_SOURCE_AND_CI_VERIFIED",
   "local_checkpoint_state": "PASS",
   "status_axes": {
     "mathematical": "DECLARED_MODEL_ANALYTIC_PROOFS_AND_COUNTEREXAMPLES",
     "physical_selection": "COMPLEX_MODEL_AND_EFFECTIVE_CONTROL_INPUTS_REMAIN_INDEPENDENT",
-    "computational": "NEW_FOUR_GATES_PASS; HISTORICAL_PROOFS_REUSED_BY_SOURCE_IDENTITY",
+    "computational": "EXACT_AND_FINITE_CONTROLS_VERIFIED_ON_SCIENTIFIC_MAIN",
     "empirical": "UNTESTED_NO_REAL_DEVICE_DATA"
   },
   "source_identity": {
@@ -34,9 +34,19 @@
   "source_manifest": "physics/qm/kernel/evidence/v31.11/source-manifest.json",
   "runtime_receipt": "physics/qm/kernel/evidence/v31.12/runtime/execution_receipt.json",
   "integration": {
-    "state": "PENDING",
-    "research_entry_baseline": "aea2fceef3c62cc8dc749b6cbb1b40a7d89df80d",
-    "remote_verified": false
+    "state": "MAIN_SCIENTIFIC_SOURCE_AND_CI_VERIFIED",
+    "remote_verified": true,
+    "scientific_source_head": "e17347b83a6044123e5733f2cbe9cbaebed49137",
+    "verified_scientific_main": "b58fce36526a8c7ef58a2e30b5f3f59580ad7b4e",
+    "tree": "4a8adce2a4dbe62a5b4f9fd86a7f114c193ec6f6",
+    "pr": 459,
+    "pr_run": 43132703598,
+    "main_run": 43133192445,
+    "integration_receipt": {
+      "path": "physics/qm/kernel/evidence/v31.12/integration-verification.json",
+      "sha256": "297088d8688e5d7023c70fe769c467d4fa5de2c6b4f2995e43d8959ad7476f9a",
+      "bytes": 5947
+    }
   },
   "local_verification": {
     "new_lean": false,
@@ -65,8 +75,8 @@
     "english": "physics/qm/book/UEOT_PHYSICS.en.md",
     "dossier": {
       "path": "physics/qm/book/CHAPTER_DOSSIER.json",
-      "sha256": "6dd773136db94376ce0c5f1cb77d4df34bc30fc879007a34a6ed3591d968bc55",
-      "bytes": 1630657
+      "sha256": "10106d93ed533f6eb925beb2da49330ef61140f6fb956255f43c312a7460fb37",
+      "bytes": 1630322
     },
     "whole_book_formalized": false,
     "local_acceptance": "physics/qm/book/evidence/v3.9/local-acceptance.json"
@@ -90,6 +100,8 @@
     "data": "Independent beta/shared-gate/filter/readout calibration and full records/costs; flag counts insufficient"
   },
   "new_hardware_data": false,
-  "metadata_updated_at_utc": "2026-11-11T18:12:29.497566+00:00",
-  "increment_source_manifest": "physics/qm/kernel/evidence/v31.12/source-manifest.json"
+  "metadata_updated_at_utc": "2026-11-12T01:17:59.672836+00:00",
+  "increment_source_manifest": "physics/qm/kernel/evidence/v31.12/source-manifest.json",
+  "integration_receipt": "physics/qm/kernel/evidence/v31.12/integration-verification.json",
+  "metadata_scope": "Observed PR459 and scientific-main executions; subsequent metadata-only publication preserves all scientific inputs and six manuscript/PDF/TeX bytes."
 }

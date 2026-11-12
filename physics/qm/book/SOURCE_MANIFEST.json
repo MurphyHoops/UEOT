@@ -41,7 +41,7 @@
       "role": "ORIGINAL_VERSION_SOURCE_AND_MAIN_ACCEPTANCE_RETAINED_NOT_CURRENT_EXECUTION"
     }
   ],
-  "recorded_at_utc": "2026-11-11T18:12:29.497566+00:00",
+  "recorded_at_utc": "2026-11-12T01:17:59.672836+00:00",
   "edition": "3.9",
   "entries": [
     {
@@ -167,8 +167,8 @@
     "sha256": "28fea653d75acd947b60fd1ee7eb00d8beed4a5a361e6319266e67d952b13d5d",
     "bytes": 41384
   },
-  "current_code_baseline": "aea2fceef3c62cc8dc749b6cbb1b40a7d89df80d",
-  "current_code_baseline_role": "Verified recovery entry; reconstructed v31.12 runtime bound separately; no recovered lost receipt",
+  "current_code_baseline": "b58fce36526a8c7ef58a2e30b5f3f59580ad7b4e",
+  "current_code_baseline_role": "Actual verified v31.12 scientific main; research-entry baseline and inherited proof execution retain their distinct identities.",
   "current_code_manifest": "../kernel/evidence/v31.11/source-manifest.json",
   "current_publication_code_manifest": "../kernel/evidence/v31.11/source-manifest.json",
   "current_code_identity": {
@@ -184,7 +184,7 @@
     "path": "physics/qm/book/UEOT_PHYSICS.md",
     "sha256": "b52a9b09881adc09432eae2d92ad8ec84cd5d4f23acb6d0340db6e350e33537d",
     "bytes": 756386,
-    "status": "LOCAL_INCREMENT_AND_PUBLICATION_VERIFIED_REMOTE_PENDING",
+    "status": "MAIN_SCIENTIFIC_SOURCE_AND_CI_VERIFIED",
     "chapters": 69,
     "appendices": 6,
     "numbered_results": 188,
@@ -212,14 +212,30 @@
     "current_identity_check": "physics/qm/kernel/evidence/v31.12/proof-reuse.json"
   },
   "remote_metadata_completion": {
-    "state": "PENDING"
+    "state": "OBSERVED_SCIENTIFIC_MAIN_RECORDED",
+    "integration": {
+      "path": "physics/qm/kernel/evidence/v31.12/integration-verification.json",
+      "sha256": "297088d8688e5d7023c70fe769c467d4fa5de2c6b4f2995e43d8959ad7476f9a",
+      "bytes": 5947
+    },
+    "metadata_followup_is_not_a_new_scientific_execution": true
   },
   "current_remote_code_identity": {
-    "state": "PENDING",
-    "research_entry_baseline": "aea2fceef3c62cc8dc749b6cbb1b40a7d89df80d",
-    "remote_verified": false
+    "state": "MAIN_SCIENTIFIC_SOURCE_AND_CI_VERIFIED",
+    "remote_verified": true,
+    "scientific_source_head": "e17347b83a6044123e5733f2cbe9cbaebed49137",
+    "verified_scientific_main": "b58fce36526a8c7ef58a2e30b5f3f59580ad7b4e",
+    "tree": "4a8adce2a4dbe62a5b4f9fd86a7f114c193ec6f6",
+    "pr": 459,
+    "pr_run": 43132703598,
+    "main_run": 43133192445,
+    "integration_receipt": {
+      "path": "physics/qm/kernel/evidence/v31.12/integration-verification.json",
+      "sha256": "297088d8688e5d7023c70fe769c467d4fa5de2c6b4f2995e43d8959ad7476f9a",
+      "bytes": 5947
+    }
   },
-  "current_release_stage": "LOCAL_INCREMENT_AND_PUBLICATION_VERIFIED_REMOTE_PENDING",
+  "current_release_stage": "MAIN_SCIENTIFIC_SOURCE_AND_CI_VERIFIED",
   "local_release_receipt": "physics/qm/book/evidence/v3.9/local-acceptance.json",
   "local_release_receipt_scope": "Book3.9 publication, not science proof",
   "scientific_execution_partition": {
@@ -270,7 +286,7 @@
     "path": "physics/qm/book/UEOT_PHYSICS.en.md",
     "sha256": "9ba8c0035f171091b753f02c0a452655cc7caf0eb00022a69085ae0e524ea8b1",
     "bytes": 919796,
-    "status": "LOCAL_INCREMENT_AND_PUBLICATION_VERIFIED_REMOTE_PENDING",
+    "status": "MAIN_SCIENTIFIC_SOURCE_AND_CI_VERIFIED",
     "chapters": 69,
     "appendices": 6,
     "numbered_results": 188,
@@ -281,7 +297,7 @@
   },
   "publication_revision": {
     "edition": "3.9",
-    "recorded_at_utc": "2026-11-11T18:12:29.497566+00:00",
+    "recorded_at_utc": "2026-11-12T01:17:59.672836+00:00",
     "scope": "Six Chapter68 paper results, one narrow Chapter67.5 erratum, preserved historical bodies and evidence",
     "new_scientific_results_in_publication": 6,
     "new_experimental_data": false,
@@ -291,8 +307,13 @@
       "bytes": 1600752
     },
     "local_artifact_state": "BUILT_AND_SCOPED_VISUALLY_VERIFIED",
-    "remote_publication": "PENDING",
-    "review_identity_policy": "Three native research agents and root; internal AI review, no human-peer-review claim"
+    "remote_publication": "MAIN_SCIENTIFIC_SOURCE_AND_CI_VERIFIED",
+    "review_identity_policy": "Three native research agents and root; internal AI review, no human-peer-review claim",
+    "observed_integration": {
+      "path": "physics/qm/kernel/evidence/v31.12/integration-verification.json",
+      "sha256": "297088d8688e5d7023c70fe769c467d4fa5de2c6b4f2995e43d8959ad7476f9a",
+      "bytes": 5947
+    }
   },
   "increment_source_identity": {
     "path": "physics/qm/kernel/evidence/v31.12/source-manifest.json",
