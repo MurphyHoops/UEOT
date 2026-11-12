@@ -1,0 +1,137 @@
+{
+  "schema": "ueot-qm.integration-verification/2",
+  "recorded_at_utc": "2026-11-12T01:17:59.672836+00:00",
+  "state": "MAIN_SCIENTIFIC_SOURCE_AND_CI_VERIFIED",
+  "remote_verified": true,
+  "research_entry_baseline": "aea2fceef3c62cc8dc749b6cbb1b40a7d89df80d",
+  "scientific_pr": {
+    "number": 459,
+    "url": "https://github.com/MurphyHoops/UEOT/pull/459",
+    "accepted_head": "e17347b83a6044123e5733f2cbe9cbaebed49137",
+    "merge_commit": "b58fce36526a8c7ef58a2e30b5f3f59580ad7b4e",
+    "reviewed_and_merged_tree": "4a8adce2a4dbe62a5b4f9fd86a7f114c193ec6f6",
+    "exact_tree_readback": {
+      "path": "physics/qm/kernel/evidence/v31.12/remote/scientific-main-tree-readback.json",
+      "sha256": "c32a86d8214c555b54698beee34f3efaabc7b89f73ecf08d30427edd5aea887e",
+      "bytes": 683
+    }
+  },
+  "observed_executions": {
+    "pr459": {
+      "run": {
+        "path": "physics/qm/kernel/evidence/v31.12/remote/pr459/github-run.json",
+        "sha256": "d94597dd9a0b59e3a0a398feadeef1cc3fd478609b5fca30d8eb0e9001b721a1",
+        "bytes": 14337
+      },
+      "jobs": {
+        "path": "physics/qm/kernel/evidence/v31.12/remote/pr459/github-jobs.json",
+        "sha256": "56ee6724ae2a54bd859129de1872efc3f9b9f19fa48f062e095ded128cdc0735",
+        "bytes": 6182
+      },
+      "artifact_metadata": {
+        "path": "physics/qm/kernel/evidence/v31.12/remote/pr459/github-artifacts.json",
+        "sha256": "cb9b32739f301cf36fd71bbcca3501a3a81d6fd042f9ca3704cba2245728dfca",
+        "bytes": 1701
+      },
+      "independent_inspection": {
+        "path": "physics/qm/kernel/evidence/v31.12/remote/pr459/C_INDEPENDENT_ARTIFACT_INSPECTION.json",
+        "sha256": "02d9fc646319b6e7e6cad18ab83bc73dbead1f3359fc7be1b146ceb227df6bc3",
+        "bytes": 4720
+      },
+      "runtime_archive": {
+        "path": "physics/qm/kernel/evidence/v31.12/remote/pr459/runtime.zip",
+        "sha256": "050725dcd1018717b995bced45c4cade8f2caa457c91d1191d8768b70bceabe2",
+        "bytes": 96004
+      },
+      "proof_reuse_archive": {
+        "path": "physics/qm/kernel/evidence/v31.12/remote/pr459/proof-reuse.zip",
+        "sha256": "ea3e8d9693111b33ee53578ea79ad533fd7e5bf8c8aea7845c4dcde152a436f6",
+        "bytes": 1500
+      },
+      "inspection_execution_actor": "Native reviewer C executed its independently authored checker"
+    },
+    "main": {
+      "run": {
+        "path": "physics/qm/kernel/evidence/v31.12/remote/main/github-run.json",
+        "sha256": "7ce99c47e3f3b1f8d80422a4d211f4ef75ac669c3cf964d1ff58a094072f8620",
+        "bytes": 13637
+      },
+      "jobs": {
+        "path": "physics/qm/kernel/evidence/v31.12/remote/main/github-jobs.json",
+        "sha256": "4be14b1960e9f110ebc9c6ef10f57c9a0d682cd0a582be5876622ed345ea4e94",
+        "bytes": 6182
+      },
+      "artifact_metadata": {
+        "path": "physics/qm/kernel/evidence/v31.12/remote/main/github-artifacts.json",
+        "sha256": "8a6b73c01d02f3150af389e90832326fa7903b4037ce827f72ff7b6897358bde",
+        "bytes": 1615
+      },
+      "independent_inspection": {
+        "path": "physics/qm/kernel/evidence/v31.12/remote/main/C_INDEPENDENT_ARTIFACT_INSPECTION.json",
+        "sha256": "7673fef9ca0ea02d2c434b9ed87773bf82cbde5dd3e56d2ca1dbd243c400894c",
+        "bytes": 4697
+      },
+      "runtime_archive": {
+        "path": "physics/qm/kernel/evidence/v31.12/remote/main/runtime.zip",
+        "sha256": "c549708b913f26bc68baf1e676c779b6c4545dec9ee857fe21fc992a5cf62860",
+        "bytes": 95938
+      },
+      "proof_reuse_archive": {
+        "path": "physics/qm/kernel/evidence/v31.12/remote/main/proof-reuse.zip",
+        "sha256": "ee07060c1f385082729f4623154e9535d7945247ea763d3075775e4dd9be7cfb",
+        "bytes": 1500
+      },
+      "inspection_execution_actor": "Primary agent executed the unchanged independently authored C checker"
+    }
+  },
+  "local_runtime": {
+    "path": "physics/qm/kernel/evidence/v31.12/runtime/execution_receipt.json",
+    "sha256": "5ed16dbd8a979f2ffd9636df674232735798db5df5112af7f2e2ea9395c7cea2",
+    "bytes": 8445
+  },
+  "local_proof_identity_recheck": {
+    "path": "physics/qm/kernel/evidence/v31.12/proof-reuse.json",
+    "sha256": "35fcdb8f9fc8ef08a4ca82a65d6d00ead1c87d5bc3f76e14b61a1dda9338c056",
+    "bytes": 690
+  },
+  "local_publication_acceptance": {
+    "path": "physics/qm/book/evidence/v3.9/local-acceptance.json",
+    "sha256": "815a28e3b3b212a2ff4eaa4d7d5174343067ebc7e8510b2e2f0dee122799f791",
+    "bytes": 5839
+  },
+  "artifact_checker": {
+    "path": "physics/qm/audits/GROWING_CUTOFF_v31.12/verify_remote_growing_artifacts.py",
+    "sha256": "c4e14f03c1ae3715350d94bc36ad9f21ec0344e47d12b55c37094912288beb5b",
+    "bytes": 14891
+  },
+  "proof_scope": {
+    "new_lean_declarations": 0,
+    "new_lean_execution": false,
+    "reused_source_count": 158,
+    "old_runtime_input_count": 13,
+    "reused_commit": "06ca0dce8b03cd34e86785e97fdc3c7aa2c582bd",
+    "reused_workflow_run": 43001276385,
+    "reused_public_axiom_reports": 1365,
+    "actual_pr_and_main_build_steps_skipped": true,
+    "chapter68_is_not_new_machine_coverage": true
+  },
+  "runtime_scope": {
+    "new_commands_per_run": 4,
+    "new_inputs": 12,
+    "new_outputs": 8,
+    "bilingual_checked_input_identities": 208,
+    "historical_runs_and_new_runs_have_separate_identities": true
+  },
+  "review": {
+    "native_tasks_this_resumption": 3,
+    "kind": "Internal AI review; no external human peer-review claim"
+  },
+  "status_axes": {
+    "mathematical": "DECLARED_MODEL_ANALYTIC_PROOFS_AND_COUNTEREXAMPLES",
+    "physical_selection": "COMPLEX_MODEL_AND_EFFECTIVE_CONTROL_INPUTS_REMAIN_INDEPENDENT",
+    "computational": "EXACT_AND_FINITE_CONTROLS_VERIFIED_ON_SCIENTIFIC_MAIN",
+    "empirical": "UNTESTED_NO_REAL_DEVICE_DATA"
+  },
+  "new_hardware_data": false,
+  "metadata_policy": "This receipt records already observed scientific commits and runs. The later metadata-only commit does not claim a new scientific execution or its own future merge."
+}

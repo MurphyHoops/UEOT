@@ -2,7 +2,7 @@
 
 ## 3.9 分段增长与受控省略 / Separated growth and controlled omission
 
-当前连续中英文主文均有 **第0–68章、附录A–F、188项稳定结果**，对应科学增量 **v31.12 / Kernel 1.12**。本轮从已合入v31.11的 main `aea2fceef3c62cc8dc749b6cbb1b40a7d89df80d` 继续，完整保留旧182项结果对象及105项claim，新增第68章六项结果，并对第67.5节低谱过滤均值作一处准确勘误。中断前未上传字节不可得，本轮重新推导、实现和执行，回执具有新身份。
+当前连续中英文主文均有 **第0–68章、附录A–F、188项稳定结果**，对应科学增量 **v31.12 / Kernel 1.12**。本轮从已合入v31.11的 main `aea2fceef3c62cc8dc749b6cbb1b40a7d89df80d` 继续，完整保留旧182项结果对象及105项claim，新增第68章六项结果，并对第67.5节低谱过滤均值作一处准确勘误。v31.12初次恢复时未取得更早未上传的字节，因此当时重新推导与执行；本次续接找到了这份重建候选及其全部回执，按相同源码复用，没有改写更早执行身份。
 
 | Language | Complete Markdown source | Generated LaTeX | Reading PDF |
 |---|---|---|---|
@@ -24,6 +24,10 @@ The ideal physical inputs remain explicit. This is not an independent derivation
 | Stable bilingual statements | [result map](PHYSICS_RESULT_MAPPING.md) |
 
 Exactly three native research tasks performed A→B, B→C and C→A cross-review. This is internal AI review, not external human peer review. The existing dossier, source manifest and claim ledger remain authoritative; no parallel final-state ledger is introduced. The following sections retain inherited scope and historical acceptance rather than relabeling old runs as this increment.
+
+## 3.9 observed integration
+
+[PR #459](https://github.com/MurphyHoops/UEOT/pull/459) merged the complete scientific and bilingual candidate as `b58fce36526a8c7ef58a2e30b5f3f59580ad7b4e`. Its tree equals reviewed source `e17347b83a6044123e5733f2cbe9cbaebed49137`. [PR run 43132703598](https://github.com/MurphyHoops/UEOT/actions/runs/43132703598) and [main run 43133192445](https://github.com/MurphyHoops/UEOT/actions/runs/43133192445) both passed; their downloaded runtime and proof-reuse archives were checked against their exact checkouts. The [integration receipt](../kernel/evidence/v31.12/integration-verification.json) preserves the separate run identities. The Lean jobs reused the original v31.11 proof execution after exact input verification; Chapter 68 has no new Lean acceptance. Empirical status remains untested.
 
 ## Scientific scope
 
