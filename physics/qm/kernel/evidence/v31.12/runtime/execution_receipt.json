@@ -1,0 +1,207 @@
+{
+  "schema": "ueot-qm.growing-cutoff-runtime/1",
+  "version": "v31.12",
+  "status": "PASS",
+  "created_at_utc": "2026-11-11T17:58:06.613021+00:00",
+  "research_baseline": "aea2fceef3c62cc8dc749b6cbb1b40a7d89df80d",
+  "execution_context": {
+    "provider": "local_python_process",
+    "observed_git_head": "aea2fceef3c62cc8dc749b6cbb1b40a7d89df80d",
+    "worktree_has_changes": true,
+    "identity_authority": "input hashes bind the executed bytes; a checkout SHA alone does not identify a dirty worktree"
+  },
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "commands": [
+    {
+      "label": "source-integration",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/growing_cutoff/verify_integration.py",
+        "--model",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/growing_cutoff/frozen_model.json",
+        "--output",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/kernel/evidence/v31.12/runtime/integration.json"
+      ],
+      "cwd": "/workspace/scratch/2331c99c0713/ueot-physics",
+      "started_at_utc": "2026-11-11T17:58:03.274422+00:00",
+      "finished_at_utc": "2026-11-11T17:58:04.933555+00:00",
+      "exit_code": 0,
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.12/runtime/source-integration.log",
+        "sha256": "c25c551d330fd7ce51a540da0852b599e5b97ffefe6c954166800f3867ce1d34",
+        "bytes": 83
+      }
+    },
+    {
+      "label": "independent-operational",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/growing_cutoff/check_operational_growth.py",
+        "--output",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/kernel/evidence/v31.12/runtime/operational.json"
+      ],
+      "cwd": "/workspace/scratch/2331c99c0713/ueot-physics",
+      "started_at_utc": "2026-11-11T17:58:04.933775+00:00",
+      "finished_at_utc": "2026-11-11T17:58:05.475649+00:00",
+      "exit_code": 0,
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.12/runtime/independent-operational.log",
+        "sha256": "fbd9a6f58267c6f03610eb3e73321d862c66bf33a1808087ab34905b90900f14",
+        "bytes": 190
+      }
+    },
+    {
+      "label": "independent-microscopic",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/growing_cutoff/check_micro_growth.py",
+        "--output",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/kernel/evidence/v31.12/runtime/micro-growth.json"
+      ],
+      "cwd": "/workspace/scratch/2331c99c0713/ueot-physics",
+      "started_at_utc": "2026-11-11T17:58:05.475844+00:00",
+      "finished_at_utc": "2026-11-11T17:58:06.230233+00:00",
+      "exit_code": 0,
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.12/runtime/independent-microscopic.log",
+        "sha256": "aeb4874ade3432a752e3a7f25e3adf381d4c280680c95ba06e26c7894f6c7264",
+        "bytes": 319
+      }
+    },
+    {
+      "label": "independent-exact-certificate",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/growing_cutoff/exact_checker.py",
+        "--model",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/growing_cutoff/frozen_model.json",
+        "--output",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/kernel/evidence/v31.12/runtime/exact-certificate.json"
+      ],
+      "cwd": "/workspace/scratch/2331c99c0713/ueot-physics",
+      "started_at_utc": "2026-11-11T17:58:06.230414+00:00",
+      "finished_at_utc": "2026-11-11T17:58:06.611038+00:00",
+      "exit_code": 0,
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.12/runtime/independent-exact-certificate.log",
+        "sha256": "7caf4ddae795e12c4b2024deefaac6640419575a7e89631592e35b5f7a0a4c2a",
+        "bytes": 230
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "path": "physics/qm/growing_cutoff/DATA_AND_COST_CONTRACT.json",
+      "sha256": "30185e8b58651a787bd0618221f238fc3dad9a6ea02f2de5d29680f49470fef8",
+      "bytes": 5364
+    },
+    {
+      "path": "physics/qm/growing_cutoff/README.md",
+      "sha256": "b2b281b793466251f975204c1b945784db7601d7cf0caf05d8201adbe81d8d9a",
+      "bytes": 4892
+    },
+    {
+      "path": "physics/qm/growing_cutoff/check_micro_growth.py",
+      "sha256": "2d81fb5c8a443fd5c4696f0f3cb627ac23dfc9b6062909c73a8b0ed90034b9c6",
+      "bytes": 10271
+    },
+    {
+      "path": "physics/qm/growing_cutoff/check_operational_growth.py",
+      "sha256": "38462ade0fa6308a4dfc3fb7edc6a827218d6f24aa802646eee5310c0381c876",
+      "bytes": 8945
+    },
+    {
+      "path": "physics/qm/growing_cutoff/exact_checker.py",
+      "sha256": "ea15be71775cd004724e583d7f5f745f788155d281b43b0018691fb96a71b840",
+      "bytes": 13002
+    },
+    {
+      "path": "physics/qm/growing_cutoff/frozen_model.json",
+      "sha256": "884ea9d3cafc584659a596105834b636fccd6747750376e99012cbfc045a9f6f",
+      "bytes": 2899
+    },
+    {
+      "path": "physics/qm/growing_cutoff/model.py",
+      "sha256": "ded0c80c0a4167e1a8ff871342d98c0f4f7c7530e7ed7bfd22b6a02cb05532b8",
+      "bytes": 4293
+    },
+    {
+      "path": "physics/qm/growing_cutoff/run_verification.py",
+      "sha256": "b97d9dfe0c99f3408375a109838d5f48557ebf6c301325354ad3148c11a9c819",
+      "bytes": 4454
+    },
+    {
+      "path": "physics/qm/growing_cutoff/verify_inherited_evidence.py",
+      "sha256": "569b399e19faa4f5e662d40762e6b7543f75a339d59dd79245030a436152c2ff",
+      "bytes": 5368
+    },
+    {
+      "path": "physics/qm/growing_cutoff/verify_integration.py",
+      "sha256": "33251d49cd23a6314099ae7576361ab34c4d5971e8144ba535428169fe409afb",
+      "bytes": 12805
+    },
+    {
+      "path": "physics/qm/conditioning/finite_conditioning.py",
+      "sha256": "33d573b3049538bedbcd7ff60f15e566fb17358f0b91d8f76a0d645f1ab0c6c4",
+      "bytes": 16378
+    },
+    {
+      "path": "physics/qm/audits/GROWING_CUTOFF_v31.12/SHARED_MODEL.md",
+      "sha256": "e108557664b263a8e0d859a4c998a6723e991b641ebf928c43bfca96d3c15456",
+      "bytes": 7538
+    }
+  ],
+  "inputs_stable_during_execution": true,
+  "outputs": [
+    {
+      "path": "physics/qm/kernel/evidence/v31.12/runtime/exact-certificate.json",
+      "sha256": "038c6b131a84dc38e9acaf013c2c397a77adb5497c6cddb02908c7d539bc3348",
+      "bytes": 7413
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.12/runtime/independent-exact-certificate.log",
+      "sha256": "7caf4ddae795e12c4b2024deefaac6640419575a7e89631592e35b5f7a0a4c2a",
+      "bytes": 230
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.12/runtime/independent-microscopic.log",
+      "sha256": "aeb4874ade3432a752e3a7f25e3adf381d4c280680c95ba06e26c7894f6c7264",
+      "bytes": 319
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.12/runtime/independent-operational.log",
+      "sha256": "fbd9a6f58267c6f03610eb3e73321d862c66bf33a1808087ab34905b90900f14",
+      "bytes": 190
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.12/runtime/integration.json",
+      "sha256": "645ba60716a803c235b9a115b915cfe2cd5c8e37a8cab41cad4261e9851d91b6",
+      "bytes": 17807
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.12/runtime/micro-growth.json",
+      "sha256": "3d3af14aaddf42c5b9f342bea20d43318316004cb5e673b20e72695b0ec8ea0f",
+      "bytes": 14622
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.12/runtime/operational.json",
+      "sha256": "e074066bca214381c8ab524144506c5ec70b5ef586bc84a1bf04e25428519340",
+      "bytes": 8930
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.12/runtime/source-integration.log",
+      "sha256": "c25c551d330fd7ce51a540da0852b599e5b97ffefe6c954166800f3867ce1d34",
+      "bytes": 83
+    }
+  ],
+  "evidence_classes": [
+    "exact rational identities and radical enclosures",
+    "finite floating matrix controls"
+  ],
+  "universal_analytic_proofs_are_not_inferred_from_samples": true,
+  "historical_heavy_suites_reexecuted": false,
+  "new_lean_execution": false,
+  "new_hardware_data": false,
+  "recovery": "new reconstructed-source execution, not a recovered interrupted v31.12 receipt"
+}

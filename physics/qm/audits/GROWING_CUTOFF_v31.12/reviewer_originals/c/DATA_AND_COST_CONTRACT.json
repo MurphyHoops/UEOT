@@ -1,0 +1,135 @@
+{
+  "schema": "ueot-qm.growing-cutoff-data-cost/1",
+  "status": "NO_PROTOCOL_MATCHED_HARDWARE_DATA_ACQUIRED",
+  "new_hardware_data": false,
+  "empirical_status": "UNVERIFIED",
+  "model_status": "CONDITIONAL_THEORETICAL_CERTIFICATE",
+  "theta": [
+    "q",
+    "phi",
+    "alpha",
+    "beta"
+  ],
+  "same_parameter_constraints": [
+    "s=1-q/2",
+    "same phi, alpha, beta in original source and matched action library",
+    "same preparation, reference and complete record alphabet"
+  ],
+  "deployment_quantifier": "exists one policy from calibration and visible history, for all theta in the same allowed joint set",
+  "q_flag_calibration": {
+    "inherited_pipeline": "physics/qm/operational_micro_robust/synthetic_calibration.py",
+    "estimator": "2*n_f/n using every flag, including failures",
+    "coverage": "conditional on fixed-q iid ideal flag sampling; inherited n=80000, radius=1/100, error<1/20",
+    "does_not_identify": [
+      "phi",
+      "alpha",
+      "beta",
+      "source-action gate identity",
+      "pulse/filter/readout errors",
+      "full CQ terminal state error"
+    ],
+    "design_optimality": "entire [12/25,13/25] only, not every narrower realized confidence set"
+  },
+  "beta_pulse_assumption": {
+    "bound": "abs(beta)<=1/100",
+    "origin": "additional independent physical constraint; no measured beta calibration acquired",
+    "needed_for": "blue-pulse omission certificate",
+    "not_needed_for": "matched-blue theoretical common-gate record-error theorem",
+    "without_independent_bound": "INSUFFICIENT_PHYSICAL_INPUT",
+    "flag_only_counterexample": "beta=0 and beta=pi/2 give identical flags; from vacuum word01 has orthogonal terminal states and distance contribution Q01=156/625"
+  },
+  "full_record_contract": {
+    "source": [
+      "f",
+      "0f",
+      "1f",
+      "00",
+      "01",
+      "10",
+      "11"
+    ],
+    "physical_preparation": [
+      "prep_fail",
+      "pass/f",
+      "pass/0f",
+      "pass/1f",
+      "pass/00",
+      "pass/01",
+      "pass/10",
+      "pass/11"
+    ],
+    "failure_reference_output": "Tr_S[(Q tensor I) rho_SR (Q tensor I)] unnormalized, with S reset to g0",
+    "conditional_target": "normalized accepted extraction with derived H=s^2 I; original failures retain zero target mass but stay in source and cost",
+    "finite_tester_scope": "record-cell tests only unless terminal state/reference information supplies a separate valid CQ certificate"
+  },
+  "required_real_shot_fields": [
+    "shot_id",
+    "ordered_timestamp",
+    "calibration_or_holdout",
+    "device_and_protocol_id",
+    "source_or_compiled",
+    "preparation_outcome",
+    "full_visible_record",
+    "leakage_flag",
+    "terminal_stop_reason",
+    "permitted_action_history",
+    "terminal_tester_setting",
+    "terminal_tester_result",
+    "declared_reference_preparation",
+    "reset_outcome",
+    "blue_pulse_area_and_uncertainty",
+    "pulse_calibration_id_and_drift_window",
+    "flag_first_or_coherent_scheduling",
+    "actual_pulse_schedule",
+    "resource_vector_with_units"
+  ],
+  "required_independent_certificates": [
+    "actual low-spectral filter including failure reset and reference treatment",
+    "mean excitation budget for the actual joint input",
+    "source/library phi, alpha, beta matching or bounded full-output mismatch",
+    "blue-pulse area bound for omission and its applicable drift window",
+    "sideband effective-model validity, residual couplings and leakage",
+    "readout, preparation and terminal tester error model"
+  ],
+  "error_budget": {
+    "required_full_output_precision": "1/20",
+    "matched_blue_model_upper": "1/50+F(1/4096)",
+    "omitted_blue_model_upper": "1/50+F(1/4096)+sqrt(2)/100",
+    "F": "F(e)=(sqrt(4*e-3*e^2)+e)/2",
+    "remaining_model_allowance_approximately": "0.0001122246407332733",
+    "measured_device_error_within_allowance": false,
+    "meaning": "sufficient bound in the declared model, not a measured error or an empirical confidence interval"
+  },
+  "cost_contract": {
+    "complete_attempt_source_success": "s_N*s^2",
+    "complete_attempt_success_lower": "1121211/2048000",
+    "flag_first_source_slots_conditional_on_filter_pass": "1+s",
+    "flag_first_source_executed_gates_conditional_on_filter_pass": "s+s^2",
+    "flag_first_source_blue_calls_conditional_on_filter_pass": "q*s*(1+s)",
+    "flag_first_compiled_blue_calls_conditional_on_filter_pass": "1",
+    "coherently_scheduled_source_blue_slots_conditional_on_filter_pass": "may be 1+s",
+    "coherently_scheduled_compiled_blue_slots_conditional_on_filter_pass": "may be 2",
+    "retry_formula": "mu/(s_N*s^2) only for actually fresh/resettable independent source trials",
+    "unknown_input_retry_permission": false,
+    "calibration_amortization": "C_cal/K per delivered output, separately from per-attempt mu",
+    "cost_fields": [
+      "fresh_input_and_reference",
+      "cutoff_filter",
+      "failed_filter_output_and_record",
+      "auxiliary_preparation",
+      "randomization",
+      "phase_gate",
+      "red_gate",
+      "blue_gate",
+      "pulse_scheduling",
+      "readout",
+      "failure_reset",
+      "classical_processing",
+      "record_storage",
+      "calibration",
+      "data_transfer_and_analysis"
+    ],
+    "units": "record resource vector with units and uncertainty before choosing a scalar conversion",
+    "measured_resource_advantage": false
+  }
+}

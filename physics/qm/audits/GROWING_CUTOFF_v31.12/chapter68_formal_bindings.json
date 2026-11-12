@@ -1,0 +1,347 @@
+{
+  "schema": "ueot-qm.chapter68-bindings/1",
+  "version": "v31.12",
+  "book_edition": "3.9",
+  "recorded_at_utc": "2026-11-11T18:01:35.638442+00:00",
+  "recovery_baseline": "aea2fceef3c62cc8dc749b6cbb1b40a7d89df80d",
+  "new_lean_declarations": 0,
+  "inherited_machine_scope": "v31.11 source identity only; no paper theorem promoted",
+  "results": [
+    {
+      "id": "P-MICRO-04",
+      "title": "P-MICRO-04（分段蓝脉冲的有限激发增长）。",
+      "chapter": 68,
+      "anchor": "p-micro-04",
+      "origin": "NEW_IN_3_9",
+      "argument_status": [
+        "P"
+      ],
+      "dependency_class": [
+        "B",
+        "P",
+        "E",
+        "O"
+      ],
+      "question_and_quantifiers": "For every nonnegative cutoff M and real beta, the specified selfadjoint blue pulse sends Pi_M into Pi_(M+2); every finite classical tree with at most one blue pulse per slot inherits cumulative growth. The statement follows from source blocks, not an assumed intertwining certificate.",
+      "premises": [
+        "Selected complex qubit-Fock system and G=N+P_e",
+        "Blue generator direct-sum graph domain, specified separated order blue after red",
+        "Each slot has at most one blue pulse; red, phase and failure identity preserve G",
+        "Finite classical stopping/control tree; new hidden branches require their own source justification"
+      ],
+      "verification_kind": [
+        "analytic",
+        "floating_diagnostic"
+      ],
+      "verification_scope": "For every nonnegative cutoff M and real beta, the specified selfadjoint blue pulse sends Pi_M into Pi_(M+2); every finite classical tree with at most one blue pulse per slot inherits cumulative growth. The statement follows from source blocks, not an assumed intertwining certificate.",
+      "mathematical_status": "PROVED_IN_DECLARED_MODEL_ON_PAPER",
+      "physical_selection_status": "COMPLEX_SECTOR_AND_EFFECTIVE_PULSE_MODEL_ASSUMED",
+      "empirical_status": "NOT_TESTED",
+      "machine_status": "PAPER_ONLY_NO_NEW_LEAN",
+      "formal_names": [],
+      "formal_bindings": [],
+      "controls": [
+        "Independent block and source-column growth checks",
+        "Fixed-carrier probability loss"
+      ],
+      "paper_only": [
+        "For every nonnegative cutoff M and real beta, the specified selfadjoint blue pulse sends Pi_M into Pi_(M+2); every finite classical tree with at most one blue pulse per slot inherits cumulative growth. The statement follows from source blocks, not an assumed intertwining certificate."
+      ],
+      "limits": [
+        "No simultaneous Rabi, arbitrary extra driving, infinite-time or coherent-control generalization"
+      ],
+      "runtime_receipt": "physics/qm/kernel/evidence/v31.12/runtime/execution_receipt.json",
+      "formal_binding_detail": "physics/qm/audits/GROWING_CUTOFF_v31.12/chapter68_formal_bindings.json",
+      "new_hardware_data": false,
+      "status_axes": {
+        "mathematical": "PROVED_IN_DECLARED_MODEL_ON_PAPER",
+        "physical_selection": "INDEPENDENT_STANDARD_INPUTS_REMAIN",
+        "computational": "EXACT_CERTIFICATES_AND_FINITE_FLOATING_CONTROLS",
+        "empirical": "NOT_TESTED"
+      }
+    },
+    {
+      "id": "P-OPT-04",
+      "title": "P-OPT-04（增长载体上的完整矩形操作桥）。",
+      "chapter": 68,
+      "anchor": "p-opt-04",
+      "origin": "NEW_IN_3_9",
+      "argument_status": [
+        "P"
+      ],
+      "dependency_class": [
+        "B",
+        "P",
+        "E",
+        "O"
+      ],
+      "question_and_quantifiers": "For every fixed finite action/outcome/observation/height contract, every legal classical controller, every finite untouched reference and joint trace-class state with Tr(G rho_S)<=nbar<N+1, growing rectangular source restrictions reproduce the entire projected-input output exactly and differ from the original input output by at most sqrt(nbar/(N+1)).",
+      "premises": [
+        "P-MICRO-04, all source outcomes including failure",
+        "Rank(Pi_M)=2M+1 and isometric embeddings into the same physical Fock space",
+        "Correct finite-coordinate normalized projection; positive passing mass",
+        "Same visible alphabet and legal observation fibres; all persistent quantum memory included",
+        "Finite reference is untouched, initially correlated inputs allowed; maximum height L finite"
+      ],
+      "verification_kind": [
+        "analytic",
+        "floating_diagnostic"
+      ],
+      "verification_scope": "For every fixed finite action/outcome/observation/height contract, every legal classical controller, every finite untouched reference and joint trace-class state with Tr(G rho_S)<=nbar<N+1, growing rectangular source restrictions reproduce the entire projected-input output exactly and differ from the original input output by at most sqrt(nbar/(N+1)).",
+      "mathematical_status": "PROVED_IN_DECLARED_MODEL_ON_PAPER",
+      "physical_selection_status": "COMPLEX_SECTOR_AND_EFFECTIVE_PULSE_MODEL_ASSUMED",
+      "empirical_status": "NOT_TESTED",
+      "machine_status": "PAPER_ONLY_NO_NEW_LEAN",
+      "formal_names": [],
+      "formal_bindings": [],
+      "controls": [
+        "Growing rectangular versus unchanged Chapter 66 interpreter",
+        "Reference-entangled example; label/failure negative controls"
+      ],
+      "paper_only": [
+        "For every fixed finite action/outcome/observation/height contract, every legal classical controller, every finite untouched reference and joint trace-class state with Tr(G rho_S)<=nbar<N+1, growing rectangular source restrictions reproduce the entire projected-input output exactly and differ from the original input output by at most sqrt(nbar/(N+1))."
+      ],
+      "limits": [
+        "Infinite references and coherent controllers remain separate; ordinary input-family trace distance is not an energy-constrained diamond norm",
+        "Initial untruncated ideal output may retain an infinite Fock tail"
+      ],
+      "runtime_receipt": "physics/qm/kernel/evidence/v31.12/runtime/execution_receipt.json",
+      "formal_binding_detail": "physics/qm/audits/GROWING_CUTOFF_v31.12/chapter68_formal_bindings.json",
+      "new_hardware_data": false,
+      "status_axes": {
+        "mathematical": "PROVED_IN_DECLARED_MODEL_ON_PAPER",
+        "physical_selection": "INDEPENDENT_STANDARD_INPUTS_REMAIN",
+        "computational": "EXACT_CERTIFICATES_AND_FINITE_FLOATING_CONTROLS",
+        "empirical": "NOT_TESTED"
+      }
+    },
+    {
+      "id": "P-MICRO-05",
+      "title": "P-MICRO-05（无蓝参照下的完整记录省略界）。",
+      "chapter": 68,
+      "anchor": "p-micro-05",
+      "origin": "NEW_IN_3_9",
+      "argument_status": [
+        "P"
+      ],
+      "dependency_class": [
+        "B",
+        "P",
+        "E",
+        "O"
+      ],
+      "question_and_quantifiers": "For identical legal two-slot visible policies and shared red/phase gates, every joint input with Tr(G rho_S)<=nbar and finite untouched reference obeys D(C_beta(rho),C_0(rho))<=abs(beta)*sqrt(nbar+1). The selected-pulse prefix masses sum to one under the specified policy; no-blue reference prefixes preserve the energy budget.",
+      "premises": [
+        "Specified frozen two-slot policy and the same red/phase gates",
+        "Unbounded B handled by its form identity B^2<=G+I and vectors in D(B)",
+        "Energy bounded only on positive-mass no-blue prefixes; zero prefixes contribute zero",
+        "Trace distance controls the complete classical record, terminal system and finite reference"
+      ],
+      "verification_kind": [
+        "analytic",
+        "floating_diagnostic"
+      ],
+      "verification_scope": "For identical legal two-slot visible policies and shared red/phase gates, every joint input with Tr(G rho_S)<=nbar and finite untouched reference obeys D(C_beta(rho),C_0(rho))<=abs(beta)*sqrt(nbar+1). The selected-pulse prefix masses sum to one under the specified policy; no-blue reference prefixes preserve the energy budget.",
+      "mathematical_status": "PROVED_IN_DECLARED_MODEL_ON_PAPER",
+      "physical_selection_status": "COMPLEX_SECTOR_AND_EFFECTIVE_PULSE_MODEL_ASSUMED",
+      "empirical_status": "NOT_TESTED",
+      "machine_status": "PAPER_ONLY_NO_NEW_LEAN",
+      "formal_names": [],
+      "formal_bindings": [],
+      "controls": [
+        "Exact path count and energy-weighted proof",
+        "Finite omitted versus matched complete-CQ controls"
+      ],
+      "paper_only": [
+        "For identical legal two-slot visible policies and shared red/phase gates, every joint input with Tr(G rho_S)<=nbar and finite untouched reference obeys D(C_beta(rho),C_0(rho))<=abs(beta)*sqrt(nbar+1). The selected-pulse prefix masses sum to one under the specified policy; no-blue reference prefixes preserve the energy budget."
+      ],
+      "limits": [
+        "Other policies/state-dependent readout/energy-growth gates need a new prefix budget",
+        "Finite matrix checks do not prove the infinite-dimensional statement"
+      ],
+      "runtime_receipt": "physics/qm/kernel/evidence/v31.12/runtime/execution_receipt.json",
+      "formal_binding_detail": "physics/qm/audits/GROWING_CUTOFF_v31.12/chapter68_formal_bindings.json",
+      "new_hardware_data": false,
+      "status_axes": {
+        "mathematical": "PROVED_IN_DECLARED_MODEL_ON_PAPER",
+        "physical_selection": "INDEPENDENT_STANDARD_INPUTS_REMAIN",
+        "computational": "EXACT_CERTIFICATES_AND_FINITE_FLOATING_CONTROLS",
+        "empirical": "NOT_TESTED"
+      }
+    },
+    {
+      "id": "C-MICRO-02",
+      "title": "C-MICRO-02（同时红蓝作用的无限尾反例）。",
+      "chapter": 68,
+      "anchor": "c-micro-02",
+      "origin": "NEW_IN_3_9",
+      "argument_status": [
+        "N"
+      ],
+      "dependency_class": [
+        "B",
+        "P",
+        "E",
+        "O"
+      ],
+      "question_and_quantifiers": "For the canonical selfadjoint simultaneous realization sigma_x tensor (a+a^dagger) and initial |+x,0>, every nonzero real dimensionless time gives a coherent state with positive tail above every finite number cutoff. This refutes extension of the hard finite growth window to simultaneous dynamics.",
+      "premises": [
+        "Canonical selfadjoint closure X of a+a^dagger on the finite Fock core",
+        "H_sim=sigma_x tensor X with domain D(X) direct-sum D(X) in the sigma_x basis",
+        "Initial |+x,0> and nonzero dimensionless time; formal A+B equality is initially on the common core"
+      ],
+      "verification_kind": [
+        "analytic"
+      ],
+      "verification_scope": "For the canonical selfadjoint simultaneous realization sigma_x tensor (a+a^dagger) and initial |+x,0>, every nonzero real dimensionless time gives a coherent state with positive tail above every finite number cutoff. This refutes extension of the hard finite growth window to simultaneous dynamics.",
+      "mathematical_status": "ANALYTIC_COUNTEREXAMPLE",
+      "physical_selection_status": "COMPLEX_SECTOR_AND_EFFECTIVE_PULSE_MODEL_ASSUMED",
+      "empirical_status": "NOT_TESTED",
+      "machine_status": "PAPER_ONLY_NO_NEW_LEAN",
+      "formal_names": [],
+      "formal_bindings": [],
+      "controls": [
+        "Exact coherent-state analytic solution",
+        "No finite numerical tail scan promoted to proof"
+      ],
+      "paper_only": [
+        "For the canonical selfadjoint simultaneous realization sigma_x tensor (a+a^dagger) and initial |+x,0>, every nonzero real dimensionless time gives a coherent state with positive tail above every finite number cutoff. This refutes extension of the hard finite growth window to simultaneous dynamics."
+      ],
+      "limits": [
+        "Refutes hard support only, not controlled tail approximation or Trotter error estimates"
+      ],
+      "runtime_receipt": "physics/qm/kernel/evidence/v31.12/runtime/execution_receipt.json",
+      "formal_binding_detail": "physics/qm/audits/GROWING_CUTOFF_v31.12/chapter68_formal_bindings.json",
+      "new_hardware_data": false,
+      "status_axes": {
+        "mathematical": "ANALYTIC_COUNTEREXAMPLE",
+        "physical_selection": "INDEPENDENT_STANDARD_INPUTS_REMAIN",
+        "computational": "EXACT_CERTIFICATES_AND_FINITE_FLOATING_CONTROLS",
+        "empirical": "NOT_TESTED"
+      }
+    },
+    {
+      "id": "P-ROB-03",
+      "title": "P-ROB-03（增长源、物理过滤与省略实现的统一证书）。",
+      "chapter": 68,
+      "anchor": "p-rob-03",
+      "origin": "NEW_IN_3_9",
+      "argument_status": [
+        "P"
+      ],
+      "dependency_class": [
+        "B",
+        "P",
+        "E",
+        "O"
+      ],
+      "question_and_quantifiers": "For every q in [12/25,13/25], all shared phase/red areas, abs(beta)<=1/100, every finite untouched reference and every input of mean excitation at most one, the declared physical filtering at N=4095 followed by the frozen omitted-blue policy has complete-output error at most 1/50+(1+sqrt(16381))/8192+sqrt(2)/100<1/20 against the ideal complete conditional target.",
+      "premises": [
+        "All microscopic source, complex-sector and full-record assumptions above",
+        "Common theta for source and action gates; original source fresh independent flags",
+        "Physical low-spectral filter, system vacuum reset on failure, correct unnormalized failure reference marginal",
+        "Independent mean budget 1 and |beta|<=1/100; N=4095; frozen q design interval",
+        "Policy uses only visible past labels, not the hidden true parameter; inherited full-design minimax scope",
+        "No unmeasured gate/filter/readout/effective-model error is set to an empirical zero"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic"
+      ],
+      "verification_scope": "For every q in [12/25,13/25], all shared phase/red areas, abs(beta)<=1/100, every finite untouched reference and every input of mean excitation at most one, the declared physical filtering at N=4095 followed by the frozen omitted-blue policy has complete-output error at most 1/50+(1+sqrt(16381))/8192+sqrt(2)/100<1/20 against the ideal complete conditional target.",
+      "mathematical_status": "PROVED_IN_DECLARED_MODEL_ON_PAPER",
+      "physical_selection_status": "COMPLEX_SECTOR_AND_EFFECTIVE_PULSE_MODEL_ASSUMED",
+      "empirical_status": "NOT_TESTED",
+      "machine_status": "PAPER_ONLY_NO_NEW_LEAN",
+      "formal_names": [],
+      "formal_bindings": [],
+      "controls": [
+        "Exact rational and integer-square-root enclosure",
+        "Looser filter bound is inconclusive",
+        "Independent root finite source and physical failure blocks"
+      ],
+      "paper_only": [
+        "For every q in [12/25,13/25], all shared phase/red areas, abs(beta)<=1/100, every finite untouched reference and every input of mean excitation at most one, the declared physical filtering at N=4095 followed by the frozen omitted-blue policy has complete-output error at most 1/50+(1+sqrt(16381))/8192+sqrt(2)/100<1/20 against the ideal complete conditional target."
+      ],
+      "limits": [
+        "No real-device calibration; remaining error margin approx0.000112224640733273",
+        "Analytic N=4095 is not the executed N=1 finite matrix example",
+        "Same-source scalar acceptance makes the conditional target CPTP; general postselection still needs its separate success bound"
+      ],
+      "runtime_receipt": "physics/qm/kernel/evidence/v31.12/runtime/execution_receipt.json",
+      "formal_binding_detail": "physics/qm/audits/GROWING_CUTOFF_v31.12/chapter68_formal_bindings.json",
+      "new_hardware_data": false,
+      "status_axes": {
+        "mathematical": "PROVED_IN_DECLARED_MODEL_ON_PAPER",
+        "physical_selection": "INDEPENDENT_STANDARD_INPUTS_REMAIN",
+        "computational": "EXACT_CERTIFICATES_AND_FINITE_FLOATING_CONTROLS",
+        "empirical": "NOT_TESTED"
+      }
+    },
+    {
+      "id": "C-ROB-02",
+      "title": "C-ROB-02（相同旗概率不认证蓝脉冲末态）。",
+      "chapter": 68,
+      "anchor": "c-rob-02",
+      "origin": "NEW_IN_3_9",
+      "argument_status": [
+        "N"
+      ],
+      "dependency_class": [
+        "B",
+        "P",
+        "E",
+        "O"
+      ],
+      "question_and_quantifiers": "For every source flag word the probability is independent of beta. At vacuum input, beta=0 and beta=pi/2 have identical complete flag laws but deployed terminal-state distance at least Q_01=156/625, so flag-only calibration cannot certify the independent small-area premise.",
+      "premises": [
+        "Original labelled events are scalar multiples of unitaries; all labels retained",
+        "Same q, phase and red area for the compared models",
+        "The beta=pi/2 control deliberately violates the additional small-area premise; it attacks flag-only identification, not the conditional theorem"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic"
+      ],
+      "verification_scope": "For every source flag word the probability is independent of beta. At vacuum input, beta=0 and beta=pi/2 have identical complete flag laws but deployed terminal-state distance at least Q_01=156/625, so flag-only calibration cannot certify the independent small-area premise.",
+      "mathematical_status": "ANALYTIC_COUNTEREXAMPLE",
+      "physical_selection_status": "COMPLEX_SECTOR_AND_EFFECTIVE_PULSE_MODEL_ASSUMED",
+      "empirical_status": "NOT_TESTED",
+      "machine_status": "PAPER_ONLY_NO_NEW_LEAN",
+      "formal_names": [],
+      "formal_bindings": [],
+      "controls": [
+        "Exact flag blindness",
+        "Orthogonal vacuum path01 terminal control"
+      ],
+      "paper_only": [
+        "For every source flag word the probability is independent of beta. At vacuum input, beta=0 and beta=pi/2 have identical complete flag laws but deployed terminal-state distance at least Q_01=156/625, so flag-only calibration cannot certify the independent small-area premise."
+      ],
+      "limits": [
+        "Only flag access is shown insufficient; independently chosen process/spectral/pulse testers may distinguish",
+        "No exclusion of every physical implementation or calibration method"
+      ],
+      "runtime_receipt": "physics/qm/kernel/evidence/v31.12/runtime/execution_receipt.json",
+      "formal_binding_detail": "physics/qm/audits/GROWING_CUTOFF_v31.12/chapter68_formal_bindings.json",
+      "new_hardware_data": false,
+      "status_axes": {
+        "mathematical": "ANALYTIC_COUNTEREXAMPLE",
+        "physical_selection": "INDEPENDENT_STANDARD_INPUTS_REMAIN",
+        "computational": "EXACT_CERTIFICATES_AND_FINITE_FLOATING_CONTROLS",
+        "empirical": "NOT_TESTED"
+      }
+    }
+  ],
+  "source_contract": {
+    "path": "physics/qm/audits/GROWING_CUTOFF_v31.12/SHARED_MODEL.md",
+    "sha256": "e108557664b263a8e0d859a4c998a6723e991b641ebf928c43bfca96d3c15456",
+    "bytes": 7538
+  },
+  "frozen_model": {
+    "path": "physics/qm/growing_cutoff/frozen_model.json",
+    "sha256": "884ea9d3cafc584659a596105834b636fccd6747750376e99012cbfc045a9f6f",
+    "bytes": 2899
+  },
+  "parameter_and_output_scope": "One theta and same complete CQ output, physical filter including failures, finite untouched reference",
+  "real_data": false
+}

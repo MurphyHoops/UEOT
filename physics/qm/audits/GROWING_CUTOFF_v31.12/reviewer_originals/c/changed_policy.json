@@ -1,0 +1,89 @@
+{
+  "schema": "ueot-qm.growing-cutoff-model/1",
+  "classification": "declared mathematical device model; no real calibration data",
+  "research_baseline": "aea2fceef3c62cc8dc749b6cbb1b40a7d89df80d",
+  "recovery": "Reconstructed in a new execution after the unpublished previous workspace was unavailable. No previous v31.12 execution is claimed recovered.",
+  "theta": [
+    "q",
+    "phi",
+    "alpha",
+    "beta"
+  ],
+  "q_interval": [
+    "12/25",
+    "13/25"
+  ],
+  "s_relation": "1-q/2",
+  "source_height": 2,
+  "source_records": [
+    "f",
+    "0f",
+    "1f",
+    "00",
+    "01",
+    "10",
+    "11"
+  ],
+  "stop_on": "f",
+  "accept": [
+    "00",
+    "01",
+    "10",
+    "11"
+  ],
+  "phase_gate": "U0=exp(-i phi P_e)",
+  "red_gate": "U1=exp(-i alpha (sigma_+ a + sigma_- a_dagger))",
+  "blue_gate": "B_beta=exp(-i beta (sigma_+ a_dagger + sigma_- a))",
+  "label1_gate_order": "V1=B_beta U1; red first, then blue",
+  "label0_gate": "V0=U0",
+  "failure_gate": "identity",
+  "carrier_rule": "basis M: g0, then (gk,e(k-1)) for k=1..M; stage j has M=N+2j",
+  "common_output": "all original terminal records embedded in H_(N+4); prep_fail plus pass-prefixed records when filtering is physical",
+  "adaptive_first_label1_weight": "51/100",
+  "adaptive_second_label1_given_0": "312/625",
+  "adaptive_second_label1_given_1": "313/625",
+  "observation": "past visible labels only; no parameter-sensitive in-run query; no hidden index access",
+  "memoryless_label1_weight": "1/2",
+  "phase_real": "3/5",
+  "phase_imag": "4/5",
+  "exchange_cos": "3/5",
+  "exchange_sin": "4/5",
+  "reference_dimension": 2,
+  "analytic_energy_budget": "1",
+  "analytic_cutoff_N": 4095,
+  "beta_abs_bound": "1/100",
+  "beta_bound_origin": "additional independent physical assumption; not certified by logical flag counts",
+  "required_full_output_precision": "1/20",
+  "numerical_cutoff_N": 1,
+  "numerical_q_values": [
+    "12/25",
+    "1/2",
+    "13/25"
+  ],
+  "numerical_beta_values": [
+    "-1/100",
+    "0",
+    "1/100"
+  ],
+  "numerical_absolute_tolerance": "1/10000000000",
+  "failure_reset_state": "g0 on S, preserving the unnormalized failure-conditioned reference marginal",
+  "cost_realizations": [
+    "read flag then apply selected gate",
+    "coherently schedule controlled gates in every attempted slot"
+  ],
+  "calibration": {
+    "inherited_flag_pipeline": "physics/qm/operational_micro_robust/synthetic_calibration.py",
+    "new_real_data": false,
+    "q_only_coverage_does_not_cover_beta_or_shared_gate_identity": true
+  },
+  "physical_inputs": [
+    "complex quantum states, tensor composition, Born instruments",
+    "exact separated red/blue effective sideband Hamiltonians",
+    "fresh logical flag preparation and complete readout",
+    "same actual phi, alpha, beta in source and full implementation",
+    "independently available no-blue action for the reduced implementation",
+    "ideal low-excitation filter and specified reset",
+    "finite classical height and finite untouched reference"
+  ],
+  "new_hardware_data": false
+}

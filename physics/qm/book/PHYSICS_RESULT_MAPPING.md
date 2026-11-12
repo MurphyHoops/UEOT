@@ -1,6 +1,6 @@
-# UEOT Physics bilingual stable-result mapping — edition 3.8
+# UEOT Physics bilingual stable-result mapping — edition 3.9
 
-All 173 prior result identities are preserved; chapter67 appends nine. Titles are bound to actual statement anchors, not inferred from substrings.
+All 182 prior result identities are preserved; Chapter 68 appends six. Titles are bound to actual statement anchors. Counts do not assert novelty, Lean coverage, or empirical confirmation.
 
 | ID | Chapter | Chinese title | English title |
 |---|---:|---|---|
@@ -186,3 +186,9 @@ All 173 prior result identities are preserved; chapter67 appends nine. Titles ar
 | [C-ROB-01](UEOT_PHYSICS.md#c-rob-01) | 67 | C-ROB-01（逐参数可实现不推出一次鲁棒部署）。 | C-ROB-01 (Pointwise realizability does not imply one robust deployment). |
 | [P-ROB-02](UEOT_PHYSICS.md#p-rob-02) | 67 | P-ROB-02（同一原源的精确设计区间证书）。 | P-ROB-02 (An exact design-region certificate for the same source). |
 | [P-MICRO-03](UEOT_PHYSICS.md#p-micro-03) | 67 | P-MICRO-03（单激发边缘混合，完整记录不遗忘）。 | P-MICRO-03 (Single-excitation marginal mixing without full-record forgetting). |
+| [P-MICRO-04](UEOT_PHYSICS.md#p-micro-04) | 68 | P-MICRO-04（分段蓝脉冲的有限激发增长）。 | P-MICRO-04 (Finite excitation growth under segmented blue pulses). |
+| [P-OPT-04](UEOT_PHYSICS.md#p-opt-04) | 68 | P-OPT-04（增长载体上的完整矩形操作桥）。 | P-OPT-04 (Complete rectangular operations on growing carriers). |
+| [P-MICRO-05](UEOT_PHYSICS.md#p-micro-05) | 68 | P-MICRO-05（无蓝参照下的完整记录省略界）。 | P-MICRO-05 (Complete-record omission bound using a no-blue reference). |
+| [C-MICRO-02](UEOT_PHYSICS.md#c-micro-02) | 68 | C-MICRO-02（同时红蓝作用的无限尾反例）。 | C-MICRO-02 (An infinite-tail counterexample for simultaneous red and blue interaction). |
+| [P-ROB-03](UEOT_PHYSICS.md#p-rob-03) | 68 | P-ROB-03（增长源、物理过滤与省略实现的统一证书）。 | P-ROB-03 (A joint certificate for growth, physical filtering, and pulse omission). |
+| [C-ROB-02](UEOT_PHYSICS.md#c-rob-02) | 68 | C-ROB-02（相同旗概率不认证蓝脉冲末态）。 | C-ROB-02 (Identical flag probabilities do not certify the blue-pulse terminal state). |

@@ -1,0 +1,374 @@
+{
+  "schema": "ueot-qm-current/6",
+  "date": "2026-11-11",
+  "version": "v31.11-kernel1.11",
+  "layer": "P — selected complex quantum physics; Core read-only; GI excluded",
+  "objective": "Same-source operational identity, microscopic finite-CQ approximation, robust deployment and full costs",
+  "research_baseline": "16a89154183c22030d4526413167d095d94e6890",
+  "core_policy": {
+    "tracked_core_modified": false,
+    "role": "read-only mathematical dependency"
+  },
+  "entrypoint": "physics/qm/UEOT_QM_KERNEL_v31.11.md",
+  "execution_contract": "physics/qm/UEOT_QM_EXECUTION_v31.11.md",
+  "runtime_entrypoint": "physics/qm/operational_micro_robust/README.md",
+  "formalization": "formalization/ueot-qm/README.md",
+  "roadmap": "physics/qm/ROADMAP.md",
+  "claim_ledger": "physics/qm/status/CLAIM_LEDGER_v31.11.json",
+  "previous_claim_ledger": "physics/qm/status/CLAIM_LEDGER_v31.10.json",
+  "verification_state": "MAIN_SCIENTIFIC_SOURCE_AND_CI_VERIFIED",
+  "local_checkpoint_state": "PASS",
+  "status_axes": {
+    "mathematical": "DECLARED_MODEL_PAPER_PROOFS_AND_COUNTEREXAMPLES",
+    "physical_selection": "COMPLEX_MODEL_AND_CONTROL_INPUTS_REMAIN_INDEPENDENT",
+    "computational": "PASS_SCOPED",
+    "empirical": "UNTESTED_NO_REAL_DEVICE_DATA"
+  },
+  "source_identity": {
+    "manifest": "physics/qm/kernel/evidence/v31.11/source-manifest.json",
+    "verification": "physics/qm/kernel/evidence/v31.11/lean-verification.json",
+    "source_count": 158,
+    "source_set_sha256": "f9ea1e3e9bc695e3916d764e8f005d98556e4541653d439a60e57a5fb8c4cacf",
+    "scope": "New-source targeted build and exhaustive new-namespace audit; old executions separately preserved",
+    "current_bytes_match_executed_bytes": true
+  },
+  "proof_receipt": "physics/qm/kernel/evidence/v31.11/lean-verification.json",
+  "source_manifest": "physics/qm/kernel/evidence/v31.11/source-manifest.json",
+  "runtime_receipt": "physics/qm/kernel/evidence/v31.11/runtime/execution_receipt.json",
+  "integration": {
+    "schema": "ueot-qm.integration-verification/1",
+    "recorded_at_utc": "2026-11-11T10:20:34.596288+00:00",
+    "state": "MAIN_SCIENTIFIC_SOURCE_AND_CI_VERIFIED",
+    "remote_verified": true,
+    "research_entry_baseline": "16a89154183c22030d4526413167d095d94e6890",
+    "integration_parent_after_main_refresh": "74081ffe13a59f551fa803e229d6cc7455e3f59d",
+    "scientific_pr": {
+      "number": 457,
+      "url": "https://github.com/MurphyHoops/UEOT/pull/457",
+      "accepted_head": "366e0bbf0e895d0d3125d7769cb4b4d1d6d17069",
+      "merge_commit": "06ca0dce8b03cd34e86785e97fdc3c7aa2c582bd",
+      "reviewed_and_merged_tree": "91e109cf69c93f5eb6e6c6774f04e009c29e0678",
+      "exact_tree_readback": {
+        "path": "physics/qm/kernel/evidence/v31.11/remote/scientific-main-tree-readback.json",
+        "sha256": "ff8c6693e5984cd91dad974772f345e89de4731ecd613e65257e53cf24043ecf",
+        "bytes": 555
+      }
+    },
+    "observed_executions": {
+      "local_new_lean": {
+        "path": "physics/qm/kernel/evidence/v31.11/lean-verification.json",
+        "sha256": "45afc9ee3bc2d02fd0c687c60910b5775831844a68416373e05f32fcdf21af8c",
+        "bytes": 2444
+      },
+      "local_runtime": {
+        "path": "physics/qm/kernel/evidence/v31.11/runtime/execution_receipt.json",
+        "sha256": "44c4d1a1e06144c1b8f7932fc576cba5e17e0fdf669a0198f480e390c5547523",
+        "bytes": 13549
+      },
+      "pr_ci": {
+        "path": "physics/qm/kernel/evidence/v31.11/remote/pr457/github-run.json",
+        "sha256": "0868470d205f0b8e9d38a7bec8df04b1047368f49b1be1a296627a8687e29862",
+        "bytes": 382
+      },
+      "scientific_main_ci": {
+        "path": "physics/qm/kernel/evidence/v31.11/remote/main/github-run.json",
+        "sha256": "d9d60b2f3859f7acf4730cd774c7b67ebc4ab556f118fa35e98aba61342b5cbf",
+        "bytes": 374
+      }
+    },
+    "downloaded_and_inspected_artifacts": [
+      {
+        "stage": "pr457",
+        "kind": "runtime",
+        "inspection": {
+          "path": "physics/qm/kernel/evidence/v31.11/remote/pr457/runtime-inspection.json",
+          "sha256": "09f6b162298f5cfa44b2b1d8a35bcdde07c9bd4c0bc4ba86b81f19f1448a2ca9",
+          "bytes": 2206
+        },
+        "archive": {
+          "path": "physics/qm/kernel/evidence/v31.11/remote/pr457/runtime.zip",
+          "sha256": "76b4fcfaa2cf7d9dffefda634f53897846cfb8ff8a2f679beb5b2d76dcd6f10f",
+          "bytes": 69075
+        },
+        "run_id": 42999640248,
+        "artifact_id": 13844894270
+      },
+      {
+        "stage": "pr457",
+        "kind": "lean",
+        "inspection": {
+          "path": "physics/qm/kernel/evidence/v31.11/remote/pr457/lean-inspection.json",
+          "sha256": "cea695c4cca13e5ae7aae925579e4f409273d64d54db32886fb8a0b454c54e94",
+          "bytes": 2180
+        },
+        "archive": {
+          "path": "physics/qm/kernel/evidence/v31.11/remote/pr457/lean.zip",
+          "sha256": "56bf3392892c47d4ef31c79dcb5dccd29af25f491055f48f9e19b310c23fac73",
+          "bytes": 150336
+        },
+        "run_id": 42999640248,
+        "artifact_id": 13846265906
+      },
+      {
+        "stage": "main",
+        "kind": "runtime",
+        "inspection": {
+          "path": "physics/qm/kernel/evidence/v31.11/remote/main/runtime-inspection.json",
+          "sha256": "09ee790d3d4556fe67fa9a90f62ab1ceb2dcce96dc6a5bdec0354d9dca623bdd",
+          "bytes": 2176
+        },
+        "archive": {
+          "path": "physics/qm/kernel/evidence/v31.11/remote/main/runtime.zip",
+          "sha256": "d15065d7da65457ae8d1fe9f2fdd018c143851f6a470f2531e1ec7e42cfa1478",
+          "bytes": 69030
+        },
+        "run_id": 43001276385,
+        "artifact_id": 13846600865
+      },
+      {
+        "stage": "main",
+        "kind": "lean",
+        "inspection": {
+          "path": "physics/qm/kernel/evidence/v31.11/remote/main/lean-inspection.json",
+          "sha256": "f32d0a4e5b1320e87cb3cf63f6fa22d005aaf225e4c3c29409b569f8feb77575",
+          "bytes": 2158
+        },
+        "archive": {
+          "path": "physics/qm/kernel/evidence/v31.11/remote/main/lean.zip",
+          "sha256": "777978d60e6991a748299be8a8ab58acf668cab084130fc7eef8c6dc946de3d0",
+          "bytes": 150385
+        },
+        "run_id": 43001276385,
+        "artifact_id": 13846622363
+      }
+    ],
+    "identity_checks": {
+      "local_recursive_proof_config_inputs_match_scientific_merge": 158,
+      "runtime_inputs_match_scientific_merge": 13,
+      "public_ci_source_inventory": 130,
+      "recursive_module_sources_inspected_in_ci": 148,
+      "public_axiom_requests_and_reports": 1365,
+      "new_operational_namespace_constants": 80,
+      "allowed_axioms_only": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "distinct_inventory_scopes_not_conflated": true,
+      "read_only_core_and_interface_paths_preserved": 5057
+    },
+    "review": {
+      "native_research_tasks": 3,
+      "kind": "internal AI cross-review, not external human peer review",
+      "documents": [
+        {
+          "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/A_OPERATIONAL_SEMANTICS.md",
+          "sha256": "5f9227106b09f05235c390556305f2e20da056069a248dd240ab200eda1f4a20",
+          "bytes": 17244
+        },
+        {
+          "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/B_MICRO_TRUNCATION.md",
+          "sha256": "69cf8100f0ca09b5fef9a62779beb0420607bff46b4a8cd43bea92487c0877fc",
+          "bytes": 34716
+        },
+        {
+          "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/C_ROBUST_CALIBRATION.md",
+          "sha256": "0e253c0fd01c7f5b43587cfffba48c52dcbc734e8f68a59a2ff54eed640051ba",
+          "bytes": 21668
+        },
+        {
+          "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/A_REVIEW_OF_B.md",
+          "sha256": "febb551290aa29175216e8f8ff9371f8192166cc014ccd0ee4d94df17a192a6e",
+          "bytes": 4506
+        },
+        {
+          "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/B_REVIEW_OF_C.md",
+          "sha256": "d7cc8ef168d9cc2c5c299557f7fc8f64f371f5f63950c954fca816aeb6f42d23",
+          "bytes": 6362
+        },
+        {
+          "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/C_REVIEW_OF_A.md",
+          "sha256": "ffe8232960abf11b70616714e4252bdbc837dac3642b70b109613df382f00402",
+          "bytes": 5123
+        },
+        {
+          "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/B_FINAL_INTEGRATION_REVIEW.md",
+          "sha256": "731fb690261f6659e3637a019caaecb162902e7246b222bbcac3680733916195",
+          "bytes": 17805
+        },
+        {
+          "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/C_FINAL_INTEGRATION_REVIEW.md",
+          "sha256": "03db396191dd4a8a303612e52da3be3988e2fe01de424475f4e758245c411ee1",
+          "bytes": 24254
+        },
+        {
+          "path": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/ROOT_INTEGRATION_REVIEW.md",
+          "sha256": "9ade27aabc810eb19cb0be59319abb37acf56043c68a4350f213a4dad4bb2a2f",
+          "bytes": 13977
+        }
+      ]
+    },
+    "superseded_execution": {
+      "first_head": "78aad3c7859084a918c00e655cf198b7b5beecf2",
+      "run_id": 42998720245,
+      "workflow_conclusion": "cancelled_after_corrected_head_push",
+      "runtime_computation": "PASS",
+      "known_defect": "Hard-coded local actor label on CI; corrected in schema/2 and actually rerun",
+      "unchanged_original_artifact": {
+        "path": "physics/qm/kernel/evidence/v31.11/remote/pr457-first-head/runtime.zip",
+        "sha256": "7c5097db497e24d6b7e6dd5e326e74bfcf94fa46edb780f8181ad1d9d5845150",
+        "bytes": 68782
+      },
+      "inspection": {
+        "path": "physics/qm/kernel/evidence/v31.11/remote/pr457-first-head/runtime-inspection.json",
+        "sha256": "4a6f6354f75ff6b3c928fd1136b2fc720f291a50681f8c04d19b56eed54623bf",
+        "bytes": 1091
+      }
+    },
+    "publication": {
+      "edition": "3.8",
+      "chapters": 68,
+      "appendices": 6,
+      "numbered_results": 182,
+      "inherited_result_objects": 173,
+      "new_results": 9,
+      "visual_receipt": {
+        "path": "physics/qm/book/evidence/v3.8/visual-review.json",
+        "sha256": "36ec11b03814b4bbd7ea8099435151d9d99f3721f9fdf0dbaab3c2e0c011d8c5",
+        "bytes": 3809
+      }
+    },
+    "metadata_completion_contract": {
+      "basis": "This receipt records the already observed scientific merge and CI runs. Its containing follow-up commit is a later metadata/publication-provenance commit, not a new scientific execution.",
+      "scientific_sources_and_book_bodies_remain_bound_to_tested_bytes": true,
+      "metadata_receipt_reconciled_separately": "physics/qm/book/evidence/v3.8/local-acceptance.json"
+    },
+    "status_axes": {
+      "mathematical": "DECLARED_MODEL_PAPER_PROOFS_AND_COUNTEREXAMPLES",
+      "physical_selection": "COMPLEX_SECTOR_AND_CONTROL_INPUTS_REMAIN_INDEPENDENT",
+      "computational": "LOCAL_INCREMENT_AND_PR_MAIN_CI_PASSED_WITH_SCOPED_BINDINGS",
+      "empirical": "UNTESTED_NO_REAL_DEVICE_DATA"
+    },
+    "nonclaims": [
+      "No promotion of paper-only infinite-dimensional or robust statements to Lean coverage",
+      "No new device data, measured cost advantage or empirical closure",
+      "No full quantum, field, particle or gravity completion"
+    ]
+  },
+  "local_verification": {
+    "new_lean": {
+      "schema": "ueot_qm.operational_equivalence_increment.v1",
+      "status": "PASS",
+      "recorded_at_utc": "2026-11-11T09:31:58.034904+00:00",
+      "gates": [
+        {
+          "name": "dependencies",
+          "argv": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+            "scripts/check_dependencies.py"
+          ],
+          "cwd": "/workspace/scratch/a6fba8f7e18e/UEOT/formalization/ueot-qm",
+          "started_at_utc": "2026-11-11T09:30:44.906073+00:00",
+          "seconds": 0.04138994700042531,
+          "exit_code": 0,
+          "log": "dependencies.log",
+          "log_sha256": "13b2789bac066054afc6c40049fbe3f815a83927cd6bfcc1d3331946153d96cf"
+        },
+        {
+          "name": "new_module_build",
+          "argv": [
+            "lake",
+            "build",
+            "UEOTQM.OperationalEquivalence"
+          ],
+          "cwd": "/workspace/scratch/a6fba8f7e18e/UEOT/formalization/ueot-qm",
+          "started_at_utc": "2026-11-11T09:30:44.947649+00:00",
+          "seconds": 9.142012544001773,
+          "exit_code": 0,
+          "log": "new_module_build.log",
+          "log_sha256": "09c624633d83e1d56dc9df7bf9e205f3ca36bbc0c13e03e97054138bcc1e5791"
+        },
+        {
+          "name": "new_namespace_axioms",
+          "argv": [
+            "lake",
+            "env",
+            "lean",
+            "scripts/OperationalEquivalenceAxiomAudit.lean"
+          ],
+          "cwd": "/workspace/scratch/a6fba8f7e18e/UEOT/formalization/ueot-qm",
+          "started_at_utc": "2026-11-11T09:30:54.091704+00:00",
+          "seconds": 63.61929809499998,
+          "exit_code": 0,
+          "log": "new_namespace_axioms.log",
+          "log_sha256": "f6d1a81e542d6edca0fe8b18c697403d70c3cd99178ff04950942f797d2c23c8"
+        }
+      ],
+      "source_sha256": "99fd7ecfa58322321269c7504b27923f36e5c7f36fadad6a938b640c78c14f37",
+      "source_set_sha256": "f9ea1e3e9bc695e3916d764e8f005d98556e4541653d439a60e57a5fb8c4cacf",
+      "source_count": 158,
+      "identity_unchanged_during_execution": true,
+      "new_modules": 1,
+      "new_explicit_theorems": 28,
+      "new_explicit_named_declarations": 43,
+      "new_named_axiom_reports": 80,
+      "allowed_axioms_only": true,
+      "all_new_exported_namespace_constants_audited": true,
+      "ordinary_lean_linter_warnings_present": true,
+      "new_hardware_data": false,
+      "scope": "Actual new-module build and all exported constants in its namespace; full OPT, trace-class and robust paper proofs are not inferred",
+      "historical_gate_policy": "Unchanged historical execution identity is reused; no claim of a fresh local unified historical gate"
+    },
+    "new_runtime": "PASS",
+    "proof_inputs_match": true,
+    "runtime_inputs_outputs_logs_match": true,
+    "publication_matches_visual_review": true,
+    "historical_heavy_suites_rerun_locally": false
+  },
+  "completed_in_this_delivery": [
+    "Four equivalent operational identities with explicit finite-complex scope",
+    "Microscopic conserving source to full adaptive-CQ truncation; trace-class posterior and physical filter flags",
+    "Shared-parameter robust certificate and exact design-region minimax policy",
+    "Single-excitation marginal mixing, full-record isometry and whole-system nonuniqueness"
+  ],
+  "book": {
+    "edition": "3.8",
+    "chapters": 68,
+    "appendices": 6,
+    "numbered_results": 182,
+    "inherited_numbered_results": 173,
+    "new_numbered_results": 9,
+    "canonical": "physics/qm/book/UEOT_PHYSICS.md",
+    "english": "physics/qm/book/UEOT_PHYSICS.en.md",
+    "dossier": {
+      "path": "physics/qm/book/CHAPTER_DOSSIER.json",
+      "sha256": "54e464fb0990a0934b1aa9e7cb0dfb968cf72ae383345578e9c883af67b4e7a9",
+      "bytes": 1600752
+    },
+    "whole_book_formalized": false,
+    "local_acceptance": "physics/qm/book/evidence/v3.8/local-acceptance.json"
+  },
+  "historical_current_checkpoint": {
+    "path": "physics/qm/book/evidence/v3.8/prior/CURRENT.json",
+    "sha256": "74c1c20973a1845d7b7e1b8543a0483ce58fb5a0198fb1894d729ad0442f69f7",
+    "bytes": 9379
+  },
+  "historical_claim_scope": "All96 old claim objects and173 old book result objects retain exact historical identity",
+  "scope_limits": [
+    "Finite classical protocols and finite untouched references",
+    "No leakage or excitation growth without a new defect budget",
+    "Full OPT/reconstruction only partially formalized",
+    "Normal trace-class and long-time proofs remain paper arguments",
+    "Full-design minimax is not every realized calibration-set optimum",
+    "Flag counts do not certify quantum gate matching or terminal-state distance",
+    "Unknown quantum inputs are not free repeatable resources",
+    "No real data or empirical closure"
+  ],
+  "next_execution": {
+    "theory": "Weak leakage or finite-bath deletion bound for the same interventions and complete records",
+    "operations": "Complete finite Test quotient and independently justified sector principles",
+    "data": "Protocol-matched raw calibration, ordered failures/leakage, gate identity, terminal testers and full costs"
+  },
+  "new_hardware_data": false,
+  "metadata_updated_at_utc": "2026-11-11T10:20:35.048149+00:00"
+}
