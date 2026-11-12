@@ -1,26 +1,26 @@
 # 《UEOT物理学》 / UEOT Physics
 
-## 3.8 同源物理桥 / Same-source physical bridges
+## 3.9 分段增长与受控省略 / Separated growth and controlled omission
 
-当前连续中英文主文均有 **第0–67章、附录A–F、182项稳定结果**，对应科学增量 **v31.11 / Kernel 1.11**。本轮重新读取main `16a89154183c22030d4526413167d095d94e6890`，继承3.7版全部173项结果和v31.10的第66章闭环，新增第67章九项结果。旧结果对象与历史执行身份不改写。
+当前连续中英文主文均有 **第0–68章、附录A–F、188项稳定结果**，对应科学增量 **v31.12 / Kernel 1.12**。本轮从已合入v31.11的 main `aea2fceef3c62cc8dc749b6cbb1b40a7d89df80d` 继续，完整保留旧182项结果对象及105项claim，新增第68章六项结果，并对第67.5节低谱过滤均值作一处准确勘误。中断前未上传字节不可得，本轮重新推导、实现和执行，回执具有新身份。
 
 | Language | Complete Markdown source | Generated LaTeX | Reading PDF |
 |---|---|---|---|
 | 中文 | [UEOT_PHYSICS.md](UEOT_PHYSICS.md) | [UEOT_PHYSICS.tex](UEOT_PHYSICS.tex) | [UEOT_PHYSICS.pdf](UEOT_PHYSICS.pdf) |
 | English | [UEOT_PHYSICS.en.md](UEOT_PHYSICS.en.md) | [UEOT_PHYSICS.en.tex](UEOT_PHYSICS.en.tex) | [UEOT_PHYSICS.en.pdf](UEOT_PHYSICS.en.pdf) |
 
-The current increment connects operational event identity, microscopic excitation-preserving dynamics, full-record truncation and one robust deployment over a common unknown parameter set. Its exact design-region policy has worst full-CQ error1/50; including physical preparation failure gives the stated energy-budget sufficient bound3673/102400. The same model also separates single-excitation marginal mixing from exact preservation of distinguishability in complete records.
+The current increment derives growing finite carriers from separated red/blue pulses, preserves complete labelled operations, and bounds omission of a small independently calibrated blue pulse. The full-output sufficient error is 0.0498877753592667… below the frozen 0.05 target. Simultaneous evolution has an infinite-tail counterexample, and flag counts cannot identify blue pulse area. The remaining real-device error allowance has not been measured.
 
-The ideal physical inputs remain explicit. This is not an independent derivation of complex quantum structure, a completed reconstruction, or hardware validation. All calibration and holdout data newly produced here are synthetic. QFT, particle, gravity and cosmology responsibilities remain in the [continuous roadmap](../ROADMAP.md).
+The ideal physical inputs remain explicit. This is not an independent derivation of complex quantum structure, a completed reconstruction, or hardware validation. No new hardware calibration or holdout data were acquired; the retained synthetic pipeline cannot certify the additional blue-area premise. QFT, particle, gravity and cosmology responsibilities remain in the [continuous roadmap](../ROADMAP.md).
 
 | Current responsibility | Source |
 |---|---|
 | Actual execution state and four status axes | [CURRENT](../status/CURRENT.json) |
-| Same-source scientific integration | [v31.11 report](../UEOT_QM_KERNEL_v31.11.md) |
-| Nine claims and exact formal/paper boundaries | [chapter67 binding ledger](../audits/OPERATIONAL_MICRO_ROBUST_v31.11/chapter67_formal_bindings.json) |
-| Runtime, raw synthetic records and independent checks | [runtime evidence](../kernel/evidence/v31.11/runtime/execution_receipt.json) |
-| New-source compiler and exhaustive namespace audit | [Lean evidence](../kernel/evidence/v31.11/lean-verification.json) |
-| Bilingual preservation, PDF builds and visual review | [edition3.8 evidence](evidence/v3.8/) |
+| Same-source scientific integration | [v31.12 report](../UEOT_QM_KERNEL_v31.12.md) |
+| Six claims and explicit paper-only boundaries | [chapter68 binding ledger](../audits/GROWING_CUTOFF_v31.12/chapter68_formal_bindings.json) |
+| New complete-source and independent exact checks | [runtime evidence](../kernel/evidence/v31.12/runtime/execution_receipt.json) |
+| Unchanged proof inputs and pinned historical reuse | [proof reuse](../kernel/evidence/v31.12/proof-reuse.json) |
+| Bilingual preservation, PDF builds and visual review | [edition3.9 evidence](evidence/v3.9/) |
 | Stable bilingual statements | [result map](PHYSICS_RESULT_MAPPING.md) |
 
 Exactly three native research tasks performed A→B, B→C and C→A cross-review. This is internal AI review, not external human peer review. The existing dossier, source manifest and claim ledger remain authoritative; no parallel final-state ledger is introduced. The following sections retain inherited scope and historical acceptance rather than relabeling old runs as this increment.

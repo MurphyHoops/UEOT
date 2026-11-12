@@ -79,7 +79,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\small UEOT PHYSICS}
-\fancyhead[R]{\small 物理学 · 3.8 双语修订版}
+\fancyhead[R]{\small 物理学 · 3.9 双语修订版}
 \fancyfoot[C]{\small\thepage}
 \setlength{\headheight}{16pt}
 \renewcommand{\headrulewidth}{0.3pt}
@@ -107,15 +107,15 @@
   \vspace{10mm}
   {\color{teal}\rule{\textwidth}{1pt}\par}
   \vspace{7mm}
-  {\large 第三版\quad 3.8 双语修订版\par}
+  {\large 第三版\quad 3.9 双语修订版\par}
   \vspace{6mm}
   {钱德桂（Degui Qian）\par}
   \vspace{5mm}
-  {68章\quad 6个附录\quad UEOT-QM Kernel 1.11\par}
+  {69章\quad 6个附录\quad UEOT-QM Kernel 1.12\par}
   \vfill
   {对象与协议\quad 量子操作与场论\quad 证明与反例\par}
   \vspace{7mm}
-  {2026年11月11日\par}
+  {2026年11月12日\par}
   \end{titlepage}
 }
 \makeatother
@@ -144,7 +144,7 @@
 \makeatother
 \subtitle{从对象数学到量子物理：理论推导、形式证明与研究边界}
 \author{钱德桂（Degui Qian）}
-\date{2026-11-11}
+\date{2026-11-12}
 
 \begin{document}
 \frontmatter
@@ -516,12 +516,13 @@ Qian），标准学术成果的归属仍由原始文献确定。版权、历史 
 
 \section{0.13 本轮物理桥与现行范围}
 
-3.8版从2026年11月11日重新读取的 main
-\texttt{16a89154183c\allowbreak 22030d452641\allowbreak 3167d095d94e\allowbreak 6890}
-继续。第67章增加九项稳定结果，接通选定复模型内的操作身份、探针---振子微观来源、完整记录截断和联合参数鲁棒部署，并给出同一模型中边缘混合与完整记忆不遗忘的区别。当前共68章、6附录、182项结果；计数不表示物理完成比例。科学版本为v31.11
-/ Kernel
-1.11，其实际证明与程序回执逐项绑定源码；v31.10及更早回执保持原执行身份。新模块的机器覆盖、书面无限维推广、精确有限算例、浮点诊断和合成数据分开登记。没有取得新的器件原始数据，因此没有经验闭环，也没有从本章反推出
-Core 必须选择复量子结构。
+3.9版从已合入 v31.11 的 main
+\texttt{aea2fceef3c6\allowbreak 2cc8dc749b6c\allowbreak bb1b40a7d89d\allowbreak f80d}
+继续。第68章增加六项稳定结果：分段蓝脉冲的增长载体、完整矩形操作桥、同一记录下的脉冲省略界，以及同时作用无限尾和旗计数不识别脉冲的反例。全书现为69章、6附录、188项结果；计数不表示物理完成比例。科学版本为
+v31.12 / Kernel
+1.12。第67章九项结果、原182项结果对象与旧执行身份继续保留；仅对低谱过滤的条件能量均值作一处明确勘误。恢复时未取得中断前未上传的文件字节，因此本次增量重新推导、执行和审查，不追认遗失执行。新增结果为书面证明及独立计算；158项未变证明／配置输入通过身份核对复用
+v31.11 机器证据，不声称新增 Lean
+证明。完整器件数据仍缺，经验轴仍未检验，复量子结构和有效边带控制仍是独立物理输入。
 
 \chapter{1. UEOT Core 到量子物理的桥接}\label{ch-1}
 
@@ -6006,10 +6007,10 @@ Core，会使所谓推导变成循环论证。
 \section{48.1 唯一理论主源}
 
 本书固定名称为《UEOT物理学》，稳定文档身份为
-\texttt{UEOT-\allowbreak PHYSICS}，当前正式双语修订版为3.8。规范正文固定在仓库
+\texttt{UEOT-\allowbreak PHYSICS}，当前正式双语修订版为3.9。规范正文固定在仓库
 \texttt{physics/\allowbreak qm/\allowbreak book/\allowbreak UEOT\_\allowbreak PHYSICS.\allowbreak md}；同目录中文 PDF
 由该正文生成；完整英文对应本为 \texttt{UEOT\_\allowbreak PHYSICS.\allowbreak en.\allowbreak md}，其 PDF
-由英文主源独立编译。第0--67章、附录A--F构成连续完整文档，保留全部原有物理主题，并把新证明整合进入相应论证。不要求读者从若干旧版本补齐一个证明。
+由英文主源独立编译。第0--68章、附录A--F构成连续完整文档，保留全部原有物理主题，并把新证明整合进入相应论证。不要求读者从若干旧版本补齐一个证明。
 
 版本报告、PR、日志和数学模块各有自己的身份，但不再与总著争夺理论正文的权威。源文件清单、章节修订档案及证据回执记录``这句话依据什么、哪一部分被检查过''。历史文件保留沿革责任；它们的旧状态不会覆盖较新的已验证内核，新的内核也不会为历史上未形式化的物理命题追授机器证明。
 
@@ -6036,7 +6037,7 @@ X。上游合同未被改写，标签修订不新增或撤销数学定理。
 \begin{Verbatim}[breaklines,breakanywhere,fontsize=\scriptsize]
 document:
   id: UEOT-PHYSICS
-  edition: "3.8"
+  edition: "3.9"
   canonical_source: physics/qm/book/UEOT_PHYSICS.md
   derivative_pdf: physics/qm/book/UEOT_PHYSICS.pdf
   english_source: physics/qm/book/UEOT_PHYSICS.en.md
@@ -11601,7 +11602,7 @@ D_{\mathrm{prep}}\le
 Hermitian
 矩阵；其迹范数为根号内二次式。再加独立失败块的尾质量并除二；偏迹和后继共同通道收缩。\(\square\)
 
-完整记录空间必须扩大为准备失败标签加通过前缀下的原记录。一般能量有界输入在通过后可能增加归一能量预算；未知输入失败后不能凭空重备。这里的迹类推广和自伴直和论证为书面证明，原有限矩阵
+完整记录空间必须扩大为准备失败标签加通过前缀下的原记录。本例低谱过滤的通过态不增加平均激发预算，证明见第68.4节；一般后选择可能增加条件均值，未知输入失败后不能凭空重备。这里的迹类推广和自伴直和论证为书面证明，原有限矩阵
 Lean 定理不因邻近编译而自动扩域。
 
 \section{67.6 一个共参数原源}
@@ -11796,6 +11797,295 @@ checker 与主智能体独立路径检查相互补充；合成校准及有限 te
 留出不代替真实数据。三名原生子智能体交叉审查为内部 AI
 审查，不是外部人类同行评议。完整来源、失败后修正和未覆盖域均保存在本轮审计与执行记录中。
 
+\chapter{68. 分段激发增长、有限载体与可控的蓝脉冲省略}\label{ch-68}
+
+第67章解决了守激发操作的有限截断。本章允许一种具体的激发增长：在原红边带脉冲之后追加独立的蓝边带脉冲。关键不在于把``近似守恒''写进输入证书，而在于从实际生成元证明，每次蓝脉冲最多把支撑上界提高二。随后让有限载体随步骤增长，保留完整预测；另在独立的小脉冲保证下，证明省略该脉冲的误差。这关闭一条明确的非守恒扩展，并不覆盖一般
+Rabi 动力学、无限时域或全部连续场。
+
+\section{68.1 同一个物理模型与新增输入}
+
+仍取探针与振子、激发算子、任意有限正维参考及有界初始均值。参考不被操作，允许与系统初始纠缠。参数现在为四元组；相位、红脉冲、蓝脉冲为无量纲积分面积。下式顺序是先红后蓝，不允许把两次分段操作换成同时作用。
+
+\[
+\begin{gathered}
+\mathcal H_S=\mathbb C^2\otimes\ell^2(\mathbb N_0),\quad
+G=a^\dagger a+P_e,\quad \Pi_M=1_{G\le M},\quad
+\theta=(q,\phi,\alpha,\beta),\\
+A=\sigma_+a+\sigma_-a^\dagger,\quad
+B=\sigma_+a^\dagger+\sigma_-a,\quad
+U_0=e^{-i\phi P_e},\quad U_1=e^{-i\alpha A},\\
+B_\beta=e^{-i\beta B},\quad V_0=U_0,\quad V_1=B_\beta U_1,\quad
+q\in[12/25,13/25],\quad s=1-q/2.
+\end{gathered}
+\]
+
+复 Hilbert 结构、Born 规则、张量组合、Fock 表示和 CP 仪器是明确的 P/S
+输入。采用这些输入的本章不能反过来证明 Core
+唯一选择复量子结构。蓝脉冲由外部驱动供能；简并逻辑旗不再使这个操作成为总激发守恒的闭系统。
+
+红、蓝边带及其数态耦合属于标准物理。Wineland
+等的原始论文在相互作用绘景、Lamb--Dicke
+与旋波条件下给出相应算符及平方根耦合。{[}文献：\emph{Quantum information
+processing with trapped ions}, DOI
+10.1098/rsta.2003.1205，pp.1350--1351。{]} 本章将分段有效 Hamiltonian
+作为精确数学模型。器件应用必须另给失谐、脉冲重叠、读出、过滤及有效近似误差。大的分析截断值不证明整个截断空间都满足
+Lamb--Dicke 条件。
+
+\section{68.2 从自伴生成元推出增长窗口}
+
+\phantomsection\label{p-micro-04}{}
+
+\textbf{P-MICRO-04（分段蓝脉冲的有限激发增长）。}
+对每个非负整数截断和每个实脉冲面积，蓝脉冲把该截断载体送入上界增加二的载体。包含至多指定数量蓝脉冲的任意合法有限经典控制树，逐分支满足累加的增长上界；这是源算符的结论，不是新增输入字段。
+
+\textbf{证明。}
+红生成元在真空上为零，在每个固定总激发块上为该激发平方根乘 Pauli
+交换矩阵。蓝生成元则在孤立态及如下正交二阶块上分解：
+
+\[
+\begin{gathered}
+E_n=\operatorname{span}\{|g,n\rangle,|e,n+1\rangle\},\quad
+B|_{E_n}=\sqrt{n+1}\,\sigma_x,\quad B|e,0\rangle=0,\\
+D(B)=\left\{\psi:\sum_{n\ge0}(n+1)
+\bigl(|c_{g,n}|^2+|c_{e,n+1}|^2\bigr)<\infty\right\},\\
+B_\beta|g,n\rangle=
+\cos(\beta\sqrt{n+1})|g,n\rangle
+-i\sin(\beta\sqrt{n+1})|e,n+1\rangle,\\
+B_\beta\Pi_M=\Pi_{M+2}B_\beta\Pi_M,\qquad
+V_1\Pi_M=\Pi_{M+2}V_1\Pi_M.
+\end{gathered}
+\]
+
+在所列图定义域上，蓝生成元是自伴的：各有限块为对称矩阵，两个平移
+\(B± iI\)
+的逆在各块上范数不超过一；取直和得到满定义的有界逆，其像落在图定义域。故两个平移的值域均为全空间，得到自伴性。有限块向量在图范数下稠密。谱定理定义任意实面积的酉，块上指数给出显示公式及反向公式。
+
+同一蓝块的两种总激发相差二，故支撑结论成立。红、相位、失败恒等操作不提高上界；沿树归纳即得总增长。无须假定蓝面积很小。若有隐藏
+Kraus 细化，只能是同一已证 CP
+事件的实现，或另有源证明的合法分支；任意新增操作不自动继承结论。\(\square\)
+
+\section{68.3 矩形仪器、停止记录与操作组合}
+
+\phantomsection\label{p-opt-04}{}
+
+\textbf{P-OPT-04（增长载体上的完整矩形操作桥）。}
+在固定有限动作、结果、观察权限和最大高度内，以上微观源具有每步完备的矩形有限仪器。把全部停止分支嵌入共同最终载体后，其完整
+CQ
+输出等于原无限系统在投影输入上的输出。该等式保持每个可见标签和任意有限且不受操作的参考。
+
+明确令 \(L\) 为最大操作时槽数，每槽至多一个蓝脉冲，并要求
+\(\operatorname{Tr}G\rho_S\le\bar n<N+1\)。令
+\(s_N=\operatorname{Tr}[(\Pi_N\otimes I_R)\rho]>0\)，有限坐标态为
+\(\rho_N=(J_N^\dagger\otimes I_R)\rho(J_N\otimes I_R)/s_N\)。\(\iota_{N+2L}\)
+在每个 CQ 标签块上以 \(J_{N+2L}\otimes I_R\) 共轭，嵌入共同物理 Fock
+空间并保留标签。一般未截断输入的理想输出仍可能有无限尾；共同有限载体计算在这里限于投影输入或已知支撑算例。令嵌入的值域为相应谱载体。原三态旗制备及完整读出给出原分支；有限分支取实际映射的限制：
+
+\[
+\begin{gathered}
+K_0=\sqrt{s(1-q)}V_0,\quad K_1=\sqrt{sq}V_1,\quad K_f=\sqrt{1-s}I,\\
+J_M:\mathbb C^{2M+1}\longrightarrow\mathcal H_S,\quad
+K_{o,M}^{\rm fin}=J_{M+2}^\dagger K_oJ_M,\\
+K_oJ_M=J_{M+2}K_{o,M}^{\rm fin},\qquad
+\sum_o(K_{o,M}^{\rm fin})^\dagger K_{o,M}^{\rm fin}=I,\\
+\Omega_\beta^\pi\bigl((J_N\otimes I_R)\rho_N(J_N^\dagger\otimes I_R)\bigr)
+=\iota_{N+2L}\Omega_{N,\beta}^\pi(\rho_N),\\
+D\bigl(\Omega_\beta^\pi(\rho_{SR}),
+\iota_{N+2L}\Omega_{N,\beta}^\pi(\rho_N)\bigr)
+\le\sqrt{\bar n/(N+1)}.
+\end{gathered}
+\]
+
+\textbf{证明。}
+前项的支撑定理使插入输出投影不改变原分支。将交织式代入原仪器完备性，得到整个有限输入空间上的完备性；矩形酉限制是等距映射，不必满射。逐路径相乘交织式，再对互相正交的终止记录求直和，得到完整输出等式。所有未区分观察历史使用相同控制权重，可区分历史可以不同，因此原操作商上的组合仍合法。
+
+每条提前停止分支都必须嵌入共同的最终载体，不能直接比较不同维矩阵。完整有限树是正常
+CPTP；谱 Markov
+界和第67章投影态界给出最后一式。这里的有限坐标态由归一投影联合态经嵌入逆限制得到。没有在初始尾项前多乘步数，因为投影输入的随后动力学已被增长载体精确表示。最后一式比较的是指定输入族上的普通迹距离，没有重命名为能量约束
+diamond 范数。\(\square\)
+
+固定旧载体并压缩蓝脉冲会丢失概率：输入顶层基态时，落到被删去伙伴态的概率为相应平方正弦。这是实际
+CP 输出质量的失败，不是仅由 Kraus
+矩阵的反对易推断。程序同时检查增长矩形实现和原第66章解释器在共同载体上的合法酉补全；补全在不可达边界上的行为不声称等于完整振子。
+
+\section{68.4 低谱过滤、参考态与一处更正}
+
+第67.5节原来把一般后选择可能提高条件均值的事实写到了本例低谱过滤之后，范围过宽。本版在该处作双语最小更正；旧执行记录及旧结果对象保留原身份。对本例而言，保留区谱不超过截断，拒绝区谱至少为截断加一。若拒绝概率为正，整体均值是两区条件均值的凸组合，因此保留区均值不超过整体均值；若拒绝概率为零，通过态即原态，失败参考块为零，不定义零概率下的归一失败态。
+
+\[
+\begin{gathered}
+s_N=\operatorname{Tr}[(\Pi_N\otimes I_R)\rho_{SR}],\quad
+\delta_N=1-s_N\le e_N:=\bar n/(N+1)<1,\\
+\rho_N^{\rm emb}=\frac{(\Pi_N\otimes I_R)\rho_{SR}(\Pi_N\otimes I_R)}{s_N},
+\qquad \operatorname{Tr}G(\rho_N^{\rm emb})_S\le\operatorname{Tr}G\rho_S,\\
+\rho_R^{\rm fail}=\operatorname{Tr}_S[(Q_N\otimes I_R)\rho_{SR}(Q_N\otimes I_R)],
+\quad Q_N=I-\Pi_N,\quad \tau_S=|g,0\rangle\langle g,0|,\\
+\mathcal F_N(\rho)=
+|{\rm pass}\rangle\langle{\rm pass}|\otimes s_N\rho_N^{\rm emb}
++|{\rm prep\_\allowbreak fail}\rangle\langle{\rm prep\_\allowbreak fail}|\otimes\tau_S\otimes\rho_R^{\rm fail},\\
+f(e)=\frac{\sqrt{4e-3e^2}+e}{2},\quad
+D\bigl(|{\rm pass}\rangle\langle{\rm pass}|\otimes\rho,\mathcal F_N(\rho)\bigr)
+\le f(e_N).
+\end{gathered}
+\]
+
+最后一界直接复用
+P-MICRO-02，不重新计为新定理。它来自纯化后的通过块差的至多两个非零特征值及失败质量，再由丢弃纯化收缩推广。这里失败后只复位系统，参考保留该失败事件的未归一条件边缘。把它换成失败概率乘原无条件参考态会改变完整输出；纠缠输入已有显式反控。过滤器、复位和记录都是真实操作假设，不能由一段数学投影免费取得。
+
+\section{68.5 能量加权的蓝脉冲省略}
+
+\phantomsection\label{p-micro-05}{}
+
+\textbf{P-MICRO-05（无蓝参照下的完整记录省略界）。}
+固定相同合法记录策略和相同红、相位门，比较保留蓝脉冲与省略蓝脉冲的完整输出。只要无蓝参照路径的归一态均保持给定激发均值界，局部误差按该参照前缀的未归一质量加权后相加。对本章两步可见策略，平均选择蓝脉冲次数恰为一，因此得到下列统一界。
+
+\[
+\begin{gathered}
+B^2=G+I-2P_e\le G+I,\qquad
+\|(e^{-i\beta B}-I)\psi\|^2\le\beta^2\|B\psi\|^2,\\
+D\bigl((B_\beta\otimes I_R)\sigma(B_\beta^\dagger\otimes I_R),\sigma\bigr)
+\le|\beta|\sqrt{\operatorname{Tr}G\sigma_S+1},\\
+Q_{00}=Q_{11}=313/1250,\qquad Q_{01}=Q_{10}=312/1250,\\
+\mathbb E_Q[\#1]=1,\qquad
+D(C_\beta(\rho),C_0(\rho))\le|\beta|\sqrt{\bar n+1}.
+\end{gathered}
+\]
+
+\textbf{证明。}
+在蓝块上直接平方，得到第一式。谱定理及标量不等式给出范数界；对混态先纯化，参考和纯化辅助不受操作，纯态迹距离不超过向量差，再以偏迹收缩得到局部界。有限能量保证纯化向量在
+\(B\otimes I\) 的定义域内；显示式写 \(\|B\psi\|^2\)，无须假定向量属于
+\(B^2\) 的算符定义域。
+
+把两个完整过程逐时槽作望远镜差。每个局部差后接相同的真实后续通道，因此不增迹范数；差之前采用无蓝参照，所以输入能量由红、相位操作保持。零质量前缀的贡献直接为零，不对其状态归一化。各记录块正交，贡献乘以到达该前缀并选择标签一的质量。所列策略两步标签一边缘都为二分之一，故质量和为一。低谱过滤通过后也保持同一均值预算，上一节保证此处可接入。\(\square\)
+
+这个证明没有要求真实含蓝路径的能量仍为初始值，也没有使用实际隐藏参数选择权重。源的条件标签次数均值为两倍参数，原含失败源又有不同计数；它们不能替换所比较部署策略的次数。若新增状态依赖读出、其他能量增长门或不同观察权限，就必须重新导出前缀预算。
+
+\section{68.6 同时作用不能沿用硬增长窗口}
+
+\phantomsection\label{c-micro-02}{}
+
+\textbf{C-MICRO-02（同时红蓝作用的无限尾反例）。}
+分段结论不蕴含同时红蓝作用在有限时间后仍有有限激发支撑。取 \(X\) 为
+\(a+a^\dagger\) 在有限 Fock
+核上的规范自伴闭包，\(H_{\rm sim}=\sigma_x\otimes X\)
+在交换本征基下的域为 \(D(X)\oplus D(X)\)。它在共同有限核上等于形式和
+\(A+B\)；下式的 \(t\) 为无量纲脉冲面积。
+
+\[
+\begin{gathered}
+H_{\rm sim}=\sigma_x\otimes X,\qquad
+e^{-itH_{\rm sim}}(|+_x\rangle\otimes|0\rangle)
+=|+_x\rangle\otimes|-it\rangle,\\
+\Pr(n=k)=e^{-t^2}\frac{t^{2k}}{k!}>0\quad(t\ne0,\ k\ge0).
+\end{gathered}
+\]
+
+\textbf{证明。}
+在探针交换算符的正本征态上，生成元退化为振子位置型正交分量算符。其自伴闭包的
+Weyl
+指数是位移算符，把真空送到所列相干态。每一数态质量严格正，因此任意有限截断外都有质量。初始探针与真空的总激发支撑却不超过一。\(\square\)
+
+反例否定的是无误差的硬支撑外推，不是否定受控尾估计、Trotter 近似或完整
+Rabi
+模型的研究价值。一般同时作用、弱泄漏和删模需要相应的新预算，不能把被否定命题改成``已闭合正向结论''。
+
+\section{68.7 同源端到端证书}
+
+\phantomsection\label{p-rob-03}{}
+
+\textbf{P-ROB-03（增长源、物理过滤与省略实现的统一证书）。}
+采用上述原源、两步接受事件和合法策略。在规定设计区间、初始均值和理想操作合同内，共蓝实现与省略蓝实现都具有完整
+CQ 充分误差界；后者额外要求独立的小脉冲保证。
+
+\[
+\begin{gathered}
+H=s^2I,\quad p_{\rm source}=s^2\ge1369/2500,\quad
+p_{\rm actual}=s_Ns^2,\\
+\bar n=1,\quad N=4095,\quad |\beta|\le1/100,\quad
+\varepsilon_{\rm required}=1/20,\\
+\varepsilon_{\rm matched}\le\frac1{50}+\frac{1+\sqrt{16381}}{8192},\\
+\varepsilon_{\rm omitted}\le\frac1{50}+\frac{1+\sqrt{16381}}{8192}
++\frac{\sqrt2}{100}
+<0.049887775359266728<\frac1{20}.
+\end{gathered}
+\]
+
+这里 \(p_{\rm actual}\)
+指包含过滤的原源尝试；编译器在过滤通过后不再有原源失败，其交付概率为
+\(s_N\)。
+
+\textbf{证明。} 从原七叶仪器求后向效应得到首式，故完整条件目标自身为
+CPTP，制备误差可经该通道收缩。对相同输入，共参数实际门使每条路径的条件量子态相同，完整
+CQ 距离恰为经典路径 TV；P-ROB-02
+给设计域上五十分之一。插入实际过滤，按三角不等式加上锐过滤界；省略方案再加上一命题的蓝省略界。失败记录、系统和参考均处于同一个输出空间。
+
+有理区间检查器用整数平方根分别包围两个根式，证明总上界严格低于要求，不靠浮点四舍五入。其上端为
+4988777535926672699 除以十的二十次方；剩余允许误差约为
+0.000112224640733273。采用第67章曾用于更简单模型的较松过滤上界，合计约为
+0.05001127625，不能认证本章精度。较松上界失败不证明物理不可实现。\(\square\)
+
+实际器件还必须把门匹配、过滤、有效模型、读出等误差组合到相同完整输出中；本章没有测得它们。有限矩阵浮点误差、校准置信概率和物理迹距离误差属于不同对象，不相互冒充。原锐后选择推广仍有效，但本例无需再除以接受率，因为已从源证明条件目标线性且保迹。
+
+\section{68.8 旗计数对蓝面积不可识别}
+
+\phantomsection\label{c-rob-02}{}
+
+\textbf{C-ROB-02（相同旗概率不认证蓝脉冲末态）。}
+在本模型中，所有原旗记录概率仅依赖参数中的概率分量；它们不能识别蓝脉冲面积，亦不能认证省略后的完整末态精度。
+
+\textbf{证明。}
+每个标签事件都是参数标量乘酉，故所有路径质量由标量乘积决定。取真空输入，比较零蓝面积与二分之圆周率的蓝面积。原相位和红门固定真空；部署路径零一在后一模型中把真空送到与其正交的激发态。仅这一可见路径的完整
+CQ 贡献就给出下界：
+
+\[
+D(C_{\pi/2}(|g,0\rangle\langle g,0|),C_0(|g,0\rangle\langle g,0|))
+\ge Q_{01}=156/625>1/20.
+\]
+
+两种模型的全部旗分布仍相同。该反例故意违反独立的小蓝面积前提，用来证明旗校准无法提供该前提，并不反驳有此前提的充分界。\(\square\)
+
+因此部署量词仍是先从合法独立校准获得联合集合，再选择一套权重，对集合中每个参数有效。原旗校准可约束概率参数，却不能给蓝面积、门同源性或终态测试器的保证。需要独立脉冲/频谱/过程校准，保留共同
+nuisance
+相关性；没有这些数据时，实际器件状态为``证据不足''，不是认证成功或认证不可能。
+
+\section{68.9 完整成本与两种物理调度}
+
+相同仪器可有不同实际调度。若先读取独立旗，再执行所选门，原尝试的蓝调用均值由全部失败与成功叶求得；若先相干控制再读旗，则可能采用每个活动时槽恰调度一次蓝控制的实现；下面
+scheduled
+等式专指该实现，并不适用于一切相干控制设备。编译蓝调用公式仅指匹配蓝实现，省略实现的蓝调用次数为零。这不能从标签计数自行决定。
+
+\[
+\begin{gathered}
+\mathbb E[\#B]_{\rm source,feedforward}=s_Nsq(1+s),\quad
+\mathbb E[\#B]_{\rm compiled,feedforward}=s_N,\\
+\mathbb E[\#B]_{\rm source,scheduled}=s_N(1+s),\quad
+\mathbb E[\#B]_{\rm compiled,scheduled}=2s_N,\\
+\mathbb E[C_{\rm per\ delivery}]
+=\frac{\mu_{\rm complete\ attempt}}{s_Ns^2}
++\frac{C_{\rm calibration}}{m}.
+\end{gathered}
+\]
+
+最后一式限于可真实重备、fresh-reset
+且独立同分布的源尝试；校准由交付数量摊销。尝试均值包含准备、过滤、失败复位、辅助、控制、随机化、读出、记录和经典计算，每项按其真实发生事件计费。过滤通过后的条件成本先乘通过概率再进入分子。未知量子输入没有免费重试；省略蓝脉冲也不自动产生实测时间、能量或货币优势。
+
+\section{68.10 证据、集成与继续责任}
+
+本章六项增量均为声明域内的书面证明或反例，配有独立精确算术及有限浮点检查；没有新增
+Lean
+声明。既有158项证明/配置输入和13项运行输入按源码身份复用，其旧回执没有改写成本章执行。新的原源计算、矩形组合、参考态、失败记录、非交换
+CP
+映射和错误边界反控都有本轮新执行身份。三个原生研究任务完成交叉审查；这是内部
+AI 审查，不是外部人类同行评议。
+
+数值主见证取初始截断 \(N=1\)、二维参考和最终 \(G\le5\)
+载体。非零失败压力控制取输入支撑 \(G\le2\)、过滤 \(N=1\) 和共同输出
+\(G\le6\)，人为选择尾质量
+\(1/4096\)。它验证实际过滤接口，未数值执行解析证书的 \(N=4095\) 大载体。
+
+没有取得协议匹配的真实器件原始数据。原合成校准管线仍是合成证据，不能认证新增蓝面积前提。下一项可验收理论责任是同时作用或有限浴删模下的同一干预过程尾界，并继续检查真实控制误差能否小于剩余预算。完整
+OPT、独立复量子选择、测量机制识别、长期极限、场论与
+EFT、粒子与味预测、引力和宇宙学沿现行路线图分别保留。这个有限增长实例的完成不代表全领域物理闭合。
+
 \chapter{附录 A. 符号、单位与标准定理责任表}\label{appendix-a}
 
 \section{A.1 常用符号}
@@ -11931,7 +12221,7 @@ Lindblad 算符或线丛。所有重用符号以本章类型为准。
 
 \chapter{附录 B. 编号证明结果注册表}\label{appendix-b}
 
-3.7双语修订完整保留3.6研究版的173个稳定编号，没有另行新增或撤销结果。其中161项来自3.5版，第66章的11项命题与1项反例在3.6研究修订中新增。更早的组成是：2.0版78项，第49--50章10项，第51--53章13项，第54--56章16项，第57--59章14项，第60--62章16项，第63--65章14项。编号登记正文解析结果，不表示原创性、Lean声明或实验确认的计数；完整前提、证明和开放责任见对应章节。两种语言的标题与锚点另有逐项映射。3.8版在这些原有记录之后增列第67章九项结果，合计182项；原173项结果的账本对象及历史验证身份保持不变。
+3.7双语修订完整保留3.6研究版的173个稳定编号，没有另行新增或撤销结果。其中161项来自3.5版，第66章的11项命题与1项反例在3.6研究修订中新增。更早的组成是：2.0版78项，第49--50章10项，第51--53章13项，第54--56章16项，第57--59章14项，第60--62章16项，第63--65章14项。编号登记正文解析结果，不表示原创性、Lean声明或实验确认的计数；完整前提、证明和开放责任见对应章节。两种语言的标题与锚点另有逐项映射。3.8版在这些原有记录之后增列第67章九项结果，合计182项；原173项结果的账本对象及历史验证身份保持不变。3.9版再加入第68章六项结果，合计188项；原182项结果对象保持不变。
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2400}}
@@ -12237,6 +12527,18 @@ C-ROB-01（逐参数可实现不推出一次鲁棒部署）。 \\
 P-ROB-02（同一原源的精确设计区间证书）。 \\
 \hyperref[p-micro-03]{P-MICRO-03} & 67 &
 P-MICRO-03（单激发边缘混合，完整记录不遗忘）。 \\
+\hyperref[p-micro-04]{P-MICRO-04} & 68 &
+P-MICRO-04（分段蓝脉冲的有限激发增长）。 \\
+\hyperref[p-opt-04]{P-OPT-04} & 68 &
+P-OPT-04（增长载体上的完整矩形操作桥）。 \\
+\hyperref[p-micro-05]{P-MICRO-05} & 68 &
+P-MICRO-05（无蓝参照下的完整记录省略界）。 \\
+\hyperref[c-micro-02]{C-MICRO-02} & 68 &
+C-MICRO-02（同时红蓝作用的无限尾反例）。 \\
+\hyperref[p-rob-03]{P-ROB-03} & 68 &
+P-ROB-03（增长源、物理过滤与省略实现的统一证书）。 \\
+\hyperref[c-rob-02]{C-ROB-02} & 68 &
+C-ROB-02（相同旗概率不认证蓝脉冲末态）。 \\
 \end{longtable}
 
 \chapter{附录 C. 来源、继承关系与研究诚实性}\label{appendix-c}
@@ -13387,9 +13689,9 @@ print(json.dumps(result,ensure_ascii=False,indent=2))
 \section{E.1 完整语义主源与派生阅读版}
 
 稳定中文主文件 \texttt{UEOT\_\allowbreak PHYSICS.\allowbreak md} 与完整英文对应本
-\texttt{UEOT\_\allowbreak PHYSICS.\allowbreak en.\allowbreak md} 均包含第0--67章和附录A--F。各自的
+\texttt{UEOT\_\allowbreak PHYSICS.\allowbreak en.\allowbreak md} 均包含第0--68章和附录A--F。各自的
 \texttt{.\allowbreak tex}、\allowbreak \texttt{.\allowbreak pdf}
-是这些主源的实际派生阅读版，包含数学排版、全文章目录、稳定结果编号、原始推导和内嵌代码。3.8版在第三版的完整双语书稿中加入第67章研究增量。版本号标识出版物，已解决与未解决的物理问题由正文和证据分别决定。
+是这些主源的实际派生阅读版，包含数学排版、全文章目录、稳定结果编号、原始推导和内嵌代码。3.9版在连续双语书稿中加入第68章研究增量，并保留第67章及全部先前成果。版本号标识出版物，已解决与未解决的物理问题由正文和证据分别决定。
 
 两种语言承担相同的科学责任。文字为自然阅读作适当调整，前提、公式、常数、结果编号、源码身份与经验限定则共同核对。翻译不静默改变数学符号；公式中的纯文字标签和有记录的编辑更正列入忠实性报告。
 
@@ -15046,6 +15348,20 @@ UEOTQM.OperationalEquivalence.symmetricUnit
 UEOTQM.OperationalEquivalence.symmetricUnit.eq_1
 UEOTQM.OperationalEquivalence.symmetricUnit_hermitian
 \end{Verbatim}
+
+\section{F.7 v31.12 增长载体的证明与执行范围}
+
+第68章六项结果的无限维、域、完整过程及误差组合论证是书面证明。本轮没有新增
+Lean
+源、定理或公理审计执行。\texttt{growing\_\allowbreak cutoff/\allowbreak verify\_\allowbreak inherited\_\allowbreak evidence.\allowbreak py}
+将158项证明／配置输入和13项旧运行输入与固定历史回执逐字节核对，并检查完整证明／工具目录未出现新增或变更；满足条件时复用
+v31.11 在提交 \texttt{06ca0dce8b03\allowbreak cd34e86785e9\allowbreak 7fdc3c7aa2c5\allowbreak 82bd} 上的实际
+CI，历史1365项公共公理报告保持原身份。任何证明输入或清单变化都会选择完整机器验证，而不能延用该复用结论。
+
+新的四组运行检查位于
+\texttt{physics/\allowbreak qm/\allowbreak growing\_\allowbreak cutoff/\allowbreak }，覆盖完整矩形源、参考系统、停止记录、原第66章解释器、独立增长检查和精确有理数证书。浮点有限例、精确代数证书、合成观测与一般书面量词分别登记在
+\texttt{kernel/\allowbreak evidence/\allowbreak v31.\allowbreak 12/\allowbreak }。解析截断4095不等于实际构造该维矩阵；完整记录数值例使用较小已知支撑，范围写入回执。全部执行记录标明真实环境和检出身份，不把检查器作者写成远端执行者。本轮三名智能体交叉审查属于内部
+AI 审查，未取得外部人类同行评议或真实器件数据。
 
 \backmatter
 \end{document}

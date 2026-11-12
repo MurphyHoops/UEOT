@@ -61,7 +61,7 @@ def inspect_book(source):
     if set(targets)-set(anchors):
         raise ValueError('Unresolved internal targets: '+str(set(targets)-set(anchors)))
     version = re.search(r'^version: \"([^\"]+)\"$', source, re.M)
-    contracts = {'3.7': (67, 173), '3.8': (68, 182)}
+    contracts = {'3.7': (67, 173), '3.8': (68, 182), '3.9': (69, 188)}
     if version is None or version.group(1) not in contracts:
         raise ValueError('Unknown book edition; supply an explicitly reviewed structure contract')
     expected_chapters, expected_results = contracts[version.group(1)]

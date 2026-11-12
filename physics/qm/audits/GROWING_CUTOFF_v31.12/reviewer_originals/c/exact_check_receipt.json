@@ -1,0 +1,201 @@
+{
+  "schema": "ueot-qm.segmented-growth-independent-certificate/1",
+  "classification": "EXACT_RATIONAL_ENCLOSURE_OF_ANALYTIC_MODEL_BOUND",
+  "all_verified": true,
+  "new_hardware_data": false,
+  "checks": [
+    {
+      "name": "fixed_symmetric_design_region",
+      "verified": true,
+      "detail": "The analytic controller is tied to the complete design interval"
+    },
+    {
+      "name": "frozen_source_contract",
+      "verified": true,
+      "detail": "Exact two-step source, stopping alphabet, and shared-parameter relation"
+    },
+    {
+      "name": "visible_controller",
+      "verified": true,
+      "detail": "The second coin consumes only the visible first label"
+    },
+    {
+      "name": "minimax_word_law",
+      "verified": true,
+      "detail": "This law follows from the actual conditional weights"
+    },
+    {
+      "name": "source_leaf_partition",
+      "verified": true,
+      "detail": "Exact symbolic polynomial identity for all seven raw records"
+    },
+    {
+      "name": "same_parameter_conditioning",
+      "verified": true,
+      "detail": "The scalar acceptance is s(q)^2, not a supplied target certificate"
+    },
+    {
+      "name": "design_minimax_endpoint_witness",
+      "verified": true,
+      "detail": "Endpoint marginal triangle bound is matched by this policy"
+    },
+    {
+      "name": "paper_uniform_case_domain",
+      "verified": true,
+      "detail": "The two explicit nonnegative remainders cover the entire interval; finite endpoint tests alone are not the universal proof"
+    },
+    {
+      "name": "compiled_blue_count",
+      "verified": true,
+      "detail": "This is the Q-policy expected executed count, not the source count 2q"
+    },
+    {
+      "name": "frozen_numeric_case",
+      "verified": true,
+      "detail": "This is the independently frozen example, not a generic feasibility solver"
+    },
+    {
+      "name": "energy_cutoff_domain",
+      "verified": true,
+      "detail": "Low-spectral projection has positive success and tail e<1"
+    },
+    {
+      "name": "frozen_pulse_precision",
+      "verified": true,
+      "detail": "Pulse-area magnitude is a model/engineering premise, not a flag estimate"
+    },
+    {
+      "name": "rational_filter_enclosure",
+      "verified": true,
+      "detail": "Integer arithmetic encloses sqrt(4e-3e^2)"
+    },
+    {
+      "name": "rational_energy_enclosure",
+      "verified": true,
+      "detail": "Integer arithmetic encloses the no-blue reference energy bound"
+    },
+    {
+      "name": "declared_precision_sufficient",
+      "verified": true,
+      "detail": "Complete-output upper-bound formula, including real filter failure, is below the frozen target"
+    },
+    {
+      "name": "matched_blue_precision_sufficient",
+      "verified": true,
+      "detail": "The matched-blue source/action construction needs no small-beta approximation"
+    },
+    {
+      "name": "loose_filter_bound_does_not_certify",
+      "verified": true,
+      "detail": "Failure of this weaker upper bound is insufficient evidence, not physical impossibility"
+    },
+    {
+      "name": "larger_pulse_allowance_loses_this_certificate",
+      "verified": true,
+      "detail": "Doubling the allowed beta makes this bound uninformative at the frozen precision"
+    },
+    {
+      "name": "actual_preparation_success_included",
+      "verified": true,
+      "detail": "Physical attempts succeed with s_N*s^2; the old conditional denominator alone is insufficient"
+    },
+    {
+      "name": "flag_blind_beta_counterexample",
+      "verified": true,
+      "detail": "At beta=pi/2, vacuum word 01 alone gives D>=Q(01); flags have the same law as beta=0"
+    },
+    {
+      "name": "design_lower_bound_not_a_calibration_lower_bound",
+      "verified": true,
+      "detail": "A narrower calibrated set may admit better weights; design optimality is not transferred"
+    },
+    {
+      "name": "oracle_policy_is_not_deployment",
+      "verified": true,
+      "detail": "w(theta)=q is pointwise exact, but one unknown-parameter policy cannot equal both endpoints"
+    },
+    {
+      "name": "visible_label_failure_control",
+      "verified": true,
+      "detail": "Erasing labels would hide a maximal complete-CQ discrepancy"
+    }
+  ],
+  "derived": {
+    "q_design_interval": [
+      "12/25",
+      "13/25"
+    ],
+    "policy_word_weights": {
+      "00": "313/1250",
+      "01": "156/625",
+      "10": "156/625",
+      "11": "313/1250"
+    },
+    "design_full_record_radius": "1/50",
+    "compiled_label1_marginals": [
+      "1/2",
+      "1/2"
+    ],
+    "compiled_expected_blue_count": "1",
+    "source_conditional_expected_blue_count": "2*q",
+    "tail_mass_upper": "1/4096",
+    "sharp_complete_filter_bound_interval": [
+      "492051241735493/31250000000000000",
+      "31491279471071553/2000000000000000000"
+    ],
+    "normalized_low_filter_energy_upper": "1",
+    "blue_omission_bound_interval": [
+      "176776695296636881/12500000000000000000",
+      "1414213562373095049/100000000000000000000"
+    ],
+    "matched_blue_total_bound_interval": [
+      "1117051241735493/31250000000000000",
+      "71491279471071553/2000000000000000000"
+    ],
+    "omitted_blue_total_bound_interval": [
+      "623597191990834081/12500000000000000000",
+      "4988777535926672699/100000000000000000000"
+    ],
+    "certified_remaining_model_error_margin": "11222464073327301/100000000000000000000",
+    "required_precision": "1/20",
+    "loose_filter_total_bound_interval": [
+      "625140953109136881/12500000000000000000",
+      "5001127624873095049/100000000000000000000"
+    ],
+    "larger_beta_control": "1/50",
+    "filter_success_lower": "4095/4096",
+    "unfiltered_source_success_lower": "1369/2500",
+    "complete_attempt_source_success_lower": "1121211/2048000",
+    "beta_blind_record_counterexample_distance_lower": "156/625"
+  },
+  "decision": {
+    "matched_blue_model": "CERTIFIED_SUFFICIENT_BOUND",
+    "omitted_blue_given_independent_beta_bound": "CERTIFIED_SUFFICIENT_BOUND",
+    "omitted_blue_from_flags_only": "INSUFFICIENT_PHYSICAL_INPUT",
+    "looser_preparation_bound": "INSUFFICIENT_BOUND",
+    "doubled_beta_using_same_bound": "INSUFFICIENT_BOUND",
+    "hardware_membership": "UNVERIFIED",
+    "empirical_full_CQ_error": "UNVERIFIED",
+    "resource_advantage": "UNVERIFIED"
+  },
+  "bound_meaning": "Enclosures of proved model upper-bound formulas; not measured errors, error lower bounds, or statistical confidence intervals",
+  "physical_inputs": [
+    "One shared theta=(q,phi,alpha,beta) for source and library",
+    "Finite segmented V0=U0,V1=B_beta U1 with U0,U1 preserving G",
+    "Ideal low-spectral filter of G with the stated reset failure map",
+    "Mean excitation at most the frozen E for the actual joint input",
+    "Finite-dimensional untouched reference and visible classical policy",
+    "For omission only: an independent |beta| bound, not inferred from flag counts"
+  ],
+  "not_covered": [
+    "general infinite-dimensional proof-assistant acceptance",
+    "simultaneous Rabi dynamics or arbitrary non-segmented drives",
+    "actual device/model matching, drift, leakage or pulse calibration",
+    "full-CQ tomography from finite flag data",
+    "independent regeneration of unknown quantum inputs"
+  ],
+  "input_sha256": {
+    "model": "d1a56d75b9cb3312cb5b076a58497c32953e92e55f64b37ac93a8af2327912f0",
+    "checker": "ea15be71775cd004724e583d7f5f745f788155d281b43b0018691fb96a71b840"
+  }
+}

@@ -16,8 +16,10 @@ on:
       - "formalization/ueot-core/lean-toolchain"
       - "physics/qm/conditioning/**"
       - "physics/qm/operational_micro_robust/**"
+      - "physics/qm/growing_cutoff/**"
       - "physics/qm/book/build/**"
       - "physics/qm/book/UEOT_PHYSICS.md"
+      - "physics/qm/book/UEOT_PHYSICS.en.md"
       - "physics/qm/kernel/*.py"
       - "physics/qm/kernel/ueot_qm/**"
       - "physics/qm/kernel/tests/**"
@@ -37,8 +39,10 @@ on:
       - "formalization/ueot-core/lean-toolchain"
       - "physics/qm/conditioning/**"
       - "physics/qm/operational_micro_robust/**"
+      - "physics/qm/growing_cutoff/**"
       - "physics/qm/book/build/**"
       - "physics/qm/book/UEOT_PHYSICS.md"
+      - "physics/qm/book/UEOT_PHYSICS.en.md"
       - "physics/qm/kernel/*.py"
       - "physics/qm/kernel/ueot_qm/**"
       - "physics/qm/kernel/tests/**"
@@ -62,6 +66,7 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
+          fetch-depth: 0
       - name: Install Python
         uses: actions/setup-python@v6
         with:
@@ -74,8 +79,10 @@ jobs:
         run: python physics/qm/book/build/verify_book.py
       - name: Verify operational microscopic robust increment
         run: python physics/qm/operational_micro_robust/run_verification.py --output-dir /tmp/ueot-qm-operational-micro-robust
-      - name: Verify bilingual chapter67 identities and evidence boundaries
-        run: python physics/qm/book/build/verify_v3_8_increment.py --repo-root . --output /tmp/ueot-qm-book3.8-increment.json --require-complete
+      - name: Verify separated-pulse growing carriers and exact joint certificate
+        run: python physics/qm/growing_cutoff/run_verification.py --output-dir /tmp/ueot-qm-growing-cutoff
+      - name: Verify bilingual chapter68 identities and evidence boundaries
+        run: python physics/qm/book/build/verify_v3_9_increment.py --repo-root . --output /tmp/ueot-qm-book3.9-increment.json --require-complete
       - name: Verify exact kernel and independent negative controls
         run: python physics/qm/kernel/verify_kernel.py --output /tmp/ueot-qm-runtime-verification.json
       - name: Run complete kernel example
@@ -94,7 +101,8 @@ jobs:
           path: |
             /tmp/ueot-qm-finite-conditioning/
             /tmp/ueot-qm-operational-micro-robust/
-            /tmp/ueot-qm-book3.8-increment.json
+            /tmp/ueot-qm-growing-cutoff/
+            /tmp/ueot-qm-book3.9-increment.json
             /tmp/ueot-qm-runtime-verification.json
             /tmp/ueot-qm-demo.json
             /tmp/ueot-qm-demo-v312.json
@@ -113,34 +121,46 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
+          fetch-depth: 0
+      - name: Check exact inherited proof identity or require a full build
+        id: proof_scope
+        continue-on-error: true
+        working-directory: .
+        run: python3 physics/qm/growing_cutoff/verify_inherited_evidence.py --detect --github-output "$GITHUB_OUTPUT" --output "$RUNNER_TEMP/ueot-qm-proof-reuse.json"
       - name: Record source identity
+        if: (steps.proof_scope.outcome != 'success' || steps.proof_scope.outputs.reuse != 'true')
         run: |
           git rev-parse HEAD | tee source-identity.log
           sha256sum UEOTQM/*.lean UEOTQM.lean lake-manifest.json lean-toolchain scripts/install_lean.sh >> source-identity.log
           cat source-identity.log
           python3 scripts/record_source.py --output source-manifest.json
       - name: Check inherited dependency lock
+        if: (steps.proof_scope.outcome != 'success' || steps.proof_scope.outputs.reuse != 'true')
         run: python3 scripts/check_dependencies.py
       - name: Install and verify official pinned Lean
+        if: (steps.proof_scope.outcome != 'success' || steps.proof_scope.outputs.reuse != 'true')
         shell: bash
         run: |
           set -o pipefail
           bash scripts/install_lean.sh "$RUNNER_TEMP/ueot-qm-lean" 2>&1 | tee lean-install.log
       - name: Restore pinned dependencies
+        if: (steps.proof_scope.outcome != 'success' || steps.proof_scope.outputs.reuse != 'true')
         id: dependencies
         uses: actions/cache/restore@v4
         with:
           path: formalization/ueot-qm/.lake/packages
           key: ueot-qm-deps-${{ runner.os }}-${{ hashFiles('formalization/ueot-qm/lake-manifest.json', 'formalization/ueot-qm/lean-toolchain') }}
       - name: Restore Mathlib proof cache
+        if: (steps.proof_scope.outcome != 'success' || steps.proof_scope.outputs.reuse != 'true')
         run: lake exe cache get
       - name: Save pinned dependency cache
-        if: steps.dependencies.outputs.cache-hit != 'true'
+        if: (steps.proof_scope.outcome != 'success' || steps.proof_scope.outputs.reuse != 'true') && steps.dependencies.outputs.cache-hit != 'true'
         uses: actions/cache/save@v4
         with:
           path: formalization/ueot-qm/.lake/packages
           key: ${{ steps.dependencies.outputs.cache-primary-key }}
       - name: Reject proof escapes
+        if: (steps.proof_scope.outcome != 'success' || steps.proof_scope.outputs.reuse != 'true')
         shell: bash
         run: |
           if grep -RInE '^[[:space:]]*(axiom|opaque)[[:space:]]|\b(sorry|admit|native_decide)\b' UEOTQM; then
@@ -148,11 +168,13 @@ jobs:
             exit 1
           fi
       - name: Build all QM proofs
+        if: (steps.proof_scope.outcome != 'success' || steps.proof_scope.outputs.reuse != 'true')
         shell: bash
         run: |
           set -o pipefail
           lake build UEOTQM 2>&1 | tee lean-build.log
       - name: Audit theorem axioms
+        if: (steps.proof_scope.outcome != 'success' || steps.proof_scope.outputs.reuse != 'true')
         shell: bash
         run: |
           set -o pipefail
@@ -162,8 +184,10 @@ jobs:
           fi
           python3 scripts/check_axioms.py
       - name: Verify generated exact certificates and false witnesses
+        if: (steps.proof_scope.outcome != 'success' || steps.proof_scope.outputs.reuse != 'true')
         run: python3 ../../physics/qm/kernel/verify_lean_exports.py --output-dir "$RUNNER_TEMP/ueot-qm-lean-exports"
       - name: Verify retained finite and quantum Lean witnesses
+        if: (steps.proof_scope.outcome != 'success' || steps.proof_scope.outputs.reuse != 'true')
         run: python3 scripts/verify_finite_witnesses.py --output-dir "$RUNNER_TEMP/ueot-qm-finite-witnesses"
       - name: Archive proof evidence
         if: always()
@@ -171,6 +195,7 @@ jobs:
         with:
           name: ueot-qm-lean-${{ github.run_id }}
           path: |
+            ${{ runner.temp }}/ueot-qm-proof-reuse.json
             formalization/ueot-qm/source-identity.log
             formalization/ueot-qm/source-manifest.json
             formalization/ueot-qm/lean-install.log
