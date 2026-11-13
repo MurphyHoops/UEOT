@@ -1,0 +1,221 @@
+{
+  "checker": "C_INDEPENDENT_RAW_RECONSTRUCTION_V2",
+  "checker_sha256": "40e9f2816a73f041bd1bb7f368b96303cea54c8208e8100c7994fab1279d7b38",
+  "root": "/Users/murphyhoops/Documents/ueot-sqlite-study-20261113/calibration/run-v2",
+  "split": "calibration",
+  "preregistration_commit": null,
+  "runner_sha256_recorded": "bdbe87252da0b107602f7e30509b4b094f53d97a647ac9dc34cb378195dd92d9",
+  "protocol_sha256_recorded": "0ab41b5b47b2177accc78f68e10df01284daec831967d1fd21aeff6107917c20",
+  "raw_files_directly_rehashed": 95,
+  "global_errors": [],
+  "planned": 2,
+  "trials_checked": 2,
+  "trials_without_check_errors": 2,
+  "candidate_observed_counts": {
+    "REJECT_HISTORY": 1,
+    "ACCEPT_CURRENT_ALLOWED": 1
+  },
+  "trials": [
+    {
+      "spec": {
+        "run_id": "108848dd-74db-5f41-9315-052493eb1855",
+        "split": "calibration",
+        "workload": "W0",
+        "scenario": "STALE_BACKUP",
+        "repetition": 0,
+        "order": 0,
+        "policy_rotation": 0
+      },
+      "errors": [],
+      "ack_class_C": "ACKED",
+      "allowed_state_count_C": 1,
+      "policies": {
+        "candidate": {
+          "expected": "REJECT_HISTORY",
+          "observed": "REJECT_HISTORY",
+          "complete": true,
+          "callback_count": 3318,
+          "budget": 1000000,
+          "membership_exact": false,
+          "ack_class": "ACKED",
+          "structure_ok": true,
+          "actual_state_sha256": "4f2eccf528b5ee1691f96f4c239e50362e963d249253b100079eafbea4cd9185",
+          "weak_projection": [
+            true,
+            [
+              [
+                "ok"
+              ]
+            ],
+            []
+          ]
+        },
+        "strong_baseline": {
+          "expected": "REJECT_HISTORY",
+          "observed": "REJECT_HISTORY",
+          "complete": true,
+          "callback_count": 3318,
+          "budget": 1000000,
+          "membership_exact": false,
+          "ack_class": "ACKED",
+          "structure_ok": true,
+          "actual_state_sha256": "4f2eccf528b5ee1691f96f4c239e50362e963d249253b100079eafbea4cd9185",
+          "weak_projection": [
+            true,
+            [
+              [
+                "ok"
+              ]
+            ],
+            []
+          ]
+        },
+        "weak_structure": {
+          "expected": "STRUCTURE_OK",
+          "observed": "STRUCTURE_OK",
+          "complete": true,
+          "callback_count": 2017,
+          "budget": 1000000,
+          "membership_exact": null,
+          "ack_class": "ACKED",
+          "structure_ok": true,
+          "actual_state_sha256": null,
+          "weak_projection": [
+            true,
+            [
+              [
+                "ok"
+              ]
+            ],
+            []
+          ]
+        },
+        "identity_ablation": {
+          "expected": "ACCEPT_ABLATED",
+          "observed": "ACCEPT_ABLATED",
+          "complete": true,
+          "callback_count": 3318,
+          "budget": 1000000,
+          "membership_exact": false,
+          "ack_class": "ACKED",
+          "structure_ok": true,
+          "actual_state_sha256": "4f2eccf528b5ee1691f96f4c239e50362e963d249253b100079eafbea4cd9185",
+          "weak_projection": [
+            true,
+            [
+              [
+                "ok"
+              ]
+            ],
+            []
+          ]
+        }
+      },
+      "adjudication_exact_membership_C": false,
+      "worker_source_id": "2025-06-12 13:14:41 f0ca7bba1c5e232e5d279fad6338121ab55af0c8c68c84cdfb18ba5114dcaapl",
+      "original_files_verified": 1,
+      "passed_independent_checks": true
+    },
+    {
+      "spec": {
+        "run_id": "8ab897cd-7537-5654-8603-440f253dd95c",
+        "split": "calibration",
+        "workload": "W0",
+        "scenario": "PRECOMMIT_KILL",
+        "repetition": 0,
+        "order": 1,
+        "policy_rotation": 1
+      },
+      "errors": [],
+      "ack_class_C": "NOT_COMMITTED",
+      "allowed_state_count_C": 1,
+      "policies": {
+        "candidate": {
+          "expected": "ACCEPT_CURRENT_ALLOWED",
+          "observed": "ACCEPT_CURRENT_ALLOWED",
+          "complete": true,
+          "callback_count": 3338,
+          "budget": 1000000,
+          "membership_exact": true,
+          "ack_class": "NOT_COMMITTED",
+          "structure_ok": true,
+          "actual_state_sha256": "cc98ef0791139f6b8912584eeda393e1eadf7a3c8b39d7278d26e55d175a49a5",
+          "weak_projection": [
+            true,
+            [
+              [
+                "ok"
+              ]
+            ],
+            []
+          ]
+        },
+        "strong_baseline": {
+          "expected": "ACCEPT_CURRENT_ALLOWED",
+          "observed": "ACCEPT_CURRENT_ALLOWED",
+          "complete": true,
+          "callback_count": 3338,
+          "budget": 1000000,
+          "membership_exact": true,
+          "ack_class": "NOT_COMMITTED",
+          "structure_ok": true,
+          "actual_state_sha256": "cc98ef0791139f6b8912584eeda393e1eadf7a3c8b39d7278d26e55d175a49a5",
+          "weak_projection": [
+            true,
+            [
+              [
+                "ok"
+              ]
+            ],
+            []
+          ]
+        },
+        "weak_structure": {
+          "expected": "STRUCTURE_OK",
+          "observed": "STRUCTURE_OK",
+          "complete": true,
+          "callback_count": 2032,
+          "budget": 1000000,
+          "membership_exact": null,
+          "ack_class": "NOT_COMMITTED",
+          "structure_ok": true,
+          "actual_state_sha256": null,
+          "weak_projection": [
+            true,
+            [
+              [
+                "ok"
+              ]
+            ],
+            []
+          ]
+        },
+        "identity_ablation": {
+          "expected": "ACCEPT_ABLATED",
+          "observed": "ACCEPT_ABLATED",
+          "complete": true,
+          "callback_count": 3338,
+          "budget": 1000000,
+          "membership_exact": true,
+          "ack_class": "NOT_COMMITTED",
+          "structure_ok": true,
+          "actual_state_sha256": "cc98ef0791139f6b8912584eeda393e1eadf7a3c8b39d7278d26e55d175a49a5",
+          "weak_projection": [
+            true,
+            [
+              [
+                "ok"
+              ]
+            ],
+            []
+          ]
+        }
+      },
+      "adjudication_exact_membership_C": true,
+      "worker_source_id": "2025-06-12 13:14:41 f0ca7bba1c5e232e5d279fad6338121ab55af0c8c68c84cdfb18ba5114dcaapl",
+      "original_files_verified": 2,
+      "passed_independent_checks": true
+    }
+  ],
+  "boundary": "Exact permitted-state equality rebuilt from raw sent requests/received ACKs; no B import or verdict generator. Clone-before-open identity is historical producer record, compared to directly rehashed immutable source; post-run files directly rehashed."
+}

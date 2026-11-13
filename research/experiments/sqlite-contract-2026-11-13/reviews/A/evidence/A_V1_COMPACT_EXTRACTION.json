@@ -1,0 +1,627 @@
+{
+  "phase": "CALIBRATION_ONLY",
+  "source_receipt_sha256": "7c404a6aa046d7ae8f8168a25797aff03f57b465865b992a25ddcf781c00112e",
+  "source_compact_sha256": "8ad66e20695954acd9d21208b7407780bce9f10ab5ff4080e14f712b3895240b",
+  "summary_hash_matches": true,
+  "planned_ids_match_exactly": true,
+  "independent_full_oracle_reconstruction_by_A": false,
+  "rows": [
+    {
+      "spec": {
+        "run_id": "3eb28cdc-dbd0-54c9-b719-a93e31193f52",
+        "split": "calibration",
+        "workload": "W0",
+        "scenario": "COMMIT_NO_ACK_KILL",
+        "repetition": 0,
+        "order": 0,
+        "policy_rotation": 0
+      },
+      "status": "COMPLETE",
+      "ack_class": "UNKNOWN",
+      "worker_returncode": -9,
+      "completion_certificate": {
+        "kind": "REQUEST_WITHOUT_ACK",
+        "txn_id": "f56af4e4-b1a2-5777-be50-c7d244b0362f"
+      },
+      "worker_config": {
+        "journal_mode": "delete",
+        "synchronous": 2,
+        "foreign_keys": 1,
+        "page_size": 4096,
+        "cache_size": 5,
+        "cache_spill": 5,
+        "locking_mode": "normal",
+        "busy_timeout": 1000,
+        "fullfsync": 0
+      },
+      "postfault_files": [
+        {
+          "name": "db.sqlite",
+          "bytes": 114688,
+          "sha256": "7733a06e9bb827d4af77a488fc4d022cbfec43f5f5db250449dda90514f55cbf",
+          "journal_header_28_hex": null,
+          "journal_hot_header_candidate": false
+        }
+      ],
+      "original_unchanged": true,
+      "policies": {
+        "candidate": {
+          "decision": "ACCEPT_CURRENT_ALLOWED",
+          "callbacks": 350,
+          "budget": 1000000,
+          "complete": true,
+          "rows": 23,
+          "canonical_bytes": 98795,
+          "ack_class": "UNKNOWN",
+          "history_membership": true,
+          "connect_attempted": true
+        },
+        "strong_baseline": {
+          "decision": "ACCEPT_CURRENT_ALLOWED",
+          "callbacks": 350,
+          "budget": 1000000,
+          "complete": true,
+          "rows": 23,
+          "canonical_bytes": 98795,
+          "ack_class": "UNKNOWN",
+          "history_membership": true,
+          "connect_attempted": true
+        },
+        "weak_structure": {
+          "decision": "STRUCTURE_OK",
+          "callbacks": 279,
+          "budget": 1000000,
+          "complete": true,
+          "rows": 12,
+          "canonical_bytes": 69,
+          "ack_class": "UNKNOWN",
+          "history_membership": null,
+          "connect_attempted": true
+        },
+        "identity_ablation": {
+          "decision": "ACCEPT_ABLATED",
+          "callbacks": 350,
+          "budget": 1000000,
+          "complete": true,
+          "rows": 23,
+          "canonical_bytes": 98795,
+          "ack_class": "UNKNOWN",
+          "history_membership": true,
+          "connect_attempted": true
+        }
+      },
+      "all_policy_files_unchanged": true
+    },
+    {
+      "spec": {
+        "run_id": "e92745f9-3cff-562f-a5d0-36fd0535d31a",
+        "split": "calibration",
+        "workload": "W0",
+        "scenario": "BUDGET_SMALL",
+        "repetition": 0,
+        "order": 1,
+        "policy_rotation": 1
+      },
+      "status": "COMPLETE",
+      "ack_class": "ACKED",
+      "worker_returncode": 0,
+      "completion_certificate": {
+        "kind": "ACK_RECEIVED",
+        "txn_id": "b3344292-4b01-590e-8cc2-b30fd93f6351",
+        "parent_receive_monotonic_ns": 349246583
+      },
+      "worker_config": {
+        "journal_mode": "delete",
+        "synchronous": 2,
+        "foreign_keys": 1,
+        "page_size": 4096,
+        "cache_size": 5,
+        "cache_spill": 5,
+        "locking_mode": "normal",
+        "busy_timeout": 1000,
+        "fullfsync": 0
+      },
+      "postfault_files": [
+        {
+          "name": "db.sqlite",
+          "bytes": 114688,
+          "sha256": "a0264cb1f48e8516f347103fcd4a14f00cdc6c1f295888d45314981488e6a742",
+          "journal_header_28_hex": null,
+          "journal_hot_header_candidate": false
+        }
+      ],
+      "original_unchanged": true,
+      "policies": {
+        "strong_baseline": {
+          "decision": "UNRESOLVED_BUDGET",
+          "callbacks": 32,
+          "budget": 32,
+          "complete": false,
+          "rows": 0,
+          "canonical_bytes": 0,
+          "ack_class": "ACKED",
+          "history_membership": null,
+          "connect_attempted": true
+        },
+        "weak_structure": {
+          "decision": "UNRESOLVED_BUDGET",
+          "callbacks": 32,
+          "budget": 32,
+          "complete": false,
+          "rows": 0,
+          "canonical_bytes": 0,
+          "ack_class": "ACKED",
+          "history_membership": null,
+          "connect_attempted": true
+        },
+        "identity_ablation": {
+          "decision": "UNRESOLVED_BUDGET",
+          "callbacks": 32,
+          "budget": 32,
+          "complete": false,
+          "rows": 0,
+          "canonical_bytes": 0,
+          "ack_class": "ACKED",
+          "history_membership": null,
+          "connect_attempted": true
+        },
+        "candidate": {
+          "decision": "UNRESOLVED_BUDGET",
+          "callbacks": 32,
+          "budget": 32,
+          "complete": false,
+          "rows": 0,
+          "canonical_bytes": 0,
+          "ack_class": "ACKED",
+          "history_membership": null,
+          "connect_attempted": true
+        }
+      },
+      "all_policy_files_unchanged": true
+    },
+    {
+      "spec": {
+        "run_id": "ca76d925-6ec0-5c5d-a879-d822e1dda67d",
+        "split": "calibration",
+        "workload": "W0",
+        "scenario": "POST_ACK_KILL",
+        "repetition": 0,
+        "order": 2,
+        "policy_rotation": 2
+      },
+      "status": "COMPLETE",
+      "ack_class": "ACKED",
+      "worker_returncode": -9,
+      "completion_certificate": {
+        "kind": "ACK_RECEIVED",
+        "txn_id": "35f41c3b-e45f-5485-8cce-738fcb5992ea",
+        "parent_receive_monotonic_ns": 591050291
+      },
+      "worker_config": {
+        "journal_mode": "delete",
+        "synchronous": 2,
+        "foreign_keys": 1,
+        "page_size": 4096,
+        "cache_size": 5,
+        "cache_spill": 5,
+        "locking_mode": "normal",
+        "busy_timeout": 1000,
+        "fullfsync": 0
+      },
+      "postfault_files": [
+        {
+          "name": "db.sqlite",
+          "bytes": 114688,
+          "sha256": "d645bc4bab526981c2230f90869e3f26259f0790cc679c8acb0d905e6bf7759d",
+          "journal_header_28_hex": null,
+          "journal_hot_header_candidate": false
+        }
+      ],
+      "original_unchanged": true,
+      "policies": {
+        "weak_structure": {
+          "decision": "STRUCTURE_OK",
+          "callbacks": 279,
+          "budget": 1000000,
+          "complete": true,
+          "rows": 12,
+          "canonical_bytes": 69,
+          "ack_class": "ACKED",
+          "history_membership": null,
+          "connect_attempted": true
+        },
+        "identity_ablation": {
+          "decision": "ACCEPT_ABLATED",
+          "callbacks": 350,
+          "budget": 1000000,
+          "complete": true,
+          "rows": 23,
+          "canonical_bytes": 98795,
+          "ack_class": "ACKED",
+          "history_membership": true,
+          "connect_attempted": true
+        },
+        "candidate": {
+          "decision": "ACCEPT_CURRENT_ALLOWED",
+          "callbacks": 350,
+          "budget": 1000000,
+          "complete": true,
+          "rows": 23,
+          "canonical_bytes": 98795,
+          "ack_class": "ACKED",
+          "history_membership": true,
+          "connect_attempted": true
+        },
+        "strong_baseline": {
+          "decision": "ACCEPT_CURRENT_ALLOWED",
+          "callbacks": 350,
+          "budget": 1000000,
+          "complete": true,
+          "rows": 23,
+          "canonical_bytes": 98795,
+          "ack_class": "ACKED",
+          "history_membership": true,
+          "connect_attempted": true
+        }
+      },
+      "all_policy_files_unchanged": true
+    },
+    {
+      "spec": {
+        "run_id": "65afd3ef-4eee-5ef3-9913-bcdd996a07a8",
+        "split": "calibration",
+        "workload": "W0",
+        "scenario": "NORMAL",
+        "repetition": 0,
+        "order": 3,
+        "policy_rotation": 3
+      },
+      "status": "COMPLETE",
+      "ack_class": "ACKED",
+      "worker_returncode": 0,
+      "completion_certificate": {
+        "kind": "ACK_RECEIVED",
+        "txn_id": "3419d501-3e02-5d8d-be46-e8affbbeb99b",
+        "parent_receive_monotonic_ns": 849567083
+      },
+      "worker_config": {
+        "journal_mode": "delete",
+        "synchronous": 2,
+        "foreign_keys": 1,
+        "page_size": 4096,
+        "cache_size": 5,
+        "cache_spill": 5,
+        "locking_mode": "normal",
+        "busy_timeout": 1000,
+        "fullfsync": 0
+      },
+      "postfault_files": [
+        {
+          "name": "db.sqlite",
+          "bytes": 114688,
+          "sha256": "220f900d61bd5fa12acc7389ac9a9d69b66f5139982e3a459348dd07f525e27f",
+          "journal_header_28_hex": null,
+          "journal_hot_header_candidate": false
+        }
+      ],
+      "original_unchanged": true,
+      "policies": {
+        "identity_ablation": {
+          "decision": "ACCEPT_ABLATED",
+          "callbacks": 350,
+          "budget": 1000000,
+          "complete": true,
+          "rows": 23,
+          "canonical_bytes": 98795,
+          "ack_class": "ACKED",
+          "history_membership": true,
+          "connect_attempted": true
+        },
+        "candidate": {
+          "decision": "ACCEPT_CURRENT_ALLOWED",
+          "callbacks": 350,
+          "budget": 1000000,
+          "complete": true,
+          "rows": 23,
+          "canonical_bytes": 98795,
+          "ack_class": "ACKED",
+          "history_membership": true,
+          "connect_attempted": true
+        },
+        "strong_baseline": {
+          "decision": "ACCEPT_CURRENT_ALLOWED",
+          "callbacks": 350,
+          "budget": 1000000,
+          "complete": true,
+          "rows": 23,
+          "canonical_bytes": 98795,
+          "ack_class": "ACKED",
+          "history_membership": true,
+          "connect_attempted": true
+        },
+        "weak_structure": {
+          "decision": "STRUCTURE_OK",
+          "callbacks": 279,
+          "budget": 1000000,
+          "complete": true,
+          "rows": 12,
+          "canonical_bytes": 69,
+          "ack_class": "ACKED",
+          "history_membership": null,
+          "connect_attempted": true
+        }
+      },
+      "all_policy_files_unchanged": true
+    },
+    {
+      "spec": {
+        "run_id": "c02b16d3-1a9d-5e2e-b93e-3f818efb60ba",
+        "split": "calibration",
+        "workload": "W0",
+        "scenario": "PRECOMMIT_KILL",
+        "repetition": 0,
+        "order": 4,
+        "policy_rotation": 0
+      },
+      "status": "COMPLETE",
+      "ack_class": "NOT_COMMITTED",
+      "worker_returncode": -9,
+      "completion_certificate": {
+        "kind": "PRECOMMIT_GATE_WITHHELD",
+        "txn_id": "2674cade-6728-51dd-9afa-7dec55fc79b4",
+        "ready_received": true,
+        "go_commit_sent": false,
+        "worker_reaped_returncode": -9
+      },
+      "worker_config": {
+        "journal_mode": "delete",
+        "synchronous": 2,
+        "foreign_keys": 1,
+        "page_size": 4096,
+        "cache_size": 5,
+        "cache_spill": 5,
+        "locking_mode": "normal",
+        "busy_timeout": 1000,
+        "fullfsync": 0
+      },
+      "postfault_files": [
+        {
+          "name": "db.sqlite",
+          "bytes": 114688,
+          "sha256": "2c352ed98b33beef89fb66b2d58ec6ff6e5ee40d46d70b236b2164b2047cef30",
+          "journal_header_28_hex": null,
+          "journal_hot_header_candidate": false
+        },
+        {
+          "name": "db.sqlite-journal",
+          "bytes": 111320,
+          "sha256": "0224e506eaede7103b9041d7303d20b2ccbeae7a0cc5b4f846fc3c74099b6d92",
+          "journal_header_28_hex": "0000000000000000000000009ffb213f0000001c0000020000001000",
+          "journal_hot_header_candidate": false
+        }
+      ],
+      "original_unchanged": true,
+      "policies": {
+        "candidate": {
+          "decision": "ACCEPT_CURRENT_ALLOWED",
+          "callbacks": 330,
+          "budget": 1000000,
+          "complete": true,
+          "rows": 22,
+          "canonical_bytes": 98686,
+          "ack_class": "NOT_COMMITTED",
+          "history_membership": true,
+          "connect_attempted": true
+        },
+        "strong_baseline": {
+          "decision": "ACCEPT_CURRENT_ALLOWED",
+          "callbacks": 330,
+          "budget": 1000000,
+          "complete": true,
+          "rows": 22,
+          "canonical_bytes": 98686,
+          "ack_class": "NOT_COMMITTED",
+          "history_membership": true,
+          "connect_attempted": true
+        },
+        "weak_structure": {
+          "decision": "STRUCTURE_OK",
+          "callbacks": 264,
+          "budget": 1000000,
+          "complete": true,
+          "rows": 12,
+          "canonical_bytes": 69,
+          "ack_class": "NOT_COMMITTED",
+          "history_membership": null,
+          "connect_attempted": true
+        },
+        "identity_ablation": {
+          "decision": "ACCEPT_ABLATED",
+          "callbacks": 330,
+          "budget": 1000000,
+          "complete": true,
+          "rows": 22,
+          "canonical_bytes": 98686,
+          "ack_class": "NOT_COMMITTED",
+          "history_membership": true,
+          "connect_attempted": true
+        }
+      },
+      "all_policy_files_unchanged": true
+    },
+    {
+      "spec": {
+        "run_id": "c7b43c11-c37f-53ef-a578-2bc701687fd1",
+        "split": "calibration",
+        "workload": "W0",
+        "scenario": "STALE_BACKUP",
+        "repetition": 0,
+        "order": 5,
+        "policy_rotation": 1
+      },
+      "status": "COMPLETE",
+      "ack_class": "ACKED",
+      "worker_returncode": 0,
+      "completion_certificate": {
+        "kind": "ACK_RECEIVED",
+        "txn_id": "059ae303-0ee5-5f48-bfdb-6876aa1ddcdc",
+        "parent_receive_monotonic_ns": 1391040083
+      },
+      "worker_config": {
+        "journal_mode": "delete",
+        "synchronous": 2,
+        "foreign_keys": 1,
+        "page_size": 4096,
+        "cache_size": 5,
+        "cache_spill": 5,
+        "locking_mode": "normal",
+        "busy_timeout": 1000,
+        "fullfsync": 0
+      },
+      "postfault_files": [
+        {
+          "name": "db.sqlite",
+          "bytes": 114688,
+          "sha256": "70362c8ebb5f6d97b3670c40840f869e0f6f67efacd717647b5bfbe78898976e",
+          "journal_header_28_hex": null,
+          "journal_hot_header_candidate": false
+        }
+      ],
+      "original_unchanged": true,
+      "policies": {
+        "strong_baseline": {
+          "decision": "REJECT_HISTORY",
+          "callbacks": 310,
+          "budget": 1000000,
+          "complete": true,
+          "rows": 21,
+          "canonical_bytes": 98577,
+          "ack_class": "ACKED",
+          "history_membership": false,
+          "connect_attempted": true
+        },
+        "weak_structure": {
+          "decision": "STRUCTURE_OK",
+          "callbacks": 249,
+          "budget": 1000000,
+          "complete": true,
+          "rows": 12,
+          "canonical_bytes": 69,
+          "ack_class": "ACKED",
+          "history_membership": null,
+          "connect_attempted": true
+        },
+        "identity_ablation": {
+          "decision": "ACCEPT_ABLATED",
+          "callbacks": 310,
+          "budget": 1000000,
+          "complete": true,
+          "rows": 21,
+          "canonical_bytes": 98577,
+          "ack_class": "ACKED",
+          "history_membership": false,
+          "connect_attempted": true
+        },
+        "candidate": {
+          "decision": "REJECT_HISTORY",
+          "callbacks": 310,
+          "budget": 1000000,
+          "complete": true,
+          "rows": 21,
+          "canonical_bytes": 98577,
+          "ack_class": "ACKED",
+          "history_membership": false,
+          "connect_attempted": true
+        }
+      },
+      "all_policy_files_unchanged": true
+    },
+    {
+      "spec": {
+        "run_id": "d53faf66-538a-590d-8be1-5a1486bd97af",
+        "split": "calibration",
+        "workload": "W0",
+        "scenario": "BUDGET_ZERO",
+        "repetition": 0,
+        "order": 6,
+        "policy_rotation": 2
+      },
+      "status": "COMPLETE",
+      "ack_class": "ACKED",
+      "worker_returncode": 0,
+      "completion_certificate": {
+        "kind": "ACK_RECEIVED",
+        "txn_id": "2a568aff-f04e-51f9-bca4-8903b0321eb0",
+        "parent_receive_monotonic_ns": 1651139583
+      },
+      "worker_config": {
+        "journal_mode": "delete",
+        "synchronous": 2,
+        "foreign_keys": 1,
+        "page_size": 4096,
+        "cache_size": 5,
+        "cache_spill": 5,
+        "locking_mode": "normal",
+        "busy_timeout": 1000,
+        "fullfsync": 0
+      },
+      "postfault_files": [
+        {
+          "name": "db.sqlite",
+          "bytes": 114688,
+          "sha256": "fe7be2adebe50b3ceda7795b5ce011d5d2c8c1597cb384cdd0e9f54bdad6d904",
+          "journal_header_28_hex": null,
+          "journal_hot_header_candidate": false
+        }
+      ],
+      "original_unchanged": true,
+      "policies": {
+        "weak_structure": {
+          "decision": "UNRESOLVED_BUDGET",
+          "callbacks": 0,
+          "budget": 0,
+          "complete": false,
+          "rows": 0,
+          "canonical_bytes": 0,
+          "ack_class": "ACKED",
+          "history_membership": null,
+          "connect_attempted": false
+        },
+        "identity_ablation": {
+          "decision": "UNRESOLVED_BUDGET",
+          "callbacks": 0,
+          "budget": 0,
+          "complete": false,
+          "rows": 0,
+          "canonical_bytes": 0,
+          "ack_class": "ACKED",
+          "history_membership": null,
+          "connect_attempted": false
+        },
+        "candidate": {
+          "decision": "UNRESOLVED_BUDGET",
+          "callbacks": 0,
+          "budget": 0,
+          "complete": false,
+          "rows": 0,
+          "canonical_bytes": 0,
+          "ack_class": "ACKED",
+          "history_membership": null,
+          "connect_attempted": false
+        },
+        "strong_baseline": {
+          "decision": "UNRESOLVED_BUDGET",
+          "callbacks": 0,
+          "budget": 0,
+          "complete": false,
+          "rows": 0,
+          "canonical_bytes": 0,
+          "ack_class": "ACKED",
+          "history_membership": null,
+          "connect_attempted": false
+        }
+      },
+      "all_policy_files_unchanged": true
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "status": "PASS_OFFLINE_DELIVERED_REPLAY",
+  "steps": [
+    {
+      "split": "certification",
+      "argv": [
+        "python",
+        "/workspace/scratch/0ba4bb70efc0/sqlite-study-20261113/publication/research/experiments/sqlite-contract-2026-11-13/verification/c_independent_check.py",
+        "--root",
+        "/workspace/scratch/0ba4bb70efc0/sqlite-study-20261113/delivered-replay/B/certification/run-v1",
+        "--out",
+        "/workspace/scratch/0ba4bb70efc0/sqlite-study-20261113/evidence/delivery-replay/certification-check.json",
+        "--preregistration-commit",
+        "26902c25152ca3676b4844d2156f028145f62fe2"
+      ],
+      "started_utc": "2026-11-13T14:06:49.396821+00:00",
+      "finished_utc": "2026-11-13T14:06:50.572348+00:00",
+      "returncode": 0,
+      "stdout": "{\"split\": \"certification\", \"raw_files_directly_rehashed\": 1261, \"global_errors\": [], \"planned\": 28, \"trials_checked\": 28, \"trials_without_check_errors\": 28, \"candidate_observed_counts\": {\"UNRESOLVED_BUDGET\": 8, \"ACCEPT_CURRENT_ALLOWED\": 16, \"REJECT_HISTORY\": 4}}\n",
+      "stderr": ""
+    },
+    {
+      "split": "replication",
+      "argv": [
+        "python",
+        "/workspace/scratch/0ba4bb70efc0/sqlite-study-20261113/publication/research/experiments/sqlite-contract-2026-11-13/verification/c_independent_check.py",
+        "--root",
+        "/workspace/scratch/0ba4bb70efc0/sqlite-study-20261113/delivered-replay/C/replication/run-v1",
+        "--out",
+        "/workspace/scratch/0ba4bb70efc0/sqlite-study-20261113/evidence/delivery-replay/replication-check.json",
+        "--preregistration-commit",
+        "26902c25152ca3676b4844d2156f028145f62fe2"
+      ],
+      "started_utc": "2026-11-13T14:06:50.572427+00:00",
+      "finished_utc": "2026-11-13T14:06:51.048309+00:00",
+      "returncode": 0,
+      "stdout": "{\"split\": \"replication\", \"raw_files_directly_rehashed\": 315, \"global_errors\": [], \"planned\": 7, \"trials_checked\": 7, \"trials_without_check_errors\": 7, \"candidate_observed_counts\": {\"REJECT_HISTORY\": 1, \"ACCEPT_CURRENT_ALLOWED\": 4, \"UNRESOLVED_BUDGET\": 2}}\n",
+      "stderr": ""
+    }
+  ],
+  "scope": "Cloud reanalysis of the delivered raw archives only. No new SQLite process fault, no fresh experimental trial, no independent external operator."
+}

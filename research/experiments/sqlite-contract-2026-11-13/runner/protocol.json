@@ -1,0 +1,87 @@
+{
+  "study_id": "UEOT_SQLITE_ACK_V1",
+  "status": "FROZEN_BEFORE_CERTIFICATION",
+  "budgets": {
+    "high": 1000000,
+    "small": 32,
+    "zero": 0,
+    "adjudication": 10000000
+  },
+  "timeouts": {
+    "worker_seconds": 15,
+    "observer_seconds": 30,
+    "stop_starting_trials_after_seconds": 1800
+  },
+  "scenarios": [
+    "NORMAL",
+    "PRECOMMIT_KILL",
+    "COMMIT_NO_ACK_KILL",
+    "POST_ACK_KILL",
+    "STALE_BACKUP",
+    "BUDGET_ZERO",
+    "BUDGET_SMALL"
+  ],
+  "workloads": {
+    "W0": {
+      "keys": 256,
+      "history_transactions": 2,
+      "payload_bytes": 4096
+    },
+    "W1": {
+      "keys": 32,
+      "history_transactions": 4,
+      "payload_bytes": 128
+    },
+    "W2": {
+      "keys": 97,
+      "history_transactions": 7,
+      "payload_bytes": 4096
+    }
+  },
+  "allocations": {
+    "calibration": {
+      "workloads": [
+        "W0"
+      ],
+      "repetitions": 1,
+      "order_seed": 2026111301,
+      "scenarios": [
+        "PRECOMMIT_KILL",
+        "STALE_BACKUP"
+      ]
+    },
+    "certification": {
+      "workloads": [
+        "W1",
+        "W2"
+      ],
+      "repetitions": 2,
+      "order_seed": 2026111302
+    },
+    "replication": {
+      "workloads": [
+        "W2"
+      ],
+      "repetitions": 1,
+      "order_seed": 2026111303
+    }
+  },
+  "ack_rule": "UNKNOWN retains {S0,S1}; complete observed membership may ACCEPT_CURRENT_ALLOWED without upgrading to ACKED",
+  "configuration": {
+    "journal_mode": "delete",
+    "synchronous": 2,
+    "cache_size": 5,
+    "cache_spill": "ON"
+  },
+  "resource_claim": "observed progress-callback count only; hidden recovery/kernel/physical I/O is not strictly bounded",
+  "fault_domain": "fresh worker/target only; parent oracle on same host is protected from declared interventions, not hardware-independent",
+  "rights": "No new software license selected; follow repository LICENSE_SCOPE",
+  "protocol_revision": "2",
+  "expected_environment": {
+    "sqlite_version": "3.51.0",
+    "sqlite_source_id": "2025-06-12 13:14:41 f0ca7bba1c5e232e5d279fad6338121ab55af0c8c68c84cdfb18ba5114dcaapl",
+    "compile_options_sha256": "6180af0b3a6558bfed6a8e33424239257baf5a4e2ecb19508cbf623cda152c0f",
+    "python_binary_sha256": "9ea22c79baac7ee6906d807799f351ae5de25b74be3ead66370714ea5348ca9f",
+    "_sqlite3_binary_sha256": "c16c8f766c567ec0437814f32b5a2f5a23f266ff603f1cb40cf21d1865e0c8c6"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "raw_source_sha256": "3e37c8f73bfd99bdde9e48bde8c993a5252d21d44bb6d58fa4301f9f0944e27b",
+  "interpretation": "A parsed complete C-produced SQL values and recomputed equality/inequality and recorded file transitions; A did not execute SQLite or reconstruct missing original request/ACK events.",
+  "results": [
+    {
+      "run_id": "108848dd-74db-5f41-9315-052493eb1855",
+      "scenario": "STALE_BACKUP",
+      "weak_equal_recomputed": true,
+      "weak_projection": {
+        "opened": true,
+        "integrity": [
+          [
+            "ok"
+          ]
+        ],
+        "foreign_keys": []
+      },
+      "full_state_equal_recomputed": false,
+      "business_rows": [
+        256,
+        256
+      ],
+      "transaction_rows": [
+        3,
+        1
+      ],
+      "transaction_sequences": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          1
+        ]
+      ],
+      "differing_business_rows": 256,
+      "source_unchanged_recorded": [
+        true,
+        true
+      ],
+      "raw_ack_events_available": false
+    },
+    {
+      "run_id": "8ab897cd-7537-5654-8603-440f253dd95c",
+      "scenario": "PRECOMMIT_KILL",
+      "before": {
+        "db.sqlite": {
+          "bytes": 1196032,
+          "sha256": "60d1d72a8722b0ee07d297146820335e001ef2f6417d7dc10e223718fcad6bf4",
+          "first28": null
+        },
+        "db.sqlite-journal": {
+          "bytes": 1198672,
+          "sha256": "a335ed84fefd438878795a96c99e3ddbcc5191c28dcda77d86449fb4d825e68f",
+          "first28": "d9d505f920a163d70000001cebfc1b95000001240000020000001000"
+        }
+      },
+      "after": {
+        "db.sqlite": {
+          "bytes": 1196032,
+          "sha256": "84935fb3a24a5295518e827dac294911dea92c5d9b0da5053571d40dfb929b76",
+          "first28": null
+        }
+      },
+      "db_changed_from_recorded_hashes": true,
+      "journal_removed_from_recorded_filelists": true,
+      "business_rows": 256,
+      "transaction_sequences": [
+        1,
+        2
+      ],
+      "weak_projection": {
+        "opened": true,
+        "integrity": [
+          [
+            "ok"
+          ]
+        ],
+        "foreign_keys": []
+      },
+      "exact_expected_state_match_reported_by_C": true,
+      "source_unchanged_recorded": true,
+      "raw_ack_events_available": false
+    }
+  ]
+}

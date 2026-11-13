@@ -1,0 +1,31 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "McpServerError: MCP server is not initialized; send initialize and notifications/initialized before operational requests"
+    }
+  ],
+  "structuredContent": {
+    "error": "McpServerError: MCP server is not initialized; send initialize and notifications/initialized before operational requests",
+    "error_code": "CONFLICT",
+    "error_data": {
+      "type": "http_error",
+      "code": 409,
+      "message": "MCP server is not initialized; send initialize and notifications/initialized before operational requests",
+      "payload": {
+        "error": {
+          "code": -32002,
+          "data": {
+            "error_type": "mcp_initialization_required",
+            "origin": "tunnel-client"
+          },
+          "message": "MCP server is not initialized; send initialize and notifications/initialized before operational requests"
+        },
+        "id": 1,
+        "jsonrpc": "2.0"
+      },
+      "url": "https://tunnel-service.gateway.unified-0.internal.api.openai.org/v1/mcp/tunnel_6acdb4e9d3188191b396562c0b548f02"
+    }
+  },
+  "isError": true
+}
