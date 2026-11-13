@@ -1,0 +1,14 @@
+# UEOT QM v31.13 execution contract
+
+Entry main: `cb17211653fde30aa50e0e9848798a6a5b3b3f12`. Core, physics interfaces and existing Lean proofs are read-only. Exactly three native A/B/C roles own isolated research files; root owns integration. Prior v31.12 science, source identities, receipts and negative controls are retained.
+
+1. Freeze [one model](audits/SIMULTANEOUS_CUTOFF_v31.13/SHARED_MODEL.md), [machine-readable parameters](simultaneous_cutoff/frozen_model.json) and the independent synthetic/calibration plan. Specify actual source events, reference, full records, nominal-parameter rule, numerical scope and target precision before the final executions.
+2. Complete paper proofs and cross-review: A checks B's domains and C's identifiability; B checks C's error/statistical scope; C checks A's prefix quantifiers and observation permissions. Apply corrections, including the finite-energy limit proof, finite-invariant counterexample and single-dose bias boundary.
+3. Execute the source interpreter and separately authored operational/microscopic checks. Generate explicitly synthetic raw sequences, then run the truth-blind analyzer and independently implemented rational checker. Run the integer-interval predictor and its separate output identity/normalization checker. Record actual invocations and bytes; do not call a nearby successful build a proof of the analytic quantifiers.
+4. Run the unchanged inherited-proof identity gate. Only identical proof/configuration and full tool inventory permit reuse; any mismatch selects the existing complete build/audit/witness workflow. New Chapter 69 claims remain paper-only even on a green CI run.
+5. Integrate the six stable IDs into the same bilingual book, dossier, source manifest, claim ledger and roadmap. Preserve 188 historical result objects, 111 claim objects and earlier scientific bodies. Build and inspect both PDFs, binding exactly the delivered bytes.
+6. Publish a branch and PR under the user's standing authorization, inspect actual workflow artifacts, merge and read back main. A subsequent evidence-only commit can describe already observed runs without inventing another scientific execution.
+
+## Acceptance boundaries
+
+Exact finite-map prediction on the full declared input domain and certified numerical output for one specified entangled input are different results. The synthetic calibration certificate assumes the declared ideal apparatus family; it does not validate family membership or unrestricted channel distance from a finite tester. All failures and resets remain in full-output and cost accounting. No numerical allowance is accepted from an ordinary floating residual alone. Unknown quantum inputs have no free retry or re-preparation permission. Empirical status remains untested until protocol-matched independent real data exist.

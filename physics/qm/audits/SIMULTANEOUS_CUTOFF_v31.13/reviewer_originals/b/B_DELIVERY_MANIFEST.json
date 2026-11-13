@@ -1,0 +1,82 @@
+{
+  "schema": "ueot-qm.research-b-delivery/1",
+  "created_at_utc": "2026-11-12T03:37:57.981114+00:00",
+  "author": "native research role B",
+  "scope": "Isolated drafts and checks for the v31.13 simultaneous-source Galerkin and complete-CQ bridge; root owns public integration.",
+  "files": [
+    {
+      "path": "/workspace/scratch/f5715c55160b/iteration_v31_13/research_b/B_SIMULTANEOUS_GALERKIN.md",
+      "bytes": 23916,
+      "sha256": "ae6891986240f4c1247595ac68513d1eb8893c6722849311e004de79583ab530"
+    },
+    {
+      "path": "/workspace/scratch/f5715c55160b/iteration_v31_13/research_b/B_REVIEW_OF_A.md",
+      "bytes": 4249,
+      "sha256": "4c0ffc380bf8a1e38c7142ff731a6e5e421e8655e02ab589368776078db4c5a7"
+    },
+    {
+      "path": "/workspace/scratch/f5715c55160b/iteration_v31_13/research_b/B_REVIEW_OF_C.md",
+      "bytes": 10236,
+      "sha256": "d621b980861119f05aa0b93b93d5809b1c7ba1aebb78d7a84d2cf721a1ea1bba"
+    },
+    {
+      "path": "/workspace/scratch/f5715c55160b/iteration_v31_13/research_b/check_simultaneous_galerkin.py",
+      "bytes": 13255,
+      "sha256": "900b44bf7d5a6074e831f92d4a0cf8df603bef1d9b04fbb34ca8b828c06f7af2"
+    },
+    {
+      "path": "/workspace/scratch/f5715c55160b/iteration_v31_13/research_b/dynamics_check.json",
+      "bytes": 16468,
+      "sha256": "c81c4471194a625d79f050fba5464623d04f686ce66bad70218f0d3083f8d05d"
+    },
+    {
+      "path": "/workspace/scratch/f5715c55160b/iteration_v31_13/research_b/B_C_CALIBRATION_AUDIT.json",
+      "bytes": 2612,
+      "sha256": "03f292c3c83613e974576dce23a7838be6f4c76a60a5dfd3c725ed25bc6121b7"
+    },
+    {
+      "path": "/workspace/scratch/f5715c55160b/iteration_v31_13/research_b/check_interval_prediction_against_displacement.py",
+      "bytes": 7905,
+      "sha256": "cb40363969d40ae7724b92e5350fde41b5322c31716e4fc279b66da19608855e"
+    },
+    {
+      "path": "/workspace/scratch/f5715c55160b/iteration_v31_13/research_b/root_interval_prediction_diagnostic.json",
+      "bytes": 52295,
+      "sha256": "2c496926e0f48e6f717d594fbf67744980b7b25bc394f68f993c981942d13f59"
+    }
+  ],
+  "final_root_outputs_diagnosed": [
+    {
+      "path": "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/kernel/evidence/v31.13/runtime/interval-prediction.json",
+      "bytes": 59572,
+      "sha256": "ee7b5ab2eba7030d2dec523e1521cc3c4c7554d951c24685bc43734a841be5d2"
+    },
+    {
+      "path": "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/kernel/evidence/v31.13/runtime/calibration.json",
+      "bytes": 18543,
+      "sha256": "67bb7cfd9ccc35a80d6ac6dc128e4b16c22997860d102fb9cb9ff0bc431fc5ab"
+    }
+  ],
+  "mathematical_scope": [
+    "P-MICRO-06: source self-adjoint realization, noncircular energy budget and mass-weighted boundary defect",
+    "P-MICRO-07: finite Duhamel remainder for actual compressed Hamiltonian, finite references and admitted complete records",
+    "B review of P-OPT-05 and P-ROB-04/P-ROB-05 interfaces"
+  ],
+  "verification": {
+    "dynamics_checks": 57,
+    "dynamics_scope": "Independent high-precision exact-displacement versus finite-Galerkin diagnostic; finite general-Rabi stress diagnostics; exact rational scalar bound enclosure.",
+    "final_root_artifact_analytic_diagnostic_checks": 414,
+    "final_root_diagnostic_scope": "Independent analytic-displacement diagnostic of signs, phase chronology, reference columns, normalization and output values. Not an independent proof of outward-integer rounding or the root numerical enclosure.",
+    "C_cross_checks_reused": 17,
+    "C_reuse_basis": "All four original consumption hashes unchanged; no relabelling or new execution of those checks.",
+    "new_Lean_execution": false,
+    "new_hardware_data": false,
+    "external_human_peer_review": false
+  },
+  "remaining_scope": [
+    "No universal numerical state-output implementation for arbitrary unknown input is inferred from the specified-input prediction artifact.",
+    "No hardware/model membership or real calibration is inferred from generated streams.",
+    "No arbitrary G-nonpreserving interventions, infinite references, coherent controllers, unbounded stopping or uniform infinite-time fixed-cutoff theorem is asserted."
+  ],
+  "development_attempts": "Preserved separately: fixed-actor metadata repair, and development predictor calibration-hash rejection plus numerical-only diagnostic."
+}

@@ -1,0 +1,467 @@
+{
+  "schema": "ueot-qm.simultaneous-cutoff-runtime/1",
+  "version": "v31.13",
+  "status": "PASS",
+  "created_at_utc": "2026-11-12T03:34:42.736361+00:00",
+  "research_baseline": "cb17211653fde30aa50e0e9848798a6a5b3b3f12",
+  "execution_context": {
+    "provider": "local_python_process",
+    "observed_git_head": "cb17211653fde30aa50e0e9848798a6a5b3b3f12",
+    "worktree_has_changes": true,
+    "authority": "input hashes identify executed bytes, including a dirty worktree; checker authorship is not executor identity"
+  },
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "commands": [
+    {
+      "label": "source-integration",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/simultaneous_cutoff/verify_integration.py",
+        "--output",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/kernel/evidence/v31.13/runtime/integration.json"
+      ],
+      "cwd": "/workspace/scratch/2331c99c0713/ueot-physics",
+      "started_at_utc": "2026-11-12T03:34:32.541787+00:00",
+      "finished_at_utc": "2026-11-12T03:34:34.725491+00:00",
+      "exit_code": 0,
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.13/runtime/source-integration.log",
+        "sha256": "b7dd6e4a77abe539b68b3745be533d20b2630c1c3627a3b949a28ebfedc13435",
+        "bytes": 44,
+        "artifact_path": "source-integration.log"
+      }
+    },
+    {
+      "label": "independent-operational",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/simultaneous_cutoff/check_full_cq_stability.py",
+        "--output",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/kernel/evidence/v31.13/runtime/operational.json"
+      ],
+      "cwd": "/workspace/scratch/2331c99c0713/ueot-physics",
+      "started_at_utc": "2026-11-12T03:34:34.726077+00:00",
+      "finished_at_utc": "2026-11-12T03:34:34.882712+00:00",
+      "exit_code": 0,
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.13/runtime/independent-operational.log",
+        "sha256": "1e4696f14d2d21dadf59bdd23b49f904dd9a9000bc5da64d1c522a55c3670f95",
+        "bytes": 83,
+        "artifact_path": "independent-operational.log"
+      }
+    },
+    {
+      "label": "independent-microscopic",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/simultaneous_cutoff/check_simultaneous_galerkin.py",
+        "--model",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/simultaneous_cutoff/frozen_model.json",
+        "--output",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/kernel/evidence/v31.13/runtime/micro.json"
+      ],
+      "cwd": "/workspace/scratch/2331c99c0713/ueot-physics",
+      "started_at_utc": "2026-11-12T03:34:34.882932+00:00",
+      "finished_at_utc": "2026-11-12T03:34:35.680895+00:00",
+      "exit_code": 0,
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.13/runtime/independent-microscopic.log",
+        "sha256": "0809f1442f3282f38458758b36dc47205d02327e806a10a15b7b012f83a23f8b",
+        "bytes": 226,
+        "artifact_path": "independent-microscopic.log"
+      }
+    },
+    {
+      "label": "synthetic-generation",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/simultaneous_cutoff/generate_synthetic.py",
+        "--plan",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/simultaneous_cutoff/FROZEN_CERTIFICATE_PLAN.json",
+        "--output-dir",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/kernel/evidence/v31.13/runtime/synthetic"
+      ],
+      "cwd": "/workspace/scratch/2331c99c0713/ueot-physics",
+      "started_at_utc": "2026-11-12T03:34:35.681297+00:00",
+      "finished_at_utc": "2026-11-12T03:34:36.499080+00:00",
+      "exit_code": 0,
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.13/runtime/synthetic-generation.log",
+        "sha256": "ed4279fdf4aa9a0962b2bbc6c377bfd97197bdfb4fe30665ff2d1800b69571e1",
+        "bytes": 145,
+        "artifact_path": "synthetic-generation.log"
+      }
+    },
+    {
+      "label": "truth-blind-calibration",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/simultaneous_cutoff/certify_from_records.py",
+        "--plan",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/simultaneous_cutoff/FROZEN_CERTIFICATE_PLAN.json",
+        "--raw-dir",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/kernel/evidence/v31.13/runtime/synthetic",
+        "--output",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/kernel/evidence/v31.13/runtime/calibration.json"
+      ],
+      "cwd": "/workspace/scratch/2331c99c0713/ueot-physics",
+      "started_at_utc": "2026-11-12T03:34:36.499365+00:00",
+      "finished_at_utc": "2026-11-12T03:34:36.608403+00:00",
+      "exit_code": 0,
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.13/runtime/truth-blind-calibration.log",
+        "sha256": "2e6eb552586221bb7c5a5af29d94207aeaa4e245b28c2693715c09b3f0f92b78",
+        "bytes": 309,
+        "artifact_path": "truth-blind-calibration.log"
+      }
+    },
+    {
+      "label": "independent-rational-calibration",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/simultaneous_cutoff/independent_certificate_check.py",
+        "--plan",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/simultaneous_cutoff/FROZEN_CERTIFICATE_PLAN.json",
+        "--raw-dir",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/kernel/evidence/v31.13/runtime/synthetic",
+        "--report",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/kernel/evidence/v31.13/runtime/calibration.json",
+        "--shared-model",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/simultaneous_cutoff/frozen_model.json",
+        "--executor",
+        "local_python_process",
+        "--output",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/kernel/evidence/v31.13/runtime/independent-calibration.json"
+      ],
+      "cwd": "/workspace/scratch/2331c99c0713/ueot-physics",
+      "started_at_utc": "2026-11-12T03:34:36.608651+00:00",
+      "finished_at_utc": "2026-11-12T03:34:36.728665+00:00",
+      "exit_code": 0,
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.13/runtime/independent-rational-calibration.log",
+        "sha256": "7befcfa943b63861421468c2fafc0272e620c98dd313996729109d58639d1ee7",
+        "bytes": 89,
+        "artifact_path": "independent-rational-calibration.log"
+      }
+    },
+    {
+      "label": "integer-interval-prediction",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/simultaneous_cutoff/interval_predictor.py",
+        "--calibration",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/kernel/evidence/v31.13/runtime/calibration.json",
+        "--output",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/kernel/evidence/v31.13/runtime/interval-prediction.json"
+      ],
+      "cwd": "/workspace/scratch/2331c99c0713/ueot-physics",
+      "started_at_utc": "2026-11-12T03:34:36.729158+00:00",
+      "finished_at_utc": "2026-11-12T03:34:37.294271+00:00",
+      "exit_code": 0,
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.13/runtime/integer-interval-prediction.log",
+        "sha256": "bb46e6f6459b15bff6742a733fdc6b3877651f837309aa1509078d9b871c8e03",
+        "bytes": 146,
+        "artifact_path": "integer-interval-prediction.log"
+      }
+    },
+    {
+      "label": "independent-interval-output",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/simultaneous_cutoff/verify_interval_output.py",
+        "--artifact",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/kernel/evidence/v31.13/runtime/interval-prediction.json",
+        "--predictor",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/simultaneous_cutoff/interval_predictor.py",
+        "--output",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/kernel/evidence/v31.13/runtime/independent-interval.json"
+      ],
+      "cwd": "/workspace/scratch/2331c99c0713/ueot-physics",
+      "started_at_utc": "2026-11-12T03:34:37.294673+00:00",
+      "finished_at_utc": "2026-11-12T03:34:37.325068+00:00",
+      "exit_code": 0,
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.13/runtime/independent-interval-output.log",
+        "sha256": "2750025714b5ee1ee020d1b32ac726bd23eb7b1edde9363650972b0ecbb91cc3",
+        "bytes": 47,
+        "artifact_path": "independent-interval-output.log"
+      }
+    },
+    {
+      "label": "end-to-end-binding",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/simultaneous_cutoff/verify_end_to_end.py",
+        "--directory",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/kernel/evidence/v31.13/runtime",
+        "--output",
+        "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/kernel/evidence/v31.13/runtime/end-to-end.json"
+      ],
+      "cwd": "/workspace/scratch/2331c99c0713/ueot-physics",
+      "started_at_utc": "2026-11-12T03:34:37.325288+00:00",
+      "finished_at_utc": "2026-11-12T03:34:37.355349+00:00",
+      "exit_code": 0,
+      "log": {
+        "path": "physics/qm/kernel/evidence/v31.13/runtime/end-to-end-binding.log",
+        "sha256": "f95054ee2cd8095f53478b9848e1329e8606266d4cc5129392a4b38f3cc332fe",
+        "bytes": 198,
+        "artifact_path": "end-to-end-binding.log"
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "path": "physics/qm/simultaneous_cutoff/FROZEN_CERTIFICATE_PLAN.json",
+      "sha256": "a27a61ea157d9ae958213a5377d3a93295022a8a9d28f68d022f86f9fa269108",
+      "bytes": 3932
+    },
+    {
+      "path": "physics/qm/simultaneous_cutoff/README.md",
+      "sha256": "ee70d76ae6a91895156d5a1eafeafc67470a6283fa4edfb70e32440d32e8bbac",
+      "bytes": 2694
+    },
+    {
+      "path": "physics/qm/simultaneous_cutoff/certified_intervals.py",
+      "sha256": "8833a6192298eb3d91ada7f5b57471c424613b0cb0a9cd7d62828b34ffa59d5b",
+      "bytes": 3306
+    },
+    {
+      "path": "physics/qm/simultaneous_cutoff/certify_from_records.py",
+      "sha256": "6ba96a6150e63ba0834aaa41f47dee1f661deab11cbe8fa5fdab882a9db25753",
+      "bytes": 14759
+    },
+    {
+      "path": "physics/qm/simultaneous_cutoff/check_full_cq_stability.py",
+      "sha256": "01f64e31f19351a25c7e116b1db21f99c3900297b6704d8c09f94a62090c04fb",
+      "bytes": 10223
+    },
+    {
+      "path": "physics/qm/simultaneous_cutoff/check_simultaneous_galerkin.py",
+      "sha256": "900b44bf7d5a6074e831f92d4a0cf8df603bef1d9b04fbb34ca8b828c06f7af2",
+      "bytes": 13255
+    },
+    {
+      "path": "physics/qm/simultaneous_cutoff/frozen_model.json",
+      "sha256": "3d344e91fdc59cb333c21623b5b62528c9d7a0edea2145148b6d484a61eca10a",
+      "bytes": 2401
+    },
+    {
+      "path": "physics/qm/simultaneous_cutoff/generate_synthetic.py",
+      "sha256": "db3abaea47ecd42ed545cd7ef7b1f48eb5407a289b140e64aa69a8516798db31",
+      "bytes": 4796
+    },
+    {
+      "path": "physics/qm/simultaneous_cutoff/independent_certificate_check.py",
+      "sha256": "f8f430434dbed0dcd1c0912c2902c0c9cd103e49fceef69231d5f8ed31d67d06",
+      "bytes": 18241
+    },
+    {
+      "path": "physics/qm/simultaneous_cutoff/interval_predictor.py",
+      "sha256": "2f104261217300f08cec35642076a59238bca54fc74e226abc44e4c705369a70",
+      "bytes": 7269
+    },
+    {
+      "path": "physics/qm/simultaneous_cutoff/model.py",
+      "sha256": "285c70b561b0af6967490d06d31bf0db1b3bd979e7d8ba67af77917af51fc6c0",
+      "bytes": 3145
+    },
+    {
+      "path": "physics/qm/simultaneous_cutoff/run_verification.py",
+      "sha256": "565cdf0f8541ff59fe8ed2b3c7e37f8f93de09d8059fbc61c6f6d5c2b6894e6e",
+      "bytes": 6204
+    },
+    {
+      "path": "physics/qm/simultaneous_cutoff/verify_end_to_end.py",
+      "sha256": "e56b6eb660256444999af00e8102fbb1412f517b662e74a760f748bb9e22faa6",
+      "bytes": 4052
+    },
+    {
+      "path": "physics/qm/simultaneous_cutoff/verify_integration.py",
+      "sha256": "d480b9edf0057ddf7c4b9f65755759cf31d4d016a931f32999735263ed81a6a0",
+      "bytes": 7286
+    },
+    {
+      "path": "physics/qm/simultaneous_cutoff/verify_interval_output.py",
+      "sha256": "791c0c20c1ef1af96968fa502d3b7af5cbf88f128217676b64aaa289d16d96b0",
+      "bytes": 4654
+    },
+    {
+      "path": "physics/qm/conditioning/finite_conditioning.py",
+      "sha256": "33d573b3049538bedbcd7ff60f15e566fb17358f0b91d8f76a0d645f1ab0c6c4",
+      "bytes": 16378
+    },
+    {
+      "path": "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/SHARED_MODEL.md",
+      "sha256": "bd254d62771b8aac0798aa6f031b8c8bc4830cfc7b12ca569fe687cd433ca852",
+      "bytes": 5602
+    }
+  ],
+  "inputs_stable_during_execution": true,
+  "outputs": [
+    {
+      "path": "physics/qm/kernel/evidence/v31.13/runtime/calibration.json",
+      "sha256": "67bb7cfd9ccc35a80d6ac6dc128e4b16c22997860d102fb9cb9ff0bc431fc5ab",
+      "bytes": 18543,
+      "artifact_path": "calibration.json"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.13/runtime/end-to-end-binding.log",
+      "sha256": "f95054ee2cd8095f53478b9848e1329e8606266d4cc5129392a4b38f3cc332fe",
+      "bytes": 198,
+      "artifact_path": "end-to-end-binding.log"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.13/runtime/end-to-end.json",
+      "sha256": "80ad86244e47a35322d641ba6cd434e03655fee208ebfce8d0ccafbb61ba7356",
+      "bytes": 5281,
+      "artifact_path": "end-to-end.json"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.13/runtime/independent-calibration.json",
+      "sha256": "0ea440abf2361166daf34ff4e02c2cf6f86f7e109771f0c27b009fa2c6c72bc7",
+      "bytes": 16201,
+      "artifact_path": "independent-calibration.json"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.13/runtime/independent-interval-output.log",
+      "sha256": "2750025714b5ee1ee020d1b32ac726bd23eb7b1edde9363650972b0ecbb91cc3",
+      "bytes": 47,
+      "artifact_path": "independent-interval-output.log"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.13/runtime/independent-interval.json",
+      "sha256": "0869af2bcd507a6b466bf0b30d72ca53bc9e57c2ab7b7b6109bd83b5910a4e14",
+      "bytes": 6362,
+      "artifact_path": "independent-interval.json"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.13/runtime/independent-microscopic.log",
+      "sha256": "0809f1442f3282f38458758b36dc47205d02327e806a10a15b7b012f83a23f8b",
+      "bytes": 226,
+      "artifact_path": "independent-microscopic.log"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.13/runtime/independent-operational.log",
+      "sha256": "1e4696f14d2d21dadf59bdd23b49f904dd9a9000bc5da64d1c522a55c3670f95",
+      "bytes": 83,
+      "artifact_path": "independent-operational.log"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.13/runtime/independent-rational-calibration.log",
+      "sha256": "7befcfa943b63861421468c2fafc0272e620c98dd313996729109d58639d1ee7",
+      "bytes": 89,
+      "artifact_path": "independent-rational-calibration.log"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.13/runtime/integer-interval-prediction.log",
+      "sha256": "bb46e6f6459b15bff6742a733fdc6b3877651f837309aa1509078d9b871c8e03",
+      "bytes": 146,
+      "artifact_path": "integer-interval-prediction.log"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.13/runtime/integration.json",
+      "sha256": "5f8ea0da6662f6130563e1bd1022e55e61a272d95bd4ad1cd2fda1eaae785c30",
+      "bytes": 12393,
+      "artifact_path": "integration.json"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.13/runtime/interval-prediction.json",
+      "sha256": "ee7b5ab2eba7030d2dec523e1521cc3c4c7554d951c24685bc43734a841be5d2",
+      "bytes": 59572,
+      "artifact_path": "interval-prediction.json"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.13/runtime/micro.json",
+      "sha256": "0a9fa36b463e9bebafd389035346920930d3016e4fb3daa34517c37ffe99b5ea",
+      "bytes": 16468,
+      "artifact_path": "micro.json"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.13/runtime/operational.json",
+      "sha256": "8024fe362964bf9f7c53726f5fccb1d893b50e21fa7a7bcc22bd2a03b3f736b1",
+      "bytes": 20529,
+      "artifact_path": "operational.json"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.13/runtime/source-integration.log",
+      "sha256": "b7dd6e4a77abe539b68b3745be533d20b2630c1c3627a3b949a28ebfedc13435",
+      "bytes": 44,
+      "artifact_path": "source-integration.log"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.13/runtime/synthetic-generation.log",
+      "sha256": "ed4279fdf4aa9a0962b2bbc6c377bfd97197bdfb4fe30665ff2d1800b69571e1",
+      "bytes": 145,
+      "artifact_path": "synthetic-generation.log"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.13/runtime/synthetic_raw.zip",
+      "sha256": "47cc6b830fe576c23a9860754cc6760d301d88a848de30dc23c799d6c674715d",
+      "bytes": 237339,
+      "artifact_path": "synthetic_raw.zip"
+    },
+    {
+      "path": "physics/qm/kernel/evidence/v31.13/runtime/truth-blind-calibration.log",
+      "sha256": "2e6eb552586221bb7c5a5af29d94207aeaa4e245b28c2693715c09b3f0f92b78",
+      "bytes": 309,
+      "artifact_path": "truth-blind-calibration.log"
+    }
+  ],
+  "raw_archive_members": [
+    {
+      "archive": "synthetic_raw.zip",
+      "member": "compiled_holdout_records.txt",
+      "sha256": "82bcce684c747825b67d9ae7b94d7cbe80c2bf7cc662b08fe79ebd6a1f7856d6",
+      "bytes": 150000
+    },
+    {
+      "archive": "synthetic_raw.zip",
+      "member": "drive_calibration_bits.txt",
+      "sha256": "5375721c753d55d7b4d336cfb380b346db48c8883725b89ed82514c5f5d2317a",
+      "bytes": 1000001
+    },
+    {
+      "archive": "synthetic_raw.zip",
+      "member": "drive_holdout_bits.txt",
+      "sha256": "9b08ade1d93acf148b3148fe484b834e31d6d48358792b62fda693a33ef0be54",
+      "bytes": 50001
+    },
+    {
+      "archive": "synthetic_raw.zip",
+      "member": "drive_holdout_drift_bits.txt",
+      "sha256": "7bec6182fb6b9c96ad7b349877f9a468800f29b9544cd1431325bfff31053afb",
+      "bytes": 50001
+    },
+    {
+      "archive": "synthetic_raw.zip",
+      "member": "q_calibration_flags.txt",
+      "sha256": "f1ce495013890e45af147fb1ffc7f7d539be92bef5a0dbf5b162e3299ed00475",
+      "bytes": 120001
+    },
+    {
+      "archive": "synthetic_raw.zip",
+      "member": "source_holdout_records.txt",
+      "sha256": "187e75d943435644d49e4ee187ad4810ab4e21155af923d91a7ae21613642be8",
+      "bytes": 137589
+    },
+    {
+      "archive": "synthetic_raw.zip",
+      "member": "synthetic_provenance.json",
+      "sha256": "8049ef3cb5b197dbca2ee29e5de197383a63249ef4c4906957e7b60106bbe0ea",
+      "bytes": 3343
+    }
+  ],
+  "evidence_classes": [
+    "paper proofs separately reviewed",
+    "finite floating diagnostics",
+    "exact rational checks",
+    "directed integer numerical output for a specified input",
+    "explicit synthetic complete streams"
+  ],
+  "new_lean_execution": false,
+  "historical_heavy_suites_reexecuted": false,
+  "new_hardware_data": false,
+  "universal_quantifiers_not_inferred_from_samples": true
+}

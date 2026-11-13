@@ -1,0 +1,117 @@
+{
+  "schema": "ueot-qm.simultaneous-end-to-end/1",
+  "status": "PASS",
+  "created_at_utc": "2026-11-12T03:34:37.350264+00:00",
+  "checks": [
+    {
+      "name": "integration.json accepted in its explicit scope",
+      "status": "PASS"
+    },
+    {
+      "name": "operational.json accepted in its explicit scope",
+      "status": "PASS"
+    },
+    {
+      "name": "micro.json accepted in its explicit scope",
+      "status": "PASS"
+    },
+    {
+      "name": "calibration.json accepted in its explicit scope",
+      "status": "PASS"
+    },
+    {
+      "name": "independent-calibration.json accepted in its explicit scope",
+      "status": "PASS"
+    },
+    {
+      "name": "interval-prediction.json accepted in its explicit scope",
+      "status": "PASS"
+    },
+    {
+      "name": "independent-interval.json accepted in its explicit scope",
+      "status": "PASS"
+    },
+    {
+      "name": "nominal area actually selected from calibration",
+      "status": "PASS"
+    },
+    {
+      "name": "calibration file is exactly the consumed file",
+      "status": "PASS"
+    },
+    {
+      "name": "raw truth was not available to analyzer",
+      "status": "PASS"
+    },
+    {
+      "name": "raw full model response is not inferred from finite tester samples",
+      "status": "PASS"
+    },
+    {
+      "name": "untrimmed calibration set admitted",
+      "status": "PASS"
+    },
+    {
+      "name": "independent numerical error fits the frozen reservation",
+      "status": "PASS"
+    },
+    {
+      "name": "exact finite-map full-domain bound meets frozen precision",
+      "status": "PASS"
+    },
+    {
+      "name": "this computed input meets precision including actual numerical error",
+      "status": "PASS"
+    },
+    {
+      "name": "reservation itself fits with a positive margin",
+      "status": "PASS"
+    },
+    {
+      "name": "wider calibration is not falsely certified",
+      "status": "PASS"
+    },
+    {
+      "name": "held-out nonshared drive is rejected without refit",
+      "status": "PASS"
+    },
+    {
+      "name": "shared two-pulse response is held out",
+      "status": "PASS"
+    },
+    {
+      "name": "fixed-sample coverage failure is below budget",
+      "status": "PASS"
+    },
+    {
+      "name": "no empirical status promotion",
+      "status": "PASS"
+    }
+  ],
+  "check_count": 21,
+  "exact_finite_map_uniform_bound": "562777064802470612168513905024961693899161/13421772800000000000000000000000000000000000",
+  "specified_input_numerical_error": "1959461188990018942178846264083766128156792447025396769310352051517210241240378187036583843789860785091655240133142357264971684874539849967165949530369100883952089146320413054259670216400622338504643045590469387509733073170480063655540570850435664543779050821615771192909783695333801/250001693494773517746927477633100453958776666502365251609340195715354603612820181025387880291528449144622478119960832657053622825492268074336208249369814026886617811900539843660911266167331120979084735922136055312769004447710783310784183954046976000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "specified_input_total_bound": "10482610707032349086141871370726044856402866509908576586804809564285485610849312857017047260747144317111072343468288072947859821692639035419614634948676141774277198072710192953288492773494277166880132120197687728444264825393176801936659762828878907727569047832213163194485264428660570850435664543779050821615771192909783695333801/250001693494773517746927477633100453958776666502365251609340195715354603612820181025387880291528449144622478119960832657053622825492268074336208249369814026886617811900539843660911266167331120979084735922136055312769004447710783310784183954046976000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "specified_input_bound_with_reserved_error": "562777199020198612168513905024961693899161/13421772800000000000000000000000000000000000",
+  "remaining_reserved_margin": "108311440979801387831486094975038306100839/13421772800000000000000000000000000000000000",
+  "decimal_diagnostics": {
+    "exact_finite_map": 0.041930158794110314,
+    "numerical": 7.837791662923208e-48,
+    "with_reserved_error": 0.041930168794110316,
+    "remaining_margin": 0.008069831205889687
+  },
+  "inputs": {
+    "integration.json": "5f8ea0da6662f6130563e1bd1022e55e61a272d95bd4ad1cd2fda1eaae785c30",
+    "operational.json": "8024fe362964bf9f7c53726f5fccb1d893b50e21fa7a7bcc22bd2a03b3f736b1",
+    "micro.json": "0a9fa36b463e9bebafd389035346920930d3016e4fb3daa34517c37ffe99b5ea",
+    "calibration.json": "67bb7cfd9ccc35a80d6ac6dc128e4b16c22997860d102fb9cb9ff0bc431fc5ab",
+    "independent-calibration.json": "0ea440abf2361166daf34ff4e02c2cf6f86f7e109771f0c27b009fa2c6c72bc7",
+    "interval-prediction.json": "ee7b5ab2eba7030d2dec523e1521cc3c4c7554d951c24685bc43734a841be5d2",
+    "independent-interval.json": "0869af2bcd507a6b466bf0b30d72ca53bc9e57c2ab7b7b6109bd83b5910a4e14"
+  },
+  "universal_numerical_certification": false,
+  "interval_input": "(|g,1>|0_R>+|e,0>|1_R>)/sqrt(2)",
+  "independent_physical_inputs": "complex Fock/Born/CP model, effective shared force and phase, ideal filter and readout, fixed iid calibration",
+  "empirical_status": "UNTESTED_NO_REAL_DEVICE_DATA",
+  "new_lean_execution": false
+}

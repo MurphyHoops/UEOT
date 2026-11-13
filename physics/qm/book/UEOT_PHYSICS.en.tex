@@ -92,7 +92,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\small UEOT PHYSICS}
-\fancyhead[R]{\small Bilingual revision 3.9}
+\fancyhead[R]{\small Bilingual revision 3.10}
 \fancyfoot[C]{\small\thepage}
 \setlength{\headheight}{16pt}
 \renewcommand{\headrulewidth}{0.3pt}
@@ -106,6 +106,9 @@
 \allowdisplaybreaks[2]
 \renewcommand{\contentsname}{Contents}
 \makeatletter
+% Reserve a real gap before a chapter page number. A zero-minimum \hfil
+% can otherwise place a long final word directly against the number.
+\patchcmd{\l@chapter}{#1\nobreak\hfil}{#1\nobreak\hspace{1em}\hfil}{}{\PackageError{UEOT}{Chapter TOC spacing patch failed}{Inspect the book class before publishing.}}
 \renewcommand{\maketitle}{
   \begin{titlepage}
   \thispagestyle{empty}
@@ -120,11 +123,11 @@
   \vspace{10mm}
   {\color{teal}\rule{\textwidth}{1pt}\par}
   \vspace{7mm}
-  {\large Third edition\quad Bilingual revision 3.9\par}
+  {\large Third edition\quad Bilingual revision 3.10\par}
   \vspace{6mm}
   {Degui Qian\par}
   \vspace{5mm}
-  {69 chapters\quad 6 appendices\quad UEOT-QM Kernel 1.12\par}
+  {70 chapters\quad 6 appendices\quad UEOT-QM Kernel 1.13\par}
   \vfill
   {Objects and protocols\quad Quantum operations and fields\par}
   \vspace{3mm}
@@ -814,6 +817,22 @@ v31.11 machine evidence for 158 unchanged proof/configuration inputs; no
 new Lean proof is claimed. Protocol-matched device data remain absent,
 the empirical axis remains untested, and complex quantum structure and
 effective sideband control remain independent physical inputs.
+
+\section{0.14 The current simultaneous-dynamics increment}
+
+v31.13 / Kernel 1.13 continues from verified main
+\texttt{cb17211653fd\allowbreak e30aa50e0e98\allowbreak 48798a6a5b3b\allowbreak 3f12}. Six Chapter 69 paper
+results connect simultaneous dynamics, genuine Galerkin truncation,
+complete-CQ stability, identifiable parameter calibration and nominal
+finite prediction within one shared model. The book now has 70 chapters,
+six appendices and 194 stable results; counts are not a percentage of
+physics completed. Earlier results, all 188 prior result objects and 111
+ledger claims retain their historical identities. New integer-interval
+outputs and raw synthetic streams have separate execution receipts.
+Unchanged Lean inputs only reuse their original execution; no new
+machine proof or real-device confirmation is claimed. Earlier chapters
+retain their edition-specific accounts; CURRENT and this section state
+the current increment.
 
 \chapter{1. Bridging UEOT Core and quantum physics}\label{ch-1}
 
@@ -8400,10 +8419,10 @@ into generic Core would make the claimed derivation circular.
 
 The book's fixed title is \emph{UEOT Physics}, its stable document
 identity is \texttt{UEOT-\allowbreak PHYSICS}, and its current bilingual revision is
-3.9. The canonical text is \texttt{physics/\allowbreak qm/\allowbreak book/\allowbreak UEOT\_\allowbreak PHYSICS.\allowbreak md};
+3.10. The canonical text is \texttt{physics/\allowbreak qm/\allowbreak book/\allowbreak UEOT\_\allowbreak PHYSICS.\allowbreak md};
 the Chinese PDF is generated from that text. The complete English
 counterpart is \texttt{UEOT\_\allowbreak PHYSICS.\allowbreak en.\allowbreak md}, and its PDF is compiled
-from that English source. Chapters 0--68 and appendices A--F form one
+from that English source. Chapters 0--69 and appendices A--F form one
 continuous, complete document. All earlier physical topics are retained,
 and new proofs are integrated into the corresponding arguments. Readers
 should not have to reconstruct a proof from several old versions.
@@ -8450,7 +8469,7 @@ Statement, domain and checking evidence must be retrieved together.
 \begin{Verbatim}[breaklines,breakanywhere,fontsize=\scriptsize]
 document:
   id: UEOT-PHYSICS
-  edition: "3.9"
+  edition: "3.10"
   canonical_source: physics/qm/book/UEOT_PHYSICS.md
   derivative_pdf: physics/qm/book/UEOT_PHYSICS.pdf
   english_source: physics/qm/book/UEOT_PHYSICS.en.md
@@ -17010,6 +17029,508 @@ predictions, gravity, and cosmology retain separate responsibilities in
 the current roadmap. Completing this finite growth example does not
 complete physics across those domains.
 
+\chapter{69. Simultaneous dynamics, genuine truncation error, and
+calibrated complete predictions}\label{ch-69}
+
+\section{69.1 Continuing from the infinite-tail counterexample}
+
+Chapter 68 established growing finite carriers for separated red and
+blue pulses, while simultaneous controlled force can produce an infinite
+tail at every nonzero time. This chapter makes the latter model
+computable with controlled error. The comparison is between the true
+unitary and evolution obtained by \textbf{compressing the Hamiltonian
+before exponentiating}. Projecting the exact evolved state, normalizing
+its surviving block, or observing agreement between two large matrices
+does not discharge this obligation. The six results have B/P/E/O
+dependency classes. Complex quantum structure, the Fock representation,
+Born readout and effective control Hamiltonians remain independent
+inputs. Argument, verification and dependency categories remain
+distinct.
+
+The system is a complex qubit probe and one oscillator, with
+\(G=n+P_e\), \(P_M=1_{G\le M}\) and its canonical rank-\(2M+1\)
+embedding \(J_M\). Any positive-dimensional finite complex reference is
+untouched and may initially be entangled. The general dynamics and the
+calibrated subfamily are
+
+\[
+\begin{aligned}
+A&=a\sigma_++a^\dagger\sigma_-,&B&=a^\dagger\sigma_++a\sigma_-,\\
+H_0&=\omega n+\Delta P_e+gA,&H&=H_0+hB,\quad\omega>0,\\
+H_x&=x\sigma_xX=x(A+B),&X&=a+a^\dagger,\\
+V_1(x)&=e^{-iH_x},&V_0&=e^{-i(\pi/3)P_e},\\
+H_K&=J_K^\dagger HJ_K,&U_K(t)&=e^{-itH_K}.
+\end{aligned}
+\]
+
+All action durations are \(t\ge0\), with signed couplings allowed. The
+general generator uses frequency units, with physical Hamiltonian
+\(\hbar H\); the exposure \(\int|h|dt\) is dimensionless. The calibrated
+subfamily has unit slot duration and signed area \(x\). Its
+zero-frequency quadrature realization is specified independently rather
+than obtained by applying the positive-frequency domain theorem at its
+boundary. The gate \(V_1\) is simultaneous evolution, not the previous
+product of separated exponentials. External driving supplies energy.
+
+The original source remains \(K_0=\sqrt{s(1-q)}V_0\),
+\(K_1=\sqrt{sq}V_1\), \(K_f=\sqrt{1-s}I\), with \(s=1-q/2\). Two slots
+stop at \(f\), retaining the seven terminal words
+\(f,0f,1f,00,01,10,11\); the last four are accepted. These original
+events directly give the backward acceptance effect \(s^2I\), so this
+model's normalized accepted target \(T_\infty(q,x)\) is CPTP. Failure
+words retain zero mass in its common record alphabet. Source and
+available physical actions share the same unknown parameter; deployment
+reads only permitted visible histories.
+
+\section{69.2 Approximate operational stability of a complete tree}
+
+\phantomsection\label{p-opt-05}{}
+
+\textbf{P-OPT-05 (Complete-CQ error from unnormalized reference
+prefixes).} Fix a finite-height classical control tree, actions, visible
+outcomes, stopping rule and observation permissions. Two normal CP
+instrument families correspond label by label, with each complete test
+trace preserving. Persistent memory is included in the system, or the
+auxiliary is genuinely reset. Let \(\sigma_h^F\) be the unnormalized
+joint state reaching prefix \(h\) when every preceding instrument is the
+finite/reference family \(F\). Then their complete terminal CQ outputs
+obey
+
+\[
+\begin{aligned}
+d_h(\sigma)&=\frac12\sum_o\|(E_{ho}-F_{ho})(\sigma)\|_1,\\
+D(\Omega_E(\rho),\Omega_F(\rho))
+&\le\sum_{h\ \mathrm{internal}}d_h(\sigma_h^F).
+\end{aligned}
+\]
+
+Comparison uses the same terminal embedding; finite reference states are
+embedded into the common system. Every label, early failure, stop,
+hidden Kraus sum and untouched reference is retained. A zero-mass prefix
+contributes zero without normalization.
+
+\textbf{Proof.} At each prefix insert the local difference
+\((E_h-F_h)\sigma_h^F\), followed on the left by the complete true
+suffix. The right prefix always remains from the same family \(F\).
+Finite recursive expansion cancels the intermediate terms and expresses
+the complete output difference as the sum of these suffix-applied local
+differences. Each suffix is a normal CPTP map from all current visible
+outcomes to all terminal records. For a Hermitian trace-class operator
+\(Z=Z_+-Z_-\), positivity and trace preservation give
+\(\|\Lambda Z\|_1\le\operatorname{Tr}Z_++\operatorname{Tr}Z_-=\|Z\|_1\).
+The trace norm of the record direct sum equals the sum of block norms.
+The triangle inequality proves the claim, also after identity extension
+on the reference. \(\square\)
+
+One cannot replace an individual finite prefix by an actual prefix while
+retaining the former's support or energy budget. Controllers constrained
+by observation fibres still use common weights on each fibre; this proof
+grants no hidden-node access. Exact operational-quotient compatibility
+is a different statement. Additional state-dependent readout uses this
+general prefix bound rather than automatically inheriting the
+state-independent path probabilities below.
+
+\section{69.3 Energy and boundary flow from the actual generator}
+
+\phantomsection\label{p-micro-06}{}
+
+\textbf{P-MICRO-06 (Self-adjoint simultaneous source, energy budget, and
+boundary defect).} For the real parameters of Section 69.1 with
+\(\omega>0\), \(H,H_0\) are self-adjoint on \(D(n)\). The force
+subfamily instead uses the self-adjoint realization \(xX\oplus(-xX)\) in
+the \(\sigma_x\) eigenbasis. The difference between finite compression
+and true dynamics follows from the two actual blue boundary edges;
+finite-energy inputs satisfy the following budget and local
+complete-output bound.
+
+The existing block realizations give \(A^2=G\) and \(B^2=n+P_g\le n+I\).
+For \(\psi\in D(n)\), the coupling norm is at most
+\((|g|+|h|)\|(n+I)^{1/2}\psi\|\), whose relative bound with respect to
+\(n\) can be arbitrarily small:
+\(\|(n+I)^{1/2}\psi\|\le\epsilon\|n\psi\|+(1+1/(4\epsilon))\|\psi\|\).
+The standard Kato--Rellich theorem supplies self-adjointness on the
+stated domain. That theorem is an explicit standard mathematical
+dependency, not a new UEOT discovery or machine proof. Every block of
+\(H_0\) preserves \(G\). The zero-frequency subfamily is defined
+directly by self-adjoint quadrature spectral calculus, and its finite
+Fock vectors satisfy the domain requirements of the finite Duhamel
+expansion below.
+
+Set \(C=i(a^\dagger\sigma_+-a\sigma_-)\). First work in finite matrices:
+\(i[B,G]=-2C\) and \(C_K^2\le J_K^\dagger C^2J_K\le G_K+I\). Integration
+gives the following homogeneous budget for an unnormalized input of mass
+\(m\) and excitation \(e\):
+
+\[
+\begin{aligned}
+e_{\mathrm{out}}+m
+&\le\bigl(\sqrt{e+m}+z\sqrt m\bigr)^2,
+&z&=\int|h(t)|\,dt,\\
+\sqrt{E(t)+1}&\le\sqrt{E(0)+1}+z
+&&\text{when }m=1.
+\end{aligned}
+\]
+
+Extension to the infinite model has a noncircular order. The finite
+Duhamel theorem in Section 69.4 does not consume this energy bound; it
+first provides Galerkin strong convergence for finitely supported
+inputs. Lower semicontinuity of the positive \(G\) expectation transfers
+the finite-matrix budget. Low-spectral initial-state approximation and a
+second lower limit extend it to arbitrary normal finite-mean-excitation
+inputs. There is no assumption that every finite-energy vector lies in
+\(D(n)\) or has a pointwise differentiable energy expectation. A rare
+normalized measurement branch does not automatically inherit an
+aggregate mean budget.
+
+The actual embedding defect is \(HJ_K-J_KH_K=h(I-P_K)BJ_K\). Calculating
+the blue edges gives
+
+\[
+\begin{aligned}
+W_K&=J_K^\dagger B(I-P_K)BJ_K\\
+&=(K+1)|g,K\rangle\langle g,K|
+ +K|g,K-1\rangle\langle g,K-1|,\\
+d_K(\sigma)&\le |h|\int_0^{|t|}
+\sqrt{m\operatorname{Tr}[(W_K\otimes I_R)\sigma_K(u)]}\,du.
+\end{aligned}
+\]
+
+For \(K=0\) omit the second term. Here \(\sigma_K(u)\) is the actual
+finite-generator evolution of the unnormalized prefix and
+\(m=\operatorname{Tr}\sigma\). Apply
+\(U(t)J_K-J_KU_K(t)=-i\int_0^tU(t-u)(HJ_K-J_KH_K)U_K(u)du\) to a
+purification, followed by unitarity, Cauchy--Schwarz and trace-distance
+contraction. The purification has norm \(\sqrt m\), so the mass inside
+the square root cannot be omitted. Combining this defect with P-OPT-05
+gives a bound for the same complete tree. Numerical certification of the
+integral would additionally require validated quadrature; the principal
+certificate instead uses the integral-free prior bound next.
+
+\section{69.4 A finite remainder for genuine Galerkin evolution}
+
+\phantomsection\label{p-micro-07}{}
+
+\textbf{P-MICRO-07 (Genuine truncation bound from finite Duhamel
+expansion).} Let \(N,L\ge0\) and \(K=N+2L\). In either specified
+self-adjoint model of Section 69.1, start from support in \(P_N\).
+Finitely many parameter segments and intervening \(G\)-preserving
+unitaries are permitted, with total absolute blue exposure \(z\) along a
+path. For every untouched finite reference and normal joint input, the
+trace distance between the true evolution and embedded \(e^{-itH_K}\)
+evolution is bounded by
+
+\[
+\begin{aligned}
+c_j(N,z)&=\frac{z^j}{j!}\prod_{r=1}^{j}\sqrt{N+2r-1},\qquad c_0=1,\\
+\|(U-J_KU_KJ_K^\dagger)P_N\|&\le2c_{L+1}(N,z),\\
+d_{N,L}(z)&=\min\{1,2c_{L+1}(N,z)\}.
+\end{aligned}
+\]
+
+For unnormalized mass \(m\), multiply the last bound by \(m\). The same
+cutoff is used throughout the path; the true evolution is not assumed to
+remain inside it.
+
+\textbf{Proof.} Begin with \(U(t)=U_0(t)-ih\int_0^tU(t-u)BU_0(u)du\) and
+expand only its leftmost true \(U\), for exactly \(L+1\) iterations. The
+true unitary remains on the far left as a suffix. Each right-hand
+\(U_0\) preserves excitation support, and each \(B\) increases its upper
+limit by at most two. The input of the \(r\)th \(B\) therefore lies in
+\(P_{N+2r-2}\), where its norm gain is at most \(\sqrt{N+2r-1}\). The
+ordered simplex integral of the absolute coupling product is \(z^j/j!\),
+and the true suffix has norm one. Hence the order-\(L+1\) remainder is
+at most \(c_{L+1}\).
+
+Repeat the same finite expansion for the actual compressed Hamiltonian.
+Every intermediate support through order \(L\) lies within \(P_K\), so
+those terms agree exactly with their infinite counterparts. The finite
+remainder has the same bound because inserted projections cannot
+increase norm. Subtraction proves the operator estimate; purification
+and partial trace prove the joint-state estimate. Finite segments and
+conserving gates can be included in the conserving reference propagator,
+with the ordered integrals bounded by total absolute exposure.
+\(\square\)
+
+Only a finite expansion is needed; no unaudited infinite Dyson
+convergence is invoked. At fixed \(N,z\), the ratio
+\(c_{j+1}/c_j=z\sqrt{N+2j+1}/(j+1)\) tends to zero, so a sufficiently
+large \(L\) makes the error vanish. This does not authorize unbounded
+times, unlimited stopping or coherent controllers. An unfiltered
+energy-bounded input additionally requires its initial projection error
+\(\sqrt{\bar n/(N+1)}\). Actual physical filtering instead uses the
+established complete-preparation bound, retaining its failures.
+
+Here record probabilities are independent of the quantum state, allowing
+complete-word weighting. The legal Chapter 67 policy has
+\(Q_{00}=Q_{11}=313/1250\) and \(Q_{01}=Q_{10}=312/1250\), with mean
+force-call count exactly one. At nominal area \(\widehat x\),
+
+\[
+\epsilon_{\mathrm{Gal}}(\widehat x)
+\le\frac{624}{1250}d_{N,L}(|\widehat x|)
+ +\frac{313}{1250}d_{N,L}(2|\widehat x|).
+\]
+
+Failed words of the original source use their actual probabilities, not
+\(Q\). This is the interface between the general prefix theorem and the
+special path formula.
+
+\section{69.5 Compression need not inherit the infinite invariant}
+
+\phantomsection\label{c-micro-03}{}
+
+\textbf{C-MICRO-03 (Galerkin compression does not preserve this
+quadrature invariant).} The infinite force and probe phase strongly
+commute with the spectral projections of \(X\), preserving its \(X^2\)
+quadratic-form expectation. At \(K=1\), in basis \((g0,g1,e0)\), the
+compressed unit-area generator couples only \(g1\leftrightarrow e0\),
+whereas \(J_1^\dagger X^2J_1=\operatorname{diag}(1,3,1)\). Starting from
+\(e0\), finite evolution has expectation \(1+2\sin^2x\), while true
+infinite evolution retains one. They differ unless \(x\) is an integer
+multiple of \(\pi\).
+
+The proof is the explicit map \(e0\mapsto\cos x\,e0-i\sin x\,g1\). The
+two-quantum same-probe matrix elements in \(X^2=a^2+(a^\dagger)^2+2n+1\)
+have no corresponding endpoints within this carrier. This refutes
+automatic inheritance of the invariant, without refuting the
+trace-distance approximation in P-MICRO-07. Parameter comparison must
+therefore first use two exact infinite models and pay the Galerkin error
+separately.
+
+\section{69.6 Identifiable calibration and a nominal parameter without
+hidden truth}
+
+\phantomsection\label{p-rob-04}{}
+
+\textbf{P-ROB-04 (Joint calibration, nominal parameters, and
+shared-force stability).} Freeze independent fresh preparations, fixed
+parameters, ideal readout and the shared-pulse model. Estimate \(q\)
+from original-source failures. Separately apply the same force to
+\(|+_x\rangle\otimes|0\rangle\) and read the binary event \(p\le0\),
+where \(p=(a-a^\dagger)/(i\sqrt2)\). Its probability is the strictly
+monotone \(\Phi(2x)\), identifying signed area. Complete raw calibration
+records define one joint set; deterministic inversion and rounding
+select rational \(\widehat x\) and a whole-set displacement radius
+\(\Delta_x\). One lawful deployment must work for all parameters in that
+set.
+
+Original-source failure probability is \(q/2\), so
+\(\widehat q=2F/n_q\). A failure-frequency radius cannot be used as a
+\(q\) radius without scaling. Choose \(n_q=120000\) with \(q\) radius
+\(0.01\), and \(n_x=1000000\) with drive-probability radius \(0.002\).
+Hoeffding and a union bound give
+
+\[
+\begin{aligned}
+\Pr\{(q,x)\notin\mathcal C(D_{\mathrm{cal}})\}
+&\le 2e^{-6}+2e^{-8}<0.01,\\
+\mathcal C&=\{q:\ |q-\widehat q|\le0.01\}
+\times\{x:\ |\Phi(2x)-\widehat p|\le0.002\},\\
+s&=1-q/2,\qquad
+\Delta_x\ge\sup_{(q,x)\in\mathcal C}|x-\widehat x|.
+\end{aligned}
+\]
+
+The product set corresponds to the two declared parameter calibrations,
+while the shared relation between \(s\) and \(q\) is preserved. The
+analyzer requires the entire untrimmed set to lie in the design window
+\(q\in[0.48,0.52]\), \(|x|\le0.1\). It cannot discard adverse parameters
+and claim coverage of the original set. The coverage statement bounds
+the unconditional probability of issuing an invalid certificate in this
+one fixed-sample protocol. It is not conditional coverage after
+admission and does not allow uncorrected resampling until admission.
+Rational normal-integral enclosures and monotone inversion supply
+independently checkable endpoints. The constants, radicals and
+exponential bounds also receive outward arithmetic enclosures.
+
+For a passed input with mean excitation at most one, the form inequality
+\(X^2\le4n+2I\le4G+2I\) gives expectation at most six. Exact infinite
+forces and all probe phases strongly preserve this form domain, so
+replacing one actual area by its nominal value has vector error at most
+\(|x-\widehat x|\sqrt6\). Telescope each complete word and weight by
+\(Q\), using mean call count one:
+
+\[
+D(C_\infty(x),C_\infty(\widehat x))
+\le\sqrt6\,\Delta_x.
+\]
+
+The inputs and complete preparation records agree in this comparison.
+Finite mean \(n\) places a purification in \(D(X)\), the quadratic-form
+domain of the positive operator \(X^2\); it need not lie in \(D(X^2)\).
+This invariant cannot be applied to compressed prefixes, as C-MICRO-03
+shows.
+
+Flags remain independent of \(x\), so flags alone do not produce an area
+set. Nor does the momentum calibration identify arbitrary devices. An
+unknown additive readout bias \(p_{\rm obs}=p+b\) can change its
+probability to \(\Phi(2x-\sqrt2b)\); the transformation
+\((x,b)\mapsto(x+c,b+\sqrt2c)\) preserves the data. This
+nonidentifiability concerns single-dose calibration access. A second
+dose with the same fixed bias has probability \(\Phi(4x-\sqrt2b)\), and
+the two doses can jointly identify \(x,b\). This analyzer does not refit
+bias using holdout data and retains the declared zero-bias model.
+Independent zero/bias, preparation and shared-gate contracts are not
+validated by the simulation. Correlated trials also cannot impersonate
+iid data: repeating one latent binary bit a million times does not
+acquire Hoeffding precision.
+
+\section{69.7 One certificate for the complete output}
+
+\phantomsection\label{p-rob-05}{}
+
+\textbf{P-ROB-05 (Composing physical preparation, robust deployment,
+nominal calibration, and finite prediction).} Under the shared model,
+legal visible policy, physical low-spectral filtering, shared gates and
+valid calibration-set contract, every normal joint input with
+\(\operatorname{Tr}G\rho_S\le1\) and every finite untouched reference
+satisfy
+
+\[
+\begin{aligned}
+D(T_\infty(q,x),C_K(\widehat x))
+&\le f(1/(N+1))+\frac1{50}+\sqrt6\Delta_x
+       +\epsilon_{\mathrm{Gal}}(\widehat x),\\
+f(e)&=\frac{\sqrt{4e-3e^2}+e}{2}.
+\end{aligned}
+\]
+
+The complete output retains preparation failure, every path, terminal
+states and the reference. Filter failure is
+\(\tau_{\rm vac}\otimes\operatorname{Tr}_S[(I-P_N)\rho(I-P_N)]\), with
+the actual failure-conditioned reference; the ideal target has zero mass
+in this block. Low-spectral passing does not increase mean \(G\), unlike
+unrestricted postselection.
+
+\textbf{Proof.} Pay the inherited sharp physical-filter error once. At
+the same parameter, source and action terminal blocks agree, so the
+legal-policy difference from the conditioned target is the existing
+path-TV bound \(1/50\). Next pay P-ROB-04's nominal-parameter difference
+only between exact infinite models. Apply P-MICRO-07's complete-path
+weighted error to the nominal model. The triangle inequality gives the
+result. All four terms concern the same output, reference and acceptance
+contract; input tails, dynamics and statistical coverage are not
+conflated. \(\square\)
+
+The physical compiler \(C_\infty(x)\) calls the actual shared gates, and
+its target error needs only \(f+1/50\). The nominal infinite process is
+a comparison object and \(C_K(\widehat x)\) is a predictor; hardware is
+not assumed to implement a compressed Hamiltonian. Calibration coverage
+concerns whether the set contains the parameter, not measured validity
+of the device model. Additional device errors require their own
+contributions in the same complete metric.
+
+Freeze \(N=4095,L=40,K=4175\). Over the entire design window, the
+Galerkin term is at most approximately \(4.54172\times10^{-5}\); the
+calibrated nominal value permits a tighter bound. The actual synthetic
+records have \(F=30036\) and \(547267\) drive events, giving
+\(\widehat q=0.5006\), \(\widehat p=0.547267\) and
+
+\[
+\begin{aligned}
+q&\in[0.4906,0.5106],\\
+x&\in[0.0568560627871\ldots,0.0619048193330\ldots],\\
+\widehat x&=2969/50000,\qquad
+\Delta_x\le0.002524819334,\\
+\epsilon_{\mathrm{finite}}&<0.041930158795<0.05.
+\end{aligned}
+\]
+
+Strict endpoints and upper bounds are the rational numbers in the
+receipt; the displayed decimals are for reading. Widening the
+probability calibration radius to \(0.01\) gives approximately
+\(0.06671\) and the analyzer returns insufficient certification, not
+physical impossibility. The retained policy is the established
+whole-design policy; no new minimax optimality is claimed for every
+narrower calibrated set.
+
+\section{69.8 Actual calculation, held-out protocols, and full
+resources}
+
+Ordinary small-matrix checks use initial \(G\le1\), \(K=7\) and a
+two-dimensional reference, with the existing Chapter 66 interpreter
+independently computing the complete source, backward effect and
+conditioned target. A larger finite matrix is diagnostic and has its own
+analytic error. Independent force checks also use actual
+infinite-displacement matrix elements rather than calling a large cutoff
+an infinite oracle. The positive-frequency Rabi stress case fixes
+\(\omega=1,\Delta=3/5,g=2/5,h=1/10,t=1/5\); these finite numerical
+samples do not prove all-parameter claims.
+
+A separate executed integer-interval predictor uses \(K=4175\) and fixed
+input \((|g,1\rangle|0_R\rangle+|e,0\rangle|1_R\rangle)/\sqrt2\), which
+passes filtering with probability one. A degree-100 Taylor polynomial
+uses outward-rounded radicals, products and divisions. The bound
+\(\|H_K\|\le13\) supplies an explicit remainder, while sparsity
+identifies all unpropagated coordinates. Each word's integer amplitude
+centre is normalized by its exact norm, producing a lawful CQ
+prediction. Its actually certified numerical error is below \(10^{-8}\),
+so this specified output has total bound below \(0.041930168795\). This
+numerical certificate concerns that input only. The all-input theorem
+above concerns the exact finite map; one interval example does not
+certify numerical evaluation on every input.
+
+The synthetic analysis separates calibration, truth provenance and
+held-out data; the analyzer never reads generator truth. Independent
+drive holdout applies the same gate twice in succession and predicts
+\(\Phi(4x)\), testing a different shared-parameter response from the
+single-pulse calibration. Complete source and compiler records are held
+out separately. A mismatched-drive control uses the same frozen
+threshold. These are synthetic finite-tester checks, not an empirical
+measurement of full trace distance. The final sample contract contains
+120000 source-flag calibration trials, 1000000 drive calibration trials
+and 150000 ordinary holdout trials, with intentional mismatch controls
+separately registered. Time, energy, monetary cost and real instrument
+errors remain unmeasured.
+
+A real source attempt that filters first succeeds with probability
+\(s_Ns^2\). Reading flags before applying gates gives mean force calls
+\(s_Nsq(1+s)\) for the source and \(s_N\) for the compiler. Coherent
+scheduling may instead require \(s_N(1+s)\) and \(2s_N\) gate slots;
+label counts do not make scheduling free. Only genuine fresh-reset
+independent preparation permits delivery cost
+\(\mu/(s_Ns^2)+C_{\rm cal}/m\). One-time calibration is amortized over
+deliveries; unknown quantum inputs and references cannot be freely
+recreated. Computational prediction cost and physical gate cost are also
+recorded separately.
+
+\section{69.9 Sources, verification axes, and the next arrow}
+
+This chapter uses standard CP contraction, Kato--Rellich, Duhamel and
+Hamiltonian-truncation methods. Tong et al.,
+\href{https://arxiv.org/abs/2110.06942v2}{Quantum 6, 816 (2022)},
+especially Appendix D, distinguish state truncation from Hamiltonian
+truncation. Woods, Cramer and Plenio,
+\href{https://arxiv.org/abs/1504.01531}{PRL 115, 130401 (2015)}, derive
+bosonic-bath and Fock-truncation errors. These precedents are not
+renamed UEOT discoveries. This increment supplies explicit coefficients
+for the declared probe model, complete record/reference/permission
+interfaces and shared-source integration with calibrated nominal
+predictions. {[}QM3113{]}
+
+The universal arguments of the six results are paper proofs.
+Rational/integer intervals, finite floating comparisons, synthetic raw
+streams and internal AI cross-review have separate evidence identities.
+There are no new Lean declarations. The unchanged 158
+proof/configuration inputs and 13 earlier runtime inputs are checked
+before reusing historical machine execution. The original 188 result
+objects and 111 ledger claims retain their identities. No
+protocol-matched real device calibration, complete terminal-state data
+or costs were obtained, so the empirical axis remains untested.
+
+The closed arrow is specified simultaneous dynamics to a controlled
+finite predictor of the same intervention process. The next admissible
+extension is mode deletion or persistent-memory comparison in a
+specified finite Gaussian/free-field bath: derive prefix defects from
+the actual coupling, bound the same intervention slots and complete
+records, and retain a control showing that deleting a mode is not
+resetting a bath. Full OPT/independent complex selection, long-time
+limits, coherent controls and infinite references retain distinct
+obligations. Same-order EFT observables, the two high-energy generation
+candidates, flavour relations, new structure between Fisher and
+Lorentzian geometry, and the cosmological targets remain on the
+continuous roadmap.
+
 \chapter{Appendix A. Notation, units, and responsibilities of standard
 theorems}\label{appendix-a}
 
@@ -17221,7 +17742,9 @@ separately binds the titles and anchors in both languages. Edition 3.8
 appends the nine Chapter 67 results, giving 182 in total; all 173
 previous result objects and their historical verification identities are
 preserved. Edition 3.9 adds six Chapter 68 results for a total of 188,
-preserving all 182 prior result objects.
+preserving all 182 prior result objects. Edition 3.10 appends six
+Chapter 69 results for a total of 194, preserving all 188 previous
+result objects.
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2400}}
@@ -17581,6 +18104,19 @@ counterexample for simultaneous red and blue interaction). \\
 growth, physical filtering, and pulse omission). \\
 \hyperref[c-rob-02]{C-ROB-02} & 68 & C-ROB-02 (Identical flag
 probabilities do not certify the blue-pulse terminal state). \\
+\hyperref[p-opt-05]{P-OPT-05} & 69 & P-OPT-05 (Complete-CQ error from
+unnormalized reference prefixes). \\
+\hyperref[p-micro-06]{P-MICRO-06} & 69 & P-MICRO-06 (Self-adjoint
+simultaneous source, energy budget, and boundary defect). \\
+\hyperref[p-micro-07]{P-MICRO-07} & 69 & P-MICRO-07 (Genuine truncation
+bound from finite Duhamel expansion). \\
+\hyperref[c-micro-03]{C-MICRO-03} & 69 & C-MICRO-03 (Galerkin
+compression does not preserve this quadrature invariant). \\
+\hyperref[p-rob-04]{P-ROB-04} & 69 & P-ROB-04 (Joint calibration,
+nominal parameters, and shared-force stability). \\
+\hyperref[p-rob-05]{P-ROB-05} & 69 & P-ROB-05 (Composing physical
+preparation, robust deployment, nominal calibration, and finite
+prediction). \\
 \end{longtable}
 
 \chapter{Appendix C. Sources, inheritance, and research
@@ -18932,14 +19468,14 @@ contract}\label{appendix-e}
 
 The maintained Chinese source \texttt{UEOT\_\allowbreak PHYSICS.\allowbreak md} and its complete
 English counterpart \texttt{UEOT\_\allowbreak PHYSICS.\allowbreak en.\allowbreak md} each contain Chapters
-0--68 and Appendices A--F. Their corresponding \texttt{.\allowbreak tex} and
+0--69 and Appendices A--F. Their corresponding \texttt{.\allowbreak tex} and
 \texttt{.\allowbreak pdf} files are actual derivatives of those sources, with
 mathematical typesetting, a full chapter contents list, stable result
-IDs, original derivations, and embedded code. Edition 3.9 adds the
-Chapter 68 research increment to the continuous bilingual manuscript
-while retaining Chapter 67 and all earlier results. The edition number
-identifies a publication; the text and evidence determine which physical
-questions are resolved or open.
+IDs, original derivations, and embedded code. Edition 3.10 adds the
+Chapter 69 simultaneous-dynamics and calibrated-prediction increment to
+the continuous bilingual manuscript while retaining Chapter 68 and all
+earlier results. The edition number identifies a publication; the text
+and evidence determine which physical questions are resolved or open.
 
 Both languages carry the same scientific commitments. Their prose is
 adapted for natural reading, while assumptions, formulas, constants,
@@ -20781,6 +21317,24 @@ stated in their receipts. Every execution records the actual environment
 and checkout identity; checker authors are not relabelled as remote
 executors. The three-agent cross-review is internal AI review, not
 external human peer review. No real device data were obtained.
+
+\section{F.8 Verification scope of the v31.13 simultaneous-dynamics
+increment}
+
+The Chapter 69 trace-class prefix, self-adjointness, finite-Duhamel,
+calibration-coverage and error-composition arguments are paper proofs.
+None of the six stable results has a new Lean binding. The runtime
+directory \texttt{physics/\allowbreak qm/\allowbreak simultaneous\_\allowbreak cutoff/\allowbreak } distinguishes
+floating source interpretation, independent prefix and
+infinite-displacement controls, rational calibration with an independent
+checker, integer-interval prediction and raw synthetic streams. The
+K=4175 interval algorithm actually evaluates a sparse polynomial for one
+specified \(G\le1\) entangled input; it does not numerically certify
+every input or the entire 8351-dimensional matrix. The unchanged 158
+proof inputs retain the original 1365 public axiom reports; new runs do
+not extend their machine-verified quantifiers. Three-agent internal AI
+cross-review is not external human peer review, and the empirical axis
+remains untested.
 
 \backmatter
 \end{document}
