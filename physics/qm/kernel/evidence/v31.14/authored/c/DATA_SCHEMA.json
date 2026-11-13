@@ -1,0 +1,18 @@
+{
+  "schema": "persistent-bath-raw-trial-requirements/1",
+  "required_dataset_metadata": ["source_contract_sha256", "source_implementation_identity", "device_or_simulation_origin", "declared_input_and_reference_preparation", "bath_initialization_and_energy_certificate", "instrument_and_control_identity", "calibration_or_holdout_split", "seed_for_synthetic_or_acquisition_run_identity", "readout_model_and_calibration_identity", "full_attempt_count", "resource_accounting"],
+  "required_per_trial_fields": ["unique_trial_id", "setting_id", "timestamp_or_explicit_synthetic_index", "complete_operation_times_and_labels_or_immutable_shared_schedule_reference", "reference_preparation_or_shared_preparation_reference", "bath_reset_status_between_trials_and_within_trial", "all_failures_and_leakage_flags", "terminal_record", "unfiltered_terminal_readout", "calibration_or_holdout_role", "drift_block_and_covariance_group_if_applicable"],
+  "synthetic_npz_encoding": {
+    "trial_id": "(array_name, zero_based_index)",
+    "setting_and_operation_schedule": "array name binds CALIBRATION_CONTRACT.json and immutable generation receipt",
+    "timestamp": "no physical timestamp; array index is explicitly synthetic",
+    "record_and_readout": "one uint8 per trial; the eight code values encode f-/f+/pf-/pf+/ppf-/ppf+/ppp-/ppp+",
+    "between_trial_reset": "fresh vacuum for every independent synthetic trial",
+    "within_trial_reset": false,
+    "leakage": "zero by the selected synthetic source model; not an observed hardware exclusion",
+    "failed_trials": "retained without conditioning or renormalization",
+    "device_events": false
+  },
+  "qualification_rule": "A hardware source missing any field needed for the claimed metric/coverage is NOT_CERTIFIED; processed means may support only the specific processed observable that they preserve.",
+  "independence_rule": "Fixed-sample Hoeffding coverage assumes independent stationary repetitions in each setting. Drift or dependent acquisition needs a separate valid concentration/coverage argument, not reuse of the iid radius."
+}

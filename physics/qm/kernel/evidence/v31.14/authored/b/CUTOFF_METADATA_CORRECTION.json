@@ -1,0 +1,53 @@
+{
+  "schema": "ueot.persistent_bath.metadata_correction.v1",
+  "client_date": "2026-11-14",
+  "reviewer": "native agent A",
+  "issue": "function parameter cutoff was shadowed by analytic-display loop; actual Galerkin used K20 while old returned metadata incorrectly said K24",
+  "scientific_calculation_change": false,
+  "correction": "rename loop variable cutoff_probe; add explicit K20 metadata assertion; rerun eight interval certificates under new source identity",
+  "old_source_sha256": "5446e77d8f5f82e254283b51cafe9ec9c89399be2d637c2f7b0dc94a182c1fab",
+  "new_source_sha256": "edb594539bcc0773379ab3a869afa8a6cb8199004ca0986b0c5acc219d3166fc",
+  "preserved_previous_directory": "correction_before_cutoff_metadata",
+  "files": [
+    {
+      "path": "interval_generator_original_weyl.json",
+      "old_sha256": "f47bbb2d6b459771128d3db43334cc2a16d835a521d038a7137dbaaa5081adcd",
+      "new_sha256": "072092cd392de3940fbae5b1b852d59f1370b1db075f570498f374005c690fb0"
+    },
+    {
+      "path": "interval_generator_original_galerkin.json",
+      "old_sha256": "ea536da2f824773ca5b34c613d0702a7ab858c7c5e851be3465b912fdee99d74",
+      "new_sha256": "d279d61341da01c4c3c3d81b8f94d675d757e82b1c9001ba5302718a253c9c5d"
+    },
+    {
+      "path": "interval_generator_permuted_weyl.json",
+      "old_sha256": "584419ee113c1f8f07e119038e1c8b25b8dadcb820a6825ec6c362dcd8ec3bf0",
+      "new_sha256": "7274888d7ae2b20d95435439a3d4168653834b5b08f3ea4714ac520d543295f2"
+    },
+    {
+      "path": "interval_generator_permuted_galerkin.json",
+      "old_sha256": "6e685fc57f29af92f9b507d2d0cfb5143c28efd3361a7ac0987bdabc43a7861e",
+      "new_sha256": "260fdba9c449f70821286f61bac17c0d3bd53f93abe2366c2947c64301fbec8e"
+    },
+    {
+      "path": "interval_calibrated_original_weyl.json",
+      "old_sha256": "3a7ec771fd1c513791c991430526b72ca1f876d0351d6d1ac6cb331aff49052f",
+      "new_sha256": "76adef51d4803750943a74bd0f0156396f0b7c39b297ccc5faf667d88fecf6ef"
+    },
+    {
+      "path": "interval_calibrated_original_galerkin.json",
+      "old_sha256": "2e928e355797d41f27c9bd59ac394fdb120adf15c6a827d3e270bf97b50a92aa",
+      "new_sha256": "23fe8f47dcec4637eb4729fbce1767047c48dfedd6d91e09b11a70e147378986"
+    },
+    {
+      "path": "interval_calibrated_permuted_weyl.json",
+      "old_sha256": "77597074b10a50ef207a17ace5afd42455dedc80be74297a2ae0bc53e78444eb",
+      "new_sha256": "879a38e3df2682fb2c3fa05c9be663e7173e801e047c77c2782c061a1aaf002d"
+    },
+    {
+      "path": "interval_calibrated_permuted_galerkin.json",
+      "old_sha256": "0f20a7e869996805e67e674ded63bd71ccbcfe87066d87069515ad0d5c1a14e5",
+      "new_sha256": "11cae12f9b620ea5e82bb9412efa8052e223faed17aeaefa2152adb6ca5b9306"
+    }
+  ]
+}

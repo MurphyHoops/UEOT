@@ -1,0 +1,102 @@
+{
+  "status": "PASS_DECLARED_FINITE_SCOPE",
+  "runtime_seconds": 0.4139769229986996,
+  "output": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_a/A_VERIFICATION.json",
+  "frame_constants": [
+    {
+      "dimension": 2,
+      "frame_count": 4,
+      "exact_duality": true,
+      "rank_one_effects": true,
+      "sum_dual_operator_norm_exact": "sqrt(3) + 3",
+      "sum_dual_trace_norm_exact": "2*sqrt(3) + 4",
+      "coarse_half_diamond_constant_exact": "5*sqrt(3) + 9",
+      "coarse_half_diamond_constant_float": 17.660254037844386
+    },
+    {
+      "dimension": 3,
+      "frame_count": 9,
+      "exact_duality": true,
+      "rank_one_effects": true,
+      "sum_dual_operator_norm_exact": "3*sqrt(5)/2 + 15/2",
+      "sum_dual_trace_norm_exact": "3*sqrt(5) + 12",
+      "coarse_half_diamond_constant_exact": "81*sqrt(5)/4 + 225/4",
+      "coarse_half_diamond_constant_float": 101.53037654437074
+    },
+    {
+      "dimension": 4,
+      "frame_count": 16,
+      "exact_duality": true,
+      "rank_one_effects": true,
+      "sum_dual_operator_norm_exact": "2*sqrt(7) + 14",
+      "sum_dual_trace_norm_exact": "4*sqrt(7) + 24",
+      "coarse_half_diamond_constant_exact": "52*sqrt(7) + 196",
+      "coarse_half_diamond_constant_float": 333.5790681753587
+    }
+  ],
+  "memory_witness": {
+    "protocol": "separately declared causal-break diagnostic; not the frozen f/p tree",
+    "reference": "not used; independent fixed preparations; no variable reference crosses cut; future controls do not read the history label",
+    "analytic_domain": "lambda in [1/5,2/5]",
+    "analytic_rank_proof": "0<theta<12*(2/5)^2*(1+(2/5)^2)<pi; visibility>0",
+    "rows": [
+      {
+        "lambda": 0.2,
+        "visibility": 0.9441297623658087,
+        "phase": 0.07276960794228493,
+        "response_matrix": [
+          [
+            0.46567833364661987,
+            0.5343216663533801
+          ],
+          [
+            0.5343216663533801,
+            0.46567833364661987
+          ]
+        ],
+        "smallest_singular_value": 0.06864333270676033,
+        "rank": 2,
+        "finite_K14_coherence_residual": 1.1102230246251565e-16,
+        "memory_dimension_lower_bound": 2
+      },
+      {
+        "lambda": 0.3,
+        "visibility": 0.878660895769922,
+        "phase": 0.16373161787014107,
+        "response_matrix": [
+          [
+            0.42838867842713524,
+            0.5716113215728648
+          ],
+          [
+            0.5716113215728648,
+            0.42838867842713524
+          ]
+        ],
+        "smallest_singular_value": 0.1432226431457295,
+        "rank": 2,
+        "finite_K14_coherence_residual": 2.7755575615628914e-17,
+        "memory_dimension_lower_bound": 2
+      },
+      {
+        "lambda": 0.4,
+        "visibility": 0.7945601017527617,
+        "phase": 0.2910784317691397,
+        "response_matrix": [
+          [
+            0.38598640214476204,
+            0.6140135978552379
+          ],
+          [
+            0.6140135978552379,
+            0.38598640214476204
+          ]
+        ],
+        "smallest_singular_value": 0.22802719571047592,
+        "rank": 2,
+        "finite_K14_coherence_residual": 3.342213888644167e-16,
+        "memory_dimension_lower_bound": 2
+      }
+    ]
+  }
+}

@@ -1,0 +1,214 @@
+name: UEOT QM Kernel
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "formalization/ueot-qm/UEOTQM.lean"
+      - "formalization/ueot-qm/UEOTQM/**"
+      - "formalization/ueot-qm/lakefile.lean"
+      - "formalization/ueot-qm/lake-manifest.json"
+      - "formalization/ueot-qm/lean-toolchain"
+      - "formalization/ueot-qm/scripts/**"
+      - "formalization/ueot-core/UEOT/**"
+      - "formalization/ueot-core/lakefile.lean"
+      - "formalization/ueot-core/lake-manifest.json"
+      - "formalization/ueot-core/lean-toolchain"
+      - "physics/qm/conditioning/**"
+      - "physics/qm/operational_micro_robust/**"
+      - "physics/qm/growing_cutoff/**"
+      - "physics/qm/simultaneous_cutoff/**"
+      - "physics/qm/book/build/**"
+      - "physics/qm/book/UEOT_PHYSICS.md"
+      - "physics/qm/book/UEOT_PHYSICS.en.md"
+      - "physics/qm/kernel/*.py"
+      - "physics/qm/kernel/ueot_qm/**"
+      - "physics/qm/kernel/tests/**"
+      - "physics/qm/kernel/certificates/**"
+      - ".github/workflows/ueot-qm.yml"
+  pull_request:
+    paths:
+      - "formalization/ueot-qm/UEOTQM.lean"
+      - "formalization/ueot-qm/UEOTQM/**"
+      - "formalization/ueot-qm/lakefile.lean"
+      - "formalization/ueot-qm/lake-manifest.json"
+      - "formalization/ueot-qm/lean-toolchain"
+      - "formalization/ueot-qm/scripts/**"
+      - "formalization/ueot-core/UEOT/**"
+      - "formalization/ueot-core/lakefile.lean"
+      - "formalization/ueot-core/lake-manifest.json"
+      - "formalization/ueot-core/lean-toolchain"
+      - "physics/qm/conditioning/**"
+      - "physics/qm/operational_micro_robust/**"
+      - "physics/qm/growing_cutoff/**"
+      - "physics/qm/simultaneous_cutoff/**"
+      - "physics/qm/book/build/**"
+      - "physics/qm/book/UEOT_PHYSICS.md"
+      - "physics/qm/book/UEOT_PHYSICS.en.md"
+      - "physics/qm/kernel/*.py"
+      - "physics/qm/kernel/ueot_qm/**"
+      - "physics/qm/kernel/tests/**"
+      - "physics/qm/kernel/certificates/**"
+      - ".github/workflows/ueot-qm.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ueot-qm-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  runtime:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Install Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Install finite conditioning reference dependencies
+        run: python -m pip install numpy==2.3.5 scipy==1.17.0 sympy==1.14.0 mpmath==1.3.0
+      - name: Verify finite conditioning source, records, implementations and costs
+        run: python physics/qm/conditioning/verify_runtime.py --output-dir /tmp/ueot-qm-finite-conditioning
+      - name: Verify canonical physics book structure
+        run: python physics/qm/book/build/verify_book.py
+      - name: Verify operational microscopic robust increment
+        run: python physics/qm/operational_micro_robust/run_verification.py --output-dir /tmp/ueot-qm-operational-micro-robust
+      - name: Verify separated-pulse growing carriers and exact joint certificate
+        run: python physics/qm/growing_cutoff/run_verification.py --output-dir /tmp/ueot-qm-growing-cutoff
+      - name: Verify simultaneous Galerkin source and calibrated complete prediction
+        run: python physics/qm/simultaneous_cutoff/run_verification.py --output-dir /tmp/ueot-qm-simultaneous-cutoff
+      - name: Verify bilingual chapter69 identities and evidence boundaries
+        run: python physics/qm/book/build/verify_v3_10_increment.py --repo-root . --output /tmp/ueot-qm-book3.10-increment.json --require-complete
+      - name: Verify exact kernel and independent negative controls
+        run: python physics/qm/kernel/verify_kernel.py --output /tmp/ueot-qm-runtime-verification.json
+      - name: Run complete kernel example
+        run: python physics/qm/kernel/demo.py > /tmp/ueot-qm-demo.json
+      - name: Run representation and spectrum witnesses
+        run: python physics/qm/kernel/demo_v312.py > /tmp/ueot-qm-demo-v312.json
+      - name: Export exact Lean certificate examples
+        run: python physics/qm/kernel/demo_v313.py > /tmp/ueot-qm-demo-v313.json
+      - name: Run mixture and persistence witnesses
+        run: python physics/qm/kernel/demo_v315.py > /tmp/ueot-qm-demo-v315.json
+      - name: Archive runtime evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ueot-qm-runtime-${{ github.run_id }}
+          path: |
+            /tmp/ueot-qm-finite-conditioning/
+            /tmp/ueot-qm-operational-micro-robust/
+            /tmp/ueot-qm-growing-cutoff/
+            /tmp/ueot-qm-simultaneous-cutoff/
+            /tmp/ueot-qm-book3.10-increment.json
+            /tmp/ueot-qm-runtime-verification.json
+            /tmp/ueot-qm-demo.json
+            /tmp/ueot-qm-demo-v312.json
+            /tmp/ueot-qm-demo-v313.json
+            /tmp/ueot-qm-demo-v315.json
+          retention-days: 30
+
+  lean:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: formalization/ueot-qm
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Check exact inherited proof identity or require a full build
+        id: proof_scope
+        continue-on-error: true
+        working-directory: .
+        run: python3 physics/qm/growing_cutoff/verify_inherited_evidence.py --detect --github-output "$GITHUB_OUTPUT" --output "$RUNNER_TEMP/ueot-qm-proof-reuse.json"
+      - name: Record source identity
+        if: (steps.proof_scope.outcome != 'success' || steps.proof_scope.outputs.reuse != 'true')
+        run: |
+          git rev-parse HEAD | tee source-identity.log
+          sha256sum UEOTQM/*.lean UEOTQM.lean lake-manifest.json lean-toolchain scripts/install_lean.sh >> source-identity.log
+          cat source-identity.log
+          python3 scripts/record_source.py --output source-manifest.json
+      - name: Check inherited dependency lock
+        if: (steps.proof_scope.outcome != 'success' || steps.proof_scope.outputs.reuse != 'true')
+        run: python3 scripts/check_dependencies.py
+      - name: Install and verify official pinned Lean
+        if: (steps.proof_scope.outcome != 'success' || steps.proof_scope.outputs.reuse != 'true')
+        shell: bash
+        run: |
+          set -o pipefail
+          bash scripts/install_lean.sh "$RUNNER_TEMP/ueot-qm-lean" 2>&1 | tee lean-install.log
+      - name: Restore pinned dependencies
+        if: (steps.proof_scope.outcome != 'success' || steps.proof_scope.outputs.reuse != 'true')
+        id: dependencies
+        uses: actions/cache/restore@v4
+        with:
+          path: formalization/ueot-qm/.lake/packages
+          key: ueot-qm-deps-${{ runner.os }}-${{ hashFiles('formalization/ueot-qm/lake-manifest.json', 'formalization/ueot-qm/lean-toolchain') }}
+      - name: Restore Mathlib proof cache
+        if: (steps.proof_scope.outcome != 'success' || steps.proof_scope.outputs.reuse != 'true')
+        run: lake exe cache get
+      - name: Save pinned dependency cache
+        if: (steps.proof_scope.outcome != 'success' || steps.proof_scope.outputs.reuse != 'true') && steps.dependencies.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: formalization/ueot-qm/.lake/packages
+          key: ${{ steps.dependencies.outputs.cache-primary-key }}
+      - name: Reject proof escapes
+        if: (steps.proof_scope.outcome != 'success' || steps.proof_scope.outputs.reuse != 'true')
+        shell: bash
+        run: |
+          if grep -RInE '^[[:space:]]*(axiom|opaque)[[:space:]]|\b(sorry|admit|native_decide)\b' UEOTQM; then
+            echo "Forbidden proof escape in QM source." >&2
+            exit 1
+          fi
+      - name: Build all QM proofs
+        if: (steps.proof_scope.outcome != 'success' || steps.proof_scope.outputs.reuse != 'true')
+        shell: bash
+        run: |
+          set -o pipefail
+          lake build UEOTQM 2>&1 | tee lean-build.log
+      - name: Audit theorem axioms
+        if: (steps.proof_scope.outcome != 'success' || steps.proof_scope.outputs.reuse != 'true')
+        shell: bash
+        run: |
+          set -o pipefail
+          lake env lean scripts/AxiomAudit.lean 2>&1 | tee axiom-audit.log
+          if grep -E '\b(sorryAx|Lean\.ofReduceBool|admit)\b' axiom-audit.log; then
+            exit 1
+          fi
+          python3 scripts/check_axioms.py
+      - name: Verify generated exact certificates and false witnesses
+        if: (steps.proof_scope.outcome != 'success' || steps.proof_scope.outputs.reuse != 'true')
+        run: python3 ../../physics/qm/kernel/verify_lean_exports.py --output-dir "$RUNNER_TEMP/ueot-qm-lean-exports"
+      - name: Verify retained finite and quantum Lean witnesses
+        if: (steps.proof_scope.outcome != 'success' || steps.proof_scope.outputs.reuse != 'true')
+        run: python3 scripts/verify_finite_witnesses.py --output-dir "$RUNNER_TEMP/ueot-qm-finite-witnesses"
+      - name: Archive proof evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ueot-qm-lean-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/ueot-qm-proof-reuse.json
+            formalization/ueot-qm/source-identity.log
+            formalization/ueot-qm/source-manifest.json
+            formalization/ueot-qm/lean-install.log
+            formalization/ueot-qm/lean-build.log
+            formalization/ueot-qm/axiom-audit.log
+            formalization/ueot-qm/proof-axioms.json
+            formalization/ueot-qm/lake-manifest.json
+            ${{ runner.temp }}/ueot-qm-lean-exports/
+            ${{ runner.temp }}/ueot-qm-finite-witnesses/
+          retention-days: 30
+

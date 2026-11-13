@@ -1,0 +1,65 @@
+{
+  "schema": "ueot.persistent_bath.memory_event_witness.v1",
+  "status": "STRICT_INTERVAL_EVENT_GAP_CERTIFIED",
+  "source": "same frozen three-slot source, lambda=3/10, Bell input",
+  "competitor": "same isolated per-slot channels with a fresh vacuum bath after every slot",
+  "single_slot_equality": "exact for every input/reference: both use the same vacuum one-slot channel and same complete F/P instrument",
+  "event": "terminal record ppp AND +1 outcome of X_S tensor X_R",
+  "actual_detector_in_this_witness": "ideal eta=1 as an allowed mathematical terminal tester, not the synthetic calibrated detector estimate",
+  "true_event_probability_interval": [
+    [
+      0,
+      225134795880837393602207045468260222590059543211204124732829782989694300405225029,
+      -269,
+      267
+    ],
+    [
+      0,
+      900539183523349574408828181873040890360238172844816498931319131958777201620900253,
+      -271,
+      269
+    ]
+  ],
+  "reset_event_probability_interval": [
+    [
+      0,
+      31893483579303279576979833183330475619335051401342372857618098295179572645199871,
+      -266,
+      265
+    ],
+    [
+      0,
+      255147868634426236615838665466643804954680411210738982860944786361436581161598983,
+      -269,
+      268
+    ]
+  ],
+  "reset_minus_true_gap_interval": [
+    [
+      0,
+      120052291014355372054526479993534329458483471998139432512460013486969123025495619,
+      -271,
+      267
+    ],
+    [
+      0,
+      15006536376794421506815809999191791182310433999767429064057501685871140378186977,
+      -268,
+      264
+    ]
+  ],
+  "gap_lower_display": "0.031640375385291235698982282132943",
+  "strict_event_gap_lower_rational": "3/100",
+  "full_CQ_trace_distance_strict_lower_rational": "3/100",
+  "reason": "a complete-output event probability gap lower-bounds trace distance",
+  "arithmetic": "80-digit mpmath.iv; exact dyadic endpoints exported",
+  "source_sha256": {
+    "certify_memory_witness.py": "64a23eb4313e3e95e4e7887ba552031225d710a5188a36dbe479953bb54e2739",
+    "interval_certificate.py": "edb594539bcc0773379ab3a869afa8a6cb8199004ca0986b0c5acc219d3166fc"
+  },
+  "not_claimed": [
+    "trace-norm interval evaluation of diagnostic 0.1012518562",
+    "real-device memory",
+    "different causal-break protocol substituted for this source"
+  ]
+}
