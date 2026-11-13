@@ -1,0 +1,107 @@
+{
+  "schema": "ueot-qm-current/6",
+  "date": "2026-11-12",
+  "version": "v31.12",
+  "kernel_version": "1.12",
+  "scientific_version": "v31.12 / Kernel 1.12",
+  "research_baseline": "aea2fceef3c62cc8dc749b6cbb1b40a7d89df80d",
+  "kernel": "physics/qm/UEOT_QM_KERNEL_v31.12.md",
+  "execution_contract": "physics/qm/UEOT_QM_EXECUTION_v31.12.md",
+  "runtime_entrypoint": "physics/qm/growing_cutoff/README.md",
+  "formalization": "formalization/ueot-qm/README.md",
+  "roadmap": "physics/qm/ROADMAP.md",
+  "claim_ledger": "physics/qm/status/CLAIM_LEDGER_v31.12.json",
+  "previous_claim_ledger": "physics/qm/status/CLAIM_LEDGER_v31.11.json",
+  "verification_state": "MAIN_SCIENTIFIC_SOURCE_AND_CI_VERIFIED",
+  "local_checkpoint_state": "PASS",
+  "status_axes": {
+    "mathematical": "DECLARED_MODEL_ANALYTIC_PROOFS_AND_COUNTEREXAMPLES",
+    "physical_selection": "COMPLEX_MODEL_AND_EFFECTIVE_CONTROL_INPUTS_REMAIN_INDEPENDENT",
+    "computational": "EXACT_AND_FINITE_CONTROLS_VERIFIED_ON_SCIENTIFIC_MAIN",
+    "empirical": "UNTESTED_NO_REAL_DEVICE_DATA"
+  },
+  "source_identity": {
+    "manifest": "physics/qm/kernel/evidence/v31.11/source-manifest.json",
+    "verification": "physics/qm/kernel/evidence/v31.11/lean-verification.json",
+    "source_count": 158,
+    "source_set_sha256": "f9ea1e3e9bc695e3916d764e8f005d98556e4541653d439a60e57a5fb8c4cacf",
+    "scope": "Inherited v31.11 machine execution with identical proof/configuration bytes; no new Chapter68 machine coverage",
+    "current_bytes_match_executed_bytes": true,
+    "current_identity_check": "physics/qm/kernel/evidence/v31.12/proof-reuse.json"
+  },
+  "proof_receipt": "physics/qm/kernel/evidence/v31.11/lean-verification.json",
+  "proof_reuse_receipt": "physics/qm/kernel/evidence/v31.12/proof-reuse.json",
+  "source_manifest": "physics/qm/kernel/evidence/v31.11/source-manifest.json",
+  "runtime_receipt": "physics/qm/kernel/evidence/v31.12/runtime/execution_receipt.json",
+  "integration": {
+    "state": "MAIN_SCIENTIFIC_SOURCE_AND_CI_VERIFIED",
+    "remote_verified": true,
+    "scientific_source_head": "e17347b83a6044123e5733f2cbe9cbaebed49137",
+    "verified_scientific_main": "b58fce36526a8c7ef58a2e30b5f3f59580ad7b4e",
+    "tree": "4a8adce2a4dbe62a5b4f9fd86a7f114c193ec6f6",
+    "pr": 459,
+    "pr_run": 43132703598,
+    "main_run": 43133192445,
+    "integration_receipt": {
+      "path": "physics/qm/kernel/evidence/v31.12/integration-verification.json",
+      "sha256": "297088d8688e5d7023c70fe769c467d4fa5de2c6b4f2995e43d8959ad7476f9a",
+      "bytes": 5947
+    }
+  },
+  "local_verification": {
+    "new_lean": false,
+    "new_runtime": "PASS",
+    "proof_inputs_match": true,
+    "old_runtime_inputs_match": true,
+    "publication_matches_visual_review": true,
+    "historical_heavy_suites_rerun_locally": false
+  },
+  "completed_in_this_delivery": [
+    "P-MICRO-04",
+    "P-OPT-04",
+    "P-MICRO-05",
+    "C-MICRO-02",
+    "P-ROB-03",
+    "C-ROB-02"
+  ],
+  "book": {
+    "edition": "3.9",
+    "chapters": 69,
+    "appendices": 6,
+    "numbered_results": 188,
+    "inherited_numbered_results": 182,
+    "new_numbered_results": 6,
+    "canonical": "physics/qm/book/UEOT_PHYSICS.md",
+    "english": "physics/qm/book/UEOT_PHYSICS.en.md",
+    "dossier": {
+      "path": "physics/qm/book/CHAPTER_DOSSIER.json",
+      "sha256": "10106d93ed533f6eb925beb2da49330ef61140f6fb956255f43c312a7460fb37",
+      "bytes": 1630322
+    },
+    "whole_book_formalized": false,
+    "local_acceptance": "physics/qm/book/evidence/v3.9/local-acceptance.json"
+  },
+  "historical_current_checkpoint": {
+    "path": "physics/qm/book/evidence/v3.9/prior/CURRENT.json",
+    "sha256": "2ff6935e3f7a36d90c82d5a375d75d407c50d7f32e31ecd0ed685a7870a145fc",
+    "bytes": 16536
+  },
+  "historical_claim_scope": "All105 prior claim objects and182 prior result objects retain exact historical identity",
+  "scope_limits": [
+    "Complex Hilbert/Born/tensor/CP and effective separated sideband controls remain independent inputs.",
+    "Only finite classical controls, finite untouched references and bounded protocol heights are covered.",
+    "Simultaneous dynamics has no inherited hard cutoff; controlled tails remain open.",
+    "The physical filter and actual device error margin require independent calibration.",
+    "No new Lean declarations or empirical device data; no complete quantum, field, particle or gravity theory is claimed."
+  ],
+  "next_execution": {
+    "theory": "Same-intervention controlled tail or mode-deletion bound for simultaneous dynamics or finite bath",
+    "operations": "Complete finiteTest quotient and independently justified complex-sector selection",
+    "data": "Independent beta/shared-gate/filter/readout calibration and full records/costs; flag counts insufficient"
+  },
+  "new_hardware_data": false,
+  "metadata_updated_at_utc": "2026-11-12T01:17:59.672836+00:00",
+  "increment_source_manifest": "physics/qm/kernel/evidence/v31.12/source-manifest.json",
+  "integration_receipt": "physics/qm/kernel/evidence/v31.12/integration-verification.json",
+  "metadata_scope": "Observed PR459 and scientific-main executions; subsequent metadata-only publication preserves all scientific inputs and six manuscript/PDF/TeX bytes."
+}

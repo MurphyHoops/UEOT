@@ -1,7 +1,7 @@
 # 《UEOT物理学》：公开版本与未来出版许可
 
-作品：《UEOT物理学》／*UEOT Physics*。现行为 v3.9 双语研究增量，
-69 章、6 附录，保留 v3.8 的全部182项结果并追加第68章的6项结果。
+作品：《UEOT物理学》／*UEOT Physics*。现行为 v3.10 双语研究增量，
+70 章、6 附录，保留 v3.9 的全部188项结果并追加第69章的6项结果。
 新增科学文字、AI辅助推导与程序、翻译和出版维护均按作者本轮项目指示完成；
 本说明不裁决可能存在的著作权归属，也不增加一般软件或专利许可。
 历史公开许可身份基准（不是本次出版源码基线）：仓库 `main` 提交
@@ -78,3 +78,7 @@ dataset is newly redistributed by this increment.
 本轮第68章六项结果、分段增长与省略计算、内部 AI 审查及新执行回执由 `../audits/GROWING_CUTOFF_v31.12/`、`../growing_cutoff/` 和 `evidence/v3.9/` 标识。原182项结果对象、历史许可和执行身份保留。新增内容没有机器形式化或外部实验确认的隐含声明；没有引入第三方原始器件数据或新的概括性软件许可。
 
 Edition 3.9 adds six paper results, independently checked code and observed execution evidence while retaining all182 prior result objects. The historical and edition-specific permission boundaries above continue unchanged. Public readability is not an additional blanket publishing or software licence.
+
+## 3.10 / v31.13 增量范围
+
+本增量增加同时动力学的书面误差证明、一个有限压缩反例、联合校准及整数区间预测程序、明确标识的合成有序记录和双语第69章。没有新增 Lean 声明或第三方原始器件数据。新增与继承材料继续适用上文既有范围，不新增一般许可，不改写历史授权。NumPy、SciPy、SymPy、mpmath及排版依赖保持各自条款；公开可读不自动产生新的商业出版许可。

@@ -1,0 +1,522 @@
+{
+  "schema": "ueot-qm.independent-simultaneous-dynamics/1",
+  "status": "PASS",
+  "executed_at_utc": "2026-11-12T03:25:52.728042+00:00",
+  "checker_author": "native research subagent B",
+  "execution_context": {
+    "provider": "local_python_process",
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "github": null,
+    "attribution": "Checker author is not an executor label; the enclosing runner identifies its invoker and checkout."
+  },
+  "source_sha256": "900b44bf7d5a6074e831f92d4a0cf8df603bef1d9b04fbb34ca8b828c06f7af2",
+  "frozen_model_sha256": "3d344e91fdc59cb333c21623b5b62528c9d7a0edea2145148b6d484a61eca10a",
+  "imports_project_runtime": false,
+  "mp_decimal_precision": 70,
+  "check_count": 57,
+  "checks": [
+    {
+      "name": "frozen primary cutoffs and exposure",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "small witness cutoff matches separately declared example",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "untouched entangled reference input has mean G one",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "finite true-compression unitary at -0.1",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "true infinite displacement vs actual Galerkin -0.1 00",
+      "status": "PASS",
+      "detail": {
+        "distance": "0.0",
+        "paper_bound": "0.0",
+        "exact_output_tail": "0.0"
+      }
+    },
+    {
+      "name": "tail is only a lower constraint on this pure-state error -0.1 00",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "derived finite energy budget -0.1 00",
+      "status": "PASS",
+      "detail": {
+        "mean_G": "1.0",
+        "upper": "1.0"
+      }
+    },
+    {
+      "name": "true infinite displacement vs actual Galerkin -0.1 01",
+      "status": "PASS",
+      "detail": {
+        "distance": "0.00000000280356754790138822404096839098920675726237921",
+        "paper_bound": "0.000163299316185545206546485604980392759464396499",
+        "exact_output_tail": "7.85017465191596566188256991740729032465378008e-18"
+      }
+    },
+    {
+      "name": "tail is only a lower constraint on this pure-state error -0.1 01",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "derived finite energy budget -0.1 01",
+      "status": "PASS",
+      "detail": {
+        "mean_G": "1.01980198673306753006230754927997225346133919",
+        "upper": "1.29284271247461900976033774484193961571393438"
+      }
+    },
+    {
+      "name": "true infinite displacement vs actual Galerkin -0.1 10",
+      "status": "PASS",
+      "detail": {
+        "distance": "0.00000000280356754790138822404096839098920675726237921",
+        "paper_bound": "0.000163299316185545206546485604980392759464396499",
+        "exact_output_tail": "7.85017465191596566188256991740729032465378008e-18"
+      }
+    },
+    {
+      "name": "tail is only a lower constraint on this pure-state error -0.1 10",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "derived finite energy budget -0.1 10",
+      "status": "PASS",
+      "detail": {
+        "mean_G": "1.01980198673306753006230754927997225346133919",
+        "upper": "1.29284271247461900976033774484193961571393438"
+      }
+    },
+    {
+      "name": "true infinite displacement vs actual Galerkin -0.1 11",
+      "status": "PASS",
+      "detail": {
+        "distance": "0.000000353678627092230877602307584207678388201075248",
+        "paper_bound": "0.00261278905896872330474376967968628415143034398",
+        "exact_output_tail": "0.0000000000001244653259699130397298261024336029367513366"
+      }
+    },
+    {
+      "name": "tail is only a lower constraint on this pure-state error -0.1 11",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "derived finite energy budget -0.1 11",
+      "status": "PASS",
+      "detail": {
+        "mean_G": "1.07692465385510163782528306482880502424664207",
+        "upper": "1.60568542494923801952067548968387923142786875"
+      }
+    },
+    {
+      "name": "complete Q weighted dynamics -0.1",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "finite true-compression unitary at 0.07",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "true infinite displacement vs actual Galerkin 0.07 00",
+      "status": "PASS",
+      "detail": {
+        "distance": "0.0",
+        "paper_bound": "0.0",
+        "exact_output_tail": "0.0"
+      }
+    },
+    {
+      "name": "tail is only a lower constraint on this pure-state error 0.07 00",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "derived finite energy budget 0.07 00",
+      "status": "PASS",
+      "detail": {
+        "mean_G": "1.0",
+        "upper": "1.0"
+      }
+    },
+    {
+      "name": "true infinite displacement vs actual Galerkin 0.07 01",
+      "status": "PASS",
+      "detail": {
+        "distance": "0.000000000231456944314316744319586028694826615124002922",
+        "paper_bound": "0.0000392081658161494040918111937557923015474015993",
+        "exact_output_tail": "5.35395181786057988521256302434882560913912362e-20"
+      }
+    },
+    {
+      "name": "tail is only a lower constraint on this pure-state error 0.07 01",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "derived finite energy budget 0.07 01",
+      "status": "PASS",
+      "detail": {
+        "mean_G": "1.00975221453123934984702483352084143999552333",
+        "upper": "1.20288989873223330683223642138935773099975406"
+      }
+    },
+    {
+      "name": "true infinite displacement vs actual Galerkin 0.07 10",
+      "status": "PASS",
+      "detail": {
+        "distance": "0.000000000231456944314316744319586028694826615124002922",
+        "paper_bound": "0.0000392081658161494040918111937557923015474015993",
+        "exact_output_tail": "5.35395181786057988521256302434882560913912362e-20"
+      }
+    },
+    {
+      "name": "tail is only a lower constraint on this pure-state error 0.07 10",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "derived finite energy budget 0.07 10",
+      "status": "PASS",
+      "detail": {
+        "mean_G": "1.00975221453123934984702483352084143999552333",
+        "upper": "1.20288989873223330683223642138935773099975406"
+      }
+    },
+    {
+      "name": "true infinite displacement vs actual Galerkin 0.07 11",
+      "status": "PASS",
+      "detail": {
+        "distance": "0.0000000294162664843152461036240854944154713050574431",
+        "paper_bound": "0.000627330653058390465468979100092676824758425589",
+        "exact_output_tail": "8.6320036209272780396549268870911878635324535e-16"
+      }
+    },
+    {
+      "name": "tail is only a lower constraint on this pure-state error 0.07 11",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "derived finite energy budget 0.07 11",
+      "status": "PASS",
+      "detail": {
+        "mean_G": "1.03844654421346755537646147483572262670625797",
+        "upper": "1.41557979746446661366447284277871546199950813"
+      }
+    },
+    {
+      "name": "complete Q weighted dynamics 0.07",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "finite true-compression unitary at 0.1",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "true infinite displacement vs actual Galerkin 0.1 00",
+      "status": "PASS",
+      "detail": {
+        "distance": "0.0",
+        "paper_bound": "0.0",
+        "exact_output_tail": "0.0"
+      }
+    },
+    {
+      "name": "tail is only a lower constraint on this pure-state error 0.1 00",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "derived finite energy budget 0.1 00",
+      "status": "PASS",
+      "detail": {
+        "mean_G": "1.0",
+        "upper": "1.0"
+      }
+    },
+    {
+      "name": "true infinite displacement vs actual Galerkin 0.1 01",
+      "status": "PASS",
+      "detail": {
+        "distance": "0.00000000280356754790138822404096839098920675726237921",
+        "paper_bound": "0.000163299316185545206546485604980392759464396499",
+        "exact_output_tail": "7.85017465191596566188256991740729032465378008e-18"
+      }
+    },
+    {
+      "name": "tail is only a lower constraint on this pure-state error 0.1 01",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "derived finite energy budget 0.1 01",
+      "status": "PASS",
+      "detail": {
+        "mean_G": "1.01980198673306753006230754927997225346133919",
+        "upper": "1.29284271247461900976033774484193961571393438"
+      }
+    },
+    {
+      "name": "true infinite displacement vs actual Galerkin 0.1 10",
+      "status": "PASS",
+      "detail": {
+        "distance": "0.00000000280356754790138822404096839098920675726237921",
+        "paper_bound": "0.000163299316185545206546485604980392759464396499",
+        "exact_output_tail": "7.85017465191596566188256991740729032465378008e-18"
+      }
+    },
+    {
+      "name": "tail is only a lower constraint on this pure-state error 0.1 10",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "derived finite energy budget 0.1 10",
+      "status": "PASS",
+      "detail": {
+        "mean_G": "1.01980198673306753006230754927997225346133919",
+        "upper": "1.29284271247461900976033774484193961571393438"
+      }
+    },
+    {
+      "name": "true infinite displacement vs actual Galerkin 0.1 11",
+      "status": "PASS",
+      "detail": {
+        "distance": "0.000000353678627092230877602307584207678388201075248",
+        "paper_bound": "0.00261278905896872330474376967968628415143034398",
+        "exact_output_tail": "0.0000000000001244653259699130397298261024336029367513366"
+      }
+    },
+    {
+      "name": "tail is only a lower constraint on this pure-state error 0.1 11",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "derived finite energy budget 0.1 11",
+      "status": "PASS",
+      "detail": {
+        "mean_G": "1.07692465385510163782528306482880502424664207",
+        "upper": "1.60568542494923801952067548968387923142786875"
+      }
+    },
+    {
+      "name": "complete Q weighted dynamics 0.1",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "negative: normalized evolved projection differs from Galerkin",
+      "status": "PASS",
+      "detail": "0.0444046043350520641482625056987604321218259551"
+    },
+    {
+      "name": "negative: zero finite exponential residual does not certify truncation",
+      "status": "PASS",
+      "detail": "0.293374870649774319167895647726025525691313621"
+    },
+    {
+      "name": "general Rabi nested finite diagnostic h=0.0",
+      "status": "PASS",
+      "detail": {
+        "vector_difference": 2.5138531440839215e-17,
+        "small_continuum_bound": 0.0,
+        "large_continuum_bound": 0.0,
+        "larger_matrix_is_infinite_oracle": false
+      }
+    },
+    {
+      "name": "source-derived two-edge residual h=0.0",
+      "status": "PASS",
+      "detail": 0.0
+    },
+    {
+      "name": "positive: zero-blue source is exactly cutoff-preserving",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "general Rabi nested finite diagnostic h=0.1",
+      "status": "PASS",
+      "detail": {
+        "vector_difference": 2.2749867201294094e-12,
+        "small_continuum_bound": 2.6127890589687254e-07,
+        "large_continuum_bound": 3.4403166254351065e-19,
+        "larger_matrix_is_infinite_oracle": false
+      }
+    },
+    {
+      "name": "source-derived two-edge residual h=0.1",
+      "status": "PASS",
+      "detail": 1.3877787807814457e-17
+    },
+    {
+      "name": "general Rabi nested finite diagnostic h=-0.1",
+      "status": "PASS",
+      "detail": {
+        "vector_difference": 2.2749867201294094e-12,
+        "small_continuum_bound": 2.6127890589687254e-07,
+        "large_continuum_bound": 3.4403166254351065e-19,
+        "larger_matrix_is_infinite_oracle": false
+      }
+    },
+    {
+      "name": "source-derived two-edge residual h=-0.1",
+      "status": "PASS",
+      "detail": 1.3877787807814457e-17
+    },
+    {
+      "name": "general Rabi nested finite diagnostic h=0.2",
+      "status": "PASS",
+      "detail": {
+        "vector_difference": 3.6390411662750524e-11,
+        "small_continuum_bound": 4.1804624943499615e-06,
+        "large_continuum_bound": 3.5228842244455505e-16,
+        "larger_matrix_is_infinite_oracle": false
+      }
+    },
+    {
+      "name": "source-derived two-edge residual h=0.2",
+      "status": "PASS",
+      "detail": 5.551115123125783e-17
+    },
+    {
+      "name": "rational full-design Galerkin bound below one ten-thousandth",
+      "status": "PASS",
+      "detail": {
+        "one_drive": [
+          "412407174775148244395579/5000000000000000000000000000000000000000",
+          "824814349550296488791159/10000000000000000000000000000000000000000"
+        ],
+        "two_drive": [
+          "181378593617409829194836881101786971/1000000000000000000000000000000000000000",
+          "1813785936174098291948368811017869711/10000000000000000000000000000000000000000"
+        ],
+        "complete_Q": [
+          "283857499011503724766979411428799450911/6250000000000000000000000000000000000000000",
+          "567714998023007449533958822857598902759/12500000000000000000000000000000000000000000"
+        ]
+      }
+    }
+  ],
+  "exact_force_diagnostics": [
+    {
+      "x": "-0.1",
+      "N": 1,
+      "L": 3,
+      "K": 7,
+      "complete_Q_distance_from_exact_overlaps": "0.0000000899606691438069847530590705063844804187746217",
+      "analytic_Q_upper": "0.000735761399005592482615845541799657617042784865",
+      "exact_oracle": "conditional displacement matrix elements; no large-matrix infinite surrogate"
+    },
+    {
+      "x": "0.07",
+      "N": 1,
+      "L": 3,
+      "K": 7,
+      "complete_Q_distance_from_exact_overlaps": "0.00000000748137643427424454311180835332609146105628601",
+      "analytic_Q_upper": "0.000176656311901242755076064514586097793851972646",
+      "exact_oracle": "conditional displacement matrix elements; no large-matrix infinite surrogate"
+    },
+    {
+      "x": "0.1",
+      "N": 1,
+      "L": 3,
+      "K": 7,
+      "complete_Q_distance_from_exact_overlaps": "0.0000000899606691438069847530590705063844804187746217",
+      "analytic_Q_upper": "0.000735761399005592482615845541799657617042784865",
+      "exact_oracle": "conditional displacement matrix elements; no large-matrix infinite surrogate"
+    }
+  ],
+  "general_rabi_finite_diagnostics": [
+    {
+      "h": 0.0,
+      "omega": 1,
+      "Delta": "3/5",
+      "g": "2/5",
+      "duration": "1/5",
+      "N": 1,
+      "K": 7,
+      "comparison_K": 19,
+      "vector_difference": 2.5138531440839215e-17,
+      "finite_diagnostic_only": true
+    },
+    {
+      "h": 0.1,
+      "omega": 1,
+      "Delta": "3/5",
+      "g": "2/5",
+      "duration": "1/5",
+      "N": 1,
+      "K": 7,
+      "comparison_K": 19,
+      "vector_difference": 2.2749867201294094e-12,
+      "finite_diagnostic_only": true
+    },
+    {
+      "h": -0.1,
+      "omega": 1,
+      "Delta": "3/5",
+      "g": "2/5",
+      "duration": "1/5",
+      "N": 1,
+      "K": 7,
+      "comparison_K": 19,
+      "vector_difference": 2.2749867201294094e-12,
+      "finite_diagnostic_only": true
+    },
+    {
+      "h": 0.2,
+      "omega": 1,
+      "Delta": "3/5",
+      "g": "2/5",
+      "duration": "1/5",
+      "N": 1,
+      "K": 7,
+      "comparison_K": 19,
+      "vector_difference": 3.6390411662750524e-11,
+      "finite_diagnostic_only": true
+    }
+  ],
+  "analytic_large_domain": {
+    "N": 4095,
+    "L": 40,
+    "K": 4175,
+    "input_dimension": 8191,
+    "predictor_dimension": 8351,
+    "large_matrix_executed": false,
+    "rational_Q_bound": [
+      "283857499011503724766979411428799450911/6250000000000000000000000000000000000000000",
+      "567714998023007449533958822857598902759/12500000000000000000000000000000000000000000"
+    ]
+  },
+  "evidence_classes": [
+    "paper universal operator proof consumed",
+    "exact rational enclosure of scalar bound",
+    "finite high-precision displacement-overlap diagnostics",
+    "finite floating general-Rabi comparison"
+  ],
+  "new_lean_execution": false,
+  "new_hardware_data": false,
+  "limits": "High precision and finite residuals alone are not interval certification of numerical output; the analytic global bound has its independent rational enclosure."
+}

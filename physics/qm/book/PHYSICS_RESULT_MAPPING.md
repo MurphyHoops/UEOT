@@ -1,6 +1,6 @@
-# UEOT Physics bilingual stable-result mapping — edition 3.9
+# UEOT Physics bilingual stable-result mapping — edition 3.10
 
-All 182 prior result identities are preserved; Chapter 68 appends six. Titles are bound to actual statement anchors. Counts do not assert novelty, Lean coverage, or empirical confirmation.
+All 188 prior result identities are preserved; Chapter 69 appends six. Titles are bound to actual statement anchors. Counts do not assert novelty, Lean coverage, or empirical confirmation.
 
 | ID | Chapter | Chinese title | English title |
 |---|---:|---|---|
@@ -192,3 +192,9 @@ All 182 prior result identities are preserved; Chapter 68 appends six. Titles ar
 | [C-MICRO-02](UEOT_PHYSICS.md#c-micro-02) | 68 | C-MICRO-02（同时红蓝作用的无限尾反例）。 | C-MICRO-02 (An infinite-tail counterexample for simultaneous red and blue interaction). |
 | [P-ROB-03](UEOT_PHYSICS.md#p-rob-03) | 68 | P-ROB-03（增长源、物理过滤与省略实现的统一证书）。 | P-ROB-03 (A joint certificate for growth, physical filtering, and pulse omission). |
 | [C-ROB-02](UEOT_PHYSICS.md#c-rob-02) | 68 | C-ROB-02（相同旗概率不认证蓝脉冲末态）。 | C-ROB-02 (Identical flag probabilities do not certify the blue-pulse terminal state). |
+| [P-OPT-05](UEOT_PHYSICS.md#p-opt-05) | 69 | P-OPT-05（完整 CQ 树的未归一前缀误差界）。 | P-OPT-05 (Complete-CQ error from unnormalized reference prefixes). |
+| [P-MICRO-06](UEOT_PHYSICS.md#p-micro-06) | 69 | P-MICRO-06（同时源的自伴实现、能量预算与边界缺陷）。 | P-MICRO-06 (Self-adjoint simultaneous source, energy budget, and boundary defect). |
+| [P-MICRO-07](UEOT_PHYSICS.md#p-micro-07) | 69 | P-MICRO-07（有限 Duhamel 展开给出的真实截断界）。 | P-MICRO-07 (Genuine truncation bound from finite Duhamel expansion). |
+| [C-MICRO-03](UEOT_PHYSICS.md#c-micro-03) | 69 | C-MICRO-03（Galerkin 压缩不保留该正交分量不变量）。 | C-MICRO-03 (Galerkin compression does not preserve this quadrature invariant). |
+| [P-ROB-04](UEOT_PHYSICS.md#p-rob-04) | 69 | P-ROB-04（联合校准、名义参数及共同力脉冲稳定性）。 | P-ROB-04 (Joint calibration, nominal parameters, and shared-force stability). |
+| [P-ROB-05](UEOT_PHYSICS.md#p-rob-05) | 69 | P-ROB-05（物理准备、鲁棒部署、名义校准与有限预测的合成界）。 | P-ROB-05 (Composing physical preparation, robust deployment, nominal calibration, and finite prediction). |

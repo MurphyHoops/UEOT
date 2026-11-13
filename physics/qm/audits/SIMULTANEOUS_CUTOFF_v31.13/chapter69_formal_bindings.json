@@ -1,0 +1,261 @@
+{
+  "schema": "ueot-qm.chapter-bindings/1",
+  "chapter": 69,
+  "version": "v31.13",
+  "research_baseline": "cb17211653fde30aa50e0e9848798a6a5b3b3f12",
+  "scope": "No new Lean bindings; universal paper proofs and executed finite/exact controls are distinct",
+  "results": [
+    {
+      "id": "P-OPT-05",
+      "chapter": 69,
+      "title": "P-OPT-05（完整 CQ 树的未归一前缀误差界）。",
+      "anchor": "p-opt-05",
+      "dependency_class": [
+        "B",
+        "P",
+        "E",
+        "O"
+      ],
+      "question_and_quantifiers": "For every fixed finite classical control tree of normal complete labelled instruments and every finite untouched reference, the complete terminal CQ discrepancy is at most the sum of labelled local defects on one consistent family of unnormalized finite/reference prefixes.",
+      "premises": [
+        "Normal CP maps, complete tests, common labels and terminal embeddings",
+        "Same allowed controller and observation fibres; hidden Kraus indices are summed, not revealed",
+        "Persistent memory is included or auxiliaries are actually reset; finite height and finite positive reference"
+      ],
+      "limits": [
+        "No unrestricted infinite stopping or coherent-control theorem",
+        "No finite data guarantee of the full operational norm"
+      ],
+      "mathematical_status": "PROVED_IN_DECLARED_MODEL_ON_PAPER",
+      "physical_selection_status": "INDEPENDENT_COMPLEX_AND_CONTROL_INPUTS_REMAIN",
+      "empirical_status": "NOT_TESTED",
+      "machine_status": "PAPER_ONLY_NO_NEW_LEAN",
+      "formal_names": [],
+      "formal_bindings": [],
+      "paper_only": [
+        "For every fixed finite classical control tree of normal complete labelled instruments and every finite untouched reference, the complete terminal CQ discrepancy is at most the sum of labelled local defects on one consistent family of unnormalized finite/reference prefixes."
+      ],
+      "proof_sources": [
+        "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/A_FULL_CQ_STABILITY.md"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "finite_floating_control"
+      ],
+      "new_hardware_data": false
+    },
+    {
+      "id": "P-MICRO-06",
+      "chapter": 69,
+      "title": "P-MICRO-06（同时源的自伴实现、能量预算与边界缺陷）。",
+      "anchor": "p-micro-06",
+      "dependency_class": [
+        "B",
+        "P",
+        "E",
+        "O"
+      ],
+      "question_and_quantifiers": "For the declared real-parameter positive-frequency Rabi generator, self-adjointness holds on D(n); the separately realized zero-frequency force subfamily is self-adjoint on its quadrature domain. Source-derived finite energy budgets extend by Galerkin convergence and lower semicontinuity. The genuine compression defect is supported on two explicitly weighted blue edges and controls unnormalized-prefix local trace distance.",
+      "premises": [
+        "Selected qubit-Fock representation, G=n+P_e, actual A and B blocks",
+        "omega>0 for the D(n) realization; force subfamily uses its separate self-adjoint quadrature realization",
+        "Nonnegative finite action duration; finite mean excitation only where used",
+        "Kato-Rellich is an explicit standard mathematical dependency"
+      ],
+      "limits": [
+        "Boundary integral must be independently enclosed before numerical certification",
+        "Mean energy is not an arbitrary branchwise hard-support condition"
+      ],
+      "mathematical_status": "PROVED_IN_DECLARED_MODEL_ON_PAPER",
+      "physical_selection_status": "INDEPENDENT_COMPLEX_AND_CONTROL_INPUTS_REMAIN",
+      "empirical_status": "NOT_TESTED",
+      "machine_status": "PAPER_ONLY_NO_NEW_LEAN",
+      "formal_names": [],
+      "formal_bindings": [],
+      "paper_only": [
+        "For the declared real-parameter positive-frequency Rabi generator, self-adjointness holds on D(n); the separately realized zero-frequency force subfamily is self-adjoint on its quadrature domain. Source-derived finite energy budgets extend by Galerkin convergence and lower semicontinuity. The genuine compression defect is supported on two explicitly weighted blue edges and controls unnormalized-prefix local trace distance."
+      ],
+      "proof_sources": [
+        "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/B_SIMULTANEOUS_GALERKIN.md"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "finite_floating_control"
+      ],
+      "new_hardware_data": false
+    },
+    {
+      "id": "P-MICRO-07",
+      "chapter": 69,
+      "title": "P-MICRO-07（有限 Duhamel 展开给出的真实截断界）。",
+      "anchor": "p-micro-07",
+      "dependency_class": [
+        "B",
+        "P",
+        "E",
+        "O"
+      ],
+      "question_and_quantifiers": "For N,L>=0 and K=N+2L, the true specified simultaneous propagator and the actual finite generator exponential differ on P_N by at most 2 c_(L+1), with c_j=z^j/j! product sqrt(N+2r-1). This gives the complete path-weighted trace-distance bound for the declared state-independent labelled-unitary source and finite reference.",
+      "premises": [
+        "Self-adjoint source and its genuine compression before exponentiation",
+        "Conserving reference H0, blue support increase at most two, B²<=G+I",
+        "Finite piecewise segments and G-preserving inserted unitaries; finite total absolute blue exposure",
+        "Input projection or physical filtering charged separately"
+      ],
+      "limits": [
+        "No hard support for the true simultaneous dynamics",
+        "General state-dependent interventions instead require the prefix defect theorem",
+        "Ordinary trace distance is not relabelled an energy-constrained diamond norm"
+      ],
+      "mathematical_status": "PROVED_IN_DECLARED_MODEL_ON_PAPER",
+      "physical_selection_status": "INDEPENDENT_COMPLEX_AND_CONTROL_INPUTS_REMAIN",
+      "empirical_status": "NOT_TESTED",
+      "machine_status": "PAPER_ONLY_NO_NEW_LEAN",
+      "formal_names": [],
+      "formal_bindings": [],
+      "paper_only": [
+        "For N,L>=0 and K=N+2L, the true specified simultaneous propagator and the actual finite generator exponential differ on P_N by at most 2 c_(L+1), with c_j=z^j/j! product sqrt(N+2r-1). This gives the complete path-weighted trace-distance bound for the declared state-independent labelled-unitary source and finite reference."
+      ],
+      "proof_sources": [
+        "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/B_SIMULTANEOUS_GALERKIN.md",
+        "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/A_FULL_CQ_STABILITY.md"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "finite_floating_control"
+      ],
+      "new_hardware_data": false
+    },
+    {
+      "id": "C-MICRO-03",
+      "chapter": 69,
+      "title": "C-MICRO-03（Galerkin 压缩不保留该正交分量不变量）。",
+      "anchor": "c-micro-03",
+      "dependency_class": [
+        "B",
+        "P",
+        "E",
+        "O"
+      ],
+      "question_and_quantifiers": "At G cutoff K=1 and input |e,0>, the true force preserves the X² form expectation one, while genuine Galerkin evolution yields 1+2 sin²x. Thus compression does not automatically preserve this invariant.",
+      "premises": [
+        "Specified simultaneous force and basis (g0,g1,e0)",
+        "Use compressed full form J†X²J rather than silently changing the observable"
+      ],
+      "limits": [
+        "Refutes invariant inheritance, not controlled trace-distance approximation"
+      ],
+      "mathematical_status": "ANALYTIC_COUNTEREXAMPLE",
+      "physical_selection_status": "INDEPENDENT_COMPLEX_AND_CONTROL_INPUTS_REMAIN",
+      "empirical_status": "NOT_TESTED",
+      "machine_status": "PAPER_ONLY_NO_NEW_LEAN",
+      "formal_names": [],
+      "formal_bindings": [],
+      "paper_only": [
+        "At G cutoff K=1 and input |e,0>, the true force preserves the X² form expectation one, while genuine Galerkin evolution yields 1+2 sin²x. Thus compression does not automatically preserve this invariant."
+      ],
+      "proof_sources": [
+        "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/A_FULL_CQ_STABILITY.md"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "finite_floating_control"
+      ],
+      "new_hardware_data": false
+    },
+    {
+      "id": "P-ROB-04",
+      "chapter": 69,
+      "title": "P-ROB-04（联合校准、名义参数及共同力脉冲稳定性）。",
+      "anchor": "p-rob-04",
+      "dependency_class": [
+        "B",
+        "P",
+        "E",
+        "O"
+      ],
+      "question_and_quantifiers": "Original-source failures and the ideal signed momentum-half-axis tester yield a joint fixed-sample confidence set. One nominal rational area chosen from calibration, and one legal visible-history policy, obey uniform true-to-nominal force error sqrt(6) Delta_x on mean-G<=1 inputs.",
+      "premises": [
+        "Fixed shared q,x; ideal fresh calibration preparation and readout",
+        "120000 q trials and 1000000 drive trials; prescribed radii and no resampling until admission",
+        "Untrimmed joint set lies in the frozen design window; s=1-q/2 correlation retained",
+        "D(X) is the quadratic-form domain of positive X²; exact infinite comparisons precede compression"
+      ],
+      "limits": [
+        "Coverage is unconditional fixed-sample false-certificate control, not post-admission coverage",
+        "Single-dose bias ambiguity is access-specific; a shared fixed bias becomes identifiable with a second dose",
+        "Synthetic streams do not validate apparatus membership or full-CQ distance"
+      ],
+      "mathematical_status": "PROVED_IN_DECLARED_MODEL_ON_PAPER",
+      "physical_selection_status": "INDEPENDENT_COMPLEX_AND_CONTROL_INPUTS_REMAIN",
+      "empirical_status": "NOT_TESTED",
+      "machine_status": "PAPER_ONLY_NO_NEW_LEAN",
+      "formal_names": [],
+      "formal_bindings": [],
+      "paper_only": [
+        "Original-source failures and the ideal signed momentum-half-axis tester yield a joint fixed-sample confidence set. One nominal rational area chosen from calibration, and one legal visible-history policy, obey uniform true-to-nominal force error sqrt(6) Delta_x on mean-G<=1 inputs."
+      ],
+      "proof_sources": [
+        "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/C_CALIBRATION_AND_CERTIFICATE.md",
+        "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/A_FULL_CQ_STABILITY.md"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "finite_floating_control",
+        "synthetic"
+      ],
+      "new_hardware_data": false
+    },
+    {
+      "id": "P-ROB-05",
+      "chapter": 69,
+      "title": "P-ROB-05（物理准备、鲁棒部署、名义校准与有限预测的合成界）。",
+      "anchor": "p-rob-05",
+      "dependency_class": [
+        "B",
+        "P",
+        "E",
+        "O"
+      ],
+      "question_and_quantifiers": "For the same original source, finite untouched reference, mean-G<=1 joint input, physical filter with its complete failed-reference output, legal visible policy and calibrated nominal predictor, full CQ error is bounded by sharp preparation +1/50+sqrt(6) Delta_x+weighted Galerkin error. The final synthetic certificate is below .05; the actual interval output adds a verified numerical allowance only for its specified entangled input.",
+      "premises": [
+        "All premises of the same shared model and P-ROB-04",
+        "N=4095,L=40,K=4175, exact finite predictor distinguished from physical same-gate compiler",
+        "Scalar accepted effect s²I derived from original events",
+        "Same complete labels, physical preparation failure, reset and conditioned reference",
+        "Numerical allowance requires its own verified output receipt"
+      ],
+      "limits": [
+        "Universal exact finite-map theorem is separate from one-input numerical certificate",
+        "Unknown inputs cannot be freely retried; calibration amortized separately",
+        "No protocol-matched real hardware data or measured resource advantage"
+      ],
+      "mathematical_status": "PROVED_IN_DECLARED_MODEL_ON_PAPER",
+      "physical_selection_status": "INDEPENDENT_COMPLEX_AND_CONTROL_INPUTS_REMAIN",
+      "empirical_status": "NOT_TESTED",
+      "machine_status": "PAPER_ONLY_NO_NEW_LEAN",
+      "formal_names": [],
+      "formal_bindings": [],
+      "paper_only": [
+        "For the same original source, finite untouched reference, mean-G<=1 joint input, physical filter with its complete failed-reference output, legal visible policy and calibrated nominal predictor, full CQ error is bounded by sharp preparation +1/50+sqrt(6) Delta_x+weighted Galerkin error. The final synthetic certificate is below .05; the actual interval output adds a verified numerical allowance only for its specified entangled input."
+      ],
+      "proof_sources": [
+        "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/C_CALIBRATION_AND_CERTIFICATE.md",
+        "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/B_SIMULTANEOUS_GALERKIN.md",
+        "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/A_FULL_CQ_STABILITY.md"
+      ],
+      "verification_kind": [
+        "analytic",
+        "exact_arithmetic",
+        "finite_floating_control",
+        "synthetic"
+      ],
+      "new_hardware_data": false
+    }
+  ]
+}

@@ -1,0 +1,4878 @@
+{
+  "schema": "ueot_physics.v3.10.increment-independent/1",
+  "status": "PASS",
+  "executed_at_utc": "2026-11-12T03:51:52.471225+00:00",
+  "source_baseline": "cb17211653fde30aa50e0e9848798a6a5b3b3f12",
+  "prior_result_count": 188,
+  "new_result_count": 6,
+  "total_result_count": 194,
+  "historical_result_object_identity": "EXACTLY_PRESERVED",
+  "historical_claim_count": 111,
+  "new_claim_count": 6,
+  "total_claim_count": 117,
+  "chapter69_display_math": {
+    "count": 10,
+    "bilingual_literal_identity": true,
+    "sha256": [
+      "ffd887c20aab1fee779e087c623d7e1c9b36625d3ac652614f9a9ef7aac286bf",
+      "c17357c24b08fdda122a7db77fbd57830bca92adc472b54364be01dd60f76359",
+      "be725a692365c8fc97ebdc30c5a495987ca1f1b97dca5e7bf7229f574e867193",
+      "e655df182c8778ebe10d6743611c4cbc83d86025a788a94c1a936688c02285f4",
+      "a070e4d4b3df1bb0d5b733d1910ac7aa26d563500b445ad5f4d2fae66d827748",
+      "c209f3eafa4b7a985aaffdb4a5a1caae6c740109f8455a3915e4cd38b989ebb9",
+      "5760ce456c00dc19ee636eb5e8f4ef458c4c87cbe38ab9c4360a9005cfb38d0c",
+      "58d9a3b2187b18c14450fe219f8f00ffe03662b5eed9eb5bfc71fc3b2403c244",
+      "4859826efa1ec8a7352acfc5f287224c2f63b224fe80ec469d45ed0a5c64956d",
+      "10cc9d8cdba4d9f8e48556c9f4424f206dae1da9c6826949bbd2ff0f13832757"
+    ]
+  },
+  "new_result_mapping": [
+    {
+      "id": "P-OPT-05",
+      "chapter": 69,
+      "zh_title": "P-OPT-05（完整 CQ 树的未归一前缀误差界）。",
+      "en_title": "P-OPT-05 (Complete-CQ error from unnormalized reference prefixes)."
+    },
+    {
+      "id": "P-MICRO-06",
+      "chapter": 69,
+      "zh_title": "P-MICRO-06（同时源的自伴实现、能量预算与边界缺陷）。",
+      "en_title": "P-MICRO-06 (Self-adjoint simultaneous source, energy budget, and boundary defect)."
+    },
+    {
+      "id": "P-MICRO-07",
+      "chapter": 69,
+      "zh_title": "P-MICRO-07（有限 Duhamel 展开给出的真实截断界）。",
+      "en_title": "P-MICRO-07 (Genuine truncation bound from finite Duhamel expansion)."
+    },
+    {
+      "id": "C-MICRO-03",
+      "chapter": 69,
+      "zh_title": "C-MICRO-03（Galerkin 压缩不保留该正交分量不变量）。",
+      "en_title": "C-MICRO-03 (Galerkin compression does not preserve this quadrature invariant)."
+    },
+    {
+      "id": "P-ROB-04",
+      "chapter": 69,
+      "zh_title": "P-ROB-04（联合校准、名义参数及共同力脉冲稳定性）。",
+      "en_title": "P-ROB-04 (Joint calibration, nominal parameters, and shared-force stability)."
+    },
+    {
+      "id": "P-ROB-05",
+      "chapter": 69,
+      "zh_title": "P-ROB-05（物理准备、鲁棒部署、名义校准与有限预测的合成界）。",
+      "en_title": "P-ROB-05 (Composing physical preparation, robust deployment, nominal calibration, and finite prediction)."
+    }
+  ],
+  "historical_body_policy": "Chapters1-68 exactly unchanged except three specified chapter48 edition/count substitutions; chapter0 old text is an exact prefix; all inherited display groups and appendixD programs unchanged",
+  "checks": [
+    {
+      "name": "immutable prior CHAPTER_DOSSIER.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "immutable prior CURRENT.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "immutable prior README.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "immutable prior SOURCE_MANIFEST.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "immutable prior UEOT_PHYSICS.en.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "immutable prior UEOT_PHYSICS.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "immutable previous 111-claim ledger",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "188 unique inherited result objects",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "all 188 result objects and order unchanged",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "unique current result IDs",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "no reordered or unexpected new result",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "dossier edition 3.10 and 194 results",
+      "status": "PASS"
+    },
+    {
+      "name": "six ordered chapter69 bindings",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "bindings use actual research entry",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-OPT-05 chapter and anchor",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-OPT-05 no new Lean bindings",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-OPT-05 paper-only universal theorem",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-OPT-05 empirical remains untested",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-OPT-05 no invented hardware data",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-MICRO-06 chapter and anchor",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-MICRO-06 no new Lean bindings",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-MICRO-06 paper-only universal theorem",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-MICRO-06 empirical remains untested",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-MICRO-06 no invented hardware data",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-MICRO-07 chapter and anchor",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-MICRO-07 no new Lean bindings",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-MICRO-07 paper-only universal theorem",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-MICRO-07 empirical remains untested",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-MICRO-07 no invented hardware data",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "C-MICRO-03 chapter and anchor",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "C-MICRO-03 no new Lean bindings",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "C-MICRO-03 paper-only universal theorem",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "C-MICRO-03 empirical remains untested",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "C-MICRO-03 no invented hardware data",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-ROB-04 chapter and anchor",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-ROB-04 no new Lean bindings",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-ROB-04 paper-only universal theorem",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-ROB-04 empirical remains untested",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-ROB-04 no invented hardware data",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-ROB-05 chapter and anchor",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-ROB-05 no new Lean bindings",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-ROB-05 paper-only universal theorem",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-ROB-05 empirical remains untested",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-ROB-05 no invented hardware data",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-OPT-05 chapter and anchor",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-OPT-05 no new Lean bindings",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-OPT-05 paper-only universal theorem",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-OPT-05 empirical remains untested",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-OPT-05 no invented hardware data",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-MICRO-06 chapter and anchor",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-MICRO-06 no new Lean bindings",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-MICRO-06 paper-only universal theorem",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-MICRO-06 empirical remains untested",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-MICRO-06 no invented hardware data",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-MICRO-07 chapter and anchor",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-MICRO-07 no new Lean bindings",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-MICRO-07 paper-only universal theorem",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-MICRO-07 empirical remains untested",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-MICRO-07 no invented hardware data",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "C-MICRO-03 chapter and anchor",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "C-MICRO-03 no new Lean bindings",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "C-MICRO-03 paper-only universal theorem",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "C-MICRO-03 empirical remains untested",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "C-MICRO-03 no invented hardware data",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-ROB-04 chapter and anchor",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-ROB-04 no new Lean bindings",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-ROB-04 paper-only universal theorem",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-ROB-04 empirical remains untested",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-ROB-04 no invented hardware data",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-ROB-05 chapter and anchor",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-ROB-05 no new Lean bindings",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-ROB-05 paper-only universal theorem",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-ROB-05 empirical remains untested",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "P-ROB-05 no invented hardware data",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "previous ledger contains exactly 111 claims",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "all 111 old claim objects and order unchanged",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "only six registered claim additions",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "117 claims including all six new results",
+      "status": "PASS"
+    },
+    {
+      "name": "QMK-P-OPT-05 paper-only and no hardware",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "QMK-P-MICRO-06 paper-only and no hardware",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "QMK-P-MICRO-07 paper-only and no hardware",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "QMK-C-MICRO-03 paper-only and no hardware",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "QMK-P-ROB-04 paper-only and no hardware",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "QMK-P-ROB-05 paper-only and no hardware",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited statement IDs, titles and chapters unchanged",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh new body statements match reviewed order",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh exactly 194 numbered body statements",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all new statements belong to chapter69",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh contiguous 70-chapter sequence",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh six appendices",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh source declares edition 3.10",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh unique stable anchors",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh chapter0 old sections remain an exact prefix",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 1",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 2",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 3",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 4",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 5",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 6",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 7",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 8",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 9",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 10",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 11",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 12",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 13",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 14",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 15",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 16",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 17",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 18",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 19",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 20",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 21",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 22",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 23",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 24",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 25",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 26",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 27",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 28",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 29",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 30",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 31",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 32",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 33",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 34",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 35",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 36",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 37",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 38",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 39",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 40",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 41",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 42",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 43",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 44",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 45",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 46",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 47",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 49",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 50",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 51",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 52",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 53",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 54",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 55",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 56",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 57",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 58",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 59",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 60",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 61",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 62",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 63",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 64",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 65",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 66",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 67",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh historical chapter body 68",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh unique metadata replacement 当前正式双语修订版为3.9",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh unique metadata replacement 第0–68章",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh unique metadata replacement edition: \"3.9\"",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh chapter48 changes only approved metadata",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-0",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-1",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-2",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-3",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-4",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-5",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-6",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-7",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-8",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-9",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-10",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-11",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-12",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-13",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-14",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-15",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-16",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-17",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-18",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-19",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-20",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-21",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-22",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-23",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-24",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-25",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-26",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-27",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-28",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-29",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-30",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-31",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-32",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-33",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-34",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-35",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-36",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-37",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-38",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-39",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-40",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-41",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-42",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-43",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-44",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-45",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-46",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-47",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-48",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-49",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-50",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-51",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-52",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-53",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-54",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-55",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-56",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-57",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-58",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-59",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-60",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-61",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-62",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-63",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-64",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-65",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-66",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-67",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas ch-68",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas appendix-a",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas appendix-b",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas appendix-c",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas appendix-d",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas appendix-e",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh all inherited display formulas appendix-f",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh appendixD programs preserved exactly",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh nine ordered new subsections",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh ten new display groups",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Chinese exact-map and one-input numerical scopes",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited statement IDs, titles and chapters unchanged",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en new body statements match reviewed order",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en exactly 194 numbered body statements",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all new statements belong to chapter69",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en contiguous 70-chapter sequence",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en six appendices",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en source declares edition 3.10",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en unique stable anchors",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en chapter0 old sections remain an exact prefix",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 1",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 2",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 3",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 4",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 5",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 6",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 7",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 8",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 9",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 10",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 11",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 12",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 13",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 14",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 15",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 16",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 17",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 18",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 19",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 20",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 21",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 22",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 23",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 24",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 25",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 26",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 27",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 28",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 29",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 30",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 31",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 32",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 33",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 34",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 35",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 36",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 37",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 38",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 39",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 40",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 41",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 42",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 43",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 44",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 45",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 46",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 47",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 49",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 50",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 51",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 52",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 53",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 54",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 55",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 56",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 57",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 58",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 59",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 60",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 61",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 62",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 63",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 64",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 65",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 66",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 67",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en historical chapter body 68",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en unique metadata replacement current bilingual revision is 3.9",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en unique metadata replacement Chapters 0–68",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en unique metadata replacement edition: \"3.9\"",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en chapter48 changes only approved metadata",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-0",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-1",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-2",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-3",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-4",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-5",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-6",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-7",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-8",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-9",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-10",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-11",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-12",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-13",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-14",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-15",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-16",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-17",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-18",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-19",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-20",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-21",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-22",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-23",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-24",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-25",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-26",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-27",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-28",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-29",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-30",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-31",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-32",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-33",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-34",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-35",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-36",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-37",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-38",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-39",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-40",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-41",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-42",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-43",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-44",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-45",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-46",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-47",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-48",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-49",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-50",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-51",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-52",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-53",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-54",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-55",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-56",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-57",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-58",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-59",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-60",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-61",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-62",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-63",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-64",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-65",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-66",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-67",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas ch-68",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas appendix-a",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas appendix-b",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas appendix-c",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas appendix-d",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas appendix-e",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en all inherited display formulas appendix-f",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en appendixD programs preserved exactly",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en nine ordered new subsections",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en ten new display groups",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "English exact-map and one-input numerical scopes",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "new bilingual displayed mathematics identical",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "binding Chinese statement titles match actual body",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "reviewed certificate display token 2969/50000",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "reviewed certificate display token 0.041930158795",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "reviewed certificate display token 624",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "reviewed certificate display token 313",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh declared cutoff 4095",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh declared cutoff 4175",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en declared cutoff 4095",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en declared cutoff 4175",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "historical source catalog entries and order unchanged",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source manifest edition 3.10",
+      "status": "PASS"
+    },
+    {
+      "name": "zh canonical manifest matches final manuscript",
+      "status": "PASS"
+    },
+    {
+      "name": "en canonical manifest matches final manuscript",
+      "status": "PASS"
+    },
+    {
+      "name": "historical published evidence unchanged",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "nine actual runtime commands passed",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "runtime inputs were stable",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "runtime has no new Lean/hardware claim",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "observed runtime provider and checkout recorded",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "exact seventeen runtime inputs",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "exact eighteen runtime artifacts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/FROZEN_CERTIFICATE_PLAN.json"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/README.md"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/certified_intervals.py"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/certify_from_records.py"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/check_full_cq_stability.py"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/check_simultaneous_galerkin.py"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/frozen_model.json"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/generate_synthetic.py"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/independent_certificate_check.py"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/interval_predictor.py"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/model.py"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/run_verification.py"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/verify_end_to_end.py"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/verify_integration.py"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/verify_interval_output.py"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/conditioning/finite_conditioning.py"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/SHARED_MODEL.md"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/runtime/calibration.json"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/runtime/end-to-end-binding.log"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/runtime/end-to-end.json"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/runtime/independent-calibration.json"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/runtime/independent-interval-output.log"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/runtime/independent-interval.json"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/runtime/independent-microscopic.log"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/runtime/independent-operational.log"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/runtime/independent-rational-calibration.log"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/runtime/integer-interval-prediction.log"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/runtime/integration.json"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/runtime/interval-prediction.json"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/runtime/micro.json"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/runtime/operational.json"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/runtime/source-integration.log"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/runtime/synthetic-generation.log"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/runtime/synthetic_raw.zip"
+    },
+    {
+      "name": "runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/runtime/truth-blind-calibration.log"
+    },
+    {
+      "name": "source-integration actual invoked script",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source-integration chronological execution",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source-integration actual log exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/runtime/source-integration.log"
+    },
+    {
+      "name": "source-integration portable log binding",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source-integration actual stdout indicates scoped success",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "independent-operational actual invoked script",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "independent-operational chronological execution",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "independent-operational actual log exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/runtime/independent-operational.log"
+    },
+    {
+      "name": "independent-operational portable log binding",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "independent-operational actual stdout indicates scoped success",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "independent-microscopic actual invoked script",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "independent-microscopic chronological execution",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "independent-microscopic actual log exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/runtime/independent-microscopic.log"
+    },
+    {
+      "name": "independent-microscopic portable log binding",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "independent-microscopic actual stdout indicates scoped success",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "synthetic-generation actual invoked script",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "synthetic-generation chronological execution",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "synthetic-generation actual log exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/runtime/synthetic-generation.log"
+    },
+    {
+      "name": "synthetic-generation portable log binding",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "synthetic-generation actual stdout indicates scoped success",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "truth-blind-calibration actual invoked script",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "truth-blind-calibration chronological execution",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "truth-blind-calibration actual log exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/runtime/truth-blind-calibration.log"
+    },
+    {
+      "name": "truth-blind-calibration portable log binding",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "truth-blind-calibration actual stdout indicates scoped success",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "independent-rational-calibration actual invoked script",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "independent-rational-calibration chronological execution",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "independent-rational-calibration actual log exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/runtime/independent-rational-calibration.log"
+    },
+    {
+      "name": "independent-rational-calibration portable log binding",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "independent-rational-calibration actual stdout indicates scoped success",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "integer-interval-prediction actual invoked script",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "integer-interval-prediction chronological execution",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "integer-interval-prediction actual log exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/runtime/integer-interval-prediction.log"
+    },
+    {
+      "name": "integer-interval-prediction portable log binding",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "integer-interval-prediction actual stdout indicates scoped success",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "independent-interval-output actual invoked script",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "independent-interval-output chronological execution",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "independent-interval-output actual log exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/runtime/independent-interval-output.log"
+    },
+    {
+      "name": "independent-interval-output portable log binding",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "independent-interval-output actual stdout indicates scoped success",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "end-to-end-binding actual invoked script",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "end-to-end-binding chronological execution",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "end-to-end-binding actual log exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/runtime/end-to-end-binding.log"
+    },
+    {
+      "name": "end-to-end-binding portable log binding",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "end-to-end-binding actual stdout indicates scoped success",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "runtime receipt follows command execution",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "seven complete raw archive member identities",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "actual ZIP has exactly seven unique members",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "actual archived bytes compiled_holdout_records.txt",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "actual archived bytes drive_calibration_bits.txt",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "actual archived bytes drive_holdout_bits.txt",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "actual archived bytes drive_holdout_drift_bits.txt",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "actual archived bytes q_calibration_flags.txt",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "actual archived bytes source_holdout_records.txt",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "actual archived bytes synthetic_provenance.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "integration.json actual script and passed checks",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "operational.json actual script and passed checks",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "micro.json actual script and passed checks",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "microscopic source shared-model identity",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "calibration exact source identities",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "calibration has conditional and untested scope",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "both calibration checks consume actual raw members",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "independent calibration source and actual executor",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "raw provenance remains synthetic and independently identified",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "nominal predictor consumes final observed calibration",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "numerical predictor has one specified input scope",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "actual arithmetic allowance meets frozen budget",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "independent interval artifact exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/runtime/interval-prediction.json"
+    },
+    {
+      "name": "independent interval predictor_source exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/interval_predictor.py"
+    },
+    {
+      "name": "independent interval checker_source exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/verify_interval_output.py"
+    },
+    {
+      "name": "interval independent verdict and arithmetic agree",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "end-to-end binds all seven upstream reports",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "same-output final arithmetic and separate numerical scope",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "different-setting holdout and mismatch control have actual outcomes",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "scoped inherited proof reuse actually eligible",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "historical proof run identity retained",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "no new Lean run or theorem inferred",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "158 actual proof inputs with unchanged source-set identity",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/Core/Blocker.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/Core/Finite.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/Core/Reward.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/BoundedLossSampling.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/BoundedLossTwoSided.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/QuotientDescent.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/RecursiveSufficientState.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCApproximateLumpability.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCEmissionTiming.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCFiniteStochasticQuotient.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCLinearPredictiveLift.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCModelKernelReconciliation.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCObservableLumpability.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCStochasticBeliefBridge.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCStochasticDescent.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCStochasticTraceNoGo.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CalibratedRiskRows.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreInfinitePathClosure.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreNonvacuousAllTimesWitness.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CorePMFViabilityReconciliation.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreSourceAllTimesAssembly.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverage.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/EmpiricalReferenceRisk.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizability.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteHorizonPathAdapter.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteHorizonRisk.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePMFProjection.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MicroscopicFailureRisk.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OrganizationalCoreAssembly.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OrganizationalSufficiencyWitness.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OrganizationalViabilityMaximality.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PredictiveOptimalControlLift.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PredictiveViabilityTransport.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledExitFlux.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledPath.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourcePolicyPathBridge.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskCalibration.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StochasticPredictiveNullspace.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StochasticPredictiveObservabilityBridge.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StochasticPredictiveRobustObservability.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/UnifiedCoreClosureCertificate.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ViabilityKernelIntertwining.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ViabilityNonvacuityWitness.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Compression/TransportCertificate.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/CoreOperationalAssembly.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Decision.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/DevelopmentTransport.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/DynamicsKernel.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/FiniteAlphabetConcentration.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/FiniteAlphabetSampling.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/FiniteBayesBelief.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/FiniteCandidateDiscovery.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/FiniteCesaroInvariant.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/FiniteDiscountedApproxQuotient.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/FiniteDiscountedApproxQuotientBounds.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/FiniteDiscountedCausal.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/FiniteDiscountedCausalInfinite.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/FiniteDiscountedControl.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/FiniteDiscountedExactQuotient.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/FiniteDiscountedGreedy.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/FiniteDiscountedPolicyResolvent.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/FiniteDiscountedSelector.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/FiniteDiscountedSelectorValue.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/FiniteDobrushin.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/FiniteRecurrentDecompositionStability.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/FiniteStablePartition.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/FiniteStablePartitionCoarsest.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/FiniteStablePartitionCoarsestFixedPoint.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/FiniteStablePartitionFiniteHorizon.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/FiniteStablePartitionQuotientLaw.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/FiniteStablePartitionQuotientNormalization.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/FiniteStablePartitionTermination.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/InformationKernelTV.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/InformationPacking.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/InformationPinsker.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/InformationZeroTV.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/OmegaIntegrityMargin.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/PAlg01.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/PathError.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/PredictionAE.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/PredictionDependent.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/PredictionUpdate.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/PredictiveClassRecovery.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/ProcessInterface.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/QSDPerron.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/StatisticalDefect.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/StructuredQuotient.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/TVSpan.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/Threshold.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/TotalVariation.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/TransportDefect.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/VariationBridge.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/ViabilityKernel.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/ViabilityPath.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/ViabilityStrategy.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-core/UEOT/V3/ViabilityTrajectory.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/ActionRecordBudget.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/Adaptive.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/Basic.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/BinaryDiscrimination.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/Cesaro.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/ClassicalQuantumMemory.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/ClassicalSector.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/ComplexLocalTomography.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/CorePurificationBoundary.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/Effects.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/Exact.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/ExactCertificate.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/FiniteCoordinates.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/HistoryChannels.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/Instrument.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/Mixture.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/Observables.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/Operational.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/OperationalEquivalence.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/OperationalSystems.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/PureStateCharacterization.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/PurificationDimension.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/PurificationIsometry.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/PurificationUniqueness.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/QuantumActionCounterexamples.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/QuantumActionPauliWitness.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/QuantumActionRealizability.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/QuantumDoob.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/QuantumDoobDynamics.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/QuantumDoobModel.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/QuantumFiniteWindowSpectral.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/QuantumInitializationCost.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/QuantumPostselectionError.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/QuantumPurification.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/QuantumReachableActionRealizability.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/QuantumSeparation.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/Ragged.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/RealLocalTomography.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/RecordProbability.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/RectangularChannels.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/Selector.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/Spectrum.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/Stability.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/StoppingProtocols.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/Survival.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/Transport.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/UEOTQM/Weighted.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/lake-manifest.json"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/lakefile.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/lean-toolchain"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/scripts/AxiomAudit.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/scripts/OperationalEquivalenceAxiomAudit.lean"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/scripts/check_axioms.py"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/scripts/check_dependencies.py"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/scripts/record_source.py"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/scripts/verify_finite_conditioning.py"
+    },
+    {
+      "name": "reused proof input exact identity",
+      "status": "PASS",
+      "detail": "formalization/ueot-qm/scripts/verify_operational_equivalence.py"
+    },
+    {
+      "name": "13 actual inherited runtime inputs",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "reused old runtime input exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/operational_micro_robust/DATA_AND_COST_CONTRACT.json"
+    },
+    {
+      "name": "reused old runtime input exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/operational_micro_robust/check_micro_truncation.py"
+    },
+    {
+      "name": "reused old runtime input exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/operational_micro_robust/check_operational_controls.py"
+    },
+    {
+      "name": "reused old runtime input exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/operational_micro_robust/exact_checker.py"
+    },
+    {
+      "name": "reused old runtime input exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/operational_micro_robust/frozen_model.json"
+    },
+    {
+      "name": "reused old runtime input exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/operational_micro_robust/review_c_exact.py"
+    },
+    {
+      "name": "reused old runtime input exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/operational_micro_robust/robust_certificate.py"
+    },
+    {
+      "name": "reused old runtime input exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/operational_micro_robust/run_verification.py"
+    },
+    {
+      "name": "reused old runtime input exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/operational_micro_robust/synthetic_calibration.py"
+    },
+    {
+      "name": "reused old runtime input exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/operational_micro_robust/verify_integration.py"
+    },
+    {
+      "name": "reused old runtime input exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/conditioning/finite_conditioning.py"
+    },
+    {
+      "name": "reused old runtime input exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/SHARED_MODEL.md"
+    },
+    {
+      "name": "reused old runtime input exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/C_ROBUST_CALIBRATION.md"
+    },
+    {
+      "name": "new source manifest actual scope and baseline",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "science manifest inherited proof exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/proof-reuse.json"
+    },
+    {
+      "name": "science manifest actual runtime exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/runtime/execution_receipt.json"
+    },
+    {
+      "name": "manifest points to this exact proof and runtime",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source manifest carries the same seventeen executed inputs",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "paper/publication source manifest has distinct actual inputs",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "science manifest avoids mutable-index and gate cycles",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/FROZEN_CERTIFICATE_PLAN.json"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/README.md"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/certified_intervals.py"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/certify_from_records.py"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/check_full_cq_stability.py"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/check_simultaneous_galerkin.py"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/frozen_model.json"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/generate_synthetic.py"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/independent_certificate_check.py"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/interval_predictor.py"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/model.py"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/run_verification.py"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/verify_end_to_end.py"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/verify_integration.py"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/simultaneous_cutoff/verify_interval_output.py"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/conditioning/finite_conditioning.py"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/SHARED_MODEL.md"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": ".github/workflows/ueot-qm.yml"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/ROADMAP.md"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/UEOT_QM_EXECUTION_v31.13.md"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/UEOT_QM_KERNEL_v31.13.md"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/A_FULL_CQ_STABILITY.md"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/B_SIMULTANEOUS_GALERKIN.md"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/C_CALIBRATION_AND_CERTIFICATE.md"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/ROOT_INTEGRATION_REVIEW.md"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/SHARED_MODEL.md"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/chapter69_formal_bindings.json"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/PHYSICS_RESULT_MAPPING.md"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/PUBLICATION_RIGHTS.md"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/SCIENTIFIC_EDITORIAL_CHANGELOG.md"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/UEOT_PHYSICS.en.md"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/UEOT_PHYSICS.en.pdf"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/UEOT_PHYSICS.en.tex"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/UEOT_PHYSICS.md"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/UEOT_PHYSICS.pdf"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/UEOT_PHYSICS.tex"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/evidence/v3.10/en/pdf-build.json"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/evidence/v3.10/visual-review.json"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/evidence/v3.10/zh/pdf-build.json"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/review/EMPIRICAL_AND_FALSIFIABILITY_AUDIT.md"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/review/FINAL_THEORETICAL_RED_TEAM_REVIEW.md"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/review/PHYSICAL_DERIVATION_AUDIT.md"
+    },
+    {
+      "name": "current science source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/review/PRIOR_ART_AND_EXPERIMENTAL_STATUS.md"
+    },
+    {
+      "name": "CURRENT advances to actual v31.13",
+      "status": "PASS"
+    },
+    {
+      "name": "CURRENT pointer kernel",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "CURRENT pointer execution_contract",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "CURRENT pointer claim_ledger",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "CURRENT pointer proof_reuse_receipt",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "CURRENT pointer runtime_receipt",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "CURRENT pointer increment_source_manifest",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "CURRENT no hardware claim",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "CURRENT scientific, empirical and computational axes",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "CURRENT book counts and no global formalization",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "CURRENT points to actual book acceptance",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "CURRENT actual dossier exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/CHAPTER_DOSSIER.json"
+    },
+    {
+      "name": "dossier actual book source manifest exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/SOURCE_MANIFEST.json"
+    },
+    {
+      "name": "dossier canonical exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/UEOT_PHYSICS.md"
+    },
+    {
+      "name": "dossier canonical_english exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/UEOT_PHYSICS.en.md"
+    },
+    {
+      "name": "zh PDF edition and source structure",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh PDF build dependency builder_sha256",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh PDF build dependency header_sha256",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh PDF build dependency tables_filter_sha256",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh delivered md exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/UEOT_PHYSICS.md"
+    },
+    {
+      "name": "zh delivered tex exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/UEOT_PHYSICS.tex"
+    },
+    {
+      "name": "zh delivered pdf exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/UEOT_PHYSICS.pdf"
+    },
+    {
+      "name": "zh three actual successful compile passes",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh final PDF warning and convergence scope",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh actual TeX log exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/evidence/v3.10/zh/xelatex-pass-1.log"
+    },
+    {
+      "name": "zh actual TeX log exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/evidence/v3.10/zh/xelatex-pass-2.log"
+    },
+    {
+      "name": "zh actual TeX log exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/evidence/v3.10/zh/xelatex-pass-3.log"
+    },
+    {
+      "name": "zh actual running header has current edition",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh generated cover exactly matches final template",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh generated cover counts and kernel identity",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh generated publication date",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en PDF edition and source structure",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en PDF build dependency builder_sha256",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en PDF build dependency header_sha256",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en PDF build dependency tables_filter_sha256",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en delivered md exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/UEOT_PHYSICS.en.md"
+    },
+    {
+      "name": "en delivered tex exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/UEOT_PHYSICS.en.tex"
+    },
+    {
+      "name": "en delivered pdf exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/UEOT_PHYSICS.en.pdf"
+    },
+    {
+      "name": "en three actual successful compile passes",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en final PDF warning and convergence scope",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en actual TeX log exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/evidence/v3.10/en/xelatex-pass-1.log"
+    },
+    {
+      "name": "en actual TeX log exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/evidence/v3.10/en/xelatex-pass-2.log"
+    },
+    {
+      "name": "en actual TeX log exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/evidence/v3.10/en/xelatex-pass-3.log"
+    },
+    {
+      "name": "en actual running header has current edition",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en generated cover exactly matches final template",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en generated cover counts and kernel identity",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en generated publication date",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "scoped actual visual inspection recorded",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "both languages visually reviewed",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh visual final PDF exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/UEOT_PHYSICS.pdf"
+    },
+    {
+      "name": "zh visual actual build exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/evidence/v3.10/zh/pdf-build.json"
+    },
+    {
+      "name": "zh visual PDF bound through final build",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh visual build source md exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/UEOT_PHYSICS.md"
+    },
+    {
+      "name": "zh visual build source tex exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/UEOT_PHYSICS.tex"
+    },
+    {
+      "name": "zh actual new chapter and scoped pages recorded",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh original visual review exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/evidence/v3.10/visual/zh-original-review.json"
+    },
+    {
+      "name": "zh original visual review binds final PDF",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Chinese actual visual verdict",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Chinese every listed page was actually viewed",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh final archived page inventory matches reviewed images",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh actually viewed image archive exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/evidence/v3.10/visual/zh-viewed-pages.zip"
+    },
+    {
+      "name": "zh actual image ZIP has no omitted or extra members",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh viewed PNG identity page-001.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh viewed PNG identity page-002.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh viewed PNG identity page-003.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh viewed PNG identity page-004.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh viewed PNG identity page-011.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh viewed PNG identity page-234.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh viewed PNG identity page-235.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh viewed PNG identity page-236.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh viewed PNG identity page-237.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh viewed PNG identity page-238.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh viewed PNG identity page-239.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh viewed PNG identity page-246.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "zh viewed PNG identity page-288.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en visual final PDF exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/UEOT_PHYSICS.en.pdf"
+    },
+    {
+      "name": "en visual actual build exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/evidence/v3.10/en/pdf-build.json"
+    },
+    {
+      "name": "en visual PDF bound through final build",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en visual build source md exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/UEOT_PHYSICS.en.md"
+    },
+    {
+      "name": "en visual build source tex exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/UEOT_PHYSICS.en.tex"
+    },
+    {
+      "name": "en actual new chapter and scoped pages recorded",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en original visual review exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/evidence/v3.10/visual/en-original-review.json"
+    },
+    {
+      "name": "en original visual review binds final PDF",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "English final scoped visual verdict",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "English actual reviewed pages have precise scope",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "preserved English prior issue review exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/evidence/v3.10/attempts/en-v4-toc-spacing/B_ENGLISH_PDF_REVIEW_v4.json"
+    },
+    {
+      "name": "English prior layout failure not relabelled PASS",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "English fresh and exactly reused visual work partition",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "English actual PNG reuse page 1",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "English actual PNG reuse page 2",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "English final changed page actually re-viewed 3",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "English final changed page actually re-viewed 4",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "English actual PNG reuse page 5",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "English actual PNG reuse page 279",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "English actual PNG reuse page 280",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "English actual PNG reuse page 281",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "English actual PNG reuse page 282",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "English actual PNG reuse page 283",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "English actual PNG reuse page 284",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "English actual PNG reuse page 285",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "English actual PNG reuse page 289",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "English actual PNG reuse page 294",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "English actual PNG reuse page 339",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en final archived page inventory matches reviewed images",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en actually viewed image archive exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/evidence/v3.10/visual/en-viewed-pages.zip"
+    },
+    {
+      "name": "en actual image ZIP has no omitted or extra members",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en viewed PNG identity en-p001.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en viewed PNG identity en-p002.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en viewed PNG identity en-p003.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en viewed PNG identity en-p004.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en viewed PNG identity en-p005.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en viewed PNG identity en-p279.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en viewed PNG identity en-p280.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en viewed PNG identity en-p281.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en viewed PNG identity en-p282.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en viewed PNG identity en-p283.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en viewed PNG identity en-p284.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en viewed PNG identity en-p285.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en viewed PNG identity en-p289.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en viewed PNG identity en-p294.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "en viewed PNG identity en-p339.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "all twenty-eight actual viewed PNGs accounted for",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "local acceptance scope is explicit and actual",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "local acceptance binds full required publication evidence",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "local acceptance has no self/gate hash cycle",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "local acceptance exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/UEOT_PHYSICS.md"
+    },
+    {
+      "name": "local acceptance exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/UEOT_PHYSICS.tex"
+    },
+    {
+      "name": "local acceptance exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/UEOT_PHYSICS.pdf"
+    },
+    {
+      "name": "local acceptance exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/UEOT_PHYSICS.en.md"
+    },
+    {
+      "name": "local acceptance exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/UEOT_PHYSICS.en.tex"
+    },
+    {
+      "name": "local acceptance exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/UEOT_PHYSICS.en.pdf"
+    },
+    {
+      "name": "local acceptance exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/PHYSICS_RESULT_MAPPING.md"
+    },
+    {
+      "name": "local acceptance exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/PUBLICATION_RIGHTS.md"
+    },
+    {
+      "name": "local acceptance exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/evidence/v3.10/visual-review.json"
+    },
+    {
+      "name": "local acceptance exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/evidence/v3.10/zh/pdf-build.json"
+    },
+    {
+      "name": "local acceptance exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/book/evidence/v3.10/en/pdf-build.json"
+    },
+    {
+      "name": "local acceptance exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/runtime/execution_receipt.json"
+    },
+    {
+      "name": "local acceptance exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/proof-reuse.json"
+    },
+    {
+      "name": "local acceptance exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/kernel/evidence/v31.13/source-manifest.json"
+    },
+    {
+      "name": "local acceptance exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/ROOT_INTEGRATION_REVIEW.md"
+    },
+    {
+      "name": "local acceptance exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/reviewer_originals/a/A_FINAL_INTEGRATION_REVIEW.json"
+    },
+    {
+      "name": "local acceptance exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/reviewer_originals/a/A_FINAL_INTERVAL_OUTPUT_CHECK.json"
+    },
+    {
+      "name": "local acceptance exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/reviewer_originals/b/root_interval_prediction_diagnostic.json"
+    },
+    {
+      "name": "local acceptance exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/reviewer_originals/b/B_REVIEW_OF_C.md"
+    },
+    {
+      "name": "local acceptance exact identity",
+      "status": "PASS",
+      "detail": "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/reviewer_originals/c/C_REVIEW_OF_A.md"
+    },
+    {
+      "name": "exactly the three authorized review roles",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "actual independent review files bound",
+      "status": "PASS"
+    },
+    {
+      "name": "consumed bytes stable throughout this verification",
+      "status": "PASS",
+      "detail": []
+    }
+  ],
+  "pending_integration": [],
+  "consumed_sha256": {
+    "physics/qm/book/evidence/v3.10/prior/CHAPTER_DOSSIER.json": "10106d93ed533f6eb925beb2da49330ef61140f6fb956255f43c312a7460fb37",
+    "physics/qm/book/evidence/v3.10/prior/CURRENT.json": "2116731b8e35478a4564a9e4c2068326c2567a3359dba72a85aaae55695e2083",
+    "physics/qm/book/evidence/v3.10/prior/README.md": "bddba87b3090f7c685acca5757ecdb30fb05dd12e5c7d9a103dba52a824ddb58",
+    "physics/qm/book/evidence/v3.10/prior/SOURCE_MANIFEST.json": "eb025f0558852ec5f14549c734dcf42c217924ae462102bc71991c9edb95aa02",
+    "physics/qm/book/evidence/v3.10/prior/UEOT_PHYSICS.en.md": "9ba8c0035f171091b753f02c0a452655cc7caf0eb00022a69085ae0e524ea8b1",
+    "physics/qm/book/evidence/v3.10/prior/UEOT_PHYSICS.md": "b52a9b09881adc09432eae2d92ad8ec84cd5d4f23acb6d0340db6e350e33537d",
+    "physics/qm/status/CLAIM_LEDGER_v31.12.json": "ad1297cdd59bcfa020cdce1ec30f4e3488c7e15ab9db62a54b3ebf7c2f2408f7",
+    "physics/qm/book/CHAPTER_DOSSIER.json": "2a7f088eeab73cc5d06fca27afb6c17375c1bd7d1ab34308ef276954257c8a4c",
+    "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/chapter69_formal_bindings.json": "e8d31677568b74ca8a502bd7a0b2559948368c2d55e0988a304cb75b949f5037",
+    "physics/qm/status/CLAIM_LEDGER_v31.13.json": "d76150782dd54eef1db340a553ac69019c2937662519cc73d67ab4c40d663e97",
+    "physics/qm/book/UEOT_PHYSICS.md": "c204146482334fdd6de8e40f64cd193450ff229deec2b25715b9b774332309ab",
+    "physics/qm/book/UEOT_PHYSICS.en.md": "3df692bc6f407cded4cc519a7d08dd399979339d7d8ccccfd185832101532085",
+    "physics/qm/book/SOURCE_MANIFEST.json": "a950cd3d88b52d3bf10875fc634fdf8d29db41fe0856255116cd1def42de953f",
+    "physics/qm/kernel/evidence/v31.13/runtime/execution_receipt.json": "197a037ea017005d3aca0d9357b5ac05289ec2e2967d26a7ce5471bd262de51e",
+    "physics/qm/simultaneous_cutoff/FROZEN_CERTIFICATE_PLAN.json": "a27a61ea157d9ae958213a5377d3a93295022a8a9d28f68d022f86f9fa269108",
+    "physics/qm/simultaneous_cutoff/README.md": "ee70d76ae6a91895156d5a1eafeafc67470a6283fa4edfb70e32440d32e8bbac",
+    "physics/qm/simultaneous_cutoff/certified_intervals.py": "8833a6192298eb3d91ada7f5b57471c424613b0cb0a9cd7d62828b34ffa59d5b",
+    "physics/qm/simultaneous_cutoff/certify_from_records.py": "6ba96a6150e63ba0834aaa41f47dee1f661deab11cbe8fa5fdab882a9db25753",
+    "physics/qm/simultaneous_cutoff/check_full_cq_stability.py": "01f64e31f19351a25c7e116b1db21f99c3900297b6704d8c09f94a62090c04fb",
+    "physics/qm/simultaneous_cutoff/check_simultaneous_galerkin.py": "900b44bf7d5a6074e831f92d4a0cf8df603bef1d9b04fbb34ca8b828c06f7af2",
+    "physics/qm/simultaneous_cutoff/frozen_model.json": "3d344e91fdc59cb333c21623b5b62528c9d7a0edea2145148b6d484a61eca10a",
+    "physics/qm/simultaneous_cutoff/generate_synthetic.py": "db3abaea47ecd42ed545cd7ef7b1f48eb5407a289b140e64aa69a8516798db31",
+    "physics/qm/simultaneous_cutoff/independent_certificate_check.py": "f8f430434dbed0dcd1c0912c2902c0c9cd103e49fceef69231d5f8ed31d67d06",
+    "physics/qm/simultaneous_cutoff/interval_predictor.py": "2f104261217300f08cec35642076a59238bca54fc74e226abc44e4c705369a70",
+    "physics/qm/simultaneous_cutoff/model.py": "285c70b561b0af6967490d06d31bf0db1b3bd979e7d8ba67af77917af51fc6c0",
+    "physics/qm/simultaneous_cutoff/run_verification.py": "565cdf0f8541ff59fe8ed2b3c7e37f8f93de09d8059fbc61c6f6d5c2b6894e6e",
+    "physics/qm/simultaneous_cutoff/verify_end_to_end.py": "e56b6eb660256444999af00e8102fbb1412f517b662e74a760f748bb9e22faa6",
+    "physics/qm/simultaneous_cutoff/verify_integration.py": "d480b9edf0057ddf7c4b9f65755759cf31d4d016a931f32999735263ed81a6a0",
+    "physics/qm/simultaneous_cutoff/verify_interval_output.py": "791c0c20c1ef1af96968fa502d3b7af5cbf88f128217676b64aaa289d16d96b0",
+    "physics/qm/conditioning/finite_conditioning.py": "33d573b3049538bedbcd7ff60f15e566fb17358f0b91d8f76a0d645f1ab0c6c4",
+    "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/SHARED_MODEL.md": "bd254d62771b8aac0798aa6f031b8c8bc4830cfc7b12ca569fe687cd433ca852",
+    "physics/qm/kernel/evidence/v31.13/runtime/calibration.json": "67bb7cfd9ccc35a80d6ac6dc128e4b16c22997860d102fb9cb9ff0bc431fc5ab",
+    "physics/qm/kernel/evidence/v31.13/runtime/end-to-end-binding.log": "f95054ee2cd8095f53478b9848e1329e8606266d4cc5129392a4b38f3cc332fe",
+    "physics/qm/kernel/evidence/v31.13/runtime/end-to-end.json": "80ad86244e47a35322d641ba6cd434e03655fee208ebfce8d0ccafbb61ba7356",
+    "physics/qm/kernel/evidence/v31.13/runtime/independent-calibration.json": "0ea440abf2361166daf34ff4e02c2cf6f86f7e109771f0c27b009fa2c6c72bc7",
+    "physics/qm/kernel/evidence/v31.13/runtime/independent-interval-output.log": "2750025714b5ee1ee020d1b32ac726bd23eb7b1edde9363650972b0ecbb91cc3",
+    "physics/qm/kernel/evidence/v31.13/runtime/independent-interval.json": "0869af2bcd507a6b466bf0b30d72ca53bc9e57c2ab7b7b6109bd83b5910a4e14",
+    "physics/qm/kernel/evidence/v31.13/runtime/independent-microscopic.log": "0809f1442f3282f38458758b36dc47205d02327e806a10a15b7b012f83a23f8b",
+    "physics/qm/kernel/evidence/v31.13/runtime/independent-operational.log": "1e4696f14d2d21dadf59bdd23b49f904dd9a9000bc5da64d1c522a55c3670f95",
+    "physics/qm/kernel/evidence/v31.13/runtime/independent-rational-calibration.log": "7befcfa943b63861421468c2fafc0272e620c98dd313996729109d58639d1ee7",
+    "physics/qm/kernel/evidence/v31.13/runtime/integer-interval-prediction.log": "bb46e6f6459b15bff6742a733fdc6b3877651f837309aa1509078d9b871c8e03",
+    "physics/qm/kernel/evidence/v31.13/runtime/integration.json": "5f8ea0da6662f6130563e1bd1022e55e61a272d95bd4ad1cd2fda1eaae785c30",
+    "physics/qm/kernel/evidence/v31.13/runtime/interval-prediction.json": "ee7b5ab2eba7030d2dec523e1521cc3c4c7554d951c24685bc43734a841be5d2",
+    "physics/qm/kernel/evidence/v31.13/runtime/micro.json": "0a9fa36b463e9bebafd389035346920930d3016e4fb3daa34517c37ffe99b5ea",
+    "physics/qm/kernel/evidence/v31.13/runtime/operational.json": "8024fe362964bf9f7c53726f5fccb1d893b50e21fa7a7bcc22bd2a03b3f736b1",
+    "physics/qm/kernel/evidence/v31.13/runtime/source-integration.log": "b7dd6e4a77abe539b68b3745be533d20b2630c1c3627a3b949a28ebfedc13435",
+    "physics/qm/kernel/evidence/v31.13/runtime/synthetic-generation.log": "ed4279fdf4aa9a0962b2bbc6c377bfd97197bdfb4fe30665ff2d1800b69571e1",
+    "physics/qm/kernel/evidence/v31.13/runtime/synthetic_raw.zip": "47cc6b830fe576c23a9860754cc6760d301d88a848de30dc23c799d6c674715d",
+    "physics/qm/kernel/evidence/v31.13/runtime/truth-blind-calibration.log": "2e6eb552586221bb7c5a5af29d94207aeaa4e245b28c2693715c09b3f0f92b78",
+    "physics/qm/kernel/evidence/v31.13/proof-reuse.json": "d25049fe60ef0c9e75ae26da2cee32cbde4cfdec36edb33121898d44937a917a",
+    "physics/qm/kernel/evidence/v31.11/source-manifest.json": "ec214db86cebe2e0bae2f02e5fe2028fc63d99c585ad655170bc2c9f4881bb2a",
+    "formalization/ueot-core/UEOT/Core/Blocker.lean": "784e3e5aa5432decb490d89962465fc79b9eca49250a13bd230b79092eedb41f",
+    "formalization/ueot-core/UEOT/Core/Finite.lean": "a87afe5b560c9f9cfb6bceee2a6d49b41c8313f2f7d61d422903c8a0423cec09",
+    "formalization/ueot-core/UEOT/Core/Reward.lean": "fb13ea6d2e09dd98313365a360b078868cb224221ca083067cbc39262c364824",
+    "formalization/ueot-core/UEOT/V3/BoundedLossSampling.lean": "bf39554af17ef5848554212c13362a5fcdf0f0739ef656b982b4e5f9c480c21f",
+    "formalization/ueot-core/UEOT/V3/BoundedLossTwoSided.lean": "38b0d02c99b2aeeb22074b55fef0b36a5d7e7b9131da3f0b53a651d43e05cc30",
+    "formalization/ueot-core/UEOT/V3/Compression/QuotientDescent.lean": "1cb1e6f46e36f989cfdd8f4b300084245efa090c5a4f6140960049bfcd476dcd",
+    "formalization/ueot-core/UEOT/V3/Compression/RecursiveSufficientState.lean": "076e3cd74eb490bf221b6b73e7e7a16eb60dd2e5c1feba2b910990dd1ae434ca",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCApproximateLumpability.lean": "7ee64ac57451fd3cae3f38d05ba9cc0111ad0f1123b59032c707322873f5b122",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCEmissionTiming.lean": "6c23041f1e30be7cc3468506e49af60f036f87161c5a5ae850dcb5201c176bfd",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCFiniteStochasticQuotient.lean": "c6c48cddf69d04314af777f5fe685036252092bf9a80ce6fdbc23f4bfe54e7ed",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCLinearPredictiveLift.lean": "f08ab91480f2e6fa7b82a973a679873f97ccd0483c5a258a0956aa499d3c7616",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCModelKernelReconciliation.lean": "a4bcd1ddb0a38feac2bf89b75afa59cd54afb777d5fd73cc9281627900a58ea4",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCObservableLumpability.lean": "722c17e7b1f25d96e8490a40accdc16d74697e0e278fea0ea6f7271a29f60ed6",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCStochasticBeliefBridge.lean": "7f8fc9ad1e3c5871c5e018ad7c359a91fdf4d7c536469be0a91a22a1a4043d2e",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCStochasticDescent.lean": "2b7a8b44a6d96e74346f293399a60b1337470cef0dd8caa472883efec7488167",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCStochasticTraceNoGo.lean": "eefadc59676255021d2d4dc946feeea8a895d41ed959f0f9f4103835884864ec",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CalibratedRiskRows.lean": "04e1a1915fa30f1e1df387074d62d36c2562c56cf8ccb411c4eeed50f5907ba7",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreInfinitePathClosure.lean": "b3ea7e21821058e91835fb33cf38982715080d211f2ccb6f14dfef8c8992469e",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreNonvacuousAllTimesWitness.lean": "8a8355cc662a69f8481b2db6d98dd4c451489eca38c3c77ab385e59bc5aaddf3",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CorePMFViabilityReconciliation.lean": "f10ea17371a95c39d1b393c34c1c8519a38793b7d7eba611b738cbe062a3e24a",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreSourceAllTimesAssembly.lean": "0c6c4cd9fdbac7b0c219f0e2b46e03f2add3c56cc6b5062670de255104680a56",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DeploymentCoverage.lean": "5869824d0b059abcdf7e211d330cc944d0e5448275732bfad60f5728d1819585",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/EmpiricalReferenceRisk.lean": "9b5594629e9e439282134cdece24b22786eff83a392a6a4168cc4249f9e0556d",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteActionRealizability.lean": "fc45d67c59111e4f262a28d850306d3782801116ad01bb403c3dea4ef12a655f",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteHorizonPathAdapter.lean": "001261ea8ac5e9277037ecb620aaf84a16b9604614577d6ba5ba7bed1ea5d84f",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteHorizonRisk.lean": "d39f58ddbc8a41edf0221bcbb875c294def320319230a7c113cb18765ad46f08",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FinitePMFProjection.lean": "0807f667e0473e9bc063b446add02d0d1e477e6dbbf1125f15245093acc1ccc2",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MicroscopicFailureRisk.lean": "5736eae5f9939ef0fdb4c7c520c2c0bc5766d85bf863161787568d2042842cfb",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OrganizationalCoreAssembly.lean": "0bbde4dba8624eb1c5d8afa352823c3de069794de94de29c18c6ab555aef6ac5",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OrganizationalSufficiencyWitness.lean": "cbdd8870c4bd526787e35d3b5fd02964c4b4f0665e267abffe7a34d0024768f5",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OrganizationalViabilityMaximality.lean": "189b8a90b37f6834f81703b60756a5944495cf62f8d681a862b3a06743489814",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PredictiveOptimalControlLift.lean": "3a0b637ab4c6943bceac6b1ca5e00dd9bedbfb9e5a3f86e86279513d3e0e63bd",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PredictiveViabilityTransport.lean": "91625f32e42e01d873986312a8af799bbae1552d78697c2f7dccb33a4ff324db",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceConditionedTerminal.lean": "ba5c3ebb96fc4bcc3927dc7fe7c0976da6ca5483b4833e2ac03bb4312edc71d4",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledExitFlux.lean": "886891df3e3e68e6a848e876e75b0bc3d707350c705402b31f57602d5050c08b",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SameSourceKilledPath.lean": "496f6b5de9850dda1de036da3862824dffd2f137ebd740c28bd061e566fec4d0",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourcePolicyPathBridge.lean": "3e12ece077ed1528cf3a3f6adb16530400b241bae384071a0c1ba616023d546e",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StatisticalRiskCalibration.lean": "20169e48a8561c6de93c6767ade68173cc80e45ffefa06c43b19d5c735cbf1ee",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StochasticPredictiveNullspace.lean": "0dab5acd3d413babffa15be695cca53f6cc4582bc81a939f7cf9142f6b7cdb59",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StochasticPredictiveObservabilityBridge.lean": "f32c0c77fa10d802409716f27e48146191d8e2456a4b029b723a80a8ddd611a6",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/StochasticPredictiveRobustObservability.lean": "4f5304df7c1fdc5d3c824c0cf7de84e4b686bc8375e4d2bd1fed5ecb74d3624b",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/UnifiedCoreClosureCertificate.lean": "570084b1a96ed142e965a33e9c9aac3c1e610910fde0c6bea1a126defc932378",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ViabilityKernelIntertwining.lean": "f224e77b28f78c025807599472282d011dab26b8c34d61c70a6868e54abc5c49",
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ViabilityNonvacuityWitness.lean": "c4c9f456011063805a639fbc0b49b00bb70d96b4ab5e781b2acbd31f3283482f",
+    "formalization/ueot-core/UEOT/V3/Compression/TransportCertificate.lean": "6def721f70ee273372a97faa6e15387baec83f7442eb95f9ae25c449741904c4",
+    "formalization/ueot-core/UEOT/V3/CoreOperationalAssembly.lean": "1f8c4f5be6d3906cdeaa6d88809cc5e0fa5f601ce8b69b21cef67a16dc7a7384",
+    "formalization/ueot-core/UEOT/V3/Decision.lean": "3ae0d13c7a5e791926c6efd4ed49bbe3d691d8b0cd5bff1596315d3573e60702",
+    "formalization/ueot-core/UEOT/V3/DevelopmentTransport.lean": "8aa6ef160dba5c54a8b0c2cc9001fcc09dc0cb6a0002a3946110373a06c88571",
+    "formalization/ueot-core/UEOT/V3/DynamicsKernel.lean": "97ed375855ff5d76e657f3d2c135ef4b36fa154c7377106fc24d1a97126599bc",
+    "formalization/ueot-core/UEOT/V3/FiniteAlphabetConcentration.lean": "2ee3e3ac690df51ba25306a8db8820e703e332f9e285c7de6317a4a4fd420a8a",
+    "formalization/ueot-core/UEOT/V3/FiniteAlphabetSampling.lean": "752cc082ba4c8ef21a5817f99d326e0ded80f8b96053d5ff6ba0229eb18fceeb",
+    "formalization/ueot-core/UEOT/V3/FiniteBayesBelief.lean": "1ea79d7c1217c4a3292b790c000d1c1f6fc9777439f8b8a0102157a5e52e97ed",
+    "formalization/ueot-core/UEOT/V3/FiniteCandidateDiscovery.lean": "a617ad6cf0dd90af1a4dd8ea8a7c0d7953e878adf2d46c52e331feaa304cce1b",
+    "formalization/ueot-core/UEOT/V3/FiniteCesaroInvariant.lean": "c119dda626e4f6e274df4419388d043fdefd5ceec8e4dfa5d9b8c1378d7b205a",
+    "formalization/ueot-core/UEOT/V3/FiniteDiscountedApproxQuotient.lean": "0120633e891b2424b1fe329d4973290ecb67571c74e3973788fd65b92967aab6",
+    "formalization/ueot-core/UEOT/V3/FiniteDiscountedApproxQuotientBounds.lean": "d95d88186c454a9bea961eff5ca74ab9c9b26a623b0855a9b374047a0fac8d3f",
+    "formalization/ueot-core/UEOT/V3/FiniteDiscountedCausal.lean": "bd523354f5447cc408389deb7b7a6a69c9965ef3bfdfac27997675768efde81c",
+    "formalization/ueot-core/UEOT/V3/FiniteDiscountedCausalInfinite.lean": "a65004e7d55ccc2cc1818126891eace444cb63ae79222d8b8d448b6c39f2c969",
+    "formalization/ueot-core/UEOT/V3/FiniteDiscountedControl.lean": "71ed018764a8f83e0b09ea25e066ca2fe3f5994a4a1bba82651072a15eb2faeb",
+    "formalization/ueot-core/UEOT/V3/FiniteDiscountedExactQuotient.lean": "bd7b718f62a67108d2c78a02f3157a056f2e1820e913b5b2acd089b2e931e9a9",
+    "formalization/ueot-core/UEOT/V3/FiniteDiscountedGreedy.lean": "58f7f9062893718af874ebf74bd9a24c76cbcf89afac9de533090cc48e9b95f5",
+    "formalization/ueot-core/UEOT/V3/FiniteDiscountedPolicyResolvent.lean": "bfd2f5365131022d55ea759db4af01012ca459211f7210274e1620b3ebb8a68a",
+    "formalization/ueot-core/UEOT/V3/FiniteDiscountedSelector.lean": "0da107b3f0bcdb63d06b50c5178b419d36c231c9d1f819fc84dacbab38cb6b89",
+    "formalization/ueot-core/UEOT/V3/FiniteDiscountedSelectorValue.lean": "3f9c04b1d995711bb00a85d2baa5bdbc6d003a3ce24a67f959ffdbe359874610",
+    "formalization/ueot-core/UEOT/V3/FiniteDobrushin.lean": "5862b1717beb4f800842fef6d1720aae00f3dfa0c9f648112d358b1f91dbc860",
+    "formalization/ueot-core/UEOT/V3/FiniteRecurrentDecompositionStability.lean": "2f8aa0e5a98f1091bba8a3d8f7556fcaa8fb68ebdee193187dbc2935362997ee",
+    "formalization/ueot-core/UEOT/V3/FiniteStablePartition.lean": "5b845baff06a8a8a474a394cb7aeba2e36f397dac04cca4d5432f09f7055ffd8",
+    "formalization/ueot-core/UEOT/V3/FiniteStablePartitionCoarsest.lean": "9547c505d98232e9d0c8ef68d70c5e96d4a8300ea62ed57dcfd5fedcf376ab3b",
+    "formalization/ueot-core/UEOT/V3/FiniteStablePartitionCoarsestFixedPoint.lean": "42c7504bdebf153b1e1d8aab6af86f588b9d6b5d004046c743f76b4d5d328d52",
+    "formalization/ueot-core/UEOT/V3/FiniteStablePartitionFiniteHorizon.lean": "4f5c883b64f2758849c847fff21b9143fe7b27a8ead0f865aa165b7e1a866824",
+    "formalization/ueot-core/UEOT/V3/FiniteStablePartitionQuotientLaw.lean": "1d9a48b24c4c9da0797ffeda9f5fd65858a5b969294d28253ab5bcbcdd89e0cb",
+    "formalization/ueot-core/UEOT/V3/FiniteStablePartitionQuotientNormalization.lean": "9b48d39e478d033b288592029959e7865bba1eb586212a0b5ab9ff07bfe2aea1",
+    "formalization/ueot-core/UEOT/V3/FiniteStablePartitionTermination.lean": "95e422df449d8f0163070839be8a520cd43cc329df3e0d53750de5bb79b11bd3",
+    "formalization/ueot-core/UEOT/V3/InformationKernelTV.lean": "ef5c7b55370a524a94ba5e3c3beb8024d94616ea8c0b844b70413bea225f56fc",
+    "formalization/ueot-core/UEOT/V3/InformationPacking.lean": "f1685b70503bc9ade8c15986be5bca40847e13a6327cc020979edd75f3aa5ecc",
+    "formalization/ueot-core/UEOT/V3/InformationPinsker.lean": "fb02778abc4a805510df507de76f261d8ee1d1dedf15a77dcd78651457b25279",
+    "formalization/ueot-core/UEOT/V3/InformationZeroTV.lean": "62bdcf1960e9ed05efd01760b55850c483f055c21c12e6e0468ff0e0b11db2be",
+    "formalization/ueot-core/UEOT/V3/OmegaIntegrityMargin.lean": "0ec9a65e59527a30de2bb8aae68c494bf474e207967dec0e247a1020a59e4d72",
+    "formalization/ueot-core/UEOT/V3/PAlg01.lean": "f4238bfe5700e120bd3d10d363be31d3dd553e6f2090acffd5278a50a86adbb3",
+    "formalization/ueot-core/UEOT/V3/PathError.lean": "d561a56db79bbd5dd9d01673c5fa7970c7d31199356bd5169a416cd930d917ba",
+    "formalization/ueot-core/UEOT/V3/PredictionAE.lean": "75bb919a5e1c2c7b81cc36335a95400cb7d747c12a5c85f80c38e50affffa16f",
+    "formalization/ueot-core/UEOT/V3/PredictionDependent.lean": "54f2569cf7323471f9f4214a78df41ab53f276231f78645a810bba44e1172e92",
+    "formalization/ueot-core/UEOT/V3/PredictionUpdate.lean": "1b223a41bf9cf1c3bd2db1c7a91852974571481f7ad8e5ab1b190083cf64b9d0",
+    "formalization/ueot-core/UEOT/V3/PredictiveClassRecovery.lean": "6602226449d5f44373f4cfaa2824f8359b9094fc6ce46927f96e441230625964",
+    "formalization/ueot-core/UEOT/V3/ProcessInterface.lean": "f265d57a8c1963cdd293b5c6a5af2908ae2b4babb872568442bc351eec7a098c",
+    "formalization/ueot-core/UEOT/V3/QSDPerron.lean": "461db88dd1a1a548c9104b2c20b1f9e3fb2d844dd197b464d80d9c47db559776",
+    "formalization/ueot-core/UEOT/V3/StatisticalDefect.lean": "acf043effe89364adec73d1b2dae5a4d10504b10ac2cf984369a6baae69f1fe0",
+    "formalization/ueot-core/UEOT/V3/StructuredQuotient.lean": "9ee2629f0e891cdcba727d8c4e95da61f30c07068f55f99a164b78337a827a5b",
+    "formalization/ueot-core/UEOT/V3/TVSpan.lean": "3394ed2c1f7d1ea677a2f44b9eae05e5f17c13d138d29fc5b8917314d4b3b4e3",
+    "formalization/ueot-core/UEOT/V3/Threshold.lean": "ea2580358ab0400b1089e79db548e347f223cbd10398d3ac034880b38a5f6170",
+    "formalization/ueot-core/UEOT/V3/TotalVariation.lean": "f048fa2b68ca691f326395f940a29b6f8b50822910b6d0a9dda43700caf1dbe6",
+    "formalization/ueot-core/UEOT/V3/TransportDefect.lean": "885d717e586a6fd9d057e3d8fdfeb4ca8a07c25ddec2b51b382fca887726f7aa",
+    "formalization/ueot-core/UEOT/V3/VariationBridge.lean": "5a435f0703f066fb174069f8b95c1980a4eac020a4d0c6c199517adfb024bcac",
+    "formalization/ueot-core/UEOT/V3/ViabilityKernel.lean": "d18d51f277cd07ce4ca3ceeeef13d3bf78ef68ca8519f44ea9e76b981015e0ef",
+    "formalization/ueot-core/UEOT/V3/ViabilityPath.lean": "71737ea8c497838def2aac8fab5d905738b582c1ba7028f17545a78c98f4b99a",
+    "formalization/ueot-core/UEOT/V3/ViabilityStrategy.lean": "869464115bf62f40613d943c18e87579a942e3602e6e222a04b14b44d5ff8167",
+    "formalization/ueot-core/UEOT/V3/ViabilityTrajectory.lean": "413d882183ef6dcf6508782dc29d68ec5905ee0fd78843dc807e28265073aafd",
+    "formalization/ueot-qm/UEOTQM.lean": "f10da7f2514a57a32da1ca2835e8bf061578e8da4fa011675fc0476a4a5094f5",
+    "formalization/ueot-qm/UEOTQM/ActionRecordBudget.lean": "fdd7799f573a5890db3173373b3f5ac693c29e968253420c30296b3e752e807a",
+    "formalization/ueot-qm/UEOTQM/Adaptive.lean": "b5b9b717324c4d04df169e57c552e976b467609eff48fabea6db676f7f7ecad8",
+    "formalization/ueot-qm/UEOTQM/Basic.lean": "db38c8dc2b873d5c784460146badcca889a37f2daf23c73bfaadce67eaf0d16e",
+    "formalization/ueot-qm/UEOTQM/BinaryDiscrimination.lean": "4bb0a04267fe3562f2851580bbe708c03bcc1b199606d77aac3b80be23c8b01f",
+    "formalization/ueot-qm/UEOTQM/Cesaro.lean": "64bc01d0f1ac484272aa8753be7c32bae6808cf26b0b9977ed1fd3cf1e5fc71b",
+    "formalization/ueot-qm/UEOTQM/ClassicalQuantumMemory.lean": "200996515d4a4cfdf066b844e8d4904ed52f380f876feca162d6dc6f1f26cf80",
+    "formalization/ueot-qm/UEOTQM/ClassicalSector.lean": "fed2036fce7ca658a74b7457316f6950727924c0f8abc0931a5d5f7ffe33bbb5",
+    "formalization/ueot-qm/UEOTQM/ComplexLocalTomography.lean": "48b9867d67635ca9a33d8cb89a43f38c8bec1369111c1a00960675dad8e91d4d",
+    "formalization/ueot-qm/UEOTQM/CorePurificationBoundary.lean": "53d957159fa6cf743c4e146e7d146385af81b7ec9c5a12204f90e488d870bce4",
+    "formalization/ueot-qm/UEOTQM/Effects.lean": "3346f36a3d467cb7b52d346dfafa4e49828e39a3ee02e29ac12e6783473eef23",
+    "formalization/ueot-qm/UEOTQM/Exact.lean": "1160e084a3761179cf2a2fb8df9246d263088ecb28f54d6d5fe1a86f179eb915",
+    "formalization/ueot-qm/UEOTQM/ExactCertificate.lean": "f6d6be579ccd9653ba373738408dd48f9220dc26fd733521d862374e0b8a6406",
+    "formalization/ueot-qm/UEOTQM/FiniteCoordinates.lean": "cd42c574bf962b10c4f796c03bcf49d4fb61184b7667512e3ec82440a9bc3705",
+    "formalization/ueot-qm/UEOTQM/HistoryChannels.lean": "04864b526fabe51d60efd776355fa33086781f30e6956698732edacf78571b5c",
+    "formalization/ueot-qm/UEOTQM/Instrument.lean": "aa63084bec63476ffd73a54f1c8b53fab406a8fd15cc678bd2d34d30a5820b80",
+    "formalization/ueot-qm/UEOTQM/Mixture.lean": "520d432d9d055b3260c2f90ea8ad68f93d14d4acae51e32faa28f49bdd3d601a",
+    "formalization/ueot-qm/UEOTQM/Observables.lean": "f3067163eff01e90e06467e3505d895979bf09ceec494046e791cd293189bd42",
+    "formalization/ueot-qm/UEOTQM/Operational.lean": "0bae3c96b1facca3f51fe9189a6e05efeb1b532c29cb5854d860f76878162012",
+    "formalization/ueot-qm/UEOTQM/OperationalEquivalence.lean": "99fd7ecfa58322321269c7504b27923f36e5c7f36fadad6a938b640c78c14f37",
+    "formalization/ueot-qm/UEOTQM/OperationalSystems.lean": "cb764474361fa833390fbe33e3d1b363a05c78639e0819d5d5de4648c1b5b55e",
+    "formalization/ueot-qm/UEOTQM/PureStateCharacterization.lean": "8a718405dd06ebd980cf232237f4ffd63a0e0cb20384c7739e361914384f31d8",
+    "formalization/ueot-qm/UEOTQM/PurificationDimension.lean": "92d030b3fb87e52e35dcf44e620a570eac626ddcc2d7d529656fc93139a98afd",
+    "formalization/ueot-qm/UEOTQM/PurificationIsometry.lean": "3f3d2caee6a37086fd3fa048174578ebc2034ea82e46067d3be33e020777d362",
+    "formalization/ueot-qm/UEOTQM/PurificationUniqueness.lean": "680e8e42f6a25a5540dd485cf2c00a5a4e937c1cc639aa8d5340ecc3fd483463",
+    "formalization/ueot-qm/UEOTQM/QuantumActionCounterexamples.lean": "b20b8825bad0658f5db59e631205ac297bc18057463ffd7b1d6d87537407639b",
+    "formalization/ueot-qm/UEOTQM/QuantumActionPauliWitness.lean": "07851d932132f2ce5fb176dcae7fb6bfdff4a3503d278c7fdee6a547765c452e",
+    "formalization/ueot-qm/UEOTQM/QuantumActionRealizability.lean": "6086178fad01777c8fd06549515aabc415f648697f9f68097f9c4ff8aec1da66",
+    "formalization/ueot-qm/UEOTQM/QuantumDoob.lean": "345f06df8a70a0c38637cc90d1ee6f7d7c09a8e5715bd9a05943b0bc05bd8350",
+    "formalization/ueot-qm/UEOTQM/QuantumDoobDynamics.lean": "ee227ea4dcba6e9f2dafe33df614c382610f7468596d923489fc63e76a1556e3",
+    "formalization/ueot-qm/UEOTQM/QuantumDoobModel.lean": "cf5df67eb83e3c14e20699947a1c2e922af53a19c6483d40b788e234c9e8b5f3",
+    "formalization/ueot-qm/UEOTQM/QuantumFiniteWindow.lean": "9f661d832f434c0744efb6f5ecfeb236f1947e998ac01eb216c31ec555c5aec0",
+    "formalization/ueot-qm/UEOTQM/QuantumFiniteWindowSpectral.lean": "aa0f7841377455932e4c4cc2ad42a2804a1715e56c78093b20c01bb4e207b102",
+    "formalization/ueot-qm/UEOTQM/QuantumInitializationCost.lean": "ca717f614ce478dac9064f91ce63cd1066d1b6aee115546d2a4ea9f0a3133aa7",
+    "formalization/ueot-qm/UEOTQM/QuantumPostselectionError.lean": "9480cdc52b772e690b247999681cf58c0af5b00ddcee8ee28e817434e3b8acd3",
+    "formalization/ueot-qm/UEOTQM/QuantumPurification.lean": "fb0692ed93c14aa7182cb09b3e205060f493f005672d16a69fc6e8da59ca5b6d",
+    "formalization/ueot-qm/UEOTQM/QuantumReachableActionRealizability.lean": "653e658e0a5651654a0d9c69093c9a293c1a9b8b4ee01c6c72db3102e53c2c70",
+    "formalization/ueot-qm/UEOTQM/QuantumSeparation.lean": "c554f5c886f1c3f22c5ea543e0e818548697d88532419659b5aecb5095157357",
+    "formalization/ueot-qm/UEOTQM/QuantumTraceDistance.lean": "c8b3e48862f4a62b6e68e8419f611f8e9967ba17256fb2d1d899e9cc7c814aa0",
+    "formalization/ueot-qm/UEOTQM/Ragged.lean": "a3435d73cd766b55e6f504452de9fe3193ec2266e6cae3772f28cfb4158a718f",
+    "formalization/ueot-qm/UEOTQM/RealLocalTomography.lean": "76dfea1aa3ad7f16e699a8529bde5f22120badac9a1db60f0265eaef4eeddc9e",
+    "formalization/ueot-qm/UEOTQM/RecordProbability.lean": "c9dca7b03588f7359fbbea934c1c9b074af489f93ca061bed8a82239960edcf2",
+    "formalization/ueot-qm/UEOTQM/RectangularChannels.lean": "b097d5cb5eb5b141d051d8f65c7aff31c0d3a1b2f8d688548d8edf74f6a7a9a7",
+    "formalization/ueot-qm/UEOTQM/Selector.lean": "0aa261fcd171e8985889067bb348abe6d84e486be1b918a3cdd6d3e951fdcbca",
+    "formalization/ueot-qm/UEOTQM/Spectrum.lean": "1846371fda564385c799282bd5f2afcd7637ac3b3dcffb2b21e98734266c2b6d",
+    "formalization/ueot-qm/UEOTQM/Stability.lean": "de253ab45a4e45e2c8457dcbf3ad0c5cfd553e13a3a1dbc791f7d59eb2b5d389",
+    "formalization/ueot-qm/UEOTQM/StoppingProtocols.lean": "e6ad61c9c6eaec5b4d4a4626e78224eebcdd8806f5341f53ea9e08ccb86e4a1f",
+    "formalization/ueot-qm/UEOTQM/StoppingRecordBudget.lean": "e0ebf9cbac48b2ba01b30e23c43ca9628e1d44f5692ae013aedda514d6266d68",
+    "formalization/ueot-qm/UEOTQM/Survival.lean": "60147ec170cda07d39a225122dca064ec576fed41ebab3d630940eba48f82b1f",
+    "formalization/ueot-qm/UEOTQM/Transport.lean": "e117c7904b6f8c755d5a35c25d2398fdbf727e4d90987096093e2b6423287f84",
+    "formalization/ueot-qm/UEOTQM/Weighted.lean": "2910a80acb1a73c32bae7898773845b7db9cad7ea74b102ad6e51a473dc86b33",
+    "formalization/ueot-qm/lake-manifest.json": "c4c658c455aaca9504eee020c16cb2fcec375b1c5d9a014adcf8f3f40897d4ff",
+    "formalization/ueot-qm/lakefile.lean": "ad870bfd6d91841f30d37e90a2738a69b35696f43709dbf788189874b1c6b805",
+    "formalization/ueot-qm/lean-toolchain": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+    "formalization/ueot-qm/scripts/AxiomAudit.lean": "af802b1620298dfff910133229516a84b3ee0b132632efdc6c460a9beeb5a911",
+    "formalization/ueot-qm/scripts/OperationalEquivalenceAxiomAudit.lean": "9aedc243baa075ca80d1ff46748edc026e17c37d3d927549fae22fc7805c18ba",
+    "formalization/ueot-qm/scripts/check_axioms.py": "5ee27622fdf8200f34945abf8354ad5ba3598b0adfba4b206d9e9368cf9aec4a",
+    "formalization/ueot-qm/scripts/check_dependencies.py": "7c44ebafdda00711137faeb1b09cdb26694a82d83f0ea1173de17a370de5f996",
+    "formalization/ueot-qm/scripts/record_source.py": "23f24108bcdc8cb5d9d4640b203865a9922bb79fbc56ae54ab35434e54056bd6",
+    "formalization/ueot-qm/scripts/verify_finite_conditioning.py": "a99cee0e75db487d8448d0750501d9f44dc403c841a2130e1fa09de089102852",
+    "formalization/ueot-qm/scripts/verify_operational_equivalence.py": "3bfce51374d69db1e53e626e3cf3435997577b0d945b1e3a71fd55bed04c32b0",
+    "physics/qm/kernel/evidence/v31.11/runtime/execution_receipt.json": "44c4d1a1e06144c1b8f7932fc576cba5e17e0fdf669a0198f480e390c5547523",
+    "physics/qm/operational_micro_robust/DATA_AND_COST_CONTRACT.json": "4f85f4d91e8d8e5f6af3caeb89429d33efc6ae60517bafef04e6575182f93200",
+    "physics/qm/operational_micro_robust/check_micro_truncation.py": "0cad730f5e53627e8247fad3b07f8474d6a898c0c1a5a455ca440257fd89ba6c",
+    "physics/qm/operational_micro_robust/check_operational_controls.py": "973d0546fc0741af30ebf06acdf1226634d454994ccbe3ea55b91c6294ff60e5",
+    "physics/qm/operational_micro_robust/exact_checker.py": "3f838e85d76bf73426b540066446a13ba59363d0b414ce50758843b364b55d2e",
+    "physics/qm/operational_micro_robust/frozen_model.json": "33fff2dd4298816553ce0009c022c314600c644df2167355d6c3f366721572ab",
+    "physics/qm/operational_micro_robust/review_c_exact.py": "658e130c5646667dc080e355e7a17417d306d0ff3a377038c3c6052aeb07383c",
+    "physics/qm/operational_micro_robust/robust_certificate.py": "a6fc896288e1716a1048cf26c685b25aa6152e2febeaf10ee8c6c94d8f8353eb",
+    "physics/qm/operational_micro_robust/run_verification.py": "6baf8614aca24ca0170ecb606b8e33c84cd5c1631a38c4dc81b0be65fafa6b37",
+    "physics/qm/operational_micro_robust/synthetic_calibration.py": "90cf1a54057a5885bc4a3407f2e9773003e3730e583eaedce921e12affa51e76",
+    "physics/qm/operational_micro_robust/verify_integration.py": "5e8d79c6184162526e23223644fa8aab2bf3c8238c178d52eeb4bb19e933c361",
+    "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/SHARED_MODEL.md": "fea750cf4c6002c5a6aa306a8b698b91be71d80ede5cb44a0eb1341952ded027",
+    "physics/qm/audits/OPERATIONAL_MICRO_ROBUST_v31.11/C_ROBUST_CALIBRATION.md": "0e253c0fd01c7f5b43587cfffba48c52dcbc734e8f68a59a2ff54eed640051ba",
+    "physics/qm/kernel/evidence/v31.13/source-manifest.json": "fbd4790ed6e30220096ae8255befdf2e22f7c9587ebca812a487910240e245a2",
+    ".github/workflows/ueot-qm.yml": "8f227e127341ac1c12097af91a11f21607e6cf762b10baff5561ef19615d39a8",
+    "physics/qm/ROADMAP.md": "fabffc630190f368fd0fd06564c676556a5725fd7748da541974976181335722",
+    "physics/qm/UEOT_QM_EXECUTION_v31.13.md": "a552554842d7f9839d8a6406f3e0871b413e23a8bb8f0f567d60031ec8cd98e3",
+    "physics/qm/UEOT_QM_KERNEL_v31.13.md": "2f554b8793e85e44f742e059cdf664125d6621de52884955b8fe496b4c512639",
+    "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/A_FULL_CQ_STABILITY.md": "87342a67730024bf49dc792acef79cd453ef71a36650b11db0306c8972343ee5",
+    "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/B_SIMULTANEOUS_GALERKIN.md": "ae6891986240f4c1247595ac68513d1eb8893c6722849311e004de79583ab530",
+    "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/C_CALIBRATION_AND_CERTIFICATE.md": "c4a1c185f47c9b612dde84e52a73ad33240a581b1a99c5872e8d7ebaf0967d2c",
+    "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/ROOT_INTEGRATION_REVIEW.md": "ffcb55e435fe04a813c1415adba2215b5f4546ad815987679b9a9aadf1b87a38",
+    "physics/qm/book/PHYSICS_RESULT_MAPPING.md": "975ff11bbf1597632c168af857d47114eaee5fca86a99a47a290e3729653d193",
+    "physics/qm/book/PUBLICATION_RIGHTS.md": "dffc931f15484ee529f0dbc0fabed2b3a3549370ae6d3dd44d2c310e976154d2",
+    "physics/qm/book/SCIENTIFIC_EDITORIAL_CHANGELOG.md": "cd347f33ea5cbe8cf221052ff903a77ba1b4b18441dec9a02562fb3469684d06",
+    "physics/qm/book/UEOT_PHYSICS.en.pdf": "ec9ff28131a7c1c3feb60a7314b7ff5b5c55d558ba01db0616c7e613b2cb6f3d",
+    "physics/qm/book/UEOT_PHYSICS.en.tex": "ef3cfc9bb8909dab1e7dfea6b51962e526aafd45093ff08529ba8eeda0d04bce",
+    "physics/qm/book/UEOT_PHYSICS.pdf": "a03e1b236ee55e851b4f46192d6f81b4fac753b47d84fb30f496578a934edfec",
+    "physics/qm/book/UEOT_PHYSICS.tex": "a83c0dfa6e6c6b3465b539740cdb70cc40f8c77b08da0311bfb552050a8a8bab",
+    "physics/qm/book/evidence/v3.10/en/pdf-build.json": "26b19db56a864fd85892837a20a085b07ba0a33a25224fc75f6c7cefbf10b797",
+    "physics/qm/book/evidence/v3.10/visual-review.json": "0fe7c8fc07563cdc974ea55e5d19c3ae44abe74ca7e402659c602a83ac678d4c",
+    "physics/qm/book/evidence/v3.10/zh/pdf-build.json": "6d35b3b2fe64cfac240637266b7b8ba2ad8122d1c42fe9a4030184adfec96ade",
+    "physics/qm/book/review/EMPIRICAL_AND_FALSIFIABILITY_AUDIT.md": "b79a2eca7b3a6976f249a0392db22ceea4b5e41ba56f806996a63147b5bdb4dd",
+    "physics/qm/book/review/FINAL_THEORETICAL_RED_TEAM_REVIEW.md": "a942e5185e60d1fb79382da1c038461c1016b0fdabb8cb6b82dae32902cb73cb",
+    "physics/qm/book/review/PHYSICAL_DERIVATION_AUDIT.md": "2f64d504ed54b049bfc14df51366925908136a297d9a02be9abd18fde5389030",
+    "physics/qm/book/review/PRIOR_ART_AND_EXPERIMENTAL_STATUS.md": "7e5276594dcab856a9d6abca5f702d45e7e29e17d1fa6e1f7e54eae77a15d595",
+    "physics/qm/status/CURRENT.json": "e64ab2b638a8d1cd045dfdf5da27298ffd16a353f89ff0fe5e5122bea5ad32cd",
+    "physics/qm/book/build/build_pdf.py": "55a9176e843e43bcbfbb564914e748a36a4e5b1bb621c55ddd264c99a697b38b",
+    "physics/qm/book/build/header.tex": "9d6cbcd0e2bede6ce44df56ae7985db53dea630c0b6e51527922634c6b6f6fd3",
+    "physics/qm/book/build/tables.lua": "e0d74c898fc1997142da52fc5a180fcc0742994ebdfd3d51afa73d9206e003d6",
+    "physics/qm/book/evidence/v3.10/zh/xelatex-pass-1.log": "d55ba091f360b4a772fd5335b108fe252cca3d6dd15fdf263d82f5b89dc4ca75",
+    "physics/qm/book/evidence/v3.10/zh/xelatex-pass-2.log": "41a748def6fdd543e97ebc7229d61ecac67a7a2e40fafd05b95f949232e34b7b",
+    "physics/qm/book/evidence/v3.10/zh/xelatex-pass-3.log": "41a748def6fdd543e97ebc7229d61ecac67a7a2e40fafd05b95f949232e34b7b",
+    "physics/qm/book/build/header.en.tex": "bb7005d24154b9fd12c2f1e91dee93088a04dd31c8e6b480ab241ad9b6f9a56d",
+    "physics/qm/book/evidence/v3.10/en/xelatex-pass-1.log": "6499af1b60898cbec9902ea8ee9382fa3d5761f02dd4831f37421bd62e9de4cf",
+    "physics/qm/book/evidence/v3.10/en/xelatex-pass-2.log": "13c7e706975fdc701fd8b5259e8320f8c4c27f1769acb90d77f35ebe611559dc",
+    "physics/qm/book/evidence/v3.10/en/xelatex-pass-3.log": "13c7e706975fdc701fd8b5259e8320f8c4c27f1769acb90d77f35ebe611559dc",
+    "physics/qm/book/evidence/v3.10/visual/zh-original-review.json": "024672144d2ddd9d8439b3c4c37df9cdd66d0bd0b746f65ca85f7a207ced4586",
+    "physics/qm/book/evidence/v3.10/visual/zh-viewed-pages.zip": "9a8bea256a1d72b34aea3f8984e3de078e21bbf262abf0b39b18ffb63c8d5178",
+    "physics/qm/book/evidence/v3.10/visual/en-original-review.json": "73c4a8ffd7928cc12806c42e23dea5677687c0979132d68c2b26a26273a02325",
+    "physics/qm/book/evidence/v3.10/attempts/en-v4-toc-spacing/B_ENGLISH_PDF_REVIEW_v4.json": "8df9345a3018fd212c422b55e5928f57b049be1008150a948bedb4655fc2a86e",
+    "physics/qm/book/evidence/v3.10/visual/en-viewed-pages.zip": "1a8916b59bae6fa8da40af80d7ef9cc3e6230fc111f66d622a84440515adf325",
+    "physics/qm/book/evidence/v3.10/local-acceptance.json": "a702a99b233046782a9c09d8042192805c2ae840457f0bc66223327aebb5995d",
+    "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/reviewer_originals/a/A_FINAL_INTEGRATION_REVIEW.json": "e2a7728a420ec5a7c638439416c621234377821e7b7461204305e5cb97bafc74",
+    "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/reviewer_originals/a/A_FINAL_INTERVAL_OUTPUT_CHECK.json": "18e698e447397cd9903a1eb1ddc64a46e0d9565e1cda40c641285d19df18b0c7",
+    "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/reviewer_originals/b/root_interval_prediction_diagnostic.json": "2c496926e0f48e6f717d594fbf67744980b7b25bc394f68f993c981942d13f59",
+    "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/reviewer_originals/b/B_REVIEW_OF_C.md": "d621b980861119f05aa0b93b93d5809b1c7ba1aebb78d7a84d2cf721a1ea1bba",
+    "physics/qm/audits/SIMULTANEOUS_CUTOFF_v31.13/reviewer_originals/c/C_REVIEW_OF_A.md": "a70bd27625fa8f97a989b2500acde0f52fad58af7228d070b2bbb585cc4be228"
+  },
+  "limits": [
+    "Identity and scope checks do not prove universal mathematical truth",
+    "No new Lean compiler or axiom-audit execution",
+    "Actual scoped visual receipts are checked, not generated or substituted by this program",
+    "No actual device verification, measured resource advantage or remote publication inferred",
+    "Exact finite-map full-domain theorem and one-input numerical output remain separate"
+  ],
+  "execution_context": {
+    "provider": "local_python_process",
+    "authority": "Observed execution environment; checker authorship is not the executor identity.",
+    "observed_git_head": "cb17211653fde30aa50e0e9848798a6a5b3b3f12",
+    "worktree_has_changes": true
+  },
+  "checker_author": "native research agent C",
+  "checker_sha256": "ddf62329461ef2e7134f74469ad1cbc677b78227df517cff1a916a8ea14a3bfd"
+}

@@ -1,0 +1,624 @@
+{
+  "schema": "ueot-qm.independent-simultaneous-calibration-check/1",
+  "status": "PASS",
+  "executed_at_utc": "2026-11-12T03:34:36.715910+00:00",
+  "executor": "local_python_process",
+  "execution_context": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "github_actions": null,
+    "github_run_id": null,
+    "argv": [
+      "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/simultaneous_cutoff/independent_certificate_check.py",
+      "--plan",
+      "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/simultaneous_cutoff/FROZEN_CERTIFICATE_PLAN.json",
+      "--raw-dir",
+      "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/kernel/evidence/v31.13/runtime/synthetic",
+      "--report",
+      "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/kernel/evidence/v31.13/runtime/calibration.json",
+      "--shared-model",
+      "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/simultaneous_cutoff/frozen_model.json",
+      "--executor",
+      "local_python_process",
+      "--output",
+      "/workspace/scratch/2331c99c0713/ueot-physics/physics/qm/kernel/evidence/v31.13/runtime/independent-calibration.json"
+    ]
+  },
+  "consumed_sha256": {
+    "plan": "a27a61ea157d9ae958213a5377d3a93295022a8a9d28f68d022f86f9fa269108",
+    "analysis": "67bb7cfd9ccc35a80d6ac6dc128e4b16c22997860d102fb9cb9ff0bc431fc5ab",
+    "checker": "f8f430434dbed0dcd1c0912c2902c0c9cd103e49fceef69231d5f8ed31d67d06",
+    "shared_model": "3d344e91fdc59cb333c21623b5b62528c9d7a0edea2145148b6d484a61eca10a"
+  },
+  "raw_sha256": {
+    "q_calibration_flags.txt": "f1ce495013890e45af147fb1ffc7f7d539be92bef5a0dbf5b162e3299ed00475",
+    "drive_calibration_bits.txt": "5375721c753d55d7b4d336cfb380b346db48c8883725b89ed82514c5f5d2317a",
+    "source_holdout_records.txt": "187e75d943435644d49e4ee187ad4810ab4e21155af923d91a7ae21613642be8",
+    "compiled_holdout_records.txt": "82bcce684c747825b67d9ae7b94d7cbe80c2bf7cc662b08fe79ebd6a1f7856d6",
+    "drive_holdout_bits.txt": "9b08ade1d93acf148b3148fe484b834e31d6d48358792b62fda693a33ef0be54",
+    "drive_holdout_drift_bits.txt": "7bec6182fb6b9c96ad7b349877f9a468800f29b9544cd1431325bfff31053afb"
+  },
+  "passed_checks": 112,
+  "checks": [
+    {
+      "check": "frozen main scientific baseline",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "frozen design",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "frozen mean and cutoffs",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "padding identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "frozen precision and conditional numerical reserve",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "frozen calibration sample sizes and half-widths",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "frozen legal policy",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "all terminal source records",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "complete raw inventory",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "plan hash bound",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "consumed certify_from_records.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "consumed certified_intervals.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "raw hash q_calibration_flags.txt",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "raw hash drive_calibration_bits.txt",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "raw hash source_holdout_records.txt",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "raw hash compiled_holdout_records.txt",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "raw hash drive_holdout_bits.txt",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "raw hash drive_holdout_drift_bits.txt",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "complete ordered stream q_calibration_flags.txt",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "complete ordered stream drive_calibration_bits.txt",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "complete ordered stream drive_holdout_bits.txt",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "complete ordered stream drive_holdout_drift_bits.txt",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "complete terminal stream source_holdout_records.txt",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "complete terminal stream compiled_holdout_records.txt",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "actual calibration counts",
+      "passed": true,
+      "detail": {
+        "q_trials": 120000,
+        "q_failures": 30036,
+        "drive_trials": 1000000,
+        "momentum_nonpositive": 547267
+      }
+    },
+    {
+      "check": "calibration estimators",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "untrimmed data confidence intervals",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "independent lower inverse endpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "independent upper inverse endpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "independent nominal inverse bracket",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "center inversion width",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "nominal determined only by observed frequency and frozen grid",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "outer Delta includes grid and inversion enclosure",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "entire set and grid nominal inside design",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "correct Hoeffding exponent scaling",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "independent q exponential upper bound",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "independent drive exponential upper bound",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "joint coverage by union bound, without q/x independence requirement",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "sharp complete physical-filter radical bracket",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "physical compiler bound includes failure once",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "exact-form parameter error bracket",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "independent finite-Duhamel radical enclosure",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "entire declared-design Galerkin enclosure",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "same-metric triangle arithmetic",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "exact finite nominal precision certified",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "numerical reserve is conditional and fits",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "full source attempt success includes physical filter",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "normalization and actual force-call expectation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "holdout frozen protocol and allowance",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "two-pulse predicted interval independent enclosure",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "source holdout includes all seven records",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "source actual count f",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "source shared-q outer response f",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "source frozen decision f",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "source actual count 0f",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "source shared-q outer response 0f",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "source frozen decision 0f",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "source actual count 1f",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "source shared-q outer response 1f",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "source frozen decision 1f",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "source actual count 00",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "source shared-q outer response 00",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "source frozen decision 00",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "source actual count 01",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "source shared-q outer response 01",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "source frozen decision 01",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "source actual count 10",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "source shared-q outer response 10",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "source frozen decision 10",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "source actual count 11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "source shared-q outer response 11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "source frozen decision 11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "source holdout not rejected",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "compiled holdout includes all seven records",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "compiled actual count f",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "compiled predicted law f",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "compiled frozen decision f",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "compiled actual count 0f",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "compiled predicted law 0f",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "compiled frozen decision 0f",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "compiled actual count 1f",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "compiled predicted law 1f",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "compiled frozen decision 1f",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "compiled actual count 00",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "compiled predicted law 00",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "compiled frozen decision 00",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "compiled actual count 01",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "compiled predicted law 01",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "compiled frozen decision 01",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "compiled actual count 10",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "compiled predicted law 10",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "compiled frozen decision 10",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "compiled actual count 11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "compiled predicted law 11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "compiled frozen decision 11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "compiled holdout not rejected",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "two-pulse holdout actual count and decision",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "holdout union bound applies only to fifteen declared cells",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "null false rejection includes calibration failure",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "nonshared pulse alternative uses same prediction and threshold",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "actual negative control rejected",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "wider interval insufficient without claiming impossibility",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "single-dose detector-offset symmetry",
+      "passed": true,
+      "detail": "For the single-dose p1 only, (x,b)->(x+c,b+sqrt(2)c) preserves the normal argument. A shared fixed b is identifiable using both p1 and p2."
+    },
+    {
+      "check": "two-dose shared bias breaks that symmetry",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "zero state tail and zero finite residual do not bound dynamics",
+      "passed": true,
+      "detail": "At K=N=0, input |g,0> has zero initial tail and H_K=0, but exact overlap at x=1/10 is exp(-x^2/2), so D=sqrt(1-exp(-x^2))>0."
+    },
+    {
+      "check": "repeating one latent bit has no iid concentration",
+      "passed": true,
+      "detail": "An n-times-repeated fair bit deviates from its mean by 1/2 with probability one."
+    },
+    {
+      "check": "no actual empirical or machine-proof upgrade",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "calibration and holdout resources retained",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "shared scientific baseline",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "shared cutoffs and design",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "shared calibration",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "shared precision",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "independent_derived": {
+    "nominal_x": "2969/50000",
+    "Delta_x": "67775102897/26843545600000",
+    "exact_finite_upper": "562777064802470612168513905024961693899161/13421772800000000000000000000000000000000000",
+    "conditional_with_numerical_reserve": "562777199020198612168513905024961693899161/13421772800000000000000000000000000000000000",
+    "calibration_failure_upper": "956491434155076506757196725852839669430677552289421435465243452762963435535141688475350445496196361992929241210937500/169939308222353034928007195625941933217022826786582351051192921054983758917142821885940776166335203039752376329838766713",
+    "design_uniform_galerkin_interval": [
+      "5677149980230074495339588228575989024668902369201874446749407187/125000000000000000000000000000000000000000000000000000000000000000000",
+      "1419287495057518623834897057143997256167225592300468611687352031/31250000000000000000000000000000000000000000000000000000000000000000"
+    ]
+  },
+  "evidence_scope": "Independent integer/rational computation and raw-record accounting; universal physics remains a paper theorem, and all records are synthetic.",
+  "new_lean_execution": false,
+  "new_hardware_data": false,
+  "numerical_output_scope": "A separate numerical output certificate is required; this checker does not certify a floating matrix exponential."
+}

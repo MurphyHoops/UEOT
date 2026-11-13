@@ -36,7 +36,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\small UEOT PHYSICS}
-\fancyhead[R]{\small Bilingual revision 3.9}
+\fancyhead[R]{\small Bilingual revision 3.10}
 \fancyfoot[C]{\small\thepage}
 \setlength{\headheight}{16pt}
 \renewcommand{\headrulewidth}{0.3pt}
@@ -50,6 +50,9 @@
 \allowdisplaybreaks[2]
 \renewcommand{\contentsname}{Contents}
 \makeatletter
+% Reserve a real gap before a chapter page number. A zero-minimum \hfil
+% can otherwise place a long final word directly against the number.
+\patchcmd{\l@chapter}{#1\nobreak\hfil}{#1\nobreak\hspace{1em}\hfil}{}{\PackageError{UEOT}{Chapter TOC spacing patch failed}{Inspect the book class before publishing.}}
 \renewcommand{\maketitle}{
   \begin{titlepage}
   \thispagestyle{empty}
@@ -64,11 +67,11 @@
   \vspace{10mm}
   {\color{teal}\rule{\textwidth}{1pt}\par}
   \vspace{7mm}
-  {\large Third edition\quad Bilingual revision 3.9\par}
+  {\large Third edition\quad Bilingual revision 3.10\par}
   \vspace{6mm}
   {Degui Qian\par}
   \vspace{5mm}
-  {69 chapters\quad 6 appendices\quad UEOT-QM Kernel 1.12\par}
+  {70 chapters\quad 6 appendices\quad UEOT-QM Kernel 1.13\par}
   \vfill
   {Objects and protocols\quad Quantum operations and fields\par}
   \vspace{3mm}

@@ -1,6 +1,25 @@
 # 《UEOT物理学》 / UEOT Physics
 
-## 3.9 分段增长与受控省略 / Separated growth and controlled omission
+## 3.10 同时动力学与校准后的完整预测 / Simultaneous dynamics and calibrated complete prediction
+
+当前连续中英文主文均为 **第0–69章、附录A–F、194项稳定结果**，科学增量 **v31.13 / Kernel 1.13**。研究入场 main 为 `cb17211653fde30aa50e0e9848798a6a5b3b3f12`。旧188项结果对象、111项主张及原有科学章节保持原始身份，第69章追加六项结果。当前发布和实际远端执行以 [CURRENT](../status/CURRENT.json) 为准。
+
+本轮闭合的是选定同时动力学到同一完整干预过程的受控有限预测：从自伴 Hamiltonian 导出真实 Galerkin 边界缺陷和有限 Duhamel 余项，接入完整记录稳定性、联合校准、物理过滤和数值输出。有限压缩不自动继承无限模型的正交分量不变量；该反例确定了先比较真实参数、再支付截断误差的正确顺序。
+
+The exact finite-map certificate is below **0.041930158795** against the frozen **0.05** target. A separately executed integer-interval output for one specified entangled input adds less than the reserved `1e-8`, giving a complete bound below **0.041930168795**. The all-input theorem and this one-input numerical certificate have distinct scopes. The calibrated pulse is inferred from explicit synthetic momentum records, with a separate two-dose holdout and a deliberately mismatched-drive rejection control. No actual device data were obtained.
+
+| Current responsibility | Source |
+|---|---|
+| Scientific model, six results and composed error | [v31.13 report](../UEOT_QM_KERNEL_v31.13.md) |
+| Precise premises, universal scope and paper-only status | [chapter69 bindings](../audits/SIMULTANEOUS_CUTOFF_v31.13/chapter69_formal_bindings.json) |
+| Nine actual commands, raw streams and output identities | [runtime receipt](../kernel/evidence/v31.13/runtime/execution_receipt.json) |
+| 158 unchanged proof inputs and historical execution reuse | [proof reuse](../kernel/evidence/v31.13/proof-reuse.json) |
+| Bilingual builds, preservation and scoped visual review | [edition3.10 evidence](evidence/v3.10/) |
+| Full quantum, field, particle and gravity responsibilities | [continuous roadmap](../ROADMAP.md) |
+
+Exactly three native AI research roles performed independent implementation and cross-review; this is not external human peer review. Complex quantum structure, the effective controls, ideal physical filter and calibration/readout family remain explicit independent inputs. The finite numerical predictor is not assumed to be an available physical gate. There are no new Lean declarations, hardware validation, measured cost advantage or empirical closure. The following edition sections retain their historical scope.
+
+## 历史3.9：分段增长与受控省略 / Separated growth and controlled omission
 
 当前连续中英文主文均有 **第0–68章、附录A–F、188项稳定结果**，对应科学增量 **v31.12 / Kernel 1.12**。本轮从已合入v31.11的 main `aea2fceef3c62cc8dc749b6cbb1b40a7d89df80d` 继续，完整保留旧182项结果对象及105项claim，新增第68章六项结果，并对第67.5节低谱过滤均值作一处准确勘误。v31.12初次恢复时未取得更早未上传的字节，因此当时重新推导与执行；本次续接找到了这份重建候选及其全部回执，按相同源码复用，没有改写更早执行身份。
 
