@@ -1,0 +1,20 @@
+--- B_FIRST_FROZEN_COMPARISON.md
++++ B_TASK_COMPLETION_AND_MATHEMATICAL_COMPARISON.md
+@@ -439,7 +439,7 @@
+ 其上侧结论可以准确写成
+ 
+ \[
+-\inf_{r>0}\{\lambda: Mr\le\lambda r\ \text{对全部 }M\in\mathcal M\}
++\inf\{\lambda\in\mathbb R:\exists r>0,\ \forall M\in\mathcal M,\ Mr\le\lambda r\}
+ =\widehat\rho(\mathcal M)
+ =\max_{M\in\mathcal M}\rho(M)
+ \]
+@@ -448,7 +448,7 @@
+ 
+ **逐项代入。** 取 \(E=E_1=\mathbb R^2\)、\(K=K_1=\mathbb R^2_+\)、\(B=I\)，让 \(F\) 的健康行在 \(\{k_cu,k_bu,0\}\) 内取值、损坏行在 \(\{k_cu,e_D,0\}\) 内取值。这两套有限集非空且紧，所有元素非负，独立选行构成 §6.2 的全部矩阵族。因而它确为 (3.3) 的实例；不是泛泛类比。
+ 
+-**行列约定。** 本文按作者稿 (3.2) 的 \(F^\mathsf T=(F_1,\ldots,F_N)\)、\(A=BF\) 及 Theorem 1 的实际行替换证明确定方向：\(F_j\) 是 \(F\) 的第 \(j\) 行所对应的协向量，\(B=I\) 时可直接代入 UEOT 行族。附近叙述与 Example 1 使用 independent-column 的用语，不能据此在共同正右势的等式中无说明地将 \(M\) 换成 \(M^\mathsf T\)。若人口用列向量 \(z\)，演化是 \(z'=M^\mathsf Tz\)，势仍为 \(r^\mathsf Tz\)，不等式仍来自 \(Mr\le\lambda r\)。JSR／最大谱半径的数值可经转置保持：长度 \(n\) 的全部产品与其反序转置逐一对应，转置不改变谱半径；这不等于任意共同右势表达式原封不动转置。[R5，作者版 p.8；本段独立类型对照]
++**行列约定。** 本文按作者稿 (3.2) 的 \(F^\mathsf T=(F_1,\ldots,F_N)\)、\(A=BF\) 及 Theorem 1 的实际行替换证明确定方向：\(F_j\) 是 \(F\) 的第 \(j\) 行所对应的协向量，\(B=I\) 时可直接代入 UEOT 行族。附近叙述与 Example 1 使用 independent-column 的用语，不能据此在共同正右势的等式中无说明地将 \(M\) 换成 \(M^\mathsf T\)。若人口用列向量 \(z\)，演化是 \(z'=M^\mathsf Tz\)，势仍为 \(r^\mathsf Tz\)，不等式仍来自 \(Mr\le\lambda r\)。JSR 的转置不变性可直接用欧氏诱导谱范数说明：长度 \(n\) 的全部产品与其反序转置逐一对应，且 \(\|P\|_2=\|P^\mathsf T\|_2\)，故各长度的最大范数及其根极限相同。最大单矩阵谱半径也因 \(\rho(M)=\rho(M^\mathsf T)\) 而不变。这不等于任意共同右势表达式原封不动转置。[R5，作者版 p.8；本段独立类型对照]
+ 
+ §6.3 的显式 \(r>0\) 证明上式左端 \(\le\rho_\ast\)，同时所选 \(M_\ast\) 满足 \(M_\ast r=\rho_\ast r\)，故 \(\max_M\rho(M)\ge\rho_\ast\)。相反全部行的 \(Mr\le\rho_\ast r\) 给各矩阵谱半径及所有产品的增长上界；因此
+ 
