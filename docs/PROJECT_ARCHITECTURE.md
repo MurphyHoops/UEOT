@@ -66,6 +66,14 @@ Authoritative responsibilities:
 
 A constitution statement is not automatically a mathematical theorem.
 
+The [2026-11-13 scope resolution](../council/resolutions/20261113-core-claim-scope-reconciliation.md)
+sets the current interpretation of protected terms and explicitly limits the
+strong formulations inherited from the early council/domain charters. Current
+model admission follows the relevant source contract, not a universal demand for
+self-regeneration, two-dimensional optimization or a three-stage lifecycle.
+The historical charters and memos retain their original text and dated authority;
+their old task labels do not override [current Core state](../core/status/CURRENT.md).
+
 ### 2.2 `core/`
 
 This is the domain-neutral theory registry and coordination layer. Full

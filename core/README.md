@@ -14,7 +14,15 @@ The maintained books and formal library contain the actual bridge statements,
 models and counterexamples. This registry does not require duplicate `bridges/`
 or `models/` trees merely to mirror those results.
 
-## Current Core state — 2026-11-11
+## Current Core state — 2026-11-13
+
+The [scope resolution](../council/resolutions/20261113-core-claim-scope-reconciliation.md)
+coordinates current philosophical commitments, conditional mathematical contracts
+and historical strong formulations. The
+[successor reference specification 1.0](./specifications/successor/README.md)
+provides 30 post-v3 contracts without replacing the frozen source. See the
+[audit closure record](../research/audits/core-closure-2026-11-13/README.md)
+for the finite corrections and the decision to stop automatic Core expansion.
 
 The frozen v3.0 inventory remains **106/106 FULL-GREEN**. Subsequent conditional
 contracts and the [same-source Core definitive edition](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_theory_closure_v1/README.md)

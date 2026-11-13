@@ -1,0 +1,188 @@
+{
+  "script_sha256": "6fceb9e50de56775fa300cfca4e6114b03e31d9a78b8c47f57606a3c00f40162",
+  "base_head": "cb17211653fde30aa50e0e9848798a6a5b3b3f12",
+  "case_count": 10,
+  "all_assertions_passed": true,
+  "matches_prior_results": true,
+  "fresh_lean_execution": false,
+  "scope": "exact rational countermodel replay; candidate prose compatibility requires separate review",
+  "results": {
+    "killed_kernel_and_conditioning": {
+      "kernel": [
+        [
+          "1/2"
+        ]
+      ],
+      "survival_n_10": "1/1024",
+      "conditioned_row": [
+        "1"
+      ],
+      "conditioned_action_admissible": false,
+      "limit_survival": "0 (since 0 < p < 1)"
+    },
+    "non_lumpable_observation": {
+      "observations": {
+        "a": 0,
+        "b": 0,
+        "c": 1
+      },
+      "transition": {
+        "a": "a",
+        "b": "c",
+        "c": "c"
+      },
+      "next_observation_from_a": 0,
+      "next_observation_from_b": 1,
+      "exact_markov_quotient_exists_for_all_initial_states": false
+    },
+    "shared_resource_composition": {
+      "budget": 1,
+      "component_costs": [
+        1,
+        1
+      ],
+      "each_locally_feasible": true,
+      "joint_feasible": false
+    },
+    "negative_price_selection": {
+      "trait": [
+        "0",
+        "1"
+      ],
+      "fitness": [
+        "2",
+        "1"
+      ],
+      "initial_weights": [
+        "1/2",
+        "1/2"
+      ],
+      "trait_before": "1/2",
+      "trait_after": "1/3",
+      "covariance_over_mean_fitness": "-1/6"
+    },
+    "hidden_mode_control": {
+      "modes": [
+        "L",
+        "R"
+      ],
+      "observation_in_both_modes": "same",
+      "safe_action_in_L": "L",
+      "safe_action_in_R": "R",
+      "full_information_success": "1",
+      "best_robust_observation_success": "1/2",
+      "proof": "min(r,1-r) <= (r+(1-r))/2 = 1/2; equality at r=1/2"
+    },
+    "static_legal_dynamics": {
+      "kernel": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "legal_markov_dynamics": true,
+      "forced_development": false
+    },
+    "nonconstant_object_empty_failure_family": {
+      "state_space": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "readout": "q(x,u)=x",
+      "allowed_cut": "(x,u)->(x,1-u)",
+      "nonconstant_readout": true,
+      "any_allowed_cut_destroys_readout": false
+    },
+    "current_source_selection_boundaries": {
+      "p_s_delta_b_gamma_q": [
+        "3/4",
+        "1/8",
+        "3/8",
+        "1/4",
+        "1/3"
+      ],
+      "program_growth_rates": [
+        "9/8",
+        "29/24"
+      ],
+      "best_program_first_tick_extinction": "9/64",
+      "best_extinct_other_nonzero": "243/2048",
+      "both_extinct": "45/2048",
+      "expected_zero_extended_best_share": "2095/4096",
+      "conditional_nonzero_best_share": "2095/4006",
+      "ratio_expected_counts": "10/19",
+      "source_locations": [
+        "CoreRegenerativeSource.lean:215-238,352-402",
+        "CSX-23:2395"
+      ]
+    },
+    "current_source_exponent_not_horizon_optimality": {
+      "p_s_delta_b_gamma_q": [
+        "2/3",
+        "1/8",
+        "1/4",
+        "1/4",
+        "1/3"
+      ],
+      "program_growth_factor": "1",
+      "damaged_program_expected_population_n_1_to_12": [
+        "11/12",
+        "11/12",
+        "11/12",
+        "11/12",
+        "11/12",
+        "11/12",
+        "11/12",
+        "11/12",
+        "11/12",
+        "11/12",
+        "11/12",
+        "11/12"
+      ],
+      "damaged_refusal_expected_population_every_n": "1",
+      "all_time_proof": "first row = (11/12)*nu and nu*M=nu"
+    },
+    "current_source_no_smooth_common_two_dimensional_factor": {
+      "response": "F(s,b,q)=(s,b,bq)",
+      "jacobian_at_point": [
+        [
+          "1",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "1/3",
+          "3/8"
+        ]
+      ],
+      "determinant": "3/8",
+      "proof": "rank D(g o h) <= 2 for C1 h:R3->R2, g:R2->R3; rank DF=3",
+      "restriction": "C1 common encoding of all three responses on an open parameter neighborhood"
+    }
+  },
+  "comparison_note": "Compared serialized JSON values; direct in-memory comparison initially differed because Python tuples serialize as JSON arrays. Reloaded exact results have no differing cases."
+}
