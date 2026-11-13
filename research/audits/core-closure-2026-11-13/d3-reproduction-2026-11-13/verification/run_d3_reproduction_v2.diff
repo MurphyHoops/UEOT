@@ -1,0 +1,340 @@
+--- run_d3_reproduction.py
++++ run_d3_reproduction_v2.py
+@@ -4,6 +4,8 @@
+ Writes only a newly created output directory outside the project. It never runs
+ lake build, updates dependencies, edits source, or labels a reused proof fresh.
+ This script and its Lean probe are PREPARED, NOT EXECUTED, until a run receipt says otherwise.
++V2 fixes Lean's top-level namespace-root selection by mirroring the existing
++project cache with file symlinks, while reserving every fresh target artifact.
+ """
+ from __future__ import annotations
+ 
+@@ -46,6 +48,149 @@
+     if p.returncode:
+         raise RuntimeError(f"command failed ({p.returncode}): {argv!r}\n{p.stdout}\n{p.stderr}")
+     return p.stdout.strip()
++
++
++def is_protected_artifact(relative_path, protected_stems, is_directory=False):
++    """Reserve every target stem extension, including private/server/trace files.
++
++    A namespace DIRECTORY equal to a stem (notably UEOT/) must still be mirrored.
++    It is not the UEOT.olean output. Never symlink any directory.
++    """
++    rel = Path(relative_path).as_posix()
++    return any(rel.startswith(stem + ".") or
++               (not is_directory and rel == stem) for stem in protected_stems)
++
++
++def snapshot_cached_targets(cache_root, protected_stems):
++    """Hash only existing artifacts of selected stems, before any overlay exists."""
++    cache_root = Path(cache_root).resolve(strict=True)
++    files = {}
++
++    def visit(path, ancestors):
++        real = path.resolve(strict=True)
++        if path.is_dir():
++            if real in ancestors:
++                raise RuntimeError(f"Cycle in selected cached artifacts: {path}")
++            for child in sorted(path.iterdir(), key=lambda p: p.name):
++                visit(child, ancestors | {real})
++        elif path.is_file():
++            rel = path.relative_to(cache_root).as_posix()
++            files[rel] = {"relative_path": rel, "reported_path": str(path),
++                          "resolved_path": str(real), "bytes": real.stat().st_size,
++                          "sha256": sha256(real)}
++        else:
++            raise RuntimeError(f"Broken or special selected cached artifact: {path}")
++
++    for stem in sorted(protected_stems):
++        base = cache_root / stem
++        for path in sorted(base.parent.glob(base.name + ".*")):
++            visit(path, set())
++        if os.path.lexists(base) and not base.is_dir():
++            visit(base, set())
++    return [files[key] for key in sorted(files)]
++
++
++def compare_cached_targets(before, after):
++    old = {x["relative_path"]: x for x in before}
++    new = {x["relative_path"]: x for x in after}
++    changes = []
++    for name in sorted(set(old) | set(new)):
++        a, b = old.get(name), new.get(name)
++        if a is None or b is None or any(a[k] != b[k] for k in ("resolved_path", "bytes", "sha256")):
++            changes.append({"relative_path": name, "before": a, "after": b})
++    return {"status": "UNCHANGED" if not changes else "CHANGED", "before_count": len(before),
++            "after_count": len(after), "changes": changes}
++
++
++def mirror_project_cache(cache_root, overlay, protected_stems):
++    cache_root = Path(cache_root).resolve(strict=True)
++    overlay = Path(overlay).resolve(strict=True)
++    links = []
++    excluded = []
++    directory_count = 0
++
++    def visit(source_directory, relative_directory, ancestors):
++        nonlocal directory_count
++        real_directory = source_directory.resolve(strict=True)
++        if real_directory in ancestors:
++            raise RuntimeError(f"Directory symlink cycle in existing project cache: {source_directory}")
++        ancestors = ancestors | {real_directory}
++        destination = overlay / relative_directory
++        if destination.is_symlink():
++            raise RuntimeError(f"Overlay directory must be physical, not a symlink: {destination}")
++        destination.mkdir(parents=True, exist_ok=True)
++        directory_count += 1
++        for entry in sorted(source_directory.iterdir(), key=lambda p: p.name):
++            relative = relative_directory / entry.name
++            directory = entry.is_dir()
++            if is_protected_artifact(relative, protected_stems, directory):
++                real = entry.resolve(strict=True)
++                row = {"relative_path": relative.as_posix(), "source_path": str(entry),
++                       "resolved_source_path": str(real), "directory": directory}
++                if not directory:
++                    if not real.is_file():
++                        raise RuntimeError(f"Unsupported target artifact in cache: {entry}")
++                    row["bytes"] = real.stat().st_size
++                excluded.append(row)
++                continue
++            if directory:
++                visit(entry, relative, ancestors)
++            elif entry.is_file():
++                real = entry.resolve(strict=True)
++                target = overlay / relative
++                if os.path.lexists(target):
++                    raise RuntimeError(f"Overlay link slot already exists: {target}")
++                target.symlink_to(real)
++                links.append({"overlay_path": str(target), "source_path": str(entry),
++                              "resolved_source_path": str(real)})
++            else:
++                raise RuntimeError(f"Missing/broken or special cache entry: {entry}")
++
++    visit(cache_root, Path(), set())
++    return {"source_cache_root": str(cache_root), "overlay_root": str(overlay),
++            "linked_file_count": len(links), "linked_directory_count": 0,
++            "materialized_directory_count": directory_count,
++            "protected_stems": sorted(protected_stems),
++            "excluded_target_artifacts": excluded, "file_links": links}
++
++
++def classify_dependency(reported, cwd, overlay):
++    """Resolve absolute and relative Lean output alike; do not call links fresh."""
++    raw = Path(reported)
++    absolute = Path(os.path.abspath(raw if raw.is_absolute() else Path(cwd) / raw))
++    resolved = absolute.resolve(strict=True)
++    if not resolved.is_file():
++        raise RuntimeError(f"Dependency path emitted by Lean is not a file: {absolute}")
++    overlay = Path(overlay).resolve(strict=True)
++    return {"reported_path": reported, "absolute_reported_path": str(absolute),
++            "resolved_path": str(resolved), "path": str(resolved),
++            "fresh_overlay": overlay == resolved.parent or overlay in resolved.parents,
++            "reported_path_is_symlink": absolute.is_symlink()}
++
++
++def require_fresh_slot(path, overlay):
++    """All output parents are real directories; no old target artifact is linked."""
++    path = Path(path)
++    overlay = Path(overlay).resolve(strict=True)
++    if os.path.lexists(path):
++        raise RuntimeError(f"Fresh output slot already exists, including a dangling link: {path}")
++    parent = path.parent
++    while parent != overlay:
++        if parent.is_symlink() or overlay not in parent.parents:
++            raise RuntimeError(f"Unsafe output parent: {parent}")
++        parent = parent.parent
++    for artifact in path.parent.glob(path.stem + ".*"):
++        raise RuntimeError(f"Fresh target already has a sibling artifact: {artifact}")
++
++
++def require_regular_fresh_file(path, overlay):
++    path = Path(path)
++    overlay = Path(overlay).resolve(strict=True)
++    if path.is_symlink() or not path.is_file():
++        raise RuntimeError(f"Fresh compiler artifact is missing or is a symlink: {path}")
++    resolved = path.resolve(strict=True)
++    if resolved != path.absolute() or overlay not in resolved.parents:
++        raise RuntimeError(f"Fresh compiler artifact resolves outside its physical slot: {path}")
+ 
+ 
+ def main():
+@@ -69,10 +214,11 @@
+     logs = output / "logs"
+     overlay = output / "overlay"
+     probe_dir = output / "probe"
+-    for p in (logs, overlay, probe_dir):
++    for p in (logs, probe_dir):
+         p.mkdir()
+     record = {
+-        "schema": plan["schema"], "status": "RUNNING", "started_utc": now(),
++        "schema": plan["schema"], "runner_revision": 2,
++        "status": "RUNNING", "started_utc": now(),
+         "scope": plan["scope"], "repo": str(repo), "project": str(project),
+         "output": str(output), "fresh_lean_execution": False,
+         "full_clean_build": False, "reused_dependencies": True,
+@@ -81,9 +227,26 @@
+                           [Path(__file__), bundle / "D3_PLAN.json", bundle / "EXPECTED_SOURCE_BLOBS.json", bundle / "D3Probe.lean"]},
+     }
+     receipt_path = output / "D3_RECEIPT.json"
++    old_cache_snapshot = None
++    selected_cache_root = None
++    protected_stems = None
+ 
+     def checkpoint():
+         save(receipt_path, record)
++
++    def check_old_cache_after():
++        if old_cache_snapshot is None:
++            return None
++        after = snapshot_cached_targets(selected_cache_root, protected_stems)
++        comparison = compare_cached_targets(old_cache_snapshot, after)
++        comparison["checked_utc"] = now()
++        after_path = output / "OLD_TARGET_CACHE_AFTER.json"
++        save(after_path, after)
++        comparison["snapshot_path"] = str(after_path)
++        comparison["snapshot_sha256"] = sha256(after_path)
++        record["old_target_cache_after"] = comparison
++        checkpoint()
++        return comparison
+ 
+     def execute(label, argv, cwd, env):
+         logfile = logs / (label + ".log")
+@@ -174,6 +337,26 @@
+             raise RuntimeError("This fixed compiler did not advertise --deps; review the runner before changing commands.")
+         record["compiler"] = {"command": lean, "sha256": sha256(lean), "version": version,
+                               "prefix": str(prefix), "lake_version": capture(["lake", "--version"], project)}
++        cache_roots = sorted({p.resolve(strict=True) for p in roots
++                              if (p / "UEOT.olean").is_file() and (p / "UEOT").is_dir()}, key=str)
++        if len(cache_roots) != 1:
++            raise RuntimeError("Expected one real project cache root containing UEOT.olean and UEOT/: " + repr(cache_roots))
++        protected_stems = {x["module"].replace(".", "/") for x in plan["fresh_modules"]} | {"D3Probe"}
++        selected_cache_root = cache_roots[0]
++        old_cache_snapshot = snapshot_cached_targets(selected_cache_root, protected_stems)
++        before_path = output / "OLD_TARGET_CACHE_BEFORE.json"
++        save(before_path, old_cache_snapshot)
++        record["old_target_cache_before"] = {"source_cache_root": str(selected_cache_root),
++            "artifact_count": len(old_cache_snapshot), "checked_utc": now(),
++            "snapshot_path": str(before_path), "snapshot_sha256": sha256(before_path)}
++        checkpoint()
++        overlay.mkdir()
++        cache_mirror = mirror_project_cache(selected_cache_root, overlay, protected_stems)
++        mirror_manifest_path = output / "CACHE_MIRROR_MANIFEST.json"
++        save(mirror_manifest_path, cache_mirror)
++        record["cache_mirror"] = {k: v for k, v in cache_mirror.items() if k != "file_links"}
++        record["cache_mirror"]["manifest_path"] = str(mirror_manifest_path)
++        record["cache_mirror"]["manifest_sha256"] = sha256(mirror_manifest_path)
+         env = os.environ.copy()
+         env["LEAN_PATH"] = os.pathsep.join([str(overlay)] + [str(p) for p in roots])
+         record["lean_path"] = env["LEAN_PATH"].split(os.pathsep)
+@@ -186,17 +369,18 @@
+                 candidate = line.strip().strip('"')
+                 if not candidate.endswith(".olean"):
+                     continue
+-                path = Path(candidate)
+-                if not path.is_absolute():
+-                    path = (cwd / path).resolve()
+-                if not path.is_file():
+-                    raise RuntimeError(f"Dependency path emitted by Lean is missing: {path}")
+-                item = {"path": str(path), "sha256": sha256(path),
+-                        "fresh_overlay": overlay == path.parent or overlay in path.parents,
+-                        "lake_trace_files": []}
+-                for trace in (path.with_suffix(".trace"), Path(str(path) + ".trace")):
+-                    if trace.is_file():
+-                        item["lake_trace_files"].append({"path": str(trace), "sha256": sha256(trace)})
++                item = classify_dependency(candidate, cwd, overlay)
++                resolved = Path(item["resolved_path"])
++                item.update({"sha256": sha256(resolved), "lake_trace_files": []})
++                trace_paths = set()
++                for path in (Path(item["absolute_reported_path"]), resolved):
++                    for trace in (path.with_suffix(".trace"), Path(str(path) + ".trace")):
++                        if trace.is_file():
++                            real_trace = trace.resolve(strict=True)
++                            if real_trace not in trace_paths:
++                                trace_paths.add(real_trace)
++                                item["lake_trace_files"].append({"reported_path": str(trace),
++                                    "resolved_path": str(real_trace), "sha256": sha256(real_trace)})
+                 items.append(item)
+             if not items:
+                 raise RuntimeError(f"No dependency paths parsed from {label}; inspect the compiler's actual format.")
+@@ -210,19 +394,22 @@
+             src = project / item["source"]
+             dst = overlay / (item["module"].replace(".", "/") + ".olean")
+             dst.parent.mkdir(parents=True, exist_ok=True)
+-            if dst.exists():
+-                raise RuntimeError(f"Fresh output unexpectedly exists: {dst}")
++            require_fresh_slot(dst, overlay)
+             dependency_trace(label, item["source"], project)
+             source_hash = sha256(src)
+             record["fresh_lean_execution"] = True
+             row, text = execute(label, [lean, "-o", str(dst), "-i", str(dst.with_suffix(".ilean")), item["source"]], project, env)
+-            if not dst.is_file() or src.is_file() and sha256(src) != source_hash:
+-                raise RuntimeError("Compiler did not produce its new artifact, or source changed while compiling.")
++            require_regular_fresh_file(dst, overlay)
++            if sha256(src) != source_hash:
++                raise RuntimeError("Source changed while compiling.")
+             if re.search(r"declaration uses.*sorry|sorryAx", text):
+                 raise RuntimeError("Unfinished proof reported during source recompilation.")
++            artifact_paths = [p for p in sorted(dst.parent.glob(dst.stem + ".*")) if p.is_file()]
++            for artifact in artifact_paths:
++                require_regular_fresh_file(artifact, overlay)
+             artifacts = [{"path": str(p), "sha256": sha256(p), "bytes": p.stat().st_size,
+                           "mtime_ns": p.stat().st_mtime_ns}
+-                         for p in sorted(dst.parent.glob(dst.stem + ".*")) if p.is_file()]
++                         for p in artifact_paths]
+             row.update({"module": item["module"], "source": str(src), "source_git_blob": blob(src),
+                         "source_sha256": source_hash, "new_artifacts": artifacts,
+                         "warning_lines": [l for l in text.splitlines() if "warning:" in l]})
+@@ -235,11 +422,15 @@
+         if sha256(probe) != plan["probe_sha256"]:
+             raise RuntimeError("Probe changed after its plan was fixed.")
+         deps = dependency_trace("D3Probe", "D3Probe.lean", probe_dir)
+-        resolved = {str(Path(x["path"]).resolve()) for x in deps}
+-        required = {str((overlay / (x["module"].replace(".", "/") + ".olean")).resolve())
+-                    for x in plan["fresh_modules"]}
++        resolved = {x["resolved_path"] for x in deps if x["fresh_overlay"]}
++        fresh_target_paths = [overlay / (x["module"].replace(".", "/") + ".olean")
++                              for x in plan["fresh_modules"]]
++        for path in fresh_target_paths:
++            require_regular_fresh_file(path, overlay)
++        required = {str(path.resolve(strict=True)) for path in fresh_target_paths}
+         if not required <= resolved:
+             raise RuntimeError("Probe did not resolve every explicitly imported fresh module from the overlay: " + repr(sorted(required - resolved)))
++        require_fresh_slot(overlay / "D3Probe.olean", overlay)
+         prow, probe_text = execute("D3Probe", [lean, "-o", str(overlay / "D3Probe.olean"),
+                                                "-i", str(overlay / "D3Probe.ilean"), "D3Probe.lean"], probe_dir, env)
+         parsed = {}
+@@ -261,16 +452,20 @@
+                 raise RuntimeError(f"Unexpected axioms for {name}: {extra}")
+             axiom_results.append({"name": name, "axioms": axes, "evidence_mode": endpoint["evidence_mode"],
+                                   "source": endpoint["source"], "role": endpoint["role"]})
+-        if not (overlay / "D3Probe.olean").is_file():
+-            raise RuntimeError("No new compiled probe artifact.")
++        require_regular_fresh_file(overlay / "D3Probe.olean", overlay)
+         remaining = [rel for rel, value in expected["files"].items() if blob(project / rel) != value]
+         if remaining:
+             raise RuntimeError("Tracked proof/config source bytes changed during reproduction.")
++        old_cache_check = check_old_cache_after()
++        if old_cache_check["status"] != "UNCHANGED":
++            raise RuntimeError("Existing cached target artifacts changed during isolated compilation; inspect the before/after records.")
+         record.update({"status": "PASS_TARGETED_EXECUTION_REVIEW_REQUIRED", "finished_utc": now(),
+                        "fresh_source_count": len(fresh_rows), "fresh_probe_endpoint_count": len(axiom_results),
+                        "axiom_results": axiom_results,
+                        "probe_source_sha256": sha256(probe), "probe_olean_sha256": sha256(overlay / "D3Probe.olean"),
+                        "all_selected_imports_resolved_to_fresh_overlay": True,
++                       "all_fresh_targets_are_regular_files": True,
++                       "excluded_old_target_artifacts_unchanged": True,
+                        "source_identity_unchanged_after": True,
+                        "semantic_review_required": "Confirm printed Countable/discount/independent types/ValidIdentity/ProgramPopulation/positive branch/ProbabilityValid/full Policy/nonempty/expected-growth conditions against the fixed contract.",
+                        "not_claimed": ["full clean build", "fresh recompilation of every imported dependency", "new native computation of the two cached numeric endpoints", "empirical validity", "global novelty"]})
+@@ -279,6 +474,10 @@
+         return 0
+     except Exception as exc:
+         record.update({"status": "FAILED_OR_BLOCKED", "finished_utc": now(), "failure": str(exc)})
++        try:
++            check_old_cache_after()
++        except Exception as cache_exc:
++            record["old_target_cache_after"] = {"status": "CHECK_FAILED", "failure": str(cache_exc)}
+         checkpoint()
+         print(json.dumps({"event": "STOP", "status": record["status"], "failure": str(exc), "receipt": str(receipt_path)}, ensure_ascii=False), flush=True)
+         return 1

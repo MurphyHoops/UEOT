@@ -1,0 +1,23 @@
+{
+  "schema": "UEOT-D3-final-probe-correction",
+  "status": "PREPARED_NOT_LEAN_EXECUTED",
+  "target_head": "6dd6a3bc13e26f41eddc10ee4d2f39fa1c8ab3d4",
+  "original_file": "D3Probe.lean",
+  "original_sha256": "a61ab3753293be95512136ae6eca13cc32ede7e56825f8f9b872177d71d913ea",
+  "original_bytes": 17965,
+  "corrected_file": "D3ProbeFinal.lean",
+  "corrected_sha256": "28c731287dc45ad7f7f6cbbdd67e011ef493614989da1462bf7f3135ed9bcb8c",
+  "corrected_bytes": 17941,
+  "exact_deleted_line": "set_option pp.width 180\n",
+  "deleted_line_count": 1,
+  "all_other_bytes_unchanged": true,
+  "change_scope": "Remove one unsupported pretty-print option; no imports, definitions, endpoints, axioms, or mathematical hypotheses changed.",
+  "preceding_execution": {
+    "source": "parent-observed Mac v2 result; actual raw logs to be reviewed separately",
+    "fresh_source_compilations": "15 of 15 exit 0",
+    "old_cached_target_artifacts": "63 of 63 unchanged",
+    "final_probe": "exit 1; Unknown option pp.width at D3Probe.lean:30:0"
+  },
+  "preservation": "Original probe, v1/v2 runners, original plans and actual FAILED v2 receipt/logs remain unchanged.",
+  "next_execution": "Parent-owned separate continuation, binding previous receipt and all 15 fresh artifact hashes; compile corrected probe only into a new directory."
+}

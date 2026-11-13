@@ -1,0 +1,1012 @@
+{
+  "status": "FAIL_REVIEW_REQUIRED",
+  "scope": "Read-only cross-binding of observed records; no Lean rerun and no remote artifact-byte rehash by C",
+  "failures": [
+    "Type query output absent: UEOT.V3.PredictionDependent.canonical_ae_minimal",
+    "Type query output absent: UEOT.V3.PredictionDependent.canonical_ae_sigma_minimal",
+    "Type query output absent: UEOT.V3.PredictionDependent.canonical_kernel_sufficient",
+    "Type query output absent: UEOT.V3.FiniteDiscountedControl.Model.fixedPoint_unique",
+    "Type query output absent: UEOT.V3.FiniteDiscountedControl.p_ctl_01_causal_optimality",
+    "Type query output absent: UEOT.V3.CoreOperationalAssembly.optimal_qValue_macro_error_le_D",
+    "Type query output absent: UEOT.V3.CoreOperationalAssembly.macro_gap_certifies_micro_action",
+    "Type query output absent: UEOT.V3.CoreOperationalAssembly.p_core_01",
+    "Type query output absent: UEOT.V3.OmegaMinimalFailure.p_omg_01",
+    "Type query output absent: UEOT.V3.CommonBottleneckRank.p_ddh_04",
+    "Type query output absent: UEOT.V3.DiffusionHJBVerification.p_ctl_03",
+    "Type query output absent: UEOT.V3.SelectionBridge.ReplicationBridge.behavior_equiv_fitness_eq",
+    "Type query output absent: UEOT.V3.Compression.TheoryCompletion.greedyInvariantGOASet_nonempty"
+  ],
+  "zip_file_count": 57,
+  "raw_logs_rehashed": 35,
+  "source_targets_exit_zero": 15,
+  "source_artifact_records_cross_bound": 30,
+  "source_and_config_manifest_count": 1055,
+  "bootstrap_extra_files": [
+    "formalization/ueot-core/UEOT/V3/ThirdParty/CrooksJarzynski/LICENSE",
+    "formalization/ueot-core/UEOT/V3/ThirdParty/CrooksJarzynski/UPSTREAM.md"
+  ],
+  "old_cache_target_records_equal": 63,
+  "probe_type_query_count": 44,
+  "definition_outputs": 12,
+  "endpoint_modes": {
+    "fresh_recompiled": 37,
+    "fresh_probe_of_reused_olean": 7
+  },
+  "standard_only_endpoint_count": 42,
+  "native_endpoint_count": 2,
+  "all_observed_raw_axiom_tokens": [
+    "Classical.choice.{u}",
+    "Quot.sound.{u}",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.exact_cached_data._native.native_decide.ax_1_1",
+    "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.exact_two_data._native.native_decide.ax_1_1",
+    "propext"
+  ],
+  "ellipsis_lines": [
+    145,
+    171,
+    186,
+    200,
+    256,
+    280,
+    296,
+    311,
+    594,
+    625,
+    731,
+    770,
+    832,
+    856,
+    899,
+    904,
+    916,
+    923,
+    942
+  ],
+  "v2_error_lines": [
+    "D3Probe.lean:30:0: error: Unknown option `pp.width`"
+  ],
+  "final_probe_log_sha256": "21dd301ebaa030f559bad47140b27d87760489fb3fb2c4c16a418b24d55cb65b",
+  "raw_log_checks": [
+    {
+      "run": "v1",
+      "label": "01-PredictionDependent-deps",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0920Z/logs/01-PredictionDependent-deps.log",
+      "sha256": "7c4b9b0d81423496775e770c7f467b698a26adc1500f08aef3ffd068baeb8a70"
+    },
+    {
+      "run": "v2",
+      "label": "01-PredictionDependent-deps",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/01-PredictionDependent-deps.log",
+      "sha256": "83dcec7ff2398cb5a0666171a4a20ec20d6eedbd6c9a53aed7b1f57f3fdd1fa3"
+    },
+    {
+      "run": "v2",
+      "label": "01-PredictionDependent",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/01-PredictionDependent.log",
+      "sha256": "c0d0dc32fc3ecf83cc217bc49688581bedfcd332f662c6e537a00b560bc2cf1e"
+    },
+    {
+      "run": "v2",
+      "label": "02-FiniteDiscountedControl-deps",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/02-FiniteDiscountedControl-deps.log",
+      "sha256": "6449bfeebcda7cd4537f1a1e196a8d6c9c0868d60f66e4ab9965d99f78ee2392"
+    },
+    {
+      "run": "v2",
+      "label": "02-FiniteDiscountedControl",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/02-FiniteDiscountedControl.log",
+      "sha256": "7369ca55934d9ffa3f55c0d059c7a15a1756885cf5f6efbc35d2f5106fa13e25"
+    },
+    {
+      "run": "v2",
+      "label": "03-FiniteDiscountedGreedy-deps",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/03-FiniteDiscountedGreedy-deps.log",
+      "sha256": "20e9ba4923500117b06d07cd87ff175a116a8d4e82a5ced63435379f5b3d24af"
+    },
+    {
+      "run": "v2",
+      "label": "03-FiniteDiscountedGreedy",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/03-FiniteDiscountedGreedy.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "run": "v2",
+      "label": "04-CoreOperationalAssembly-deps",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/04-CoreOperationalAssembly-deps.log",
+      "sha256": "056516232fcf0205bef7f16e906faf0603152a543c71dd789e97a683672cc7c5"
+    },
+    {
+      "run": "v2",
+      "label": "04-CoreOperationalAssembly",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/04-CoreOperationalAssembly.log",
+      "sha256": "e499ce2ce7efe5465297a8acec3da86a95e4527d970448f64f68e28dff05502f"
+    },
+    {
+      "run": "v2",
+      "label": "05-CoreRegenerativeSource-deps",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/05-CoreRegenerativeSource-deps.log",
+      "sha256": "36eb08542ea11e7e0461ac1138a6b78c77da4a3b34e13c5b56f9caa5c95af18d"
+    },
+    {
+      "run": "v2",
+      "label": "05-CoreRegenerativeSource",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/05-CoreRegenerativeSource.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "run": "v2",
+      "label": "06-CoreRegenerativeRepair-deps",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/06-CoreRegenerativeRepair-deps.log",
+      "sha256": "08b7c25cdab0aef6d83d3a294894fc0bf459bb70d4a724ac9bb647ef7c638e8b"
+    },
+    {
+      "run": "v2",
+      "label": "06-CoreRegenerativeRepair",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/06-CoreRegenerativeRepair.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "run": "v2",
+      "label": "07-CoreRegenerativeFormation-deps",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/07-CoreRegenerativeFormation-deps.log",
+      "sha256": "c9eb28a7997200e51475428be1f740233d3b4fa92d4e478d75c4534c05e11582"
+    },
+    {
+      "run": "v2",
+      "label": "07-CoreRegenerativeFormation",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/07-CoreRegenerativeFormation.log",
+      "sha256": "a537418b4109062b232beeab33a724396311a89e9a3bfe3c1aa42e9520c1875c"
+    },
+    {
+      "run": "v2",
+      "label": "08-CoreRegenerativePopulation-deps",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/08-CoreRegenerativePopulation-deps.log",
+      "sha256": "693b7336d08b4f6ce6fee5c867668db14d0357d79ecf49127790025ab68c0d3d"
+    },
+    {
+      "run": "v2",
+      "label": "08-CoreRegenerativePopulation",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/08-CoreRegenerativePopulation.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "run": "v2",
+      "label": "09-CoreRegenerativeControlPopulation-deps",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/09-CoreRegenerativeControlPopulation-deps.log",
+      "sha256": "c473f3ac80783715321c6a66f91a375d2f2551e0954cf4285bd6747a8b91ded3"
+    },
+    {
+      "run": "v2",
+      "label": "09-CoreRegenerativeControlPopulation",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/09-CoreRegenerativeControlPopulation.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "run": "v2",
+      "label": "10-CoreRegenerativeGrowthClassification-deps",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/10-CoreRegenerativeGrowthClassification-deps.log",
+      "sha256": "60c09047ab56da8ab70eeb18735016a85c7170a91e90465c94af84af1e244fef"
+    },
+    {
+      "run": "v2",
+      "label": "10-CoreRegenerativeGrowthClassification",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/10-CoreRegenerativeGrowthClassification.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "run": "v2",
+      "label": "11-CoreRegenerativeGrowthPopulation-deps",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/11-CoreRegenerativeGrowthPopulation-deps.log",
+      "sha256": "e4243a42517d740be3e99091901909c06cee9c4613887fb0027344f7ecc90917"
+    },
+    {
+      "run": "v2",
+      "label": "11-CoreRegenerativeGrowthPopulation",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/11-CoreRegenerativeGrowthPopulation.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "run": "v2",
+      "label": "12-CoreRegenerativeGrowthAttainment-deps",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/12-CoreRegenerativeGrowthAttainment-deps.log",
+      "sha256": "23bc65e6475e378b5ef5458a3edf77af1bb80f8ad5ab82d33c9224a8d57172fe"
+    },
+    {
+      "run": "v2",
+      "label": "12-CoreRegenerativeGrowthAttainment",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/12-CoreRegenerativeGrowthAttainment.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "run": "v2",
+      "label": "13-CoreTheoryClosure-deps",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/13-CoreTheoryClosure-deps.log",
+      "sha256": "6f8a157595c6ab5cc803ee3445d012f19e8babe0d7d85e33263224b002068dd3"
+    },
+    {
+      "run": "v2",
+      "label": "13-CoreTheoryClosure",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/13-CoreTheoryClosure.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "run": "v2",
+      "label": "14-GrowthClassificationCheck-deps",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/14-GrowthClassificationCheck-deps.log",
+      "sha256": "0dfaf94333d9862e06338dbb533b6168a6afb8b14dc45950402597720c1c151f"
+    },
+    {
+      "run": "v2",
+      "label": "14-GrowthClassificationCheck",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/14-GrowthClassificationCheck.log",
+      "sha256": "f4b86d824ae9704af0584bcbea5b04153ff36d11841256c58e7ef79cb03c36d0"
+    },
+    {
+      "run": "v2",
+      "label": "15-UEOT-deps",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/15-UEOT-deps.log",
+      "sha256": "d4b70985ea571687c3438d873ff70c3e1d9d8759b5ce74e0baf3cacfc84ed229"
+    },
+    {
+      "run": "v2",
+      "label": "15-UEOT",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/15-UEOT.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "run": "v2",
+      "label": "D3Probe-deps",
+      "exit_code": 0,
+      "relative_log": "run-20261113T0932Z/logs/D3Probe-deps.log",
+      "sha256": "fb9bf7e78ccdc3cef42263cb2aab2d6507606140b43d771ac8ef0881ba041a37"
+    },
+    {
+      "run": "v2",
+      "label": "D3Probe",
+      "exit_code": 1,
+      "relative_log": "run-20261113T0932Z/logs/D3Probe.log",
+      "sha256": "1f1bb4ecf2b9a9479b8d68a83044bffe568491aefade53d1058a721f516d7943"
+    },
+    {
+      "run": "continuation",
+      "label": "D3ProbeFinal-deps",
+      "exit_code": 0,
+      "relative_log": "probe-continuation-20261113T0940Z/D3ProbeFinal-deps.log",
+      "sha256": "fb9bf7e78ccdc3cef42263cb2aab2d6507606140b43d771ac8ef0881ba041a37"
+    },
+    {
+      "run": "continuation",
+      "label": "D3ProbeFinal",
+      "exit_code": 0,
+      "relative_log": "probe-continuation-20261113T0940Z/D3ProbeFinal.log",
+      "sha256": "21dd301ebaa030f559bad47140b27d87760489fb3fb2c4c16a418b24d55cb65b"
+    }
+  ],
+  "axiom_rows": [
+    {
+      "endpoint": "UEOT.V3.PredictionDependent.canonical_ae_minimal",
+      "raw_list": "propext, Classical.choice.{u}, Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 606,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.PredictionDependent.canonical_ae_sigma_minimal",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 637,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.PredictionDependent.canonical_kernel_sufficient",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 668,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.FiniteDiscountedControl.Model.fixedPoint_unique",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 677,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.FiniteDiscountedControl.p_ctl_01_causal_optimality",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 696,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.CoreOperationalAssembly.optimal_qValue_macro_error_le_D",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 745,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.CoreOperationalAssembly.macro_gap_certifies_micro_action",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 865,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.CoreOperationalAssembly.p_core_01",
+      "raw_list": "propext, Classical.choice.{u}, Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 943,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.realizedMean_eq",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 951,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.programStep_uses_paid_repair",
+      "raw_list": "propext",
+      "raw_tokens": [
+        "propext"
+      ],
+      "constants": [
+        "propext"
+      ],
+      "line": 1018,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.source_strongRepairable",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 1026,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.actual_formed_candidate_family_nonempty",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 1042,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.actual_formed_candidate_nonempty",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 1065,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.newborn_fresh_from_old_population",
+      "raw_list": "propext,\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Quot.sound"
+      ],
+      "line": 1089,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.actualStep_budget",
+      "raw_list": "propext,\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Quot.sound"
+      ],
+      "line": 1107,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.descendants_length",
+      "raw_list": "propext",
+      "raw_tokens": [
+        "propext"
+      ],
+      "constants": [
+        "propext"
+      ],
+      "line": 1116,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.step_outputs_program",
+      "raw_list": "propext,\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Quot.sound"
+      ],
+      "line": 1141,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.reachable_program",
+      "raw_list": "propext,\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Quot.sound"
+      ],
+      "line": 1152,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.populationExpectation_eraseState",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 1165,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.attainable_test_values_eraseState",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 1186,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.valid_iff_probability_advantage_supercritical",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 1196,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.optimalRate_formula",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 1208,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.actual_one_step_value_le",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 1233,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.actual_selected_one_step_value_eq",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 1260,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.optimal_population_upper",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 1284,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.optimal_hasExpectedGrowth",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 1297,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.programPolicy_positive_branch_is_internal",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 1322,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.founder_program",
+      "raw_list": "propext",
+      "raw_tokens": [
+        "propext"
+      ],
+      "constants": [
+        "propext"
+      ],
+      "line": 1330,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment.optimalRate_isLeast_uniform_upper",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 1343,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment.false_program_attains_iff",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 1362,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment.true_program_attains_iff",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 1381,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment.same_damaged_program_repairs_and_attains_iff",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 1418,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment.subcritical_existing_programs_do_not_attain",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 1451,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreTheoryClosure.same_program_regenerates_and_attains",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 1536,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreTheoryClosure.positive_source_class_nonempty",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 1541,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOTGrowthClassificationCheck.enlarged_domain_actual_internal",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 1552,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOTGrowthClassificationCheck.subcritical_actual_internal_failure",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 1564,
+      "evidence_mode": "fresh_recompiled"
+    },
+    {
+      "endpoint": "UEOT.V3.OmegaMinimalFailure.p_omg_01",
+      "raw_list": "propext, Classical.choice.{u}, Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 1580,
+      "evidence_mode": "fresh_probe_of_reused_olean"
+    },
+    {
+      "endpoint": "UEOT.V3.CommonBottleneckRank.p_ddh_04",
+      "raw_list": "propext, Classical.choice.{u}, Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 1668,
+      "evidence_mode": "fresh_probe_of_reused_olean"
+    },
+    {
+      "endpoint": "UEOT.V3.DiffusionHJBVerification.p_ctl_03",
+      "raw_list": "propext, Classical.choice.{u}, Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 1687,
+      "evidence_mode": "fresh_probe_of_reused_olean"
+    },
+    {
+      "endpoint": "UEOT.V3.SelectionBridge.ReplicationBridge.behavior_equiv_fitness_eq",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 1693,
+      "evidence_mode": "fresh_probe_of_reused_olean"
+    },
+    {
+      "endpoint": "UEOT.V3.Compression.TheoryCompletion.greedyInvariantGOASet_nonempty",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u}",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "line": 1702,
+      "evidence_mode": "fresh_probe_of_reused_olean"
+    },
+    {
+      "endpoint": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.exact_cached_data",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u},\n UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.exact_cached_data._native.native_decide.ax_1_1",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.exact_cached_data._native.native_decide.ax_1_1"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.exact_cached_data._native.native_decide.ax_1_1"
+      ],
+      "line": 1802,
+      "evidence_mode": "fresh_probe_of_reused_olean"
+    },
+    {
+      "endpoint": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.exact_two_data",
+      "raw_list": "propext,\n Classical.choice.{u},\n Quot.sound.{u},\n UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.exact_two_data._native.native_decide.ax_1_1",
+      "raw_tokens": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.exact_two_data._native.native_decide.ax_1_1"
+      ],
+      "constants": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.exact_two_data._native.native_decide.ax_1_1"
+      ],
+      "line": 1849,
+      "evidence_mode": "fresh_probe_of_reused_olean"
+    }
+  ],
+  "limits": [
+    "Binary .olean/.ilean bytes stay on Mac; C cross-binds their actual lead-computed hashes, not independently rehashing remote binaries",
+    "Some pretty-printed types contain ellipsis; successful queries are not a claim of complete printed term expansion",
+    "Seven declarations use reused .olean artifacts; native computations are not repeated",
+    "The three wrapper failure receipts are intentionally retained"
+  ]
+}

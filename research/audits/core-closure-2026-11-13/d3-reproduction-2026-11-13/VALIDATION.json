@@ -1,0 +1,669 @@
+{
+  "status": "PASS_TARGETED_D3_ACCEPTED",
+  "checked_utc": "2026-11-13T09:57:10.169367+00:00",
+  "baseline_commit": "6dd6a3bc13e26f41eddc10ee4d2f39fa1c8ab3d4",
+  "executed_source_commit": "6dd6a3bc13e26f41eddc10ee4d2f39fa1c8ab3d4",
+  "new_production_lean_theorems": 0,
+  "protected_sources_and_prior_audit_unchanged": true,
+  "current_status_change": "Exactly one successor evidence row; all historical text retained",
+  "source_config_git_blobs_matched": 1055,
+  "source_compilations_exit_zero": 15,
+  "final_probe_lean_exit_code": 0,
+  "actual_type_axiom_queries": 44,
+  "endpoint_modes": {
+    "fresh_recompiled": 37,
+    "fresh_probe_of_reused_olean": 7
+  },
+  "standard_only_endpoints": 42,
+  "disclosed_native_endpoints": 2,
+  "definition_structure_queries": 12,
+  "raw_log_hashes_verified": 35,
+  "original_payloads_preserved": 57,
+  "gzip_storage_only": "CACHE_MIRROR_MANIFEST.json",
+  "original_failed_wrapper_states_preserved": true,
+  "full_clean_build": false,
+  "native_numeric_computations_reexecuted": false,
+  "prior_A_freeze_scope_unchanged": true,
+  "empirical_status": "UNVERIFIED",
+  "relative_markdown_links_verified": 48,
+  "unchanged_repository_governance_validator": "PASS",
+  "whitespace": {
+    "authored_content": "PASS",
+    "original_log_probe_and_patch_notes": [
+      "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/01-PredictionDependent.log:1: trailing whitespace.",
+      "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/04-CoreOperationalAssembly.log:1: trailing whitespace.",
+      "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/04-CoreOperationalAssembly.log:9: trailing whitespace.",
+      "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/07-CoreRegenerativeFormation.log:1: trailing whitespace.",
+      "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/07-CoreRegenerativeFormation.log:9: trailing whitespace.",
+      "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/07-CoreRegenerativeFormation.log:17: trailing whitespace.",
+      "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/07-CoreRegenerativeFormation.log:25: trailing whitespace.",
+      "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/07-CoreRegenerativeFormation.log:33: trailing whitespace.",
+      "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/07-CoreRegenerativeFormation.log:41: trailing whitespace.",
+      "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/verification/D3Probe.lean:221: new blank line at EOF.",
+      "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/verification/D3ProbeFinal.diff:8: trailing whitespace.",
+      "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/verification/D3ProbeFinal.lean:220: new blank line at EOF.",
+      "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/verification/run_d3_reproduction_v2.diff:11: trailing whitespace.",
+      "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/verification/run_d3_reproduction_v2.diff:159: trailing whitespace.",
+      "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/verification/run_d3_reproduction_v2.diff:160: trailing whitespace.",
+      "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/verification/run_d3_reproduction_v2.diff:183: trailing whitespace.",
+      "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/verification/run_d3_reproduction_v2.diff:200: trailing whitespace."
+    ]
+  },
+  "new_lean_execution_by_this_validator": false,
+  "content_manifest_excluding_this_validation": [
+    {
+      "path": "core/status/CURRENT.md",
+      "bytes": 13631,
+      "sha256": "7cc88be1473682c8cfbf50c5bf7d83ec12c9f331387428a77f2f5412133ddebf",
+      "git_blob": "b9020aca7db73520036e6662f49663a1b6ae5898"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/README.md",
+      "bytes": 14110,
+      "sha256": "2e67baf2cdba4f1db1a4aa0f02b967d2c44295a958bb2da25b4b77af5b9bfb90",
+      "git_blob": "1e1d5e4c27a0ce1114fad5f5c0012de116d36642"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/COMMIT_OBJECT_RECONSTRUCTION.json",
+      "bytes": 162,
+      "sha256": "92c5f9ed8191e76800dcad76ac84a221c2d2c3c568009fa4969a9e043b087f49",
+      "git_blob": "0ad6308b89c5382cb605f4ff3564cbc6bb2ec098"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/D3_BUNDLE_V2_TRANSFER.json",
+      "bytes": 383,
+      "sha256": "38e63e9e2e9d4fac8e105e49277ce8377c5cbe71fb833093d2520454f7b51309",
+      "git_blob": "3ae0d299a598e0f1fae0db480ec60c7cce00b458"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/D3_CONTINUATION_CONSOLE.log",
+      "bytes": 1672,
+      "sha256": "f59c0b16b634797c52f1e95267a07b8f5b57c4246c164dd5694621372492c77c",
+      "git_blob": "8a2fe93ae024e4e40c0432b176e70c125d84db3d"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/D3_CONTINUATION_LAUNCH.json",
+      "bytes": 495,
+      "sha256": "805935581df6403a3532decbe8922ccf9f61fd9d821fae01d8bd7bd47405605d",
+      "git_blob": "a93b691e741ad6b1c8c483763bc908d018e5d1b1"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/D3_CONTINUATION_PROCESS_EXIT.json",
+      "bytes": 162,
+      "sha256": "287b9ce69a36f9654e1c48940722a5cfc4e4d82ca5dd0932cb55170f40c52c9e",
+      "git_blob": "4c9b6d4582667c1168644bdcf4abcbc10787d7c1"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/D3_LAUNCH.json",
+      "bytes": 741,
+      "sha256": "641b677ce7da6809e89824614a2e286fd03050167f62e4ff96b06068b5b7b795",
+      "git_blob": "8afab686c4e79ca86720606fde4ad22fa80ee45d"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/D3_PROCESS_EXIT.json",
+      "bytes": 163,
+      "sha256": "751273675bf8afcffe97807de88c55ef6a1cfb0bd25e84304272b9262f4938b3",
+      "git_blob": "d8d1cbb38ab50c652569490915809ae67aa67a4e"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/D3_V2_CONSOLE.log",
+      "bytes": 6728,
+      "sha256": "7abcae3bcd519252e470a92e3700da3fc4b11ed1e6cf138086df99f7ab7eb2fa",
+      "git_blob": "1abe88902e2d7ef59531d160040778a94a507d47"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/D3_V2_LAUNCH.json",
+      "bytes": 706,
+      "sha256": "cd7037bb8bfc2e78d2fa41fe976eb60da6642f68e93b1216883fcd4a820e55ef",
+      "git_blob": "31ed446d2aed579fc1947dc0c856b4a3377d954d"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/D3_V2_PROCESS_EXIT.json",
+      "bytes": 185,
+      "sha256": "2b55a06af2859ca9517ed9ee7f5256aae6b85111d740ef7e0a76f65b269a3dc8",
+      "git_blob": "43746c43e1ec2d7f87c31be4d2b6b0f3e6e2ac55"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/FINAL_SOURCE_ARTIFACT_CHECK.json",
+      "bytes": 11251,
+      "sha256": "3675c94b81842ca03b9fa109fa5dac6918c74af5a6939404bb78c45608a449db",
+      "git_blob": "bcdbfc533f112a1f72d7c17866f9562c293d8b71"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/GOVERNANCE_VALIDATION.initial_sparse_checkout.json",
+      "bytes": 1153,
+      "sha256": "e54afe8f4a55a50fcf496e1f7d87d20c560afc8e214c99ecac5b56aad48920e8",
+      "git_blob": "21475552d923f5ee870ea8873bcf995cd3ffc27f"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/GOVERNANCE_VALIDATION.initial_sparse_checkout.log",
+      "bytes": 342,
+      "sha256": "a636c3f4a8cd5e1b924081125d983336cb0912d11b3d185aea5d04593e91f278",
+      "git_blob": "ace725ccfa06802e2848ebdb6b93c0619c821a8a"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/GOVERNANCE_VALIDATION.json",
+      "bytes": 14035,
+      "sha256": "acf83b0df3ae19d2f2a66a1524570eef969e7b0c9834170e515a071649e5aa8c",
+      "git_blob": "ed088928a4971eb47661b75d4927b55a5f7c6280"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/GOVERNANCE_VALIDATION.log",
+      "bytes": 108,
+      "sha256": "e7fc9a59a6d32446f077913ef1ee92cd198e1b3f6bae9ab5be65f61e1868b6e6",
+      "git_blob": "4b05fb05cf56531dabc4cfb5154f128e84c243c3"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/GOVERNANCE_VALIDATION.missing_referenced_files.json",
+      "bytes": 1306,
+      "sha256": "3945e8bdc715cc70ce46f4e27a0bd70408a0558e323a1ff02f3418048b40230b",
+      "git_blob": "8ad36a46c08d8e29380dddf078f56e1ff559fcaa"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/GOVERNANCE_VALIDATION.missing_referenced_files.log",
+      "bytes": 130,
+      "sha256": "b5d9536f7eda16e66587b64df28b3cff61ea9212cdb79c4d818b1cc8762990b7",
+      "git_blob": "5d6f4aec38e73cee885abe5baa97d6a211d7b165"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/MAC_CONNECTIVITY.json",
+      "bytes": 600,
+      "sha256": "38bd298fef1f6efeefe6b778bb943ef155b92bf37d29db99b8da00949c5f26c6",
+      "git_blob": "017cf9ac1d0049638875fae89d730dafe74cb99e"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/PR461_BRANCH_RETIREMENT.json",
+      "bytes": 1849,
+      "sha256": "d8343dbbc179dc5b6eb5478e7f42e9bf5ba11a4f9658c978218410821dc9dcf3",
+      "git_blob": "f0d2fbcf67eb669701e0426c13196475097ba530"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/SOURCE_ARCHIVE_TRANSFER.json",
+      "bytes": 165,
+      "sha256": "d89f5227cbdfce277b20aa3bd4182e04817710fb118c4175f4324f83532fef64",
+      "git_blob": "19626555a64ef0f2a02764d9f50313e471a85f43"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/SOURCE_SETUP.json",
+      "bytes": 304597,
+      "sha256": "d96a596fbe408825013ba767c29479adcf0e515bb9af30a2e5eab6bc692862b7",
+      "git_blob": "9c24f193a61d38b307e09750dd60a208757dcd54"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/TRANSFER_AND_STORAGE_MANIFEST.json",
+      "bytes": 24165,
+      "sha256": "1e32e738af8883c90d16bcf12df11764ca5ba4c135d169069baedf33ce38df2f",
+      "git_blob": "f06c316a6ce9b9f3c9338b8c376f274a1ce266f1"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/probe-continuation-20261113T0940Z/CONTINUATION_RECEIPT.json",
+      "bytes": 25187,
+      "sha256": "663eddf04eef161971e5d95760a36a0ff40ab6d33fd10bb795f197c81ab342a4",
+      "git_blob": "6af793e468d277eb9aca1660e041ea405d5fdecb"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/probe-continuation-20261113T0940Z/D3ProbeFinal-deps.log",
+      "bytes": 3193,
+      "sha256": "fb9bf7e78ccdc3cef42263cb2aab2d6507606140b43d771ac8ef0881ba041a37",
+      "git_blob": "5151bd18a3de53ca1157cee6eb820187c252d674"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/probe-continuation-20261113T0940Z/D3ProbeFinal.log",
+      "bytes": 134579,
+      "sha256": "21dd301ebaa030f559bad47140b27d87760489fb3fb2c4c16a418b24d55cb65b",
+      "git_blob": "ae6686913ea851045675c356acd2a1df81886252"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0920Z/D3_RECEIPT.json",
+      "bytes": 7611,
+      "sha256": "4405f24626694a9da9ce49b567732df8f29a23bd78219f1b043b463e16af9a9e",
+      "git_blob": "f25d30d6c32136f898c59e01db6db7ffcc5acd5b"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0920Z/LEAN_HELP.txt",
+      "bytes": 2994,
+      "sha256": "2e55a3aed072193c73411ff7553c8eb3a431f8fc14534c5ac0d05f60844228d0",
+      "git_blob": "99dd7f79152d27945be1a948c28eedb5579fc6c8"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0920Z/logs/01-PredictionDependent-deps.log",
+      "bytes": 276,
+      "sha256": "7c4b9b0d81423496775e770c7f467b698a26adc1500f08aef3ffd068baeb8a70",
+      "git_blob": "acf0115530b226265dd641590ea87c04850bae5f"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/CACHE_MIRROR_MANIFEST.json.gz",
+      "bytes": 65430,
+      "sha256": "b9b6e306a90d4d97b0a806ea425d0653560f7baf48c77112d54edeaad9537f09",
+      "git_blob": "4d6a28d751de29ef608f8b23fc78441dc8d1b9a7"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/D3_RECEIPT.json",
+      "bytes": 324894,
+      "sha256": "aabc33bd9e5928a94cf0036ee2772de26eb082db7e976f65fee1b594fbb6dec1",
+      "git_blob": "cc58caa2b0d6609b258b936ae545e311ee177799"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/LEAN_HELP.txt",
+      "bytes": 2994,
+      "sha256": "2e55a3aed072193c73411ff7553c8eb3a431f8fc14534c5ac0d05f60844228d0",
+      "git_blob": "99dd7f79152d27945be1a948c28eedb5579fc6c8"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/OLD_TARGET_CACHE_AFTER.json",
+      "bytes": 42839,
+      "sha256": "f74e52b7f4015aeaf2cd317937d1f6d8e63e8726716d5d7fcb6ebab231cc3cf5",
+      "git_blob": "a266e39a2ad6ef3d3bd7644a25bd6919b26a475d"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/OLD_TARGET_CACHE_BEFORE.json",
+      "bytes": 42839,
+      "sha256": "f74e52b7f4015aeaf2cd317937d1f6d8e63e8726716d5d7fcb6ebab231cc3cf5",
+      "git_blob": "a266e39a2ad6ef3d3bd7644a25bd6919b26a475d"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/01-PredictionDependent-deps.log",
+      "bytes": 276,
+      "sha256": "83dcec7ff2398cb5a0666171a4a20ec20d6eedbd6c9a53aed7b1f57f3fdd1fa3",
+      "git_blob": "244e78304ef24eaa847c09c813c8b001c32b4b23"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/01-PredictionDependent.log",
+      "bytes": 514,
+      "sha256": "c0d0dc32fc3ecf83cc217bc49688581bedfcd332f662c6e537a00b560bc2cf1e",
+      "git_blob": "c0f2e30b0a5d28827e12f2c1a0e940ab438c9dfd"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/02-FiniteDiscountedControl-deps.log",
+      "bytes": 701,
+      "sha256": "6449bfeebcda7cd4537f1a1e196a8d6c9c0868d60f66e4ab9965d99f78ee2392",
+      "git_blob": "e3980259b012503db482724a754b0e3ec256b4d7"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/02-FiniteDiscountedControl.log",
+      "bytes": 914,
+      "sha256": "7369ca55934d9ffa3f55c0d059c7a15a1756885cf5f6efbc35d2f5106fa13e25",
+      "git_blob": "52ab5eee2b26817342b6ad44c4bbed8a3e71bb75"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/03-FiniteDiscountedGreedy-deps.log",
+      "bytes": 457,
+      "sha256": "20e9ba4923500117b06d07cd87ff175a116a8d4e82a5ced63435379f5b3d24af",
+      "git_blob": "099a6bc96ea0ebde85c279d6279e261a151f040f"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/03-FiniteDiscountedGreedy.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/04-CoreOperationalAssembly-deps.log",
+      "bytes": 2011,
+      "sha256": "056516232fcf0205bef7f16e906faf0603152a543c71dd789e97a683672cc7c5",
+      "git_blob": "ac43568b405d94cf2b8da99c960609e3918ab78e"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/04-CoreOperationalAssembly.log",
+      "bytes": 2806,
+      "sha256": "e499ce2ce7efe5465297a8acec3da86a95e4527d970448f64f68e28dff05502f",
+      "git_blob": "347eeaacca36e34a910c3ce2a7b543b0f6c33c66"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/05-CoreRegenerativeSource-deps.log",
+      "bytes": 463,
+      "sha256": "36eb08542ea11e7e0461ac1138a6b78c77da4a3b34e13c5b56f9caa5c95af18d",
+      "git_blob": "c3142160c9e201189da49a18c106597ae17f7021"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/05-CoreRegenerativeSource.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/06-CoreRegenerativeRepair-deps.log",
+      "bytes": 330,
+      "sha256": "08b7c25cdab0aef6d83d3a294894fc0bf459bb70d4a724ac9bb647ef7c638e8b",
+      "git_blob": "36021e8defdc955f4210c35fcd4fc47d922a5f65"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/06-CoreRegenerativeRepair.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/07-CoreRegenerativeFormation-deps.log",
+      "bytes": 477,
+      "sha256": "c9eb28a7997200e51475428be1f740233d3b4fa92d4e478d75c4534c05e11582",
+      "git_blob": "de38cd3364880dd57e092e784a6cc5786fdfb234"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/07-CoreRegenerativeFormation.log",
+      "bytes": 2651,
+      "sha256": "a537418b4109062b232beeab33a724396311a89e9a3bfe3c1aa42e9520c1875c",
+      "git_blob": "48800e646dfa4044657ac2b3e4e377dc6a101804"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/08-CoreRegenerativePopulation-deps.log",
+      "bytes": 332,
+      "sha256": "693b7336d08b4f6ce6fee5c867668db14d0357d79ecf49127790025ab68c0d3d",
+      "git_blob": "8492796e65adde4a8b4e9f88e2c3a18ea8098a57"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/08-CoreRegenerativePopulation.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/09-CoreRegenerativeControlPopulation-deps.log",
+      "bytes": 663,
+      "sha256": "c473f3ac80783715321c6a66f91a375d2f2551e0954cf4285bd6747a8b91ded3",
+      "git_blob": "7ca3bc6675ba5bba9d09113831e8d8c36af72057"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/09-CoreRegenerativeControlPopulation.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/10-CoreRegenerativeGrowthClassification-deps.log",
+      "bytes": 333,
+      "sha256": "60c09047ab56da8ab70eeb18735016a85c7170a91e90465c94af84af1e244fef",
+      "git_blob": "afbf37dfdbe0a4a67d331cb682376950199cbeea"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/10-CoreRegenerativeGrowthClassification.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/11-CoreRegenerativeGrowthPopulation-deps.log",
+      "bytes": 679,
+      "sha256": "e4243a42517d740be3e99091901909c06cee9c4613887fb0027344f7ecc90917",
+      "git_blob": "2bb08e66c69ffb8884ae4b4f25db97b0ae481cba"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/11-CoreRegenerativeGrowthPopulation.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/12-CoreRegenerativeGrowthAttainment-deps.log",
+      "bytes": 340,
+      "sha256": "23bc65e6475e378b5ef5458a3edf77af1bb80f8ad5ab82d33c9224a8d57172fe",
+      "git_blob": "680c0c26be832d763e81b4143b9164b4182f09b5"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/12-CoreRegenerativeGrowthAttainment.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/13-CoreTheoryClosure-deps.log",
+      "bytes": 1338,
+      "sha256": "6f8a157595c6ab5cc803ee3445d012f19e8babe0d7d85e33263224b002068dd3",
+      "git_blob": "53ea3e551c0338f2af6cd5adc36901d30f09ebbd"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/13-CoreTheoryClosure.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/14-GrowthClassificationCheck-deps.log",
+      "bytes": 325,
+      "sha256": "0dfaf94333d9862e06338dbb533b6168a6afb8b14dc45950402597720c1c151f",
+      "git_blob": "969346d6e1a3ff3d7a6bd923a3bd48c275983457"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/14-GrowthClassificationCheck.log",
+      "bytes": 2616,
+      "sha256": "f4b86d824ae9704af0584bcbea5b04153ff36d11841256c58e7ef79cb03c36d0",
+      "git_blob": "28e1cbe92f1147d44eec340c685de903f5c2d730"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/15-UEOT-deps.log",
+      "bytes": 9949,
+      "sha256": "d4b70985ea571687c3438d873ff70c3e1d9d8759b5ce74e0baf3cacfc84ed229",
+      "git_blob": "85d867c294daf907aad301c4ad466bd6e4d5e369"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/15-UEOT.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/D3Probe-deps.log",
+      "bytes": 3193,
+      "sha256": "fb9bf7e78ccdc3cef42263cb2aab2d6507606140b43d771ac8ef0881ba041a37",
+      "git_blob": "5151bd18a3de53ca1157cee6eb820187c252d674"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/evidence/run-20261113T0932Z/logs/D3Probe.log",
+      "bytes": 134631,
+      "sha256": "1f1bb4ecf2b9a9479b8d68a83044bffe568491aefade53d1058a721f516d7943",
+      "git_blob": "14e324545551287d2acacfbc326bdc141dd23fcb"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/reviews/ACTUAL_SOURCE_READBACK_MANIFEST.json",
+      "bytes": 1682,
+      "sha256": "db1fa2d27b5c91b8960fc91f05d2abbdbf2adc9b1fb08108dcffb9fdf5168051",
+      "git_blob": "29555ba396463447fe0fa537ef90b303d3a4b4aa"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/reviews/A_D3_FINAL_TEXT_REVIEW.md",
+      "bytes": 8042,
+      "sha256": "94bcad267a88c9f86c0cd995453fad7f121b72d1ab8a0b69f620281f7f706b57",
+      "git_blob": "5a33cecfd3c2bf97a12b50d4cb5d666c1f8ae1a1"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/reviews/A_D3_FINAL_TEXT_REVIEW_MANIFEST.json",
+      "bytes": 442,
+      "sha256": "a16e5884fae771c3445d9f10a4a5eca6ec26fd7bf1210b0a848277faeadb5202",
+      "git_blob": "fba9ae46afc5e2936118a7fb92a4b1103038786b"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/reviews/A_D3_OBSERVED_EVIDENCE_CHECK.json",
+      "bytes": 10513,
+      "sha256": "200b32b80acfac25afb58135e779a51e4ee400b17804b4058bf67b1361352759",
+      "git_blob": "b7d22fb5fa6a34cef77728cc8932d557767992d5"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/reviews/B_D3_MATHEMATICAL_REVIEW.md",
+      "bytes": 18329,
+      "sha256": "7e89fa36f5ccaa2fbcd6b1e694ade5fa7453e2e3b301cfd6294606845a0c470b",
+      "git_blob": "222a02f5bc7dc74a7c59beb525fc4547dc2026c9"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/reviews/CONTINUATION_SCRIPT_REVIEW.json",
+      "bytes": 1700,
+      "sha256": "eeaccb84827e0631ecf3030be1007b2558e58bf0a6659e3fe591d7c97a363c73",
+      "git_blob": "5f1991a125c24dfb9eb46e69871cb739a2125a5f"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/reviews/C_D3_ACCEPTANCE_DETAILS.json",
+      "bytes": 2366,
+      "sha256": "d6c863e5518dd0e4514541d726284d29da263ed43e997f9aa8ff5d5300ae9027",
+      "git_blob": "d06c9ea8a6d112b8f7c43f1c2ef849ac1f9d9b16"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/reviews/C_D3_EXECUTION_ACCEPTANCE.md",
+      "bytes": 7938,
+      "sha256": "50f0db30fddc1bc68afb1668b568cd99b95049086a20b84ee99ca7c4a80f3a81",
+      "git_blob": "771e013ddc08773db8e7cf3f641d7c03c6edde41"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/reviews/C_D3_FINAL_MANIFEST.json",
+      "bytes": 783,
+      "sha256": "3b1244b3fa411474eb9a7062b16728d39def91a1af5e13c4c48f272f1a80b4a8",
+      "git_blob": "a5dcf3ea74447d7b14d9d71edb470e246f6c8944"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/reviews/C_OBSERVED_EVIDENCE_VERIFICATION.initial_heading_parser.json",
+      "bytes": 32995,
+      "sha256": "120bd88bb0a7ecc19287c361ba5812573268b0a16881e830da9ca6fde09e5da6",
+      "git_blob": "4a6856fb52a2d68d0d6cd6713ed6df7fddbb64ce"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/reviews/C_OBSERVED_EVIDENCE_VERIFICATION.json",
+      "bytes": 31893,
+      "sha256": "00ec592af3158beccecebdc19b56ff90dac36de1879a5f775b4383d286147911",
+      "git_blob": "28ca689942db3a6d362b5830309dc1a1b37abf4f"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/reviews/D3_OBSERVED_AXIOMS_AND_TYPES.json",
+      "bytes": 168129,
+      "sha256": "cf618add6130504e0a7b7dfdadedfb5fcebe86c105506920cf5d14c581dca154",
+      "git_blob": "4ef46c794d5f3f61ebd75650297aa01c9c6bafb0"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/reviews/D3_SEMANTIC_ENDPOINT_REVIEW.json",
+      "bytes": 24800,
+      "sha256": "a39d240de8cc70267299cae0db53955e44b1242641217d0a379d99bdc950a4cb",
+      "git_blob": "cb4042f7fdf89f1ef53f778f332fa35edd4b21ce"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/reviews/PROBE_CONTINUATION_SCOPE_REVIEW.json",
+      "bytes": 1805,
+      "sha256": "46eabb4572b8bf20ed0b6093b1afffae3fd1c02dcff5b8955dac88ba58c527fe",
+      "git_blob": "e3aa98ea2b98ed6dc5d48503aa7f1e41b8f795d5"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/reviews/RUNNER_V2_READONLY_REVIEW.json",
+      "bytes": 3848,
+      "sha256": "f6b069ed5841b44fecc880aa654a94db9cd55aaf3f1c7deef100df2a9d0303a7",
+      "git_blob": "9302f283b651b2298c4d731deb03b2132ec8d39b"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/reviews/RUNNER_V2_READONLY_REVIEW.md",
+      "bytes": 3513,
+      "sha256": "87ea55b58b7daba7f8830435bbe41133d7ef155adf4181d1600a77a10483091d",
+      "git_blob": "70f1cf394fa1e35f216a6f3b02922f8808828f15"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/reviews/verify_observed_evidence_c.py",
+      "bytes": 13280,
+      "sha256": "81ccad48bdfe06a7934a7e657635850a6786a3e1746afabca4a64c96c3f1a31c",
+      "git_blob": "090ca6531992f0440635ef183540393b917d65c2"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/verification/D3Probe.lean",
+      "bytes": 17965,
+      "sha256": "a61ab3753293be95512136ae6eca13cc32ede7e56825f8f9b872177d71d913ea",
+      "git_blob": "c8cae9ef930a0d2431133a83e5ccec8d6b58a03c"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/verification/D3ProbeFinal.diff",
+      "bytes": 289,
+      "sha256": "2ba82c1c3f744d4d5f6d88b86727071dc3cf44b5c42fa49563f46e2674bbfc0e",
+      "git_blob": "6d9912609b89e3dfe299b9a1a0826fddaaf256b4"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/verification/D3ProbeFinal.lean",
+      "bytes": 17941,
+      "sha256": "28c731287dc45ad7f7f6cbbdd67e011ef493614989da1462bf7f3135ed9bcb8c",
+      "git_blob": "d5de54b23aedb07db85be0ee6019d1ca7b0a342a"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/verification/D3ProbeFinal_CORRECTION_MANIFEST.json",
+      "bytes": 1317,
+      "sha256": "a7ca1afe0463d9a3a27882de33084cf421f1686223a1b6447414815d88cedc1a",
+      "git_blob": "6dd3c9ed6fc2122948e85a7adb7caeed96c0d068"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/verification/D3_PLAN.json",
+      "bytes": 29339,
+      "sha256": "70b15301958a5c078167f929865c469b3b6fda925db7c0cfa1572e03f54ee29d",
+      "git_blob": "73106496c3d1fbecd334a82cdc6ddaa007f12189"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/verification/EXPECTED_SOURCE_BLOBS.json",
+      "bytes": 124670,
+      "sha256": "ad3dd73e0a3c1acaa2e96646783ee40d633677a942604a4005ff3250aab06c7b",
+      "git_blob": "207c6ee8edc1a5f4b74087c8a2f57cfe2c08b1a7"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/verification/OVERLAY_V2_LOCAL_VALIDATION.json",
+      "bytes": 542,
+      "sha256": "f7d61a4c9aa2698a327c1287ed166d00b70ae424aef02ada6a65a9c7ef47f8b1",
+      "git_blob": "8d9b32edf09b05c84b32b8ca2f4bf97e6db1fe82"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/verification/PREPARATION_MANIFEST_V2.json",
+      "bytes": 2040,
+      "sha256": "6699e8989ed4be78230163bab2dd1026614cfda63f97d24544542288046010a7",
+      "git_blob": "3f061808990ca97688887c9cabea5591af9acbad"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/verification/REPRODUCTION_PLAN.md",
+      "bytes": 9838,
+      "sha256": "ebc0055218cfa62cd9b9c6d4e6a1362a3b39a8ac4d481cf0814b5875a7a2ec68",
+      "git_blob": "2ae91aa6578331f1a6c2fd1361ff3cd6bfc18788"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/verification/V2_CHANGELOG_AND_ACCEPTANCE.md",
+      "bytes": 5419,
+      "sha256": "991f065f84082582760e7a07a445df3e259fbaa6e2492080aede0d52ba8d9ae9",
+      "git_blob": "2bd7c200ee20c592f30b0e7c3cc1b7856fd01529"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/verification/parse_observed_axioms.py",
+      "bytes": 11660,
+      "sha256": "d993e7908969e8d71fb57c09dd26d4be9143dc12e6ed662915f5f029834b594a",
+      "git_blob": "f40ebb6c711f38276d6043e540a5f80a38cbf5c3"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/verification/run_d3_probe_continuation.py",
+      "bytes": 9621,
+      "sha256": "94e05fa5648467558c6e64782feb2afecb0d238762de581c30d9c29aaaa666a9",
+      "git_blob": "0b7c7d4d33d6a2471f592d93dac469c45230fd6e"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/verification/run_d3_reproduction.py",
+      "bytes": 15968,
+      "sha256": "bb8eb03264eb5243d5187f2cfc08148d4bb46672566829f29600be73079d5db3",
+      "git_blob": "d335d066a61e53b06463a88ae5297d89c9e1da8d"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/verification/run_d3_reproduction_v2.diff",
+      "bytes": 19212,
+      "sha256": "4668e6f5ba0d944928019623985ec4efa99ea52a3cb246e8faf145b3ed23c6e1",
+      "git_blob": "c8c0bb8e5965781c7df37b7c5812db09c05a4810"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/verification/run_d3_reproduction_v2.py",
+      "bytes": 26091,
+      "sha256": "31b1671dba48e01386c1afb95f2aaa038c6e9ae96e6339e970f31da31a9412d1",
+      "git_blob": "a350e5119015b140aabdf44a20352df2acbd08bd"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/verification/test_overlay_v2.py",
+      "bytes": 5339,
+      "sha256": "80b35396cfe1b5c02e4495f529581f00c1a5a542188f45e04d7655a29c639ca0",
+      "git_blob": "586f4367c9f49f1b80cb23811f1b86da8cd7f93c"
+    },
+    {
+      "path": "research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/verification/validate_d3_package.py",
+      "bytes": 11124,
+      "sha256": "708a1e5962b488e3424d19b70ea394401598f5c2117cf260e03919ab1cc96ba9",
+      "git_blob": "e4051af95d70d0c3eb5738a63522005402ff1c3d"
+    }
+  ],
+  "limits": [
+    "Targeted source recompilation with dependency caches",
+    "Mac binary hashes measured by the lead; independent agents cross-bound returned records",
+    "Pretty-printer ellipses supplemented from exact bound sources",
+    "Original wrappers failed; successful constituent commands and reviewed postprocessing support this acceptance",
+    "No empirical or global-priority promotion",
+    "GitHub integration is a separate observed event"
+  ]
+}

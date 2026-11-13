@@ -1,0 +1,89 @@
+{
+  "reviewer": "native agent C",
+  "review_time_utc": "2026-11-13T09:32:40.928972+00:00",
+  "status": "READY_FOR_SCOPED_EXECUTION",
+  "target_head": "6dd6a3bc13e26f41eddc10ee4d2f39fa1c8ab3d4",
+  "review_kind": "read-only runner/receipt review; no Lean or filesystem regression execution by C",
+  "fresh_lean_execution_by_C": false,
+  "v2_mac_execution_reviewed": false,
+  "static_checks": {
+    "manifest_mismatches": [],
+    "actual_diff_matches_provided": true,
+    "zip_mismatches": [],
+    "target_cache_files_are_links_only_when_unselected": true,
+    "overlay_directories_are_physical": true,
+    "selected_stems_excluded_for_all_extensions": true,
+    "deps_classified_after_strict_realpath_resolution": true,
+    "all_15_targets_required_as_new_regular_files": true,
+    "old_target_cache_unchanged_required": true,
+    "previous_identity_exit_axiom_gates_preserved": true,
+    "automatic_success_still_requires_semantic_review": true
+  },
+  "v1_observed": {
+    "status": "FAILED_OR_BLOCKED",
+    "process_exit_code": 1,
+    "steps": [
+      {
+        "label": "01-PredictionDependent-deps",
+        "exit_code": 0
+      }
+    ],
+    "fresh_lean_execution": false,
+    "source_compared_files": 1055,
+    "interpretation": "Dependency-path resolution stopped before production source recompilation; neither mathematical counterexample nor D3 PASS"
+  },
+  "reviewed_files": [
+    {
+      "path": "/workspace/scratch/0ba4bb70efc0/remediation-20261113/agents/B/reproduction-20261113/run_d3_reproduction_v2.py",
+      "bytes": 26091,
+      "sha256": "31b1671dba48e01386c1afb95f2aaa038c6e9ae96e6339e970f31da31a9412d1"
+    },
+    {
+      "path": "/workspace/scratch/0ba4bb70efc0/remediation-20261113/agents/B/reproduction-20261113/run_d3_reproduction_v2.diff",
+      "bytes": 19212,
+      "sha256": "4668e6f5ba0d944928019623985ec4efa99ea52a3cb246e8faf145b3ed23c6e1"
+    },
+    {
+      "path": "/workspace/scratch/0ba4bb70efc0/remediation-20261113/agents/B/reproduction-20261113/PREPARATION_MANIFEST_V2.json",
+      "bytes": 2040,
+      "sha256": "6699e8989ed4be78230163bab2dd1026614cfda63f97d24544542288046010a7"
+    },
+    {
+      "path": "/workspace/scratch/0ba4bb70efc0/remediation-20261113/agents/B/reproduction-20261113/V2_CHANGELOG_AND_ACCEPTANCE.md",
+      "bytes": 5419,
+      "sha256": "991f065f84082582760e7a07a445df3e259fbaa6e2492080aede0d52ba8d9ae9"
+    },
+    {
+      "path": "/workspace/scratch/0ba4bb70efc0/remediation-20261113/agents/B/reproduction-20261113/UEOT_D3_REPRODUCTION_BUNDLE_V2.zip",
+      "bytes": 67760,
+      "sha256": "d63db0f9d45abd025eaf1915a84151b0c0f07a82ebb8d80a635a70e257c68d00"
+    },
+    {
+      "path": "/workspace/scratch/0ba4bb70efc0/remediation-20261113/agents/B/reproduction-20261113/run_d3_reproduction.py",
+      "bytes": 15968,
+      "sha256": "bb8eb03264eb5243d5187f2cfc08148d4bb46672566829f29600be73079d5db3"
+    },
+    {
+      "path": "/workspace/scratch/0ba4bb70efc0/remediation-20261113/agents/B/reproduction-20261113/UEOT_D3_REPRODUCTION_BUNDLE.zip",
+      "bytes": 53646,
+      "sha256": "4315a1ff0193a8df70b007112ba89d9b3348ea1e9ae349d3b57b9805720d9aca"
+    },
+    {
+      "path": "/workspace/scratch/0ba4bb70efc0/remediation-20261113/agents/B/reproduction-20261113/OVERLAY_V2_LOCAL_VALIDATION.json",
+      "bytes": 542,
+      "sha256": "f7d61a4c9aa2698a327c1287ed166d00b70ae424aef02ada6a65a9c7ef47f8b1"
+    }
+  ],
+  "file_system_test_evidence": {
+    "source": "B existing OVERLAY_V2_LOCAL_VALIDATION.json",
+    "reported_status": "PASS_FILESYSTEM_REGRESSION_ONLY",
+    "independently_rerun_by_C": false
+  },
+  "limits": [
+    "Not a Mac execution result",
+    "Not D3 PASS",
+    "Not full clean build approval or requirement",
+    "No mathematical source or theorem changes reviewed here",
+    "Actual logs, exit codes, artifact identities and semantic types remain to be reviewed"
+  ]
+}

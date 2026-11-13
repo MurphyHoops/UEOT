@@ -1,0 +1,50 @@
+{
+  "utc": "2026-11-13T09:07:43.823850+00:00",
+  "branch": "ops/core-audit-closure-20261113",
+  "pr_before": {
+    "command": [
+      "/opt/homebrew/bin/gh",
+      "api",
+      "repos/MurphyHoops/UEOT/pulls/461",
+      "--jq",
+      "{merged: .merged, head: .head.sha, merge: .merge_commit_sha}"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"head\":\"40509e17d0a1d38a4e3ee47fadca0cff4759479c\",\"merge\":\"6dd6a3bc13e26f41eddc10ee4d2f39fa1c8ab3d4\",\"merged\":true}\n",
+    "stderr": ""
+  },
+  "ref_before": {
+    "command": [
+      "/opt/homebrew/bin/gh",
+      "api",
+      "repos/MurphyHoops/UEOT/git/ref/heads/ops/core-audit-closure-20261113"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"ref\":\"refs/heads/ops/core-audit-closure-20261113\",\"node_id\":\"REF_kwDORFmJQNoAKnJlZnMvaGVhZHMvb3BzL2NvcmUtYXVkaXQtY2xvc3VyZS0yMDI2MTExMw\",\"url\":\"https://api.github.com/repos/MurphyHoops/UEOT/git/refs/heads/ops/core-audit-closure-20261113\",\"object\":{\"sha\":\"40509e17d0a1d38a4e3ee47fadca0cff4759479c\",\"type\":\"commit\",\"url\":\"https://api.github.com/repos/MurphyHoops/UEOT/git/commits/40509e17d0a1d38a4e3ee47fadca0cff4759479c\"}}",
+    "stderr": ""
+  },
+  "delete": {
+    "command": [
+      "/opt/homebrew/bin/gh",
+      "api",
+      "--method",
+      "DELETE",
+      "repos/MurphyHoops/UEOT/git/refs/heads/ops/core-audit-closure-20261113"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "branches_after": {
+    "command": [
+      "/opt/homebrew/bin/gh",
+      "api",
+      "repos/MurphyHoops/UEOT/branches?per_page=100",
+      "--jq",
+      "map(.name)"
+    ],
+    "exit_code": 0,
+    "stdout": "[\"main\",\"physics/operational-micro-robust-20261111\",\"physics/v31.11-observed-integration-evidence\",\"physics/v31.12-growing-cutoff-recovery-20261112\",\"pub/mathematics-bilingual-edition\"]\n",
+    "stderr": ""
+  }
+}

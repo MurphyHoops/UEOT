@@ -1,0 +1,297 @@
+{
+  "review_role": "A read-only evidence and interpretation review; no Mac operation or new Lean run",
+  "execution_source_head": "6dd6a3bc13e26f41eddc10ee4d2f39fa1c8ab3d4",
+  "observed_evidence_files": [
+    {
+      "path": "run-20261113T0920Z/D3_RECEIPT.json",
+      "sha256": "4405f24626694a9da9ce49b567732df8f29a23bd78219f1b043b463e16af9a9e",
+      "bytes": 7611
+    },
+    {
+      "path": "run-20261113T0932Z/D3_RECEIPT.json",
+      "sha256": "aabc33bd9e5928a94cf0036ee2772de26eb082db7e976f65fee1b594fbb6dec1",
+      "bytes": 324894
+    },
+    {
+      "path": "D3_V2_PROCESS_EXIT.json",
+      "sha256": "2b55a06af2859ca9517ed9ee7f5256aae6b85111d740ef7e0a76f65b269a3dc8",
+      "bytes": 185
+    },
+    {
+      "path": "probe-continuation-20261113T0940Z/CONTINUATION_RECEIPT.json",
+      "sha256": "663eddf04eef161971e5d95760a36a0ff40ab6d33fd10bb795f197c81ab342a4",
+      "bytes": 25187
+    },
+    {
+      "path": "D3_CONTINUATION_PROCESS_EXIT.json",
+      "sha256": "287b9ce69a36f9654e1c48940722a5cfc4e4d82ca5dd0932cb55170f40c52c9e",
+      "bytes": 162
+    },
+    {
+      "path": "FINAL_SOURCE_ARTIFACT_CHECK.json",
+      "sha256": "3675c94b81842ca03b9fa109fa5dac6918c74af5a6939404bb78c45608a449db",
+      "bytes": 11251
+    },
+    {
+      "path": "probe-continuation-20261113T0940Z/D3ProbeFinal.log",
+      "sha256": "21dd301ebaa030f559bad47140b27d87760489fb3fb2c4c16a418b24d55cb65b",
+      "bytes": 134579
+    }
+  ],
+  "source_compilation": {
+    "selected_lean_source_files": 15,
+    "all_exit_zero": true,
+    "includes_public_UEOT_root": true,
+    "includes_boundary_consumer": true,
+    "not_full_clean_rebuild": true
+  },
+  "queries": {
+    "check_commands_in_probe": 44,
+    "axiom_commands_in_probe": 44,
+    "raw_axiom_results": 44,
+    "raw_axiom_names_equal_plan_in_order": true,
+    "fresh_source_module_endpoints": 37,
+    "cached_source_module_endpoints": 7,
+    "semantic_axiom_allowlist_validation": "Separate B/C review; A does not recast name-parser failure as a theorem failure"
+  },
+  "probe_correction": {
+    "removed_bytes": 24,
+    "only_removed_exact_option": true,
+    "old_sha256": "a61ab3753293be95512136ae6eca13cc32ede7e56825f8f9b872177d71d913ea",
+    "new_sha256": "28c731287dc45ad7f7f6cbbdd67e011ef493614989da1462bf7f3135ed9bcb8c"
+  },
+  "execution_and_wrapper_status": {
+    "v2_wrapper_status": "FAILED_OR_BLOCKED",
+    "v2_wrapper_exit": 1,
+    "continuation_lean_exit": 0,
+    "continuation_wrapper_status": "FAILED_OR_BLOCKED",
+    "continuation_wrapper_exit": 1,
+    "continuation_postprocessing_failure": "['Classical.choice.{u}', 'Quot.sound.{u}']"
+  },
+  "transferred_log_checks": [
+    {
+      "step": "01-PredictionDependent-deps",
+      "exit_code": 0,
+      "log_sha256": "83dcec7ff2398cb5a0666171a4a20ec20d6eedbd6c9a53aed7b1f57f3fdd1fa3",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "01-PredictionDependent",
+      "exit_code": 0,
+      "log_sha256": "c0d0dc32fc3ecf83cc217bc49688581bedfcd332f662c6e537a00b560bc2cf1e",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "02-FiniteDiscountedControl-deps",
+      "exit_code": 0,
+      "log_sha256": "6449bfeebcda7cd4537f1a1e196a8d6c9c0868d60f66e4ab9965d99f78ee2392",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "02-FiniteDiscountedControl",
+      "exit_code": 0,
+      "log_sha256": "7369ca55934d9ffa3f55c0d059c7a15a1756885cf5f6efbc35d2f5106fa13e25",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "03-FiniteDiscountedGreedy-deps",
+      "exit_code": 0,
+      "log_sha256": "20e9ba4923500117b06d07cd87ff175a116a8d4e82a5ced63435379f5b3d24af",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "03-FiniteDiscountedGreedy",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "04-CoreOperationalAssembly-deps",
+      "exit_code": 0,
+      "log_sha256": "056516232fcf0205bef7f16e906faf0603152a543c71dd789e97a683672cc7c5",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "04-CoreOperationalAssembly",
+      "exit_code": 0,
+      "log_sha256": "e499ce2ce7efe5465297a8acec3da86a95e4527d970448f64f68e28dff05502f",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "05-CoreRegenerativeSource-deps",
+      "exit_code": 0,
+      "log_sha256": "36eb08542ea11e7e0461ac1138a6b78c77da4a3b34e13c5b56f9caa5c95af18d",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "05-CoreRegenerativeSource",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "06-CoreRegenerativeRepair-deps",
+      "exit_code": 0,
+      "log_sha256": "08b7c25cdab0aef6d83d3a294894fc0bf459bb70d4a724ac9bb647ef7c638e8b",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "06-CoreRegenerativeRepair",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "07-CoreRegenerativeFormation-deps",
+      "exit_code": 0,
+      "log_sha256": "c9eb28a7997200e51475428be1f740233d3b4fa92d4e478d75c4534c05e11582",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "07-CoreRegenerativeFormation",
+      "exit_code": 0,
+      "log_sha256": "a537418b4109062b232beeab33a724396311a89e9a3bfe3c1aa42e9520c1875c",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "08-CoreRegenerativePopulation-deps",
+      "exit_code": 0,
+      "log_sha256": "693b7336d08b4f6ce6fee5c867668db14d0357d79ecf49127790025ab68c0d3d",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "08-CoreRegenerativePopulation",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "09-CoreRegenerativeControlPopulation-deps",
+      "exit_code": 0,
+      "log_sha256": "c473f3ac80783715321c6a66f91a375d2f2551e0954cf4285bd6747a8b91ded3",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "09-CoreRegenerativeControlPopulation",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "10-CoreRegenerativeGrowthClassification-deps",
+      "exit_code": 0,
+      "log_sha256": "60c09047ab56da8ab70eeb18735016a85c7170a91e90465c94af84af1e244fef",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "10-CoreRegenerativeGrowthClassification",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "11-CoreRegenerativeGrowthPopulation-deps",
+      "exit_code": 0,
+      "log_sha256": "e4243a42517d740be3e99091901909c06cee9c4613887fb0027344f7ecc90917",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "11-CoreRegenerativeGrowthPopulation",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "12-CoreRegenerativeGrowthAttainment-deps",
+      "exit_code": 0,
+      "log_sha256": "23bc65e6475e378b5ef5458a3edf77af1bb80f8ad5ab82d33c9224a8d57172fe",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "12-CoreRegenerativeGrowthAttainment",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "13-CoreTheoryClosure-deps",
+      "exit_code": 0,
+      "log_sha256": "6f8a157595c6ab5cc803ee3445d012f19e8babe0d7d85e33263224b002068dd3",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "13-CoreTheoryClosure",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "14-GrowthClassificationCheck-deps",
+      "exit_code": 0,
+      "log_sha256": "0dfaf94333d9862e06338dbb533b6168a6afb8b14dc45950402597720c1c151f",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "14-GrowthClassificationCheck",
+      "exit_code": 0,
+      "log_sha256": "f4b86d824ae9704af0584bcbea5b04153ff36d11841256c58e7ef79cb03c36d0",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "15-UEOT-deps",
+      "exit_code": 0,
+      "log_sha256": "d4b70985ea571687c3438d873ff70c3e1d9d8759b5ce74e0baf3cacfc84ed229",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "15-UEOT",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "D3Probe-deps",
+      "exit_code": 0,
+      "log_sha256": "fb9bf7e78ccdc3cef42263cb2aab2d6507606140b43d771ac8ef0881ba041a37",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "D3Probe",
+      "exit_code": 1,
+      "log_sha256": "1f1bb4ecf2b9a9479b8d68a83044bffe568491aefade53d1058a721f516d7943",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "D3ProbeFinal-deps",
+      "exit_code": 0,
+      "log_sha256": "fb9bf7e78ccdc3cef42263cb2aab2d6507606140b43d771ac8ef0881ba041a37",
+      "matches_transferred_log": true
+    },
+    {
+      "step": "D3ProbeFinal",
+      "exit_code": 0,
+      "log_sha256": "21dd301ebaa030f559bad47140b27d87760489fb3fb2c4c16a418b24d55cb65b",
+      "matches_transferred_log": true
+    }
+  ],
+  "post_execution_receipt": {
+    "utc": "2026-11-13T09:41:17.792945+00:00",
+    "kind": "POST_EXECUTION_SOURCE_ARTIFACT_CHECK_NOT_SEMANTIC_ACCEPTANCE",
+    "records_unchanged_source_and_config_files": 1055,
+    "records_unchanged_new_source_artifacts": 30,
+    "records_old_target_cache": {
+      "status": "UNCHANGED",
+      "before_count": 63,
+      "after_count": 63,
+      "changes": []
+    },
+    "recorded_log_bindings_match_local_transferred_bytes": true
+  },
+  "limits": [
+    "A read execution evidence; A did not perform another Mac run.",
+    "15 selected files include public import entry and boundary consumer; not 15 new theorems.",
+    "44 fresh queries are not 44 independently rebuilt source modules.",
+    "Original failed wrapper receipts remain unchanged.",
+    "Final README/CURRENT wording review is pending receipt of the draft."
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "reviewer": "native agent C",
+  "reviewed_utc": "2026-11-13T09:39:20.626905+00:00",
+  "status": "READY_FOR_SCOPED_PROBE_EXECUTION",
+  "review_type": "read-only code and byte identity, not actual Lean execution",
+  "script": "/workspace/scratch/0ba4bb70efc0/remediation-20261113/run_d3_probe_continuation.py",
+  "script_bytes": 9621,
+  "script_sha256": "94e05fa5648467558c6e64782feb2afecb0d238762de581c30d9c29aaaa666a9",
+  "previous_reviewed_script_sha256": "ca3dd9dbc3bdebc6312da870c91c3d6243bef517f0fabbc1d1aa759c371bd051",
+  "narrow_change_verified": {
+    "added_bytes": 508,
+    "only_additions": [
+      "explicit Python optimization refusal before all assertions",
+      "bind current plan/source-manifest hashes to v2 receipt before loading JSON",
+      "record optimization and both hashes"
+    ],
+    "removing_those_blocks_recovers_previous_sha256": true
+  },
+  "findings": [
+    {
+      "id": "C-CONT-01",
+      "finding": "Assertions require nonoptimized interpreter",
+      "disposition": "CLOSED: explicit if sys.flags.optimize raises before every assert; parent also selects PYTHONOPTIMIZE=0"
+    },
+    {
+      "id": "C-CONT-02",
+      "finding": "Current whitelist/manifest must be rebound to previous executed bundle",
+      "disposition": "CLOSED: both current files compared with previous.bundle_sha256 before json parsing"
+    }
+  ],
+  "source_compilations_authorized_in_continuation": 0,
+  "lean_commands": [
+    "--deps on corrected probe",
+    "compile corrected probe to new output slots"
+  ],
+  "unchanged_proof_scope": true,
+  "unresolved_blocking_code_findings": [],
+  "fresh_lean_execution_by_C": false,
+  "actual_v2_and_continuation_receipts_pending_review": true
+}

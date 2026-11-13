@@ -1,0 +1,50 @@
+{
+  "reviewer": "native agent C",
+  "status": "ACCEPT_D3_IN_DECLARED_TARGETED_EXECUTION_SCOPE",
+  "mechanical_verification": "C_OBSERVED_EVIDENCE_VERIFICATION.json",
+  "mechanical_verification_sha256": "00ec592af3158beccecebdc19b56ff90dac36de1879a5f775b4383d286147911",
+  "ellipsis_source_readback": [
+    {
+      "module": "UEOT.V3.PredictionDependent",
+      "sha256": "54f2569cf7323471f9f4214a78df41ab53f276231f78645a810bba44e1172e92",
+      "matches_observed_compiled_source_sha256": true,
+      "read_ranges": "1–78; especially 40–58"
+    },
+    {
+      "module": "UEOT.V3.CoreOperationalAssembly",
+      "sha256": "1f8c4f5be6d3906cdeaa6d88809cc5e0fa5f601ce8b69b21cef67a16dc7a7384",
+      "matches_observed_compiled_source_sha256": true,
+      "read_ranges": "201–220, 253–284, 518–559, 702–839"
+    }
+  ],
+  "B_parser_sha256": "d993e7908969e8d71fb57c09dd26d4be9143dc12e6ed662915f5f029834b594a",
+  "B_result_sha256": "cf618add6130504e0a7b7dfdadedfb5fcebe86c105506920cf5d14c581dca154",
+  "independent_literal_match_vs_B_mismatches": [],
+  "remaining_blocking_findings": [],
+  "C_ran_Lean": false,
+  "C_rehashed_remote_binary_artifacts": false,
+  "Mac_artifact_hash_evidence": "actual lead post-execution readback cross-bound to source receipts by C",
+  "reported_type_queries": 44,
+  "reported_definitions": 12,
+  "display_ellipsis_count": 19,
+  "full_pretty_print_expansion_claimed": false,
+  "native_computations_rerun": false,
+  "source_recompilations_in_continuation": 0,
+  "wrapper_failure_records_preserved": true,
+  "cross_questions_to_B": [
+    "Keep printed-query success distinct from full expansion; identify source supplementation",
+    "Keep artifact-record cross-binding distinct from C/B rehashing remote binaries; no native rerun claim"
+  ],
+  "cross_question_reply": {
+    "B_report": "B_D3_MATHEMATICAL_REVIEW.md",
+    "sha256": "7e89fa36f5ccaa2fbcd6b1e694ade5fa7453e2e3b301cfd6294606845a0c470b",
+    "sections_read_by_C": [
+      "2: binary readback scope",
+      "5: display ellipsis and source supplement"
+    ],
+    "both_scope_questions_closed": true,
+    "prior_read_version_sha256": "77fc1f7a195f98bc56885291f8807af457fee1adb7f0877505f9c14955c26200",
+    "final_only_line_reference_corrections_independently_verified": true
+  },
+  "C_final_report_sha256": "50f0db30fddc1bc68afb1668b568cd99b95049086a20b84ee99ca7c4a80f3a81"
+}

@@ -1,0 +1,29 @@
+{
+  "command": [
+    "python3",
+    "/workspace/scratch/0ba4bb70efc0/remediation-20261113/repo/formalization/ueot-core/scripts/validate_compression_research.py",
+    "--repo-root",
+    "/workspace/scratch/0ba4bb70efc0/remediation-20261113/repo",
+    "--baseline-ref",
+    "6dd6a3bc13e26f41eddc10ee4d2f39fa1c8ab3d4",
+    "--candidate-ref",
+    "6e01b5776ac83a85c323af45f8dc04b6ae426545",
+    "--changed-path-file",
+    "/workspace/scratch/0ba4bb70efc0/remediation-20261113/reproduction-evidence/d3_changed_paths.txt",
+    "--branch-name",
+    "ops/core-audit-reproduction-20261113",
+    "--head-repo",
+    "MurphyHoops/UEOT",
+    "--base-repo",
+    "MurphyHoops/UEOT",
+    "--live-branches-file",
+    "/workspace/scratch/0ba4bb70efc0/remediation-20261113/reproduction-evidence/live_branches_before_publication.txt"
+  ],
+  "exit_code": 1,
+  "candidate_tree_at_gate": "6e01b5776ac83a85c323af45f8dc04b6ae426545",
+  "changed_path_count": 96,
+  "validator_source_sha256": "01020dfa2f7bcda1959a945979ed5d9c138d347717f61da2e437d645d5596205",
+  "output_sha256": "b5d9536f7eda16e66587b64df28b3cff61ea9212cdb79c4d818b1cc8762990b7",
+  "new_lean_execution": false,
+  "preflight_repair": "Materialized two unchanged indexed policy files missing from the sparse working directory; validator and policy bytes unchanged"
+}
