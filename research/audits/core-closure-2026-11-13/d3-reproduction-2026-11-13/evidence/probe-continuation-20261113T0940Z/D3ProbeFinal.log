@@ -1,0 +1,1852 @@
+structure UEOT.V3.FiniteDiscountedControl.Model.{uX, uA} (X : Type uX) [Fintype.{uX} X] (A : X → Type uA)
+  [(x : X) → Fintype.{uA} (A x)] : Type (max uA uX)
+number of parameters: 4
+fields:
+  UEOT.V3.FiniteDiscountedControl.Model.transition.{uX, uA} : (x : X) → A x → X → Real
+  UEOT.V3.FiniteDiscountedControl.Model.reward.{uX, uA} : (x : X) → A x → Real
+  UEOT.V3.FiniteDiscountedControl.Model.rewardBound.{uX, uA} : Real
+  UEOT.V3.FiniteDiscountedControl.Model.discount.{uX, uA} : Real
+  UEOT.V3.FiniteDiscountedControl.Model.transition_nonneg.{uX,
+    uA} : ∀ (x : X) (a : A x) (y : X),
+      @LE.le.{0} Real Real.instLE (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero))
+        (@UEOT.V3.FiniteDiscountedControl.Model.transition.{uX, uA} X inst✝¹ A inst✝ self x a y)
+  UEOT.V3.FiniteDiscountedControl.Model.transition_sum_one.{uX,
+    uA} : ∀ (x : X) (a : A x),
+      @Eq.{1} Real (∑ y, @UEOT.V3.FiniteDiscountedControl.Model.transition.{uX, uA} X inst✝¹ A inst✝ self x a y)
+        (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne))
+  UEOT.V3.FiniteDiscountedControl.Model.reward_abs_le.{uX,
+    uA} : ∀ (x : X) (a : A x),
+      @LE.le.{0} Real Real.instLE
+        (@abs.{0} Real Real.lattice Real.instAddGroup
+          (@UEOT.V3.FiniteDiscountedControl.Model.reward.{uX, uA} X inst✝¹ A inst✝ self x a))
+        (@UEOT.V3.FiniteDiscountedControl.Model.rewardBound.{uX, uA} X inst✝¹ A inst✝ self)
+  UEOT.V3.FiniteDiscountedControl.Model.discount_pos.{uX,
+    uA} : @LT.lt.{0} Real Real.instLT (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero))
+      (@UEOT.V3.FiniteDiscountedControl.Model.discount.{uX, uA} X inst✝¹ A inst✝ self)
+  UEOT.V3.FiniteDiscountedControl.Model.discount_lt_one.{uX,
+    uA} : @LT.lt.{0} Real Real.instLT (@UEOT.V3.FiniteDiscountedControl.Model.discount.{uX, uA} X inst✝¹ A inst✝ self)
+      (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne))
+constructor:
+  UEOT.V3.FiniteDiscountedControl.Model.mk.{uX, uA} {X : Type uX} [Fintype.{uX} X] {A : X → Type uA}
+    [(x : X) → Fintype.{uA} (A x)] (transition : (x : X) → A x → X → Real) (reward : (x : X) → A x → Real)
+    (rewardBound discount : Real)
+    (transition_nonneg :
+      ∀ (x : X) (a : A x) (y : X),
+        @LE.le.{0} Real Real.instLE (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero))
+          (transition x a y))
+    (transition_sum_one :
+      ∀ (x : X) (a : A x),
+        @Eq.{1} Real (∑ y, transition x a y) (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne)))
+    (reward_abs_le :
+      ∀ (x : X) (a : A x),
+        @LE.le.{0} Real Real.instLE (@abs.{0} Real Real.lattice Real.instAddGroup (reward x a)) rewardBound)
+    (discount_pos :
+      @LT.lt.{0} Real Real.instLT (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero)) discount)
+    (discount_lt_one :
+      @LT.lt.{0} Real Real.instLT discount (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne))) :
+    @UEOT.V3.FiniteDiscountedControl.Model.{uX, uA} X inst✝ A inst✝¹
+structure UEOT.V3.CoreOperationalAssembly.FixedSourceApproximation.{uX, uM, uA} {X : Type uX} [Fintype.{uX} X]
+  {M : Type uM} [Fintype.{uM} M] {Abar : M → Type uA} [(m : M) → Fintype.{uA} (Abar m)]
+  [∀ (m : M), Nonempty.{uA + 1} (Abar m)] (f : X → M)
+  (micro : @UEOT.V3.FiniteDiscountedControl.Model.{uX, uA} X inst✝ (fun x => Abar (f x)) fun x => inst✝¹ (f x))
+  (εr εp : Real) : Type (max uA uM)
+number of parameters: 11
+fields:
+  UEOT.V3.CoreOperationalAssembly.FixedSourceApproximation.macroModel.{uX, uM,
+    uA} : @UEOT.V3.FiniteDiscountedControl.Model.{uM, uA} M inst✝² Abar inst✝¹
+  UEOT.V3.CoreOperationalAssembly.FixedSourceApproximation.discount_eq.{uX, uM,
+    uA} : @Eq.{1} Real
+      (@UEOT.V3.FiniteDiscountedControl.Model.discount.{uX, uA} X inst✝³ (fun x => Abar (f x)) (fun x => inst✝¹ (f x))
+        micro)
+      (@UEOT.V3.FiniteDiscountedControl.Model.discount.{uM, uA} M inst✝² Abar inst✝¹
+        (@UEOT.V3.CoreOperationalAssembly.FixedSourceApproximation.macroModel.{uX, uM, uA} X inst✝³ M inst✝² Abar inst✝¹
+          inst✝ f micro εr εp self))
+  UEOT.V3.CoreOperationalAssembly.FixedSourceApproximation.reward_approx.{uX, uM,
+    uA} : ∀ (x : X) (a : Abar (f x)),
+      @LE.le.{0} Real Real.instLE
+        (@abs.{0} Real Real.lattice Real.instAddGroup
+          (@HSub.hSub.{0, 0, 0} Real Real Real (@instHSub.{0} Real Real.instSub)
+            (@UEOT.V3.FiniteDiscountedControl.Model.reward.{uX, uA} X inst✝³ (fun x => Abar (f x))
+              (fun x => inst✝¹ (f x)) micro x a)
+            (@UEOT.V3.FiniteDiscountedControl.Model.reward.{uM, uA} M inst✝² Abar inst✝¹
+              (@UEOT.V3.CoreOperationalAssembly.FixedSourceApproximation.macroModel.{uX, uM, uA} X inst✝³ M inst✝² Abar
+                inst✝¹ inst✝ f micro εr εp self)
+              (f x) a)))
+        εr
+  UEOT.V3.CoreOperationalAssembly.FixedSourceApproximation.transition_tv_approx.{uX, uM,
+    uA} : ∀ (x : X) (a : Abar (f x)),
+      @LE.le.{0} Real Real.instLE
+        (@UEOT.V3.FiniteDiscountedControl.FiniteProbabilityRow.tvDist.{uM} M
+          (@UEOT.V3.FiniteDiscountedControl.pushforwardTransitionPMF.{uX, uM, uA} X inst✝³ M inst✝²
+            (fun x => Abar (f x)) (fun x => inst✝¹ (f x)) f micro x a)
+          (@UEOT.V3.FiniteDiscountedControl.Model.transitionPMF.{uM, uA} M inst✝² Abar inst✝¹
+            (@UEOT.V3.CoreOperationalAssembly.FixedSourceApproximation.macroModel.{uX, uM, uA} X inst✝³ M inst✝² Abar
+              inst✝¹ inst✝ f micro εr εp self)
+            (f x) a))
+        εp
+constructor:
+  UEOT.V3.CoreOperationalAssembly.FixedSourceApproximation.mk.{uX, uM, uA} {X : Type uX} [Fintype.{uX} X] {M : Type uM}
+    [Fintype.{uM} M] {Abar : M → Type uA} [(m : M) → Fintype.{uA} (Abar m)] [∀ (m : M), Nonempty.{uA + 1} (Abar m)]
+    {f : X → M}
+    {micro : @UEOT.V3.FiniteDiscountedControl.Model.{uX, uA} X inst✝ (fun x => Abar (f x)) fun x => inst✝¹ (f x)}
+    {εr εp : Real} (macroModel : @UEOT.V3.FiniteDiscountedControl.Model.{uM, uA} M inst✝² Abar inst✝¹)
+    (discount_eq :
+      @Eq.{1} Real
+        (@UEOT.V3.FiniteDiscountedControl.Model.discount.{uX, uA} X inst✝ (fun x => Abar (f x)) (fun x => inst✝¹ (f x))
+          micro)
+        (@UEOT.V3.FiniteDiscountedControl.Model.discount.{uM, uA} M inst✝² Abar inst✝¹ macroModel))
+    (reward_approx :
+      ∀ (x : X) (a : Abar (f x)),
+        @LE.le.{0} Real Real.instLE
+          (@abs.{0} Real Real.lattice Real.instAddGroup
+            (@HSub.hSub.{0, 0, 0} Real Real Real (@instHSub.{0} Real Real.instSub)
+              (@UEOT.V3.FiniteDiscountedControl.Model.reward.{uX, uA} X inst✝ (fun x => Abar (f x))
+                (fun x => inst✝¹ (f x)) micro x a)
+              (@UEOT.V3.FiniteDiscountedControl.Model.reward.{uM, uA} M inst✝² Abar inst✝¹ macroModel (f x) a)))
+          εr)
+    (transition_tv_approx :
+      ∀ (x : X) (a : Abar (f x)),
+        @LE.le.{0} Real Real.instLE
+          (@UEOT.V3.FiniteDiscountedControl.FiniteProbabilityRow.tvDist.{uM} M
+            (@UEOT.V3.FiniteDiscountedControl.pushforwardTransitionPMF.{uX, uM, uA} X inst✝ M inst✝²
+              (fun x => Abar (f x)) (fun x => inst✝¹ (f x)) f micro x a)
+            (@UEOT.V3.FiniteDiscountedControl.Model.transitionPMF.{uM, uA} M inst✝² Abar inst✝¹ macroModel (f x) a))
+          εp) :
+    @UEOT.V3.CoreOperationalAssembly.FixedSourceApproximation.{uX, uM, uA} X inst✝ M inst✝² Abar inst✝¹ inst✝³ f micro
+      εr εp
+structure UEOT.V3.CoreOperationalAssembly.CorePointwiseCertificate.{uV, uH, uI, uR, uY, uX, uM, uA, uObj} {V : Type uV}
+  [Fintype.{uV} V] [DecidableEq.{uV + 1} V] {H : Type uH} [Fintype.{uH} H] [Nonempty.{uH + 1} H] {I : Type uI}
+  [Fintype.{uI} I] [Nonempty.{uI + 1} I] {R : Type uR} {Y : Type uY} [MeasurableSpace.{uY} Y]
+  (readout : Finset.{uV} V → H → R) (p pHat : H → I → @MeasureTheory.Measure.{uY} Y inst✝) (γ τ : Real) {X : Type uX}
+  [Fintype.{uX} X] [DecidableEq.{uX + 1} X] [Nonempty.{uX + 1} X] [MeasurableSpace.{uX} X]
+  [@MeasurableSingletonClass.{uX} X inst✝¹] {M : Type uM} [Fintype.{uM} M] {Abar : M → Type uA}
+  [(m : M) → Fintype.{uA} (Abar m)] [∀ (m : M), Nonempty.{uA + 1} (Abar m)]
+  (Q : @UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.{uX, uM, uA} X inst✝² M inst✝³ Abar inst✝⁴ inst✝⁵)
+  (microHat :
+    @UEOT.V3.FiniteDiscountedControl.Model.{uX, uA} X inst✝²
+      (fun x =>
+        Abar
+          (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{uX, uM, uA} X inst✝² M inst✝³ Abar inst✝⁴ inst✝⁵ Q
+            x))
+      fun x =>
+      inst✝⁴
+        (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{uX, uM, uA} X inst✝² M inst✝³ Abar inst✝⁴ inst✝⁵ Q
+          x))
+  (p₀ : PMF.{uX} X) (εPath : Nat → Real) {Obj : Type uObj} [PseudoMetricSpace.{uObj} Obj] (failure : Set.{uObj} Obj)
+  (object objectHat : Obj) : Prop
+number of parameters: 37
+fields:
+  UEOT.V3.CoreOperationalAssembly.CorePointwiseCertificate.predictive_recovery.{uV, uH, uI, uR, uY, uX, uM, uA,
+    uObj} : ∀ (h h' : H),
+      Iff
+        (@LE.le.{0} Real Real.instLE
+          (@UEOT.V3.PredictiveClassRecovery.protocolDistance.{uH, uI, uY} H I Y inst✝⁹ pHat h h')
+          (@HDiv.hDiv.{0, 0, 0} Real Real Real (@instHDiv.{0} Real (@DivInvMonoid.toDiv.{0} Real Real.instDivInvMonoid))
+            γ (@OfNat.ofNat.{0} Real (nat_lit 2) (@instOfNatAtLeastTwo.{0} Real (nat_lit 2) Real.instNatCast ⋯))))
+        (@UEOT.V3.PredictiveClassRecovery.trueEquivalent.{uH, uI, uY} H I Y inst✝⁹ p h h')
+  UEOT.V3.CoreOperationalAssembly.CorePointwiseCertificate.carrier_recovery.{uV, uH, uI, uR, uY, uX, uM, uA,
+    uObj} : @Eq.{uV + 1} (Set.{uV} (Finset.{uV} V))
+      (@UEOT.V3.CoreOperationalAssembly.estimatedCarrierFamily.{uV, uH, uI, uR, uY} V H I R Y inst✝⁹ readout pHat τ)
+      (@UEOT.V3.CoreOperationalAssembly.exactCarrierFamily.{uV, uH, uI, uR, uY} V H I R Y inst✝⁹ readout p)
+  UEOT.V3.CoreOperationalAssembly.CorePointwiseCertificate.blocker_recovery.{uV, uH, uI, uR, uY, uX, uM, uA,
+    uObj} : @Eq.{uV + 1} (Set.{uV} (Finset.{uV} V))
+      (@UEOT.Blocker.blocker.{uV} V
+        (@UEOT.V3.CoreOperationalAssembly.estimatedCarrierFamily.{uV, uH, uI, uR, uY} V H I R Y inst✝⁹ readout pHat τ))
+      (@UEOT.Blocker.blocker.{uV} V
+        (@UEOT.V3.CoreOperationalAssembly.exactCarrierFamily.{uV, uH, uI, uR, uY} V H I R Y inst✝⁹ readout p))
+  UEOT.V3.CoreOperationalAssembly.CorePointwiseCertificate.control.{uV, uH, uI, uR, uY, uX, uM, uA,
+    uObj} : @UEOT.V3.CoreOperationalAssembly.ControlCertificate.{uX, uM, uA} X inst✝⁸ M inst✝³ Abar inst✝² inst✝¹ Q
+  UEOT.V3.CoreOperationalAssembly.CorePointwiseCertificate.action.{uV, uH, uI, uR, uY, uX, uM, uA,
+    uObj} : @UEOT.V3.CoreOperationalAssembly.ActionCertificate.{uX, uM, uA} X inst✝⁸ M inst✝³ Abar inst✝² inst✝¹ Q
+  UEOT.V3.CoreOperationalAssembly.CorePointwiseCertificate.path.{uV, uH, uI, uR, uY, uX, uM, uA,
+    uObj} : @UEOT.V3.CoreOperationalAssembly.PathCertificate.{uX, uA} X inst✝⁸ inst✝⁵ inst✝⁴
+      (fun x =>
+        Abar
+          (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{uX, uM, uA} X inst✝⁸ M inst✝³ Abar inst✝² inst✝¹ Q
+            x))
+      (fun x =>
+        inst✝²
+          (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{uX, uM, uA} X inst✝⁸ M inst✝³ Abar inst✝² inst✝¹ Q
+            x))
+      ⋯
+      (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.micro.{uX, uM, uA} X inst✝⁸ M inst✝³ Abar inst✝² inst✝¹ Q)
+      microHat
+      (@UEOT.V3.CoreOperationalAssembly.quotientLiftedPolicy.{uX, uM, uA} X inst✝⁸ M inst✝³ Abar inst✝² inst✝¹ Q) p₀
+      εPath
+  UEOT.V3.CoreOperationalAssembly.CorePointwiseCertificate.mixing_goa.{uV, uH, uI, uR, uY, uX, uM, uA,
+    uObj} : @UEOT.V3.CoreOperationalAssembly.MixingGOACertificate.{uX, uA} X inst✝⁸ inst✝⁷ inst✝⁶
+      (fun x =>
+        Abar
+          (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{uX, uM, uA} X inst✝⁸ M inst✝³ Abar inst✝² inst✝¹ Q
+            x))
+      (fun x =>
+        inst✝²
+          (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{uX, uM, uA} X inst✝⁸ M inst✝³ Abar inst✝² inst✝¹ Q
+            x))
+      ⋯
+      (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.micro.{uX, uM, uA} X inst✝⁸ M inst✝³ Abar inst✝² inst✝¹ Q)
+      microHat
+      (@UEOT.V3.CoreOperationalAssembly.quotientLiftedPolicy.{uX, uM, uA} X inst✝⁸ M inst✝³ Abar inst✝² inst✝¹ Q)
+  UEOT.V3.CoreOperationalAssembly.CorePointwiseCertificate.recurrent_goa.{uV, uH, uI, uR, uY, uX, uM, uA,
+    uObj} : @UEOT.V3.CoreOperationalAssembly.RecurrentGOACertificate.{uX, uA} X inst✝⁸
+      (fun x =>
+        Abar
+          (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{uX, uM, uA} X inst✝⁸ M inst✝³ Abar inst✝² inst✝¹ Q
+            x))
+      (fun x =>
+        inst✝²
+          (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{uX, uM, uA} X inst✝⁸ M inst✝³ Abar inst✝² inst✝¹ Q
+            x))
+      ⋯
+      (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.micro.{uX, uM, uA} X inst✝⁸ M inst✝³ Abar inst✝² inst✝¹ Q)
+      microHat
+      (@UEOT.V3.CoreOperationalAssembly.quotientLiftedPolicy.{uX, uM, uA} X inst✝⁸ M inst✝³ Abar inst✝² inst✝¹ Q)
+  UEOT.V3.CoreOperationalAssembly.CorePointwiseCertificate.history_transport.{uV, uH, uI, uR, uY, uX, uM, uA,
+    uObj} : ∀ {MH : Nat → Type uH} [inst : (n : Nat) → MeasurableSpace.{uH} (MH n)]
+      (S : @UEOT.V3.TransportDefect.FrozenTransportSystem.{uH} MH inst) (ε : Nat → Real)
+      [Nonempty.{uH + 1} (MH (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))],
+      @UEOT.V3.TransportDefect.FrozenTransportSystem.AdjacentBound.{uH} MH inst S ε →
+        ∀ (n : Nat),
+          @LE.le.{0} Real Real.instLE
+            (@SupSet.sSup.{0} Real Real.instSupSet
+              (@Set.range.{0, uH + 1} Real (MH (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) fun m =>
+                @UEOT.V3.TotalVariation.tvDist.{uH} (MH n) (inst n)
+                  (@MeasureTheory.Measure.map.{uH, uH}
+                    (MH (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) (MH n)
+                    (inst (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) (inst n)
+                    (@UEOT.V3.TransportDefect.FrozenTransportSystem.Γ.{uH} MH inst S
+                      (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) n)
+                    (@UEOT.V3.TransportDefect.FrozenTransportSystem.K.{uH} MH inst S
+                      (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) m))
+                  (@UEOT.V3.TransportDefect.FrozenTransportSystem.K.{uH} MH inst S n
+                    (@UEOT.V3.TransportDefect.FrozenTransportSystem.Γ.{uH} MH inst S
+                      (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) n m))))
+            (∑ i ∈ Finset.range n, ε i)
+  UEOT.V3.CoreOperationalAssembly.CorePointwiseCertificate.integrity.{uV, uH, uI, uR, uY, uX, uM, uA,
+    uObj} : @LT.lt.{0} Real Real.instLT (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero))
+      (@UEOT.V3.OmegaIntegrityMargin.integrityMargin.{uObj} Obj inst✝ failure object)
+constructor:
+  UEOT.V3.CoreOperationalAssembly.CorePointwiseCertificate.mk.{uV, uH, uI, uR, uY, uX, uM, uA, uObj} {V : Type uV}
+    [Fintype.{uV} V] [DecidableEq.{uV + 1} V] {H : Type uH} [Fintype.{uH} H] [Nonempty.{uH + 1} H] {I : Type uI}
+    [Fintype.{uI} I] [Nonempty.{uI + 1} I] {R : Type uR} {Y : Type uY} [MeasurableSpace.{uY} Y]
+    {readout : Finset.{uV} V → H → R} {p pHat : H → I → @MeasureTheory.Measure.{uY} Y inst✝} {γ τ : Real} {X : Type uX}
+    [Fintype.{uX} X] [DecidableEq.{uX + 1} X] [Nonempty.{uX + 1} X] [MeasurableSpace.{uX} X]
+    [@MeasurableSingletonClass.{uX} X inst✝¹] {M : Type uM} [Fintype.{uM} M] {Abar : M → Type uA}
+    [(m : M) → Fintype.{uA} (Abar m)] [∀ (m : M), Nonempty.{uA + 1} (Abar m)]
+    {Q : @UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.{uX, uM, uA} X inst✝² M inst✝³ Abar inst✝⁴ inst✝⁵}
+    {microHat :
+      @UEOT.V3.FiniteDiscountedControl.Model.{uX, uA} X inst✝²
+        (fun x =>
+          Abar
+            (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{uX, uM, uA} X inst✝² M inst✝³ Abar inst✝⁴ inst✝⁵
+              Q x))
+        fun x =>
+        inst✝⁴
+          (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{uX, uM, uA} X inst✝² M inst✝³ Abar inst✝⁴ inst✝⁵ Q
+            x)}
+    {p₀ : PMF.{uX} X} {εPath : Nat → Real} {Obj : Type uObj} [PseudoMetricSpace.{uObj} Obj] {failure : Set.{uObj} Obj}
+    {object objectHat : Obj}
+    (predictive_recovery :
+      ∀ (h h' : H),
+        Iff
+          (@LE.le.{0} Real Real.instLE
+            (@UEOT.V3.PredictiveClassRecovery.protocolDistance.{uH, uI, uY} H I Y inst✝ pHat h h')
+            (@HDiv.hDiv.{0, 0, 0} Real Real Real
+              (@instHDiv.{0} Real (@DivInvMonoid.toDiv.{0} Real Real.instDivInvMonoid)) γ
+              (@OfNat.ofNat.{0} Real (nat_lit 2) (@instOfNatAtLeastTwo.{0} Real (nat_lit 2) Real.instNatCast ⋯))))
+          (@UEOT.V3.PredictiveClassRecovery.trueEquivalent.{uH, uI, uY} H I Y inst✝ p h h'))
+    (carrier_recovery :
+      @Eq.{uV + 1} (Set.{uV} (Finset.{uV} V))
+        (@UEOT.V3.CoreOperationalAssembly.estimatedCarrierFamily.{uV, uH, uI, uR, uY} V H I R Y inst✝ readout pHat τ)
+        (@UEOT.V3.CoreOperationalAssembly.exactCarrierFamily.{uV, uH, uI, uR, uY} V H I R Y inst✝ readout p))
+    (blocker_recovery :
+      @Eq.{uV + 1} (Set.{uV} (Finset.{uV} V))
+        (@UEOT.Blocker.blocker.{uV} V
+          (@UEOT.V3.CoreOperationalAssembly.estimatedCarrierFamily.{uV, uH, uI, uR, uY} V H I R Y inst✝ readout pHat τ))
+        (@UEOT.Blocker.blocker.{uV} V
+          (@UEOT.V3.CoreOperationalAssembly.exactCarrierFamily.{uV, uH, uI, uR, uY} V H I R Y inst✝ readout p)))
+    (control : @UEOT.V3.CoreOperationalAssembly.ControlCertificate.{uX, uM, uA} X inst✝² M inst✝³ Abar inst✝⁴ inst✝⁵ Q)
+    (action : @UEOT.V3.CoreOperationalAssembly.ActionCertificate.{uX, uM, uA} X inst✝² M inst✝³ Abar inst✝⁴ inst✝⁵ Q)
+    (path :
+      @UEOT.V3.CoreOperationalAssembly.PathCertificate.{uX, uA} X inst✝² inst✝¹ inst✝⁶
+        (fun x =>
+          Abar
+            (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{uX, uM, uA} X inst✝² M inst✝³ Abar inst✝⁴ inst✝⁵
+              Q x))
+        (fun x =>
+          inst✝⁴
+            (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{uX, uM, uA} X inst✝² M inst✝³ Abar inst✝⁴ inst✝⁵
+              Q x))
+        ⋯
+        (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.micro.{uX, uM, uA} X inst✝² M inst✝³ Abar inst✝⁴ inst✝⁵
+          Q)
+        microHat
+        (@UEOT.V3.CoreOperationalAssembly.quotientLiftedPolicy.{uX, uM, uA} X inst✝² M inst✝³ Abar inst✝⁴ inst✝⁵ Q) p₀
+        εPath)
+    (mixing_goa :
+      @UEOT.V3.CoreOperationalAssembly.MixingGOACertificate.{uX, uA} X inst✝² inst✝⁷ inst✝⁸
+        (fun x =>
+          Abar
+            (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{uX, uM, uA} X inst✝² M inst✝³ Abar inst✝⁴ inst✝⁵
+              Q x))
+        (fun x =>
+          inst✝⁴
+            (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{uX, uM, uA} X inst✝² M inst✝³ Abar inst✝⁴ inst✝⁵
+              Q x))
+        ⋯
+        (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.micro.{uX, uM, uA} X inst✝² M inst✝³ Abar inst✝⁴ inst✝⁵
+          Q)
+        microHat
+        (@UEOT.V3.CoreOperationalAssembly.quotientLiftedPolicy.{uX, uM, uA} X inst✝² M inst✝³ Abar inst✝⁴ inst✝⁵ Q))
+    (recurrent_goa :
+      @UEOT.V3.CoreOperationalAssembly.RecurrentGOACertificate.{uX, uA} X inst✝²
+        (fun x =>
+          Abar
+            (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{uX, uM, uA} X inst✝² M inst✝³ Abar inst✝⁴ inst✝⁵
+              Q x))
+        (fun x =>
+          inst✝⁴
+            (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{uX, uM, uA} X inst✝² M inst✝³ Abar inst✝⁴ inst✝⁵
+              Q x))
+        ⋯
+        (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.micro.{uX, uM, uA} X inst✝² M inst✝³ Abar inst✝⁴ inst✝⁵
+          Q)
+        microHat
+        (@UEOT.V3.CoreOperationalAssembly.quotientLiftedPolicy.{uX, uM, uA} X inst✝² M inst✝³ Abar inst✝⁴ inst✝⁵ Q))
+    (history_transport :
+      ∀ {MH : Nat → Type uH} [inst : (n : Nat) → MeasurableSpace.{uH} (MH n)]
+        (S : @UEOT.V3.TransportDefect.FrozenTransportSystem.{uH} MH inst) (ε : Nat → Real)
+        [Nonempty.{uH + 1} (MH (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))],
+        @UEOT.V3.TransportDefect.FrozenTransportSystem.AdjacentBound.{uH} MH inst S ε →
+          ∀ (n : Nat),
+            @LE.le.{0} Real Real.instLE
+              (@SupSet.sSup.{0} Real Real.instSupSet
+                (@Set.range.{0, uH + 1} Real (MH (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) fun m =>
+                  @UEOT.V3.TotalVariation.tvDist.{uH} (MH n) (inst n)
+                    (@MeasureTheory.Measure.map.{uH, uH}
+                      (MH (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) (MH n)
+                      (inst (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) (inst n)
+                      (@UEOT.V3.TransportDefect.FrozenTransportSystem.Γ.{uH} MH inst S
+                        (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) n)
+                      (@UEOT.V3.TransportDefect.FrozenTransportSystem.K.{uH} MH inst S
+                        (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) m))
+                    (@UEOT.V3.TransportDefect.FrozenTransportSystem.K.{uH} MH inst S n
+                      (@UEOT.V3.TransportDefect.FrozenTransportSystem.Γ.{uH} MH inst S
+                        (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) n m))))
+              (∑ i ∈ Finset.range n, ε i))
+    (integrity :
+      @LT.lt.{0} Real Real.instLT (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero))
+        (@UEOT.V3.OmegaIntegrityMargin.integrityMargin.{uObj} Obj inst✝⁹ failure object)) :
+    @UEOT.V3.CoreOperationalAssembly.CorePointwiseCertificate.{uV, uH, uI, uR, uY, uX, uM, uA, uObj} V inst✝¹⁰ inst✝¹¹ H
+      inst✝¹² inst✝¹³ I inst✝¹⁴ inst✝¹⁵ R Y inst✝ readout p pHat γ τ X inst✝² inst✝⁷ inst✝⁸ inst✝¹ inst✝⁶ M inst✝³ Abar
+      inst✝⁴ inst✝⁵ Q microHat p₀ εPath Obj inst✝⁹ failure object objectHat
+structure UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Valid
+  (p : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Parameters) : Prop
+number of parameters: 1
+fields:
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Valid.careOnly_pos : @LT.lt.{0} Real
+      Real.instLT (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero)) p.careOnly
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Valid.careOnly_lt_survival : @LT.lt.{0}
+      Real Real.instLT p.careOnly p.survival
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Valid.survival_lt_one : @LT.lt.{0} Real
+      Real.instLT p.survival (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne))
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Valid.commonBirth_pos : @LT.lt.{0} Real
+      Real.instLT (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero)) p.commonBirth
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Valid.birth_sum_lt_one : @LT.lt.{0} Real
+      Real.instLT (@HAdd.hAdd.{0, 0, 0} Real Real Real (@instHAdd.{0} Real Real.instAdd) p.commonBirth p.bloomOnly)
+      (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne))
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Valid.advantage : @LT.lt.{0} Real
+      Real.instLT p.careOnly p.bloomOnly
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Valid.damage_pos : @LT.lt.{0} Real
+      Real.instLT (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero)) p.damage
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Valid.damage_lt_one : @LT.lt.{0} Real
+      Real.instLT p.damage (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne))
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Valid.supercritical : @LT.lt.{0} Real
+      Real.instLT (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne))
+      (@HAdd.hAdd.{0, 0, 0} Real Real Real (@instHAdd.{0} Real Real.instAdd) p.survival p.commonBirth)
+constructor:
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Valid.mk
+    {p : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Parameters}
+    (careOnly_pos :
+      @LT.lt.{0} Real Real.instLT (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero))
+        p.careOnly)
+    (careOnly_lt_survival : @LT.lt.{0} Real Real.instLT p.careOnly p.survival)
+    (survival_lt_one :
+      @LT.lt.{0} Real Real.instLT p.survival (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne)))
+    (commonBirth_pos :
+      @LT.lt.{0} Real Real.instLT (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero))
+        p.commonBirth)
+    (birth_sum_lt_one :
+      @LT.lt.{0} Real Real.instLT
+        (@HAdd.hAdd.{0, 0, 0} Real Real Real (@instHAdd.{0} Real Real.instAdd) p.commonBirth p.bloomOnly)
+        (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne)))
+    (advantage : @LT.lt.{0} Real Real.instLT p.careOnly p.bloomOnly)
+    (damage_pos :
+      @LT.lt.{0} Real Real.instLT (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero)) p.damage)
+    (damage_lt_one :
+      @LT.lt.{0} Real Real.instLT p.damage (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne)))
+    (supercritical :
+      @LT.lt.{0} Real Real.instLT (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne))
+        (@HAdd.hAdd.{0, 0, 0} Real Real Real (@instHAdd.{0} Real Real.instAdd) p.survival p.commonBirth)) :
+    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Valid p
+def UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.ValidIdentity : Nat →
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Identity → Prop :=
+fun t i =>
+  ∀ (b : Nat),
+    @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) i.births b → @LE.le.{0} Nat instLENat b t
+structure UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.Policy : Type
+number of parameters: 0
+fields:
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.Policy.kernel : (n : Nat) →
+      List.{0}
+          (List.{0}
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.PublicReceipt) →
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.ObservationWord n →
+          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.RequestWord n → Real
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.Policy.nonneg : ∀ (n : Nat)
+      (hist :
+        List.{0}
+          (List.{0}
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.PublicReceipt))
+      (obs : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.ObservationWord n)
+      (a : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.RequestWord n),
+      @LE.le.{0} Real Real.instLE (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero))
+        (self.kernel n hist obs a)
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.Policy.total : ∀ (n : Nat)
+      (hist :
+        List.{0}
+          (List.{0}
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.PublicReceipt))
+      (obs : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.ObservationWord n),
+      @Eq.{1} Real (∑ a, self.kernel n hist obs a)
+        (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne))
+constructor:
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.Policy.mk
+    (kernel :
+      (n : Nat) →
+        List.{0}
+            (List.{0}
+              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.PublicReceipt) →
+          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.ObservationWord n →
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.RequestWord n → Real)
+    (nonneg :
+      ∀ (n : Nat)
+        (hist :
+          List.{0}
+            (List.{0}
+              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.PublicReceipt))
+        (obs : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.ObservationWord n)
+        (a : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.RequestWord n),
+        @LE.le.{0} Real Real.instLE (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero))
+          (kernel n hist obs a))
+    (total :
+      ∀ (n : Nat)
+        (hist :
+          List.{0}
+            (List.{0}
+              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.PublicReceipt))
+        (obs : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.ObservationWord n),
+        @Eq.{1} Real (∑ a, kernel n hist obs a)
+          (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne))) :
+    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.Policy
+structure UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.State : Type
+number of parameters: 0
+fields:
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.State.population : List.{0}
+      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.State.publicHistory : List.{0}
+      (List.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.PublicReceipt)
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.State.good : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.GoodPopulation
+      self.population
+constructor:
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.State.mk
+    (population : List.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member)
+    (publicHistory :
+      List.{0}
+        (List.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.PublicReceipt))
+    (good :
+      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.GoodPopulation population) :
+    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.State
+def UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.ProgramPopulation : Bool →
+  List.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member → Prop :=
+fun theta xs =>
+  ∀ (m : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member),
+    @Membership.mem.{0, 0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member
+        (List.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member)
+        (@List.instMembership.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member)
+        xs m →
+      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.CarriesProgram theta m.body
+structure UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.ProbabilityValid
+  (p : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Parameters) : Prop
+number of parameters: 1
+fields:
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.ProbabilityValid.careOnly_pos : @LT.lt.{0}
+      Real Real.instLT (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero)) p.careOnly
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.ProbabilityValid.careOnly_lt_survival : @LT.lt.{0}
+      Real Real.instLT p.careOnly p.survival
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.ProbabilityValid.survival_lt_one : @LT.lt.{0}
+      Real Real.instLT p.survival (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne))
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.ProbabilityValid.commonBirth_pos : @LT.lt.{0}
+      Real Real.instLT (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero)) p.commonBirth
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.ProbabilityValid.bloomOnly_pos : @LT.lt.{0}
+      Real Real.instLT (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero)) p.bloomOnly
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.ProbabilityValid.birth_sum_lt_one : @LT.lt.{0}
+      Real Real.instLT (@HAdd.hAdd.{0, 0, 0} Real Real Real (@instHAdd.{0} Real Real.instAdd) p.commonBirth p.bloomOnly)
+      (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne))
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.ProbabilityValid.damage_pos : @LT.lt.{0}
+      Real Real.instLT (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero)) p.damage
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.ProbabilityValid.damage_lt_one : @LT.lt.{0}
+      Real Real.instLT p.damage (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne))
+constructor:
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.ProbabilityValid.mk
+    {p : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Parameters}
+    (careOnly_pos :
+      @LT.lt.{0} Real Real.instLT (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero))
+        p.careOnly)
+    (careOnly_lt_survival : @LT.lt.{0} Real Real.instLT p.careOnly p.survival)
+    (survival_lt_one :
+      @LT.lt.{0} Real Real.instLT p.survival (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne)))
+    (commonBirth_pos :
+      @LT.lt.{0} Real Real.instLT (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero))
+        p.commonBirth)
+    (bloomOnly_pos :
+      @LT.lt.{0} Real Real.instLT (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero))
+        p.bloomOnly)
+    (birth_sum_lt_one :
+      @LT.lt.{0} Real Real.instLT
+        (@HAdd.hAdd.{0, 0, 0} Real Real Real (@instHAdd.{0} Real Real.instAdd) p.commonBirth p.bloomOnly)
+        (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne)))
+    (damage_pos :
+      @LT.lt.{0} Real Real.instLT (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero)) p.damage)
+    (damage_lt_one :
+      @LT.lt.{0} Real Real.instLT p.damage (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne))) :
+    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.ProbabilityValid p
+def UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.HasExpectedGrowth : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Parameters →
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.Policy →
+    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.State → Real → Prop :=
+fun p K initial rho =>
+  ∃ lo hi,
+    And (@LT.lt.{0} Real Real.instLT (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero)) lo)
+      (And (@LT.lt.{0} Real Real.instLT (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero)) hi)
+        (∀ (n : Nat),
+          And
+            (@LE.le.{0} Real Real.instLE
+              (@HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul) lo
+                (@HPow.hPow.{0, 0, 0} Real Nat Real
+                  (@instHPow.{0, 0} Real Nat (@NPow.toPow.{0} Real (@Monoid.toNPow.{0} Real Real.instMonoid))) rho n))
+              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.populationExpectation
+                p K initial n fun s =>
+                @Nat.cast.{0} Real Real.instNatCast
+                  (@List.length.{0}
+                    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member
+                    s.population)))
+            (@LE.le.{0} Real Real.instLE
+              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.populationExpectation
+                p K initial n fun s =>
+                @Nat.cast.{0} Real Real.instNatCast
+                  (@List.length.{0}
+                    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member s.population))
+              (@HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul) hi
+                (@HPow.hPow.{0, 0, 0} Real Nat Real
+                  (@instHPow.{0, 0} Real Nat (@NPow.toPow.{0} Real (@Monoid.toNPow.{0} Real Real.instMonoid))) rho
+                  n)))))
+def UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment.UniformExpectedUpper : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Parameters →
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.State → Real → Prop :=
+fun p initial rho =>
+  And (@LT.lt.{0} Real Real.instLT (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero)) rho)
+    (∃ C,
+      ∀ (K : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.Policy) (n : Nat),
+        @LE.le.{0} Real Real.instLE
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.populationExpectation p
+            K initial n fun s =>
+            @Nat.cast.{0} Real Real.instNatCast
+              (@List.length.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member
+                s.population))
+          (@HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul) C
+            (@HPow.hPow.{0, 0, 0} Real Nat Real
+              (@instHPow.{0, 0} Real Nat (@NPow.toPow.{0} Real (@Monoid.toNPow.{0} Real Real.instMonoid))) rho n)))
+structure UEOT.V3.SelectionBridge.ReplicationBridge.{uΘ, uQ} (Θ : Type uΘ) (Q : Type uQ) : Type (max uQ uΘ)
+number of parameters: 2
+fields:
+  UEOT.V3.SelectionBridge.ReplicationBridge.response.{uΘ, uQ} : Θ → Q
+  UEOT.V3.SelectionBridge.ReplicationBridge.replicate.{uΘ, uQ} : Q → Real
+constructor:
+  UEOT.V3.SelectionBridge.ReplicationBridge.mk.{uΘ, uQ} {Θ : Type uΘ} {Q : Type uQ} (response : Θ → Q)
+    (replicate : Q → Real) : UEOT.V3.SelectionBridge.ReplicationBridge.{uΘ, uQ} Θ Q
+@UEOT.V3.PredictionDependent.canonical_ae_minimal.{u_1, u_2, u_3,
+    u_4} : ∀ {H : Type u_1} {I : Type u_2} {S : Type u_3} {Y : I → Type u_4} [inst : MeasurableSpace.{u_1} H]
+  [inst_1 : MeasurableSpace.{u_3} S] [inst_2 : (i : I) → MeasurableSpace.{u_4} (Y i)] [Countable.{u_2 + 1} I]
+  (μ : @MeasureTheory.Measure.{u_1} H inst) (K : (i : I) → @ProbabilityTheory.Kernel.{u_1, u_4} H (Y i) inst (inst_2 i))
+  (s : H → S) (L : (i : I) → @ProbabilityTheory.Kernel.{u_3, u_4} S (Y i) inst_1 (inst_2 i)),
+  (∀ (i : I),
+      @Filter.Eventually.{u_1} H
+        (fun h =>
+          @Eq.{u_4 + 1} (@MeasureTheory.Measure.{u_4} (Y i) (inst_2 i))
+            (@DFunLike.coe.{max (u_1 + 1) (u_4 + 1), u_1 + 1, u_4 + 1}
+              (@ProbabilityTheory.Kernel.{u_1, u_4} H (Y i) inst (inst_2 i)) H
+              (fun x => @MeasureTheory.Measure.{u_4} (Y i) (inst_2 i))
+              (@ProbabilityTheory.Kernel.instFunLike.{u_1, u_4} H (Y i) inst (inst_2 i)) (K i) h)
+            (@DFunLike.coe.{max (u_3 + 1) (u_4 + 1), u_3 + 1, u_4 + 1}
+              (@ProbabilityTheory.Kernel.{u_3, u_4} S (Y i) inst_1 (inst_2 i)) S
+              (fun x => @MeasureTheory.Measure.{u_4} (Y i) (inst_2 i))
+              (@ProbabilityTheory.Kernel.instFunLike.{u_3, u_4} S (Y i) inst_1 (inst_2 i)) (L i) (s h)))
+        (@MeasureTheory.ae.{u_1, u_1} H (@MeasureTheory.Measure.{u_1} H inst)
+          (@MeasureTheory.Measure.instFunLike.{u_1} H inst) ⋯ μ)) →
+    @UEOT.V3.PredictionAE.AEFactors.{u_1, u_3, max u_2 u_4} H S
+      ((i : I) → @MeasureTheory.Measure.{u_4} (Y i) (inst_2 i)) inst inst_1
+      (@MeasurableSpace.pi.{u_2, u_4} I (fun i => @MeasureTheory.Measure.{u_4} (Y i) (inst_2 i)) fun a =>
+        @MeasureTheory.Measure.instMeasurableSpace.{u_4} (Y a) (inst_2 a))
+      μ
+      (fun h i =>
+        @DFunLike.coe.{max (u_1 + 1) (u_4 + 1), u_1 + 1, u_4 + 1}
+          (@ProbabilityTheory.Kernel.{u_1, u_4} H (Y i) inst (inst_2 i)) H
+          (fun x => @MeasureTheory.Measure.{u_4} (Y i) (inst_2 i))
+          (@ProbabilityTheory.Kernel.instFunLike.{u_1, u_4} H (Y i) inst (inst_2 i)) (K i) h)
+      s
+'UEOT.V3.PredictionDependent.canonical_ae_minimal' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@UEOT.V3.PredictionDependent.canonical_ae_sigma_minimal.{u_1, u_2, u_3,
+    u_4} : ∀ {H : Type u_1} {I : Type u_2} {S : Type u_3} {Y : I → Type u_4} [inst : MeasurableSpace.{u_1} H]
+  [inst_1 : MeasurableSpace.{u_3} S] [inst_2 : (i : I) → MeasurableSpace.{u_4} (Y i)] [Countable.{u_2 + 1} I]
+  (μ : @MeasureTheory.Measure.{u_1} H inst) (K : (i : I) → @ProbabilityTheory.Kernel.{u_1, u_4} H (Y i) inst (inst_2 i))
+  (s : H → S) (L : (i : I) → @ProbabilityTheory.Kernel.{u_3, u_4} S (Y i) inst_1 (inst_2 i)),
+  (∀ (i : I),
+      @Filter.Eventually.{u_1} H
+        (fun h =>
+          @Eq.{u_4 + 1} (@MeasureTheory.Measure.{u_4} (Y i) (inst_2 i))
+            (@DFunLike.coe.{max (u_1 + 1) (u_4 + 1), u_1 + 1, u_4 + 1}
+              (@ProbabilityTheory.Kernel.{u_1, u_4} H (Y i) inst (inst_2 i)) H
+              (fun x => @MeasureTheory.Measure.{u_4} (Y i) (inst_2 i))
+              (@ProbabilityTheory.Kernel.instFunLike.{u_1, u_4} H (Y i) inst (inst_2 i)) (K i) h)
+            (@DFunLike.coe.{max (u_3 + 1) (u_4 + 1), u_3 + 1, u_4 + 1}
+              (@ProbabilityTheory.Kernel.{u_3, u_4} S (Y i) inst_1 (inst_2 i)) S
+              (fun x => @MeasureTheory.Measure.{u_4} (Y i) (inst_2 i))
+              (@ProbabilityTheory.Kernel.instFunLike.{u_3, u_4} S (Y i) inst_1 (inst_2 i)) (L i) (s h)))
+        (@MeasureTheory.ae.{u_1, u_1} H (@MeasureTheory.Measure.{u_1} H inst)
+          (@MeasureTheory.Measure.instFunLike.{u_1} H inst) ⋯ μ)) →
+    @UEOT.V3.PredictionAE.AESigmaLE.{u_1, u_3, max u_2 u_4} H S
+      ((i : I) → @MeasureTheory.Measure.{u_4} (Y i) (inst_2 i)) inst inst_1
+      (@MeasurableSpace.pi.{u_2, u_4} I (fun i => @MeasureTheory.Measure.{u_4} (Y i) (inst_2 i)) fun a =>
+        @MeasureTheory.Measure.instMeasurableSpace.{u_4} (Y a) (inst_2 a))
+      μ
+      (fun h i =>
+        @DFunLike.coe.{max (u_1 + 1) (u_4 + 1), u_1 + 1, u_4 + 1}
+          (@ProbabilityTheory.Kernel.{u_1, u_4} H (Y i) inst (inst_2 i)) H
+          (fun x => @MeasureTheory.Measure.{u_4} (Y i) (inst_2 i))
+          (@ProbabilityTheory.Kernel.instFunLike.{u_1, u_4} H (Y i) inst (inst_2 i)) (K i) h)
+      s
+'UEOT.V3.PredictionDependent.canonical_ae_sigma_minimal' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@UEOT.V3.PredictionDependent.canonical_kernel_sufficient.{u_1, u_2,
+    u_3} : ∀ {H : Type u_1} {I : Type u_2} {Y : I → Type u_3} [inst : MeasurableSpace.{u_1} H]
+  [inst_1 : (i : I) → MeasurableSpace.{u_3} (Y i)]
+  (K : (i : I) → @ProbabilityTheory.Kernel.{u_1, u_3} H (Y i) inst (inst_1 i)) (i : I),
+  ∃ L,
+    ∀ (h : H),
+      @Eq.{u_3 + 1} (@MeasureTheory.Measure.{u_3} (Y i) (inst_1 i))
+        (@DFunLike.coe.{max (u_1 + 1) (u_3 + 1), u_1 + 1, u_3 + 1}
+          (@ProbabilityTheory.Kernel.{u_1, u_3} H (Y i) inst (inst_1 i)) H
+          (fun x => @MeasureTheory.Measure.{u_3} (Y i) (inst_1 i))
+          (@ProbabilityTheory.Kernel.instFunLike.{u_1, u_3} H (Y i) inst (inst_1 i)) (K i) h)
+        (@DFunLike.coe.{max (u_2 + 1) (u_3 + 1), max (u_2 + 1) (u_3 + 1), u_3 + 1}
+          (@ProbabilityTheory.Kernel.{max u_2 u_3, u_3} ((j : I) → @MeasureTheory.Measure.{u_3} (Y j) (inst_1 j)) (Y i)
+            (@MeasurableSpace.pi.{u_2, u_3} I (fun j => @MeasureTheory.Measure.{u_3} (Y j) (inst_1 j)) fun a =>
+              @MeasureTheory.Measure.instMeasurableSpace.{u_3} (Y a) (inst_1 a))
+            (inst_1 i))
+          ((j : I) → @MeasureTheory.Measure.{u_3} (Y j) (inst_1 j))
+          (fun x => @MeasureTheory.Measure.{u_3} (Y i) (inst_1 i))
+          (@ProbabilityTheory.Kernel.instFunLike.{max u_2 u_3, u_3}
+            ((j : I) → @MeasureTheory.Measure.{u_3} (Y j) (inst_1 j)) (Y i)
+            (@MeasurableSpace.pi.{u_2, u_3} I (fun j => @MeasureTheory.Measure.{u_3} (Y j) (inst_1 j)) fun a =>
+              @MeasureTheory.Measure.instMeasurableSpace.{u_3} (Y a) (inst_1 a))
+            (inst_1 i))
+          L fun j =>
+          @DFunLike.coe.{max (u_1 + 1) (u_3 + 1), u_1 + 1, u_3 + 1}
+            (@ProbabilityTheory.Kernel.{u_1, u_3} H (Y j) inst (inst_1 j)) H
+            (fun x => @MeasureTheory.Measure.{u_3} (Y j) (inst_1 j))
+            (@ProbabilityTheory.Kernel.instFunLike.{u_1, u_3} H (Y j) inst (inst_1 j)) (K j) h)
+'UEOT.V3.PredictionDependent.canonical_kernel_sufficient' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@UEOT.V3.FiniteDiscountedControl.Model.fixedPoint_unique.{u_1,
+    u_2} : ∀ {X : Type u_1} [inst : Fintype.{u_1} X] {A : X → Type u_2} [inst_1 : (x : X) → Fintype.{u_2} (A x)]
+  [inst_2 : ∀ (x : X), Nonempty.{u_2 + 1} (A x)] (M : @UEOT.V3.FiniteDiscountedControl.Model.{u_1, u_2} X inst A inst_1)
+  {v : X → Real},
+  @Eq.{u_1 + 1} (X → Real) (@UEOT.V3.FiniteDiscountedControl.Model.bellman.{u_1, u_2} X inst A inst_1 inst_2 M v) v →
+    @Eq.{u_1 + 1} (X → Real) v (@UEOT.V3.FiniteDiscountedControl.Model.optimalValue.{u_1, u_2} X inst A inst_1 inst_2 M)
+'UEOT.V3.FiniteDiscountedControl.Model.fixedPoint_unique' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@UEOT.V3.FiniteDiscountedControl.p_ctl_01_causal_optimality.{u_1, u_2,
+    u_3} : ∀ {X : Type u_1} [inst : Fintype.{u_1} X] {A : X → Type u_2} [inst_1 : (x : X) → Fintype.{u_2} (A x)]
+  [inst_2 : ∀ (x : X), Nonempty.{u_2 + 1} (A x)]
+  (M : @UEOT.V3.FiniteDiscountedControl.Model.{u_1, u_2} X inst A inst_1),
+  And
+    (∀ (π : @UEOT.V3.FiniteDiscountedControl.CausalPolicy.{u_1, u_2, u_3} X A inst_1) {t : Nat}
+      (h : @UEOT.V3.FiniteDiscountedControl.CausalPolicy.Memory.{u_1, u_2, u_3} X A inst_1 π t),
+      @LE.le.{0} Real Real.instLE
+        (@UEOT.V3.FiniteDiscountedControl.CausalPolicy.infiniteValue.{u_1, u_2, u_3} X inst A inst_1 π M t h)
+        (@UEOT.V3.FiniteDiscountedControl.Model.optimalValue.{u_1, u_2} X inst A inst_1 inst_2 M
+          (@UEOT.V3.FiniteDiscountedControl.CausalPolicy.current.{u_1, u_2, u_3} X A inst_1 π t h)))
+    (∀ {t : Nat} (x : X),
+      @Eq.{1} Real
+        (@UEOT.V3.FiniteDiscountedControl.CausalPolicy.infiniteValue.{u_1, u_2, u_1} X inst A inst_1
+          (@UEOT.V3.FiniteDiscountedControl.greedyPolicy.{u_1, u_2} X inst A inst_1 inst_2 M) M t x)
+        (@UEOT.V3.FiniteDiscountedControl.Model.optimalValue.{u_1, u_2} X inst A inst_1 inst_2 M x))
+'UEOT.V3.FiniteDiscountedControl.p_ctl_01_causal_optimality' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@UEOT.V3.CoreOperationalAssembly.optimal_qValue_macro_error_le_D.{u_1, u_2,
+    u_3} : ∀ {X : Type u_1} [inst : Fintype.{u_1} X] {M : Type u_2} [inst_1 : Fintype.{u_2} M] {Abar : M → Type u_3}
+  [inst_2 : (m : M) → Fintype.{u_3} (Abar m)] [inst_3 : ∀ (m : M), Nonempty.{u_3 + 1} (Abar m)]
+  (Q : @UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2 inst_3)
+  (x : X)
+  (a :
+    Abar
+      (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2 inst_3 Q
+        x)),
+  @LE.le.{0} Real Real.instLE
+    (@abs.{0} Real Real.lattice Real.instAddGroup
+      (@HSub.hSub.{0, 0, 0} Real Real Real (@instHSub.{0} Real Real.instSub)
+        (@UEOT.V3.FiniteDiscountedControl.Model.qValue.{u_1, u_3} X inst
+          (fun x =>
+            Abar
+              (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2
+                inst_3 Q x))
+          (fun x =>
+            inst_2
+              (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2
+                inst_3 Q x))
+          (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.micro.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2
+            inst_3 Q)
+          (@UEOT.V3.FiniteDiscountedControl.Model.optimalValue.{u_1, u_3} X inst
+            (fun x =>
+              Abar
+                (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2
+                  inst_3 Q x))
+            (fun x =>
+              inst_2
+                (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2
+                  inst_3 Q x))
+            ⋯
+            (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.micro.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2
+              inst_3 Q))
+          x a)
+        (@UEOT.V3.FiniteDiscountedControl.Model.qValue.{u_2, u_3} M inst_1 Abar inst_2
+          (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.macroModel.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2
+            inst_3 Q)
+          (@UEOT.V3.FiniteDiscountedControl.Model.optimalValue.{u_2, u_3} M inst_1 Abar inst_2 inst_3
+            (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.macroModel.{u_1, u_2, u_3} X inst M inst_1 Abar
+              inst_2 inst_3 Q))
+          (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2 inst_3 Q
+            x)
+          a)))
+    (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.D.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2 inst_3 Q)
+'UEOT.V3.CoreOperationalAssembly.optimal_qValue_macro_error_le_D' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@UEOT.V3.CoreOperationalAssembly.macro_gap_certifies_micro_action.{u_1, u_2,
+    u_3} : ∀ {X : Type u_1} [inst : Fintype.{u_1} X] {M : Type u_2} [inst_1 : Fintype.{u_2} M] {Abar : M → Type u_3}
+  [inst_2 : (m : M) → Fintype.{u_3} (Abar m)] [inst_3 : ∀ (m : M), Nonempty.{u_3 + 1} (Abar m)]
+  (Q : @UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2 inst_3)
+  (x : X),
+  (∀
+      (a :
+        Abar
+          (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2 inst_3 Q
+            x)),
+      @Ne.{u_3 + 1}
+          (Abar
+            (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2 inst_3
+              Q x))
+          a
+          (@UEOT.V3.FiniteDiscountedControl.Model.greedyAction.{u_2, u_3} M inst_1 Abar inst_2 inst_3
+            (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.macroModel.{u_1, u_2, u_3} X inst M inst_1 Abar
+              inst_2 inst_3 Q)
+            (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2 inst_3
+              Q x)) →
+        @LT.lt.{0} Real Real.instLT
+          (@HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul)
+            (@OfNat.ofNat.{0} Real (nat_lit 2) (@instOfNatAtLeastTwo.{0} Real (nat_lit 2) Real.instNatCast ⋯))
+            (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.D.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2 inst_3
+              Q))
+          (@HSub.hSub.{0, 0, 0} Real Real Real (@instHSub.{0} Real Real.instSub)
+            (@UEOT.V3.FiniteDiscountedControl.Model.qValue.{u_2, u_3} M inst_1 Abar inst_2
+              (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.macroModel.{u_1, u_2, u_3} X inst M inst_1 Abar
+                inst_2 inst_3 Q)
+              (@UEOT.V3.FiniteDiscountedControl.Model.optimalValue.{u_2, u_3} M inst_1 Abar inst_2 inst_3
+                (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.macroModel.{u_1, u_2, u_3} X inst M inst_1 Abar
+                  inst_2 inst_3 Q))
+              (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2
+                inst_3 Q x)
+              (@UEOT.V3.FiniteDiscountedControl.Model.greedyAction.{u_2, u_3} M inst_1 Abar inst_2 inst_3
+                (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.macroModel.{u_1, u_2, u_3} X inst M inst_1 Abar
+                  inst_2 inst_3 Q)
+                (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2
+                  inst_3 Q x)))
+            (@UEOT.V3.FiniteDiscountedControl.Model.qValue.{u_2, u_3} M inst_1 Abar inst_2
+              (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.macroModel.{u_1, u_2, u_3} X inst M inst_1 Abar
+                inst_2 inst_3 Q)
+              (@UEOT.V3.FiniteDiscountedControl.Model.optimalValue.{u_2, u_3} M inst_1 Abar inst_2 inst_3
+                (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.macroModel.{u_1, u_2, u_3} X inst M inst_1 Abar
+                  inst_2 inst_3 Q))
+              (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2
+                inst_3 Q x)
+              a))) →
+    ∀
+      (a :
+        Abar
+          (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2 inst_3 Q
+            x)),
+      @Ne.{u_3 + 1}
+          (Abar
+            (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2 inst_3
+              Q x))
+          a
+          (@UEOT.V3.FiniteDiscountedControl.Model.greedyAction.{u_2, u_3} M inst_1 Abar inst_2 inst_3
+            (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.macroModel.{u_1, u_2, u_3} X inst M inst_1 Abar
+              inst_2 inst_3 Q)
+            (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2 inst_3
+              Q x)) →
+        @LT.lt.{0} Real Real.instLT
+          (@UEOT.V3.FiniteDiscountedControl.Model.qValue.{u_1, u_3} X inst
+            (fun x =>
+              Abar
+                (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2
+                  inst_3 Q x))
+            (fun x =>
+              inst_2
+                (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2
+                  inst_3 Q x))
+            (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.micro.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2
+              inst_3 Q)
+            (@UEOT.V3.FiniteDiscountedControl.Model.optimalValue.{u_1, u_3} X inst
+              (fun x =>
+                Abar
+                  (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2
+                    inst_3 Q x))
+              (fun x =>
+                inst_2
+                  (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2
+                    inst_3 Q x))
+              ⋯
+              (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.micro.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2
+                inst_3 Q))
+            x a)
+          (@UEOT.V3.FiniteDiscountedControl.Model.qValue.{u_1, u_3} X inst
+            (fun x =>
+              Abar
+                (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2
+                  inst_3 Q x))
+            (fun x =>
+              inst_2
+                (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2
+                  inst_3 Q x))
+            (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.micro.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2
+              inst_3 Q)
+            (@UEOT.V3.FiniteDiscountedControl.Model.optimalValue.{u_1, u_3} X inst
+              (fun x =>
+                Abar
+                  (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2
+                    inst_3 Q x))
+              (fun x =>
+                inst_2
+                  (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2
+                    inst_3 Q x))
+              ⋯
+              (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.micro.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2
+                inst_3 Q))
+            x
+            (@UEOT.V3.FiniteDiscountedControl.Model.greedyAction.{u_2, u_3} M inst_1 Abar inst_2 inst_3
+              (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.macroModel.{u_1, u_2, u_3} X inst M inst_1 Abar
+                inst_2 inst_3 Q)
+              (@UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.f.{u_1, u_2, u_3} X inst M inst_1 Abar inst_2
+                inst_3 Q x)))
+'UEOT.V3.CoreOperationalAssembly.macro_gap_certifies_micro_action' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@UEOT.V3.CoreOperationalAssembly.p_core_01.{u_1, u_2, u_3, u_4, u_5, u_6, u_7, u_8, u_9, u_10,
+    u_11} : ∀ {Ω : Type u_1} [inst : MeasurableSpace.{u_1} Ω] {K : Type u_2} [inst_1 : Fintype.{u_2} K]
+  (μ : @MeasureTheory.Measure.{u_1} Ω inst) [@MeasureTheory.IsProbabilityMeasure.{u_1} Ω inst μ] (E : K → Set.{u_1} Ω)
+  (α : K → Real),
+  (∀ (k : K), @MeasurableSet.{u_1} Ω inst (E k)) →
+    (∀ (k : K),
+        @LE.le.{0} Real Real.instLE
+          (@MeasureTheory.Measure.real.{u_1} Ω inst μ (@Compl.compl.{u_1} (Set.{u_1} Ω) (@Set.instCompl.{u_1} Ω) (E k)))
+          (α k)) →
+      ∀ {V : Type u_3} [inst_3 : Fintype.{u_3} V] [inst_4 : DecidableEq.{u_3 + 1} V] {H : Type u_4}
+        [inst_5 : Fintype.{u_4} H] [inst_6 : Nonempty.{u_4 + 1} H] {I : Type u_5} [inst_7 : Fintype.{u_5} I]
+        [inst_8 : Nonempty.{u_5 + 1} I] {R : Type u_6} {Y : Type u_7} [inst_9 : MeasurableSpace.{u_7} Y]
+        (readout : Finset.{u_3} V → H → R) (p : H → I → @MeasureTheory.Measure.{u_7} Y inst_9),
+        (∀ (h : H) (i : I), @MeasureTheory.IsProbabilityMeasure.{u_7} Y inst_9 (p h i)) →
+          ∀
+            (pHat :
+              @UEOT.V3.CoreOperationalAssembly.GoodSample.{u_1, u_2} Ω K E →
+                H → I → @MeasureTheory.Measure.{u_7} Y inst_9),
+            (∀ (ω : @UEOT.V3.CoreOperationalAssembly.GoodSample.{u_1, u_2} Ω K E) (h : H) (i : I),
+                @MeasureTheory.IsProbabilityMeasure.{u_7} Y inst_9 (pHat ω h i)) →
+              ∀ (η γ Δ τ : Real),
+                (∀ (ω : @UEOT.V3.CoreOperationalAssembly.GoodSample.{u_1, u_2} Ω K E) (h : H) (i : I),
+                    @LE.le.{0} Real Real.instLE (@UEOT.V3.TotalVariation.tvDist.{u_7} Y inst_9 (p h i) (pHat ω h i))
+                      η) →
+                  (∀ (h h' : H),
+                      Not (@UEOT.V3.PredictiveClassRecovery.trueEquivalent.{u_4, u_5, u_7} H I Y inst_9 p h h') →
+                        @LE.le.{0} Real Real.instLE γ
+                          (@UEOT.V3.PredictiveClassRecovery.protocolDistance.{u_4, u_5, u_7} H I Y inst_9 p h h')) →
+                    @LT.lt.{0} Real Real.instLT
+                        (@HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul)
+                          (@OfNat.ofNat.{0} Real (nat_lit 2)
+                            (@instOfNatAtLeastTwo.{0} Real (nat_lit 2) Real.instNatCast ⋯))
+                          η)
+                        (@HDiv.hDiv.{0, 0, 0} Real Real Real
+                          (@instHDiv.{0} Real (@DivInvMonoid.toDiv.{0} Real Real.instDivInvMonoid)) γ
+                          (@OfNat.ofNat.{0} Real (nat_lit 2)
+                            (@instOfNatAtLeastTwo.{0} Real (nat_lit 2) Real.instNatCast ⋯))) →
+                      (∀ (S : Finset.{u_3} V),
+                          @LT.lt.{0} Real Real.instLT
+                              (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero))
+                              (@UEOT.V3.StatisticalDefect.responseDefect.{u_3, u_4, u_5, u_6, u_7} V H I R Y inst_9
+                                readout p S) →
+                            @LE.le.{0} Real Real.instLE Δ
+                              (@UEOT.V3.StatisticalDefect.responseDefect.{u_3, u_4, u_5, u_6, u_7} V H I R Y inst_9
+                                readout p S)) →
+                        @LT.lt.{0} Real Real.instLT
+                            (@HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul)
+                              (@OfNat.ofNat.{0} Real (nat_lit 2)
+                                (@instOfNatAtLeastTwo.{0} Real (nat_lit 2) Real.instNatCast ⋯))
+                              η)
+                            τ →
+                          @LT.lt.{0} Real Real.instLT τ
+                              (@HSub.hSub.{0, 0, 0} Real Real Real (@instHSub.{0} Real Real.instSub) Δ
+                                (@HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul)
+                                  (@OfNat.ofNat.{0} Real (nat_lit 2)
+                                    (@instOfNatAtLeastTwo.{0} Real (nat_lit 2) Real.instNatCast ⋯))
+                                  η)) →
+                            ∀ {X : Type u_8} [inst_10 : Fintype.{u_8} X] [inst_11 : DecidableEq.{u_8 + 1} X]
+                              [inst_12 : Nonempty.{u_8 + 1} X] [inst_13 : MeasurableSpace.{u_8} X]
+                              [inst_14 : @MeasurableSingletonClass.{u_8} X inst_13] {M : Type u_9}
+                              [inst_15 : Fintype.{u_9} M] {Abar : M → Type u_10}
+                              [inst_16 : (m : M) → Fintype.{u_10} (Abar m)]
+                              [inst_17 : ∀ (m : M), Nonempty.{u_10 + 1} (Abar m)] (f : X → M)
+                              (hf : @Function.Surjective.{u_8 + 1, u_9 + 1} X M f)
+                              (micro :
+                                @UEOT.V3.FiniteDiscountedControl.Model.{u_8, u_10} X inst_10 (fun x => Abar (f x))
+                                  fun x => inst_16 (f x))
+                              (εr εp : Real)
+                              (hεr :
+                                @LE.le.{0} Real Real.instLE
+                                  (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero)) εr)
+                              (hεp :
+                                @LE.le.{0} Real Real.instLE
+                                  (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero)) εp),
+                              ⋯
+'UEOT.V3.CoreOperationalAssembly.p_core_01' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.realizedMean_eq : ∀
+  (p : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Parameters) (theta i tag : Bool)
+  (a : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Action)
+  (j : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Kind),
+  @Eq.{1} Real
+    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.realizedMean p theta i tag a j)
+    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.realizedRow p i a j)
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.realizedMean_eq' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.programStep_uses_paid_repair : ∀
+  (theta i tag : Bool) (z : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Noise),
+  And
+    (@Eq.{1} (Option.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Body)
+      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.programStep
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.programBody theta i tag)
+          z).retained
+      (@ite.{1} (Option.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Body)
+        (@Eq.{1} Bool
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.retains
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.programAction theta i) z)
+          Bool.true)
+        (instDecidableEqBool
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.retains
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.programAction theta i) z)
+          Bool.true)
+        (@Option.some.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Body
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.damageBody
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.paidRepair
+                (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.startState theta i
+                  tag)).body
+            (@Prod.fst.{0, 0} Bool Bool
+              (@Prod.snd.{0, 0}
+                (Prod.{0, 0} (Fin (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                  (Fin (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+                (Prod.{0, 0} Bool Bool) z))))
+        (@Option.none.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Body)))
+    (And
+      (@Eq.{1} (Option.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Body)
+        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.programStep
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.programBody theta i tag)
+            z).newborn
+        (@ite.{1} (Option.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Body)
+          (@Eq.{1} Bool
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.births
+              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.programAction theta i) z)
+            Bool.true)
+          (instDecidableEqBool
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.births
+              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.programAction theta i) z)
+            Bool.true)
+          (@Option.some.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Body
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.damageBody
+              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.paidRepair
+                  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.startState theta i
+                    tag)).body
+              (@Prod.snd.{0, 0} Bool Bool
+                (@Prod.snd.{0, 0}
+                  (Prod.{0, 0} (Fin (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                    (Fin (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+                  (Prod.{0, 0} Bool Bool) z))))
+          (@Option.none.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Body)))
+      (@Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.programStep
+              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.programBody theta i tag)
+              z).repairPaid
+          (@Fin.val (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.paidRepair
+                (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.startState theta i
+                  tag)).balance))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))))
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.programStep_uses_paid_repair' depends on axioms: [propext]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.source_strongRepairable : ∀
+  (theta i tag : Bool),
+  @UEOT.V3.Compression.Objecthood.StrongRepairable.{0, 0}
+    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.RepairState Unit
+    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.repairKernel
+    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.recoveredSet theta tag)
+    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.startState theta i tag)
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.source_strongRepairable' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.actual_formed_candidate_family_nonempty : ∀
+  (p : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Parameters)
+  (hp : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Valid p),
+  @Set.Nonempty.{0} (Finset.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.PhysicalCell)
+    (@UEOT.V3.Compression.CrossTrack.responseFormedCandidateFamily.{0, 0, 0, 0, 0, 0}
+      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.PhysicalCell
+      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.PhysicalCell
+      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.SourceHistory Unit
+      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.PhysicalCell → Option.{0} Bool) Bool
+      Bool.instMeasurableSpace
+      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.physicalReadout
+      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.sourceResponse p hp)
+      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.componentRegion)
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.actual_formed_candidate_family_nonempty' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.actual_formed_candidate_nonempty : ∀
+  (p : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Parameters)
+  (hp : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Valid p)
+  (S : Finset.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.PhysicalCell),
+  @Membership.mem.{0, 0}
+      (Finset.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.PhysicalCell)
+      (Set.{0} (Finset.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.PhysicalCell))
+      (@Set.instMembership.{0}
+        (Finset.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.PhysicalCell))
+      (@UEOT.V3.Compression.CrossTrack.responseFormedCandidateFamily.{0, 0, 0, 0, 0, 0}
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.PhysicalCell
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.PhysicalCell
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.SourceHistory Unit
+        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.PhysicalCell → Option.{0} Bool) Bool
+        Bool.instMeasurableSpace
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.physicalReadout
+        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.sourceResponse p hp)
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.componentRegion)
+      S →
+    @Finset.Nonempty.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.PhysicalCell S
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.actual_formed_candidate_nonempty' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.newborn_fresh_from_old_population : ∀
+  (t : Nat) (old : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member)
+  (body : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Body)
+  (population : List.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member),
+  (∀ (m : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member),
+      @Membership.mem.{0, 0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member
+          (List.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member)
+          (@List.instMembership.{0}
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member)
+          population m →
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.ValidIdentity t m.identity) →
+    ∀ (m : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member),
+      @Membership.mem.{0, 0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member
+          (List.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member)
+          (@List.instMembership.{0}
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member)
+          population m →
+        @Ne.{1} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Identity
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.newbornMember t old
+              body).identity
+          m.identity
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.newborn_fresh_from_old_population' depends on axioms: [propext,
+ Quot.sound.{u}]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.actualStep_budget : ∀ (t : Nat)
+  (old : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member)
+  (a : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Action)
+  (z : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Noise),
+  @Eq.{1} Nat
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.step old.body a z).repairPaid
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.step old.body a z).operationPaid)
+        (@List.length.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.actualStep t old a z)))
+      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.step old.body a z).refund)
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.capital old)
+      (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.actualStep_budget' depends on axioms: [propext,
+ Quot.sound.{u}]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.descendants_length : ∀ (T t : Nat)
+  (old : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member)
+  (w : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeFeedback.NoiseTree T),
+  @Eq.{1} Nat
+    (@List.length.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member
+      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.descendants T t old w))
+    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeFeedback.treeCount T old.body w)
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.descendants_length' depends on axioms: [propext]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.step_outputs_program : ∀
+  (theta i tag : Bool) (a : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Action)
+  (z : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Noise),
+  And
+    (∀ (b : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Body),
+      @Membership.mem.{0, 0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Body
+          (List.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Body)
+          (@List.instMembership.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Body)
+          (@Option.toList.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Body
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.step
+                (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.programBody theta i tag) a
+                z).retained)
+          b →
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.CarriesProgram theta b)
+    (∀ (b : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Body),
+      @Membership.mem.{0, 0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Body
+          (List.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Body)
+          (@List.instMembership.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Body)
+          (@Option.toList.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Body
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.step
+                (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.programBody theta i tag) a
+                z).newborn)
+          b →
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.CarriesProgram theta b)
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.step_outputs_program' depends on axioms: [propext,
+ Quot.sound.{u}]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.reachable_program : ∀
+  (theta : Bool)
+  (initial : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.State),
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.ProgramPopulation theta
+      initial.population →
+    ∀ {t : Nat} {s : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.State},
+      UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.Reachable initial t s →
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.ProgramPopulation theta
+          s.population
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.reachable_program' depends on axioms: [propext,
+ Quot.sound.{u}]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.populationExpectation_eraseState : ∀
+  (p : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Parameters)
+  (K : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.Policy)
+  (initial : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.State) (n : Nat)
+  (F : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.State → Real),
+  @Eq.{1} Real
+    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.populationExpectation p K
+      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.eraseState initial) n F)
+    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.populationExpectation p K
+      initial n fun s =>
+      F (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.eraseState s))
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.populationExpectation_eraseState' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.attainable_test_values_eraseState : ∀
+  (p : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Parameters)
+  (initial : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.State) (n : Nat)
+  (F : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.State → Real),
+  (∀ (s : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.State),
+      @Eq.{1} Real
+        (F (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.eraseState s))
+        (F s)) →
+    @Eq.{1} (Set.{0} Real)
+      (@Set.range.{0, 1} Real
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.Policy fun K =>
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.populationExpectation p K
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.eraseState initial) n
+          F)
+      (@Set.range.{0, 1} Real
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.Policy fun K =>
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.populationExpectation p K
+          initial n F)
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.attainable_test_values_eraseState' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.valid_iff_probability_advantage_supercritical : ∀
+  (p : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Parameters),
+  Iff (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Valid p)
+    (And (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.ProbabilityValid p)
+      (And (@LT.lt.{0} Real Real.instLT p.careOnly p.bloomOnly)
+        (@LT.lt.{0} Real Real.instLT (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne))
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.kc p))))
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.valid_iff_probability_advantage_supercritical' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.optimalRate_formula : ∀
+  (p : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Parameters),
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.ProbabilityValid p →
+    @Eq.{1} Real
+      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.optimalRate p)
+      (@Max.max.{0} Real Real.instMax (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne))
+        (@Max.max.{0} Real Real.instMax
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.growthRate p Bool.false)
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.growthRate p Bool.true)))
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.optimalRate_formula' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.actual_one_step_value_le : ∀
+  (p : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Parameters),
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.ProbabilityValid p →
+    ∀ (theta i tag : Bool) (a : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Action),
+      @LE.le.{0} Real Real.instLE
+        (∑ z,
+          @HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul)
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.noiseWeight p z)
+            (∑ j,
+              @HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul)
+                (@Nat.cast.{0} Real Real.instNatCast
+                  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.resultCount
+                    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.step
+                      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.programBody theta i
+                        tag)
+                      a z)
+                    j))
+                (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.optimalValue p
+                  j)))
+        (@HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul)
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.optimalRate p)
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.optimalValue p i))
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.actual_one_step_value_le' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.actual_selected_one_step_value_eq : ∀
+  (p : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Parameters),
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.ProbabilityValid p →
+    ∀ (theta i tag : Bool),
+      @Eq.{1} Real
+        (∑ z,
+          @HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul)
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.noiseWeight p z)
+            (∑ j,
+              @HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul)
+                (@Nat.cast.{0} Real Real.instNatCast
+                  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.resultCount
+                    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.step
+                      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.programBody theta i
+                        tag)
+                      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.optimalAction
+                        p i)
+                      z)
+                    j))
+                (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.optimalValue p
+                  j)))
+        (@HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul)
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.optimalRate p)
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.optimalValue p i))
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.actual_selected_one_step_value_eq' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.optimal_population_upper : ∀
+  (p : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Parameters),
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.ProbabilityValid p →
+    ∀ (K : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.Policy)
+      (initial : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.State) (n : Nat),
+      @LE.le.{0} Real Real.instLE
+        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.populationExpectation p K
+          initial n fun s =>
+          @Nat.cast.{0} Real Real.instNatCast
+            (@List.length.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member
+              s.population))
+        (@HDiv.hDiv.{0, 0, 0} Real Real Real (@instHDiv.{0} Real (@DivInvMonoid.toDiv.{0} Real Real.instDivInvMonoid))
+          (@HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul)
+            (@HPow.hPow.{0, 0, 0} Real Nat Real
+              (@instHPow.{0, 0} Real Nat (@NPow.toPow.{0} Real (@Monoid.toNPow.{0} Real Real.instMonoid)))
+              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.optimalRate p)
+              n)
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.weightedPotential
+              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.optimalValue p)
+              initial.population))
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.valueMin p))
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.optimal_population_upper' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.optimal_hasExpectedGrowth : ∀
+  (p : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Parameters),
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.ProbabilityValid p →
+    ∀ (initial : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.State),
+      @Ne.{1} (List.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member)
+          initial.population
+          (@List.nil.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member) →
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.HasExpectedGrowth p
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.optimalPolicy p) initial
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.optimalRate p)
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.optimal_hasExpectedGrowth' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.programPolicy_positive_branch_is_internal : ∀
+  (p : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Parameters) (theta : Bool) (t : Nat)
+  (s : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.State)
+  (w : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.Branch s),
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.ProgramPopulation theta
+      s.population →
+    @LT.lt.{0} Real Real.instLT (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero))
+        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.branchWeight p
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.programPolicy theta) t s
+          w) →
+      @Eq.{1} (List.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member)
+        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.next t s w).population
+        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.internalGeneration t
+          s.population
+          (@Prod.snd.{0, 0}
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.RequestWord
+              (@List.length.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member
+                s.population))
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.NoiseWord
+              (@List.length.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member
+                s.population))
+            w))
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.programPolicy_positive_branch_is_internal' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.founder_program : ∀ (index : Nat)
+  (theta i tag : Bool),
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.ProgramPopulation theta
+    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.founderState index theta i
+        tag).population
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.founder_program' depends on axioms: [propext]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment.optimalRate_isLeast_uniform_upper : ∀
+  (p : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Parameters),
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.ProbabilityValid p →
+    ∀ (initial : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.State),
+      @Ne.{1} (List.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member)
+          initial.population
+          (@List.nil.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member) →
+        @IsLeast.{0} Real Real.instLE
+          (@Set.ofPred.{0} Real fun rho =>
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment.UniformExpectedUpper p
+              initial rho)
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.optimalRate p)
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment.optimalRate_isLeast_uniform_upper' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment.false_program_attains_iff : ∀
+  (p : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Parameters),
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.ProbabilityValid p →
+    ∀ (initial : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.State),
+      @Ne.{1} (List.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member)
+          initial.population
+          (@List.nil.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member) →
+        Iff
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.HasExpectedGrowth p
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.programPolicy
+              Bool.false)
+            initial
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.optimalRate p))
+          (And (@LE.le.{0} Real Real.instLE p.bloomOnly p.careOnly)
+            (@LE.le.{0} Real Real.instLE (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne))
+              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.kc p)))
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment.false_program_attains_iff' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment.true_program_attains_iff : ∀
+  (p : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Parameters),
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.ProbabilityValid p →
+    ∀ (initial : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.State),
+      @Ne.{1} (List.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member)
+          initial.population
+          (@List.nil.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member) →
+        Iff
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.HasExpectedGrowth p
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.programPolicy
+              Bool.true)
+            initial
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.optimalRate p))
+          (And (@LE.le.{0} Real Real.instLE p.careOnly p.bloomOnly)
+            (@LE.le.{0} Real Real.instLE (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne))
+              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.growthRate p Bool.true)))
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment.true_program_attains_iff' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment.same_damaged_program_repairs_and_attains_iff : ∀
+  (p : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Parameters),
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.ProbabilityValid p →
+    ∀ (index : Nat) (theta tag : Bool),
+      Iff
+        (And
+          (@Eq.{1} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Body
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.paidRepair
+                (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.startState theta Bool.true
+                  tag)).body
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.encode theta Bool.false tag))
+          (And
+            (@Eq.{1} Nat
+              (@Fin.val (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+                (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.paidRepair
+                    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.startState theta
+                      Bool.true tag)).balance)
+              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+            (And
+              (∀ (z : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Noise),
+                @Eq.{1} Nat
+                  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.programStep
+                      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.founder index
+                          theta Bool.true tag).body
+                      z).repairPaid
+                  (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.HasExpectedGrowth p
+                (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.programPolicy
+                  theta)
+                (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.founderState index
+                  theta Bool.true tag)
+                (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.optimalRate
+                  p)))))
+        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment.programRegion p theta)
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment.same_damaged_program_repairs_and_attains_iff' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment.subcritical_existing_programs_do_not_attain : ∀
+  (p : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Parameters),
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.ProbabilityValid p →
+    @LT.lt.{0} Real Real.instLT
+        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.kc p)
+        (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne)) →
+      @LT.lt.{0} Real Real.instLT
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.growthRate p Bool.true)
+          (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne)) →
+        ∀ (initial : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.State),
+          @Ne.{1} (List.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member)
+              initial.population
+              (@List.nil.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member) →
+            And
+              (Not
+                (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.HasExpectedGrowth
+                  p
+                  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.programPolicy
+                    Bool.false)
+                  initial
+                  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.optimalRate
+                    p)))
+              (Not
+                (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.HasExpectedGrowth
+                  p
+                  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.programPolicy
+                    Bool.true)
+                  initial
+                  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.optimalRate
+                    p)))
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment.subcritical_existing_programs_do_not_attain' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreTheoryClosure.same_program_regenerates_and_attains : ∀
+  (p : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Parameters),
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Valid p →
+    ∀ (index : Nat) (tag : Bool),
+      And
+        (@Eq.{1} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Body
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.paidRepair
+              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.startState Bool.true Bool.true
+                tag)).body
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.encode Bool.true Bool.false tag))
+        (And
+          (@Eq.{1} (Option.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Action)
+            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.rawExecute
+              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.paidRepair
+                  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.startState Bool.true
+                    Bool.true tag)).body
+              Bool.true)
+            (@Option.some.{0} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Action
+              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Action.care))
+          (And
+            (@Eq.{1} Nat
+              (@Fin.val (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))
+                (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.paidRepair
+                    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.startState Bool.true
+                      Bool.true tag)).balance)
+              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+            (And
+              (∀ (z : UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Noise),
+                @Eq.{1} UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.LocalResult
+                  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.programStep
+                    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.founder index
+                        Bool.true Bool.true tag).body
+                    z)
+                  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.step
+                    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.startState Bool.true
+                        Bool.true tag).body
+                    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Action.care z))
+              (∃ lo hi,
+                And
+                  (@LT.lt.{0} Real Real.instLT
+                    (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero)) lo)
+                  (And
+                    (@LT.lt.{0} Real Real.instLT
+                      (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero)) hi)
+                    (∀ (n : Nat),
+                      And
+                        (@LE.le.{0} Real Real.instLE
+                          (@HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul) lo
+                            (@HPow.hPow.{0, 0, 0} Real Nat Real
+                              (@instHPow.{0, 0} Real Nat
+                                (@NPow.toPow.{0} Real (@Monoid.toNPow.{0} Real Real.instMonoid)))
+                              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.growthRate p
+                                Bool.true)
+                              n))
+                          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.populationExpectation
+                            p
+                            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.bestPolicy
+                            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreTheoryClosure.commonFounder index
+                              tag)
+                            n fun s =>
+                            @Nat.cast.{0} Real Real.instNatCast
+                              (@List.length.{0}
+                                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member
+                                s.population)))
+                        (@LE.le.{0} Real Real.instLE
+                          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.populationExpectation
+                            p
+                            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.bestPolicy
+                            (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreTheoryClosure.commonFounder index
+                              tag)
+                            n fun s =>
+                            @Nat.cast.{0} Real Real.instNatCast
+                              (@List.length.{0}
+                                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.Member
+                                s.population))
+                          (@HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul) hi
+                            (@HPow.hPow.{0, 0, 0} Real Nat Real
+                              (@instHPow.{0, 0} Real Nat
+                                (@NPow.toPow.{0} Real (@Monoid.toNPow.{0} Real Real.instMonoid)))
+                              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.growthRate p
+                                Bool.true)
+                              n)))))))))
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreTheoryClosure.same_program_regenerates_and_attains' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreTheoryClosure.positive_source_class_nonempty : ∃ p,
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.Valid p
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreTheoryClosure.positive_source_class_nonempty' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+UEOTGrowthClassificationCheck.enlarged_domain_actual_internal : ∀ (index : Nat) (tag : Bool),
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.HasExpectedGrowth
+    UEOTGrowthClassificationCheck.careSubcritical
+    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.programPolicy Bool.true)
+    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.founderState index Bool.true
+      Bool.true tag)
+    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.optimalRate
+      UEOTGrowthClassificationCheck.careSubcritical)
+'UEOTGrowthClassificationCheck.enlarged_domain_actual_internal' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+UEOTGrowthClassificationCheck.subcritical_actual_internal_failure : ∀ (index : Nat) (theta tag : Bool),
+  Not
+    (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.HasExpectedGrowth
+      UEOTGrowthClassificationCheck.subcritical
+      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.programPolicy theta)
+      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.founderState index theta
+        Bool.true tag)
+      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.optimalRate
+        UEOTGrowthClassificationCheck.subcritical))
+'UEOTGrowthClassificationCheck.subcritical_actual_internal_failure' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@UEOT.V3.OmegaMinimalFailure.p_omg_01.{u_1} : ∀ {V : Type u_1} (Failure : Finset.{u_1} V → Prop),
+  @UEOT.V3.OmegaMinimalFailure.FailureMonotone.{u_1} V Failure →
+    ∀ (D : Finset.{u_1} V),
+      Iff (Failure D)
+        (∃ C,
+          And
+            (@Membership.mem.{u_1, u_1} (Finset.{u_1} V) (Set.{u_1} (Finset.{u_1} V))
+              (@Set.instMembership.{u_1} (Finset.{u_1} V))
+              (@UEOT.V3.OmegaMinimalFailure.minimalFailures.{u_1} V Failure) C)
+            (@LE.le.{u_1} (Finset.{u_1} V)
+              (@Preorder.toLE.{u_1} (Finset.{u_1} V)
+                (@PartialOrder.toPreorder.{u_1} (Finset.{u_1} V) (@Finset.instPartialOrder.{u_1} V)))
+              C D))
+'UEOT.V3.OmegaMinimalFailure.p_omg_01' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@UEOT.V3.CommonBottleneckRank.p_ddh_04.{u_1} : ∀ {Row : Type u_1} {k : Nat}
+  (m : Row → UEOT.V3.CommonBottleneckRank.Budget k → Real)
+  (z : UEOT.V3.CommonBottleneckRank.Budget k → UEOT.V3.CommonBottleneckRank.Latent)
+  (g : Row → UEOT.V3.CommonBottleneckRank.Latent → Real) (B : UEOT.V3.CommonBottleneckRank.Budget k),
+  (∀ (r : Row) (x : UEOT.V3.CommonBottleneckRank.Budget k), @Eq.{1} Real (m r x) (g r (z x))) →
+    @DifferentiableAt.{0, 0, 0} Real (@DenselyNormedField.toNontriviallyNormedField.{0} Real Real.denselyNormedField)
+        (UEOT.V3.CommonBottleneckRank.Budget k)
+        (@Pi.addCommGroup.{0, 0} (Fin k) (fun a => Real) fun i => Real.instAddCommGroup)
+        (@Pi.Function.module.{0, 0, 0} (Fin k) Real Real
+          (@DivisionSemiring.toSemiring.{0} Real
+            (@Semifield.toDivisionSemiring.{0} Real
+              (@Field.toSemifield.{0} Real
+                (@NormedField.toField.{0} Real
+                  (@NontriviallyNormedField.toNormedField.{0} Real
+                    (@DenselyNormedField.toNontriviallyNormedField.{0} Real Real.denselyNormedField))))))
+          (@Semiring.toAddCommMonoid.{0} Real (@Ring.toSemiring.{0} Real Real.instRing))
+          (@Semiring.toModule.{0} Real
+            (@DivisionSemiring.toSemiring.{0} Real
+              (@Semifield.toDivisionSemiring.{0} Real
+                (@Field.toSemifield.{0} Real
+                  (@NormedField.toField.{0} Real
+                    (@NontriviallyNormedField.toNormedField.{0} Real
+                      (@DenselyNormedField.toNontriviallyNormedField.{0} Real Real.denselyNormedField))))))))
+        (@Pi.topologicalSpace.{0, 0} (Fin k) (fun a => Real) fun i =>
+          @UniformSpace.toTopologicalSpace.{0} Real (@PseudoMetricSpace.toUniformSpace.{0} Real Real.pseudoMetricSpace))
+        UEOT.V3.CommonBottleneckRank.Latent
+        (@Pi.addCommGroup.{0, 0} (Fin (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))) (fun a => Real)
+          fun i => Real.instAddCommGroup)
+        (@Pi.Function.module.{0, 0, 0} (Fin (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))) Real Real
+          (@DivisionSemiring.toSemiring.{0} Real
+            (@Semifield.toDivisionSemiring.{0} Real
+              (@Field.toSemifield.{0} Real
+                (@NormedField.toField.{0} Real
+                  (@NontriviallyNormedField.toNormedField.{0} Real
+                    (@DenselyNormedField.toNontriviallyNormedField.{0} Real Real.denselyNormedField))))))
+          (@Semiring.toAddCommMonoid.{0} Real (@Ring.toSemiring.{0} Real Real.instRing))
+          (@Semiring.toModule.{0} Real
+            (@DivisionSemiring.toSemiring.{0} Real
+              (@Semifield.toDivisionSemiring.{0} Real
+                (@Field.toSemifield.{0} Real
+                  (@NormedField.toField.{0} Real
+                    (@NontriviallyNormedField.toNormedField.{0} Real
+                      (@DenselyNormedField.toNontriviallyNormedField.{0} Real Real.denselyNormedField))))))))
+        (@Pi.topologicalSpace.{0, 0} (Fin (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))) (fun a => Real)
+          fun i =>
+          @UniformSpace.toTopologicalSpace.{0} Real (@PseudoMetricSpace.toUniformSpace.{0} Real Real.pseudoMetricSpace))
+        z B →
+      (∀ (r : Row),
+          @DifferentiableAt.{0, 0, 0} Real
+            (@DenselyNormedField.toNontriviallyNormedField.{0} Real Real.denselyNormedField)
+            UEOT.V3.CommonBottleneckRank.Latent
+            (@Pi.addCommGroup.{0, 0} (Fin (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))) (fun a => Real)
+              fun i => Real.instAddCommGroup)
+            (@Pi.Function.module.{0, 0, 0} (Fin (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))) Real Real
+              (@DivisionSemiring.toSemiring.{0} Real
+                (@Semifield.toDivisionSemiring.{0} Real
+                  (@Field.toSemifield.{0} Real
+                    (@NormedField.toField.{0} Real
+                      (@NontriviallyNormedField.toNormedField.{0} Real
+                        (@DenselyNormedField.toNontriviallyNormedField.{0} Real Real.denselyNormedField))))))
+              (@Semiring.toAddCommMonoid.{0} Real (@Ring.toSemiring.{0} Real Real.instRing))
+              (@Semiring.toModule.{0} Real
+                (@DivisionSemiring.toSemiring.{0} Real
+                  (@Semifield.toDivisionSemiring.{0} Real
+                    (@Field.toSemifield.{0} Real
+                      (@NormedField.toField.{0} Real
+                        (@NontriviallyNormedField.toNormedField.{0} Real
+                          (@DenselyNormedField.toNontriviallyNormedField.{0} Real Real.denselyNormedField))))))))
+            (@Pi.topologicalSpace.{0, 0} (Fin (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+              (fun a => Real) fun i =>
+              @UniformSpace.toTopologicalSpace.{0} Real
+                (@PseudoMetricSpace.toUniformSpace.{0} Real Real.pseudoMetricSpace))
+            Real Real.instAddCommGroup
+            (@Semiring.toModule.{0} Real
+              (@DivisionSemiring.toSemiring.{0} Real
+                (@Semifield.toDivisionSemiring.{0} Real
+                  (@Field.toSemifield.{0} Real
+                    (@NormedField.toField.{0} Real
+                      (@NontriviallyNormedField.toNormedField.{0} Real
+                        (@DenselyNormedField.toNontriviallyNormedField.{0} Real Real.denselyNormedField)))))))
+            (@UniformSpace.toTopologicalSpace.{0} Real
+              (@PseudoMetricSpace.toUniformSpace.{0} Real Real.pseudoMetricSpace))
+            (g r) (z B)) →
+        @LE.le.{0} Nat instLENat
+          (@Matrix.rank.{u_1, 0, 0} Row (Fin k) Real (Fin.fintype k) Real.instCommSemiring
+            (@UEOT.V3.CommonBottleneckRank.stackedJacobian.{u_1} Row k m B))
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+'UEOT.V3.CommonBottleneckRank.p_ddh_04' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@UEOT.V3.DiffusionHJBVerification.p_ctl_03.{u_1, u_2,
+    u_3} : ∀ {X : Type u_1} [inst : NormedAddCommGroup.{u_1} X]
+  [inst_1 : @NormedSpace.{0, u_1} Real X Real.normedField (@NormedAddCommGroup.toSeminormedAddCommGroup.{u_1} X inst)]
+  [inst_2 : MeasurableSpace.{u_1} X]
+  [inst_3 :
+    @BorelSpace.{u_1} X
+      (@UniformSpace.toTopologicalSpace.{u_1} X
+        (@PseudoMetricSpace.toUniformSpace.{u_1} X
+          (@SeminormedAddCommGroup.toPseudoMetricSpace.{u_1} X
+            (@NormedAddCommGroup.toSeminormedAddCommGroup.{u_1} X inst))))
+      inst_2]
+  {A : Type u_2} [inst_4 : MeasurableSpace.{u_2} A]
+  (M : @UEOT.V3.DiffusionHJBVerification.Model.{u_1, u_2} X A inst inst_1 inst_2 inst_3 inst_4) {Policy : Type u_3}
+  (F :
+    @UEOT.V3.DiffusionHJBVerification.Model.ControlFamily.{u_1, u_2, u_3} X inst inst_1 inst_2 inst_3 A inst_4 M
+      Policy),
+  @UEOT.V3.DiffusionHJBVerification.Model.ControlFamily.IsOptimalValue.{u_1, u_2, u_3} X inst inst_1 inst_2 inst_3 A
+    inst_4 M Policy F
+'UEOT.V3.DiffusionHJBVerification.p_ctl_03' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@UEOT.V3.SelectionBridge.ReplicationBridge.behavior_equiv_fitness_eq.{u_1,
+    u_2} : ∀ {Θ : Type u_1} {Q : Type u_2} (B : UEOT.V3.SelectionBridge.ReplicationBridge.{u_1, u_2} Θ Q) {θ θ' : Θ},
+  @UEOT.V3.SelectionBridge.ReplicationBridge.BehaviorEquivalent.{u_1, u_2} Θ Q B θ θ' →
+    @Eq.{1} Real (@UEOT.V3.SelectionBridge.ReplicationBridge.fitness.{u_1, u_2} Θ Q B θ)
+      (@UEOT.V3.SelectionBridge.ReplicationBridge.fitness.{u_1, u_2} Θ Q B θ')
+'UEOT.V3.SelectionBridge.ReplicationBridge.behavior_equiv_fitness_eq' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@UEOT.V3.Compression.TheoryCompletion.greedyInvariantGOASet_nonempty.{u_1,
+    u_2} : ∀ {S : Type u_1} [inst : Fintype.{u_1} S] [inst_1 : Nonempty.{u_1 + 1} S] {A : S → Type u_2}
+  [inst_2 : (s : S) → Fintype.{u_2} (A s)] [inst_3 : ∀ (s : S), Nonempty.{u_2 + 1} (A s)]
+  (M : @UEOT.V3.FiniteDiscountedControl.Model.{u_1, u_2} S inst A inst_2),
+  @Set.Nonempty.{u_1} (@Set.Elem.{u_1} (S → Real) (@stdSimplex.{u_1, 0} Real S Real.semiring Real.partialOrder inst))
+    (@UEOT.V3.Compression.TheoryCompletion.GreedyInvariantGOASet.{u_1, u_2} S inst inst_1 A inst_2 inst_3 M)
+'UEOT.V3.Compression.TheoryCompletion.greedyInvariantGOASet_nonempty' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.exact_cached_data : have s :=
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.cachedResult
+    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.Input.knownS;
+have g :=
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.cachedResult
+    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.Input.knownG;
+have b :=
+  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.cachedResult
+    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.Input.dual;
+And
+  (@Eq.{1} Rat
+    (@Prod.fst.{0, 0} Rat
+      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionSolver.Table.{0, 0}
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Act
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Obs
+        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+      s)
+    (@HDiv.hDiv.{0, 0, 0} Rat Rat Rat (@instHDiv.{0} Rat Rat.instDiv)
+      (@OfNat.ofNat.{0} Rat (nat_lit 41) (@Rat.instOfNat (nat_lit 41)))
+      (@OfNat.ofNat.{0} Rat (nat_lit 32) (@Rat.instOfNat (nat_lit 32)))))
+  (And
+    (@Eq.{1} Rat
+      (@Prod.fst.{0, 0} Rat
+        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionSolver.Table.{0, 0}
+          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Act
+          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Obs
+          (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+        g)
+      (@HDiv.hDiv.{0, 0, 0} Rat Rat Rat (@instHDiv.{0} Rat Rat.instDiv)
+        (@OfNat.ofNat.{0} Rat (nat_lit 5) (@Rat.instOfNat (nat_lit 5)))
+        (@OfNat.ofNat.{0} Rat (nat_lit 4) (@Rat.instOfNat (nat_lit 4)))))
+    (And
+      (@Eq.{1} Rat
+        (@Prod.fst.{0, 0} Rat
+          (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionSolver.Table.{0, 0}
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Act
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Obs
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+          b)
+        (@HDiv.hDiv.{0, 0, 0} Rat Rat Rat (@instHDiv.{0} Rat Rat.instDiv)
+          (@OfNat.ofNat.{0} Rat (nat_lit 5) (@Rat.instOfNat (nat_lit 5)))
+          (@OfNat.ofNat.{0} Rat (nat_lit 4) (@Rat.instOfNat (nat_lit 4)))))
+      (And
+        (@Eq.{1} Rat
+          (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.tableJ
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+            (@Prod.snd.{0, 0} Rat
+              (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionSolver.Table.{0, 0}
+                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Act
+                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Obs
+                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+              s)
+            UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.FaultMechanism.S)
+          (@HDiv.hDiv.{0, 0, 0} Rat Rat Rat (@instHDiv.{0} Rat Rat.instDiv)
+            (@OfNat.ofNat.{0} Rat (nat_lit 41) (@Rat.instOfNat (nat_lit 41)))
+            (@OfNat.ofNat.{0} Rat (nat_lit 32) (@Rat.instOfNat (nat_lit 32)))))
+        (And
+          (@Eq.{1} Rat
+            (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.tableJ
+              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+              (@Prod.snd.{0, 0} Rat
+                (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionSolver.Table.{0, 0}
+                  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Act
+                  UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Obs
+                  (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                s)
+              UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.FaultMechanism.G)
+            (@HDiv.hDiv.{0, 0, 0} Rat Rat Rat (@instHDiv.{0} Rat Rat.instDiv)
+              (@OfNat.ofNat.{0} Rat (nat_lit 37) (@Rat.instOfNat (nat_lit 37)))
+              (@OfNat.ofNat.{0} Rat (nat_lit 32) (@Rat.instOfNat (nat_lit 32)))))
+          (And
+            (@Eq.{1} Rat
+              (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.tableJ
+                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+                (@Prod.snd.{0, 0} Rat
+                  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionSolver.Table.{0, 0}
+                    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Act
+                    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Obs
+                    (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                  g)
+                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.FaultMechanism.S)
+              (@HDiv.hDiv.{0, 0, 0} Rat Rat Rat (@instHDiv.{0} Rat Rat.instDiv)
+                (@OfNat.ofNat.{0} Rat (nat_lit 5) (@Rat.instOfNat (nat_lit 5)))
+                (@OfNat.ofNat.{0} Rat (nat_lit 4) (@Rat.instOfNat (nat_lit 4)))))
+            (@Eq.{1} Rat
+              (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.tableJ
+                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+                (@Prod.snd.{0, 0} Rat
+                  (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionSolver.Table.{0, 0}
+                    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Act
+                    UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Obs
+                    (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+                  g)
+                UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.FaultMechanism.G)
+              (@HDiv.hDiv.{0, 0, 0} Rat Rat Rat (@instHDiv.{0} Rat Rat.instDiv)
+                (@OfNat.ofNat.{0} Rat (nat_lit 5) (@Rat.instOfNat (nat_lit 5)))
+                (@OfNat.ofNat.{0} Rat (nat_lit 4) (@Rat.instOfNat (nat_lit 4))))))))))
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.exact_cached_data' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u},
+ UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.exact_cached_data._native.native_decide.ax_1_1]
+UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.exact_two_data : And
+  (@Eq.{1} Rat
+    (@Prod.fst.{0, 0} Rat
+      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionSolver.Table.{0, 0}
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Act
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Obs
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.cachedAt
+        UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.Input.knownS
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+    (@HDiv.hDiv.{0, 0, 0} Rat Rat Rat (@instHDiv.{0} Rat Rat.instDiv)
+      (@OfNat.ofNat.{0} Rat (nat_lit 13) (@Rat.instOfNat (nat_lit 13)))
+      (@OfNat.ofNat.{0} Rat (nat_lit 16) (@Rat.instOfNat (nat_lit 16)))))
+  (And
+    (@Eq.{1} Rat
+      (@Prod.fst.{0, 0} Rat
+        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionSolver.Table.{0, 0}
+          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Act
+          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource.Obs
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        (UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.cachedAt
+          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.Input.knownG
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+      (@HDiv.hDiv.{0, 0, 0} Rat Rat Rat (@instHDiv.{0} Rat Rat.instDiv)
+        (@OfNat.ofNat.{0} Rat (nat_lit 13) (@Rat.instOfNat (nat_lit 13)))
+        (@OfNat.ofNat.{0} Rat (nat_lit 16) (@Rat.instOfNat (nat_lit 16)))))
+    (And
+      (@Eq.{1} Rat
+        (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.tableJ
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.commonTwo
+          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.FaultMechanism.S)
+        (@HDiv.hDiv.{0, 0, 0} Rat Rat Rat (@instHDiv.{0} Rat Rat.instDiv)
+          (@OfNat.ofNat.{0} Rat (nat_lit 13) (@Rat.instOfNat (nat_lit 13)))
+          (@OfNat.ofNat.{0} Rat (nat_lit 16) (@Rat.instOfNat (nat_lit 16)))))
+      (@Eq.{1} Rat
+        (@UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.tableJ
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.commonTwo
+          UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource.FaultMechanism.G)
+        (@HDiv.hDiv.{0, 0, 0} Rat Rat Rat (@instHDiv.{0} Rat Rat.instDiv)
+          (@OfNat.ofNat.{0} Rat (nat_lit 13) (@Rat.instOfNat (nat_lit 13)))
+          (@OfNat.ofNat.{0} Rat (nat_lit 16) (@Rat.instOfNat (nat_lit 16)))))))
+'UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.exact_two_data' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u},
+ UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.exact_two_data._native.native_decide.ax_1_1]

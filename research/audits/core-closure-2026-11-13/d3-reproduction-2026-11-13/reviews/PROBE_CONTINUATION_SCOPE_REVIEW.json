@@ -1,0 +1,36 @@
+{
+  "reviewer": "native agent C",
+  "reviewed_utc": "2026-11-13T09:36:44.366912+00:00",
+  "status": "ACCEPT_SCOPED_PROBE_CONTINUATION_PENDING_ACTUAL_RECEIPTS",
+  "old_probe_sha256": "a61ab3753293be95512136ae6eca13cc32ede7e56825f8f9b872177d71d913ea",
+  "new_probe_sha256": "28c731287dc45ad7f7f6cbbdd67e011ef493614989da1462bf7f3135ed9bcb8c",
+  "new_probe_bytes": 17941,
+  "exact_only_change": "remove one set_option pp.width 180 newline (24 bytes)",
+  "exact_removal_verified": true,
+  "source_compile_plan_changed": false,
+  "axiom_allowlist_changed": false,
+  "v1_runner_sha256": "bb8eb03264eb5243d5187f2cfc08148d4bb46672566829f29600be73079d5db3",
+  "v2_runner_sha256": "31b1671dba48e01386c1afb95f2aaa038c6e9ae96e6339e970f31da31a9412d1",
+  "plan_sha256": "70b15301958a5c078167f929865c469b3b6fda925db7c0cfa1572e03f54ee29d",
+  "parent_reported_v2": {
+    "source_targets_exit_zero": 15,
+    "old_cache_artifacts_unchanged": 63,
+    "probe_exit_code": 1,
+    "reason": "Unknown option pp.width",
+    "independently_seen_by_C_at_this_review": false
+  },
+  "required_continuation_boundaries": [
+    "immutable v2 failure receipt and logs",
+    "bind to v2 15 successful source target artifacts by hash",
+    "validate current 1055 source/lock bytes against fixed plan",
+    "new probe source and outputs in fresh non-symlink slots",
+    "fixed compiler and same verified v2 LEAN_PATH",
+    "all 15 explicit target imports resolve to the hash-bound v2 artifacts",
+    "new probe exit zero with complete output",
+    "unchanged 44 per-endpoint axiom constraints and semantic type obligations",
+    "continuation production-source recompilation count zero",
+    "combined evidence distinguishes v2 source compilation from later probe"
+  ],
+  "new_lean_execution_by_C": false,
+  "final_receipts_reviewed": false
+}

@@ -1,0 +1,716 @@
+{
+  "schema": "UEOT-D3-B-SEMANTIC-READBACK-V1",
+  "verdict": "SUPPORT_TARGETED_D3_CLOSURE",
+  "scope": "44 actual type queries and axiom reports, not all types printed without ellipses; 37 fresh modules endpoints and 7 reused endpoints",
+  "observed_result_sha256": "cf618add6130504e0a7b7dfdadedfb5fcebe86c105506920cf5d14c581dca154",
+  "report_sha256": "7e89fa36f5ccaa2fbcd6b1e694ade5fa7453e2e3b301cfd6294606845a0c470b",
+  "no_new_lean_execution_by_B": true,
+  "raw_binary_artifacts_rehashed_by_B_in_cloud": false,
+  "native_computation_reexecuted": false,
+  "rows": [
+    {
+      "index": 1,
+      "name": "UEOT.V3.PredictionDependent.canonical_ae_minimal",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        576,
+        605
+      ],
+      "raw_log_axiom_lines": [
+        606,
+        606
+      ],
+      "pretty_print_ellipsis_count": 1,
+      "semantic_note": "依赖 Countable I 和给定可测响应核的逐协议 AE 因子化；不是任意不可数协议的一般识别定理。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 2,
+      "name": "UEOT.V3.PredictionDependent.canonical_ae_sigma_minimal",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        607,
+        636
+      ],
+      "raw_log_axiom_lines": [
+        637,
+        639
+      ],
+      "pretty_print_ellipsis_count": 1,
+      "semantic_note": "同样保留 Countable I；得到 AE 的信息 σ 结构最小性，不是经验可识别性。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 3,
+      "name": "UEOT.V3.PredictionDependent.canonical_kernel_sufficient",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        640,
+        667
+      ],
+      "raw_log_axiom_lines": [
+        668,
+        670
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "全响应向量的坐标核给出充分性；不声称有限样本能识别完整机制。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 4,
+      "name": "UEOT.V3.FiniteDiscountedControl.Model.fixedPoint_unique",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        671,
+        676
+      ],
+      "raw_log_axiom_lines": [
+        677,
+        679
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "有限状态、每态有限非空动作及 Model 的严格折扣条件下，Bellman 固定点唯一。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 5,
+      "name": "UEOT.V3.FiniteDiscountedControl.p_ctl_01_causal_optimality",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        680,
+        695
+      ],
+      "raw_log_axiom_lines": [
+        696,
+        698
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "对声明的全体 CausalPolicy 给出无限折扣值上界，并由 greedyPolicy 达到；0<β<1。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 6,
+      "name": "UEOT.V3.CoreOperationalAssembly.optimal_qValue_macro_error_le_D",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        699,
+        744
+      ],
+      "raw_log_axiom_lines": [
+        745,
+        747
+      ],
+      "pretty_print_ellipsis_count": 1,
+      "semantic_note": "由同一 ApproxControlQuotient 得到最优微/宏动作值的误差半径 D；源码补核确认并非把目标误差作为额外字段。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 7,
+      "name": "UEOT.V3.CoreOperationalAssembly.macro_gap_certifies_micro_action",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        748,
+        864
+      ],
+      "raw_log_axiom_lines": [
+        865,
+        867
+      ],
+      "pretty_print_ellipsis_count": 3,
+      "semantic_note": "严格宏观 2D gap 是前提，推出对应微观动作的严格最优比较；不包括 gap 消失的情形。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 8,
+      "name": "UEOT.V3.CoreOperationalAssembly.p_core_01",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        868,
+        942
+      ],
+      "raw_log_axiom_lines": [
+        943,
+        943
+      ],
+      "pretty_print_ellipsis_count": 5,
+      "semantic_note": "有限共同好事件的概率下界及条件证书装配；H/I/Y、X/M、Obj 未被识别为同一身体。完整尾部以源码补核。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 9,
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.realizedMean_eq",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        944,
+        950
+      ],
+      "raw_log_axiom_lines": [
+        951,
+        953
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "实际后代加权计数与 realizedRow 相等；该代数等式本身不把任意参数变成合法概率。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 10,
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.programStep_uses_paid_repair",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        954,
+        1017
+      ],
+      "raw_log_axiom_lines": [
+        1018,
+        1018
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "给定 programBody/startState 的程序执行确实使用 paidRepair，并有账目等式；不是程序自发产生定理。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 11,
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.source_strongRepairable",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        1019,
+        1025
+      ],
+      "raw_log_axiom_lines": [
+        1026,
+        1028
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "指定 repairKernel、recoveredSet 和 startState 的 StrongRepairable；不包括任意损坏、boot 或资源状态。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 12,
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.actual_formed_candidate_family_nonempty",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        1029,
+        1041
+      ],
+      "raw_log_axiom_lines": [
+        1042,
+        1044
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "Valid p 下实际响应形成的候选族存在，候选类型为 Finset PhysicalCell；不是无结构材料的身体发生学。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 13,
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource.actual_formed_candidate_nonempty",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        1045,
+        1064
+      ],
+      "raw_log_axiom_lines": [
+        1065,
+        1067
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "上述候选族内每个候选非空；前提仍是 Valid p 及候选成员关系。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 14,
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.newborn_fresh_from_old_population",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        1068,
+        1088
+      ],
+      "raw_log_axiom_lines": [
+        1089,
+        1090
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "旧人口每个成员需 ValidIdentity t 才推出新生身份异于旧身份；任意 State 不自动满足该前提。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 15,
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.actualStep_budget",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        1091,
+        1106
+      ],
+      "raw_log_axiom_lines": [
+        1107,
+        1108
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "实际输出数量、修复/操作费用与退款的精确账目，右侧为旧 capital+5；补给属于所给模型。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 16,
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation.descendants_length",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        1109,
+        1115
+      ],
+      "raw_log_axiom_lines": [
+        1116,
+        1116
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "实际后代列表长度等于该有限 NoiseTree 的 treeCount；不是一般现实谱系识别。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 17,
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.step_outputs_program",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        1117,
+        1140
+      ],
+      "raw_log_axiom_lines": [
+        1141,
+        1142
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "从给定 programBody 出发，实际 retained/newborn 的每个输出都携带同一 θ 程序。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 18,
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.reachable_program",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        1143,
+        1151
+      ],
+      "raw_log_axiom_lines": [
+        1152,
+        1153
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "初始 ProgramPopulation θ 与 Reachable 前提推出后继人口仍携带同一程序；保留初态不变式。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 19,
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.populationExpectation_eraseState",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        1154,
+        1164
+      ],
+      "raw_log_axiom_lines": [
+        1165,
+        1167
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "擦除映射与全人口期望的复合等式；不把可观察等价升级为本体同一。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 20,
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation.attainable_test_values_eraseState",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        1168,
+        1185
+      ],
+      "raw_log_axiom_lines": [
+        1186,
+        1188
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "仅对满足 F(eraseState s)=F(s) 的测试，擦除前后全策略可达期望值集合相等。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 21,
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.valid_iff_probability_advantage_supercritical",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        1189,
+        1195
+      ],
+      "raw_log_axiom_lines": [
+        1196,
+        1198
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "旧 Valid 恰等于 ProbabilityValid 加 careOnly<bloomOnly 与 kc>1；成功区域限制被明确分离。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 22,
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.optimalRate_formula",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        1199,
+        1207
+      ],
+      "raw_log_axiom_lines": [
+        1208,
+        1210
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "ProbabilityValid 下 optimalRate=max(1,max(growthRate false,growthRate true))；有环境参数条件。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 23,
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.actual_one_step_value_le",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        1211,
+        1232
+      ],
+      "raw_log_axiom_lines": [
+        1233,
+        1235
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "对每个实际动作，实际生成后代的加权一步期望≤optimalRate×optimalValue；从 step 生成语义得到。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 24,
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification.actual_selected_one_step_value_eq",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        1236,
+        1259
+      ],
+      "raw_log_axiom_lines": [
+        1260,
+        1262
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "给定 optimalAction 的同一步加权期望等号；不证明未知参数下自动学习该动作。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 25,
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.optimal_population_upper",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        1263,
+        1283
+      ],
+      "raw_log_axiom_lines": [
+        1284,
+        1286
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "ProbabilityValid 下对声明的每个 Policy、每个 State 和每个 n 给期望人口上界；不是任意物理策略。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 26,
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.optimal_hasExpectedGrowth",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        1287,
+        1296
+      ],
+      "raw_log_axiom_lines": [
+        1297,
+        1299
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "另需初始人口非空，最优策略具有上下常数夹住的期望增长率。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 27,
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.programPolicy_positive_branch_is_internal",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        1300,
+        1321
+      ],
+      "raw_log_axiom_lines": [
+        1322,
+        1324
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "ProgramPopulation θ 且该 branchWeight>0 才有外部 programPolicy 与 internalGeneration 的人口一致。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 28,
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation.founder_program",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        1325,
+        1329
+      ],
+      "raw_log_axiom_lines": [
+        1330,
+        1330
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "构造的 founderState 确实满足 ProgramPopulation θ；程序 θ 已由构造给定。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 29,
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment.optimalRate_isLeast_uniform_upper",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        1331,
+        1342
+      ],
+      "raw_log_axiom_lines": [
+        1343,
+        1345
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "非空初始人口下，optimalRate 是全 Policy、全 n 统一期望指数上界的最小正底数；非有限期逐点最优或几乎必然存续。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 30,
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment.false_program_attains_iff",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        1346,
+        1361
+      ],
+      "raw_log_axiom_lines": [
+        1362,
+        1364
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "false 程序达到 optimalRate，当且仅当 bloomOnly≤careOnly 且 1≤kc；需 ProbabilityValid 和非空初态。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 31,
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment.true_program_attains_iff",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        1365,
+        1380
+      ],
+      "raw_log_axiom_lines": [
+        1381,
+        1383
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "如前，true 程序达到当且仅当 careOnly≤bloomOnly 且 1≤growthRate true；临界等号保留。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 32,
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment.same_damaged_program_repairs_and_attains_iff",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        1384,
+        1417
+      ],
+      "raw_log_axiom_lines": [
+        1418,
+        1420
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "受损 founder 的实际付费修复/费用与达到增长最优的合取，等价 programRegion；区域外不等于修复本身必然失败。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 33,
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment.subcritical_existing_programs_do_not_attain",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        1421,
+        1450
+      ],
+      "raw_log_axiom_lines": [
+        1451,
+        1453
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "两程序自身率均<1时，二者均不达到 optimalRate；不声称全策略都灭绝或每条样本路径都失败。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 34,
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreTheoryClosure.same_program_regenerates_and_attains",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        1454,
+        1535
+      ],
+      "raw_log_axiom_lines": [
+        1536,
+        1538
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "Valid p 与同一特定 founder 下连接修复、恢复动作及期望增长；外层为同源桥，不是无条件普遍定理。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 35,
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreTheoryClosure.positive_source_class_nonempty",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        1539,
+        1540
+      ],
+      "raw_log_axiom_lines": [
+        1541,
+        1543
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "存在参数 p 满足 Valid，排除这一正类为空；不证明所有参数或现实对象都属于该类。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 36,
+      "name": "UEOTGrowthClassificationCheck.enlarged_domain_actual_internal",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        1544,
+        1551
+      ],
+      "raw_log_axiom_lines": [
+        1552,
+        1554
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "careSubcritical 固定参数实例中 true 程序达到最优，展示扩大域；属有限消费者证据。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 37,
+      "name": "UEOTGrowthClassificationCheck.subcritical_actual_internal_failure",
+      "evidence_mode": "fresh_recompiled",
+      "raw_log_type_lines": [
+        1555,
+        1563
+      ],
+      "raw_log_axiom_lines": [
+        1564,
+        1566
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "subcritical 固定参数实例中两内置程序都不达到最优；属有限反例消费者。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 38,
+      "name": "UEOT.V3.OmegaMinimalFailure.p_omg_01",
+      "evidence_mode": "fresh_probe_of_reused_olean",
+      "raw_log_type_lines": [
+        1567,
+        1579
+      ],
+      "raw_log_axiom_lines": [
+        1580,
+        1580
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "FailureMonotone 下，每个有限删除集失效等价包含某极小失效集；底层 V 不要求有限，但删除集 D 是 Finset。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 39,
+      "name": "UEOT.V3.CommonBottleneckRank.p_ddh_04",
+      "evidence_mode": "fresh_probe_of_reused_olean",
+      "raw_log_type_lines": [
+        1581,
+        1667
+      ],
+      "raw_log_axiom_lines": [
+        1668,
+        1668
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "所有行在同一点 B 经共同可微 ℝ² 瓶颈 z 因子化才得 rank≤2；不从任意系统推出双驱动。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 40,
+      "name": "UEOT.V3.DiffusionHJBVerification.p_ctl_03",
+      "evidence_mode": "fresh_probe_of_reused_olean",
+      "raw_log_type_lines": [
+        1669,
+        1686
+      ],
+      "raw_log_axiom_lines": [
+        1687,
+        1687
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "Model/ControlFamily 中给定 HJB 候选、Itô 期望式、可积/极限与选择器运行条件后验证最优；未新构造一般受控 SDE。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 41,
+      "name": "UEOT.V3.SelectionBridge.ReplicationBridge.behavior_equiv_fitness_eq",
+      "evidence_mode": "fresh_probe_of_reused_olean",
+      "raw_log_type_lines": [
+        1688,
+        1692
+      ],
+      "raw_log_axiom_lines": [
+        1693,
+        1695
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "fitness 定义为 replicate∘response，故行为等价推出相同乘子；这一桥不证明任意现实 fitness 都只由响应决定。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 42,
+      "name": "UEOT.V3.Compression.TheoryCompletion.greedyInvariantGOASet_nonempty",
+      "evidence_mode": "fresh_probe_of_reused_olean",
+      "raw_log_type_lines": [
+        1696,
+        1701
+      ],
+      "raw_log_axiom_lines": [
+        1702,
+        1704
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "有限非空闭环的 invariant-law GOA 集非空；不含唯一性、混合或单一普适固定点。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 43,
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.exact_cached_data",
+      "evidence_mode": "fresh_probe_of_reused_olean",
+      "raw_log_type_lines": [
+        1705,
+        1801
+      ],
+      "raw_log_axiom_lines": [
+        1802,
+        1805
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "保留有限数值/策略表实例的实际类型与一个精确 native 公理依赖；本轮未重新运行原数值计算。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    },
+    {
+      "index": 44,
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.exact_two_data",
+      "evidence_mode": "fresh_probe_of_reused_olean",
+      "raw_log_type_lines": [
+        1806,
+        1848
+      ],
+      "raw_log_axiom_lines": [
+        1849,
+        1852
+      ],
+      "pretty_print_ellipsis_count": 0,
+      "semantic_note": "两步有限实例的 13/16 等式类型及一个精确 native 公理依赖；本轮未重新求值。",
+      "review_status": "ACCEPTED_WITH_STATED_SCOPE"
+    }
+  ]
+}
