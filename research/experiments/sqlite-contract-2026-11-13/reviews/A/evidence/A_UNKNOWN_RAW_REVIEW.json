@@ -1,0 +1,329 @@
+{
+  "status": "A_READ_REHASHED_AND_REDERIVED_FOUR_RAW_UNKNOWN_CASES_NO_SQLITE_EXECUTION",
+  "manifest_sha256": "ed4da14df4cf913032e8e505118a52b783650d1118f94e4981d6e9d8beed7073",
+  "scope": "Exactly the four preregistered COMMIT_NO_ACK_KILL certification cases. Reconstruct current S0/S1 from retained raw sent requests, align raw child and parent receive sequence, and inspect actual public policy inputs and complete values. No new trial or Mac operation.",
+  "cases": [
+    {
+      "spec": {
+        "run_id": "1116bb42-ad2c-5eb2-ab50-e53a72e5657d",
+        "split": "certification",
+        "workload": "W1",
+        "scenario": "COMMIT_NO_ACK_KILL",
+        "repetition": 0,
+        "order": 2,
+        "policy_rotation": 2
+      },
+      "raw_received_ack_count": 4,
+      "sent_transaction_count": 5,
+      "public_ack_class": "UNKNOWN",
+      "current_full_state": "S1",
+      "allowed_state_count": 2,
+      "checks": {
+        "raw_child_equals_received": true,
+        "request_file_equals_sent": true,
+        "prior_acks_received_target_ack_absent": true,
+        "private_commit_return_hook_recorded": true,
+        "no_go_ack_sent": true,
+        "worker_killed_and_reaped": true,
+        "candidate:unknown_label_preserved": true,
+        "candidate:only_request_without_ack_certificate": true,
+        "candidate:two_independently_rebuilt_allowed_hashes": true,
+        "candidate:no_private_stage_in_input": true,
+        "candidate:full_values_equal_S1": true,
+        "candidate:accepted_current_member": true,
+        "strong_baseline:unknown_label_preserved": true,
+        "strong_baseline:only_request_without_ack_certificate": true,
+        "strong_baseline:two_independently_rebuilt_allowed_hashes": true,
+        "strong_baseline:no_private_stage_in_input": true,
+        "strong_baseline:full_values_equal_S1": true,
+        "strong_baseline:accepted_current_member": true,
+        "same_candidate_strong_visible_input": true
+      },
+      "files_read_and_hashed": {
+        "parent-events.jsonl": {
+          "sha256": "62fde786220402b47c82c71d418eafdceb39b1a76fdec89a15e5634b8188df5f",
+          "bytes": 26682,
+          "matches_manifest": true
+        },
+        "worker.stdout.raw": {
+          "sha256": "4d722acf01ba24159385e5635199e8fc8f6c808612ff5a51b5f297a0abefa8fb",
+          "bytes": 8222,
+          "matches_manifest": true
+        },
+        "oracle/initial.json": {
+          "sha256": "90e0fa710d1dab94e284177b305aa92eb8a98f9a8a1328aaec9b3b423587f9c3",
+          "bytes": 5571,
+          "matches_manifest": true
+        },
+        "oracle/requests.json": {
+          "sha256": "5816348c692de028d1dc3371454fb62f283cb274ffd834bb804a90169f387093",
+          "bytes": 20059,
+          "matches_manifest": true
+        },
+        "policy/candidate/execution/input.json": {
+          "sha256": "9e4020aed3b588f667b0cf8fac6309d4b774bb86ff02d3b1c2da285aaaeac612",
+          "bytes": 624,
+          "matches_manifest": true
+        },
+        "policy/candidate/execution/result.json": {
+          "sha256": "6e7249cdf6972ccceb462e456fff504bfe655297b228f15dc4a04e3c45c3cd7f",
+          "bytes": 18676,
+          "matches_manifest": true
+        },
+        "policy/strong_baseline/execution/input.json": {
+          "sha256": "9e4020aed3b588f667b0cf8fac6309d4b774bb86ff02d3b1c2da285aaaeac612",
+          "bytes": 624,
+          "matches_manifest": true
+        },
+        "policy/strong_baseline/execution/result.json": {
+          "sha256": "19fe3fcbc08b15ad1f50f992cb798d89d6142e728f8b35893e49d571f9947cf5",
+          "bytes": 18682,
+          "matches_manifest": true
+        }
+      },
+      "failed_checks": []
+    },
+    {
+      "spec": {
+        "run_id": "7ca6f088-2f95-5636-ac4a-b8432cbb587b",
+        "split": "certification",
+        "workload": "W2",
+        "scenario": "COMMIT_NO_ACK_KILL",
+        "repetition": 0,
+        "order": 12,
+        "policy_rotation": 0
+      },
+      "raw_received_ack_count": 7,
+      "sent_transaction_count": 8,
+      "public_ack_class": "UNKNOWN",
+      "current_full_state": "S1",
+      "allowed_state_count": 2,
+      "checks": {
+        "raw_child_equals_received": true,
+        "request_file_equals_sent": true,
+        "prior_acks_received_target_ack_absent": true,
+        "private_commit_return_hook_recorded": true,
+        "no_go_ack_sent": true,
+        "worker_killed_and_reaped": true,
+        "candidate:unknown_label_preserved": true,
+        "candidate:only_request_without_ack_certificate": true,
+        "candidate:two_independently_rebuilt_allowed_hashes": true,
+        "candidate:no_private_stage_in_input": true,
+        "candidate:full_values_equal_S1": true,
+        "candidate:accepted_current_member": true,
+        "strong_baseline:unknown_label_preserved": true,
+        "strong_baseline:only_request_without_ack_certificate": true,
+        "strong_baseline:two_independently_rebuilt_allowed_hashes": true,
+        "strong_baseline:no_private_stage_in_input": true,
+        "strong_baseline:full_values_equal_S1": true,
+        "strong_baseline:accepted_current_member": true,
+        "same_candidate_strong_visible_input": true
+      },
+      "files_read_and_hashed": {
+        "parent-events.jsonl": {
+          "sha256": "0a1c688bf250d8f1d4b93398720f52205c8bdc45c2bb4ff3bb59ebffe9b3d246",
+          "bytes": 82188,
+          "matches_manifest": true
+        },
+        "worker.stdout.raw": {
+          "sha256": "0aa2b9e5df7ff164b3864a37932686ddae877c1ee811413de658e81c5da9e814",
+          "bytes": 11455,
+          "matches_manifest": true
+        },
+        "oracle/initial.json": {
+          "sha256": "587a831e7ecd62d4d03887399aae2807cd59b33c041e3cdc1081f4f35a2c88a0",
+          "bytes": 401712,
+          "matches_manifest": true
+        },
+        "oracle/requests.json": {
+          "sha256": "d589db6f969f15d1bcfbe297c7b35ffd09d665b00b202fdb52ed98dfdac4e18a",
+          "bytes": 93982,
+          "matches_manifest": true
+        },
+        "policy/candidate/execution/input.json": {
+          "sha256": "4e05e54a4961bdb95f9221a6f8f4ea050315c83c5334381945e594abcdfe88e9",
+          "bytes": 624,
+          "matches_manifest": true
+        },
+        "policy/candidate/execution/result.json": {
+          "sha256": "76d78bd6a363dd0521470c38b1186f1571513b07ab6903cd60f71dbd345c305d",
+          "bytes": 813171,
+          "matches_manifest": true
+        },
+        "policy/strong_baseline/execution/input.json": {
+          "sha256": "4e05e54a4961bdb95f9221a6f8f4ea050315c83c5334381945e594abcdfe88e9",
+          "bytes": 624,
+          "matches_manifest": true
+        },
+        "policy/strong_baseline/execution/result.json": {
+          "sha256": "f09b62248f241f265c81cb9e67d9dac9a151c7eac2a5dedbedfe117b791fc4c6",
+          "bytes": 813177,
+          "matches_manifest": true
+        }
+      },
+      "failed_checks": []
+    },
+    {
+      "spec": {
+        "run_id": "70315ce6-f96d-55d9-9be4-caf3dfa92515",
+        "split": "certification",
+        "workload": "W2",
+        "scenario": "COMMIT_NO_ACK_KILL",
+        "repetition": 1,
+        "order": 14,
+        "policy_rotation": 2
+      },
+      "raw_received_ack_count": 7,
+      "sent_transaction_count": 8,
+      "public_ack_class": "UNKNOWN",
+      "current_full_state": "S1",
+      "allowed_state_count": 2,
+      "checks": {
+        "raw_child_equals_received": true,
+        "request_file_equals_sent": true,
+        "prior_acks_received_target_ack_absent": true,
+        "private_commit_return_hook_recorded": true,
+        "no_go_ack_sent": true,
+        "worker_killed_and_reaped": true,
+        "candidate:unknown_label_preserved": true,
+        "candidate:only_request_without_ack_certificate": true,
+        "candidate:two_independently_rebuilt_allowed_hashes": true,
+        "candidate:no_private_stage_in_input": true,
+        "candidate:full_values_equal_S1": true,
+        "candidate:accepted_current_member": true,
+        "strong_baseline:unknown_label_preserved": true,
+        "strong_baseline:only_request_without_ack_certificate": true,
+        "strong_baseline:two_independently_rebuilt_allowed_hashes": true,
+        "strong_baseline:no_private_stage_in_input": true,
+        "strong_baseline:full_values_equal_S1": true,
+        "strong_baseline:accepted_current_member": true,
+        "same_candidate_strong_visible_input": true
+      },
+      "files_read_and_hashed": {
+        "parent-events.jsonl": {
+          "sha256": "518aab439afbb8ac43b66624c6dd048dd9b87c0da734aa1007f311e082675863",
+          "bytes": 82193,
+          "matches_manifest": true
+        },
+        "worker.stdout.raw": {
+          "sha256": "9f632a5bc55bbb5ef3b0701057b00c3802ce38e890655ecec7a785e43d511f40",
+          "bytes": 11460,
+          "matches_manifest": true
+        },
+        "oracle/initial.json": {
+          "sha256": "587a831e7ecd62d4d03887399aae2807cd59b33c041e3cdc1081f4f35a2c88a0",
+          "bytes": 401712,
+          "matches_manifest": true
+        },
+        "oracle/requests.json": {
+          "sha256": "7c67cb315e85d3ad4889a250d1d18dba66a50920f20c7d38819887afb4116cbb",
+          "bytes": 93982,
+          "matches_manifest": true
+        },
+        "policy/candidate/execution/input.json": {
+          "sha256": "e423671ec011afa0c921530d0abb2105be2027b01a152a86922b9ffcf0810441",
+          "bytes": 624,
+          "matches_manifest": true
+        },
+        "policy/candidate/execution/result.json": {
+          "sha256": "c5dbc6b85ce3d40c9186e55185935aba3c447ab8a8fbb8beecf73e2bb9f58c2c",
+          "bytes": 813171,
+          "matches_manifest": true
+        },
+        "policy/strong_baseline/execution/input.json": {
+          "sha256": "e423671ec011afa0c921530d0abb2105be2027b01a152a86922b9ffcf0810441",
+          "bytes": 624,
+          "matches_manifest": true
+        },
+        "policy/strong_baseline/execution/result.json": {
+          "sha256": "2a0c4be6acd32848024f3f132508a99f7a2e2155a661177efd2d2f7e88839b68",
+          "bytes": 813177,
+          "matches_manifest": true
+        }
+      },
+      "failed_checks": []
+    },
+    {
+      "spec": {
+        "run_id": "c1446fc3-cf5a-5432-8b2a-b58a5470315e",
+        "split": "certification",
+        "workload": "W1",
+        "scenario": "COMMIT_NO_ACK_KILL",
+        "repetition": 1,
+        "order": 26,
+        "policy_rotation": 2
+      },
+      "raw_received_ack_count": 4,
+      "sent_transaction_count": 5,
+      "public_ack_class": "UNKNOWN",
+      "current_full_state": "S1",
+      "allowed_state_count": 2,
+      "checks": {
+        "raw_child_equals_received": true,
+        "request_file_equals_sent": true,
+        "prior_acks_received_target_ack_absent": true,
+        "private_commit_return_hook_recorded": true,
+        "no_go_ack_sent": true,
+        "worker_killed_and_reaped": true,
+        "candidate:unknown_label_preserved": true,
+        "candidate:only_request_without_ack_certificate": true,
+        "candidate:two_independently_rebuilt_allowed_hashes": true,
+        "candidate:no_private_stage_in_input": true,
+        "candidate:full_values_equal_S1": true,
+        "candidate:accepted_current_member": true,
+        "strong_baseline:unknown_label_preserved": true,
+        "strong_baseline:only_request_without_ack_certificate": true,
+        "strong_baseline:two_independently_rebuilt_allowed_hashes": true,
+        "strong_baseline:no_private_stage_in_input": true,
+        "strong_baseline:full_values_equal_S1": true,
+        "strong_baseline:accepted_current_member": true,
+        "same_candidate_strong_visible_input": true
+      },
+      "files_read_and_hashed": {
+        "parent-events.jsonl": {
+          "sha256": "9a07816490c52b1189ae1956593c75713d1d17b4f165e916d1e82a38a57d6359",
+          "bytes": 26714,
+          "matches_manifest": true
+        },
+        "worker.stdout.raw": {
+          "sha256": "45826f0ca1a2f57c24286573bb80e6fa635b7d083651b517f87ab7a98f4633b6",
+          "bytes": 8222,
+          "matches_manifest": true
+        },
+        "oracle/initial.json": {
+          "sha256": "90e0fa710d1dab94e284177b305aa92eb8a98f9a8a1328aaec9b3b423587f9c3",
+          "bytes": 5571,
+          "matches_manifest": true
+        },
+        "oracle/requests.json": {
+          "sha256": "d281a565836f184bee0024f728c167304e3c87132692fe9d8f313e33d02434ca",
+          "bytes": 20059,
+          "matches_manifest": true
+        },
+        "policy/candidate/execution/input.json": {
+          "sha256": "b7472ae30ddda511cc79baabc04b6a916786ede0a0666e5dc4a8e08c35ee1345",
+          "bytes": 624,
+          "matches_manifest": true
+        },
+        "policy/candidate/execution/result.json": {
+          "sha256": "a760ca3c23833afa8257102d09d3a13ac58391a2268f5471b27ec91fe6eebb66",
+          "bytes": 18675,
+          "matches_manifest": true
+        },
+        "policy/strong_baseline/execution/input.json": {
+          "sha256": "b7472ae30ddda511cc79baabc04b6a916786ede0a0666e5dc4a8e08c35ee1345",
+          "bytes": 624,
+          "matches_manifest": true
+        },
+        "policy/strong_baseline/execution/result.json": {
+          "sha256": "18a4773f0dbbda67e0cb74c488cc46ccac7e5037fd9c4d8030feb94ccfaa80cd",
+          "bytes": 18682,
+          "matches_manifest": true
+        }
+      },
+      "failed_checks": []
+    }
+  ],
+  "failed_cases": [],
+  "limit": "Private intervention logs record commit return; policy permission remains the public UNKNOWN contract. Actual full S1 membership does not create an ACK receive event or prove arbitrary past histories uniquely identifiable. Initial values and parent logs remain declared trust assumptions."
+}

@@ -1,0 +1,1229 @@
+{
+  "analysis": "independent main-agent raw request/full-value and cost reconstruction",
+  "at_utc": "2026-11-13T13:50:55.509385+00:00",
+  "split": "certification",
+  "preregistration_commit": "26902c25152ca3676b4844d2156f028145f62fe2",
+  "run_manifest_sha256": "07f7f73837013355f29df12c71778bc5126d3cf4f2c6f12c04ccc021a6e4d89e",
+  "allocation_sha256": "2561677d933aec2ceef8ca3a80a6d480a5cebc32a55a99a0dbdfeb63f6e66b02",
+  "script_sha256": "c15aa7188e84dcbeb55fd8a514eaa8a0c41f98188edba336cbc9302c034ef4cf",
+  "registered": 28,
+  "issues": [],
+  "all_registered_analysis_pass": true,
+  "counts": {
+    "status": {
+      "COMPLETE": 28
+    },
+    "ack_class": {
+      "ACKED": 20,
+      "UNKNOWN": 4,
+      "NOT_COMMITTED": 4
+    },
+    "candidate": {
+      "UNRESOLVED_BUDGET": 8,
+      "ACCEPT_CURRENT_ALLOWED": 16,
+      "REJECT_HISTORY": 4
+    },
+    "strong_baseline": {
+      "UNRESOLVED_BUDGET": 8,
+      "ACCEPT_CURRENT_ALLOWED": 16,
+      "REJECT_HISTORY": 4
+    },
+    "weak_structure": {
+      "UNRESOLVED_BUDGET": 8,
+      "STRUCTURE_OK": 20
+    },
+    "identity_ablation": {
+      "UNRESOLVED_BUDGET": 8,
+      "ACCEPT_ABLATED": 20
+    }
+  },
+  "logical_costs": {
+    "candidate": {
+      "callback_count": {
+        "n": 28,
+        "sum": 21718,
+        "min": 0,
+        "max": 1531,
+        "median": 680.0
+      },
+      "rows_returned": {
+        "n": 28,
+        "sum": 1634,
+        "min": 0,
+        "max": 117,
+        "median": 49.0
+      },
+      "canonical_returned_bytes": {
+        "n": 28,
+        "sum": 4043354,
+        "min": 0,
+        "max": 399503,
+        "median": 5116.0
+      },
+      "elapsed_from_before_connect_ns": {
+        "n": 28,
+        "sum": 80075997,
+        "min": 144875,
+        "max": 22797917,
+        "median": 1838979.0
+      },
+      "oracle_summary_input_bytes": {
+        "n": 28,
+        "sum": 16876,
+        "min": 584,
+        "max": 655,
+        "median": 590.0
+      },
+      "application_copy_read_bytes": {
+        "n": 28,
+        "sum": 7840256,
+        "min": 24576,
+        "max": 929504,
+        "median": 254224.0
+      },
+      "application_copy_write_bytes": {
+        "n": 28,
+        "sum": 7840256,
+        "min": 24576,
+        "max": 929504,
+        "median": 254224.0
+      }
+    },
+    "strong_baseline": {
+      "callback_count": {
+        "n": 28,
+        "sum": 21718,
+        "min": 0,
+        "max": 1531,
+        "median": 680.0
+      },
+      "rows_returned": {
+        "n": 28,
+        "sum": 1634,
+        "min": 0,
+        "max": 117,
+        "median": 49.0
+      },
+      "canonical_returned_bytes": {
+        "n": 28,
+        "sum": 4043354,
+        "min": 0,
+        "max": 399503,
+        "median": 5116.0
+      },
+      "elapsed_from_before_connect_ns": {
+        "n": 28,
+        "sum": 95239918,
+        "min": 143417,
+        "max": 21982500,
+        "median": 2022291.5
+      },
+      "oracle_summary_input_bytes": {
+        "n": 28,
+        "sum": 16876,
+        "min": 584,
+        "max": 655,
+        "median": 590.0
+      },
+      "application_copy_read_bytes": {
+        "n": 28,
+        "sum": 7840256,
+        "min": 24576,
+        "max": 929504,
+        "median": 254224.0
+      },
+      "application_copy_write_bytes": {
+        "n": 28,
+        "sum": 7840256,
+        "min": 24576,
+        "max": 929504,
+        "median": 254224.0
+      }
+    },
+    "weak_structure": {
+      "callback_count": {
+        "n": 28,
+        "sum": 14428,
+        "min": 0,
+        "max": 990,
+        "median": 479.0
+      },
+      "rows_returned": {
+        "n": 28,
+        "sum": 240,
+        "min": 0,
+        "max": 12,
+        "median": 12.0
+      },
+      "canonical_returned_bytes": {
+        "n": 28,
+        "sum": 1380,
+        "min": 0,
+        "max": 69,
+        "median": 69.0
+      },
+      "elapsed_from_before_connect_ns": {
+        "n": 28,
+        "sum": 42431373,
+        "min": 138125,
+        "max": 3867417,
+        "median": 1609729.5
+      },
+      "oracle_summary_input_bytes": {
+        "n": 28,
+        "sum": 16876,
+        "min": 584,
+        "max": 655,
+        "median": 590.0
+      },
+      "application_copy_read_bytes": {
+        "n": 28,
+        "sum": 7840256,
+        "min": 24576,
+        "max": 929504,
+        "median": 254224.0
+      },
+      "application_copy_write_bytes": {
+        "n": 28,
+        "sum": 7840256,
+        "min": 24576,
+        "max": 929504,
+        "median": 254224.0
+      }
+    },
+    "identity_ablation": {
+      "callback_count": {
+        "n": 28,
+        "sum": 21718,
+        "min": 0,
+        "max": 1531,
+        "median": 680.0
+      },
+      "rows_returned": {
+        "n": 28,
+        "sum": 1634,
+        "min": 0,
+        "max": 117,
+        "median": 49.0
+      },
+      "canonical_returned_bytes": {
+        "n": 28,
+        "sum": 4043354,
+        "min": 0,
+        "max": 399503,
+        "median": 5116.0
+      },
+      "elapsed_from_before_connect_ns": {
+        "n": 28,
+        "sum": 67133917,
+        "min": 131458,
+        "max": 6993084,
+        "median": 1804021.5
+      },
+      "oracle_summary_input_bytes": {
+        "n": 28,
+        "sum": 16876,
+        "min": 584,
+        "max": 655,
+        "median": 590.0
+      },
+      "application_copy_read_bytes": {
+        "n": 28,
+        "sum": 7840256,
+        "min": 24576,
+        "max": 929504,
+        "median": 254224.0
+      },
+      "application_copy_write_bytes": {
+        "n": 28,
+        "sum": 7840256,
+        "min": 24576,
+        "max": 929504,
+        "median": 254224.0
+      }
+    }
+  },
+  "trials": [
+    {
+      "spec": {
+        "run_id": "3009048b-5b8f-5113-b2e2-dc28a5e846ca",
+        "split": "certification",
+        "workload": "W2",
+        "scenario": "BUDGET_SMALL",
+        "repetition": 0,
+        "order": 0,
+        "policy_rotation": 0
+      },
+      "status": "COMPLETE",
+      "ack_class": "ACKED",
+      "actual_ack_count": 8,
+      "request_count": 8,
+      "worker_returncode": 0,
+      "source_log_sha256": "47a671b9b326bcbd33b6a87cc2b5d5f9d1010747c92981261b67cf10742e33f0",
+      "candidate_strong_same_measured_logic": true,
+      "candidate": {
+        "decision": "UNRESOLVED_BUDGET",
+        "callback_count": 32,
+        "rows_returned": 0,
+        "canonical_returned_bytes": 0,
+        "connect_attempted": true
+      },
+      "policy_decisions": {
+        "candidate": "UNRESOLVED_BUDGET",
+        "strong_baseline": "UNRESOLVED_BUDGET",
+        "weak_structure": "UNRESOLVED_BUDGET",
+        "identity_ablation": "UNRESOLVED_BUDGET"
+      },
+      "hot_header_candidate": false,
+      "candidate_db_changed": false,
+      "candidate_journal_removed": false,
+      "candidate_sql_first": "PRAGMA journal_mode=DELETE"
+    },
+    {
+      "spec": {
+        "run_id": "6644976e-07c7-5c73-a30c-80c758f9f9eb",
+        "split": "certification",
+        "workload": "W1",
+        "scenario": "BUDGET_ZERO",
+        "repetition": 1,
+        "order": 1,
+        "policy_rotation": 1
+      },
+      "status": "COMPLETE",
+      "ack_class": "ACKED",
+      "actual_ack_count": 5,
+      "request_count": 5,
+      "worker_returncode": 0,
+      "source_log_sha256": "c3d2bcfdd5592df68f5e4a36ba1a26510a4735db1a7a7fa9583b2198587ce21d",
+      "candidate_strong_same_measured_logic": true,
+      "candidate": {
+        "decision": "UNRESOLVED_BUDGET",
+        "callback_count": 0,
+        "rows_returned": 0,
+        "canonical_returned_bytes": 0,
+        "connect_attempted": false
+      },
+      "policy_decisions": {
+        "strong_baseline": "UNRESOLVED_BUDGET",
+        "weak_structure": "UNRESOLVED_BUDGET",
+        "identity_ablation": "UNRESOLVED_BUDGET",
+        "candidate": "UNRESOLVED_BUDGET"
+      },
+      "hot_header_candidate": false,
+      "candidate_db_changed": false,
+      "candidate_journal_removed": false,
+      "candidate_sql_first": null
+    },
+    {
+      "spec": {
+        "run_id": "1116bb42-ad2c-5eb2-ab50-e53a72e5657d",
+        "split": "certification",
+        "workload": "W1",
+        "scenario": "COMMIT_NO_ACK_KILL",
+        "repetition": 0,
+        "order": 2,
+        "policy_rotation": 2
+      },
+      "status": "COMPLETE",
+      "ack_class": "UNKNOWN",
+      "actual_ack_count": 4,
+      "request_count": 5,
+      "worker_returncode": -9,
+      "source_log_sha256": "62fde786220402b47c82c71d418eafdceb39b1a76fdec89a15e5634b8188df5f",
+      "candidate_strong_same_measured_logic": true,
+      "candidate": {
+        "decision": "ACCEPT_CURRENT_ALLOWED",
+        "callback_count": 680,
+        "rows_returned": 49,
+        "canonical_returned_bytes": 5116,
+        "connect_attempted": true
+      },
+      "policy_decisions": {
+        "weak_structure": "STRUCTURE_OK",
+        "identity_ablation": "ACCEPT_ABLATED",
+        "candidate": "ACCEPT_CURRENT_ALLOWED",
+        "strong_baseline": "ACCEPT_CURRENT_ALLOWED"
+      },
+      "hot_header_candidate": false,
+      "candidate_db_changed": false,
+      "candidate_journal_removed": false,
+      "candidate_sql_first": "PRAGMA journal_mode=DELETE"
+    },
+    {
+      "spec": {
+        "run_id": "f6d9a441-1138-5b7d-8175-c64fa6136137",
+        "split": "certification",
+        "workload": "W2",
+        "scenario": "STALE_BACKUP",
+        "repetition": 1,
+        "order": 3,
+        "policy_rotation": 3
+      },
+      "status": "COMPLETE",
+      "ack_class": "ACKED",
+      "actual_ack_count": 8,
+      "request_count": 8,
+      "worker_returncode": 0,
+      "source_log_sha256": "10b73374b9f63caae0abe7cf19f3a0e1206e79a3c4139c58fd4705ecf2b1a2ad",
+      "candidate_strong_same_measured_logic": true,
+      "candidate": {
+        "decision": "REJECT_HISTORY",
+        "callback_count": 1391,
+        "rows_returned": 110,
+        "canonical_returned_bytes": 398740,
+        "connect_attempted": true
+      },
+      "policy_decisions": {
+        "identity_ablation": "ACCEPT_ABLATED",
+        "candidate": "REJECT_HISTORY",
+        "strong_baseline": "REJECT_HISTORY",
+        "weak_structure": "STRUCTURE_OK"
+      },
+      "hot_header_candidate": false,
+      "candidate_db_changed": false,
+      "candidate_journal_removed": false,
+      "candidate_sql_first": "PRAGMA journal_mode=DELETE"
+    },
+    {
+      "spec": {
+        "run_id": "89fa95a0-ebac-5da9-86fa-b88d6d4c25e7",
+        "split": "certification",
+        "workload": "W1",
+        "scenario": "NORMAL",
+        "repetition": 1,
+        "order": 4,
+        "policy_rotation": 0
+      },
+      "status": "COMPLETE",
+      "ack_class": "ACKED",
+      "actual_ack_count": 5,
+      "request_count": 5,
+      "worker_returncode": 0,
+      "source_log_sha256": "22f6c5a67994b66616d9c96f285167319b8328c15b56eaba896d3251ece371ec",
+      "candidate_strong_same_measured_logic": true,
+      "candidate": {
+        "decision": "ACCEPT_CURRENT_ALLOWED",
+        "callback_count": 680,
+        "rows_returned": 49,
+        "canonical_returned_bytes": 5116,
+        "connect_attempted": true
+      },
+      "policy_decisions": {
+        "candidate": "ACCEPT_CURRENT_ALLOWED",
+        "strong_baseline": "ACCEPT_CURRENT_ALLOWED",
+        "weak_structure": "STRUCTURE_OK",
+        "identity_ablation": "ACCEPT_ABLATED"
+      },
+      "hot_header_candidate": false,
+      "candidate_db_changed": false,
+      "candidate_journal_removed": false,
+      "candidate_sql_first": "PRAGMA journal_mode=DELETE"
+    },
+    {
+      "spec": {
+        "run_id": "05d36501-3578-543b-ba02-4304eaab29ea",
+        "split": "certification",
+        "workload": "W2",
+        "scenario": "NORMAL",
+        "repetition": 1,
+        "order": 5,
+        "policy_rotation": 1
+      },
+      "status": "COMPLETE",
+      "ack_class": "ACKED",
+      "actual_ack_count": 8,
+      "request_count": 8,
+      "worker_returncode": 0,
+      "source_log_sha256": "7f203cf3dd386278b00154007ecd794e143ea53a5440a25bb5c8c00bb3b2e6cf",
+      "candidate_strong_same_measured_logic": true,
+      "candidate": {
+        "decision": "ACCEPT_CURRENT_ALLOWED",
+        "callback_count": 1531,
+        "rows_returned": 117,
+        "canonical_returned_bytes": 399503,
+        "connect_attempted": true
+      },
+      "policy_decisions": {
+        "strong_baseline": "ACCEPT_CURRENT_ALLOWED",
+        "weak_structure": "STRUCTURE_OK",
+        "identity_ablation": "ACCEPT_ABLATED",
+        "candidate": "ACCEPT_CURRENT_ALLOWED"
+      },
+      "hot_header_candidate": false,
+      "candidate_db_changed": false,
+      "candidate_journal_removed": false,
+      "candidate_sql_first": "PRAGMA journal_mode=DELETE"
+    },
+    {
+      "spec": {
+        "run_id": "2451776d-4970-51bf-a803-c0df792f994c",
+        "split": "certification",
+        "workload": "W2",
+        "scenario": "POST_ACK_KILL",
+        "repetition": 0,
+        "order": 6,
+        "policy_rotation": 2
+      },
+      "status": "COMPLETE",
+      "ack_class": "ACKED",
+      "actual_ack_count": 8,
+      "request_count": 8,
+      "worker_returncode": -9,
+      "source_log_sha256": "8f8687041d0f8c237ee7470bc1bdc1cdd7b5ef787f59ab12c48b95f6f092ee80",
+      "candidate_strong_same_measured_logic": true,
+      "candidate": {
+        "decision": "ACCEPT_CURRENT_ALLOWED",
+        "callback_count": 1531,
+        "rows_returned": 117,
+        "canonical_returned_bytes": 399503,
+        "connect_attempted": true
+      },
+      "policy_decisions": {
+        "weak_structure": "STRUCTURE_OK",
+        "identity_ablation": "ACCEPT_ABLATED",
+        "candidate": "ACCEPT_CURRENT_ALLOWED",
+        "strong_baseline": "ACCEPT_CURRENT_ALLOWED"
+      },
+      "hot_header_candidate": false,
+      "candidate_db_changed": false,
+      "candidate_journal_removed": false,
+      "candidate_sql_first": "PRAGMA journal_mode=DELETE"
+    },
+    {
+      "spec": {
+        "run_id": "01dd3f97-aa69-56aa-8997-1569ca02f83f",
+        "split": "certification",
+        "workload": "W1",
+        "scenario": "NORMAL",
+        "repetition": 0,
+        "order": 7,
+        "policy_rotation": 3
+      },
+      "status": "COMPLETE",
+      "ack_class": "ACKED",
+      "actual_ack_count": 5,
+      "request_count": 5,
+      "worker_returncode": 0,
+      "source_log_sha256": "a6464c1a349cccdd78235604f512e6cdf5f902836b14c89a428ccec1b9f57713",
+      "candidate_strong_same_measured_logic": true,
+      "candidate": {
+        "decision": "ACCEPT_CURRENT_ALLOWED",
+        "callback_count": 680,
+        "rows_returned": 49,
+        "canonical_returned_bytes": 5116,
+        "connect_attempted": true
+      },
+      "policy_decisions": {
+        "identity_ablation": "ACCEPT_ABLATED",
+        "candidate": "ACCEPT_CURRENT_ALLOWED",
+        "strong_baseline": "ACCEPT_CURRENT_ALLOWED",
+        "weak_structure": "STRUCTURE_OK"
+      },
+      "hot_header_candidate": false,
+      "candidate_db_changed": false,
+      "candidate_journal_removed": false,
+      "candidate_sql_first": "PRAGMA journal_mode=DELETE"
+    },
+    {
+      "spec": {
+        "run_id": "05840b2e-0692-5933-a5c3-8527afaafcec",
+        "split": "certification",
+        "workload": "W2",
+        "scenario": "NORMAL",
+        "repetition": 0,
+        "order": 8,
+        "policy_rotation": 0
+      },
+      "status": "COMPLETE",
+      "ack_class": "ACKED",
+      "actual_ack_count": 8,
+      "request_count": 8,
+      "worker_returncode": 0,
+      "source_log_sha256": "6ef0a6e3a86cb376c63e426de9442e458952823b79e23c10659729853d19b421",
+      "candidate_strong_same_measured_logic": true,
+      "candidate": {
+        "decision": "ACCEPT_CURRENT_ALLOWED",
+        "callback_count": 1531,
+        "rows_returned": 117,
+        "canonical_returned_bytes": 399503,
+        "connect_attempted": true
+      },
+      "policy_decisions": {
+        "candidate": "ACCEPT_CURRENT_ALLOWED",
+        "strong_baseline": "ACCEPT_CURRENT_ALLOWED",
+        "weak_structure": "STRUCTURE_OK",
+        "identity_ablation": "ACCEPT_ABLATED"
+      },
+      "hot_header_candidate": false,
+      "candidate_db_changed": false,
+      "candidate_journal_removed": false,
+      "candidate_sql_first": "PRAGMA journal_mode=DELETE"
+    },
+    {
+      "spec": {
+        "run_id": "b68be989-5753-59f2-8dbe-0a6f510bfebb",
+        "split": "certification",
+        "workload": "W2",
+        "scenario": "BUDGET_SMALL",
+        "repetition": 1,
+        "order": 9,
+        "policy_rotation": 1
+      },
+      "status": "COMPLETE",
+      "ack_class": "ACKED",
+      "actual_ack_count": 8,
+      "request_count": 8,
+      "worker_returncode": 0,
+      "source_log_sha256": "93b6373ad8d0ac3e5dbe839baf068b38406fecb5a24e9f74ee98dad8c648394b",
+      "candidate_strong_same_measured_logic": true,
+      "candidate": {
+        "decision": "UNRESOLVED_BUDGET",
+        "callback_count": 32,
+        "rows_returned": 0,
+        "canonical_returned_bytes": 0,
+        "connect_attempted": true
+      },
+      "policy_decisions": {
+        "strong_baseline": "UNRESOLVED_BUDGET",
+        "weak_structure": "UNRESOLVED_BUDGET",
+        "identity_ablation": "UNRESOLVED_BUDGET",
+        "candidate": "UNRESOLVED_BUDGET"
+      },
+      "hot_header_candidate": false,
+      "candidate_db_changed": false,
+      "candidate_journal_removed": false,
+      "candidate_sql_first": "PRAGMA journal_mode=DELETE"
+    },
+    {
+      "spec": {
+        "run_id": "201d04c1-278f-5c39-b6a1-c8d9ee65d4c3",
+        "split": "certification",
+        "workload": "W1",
+        "scenario": "STALE_BACKUP",
+        "repetition": 1,
+        "order": 10,
+        "policy_rotation": 2
+      },
+      "status": "COMPLETE",
+      "ack_class": "ACKED",
+      "actual_ack_count": 5,
+      "request_count": 5,
+      "worker_returncode": 0,
+      "source_log_sha256": "9759237ab8612db093cfbf1cc7debcbe621e967381e74db141f428b34ba67b69",
+      "candidate_strong_same_measured_logic": true,
+      "candidate": {
+        "decision": "REJECT_HISTORY",
+        "callback_count": 600,
+        "rows_returned": 45,
+        "canonical_returned_bytes": 4679,
+        "connect_attempted": true
+      },
+      "policy_decisions": {
+        "weak_structure": "STRUCTURE_OK",
+        "identity_ablation": "ACCEPT_ABLATED",
+        "candidate": "REJECT_HISTORY",
+        "strong_baseline": "REJECT_HISTORY"
+      },
+      "hot_header_candidate": false,
+      "candidate_db_changed": false,
+      "candidate_journal_removed": false,
+      "candidate_sql_first": "PRAGMA journal_mode=DELETE"
+    },
+    {
+      "spec": {
+        "run_id": "ce962fc1-c0cb-565d-8b72-68fb1f0d7b06",
+        "split": "certification",
+        "workload": "W2",
+        "scenario": "BUDGET_ZERO",
+        "repetition": 0,
+        "order": 11,
+        "policy_rotation": 3
+      },
+      "status": "COMPLETE",
+      "ack_class": "ACKED",
+      "actual_ack_count": 8,
+      "request_count": 8,
+      "worker_returncode": 0,
+      "source_log_sha256": "937afba33e11e3288c306fbed660bcab2e1c1394d5986237f8cc4eb8f29517c4",
+      "candidate_strong_same_measured_logic": true,
+      "candidate": {
+        "decision": "UNRESOLVED_BUDGET",
+        "callback_count": 0,
+        "rows_returned": 0,
+        "canonical_returned_bytes": 0,
+        "connect_attempted": false
+      },
+      "policy_decisions": {
+        "identity_ablation": "UNRESOLVED_BUDGET",
+        "candidate": "UNRESOLVED_BUDGET",
+        "strong_baseline": "UNRESOLVED_BUDGET",
+        "weak_structure": "UNRESOLVED_BUDGET"
+      },
+      "hot_header_candidate": false,
+      "candidate_db_changed": false,
+      "candidate_journal_removed": false,
+      "candidate_sql_first": null
+    },
+    {
+      "spec": {
+        "run_id": "7ca6f088-2f95-5636-ac4a-b8432cbb587b",
+        "split": "certification",
+        "workload": "W2",
+        "scenario": "COMMIT_NO_ACK_KILL",
+        "repetition": 0,
+        "order": 12,
+        "policy_rotation": 0
+      },
+      "status": "COMPLETE",
+      "ack_class": "UNKNOWN",
+      "actual_ack_count": 7,
+      "request_count": 8,
+      "worker_returncode": -9,
+      "source_log_sha256": "0a1c688bf250d8f1d4b93398720f52205c8bdc45c2bb4ff3bb59ebffe9b3d246",
+      "candidate_strong_same_measured_logic": true,
+      "candidate": {
+        "decision": "ACCEPT_CURRENT_ALLOWED",
+        "callback_count": 1531,
+        "rows_returned": 117,
+        "canonical_returned_bytes": 399503,
+        "connect_attempted": true
+      },
+      "policy_decisions": {
+        "candidate": "ACCEPT_CURRENT_ALLOWED",
+        "strong_baseline": "ACCEPT_CURRENT_ALLOWED",
+        "weak_structure": "STRUCTURE_OK",
+        "identity_ablation": "ACCEPT_ABLATED"
+      },
+      "hot_header_candidate": false,
+      "candidate_db_changed": false,
+      "candidate_journal_removed": false,
+      "candidate_sql_first": "PRAGMA journal_mode=DELETE"
+    },
+    {
+      "spec": {
+        "run_id": "9186e6ac-13ef-5440-9e44-0a568ddde727",
+        "split": "certification",
+        "workload": "W2",
+        "scenario": "PRECOMMIT_KILL",
+        "repetition": 1,
+        "order": 13,
+        "policy_rotation": 1
+      },
+      "status": "COMPLETE",
+      "ack_class": "NOT_COMMITTED",
+      "actual_ack_count": 7,
+      "request_count": 8,
+      "worker_returncode": -9,
+      "source_log_sha256": "80fe962b549759a2038d77cf9e5704247e77b9add54d5277cab4df7856c37528",
+      "candidate_strong_same_measured_logic": true,
+      "candidate": {
+        "decision": "ACCEPT_CURRENT_ALLOWED",
+        "callback_count": 1511,
+        "rows_returned": 116,
+        "canonical_returned_bytes": 399395,
+        "connect_attempted": true
+      },
+      "policy_decisions": {
+        "strong_baseline": "ACCEPT_CURRENT_ALLOWED",
+        "weak_structure": "STRUCTURE_OK",
+        "identity_ablation": "ACCEPT_ABLATED",
+        "candidate": "ACCEPT_CURRENT_ALLOWED"
+      },
+      "hot_header_candidate": true,
+      "candidate_db_changed": true,
+      "candidate_journal_removed": true,
+      "candidate_sql_first": "PRAGMA journal_mode=DELETE"
+    },
+    {
+      "spec": {
+        "run_id": "70315ce6-f96d-55d9-9be4-caf3dfa92515",
+        "split": "certification",
+        "workload": "W2",
+        "scenario": "COMMIT_NO_ACK_KILL",
+        "repetition": 1,
+        "order": 14,
+        "policy_rotation": 2
+      },
+      "status": "COMPLETE",
+      "ack_class": "UNKNOWN",
+      "actual_ack_count": 7,
+      "request_count": 8,
+      "worker_returncode": -9,
+      "source_log_sha256": "518aab439afbb8ac43b66624c6dd048dd9b87c0da734aa1007f311e082675863",
+      "candidate_strong_same_measured_logic": true,
+      "candidate": {
+        "decision": "ACCEPT_CURRENT_ALLOWED",
+        "callback_count": 1531,
+        "rows_returned": 117,
+        "canonical_returned_bytes": 399503,
+        "connect_attempted": true
+      },
+      "policy_decisions": {
+        "weak_structure": "STRUCTURE_OK",
+        "identity_ablation": "ACCEPT_ABLATED",
+        "candidate": "ACCEPT_CURRENT_ALLOWED",
+        "strong_baseline": "ACCEPT_CURRENT_ALLOWED"
+      },
+      "hot_header_candidate": false,
+      "candidate_db_changed": false,
+      "candidate_journal_removed": false,
+      "candidate_sql_first": "PRAGMA journal_mode=DELETE"
+    },
+    {
+      "spec": {
+        "run_id": "b8811d77-ba86-5869-8004-04eba7d9d0aa",
+        "split": "certification",
+        "workload": "W2",
+        "scenario": "POST_ACK_KILL",
+        "repetition": 1,
+        "order": 15,
+        "policy_rotation": 3
+      },
+      "status": "COMPLETE",
+      "ack_class": "ACKED",
+      "actual_ack_count": 8,
+      "request_count": 8,
+      "worker_returncode": -9,
+      "source_log_sha256": "4ab85edb25020dbe93af41f646b0fe2d09a8d1a3033ec74794444b647e09f1a2",
+      "candidate_strong_same_measured_logic": true,
+      "candidate": {
+        "decision": "ACCEPT_CURRENT_ALLOWED",
+        "callback_count": 1531,
+        "rows_returned": 117,
+        "canonical_returned_bytes": 399503,
+        "connect_attempted": true
+      },
+      "policy_decisions": {
+        "identity_ablation": "ACCEPT_ABLATED",
+        "candidate": "ACCEPT_CURRENT_ALLOWED",
+        "strong_baseline": "ACCEPT_CURRENT_ALLOWED",
+        "weak_structure": "STRUCTURE_OK"
+      },
+      "hot_header_candidate": false,
+      "candidate_db_changed": false,
+      "candidate_journal_removed": false,
+      "candidate_sql_first": "PRAGMA journal_mode=DELETE"
+    },
+    {
+      "spec": {
+        "run_id": "f645ca02-27b2-5c74-85bb-1ac9a0c7659a",
+        "split": "certification",
+        "workload": "W1",
+        "scenario": "POST_ACK_KILL",
+        "repetition": 0,
+        "order": 16,
+        "policy_rotation": 0
+      },
+      "status": "COMPLETE",
+      "ack_class": "ACKED",
+      "actual_ack_count": 5,
+      "request_count": 5,
+      "worker_returncode": -9,
+      "source_log_sha256": "be87ee5508c09d4d52af6fdf7bc6ba0834ba481b4a94833c9aa3fc8215edbf5c",
+      "candidate_strong_same_measured_logic": true,
+      "candidate": {
+        "decision": "ACCEPT_CURRENT_ALLOWED",
+        "callback_count": 680,
+        "rows_returned": 49,
+        "canonical_returned_bytes": 5116,
+        "connect_attempted": true
+      },
+      "policy_decisions": {
+        "candidate": "ACCEPT_CURRENT_ALLOWED",
+        "strong_baseline": "ACCEPT_CURRENT_ALLOWED",
+        "weak_structure": "STRUCTURE_OK",
+        "identity_ablation": "ACCEPT_ABLATED"
+      },
+      "hot_header_candidate": false,
+      "candidate_db_changed": false,
+      "candidate_journal_removed": false,
+      "candidate_sql_first": "PRAGMA journal_mode=DELETE"
+    },
+    {
+      "spec": {
+        "run_id": "b784e4fa-ed25-5b05-a94b-c0e29861811c",
+        "split": "certification",
+        "workload": "W2",
+        "scenario": "PRECOMMIT_KILL",
+        "repetition": 0,
+        "order": 17,
+        "policy_rotation": 1
+      },
+      "status": "COMPLETE",
+      "ack_class": "NOT_COMMITTED",
+      "actual_ack_count": 7,
+      "request_count": 8,
+      "worker_returncode": -9,
+      "source_log_sha256": "ee7628c401a385adc7e18d62d78938deacf46cbff8cce2af63fa03c0ae055b6f",
+      "candidate_strong_same_measured_logic": true,
+      "candidate": {
+        "decision": "ACCEPT_CURRENT_ALLOWED",
+        "callback_count": 1511,
+        "rows_returned": 116,
+        "canonical_returned_bytes": 399395,
+        "connect_attempted": true
+      },
+      "policy_decisions": {
+        "strong_baseline": "ACCEPT_CURRENT_ALLOWED",
+        "weak_structure": "STRUCTURE_OK",
+        "identity_ablation": "ACCEPT_ABLATED",
+        "candidate": "ACCEPT_CURRENT_ALLOWED"
+      },
+      "hot_header_candidate": true,
+      "candidate_db_changed": true,
+      "candidate_journal_removed": true,
+      "candidate_sql_first": "PRAGMA journal_mode=DELETE"
+    },
+    {
+      "spec": {
+        "run_id": "e33f5aa0-f907-5ffe-a5a1-b6a6c7ab470d",
+        "split": "certification",
+        "workload": "W1",
+        "scenario": "PRECOMMIT_KILL",
+        "repetition": 0,
+        "order": 18,
+        "policy_rotation": 2
+      },
+      "status": "COMPLETE",
+      "ack_class": "NOT_COMMITTED",
+      "actual_ack_count": 4,
+      "request_count": 5,
+      "worker_returncode": -9,
+      "source_log_sha256": "827d0c0b193cec78812bd08f362966e584a34910ee57c3c650d7818101e8b256",
+      "candidate_strong_same_measured_logic": true,
+      "candidate": {
+        "decision": "ACCEPT_CURRENT_ALLOWED",
+        "callback_count": 660,
+        "rows_returned": 48,
+        "canonical_returned_bytes": 5006,
+        "connect_attempted": true
+      },
+      "policy_decisions": {
+        "weak_structure": "STRUCTURE_OK",
+        "identity_ablation": "ACCEPT_ABLATED",
+        "candidate": "ACCEPT_CURRENT_ALLOWED",
+        "strong_baseline": "ACCEPT_CURRENT_ALLOWED"
+      },
+      "hot_header_candidate": false,
+      "candidate_db_changed": false,
+      "candidate_journal_removed": false,
+      "candidate_sql_first": "PRAGMA journal_mode=DELETE"
+    },
+    {
+      "spec": {
+        "run_id": "760aaaf7-6887-5635-854e-017ed8b8d16d",
+        "split": "certification",
+        "workload": "W1",
+        "scenario": "STALE_BACKUP",
+        "repetition": 0,
+        "order": 19,
+        "policy_rotation": 3
+      },
+      "status": "COMPLETE",
+      "ack_class": "ACKED",
+      "actual_ack_count": 5,
+      "request_count": 5,
+      "worker_returncode": 0,
+      "source_log_sha256": "d9952aef095a9d9422b9b751b988fd5d2e70a90fa0b9c5bdd912079c246b2902",
+      "candidate_strong_same_measured_logic": true,
+      "candidate": {
+        "decision": "REJECT_HISTORY",
+        "callback_count": 600,
+        "rows_returned": 45,
+        "canonical_returned_bytes": 4679,
+        "connect_attempted": true
+      },
+      "policy_decisions": {
+        "identity_ablation": "ACCEPT_ABLATED",
+        "candidate": "REJECT_HISTORY",
+        "strong_baseline": "REJECT_HISTORY",
+        "weak_structure": "STRUCTURE_OK"
+      },
+      "hot_header_candidate": false,
+      "candidate_db_changed": false,
+      "candidate_journal_removed": false,
+      "candidate_sql_first": "PRAGMA journal_mode=DELETE"
+    },
+    {
+      "spec": {
+        "run_id": "3fb32868-8876-550c-b172-df4aa8fa72f1",
+        "split": "certification",
+        "workload": "W1",
+        "scenario": "BUDGET_ZERO",
+        "repetition": 0,
+        "order": 20,
+        "policy_rotation": 0
+      },
+      "status": "COMPLETE",
+      "ack_class": "ACKED",
+      "actual_ack_count": 5,
+      "request_count": 5,
+      "worker_returncode": 0,
+      "source_log_sha256": "0476b670c17c8fb64a20f91262eeb3e4ef09a8cafa42573099edf84df51b413a",
+      "candidate_strong_same_measured_logic": true,
+      "candidate": {
+        "decision": "UNRESOLVED_BUDGET",
+        "callback_count": 0,
+        "rows_returned": 0,
+        "canonical_returned_bytes": 0,
+        "connect_attempted": false
+      },
+      "policy_decisions": {
+        "candidate": "UNRESOLVED_BUDGET",
+        "strong_baseline": "UNRESOLVED_BUDGET",
+        "weak_structure": "UNRESOLVED_BUDGET",
+        "identity_ablation": "UNRESOLVED_BUDGET"
+      },
+      "hot_header_candidate": false,
+      "candidate_db_changed": false,
+      "candidate_journal_removed": false,
+      "candidate_sql_first": null
+    },
+    {
+      "spec": {
+        "run_id": "f7cbfc56-9b2a-5138-a5af-1e2cd3f29e8d",
+        "split": "certification",
+        "workload": "W1",
+        "scenario": "BUDGET_SMALL",
+        "repetition": 1,
+        "order": 21,
+        "policy_rotation": 1
+      },
+      "status": "COMPLETE",
+      "ack_class": "ACKED",
+      "actual_ack_count": 5,
+      "request_count": 5,
+      "worker_returncode": 0,
+      "source_log_sha256": "08a95d7a0a450f135432bee229763a1fd5903b2f5dc58913d15818d8115d2ce3",
+      "candidate_strong_same_measured_logic": true,
+      "candidate": {
+        "decision": "UNRESOLVED_BUDGET",
+        "callback_count": 32,
+        "rows_returned": 0,
+        "canonical_returned_bytes": 0,
+        "connect_attempted": true
+      },
+      "policy_decisions": {
+        "strong_baseline": "UNRESOLVED_BUDGET",
+        "weak_structure": "UNRESOLVED_BUDGET",
+        "identity_ablation": "UNRESOLVED_BUDGET",
+        "candidate": "UNRESOLVED_BUDGET"
+      },
+      "hot_header_candidate": false,
+      "candidate_db_changed": false,
+      "candidate_journal_removed": false,
+      "candidate_sql_first": "PRAGMA journal_mode=DELETE"
+    },
+    {
+      "spec": {
+        "run_id": "54168f2a-bb2a-5e7f-827d-8263ec99833c",
+        "split": "certification",
+        "workload": "W1",
+        "scenario": "POST_ACK_KILL",
+        "repetition": 1,
+        "order": 22,
+        "policy_rotation": 2
+      },
+      "status": "COMPLETE",
+      "ack_class": "ACKED",
+      "actual_ack_count": 5,
+      "request_count": 5,
+      "worker_returncode": -9,
+      "source_log_sha256": "3b8b01fe6dbc93c56e7c598148a72863d390b94f786832ba8632bc52ab737e99",
+      "candidate_strong_same_measured_logic": true,
+      "candidate": {
+        "decision": "ACCEPT_CURRENT_ALLOWED",
+        "callback_count": 680,
+        "rows_returned": 49,
+        "canonical_returned_bytes": 5116,
+        "connect_attempted": true
+      },
+      "policy_decisions": {
+        "weak_structure": "STRUCTURE_OK",
+        "identity_ablation": "ACCEPT_ABLATED",
+        "candidate": "ACCEPT_CURRENT_ALLOWED",
+        "strong_baseline": "ACCEPT_CURRENT_ALLOWED"
+      },
+      "hot_header_candidate": false,
+      "candidate_db_changed": false,
+      "candidate_journal_removed": false,
+      "candidate_sql_first": "PRAGMA journal_mode=DELETE"
+    },
+    {
+      "spec": {
+        "run_id": "426b2f9e-4fb7-59e5-a420-971ad481b132",
+        "split": "certification",
+        "workload": "W2",
+        "scenario": "BUDGET_ZERO",
+        "repetition": 1,
+        "order": 23,
+        "policy_rotation": 3
+      },
+      "status": "COMPLETE",
+      "ack_class": "ACKED",
+      "actual_ack_count": 8,
+      "request_count": 8,
+      "worker_returncode": 0,
+      "source_log_sha256": "2f68dde9deed83e97e95e5d78bd7c8f243b1f73cb60b4103c587f1609ac63173",
+      "candidate_strong_same_measured_logic": true,
+      "candidate": {
+        "decision": "UNRESOLVED_BUDGET",
+        "callback_count": 0,
+        "rows_returned": 0,
+        "canonical_returned_bytes": 0,
+        "connect_attempted": false
+      },
+      "policy_decisions": {
+        "identity_ablation": "UNRESOLVED_BUDGET",
+        "candidate": "UNRESOLVED_BUDGET",
+        "strong_baseline": "UNRESOLVED_BUDGET",
+        "weak_structure": "UNRESOLVED_BUDGET"
+      },
+      "hot_header_candidate": false,
+      "candidate_db_changed": false,
+      "candidate_journal_removed": false,
+      "candidate_sql_first": null
+    },
+    {
+      "spec": {
+        "run_id": "9cfd5783-013f-5ef5-8150-99f4a7562cce",
+        "split": "certification",
+        "workload": "W1",
+        "scenario": "BUDGET_SMALL",
+        "repetition": 0,
+        "order": 24,
+        "policy_rotation": 0
+      },
+      "status": "COMPLETE",
+      "ack_class": "ACKED",
+      "actual_ack_count": 5,
+      "request_count": 5,
+      "worker_returncode": 0,
+      "source_log_sha256": "bac2b84be842d349275ceb38ce1b3e4e3adc24508cdfdded89946492cf79854c",
+      "candidate_strong_same_measured_logic": true,
+      "candidate": {
+        "decision": "UNRESOLVED_BUDGET",
+        "callback_count": 32,
+        "rows_returned": 0,
+        "canonical_returned_bytes": 0,
+        "connect_attempted": true
+      },
+      "policy_decisions": {
+        "candidate": "UNRESOLVED_BUDGET",
+        "strong_baseline": "UNRESOLVED_BUDGET",
+        "weak_structure": "UNRESOLVED_BUDGET",
+        "identity_ablation": "UNRESOLVED_BUDGET"
+      },
+      "hot_header_candidate": false,
+      "candidate_db_changed": false,
+      "candidate_journal_removed": false,
+      "candidate_sql_first": "PRAGMA journal_mode=DELETE"
+    },
+    {
+      "spec": {
+        "run_id": "cf73f284-5318-5ca5-b4b2-202a5fdc7907",
+        "split": "certification",
+        "workload": "W1",
+        "scenario": "PRECOMMIT_KILL",
+        "repetition": 1,
+        "order": 25,
+        "policy_rotation": 1
+      },
+      "status": "COMPLETE",
+      "ack_class": "NOT_COMMITTED",
+      "actual_ack_count": 4,
+      "request_count": 5,
+      "worker_returncode": -9,
+      "source_log_sha256": "8ceebc029a4e05bc5ba067d3e959c9a68015979a07cdfad18beb4e74d44e6f55",
+      "candidate_strong_same_measured_logic": true,
+      "candidate": {
+        "decision": "ACCEPT_CURRENT_ALLOWED",
+        "callback_count": 660,
+        "rows_returned": 48,
+        "canonical_returned_bytes": 5006,
+        "connect_attempted": true
+      },
+      "policy_decisions": {
+        "strong_baseline": "ACCEPT_CURRENT_ALLOWED",
+        "weak_structure": "STRUCTURE_OK",
+        "identity_ablation": "ACCEPT_ABLATED",
+        "candidate": "ACCEPT_CURRENT_ALLOWED"
+      },
+      "hot_header_candidate": false,
+      "candidate_db_changed": false,
+      "candidate_journal_removed": false,
+      "candidate_sql_first": "PRAGMA journal_mode=DELETE"
+    },
+    {
+      "spec": {
+        "run_id": "c1446fc3-cf5a-5432-8b2a-b58a5470315e",
+        "split": "certification",
+        "workload": "W1",
+        "scenario": "COMMIT_NO_ACK_KILL",
+        "repetition": 1,
+        "order": 26,
+        "policy_rotation": 2
+      },
+      "status": "COMPLETE",
+      "ack_class": "UNKNOWN",
+      "actual_ack_count": 4,
+      "request_count": 5,
+      "worker_returncode": -9,
+      "source_log_sha256": "9a07816490c52b1189ae1956593c75713d1d17b4f165e916d1e82a38a57d6359",
+      "candidate_strong_same_measured_logic": true,
+      "candidate": {
+        "decision": "ACCEPT_CURRENT_ALLOWED",
+        "callback_count": 680,
+        "rows_returned": 49,
+        "canonical_returned_bytes": 5116,
+        "connect_attempted": true
+      },
+      "policy_decisions": {
+        "weak_structure": "STRUCTURE_OK",
+        "identity_ablation": "ACCEPT_ABLATED",
+        "candidate": "ACCEPT_CURRENT_ALLOWED",
+        "strong_baseline": "ACCEPT_CURRENT_ALLOWED"
+      },
+      "hot_header_candidate": false,
+      "candidate_db_changed": false,
+      "candidate_journal_removed": false,
+      "candidate_sql_first": "PRAGMA journal_mode=DELETE"
+    },
+    {
+      "spec": {
+        "run_id": "08da42c0-4b4b-55fa-8eeb-8b583528a165",
+        "split": "certification",
+        "workload": "W2",
+        "scenario": "STALE_BACKUP",
+        "repetition": 0,
+        "order": 27,
+        "policy_rotation": 3
+      },
+      "status": "COMPLETE",
+      "ack_class": "ACKED",
+      "actual_ack_count": 8,
+      "request_count": 8,
+      "worker_returncode": 0,
+      "source_log_sha256": "bf3bac3bbe3fa6053f364007c9875acc5557e4b5748d84b067ddc97d8d29a422",
+      "candidate_strong_same_measured_logic": true,
+      "candidate": {
+        "decision": "REJECT_HISTORY",
+        "callback_count": 1391,
+        "rows_returned": 110,
+        "canonical_returned_bytes": 398740,
+        "connect_attempted": true
+      },
+      "policy_decisions": {
+        "identity_ablation": "ACCEPT_ABLATED",
+        "candidate": "REJECT_HISTORY",
+        "strong_baseline": "REJECT_HISTORY",
+        "weak_structure": "STRUCTURE_OK"
+      },
+      "hot_header_candidate": false,
+      "candidate_db_changed": false,
+      "candidate_journal_removed": false,
+      "candidate_sql_first": "PRAGMA journal_mode=DELETE"
+    }
+  ],
+  "limits": "Wall time starts after loading public input; logical copy length is not hardware I/O. No iid or performance superiority inference."
+}

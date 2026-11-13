@@ -1,0 +1,59 @@
+{
+  "read_on": "2026-11-13",
+  "scope": "Official primary documentation only; no new literature expansion beyond SQLite task semantics",
+  "sources": [
+    {
+      "url": "https://www.sqlite.org/atomiccommit.html",
+      "sections": [
+        "Introduction: rollback-only scope",
+        "Opening hardware-assumption discussion; automatic recovery mechanism read separately in lockingv3 4.1"
+      ],
+      "web_ref": "turn539183364view0"
+    },
+    {
+      "url": "https://www.sqlite.org/lang_transaction.html",
+      "sections": [
+        "2.3 implicit versus explicit transactions",
+        "3 response to errors"
+      ],
+      "web_ref": "turn763092837view0"
+    },
+    {
+      "url": "https://www.sqlite.org/pragma.html",
+      "sections": [
+        "Unknown pragma behavior",
+        "integrity_check lines 492-513",
+        "journal_mode lines 519-525",
+        "synchronous lines 807-832"
+      ],
+      "web_refs": [
+        "turn763092837view1",
+        "turn400099255view0",
+        "turn490850961view0"
+      ]
+    },
+    {
+      "url": "https://www.sqlite.org/lockingv3.html",
+      "sections": [
+        "4 rollback journal",
+        "4.1 hot-journal recovery before reading"
+      ],
+      "web_ref": "turn312685894view0"
+    },
+    {
+      "url": "https://www.sqlite.org/testing.html",
+      "sections": [
+        "3.3 crash testing via special VFS"
+      ],
+      "web_ref": "turn232231103view3"
+    },
+    {
+      "url": "https://www.sqlite.org/isolation.html",
+      "sections": [
+        "Independent connections",
+        "Rollback/WAL distinction"
+      ],
+      "web_ref": "turn539183364view3"
+    }
+  ]
+}

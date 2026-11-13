@@ -1,0 +1,53 @@
+[
+  {
+    "run_id": "e92745f9-3cff-562f-a5d0-36fd0535d31a",
+    "scenario": "BUDGET_SMALL",
+    "connect_attempted": true,
+    "callbacks": 32,
+    "budget": 32,
+    "complete": false,
+    "query_count": 1,
+    "first_sql": {
+      "sql": "PRAGMA journal_mode=DELETE",
+      "callbacks_before": 0,
+      "started_ns": 22085333,
+      "rows": [],
+      "callbacks_after": 32,
+      "elapsed_ns": 75792
+    }
+  },
+  {
+    "run_id": "c02b16d3-1a9d-5e2e-b93e-3f818efb60ba",
+    "scenario": "PRECOMMIT_KILL",
+    "journal_bytes": 111320,
+    "header_28_hex": "0000000000000000000000009ffb213f0000001c0000020000001000",
+    "journal_sha256": "0224e506eaede7103b9041d7303d20b2ccbeae7a0cc5b4f846fc3c74099b6d92",
+    "connect_attempted": true,
+    "callbacks": 330,
+    "budget": 1000000,
+    "complete": true,
+    "query_count": 19,
+    "first_sql": {
+      "sql": "PRAGMA journal_mode=DELETE",
+      "callbacks_before": 0,
+      "started_ns": 22338375,
+      "rows": [
+        [
+          "delete"
+        ]
+      ],
+      "callbacks_after": 35,
+      "elapsed_ns": 101250
+    }
+  },
+  {
+    "run_id": "d53faf66-538a-590d-8be1-5a1486bd97af",
+    "scenario": "BUDGET_ZERO",
+    "connect_attempted": false,
+    "callbacks": 0,
+    "budget": 0,
+    "complete": false,
+    "query_count": 0,
+    "first_sql": null
+  }
+]

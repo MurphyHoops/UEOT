@@ -1,0 +1,396 @@
+{
+  "C_execution_receipt": {
+    "started_utc": "2026-11-13T13:50:11.686298+00:00",
+    "preregistration_commit": "26902c25152ca3676b4844d2156f028145f62fe2",
+    "steps": [
+      {
+        "label": "01-certification-check",
+        "argv": [
+          "/Library/Developer/CommandLineTools/usr/bin/python3",
+          "/Users/murphyhoops/Documents/ueot-sqlite-study-20261113/independent-C/tools/c_independent_check_v2.py",
+          "--root",
+          "/Users/murphyhoops/Documents/ueot-sqlite-study-20261113/certification/run-v1",
+          "--out",
+          "/Users/murphyhoops/Documents/ueot-sqlite-study-20261113/independent-C/certification-check-v1.json",
+          "--preregistration-commit",
+          "26902c25152ca3676b4844d2156f028145f62fe2"
+        ],
+        "started_utc": "2026-11-13T13:50:11.688400+00:00",
+        "finished_utc": "2026-11-13T13:50:12.209859+00:00",
+        "returncode": 0,
+        "stdout_sha256": "cb3f425874d697c1b6f4048ad36c3a7aad18ca34907b3965b3a16546dd778368",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "label": "02-certification-direct-read",
+        "argv": [
+          "/Library/Developer/CommandLineTools/usr/bin/python3",
+          "/Users/murphyhoops/Documents/ueot-sqlite-study-20261113/independent-C/tools/c_direct_snapshot_read_v2.py",
+          "--root",
+          "/Users/murphyhoops/Documents/ueot-sqlite-study-20261113/certification/run-v1",
+          "--outdir",
+          "/Users/murphyhoops/Documents/ueot-sqlite-study-20261113/independent-C/certification-direct-read"
+        ],
+        "started_utc": "2026-11-13T13:50:12.210073+00:00",
+        "finished_utc": "2026-11-13T13:50:12.274430+00:00",
+        "returncode": 0,
+        "stdout_sha256": "0bc30523f48bc966475a12b3a8b4b5cfe26e0dc57c0712f7ff3f2487c26bcaff",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "label": "03-replication-controller",
+        "argv": [
+          "/Library/Developer/CommandLineTools/usr/bin/python3",
+          "/Users/murphyhoops/Documents/ueot-sqlite-study-20261113/independent-C/registered-source/sqlite_study.py",
+          "run",
+          "--split",
+          "replication",
+          "--protocol",
+          "/Users/murphyhoops/Documents/ueot-sqlite-study-20261113/independent-C/registered-source/protocol.json",
+          "--out",
+          "/Users/murphyhoops/Documents/ueot-sqlite-study-20261113/independent-C/replication/run-v1",
+          "--authorization",
+          "/Users/murphyhoops/Documents/ueot-sqlite-study-20261113/independent-C/registered-source/authorization.json"
+        ],
+        "started_utc": "2026-11-13T13:50:12.274646+00:00",
+        "finished_utc": "2026-11-13T13:50:15.102118+00:00",
+        "returncode": 0,
+        "stdout_sha256": "6c490cf9f723382d2481f2263a3dc799135664f09d4f66080fb995a61793eccf",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "label": "04-replication-check",
+        "argv": [
+          "/Library/Developer/CommandLineTools/usr/bin/python3",
+          "/Users/murphyhoops/Documents/ueot-sqlite-study-20261113/independent-C/tools/c_independent_check_v2.py",
+          "--root",
+          "/Users/murphyhoops/Documents/ueot-sqlite-study-20261113/independent-C/replication/run-v1",
+          "--out",
+          "/Users/murphyhoops/Documents/ueot-sqlite-study-20261113/independent-C/replication-check-v1.json",
+          "--preregistration-commit",
+          "26902c25152ca3676b4844d2156f028145f62fe2"
+        ],
+        "started_utc": "2026-11-13T13:50:15.102419+00:00",
+        "finished_utc": "2026-11-13T13:50:15.289367+00:00",
+        "returncode": 0,
+        "stdout_sha256": "92f9ad3d0b7ec635c3f97ad0dcb09c774008ba3b2d32156fa157062dd72bc624",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "label": "05-replication-direct-read",
+        "argv": [
+          "/Library/Developer/CommandLineTools/usr/bin/python3",
+          "/Users/murphyhoops/Documents/ueot-sqlite-study-20261113/independent-C/tools/c_direct_snapshot_read_v2.py",
+          "--root",
+          "/Users/murphyhoops/Documents/ueot-sqlite-study-20261113/independent-C/replication/run-v1",
+          "--outdir",
+          "/Users/murphyhoops/Documents/ueot-sqlite-study-20261113/independent-C/replication-direct-read"
+        ],
+        "started_utc": "2026-11-13T13:50:15.289584+00:00",
+        "finished_utc": "2026-11-13T13:50:15.333619+00:00",
+        "returncode": 0,
+        "stdout_sha256": "1edc3d18bffd8337f267ed428b5747aed1e425057911da76c1b25d573eaf6143",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "C_wrapper_sha256": "9b4dfc48fd84daddd0b99c0efb9fd3eeeede9e320be529e12d73b8172caecc9c",
+    "scope": "28 existing B trials audited; exactly seven new registered C replication trials",
+    "source_bindings": [
+      {
+        "path": "/Users/murphyhoops/Documents/ueot-sqlite-study-20261113/independent-C/registered-source/sqlite_study.py",
+        "sha256": "bdbe87252da0b107602f7e30509b4b094f53d97a647ac9dc34cb378195dd92d9"
+      },
+      {
+        "path": "/Users/murphyhoops/Documents/ueot-sqlite-study-20261113/independent-C/registered-source/protocol.json",
+        "sha256": "f68c5e9b643738563eebdce032bf13126e63036b2b473f889840355af5e00566"
+      },
+      {
+        "path": "/Users/murphyhoops/Documents/ueot-sqlite-study-20261113/independent-C/registered-source/RUN_ALLOCATION.json",
+        "sha256": "2561677d933aec2ceef8ca3a80a6d480a5cebc32a55a99a0dbdfeb63f6e66b02"
+      },
+      {
+        "path": "/Users/murphyhoops/Documents/ueot-sqlite-study-20261113/independent-C/tools/c_independent_check_v2.py",
+        "sha256": "40e9f2816a73f041bd1bb7f368b96303cea54c8208e8100c7994fab1279d7b38"
+      },
+      {
+        "path": "/Users/murphyhoops/Documents/ueot-sqlite-study-20261113/independent-C/tools/c_direct_snapshot_read_v2.py",
+        "sha256": "20a04e92c6b74c90e87da9e8e1735e66002edebbf0b92bea02470b06207d384a"
+      }
+    ],
+    "authorization_sha256": "0dcd48bcb1cc55d6d595cfe6f721f9fd5b5bce3225e72f7c4dd352914bb1831a",
+    "B_manifest_sha256": "ed4da14df4cf913032e8e505118a52b783650d1118f94e4981d6e9d8beed7073",
+    "B_started_utc": "2026-11-13T13:47:33.339592+00:00",
+    "status": "C_EXECUTED_REVIEW_REQUIRED",
+    "finished_utc": "2026-11-13T13:50:15.333826+00:00"
+  },
+  "certification": {
+    "count": 28,
+    "direct_rehash_file_count": 1261,
+    "check_errors": [],
+    "trials_without_check_errors": 28,
+    "candidate_counts": {
+      "UNRESOLVED_BUDGET": 8,
+      "ACCEPT_CURRENT_ALLOWED": 16,
+      "REJECT_HISTORY": 4
+    },
+    "knowledge_counts": {
+      "ACKED": 20,
+      "UNKNOWN": 4,
+      "NOT_COMMITTED": 4
+    },
+    "resource_totals": {
+      "candidate": {
+        "callbacks": 21718,
+        "returned_rows": 1634,
+        "canonical_returned_bytes": 4043354,
+        "logical_copy_read_bytes": 7840256,
+        "logical_copy_write_bytes": 7840256,
+        "decisions": {
+          "UNRESOLVED_BUDGET": 8,
+          "ACCEPT_CURRENT_ALLOWED": 16,
+          "REJECT_HISTORY": 4
+        }
+      },
+      "strong_baseline": {
+        "callbacks": 21718,
+        "returned_rows": 1634,
+        "canonical_returned_bytes": 4043354,
+        "logical_copy_read_bytes": 7840256,
+        "logical_copy_write_bytes": 7840256,
+        "decisions": {
+          "UNRESOLVED_BUDGET": 8,
+          "ACCEPT_CURRENT_ALLOWED": 16,
+          "REJECT_HISTORY": 4
+        }
+      },
+      "weak_structure": {
+        "callbacks": 14428,
+        "returned_rows": 240,
+        "canonical_returned_bytes": 1380,
+        "logical_copy_read_bytes": 7840256,
+        "logical_copy_write_bytes": 7840256,
+        "decisions": {
+          "UNRESOLVED_BUDGET": 8,
+          "STRUCTURE_OK": 20
+        }
+      },
+      "identity_ablation": {
+        "callbacks": 21718,
+        "returned_rows": 1634,
+        "canonical_returned_bytes": 4043354,
+        "logical_copy_read_bytes": 7840256,
+        "logical_copy_write_bytes": 7840256,
+        "decisions": {
+          "UNRESOLVED_BUDGET": 8,
+          "ACCEPT_ABLATED": 20
+        }
+      }
+    },
+    "unknown_cases": [
+      {
+        "run_id": "1116bb42-ad2c-5eb2-ab50-e53a72e5657d",
+        "last_txn": "2bcca580-f96e-5cf5-84ad-7e8bcbf6f08d",
+        "pause_precommit": false,
+        "pause_preack": true,
+        "precommit_progress_received": true,
+        "commit_return_received": true,
+        "ack_received": false,
+        "worker_exit": -9,
+        "knowledge_C": "UNKNOWN"
+      },
+      {
+        "run_id": "7ca6f088-2f95-5636-ac4a-b8432cbb587b",
+        "last_txn": "56171dd1-cc62-53bb-91a2-eff036d0bd42",
+        "pause_precommit": false,
+        "pause_preack": true,
+        "precommit_progress_received": true,
+        "commit_return_received": true,
+        "ack_received": false,
+        "worker_exit": -9,
+        "knowledge_C": "UNKNOWN"
+      },
+      {
+        "run_id": "70315ce6-f96d-55d9-9be4-caf3dfa92515",
+        "last_txn": "ca554de1-ace4-5f61-87c9-2193f7e5e3f8",
+        "pause_precommit": false,
+        "pause_preack": true,
+        "precommit_progress_received": true,
+        "commit_return_received": true,
+        "ack_received": false,
+        "worker_exit": -9,
+        "knowledge_C": "UNKNOWN"
+      },
+      {
+        "run_id": "c1446fc3-cf5a-5432-8b2a-b58a5470315e",
+        "last_txn": "57d1f191-95bf-581c-ae8b-f792d23d3f24",
+        "pause_precommit": false,
+        "pause_preack": true,
+        "precommit_progress_received": true,
+        "commit_return_received": true,
+        "ack_received": false,
+        "worker_exit": -9,
+        "knowledge_C": "UNKNOWN"
+      }
+    ],
+    "checker_result_sha256": "6a91cb9822a1184f878b06a793857651405c96160557fcd0c2c77b3e4f1442b6"
+  },
+  "replication": {
+    "count": 7,
+    "direct_rehash_file_count": 315,
+    "check_errors": [],
+    "trials_without_check_errors": 7,
+    "candidate_counts": {
+      "REJECT_HISTORY": 1,
+      "ACCEPT_CURRENT_ALLOWED": 4,
+      "UNRESOLVED_BUDGET": 2
+    },
+    "knowledge_counts": {
+      "ACKED": 5,
+      "NOT_COMMITTED": 1,
+      "UNKNOWN": 1
+    },
+    "resource_totals": {
+      "candidate": {
+        "callbacks": 7527,
+        "returned_rows": 577,
+        "canonical_returned_bytes": 1996644,
+        "logical_copy_read_bytes": 3731168,
+        "logical_copy_write_bytes": 3731168,
+        "decisions": {
+          "REJECT_HISTORY": 1,
+          "ACCEPT_CURRENT_ALLOWED": 4,
+          "UNRESOLVED_BUDGET": 2
+        }
+      },
+      "strong_baseline": {
+        "callbacks": 7527,
+        "returned_rows": 577,
+        "canonical_returned_bytes": 1996644,
+        "logical_copy_read_bytes": 3731168,
+        "logical_copy_write_bytes": 3731168,
+        "decisions": {
+          "REJECT_HISTORY": 1,
+          "ACCEPT_CURRENT_ALLOWED": 4,
+          "UNRESOLVED_BUDGET": 2
+        }
+      },
+      "weak_structure": {
+        "callbacks": 4862,
+        "returned_rows": 60,
+        "canonical_returned_bytes": 345,
+        "logical_copy_read_bytes": 3731168,
+        "logical_copy_write_bytes": 3731168,
+        "decisions": {
+          "STRUCTURE_OK": 5,
+          "UNRESOLVED_BUDGET": 2
+        }
+      },
+      "identity_ablation": {
+        "callbacks": 7527,
+        "returned_rows": 577,
+        "canonical_returned_bytes": 1996644,
+        "logical_copy_read_bytes": 3731168,
+        "logical_copy_write_bytes": 3731168,
+        "decisions": {
+          "ACCEPT_ABLATED": 5,
+          "UNRESOLVED_BUDGET": 2
+        }
+      }
+    },
+    "unknown_cases": [
+      {
+        "run_id": "265ff5d3-b72a-5019-8cde-609032b5a5a8",
+        "last_txn": "a3ee8d04-5350-55ba-bb45-a881f1f388d2",
+        "pause_precommit": false,
+        "pause_preack": true,
+        "precommit_progress_received": true,
+        "commit_return_received": true,
+        "ack_received": false,
+        "worker_exit": -9,
+        "knowledge_C": "UNKNOWN"
+      }
+    ],
+    "checker_result_sha256": "20c621b9d9cac683d78c99d8d0008103a26bdc3ce6643b730a350610e2801b5d"
+  },
+  "direct_reads": {
+    "certification": [
+      {
+        "run_id": "f6d9a441-1138-5b7d-8175-c64fa6136137",
+        "scenario": "STALE_BACKUP",
+        "same_registered_structure_projection": true,
+        "different_full_state": true,
+        "same_H_current_allowed": true,
+        "same_H_stale_allowed": false
+      },
+      {
+        "run_id": "201d04c1-278f-5c39-b6a1-c8d9ee65d4c3",
+        "scenario": "STALE_BACKUP",
+        "same_registered_structure_projection": true,
+        "different_full_state": true,
+        "same_H_current_allowed": true,
+        "same_H_stale_allowed": false
+      },
+      {
+        "run_id": "9186e6ac-13ef-5440-9e44-0a568ddde727",
+        "scenario": "PRECOMMIT_KILL",
+        "hot_magic_present": true,
+        "journal_removed_after_read": true,
+        "database_bytes_changed": true
+      },
+      {
+        "run_id": "b784e4fa-ed25-5b05-a94b-c0e29861811c",
+        "scenario": "PRECOMMIT_KILL",
+        "hot_magic_present": true,
+        "journal_removed_after_read": true,
+        "database_bytes_changed": true
+      },
+      {
+        "run_id": "e33f5aa0-f907-5ffe-a5a1-b6a6c7ab470d",
+        "scenario": "PRECOMMIT_KILL",
+        "hot_magic_present": false,
+        "journal_removed_after_read": false,
+        "database_bytes_changed": false
+      },
+      {
+        "run_id": "760aaaf7-6887-5635-854e-017ed8b8d16d",
+        "scenario": "STALE_BACKUP",
+        "same_registered_structure_projection": true,
+        "different_full_state": true,
+        "same_H_current_allowed": true,
+        "same_H_stale_allowed": false
+      },
+      {
+        "run_id": "cf73f284-5318-5ca5-b4b2-202a5fdc7907",
+        "scenario": "PRECOMMIT_KILL",
+        "hot_magic_present": false,
+        "journal_removed_after_read": false,
+        "database_bytes_changed": false
+      },
+      {
+        "run_id": "08da42c0-4b4b-55fa-8eeb-8b583528a165",
+        "scenario": "STALE_BACKUP",
+        "same_registered_structure_projection": true,
+        "different_full_state": true,
+        "same_H_current_allowed": true,
+        "same_H_stale_allowed": false
+      }
+    ],
+    "replication": [
+      {
+        "run_id": "001be8d3-95a6-55a1-8b8c-5729489997e3",
+        "scenario": "STALE_BACKUP",
+        "same_registered_structure_projection": true,
+        "different_full_state": true,
+        "same_H_current_allowed": true,
+        "same_H_stale_allowed": false
+      },
+      {
+        "run_id": "ad8f6c2b-8d7f-5613-b294-7e2eb171159a",
+        "scenario": "PRECOMMIT_KILL",
+        "hot_magic_present": true,
+        "journal_removed_after_read": true,
+        "database_bytes_changed": true
+      }
+    ]
+  }
+}

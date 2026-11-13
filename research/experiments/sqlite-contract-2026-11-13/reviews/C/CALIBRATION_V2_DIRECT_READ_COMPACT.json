@@ -1,0 +1,143 @@
+{
+  "checker": "C_DIRECT_SNAPSHOT_READ_V1",
+  "checker_sha256": "0bb3f8e426273efbcf0dbcb2ba9e7607cc7fa66f93ce977d33f4e0a7f72a8569",
+  "root": "/Users/murphyhoops/Documents/ueot-sqlite-study-20261113/calibration/run-v2",
+  "purpose": "calibration only; fresh clones read with C-owned sqlite3 queries, no B verdict functions",
+  "results": [
+    {
+      "run_id": "108848dd-74db-5f41-9315-052493eb1855",
+      "scenario": "STALE_BACKUP",
+      "observations": {
+        "current": {
+          "source": "/Users/murphyhoops/Documents/ueot-sqlite-study-20261113/calibration/run-v2/108848dd-74db-5f41-9315-052493eb1855/pre_replacement_current",
+          "copy": "/Users/murphyhoops/Documents/ueot-sqlite-study-20261113/independent-C/calibration-v2-direct-read/108848dd-74db-5f41-9315-052493eb1855/current",
+          "before": {
+            "db.sqlite": {
+              "bytes": 1196032,
+              "sha256": "29c7318ef9c8160152b3fbec5e49d0cffcf2b2da83f91aba141ad7e8fbfc20e3",
+              "first28": null
+            }
+          },
+          "after": {
+            "db.sqlite": {
+              "bytes": 1196032,
+              "sha256": "29c7318ef9c8160152b3fbec5e49d0cffcf2b2da83f91aba141ad7e8fbfc20e3",
+              "first28": null
+            }
+          },
+          "runtime": {
+            "version": "3.51.0",
+            "source_id": "2025-06-12 13:14:41 f0ca7bba1c5e232e5d279fad6338121ab55af0c8c68c84cdfb18ba5114dcaapl"
+          },
+          "weak_projection": {
+            "opened": true,
+            "integrity": [
+              [
+                "ok"
+              ]
+            ],
+            "foreign_keys": []
+          },
+          "exact_expected_state_match": true,
+          "elapsed_ns_in_C_process": 3229750,
+          "source_unchanged": true,
+          "state_sha256": "d78b866b9bd95767f768efb696db28e845c1f308297c243147548a19e5b14209",
+          "business_row_count": 256,
+          "transaction_row_count": 3
+        },
+        "stale": {
+          "source": "/Users/murphyhoops/Documents/ueot-sqlite-study-20261113/calibration/run-v2/108848dd-74db-5f41-9315-052493eb1855/postfault_raw",
+          "copy": "/Users/murphyhoops/Documents/ueot-sqlite-study-20261113/independent-C/calibration-v2-direct-read/108848dd-74db-5f41-9315-052493eb1855/stale",
+          "before": {
+            "db.sqlite": {
+              "bytes": 1196032,
+              "sha256": "3bab1206aaba92171e00e94357203d711820523725b5c9dc66499904bf7172cd",
+              "first28": null
+            }
+          },
+          "after": {
+            "db.sqlite": {
+              "bytes": 1196032,
+              "sha256": "3bab1206aaba92171e00e94357203d711820523725b5c9dc66499904bf7172cd",
+              "first28": null
+            }
+          },
+          "runtime": {
+            "version": "3.51.0",
+            "source_id": "2025-06-12 13:14:41 f0ca7bba1c5e232e5d279fad6338121ab55af0c8c68c84cdfb18ba5114dcaapl"
+          },
+          "weak_projection": {
+            "opened": true,
+            "integrity": [
+              [
+                "ok"
+              ]
+            ],
+            "foreign_keys": []
+          },
+          "exact_expected_state_match": true,
+          "elapsed_ns_in_C_process": 1819250,
+          "source_unchanged": true,
+          "state_sha256": "4f2eccf528b5ee1691f96f4c239e50362e963d249253b100079eafbea4cd9185",
+          "business_row_count": 256,
+          "transaction_row_count": 1
+        }
+      },
+      "same_registered_structure_projection": true,
+      "different_full_state": true,
+      "same_H_current_allowed": true,
+      "same_H_stale_allowed": false
+    },
+    {
+      "run_id": "8ab897cd-7537-5654-8603-440f253dd95c",
+      "scenario": "PRECOMMIT_KILL",
+      "observation": {
+        "source": "/Users/murphyhoops/Documents/ueot-sqlite-study-20261113/calibration/run-v2/8ab897cd-7537-5654-8603-440f253dd95c/postfault_raw",
+        "copy": "/Users/murphyhoops/Documents/ueot-sqlite-study-20261113/independent-C/calibration-v2-direct-read/8ab897cd-7537-5654-8603-440f253dd95c/precommit",
+        "before": {
+          "db.sqlite": {
+            "bytes": 1196032,
+            "sha256": "60d1d72a8722b0ee07d297146820335e001ef2f6417d7dc10e223718fcad6bf4",
+            "first28": null
+          },
+          "db.sqlite-journal": {
+            "bytes": 1198672,
+            "sha256": "a335ed84fefd438878795a96c99e3ddbcc5191c28dcda77d86449fb4d825e68f",
+            "first28": "d9d505f920a163d70000001cebfc1b95000001240000020000001000"
+          }
+        },
+        "after": {
+          "db.sqlite": {
+            "bytes": 1196032,
+            "sha256": "84935fb3a24a5295518e827dac294911dea92c5d9b0da5053571d40dfb929b76",
+            "first28": null
+          }
+        },
+        "runtime": {
+          "version": "3.51.0",
+          "source_id": "2025-06-12 13:14:41 f0ca7bba1c5e232e5d279fad6338121ab55af0c8c68c84cdfb18ba5114dcaapl"
+        },
+        "weak_projection": {
+          "opened": true,
+          "integrity": [
+            [
+              "ok"
+            ]
+          ],
+          "foreign_keys": []
+        },
+        "exact_expected_state_match": true,
+        "elapsed_ns_in_C_process": 2762375,
+        "source_unchanged": true,
+        "state_sha256": "cc98ef0791139f6b8912584eeda393e1eadf7a3c8b39d7278d26e55d175a49a5",
+        "business_row_count": 256,
+        "transaction_row_count": 2
+      },
+      "hot_magic_present": true,
+      "journal_removed_after_read": true,
+      "database_bytes_changed": true
+    }
+  ],
+  "full_record_sha256": "3e37c8f73bfd99bdde9e48bde8c993a5252d21d44bb6d58fa4301f9f0944e27b",
+  "full_record_bytes": 3223006
+}

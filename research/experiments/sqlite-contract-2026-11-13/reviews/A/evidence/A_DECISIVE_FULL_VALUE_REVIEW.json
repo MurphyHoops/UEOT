@@ -1,0 +1,320 @@
+{
+  "status": "A_READ_AND_REDERIVED_TRANSFERRED_DECISIVE_VALUES_NO_SQLITE_EXECUTION",
+  "evidence_bundle_sha256": "56ddfc96b04faeae732a8a548a561449670b6baa2f6bae0e0c8239e2919b47b4",
+  "evidence_bundle_bytes": 5109111,
+  "preregistration_commit": "26902c25152ca3676b4844d2156f028145f62fe2",
+  "scope": "Eight certification decisive cases: four fixed-H current/stale pairs and four precommit observations. Initial formula, request formula/hash, parent/child message alignment, ACK/gate classes, and complete state arrays are recomputed by A. C performed SQLite reads and Mac file hashing; A reads C's retained values and file transition records. Seven replication cases are assessed via C's complete independent check report, not newly executed or individually reconstructed by A here.",
+  "cases": [
+    {
+      "run_id": "f6d9a441-1138-5b7d-8175-c64fa6136137",
+      "workload": "W2",
+      "scenario": "STALE_BACKUP",
+      "request_count": 8,
+      "actually_received_ack_count": 8,
+      "business_row_count": 97,
+      "initial_and_requests_rederived_from_registered_formula": true,
+      "source_id": "2025-06-12 13:14:41 f0ca7bba1c5e232e5d279fad6338121ab55af0c8c68c84cdfb18ba5114dcaapl",
+      "H_ack_class_from_raw": "ACKED",
+      "allowed_state_count": 1,
+      "current_exact_allowed": true,
+      "stale_exact_allowed": false,
+      "current_transaction_sequences": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "stale_transaction_sequences": [
+        1
+      ],
+      "different_business_rows": 97,
+      "weak_projection": {
+        "opened": true,
+        "integrity": [
+          [
+            "ok"
+          ]
+        ],
+        "foreign_keys": []
+      },
+      "same_weak_projection_recomputed": true,
+      "failures": [],
+      "passed_A_value_and_event_checks": true
+    },
+    {
+      "run_id": "201d04c1-278f-5c39-b6a1-c8d9ee65d4c3",
+      "workload": "W1",
+      "scenario": "STALE_BACKUP",
+      "request_count": 5,
+      "actually_received_ack_count": 5,
+      "business_row_count": 32,
+      "initial_and_requests_rederived_from_registered_formula": true,
+      "source_id": "2025-06-12 13:14:41 f0ca7bba1c5e232e5d279fad6338121ab55af0c8c68c84cdfb18ba5114dcaapl",
+      "H_ack_class_from_raw": "ACKED",
+      "allowed_state_count": 1,
+      "current_exact_allowed": true,
+      "stale_exact_allowed": false,
+      "current_transaction_sequences": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "stale_transaction_sequences": [
+        1
+      ],
+      "different_business_rows": 32,
+      "weak_projection": {
+        "opened": true,
+        "integrity": [
+          [
+            "ok"
+          ]
+        ],
+        "foreign_keys": []
+      },
+      "same_weak_projection_recomputed": true,
+      "failures": [],
+      "passed_A_value_and_event_checks": true
+    },
+    {
+      "run_id": "9186e6ac-13ef-5440-9e44-0a568ddde727",
+      "workload": "W2",
+      "scenario": "PRECOMMIT_KILL",
+      "request_count": 8,
+      "actually_received_ack_count": 7,
+      "business_row_count": 97,
+      "initial_and_requests_rederived_from_registered_formula": true,
+      "source_id": "2025-06-12 13:14:41 f0ca7bba1c5e232e5d279fad6338121ab55af0c8c68c84cdfb18ba5114dcaapl",
+      "H_ack_class_from_raw": "NOT_COMMITTED",
+      "allowed_state_count": 1,
+      "observed_exact_S0": true,
+      "transaction_sequences": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "journal_bytes_before": 462560,
+      "valid_magic_from_C_recorded_bytes": true,
+      "database_recorded_hash_changed": true,
+      "journal_recorded_removed": true,
+      "full_hot_witness_from_records": true,
+      "failures": [],
+      "passed_A_value_and_event_checks": true
+    },
+    {
+      "run_id": "b784e4fa-ed25-5b05-a94b-c0e29861811c",
+      "workload": "W2",
+      "scenario": "PRECOMMIT_KILL",
+      "request_count": 8,
+      "actually_received_ack_count": 7,
+      "business_row_count": 97,
+      "initial_and_requests_rederived_from_registered_formula": true,
+      "source_id": "2025-06-12 13:14:41 f0ca7bba1c5e232e5d279fad6338121ab55af0c8c68c84cdfb18ba5114dcaapl",
+      "H_ack_class_from_raw": "NOT_COMMITTED",
+      "allowed_state_count": 1,
+      "observed_exact_S0": true,
+      "transaction_sequences": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "journal_bytes_before": 462560,
+      "valid_magic_from_C_recorded_bytes": true,
+      "database_recorded_hash_changed": true,
+      "journal_recorded_removed": true,
+      "full_hot_witness_from_records": true,
+      "failures": [],
+      "passed_A_value_and_event_checks": true
+    },
+    {
+      "run_id": "e33f5aa0-f907-5ffe-a5a1-b6a6c7ab470d",
+      "workload": "W1",
+      "scenario": "PRECOMMIT_KILL",
+      "request_count": 5,
+      "actually_received_ack_count": 4,
+      "business_row_count": 32,
+      "initial_and_requests_rederived_from_registered_formula": true,
+      "source_id": "2025-06-12 13:14:41 f0ca7bba1c5e232e5d279fad6338121ab55af0c8c68c84cdfb18ba5114dcaapl",
+      "H_ack_class_from_raw": "NOT_COMMITTED",
+      "allowed_state_count": 1,
+      "observed_exact_S0": true,
+      "transaction_sequences": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "journal_bytes_before": 16928,
+      "valid_magic_from_C_recorded_bytes": false,
+      "database_recorded_hash_changed": false,
+      "journal_recorded_removed": false,
+      "full_hot_witness_from_records": false,
+      "failures": [],
+      "passed_A_value_and_event_checks": true
+    },
+    {
+      "run_id": "760aaaf7-6887-5635-854e-017ed8b8d16d",
+      "workload": "W1",
+      "scenario": "STALE_BACKUP",
+      "request_count": 5,
+      "actually_received_ack_count": 5,
+      "business_row_count": 32,
+      "initial_and_requests_rederived_from_registered_formula": true,
+      "source_id": "2025-06-12 13:14:41 f0ca7bba1c5e232e5d279fad6338121ab55af0c8c68c84cdfb18ba5114dcaapl",
+      "H_ack_class_from_raw": "ACKED",
+      "allowed_state_count": 1,
+      "current_exact_allowed": true,
+      "stale_exact_allowed": false,
+      "current_transaction_sequences": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "stale_transaction_sequences": [
+        1
+      ],
+      "different_business_rows": 32,
+      "weak_projection": {
+        "opened": true,
+        "integrity": [
+          [
+            "ok"
+          ]
+        ],
+        "foreign_keys": []
+      },
+      "same_weak_projection_recomputed": true,
+      "failures": [],
+      "passed_A_value_and_event_checks": true
+    },
+    {
+      "run_id": "cf73f284-5318-5ca5-b4b2-202a5fdc7907",
+      "workload": "W1",
+      "scenario": "PRECOMMIT_KILL",
+      "request_count": 5,
+      "actually_received_ack_count": 4,
+      "business_row_count": 32,
+      "initial_and_requests_rederived_from_registered_formula": true,
+      "source_id": "2025-06-12 13:14:41 f0ca7bba1c5e232e5d279fad6338121ab55af0c8c68c84cdfb18ba5114dcaapl",
+      "H_ack_class_from_raw": "NOT_COMMITTED",
+      "allowed_state_count": 1,
+      "observed_exact_S0": true,
+      "transaction_sequences": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "journal_bytes_before": 16928,
+      "valid_magic_from_C_recorded_bytes": false,
+      "database_recorded_hash_changed": false,
+      "journal_recorded_removed": false,
+      "full_hot_witness_from_records": false,
+      "failures": [],
+      "passed_A_value_and_event_checks": true
+    },
+    {
+      "run_id": "08da42c0-4b4b-55fa-8eeb-8b583528a165",
+      "workload": "W2",
+      "scenario": "STALE_BACKUP",
+      "request_count": 8,
+      "actually_received_ack_count": 8,
+      "business_row_count": 97,
+      "initial_and_requests_rederived_from_registered_formula": true,
+      "source_id": "2025-06-12 13:14:41 f0ca7bba1c5e232e5d279fad6338121ab55af0c8c68c84cdfb18ba5114dcaapl",
+      "H_ack_class_from_raw": "ACKED",
+      "allowed_state_count": 1,
+      "current_exact_allowed": true,
+      "stale_exact_allowed": false,
+      "current_transaction_sequences": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "stale_transaction_sequences": [
+        1
+      ],
+      "different_business_rows": 97,
+      "weak_projection": {
+        "opened": true,
+        "integrity": [
+          [
+            "ok"
+          ]
+        ],
+        "foreign_keys": []
+      },
+      "same_weak_projection_recomputed": true,
+      "failures": [],
+      "passed_A_value_and_event_checks": true
+    }
+  ],
+  "total_decisive_cases": 8,
+  "failed_cases": [],
+  "all_35_C_check_records_read": [
+    {
+      "split": "certification",
+      "file_sha256": "6a91cb9822a1184f878b06a793857651405c96160557fcd0c2c77b3e4f1442b6",
+      "exact_registered_specs_and_order": true,
+      "count": 28,
+      "C_direct_rehashed_count": 1261,
+      "global_errors": [],
+      "trial_error_count": 0,
+      "all_C_checks_passed": true,
+      "C_candidate_observed_counts": {
+        "UNRESOLVED_BUDGET": 8,
+        "ACCEPT_CURRENT_ALLOWED": 16,
+        "REJECT_HISTORY": 4
+      },
+      "all_unknown_have_two_allowed_states": true,
+      "source_identity_set": [
+        "2025-06-12 13:14:41 f0ca7bba1c5e232e5d279fad6338121ab55af0c8c68c84cdfb18ba5114dcaapl"
+      ]
+    },
+    {
+      "split": "replication",
+      "file_sha256": "20c621b9d9cac683d78c99d8d0008103a26bdc3ce6643b730a350610e2801b5d",
+      "exact_registered_specs_and_order": true,
+      "count": 7,
+      "C_direct_rehashed_count": 315,
+      "global_errors": [],
+      "trial_error_count": 0,
+      "all_C_checks_passed": true,
+      "C_candidate_observed_counts": {
+        "REJECT_HISTORY": 1,
+        "ACCEPT_CURRENT_ALLOWED": 4,
+        "UNRESOLVED_BUDGET": 2
+      },
+      "all_unknown_have_two_allowed_states": true,
+      "source_identity_set": [
+        "2025-06-12 13:14:41 f0ca7bba1c5e232e5d279fad6338121ab55af0c8c68c84cdfb18ba5114dcaapl"
+      ]
+    }
+  ],
+  "limits": [
+    "Shared trust in actual parent logs, initial input, frozen driver, runtime, and transferred record integrity remains.",
+    "Matching the registered initializer formula is not a new physical before-fault measurement.",
+    "No physical I/O bound, power-loss test, service restart, retry policy, independent external operator, or new Lean instantiation is inferred."
+  ]
+}

@@ -1,0 +1,409 @@
+{
+  "summary_counts": {
+    "planned": 28,
+    "attempted": 28,
+    "complete": 28,
+    "execution_errors": 0,
+    "not_run": 0,
+    "candidate_baseline_disagreements": []
+  },
+  "ack_counts": {
+    "ACKED": 20,
+    "UNKNOWN": 4,
+    "NOT_COMMITTED": 4
+  },
+  "distinct_worker_pids": 28,
+  "distinct_observer_pids_including_adjudication": 140,
+  "worker_returncodes": {
+    "0": 16,
+    "-9": 12
+  },
+  "all_originals_unchanged": true,
+  "all_candidate_strong_listed_fields_equal": true,
+  "all_clone_inputs_equal_raw": true,
+  "all_complete_observer_history_fields_match_full_value_membership": true,
+  "costs_by_policy": {
+    "candidate": {
+      "decisions": {
+        "UNRESOLVED_BUDGET": 8,
+        "ACCEPT_CURRENT_ALLOWED": 16,
+        "REJECT_HISTORY": 4
+      },
+      "all_processes_exit_zero": true,
+      "connect_attempts": 24,
+      "callback_count": {
+        "n": 28,
+        "sum": 21718,
+        "min": 0,
+        "median": 680.0,
+        "max": 1531
+      },
+      "oracle_summary_input_bytes": {
+        "n": 28,
+        "sum": 16876,
+        "min": 584,
+        "median": 590.0,
+        "max": 655
+      },
+      "rows_returned": {
+        "n": 28,
+        "sum": 1634,
+        "min": 0,
+        "median": 49.0,
+        "max": 117
+      },
+      "canonical_returned_bytes": {
+        "n": 28,
+        "sum": 4043354,
+        "min": 0,
+        "median": 5116.0,
+        "max": 399503
+      },
+      "clone_read_bytes": {
+        "n": 28,
+        "sum": 7840256,
+        "min": 24576,
+        "median": 254224.0,
+        "max": 929504
+      },
+      "clone_write_bytes": {
+        "n": 28,
+        "sum": 7840256,
+        "min": 24576,
+        "median": 254224.0,
+        "max": 929504
+      },
+      "process_start_to_finish_seconds": {
+        "n": 28,
+        "sum": 1.7398609999999997,
+        "min": 0.033656,
+        "median": 0.0593195,
+        "max": 0.113967
+      },
+      "elapsed_from_before_connect_ns": {
+        "n": 28,
+        "sum": 80075997,
+        "min": 144875,
+        "median": 1838979.0,
+        "max": 22797917
+      },
+      "connect_elapsed_ns": {
+        "n": 24,
+        "sum": 48070579,
+        "min": 925750,
+        "median": 1245666.5,
+        "max": 20717541
+      }
+    },
+    "strong_baseline": {
+      "decisions": {
+        "UNRESOLVED_BUDGET": 8,
+        "ACCEPT_CURRENT_ALLOWED": 16,
+        "REJECT_HISTORY": 4
+      },
+      "all_processes_exit_zero": true,
+      "connect_attempts": 24,
+      "callback_count": {
+        "n": 28,
+        "sum": 21718,
+        "min": 0,
+        "median": 680.0,
+        "max": 1531
+      },
+      "oracle_summary_input_bytes": {
+        "n": 28,
+        "sum": 16876,
+        "min": 584,
+        "median": 590.0,
+        "max": 655
+      },
+      "rows_returned": {
+        "n": 28,
+        "sum": 1634,
+        "min": 0,
+        "median": 49.0,
+        "max": 117
+      },
+      "canonical_returned_bytes": {
+        "n": 28,
+        "sum": 4043354,
+        "min": 0,
+        "median": 5116.0,
+        "max": 399503
+      },
+      "clone_read_bytes": {
+        "n": 28,
+        "sum": 7840256,
+        "min": 24576,
+        "median": 254224.0,
+        "max": 929504
+      },
+      "clone_write_bytes": {
+        "n": 28,
+        "sum": 7840256,
+        "min": 24576,
+        "median": 254224.0,
+        "max": 929504
+      },
+      "process_start_to_finish_seconds": {
+        "n": 28,
+        "sum": 1.6973479999999999,
+        "min": 0.035595,
+        "median": 0.05047,
+        "max": 0.112503
+      },
+      "elapsed_from_before_connect_ns": {
+        "n": 28,
+        "sum": 95239918,
+        "min": 143417,
+        "median": 2022291.5,
+        "max": 21982500
+      },
+      "connect_elapsed_ns": {
+        "n": 24,
+        "sum": 39269749,
+        "min": 918750,
+        "median": 1261625.5,
+        "max": 8124416
+      }
+    },
+    "weak_structure": {
+      "decisions": {
+        "UNRESOLVED_BUDGET": 8,
+        "STRUCTURE_OK": 20
+      },
+      "all_processes_exit_zero": true,
+      "connect_attempts": 24,
+      "callback_count": {
+        "n": 28,
+        "sum": 14428,
+        "min": 0,
+        "median": 479.0,
+        "max": 990
+      },
+      "oracle_summary_input_bytes": {
+        "n": 28,
+        "sum": 16876,
+        "min": 584,
+        "median": 590.0,
+        "max": 655
+      },
+      "rows_returned": {
+        "n": 28,
+        "sum": 240,
+        "min": 0,
+        "median": 12.0,
+        "max": 12
+      },
+      "canonical_returned_bytes": {
+        "n": 28,
+        "sum": 1380,
+        "min": 0,
+        "median": 69.0,
+        "max": 69
+      },
+      "clone_read_bytes": {
+        "n": 28,
+        "sum": 7840256,
+        "min": 24576,
+        "median": 254224.0,
+        "max": 929504
+      },
+      "clone_write_bytes": {
+        "n": 28,
+        "sum": 7840256,
+        "min": 24576,
+        "median": 254224.0,
+        "max": 929504
+      },
+      "process_start_to_finish_seconds": {
+        "n": 28,
+        "sum": 1.8111429999999997,
+        "min": 0.0364,
+        "median": 0.055866,
+        "max": 0.320905
+      },
+      "elapsed_from_before_connect_ns": {
+        "n": 28,
+        "sum": 42431373,
+        "min": 138125,
+        "median": 1609729.5,
+        "max": 3867417
+      },
+      "connect_elapsed_ns": {
+        "n": 24,
+        "sum": 29663168,
+        "min": 926708,
+        "median": 1219062.5,
+        "max": 2321541
+      }
+    },
+    "identity_ablation": {
+      "decisions": {
+        "UNRESOLVED_BUDGET": 8,
+        "ACCEPT_ABLATED": 20
+      },
+      "all_processes_exit_zero": true,
+      "connect_attempts": 24,
+      "callback_count": {
+        "n": 28,
+        "sum": 21718,
+        "min": 0,
+        "median": 680.0,
+        "max": 1531
+      },
+      "oracle_summary_input_bytes": {
+        "n": 28,
+        "sum": 16876,
+        "min": 584,
+        "median": 590.0,
+        "max": 655
+      },
+      "rows_returned": {
+        "n": 28,
+        "sum": 1634,
+        "min": 0,
+        "median": 49.0,
+        "max": 117
+      },
+      "canonical_returned_bytes": {
+        "n": 28,
+        "sum": 4043354,
+        "min": 0,
+        "median": 5116.0,
+        "max": 399503
+      },
+      "clone_read_bytes": {
+        "n": 28,
+        "sum": 7840256,
+        "min": 24576,
+        "median": 254224.0,
+        "max": 929504
+      },
+      "clone_write_bytes": {
+        "n": 28,
+        "sum": 7840256,
+        "min": 24576,
+        "median": 254224.0,
+        "max": 929504
+      },
+      "process_start_to_finish_seconds": {
+        "n": 28,
+        "sum": 1.7751590000000002,
+        "min": 0.034219,
+        "median": 0.061046500000000004,
+        "max": 0.115088
+      },
+      "elapsed_from_before_connect_ns": {
+        "n": 28,
+        "sum": 67133917,
+        "min": 131458,
+        "median": 1804021.5,
+        "max": 6993084
+      },
+      "connect_elapsed_ns": {
+        "n": 24,
+        "sum": 34989791,
+        "min": 941916,
+        "median": 1226687.5,
+        "max": 4702750
+      }
+    },
+    "adjudication": {
+      "decisions": {
+        "ACCEPT_CURRENT_ALLOWED": 24,
+        "REJECT_HISTORY": 4
+      },
+      "all_processes_exit_zero": true,
+      "connect_attempts": 28,
+      "callback_count": {
+        "n": 28,
+        "sum": 30434,
+        "min": 600,
+        "median": 1035.5,
+        "max": 1531
+      },
+      "oracle_summary_input_bytes": {
+        "n": 28,
+        "sum": 16948,
+        "min": 590,
+        "median": 591.0,
+        "max": 656
+      },
+      "rows_returned": {
+        "n": 28,
+        "sum": 2298,
+        "min": 45,
+        "median": 79.5,
+        "max": 117
+      },
+      "canonical_returned_bytes": {
+        "n": 28,
+        "sum": 5661830,
+        "min": 4679,
+        "median": 201928.0,
+        "max": 399503
+      },
+      "clone_read_bytes": {
+        "n": 28,
+        "sum": 7840256,
+        "min": 24576,
+        "median": 254224.0,
+        "max": 929504
+      },
+      "clone_write_bytes": {
+        "n": 28,
+        "sum": 7840256,
+        "min": 24576,
+        "median": 254224.0,
+        "max": 929504
+      },
+      "process_start_to_finish_seconds": {
+        "n": 28,
+        "sum": 1.8142020000000003,
+        "min": 0.044693,
+        "median": 0.062564,
+        "max": 0.092605
+      },
+      "elapsed_from_before_connect_ns": {
+        "n": 28,
+        "sum": 72318667,
+        "min": 1437333,
+        "median": 2427917.0,
+        "max": 3816792
+      },
+      "connect_elapsed_ns": {
+        "n": 28,
+        "sum": 32282000,
+        "min": 808791,
+        "median": 1198000.5,
+        "max": 1362333
+      }
+    }
+  },
+  "hot_precommit_by_workload": {
+    "W1": {
+      "trials": 2,
+      "observed_rollback_witnesses": 0
+    },
+    "W2": {
+      "trials": 2,
+      "observed_rollback_witnesses": 2
+    }
+  },
+  "scope_limits": [
+    "Does not open any SQLite database; reads already retained result rows and byte manifests.",
+    "B authored the runner and this postprocessor. C independent reconstruction is separate.",
+    "Postprocessing v2: structural-only observations have no full business-state membership claim; v1 overextended that check and is retained.",
+    "Callback counts exclude preprocessing, copying, startup, connect, part of native recovery and physical I/O.",
+    "Process duration includes observer startup plus work and teardown; no isolated startup-time claim.",
+    "No application service restart was performed or tested.",
+    "Hot-header candidate alone is insufficient; the reported witness also needs DB change, journal removal and full allowed state."
+  ],
+  "source_compact_sha256": "c1a8d9b46a41f2f2128a92fe47c26be990b681daf8f31856a295de551aa809d4",
+  "controller_time": {
+    "started_utc": "2026-11-13T13:47:32.731750+00:00",
+    "finished_utc": "2026-11-13T13:47:45.667683+00:00",
+    "subprocess_returncode": 0
+  }
+}

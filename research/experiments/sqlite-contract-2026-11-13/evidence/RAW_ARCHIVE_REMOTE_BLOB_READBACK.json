@@ -1,0 +1,58 @@
+{
+  "started_utc": "2026-11-13T14:19:16.820299+00:00",
+  "source": "Unauthenticated read-only GitHub REST git/blobs endpoint via Local Mac Python",
+  "archives": [
+    {
+      "label": "B",
+      "url": "https://api.github.com/repos/MurphyHoops/UEOT/git/blobs/ffd0dfa581a25d6beb1099105542d83d22933e78",
+      "http_status": 200,
+      "git_blob": "ffd0dfa581a25d6beb1099105542d83d22933e78",
+      "bytes": 1193964,
+      "sha256": "a069a5b728c6574b8436d5fa07f9ebb0a9b9654432de4b25eb3a4715b2ba0533",
+      "pass": true
+    },
+    {
+      "label": "C",
+      "url": "https://api.github.com/repos/MurphyHoops/UEOT/git/blobs/3fb21ba2d369ca70e25b319d58ea57a929fc1b59",
+      "http_status": 200,
+      "git_blob": "3fb21ba2d369ca70e25b319d58ea57a929fc1b59",
+      "bytes": 781176,
+      "sha256": "ccad7253e193ccc0be930ced92543d4e6f2f101bd4d8616fba51a75394e071b7",
+      "pass": true
+    }
+  ],
+  "finished_utc": "2026-11-13T14:19:24.009584+00:00",
+  "all_pass": true,
+  "local_mac_pid": 96261,
+  "creation_responses": {
+    "B": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Action completed."
+        }
+      ],
+      "structuredContent": {
+        "sha": "ffd0dfa581a25d6beb1099105542d83d22933e78"
+      },
+      "isError": false
+    },
+    "C": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Action completed."
+        }
+      ],
+      "structuredContent": {
+        "sha": "3fb21ba2d369ca70e25b319d58ea57a929fc1b59"
+      },
+      "isError": false
+    }
+  },
+  "connector_binary_read_limit": {
+    "github_fetch": "400 GitHub Fetch only accepts UTF-8 text",
+    "github_fetch_blob": "UnicodeDecodeError decoding xz binary; not a successful readback",
+    "resolution": "Read-only standard GitHub JSON blobs API on Local Mac; actual binary rehashed above."
+  }
+}

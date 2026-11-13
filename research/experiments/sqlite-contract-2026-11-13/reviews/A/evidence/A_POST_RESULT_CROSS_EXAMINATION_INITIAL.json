@@ -1,0 +1,21 @@
+{
+  "status": "RECORDED_QUESTIONS_AND_RESPONSE_NOT_EXPERIMENT_ACCEPTANCE",
+  "scope": "Post-certification interpretation questions; B has reported completion, A has not yet read certification or replication raw receipts at this record's creation.",
+  "runner_sha256": "bdbe87252da0b107602f7e30509b4b094f53d97a647ac9dc34cb378195dd92d9",
+  "questions": [
+    {
+      "id": "A-B-RESULT-1",
+      "question": "请依据本次实际28认证说明，candidate与强标准参考模型同判、同信息/预算时，是否应明确零新增决策能力；相对弱结构/去历史消融的改善能否全部归因于显式业务合同与标准参考模型检查，而不是已证明UEOT超越可靠性工程？"
+    },
+    {
+      "id": "A-B-RESULT-2",
+      "question": "SQLite自动rollback来自现有引擎，独立observer新PID是否只证检查/恢复可执行，未执行业务写服务重启、应用重试或恢复后持续业务；请确认实际无独立db-domain表、无应用恢复重试策略，A1泛提案不能倒灌终稿。"
+    }
+  ],
+  "B_actual_response_verbatim": "B正式答后置两问：同意本次没有新增决策能力证据。candidate/strong为同一参考合同判据两种写法，实际28无判决分歧；相对weak/identity_ablation的差额归因于显式外部业务/ACK合同检查，不能宣传胜过标准可靠性工程。同意SQLite自身rollback才是恢复动作，观察者独立PID只支撑进程隔离执行/新连接检查，不是业务写服务重启、应用重试或持续运行；代码无db-domain表、无应用恢复重试策略。实施证据 runner/sqlite_study.py:execute_observer与observer_main；实际每trial policy/*/execution/process.json的argv均observer，无重启服务命令，worker已reap。compact整理脚本已写shared，但Mac write工具暂连续init错误，认证本体已完整完成且raw未变；正用start_process读取。最终报告保留你的这两问和限定。",
+  "A_source_readback": {
+    "read_lines": ["185-216: candidate_decision / strong_decision", "218-319: observer_main", "428-447: execute_observer", "449-621: run_trial"],
+    "finding": "On the actual typed Boolean observations, the two decision branches express the same rule. execute_observer launches observer subprocesses; the registered post-fault path performs clone inspection and SQLite opening, not an application write-service restart or retry policy. No independent db-domain metadata table is present.",
+    "limit": "This static source agreement is not an independent read of B's reported 28 actual outcomes. Actual certification and C reproduction receipts remain to be reviewed."
+  }
+}
