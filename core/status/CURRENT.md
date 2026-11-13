@@ -1,13 +1,23 @@
 # UEOT Core — Current State
 
-Updated: 2026-11-11 (Asia/Shanghai)
+Updated: 2026-11-13 (Asia/Shanghai)
 
-Adoption checked on main `783f645286f288552c101be102a0e80f66ee70f8`:
-PR #447 supplies the latest Core mathematical extension; PR #448 adds the
-repository's layered licensing. This dated checkpoint is not a branch pin:
-refresh actual main and open work before a new task.
+Scope reconciliation starts from main `cb17211653fde30aa50e0e9848798a6a5b3b3f12`.
+PR #447 supplies the latest Core mathematical extension; the maintained
+philosophical and mathematical books are versions 3.0 and 4.1, and the independent
+successor reference specification is version 1.0. The containing commit and its
+merge record identify adoption of this update; this baseline is not a branch pin.
+Refresh actual main and open work before a new task.
 
 **Content: CLASSIFIED_CORE_CLOSED. Empirical support: UNVERIFIED.**
+
+The [scope resolution](../../council/resolutions/20261113-core-claim-scope-reconciliation.md)
+governs the current meanings and admission scope of the constitutional terms.
+It resolves the old universal formulations without changing the frozen
+mathematical source or any production Lean statement. The
+[audit closure record](../../research/audits/core-closure-2026-11-13/README.md)
+distinguishes completed corrections, retained scope boundaries, optional external
+replication and application work. No new Core research package is automatically active.
 
 Frozen mathematical specification: UEOT Core Mathematics v3.0
 
@@ -24,7 +34,11 @@ references; the mathematical specification, Lean proofs and philosophical
 arguments retain their own standards of justification.
 
 The [source specification manifest](../specifications/manifest.yaml) records
-the frozen v3.0 identity. The authoritative source-level proof ledger is
+the frozen v3.0 identity. The separate
+[successor reference specification 1.0](../specifications/successor/README.md)
+registers 30 conditional CSX contracts. Its 163 successor endpoints and the 163
+legacy source-facing declarations are distinct inventories, neither a new
+denominator for the 106 source P-IDs. The authoritative source-level proof ledger is
 [V3_COVERAGE_STATUS.md](../../formalization/ueot-core/docs/V3_COVERAGE_STATUS.md).
 
 For current claims, read the [classified claim table](../../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_theory_closure_v1/CLAIM_STATUS.md)
@@ -94,7 +108,8 @@ conditions remain unchanged; zero-probability boundaries are outside this unit.
 | Original Core and later conditional modules | Their exact source-matched Lean endpoints and recorded assumptions; no theorem-count substitute |
 | PR #447 growth extension | Three new modules, affected public entry and boundary consumer checked; 15 listed axiom prints, exact source probe and independent readers ([validation](../../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/VALIDATION.json)) |
 | PR #446 task-dependent 2/3/4 classes and `(s,b,bq)` rank-three example | Written proofs plus independent exact checks; no new complete dedicated Lean endpoints claimed |
-| Current Core books | PR #447 mathematics 241 pages and philosophy 98 pages; [navigation](../../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/PDF_NAVIGATION.json) and [selected-page visual review](../../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/VISUAL_REVIEW.json) complete |
+| Current Core books | Mathematics 4.1 and philosophy 3.0, each in Chinese and English; follow the current [mathematics](../../mathematics/README.md) and [philosophy](../../philosophy/README.md) edition manifests. PR #447's 241/98 pages and its navigation/visual receipts belong to that historical edition, not to the current bilingual artifacts. |
+| 2026-11-13 scope and source-matrix correction | The constitution and current contracts are explicitly reconciled; P-CTL-01's matrix premise is corrected to `0 < beta < 1`. The [evidence record](../../research/audits/core-closure-2026-11-13/MATHEMATICAL_EVIDENCE_AND_CONTRIBUTION.md) distinguishes source identity and historical checked receipts from a fresh Lean execution, which this documentation-only revision does not claim. |
 | Philosophical/normative positions | Independent arguments, commitments and objections; not inferred from growth optimality |
 | Natural empirical support | UNVERIFIED; neither Lean, synthetic enumeration nor native separated readers is external empirical confirmation |
 
@@ -158,6 +173,14 @@ implementation. Possible independent questions include dedicated formalization
 of the written representation supplements, an external assessment of the
 same-source contribution, or one explicitly chosen change in source assumptions;
 none is automatically a missing exit of the frozen Core.
+
+Reopening requires a concrete counterexample to a retained claim, an unmet
+promised interface for a named consumer, a definition conflict, a reproducibility
+failure or evidence mismatch affecting a relied-upon proof claim, or a separately
+chosen new objective.
+An unavailable build environment is recorded as an execution limit, not as either
+a proof failure or a successful rerun. Philosophical and empirical disputes retain
+their own standards; they are not closed by changing a status label.
 
 Current maintenance follows [repository branch governance](../../docs/REPOSITORY_BRANCH_GOVERNANCE.md)
 and [Core operations](../../formalization/ueot-core/docs/compression/COMPRESSION_OPERATIONS.md):

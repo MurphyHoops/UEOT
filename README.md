@@ -47,7 +47,18 @@ See [Project Architecture](./docs/PROJECT_ARCHITECTURE.md) for the target struct
 
 ## Formal verification
 
-**Current Core status — 2026-11-11:** start at the [current state and reading route](./core/status/CURRENT.md), then the [Lean package](./formalization/ueot-core/README.md). Core content is **CLASSIFIED_CORE_CLOSED** within its stated conditional scope; empirical support remains **UNVERIFIED**.
+**Current Core status — 2026-11-13:** start at the [current state and reading route](./core/status/CURRENT.md), the [successor reference specification 1.0](./core/specifications/successor/README.md), then the [Lean package](./formalization/ueot-core/README.md). Core content is **CLASSIFIED_CORE_CLOSED** within its stated conditional scope; empirical support remains **UNVERIFIED**.
+
+The [2026-11-13 scope resolution](./council/resolutions/20261113-core-claim-scope-reconciliation.md)
+aligns the constitution, canonical claims, glossary and method with those
+conditional contracts. Processual objecthood remains a philosophical commitment;
+causal maintenance, operational failure structure, quantitative representation,
+goal-directed mechanisms and normative reasons have distinct obligations.
+Universal self-regeneration, a common two-dimensional factor, a unique optimum
+and a mandatory three-stage lifecycle are not admission tests for every Core model.
+The [audit closure record](./research/audits/core-closure-2026-11-13/README.md)
+records the corrections, independent agent reviews, retained counterexamples and
+the limit of reused proof evidence. This scope revision adds no Lean theorem.
 
 | Layer | Adopted state and evidence |
 |---|---|
