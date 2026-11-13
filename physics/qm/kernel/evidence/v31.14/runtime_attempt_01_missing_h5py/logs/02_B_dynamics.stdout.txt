@@ -1,0 +1,50 @@
+{
+  "status": "FOCUSED_SCIENTIFIC_CHECKS_PASSED_FLOATING_RESULTS_SEPARATE_FROM_ANALYTIC_BOUNDS",
+  "resource": {
+    "wall_seconds": 0.4126048960024491,
+    "max_rss_platform_units": 112384,
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "largest_joint_SR_environment_dimension": 1764,
+    "largest_conditional_environment_unitary_dimension": 441,
+    "environment_reset_in_true_source": false
+  },
+  "negative_controls": {
+    "same_single_slot_different_multitime": [
+      {
+        "lambda": 0.2,
+        "same_single_slot_reset_distance": 1.3877787807814457e-17,
+        "persistent_vs_reset_full_CQ_distance": 0.051233836481120225,
+        "omitted_history_phase_distance": 0.023279321854395525
+      },
+      {
+        "lambda": 0.3,
+        "same_single_slot_reset_distance": 1.3877787807814457e-17,
+        "persistent_vs_reset_full_CQ_distance": 0.10125185621002683,
+        "omitted_history_phase_distance": 0.05022546990230467
+      },
+      {
+        "lambda": 0.4,
+        "same_single_slot_reset_distance": 2.7755575615628914e-17,
+        "persistent_vs_reset_full_CQ_distance": 0.15113021220908843,
+        "omitted_history_phase_distance": 0.08349657416894556
+      }
+    ],
+    "initial_tail_zero_does_not_bound_propagation": {
+      "initial_vacuum_tail_above_K0": 0,
+      "K0_lambda_0_4_actual_full_CQ_error": 0.2389578616352383
+    },
+    "rare_acceptance_declared_toy": {
+      "acceptance_probability": 1e-06,
+      "full_distance": 1e-06,
+      "conditional_distance": 1.0
+    },
+    "leakage_declared_qutrit_extension": {
+      "omitted_mass": 0.050000000000000044,
+      "outside_frozen_qubit_domain": true
+    },
+    "parameter_domain_violation_rejected": true
+  }
+}

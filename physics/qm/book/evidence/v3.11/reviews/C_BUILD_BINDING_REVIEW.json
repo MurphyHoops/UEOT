@@ -1,0 +1,131 @@
+{
+  "schema": "ueot.c-publication-build-binding-review/1",
+  "created_at_utc": "2026-11-13T17:35:40.095814+00:00",
+  "status": "PASS_SCOPED_CODE_CHANGE",
+  "modified_files": [
+    {
+      "path": "physics/qm/book/build/verify_v3_11_increment.py",
+      "sha256": "d97de2d4a235d99e960531d71755bd9b8a19322b3967aeadbd1042a3804d1355",
+      "bytes": 30329
+    }
+  ],
+  "previous_code_receipt_preserved": {
+    "path": "/workspace/scratch/314d4fc9c52a/work_publication_review/C_METADATA_CODE_CHECKS.json",
+    "sha256": "2e0487c7ec7caf6f1600e81d010b6ce4f552a0a789b6865833f2c8f98bf15b17",
+    "bytes": 3221
+  },
+  "change": "Map zh publication directory to builder language zh-CN; bind builder/header/table-filter hashes to actual current files.",
+  "builder_path_evidence": {
+    "builder": "physics/qm/book/build/build_pdf.py",
+    "language_rule": "en when source filename ends .en.md; otherwise zh-CN",
+    "header_rule": "header.en.tex for English; header.tex for Chinese",
+    "table_filter": "physics/qm/book/build/tables.lua"
+  },
+  "actual_receipts_observed": [
+    {
+      "language_directory": "zh",
+      "receipt_language": "zh-CN",
+      "receipt_sha256": "93a907641324a03c3aed4a87c813e8d9714d68c2f09fbd2d8be53621170127a9",
+      "dependency_observations": {
+        "builder_sha256": {
+          "path": "physics/qm/book/build/build_pdf.py",
+          "recorded_sha256": "55a9176e843e43bcbfbb564914e748a36a4e5b1bb621c55ddd264c99a697b38b",
+          "current_sha256": "55a9176e843e43bcbfbb564914e748a36a4e5b1bb621c55ddd264c99a697b38b",
+          "matches": true
+        },
+        "header_sha256": {
+          "path": "physics/qm/book/build/header.tex",
+          "recorded_sha256": "905ef34781da309bb324176b3867c9abfda0569a5e0ef826cff4cf370e52bed1",
+          "current_sha256": "2473cfa71138358dce38e61010c6392155d9651b724276a2a774e015ad71ffbd",
+          "matches": false
+        },
+        "tables_filter_sha256": {
+          "path": "physics/qm/book/build/tables.lua",
+          "recorded_sha256": "e0d74c898fc1997142da52fc5a180fcc0742994ebdfd3d51afa73d9206e003d6",
+          "current_sha256": "e0d74c898fc1997142da52fc5a180fcc0742994ebdfd3d51afa73d9206e003d6",
+          "matches": true
+        }
+      }
+    },
+    {
+      "language_directory": "en",
+      "receipt_language": "en",
+      "receipt_sha256": "3d493fa0b4046bbd2b6f3e0fbe0c434415701543a7884fdfe88c7d381dfeccb2",
+      "dependency_observations": {
+        "builder_sha256": {
+          "path": "physics/qm/book/build/build_pdf.py",
+          "recorded_sha256": "55a9176e843e43bcbfbb564914e748a36a4e5b1bb621c55ddd264c99a697b38b",
+          "current_sha256": "55a9176e843e43bcbfbb564914e748a36a4e5b1bb621c55ddd264c99a697b38b",
+          "matches": true
+        },
+        "header_sha256": {
+          "path": "physics/qm/book/build/header.en.tex",
+          "recorded_sha256": "aae49754dd87856cb517ac1053e408b206d11e0cd4c86404d7c7ea402dfda6d0",
+          "current_sha256": "dac5f5eda12c27c9be15054a4fb2f537089ed0a3f640143396aa9ee016c2d5a7",
+          "matches": false
+        },
+        "tables_filter_sha256": {
+          "path": "physics/qm/book/build/tables.lua",
+          "recorded_sha256": "e0d74c898fc1997142da52fc5a180fcc0742994ebdfd3d51afa73d9206e003d6",
+          "current_sha256": "e0d74c898fc1997142da52fc5a180fcc0742994ebdfd3d51afa73d9206e003d6",
+          "matches": true
+        }
+      }
+    }
+  ],
+  "focused_cases": [
+    {
+      "name": "zh current dependency fixture and language mapping",
+      "status": "PASS",
+      "fixture_not_a_build_receipt": true
+    },
+    {
+      "name": "zh wrong builder language",
+      "status": "EXPECTED_REJECTION",
+      "reason": "zh build edition and inventory"
+    },
+    {
+      "name": "zh stale builder_sha256",
+      "status": "EXPECTED_REJECTION",
+      "reason": "zh current build dependency builder_sha256"
+    },
+    {
+      "name": "zh stale header_sha256",
+      "status": "EXPECTED_REJECTION",
+      "reason": "zh current build dependency header_sha256"
+    },
+    {
+      "name": "zh stale tables_filter_sha256",
+      "status": "EXPECTED_REJECTION",
+      "reason": "zh current build dependency tables_filter_sha256"
+    },
+    {
+      "name": "en current dependency fixture and language mapping",
+      "status": "PASS",
+      "fixture_not_a_build_receipt": true
+    },
+    {
+      "name": "en wrong builder language",
+      "status": "EXPECTED_REJECTION",
+      "reason": "en build edition and inventory"
+    },
+    {
+      "name": "en stale builder_sha256",
+      "status": "EXPECTED_REJECTION",
+      "reason": "en current build dependency builder_sha256"
+    },
+    {
+      "name": "en stale header_sha256",
+      "status": "EXPECTED_REJECTION",
+      "reason": "en current build dependency header_sha256"
+    },
+    {
+      "name": "en stale tables_filter_sha256",
+      "status": "EXPECTED_REJECTION",
+      "reason": "en current build dependency tables_filter_sha256"
+    }
+  ],
+  "new_scientific_tests": false,
+  "manuscript_or_metadata_modified": false,
+  "scope": "Only the authorized gate source was changed. Tests execute its exact new AST statements against explicit fixtures; no PDF rebuild or complete publication PASS is asserted."
+}
