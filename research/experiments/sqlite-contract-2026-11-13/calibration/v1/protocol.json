@@ -1,0 +1,74 @@
+{
+  "study_id": "UEOT_SQLITE_ACK_V1",
+  "status": "CALIBRATION_DRAFT_NOT_PREREGISTERED",
+  "budgets": {
+    "high": 1000000,
+    "small": 32,
+    "zero": 0,
+    "adjudication": 10000000
+  },
+  "timeouts": {
+    "worker_seconds": 15,
+    "observer_seconds": 30
+  },
+  "scenarios": [
+    "NORMAL",
+    "PRECOMMIT_KILL",
+    "COMMIT_NO_ACK_KILL",
+    "POST_ACK_KILL",
+    "STALE_BACKUP",
+    "BUDGET_ZERO",
+    "BUDGET_SMALL"
+  ],
+  "workloads": {
+    "W0": {
+      "keys": 8,
+      "history_transactions": 2,
+      "payload_bytes": 12288
+    },
+    "W1": {
+      "keys": 32,
+      "history_transactions": 4,
+      "payload_bytes": 128
+    },
+    "W2": {
+      "keys": 97,
+      "history_transactions": 7,
+      "payload_bytes": 4096
+    }
+  },
+  "allocations": {
+    "calibration": {
+      "workloads": [
+        "W0"
+      ],
+      "repetitions": 1,
+      "order_seed": 2026111301
+    },
+    "certification": {
+      "workloads": [
+        "W1",
+        "W2"
+      ],
+      "repetitions": 2,
+      "order_seed": 2026111302
+    },
+    "replication": {
+      "workloads": [
+        "W2"
+      ],
+      "repetitions": 1,
+      "order_seed": 2026111303
+    }
+  },
+  "ack_rule": "UNKNOWN retains {S0,S1}; complete observed membership may ACCEPT_CURRENT_ALLOWED without upgrading to ACKED",
+  "configuration": {
+    "journal_mode": "delete",
+    "synchronous": 2,
+    "cache_size": 5,
+    "cache_spill": "ON"
+  },
+  "resource_claim": "observed progress-callback count only; hidden recovery/kernel/physical I/O is not strictly bounded",
+  "fault_domain": "fresh worker/target only; parent oracle on same host is protected from declared interventions, not hardware-independent",
+  "rights": "No new software license selected; follow repository LICENSE_SCOPE"
+}

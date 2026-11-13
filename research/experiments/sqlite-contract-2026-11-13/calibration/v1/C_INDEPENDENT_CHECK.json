@@ -1,0 +1,690 @@
+{
+  "checker": "C_INDEPENDENT_RAW_RECONSTRUCTION_V1",
+  "checker_sha256": "c9c6eefe7e98caf61526347683f68c333370a20c8710f1381aabfd75a8beaf91",
+  "root": "/Users/murphyhoops/Documents/ueot-sqlite-study-20261113/calibration/run-v1",
+  "split": "calibration",
+  "preregistration_commit": null,
+  "runner_sha256_recorded": "e8190f5b64a9c389bf7a6761bbbf2fd2e23d1211097c74b35ea41e3e9df5f5ce",
+  "protocol_sha256_recorded": "cd83b24fbb3b5897fd45274ebb29d0310e78fee8aaf4a9e03b716f52531e1f63",
+  "raw_files_directly_rehashed": 318,
+  "global_errors": [],
+  "planned": 7,
+  "trials_checked": 7,
+  "trials_without_check_errors": 7,
+  "candidate_observed_counts": {
+    "ACCEPT_CURRENT_ALLOWED": 4,
+    "UNRESOLVED_BUDGET": 2,
+    "REJECT_HISTORY": 1
+  },
+  "trials": [
+    {
+      "spec": {
+        "run_id": "3eb28cdc-dbd0-54c9-b719-a93e31193f52",
+        "split": "calibration",
+        "workload": "W0",
+        "scenario": "COMMIT_NO_ACK_KILL",
+        "repetition": 0,
+        "order": 0,
+        "policy_rotation": 0
+      },
+      "errors": [],
+      "ack_class_C": "UNKNOWN",
+      "allowed_state_count_C": 2,
+      "policies": {
+        "candidate": {
+          "expected": "ACCEPT_CURRENT_ALLOWED",
+          "observed": "ACCEPT_CURRENT_ALLOWED",
+          "complete": true,
+          "callback_count": 350,
+          "budget": 1000000,
+          "membership_exact": true,
+          "ack_class": "UNKNOWN",
+          "structure_ok": true,
+          "actual_state_sha256": "15f7e5fcce9ed29b60e8124534479eee73d35b2bf8571561088b27a1ddcadd9e",
+          "weak_projection": [
+            true,
+            [
+              [
+                "ok"
+              ]
+            ],
+            []
+          ]
+        },
+        "strong_baseline": {
+          "expected": "ACCEPT_CURRENT_ALLOWED",
+          "observed": "ACCEPT_CURRENT_ALLOWED",
+          "complete": true,
+          "callback_count": 350,
+          "budget": 1000000,
+          "membership_exact": true,
+          "ack_class": "UNKNOWN",
+          "structure_ok": true,
+          "actual_state_sha256": "15f7e5fcce9ed29b60e8124534479eee73d35b2bf8571561088b27a1ddcadd9e",
+          "weak_projection": [
+            true,
+            [
+              [
+                "ok"
+              ]
+            ],
+            []
+          ]
+        },
+        "weak_structure": {
+          "expected": "STRUCTURE_OK",
+          "observed": "STRUCTURE_OK",
+          "complete": true,
+          "callback_count": 279,
+          "budget": 1000000,
+          "membership_exact": null,
+          "ack_class": "UNKNOWN",
+          "structure_ok": true,
+          "actual_state_sha256": null,
+          "weak_projection": [
+            true,
+            [
+              [
+                "ok"
+              ]
+            ],
+            []
+          ]
+        },
+        "identity_ablation": {
+          "expected": "ACCEPT_ABLATED",
+          "observed": "ACCEPT_ABLATED",
+          "complete": true,
+          "callback_count": 350,
+          "budget": 1000000,
+          "membership_exact": true,
+          "ack_class": "UNKNOWN",
+          "structure_ok": true,
+          "actual_state_sha256": "15f7e5fcce9ed29b60e8124534479eee73d35b2bf8571561088b27a1ddcadd9e",
+          "weak_projection": [
+            true,
+            [
+              [
+                "ok"
+              ]
+            ],
+            []
+          ]
+        }
+      },
+      "adjudication_exact_membership_C": true,
+      "worker_source_id": "2025-06-12 13:14:41 f0ca7bba1c5e232e5d279fad6338121ab55af0c8c68c84cdfb18ba5114dcaapl",
+      "original_files_verified": 1,
+      "passed_independent_checks": true
+    },
+    {
+      "spec": {
+        "run_id": "e92745f9-3cff-562f-a5d0-36fd0535d31a",
+        "split": "calibration",
+        "workload": "W0",
+        "scenario": "BUDGET_SMALL",
+        "repetition": 0,
+        "order": 1,
+        "policy_rotation": 1
+      },
+      "errors": [],
+      "ack_class_C": "ACKED",
+      "allowed_state_count_C": 1,
+      "policies": {
+        "candidate": {
+          "expected": "UNRESOLVED_BUDGET",
+          "observed": "UNRESOLVED_BUDGET",
+          "complete": false,
+          "callback_count": 32,
+          "budget": 32,
+          "membership_exact": null,
+          "ack_class": "ACKED",
+          "structure_ok": null,
+          "actual_state_sha256": null,
+          "weak_projection": [
+            true,
+            null,
+            null
+          ]
+        },
+        "strong_baseline": {
+          "expected": "UNRESOLVED_BUDGET",
+          "observed": "UNRESOLVED_BUDGET",
+          "complete": false,
+          "callback_count": 32,
+          "budget": 32,
+          "membership_exact": null,
+          "ack_class": "ACKED",
+          "structure_ok": null,
+          "actual_state_sha256": null,
+          "weak_projection": [
+            true,
+            null,
+            null
+          ]
+        },
+        "weak_structure": {
+          "expected": "UNRESOLVED_BUDGET",
+          "observed": "UNRESOLVED_BUDGET",
+          "complete": false,
+          "callback_count": 32,
+          "budget": 32,
+          "membership_exact": null,
+          "ack_class": "ACKED",
+          "structure_ok": null,
+          "actual_state_sha256": null,
+          "weak_projection": [
+            true,
+            null,
+            null
+          ]
+        },
+        "identity_ablation": {
+          "expected": "UNRESOLVED_BUDGET",
+          "observed": "UNRESOLVED_BUDGET",
+          "complete": false,
+          "callback_count": 32,
+          "budget": 32,
+          "membership_exact": null,
+          "ack_class": "ACKED",
+          "structure_ok": null,
+          "actual_state_sha256": null,
+          "weak_projection": [
+            true,
+            null,
+            null
+          ]
+        }
+      },
+      "adjudication_exact_membership_C": true,
+      "worker_source_id": "2025-06-12 13:14:41 f0ca7bba1c5e232e5d279fad6338121ab55af0c8c68c84cdfb18ba5114dcaapl",
+      "original_files_verified": 1,
+      "passed_independent_checks": true
+    },
+    {
+      "spec": {
+        "run_id": "ca76d925-6ec0-5c5d-a879-d822e1dda67d",
+        "split": "calibration",
+        "workload": "W0",
+        "scenario": "POST_ACK_KILL",
+        "repetition": 0,
+        "order": 2,
+        "policy_rotation": 2
+      },
+      "errors": [],
+      "ack_class_C": "ACKED",
+      "allowed_state_count_C": 1,
+      "policies": {
+        "candidate": {
+          "expected": "ACCEPT_CURRENT_ALLOWED",
+          "observed": "ACCEPT_CURRENT_ALLOWED",
+          "complete": true,
+          "callback_count": 350,
+          "budget": 1000000,
+          "membership_exact": true,
+          "ack_class": "ACKED",
+          "structure_ok": true,
+          "actual_state_sha256": "9671b59d801f9f0c315e59caa18b9270a602fe03f6f1ef426ea0b83f9f3aa9b8",
+          "weak_projection": [
+            true,
+            [
+              [
+                "ok"
+              ]
+            ],
+            []
+          ]
+        },
+        "strong_baseline": {
+          "expected": "ACCEPT_CURRENT_ALLOWED",
+          "observed": "ACCEPT_CURRENT_ALLOWED",
+          "complete": true,
+          "callback_count": 350,
+          "budget": 1000000,
+          "membership_exact": true,
+          "ack_class": "ACKED",
+          "structure_ok": true,
+          "actual_state_sha256": "9671b59d801f9f0c315e59caa18b9270a602fe03f6f1ef426ea0b83f9f3aa9b8",
+          "weak_projection": [
+            true,
+            [
+              [
+                "ok"
+              ]
+            ],
+            []
+          ]
+        },
+        "weak_structure": {
+          "expected": "STRUCTURE_OK",
+          "observed": "STRUCTURE_OK",
+          "complete": true,
+          "callback_count": 279,
+          "budget": 1000000,
+          "membership_exact": null,
+          "ack_class": "ACKED",
+          "structure_ok": true,
+          "actual_state_sha256": null,
+          "weak_projection": [
+            true,
+            [
+              [
+                "ok"
+              ]
+            ],
+            []
+          ]
+        },
+        "identity_ablation": {
+          "expected": "ACCEPT_ABLATED",
+          "observed": "ACCEPT_ABLATED",
+          "complete": true,
+          "callback_count": 350,
+          "budget": 1000000,
+          "membership_exact": true,
+          "ack_class": "ACKED",
+          "structure_ok": true,
+          "actual_state_sha256": "9671b59d801f9f0c315e59caa18b9270a602fe03f6f1ef426ea0b83f9f3aa9b8",
+          "weak_projection": [
+            true,
+            [
+              [
+                "ok"
+              ]
+            ],
+            []
+          ]
+        }
+      },
+      "adjudication_exact_membership_C": true,
+      "worker_source_id": "2025-06-12 13:14:41 f0ca7bba1c5e232e5d279fad6338121ab55af0c8c68c84cdfb18ba5114dcaapl",
+      "original_files_verified": 1,
+      "passed_independent_checks": true
+    },
+    {
+      "spec": {
+        "run_id": "65afd3ef-4eee-5ef3-9913-bcdd996a07a8",
+        "split": "calibration",
+        "workload": "W0",
+        "scenario": "NORMAL",
+        "repetition": 0,
+        "order": 3,
+        "policy_rotation": 3
+      },
+      "errors": [],
+      "ack_class_C": "ACKED",
+      "allowed_state_count_C": 1,
+      "policies": {
+        "candidate": {
+          "expected": "ACCEPT_CURRENT_ALLOWED",
+          "observed": "ACCEPT_CURRENT_ALLOWED",
+          "complete": true,
+          "callback_count": 350,
+          "budget": 1000000,
+          "membership_exact": true,
+          "ack_class": "ACKED",
+          "structure_ok": true,
+          "actual_state_sha256": "dc54c7b848beb1c234468960f48033b291449359ff621c333eec0aadf30c321c",
+          "weak_projection": [
+            true,
+            [
+              [
+                "ok"
+              ]
+            ],
+            []
+          ]
+        },
+        "strong_baseline": {
+          "expected": "ACCEPT_CURRENT_ALLOWED",
+          "observed": "ACCEPT_CURRENT_ALLOWED",
+          "complete": true,
+          "callback_count": 350,
+          "budget": 1000000,
+          "membership_exact": true,
+          "ack_class": "ACKED",
+          "structure_ok": true,
+          "actual_state_sha256": "dc54c7b848beb1c234468960f48033b291449359ff621c333eec0aadf30c321c",
+          "weak_projection": [
+            true,
+            [
+              [
+                "ok"
+              ]
+            ],
+            []
+          ]
+        },
+        "weak_structure": {
+          "expected": "STRUCTURE_OK",
+          "observed": "STRUCTURE_OK",
+          "complete": true,
+          "callback_count": 279,
+          "budget": 1000000,
+          "membership_exact": null,
+          "ack_class": "ACKED",
+          "structure_ok": true,
+          "actual_state_sha256": null,
+          "weak_projection": [
+            true,
+            [
+              [
+                "ok"
+              ]
+            ],
+            []
+          ]
+        },
+        "identity_ablation": {
+          "expected": "ACCEPT_ABLATED",
+          "observed": "ACCEPT_ABLATED",
+          "complete": true,
+          "callback_count": 350,
+          "budget": 1000000,
+          "membership_exact": true,
+          "ack_class": "ACKED",
+          "structure_ok": true,
+          "actual_state_sha256": "dc54c7b848beb1c234468960f48033b291449359ff621c333eec0aadf30c321c",
+          "weak_projection": [
+            true,
+            [
+              [
+                "ok"
+              ]
+            ],
+            []
+          ]
+        }
+      },
+      "adjudication_exact_membership_C": true,
+      "worker_source_id": "2025-06-12 13:14:41 f0ca7bba1c5e232e5d279fad6338121ab55af0c8c68c84cdfb18ba5114dcaapl",
+      "original_files_verified": 1,
+      "passed_independent_checks": true
+    },
+    {
+      "spec": {
+        "run_id": "c02b16d3-1a9d-5e2e-b93e-3f818efb60ba",
+        "split": "calibration",
+        "workload": "W0",
+        "scenario": "PRECOMMIT_KILL",
+        "repetition": 0,
+        "order": 4,
+        "policy_rotation": 0
+      },
+      "errors": [],
+      "ack_class_C": "NOT_COMMITTED",
+      "allowed_state_count_C": 1,
+      "policies": {
+        "candidate": {
+          "expected": "ACCEPT_CURRENT_ALLOWED",
+          "observed": "ACCEPT_CURRENT_ALLOWED",
+          "complete": true,
+          "callback_count": 330,
+          "budget": 1000000,
+          "membership_exact": true,
+          "ack_class": "NOT_COMMITTED",
+          "structure_ok": true,
+          "actual_state_sha256": "303c5209bc78d75865ae100d0cdfd4020b987b697fb72634af3aef1acfde25e9",
+          "weak_projection": [
+            true,
+            [
+              [
+                "ok"
+              ]
+            ],
+            []
+          ]
+        },
+        "strong_baseline": {
+          "expected": "ACCEPT_CURRENT_ALLOWED",
+          "observed": "ACCEPT_CURRENT_ALLOWED",
+          "complete": true,
+          "callback_count": 330,
+          "budget": 1000000,
+          "membership_exact": true,
+          "ack_class": "NOT_COMMITTED",
+          "structure_ok": true,
+          "actual_state_sha256": "303c5209bc78d75865ae100d0cdfd4020b987b697fb72634af3aef1acfde25e9",
+          "weak_projection": [
+            true,
+            [
+              [
+                "ok"
+              ]
+            ],
+            []
+          ]
+        },
+        "weak_structure": {
+          "expected": "STRUCTURE_OK",
+          "observed": "STRUCTURE_OK",
+          "complete": true,
+          "callback_count": 264,
+          "budget": 1000000,
+          "membership_exact": null,
+          "ack_class": "NOT_COMMITTED",
+          "structure_ok": true,
+          "actual_state_sha256": null,
+          "weak_projection": [
+            true,
+            [
+              [
+                "ok"
+              ]
+            ],
+            []
+          ]
+        },
+        "identity_ablation": {
+          "expected": "ACCEPT_ABLATED",
+          "observed": "ACCEPT_ABLATED",
+          "complete": true,
+          "callback_count": 330,
+          "budget": 1000000,
+          "membership_exact": true,
+          "ack_class": "NOT_COMMITTED",
+          "structure_ok": true,
+          "actual_state_sha256": "303c5209bc78d75865ae100d0cdfd4020b987b697fb72634af3aef1acfde25e9",
+          "weak_projection": [
+            true,
+            [
+              [
+                "ok"
+              ]
+            ],
+            []
+          ]
+        }
+      },
+      "adjudication_exact_membership_C": true,
+      "worker_source_id": "2025-06-12 13:14:41 f0ca7bba1c5e232e5d279fad6338121ab55af0c8c68c84cdfb18ba5114dcaapl",
+      "original_files_verified": 2,
+      "passed_independent_checks": true
+    },
+    {
+      "spec": {
+        "run_id": "c7b43c11-c37f-53ef-a578-2bc701687fd1",
+        "split": "calibration",
+        "workload": "W0",
+        "scenario": "STALE_BACKUP",
+        "repetition": 0,
+        "order": 5,
+        "policy_rotation": 1
+      },
+      "errors": [],
+      "ack_class_C": "ACKED",
+      "allowed_state_count_C": 1,
+      "policies": {
+        "candidate": {
+          "expected": "REJECT_HISTORY",
+          "observed": "REJECT_HISTORY",
+          "complete": true,
+          "callback_count": 310,
+          "budget": 1000000,
+          "membership_exact": false,
+          "ack_class": "ACKED",
+          "structure_ok": true,
+          "actual_state_sha256": "fa13829e7e443442480d9e56b2fcf04ab660691ead00118df537d1f7ce4b4bca",
+          "weak_projection": [
+            true,
+            [
+              [
+                "ok"
+              ]
+            ],
+            []
+          ]
+        },
+        "strong_baseline": {
+          "expected": "REJECT_HISTORY",
+          "observed": "REJECT_HISTORY",
+          "complete": true,
+          "callback_count": 310,
+          "budget": 1000000,
+          "membership_exact": false,
+          "ack_class": "ACKED",
+          "structure_ok": true,
+          "actual_state_sha256": "fa13829e7e443442480d9e56b2fcf04ab660691ead00118df537d1f7ce4b4bca",
+          "weak_projection": [
+            true,
+            [
+              [
+                "ok"
+              ]
+            ],
+            []
+          ]
+        },
+        "weak_structure": {
+          "expected": "STRUCTURE_OK",
+          "observed": "STRUCTURE_OK",
+          "complete": true,
+          "callback_count": 249,
+          "budget": 1000000,
+          "membership_exact": null,
+          "ack_class": "ACKED",
+          "structure_ok": true,
+          "actual_state_sha256": null,
+          "weak_projection": [
+            true,
+            [
+              [
+                "ok"
+              ]
+            ],
+            []
+          ]
+        },
+        "identity_ablation": {
+          "expected": "ACCEPT_ABLATED",
+          "observed": "ACCEPT_ABLATED",
+          "complete": true,
+          "callback_count": 310,
+          "budget": 1000000,
+          "membership_exact": false,
+          "ack_class": "ACKED",
+          "structure_ok": true,
+          "actual_state_sha256": "fa13829e7e443442480d9e56b2fcf04ab660691ead00118df537d1f7ce4b4bca",
+          "weak_projection": [
+            true,
+            [
+              [
+                "ok"
+              ]
+            ],
+            []
+          ]
+        }
+      },
+      "adjudication_exact_membership_C": false,
+      "worker_source_id": "2025-06-12 13:14:41 f0ca7bba1c5e232e5d279fad6338121ab55af0c8c68c84cdfb18ba5114dcaapl",
+      "original_files_verified": 1,
+      "passed_independent_checks": true
+    },
+    {
+      "spec": {
+        "run_id": "d53faf66-538a-590d-8be1-5a1486bd97af",
+        "split": "calibration",
+        "workload": "W0",
+        "scenario": "BUDGET_ZERO",
+        "repetition": 0,
+        "order": 6,
+        "policy_rotation": 2
+      },
+      "errors": [],
+      "ack_class_C": "ACKED",
+      "allowed_state_count_C": 1,
+      "policies": {
+        "candidate": {
+          "expected": "UNRESOLVED_BUDGET",
+          "observed": "UNRESOLVED_BUDGET",
+          "complete": false,
+          "callback_count": 0,
+          "budget": 0,
+          "membership_exact": null,
+          "ack_class": "ACKED",
+          "structure_ok": null,
+          "actual_state_sha256": null,
+          "weak_projection": [
+            false,
+            null,
+            null
+          ]
+        },
+        "strong_baseline": {
+          "expected": "UNRESOLVED_BUDGET",
+          "observed": "UNRESOLVED_BUDGET",
+          "complete": false,
+          "callback_count": 0,
+          "budget": 0,
+          "membership_exact": null,
+          "ack_class": "ACKED",
+          "structure_ok": null,
+          "actual_state_sha256": null,
+          "weak_projection": [
+            false,
+            null,
+            null
+          ]
+        },
+        "weak_structure": {
+          "expected": "UNRESOLVED_BUDGET",
+          "observed": "UNRESOLVED_BUDGET",
+          "complete": false,
+          "callback_count": 0,
+          "budget": 0,
+          "membership_exact": null,
+          "ack_class": "ACKED",
+          "structure_ok": null,
+          "actual_state_sha256": null,
+          "weak_projection": [
+            false,
+            null,
+            null
+          ]
+        },
+        "identity_ablation": {
+          "expected": "UNRESOLVED_BUDGET",
+          "observed": "UNRESOLVED_BUDGET",
+          "complete": false,
+          "callback_count": 0,
+          "budget": 0,
+          "membership_exact": null,
+          "ack_class": "ACKED",
+          "structure_ok": null,
+          "actual_state_sha256": null,
+          "weak_projection": [
+            false,
+            null,
+            null
+          ]
+        }
+      },
+      "adjudication_exact_membership_C": true,
+      "worker_source_id": "2025-06-12 13:14:41 f0ca7bba1c5e232e5d279fad6338121ab55af0c8c68c84cdfb18ba5114dcaapl",
+      "original_files_verified": 1,
+      "passed_independent_checks": true
+    }
+  ],
+  "boundary": "Exact permitted-state equality rebuilt from raw sent requests/received ACKs; no B import or verdict generator. Clone-before-open identity is historical producer record, compared to directly rehashed immutable source; post-run files directly rehashed."
+}
