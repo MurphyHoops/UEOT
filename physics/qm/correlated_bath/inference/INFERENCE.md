@@ -1,0 +1,113 @@
+# Separating Gaussian fluctuations from a signed bath response
+
+**Observed result, 18 November 2026.** Two physically distinct sources have identical free Ramsey data at every duration and measurably different predictions on a stopped Bell experiment. A sign-reversed causal break identifies the remaining parameter throughout the declared domain. The 720,000-shot synthetic calibration gives a nonempty 99% confidence set. On 408,000 independent synthetic holdout shots, both complete Bell timings and the separately timed phase test were compatible with the frozen predictions. The deliberately changed readout was rejected. The calibrated standard persistent quantum process has identical predictive and statistical performance. Matched hardware evidence is absent. [Machine-readable estimates](joint_domain.json) · [observed holdout](holdout_results.json) · [independent verification](verification.json)
+
+## Experiment and permissions
+
+Use ℏ = 1, H = Σωₖaₖ†aₖ + λZ Σgₖ(aₖ + aₖ†), with ω = (1, 3/2), g = (1, 3/5), and H_S = 0. At each trial's preparation origin the two-mode centered Gaussian has zero anomalous moment and number covariance N with diagonal n and off-diagonal c real. Its symmetric/antisymmetric modes are thermal with occupations n+c and n−c. Positivity requires |c| ≤ n. Free rotation still uses the original, unequal ω. Each fresh bath starts in product with SR. Within a trial the bath persists. The domain is 1/5 ≤ λ ≤ 2/5, 0 ≤ n ≤ 3/5, |c| ≤ n and 0.9 ≤ η ≤ 1. The readout returns the true stop prefix and an attenuated binary Pauli sign. Absolute laboratory time is replaced in simulation by an exact shot-relative clock.
+
+Calibration permits free +X Ramsey at lengths 0, 3/4 and 3/2, and Z-eigenstate preparation s = ±1, interaction a = 2/3, trace-and-reprepare S in +X while retaining E, interaction b = 3/4, and terminal X or Y. The latter protocol allows a shared preparation-to-readout phase offset δ. Holdout adds a = 1, b = 3/4 with terminal Y. The full deployment starts with a normalized Bell SR, acts on S and E, observes a fail/pass instrument after each slot, and stops on first failure or after the third slot. Fail and pass operators are diagonal with squared elements (1/8,1/4) and (7/8,3/4); successive post-pass rotations are Ry(π/2), Rx(π/3), I. The four terminal Pauli products are XX, XY, YZ and ZZ, S first. The swapped experiment exchanges only the first two durations (2/3,3/4,1/2). The conventional model uses all the same preparations, interventions, clocks, data and terminal testers. [Historical permissions](https://github.com/MurphyHoops/UEOT/blob/44b6cd200cd01eccf15d4dc817311388d317a1af/physics/qm/persistent_bath/SHARED_MODEL.json) · [frozen protocol](protocol.json)
+
+## Free Ramsey identifies an equivalence class
+
+Write dₖ(t)=(gₖ/ωₖ)(1−exp(iωₖt)), w=λ², u=w(2n+1), v=wc. For our displacement convention, D(x)D(y)=exp(i Im Σxₖ yₖ*) D(x+y), and the centered Gaussian characteristic function is
+
+    χ(z) = exp[−(n+1/2) Σ|zₖ|² − 2c Re(z₁* z₂)].
+
+This follows by changing to (z₁±z₂)/√2, using the thermal Weyl characteristic exp[−(N+1/2)|z|²] in each independent normal mode, and expanding the squares. A free coherence compares opposite histories, with displacement difference 2λd and cancelling scalar phases. Thus
+
+    m(t) = η exp[−A(t)u−B(t)v],
+    A(t) = 2 Σ|dₖ(t)|²,       B(t) = 8 Re(d₁(t)* d₂(t)).
+
+At t=0, m=η. At t=3/4 and 3/2 the two rows M=(A,B) have determinant in [−1.162022859636,−1.162022859635]. Hence these noiseless three settings identify (η,u,v). One nonzero length supplies only one linear constraint after taking logs. Adding any free lengths, even noiselessly, cannot separate parameters with the same u,v.
+
+Take P₁=(3/10,1/2,1/4) and P₂=(1/3,31/100,81/400), ordered as (λ,n,c). Both give exactly u=9/50, v=9/400. More generally, for a given feasible u,v, choose any w in
+
+    [max(1/25, u/(11/5)), min(4/25, u−2|v|)].
+
+Then λ=√w, n=(u/w−1)/2, c=v/w. These are all possibilities, by direct substitution of the physical inequalities. The example's interval is [9/110,27/200]. For η=.96 even the *joint* ppp,YZ-minus event changes between P₁ and P₂. On the original timing the difference lies in [0.001730089430,0.001730089431]; on the swapped timing it lies in [0.001581344540,0.001581344541]. The whole-fiber conservative prediction intervals for the same event are [0.246543805271,0.283531449456] and [0.245571825278,0.285653645403], respectively. The verify script evaluates an interval in w at fixed u,v. These are outer intervals and the two-point discrepancies are lower bounds on the diameter. [Verified event enclosures](verification.json)
+
+## Causal break and signed phase
+
+In the interaction picture at the preparation clock, let x=d(a) and yₖ=exp(iωₖa)dₖ(b). After the common eigenstate history the bath is displaced by sλx. The second segment compares + and − histories. Conjugating D(2λy) by the first displacement, D(−sλx)D(2λy)D(sλx), gives the phase 4s w Im Σyₖxₖ*. Consequently, for standard Y = [[0,−i],[i,0]], define zₛ = ⟨X⟩ₛ − i⟨Y⟩ₛ. At the ideal shared visibility,
+
+    zₛ = R exp[i(δ+s wF)],
+    R = η exp[−2u Σ|yₖ|² − 8v Re(y₁* y₂)],
+    F = 4 Σ(gₖ/ωₖ)² [sin(ωₖa)+sin(ωₖb)−sin(ωₖ(a+b))].
+
+The rotation in y matters when c ≠ 0. Omitting it changes R and changes some deployment probabilities. A full bath reset before b gives equal z for both s and removes this signed response. The derivation traces over the original Gaussian bath and makes no Gaussian assumption about a general post-instrument conditional bath.
+
+Here F ∈ [1.819240198557,1.819240198558]. Since 2wF ∈ (0,π), globally w=Arg(z₊ conj(z₋))/(2F), with principal Arg. The common offset cancels even modulo 2π. The frozen practical offset bound is |δ| ≤ .02; both individual angles then lie in the right half-plane. With R>0 one obtains δ by the half-sum of their principal angles. The positive λ branch and the free-Ramsey inverse above finish the reconstruction, including n=0 and |c|=n. The sign of λ would remain free on a domain allowing both coupling signs. At a known phase origin and known amplitude, an aligned single-Y measurement on this monotone sine branch can determine w. Signed X/Y pairs additionally eliminate the unknown common phase without requiring a premeasured amplitude. The physical additions are eigenstate control, an S-only bath-preserving reset, a phase-locked start and calibrated quadratures.
+
+Independent sign-dependent offsets would instead allow δₛ′=δₛ+sF(w−w′), hiding any admissible change in w at fixed u,v. Changing the bath during repreparation can also supply its own sign-dependent phase. Unknown relative X/Y gain distorts atan2; our operational envelope bounds its effect. A fresh, random uncontrolled cross-mode preparation phase changes the characteristic-function prediction. The theorem applies to the clock-referenced centered Gaussian family above.
+
+### Stability on the whole physical domain
+
+Let ε be the sup-norm difference of the seven *ideal expectation values* of two feasible sources. For any displacement direction here |B| ≤ 2A. Since w(1+4n) ≤ .544, all Ramsey means and the break magnitude have the lower floor .9 exp(−.544 A). The floors exceed .411787795865 at the short Ramsey and break, and .067589590578 at the long Ramsey. Write m₀=η and m₁,m₂ for the short/long means. If (h₁,h₂) = (A,B) M⁻¹ then
+
+    Au+Bv = (h₁+h₂) log m₀ − h₁ log m₁ − h₂ log m₂.
+
+The mean value bound for log gives Lipschitz coefficient |h₁+h₂|/.9 + |h₁|/floor₁ + |h₂|/floor₂. Use (A,B)=(1,0),(0,1) for u,v. For a break quadrature vector the Euclidean change is at most √2 ε. Two vectors of lengths at least Rmin, with smaller angular separation θ, have separation at least 2 Rmin sin(θ/2) ≥ 2 Rmin θ/π. Applying this to both signs and using the half-angle inverse yields |Δw| ≤ π√2 ε/(2 Rmin F). On our offset domain there is no wrap in either angle difference. For an arbitrary common offset modulo 2π the circle triangle inequality for the two signed phases gives the same bound because the possible 2Fw differences are shorter than π.
+
+Using w≥.04, u/w≤2.2 and |v|/w≤.6 gives |Δλ|≤|Δw|/.4, |Δn|≤(|Δu|+2.2|Δw|)/.08 and |Δc|≤(|Δv|+.6|Δw|)/.04. Uniform absolute coefficients, rounded **up**, are 51.241 for u, 31.422 for v, 2.966 for w, 7.414 for λ, 722.048 for n and 830.028 for c. η uses coefficient 1. For the shared δ, half-summing the two angles gives coefficient π√2/(2 Rmin) on its declared branch. Intersecting any estimate with the physical range caps its diameter. These large coefficients explain using the actual joint data below. [Interval constants](verification.json)
+
+## Frozen sampling, coverage and power
+
+The two schedules were fixed in advance. Calibration uses 40,000 zero-time shots, 150,000 each at the two nonzero Ramsey lengths, 30,000 per sign for X and 160,000 per sign for Y. Held-out Y at a=1,b=3/4 uses 60,000 per sign. Each of the three held-out Bell families uses four testers × 24,000 independent shots, including all stops and both signs. Short Ramsey durations were retained to stay in the existing calibration window. More shots went to the weak signed event. Full deployment was designed to test substantial readout violations and jointly predict all cells. Its 24,000 shots/tester cannot resolve a 0.0017 event gap at the stated simultaneous precision.
+
+The frozen bytes bind both seeds, truth, producer, estimator, classifier and B's exact-Weyl source snapshot. One producer invocation generated calibration only. The estimator accessed the calibration archive and public model, chose a physical constrained least-squares point, checked its seven residuals by interval evaluation, and wrote the prediction file. A separate producer invocation then generated the disjoint holdout and recorded the prediction hash. The estimator never consumes the truth, generated CDFs or holdout. The source identity and prediction bindings are local reproducibility records. [Pre-sampling freeze](freeze.json) · [calibration receipt](calibration_receipt.json) · [pre-holdout predictions](predictions.json) · [holdout receipt](holdout_receipt.json)
+
+For N independent binary draws Hoeffding bounds the two-sided frequency error by r(N,k,α)=√[log(2k/α)/(2N)] simultaneously over k coordinates by a union bound; equality of the per-shot means is unnecessary if their average is the target. Within a setting we assume independent trials conditional on the fixed schedule. This is a repeated-sampling guarantee for the statistical model. The actual published PCG64 seeds produce one deterministic synthetic realization. [Hoeffding, 1963](https://doi.org/10.1080/01621459.1963.10500830)
+
+* At calibration k=7, α=.01. Give each sample mean a band of radius 2r+.001+2·2⁻⁴⁰. The .001 is a bound on ideal-to-actual systematic shift of an expectation. The discrete generator rounds cumulative probabilities to nearest units of 2⁻⁴⁰, costing at most one unit per cell. A separate 48-digit interval implementation verified all 93 used cuts within half a unit. The actual break offset is .012 rad and the Y-only gain is .9998. Clock, bath-preserving reset, state preparation and all other simulated controls are exact by construction. In an apparatus the same .001 would have to cover preparation and control trace errors (a trace-distance t can shift a Pauli mean by 2t), differential phase, relative gain, offsets and drift. No independent device bounds have been measured.
+* The joint confidence set intersects the seven ideal mean bands with the physical domain and common offset rule. The nominal point has been verified to lie in it. The code aborts on failure to obtain a witness. An empty set cannot certify anything. We propagate the positive Ramsey means in log coordinates and the signed angles through interval arithmetic. For each history pair we use its exact fluctuation direction (A,B) in the log formula above, and its own phase times the w interval. This preserves correlations lost in independent u and v intervals.
+* For the complete Bell prediction, form each history’s S-only operator Kₕ from the corresponding projections and recorded instrument actions. For its unit-coupling final displacement βₕ and scalar action phase pₕ, put Δ = diag(exp(iωT))(βₕ−βⱼ), with T the actual stopped prefix length. The history-pair multiplier is exp[−u ||Δ||²/2 − 2v Re(Δ₁*Δ₂) + iw(pₕ−pⱼ+Im⟨βⱼ,βₕ⟩)]. Contract Kₕ ρ Kⱼ† separately on all four records, preserving R. Each joint event is (tr σᵣ ± η tr Oσᵣ)/2. The independent interval predictor computes Bell effects by this expression. B's standard joint Gaussian process supplies the generator through its documented event API. The sign conventions and first-to-second mode clock rotation agree. [B's public interface](../dynamics/DYNAMICS.md) · [frozen source copy](source_snapshot.py) · [interval predictor](interval_model.py)
+* At holdout k=100 (96 Bell cells plus two signs × two phase records), α=.01. Add .0005 systematic probability error and 2⁻⁴⁰ grid allowance to the prediction. Compare simultaneous frequency bands with these outward prediction intervals. Reject a family if any cell is disjoint. An overlap is a non-rejection; it does not imply a common best-fit model for all observations. Under every in-contract source the probability of any false primary rejection is ≤.02 over calibration and holdout. No refitting or exclusion of early failures occurs.
+* A supplementary paired Y test on the two named alternatives was frozen before sampling. Score success if the recorded sign equals −s. Equal sign allocation gives p=(1+η exp(−Au−Bv) sin(wF) cos δ)/2 before bias. For P₁ bound above over η≤1, |δ|≤.02, and for P₂ bound below over η≥.9, |δ|≤.02. Pay .0005+2⁻⁴⁰ at each endpoint. With gap g>0 use the midpoint threshold, equality unresolved; either one-sided error is ≤exp(−N g²/2). The actual analytic-ideal ordinary single-Y probability difference for η=.96,δ=0 at the calibration timing is about .013328. For the pair with adversarial allowed nuisance the guaranteed pooled probability gaps are smaller. At a=2/3, N=320,000, g>.00548898 and each error <.008062. At the independent a=1, N=120,000, g>.00939226 and each error <.005028. Calibration sign alignment scored 177,967/320,000. Holdout scored **71,816/120,000 = .5984667**, below the frozen .605581355419 threshold and selecting P₁. A reset or zero signed response with common offset has p=.5 up to the bounded bias and was rejected separately at 1%. These additional tests have their own reported error rates; the primary .02 familywise statement covers the frozen cell classifications. [Power before sampling](freeze.json) · [classified results](holdout_results.json)
+
+## Nominal estimate and simultaneous domains
+
+| Quantity | Nominal (display) | 99% simultaneous outer endpoints, rounded outward |
+|---|---:|---:|
+| u | .193599350509 | [.149700906576, .218613103395] |
+| v | .014718563071 | [−.008629740897, .042360239409] |
+| w | .087999704777 | [.077417775085, .099369592453] |
+| η | .961086164050 | [.941418148384, .981481851616] |
+| λ | .296647441885 | [.278240498645, .315229428276] |
+| n | .600000000000 | [.301290292700, .600000000001] |
+| c | .167256959650 | [−.086844885683, .547164257325] |
+| δ (rad) | .012412362839 | [−.007598327816, .020000000001] |
+
+For rigorous calculations the nominal λ,n,c,η,δ are exact decimal rationals and u,v,w are computed from them as exact fractions. Displayed outer endpoints can extend by one last decimal beyond the physical domain. The fit reaches n=.6. In particular these data do not determine the sign of c with 99% confidence. As a jointly implied representation for integrations, the supplied 4-D polytope uses (u,v,w,log η). Physicality gives w≤u≤2.2w and 2|v|≤u−w. Each positive Ramsey or break magnitude gives a slab for log η−Au−Bv. Both break magnitudes follow by interval-norming the separate X/Y bands. Each rounded coefficient radius is paid using global |u|≤.352, |v|≤.096. Intersect these inequalities and the angular w interval. Every vertex of this bounded polytope has four independent active facets. Rational elimination and feasibility filtering give 24 vertices. Linear extrema occur at vertices; extrema of v/w and u/w also do since w>0 makes each such ratio a weighted average of vertex ratios. This secondary geometry uses calibration only, implies the same coverage and did not change the frozen holdout predictions. [Exact nominal and original bands](calibration_fit.json) · [exact facets and vertices](joint_domain.json) · [projection verifier](confidence_geometry.py)
+
+## Full deployment, costs and decision
+
+| Family | f | pf | ppf | ppp | Primary result |
+|---|---:|---:|---:|---:|---|
+| Original | 18,056 | 14,740 | 12,082 | 51,122 | 0 disjoint cells of 32 |
+| Swapped | 17,727 | 14,749 | 12,243 | 51,281 | 0 of 32 |
+| Changed detector | 17,852 | 14,681 | 12,099 | 51,368 | 4 of 32, rejected |
+| Independent break | — | — | — | — | 0 of 4 |
+
+The negative control sets η=.65 only in the changed-detector Bell family. For the first failure, ZZ is perfectly correlated prior to detector noise and the record has probability 3/16, hence P(f,ZZ−)=(3/32)(1−η). The null η≥.9 and the violation .65 have a probability gap ≥.022437499998 after systematic and generation allowances on both sides. With 24,000 independent shots and the simultaneous data radius, this one cell has rejection power ≥.956227823759 for the violation with a valid calibration envelope (and the stated detector/record assumptions). The observed count was 796/24,000; its simultaneous band [.018802730669,.047530602665] is disjoint from the calibration prediction [.001236076410,.005992048590]. Fail and pass outcomes, both signs and all testers remain in the archive. [All 100 bands and decisions](holdout_results.json)
+
+The parent integration independently used interval Choi sensitivity, a convex enclosure from this calibration, and nominal physicalization. Its complete output bounds are **.033892297103** (original) and **.035357047207** (swapped). Its bounds after one fixed terminal tester, including the shared visibility and .0005 per cell, are **.046090140885** and **.047554890989**. These are deterministic error bounds conditional on the calibrated model/coverage event for the fixed policies, all permitted inputs and finite untouched references. The finite holdout itself sampled Bell inputs. The root receipt identifies the separate calculation and its input hashes. [Root certificate](../certificate/joint-result.json)
+
+All 1,128,000 starts, fresh bath preparations, end-of-trial resets and terminal measurements count. There were 500,000 eigenstate preparations and S-only causal repreparations; 288,000 Bell preparations; 2,012,560 nonzero source intervals; 234,365 Ry and 190,195 Rx post-pass operations. Realized integrated source time was 9,301,091/6 in inverse-frequency units. The 340,000 free Ramsey preparations include the 40,000 zero-time detector calibration shots. The 500,000 break shots require a referenced phase per trial. The simulator supplies that reference; its hardware commissioning and stabilization costs are unknown. There were zero separate hardware reference-calibration runs and zero device calls. The original two raw archives occupy 106,552 and 147,518 bytes. Producer wall time was .177 s and .123 s in the recorded runs. Generation and audit costs can be read from their receipts.
+
+The strong baseline uses standard persistent joint quantum evolution, the same clock-referenced initial Gaussian source, and the same confidence construction. Cyclicity of the bath trace and the Weyl multiplication identity give exactly the displayed pair multiplier. Consequently both descriptions give the same probabilities for *every* permitted event and have identical decision rules, data needs, allowed actions and shot costs. At the actual nominal point B's float baseline agrees with all 64 original/swapped interval-midpoint values to 4.82×10⁻¹³, including 12-decimal serialization. This is a numerical cross-check of the structural equality. **EQUIVALENT_NO_ADDED_GAIN** for this comparison. **NOT_CERTIFIED** for a physical device. [Observed verification and cost ledger](verification.json)
+
+## Reproduction and raw records
+
+In this directory, using the supplied Python, the following commands verify the retained evidence. The fit, predictions and scores are deterministic. The verifier additionally reconstructs every actual recorded byte from a separate seed/schedule replay and audits the generator's integer CDF thresholds against independent directed interval evaluations.
+
+    PY=/Users/murphyhoops/Documents/ueot-physics-closure-20261111/.physics-venv/bin/python
+    "$PY" -B estimate.py
+    "$PY" -B score.py
+    "$PY" -B confidence_geometry.py
+    "$PY" -B verify.py
+    "$PY" -B review_selection.py
+
+For an independent generation replay, use a new subdirectory of inference, copy the frozen Python inputs and protocol/truth/freeze JSON files into it, then run generate.py calibration, estimate.py, generate.py holdout, score.py, confidence_geometry.py, verify.py there with the same interpreter and -B. Generation uses PCG64 with two independent root SeedSequences and child streams for schedule and draws. NumPy 2.5.4, SciPy 1.18.1 and mpmath 1.3.0 were used. Read-only historical helpers are obtained by git show from commit 44b6cd200cd01eccf15d4dc817311388d317a1af. The original generator was frozen at 13:44:18 UTC. The later confidence geometry, audits and C→A review are downstream analyses. [Freeze](freeze.json) · [producer](generate.py) · [estimator](estimate.py) · [classifier](score.py) · [review](REVIEW.md)
+
+Each archive contains block_setting and ordered_codes, in chronological row-major order, 1,000 shots per row. Resolve setting IDs in the insertion order of settings(phase) in shared.py/protocol.json. The synthetic logical time is (phase, block ordinal, in-block ordinal); each shot's preparation is its zero clock. The setting fixes initial state, pulse, timing, reference and tester. Ramsey and break bytes 0/1 mean minus/plus. The Bell byte 2r+j encodes r indexing f,pf,ppf,ppp and j indexing minus,plus. The prefix gives the actual interactions and rotations reached. Each shot is followed by a fresh preparation/reset. Trace-preserving ideal execution has zero leakage, discard loss, missed reset and imposed drift; these are model-defined fields and no sensor telemetry is claimed. Calibration and holdout are separate batches with randomly shuffled setting blocks. No wall-clock shot timestamps were fabricated. [Ordered calibration bytes](calibration.npz) · [ordered holdout bytes](holdout.npz) · [decoder and settings](shared.py)
