@@ -1,0 +1,9 @@
+{
+  "scope": "retrospective test of published compressed observables; no catalogue-level blindness",
+  "scientific_baseline": "67aa5c4d9a7e77da3f2a74dfb717a711f885cca9",
+  "candidate": {"flat":true, "Omega_m0":0.30, "Omega_Lambda0":0.70, "h_for_sigma8_convention":0.676, "linear_mode":"adiabatic growing conserved clustering dust in GR; smooth Lambda, scale-independent growth"},
+  "WiggleZ": {"source":"https://arxiv.org/pdf/1401.0358","locator":"post-reconstruction middle bin; abstract and sections 4.3-4.5", "z":0.60, "sample_z":[0.4,0.8], "DV_times_rd_fid_over_rd_Mpc":2221, "error_Mpc":101, "rd_fid_Mpc":148.6},
+  "6dFGS": {"source":"https://arxiv.org/pdf/1204.4725","locator":"Table 1 and section 6.1, Scoccimarro fit", "z":0.067, "fsigma8":0.423, "error":0.055, "fid_Omega_m0":0.27},
+  "target": {"survey":"eBOSS DR16 QSO consensus, Hou et al. equations 49-52", "z":1.48,"ordered_observables":["DM/rd","DH/rd","fsigma8"],"sample_z":[0.8,2.2]},
+  "rule": {"alpha":0.05,"primary":"single joint Gaussian compression test Q=r^T[3(C_QSO+B_BAO+B_RSD)]^-1 r, reject if Q exceeds chi2(3) 95th percentile; unknown correlations among three survey errors allowed","sector_diagnostics":"background and growth tests at alpha/2 each, reported separately from primary","independence_diagnostic":"also compute full joint chi2 under zero cross-survey covariance; never select the smaller p value for the primary verdict","positive_control":"inject a ten-worst-case-sigma shift in the growth component of noiseless predictions; must reject"}
+}

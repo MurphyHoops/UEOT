@@ -1,0 +1,22 @@
+{
+  "baseline_commit": "67aa5c4d9a7e77da3f2a74dfb717a711f885cca9",
+  "source": "physics/qm/correlated_bath/field/probe.py",
+  "field": "massive unit KG, static circle, unchanged compact four-box satellite profile, vacuum above shell one",
+  "preparation": "zero mean, no anomalous moments, 0<=n<=3/5 and |c|<=n in the two low modes; locked preparation clock",
+  "coupling_domain": ["1/5", "2/5"],
+  "point": {"lambda":"3/10", "n":"1/2", "c":"1/4"},
+  "experiments": [
+    {"id":"chapter71_local", "a":"2/3", "b":"3/4", "gap":"0", "antipodal":false},
+    {"id":"chapter71_antipodal", "a":"1/5", "b":"1/5", "gap":"0", "antipodal":true},
+    {"id":"strict_timelike", "a":"1/5", "b":"1/5", "gap":"5/2", "antipodal":false},
+    {"id":"strict_spacelike", "a":"1/5", "b":"1/5", "gap":"1/10", "antipodal":true}
+  ],
+  "scale_matching": {
+    "exact_low_shells":[0,1], "last_matched_shell":160, "independent_replay_shell":320,
+    "phase_polynomial_degree":3, "certified_delay_half_window":"1/20", "unfitted_offsets":["-1/20","1/50","1/20"],
+    "phase_target_rad":"1/10000", "binary_event_target":"1/10000", "extrapolation_offset":"4",
+    "frequency_window":"|nu|<=1", "retarded_expansion_highest_power":4
+  },
+  "independent_position_space_order":18,
+  "observations":"X and Y of B for either sign of A, p(+Y)=(1-Im(z_s))/2. Noise Q and phase Phi also reported separately."
+}
