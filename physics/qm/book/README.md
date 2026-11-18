@@ -1,4 +1,19 @@
-# 《UEOT物理学》 / UEOT Physics
+# 《UEOT物理学》 / UEOT Physics — 3.11
+
+当前连续双语阅读版为第0–70章、六个附录、203项稳定结果。第70章新增九项结果，原194项结果对象和117项账本主张保留历史身份。发布状态与实际PR/main回执以[CURRENT](../status/CURRENT.json)为准。
+
+- 中文：[完整Markdown](UEOT_PHYSICS.md)、[PDF](UEOT_PHYSICS.pdf)、[TeX](UEOT_PHYSICS.tex)。
+- English: [complete Markdown](UEOT_PHYSICS.en.md), [PDF](UEOT_PHYSICS.en.pdf), [TeX](UEOT_PHYSICS.en.tex).
+- [新章内核报告](../UEOT_QM_KERNEL_v31.14.md)、[证据目录](../kernel/evidence/v31.14/)、[可复现入口](../persistent_bath/README.md)。
+- [结果逐项映射](PHYSICS_RESULT_MAPPING.md)、[dossier](CHAPTER_DOSSIER.json)、[来源清单](SOURCE_MANIFEST.json)、[前提与长期物理责任](../audits/PERSISTENT_BATH_v31.14/PREMISES_AND_RESPONSIBILITIES.md)。
+
+同一持久双模真空源的完整CQ证书上界为0.036581185645，固定终端读出分布上界为0.040451414205。数学量词、实际区间计算、精确CP/TP修复、合成校准/留出及外部处理后observable分别登记。全球复量子选择仍开放；强标准过程基线等价而无额外增益；匹配器件仍未认证；第69/70章没有新增Lean证明。
+
+The new chapter connects one persistent source to complete instruments, controlled finite propagation, exact physical prediction, joint calibration and frozen holdout. Its numerical and statistical certificate is conditional on the declared physical inputs. Global complex-quantum selection, matched-device confirmation and an advantage over the strong standard process remain open. Historical result objects and execution identities are retained.
+
+## 历史版本说明（保留原执行身份）
+
+## 《UEOT物理学》 / UEOT Physics
 
 ## 3.10 同时动力学与校准后的完整预测 / Simultaneous dynamics and calibrated complete prediction
 

@@ -1,0 +1,221 @@
+{
+  "schema": "ueot-physics-a-operations-verification/1",
+  "time_utc": "2026-11-13T17:11:55.242892+00:00",
+  "contract_sha256": "685d373bb5a70a677fd4d110cb81c6624260de95ea39cc60070a8f4bd9f19668",
+  "scope": "Exact finite algebra plus floating verification; no new Lean run or device data",
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "sympy": "1.14.0"
+  },
+  "exact_frames": [
+    {
+      "dimension": 2,
+      "frame_count": 4,
+      "exact_duality": true,
+      "rank_one_effects": true,
+      "sum_dual_operator_norm_exact": "sqrt(3) + 3",
+      "sum_dual_trace_norm_exact": "2*sqrt(3) + 4",
+      "coarse_half_diamond_constant_exact": "5*sqrt(3) + 9",
+      "coarse_half_diamond_constant_float": 17.660254037844386
+    },
+    {
+      "dimension": 3,
+      "frame_count": 9,
+      "exact_duality": true,
+      "rank_one_effects": true,
+      "sum_dual_operator_norm_exact": "3*sqrt(5)/2 + 15/2",
+      "sum_dual_trace_norm_exact": "3*sqrt(5) + 12",
+      "coarse_half_diamond_constant_exact": "81*sqrt(5)/4 + 225/4",
+      "coarse_half_diamond_constant_float": 101.53037654437074
+    },
+    {
+      "dimension": 4,
+      "frame_count": 16,
+      "exact_duality": true,
+      "rank_one_effects": true,
+      "sum_dual_operator_norm_exact": "2*sqrt(7) + 14",
+      "sum_dual_trace_norm_exact": "4*sqrt(7) + 24",
+      "coarse_half_diamond_constant_exact": "52*sqrt(7) + 196",
+      "coarse_half_diamond_constant_float": 333.5790681753587
+    }
+  ],
+  "operations": [
+    {
+      "dimension": 2,
+      "reference_dimension": 2,
+      "reconstruction_trace_norm_residual": 4.1615784142352094e-16,
+      "executed_joint_output_trace_norm_difference": 1.2292621999422004,
+      "all_input_analytic_bound_evaluated": 18.063573256468583,
+      "completeness_residuals": {
+        "conditional": 2.3819485123245805e-16,
+        "parallel": 4.618421472653118e-16,
+        "coarse": 3.1202365173331174e-17,
+        "discard": 2.2551405187698492e-17,
+        "binary": 4.0287576074583685e-16
+      },
+      "labelled_quotient_residuals": {
+        "base": 3.177735482848143e-16,
+        "conditional": 2.6559059300883637e-16,
+        "parallel": 3.1473521329785765e-16,
+        "coarse": 3.8208510471413106e-16,
+        "discard": 2.6341035514234986e-16
+      }
+    },
+    {
+      "dimension": 3,
+      "reference_dimension": 3,
+      "reconstruction_trace_norm_residual": 7.033323668665952e-16,
+      "executed_joint_output_trace_norm_difference": 1.7944282134780734,
+      "all_input_analytic_bound_evaluated": 60.82766690200032,
+      "completeness_residuals": {
+        "conditional": 5.454513257592351e-16,
+        "parallel": 5.896061486914555e-16,
+        "coarse": 4.874120829558007e-16,
+        "discard": 4.557499789606014e-16,
+        "binary": 4.602615322535644e-16
+      },
+      "labelled_quotient_residuals": {
+        "base": 2.383481356282953e-16,
+        "conditional": 2.383481356282953e-16,
+        "parallel": 6.185897093947863e-16,
+        "coarse": 3.5294761659329677e-16,
+        "discard": 2.0527918646970169e-16
+      }
+    },
+    {
+      "dimension": 4,
+      "reference_dimension": 4,
+      "reconstruction_trace_norm_residual": 8.417952194436029e-16,
+      "executed_joint_output_trace_norm_difference": 1.9851687175226647,
+      "all_input_analytic_bound_evaluated": 147.54051964703197,
+      "completeness_residuals": {
+        "conditional": 7.461210160494238e-16,
+        "parallel": 9.477650002165456e-16,
+        "coarse": 5.101624343262792e-16,
+        "discard": 6.045490811546713e-16,
+        "binary": 9.898441588570557e-16
+      },
+      "labelled_quotient_residuals": {
+        "base": 3.400101448035721e-16,
+        "conditional": 3.323670779464366e-16,
+        "parallel": 9.822725135524545e-16,
+        "coarse": 5.71831302151182e-16,
+        "discard": 3.3947509840843234e-16
+      }
+    }
+  ],
+  "negative_controls": {
+    "incomplete_test_max_probability_gap": 0,
+    "incomplete_test_untested_trace_distance": 0.9999999999999998,
+    "spam_gauge_max_probability_gap": 4.440892098500626e-16,
+    "spam_gauge_same_coordinate_trace_distance": 0.9999999999999998,
+    "rare_acceptance_probability": 1e-06,
+    "rare_acceptance_full_trace_distance": 9.999999999999997e-07,
+    "rare_acceptance_conditional_trace_distance": 0.9999999999999998,
+    "ill_conditioned_frames": [
+      {
+        "epsilon": 1.0,
+        "smallest_singular_value": 0.4682131924621356,
+        "condition_number": 3.2255049266776936
+      },
+      {
+        "epsilon": 0.1,
+        "smallest_singular_value": 0.09912676798507365,
+        "condition_number": 15.634039565449696
+      },
+      {
+        "epsilon": 0.01,
+        "smallest_singular_value": 0.009999125017965741,
+        "condition_number": 155.15065936057104
+      },
+      {
+        "epsilon": 0.001,
+        "smallest_singular_value": 0.0009999991250001683,
+        "condition_number": 1551.3887151301014
+      }
+    ],
+    "leakage_probability": 0.0001,
+    "coherent_leakage_trace_distance": 0.01,
+    "same_single_slot_different_two_slot_trace_distance": 0.4999999999999999,
+    "real_joint_states_local_tests_equal_exact": true,
+    "real_joint_effect_probabilities_exact": [
+      1,
+      0
+    ],
+    "hidden_superselection_visible_composition_residual": 0.0,
+    "all_negative_controls_detected": true
+  },
+  "memory_witness": {
+    "protocol": "separately declared causal-break diagnostic; not the frozen f/p tree",
+    "reference": "not used; independent fixed preparations; no variable reference crosses cut; future controls do not read the history label",
+    "analytic_domain": "lambda in [1/5,2/5]",
+    "analytic_rank_proof": "0<theta<12*(2/5)^2*(1+(2/5)^2)<pi; visibility>0",
+    "rows": [
+      {
+        "lambda": 0.2,
+        "visibility": 0.9441297623658087,
+        "phase": 0.07276960794228493,
+        "response_matrix": [
+          [
+            0.46567833364661987,
+            0.5343216663533801
+          ],
+          [
+            0.5343216663533801,
+            0.46567833364661987
+          ]
+        ],
+        "smallest_singular_value": 0.06864333270676033,
+        "rank": 2,
+        "finite_K14_coherence_residual": 1.1102230246251565e-16,
+        "memory_dimension_lower_bound": 2
+      },
+      {
+        "lambda": 0.3,
+        "visibility": 0.878660895769922,
+        "phase": 0.16373161787014107,
+        "response_matrix": [
+          [
+            0.42838867842713524,
+            0.5716113215728648
+          ],
+          [
+            0.5716113215728648,
+            0.42838867842713524
+          ]
+        ],
+        "smallest_singular_value": 0.1432226431457295,
+        "rank": 2,
+        "finite_K14_coherence_residual": 2.7755575615628914e-17,
+        "memory_dimension_lower_bound": 2
+      },
+      {
+        "lambda": 0.4,
+        "visibility": 0.7945601017527617,
+        "phase": 0.2910784317691397,
+        "response_matrix": [
+          [
+            0.38598640214476204,
+            0.6140135978552379
+          ],
+          [
+            0.6140135978552379,
+            0.38598640214476204
+          ]
+        ],
+        "smallest_singular_value": 0.22802719571047592,
+        "rank": 2,
+        "finite_K14_coherence_residual": 3.342213888644167e-16,
+        "memory_dimension_lower_bound": 2
+      }
+    ]
+  },
+  "runtime_seconds": 0.4139769229986996,
+  "source_sha256": {
+    "finite_operations.py": "4908d27376748186b7236031effc86fddcb766f0351c081398dda7f06895d8e8",
+    "verify_a.py": "3d72936cf718a1b4cc6697632709b1319a78df6b9dc71de4d5724f6479e13528"
+  },
+  "status": "PASS_DECLARED_FINITE_SCOPE"
+}

@@ -1,0 +1,73 @@
+{
+  "reviewer": "native research agent A",
+  "review_time_utc": "2026-11-13T17:36:18.361243+00:00",
+  "verdict": "PASS_CORRECTION_READ_BACK",
+  "scope": "Publication-only correction of the parameter-distance bound at lambda=lambda_hat; no independent replay of scientific calculations.",
+  "sources": {
+    "zh": {
+      "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/book/UEOT_PHYSICS.md",
+      "sha256": "7601ad60f0b28325a99a2b95f23fdabd9c621ce17d5049feeb17920256e237f4",
+      "pre_correction_sha256": "4f336843b0b0b2b0d5f2553cc7f4ce34268c9ba403e835dce7320ef36baf133a",
+      "corrected_endpoint_relation_occurrences_in_section70_5": 1,
+      "old_strict_endpoint_relation_occurrences_in_section70_5": 0
+    },
+    "en": {
+      "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/book/UEOT_PHYSICS.en.md",
+      "sha256": "d4e0d07fe5cc65b2375e61a41406ed11391c18ac16cfb2e69e8b83a1e21fbbf7",
+      "pre_correction_sha256": "e8f2652e2959e05b665318675dd757373d7c442ab0bdbd576f50616d58a12b3a",
+      "corrected_endpoint_relation_occurrences_in_section70_5": 1,
+      "old_strict_endpoint_relation_occurrences_in_section70_5": 0
+    }
+  },
+  "section70_5_display_equations_identical": true,
+  "endpoint_argument": {
+    "parameter_difference": 0,
+    "distance_of_identical_maps": 0,
+    "old_strict_relation": "0 < 0: false",
+    "corrected_relation": "0 <= 0: true"
+  },
+  "coefficient_argument": {
+    "gamma_squared": "34/25",
+    "T": "23/12",
+    "lambda_max": "2/5",
+    "gamma_strict_upper": "7/6 since 1224 < 1225",
+    "C_exact": "23*sqrt(34)/60 + 8993/4500",
+    "C_strict_rational_upper": "38111/9000",
+    "retained_uniform_coefficient": "51/10 = 45900/9000",
+    "strictness_after_multiplication": "Strict only when abs(lambda-lambda_hat)>0; non-strict is valid for all nonnegative differences."
+  },
+  "read_only_evidence": [
+    {
+      "path": "/workspace/scratch/314d4fc9c52a/work_b/B_DYNAMICS_PROOF.md",
+      "sha256": "70d6354659829bc4ca669fa088ca3b9a5714688e4076ffd14185a8bce4aad042",
+      "access": "read_only; no execution"
+    },
+    {
+      "path": "/workspace/scratch/314d4fc9c52a/work_b/interval_certificate.py",
+      "sha256": "edb594539bcc0773379ab3a869afa8a6cb8199004ca0986b0c5acc219d3166fc",
+      "access": "read_only; no execution"
+    },
+    {
+      "path": "/workspace/scratch/314d4fc9c52a/work_b/interval_calibrated_original_weyl.json",
+      "sha256": "76adef51d4803750943a74bd0f0156396f0b7c39b297ccc5faf667d88fecf6ef",
+      "access": "read_only; no execution"
+    },
+    {
+      "path": "/workspace/scratch/314d4fc9c52a/work_c/calibrate.py",
+      "sha256": "b1fed47a326e900061a9ec877c34e52de4f4bdedaa4311eafcb70ece60293759",
+      "access": "read_only; no execution"
+    },
+    {
+      "path": "/workspace/scratch/314d4fc9c52a/work_c/evaluate_holdout.py",
+      "sha256": "a1a4e4c03a2f371c53d10250e578445a608ff20fcc1dcda566246a3d83f4a6a6",
+      "access": "read_only; no execution"
+    }
+  ],
+  "frozen_evidence_disposition": "Original B10 display remains historically frozen; this correction records its zero-difference endpoint defect. Coefficient interval assertion and exact rational downstream budgets remain valid.",
+  "rerun_required": false,
+  "rerun_reason": "No model, coefficient, algorithm, matrix, interval endpoint, sample, threshold or decision changes; computations already use the upper-bound coefficient 51/10 on nonnegative radii.",
+  "scientific_code_executed": false,
+  "books_or_pdfs_modified_by_A": false,
+  "new_pdf_visual_status": "AWAITING_REBUILD_AND_PAGE_IDENTITY_COMPARISON",
+  "report_path": "/workspace/scratch/314d4fc9c52a/work_publication_review/A_ENDPOINT_CORRECTION_REVIEW.md"
+}

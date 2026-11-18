@@ -1,0 +1,391 @@
+{
+  "schema": "ueot.chapter70.binding.v1",
+  "edition": "3.11",
+  "source_model_sha256": "685d373bb5a70a677fd4d110cb81c6624260de95ea39cc60070a8f4bd9f19668",
+  "results": [
+    {
+      "id": "C-QSEL-02",
+      "chapter": 70,
+      "anchor": "c-qsel-02",
+      "title": "C-QSEL-02（可达扇区隐藏完成的操作等价与全局选择边界）。",
+      "dependency_class": [
+        "B",
+        "S",
+        "P",
+        "X"
+      ],
+      "status_axes": {
+        "mathematical": "REACHABLE_EQUIVALENCE_COUNTERMODEL; GLOBAL_SELECTION_OPEN",
+        "physical_selection": "INDEPENDENT_PHYSICAL_INPUTS_RETAINED",
+        "computational": "SCOPED_EVIDENCE_REFERENCED",
+        "empirical": "MATCHED_DEVICE_NOT_CERTIFIED",
+        "machine": "NO_NEW_LEAN"
+      },
+      "question_and_quantifiers": "For every finite reachable complex-quantum circuit library closed under the stated operations, a hidden direct-sum completion has identical reachable full-record responses with finite references but lacks universal purification on its full state space. This is a nonimplication about global selection, not a claim that the hidden sector exists.",
+      "premises": [
+        "Finite complex Hilbert/Born/tensor/CP framework is a declared physical input, not derived from Core.",
+        "Only explicitly reachable operations and declared tester permissions are available.",
+        "No new Lean or matched-device evidence is claimed.",
+        "All finite direct-sum matrix auxiliaries and standard discarding; reachable preparations have zero hidden-sector weight.",
+        "A reachable minimal response quotient may remove inaccessible representation redundancy."
+      ],
+      "proof_and_evidence": [
+        {
+          "path": "physics/qm/kernel/evidence/v31.14/authored/a/A_THEOREMS.md",
+          "sha256": "215844b0e8a41dc24918aa5865905f7a0c6eb9e5e03c0c512a3802470b28382f"
+        },
+        {
+          "path": "physics/qm/kernel/evidence/v31.14/authored/a/A_SELECTION_DECISION.md",
+          "sha256": "b18ba41ac3e5e49a697d269a8720ffd917de51d4e65343408edf76016e20d838"
+        }
+      ],
+      "new_hardware_data": false,
+      "new_lean": false
+    },
+    {
+      "id": "P-TOM-01",
+      "chapter": 70,
+      "anchor": "p-tom-01",
+      "title": "P-TOM-01（显式有限 tester 稳定界及其准备、读出和维数责任）。",
+      "dependency_class": [
+        "B",
+        "P",
+        "E",
+        "O"
+      ],
+      "status_axes": {
+        "mathematical": "CONDITIONAL_ANALYTIC_BOUND; EXACT_FINITE_FRAME_CHECKS",
+        "physical_selection": "INDEPENDENT_PHYSICAL_INPUTS_RETAINED",
+        "computational": "SCOPED_EVIDENCE_REFERENCED",
+        "empirical": "MATCHED_DEVICE_NOT_CERTIFIED",
+        "machine": "NO_NEW_LEAN"
+      },
+      "question_and_quantifiers": "For known finite input/output dimensions and identical complete labels, the explicit legal preparation/effect dual frame bounds the all-input half-diamond error from all finite probabilities. Exact d=2,3,4 frame checks supplement the algebraic proof; fixed-policy external qubit channel needs16 settings, not bath tomography.",
+      "premises": [
+        "Finite complex Hilbert/Born/tensor/CP framework is a declared physical input, not derived from Core.",
+        "Only explicitly reachable operations and declared tester permissions are available.",
+        "No new Lean or matched-device evidence is claimed.",
+        "SPAM bounds and a physical gauge reference are independent inputs.",
+        "Leakage, statistical confidence, projection residual and postselection costs remain separate.",
+        "No certification of arbitrary replacement intermediate operations."
+      ],
+      "proof_and_evidence": [
+        {
+          "path": "physics/qm/kernel/evidence/v31.14/authored/a/A_THEOREMS.md",
+          "sha256": "215844b0e8a41dc24918aa5865905f7a0c6eb9e5e03c0c512a3802470b28382f"
+        },
+        {
+          "path": "physics/qm/kernel/evidence/v31.14/runtime/work_a/A_VERIFICATION.json",
+          "sha256": "163982028330ebcaa12e1348a39ad7fb4459cbc66bef30cbcb7965bac837a69f"
+        }
+      ],
+      "new_hardware_data": false,
+      "new_lean": false
+    },
+    {
+      "id": "P-MICRO-08",
+      "chapter": 70,
+      "anchor": "p-micro-08",
+      "title": "P-MICRO-08（共同定义域上的持续Gaussian浴完整过程）。",
+      "dependency_class": [
+        "B",
+        "P",
+        "E"
+      ],
+      "status_axes": {
+        "mathematical": "CONDITIONAL_ANALYTIC_PROCESS; FINITE_DIAGNOSTICS",
+        "physical_selection": "INDEPENDENT_PHYSICAL_INPUTS_RETAINED",
+        "computational": "SCOPED_EVIDENCE_REFERENCED",
+        "empirical": "MATCHED_DEVICE_NOT_CERTIFIED",
+        "machine": "NO_NEW_LEAN"
+      },
+      "question_and_quantifiers": "The specified same-bath finite-slot joint unitary exists on a common self-adjoint domain and gives the complete causal CP instrument for all rho_SR and arbitrary finite untouched R. General finite Gaussian formulas retain full covariance; executed calibration is vacuum only.",
+      "premises": [
+        "Finite complex Hilbert/Born/tensor/CP framework is a declared physical input, not derived from Core.",
+        "Only explicitly reachable operations and declared tester permissions are available.",
+        "No new Lean or matched-device evidence is claimed.",
+        "Positive finite mode frequencies, bounded self-adjoint system coupling and a finite controller.",
+        "Initial SR/E product; S and R may be entangled.",
+        "Original F/P failures and noncommuting pass rotations are retained."
+      ],
+      "proof_and_evidence": [
+        {
+          "path": "physics/qm/kernel/evidence/v31.14/authored/b/B_DYNAMICS_PROOF.md",
+          "sha256": "70d6354659829bc4ca669fa088ca3b9a5714688e4076ffd14185a8bce4aad042"
+        },
+        {
+          "path": "physics/qm/kernel/evidence/v31.14/runtime/work_b/dynamics_results.json",
+          "sha256": "9890da2d0453c7a63aac8890d34bfc835da0f98e89daf4aae51334aeddf73894"
+        }
+      ],
+      "new_hardware_data": false,
+      "new_lean": false
+    },
+    {
+      "id": "P-MICRO-09",
+      "chapter": 70,
+      "anchor": "p-micro-09",
+      "title": "P-MICRO-09（同一持续源的全输入有限近似）。",
+      "dependency_class": [
+        "B",
+        "P",
+        "E"
+      ],
+      "status_axes": {
+        "mathematical": "CONDITIONAL_ALL_INPUT_ANALYTIC_BOUND; DIRECTED_SCALAR_INTERVAL",
+        "physical_selection": "INDEPENDENT_PHYSICAL_INPUTS_RETAINED",
+        "computational": "SCOPED_EVIDENCE_REFERENCED",
+        "empirical": "MATCHED_DEVICE_NOT_CERTIFIED",
+        "machine": "NO_NEW_LEAN"
+      },
+      "question_and_quantifiers": "For the same source, every allowed lambda, arbitrary rho_SR and finite untouched R, true Galerkin propagation satisfies d_K from finite Duhamel remainders; K20<0.00001344. Parameter sensitivity is first proved on the infinite source and is below the frozen5.1 factor.",
+      "premises": [
+        "Finite complex Hilbert/Born/tensor/CP framework is a declared physical input, not derived from Core.",
+        "Only explicitly reachable operations and declared tester permissions are available.",
+        "No new Lean or matched-device evidence is claimed.",
+        "Vacuum executed initial bath; true compressed Hamiltonian, not postprojected exact evolution.",
+        "Fixed finite full-record source/controller with exposure T=23/12.",
+        "General initial tails/deleted modes/time-discretization require separate bounds."
+      ],
+      "proof_and_evidence": [
+        {
+          "path": "physics/qm/kernel/evidence/v31.14/authored/b/B_DYNAMICS_PROOF.md",
+          "sha256": "70d6354659829bc4ca669fa088ca3b9a5714688e4076ffd14185a8bce4aad042"
+        },
+        {
+          "path": "physics/qm/kernel/evidence/v31.14/runtime/work_b/interval_certificate_index.json",
+          "sha256": "8d2cd8dc51337df9a407fdf998b9aca2a91564f95155adb71e92623430cd8790"
+        },
+        {
+          "path": "physics/qm/book/evidence/v3.11/reviews/A_ENDPOINT_CORRECTION_REVIEW.md",
+          "sha256": "cdfaa6bfec0ea7d5658bc185f54392c46c0b7477fd4c499da32ffe05b00a9827"
+        },
+        {
+          "path": "physics/qm/book/evidence/v3.11/reviews/A_ENDPOINT_CORRECTION_REVIEW.json",
+          "sha256": "66b1fd2cd8e1a3ebc2fbd37a2ef1422de931d9f98d1ce6264529066f6ed753b2"
+        },
+        {
+          "path": "physics/qm/audits/PERSISTENT_BATH_v31.14/ROOT_SCIENTIFIC_ADJUDICATION.md",
+          "sha256": "e708259644925f2a179ff6e7d6ff4c975f24e2bf4c1b5fd90b1593a139039098"
+        }
+      ],
+      "new_hardware_data": false,
+      "new_lean": false,
+      "publication_correction": "Original frozen B10 strict endpoint symbol is retained historically. Chapter70.5 uses <=5.1*abs(lambda-lambda_hat), valid also at zero difference. The coefficient itself is strictly below5.1; original computational budgets remain valid. See bound erratum evidence."
+    },
+    {
+      "id": "C-QMEM-01",
+      "chapter": 70,
+      "anchor": "c-qmem-01",
+      "title": "C-QMEM-01（相同单槽不足以确定多时过程）。",
+      "dependency_class": [
+        "P",
+        "E",
+        "O"
+      ],
+      "status_axes": {
+        "mathematical": "STRICT_MULTI_TIME_COUNTEREXAMPLE; INTERVAL_EVENT",
+        "physical_selection": "INDEPENDENT_PHYSICAL_INPUTS_RETAINED",
+        "computational": "SCOPED_EVIDENCE_REFERENCED",
+        "empirical": "MATCHED_DEVICE_NOT_CERTIFIED",
+        "machine": "NO_NEW_LEAN"
+      },
+      "question_and_quantifiers": "The frozen persistent and slot-reset sources agree exactly on isolated single-slot channels for all inputs/references, yet at lambda3/10 their original three-slot Bell event ppp and XX=+1 differs by >3/100, independently verified with directed intervals.",
+      "premises": [
+        "Finite complex Hilbert/Born/tensor/CP framework is a declared physical input, not derived from Core.",
+        "Only explicitly reachable operations and declared tester permissions are available.",
+        "No new Lean or matched-device evidence is claimed.",
+        "Reset process is an ablation, not the strong standard baseline.",
+        "The event uses the original source controls; it is distinct from the auxiliary causal-break diagnostic."
+      ],
+      "proof_and_evidence": [
+        {
+          "path": "physics/qm/kernel/evidence/v31.14/runtime/work_b/memory_event_witness.json",
+          "sha256": "f7992d28c2401f1f231e576871415be31305c3872d1ffab6486e342dee979e40"
+        },
+        {
+          "path": "physics/qm/kernel/evidence/v31.14/runtime/work_a/A_REVIEW_B_CHECK.json",
+          "sha256": "b48be9dca68bf2a2ab2f79aba9796f64e5caa29c170db39f3dd32d05d217d09e"
+        }
+      ],
+      "new_hardware_data": false,
+      "new_lean": false
+    },
+    {
+      "id": "P-NUM-01",
+      "chapter": 70,
+      "anchor": "p-num-01",
+      "title": "P-NUM-01（区间Choi到物理终端仪器）。",
+      "dependency_class": [
+        "P",
+        "E",
+        "O"
+      ],
+      "status_axes": {
+        "mathematical": "ALL_INPUT_INTERVAL_BOUND; EXACT_RATIONAL_CP_TP_INSTRUMENT",
+        "physical_selection": "INDEPENDENT_PHYSICAL_INPUTS_RETAINED",
+        "computational": "SCOPED_EVIDENCE_REFERENCED",
+        "empirical": "MATCHED_DEVICE_NOT_CERTIFIED",
+        "machine": "NO_NEW_LEAN"
+      },
+      "question_and_quantifiers": "Eight fixed-parameter/time/backend Choi representations are certified against the exact infinite-source history formula. Exact rational repair yields a legal complete terminal CP/TP instrument with all-input half-diamond error<1e-8; independent review verifies504 principal minors and tensor convention.",
+      "premises": [
+        "Finite complex Hilbert/Born/tensor/CP framework is a declared physical input, not derived from Core.",
+        "Only explicitly reachable operations and declared tester permissions are available.",
+        "No new Lean or matched-device evidence is claimed.",
+        "Input dimension2 and normalized output⊗reference Choi convention.",
+        "Fixed-policy terminal instrument; not all counterfactual intervention combs.",
+        "Arbitrary later floating contraction has its own budget; the actual Pauli testers use exact rational contraction."
+      ],
+      "proof_and_evidence": [
+        {
+          "path": "physics/qm/kernel/evidence/v31.14/runtime/work_b/interval_certificate_index.json",
+          "sha256": "8d2cd8dc51337df9a407fdf998b9aca2a91564f95155adb71e92623430cd8790"
+        },
+        {
+          "path": "physics/qm/kernel/evidence/v31.14/runtime/work_a/A_REVIEW_B_CHECK.json",
+          "sha256": "b48be9dca68bf2a2ab2f79aba9796f64e5caa29c170db39f3dd32d05d217d09e"
+        },
+        {
+          "path": "physics/qm/kernel/evidence/v31.14/authored/b/B_DYNAMICS_PROOF.md",
+          "sha256": "70d6354659829bc4ca669fa088ca3b9a5714688e4076ffd14185a8bce4aad042"
+        }
+      ],
+      "new_hardware_data": false,
+      "new_lean": false
+    },
+    {
+      "id": "P-QMEM-02",
+      "chapter": 70,
+      "anchor": "p-qmem-02",
+      "title": "P-QMEM-02（因果断开响应秩给出的必要记忆维数）。",
+      "dependency_class": [
+        "B",
+        "P",
+        "E",
+        "O"
+      ],
+      "status_axes": {
+        "mathematical": "CONDITIONAL_RANK_LOWER_BOUND; FULL_INTERVAL_ANALYTIC_NONZERO",
+        "physical_selection": "INDEPENDENT_PHYSICAL_INPUTS_RETAINED",
+        "computational": "SCOPED_EVIDENCE_REFERENCED",
+        "empirical": "MATCHED_DEVICE_NOT_CERTIFIED",
+        "machine": "NO_NEW_LEAN"
+      },
+      "question_and_quantifiers": "Every finite memory realization of the declared causal-break response has real response rank≤D² when D counts every cross-cut carrier. The same two-mode source yields rank2 for every lambda in[1/5,2/5], so finite memory dimension≥2; this is necessary, not a sufficient compression theorem.",
+      "premises": [
+        "Finite complex Hilbert/Born/tensor/CP framework is a declared physical input, not derived from Core.",
+        "Only explicitly reachable operations and declared tester permissions are available.",
+        "No new Lean or matched-device evidence is claimed.",
+        "Auxiliary intervention is separately declared and differs from original F/P protocol.",
+        "Future controller cannot read past labels; accessible logs and variable references count as memory.",
+        "Device claims require drift and SPAM controls with finite-sample rank exclusion."
+      ],
+      "proof_and_evidence": [
+        {
+          "path": "physics/qm/kernel/evidence/v31.14/authored/a/A_THEOREMS.md",
+          "sha256": "215844b0e8a41dc24918aa5865905f7a0c6eb9e5e03c0c512a3802470b28382f"
+        },
+        {
+          "path": "physics/qm/kernel/evidence/v31.14/runtime/work_a/A_VERIFICATION.json",
+          "sha256": "163982028330ebcaa12e1348a39ad7fb4459cbc66bef30cbcb7965bac837a69f"
+        }
+      ],
+      "new_hardware_data": false,
+      "new_lean": false
+    },
+    {
+      "id": "P-ROB-06",
+      "chapter": 70,
+      "anchor": "p-rob-06",
+      "title": "P-ROB-06（两个可信设置的联合识别与覆盖）。",
+      "dependency_class": [
+        "P",
+        "E",
+        "O"
+      ],
+      "status_axes": {
+        "mathematical": "CONDITIONAL_IDENTIFIABILITY_AND_COVERAGE; SYNTHETIC_DEMONSTRATION",
+        "physical_selection": "INDEPENDENT_PHYSICAL_INPUTS_RETAINED",
+        "computational": "SCOPED_EVIDENCE_REFERENCED",
+        "empirical": "MATCHED_DEVICE_NOT_CERTIFIED",
+        "machine": "NO_NEW_LEAN"
+      },
+      "question_and_quantifiers": "The two trusted Ramsey settings jointly identify nonnegative lambda and shared fixed symmetric visibility eta. The joint confidence set covers the model parameters with probability≥.99 under the declared IID stationary source; actual synthetic calibration is400000 shots.",
+      "premises": [
+        "Finite complex Hilbert/Born/tensor/CP framework is a declared physical input, not derived from Core.",
+        "Only explicitly reachable operations and declared tester permissions are available.",
+        "No new Lean or matched-device evidence is claimed.",
+        "Known frequencies, coupling ratio, preparation, control and vacuum.",
+        "Record error zero; eta shared across settings; no unknown bias or arbitrary drift.",
+        "Truth file excluded from estimation; nominal and rules frozen before holdout."
+      ],
+      "proof_and_evidence": [
+        {
+          "path": "physics/qm/kernel/evidence/v31.14/authored/c/C_IDENTIFICATION_AND_EVIDENCE.md",
+          "sha256": "f2f0704a7d933b2fe82f8f114070ed7b10c81e94ce9fe970155141db78f5fd80"
+        },
+        {
+          "path": "physics/qm/kernel/evidence/v31.14/authored/c/NOMINAL_MODEL.json",
+          "sha256": "d6cf56c08603c3bdd13c4cb37ef2f8720f3db308ad87e65f0dedca1c6f801a8e"
+        },
+        {
+          "path": "physics/qm/kernel/evidence/v31.14/runtime/calibration_readback/NOMINAL_MODEL.json",
+          "sha256": "e9ec756958da3f8d87bfea90750167ff6fd049057cb7bdb00a67951a3bd18cb2"
+        },
+        {
+          "path": "physics/qm/kernel/evidence/v31.14/runtime/work_c/GENERATOR_PROBABILITY_CHECK.json",
+          "sha256": "a51590e5a3c19788ba01cf668d087f9db5cf8c35df5123bda4c7278526df1086"
+        }
+      ],
+      "new_hardware_data": false,
+      "new_lean": false
+    },
+    {
+      "id": "P-ROB-07",
+      "chapter": 70,
+      "anchor": "p-rob-07",
+      "title": "P-ROB-07（完整 CQ 联合证书与独立留出）。",
+      "dependency_class": [
+        "B",
+        "P",
+        "E",
+        "O"
+      ],
+      "status_axes": {
+        "mathematical": "CONDITIONAL_SYNTHETIC_CERTIFICATION; NO_STRONG_BASELINE_GAIN",
+        "physical_selection": "INDEPENDENT_PHYSICAL_INPUTS_RETAINED",
+        "computational": "SCOPED_EVIDENCE_REFERENCED",
+        "empirical": "MATCHED_DEVICE_NOT_CERTIFIED",
+        "machine": "NO_NEW_LEAN"
+      },
+      "question_and_quantifiers": "The same-source all-input complete-CQ certificate is≤.036581185645 and the fixed terminal readout distribution certificate≤.040451414205. Independent frozen holdout has combined false rejection≤.02 under the model; two normal families are not rejected and the detector violation is rejected.",
+      "premises": [
+        "Finite complex Hilbert/Born/tensor/CP framework is a declared physical input, not derived from Core.",
+        "Only explicitly reachable operations and declared tester permissions are available.",
+        "No new Lean or matched-device evidence is claimed.",
+        "Certification conditional on the specified source and calibration premises; no matched device.",
+        "All f,pf,ppf,ppp outcomes retained; normalized rare acceptance needs its own bound.",
+        "Uniform K20 allowance retained conservatively although the pointwise repaired Choi is already bounded against the infinite source.",
+        "Strong standard baseline is equivalent; reset ablation does not prove added gain."
+      ],
+      "proof_and_evidence": [
+        {
+          "path": "physics/qm/kernel/evidence/v31.14/runtime/work_c/FINAL_CERTIFICATE.json",
+          "sha256": "6ebde7f170756e32c8558182144de6e429e9bbb8648209ca83e314de4bf0e877"
+        },
+        {
+          "path": "physics/qm/kernel/evidence/v31.14/runtime/work_c/HOLDOUT_RESULTS.json",
+          "sha256": "c6d02f61e6a7c26520639f2dd46d9239b466d6f2f08539072a7cb20b4db6947f"
+        },
+        {
+          "path": "physics/qm/kernel/evidence/v31.14/authored/c/FROZEN_HOLDOUT_PLAN.json",
+          "sha256": "03541fef730b0e071e5fe546e052703ce124c79597c4358d3b4159e9231aafa4"
+        }
+      ],
+      "new_hardware_data": false,
+      "new_lean": false
+    }
+  ],
+  "review_scope": "Primary integration after A→B, B→C, C→A checks; paper/exact/interval evidence is not promoted to Lean"
+}

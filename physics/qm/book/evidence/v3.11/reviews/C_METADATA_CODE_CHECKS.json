@@ -1,0 +1,98 @@
+{
+  "schema": "ueot.c-publication-gate-focused-verification/1",
+  "status": "PASS_FOCUSED_CHECKS",
+  "created_at_utc": "2026-11-13T17:21:03.888840+00:00",
+  "script_identities": [
+    {
+      "path": "physics/qm/book/build/update_v3_11_metadata.py",
+      "sha256": "d78852ead249c4241bf98ca6fc33bc3ce70e7e8d33581e50649bc7e9394b2717",
+      "bytes": 23349
+    },
+    {
+      "path": "physics/qm/book/build/verify_v3_11_increment.py",
+      "sha256": "5cc88b139deb31f2cb90b021af68f907bf6940761dd9b94a51dd8ba84f6c9be4",
+      "bytes": 29918
+    }
+  ],
+  "checks": [
+    {
+      "name": "actual production runtime identities",
+      "status": "PASS",
+      "checks": 406
+    },
+    {
+      "name": "actual exact budgets and outward event displays",
+      "status": "PASS",
+      "checks": 263
+    },
+    {
+      "name": "historical absolute execution roots relocate by role",
+      "status": "PASS",
+      "checks": 406
+    },
+    {
+      "name": "reject inward parameter_error_upper",
+      "status": "EXPECTED_REJECTION",
+      "reason": "outward display parameter_error_upper",
+      "checks_before_rejection": 5
+    },
+    {
+      "name": "reject inward quantum_complete_CQ_upper",
+      "status": "EXPECTED_REJECTION",
+      "reason": "outward display quantum_complete_CQ_upper",
+      "checks_before_rejection": 7
+    },
+    {
+      "name": "reject inward fixed_complete_terminal_tester_upper",
+      "status": "EXPECTED_REJECTION",
+      "reason": "outward display fixed_complete_terminal_tester_upper",
+      "checks_before_rejection": 8
+    },
+    {
+      "name": "reject inward terminal_visibility_error_upper",
+      "status": "EXPECTED_REJECTION",
+      "reason": "outward display terminal_visibility_error_upper",
+      "checks_before_rejection": 6
+    },
+    {
+      "name": "reject stale generated output identity",
+      "status": "EXPECTED_REJECTION",
+      "reason": "hash physics/qm/kernel/evidence/v31.14/runtime/calibration_readback/FROZEN_HOLDOUT_PLAN.json",
+      "checks_before_rejection": 243
+    },
+    {
+      "name": "reject falsely reused sample accounting",
+      "status": "EXPECTED_REJECTION",
+      "reason": "runtime no new samples Lean or hardware",
+      "checks_before_rejection": 395
+    },
+    {
+      "name": "visual schema identity unit fixture",
+      "status": "PASS",
+      "checks": 29
+    },
+    {
+      "name": "reject old PDF visual identity unit fixture",
+      "status": "EXPECTED_REJECTION",
+      "reason": "hash physics/qm/book/UEOT_PHYSICS.en.pdf",
+      "checks_before_rejection": 18
+    },
+    {
+      "name": "reject uncovered required visual page unit fixture",
+      "status": "EXPECTED_REJECTION",
+      "reason": "en required visual pages actually covered",
+      "checks_before_rejection": 25
+    },
+    {
+      "name": "same-edition verified MAIN downgrade guard",
+      "status": "EXPECTED_REJECTION",
+      "returncode": 1
+    }
+  ],
+  "checks_evaluated": 2127,
+  "current_historical_Lean_input_files_verified": 158,
+  "new_Lean_execution": false,
+  "new_samples": 0,
+  "actual_visual_review": false,
+  "scope": "Actual runtime/hash/exact-arithmetic checks plus explicitly labeled negative-control fixtures; no complete publication or visual PASS asserted."
+}

@@ -1,0 +1,362 @@
+{
+  "schema": "ueot.persistent_bath.dynamics_execution.v1",
+  "status": "FOCUSED_SCIENTIFIC_CHECKS_PASSED_FLOATING_RESULTS_SEPARATE_FROM_ANALYTIC_BOUNDS",
+  "frozen_source": "three-slot two-mode vacuum source in model_contract.json",
+  "physical_checks": [
+    {
+      "lambda": 0.2,
+      "total_trace": 0.9999999999999997,
+      "minimum_choi_eigenvalue": 0.0,
+      "normalized_choi_trace_preservation_residual": 2.0396099332657776e-16,
+      "prefix_causality_residual": 5.887846720064156e-17,
+      "terminal_probabilities": {
+        "f": 0.18749999999999997,
+        "pf": 0.15234374999999994,
+        "ppf": 0.12463787926809719,
+        "ppp": 0.5355183707319026
+      },
+      "acceptance_effect_eigenvalues": [
+        0.4567740554876543,
+        0.6142626859761514
+      ],
+      "acceptance_non_scalar_eigenvalue_gap": 0.1574886304884971,
+      "first_pass_conditional_bath_fourth_cumulant": -0.002291917267957769
+    },
+    {
+      "lambda": 0.3,
+      "total_trace": 0.9999999999999998,
+      "minimum_choi_eigenvalue": 0.0,
+      "normalized_choi_trace_preservation_residual": 2.0490308144984482e-16,
+      "prefix_causality_residual": 2.7755575615628914e-17,
+      "terminal_probabilities": {
+        "f": 0.18749999999999997,
+        "pf": 0.15234374999999994,
+        "ppf": 0.12729485165197768,
+        "ppp": 0.5328613983480222
+      },
+      "acceptance_effect_eigenvalues": [
+        0.45811042591780127,
+        0.6076123707782434
+      ],
+      "acceptance_non_scalar_eigenvalue_gap": 0.1495019448604421,
+      "first_pass_conditional_bath_fourth_cumulant": -0.01160283116903619
+    },
+    {
+      "lambda": 0.4,
+      "total_trace": 0.9999999999999997,
+      "minimum_choi_eigenvalue": 0.0,
+      "normalized_choi_trace_preservation_residual": 2.3633021048361517e-16,
+      "prefix_causality_residual": 7.850462293418876e-17,
+      "terminal_probabilities": {
+        "f": 0.18749999999999997,
+        "pf": 0.15234374999999994,
+        "ppf": 0.13031610986508846,
+        "ppp": 0.5298401401349113
+      },
+      "acceptance_effect_eigenvalues": [
+        0.4598918253226897,
+        0.5997884549471332
+      ],
+      "acceptance_non_scalar_eigenvalue_gap": 0.1398966296244435,
+      "first_pass_conditional_bath_fourth_cumulant": -0.0366706762873243
+    }
+  ],
+  "convergence": [
+    {
+      "lambda": 0.2,
+      "cutoff": 0,
+      "bath_dimension": 1,
+      "executed_SR_dimension": 4,
+      "full_CQ_Bell_distance": 0.07134185448788298,
+      "all_input_analytic_truncation_bound_display": 1.0,
+      "standard_joint_Galerkin_seconds": 0.0010341759989387356,
+      "exact_Weyl_seconds": 0.005669385001965566,
+      "floating_diagnostic_only": true
+    },
+    {
+      "lambda": 0.2,
+      "cutoff": 2,
+      "bath_dimension": 9,
+      "executed_SR_dimension": 4,
+      "full_CQ_Bell_distance": 5.8249651781964925e-05,
+      "all_input_analytic_truncation_bound_display": 1.0,
+      "standard_joint_Galerkin_seconds": 0.0012666990005527623,
+      "exact_Weyl_seconds": 0.005669385001965566,
+      "floating_diagnostic_only": true
+    },
+    {
+      "lambda": 0.2,
+      "cutoff": 4,
+      "bath_dimension": 25,
+      "executed_SR_dimension": 4,
+      "full_CQ_Bell_distance": 2.143913358146916e-08,
+      "all_input_analytic_truncation_bound_display": 1.0,
+      "standard_joint_Galerkin_seconds": 0.0011577360019146,
+      "exact_Weyl_seconds": 0.005669385001965566,
+      "floating_diagnostic_only": true
+    },
+    {
+      "lambda": 0.2,
+      "cutoff": 6,
+      "bath_dimension": 49,
+      "executed_SR_dimension": 4,
+      "full_CQ_Bell_distance": 7.464220339176692e-12,
+      "all_input_analytic_truncation_bound_display": 0.5195640586369821,
+      "standard_joint_Galerkin_seconds": 0.0011889769994013477,
+      "exact_Weyl_seconds": 0.005669385001965566,
+      "floating_diagnostic_only": true
+    },
+    {
+      "lambda": 0.2,
+      "cutoff": 8,
+      "bath_dimension": 81,
+      "executed_SR_dimension": 4,
+      "full_CQ_Bell_distance": 1.0171273196502645e-15,
+      "all_input_analytic_truncation_bound_display": 0.18404710707444216,
+      "standard_joint_Galerkin_seconds": 0.001363823001156561,
+      "exact_Weyl_seconds": 0.005669385001965566,
+      "floating_diagnostic_only": true
+    },
+    {
+      "lambda": 0.2,
+      "cutoff": 12,
+      "bath_dimension": 169,
+      "executed_SR_dimension": 4,
+      "full_CQ_Bell_distance": 3.8773240558774116e-16,
+      "all_input_analytic_truncation_bound_display": 0.013116950219053342,
+      "standard_joint_Galerkin_seconds": 0.008931069001846481,
+      "exact_Weyl_seconds": 0.005669385001965566,
+      "floating_diagnostic_only": true
+    },
+    {
+      "lambda": 0.2,
+      "cutoff": 20,
+      "bath_dimension": 441,
+      "executed_SR_dimension": 4,
+      "full_CQ_Bell_distance": 6.671253499850058e-16,
+      "all_input_analytic_truncation_bound_display": 1.3439338566294987e-05,
+      "standard_joint_Galerkin_seconds": 0.07972610300203087,
+      "exact_Weyl_seconds": 0.005669385001965566,
+      "floating_diagnostic_only": true
+    },
+    {
+      "lambda": 0.3,
+      "cutoff": 0,
+      "bath_dimension": 1,
+      "executed_SR_dimension": 4,
+      "full_CQ_Bell_distance": 0.1486813464474812,
+      "all_input_analytic_truncation_bound_display": 1.0,
+      "standard_joint_Galerkin_seconds": 0.0006935660021554213,
+      "exact_Weyl_seconds": 0.004530985999736004,
+      "floating_diagnostic_only": true
+    },
+    {
+      "lambda": 0.3,
+      "cutoff": 2,
+      "bath_dimension": 9,
+      "executed_SR_dimension": 4,
+      "full_CQ_Bell_distance": 0.0005746015808356403,
+      "all_input_analytic_truncation_bound_display": 1.0,
+      "standard_joint_Galerkin_seconds": 0.0008808489983493928,
+      "exact_Weyl_seconds": 0.004530985999736004,
+      "floating_diagnostic_only": true
+    },
+    {
+      "lambda": 0.3,
+      "cutoff": 4,
+      "bath_dimension": 25,
+      "executed_SR_dimension": 4,
+      "full_CQ_Bell_distance": 1.0827718607852534e-06,
+      "all_input_analytic_truncation_bound_display": 1.0,
+      "standard_joint_Galerkin_seconds": 0.0011782130022766069,
+      "exact_Weyl_seconds": 0.004530985999736004,
+      "floating_diagnostic_only": true
+    },
+    {
+      "lambda": 0.3,
+      "cutoff": 6,
+      "bath_dimension": 49,
+      "executed_SR_dimension": 4,
+      "full_CQ_Bell_distance": 1.7732668746903061e-09,
+      "all_input_analytic_truncation_bound_display": 0.5195640586369821,
+      "standard_joint_Galerkin_seconds": 0.0015456510009244084,
+      "exact_Weyl_seconds": 0.004530985999736004,
+      "floating_diagnostic_only": true
+    },
+    {
+      "lambda": 0.3,
+      "cutoff": 8,
+      "bath_dimension": 81,
+      "executed_SR_dimension": 4,
+      "full_CQ_Bell_distance": 9.054000346499652e-13,
+      "all_input_analytic_truncation_bound_display": 0.18404710707444216,
+      "standard_joint_Galerkin_seconds": 0.0015330880014516879,
+      "exact_Weyl_seconds": 0.004530985999736004,
+      "floating_diagnostic_only": true
+    },
+    {
+      "lambda": 0.3,
+      "cutoff": 12,
+      "bath_dimension": 169,
+      "executed_SR_dimension": 4,
+      "full_CQ_Bell_distance": 6.003569457533053e-16,
+      "all_input_analytic_truncation_bound_display": 0.013116950219053342,
+      "standard_joint_Galerkin_seconds": 0.008490976000757655,
+      "exact_Weyl_seconds": 0.004530985999736004,
+      "floating_diagnostic_only": true
+    },
+    {
+      "lambda": 0.3,
+      "cutoff": 20,
+      "bath_dimension": 441,
+      "executed_SR_dimension": 4,
+      "full_CQ_Bell_distance": 6.131472927317316e-16,
+      "all_input_analytic_truncation_bound_display": 1.3439338566294987e-05,
+      "standard_joint_Galerkin_seconds": 0.07303749399943626,
+      "exact_Weyl_seconds": 0.004530985999736004,
+      "floating_diagnostic_only": true
+    },
+    {
+      "lambda": 0.4,
+      "cutoff": 0,
+      "bath_dimension": 1,
+      "executed_SR_dimension": 4,
+      "full_CQ_Bell_distance": 0.2389578616352383,
+      "all_input_analytic_truncation_bound_display": 1.0,
+      "standard_joint_Galerkin_seconds": 0.0012631749996216968,
+      "exact_Weyl_seconds": 0.004893569999694591,
+      "floating_diagnostic_only": true
+    },
+    {
+      "lambda": 0.4,
+      "cutoff": 2,
+      "bath_dimension": 9,
+      "executed_SR_dimension": 4,
+      "full_CQ_Bell_distance": 0.0026617895840352294,
+      "all_input_analytic_truncation_bound_display": 1.0,
+      "standard_joint_Galerkin_seconds": 0.000917026998649817,
+      "exact_Weyl_seconds": 0.004893569999694591,
+      "floating_diagnostic_only": true
+    },
+    {
+      "lambda": 0.4,
+      "cutoff": 4,
+      "bath_dimension": 25,
+      "executed_SR_dimension": 4,
+      "full_CQ_Bell_distance": 1.592056132910686e-05,
+      "all_input_analytic_truncation_bound_display": 1.0,
+      "standard_joint_Galerkin_seconds": 0.001714660000288859,
+      "exact_Weyl_seconds": 0.004893569999694591,
+      "floating_diagnostic_only": true
+    },
+    {
+      "lambda": 0.4,
+      "cutoff": 6,
+      "bath_dimension": 49,
+      "executed_SR_dimension": 4,
+      "full_CQ_Bell_distance": 7.460000608322911e-08,
+      "all_input_analytic_truncation_bound_display": 0.5195640586369821,
+      "standard_joint_Galerkin_seconds": 0.0011085699989052955,
+      "exact_Weyl_seconds": 0.004893569999694591,
+      "floating_diagnostic_only": true
+    },
+    {
+      "lambda": 0.4,
+      "cutoff": 8,
+      "bath_dimension": 81,
+      "executed_SR_dimension": 4,
+      "full_CQ_Bell_distance": 1.1287974220458181e-10,
+      "all_input_analytic_truncation_bound_display": 0.18404710707444216,
+      "standard_joint_Galerkin_seconds": 0.0023293010017368942,
+      "exact_Weyl_seconds": 0.004893569999694591,
+      "floating_diagnostic_only": true
+    },
+    {
+      "lambda": 0.4,
+      "cutoff": 12,
+      "bath_dimension": 169,
+      "executed_SR_dimension": 4,
+      "full_CQ_Bell_distance": 4.2575138900501823e-16,
+      "all_input_analytic_truncation_bound_display": 0.013116950219053342,
+      "standard_joint_Galerkin_seconds": 0.014268298997194506,
+      "exact_Weyl_seconds": 0.004893569999694591,
+      "floating_diagnostic_only": true
+    },
+    {
+      "lambda": 0.4,
+      "cutoff": 20,
+      "bath_dimension": 441,
+      "executed_SR_dimension": 4,
+      "full_CQ_Bell_distance": 9.238278656023382e-16,
+      "all_input_analytic_truncation_bound_display": 1.3439338566294987e-05,
+      "standard_joint_Galerkin_seconds": 0.08295995099979336,
+      "exact_Weyl_seconds": 0.004893569999694591,
+      "floating_diagnostic_only": true
+    }
+  ],
+  "negative_controls": {
+    "same_single_slot_different_multitime": [
+      {
+        "lambda": 0.2,
+        "same_single_slot_reset_distance": 1.3877787807814457e-17,
+        "persistent_vs_reset_full_CQ_distance": 0.051233836481120225,
+        "omitted_history_phase_distance": 0.023279321854395525
+      },
+      {
+        "lambda": 0.3,
+        "same_single_slot_reset_distance": 1.3877787807814457e-17,
+        "persistent_vs_reset_full_CQ_distance": 0.10125185621002683,
+        "omitted_history_phase_distance": 0.05022546990230467
+      },
+      {
+        "lambda": 0.4,
+        "same_single_slot_reset_distance": 2.7755575615628914e-17,
+        "persistent_vs_reset_full_CQ_distance": 0.15113021220908843,
+        "omitted_history_phase_distance": 0.08349657416894556
+      }
+    ],
+    "initial_tail_zero_does_not_bound_propagation": {
+      "initial_vacuum_tail_above_K0": 0,
+      "K0_lambda_0_4_actual_full_CQ_error": 0.2389578616352383
+    },
+    "rare_acceptance_declared_toy": {
+      "acceptance_probability": 1e-06,
+      "full_distance": 1e-06,
+      "conditional_distance": 1.0
+    },
+    "leakage_declared_qutrit_extension": {
+      "omitted_mass": 0.050000000000000044,
+      "outside_frozen_qubit_domain": true
+    },
+    "parameter_domain_violation_rejected": true
+  },
+  "reference_and_choi_ordering": {
+    "untouched_reference_dimension": 3,
+    "stored_choi_vs_direct_distance": 1.9936584828230878e-16,
+    "exact_vs_K12_distance": 6.404941452529614e-16
+  },
+  "resource": {
+    "wall_seconds": 0.4126048960024491,
+    "max_rss_platform_units": 112384,
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "largest_joint_SR_environment_dimension": 1764,
+    "largest_conditional_environment_unitary_dimension": 441,
+    "environment_reset_in_true_source": false
+  },
+  "method_comparison": "Exact Weyl and standard persistent joint evolution implement the same standard model; no UEOT predictive superiority claimed.",
+  "source_sha256": {
+    "verify_dynamics.py": "87f1234a54f2291cbac9127fee8ac14b3a5ee62c2ea97d0ec32b9d9154724c85",
+    "dynamics.py": "3eb805d8ec9f8010583023f8a57812c759fba4fcc48c27c36a9079367f664001"
+  },
+  "not_claimed": [
+    "real device validation",
+    "new Lean proof",
+    "arbitrary Gaussian executed certificate",
+    "general memory compression advantage",
+    "thermalization",
+    "Core-derived complex structure"
+  ]
+}

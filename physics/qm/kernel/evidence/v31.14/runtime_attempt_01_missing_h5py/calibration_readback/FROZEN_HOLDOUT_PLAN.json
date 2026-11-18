@@ -1,0 +1,12 @@
+{
+  "schema": "frozen-before-holdout/1",
+  "created_at": "2026-11-13T17:10:47.979833+00:00",
+  "contract_sha256": "c8a649e5b47d4c6348bc2e2745950ecbf078685b38ddf8f2cc0423c0a04876d1",
+  "nominal_sha256": "33e1cf13e910935b113a606f086bedddf50eaaf9fbf043ea26f6c2f95648c0d8",
+  "maximum_lambda_mesh": "1/20000",
+  "prediction_set": "outer lambda/eta rectangle; eta endpoints and lambda covering grid; per-event margin 5.1*mesh/2 plus independently certified numerical error",
+  "multiple_testing_cells": 96,
+  "alpha": "1/100",
+  "rule": "reject a family if at least one simultaneous holdout interval is disjoint from its entire calibration-permitted probability enclosure",
+  "no_post_holdout_refit": true
+}

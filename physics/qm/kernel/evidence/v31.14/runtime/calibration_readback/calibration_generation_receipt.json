@@ -1,0 +1,47 @@
+{
+  "schema": "synthetic-shot-generation/1",
+  "status": "SYNTHETIC_ONLY",
+  "started_at": "2026-11-13T16:48:03.965396+00:00",
+  "finished_at": "2026-11-13T16:48:03.999831+00:00",
+  "contract_sha256": "c8a649e5b47d4c6348bc2e2745950ecbf078685b38ddf8f2cc0423c0a04876d1",
+  "truth_sha256": "15057b20de939bc66b6f80f30ebed67ca45f2550271256baabd00cb4ff9d2cad",
+  "nominal_sha256": null,
+  "generator_sha256": "9134b57006adc2a0689d54d5d61e987e51255a55d1259a9740ce6d2fed0ec11c",
+  "dynamics_sha256": "3eb805d8ec9f8010583023f8a57812c759fba4fcc48c27c36a9079367f664001",
+  "data_file": "calibration_shots.npz",
+  "data_sha256": "d96c2b80c58d410b5e4809c8fec5070c4a559d83ed6d3ab54a62293092f3bfb9",
+  "total_shots": 400000,
+  "settings": [
+    {
+      "setting_id": "ramsey_zero",
+      "shots": 200000,
+      "codes": [
+        "-1",
+        "+1"
+      ],
+      "all_outcomes_retained": true,
+      "generator_probability_plus": 0.98,
+      "seed_spawn_key": [
+        0
+      ]
+    },
+    {
+      "setting_id": "ramsey_long",
+      "shots": 200000,
+      "codes": [
+        "-1",
+        "+1"
+      ],
+      "all_outcomes_retained": true,
+      "generator_probability_plus": 0.8127701875651514,
+      "seed_spawn_key": [
+        1
+      ]
+    }
+  ],
+  "wall_seconds": 0.0350369200023124,
+  "cpu_seconds": 0.03499499499999992,
+  "bytes_compressed": 33230,
+  "hardware_calls": 0,
+  "hardware_data": false
+}

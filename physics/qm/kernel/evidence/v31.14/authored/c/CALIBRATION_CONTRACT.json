@@ -1,0 +1,59 @@
+{
+  "schema": "ueot-persistent-bath-calibration/1",
+  "declared_on_client_date": "2026-11-14",
+  "parent_contract": "/workspace/scratch/9c9c05c1bf0a/next_round_20261114/SHARED_MODEL.json",
+  "source": {
+    "hbar": "1", "H_S": "0", "L": "Z",
+    "omega": ["1", "3/2"], "relative_couplings": ["1", "3/5"],
+    "initial_environment": "the same two-mode vacuum within each trial; a fresh vacuum between independent trials",
+    "lambda_domain": ["1/5", "2/5"],
+    "eta_domain": ["9/10", "1"],
+    "detector": "one shared symmetric visibility eta for each terminal binary observable; the terminal record itself is read without error",
+    "physical_inputs": ["frequencies and relative couplings", "vacuum preparation", "correct source/control implementation", "known Pauli measurement and preparation", "fixed symmetric detector law", "independent stationary trials within each setting"],
+    "independent_error_bounds_in_synthetic_source": {"preparation": "0", "control": "0", "effective_model": "0", "drift": "0", "leakage": "0"},
+    "real_device_error_bounds": "NOT_ESTABLISHED"
+  },
+  "calibration": {
+    "settings": [{"id": "ramsey_zero", "time": "0", "input": "+X", "observable": "X", "shots": 200000}, {"id": "ramsey_long", "time": "3/2", "input": "+X", "observable": "X", "shots": 200000}],
+    "outcome_codes": {"0": "-1", "1": "+1"},
+    "alpha": "1/100",
+    "confidence_rule": "simultaneous Hoeffding intervals for two Bernoulli plus probabilities; radius sqrt(log(4/alpha)/(2N)); transform to expectations and intersect the declared joint physical model",
+    "nominal_rule": "use calibration only; choose the midpoint of the feasible lambda projection, then the midpoint of the feasible eta section; round lambda and eta to 12 decimal places and verify feasibility",
+    "synthetic_generation_probability_allowance": "0.000000001",
+    "seed": 202611140101
+  },
+  "holdout": {
+    "observables": ["XX", "XY", "YZ", "ZZ"],
+    "shots_per_setting": 100000,
+    "alpha": "1/100",
+    "input": "Bell SR; R untouched until terminal readout",
+    "records": ["f", "pf", "ppf", "ppp"],
+    "record_outcomes": "for each record in the stated order, binary outcomes - then +; all eight cells retained",
+    "families": [
+      {"id": "deployment", "times": ["2/3", "3/4", "1/2"], "seed": 202611140201, "purpose": "original three-slot noncommuting control deployment"},
+      {"id": "changed_intervals", "times": ["3/4", "2/3", "1/2"], "seed": 202611140202, "purpose": "separately declared time-order holdout; same total duration and instrument/rotation sequence"},
+      {"id": "detector_violation", "times": ["2/3", "3/4", "1/2"], "seed": 202611140203, "purpose": "generator changes detector visibility outside the frozen shared-detector domain; estimator and classifier cannot read truth"}
+    ],
+    "confidence_rule": "simultaneous Hoeffding intervals for 96 (3 families x 4 settings x 8 cells) event probabilities; compare to all predictions permitted by the calibration confidence set, using a rigorous covering error",
+    "synthetic_generation_probability_allowance": "0.000000001",
+    "no_feedback_rule": "calibration confidence set, nominal parameters, model grid and test rule frozen and hashed before any holdout sampling"
+  },
+  "error_certificate": {
+    "distance": "half trace norm over complete terminal CQ output on SR",
+    "target": "1/20",
+    "parameter_Lipschitz": "51/10",
+    "galerkin_cutoff_per_mode": 20,
+    "analytic_galerkin_error_upper": "0.00001344",
+    "numerical_roundoff": "must have an independently supplied enclosure; never set to zero because two floats agree",
+    "readout_visibility_addition": "max_eta_deviation/2 for each fixed complete binary terminal tester",
+    "holdout_lambda_mesh_max": "1/20000"
+  },
+  "comparison": {
+    "strong_baseline": "standard persistent joint evolution and standard Gaussian influence functional with the identical calibration confidence set, controls and robust error rule",
+    "independent_numerical_backend": "Galerkin evolution of the same Hamiltonian, cutoff 20, checked against Weyl history pairs",
+    "ablations": ["reset the environment between slots", "one calibration setting only", "wrong shared detector visibility"],
+    "gain_rule": "identical conditional maps and inference rule imply EQUIVALENT_NO_ADDED_GAIN; a negative-control win is not a strong-baseline gain"
+  },
+  "data_status": "SYNTHETIC_ONLY_NO_MATCHED_DEVICE_SHOTS",
+  "hardware_status": "NOT_CERTIFIED"
+}

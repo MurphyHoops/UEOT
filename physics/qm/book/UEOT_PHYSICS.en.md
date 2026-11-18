@@ -2,8 +2,8 @@
 title: "UEOT Physics"
 subtitle: "From Object Mathematics to Quantum Physics: Derivations, Formal Proofs, and Research Boundaries"
 author: "Degui Qian"
-version: "3.10"
-date: "2026-11-12"
+version: "3.11"
+date: "2026-11-14"
 language: "en"
 document_id: "UEOT-PHYSICS"
 status: "Complete bilingual revision; proved results, physical inputs, and open questions distinguished"
@@ -82,6 +82,7 @@ rights: "Historical CC BY 4.0 grants remain; no additional blanket grant for new
 - [67. Operational identity, microscopic truncation, and robust implementation with shared parameters](#ch-67)
 - [68. Segmented excitation growth and controlled blue-pulse omission](#ch-68)
 - [69. Simultaneous dynamics, genuine truncation error, and calibrated complete predictions](#ch-69)
+- [70. Complete persistent-environment processes, finite certification, and selection limits](#ch-70)
 - [Appendix A. Notation, units, and responsibilities of standard theorems](#appendix-a)
 - [Appendix B. Registry of numbered results](#appendix-b)
 - [Appendix C. Sources, inheritance, and research integrity](#appendix-c)
@@ -266,9 +267,9 @@ Edition 3.9 continues from main `aea2fceef3c62cc8dc749b6cbb1b40a7d89df80d`, whic
 
 
 
-## 0.14 The current simultaneous-dynamics increment
+## 0.14 The current persistent-environment and complete-certification increment
 
-v31.13 / Kernel 1.13 continues from verified main `cb17211653fde30aa50e0e9848798a6a5b3b3f12`. Six Chapter 69 paper results connect simultaneous dynamics, genuine Galerkin truncation, complete-CQ stability, identifiable parameter calibration and nominal finite prediction within one shared model. The book now has 70 chapters, six appendices and 194 stable results; counts are not a percentage of physics completed. Earlier results, all 188 prior result objects and 111 ledger claims retain their historical identities. New integer-interval outputs and raw synthetic streams have separate execution receipts. Unchanged Lean inputs only reuse their original execution; no new machine proof or real-device confirmation is claimed. Earlier chapters retain their edition-specific accounts; CURRENT and this section state the current increment.
+v31.14 / Kernel 1.14 continues from the merged and CI-verified Chapter 69 basis. Nine Chapter 70 paper results and independent computational evidence connect one persistent two-mode environment, complete multi-time instruments, finite propagation, joint calibration, and holdout. The book now has 71 chapters, six appendices, 203 stable results, and 126 ledger claims; counts are not a percentage of physics completed. All previous 194 result objects and 117 claims retain their identities. No new Lean proof or matched-device certification is claimed. The strong standard baseline is equivalent with no additional gain, and global quantum selection remains open. Actual replay, historical execution reuse, and publication verification are recorded separately; CURRENT and auditable receipts determine release status.
 
 <a id="ch-1"></a>
 
@@ -4863,7 +4864,7 @@ A maintainable monograph must keep its text, stable IDs, sources, and verificati
 
 ## 48.1 One canonical theoretical source
 
-The book's fixed title is *UEOT Physics*, its stable document identity is `UEOT-PHYSICS`, and its current bilingual revision is 3.10. The canonical text is `physics/qm/book/UEOT_PHYSICS.md`; the Chinese PDF is generated from that text. The complete English counterpart is `UEOT_PHYSICS.en.md`, and its PDF is compiled from that English source. Chapters 0–69 and appendices A–F form one continuous, complete document. All earlier physical topics are retained, and new proofs are integrated into the corresponding arguments. Readers should not have to reconstruct a proof from several old versions.
+The book's fixed title is *UEOT Physics*, its stable document identity is `UEOT-PHYSICS`, and its current bilingual revision is 3.11. The canonical text is `physics/qm/book/UEOT_PHYSICS.md`; the Chinese PDF is generated from that text. The complete English counterpart is `UEOT_PHYSICS.en.md`, and its PDF is compiled from that English source. Chapters 0–70 and appendices A–F form one continuous, complete document. All earlier physical topics are retained, and new proofs are integrated into the corresponding arguments. Readers should not have to reconstruct a proof from several old versions.
 
 Version reports, PRs, logs and mathematical modules each retain their own identity, without competing with the monograph as the authoritative theoretical text. The source manifest, chapter dossiers and evidence receipts record the basis of a statement and the part actually checked. Historical files preserve provenance. Their old statuses do not override a more recent verified kernel, and a new kernel does not retroactively confer machine proof on earlier unformalized physical propositions.
 
@@ -4878,12 +4879,12 @@ The third axis, `verification_kind`, records analytical derivation, exact arithm
 ~~~yaml
 document:
   id: UEOT-PHYSICS
-  edition: "3.10"
+  edition: "3.11"
   canonical_source: physics/qm/book/UEOT_PHYSICS.md
   derivative_pdf: physics/qm/book/UEOT_PHYSICS.pdf
   english_source: physics/qm/book/UEOT_PHYSICS.en.md
   english_pdf: physics/qm/book/UEOT_PHYSICS.en.pdf
-  chapter_range: [0, 67]
+  chapter_range: [0, 70]
   fundamental_unique_derivation_complete: false
   four_dimensional_nonperturbative_qft_complete: false
   quantum_gravity_complete: false
@@ -9623,6 +9624,674 @@ The universal arguments of the six results are paper proofs. Rational/integer in
 The closed arrow is specified simultaneous dynamics to a controlled finite predictor of the same intervention process. The next admissible extension is mode deletion or persistent-memory comparison in a specified finite Gaussian/free-field bath: derive prefix defects from the actual coupling, bound the same intervention slots and complete records, and retain a control showing that deleting a mode is not resetting a bath. Full OPT/independent complex selection, long-time limits, coherent controls and infinite references retain distinct obligations. Same-order EFT observables, the two high-energy generation candidates, flavour relations, new structure between Fisher and Lorentzian geometry, and the cosmological targets remain on the continuous roadmap.
 
 
+<a id="ch-70"></a>
+
+# 70. Complete persistent-environment processes, finite certification, and selection limits
+
+## 70.1 Shared object and proof obligations
+
+The actual Chapter 69 workspace, candidate commit, and historical execution evidence have been recovered. PR465 merged the original candidate into main `ee7fb2793a1dbb519703bba05f535f0d962d9e56`; its original computations have not been relabeled as new executions. This chapter continues from that verified basis with a three-slot process that retains the same environment throughout. The canonical contract, frozen before parallel research, is `persistent_bath/SHARED_MODEL.json`, with SHA256 `685d373bb5a70a677fd4d110cb81c6624260de95ea39cc60070a8f4bd9f19668`. Dynamics, instruments, complete records, calibration, finite prediction, and held-out decisions below refer to this one object. [QM3114]
+
+Two separate questions organize the chapter: whether the available operational principles uniquely select complex quantum theory, and whether a specified source yields controlled, reproducible complete predictions after complex quantum physical inputs are explicitly accepted. Resolving the latter does not remove the premises of the former. Core objects, composition, and persistence are read-only mathematical interfaces. Complex Hilbert spaces, the Born rule, tensor products, CP instruments, the Fock representation, vacuum preparation, and the declared readout structure remain independent physical inputs. Formulas, program receipts, and synthetic samples carry their respective proof or computational obligations.
+
+The common error object is the CQ output containing every stopped record. The reference $R$ may have any finite dimension, may be entangled with input $S$, and remains untouched during source evolution, instruments, and feedback; a declared terminal tester may read the output $S/R$. Every all-input statement concerns the external channel of this fixed policy. Changing intermediate instruments, feedback, or stopping requires a separately declared process. Numerical and statistical certification holds inside the stipulated two-mode vacuum model; it does not certify a real device or complete the unification of physics.
+
+## 70.2 Reachable sectors and the boundary of independent quantum selection
+
+Complex Hilbert spaces, the Born pairing, tensor products, CP instruments and Fock dynamics remain explicit physical inputs in this chapter. A complete process calculation can test a model assembled from those inputs; its success does not establish that Core has independently selected them. We distinguish the **reachable operational theory** generated by the registered preparations, operations and effects from a **global theory** concerning every physically allowed system and sector. The following construction states why these targets cannot be silently exchanged.
+
+<a id="c-qsel-02"></a>
+**C-QSEL-02 (Operational equivalence of hidden completions of a reachable sector and the boundary of global quantum selection).** Fix a reachable complex-quantum operation library, including complete finite tests, parallel composition, conditional composition, coarse graining and discarding. It has a completion with an additional central superselection sector that reproduces every finite adaptive circuit from reachable preparations, with unrestricted finite length and with references, failures, stops and terminal effects retained. Nevertheless, the completion's full state space contains a state that has no purification using any finite direct-sum matrix auxiliary system.
+
+**Proof.** Complete the algebra of a reachable system to
+
+$$
+\widetilde{\mathcal A}=M_d(\mathbb C)\oplus\mathbb C.
+$$
+
+States are $(\rho,h)$, with $\rho\succeq0,h\ge0,\operatorname{tr}\rho+h=1$; effects are $(E,e)$, with pairing $\operatorname{tr}(E\rho)+eh$. Embed reachable preparations as $(\rho,0)$. Extend each branch of a complete instrument by
+
+$$
+\widetilde\Phi_y(\rho,h)=(\Phi_y(\rho),w_yh),
+\qquad w_y\ge0,\qquad\sum_yw_y=1.
+$$
+
+Each branch is completely positive and their sum preserves trace. Along every reachable path the hidden component remains zero and the visible component remains the original branch. Induction on length, followed by the direct sum of terminal labels, therefore preserves every record. Parallel composition, conditional choices and coarse graining preserve the same conclusion.
+
+This extension concerns the registered elementary registers and the circuits they generate; it does not identify the systemwise direct-sum construction with a strong monoidal functor. Complete each nontrivial elementary register as above, while the empty register, or tensor unit, remains $\mathbb C$. Joint carriers use the **actual algebraic tensor product** of the completed algebras, for example $(M_d(\mathbb C)\oplus\mathbb C)\otimes(M_e(\mathbb C)\oplus\mathbb C)$. Its fully visible central block is $M_d(\mathbb C)\otimes M_e(\mathbb C)$; the direct sum of all other central blocks forms the hidden part and must not be silently replaced by one copy of $\mathbb C$. In general, write the input and output as $\widetilde{\mathcal A}=\mathcal A_{\rm vis}\oplus\mathcal A_{\rm hid}$ and $\widetilde{\mathcal B}=\mathcal B_{\rm vis}\oplus\mathcal B_{\rm hid}$. Discarding is the sum of the ordinary matrix traces over their central blocks. With no input or output register, the corresponding visible algebra is $\mathbb C$ and its hidden part is zero.
+
+Any original complete CP instrument $\{\Phi_y\}$ with multiple input and output registers can act as originally specified on the visible joint block, with the extension
+
+$$
+\begin{aligned}
+\widetilde\Phi_y(\rho\oplus\xi)
+&=\iota_{\mathcal B}\Phi_y(\rho)+\Xi_y(\xi),\\
+\Xi_y(\xi)&=w_y\operatorname{Tr}(\xi)\tau_{\mathcal B},
+\quad w_y\ge0,\quad\sum_yw_y=1.
+\end{aligned}
+$$
+
+where $\iota_{\mathcal B}$ embeds the visible block and $\tau_{\mathcal B}$ is any fixed normalized state of the actual output algebra; for a tensor-unit output choose $\tau_{\mathcal B}=1$. Every branch is CP, and their sum preserves the full input trace. Identity operations may instead use the identity extension on the hidden part, and discarding uses the full total trace. Extensions are chosen only for the registered generating operations; sequential, parallel and conditional circuits are then built by actual CP composition and actual algebraic tensor products. From visible preparations, $\xi=0$, so every such circuit retains its original visible branches and probabilities. The result establishes operational equivalence of reachable circuits. It does not assert that every original operational equation also holds on the added unreachable sectors, or that $\widehat{\mathcal A\otimes\mathcal B}=\widehat{\mathcal A}\otimes\widehat{\mathcal B}$. The completed theory may additionally allow preparations of hidden states, but they are outside the reachable preparation library fixed by this proposition.
+
+In contrast, the completion admits $(\rho/2,1/2)$, which occupies two central sectors. A pure joint state must occupy one central block: occupation of multiple blocks would give a nontrivial convex decomposition by central projections. Discarding any finite direct-sum matrix auxiliary system preserves the definite left central label and cannot produce that mixture. Universal purification therefore fails in the full completed theory. ∎
+
+This differs from chapter 54's finite Core classical countermodel. Starting from any specified reachable complex-quantum experiment, it preserves every circuit response generated by that library while changing a global property of the full theory. If a UEOT object is already defined by the **minimal reachable quotient** of all allowed future responses, the additional sector may simply be discarded representation redundancy. The result accepts that minimization. It neither establishes hidden sectors nor rules out a minimal complex-quantum realization. It excludes an inference from the present reachable data directly to the global structure.
+
+| Candidate | Complete basic tests and composition | Universal purification existence | Local tomography |
+|---|---|---|---|
+| Finite classical simplex | Satisfied | Fails for nontrivial mixtures | Satisfied |
+| Standard real quantum theory | Satisfied | Satisfied | Excluded by chapter 55's witness |
+| Standard finite complex quantum theory | Satisfied | Satisfied | Satisfied |
+| Nontrivial direct sums of complex matrix algebras | Satisfied | Fails for cross-central mixtures | Satisfied |
+
+Completeness of access to all physical sectors, purification for all systems, and the full reconstruction background still need independent grounds. Local tomography alone does not eliminate the final candidate. The CDP reconstruction also uses the full background of causality, perfect distinguishability, ideal compression, local distinguishability and pure conditioning; this chapter's finite interface cannot replace all of those hypotheses. [Chiribella, D'Ariano and Perinotti, 2011](https://arxiv.org/abs/1011.6451). The next foundational route must first decide whether selection is up to operational equivalence or concerns global structure, and then identify an independent source for each new principle. The present selection verdict is complete; Core's unique selection of complex quantum structure remains open.
+
+
+## 70.3 From finite legal tests to complete external-channel error
+
+Once the three durations, instruments, feedback and stopping rules are fixed, the persistent-bath experiment is a complete recorded channel whose input and output systems are both two-level systems. Its inaccessible internal bath is not the carrier that must then be tomographed. This distinction permits finite ordinary preparations and readouts to control every untouched reference. It does not permit reuse of the same certification after changing an intermediate intervention.
+
+<a id="p-tom-01"></a>
+**P-TOM-01 (An explicit finite-tester stability bound and its preparation, readout and dimension obligations).** For $d\ge2$, choose the following $d^2$ legal pure preparations and binary-effect settings:
+
+$$
+P_j=|j\rangle\langle j|,\quad
+P^x_{jk}=\frac{(|j\rangle+|k\rangle)(\langle j|+\langle k|)}2,\quad
+P^y_{jk}=\frac{(|j\rangle+i|k\rangle)(\langle j|-i\langle k|)}2
+\quad(j<k).
+$$
+
+Each readout setting is $\{P_q,I-P_q\}$. The projectors are not the outcomes of one common POVM. Define
+
+$$
+X_{jk}=|j\rangle\langle k|+|k\rangle\langle j|,\qquad
+Y_{jk}=-i|j\rangle\langle k|+i|k\rangle\langle j|.
+$$
+
+Their Hermitian duals are
+
+$$
+F^x_{jk}=X_{jk},\quad F^y_{jk}=Y_{jk},\quad
+F_j=P_j-\frac12\sum_{k\ne j}
+\bigl(X_{\min(j,k),\max(j,k)}+Y_{\min(j,k),\max(j,k)}\bigr).
+$$
+
+Direct calculation gives $\operatorname{tr}(P_qF_r)=\delta_{qr}$. For two instruments with the same input/output dimensions and complete label set, define
+
+$$
+\delta p_{yqr}=\operatorname{tr}
+\bigl[P_q(\Phi_y-\Psi_y)(P_r)\bigr].
+$$
+
+Their complete CQ channels obey
+
+$$
+\frac12\|\Phi_{\rm CQ}-\Psi_{\rm CQ}\|_\diamond
+\le\frac12\sum_r\|F_r^{(A)}\|_\infty
+\sum_{y,q}\|F_q^{(B)}\|_1|\delta p_{yqr}|.
+\tag{70-T}
+$$
+
+**Proof.** Apply the dual expansion once on the input and once on the output. For every finite reference $R$ and every matrix $Z$,
+
+$$
+(\Delta_y\otimes\mathrm{id}_R)(Z)
+=\sum_{r,q}\delta p_{yqr}F_q^{(B)}\otimes
+\operatorname{tr}_A[(F_r^{(A)}\otimes I_R)Z].
+$$
+
+Trace-norm duality yields
+
+$$
+\|\operatorname{tr}_A[(F\otimes I_R)Z]\|_1
+\le\|F\|_\infty\|Z\|_1.
+$$
+
+The triangle inequality, multiplicativity of the tensor trace norm and additivity over orthogonal record blocks then give the claim after taking the supremum. The quantifiers include every untouched reference and joint input, rather than a single Bell input. ∎
+
+Set
+
+$$
+\begin{aligned}
+A_d&=\frac d2(1+\sqrt{2d-1})+d(d-1),\\
+B_d&=d\sqrt{2d-1}+2d(d-1),\\
+\delta&=\max_{q,r}\sum_y|\delta p_{yqr}|.
+\end{aligned}
+$$
+
+The simpler upper bound is $A_{d_A}B_{d_B}\delta/2$, with sufficient constants:
+
+| $d_A=d_B$ | Preparation × readout settings | Half-diamond coefficient |
+|---|---:|---:|
+| 2 | 16 | $9+5\sqrt3\approx17.660254$ |
+| 3 | 81 | $(225+81\sqrt5)/4\approx101.530377$ |
+| 4 | 256 | $196+52\sqrt7\approx333.579068$ |
+
+These constants follow from the actual spectra of the duals and are not claimed optimal. The source code checks the dual identities and spectral polynomials in exact arithmetic for dimensions 2–4. The fixed three-slot protocol has external dimension two, so four calibrated preparations and four binary effects, with all four terminal records retained, can use the first row. Internal-bath tomography and preparation of a reference-entangled experimental state are not additional requirements for this bound. Dimension and trusted preparation/readout ranges remain independent premises.
+
+If preparation error has trace distance at most $\tau_r$, and each actual effect differs from its nominal effect in operator norm by at most $\xi_q$, then
+
+$$
+\sum_y|\widetilde p_{yqr}-p_{yqr}|\le2\tau_r+\xi_q.
+\tag{70-SPAM}
+$$
+
+The preparation term follows from contraction by the complete POVM. The readout term uses the unit total mass of the subnormalized label blocks. A simultaneous statistical radius, the actual fit residual after projection onto physical maps, and these SPAM terms must all enter (70-T). A common gauge transformation of unknown preparations and readouts can preserve every probability, so an absolute channel distance in specified coordinates needs an independent physical frame. This is consistent with the gauge issue in standard gate-set tomography. [Nielsen et al., 2021](https://arxiv.org/abs/2009.07301).
+
+The finite-dimensional assumption is equally essential: coherent leakage probability $\ell$ can cause state trace distance $\sqrt\ell$, so adding only $\ell$ is invalid. Whether a leakage flag is physically measured must be declared. Postselection also requires its own acceptance-probability bound: two processes at full-record distance $q$ can have accepted states at distance one on an event of probability $q$.
+
+Complete tomography is not automatically economical. With four labels, 99% coverage and the whole error budget 0.05 assigned to entrywise Hoeffding/union bounds, one conservative sufficient budget for this frame is 9,438,576 shots per setting, or 151,017,216 in total. This is not a sample lower bound or an experiment executed in this chapter. The present structured two-parameter calibration does not replace complete channel tomography; likewise, fixed-protocol tomography does not replace process-tensor certification for arbitrary intermediate interventions.
+
+
+## 70.4 The common multitime source with a persistent bath
+
+### Source, records and quantifiers
+
+The same two-mode environment is retained until each branch actually stops. The system S is a qubit; the initial state $\rho_{SR}$ is arbitrary, and the finite-dimensional reference R is never acted on during the dynamics. Set $\hbar=1$ and $H_S=0$, and fix the source below:
+
+$$
+\begin{aligned}
+H_\lambda&=I_S\otimes H_E+\lambda Z\otimes B,
+&H_E&=n_1+\frac32n_2,\\
+B&=(a_1+a_1^\dagger)+\frac35(a_2+a_2^\dagger),
+&\lambda&\in[1/5,2/5],\\
+\rho_{SRE}(0)&=\rho_{SR}\otimes|00\rangle\langle00|_E,
+&(t_1,t_2,t_3)&=(2/3,3/4,1/2).
+\end{aligned}
+$$
+
+After every joint evolution, apply the complete two-branch instrument $F=\operatorname{diag}(\sqrt{1/8},\sqrt{1/4})$ and $P=\operatorname{diag}(\sqrt{7/8},\sqrt{3/4})$. Failure stops immediately and retains its actual unnormalized SR state. Pass branches receive $R_y(\pi/2)$, $R_x(\pi/3)$ and I, respectively. Every terminal record f,pf,ppf,ppp is retained. Distance is half the sum of the trace norms of the record-block differences; E is discarded only at the stipulated terminal output. Complex Hilbert space, the Born rule, CP operations, oscillator dynamics and vacuum preparation remain independent physical inputs, not structures uniquely derived from Core.
+
+<a id="p-micro-08"></a>
+**P-MICRO-08 (A complete persistent Gaussian-bath process on a common domain).** We first construct a legitimate common source and then derive its full multitime response. General finite Gaussian states specify the scope of the analytic formula only. Every executed, calibrated and numerically certified source in this section starts in the frozen vacuum above.
+
+### Field bounds and a common self-adjoint domain
+
+For finitely many positive-frequency modes, define $a(g)=\sum_k g_k^*a_k$ and $b_g^2=\sum_k|g_k|^2/\omega_k$. Cauchy–Schwarz and the CCR give, initially on finite Fock vectors,
+
+$$
+\begin{aligned}
+\|a(g)\psi\|&\le b_g\|H_E^{1/2}\psi\|,\\
+\|a(g)^\dagger\psi\|^2
+&=\|a(g)\psi\|^2+\|g\|_2^2\|\psi\|^2,\\
+\|(a(g)+a(g)^\dagger)\psi\|
+&\le2b_g\|H_E^{1/2}\psi\|+\|g\|_2\|\psi\|.
+\end{aligned}
+$$
+
+The spectral inequality $\sqrt{x}\le\epsilon x+(4\epsilon)^{-1}$ turns the last line into an arbitrarily small relative $H_E$ bound plus a bounded term. The field therefore has relative bound zero. The system operator is bounded, so Kato–Rellich gives a self-adjoint realization on $\mathbb C^2\otimes D(H_E)$. A compact finite-coupling set and a positive frequency lower bound make these estimates uniform. Here completing the square also constructs the unitary explicitly. With $\omega=(1,3/2)$ and $c=(1,3/5)$, the $Z$-sector $z=\pm1$ satisfies
+
+$$
+\begin{aligned}
+U_z(t)&=e^{i\phi(t)}D(z\alpha(t))e^{-itH_E},\\
+\alpha_k(t)&=\frac{\lambda c_k}{\omega_k}(e^{-i\omega_kt}-1),\\
+\phi(t)&=\sum_k\left(\frac{\lambda c_k}{\omega_k}\right)^2
+[\omega_kt-\sin(\omega_kt)],\\
+D(\zeta)&=\exp\!\left[\sum_k(\zeta_ka_k^\dagger-\zeta_k^*a_k)\right].
+\end{aligned}
+$$
+
+The identity $a_kD(\zeta)=D(\zeta)(a_k+\zeta_k)$ shows that finite displacement preserves $D(H_E)$; the additional field terms are controlled by the preceding bound. This explicit unitary agrees with the self-adjoint source, rather than defining dynamics through an unproved formal series.
+
+### Energy with complete stopping records
+
+Dilate the instruments into a finite record register. After a branch stops, let its bath evolve freely until the common horizon $T=23/12$. This padding changes neither its terminal record nor its SR output. System and record operations preserve total number $N=n_1+n_2$, and the live-branch coupling operator has norm at most one. Put $\gamma=\|c\|_2=\sqrt{34/25}$. Vacuum evolves into finitely many displacement histories with the required number moments. Differentiation on this actual domain and Cauchy–Schwarz give
+
+$$
+\left|\frac{d}{dt}\langle N\rangle\right|
+\le2|\lambda|\gamma\sqrt{\langle N\rangle},
+\qquad
+\sqrt{\langle N(t)\rangle}\le|\lambda|\gamma t.
+$$
+
+The zero initial value is handled by first regularizing with $\sqrt{\langle N\rangle+\epsilon}$ and then taking $\epsilon$ to zero. This is a complete-record, unconditioned energy bound. Dividing a branch by a small acceptance probability does not preserve it without a cost. For a separately declared finite-energy Gaussian preparation, the right-hand side becomes $\sqrt{\langle N(0)\rangle}+|\lambda|\gamma t$; this does not extend the present truncation or numerical certificate to nonvacuum input.
+
+### Complete history pairs for a correlated Gaussian preparation
+
+For a system eigenvalue history $s=(z_1,\ldots,z_n)$, let $R_j=\operatorname{diag}(e^{-i\omega_kt_j})$. Starting at $\beta_0=0,\theta_0=0$, recurse
+
+$$
+\begin{aligned}
+\beta_j&=R_j\beta_{j-1}+z_j\alpha(t_j),\\
+\theta_j&=\theta_{j-1}+\phi(t_j)
++\operatorname{Im}\langle R_j\beta_{j-1},z_j\alpha(t_j)\rangle,\\
+W_s&=U_{z_n}(t_n)\cdots U_{z_1}(t_1)
+=e^{i\theta_s}D(\beta_s)e^{-iH_ET_n}.
+\end{aligned}
+$$
+
+The second line retains the exchange phase from Weyl multiplication. After noncommuting intermediate operations, this phase generally cannot be discarded.
+
+Use quadratures $r=(q_1,p_1,q_2,p_2)$, with $q_k=(a_k+a_k^\dagger)/\sqrt2$, $p_k=(a_k-a_k^\dagger)/(i\sqrt2)$ and $\Omega=\bigoplus_{k=1}^2\begin{pmatrix}0&1\\-1&0\end{pmatrix}$. Let d be the mean and V the symmetric covariance, with $V+i\Omega/2\succeq0$. V is the full matrix and may contain intermode correlations. The Gaussian characteristic function and history-pair factor are
+
+$$
+\begin{aligned}
+\xi(\zeta)&=\sqrt2(\operatorname{Im}\zeta_1,-\operatorname{Re}\zeta_1,
+\operatorname{Im}\zeta_2,-\operatorname{Re}\zeta_2)^T,\\
+\chi_\sigma(\zeta)&=\operatorname{Tr}[\sigma D(\zeta)]
+=e^{i\xi(\zeta)^Td-\frac12\xi(\zeta)^TV\xi(\zeta)},\\
+F_{s,r}&=\operatorname{Tr}(W_s\sigma_EW_r^\dagger)\\
+&=e^{i[\theta_s-\theta_r+\operatorname{Im}\langle\beta_r,\beta_s\rangle]}
+\chi_\sigma\!\left(e^{i\omega T_n}(\beta_s-\beta_r)\right).
+\end{aligned}
+$$
+
+This follows from cyclicity of the trace, the Weyl phase in $D(-\beta_r)D(\beta_s)$, and free rotation. No product decomposition of a correlated initial bath is made, and no conditional bath is assumed Gaussian.
+
+For terminal record h, let $M_{h,j}$ denote the actual failure operator or rotated pass operator, and define $A_{h,s}=M_{h,n}\Pi_{z_n}\cdots M_{h,1}\Pi_{z_1}$. The full output is
+
+$$
+\rho_h^{SR}=\sum_{s,r}F_{s,r}
+(A_{h,s}\otimes I_R)\rho_{SR}(A_{h,r}^\dagger\otimes I_R).
+$$
+
+This is the expansion of the actual joint operator $\sum_sA_{h,s}\otimes W_s$ followed by a partial trace, so it is CP; $(F_{s,r})$ is also a positive Gram matrix. Summing outcomes successively and using $F^\dagger F+P^\dagger P=I$ proves unit total trace and causal prefix constraints. The reference is retained throughout. Iterating $(3/4)I\preceq P^\dagger P\preceq(7/8)I$ bounds surviving mass and yields $27/64\le\Pr(ppp)\le343/512$. This neither makes the accepted effect scalar nor makes normalized postselection linear.
+
+Even vacuum does not support a single-Gaussian conditional closure. After the first pass with Bell input, the bath marginal mixes opposite coherent states with weights 7/13 and 6/13. With $\mu=\sqrt2|\alpha_1(t_1)|$, its displacement-aligned fourth cumulant is $\mu^4(-2+8/169-6/28561)$, strictly nonzero for nonzero displacement. Gaussian preparation and fully Gaussian conditional dynamics are therefore different assumptions.
+
+
+## 70.5 Genuine finite propagation error and parameter stability
+
+### Finite Duhamel expansion and the all-input lift
+
+<a id="p-micro-09"></a>
+**P-MICRO-09 (An all-input finite approximation of the same persistent source).** Let $P_K$ project onto occupation at most K in each mode, let $J_K$ be its inclusion, and use the actual compression $H_{\lambda,K}=J_K^\dagger H_\lambda J_K$. Free bath evolution and every dilated record operation preserve total number. In the interaction picture including these operations, write the field as $\widetilde V(s)$. On total number at most $k-1$, its norm is bounded by $\gamma(\sqrt{k-1}+\sqrt{k})$.
+
+The essential Duhamel orientation keeps true propagation on the left:
+
+$$
+W(T,0)=I-i\lambda\int_0^T W(T,s)\widetilde V(s)\,ds.
+$$
+
+Expand the left suffix only finitely many times. In the order-j remainder, the true unitary remains to the left of every field factor, while the right-hand input has finite support originating in vacuum. Each field increases total number by at most one. Thus every term through order K stays inside $N\le K$, itself contained in the rectangular carrier $P_K$; the first K terms of the infinite and finite sources agree exactly. Projections in the finite remainder cannot increase norms. With $\lambda_{\max}=2/5$, the ordered time-simplex volume bounds the two order-$K+1$ remainders separately:
+
+$$
+\begin{aligned}
+x&=\lambda_{\max}\gamma T,
+&c_j&=\frac{x^j}{j!}\prod_{k=1}^j(\sqrt{k-1}+\sqrt{k}),\\
+\|(W-J_KW_KJ_K^\dagger)\psi_{\rm vac}\|
+&\le c_{K+1}+c_{K+1},
+&d_K&=\min\{1,2c_{K+1}\}.
+\end{aligned}
+$$
+
+No convergence of an infinite Dyson series is assumed, and no uncontrolled infinitely evolved state is placed to the right of a field operator. Purify an arbitrary input and retain every instrument record in the dilation. The operator estimate is unchanged by tensoring the identity on any reference. Pure-state trace distance is at most the corresponding vector distance; discarding E and unused dilation registers then gives
+
+$$
+\begin{gathered}
+\sup_{\rho_{SR},\,\dim R<\infty}
+\frac12\sum_h\left\|
+(\Phi_{\lambda,h}\otimes\operatorname{id}_R)(\rho_{SR})-
+(\Phi_{\lambda,K,h}\otimes\operatorname{id}_R)(\rho_{SR})
+\right\|_1\le d_K,\\
+d_{20}<0.00001344.
+\end{gathered}
+$$
+
+This is an analytic statement for arbitrary SR input, not an extrapolation from numerical Bell-input agreement. The same bound applies when the first two durations are interchanged, with the same total exposure and legal system operations.
+
+### Boundary residuals on actual finite prefixes
+
+A small initial tail does not establish accurate propagation by a compressed generator. Here only creation operators cross the rectangular boundary. The two outgoing faces are orthogonal, hence
+
+$$
+\begin{aligned}
+\mathcal R_K&=H_\lambda J_K-J_KH_{\lambda,K},\\
+\mathcal R_K^\dagger\mathcal R_K
+&=\lambda^2(K+1)I_S\otimes
+\left[\Pi_{n_1=K}+\frac9{25}\Pi_{n_2=K}\right].
+\end{aligned}
+$$
+
+Let $\sigma_h$ be the actual unnormalized live prefix of the same finite model, with mass $m_h$, and let $\sigma_h(s)$ be its local finite evolution. After purifying a subnormalized state, the Duhamel vector-defect integral must be multiplied by its norm $\sqrt{m_h}$ to bound trace distance. Contractivity of the true complete suffix and telescoping over the tree give
+
+$$
+r_h(s)=\operatorname{Tr}\!\left[
+(\mathcal R_K^\dagger\mathcal R_K\otimes I_R)\sigma_h(s)\right],
+\qquad
+D_{\rm full}\le\sum_{h\,\mathrm{live}}\int_0^{t_h}\sqrt{m_h r_h(s)}\,ds.
+$$
+
+The occupations and masses must belong to the actual finite prefixes, not be replaced by infinite-source occupations. This formula can sharpen the result, but ordinary numerical quadrature is not called an interval certificate here. The uniform certificate actually used is $d_K$ above.
+
+The frozen vacuum has zero initial tail; no mode is deleted and no Trotter split is used. Changing the preparation requires separate initial-tail and propagation costs; correlated modes cannot be replaced by a freshly prepared product vacuum. Mode deletion should switch off its coupling on the same Hilbert space and bound the coupling difference on the actual retained initial state and finite domain. Device preparation, control, leakage, effective-model and readout errors still require independent evidence.
+
+### Parameter stability is first proved in the infinite source
+
+For $\lambda,\widehat\lambda\in[1/5,2/5]$, compare the same controller and stopping rules. The parameter Duhamel formula inserts $(\lambda-\widehat\lambda)Z\otimes B$ with a true infinite-source prefix on its right. Its energy estimate must therefore come from the infinite source, rather than an assumed invariant of the finite compression. For a normalized purified prefix,
+
+$$
+\begin{aligned}
+\|B\psi(t)\|&\le\gamma\left(\sqrt{\langle N\rangle}
++\sqrt{\langle N\rangle+1}\right)
+\le\gamma(1+2\lambda_{\max}\gamma t),\\
+D_{\rm full}(\Phi_\lambda,\Phi_{\widehat\lambda})
+&\le|\lambda-\widehat\lambda|
+\int_0^T\gamma(1+2\lambda_{\max}\gamma t)\,dt\\
+&=|\lambda-\widehat\lambda|
+[\gamma T+\lambda_{\max}\gamma^2T^2]
+\le\frac{51}{10}|\lambda-\widehat\lambda|.
+\end{aligned}
+$$
+
+The bracket is approximately $4.2336426708$. The rational estimate $\gamma<7/6$ bounds it by $38111/9000<51/10$. We retain the previously frozen $51/10$. Parameter stability is established first; finite truncation and numerical-representation errors are added afterwards. It does not authorize silent changes of frequencies, relative couplings, preparation or control permissions.
+
+
+## 70.6 Memory controls and physical numerical representation
+
+### A strict memory witness for the fixed three-slot source
+
+<a id="c-qmem-01"></a>
+**C-QMEM-01 (Equal single-slot channels do not determine a multitime process).** Repreparing vacuum after every slot defines a different process. Its isolated single-slot channel equals the true source for every input and reference, because that slot still starts from the same vacuum and undergoes the same evolution. Yet for the same three-slot Bell input at $\lambda=3/10$, the event “record ppp and $X_S\otimes X_R=+1$” has the strict interval witness
+
+$$
+p_{\rm reset}-p_{\rm persistent}
+>0.03164037538529123569>\frac3{100},
+\qquad
+D_{\rm full}(\Phi_{\rm reset},\Phi_{\rm persistent})>\frac3{100}.
+$$
+
+This uses 80-digit interval history pairs and an independently propagated sequence of reset Schur channels, with exact dyadic endpoints retained. An event gap bounds trace distance directly; interval diagonalization of a trace norm is unnecessary, and no different causal-break protocol is substituted. The complete distance approximately $0.1012518562$ remains a floating diagnostic. Omitting the exchange phase causes approximately $0.0502254699$ error. Vacuum has exactly zero initial tail above K=0, but its propagation error at $\lambda=0.4$ is approximately $0.2389578616$. These controls identify the consequences of separate omissions; they do not replace the strong standard baseline.
+
+### Why interval Choi bounds control arbitrary reference inputs
+
+<a id="p-num-01"></a>
+**P-NUM-01 (From interval Choi bounds to a physical terminal instrument).** With normalized Bell vector $|\Omega_2\rangle=(|00\rangle+|11\rangle)/\sqrt2$, define the four normalized Choi blocks in output-S followed by input-reference order:
+
+$$
+J_h=(\Phi_h\otimes\operatorname{id}_2)
+(|\Omega_2\rangle\langle\Omega_2|),
+\qquad
+J_h\succeq0,
+\qquad \sum_h\operatorname{Tr}_{\rm out}J_h=I_2/2.
+$$
+
+For generator parameter 3/10 and calibration-only nominal parameter 0.299314119192, independent 80-digit interval formulas enclose every entry for both timing orders. Each timing separately certifies the actually stored binary64 matrices from the Weyl and K20 Galerkin implementations, giving eight certificates. Convert the stored matrices to exact rationals and Hermitianize them, calling them $Q_h$. Entrywise intervals bound Frobenius error, and each block has dimension four, so
+
+Because the target $J_h$ is Hermitian, exact Hermitianization is an orthogonal projection in the Frobenius inner product and does not increase the Frobenius error relative to $J_h$.
+
+$$
+\begin{aligned}
+e&:=\sum_h\|Q_h-J_h\|_1
+\le2\sum_h\|Q_h-J_h\|_F<10^{-12},\\
+\frac12\|\mathcal Q-\Phi\|_\diamond
+&\le\frac{d_{\rm in}}2\sum_h\|Q_h-J_h\|_1=e,
+\qquad d_{\rm in}=2.
+\end{aligned}
+$$
+
+The second line follows directly by vectorization. Any unit rank-one input $|u\rangle\langle v|$ with an arbitrary reference can be written as $(I\otimes A)|\Omega_2\rangle\langle\Omega_2|(I\otimes B^\dagger)$, with $\|A\|,\|B\|\le\sqrt2$. Left and right multiplication therefore increase each block trace norm by at most two. A singular-value decomposition extends the bound to any trace-class input, proving the diamond inequality. This certifies the stored linear map for every reference input; it does not extrapolate one floating Bell-input agreement.
+
+The intervals compare the exact infinite source directly with the actual stored matrices. For the Galerkin backend, this fixed-nominal-parameter difference already contains truncation and floating matrix-exponential errors; it is not merely a rounding estimate. In contrast, $d_{20}$ is an independent analytic bound uniform over the entire frozen parameter interval.
+
+### Exact CP/TP repair and its term-by-term cost
+
+The raw $Q_h$ need not be positive or trace preserving. Choose rational $\delta=10^{-10}$ and $a=(1+20\delta)^{-1}$, and define
+
+$$
+\widetilde Q_h=Q_h+\delta I_4,
+\qquad
+R=I_2/2-a\sum_h\operatorname{Tr}_{\rm out}\widetilde Q_h.
+$$
+
+Each block has operator error at most $e<\delta$, hence $\widetilde Q_h\succeq0$. Trace-norm contractivity of partial trace on Hermitian inputs bounds the aggregate marginal error by $e<2\delta$. The four added $\delta I_4$ blocks contribute $8\delta I_2$ after partial trace. Therefore
+
+$$
+a\sum_h\operatorname{Tr}_{\rm out}\widetilde Q_h
+\preceq a(1/2+10\delta)I_2=I_2/2,
+\qquad R\succeq0.
+$$
+
+Set $J_h^{\rm rep}=a\widetilde Q_h$ for every block, then add $|0\rangle\langle0|_{\rm out}\otimes R$ only to the existing f block. Every block is positive and the total output marginal is exactly $I_2/2$, defining a CP/TP terminal instrument. Matrices, a, delta and R are all stored as exact Fractions. Trace preservation and Hermiticity are verified entrywise with rational arithmetic. Separate review additionally checked all 504 principal minors of the eight certificates' blocks and residuals exactly.
+
+To expose the repair cost, let $\Delta_h=Q_h-J_h$ and $s=\sum_h\operatorname{Tr}\Delta_h$, so $|s|\le e$. Since $R\succeq0$ and $\sum_h\operatorname{Tr}J_h=1$, term-by-term triangle bounds give
+
+$$
+\begin{aligned}
+\sum_h\|J_h^{\rm rep}-J_h\|_1
+&\le ae+(1-a)+16a\delta+\operatorname{Tr}R,\\
+\operatorname{Tr}R&=1-a(1+s+16\delta),\\
+\sum_h\|J_h^{\rm rep}-J_h\|_1
+&\le ae+2(1-a)-as\\
+&\le2ae+40a\delta
+=a(40\delta+2e)<10^{-8},\\
+\frac12\|\Phi^{\rm rep}-\Phi\|_\diamond&<10^{-8}.
+\end{aligned}
+$$
+
+The term $16a\delta$ comes from four four-dimensional blocks; $2(1-a)=40a\delta$ comes from normalization scaling. No input-dimension factor is missing. This is explicitly paid physicalization, rather than treating raw “nearly CP” matrices as CP.
+
+The repaired object is a terminal prediction instrument for one fixed policy. It is not claimed implementable at each original early stopping time, nor to repair a complete process tensor for all counterfactual interventions. Its changed failure block is included in the error bound. A later floating contraction for arbitrary input requires its own rounding budget; the fixed Bell-input Pauli readout here can instead be evaluated exactly from the rational matrices.
+
+The frozen calibration certificate retains the conservative budget
+
+$$
+\varepsilon_{\rm CQ}
+=\frac{51}{10}r_\lambda+d_{20}+\varepsilon_{\rm phys},
+\qquad
+\varepsilon_{\rm tester}
+=\varepsilon_{\rm CQ}+\frac12r_\eta,
+\qquad \varepsilon_{\rm phys}=10^{-8}.
+$$
+
+At the current nominal parameter the interval certificate already directly bounds the infinite-source-to-repaired-predictor difference. Paying $d_{20}$ again is a conservative reserve, not a second independent discovery of the same error. The term $r_\eta/2$ applies only to the declared complete binary terminal detector model, not to arbitrary device SPAM.
+
+Standard persistent joint evolution and the same Gaussian influence functional predict the same physics. This section connects explicit premises, complete records, actual finite propagation and auditable numerical representation, without claiming additional empirical advantage over standard quantum theory. Infinite modes, local field theory, energy exchange and thermalization retain separate UV/IR, representation, causal-composition and limit obligations.
+
+## 70.7 Persistent-memory lower bounds after a causal break
+
+<a id="p-qmem-02"></a>
+**P-QMEM-02 (A necessary memory dimension from causal-break response rank).** At a fixed temporal cut, if the Hilbert dimension of every history-carrying register crossing the cut is jointly $D$, the response matrix for histories $h$ and future events $t$ satisfies
+
+$$
+H_{ht}=\operatorname{tr}(F_t\sigma_h),\qquad
+\operatorname{rank}_{\mathbb R}H\le D^2.
+\tag{70-M}
+$$
+
+**Proof.** Expand Hermitian states and effects in the same real basis of dimension $D^2$. The matrix $H$ factors through this real vector space and therefore has rank at most $D^2$. ∎
+
+Future operations must have the same implementation for every history. If a controller or simulator can read the past label, that log is part of the memory crossing the cut. A varying accessible reference also belongs in $D$. When $S$ is genuinely discarded and independently prepared in the same state, with no varying reference crossing the cut, only $M$ carries history and $d_M\ge\lceil\sqrt{\operatorname{rank}H}\rceil$. This is a necessary bound, not a theorem implementing CP compression.
+
+For the same two-mode vacuum source, declare a separate diagnostic: prepare $S$ in $Z=s$, $s=\pm1$, evolve for $t=2/3$; discard and prepare $|+\rangle$, evolve for $\tau=3/4$; finally measure $Y$. Future operations do not read $s$, the reference is unused, and the bath is not reset. With $\kappa_k=\lambda c_k/\omega_k$, the exact coherence is
+
+$$
+f_s=v e^{is\theta},\qquad
+v=\exp\!\left[-4\sum_k\kappa_k^2(1-\cos\omega_k\tau)\right],
+$$
+$$
+\theta=4\sum_k\kappa_k^2
+\left[\sin\omega_k t+\sin\omega_k\tau-\sin\omega_k(t+\tau)\right].
+$$
+
+The first slot writes opposite coherent displacements into the bath; the second reads that history through the Weyl exchange phase. Hence
+
+$$
+H=\frac12
+\begin{pmatrix}1-b&1+b\\1+b&1-b\end{pmatrix},\qquad
+b=v\sin\theta.
+$$
+
+Using $\sin x+\sin y-\sin(x+y)=4\sin(x/2)\sin(y/2)\sin((x+y)/2)$, the full interval $\lambda\in[1/5,2/5]$ obeys $0<\theta<2.2272<\pi$. Thus $b>0$, the response rank is two, and every finite quantum-memory realization requires dimension at least two. This does not show that two-dimensional memory suffices for all bath histories.
+
+At $\lambda=0.2,0.3,0.4$, the second singular values are approximately 0.0686433, 0.1432226 and 0.2280272. Independent $K=14$ mode-matrix calculations differ from the analytic coherences by less than $3.35\times10^{-16}$ in floating arithmetic. Nonvanishing throughout the interval follows from the analytic inequality, not extrapolation from those three grid points. A device-level memory-rank claim still needs a simultaneous confidence region and SPAM bounds excluding every rank-one response; uncontrolled history-dependent drift can imitate this signal.
+
+## 70.8 Joint identification, finite-sample coverage, and same-source certification
+
+<a id="p-rob-06"></a>
+**P-ROB-06 (joint identification and coverage from two trusted settings).**
+For the declared two-mode vacuum source, let $\lambda\in[1/5,2/5]$ be the
+common coupling scale and $\eta\in[9/10,1]$ a fixed symmetric visibility
+shared by the declared binary readouts. A fresh trial prepares $|+X\rangle$,
+evolves for t, and measures X. Its observed mean is
+
+$$
+\mu_t=\eta e^{-a(t)\lambda^2},\qquad
+a(t)=4\left[1-\cos t+\frac4{25}(1-\cos(3t/2))\right].
+$$
+
+The zero-time setting and $t=3/2$ therefore determine
+
+$$
+\eta=\mu_0,\qquad
+\lambda=\sqrt{\frac{\log\mu_0-\log\mu_{3/2}}{a(3/2)}}.
+$$
+
+The identification domain requires positive visibility, the nonnegative
+coupling convention, known frequencies and relative couplings, vacuum
+preparation, and trusted preparation/readout structure. A single nonzero
+time admits the exact equivalence curve
+$\eta'=\eta\exp[a(t)(\lambda'^2-\lambda^2)]$; more shots at that setting cannot
+remove the degeneracy. With an unknown common thermal occupation n, all
+single-slot coherences identify only $(2n+1)\lambda^2$. An unknown detector
+bias or unrestricted setting-dependent drift requires additional independent
+anchors and an appropriate error model. These quantities are not silently
+treated as identified by the present calibration.
+
+Each calibration setting generated 200,000 synthetic independent trials.
+For the plus-outcome frequency, use the Hoeffding radius
+
+$$
+r_p=\sqrt{\frac{\log(4/0.01)}{2\cdot200000}}+10^{-9},
+$$
+
+and transform it into expectation intervals $I_0,I_1$. The joint set is
+
+$$
+C(D)=\{(\lambda,\eta)\in[.2,.4]\times[.9,1]:
+\eta\in I_0,\;\eta e^{-a(3/2)\lambda^2}\in I_1\}.
+$$
+
+Under the declared independent stationary sampling assumptions, coverage
+is at least 99%. The $10^{-9}$ term is a numerical sampling-probability
+allowance frozen in advance. An independent interval implementation checked
+all 98 probabilities actually used by the generator; the largest discrepancy
+was below $1.011\times10^{-16}$. Coverage is a statistical theorem: one fixed-seed
+synthetic run does not empirically establish the coverage frequency.
+
+The realized joint set is nonempty. Calibration alone selected
+
+$$
+\widehat\lambda=0.299314119192,\qquad
+\widehat\eta=0.959480000000.
+$$
+
+Outward projections satisfy
+
+$$
+\begin{aligned}
+\lambda&\in[0.292143974948,0.306484263435],\\
+|\lambda-\widehat\lambda|&\le0.007170144244,\\
+|\eta-\widehat\eta|&\le0.007740457121.
+\end{aligned}
+$$
+
+Interval arithmetic verifies that the nominal point belongs to the joint
+set. The displayed rectangle is only an outer enclosure. The generator's
+truth file is read solely by generation and a separate generator audit; it
+is not an input to estimation or held-out decisions.
+
+<a id="p-rob-07"></a>
+**P-ROB-07 (a complete CQ certificate and independent holdout).** Combining
+the same-source all-input parameter bound, the K=20 Galerkin bound, and the
+interval-validated exact rational CP/TP repair gives
+
+$$
+\begin{aligned}
+D_{\rm full}
+&\le\frac{51}{10}(0.007170144244)+0.00001344+10^{-8}\\
+&=0.0365811856444\le0.036581185645<0.05.
+\end{aligned}
+$$
+
+This inequality retains an arbitrary finite untouched reference and every
+`f,pf,ppf,ppp` record. The pointwise nominal Choi certificate already compares
+directly with the infinite source. The displayed $K=20$ term is a retained
+conservative uniform analytic allowance, not an omitted truncation error of
+that pointwise certificate. Preparation, control, and effective-model errors are
+zero here as assumptions of the selected synthetic source; corresponding
+device certificates have not been established. Normalized successful
+conditional states do not inherit this precision without accounting for
+the acceptance probability.
+
+For each fixed binary terminal tester, uncertainty in the shared visibility
+adds at most $|\eta-\widehat\eta|/2$. Thus the complete readout distribution obeys
+
+$$
+D_{\rm measured}\le0.0404514142049\le0.040451414205<0.05.
+$$
+
+The quantum-output and readout-distribution metrics are recorded separately.
+The four terminal observables actually used, `XX,XY,YZ,ZZ`, are contracted
+with the repaired rational Choi matrices in exact rational arithmetic; an
+unbudgeted later floating contraction is not included in this certificate.
+
+The nominal model, statistical rule, and program were hash-bound before
+holdout generation. Each family used 100,000 trials for each of the four
+observables, retaining all eight stopped-record/sign events:
+
+| Holdout family | Timing/control change | Result |
+|---|---|---|
+| Original three-slot deployment | `(2/3,3/4,1/2)` with noncommuting intermediate rotations | Frozen contract not rejected |
+| Changed intervals | `(3/4,2/3,1/2)`, same total duration and controls | Frozen contract not rejected |
+| Shared-detector violation | Original timing, generator visibility eta=.70 | Frozen model contract rejected |
+
+An independent interval history-pair implementation encloses the continuous
+parameter set using 288 lambda grid points, the eta endpoints, and a
+$5.1\,\mathrm{mesh}/2$ covering allowance. Simultaneous confidence intervals cover the
+96 events. When the frozen model holds, the combined calibration/holdout
+false-rejection probability is at most `.02`. Non-rejection establishes
+neither model uniqueness nor device validation.
+
+
+## 70.9 Strong baseline, cost, and real-data qualification
+
+Standard persistent joint evolution, the Gaussian influence functional,
+and the process used here describe the same conditional quantum map. With
+the same calibration data, parameter set, controls, and robust rule, their
+predictions agree. The independent K=20 Galerkin and Weyl backends differ
+in the full CQ floating calculation by approximately `8.93e-16` and
+`9.32e-16` for the two normal timings; interval enclosures and exact physical
+repair separately supply the numerical guarantee. The method verdict is
+**`EQUIVALENT_NO_ADDED_GAIN`**. This iteration does not establish an additional
+physical prediction or an advantage over a strong standard quantum method
+under equal resources.
+
+Resetting the bath between slots changes the full CQ nominal output by
+approximately `.100895` and `.104952`. This confirms that the ablation loses
+memory; it is not a substitute for the strong-baseline comparison and does
+not reject every possible Markov model. The retained synthetic data contain
+1.6 million trials: 400,000 calibration and 1.2 million holdout trials. No initial projection filter is used; all failure records of the source itself are retained. The holdout trials consumed 2,966,811
+interaction slots when charged through their actual stopping prefixes.
+These are simulated protocol resources, not hardware calls or laboratory
+wall time.
+
+A separate, predeclared reproduction used one author-published processed
+observable from Zhu et al.,
+`O=X tensor (2Z+Y)/sqrt(5) tensor I tensor ...`. All 5-by-11 values in the
+original HDF5 member were retained. The mean-curve RMSE is `0.01860965`
+against the authors' noisy simulation and `0.03351389` against the ideal
+simulation on matching grid points. The original HDF5 member, archive
+SHA256/MD5, source, and visible license status are preserved. These are not
+raw trials for the oscillator source: the protocol-specific failure,
+timing, vacuum, reference, reset, and calibration/holdout records are absent.
+They cannot provide the device certificate required by this chapter.
+
+Three conclusions therefore coexist: the declared source has a mathematical
+and synthetic certificate; an external processed experimental observable has
+been reproduced; the matched device contract remains **`NOT_CERTIFIED`**.
+Independent physical selection and the broader unification task remain open.
+
+## 70.10 Decisions and the next research boundary
+
+The three parallel research roles performed substantive cross-review. A independently read B's eight interval certificates, checked 504 principal minors exactly, and verified Choi normalization and tensor order. B reviewed C's statistics, error composition, and strong baseline. C reviewed A's selection counterexample, operational interface, and all-input quantifiers. Review identified two corrected issues: variable shadowing had mislabeled an actual $K=20$ execution as 24, and one decimal display in the old nominal file was $4\times10^{-13}$ below its exact upper bound. Additive corrections and new outward bounds preserve the old files and execution identities. They do not conceal refitting or alter frozen held-out decisions. This is independent-role review within the project, not external peer review.
+
+Nine new stable results are registered with separate scopes for conditional paper proofs, explicit counterexamples, exact finite algebra, and executed interval calculations. The previous 194 result objects and 117 claims retain their historical identities; this edition has 203 results and 126 claims. No new Lean proof is claimed. The integrated replay separately records execution time, source hashes, reuse of original samples, commands, resources, and outputs; old synthetic samples are not counted as new experiments.
+
+The completed research loop has a declared scope: genuine finite propagation and parameter bounds connect one persistent source to legal complete instruments, independent holdout, and auditable numerical certificates. Available reachable data still do not select a global quantum theory. Comparison with the strong standard method is equivalent and yields no additional predictive advantage. The next physical question can reduce independent physical inputs or exclude competing theories through a noncircular principle, specify a prediction that differs from that baseline, or establish a rigorous resource improvement under the same controls, data, and cost. An independently justified reduction of premises can advance unification while reproducing standard predictions. Device validation requires independent preparation, control, readout, and complete stopped-record evidence matching this protocol.
+
+Further obligations remain explicit: infinite modes and continuum limits, UV/IR and renormalization, relativistic causality, gauge and matter selection, thermalization and energy exchange, genuine gravity and spacetime dynamics, semiclassical limits, cosmology, and observational constraints. This finite source does not prove those interfaces. The release audit retains their premise classes, distinguishable exit conditions, and full physics responsibility map. Completed chapter counts do not measure the fraction of physics solved. [QM3114]
+
 <a id="appendix-a"></a>
 
 # Appendix A. Notation, units, and responsibilities of standard theorems
@@ -9703,7 +10372,7 @@ In Chapters 49–50, $R_\rho(w)$ denotes the response to all finite words, $W$ t
 
 # Appendix B. Registry of numbered results
 
-The 3.7 bilingual revision preserves all 173 stable result IDs of research edition 3.6, without adding or withdrawing another result. These comprise the 161 results of edition 3.5 and the 11 propositions and one counterexample added in Chapter 66 by the 3.6 research revision. The earlier composition is 78 from edition 2.0, 10 in Chapters 49–50, 13 in Chapters 51–53, 16 in Chapters 54–56, 14 in Chapters 57–59, 16 in Chapters 60–62, and 14 in Chapters 63–65. The registry counts analytic statements in the text, not original discoveries, Lean declarations, or experimental confirmations. Each chapter supplies the full hypotheses, proof, and open obligations. The bilingual map separately binds the titles and anchors in both languages. Edition 3.8 appends the nine Chapter 67 results, giving 182 in total; all 173 previous result objects and their historical verification identities are preserved. Edition 3.9 adds six Chapter 68 results for a total of 188, preserving all 182 prior result objects. Edition 3.10 appends six Chapter 69 results for a total of 194, preserving all 188 previous result objects.
+The 3.7 bilingual revision preserves all 173 stable result IDs of research edition 3.6, without adding or withdrawing another result. These comprise the 161 results of edition 3.5 and the 11 propositions and one counterexample added in Chapter 66 by the 3.6 research revision. The earlier composition is 78 from edition 2.0, 10 in Chapters 49–50, 13 in Chapters 51–53, 16 in Chapters 54–56, 14 in Chapters 57–59, 16 in Chapters 60–62, and 14 in Chapters 63–65. The registry counts analytic statements in the text, not original discoveries, Lean declarations, or experimental confirmations. Each chapter supplies the full hypotheses, proof, and open obligations. The bilingual map separately binds the titles and anchors in both languages. Edition 3.8 appends the nine Chapter 67 results, giving 182 in total; all 173 previous result objects and their historical verification identities are preserved. Edition 3.9 adds six Chapter 68 results for a total of 188, preserving all 182 prior result objects. Edition 3.10 appends six Chapter 69 results for a total of 194, preserving all 188 previous result objects. Edition 3.11 adds nine Chapter 70 results for a total of 203; all 194 previous result objects are preserved item by item.
 
 | ID | Chapter | Result |
 |---|---:|---|
@@ -9901,6 +10570,15 @@ The 3.7 bilingual revision preserves all 173 stable result IDs of research editi
 | [C-MICRO-03](#c-micro-03) | 69 | C-MICRO-03 (Galerkin compression does not preserve this quadrature invariant). |
 | [P-ROB-04](#p-rob-04) | 69 | P-ROB-04 (Joint calibration, nominal parameters, and shared-force stability). |
 | [P-ROB-05](#p-rob-05) | 69 | P-ROB-05 (Composing physical preparation, robust deployment, nominal calibration, and finite prediction). |
+| [C-QSEL-02](#c-qsel-02) | 70 | C-QSEL-02 (Operational equivalence of hidden completions of a reachable sector and the boundary of global quantum selection). |
+| [P-TOM-01](#p-tom-01) | 70 | P-TOM-01 (An explicit finite-tester stability bound and its preparation, readout and dimension obligations). |
+| [P-MICRO-08](#p-micro-08) | 70 | P-MICRO-08 (A complete persistent Gaussian-bath process on a common domain). |
+| [P-MICRO-09](#p-micro-09) | 70 | P-MICRO-09 (An all-input finite approximation of the same persistent source). |
+| [C-QMEM-01](#c-qmem-01) | 70 | C-QMEM-01 (Equal single-slot channels do not determine a multitime process). |
+| [P-NUM-01](#p-num-01) | 70 | P-NUM-01 (From interval Choi bounds to a physical terminal instrument). |
+| [P-QMEM-02](#p-qmem-02) | 70 | P-QMEM-02 (A necessary memory dimension from causal-break response rank). |
+| [P-ROB-06](#p-rob-06) | 70 | P-ROB-06 (joint identification and coverage from two trusted settings). |
+| [P-ROB-07](#p-rob-07) | 70 | P-ROB-07 (a complete CQ certificate and independent holdout). |
 
 <a id="appendix-c"></a>
 
@@ -10004,6 +10682,10 @@ The PR, run, job, and step statuses above were actually read from the remote ser
 These identities permit reuse of existing heavy scientific receipts without relabelling them as newly executed publication checks. The existing v31.10 remote-acceptance receipts record inspection of original artifact contents. This publication separately checks remote metadata and source identities; it does not claim to have downloaded and byte-checked the original ZIP archives again. Newly executed book-structure checks, bilingual mathematics checks, the teaching example, PDF builds, and page inspection have separate receipts. If the subsequent publication PR automatically triggers repository CI, its outcome is recorded only after it actually occurs.
 
 The current mathematics volume is consulted to locate the maintained Core and its boundaries; the actual Core-to-Physics contract remains `physics/interfaces/CORE_PHYSICS_CONTRACT.md`. The seven evidence levels in §0.10 are a reading aid over the existing chapter dossier and source manifest, not a competing scientific ledger. Acceptance of source code, completion of a publication, and support from nature are distinct outcomes.
+
+
+
+[QM3114] Release kernel and execution reports: `physics/qm/UEOT_QM_KERNEL_v31.14.md` and `UEOT_QM_EXECUTION_v31.14.md`; complete proofs, original synthetic records, and cross-review: `physics/qm/kernel/evidence/v31.14/`; current premises and full physics obligations: `physics/qm/audits/PERSISTENT_BATH_v31.14/PREMISES_AND_RESPONSIBILITIES.md`.
 
 <a id="appendix-d"></a>
 
@@ -10916,7 +11598,7 @@ Actual edition 3.0 result summary; the code remains unchanged in editions 3.1–
 
 ## E.1 Complete semantic sources and derived reading editions
 
-The maintained Chinese source `UEOT_PHYSICS.md` and its complete English counterpart `UEOT_PHYSICS.en.md` each contain Chapters 0–69 and Appendices A–F. Their corresponding `.tex` and `.pdf` files are actual derivatives of those sources, with mathematical typesetting, a full chapter contents list, stable result IDs, original derivations, and embedded code. Edition 3.10 adds the Chapter 69 simultaneous-dynamics and calibrated-prediction increment to the continuous bilingual manuscript while retaining Chapter 68 and all earlier results. The edition number identifies a publication; the text and evidence determine which physical questions are resolved or open.
+The maintained Chinese source `UEOT_PHYSICS.md` and its complete English counterpart `UEOT_PHYSICS.en.md` each contain Chapters 0–70 and Appendices A–F. Their corresponding `.tex` and `.pdf` files are actual derivatives of those sources, with mathematical typesetting, a full chapter contents list, stable result IDs, original derivations, and embedded code. Edition 3.11 adds the Chapter 70 persistent-environment processes, finite certification, and selection limits to the continuous bilingual manuscript while retaining Chapter 69 and all earlier results. The edition number identifies a publication; the text and evidence determine which physical questions are resolved or open.
 
 Both languages carry the same scientific commitments. Their prose is adapted for natural reading, while assumptions, formulas, constants, result IDs, source identities, and empirical qualifications are checked together. Mathematical symbols are not silently changed in translation. Purely linguistic labels inside formulas and recorded editorial corrections are listed in the fidelity report.
 
@@ -12514,3 +13196,10 @@ Four new runtime groups in `physics/qm/growing_cutoff/` cover the complete recta
 ## F.8 Verification scope of the v31.13 simultaneous-dynamics increment
 
 The Chapter 69 trace-class prefix, self-adjointness, finite-Duhamel, calibration-coverage and error-composition arguments are paper proofs. None of the six stable results has a new Lean binding. The runtime directory `physics/qm/simultaneous_cutoff/` distinguishes floating source interpretation, independent prefix and infinite-displacement controls, rational calibration with an independent checker, integer-interval prediction and raw synthetic streams. The K=4175 interval algorithm actually evaluates a sparse polynomial for one specified $G\le1$ entangled input; it does not numerically certify every input or the entire 8351-dimensional matrix. The unchanged 158 proof inputs retain the original 1365 public axiom reports; new runs do not extend their machine-verified quantifiers. Three-agent internal AI cross-review is not external human peer review, and the empirical axis remains untested.
+
+
+## F.9 Verification scope of the v31.14 persistent-bath increment
+
+The nine Chapter 70 stable results have paper proofs, exact finite algebra, directed intervals, and synthetic statistical evidence, with their respective quantifiers stated in the text and `chapter70_formal_bindings.json`. They are not new Lean declarations; Chapter 69 likewise adds no Lean coverage. After the current 158 unchanged proof inputs were hash-checked, their original execution was reused without relabeling the historical 1365 axiom reports.
+
+The integrated replay actually reads the original 1.6 million synthetic rows and separately records its execution time and input/output hashes. Reused data are not new shots. Eight Choi interval certificates, 504 exact principal minors, frozen calibration/holdout, external processed-data reproduction, and the first missing-h5py failure attempt retain separate identities. Complete evidence is in `physics/qm/kernel/evidence/v31.14/`. Publication identity and scoped visual review are in `physics/qm/book/evidence/v3.11/`; reviewing the new and changed pages does not claim a fresh page-by-page review of all inherited content.

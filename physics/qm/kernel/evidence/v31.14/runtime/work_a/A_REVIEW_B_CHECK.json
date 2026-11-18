@@ -1,0 +1,347 @@
+{
+  "schema": "ueot-physics-a-review-b/1",
+  "time_utc": "2026-11-13T17:11:59.389595+00:00",
+  "status": "PASS_EXACT_CERTIFICATE_READBACK_AND_DECLARED_INTERFACE",
+  "source_sha256": {
+    "review_b.py": "ad4d9dc7c88d4224046167d753ca23813a56f92e353ab30b980ed2801f2bfc5a",
+    "finite_operations.py": "4908d27376748186b7236031effc86fddcb766f0351c081398dda7f06895d8e8",
+    "dynamics.py": "3eb805d8ec9f8010583023f8a57812c759fba4fcc48c27c36a9079367f664001",
+    "interval_certificate.py": "edb594539bcc0773379ab3a869afa8a6cb8199004ca0986b0c5acc219d3166fc"
+  },
+  "certificates": [
+    {
+      "file": "interval_generator_original_weyl.json",
+      "sha256": "072092cd392de3940fbae5b1b852d59f1370b1db075f570498f374005c690fb0",
+      "represented_backend": "weyl",
+      "galerkin_cutoff": null,
+      "raw_error_rational_upper": "1310613181390731504191127/2500000000000000000000000000000000000000",
+      "raw_error_upper_display": 5.242452725562926e-16,
+      "physical_error_upper_display": 4.000001040490543e-09,
+      "exact_repair_formula_match": true,
+      "exact_trace_preservation": true,
+      "exact_principal_minor_psd": {
+        "f": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 4.384609411462186e-23
+        },
+        "pf": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 1.6564453963739868e-10
+        },
+        "ppf": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 2.781252804751834e-10
+        },
+        "ppp": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 1.226531119998658e-07
+        }
+      },
+      "residual_psd": {
+        "count": 3,
+        "strictly_positive_count": 3,
+        "smallest_display": 4.0000055351169237e-20
+      }
+    },
+    {
+      "file": "interval_generator_original_galerkin.json",
+      "sha256": "d279d61341da01c4c3c3d81b8f94d675d757e82b1c9001ba5302718a253c9c5d",
+      "represented_backend": "galerkin",
+      "galerkin_cutoff": 20,
+      "raw_error_rational_upper": "11061912907417174488777971/5000000000000000000000000000000000000000",
+      "raw_error_upper_display": 2.212382581483435e-15,
+      "physical_error_upper_display": 4.000004416765154e-09,
+      "exact_repair_formula_match": true,
+      "exact_trace_preservation": true,
+      "exact_principal_minor_psd": {
+        "f": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 4.384618082394372e-23
+        },
+        "pf": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 1.6564453963736474e-10
+        },
+        "ppf": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 2.7812528047514755e-10
+        },
+        "ppp": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 1.2265311199986542e-07
+        }
+      },
+      "residual_psd": {
+        "count": 3,
+        "strictly_positive_count": 3,
+        "smallest_display": 4.000024478330426e-20
+      }
+    },
+    {
+      "file": "interval_generator_permuted_weyl.json",
+      "sha256": "7274888d7ae2b20d95435439a3d4168653834b5b08f3ea4714ac520d543295f2",
+      "represented_backend": "weyl",
+      "galerkin_cutoff": null,
+      "raw_error_rational_upper": "146884019146698047438149/250000000000000000000000000000000000000",
+      "raw_error_upper_display": 5.875360765867922e-16,
+      "physical_error_upper_display": 4.000001167072151e-09,
+      "exact_repair_formula_match": true,
+      "exact_trace_preservation": true,
+      "exact_principal_minor_psd": {
+        "f": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 5.34269913745039e-23
+        },
+        "pf": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 1.6564453963739847e-10
+        },
+        "ppf": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 3.588013192319003e-10
+        },
+        "ppp": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 1.5823124025023458e-07
+        }
+      },
+      "residual_psd": {
+        "count": 3,
+        "strictly_positive_count": 3,
+        "smallest_display": 4.0000060902289104e-20
+      }
+    },
+    {
+      "file": "interval_generator_permuted_galerkin.json",
+      "sha256": "260fdba9c449f70821286f61bac17c0d3bd53f93abe2366c2947c64301fbec8e",
+      "represented_backend": "galerkin",
+      "galerkin_cutoff": 20,
+      "raw_error_rational_upper": "3252610370434776594358181/1250000000000000000000000000000000000000",
+      "raw_error_upper_display": 2.6020882963478213e-15,
+      "physical_error_upper_display": 4.000005196176582e-09,
+      "exact_repair_formula_match": true,
+      "exact_trace_preservation": true,
+      "exact_principal_minor_psd": {
+        "f": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 5.342710012021632e-23
+        },
+        "pf": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 1.656445396373424e-10
+        },
+        "ppf": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 3.588013192319179e-10
+        },
+        "ppp": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 1.5823124025023284e-07
+        }
+      },
+      "residual_psd": {
+        "count": 3,
+        "strictly_positive_count": 3,
+        "smallest_display": 4.000027184507561e-20
+      }
+    },
+    {
+      "file": "interval_calibrated_original_weyl.json",
+      "sha256": "76adef51d4803750943a74bd0f0156396f0b7c39b297ccc5faf667d88fecf6ef",
+      "represented_backend": "weyl",
+      "galerkin_cutoff": null,
+      "raw_error_rational_upper": "1418079737884744054736389/2500000000000000000000000000000000000000",
+      "raw_error_upper_display": 5.672318951538976e-16,
+      "physical_error_upper_display": 4.000001126463788e-09,
+      "exact_repair_formula_match": true,
+      "exact_trace_preservation": true,
+      "exact_principal_minor_psd": {
+        "f": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 4.366577230870903e-23
+        },
+        "pf": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 1.6273516929590538e-10
+        },
+        "ppf": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 2.733802582710548e-10
+        },
+        "ppp": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 1.2056055866755008e-07
+        }
+      },
+      "residual_psd": {
+        "count": 3,
+        "strictly_positive_count": 3,
+        "smallest_display": 4.0000055351169706e-20
+      }
+    },
+    {
+      "file": "interval_calibrated_original_galerkin.json",
+      "sha256": "23fe8f47dcec4637eb4729fbce1767047c48dfedd6d91e09b11a70e147378986",
+      "represented_backend": "galerkin",
+      "galerkin_cutoff": 20,
+      "raw_error_rational_upper": "3026509444552582635874291/1250000000000000000000000000000000000000",
+      "raw_error_upper_display": 2.421207555642066e-15,
+      "physical_error_upper_display": 4.000004834415102e-09,
+      "exact_repair_formula_match": true,
+      "exact_trace_preservation": true,
+      "exact_principal_minor_psd": {
+        "f": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 4.366568242107795e-23
+        },
+        "pf": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 1.6273516929594968e-10
+        },
+        "ppf": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 2.733802582710361e-10
+        },
+        "ppp": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 1.2056055866753941e-07
+        }
+      },
+      "residual_psd": {
+        "count": 3,
+        "strictly_positive_count": 3,
+        "smallest_display": 3.9999752815712563e-20
+      }
+    },
+    {
+      "file": "interval_calibrated_permuted_weyl.json",
+      "sha256": "879a38e3df2682fb2c3fa05c9be663e7173e801e047c77c2782c061a1aaf002d",
+      "represented_backend": "weyl",
+      "galerkin_cutoff": null,
+      "raw_error_rational_upper": "2969619361076560774969737/5000000000000000000000000000000000000000",
+      "raw_error_upper_display": 5.939238722153121e-16,
+      "physical_error_upper_display": 4.000001179847742e-09,
+      "exact_repair_formula_match": true,
+      "exact_trace_preservation": true,
+      "exact_principal_minor_psd": {
+        "f": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 5.321304804045193e-23
+        },
+        "pf": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 1.6273516929590775e-10
+        },
+        "ppf": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 3.5276309156764224e-10
+        },
+        "ppp": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 1.5556838336532033e-07
+        }
+      },
+      "residual_psd": {
+        "count": 3,
+        "strictly_positive_count": 3,
+        "smallest_display": 4.000005188172036e-20
+      }
+    },
+    {
+      "file": "interval_calibrated_permuted_galerkin.json",
+      "sha256": "11cae12f9b620ea5e82bb9412efa8052e223faed17aeaefa2152adb6ca5b9306",
+      "represented_backend": "galerkin",
+      "galerkin_cutoff": 20,
+      "raw_error_rational_upper": "12816939141406150238408271/5000000000000000000000000000000000000000",
+      "raw_error_upper_display": 2.56338782828123e-15,
+      "physical_error_upper_display": 4.000005118775646e-09,
+      "exact_repair_formula_match": true,
+      "exact_trace_preservation": true,
+      "exact_principal_minor_psd": {
+        "f": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 5.321286772848371e-23
+        },
+        "pf": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 1.6273516929591517e-10
+        },
+        "ppf": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 3.527630915676338e-10
+        },
+        "ppp": {
+          "count": 15,
+          "strictly_positive_count": 15,
+          "smallest_display": 1.5556838336533084e-07
+        }
+      },
+      "residual_psd": {
+        "count": 3,
+        "strictly_positive_count": 3,
+        "smallest_display": 3.999968759037361e-20
+      }
+    }
+  ],
+  "interface": {
+    "incoming_convention": "B normalized Choi in output S tensor input/reference order",
+    "outgoing_convention": "A unnormalized Choi in input tensor output order",
+    "conversion": "C_A=2*SWAP*J_B*SWAP; permutation (0,2,1,3)",
+    "numerical_kraus_extraction_status": "finite guard only; exact rational PSD checked separately",
+    "completeness_residual": 3.3896273649902676e-16,
+    "preparation_count": 4,
+    "binary_effect_count": 4,
+    "full_terminal_labels": [
+      "f",
+      "pf",
+      "ppf",
+      "ppp"
+    ],
+    "test_probability_max_residual": 3.3306690738754696e-16,
+    "executed_reference_dimension": 3,
+    "reconstruction_vs_B_direct_full_trace_distance": 3.56919841870497e-16,
+    "repaired_vs_source_executed_input_trace_distance": 9.331010021335099e-10,
+    "missing_scale_completeness_residual": 0.5000000000000002,
+    "missing_swap_probability_gap": 0.36006899923240604
+  },
+  "fixed_source_memory_event": {
+    "sha256": "f7992d28c2401f1f231e576871415be31305c3872d1ffab6486e342dee979e40",
+    "event": "ppp AND X_S tensor X_R = +1",
+    "independently_subtracted_rational_gap_lower": "120052291014355372054526479993534329458483471998139432512460013486969123025495619/3794275180128377091639574036764685364535950857523710002444946112771297432041422848",
+    "gap_lower_display": 0.031640375385291235,
+    "strictly_larger_than": "3/100"
+  },
+  "limitations": "Independent certificate endpoint/Fraction read-back and finite interface; no new Lean or device measurement",
+  "runtime_seconds": 0.3031629979996069
+}

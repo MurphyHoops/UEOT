@@ -1,0 +1,44 @@
+{
+  "schema": "ueot.persistent_bath.micro_model.v1",
+  "status": "FROZEN_MATHEMATICAL_AND_SYNTHETIC_MODEL_NOT_DEVICE_CERTIFIED",
+  "units": "hbar=1; omega and g are angular frequencies in the same chosen time unit",
+  "system": "qubit S, H_S=0, L=diag(1,-1)",
+  "reference": "untouched arbitrary finite R in the analytic claims; qubit R in executed examples",
+  "bath": {
+    "mode_count": 2,
+    "omega_rational": [[1,1],[3,2]],
+    "relative_coupling_rational": [[1,1],[3,5]],
+    "coupling": "g_k=lambda*c_k, real",
+    "lambda_closed_interval_rational": [[1,5],[2,5]],
+    "initial_state": "two-mode vacuum, independently supplied model premise",
+    "quadrature_order": ["q1","p1","q2","p2"],
+    "mean": [0,0,0,0],
+    "covariance": [[0.5,0,0,0],[0,0.5,0,0],[0,0,0.5,0],[0,0,0,0.5]],
+    "initial_product": "rho_SR tensor |0,0><0,0|; S-R entanglement allowed",
+    "slot_memory": "same E retained through all live slots; E traced only at terminal output"
+  },
+  "slots": {
+    "times_rational": [[2,3],[3,4],[1,2]],
+    "total_time_rational": [23,12],
+    "order": "joint unitary U, then F/P instrument; fail stops, pass receives its specified rotation",
+    "fail_effect_diagonal_rational": [[1,8],[1,4]],
+    "pass_effect_diagonal_rational": [[7,8],[3,4]],
+    "post_pass_rotations": ["Ry(pi/2)","Rx(pi/3)","I"],
+    "rotation_convention": "Ra(theta)=exp(-i theta sigma_a/2)",
+    "terminal_records": ["f","pf","ppf","ppp"],
+    "accepted_record": "ppp",
+    "failure_state": "actual unnormalized SR terminal state, no free reset or replacement"
+  },
+  "output": "direct sum over complete classical records of unnormalized terminal SR density blocks; total trace one",
+  "runtime_default_input": "(|00>+|11>)/sqrt(2) on S,R",
+  "main_distance": "one half sum_record trace norm of the difference of terminal SR blocks, before readout",
+  "acceptance": {
+    "computed_from_source": true,
+    "uniform_effect_lower_bound": "(3/4)^3 I=27/64 I",
+    "uniform_effect_upper_bound": "(7/8)^3 I=343/512 I",
+    "warning": "state-dependent; not s^2 I and no blanket CPTP normalized acceptance claim"
+  },
+  "parameter_error_bound": "D_full <= min(1,(51/10)*abs(lambda-lambda_hat)), both parameters in the frozen interval",
+  "truncation": "true product-Fock Galerkin P_K H P_K with n1,n2<=K; no physical input filter is assumed",
+  "not_claimed": ["new Lean proof", "real-device data", "general Gaussian initial states in executed certificate", "infinite-mode bath", "Markov approximation", "unbounded stopping", "thermalization", "Core-derived Hamiltonian", "efficient arbitrary-height process compression"]
+}

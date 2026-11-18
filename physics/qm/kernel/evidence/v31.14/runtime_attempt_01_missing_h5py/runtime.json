@@ -1,0 +1,981 @@
+{
+  "schema": "ueot.persistent_bath.portable_verification.v1",
+  "status": "FAIL",
+  "started_at_utc": "2026-11-13T17:10:42.680646+00:00",
+  "source_dir": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath",
+  "authored_evidence_dir": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/authored",
+  "output_dir": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime",
+  "runner": {
+    "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/run_verification.py",
+    "bytes": 21107,
+    "sha256": "482df28bed6a029d17e610908936d309ab61fd7abe3909d6e30e4ad0751f1242"
+  },
+  "python_executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+  "source_files": {
+    "finite_operations.py": {
+      "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/finite_operations.py",
+      "bytes": 7130,
+      "sha256": "4908d27376748186b7236031effc86fddcb766f0351c081398dda7f06895d8e8"
+    },
+    "verify_a.py": {
+      "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/verify_a.py",
+      "bytes": 13368,
+      "sha256": "3d72936cf718a1b4cc6697632709b1319a78df6b9dc71de4d5724f6479e13528"
+    },
+    "review_b.py": {
+      "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/review_b.py",
+      "bytes": 10294,
+      "sha256": "ad4d9dc7c88d4224046167d753ca23813a56f92e353ab30b980ed2801f2bfc5a"
+    },
+    "dynamics.py": {
+      "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/dynamics.py",
+      "bytes": 13659,
+      "sha256": "3eb805d8ec9f8010583023f8a57812c759fba4fcc48c27c36a9079367f664001"
+    },
+    "verify_dynamics.py": {
+      "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/verify_dynamics.py",
+      "bytes": 7906,
+      "sha256": "87f1234a54f2291cbac9127fee8ac14b3a5ee62c2ea97d0ec32b9d9154724c85"
+    },
+    "interval_certificate.py": {
+      "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/interval_certificate.py",
+      "bytes": 13400,
+      "sha256": "edb594539bcc0773379ab3a869afa8a6cb8199004ca0986b0c5acc219d3166fc"
+    },
+    "build_certificates.py": {
+      "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/build_certificates.py",
+      "bytes": 1575,
+      "sha256": "ee9bf7f6628c652581b88c4384a12f0b70a2a268de3371622786e9f8f622fe81"
+    },
+    "certify_memory_witness.py": {
+      "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/certify_memory_witness.py",
+      "bytes": 3800,
+      "sha256": "64a23eb4313e3e95e4e7887ba552031225d710a5188a36dbe479953bb54e2739"
+    },
+    "physical_prediction.py": {
+      "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/physical_prediction.py",
+      "bytes": 2162,
+      "sha256": "1725edb9a3e3fdb3c7fc3a6e3891611969ca12971a349798784bebef972e4f42"
+    },
+    "common_c.py": {
+      "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/common_c.py",
+      "bytes": 2614,
+      "sha256": "709efba50126c39a0c79876b5327192375a61a99b34409b44b101d560c62bc1d"
+    },
+    "calibrate.py": {
+      "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/calibrate.py",
+      "bytes": 5935,
+      "sha256": "b1fed47a326e900061a9ec877c34e52de4f4bdedaa4311eafcb70ece60293759"
+    },
+    "generate_synthetic.py": {
+      "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/generate_synthetic.py",
+      "bytes": 4369,
+      "sha256": "9134b57006adc2a0689d54d5d61e987e51255a55d1259a9740ce6d2fed0ec11c"
+    },
+    "interval_source.py": {
+      "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/interval_source.py",
+      "bytes": 4341,
+      "sha256": "04b68c57c8ac4d5c7ba9a8c86b9168a9dfa04b94cb26c93c4b3f013137594563"
+    },
+    "verify_generation.py": {
+      "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/verify_generation.py",
+      "bytes": 2858,
+      "sha256": "2af26dad2ee4c9d36a9c8290e3ae10b7397b5bac3ad98f451da31d63f4fbddac"
+    },
+    "evaluate_holdout.py": {
+      "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/evaluate_holdout.py",
+      "bytes": 7332,
+      "sha256": "a1a4e4c03a2f371c53d10250e578445a608ff20fcc1dcda566246a3d83f4a6a6"
+    },
+    "finalize_certificate.py": {
+      "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/finalize_certificate.py",
+      "bytes": 5769,
+      "sha256": "c1b03153e949c2b0b2cc12335dea8a6391b1cea8dbcb5273df0534825fd151e0"
+    },
+    "reproduce_external_observable.py": {
+      "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/reproduce_external_observable.py",
+      "bytes": 4675,
+      "sha256": "25fb7d4dfb8af7eac4fc7713865a06e9608edd1d6adc3a7ebe1268a095df9d23"
+    }
+  },
+  "copied_inputs": {
+    "source/a/finite_operations.py": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/finite_operations.py",
+        "bytes": 7130,
+        "sha256": "4908d27376748186b7236031effc86fddcb766f0351c081398dda7f06895d8e8"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_a/finite_operations.py",
+      "sha256": "4908d27376748186b7236031effc86fddcb766f0351c081398dda7f06895d8e8"
+    },
+    "source/a/verify_a.py": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/verify_a.py",
+        "bytes": 13368,
+        "sha256": "3d72936cf718a1b4cc6697632709b1319a78df6b9dc71de4d5724f6479e13528"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_a/verify_a.py",
+      "sha256": "3d72936cf718a1b4cc6697632709b1319a78df6b9dc71de4d5724f6479e13528"
+    },
+    "source/a/review_b.py": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/review_b.py",
+        "bytes": 10294,
+        "sha256": "ad4d9dc7c88d4224046167d753ca23813a56f92e353ab30b980ed2801f2bfc5a"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_a/review_b.py",
+      "sha256": "ad4d9dc7c88d4224046167d753ca23813a56f92e353ab30b980ed2801f2bfc5a"
+    },
+    "source/b/dynamics.py": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/dynamics.py",
+        "bytes": 13659,
+        "sha256": "3eb805d8ec9f8010583023f8a57812c759fba4fcc48c27c36a9079367f664001"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_b/dynamics.py",
+      "sha256": "3eb805d8ec9f8010583023f8a57812c759fba4fcc48c27c36a9079367f664001"
+    },
+    "source/b/verify_dynamics.py": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/verify_dynamics.py",
+        "bytes": 7906,
+        "sha256": "87f1234a54f2291cbac9127fee8ac14b3a5ee62c2ea97d0ec32b9d9154724c85"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_b/verify_dynamics.py",
+      "sha256": "87f1234a54f2291cbac9127fee8ac14b3a5ee62c2ea97d0ec32b9d9154724c85"
+    },
+    "source/b/interval_certificate.py": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/interval_certificate.py",
+        "bytes": 13400,
+        "sha256": "edb594539bcc0773379ab3a869afa8a6cb8199004ca0986b0c5acc219d3166fc"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_b/interval_certificate.py",
+      "sha256": "edb594539bcc0773379ab3a869afa8a6cb8199004ca0986b0c5acc219d3166fc"
+    },
+    "source/b/build_certificates.py": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/build_certificates.py",
+        "bytes": 1575,
+        "sha256": "ee9bf7f6628c652581b88c4384a12f0b70a2a268de3371622786e9f8f622fe81"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_b/build_certificates.py",
+      "sha256": "ee9bf7f6628c652581b88c4384a12f0b70a2a268de3371622786e9f8f622fe81"
+    },
+    "source/b/certify_memory_witness.py": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/certify_memory_witness.py",
+        "bytes": 3800,
+        "sha256": "64a23eb4313e3e95e4e7887ba552031225d710a5188a36dbe479953bb54e2739"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_b/certify_memory_witness.py",
+      "sha256": "64a23eb4313e3e95e4e7887ba552031225d710a5188a36dbe479953bb54e2739"
+    },
+    "source/b/physical_prediction.py": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/physical_prediction.py",
+        "bytes": 2162,
+        "sha256": "1725edb9a3e3fdb3c7fc3a6e3891611969ca12971a349798784bebef972e4f42"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_b/physical_prediction.py",
+      "sha256": "1725edb9a3e3fdb3c7fc3a6e3891611969ca12971a349798784bebef972e4f42"
+    },
+    "source/c/common_c.py": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/common_c.py",
+        "bytes": 2614,
+        "sha256": "709efba50126c39a0c79876b5327192375a61a99b34409b44b101d560c62bc1d"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/common_c.py",
+      "sha256": "709efba50126c39a0c79876b5327192375a61a99b34409b44b101d560c62bc1d"
+    },
+    "source/c/calibrate.py": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/calibrate.py",
+        "bytes": 5935,
+        "sha256": "b1fed47a326e900061a9ec877c34e52de4f4bdedaa4311eafcb70ece60293759"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/calibrate.py",
+      "sha256": "b1fed47a326e900061a9ec877c34e52de4f4bdedaa4311eafcb70ece60293759"
+    },
+    "source/c/generate_synthetic.py": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/generate_synthetic.py",
+        "bytes": 4369,
+        "sha256": "9134b57006adc2a0689d54d5d61e987e51255a55d1259a9740ce6d2fed0ec11c"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/generate_synthetic.py",
+      "sha256": "9134b57006adc2a0689d54d5d61e987e51255a55d1259a9740ce6d2fed0ec11c"
+    },
+    "source/c/interval_source.py": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/interval_source.py",
+        "bytes": 4341,
+        "sha256": "04b68c57c8ac4d5c7ba9a8c86b9168a9dfa04b94cb26c93c4b3f013137594563"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/interval_source.py",
+      "sha256": "04b68c57c8ac4d5c7ba9a8c86b9168a9dfa04b94cb26c93c4b3f013137594563"
+    },
+    "source/c/verify_generation.py": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/verify_generation.py",
+        "bytes": 2858,
+        "sha256": "2af26dad2ee4c9d36a9c8290e3ae10b7397b5bac3ad98f451da31d63f4fbddac"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/verify_generation.py",
+      "sha256": "2af26dad2ee4c9d36a9c8290e3ae10b7397b5bac3ad98f451da31d63f4fbddac"
+    },
+    "source/c/evaluate_holdout.py": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/evaluate_holdout.py",
+        "bytes": 7332,
+        "sha256": "a1a4e4c03a2f371c53d10250e578445a608ff20fcc1dcda566246a3d83f4a6a6"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/evaluate_holdout.py",
+      "sha256": "a1a4e4c03a2f371c53d10250e578445a608ff20fcc1dcda566246a3d83f4a6a6"
+    },
+    "source/c/finalize_certificate.py": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/finalize_certificate.py",
+        "bytes": 5769,
+        "sha256": "c1b03153e949c2b0b2cc12335dea8a6391b1cea8dbcb5273df0534825fd151e0"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/finalize_certificate.py",
+      "sha256": "c1b03153e949c2b0b2cc12335dea8a6391b1cea8dbcb5273df0534825fd151e0"
+    },
+    "source/c/reproduce_external_observable.py": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/reproduce_external_observable.py",
+        "bytes": 4675,
+        "sha256": "25fb7d4dfb8af7eac4fc7713865a06e9608edd1d6adc3a7ebe1268a095df9d23"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/reproduce_external_observable.py",
+      "sha256": "25fb7d4dfb8af7eac4fc7713865a06e9608edd1d6adc3a7ebe1268a095df9d23"
+    },
+    "SHARED_MODEL.json": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/SHARED_MODEL.json",
+        "bytes": 2725,
+        "sha256": "685d373bb5a70a677fd4d110cb81c6624260de95ea39cc60070a8f4bd9f19668"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/SHARED_MODEL.json",
+      "sha256": "685d373bb5a70a677fd4d110cb81c6624260de95ea39cc60070a8f4bd9f19668"
+    },
+    "b/model_contract.json": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/model_contract.json",
+        "bytes": 2610,
+        "sha256": "f77395f031f418f64889c9731bb357f6cbc5a0ec8b1647d287fdf65250487f4b"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_b/model_contract.json",
+      "sha256": "f77395f031f418f64889c9731bb357f6cbc5a0ec8b1647d287fdf65250487f4b"
+    },
+    "c/CALIBRATION_CONTRACT.json": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/CALIBRATION_CONTRACT.json",
+        "bytes": 4468,
+        "sha256": "c8a649e5b47d4c6348bc2e2745950ecbf078685b38ddf8f2cc0423c0a04876d1"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/CALIBRATION_CONTRACT.json",
+      "sha256": "c8a649e5b47d4c6348bc2e2745950ecbf078685b38ddf8f2cc0423c0a04876d1"
+    },
+    "c/FROZEN_CALIBRATION_IDENTITY.json": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/authored/c/FROZEN_CALIBRATION_IDENTITY.json",
+        "bytes": 701,
+        "sha256": "484c3a9740355c214837f23045fa3de482d485b3413b5bfe1ff3623a8bed77ae"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/FROZEN_CALIBRATION_IDENTITY.json",
+      "sha256": "484c3a9740355c214837f23045fa3de482d485b3413b5bfe1ff3623a8bed77ae"
+    },
+    "c/FROZEN_HOLDOUT_PLAN.json": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/authored/c/FROZEN_HOLDOUT_PLAN.json",
+        "bytes": 1100,
+        "sha256": "03541fef730b0e071e5fe546e052703ce124c79597c4358d3b4159e9231aafa4"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/FROZEN_HOLDOUT_PLAN.json",
+      "sha256": "03541fef730b0e071e5fe546e052703ce124c79597c4358d3b4159e9231aafa4"
+    },
+    "c/NOMINAL_MODEL.json": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/authored/c/NOMINAL_MODEL.json",
+        "bytes": 1910,
+        "sha256": "d6cf56c08603c3bdd13c4cb37ef2f8720f3db308ad87e65f0dedca1c6f801a8e"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/NOMINAL_MODEL.json",
+      "sha256": "d6cf56c08603c3bdd13c4cb37ef2f8720f3db308ad87e65f0dedca1c6f801a8e"
+    },
+    "c/SYNTHETIC_TRUTH.json": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/authored/c/SYNTHETIC_TRUTH.json",
+        "bytes": 301,
+        "sha256": "15057b20de939bc66b6f80f30ebed67ca45f2550271256baabd00cb4ff9d2cad"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/SYNTHETIC_TRUTH.json",
+      "sha256": "15057b20de939bc66b6f80f30ebed67ca45f2550271256baabd00cb4ff9d2cad"
+    },
+    "c/calibration_generation_receipt.json": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/authored/c/calibration_generation_receipt.json",
+        "bytes": 1393,
+        "sha256": "46af72e73e9e1667c2023be19e7793af0d7928bf218ab65a298c725f2ad4dc0c"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/calibration_generation_receipt.json",
+      "sha256": "46af72e73e9e1667c2023be19e7793af0d7928bf218ab65a298c725f2ad4dc0c"
+    },
+    "c/holdout_generation_receipt.json": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/authored/c/holdout_generation_receipt.json",
+        "bytes": 7953,
+        "sha256": "f62a2c804ba544c387681c118ee88ff6792cfb2c17b25820cb9eef44ef6eda5b"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/holdout_generation_receipt.json",
+      "sha256": "f62a2c804ba544c387681c118ee88ff6792cfb2c17b25820cb9eef44ef6eda5b"
+    },
+    "c/calibration_shots.npz": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/authored/c/calibration_shots.npz",
+        "bytes": 33230,
+        "sha256": "d96c2b80c58d410b5e4809c8fec5070c4a559d83ed6d3ab54a62293092f3bfb9"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/calibration_shots.npz",
+      "sha256": "d96c2b80c58d410b5e4809c8fec5070c4a559d83ed6d3ab54a62293092f3bfb9"
+    },
+    "c/holdout_shots.npz": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/authored/c/holdout_shots.npz",
+        "bytes": 488185,
+        "sha256": "ebaa6d5901ddd185817629a329392819564703bc2033f5ecf3d7304abb968414"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/holdout_shots.npz",
+      "sha256": "ebaa6d5901ddd185817629a329392819564703bc2033f5ecf3d7304abb968414"
+    },
+    "c/EXTERNAL_OBSERVABLE_PLAN.json": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/EXTERNAL_OBSERVABLE_PLAN.json",
+        "bytes": 1048,
+        "sha256": "f8926077eb9217e2518439a9a17bc1c77ad5ef82aba1790661cc900919e9050b"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/EXTERNAL_OBSERVABLE_PLAN.json",
+      "sha256": "f8926077eb9217e2518439a9a17bc1c77ad5ef82aba1790661cc900919e9050b"
+    },
+    "c/external/PROVENANCE.json": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/authored/c/external/PROVENANCE.json",
+        "bytes": 1625,
+        "sha256": "8d3f4d3d295af1d4dc04df489c07ca73314343dea28cf5aae7ddd505eba7bfc1"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/external/PROVENANCE.json",
+      "sha256": "8d3f4d3d295af1d4dc04df489c07ca73314343dea28cf5aae7ddd505eba7bfc1"
+    },
+    "c/external/zhu_2025_processed_O.h5": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/authored/c/external/zhu_2025_processed_O.h5",
+        "bytes": 6584,
+        "sha256": "1276f24cd154ad2001ca612ac6b5126c573c038860294ffc5cd8960d064ff765"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/external/zhu_2025_processed_O.h5",
+      "sha256": "1276f24cd154ad2001ca612ac6b5126c573c038860294ffc5cd8960d064ff765"
+    },
+    "calibration_readback/common_c.py": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/common_c.py",
+        "bytes": 2614,
+        "sha256": "709efba50126c39a0c79876b5327192375a61a99b34409b44b101d560c62bc1d"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/calibration_readback/common_c.py",
+      "sha256": "709efba50126c39a0c79876b5327192375a61a99b34409b44b101d560c62bc1d"
+    },
+    "calibration_readback/calibrate.py": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/calibrate.py",
+        "bytes": 5935,
+        "sha256": "b1fed47a326e900061a9ec877c34e52de4f4bdedaa4311eafcb70ece60293759"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/calibration_readback/calibrate.py",
+      "sha256": "b1fed47a326e900061a9ec877c34e52de4f4bdedaa4311eafcb70ece60293759"
+    },
+    "calibration_readback/CALIBRATION_CONTRACT.json": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/CALIBRATION_CONTRACT.json",
+        "bytes": 4468,
+        "sha256": "c8a649e5b47d4c6348bc2e2745950ecbf078685b38ddf8f2cc0423c0a04876d1"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/calibration_readback/CALIBRATION_CONTRACT.json",
+      "sha256": "c8a649e5b47d4c6348bc2e2745950ecbf078685b38ddf8f2cc0423c0a04876d1"
+    },
+    "calibration_readback/FROZEN_CALIBRATION_IDENTITY.json": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/FROZEN_CALIBRATION_IDENTITY.json",
+        "bytes": 701,
+        "sha256": "484c3a9740355c214837f23045fa3de482d485b3413b5bfe1ff3623a8bed77ae"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/calibration_readback/FROZEN_CALIBRATION_IDENTITY.json",
+      "sha256": "484c3a9740355c214837f23045fa3de482d485b3413b5bfe1ff3623a8bed77ae"
+    },
+    "calibration_readback/calibration_generation_receipt.json": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/calibration_generation_receipt.json",
+        "bytes": 1393,
+        "sha256": "46af72e73e9e1667c2023be19e7793af0d7928bf218ab65a298c725f2ad4dc0c"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/calibration_readback/calibration_generation_receipt.json",
+      "sha256": "46af72e73e9e1667c2023be19e7793af0d7928bf218ab65a298c725f2ad4dc0c"
+    },
+    "calibration_readback/calibration_shots.npz": {
+      "source": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/calibration_shots.npz",
+        "bytes": 33230,
+        "sha256": "d96c2b80c58d410b5e4809c8fec5070c4a559d83ed6d3ab54a62293092f3bfb9"
+      },
+      "working_copy": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/calibration_readback/calibration_shots.npz",
+      "sha256": "d96c2b80c58d410b5e4809c8fec5070c4a559d83ed6d3ab54a62293092f3bfb9"
+    }
+  },
+  "commands": [
+    {
+      "name": "A_verify",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_a/verify_a.py",
+        "--contract",
+        "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/SHARED_MODEL.json"
+      ],
+      "cwd": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_a",
+      "started_at_utc": "2026-11-13T17:10:42.924669+00:00",
+      "stdout": "logs/01_A_verify.stdout.txt",
+      "stderr": "logs/01_A_verify.stderr.txt",
+      "returncode": 0,
+      "finished_at_utc": "2026-11-13T17:10:44.295995+00:00",
+      "wall_seconds": 1.371366137998848,
+      "child_cpu_seconds": 1.3290229999999998,
+      "stdout_sha256": "aaf45d1e0ef3cd169004330b22a8707e1aff97eeef6e7a5f987b804cd8079549",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "B_dynamics",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_b/verify_dynamics.py"
+      ],
+      "cwd": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_b",
+      "started_at_utc": "2026-11-13T17:10:44.302143+00:00",
+      "stdout": "logs/02_B_dynamics.stdout.txt",
+      "stderr": "logs/02_B_dynamics.stderr.txt",
+      "returncode": 0,
+      "finished_at_utc": "2026-11-13T17:10:45.171092+00:00",
+      "wall_seconds": 0.8689790700009326,
+      "child_cpu_seconds": 0.8346010000000001,
+      "stdout_sha256": "3dac34fe80ce0318ac63a961a3ca2376dde46b5eb33004cd9013b7bc49a0f703",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "B_eight_interval_certificates",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_b/build_certificates.py"
+      ],
+      "cwd": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_b",
+      "started_at_utc": "2026-11-13T17:10:45.179377+00:00",
+      "stdout": "logs/03_B_eight_interval_certificates.stdout.txt",
+      "stderr": "logs/03_B_eight_interval_certificates.stderr.txt",
+      "returncode": 0,
+      "finished_at_utc": "2026-11-13T17:10:46.743902+00:00",
+      "wall_seconds": 1.5645610300016415,
+      "child_cpu_seconds": 1.5253109999999999,
+      "stdout_sha256": "26672191775f9629700ad2becbe9bb5358a021cf2bab199e6db15417d63c9fed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "B_strict_memory_event",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_b/certify_memory_witness.py"
+      ],
+      "cwd": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_b",
+      "started_at_utc": "2026-11-13T17:10:46.751192+00:00",
+      "stdout": "logs/04_B_strict_memory_event.stdout.txt",
+      "stderr": "logs/04_B_strict_memory_event.stderr.txt",
+      "returncode": 0,
+      "finished_at_utc": "2026-11-13T17:10:47.272117+00:00",
+      "wall_seconds": 0.5388811730008456,
+      "child_cpu_seconds": 0.49636900000000017,
+      "stdout_sha256": "9ba37390ab730567bd1f75927d45632952fd393b4c48443dfa9c75f255a0d175",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "A_independent_B_review",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_a/review_b.py",
+        "--bdir",
+        "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_b"
+      ],
+      "cwd": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_a",
+      "started_at_utc": "2026-11-13T17:10:47.383268+00:00",
+      "stdout": "logs/05_A_independent_B_review.stdout.txt",
+      "stderr": "logs/05_A_independent_B_review.stderr.txt",
+      "returncode": 0,
+      "finished_at_utc": "2026-11-13T17:10:47.850083+00:00",
+      "wall_seconds": 0.466844703998504,
+      "child_cpu_seconds": 0.4486049999999999,
+      "stdout_sha256": "bdbfb5ce3f1f9cd02a21d7a5f802f7cac1fe6bc6439fe4d0bd49c5ff8322b46a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "C_optional_calibration_readback",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/calibration_readback/calibrate.py"
+      ],
+      "cwd": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/calibration_readback",
+      "started_at_utc": "2026-11-13T17:10:47.859886+00:00",
+      "stdout": "logs/06_C_optional_calibration_readback.stdout.txt",
+      "stderr": "logs/06_C_optional_calibration_readback.stderr.txt",
+      "returncode": 0,
+      "finished_at_utc": "2026-11-13T17:10:48.025987+00:00",
+      "wall_seconds": 0.16612552999868058,
+      "child_cpu_seconds": 0.13517899999999972,
+      "stdout_sha256": "a9a0c6a188543f477eed11acec0556265e1697ac54ffe393e40854ec34fe07f3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "C_generation_probability_audit",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/verify_generation.py"
+      ],
+      "cwd": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c",
+      "started_at_utc": "2026-11-13T17:10:48.033367+00:00",
+      "stdout": "logs/07_C_generation_probability_audit.stdout.txt",
+      "stderr": "logs/07_C_generation_probability_audit.stderr.txt",
+      "returncode": 0,
+      "finished_at_utc": "2026-11-13T17:10:48.455404+00:00",
+      "wall_seconds": 0.42211022899937234,
+      "child_cpu_seconds": 0.3735940000000002,
+      "stdout_sha256": "711df71d5f66a99afce9ddc49753619524d7a7dcdc22dd9007f5f924289a5e92",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "C_frozen_holdout",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/evaluate_holdout.py"
+      ],
+      "cwd": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c",
+      "started_at_utc": "2026-11-13T17:10:48.466766+00:00",
+      "stdout": "logs/08_C_frozen_holdout.stdout.txt",
+      "stderr": "logs/08_C_frozen_holdout.stderr.txt",
+      "returncode": 0,
+      "finished_at_utc": "2026-11-13T17:10:55.925726+00:00",
+      "wall_seconds": 7.458993428001122,
+      "child_cpu_seconds": 7.386341000000001,
+      "stdout_sha256": "2cdd63cca545f2e9c49cb2e34e7e61fdfa4083c6f0d53c11cb39d69d72caea11",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "C_final_exact_certificate",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/finalize_certificate.py",
+        "--certificate-dir",
+        "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_b"
+      ],
+      "cwd": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c",
+      "started_at_utc": "2026-11-13T17:10:55.935523+00:00",
+      "stdout": "logs/09_C_final_exact_certificate.stdout.txt",
+      "stderr": "logs/09_C_final_exact_certificate.stderr.txt",
+      "returncode": 0,
+      "finished_at_utc": "2026-11-13T17:10:56.101801+00:00",
+      "wall_seconds": 0.1663327409987687,
+      "child_cpu_seconds": 0.15896700000000008,
+      "stdout_sha256": "2d7381196a13273ccfe031ff1e3d61df4d5a8df99d8200bc4b7f6f31d998acd9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "C_external_processed_observable",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/reproduce_external_observable.py"
+      ],
+      "cwd": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c",
+      "started_at_utc": "2026-11-13T17:10:56.109842+00:00",
+      "stdout": "logs/10_C_external_processed_observable.stdout.txt",
+      "stderr": "logs/10_C_external_processed_observable.stderr.txt",
+      "returncode": 1,
+      "finished_at_utc": "2026-11-13T17:10:56.233871+00:00",
+      "wall_seconds": 0.12406012599967653,
+      "child_cpu_seconds": 0.10113900000000031,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "dad61422da7ee9940e0a1b15198ef94607538a6408f27de73b7868f964dd594f"
+    }
+  ],
+  "inputs_stable_during_execution": true,
+  "immutability_checkpoints": [
+    {
+      "at_utc": "2026-11-13T17:10:42.924617+00:00",
+      "label": "before:A_verify",
+      "files_checked": 62,
+      "changed": []
+    },
+    {
+      "at_utc": "2026-11-13T17:10:44.299868+00:00",
+      "label": "after:A_verify",
+      "files_checked": 62,
+      "changed": []
+    },
+    {
+      "at_utc": "2026-11-13T17:10:44.302109+00:00",
+      "label": "before:B_dynamics",
+      "files_checked": 62,
+      "changed": []
+    },
+    {
+      "at_utc": "2026-11-13T17:10:45.175155+00:00",
+      "label": "after:B_dynamics",
+      "files_checked": 62,
+      "changed": []
+    },
+    {
+      "at_utc": "2026-11-13T17:10:45.179009+00:00",
+      "label": "before:B_eight_interval_certificates",
+      "files_checked": 62,
+      "changed": []
+    },
+    {
+      "at_utc": "2026-11-13T17:10:46.748300+00:00",
+      "label": "after:B_eight_interval_certificates",
+      "files_checked": 62,
+      "changed": []
+    },
+    {
+      "at_utc": "2026-11-13T17:10:46.751125+00:00",
+      "label": "before:B_strict_memory_event",
+      "files_checked": 62,
+      "changed": []
+    },
+    {
+      "at_utc": "2026-11-13T17:10:47.380950+00:00",
+      "label": "after:B_strict_memory_event",
+      "files_checked": 62,
+      "changed": []
+    },
+    {
+      "at_utc": "2026-11-13T17:10:47.383233+00:00",
+      "label": "before:A_independent_B_review",
+      "files_checked": 62,
+      "changed": []
+    },
+    {
+      "at_utc": "2026-11-13T17:10:47.854875+00:00",
+      "label": "after:A_independent_B_review",
+      "files_checked": 62,
+      "changed": []
+    },
+    {
+      "at_utc": "2026-11-13T17:10:47.859850+00:00",
+      "label": "before:C_optional_calibration_readback",
+      "files_checked": 68,
+      "changed": []
+    },
+    {
+      "at_utc": "2026-11-13T17:10:48.030599+00:00",
+      "label": "after:C_optional_calibration_readback",
+      "files_checked": 68,
+      "changed": []
+    },
+    {
+      "at_utc": "2026-11-13T17:10:48.033335+00:00",
+      "label": "before:C_generation_probability_audit",
+      "files_checked": 68,
+      "changed": []
+    },
+    {
+      "at_utc": "2026-11-13T17:10:48.464109+00:00",
+      "label": "after:C_generation_probability_audit",
+      "files_checked": 68,
+      "changed": []
+    },
+    {
+      "at_utc": "2026-11-13T17:10:48.466731+00:00",
+      "label": "before:C_frozen_holdout",
+      "files_checked": 68,
+      "changed": []
+    },
+    {
+      "at_utc": "2026-11-13T17:10:55.932145+00:00",
+      "label": "after:C_frozen_holdout",
+      "files_checked": 68,
+      "changed": []
+    },
+    {
+      "at_utc": "2026-11-13T17:10:55.935460+00:00",
+      "label": "before:C_final_exact_certificate",
+      "files_checked": 68,
+      "changed": []
+    },
+    {
+      "at_utc": "2026-11-13T17:10:56.106859+00:00",
+      "label": "after:C_final_exact_certificate",
+      "files_checked": 68,
+      "changed": []
+    },
+    {
+      "at_utc": "2026-11-13T17:10:56.109808+00:00",
+      "label": "before:C_external_processed_observable",
+      "files_checked": 68,
+      "changed": []
+    },
+    {
+      "at_utc": "2026-11-13T17:10:56.241887+00:00",
+      "label": "after:C_external_processed_observable",
+      "files_checked": 68,
+      "changed": []
+    }
+  ],
+  "git_context_start": {
+    "available": true,
+    "repository_root": "/workspace/scratch/314d4fc9c52a/repo",
+    "HEAD": "ee7fb2793a1dbb519703bba05f535f0d962d9e56",
+    "HEAD_tree": "a69f4531c33281339fb841b40fce23e47404a1f6",
+    "branch": "physics/persistent-bath-20261114",
+    "status_porcelain": " M physics/qm/book/UEOT_PHYSICS.en.md\n M physics/qm/book/UEOT_PHYSICS.md\n M physics/qm/book/build/header.en.tex\n M physics/qm/book/build/header.tex\n M physics/qm/book/build/verify_book.py\n?? physics/qm/audits/PERSISTENT_BATH_v31.14/\n?? physics/qm/book/build/update_v3_11_metadata.py\n?? physics/qm/book/build/verify_v3_11_increment.py\n?? physics/qm/book/evidence/v3.11/\n?? physics/qm/kernel/evidence/v31.13/integration-verification.json\n?? physics/qm/kernel/evidence/v31.14/\n?? physics/qm/persistent_bath/"
+  },
+  "scope": "Replayed finite exact/interval/floating checks against unchanged archived synthetic rows; no new samples, Lean builds, hardware calls or external publication",
+  "controlled_environment": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1",
+    "UEOT_DYNAMICS_PATH": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_b/dynamics.py"
+  },
+  "data_accounting": {
+    "calibration": {
+      "reused_rows": 400000,
+      "historical_generation_receipt": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/calibration_generation_receipt.json",
+        "bytes": 1393,
+        "sha256": "46af72e73e9e1667c2023be19e7793af0d7928bf218ab65a298c725f2ad4dc0c"
+      }
+    },
+    "holdout": {
+      "reused_rows": 1200000,
+      "historical_generation_receipt": {
+        "path": "/workspace/scratch/314d4fc9c52a/repo/physics/qm/kernel/evidence/v31.14/runtime/work_c/holdout_generation_receipt.json",
+        "bytes": 7953,
+        "sha256": "f62a2c804ba544c387681c118ee88ff6792cfb2c17b25820cb9eef44ef6eda5b"
+      }
+    },
+    "total_unique_archived_synthetic_rows": 1600000,
+    "new_synthetic_shots_this_run": 0,
+    "hardware_shots_this_run": 0,
+    "new_Lean_runs_this_run": 0
+  },
+  "original_nominal_sha256": "d6cf56c08603c3bdd13c4cb37ef2f8720f3db308ad87e65f0dedca1c6f801a8e",
+  "original_holdout_plan_sha256": "03541fef730b0e071e5fe546e052703ce124c79597c4358d3b4159e9231aafa4",
+  "calibration_readback": {
+    "enabled": true,
+    "compared_fields": [
+      "lambda_hat",
+      "eta_hat",
+      "lambda_projection_outer",
+      "eta_projection_outer",
+      "nonempty_witness_interval_verified",
+      "alpha",
+      "counts",
+      "lambda_max_error",
+      "eta_max_error",
+      "all_input_ideal_nominal_CQ_error_upper",
+      "all_input_ideal_Galerkin_CQ_error_upper",
+      "fixed_tester_readout_error_addition"
+    ],
+    "different_fields": [],
+    "original_nominal_sha256": "d6cf56c08603c3bdd13c4cb37ef2f8720f3db308ad87e65f0dedca1c6f801a8e",
+    "new_readback_output_sha256": "33e1cf13e910935b113a606f086bedddf50eaaf9fbf043ea26f6c2f95648c0d8",
+    "holdout_or_truth_copied_to_estimator_directory": false,
+    "readback_used_for_holdout": false
+  },
+  "failure": {
+    "type": "RuntimeError",
+    "message": "C_external_processed_observable failed; inspect logs/10_C_external_processed_observable.stderr.txt and logs/10_C_external_processed_observable.stdout.txt",
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/run_verification.py\", line 286, in run\n    command('C_external_processed_observable', py + [works['c'] / 'reproduce_external_observable.py'], works['c'])\n  File \"/workspace/scratch/314d4fc9c52a/repo/physics/qm/persistent_bath/run_verification.py\", line 234, in command\n    raise RuntimeError(f'{name} failed; inspect {record[\"stderr\"]} and {record[\"stdout\"]}')\nRuntimeError: C_external_processed_observable failed; inspect logs/10_C_external_processed_observable.stderr.txt and logs/10_C_external_processed_observable.stdout.txt\n"
+  },
+  "finished_at_utc": "2026-11-13T17:10:56.243123+00:00",
+  "wall_seconds": 13.562940181000158,
+  "runner_cpu_seconds": 1.373404401,
+  "child_cpu_seconds": 12.827369000000001,
+  "git_context_end": {
+    "available": true,
+    "repository_root": "/workspace/scratch/314d4fc9c52a/repo",
+    "HEAD": "ee7fb2793a1dbb519703bba05f535f0d962d9e56",
+    "HEAD_tree": "a69f4531c33281339fb841b40fce23e47404a1f6",
+    "branch": "physics/persistent-bath-20261114",
+    "status_porcelain": " M physics/qm/book/UEOT_PHYSICS.en.md\n M physics/qm/book/UEOT_PHYSICS.md\n M physics/qm/book/build/header.en.tex\n M physics/qm/book/build/header.tex\n M physics/qm/book/build/verify_book.py\n?? physics/qm/audits/PERSISTENT_BATH_v31.14/\n?? physics/qm/book/build/update_v3_11_metadata.py\n?? physics/qm/book/build/verify_v3_11_increment.py\n?? physics/qm/book/evidence/v3.11/\n?? physics/qm/kernel/evidence/v31.13/integration-verification.json\n?? physics/qm/kernel/evidence/v31.14/\n?? physics/qm/persistent_bath/"
+  },
+  "output_files": {
+    "calibration_readback/FROZEN_HOLDOUT_PLAN.json": {
+      "bytes": 703,
+      "sha256": "86a07a4adce5455b7181360c334d5346b551ed01e8b16a2b5a8f3c2be9384266"
+    },
+    "calibration_readback/NOMINAL_MODEL.json": {
+      "bytes": 1910,
+      "sha256": "33e1cf13e910935b113a606f086bedddf50eaaf9fbf043ea26f6c2f95648c0d8"
+    },
+    "logs/01_A_verify.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/01_A_verify.stdout.txt": {
+      "bytes": 3258,
+      "sha256": "aaf45d1e0ef3cd169004330b22a8707e1aff97eeef6e7a5f987b804cd8079549"
+    },
+    "logs/02_B_dynamics.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/02_B_dynamics.stdout.txt": {
+      "bytes": 1777,
+      "sha256": "3dac34fe80ce0318ac63a961a3ca2376dde46b5eb33004cd9013b7bc49a0f703"
+    },
+    "logs/03_B_eight_interval_certificates.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/03_B_eight_interval_certificates.stdout.txt": {
+      "bytes": 2956,
+      "sha256": "26672191775f9629700ad2becbe9bb5358a021cf2bab199e6db15417d63c9fed"
+    },
+    "logs/04_B_strict_memory_event.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/04_B_strict_memory_event.stdout.txt": {
+      "bytes": 143,
+      "sha256": "9ba37390ab730567bd1f75927d45632952fd393b4c48443dfa9c75f255a0d175"
+    },
+    "logs/05_A_independent_B_review.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/05_A_independent_B_review.stdout.txt": {
+      "bytes": 1229,
+      "sha256": "bdbfb5ce3f1f9cd02a21d7a5f802f7cac1fe6bc6439fe4d0bd49c5ff8322b46a"
+    },
+    "logs/06_C_optional_calibration_readback.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/06_C_optional_calibration_readback.stdout.txt": {
+      "bytes": 155,
+      "sha256": "a9a0c6a188543f477eed11acec0556265e1697ac54ffe393e40854ec34fe07f3"
+    },
+    "logs/07_C_generation_probability_audit.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/07_C_generation_probability_audit.stdout.txt": {
+      "bytes": 69,
+      "sha256": "711df71d5f66a99afce9ddc49753619524d7a7dcdc22dd9007f5f924289a5e92"
+    },
+    "logs/08_C_frozen_holdout.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/08_C_frozen_holdout.stdout.txt": {
+      "bytes": 147,
+      "sha256": "2cdd63cca545f2e9c49cb2e34e7e61fdfa4083c6f0d53c11cb39d69d72caea11"
+    },
+    "logs/09_C_final_exact_certificate.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/09_C_final_exact_certificate.stdout.txt": {
+      "bytes": 191,
+      "sha256": "2d7381196a13273ccfe031ff1e3d61df4d5a8df99d8200bc4b7f6f31d998acd9"
+    },
+    "logs/10_C_external_processed_observable.stderr.txt": {
+      "bytes": 244,
+      "sha256": "dad61422da7ee9940e0a1b15198ef94607538a6408f27de73b7868f964dd594f"
+    },
+    "logs/10_C_external_processed_observable.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "work_a/A_REVIEW_B_CHECK.json": {
+      "bytes": 12437,
+      "sha256": "ed6d42a37170e5d751562277e61d23c184c2aaa0226bb902cd296dcdf377b95e"
+    },
+    "work_a/A_VERIFICATION.json": {
+      "bytes": 7585,
+      "sha256": "e474c4132d8497bcc177f34409a254eb3c6ea51341a39869b01741dcf0b54e13"
+    },
+    "work_b/dynamics_results.json": {
+      "bytes": 12939,
+      "sha256": "38a3e2fbecb7673276b624654586ccd4524000d264a68a0eecab8ecdb7bdaf19"
+    },
+    "work_b/interval_calibrated_original_galerkin.json": {
+      "bytes": 69857,
+      "sha256": "23fe8f47dcec4637eb4729fbce1767047c48dfedd6d91e09b11a70e147378986"
+    },
+    "work_b/interval_calibrated_original_weyl.json": {
+      "bytes": 69388,
+      "sha256": "76adef51d4803750943a74bd0f0156396f0b7c39b297ccc5faf667d88fecf6ef"
+    },
+    "work_b/interval_calibrated_permuted_galerkin.json": {
+      "bytes": 69728,
+      "sha256": "11cae12f9b620ea5e82bb9412efa8052e223faed17aeaefa2152adb6ca5b9306"
+    },
+    "work_b/interval_calibrated_permuted_weyl.json": {
+      "bytes": 68948,
+      "sha256": "879a38e3df2682fb2c3fa05c9be663e7173e801e047c77c2782c061a1aaf002d"
+    },
+    "work_b/interval_certificate_index.json": {
+      "bytes": 2750,
+      "sha256": "8d2cd8dc51337df9a407fdf998b9aca2a91564f95155adb71e92623430cd8790"
+    },
+    "work_b/interval_generator_original_galerkin.json": {
+      "bytes": 69818,
+      "sha256": "d279d61341da01c4c3c3d81b8f94d675d757e82b1c9001ba5302718a253c9c5d"
+    },
+    "work_b/interval_generator_original_weyl.json": {
+      "bytes": 69377,
+      "sha256": "072092cd392de3940fbae5b1b852d59f1370b1db075f570498f374005c690fb0"
+    },
+    "work_b/interval_generator_permuted_galerkin.json": {
+      "bytes": 69684,
+      "sha256": "260fdba9c449f70821286f61bac17c0d3bd53f93abe2366c2947c64301fbec8e"
+    },
+    "work_b/interval_generator_permuted_weyl.json": {
+      "bytes": 69341,
+      "sha256": "7274888d7ae2b20d95435439a3d4168653834b5b08f3ea4714ac520d543295f2"
+    },
+    "work_b/memory_event_witness.json": {
+      "bytes": 2275,
+      "sha256": "f7992d28c2401f1f231e576871415be31305c3872d1ffab6486e342dee979e40"
+    },
+    "work_c/FINAL_CERTIFICATE.json": {
+      "bytes": 32317,
+      "sha256": "3e776e1b3007f36c096a3980c7283023d7900e37c95891150e1d41508681a69d"
+    },
+    "work_c/GENERATOR_PROBABILITY_CHECK.json": {
+      "bytes": 835,
+      "sha256": "a51590e5a3c19788ba01cf668d087f9db5cf8c35df5123bda4c7278526df1086"
+    },
+    "work_c/HOLDOUT_RESULTS.json": {
+      "bytes": 39723,
+      "sha256": "ba2a9fca664aaa55f0309de0e83068a4b6d59007002e3fda9fcc8897d3a9342e"
+    }
+  }
+}

@@ -18,6 +18,7 @@ on:
       - "physics/qm/operational_micro_robust/**"
       - "physics/qm/growing_cutoff/**"
       - "physics/qm/simultaneous_cutoff/**"
+      - "physics/qm/persistent_bath/**"
       - "physics/qm/book/build/**"
       - "physics/qm/book/UEOT_PHYSICS.md"
       - "physics/qm/book/UEOT_PHYSICS.en.md"
@@ -42,6 +43,7 @@ on:
       - "physics/qm/operational_micro_robust/**"
       - "physics/qm/growing_cutoff/**"
       - "physics/qm/simultaneous_cutoff/**"
+      - "physics/qm/persistent_bath/**"
       - "physics/qm/book/build/**"
       - "physics/qm/book/UEOT_PHYSICS.md"
       - "physics/qm/book/UEOT_PHYSICS.en.md"
@@ -74,7 +76,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install finite conditioning reference dependencies
-        run: python -m pip install numpy==2.3.5 scipy==1.17.0 sympy==1.14.0 mpmath==1.3.0
+        run: python -m pip install numpy==2.3.5 scipy==1.17.0 sympy==1.14.0 mpmath==1.3.0 h5py==3.16.0
       - name: Verify finite conditioning source, records, implementations and costs
         run: python physics/qm/conditioning/verify_runtime.py --output-dir /tmp/ueot-qm-finite-conditioning
       - name: Verify canonical physics book structure
@@ -85,8 +87,10 @@ jobs:
         run: python physics/qm/growing_cutoff/run_verification.py --output-dir /tmp/ueot-qm-growing-cutoff
       - name: Verify simultaneous Galerkin source and calibrated complete prediction
         run: python physics/qm/simultaneous_cutoff/run_verification.py --output-dir /tmp/ueot-qm-simultaneous-cutoff
-      - name: Verify bilingual chapter69 identities and evidence boundaries
-        run: python physics/qm/book/build/verify_v3_10_increment.py --repo-root . --output /tmp/ueot-qm-book3.10-increment.json --require-complete
+      - name: Verify persistent bath, exact physical instrument and frozen heldout evidence
+        run: python physics/qm/persistent_bath/run_verification.py --output-dir /tmp/ueot-qm-persistent-bath --calibration-readback
+      - name: Verify bilingual chapter70 identities and evidence boundaries
+        run: python physics/qm/book/build/verify_v3_11_increment.py --repo-root . --output /tmp/ueot-qm-book3.11-increment.json --require-complete
       - name: Verify exact kernel and independent negative controls
         run: python physics/qm/kernel/verify_kernel.py --output /tmp/ueot-qm-runtime-verification.json
       - name: Run complete kernel example
@@ -107,7 +111,8 @@ jobs:
             /tmp/ueot-qm-operational-micro-robust/
             /tmp/ueot-qm-growing-cutoff/
             /tmp/ueot-qm-simultaneous-cutoff/
-            /tmp/ueot-qm-book3.10-increment.json
+            /tmp/ueot-qm-persistent-bath/
+            /tmp/ueot-qm-book3.11-increment.json
             /tmp/ueot-qm-runtime-verification.json
             /tmp/ueot-qm-demo.json
             /tmp/ueot-qm-demo-v312.json
