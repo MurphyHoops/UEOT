@@ -18,4 +18,12 @@
 
 ## Reproduction
 
-Run `portable_replay.py --repo /path/to/UEOT --receipt /new/path.json` using the Python dependencies and interpreter described in the accompanying replay guide. The repository must contain the named upstream commit. The field and sector programs are standalone and their JSON outputs are included. In field/observed.json the binary endpoint tuples encode closed interval bounds. The four local field/sector checks exercise the stated examples; their scope and independent inputs are given in the linked notes.
+From a Git checkout containing the scientific baseline above, use Python 3.14 with NumPy 2.5.4, SciPy 1.18.1, mpmath 1.3.0 and SymPy 1.14.0. From the repository root, run the following with fresh receipt paths.
+
+```sh
+python -B physics/qm/correlated_bath/portable_replay.py --repo . --receipt /tmp/ueot-correlated-replay.json
+UEOT_UPSTREAM_REPO="$PWD" OPENBLAS_NUM_THREADS=1 python -B physics/qm/correlated_bath/dynamics/verify_dynamics.py --receipt /tmp/ueot-correlated-dynamics.json
+python -B physics/qm/correlated_bath/verify_extensions.py
+```
+
+The first command regenerates ordered synthetic records and scores the frozen predictions. The second checks finite oscillator evolution and the rational channel repair. The third compares the field calculation and three sector programs with the archived observations. In `field/observed.json`, binary endpoint tuples encode closed interval bounds.

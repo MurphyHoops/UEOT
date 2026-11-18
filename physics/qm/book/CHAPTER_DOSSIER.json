@@ -1,67 +1,7 @@
 {
-  "schema": "ueot_physics.chapter_dossier.v1",
   "document_id": "UEOT-PHYSICS",
   "title": "UEOT物理学",
   "author": "钱德桂（Degui Qian）",
-  "status_axes": {
-    "argument_status": {
-      "D": "定义/协议",
-      "P": "正文命题或推导",
-      "K": "外部标准定理",
-      "H": "附加领域假设",
-      "S": "组织解释",
-      "E": "实验/数值证据或经验输入，子类型另记",
-      "N": "反例/不可能性",
-      "O": "开放问题"
-    },
-    "dependency_class": {
-      "C": "Core-derived：冻结Core已有结果；声称已证时绑定实际源命题与形式定理",
-      "B": "Bridge：Core与物理对象/状态/操作/响应之间的有类型领域桥",
-      "S": "Sector-selection principle：额外的物理理论扇区选择原则",
-      "P": "Standard physical input：标准物理结构、常数、场内容或实验标定输入",
-      "E": "Effective/modeling assumption：尺度、近似或适用窗口下的有效模型假设",
-      "O": "Observable consequence：声明输入链下可测或可数值核查的后果",
-      "X": "Open conjecture：尚未通过证明/实证门的UEOT专属科学关系"
-    },
-    "verification_kind": [
-      "analytic",
-      "exact_arithmetic",
-      "synthetic",
-      "lean",
-      "experiment",
-      "floating_diagnostic",
-      "finite_floating_control",
-      "directed_interval"
-    ],
-    "level": "章级为所含角色集合，具体命题以正文前提和真实源码类型为准；argument_status与dependency_class的重复字母必须带字段名；标准数学待形式化及程序开发开放项不自动属X；纯出版流程的dependency_class可为空。逐条语义迁移见evidence/v3.1/classification-migration.json。 3.2保留旧章edition_status和编号origin的原始历史语义；current_edition_action单列本版动作。全部新增编号携带逐项类型、源码及科学边界。"
-  },
-  "governance": {
-    "authorization_basis": "本轮用户直接授权继续推进UEOT-QM，并构建正式、全面、可持续维护的UEOT物理学总著；此处记录会话已有授权，不新设审批。",
-    "work_classes": [
-      {
-        "class": "ClassB/QM",
-        "scope": "QM领域的数学/软件扩展、实际验证、对应物理合同；不得回写冻结Core定义/源码/计数。"
-      },
-      {
-        "class": "ClassC/BookAssembly",
-        "scope": "完整旧著恢复、逐章校订、来源/证据整合、正式正文及派生阅读版；保留既有有效推导与编号。"
-      }
-    ],
-    "integration_authority": "根代理负责跨任务整合、实际源身份、统一构建与验收，并按已有用户授权完成仓库同步。",
-    "review_identity": {
-      "method": "AI多代理分工阅读、数学/源码交叉检查、独立计算路径和统一实际执行",
-      "independent_human_peer_review": false,
-      "journal_acceptance_claimed": false,
-      "new_experimental_data": false
-    },
-    "frozen_core_mutation_authorized_by_this_dossier": false,
-    "repository_write_scope": [
-      "physics/qm",
-      "formalization/ueot-qm"
-    ],
-    "canonical_changes_require_updated_dossier_and_evidence": true,
-    "remote_success_requires_actual_commit_and_workflow_receipts": true
-  },
   "source_catalog": {
     "S1": {
       "manifest_entry_id": "S1",
@@ -903,65 +843,13 @@
       "path": "physics/qm/UEOT_QM_KERNEL_v31.14.md",
       "evidence_level": "PAPER_EXACT_INTERVAL_SYNTHETIC_AND_EXTERNAL_PROCESSED_REPRODUCTION_NO_NEW_LEAN",
       "use": "Nine scoped Chapter70 results; no matched-device certification or global physical selection"
-    }
-  },
-  "recorded_at_utc": "2026-11-13T17:41:27.870293+00:00",
-  "edition": "3.11",
-  "editorial_status": "LOCAL_VERIFIED_REMOTE_PENDING",
-  "canonical": {
-    "path": "physics/qm/book/UEOT_PHYSICS.md",
-    "sha256": "7601ad60f0b28325a99a2b95f23fdabd9c621ce17d5049feeb17920256e237f4",
-    "bytes": 820878,
-    "status": "LOCAL_VERIFIED_REMOTE_PENDING",
-    "language": "zh",
-    "chapters": 71,
-    "appendices": 6,
-    "numbered_results": 203,
-    "inherited_result_ids": 194,
-    "new_result_ids": 9
-  },
-  "derivatives": {
-    "status": "BUILT_AND_SCOPED_VISUALLY_VERIFIED",
-    "visual_review": {
-      "path": "physics/qm/book/evidence/v3.11/visual-review.json",
-      "sha256": "4713e59cda6b139bc205d53b1d89ddae08e6884c526bd65377cfd25279686335",
-      "bytes": 5364
     },
-    "zh": {
-      "pdf": {
-        "path": "physics/qm/book/UEOT_PHYSICS.pdf",
-        "sha256": "fbf01530fbe76d7355a9c3971796862ace17a2ec1c5e4f8020e606a7ab3c6fbd",
-        "bytes": 1615782
-      },
-      "latex": {
-        "path": "physics/qm/book/UEOT_PHYSICS.tex",
-        "sha256": "106467395391b2449c490f5a8d0ce25ec4e9eae888f97b15484e3ecd68f16efb",
-        "bytes": 881755
-      },
-      "source_sha256": "7601ad60f0b28325a99a2b95f23fdabd9c621ce17d5049feeb17920256e237f4",
-      "build": {
-        "path": "physics/qm/book/evidence/v3.11/zh/pdf-build.json",
-        "sha256": "b5a14b1eda17716ccd7948bd23273a0abba2b33e1fc7f28e9513c1e3b2dcf673",
-        "bytes": 5119
-      }
-    },
-    "en": {
-      "pdf": {
-        "path": "physics/qm/book/UEOT_PHYSICS.en.pdf",
-        "sha256": "26c4c473b7fdae821880c2b333e49c6715eb012c574f88f398caeb31aaec93c1",
-        "bytes": 1391690
-      },
-      "latex": {
-        "path": "physics/qm/book/UEOT_PHYSICS.en.tex",
-        "sha256": "d58110241fad5d286946a2fe7e667cf0f5d1f73138cc57c28b3f3591db85dc2a",
-        "bytes": 1056881
-      },
-      "source_sha256": "d4e0d07fe5cc65b2375e61a41406ed11391c18ac16cfb2e69e8b83a1e21fbbf7",
-      "build": {
-        "path": "physics/qm/book/evidence/v3.11/en/pdf-build.json",
-        "sha256": "d215ae07ed19234bf49df29ae315686b1a084e223586893162f26f71242e38d7",
-        "bytes": 5166
-      }
+    "QM3115": {
+      "id": "QM3115",
+      "name": "Correlated bath, signed interventions and the local field",
+      "path": "physics/qm/correlated_bath/README.md",
+      "evidence_level": "PAPER_EXACT_INTERVAL_SYNTHETIC_NO_NEW_LEAN",
+      "use": "Seven Chapter 71 result objects and their declared controls"
     }
   },
   "chapters": [
@@ -969,7 +857,7 @@
       "number": 0,
       "title": "文档定位、论域与证明责任",
       "anchor": "ch-0",
-      "body_sha256": "7f9dc7bab6bd835ff85c9a7934e975b7515434400929c158f7e4fb0ea0709117",
+      "body_sha256": "ea1c343ee3da3e7cbe9487d1b587af3626eb4d1d59f0cd06b025c18fb3100c29",
       "edition_status": "INTEGRATED_COMPLETE",
       "argument_status": [
         "D",
@@ -1107,6 +995,10 @@
         {
           "id": "0.14",
           "title": "持久环境与完整认证的现行增量"
+        },
+        {
+          "id": "0.15",
+          "title": "第71章候选书稿阅读入口"
         }
       ],
       "primary_reference_urls": [],
@@ -1250,7 +1142,7 @@
           "S2，§0、附录E；S4，§1–2"
         ]
       },
-      "body_utf8_bytes": 24864,
+      "body_utf8_bytes": 25238,
       "body_slice_convention": "stable chapter/appendix anchor inclusive to next such anchor exclusive; final appendix through EOF; exact UTF-8 bytes",
       "body_revision_history": [
         {
@@ -1345,10 +1237,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -1579,6 +1469,18 @@
           "anchor": "ch-0",
           "body_sha256": "ccc90d0796d5d60508ef81ef2892cc6785a3e3ee47c8792463a01e504fc41604",
           "body_utf8_bytes": 33160
+        }
+      },
+      "publication_3_12": {
+        "zh": {
+          "anchor": "ch-0",
+          "body_sha256": "ea1c343ee3da3e7cbe9487d1b587af3626eb4d1d59f0cd06b025c18fb3100c29",
+          "body_utf8_bytes": 25238
+        },
+        "en": {
+          "anchor": "ch-0",
+          "body_sha256": "25b71b62aaea00ad648825a03ce3da4a2d2bfe500d7ac19cb97a4efc808e9065",
+          "body_utf8_bytes": 33621
         }
       }
     },
@@ -1826,10 +1728,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -1990,6 +1890,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-1",
+          "body_sha256": "29bb75549b42b4e5089fd0f2600de407076e17f5517ddc0d0de2055e454aba9d",
+          "body_utf8_bytes": 15395
+        },
+        "en": {
+          "anchor": "ch-1",
+          "body_sha256": "916b9847a5b386376dc44be44b5d5e6333065f6c1fa22f19e29d0c05e9013ec7",
+          "body_utf8_bytes": 19675
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-1",
           "body_sha256": "29bb75549b42b4e5089fd0f2600de407076e17f5517ddc0d0de2055e454aba9d",
@@ -2191,10 +2103,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -2319,6 +2229,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-2",
+          "body_sha256": "258352ee89709f0a4fe691ba2304b86eab0b87e8bfe7077e263672ff661c8796",
+          "body_utf8_bytes": 5648
+        },
+        "en": {
+          "anchor": "ch-2",
+          "body_sha256": "615318106364b31ca6ce4bb0ac5c0749d51dfd5b7f60a39a1f43755f3906214e",
+          "body_utf8_bytes": 7409
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-2",
           "body_sha256": "258352ee89709f0a4fe691ba2304b86eab0b87e8bfe7077e263672ff661c8796",
@@ -2527,10 +2449,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -2667,6 +2587,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-3",
+          "body_sha256": "4b31f7994cfdba56213da75dada3fca3e56fdc21cbf43a9bf697768134b7fa6a",
+          "body_utf8_bytes": 7152
+        },
+        "en": {
+          "anchor": "ch-3",
+          "body_sha256": "22479840191b03ed4ea93230a12803f72f98d84af9a9721175127875cd94a357",
+          "body_utf8_bytes": 8529
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-3",
           "body_sha256": "4b31f7994cfdba56213da75dada3fca3e56fdc21cbf43a9bf697768134b7fa6a",
@@ -2887,10 +2819,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -3027,6 +2957,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-4",
+          "body_sha256": "285831baf2c1ec98fff180da5e0dabce97f723d647e0d4f774944a57c3233e6c",
+          "body_utf8_bytes": 6807
+        },
+        "en": {
+          "anchor": "ch-4",
+          "body_sha256": "8efc927aad35e516f19ee35450d85449d71aada4edf80b0aa6042f507807fb1e",
+          "body_utf8_bytes": 8383
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-4",
           "body_sha256": "285831baf2c1ec98fff180da5e0dabce97f723d647e0d4f774944a57c3233e6c",
@@ -3255,10 +3197,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -3401,6 +3341,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-5",
+          "body_sha256": "eeb0ae21ff1f555e9883c85cc3339c179d6fd4ac3bef1ed70e4feb59ff4d7ca1",
+          "body_utf8_bytes": 8700
+        },
+        "en": {
+          "anchor": "ch-5",
+          "body_sha256": "15ab0b4c7bc499c531c63109515535bd45bd85fb4c49b73756b5d30947093583",
+          "body_utf8_bytes": 10226
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-5",
           "body_sha256": "eeb0ae21ff1f555e9883c85cc3339c179d6fd4ac3bef1ed70e4feb59ff4d7ca1",
@@ -3630,10 +3582,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -3788,6 +3738,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-6",
+          "body_sha256": "95b5576011305e831993a4d1e5a7eccfa4a11eb6eadc9fdb2cfbbd5667423942",
+          "body_utf8_bytes": 5297
+        },
+        "en": {
+          "anchor": "ch-6",
+          "body_sha256": "990bfc8310cfc3043468db45edb2857f54b38b5ac8a89a394cb590b7d37feb87",
+          "body_utf8_bytes": 6626
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-6",
           "body_sha256": "95b5576011305e831993a4d1e5a7eccfa4a11eb6eadc9fdb2cfbbd5667423942",
@@ -3984,10 +3946,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -4112,6 +4072,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-7",
+          "body_sha256": "a358dd00b1aa0ae8e8cae22ca28fff1538d88e243190fd0016b49adc39b93d06",
+          "body_utf8_bytes": 4423
+        },
+        "en": {
+          "anchor": "ch-7",
+          "body_sha256": "24ccaef65886aea1caf394720a3f18327c49caea311a8e16bd94f748166721a8",
+          "body_utf8_bytes": 5403
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-7",
           "body_sha256": "a358dd00b1aa0ae8e8cae22ca28fff1538d88e243190fd0016b49adc39b93d06",
@@ -4321,10 +4293,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -4473,6 +4443,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-8",
+          "body_sha256": "88b15dd612d29ea6ce3bdb86c4cc8f00bc5a3b441931d98c8a36b649eff2c87e",
+          "body_utf8_bytes": 6015
+        },
+        "en": {
+          "anchor": "ch-8",
+          "body_sha256": "68d1dd02a010c85a56d654fe26008ecc15d8f0a50939b8a8e320fbe03314ab3c",
+          "body_utf8_bytes": 7427
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-8",
           "body_sha256": "88b15dd612d29ea6ce3bdb86c4cc8f00bc5a3b441931d98c8a36b649eff2c87e",
@@ -4674,10 +4656,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -4808,6 +4788,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-9",
+          "body_sha256": "837113c5a1413e8a76e76f2dbef59a888de387896ff3e4bcfe0ddc9db90cd395",
+          "body_utf8_bytes": 3369
+        },
+        "en": {
+          "anchor": "ch-9",
+          "body_sha256": "921f68890ba54e591e57a89caf192d44718c2f666d6384f59fd934722a632b2f",
+          "body_utf8_bytes": 4371
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-9",
           "body_sha256": "837113c5a1413e8a76e76f2dbef59a888de387896ff3e4bcfe0ddc9db90cd395",
@@ -5012,10 +5004,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -5146,6 +5136,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-10",
+          "body_sha256": "b2a7e6039698b84f3538c283243a49f55e6494b1c62ee7764b62eb8f69550de3",
+          "body_utf8_bytes": 4339
+        },
+        "en": {
+          "anchor": "ch-10",
+          "body_sha256": "11558679045780c4b435b3523ed396427acda77a69d991e320afac64b73da108",
+          "body_utf8_bytes": 5822
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-10",
           "body_sha256": "b2a7e6039698b84f3538c283243a49f55e6494b1c62ee7764b62eb8f69550de3",
@@ -5364,10 +5366,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -5516,6 +5516,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-11",
+          "body_sha256": "7fd86aa4c3754f787737c89f576a3a150ca4e39d837c311e27955856c9631909",
+          "body_utf8_bytes": 4635
+        },
+        "en": {
+          "anchor": "ch-11",
+          "body_sha256": "813929e672fd0ea69b2ecb939e0622f201b4f94accaab4e402c3ad813e657c71",
+          "body_utf8_bytes": 5848
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-11",
           "body_sha256": "7fd86aa4c3754f787737c89f576a3a150ca4e39d837c311e27955856c9631909",
@@ -5701,10 +5713,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -5822,6 +5832,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-12",
+          "body_sha256": "733ba599b8d6dc6efb361170d0ec39bba317de123b9e3b1a569fc895049023c4",
+          "body_utf8_bytes": 4532
+        },
+        "en": {
+          "anchor": "ch-12",
+          "body_sha256": "1de31fe8582056b1f5a62e3d461fd246d3b19f20fdf9af3988633cdfb296c241",
+          "body_utf8_bytes": 5516
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-12",
           "body_sha256": "733ba599b8d6dc6efb361170d0ec39bba317de123b9e3b1a569fc895049023c4",
@@ -5983,10 +6005,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -6060,6 +6080,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-13",
+          "body_sha256": "16b0900d71997bceb54d0908c60ebacd0980b808190b6c8b02ba28a59fb113c9",
+          "body_utf8_bytes": 2969
+        },
+        "en": {
+          "anchor": "ch-13",
+          "body_sha256": "8a957353f7286d84565b5f4f3a20b1d165b0e874b49fdc62a10de7d603290000",
+          "body_utf8_bytes": 3387
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-13",
           "body_sha256": "16b0900d71997bceb54d0908c60ebacd0980b808190b6c8b02ba28a59fb113c9",
@@ -6240,10 +6272,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -6361,6 +6391,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-14",
+          "body_sha256": "75fafcf517309fbdb2c89836b42d4d05e2682b4ce67f97f1754a60e04447db1a",
+          "body_utf8_bytes": 5872
+        },
+        "en": {
+          "anchor": "ch-14",
+          "body_sha256": "79189dc5cb8473803f4686aae6d8b2de0b5211233767ed070d4be28d1ed9e0ec",
+          "body_utf8_bytes": 7374
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-14",
           "body_sha256": "75fafcf517309fbdb2c89836b42d4d05e2682b4ce67f97f1754a60e04447db1a",
@@ -6531,10 +6573,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -6640,6 +6680,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-15",
+          "body_sha256": "ce28a8bd9a0101071f2fd3729e0af1c49d253002411be5b5562553b72642ad24",
+          "body_utf8_bytes": 4389
+        },
+        "en": {
+          "anchor": "ch-15",
+          "body_sha256": "5fc674e8d3930eb11533f4930d0b685d84afbc68f0ca62abc0e123fa95d0eab3",
+          "body_utf8_bytes": 5443
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-15",
           "body_sha256": "ce28a8bd9a0101071f2fd3729e0af1c49d253002411be5b5562553b72642ad24",
@@ -6821,10 +6873,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -6942,6 +6992,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-16",
+          "body_sha256": "6d2c8ac63c1b27aa8c8f1fa1c2401ad85f6a093cb3483570c15ca8443d9f866e",
+          "body_utf8_bytes": 5205
+        },
+        "en": {
+          "anchor": "ch-16",
+          "body_sha256": "14e289446157872a2687095fa9ca7d1d83d27648c254e9957af3c0d93137f0d7",
+          "body_utf8_bytes": 6464
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-16",
           "body_sha256": "6d2c8ac63c1b27aa8c8f1fa1c2401ad85f6a093cb3483570c15ca8443d9f866e",
@@ -7123,10 +7185,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -7244,6 +7304,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-17",
+          "body_sha256": "fd337d466b586997b58105b91879020e3cd1cf1f257e610c093f2081bcd11412",
+          "body_utf8_bytes": 4067
+        },
+        "en": {
+          "anchor": "ch-17",
+          "body_sha256": "18778d4791b65e30966479964fcb804b089b1ba8bbf04426d5a2ff0bc169b9eb",
+          "body_utf8_bytes": 4896
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-17",
           "body_sha256": "fd337d466b586997b58105b91879020e3cd1cf1f257e610c093f2081bcd11412",
@@ -7427,10 +7499,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -7543,6 +7613,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-18",
+          "body_sha256": "fcc213697616e775771fb826bbbd03dbcf3ff33414441525cf47e4837db7b66c",
+          "body_utf8_bytes": 4319
+        },
+        "en": {
+          "anchor": "ch-18",
+          "body_sha256": "b070e6d6417bf1752f5fbee08ee5c31213a0a1a313fae65fef13e3c88f507acb",
+          "body_utf8_bytes": 5323
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-18",
           "body_sha256": "fcc213697616e775771fb826bbbd03dbcf3ff33414441525cf47e4837db7b66c",
@@ -7750,10 +7832,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -7902,6 +7982,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-19",
+          "body_sha256": "99daecf935b3f4e41344bb7ce90427768a4c9ef21dce67e7583ddeca18db8a7a",
+          "body_utf8_bytes": 3931
+        },
+        "en": {
+          "anchor": "ch-19",
+          "body_sha256": "30d60a221a9b68685036c49f33a5a002d7975b3bd9a45d139c7c7750d5db9d2b",
+          "body_utf8_bytes": 4908
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-19",
           "body_sha256": "99daecf935b3f4e41344bb7ce90427768a4c9ef21dce67e7583ddeca18db8a7a",
@@ -8089,10 +8181,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -8217,6 +8307,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-20",
+          "body_sha256": "d2a54986c95e9ade7742c85a58f230deaf95be7f2e5ef0f2e1584a840b213295",
+          "body_utf8_bytes": 3089
+        },
+        "en": {
+          "anchor": "ch-20",
+          "body_sha256": "afd48b88357b04f1966478aad79fd556ee193e4efa6802d405460a71b809bc39",
+          "body_utf8_bytes": 3896
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-20",
           "body_sha256": "d2a54986c95e9ade7742c85a58f230deaf95be7f2e5ef0f2e1584a840b213295",
@@ -8383,10 +8485,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -8492,6 +8592,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-21",
+          "body_sha256": "0c26f18957d7e48c84d9e6e102a75a10a91d2fcc14be37e45a7486b64a52be9d",
+          "body_utf8_bytes": 4857
+        },
+        "en": {
+          "anchor": "ch-21",
+          "body_sha256": "ea5c10e286fd1fbd47b9e02ed342741cbb57c3e6cb1a42dfa954f5b54a4b5fee",
+          "body_utf8_bytes": 6212
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-21",
           "body_sha256": "0c26f18957d7e48c84d9e6e102a75a10a91d2fcc14be37e45a7486b64a52be9d",
@@ -8674,10 +8786,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -8796,6 +8906,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-22",
+          "body_sha256": "f01590bc91a4dc217104053d6c0f21f828f74ea8e76fdd716f113d2a597bf52b",
+          "body_utf8_bytes": 2789
+        },
+        "en": {
+          "anchor": "ch-22",
+          "body_sha256": "be4b169d45be9fa13309d03396e5e6c785883344f42d747c90cca940755fbec3",
+          "body_utf8_bytes": 3313
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-22",
           "body_sha256": "f01590bc91a4dc217104053d6c0f21f828f74ea8e76fdd716f113d2a597bf52b",
@@ -8975,10 +9097,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -9091,6 +9211,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-23",
+          "body_sha256": "95e8e4a75f3be28e69c0179217ce8db81578640876354ca768907b4abb8a93cb",
+          "body_utf8_bytes": 4188
+        },
+        "en": {
+          "anchor": "ch-23",
+          "body_sha256": "53ccd439789f3d01f3c01d21af3b36019b931854f3e6ae8aca278a5dc1c8aa81",
+          "body_utf8_bytes": 4972
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-23",
           "body_sha256": "95e8e4a75f3be28e69c0179217ce8db81578640876354ca768907b4abb8a93cb",
@@ -9270,10 +9402,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -9386,6 +9516,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-24",
+          "body_sha256": "20829fe40d80d3b322904d24ffc951356e2f8cb70cc88d7dd27d879039c4af47",
+          "body_utf8_bytes": 4215
+        },
+        "en": {
+          "anchor": "ch-24",
+          "body_sha256": "16bbd73225503c1b21db00a37e73b28e833a86b4bd76f7aaba90b427c22b202c",
+          "body_utf8_bytes": 5154
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-24",
           "body_sha256": "20829fe40d80d3b322904d24ffc951356e2f8cb70cc88d7dd27d879039c4af47",
@@ -9584,10 +9726,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -9724,6 +9864,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-25",
+          "body_sha256": "0f36f58bd964da3da4d76aef182e4db4480ccd8d37fae67161778a6e4874ac6b",
+          "body_utf8_bytes": 5427
+        },
+        "en": {
+          "anchor": "ch-25",
+          "body_sha256": "78535ead3151991494e9a7bd0a4024b1a6e987e8bfb1c635d802402c51c3c23b",
+          "body_utf8_bytes": 6475
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-25",
           "body_sha256": "0f36f58bd964da3da4d76aef182e4db4480ccd8d37fae67161778a6e4874ac6b",
@@ -9910,10 +10062,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -10032,6 +10182,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-26",
+          "body_sha256": "100a8382bddcc7750128817d47147cce8b5f97f6c51d8c5c4fc5859983295d61",
+          "body_utf8_bytes": 5337
+        },
+        "en": {
+          "anchor": "ch-26",
+          "body_sha256": "ae31c0d0c9e1b5f0595e6c4696c3c14fca6a90af4f1daf0a9f487a81faa5f5cc",
+          "body_utf8_bytes": 6531
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-26",
           "body_sha256": "100a8382bddcc7750128817d47147cce8b5f97f6c51d8c5c4fc5859983295d61",
@@ -10204,10 +10366,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -10313,6 +10473,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-27",
+          "body_sha256": "c5a89b3444b923a8ca8f2444a261eff05e681597f1a40783eaa9dd9cc6d1e48c",
+          "body_utf8_bytes": 4371
+        },
+        "en": {
+          "anchor": "ch-27",
+          "body_sha256": "9122b13650fd7b86cd8d16ec19f29d5453510363ed2245314321053ac717d1c3",
+          "body_utf8_bytes": 5041
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-27",
           "body_sha256": "c5a89b3444b923a8ca8f2444a261eff05e681597f1a40783eaa9dd9cc6d1e48c",
@@ -10498,10 +10670,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -10620,6 +10790,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-28",
+          "body_sha256": "5993ac294a2615604170820089675527d1a4c7afe510a04fc270b17b45d258fd",
+          "body_utf8_bytes": 4183
+        },
+        "en": {
+          "anchor": "ch-28",
+          "body_sha256": "16c67766313c4664aa708ef9fd08a8e579651c0db3f4d9e8666dac3430a45ecd",
+          "body_utf8_bytes": 4982
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-28",
           "body_sha256": "5993ac294a2615604170820089675527d1a4c7afe510a04fc270b17b45d258fd",
@@ -10821,10 +11003,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -10949,6 +11129,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-29",
+          "body_sha256": "2e683ba97ff9df481e232ac2c9d61b981dfee580846af5d8e2b19e2d3a2a2d9d",
+          "body_utf8_bytes": 4619
+        },
+        "en": {
+          "anchor": "ch-29",
+          "body_sha256": "1c0fcc8f7832aa1b33e99af435b726f7cfdba3640c4166e35041d0e0cc13e9de",
+          "body_utf8_bytes": 5478
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-29",
           "body_sha256": "2e683ba97ff9df481e232ac2c9d61b981dfee580846af5d8e2b19e2d3a2a2d9d",
@@ -11154,10 +11346,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -11294,6 +11484,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-30",
+          "body_sha256": "65638ec1c175bfe162320da8e69f7d9799d9dd62ed0d07d7613266ea948e6c8a",
+          "body_utf8_bytes": 4211
+        },
+        "en": {
+          "anchor": "ch-30",
+          "body_sha256": "f19f0fa11809fabf4a2140debb835829fdaf3c966cc12c64f8db0cf78a1933c7",
+          "body_utf8_bytes": 4992
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-30",
           "body_sha256": "65638ec1c175bfe162320da8e69f7d9799d9dd62ed0d07d7613266ea948e6c8a",
@@ -11540,10 +11742,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -11710,6 +11910,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-31",
+          "body_sha256": "061159b34ce4b834a2eb0d39244f991677aa0fd4636f7932144730f5e3d8bcd8",
+          "body_utf8_bytes": 8417
+        },
+        "en": {
+          "anchor": "ch-31",
+          "body_sha256": "938c0da981940edd3c096e769dc1657378afa3636b82f2722e19b5d99a713af9",
+          "body_utf8_bytes": 10335
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-31",
           "body_sha256": "061159b34ce4b834a2eb0d39244f991677aa0fd4636f7932144730f5e3d8bcd8",
@@ -11910,10 +12122,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -12044,6 +12254,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-32",
+          "body_sha256": "0e9489f79ecb8fc75da4a64e2d77363283575057824dc8d56ebc361275038061",
+          "body_utf8_bytes": 4588
+        },
+        "en": {
+          "anchor": "ch-32",
+          "body_sha256": "9d29fcc6e3f8b9e13ae463eaa2eb3245fa87dbd797e7fd38c9b191db092baeee",
+          "body_utf8_bytes": 5867
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-32",
           "body_sha256": "0e9489f79ecb8fc75da4a64e2d77363283575057824dc8d56ebc361275038061",
@@ -12266,10 +12488,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -12435,6 +12655,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-33",
+          "body_sha256": "7c6ef650090b57ba8ffa6a88db9477e3465ce01a5bd07e68e2fe48dc931eb283",
+          "body_utf8_bytes": 10213
+        },
+        "en": {
+          "anchor": "ch-33",
+          "body_sha256": "b55f8ce971fefeea457bd90ff2d76477ec991a812fe90e284cc0a03d981abbe8",
+          "body_utf8_bytes": 11833
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-33",
           "body_sha256": "7c6ef650090b57ba8ffa6a88db9477e3465ce01a5bd07e68e2fe48dc931eb283",
@@ -12639,10 +12871,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -12796,6 +13026,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-34",
+          "body_sha256": "925b87d4b976b779dd88090d77713288327d34e33ba35c93ee3ee7b75442bdd0",
+          "body_utf8_bytes": 5800
+        },
+        "en": {
+          "anchor": "ch-34",
+          "body_sha256": "18d04d2db09e6d9d4c46bc061b5d50ef5b4c3e04ccbddfc237917eadd991b471",
+          "body_utf8_bytes": 7240
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-34",
           "body_sha256": "925b87d4b976b779dd88090d77713288327d34e33ba35c93ee3ee7b75442bdd0",
@@ -12986,10 +13228,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -13107,6 +13347,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-35",
+          "body_sha256": "91259ce183ebd952d43e9192b45b558c7a489725b78b3a78763fc6cf969a1e51",
+          "body_utf8_bytes": 5707
+        },
+        "en": {
+          "anchor": "ch-35",
+          "body_sha256": "35b1055642498b48c6db75b065b99102103148d0fe93b1b98f5749bb4fe7e31a",
+          "body_utf8_bytes": 7096
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-35",
           "body_sha256": "91259ce183ebd952d43e9192b45b558c7a489725b78b3a78763fc6cf969a1e51",
@@ -13319,10 +13571,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -13477,6 +13727,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-36",
+          "body_sha256": "fb1db9c3d0802282db5b57af3cd142d59cb79940e404758417a5a23324d9160c",
+          "body_utf8_bytes": 6335
+        },
+        "en": {
+          "anchor": "ch-36",
+          "body_sha256": "5f8ae8e437eebee701398db6255dd885fdb339ceec15f81327626a5f9bb2a693",
+          "body_utf8_bytes": 8244
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-36",
           "body_sha256": "fb1db9c3d0802282db5b57af3cd142d59cb79940e404758417a5a23324d9160c",
@@ -13693,10 +13955,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -13857,6 +14117,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-37",
+          "body_sha256": "fdc1ffbe92eb0bde0bd1c835ee835132f4d3efe5074e9efc3953d32ad1dbaa27",
+          "body_utf8_bytes": 6008
+        },
+        "en": {
+          "anchor": "ch-37",
+          "body_sha256": "0c8ae21c5bd6860ef5a8505e0987e2f8f1724733bfadc0cf240603f4b35039cd",
+          "body_utf8_bytes": 7410
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-37",
           "body_sha256": "fdc1ffbe92eb0bde0bd1c835ee835132f4d3efe5074e9efc3953d32ad1dbaa27",
@@ -14057,10 +14329,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -14203,6 +14473,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-38",
+          "body_sha256": "a8456f548deb2374e6d25b4a358b4c54c234fa91736ffa8b38276f248c2e0c0c",
+          "body_utf8_bytes": 4792
+        },
+        "en": {
+          "anchor": "ch-38",
+          "body_sha256": "eb2da58d1f1f99397c1094ac422ef546256637c7080bea345e5c22eda13f6e0c",
+          "body_utf8_bytes": 5859
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-38",
           "body_sha256": "a8456f548deb2374e6d25b4a358b4c54c234fa91736ffa8b38276f248c2e0c0c",
@@ -14438,10 +14720,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -14626,6 +14906,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-39",
+          "body_sha256": "12c2419ea73b3f6fe72241859e18644fa8df0041d006628fc646d16505df14f5",
+          "body_utf8_bytes": 8158
+        },
+        "en": {
+          "anchor": "ch-39",
+          "body_sha256": "0a0b08fde672be9d51d4b46ef69a4e48341f52890e41923e124af8c95f40cccc",
+          "body_utf8_bytes": 10062
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-39",
           "body_sha256": "12c2419ea73b3f6fe72241859e18644fa8df0041d006628fc646d16505df14f5",
@@ -14851,10 +15143,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -15031,6 +15321,18 @@
           "body_sha256": "588be34e23cdd07236982431578bda0a9db02eb1392c4c2cddb89d98799e5c2d",
           "body_utf8_bytes": 13499
         }
+      },
+      "publication_3_12": {
+        "zh": {
+          "anchor": "ch-40",
+          "body_sha256": "2ab7eaea9972230a92b4247d83e402fd0b73e853fb1b64bf67c85228882b687f",
+          "body_utf8_bytes": 10853
+        },
+        "en": {
+          "anchor": "ch-40",
+          "body_sha256": "588be34e23cdd07236982431578bda0a9db02eb1392c4c2cddb89d98799e5c2d",
+          "body_utf8_bytes": 13499
+        }
       }
     },
     {
@@ -15195,10 +15497,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -15311,6 +15611,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-41",
+          "body_sha256": "954b797a7b62bd2803609334e826a570bb9519e9a3ba6e1957ae69214c121179",
+          "body_utf8_bytes": 3739
+        },
+        "en": {
+          "anchor": "ch-41",
+          "body_sha256": "5b330e5fb8cde6f47f98fbdb592f3418663bf1816bd92929ae5ed662a6a2ded8",
+          "body_utf8_bytes": 4754
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-41",
           "body_sha256": "954b797a7b62bd2803609334e826a570bb9519e9a3ba6e1957ae69214c121179",
@@ -15492,10 +15804,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -15613,6 +15923,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-42",
+          "body_sha256": "c6d2a0de165705a9050a2f865fd7c477ec8d242f6ddb42eaed404e9e151d1397",
+          "body_utf8_bytes": 6878
+        },
+        "en": {
+          "anchor": "ch-42",
+          "body_sha256": "87c1088780bbfcfce336e8af9b9fe257255988c2f484fe4fdc3091a6fa98661f",
+          "body_utf8_bytes": 8999
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-42",
           "body_sha256": "c6d2a0de165705a9050a2f865fd7c477ec8d242f6ddb42eaed404e9e151d1397",
@@ -15786,10 +16108,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -15902,6 +16222,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-43",
+          "body_sha256": "50a7b8747d8988273e3b6b442445cdb45ebea05773985f4da154c558eed14916",
+          "body_utf8_bytes": 2965
+        },
+        "en": {
+          "anchor": "ch-43",
+          "body_sha256": "04cbfb61f8ef2766d54b63f54d4ba88c35481346248f58aee320a68b53cedf64",
+          "body_utf8_bytes": 3900
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-43",
           "body_sha256": "50a7b8747d8988273e3b6b442445cdb45ebea05773985f4da154c558eed14916",
@@ -16093,10 +16425,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -16227,6 +16557,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-44",
+          "body_sha256": "ec8283bf88c20d1ccaaea2db42985084c82d641d4eaa69edd46be58cc045b012",
+          "body_utf8_bytes": 4148
+        },
+        "en": {
+          "anchor": "ch-44",
+          "body_sha256": "39192a79ff0fd7fb222cb378e249f97e38732592710caae3e2f0e6e9e55e63ac",
+          "body_utf8_bytes": 5233
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-44",
           "body_sha256": "ec8283bf88c20d1ccaaea2db42985084c82d641d4eaa69edd46be58cc045b012",
@@ -16424,10 +16766,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -16570,6 +16910,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-45",
+          "body_sha256": "ec4a6987963beead868a911d86d4bf07d2bf0c77495c6e177c636e1fde276029",
+          "body_utf8_bytes": 5151
+        },
+        "en": {
+          "anchor": "ch-45",
+          "body_sha256": "ac0871bd64cbbcf501310f5a6c60f6165e844d654fe9e956413969d9f80d8149",
+          "body_utf8_bytes": 6688
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-45",
           "body_sha256": "ec4a6987963beead868a911d86d4bf07d2bf0c77495c6e177c636e1fde276029",
@@ -16756,10 +17108,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -16890,6 +17240,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-46",
+          "body_sha256": "d1ae91658c64b80e657684b082646759cd35281c699bfc5823cd5564163217cd",
+          "body_utf8_bytes": 4052
+        },
+        "en": {
+          "anchor": "ch-46",
+          "body_sha256": "ed9e4cb7b5772febaaffe69b30ef7e320b1968c3adbba5e0370c8b9cc1574c38",
+          "body_utf8_bytes": 5289
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-46",
           "body_sha256": "d1ae91658c64b80e657684b082646759cd35281c699bfc5823cd5564163217cd",
@@ -17338,10 +17700,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -17613,13 +17973,25 @@
           "body_sha256": "bd3e0cf0e362bf9bb2e2339309c48c04177907d5b45d83a9bb06b421e11f52ce",
           "body_utf8_bytes": 33067
         }
+      },
+      "publication_3_12": {
+        "zh": {
+          "anchor": "ch-47",
+          "body_sha256": "6d73eecf3d99577dc185076252428fa8901d6133d87e7d6c5f7c0cb04d4a80ec",
+          "body_utf8_bytes": 24738
+        },
+        "en": {
+          "anchor": "ch-47",
+          "body_sha256": "bd3e0cf0e362bf9bb2e2339309c48c04177907d5b45d83a9bb06b421e11f52ce",
+          "body_utf8_bytes": 33067
+        }
       }
     },
     {
       "number": 48,
       "title": "理论总著、状态接口与持续维护",
       "anchor": "ch-48",
-      "body_sha256": "17c840bc653c31100ccf47d43079bf3271430a2d834cfaad3be128abacd17eb1",
+      "body_sha256": "475686edd12e443151fb16e6ddf805b7a2f91530921057d6297840e651cf146f",
       "edition_status": "INTEGRATED_COMPLETE",
       "argument_status": [
         "D",
@@ -17828,7 +18200,7 @@
         "primary_reference_urls": [],
         "inline_source_citations": []
       },
-      "body_utf8_bytes": 6279,
+      "body_utf8_bytes": 6017,
       "body_slice_convention": "stable chapter/appendix anchor inclusive to next such anchor exclusive; final appendix through EOF; exact UTF-8 bytes",
       "body_revision_history": [
         {
@@ -17903,10 +18275,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -18033,6 +18403,18 @@
           "anchor": "ch-48",
           "body_sha256": "db2dfd3bd92537b380705ec59ca3db22145a4aa47cb422008df54320463c8ae5",
           "body_utf8_bytes": 8098
+        }
+      },
+      "publication_3_12": {
+        "zh": {
+          "anchor": "ch-48",
+          "body_sha256": "475686edd12e443151fb16e6ddf805b7a2f91530921057d6297840e651cf146f",
+          "body_utf8_bytes": 6017
+        },
+        "en": {
+          "anchor": "ch-48",
+          "body_sha256": "7e3bfaddb4b588ae81c383682b98750f8a5ff309f70a5f86c562751b74548b81",
+          "body_utf8_bytes": 7821
         }
       }
     },
@@ -18272,10 +18654,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -18454,6 +18834,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-49",
+          "body_sha256": "5ff528473ae1fd2b6cb6f7b7778f24b6aa7d95eacbde148d7322e7186d17275e",
+          "body_utf8_bytes": 12407
+        },
+        "en": {
+          "anchor": "ch-49",
+          "body_sha256": "b370fef2ff4d0b2de09ab557dac25432ee7e00c7781b84ed989532e8c4920523",
+          "body_utf8_bytes": 16421
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-49",
           "body_sha256": "5ff528473ae1fd2b6cb6f7b7778f24b6aa7d95eacbde148d7322e7186d17275e",
@@ -18704,10 +19096,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_open_obligations_v3_2": [
         "trace/diamond识别、一般旁系统、历史装配和最坏缺陷数值算法仍未形式化。"
@@ -18929,6 +19319,18 @@
           "body_sha256": "b860b1ef4be24d843514c8edee5b0806ba658356ca6585c0bcb6edbb619f012c",
           "body_utf8_bytes": 13177
         }
+      },
+      "publication_3_12": {
+        "zh": {
+          "anchor": "ch-50",
+          "body_sha256": "725dda61554774b8d0389232b4c1ac6c6875ad58053da756060b1d2381329bf8",
+          "body_utf8_bytes": 10737
+        },
+        "en": {
+          "anchor": "ch-50",
+          "body_sha256": "b860b1ef4be24d843514c8edee5b0806ba658356ca6585c0bcb6edbb619f012c",
+          "body_utf8_bytes": 13177
+        }
       }
     },
     {
@@ -19140,10 +19542,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_open_obligations_v3_2": [
         "改变库成员时须另证每个真实全输入通道缺陷上界，不能从采样最大值推得。",
@@ -19314,6 +19714,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-51",
+          "body_sha256": "f17cb4dbc9163e9c89a5b961825578945909a516794ceb7740145ebba5e64412",
+          "body_utf8_bytes": 8491
+        },
+        "en": {
+          "anchor": "ch-51",
+          "body_sha256": "14c283bfd2cf3f18e69da5ea33e4a2b7ee724cbc06e82a488e498cd1582e4014",
+          "body_utf8_bytes": 10301
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-51",
           "body_sha256": "f17cb4dbc9163e9c89a5b961825578945909a516794ceb7740145ebba5e64412",
@@ -19547,10 +19959,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -19705,6 +20115,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-52",
+          "body_sha256": "a7178913b1ef9a4d012964578fda9922b4aba9e34fadce6bc31301e306d5d155",
+          "body_utf8_bytes": 7731
+        },
+        "en": {
+          "anchor": "ch-52",
+          "body_sha256": "18444eba6aa6b7c804cd845aa87d526f31e6f4046f621e16523d20385b7aeedf",
+          "body_utf8_bytes": 9405
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-52",
           "body_sha256": "a7178913b1ef9a4d012964578fda9922b4aba9e34fadce6bc31301e306d5d155",
@@ -20111,10 +20533,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -20287,6 +20707,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-53",
+          "body_sha256": "5fa1fa0339ad12a4d6bed3abb70aa9dba059ac94ee5382d637ed0e2451aca71a",
+          "body_utf8_bytes": 11764
+        },
+        "en": {
+          "anchor": "ch-53",
+          "body_sha256": "3986559538ccb7e442cb558d822888fef464f2a21d99bb6244ed39d2470c2039",
+          "body_utf8_bytes": 14532
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-53",
           "body_sha256": "5fa1fa0339ad12a4d6bed3abb70aa9dba059ac94ee5382d637ed0e2451aca71a",
@@ -20937,10 +21369,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_open_obligations_v3_2": [
         "不构成从冻结 Core 无条件唯一重构复量子理论，也不覆盖全部106项或完整 OPT/ESP。",
@@ -21130,6 +21560,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-54",
+          "body_sha256": "f2900b8f96f6d9f8cff4d6f52f9eeb1f633a91fb483b344619c675da28f71948",
+          "body_utf8_bytes": 12610
+        },
+        "en": {
+          "anchor": "ch-54",
+          "body_sha256": "ca9ed9ad8ff7a3c9836a99703fabfb0aa8ef550122a0c9f9a9b14ae1639340e3",
+          "body_utf8_bytes": 15629
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-54",
           "body_sha256": "f2900b8f96f6d9f8cff4d6f52f9eeb1f633a91fb483b344619c675da28f71948",
@@ -21735,10 +22177,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_open_obligations_v3_2": [
         "不构成从冻结 Core 无条件唯一重构复量子理论，也不覆盖全部106项或完整 OPT/ESP。",
@@ -21928,6 +22368,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-55",
+          "body_sha256": "ef39a9e402a3d2ea5c1e49bcf34a6baef219ccb77c63c09bcbce6232a62c99af",
+          "body_utf8_bytes": 8743
+        },
+        "en": {
+          "anchor": "ch-55",
+          "body_sha256": "2491e390037dfe3c4c62624775fc4be4b8f80bf2076f793b651f6064f157b49b",
+          "body_utf8_bytes": 10534
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-55",
           "body_sha256": "ef39a9e402a3d2ea5c1e49bcf34a6baef219ccb77c63c09bcbce6232a62c99af",
@@ -22633,10 +23085,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_open_obligations_v3_2": [
         "下一科学优先任务：在当前有理非对角模型证明精确迭代、唯一不变态和真实条件态几何收敛，并以恒等 Doob 通道检验仅有正谱度量不足以保证混合。",
@@ -22845,6 +23295,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-56",
+          "body_sha256": "a559b589c71fb0a97b7e0e10b34d1c6b4781913bbd2d61c7bd4b17dae1a3b311",
+          "body_utf8_bytes": 12724
+        },
+        "en": {
+          "anchor": "ch-56",
+          "body_sha256": "c34c3b2891bb3e5bf3f7e2efe35c5033462e00926d2f453551b4a88886934756",
+          "body_utf8_bytes": 15518
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-56",
           "body_sha256": "a559b589c71fb0a97b7e0e10b34d1c6b4781913bbd2d61c7bd4b17dae1a3b311",
@@ -23484,10 +23946,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -23659,6 +24119,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-57",
+          "body_sha256": "88c8b72d1d971b2ea93ec2b246448efe147d3d70f864def056905bbbf8665362",
+          "body_utf8_bytes": 11331
+        },
+        "en": {
+          "anchor": "ch-57",
+          "body_sha256": "4a9e5abfb904728c6c635528a026834a6656b4e3d9fa2cdc00b6a074d4dc44ac",
+          "body_utf8_bytes": 14542
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-57",
           "body_sha256": "88c8b72d1d971b2ea93ec2b246448efe147d3d70f864def056905bbbf8665362",
@@ -24511,10 +24983,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -24699,6 +25169,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-58",
+          "body_sha256": "09e5230997d0915c2886110e2d1fe2d9c162838a718d47c332653f44b2f0cdce",
+          "body_utf8_bytes": 11503
+        },
+        "en": {
+          "anchor": "ch-58",
+          "body_sha256": "7e0b3dec19d263754434b63bfad738ca0361b6e4a41997a7235d4d45d2f9ec1c",
+          "body_utf8_bytes": 14067
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-58",
           "body_sha256": "09e5230997d0915c2886110e2d1fe2d9c162838a718d47c332653f44b2f0cdce",
@@ -25429,10 +25911,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -25617,6 +26097,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-59",
+          "body_sha256": "a2ea10aadc1a85959088682dee107d5cd3411f8305d8a984dffd769fec3619ac",
+          "body_utf8_bytes": 10451
+        },
+        "en": {
+          "anchor": "ch-59",
+          "body_sha256": "4fad9197e976ba9cc2075313d6d99883d498145fa7c7ba77e82ee1c4931ba139",
+          "body_utf8_bytes": 13197
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-59",
           "body_sha256": "a2ea10aadc1a85959088682dee107d5cd3411f8305d8a984dffd769fec3619ac",
@@ -26540,10 +27032,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -26752,6 +27242,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-60",
+          "body_sha256": "eece5f3b629f18998b635e6c34cb738b3c8169018b8e3847613f836f723ba9e1",
+          "body_utf8_bytes": 20672
+        },
+        "en": {
+          "anchor": "ch-60",
+          "body_sha256": "c3a073b6f845f8f87f5a4bb36d461cb9866b16569cea70f4dd18649aabbedb64",
+          "body_utf8_bytes": 24660
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-60",
           "body_sha256": "eece5f3b629f18998b635e6c34cb738b3c8169018b8e3847613f836f723ba9e1",
@@ -28033,10 +28535,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -28324,6 +28824,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-61",
+          "body_sha256": "18d7ec1cad24d9415e59ee41bb8e953fdbf9fb7b3878a312f391cae1b3278ab6",
+          "body_utf8_bytes": 23274
+        },
+        "en": {
+          "anchor": "ch-61",
+          "body_sha256": "3f55c2c8cbdc0a1c84bf9b4db54a7cae323d319370592c61b0f04841e437ce3f",
+          "body_utf8_bytes": 27714
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-61",
           "body_sha256": "18d7ec1cad24d9415e59ee41bb8e953fdbf9fb7b3878a312f391cae1b3278ab6",
@@ -29787,10 +30299,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -30015,6 +30525,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-62",
+          "body_sha256": "3ebffd071bd68add9bc373803d4be5c87ce29b2fa3fc35ad90cd1d8bf8cdaf2c",
+          "body_utf8_bytes": 22167
+        },
+        "en": {
+          "anchor": "ch-62",
+          "body_sha256": "791d04a7c23d0527a69c5c52994ea4a683d0414710e0feda0dcf3b2dc84932e7",
+          "body_utf8_bytes": 26020
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-62",
           "body_sha256": "3ebffd071bd68add9bc373803d4be5c87ce29b2fa3fc35ad90cd1d8bf8cdaf2c",
@@ -30820,10 +31342,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "publication_3_7": {
         "zh": {
@@ -31021,6 +31541,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-63",
+          "body_sha256": "2581c8d63de5731f7c25ed2f919bd071e935ca1701b952656106945cf26aa541",
+          "body_utf8_bytes": 15216
+        },
+        "en": {
+          "anchor": "ch-63",
+          "body_sha256": "dab6a1e55f21874724702196fa0d71a0b36452e864a28e7ca6b2d22acad65178",
+          "body_utf8_bytes": 18150
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-63",
           "body_sha256": "2581c8d63de5731f7c25ed2f919bd071e935ca1701b952656106945cf26aa541",
@@ -31978,10 +32510,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "publication_3_7": {
         "zh": {
@@ -32173,6 +32703,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-64",
+          "body_sha256": "2bc1ea03630bf30977fd721581fb93b5395d50097885dd5d09c16e6abd2433df",
+          "body_utf8_bytes": 13726
+        },
+        "en": {
+          "anchor": "ch-64",
+          "body_sha256": "d328127e9a19af0d3b16bc17cba31ea169fb1cb8c8f5fdb6dbe5b02b16361f74",
+          "body_utf8_bytes": 16893
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-64",
           "body_sha256": "2bc1ea03630bf30977fd721581fb93b5395d50097885dd5d09c16e6abd2433df",
@@ -33185,10 +33727,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "publication_3_7": {
         "zh": {
@@ -33392,6 +33932,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-65",
+          "body_sha256": "af1ab23b3736e80b0b1be3cc309211bcc36f13a6e2490a969d5fc4995bb631a1",
+          "body_utf8_bytes": 14172
+        },
+        "en": {
+          "anchor": "ch-65",
+          "body_sha256": "95eef9e25d4566b6754290e5977ba69a514eddb848f3c9deed344ac664eb2d5e",
+          "body_utf8_bytes": 17288
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-65",
           "body_sha256": "af1ab23b3736e80b0b1be3cc309211bcc36f13a6e2490a969d5fc4995bb631a1",
@@ -34597,10 +35149,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "body_revision_history": [
         {
@@ -35015,6 +35565,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-66",
+          "body_sha256": "747b97b0ca0f88788036d8f5a2dc8b5c51dd2a8e24d80d315224d0cbe6fcceac",
+          "body_utf8_bytes": 24445
+        },
+        "en": {
+          "anchor": "ch-66",
+          "body_sha256": "c5b8143134ff16ad2ef94a3251baed0deb9d68ccad7d2944dba91da67e364459",
+          "body_utf8_bytes": 33399
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-66",
           "body_sha256": "747b97b0ca0f88788036d8f5a2dc8b5c51dd2a8e24d80d315224d0cbe6fcceac",
@@ -35898,10 +36460,8 @@
       },
       "current_edition_action": "SCIENTIFIC_BODY_PRESERVED_OR_NAVIGATION_METADATA_UPDATED_IN_3_10",
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "body_slice_convention": "stable chapter/appendix anchor inclusive to next such anchor exclusive; final appendix through EOF; exact UTF-8 bytes",
       "publication_3_9": {
@@ -35929,6 +36489,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-67",
+          "body_sha256": "115950d82a65ed68c44297b66e3c09473c0ed1d3b9d6b3c05f0b109dbb9cf153",
+          "body_utf8_bytes": 22605
+        },
+        "en": {
+          "anchor": "ch-67",
+          "body_sha256": "7a6cdf78f7aec216ba47ab8bae9e720e4fc42ef03cbd8d7f7ca07b185d22924c",
+          "body_utf8_bytes": 28398
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-67",
           "body_sha256": "115950d82a65ed68c44297b66e3c09473c0ed1d3b9d6b3c05f0b109dbb9cf153",
@@ -36350,10 +36922,8 @@
         }
       },
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "publication_3_10": {
         "zh": {
@@ -36368,6 +36938,18 @@
         }
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-68",
+          "body_sha256": "084d73d029feb68ae3798da2883ff77ea511dfe21735c053c9dca66361069bd4",
+          "body_utf8_bytes": 18089
+        },
+        "en": {
+          "anchor": "ch-68",
+          "body_sha256": "b7f5d4d51c1937ded21b76a1918461ff303d7722372e30423052543439070492",
+          "body_utf8_bytes": 22328
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-68",
           "body_sha256": "084d73d029feb68ae3798da2883ff77ea511dfe21735c053c9dca66361069bd4",
@@ -36793,12 +37375,22 @@
         }
       },
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "publication_3_11": {
+        "zh": {
+          "anchor": "ch-69",
+          "body_sha256": "99f800303ecfdc12a5bc747aca848c14bd0c43c6b623f4589f3c9edb410f499a",
+          "body_utf8_bytes": 20001
+        },
+        "en": {
+          "anchor": "ch-69",
+          "body_sha256": "5055243e781e438a7b889a268a451a85cf1448ca9521e0fb2ad87487e639e690",
+          "body_utf8_bytes": 23793
+        }
+      },
+      "publication_3_12": {
         "zh": {
           "anchor": "ch-69",
           "body_sha256": "99f800303ecfdc12a5bc747aca848c14bd0c43c6b623f4589f3c9edb410f499a",
@@ -37315,10 +37907,382 @@
         }
       },
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
+      },
+      "publication_3_12": {
+        "zh": {
+          "anchor": "ch-70",
+          "body_sha256": "e48012b693026c2d952d68c17e76e9b2dd662bacddfc9f48e3049e506f8fd8e7",
+          "body_utf8_bytes": 39919
+        },
+        "en": {
+          "anchor": "ch-70",
+          "body_sha256": "b6c07da25119b1cd1c4f9ca2404dcfd826adc69de95ceb6f5f6aa9cc74e24d44",
+          "body_utf8_bytes": 48144
+        }
+      }
+    },
+    {
+      "number": 71,
+      "anchor": "ch-71",
+      "title": "从相关浴中究竟能识别什么",
+      "edition_status": "NEW_IN_3_12",
+      "numbered_results": [
+        {
+          "id": "C-QSEL-03",
+          "chapter": 71,
+          "anchor": "c-qsel-03",
+          "title": "C-QSEL-03（整体与可达面的连续性）。",
+          "title_en": "C-QSEL-03 (ambient and reachable continuity).",
+          "origin": "NEW_IN_3_12",
+          "dependency_class": [
+            "B",
+            "S"
+          ],
+          "question_and_quantifiers": "Continuous transitivity on all pure states excludes nontrivial standard direct sums. All reachable circuits on the visible face can agree exactly.",
+          "premises": [
+            "Continuous transitivity assumes ambient access. A reachable invariant face leaves hidden completions exactly equivalent."
+          ],
+          "proof_and_evidence": [
+            {
+              "path": "physics/qm/correlated_bath/selection/SELECTION.md",
+              "sha256": "4ffec3d998a17868a9e464a4242e5bd66cc7ea2834b20a22d68f89de501313a3",
+              "bytes": 23721
+            },
+            {
+              "path": "physics/qm/correlated_bath/selection/check_selection.py",
+              "sha256": "b090990829c8cdcbf4ec8c69d2432dea10398eedcbde32592d268021130b4730",
+              "bytes": 3681
+            }
+          ],
+          "machine_status": "PAPER_AND_SCOPED_COMPUTATION_NO_NEW_LEAN",
+          "new_hardware_data": false,
+          "new_lean": false,
+          "status_axes": {
+            "mathematical": "EXACT_COUNTERMODEL",
+            "physical_selection": "INDEPENDENT_MODEL_INPUTS",
+            "computational": "SCOPED_EVIDENCE_REFERENCED",
+            "empirical": "MATCHED_DEVICE_NOT_CERTIFIED",
+            "machine": "NO_NEW_LEAN"
+          }
+        },
+        {
+          "id": "C-QSEL-04",
+          "chapter": 71,
+          "anchor": "c-qsel-04",
+          "title": "C-QSEL-04（连续控制与乘积层析的反模型）。",
+          "title_en": "C-QSEL-04 (continuous controls and product tomography).",
+          "origin": "NEW_IN_3_12",
+          "dependency_class": [
+            "B",
+            "S",
+            "P"
+          ],
+          "question_and_quantifiers": "Real and complex full matrix models both admit paths. Real product tests miss a joint direction. A noisy separable theory passes continuity and local tomography while lacking purification.",
+          "premises": [
+            "The control, composite and effect libraries are part of each countermodel."
+          ],
+          "proof_and_evidence": [
+            {
+              "path": "physics/qm/correlated_bath/selection/SELECTION.md",
+              "sha256": "4ffec3d998a17868a9e464a4242e5bd66cc7ea2834b20a22d68f89de501313a3",
+              "bytes": 23721
+            },
+            {
+              "path": "physics/qm/correlated_bath/inference/REVIEW.md",
+              "sha256": "051475fac919c3d6749af4b1a099c61c8ff7e8cd4df2703ed07264023eda0168",
+              "bytes": 7088
+            }
+          ],
+          "machine_status": "PAPER_AND_SCOPED_COMPUTATION_NO_NEW_LEAN",
+          "new_hardware_data": false,
+          "new_lean": false,
+          "status_axes": {
+            "mathematical": "EXACT_COUNTERMODEL",
+            "physical_selection": "INDEPENDENT_MODEL_INPUTS",
+            "computational": "SCOPED_EVIDENCE_REFERENCED",
+            "empirical": "MATCHED_DEVICE_NOT_CERTIFIED",
+            "machine": "NO_NEW_LEAN"
+          }
+        },
+        {
+          "id": "P-MICRO-10",
+          "chapter": 71,
+          "anchor": "p-micro-10",
+          "title": "P-MICRO-10（相关历史与总粒子数截断）。",
+          "title_en": "P-MICRO-10 (correlated histories and total-number cutoff).",
+          "origin": "NEW_IN_3_12",
+          "dependency_class": [
+            "P",
+            "E"
+          ],
+          "question_and_quantifiers": "Both fixed trees admit a same-parameter K=16 Galerkin bound 0.011677620430. With rational arithmetic and completion the finite implementation gives 0.027602916940.",
+          "premises": [
+            "The two trees use a clock-locked Gaussian preparation, known operations, a common visibility and a bath-preserving probe reset."
+          ],
+          "proof_and_evidence": [
+            {
+              "path": "physics/qm/correlated_bath/dynamics/DYNAMICS.md",
+              "sha256": "3e8b46a617ffd76eab5c80217dc3400c136536c7507d022081d5c52e5cf5a917",
+              "bytes": 20371
+            },
+            {
+              "path": "physics/qm/correlated_bath/dynamics/observed.json",
+              "sha256": "82d4b1db3b1046f8c723a008fb5f6045f07f839c16474d8355e29f3f1b84fc30",
+              "bytes": 51473
+            },
+            {
+              "path": "physics/qm/correlated_bath/selection/REVIEW.md",
+              "sha256": "29df89cd2e1052061748b460a737756e208686ba3f0cdd0bd57bc92f943bfe30",
+              "bytes": 15216
+            }
+          ],
+          "machine_status": "PAPER_AND_SCOPED_COMPUTATION_NO_NEW_LEAN",
+          "new_hardware_data": false,
+          "new_lean": false,
+          "status_axes": {
+            "mathematical": "CONDITIONAL_PAPER_DERIVATION",
+            "physical_selection": "INDEPENDENT_MODEL_INPUTS",
+            "computational": "SCOPED_EVIDENCE_REFERENCED",
+            "empirical": "MATCHED_DEVICE_NOT_CERTIFIED",
+            "machine": "NO_NEW_LEAN"
+          }
+        },
+        {
+          "id": "C-QMEM-02",
+          "chapter": 71,
+          "anchor": "c-qmem-02",
+          "title": "C-QMEM-02（自由 Ramsey 的精确歧义）。",
+          "title_en": "C-QMEM-02 (an exact Ramsey ambiguity).",
+          "origin": "NEW_IN_3_12",
+          "dependency_class": [
+            "P",
+            "O"
+          ],
+          "question_and_quantifiers": "Two exact parameter triples agree at every free Ramsey time while a complete Bell event differs.",
+          "premises": [
+            "Fixed shared visibility and the specified persistent source and timing."
+          ],
+          "proof_and_evidence": [
+            {
+              "path": "physics/qm/correlated_bath/inference/INFERENCE.md",
+              "sha256": "b212f45310d688030c5defed82a4f8327ea8273a2fc76bc4eaec6bd7ed2d9129",
+              "bytes": 23140
+            },
+            {
+              "path": "physics/qm/correlated_bath/inference/verification.json",
+              "sha256": "5052e42be8e4bbde156ce6cb1709666f6184e3bc9e4531ae080b4d19b7153c95",
+              "bytes": 2921
+            }
+          ],
+          "machine_status": "PAPER_AND_SCOPED_COMPUTATION_NO_NEW_LEAN",
+          "new_hardware_data": false,
+          "new_lean": false,
+          "status_axes": {
+            "mathematical": "EXACT_COUNTERMODEL",
+            "physical_selection": "INDEPENDENT_MODEL_INPUTS",
+            "computational": "SCOPED_EVIDENCE_REFERENCED",
+            "empirical": "MATCHED_DEVICE_NOT_CERTIFIED",
+            "machine": "NO_NEW_LEAN"
+          }
+        },
+        {
+          "id": "P-QMEM-03",
+          "chapter": 71,
+          "anchor": "p-qmem-03",
+          "title": "P-QMEM-03（因果断开后的带符号响应）。",
+          "title_en": "P-QMEM-03 (signed response after a causal break).",
+          "origin": "NEW_IN_3_12",
+          "dependency_class": [
+            "P",
+            "E",
+            "O"
+          ],
+          "question_and_quantifiers": "A signed causal break determines positive coupling on the stated unwrapped phase branch. Independent sign-dependent phases can hide it.",
+          "premises": [
+            "The two trees use a clock-locked Gaussian preparation, known operations, a common visibility and a bath-preserving probe reset."
+          ],
+          "proof_and_evidence": [
+            {
+              "path": "physics/qm/correlated_bath/inference/INFERENCE.md",
+              "sha256": "b212f45310d688030c5defed82a4f8327ea8273a2fc76bc4eaec6bd7ed2d9129",
+              "bytes": 23140
+            },
+            {
+              "path": "physics/qm/correlated_bath/inference/verification.json",
+              "sha256": "5052e42be8e4bbde156ce6cb1709666f6184e3bc9e4531ae080b4d19b7153c95",
+              "bytes": 2921
+            },
+            {
+              "path": "physics/qm/correlated_bath/dynamics/REVIEW.md",
+              "sha256": "93b805ba51f303621985607e18d87df300770b45e10c6adb5fc0d9fb0ca7db53",
+              "bytes": 7020
+            }
+          ],
+          "machine_status": "PAPER_AND_SCOPED_COMPUTATION_NO_NEW_LEAN",
+          "new_hardware_data": false,
+          "new_lean": false,
+          "status_axes": {
+            "mathematical": "CONDITIONAL_PAPER_DERIVATION",
+            "physical_selection": "INDEPENDENT_MODEL_INPUTS",
+            "computational": "SCOPED_EVIDENCE_REFERENCED",
+            "empirical": "MATCHED_DEVICE_NOT_CERTIFIED",
+            "machine": "NO_NEW_LEAN"
+          }
+        },
+        {
+          "id": "P-ROB-08",
+          "chapter": 71,
+          "anchor": "p-rob-08",
+          "title": "P-ROB-08（内点插值与完整输出证书）。",
+          "title_en": "P-ROB-08 (interior interpolation and complete-output certificate).",
+          "origin": "NEW_IN_3_12",
+          "dependency_class": [
+            "B",
+            "P",
+            "E",
+            "O"
+          ],
+          "question_and_quantifiers": "Original/swap complete half diamond 0.033892297103/0.035357047207. Bell analog TV 0.046090140885/0.047554890989. Bell 40-bit sampler TV 0.046090140889/0.047554890993.",
+          "premises": [
+            "Half-diamond bounds cover arbitrary inputs and finite untouched references on the fixed trees. Eight-cell bounds use a specified Bell input. The calibration coverage event is conditional on the source contract. Holdout and calibration are synthetic. Matched hardware, free interventions and normalized postselection require additional evidence."
+          ],
+          "proof_and_evidence": [
+            {
+              "path": "physics/qm/correlated_bath/certificate/PROOF.md",
+              "sha256": "b8a1c90a443e352f147afa6d9e7ce04096b4a544dede345604cde4d7b14276dc",
+              "bytes": 5297
+            },
+            {
+              "path": "physics/qm/correlated_bath/certificate/joint-result.json",
+              "sha256": "ba4ede96be0a4b3057036473fd8ec4f278c0ee4d3bd04248cef34215a9640ac0",
+              "bytes": 4384
+            },
+            {
+              "path": "physics/qm/correlated_bath/certificate/joint.py",
+              "sha256": "27f5734f87b4ff8e7bee686831807617b8b0212d87368825a749d2cbcbc8c4e5",
+              "bytes": 6863
+            },
+            {
+              "path": "physics/qm/correlated_bath/certificate/first-output.json",
+              "sha256": "315ec06a9ceb744e67f70810a937d4cc5913914306a6e25745dd5fa9472609a8",
+              "bytes": 22946
+            },
+            {
+              "path": "physics/qm/correlated_bath/inference/holdout_results.json",
+              "sha256": "e1dd6ae86ed4e8902a67b6f2bffa1503ab0f8c2ea3d28fc2d40082704c467f73",
+              "bytes": 12181
+            },
+            {
+              "path": "physics/qm/correlated_bath/selection/REVIEW.md",
+              "sha256": "29df89cd2e1052061748b460a737756e208686ba3f0cdd0bd57bc92f943bfe30",
+              "bytes": 15216
+            }
+          ],
+          "machine_status": "PAPER_AND_SCOPED_COMPUTATION_NO_NEW_LEAN",
+          "new_hardware_data": false,
+          "new_lean": false,
+          "status_axes": {
+            "mathematical": "CONDITIONAL_PAPER_DERIVATION",
+            "physical_selection": "INDEPENDENT_MODEL_INPUTS",
+            "computational": "SCOPED_EVIDENCE_REFERENCED",
+            "empirical": "MATCHED_DEVICE_NOT_CERTIFIED",
+            "machine": "NO_NEW_LEAN"
+          }
+        },
+        {
+          "id": "P-FIELD-01",
+          "chapter": 71,
+          "anchor": "p-field-01",
+          "title": "P-FIELD-01（两模匹配与类空信号）。",
+          "title_en": "P-FIELD-01 (matching two modes and testing a spacelike signal).",
+          "origin": "NEW_IN_3_12",
+          "dependency_class": [
+            "P",
+            "E",
+            "O"
+          ],
+          "question_and_quantifiers": "A two-mode match can give a spurious spacelike phase. The full free field has zero response for spacelike supports. The example controls the phase tail at 160 shells.",
+          "premises": [
+            "Specified smeared massive free field on a circle, high-mode vacuum, disjoint spacelike supports for the vanishing result."
+          ],
+          "proof_and_evidence": [
+            {
+              "path": "physics/qm/correlated_bath/field/FIELD.md",
+              "sha256": "1f1038d1288b4d189bc79d165257cb21c9377fac68cb4df0bf606028f1fd7850",
+              "bytes": 5702
+            },
+            {
+              "path": "physics/qm/correlated_bath/field/observed.json",
+              "sha256": "9fc8c04be823612bdf2e7d5074f5f226a1a0576d0a028fd872c77930a3f4b2ba",
+              "bytes": 4856
+            },
+            {
+              "path": "physics/qm/correlated_bath/field/probe.py",
+              "sha256": "7966b2d2cc2951b89d469d10fa0cf704a2f69e7a32e08dd5d2673f040e63b755",
+              "bytes": 3291
+            }
+          ],
+          "machine_status": "PAPER_AND_SCOPED_COMPUTATION_NO_NEW_LEAN",
+          "new_hardware_data": false,
+          "new_lean": false,
+          "status_axes": {
+            "mathematical": "CONDITIONAL_PAPER_DERIVATION",
+            "physical_selection": "INDEPENDENT_MODEL_INPUTS",
+            "computational": "SCOPED_EVIDENCE_REFERENCED",
+            "empirical": "MATCHED_DEVICE_NOT_CERTIFIED",
+            "machine": "NO_NEW_LEAN"
+          }
+        }
+      ],
+      "source_refs": [
+        {
+          "id": "QM3115",
+          "locator": "physics/qm/correlated_bath/README.md"
+        }
+      ],
+      "whole_chapter_formalized": false,
+      "new_experimental_data": false,
+      "publication_3_12": {
+        "zh": {
+          "anchor": "ch-71",
+          "body_sha256": "5179c6c3622c46dbd75ac85af2be0c38d68db5086955f90679cdc79a4fbc5701",
+          "body_utf8_bytes": 11001
+        },
+        "en": {
+          "anchor": "ch-71",
+          "body_sha256": "e45774a00684e6ceebd5984c76ced8d3748e0a56708cb0c47b70af9cecc25036",
+          "body_utf8_bytes": 12662
+        }
+      },
+      "body_sha256": "5179c6c3622c46dbd75ac85af2be0c38d68db5086955f90679cdc79a4fbc5701",
+      "body_utf8_bytes": 11001,
+      "sections": [
+        {
+          "id": "71.1",
+          "title": "连续控制必须连接哪些纯态？"
+        },
+        {
+          "id": "71.2",
+          "title": "浴记得制备时钟"
+        },
+        {
+          "id": "71.3",
+          "title": "哪种测量能分开 Ramsey 等价的源？"
+        },
+        {
+          "id": "71.4",
+          "title": "从同时置信域到完整输出的误差"
+        },
+        {
+          "id": "71.5",
+          "title": "两模探针在哪里失去局域性？"
+        }
+      ],
+      "current_edition_verification": {
+        "edition": "3.12",
+        "scope": "Source body identity only"
       }
     }
   ],
@@ -37479,10 +38443,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "revision": " 3.3逐字继承本片段并复核身份；原编号与origin保留。",
       "historical_checkpoint_scope": {
@@ -37623,13 +38585,25 @@
           "body_sha256": "d7596f25c1dababb5dcc56a24cb51a0f161da56efddfcd6fbdf9053069a0f1b8",
           "body_utf8_bytes": 8700
         }
+      },
+      "publication_3_12": {
+        "zh": {
+          "anchor": "appendix-a",
+          "body_sha256": "8a3d2a3a3df3055f71b0ec5ffbb5836432a3fd6987728434b58da9a2a6b990ba",
+          "body_utf8_bytes": 6232
+        },
+        "en": {
+          "anchor": "appendix-a",
+          "body_sha256": "d7596f25c1dababb5dcc56a24cb51a0f161da56efddfcd6fbdf9053069a0f1b8",
+          "body_utf8_bytes": 8700
+        }
       }
     },
     {
       "id": "B",
       "title": "编号证明结果注册表",
       "anchor": "appendix-b",
-      "body_sha256": "264651b80d9bd5c29bcfa8a6e5e45c5cb5b06c8c694d73f8b24929e8fc076eb3",
+      "body_sha256": "ca82ae6878f1c0915bc87c45737ab8b9033ab04152adf96c9fa73b0ec9356910",
       "edition_status": "INTEGRATED_COMPLETE",
       "argument_status": [
         "D",
@@ -37735,7 +38709,7 @@
         "inline_source_citations": []
       },
       "revision": " 3.2：按实际稳定锚点切片重算正文身份；原3.1记录另存previous_edition_record，旧编号及来源未删除。 3.3按规范正文重算原样切片身份；原编号与origin保留。",
-      "body_utf8_bytes": 17513,
+      "body_utf8_bytes": 18118,
       "body_slice_convention": "stable chapter/appendix anchor inclusive to next such anchor exclusive; final appendix through EOF; exact UTF-8 bytes",
       "sections": [],
       "body_revision_history": [
@@ -37793,10 +38767,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -37873,13 +38845,25 @@
           "body_sha256": "5575c64ae4aff0be45fdd9fbc5048a2849273c657190a406c08d68e5368b0e88",
           "body_utf8_bytes": 20069
         }
+      },
+      "publication_3_12": {
+        "zh": {
+          "anchor": "appendix-b",
+          "body_sha256": "ca82ae6878f1c0915bc87c45737ab8b9033ab04152adf96c9fa73b0ec9356910",
+          "body_utf8_bytes": 18118
+        },
+        "en": {
+          "anchor": "appendix-b",
+          "body_sha256": "617f74dd170ac014c87e5faf4a03e9c50370a27b4d7b0b79ac5b9c63f7798009",
+          "body_utf8_bytes": 20697
+        }
       }
     },
     {
       "id": "C",
       "title": "来源、继承关系与研究诚实性",
       "anchor": "appendix-c",
-      "body_sha256": "36c5c879634ee263763ba48c1aba039d085499f555e57b98d797060cc5a558a6",
+      "body_sha256": "9c0199ed42538e3ca70747c928cc65b70af73db31fe2e16158df0c5c4f03b187",
       "edition_status": "INTEGRATED_COMPLETE",
       "argument_status": [
         "D",
@@ -38070,7 +39054,7 @@
         "inline_source_citations": []
       },
       "revision": " 3.2：按实际稳定锚点切片重算正文身份；原3.1记录另存previous_edition_record，旧编号及来源未删除。 3.3按规范正文重算原样切片身份；原编号与origin保留。",
-      "body_utf8_bytes": 15495,
+      "body_utf8_bytes": 15615,
       "body_slice_convention": "stable chapter/appendix anchor inclusive to next such anchor exclusive; final appendix through EOF; exact UTF-8 bytes",
       "sections": [
         {
@@ -38190,10 +39174,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -38368,6 +39350,18 @@
           "anchor": "appendix-c",
           "body_sha256": "0845eff2c640bc43eb9fe03a631af3af1b0eceb091f64d9bcda8c60e8eaddd38",
           "body_utf8_bytes": 20077
+        }
+      },
+      "publication_3_12": {
+        "zh": {
+          "anchor": "appendix-c",
+          "body_sha256": "9c0199ed42538e3ca70747c928cc65b70af73db31fe2e16158df0c5c4f03b187",
+          "body_utf8_bytes": 15615
+        },
+        "en": {
+          "anchor": "appendix-c",
+          "body_sha256": "f50d7698159d983ebb52c65cd5f8071b492ee47bb4718bb4266a3e9f5bbdba89",
+          "body_utf8_bytes": 20224
         }
       }
     },
@@ -38573,10 +39567,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -38704,13 +39696,25 @@
           "body_sha256": "4ee4e9f90a0b0d5e3b480d88d509233de3b882f8f9249b6c33c2a3b1f775fbcb",
           "body_utf8_bytes": 36202
         }
+      },
+      "publication_3_12": {
+        "zh": {
+          "anchor": "appendix-d",
+          "body_sha256": "be13c28d49e5bd16380f03051c9e22af7e6be3050736df985db6587d1c0416a0",
+          "body_utf8_bytes": 35825
+        },
+        "en": {
+          "anchor": "appendix-d",
+          "body_sha256": "4ee4e9f90a0b0d5e3b480d88d509233de3b882f8f9249b6c33c2a3b1f775fbcb",
+          "body_utf8_bytes": 36202
+        }
       }
     },
     {
       "id": "E",
       "title": "正式阅读版、编译与修订合同",
       "anchor": "appendix-e",
-      "body_sha256": "1e770c0d53f03094e7ca099d61092b41f7d9f4abd517d8f2b5fc3569989c80b5",
+      "body_sha256": "7baf02bf4a8d6c7de44ac86a9744d73930a4e070f447608735c50cda8300660b",
       "edition_status": "INTEGRATED_COMPLETE",
       "argument_status": [
         "D",
@@ -38818,7 +39822,7 @@
         "inline_source_citations": []
       },
       "revision": " 3.2：按实际稳定锚点切片重算正文身份；原3.1记录另存previous_edition_record，旧编号及来源未删除。 3.3按规范正文重算原样切片身份；原编号与origin保留。",
-      "body_utf8_bytes": 3608,
+      "body_utf8_bytes": 3414,
       "body_slice_convention": "stable chapter/appendix anchor inclusive to next such anchor exclusive; final appendix through EOF; exact UTF-8 bytes",
       "sections": [
         {
@@ -38906,10 +39910,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -39037,13 +40039,25 @@
           "body_sha256": "1d4cdee10280c630b5bf077a3a64f52ef4a996d4cc9ea7e42b9931d24d5db30e",
           "body_utf8_bytes": 4661
         }
+      },
+      "publication_3_12": {
+        "zh": {
+          "anchor": "appendix-e",
+          "body_sha256": "7baf02bf4a8d6c7de44ac86a9744d73930a4e070f447608735c50cda8300660b",
+          "body_utf8_bytes": 3414
+        },
+        "en": {
+          "anchor": "appendix-e",
+          "body_sha256": "d6dff3e762135c54f6d65a2b428da92788c9fb5737fdf72a51ca8454ffc48a9b",
+          "body_utf8_bytes": 4391
+        }
       }
     },
     {
       "id": "F",
       "title": "实际形式化范围与完整命名审计",
       "anchor": "appendix-f",
-      "body_sha256": "67a8138ea3b53d0b86a4d431e8636f3f0cefa7d523b193343a81d53df45bb89d",
+      "body_sha256": "5888a8c60a7be9c91768e60990c5ff08eaea1301a91d9b341e6ef268f9242ce9",
       "edition_status": "INTEGRATED_COMPLETE",
       "argument_status": [
         "D",
@@ -39175,7 +40189,7 @@
         "inline_source_citations": []
       },
       "revision": " 3.2：按实际稳定锚点切片重算正文身份；原3.1记录另存previous_edition_record，旧编号及来源未删除。 3.3按规范正文重算原样切片身份；原编号与origin保留。",
-      "body_utf8_bytes": 76235,
+      "body_utf8_bytes": 76801,
       "body_slice_convention": "stable chapter/appendix anchor inclusive to next such anchor exclusive; final appendix through EOF; exact UTF-8 bytes",
       "sections": [
         {
@@ -39213,6 +40227,10 @@
         {
           "id": "F.9",
           "title": "v31.14 持久浴增量的验证范围"
+        },
+        {
+          "id": "F.10",
+          "title": "第71章的证明范围"
         }
       ],
       "body_revision_history": [
@@ -39287,10 +40305,8 @@
         }
       ],
       "current_edition_verification": {
-        "edition": "3.11",
-        "body_hash_checked": true,
-        "english_body_hash_checked": true,
-        "scope": "Current body identity; historical result objects retain their execution scope"
+        "edition": "3.12",
+        "scope": "Source body identity only"
       },
       "historical_checkpoint_scope": {
         "prior_edition": "3.4",
@@ -39438,14 +40454,21 @@
           "body_sha256": "5f2ef2c4f4106b43836cf3ce6bafe6c87d459409b7868c3c3a16e460924d3de1",
           "body_utf8_bytes": 80296
         }
+      },
+      "publication_3_12": {
+        "zh": {
+          "anchor": "appendix-f",
+          "body_sha256": "5888a8c60a7be9c91768e60990c5ff08eaea1301a91d9b341e6ef268f9242ce9",
+          "body_utf8_bytes": 76801
+        },
+        "en": {
+          "anchor": "appendix-f",
+          "body_sha256": "5e51fe7ddfb65fd6bc7f44011bbda889f1f35e3ccdb65b516da66147d917b30f",
+          "body_utf8_bytes": 80964
+        }
       }
     }
   ],
-  "prior_complete_dossier": {
-    "path": "physics/qm/book/evidence/v3.11/prior/CHAPTER_DOSSIER.json",
-    "sha256": "2a7f088eeab73cc5d06fca27afb6c17375c1bd7d1ab34308ef276954257c8a4c",
-    "bytes": 1686915
-  },
   "edition_history": [
     {
       "edition": "3.1",
@@ -40741,29 +41764,66 @@
         "sha256": "2a7f088eeab73cc5d06fca27afb6c17375c1bd7d1ab34308ef276954257c8a4c",
         "bytes": 1686915
       }
+    },
+    {
+      "edition": "3.12",
+      "date": "2026-11-18",
+      "status": "MANUSCRIPT_CANDIDATE",
+      "prior_dossier": {
+        "commit": "a3f95dc1a6821978e173e23015f026994fb60c65",
+        "path": "physics/qm/book/CHAPTER_DOSSIER.json",
+        "sha256": "edfcdba4953440c9cef99ab3ad629c5f41aca3711ea12cc79c827bd5fb805a97",
+        "bytes": 1743046
+      }
     }
   ],
-  "historical_metadata_scope": "All194 inherited result objects and117 inherited claim objects retain exact historical identity. publication_3_11/current top-level fields describe3.11; older nested edition fields do not constitute new executions.",
-  "verified_inventory": {
-    "proof_reuse": {
-      "path": "physics/qm/kernel/evidence/v31.14/proof-reuse.json",
-      "sha256": "ca541b4ce7d093c5887ed0d50d15a698d3984b1e3011cefb0758d22799a061ba",
-      "bytes": 690
-    },
-    "new_runtime": {
-      "path": "physics/qm/kernel/evidence/v31.14/runtime/execution_receipt.json",
-      "sha256": "6d3f338d8ab1eaac8c7f8ec2cae8e127db98ee2a2ce77c0531da188973be3679",
-      "bytes": 49654
-    },
-    "increment_source_manifest": {
-      "path": "physics/qm/kernel/evidence/v31.14/source-manifest.json",
-      "sha256": "33439cdc1231060a2fe11d4fff065512014f20aa7ec6136d7ca24fa19c18fe44",
-      "bytes": 73738
-    },
-    "new_lean": false,
-    "new_hardware_data": false,
-    "external_processed_observable_reproduced": true,
-    "new_synthetic_shots_this_replay": 0
+  "schema": "ueot-physics-chapter-dossier/3.12",
+  "edition": "3.12",
+  "new_chapter_attribution": "AI-assisted research proposal. Historical author credit applies to the preceding book. Independent human review pending.",
+  "editorial_status": "MANUSCRIPT_CANDIDATE",
+  "current_release_stage": "MANUSCRIPT_CANDIDATE",
+  "canonical": {
+    "path": "physics/qm/book/UEOT_PHYSICS.md",
+    "sha256": "dcb711abec9b9cebe8c77d1b5fdf1b43c3f5c2d941c0a7a54f12b18c865dd486",
+    "bytes": 833161,
+    "language": "zh",
+    "status": "MANUSCRIPT_CANDIDATE",
+    "chapters": 72,
+    "appendices": 6,
+    "numbered_results": 210,
+    "inherited_result_ids": 203,
+    "new_result_ids": 7
+  },
+  "canonical_english": {
+    "path": "physics/qm/book/UEOT_PHYSICS.en.md",
+    "sha256": "ba3223609ef0bda404df2b76c9861e9378fcc6f725e39cff36b5271677c852fd",
+    "bytes": 1011461,
+    "language": "en",
+    "status": "MANUSCRIPT_CANDIDATE",
+    "chapters": 72,
+    "appendices": 6,
+    "numbered_results": 210,
+    "inherited_result_ids": 203,
+    "new_result_ids": 7
+  },
+  "publication_revision": {
+    "edition": "3.12",
+    "scope": "Continuous bilingual source candidate. Checked-in TeX/PDF belong to 3.11.",
+    "new_scientific_results_in_publication": 7,
+    "new_experimental_data": false,
+    "local_artifact_state": "DERIVATIVE_ACCEPTANCE_PENDING",
+    "remote_publication": "MANUSCRIPT_CANDIDATE"
+  },
+  "prior_complete_dossier": {
+    "commit": "a3f95dc1a6821978e173e23015f026994fb60c65",
+    "path": "physics/qm/book/CHAPTER_DOSSIER.json",
+    "sha256": "edfcdba4953440c9cef99ab3ad629c5f41aca3711ea12cc79c827bd5fb805a97",
+    "bytes": 1743046
+  },
+  "book_source_manifest": {
+    "path": "physics/qm/book/SOURCE_MANIFEST.json",
+    "sha256": "cd037f33fb5b5fd1bc7fb28d9ad14387363079425c4f2ad8cd2585bae028f536",
+    "bytes": 13480
   },
   "unified_source_identity": {
     "manifest": "physics/qm/kernel/evidence/v31.11/source-manifest.json",
@@ -40783,92 +41843,71 @@
     "current_bytes_match_executed_bytes": true,
     "current_identity_check": "physics/qm/kernel/evidence/v31.14/proof-reuse.json"
   },
-  "current_release_stage": "LOCAL_VERIFIED_REMOTE_PENDING",
-  "current_remote_code_identity": {
-    "state": "LOCAL_VERIFIED_REMOTE_PENDING",
-    "remote_verified": false,
-    "research_entry_baseline": "ee7fb2793a1dbb519703bba05f535f0d962d9e56"
-  },
-  "book_source_manifest": {
-    "path": "physics/qm/book/SOURCE_MANIFEST.json",
-    "sha256": "a2d1c146c45152087755d12a6e4054f49679633eb75fbe800a581c109f9b3984",
-    "bytes": 15326
-  },
-  "validation": {
-    "status": "LOCAL_PUBLICATION_AND_SOURCE_IDENTITIES_VERIFIED",
-    "numbered_result_count": 203,
-    "all194_prior_result_objects_exactly_preserved": true,
-    "all117_prior_ledger_objects_exactly_preserved": true,
-    "all_body_hashes_verified": true,
-    "whole_physics_formalized": false,
-    "new_experimental_data": false,
-    "remote_verified": false
-  },
-  "completion_boundary": [
-    "Complex Hilbert, tensor/Born/CP, Fock modes, frequencies, relative couplings and vacuum preparation remain independent physical inputs.",
-    "The executed model is a fixed three-slot qubit source with two persistent modes, complete failure records and arbitrary untouched finite references.",
-    "General Gaussian formulas preserve correlations, but the calibrated and numerical certificate uses the frozen vacuum family only.",
-    "Fixed-policy external-channel tomography and repaired terminal Choi maps do not certify every alternative intermediate intervention.",
-    "Calibration assumes stationary independent trials, known preparation and controls, error-free records and one shared symmetric detector visibility.",
-    "Synthetic coverage and heldout non-rejection do not establish device membership; external processed data do not supply missing matched raw shots.",
-    "No new Lean declarations, extra natural prediction, strong-baseline gain, global complex-sector selection, QFT, gravity or cosmological closure is claimed."
-  ],
-  "release_acceptance": {
-    "new_lean": false,
-    "new_runtime": "PASS",
-    "publication_receipt": {
-      "path": "physics/qm/book/evidence/v3.11/local-acceptance.json",
-      "sha256": "92b18e039c936909c99c2b7129487a5e958e8b6017909a6674cf9b5857d8e76b",
-      "bytes": 1661
-    },
-    "remote_integration": {
-      "state": "LOCAL_VERIFIED_REMOTE_PENDING",
-      "remote_verified": false,
-      "research_entry_baseline": "ee7fb2793a1dbb519703bba05f535f0d962d9e56"
+  "derivatives": {
+    "status": "CANDIDATE_BUILD_AND_VISUAL_ACCEPTANCE_PENDING",
+    "checked_in_edition": "3.11",
+    "previous_edition_artifacts": {
+      "status": "BUILT_AND_SCOPED_VISUALLY_VERIFIED",
+      "visual_review": {
+        "path": "physics/qm/book/evidence/v3.11/visual-review.json",
+        "sha256": "4713e59cda6b139bc205d53b1d89ddae08e6884c526bd65377cfd25279686335",
+        "bytes": 5364
+      },
+      "zh": {
+        "pdf": {
+          "path": "physics/qm/book/UEOT_PHYSICS.pdf",
+          "sha256": "fbf01530fbe76d7355a9c3971796862ace17a2ec1c5e4f8020e606a7ab3c6fbd",
+          "bytes": 1615782
+        },
+        "latex": {
+          "path": "physics/qm/book/UEOT_PHYSICS.tex",
+          "sha256": "106467395391b2449c490f5a8d0ce25ec4e9eae888f97b15484e3ecd68f16efb",
+          "bytes": 881755
+        },
+        "source_sha256": "7601ad60f0b28325a99a2b95f23fdabd9c621ce17d5049feeb17920256e237f4",
+        "build": {
+          "path": "physics/qm/book/evidence/v3.11/zh/pdf-build.json",
+          "sha256": "b5a14b1eda17716ccd7948bd23273a0abba2b33e1fc7f28e9513c1e3b2dcf673",
+          "bytes": 5119
+        }
+      },
+      "en": {
+        "pdf": {
+          "path": "physics/qm/book/UEOT_PHYSICS.en.pdf",
+          "sha256": "26c4c473b7fdae821880c2b333e49c6715eb012c574f88f398caeb31aaec93c1",
+          "bytes": 1391690
+        },
+        "latex": {
+          "path": "physics/qm/book/UEOT_PHYSICS.en.tex",
+          "sha256": "d58110241fad5d286946a2fe7e667cf0f5d1f73138cc57c28b3f3591db85dc2a",
+          "bytes": 1056881
+        },
+        "source_sha256": "d4e0d07fe5cc65b2375e61a41406ed11391c18ac16cfb2e69e8b83a1e21fbbf7",
+        "build": {
+          "path": "physics/qm/book/evidence/v3.11/en/pdf-build.json",
+          "sha256": "d215ae07ed19234bf49df29ae315686b1a084e223586893162f26f71242e38d7",
+          "bytes": 5166
+        }
+      }
     }
   },
-  "next_execution_contract": "physics/qm/UEOT_QM_EXECUTION_v31.14.md",
-  "canonical_english": {
-    "path": "physics/qm/book/UEOT_PHYSICS.en.md",
-    "sha256": "d4e0d07fe5cc65b2375e61a41406ed11391c18ac16cfb2e69e8b83a1e21fbbf7",
-    "bytes": 997360,
-    "status": "LOCAL_VERIFIED_REMOTE_PENDING",
-    "language": "en",
-    "chapters": 71,
-    "appendices": 6,
-    "numbered_results": 203,
-    "inherited_result_ids": 194,
-    "new_result_ids": 9
-  },
-  "publication_revision": {
-    "edition": "3.11",
-    "recorded_at_utc": "2026-11-13T17:41:27.870293+00:00",
-    "scope": "Nine Chapter70 results; all194 inherited result objects and117 inherited claim objects retained exactly",
-    "new_scientific_results_in_publication": 9,
-    "new_experimental_data": false,
-    "prior_snapshot": {
-      "path": "physics/qm/book/evidence/v3.11/prior/CHAPTER_DOSSIER.json",
-      "sha256": "2a7f088eeab73cc5d06fca27afb6c17375c1bd7d1ab34308ef276954257c8a4c",
-      "bytes": 1686915
-    },
-    "local_artifact_state": "BUILT_AND_SCOPED_VISUALLY_VERIFIED",
-    "remote_publication": "LOCAL_VERIFIED_REMOTE_PENDING",
-    "review_identity_policy": "Exactly three native AI research agents plus primary adjudication; not external human peer review"
-  },
-  "increment_source_identity": {
-    "path": "physics/qm/kernel/evidence/v31.14/source-manifest.json",
-    "sha256": "33439cdc1231060a2fe11d4fff065512014f20aa7ec6136d7ca24fa19c18fe44",
-    "bytes": 73738
-  },
-  "runtime_source_identity": {
-    "receipt": {
-      "path": "physics/qm/kernel/evidence/v31.14/runtime/execution_receipt.json",
-      "sha256": "6d3f338d8ab1eaac8c7f8ec2cae8e127db98ee2a2ce77c0531da188973be3679",
-      "bytes": 49654
-    },
-    "scope": "Actual production replay over unchanged authored synthetic rows; no new sampling, Lean or hardware. Original author runs retain their own identities.",
-    "source_file_count": 17,
-    "unique_archived_synthetic_rows": 1600000,
-    "new_synthetic_shots_this_replay": 0
+  "completion_boundary": [
+    "Continuous transitivity assumes ambient access. A reachable invariant face leaves hidden completions exactly equivalent.",
+    "The two trees use a clock-locked Gaussian preparation, known operations, a common visibility and a bath-preserving probe reset.",
+    "Half-diamond bounds cover arbitrary inputs and finite untouched references on the fixed trees. Eight-cell bounds use a specified Bell input.",
+    "The calibration coverage event is conditional on the source contract. Holdout and calibration are synthetic. Matched hardware, free interventions and normalized postselection require additional evidence.",
+    "The new chapter has no Lean declarations or independent human review. The existing library was rebuilt and audited on the preceding merged source.",
+    "Field and sector examples retain their model inputs. Complex selection, hardware advantage, interacting QFT and gravitational selection remain open."
+  ],
+  "current_remote_code_identity": {
+    "state": "MANUSCRIPT_CANDIDATE",
+    "remote_verified": false,
+    "previous_verified_scientific_main": "a3f95dc1a6821978e173e23015f026994fb60c65",
+    "previous_main_run": 44318642942,
+    "previous_main_receipt": {
+      "path": "physics/qm/kernel/evidence/v31.14/integration-verification.json",
+      "sha256": "28fcfba79237fe26fc06b024bcf88d79a2804a831751bb50915036f4e545e1b4",
+      "bytes": 4706
+    }
   }
 }

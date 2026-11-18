@@ -1,6 +1,6 @@
-# UEOT Physics 3.11 — bilingual stable result map
+# UEOT Physics 3.12 — bilingual stable result map
 
-203 stable statements; old result objects retain their original proof and execution scope. Titles below are parsed from the actual canonical anchors.
+210 stable statements; old result objects retain their original proof and execution scope. Titles below are parsed from the actual canonical anchors.
 
 | ID | Chapter | 中文 | English |
 |---|---:|---|---|
@@ -207,3 +207,10 @@
 | P-QMEM-02 | 70 | P-QMEM-02（因果断开响应秩给出的必要记忆维数）。 | P-QMEM-02 (A necessary memory dimension from causal-break response rank). |
 | P-ROB-06 | 70 | P-ROB-06（两个可信设置的联合识别与覆盖）。 | P-ROB-06 (joint identification and coverage from two trusted settings). |
 | P-ROB-07 | 70 | P-ROB-07（完整 CQ 联合证书与独立留出）。 | P-ROB-07 (a complete CQ certificate and independent holdout). |
+| C-QSEL-03 | 71 | C-QSEL-03（整体与可达面的连续性）。 | C-QSEL-03 (ambient and reachable continuity). |
+| C-QSEL-04 | 71 | C-QSEL-04（连续控制与乘积层析的反模型）。 | C-QSEL-04 (continuous controls and product tomography). |
+| P-MICRO-10 | 71 | P-MICRO-10（相关历史与总粒子数截断）。 | P-MICRO-10 (correlated histories and total-number cutoff). |
+| C-QMEM-02 | 71 | C-QMEM-02（自由 Ramsey 的精确歧义）。 | C-QMEM-02 (an exact Ramsey ambiguity). |
+| P-QMEM-03 | 71 | P-QMEM-03（因果断开后的带符号响应）。 | P-QMEM-03 (signed response after a causal break). |
+| P-ROB-08 | 71 | P-ROB-08（内点插值与完整输出证书）。 | P-ROB-08 (interior interpolation and complete-output certificate). |
+| P-FIELD-01 | 71 | P-FIELD-01（两模匹配与类空信号）。 | P-FIELD-01 (matching two modes and testing a spacelike signal). |

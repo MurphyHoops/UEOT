@@ -1,6 +1,21 @@
-# 《UEOT物理学》 / UEOT Physics — 3.11
+# 《UEOT物理学》 / UEOT Physics
 
-当前连续双语阅读版为第0–70章、六个附录、203项稳定结果。第70章新增九项结果，原194项结果对象和117项账本主张保留历史身份。发布状态与实际PR/main回执以[CURRENT](../status/CURRENT.json)为准。
+## 3.12 双语书稿候选 · Bilingual manuscript candidate
+
+两种连续书稿均含第0–71章、六个附录、210项稳定结果。第71章是供评议的人工智能辅助研究提案。钱德桂保留历史书稿作者署名。以下 PDF 和 TeX 对应已排版的3.11版。3.12版候选由 CI 编译，印本尚待版面审查。
+
+| Language | Continuous 3.12 source | Chapter 71 | Typeset edition 3.11 |
+|---|---|---|---|
+| 中文 | [完整书稿](UEOT_PHYSICS.md) | [从相关浴中究竟能识别什么](UEOT_PHYSICS.md#ch-71) | [PDF](UEOT_PHYSICS.pdf) · [TeX](UEOT_PHYSICS.tex) |
+| English | [Complete manuscript](UEOT_PHYSICS.en.md) | [What a correlated bath lets us infer](UEOT_PHYSICS.en.md#ch-71) | [PDF](UEOT_PHYSICS.en.pdf) · [TeX](UEOT_PHYSICS.en.tex) |
+
+Chapter 71 follows a pair of sources with identical free Ramsey responses through a signed intervention, a calibrated complete-output certificate and a local-field counterexample. The complete channel, Bell analog readout and digitized sampler have separate error budgets. The case for global complex-sector selection remains open. Matched hardware evidence and independent human review are pending.
+
+[Research packet and replay](../correlated_bath/README.md) · [stable result map](PHYSICS_RESULT_MAPPING.md) · [chapter dossier](CHAPTER_DOSSIER.json) · [sources](SOURCE_MANIFEST.json) · [claim ledger](../status/CLAIM_LEDGER_v31.15.json) · [current status](../status/CURRENT.json) · [roadmap](../ROADMAP.md)
+
+## Historical edition 3.11 · 历史版
+
+该版连续双语阅读本为第0–70章、六个附录、203项稳定结果。第70章新增九项结果，原194项结果对象和117项账本主张保留历史身份。发布状态与实际PR/main回执以[CURRENT](../status/CURRENT.json)为准。
 
 - 中文：[完整Markdown](UEOT_PHYSICS.md)、[PDF](UEOT_PHYSICS.pdf)、[TeX](UEOT_PHYSICS.tex)。
 - English: [complete Markdown](UEOT_PHYSICS.en.md), [PDF](UEOT_PHYSICS.en.pdf), [TeX](UEOT_PHYSICS.en.tex).

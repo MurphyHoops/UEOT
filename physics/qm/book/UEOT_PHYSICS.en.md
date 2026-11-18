@@ -1,12 +1,12 @@
 ---
 title: "UEOT Physics"
 subtitle: "From Object Mathematics to Quantum Physics: Derivations, Formal Proofs, and Research Boundaries"
-author: "Degui Qian"
-version: "3.11"
-date: "2026-11-14"
+author: "Historical book by Degui Qian. Chapter 71 is an AI-assisted research proposal."
+version: "3.12"
+date: "2026-11-18"
 language: "en"
 document_id: "UEOT-PHYSICS"
-status: "Complete bilingual revision; proved results, physical inputs, and open questions distinguished"
+status: "Bilingual manuscript candidate. PDF acceptance pending."
 rights: "Historical CC BY 4.0 grants remain; no additional blanket grant for new edition-specific expression; see Appendix E.4"
 ---
 
@@ -83,6 +83,7 @@ rights: "Historical CC BY 4.0 grants remain; no additional blanket grant for new
 - [68. Segmented excitation growth and controlled blue-pulse omission](#ch-68)
 - [69. Simultaneous dynamics, genuine truncation error, and calibrated complete predictions](#ch-69)
 - [70. Complete persistent-environment processes, finite certification, and selection limits](#ch-70)
+- [71. What a correlated bath lets us infer](#ch-71)
 - [Appendix A. Notation, units, and responsibilities of standard theorems](#appendix-a)
 - [Appendix B. Registry of numbered results](#appendix-b)
 - [Appendix C. Sources, inheritance, and research integrity](#appendix-c)
@@ -270,6 +271,10 @@ Edition 3.9 continues from main `aea2fceef3c62cc8dc749b6cbb1b40a7d89df80d`, whic
 ## 0.14 The current persistent-environment and complete-certification increment
 
 v31.14 / Kernel 1.14 continues from the merged and CI-verified Chapter 69 basis. Nine Chapter 70 paper results and independent computational evidence connect one persistent two-mode environment, complete multi-time instruments, finite propagation, joint calibration, and holdout. The book now has 71 chapters, six appendices, 203 stable results, and 126 ledger claims; counts are not a percentage of physics completed. All previous 194 result objects and 117 claims retain their identities. No new Lean proof or matched-device certification is claimed. The strong standard baseline is equivalent with no additional gain, and global quantum selection remains open. Actual replay, historical execution reuse, and publication verification are recorded separately; CURRENT and auditable receipts determine release status.
+
+## 0.15 Reading the Chapter 71 candidate
+
+The [correlated-bath chapter](#ch-71) adds seven results to the continuous source candidate for edition 3.12. The checked-in PDFs and TeX belong to edition 3.11. The 210 result IDs include 203 inherited results and the claim ledger retains 126 prior claims. The new work has paper, interval and synthetic evidence. Its empirical and formal-proof status is given in the [research packet](../correlated_bath/README.md).
 
 <a id="ch-1"></a>
 
@@ -4864,7 +4869,7 @@ A maintainable monograph must keep its text, stable IDs, sources, and verificati
 
 ## 48.1 One canonical theoretical source
 
-The book's fixed title is *UEOT Physics*, its stable document identity is `UEOT-PHYSICS`, and its current bilingual revision is 3.11. The canonical text is `physics/qm/book/UEOT_PHYSICS.md`; the Chinese PDF is generated from that text. The complete English counterpart is `UEOT_PHYSICS.en.md`, and its PDF is compiled from that English source. Chapters 0–70 and appendices A–F form one continuous, complete document. All earlier physical topics are retained, and new proofs are integrated into the corresponding arguments. Readers should not have to reconstruct a proof from several old versions.
+The book retains the document identity `UEOT-PHYSICS`. Its continuous Chinese and English manuscripts cover Chapters 0–71 and Appendices A–F. The checked-in reading PDFs and TeX are edition 3.11. The [edition index](README.md) distinguishes the manuscript, the PDF build and the reviewed release.
 
 Version reports, PRs, logs and mathematical modules each retain their own identity, without competing with the monograph as the authoritative theoretical text. The source manifest, chapter dossiers and evidence receipts record the basis of a statement and the part actually checked. Historical files preserve provenance. Their old statuses do not override a more recent verified kernel, and a new kernel does not retroactively confer machine proof on earlier unformalized physical propositions.
 
@@ -4879,12 +4884,12 @@ The third axis, `verification_kind`, records analytical derivation, exact arithm
 ~~~yaml
 document:
   id: UEOT-PHYSICS
-  edition: "3.11"
+  edition: "3.12"
   canonical_source: physics/qm/book/UEOT_PHYSICS.md
-  derivative_pdf: physics/qm/book/UEOT_PHYSICS.pdf
+  previous_edition_pdf: physics/qm/book/UEOT_PHYSICS.pdf
   english_source: physics/qm/book/UEOT_PHYSICS.en.md
-  english_pdf: physics/qm/book/UEOT_PHYSICS.en.pdf
-  chapter_range: [0, 70]
+  previous_edition_english_pdf: physics/qm/book/UEOT_PHYSICS.en.pdf
+  chapter_range: [0, 71]
   fundamental_unique_derivation_complete: false
   four_dimensional_nonperturbative_qft_complete: false
   quantum_gravity_complete: false
@@ -10292,6 +10297,93 @@ The completed research loop has a declared scope: genuine finite propagation and
 
 Further obligations remain explicit: infinite modes and continuum limits, UV/IR and renormalization, relativistic causality, gauge and matter selection, thermalization and energy exchange, genuine gravity and spacetime dynamics, semiclassical limits, cosmology, and observational constraints. This finite source does not prove those interfaces. The release audit retains their premise classes, distinguishable exit conditions, and full physics responsibility map. Completed chapter counts do not measure the fraction of physics solved. [QM3114]
 
+<a id="ch-71"></a>
+
+# 71. What a correlated bath lets us infer
+
+A Ramsey fringe can be measured for every waiting time and still leave two sources indistinguishable. To separate them, the experiment must ask a different question. Prepare the probe with either sign, let it displace the bath, then replace the probe while the bath keeps that displacement. The sign of the later phase tests how the bath responded. This chapter follows that idea from the permitted operation to an error bound for the entire stopped record.
+
+**Research attribution.** Chapter 71 presents an AI-assisted research proposal for review. Degui Qian is credited for the historical book. Independent human review and author endorsement of these new claims are pending.
+
+## 71.1 Which pure states must a control reach?
+
+<a id="c-qsel-03"></a>
+
+**C-QSEL-03 (ambient and reachable continuity).** Suppose every pair of pure states of each declared system, including composites, must be connected by a permitted continuous path of reversible controls starting at the identity. In a direct sum of matrix blocks a pure state has weight one in one block. A reversible affine map preserves extremality. The starting block weight along the path is therefore continuous with values in $\{0,1\}$ and stays one. This excludes a nontrivial classical simplex and a standard direct sum with at least two available sectors. A continuous preparation path crossing between blocks must pass through weight one half, where the central effect separates it from every pure state by at least one half.
+
+A reachable face can give the opposite verdict. Extend the qubit to $M_2(\mathbb C)\oplus\mathbb C$, prepare $(\rho,0)$, and let each branch multiply the hidden block by an outcome weight. Its zero persists separately on every branch, also with an untouched reference. Induction over the record gives exactly the same probabilities in every reachable circuit. Full continuous qubit rotations are transitive on the visible pure rays. Testing that face supplies no evidence of ambient access. [Selection proof](../correlated_bath/selection/SELECTION.md)
+
+<a id="c-qsel-04"></a>
+
+**C-QSEL-04 (continuous controls and product tomography).** In full real quantum theory a plane rotation takes one ray to another. In the complex theory one can continuously interpolate the eigenphases of a unitary connecting the rays. Both satisfy the path requirement with their full control libraries. For two rebits let $J$ denote the real quarter-turn matrix. The two states $(I\pm J\otimes J)/4$ agree on every product of real symmetric effects because $\mathrm{tr}(AJ)=0$ for symmetric $A$. The joint effect $(I+J\otimes J)/2$ separates them perfectly.
+
+Imposing local tomography still leaves a different countermodel. Take convex mixtures of products of pure qubits, local unitary paths and destructive binary spin tests with contrast $0<\nu<1$. The pure preparations are product rays and local paths connect them. Products of noisy effects span all product observables, yet every pure joint preparation has pure marginals. A mixed qubit has no pure dilation in this library. With contrast one half even antipodal one-copy inputs have a probability gap of at most one half. Continuity is an independent sector postulate. This comparison removes zero independently supplied premises from the reconstruction. [Exact witnesses](../correlated_bath/selection/check_selection.py)
+
+## 71.2 The bath remembers its preparation clock
+
+<a id="p-micro-10"></a>
+
+**P-MICRO-10 (correlated histories and total-number cutoff).** Use the Chapter 70 frequencies $(1,3/2)$ and couplings $(1,3/5)$. Each shot starts with an arbitrary probe and finite reference in product with a centered two-mode Gaussian bath. Its normal covariance has diagonal $n$ and real off-diagonal $c$, with zero anomalous moments. The symmetric and antisymmetric modes have thermal means $n+c,n-c$. Assume $0\le n\le 3/5$, $|c|\le n$, $1/5\le\lambda\le2/5$ and a phase-locked start. Keep the bath through all three slots. Both trees retain the subnormalized final probe and reference in each of $f,pf,ppf,ppp$. The second timing exchanges the first two durations in $(2/3,3/4,1/2)$.
+
+Put $w=\lambda^2$, $u=w(2n+1)$ and $v=wc$. For a stopped pair of spin histories, rotate the difference of their unit-coupling displacements back to the preparation frame at the elapsed prefix time. Call the result $d$. Its Gaussian attenuation and the Weyl exchange phase give a scalar weight
+$$
+I(p)=\exp(-Au-Bv+iPw),\qquad A=\|d\|^2/2,\quad B=2\operatorname{Re}(\bar d_1d_2).
+$$
+Here $P$ includes the difference of the two history phases and their displacement exchange phase. Summing the corresponding system matrix outer products gives the Choi block of that record. Omitting the frame rotation changes the cross term when $c\ne0$. Only the *initial* characteristic function is Gaussian in this calculation.
+
+There is a second construction. Truncate at total occupation $K$, normalize the retained bath and bound the omitted thermal tail in the passive modes. Creation out of the top occupied shell is the boundary defect in Duhamel's formula. Weight its propagated norm by the live prefixes before tracing the bath. For $K=16$ the same-parameter half trace-distance bound is 0.011677620430 uniformly over inputs and both timings. The rational finite channel including arithmetic and trace completion has upper bound 0.027602916940 for supported rational parameters. The certificate below uses the infinite-source history sum directly and incurs its own numerical repair once. [Dynamics and cutoff proof](../correlated_bath/dynamics/DYNAMICS.md)
+
+## 71.3 Which measurement separates two Ramsey-equivalent sources?
+
+<a id="c-qmem-02"></a>
+
+**C-QMEM-02 (an exact Ramsey ambiguity).** Free Ramsey means are $\eta\exp(-A_tu-B_tv)$. With the same visibility, $(\lambda,n,c)=(3/10,1/2,1/4)$ and $(1/3,31/100,81/400)$ both give $(u,v)=(9/50,9/400)$. Every duration agrees. At $\eta=0.96$ the joint event of three passes and a negative $YZ$ sign differs by more than 0.001730089430 on the original timing. Agreement of all free fringes leaves a measurable uncertainty on this stopped observable. [Interval witness](../correlated_bath/inference/verification.json)
+
+<a id="p-qmem-03"></a>
+
+**P-QMEM-03 (signed response after a causal break).** At $a=2/3$ replace the initially positive or negative $Z$ eigenstate by the same $+X$ state, retaining the bath. After $b=3/4$ measure both quadratures on separately prepared shots. With $z_s=\langle X\rangle_s-i\langle Y\rangle_s$, Weyl multiplication gives
+$$
+z_s=R\exp[i(\delta+s wF)],\qquad w=\frac{\arg(z_+\overline{z_-})}{2F}.
+$$
+The known timing gives $1.819240198557\le F\le1.819240198558$, $R>0$ and $0<2wF<\pi$. The principal argument recovers $w$ even with a shared phase offset. The zero-time visibility and two independent Ramsey log means recover $u,v$, then the positive $\lambda$, $n$ and $c$. Separate sign-dependent offsets could absorb the phase exactly. A bath reset would erase the displacement altogether. The construction requires a calibrated reset of the probe alone, a shared phase reference and a stationary preparation. [Inference and inverse stability](../correlated_bath/inference/INFERENCE.md)
+
+## 71.4 From a simultaneous confidence set to complete output error
+
+<a id="p-rob-08"></a>
+
+**P-ROB-08 (interior interpolation and complete-output certificate).** On the 99% calibration coverage event the true point lies in a rational polytope. Two Ramsey strips, the $w$ interval and $w+2|v|\le u\le11w/5$ preserve joint information lost by projecting each parameter separately. Splitting at the midpoints of the $u$ and $w$ ranges gives four convex cells and 18 distinct vertices. Checking the vertices alone can miss an interior phase excursion. For example the unitary with diagonal entries $1,e^{i\theta}$ gives the same channel at $0,2\pi$ and takes $|+\rangle$ to an orthogonal state at $\pi$.
+
+For a point expressed as a convex average of vertices, the linear terms in the Taylor expansion of $I$ cancel. Throughout each segment $|I|\le1$ because $|B|\le2A$ and $u\ge2|v|$. The variance of either real coordinate is at most one quarter its squared range. Thus the scalar remainder is bounded by
+$$
+\frac{\operatorname{range}(Au+Bv)^2+\operatorname{range}(Pw)^2}{8}.
+$$
+Multiply by the Frobenius norm of each history outer product and sum. For normalized qubit Choi blocks $J_r$, Schmidt normalization of a pure input and the rank-four trace norm bound give
+$$
+\tfrac12\|\Delta\|_\diamond\le\sum_r\|\Delta J_r\|_1\le2\sum_r\|\Delta J_r\|_F .
+$$
+Convexity covers mixed inputs. Add each cell's interpolation remainder to its worst interval-enclosed vertex error and take the maximum. Exact rational CP and trace-preserving completion of the nominal instrument costs at most $10^{-8}$.
+
+| Timing | Complete half diamond | Bell eight-cell analog TV | Bell 40-bit sampler TV |
+|---|---:|---:|---:|
+| Original | 0.033892297103 | 0.046090140885 | 0.046090140889 |
+| First two slots exchanged | 0.035357047207 | 0.047554890989 | 0.047554890993 |
+
+Each entry is an outward upper bound. Only the complete channel column ranges over arbitrary inputs and untouched finite references. The other columns use the specified Bell input and one declared binary tester combined with four record labels. They include visibility uncertainty and an analog allowance of 0.0005 per cell. Digitizing the cumulative probabilities adds at most $4/2^{40}$ in total variation. Normalizing a rare postselected state or changing an intermediate intervention requires a separate bound. [Certificate proof](../correlated_bath/certificate/PROOF.md) · [Rational bounds](../correlated_bath/certificate/joint-result.json)
+
+The fit used 720,000 synthetic calibration shots. On 408,000 independent frozen holdout shots the two Bell timings and a separately timed break were compatible with prediction. The deliberately changed readout had four disjoint cells. The calibrated standard persistent quantum process gives the same predictions and statistical performance. Model membership, sign-dependent drift and matched-device performance remain experimental questions. [Holdout decisions](../correlated_bath/inference/holdout_results.json)
+
+## 71.5 Where a two-mode probe loses locality
+
+<a id="p-field-01"></a>
+
+**P-FIELD-01 (matching two modes and testing a spacelike signal).** In a specified massive free scalar field on a circle, the circumference and compact smearing profile can be chosen so that the zero and first cosine modes reproduce the two bath frequencies and relative couplings. Keep their correlated preparation and put the higher modes in vacuum. Two switched probes then sample different field quantities. The signed phase integrates the retarded commutator, while coherence attenuation samples the symmetric two-point function. At strictly spacelike separation microcausality sets the full signed phase to zero.
+
+With $\lambda=0.3$, $n=0.5$, $c=0.25$ and antipodal probes switched for $1/5$ each, the first two modes alone give 0.001330794 radians. Higher modes are necessary for cancellation. With both probes at the same location and the original first two durations the two-mode and field phases are about 0.16373 and 0.20916 radians. The smearing bounds the phase tail by a constant times $M^{-10}$ after $M$ shells. At $M=160$ the example's phase tail is below $2.486\times10^{-12}$ radians. These tests concern the chosen free field, geometry and preparation. Their physical selection and extension to interacting fields remain open. [Local probe and tail proof](../correlated_bath/field/FIELD.md) · [Interval results](../correlated_bath/field/observed.json)
+
+For two equal-gap qubits in an exchange pulse, the bath gains 3/20 of the gap energy. Reusing that bath after probe preparation increases the next excitation probability by 0.0375 compared with supplying a fresh bath. In the matter example both three and five colors pass the integer singlet-charge rule. In the cosmological example dust plus a cosmological constant and a canonical scalar share one expansion history, while their perturbations differ at nonzero wave number. These comparisons specify which observation has to change to distinguish two models.
+
+The accompanying [sector calculations](../correlated_bath/sectors/RESULTS.md) test thermal memory, matter assignments and geometry under separate assumptions. A field sourced by external switching, a memoryless replacement bath and a change of background metric each define a different experiment. None supplies the missing device calibrations, a unique matter sector or gravitational field equations.
+
 <a id="appendix-a"></a>
 
 # Appendix A. Notation, units, and responsibilities of standard theorems
@@ -10579,6 +10671,13 @@ The 3.7 bilingual revision preserves all 173 stable result IDs of research editi
 | [P-QMEM-02](#p-qmem-02) | 70 | P-QMEM-02 (A necessary memory dimension from causal-break response rank). |
 | [P-ROB-06](#p-rob-06) | 70 | P-ROB-06 (joint identification and coverage from two trusted settings). |
 | [P-ROB-07](#p-rob-07) | 70 | P-ROB-07 (a complete CQ certificate and independent holdout). |
+| [C-QSEL-03](#c-qsel-03) | 71 | C-QSEL-03 (ambient and reachable continuity). |
+| [C-QSEL-04](#c-qsel-04) | 71 | C-QSEL-04 (continuous controls and product tomography). |
+| [P-MICRO-10](#p-micro-10) | 71 | P-MICRO-10 (correlated histories and total-number cutoff). |
+| [C-QMEM-02](#c-qmem-02) | 71 | C-QMEM-02 (an exact Ramsey ambiguity). |
+| [P-QMEM-03](#p-qmem-03) | 71 | P-QMEM-03 (signed response after a causal break). |
+| [P-ROB-08](#p-rob-08) | 71 | P-ROB-08 (interior interpolation and complete-output certificate). |
+| [P-FIELD-01](#p-field-01) | 71 | P-FIELD-01 (matching two modes and testing a spacelike signal). |
 
 <a id="appendix-c"></a>
 
@@ -10686,6 +10785,8 @@ The current mathematics volume is consulted to locate the maintained Core and it
 
 
 [QM3114] Release kernel and execution reports: `physics/qm/UEOT_QM_KERNEL_v31.14.md` and `UEOT_QM_EXECUTION_v31.14.md`; complete proofs, original synthetic records, and cross-review: `physics/qm/kernel/evidence/v31.14/`; current premises and full physics obligations: `physics/qm/audits/PERSISTENT_BATH_v31.14/PREMISES_AND_RESPONSIBILITIES.md`.
+
+[QM3115] [Correlated source and reproducible checks](../correlated_bath/README.md). [Evidence and open physical responsibilities](../ROADMAP.md).
 
 <a id="appendix-d"></a>
 
@@ -11598,7 +11699,7 @@ Actual edition 3.0 result summary; the code remains unchanged in editions 3.1–
 
 ## E.1 Complete semantic sources and derived reading editions
 
-The maintained Chinese source `UEOT_PHYSICS.md` and its complete English counterpart `UEOT_PHYSICS.en.md` each contain Chapters 0–70 and Appendices A–F. Their corresponding `.tex` and `.pdf` files are actual derivatives of those sources, with mathematical typesetting, a full chapter contents list, stable result IDs, original derivations, and embedded code. Edition 3.11 adds the Chapter 70 persistent-environment processes, finite certification, and selection limits to the continuous bilingual manuscript while retaining Chapter 69 and all earlier results. The edition number identifies a publication; the text and evidence determine which physical questions are resolved or open.
+The [correlated-bath chapter](#ch-71) adds seven results to the continuous source candidate for edition 3.12. The checked-in PDFs and TeX belong to edition 3.11. The 210 result IDs include 203 inherited results and the claim ledger retains 126 prior claims. The new work has paper, interval and synthetic evidence. Its empirical and formal-proof status is given in the [research packet](../correlated_bath/README.md).
 
 Both languages carry the same scientific commitments. Their prose is adapted for natural reading, while assumptions, formulas, constants, result IDs, source identities, and empirical qualifications are checked together. Mathematical symbols are not silently changed in translation. Purely linguistic labels inside formulas and recorded editorial corrections are listed in the fidelity report.
 
@@ -13203,3 +13304,9 @@ The Chapter 69 trace-class prefix, self-adjointness, finite-Duhamel, calibration
 The nine Chapter 70 stable results have paper proofs, exact finite algebra, directed intervals, and synthetic statistical evidence, with their respective quantifiers stated in the text and `chapter70_formal_bindings.json`. They are not new Lean declarations; Chapter 69 likewise adds no Lean coverage. After the current 158 unchanged proof inputs were hash-checked, their original execution was reused without relabeling the historical 1365 axiom reports.
 
 The integrated replay actually reads the original 1.6 million synthetic rows and separately records its execution time and input/output hashes. Reused data are not new shots. Eight Choi interval certificates, 504 exact principal minors, frozen calibration/holdout, external processed-data reproduction, and the first missing-h5py failure attempt retain separate identities. Complete evidence is in `physics/qm/kernel/evidence/v31.14/`. Publication identity and scoped visual review are in `physics/qm/book/evidence/v3.11/`; reviewing the new and changed pages does not claim a fresh page-by-page review of all inherited content.
+
+## F.10 Proof scope of Chapter 71
+
+Chapter 71 adds seven paper and computational results. All 203 earlier result objects and 126 earlier claims retain their original identities. The inherited Lean execution applies to its historical 158-input source set. The new chapter adds no Lean declaration, hardware observations or independent human review.
+
+On the preceding merged Chapter 70 source, PR #466 main run 44318642942 rebuilt the existing QM library, audited its theorem axioms and checked the retained witnesses. Chapters 69–71 added no Lean declarations. The [recorded run](../kernel/evidence/v31.14/integration-verification.json) identifies the prior commit.

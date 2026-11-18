@@ -1,0 +1,69 @@
+name: Chapter 71 publication candidate
+
+on:
+  pull_request:
+    paths: &publication_paths
+      - 'physics/qm/**'
+      - 'physics/status/**'
+      - 'formalization/ueot-qm/**'
+      - 'formalization/ueot-core/**'
+      - '.github/workflows/ueot-qm*.yml'
+      - 'README.md'
+  push:
+    branches: [main]
+    paths: *publication_paths
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  manuscript:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Check both manuscripts, historical identities and scoped results
+        run: python3 -B physics/qm/book/build/verify_v3_12_increment.py
+
+  pdf:
+    needs: manuscript
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {lang: zh, stem: UEOT_PHYSICS}
+          - {lang: en, stem: UEOT_PHYSICS.en}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Install the upstream book toolchain
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-extra texlive-fonts-recommended lmodern fonts-lmodern fonts-noto-cjk fonts-dejavu-core poppler-utils
+      - name: Typeset the complete manuscript and inspect the reading copy
+        env:
+          STEM: ${{ matrix.stem }}
+        run: |
+          book=physics/qm/book
+          out="$RUNNER_TEMP/reading"
+          python3 -B "$book/build/build_pdf.py" --source "$book/$STEM.md" --output-dir "$out"
+          python3 -B "$book/build/verify_v3_12_pdf.py" "$book/$STEM.md" "$out"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: chapter71-candidate-${{ matrix.lang }}
+          path: |
+            ${{ runner.temp }}/reading/*.pdf
+            ${{ runner.temp }}/reading/*.tex
+            ${{ runner.temp }}/reading/*.png
+            ${{ runner.temp }}/reading/pdf-build.json
+            ${{ runner.temp }}/reading/xelatex-pass-*.log
+          if-no-files-found: error
