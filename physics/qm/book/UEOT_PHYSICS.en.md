@@ -6,7 +6,7 @@ version: "3.12"
 date: "2026-11-18"
 language: "en"
 document_id: "UEOT-PHYSICS"
-status: "Bilingual manuscript candidate. PDF acceptance pending."
+status: "Bilingual manuscript candidate. See the edition index for print acceptance."
 rights: "Historical CC BY 4.0 grants remain; no additional blanket grant for new edition-specific expression; see Appendix E.4"
 ---
 
@@ -274,7 +274,7 @@ v31.14 / Kernel 1.14 continues from the merged and CI-verified Chapter 69 basis.
 
 ## 0.15 Reading the Chapter 71 candidate
 
-The [correlated-bath chapter](#ch-71) adds seven results to the continuous source candidate for edition 3.12. The checked-in PDFs and TeX belong to edition 3.11. The 210 result IDs include 203 inherited results and the claim ledger retains 126 prior claims. The new work has paper, interval and synthetic evidence. Its empirical and formal-proof status is given in the [research packet](../correlated_bath/README.md).
+The [correlated-bath chapter](#ch-71) adds seven results to the continuous source candidate for edition 3.12. The [edition index](README.md) records the builds and reviewed pages for each reading copy. The [Chapter 70 PDF](https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978e173e23015f026994fb60c65/physics/qm/book/UEOT_PHYSICS.en.pdf) preserves edition 3.11. The 210 result IDs include 203 inherited results and the claim ledger retains 126 prior claims. The new work has paper, interval and synthetic evidence. Its empirical and formal-proof status is given in the [research packet](../correlated_bath/README.md).
 
 <a id="ch-1"></a>
 
@@ -4869,7 +4869,7 @@ A maintainable monograph must keep its text, stable IDs, sources, and verificati
 
 ## 48.1 One canonical theoretical source
 
-The book retains the document identity `UEOT-PHYSICS`. Its continuous Chinese and English manuscripts cover Chapters 0–71 and Appendices A–F. The checked-in reading PDFs and TeX are edition 3.11. The [edition index](README.md) distinguishes the manuscript, the PDF build and the reviewed release.
+The book retains the document identity `UEOT-PHYSICS`. Its continuous Chinese and English manuscripts cover Chapters 0–71 and Appendices A–F. The [previous reading edition](https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978e173e23015f026994fb60c65/physics/qm/book/UEOT_PHYSICS.en.pdf) ends with Chapter 70. The [edition index](README.md) distinguishes the manuscript, the PDF build and the reviewed release.
 
 Version reports, PRs, logs and mathematical modules each retain their own identity, without competing with the monograph as the authoritative theoretical text. The source manifest, chapter dossiers and evidence receipts record the basis of a statement and the part actually checked. Historical files preserve provenance. Their old statuses do not override a more recent verified kernel, and a new kernel does not retroactively confer machine proof on earlier unformalized physical propositions.
 
@@ -4886,9 +4886,9 @@ document:
   id: UEOT-PHYSICS
   edition: "3.12"
   canonical_source: physics/qm/book/UEOT_PHYSICS.md
-  previous_edition_pdf: physics/qm/book/UEOT_PHYSICS.pdf
+  derivative_pdf_path: physics/qm/book/UEOT_PHYSICS.pdf
   english_source: physics/qm/book/UEOT_PHYSICS.en.md
-  previous_edition_english_pdf: physics/qm/book/UEOT_PHYSICS.en.pdf
+  derivative_english_pdf_path: physics/qm/book/UEOT_PHYSICS.en.pdf
   chapter_range: [0, 71]
   fundamental_unique_derivation_complete: false
   four_dimensional_nonperturbative_qft_complete: false
@@ -11699,7 +11699,7 @@ Actual edition 3.0 result summary; the code remains unchanged in editions 3.1–
 
 ## E.1 Complete semantic sources and derived reading editions
 
-The [correlated-bath chapter](#ch-71) adds seven results to the continuous source candidate for edition 3.12. The checked-in PDFs and TeX belong to edition 3.11. The 210 result IDs include 203 inherited results and the claim ledger retains 126 prior claims. The new work has paper, interval and synthetic evidence. Its empirical and formal-proof status is given in the [research packet](../correlated_bath/README.md).
+The [correlated-bath chapter](#ch-71) adds seven results to the continuous source candidate for edition 3.12. The [edition index](README.md) records the builds and reviewed pages for each reading copy. The [Chapter 70 PDF](https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978e173e23015f026994fb60c65/physics/qm/book/UEOT_PHYSICS.en.pdf) preserves edition 3.11. The 210 result IDs include 203 inherited results and the claim ledger retains 126 prior claims. The new work has paper, interval and synthetic evidence. Its empirical and formal-proof status is given in the [research packet](../correlated_bath/README.md).
 
 Both languages carry the same scientific commitments. Their prose is adapted for natural reading, while assumptions, formulas, constants, result IDs, source identities, and empirical qualifications are checked together. Mathematical symbols are not silently changed in translation. Purely linguistic labels inside formulas and recorded editorial corrections are listed in the fidelity report.
 

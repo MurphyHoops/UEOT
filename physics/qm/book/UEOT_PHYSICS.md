@@ -6,7 +6,7 @@ version: "3.12"
 date: "2026-11-18"
 language: "zh-CN"
 document_id: "UEOT-PHYSICS"
-status: "双语书稿候选，PDF 验收待完成。"
+status: "双语候选书稿。印本验收范围见版本入口。"
 rights: "历史CC BY 4.0授权保留；新增版次表达未作额外统一许可授予；详见附录E.4"
 ---
 
@@ -275,7 +275,7 @@ v31.14 / Kernel 1.14 在已合并并经 CI 核验的第69章基础上，新增�
 
 ## 0.15 第71章候选书稿阅读入口
 
-[相关浴新章](#ch-71)为3.12版连续候选书稿增加七项结果。库内 PDF 与 TeX 属于3.11版。现有210项稳定结果，其中203项沿用原编号，账本保留126项旧主张。新章提供书面论证、区间计算与合成数据，经验与形式证明范围见[研究材料](../correlated_bath/README.md)。
+[相关浴新章](#ch-71)为3.12版连续候选书稿增加七项结果。[版本入口](README.md)记录各印本的构建与受检页。[第70章印本](https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978e173e23015f026994fb60c65/physics/qm/book/UEOT_PHYSICS.pdf)保留3.11版原貌。现有210项稳定结果，其中203项沿用原编号，账本保留126项旧主张。新章提供书面论证、区间计算与合成数据，经验与形式证明范围见[研究材料](../correlated_bath/README.md)。
 
 <a id="ch-1"></a>
 
@@ -4834,7 +4834,7 @@ $$
 
 ## 48.1 唯一理论主源
 
-本书文档身份为 `UEOT-PHYSICS`。中英文连续书稿均含第0–71章、附录A–F。库内阅读 PDF 和 TeX 属于3.11版。书稿、PDF 编译与评阅状态分别见[版本入口](README.md)。
+本书文档身份为 `UEOT-PHYSICS`。中英文连续书稿均含第0–71章、附录A–F。[前版印本](https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978e173e23015f026994fb60c65/physics/qm/book/UEOT_PHYSICS.pdf)收至第70章。书稿、PDF 编译与评阅状态分别见[版本入口](README.md)。
 
 版本报告、PR、日志和数学模块各有自己的身份，但不再与总著争夺理论正文的权威。源文件清单、章节修订档案及证据回执记录“这句话依据什么、哪一部分被检查过”。历史文件保留沿革责任；它们的旧状态不会覆盖较新的已验证内核，新的内核也不会为历史上未形式化的物理命题追授机器证明。
 
@@ -4851,9 +4851,9 @@ document:
   id: UEOT-PHYSICS
   edition: "3.12"
   canonical_source: physics/qm/book/UEOT_PHYSICS.md
-  previous_edition_pdf: physics/qm/book/UEOT_PHYSICS.pdf
+  derivative_pdf_path: physics/qm/book/UEOT_PHYSICS.pdf
   english_source: physics/qm/book/UEOT_PHYSICS.en.md
-  previous_edition_english_pdf: physics/qm/book/UEOT_PHYSICS.en.pdf
+  derivative_english_pdf_path: physics/qm/book/UEOT_PHYSICS.en.pdf
   chapter_range: [0, 71]
   fundamental_unique_derivation_complete: false
   four_dimensional_nonperturbative_qft_complete: false
@@ -11637,7 +11637,7 @@ print(json.dumps(result,ensure_ascii=False,indent=2))
 
 ## E.1 完整语义主源与派生阅读版
 
-[相关浴新章](#ch-71)为3.12版连续候选书稿增加七项结果。库内 PDF 与 TeX 属于3.11版。现有210项稳定结果，其中203项沿用原编号，账本保留126项旧主张。新章提供书面论证、区间计算与合成数据，经验与形式证明范围见[研究材料](../correlated_bath/README.md)。
+[相关浴新章](#ch-71)为3.12版连续候选书稿增加七项结果。[版本入口](README.md)记录各印本的构建与受检页。[第70章印本](https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978e173e23015f026994fb60c65/physics/qm/book/UEOT_PHYSICS.pdf)保留3.11版原貌。现有210项稳定结果，其中203项沿用原编号，账本保留126项旧主张。新章提供书面论证、区间计算与合成数据，经验与形式证明范围见[研究材料](../correlated_bath/README.md)。
 
 两种语言承担相同的科学责任。文字为自然阅读作适当调整，前提、公式、常数、结果编号、源码身份与经验限定则共同核对。翻译不静默改变数学符号；公式中的纯文字标签和有记录的编辑更正列入忠实性报告。
 

@@ -19,7 +19,7 @@ IDS = ['C-QSEL-03', 'C-QSEL-04', 'P-MICRO-10', 'C-QMEM-02', 'P-QMEM-03', 'P-ROB-
 # in its own checkout and still checks every one of its original identities.
 REPLACED = {'.github/workflows/ueot-qm.yml', 'physics/status/CURRENT.md',
             'physics/qm/ROADMAP.md', 'physics/qm/book/README.md',
-            'physics/qm/book/PHYSICS_RESULT_MAPPING.md', 'physics/qm/book/build/verify_book.py'}
+            'physics/qm/book/build/build_pdf.py', 'physics/qm/book/PHYSICS_RESULT_MAPPING.md', 'physics/qm/book/build/verify_book.py'}
 for suffix in ('', '.en'):
     REPLACED.update({str(BOOK / f'UEOT_PHYSICS{suffix}.md'), str(BOOK / f'build/header{suffix}.tex')})
 
@@ -62,6 +62,12 @@ def historical_inputs():
             if record['path'] not in REPLACED:
                 check_identity(record)
                 count += 1
+    # Chapter 71 corrects named PDF destinations. The original builder remains
+    # bound to the sealed Chapter 70 build receipts at its merged source.
+    builder = hashlib.sha256(previous(BOOK / 'build/build_pdf.py')).hexdigest()
+    for lang in ('zh', 'en'):
+        receipt = json.loads(previous(BOOK / f'evidence/v3.11/{lang}/pdf-build.json'))
+        require(builder == receipt['builder_sha256'], lang+' historical builder identity')
     return count
 
 
