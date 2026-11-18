@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+import re
 import subprocess
 
 from verify_book import inspect_book
@@ -36,6 +37,15 @@ def verify(source, out):
         require(row['exit_code'] == 0 and sha(out/f'xelatex-pass-{i}.log') == row['sha256'], f'Invalid pass {i}')
     require(not receipt['layout_warnings'] and not receipt['rerun_warnings'],
             f"Typesetting warnings: {receipt['layout_warnings'] + receipt['rerun_warnings']}")
+    listing = subprocess.check_output(['pdfinfo', '-dests', str(pdf)], text=True)
+    destinations = {name: int(page) for page, name in
+                    re.findall(r'(?m)^\s*(\d+)\s+\[[^\n]*\]\s+"([^"]+)"', listing)}
+    toc = (out / (stem + '.toc')).read_text()
+    chapter_targets = re.findall(r'(?m)^\\contentsline\s*\{chapter\}.*?\{(chapter[^{}]+)\}\s*%?\s*$', toc)
+    anchors = re.findall(r'(?m)^<a id="(ch-\d+|appendix-[a-f])"></a>$', source.read_text())
+    require(len(chapter_targets) == len(anchors) == 78, 'Incomplete table of contents')
+    for anchor, target in zip(anchors, chapter_targets):
+        require(destinations[anchor] == destinations[target], 'PDF link lands on wrong page: '+anchor)
     extracted = subprocess.check_output(['pdftotext','-layout',str(pdf),'-']).decode()
     # The Chinese font maps printed ID hyphens to nonbreaking hyphens.
     hyphens = str.maketrans({'‑':'-', '‐':'-', '−':'-'})
