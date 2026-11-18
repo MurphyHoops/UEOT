@@ -2,12 +2,14 @@
 
 ## 3.12 双语书稿候选 · Bilingual manuscript candidate
 
-两种连续书稿均含第0–71章、六个附录、210项稳定结果。第71章是供评议的人工智能辅助研究提案。钱德桂保留历史书稿作者署名。以下 PDF 和 TeX 对应已排版的3.11版。3.12版候选由 CI 编译，印本尚待版面审查。
+两种连续书稿均含第0–71章、六个附录、210项稳定结果。第71章是供评议的人工智能辅助研究提案。钱德桂保留历史书稿作者署名。本页列出同一候选书稿的中英文印本。第0章、第48章及附录E另附固定的前版阅读入口。印本验收范围见下方回执。
 
-| Language | Continuous 3.12 source | Chapter 71 | Typeset edition 3.11 |
+| Language | Continuous 3.12 source | Chapter 71 | Edition 3.12 PDF and TeX |
 |---|---|---|---|
 | 中文 | [完整书稿](UEOT_PHYSICS.md) | [从相关浴中究竟能识别什么](UEOT_PHYSICS.md#ch-71) | [PDF](UEOT_PHYSICS.pdf) · [TeX](UEOT_PHYSICS.tex) |
 | English | [Complete manuscript](UEOT_PHYSICS.en.md) | [What a correlated bath lets us infer](UEOT_PHYSICS.en.md#ch-71) | [PDF](UEOT_PHYSICS.en.pdf) · [TeX](UEOT_PHYSICS.en.tex) |
+
+The checked-in reading copies were built from the manuscripts at `a20d178a`. The build receipts identify the exact source, TeX and PDF for each language. The visual review records the pages examined. Chapter 71 remains a manuscript candidate in [PR #467](https://github.com/MurphyHoops/UEOT/pull/467). [CI run 44324949932](https://github.com/MurphyHoops/UEOT/actions/runs/44324949932) · [Chinese build](evidence/v3.12/zh-build.json) · [English build](evidence/v3.12/en-build.json) · [Reading-copy review](evidence/v3.12/reading-review.json)
 
 Chapter 71 follows a pair of sources with identical free Ramsey responses through a signed intervention, a calibrated complete-output certificate and a local-field counterexample. The complete channel, Bell analog readout and digitized sampler have separate error budgets. The case for global complex-sector selection remains open. Matched hardware evidence and independent human review are pending.
 
@@ -15,12 +17,12 @@ Chapter 71 follows a pair of sources with identical free Ramsey responses throug
 
 ## Historical edition 3.11 · 历史版
 
-该版连续双语阅读本为第0–70章、六个附录、203项稳定结果。第70章新增九项结果，原194项结果对象和117项账本主张保留历史身份。发布状态与实际PR/main回执以[CURRENT](../status/CURRENT.json)为准。
+该版连续双语阅读本为第0–70章、六个附录、203项稳定结果。第70章新增九项结果，原194项结果对象和117项账本主张保留历史身份。发布状态与实际PR/main回执以[CURRENT](https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978e173e23015f026994fb60c65/physics/qm/status/CURRENT.json)为准。
 
-- 中文：[完整Markdown](UEOT_PHYSICS.md)、[PDF](UEOT_PHYSICS.pdf)、[TeX](UEOT_PHYSICS.tex)。
-- English: [complete Markdown](UEOT_PHYSICS.en.md), [PDF](UEOT_PHYSICS.en.pdf), [TeX](UEOT_PHYSICS.en.tex).
+- 中文：[完整Markdown](https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978e173e23015f026994fb60c65/physics/qm/book/UEOT_PHYSICS.md)、[PDF](https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978e173e23015f026994fb60c65/physics/qm/book/UEOT_PHYSICS.pdf)、[TeX](https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978e173e23015f026994fb60c65/physics/qm/book/UEOT_PHYSICS.tex)。
+- English: [complete Markdown](https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978e173e23015f026994fb60c65/physics/qm/book/UEOT_PHYSICS.en.md), [PDF](https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978e173e23015f026994fb60c65/physics/qm/book/UEOT_PHYSICS.en.pdf), [TeX](https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978e173e23015f026994fb60c65/physics/qm/book/UEOT_PHYSICS.en.tex).
 - [新章内核报告](../UEOT_QM_KERNEL_v31.14.md)、[证据目录](../kernel/evidence/v31.14/)、[可复现入口](../persistent_bath/README.md)。
-- [结果逐项映射](PHYSICS_RESULT_MAPPING.md)、[dossier](CHAPTER_DOSSIER.json)、[来源清单](SOURCE_MANIFEST.json)、[前提与长期物理责任](../audits/PERSISTENT_BATH_v31.14/PREMISES_AND_RESPONSIBILITIES.md)。
+- [结果逐项映射](https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978e173e23015f026994fb60c65/physics/qm/book/PHYSICS_RESULT_MAPPING.md)、[dossier](https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978e173e23015f026994fb60c65/physics/qm/book/CHAPTER_DOSSIER.json)、[来源清单](https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978e173e23015f026994fb60c65/physics/qm/book/SOURCE_MANIFEST.json)、[前提与长期物理责任](../audits/PERSISTENT_BATH_v31.14/PREMISES_AND_RESPONSIBILITIES.md)。
 
 同一持久双模真空源的完整CQ证书上界为0.036581185645，固定终端读出分布上界为0.040451414205。数学量词、实际区间计算、精确CP/TP修复、合成校准/留出及外部处理后observable分别登记。全球复量子选择仍开放；强标准过程基线等价而无额外增益；匹配器件仍未认证；第69/70章没有新增Lean证明。
 
@@ -32,7 +34,7 @@ The new chapter connects one persistent source to complete instruments, controll
 
 ## 3.10 同时动力学与校准后的完整预测 / Simultaneous dynamics and calibrated complete prediction
 
-当前连续中英文主文均为 **第0–69章、附录A–F、194项稳定结果**，科学增量 **v31.13 / Kernel 1.13**。研究入场 main 为 `cb17211653fde30aa50e0e9848798a6a5b3b3f12`。旧188项结果对象、111项主张及原有科学章节保持原始身份，第69章追加六项结果。当前发布和实际远端执行以 [CURRENT](../status/CURRENT.json) 为准。
+当前连续中英文主文均为 **第0–69章、附录A–F、194项稳定结果**，科学增量 **v31.13 / Kernel 1.13**。研究入场 main 为 `cb17211653fde30aa50e0e9848798a6a5b3b3f12`。旧188项结果对象、111项主张及原有科学章节保持原始身份，第69章追加六项结果。当前发布和实际远端执行以 [CURRENT](https://github.com/MurphyHoops/UEOT/blob/ee7fb2793a1dbb519703bba05f535f0d962d9e56/physics/qm/status/CURRENT.json) 为准。
 
 本轮闭合的是选定同时动力学到同一完整干预过程的受控有限预测：从自伴 Hamiltonian 导出真实 Galerkin 边界缺陷和有限 Duhamel 余项，接入完整记录稳定性、联合校准、物理过滤和数值输出。有限压缩不自动继承无限模型的正交分量不变量；该反例确定了先比较真实参数、再支付截断误差的正确顺序。
 
@@ -45,7 +47,7 @@ The exact finite-map certificate is below **0.041930158795** against the frozen 
 | Nine actual commands, raw streams and output identities | [runtime receipt](../kernel/evidence/v31.13/runtime/execution_receipt.json) |
 | 158 unchanged proof inputs and historical execution reuse | [proof reuse](../kernel/evidence/v31.13/proof-reuse.json) |
 | Bilingual builds, preservation and scoped visual review | [edition3.10 evidence](evidence/v3.10/) |
-| Full quantum, field, particle and gravity responsibilities | [continuous roadmap](../ROADMAP.md) |
+| Full quantum, field, particle and gravity responsibilities | [continuous roadmap](https://github.com/MurphyHoops/UEOT/blob/ee7fb2793a1dbb519703bba05f535f0d962d9e56/physics/qm/ROADMAP.md) |
 
 Exactly three native AI research roles performed independent implementation and cross-review; this is not external human peer review. Complex quantum structure, the effective controls, ideal physical filter and calibration/readout family remain explicit independent inputs. The finite numerical predictor is not assumed to be an available physical gate. There are no new Lean declarations, hardware validation, measured cost advantage or empirical closure. The following edition sections retain their historical scope.
 
@@ -55,22 +57,22 @@ Exactly three native AI research roles performed independent implementation and 
 
 | Language | Complete Markdown source | Generated LaTeX | Reading PDF |
 |---|---|---|---|
-| 中文 | [UEOT_PHYSICS.md](UEOT_PHYSICS.md) | [UEOT_PHYSICS.tex](UEOT_PHYSICS.tex) | [UEOT_PHYSICS.pdf](UEOT_PHYSICS.pdf) |
-| English | [UEOT_PHYSICS.en.md](UEOT_PHYSICS.en.md) | [UEOT_PHYSICS.en.tex](UEOT_PHYSICS.en.tex) | [UEOT_PHYSICS.en.pdf](UEOT_PHYSICS.en.pdf) |
+| 中文 | [UEOT_PHYSICS.md](https://github.com/MurphyHoops/UEOT/blob/cb17211653fde30aa50e0e9848798a6a5b3b3f12/physics/qm/book/UEOT_PHYSICS.md) | [UEOT_PHYSICS.tex](https://github.com/MurphyHoops/UEOT/blob/cb17211653fde30aa50e0e9848798a6a5b3b3f12/physics/qm/book/UEOT_PHYSICS.tex) | [UEOT_PHYSICS.pdf](https://github.com/MurphyHoops/UEOT/blob/cb17211653fde30aa50e0e9848798a6a5b3b3f12/physics/qm/book/UEOT_PHYSICS.pdf) |
+| English | [UEOT_PHYSICS.en.md](https://github.com/MurphyHoops/UEOT/blob/cb17211653fde30aa50e0e9848798a6a5b3b3f12/physics/qm/book/UEOT_PHYSICS.en.md) | [UEOT_PHYSICS.en.tex](https://github.com/MurphyHoops/UEOT/blob/cb17211653fde30aa50e0e9848798a6a5b3b3f12/physics/qm/book/UEOT_PHYSICS.en.tex) | [UEOT_PHYSICS.en.pdf](https://github.com/MurphyHoops/UEOT/blob/cb17211653fde30aa50e0e9848798a6a5b3b3f12/physics/qm/book/UEOT_PHYSICS.en.pdf) |
 
 The current increment derives growing finite carriers from separated red/blue pulses, preserves complete labelled operations, and bounds omission of a small independently calibrated blue pulse. The full-output sufficient error is 0.0498877753592667… below the frozen 0.05 target. Simultaneous evolution has an infinite-tail counterexample, and flag counts cannot identify blue pulse area. The remaining real-device error allowance has not been measured.
 
-The ideal physical inputs remain explicit. This is not an independent derivation of complex quantum structure, a completed reconstruction, or hardware validation. No new hardware calibration or holdout data were acquired; the retained synthetic pipeline cannot certify the additional blue-area premise. QFT, particle, gravity and cosmology responsibilities remain in the [continuous roadmap](../ROADMAP.md).
+The ideal physical inputs remain explicit. This is not an independent derivation of complex quantum structure, a completed reconstruction, or hardware validation. No new hardware calibration or holdout data were acquired; the retained synthetic pipeline cannot certify the additional blue-area premise. QFT, particle, gravity and cosmology responsibilities remain in the [continuous roadmap](https://github.com/MurphyHoops/UEOT/blob/cb17211653fde30aa50e0e9848798a6a5b3b3f12/physics/qm/ROADMAP.md).
 
 | Current responsibility | Source |
 |---|---|
-| Actual execution state and four status axes | [CURRENT](../status/CURRENT.json) |
+| Actual execution state and four status axes | [CURRENT](https://github.com/MurphyHoops/UEOT/blob/cb17211653fde30aa50e0e9848798a6a5b3b3f12/physics/qm/status/CURRENT.json) |
 | Same-source scientific integration | [v31.12 report](../UEOT_QM_KERNEL_v31.12.md) |
 | Six claims and explicit paper-only boundaries | [chapter68 binding ledger](../audits/GROWING_CUTOFF_v31.12/chapter68_formal_bindings.json) |
 | New complete-source and independent exact checks | [runtime evidence](../kernel/evidence/v31.12/runtime/execution_receipt.json) |
 | Unchanged proof inputs and pinned historical reuse | [proof reuse](../kernel/evidence/v31.12/proof-reuse.json) |
 | Bilingual preservation, PDF builds and visual review | [edition3.9 evidence](evidence/v3.9/) |
-| Stable bilingual statements | [result map](PHYSICS_RESULT_MAPPING.md) |
+| Stable bilingual statements | [result map](https://github.com/MurphyHoops/UEOT/blob/cb17211653fde30aa50e0e9848798a6a5b3b3f12/physics/qm/book/PHYSICS_RESULT_MAPPING.md) |
 
 Exactly three native research tasks performed A→B, B→C and C→A cross-review. This is internal AI review, not external human peer review. The existing dossier, source manifest and claim ledger remain authoritative; no parallel final-state ledger is introduced. The following sections retain inherited scope and historical acceptance rather than relabeling old runs as this increment.
 
@@ -100,8 +102,8 @@ the declared instruments, action library, observation permissions and costs.
 
 The [scientific editorial changelog](SCIENTIFIC_EDITORIAL_CHANGELOG.md) explains
 the corrections and remaining obligations. The existing
-[CHAPTER_DOSSIER.json](CHAPTER_DOSSIER.json) and
-[SOURCE_MANIFEST.json](SOURCE_MANIFEST.json) remain the publication's central
+[CHAPTER_DOSSIER.json](https://github.com/MurphyHoops/UEOT/blob/9a31268cb35a267bc790875818583abf44099368/physics/qm/book/CHAPTER_DOSSIER.json) and
+[SOURCE_MANIFEST.json](https://github.com/MurphyHoops/UEOT/blob/9a31268cb35a267bc790875818583abf44099368/physics/qm/book/SOURCE_MANIFEST.json) remain the publication's central
 source structures. Historical claim objects and evidence keep their original
 identities. Publication reports are derived views, not a competing truth ledger.
 

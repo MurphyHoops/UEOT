@@ -218,11 +218,18 @@
   },
   "publication_revision": {
     "edition": "3.12",
-    "scope": "Continuous bilingual source candidate. Checked-in TeX/PDF belong to 3.11.",
+    "scope": "Continuous bilingual manuscript candidate. The canonical TeX and PDF files match the frozen PR build. Visual acceptance covers only the pages in the reading review.",
     "new_scientific_results_in_publication": 7,
     "new_experimental_data": false,
-    "local_artifact_state": "DERIVATIVE_ACCEPTANCE_PENDING",
-    "remote_publication": "MANUSCRIPT_CANDIDATE"
+    "local_artifact_state": "PASS_SCOPED",
+    "remote_publication": "MANUSCRIPT_CANDIDATE",
+    "print_source_commit": "a20d178a2f54f2c984354e638060869fe97636fb",
+    "build_run_id": 44324949932,
+    "visual_review": {
+      "path": "physics/qm/book/evidence/v3.12/reading-review.json",
+      "sha256": "1ddd1aa91a265db24d8ab5b9ab73e2b68d641c6791a02e82916dd50f37a153b0",
+      "bytes": 3800
+    }
   },
   "canonical_identity": {
     "path": "physics/qm/book/UEOT_PHYSICS.md",
@@ -276,7 +283,9 @@
       "path": "physics/qm/kernel/evidence/v31.14/integration-verification.json",
       "sha256": "28fcfba79237fe26fc06b024bcf88d79a2804a831751bb50915036f4e545e1b4",
       "bytes": 4706
-    }
+    },
+    "pr": 467,
+    "merge_state": "AWAITING_MERGE"
   },
   "scientific_execution_partition": {
     "historical_lean_identity": {

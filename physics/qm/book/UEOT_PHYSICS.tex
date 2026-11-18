@@ -79,7 +79,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\small UEOT PHYSICS}
-\fancyhead[R]{\small 物理学 · 3.11 双语修订版}
+\fancyhead[R]{\small 物理学 · 3.12 双语修订版}
 \fancyfoot[C]{\small\thepage}
 \setlength{\headheight}{16pt}
 \renewcommand{\headrulewidth}{0.3pt}
@@ -107,27 +107,28 @@
   \vspace{10mm}
   {\color{teal}\rule{\textwidth}{1pt}\par}
   \vspace{7mm}
-  {\large 第三版\quad 3.11 双语修订版\par}
+  {\large 第三版\quad 3.12 双语修订版\par}
   \vspace{6mm}
-  {钱德桂（Degui Qian）\par}
+  {历史书稿作者：钱德桂（Degui Qian）\par}\smallskip
+  {第71章为人工智能辅助研究提案\par}
   \vspace{5mm}
-  {71章\quad 6个附录\quad UEOT-QM Kernel 1.14\par}
+  {72章\quad 6个附录\quad UEOT-PHYSICS\par}
   \vfill
   {对象与协议\quad 量子操作与场论\quad 证明与反例\par}
   \vspace{7mm}
-  {2026年11月14日\par}
+  {2026年11月18日\par}
   \end{titlepage}
 }
 \makeatother
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
-\usepackage{bookmark}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
   pdftitle={UEOT物理学},
-  pdfauthor={钱德桂（Degui Qian）},
+  pdfauthor={历史书稿作者为钱德桂。第71章为人工智能辅助研究提案。},
   colorlinks=true,
   linkcolor={teal},
   filecolor={Maroon},
@@ -143,8 +144,8 @@
 }
 \makeatother
 \subtitle{从对象数学到量子物理：理论推导、形式证明与研究边界}
-\author{钱德桂（Degui Qian）}
-\date{2026-11-14}
+\author{历史书稿作者为钱德桂。第71章为人工智能辅助研究提案。}
+\date{2026-11-18}
 
 \begin{document}
 \frontmatter
@@ -156,7 +157,7 @@
 \tableofcontents
 }
 \mainmatter
-\chapter{0. 文档定位、论域与证明责任}\label{ch-0}
+\chapter{0. 文档定位、论域与证明责任}\label{ch-0}\hypertarget{ch-0}{}
 
 阅读本书首先要分清两件事：一个模型在数学上成立，以及这个模型确实描述自然。本章给出追踪这两种责任的规则，并说明
 UEOT
@@ -532,7 +533,11 @@ Lean
 证明，匹配器件认证仍未取得，强标准基线结论为等价且无额外增益，全局量子选择仍开放。实际复跑、历史执行复用及出版验证分开记录；发布状态以
 CURRENT 和可核验回执为准。
 
-\chapter{1. UEOT Core 到量子物理的桥接}\label{ch-1}
+\section{0.15 第71章候选书稿阅读入口}
+
+\protect\hyperlink{ch-71}{相关浴新章}为3.12版连续候选书稿增加七项结果。\href{README.md}{版本入口}记录各印本的构建与受检页。\href{https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978\allowbreak e173e23015f02699\allowbreak 4fb60c65/physics/qm/book/UEOT_PHYSICS.pdf}{第70章印本}保留3.11版原貌。现有210项稳定结果，其中203项沿用原编号，账本保留126项旧主张。新章提供书面论证、区间计算与合成数据，经验与形式证明范围见\href{../correlated_bath/README.md}{研究材料}。
+
+\chapter{1. UEOT Core 到量子物理的桥接}\label{ch-1}\hypertarget{ch-1}{}
 
 同一个量子装置可以留下许多历史记录，但预测某项未来任务未必需要保存全部历史。本章从允许的实验响应构造预测因子，再说明哪些
 Core
@@ -576,7 +581,7 @@ P(B\mid h,a,o)=\frac{P(o,B\mid h,a)}{P(o\mid h,a)},\qquad P(o\mid h,a)>0.
 
 \section{1.2 通用核心不选择量子扇区}
 
-\phantomsection\label{p-qbr-01}{}
+\protect\hypertarget{p-qbr-01}{}{}
 
 \textbf{P-QBR-01：经典实现反模型。}
 通用预测因子、状态闭合、访问载体、持续性和控制结构可以在有限经典 Markov
@@ -760,7 +765,7 @@ C7：统计与复现 &
 C2/C7 的实物与统计责任。S5 中标为 PLANNED
 的历史工作包也不能因出现了一个内核就整体改成完成。{[}S5，状态说明；本书§5.5及后续内核证据章{]}
 
-\chapter{2. 量子选择：何时选出复数量子理论}\label{ch-2}
+\chapter{2. 量子选择：何时选出复数量子理论}\label{ch-2}\hypertarget{ch-2}{}
 
 经典概率论、实量子理论和复量子理论都能描述某些操作统计，问题是哪些额外原则能把它们区分开。本章固定完整的操作理论背景，用纯化和局部层析的反模型解释重构定理的条件，而不把采用该定理写成从
 Core 无条件推出量子力学。
@@ -800,7 +805,7 @@ Appendix A.1--A.2 的定义和12项条件。
 
 \section{2.3 独立性与量子满足性}
 
-\phantomsection\label{p-qsel-01}{}
+\protect\hypertarget{p-qsel-01}{}{}
 
 \textbf{P-QSEL-01：经典与实量子删除见证。}
 有限经典概率理论满足局部层析但不满足非平凡混合态纯化。实量子理论有等价系统纯化，却不满足一般局部层析。
@@ -847,7 +852,7 @@ Core 推出的结论。
 可数或有限实验会约束设备的响应集合，不能单凭有限通过证明 CIT 或 ESP
 的所有系统、态和变换量词。一次成功的纯化制备也不确定唯一的实际环境本体。若研究有限精度的近似纯化或近似层析，需要另给稳定重构定理；严格重构不能仅将等号换成小数误差后照搬。
 
-\chapter{3. Fisher--作用量、复振幅与 Born 的条件推导}\label{ch-3}
+\chapter{3. Fisher--作用量、复振幅与 Born 的条件推导}\label{ch-3}\hypertarget{ch-3}{}
 
 本章回答概率密度与相位怎样组合成 Schrödinger
 动力学，以及何种条件能把统计不等式转成量子不确定性。关键是逐项看清所选作用量、动量算子和分支鞅假设：它们分别承担不同证明责任，不能合并成一句``信息原则推出
@@ -865,7 +870,7 @@ Born 规则''。
 \textbf{H}，不是由任意对象闭合自动选出。采用电磁耦合时还须独立指定
 \(\nabla S-qA\)、\(q\phi\) 和 gauge 变换。
 
-\phantomsection\label{p-qact-01}{}
+\protect\hypertarget{p-qact-01}{}{}
 
 \textbf{P-QACT-01：Madelung--Schrödinger 条件等价。}
 对上述作用量做紧支撑变分，得到 \[
@@ -916,7 +921,7 @@ POVM Born
 设一维归一密度 \(\rho\) 有有限方差和位置 Fisher 信息
 \(I_x=\int(\rho')^2/\rho\,dx\)，且边界项消失。
 
-\phantomsection\label{p-qact-02}{}
+\protect\hypertarget{p-qact-02}{}{}
 
 \textbf{P-QACT-02。} \[
 \operatorname{Var}(X)I_x\ge1.
@@ -975,7 +980,7 @@ Born 唯一性。
 
 \section{3.4 无偏分支权重与实际结果}
 
-\phantomsection\label{p-qborn-02}{}
+\protect\hypertarget{p-qborn-02}{}{}
 
 \textbf{P-QBORN-02：无偏最终分支的概率。} 若分支权重 \(p_a(t)\in[0,1]\)
 是相对同一过滤族的鞅，且几乎处处趋向某个 one-hot 向量
@@ -992,7 +997,7 @@ P(A=a\mid\mathcal F_0)=p_a(0).
 若初权重来自 \(|c_a|^2\)，便得到该 actualization 模型的 Born
 结果概率。但``无偏鞅''``最终单分支''``具体物理机制''都是需要独立说明的前提；它们尚未由公共记录客观性证明。
 
-\chapter{4. 有限维量子操作：态、效应、通道与仪器}\label{ch-4}
+\chapter{4. 有限维量子操作：态、效应、通道与仪器}\label{ch-4}\hypertarget{ch-4}{}
 
 后续所有有限量子计算都依赖本章的操作语法：态给出制备，效应给出事件，仪器同时给出概率和测后态。Choi--Kraus
 构造把这些对象变成可核对的矩阵，距离界则说明局部实现误差怎样影响最终实验概率。
@@ -1028,7 +1033,7 @@ J(\mathcal E)=\sum_{ij}|i\rangle\langle j|\otimes
 \mathcal E(\rho)=\operatorname{Tr}_A[(\rho^\top\otimes I)J].
 \]
 
-\phantomsection\label{p-qop-01}{}
+\protect\hypertarget{p-qop-01}{}{}
 
 \textbf{P-QOP-01：有限 Choi--Kraus 等价。} \[
 \mathcal E\ {\rm CP}\iff J(\mathcal E)\succeq0
@@ -1072,7 +1077,7 @@ E_a=\mathcal M_a^\dagger(I),\quad
 \(E_o=\sum_kK_{o,k}^\dagger K_{o,k}\)。每支求和的索引数可以不同；统一数组存储时加零
 Kraus 项不改变通道，但不能凭借漏掉一支或漏掉某个项来满足完备性。
 
-\phantomsection\label{p-qop-02}{}
+\protect\hypertarget{p-qop-02}{}{}
 
 \textbf{P-QOP-02：无信号。} 局部 CPTP \(\mathcal E_A\) 不改变未条件化的
 \(B\) 态。
@@ -1088,7 +1093,7 @@ Kraus 项不改变通道，但不能凭借漏掉一支或漏掉某个项来满�
 \|(\operatorname{id}_d\otimes\Phi)(X)\|_1,
 \] 有限输入维 \(d\) 足够；通道区分距离取其一半。
 
-\phantomsection\label{p-qop-03}{}
+\protect\hypertarget{p-qop-03}{}{}
 
 \textbf{P-QOP-03：操作误差与传播。} 任意效应概率差不超过迹距离，CPTP
 不增加态迹距离；若每步通道钻石距离至多
@@ -1126,13 +1131,13 @@ D(\sigma/p,\tau/q)\le\delta/p_{\min}.
 等价是完整有限维数学论述。具体机器内核覆盖哪些命题，应以逐个 Lean
 声明及其审计回执为准；一个模型的精确数值检查不会自动形式化这里使用的全部谱论和范数理论。{[}Q2，§4；S4，§2、§9{]}
 
-\chapter{5. Quantum FFIPS 与量子对象实现}\label{ch-5}
+\chapter{5. Quantum FFIPS 与量子对象实现}\label{ch-5}\hypertarget{ch-5}{}
 
 密度矩阵是否就是一个对象所需的全部预测信息，取决于允许什么未来实验以及环境是否保留记忆。本章从这种相对性出发，证明逐分支交换和有限效应空间闭合如何保持任意有限记录，并给出只比较总通道会失效的反例。
 
 \section{5.1 态作为完整未来预测表示}
 
-\phantomsection\label{p-qff-01}{}
+\protect\hypertarget{p-qff-01}{}{}
 
 \textbf{P-QFF-01：有限量子 FFIPS。} 假定当前 \(\rho_h\)
 对全部未来过程充分，且未来协议包含一套分离 Hermitian 算子的效应，则 \[
@@ -1176,7 +1181,7 @@ blocker 仍可按 Core
 \(F\)，其逻辑效应须为
 \(\bar F=\mathcal E^*(F)\)，或在所声明输入类上具有相同配对。
 
-\phantomsection\label{p-qff-02}{}
+\protect\hypertarget{p-qff-02}{}{}
 
 \textbf{P-QFF-02：量子商的路径保持。}
 在上述逐分支交换条件下，若物理初态为
@@ -1261,7 +1266,7 @@ Kraus---迹配对链。\texttt{Exact.\allowbreak lean}
 解析器、搜索算法和所有导出器实现正确，也不证明输入数值由实际设备实现；更没有从有限量子响应空间推出粒子世代、质量谱或完整
 QFT。源绑定和负控解决的是``究竟编译了哪份数据''，实验与领域桥解决的是``这份数据怎样对应物理''。
 
-\chapter{6. 测量：相干父系统、公共商与条件预测态}\label{ch-6}
+\chapter{6. 测量：相干父系统、公共商与条件预测态}\label{ch-6}\hypertarget{ch-6}{}
 
 测量同时涉及一个联合量子演化、可被读取的公共标签，以及获知结果后的条件预测。本章把三者分开，使读者看见为什么局部记录可以稳定而一致，联合系统却仍可能保留相干；这正是后两章讨论动力学与反演实验的起点。
 
@@ -1274,7 +1279,7 @@ V|\psi\rangle=\sum_{a,\mu}A_{a\mu}|\psi\rangle\otimes|a,\mu\rangle,\qquad
 Q_a=\sum_\mu|a,\mu\rangle\langle a,\mu|.
 \]
 
-\phantomsection\label{p-qmeas-01}{}
+\protect\hypertarget{p-qmeas-01}{}{}
 
 \textbf{P-QMEAS-01：父系统完成。} \(V^\dagger V=I\)，且 \[
 \mathcal M_a(\rho)=
@@ -1291,7 +1296,7 @@ dilation 宣称实际可完成逆操作。
 
 \section{6.2 条件化就是结果扩展后的预测态}
 
-\phantomsection\label{p-qmeas-02}{}
+\protect\hypertarget{p-qmeas-02}{}{}
 
 \textbf{P-QMEAS-02。} 在结果 \(a\) 已发生且 \(p_a>0\)
 后，任意未来量子效应 \(F\) 的条件概率为 \[
@@ -1309,7 +1314,7 @@ QM 的 instrument 预测一致，是 UEOT 的组织连接，不是另加坍缩�
 
 设 \(\Delta_R(\Omega)=\sum_a(I\otimes Q_a)\Omega(I\otimes Q_a)\)。
 
-\phantomsection\label{p-qmeas-03}{}
+\protect\hypertarget{p-qmeas-03}{}{}
 
 \textbf{P-QMEAS-03：公共盲性。} 若 \([B,I\otimes Q_a]=0\) 对全部 \(a\)
 成立，则 \[
@@ -1334,7 +1339,7 @@ QM 的 instrument 预测一致，是 UEOT 的组织连接，不是另加坍缩�
 M_{ab}\ge0,\quad\sum_bM_{ab}=1.
 \] 于是公共概率行向量按 \(p'=pM\) 演化。
 
-\phantomsection\label{p-qmeas-04}{}
+\protect\hypertarget{p-qmeas-04}{}{}
 
 \textbf{P-QMEAS-04。} 上述 \(M\) 是经典随机矩阵。
 
@@ -1364,7 +1369,7 @@ Quantum Darwinism
 或谱广播结构判据，必须保留它们对可访问信息、可区分记录及环境片段条件结构的要求。尤其条件两两独立不足以保证所有片段的条件联合态完全分解；这一点已在2019年等价论断的2021年评论与回复中澄清。\href{https://doi.org/10.1103/PhysRevA.98.032103}{Le--Olaya-Castro
 2018}，\href{https://doi.org/10.1103/PhysRevLett.122.010403}{2019}，\href{https://doi.org/10.1103/PhysRevLett.126.188901}{Feller等评论}，\href{https://doi.org/10.1103/PhysRevLett.126.188902}{作者回复}。本书的公共商、强记录无扰动和实验记录判据是相互关联但不同的条件，不应仅凭共同名称互相替代。
 
-\chapter{7. 强记录无扰动力学的完整分类}\label{ch-7}
+\chapter{7. 强记录无扰动力学的完整分类}\label{ch-7}\hypertarget{ch-7}{}
 
 如果一种通道完全不扰动每个记录分支内部的量子态，它还可以怎样改变分支之间的相干？本章用一个相关矩阵完整描述这种自由，并进一步推导时间齐次半群必须满足的全局相容条件；各对分支分别看似合理仍可能无法组成物理通道。
 
@@ -1377,7 +1382,7 @@ Quantum Darwinism
 通道满足
 \textbf{SRN}，若它逐点固定每一分支内部的全部密度矩阵，而不只是分支总概率。零维分支应先删除，避免为不可观测块赋予虚假的独立参数。
 
-\phantomsection\label{p-qsrn-01}{}
+\protect\hypertarget{p-qsrn-01}{}{}
 
 \textbf{P-QSRN-01：SRN 完备分类。} SRN 当且仅当 \[
 \mathcal A_K(X)=\sum_{a,b}K_{ab}P_aXP_b,\qquad
@@ -1399,7 +1404,7 @@ K\succeq0,\quad K_{aa}=1.
 
 \section{7.2 复合、盲性与不确定性}
 
-\phantomsection\label{p-qsrn-02}{}
+\protect\hypertarget{p-qsrn-02}{}{}
 
 \textbf{P-QSRN-02。} \[
 \mathcal A_K\mathcal A_L=\mathcal A_{K\odot L}.
@@ -1417,7 +1422,7 @@ K\succeq0,\quad K_{aa}=1.
 连续 \(K(t+s)=K(t)\odot K(s),K(0)=J\) 逐项给
 \(K_{ab}(t)=e^{t\lambda_{ab}}\)。有限时零值会通过开方递推与零点连续性矛盾；非零连续乘法函数取局部对数，得到指数。
 
-\phantomsection\label{p-qsrn-03}{}
+\protect\hypertarget{p-qsrn-03}{}{}
 
 \textbf{P-QSRN-03：生成元锥的必要充分条件。} 全部 \(t\ge0\) 的上述映射为
 CPTP，当且仅当 \[
@@ -1453,7 +1458,7 @@ G_{ab}=\lambda_{ab}-\lambda_{ar}-\lambda_{rb}.
 结构约束，并非所有成对非负衰减率加上任意相位都能产生 CP
 半群。上述分类针对固定分支分解、有限维、连续且时间齐次的半群；记录随时间改变或存在环境记忆时，应重新写模型。
 
-\chapter{8. QDRR：记录写入---擦除反演与有限数据}\label{ch-8}
+\chapter{8. QDRR：记录写入---擦除反演与有限数据}\label{ch-8}\hypertarget{ch-8}{}
 
 QDRR
 的核心操作是把记录写入后再完整反演，借此读取公共标签看不见的相干。本章推导它在
@@ -1471,7 +1476,7 @@ W|\psi\rangle=U_W(|\psi\rangle\otimes|0\rangle_R).
 SRN
 \(K\)，不把输入泄漏到像外；若将通道定义于整个空间，须显式补全正交余空间的行动。
 
-\phantomsection\label{p-qqdr-01}{}
+\protect\hypertarget{p-qqdr-01}{}{}
 
 \textbf{P-QQDR-01：相干拉回。} \[
 W^\dagger\widetilde{\mathcal A}_K(WXW^\dagger)W=\mathcal A_K(X).
@@ -1499,7 +1504,7 @@ U_W^\dagger\widetilde{\mathcal A}_K
 准备 \((|a\rangle+e^{i\phi}|b\rangle)/\sqrt2\)，测
 \(X_{ab}=|a\rangle\langle b|+|b\rangle\langle a|\)。
 
-\phantomsection\label{p-qqdr-02}{}
+\protect\hypertarget{p-qqdr-02}{}{}
 
 \textbf{P-QQDR-02。} \[
 \langle X_{ab}\rangle_\phi
@@ -1521,7 +1526,7 @@ U_W^\dagger\widetilde{\mathcal A}_K
 Hoeffding 时的抽样假设必须满足。\(m=1\) 时没有非对角参数，不能把 \(L=0\)
 代入下述对数公式。
 
-\phantomsection\label{p-qqdr-03}{}
+\protect\hypertarget{p-qqdr-03}{}{}
 
 \textbf{P-QQDR-03：同时误差。} 以至少 \(1-\alpha\) 的概率， \[
 \max_\ell|\widehat\mu_\ell-\mu_\ell|
@@ -1595,7 +1600,7 @@ Zheng 等，2026，\href{https://doi.org/10.1103/t2yx-9bqh}{PRL 137,
 等的逻辑态重构使用后选择，排除了逻辑子空间外的结果；这不能直接当作无条件通道证书。原图中的实验点、数值曲线与误差条含义也须分别保留。本书未获取这些研究的原始计数作统一重分析，未从它们推断新的实际化强度界，亦未执行
 QDRR 硬件实验。
 
-\chapter{9. 量子信息、纠错与计量接口}\label{ch-9}
+\chapter{9. 量子信息、纠错与计量接口}\label{ch-9}\hypertarget{ch-9}{}
 
 可复制的公共记录与不可任意克隆的未知量子态并不矛盾，因为它们保留的信息不同。本章把纠缠、纠错和计量放在各自操作任务下，说明如何利用标准量子信息结果评价对象维持与参数估计，而不把某一任务的最优性扩大为普遍目的。
 
@@ -1614,7 +1619,7 @@ D(\rho\|\sigma)=\operatorname{Tr}\rho(\log\rho-\log\sigma)
 
 \section{9.2 无克隆}
 
-\phantomsection\label{p-qinfo-01}{}
+\protect\hypertarget{p-qinfo-01}{}{}
 
 \textbf{P-QINFO-01。} 不存在对所有未知纯态实施
 \(|\psi\rangle|0\rangle\mapsto|\psi\rangle|\psi\rangle\) 的同一酉操作。
@@ -1653,22 +1658,21 @@ K 调用。
 
 对纯酉族 \(|\psi_\theta\rangle=e^{-i\theta G}|\psi\rangle\)：
 
-\phantomsection\label{p-qinfo-02}{}
+\protect\hypertarget{p-qinfo-02}{}{}
 
 \textbf{P-QINFO-02。} \[
 F_Q=4(\langle G^2\rangle-\langle G\rangle^2).
 \]
 
 \textbf{证明。} 纯态切向投影公式
-\(F_Q=4(\langle\dot\psi|\dot\psi\rangle-
-|\langle\psi|\dot\psi\rangle|^2)\)，代入
+\(F_Q=4(\langle\dot\psi|\dot\psi\rangle- |\langle\psi|\dot\psi\rangle|^2)\)，代入
 \(|\dot\psi\rangle=-iG|\psi\rangle\)。该公式也可直接由 SLD
 在态支撑及其正交切向子空间上求解得到。\(\square\)
 
 计量最优性不是所有任务的 GOD。多参数最优测量未必相容，单参数 Fisher
 界不能逐项同时声称可达到。
 
-\chapter{10. 无限维量子理论：定义域与正常态}\label{ch-10}
+\chapter{10. 无限维量子理论：定义域与正常态}\label{ch-10}\hypertarget{ch-10}{}
 
 从有限矩阵进入连续位置或动量后，公式外形可能不变，但算符定义域与态的类型变成证明的一部分。本章说明正常态、自伴
 Hamiltonian
@@ -1724,7 +1728,7 @@ i\hbar\partial_t\psi_t=H\psi_t.
 \] 域外初态仍有连续酉轨迹，但未必有强导数。Stone 给时间生成元，不给
 \(\hbar\) 数值。
 
-\phantomsection\label{p-qinf-01}{}
+\protect\hypertarget{p-qinf-01}{}{}
 
 \textbf{P-QINF-01：正常态的迹范数连续性。} 若 \(U(t)\) 强连续，任意迹类
 \(\rho\) 的 \(U(t)\rho U(t)^\dagger\) 在迹范数连续。
@@ -1741,7 +1745,7 @@ von Neumann 方程 \(\dot\rho=-i[H,\rho]/\hbar\)
 \((|i\rangle+i|j\rangle)/\sqrt2\)
 投影期望确定全部密度矩阵元，故在分离协议下正常态仍唯一代表充分未来。可数可识别不等于有限样本可高效学习。
 
-\phantomsection\label{p-qinf-02}{}
+\protect\hypertarget{p-qinf-02}{}{}
 
 \textbf{P-QINF-02：能量截断误差。} 设 \(H\ge0\)、截断投影 \(\Pi\) 与
 \(H\) 对易，且截断外 \(H\ge E_{\rm cut}(I-\Pi)\)。若
@@ -1758,7 +1762,7 @@ D(\rho,\rho_\Pi)\le\sqrt{\epsilon}.
 若用该式获得有限维可计算模型，还需 \(\Pi\)
 有限秩；仅有能量上界不自动给有限态数。多步截断须控制各步的能量尾与动力学缺陷。
 
-\chapter{11. 相空间、Weyl--CCR 与作用尺度}\label{ch-11}
+\chapter{11. 相空间、Weyl--CCR 与作用尺度}\label{ch-11}\hypertarget{ch-11}{}
 
 位置与动量的非交换性究竟从哪些物理输入产生，是本章的中心问题。论证从相空间位移的射影表示走到
 Weyl 关系，再在共同定义域上得到
@@ -1781,7 +1785,7 @@ coboundary，不改变物理射线作用。
 具有作用量倒数的单位。若更换 multiplier 的符号或二分之一约定，下文的
 \(\kappa\) 定义也同步更换。
 
-\phantomsection\label{p-qccr-01}{}
+\protect\hypertarget{p-qccr-01}{}{}
 
 \textbf{P-QCCR-01：辛协变的单尺度。} 若交替形式 \(B\)
 被全部辛变换保持，则 \(B=\kappa\sigma\)。
@@ -1801,7 +1805,7 @@ coboundary，不改变物理射线作用。
 canonical 因子维数大于一。这是不可约性的投影表述，只施加于轨道 canonical
 因子，不排除自旋等额外内部重数。
 
-\phantomsection\label{p-qccr-02}{}
+\protect\hypertarget{p-qccr-02}{}{}
 
 \textbf{P-QCCR-02。} 在复 Hilbert 表示中，UCA 和维数大于一排除平凡
 multiplier 类。
@@ -1829,7 +1833,7 @@ W(z)W(z')=e^{-i\sigma(z,z')/(2\hbar)}W(z+z').
 Schrödinger
 表示。去除不可约性得到重数因子；去除正则性或进入无限自由度场论不再有此唯一结论。
 
-\phantomsection\label{p-qccr-03}{}
+\protect\hypertarget{p-qccr-03}{}{}
 
 \textbf{P-QCCR-03。} 在 Schwartz 共同不变稠密域， \[
 [Q_j,P_k]\psi=i\hbar\delta_{jk}\psi.
@@ -1863,7 +1867,7 @@ CCR。WKB 的闭轨量子化还可能带 Maslov 修正，不是一切谱的精�
 \(\kappa\)，从而统一尺度。自然界全局可混合性及数值定标仍是领域事实，不能由纯
 tensor composition 推出。
 
-\chapter{12. 标准非相对论计算模型}\label{ch-12}
+\chapter{12. 标准非相对论计算模型}\label{ch-12}\hypertarget{ch-12}{}
 
 抽象量子结构必须能够计算波包、透射率与束缚能，才成为可使用的模型。本章用自由粒子、谐振子、势阱和
 Coulomb 问题展示从 Hamiltonian
@@ -1964,7 +1968,7 @@ s v''+(2\ell+2-s)v'+\left(\frac{\mu g}{\hbar^2\kappa}-\ell-1\right)v=0.
 
 多电子问题还需反对称性、电子相互作用与近似误差。Hartree--Fock、组态相互作用、密度泛函等是可接入方法，不由本章一体解自动获得精度保证。
 
-\chapter{13. 有限模 Gaussian 扇区}\label{ch-13}
+\chapter{13. 有限模 Gaussian 扇区}\label{ch-13}\hypertarget{ch-13}{}
 
 Gaussian
 模型把无限维量子态的某一受限家族压缩为均值和协方差，因此特别适合计算。这里的便利依赖
@@ -1975,7 +1979,7 @@ CCR、Gaussian
 \([R_j,R_k]=i\hbar\Omega_{jk}\)。均值 \(d=\langle R\rangle\)，对称协方差
 \(V_{jk}=\langle\{R_j-d_j,R_k-d_k\}\rangle/2\)。
 
-\phantomsection\label{p-qgauss-01}{}
+\protect\hypertarget{p-qgauss-01}{}{}
 
 \textbf{P-QGAUSS-01：协方差必要条件。} \[
 V+\frac{i\hbar}{2}\Omega\succeq0.
@@ -2027,7 +2031,7 @@ Hamiltonian，而不是从``信息几何''单独产生。
 通道定理；检查一个输出协方差只证明该输入的二阶矩没有违反必要条件。数值截断还须接上§10.4的尾界，不能以有限矩阵近似的
 CCR 代替真实无限维模。
 
-\chapter{14. 对称性、自旋与非相对论粒子}\label{ch-14}
+\chapter{14. 对称性、自旋与非相对论粒子}\label{ch-14}\hypertarget{ch-14}{}
 
 自旋标签、自由粒子的能量形式与时间反演都来自具体对称表示，而不是仅靠几何比喻。本章追踪
 Wigner、旋转和 Galilei 结构各自提供什么，并用 Rabi 与 CHSH
@@ -2130,7 +2134,7 @@ CHSH 对局部确定 \(\pm1\) 值有绝对上界二；量子 Bell 态和适当 P
 \(\mathcal B^2=4I-[A_0,A_1]\otimes[B_0,B_1]\) 给范数上界
 \(2\sqrt2\)。实验违反依赖测量选择、探测和无信号等实际条件，不由一次模拟替代。
 
-\chapter{15. 相同粒子、Fock 与超选}\label{ch-15}
+\chapter{15. 相同粒子、Fock 与超选}\label{ch-15}\hypertarget{ch-15}{}
 
 不区分粒子标签还不足以决定哪些交换统计在自然界实现。本章先展开置换表示与其交换子代数，再构造
 Bose/Fermi Fock 空间，并说明超选为何取决于可观测代数、参考系和允许操作。
@@ -2201,7 +2205,7 @@ Hilbert 空间的中心投影列表穷尽。
 Stone--von Neumann 唯一性不能直接控制无限模 CCR
 的全部表示。量子场中的真空、热态和其他相的表示问题在第 21 章另立合同。
 
-\chapter{16. 多体结构、局域性与相}\label{ch-16}
+\chapter{16. 多体结构、局域性与相}\label{ch-16}\hypertarget{ch-16}{}
 
 多体系统的难点不只是矩阵变大，还包括局域传播、热力学极限和可控近似如何同时成立。本章以
 Ising、Heisenberg 和 Hubbard
@@ -2294,7 +2298,7 @@ Core 接口。一个响应充分的泛对象也未必是具有内部修复和资
 plateau、总互信息、获得给定记录精度所需的最小片段大小和可独立访问的冗余片段数不能互相替代。强客观性需要相应的操作条件；多个片段可携带同一公共记录，而联合父系统仍保留不可由公共读出看见的全局相干。第
 6--8 章与第 41 章的不识别性界在多体情形继续适用。
 
-\chapter{17. 开放系统：GKSL、热浴与轨迹}\label{ch-17}
+\chapter{17. 开放系统：GKSL、热浴与轨迹}\label{ch-17}\hypertarget{ch-17}{}
 
 把环境迹掉总能在适当初态条件下得到通道，却不一定得到无记忆半群。本章从这一差别出发说明
 GKSL 的结构角色、Davies
@@ -2380,7 +2384,7 @@ unraveling，却可产生同一无条件主方程。因此随机轨迹的数学�
 计算中检验迹、Hermiticity、正性、步长收敛与稳态残差
 \(\|\mathcal L(\rho_*)\|\)。小残差并不独自给离唯一稳态的距离，需逆生成元或混合间隙控制。
 
-\chapter{18. 非 Markov 过程与记忆对象}\label{ch-18}
+\chapter{18. 非 Markov 过程与记忆对象}\label{ch-18}\hypertarget{ch-18}{}
 
 即使两个历史在当前留下同一系统态，环境仍可能保存会改变未来的信息。本章用一个两比特因果断开例子使这种遗漏可见，再引入过程张量和记忆核，说明何时应扩大状态而不是继续细化错误的
 Markov 近似。
@@ -2416,7 +2420,7 @@ Kraus
 回写环境记忆。两历史在断开时都有同一系统态，未来却分别为
 \(|0\rangle,|1\rangle\)。
 
-\phantomsection\label{p-qmem-01}{}
+\protect\hypertarget{p-qmem-01}{}{}
 
 \textbf{P-QMEM-01：遗漏记忆的不可消除误差。} 两历史的真未来态距离为
 \(d\)，任何只用其共同当前态的预测器，最坏迹距离误差至少 \(d/2\)。
@@ -2452,7 +2456,7 @@ CP；这必须通过可用的结构条件或真实协议概率单独检验。
 
 HEOM、pseudomode、链映射与张量网络可作为模拟后端。其误差来自浴谱逼近、辅助层截断、时间积分和初态假设，须换算到共同的目标响应后再比较。过程张量提供操作比较语言，不保证永远比其他算法便宜。
 
-\chapter{19. 热平衡、响应与熵产生}\label{ch-19}
+\chapter{19. 热平衡、响应与熵产生}\label{ch-19}\hypertarget{ch-19}{}
 
 Gibbs
 态的自由能最小性、一个热浴的驻定态，以及系统实际热化，是不同问题。本章用相对熵、KMS
@@ -2463,7 +2467,7 @@ Gibbs
 有限系统 \(\rho_T=e^{-\beta_TH}/Z\)，
 \(F_T(\rho)=\operatorname{Tr}\rho H-\beta_T^{-1}S(\rho)\)。
 
-\phantomsection\label{p-qtherm-01}{}
+\protect\hypertarget{p-qtherm-01}{}{}
 
 \textbf{P-QTHERM-01：自由能与相对熵。} \[
 F_T(\rho)-F_T(\rho_T)
@@ -2484,13 +2488,13 @@ F(t)=\langle A\tau_t(B)\rangle_T,\quad
 F(t+i\beta_T\hbar)=\langle\tau_t(B)A\rangle_T.
 \]
 
-\phantomsection\label{p-qtherm-02}{}
+\protect\hypertarget{p-qtherm-02}{}{}
 
 \textbf{P-QTHERM-02：有限 Gibbs 的 KMS。} 上述边界成立。
 
-\textbf{证明。} 解析延拓使 \(\tau_{t+i\beta_T\hbar}(B)=
-e^{-\beta_TH}\tau_t(B)e^{\beta_TH}\)； 代入 Gibbs
-迹并循环移动因子得到另一边界。有限维确保解析。\(\square\)
+\textbf{证明。} 解析延拓使
+\(\tau_{t+i\beta_T\hbar}(B)= e^{-\beta_TH}\tau_t(B)e^{\beta_TH}\)； 代入
+Gibbs 迹并循环移动因子得到另一边界。有限维确保解析。\(\square\)
 
 对 Hermitian \(B\)，定义
 \(S_B(\omega)=\int dt\,e^{i\omega t}\langle B(t)B(0)\rangle_T\)。
@@ -2533,22 +2537,22 @@ Gibbs 态的变分存在性、开放热浴中的驻定、动力学平衡化及 G
 
 \section{19.5 Spohn 与物理熵产生}
 
-\phantomsection\label{p-qtherm-03}{}
+\protect\hypertarget{p-qtherm-03}{}{}
 
 \textbf{P-QTHERM-03。} CPTP 半群 \(\Lambda_t\) 若有满秩驻定态
 \(\sigma\)，则 \(D(\Lambda_t\rho\|\sigma)\) 非增；在可微满秩轨道上 \[
 -\operatorname{Tr}[\mathcal L(\rho)(\log\rho-\log\sigma)]\ge0.
 \]
 
-\textbf{证明。} 相对熵数据处理给 \(D(\Lambda_{t+s}\rho\|\Lambda_s\sigma)
-\le D(\Lambda_t\rho\|\sigma)\)；因 \(\sigma\)
-驻定，取右导数。\(\square\)
+\textbf{证明。} 相对熵数据处理给
+\(D(\Lambda_{t+s}\rho\|\Lambda_s\sigma) \le D(\Lambda_t\rho\|\sigma)\)；因
+\(\sigma\) 驻定，取右导数。\(\square\)
 
 若 \(\sigma=\rho_T\)、Hamiltonian 固定且热功划分有效，变成
 \(\dot S-\beta_T\dot Q\ge0\)。任意参考态、强耦合或非 Markov
 约化下，不能自动把相对熵下降叫总热力学熵产生。
 
-\chapter{20. 量子 GOD/GOA：任务、控制与长期结构}\label{ch-20}
+\chapter{20. 量子 GOD/GOA：任务、控制与长期结构}\label{ch-20}\hypertarget{ch-20}{}
 
 量子对象的存在并没有指定控制者希望它完成什么任务。本章在明确奖励、资源和反馈后建立
 Bellman
@@ -2570,7 +2574,7 @@ Bellman
 \beta_C\sum_op(o|\rho,a)V(\rho_{a,o})\right].
 \]
 
-\phantomsection\label{p-qctl-01}{}
+\protect\hypertarget{p-qctl-01}{}{}
 
 \textbf{P-QCTL-01。} \(T\) 在有界函数空间为 \(\beta_C\)
 压缩，故有唯一有界固定点；当所需可测性成立时有限动作可选可测最优策略。
@@ -2610,7 +2614,7 @@ GOD。
 QSD 生存律和 Doob
 的不同不变分布。这些成果为持续结构提供实际矩阵证书，仍不产生一个未经声明的评价函数。
 
-\chapter{21. 相对论量子场：论域与新增前提}\label{ch-21}
+\chapter{21. 相对论量子场：论域与新增前提}\label{ch-21}\hypertarget{ch-21}{}
 
 相对论场论不能仅靠把有限矩阵的维数放大来获得：局域代数、算符分布与表示选择带来新的数学责任。本章先固定这些输入，使后续自由场计算和微扰展开有清楚的论域，也说明为什么一般区域限制不等于普通偏迹。
 
@@ -2676,7 +2680,7 @@ Haag
 自由场可显式构造；带调节的有限模型可直接定义并计算；四维相互作用的微扰级数只按阶给出形式/渐近预测。这三种状态不能合称``严格非微扰完成''。本书没有证明四维
 Yang--Mills 质量隙、完整 QED 非微扰存在性或量子引力。
 
-\chapter{22. 自由标量场：模式、传播与因果}\label{ch-22}
+\chapter{22. 自由标量场：模式、传播与因果}\label{ch-22}\hypertarget{ch-22}{}
 
 自由标量场提供一个可以完整展示模式、传播子与因果性的起点。本章特别区分真空关联、Feynman
 传播与因果响应，使非零类空关联不会被误读成可控的超光速信号。
@@ -2697,7 +2701,7 @@ Yang--Mills 质量隙、完整 QED 非微扰存在性或量子引力。
 E_{\mathbf p}a^\dagger(\mathbf p)a(\mathbf p).
 \] 这选择了平直背景中的正频分解；一般弯曲时空未必有唯一全局真空。
 
-\phantomsection\label{p-qkg-01}{}
+\protect\hypertarget{p-qkg-01}{}{}
 
 \textbf{P-QKG-01：正则关系与传播子。} 上述模式在分布意义下给出 \[
 [\phi(t,\mathbf x),\pi(t,\mathbf y)]=i\delta^3(\mathbf x-\mathbf y),
@@ -2719,7 +2723,7 @@ Fourier delta。其余等时交换子因动量反演而为零。\(\square\)
 \] 由分母乘回得 \((\Box+m^2)\Delta_F=-i\delta^4\)。因果响应使用 retarded
 核，而不是把 Feynman 核解释成经典信号传播概率。
 
-\phantomsection\label{p-qkg-02}{}
+\protect\hypertarget{p-qkg-02}{}{}
 
 \textbf{P-QKG-02：类空因果性。} 对 \(x^2<0\)，作保时向 Lorentz 变换到
 \(x^0=0\)，此时交换子积分为动量反演奇项，故为零。协变性把结论带回原坐标。类空分离的适当涂抹可观测量因此交换。\(\square\)
@@ -2737,7 +2741,7 @@ Fourier delta。其余等时交换子因动量反演而为零。\(\square\)
 建模，二阶跃迁概率由涂抹的 \(\Delta^+\)
 积分决定。切换函数、轨迹、能隙和调节都是输入；无穷快点探测器极限可能发散。
 
-\chapter{23. Dirac 场、Maxwell 场与物理自由度}\label{ch-23}
+\chapter{23. Dirac 场、Maxwell 场与物理自由度}\label{ch-23}\hypertarget{ch-23}{}
 
 Dirac 与 Maxwell
 场说明自旋、统计和规范约束怎样改变可计数的物理自由度。本章从模式与约束计算出发，连接到反粒子、横向偏振和
@@ -2760,7 +2764,7 @@ Clifford 关系 \[
 \] 其中 \(b,d\) 分别服从相同归一化的
 CAR。通常序能量计数粒子和反粒子的正能激发；通常序电荷给出二者相反符号。
 
-\phantomsection\label{p-qdir-01}{}
+\protect\hypertarget{p-qdir-01}{}{}
 
 \textbf{P-QDIR-01。} 将 Dirac 算符与其共轭因子相乘，
 \((i\not\partial-m)(i\not\partial+m)=-(\Box+m^2)\)，所以每个旋量分量满足
@@ -2817,7 +2821,7 @@ Hilbert 因子''的直觉需要修正。区域划分可能需要通量中心、�
 dressing
 的算符。不同选择会改变熵和载体分解，必须写入协议接口。规范冗余的消除与物理边界自由度的删除不是同一操作。
 
-\chapter{24. 相互作用、生成泛函与散射}\label{ch-24}
+\chapter{24. 相互作用、生成泛函与散射}\label{ch-24}\hypertarget{ch-24}{}
 
 相互作用理论的计算要先分清裸参数、重整化参数、调节和微扰阶数。本章在这个明确背景下引入
 Dyson
@@ -2895,7 +2899,7 @@ d\Phi_n=(2\pi)^4\delta^4(P-\sum k_i)
 \frac{|\mathbf p_f|}{|\mathbf p_i|}\overline{|\mathcal M|^2}
 \] 再按相同粒子与角域约定处理。自旋平均只对未制备分辨的初态进行。
 
-\phantomsection\label{p-qunit-01}{}
+\protect\hypertarget{p-qunit-01}{}{}
 
 \textbf{P-QUNIT-01：光学定理。} \(S^\dagger S=I\) 给出
 \(-i(T-T^\dagger)=T^\dagger T\)。取初态对角元并插入完整终态，
@@ -2903,7 +2907,7 @@ d\Phi_n=(2\pi)^4\delta^4(P-\sum k_i)
 等于带相空间积分的中间态振幅模方总和，含统计因子。\(\square\)
 它约束每个微扰阶，而不是保证任意截断振幅精确幺正。
 
-\chapter{25. 重整化：显式一圈基准与方案}\label{ch-25}
+\chapter{25. 重整化：显式一圈基准与方案}\label{ch-25}\hypertarget{ch-25}{}
 
 重整化的意义可以在一圈积分中直接看见：调节依赖进入参数关系，匹配后的量才用于物理比较。本章逐步核对质量减除、泡图、阈值与
 running，并解释不同方案下 beta 函数为何不能不加转换地混用。
@@ -2914,7 +2918,7 @@ Euclidean 球形硬截止的径向积分是 \[
 I_\Lambda(m)=\int_{|q|<\Lambda}\frac{d^4q}{(2\pi)^4}
 \frac1{q^2+m^2}
 =\frac1{16\pi^2}\left[\Lambda^2-m^2\log(1+\Lambda^2/m^2)\right].
-\] \phantomsection\label{p-qren-01}{}
+\] \protect\hypertarget{p-qren-01}{}{}
 
 \textbf{P-QREN-01。} 四维球面积 \(2\pi^2\)，令 \(u=q^2\) 后直接积分
 \(u/(u+m^2)\) 得上式。四次顶点的 tadpole 组合因子为 \(1/2\)，故
@@ -2936,7 +2940,7 @@ F(Q)=\lambda-\tfrac32\lambda^2 B_R(Q;\mu,m)+O(\lambda^3).
 \(\mathcal M_{\rm tree}=-\lambda\)。不得以符号差误判物理不一致。一般运动学必须分别使用三个通道，不能任意设
 \(s=t=u\)。
 
-\phantomsection\label{p-qren-02}{}
+\protect\hypertarget{p-qren-02}{}{}
 
 \textbf{P-QREN-02：泡图减除。} 用
 \(1/(AB)=\int_0^1dx/[xA+(1-x)B]^2\)，平移积分变量后分母为
@@ -2959,7 +2963,7 @@ B_R(z;z_0)=\frac1{16\pi^2}\int_0^1dx
 \] \[
 \mathcal M(s,t,u)=-\lambda+
 \frac{\lambda^2}{2}\bigl[B_R(s)+B_R(t)+B_R(u)\bigr]+O(\lambda^3).
-\] \phantomsection\label{p-qren-03}{}
+\] \protect\hypertarget{p-qren-03}{}{}
 
 \textbf{P-QREN-03：二粒子割。} 当 \(s>4m^2\)，对数分母为负的区间长度为
 \(\beta_s=\sqrt{1-4m^2/s}\)，所以 \[
@@ -3023,7 +3027,7 @@ g=\frac{\lambda}{16\pi^2},\qquad
 beta 公式复制到两边不构成独立验证。两系数在一阶相合也不证明完整
 Wilsonian action flow 与 Callan--Symanzik 的所有非微扰数据同一。
 
-\chapter{26. Wilsonian RG、有效场论与 Core 桥接}\label{ch-26}
+\chapter{26. Wilsonian RG、有效场论与 Core 桥接}\label{ch-26}\hypertarget{ch-26}{}
 
 低能观察可以不显式保留重场，但必须把重场留下的效应写进有效系数。本章用
 Schur 补和散射匹配展示这一过程，再区分 Wilsonian RG、过程粗粒化与 Core
@@ -3044,7 +3048,7 @@ e^{-S_k[\phi_<]}=\int\mathcal D\phi_>\,e^{-S_\Lambda[\phi_<+\phi_>]}
 
 \section{26.2 可完全核对的重场匹配}
 
-\phantomsection\label{p-qeft-01}{}
+\protect\hypertarget{p-qeft-01}{}{}
 
 \textbf{P-QEFT-01：二次 Schur 补。} 两个实场的动量二次核 \[
 K(p)=\begin{pmatrix}p^2-m^2&-\kappa\\-\kappa&p^2-M^2\end{pmatrix}
@@ -3126,7 +3130,7 @@ Wilsonian RG & 带调节的作用量、场与耦合 &
 它们可以构造桥接，但定义域、陪域和应保持的数据不同。尤其固定点、谱隙、Markov
 阶数、对象最小性是各自的概念，没有一般定理把它们无条件一一对应。
 
-\phantomsection\label{p-qeft-02}{}
+\protect\hypertarget{p-qeft-02}{}{}
 
 \textbf{P-QEFT-02：受限的实时桥。}
 给定同一个系统---环境划分、初态、联合酉演化、允许插槽干预和末端读出，直接部分迹与将环境积分为
@@ -3145,7 +3149,7 @@ functional、截断记忆或丢弃某些干预，须给相应概率误差，不�
 快模式积分自身不是一般 CPTP
 时间演化；初始相关、外部算符插入、规范约束和非局域记忆都可能使天真的通道解释失败。共享一种``粗化''直觉不替代这些物理接口。
 
-\chapter{27. QED：规范、BRST 与 Ward 接口}\label{ch-27}
+\chapter{27. QED：规范、BRST 与 Ward 接口}\label{ch-27}\hypertarget{ch-27}{}
 
 规范冗余必须在量子计算中保持一致，否则纵向项和反项可能产生伪结果。本章以
 QED 的 Ward--Takahashi 恒等式为中心，连接规范固定、BRST 与一圈 UV
@@ -3236,7 +3240,7 @@ pole。历史回归分别积分自能系数、缩并顶点 Dirac 张量和检查
 的红外结构或多圈精密 QED。树级 Ward、此处一圈 UV checkpoint 与第 27.2
 节采用的完整 Ward--Takahashi 定理是三种证据，必须分别登记。
 
-\chapter{28. QED 可计算应用：散射、running 与磁矩}\label{ch-28}
+\chapter{28. QED 可计算应用：散射、running 与磁矩}\label{ch-28}\hypertarget{ch-28}{}
 
 本章把前两章的规则用于截面、有效电荷和反常磁矩三个可计算量。它们是标准
 QED
@@ -3249,7 +3253,7 @@ UEOT 新预测。
 \mathcal M=\frac{e^2}{s}
 [\bar v(p_2)\gamma^\mu u(p_1)]
 [\bar u(k_1)\gamma_\mu v(k_2)].
-\] \phantomsection\label{p-qqed-01}{}
+\] \protect\hypertarget{p-qqed-01}{}{}
 
 \textbf{P-QQED-01。} 用自旋完备关系和 \[
 \operatorname{Tr}(\not a\gamma^\mu\not b\gamma^\nu)
@@ -3285,7 +3289,7 @@ UEOT 新预测。
 \] 前者由 \(\int x^2(1-x)^2dx=1/30\)，后者由 \(\int x(1-x)dx=1/6\)
 与对数矩得到。
 
-\phantomsection\label{p-qqed-02}{}
+\protect\hypertarget{p-qqed-02}{}{}
 
 \textbf{P-QQED-02：阈值 beta。} 对上式作 \(\log Q\) 导数，至
 \(O(\alpha^2)\)： \[
@@ -3326,7 +3330,7 @@ F_2(0)=\frac{\alpha}{\pi}
 虚光子圈与实软辐射分别可能红外发散；物理包容观测需冻结能量/角分辨率并结合实虚贡献。向量规范异常消除不意味着轴流异常不存在。QED
 扇区尚未给 UEOT 提供新的独立常数预测。
 
-\chapter{29. 非 Abelian 规范场与标准模型候选}\label{ch-29}
+\chapter{29. 非 Abelian 规范场与标准模型候选}\label{ch-29}\hypertarget{ch-29}{}
 
 规范异常给候选粒子表施加强限制，但通常仍留下多个一致解。本章先固定非
 Abelian
@@ -3407,7 +3411,7 @@ Weyl 约定和 \(Q=T_3+Y\)。
 无微扰立方异常，但其 Witten 全局异常要求基本双重态总数为偶数；这里为
 \(N_f(N_c+1)\)。
 
-\phantomsection\label{p-qsm-01}{}
+\protect\hypertarget{p-qsm-01}{}{}
 
 \textbf{P-QSM-01：异常解与非唯一性。} 三个线性方程给
 \(y_L=-N_cy_Q,\ y_D=-2y_Q-y_U,\ y_E=2N_cy_Q\)，立方式因式分解为 \[
@@ -3441,7 +3445,7 @@ inflow 完成。
 论述} 和 \href{https://arxiv.org/abs/1808.00009}{Dai--Freed
 粒子物理分析}。
 
-\chapter{30. Higgs、Yukawa、味与中微子}\label{ch-30}
+\chapter{30. Higgs、Yukawa、味与中微子}\label{ch-30}\hypertarget{ch-30}{}
 
 Higgs 机制解释给定模型中质量项如何产生，却不自动决定 Yukawa
 参数的数值。本章从显式质量矩阵走到味混合与中微子实现，帮助读者分清条件性关系、可拟合参数和真正需要新机制的质量层级问题。
@@ -3456,7 +3460,7 @@ H=\frac1{\sqrt2}\binom{0}{v+h},\\ v^2=\mu_H^2/\lambda_H.
 \end{gathered}
 \] 这是特定真空邻域的幺正规范参数化，不是全局规范固定存在性的证明。
 
-\phantomsection\label{p-qhig-01}{}
+\protect\hypertarget{p-qhig-01}{}{}
 
 \textbf{P-QHIG-01：质量矩阵。} 展开 \((D_\mu H)^\dagger D^\mu H\) 得 \[
 m_W^2=\frac{g^2v^2}{4},\qquad
@@ -3486,7 +3490,7 @@ V_{\rm CKM}=U_{uL}^\dagger U_{dL}.
 \] 中性味对角性、带电流混合与 GIM
 抵消由该结构计算。退化质量会扩大未固定的基变换群。
 
-\phantomsection\label{p-qflav-01}{}
+\protect\hypertarget{p-qflav-01}{}{}
 
 \textbf{P-QFLAV-01：一般非退化 \(N\) 代夸克计数。} 两个复 Yukawa 有
 \(4N^2\) 个实参数；\(U(N)_Q\times U(N)_u\times U(N)_d\) 基变换除去
@@ -3508,7 +3512,7 @@ CP 要求至少3代；``至少3''不能推出``恰好3''。有物理 CP
 \] （自旋和 \(SU(2)\)
 缩并隐含；\(C=C^T\)）。系数中的2取决于算符定义，必须与质量公式一致。
 
-\phantomsection\label{p-qnu-01}{}
+\protect\hypertarget{p-qnu-01}{}{}
 
 \textbf{P-QNU-01：Type-I seesaw。} 在 \(\|M_D M_R^{-1}\|\ll1\)、\(M_R\)
 可逆的重轻分离中， \[
@@ -3536,7 +3540,7 @@ Dirac/Majorana 性质或高能 seesaw 载体。
 型。UEOT
 要增加物理内容，必须独立选出整数、\(\epsilon\)、系数约束，并预测未用于选择载体的味观测。本文不把可任意拟合的重命名视为质量理论。
 
-\chapter{31. 三代与三色：条件性定理及前提简化}\label{ch-31}
+\chapter{31. 三代与三色：条件性定理及前提简化}\label{ch-31}\hypertarget{ch-31}{}
 
 ``恰好三代''首先面临复制障碍：若全部条件允许复制家族，就不可能唯一选出三。本章展示一个额外表示配置和弱运行预算怎样打破这种自由，并用反模型保留每条假设的必要性；高能窗口的不同结论须接着阅读第36章。
 
@@ -3548,7 +3552,7 @@ Dirac/Majorana 性质或高能 seesaw 载体。
 
 \section{31.1 复制不变性障碍}
 
-\phantomsection\label{p-qg3-01}{}
+\protect\hypertarget{p-qg3-01}{}{}
 
 \textbf{P-QG3-01。} 若公理类 \(\mathcal A\) 含模型 \(T\)，且对某个
 \(r>1\) 的家族复制封闭，复制后仍满足全部公理且
@@ -3568,7 +3572,7 @@ Dirac/Majorana 性质或高能 seesaw 载体。
 色重数，其中 \(k\) 代取 \(R\)，其余 \(N_f-k\) 代取
 \(\bar R\)。本条件不仅是``存在某个父对象''，还明确规定了它的手征表示配置及无其他未计入的该立方异常贡献。
 
-\phantomsection\label{p-qg3-02}{}
+\protect\hypertarget{p-qg3-02}{}{}
 
 \textbf{P-QG3-02：全部整数解。} \[
 A_H/a=N_f+N_c(2k-N_f)=0
@@ -3602,7 +3606,7 @@ t\in\mathbb Z_{>0}.
   screening；改变规范群或引入新的矢量结构则须重算，不能无条件沿用此界。
 \end{itemize}
 
-\phantomsection\label{p-qg3-03}{}
+\protect\hypertarget{p-qg3-03}{}{}
 
 \textbf{P-QG3-03：去原始性前提的选择定理。} 在 H-QG3-1、2、3
 的交集中，全部正整数异常解唯一为 \[
@@ -3671,7 +3675,7 @@ q_{J-}=\tfrac16+\frac{\sqrt3\beta_8}{2}.
 singlet，\textbf{包括带电的 \(E^c\)}，不能只列 \(e^c,u^c,d^c,J^c\)。当
 \(q_E=0\) 时中性 singlet 对这些局域异常无贡献。
 
-\phantomsection\label{p-qg3-04}{}
+\protect\hypertarget{p-qg3-04}{}{}
 
 \textbf{P-QG3-04。} 按此完整表示表并施加 \(L^3\) 异常方程后，直接求和得
 \[
@@ -3718,7 +3722,7 @@ screening、完整弱系数为正；未列普通行之外的异常补偿总和�
 36
 章正确高能规范群上的分类，是不同的数学对象，仍按各自纸面证明和精确回归登记。一个形式化定理数量不能代替这些具体覆盖关系。
 
-\chapter{32. 其他演进结果、拓扑路线与开放边界}\label{ch-32}
+\chapter{32. 其他演进结果、拓扑路线与开放边界}\label{ch-32}\hypertarget{ch-32}{}
 
 拓扑或 framing
 思路只有在载体、映射和完成条件都明确时才产生可检验的选择。本章保留可以严格核对的条件分类，也明确撤出
@@ -3740,7 +3744,7 @@ N_f(4N_c+3+\chi)=0\quad\text{in }\mathbb R/48\mathbb Z.
 (3,3),(3,4),(3,5),(4,3),(4,4),(5,3),(6,3).
 \]
 
-\phantomsection\label{p-qfr-01}{}
+\protect\hypertarget{p-qfr-01}{}{}
 
 \textbf{P-QFR-01。} 在此七点集内，framing 式的解恰好只有
 \((3,3)\)，当且仅当 \(\chi=1\bmod48\)。
@@ -3760,7 +3764,7 @@ descent 映射及 framing 响应证明；目前该普遍桥并未建立。
 
 \section{32.2 自治性、对象划分与外置 completion}
 
-\phantomsection\label{p-qfr-02}{}
+\protect\hypertarget{p-qfr-02}{}{}
 
 \textbf{P-QFR-02。} 若联合过程精确因子化
 \(\mathbf T_{FC}=\mathbf T_F\otimes\mathbf T_C\)，合法 cut
@@ -3820,7 +3824,7 @@ common-\(q\) 或 CP 容量单独选3 & N & 排除其他一致候选的独立条�
 真实盲测 →
 独立复现''升级。本书没有新的硬件数据，也没有宣布客观坍缩、超量子性能或标准模型以外的新粒子已被发现。
 
-\chapter{33. 全部架构的接口契约}\label{ch-33}
+\chapter{33. 全部架构的接口契约}\label{ch-33}\hypertarget{ch-33}{}
 
 跨章节组合最容易丢失的是类型、归一化、系统身份与证据范围。本章把这些要求写成接口合同，让有限量子程序、记忆过程、场论与数据能够交换可核对结果，并明确哪些接口只是规格、哪些已有实现。
 
@@ -4071,7 +4075,7 @@ Lean 数据；实际编译其
 \texttt{checked}；读取公理与源哈希回执；最后引用第49--50章相应的全词、后验或误差结论。只完成导出时状态仍为
 \texttt{LEAN\_\allowbreak SOURCE\_\allowbreak EXPORTED\_\allowbreak NOT\_\allowbreak COMPILED}，不能提前标为已形式验证。
 
-\chapter{34. 完整应用路径}\label{ch-34}
+\chapter{34. 完整应用路径}\label{ch-34}\hypertarget{ch-34}{}
 
 一个理论应用需要贯通制备、计算、测量、误差与对照，而不仅是一条结果公式。本章把校准、记录反演、纠错、多体与粒子候选串成可执行路径，反复检查模型比较中哪些数据用于拟合、哪些留作检验。
 
@@ -4189,7 +4193,7 @@ exotic 粒子、味变中性流、精密观测、真空稳定、全局异常及�
 framing 候选，则先完成 descent 与 completion
 分类。应分别冻结预测、拟合参数和排除条件，不把三代算术通过视为整个模型胜出。
 
-\chapter{35. 量子主干的装配、误差与扩展入口}\label{ch-35}
+\chapter{35. 量子主干的装配、误差与扩展入口}\label{ch-35}\hypertarget{ch-35}{}
 
 把各模块接在一起后，局部误差是否仍可控制最终记录，是统一框架必须回答的问题。本章在共同协议与目标下组合通道和置信界，说明历史验证回执能支持到哪里，并为后续更具体的有限内核证明保留准确入口。
 
@@ -4279,7 +4283,7 @@ Core 的领域中立性；给测量的相干父层、公共层与后验层不同
 必然选择现实量子物理的无附加前提定理、客观实际化机制、量子场完整非微扰构造、规范群和全部粒子参数选择、HGP/FAD
 的独立物理必然性、质量层级与三代的无条件解释。它们保留为开放问题，不以更大的版本号代替证明。
 
-\chapter{36. 三代问题：必须在正确的规范群上计算}\label{ch-36}
+\chapter{36. 三代问题：必须在正确的规范群上计算}\label{ch-36}\hypertarget{ch-36}{}
 
 同一场内容在不同能区对应不同的规范载体和运行系数，因此``三代唯一性''首先是模型与阈值问题。本章重新计算正确高能群上的异常与渐近自由条件，保留五色反例；读者应把它与第31章的低能条件选择同时使用。
 
@@ -4353,7 +4357,7 @@ UV completion。
 
 \section{36.4 高能分类与五色反例}
 
-\phantomsection\label{g-01}{}
+\protect\hypertarget{g-01}{}{}
 
 \textbf{G-01：三标量配置的全部整数解。}
 在(36.1)、\(N_c\ge3\)、\(n_s=3\)、\(b_C>0,b_L>0\) 下， \[
@@ -4397,7 +4401,7 @@ q_{J+}=\frac1{2N_c}-\frac{\sqrt3\beta_8}{2},\quad
 q_{J-}=\frac1{2N_c}+\frac{\sqrt3\beta_8}{2}.
 \] 加入 \(e^c,E^c,u^c,d^c,J^c\) 及所需重数。
 
-\phantomsection\label{g-02}{}
+\protect\hypertarget{g-02}{}{}
 
 \textbf{G-02：一般色数局域完成。} 在(36.1)下，六项局域异常
 \(C^3,L^3,C^2X,L^2X,\mathrm{grav}^2X,X^3\) 全为零。
@@ -4426,7 +4430,7 @@ q_{J-}=\frac1{2N_c}+\frac{\sqrt3\beta_8}{2}.
 若三色已由实验或另一条独立原理给定，则(36.1)和正确高能色系数已经给
 \(N_f=3t,\ b_C=11-6t>0\Rightarrow t=1\)。这是一条物理类型更清楚的条件三代路线，但``为什么有这个扩展弱载体''``为什么其表示清单如此''仍开放。
 
-\chapter{37. 从代际不普适性推出新的可检验味约束}\label{ch-37}
+\chapter{37. 从代际不普适性推出新的可检验味约束}\label{ch-37}\hypertarget{ch-37}{}
 
 给定一个代际耦合不普适的中性矢量候选，未知的味旋转并不意味着所有观测都可任意拟合。本章从秩一结构推出和式与下界，再说明匹配到可测低能过程还需要质量、耦合、运行及其他贡献；它尚未提供新的实测粒子证据。
 
@@ -4455,7 +4459,7 @@ P_d=V^\dagger P_uV=dd^\dagger,\quad d=V^\dagger u.
 
 \section{37.2 秩一和式：未知参数仍受到约束}
 
-\phantomsection\label{f-01}{}
+\protect\hypertarget{f-01}{}{}
 
 \textbf{F-01。} 对 \(B=G-g_0I=\Delta g\,uu^\dagger\)， \[
 B_{ij}B_{kl}=B_{il}B_{kj},\qquad
@@ -4475,7 +4479,7 @@ B_d=V^\dagger B_uV.
 
 \section{37.3 上下扇区不能同时消掉全部 FCNC}
 
-\phantomsection\label{f-02}{}
+\protect\hypertarget{f-02}{}{}
 
 \textbf{F-02。} 在非退化质量基底中，若 \(P_u\) 与 \(P_d\) 都对角，则
 \(V\) 至少有一个矩阵元模为1，且其所在行列其他元为零。故对
@@ -4494,7 +4498,7 @@ FCNC''更强：在声明假设内，不能通过把特殊代在两个质量基�
 记 \(\operatorname{off}(A)\)
 为删除对角的矩阵，\(p_i=|u_i|^2,q_j=|(V^\dagger u)_j|^2\)。
 
-\phantomsection\label{f-03}{}
+\protect\hypertarget{f-03}{}{}
 
 \textbf{F-03。} \[
 \|\operatorname{off}G_u\|_F^2+
@@ -4525,8 +4529,9 @@ V|e_j\rangle\langle e_j|V^\dagger
 \mathcal L_{\rm EFT}=-\frac{J_\mu J^\mu}{2M_{Z'}^2}
 +O(\partial^2/M_{Z'}^4).
 \tag{37.6}
-\] 对固定手征算符 \(O_{ij}^{u,d}=(\bar q_{Li}\gamma_\mu q_{Lj})
-(\bar q_{Li}\gamma^\mu q_{Lj})\)， \[
+\] 对固定手征算符
+\(O_{ij}^{u,d}=(\bar q_{Li}\gamma_\mu q_{Lj}) (\bar q_{Li}\gamma^\mu q_{Lj})\)，
+\[
 C_{ij}^{u,d}=-\frac{(G_{u,d})_{ij}^{\,2}}{2M_{Z'}^2}.
 \tag{37.7}
 \] 按有向 \(i\ne j\) 同时记录算符与其共轭，则 \[
@@ -4562,7 +4567,7 @@ U^\dagger GU=
 \(g_1\ne g_2\)，非对角耦合仍存在。三维中嵌入这个子块即可得到同类反例。因此``普适''应检验整个矩阵是标量单位阵，或检验其谱与所有相关矩阵元，不能只对角拟合后宣称味改变消失。低能过程的
 running、算符混合与其他介子/重矢量贡献仍按第 37.5 节的合同处理。
 
-\chapter{38. 从相干相位推出不可任意调节的动力学约束}\label{ch-38}
+\chapter{38. 从相干相位推出不可任意调节的动力学约束}\label{ch-38}\hypertarget{ch-38}{}
 
 相干相位不是可以独立于衰减随意指定的参数：完全正性约束它们如何共同变化。三分支锐界刻画这种限制，而经典
 Poisson 跳相位反例说明，即使饱和该界也不足以辨认新的物理机制。
@@ -4607,7 +4612,7 @@ obstruction 同类；不是 UEOT
 
 \section{38.3 三分支的锐 CP 界}
 
-\phantomsection\label{m-01}{}
+\protect\hypertarget{m-01}{}{}
 
 \textbf{M-01。} 任意三个分支必须满足 \[
 \boxed{\ 
@@ -4644,7 +4649,7 @@ CPTP。\(\square\)
 S^2-2(\gamma_{ab}^2+\gamma_{bc}^2+\gamma_{ca}^2)\le S^2/3.
 \] 因此：
 
-\phantomsection\label{m-02}{}
+\protect\hypertarget{m-02}{}{}
 
 \textbf{M-02。} \[
 S\ge\sqrt3\,|\Omega_{abc}|.
@@ -4689,7 +4694,7 @@ U=\operatorname{diag}(e^{i\theta_a}),
 Hamiltonian''的模型，但连锐界饱和都可来自经典 Poisson
 噪声。这个反例决定了下一章为什么需要更强的四能级判据。
 
-\chapter{39. 四能级判据：排除整个随机相位噪声类}\label{ch-39}
+\chapter{39. 四能级判据：排除整个随机相位噪声类}\label{ch-39}\hypertarget{ch-39}{}
 
 本章把``哪类噪声被排除''变成具体的四能级假设检验，给出通道、见证常数和零事件协议。需要特别保留指针保持与校准前提：通过见证排除的是经典随机相位类，构造本身仍可由标准量子环境实现。
 
@@ -4703,7 +4708,7 @@ K_{\rm cl}=\mathbb E[zz^\dagger].
 \tag{39.1}
 \] 这里允许任意相关、非 Gaussian、非 Markov 的相位分布，不只指数衰减。
 
-\phantomsection\label{m-03}{}
+\protect\hypertarget{m-03}{}{}
 
 \textbf{M-03：单时刻的最小分支数为4。} 对 \(m\le3\)，每个相关矩阵
 \(K\succeq0,K_{aa}=1\) 都是(39.1)形式。因此只有二或三分支的单时刻完整
@@ -4758,7 +4763,7 @@ B=\begin{pmatrix}
 \tag{39.5}
 \]
 
-\phantomsection\label{m-04}{}
+\protect\hypertarget{m-04}{}{}
 
 \textbf{M-04：锐经典下界。} \[
 \boxed{\operatorname{Tr}(WK_{\rm cl})\ge
@@ -4792,7 +4797,7 @@ r_2=\left|z_4-\frac{z_1+iz_2}{\sqrt2}\right|.
 
 \section{39.4 可承受多少额外退相干}
 
-\phantomsection\label{m-05}{}
+\protect\hypertarget{m-05}{}{}
 
 \textbf{M-05。} 对 \(K_\epsilon=(1-\epsilon)K_*+\epsilon I\)， \[
 \operatorname{Tr}(WK_\epsilon)=4\epsilon.
@@ -4824,7 +4829,7 @@ p_{\rm cl}:=\frac{\kappa}{4w_{\max}}
 接受，也可用一个辅助比特实现二元
 POVM。复杂性转移到了可信制备与效应校准，并未消失。
 
-\phantomsection\label{e-01}{}
+\protect\hypertarget{e-01}{}{}
 
 \textbf{E-01：有限样本反证。} 在独立、同分布且模型与测量已冻结时，\(n\)
 次实验零接受事件在任意经典假设下的概率至多
@@ -4849,7 +4854,7 @@ p\text{-value}=\sum_{j=0}^k{n\choose j}p_{\rm cl}^{\,j}(1-p_{\rm cl})^{n-j}.
 若随机酉通道精确保持每个
 \(|a\rangle\langle a|\)，秩一正项求和迫使其每个酉分量都在该基底对角，才归入(39.1)。
 
-\phantomsection\label{e-02}{}
+\protect\hypertarget{e-02}{}{}
 
 \textbf{E-02：近似人口保持的稳健界。} 若一个一般随机酉通道
 \(\sum_\nu p_\nu U_\nu(\cdot)U_\nu^\dagger\) 对每个基态满足
@@ -4883,7 +4888,7 @@ QM 错了，更非客观坍缩已被发现。这是量子噪声谱学和 QCVV
 的候选新工具，不是已经确立的新自然定律。
 
 \chapter{40.
-实际化动力学：把``最终单分支''从假设推进成条件定理}\label{ch-40}
+实际化动力学：把``最终单分支''从假设推进成条件定理}\label{ch-40}\hypertarget{ch-40}{}
 
 如果采用一条明确的随机状态方程，能否证明最终吸收到谱分支，而不把吸收先写入前提？本章在指定有限模型中回答这一数学问题，同时保留方程选择、强度来源、记录激活和能量代价的独立物理责任。
 
@@ -4896,7 +4901,7 @@ QM 错了，更非客观坍缩已被发现。这是量子噪声谱学和 QCVV
 \] 并要求它分别作用于每条纯态制备分支，再按通常 Born
 权重平均。这不是对线性量子通道的等价改写。
 
-\phantomsection\label{c-01}{}
+\protect\hypertarget{c-01}{}{}
 
 \textbf{C-01：明确的远端制备矛盾。} 相同密度矩阵 \(\rho=(I+0.6X)/2\)
 有两种分解： \[
@@ -4940,7 +4945,7 @@ d|\psi\rangle=
 UEOT
 测量问题上能关闭什么、不能关闭什么。\href{https://arxiv.org/abs/1301.3626}{连续量子测量}、\href{https://arxiv.org/abs/quant-ph/0107153}{鞅约化原始研究}
 
-\phantomsection\label{c-02}{}
+\protect\hypertarget{c-02}{}{}
 
 \textbf{C-02：范数与线性平均。} 归一初态保持归一，且 \[
 \bar\rho=\mathbb E|\psi\rangle\langle\psi|
@@ -4973,7 +4978,7 @@ C-01 那种矛盾。
 定义 \(p_a(t)=\langle P_a\rangle_t\) 和
 \(V(t)=\langle A^2\rangle_t-\bar a_t^2\)。
 
-\phantomsection\label{c-03}{}
+\protect\hypertarget{c-03}{}{}
 
 \textbf{C-03：单谱分支与 Born 权重。} (40.3)下， \[
 dp_a=2\sqrt\gamma(a-\bar a)p_a\,dW_t,
@@ -5017,7 +5022,7 @@ C-03 的渐近陈述读成精确有限时坍缩。
 
 \section{40.4 一个可计算的有限时间闭合率}
 
-\phantomsection\label{c-04}{}
+\protect\hypertarget{c-04}{}{}
 
 \textbf{C-04：成对不确定性衰减。} 继续采用第 40.3 节的有限谱与
 \([H,A]=0\) 条件，则 \[
@@ -5107,13 +5112,13 @@ L_r=\sqrt{\gamma_r}\,A\otimes Q_r,\qquad\gamma_r\ge0,
 怎样从资源、自维持、实际可访问记录和目的任务中独立选出
 \(A,Q_r,\gamma_r\)，仍是新增物理桥的责任。允许记录反馈的标准量子模型、基本随机场候选以及某个设备的校准控制是不同实现；它们需要共同响应和可区分的实验条件才能比较。
 
-\chapter{41. 为什么仍不能用相干损失单独证明客观坍缩}\label{ch-41}
+\chapter{41. 为什么仍不能用相干损失单独证明客观坍缩}\label{ch-41}\hypertarget{ch-41}{}
 
 同一个系统通道可能来自不同的系统---环境实现，这限制了仅靠系统统计识别坍缩机制的能力。本章把普通噪声子类排除、全环境受控反演和基本非酉假说检验分开，使实验失败能够归因到实际可审查的模型与控制条件。
 
 \section{41.1 系统内统计的可识别性极限}
 
-\phantomsection\label{c-05}{}
+\protect\hypertarget{c-05}{}{}
 
 \textbf{C-05：不受限量子环境的等价障碍。} 每个有限 CPTP 通道
 \(\mathcal E(\rho)=\sum_\mu L_\mu\rho L_\mu^\dagger\) 都可写为 \[
@@ -5160,7 +5165,7 @@ CSL
 UEOT 参数，也没有执行 QDRR 硬件实验。QDRR
 的价值仍是提出有明确对照、校准和失败条件的后续检验。
 
-\chapter{42. 完整可执行研究协议与论证状态}\label{ch-42}
+\chapter{42. 完整可执行研究协议与论证状态}\label{ch-42}\hypertarget{ch-42}{}
 
 计算出一条候选曲线之后，还必须规定哪些参数可拟合、哪些数据留作检验，以及什么结果算失败。本章汇总实验、数值与原创性责任；其中历史计算回执不被改称为本次新执行或自然实验。
 
@@ -5306,7 +5311,7 @@ C；缓存可读文本、完整原件和已运行验证分别标识，不把其�
 对 F-03 的具体保守下界、M-04 的锐见证、E-01/E-02
 的实验装配及其组合，本次给出了独立完整推导；当前检索并不构成``文献中从未出现''的证明。若准备投稿，应继续针对这些精确表达做先例核查、独立复核和实验性能对比，不能把``我这次推出来''直接等同于学术原创。
 
-\chapter{43. 全局相位、边界条件与拓扑量子化}\label{ch-43}
+\chapter{43. 全局相位、边界条件与拓扑量子化}\label{ch-43}\hypertarget{ch-43}{}
 
 局部振幅和相位方程不能替代波函数的全局边界条件。带扭转边界的环模型把
 holonomy、算符定义域与可观测谱放在同一计算中，说明相位闭合思想的有效落点及其不能决定的作用尺度。
@@ -5336,7 +5341,7 @@ P_\theta=-i\hbar\partial_x,
 \(-i\hbar[\bar f g]_0^L\)，上述域使其为零；伴随域由对所有满足边界的
 \(f\) 的边界型消失得到同一关系。因此这是自伴域，而非仅形式对称。
 
-\phantomsection\label{p-ugl-01}{}
+\protect\hypertarget{p-ugl-01}{}{}
 
 \textbf{P-UGL-01：环上谱和规范不变量。} \[
 f_n(x)=L^{-1/2}e^{i(2\pi n+\theta)x/L},\quad
@@ -5364,7 +5369,7 @@ holonomy、波函数丛的转移函数、算符域四项。原始闭轨直觉在
 可以接收规范不变谱和允许干涉协议形成响应对象；不能从协议命名重新推出
 \(\hbar\) 的数值。
 
-\chapter{44. 拓扑量子对象：Berry 丛与 SSH 边态}\label{ch-44}
+\chapter{44. 拓扑量子对象：Berry 丛与 SSH 边态}\label{ch-44}\hypertarget{ch-44}{}
 
 拓扑保护只有与具体
 Hamiltonian、对称性和边界切法一起声明，才成为可核查的物理性质。Berry 与
@@ -5383,7 +5388,7 @@ SSH
 \quad \mathcal A_S=\frac{1+\cos\vartheta}{2}d\varphi.
 \]
 
-\phantomsection\label{p-utp-01}{}
+\protect\hypertarget{p-utp-01}{}{}
 
 \textbf{P-UTP-01：此本征线的 Chern 数。} 直接求导给 \[
 \mathcal F=-\tfrac12\sin\vartheta\,d\vartheta\wedge d\varphi,
@@ -5415,7 +5420,7 @@ H(k)=\begin{pmatrix}0&t_1+t_2e^{-ik}\\t_1+t_2e^{ik}&0\end{pmatrix},
 
 \section{44.3 半无限边界与有限链误差}
 
-\phantomsection\label{p-utp-02}{}
+\protect\hypertarget{p-utp-02}{}{}
 
 \textbf{P-UTP-02：半无限零模。} 对左端终止于 \(A_1\) 的链，\(t_1<t_2\)
 时 \[
@@ -5441,7 +5446,7 @@ SSH 模型的来源见
 可执行路径：先对小链精确对角化核对残差；再改变 \(t_1/t_2\)
 观察体隙闭合与边界分布；最后加入已知手征保持或破坏的扰动，比较预注册的谱与存活曲线。由此原论文``持续的结构''成为具体的受保护低能子空间问题。它不直接给出电子世代数、基本粒子或绝对永存对象。
 
-\chapter{45. 非微扰起点：有限格点规范模型与跨尺度接口}\label{ch-45}
+\chapter{45. 非微扰起点：有限格点规范模型与跨尺度接口}\label{ch-45}\hypertarget{ch-45}{}
 
 有限格点提供一个真正可定义、可计算的非微扰起点，但有限测度存在并不证明连续
 QCD
@@ -5461,7 +5466,7 @@ S_W=\beta\sum_p\left(1-\frac1N\operatorname{ReTr}U_p\right),
 \] \(dU_l\) 是归一化 Haar 测度，每个无向 plaquette
 取一种定向。本节无费米子行列式、化学势或实时间相位因子。
 
-\phantomsection\label{p-ulg-01}{}
+\protect\hypertarget{p-ulg-01}{}{}
 
 \textbf{P-ULG-01：有限模型存在且规范不变。} 有限紧致乘积群上
 \(0\le S_W\le2\beta N_p\)，故
@@ -5499,7 +5504,7 @@ S_W\longrightarrow\int d^4x\sum_{\mu<\nu}\operatorname{Tr}F_{\mu\nu}^2
 子模型，\(u_l=\pm1\)，plaquette \(P=\prod_{l=1}^4u_l\)，作用
 \(S=-\beta P\)。用未归一计数测度，有16个配置，其中各8个 \(P=\pm1\)。
 
-\phantomsection\label{p-ulg-02}{}
+\protect\hypertarget{p-ulg-02}{}{}
 
 \textbf{P-ULG-02：精确配分函数与响应。} \[
 Z=16\cosh\beta,\qquad \langle P\rangle=\tanh\beta,
@@ -5536,7 +5541,7 @@ Euclidean
 数据无条件稳定反演。有限纯规范测度的存在性和局部一圈渐近自由都不足以证明四维连续
 Yang--Mills 质量隙。
 
-\chapter{46. 有历史依赖的实验统计与可选停止}\label{ch-46}
+\chapter{46. 有历史依赖的实验统计与可选停止}\label{ch-46}\hypertarget{ch-46}{}
 
 设备漂移和依历史选取设置会破坏简单的独立同分布分析。本章改用条件零假设和超鞅，把时间顺序与可选停止纳入统计保证；校准不足时，公式也会明确给出没有排除能力的结果。
 
@@ -5551,7 +5556,7 @@ p_* =\frac{3-2\sqrt2}{4(2+1/\sqrt2)}.
 \] 其中 \(0<p_0<1\)，且 \(p_0\)
 已扣除校准、泄漏和可识别的系统误差。每个条件通道都属于被检验类时，该条件成立；只知道时间平均噪声属于该类并不足够。
 
-\phantomsection\label{p-ust-01}{}
+\protect\hypertarget{p-ust-01}{}{}
 
 \textbf{P-UST-01：相关试次的固定样本检验。} 在上述条件下，对固定 \(n\)，
 \[
@@ -5581,7 +5586,7 @@ L_n=\prod_{t=1}^n
 \left(\frac{1-q}{1-p_0}\right)^{1-X_t},\quad L_0=1.
 \]
 
-\phantomsection\label{p-ust-02}{}
+\protect\hypertarget{p-ust-02}{}{}
 
 \textbf{P-UST-02：可选停止证书。} \(L_n\)
 是零假设下非负超鞅。因为给定历史后单步因子的期望为 \[
@@ -5610,7 +5615,7 @@ L_n=\prod_{t=1}^n
 
 本章在明确条件下取消了独立同分布要求，并补足允许可选停止的检验。仍未执行真实硬件实验，也未证明自然界存在新的退相干机制。
 
-\chapter{47. 研究总规划：从闭合模块到可区分物理}\label{ch-47}
+\chapter{47. 研究总规划：从闭合模块到可区分物理}\label{ch-47}\hypertarget{ch-47}{}
 
 研究路线的单位应是能够交付、核对并判定失败的命题或实验，而不是宣称完成度的版本号。本章把量子选择、动力学、场论、粒子与引力工作拆成有输入、产物及失败条件的任务，并保留已闭合有限切片与更大开放目标的区别。
 
@@ -6007,18 +6012,16 @@ Core → 量子扇区 &
 
 这张账本的验收结果是具体命题或反例，不以``更接近终极真理''的形容词替代。总著将新推导写回其所属章节，同时保留反模型和适用条件；开放条目随证据关闭，失败路线也留下可追溯的理由。
 
-\chapter{48. 理论总著、状态接口与持续维护}\label{ch-48}
+\chapter{48. 理论总著、状态接口与持续维护}\label{ch-48}\hypertarget{ch-48}{}
 
 一部可维护专著需要让正文、稳定编号、来源和验证状态彼此对应。本章规定这些接口如何更新，也解释为什么把物理选择条件回填到通用
 Core，会使所谓推导变成循环论证。
 
 \section{48.1 唯一理论主源}
 
-本书固定名称为《UEOT物理学》，稳定文档身份为
-\texttt{UEOT-\allowbreak PHYSICS}，当前正式双语修订版为3.11。规范正文固定在仓库
-\texttt{physics/\allowbreak qm/\allowbreak book/\allowbreak UEOT\_\allowbreak PHYSICS.\allowbreak md}；同目录中文 PDF
-由该正文生成；完整英文对应本为 \texttt{UEOT\_\allowbreak PHYSICS.\allowbreak en.\allowbreak md}，其 PDF
-由英文主源独立编译。第0--70章、附录A--F构成连续完整文档，保留全部原有物理主题，并把新证明整合进入相应论证。不要求读者从若干旧版本补齐一个证明。
+本书文档身份为
+\texttt{UEOT-\allowbreak PHYSICS}。中英文连续书稿均含第0--71章、附录A--F。\href{https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978\allowbreak e173e23015f02699\allowbreak 4fb60c65/physics/qm/book/UEOT_PHYSICS.pdf}{前版印本}收至第70章。书稿、PDF
+编译与评阅状态分别见\href{README.md}{版本入口}。
 
 版本报告、PR、日志和数学模块各有自己的身份，但不再与总著争夺理论正文的权威。源文件清单、章节修订档案及证据回执记录``这句话依据什么、哪一部分被检查过''。历史文件保留沿革责任；它们的旧状态不会覆盖较新的已验证内核，新的内核也不会为历史上未形式化的物理命题追授机器证明。
 
@@ -6045,12 +6048,12 @@ X。上游合同未被改写，标签修订不新增或撤销数学定理。
 \begin{Verbatim}[breaklines,breakanywhere,fontsize=\scriptsize]
 document:
   id: UEOT-PHYSICS
-  edition: "3.11"
+  edition: "3.12"
   canonical_source: physics/qm/book/UEOT_PHYSICS.md
-  derivative_pdf: physics/qm/book/UEOT_PHYSICS.pdf
+  derivative_pdf_path: physics/qm/book/UEOT_PHYSICS.pdf
   english_source: physics/qm/book/UEOT_PHYSICS.en.md
-  english_pdf: physics/qm/book/UEOT_PHYSICS.en.pdf
-  chapter_range: [0, 70]
+  derivative_english_pdf_path: physics/qm/book/UEOT_PHYSICS.en.pdf
+  chapter_range: [0, 71]
   fundamental_unique_derivation_complete: false
   four_dimensional_nonperturbative_qft_complete: false
   quantum_gravity_complete: false
@@ -6120,7 +6123,7 @@ Born吸收 & 有限谱、指定SSE、QND条件；简并只到本征子空间 \\
 
 可回馈通用数学Core的内容，应先抽象成不以特定物理结论为前提的一般定理，例如响应因子、合法递归、误差组合、持续事件或不可识别性。复Hilbert、Born、特定规范群、作用尺度和质量谱属于领域输入，不能反填为对象数学公理后再宣称无条件得到目标。冻结Core的变更继续通过其治理流程；本版只在QM领域完成实现与著作整合。
 
-\chapter{49. UEOT-QM 的已验证有限量子内核}\label{ch-49}
+\chapter{49. UEOT-QM 的已验证有限量子内核}\label{ch-49}\hypertarget{ch-49}{}
 
 这里开始直接阅读有限量子内核：矩阵如何产生记录概率，哪些不同状态对允许未来完全等价，以及怎样用有限坐标保留所有有限词响应。形式证明负责全称命题，精确证书负责给定实例；二者都以已选定的复量子实现为前提。
 
@@ -6161,7 +6164,7 @@ R_\rho(w)=\operatorname{Tr}\bigl[\Phi_{a_n,o_n}\circ\cdots\circ\Phi_{a_1,o_1}(\r
 \(S\)，若 \(S(\rho)=S(\sigma)\) 蕴含响应相同，响应函数便唯一地经由 \(S\)
 的可达像分解；在不可达元素上的任意延伸不属于唯一性结论。这正是第1章的协议相对充分性在该量子实现中的实例。
 
-\phantomsection\label{p-qkr-01}{}
+\protect\hypertarget{p-qkr-01}{}{}
 
 \textbf{P-QKR-01（响应对象的后验闭合）。} 同一动作结果的概率 \(p>0\)
 时，实际后验为 \(\rho_{a,o}=\Phi_{a,o}(\rho)/p\)，且 \[
@@ -6189,7 +6192,7 @@ W=\operatorname{span}_{\mathbb R}\{E_w:w\text{为有限词}\}.
 并对所有允许分支拉回封闭的最小实子空间：包含与闭包使所有词效应通过归纳进入该空间；反过来，词效应的线性张成对拉回封闭。有限矩阵空间保证
 \(W\) 有有限个真实词效应生成元。
 
-\phantomsection\label{p-qkr-02}{}
+\protect\hypertarget{p-qkr-02}{}{}
 
 \textbf{P-QKR-02（局部有限表示决定全部未来）。} 取有限生成族
 \(B_j=E_{w_j}\)，其中 \(B_u=I\)。若每个分支满足实际矩阵恒等式 \[
@@ -6227,7 +6230,7 @@ Hilbert 空间的物理实现、较少驱动器或较低信息成本。
 
 一个允许的有限确定性适应协议，是在每个非终端节点选择动作、并为该动作的\textbf{每个结果}提供后续子树的有限树。它可以不平衡，不要求所有路径等长；分支选择仅依赖已发生记录。每个叶子的概率是沿其路径复合分支映射后取迹。
 
-\phantomsection\label{p-qkr-03}{}
+\protect\hypertarget{p-qkr-03}{}{}
 
 \textbf{P-QKR-03（全词坐标控制完整有限适应树）。}
 对上述同一协议，叶概率非负，总和为一。若初态全词响应相同，或 P-QKR-02
@@ -6264,7 +6267,7 @@ Gram
 \(B_j\)、单位索引 \(u\) 和局部系数 \(A_{a,o;ji}\)。独立 Lean
 检查器只核验五类有限条件：权重非负；各动作完整性；单位词为空；每个基矩阵等于其真实词效应；每个局部拉回等于给定有限展开。它没有``对所有未来预测正确''的假设字段。
 
-\phantomsection\label{p-qkr-04}{}
+\protect\hypertarget{p-qkr-04}{}{}
 
 \textbf{P-QKR-04（精确证书可靠性）。} 若实际可计算检查得到
 \(\operatorname{check}(D)=\mathrm{true}\)，则解释后的复矩阵形成合法仪器及有限
@@ -6297,7 +6300,7 @@ parser、搜索器和输出格式的所有执行行为尚未统一形式化；�
 
 连续变量、一般过程张量、相对论量子场及第40章随机实际化保留各自解析推导和域条件。有限矩阵内核能够作为其中受控有限模型的检查基础；从有限截断跨到无界算符、无限体积或连续极限，需要该方向自己的误差与存在性定理。
 
-\chapter{50. 从实际 Born 概率到量子误差传播}\label{ch-50}
+\chapter{50. 从实际 Born 概率到量子误差传播}\label{ch-50}\hypertarget{ch-50}{}
 
 误差必须先明确比较的对象与度量，才能沿演化组合。本章从所有合法效应的
 Born
@@ -6313,7 +6316,7 @@ Kraus
 P_E(\rho)=\operatorname{Re}\operatorname{Tr}(E\rho).
 \] 这是 \texttt{Effect} 的实际定义，覆盖全部矩阵序区间 \([0,I]\)。
 
-\phantomsection\label{p-qst-01}{}
+\protect\hypertarget{p-qst-01}{}{}
 
 \textbf{P-QST-01（实际正配对与效应界）。} 对任意 \(X\succeq0\) 和效应
 \(E\)，有 \[
@@ -6336,7 +6339,7 @@ Lean 中的 \texttt{pairing\_\allowbreak nonneg} 从已有 PSD 谓词经 Mathlib
 F=\sum_o\Phi_o^*(E_o)=\sum_{o,k}K_{ok}^{\dagger}E_oK_{ok}.
 \]
 
-\phantomsection\label{p-qst-02}{}
+\protect\hypertarget{p-qst-02}{}{}
 
 \textbf{P-QST-02（续效应的完整拉回）。} \(F\) 仍为效应，且 \[
 \operatorname{Re}\operatorname{Tr}(FX)
@@ -6366,7 +6369,7 @@ d_E(\rho,\sigma)=\sup_{0\preceq E\preceq I}|P_E(\rho)-P_E(\sigma)|.
 \] 零效应使被取上确界的集合非空，P-QST-01
 使其有界。这是真实全部效应的上确界；有限次层析测量或某个训练测试集没有被当作这个上确界。
 
-\phantomsection\label{p-qst-03}{}
+\protect\hypertarget{p-qst-03}{}{}
 
 \textbf{P-QST-03（可观测距离的基本合同）。} 有
 \(0\le d_E\le1\)、对称性、\(d_E(\rho,\rho)=0\) 及三角不等式。并且 \[
@@ -6387,7 +6390,7 @@ Lean 的 \texttt{Metric\allowbreak Space}
 
 \section{50.4 实际通道收缩与模型缺陷}
 
-\phantomsection\label{p-qst-04}{}
+\protect\hypertarget{p-qst-04}{}{}
 
 \textbf{P-QST-04（完整 Kraus 通道的一步稳定性）。} 完整仪器所定义的通道
 \(\Phi\) 满足 \[
@@ -6421,7 +6424,7 @@ Born 配对保持，所以每个输出概率差受输入 \(d_E\)
 \delta_j=\Delta_E(\Phi_j,\Psi_j).
 \]
 
-\phantomsection\label{p-qst-05}{}
+\protect\hypertarget{p-qst-05}{}{}
 
 \textbf{P-QST-05（真实量子轨迹的可组合误差）。} 对每个有限 \(n\)， \[
 d_E(\rho_n,\sigma_n)
@@ -6455,7 +6458,7 @@ diamond
 \(p=p_o(\rho)>0\)、\(q=p_o(\sigma)>0\)，令后验分别为
 \(\rho_o,\sigma_o\)。
 
-\phantomsection\label{p-qst-06}{}
+\protect\hypertarget{p-qst-06}{}{}
 
 \textbf{P-QST-06（后选择误差及正支撑保护）。} 有 \[
 |p-q|\le d_E(\rho,\sigma),\qquad
@@ -6492,7 +6495,7 @@ d_E(\rho_o,\sigma_o)\le \frac{2d_E(\rho,\sigma)}{p}.
 QMU-04 因而登记为``有限共同载体完整 Kraus
 通道及正事件后验切片完成''。后续有限记忆与共同控制器结果见第58、62、65章。一般相干或不同控制器、旁系统稳定范数识别、可执行最坏误差上界算法、无界能量控制和连续极限仍分开列入第47章的工作包。进一步研究应完成这些明确义务，不能通过给已有定理更强的标题跳过它们。
 
-\chapter{51. 随机化量子实现与可认证误差预算}\label{ch-51}
+\chapter{51. 随机化量子实现与可认证误差预算}\label{ch-51}\hypertarget{ch-51}{}
 
 对未知通道取最坏情形上确界通常不等于可执行算法；同一操作库上的概率混合提供一个可精确处理的例外。本章说明总变差预算的一半如何来自归一化，并把权重变化与库成员误差分开。
 
@@ -6506,7 +6509,7 @@ p_b\ge0,\qquad \sum_{b\in B}p_b=1.
 \(\sum_{o,k}K^{(b)\dagger}_{ok}K^{(b)}_{ok}=I\)。本节在一个共同的有限结果集和
 Kraus 指标集上书写；指标不齐时可先采用第49.5节已验证的补零适配。
 
-\phantomsection\label{p-qmx-01}{}
+\protect\hypertarget{p-qmx-01}{}{}
 
 \textbf{P-QMX-01（概率混合的实际实现）。} 对任意密度态库
 \(\rho_b\)，\(\rho_p=\sum_b p_b\rho_b\) 是密度态。以新指标 \((b,k)\)
@@ -6549,7 +6552,7 @@ Hadamard 之类可用有理加权表示，不要求程序把 \(\sqrt2\) 假装�
 \(|f_b-1/2|\le1/2\)。如果只逐项估计 \(|f_b|\le1\)，会得到较松的
 \(\ell^1\) 界；本章实际形式化了归一化带来的一半因子。
 
-\phantomsection\label{p-qmx-02}{}
+\protect\hypertarget{p-qmx-02}{}{}
 
 \textbf{P-QMX-02（同库权重变化的全称上界）。}
 对同一密度态库和同一完整通道库，分别有 \[
@@ -6573,7 +6576,7 @@ Lean 入口是
 
 \section{51.3 库成员也变化时的预算分解}
 
-\phantomsection\label{p-qmx-03}{}
+\protect\hypertarget{p-qmx-03}{}{}
 
 \textbf{P-QMX-03（权重与成员误差的联合上界）。}
 给定两个同载体的完整通道库 \(\Phi_b,\Psi_b\)，记
@@ -6596,7 +6599,7 @@ Lean 入口是
 
 \section{51.4 有理预算与长期误差装配}
 
-\phantomsection\label{p-qmx-04}{}
+\protect\hypertarget{p-qmx-04}{}{}
 
 \textbf{P-QMX-04（精确有理预算的解释）。}
 设权重为有理数，仍满足非负、归一条件。定义完全由有限有理算术计算的 \[
@@ -6647,7 +6650,7 @@ O。它不选择复数量子理论，不给任意未知通道的通用计算算�
 diamond
 距离。第58、62、65章的有限历史记忆结果明确把随机分支和控制历史作为实际经典寄存器保留下来，再对完整联合通道使用同类预算。
 
-\chapter{52. 长期平均、紧性与量子平稳态}\label{ch-52}
+\chapter{52. 长期平均、紧性与量子平稳态}\label{ch-52}\hypertarget{ch-52}{}
 
 长期平均接近平稳与每一步状态都收敛，是两个不同命题。有限维紧性给出
 Cesàro
@@ -6665,7 +6668,7 @@ UEOT
 得到密度态。平均包含初态，终点为
 \(N-1\)；这使下面望远镜恒等式的端点没有歧义。
 
-\phantomsection\label{p-qce-01}{}
+\protect\hypertarget{p-qce-01}{}{}
 
 \textbf{P-QCE-01（平均态的精确残差与全效应预算）。} 有 \[
 \Phi(\bar\rho_N)-\bar\rho_N=\frac{\rho_N-\rho_0}{N},
@@ -6692,7 +6695,7 @@ d_E\bigl(\Phi(\bar\rho_N),\bar\rho_N\bigr)\le\frac1N.
 \texttt{Matrix.\allowbreak Norms.\allowbreak L2\allowbreak Operator}
 作用域；该结构保持通常矩阵拓扑，不能为了方便而给矩阵人为换成使任意序列收敛的拓扑。
 
-\phantomsection\label{p-qce-02}{}
+\protect\hypertarget{p-qce-02}{}{}
 
 \textbf{P-QCE-02（实际密度集合的紧性）。} \(\mathcal D_d\)
 是闭且有界的集合，故在有限维中紧。每个 \(\rho\in\mathcal D_d\) 满足
@@ -6718,7 +6721,7 @@ P-QCE-01 的矩阵残差取范数，使用 \(\|\rho_N-\rho_0\|_{\rm op}\le2\)
 
 \section{52.3 不变子极限与平稳态存在}
 
-\phantomsection\label{p-qce-03}{}
+\protect\hypertarget{p-qce-03}{}{}
 
 \textbf{P-QCE-03（有限完整通道的平稳密度态）。} 任给初态
 \(\rho_0\)，存在密度态 \(\sigma\) 及严格递增的自然数子列
@@ -6752,7 +6755,7 @@ Core 的占据测度定理，因此不把思想上的对应写成代码依赖。
 
 \section{52.4 周期轨道与多平稳态的反例}
 
-\phantomsection\label{n-qce-01}{}
+\protect\hypertarget{n-qce-01}{}{}
 
 \textbf{N-QCE-01（平均不变不等于轨道收敛或唯一性）。} P-QCE-01
 至03的前提不能推出原始态序列 \(\rho_n\) 收敛，也不能推出平稳态唯一。
@@ -6783,7 +6786,7 @@ GOD/GOA，仍须声明动作、代价、约束和评价；要讨论寿命，则�
 Cesàro
 序列的投影极限。后一命题在有限维线性理论中有更强的标准工具，本版只将已经实际完成的子列和存在性登记为机器成果。若进入无限维，密度态集合通常不再具有这里使用的紧性，必须加入能量紧性、尾部控制和定义域合同。
 
-\chapter{53. 条件生存、对角量子实现与 Core 谱桥}\label{ch-53}
+\chapter{53. 条件生存、对角量子实现与 Core 谱桥}\label{ch-53}\hypertarget{ch-53}{}
 
 ``仍然存活''必须先对应仪器中的实际结果事件，才能讨论寿命与条件态。对角量子实现把同一存活记录接到
 Core 的准稳态和 Doob 公式，并用精确例子区分准稳分布、Doob
@@ -6803,7 +6806,7 @@ Q_{ij}\ge0,\qquad s_i:=\sum_jQ_{ij}\le1.
 给出实际复密度态。矩阵单位 \(U_{ji}=|j\rangle\langle i|\) 表示从源 \(i\)
 测量并制备到目的 \(j\)，不能将两个指标交换而继续沿用同一 \(Q\)。
 
-\phantomsection\label{p-qsv-01}{}
+\protect\hypertarget{p-qsv-01}{}{}
 
 \textbf{P-QSV-01（次随机核的完整量子仪器）。} 取存活 Kraus 矩阵和失败
 Kraus 矩阵 \[
@@ -6832,7 +6835,7 @@ Hilbert
 
 \section{53.2 同一个存活记录的量子与经典解释}
 
-\phantomsection\label{p-qsv-02}{}
+\protect\hypertarget{p-qsv-02}{}{}
 
 \textbf{P-QSV-02（对角动力学与有限成功词的交织）。} 对任意复算符 \(X\)，
 \[
@@ -6869,7 +6872,7 @@ qQ=rq,\qquad q_i\ge0,\quad \sum_iq_i=1,\quad r>0.
 都具有所需正谱数据，也没有假设任意初态最终收敛到 \(q\)。此处 \(r\)
 是满足该关系的存活特征因子；其全局谱半径身份和主特征值唯一性不属于以下定理的输出。
 
-\phantomsection\label{p-qsv-03}{}
+\protect\hypertarget{p-qsv-03}{}{}
 
 \textbf{P-QSV-03（实际全成功记录的几何生存律）。}
 上述前提下，\(0<r\le1\)，且 \[
@@ -6911,7 +6914,7 @@ Qh=rh,\qquad h_i>0,\qquad \sum_iq_ih_i=1.
 \widetilde Q_{ij}=\frac{Q_{ij}h_j}{rh_i},\qquad \pi_i=q_ih_i.
 \]
 
-\phantomsection\label{p-qsv-04}{}
+\protect\hypertarget{p-qsv-04}{}{}
 
 \textbf{P-QSV-04（Doob 核的实际完整实现与不变成功记录）。}
 \(\widetilde Q\) 非负且每行和为一，\(\pi\) 是概率分布并满足
@@ -6954,7 +6957,7 @@ Qh=(3/4,3/8)=rh,\qquad \sum_iq_ih_i=1.
 \(2^{-n}\)，每次条件态仍为
 \(D(q)\)；每步无条件态则还包括失败分支的贡献。
 
-\phantomsection\label{n-qsv-01}{}
+\protect\hypertarget{n-qsv-01}{}{}
 
 \textbf{N-QSV-01（QSD、Doob 不变律与任意初态不可混同）。} 在本例中， \[
 \widetilde Q=\begin{pmatrix}1/2&1/2\\1/2&1/2\end{pmatrix},\qquad
@@ -6992,7 +6995,7 @@ Doob
 实现与任意初态的有限条件化连接。下一步继续分别证明适用条件下的谱存在、唯一、条件极限和收敛率。与第51章的扰动预算结合后，才讨论当制备、转移或存活判定具有误差时，寿命与条件预测能否稳定转移。这种推进能积累跨模型可复用的物理合同，同时保持``UEOT
 何以选择量子结构''这一根本问题的独立研究位置。
 
-\chapter{54. 同一 Core 过程上的经典纯化边界}\label{ch-54}
+\chapter{54. 同一 Core 过程上的经典纯化边界}\label{ch-54}\hypertarget{ch-54}{}
 
 若一般 Core
 接口已经容纳一个不能纯化混态的完整经典模型，就不能声称这些接口自动推出普遍纯化。本章把这一反模型绑定到同一个实际过程与终端商，并说明删除读出会怎样改变论证所检验的命题。
@@ -7013,7 +7016,7 @@ P_e(p)=\sum_zp_ze_z.
 接口组没有替我们选择或排除这个复合规则，不能将它们写成 Core
 的必然物理结论。
 
-\phantomsection\label{p-qcl-01}{}
+\protect\hypertarget{p-qcl-01}{}{}
 
 \textbf{P-QCL-01（完整单纯形的状态、响应与运输）。} 上述配对在 \([0,1]\)
 内，全部效应分离状态。Dirac
@@ -7052,7 +7055,7 @@ Dirac，再把同义改写当作分类成果。
 
 \section{54.2 对任意有限辅助系统的纯化否定}
 
-\phantomsection\label{n-qcl-01}{}
+\protect\hypertarget{n-qcl-01}{}{}
 
 \textbf{N-QCL-01（二点混态没有有限经典纯化）。} 设
 \(z_0\ne z_1\)，\(p=\tfrac12\delta_{z_0}+\tfrac12\delta_{z_1}\)。对任意有限类型
@@ -7090,7 +7093,7 @@ K(x,a,z)=\begin{cases}1/2,&z_1=a,\\0,&z_1\ne a.\end{cases}
 \(x\mapsto x\)，同时注册安全位、平凡程序／资源字段和零奖励。完整读出是本模型的
 B 解释，尚不代表自然界中任意标签都能被测量。
 
-\phantomsection\label{p-qcl-02}{}
+\protect\hypertarget{p-qcl-02}{}{}
 
 \textbf{P-QCL-02（实际终端商保留二点支持）。} 该模型的实际
 \texttt{terminal\allowbreak Setoid} 满足 \(x\sim y\iff x=y\)。由
@@ -7117,7 +7120,7 @@ P-QCL-01 的等权混合相容性和 Dirac 推送公式。\(\square\)
 \texttt{micro.\allowbreak transition\allowbreak PMF}。令 \(\mathbb P_*\) 为其实际
 \texttt{stationary\allowbreak Traj\allowbreak Measure}，没有另造一条恰好满足期望结论的路径。
 
-\phantomsection\label{p-qcl-03}{}
+\protect\hypertarget{p-qcl-03}{}{}
 
 \textbf{P-QCL-03（同源安全轨迹与纯化分离证书）。}
 本模型满足下表列明的有限 Core 接口组；并有 \[
@@ -7177,7 +7180,7 @@ false，形式化见证明确给一个不安全目标的概率
 
 \section{54.5 删除读出后，反例为什么必须失效}
 
-\phantomsection\label{n-qcl-02}{}
+\protect\hypertarget{n-qcl-02}{}{}
 
 \textbf{N-QCL-02（微观混合可被实际操作商消去）。} 保留完全同一个
 \(K\)，改用既有只读第一位的
@@ -7231,7 +7234,7 @@ UEOT 理论最终重构 QM 的可能。
 
 第57章现在把候选原则的系统类型、完整状态集合、复合和丢弃写成实际接口，并证明经典反例经适配后仍违反纯化存在。复量子模型的任意有限态纯化也在完整密度空间中得到证明。第55章实扇区的排除责任则仍属于局部层析；纯化存在与本质唯一性分别维护。继续推进时，不能把预先装入的复Hilbert、Born或Kraus结构误称为已经从Core推出的起源。
 
-\chapter{55. 实量子扇区的局域层析分离}\label{ch-55}
+\chapter{55. 实量子扇区的局域层析分离}\label{ch-55}\hypertarget{ch-55}{}
 
 局域层析问的是所有局域产品测试是否足以恢复任意联合态，不能用少数采样代替这个全称量词。实量子扇区的两个联合态给出严格反例，而放宽到复局域效应后差别重新可见。
 
@@ -7264,7 +7267,7 @@ P_\pm=\frac{I\pm H}{2},\qquad
 \rho_\pm=\frac{P_\pm}{2}=\frac{I\pm H}{4}.
 \]
 
-\phantomsection\label{p-qrt-01}{}
+\protect\hypertarget{p-qrt-01}{}{}
 
 \textbf{P-QRT-01（两个合法且不同的实联合态）。} \(\rho_+,\rho_-\)
 都是实、厄米、半正定且迹为一的密度矩阵，并且 \(\rho_+\ne\rho_-\)。
@@ -7297,7 +7300,7 @@ E=\begin{pmatrix}a&b\\b&d\end{pmatrix},
 \qquad \operatorname{Tr}(EY)=ib-ib=0.
 \] 这个等式对所有实厄米局域矩阵成立，不仅对某几个常用投影成立。
 
-\phantomsection\label{n-qrt-01}{}
+\protect\hypertarget{n-qrt-01}{}{}
 
 \textbf{N-QRT-01（实局域乘积测试不能确定联合态）。} 对任意两个实局域效应
 \(E,F\)， \[
@@ -7325,7 +7328,7 @@ E=\begin{pmatrix}a&b\\b&d\end{pmatrix},
 
 \section{55.3 合法实联合测试能够完全区分}
 
-\phantomsection\label{p-qrt-02}{}
+\protect\hypertarget{p-qrt-02}{}{}
 
 \textbf{P-QRT-02（联合效应的确定性区分）。} \(P_+\)
 是合法的实联合效应，且 \[
@@ -7343,7 +7346,7 @@ E=\begin{pmatrix}a&b\\b&d\end{pmatrix},
 
 \section{55.4 删除局域实性限制后，差别重新可见}
 
-\phantomsection\label{n-qrt-02}{}
+\protect\hypertarget{n-qrt-02}{}{}
 
 \textbf{N-QRT-02（允许复局域效应后的区分）。} 取复局域效应 \[
 E_Y=\frac{I+Y}{2}.
@@ -7362,7 +7365,7 @@ N-QRT-01 错写为复量子理论自身缺少局域层析。
 
 \section{55.5 线性后处理不能补出缺失联合效应}
 
-\phantomsection\label{n-qrt-03}{}
+\protect\hypertarget{n-qrt-03}{}{}
 
 \textbf{N-QRT-03（区分效应不在有限实产品效应的线性张成中）。}
 不存在有限指标集 \(J\)、实系数 \(c_j\) 以及实局域效应 \(E_j,F_j\)，使 \[
@@ -7412,7 +7415,7 @@ S，其显示的响应差别属于 O。只有进一步声称某个尚未证明�
 机制必然产生这些选择原则时，才另登记相应的
 X。下一轮需要比较候选原则的独立性和物理意义，使``为什么选出量子''逐步成为有明确排除责任的数学问题。{[}S2、S3；QM316{]}
 
-\chapter{56. 保留相干的量子条件演化与 Doob 通道}\label{ch-56}
+\chapter{56. 保留相干的量子条件演化与 Doob 通道}\label{ch-56}\hypertarget{ch-56}{}
 
 对存活分支作条件化时，直接丢弃非对角元会失去量子相干。本章用显式左、右谱对象构造保留相干的
 Doob
@@ -7456,7 +7459,7 @@ c_\rho=\operatorname{Tr}F(\rho),\qquad
 \mathcal F(\rho)=F(\rho)/c_\rho.
 \]
 
-\phantomsection\label{p-qqd-01}{}
+\protect\hypertarget{p-qqd-01}{}{}
 
 \textbf{P-QQD-01（过滤归一化的合法性）。} \(F\) 与 \(F^{-1}\)
 互逆并保持半正定性。对每个密度态，\(c_\rho>0\)，故 \(\mathcal F(\rho)\)
@@ -7484,7 +7487,7 @@ c_\rho=\operatorname{Tr}F(\rho),\qquad
 r>0,\qquad \Phi^*(H)=rH.
 \]
 
-\phantomsection\label{p-qqd-02}{}
+\protect\hypertarget{p-qqd-02}{}{}
 
 \textbf{P-QQD-02（实际量子 Doob 仪器）。} 定义 \[
 \widetilde K_k=r^{-1/2}SK_kT.
@@ -7511,7 +7514,7 @@ Lean 先用显式实权重 \(r^{-1}\) 与矩阵 \(SK_kT\) 构造
 
 \section{56.4 任意初态的有限时条件演化}
 
-\phantomsection\label{p-qqd-03}{}
+\protect\hypertarget{p-qqd-03}{}{}
 
 \textbf{P-QQD-03（全算符有限交织与真实条件态连接）。} 在 P-QQD-02
 的前提下，对任意复算符 \(X\) 与任意有限 \(n\)， \[
@@ -7561,7 +7564,7 @@ Lean 定理。
 
 \section{56.5 右特征密度才给准稳态与 Doob 平稳态}
 
-\phantomsection\label{p-qqd-04}{}
+\protect\hypertarget{p-qqd-04}{}{}
 
 \textbf{P-QQD-04（准稳态、几何存活与实际通道平稳）。} 设
 \(r>0\)，若另外给定密度态 \(\rho_*\) 满足 \(\Phi(\rho_*)=r\rho_*\)，则
@@ -7621,7 +7624,7 @@ c_{\rho_*}=8/5,
 \] 归一化因子 \(8/5\)
 正好展示了第56.2节的解释边界：它大于一，故不能被当作源仪器某个结果的概率。
 
-\phantomsection\label{p-qqd-05}{}
+\protect\hypertarget{p-qqd-05}{}{}
 
 \textbf{P-QQD-05（全矩阵可计算的非对角 Doob 见证）。} 这个实例的实际
 Doob 通道对每个复算符 \(X\) 满足 \[
@@ -7640,7 +7643,7 @@ P-QQD-03、04。\(\square\)
 \texttt{mass}
 误用于全部复算符。各矩阵和系数均为精确有理输入，平方根只由已证明的普通仪器转换产生，浮点近似不参与证明。
 
-\phantomsection\label{n-qqd-01}{}
+\protect\hypertarget{n-qqd-01}{}{}
 
 \textbf{N-QQD-01（必须保留的三项区分）。} 本例中，删去失败 Kraus
 会破坏源仪器完备性；原准稳态 \(\rho_*\) 与过滤平稳态 \(\sigma_*\)
@@ -7667,7 +7670,7 @@ UEOT 物理必然性主张才另按 X 登记。
 
 第59章已对本章同一个有理非对角模型证明实际精确迭代、唯一Doob不变态和真实条件态的几何收敛率，并以合法恒等Doob通道证明正谱度量不足以保证混合。接下来应固定可验证的有限不可约、本原或收缩条件，研究一般正谱对象及长期条件过程。原始双驱动思想可提示哪些持续机制值得研究，但成功事件、初态、控制代价与真实观测仍须分别定义。{[}S1、S2、S4；QM316；QM317{]}
 
-\chapter{57. 完整状态空间中的纯化与操作原则}\label{ch-57}
+\chapter{57. 完整状态空间中的纯化与操作原则}\label{ch-57}\hypertarget{ch-57}{}
 
 纯化原则比较的是完整状态空间和真实丢弃操作，不是只比较人为挑选的向量态。本章从正半定矩阵构造任意有限复态的纯化，再把经典、实、复三种操作呈现放在同一接口中，区分纯化存在与完整重建原则。
 
@@ -7711,7 +7714,7 @@ Kraus 通道，其 Kraus 矩阵是从输入向量空间到输出向量空间的�
 
 \section{57.2 单位向量态为何是完整凸集中的极点}
 
-\phantomsection\label{p-pur-01}{}
+\protect\hypertarget{p-pur-01}{}{}
 
 \textbf{P-PUR-01（完整密度态空间中的向量纯态）。} 令
 \(P=|v\rangle\langle v|\) 且 \(\operatorname{Tr}P=1\)。则 \(P\) 在全部
@@ -7772,7 +7775,7 @@ L_a(i,(j,b))=\delta_{ij}\delta_{ab}.
 \(\operatorname{Tr}\sigma=1\) 得到
 \(\operatorname{Tr}_{\alpha}(\rho\otimes\sigma)=\rho\)。
 
-\phantomsection\label{p-pur-02}{}
+\protect\hypertarget{p-pur-02}{}{}
 
 \textbf{P-PUR-02（任意有限复密度态的纯化存在）。} 对任意
 \(\rho\in\mathcal D(\iota)\)，存在
@@ -7814,7 +7817,7 @@ Bell 向量 \(\psi=(|00\rangle+|11\rangle)/\sqrt2\)
 
 \section{57.4 三种实际模型与相互独立的候选原则}
 
-\phantomsection\label{p-opt-01}{}
+\protect\hypertarget{p-opt-01}{}{}
 
 \textbf{P-OPT-01（同一操作语言中的三个具体呈现）。}
 全经典单纯形、全实密度矩阵与全复密度矩阵分别具有实际状态、效应、凸混合、产品、丢弃和所声明过程；上述七项基本规律均已分别由具体数据证明，对应
@@ -7839,7 +7842,7 @@ Kronecker
 
 \section{57.5 反模型如何约束量子选择，而不预设答案}
 
-\phantomsection\label{n-opt-01}{}
+\protect\hypertarget{n-opt-01}{}{}
 
 \textbf{N-OPT-01（基本操作规律不自动给出量子选择）。}
 完整经典模型满足所声明基本规律，但第54章的非平凡半混合不具有任意有限纯扩展；实量子模型的第55章两态在所有实局部产品效应下同概率，却能被合法实联合效应区分。把两个证据接到同一操作呈现后，前者否定该经典模型的纯化存在候选，后者否定该实模型的局部层析候选。
@@ -7863,7 +7866,7 @@ Core 命题的所有解释穷尽为这三个模型。
 
 对原始思想的推进在于，``父对象能支持子对象的混合描述''现在有了具体构造和明确边界：纯父态的实际偏迹给出任意有限复密度态；同一句思想在完整经典模型里并不普遍成立。只有补充原则的来源也受到证明或经验约束，才可能把这种差别继续推进为物理选择。
 
-\chapter{58. 联合记录、量子记忆与有限自适应协议}\label{ch-58}
+\chapter{58. 联合记录、量子记忆与有限自适应协议}\label{ch-58}\hypertarget{ch-58}{}
 
 当后续动作依赖先前结果时，只比较忘掉标签的量子通道会遗漏真实预测差别。联合经典记录与量子记忆使完整有限自适应树成为一个可比较的物理对象，并给出全事件记录距离的精确控制。
 
@@ -7882,7 +7885,7 @@ Kraus 矩阵构造这个载体，并把它推广到已有的任意有限自适�
 它的实际算符映射为
 \(\mathcal C(X)=\sum_kK_kXK_k^\dagger\)。输入与输出维数可以不同；迹恒等式仍在各自空间中有意义。
 
-\phantomsection\label{p-cq-01}{}
+\protect\hypertarget{p-cq-01}{}{}
 
 \textbf{P-CQ-01（矩形通道的完全正性、迹保持与效应收缩）。}
 上述映射对任意复矩阵保持复迹。对任意有限辅助载体 \(\nu\)，由
@@ -7926,7 +7929,7 @@ V_{o,k}((p,i),j)=\delta_{po}K_{o,k}(i,j).
 这些是从 \(\iota\) 到 \(O\times\iota\) 的实际矩形矩阵。对标签求和有
 \(V_{o,k}^\dagger V_{o,k}=K_{o,k}^\dagger K_{o,k}\)，因此完整性直接来自原仪器。
 
-\phantomsection\label{p-cq-02}{}
+\protect\hypertarget{p-cq-02}{}{}
 
 \textbf{P-CQ-02（真实仪器的联合块状态与边际）。} 上述 Kraus 定义通道
 
@@ -7972,7 +7975,7 @@ K_{\text{path}}=K_{\text{tail}}K_{a,o,k}.
 总 Kraus 下标是
 \(\sum_{\ell:\operatorname{Leaf}(\pi)}\operatorname{Path}(\pi,\ell)\)。将每条路径矩阵嵌入其真实叶标签块，就得到协议的矩形通道。这个依赖索引同时保存叶标签、路径长度与所选子树，不要求所有叶等深。
 
-\phantomsection\label{p-cq-03}{}
+\protect\hypertarget{p-cq-03}{}{}
 
 \textbf{P-CQ-03（全部有限协议的记录与记忆实现）。}
 对任意当前有限完整协议 \(\pi\)、实际仪器族 \(I\) 和密度态
@@ -8027,7 +8030,7 @@ E_S=\operatorname{diag}(\mathbf1_S)\otimes I_\iota.
 
 它及其补效应都为正，其对联合块状态的概率恰为事件 \(S\) 的真实记录概率。
 
-\phantomsection\label{p-cq-04}{}
+\protect\hypertarget{p-cq-04}{}{}
 
 \textbf{P-CQ-04（记录分布的联合距离与扰动控制）。} 设 \(p_{I,\rho}\)
 为实际记录分布，则
@@ -8065,7 +8068,7 @@ p(S_+)-q(S_+)=\frac12\sum_o|p(o)-q(o)|=\operatorname{TV}(p,q).
 
 \section{58.5 丢弃标签会抹去真实可区分性}
 
-\phantomsection\label{n-cq-01}{}
+\protect\hypertarget{n-cq-01}{}{}
 
 \textbf{N-CQ-01（相同无条件通道不控制记录误差）。}
 取相同的二维量子记忆，仪器 \(I\) 确定输出标签 \(0\) 并保持输入态，仪器
@@ -8093,7 +8096,7 @@ Dirac 分布。效应 \(E_{\{0\}}\) 的概率分别为 \(1\) 和
 这也明确了 UEOT
 预测对象的一项结构要求：若允许的未来动作依赖记录，丢弃该记录通常会改变可用的未来测试和对象等价。第54章的受限读出反例与本章的标签反例从两个方向说明，选择接口的范围会改变可区分性。完整物理理论必须把允许观察和允许控制作为真实模型内容维护。
 
-\chapter{59. 非交换条件持续的精确动力学}\label{ch-59}
+\chapter{59. 非交换条件持续的精确动力学}\label{ch-59}\hypertarget{ch-59}{}
 
 一个可解非交换模型可以检验一般条件动力学讨论中的每个对象是否真正一致。本章逐步算出
 Doob
@@ -8147,7 +8150,7 @@ F(\tau)=\frac{S\tau S^\dagger}{\operatorname{Tr}(H\tau)}.
 
 令 \(a_n=3^{-n}\)。
 
-\phantomsection\label{p-qdd-01}{}
+\protect\hypertarget{p-qdd-01}{}{}
 
 \textbf{P-QDD-01（当前 Doob 通道的精确动力学）。} 对任意复矩阵 \(X\)
 与任意 \(n\ge0\)，
@@ -8209,7 +8212,7 @@ c_\tau=4\tau_{00}+\tau_{11},\qquad
 这些界来自完整密度态的正性和迹一；没有只对角态或有限样本输入作检查。\(c_\tau\)
 是滤波归一因子，可能大于 \(1\)，不是物理成功概率。
 
-\phantomsection\label{p-qdd-02}{}
+\protect\hypertarget{p-qdd-02}{}{}
 
 \textbf{P-QDD-02（实际源成功算符与质量闭式）。} 对上述同一个源模型，
 
@@ -8254,7 +8257,7 @@ T\sigma_+T^\dagger=\frac58\rho_*.
 由于每个有限 \(n\) 的成功质量严格正，已有 \texttt{conditional\allowbreak State}
 对全部密度输入都定义良好。
 
-\phantomsection\label{p-qdd-03}{}
+\protect\hypertarget{p-qdd-03}{}{}
 
 \textbf{P-QDD-03（实际条件态及其定量收敛）。} 记
 \(\tau_{\mid n}=\Phi^n(\tau)/m_n(\tau)\)，则
@@ -8293,7 +8296,7 @@ d_{\rm eff}(\tau_{\mid n},\rho_*)
 
 \section{59.5 条件稳态与无条件成功质量的不同极限}
 
-\phantomsection\label{p-qdd-04}{}
+\protect\hypertarget{p-qdd-04}{}{}
 
 \textbf{P-QDD-04（有限成功概率衰减与初态责任）。} 对任意密度态
 \(\tau\)，每个有限 \(n\) 均有 \(m_n(\tau)>0\)，但
@@ -8321,7 +8324,7 @@ m_1(\tau_0)=\frac{33}{128}\ne\frac3{16}.
 
 \section{59.6 正谱度量不能保证唯一吸引态}
 
-\phantomsection\label{n-qdd-01}{}
+\protect\hypertarget{n-qdd-01}{}{}
 
 \textbf{N-QDD-01（合法恒等 Doob 负控）。}
 存在实际完整源仪器，其成功分支对非零 PSD
@@ -8352,7 +8355,7 @@ Doob
 与前两章合看，当前内核获得了三种相互配合的能力：用实际纯态与偏迹表示任意有限复混态，用联合记录寄存器保存协议历史与量子记忆，用实际谱交织定量解释指定模型中的条件持续。这些都在已经声明的量子实现内成立。本章原先提出的有限共同控制器记录预算已由第62、65章补齐；选择原则之间的严格逻辑关系和有明确一般条件的动力学推广仍须继续研究，再把所得可观测量接到可实施实验。这样，UEOT
 的解释目标会不断受到模型反例、形式证明和经验责任的共同约束。
 
-\chapter{60. 全效应分离与复模型的普遍局部层析}\label{ch-60}
+\chapter{60. 全效应分离与复模型的普遍局部层析}\label{ch-60}\hypertarget{ch-60}{}
 
 全效应距离何时真能区分密度矩阵？本章先用合法效应张成所有 Hermitian
 算符，再通过实部和虚部恢复联合矩阵元，给出有限复模型对任意联合态的局域层析证明。
@@ -8404,7 +8407,7 @@ M_\iota&=M_\iota(\mathbb C),\\
 
 \section{60.2 每个 Hermitian 算符都由合法效应实线性张成}
 
-\phantomsection\label{p-sep-01}{}
+\protect\hypertarget{p-sep-01}{}{}
 
 \textbf{P-SEP-01（Hermitian 算符的合法效应表示）。} 对任意有限载体
 \(\iota\) 和任意 Hermitian 矩阵 \(H\)，存在实数 \(r>0\) 与实际效应
@@ -8476,7 +8479,7 @@ I-E=\frac{rI-H}{2r}\succeq0.
 \(I\)，故两式相等。这个中间步骤不要求 \(X,Y\) 为密度态，真正用到
 Hermitian 性的是测试 \(H\) 的合法效应表示。
 
-\phantomsection\label{p-sep-02}{}
+\protect\hypertarget{p-sep-02}{}{}
 
 \textbf{P-SEP-02（全效应分离与距离零的矩阵含义）。} 对任意
 \(\rho,\sigma\in\mathcal D(\iota)\)，
@@ -8633,7 +8636,7 @@ T_{(i,a),(j,b)}
 \(S_{ii}=2e_{ii}\)、\(T_{ii}=0\)；两个指标都重复时第一式仍恰好等于两倍联合对角矩阵单位，第二式两边都为零。对
 Hermitian \(X\)，对角元的虚部本来也为零。这些边界包含在实际通用声明中。
 
-\phantomsection\label{p-clt-01}{}
+\protect\hypertarget{p-clt-01}{}{}
 
 \textbf{P-CLT-01（完整有限复模型的普遍局部层析）。} 对任意有限载体
 \(\iota,\nu\) 和任意 \(\rho,\sigma\in\mathcal D(\iota\times\nu)\)，若
@@ -8704,7 +8707,7 @@ Y=\begin{pmatrix}0&-\mathrm i\\\mathrm i&0\end{pmatrix}.
 \(T_{01}\) 的约定为 \(-Y\)，所以这里使用标准 \(Y\)
 不改变第60.5节已经固定的恢复符号。
 
-\phantomsection\label{n-sep-01}{}
+\protect\hypertarget{n-sep-01}{}{}
 
 \textbf{N-SEP-01（全部对角效应仍不能识别相干态）。} 定义
 
@@ -8844,7 +8847,7 @@ O；若要求自然界必须满足局部层析，则还须把这项选择原则�
 后续的物理桥应说明哪些 UEOT
 机制选择这些状态、效应与复合规则，哪些真实设备实现所需测试，以及候选理论之间有哪些可区别的经验预测。本章为这项工作提供了完整且可检验的有限实现；它不把有限实现的完备性改称自然理论的最终完成。
 
-\chapter{61. 完整纯性与有限纯化的酉等价}\label{ch-61}
+\chapter{61. 完整纯性与有限纯化的酉等价}\label{ch-61}\hypertarget{ch-61}{}
 
 ``纯态是向量态''必须从完整密度态凸集的极点定义证明，不能循环地预设。本章完成这一步，并从相同
 Gram
@@ -8922,7 +8925,7 @@ m(X)=\operatorname{Re}\operatorname{Tr}X\ge0.
 
 \section{61.3 从任意凸极点导出归一向量}
 
-\phantomsection\label{p-puc-01}{}
+\protect\hypertarget{p-puc-01}{}{}
 
 \textbf{P-PUC-01（完整有限复密度空间的纯性刻画）。} 对任意
 \(\rho\in\mathcal D(\iota)\)，
@@ -9076,7 +9079,7 @@ B_{ia}=\sum_bU_{ab}A_{ib},
 
 \section{61.6 同辅助载体上的任意纯化}
 
-\phantomsection\label{p-pun-01}{}
+\protect\hypertarget{p-pun-01}{}{}
 
 \textbf{P-PUN-01（同辅助载体的完整纯化酉等价）。} 设
 \(\Psi,\Phi\in\mathcal D(\iota\times\alpha)\)
@@ -9118,7 +9121,7 @@ Gram 等式。上一节产生 \(U\)，使
 
 \section{61.7 不同载体先使用真正的矩形等距通道}
 
-\phantomsection\label{p-aux-01}{}
+\protect\hypertarget{p-aux-01}{}{}
 
 \textbf{P-AUX-01（辅助等距嵌入的实际通道、边际和纯性）。} 设
 \(J:\mathbb C^\alpha\to\mathbb C^\beta\) 是实际矩形矩阵，满足
@@ -9200,7 +9203,7 @@ J_\beta=\begin{bmatrix}0\\I_\beta\end{bmatrix}.
 \widetilde\Phi=\mathcal E_{J_\beta}(\Phi).
 \]
 
-\phantomsection\label{p-pun-02}{}
+\protect\hypertarget{p-pun-02}{}{}
 
 \textbf{P-PUN-02（不同有限辅助载体的共同扩展酉等价）。} 若
 \(\Psi\in\mathcal D(\iota\times\alpha)\)、\(\Phi\in\mathcal D(\iota\times\beta)\)
@@ -9284,7 +9287,7 @@ AA^\dagger=BB^\dagger
 
 \section{61.10 三种错误作用方向的联合密度负控}
 
-\phantomsection\label{n-pun-01}{}
+\protect\hypertarget{n-pun-01}{}{}
 
 \textbf{N-PUN-01（伴随、转置和逐项共轭不能替代实际辅助作用）。}
 对上一节固定的 \(U\) 与 \(\psi_1\)，若把正确辅助矩阵分别错换为
@@ -9336,7 +9339,7 @@ AA^\dagger=BB^\dagger
 J=\begin{bmatrix}1&0\\0&1\\0&0\end{bmatrix}.
 \]
 
-\phantomsection\label{n-aux-01}{}
+\protect\hypertarget{n-aux-01}{}{}
 
 \textbf{N-AUX-01（严格辅助扩维是等距嵌入，不是双侧酉等价）。} 上述实际
 \(3\times2\) 矩阵满足 \(J^\dagger J=I_2\)，但 \(JJ^\dagger\ne I_3\)。
@@ -9424,7 +9427,7 @@ Core
 
 第64章随后在明确的辅助维数次序下完成最小纯化维数与直接等距的责任。
 
-\chapter{62. 保留历史的逐动作记录误差预算}\label{ch-62}
+\chapter{62. 保留历史的逐动作记录误差预算}\label{ch-62}\hypertarget{ch-62}{}
 
 完整协议的误差要落实到各动作，必须保存因果历史及其量子记忆。本章在共同固定深度控制器下，用真实
 PSD
@@ -9496,7 +9499,7 @@ X_h(i,j)=X((h,i),(h,j)).
 \(V_h:e_i\mapsto e_{(h,i)}\) 写出，便有
 \(X_h=V_h^\dagger XV_h\)。同一个主子矩阵构造也用于输出效应。
 
-\phantomsection\label{p-arb-01}{}
+\protect\hypertarget{p-arb-01}{}{}
 
 \textbf{P-ARB-01（历史块、归一权重与合法块效应）。} 若
 \(\zeta\in\mathcal D(H\times\iota)\)，则每个主块 \(\zeta_h\) 都是
@@ -9544,7 +9547,7 @@ Kraus 矩阵为 \(L_{h,k}\)，在历史与记忆联合空间中定义
 \(h\) 写入输出。对不同 \(h\) 的 Kraus 求和是通道的非相干 Kraus
 求和，因而是历史去相干的真实实现。
 
-\phantomsection\label{p-arb-02}{}
+\protect\hypertarget{p-arb-02}{}{}
 
 \textbf{P-ARB-02（实际历史读取通道的动作加权界）。} 上述 Kraus
 家族构成迹保持完全正通道
@@ -9626,7 +9629,7 @@ S^I_t(X)_{h\|o,h\|o}
 的真实置换嵌入；依次执行这些步骤得到联合密度态
 \(\zeta^I_{C,\rho}\)。零深度没有动作调用，不要求动作载体非空。
 
-\phantomsection\label{p-arb-03}{}
+\protect\hypertarget{p-arb-03}{}{}
 
 \textbf{P-ARB-03（有限历史演化与原完整协议的矩阵一致性）。} 任意固定
 \(N\)、控制器 \(C\)、实际仪器族 \(I\) 和初态 \(\rho\)
@@ -9702,7 +9705,7 @@ a_t&=\sum_{h\in\mathsf H_t}q^J_t(h)
 \texttt{run\ J\ (C.\allowbreak truncate\ t)\ σ} 实际构造；\(a_t\)
 非负，零质量历史按零块定理贡献零。它不是重新命名整个协议的缺陷。
 
-\phantomsection\label{p-arb-04}{}
+\protect\hypertarget{p-arb-04}{}{}
 
 \textbf{P-ARB-04（实际逐动作和预算与完整记录 TV）。}
 在上述固定有限深度、共同控制器与共同记录/记忆载体条件下，对任意初态
@@ -9791,7 +9794,7 @@ P-ARB-03 已证的 TV 重标记等式，传回原协议。\(\square\)
 \(J_{\mathrm{none}}=\mathsf B\)；两种实现均令
 \(I_{\mathrm{some}(o)}=J_{\mathrm{some}(o)}=\mathsf D_o\)。因此控制器的确读取前一步记录并影响后一步仪器。
 
-\phantomsection\label{p-arb-05}{}
+\protect\hypertarget{p-arb-05}{}{}
 
 \textbf{P-ARB-05（精确有理逐步预算的饱和见证）。}
 对任意二维输入密度态，第一动作的真实记录缺陷为
@@ -9838,7 +9841,7 @@ TV 系数。精确计算属于有限形式见证，不是实验确证。{[}QM318
 \(\widehat J_{\mathrm{none}}=\mathsf D_1\)，并令
 \(\widehat J_{\mathrm{some}(o)}=\mathsf D_o\)。对于每一个动作，这两种实现丢弃标签之后的实际量子通道都相同：都是恒等通道。
 
-\phantomsection\label{n-arb-01}{}
+\protect\hypertarget{n-arb-01}{}{}
 
 \textbf{N-ARB-01（无标签动作零缺陷仍可给出最大完整记录误差）。}
 上述两个实际仪器族的每个无标签动作缺陷均为零，但相同任意初态下的两步完整记录
@@ -9915,7 +9918,7 @@ theorem、14项定义和2项缩写，共52个目标。三份源码均有实际�
 
 本章固定深度结果所留下的有限停止树责任由第65章补上：共同停止规则、统一有限上界、真实吸收补齐与原叶联合态均有明确证明。相干控制器、未纳入当前载体的任意环境记忆、diamond距离、无界停止和连续时间极限仍各需新定义与证明。动作缺陷的现实设备校准、建模外泄漏和经验适用条件仍有独立责任。本章没有新增实验，没有从有限内核推出完整自然理论，也没有改变三代结论所依赖的谱、表示、阈值和有效窗口条件。冻结Core的106项与四生成器保持原身份。
 
-\chapter{63. 全效应距离、迹绝对值与最优二元判别}\label{ch-63}
+\chapter{63. 全效应距离、迹绝对值与最优二元判别}\label{ch-63}\hypertarget{ch-63}{}
 
 上确界定义的概率距离在有限复模型中有具体谱表达式，而且最优测试可以达到它。本章构造合法正谱效应，证明半迹绝对值公式及等先验最优二元判别；这些是标准量子信息结果在本项目矩阵接口中的形式证明。
 
@@ -10000,7 +10003,7 @@ T_U(0)&=0,\qquad T_U(1)=I.
 \operatorname{Re}\operatorname{Tr}T_U(d)=\sum_i d_i.
 \]
 
-\phantomsection\label{p-tdist-01}{}
+\protect\hypertarget{p-tdist-01}{}{}
 
 \textbf{P-TDIST-01（有限 Hermitian 正负谱分解及实际绝对值）。}
 对任意有限 Hermitian 矩阵 \(H\)，定义
@@ -10129,7 +10132,7 @@ E_+N=0.
 这个结论对任意 PSD
 分解都给出可靠上界。要得到等号，必须另有达到该界的效应。
 
-\phantomsection\label{p-tdist-02}{}
+\protect\hypertarget{p-tdist-02}{}{}
 
 \textbf{P-TDIST-02（全效应距离的半迹绝对值公式及最优效应）。}
 对任意完整有限复密度态 \(\rho,\sigma\)，令
@@ -10191,7 +10194,7 @@ s(E;\rho,\sigma)
 =\frac{1+p_\rho(E)-p_\sigma(E)}2.
 \]
 
-\phantomsection\label{p-dec-01}{}
+\protect\hypertarget{p-dec-01}{}{}
 
 \textbf{P-DEC-01（等先验二元判别的真实最优成功率）。}
 任意合法效应的成功率满足
@@ -10223,7 +10226,7 @@ s_{\max}
 
 非可计算的存在证明与可逐项核验的有限证书具有不同职责。本节的证书不输入最终距离，也不输入``所有效应都满足某个最终界''；它只输入矩阵正性和乘法等式。
 
-\phantomsection\label{p-tcert-01}{}
+\protect\hypertarget{p-tcert-01}{}{}
 
 \textbf{P-TCERT-01（PSD 支持分解距离证书）。} 给定实际密度态
 \(\rho,\sigma\)、矩阵 \(P,N\) 与合法效应 \(E\)。若
@@ -10378,7 +10381,7 @@ diamond 范数；相干控制器、无限维谱与无界算符也不在本章范
 
 复量子模型的内部推导越完整，越能明确哪些观察差异由模型决定、哪些差异来自实验装置或受限测试库。但是有限数学内核的完备片段不会自行证明该模型是自然界唯一的完整理论。没有新增真实实验，本章所有具体例子都属于精确算术与形式化见证。{[}QM319{]}
 
-\chapter{64. 纯化的最小辅助维数与直接等距}\label{ch-64}
+\chapter{64. 纯化的最小辅助维数与直接等距}\label{ch-64}\hypertarget{ch-64}{}
 
 纯化需要多少辅助维数，以及两个不同辅助空间能否直接比较，取决于精确秩和等距方向。本章证明最小维数的达到与下界；近似小特征值的实验资源问题必须另给误差容许量，不能悄悄改写精确秩。
 
@@ -10431,7 +10434,7 @@ P-PUC-01 从凸极点推出归一向量态的方向，才取得归一向量代�
 故 \(J_e^\dagger J_e=I_\alpha\)。有限基数不等式 \(|\alpha|\le|\beta|\)
 给出实际单射，因而给出实际矩形等距。这一步不借助纯化的存在性，不把所需矩阵作为假设字段。
 
-\phantomsection\label{p-pdm-01}{}
+\protect\hypertarget{p-pdm-01}{}{}
 
 \textbf{P-PDM-01（矩形等距的精确维数方向）。} 对有限载体
 \(\alpha,\beta\)，
@@ -10498,7 +10501,7 @@ J=UJ_0.
 作用于向量的辅助指标；不是
 \(AJ^\dagger\)。共轭出现在外积和等距恒等式中，不能移动到错误的位置。
 
-\phantomsection\label{p-pdm-02}{}
+\protect\hypertarget{p-pdm-02}{}{}
 
 \textbf{P-PDM-02（任意实际纯化的有方向直接等距）。} 若
 \(\Psi\in\mathcal D(\iota\times\alpha)\) 和
@@ -10532,7 +10535,7 @@ J^\dagger J=I_\alpha,\qquad
 =(AA^\dagger)_{ij}.
 \]
 
-\phantomsection\label{p-pdm-03}{}
+\protect\hypertarget{p-pdm-03}{}{}
 
 \textbf{P-PDM-03（全部凸纯扩展的实际秩下界）。}
 对上述任意纯态和实际边际，
@@ -10604,7 +10607,7 @@ G_{ia}=U_{ia}\sqrt{\lambda_a}\quad(a\in S_\rho).
 
 \section{64.6 最小值的达到与指定载体上的充要条件}
 
-\phantomsection\label{p-pdm-04}{}
+\protect\hypertarget{p-pdm-04}{}{}
 
 \textbf{P-PDM-04（有限复纯化的精确最小辅助维数）。} 对任意有限复密度态
 \(\rho\) 和任意指定有限辅助载体 \(\alpha\)，
@@ -10676,7 +10679,7 @@ B=AJ^{\mathsf T}
 实际相乘给 \(BB^\dagger=AA^\dagger=\rho\)，且两份归一向量满足
 \(\operatorname{vec}B=(I\otimes J)\operatorname{vec}A\)。本例检验的是实际辅助矩阵方向及完整联合密度关系，包含的复相位不能被无条件删去。第61章三种错误作用方向的负控继续保留。
 
-\phantomsection\label{n-pdm-01}{}
+\protect\hypertarget{n-pdm-01}{}{}
 
 \textbf{N-PDM-01（同边际不允许省略直接等距的维数方向）。}
 上述二维与三维辅助纯态边际相同；但不存在任何
@@ -10706,7 +10709,7 @@ noncomputable
 UEOT Core
 必须选取复量子理论，更不能把形式化内核通过称作自然界新增实验确证。重建的全部背景、独立物理选择依据、模型到实际系统的适用性以及可检验预测仍承担各自开放责任。
 
-\chapter{65. 变长停止协议、原叶联合态与未停止权重预算}\label{ch-65}
+\chapter{65. 变长停止协议、原叶联合态与未停止权重预算}\label{ch-65}\hypertarget{ch-65}{}
 
 允许提前停止的协议不应向已经停止的路径继续收取动作误差。本章把原有限停止树补成真实吸收过程，再将联合态与效应搬回原叶空间，以参考实现尚未停止的权重给出预算；无界停止和相干控制仍不在该定理内。
 
@@ -10786,7 +10789,7 @@ e_N(l)=\bigl(\mathrm{some}\ o_0,\ldots,
 \(l\)，它必等于
 \(e_N(l)\)。因此编码是单射，全部合法完整历史恰为原叶编码的像。
 
-\phantomsection\label{p-stop-01}{}
+\protect\hypertarget{p-stop-01}{}{}
 
 \textbf{P-STOP-01（原有限停止树的实际吸收补齐）。} 对任何
 \(N\ge H(\pi)\)、任何原输入矩阵 \(X\) 和任何补齐历史
@@ -10847,7 +10850,7 @@ J^\dagger\widetilde E J
 =(J^\dagger J)E(J^\dagger J)=E.
 \]
 
-\phantomsection\label{p-stop-02}{}
+\protect\hypertarget{p-stop-02}{}{}
 
 \textbf{P-STOP-02（全效应距离保持与原叶联合态回接）。}
 对任何有限矩形等距 \(J\) 和完整密度态 \(\rho,\sigma\)，
@@ -10924,7 +10927,7 @@ s_t^J=\sum_{h:\ C_t(h)\text{为活动动作}}q_t^J(h;\sigma).
 \(s_t^J\)
 是该时刻还会执行原动作的真实概率。它不等于经过后验重新归一的存活分布；停止质量仍在完整记录态中。
 
-\phantomsection\label{p-stop-03}{}
+\protect\hypertarget{p-stop-03}{}{}
 
 \textbf{P-STOP-03（共同有限停止规则的逐动作误差预算）。}
 对同一原完整有限树 \(\pi\)、两套动作族 \(I,J\)、任意输入密度态
@@ -10972,7 +10975,7 @@ d_{\rm eff}(\Omega_I^\pi(\rho),\Omega_J^\pi(\sigma))
 p_I=(3/4,1/4,0),\qquad p_J=(3/4,3/16,1/16).
 \]
 
-\phantomsection\label{p-stop-04}{}
+\protect\hypertarget{p-stop-04}{}{}
 
 \textbf{P-STOP-04（停止协议的精确 \(1/16\) 记录差异）。} 对上述实际
 qubit 仪器与共同停止树，完整原叶记录 TV 和补齐记录 TV 均为
@@ -10989,7 +10992,7 @@ P-STOP-02 保持其 TV。□
 
 \section{65.8 共同停止规则的边界负控}
 
-\phantomsection\label{p-stop-05}{}
+\protect\hypertarget{p-stop-05}{}{}
 
 \textbf{P-STOP-05（相同量子动作不控制不同停止规则的全部记录）。}
 取相同的恒等量子操作及确定结果 0
@@ -11020,7 +11023,7 @@ propext、Classical.choice、Quot.sound，普通 linter
 距离、无界停止时刻、无限条件过程和经验适用性仍开放。源自量子仪器的精确有理见证属于数学正反控，没有新增真实实验。它们也不改变
 Core 的冻结责任或将有限量子模型升级为完整自然理论。
 
-\chapter{66. 原仪器的有限条件过程、允许实现与完整代价}\label{ch-66}
+\chapter{66. 原仪器的有限条件过程、允许实现与完整代价}\label{ch-66}\hypertarget{ch-66}{}
 
 \textbf{本章导读。}
 要构造一个使原实验的稀有接受记录成为典型输出的新过程，必须保留可见记录与量子末态的完整条件联合态，并证明新操作确实处于允许库中。本章承接第56章的条件化构造及第62、65章的记录误差预算，沿后向接受效应、奇异支撑、带标签
@@ -11056,7 +11059,7 @@ p_G=\sum_{\ell\in G}\operatorname{Tr}X_\ell(\rho).
 H_h=\sum_{o,\mu}K_{h,o,\mu}^{\dagger}H_{ho}K_{h,o,\mu}.
 \]
 
-\phantomsection\label{p-fcond-01}{}
+\protect\hypertarget{p-fcond-01}{}{}
 \textbf{P-FCOND-01（同一有限原实验的接受效应）。}
 对每个节点，\(0\preceq H_h\preceq I\)；从任意未归一正输入 \(X\)
 出发，该子树所有接受叶的总质量恰为
@@ -11081,7 +11084,7 @@ H_T=I,\qquad H_t=\Phi_S^*(H_{t+1}),\qquad
 T_hS_h=S_hT_h=P_h,\quad P_h^2=P_h=P_h^{\dagger},\quad P_hS_h=S_h.
 \]
 
-\phantomsection\label{p-fcond-02}{} \textbf{P-FCOND-02（后向 Gram
+\protect\hypertarget{p-fcond-02}{}{} \textbf{P-FCOND-02（后向 Gram
 和导出核消去）。} 原后向递推蕴含，对每个隐藏分支， \[
 S_{ho}K_{h,o,\mu}(I-P_h)=0.
 \] 因而
@@ -11105,7 +11108,7 @@ L_{h,o,\mu}=S_{ho}K_{h,o,\mu}T_h.
 \(J_{h,o,\nu}(I-P_h)\)。标签仍为 \(o\)，隐藏指标扩展为两类 Kraus
 指标的直和。
 
-\phantomsection\label{p-fcond-03}{}
+\protect\hypertarget{p-fcond-03}{}{}
 \textbf{P-FCOND-03（支撑变换及合法全空间补全）。} 主分支 Gram 和为
 \(P_h\)，补分支 Gram 和为 \(I-P_h\)；所得
 \(\widetilde{\mathcal I}_{h,o}\) 是完整 CP 仪器，并对任意复矩阵 \(X\)
@@ -11130,7 +11133,7 @@ P-FCOND-02，\(L_{h,o,\mu}S_h=S_{ho}K_{h,o,\mu}\)；另一方面
 \widetilde\rho_0=S_0\rho S_0/p_G.
 \] 正性及 P-FCOND-01 保证其迹为一。
 
-\phantomsection\label{p-fcond-04}{}
+\protect\hypertarget{p-fcond-04}{}{}
 \textbf{P-FCOND-04（完整叶记录与末态的同源条件化）。}
 运行上述完整仪器树，对每个原叶都有 \[
 \widetilde X_\ell(\widetilde\rho_0)=
@@ -11163,7 +11166,7 @@ C(F)_{(i,r),(j,s)}=F(|i\rangle\langle j|)_{r,s}.
 \] 矩阵单位张成全部复矩阵，故 \(C(F)=C(G)\) 当且仅当
 \(F=G\)。仪器向量必须保留每个可见 \(o\) 的 Choi 块。
 
-\phantomsection\label{p-fcond-05}{}
+\protect\hypertarget{p-fcond-05}{}{}
 \textbf{P-FCOND-05（保留结果及观察权限的凸包 iff）。}
 给定各节点的复线性输入限制 \(R_h\)，存在上述允许随机化，使 \[
 \sum_a w_{q(h)}(a)\,\mathcal A_{h,a,o}\circ R_h
@@ -11205,7 +11208,7 @@ CP 映射。\(\square\)
 
 \section{66.7 正证书、分离证书与权限负控}
 
-\phantomsection\label{p-fcond-06}{}
+\protect\hypertarget{p-fcond-06}{}{}
 \textbf{P-FCOND-06（允许类的有限负分离证书）。} 若实线性泛函 \(f\)、实数
 \(b\) 满足所有允许动作向量 \(v_a\) 都有 \(f(v_a)\le b\)，而目标 \(z\) 有
 \(f(z)>b\)，则目标不在该允许凸包中。
@@ -11227,7 +11230,7 @@ F_H(\rho)=\frac{\sqrt H\rho\sqrt H}{\operatorname{Tr}(H\rho)},\qquad
 \operatorname{Tr}(H\rho)>0,
 \] 不能只检验一个已知输入，就宣称有对所有未知输入适用的确定性通道。
 
-\phantomsection\label{p-fcond-07}{}
+\protect\hypertarget{p-fcond-07}{}{}
 \textbf{P-FCOND-07（全部未知输入上的确定性初始化分类）。} 设
 \(H\succeq0\)、\(H\ne0\) 为有限维矩阵，仅要求系统输出边缘时，\(F_H\)
 在全部正成功率密度态上可由同一确定性 CPTP 映射实现，当且仅当
@@ -11259,7 +11262,7 @@ F_H(\rho)=\frac{\sqrt H\rho\sqrt H}{\operatorname{Tr}(H\rho)},\qquad
 A=\sqrt{H_0/c}.
 \] \(I-A^{\dagger}A\succeq0\) 保证可添加失败 Kraus 构成真实完整仪器。
 
-\phantomsection\label{p-fcond-08}{}
+\protect\hypertarget{p-fcond-08}{}{}
 \textbf{P-FCOND-08（缩放滤波的实际成功率与后验）。}
 该完整滤波仪器的成功率为 \(p_G/c\)，成功后态为
 \(\widetilde\rho_0\)，与尺度 \(c\)
@@ -11280,7 +11283,7 @@ A=\sqrt{H_0/c}.
 \(C(R)\)，均值
 \(\mu\)。成本包含这一尝试中真正执行的动作、准备、失败检测和重置；同一次尝试的成本可以与成败相关。
 
-\phantomsection\label{p-fcond-09}{}
+\protect\hypertarget{p-fcond-09}{}{}
 \textbf{P-FCOND-09（独立重置直到成功的完整成本）。}
 若每次重置后得到同一独立试验，则直到首次成功的平均总成本为
 \(\mu/p\)。截断为至多 \(n\) 次尝试时，平均成本为 \[
@@ -11306,7 +11309,7 @@ C_{\rm new}=C_{\rm init}+\sum_{h\,\mathrm{active}}
 \(\Omega,\Omega'\)，使用相同的接受提取器，其成功率为 \(p,q>0\)。记 \(D\)
 为本书已证明的半迹距离，或等价的全效应距离。
 
-\phantomsection\label{p-fcond-10}{}
+\protect\hypertarget{p-fcond-10}{}{}
 \textbf{P-FCOND-10（完整输出到条件输出的误差传播）。} 若
 \(D(\Omega,\Omega')\le\varepsilon\)，则 \[
 |p-q|\le\varepsilon,\qquad
@@ -11336,7 +11339,7 @@ D(\Omega_G,\Omega'_G)\le
 现有第62、65章给共同经典控制器下，按照参考实现实际活动前缀质量加权的逐动作预算。这里每一步必须作为保留可见标签的完整
 CP 仪器比较，初态误差单列。
 
-\phantomsection\label{p-fcond-11}{} \textbf{P-FCOND-11（合法 Kraus
+\protect\hypertarget{p-fcond-11}{}{} \textbf{P-FCOND-11（合法 Kraus
 近似的可用局部误差界）。}
 对两个实际完整、具有相同可见标签且经过隐藏指标零填充的 Kraus 家族
 \(\{L_j\},\{M_j\}\)，其一步带标签输出距离，对任意归一输入不超过 \[
@@ -11370,7 +11373,7 @@ Kraus 集合也不能未经合法修正就当作实际 CPTP 动作。
 的乘积差即可给局部 Kraus
 误差。奇异情形需固定且认证支撑，再在该支撑上应用相应下界；不能只依靠浮点排序猜测精确秩。
 
-\phantomsection\label{c-fcond-01}{}
+\protect\hypertarget{c-fcond-01}{}{}
 \textbf{C-FCOND-01（小谱值不能当零谱处理）。} 令
 \(H_\epsilon=\operatorname{diag}(1,\epsilon)\)，\(H_0=\operatorname{diag}(1,0)\)，\(\epsilon>0\)。尽管
 \(\|H_\epsilon-H_0\|=\epsilon\to0\)，其支撑逆根与 \(H_0\)
@@ -11458,7 +11461,7 @@ Lean 而改变。实际构建、命名公理、运行记录和源身份见本版
 Core 唯一导出量子域，没有证明一般量子 Perron
 或无界条件路径，没有获得新的硬件数据；后续实验可以检验指定实现是否达到本章所给完整记录、成本和误差合同。
 
-\chapter{67. 操作等价、微观截断与共同参数下的鲁棒实现}\label{ch-67}
+\chapter{67. 操作等价、微观截断与共同参数下的鲁棒实现}\label{ch-67}\hypertarget{ch-67}{}
 
 本章接续第66章已经闭合的有限条件过程。新增责任是把实际变换的统计身份、振子微观动力学、有限计算和未知参数下的一次合法部署接到同一完整输出。一般
 Core、复量子扇区选择、实验装置和经验支持仍是不同层次；本章不改变冻结
@@ -11477,7 +11480,7 @@ CQ
 
 \section{67.2 实际事件的操作身份}
 
-\phantomsection\label{p-opt-02}{}
+\protect\hypertarget{p-opt-02}{}{}
 
 \textbf{P-OPT-02（正维有限复系统中的四种事件等价）。}
 令输入、输出系统为正维有限复 Hilbert
@@ -11507,7 +11510,7 @@ Choi 元素相近，也不能直接换名为最坏操作误差。
 
 \section{67.3 可见标签与操作商}
 
-\phantomsection\label{p-opt-03}{}
+\protect\hypertarget{p-opt-03}{}{}
 
 \textbf{P-OPT-03（逐可见标签的组合相容性）。}
 固定可见结果字母表，两个完整仪器的全部带标签辅助统计相同，当且仅当每个可见标签对应的实际
@@ -11546,7 +11549,7 @@ Hamiltonian 当作器件模型时，旋波近似等误差仍需独立控制。
 
 真空辅助与非负辅助激发数共同保证：保总激发联合酉从初始总激发不超过截断的态出发，完整读出的每个隐藏分支仍落在系统截断内。读出未必对角于辅助激发，但固定的每个读出向量所得分量都不能产生更高系统激发。
 
-\phantomsection\label{p-micro-01}{}
+\protect\hypertarget{p-micro-01}{}{}
 
 \textbf{P-MICRO-01（微观来源到完整适应 CQ 的截断桥）。}
 对上述实际动作族、有限结果/隐藏细化、固定观察权限和最大有限高度，对每个合法经典控制器、每个有限参考和每个满足预算的联合输入，都有：
@@ -11573,7 +11576,7 @@ diamond 范数。
 
 \section{67.5 必要前提、正常迹类与真实过滤}
 
-\phantomsection\label{c-micro-01}{}
+\protect\hypertarget{c-micro-01}{}{}
 
 \textbf{C-MICRO-01（平均能量保持不保证逐分支截断）。}
 在能量零、一、二的三态空间，测量制备通道固定零态、二态，把一态送到零态与二态的等概率混合，并消去非对角元。其对所有输入保持平均激发数，但其中一个
@@ -11584,7 +11587,7 @@ P-MICRO-01 的逐分支前提。
 CP 复合在同一输入上的距离为一。这里只检验实际通道，不能以两个 Kraus
 矩阵反对易代替通道不交换。
 
-\phantomsection\label{p-micro-02}{}
+\protect\hypertarget{p-micro-02}{}{}
 
 \textbf{P-MICRO-02（正常迹类后选择和完整准备记录）。} 对同一正常 CP
 迹不增接受提取器、完整正常输出及正接受概率，有限维锐后选择界原常数推广到迹类输出。另对真实投影过滤，理想总是通过输出与实际通过/失败完整输出满足下列准备界：
@@ -11643,7 +11646,7 @@ CPTP
 
 \section{67.7 联合校准与鲁棒证书}
 
-\phantomsection\label{p-rob-01}{}
+\protect\hypertarget{p-rob-01}{}{}
 
 \textbf{P-ROB-01（同一参数集上的部署误差与分离）。}
 固定完整输出、输入/参考范围和观察权限；校准产生联合集合。给定一个只由校准和合法可见历史确定的部署候选
@@ -11669,7 +11672,7 @@ d_{\mathcal X}\!\left(T_\theta,\sum_a w_aA_{a,\theta}\right)
 
 对固定合法输入和完整记录上的效应，若目标期望的认证下界严格大于全部动作期望的认证上界加允许误差，则该效应给出所有候选、所有混合均不可实现的分离证书。一般线性泛函必须另带实际对偶范数。上界、下界均不足时返回``当前证书不足''，而不是把求解器失败写成物理不可能。
 
-\phantomsection\label{c-rob-01}{}
+\protect\hypertarget{c-rob-01}{}{}
 
 \textbf{C-ROB-01（逐参数可实现不推出一次鲁棒部署）。}
 对本章条件目标，每个已知参数都可令每一步标签一的权重等于该参数，实现精确输出。若参数未知且可见记录由动作选择产生，控制器没有额外参数敏感查询，那么其第一个标签分布在部署前固定；两个不同参数的目标首标签概率不同，故不可能同时精确实现。这是没有统一权重，不是每个物理候选都不可实现。
@@ -11678,7 +11681,7 @@ d_{\mathcal X}\!\left(T_\theta,\sum_a w_aA_{a,\theta}\right)
 
 \section{67.8 可见历史的精确收益与完整误差}
 
-\phantomsection\label{p-rob-02}{}
+\protect\hypertarget{p-rob-02}{}{}
 
 \textbf{P-ROB-02（同一原源的精确设计区间证书）。}
 允许每一步选择实际门并输出相同标签；随机币结果就是该可见标签，没有额外被删掉的动作记录。设设计区间半宽为五十分之一。常数二分之一权重的两步最坏完整误差为五十一除二千五百；使用第一步可见标签的合法策略，将它改善为五十分之一，且在规定的标签动作库内达到整个设计区间的极小极大值。
@@ -11748,7 +11751,7 @@ C_{\mathrm{src}}=
 
 \section{67.10 长期边缘混合与完整记忆的反差}
 
-\phantomsection\label{p-micro-03}{}
+\protect\hypertarget{p-micro-03}{}{}
 
 \textbf{P-MICRO-03（单激发边缘混合，完整记录不遗忘）。}
 进一步固定单激发基底次序为振子激发、探针激发，并取下列实际门。对设计区间内全部源参数，忘记记录后的条件通道每两步有统一收缩界，其唯一不变态为该扇区的最大混合态；保留完整成功历史时，任意两输入的
@@ -11805,7 +11808,7 @@ checker 与主智能体独立路径检查相互补充；合成校准及有限 te
 留出不代替真实数据。三名原生子智能体交叉审查为内部 AI
 审查，不是外部人类同行评议。完整来源、失败后修正和未覆盖域均保存在本轮审计与执行记录中。
 
-\chapter{68. 分段激发增长、有限载体与可控的蓝脉冲省略}\label{ch-68}
+\chapter{68. 分段激发增长、有限载体与可控的蓝脉冲省略}\label{ch-68}\hypertarget{ch-68}{}
 
 第67章解决了守激发操作的有限截断。本章允许一种具体的激发增长：在原红边带脉冲之后追加独立的蓝边带脉冲。关键不在于把``近似守恒''写进输入证书，而在于从实际生成元证明，每次蓝脉冲最多把支撑上界提高二。随后让有限载体随步骤增长，保留完整预测；另在独立的小脉冲保证下，证明省略该脉冲的误差。这关闭一条明确的非守恒扩展，并不覆盖一般
 Rabi 动力学、无限时域或全部连续场。
@@ -11841,7 +11844,7 @@ Lamb--Dicke 条件。
 
 \section{68.2 从自伴生成元推出增长窗口}
 
-\phantomsection\label{p-micro-04}{}
+\protect\hypertarget{p-micro-04}{}{}
 
 \textbf{P-MICRO-04（分段蓝脉冲的有限激发增长）。}
 对每个非负整数截断和每个实脉冲面积，蓝脉冲把该截断载体送入上界增加二的载体。包含至多指定数量蓝脉冲的任意合法有限经典控制树，逐分支满足累加的增长上界；这是源算符的结论，不是新增输入字段。
@@ -11874,7 +11877,7 @@ Kraus 细化，只能是同一已证 CP
 
 \section{68.3 矩形仪器、停止记录与操作组合}
 
-\phantomsection\label{p-opt-04}{}
+\protect\hypertarget{p-opt-04}{}{}
 
 \textbf{P-OPT-04（增长载体上的完整矩形操作桥）。}
 在固定有限动作、结果、观察权限和最大高度内，以上微观源具有每步完备的矩形有限仪器。把全部停止分支嵌入共同最终载体后，其完整
@@ -11941,7 +11944,7 @@ P-MICRO-02，不重新计为新定理。它来自纯化后的通过块差的至�
 
 \section{68.5 能量加权的蓝脉冲省略}
 
-\phantomsection\label{p-micro-05}{}
+\protect\hypertarget{p-micro-05}{}{}
 
 \textbf{P-MICRO-05（无蓝参照下的完整记录省略界）。}
 固定相同合法记录策略和相同红、相位门，比较保留蓝脉冲与省略蓝脉冲的完整输出。只要无蓝参照路径的归一态均保持给定激发均值界，局部误差按该参照前缀的未归一质量加权后相加。对本章两步可见策略，平均选择蓝脉冲次数恰为一，因此得到下列统一界。
@@ -11969,7 +11972,7 @@ D(C_\beta(\rho),C_0(\rho))\le|\beta|\sqrt{\bar n+1}.
 
 \section{68.6 同时作用不能沿用硬增长窗口}
 
-\phantomsection\label{c-micro-02}{}
+\protect\hypertarget{c-micro-02}{}{}
 
 \textbf{C-MICRO-02（同时红蓝作用的无限尾反例）。}
 分段结论不蕴含同时红蓝作用在有限时间后仍有有限激发支撑。取 \(X\) 为
@@ -11998,7 +12001,7 @@ Rabi
 
 \section{68.7 同源端到端证书}
 
-\phantomsection\label{p-rob-03}{}
+\protect\hypertarget{p-rob-03}{}{}
 
 \textbf{P-ROB-03（增长源、物理过滤与省略实现的统一证书）。}
 采用上述原源、两步接受事件和合法策略。在规定设计区间、初始均值和理想操作合同内，共蓝实现与省略蓝实现都具有完整
@@ -12035,7 +12038,7 @@ CQ 距离恰为经典路径 TV；P-ROB-02
 
 \section{68.8 旗计数对蓝面积不可识别}
 
-\phantomsection\label{c-rob-02}{}
+\protect\hypertarget{c-rob-02}{}{}
 
 \textbf{C-ROB-02（相同旗概率不认证蓝脉冲末态）。}
 在本模型中，所有原旗记录概率仅依赖参数中的概率分量；它们不能识别蓝脉冲面积，亦不能认证省略后的完整末态精度。
@@ -12094,7 +12097,7 @@ AI 审查，不是外部人类同行评议。
 OPT、独立复量子选择、测量机制识别、长期极限、场论与
 EFT、粒子与味预测、引力和宇宙学沿现行路线图分别保留。这个有限增长实例的完成不代表全领域物理闭合。
 
-\chapter{69. 同时动力学、真实截断误差与校准后的完整预测}\label{ch-69}
+\chapter{69. 同时动力学、真实截断误差与校准后的完整预测}\label{ch-69}\hypertarget{ch-69}{}
 
 \section{69.1 从无限尾反例继续，而不恢复硬截断猜想}
 
@@ -12133,7 +12136,7 @@ H_K&=J_K^\dagger HJ_K,&U_K(t)&=e^{-itH_K}.
 
 \section{69.2 完整树的近似操作稳定性}
 
-\phantomsection\label{p-opt-05}{}
+\protect\hypertarget{p-opt-05}{}{}
 
 \textbf{P-OPT-05（完整 CQ 树的未归一前缀误差界）。}
 固定有限高度的经典控制树、动作、可见结果、停止规则与观察权限。两套正常
@@ -12163,7 +12166,7 @@ CPTP 映射。对任意厄米迹类 \(Z=Z_+-Z_-\)，正性和保迹给出
 
 \section{69.3 从实际生成元得到能量和边界流}
 
-\phantomsection\label{p-micro-06}{}
+\protect\hypertarget{p-micro-06}{}{}
 
 \textbf{P-MICRO-06（同时源的自伴实现、能量预算与边界缺陷）。}
 对69.1节的一般实参数、\(\omega>0\)，\(H,H_0\) 在 \(D(n)\)
@@ -12223,7 +12226,7 @@ P-OPT-05，便得到同一完整树的边界流界。若实际用数值积分认
 
 \section{69.4 真实 Galerkin 演化的有限余项}
 
-\phantomsection\label{p-micro-07}{}
+\protect\hypertarget{p-micro-07}{}{}
 
 \textbf{P-MICRO-07（有限 Duhamel 展开给出的真实截断界）。} 令
 \(N,L\ge0\)、\(K=N+2L\)。在69.1节任一指定自伴模型中，从 \(P_N\)
@@ -12275,7 +12278,7 @@ d_{N,L}(z)&=\min\{1,2c_{L+1}(N,z)\}.
 
 \section{69.5 压缩不自动继承无限模型的不变量}
 
-\phantomsection\label{c-micro-03}{}
+\protect\hypertarget{c-micro-03}{}{}
 
 \textbf{C-MICRO-03（Galerkin 压缩不保留该正交分量不变量）。}
 无限受控力与探针相位都强对易 \(X\) 的谱投影，因而保持 \(X^2\)
@@ -12294,7 +12297,7 @@ Galerkin 误差。
 
 \section{69.6 可识别校准与不能读取真值的名义参数}
 
-\phantomsection\label{p-rob-04}{}
+\protect\hypertarget{p-rob-04}{}{}
 
 \textbf{P-ROB-04（联合校准、名义参数及共同力脉冲稳定性）。} 冻结独立
 fresh 制备、固定参数、理想读出与共享脉冲模型。用原源失败频率估计
@@ -12350,7 +12353,7 @@ iid：把同一潜在二元位重复百万次并不会取得 Hoeffding 精度。
 
 \section{69.7 一条统一的完整输出证书}
 
-\phantomsection\label{p-rob-05}{}
+\protect\hypertarget{p-rob-05}{}{}
 
 \textbf{P-ROB-05（物理准备、鲁棒部署、名义校准与有限预测的合成界）。}
 对上述共同模型、合法可见策略、所有有限参考和
@@ -12447,7 +12450,7 @@ OPT／独立复选择、长期极限、相干控制和无限参考仍各有责�
 的同阶可观测量、两种高能世代候选、味关系、Fisher 到 Lorentzian
 的新增结构以及宇宙学诸目标继续保留在同一长期路线，不能由本章合并结案。
 
-\chapter{70. 持久环境的完整过程、有限认证与选择边界}\label{ch-70}
+\chapter{70. 持久环境的完整过程、有限认证与选择边界}\label{ch-70}\hypertarget{ch-70}{}
 
 \section{70.1 共同对象与证明责任}
 
@@ -12475,7 +12478,7 @@ OPT／独立复选择、长期极限、相干控制和无限参考仍各有责�
 Core
 独立推出。现在将选择目标分为两个：其一是所登记准备、操作和效应生成的\textbf{可达操作理论}；其二是关于自然界全部允许系统与扇区的\textbf{全局理论}。下面的构造给出二者不能静默互换的准确理由。
 
-\phantomsection\label{c-qsel-02}{}
+\protect\hypertarget{c-qsel-02}{}{}
 \textbf{C-QSEL-02（可达扇区隐藏完成的操作等价与全局选择边界）。}
 固定一个复量子可达操作库，包括完整有限测试、并行、条件组合、粗化和丢弃。存在一个具有额外中心超选扇区的完成，使从可达准备出发的全部有限适应电路------不限长度、保留参考、失败、停止和终端效应------与原库概率完全相同；但完成理论的完整态空间含有不能由任意有限直接和矩阵辅助系统纯化的状态。
 
@@ -12566,7 +12569,7 @@ UEOT
 
 固定三槽时间、仪器、反馈和停止规则后，整个持久浴实验是输入与输出均为二能级系统的完整带记录通道。未被访问的内部浴并不是此时需要层析的载体。这一区分允许从有限的普通准备和读出控制任意未操作参考，但它不允许改换中间干预后继续借用同一认证。
 
-\phantomsection\label{p-tom-01}{} \textbf{P-TOM-01（显式有限 tester
+\protect\hypertarget{p-tom-01}{}{} \textbf{P-TOM-01（显式有限 tester
 稳定界及其准备、读出和维数责任）。} 对 \(d\ge2\)，取以下 \(d^2\)
 个合法纯准备和二元效应设置：
 
@@ -12712,7 +12715,7 @@ B&=(a_1+a_1^\dagger)+\frac35(a_2+a_2^\dagger),
 \(R_y(\pi/2)\)、\(R_x(\pi/3)\)、\(I\)。所有终端记录 \(f,pf,ppf,ppp\)
 均保留。距离为各记录块迹范数差之和的一半，环境只在终端按合同迹去。复Hilbert空间、Born规则、CP操作、振子源和真空制备仍是独立物理输入；本节没有从Core唯一导出它们。
 
-\phantomsection\label{p-micro-08}{}
+\protect\hypertarget{p-micro-08}{}{}
 \textbf{P-MICRO-08（共同定义域上的持续Gaussian浴完整过程）。}
 下文首先构造合法的共同源，再推导其完整多时响应。一般有限Gaussian初态只用于明确解析公式的范围；本节执行、校准及数值认证的初态始终是上述冻结真空。
 
@@ -12834,7 +12837,7 @@ F_{s,r}&=\operatorname{Tr}(W_s\sigma_EW_r^\dagger)\\
 
 \subsection{有限Duhamel展开与全输入提升}
 
-\phantomsection\label{p-micro-09}{}
+\protect\hypertarget{p-micro-09}{}{}
 \textbf{P-MICRO-09（同一持续源的全输入有限近似）。} 令 \(P_K\)
 为每模占据数至多 \(K\) 的投影，\(J_K\) 为嵌入，使用真实压缩
 \(H_{\lambda,K}=J_K^\dagger H_\lambda J_K\)。自由浴与全部记录扩张操作保持总粒子数。在包含这些操作的相互作用绘景中，场算符记为
@@ -12939,7 +12942,7 @@ D_{\rm full}(\Phi_\lambda,\Phi_{\widehat\lambda})
 
 \subsection{固定三槽的严格记忆见证}
 
-\phantomsection\label{c-qmem-01}{}
+\protect\hypertarget{c-qmem-01}{}{}
 \textbf{C-QMEM-01（相同单槽不足以确定多时过程）。}
 将环境在每槽后重新制备为真空，会得到另一过程。其孤立单槽通道对任意输入和参考都与真实源相同，因为这一槽仍从同一真空作同一演化。但同一三槽Bell输入在
 \(\lambda=3/10\) 时，事件``记录为 \(ppp\) 且
@@ -12960,7 +12963,7 @@ D_{\rm full}(\Phi_{\rm reset},\Phi_{\rm persistent})>\frac3{100}.
 
 \subsection{Choi区间包络为何控制任意参考输入}
 
-\phantomsection\label{p-num-01}{}
+\protect\hypertarget{p-num-01}{}{}
 \textbf{P-NUM-01（区间Choi到物理终端仪器）。} 使用归一Bell向量
 \(|\Omega_2\rangle=(|00\rangle+|11\rangle)/\sqrt2\)，按``输出
 \(S\)、输入参考''的顺序定义四个归一Choi块：
@@ -13069,7 +13072,7 @@ a\sum_h\operatorname{Tr}_{\rm out}\widetilde Q_h
 
 \section{70.7 因果断开后的持久记忆下界}
 
-\phantomsection\label{p-qmem-02}{}
+\protect\hypertarget{p-qmem-02}{}{}
 \textbf{P-QMEM-02（因果断开响应秩给出的必要记忆维数）。}
 在固定时间切割处，若全部跨切割历史载体的 Hilbert 维数为 \(D\)，历史
 \(h\) 与未来事件 \(t\) 的响应矩阵满足
@@ -13124,7 +13127,7 @@ b=v\sin\theta.
 
 \section{70.8 联合识别、有限样本覆盖与同源认证}
 
-\phantomsection\label{p-rob-06}{}
+\protect\hypertarget{p-rob-06}{}{}
 \textbf{P-ROB-06（两个可信设置的联合识别与覆盖）。}
 对本章声明的两模真空源， 令 \(\lambda\in[1/5,2/5]\)
 为共同耦合尺度，\(\eta\in[9/10,1]\) 为所有声明
@@ -13188,7 +13191,7 @@ C(D)=\{(\lambda,\eta)\in[.2,.4]\times[.9,1]:
 名义点经区间计算验证属于联合集合；显示的矩形只是其外包。真值文件仅由
 合成生成器和独立生成器审计读取，不进入估计器或留出决定。
 
-\phantomsection\label{p-rob-07}{} \textbf{P-ROB-07（完整 CQ
+\protect\hypertarget{p-rob-07}{}{} \textbf{P-ROB-07（完整 CQ
 联合证书与独立留出）。} 结合本章同源全输入参数界、 K=20 的 Galerkin
 误差以及区间认证后的精确有理 CP/TP 修复，有
 
@@ -13293,7 +13296,170 @@ Lean
 更远的责任仍按问题保留：无限模与连续极限、UV/IR
 和重整化、相对论因果性、规范与物质选择、热化与能量交换、真实引力和时空动力学、半经典极限、宇宙学与观测约束。本章的有限源没有证明这些接口。对应的前提分类、可区别退出条件及完整物理责任图保存在本轮审查文件，不能用已完成章节数表示物理完成比例。{[}QM3114{]}
 
-\chapter{附录 A. 符号、单位与标准定理责任表}\label{appendix-a}
+\chapter{71. 从相关浴中究竟能识别什么}\label{ch-71}\hypertarget{ch-71}{}
+
+即使测出每一个等待时间的 Ramsey
+条纹，两种不同的源仍可能无法区分。要分开它们，可以改变实验问法。先让具有正、负两种初始取向的探针分别推动浴，再把探针换成同一个状态，保留浴的位移。第二段相位随初始取向的变化就能读出浴的响应。本章从这项操作出发，推到包括中途失败在内的整份记录的误差界。
+
+\textbf{研究署名说明。}
+第71章是供评议的人工智能辅助研究提案。钱德桂为历史书稿作者。新增主张尚待独立人工评议和作者确认。
+
+\section{71.1 连续控制必须连接哪些纯态？}
+
+\protect\hypertarget{c-qsel-03}{}{}
+
+\textbf{C-QSEL-03（整体与可达面的连续性）。}
+假设每个声明的系统及复合系统中，任意两个纯态都能由从恒等开始的、允许连续实施的可逆控制路径连接。在矩阵块直和中，每个纯态都把全部权重放在一个块内。可逆仿射映射保持极端性，因此初始块的权重沿路径连续取值于
+\(\{0,1\}\)，只能始终为一。这排除了非平凡经典单形和含两个以上可选块的标准直和。任一跨块连续制备路径都必经权重为一半的状态，此时用中心效应即可把它与每个纯态至少区分一半的概率差。
+
+在可达面内结论可以不同。把量子比特扩为
+\(M_2(\mathbb C)\oplus\mathbb C\)，制备
+\((\rho,0)\)，让各仪器分支在隐藏块上乘以相应的结果权重。每条分支的隐藏分量都保持为零，加入未受操作的参考系也一样。按记录长度归纳，每个可达电路的全部响应严格相同。若有完整的连续酉控制，可见面内的纯射线彼此可达。仅测这个面无法判定制备库能否访问整体。\href{../correlated_bath/selection/SELECTION.md}{选择论证}
+
+\protect\hypertarget{c-qsel-04}{}{}
+
+\textbf{C-QSEL-04（连续控制与乘积层析的反模型）。}
+在完整实量子模型中，平面转动就能连接两条射线。在复模型中，可对连接两条射线的酉算符连续插值其本征相位。两者在各自完整控制库中都满足路径要求。对于两个实量子比特，令
+\(J\) 为实平面四分之一圈旋转矩阵。两个态 \((I\pm J\otimes J)/4\)
+对任意实对称乘积效应给出相同概率，因为实对称 \(A\) 满足
+\(\mathrm{tr}(AJ)=0\)。联合效应 \((I+J\otimes J)/2\) 却能完全区分它们。
+
+再加入局部层析，仍有另一反模型。允许纯比特乘积态的凸混合、局域酉路径和对比度
+\(0<\nu<1\)
+的破坏性二元自旋测量。纯制备都是乘积射线，局域路径可连接它们。含噪效应的乘积张成乘积可观测量，但每个联合纯态的边缘都是纯态，故混合比特没有纯化。在对比度为一半时，即使是单份相反方向的输入，一事件概率差也至多一半。连续性仍是独立扇区公设，此比较从重构所需的独立输入中移除了零项。\href{../correlated_bath/selection/check_selection.py}{精确核查}
+
+\section{71.2 浴记得制备时钟}
+
+\protect\hypertarget{p-micro-10}{}{}
+
+\textbf{P-MICRO-10（相关历史与总粒子数截断）。} 沿用第70章的频率
+\((1,3/2)\) 和相对耦合
+\((1,3/5)\)。每次试验开始时，任意探针与有限参考系的联合态同中心双模
+Gaussian 浴成积。浴的正规协方差对角为 \(n\)、非对角为实数
+\(c\)，反常矩为零。对称、反对称模的热占据均值为 \(n+c,n-c\)。取
+\(0\le n\le 3/5\)、\(|c|\le n\)、\(1/5\le\lambda\le2/5\)，制备起点锁相。同一个浴经历全部可达时槽。两棵控制树都保留
+\(f,pf,ppf,ppp\) 各标签及其未归一探针与参考系末态。第二种时序交换
+\((2/3,3/4,1/2)\) 的前两段。
+
+令
+\(w=\lambda^2\)、\(u=w(2n+1)\)、\(v=wc\)。对同一停止前缀内的两条自旋历史，将单位耦合下的位移差按该前缀的实际历时旋回制备坐标系，记为
+\(d\)。Gaussian 衰减和 Weyl 交换相位给出该历史对的权重 \[
+I(p)=\exp(-Au-Bv+iPw),\qquad A=\|d\|^2/2,\quad B=2\operatorname{Re}(\bar d_1d_2).
+\] \(P\)
+包含两条历史的相位差及位移交换相位。以此权重对相应系统矩阵的向量外积求和，即得该记录的
+Choi 块。\(c\ne0\) 时漏掉坐标旋转会改变交叉项。这里仅对初始浴使用
+Gaussian 特征函数。
+
+另一条路线是在总占据数 \(K\)
+处截断，归一化保留部分，并在被动模中估计舍去的热尾。Duhamel
+公式的边界缺陷来自顶层向外的产生作用。先用仍在运行的记录前缀加权传播误差，再迹去浴。取
+\(K=16\)，相同参数下的半迹范数误差在全部输入和两种时序上至多为
+0.011677620430。对程序支持的有理参数，计入运算与保迹补全的有理有限通道界为
+0.027602916940。下文的联合证书直接使用无限源历史和，单独计入一次数值修复。\href{../correlated_bath/dynamics/DYNAMICS.md}{动力学与截断论证}
+
+\section{71.3 哪种测量能分开 Ramsey 等价的源？}
+
+\protect\hypertarget{c-qmem-02}{}{}
+
+\textbf{C-QMEM-02（自由 Ramsey 的精确歧义）。} 自由 Ramsey 均值为
+\(\eta\exp(-A_tu-B_tv)\)。在相同可见度下，\((\lambda,n,c)=(3/10,1/2,1/4)\)
+与 \((1/3,31/100,81/400)\) 都给出
+\((u,v)=(9/50,9/400)\)，所以所有时长的均值一致。取
+\(\eta=0.96\)，原时序``三次通过且 \(YZ\)
+符号为负''这一联合事件的概率却相差超过
+0.001730089430。自由条纹的全部信息仍给这个停止观测量留下可测的预测歧义。\href{../correlated_bath/inference/verification.json}{区间见证}
+
+\protect\hypertarget{p-qmem-03}{}{}
+
+\textbf{P-QMEM-03（因果断开后的带符号响应）。} 让初始的正、负 \(Z\)
+本征态各自作用 \(a=2/3\)，保留浴，把探针重新制备为同一个 \(+X\)
+态。再作用 \(b=3/4\)，在独立试验上分别测两正交分量。记
+\(z_s=\langle X\rangle_s-i\langle Y\rangle_s\)，由 Weyl 乘法得 \[
+z_s=R\exp[i(\delta+s wF)],\qquad w=\frac{\arg(z_+\overline{z_-})}{2F}.
+\] 由给定时序知 \(1.819240198557\le F\le1.819240198558\)、\(R>0\) 且
+\(0<2wF<\pi\)。即使存在共同相位偏移，主辐角也唯一确定
+\(w\)。再用零时可见度与两个独立 Ramsey 对数均值求出 \(u,v\)，便得到正的
+\(\lambda\) 和
+\(n,c\)。若允许偏移依赖于初始符号，它可以精确吸收待测相位。若重置浴，则会擦掉位移。这个识别过程要求独立标定仅作用于探针的重置、共同相位基准与稳定制备。\href{../correlated_bath/inference/INFERENCE.md}{推断与逆映射稳定性}
+
+\section{71.4 从同时置信域到完整输出的误差}
+
+\protect\hypertarget{p-rob-08}{}{}
+
+\textbf{P-ROB-08（内点插值与完整输出证书）。} 在覆盖率为 99\%
+的校准事件上，真参数位于有理多面体内。两个 Ramsey 条带、\(w\) 的区间和
+\(w+2|v|\le u\le11w/5\) 保留了逐参数投影会丢掉的联合信息。在 \(u,w\)
+全距的中点切分，得四个凸块，共有18个不同顶点。单验顶点可能错过内部相位偏移。例如对角为
+\(1,e^{i\theta}\) 的酉在 \(0,2\pi\) 两端给出相同通道，在 \(\pi\) 处却把
+\(|+\rangle\) 送到正交态。
+
+把块内一点写成顶点的凸平均。以该点展开 \(I\)，所有一次项相消。由
+\(|B|\le2A\)、\(u\ge2|v|\)，各线段上均有
+\(|I|\le1\)。两个实坐标的方差各自至多为全距平方的四分之一，故标量余项至多为
+\[
+\frac{\operatorname{range}(Au+Bv)^2+\operatorname{range}(Pw)^2}{8}.
+\] 逐项乘以历史外积的 Frobenius 范数并求和。对归一化比特 Choi 块
+\(J_r\)，由纯输入的 Schmidt 归一化和秩至多四的迹范数界得 \[
+\tfrac12\|\Delta\|_\diamond\le\sum_r\|\Delta J_r\|_1\le2\sum_r\|\Delta J_r\|_F .
+\]
+再由凸性推广到混合输入。将各块的内点余项加到该块区间包围的最差顶点误差上，最后取各块的最大值。名义仪器的精确有理完全正、保迹补全至多另付
+\(10^{-8}\)。
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2100}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2000}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2800}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3100}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+时序
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+完整通道半钻石范数
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Bell 八格模拟分布总变差
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Bell 40位采样总变差
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+原时序 & 0.033892297103 & 0.046090140885 & 0.046090140889 \\
+互换前两槽 & 0.035357047207 & 0.047554890989 & 0.047554890993 \\
+\end{longtable}
+
+各格均为向外舍入的上界。仅完整通道列量化任意输入和未受操作的有限参考系。后两列使用指定
+Bell
+输入，将一个声明的二元测试与四种停止标签合为八格，计入可见度不确定性和每格
+0.0005 的模拟残差。将累积概率量化另付总变差至多
+\(4/2^{40}\)。归一化稀有后选择态或改变中途干预，均须另证。\href{../correlated_bath/certificate/PROOF.md}{证书推导}
+· \href{../correlated_bath/certificate/joint-result.json}{有理数上界}
+
+估计使用720,000次合成校准试验。在408,000次独立冻结留出试验中，两种 Bell
+时序与另一时长的因果断开测试均与预测相容；故意改动读出的对照出现四个区间不相交的格。经过相同标定的标准持久量子过程给出相同预测和统计表现。源是否属于模型、符号相关漂移以及匹配器件实效仍须实测。\href{../correlated_bath/inference/holdout_results.json}{留出判定}
+
+\section{71.5 两模探针在哪里失去局域性？}
+
+\protect\hypertarget{p-field-01}{}{}
+
+\textbf{P-FIELD-01（两模匹配与类空信号）。}
+对圆周上的指定有质量自由标量场，选择圈长和紧支撑涂抹剖面，可使零模和第一余弦模复现双模浴的频率与相对耦合。给这两个低模制备相关态，其余高模取真空。依次开关的两探针测到不同的场量。带符号相位是推迟对易子的积分，相干衰减取决于对称二点函数。支撑严格类空时，微因果性使完整场的带符号相位严格为零。
+
+取 \(\lambda=0.3\)、\(n=0.5\)、\(c=0.25\)，两探针置于对径点并各开
+\(1/5\)。仅用前两模却给出 0.001330794
+弧度，必须保留高模才能抵消。在同一位置用原来的前两段时长，则两模和完整场相位分别约为
+0.16373 与 0.20916 弧度。由涂抹剖面，保留 \(M\) 壳后的相位尾界按
+\(M^{-10}\) 衰减。取 \(M=160\)，此例相位尾小于 \(2.486\times10^{-12}\)
+弧度。这些结果依赖所选的自由场、几何和制备，其物理选择及向相互作用场的推广仍待解决。\href{../correlated_bath/field/FIELD.md}{局域探针与余项}
+· \href{../correlated_bath/field/observed.json}{区间结果}
+
+在等能隙双比特的交换脉冲中，浴获得能隙的
+3/20。重备探针后复用该浴，下一次激发概率比提供新浴高
+0.0375。在物质例中，三色与五色均通过颜色单态电荷整数的筛选。在宇宙学例中，尘埃加宇宙学常数与典范标量有相同的膨胀史，非零波数的扰动却不同。这些比较指出了要区分两种模型必须改测哪个量。
+
+配套的\href{../correlated_bath/sectors/RESULTS.md}{扇区计算}另在各自前提下考察热记忆、物质赋值和几何。外部开关驱动的场、每步重置的浴以及改变背景度规分别定义了不同实验。匹配器件的校准、唯一物质扇区及引力场方程仍是独立问题。
+
+\chapter{附录 A. 符号、单位与标准定理责任表}\label{appendix-a}\hypertarget{appendix-a}{}
 
 \section{A.1 常用符号}
 
@@ -13426,7 +13592,7 @@ Lindblad 算符或线丛。所有重用符号以本章类型为准。
 是声明的正概率下界。书中阐述的 trace/diamond 范数数学与当前 Lean
 对象的已证明识别关系按第50.3、50.5节及第60、63章区分：全效应距离与半迹绝对值的识别已经完成，diamond范数仍是另一项责任。
 
-\chapter{附录 B. 编号证明结果注册表}\label{appendix-b}
+\chapter{附录 B. 编号证明结果注册表}\label{appendix-b}\hypertarget{appendix-b}{}
 
 3.7双语修订完整保留3.6研究版的173个稳定编号，没有另行新增或撤销结果。其中161项来自3.5版，第66章的11项命题与1项反例在3.6研究修订中新增。更早的组成是：2.0版78项，第49--50章10项，第51--53章13项，第54--56章16项，第57--59章14项，第60--62章16项，第63--65章14项。编号登记正文解析结果，不表示原创性、Lean声明或实验确认的计数；完整前提、证明和开放责任见对应章节。两种语言的标题与锚点另有逐项映射。3.8版在这些原有记录之后增列第67章九项结果，合计182项；原173项结果的账本对象及历史验证身份保持不变。3.9版再加入第68章六项结果，合计188项；原182项结果对象保持不变。3.10版增加第69章六项结果，合计194项，完整保留原188项结果对象。3.11版增加第70章九项结果，合计203项，原194项结果对象逐项保持不变。
 
@@ -13446,339 +13612,386 @@ Lindblad 算符或线丛。所有重用符号以本章类型为准。
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\hyperref[p-qbr-01]{P-QBR-01} & 1 & P-QBR-01：经典实现反模型。 \\
-\hyperref[p-qsel-01]{P-QSEL-01} & 2 &
+\protect\hyperlink{p-qbr-01}{P-QBR-01} & 1 &
+P-QBR-01：经典实现反模型。 \\
+\protect\hyperlink{p-qsel-01}{P-QSEL-01} & 2 &
 P-QSEL-01：经典与实量子删除见证。 \\
-\hyperref[p-qact-01]{P-QACT-01} & 3 & P-QACT-01：Madelung--Schrödinger
-条件等价。 \\
-\hyperref[p-qact-02]{P-QACT-02} & 3 & P-QACT-02。 \\
-\hyperref[p-qborn-02]{P-QBORN-02} & 3 &
+\protect\hyperlink{p-qact-01}{P-QACT-01} & 3 &
+P-QACT-01：Madelung--Schrödinger 条件等价。 \\
+\protect\hyperlink{p-qact-02}{P-QACT-02} & 3 & P-QACT-02。 \\
+\protect\hyperlink{p-qborn-02}{P-QBORN-02} & 3 &
 P-QBORN-02：无偏最终分支的概率。 \\
-\hyperref[p-qop-01]{P-QOP-01} & 4 & P-QOP-01：有限 Choi--Kraus 等价。 \\
-\hyperref[p-qop-02]{P-QOP-02} & 4 & P-QOP-02：无信号。 \\
-\hyperref[p-qop-03]{P-QOP-03} & 4 & P-QOP-03：操作误差与传播。 \\
-\hyperref[p-qff-01]{P-QFF-01} & 5 & P-QFF-01：有限量子 FFIPS。 \\
-\hyperref[p-qff-02]{P-QFF-02} & 5 & P-QFF-02：量子商的路径保持。 \\
-\hyperref[p-qmeas-01]{P-QMEAS-01} & 6 & P-QMEAS-01：父系统完成。 \\
-\hyperref[p-qmeas-02]{P-QMEAS-02} & 6 & P-QMEAS-02。 \\
-\hyperref[p-qmeas-03]{P-QMEAS-03} & 6 & P-QMEAS-03：公共盲性。 \\
-\hyperref[p-qmeas-04]{P-QMEAS-04} & 6 & P-QMEAS-04。 \\
-\hyperref[p-qsrn-01]{P-QSRN-01} & 7 & P-QSRN-01：SRN 完备分类。 \\
-\hyperref[p-qsrn-02]{P-QSRN-02} & 7 & P-QSRN-02。 \\
-\hyperref[p-qsrn-03]{P-QSRN-03} & 7 &
+\protect\hyperlink{p-qop-01}{P-QOP-01} & 4 & P-QOP-01：有限 Choi--Kraus
+等价。 \\
+\protect\hyperlink{p-qop-02}{P-QOP-02} & 4 & P-QOP-02：无信号。 \\
+\protect\hyperlink{p-qop-03}{P-QOP-03} & 4 &
+P-QOP-03：操作误差与传播。 \\
+\protect\hyperlink{p-qff-01}{P-QFF-01} & 5 & P-QFF-01：有限量子
+FFIPS。 \\
+\protect\hyperlink{p-qff-02}{P-QFF-02} & 5 &
+P-QFF-02：量子商的路径保持。 \\
+\protect\hyperlink{p-qmeas-01}{P-QMEAS-01} & 6 &
+P-QMEAS-01：父系统完成。 \\
+\protect\hyperlink{p-qmeas-02}{P-QMEAS-02} & 6 & P-QMEAS-02。 \\
+\protect\hyperlink{p-qmeas-03}{P-QMEAS-03} & 6 &
+P-QMEAS-03：公共盲性。 \\
+\protect\hyperlink{p-qmeas-04}{P-QMEAS-04} & 6 & P-QMEAS-04。 \\
+\protect\hyperlink{p-qsrn-01}{P-QSRN-01} & 7 & P-QSRN-01：SRN
+完备分类。 \\
+\protect\hyperlink{p-qsrn-02}{P-QSRN-02} & 7 & P-QSRN-02。 \\
+\protect\hyperlink{p-qsrn-03}{P-QSRN-03} & 7 &
 P-QSRN-03：生成元锥的必要充分条件。 \\
-\hyperref[p-qqdr-01]{P-QQDR-01} & 8 & P-QQDR-01：相干拉回。 \\
-\hyperref[p-qqdr-02]{P-QQDR-02} & 8 & P-QQDR-02。 \\
-\hyperref[p-qqdr-03]{P-QQDR-03} & 8 & P-QQDR-03：同时误差。 \\
-\hyperref[p-qinfo-01]{P-QINFO-01} & 9 & P-QINFO-01。 \\
-\hyperref[p-qinfo-02]{P-QINFO-02} & 9 & P-QINFO-02。 \\
-\hyperref[p-qinf-01]{P-QINF-01} & 10 &
+\protect\hyperlink{p-qqdr-01}{P-QQDR-01} & 8 & P-QQDR-01：相干拉回。 \\
+\protect\hyperlink{p-qqdr-02}{P-QQDR-02} & 8 & P-QQDR-02。 \\
+\protect\hyperlink{p-qqdr-03}{P-QQDR-03} & 8 & P-QQDR-03：同时误差。 \\
+\protect\hyperlink{p-qinfo-01}{P-QINFO-01} & 9 & P-QINFO-01。 \\
+\protect\hyperlink{p-qinfo-02}{P-QINFO-02} & 9 & P-QINFO-02。 \\
+\protect\hyperlink{p-qinf-01}{P-QINF-01} & 10 &
 P-QINF-01：正常态的迹范数连续性。 \\
-\hyperref[p-qinf-02]{P-QINF-02} & 10 & P-QINF-02：能量截断误差。 \\
-\hyperref[p-qccr-01]{P-QCCR-01} & 11 & P-QCCR-01：辛协变的单尺度。 \\
-\hyperref[p-qccr-02]{P-QCCR-02} & 11 & P-QCCR-02。 \\
-\hyperref[p-qccr-03]{P-QCCR-03} & 11 & P-QCCR-03。 \\
-\hyperref[p-qgauss-01]{P-QGAUSS-01} & 13 &
+\protect\hyperlink{p-qinf-02}{P-QINF-02} & 10 &
+P-QINF-02：能量截断误差。 \\
+\protect\hyperlink{p-qccr-01}{P-QCCR-01} & 11 &
+P-QCCR-01：辛协变的单尺度。 \\
+\protect\hyperlink{p-qccr-02}{P-QCCR-02} & 11 & P-QCCR-02。 \\
+\protect\hyperlink{p-qccr-03}{P-QCCR-03} & 11 & P-QCCR-03。 \\
+\protect\hyperlink{p-qgauss-01}{P-QGAUSS-01} & 13 &
 P-QGAUSS-01：协方差必要条件。 \\
-\hyperref[p-qmem-01]{P-QMEM-01} & 18 &
+\protect\hyperlink{p-qmem-01}{P-QMEM-01} & 18 &
 P-QMEM-01：遗漏记忆的不可消除误差。 \\
-\hyperref[p-qtherm-01]{P-QTHERM-01} & 19 &
+\protect\hyperlink{p-qtherm-01}{P-QTHERM-01} & 19 &
 P-QTHERM-01：自由能与相对熵。 \\
-\hyperref[p-qtherm-02]{P-QTHERM-02} & 19 & P-QTHERM-02：有限 Gibbs 的
-KMS。 \\
-\hyperref[p-qtherm-03]{P-QTHERM-03} & 19 & P-QTHERM-03。 \\
-\hyperref[p-qctl-01]{P-QCTL-01} & 20 & P-QCTL-01。 \\
-\hyperref[p-qkg-01]{P-QKG-01} & 22 & P-QKG-01：正则关系与传播子。 \\
-\hyperref[p-qkg-02]{P-QKG-02} & 22 & P-QKG-02：类空因果性。 \\
-\hyperref[p-qdir-01]{P-QDIR-01} & 23 & P-QDIR-01。 \\
-\hyperref[p-qunit-01]{P-QUNIT-01} & 24 & P-QUNIT-01：光学定理。 \\
-\hyperref[p-qren-01]{P-QREN-01} & 25 & P-QREN-01。 \\
-\hyperref[p-qren-02]{P-QREN-02} & 25 & P-QREN-02：泡图减除。 \\
-\hyperref[p-qren-03]{P-QREN-03} & 25 & P-QREN-03：二粒子割。 \\
-\hyperref[p-qeft-01]{P-QEFT-01} & 26 & P-QEFT-01：二次 Schur 补。 \\
-\hyperref[p-qeft-02]{P-QEFT-02} & 26 & P-QEFT-02：受限的实时桥。 \\
-\hyperref[p-qqed-01]{P-QQED-01} & 28 & P-QQED-01。 \\
-\hyperref[p-qqed-02]{P-QQED-02} & 28 & P-QQED-02：阈值 beta。 \\
-\hyperref[p-qsm-01]{P-QSM-01} & 29 & P-QSM-01：异常解与非唯一性。 \\
-\hyperref[p-qhig-01]{P-QHIG-01} & 30 & P-QHIG-01：质量矩阵。 \\
-\hyperref[p-qflav-01]{P-QFLAV-01} & 30 & P-QFLAV-01：一般非退化 \(N\)
-代夸克计数。 \\
-\hyperref[p-qnu-01]{P-QNU-01} & 30 & P-QNU-01：Type-I seesaw。 \\
-\hyperref[p-qg3-01]{P-QG3-01} & 31 & P-QG3-01。 \\
-\hyperref[p-qg3-02]{P-QG3-02} & 31 & P-QG3-02：全部整数解。 \\
-\hyperref[p-qg3-03]{P-QG3-03} & 31 &
+\protect\hyperlink{p-qtherm-02}{P-QTHERM-02} & 19 & P-QTHERM-02：有限
+Gibbs 的 KMS。 \\
+\protect\hyperlink{p-qtherm-03}{P-QTHERM-03} & 19 & P-QTHERM-03。 \\
+\protect\hyperlink{p-qctl-01}{P-QCTL-01} & 20 & P-QCTL-01。 \\
+\protect\hyperlink{p-qkg-01}{P-QKG-01} & 22 &
+P-QKG-01：正则关系与传播子。 \\
+\protect\hyperlink{p-qkg-02}{P-QKG-02} & 22 & P-QKG-02：类空因果性。 \\
+\protect\hyperlink{p-qdir-01}{P-QDIR-01} & 23 & P-QDIR-01。 \\
+\protect\hyperlink{p-qunit-01}{P-QUNIT-01} & 24 &
+P-QUNIT-01：光学定理。 \\
+\protect\hyperlink{p-qren-01}{P-QREN-01} & 25 & P-QREN-01。 \\
+\protect\hyperlink{p-qren-02}{P-QREN-02} & 25 & P-QREN-02：泡图减除。 \\
+\protect\hyperlink{p-qren-03}{P-QREN-03} & 25 & P-QREN-03：二粒子割。 \\
+\protect\hyperlink{p-qeft-01}{P-QEFT-01} & 26 & P-QEFT-01：二次 Schur
+补。 \\
+\protect\hyperlink{p-qeft-02}{P-QEFT-02} & 26 &
+P-QEFT-02：受限的实时桥。 \\
+\protect\hyperlink{p-qqed-01}{P-QQED-01} & 28 & P-QQED-01。 \\
+\protect\hyperlink{p-qqed-02}{P-QQED-02} & 28 & P-QQED-02：阈值
+beta。 \\
+\protect\hyperlink{p-qsm-01}{P-QSM-01} & 29 &
+P-QSM-01：异常解与非唯一性。 \\
+\protect\hyperlink{p-qhig-01}{P-QHIG-01} & 30 & P-QHIG-01：质量矩阵。 \\
+\protect\hyperlink{p-qflav-01}{P-QFLAV-01} & 30 & P-QFLAV-01：一般非退化
+\(N\) 代夸克计数。 \\
+\protect\hyperlink{p-qnu-01}{P-QNU-01} & 30 & P-QNU-01：Type-I
+seesaw。 \\
+\protect\hyperlink{p-qg3-01}{P-QG3-01} & 31 & P-QG3-01。 \\
+\protect\hyperlink{p-qg3-02}{P-QG3-02} & 31 & P-QG3-02：全部整数解。 \\
+\protect\hyperlink{p-qg3-03}{P-QG3-03} & 31 &
 P-QG3-03：去原始性前提的选择定理。 \\
-\hyperref[p-qg3-04]{P-QG3-04} & 31 & P-QG3-04。 \\
-\hyperref[p-qfr-01]{P-QFR-01} & 32 & P-QFR-01。 \\
-\hyperref[p-qfr-02]{P-QFR-02} & 32 & P-QFR-02。 \\
-\hyperref[g-01]{G-01} & 36 & G-01：三标量配置的全部整数解。 \\
-\hyperref[g-02]{G-02} & 36 & G-02：一般色数局域完成。 \\
-\hyperref[f-01]{F-01} & 37 & F-01。 \\
-\hyperref[f-02]{F-02} & 37 & F-02。 \\
-\hyperref[f-03]{F-03} & 37 & F-03。 \\
-\hyperref[m-01]{M-01} & 38 & M-01。 \\
-\hyperref[m-02]{M-02} & 38 & M-02。 \\
-\hyperref[m-03]{M-03} & 39 & M-03：单时刻的最小分支数为4。 \\
-\hyperref[m-04]{M-04} & 39 & M-04：锐经典下界。 \\
-\hyperref[m-05]{M-05} & 39 & M-05。 \\
-\hyperref[e-01]{E-01} & 39 & E-01：有限样本反证。 \\
-\hyperref[e-02]{E-02} & 39 & E-02：近似人口保持的稳健界。 \\
-\hyperref[c-01]{C-01} & 40 & C-01：明确的远端制备矛盾。 \\
-\hyperref[c-02]{C-02} & 40 & C-02：范数与线性平均。 \\
-\hyperref[c-03]{C-03} & 40 & C-03：单谱分支与 Born 权重。 \\
-\hyperref[c-04]{C-04} & 40 & C-04：成对不确定性衰减。 \\
-\hyperref[c-05]{C-05} & 41 & C-05：不受限量子环境的等价障碍。 \\
-\hyperref[p-ugl-01]{P-UGL-01} & 43 & P-UGL-01：环上谱和规范不变量。 \\
-\hyperref[p-utp-01]{P-UTP-01} & 44 & P-UTP-01：此本征线的 Chern 数。 \\
-\hyperref[p-utp-02]{P-UTP-02} & 44 & P-UTP-02：半无限零模。 \\
-\hyperref[p-ulg-01]{P-ULG-01} & 45 &
+\protect\hyperlink{p-qg3-04}{P-QG3-04} & 31 & P-QG3-04。 \\
+\protect\hyperlink{p-qfr-01}{P-QFR-01} & 32 & P-QFR-01。 \\
+\protect\hyperlink{p-qfr-02}{P-QFR-02} & 32 & P-QFR-02。 \\
+\protect\hyperlink{g-01}{G-01} & 36 & G-01：三标量配置的全部整数解。 \\
+\protect\hyperlink{g-02}{G-02} & 36 & G-02：一般色数局域完成。 \\
+\protect\hyperlink{f-01}{F-01} & 37 & F-01。 \\
+\protect\hyperlink{f-02}{F-02} & 37 & F-02。 \\
+\protect\hyperlink{f-03}{F-03} & 37 & F-03。 \\
+\protect\hyperlink{m-01}{M-01} & 38 & M-01。 \\
+\protect\hyperlink{m-02}{M-02} & 38 & M-02。 \\
+\protect\hyperlink{m-03}{M-03} & 39 & M-03：单时刻的最小分支数为4。 \\
+\protect\hyperlink{m-04}{M-04} & 39 & M-04：锐经典下界。 \\
+\protect\hyperlink{m-05}{M-05} & 39 & M-05。 \\
+\protect\hyperlink{e-01}{E-01} & 39 & E-01：有限样本反证。 \\
+\protect\hyperlink{e-02}{E-02} & 39 & E-02：近似人口保持的稳健界。 \\
+\protect\hyperlink{c-01}{C-01} & 40 & C-01：明确的远端制备矛盾。 \\
+\protect\hyperlink{c-02}{C-02} & 40 & C-02：范数与线性平均。 \\
+\protect\hyperlink{c-03}{C-03} & 40 & C-03：单谱分支与 Born 权重。 \\
+\protect\hyperlink{c-04}{C-04} & 40 & C-04：成对不确定性衰减。 \\
+\protect\hyperlink{c-05}{C-05} & 41 &
+C-05：不受限量子环境的等价障碍。 \\
+\protect\hyperlink{p-ugl-01}{P-UGL-01} & 43 &
+P-UGL-01：环上谱和规范不变量。 \\
+\protect\hyperlink{p-utp-01}{P-UTP-01} & 44 & P-UTP-01：此本征线的 Chern
+数。 \\
+\protect\hyperlink{p-utp-02}{P-UTP-02} & 44 & P-UTP-02：半无限零模。 \\
+\protect\hyperlink{p-ulg-01}{P-ULG-01} & 45 &
 P-ULG-01：有限模型存在且规范不变。 \\
-\hyperref[p-ulg-02]{P-ULG-02} & 45 & P-ULG-02：精确配分函数与响应。 \\
-\hyperref[p-ust-01]{P-UST-01} & 46 &
+\protect\hyperlink{p-ulg-02}{P-ULG-02} & 45 &
+P-ULG-02：精确配分函数与响应。 \\
+\protect\hyperlink{p-ust-01}{P-UST-01} & 46 &
 P-UST-01：相关试次的固定样本检验。 \\
-\hyperref[p-ust-02]{P-UST-02} & 46 & P-UST-02：可选停止证书。 \\
-\hyperref[p-qkr-01]{P-QKR-01} & 49 & P-QKR-01（响应对象的后验闭合）。 \\
-\hyperref[p-qkr-02]{P-QKR-02} & 49 &
+\protect\hyperlink{p-ust-02}{P-UST-02} & 46 &
+P-UST-02：可选停止证书。 \\
+\protect\hyperlink{p-qkr-01}{P-QKR-01} & 49 &
+P-QKR-01（响应对象的后验闭合）。 \\
+\protect\hyperlink{p-qkr-02}{P-QKR-02} & 49 &
 P-QKR-02（局部有限表示决定全部未来）。 \\
-\hyperref[p-qkr-03]{P-QKR-03} & 49 &
+\protect\hyperlink{p-qkr-03}{P-QKR-03} & 49 &
 P-QKR-03（全词坐标控制完整有限适应树）。 \\
-\hyperref[p-qkr-04]{P-QKR-04} & 49 & P-QKR-04（精确证书可靠性）。 \\
-\hyperref[p-qst-01]{P-QST-01} & 50 & P-QST-01（实际正配对与效应界）。 \\
-\hyperref[p-qst-02]{P-QST-02} & 50 & P-QST-02（续效应的完整拉回）。 \\
-\hyperref[p-qst-03]{P-QST-03} & 50 &
+\protect\hyperlink{p-qkr-04}{P-QKR-04} & 49 &
+P-QKR-04（精确证书可靠性）。 \\
+\protect\hyperlink{p-qst-01}{P-QST-01} & 50 &
+P-QST-01（实际正配对与效应界）。 \\
+\protect\hyperlink{p-qst-02}{P-QST-02} & 50 &
+P-QST-02（续效应的完整拉回）。 \\
+\protect\hyperlink{p-qst-03}{P-QST-03} & 50 &
 P-QST-03（可观测距离的基本合同）。 \\
-\hyperref[p-qst-04]{P-QST-04} & 50 & P-QST-04（完整 Kraus
+\protect\hyperlink{p-qst-04}{P-QST-04} & 50 & P-QST-04（完整 Kraus
 通道的一步稳定性）。 \\
-\hyperref[p-qst-05]{P-QST-05} & 50 &
+\protect\hyperlink{p-qst-05}{P-QST-05} & 50 &
 P-QST-05（真实量子轨迹的可组合误差）。 \\
-\hyperref[p-qst-06]{P-QST-06} & 50 &
+\protect\hyperlink{p-qst-06}{P-QST-06} & 50 &
 P-QST-06（后选择误差及正支撑保护）。 \\
-\hyperref[p-qmx-01]{P-QMX-01} & 51 & P-QMX-01（概率混合的实际实现）。 \\
-\hyperref[p-qmx-02]{P-QMX-02} & 51 &
+\protect\hyperlink{p-qmx-01}{P-QMX-01} & 51 &
+P-QMX-01（概率混合的实际实现）。 \\
+\protect\hyperlink{p-qmx-02}{P-QMX-02} & 51 &
 P-QMX-02（同库权重变化的全称上界）。 \\
-\hyperref[p-qmx-03]{P-QMX-03} & 51 &
+\protect\hyperlink{p-qmx-03}{P-QMX-03} & 51 &
 P-QMX-03（权重与成员误差的联合上界）。 \\
-\hyperref[p-qmx-04]{P-QMX-04} & 51 & P-QMX-04（精确有理预算的解释）。 \\
-\hyperref[p-qce-01]{P-QCE-01} & 52 &
+\protect\hyperlink{p-qmx-04}{P-QMX-04} & 51 &
+P-QMX-04（精确有理预算的解释）。 \\
+\protect\hyperlink{p-qce-01}{P-QCE-01} & 52 &
 P-QCE-01（平均态的精确残差与全效应预算）。 \\
-\hyperref[p-qce-02]{P-QCE-02} & 52 & P-QCE-02（实际密度集合的紧性）。 \\
-\hyperref[p-qce-03]{P-QCE-03} & 52 &
+\protect\hyperlink{p-qce-02}{P-QCE-02} & 52 &
+P-QCE-02（实际密度集合的紧性）。 \\
+\protect\hyperlink{p-qce-03}{P-QCE-03} & 52 &
 P-QCE-03（有限完整通道的平稳密度态）。 \\
-\hyperref[n-qce-01]{N-QCE-01} & 52 &
+\protect\hyperlink{n-qce-01}{N-QCE-01} & 52 &
 N-QCE-01（平均不变不等于轨道收敛或唯一性）。 \\
-\hyperref[p-qsv-01]{P-QSV-01} & 53 &
+\protect\hyperlink{p-qsv-01}{P-QSV-01} & 53 &
 P-QSV-01（次随机核的完整量子仪器）。 \\
-\hyperref[p-qsv-02]{P-QSV-02} & 53 &
+\protect\hyperlink{p-qsv-02}{P-QSV-02} & 53 &
 P-QSV-02（对角动力学与有限成功词的交织）。 \\
-\hyperref[p-qsv-03]{P-QSV-03} & 53 &
+\protect\hyperlink{p-qsv-03}{P-QSV-03} & 53 &
 P-QSV-03（实际全成功记录的几何生存律）。 \\
-\hyperref[p-qsv-04]{P-QSV-04} & 53 & P-QSV-04（Doob
+\protect\hyperlink{p-qsv-04}{P-QSV-04} & 53 & P-QSV-04（Doob
 核的实际完整实现与不变成功记录）。 \\
-\hyperref[n-qsv-01]{N-QSV-01} & 53 & N-QSV-01（QSD、Doob
+\protect\hyperlink{n-qsv-01}{N-QSV-01} & 53 & N-QSV-01（QSD、Doob
 不变律与任意初态不可混同）。 \\
-\hyperref[p-qcl-01]{P-QCL-01} & 54 &
+\protect\hyperlink{p-qcl-01}{P-QCL-01} & 54 &
 P-QCL-01（完整单纯形的状态、响应与运输）。 \\
-\hyperref[n-qcl-01]{N-QCL-01} & 54 &
+\protect\hyperlink{n-qcl-01}{N-QCL-01} & 54 &
 N-QCL-01（二点混态没有有限经典纯化）。 \\
-\hyperref[p-qcl-02]{P-QCL-02} & 54 &
+\protect\hyperlink{p-qcl-02}{P-QCL-02} & 54 &
 P-QCL-02（实际终端商保留二点支持）。 \\
-\hyperref[p-qcl-03]{P-QCL-03} & 54 &
+\protect\hyperlink{p-qcl-03}{P-QCL-03} & 54 &
 P-QCL-03（同源安全轨迹与纯化分离证书）。 \\
-\hyperref[n-qcl-02]{N-QCL-02} & 54 &
+\protect\hyperlink{n-qcl-02}{N-QCL-02} & 54 &
 N-QCL-02（微观混合可被实际操作商消去）。 \\
-\hyperref[p-qrt-01]{P-QRT-01} & 55 &
+\protect\hyperlink{p-qrt-01}{P-QRT-01} & 55 &
 P-QRT-01（两个合法且不同的实联合态）。 \\
-\hyperref[n-qrt-01]{N-QRT-01} & 55 &
+\protect\hyperlink{n-qrt-01}{N-QRT-01} & 55 &
 N-QRT-01（实局域乘积测试不能确定联合态）。 \\
-\hyperref[p-qrt-02]{P-QRT-02} & 55 &
+\protect\hyperlink{p-qrt-02}{P-QRT-02} & 55 &
 P-QRT-02（联合效应的确定性区分）。 \\
-\hyperref[n-qrt-02]{N-QRT-02} & 55 &
+\protect\hyperlink{n-qrt-02}{N-QRT-02} & 55 &
 N-QRT-02（允许复局域效应后的区分）。 \\
-\hyperref[n-qrt-03]{N-QRT-03} & 55 &
+\protect\hyperlink{n-qrt-03}{N-QRT-03} & 55 &
 N-QRT-03（区分效应不在有限实产品效应的线性张成中）。 \\
-\hyperref[p-qqd-01]{P-QQD-01} & 56 & P-QQD-01（过滤归一化的合法性）。 \\
-\hyperref[p-qqd-02]{P-QQD-02} & 56 & P-QQD-02（实际量子 Doob 仪器）。 \\
-\hyperref[p-qqd-03]{P-QQD-03} & 56 &
+\protect\hyperlink{p-qqd-01}{P-QQD-01} & 56 &
+P-QQD-01（过滤归一化的合法性）。 \\
+\protect\hyperlink{p-qqd-02}{P-QQD-02} & 56 & P-QQD-02（实际量子 Doob
+仪器）。 \\
+\protect\hyperlink{p-qqd-03}{P-QQD-03} & 56 &
 P-QQD-03（全算符有限交织与真实条件态连接）。 \\
-\hyperref[p-qqd-04]{P-QQD-04} & 56 &
+\protect\hyperlink{p-qqd-04}{P-QQD-04} & 56 &
 P-QQD-04（准稳态、几何存活与实际通道平稳）。 \\
-\hyperref[p-qqd-05]{P-QQD-05} & 56 & P-QQD-05（全矩阵可计算的非对角 Doob
-见证）。 \\
-\hyperref[n-qqd-01]{N-QQD-01} & 56 & N-QQD-01（必须保留的三项区分）。 \\
-\hyperref[p-pur-01]{P-PUR-01} & 57 &
+\protect\hyperlink{p-qqd-05}{P-QQD-05} & 56 &
+P-QQD-05（全矩阵可计算的非对角 Doob 见证）。 \\
+\protect\hyperlink{n-qqd-01}{N-QQD-01} & 56 &
+N-QQD-01（必须保留的三项区分）。 \\
+\protect\hyperlink{p-pur-01}{P-PUR-01} & 57 &
 P-PUR-01（完整密度态空间中的向量纯态）。 \\
-\hyperref[p-pur-02]{P-PUR-02} & 57 &
+\protect\hyperlink{p-pur-02}{P-PUR-02} & 57 &
 P-PUR-02（任意有限复密度态的纯化存在）。 \\
-\hyperref[p-opt-01]{P-OPT-01} & 57 &
+\protect\hyperlink{p-opt-01}{P-OPT-01} & 57 &
 P-OPT-01（同一操作语言中的三个具体呈现）。 \\
-\hyperref[n-opt-01]{N-OPT-01} & 57 &
+\protect\hyperlink{n-opt-01}{N-OPT-01} & 57 &
 N-OPT-01（基本操作规律不自动给出量子选择）。 \\
-\hyperref[p-cq-01]{P-CQ-01} & 58 &
+\protect\hyperlink{p-cq-01}{P-CQ-01} & 58 &
 P-CQ-01（矩形通道的完全正性、迹保持与效应收缩）。 \\
-\hyperref[p-cq-02]{P-CQ-02} & 58 &
+\protect\hyperlink{p-cq-02}{P-CQ-02} & 58 &
 P-CQ-02（真实仪器的联合块状态与边际）。 \\
-\hyperref[p-cq-03]{P-CQ-03} & 58 &
+\protect\hyperlink{p-cq-03}{P-CQ-03} & 58 &
 P-CQ-03（全部有限协议的记录与记忆实现）。 \\
-\hyperref[p-cq-04]{P-CQ-04} & 58 &
+\protect\hyperlink{p-cq-04}{P-CQ-04} & 58 &
 P-CQ-04（记录分布的联合距离与扰动控制）。 \\
-\hyperref[n-cq-01]{N-CQ-01} & 58 &
+\protect\hyperlink{n-cq-01}{N-CQ-01} & 58 &
 N-CQ-01（相同无条件通道不控制记录误差）。 \\
-\hyperref[p-qdd-01]{P-QDD-01} & 59 & P-QDD-01（当前 Doob
+\protect\hyperlink{p-qdd-01}{P-QDD-01} & 59 & P-QDD-01（当前 Doob
 通道的精确动力学）。 \\
-\hyperref[p-qdd-02]{P-QDD-02} & 59 &
+\protect\hyperlink{p-qdd-02}{P-QDD-02} & 59 &
 P-QDD-02（实际源成功算符与质量闭式）。 \\
-\hyperref[p-qdd-03]{P-QDD-03} & 59 &
+\protect\hyperlink{p-qdd-03}{P-QDD-03} & 59 &
 P-QDD-03（实际条件态及其定量收敛）。 \\
-\hyperref[p-qdd-04]{P-QDD-04} & 59 &
+\protect\hyperlink{p-qdd-04}{P-QDD-04} & 59 &
 P-QDD-04（有限成功概率衰减与初态责任）。 \\
-\hyperref[n-qdd-01]{N-QDD-01} & 59 & N-QDD-01（合法恒等 Doob 负控）。 \\
-\hyperref[p-sep-01]{P-SEP-01} & 60 & P-SEP-01（Hermitian
+\protect\hyperlink{n-qdd-01}{N-QDD-01} & 59 & N-QDD-01（合法恒等 Doob
+负控）。 \\
+\protect\hyperlink{p-sep-01}{P-SEP-01} & 60 & P-SEP-01（Hermitian
 算符的合法效应表示）。 \\
-\hyperref[p-sep-02]{P-SEP-02} & 60 &
+\protect\hyperlink{p-sep-02}{P-SEP-02} & 60 &
 P-SEP-02（全效应分离与距离零的矩阵含义）。 \\
-\hyperref[p-clt-01]{P-CLT-01} & 60 &
+\protect\hyperlink{p-clt-01}{P-CLT-01} & 60 &
 P-CLT-01（完整有限复模型的普遍局部层析）。 \\
-\hyperref[n-sep-01]{N-SEP-01} & 60 &
+\protect\hyperlink{n-sep-01}{N-SEP-01} & 60 &
 N-SEP-01（全部对角效应仍不能识别相干态）。 \\
-\hyperref[p-puc-01]{P-PUC-01} & 61 &
+\protect\hyperlink{p-puc-01}{P-PUC-01} & 61 &
 P-PUC-01（完整有限复密度空间的纯性刻画）。 \\
-\hyperref[p-pun-01]{P-PUN-01} & 61 &
+\protect\hyperlink{p-pun-01}{P-PUN-01} & 61 &
 P-PUN-01（同辅助载体的完整纯化酉等价）。 \\
-\hyperref[p-aux-01]{P-AUX-01} & 61 &
+\protect\hyperlink{p-aux-01}{P-AUX-01} & 61 &
 P-AUX-01（辅助等距嵌入的实际通道、边际和纯性）。 \\
-\hyperref[p-pun-02]{P-PUN-02} & 61 &
+\protect\hyperlink{p-pun-02}{P-PUN-02} & 61 &
 P-PUN-02（不同有限辅助载体的共同扩展酉等价）。 \\
-\hyperref[n-pun-01]{N-PUN-01} & 61 &
+\protect\hyperlink{n-pun-01}{N-PUN-01} & 61 &
 N-PUN-01（伴随、转置和逐项共轭不能替代实际辅助作用）。 \\
-\hyperref[n-aux-01]{N-AUX-01} & 61 &
+\protect\hyperlink{n-aux-01}{N-AUX-01} & 61 &
 N-AUX-01（严格辅助扩维是等距嵌入，不是双侧酉等价）。 \\
-\hyperref[p-arb-01]{P-ARB-01} & 62 &
+\protect\hyperlink{p-arb-01}{P-ARB-01} & 62 &
 P-ARB-01（历史块、归一权重与合法块效应）。 \\
-\hyperref[p-arb-02]{P-ARB-02} & 62 &
+\protect\hyperlink{p-arb-02}{P-ARB-02} & 62 &
 P-ARB-02（实际历史读取通道的动作加权界）。 \\
-\hyperref[p-arb-03]{P-ARB-03} & 62 &
+\protect\hyperlink{p-arb-03}{P-ARB-03} & 62 &
 P-ARB-03（有限历史演化与原完整协议的矩阵一致性）。 \\
-\hyperref[p-arb-04]{P-ARB-04} & 62 &
+\protect\hyperlink{p-arb-04}{P-ARB-04} & 62 &
 P-ARB-04（实际逐动作和预算与完整记录 TV）。 \\
-\hyperref[p-arb-05]{P-ARB-05} & 62 &
+\protect\hyperlink{p-arb-05}{P-ARB-05} & 62 &
 P-ARB-05（精确有理逐步预算的饱和见证）。 \\
-\hyperref[n-arb-01]{N-ARB-01} & 62 &
+\protect\hyperlink{n-arb-01}{N-ARB-01} & 62 &
 N-ARB-01（无标签动作零缺陷仍可给出最大完整记录误差）。 \\
-\hyperref[p-tdist-01]{P-TDIST-01} & 63 & P-TDIST-01（有限 Hermitian
-正负谱分解及实际绝对值）。 \\
-\hyperref[p-tdist-02]{P-TDIST-02} & 63 &
+\protect\hyperlink{p-tdist-01}{P-TDIST-01} & 63 & P-TDIST-01（有限
+Hermitian 正负谱分解及实际绝对值）。 \\
+\protect\hyperlink{p-tdist-02}{P-TDIST-02} & 63 &
 P-TDIST-02（全效应距离的半迹绝对值公式及最优效应）。 \\
-\hyperref[p-dec-01]{P-DEC-01} & 63 &
+\protect\hyperlink{p-dec-01}{P-DEC-01} & 63 &
 P-DEC-01（等先验二元判别的真实最优成功率）。 \\
-\hyperref[p-tcert-01]{P-TCERT-01} & 63 & P-TCERT-01（PSD
+\protect\hyperlink{p-tcert-01}{P-TCERT-01} & 63 & P-TCERT-01（PSD
 支持分解距离证书）。 \\
-\hyperref[p-pdm-01]{P-PDM-01} & 64 &
+\protect\hyperlink{p-pdm-01}{P-PDM-01} & 64 &
 P-PDM-01（矩形等距的精确维数方向）。 \\
-\hyperref[p-pdm-02]{P-PDM-02} & 64 &
+\protect\hyperlink{p-pdm-02}{P-PDM-02} & 64 &
 P-PDM-02（任意实际纯化的有方向直接等距）。 \\
-\hyperref[p-pdm-03]{P-PDM-03} & 64 &
+\protect\hyperlink{p-pdm-03}{P-PDM-03} & 64 &
 P-PDM-03（全部凸纯扩展的实际秩下界）。 \\
-\hyperref[p-pdm-04]{P-PDM-04} & 64 &
+\protect\hyperlink{p-pdm-04}{P-PDM-04} & 64 &
 P-PDM-04（有限复纯化的精确最小辅助维数）。 \\
-\hyperref[n-pdm-01]{N-PDM-01} & 64 &
+\protect\hyperlink{n-pdm-01}{N-PDM-01} & 64 &
 N-PDM-01（同边际不允许省略直接等距的维数方向）。 \\
-\hyperref[p-stop-01]{P-STOP-01} & 65 &
+\protect\hyperlink{p-stop-01}{P-STOP-01} & 65 &
 P-STOP-01（原有限停止树的实际吸收补齐）。 \\
-\hyperref[p-stop-02]{P-STOP-02} & 65 &
+\protect\hyperlink{p-stop-02}{P-STOP-02} & 65 &
 P-STOP-02（全效应距离保持与原叶联合态回接）。 \\
-\hyperref[p-stop-03]{P-STOP-03} & 65 &
+\protect\hyperlink{p-stop-03}{P-STOP-03} & 65 &
 P-STOP-03（共同有限停止规则的逐动作误差预算）。 \\
-\hyperref[p-stop-04]{P-STOP-04} & 65 & P-STOP-04（停止协议的精确
-\(1/16\) 记录差异）。 \\
-\hyperref[p-stop-05]{P-STOP-05} & 65 &
+\protect\hyperlink{p-stop-04}{P-STOP-04} & 65 &
+P-STOP-04（停止协议的精确 \(1/16\) 记录差异）。 \\
+\protect\hyperlink{p-stop-05}{P-STOP-05} & 65 &
 P-STOP-05（相同量子动作不控制不同停止规则的全部记录）。 \\
-\hyperref[p-fcond-01]{P-FCOND-01} & 66 &
+\protect\hyperlink{p-fcond-01}{P-FCOND-01} & 66 &
 P-FCOND-01（同一有限原实验的接受效应）。 \\
-\hyperref[p-fcond-02]{P-FCOND-02} & 66 & P-FCOND-02（后向 Gram
+\protect\hyperlink{p-fcond-02}{P-FCOND-02} & 66 & P-FCOND-02（后向 Gram
 和导出核消去）。 \\
-\hyperref[p-fcond-03]{P-FCOND-03} & 66 &
+\protect\hyperlink{p-fcond-03}{P-FCOND-03} & 66 &
 P-FCOND-03（支撑变换及合法全空间补全）。 \\
-\hyperref[p-fcond-04]{P-FCOND-04} & 66 &
+\protect\hyperlink{p-fcond-04}{P-FCOND-04} & 66 &
 P-FCOND-04（完整叶记录与末态的同源条件化）。 \\
-\hyperref[p-fcond-05]{P-FCOND-05} & 66 &
+\protect\hyperlink{p-fcond-05}{P-FCOND-05} & 66 &
 P-FCOND-05（保留结果及观察权限的凸包 iff）。 \\
-\hyperref[p-fcond-06]{P-FCOND-06} & 66 &
+\protect\hyperlink{p-fcond-06}{P-FCOND-06} & 66 &
 P-FCOND-06（允许类的有限负分离证书）。 \\
-\hyperref[p-fcond-07]{P-FCOND-07} & 66 &
+\protect\hyperlink{p-fcond-07}{P-FCOND-07} & 66 &
 P-FCOND-07（全部未知输入上的确定性初始化分类）。 \\
-\hyperref[p-fcond-08]{P-FCOND-08} & 66 &
+\protect\hyperlink{p-fcond-08}{P-FCOND-08} & 66 &
 P-FCOND-08（缩放滤波的实际成功率与后验）。 \\
-\hyperref[p-fcond-09]{P-FCOND-09} & 66 &
+\protect\hyperlink{p-fcond-09}{P-FCOND-09} & 66 &
 P-FCOND-09（独立重置直到成功的完整成本）。 \\
-\hyperref[p-fcond-10]{P-FCOND-10} & 66 &
+\protect\hyperlink{p-fcond-10}{P-FCOND-10} & 66 &
 P-FCOND-10（完整输出到条件输出的误差传播）。 \\
-\hyperref[p-fcond-11]{P-FCOND-11} & 66 & P-FCOND-11（合法 Kraus
+\protect\hyperlink{p-fcond-11}{P-FCOND-11} & 66 & P-FCOND-11（合法 Kraus
 近似的可用局部误差界）。 \\
-\hyperref[c-fcond-01]{C-FCOND-01} & 66 &
+\protect\hyperlink{c-fcond-01}{C-FCOND-01} & 66 &
 C-FCOND-01（小谱值不能当零谱处理）。 \\
-\hyperref[p-opt-02]{P-OPT-02} & 67 &
+\protect\hyperlink{p-opt-02}{P-OPT-02} & 67 &
 P-OPT-02（正维有限复系统中的四种事件等价）。 \\
-\hyperref[p-opt-03]{P-OPT-03} & 67 &
+\protect\hyperlink{p-opt-03}{P-OPT-03} & 67 &
 P-OPT-03（逐可见标签的组合相容性）。 \\
-\hyperref[p-micro-01]{P-MICRO-01} & 67 & P-MICRO-01（微观来源到完整适应
-CQ 的截断桥）。 \\
-\hyperref[c-micro-01]{C-MICRO-01} & 67 &
+\protect\hyperlink{p-micro-01}{P-MICRO-01} & 67 &
+P-MICRO-01（微观来源到完整适应 CQ 的截断桥）。 \\
+\protect\hyperlink{c-micro-01}{C-MICRO-01} & 67 &
 C-MICRO-01（平均能量保持不保证逐分支截断）。 \\
-\hyperref[p-micro-02]{P-MICRO-02} & 67 &
+\protect\hyperlink{p-micro-02}{P-MICRO-02} & 67 &
 P-MICRO-02（正常迹类后选择和完整准备记录）。 \\
-\hyperref[p-rob-01]{P-ROB-01} & 67 &
+\protect\hyperlink{p-rob-01}{P-ROB-01} & 67 &
 P-ROB-01（同一参数集上的部署误差与分离）。 \\
-\hyperref[c-rob-01]{C-ROB-01} & 67 &
+\protect\hyperlink{c-rob-01}{C-ROB-01} & 67 &
 C-ROB-01（逐参数可实现不推出一次鲁棒部署）。 \\
-\hyperref[p-rob-02]{P-ROB-02} & 67 &
+\protect\hyperlink{p-rob-02}{P-ROB-02} & 67 &
 P-ROB-02（同一原源的精确设计区间证书）。 \\
-\hyperref[p-micro-03]{P-MICRO-03} & 67 &
+\protect\hyperlink{p-micro-03}{P-MICRO-03} & 67 &
 P-MICRO-03（单激发边缘混合，完整记录不遗忘）。 \\
-\hyperref[p-micro-04]{P-MICRO-04} & 68 &
+\protect\hyperlink{p-micro-04}{P-MICRO-04} & 68 &
 P-MICRO-04（分段蓝脉冲的有限激发增长）。 \\
-\hyperref[p-opt-04]{P-OPT-04} & 68 &
+\protect\hyperlink{p-opt-04}{P-OPT-04} & 68 &
 P-OPT-04（增长载体上的完整矩形操作桥）。 \\
-\hyperref[p-micro-05]{P-MICRO-05} & 68 &
+\protect\hyperlink{p-micro-05}{P-MICRO-05} & 68 &
 P-MICRO-05（无蓝参照下的完整记录省略界）。 \\
-\hyperref[c-micro-02]{C-MICRO-02} & 68 &
+\protect\hyperlink{c-micro-02}{C-MICRO-02} & 68 &
 C-MICRO-02（同时红蓝作用的无限尾反例）。 \\
-\hyperref[p-rob-03]{P-ROB-03} & 68 &
+\protect\hyperlink{p-rob-03}{P-ROB-03} & 68 &
 P-ROB-03（增长源、物理过滤与省略实现的统一证书）。 \\
-\hyperref[c-rob-02]{C-ROB-02} & 68 &
+\protect\hyperlink{c-rob-02}{C-ROB-02} & 68 &
 C-ROB-02（相同旗概率不认证蓝脉冲末态）。 \\
-\hyperref[p-opt-05]{P-OPT-05} & 69 & P-OPT-05（完整 CQ
+\protect\hyperlink{p-opt-05}{P-OPT-05} & 69 & P-OPT-05（完整 CQ
 树的未归一前缀误差界）。 \\
-\hyperref[p-micro-06]{P-MICRO-06} & 69 &
+\protect\hyperlink{p-micro-06}{P-MICRO-06} & 69 &
 P-MICRO-06（同时源的自伴实现、能量预算与边界缺陷）。 \\
-\hyperref[p-micro-07]{P-MICRO-07} & 69 & P-MICRO-07（有限 Duhamel
-展开给出的真实截断界）。 \\
-\hyperref[c-micro-03]{C-MICRO-03} & 69 & C-MICRO-03（Galerkin
+\protect\hyperlink{p-micro-07}{P-MICRO-07} & 69 & P-MICRO-07（有限
+Duhamel 展开给出的真实截断界）。 \\
+\protect\hyperlink{c-micro-03}{C-MICRO-03} & 69 & C-MICRO-03（Galerkin
 压缩不保留该正交分量不变量）。 \\
-\hyperref[p-rob-04]{P-ROB-04} & 69 &
+\protect\hyperlink{p-rob-04}{P-ROB-04} & 69 &
 P-ROB-04（联合校准、名义参数及共同力脉冲稳定性）。 \\
-\hyperref[p-rob-05]{P-ROB-05} & 69 &
+\protect\hyperlink{p-rob-05}{P-ROB-05} & 69 &
 P-ROB-05（物理准备、鲁棒部署、名义校准与有限预测的合成界）。 \\
-\hyperref[c-qsel-02]{C-QSEL-02} & 70 &
+\protect\hyperlink{c-qsel-02}{C-QSEL-02} & 70 &
 C-QSEL-02（可达扇区隐藏完成的操作等价与全局选择边界）。 \\
-\hyperref[p-tom-01]{P-TOM-01} & 70 & P-TOM-01（显式有限 tester
+\protect\hyperlink{p-tom-01}{P-TOM-01} & 70 & P-TOM-01（显式有限 tester
 稳定界及其准备、读出和维数责任）。 \\
-\hyperref[p-micro-08]{P-MICRO-08} & 70 &
+\protect\hyperlink{p-micro-08}{P-MICRO-08} & 70 &
 P-MICRO-08（共同定义域上的持续Gaussian浴完整过程）。 \\
-\hyperref[p-micro-09]{P-MICRO-09} & 70 &
+\protect\hyperlink{p-micro-09}{P-MICRO-09} & 70 &
 P-MICRO-09（同一持续源的全输入有限近似）。 \\
-\hyperref[c-qmem-01]{C-QMEM-01} & 70 &
+\protect\hyperlink{c-qmem-01}{C-QMEM-01} & 70 &
 C-QMEM-01（相同单槽不足以确定多时过程）。 \\
-\hyperref[p-num-01]{P-NUM-01} & 70 &
+\protect\hyperlink{p-num-01}{P-NUM-01} & 70 &
 P-NUM-01（区间Choi到物理终端仪器）。 \\
-\hyperref[p-qmem-02]{P-QMEM-02} & 70 &
+\protect\hyperlink{p-qmem-02}{P-QMEM-02} & 70 &
 P-QMEM-02（因果断开响应秩给出的必要记忆维数）。 \\
-\hyperref[p-rob-06]{P-ROB-06} & 70 &
+\protect\hyperlink{p-rob-06}{P-ROB-06} & 70 &
 P-ROB-06（两个可信设置的联合识别与覆盖）。 \\
-\hyperref[p-rob-07]{P-ROB-07} & 70 & P-ROB-07（完整 CQ
+\protect\hyperlink{p-rob-07}{P-ROB-07} & 70 & P-ROB-07（完整 CQ
 联合证书与独立留出）。 \\
+\protect\hyperlink{c-qsel-03}{C-QSEL-03} & 71 &
+C-QSEL-03（整体与可达面的连续性）。 \\
+\protect\hyperlink{c-qsel-04}{C-QSEL-04} & 71 &
+C-QSEL-04（连续控制与乘积层析的反模型）。 \\
+\protect\hyperlink{p-micro-10}{P-MICRO-10} & 71 &
+P-MICRO-10（相关历史与总粒子数截断）。 \\
+\protect\hyperlink{c-qmem-02}{C-QMEM-02} & 71 & C-QMEM-02（自由 Ramsey
+的精确歧义）。 \\
+\protect\hyperlink{p-qmem-03}{P-QMEM-03} & 71 &
+P-QMEM-03（因果断开后的带符号响应）。 \\
+\protect\hyperlink{p-rob-08}{P-ROB-08} & 71 &
+P-ROB-08（内点插值与完整输出证书）。 \\
+\protect\hyperlink{p-field-01}{P-FIELD-01} & 71 &
+P-FIELD-01（两模匹配与类空信号）。 \\
 \end{longtable}
 
-\chapter{附录 C. 来源、继承关系与研究诚实性}\label{appendix-c}
+\chapter{附录 C. 来源、继承关系与研究诚实性}\label{appendix-c}\hypertarget{appendix-c}{}
 
 \section{C.1 本版实际来源边界}
 
@@ -14021,7 +14234,10 @@ blob保持不变。确切清单与比较见
 {[}QM3114{]}
 本轮内核与执行报告：\texttt{physics/\allowbreak qm/\allowbreak UEOT\_\allowbreak QM\_\allowbreak KERNEL\_\allowbreak v31.\allowbreak 14.\allowbreak md}、\allowbreak \texttt{UEOT\_\allowbreak QM\_\allowbreak EXECUTION\_\allowbreak v31.\allowbreak 14.\allowbreak md}；完整证明、原始合成记录与交审：\texttt{physics/\allowbreak qm/\allowbreak kernel/\allowbreak evidence/\allowbreak v31.\allowbreak 14/\allowbreak }；现行前提与全物理责任：\texttt{physics/\allowbreak qm/\allowbreak audits/\allowbreak PERSISTENT\_\allowbreak BATH\_\allowbreak v31.\allowbreak 14/\allowbreak PREMISES\_\allowbreak AND\_\allowbreak RESPONSIBILITIES.\allowbreak md}。
 
-\chapter{附录 D. 全部继承验证代码与版本回执}\label{appendix-d}
+{[}QM3115{]}
+\href{../correlated_bath/README.md}{相关源与可复核计算}。\href{../ROADMAP.md}{证据与开放物理责任}。
+
+\chapter{附录 D. 全部继承验证代码与版本回执}\label{appendix-d}\hypertarget{appendix-d}{}
 
 \section{D.1 运行合同}
 
@@ -14924,14 +15140,11 @@ print(json.dumps(result,ensure_ascii=False,indent=2))
 }
 \end{Verbatim}
 
-\chapter{附录 E. 正式阅读版、编译与修订合同}\label{appendix-e}
+\chapter{附录 E. 正式阅读版、编译与修订合同}\label{appendix-e}\hypertarget{appendix-e}{}
 
 \section{E.1 完整语义主源与派生阅读版}
 
-稳定中文主文件 \texttt{UEOT\_\allowbreak PHYSICS.\allowbreak md} 与完整英文对应本
-\texttt{UEOT\_\allowbreak PHYSICS.\allowbreak en.\allowbreak md} 均包含第0--70章和附录A--F。各自的
-\texttt{.\allowbreak tex}、\allowbreak \texttt{.\allowbreak pdf}
-是这些主源的实际派生阅读版，包含数学排版、全文章目录、稳定结果编号、原始推导和内嵌代码。3.11版在连续双语书稿中加入第70章持久环境的完整过程、有限认证和选择边界，并保留第69章及全部先前成果。版本号标识出版物，已解决与未解决的物理问题由正文和证据分别决定。
+\protect\hyperlink{ch-71}{相关浴新章}为3.12版连续候选书稿增加七项结果。\href{README.md}{版本入口}记录各印本的构建与受检页。\href{https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978\allowbreak e173e23015f02699\allowbreak 4fb60c65/physics/qm/book/UEOT_PHYSICS.pdf}{第70章印本}保留3.11版原貌。现有210项稳定结果，其中203项沿用原编号，账本保留126项旧主张。新章提供书面论证、区间计算与合成数据，经验与形式证明范围见\href{../correlated_bath/README.md}{研究材料}。
 
 两种语言承担相同的科学责任。文字为自然阅读作适当调整，前提、公式、常数、结果编号、源码身份与经验限定则共同核对。翻译不静默改变数学符号；公式中的纯文字标签和有记录的编辑更正列入忠实性报告。
 
@@ -14979,7 +15192,7 @@ Qian）。英文翻译、科学编辑和三条专业审查线在作者的项目�
 给出版次清单和保留的历史基线。引用论文、图表、数据、软件及依赖继续遵循各自条款。本次没有新增分发第三方图像或原始实验数据，也没有改变
 Lean 或数值程序的许可。中文、英文及其派生阅读版采用同一声明。
 
-\chapter{附录 F. 实际形式化范围与完整命名审计}\label{appendix-f}
+\chapter{附录 F. 实际形式化范围与完整命名审计}\label{appendix-f}\hypertarget{appendix-f}{}
 
 \section{F.1 既有受验身份与计数}
 
@@ -16621,6 +16834,16 @@ G≤1
 本轮统一复跑实读原160万合成行，单列新的执行时间、输入与输出SHA；不把复用的数据计为新shot。八份Choi区间证书、504个精确主子式、冻结校准/留出、外部处理后数据复核和首次缺少h5py的失败尝试均各自保留。完整证据见
 \texttt{physics/\allowbreak qm/\allowbreak kernel/\allowbreak evidence/\allowbreak v31.\allowbreak 14/\allowbreak }。出版身份及局部视觉审查另见
 \texttt{physics/\allowbreak qm/\allowbreak book/\allowbreak evidence/\allowbreak v3.\allowbreak 11/\allowbreak }；局部新改页审查不等于重新逐页审查全部继承内容。
+
+\section{F.10 第71章的证明范围}
+
+第71章增加七项书面与计算结果。203项既有结果对象、126项原主张均保留原身份。继承的
+Lean 执行对应历史158项输入集。第71章没有新增 Lean
+声明、硬件观测或独立人工评议。
+
+在第70章合并后的源码上，PR \#466 的 main 运行 44318642942 实际重建了既有
+QM 库，审计定理公理，并检查保留的见证。第69--71章未增加 Lean
+声明。\href{../kernel/evidence/v31.14/integration-verification.json}{运行回执}记录这次执行对应的前一提交。
 
 \backmatter
 \end{document}

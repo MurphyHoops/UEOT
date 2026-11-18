@@ -95,7 +95,9 @@ jobs:
           git worktree add --detach "$prior" a3f95dc1a6821978e173e23015f026994fb60c65
           python "$prior/physics/qm/book/build/verify_v3_11_increment.py" --repo-root "$prior" --output /tmp/ueot-qm-book3.11-increment.json --require-complete
       - name: Verify the current edition and inherited scientific identities
-        run: python -B physics/qm/book/build/verify_v3_12_increment.py
+        run: |
+          command -v pdfinfo || (sudo apt-get update -qq && sudo apt-get install -y --no-install-recommends poppler-utils)
+          python -B physics/qm/book/build/verify_v3_12_increment.py
       - name: Verify exact kernel and independent negative controls
         run: python physics/qm/kernel/verify_kernel.py --output /tmp/ueot-qm-runtime-verification.json
       - name: Run complete kernel example
