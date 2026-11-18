@@ -1,4 +1,4 @@
-"""Replay the physics claims and independently check the two probability archives."""
+"""Replay the physics claims and independently check the archived readouts."""
 import json
 from pathlib import Path
 import subprocess
@@ -13,6 +13,7 @@ CHECKS = (
     ("geometry/review_weak.py", None),
     ("geometry/sphere.py", None),
     ("central_jet.py", None),
+    ("finite_window.py", "finite_window_result.json"),
     ("probe/replay.py", "probe/observed.json"),
     ("probe/sign_pair.py", "probe/pair_observed.json"),
     ("probe/reset_selection.py", None),
