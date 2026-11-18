@@ -39,6 +39,10 @@ jobs:
         run: python -B physics/qm/correlated_bath/dynamics/verify_dynamics.py --receipt "$RUNNER_TEMP/dynamics-replay.json"
       - name: Recompute the two field settings and sector comparisons
         run: python -B physics/qm/correlated_bath/verify_extensions.py
+      - name: Check record decoding, lost attempts, postselection and phase controls
+        env:
+          UEOT_UPSTREAM_REPO: ${{ github.workspace }}
+        run: python -B physics/qm/correlated_bath/inference/record_controls.py --check
       - uses: actions/upload-artifact@v4
         if: always()
         with:

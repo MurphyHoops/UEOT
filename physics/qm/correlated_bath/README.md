@@ -24,6 +24,9 @@ From a Git checkout containing the scientific baseline above, use Python 3.14 wi
 python -B physics/qm/correlated_bath/portable_replay.py --repo . --receipt /tmp/ueot-correlated-replay.json
 UEOT_UPSTREAM_REPO="$PWD" OPENBLAS_NUM_THREADS=1 python -B physics/qm/correlated_bath/dynamics/verify_dynamics.py --receipt /tmp/ueot-correlated-dynamics.json
 python -B physics/qm/correlated_bath/verify_extensions.py
+python -B physics/qm/correlated_bath/inference/record_controls.py --check
 ```
 
 The first command regenerates ordered synthetic records and scores the frozen predictions. The second checks finite oscillator evolution and the rational channel repair. The third compares the field calculation and three sector programs with the archived observations. In `field/observed.json`, binary endpoint tuples encode closed interval bounds.
+
+The fourth command decodes both ordered archives, checks their resource counts and quantifies how retaining only successes or losing attempts changes the delivered output and cost. [Raw fields, counterfactuals and cost per usable success](inference/record_controls.json).
