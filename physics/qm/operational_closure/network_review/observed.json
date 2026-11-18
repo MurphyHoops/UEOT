@@ -1,0 +1,89 @@
+{
+  "status": "PASS",
+  "baseline": "940541cd464d8bccb9f7c553dbd3ebfefde596b7",
+  "code_sha256": {
+    "replay.py": "0ef595a5b0cdaca5db3d52363d862bdf801f89b42b982b051a2b12b7735245ca",
+    "kg_review.py": "f8d2672f5ae20e8c2cf43b67652e814c4379803e819cfd703d6c7f0d30fc1530"
+  },
+  "real_reference": {
+    "cells_checked": 288,
+    "max_complex_vs_real_cell_error": 1.3877787807814457e-17,
+    "T_b": [
+      2.121320343559641,
+      2.121320343559641,
+      2.121320343559641,
+      2.121320343559641
+    ],
+    "T": 8.485281374238564,
+    "unequal_b_weight_scores": [
+      0.8485281374238567,
+      1.6970562748477132,
+      2.545584412271569,
+      3.3941125496954263
+    ],
+    "T_Werner_090_080": 6.109402589451765,
+    "v_to_match_Wu_central": 0.7683230483453336
+  },
+  "source_tests": {
+    "full_source_symmetric_basis_pairs": 1296,
+    "max_integer_residual": 0,
+    "real_distance_to_separable_at_v1": 0.5,
+    "two_iid_copy_correlation_at_v1": 1
+  },
+  "loopholes": {
+    "postselected_T": 12,
+    "joint_detection_each_setting": "1/3",
+    "T_after_default_assignment": 4.000000000000001,
+    "ternary_message_T": 12,
+    "perfect_setting_prediction_T": 12,
+    "setting_TV": "2/3"
+  },
+  "KG": [
+    {
+      "coupling": "3/10",
+      "T": 8.165309753260212,
+      "T_b": [
+        2.01883069918706,
+        2.063824177443046,
+        2.01883069918706,
+        2.063824177443046
+      ],
+      "max_Bob_probability_error": 1.6653345369377348e-16,
+      "D_to_marginal_product": 0.00795379839599425,
+      "abs_logical_YY_over_two": 0.00795379839599425,
+      "one_copy_local_X_TV_to_product": 6.706058942351767e-05,
+      "two_iid_copy_real_parity": 0.0002530516356964996,
+      "max_branch_deficit": 0.4099585774903307,
+      "rigorous_deficit_upper": "10639368015691899/25000000000000000",
+      "certified_per_setting_TV_radius": null,
+      "passes_thm2_with_epsilon_5e_minus5": false
+    },
+    {
+      "coupling": "3/1000",
+      "T": 8.485248356179165,
+      "T_b": [
+        2.1213097042800766,
+        2.1213144738095058,
+        2.1213097042800766,
+        2.1213144738095058
+      ],
+      "max_Bob_probability_error": 2.220446049250313e-16,
+      "D_to_marginal_product": 8.431416506360367e-07,
+      "abs_logical_YY_over_two": 8.431416506360367e-07,
+      "one_copy_local_X_TV_to_product": 7.108480470918721e-13,
+      "two_iid_copy_real_parity": 2.843586477396798e-12,
+      "max_branch_deficit": 4.255711826495201e-05,
+      "rigorous_deficit_upper": "10639368015691899/250000000000000000000",
+      "certified_per_setting_TV_radius": "21/100000000",
+      "passes_thm2_with_epsilon_5e_minus5": true
+    }
+  ],
+  "design_example": {
+    "L": 7.74,
+    "d_separable_max": 0.004684582425360897,
+    "mean_setting_TV_max": 0.0033125000000000147,
+    "flag_for_unrestricted_channel_max": 0.018320082958866307,
+    "nonseparable_quantum_flag_max": 0.09638917958518865,
+    "min_joint_acceptance_required": 0.9959726443768996
+  }
+}
