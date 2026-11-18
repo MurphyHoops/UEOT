@@ -1,0 +1,464 @@
+{
+  "schema": "three-slot-record-controls/1",
+  "status": "PASS",
+  "device": "NOT_CERTIFIED",
+  "freeze_sha256": "1ed04d9b4dc22cbff70017614ff653b65c58f26435b068c7a2c7fe44be9668be",
+  "resource_ledger_sha256": "5052e42be8e4bbde156ce6cb1709666f6184e3bc9e4531ae080b4d19b7153c95",
+  "raw": {
+    "archives": {
+      "calibration": {
+        "sha256": "2e1fd32698d82455ca879bc062863f5acb86b2c1d9147fa529b9de7e8fb2c2b9",
+        "blocks": 720,
+        "shots": 720000
+      },
+      "holdout": {
+        "sha256": "a1c4a7aa613f5e3eb58b8ec664c100bf8c05236f76932aa5909d9ef2cb152190",
+        "blocks": 408,
+        "shots": 408000
+      }
+    },
+    "field_dictionary": {
+      "stored": {
+        "block_setting": "uint8 setting index for each chronological 1000-shot row",
+        "ordered_codes": "uint8 simulated outcome at [block, within_block]"
+      },
+      "decoded": {
+        "phase_and_ordinal": "Archive name and array position; zero-based logical time.",
+        "session_batch": "Calibration or holdout archive; setting comes from protocol insertion order.",
+        "initial_state_reference_pulses": "Commanded preparation, S operations, durations and nominal shot-zero frame.",
+        "failure_stop": "Bell code // 2 selects f, pf, ppf, ppp; the prefix determines the slots actually reached in simulation.",
+        "readout": "Bell code % 2 or scalar code indexes minus/plus; Bell readout is one Pauli product, without individual qubit bits."
+      },
+      "synthetic_assumptions": [
+        "Fresh bath at every start; end reset charged once per start.",
+        "Ideal designated pulses, phase lock and common offset plus specified detector/gain model.",
+        "Zero intrinsic leakage, lost rows and injected drift; statistical independence given schedule."
+      ],
+      "device_fields_absent": [
+        "wall-clock time and hardware trigger/attempt ID",
+        "per-shot preparation or pulse telemetry",
+        "measured phase reference, drift and calibration provenance",
+        "leakage/invalid-readout flag",
+        "reset acknowledgement, loss/dead time, actual work or energy and device raw record"
+      ]
+    },
+    "decoded_examples": [
+      {
+        "phase": "calibration",
+        "ordinal": 1000,
+        "block": 1,
+        "within_block": 0,
+        "block_setting": 1,
+        "ordered_code": 1,
+        "setting": "Rshort",
+        "terminal_sign": 1,
+        "prep": "+X",
+        "reference": "preparation clock; no spectator",
+        "tester": "X",
+        "prefix": null,
+        "commanded_durations": [
+          "3/4"
+        ]
+      },
+      {
+        "phase": "calibration",
+        "ordinal": 0,
+        "block": 0,
+        "within_block": 0,
+        "block_setting": 5,
+        "ordered_code": 0,
+        "setting": "Yp",
+        "terminal_sign": -1,
+        "prep": "Z eigenvalue +1",
+        "reference": "shared break frame; no spectator",
+        "insertion": "trace S, prepare +X, retain E",
+        "tester": "Y",
+        "prefix": null,
+        "commanded_durations": [
+          "2/3",
+          "3/4"
+        ]
+      },
+      {
+        "phase": "holdout",
+        "ordinal": 19003,
+        "block": 19,
+        "within_block": 3,
+        "block_setting": 4,
+        "ordered_code": 3,
+        "setting": "original_YZ",
+        "terminal_sign": 1,
+        "prep": "Bell SR",
+        "reference": "qubit R untouched until terminal tester",
+        "tester": "YZ",
+        "prefix": "pf",
+        "post_pass_operations": [
+          "Ry(pi/2)"
+        ],
+        "commanded_durations": [
+          "2/3",
+          "3/4"
+        ]
+      }
+    ],
+    "checked_prefix_resources": {
+      "started_shots": 1128000,
+      "terminal_measurements": 1128000,
+      "heldout_Bell_preparations": 288000,
+      "causal_repreparations": 500000,
+      "eigenstate_preparations": 500000,
+      "nonzero_source_intervals": 2012560,
+      "dimensionless_total_interaction_time": "9301091/6",
+      "Ry_postpass": 234365,
+      "Rx_postpass": 190195
+    },
+    "source_ledger": "inference/verification.json"
+  },
+  "synthetic_truth": {
+    "lambda": "3/10",
+    "n": "1/2",
+    "c": "1/4",
+    "eta": "24/25",
+    "break_offset": "3/250",
+    "Y_relative_gain": "4999/5000",
+    "challenge_eta": "13/20"
+  },
+  "counterfactual": {
+    "last_pass_veto": "1/4 of ppp relabelled ppf, same terminal state",
+    "unrecorded_leak": "1/8 independent terminal erasure on every stopped prefix. Full alphabet includes (prefix,leak); defective logger drops these attempts.",
+    "cost_basis": "unit cost per start and reset, source slots charged through physical stopping even when readout is lost",
+    "scope": "post hoc diagnostic on the synthetic Bell source; fractions are exact observed-law transformations; model intervals are directed outward"
+  },
+  "timings": {
+    "original": {
+      "exact_Weyl_model": {
+        "timing": [
+          "2/3",
+          "3/4",
+          "1/2"
+        ],
+        "source_vs_phase_free_event_TV_outward": {
+          "XX": [
+            "0.004269818615",
+            "0.004269818616"
+          ],
+          "XY": [
+            "0.004269818615",
+            "0.004269818616"
+          ],
+          "YZ": [
+            "0.004905423191",
+            "0.004905423192"
+          ],
+          "ZZ": [
+            "0.004269818615",
+            "0.004269818616"
+          ]
+        },
+        "signed_YZ_ppp_minus_full_minus_phase_free": [
+          "-0.003321760427",
+          "-0.003321760426"
+        ],
+        "point_phase_free_cells_disjoint_from_archived_simultaneous_bands": [],
+        "model_success_mass": [
+          "0.533694048571",
+          "0.533694048572"
+        ],
+        "success_only_as_complete_TV": [
+          "0.466305951428",
+          "0.466305951429"
+        ],
+        "last_pass_veto_TV": [
+          "0.133423512142",
+          "0.133423512143"
+        ],
+        "veto_visible_success_mass": [
+          "0.400270536428",
+          "0.400270536429"
+        ],
+        "terminal_leak_visible_success_mass": [
+          "0.466982292500",
+          "0.466982292501"
+        ],
+        "model_starts_per_visible_success": {
+          "baseline": [
+            "1.873732717604",
+            "1.873732717605"
+          ],
+          "veto": [
+            "2.498310290139",
+            "2.498310290140"
+          ],
+          "leak": [
+            "2.141408820119",
+            "2.141408820120"
+          ]
+        }
+      },
+      "observed_law": {
+        "started": 96000,
+        "record_counts_f_pf_ppf_ppp": [
+          18056,
+          14740,
+          12082,
+          51122
+        ],
+        "source_interval_uses": 237148,
+        "interaction_time": "154060",
+        "successful_rows_only_discard": 44878,
+        "success_only_as_complete_TV": "22439/48000",
+        "last_pass_veto_unconditional_TV": "25561/192000",
+        "leak_flag_included_TV": "1/8",
+        "leak_conditioned_on_any_logged_row_TV": "0",
+        "conditional_success_sign_TV_both_controls_all_four_testers": "0",
+        "costs": {
+          "baseline": {
+            "cost_multiplier_vs_baseline": "1",
+            "yield_per_started_shot": "25561/48000",
+            "starts_and_charged_resets_each_per_usable_success": "48000/25561",
+            "executed_source_intervals_per_usable_success": "118574/25561",
+            "interaction_time_per_usable_success": "77030/25561"
+          },
+          "last_pass_veto": {
+            "cost_multiplier_vs_baseline": "4/3",
+            "yield_per_started_shot": "25561/64000",
+            "starts_and_charged_resets_each_per_usable_success": "64000/25561",
+            "executed_source_intervals_per_usable_success": "474296/76683",
+            "interaction_time_per_usable_success": "308120/76683"
+          },
+          "unrecorded_leak": {
+            "cost_multiplier_vs_baseline": "8/7",
+            "yield_per_started_shot": "178927/384000",
+            "starts_and_charged_resets_each_per_usable_success": "384000/178927",
+            "executed_source_intervals_per_usable_success": "948592/178927",
+            "interaction_time_per_usable_success": "616240/178927"
+          }
+        },
+        "YZ_example": {
+          "observed_cells_minus_then_plus": [
+            2145,
+            2267,
+            1896,
+            1807,
+            1520,
+            1533,
+            6439,
+            6393
+          ],
+          "success_conditional_minus_plus": [
+            "6439/12832",
+            "6393/12832"
+          ],
+          "veto_joint_probabilities": [
+            "143/1600",
+            "2267/24000",
+            "79/1000",
+            "1807/24000",
+            "4173/32000",
+            "167/1280",
+            "6439/32000",
+            "6393/32000"
+          ],
+          "leak_joint_probabilities_eight_valid_then_four_flagged": [
+            "1001/12800",
+            "15869/192000",
+            "553/8000",
+            "12649/192000",
+            "133/2400",
+            "3577/64000",
+            "45073/192000",
+            "14917/64000",
+            "1103/48000",
+            "3703/192000",
+            "3053/192000",
+            "401/6000"
+          ]
+        }
+      }
+    },
+    "swap": {
+      "exact_Weyl_model": {
+        "timing": [
+          "3/4",
+          "2/3",
+          "1/2"
+        ],
+        "source_vs_phase_free_event_TV_outward": {
+          "XX": [
+            "0.004541476765",
+            "0.004541476766"
+          ],
+          "XY": [
+            "0.004541476765",
+            "0.004541476766"
+          ],
+          "YZ": [
+            "0.005217520333",
+            "0.005217520334"
+          ],
+          "ZZ": [
+            "0.004541476765",
+            "0.004541476766"
+          ]
+        },
+        "signed_YZ_ppp_minus_full_minus_phase_free": [
+          "-0.002888544202",
+          "-0.002888544201"
+        ],
+        "point_phase_free_cells_disjoint_from_archived_simultaneous_bands": [],
+        "model_success_mass": [
+          "0.533422390421",
+          "0.533422390422"
+        ],
+        "success_only_as_complete_TV": [
+          "0.466577609578",
+          "0.466577609579"
+        ],
+        "last_pass_veto_TV": [
+          "0.133355597605",
+          "0.133355597606"
+        ],
+        "veto_visible_success_mass": [
+          "0.400066792816",
+          "0.400066792817"
+        ],
+        "terminal_leak_visible_success_mass": [
+          "0.466744591619",
+          "0.466744591620"
+        ],
+        "model_starts_per_visible_success": {
+          "baseline": [
+            "1.874686960944",
+            "1.874686960945"
+          ],
+          "veto": [
+            "2.499582614592",
+            "2.499582614593"
+          ],
+          "leak": [
+            "2.142499383936",
+            "2.142499383937"
+          ]
+        }
+      },
+      "observed_law": {
+        "started": 96000,
+        "record_counts_f_pf_ppf_ppp": [
+          17727,
+          14749,
+          12243,
+          51281
+        ],
+        "source_interval_uses": 237797,
+        "interaction_time": "155944",
+        "successful_rows_only_discard": 44719,
+        "success_only_as_complete_TV": "44719/96000",
+        "last_pass_veto_unconditional_TV": "51281/384000",
+        "leak_flag_included_TV": "1/8",
+        "leak_conditioned_on_any_logged_row_TV": "0",
+        "conditional_success_sign_TV_both_controls_all_four_testers": "0",
+        "costs": {
+          "baseline": {
+            "cost_multiplier_vs_baseline": "1",
+            "yield_per_started_shot": "51281/96000",
+            "starts_and_charged_resets_each_per_usable_success": "96000/51281",
+            "executed_source_intervals_per_usable_success": "237797/51281",
+            "interaction_time_per_usable_success": "155944/51281"
+          },
+          "last_pass_veto": {
+            "cost_multiplier_vs_baseline": "4/3",
+            "yield_per_started_shot": "51281/128000",
+            "starts_and_charged_resets_each_per_usable_success": "128000/51281",
+            "executed_source_intervals_per_usable_success": "951188/153843",
+            "interaction_time_per_usable_success": "623776/153843"
+          },
+          "unrecorded_leak": {
+            "cost_multiplier_vs_baseline": "8/7",
+            "yield_per_started_shot": "358967/768000",
+            "starts_and_charged_resets_each_per_usable_success": "768000/358967",
+            "executed_source_intervals_per_usable_success": "271768/51281",
+            "interaction_time_per_usable_success": "1247552/358967"
+          }
+        },
+        "YZ_example": {
+          "observed_cells_minus_then_plus": [
+            2211,
+            2227,
+            1891,
+            1787,
+            1532,
+            1532,
+            6475,
+            6345
+          ],
+          "success_conditional_minus_plus": [
+            "1295/2564",
+            "1269/2564"
+          ],
+          "veto_joint_probabilities": [
+            "737/8000",
+            "2227/24000",
+            "1891/24000",
+            "1787/24000",
+            "4201/32000",
+            "12473/96000",
+            "259/1280",
+            "1269/6400"
+          ],
+          "leak_joint_probabilities_eight_valid_then_four_flagged": [
+            "5159/64000",
+            "15589/192000",
+            "13237/192000",
+            "12509/192000",
+            "2681/48000",
+            "2681/48000",
+            "1813/7680",
+            "2961/12800",
+            "2219/96000",
+            "613/32000",
+            "383/24000",
+            "641/9600"
+          ]
+        }
+      }
+    }
+  },
+  "reused": {
+    "reset": {
+      "source": "inference/holdout_results.json",
+      "result": {
+        "count": 71816,
+        "of": 120000,
+        "frequency": "8977/15000",
+        "two_named_alternatives_choice": "first",
+        "reset_or_zero_response_rejected_at_1_percent": true
+      }
+    },
+    "wrong_clock": {
+      "source": "dynamics/observed.json",
+      "point_diagnostics": {
+        "deployment": {
+          "point": [
+            0.4,
+            0.6,
+            -0.45
+          ],
+          "pinned_gaussian_vs_API": 1.70513726665153e-16,
+          "Fock_K20_vs_API": 4.367396593445153e-07,
+          "Fock_K20_vs_wrong_frame": 0.011121042337550412
+        },
+        "changed_intervals": {
+          "point": [
+            0.4,
+            0.6,
+            -0.45
+          ],
+          "pinned_gaussian_vs_API": 1.6683510426640586e-16,
+          "Fock_K20_vs_API": 4.3451120436728653e-07,
+          "Fock_K20_vs_wrong_frame": 0.012128289066768765
+        }
+      }
+    },
+    "phase_crosscheck_other_inputs": "selection/review_dynamics.py and selection/dynamics_review_run.txt (mixed SR, dim R=3)"
+  }
+}

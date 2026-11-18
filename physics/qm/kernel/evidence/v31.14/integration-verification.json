@@ -1,0 +1,120 @@
+{
+  "schema": "ueot-qm-v31.14-observed-integration/1",
+  "status": "PASS",
+  "scientific_main_verified": true,
+  "scientific_source_head": "44b6cd200cd01eccf15d4dc817311388d317a1af",
+  "verified_scientific_main": "a3f95dc1a6821978e173e23015f026994fb60c65",
+  "tree": "47f7ce7dc4882fecaf794a553d80c4b9ccf9766f",
+  "pr": 466,
+  "pr_run": 43476675881,
+  "main_run": 44318642942,
+  "main_attempt": 1,
+  "jobs": [
+    {
+      "name": "lean",
+      "conclusion": "success",
+      "successful_steps": [
+        "Set up job",
+        "Checkout",
+        "Check exact inherited proof identity or require a full build",
+        "Record source identity",
+        "Check inherited dependency lock",
+        "Install and verify official pinned Lean",
+        "Restore pinned dependencies",
+        "Restore Mathlib proof cache",
+        "Reject proof escapes",
+        "Build all QM proofs",
+        "Audit theorem axioms",
+        "Verify generated exact certificates and false witnesses",
+        "Verify retained finite and quantum Lean witnesses",
+        "Archive proof evidence",
+        "Post Checkout",
+        "Complete job"
+      ]
+    },
+    {
+      "name": "runtime",
+      "conclusion": "success",
+      "successful_steps": [
+        "Set up job",
+        "Checkout",
+        "Install Python",
+        "Install finite conditioning reference dependencies",
+        "Verify finite conditioning source, records, implementations and costs",
+        "Verify canonical physics book structure",
+        "Verify operational microscopic robust increment",
+        "Verify separated-pulse growing carriers and exact joint certificate",
+        "Verify simultaneous Galerkin source and calibrated complete prediction",
+        "Verify persistent bath, exact physical instrument and frozen heldout evidence",
+        "Verify bilingual chapter70 identities and evidence boundaries",
+        "Verify exact kernel and independent negative controls",
+        "Run complete kernel example",
+        "Run representation and spectrum witnesses",
+        "Export exact Lean certificate examples",
+        "Run mixture and persistence witnesses",
+        "Archive runtime evidence",
+        "Post Install Python",
+        "Post Checkout",
+        "Complete job"
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 14434006625,
+      "name": "ueot-qm-runtime-44318642942",
+      "bytes": 1128736,
+      "github_reported_digest": "sha256:3b6b8384fb390dca222ff40ff4b421891f7dba144a95ee2aefbb9b3b452ed252"
+    },
+    {
+      "id": 14433324374,
+      "name": "ueot-qm-lean-44318642942",
+      "bytes": 152427,
+      "github_reported_digest": "sha256:f9b77b5d2e6dbfad7d9684370f5f9c8a19a1f980a2d3ffcf63054e891fcd91b7"
+    }
+  ],
+  "scope": "GitHub main push runtime and Lean jobs passed. Sampled contents of both downloaded artifacts were read and hashed. A tracked change to the historical QM formalization README required a fresh build of the existing library. No new Chapter69/70 formal theorem coverage.",
+  "download_readback": {
+    "extracted_file_counts": {
+      "ueot-qm-runtime-44318642942": 137,
+      "ueot-qm-lean-44318642942": 60
+    },
+    "sampled_files": {
+      "source-identity.log": {
+        "path": "ueot-qm-lean-44318642942/UEOT/UEOT/formalization/ueot-qm/source-identity.log",
+        "bytes": 5152,
+        "sha256": "26be8a411427e2c6ca282d469dd948a0ce97c0e6f40f10f273a10e83030737c8"
+      },
+      "source-manifest.json": {
+        "path": "ueot-qm-lean-44318642942/UEOT/UEOT/formalization/ueot-qm/source-manifest.json",
+        "bytes": 36740,
+        "sha256": "b0b7307557cfb3f2743f6197ba73d5e389a3396a0780aebdca34e31063f56104",
+        "source_count": 188
+      },
+      "ueot-qm-proof-reuse.json": {
+        "path": "ueot-qm-lean-44318642942/_temp/ueot-qm-proof-reuse.json",
+        "bytes": 758,
+        "sha256": "591d85288ae74a768b686b234188d0d5909289fee0696c25346f6cbe5eeb996f",
+        "status": "FULL_LEAN_REQUIRED",
+        "errors": [
+          "changed proof/tool inventory: formalization/ueot-qm/README.md"
+        ],
+        "proof_input_count": 158
+      },
+      "ueot-qm-book3.11-increment.json": {
+        "path": "ueot-qm-runtime-44318642942/ueot-qm-book3.11-increment.json",
+        "bytes": 202889,
+        "sha256": "8ce693cf494a1668f06e974a29ce1070dbb78eb4ea56a08220f232b824cf52c4",
+        "status": "PASS",
+        "check_count": 2543
+      },
+      "ueot-qm-persistent-bath/runtime.json": {
+        "path": "ueot-qm-runtime-44318642942/ueot-qm-persistent-bath/runtime.json",
+        "bytes": 44501,
+        "sha256": "115bf65ded5c9e99328eab29a2b93c020e14dc4730770f5e4ad1a09b6723b742",
+        "status": "PASS",
+        "inputs_stable_during_execution": true
+      }
+    }
+  }
+}

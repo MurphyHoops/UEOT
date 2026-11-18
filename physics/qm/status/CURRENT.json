@@ -1,25 +1,21 @@
 {
-  "schema": "ueot-qm-current/7",
-  "date": "2026-11-14",
-  "version": "v31.14",
-  "kernel_version": "1.14",
-  "scientific_version": "v31.14 / Kernel 1.14",
-  "research_baseline": "ee7fb2793a1dbb519703bba05f535f0d962d9e56",
-  "kernel": "physics/qm/UEOT_QM_KERNEL_v31.14.md",
-  "execution_contract": "physics/qm/UEOT_QM_EXECUTION_v31.14.md",
-  "runtime_entrypoint": "physics/qm/persistent_bath/README.md",
+  "schema": "ueot-qm-current/8",
+  "date": "2026-11-18",
+  "version": "v31.15",
+  "research_baseline": "a3f95dc1a6821978e173e23015f026994fb60c65",
+  "kernel": "physics/qm/correlated_bath/README.md",
+  "runtime_entrypoint": "physics/qm/correlated_bath/portable_replay.py",
   "formalization": "formalization/ueot-qm/README.md",
   "roadmap": "physics/qm/ROADMAP.md",
-  "claim_ledger": "physics/qm/status/CLAIM_LEDGER_v31.14.json",
-  "previous_claim_ledger": "physics/qm/status/CLAIM_LEDGER_v31.13.json",
-  "verification_state": "LOCAL_VERIFIED_REMOTE_PENDING",
-  "local_checkpoint_state": "PASS",
+  "claim_ledger": "physics/qm/status/CLAIM_LEDGER_v31.15.json",
+  "previous_claim_ledger": "physics/qm/status/CLAIM_LEDGER_v31.14.json",
+  "verification_state": "MANUSCRIPT_CANDIDATE",
   "status_axes": {
-    "mathematical": "DECLARED_MODEL_PAPER_PROOFS_AND_SCOPED_NONIMPLICATIONS",
-    "physical_selection": "GLOBAL_COMPLEX_SELECTION_OPEN; REACHABLE_SECTOR_OBSTRUCTION_PROVED",
-    "computational": "ALL_INPUT_INTERVAL_CHOI_AND_RATIONAL_CP_TP_MAP; SYNTHETIC_CALIBRATION_HOLDOUT",
-    "empirical": "MATCHED_DEVICE_NOT_CERTIFIED; EXTERNAL_PROCESSED_OBSERVABLE_REPRODUCED",
-    "method_gain": "EQUIVALENT_NO_ADDED_GAIN_AGAINST_STRONG_STANDARD_PROCESS"
+    "mathematical": "CONDITIONAL_PAPER_RESULTS_AND_EXACT_COUNTERMODELS",
+    "physical_selection": "AMBIENT_CONTINUITY_INDEPENDENT; COMPLEX_SELECTION_OPEN",
+    "computational": "INTERVAL_CHOI_AND_SYNTHETIC_HOLDOUT",
+    "empirical": "MATCHED_DEVICE_NOT_CERTIFIED",
+    "method_gain": "EQUIVALENT_STANDARD_PROCESS"
   },
   "source_identity": {
     "manifest": "physics/qm/kernel/evidence/v31.11/source-manifest.json",
@@ -31,61 +27,64 @@
     "current_identity_check": "physics/qm/kernel/evidence/v31.14/proof-reuse.json"
   },
   "proof_receipt": "physics/qm/kernel/evidence/v31.11/lean-verification.json",
-  "proof_reuse_receipt": "physics/qm/kernel/evidence/v31.14/proof-reuse.json",
-  "increment_source_manifest": "physics/qm/kernel/evidence/v31.14/source-manifest.json",
-  "runtime_receipt": "physics/qm/kernel/evidence/v31.14/runtime/execution_receipt.json",
+  "previous_main_lean_rebuild": {
+    "path": "physics/qm/kernel/evidence/v31.14/integration-verification.json",
+    "sha256": "28fcfba79237fe26fc06b024bcf88d79a2804a831751bb50915036f4e545e1b4",
+    "bytes": 4706
+  },
   "integration": {
-    "state": "LOCAL_VERIFIED_REMOTE_PENDING",
+    "state": "MANUSCRIPT_CANDIDATE",
     "remote_verified": false,
-    "research_entry_baseline": "ee7fb2793a1dbb519703bba05f535f0d962d9e56"
+    "previous_verified_scientific_main": "a3f95dc1a6821978e173e23015f026994fb60c65",
+    "previous_main_run": 44318642942,
+    "previous_main_receipt": {
+      "path": "physics/qm/kernel/evidence/v31.14/integration-verification.json",
+      "sha256": "28fcfba79237fe26fc06b024bcf88d79a2804a831751bb50915036f4e545e1b4",
+      "bytes": 4706
+    },
+    "pr": 467,
+    "merge_state": "AWAITING_MERGE"
   },
   "completed_in_this_delivery": [
-    "C-QSEL-02",
-    "P-TOM-01",
-    "P-MICRO-08",
-    "P-MICRO-09",
-    "C-QMEM-01",
-    "P-NUM-01",
-    "P-QMEM-02",
-    "P-ROB-06",
-    "P-ROB-07"
+    "C-QSEL-03",
+    "C-QSEL-04",
+    "P-MICRO-10",
+    "C-QMEM-02",
+    "P-QMEM-03",
+    "P-ROB-08",
+    "P-FIELD-01"
   ],
   "book": {
-    "edition": "3.11",
-    "chapters": 71,
+    "edition": "3.12",
+    "status": "MANUSCRIPT_CANDIDATE",
+    "chapters": 72,
     "appendices": 6,
-    "numbered_results": 203,
-    "inherited_numbered_results": 194,
-    "new_numbered_results": 9,
+    "numbered_results": 210,
+    "inherited_numbered_results": 203,
+    "new_numbered_results": 7,
     "canonical": "physics/qm/book/UEOT_PHYSICS.md",
     "english": "physics/qm/book/UEOT_PHYSICS.en.md",
     "dossier": {
       "path": "physics/qm/book/CHAPTER_DOSSIER.json",
-      "sha256": "edfcdba4953440c9cef99ab3ad629c5f41aca3711ea12cc79c827bd5fb805a97",
-      "bytes": 1743046
+      "sha256": "e7bf41acac4df7cb51293469a22da5b39b11343819c914c095772a4c62ee68dc",
+      "bytes": 1776356
     },
+    "checked_in_pdf_edition": "3.12",
+    "pdf_acceptance": "PASS_SCOPED",
     "whole_book_formalized": false,
-    "local_acceptance": "physics/qm/book/evidence/v3.11/local-acceptance.json"
-  },
-  "historical_current_checkpoint": {
-    "path": "physics/qm/book/evidence/v3.11/prior/CURRENT.json",
-    "sha256": "e64ab2b638a8d1cd045dfdf5da27298ffd16a353f89ff0fe5e5122bea5ad32cd",
-    "bytes": 5059
+    "visual_review": {
+      "path": "physics/qm/book/evidence/v3.12/reading-review.json",
+      "sha256": "1ddd1aa91a265db24d8ab5b9ab73e2b68d641c6791a02e82916dd50f37a153b0",
+      "bytes": 3800
+    }
   },
   "scope_limits": [
-    "Complex Hilbert, tensor/Born/CP, Fock modes, frequencies, relative couplings and vacuum preparation remain independent physical inputs.",
-    "The executed model is a fixed three-slot qubit source with two persistent modes, complete failure records and arbitrary untouched finite references.",
-    "General Gaussian formulas preserve correlations, but the calibrated and numerical certificate uses the frozen vacuum family only.",
-    "Fixed-policy external-channel tomography and repaired terminal Choi maps do not certify every alternative intermediate intervention.",
-    "Calibration assumes stationary independent trials, known preparation and controls, error-free records and one shared symmetric detector visibility.",
-    "Synthetic coverage and heldout non-rejection do not establish device membership; external processed data do not supply missing matched raw shots.",
-    "No new Lean declarations, extra natural prediction, strong-baseline gain, global complex-sector selection, QFT, gravity or cosmological closure is claimed."
+    "Continuous transitivity assumes ambient access. A reachable invariant face leaves hidden completions exactly equivalent.",
+    "The two trees use a clock-locked Gaussian preparation, known operations, a common visibility and a bath-preserving probe reset.",
+    "Half-diamond bounds cover arbitrary inputs and finite untouched references on the fixed trees. Eight-cell bounds use a specified Bell input.",
+    "The calibration coverage event is conditional on the source contract. Holdout and calibration are synthetic. Matched hardware, free interventions and normalized postselection require additional evidence.",
+    "The new chapter has no Lean declarations or independent human review. The existing library was rebuilt and audited on the preceding merged source.",
+    "Field and sector examples retain their model inputs. Complex selection, hardware advantage, interacting QFT and gravitational selection remain open."
   ],
-  "new_hardware_data": false,
-  "metadata_updated_at_utc": "2026-11-13T17:41:27.870293+00:00",
-  "next_execution": {
-    "theory": "Correlated nonvacuum bath with controlled finite prediction or a bounded mode-deletion contract",
-    "selection": "Independent access-completeness/minimality principle or an explicit nonimplication",
-    "data": "Matched ordered raw shots, SPAM/leakage/preparation/control/readout evidence and full physical costs"
-  }
+  "new_hardware_data": false
 }

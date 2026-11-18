@@ -1,0 +1,23 @@
+run 2026-11-18 22:00:52 CST
+411748f70bbde5dcf580d21027e1a0bf77e86be0787f91caf01b6cf6848c9abc  /Users/murphyhoops/Documents/ChatGPT/UEOTCORE/ueot-physics-20261118/selection/review_certificate.py
+8138372802e115dd7b6e276602b6eccbc741d3fffab49172878a9089b8449e19  /Users/murphyhoops/Documents/ChatGPT/UEOTCORE/ueot-physics-20261118/selection/review_dynamics.py
+cwd /Users/murphyhoops/Documents; UEOT_UPSTREAM_REPO=ueotlean; python -B review_certificate.py
+reviewed files {'complete.py': 'cf2464cb8720b6e8a4e2345ca3f9100b4974c70378f54a620d2c6630d4bc5944', 'joint.py': '27f5734f87b4ff8e7bee686831807617b8b0212d87368825a749d2cbcbc8c4e5', 'first-output.json': '315ec06a9ceb744e67f70810a937d4cc5913914306a6e25745dd5fa9472609a8', 'joint-result.json': 'ba4ede96be0a4b3057036473fd8ec4f278c0ee4d3bd04248cef34215a9640ac0'}
+pinned Git source 44b6cd200cd01eccf15d4dc817311388d317a1af repo /Users/murphyhoops/Documents/ueotlean blob SHA256 {'SHARED_MODEL.json': '685d373bb5a70a677fd4d110cb81c6624260de95ea39cc60070a8f4bd9f19668', 'dynamics.py': '3eb805d8ec9f8010583023f8a57812c759fba4fcc48c27c36a9079367f664001', 'interval_certificate.py': 'edb594539bcc0773379ab3a869afa8a6cb8199004ca0986b0c5acc219d3166fc'}
+actual certificate input SHA256 {'calibration_fit.json': '2567d937b789568cc366a21ef8afc0be414fc36f6417c282380546407f6e5d4b', 'freeze.json': '1ed04d9b4dc22cbff70017614ff653b65c58f26435b068c7a2c7fe44be9668be', 'protocol.json': '7e66263d585f9486d19cfd8aa69486b74504422933a26855b6fd000433fad102', 'calibration.npz': '2e1fd32698d82455ca879bc062863f5acb86b2c1d9147fa529b9de7e8fb2c2b9', 'first-output.json': '315ec06a9ceb744e67f70810a937d4cc5913914306a6e25745dd5fa9472609a8'}
+('2/3', '3/4', '1/2') 0.033892297103 0.046090140885 CERTIFIED_SYNTHETIC
+('3/4', '2/3', '1/2') 0.035357047207 0.047554890989 CERTIFIED_SYNTHETIC
+replay: both JSON results exactly equal (byte-for-byte)
+timing 1, independent parameter=0.0338922871029, actual center interpolation residual=0.000353477618, arbitrary SR error=1.02e-09, without normalized-Choi factor input gives trace=0.5
+Bell analog TV=0.046090140885, outward digitized TV=0.046090140889
+B K=16 repaired Choi at B's own point, general SR discrepancy 1.59169478e-06
+timing 2, independent parameter=0.035357037207, actual center interpolation residual=0.00035999668, arbitrary SR error=1.02e-09, without normalized-Choi factor input gives trace=0.5
+Bell analog TV=0.047554890989, outward digitized TV=0.047554890993
+B K=16 repaired Choi at B's own point, general SR discrepancy 1.53576393e-06
+record-conditioned detector residual, Bell vs |01> TV: 0.0 0.06250000000000001
+endpoints U(0)=U(2pi)=I, midpoint U(pi)=Z: trace distance on |+> = 1.0
+digitized tight alternating-bias example: TV excess over 4b = 7/17179869184000
+substituted protocol: rejected before output, exit 1, ValueError: calibration freeze binding mismatch
+substituted raw calibration: rejected before output, exit 1, ValueError: calibration freeze binding mismatch
+threshold control: analog 1/20 digitized 12500000001/250000000000 verdict NOT_CERTIFIED
+exit_code 0

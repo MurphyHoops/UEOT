@@ -1,5 +1,4 @@
 {
-  "schema": "ueot_physics.source_manifest.v1",
   "book_document_id": "UEOT-PHYSICS",
   "canonical_source": "physics/qm/book/UEOT_PHYSICS.md",
   "historical_text_witness_policy": "Recovered v23–v30 views are text witnesses with their own bytes; no original-upload byte identity is inferred. Two v28.1 views are retained separately.",
@@ -41,8 +40,36 @@
       "role": "ORIGINAL_VERSION_SOURCE_AND_MAIN_ACCEPTANCE_RETAINED_NOT_CURRENT_EXECUTION"
     }
   ],
-  "recorded_at_utc": "2026-11-13T17:41:27.870293+00:00",
-  "edition": "3.11",
+  "legacy_program_reuse": {
+    "reexecuted_this_edition": false,
+    "appendix_d_exact_bytes_unchanged": false,
+    "preservation_receipt": "physics/qm/book/evidence/v3.6/prior-text-preservation.json",
+    "historical_receipt": {
+      "receipt": "physics/qm/book/evidence/v3.5/legacy-source-reuse.json",
+      "receipt_sha256": "d4989efed9facced85456d0943a57ee55c478e56d9b94d16353fa031d4c1062c",
+      "reexecuted_this_edition": false,
+      "historical_checks": 757
+    },
+    "program_blocks_exact_bytes_unchanged": true,
+    "program_blocks": {
+      "count": 3,
+      "both_languages_exact_payload_bytes": true,
+      "sha256": [
+        "79dc78035c239957a8ac4f5b2f6a9d1c1a6b2a84d2cee094f831bad531f983c0",
+        "6719d3340fdbfc305f3b0b1266a012c976843d1862cba8e476a151e40d160401",
+        "c2107ac235f0d87faee246412c6478a0405113cb0113b647027820106d95ad32"
+      ],
+      "whole_appendix_bytes_equal_prior": {
+        "zh": false,
+        "en": false
+      },
+      "scope": "Python fenced payloads only; surrounding prose and receipt descriptions were edited; no historical programs rerun"
+    },
+    "scope": "3.7 preserves the three exact program payloads in both languages; Appendix D prose is edited. The older preservation_receipt and historical_receipt below keep their original scope.",
+    "publication_preservation_receipt": "physics/qm/book/evidence/v3.7/publication-metadata-update.json"
+  },
+  "schema": "ueot-physics-book-source-manifest/3.12",
+  "edition": "3.12",
   "entries": [
     {
       "id": "S1",
@@ -174,38 +201,59 @@
       "path": "physics/qm/UEOT_QM_KERNEL_v31.14.md",
       "evidence_level": "PAPER_EXACT_INTERVAL_SYNTHETIC_AND_EXTERNAL_PROCESSED_REPRODUCTION_NO_NEW_LEAN",
       "use": "Nine scoped Chapter70 results; no matched-device certification or global physical selection"
+    },
+    {
+      "id": "QM3115",
+      "name": "Correlated bath, signed interventions and the local field",
+      "path": "physics/qm/correlated_bath/README.md",
+      "evidence_level": "PAPER_EXACT_INTERVAL_SYNTHETIC_NO_NEW_LEAN",
+      "use": "Seven Chapter 71 result objects and their declared controls"
     }
   ],
   "prior_complete_manifest": {
-    "path": "physics/qm/book/evidence/v3.11/prior/SOURCE_MANIFEST.json",
-    "sha256": "a950cd3d88b52d3bf10875fc634fdf8d29db41fe0856255116cd1def42de953f",
-    "bytes": 14526
+    "commit": "a3f95dc1a6821978e173e23015f026994fb60c65",
+    "path": "physics/qm/book/SOURCE_MANIFEST.json",
+    "sha256": "a2d1c146c45152087755d12a6e4054f49679633eb75fbe800a581c109f9b3984",
+    "bytes": 15326
   },
-  "current_code_baseline": "ee7fb2793a1dbb519703bba05f535f0d962d9e56",
-  "current_code_baseline_role": "Recovered Chapter69 scientific main",
-  "current_code_manifest": "../kernel/evidence/v31.11/source-manifest.json",
-  "current_publication_code_manifest": "../kernel/evidence/v31.14/source-manifest.json",
-  "current_code_identity": {
-    "manifest": "physics/qm/kernel/evidence/v31.11/source-manifest.json",
-    "verification": "physics/qm/kernel/evidence/v31.11/lean-verification.json",
-    "source_count": 158,
-    "source_set_sha256": "f9ea1e3e9bc695e3916d764e8f005d98556e4541653d439a60e57a5fb8c4cacf",
-    "scope": "Historical v31.11 proof execution only; 158 unchanged inputs; no new Chapter69 or Chapter70 Lean coverage",
-    "current_bytes_match_executed_bytes": true,
-    "current_identity_check": "physics/qm/kernel/evidence/v31.14/proof-reuse.json"
+  "publication_revision": {
+    "edition": "3.12",
+    "scope": "Continuous bilingual manuscript candidate. The canonical TeX and PDF files match the frozen PR build. Visual acceptance covers only the pages in the reading review.",
+    "new_scientific_results_in_publication": 7,
+    "new_experimental_data": false,
+    "local_artifact_state": "PASS_SCOPED",
+    "remote_publication": "MANUSCRIPT_CANDIDATE",
+    "print_source_commit": "a20d178a2f54f2c984354e638060869fe97636fb",
+    "build_run_id": 44324949932,
+    "visual_review": {
+      "path": "physics/qm/book/evidence/v3.12/reading-review.json",
+      "sha256": "1ddd1aa91a265db24d8ab5b9ab73e2b68d641c6791a02e82916dd50f37a153b0",
+      "bytes": 3800
+    }
   },
   "canonical_identity": {
     "path": "physics/qm/book/UEOT_PHYSICS.md",
-    "sha256": "7601ad60f0b28325a99a2b95f23fdabd9c621ce17d5049feeb17920256e237f4",
-    "bytes": 820878,
-    "status": "LOCAL_VERIFIED_REMOTE_PENDING",
+    "sha256": "d6c50d944a9d07cc3fb35e80194a130060e8eb9c7290870d545499fa71b04d62",
+    "bytes": 833645,
     "language": "zh",
-    "chapters": 71,
+    "status": "MANUSCRIPT_CANDIDATE",
+    "chapters": 72,
     "appendices": 6,
-    "numbered_results": 203,
-    "inherited_result_ids": 194,
-    "new_result_ids": 9,
-    "identity_scope": "Current exact source bytes"
+    "numbered_results": 210,
+    "inherited_result_ids": 203,
+    "new_result_ids": 7
+  },
+  "canonical_english_identity": {
+    "path": "physics/qm/book/UEOT_PHYSICS.en.md",
+    "sha256": "610642d4f3081aaee1076cf33dd90ddfcedad92de9a77427ce19028070d6c595",
+    "bytes": 1012005,
+    "language": "en",
+    "status": "MANUSCRIPT_CANDIDATE",
+    "chapters": 72,
+    "appendices": 6,
+    "numbered_results": 210,
+    "inherited_result_ids": 203,
+    "new_result_ids": 7
   },
   "unified_source_identity": {
     "manifest": "physics/qm/kernel/evidence/v31.11/source-manifest.json",
@@ -225,104 +273,40 @@
     "current_bytes_match_executed_bytes": true,
     "current_identity_check": "physics/qm/kernel/evidence/v31.14/proof-reuse.json"
   },
-  "remote_metadata_completion": {
-    "state": "LOCAL_VERIFIED_REMOTE_PENDING",
-    "metadata_followup_is_not_a_new_scientific_execution": true
-  },
+  "current_release_stage": "MANUSCRIPT_CANDIDATE",
   "current_remote_code_identity": {
-    "state": "LOCAL_VERIFIED_REMOTE_PENDING",
+    "state": "MANUSCRIPT_CANDIDATE",
     "remote_verified": false,
-    "research_entry_baseline": "ee7fb2793a1dbb519703bba05f535f0d962d9e56"
+    "previous_verified_scientific_main": "a3f95dc1a6821978e173e23015f026994fb60c65",
+    "previous_main_run": 44318642942,
+    "previous_main_receipt": {
+      "path": "physics/qm/kernel/evidence/v31.14/integration-verification.json",
+      "sha256": "28fcfba79237fe26fc06b024bcf88d79a2804a831751bb50915036f4e545e1b4",
+      "bytes": 4706
+    },
+    "pr": 467,
+    "merge_state": "AWAITING_MERGE"
   },
-  "current_release_stage": "LOCAL_VERIFIED_REMOTE_PENDING",
-  "local_release_receipt": {
-    "path": "physics/qm/book/evidence/v3.11/local-acceptance.json",
-    "sha256": "92b18e039c936909c99c2b7129487a5e958e8b6017909a6674cf9b5857d8e76b",
-    "bytes": 1661
-  },
-  "local_release_receipt_scope": "Book3.11 actual scoped publication; not a new scientific proof or full-book visual claim",
   "scientific_execution_partition": {
-    "new_proof": "PAPER_AND_SCOPED_EXECUTABLE_EVIDENCE_NO_NEW_LEAN",
-    "new_runtime": "physics/qm/kernel/evidence/v31.14/runtime/execution_receipt.json",
-    "historical_reuse": "physics/qm/kernel/evidence/v31.14/proof-reuse.json",
-    "new_device_data": false,
-    "external_processed_observable_reproduced": true,
-    "new_synthetic_shots_this_replay": 0
-  },
-  "original_entry_preservation": "All prior source entries preserved exactly; current edition keys do not rename historical executions",
-  "legacy_program_reuse": {
-    "reexecuted_this_edition": false,
-    "appendix_d_exact_bytes_unchanged": false,
-    "preservation_receipt": "physics/qm/book/evidence/v3.6/prior-text-preservation.json",
-    "historical_receipt": {
-      "receipt": "physics/qm/book/evidence/v3.5/legacy-source-reuse.json",
-      "receipt_sha256": "d4989efed9facced85456d0943a57ee55c478e56d9b94d16353fa031d4c1062c",
-      "reexecuted_this_edition": false,
-      "historical_checks": 757
+    "historical_lean_identity": {
+      "manifest": "physics/qm/kernel/evidence/v31.11/source-manifest.json",
+      "verification": "physics/qm/kernel/evidence/v31.11/lean-verification.json",
+      "source_count": 158,
+      "source_set_sha256": "f9ea1e3e9bc695e3916d764e8f005d98556e4541653d439a60e57a5fb8c4cacf",
+      "scope": "Historical v31.11 proof execution only; 158 unchanged inputs; no new Chapter69 or Chapter70 Lean coverage",
+      "current_bytes_match_executed_bytes": true,
+      "current_identity_check": "physics/qm/kernel/evidence/v31.14/proof-reuse.json"
     },
-    "program_blocks_exact_bytes_unchanged": true,
-    "program_blocks": {
-      "count": 3,
-      "both_languages_exact_payload_bytes": true,
-      "sha256": [
-        "79dc78035c239957a8ac4f5b2f6a9d1c1a6b2a84d2cee094f831bad531f983c0",
-        "6719d3340fdbfc305f3b0b1266a012c976843d1862cba8e476a151e40d160401",
-        "c2107ac235f0d87faee246412c6478a0405113cb0113b647027820106d95ad32"
-      ],
-      "whole_appendix_bytes_equal_prior": {
-        "zh": false,
-        "en": false
-      },
-      "scope": "Python fenced payloads only; surrounding prose and receipt descriptions were edited; no historical programs rerun"
+    "previous_main_rebuild": {
+      "path": "physics/qm/kernel/evidence/v31.14/integration-verification.json",
+      "sha256": "28fcfba79237fe26fc06b024bcf88d79a2804a831751bb50915036f4e545e1b4",
+      "bytes": 4706
     },
-    "scope": "3.7 preserves the three exact program payloads in both languages; Appendix D prose is edited. The older preservation_receipt and historical_receipt below keep their original scope.",
-    "publication_preservation_receipt": "physics/qm/book/evidence/v3.7/publication-metadata-update.json"
+    "new_lean_declarations": 0,
+    "synthetic_calibration_shots": 720000,
+    "synthetic_holdout_shots": 408000,
+    "new_device_data": false
   },
-  "prior_v31_9_publication_reconciliation": "physics/qm/kernel/evidence/v31.10/prior-v31.9-publication-reconciliation.json",
-  "canonical_english_identity": {
-    "path": "physics/qm/book/UEOT_PHYSICS.en.md",
-    "sha256": "d4e0d07fe5cc65b2375e61a41406ed11391c18ac16cfb2e69e8b83a1e21fbbf7",
-    "bytes": 997360,
-    "status": "LOCAL_VERIFIED_REMOTE_PENDING",
-    "language": "en",
-    "chapters": 71,
-    "appendices": 6,
-    "numbered_results": 203,
-    "inherited_result_ids": 194,
-    "new_result_ids": 9,
-    "identity_scope": "Current exact source bytes"
-  },
-  "publication_revision": {
-    "edition": "3.11",
-    "recorded_at_utc": "2026-11-13T17:41:27.870293+00:00",
-    "scope": "Nine Chapter70 results; all194 inherited result objects and117 inherited claim objects retained exactly",
-    "new_scientific_results_in_publication": 9,
-    "new_experimental_data": false,
-    "prior_snapshot": {
-      "path": "physics/qm/book/evidence/v3.11/prior/CHAPTER_DOSSIER.json",
-      "sha256": "2a7f088eeab73cc5d06fca27afb6c17375c1bd7d1ab34308ef276954257c8a4c",
-      "bytes": 1686915
-    },
-    "local_artifact_state": "BUILT_AND_SCOPED_VISUALLY_VERIFIED",
-    "remote_publication": "LOCAL_VERIFIED_REMOTE_PENDING",
-    "review_identity_policy": "Exactly three native AI research agents plus primary adjudication; not external human peer review"
-  },
-  "increment_source_identity": {
-    "path": "physics/qm/kernel/evidence/v31.14/source-manifest.json",
-    "sha256": "33439cdc1231060a2fe11d4fff065512014f20aa7ec6136d7ca24fa19c18fe44",
-    "bytes": 73738
-  },
-  "runtime_source_identity": {
-    "receipt": {
-      "path": "physics/qm/kernel/evidence/v31.14/runtime/execution_receipt.json",
-      "sha256": "6d3f338d8ab1eaac8c7f8ec2cae8e127db98ee2a2ce77c0531da188973be3679",
-      "bytes": 49654
-    },
-    "scope": "Actual production replay over unchanged authored synthetic rows; no new sampling, Lean or hardware. Original author runs retain their own identities.",
-    "source_file_count": 17,
-    "unique_archived_synthetic_rows": 1600000,
-    "new_synthetic_shots_this_replay": 0
-  },
-  "current_code_manifest_scope": "Historical v31.11 Lean inputs only; current scientific increment is separately bound below",
-  "current_increment_code_manifest": "../kernel/evidence/v31.14/source-manifest.json"
+  "current_science_entry": "physics/qm/correlated_bath/README.md",
+  "current_science_replay": "physics/qm/correlated_bath/portable_replay.py"
 }

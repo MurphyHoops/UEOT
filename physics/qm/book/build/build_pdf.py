@@ -103,6 +103,11 @@ def main():
            '-H', str(header), '-o', str(tex)]
     subprocess.run(cmd, check=True, capture_output=True, text=True)
     content = tex.read_text(encoding='utf-8')
+    # A chapter starts a new page. A Pandoc target wrapping that command
+    # otherwise lands at the bottom of the preceding chapter.
+    content = re.sub(
+        r'\\hypertarget\{(ch-\d+|appendix-[a-f])\}\{%\s*(\\chapter\{.*?\\label\{\1\})\}',
+        r'\2\\hypertarget{\1}{}', content, flags=re.S)
     content = content.replace(r'\usepackage{unicode-math}',
                               '\\usepackage{mathtools}\n\\usepackage{unicode-math}')
     content = content.replace(r'\begin{verbatim}',
