@@ -5,6 +5,14 @@
 - [中文第71章](book/UEOT_PHYSICS.md#ch-71) · [English Chapter 71](book/UEOT_PHYSICS.en.md#ch-71) · [完整书稿与3.12版印本](book/README.md)
 - [科学说明与复核程序](correlated_bath/README.md) · [状态](status/CURRENT.json) · [主张账本](status/CLAIM_LEDGER_v31.15.json) · [研究路线](ROADMAP.md)
 
+## 当前研究：重叠 TT 响应与固定参考处方
+
+[本轮统一报告](null_source/timelike/overlap_response/README.md)接续 c57e2f41，已经得到闭 FLRW 的完整 TT Weyl/Bach 算子、对数主部的合法因果有限部分及精确标量逆，并把原齐性相干调源的有效 TT 响应盲性扩展到重叠窗。真实时间依赖背景上的显式 R²/C² 参数族有全模式因果逆与严格余项。
+
+本轮同时纠正前轮后续路线中的参数表述：物理 **μ=1、α=0、G=2T、无额外有限曲率项**早已固定，继续继承。非零额外 c 的辅助定理不用于 c_extra=0 的物理工作点；零额外项也不代表固定参考接触项为零。当前真正缺口是**同一 prepared 参考处方的完整非齐性 TT kernel、其全部固定 contacts、实际余项范数和完整反馈逆**。标量 log 逆保留增长极点，未被改称稳定性证据。
+
+[共同合同](null_source/timelike/overlap_response/CONTRACT.md) · [独立四维主审](null_source/timelike/overlap_response/review.py) · [四项新检查及34项旧结果复用](null_source/timelike/overlap_response/run_verification.py) · [执行回执](null_source/timelike/overlap_response/verification.json)。140个旧科学文件保持原字节，新增模式/几何 ODE 为0；正式章节、Core、Lean及经验状态保持原身份。
+
 ## 第71章之后的有限源研究
 
 [同一有限源的应力、装置与有限数据研究](null_source/timelike/continuation/README.md)接续本地跨域研究：完成辅助静态最小场的绝对应力尾界、原场有限秩响应、相容装置壳及有限数据噪声上界的不可估计结果，保留动态反馈与器件校准开放。该研究候选有独立[复算入口](null_source/timelike/continuation/run_verification.py)与[主审裁决](null_source/timelike/continuation/REVIEW.md)，尚未并入上述正式章节或编号主张。
@@ -51,7 +59,7 @@
 
 [共同合同](null_source/timelike/metric_response/CONTRACT.md) · [四项新检查及26项旧结果复用](null_source/timelike/metric_response/run_verification.py) · [执行回执](null_source/timelike/metric_response/verification.json)。108 个旧科学文件保持原字节，新增模式 ODE 为0。前轮密度噪声及平均方程缺陷保留原背景，没有被搬到整个有限度规路径。
 
-### 当前：中央固有钟、分离量子响应与张量校准
+### 前轮：中央固有钟、分离量子响应与张量校准
 
 [本轮统一报告](null_source/timelike/operational_response/README.md)继续接续同一个有限源模型。原有限 lapse 上的 Weyl 门已使用实际中央固有钟触发，测量权保留时移与 Jacobian；共同钟原点误差 \(|\beta|\le10^{-5}\) 时，旧/新全启动 plus 概率差分别 **<\(3.013810\times10^{-4}\) / \(2.603350\times10^{-4}\)**，固定64次完整启动的每候选风险仍低于 \(10^{-5}\)。
 

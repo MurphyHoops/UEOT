@@ -1,0 +1,82 @@
+{
+  "HC_definition": "4 nabla^c nabla^d C_acbd + 2 R^cd C_acbd",
+  "arithmetic": "exact integer/rational symbolic algebra; no ODE, quadrature, or cutoff",
+  "base_git_commit": "c57e2f411e58dc1dae60de8f3c97fbd680e46d8b",
+  "checks": {
+    "AE_sign_translation": "PASS",
+    "Green_boundary": "PASS",
+    "TT_curl_square": "PASS",
+    "Weyl_norm_and_Bianchi": "PASS",
+    "arbitrary_l_factorization": "PASS",
+    "compensated_net_c": "PASS",
+    "curvature_negative_control": "PASS",
+    "direct_double_divergence": "PASS",
+    "extra_initial_data": "PASS",
+    "flat_sign": "PASS",
+    "independent_quadratic_action": "PASS",
+    "sphere_curvature_commutator": "PASS",
+    "variational_boundary": "PASS",
+    "weighted_divergence_form": "PASS"
+  },
+  "convention": "g=a^2(-deta^2+gamma+h), h spatial TT, unit S3, l>=2",
+  "inherited_prescription": {
+    "AE_tensor_relation": "H1_AE=-H_R; b_extra=-alpha_AE",
+    "Einstein_z": 1,
+    "alpha_AE": 0,
+    "b_extra": 0,
+    "c_extra": 0,
+    "note": "extra means added to the frozen reference; its fixed local contacts remain to be calculated",
+    "physical_mu": 1,
+    "reference_TT_contacts_set_to_zero": false
+  },
+  "initial_data_negative_controls_l2": {
+    "cos_2eta_minus_cos_4eta_jets": [
+      0,
+      0,
+      12,
+      0
+    ],
+    "sin_2eta_over_2_minus_sin_4eta_over_4_jets": [
+      0,
+      0,
+      0,
+      12
+    ]
+  },
+  "input_sha256": {
+    "physics/qm/null_source/timelike/compatibility/CONTRACT.md": "3921b7f6a8654a41960f8915883547a2f75078039ede5a00be79c89f3ad215f4",
+    "physics/qm/null_source/timelike/continuation/quantum/README.md": "dac162dd94b1c98c6d4416c177a2dee4b3250025237e0c938b799d6c1ad64e21",
+    "physics/qm/null_source/timelike/evolution/stress/README.md": "c3ae0f4ef77e6d2b68b4a2824f5fed4456d9b2cba8134fb15eac6e62b2c37e31",
+    "physics/qm/null_source/timelike/operational_response/CONTRACT.md": "f6904c770a1a912e9530fe9bfbc2679895ddcd9d4a0524c9b2dd254fd606bc4e",
+    "physics/qm/null_source/timelike/operational_response/review.json": "1f40db8e955b8005e0c89f0fcc2e6f402e14454821b42a2bf5c61913eb9aff17",
+    "physics/qm/null_source/timelike/operational_response/review.py": "c4957969f57cb6cc4c7badb8ed1e28fb9538ec8acfc774c1cc40fe605c1cda8b",
+    "physics/qm/null_source/timelike/overlap_response/local/README.md": "7a7b38e1fecb607f5f3af35136bdbcd67e20e7bf1de79bf510aabeb1e924189b",
+    "physics/qm/null_source/timelike/overlap_response/local/check.py": "ce08d75dd7b65100e73108391ff9939c09e6de20cad53ad800b66cd200fa1976"
+  },
+  "operator": {
+    "W": "(partial_eta^2-Delta_gamma+2)^2+4 partial_eta^2",
+    "covariant": "delta HC_ij = -a^-2 W h_ij",
+    "explicit_c_family": "D_T + (4c/a^2) W; 4piG=1; no change to inherited c_extra=0",
+    "l2_coefficients_descending_even_derivative": [
+      1,
+      20,
+      64
+    ],
+    "mixed": "delta HC^i_j = -a^-4 W h^i_j",
+    "spectrum": "W_l=(partial_eta^2+l^2)(partial_eta^2+(l+2)^2)"
+  },
+  "schema": "ueot-closed-flrw-local-tt-weyl/1",
+  "scope": {
+    "Core_read_only_GI_excluded": true,
+    "new_mode_ODE": 0,
+    "not_determined": [
+      "inhomogeneous TT kernel and fixed contact terms of the inherited reference prescription",
+      "full overlapping retarded RSET response",
+      "complete semiclassical feedback"
+    ],
+    "prior_evidence_modified": false,
+    "proved": "complete linear local Weyl/Bach TT operator and its algebraic/variational contracts",
+    "requires_for_fourth_order_evolution": "four TT Cauchy data for the explicit c!=0 parameter family; not extra data imposed on the fixed c_extra=0 point"
+  },
+  "status": "EXACT_GENERAL_TT_WEYL_BACH_OPERATOR_VERIFIED"
+}

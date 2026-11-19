@@ -2,7 +2,22 @@
 
 本图延续同一物理任务。权威执行状态为[CURRENT](status/CURRENT.json)，稳定结果为[主文](book/UEOT_PHYSICS.md)及现行claim ledger。Core只读，GI不在范围。数学闭合、物理选择、计算实现、经验检验分别登记。
 
-## 当前 · 操作记录、分离响应和张量幅度
+## 当前 · 重叠响应、固定处方与主部反演
+
+当前入口为[统一报告](null_source/timelike/overlap_response/README.md)和[共同合同](null_source/timelike/overlap_response/CONTRACT.md)，基线 c57e2f41。本轮已完成：
+
+1. 闭球面 FLRW 的完整局部 TT Weyl/Bach 算子 W=(∂η²−Δ+2)²+4∂η²、全谱因子分解及一般 a 的 mixed R² 变分；独立四维 Hopf 坐标计算再核验。
+2. 合法的因果 logarithmic finite part、时间 Sobolev 映射、标量 log 主部的精确局部可积因果逆与严格质量尾界。保留正实增长极点，不宣称稳定逆。
+3. 同背景 Hadamard 态差的完整有效 TT 响应与条件 Volterra 界；纯空间零模的齐性相干调源在重叠窗仍有精确零响应差。实际 prepared-reference M8 尚未认证。
+4. 显式 Einstein+R²+C² 辅助参数族在 c≠0 时的全模式因果逆、严格余项和经过旧二阶逆后的非零 C² 同空间反例。
+
+**纠正上一轮的后续任务表述：**原物理 μ=1、α=0、z=1、无额外有限曲率项已经固定；H1_AE=−HR，故 (z,b_extra,c_extra)=(1,0,0)。不能由 FLRW 均值不能识别 Weyl 系数，反推原处方需要重新选择。非零 c 辅助反例不适用于物理零额外项；参考 RSET 自身的固定 contacts 仍需计算。
+
+下一项具体验收是：沿同一固定协变处方构造非齐性 Pi_ref，收齐显式 metric 变分和固定 contacts；扣除正确 UV 主部并给实际非平稳、曲率与全局传播余项的范数；再于共同初值和函数空间中证明完整反馈逆与噪声传播。不得以分离窗 susceptibility、辅助参数族或标量 normal form 替代这一物理责任。
+
+[四项新检查](null_source/timelike/overlap_response/run_verification.py)复用34项旧结果并冻结140个旧科学文件；[回执](null_source/timelike/overlap_response/verification.json)区分本地预提交执行与远端准确 head CI。新增模式/几何 ODE为0，书稿、Core、Lean和经验身份保持不变。
+
+## 前轮 · 操作记录、分离响应和张量幅度
 
 当前入口为[统一报告](null_source/timelike/operational_response/README.md)与[共同合同](null_source/timelike/operational_response/CONTRACT.md)，基线 f2b09fb2。三个出口已经继续落实：
 
@@ -12,7 +27,7 @@
 
 独立主审另证明：Weyl 平方局域项在全部齐性 FLRW 上为零，却有非零紧支撑重叠 TT 响应。背景均值、噪声与严格分离窗不能确定净曲率耦合；已有固定处方结论仍有效。下一次闭环应据此安排：
 
-1. 固定或独立约束净局域曲率耦合，给重叠 RSET 响应、规范/初值和 \(\mathcal D_T^{-1}\mathcal R_T\) 的同空间控制，再研究 resolvent 与稳定性。
+1. （此项参数表述已由上面的当前轮纠正。）继承已固定局域处方，计算重叠 RSET 响应、规范/初值和 \(\mathcal D_T^{-1}\mathcal R_T\) 的同空间控制，再研究 resolvent 与稳定性。
 2. 把共同固有钟、张量校准、有限度规上的完整噪声及非线性余项接到同一合法几何，推进非线性 SCE 存在与精确解距离。
 3. 处理外区态与匹配、全部准备/驱动/测量应力、可实现钟与传感器、匹配数据和资源成本。
 

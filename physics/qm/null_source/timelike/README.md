@@ -1,6 +1,12 @@
 # 同一源的平均应力、测量扰动与几何记录
 
-**当前入口：**[中央固有钟、分离量子响应与已知张量形状](operational_response/README.md)。同一有限 lapse 上已保留中央固有钟触发的时移与 Jacobian；共同钟偏置 \(|\beta|\le10^{-5}\) 时旧/新概率差分别 <\(3.013810\times10^{-4}\) / <\(2.603350\times10^{-4}\)，固定64次完整启动风险门仍成立。严格分离 TT 窗的完整 RSET 导数有 \(|\chi|<0.249425721\) 及明确函数空间界；已知 TT 形状的校准 RMS <\(1.678368\times10^{-4}\)，条件记录合同下256次完整启动每假设错误 <\(7.837698\times10^{-6}\)。三条作用域分别列明，未合称完整 SCE。
+**当前入口：**[重叠 TT 响应、因果对数主部与齐性调源盲性](overlap_response/README.md)。完整闭球面 Weyl/Bach 算子及 R² mixed 变分、标量 log 主部因果逆、同背景态差重叠响应，以及显式局域曲率平方辅助族的全模式因果逆与余项均已给出。
+
+原物理 **μ=1、α=0、G=2T、无额外有限曲率项**继续固定。额外系数 (b_extra,c_extra)=(0,0) 不表示参考 RSET 的固定 contacts 为零；非零 c 的辅助反例也不用于这一零额外项工作点。完整 prepared-reference TT kernel、实际余项和完整量子反馈仍开放，正实 log 极点不被删除或改称稳定性。
+
+[共同合同](overlap_response/CONTRACT.md) · [独立四维主审](overlap_response/review.py) · [四项新检查及34项旧结果复用](overlap_response/run_verification.py) · [执行回执](overlap_response/verification.json)。140个旧科学文件保持原字节，新增模式/几何 ODE为0。下述旧证据继续按各自合同使用。
+
+**前轮入口：**[中央固有钟、分离量子响应与已知张量形状](operational_response/README.md)。同一有限 lapse 上已保留中央固有钟触发的时移与 Jacobian；共同钟偏置 \(|\beta|\le10^{-5}\) 时旧/新概率差分别 <\(3.013810\times10^{-4}\) / <\(2.603350\times10^{-4}\)，固定64次完整启动风险门仍成立。严格分离 TT 窗的完整 RSET 导数有 \(|\chi|<0.249425721\) 及明确函数空间界；已知 TT 形状的校准 RMS <\(1.678368\times10^{-4}\)，条件记录合同下256次完整启动每假设错误 <\(7.837698\times10^{-6}\)。三条作用域分别列明，未合称完整 SCE。
 
 [共同合同](operational_response/CONTRACT.md) · [四项新检查及30项旧结果复用](operational_response/run_verification.py) · [执行回执](operational_response/verification.json)。124个旧科学文件保持原字节，新增模式与几何 ODE 为0。主审另以非零重叠 TT 见证证明齐性/分离证据无法单独确定净 Weyl 平方耦合。
 
