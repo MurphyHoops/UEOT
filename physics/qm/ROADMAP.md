@@ -2,7 +2,23 @@
 
 本图延续同一物理任务。权威执行状态为[CURRENT](status/CURRENT.json)，稳定结果为[主文](book/UEOT_PHYSICS.md)及现行claim ledger。Core只读，GI不在范围。数学闭合、物理选择、计算实现、经验检验分别登记。
 
-## 2026-11-19 · 有限度规响应、局部张量和固有钟
+## 当前 · 操作记录、分离响应和张量幅度
+
+当前入口为[统一报告](null_source/timelike/operational_response/README.md)与[共同合同](null_source/timelike/operational_response/CONTRACT.md)，基线 f2b09fb2。三个出口已经继续落实：
+
+1. **同一有限 lapse 上的中央固有钟。** 时移、Jacobian、逆像护栏、共同钟原点误差与同步因果余量均计入。给定 \(|\beta|\le10^{-5}\)，旧/新概率差分别 <\(3.013810\times10^{-4}\)、<\(2.603350\times10^{-4}\)；64次完整启动的条件风险门保留。
+2. **完整分离量子应力导数。** 原齐性背景上过去/未来 TT 窗有严格间隙；输出处所有输入 jet 为零，局域项严格消失。新未来窗口重新认证全部模式常数，\(|\chi|<0.249425721\)，并给明确测试空间双线性界。不能据此声称一般反馈小增益。
+3. **校准后的已知 TT 形状。** 非零信号增益与空间范数严格包围，归一幅度 RMS <\(1.678368\times10^{-4}\)。256次完整启动、至少240次成功才采用平均读数，其余事件全部计入风险；每假设错误 <\(7.837698\times10^{-6}\)。条件记录合同不自动等于真实量子几何传感器。
+
+独立主审另证明：Weyl 平方局域项在全部齐性 FLRW 上为零，却有非零紧支撑重叠 TT 响应。背景均值、噪声与严格分离窗不能确定净曲率耦合；已有固定处方结论仍有效。下一次闭环应据此安排：
+
+1. 固定或独立约束净局域曲率耦合，给重叠 RSET 响应、规范/初值和 \(\mathcal D_T^{-1}\mathcal R_T\) 的同空间控制，再研究 resolvent 与稳定性。
+2. 把共同固有钟、张量校准、有限度规上的完整噪声及非线性余项接到同一合法几何，推进非线性 SCE 存在与精确解距离。
+3. 处理外区态与匹配、全部准备/驱动/测量应力、可实现钟与传感器、匹配数据和资源成本。
+
+[本轮四项检查](null_source/timelike/operational_response/run_verification.py)复用30项旧结果，冻结124个旧科学文件；新增模式与几何 ODE 为0。[实际回执](null_source/timelike/operational_response/verification.json)区分本地执行与准确新提交的 CI。正式书稿、Core、Lean与经验状态没有升级。下面保留前轮当时的边界，其中共同中央钟及指定 TT 校准缺口已经由本轮推进。
+
+## 前轮 · 有限度规响应、局部张量和固有钟
 
 当前研究见[统一报告](null_source/timelike/metric_response/README.md)与[共同合同](null_source/timelike/metric_response/CONTRACT.md)。本轮接续719babd3，并完成三个不同几何作用域内的出口：
 

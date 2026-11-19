@@ -41,7 +41,7 @@
 
 [共同合同](null_source/timelike/stress_kernel/CONTRACT.md) · [四项新检查及22项旧结果复用](null_source/timelike/stress_kernel/run_verification.py) · [执行回执](null_source/timelike/stress_kernel/verification.json)。92 个旧科学文件保持原字节，新增模式 ODE 为零。完整 RSET 响应范数、有限修正几何、非线性 SCE、真实装置与外区量子态仍开放。
 
-### 当前：有限度规扰动、局部 TT 与固有钟基准
+### 前轮：有限度规扰动、局部 TT 与固有钟基准
 
 [本轮统一报告](null_source/timelike/metric_response/README.md)已把原局部 lapse 的零点斜率推进到整个 \(|\epsilon|\le1\) 的有限概率界。在同一 \(\lambda=32768\)、原过去态与固定未来坐标 Weyl 涂抹上，旧/新 plus 概率变化分别 **<\(7.780355\times10^{-5}\) / \(5.756185\times10^{-5}\)**；含询问前失败的全部启动概率仍为旧 \([0.46364405,0.48670672]\)、新 \([0.00059723,0.01827913]\)。以 plus 至少11次判旧，**固定64次完整启动**给每候选误判 **<\(9.481784\times10^{-6}\) / \(7.050492\times10^{-6}\)**。需要独立新制备，或每次条件于完整过去仍满足合同；不能只用单次边缘概率或删除失败记录。
 
@@ -50,6 +50,16 @@
 固有钟线给出额外纯经典分支几何的精确非线性解和带钟/体积误差的有限门分离，也证明未知标尺及内部标量钟的盲性。它的初片绝对尺度按分支改变，不能替代原同背景量子实验。三条几何作用域逐项列明；完整量子 RSET 响应、非线性 SCE 与真实硬件仍开放。
 
 [共同合同](null_source/timelike/metric_response/CONTRACT.md) · [四项新检查及26项旧结果复用](null_source/timelike/metric_response/run_verification.py) · [执行回执](null_source/timelike/metric_response/verification.json)。108 个旧科学文件保持原字节，新增模式 ODE 为0。前轮密度噪声及平均方程缺陷保留原背景，没有被搬到整个有限度规路径。
+
+### 当前：中央固有钟、分离量子响应与张量校准
+
+[本轮统一报告](null_source/timelike/operational_response/README.md)继续接续同一个有限源模型。原有限 lapse 上的 Weyl 门已使用实际中央固有钟触发，测量权保留时移与 Jacobian；共同钟原点误差 \(|\beta|\le10^{-5}\) 时，旧/新全启动 plus 概率差分别 **<\(3.013810\times10^{-4}\) / \(2.603350\times10^{-4}\)**，固定64次完整启动的每候选风险仍低于 \(10^{-5}\)。
+
+两个严格分离 TT 窗上的**完整 smeared RSET 导数**给 \(|\chi|<0.249425721\)，并有明确函数空间双线性界；未来低模与时间导数常数重新认证。已知局部 TT 形状的增益得到严格区间，归一幅度 RMS **<\(1.678368\times10^{-4}\)**；在明确的经典受迫线性几何及逐次条件记录合同下，**256次完整启动**包括失败的每假设错误 **<\(7.837698\times10^{-6}\)**。该张量实验比较外加已知 profile 系数，不区分原旧/新齐性源。
+
+主审用独立 Weyl 张量代数构造局域曲率项负控：齐性均值、固定背景噪声与分离窗响应不能单独识别净 Weyl 平方耦合或约束重叠反馈。完整量子反馈 resolvent、非线性 SCE、真实传感器/钟与总装置应力仍开放，各分支几何与设备假设逐项登记。
+
+[共同合同](null_source/timelike/operational_response/CONTRACT.md) · [四项新检查及30项旧结果复用](null_source/timelike/operational_response/run_verification.py) · [执行回执](null_source/timelike/operational_response/verification.json)。124 个旧科学文件保持原字节，新增模式与几何 ODE 为0；Core、正式书稿、Lean及经验状态保持原身份。
 
 ## 历史入口 · v31.12
 
