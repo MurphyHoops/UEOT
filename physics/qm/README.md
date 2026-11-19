@@ -9,6 +9,12 @@
 
 [同一有限源的应力、装置与有限数据研究](null_source/timelike/continuation/README.md)接续本地跨域研究：完成辅助静态最小场的绝对应力尾界、原场有限秩响应、相容装置壳及有限数据噪声上界的不可估计结果，保留动态反馈与器件校准开放。该研究候选有独立[复算入口](null_source/timelike/continuation/run_verification.py)与[主审裁决](null_source/timelike/continuation/REVIEW.md)，尚未并入上述正式章节或编号主张。
 
+### 动态参考应力与初始几何一致性
+
+[当前动态研究与统一裁决](null_source/timelike/evolution/README.md)已在同一归档参考态上完成有验证误差的模式传播、动态局部补项和无限模尾。固定原尺度、AE μ=1 且无额外有限曲率项时，初片全量子密度严格大于 **1.5101633543**；原初始几何要求的总密度为 **0.5**。因此原背景与该参考态的直接组合不满足半经典 Hamiltonian 约束，下一步须先处理总源和几何的一致性。
+
+本轮还给出两种消去有限曲率系数的完整窗关系：原总二阶源已标定时使用两个新增密度读数；源标定未知时才升级为三项独立收缩和第四项留出。精确动态压力、窗口参考积分、自洽反馈和真实几何仪器仍开放。[实际复算入口](null_source/timelike/evolution/run_verification.py) · [总回执](null_source/timelike/evolution/verification.json)。新结果保持研究候选身份，没有升级正式章节、经验状态或 Core 物理选择。
+
 ## 历史入口 · v31.12
 
 当时的科学增量为 **v31.12 / Kernel 1.12**，出版版本为 **《UEOT物理学》3.9**。实际集成阶段和数学、物理选择、计算、经验四条状态轴均由 [CURRENT](status/CURRENT.json) 给出。
