@@ -9,11 +9,19 @@
 
 [同一有限源的应力、装置与有限数据研究](null_source/timelike/continuation/README.md)接续本地跨域研究：完成辅助静态最小场的绝对应力尾界、原场有限秩响应、相容装置壳及有限数据噪声上界的不可估计结果，保留动态反馈与器件校准开放。该研究候选有独立[复算入口](null_source/timelike/continuation/run_verification.py)与[主审裁决](null_source/timelike/continuation/REVIEW.md)，尚未并入上述正式章节或编号主张。
 
-### 动态参考应力与初始几何一致性
+### 前轮：动态参考应力与初始几何一致性
 
 [当前动态研究与统一裁决](null_source/timelike/evolution/README.md)已在同一归档参考态上完成有验证误差的模式传播、动态局部补项和无限模尾。固定原尺度、AE μ=1 且无额外有限曲率项时，初片全量子密度严格大于 **1.5101633543**；原初始几何要求的总密度为 **0.5**。因此原背景与该参考态的直接组合不满足半经典 Hamiltonian 约束，下一步须先处理总源和几何的一致性。
 
 本轮还给出两种消去有限曲率系数的完整窗关系：原总二阶源已标定时使用两个新增密度读数；源标定未知时才升级为三项独立收缩和第四项留出。精确动态压力、窗口参考积分、自洽反馈和真实几何仪器仍开放。[实际复算入口](null_source/timelike/evolution/run_verification.py) · [总回执](null_source/timelike/evolution/verification.json)。新结果保持研究候选身份，没有升级正式章节、经验状态或 Core 物理选择。
+
+### 当前：初片相容与整段平均方程缺陷
+
+[新的统一研究报告](null_source/timelike/compatibility/README.md)已给出合法的完整参考态缩放、明确保留的原混合源，以及满足初片平均约束的正源构造。在充分尺度 λ=8192，逐模估计与独立总能量估计都认证整个 η∈[0,3/16] 上无限场平均方程的相对缺陷：密度小于 **0.0291%**，压力小于 **0.810%**。另提供明确的有理源参数及其有限初片残差。
+
+同一研究证明了相同初片空间几何和外曲率不足以直接移植旧完整量子核，并给出有限秩 Hadamard 修复。保留原混合分布时，指定非负紧支撑密度涂抹的相对应力方差仍大于 **0.7495**。下一责任是态与几何的共同演化及稳定性、噪声到几何的响应、外区量子态和真实仪器；小平均方程缺陷没有被改称为精确半经典解。
+
+[物理合同](null_source/timelike/compatibility/CONTRACT.md) · [四项新检查与旧证据复用](null_source/timelike/compatibility/run_verification.py) · [执行回执](null_source/timelike/compatibility/verification.json)。原14项通过证据按精确提交和59个旧文件身份复用，本轮新增零次模式积分。正式书稿、Core、Lean及经验状态保持原身份。
 
 ## 历史入口 · v31.12
 
