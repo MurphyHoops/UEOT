@@ -5,7 +5,18 @@
 - [中文第71章](book/UEOT_PHYSICS.md#ch-71) · [English Chapter 71](book/UEOT_PHYSICS.en.md#ch-71) · [完整书稿与3.12版印本](book/README.md)
 - [科学说明与复核程序](correlated_bath/README.md) · [状态](status/CURRENT.json) · [主张账本](status/CLAIM_LEDGER_v31.15.json) · [研究路线](ROADMAP.md)
 
-## 当前研究：合法制备族的初片完整平均方程
+## 当前研究：实际全场导数排除原准备历史
+
+[本轮闭环裁决与共同演化](null_source/timelike/prepared_dynamics/README.md)已经完成上一轮要求的实际法向导数检查。对全部初片根，完整场有
+\(Q_p'(0)\in[-13.769547,-11.113955]\)，而当前平滑过去固定 \(a'''(0)=0\)。初片正交空间残差的法向导数严格为正，因此这些根没有保持原过去、原完整态与固定源强的光滑 SCE 正时间窗延拓。上一轮初片存在定理保留。
+
+排除后继续得到实际 AE 积分型迹方程，以及在明确几何范围上、\(T=2^{-20}\) 内范数 <96 的固定 AE 主算符逆。完整规则态反馈、光滑释放及共同非线性历史仍需完成。原旧／新制备的 mean-only 几何记录不可辨识；新给出的 <0.024016 理想应力谱误判界属于归档固定背景，尚非引力设备结果。
+
+下一步从过去联立几何、合法量子态和固定源，认证完整反馈与准备驱动撤除，再在新共同历史上检验几何涨落和真实钟。不能以未来单个 jet 修补或逐时换根代替。
+
+[完整全场结果](null_source/timelike/prepared_dynamics/result.json) · [独立复核](null_source/timelike/prepared_dynamics/review.py) · [九项复算与40项旧结果复用](null_source/timelike/prepared_dynamics/run_verification.py) · [执行回执](null_source/timelike/prepared_dynamics/verification.json)。164个旧科学文件保持原字节；新增256模严格传播及无限相位尾。Core、正式书稿、Lean 和经验身份保留原责任。
+
+## 前轮研究：合法制备族的初片完整平均方程
 
 [本轮反思与实际结果](null_source/timelike/prepared_initial/README.md)接续 6401950，优先回到原 prepared 场与几何的相容性。在 λ=32768、固定 AE μ=1、α=0 的平滑共同过去族中，新计算完整量子应力的参数统一界 |Qρ|≤508、|Qp|≤84468，证明存在 |t*|≤15933/67108864 的正源，使同一物理初片的全部平均 Einstein 分量同时成立。固有钟下初片体积加速度的相对修正 <0.011871011%。
 
