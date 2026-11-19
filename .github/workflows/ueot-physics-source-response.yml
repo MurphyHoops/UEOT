@@ -1,4 +1,4 @@
-name: Finite source compatibility research
+name: Finite source response research
 
 on:
   pull_request:
@@ -33,13 +33,13 @@ jobs:
           python-version: '3.14'
       - name: Install the same scientific dependencies
         run: python -m pip install numpy==2.5.4 scipy==1.18.1 sympy==1.14.0 mpmath==1.3.0
-      - name: Reuse unchanged predecessor proofs and verify four compatibility results
-        run: python -B physics/qm/null_source/timelike/compatibility/run_verification.py --output "$RUNNER_TEMP/compatibility-verification.json" --logs "$RUNNER_TEMP/compatibility-logs"
+      - name: Reuse 18 predecessor results and verify four response results
+        run: python -B physics/qm/null_source/timelike/response/run_verification.py --output "$RUNNER_TEMP/response-verification.json" --logs "$RUNNER_TEMP/response-logs"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: source-compatibility-research
+          name: source-response-research
           path: |
-            ${{ runner.temp }}/compatibility-verification.json
-            ${{ runner.temp }}/compatibility-logs/
+            ${{ runner.temp }}/response-verification.json
+            ${{ runner.temp }}/response-logs/
           if-no-files-found: error
