@@ -5,7 +5,15 @@
 - [中文第71章](book/UEOT_PHYSICS.md#ch-71) · [English Chapter 71](book/UEOT_PHYSICS.en.md#ch-71) · [完整书稿与3.12版印本](book/README.md)
 - [科学说明与复核程序](correlated_bath/README.md) · [状态](status/CURRENT.json) · [主张账本](status/CLAIM_LEDGER_v31.15.json) · [研究路线](ROADMAP.md)
 
-## 当前研究：重叠 TT 响应与固定参考处方
+## 当前研究：合法制备族的初片完整平均方程
+
+[本轮反思与实际结果](null_source/timelike/prepared_initial/README.md)接续 6401950，优先回到原 prepared 场与几何的相容性。在 λ=32768、固定 AE μ=1、α=0 的平滑共同过去族中，新计算完整量子应力的参数统一界 |Qρ|≤508、|Qp|≤84468，证明存在 |t*|≤15933/67108864 的正源，使同一物理初片的全部平均 Einstein 分量同时成立。固有钟下初片体积加速度的相对修正 <0.011871011%。
+
+这是有限参数、全模式的初片存在结果；尚未证明未来 SCE、高阶接续、唯一或非零根。新态随各自几何从共同静态种子传播，旧完整 Cauchy 核和旧操作概率没有硬搬。下一优先验收是同一固定源、实际场态与一条有限时间历史的共同方程。
+
+[实际全场检查](null_source/timelike/prepared_initial/check.py) · [独立主审](null_source/timelike/prepared_initial/review.py) · [两项新检查及38项旧结果复用](null_source/timelike/prepared_initial/run_verification.py) · [执行回执](null_source/timelike/prepared_initial/verification.json)。156个旧科学文件保持原字节，新增参数族 UV 计算，旧模式与旧检查不重跑；正式书稿、Core、Lean和经验状态保留原身份。
+
+## 前轮研究：重叠 TT 响应与固定参考处方
 
 [本轮统一报告](null_source/timelike/overlap_response/README.md)接续 c57e2f41，已经得到闭 FLRW 的完整 TT Weyl/Bach 算子、对数主部的合法因果有限部分及精确标量逆，并把原齐性相干调源的有效 TT 响应盲性扩展到重叠窗。真实时间依赖背景上的显式 R²/C² 参数族有全模式因果逆与严格余项。
 

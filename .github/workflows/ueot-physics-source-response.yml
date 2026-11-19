@@ -33,13 +33,13 @@ jobs:
           python-version: '3.14'
       - name: Install the same scientific dependencies
         run: python -m pip install numpy==2.5.4 scipy==1.18.1 sympy==1.14.0 mpmath==1.3.0
-      - name: Reuse 34 predecessor results and verify four overlap-response results
-        run: python -B physics/qm/null_source/timelike/overlap_response/run_verification.py --output "$RUNNER_TEMP/overlap-response-verification.json" --logs "$RUNNER_TEMP/overlap-response-logs"
+      - name: Reuse 38 predecessor results and verify prepared initial-slice existence
+        run: python -B physics/qm/null_source/timelike/prepared_initial/run_verification.py --output "$RUNNER_TEMP/prepared-initial-verification.json" --logs "$RUNNER_TEMP/prepared-initial-logs"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: overlap-response-research
+          name: prepared-initial-research
           path: |
-            ${{ runner.temp }}/overlap-response-verification.json
-            ${{ runner.temp }}/overlap-response-logs/
+            ${{ runner.temp }}/prepared-initial-verification.json
+            ${{ runner.temp }}/prepared-initial-logs/
           if-no-files-found: error
