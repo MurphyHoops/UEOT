@@ -1,0 +1,460 @@
+{
+  "current_source_manifest": {
+    ".github/workflows/ueot-physics-source-response.yml": "f04543a7fe108ae991f9d59772c24f1b26688a545355d4377571991889082d6a",
+    "physics/qm/README.md": "34de59f8b25b821bf36bc2c955dda81d25182998b660358d546b76fee48ecd99",
+    "physics/qm/ROADMAP.md": "640ad7f8049ddd7b20c06e5dada229b9126543ad826452aa081ac2d367d2ad39",
+    "physics/qm/null_source/timelike/README.md": "87f01d89614de9a44f5b54c1bbfb895092271ad778bfe90d24a422ba36aedd59",
+    "physics/qm/null_source/timelike/stress_kernel/CONTRACT.md": "9c4b6d695c2caa346db801a9e399bca948706759679a22087ea39f3cf074b41a",
+    "physics/qm/null_source/timelike/stress_kernel/README.md": "14623d360e1b5e57c5e4555c8953eb18fa7dfbbef9f2835314d4721ee0bad05f",
+    "physics/qm/null_source/timelike/stress_kernel/baseline_ci.json": "a8d2a7113393ca6734d6af5aff4db847e4c6393ff66f9d0c45b86128f22b7036",
+    "physics/qm/null_source/timelike/stress_kernel/geometry/README.md": "bffc1f3cc101ae61bfc3873bc2e6062abf48bfac1822849663cae694e4958d56",
+    "physics/qm/null_source/timelike/stress_kernel/geometry/check.py": "15c06f0cd0ad42b143d8d619ee27da39b1e1184cbd19a9af2067076e5faa9ea0",
+    "physics/qm/null_source/timelike/stress_kernel/geometry/result.json": "cb5d8d8376c370596e87f51cf93d593fa041195762b1954c929d02c0b6e99e70",
+    "physics/qm/null_source/timelike/stress_kernel/noise/README.md": "8d5a32d9474b5ad848acb73a4bf4a864cf22b0b97083b44b91f956c7a2e6b267",
+    "physics/qm/null_source/timelike/stress_kernel/noise/check.py": "8e863e500082339282b9d6b033d5745b6a2d197e4681037d1b2a5c95349a80a2",
+    "physics/qm/null_source/timelike/stress_kernel/noise/result.json": "3cdca848a83cb15990533fc5928403be9a10a81d0dd8be5f7eed13621b536fe7",
+    "physics/qm/null_source/timelike/stress_kernel/response/README.md": "b56acf16375d0e9fb84c9709f8c6210b77ef571b65f5ffb6c4ebff54ea141c91",
+    "physics/qm/null_source/timelike/stress_kernel/response/check.py": "fed3098f9f07ee6f8e602ea9ed1bfe53b9e073e99e9cd40e4f5bce6099692b15",
+    "physics/qm/null_source/timelike/stress_kernel/response/result.json": "212b79ebbae86643f86bca65d0a2ef177e0f0620246fdb1c1a479fad8a3a150a",
+    "physics/qm/null_source/timelike/stress_kernel/review.json": "b6d373b8ddad0ec0081a7a4987b94183cadfc16eb47953f34790266aea990907",
+    "physics/qm/null_source/timelike/stress_kernel/review.py": "2a38fe632d5a17985b08c3ff6aa2acc78cb9a8bcf59cff7769d446d82ae005bc",
+    "physics/qm/null_source/timelike/stress_kernel/run_verification.py": "f780bcd7b7c262dc5725515e530f6745b5c685676dd26b487ec3d42b3388734c"
+  },
+  "dependencies": {
+    "mpmath": "1.3.0",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "sympy": "1.14.0"
+  },
+  "executed_now": [
+    {
+      "arguments": [
+        "--check"
+      ],
+      "duration_seconds": 0.326,
+      "entry": "complete_quadratic_stress_noise",
+      "returncode": 0,
+      "source": "physics/qm/null_source/timelike/stress_kernel/noise/check.py",
+      "stderr_path": "/private/var/folders/v6/p_dljwyj2bg75qplcqb43_200000gn/T/ueot-stress-kernel-logs-zuj1xkue/complete_quadratic_stress_noise.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "/private/var/folders/v6/p_dljwyj2bg75qplcqb43_200000gn/T/ueot-stress-kernel-logs-zuj1xkue/complete_quadratic_stress_noise.stdout.txt",
+      "stdout_sha256": "2d8ba30ef6f5fb829184c4cd51069a243d2fc2b2a5c65a3aaffe0fa9c3cc71b3"
+    },
+    {
+      "arguments": [
+        "--check"
+      ],
+      "duration_seconds": 0.471,
+      "entry": "retarded_response_and_lapse_records",
+      "returncode": 0,
+      "source": "physics/qm/null_source/timelike/stress_kernel/response/check.py",
+      "stderr_path": "/private/var/folders/v6/p_dljwyj2bg75qplcqb43_200000gn/T/ueot-stress-kernel-logs-zuj1xkue/retarded_response_and_lapse_records.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "/private/var/folders/v6/p_dljwyj2bg75qplcqb43_200000gn/T/ueot-stress-kernel-logs-zuj1xkue/retarded_response_and_lapse_records.stdout.txt",
+      "stdout_sha256": "a118c9ee99246cb93c89cfe5ba6c51d21ea3f364fe2d01427fbd343521e0c937"
+    },
+    {
+      "arguments": [
+        "--check"
+      ],
+      "duration_seconds": 1.016,
+      "entry": "legal_smeared_geometry_and_constraints",
+      "returncode": 0,
+      "source": "physics/qm/null_source/timelike/stress_kernel/geometry/check.py",
+      "stderr_path": "/private/var/folders/v6/p_dljwyj2bg75qplcqb43_200000gn/T/ueot-stress-kernel-logs-zuj1xkue/legal_smeared_geometry_and_constraints.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "/private/var/folders/v6/p_dljwyj2bg75qplcqb43_200000gn/T/ueot-stress-kernel-logs-zuj1xkue/legal_smeared_geometry_and_constraints.stdout.txt",
+      "stdout_sha256": "bdd7ec1d11a157f1381a282ff66985969221eaf801bcdd3b1345924c8637a8fa"
+    },
+    {
+      "arguments": [
+        "--check"
+      ],
+      "duration_seconds": 0.272,
+      "entry": "independent_common_scale_integration",
+      "returncode": 0,
+      "source": "physics/qm/null_source/timelike/stress_kernel/review.py",
+      "stderr_path": "/private/var/folders/v6/p_dljwyj2bg75qplcqb43_200000gn/T/ueot-stress-kernel-logs-zuj1xkue/independent_common_scale_integration.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "/private/var/folders/v6/p_dljwyj2bg75qplcqb43_200000gn/T/ueot-stress-kernel-logs-zuj1xkue/independent_common_scale_integration.stdout.txt",
+      "stdout_sha256": "8d52ecc363f26f29352bf0e2cab9c7c779e268ca3d5f177fce97ea418aa449f6"
+    }
+  ],
+  "git_head_at_execution": "29d49e3eee6299e2085492b0e061288b8166b5fa",
+  "new_mode_integrations": 0,
+  "old_scientific_entries_rerun": 0,
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "python": "3.14.4 (main, Apr  7 2026, 13:13:20) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "receipt_generated_before_commit_if_worktree_dirty": true,
+  "reused": {
+    "archived_earlier_local_receipts": [
+      {
+        "count": 5,
+        "entries": [
+          "shared_reference",
+          "minimal_quantum_stress",
+          "apparatus_constraints",
+          "finite_data_identification",
+          "independent_stress_apparatus_review"
+        ],
+        "executed_again_this_run": false,
+        "local_git_head_at_execution": "a3ae75078ae903163bf0759fbd302e836aeeea84",
+        "path": "physics/qm/null_source/timelike/continuation/verification.json",
+        "sha256": "ad4d7956cba83cda8e9e309911d5324558d8ed4e249bbf83b969c980ae4f6dce"
+      },
+      {
+        "count": 9,
+        "entries": [
+          "independent_local_algebra",
+          "validated_modes_2_to_64",
+          "validated_initial_modes_65_to_256",
+          "independent_physical_propagation_diagnostic",
+          "ultraviolet_certificate_64",
+          "ultraviolet_certificate_256",
+          "full_dynamic_stress_and_initial_constraint",
+          "finite_window_coupling_identification",
+          "independent_propagation_and_infinite_field_review"
+        ],
+        "executed_again_this_run": false,
+        "local_git_head_at_execution": "987dd4ccc58d0086cc1305e99b5cdb67f8127fde",
+        "path": "physics/qm/null_source/timelike/evolution/verification.json",
+        "sha256": "8eb585fe3dc7763e8e02b3f9525b5cce14c206be4af0ac8885a9362473c6b9e8"
+      },
+      {
+        "count": 4,
+        "entries": [
+          "state_transport_and_repair",
+          "homothetic_stress_and_uniform_defect",
+          "constraint_roots_and_positive_sources",
+          "independent_uniform_stress_and_noise_review"
+        ],
+        "executed_again_this_run": false,
+        "local_git_head_at_execution": "1a90c68b6178968e6b8239fc97a8b26200f8d59d",
+        "path": "physics/qm/null_source/timelike/compatibility/verification.json",
+        "sha256": "b28796fc767e49f301026589d7cb4232c1c23b04a5371e7ebd3085dc74b7954e"
+      }
+    ],
+    "audited_routing_changes": {
+      ".github/workflows/ueot-physics-source-response.yml": {
+        "current_bytes_frozen_in_this_manifest": true,
+        "current_sha256": "f04543a7fe108ae991f9d59772c24f1b26688a545355d4377571991889082d6a",
+        "previous_receipt_sha256": "155236bb27cba8be9f876151d87220e7e9aaf83315a0fcab396c6ee53b5dae46",
+        "role": "reading/workflow route, not consumed by predecessor scientific checkers"
+      },
+      "physics/qm/README.md": {
+        "current_bytes_frozen_in_this_manifest": true,
+        "current_sha256": "34de59f8b25b821bf36bc2c955dda81d25182998b660358d546b76fee48ecd99",
+        "previous_receipt_sha256": "afc160788a301996e4d489924998f33c5accf9db42ee6b54a03f15094970a270",
+        "role": "reading/workflow route, not consumed by predecessor scientific checkers"
+      },
+      "physics/qm/ROADMAP.md": {
+        "current_bytes_frozen_in_this_manifest": true,
+        "current_sha256": "640ad7f8049ddd7b20c06e5dada229b9126543ad826452aa081ac2d367d2ad39",
+        "previous_receipt_sha256": "55e67bd1df730eee512292e1ae74a3e130ae7e350a236a2b1353b639bb371d73",
+        "role": "reading/workflow route, not consumed by predecessor scientific checkers"
+      },
+      "physics/qm/null_source/timelike/README.md": {
+        "current_bytes_frozen_in_this_manifest": true,
+        "current_sha256": "87f01d89614de9a44f5b54c1bbfb895092271ad778bfe90d24a422ba36aedd59",
+        "previous_receipt_sha256": "f7898e666047a9e7f64fea05bbe3ac93eaee1f72ef85560001c2ff07a3964d50",
+        "role": "reading/workflow route, not consumed by predecessor scientific checkers"
+      }
+    },
+    "base_commit": "29d49e3eee6299e2085492b0e061288b8166b5fa",
+    "ci_observation_semantics": "Public GitHub API observation retrieved by the primary reviewer; not a new execution or a cryptographic attestation. Exact archived input identities and actual passed run/job/step are checked separately.",
+    "entry_count_reused": 22,
+    "exact_head_ci_proof_chain": [
+      {
+        "conclusion": "success",
+        "head_sha": "1a90c68b6178968e6b8239fc97a8b26200f8d59d",
+        "html_url": "https://github.com/MurphyHoops/UEOT/actions/runs/44491673166",
+        "id": 44491673166,
+        "path": ".github/workflows/ueot-physics-source-response.yml",
+        "run_started_at": "2026-11-19T08:54:54Z",
+        "status": "completed",
+        "updated_at": "2026-11-19T09:00:05Z"
+      },
+      {
+        "conclusion": "success",
+        "head_sha": "d6ec9eda409ba78d1d7993d7648ba26b5a34374d",
+        "html_url": "https://github.com/MurphyHoops/UEOT/actions/runs/44499725123",
+        "id": 44499725123,
+        "path": ".github/workflows/ueot-physics-source-response.yml",
+        "run_started_at": "2026-11-19T09:48:03Z",
+        "status": "completed",
+        "updated_at": "2026-11-19T09:48:44Z"
+      },
+      {
+        "conclusion": "success",
+        "created_at": "2026-11-19T11:07:40Z",
+        "event": "pull_request",
+        "head_branch": "codex/physics-source-response-20261119",
+        "head_sha": "29d49e3eee6299e2085492b0e061288b8166b5fa",
+        "html_url": "https://github.com/MurphyHoops/UEOT/actions/runs/44511966040",
+        "id": 44511966040,
+        "name": "Finite source response research",
+        "path": ".github/workflows/ueot-physics-source-response.yml",
+        "run_attempt": 1,
+        "status": "completed",
+        "updated_at": "2026-11-19T11:08:20Z"
+      }
+    ],
+    "inherited_scientific_file_count": 92,
+    "inherited_scientific_manifest": {
+      "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCFutureResponseCore.lean": "a4c91ef76850d3a9b61d1d89c54a6f09d4642928a9d62c2568cb637a2d0ae3a2",
+      "physics/qm/null_source/FINITE_WINDOW.md": "c14f64f168a406df9e39ef7f1b6cee22c0366f6a0bf824ed581d7c0eb8f47163",
+      "physics/qm/null_source/timelike/compatibility/CONTRACT.md": "3921b7f6a8654a41960f8915883547a2f75078039ede5a00be79c89f3ad215f4",
+      "physics/qm/null_source/timelike/compatibility/README.md": "fa35fc3398b221b6535c971de3da3c908b7324f49eb9e01f5d94f58911953471",
+      "physics/qm/null_source/timelike/compatibility/baseline_ci.json": "ff56a0bfe0685215e4f7d521eecb8f4154b4ea8ebea55d07a19e9c0a353494f7",
+      "physics/qm/null_source/timelike/compatibility/constraints/README.md": "8a0f71893b8ea44e661c0a18d070627b0308e4bfecf0d4845007094c1d44f6ef",
+      "physics/qm/null_source/timelike/compatibility/constraints/constraints.py": "27f95cc4bd8267845dc902903a3b2d384e387f54f6a950bbb9ad3f326e7566be",
+      "physics/qm/null_source/timelike/compatibility/constraints/result.json": "0572e61ebbaa2ab388a9af0c84adff52dabdc0fffcd618b36b5c6cb8c4a8f903",
+      "physics/qm/null_source/timelike/compatibility/review.json": "48bfcc47ef0db2f849505e4cb34714e3d4c68e7928a71cf7d9d27220b0b4e512",
+      "physics/qm/null_source/timelike/compatibility/review.py": "e37036a94df31691f41cdbd52d0e04fa10be68f3acd825418dfcaaad284e6a74",
+      "physics/qm/null_source/timelike/compatibility/run_verification.py": "9ad6ced3cd72b1cd43ed9da6e769ef84f9a5fa4a117ef54b2b757d73b5020bd3",
+      "physics/qm/null_source/timelike/compatibility/scaling/README.md": "cd012b75f20e4bcf01d57f4c94a822735d80203e2ef5a1cd5505bc76a01bc1b8",
+      "physics/qm/null_source/timelike/compatibility/scaling/check.py": "cdd9f424040b1fb35687dff71e3fa2ac713de02d837d2e8c12b6ae7574d98452",
+      "physics/qm/null_source/timelike/compatibility/scaling/result.json": "28e81cae349be501bffa3c310b336e488b295c4c260f1673baa610c7cf31969b",
+      "physics/qm/null_source/timelike/compatibility/state/README.md": "e6e0a02a7a71bd5c6ad01375d0a6b15b9a9c1a7f5cc3e36631e5b2e141116dc6",
+      "physics/qm/null_source/timelike/compatibility/state/REVIEW.md": "c7f3ac889f1a9157f600c662a35904ca8534ec7c51991e717b4b8aafbdf3b42f",
+      "physics/qm/null_source/timelike/compatibility/state/check.py": "8a3af529b17af56b5b09c1be678d2a4ac6797cff8e6351d3387f7fdd95d802a3",
+      "physics/qm/null_source/timelike/compatibility/state/receipt.json": "f9715ca5e4a5d110678844a941dd8899a129db344b4a56df924b6331046483e2",
+      "physics/qm/null_source/timelike/compatibility/verification.json": "b28796fc767e49f301026589d7cb4232c1c23b04a5371e7ebd3085dc74b7954e",
+      "physics/qm/null_source/timelike/continuation/README.md": "1a647ae5e120a6e62dbd95d9fc829f4cd80986ff1385990accd16c5ae9ff775d",
+      "physics/qm/null_source/timelike/continuation/REVIEW.md": "b675695c60df78775180c7cc80a3e21085d295fa2cefb353ed39ba87a9f7ab8b",
+      "physics/qm/null_source/timelike/continuation/SOURCE.md": "b9387acfdbf6f4ca2efdb2869cbfd496257292dafe511c5f1b5dea48e3745cd9",
+      "physics/qm/null_source/timelike/continuation/apparatus/README.md": "9395ffbac1ed854591cb9004e149359098f6db87ba346d16d1fadcfaa00a3645",
+      "physics/qm/null_source/timelike/continuation/apparatus/result.json": "e3bbf5c63e84acc151a41bf9789eb441db3390864239c746540bc22d510e5618",
+      "physics/qm/null_source/timelike/continuation/apparatus/shell.py": "20848150917cea6256e0d1b4140b9334de5cae146e50d990d0c2fd990ffad7eb",
+      "physics/qm/null_source/timelike/continuation/identification/README.md": "bd7f2d71a5dda34d11f34b80e9c480fe833a79e513c01c8e3f9f6f62d4a0cc11",
+      "physics/qm/null_source/timelike/continuation/identification/REVIEW.md": "7233f09e451b6e758cca8da6fc575ab29ee7faeaa16d4adaac13d23ea9122574",
+      "physics/qm/null_source/timelike/continuation/identification/check.py": "80c105bfa68a33531c03bab202e50ad60836d2256067c215e09e4467453ab2c1",
+      "physics/qm/null_source/timelike/continuation/identification/result.json": "ce34fe57af51e42f4cf473e50324b1aa889f2d18d4ba5fe96c9b4202a5faba08",
+      "physics/qm/null_source/timelike/continuation/identification/review_bc.json": "ad155cb330c0f0a9a5f16e0d394e48d5c2b21ebadbc49cbd7423503ded09ee0f",
+      "physics/qm/null_source/timelike/continuation/identification/review_bc.py": "841962b3fb4bbd8f127fa340af40af02d4be900b4e86178e705d0b3b136c7808",
+      "physics/qm/null_source/timelike/continuation/quantum/README.md": "dac162dd94b1c98c6d4416c177a2dee4b3250025237e0c938b799d6c1ad64e21",
+      "physics/qm/null_source/timelike/continuation/quantum/minimal_response.py": "286d018dab3d448ceb1b7b8ebc0ec1592875249bcd1036ecf58289af5347037b",
+      "physics/qm/null_source/timelike/continuation/quantum/result.json": "5e53bd95c2e081db434baf7a0d3e250ec5af241bd73ba12266c7467183050db8",
+      "physics/qm/null_source/timelike/continuation/run_verification.py": "e8aa08570937f369b0fdb134c590c86d6e98b199469cc2926c9f87afb01c3a30",
+      "physics/qm/null_source/timelike/continuation/source_contract.py": "05ecbdf9cdb1d3e5d697ff2a5213c456727ad75db7a461fbec72517ed4bc96be",
+      "physics/qm/null_source/timelike/continuation/verification.json": "ad4d7956cba83cda8e9e309911d5324558d8ed4e249bbf83b969c980ae4f6dce",
+      "physics/qm/null_source/timelike/evolution/README.md": "0680d9f5e31a7c0c987a3a89a8c314360d64b0222169d8dd3ae89edc82ceca49",
+      "physics/qm/null_source/timelike/evolution/algebra.json": "fd052cf3aec367d048ec637e4e16309db4bf00527033865120f21b3593cec621",
+      "physics/qm/null_source/timelike/evolution/diagnostic.json": "10f095e521216cbdd92fd7c7ba140cd3277602698c22b1e85f7e62799a9001c1",
+      "physics/qm/null_source/timelike/evolution/diagnostic_cutoffs.py": "51789e4b4bc8e7d07f1c192f758b1d6303ca2b8d0a8f7a01043b8a575bc2d65d",
+      "physics/qm/null_source/timelike/evolution/inference/README.md": "646368c07d3d0e3785c0ae6b3b07ee7a704632e0f7e2ae949d1b7e3fd4f7ddee",
+      "physics/qm/null_source/timelike/evolution/inference/REVIEW.md": "bf485fd67e89a2dd64408ff58d887b91d7da2daf5850d56c10c8b998c671d99c",
+      "physics/qm/null_source/timelike/evolution/inference/check.py": "00f2fa4f468b882d8bd5490daf01c5ffdaa60b529b3c1c26f17100e4e79bbc57",
+      "physics/qm/null_source/timelike/evolution/inference/receipt.json": "077018c0ac2833589222415c17c55a29f70812d7fee8ffd15cc4a82093d913f6",
+      "physics/qm/null_source/timelike/evolution/inference/review_bc.json": "5a867b3e7e8668347546f868ce3111cc8346dc8f566cf5651ec200ca3ff005a3",
+      "physics/qm/null_source/timelike/evolution/inference/review_bc.py": "aae812a91a100a99b0c9ad10485f0a19bb86852763f393fba0c7c63b74a9ecfb",
+      "physics/qm/null_source/timelike/evolution/propagation/README.md": "12a41ddbe1a026aab1bdb1d3d41599c45436fe973fef9613bd2955bc9bec1d7a",
+      "physics/qm/null_source/timelike/evolution/propagation/STRESS_REVIEW.md": "d46c55ab67d6535350f8cd00fa9eda86b0f98d2433894de10d09590d19fdf409",
+      "physics/qm/null_source/timelike/evolution/propagation/background.py": "a961641afade6f9aaacef4e5dcffaa3b6cc408265d0263dc4bad46dbf6b9de2e",
+      "physics/qm/null_source/timelike/evolution/propagation/crosscheck.json": "f9939e08edf32da73ec3f903108f30a08dc1013c75ae3b5b326a35ed8d2f8b54",
+      "physics/qm/null_source/timelike/evolution/propagation/crosscheck.py": "e822cb64c0c61b6c95240cf63913fb8787ce034f3877715ae1b87e4b2d987ab6",
+      "physics/qm/null_source/timelike/evolution/propagation/extra_eta0.py": "37c4d0fc196b4535e0c6b587d290204991847214f76a8f57f8a5626410505ecc",
+      "physics/qm/null_source/timelike/evolution/propagation/extra_eta0_256.json": "2767ac911243d69d18a295f9326d6b904dcd2dfd235e0b6c739d1b15516983bb",
+      "physics/qm/null_source/timelike/evolution/propagation/finite_modes.py": "6a3fe48efef7441d444e6834075f0380da03d2957f0c87bdeae2c0080d2a1ef0",
+      "physics/qm/null_source/timelike/evolution/propagation/result.json": "6d34ea46c7e27aacad159739504a17cace7aef046674fc693a6ecb06aee8c6b6",
+      "physics/qm/null_source/timelike/evolution/review_algebra.py": "f993faa4675c04edba5ec8b68befd6ccc8d63bfb98216eaf0f052061aba31ce3",
+      "physics/qm/null_source/timelike/evolution/run_verification.py": "fbd8176f2a593cee1e2b19ebe9e7df7220c2a4354985ee2a706418b857cddf90",
+      "physics/qm/null_source/timelike/evolution/stress/README.md": "c3ae0f4ef77e6d2b68b4a2824f5fed4456d9b2cba8134fb15eac6e62b2c37e31",
+      "physics/qm/null_source/timelike/evolution/stress/assemble.py": "9eb631ba5f2632d94dea48af5b39ea71f4eab1c9dc5660ac414cb69c42ae94f4",
+      "physics/qm/null_source/timelike/evolution/stress/exploration.json": "d5a81c1a5e037b86b7cc4fd4f6bcba45c2461656ffab88ba3a0f27e8a4a525f1",
+      "physics/qm/null_source/timelike/evolution/stress/result.json": "e68cf02018507c096aaa896c24e11fa32f52204fa08895f3aac615e114e2c218",
+      "physics/qm/null_source/timelike/evolution/stress/tail.py": "36d8301da25c481c3a97681fadaf7b0bcb522fed33b88d7c9e8b32c04010421d",
+      "physics/qm/null_source/timelike/evolution/stress/tail_K256_M1024.json": "0cb769c390039e7b05ecc3a99258c7218ede5ee815b9c1579bba8f943a9ebfad",
+      "physics/qm/null_source/timelike/evolution/stress/tail_K64_M1024.json": "febab4aac0709385684f91cbea21b35673cc997dfb75c5bbc8be95be712ea73a",
+      "physics/qm/null_source/timelike/evolution/verification.json": "8eb585fe3dc7763e8e02b3f9525b5cce14c206be4af0ac8885a9362473c6b9e8",
+      "physics/qm/null_source/timelike/identification/README.md": "7ff8cec8253e9fa0b4b39bb89ccfe1613854f1dd9404dd26a946e6bacc13f953",
+      "physics/qm/null_source/timelike/identification/observed.json": "352a59c9f25da1e2da96ffd5ab477be1011a0cad3774de0fec142a7bf50e4e9d",
+      "physics/qm/null_source/timelike/identification/reference.py": "f66eb81c01c19996f6eeddb90b3bb50983eab150e7a4dbdc881344c485df1053",
+      "physics/qm/null_source/timelike/identification/replay.py": "12c1f28c30e49608cd50f955e42514b91adc50db09273653566997f0ed628038",
+      "physics/qm/null_source/timelike/instrument/CONTRACT.md": "93f536a3d2111c0a4b8ac65d1fbc1e4f3b82a142c532096a3d9cb10692f9617b",
+      "physics/qm/null_source/timelike/instrument/README.md": "e5eecb44589937f070102e04f2f540999a0d1b86531af69b0dc4f1dae19a9c7b",
+      "physics/qm/null_source/timelike/instrument/instrument.py": "99c3507fe65d294fa278fc4284b9e1f66400f1b2645fbf0ddacad123fd56dd61",
+      "physics/qm/null_source/timelike/instrument/joint_bound.py": "ea994eed8631012e91922317cb5bf58a9e6a83288fe7c9e0a3b327c878224df0",
+      "physics/qm/null_source/timelike/instrument/result.json": "cbe013ae525866f82487ba0e7139449d85dddb4530c1c82f876aff6c37ae4d77",
+      "physics/qm/null_source/timelike/response/CONTRACT.md": "4b45639fefbe7f73388b9ad41a253d4415a54754a185634ff5c3d54458cc0de4",
+      "physics/qm/null_source/timelike/response/README.md": "c9272c95e9f8ee2d8ab2a68c25b8c5abe735a83e88f25f25edd9850cb371f87b",
+      "physics/qm/null_source/timelike/response/baseline_ci.json": "e095ab088a35d1c869fcafc318aa56dc8332a5dc87f2d1a44cf934f5e8e7270d",
+      "physics/qm/null_source/timelike/response/geometry/README.md": "15f16dbd4e920cf8b788762111ad58add5dafd59571024d8a42e95857f93404e",
+      "physics/qm/null_source/timelike/response/geometry/check.py": "17bc82a14211879c59456924cbb55f68be127397c67be01c8390eaa8b7beb65f",
+      "physics/qm/null_source/timelike/response/geometry/result.json": "3a288a6f1b0eea9d926555fa603d25243ca5367351d24051cc7c185a554091af",
+      "physics/qm/null_source/timelike/response/noise/README.md": "809b93a9f0baf6e6fb34a52b0264474d841a0095cfe16a6ac48858a65cda4e87",
+      "physics/qm/null_source/timelike/response/noise/check.py": "263099f70d6cb89b999a9ec42956b1a42c0079ec9ba8ce899c4cfdf07c80974a",
+      "physics/qm/null_source/timelike/response/noise/result.json": "2c0e5acc23976f41a02e53406e499b67f6cb104b90185e66da670cac496ebf3c",
+      "physics/qm/null_source/timelike/response/preparation/README.md": "15b440401daba30233ba2328280d9ec602757521b94213735e10ca51c400eea3",
+      "physics/qm/null_source/timelike/response/preparation/check.py": "fd2711b46fa066fd9b6986ce5d28afa9a2baa36eb838d692e7a4439e59990036",
+      "physics/qm/null_source/timelike/response/preparation/result.json": "98fe9605092a5493a4c494ab7de4f9e3f8a4ed77bff94f60c62e9fa624a91a46",
+      "physics/qm/null_source/timelike/response/review.json": "6b6bc06f1e802eccaa0ed1b0940ff2995534fe5d0ce08a4abaadc38c9c5c6ecc",
+      "physics/qm/null_source/timelike/response/review.py": "de49043fa656e67d33af5a1cbd07f3780565f994a6a4b5145488e5742234d4ea",
+      "physics/qm/null_source/timelike/response/run_verification.py": "1def259f4acff3c6cccb980a07aa703484f8d486381fcaf05b1887009316516b",
+      "physics/qm/null_source/timelike/response/verification.json": "d554f48c1537df01501b2b3d4d07b4ea1c41993bd9e5a9090a40ff87b04d864f",
+      "physics/qm/status/CURRENT.json": "084672f4503febc972f22b05b50d04021235dc9a3c86c24fa1865a1c40cf5190"
+    },
+    "old_workflow_at_base_sha256": "155236bb27cba8be9f876151d87220e7e9aaf83315a0fcab396c6ee53b5dae46",
+    "parent_receipt": {
+      "count": 4,
+      "entries": [
+        "biased_sign_preparation_and_records",
+        "full_noise_scaling_and_local_linear_bound",
+        "constraint_preserving_linear_geometry",
+        "independent_geometry_state_and_scope_review"
+      ],
+      "executed_again_this_run": false,
+      "local_git_head_at_execution": "d6ec9eda409ba78d1d7993d7648ba26b5a34374d",
+      "path": "physics/qm/null_source/timelike/response/verification.json",
+      "sha256": "d554f48c1537df01501b2b3d4d07b4ea1c41993bd9e5a9090a40ff87b04d864f"
+    }
+  },
+  "schema": "ueot-stress-kernel-verification/1",
+  "scientific_exit": {
+    "Core_unique_physical_selection": "OPEN",
+    "canonical_algebra_review": {
+      "commutator_expectation_identical": true,
+      "finite_canonical_cross_check_not_a_substitute_for_continuum_tail": true,
+      "independent_interval_product_negative_control": [
+        "-1",
+        "1"
+      ],
+      "linear_covariance_transfer": "(3/4)*(R D)*(R D)^T",
+      "no_general_thermal_fluctuation_dissipation_assumption": true,
+      "ordered_quadratic_covariance_difference": "(3/4)*D_H*D_K",
+      "retarded_response_alone_does_not_determine_noise": true,
+      "same_existing_metric_derivatives_not_a_proof_of_differentiability": true,
+      "same_mean_under_common_canonical_evolution": true,
+      "transfer_requires_same_response_and_intrinsic_cross_terms": true
+    },
+    "compact_adjoint_geometry_tests": "CLASSIFIED_FOR_DECLARED_LINEAR_OPERATOR",
+    "complete_quadratic_noise_numerical_bound": "CERTIFIED_FOR_DECLARED_TEST",
+    "component_receipts": {
+      "geometry": {
+        "path": "physics/qm/null_source/timelike/stress_kernel/geometry/result.json",
+        "sha256": "cb5d8d8376c370596e87f51cf93d593fa041195762b1954c929d02c0b6e99e70"
+      },
+      "noise": {
+        "path": "physics/qm/null_source/timelike/stress_kernel/noise/result.json",
+        "sha256": "3cdca848a83cb15990533fc5928403be9a10a81d0dd8be5f7eed13621b536fe7"
+      },
+      "response": {
+        "path": "physics/qm/null_source/timelike/stress_kernel/response/result.json",
+        "sha256": "212b79ebbae86643f86bca65d0a2ef177e0f0620246fdb1c1a479fad8a3a150a"
+      }
+    },
+    "full_nonlinear_SCE_and_stability": "OPEN",
+    "lapse_probe_response": "FIRST_DERIVATIVE_AT_ZERO",
+    "mean_response_equivalence": "CERTIFIED_IN_COMMON_ADMISSIBLE_METRIC_CLASS",
+    "new_Lean_proofs": false,
+    "new_matching_hardware_data": false,
+    "physical_device_and_driver_realization": "OPEN",
+    "same_scale": {
+      "M2": [
+        "3126385762642440814394252186788343373912531272775899907256778715376903745643837/100433627766186892221372630771322662657637687111424552206336",
+        "1563193200274713601520286920764142996405099424710079389100102903706620786332831/50216813883093446110686315385661331328818843555712276103168"
+      ],
+      "Qeff0": [
+        "1409084928503826084797299543876208180667110290940567618252079981755251015109383/926336713898529563388567880069503262826159877325124512315660672063305037119488",
+        "3215086733216153242485337667381643165150901207328999108471368764488493306210905/28948022309329048855892746252171976963317496166410141009864396001978282409984"
+      ],
+      "all_mode_bound_does_not_certify_arbitrary_test_resolution": true,
+      "all_mode_c1_over_D2_upper": [
+        "354316099668228890357914204406249580118001257818011148165192218563/205688069665150755269371147819668813122841983204197482918576128",
+        "354316099668228890357914204406249580118001257818011148165192218563/205688069665150755269371147819668813122841983204197482918576128"
+      ],
+      "all_start_threshold": "19/80",
+      "d_squared": [
+        "7410692178115415263749338516831628738163037091024355335719771769782290360044651/7410693711188236507108543040556026102609279018600996098525285376506440296955904",
+        "1852673422547808712912932646831576884628265984841575572266788626615254265283355/1852673427797059126777135760139006525652319754650249024631321344126610074238976"
+      ],
+      "derivative_perturbation": "delta g_ab=2*epsilon*F/(D*lambda^2)*u_lambda_a*u_lambda_b",
+      "field_added_energy_upper": [
+        "6959324140018862548385342400936068294237968687471754945532243403710091400943347/31082702275611665134711390509176302506278509424834232340028998555822468563283335970816",
+        "6959324140018862548385342400936068294237968687471754945532243403710091400943347/31082702275611665134711390509176302506278509424834232340028998555822468563283335970816"
+      ],
+      "field_energy_evaluation_eta": "1/4",
+      "finite_epsilon_probability_bound_proved": false,
+      "full_c0_over_D2_upper": [
+        "4269880252689071965970969320756990541806121746744916657792831026921198990176469/822752278660603021077484591278675252491367932816789931674304512",
+        "2134940126344535982985484660378495270903060873372458328896415513460599495088235/411376139330301510538742295639337626245683966408394965837152256"
+      ],
+      "full_device_cost_advantage_certified": false,
+      "full_nonlinear_SCE_solution_or_distance_certified": false,
+      "future_effect_probability_derivative_at_epsilon0_upper": [
+        "3978319504035550260984366748533795951563675144532272467949386183540240429878983/59285549689505892056868344324448208820874232148807968788202283012051522375647232",
+        "3978319504035550260984366748533795951563675144532272467949386183540240429878983/59285549689505892056868344324448208820874232148807968788202283012051522375647232"
+      ],
+      "independent_first_order_conformal_H_upper": [
+        "2382627291107289293631605263115457481805972224617656810719425628601714561229741/15177100720513508366558296147058741458143803430094840009779784451085189728165691392",
+        "2382627291107289293631605263115457481805972224617656810719425628601714561229741/15177100720513508366558296147058741458143803430094840009779784451085189728165691392"
+      ],
+      "independent_first_order_log_volume_upper": [
+        "1283603907594951616555549193612013150182102022236766966207573348256004830180245/30354201441027016733116592294117482916287606860189680019559568902170379456331382784",
+        "1283603907594951616555549193612013150182102022236766966207573348256004830180245/30354201441027016733116592294117482916287606860189680019559568902170379456331382784"
+      ],
+      "independent_first_order_scale_relative_upper": [
+        "6845887507173075288296262365930736800971210785262757153107057857365359094294639/485667223056432267729865476705879726660601709763034880312953102434726071301302124544",
+        "6845887507173075288296262365930736800971210785262757153107057857365359094294639/485667223056432267729865476705879726660601709763034880312953102434726071301302124544"
+      ],
+      "independent_fresh_starts": 128,
+      "lambda": 32768,
+      "mean_and_geometry_eta_interval": [
+        "0",
+        "3/16"
+      ],
+      "minimum_margin": "17/80",
+      "new_all_start_plus_interval": [
+        "4968960301133247909474574274104394144049765950757542511060134216970982365422427/7588550360256754183279148073529370729071901715047420004889892225542594864082845696",
+        "4321101369421824939191966545535824685736846129117420012666640788209666516159245/237142198758023568227473377297792835283496928595231875152809132048206089502588928"
+      ],
+      "old_all_start_plus_interval": [
+        "3436500654155807215692956957784714471776957278770540365922339169519832965610129/7410693711188236507108543040556026102609279018600996098525285376506440296955904",
+        "7212515666439863707544153282051040972140319762957998355120182746819655941213451/14821387422376473014217086081112052205218558037201992197050570753012880593911808"
+      ],
+      "old_mixture_relative_variance_lower": [
+        "1389454120459436520855745658162848109715555639237078409162842384000647471453267/1852673427797059126777135760139006525652319754650249024631321344126610074238976",
+        "1389454120459436520855745658162848109715555639237078409162842384000647471453267/1852673427797059126777135760139006525652319754650249024631321344126610074238976"
+      ],
+      "old_to_new_total_variance_ratio_lower": [
+        "4850056188972388195670314472060531896656073894118282711690104616917954936956775/28948022309329048855892746252171976963317496166410141009864396001978282409984",
+        "606257023621548524458789309007566487082009236764785338961263077114744367119597/3618502788666131106986593281521497120414687020801267626233049500247285301248"
+      ],
+      "per_candidate_classification_error_upper": "2316672205037233234960021910314563596313746151887073619408540286996096265507791/242833611528216133864932738352939863330300854881517440156476551217363035650651062272",
+      "physical_gain": "5; maximum 201/40",
+      "physical_lengths_and_proper_times_relative_to_8192": "4",
+      "raw_generator_variance_upper": [
+        "4271402028745281579245767479053555812325723109010727434885362426126049819604013/948568795032094272909893509191171341133987714380927500611236528192824358010355712",
+        "4271402028745281579245767479053555812325723109010727434885362426126049819604013/948568795032094272909893509191171341133987714380927500611236528192824358010355712"
+      ],
+      "reference_visibility_lower": "910530481268715447219798270021662116718448152234638589706200863859595537356473/926336713898529563388567880069503262826159877325124512315660672063305037119488",
+      "relative_total_stress_standard_deviation_upper": [
+        "994597905714986695897632766531621937044852648177831071824771510762864146175947/14821387422376473014217086081112052205218558037201992197050570753012880593911808",
+        "994597905714986695897632766531621937044852648177831071824771510762864146175947/14821387422376473014217086081112052205218558037201992197050570753012880593911808"
+      ],
+      "relative_total_stress_variance_upper": [
+        "2135778446887719384837019208692980071146639143491757785624534631366783551163085/474284397516047136454946754595585670566993857190463750305618264096412179005177856",
+        "2135778446887719384837019208692980071146639143491757785624534631366783551163085/474284397516047136454946754595585670566993857190463750305618264096412179005177856"
+      ],
+      "same_calibration_and_heralded_preparation_failure_contract_as_parent": true,
+      "source_family": "exact correlated source retuned at this lambda",
+      "source_phase_interval": [
+        "2799610353461159812049121487076380476933598570825081492301271475297392824789873/926336713898529563388567880069503262826159877325124512315660672063305037119488",
+        "5656287272813906252309641790140529603647711787778062133438073838412944288828079/1852673427797059126777135760139006525652319754650249024631321344126610074238976"
+      ],
+      "uniform_mean_density_relative_defect_upper": [
+        "550249832330085097130219649833269906374655850166891256476555555554048688844785/30354201441027016733116592294117482916287606860189680019559568902170379456331382784",
+        "550249832330085097130219649833269906374655850166891256476555555554048688844785/30354201441027016733116592294117482916287606860189680019559568902170379456331382784"
+      ],
+      "uniform_mean_pressure_relative_defect_upper": [
+        "3840261499433046737783763825872852502214787904572169647663947415820489421008887/7588550360256754183279148073529370729071901715047420004889892225542594864082845696",
+        "3840261499433046737783763825872852502214787904572169647663947415820489421008887/7588550360256754183279148073529370729071901715047420004889892225542594864082845696"
+      ]
+    },
+    "whole_unified_physics_goal": "OPEN"
+  },
+  "source_manifests_unchanged_after_execution": true,
+  "status": "PASS",
+  "timestamp_utc": "2026-11-19T14:22:42.572236+00:00",
+  "working_tree_status_before_execution": " M .github/workflows/ueot-physics-source-response.yml\n M physics/qm/README.md\n M physics/qm/ROADMAP.md\n M physics/qm/null_source/timelike/README.md\n?? physics/qm/null_source/timelike/stress_kernel/\n"
+}
