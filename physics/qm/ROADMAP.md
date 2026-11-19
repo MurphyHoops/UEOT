@@ -2,6 +2,12 @@
 
 本图延续同一物理任务。权威执行状态为[CURRENT](status/CURRENT.json)，稳定结果为[主文](book/UEOT_PHYSICS.md)及现行claim ledger。Core只读，GI不在范围。数学闭合、物理选择、计算实现、经验检验分别登记。
 
+## 2026-11-19 · 同一有限源的当前研究接续
+
+最新研究候选见[应力、装置与有限数据闭合责任](null_source/timelike/continuation/README.md)。已完成的辅助静态绝对应力、最小场有限秩张量、装置初值与有限样本定理，分别保留准确范围；没有改写第71章的出版或经验状态。
+
+下一实际依赖是：同一Cauchy核的动态重整化模式和及受控高频尾 → 含物理有限耦合与装置的合法反馈 → 同半径读数与有限窗仪器转移。尾认证方面已证明无共同尾约束时任意有限读出不能普遍给有限应力方差上置信限，因此先从准备机制取得独立高矩/幅度合同，再优化局域读出。[详细可验出口及Core归因](null_source/timelike/continuation/REVIEW.md)
+
 ## 第71章 · 当前研究边界
 
 [中文书稿](book/UEOT_PHYSICS.md#ch-71)和[英文书稿](book/UEOT_PHYSICS.en.md#ch-71)登记七项新增结果。[相关浴材料与复核入口](correlated_bath/README.md)列出两种时序、校准与独立留出的条件。上一版的真空限制在这一指定的相关非真空族上得到推进。
