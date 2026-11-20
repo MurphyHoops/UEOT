@@ -1,11 +1,804 @@
 {
-  "schema": "ueot-constraint-states-native-reviews/1",
-  "status": "PENDING_ACTUAL_SOURCE_AUDIT",
-  "agents": [
-    "a_joint_constraints",
-    "b_total_source",
-    "c_autonomous_device"
+  "agent_Mac_access": false,
+  "agent_project_execution": false,
+  "all_29_scientific_proof_code_certificate_files_audited": true,
+  "computer_formalization": false,
+  "corrected_findings": [
+    "v is the conditional Gaussian-component variance, not full-mixture momentum variance",
+    "memory is initially pure; complete output retains correlations and entropy",
+    "clock encoding uses full H including unoccupied-mode H_rest; only input MGF reduces",
+    "polynomial moment finiteness is distinct from exact bare-Q moment preservation",
+    "energy budget is not a constructed local stress distribution",
+    "dust clock packet normalization is explicit"
   ],
+  "current_audited_source_manifest": {
+    "physics/qm/README.md": {
+      "git_blob_sha": "614525e9184b398604ab35285e95dcef29ecd9cd",
+      "path": "physics/qm/README.md",
+      "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+      "sha256": "f705dae803d73d04848ae870729c7f9ae766a218b78c3b641d0c0a7402551be0"
+    },
+    "physics/qm/ROADMAP.md": {
+      "git_blob_sha": "0a69f9eb6a2d401ee610bf27471f69415a4de9a7",
+      "path": "physics/qm/ROADMAP.md",
+      "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+      "sha256": "ea8744f56b2c545fad99d22fef87dbe98cf98037c8e74c9ef625333abe6baf49"
+    },
+    "physics/qm/null_source/timelike/README.md": {
+      "git_blob_sha": "aba3264dd55971c3c735c64cfb76b8652e739e51",
+      "path": "physics/qm/null_source/timelike/README.md",
+      "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+      "sha256": "6bdebf2078b1e73f61a4c893abd6a66c07d1d8eba75009351edef0743acdb05c"
+    },
+    "physics/qm/null_source/timelike/constraint_states/COMPENSATION.md": {
+      "git_blob_sha": "2ad0b671e729317610c3d2c89f00e68c5395ca4f",
+      "path": "physics/qm/null_source/timelike/constraint_states/COMPENSATION.md",
+      "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+      "sha256": "cf6be5dda93dd1a6bf3b9eeba0c3a82ed57bd806bed0f3c8e197dfaabee096d0"
+    },
+    "physics/qm/null_source/timelike/constraint_states/CONTRACT.md": {
+      "git_blob_sha": "79903a512c2cf4405996e43557d87fc2f08197e0",
+      "path": "physics/qm/null_source/timelike/constraint_states/CONTRACT.md",
+      "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+      "sha256": "a5f5c90d8add39ae0e499915359be98134c42c2841a1698edcb9898fea8b9b84"
+    },
+    "physics/qm/null_source/timelike/constraint_states/DUST_REGULARITY.md": {
+      "git_blob_sha": "6e52433373c8777bf92537e764137ee43a41f8ca",
+      "path": "physics/qm/null_source/timelike/constraint_states/DUST_REGULARITY.md",
+      "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+      "sha256": "97c493da042afe861f7aba6ba9f6bb7e71a14b4e7226eac2af9b231216f5d4b3"
+    },
+    "physics/qm/null_source/timelike/constraint_states/GRAVITY_CONTRACT.md": {
+      "git_blob_sha": "fb04d830217ef756c869a884bcf78a41f2c9fe80",
+      "path": "physics/qm/null_source/timelike/constraint_states/GRAVITY_CONTRACT.md",
+      "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+      "sha256": "00cd686f1c33eced9fbe12033d183e908f9fc7246d4029bc9262917aec3a870e"
+    },
+    "physics/qm/null_source/timelike/constraint_states/INPUTS_AND_NEXT_TEST.md": {
+      "git_blob_sha": "306c8f0d10abfa6ca49724dd3f53fdfdaa0e98da",
+      "path": "physics/qm/null_source/timelike/constraint_states/INPUTS_AND_NEXT_TEST.md",
+      "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+      "sha256": "d4d18c46d62da74bb15c0ae52388ce102abd1a8c09b666fea711368e0a498751"
+    },
+    "physics/qm/null_source/timelike/constraint_states/POSITIVE_CLOCK.md": {
+      "git_blob_sha": "fac774a1e901c3e345ff8947f7e2516fb5e83ae7",
+      "path": "physics/qm/null_source/timelike/constraint_states/POSITIVE_CLOCK.md",
+      "read_at_commit": "f03e9051c979d53778664bda981f9b1470d2d249",
+      "sha256": "4e97c4e3393507cfa938561ca95062897ccbd87af0f78e1762d1d57e78420593"
+    },
+    "physics/qm/null_source/timelike/constraint_states/QUANTUM_FLOOR.md": {
+      "git_blob_sha": "a9dfcdf432c5c71da71607ca26fc6f76970edf70",
+      "path": "physics/qm/null_source/timelike/constraint_states/QUANTUM_FLOOR.md",
+      "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+      "sha256": "df53e47e1998219b7440d1ded1e4ee71f46604d8c8e79ee8e2094a8fda554851"
+    },
+    "physics/qm/null_source/timelike/constraint_states/README.md": {
+      "git_blob_sha": "4a4fd4c44d9b72f54dcc7918b48e6ec5a88d37b0",
+      "path": "physics/qm/null_source/timelike/constraint_states/README.md",
+      "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+      "sha256": "065155babbdefa8d2863e101aa154cfde5d171eb1071d56d95fb694213594702"
+    },
+    "physics/qm/null_source/timelike/constraint_states/RELATIONAL.md": {
+      "git_blob_sha": "3f7843badc3d4da3066b18ee66cf9cd3e4f45262",
+      "path": "physics/qm/null_source/timelike/constraint_states/RELATIONAL.md",
+      "read_at_commit": "f03e9051c979d53778664bda981f9b1470d2d249",
+      "sha256": "a56cc670b339615b554230c71ecf0b18a32081ca544718d718b31257e18561a2"
+    },
+    "physics/qm/null_source/timelike/constraint_states/REVIEW.md": {
+      "git_blob_sha": "d89d65e413e4127936592051e16036e857080d5c",
+      "path": "physics/qm/null_source/timelike/constraint_states/REVIEW.md",
+      "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+      "sha256": "576a24226b6b7f30e9b5cb799df9fd83868b0cb3e0a3963f2d91b7cdff7851be"
+    },
+    "physics/qm/null_source/timelike/constraint_states/STATIC_BOUND.md": {
+      "git_blob_sha": "2e93d8e207939fbb896edcfc71b6ae0c6ca6bd42",
+      "path": "physics/qm/null_source/timelike/constraint_states/STATIC_BOUND.md",
+      "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+      "sha256": "ded990e1f266543e43e39d9a0410d8bc9d18dae17ea50c52df19dd4a358015ff"
+    },
+    "physics/qm/null_source/timelike/constraint_states/ZERO_VIRIAL.md": {
+      "git_blob_sha": "5d69545c9f58766868ca4e18cc48abfa4977a904",
+      "path": "physics/qm/null_source/timelike/constraint_states/ZERO_VIRIAL.md",
+      "read_at_commit": "f03e9051c979d53778664bda981f9b1470d2d249",
+      "sha256": "c10cad0c8e89ba44e4b17fcc7095bb02962a16aff161d334b722704c8ffdad75"
+    },
+    "physics/qm/null_source/timelike/constraint_states/common.py": {
+      "git_blob_sha": "2c0f175a4a9cd84aa5c95c6db4a1976030315852",
+      "path": "physics/qm/null_source/timelike/constraint_states/common.py",
+      "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+      "sha256": "e0a62e1ff27b1fac6f8cf369e8f5d9c0cb81bad9c7c290545c84e2c73566f18e"
+    },
+    "physics/qm/null_source/timelike/constraint_states/compensation.json": {
+      "git_blob_sha": "deaec3e418b7b6bbed40cd6e98f7925ba0f3fe13",
+      "path": "physics/qm/null_source/timelike/constraint_states/compensation.json",
+      "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+      "sha256": "5fc2e9a8077a167e5430dc7324450889a387267f0a202b002fb1830335d8fc6e"
+    },
+    "physics/qm/null_source/timelike/constraint_states/compensation.py": {
+      "git_blob_sha": "041e323f7c47320b43d267ca39f40986e796ebb4",
+      "path": "physics/qm/null_source/timelike/constraint_states/compensation.py",
+      "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+      "sha256": "db06adc64d7c6672562160a3a1608adf21460afc07a72039baaa5b4d6e0d690d"
+    },
+    "physics/qm/null_source/timelike/constraint_states/dust_regularity.json": {
+      "git_blob_sha": "d8aabe713b2bca9852909135223fa9f3e209fc86",
+      "path": "physics/qm/null_source/timelike/constraint_states/dust_regularity.json",
+      "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+      "sha256": "66d5dc9c8e5f38f13d1877e8ee19c8f5fad3f09c6aec062744a52baee069d0f5"
+    },
+    "physics/qm/null_source/timelike/constraint_states/dust_regularity.py": {
+      "git_blob_sha": "c615b26381080c7a5643a82d9ea8952a13f15daa",
+      "path": "physics/qm/null_source/timelike/constraint_states/dust_regularity.py",
+      "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+      "sha256": "9c422fd39a588a7e6dd612dd0023265e56201638aa57944392c021f6d94b727f"
+    },
+    "physics/qm/null_source/timelike/constraint_states/gravity_contract.json": {
+      "git_blob_sha": "68cebddbe4b2decb9ad03fdfb8dac1bc9c253c54",
+      "path": "physics/qm/null_source/timelike/constraint_states/gravity_contract.json",
+      "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+      "sha256": "0a2fad3740b9e4de49a624abcbeec0795e622561068a7ce6c4f4e83c46798c0d"
+    },
+    "physics/qm/null_source/timelike/constraint_states/gravity_contract.py": {
+      "git_blob_sha": "adfc590b9ffe1fc9ddbc9138f0a9e9f8f3458f8d",
+      "path": "physics/qm/null_source/timelike/constraint_states/gravity_contract.py",
+      "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+      "sha256": "f2d4c6fd2cd400683a1523a3f47c005657350863cde27454df4c63fa8b79e912"
+    },
+    "physics/qm/null_source/timelike/constraint_states/positive_clock.json": {
+      "git_blob_sha": "65270d6ac1b8111252180f746eeea04fc50075b8",
+      "path": "physics/qm/null_source/timelike/constraint_states/positive_clock.json",
+      "read_at_commit": "f03e9051c979d53778664bda981f9b1470d2d249",
+      "sha256": "be49a451ce61e312c169d3737a756a48f7a5bdd7c16e6240fefb21733ca98811"
+    },
+    "physics/qm/null_source/timelike/constraint_states/positive_clock.py": {
+      "git_blob_sha": "c9185d96644287ee3b8573946651ca6f53ba3578",
+      "path": "physics/qm/null_source/timelike/constraint_states/positive_clock.py",
+      "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+      "sha256": "7dc278ce6d5e095ee21c5edf3a303eb46ec42b518286316e61f491d59c1ecf37"
+    },
+    "physics/qm/null_source/timelike/constraint_states/quantum_floor.json": {
+      "git_blob_sha": "049a4303d4026434c6e4c8b8c432a3856c5956ed",
+      "path": "physics/qm/null_source/timelike/constraint_states/quantum_floor.json",
+      "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+      "sha256": "044afafae01d3b0c2cc365395f104b76847fd2e5c8f965079266e6781306a0d2"
+    },
+    "physics/qm/null_source/timelike/constraint_states/quantum_floor.py": {
+      "git_blob_sha": "d29cebd7c5f6c46610a1f66d96f289f0b3d19df4",
+      "path": "physics/qm/null_source/timelike/constraint_states/quantum_floor.py",
+      "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+      "sha256": "94c36119c1271a8fc05d02a64cad617e0777377303a2516d558b5cf2630e684c"
+    },
+    "physics/qm/null_source/timelike/constraint_states/relational.json": {
+      "git_blob_sha": "2a1add37f197ba122b4516507942a96bf90e3900",
+      "path": "physics/qm/null_source/timelike/constraint_states/relational.json",
+      "read_at_commit": "f03e9051c979d53778664bda981f9b1470d2d249",
+      "sha256": "c465fef8e09900911bdc6e768a636fae2695fba4f30febed363f87e45b220195"
+    },
+    "physics/qm/null_source/timelike/constraint_states/relational.py": {
+      "git_blob_sha": "886b5762383e0ae0d3142d6af966dc7985d00e9b",
+      "path": "physics/qm/null_source/timelike/constraint_states/relational.py",
+      "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+      "sha256": "87d54f8aec81589347697a8528e70b937756fed9154b89c82b73d8bcb14172de"
+    },
+    "physics/qm/null_source/timelike/constraint_states/review.json": {
+      "git_blob_sha": "0a340e4c38e05c2fe871722974f4742d95728fe4",
+      "path": "physics/qm/null_source/timelike/constraint_states/review.json",
+      "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+      "sha256": "6b1e6f231f9e52c706b9aa4c89e2feb3964b1ee60110fdefe34947bcc789373e"
+    },
+    "physics/qm/null_source/timelike/constraint_states/review.py": {
+      "git_blob_sha": "c4623d18e5189331cc3450c49c16876fcc766c32",
+      "path": "physics/qm/null_source/timelike/constraint_states/review.py",
+      "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+      "sha256": "6d15aded195443f3f30f53fd051cf636f6bda3e8a883f8389ebc385a92fb00e1"
+    },
+    "physics/qm/null_source/timelike/constraint_states/run_verification.py": {
+      "git_blob_sha": "c67936ced6966fdf68cb418c9b2af96a6adf80bb",
+      "path": "physics/qm/null_source/timelike/constraint_states/run_verification.py",
+      "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+      "sha256": "e180582d9b4af37bb8fb12b393a5670fbde9dc925943daf7a1408b5cca4bf2cb"
+    },
+    "physics/qm/null_source/timelike/constraint_states/static_bound.json": {
+      "git_blob_sha": "79a2409506226fa3e64449d720761fc7d395473f",
+      "path": "physics/qm/null_source/timelike/constraint_states/static_bound.json",
+      "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+      "sha256": "8cb8085b72703cce0d1305e1595c5ffeeea790d85a436e16e58a2459664fbad3"
+    },
+    "physics/qm/null_source/timelike/constraint_states/static_bound.py": {
+      "git_blob_sha": "b93d130647084b6896867eb91785b2b1b6cb297d",
+      "path": "physics/qm/null_source/timelike/constraint_states/static_bound.py",
+      "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+      "sha256": "3de21f35868948db0574c5f65ad82e0d57980481db6ff7c4140f73145eed874f"
+    },
+    "physics/qm/null_source/timelike/constraint_states/zero_virial.json": {
+      "git_blob_sha": "a26e5f8c0b3e6a5b1fc17a97f3927be73583945c",
+      "path": "physics/qm/null_source/timelike/constraint_states/zero_virial.json",
+      "read_at_commit": "f03e9051c979d53778664bda981f9b1470d2d249",
+      "sha256": "c04f3a13a4c9e9512d924381bd663332856d6df2e596ad824243f868f0739ff3"
+    },
+    "physics/qm/null_source/timelike/constraint_states/zero_virial.py": {
+      "git_blob_sha": "ea102be269c543efae1a5c549ea8d4c35d274180",
+      "path": "physics/qm/null_source/timelike/constraint_states/zero_virial.py",
+      "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+      "sha256": "dd6551f102cb35a832a48476f09fc40987b8098f23565277aacec14ddb40732c"
+    }
+  },
+  "exactly_three_native_agents": true,
   "external_human_peer_review": false,
-  "source_audits": []
+  "metadata_not_claimed_scientifically_peer_audited": [
+    "AUDIT.md",
+    "SESSION.md",
+    "agent_reviews.json",
+    "verification.json"
+  ],
+  "ordering_extension_actually_audited_by_all_three": true,
+  "reported_blob_entries_verified": 87,
+  "root_verified_all_reported_git_blobs": true,
+  "root_verified_current_source_sha256": true,
+  "schema": "ueot-constraint-states-native-audit/1",
+  "scientific_numbers_changed_by_clarifications": false,
+  "scientific_source_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+  "source_audits": [
+    {
+      "agent": "a_joint_constraints",
+      "final_delta_reads": [
+        {
+          "git_blob_sha": "e9c095bec1e242201657fdbf7b0c1d5923cf586b",
+          "path": "physics/qm/null_source/timelike/constraint_states/GRAVITY_CONTRACT.md",
+          "read_at_commit": "f03e9051c979d53778664bda981f9b1470d2d249",
+          "sha256": "c6878637dd149a88ef4679d00f06eef91e6637be9b648847dca9bb08dbe6d800"
+        },
+        {
+          "git_blob_sha": "4263e5414d434f3dc0b797323d2b2adbe3f968fa",
+          "path": "physics/qm/null_source/timelike/constraint_states/gravity_contract.json",
+          "read_at_commit": "f03e9051c979d53778664bda981f9b1470d2d249",
+          "sha256": "9030d7a38cfd1a28af0c846c480a3d8077de51fe09e04ebcf6430216e7995673"
+        },
+        {
+          "git_blob_sha": "45da8a9067297266f79b22e210c7736fab21c392",
+          "path": "physics/qm/null_source/timelike/constraint_states/dust_regularity.json",
+          "read_at_commit": "f03e9051c979d53778664bda981f9b1470d2d249",
+          "sha256": "1cc3a99015e56c822298ab897b4f917b958123a564919a317e59622d1db72228"
+        }
+      ],
+      "initial_reads": [
+        {
+          "git_blob_sha": "2e93d8e207939fbb896edcfc71b6ae0c6ca6bd42",
+          "path": "physics/qm/null_source/timelike/constraint_states/STATIC_BOUND.md",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "ded990e1f266543e43e39d9a0410d8bc9d18dae17ea50c52df19dd4a358015ff"
+        },
+        {
+          "git_blob_sha": "b93d130647084b6896867eb91785b2b1b6cb297d",
+          "path": "physics/qm/null_source/timelike/constraint_states/static_bound.py",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "3de21f35868948db0574c5f65ad82e0d57980481db6ff7c4140f73145eed874f"
+        },
+        {
+          "git_blob_sha": "79a2409506226fa3e64449d720761fc7d395473f",
+          "path": "physics/qm/null_source/timelike/constraint_states/static_bound.json",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "8cb8085b72703cce0d1305e1595c5ffeeea790d85a436e16e58a2459664fbad3"
+        },
+        {
+          "git_blob_sha": "2ad0b671e729317610c3d2c89f00e68c5395ca4f",
+          "path": "physics/qm/null_source/timelike/constraint_states/COMPENSATION.md",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "cf6be5dda93dd1a6bf3b9eeba0c3a82ed57bd806bed0f3c8e197dfaabee096d0"
+        },
+        {
+          "git_blob_sha": "041e323f7c47320b43d267ca39f40986e796ebb4",
+          "path": "physics/qm/null_source/timelike/constraint_states/compensation.py",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "db06adc64d7c6672562160a3a1608adf21460afc07a72039baaa5b4d6e0d690d"
+        },
+        {
+          "git_blob_sha": "deaec3e418b7b6bbed40cd6e98f7925ba0f3fe13",
+          "path": "physics/qm/null_source/timelike/constraint_states/compensation.json",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "5fc2e9a8077a167e5430dc7324450889a387267f0a202b002fb1830335d8fc6e"
+        },
+        {
+          "git_blob_sha": "b2d383eeb7466f9f3f2c47d5dfd4f3345eed7262",
+          "path": "physics/qm/null_source/timelike/constraint_states/DUST_REGULARITY.md",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "ef46183910e4f7c3db781d9e0983402dd665c5276562b02728dda1ea8e8fe358"
+        },
+        {
+          "git_blob_sha": "be338d844a53015af41ab5a042667ff244c8e320",
+          "path": "physics/qm/null_source/timelike/constraint_states/dust_regularity.py",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "498a52aa14209315796f400837e2fda3078afbde40d5b84cb57de3a89a6c0d85"
+        },
+        {
+          "git_blob_sha": "bb3f16e8db20dbd98dcd35e086373dcea38e497f",
+          "path": "physics/qm/null_source/timelike/constraint_states/dust_regularity.json",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "f88a35e5f3633ef3cc1b365cbb1abd76e722091a7988b613c230286249eed39e"
+        },
+        {
+          "git_blob_sha": "2c0f175a4a9cd84aa5c95c6db4a1976030315852",
+          "path": "physics/qm/null_source/timelike/constraint_states/common.py",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "e0a62e1ff27b1fac6f8cf369e8f5d9c0cb81bad9c7c290545c84e2c73566f18e"
+        },
+        {
+          "git_blob_sha": "dad206dca6d50e4e3c23dd15ec331b0f327cf025",
+          "path": "physics/qm/null_source/timelike/constraint_states/README.md",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "4b635895104c8670f77ea5c149f2e319bf3d54f484beaf7a96b006812c8288ca"
+        },
+        {
+          "git_blob_sha": "7ecdb30c75d375a7b0b0c668f7fc769dc4b347af",
+          "path": "physics/qm/null_source/timelike/constraint_states/INPUTS_AND_NEXT_TEST.md",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "cf8124493e1d21e9b9a6f23c411ed5e4b2e1014c6894ccdbbe43e2522bc1fca6"
+        },
+        {
+          "git_blob_sha": "3e6c111c997d3eb9d9fbfc525a5958a228e956d2",
+          "path": "physics/qm/null_source/timelike/constraint_states/GRAVITY_CONTRACT.md",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "6afa86ce463b4900d65f30e61c71a482bf7559474facda8da196a00f20e7ed74"
+        },
+        {
+          "git_blob_sha": "14ea8f95e0cac55d854609fcefd0a0109b274a7a",
+          "path": "physics/qm/null_source/timelike/constraint_states/gravity_contract.json",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "6f0b91efbd387c4823a1e0bcaf33ee73f31473321fe9f69679888c691ed6b525"
+        }
+      ],
+      "initial_status": "PASS",
+      "ordering_reads": [
+        {
+          "git_blob_sha": "6e52433373c8777bf92537e764137ee43a41f8ca",
+          "path": "physics/qm/null_source/timelike/constraint_states/DUST_REGULARITY.md",
+          "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+          "sha256": "97c493da042afe861f7aba6ba9f6bb7e71a14b4e7226eac2af9b231216f5d4b3"
+        },
+        {
+          "git_blob_sha": "c615b26381080c7a5643a82d9ea8952a13f15daa",
+          "path": "physics/qm/null_source/timelike/constraint_states/dust_regularity.py",
+          "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+          "sha256": "9c422fd39a588a7e6dd612dd0023265e56201638aa57944392c021f6d94b727f"
+        },
+        {
+          "git_blob_sha": "d8aabe713b2bca9852909135223fa9f3e209fc86",
+          "path": "physics/qm/null_source/timelike/constraint_states/dust_regularity.json",
+          "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+          "sha256": "66d5dc9c8e5f38f13d1877e8ee19c8f5fad3f09c6aec062744a52baee069d0f5"
+        },
+        {
+          "git_blob_sha": "4a4fd4c44d9b72f54dcc7918b48e6ec5a88d37b0",
+          "path": "physics/qm/null_source/timelike/constraint_states/README.md",
+          "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+          "sha256": "065155babbdefa8d2863e101aa154cfde5d171eb1071d56d95fb694213594702"
+        },
+        {
+          "git_blob_sha": "306c8f0d10abfa6ca49724dd3f53fdfdaa0e98da",
+          "path": "physics/qm/null_source/timelike/constraint_states/INPUTS_AND_NEXT_TEST.md",
+          "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+          "sha256": "d4d18c46d62da74bb15c0ae52388ce102abd1a8c09b666fea711368e0a498751"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "agent": "b_total_source",
+      "final_delta_reads": [
+        {
+          "git_blob_sha": "5d69545c9f58766868ca4e18cc48abfa4977a904",
+          "path": "physics/qm/null_source/timelike/constraint_states/ZERO_VIRIAL.md",
+          "read_at_commit": "f03e9051c979d53778664bda981f9b1470d2d249",
+          "sha256": "c10cad0c8e89ba44e4b17fcc7095bb02962a16aff161d334b722704c8ffdad75"
+        },
+        {
+          "git_blob_sha": "a26e5f8c0b3e6a5b1fc17a97f3927be73583945c",
+          "path": "physics/qm/null_source/timelike/constraint_states/zero_virial.json",
+          "read_at_commit": "f03e9051c979d53778664bda981f9b1470d2d249",
+          "sha256": "c04f3a13a4c9e9512d924381bd663332856d6df2e596ad824243f868f0739ff3"
+        },
+        {
+          "git_blob_sha": "3f7843badc3d4da3066b18ee66cf9cd3e4f45262",
+          "path": "physics/qm/null_source/timelike/constraint_states/RELATIONAL.md",
+          "read_at_commit": "f03e9051c979d53778664bda981f9b1470d2d249",
+          "sha256": "a56cc670b339615b554230c71ecf0b18a32081ca544718d718b31257e18561a2"
+        },
+        {
+          "git_blob_sha": "2a1add37f197ba122b4516507942a96bf90e3900",
+          "path": "physics/qm/null_source/timelike/constraint_states/relational.json",
+          "read_at_commit": "f03e9051c979d53778664bda981f9b1470d2d249",
+          "sha256": "c465fef8e09900911bdc6e768a636fae2695fba4f30febed363f87e45b220195"
+        },
+        {
+          "git_blob_sha": "45da8a9067297266f79b22e210c7736fab21c392",
+          "path": "physics/qm/null_source/timelike/constraint_states/dust_regularity.json",
+          "read_at_commit": "f03e9051c979d53778664bda981f9b1470d2d249",
+          "sha256": "1cc3a99015e56c822298ab897b4f917b958123a564919a317e59622d1db72228"
+        }
+      ],
+      "initial_reads": [
+        {
+          "git_blob_sha": "a9dfcdf432c5c71da71607ca26fc6f76970edf70",
+          "path": "physics/qm/null_source/timelike/constraint_states/QUANTUM_FLOOR.md",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "df53e47e1998219b7440d1ded1e4ee71f46604d8c8e79ee8e2094a8fda554851"
+        },
+        {
+          "git_blob_sha": "d29cebd7c5f6c46610a1f66d96f289f0b3d19df4",
+          "path": "physics/qm/null_source/timelike/constraint_states/quantum_floor.py",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "94c36119c1271a8fc05d02a64cad617e0777377303a2516d558b5cf2630e684c"
+        },
+        {
+          "git_blob_sha": "049a4303d4026434c6e4c8b8c432a3856c5956ed",
+          "path": "physics/qm/null_source/timelike/constraint_states/quantum_floor.json",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "044afafae01d3b0c2cc365395f104b76847fd2e5c8f965079266e6781306a0d2"
+        },
+        {
+          "git_blob_sha": "3e0f2a9bb4ad42066b41604ceb19f262d06b3f76",
+          "path": "physics/qm/null_source/timelike/constraint_states/ZERO_VIRIAL.md",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "3ccdce65d1eb9bd517fd81c563c3067a15b5a272f1748ae2baa49c6e019e7b6e"
+        },
+        {
+          "git_blob_sha": "ea102be269c543efae1a5c549ea8d4c35d274180",
+          "path": "physics/qm/null_source/timelike/constraint_states/zero_virial.py",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "dd6551f102cb35a832a48476f09fc40987b8098f23565277aacec14ddb40732c"
+        },
+        {
+          "git_blob_sha": "b8088502cf9b05f085e6dd088bbfc8aaf37fb784",
+          "path": "physics/qm/null_source/timelike/constraint_states/zero_virial.json",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "2459cbb49d75f75a615c0944008fca6c97562d3a6c4bb9435fb2b48991ac7aa6"
+        },
+        {
+          "git_blob_sha": "0121f7112c8bc0274af10a4e6abbf9db8f3360a5",
+          "path": "physics/qm/null_source/timelike/constraint_states/RELATIONAL.md",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "4d0b9cb1d9d4f42abb7777a2ac75ba3e637ffba074d5f377dcaba67092aefacb"
+        },
+        {
+          "git_blob_sha": "886b5762383e0ae0d3142d6af966dc7985d00e9b",
+          "path": "physics/qm/null_source/timelike/constraint_states/relational.py",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "87d54f8aec81589347697a8528e70b937756fed9154b89c82b73d8bcb14172de"
+        },
+        {
+          "git_blob_sha": "9d107a1446ef444fe75c554a6fa830dfc4b8df01",
+          "path": "physics/qm/null_source/timelike/constraint_states/relational.json",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "729a0c3ac81b2ab585de706ceaf036170adbac0116d3eaf5c55832077edce160"
+        },
+        {
+          "git_blob_sha": "b2d383eeb7466f9f3f2c47d5dfd4f3345eed7262",
+          "path": "physics/qm/null_source/timelike/constraint_states/DUST_REGULARITY.md",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "ef46183910e4f7c3db781d9e0983402dd665c5276562b02728dda1ea8e8fe358"
+        },
+        {
+          "git_blob_sha": "be338d844a53015af41ab5a042667ff244c8e320",
+          "path": "physics/qm/null_source/timelike/constraint_states/dust_regularity.py",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "498a52aa14209315796f400837e2fda3078afbde40d5b84cb57de3a89a6c0d85"
+        },
+        {
+          "git_blob_sha": "bb3f16e8db20dbd98dcd35e086373dcea38e497f",
+          "path": "physics/qm/null_source/timelike/constraint_states/dust_regularity.json",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "f88a35e5f3633ef3cc1b365cbb1abd76e722091a7988b613c230286249eed39e"
+        },
+        {
+          "git_blob_sha": "2c0f175a4a9cd84aa5c95c6db4a1976030315852",
+          "path": "physics/qm/null_source/timelike/constraint_states/common.py",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "e0a62e1ff27b1fac6f8cf369e8f5d9c0cb81bad9c7c290545c84e2c73566f18e"
+        }
+      ],
+      "initial_status": "REQUIRES_WORDING_CORRECTIONS",
+      "ordering_reads": [
+        {
+          "git_blob_sha": "6e52433373c8777bf92537e764137ee43a41f8ca",
+          "path": "physics/qm/null_source/timelike/constraint_states/DUST_REGULARITY.md",
+          "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+          "sha256": "97c493da042afe861f7aba6ba9f6bb7e71a14b4e7226eac2af9b231216f5d4b3"
+        },
+        {
+          "git_blob_sha": "c615b26381080c7a5643a82d9ea8952a13f15daa",
+          "path": "physics/qm/null_source/timelike/constraint_states/dust_regularity.py",
+          "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+          "sha256": "9c422fd39a588a7e6dd612dd0023265e56201638aa57944392c021f6d94b727f"
+        },
+        {
+          "git_blob_sha": "d8aabe713b2bca9852909135223fa9f3e209fc86",
+          "path": "physics/qm/null_source/timelike/constraint_states/dust_regularity.json",
+          "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+          "sha256": "66d5dc9c8e5f38f13d1877e8ee19c8f5fad3f09c6aec062744a52baee069d0f5"
+        },
+        {
+          "git_blob_sha": "fb04d830217ef756c869a884bcf78a41f2c9fe80",
+          "path": "physics/qm/null_source/timelike/constraint_states/GRAVITY_CONTRACT.md",
+          "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+          "sha256": "00cd686f1c33eced9fbe12033d183e908f9fc7246d4029bc9262917aec3a870e"
+        },
+        {
+          "git_blob_sha": "68cebddbe4b2decb9ad03fdfb8dac1bc9c253c54",
+          "path": "physics/qm/null_source/timelike/constraint_states/gravity_contract.json",
+          "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+          "sha256": "0a2fad3740b9e4de49a624abcbeec0795e622561068a7ce6c4f4e83c46798c0d"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "agent": "c_autonomous_device",
+      "final_delta_reads": [
+        {
+          "git_blob_sha": "fac774a1e901c3e345ff8947f7e2516fb5e83ae7",
+          "path": "physics/qm/null_source/timelike/constraint_states/POSITIVE_CLOCK.md",
+          "read_at_commit": "f03e9051c979d53778664bda981f9b1470d2d249",
+          "sha256": "4e97c4e3393507cfa938561ca95062897ccbd87af0f78e1762d1d57e78420593"
+        },
+        {
+          "git_blob_sha": "65270d6ac1b8111252180f746eeea04fc50075b8",
+          "path": "physics/qm/null_source/timelike/constraint_states/positive_clock.json",
+          "read_at_commit": "f03e9051c979d53778664bda981f9b1470d2d249",
+          "sha256": "be49a451ce61e312c169d3737a756a48f7a5bdd7c16e6240fefb21733ca98811"
+        },
+        {
+          "git_blob_sha": "e9c095bec1e242201657fdbf7b0c1d5923cf586b",
+          "path": "physics/qm/null_source/timelike/constraint_states/GRAVITY_CONTRACT.md",
+          "read_at_commit": "f03e9051c979d53778664bda981f9b1470d2d249",
+          "sha256": "c6878637dd149a88ef4679d00f06eef91e6637be9b648847dca9bb08dbe6d800"
+        },
+        {
+          "git_blob_sha": "4263e5414d434f3dc0b797323d2b2adbe3f968fa",
+          "path": "physics/qm/null_source/timelike/constraint_states/gravity_contract.json",
+          "read_at_commit": "f03e9051c979d53778664bda981f9b1470d2d249",
+          "sha256": "9030d7a38cfd1a28af0c846c480a3d8077de51fe09e04ebcf6430216e7995673"
+        },
+        {
+          "git_blob_sha": "a12fcf33c1c949a4b0c1111c10d974a6aaf57e22",
+          "path": "physics/qm/null_source/timelike/constraint_states/REVIEW.md",
+          "read_at_commit": "f03e9051c979d53778664bda981f9b1470d2d249",
+          "sha256": "8cf132072ae5210a820765a889b9e74b388762d1c34a17ab7d5fd442a3765d69"
+        },
+        {
+          "git_blob_sha": "b2dd450b968a4ca8f609f8f34988505eff5eb7f3",
+          "path": "physics/qm/null_source/timelike/constraint_states/review.json",
+          "read_at_commit": "f03e9051c979d53778664bda981f9b1470d2d249",
+          "sha256": "2fdae46fbf4e741411d6123c2f7cc3b4efd7346f7022205ed434a079a49a906a"
+        },
+        {
+          "git_blob_sha": "45da8a9067297266f79b22e210c7736fab21c392",
+          "path": "physics/qm/null_source/timelike/constraint_states/dust_regularity.json",
+          "read_at_commit": "f03e9051c979d53778664bda981f9b1470d2d249",
+          "sha256": "1cc3a99015e56c822298ab897b4f917b958123a564919a317e59622d1db72228"
+        },
+        {
+          "git_blob_sha": "27e81346c1af9a6f7954e5150442c4a8776619ae",
+          "path": "physics/qm/README.md",
+          "read_at_commit": "f03e9051c979d53778664bda981f9b1470d2d249",
+          "sha256": "0a203ae17a78ee339453d07023a05f8a041633d3a0dd0c2108adf9f4d5527085"
+        }
+      ],
+      "initial_reads": [
+        {
+          "git_blob_sha": "8564132c57d20c6f6448ccbd7be942190576c393",
+          "path": "physics/qm/null_source/timelike/constraint_states/POSITIVE_CLOCK.md",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "c1a541ea0b5d25ba0190c466770e4cbb7ecf17f83f10b3e0e79e2a3b28209a6a"
+        },
+        {
+          "git_blob_sha": "c9185d96644287ee3b8573946651ca6f53ba3578",
+          "path": "physics/qm/null_source/timelike/constraint_states/positive_clock.py",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "7dc278ce6d5e095ee21c5edf3a303eb46ec42b518286316e61f491d59c1ecf37"
+        },
+        {
+          "git_blob_sha": "23908b2fc7f6d1685f29d0f04c316ace59c4f7b1",
+          "path": "physics/qm/null_source/timelike/constraint_states/positive_clock.json",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "75b56aa91d4977beefb19aaf7d5bfa26a6cc92dee9ed455a2de6c9f08e8b5f0e"
+        },
+        {
+          "git_blob_sha": "3e6c111c997d3eb9d9fbfc525a5958a228e956d2",
+          "path": "physics/qm/null_source/timelike/constraint_states/GRAVITY_CONTRACT.md",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "6afa86ce463b4900d65f30e61c71a482bf7559474facda8da196a00f20e7ed74"
+        },
+        {
+          "git_blob_sha": "adfc590b9ffe1fc9ddbc9138f0a9e9f8f3458f8d",
+          "path": "physics/qm/null_source/timelike/constraint_states/gravity_contract.py",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "f2d4c6fd2cd400683a1523a3f47c005657350863cde27454df4c63fa8b79e912"
+        },
+        {
+          "git_blob_sha": "14ea8f95e0cac55d854609fcefd0a0109b274a7a",
+          "path": "physics/qm/null_source/timelike/constraint_states/gravity_contract.json",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "6f0b91efbd387c4823a1e0bcaf33ee73f31473321fe9f69679888c691ed6b525"
+        },
+        {
+          "git_blob_sha": "b2d383eeb7466f9f3f2c47d5dfd4f3345eed7262",
+          "path": "physics/qm/null_source/timelike/constraint_states/DUST_REGULARITY.md",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "ef46183910e4f7c3db781d9e0983402dd665c5276562b02728dda1ea8e8fe358"
+        },
+        {
+          "git_blob_sha": "be338d844a53015af41ab5a042667ff244c8e320",
+          "path": "physics/qm/null_source/timelike/constraint_states/dust_regularity.py",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "498a52aa14209315796f400837e2fda3078afbde40d5b84cb57de3a89a6c0d85"
+        },
+        {
+          "git_blob_sha": "bb3f16e8db20dbd98dcd35e086373dcea38e497f",
+          "path": "physics/qm/null_source/timelike/constraint_states/dust_regularity.json",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "f88a35e5f3633ef3cc1b365cbb1abd76e722091a7988b613c230286249eed39e"
+        },
+        {
+          "git_blob_sha": "bfa42b37a5f1994dbc6addc47c1e909839ac77a4",
+          "path": "physics/qm/null_source/timelike/constraint_states/REVIEW.md",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "16681933a8243f03ddeb8dcee89553e907db5ed256dfd8c3220a1e25fecabaf9"
+        },
+        {
+          "git_blob_sha": "be5c1caab3b59e0a9f52f00ef13f6034a3d4c713",
+          "path": "physics/qm/null_source/timelike/constraint_states/review.py",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "44a5eb2e02da2e4336f46cd783d44b53c4369fe67c9fb6dc905e8e0cd363becf"
+        },
+        {
+          "git_blob_sha": "71cc0f3d95fae58f532057e7b4ead57da32d9f30",
+          "path": "physics/qm/null_source/timelike/constraint_states/run_verification.py",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "73aa0a963efc71029230c5cce230b5deb61bdbbb7993cdda7d113efc28d4976c"
+        },
+        {
+          "git_blob_sha": "2c0f175a4a9cd84aa5c95c6db4a1976030315852",
+          "path": "physics/qm/null_source/timelike/constraint_states/common.py",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "e0a62e1ff27b1fac6f8cf369e8f5d9c0cb81bad9c7c290545c84e2c73566f18e"
+        },
+        {
+          "git_blob_sha": "dad206dca6d50e4e3c23dd15ec331b0f327cf025",
+          "path": "physics/qm/null_source/timelike/constraint_states/README.md",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "4b635895104c8670f77ea5c149f2e319bf3d54f484beaf7a96b006812c8288ca"
+        },
+        {
+          "git_blob_sha": "7ecdb30c75d375a7b0b0c668f7fc769dc4b347af",
+          "path": "physics/qm/null_source/timelike/constraint_states/INPUTS_AND_NEXT_TEST.md",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "cf8124493e1d21e9b9a6f23c411ed5e4b2e1014c6894ccdbbe43e2522bc1fca6"
+        },
+        {
+          "git_blob_sha": "fe22cfc0b2fc7a1251070e48d1d2bb79488876e8",
+          "path": "physics/qm/null_source/timelike/constraint_states/review.json",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "22fcceec135ef4be8a084603fe43b6388ea8493b23838b066e0cd5b9c775ead1"
+        },
+        {
+          "git_blob_sha": "1ffd733fe5a86fab3e6d37181913b588744e1833",
+          "path": "physics/qm/null_source/timelike/constraint_states/verification.json",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "8541eb0f6e946d430077c1e6c130f76c7445f351d377afce9da589a1c6a21b55"
+        },
+        {
+          "git_blob_sha": "9a5bbd0b1028698914c42aced90851bee252e6b8",
+          "path": "physics/qm/null_source/timelike/constraint_states/AUDIT.md",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "616bc7f98b4208c231f7988acab83e742018db711a9e070bc8f8c4839a72813b"
+        },
+        {
+          "git_blob_sha": "79903a512c2cf4405996e43557d87fc2f08197e0",
+          "path": "physics/qm/null_source/timelike/constraint_states/CONTRACT.md",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "a5f5c90d8add39ae0e499915359be98134c42c2841a1698edcb9898fea8b9b84"
+        },
+        {
+          "git_blob_sha": "89751596f070061460441cd4ce29b7b57cd87037",
+          "path": "physics/qm/README.md",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "357b9eb96406d076645a26f48f824a75db0030f030740d952c95c122e59dc599"
+        },
+        {
+          "git_blob_sha": "f3a8d98c50fdc661eb9c5d5dbef30955da690ae3",
+          "path": "physics/qm/ROADMAP.md",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "b60015b035c44d8a3704630d3e1ddb33d2f0e095ee08dc15ec737ecd4a3d5245"
+        },
+        {
+          "git_blob_sha": "c423111c89191aaafec89a6b6f5e2fe041077520",
+          "path": "physics/qm/null_source/timelike/README.md",
+          "read_at_commit": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+          "sha256": "086a031246c2cd286981bd402c8acf01719850e275ff24a0ee147055456d0d47"
+        }
+      ],
+      "initial_status": "REQUIRES_WORDING_CORRECTIONS",
+      "ordering_reads": [
+        {
+          "git_blob_sha": "6e52433373c8777bf92537e764137ee43a41f8ca",
+          "path": "physics/qm/null_source/timelike/constraint_states/DUST_REGULARITY.md",
+          "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+          "sha256": "97c493da042afe861f7aba6ba9f6bb7e71a14b4e7226eac2af9b231216f5d4b3"
+        },
+        {
+          "git_blob_sha": "c615b26381080c7a5643a82d9ea8952a13f15daa",
+          "path": "physics/qm/null_source/timelike/constraint_states/dust_regularity.py",
+          "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+          "sha256": "9c422fd39a588a7e6dd612dd0023265e56201638aa57944392c021f6d94b727f"
+        },
+        {
+          "git_blob_sha": "d8aabe713b2bca9852909135223fa9f3e209fc86",
+          "path": "physics/qm/null_source/timelike/constraint_states/dust_regularity.json",
+          "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+          "sha256": "66d5dc9c8e5f38f13d1877e8ee19c8f5fad3f09c6aec062744a52baee069d0f5"
+        },
+        {
+          "git_blob_sha": "fb04d830217ef756c869a884bcf78a41f2c9fe80",
+          "path": "physics/qm/null_source/timelike/constraint_states/GRAVITY_CONTRACT.md",
+          "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+          "sha256": "00cd686f1c33eced9fbe12033d183e908f9fc7246d4029bc9262917aec3a870e"
+        },
+        {
+          "git_blob_sha": "68cebddbe4b2decb9ad03fdfb8dac1bc9c253c54",
+          "path": "physics/qm/null_source/timelike/constraint_states/gravity_contract.json",
+          "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+          "sha256": "0a2fad3740b9e4de49a624abcbeec0795e622561068a7ce6c4f4e83c46798c0d"
+        },
+        {
+          "git_blob_sha": "d89d65e413e4127936592051e16036e857080d5c",
+          "path": "physics/qm/null_source/timelike/constraint_states/REVIEW.md",
+          "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+          "sha256": "576a24226b6b7f30e9b5cb799df9fd83868b0cb3e0a3963f2d91b7cdff7851be"
+        },
+        {
+          "git_blob_sha": "c4623d18e5189331cc3450c49c16876fcc766c32",
+          "path": "physics/qm/null_source/timelike/constraint_states/review.py",
+          "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+          "sha256": "6d15aded195443f3f30f53fd051cf636f6bda3e8a883f8389ebc385a92fb00e1"
+        },
+        {
+          "git_blob_sha": "0a340e4c38e05c2fe871722974f4742d95728fe4",
+          "path": "physics/qm/null_source/timelike/constraint_states/review.json",
+          "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+          "sha256": "6b1e6f231f9e52c706b9aa4c89e2feb3964b1ee60110fdefe34947bcc789373e"
+        },
+        {
+          "git_blob_sha": "c67936ced6966fdf68cb418c9b2af96a6adf80bb",
+          "path": "physics/qm/null_source/timelike/constraint_states/run_verification.py",
+          "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+          "sha256": "e180582d9b4af37bb8fb12b393a5670fbde9dc925943daf7a1408b5cca4bf2cb"
+        },
+        {
+          "git_blob_sha": "614525e9184b398604ab35285e95dcef29ecd9cd",
+          "path": "physics/qm/README.md",
+          "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+          "sha256": "f705dae803d73d04848ae870729c7f9ae766a218b78c3b641d0c0a7402551be0"
+        },
+        {
+          "git_blob_sha": "0a69f9eb6a2d401ee610bf27471f69415a4de9a7",
+          "path": "physics/qm/ROADMAP.md",
+          "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+          "sha256": "ea8744f56b2c545fad99d22fef87dbe98cf98037c8e74c9ef625333abe6baf49"
+        },
+        {
+          "git_blob_sha": "aba3264dd55971c3c735c64cfb76b8652e739e51",
+          "path": "physics/qm/null_source/timelike/README.md",
+          "read_at_commit": "49bc4705282ecc91594d4464bfb035f886fdfe5f",
+          "sha256": "6bdebf2078b1e73f61a4c893abd6a66c07d1d8eba75009351edef0743acdb05c"
+        }
+      ],
+      "status": "PASS"
+    }
+  ],
+  "source_checkpoints": {
+    "delta": "f03e9051c979d53778664bda981f9b1470d2d249",
+    "initial": "43ea42a414e1a3282a0723de2b02382b2e3bf775",
+    "ordering": "49bc4705282ecc91594d4464bfb035f886fdfe5f"
+  },
+  "status": "PASS"
 }
