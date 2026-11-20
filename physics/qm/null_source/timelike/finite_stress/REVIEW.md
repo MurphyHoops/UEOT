@@ -66,3 +66,10 @@ BOUNDARY_STATE 在原两场作用量上构造新的正常零模—NOON 壳关联
 完整守能装置保存全部总能量律，因此不应仅追踪有限方差。原 Gaussian ring 输入给出窄能带的统一概率界，在新例子 2σ 的总能带上约为 2.0e-7；它针对完整 source+device，并不否定 source marginal 可以被改变。初始相关、不同端点 Hamiltonian 或持续相互作用是需要独立证据的新条件。
 
 再查原非线性 Ward，二阶密度核在 incoming 一阶解方向仍为零，证明直接喊出 sqrt(noise) 不能代替压力方程和边界数据。这里明确复用前轮的全阶 incoming 排除、normal additive no-point obstruction 和 physical Hilbert 区分，没有把它们重算成新成果。当前有用的下一项是 finite-slice 的真实联合密度及其初始约束像；继续增加模型或继续只降源边缘方差都不能自动越过这道门。
+
+
+## 7. 下一步已经从边界口号推进到合法初片态
+
+新增 FINITE_SLICE_UV 先计算实际正常源态的时间嵌入导数，再构造一个具有声明平滑过去的精确 KG 量子态族，并求出随几何 jets 改变的正协方差和 action boundary phase。其高频检验纠正了一个可能的捷径：非静态初始几何不能免费保留旧 raw canonical 高频态；另一种可实现的 canonical 识别必须连同边界相位与新 RSET 一起处理。旧参考能量发散不是新几何的物理应力发散。
+
+这一步提供了下一约束映射的真实物质输入，而非一个任意协方差矩阵；但该 prescribed past 尚无 total preparation/Einstein 闭合。已证明的精确平均历史保持有效。后续应直接解所选有限片联合对象的约束与初始 CTP，而不是重新把大目标改写成另一个 clock 或格模型。

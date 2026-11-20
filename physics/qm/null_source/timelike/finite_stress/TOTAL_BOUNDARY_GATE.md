@@ -163,11 +163,16 @@ energy event gives
 \]
 This is a distance for the SAME total-energy observable on the SAME
 endpoint representation. It is not a lower bound on the distance to the
-new source marginal alone. A successful selected output supported in
-that total interval can have probability at most the same bound when
-all failed outcomes are retained in the complete conserving process.
-With leakage at most epsilon in the successful conditional output the
-bound is divided by 1-epsilon.
+new source marginal alone. For a selected record, require that its unnormalized positive output
+R_success and the retained R_failure sum to the SAME complete
+nonselective rho_total,out satisfying (83), and evaluate every term
+with the SAME endpoint H_Sigma. Then
+p_success Tr(Pi_I tau_success)<=Tr(Pi_I rho_total,out)<=q_bound.
+A successful conditional output supported in that interval has
+p_success<=q_bound; with leakage at most epsilon the bound is divided
+by 1-epsilon. An additional record measurement whose nonselective
+action changes the total-energy law is not covered merely by retaining
+its failed records.
 
 For a global density tolerance +/-epsilon_rho use ell=2 V epsilon_rho.
 The supremum over centers prevents a mere constant recentering from
@@ -278,6 +283,12 @@ The kernel (90) is not extended through r+s=0 by fiat. The annulus
 zero/shell energy correlation also has different metric dependence in
 its components; its total static energy width cannot be substituted
 time by time for a single fluctuating zero-mode mean parameter.
+
+For the actual annulus family sigma is not such an all-component
+weak-source parameter: its pressure noise contains sigma-independent
+terms and its zero-width limit is not a normal bare state. The
+conditional scaling test above must not be presented as a perturbative
+solution scheme around an actual normal sigma=0 baseline.
 
 The frozen all-order E=e^{-u}C result and the earlier exclusion of merely
 randomizing incoming growth amplitudes remain inherited results. We do

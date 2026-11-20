@@ -22,3 +22,11 @@ boundary factor from a full tensor/gravity CTP construction, quantifies
 the original product-source plus independent-device energy concentration,
 and checks the second-order incoming Ward obstruction. Frozen no-point
 and all-order mean-history results are explicitly reused, not rediscovered.
+
+
+FINITE_SLICE_UV then constructs a legal matter Cauchy-state family on
+one declared smooth prescribed past, computes its actual density/embedding
+derivative and canonical action boundary term, and tests ultraviolet
+representation matching. Its prescribed geometry is not called a
+self-consistent Einstein/device history. Finite WKB order, old reference
+energy, new RSET and infinite-field implementability remain distinct.

@@ -58,3 +58,8 @@ BOUNDARY_STATE.md 已给一个原作用量上的正常 matter-only 边界态族�
 ## 再验收后的具体入口
 
 TOTAL_BOUNDARY_GATE 已将完整装置的守恒总谱律与当前原输入的窄能带概率上界接到候选验收；无点谱强约束障碍明确复用旧证明。原同态 Ward 的二阶核还表明：在旧 incoming 一阶解方向，平方根尺度的扰动没有所需二阶密度 charge。下一项必须是有限初片实际 total boundary density 的约束映射、C_boundary 与完整初始 CTP 块，或对一个明确候选的不可行证明。不得以旧增长模式随机化、重新缩窄场边缘或遗漏装置的方式再次提交同一个缺口。
+
+
+## 有限初片入口已有的实际对象
+
+FINITE_SLICE_UV 已给原作用量内的 exact KG matter-Cauchy family、正定初片协方差、高频展开、真实时间嵌入导数和 canonical boundary phase。下一步不再从“任意几何初值 + 旧静态量子态”出发，而要把所选几何 jets、同一合法态和边界相位一同代入原 finite-slice constraint/CTP map。指定平滑过去是新的制备输入，仍须由真实控制器的 total action 解释；它没有自动通过 mean-SCE，更没有通过完整涨落初值。sigma 不是全应力弱噪声参数，旧 static 总能量界也不移植到新 Hamiltonian。

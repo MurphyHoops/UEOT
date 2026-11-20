@@ -2,7 +2,7 @@
 import ast,hashlib,json
 from common import *
 NAMES=["model","phase_diagram","critical_state","volume_moments","positive_source",
- "source_observables","dispersion_gap","finite_clock","robustness","original_ctp_gate","boundary_state","total_boundary_gate"]
+ "source_observables","dispersion_gap","finite_clock","robustness","original_ctp_gate","boundary_state","total_boundary_gate","finite_slice_uv"]
 science={n:json.loads((HERE/(n+".json")).read_text()) for n in NAMES}
 for n,j in science.items():
     assert j["status"]=="PASS"
@@ -39,6 +39,9 @@ assert science["boundary_state"]["unrestricted_infinite_vacuum_phase_newly_compu
 assert science["total_boundary_gate"]["bound_applies_to_new_source_marginal_distance"] is False
 assert science["total_boundary_gate"]["finite_slice_C2_or_full_boundary_CTP_constructed"] is False
 assert science["total_boundary_gate"]["normal_additive_no_point_obstruction_reused_not_new_discovery"] is True
+assert science["finite_slice_uv"]["finite_WKB_truncation_called_Hadamard"] is False
+assert science["finite_slice_uv"]["new_prescribed_past_is_a_self_consistent_Einstein_solution"] is False
+assert science["finite_slice_uv"]["old_static_energy_divergence_called_new_RSET_divergence"] is False
 allowed={"__future__","argparse","hashlib","json","math","pathlib","mpmath","sympy","common","ast"}
 for n in NAMES+["common","review"]:
     tree=ast.parse((HERE/(n+".py")).read_text())
