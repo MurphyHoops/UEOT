@@ -1,0 +1,153 @@
+{
+  "all_AE_contacts_retained": true,
+  "cases": {
+    "failure": {
+      "Ec": [
+        1613179.1988046293,
+        1613183.014880265
+      ],
+      "Es": [
+        562862.5738962505,
+        562864.4379780838
+      ],
+      "Omega": [
+        2.1193717378395926e-05,
+        2.1193727405397528e-05
+      ],
+      "absolute_growth_s_minus_2_upper": [
+        3.992654722802859e-10,
+        3.9926585007493174e-10
+      ],
+      "characteristic_at_1": [
+        -3.000000001197798,
+        -2.9999999988022017
+      ],
+      "characteristic_at_3": [
+        4.999999998802201,
+        5.000000001197798
+      ],
+      "mean_H": [
+        2419771.0878745997,
+        2419772.2326972918
+      ],
+      "proper_time_growth_rate": [
+        2.447239686220598e-05,
+        2.447240845016112e-05
+      ],
+      "relative_density_RMS": [
+        0.10072287383653562,
+        0.10072344567640297
+      ],
+      "variance_H_complete": [
+        59402676959.89329,
+        59403070418.756874
+      ],
+      "variance_H_thermal": [
+        6.368631538049839e-11,
+        6.368638221255256e-11
+      ],
+      "variance_H_zero": [
+        59402676959.89329,
+        59403070418.756874
+      ],
+      "variance_density_complete": [
+        5.117120009357479e-22,
+        5.117168428990699e-22
+      ]
+    },
+    "success": {
+      "Ec": [
+        1613179.1988045238,
+        1613183.0148801599
+      ],
+      "Es": [
+        562862.5738962872,
+        562864.4379781206
+      ],
+      "Omega": [
+        2.1193717378396387e-05,
+        2.119372740539799e-05
+      ],
+      "absolute_growth_s_minus_2_upper": [
+        3.9926547228030326e-10,
+        3.992658500749491e-10
+      ],
+      "characteristic_at_1": [
+        -3.000000001197798,
+        -2.9999999988022017
+      ],
+      "characteristic_at_3": [
+        4.999999998802201,
+        5.000000001197798
+      ],
+      "mean_H": [
+        2419771.087874547,
+        2419772.2326972387
+      ],
+      "proper_time_growth_rate": [
+        2.4472396862206515e-05,
+        2.4472408450161655e-05
+      ],
+      "relative_density_RMS": [
+        0.10072287383654441,
+        0.10072344567641173
+      ],
+      "variance_H_complete": [
+        59402676959.90106,
+        59403070418.76463
+      ],
+      "variance_H_thermal": [
+        6.832117436943231e-11,
+        6.832124560291077e-11
+      ],
+      "variance_H_zero": [
+        59402676959.90106,
+        59403070418.76463
+      ],
+      "variance_density_complete": [
+        5.117120009358816e-22,
+        5.117168428992036e-22
+      ]
+    }
+  },
+  "characteristic_correction": "4*J*n/(3*x)*(s^2+24)/(s^2+12)",
+  "complete_H": "Ec+Es*S0+sqrt(3)/A*N; N independent NB(shape=8, mean=8*n)",
+  "complete_Laplace": "exp(-s*Ec)*L_i(s*Es)*(1+n*(1-exp(-s*sqrt(3)/A)))^(-8)",
+  "fixed_state_linear_FLRW_stochastic_constraint_still_obstructed": true,
+  "full_characteristic_bracket_absolute_upper": [
+    3.3407140685296612,
+    3.344005374032637
+  ],
+  "geometry_ODE_integrations": 0,
+  "geometry_label_included_in_equivalence": true,
+  "high_quadratic_noise_retained": true,
+  "joint_old_new_all_O2_invariant_records_equal": true,
+  "local_noise": "2*N_high,i + (2*pi^2*M2*mu_i)*N_linear,i + (2*pi^2*M2)^2*v_i*C_i tensor C_i",
+  "local_noise_definitions": "T[psi+P*f0]=Q_high+P*L_high+P^2*C; kernels symmetrized connected",
+  "mode_ODE_integrations": 0,
+  "new_local_noise_kernel_numerically_summed": false,
+  "nonlinear_instability_theorem_claimed": false,
+  "old_checkers_executed": 0,
+  "original_first_field_marginal_unchanged": false,
+  "physical_gravity_instrument_constructed": false,
+  "positive_growth_root_exists": true,
+  "same_n0_symbol_reused_without_state_correction": false,
+  "schema": "ueot-joint-history-response/1",
+  "source_sha256": {
+    "physics/qm/null_source/timelike/joint_history/common.py": "b19de1ce7826a935f4aa8927580c8097f2924a08b8c3dfc44d56c44ea081422f",
+    "physics/qm/null_source/timelike/joint_history/history.json": "0d419ec9ff6d30dafcc9a23855bf5c0b73a872e27175157a057a50059a4ded2d",
+    "physics/qm/null_source/timelike/joint_history/instrument.json": "3f7d808c8b09668606c3ad9f9d64d7cf06ee698a5e658efa9669c75c16cf4c52",
+    "physics/qm/null_source/timelike/joint_history/response.py": "462ea6e8781e506107be07a5d0a1e74d712603b1bb254f8593040307420fbf80",
+    "physics/qm/null_source/timelike/physical_source/stability.json": "0eb5ce9002a7c6fae5f2ae4b680a4dcaf58837e4cfccefe9e8083aabc4b25a12",
+    "physics/qm/null_source/timelike/physical_source/static_source.json": "aefc2eb6bb670d2a1de6496483d07bd929921358d80047175b33a45f38d452dc"
+  },
+  "status": "PASS",
+  "thermal_bracket_upper": [
+    0.014708021466415252,
+    0.0179993269693893
+  ],
+  "thermal_pressure_response": "-(4/3)*rho_th*(1+s^2/(s^2+12))*epsilon",
+  "variance_H": "Es^2*v_i+24*n*(1+n)/x",
+  "variance_density": "M2^2*v_i/(4*x^6)+6*n*(1+n)/(pi^4*x^4)",
+  "zero_high_cross_noise_retained": true
+}

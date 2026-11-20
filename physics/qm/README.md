@@ -5,7 +5,19 @@
 - [中文第71章](book/UEOT_PHYSICS.md#ch-71) · [English Chapter 71](book/UEOT_PHYSICS.en.md#ch-71) · [完整书稿与3.12版印本](book/README.md)
 - [科学说明与复核程序](correlated_bath/README.md) · [状态](status/CURRENT.json) · [主张账本](status/CLAIM_LEDGER_v31.15.json) · [研究路线](ROADMAP.md)
 
-## 当前研究：完整总源、准备过去排除与随机约束
+## 当前研究：联合全时平均历史与全记录残差下界
+
+[本轮完整证明与证书](null_source/timelike/joint_history/README.md)接续 a40f7333。固定原 M2、同一常势 U0 与 AE 处方，重设计正规零模和有限热壳准备；真实平滑 CP 筛选的成功、失败各自对应一个合法 Hadamard 态与唯一静态几何，全部平均 Einstein 方程在整条历史上成立。两支热占据均为正，未逐时换根。
+
+完整记录现在是零模后验谱与八热振子谱的卷积，局部噪声保留高模二次与零模交叉项。实际热响应纳入后仍有 s≈2 的齐性增长模；旧／新制备的全部 O(2) 不变记录仍同律。
+
+闭合后继续证明：同 U0、M2、非负热壳的所有正能量静态分支都有条件均值上限。任意完整记录细分，包括无限记录，都留下平均条件方差 ≥3/16+L/ν0；按各支总平均密度归一并对记录取均方根，源／约束残差严格 >10%。这是额外二阶矩责任，不否定 mean-SCE，也不是几何噪声测量。
+
+下一任务据此转向**承接完整源分布的动态联合初态、约束传播与真实因果反馈**。静态筛选精细化不能独自解决该缺口；局域控制器、完整引力探针与 Core 独立物理选择仍开放。
+
+[共同历史](null_source/timelike/joint_history/HISTORY.md) · [完整记录与响应](null_source/timelike/joint_history/RECORDS.md) · [全局限制](null_source/timelike/joint_history/BOUNDS.md) · [独立审查](null_source/timelike/joint_history/REVIEW.md) · [六项新检查及61项复用](null_source/timelike/joint_history/run_verification.py) · [回执](null_source/timelike/joint_history/verification.json)。225个旧科学文件保持原字节；旧检查与模式／几何 ODE均未重跑。整体物理统一目标仍开放。
+
+## 前轮研究：完整总源、准备过去排除与随机约束
 
 [本轮完整证明与证书](null_source/timelike/physical_source/README.md)接续 a0fdc3ab。先把整个静态准备过去纳入总方程：若把原辅助 S3 整体提升为物理历史，保留原源并只新增一个独立自由最小标量，任意正规 Hadamard 态（包括挤压）都不能补足所需长期 NEC。此排除不外推未知外区。
 
