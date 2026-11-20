@@ -103,6 +103,27 @@ assert s.expand(16*p*(1-p)+Qplus-(16+56*p-16*p**2))==0
 assert s.expand(16*p*(1-p)+Qminus-(16+24*p-16*p**2))==0
 assert s.Rational(1200)**2/s.Integer(144)*s.Rational(20,27)==s.Rational(200000,27)
 assert 1-s.Rational(12,24)==s.Rational(1,2)
+
+# Exact Bargmann coefficients and actual normalized NOON sums.
+ac,be,bc,zz,ww,y=s.symbols("ac be bc zz ww y",nonzero=True)
+kernel=s.exp(be*zz**2/(2*ac)+zz*ww/ac-bc*ww**2/(2*ac))
+v22=s.diff(kernel,zz,2,ww,2).subs({zz:0,ww:0})/2
+v20=s.diff(kernel,zz,2).subs({zz:0,ww:0})/s.sqrt(2)
+v02=s.diff(kernel,ww,2).subs({zz:0,ww:0})/s.sqrt(2)
+v22=s.factor(v22.subs(be*bc,y))
+v20v02=s.factor((v20*v02).subs(be*bc,y))
+assert s.simplify(v22-(1-y/2)/ac**2)==0
+assert s.simplify(v20v02+y/(2*ac**2))==0
+for state,expected in [(plus,(1-4*y)/ac**6),(minus,1/ac**6)]:
+    amplitude=sum(s.conjugate(cj)*ck*(v22 if j==k else v20v02)/ac**4
+                  for j,cj in state.items() for k,ck in state.items())
+    assert s.simplify(amplitude-expected)==0
+assert s.simplify(1-(1-4*y)/(1+y)-5*y/(1+y))==0
+assert s.simplify(1-1/(1+y)-y/(1+y))==0
+assert s.simplify(E0+4*w-(E2+6*w))==0
+assert s.Rational(1,5)/24+(s.Rational(1,3)**2)/(8*(1-s.Rational(1,3)/2))==s.Rational(1,40)
+assert above(1-5*prob) and above(1-2*prob)
+
 finish("boundary_state.py",{
  "original_two_field_action_retained":True,
  "new_gravity_or_clock_model_introduced":False,
@@ -133,6 +154,16 @@ finish("boundary_state.py",{
  "local_pressure_difference_amplitude":outward(Dnew),
  "same_smooth_test_pressure_variance_difference_strict_lower":outward(Dnew/4),
  "balanced_prescribed_full_field_influence_contrast_strict_lower":outward(contrast),
+ "exact_correlated_nonGaussian_homogeneous_boundary_factor_derived":True,
+ "common_canonical_endpoint_and_implementable_evolutions_required":True,
+ "unrestricted_infinite_vacuum_phase_newly_computed":False,
+ "exact_static_total_energy_characteristic_function_checked":True,
+ "B_plus_modulus_lower":outward(1-5*prob),
+ "B_minus_modulus_lower":outward(1-2*prob),
+ "zero_profile_log_domain":"real |A^3 sigma DeltaI|<=1, declared decreasing even bump",
+ "zero_profile_quadratic_cumulant_error_bound":"|z|^4/40",
+ "full_metric_Gaussian_closure_error_claimed":False,
+ "positive_type_Gram_implies_actual_instrument_claimed":False,
  "source_window_conformal":[0,2],
  "source_window_proper_duration":outward(2*A),
  "test_support_conformal":[0.5,1.5],

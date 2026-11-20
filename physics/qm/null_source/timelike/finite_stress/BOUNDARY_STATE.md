@@ -313,6 +313,157 @@ an instrument probability, or a control protocol. For unbalanced histories
 a nontrivial psi2 zero-mode factor remains; the old full influence is not
 generally unchanged.
 
+
+## 7a. Exact non-Gaussian homogeneous boundary factor
+
+The actual correlated density (68) permits more than a difference witness.
+Here the histories are real Lorentzian homogeneous histories, identified
+on common canonical initial and final Cauchy data. The relative mode
+coefficients must come from one family of actual implementable evolutions,
+not independent choices for each pair. A useful restricted class has
+smooth deformations supported away from the common endpoints, with the
+necessary endpoint jets agreeing. General endpoint changes can spoil
+ultraviolet implementability and are not certified by this finite-shell
+calculation.
+
+Write
+\[
+ V^\dagger aV=\alpha a+\beta a^\dagger,\qquad
+ y=|\beta|^2,\qquad |\alpha|^2=1+y .
+\]
+Choose the continuous implementer branch from the diagonal. Its
+one-oscillator Bargmann kernel is
+\[
+ K(z,\zeta)=(\alpha^*)^{-1/2}
+ \exp\left({\beta z^2\over2\alpha^*}
+       +{z\zeta\over\alpha^*}
+       -{\beta^*\zeta^2\over2\alpha^*}\right).
+\]
+Direct coefficient extraction gives
+\[
+ {V_{22}\over V_{00}}={1-y/2\over(\alpha^*)^2},\qquad
+ {V_{20}V_{02}\over V_{00}^2}={-y\over2(\alpha^*)^2}.
+\]
+Summing the d diagonal and d(d-1) within-species terms and the d^2
+cross-species terms, with the actual normalized states, gives
+\[
+ \langle A_\pm|V^{\otimes2d}|A_\pm\rangle
+ ={1-\frac d2(1\pm1)y\over(\alpha^*)^{d+2}},\qquad d=4.
+\tag{77a}
+\]
+The minus state is a lowest-weight vector of the collective pair-lowering
+operator; it is not a pressure eigenstate and is not invariant under
+general squeezing.
+
+For a lapse N and coordinate t set
+\[
+ \Delta I=\int\left({N_+\over a_+^3}-{N_-\over a_-^3}\right)dt,
+ \qquad
+ W(z)=\int w(x)^2e^{-izx}\,dx,\qquad z=A^3\sigma\Delta I .
+\]
+In a common conformal parametrization this is the difference of the
+integrals of a^{-2} d eta. The initial e_N, A and sigma in (67) stay fixed.
+The zero-mode relative propagator is exp(-i P^2 Delta I/2), so its actual
+conditional factors are
+\[
+ \chi_N=e^{-iA^3e_N\Delta I}W(z).
+\]
+Consequently the exact state-dependent homogeneous influence is
+\[
+ F_\pm=F_{\rm rest}^{\rm ren}\left[
+ {(1-p)\chi_0\over(\alpha^*)^d}
+ +{p\chi_2[1-\frac d2(1\pm1)y]\over(\alpha^*)^{d+2}}
+ \right].
+\tag{77b}
+\]
+The two correlated branches are summed before taking a logarithm. This
+cannot be replaced by the product of their zero-mode and shell marginal
+influences, or by a Gaussian trace-log using W2 alone.
+
+Here F_rest^ren denotes the common admissible vacuum/rest influence and
+the U0/local counterterm phase under ONE prescription. Formula (77b)
+does not newly evaluate an unrestricted infinite vacuum phase, complete
+tensor CTP Hessian, boundary Ward terms, or the gravitational path
+integral. For the frozen balanced witness its implementability, modulus
+bound and zero-mode identity are already supplied by the cited frozen
+proof. General histories require their own common domain and phase
+prescription.
+
+On the diagonal alpha=1, beta=0, Delta I=0 and F_rest^ren=1, giving F=1.
+The exact difference is
+\[
+ F_+-F_-=-{pd\,y\over(\alpha^*)^{d+2}}\chi_2F_{\rm rest}^{\rm ren},
+\]
+which reduces to (77) on the balanced witness. At general Delta I, W
+can have zeros; a nonzero contrast is not asserted for every history pair.
+
+There is an independent physical unit and phase check. For a STATIC
+proper elapsed-time difference s, Delta I=s/A^3 and alpha=exp(-i s
+epsilon2), beta=0. Both correlated branches then equal
+\[
+ e^{-is(E_*+d\varepsilon_2)}W(s\sigma).
+\]
+Including the common renormalized c-number phase gives
+\[
+ F_\pm(s)=e^{-is(E_c+E_*)}W(s\sigma).
+\tag{77c}
+\]
+This recovers the mean and variance of the SAME total Hamiltonian (69).
+The relation between Delta I and the oscillator phase used here holds
+for this static time-translation subfamily, not every beta=0 history.
+
+## 7b. A controlled logarithm domain, with an explicit cumulant error
+
+Choose the stated even bump, whose squared profile decreases with |x|.
+Then mu2<1/3 and mu4=integral x^4 w^2<1/5; evenness alone would not imply
+these estimates. Write alpha*=sqrt(1+y) exp(i theta) on a continuous
+phase chart and phi=2(A^3 epsilon2 Delta I-theta). Factoring (77b) gives
+\[
+ F_\pm=F_{\rm rest}^{\rm ren}
+       e^{-iA^3E_*\Delta I}(\alpha^*)^{-d}W(z)B_\pm,\quad
+ B_\pm=(1-p)+p e^{i\phi}{1-c_\pm y\over1+y},\quad
+ c_+=4,\quad c_-=0 .
+\tag{77d}
+\]
+For y>=0, (1-4y)/(1+y) lies in (-4,1], whereas 1/(1+y) lies in (0,1].
+Thus
+\[
+ |B_+-1|\le5p<1,\quad |B_--1|\le2p<1,\qquad
+ |B_+|\ge1-5p,\quad |B_-|\ge1-2p .
+\tag{77e}
+\]
+Each B has a well-defined principal logarithm in the displayed disk.
+For real |z|<=1, evenness and cos x>=1-x^2/2 give W(z)>5/6.
+Taylor's cosine remainder and the log remainder give
+\[
+ \left|\log W(z)+{\mu_2z^2\over2}\right|
+ \le z^4\left({\mu_4\over24}
+       +{\mu_2^2\over8(1-\mu_2/2)}\right)
+ \le {z^4\over40}.
+\tag{77f}
+\]
+The last inequality is strict for 0<|z|<=1; at z=0 both sides vanish.
+For clarity, put u=W-1. One has |u|<=mu2 z^2/2,
+|u+mu2 z^2/2|<=mu4 z^4/24 and
+|log(1+u)-u|<=u^2/[2(1-|u|)], proving the bound.
+It controls only the zero-energy profile's quadratic-cumulant remainder.
+It is NOT a Gaussian closure error for the full metric influence.
+A logarithm of the remaining alpha/vacuum phase still needs the same
+local or simply connected continuous phase branch; nonvanishing does
+not supply a global single-valued logarithm on an arbitrary history space.
+
+At every finite mode cutoff, actual common unitaries give
+F_ij=Tr(U_i rho U_j^dagger)=Tr(rho U_j^dagger U_i).
+With Hilbert-Schmidt vectors v_i=sqrt(rho) U_i^dagger this is
+F_ij=<v_i,v_j>, so every finite matrix is positive semidefinite,
+F_ii=1 and F_ji=F_ij^*. The infinite-field statement requires the stated
+common implementable/renormalized limit. A real counterterm action
+difference multiplies rows and columns by conjugate phases and preserves
+this positive-type property; arbitrary independently selected pair
+phases need not. This does not prove conditional positivity of log F,
+infinite divisibility, a classical stochastic representation of all
+cumulants, or an actual CP instrument.
+
 ## 8. The source change and canonical costs are large
 
 For J=integral |w'|^2 and

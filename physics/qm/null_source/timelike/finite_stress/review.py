@@ -33,6 +33,9 @@ assert science["boundary_state"]["complete_spatial_average_rho_p_covariance_deri
 assert science["boundary_state"]["new_source_preserves_complete_original_bare_state"] is False
 assert science["boundary_state"]["exact_normal_zero_energy_variance_possible"] is False
 assert science["boundary_state"]["actual_autonomous_preparation_constructed"] is False
+assert science["boundary_state"]["exact_correlated_nonGaussian_homogeneous_boundary_factor_derived"] is True
+assert science["boundary_state"]["full_metric_Gaussian_closure_error_claimed"] is False
+assert science["boundary_state"]["unrestricted_infinite_vacuum_phase_newly_computed"] is False
 allowed={"__future__","argparse","hashlib","json","math","pathlib","mpmath","sympy","common","ast"}
 for n in NAMES+["common","review"]:
     tree=ast.parse((HERE/(n+".py")).read_text())

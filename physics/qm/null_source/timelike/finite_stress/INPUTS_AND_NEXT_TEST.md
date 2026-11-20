@@ -53,3 +53,4 @@ ORIGINAL_CTP_GATE.md 已完成上述第 3 项的线性投影审查：在明确�
 BOUNDARY_STATE.md 已给一个原作用量上的正常 matter-only 边界态族、同一静态自由历史、总 mean-RSET、完整 homogeneous absolute noise 与有限平滑窗预算。它明确改变原完整源态；不是第 2 项要求的 geometry–matter–device 联合基态。
 
 当前下一项仍需实际构造：选择保留原完整输入，或显式承担新的源替换及制备成本；给出由同一 total action/boundary density 导出的非零 singlet 列，满足绝对密度和全部动量约束，并证明 CTP 初片 Ward/UV 及同一因果正窗。不能用 sigma->0 的非正常极限签收精确基态，也不能在从旧态自主制备时遗漏守恒总能量方差。全局 source witness 通过以后，实际装置与引力读出仍需自己的总源和校准。
+新的实际相关态还给出了条件性 exact homogeneous influence、静态总能量特征函数和 profile 累积量误差界。它解决了这个候选的非 Gaussian 初态因子，不代替共同端点的无限模相位／可实现性、完整非齐次 CTP、边界 Ward 或实际 geometry–matter–device 密度。下一步应直接检验原退化密度约束的非线性与真实新增边界列，避免把 prescribed-history influence 误记为自洽演化。
