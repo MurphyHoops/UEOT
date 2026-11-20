@@ -4,7 +4,7 @@
 
 ## 当前 · 完成有限源分支，回到原总 CTP 初值与约束
 
-[有限正源与原约束十六项检查](null_source/timelike/finite_stress/README.md)已给固定离散族的三区间裁决、临界正常共同历史、全部所需体积／H 图范数矩、总正能方差与正常正能时钟。其同态二次参照残差、真实 Q 法向导数和 work-law 交换子又表明：有限源存在性没有恢复原 AE/RSET。有限误差合同重开超临界模型，且已构造近似有明确的几何／真空源成本。
+[有限正源与原约束十七项检查](null_source/timelike/finite_stress/README.md)已给固定离散族的三区间裁决、临界正常共同历史、全部所需体积／H 图范数矩、总正能方差与正常正能时钟。其同态二次参照残差、真实 Q 法向导数和 work-law 交换子又表明：有限源存在性没有恢复原 AE/RSET。有限误差合同重开超临界模型，且已构造近似有明确的几何／真空源成本。
 
 **本轮复盘修正：**强量子约束、正 dust、半格和排序不是确定性 mean-SCE 推出的必要条件。该新增分支完成自身验收后归档；后续工作的优先级重新由原共同物理历史的缺口决定。
 
@@ -24,11 +24,13 @@
 
 [新输入账本与验收标准](null_source/timelike/finite_stress/INPUTS_AND_NEXT_TEST.md) · [反思](null_source/timelike/finite_stress/REVIEW.md) · [同态参照检查](null_source/timelike/finite_stress/DISPERSION_GAP.md) · [回执](null_source/timelike/finite_stress/verification.json)
 
-146 项旧结果、536 文件冻结；16 项新检查，旧科学计算和旧 ODE 为零。以下为历史范围，原接受结果不改写。
+146 项旧结果、536 文件冻结；17 项新检查，旧科学计算和旧 ODE 为零。以下为历史范围，原接受结果不改写。
 
 最新的有限片检查已把态和几何同步起来：[同态残差与真实几何截面](null_source/timelike/finite_stress/GEOMETRY_MATCHING.md)先拒收一个需要负 rho+p 的普通标量补偿候选，再在原精确 mean family 中一次选参得到 a0=A、h0>0 的真实正窗历史，全部平均缺陷及法向导数恒零。相应[合法初片态与边界相位](null_source/timelike/finite_stress/FINITE_SLICE_UV.md)必须随几何运输。下一闭环在这条实际历史上计算非静态的完整初始约束／绝对噪声／交叉块，再验收装置和引力记录。
 
-在该真实非静态历史上，[全场平滑电荷与约束相容性](null_source/timelike/finite_stress/DYNAMIC_CHARGE.md)已继续建立：密度响应仍由压力因果像决定，原源守恒charge仍有正方差；非静态瞬时密度方差则确实发散。下一步需真实联合边界电荷及装置过去，不能直接沿用旧静态初片方差。
+在该真实非静态历史上，[全场平滑约束荷与约束相容性](null_source/timelike/finite_stress/DYNAMIC_CHARGE.md)已继续建立：密度响应仍由压力因果像决定，原源守恒charge仍有正方差；非静态瞬时密度方差则确实发散。下一步需真实联合边界约束荷及装置过去，不能直接沿用旧静态初片方差。
+
+[薄层源的实际量子边界验收](null_source/timelike/finite_stress/BOUNDARY_EXTENSION.md)又排除了固定完整裸边缘、仅用独立载体反相关的候选；完整能谱与载体侧记录统计独立。下一具体构造需明示改变的源态或真实准备过去，并满足平滑的 C_geom-C_pre=C_source。
 
 ## 前轮 · 先验收有限正应力的物理定义域，再扩展总源历史
 

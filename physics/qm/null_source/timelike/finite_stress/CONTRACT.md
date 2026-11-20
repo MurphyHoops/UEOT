@@ -49,3 +49,12 @@ average density variance diverges for h!=0 in the declared high-vacuum
 family; this is not a failure of Hadamard mean-RSET. The residual gate
 requires pressure matching over the full declared past and zero geometry
 charge; it does not exclude new finite-boundary or device histories.
+
+BOUNDARY_EXTENSION audits the actual rank-two thin source with a fixed
+complete bare marginal. Its scalar compression P f(C) P makes every
+independent tensor-factor record statistically independent of the source
+energy profile, even for correlated normal extensions. It rejects that
+specific boundary-carrier candidate, not all changed-state, dressed or
+physical-Hilbert constructions. The smooth finite-window condition is
+Cgeom-Cpre=Csource with Cpre defined from b-s; the actual mixed domains,
+joint action and device still require construction.

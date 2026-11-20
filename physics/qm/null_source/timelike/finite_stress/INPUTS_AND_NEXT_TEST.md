@@ -75,3 +75,9 @@ GEOMETRY_MATCHING 已拒收一条有受控正窗残差的明确 prescribed 曲�
 DYNAMIC_CHARGE 已计算当前 U 的完整 mean density/pressure Ward 关系，并实际构造原源与薄层源的全场平滑 conserved charge。初始 density 的缺口现在是明确的 charge／交叉相关条件；非静态 sharp-density 方差按 K³ 发散，不能用旧 static N00 填入初片矩阵。
 
 下一项应给一个具体的正常 geometry–matter–device（或明确声明并受控的CQ）边界对象及总作用量，定义其实际平滑约束可观测量，计算 charge、momentum 与全部 mixed 初始块，并在同一准备过去中检查总能量及因果性。只给 classical反相关样本、只匹配mean、只降低source marginal、或仅在正窗前藏入未计账pressure残差，均不能签收。完整tensor CTP/受控误差通过以后再连接NOON差和局域校准。
+
+## 最新候选已拒收：固定薄层裸态的独立边界载体
+
+BOUNDARY_EXTENSION 已证明 P f(C) P=m_f P，故保留这一个完整秩二裸边缘的任何正常扩张，都无法使独立 geometry/device-only 记录与源能量profile相关；完整残差谱只是卷积，有限方差为 Var C+Var Z。载体侧后选择也不改善能谱。这个具体候选不再重复尝试。
+
+下一份具体交付须给出改变裸源后的真实正常联合态，或从实际总作用量导出含源的 dressing／准备过程，并验证平滑条件 C_geom−C_pre=C_source，其中 C_pre=2(b−s)(e^U h Psi_chi)。geometry 和 mixed 测试自身的共同域、全部动量约束、总装置能量及正窗因果误差仍须同时通过；不是把一个classical随机抵消样本改名为量子边界态。
