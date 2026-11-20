@@ -2,7 +2,23 @@
 
 本图延续同一物理任务。权威执行状态为[CURRENT](status/CURRENT.json)，稳定结果为[主文](book/UEOT_PHYSICS.md)及现行claim ledger。Core只读，GI不在范围。数学闭合、物理选择、计算实现、经验检验分别登记。
 
-## 当前 · 同态动态正窗已受控，推进精确演化与涨落法则
+## 当前 · 保留双增长自由度，推进真正的非线性共同历史
+
+[新一轮完整证明](null_source/timelike/dynamic_inverse/README.md)已经关闭此前线性逆不明的核心部分：完整响应在开右半平面恰有两条简单正实根；快根与同 incoming 态及完整线性约束相容。sigma_F/A∈(11.45521916747,11.45521917820)，sigma_F/s_*∈(468087.119,468087.342)。
+
+在明确的光滑零过去域中，保留两根的严格因果逆及短窗增益已成立。对保留两幅度的双变量解析系数域，所有二阶及以上组合频率均有 abs(P)>11.99，四阶逆界 <1.73e18；完整算子用graph域。冻结 canonical covariance 时的 Hadamard 条件则要求全部 V=a''/a jets 匹配，不能单独用 jerk 补方程。
+
+**本次闭合后下一验收已经改定：**
+
+1. 在保留慢／快两幅度的域中，证明完整 AE、实际 incoming Jost、canonical 零模和热壳组成的非线性映射及二次/Lipschitz余项。旧特定慢窗的 UV 尾依赖更高几何导数，不能直接填入只恢复四阶的逆；必要时证明匹配的加权图范数或解析半径损失。
+2. 用这个明确映射构造有误差控制的精确共同历史族，或给该域的排除结果；通过 Ward 和实际初值验证全约束。两幅度一次固定，禁止逐时拼根和冻结态 jerk 修补。
+3. 给额外几何幅度独立物理制备或选解责任。单变量解析、future无增长条件和降阶都不是原 incoming 态自动推出的条件；本轮未默认采用它们。
+4. 随后连接承接完整输入谱的涨落法则、联合约束、真实局域制备与 probe/clock；核算总应力、交叉噪声、所有 CP 记录和校准。相同完整联合 twirl 配共同协变选择／仪器时，old/new 全记录仍同律，不能把不同 fast 幅度记为原降噪效果。
+5. 统一目标继续以减少独立物理输入和可区分经验检验验收。当前线性闭合不能替代完整非线性存在、量子引力或实验确认。
+
+[谱](null_source/timelike/dynamic_inverse/SPECTRUM.md) · [UV与约束](null_source/timelike/dynamic_inverse/STATE_MATCHING.md) · [因果／双变量逆](null_source/timelike/dynamic_inverse/INVERSE.md) · [复核与证据等级](null_source/timelike/dynamic_inverse/REVIEW.md) · [回执](null_source/timelike/dynamic_inverse/verification.json)。复用74项结果，冻结272个科学文件；Core只读，GI不在范围。
+
+## 前轮 · 同态动态正窗已受控，推进精确演化与涨落法则
 
 [最新证明与五项证书](null_source/timelike/dynamic_seed/README.md)固定原 M2、U0、AE 和前驱 unfiltered 实际量子态；同步计算真实 Jost 法向数据及二阶几何修正 beta≈−1/3。继续闭合统一高频尾、完整 RSET 解析余项和 Ward 传播后，已得到 eta∈[0,1] 的同态近似共同历史：空间方程 |S|<1.642×10^-8，正交能量／空间 Einstein 缺陷乘 x 后分别 <2.465×10^-12、3.284×10^-8；初片及整个窗口的法向导数也有认证界。
 

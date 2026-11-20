@@ -5,7 +5,17 @@
 - [中文第71章](book/UEOT_PHYSICS.md#ch-71) · [English Chapter 71](book/UEOT_PHYSICS.en.md#ch-71) · [完整书稿与3.12版印本](book/README.md)
 - [科学说明与复核程序](correlated_bath/README.md) · [状态](status/CURRENT.json) · [主张账本](status/CLAIM_LEDGER_v31.15.json) · [研究路线](ROADMAP.md)
 
-## 当前研究：同一实际态的动态正窗与完整记录裁决
+## 当前研究：完整谱、合法态匹配与保留双增长模的逆
+
+[最新证明与六项证书](null_source/timelike/dynamic_inverse/README.md)继续推进同态近似历史到精确演化的缺口。完整开右半平面响应谱现已分类：除慢根 s_*≈2 外，恰有另一条简单正实快根，sigma_F/A∈(11.45521916747,11.45521917820)。它通过完整线性约束、与原 incoming 态运输相容，不能由 Hadamard 条件或坐标变换删除。
+
+继续闭合了保留两根的严格因果线性逆及短窗增益；又认证 sigma_F/s_*∈(468087.119,468087.342)，从而所有二阶及以上慢／快组合频率均有 abs(P)>11.99，双变量 graph 系数逆恢复四阶导数。冻结片上态再单独修 jerk 的 UV 障碍也已明确。
+
+下一主路线保留两个幅度，先证明完整 AE/Jost 非线性映射与余项在同一域中闭合，再构造精确共同历史族及物理选解。当前不是非线性存在证明；有限初片因果逆也不能直接从无限过去卷积旧慢残差。涨落、联合约束与仪器继续按共同历史顺序验收。
+
+[完整谱](null_source/timelike/dynamic_inverse/SPECTRUM.md) · [态匹配](null_source/timelike/dynamic_inverse/STATE_MATCHING.md) · [两个逆](null_source/timelike/dynamic_inverse/INVERSE.md) · [反思与下一门](null_source/timelike/dynamic_inverse/REVIEW.md) · [执行回执](null_source/timelike/dynamic_inverse/verification.json)。复用74项结果，冻结272个继承科学文件；旧 checker 与 ODE 不重跑。Core只读，GI排除，物理统一目标仍开放。
+
+## 前轮研究：同一实际态的动态正窗与完整记录裁决
 
 [最新证明、计算和证书](null_source/timelike/dynamic_seed/README.md)把固定原 M2、U0、AE 与实际 incoming 态连接到非静态二阶几何。真实法向数据、完整无限模 UV 尾和 Ward 传播现已给出 eta∈[0,1] 的受控近似共同历史：|S|<1.642×10^-8，正交能量／空间 Einstein 缺陷乘 x 后分别 <2.465×10^-12、3.284×10^-8，整个窗口的法向导数亦有界。
 
