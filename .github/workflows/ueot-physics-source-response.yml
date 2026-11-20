@@ -33,13 +33,13 @@ jobs:
           python-version: '3.14'
       - name: Install the same scientific dependencies
         run: python -m pip install numpy==2.5.4 scipy==1.18.1 sympy==1.14.0 mpmath==1.3.0
-      - name: Reuse 49 predecessor results and verify compatible later-release history
-        run: python -B physics/qm/null_source/timelike/compatible_evolution/run_verification.py --output "$RUNNER_TEMP/compatible-evolution-verification.json" --logs "$RUNNER_TEMP/compatible-evolution-logs"
+      - name: Reuse 55 predecessor results and verify complete physical-source closure
+        run: python -B physics/qm/null_source/timelike/physical_source/run_verification.py --output "$RUNNER_TEMP/physical-source-verification.json" --logs "$RUNNER_TEMP/physical-source-logs"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: compatible-evolution-research
+          name: physical-source-research
           path: |
-            ${{ runner.temp }}/compatible-evolution-verification.json
-            ${{ runner.temp }}/compatible-evolution-logs/
+            ${{ runner.temp }}/physical-source-verification.json
+            ${{ runner.temp }}/physical-source-logs/
           if-no-files-found: error

@@ -5,7 +5,19 @@
 - [中文第71章](book/UEOT_PHYSICS.md#ch-71) · [English Chapter 71](book/UEOT_PHYSICS.en.md#ch-71) · [完整书稿与3.12版印本](book/README.md)
 - [科学说明与复核程序](correlated_bath/README.md) · [状态](status/CURRENT.json) · [主张账本](status/CLAIM_LEDGER_v31.15.json) · [研究路线](ROADMAP.md)
 
-## 当前研究：后释放共同历史与准备驱动的必要条件
+## 当前研究：完整总源、准备过去排除与随机约束
+
+[本轮完整证明与证书](null_source/timelike/physical_source/README.md)接续 a0fdc3ab。先把整个静态准备过去纳入总方程：若把原辅助 S3 整体提升为物理历史，保留原源并只新增一个独立自由最小标量，任意正规 Hadamard 态（包括挤压）都不能补足所需长期 NEC。此排除不外推未知外区。
+
+随后构造包含两个真实量子场、两个正规零模和明示常势 U 的替代全时平均历史。原 M2 数值保持，一次求新半径与同一完整态，全部平均 Einstein 分量严格成立。新几何/初态和 U 是明确额外物理输入，没有修复原 prepared Cauchy 态或从 Core 导出真空能。
+
+完整记录的最小平均相干储备预算降为 sqrt(3)/4；在这个尖锐阈值，两制备的全部 O(2) 不变记录同律，但共同径向方差必为3/16、相对RMS约30.217%。完整能量谱、全部参考及交叉噪声均已计入。
+
+存在后继续审查得到：包含实际 KG 响应与全部 AE contacts 的静态解有 s≈2 齐性增长模；固定同一 retarded 初态的 FLRW 一阶随机约束更无法承接实际非零总能量噪声。下一主任务已经收窄为**约束相容的状态—几何联合初值族及其传播**，其后才接局域引力探针。
+
+[独立审查](null_source/timelike/physical_source/REVIEW.md) · [完整预算与记录](null_source/timelike/physical_source/RECORDS.md) · [响应及约束障碍](null_source/timelike/physical_source/RESPONSE.md) · [六项新检查及55项旧结果复用](null_source/timelike/physical_source/run_verification.py) · [回执](null_source/timelike/physical_source/verification.json)。204个旧科学文件保持原字节，旧检查/模式和几何ODE均未重跑。物理统一核心目标仍开放。
+
+## 前轮研究：后释放共同历史与准备驱动的必要条件
 
 [本轮完整证明与证书](null_source/timelike/compatible_evolution/README.md)已把实际态范数、全部反馈、自映射、同窗全阶正则性和固定源约束射击连在一起。对此前任一实际初片根，保持同一完整态、固定 \(M_2\) 与 AE 处方，在 \(T=2^{-40}\) 内保留 \([0,T/4]\) 参考准备段，随后以预定光滑数学驱动在 \(3T/4\) 释放；同一 \(C^\infty\) 几何及其 Hadamard 态在 \([3T/4,T]\) 满足无驱动完整平均方程。
 

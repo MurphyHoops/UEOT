@@ -2,7 +2,26 @@
 
 本图延续同一物理任务。权威执行状态为[CURRENT](status/CURRENT.json)，稳定结果为[主文](book/UEOT_PHYSICS.md)及现行claim ledger。Core只读，GI不在范围。数学闭合、物理选择、计算实现、经验检验分别登记。
 
-## 当前 · 后释放共同历史已闭合，转向真实准备系统与总源记录
+## 当前 · 全时平均与总源统计已接通，转向约束相容的联合初值
+
+[本轮证明、计算和裁决](null_source/timelike/physical_source/README.md)接续 a0fdc3ab，先反查原静态准备过去，再构造明确替代总物质模型，随后继续检验稳定性及随机约束。
+
+已完成：整体旧静态 S3 加一个独立自由量子设备的长时 NEC 排除；双场、完整正规零模、原固定 M2 与明示常势 U 的替代全时静态平均历史；随机 reservoir 的尖锐同律预算 sqrt(3)/4、共同方差前沿和真实源能量 CP 记录。原辅助拓扑不外推未知外区，新 U/半径/参考态不冒充原 prepared 历史或 Core 物理选择。
+
+闭合后继续发现：最低同律预算仍有约30.217%的共同径向相对涨落；全部 KG/AE 响应给齐性增长模；固定 retarded 态的 FLRW 一阶 Hamiltonian 约束与严格正的完整总能量噪声矛盾。因此当前不能继续把源降噪直接接成引力增益。
+
+**下一共同验收顺序：**
+
+1. 固定一个明确物质模型和预算，构造合法、正、满足 CCR/Hadamard 且约束相容的状态—几何联合初值族，明确允许的初态能量相关。
+2. 对正负能量偏差同时处理几何约束；若进入非线性/二阶尺度，实际计算同态 RSET 与固定 AE contacts，并证明正时间窗传播及误差。
+3. 保留全部总源、设备及交叉噪声，再定义局域 probe/clock 和完整 CP 记录，检验可辨认、可校准的引力后果。
+4. 审查场内容、真空能 U、态及仪器合同中的独立物理输入；只有减少独立假设、排除竞争完成或取得同资源可检验差别，才推进物理统一责任。
+
+随机选一阶 H0、硬搬旧完整核、删去共同零模能量噪声或把精确能量后选择视作免费步骤，均不能满足此验收。经典平方根约束展开只是诊断，不是量子二阶解。
+
+[审查与接续合同](null_source/timelike/physical_source/REVIEW.md) · [随机约束证明](null_source/timelike/physical_source/RESPONSE.md) · [六项新检查](null_source/timelike/physical_source/run_verification.py) · [回执](null_source/timelike/physical_source/verification.json)。复用55项旧结果，冻结204个旧科学文件；不重跑旧检查/模式，Core只读、GI不在范围、经验状态不升级。
+
+## 前轮 · 后释放共同历史已闭合，转向真实准备系统与总源记录
 
 [本轮证明、数值和审查](null_source/timelike/compatible_evolution/README.md)接续 741209b3。实际全根态范数、完整耦合误差、自映射、全阶正则性和唯一约束射击已经共同给出一个新的局部后释放历史：\(T=2^{-40}\)，所有候选保留同一 \([0,T/4]\) 参考段，在 \([3T/4,T]\) 以同一固定 \(M_2\)、同一完整 Hadamard 态和同一 \(C^\infty\) 几何满足无驱动平均方程。
 
