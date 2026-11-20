@@ -2,7 +2,23 @@
 
 本图延续同一物理任务。权威执行状态为[CURRENT](status/CURRENT.json)，稳定结果为[主文](book/UEOT_PHYSICS.md)及现行claim ledger。Core只读，GI不在范围。数学闭合、物理选择、计算实现、经验检验分别登记。
 
-## 当前 · 动态全源约束已有排除定理，转向可成立的联合物理历史
+## 当前 · 同态局域仪器和投影残差已闭，推进共同总源与非齐次响应
+
+[本轮闭环与反思](null_source/timelike/finite_local/README.md)已完成固定先验的平滑二结果弱测量、全部记录、同一量子态运输和正时间窗两投影 RMS <7.6e−6。实际高模反作用与零高条件相关均已计入。只继续提高源读数精度，已不是首要物理任务。
+
+同一实际局域通道还给出了非选择局域应力和噪声的精确核、严格各向异性及目标场注入能量上下界。保留齐性 FLRW 的两条投影并不能完成 pointwise tensor SCE。有限初片两分支又跨越 leading separatrix，不能把它们重新称为同一原静态过去。
+
+**下一轮按以下实体结果验收：**
+
+1. 固定一个完整 apparatus/controller renormalized action、初态、读出动力学和有限参数。自由场 AE 不固定新 \((\Box\chi)^2\) 等控制场系数；这些系数必须跨结果及全过程固定。先检验原共同初片与全部源的约束，不能通过瞬时换背景或逐时改 subtraction 配平。
+2. 保持本轮真实测后态和局域源/噪声核，求非齐次度规的因果响应，覆盖 \(0i\) 和各向异性 \(ij\) 分量。具体指标是全张量残差、响应误差、同一总源 Ward，以及因果可用的记录；禁止无声做空间位置平均。
+3. 用同一 in-in functional 得到 mean equations、retarded Hessian 与 \((T,O_\chi)\) 的全块 noise。若采用二阶累积量或有效理论截断，明确其误差；精确 CQ 应力分布一般并非 Gaussian。同时求解控制器运动，补全准备段的总 Einstein 方程。
+4. 在共同物理历史成立后，以同资源和共同操作规则比较原制备 old/new 的真实引力记录。完整 \(O(2)\)/线性 CP 记录等价仍是必须遵守的门；新装置反作用不能冒称原制备降噪效应。
+5. 以减少独立物理输入、已知理论一致性和可区分经验后果检验统一。场内容、Born/Einstein 动力学、装置有限参数和量子几何均未由 Core 自动推出。
+
+[实际态和正窗](null_source/timelike/finite_local/ACTUAL_HISTORY.md) · [局域张量](null_source/timelike/finite_local/LOCAL_TENSOR.md) · [条件与因果](null_source/timelike/finite_local/CONDITIONAL.md) · [重整化](null_source/timelike/finite_local/RENORMALIZATION.md) · [共同总源门](null_source/timelike/finite_local/CONTROLLER.md)。二十项新检查，91 项复用，336 个科学文件冻结。下方保留各历史阶段的路线。
+
+## 前轮 · 动态全源约束已有排除定理，转向可成立的联合物理历史
 
 [本轮闭环](null_source/timelike/operational_selection/README.md)给出三个决定后续方向的结果：
 

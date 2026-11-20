@@ -5,7 +5,17 @@
 - [中文第71章](book/UEOT_PHYSICS.md#ch-71) · [English Chapter 71](book/UEOT_PHYSICS.en.md#ch-71) · [完整书稿与3.12版印本](book/README.md)
 - [科学说明与复核程序](correlated_bath/README.md) · [状态](status/CURRENT.json) · [主张账本](status/CLAIM_LEDGER_v31.15.json) · [研究路线](ROADMAP.md)
 
-## 当前研究：完整源的动态约束与可操作选解
+## 当前研究：实际局域测后态的正窗闭环与总源下一关
+
+[本轮二十项证书](null_source/timelike/finite_local/README.md)把固定实际源的平滑二结果弱读出、同一 CCR 态运输和共同正时间窗接通。保留所有结果、高模激发及零高条件相关后，两条全空间平均方程的联合归一化 RMS 严格小于 **7.6e−6**。没有重置高态、逐时换根或假设条件乘积。
+
+闭合后继续得到局域全张量结果：短时探针注入目标场能量在约 **8.31e−14 至 1.88e−11** 之间；其完整非选择应力有严格非零各向异性，新增局域噪声核可精确写出且为正半定增量。至少一个完整分支因此需要非齐次几何或装置补偿。小的下界不代表已可探测，也不推翻已认证的平均投影误差。
+
+下一关已具体化为**控制器和读出器的同一重整化总源、共同初始约束、局域因果几何响应**。保持原静态几何的高源强结果需要负额外能量；有限 kinetic probe 又产生旧自由场规范未固定的新 \((\Box\chi)^2\) 项。明确的控制器候选及其反作用、Ward 和输入责任见新报告。指定的光滑准备段仍是 off-shell，完整物理历史与统一目标仍开放。
+
+[实际态残差](null_source/timelike/finite_local/ACTUAL_HISTORY.md) · [二结果仪器](null_source/timelike/finite_local/SMOOTH_BINARY.md) · [局域张量与噪声](null_source/timelike/finite_local/LOCAL_TENSOR.md) · [控制器准入](null_source/timelike/finite_local/CONTROLLER.md) · [反思](null_source/timelike/finite_local/REVIEW.md) · [回执](null_source/timelike/finite_local/verification.json)。复用 91 项结果、冻结 336 个科学文件，旧 checker/ODE 不重跑；Core 只读、GI 排除、PR 开放草稿不合并。下方为历史阶段。
+
+## 前轮研究：完整源的动态约束与可操作选解
 
 [本轮新证明与六项证书](null_source/timelike/operational_selection/README.md)接续已闭合的精确平均共同历史，继续完成选解、全源约束和实际读取的审查。
 
