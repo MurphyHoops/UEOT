@@ -2,7 +2,7 @@
 import ast,hashlib,json
 from common import *
 NAMES=["model","phase_diagram","critical_state","volume_moments","positive_source",
- "source_observables","dispersion_gap","finite_clock","robustness","original_ctp_gate"]
+ "source_observables","dispersion_gap","finite_clock","robustness","original_ctp_gate","boundary_state"]
 science={n:json.loads((HERE/(n+".json")).read_text()) for n in NAMES}
 for n,j in science.items():
     assert j["status"]=="PASS"
@@ -28,6 +28,11 @@ assert science["original_ctp_gate"]["SO4_alone_suffices_for_full_lapse_row"] is 
 assert science["original_ctp_gate"]["actual_full_inhomogeneous_CTP_Hessian_computed"] is False
 assert science["original_ctp_gate"]["normal_quantum_boundary_state_constructed"] is False
 assert science["original_ctp_gate"]["deterministic_mean_solution_invalidated"] is False
+assert science["boundary_state"]["normal_rank_two_correlated_source"] is True
+assert science["boundary_state"]["complete_spatial_average_rho_p_covariance_derived"] is True
+assert science["boundary_state"]["new_source_preserves_complete_original_bare_state"] is False
+assert science["boundary_state"]["exact_normal_zero_energy_variance_possible"] is False
+assert science["boundary_state"]["actual_autonomous_preparation_constructed"] is False
 allowed={"__future__","argparse","hashlib","json","math","pathlib","mpmath","sympy","common","ast"}
 for n in NAMES+["common","review"]:
     tree=ast.parse((HERE/(n+".py")).read_text())

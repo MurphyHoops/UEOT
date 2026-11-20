@@ -4,7 +4,7 @@
 
 ## 当前 · 完成有限源分支，回到原总 CTP 初值与约束
 
-[有限正源与原约束十一项检查](null_source/timelike/finite_stress/README.md)已给固定离散族的三区间裁决、临界正常共同历史、全部所需体积／H 图范数矩、总正能方差与正常正能时钟。其同态二次参照残差、真实 Q 法向导数和 work-law 交换子又表明：有限源存在性没有恢复原 AE/RSET。有限误差合同重开超临界模型，且已构造近似有明确的几何／真空源成本。
+[有限正源与原约束十二项检查](null_source/timelike/finite_stress/README.md)已给固定离散族的三区间裁决、临界正常共同历史、全部所需体积／H 图范数矩、总正能方差与正常正能时钟。其同态二次参照残差、真实 Q 法向导数和 work-law 交换子又表明：有限源存在性没有恢复原 AE/RSET。有限误差合同重开超临界模型，且已构造近似有明确的几何／真空源成本。
 
 **本轮复盘修正：**强量子约束、正 dust、半格和排序不是确定性 mean-SCE 推出的必要条件。该新增分支完成自身验收后归档；后续工作的优先级重新由原共同物理历史的缺口决定。
 
@@ -17,11 +17,14 @@
 
 原总源已继续推进一关：SO(4) 协变条件下，非零空间谐波不能补偿整体密度约束；完整零行还明确要求原 incoming 定义域和时间 Ward。有限初片的能量积分常数须作为真实新边界列，满足绝对方差／交叉相关及量子不确定性条件，不能仅指定一块经典 PSD 矩阵。
 
+
+进一步已构造[原作用量上的正常替代边界源](null_source/timelike/finite_stress/BOUNDARY_STATE.md)：完整总平均应力保持，整体密度残差可任意小，并给完整 homogeneous 绝对噪声与光滑正窗预算。代价是原裸态大幅改变、canonical 涨落增长；精确正常零方差仍被排除，装置总能量方差也不能从账本中消失。这项源端结果没有替代待求的全源几何／装置基态。
+
 [原约束投影与边界条件](null_source/timelike/finite_stress/ORIGINAL_CTP_GATE.md)
 
 [新输入账本与验收标准](null_source/timelike/finite_stress/INPUTS_AND_NEXT_TEST.md) · [反思](null_source/timelike/finite_stress/REVIEW.md) · [同态参照检查](null_source/timelike/finite_stress/DISPERSION_GAP.md) · [回执](null_source/timelike/finite_stress/verification.json)
 
-146 项旧结果、536 文件冻结；11 项新检查，旧科学计算和旧 ODE 为零。以下为历史范围，原接受结果不改写。
+146 项旧结果、536 文件冻结；12 项新检查，旧科学计算和旧 ODE 为零。以下为历史范围，原接受结果不改写。
 
 ## 前轮 · 先验收有限正应力的物理定义域，再扩展总源历史
 

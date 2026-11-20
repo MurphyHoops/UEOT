@@ -1,4 +1,4 @@
-"""Reuse 146 frozen results and verify eleven new finite-stress/original-constraint certificates."""
+"""Reuse 146 frozen results and verify twelve new finite-stress/original-constraint certificates."""
 from __future__ import annotations
 import argparse
 from concurrent.futures import ThreadPoolExecutor
@@ -25,8 +25,8 @@ RANGES=[PREFIX+d+"/" for d in DIRECTORIES]+[
  "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCFutureResponseCore.lean"]
 VERSIONS={"numpy":"2.5.4","scipy":"1.18.1","sympy":"1.14.0","mpmath":"1.3.0"}
 ENTRIES=["model","phase_diagram","critical_state","volume_moments","positive_source",
- "source_observables","dispersion_gap","finite_clock","robustness","original_ctp_gate","review"]
-assert len(ENTRIES)==11
+ "source_observables","dispersion_gap","finite_clock","robustness","original_ctp_gate","boundary_state","review"]
+assert len(ENTRIES)==12
 def sha(data):return hashlib.sha256(data).hexdigest()
 def file_sha(path):return sha(path.read_bytes())
 def git(*args):return subprocess.check_output(["git",*args],cwd=REPO)
@@ -153,6 +153,11 @@ def main():
         "original_SO4_singlet_projection_gate":"CONDITIONAL_THEOREM_WITH_EXPLICIT_DOMAIN_AND_WARD",
         "original_absolute_density_RMS":science["original_ctp_gate"]["finite_window_density_RMS_if_no_new_boundary_column"],
         "normal_quantum_original_boundary_state_constructed":False,
+        "new_normal_matter_only_boundary_family":True,
+        "new_source_preserves_original_complete_marginal":False,
+        "new_global_density_relative_RMS_upper":science["boundary_state"]["example_global_density_relative_RMS_strict_upper"],
+        "new_complete_homogeneous_source_noise_budget":True,
+        "actual_autonomous_new_source_preparation":False,
         "same_bare_state_and_old_normal_derivatives_claimed":False,
         "classical_symmetric_work_law_automatic":False,
         "strong_positive_dust_is_required_by_original_mean_SCE_goal":False,
@@ -162,7 +167,7 @@ def main():
         "whole_unified_physics_goal":"OPEN"},
       "status":"PASS" if passed else "FAIL"}
     output.write_text(json.dumps(result,indent=2,sort_keys=True,ensure_ascii=False)+"\n")
-    print("Reused 146 results with 536 unchanged scientific files; executed 11 new entries.")
+    print("Reused 146 results with 536 unchanged scientific files; executed 12 new entries.")
     print("Receipt: "+str(output))
     return 0 if passed else 1
 if __name__=="__main__":raise SystemExit(main())

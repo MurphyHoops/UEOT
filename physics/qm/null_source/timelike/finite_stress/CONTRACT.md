@@ -15,3 +15,5 @@ The new user request at 2026-11-20 18:36:06 UTC explicitly requires at least thr
 ## Reflection and direct return to the original constraint
 
 After closing the declared finite-source branch, the same active cohort also contains ORIGINAL_CTP_GATE. It reads frozen original data and proves an explicitly conditional SO(4) projection/boundary statement. The dust/lattice candidate is not assumed to be a prerequisite of the original mean-SCE goal. The full tensor CTP functional, a normal quantum boundary state and empirical calibration remain open.
+
+The next completed source-only loop, BOUNDARY_STATE, retains the original two-field action and fixed static mean geometry while explicitly replacing the matter preparation. Its normal correlated source and homogeneous absolute noise are distinct from a joint gravitational/device boundary state. Exact-normal zero energy variance, preservation of the old complete source, and an autonomous preparation are not claimed.
