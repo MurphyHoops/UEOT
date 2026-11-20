@@ -14,6 +14,8 @@
 4. 继续构造满足单cap因果界的共同准备过去，给局域引力记录、非零传递和校准。全局编码、条件态迹距离与规定背景幅度差各有不同范围。
 5. 以减少独立物理输入、恢复已知理论并获得可区分经验预言验收统一。新增dust、Born规则、量子化及边界参数不能登记为已从Core导出。
 
+完整配置空间 Laplace–Beltrami 排序也被同一酉等价排除覆盖；一般固定有限权重排序仍留下严格正的原动量坏尾，需使用依权重变化的界。
+
 [新输入与第一任务](null_source/timelike/constraint_states/INPUTS_AND_NEXT_TEST.md) · [有限应力排除](null_source/timelike/constraint_states/DUST_REGULARITY.md) · [反思](null_source/timelike/constraint_states/REVIEW.md) · [执行回执](null_source/timelike/constraint_states/verification.json)
 
 137项旧结果复用、498个科学文件冻结；本轮仅执行9项新检查，旧科学计算和旧ODE为零。以下前轮目标在新结果范围内更新，不重复执行已经排除的路径。

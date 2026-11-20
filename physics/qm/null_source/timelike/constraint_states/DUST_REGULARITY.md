@@ -2,7 +2,7 @@
 
 ## 1. Precise model and claim
 
-This continues only the **new**, explicitly chosen two homogeneous zero-mode
+This starts with the **new**, explicitly chosen two homogeneous zero-mode
 model in [GRAVITY_CONTRACT.md](GRAVITY_CONTRACT.md). It does not change the
 frozen AE theory. Put
 \[
@@ -188,7 +188,112 @@ This rejects almost the entire original momentum law, not a small bad
 tail. It also rejects its momentum-preserving stress-equivalent family
 and a direct splice of the positive-clock code in this cohort.
 
-## 7. Revised acceptance decision
+## 7. Laplace--Beltrami and constant-weight orderings do not repair it
+
+### The full three-dimensional minisuperspace Laplace--Beltrami choice
+
+The same homogeneous kinetic action, before Fourier transforming matter,
+is
+\[
+ L_{\rm kin}={1\over2N}
+   [-{4V_0\over3}\dot x^2+x^2(\dot Q_1^2+\dot Q_2^2)] .
+\]
+Thus its configuration-space metric is
+\[
+ {\cal G}_{AB}=\operatorname{diag}(-4V_0/3,x^2,x^2),\qquad
+ |\det{\cal G}|^{1/2}=\sqrt{4V_0/3}\,x^2.
+\]
+Choose the standard Laplace--Beltrami kinetic ordering
+\(-\Delta_{\cal G}/2\), without an added configuration-space curvature
+term. In matter momentum representation it gives
+\[
+ H_{\rm LB}=c(\partial_x^2+2x^{-1}\partial_x)
+             +{|P|^2\over2x^2}+W(x)
+\]
+on \(L^2(x^2dx\,d^2P)\); the constant measure factor is immaterial.
+The geometric unitary \(U\psi=x\psi\) gives
+\[
+           U H_{\rm LB}U^{-1}=H_{\rm flat}.
+\]
+There is no extra inverse-square potential. This is an operator/domain
+equivalence when \(D(H_{\rm LB})=U^{-1}D(H_{\rm flat})\), not just an
+identity of formal expressions. In particular
+\(W(xu,xv)=x^2W(u,v)\) transports the weighted boundary form correctly.
+All the separated extensions are carried to their corresponding flat
+extensions.
+
+The unitary acts only on geometry and commutes with the source algebra,
+the P spectral projections and the positive K0 multiplication form.
+Negative spectral support, total H second moments, the source marginal,
+and finite or infinite K0 expectation at every time are therefore
+preserved. The same quantitative exclusion (4)--(5) applies to this
+full minisuperspace Laplace--Beltrami choice. It is not a unique
+quantization derived from Core. The standard ordering and possible
+curvature-ordering alternatives are discussed by Ryan--Turbiner,
+[quant-ph/0406167](https://arxiv.org/abs/quant-ph/0406167); the metric and
+unitary identities here are derived directly from this action.
+
+### A wider fixed constant-weight family
+
+For any fixed finite real beta, declare
+\[
+ {\cal H}_\beta=L^2(x^\beta dx\,d^2P),\qquad
+ H_\beta=c\,x^{-\beta}\partial_x x^\beta\partial_x
+                         +{|P|^2\over2x^2}+W(x).
+\]
+This is an additional family of ordering choices, not the
+Laplace--Beltrami operator of the same metric for every beta.
+Under \(U_\beta\psi=x^{\beta/2}\psi\),
+\[
+ U_\beta H_\beta U_\beta^{-1}
+ =c\partial_x^2+{c g_{\beta,P}\over x^2}+W(x),\qquad
+ g_{\beta,P}={|P|^2\over2c}+{\beta(2-\beta)\over4}.                    \tag{6}
+\]
+For a fixed measurable decomposable self-adjoint realization, the earlier
+proof applies to each fiber with \(P\ne0\) and \(g_{\beta,P}\ge1/4\).
+Consequently finite total H second moment plus an open finite-K0 window
+forces a normal state into
+\[
+       D_\beta=\{|P|^2<R_\beta^2\},\qquad
+       R_\beta^2={3(\beta-1)^2\over16V_0}.                            \tag{7}
+\]
+At beta=1, P=0 has K0=0 and cannot be excluded by the fiber argument.
+It is a null set for \(d^2P\), so it carries no normal direct-integral
+state. There is no nonzero normal state satisfying the stated gate in
+that case. For other beta the low-P endpoint can change classification;
+no claim that all fibers remain limit-circle is needed.
+
+The input Gaussian mixture has strictly positive momentum density
+everywhere, so every finite \(R_\beta\) leaves positive excluded weight.
+An explicit bound is available. For an isotropic Gaussian of covariance
+\(vI\), a centered disk has its greatest probability when the Gaussian
+mean is zero: rotate its mean to the first axis and condition on the
+second coordinate; the first-coordinate centered-interval probability
+decreases with the magnitude of its mean. Integrating, and then mixing,
+gives
+\[
+ {\mathbb P}_{\rm old}(D_\beta^c)
+ \ge \exp[-R_\beta^2/(2v)]
+ =\exp[-(\beta-1)^2 B_0]>0,\qquad B_0={3\over32V_0v}.                 \tag{8}
+\]
+Thus **every finite fixed beta fails exact preservation of the original
+P law** under the same physical regularity gate. If an admissible source
+marginal exists, its trace distance from the old source is at least the
+right-hand side of (8). The elementary area bound also gives
+\({\mathbb P}_{\rm old}(D_\beta)\le\min(1,(\beta-1)^2B_0)\).
+For beta=0 and beta=2 the original quantitative certificate is identical;
+for \(0\le\beta\le2\) its coarse \(2.85\,10^{-12}\) upper bound still
+holds. There is no beta-independent near-one trace-distance bound for
+arbitrarily large \(|\beta|\).
+
+This corollary fixes the proper-dust-time constraint; multiplying the
+constraint by an x-dependent lapse function before quantizing is a new
+choice, not covered by the displayed equivalence. Momentum-mixing
+boundary conditions, new physical inner products, different endpoint
+dynamics and general quantum-gravity completions are also outside this
+ordering family.
+
+## 8. Revised acceptance decision
 
 The self-adjoint operator construction, physical inner product and
 nonempty positive-dust sector remain mathematically valid. They do
@@ -196,9 +301,11 @@ nonempty positive-dust sector remain mathematically valid. They do
 The present model cannot be registered as an accepted carrier for that
 common physical history.
 
-This theorem is conditional on this flat ordering, half-line geometry,
+The initial theorem is conditional on this flat ordering, half-line geometry,
 fixed decomposable separated extension, positive dust branch and finite
-total spectral second moment. It does not exclude other quantizations,
+total spectral second moment. Section 7 extends it to the stated
+Laplace--Beltrami and fixed constant-weight family. It does not exclude
+general other quantizations,
 clock models, general physical Hilbert spaces, the frozen mean-SCE, or
 full quantum gravity. Adding a hard wall, regularizing inverse volume or
 changing the ordering would be a new physical assumption requiring its

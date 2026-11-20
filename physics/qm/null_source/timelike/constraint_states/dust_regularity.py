@@ -31,6 +31,25 @@ assert above(VP,1669000000) and above(V0,iv.mpf("19.73"))
 rational=s.Rational(3,32)/(s.Rational(1973,100)*1669000000)
 assert rational==s.Rational(3,1053739840000)
 assert rational<s.Rational(285,10**14)
+# The full two-zero-mode configuration metric fixes the LB weight x^2.
+beta=s.symbols("beta",real=True)
+F=s.Function("F")(x)
+metric=s.diag(-4*V/3,x**2,x**2)
+assert s.simplify(-metric.det()-4*V*x**4/3)==0
+assert s.simplify(-metric.inv()[0,0]/2-c)==0
+assert metric.inv()[1,1]==1/x**2 and metric.inv()[2,2]==1/x**2
+weighted=x**(beta/2)*(s.diff(x**(-beta/2)*F,x,2)
+                   +beta/x*s.diff(x**(-beta/2)*F,x))
+transported=s.diff(F,x,2)+beta*(2-beta)*F/(4*x**2)
+assert s.simplify(weighted-transported)==0
+assert s.simplify(transported.subs(beta,2)-s.diff(F,x,2))==0
+p2=s.symbols("p2",nonnegative=True)
+g_eff=p2/(2*c)+beta*(2-beta)/4
+radius2=c*(beta-1)**2/2
+assert s.simplify(g_eff-s.Rational(1,4)-(p2-radius2)/(2*c))==0
+rr,rad=s.symbols("rr rad",positive=True)
+center_disk=s.integrate(rr*s.exp(-rr**2/(2*v))/v,(rr,0,rad))
+assert s.simplify(center_disk-(1-s.exp(-rad**2/(2*v))))==0
 finish("dust_regularity.py",{
  "positive_matter_form":"K0=|P|^2/(2*x^2)",
  "critical_momentum_squared":outward(threshold),
@@ -52,4 +71,12 @@ finish("dust_regularity.py",{
  "operator_self_adjointness_retracted":False,
  "analytic_domain_theorem_computer_formalized":False,
  "next_gate":"independently justified finite-positive-stress geometric domain",
+ "full_minisuperspace_LB_unitarily_equivalent_to_flat":True,
+ "constant_weight_transformed_coupling":"P^2/(2c)+beta*(2-beta)/4",
+ "constant_weight_critical_radius_squared":"3*(beta-1)^2/(16*V0)",
+ "original_tail_probability_lower_for_finite_beta":"exp[-(beta-1)^2*3/(32*V0*v)]",
+ "every_finite_constant_beta_exact_original_P_law_embedding_excluded":True,
+ "beta_one_zero_momentum_fiber_exception_has_zero_normal_measure":True,
+ "all_beta_near_one_numeric_distance_claimed":False,
+ "general_all_orderings_or_lapse_rescalings_excluded":False,
  "whole_physical_unification":"OPEN"},extra=["GRAVITY_CONTRACT.md","gravity_contract.json"])

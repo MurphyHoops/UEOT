@@ -177,3 +177,9 @@ finite-stress physical carrier for the actual source. The original
 A/P/K0 and the positive-clock conditional error bound cannot be transferred
 to it. A physically justified new domain/constraint must pass the positive
 matter-form time-window test before it can be extended to the full source.
+
+A later check in [DUST_REGULARITY.md](DUST_REGULARITY.md), Section 7,
+derives the full three-coordinate minisuperspace Laplace--Beltrami
+ordering and shows it is unitarily equivalent to this flat representation.
+Its finite-stress exclusion is therefore the same; changing a finite
+constant measure weight also does not preserve the original full P law.

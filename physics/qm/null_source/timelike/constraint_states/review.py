@@ -32,6 +32,9 @@ assert dust["original_subcritical_probability_upper"][1]<2.85e-12
 assert dust["original_vs_any_admissible_source_trace_distance_lower"][0]>.9999999999971
 assert not dust["original_momentum_law_and_stress_equivalent_family_embeddable"]
 assert not dust["compact_spectral_support_required"]
+assert dust["full_minisuperspace_LB_unitarily_equivalent_to_flat"]
+assert dust["every_finite_constant_beta_exact_original_P_law_embedding_excluded"]
+assert not dust["all_beta_near_one_numeric_distance_claimed"]
 assert not data["gravity_contract"]["finite_positive_matter_stress_history_certified"]
 finish("review.py",{
  "rational_ten_percent_margin":str(margin),"wrong_sigma_y_compensator_variance":str(wrong),
@@ -42,6 +45,7 @@ finish("review.py",{
  "leading_GR_dust_not_spliced_into_original_AE_NOON_model":True,
  "self_adjoint_total_H_not_confused_with_finite_positive_matter_form":True,
  "original_source_dust_carrier_rejected_on_open_window":True,
+ "LB_and_finite_constant_weight_ordering_escape_checked":True,
  "new_scientific_entries_reviewed":len(entries),
  "formal_machine_proof_or_external_human_review_claimed":False,
  "common_total_preparation_local_gravity_readout":"OPEN",

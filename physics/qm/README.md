@@ -11,6 +11,8 @@
 
 继续构造 leading-GR 两零模正尘埃模型后，有限应力审查给出新的排除：在所声明排序、半线域和固定分离自伴扩张中，有限总 H² 与开放时间窗有限正物质能迫使动量进入一个只含原概率 <2.85e-12 的小盘。自伴演化存在，但不能作为原态的有限应力历史。**下一关先验收有独立物理依据的几何约束和正物质形式域，再连接非零场、完整 AE 和局域总装置。**
 
+完整配置空间 Laplace–Beltrami 排序也被同一酉等价排除覆盖；一般固定有限权重排序仍留下严格正的原动量坏尾，需使用依权重变化的界。
+
 [有限应力证明](null_source/timelike/constraint_states/DUST_REGULARITY.md) · [源族](null_source/timelike/constraint_states/RELATIONAL.md) · [正能时钟](null_source/timelike/constraint_states/POSITIVE_CLOCK.md) · [反思](null_source/timelike/constraint_states/REVIEW.md) · [回执](null_source/timelike/constraint_states/verification.json)
 
 复用137项前驱结果、冻结498个继承科学文件，旧检查和旧 ODE 不重跑。下列旧节是历史入口；本轮加强或拒收以新证明的明确范围为准。Core只读、GI排除、PR开放草稿，整体物理统一仍开放。

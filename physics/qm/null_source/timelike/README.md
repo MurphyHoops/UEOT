@@ -4,6 +4,8 @@
 
 构造明确的两零模GR／正尘埃载体后又继续完成物理域审查：该半线平坦排序的固定分离自伴扩张，无法承载保持原P律、有限总H二阶矩且在开放时间窗具有有限正物质能的正常态。允许动量盘只含原概率 <2.85e-12。**下一门先给具有物理依据的有限正应力约束域，再接非零场、完整AE与局域装置。**
 
+完整配置空间 Laplace–Beltrami 排序也被同一酉等价排除覆盖；一般固定有限权重排序仍留下严格正的原动量坏尾，需使用依权重变化的界。
+
 [静态加强界](constraint_states/STATIC_BOUND.md) · [应力等价源族](constraint_states/RELATIONAL.md) · [正能时钟](constraint_states/POSITIVE_CLOCK.md) · [有限应力排除](constraint_states/DUST_REGULARITY.md) · [下一验收](constraint_states/INPUTS_AND_NEXT_TEST.md) · [回执](constraint_states/verification.json)。九项新检查、137项复用、498文件冻结。旧节保持历史范围；Core只读、GI排除、PR开放草稿，整体统一未完成。
 
 **前轮入口：**[完整总源、约束退化与热壳相干](total_source/README.md)。完整 AE 密度切向与 Einstein 侧相消，而实际基态仍有正密度噪声，故当前独立噪声齐性线性扩张失败；确定性平均解保留。

@@ -148,6 +148,8 @@ def main():
         "clock_source_energy_retained":True,
         "separate_two_zero_mode_dust_self_adjoint_physical_model":True,
         "original_source_finite_stress_dust_embedding": "EXCLUDED_IN_DECLARED_MODEL",
+        "full_minisuperspace_LB_same_exclusion":science["dust_regularity"]["full_minisuperspace_LB_unitarily_equivalent_to_flat"],
+        "finite_constant_weight_exact_original_P_law_embedding": "EXCLUDED_IN_DECLARED_FAMILY",
         "dust_allowed_original_momentum_probability_upper":science["dust_regularity"]["original_subcritical_probability_upper"],
         "dust_original_source_trace_distance_lower":science["dust_regularity"]["original_vs_any_admissible_source_trace_distance_lower"],
         "original_full_AE_NOON_gravity_claimed_closed":False,

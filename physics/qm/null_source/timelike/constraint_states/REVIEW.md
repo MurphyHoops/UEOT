@@ -57,6 +57,15 @@ unbounded RSET, full QFT multi-time dynamics or initial normal derivatives.
 The positive clock carries a finite explicit energy budget and cannot be
 silently attached to the old geometry.
 
+
+The subsequent ordering check removes a nearby escape route: the full
+two-zero-mode minisuperspace Laplace--Beltrami operator is geometrically
+unitarily equivalent to the flat representation. More generally, every
+finite fixed constant-weight ordering leaves a strictly positive forbidden
+Gaussian momentum tail. The original near-one distance bound is not
+transferred unchanged to arbitrary weights; the explicit bound depends
+on beta. These claims retain the same proper-dust-time and domain gates.
+
 ## Next acceptance order
 
 1. Give an independently justified geometric constraint and physical
