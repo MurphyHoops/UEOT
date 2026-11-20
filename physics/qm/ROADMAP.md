@@ -2,7 +2,23 @@
 
 本图延续同一物理任务。稳定书稿状态为[CURRENT](status/CURRENT.json)，本轮研究执行以当前节链接的回执为准；稳定结果为[主文](book/UEOT_PHYSICS.md)及现行claim ledger。Core只读，GI不在范围。数学闭合、物理选择、计算实现、经验检验分别登记。
 
-## 当前 · 先验收有限正应力的物理定义域，再扩展总源历史
+## 当前 · 完成有限源分支，回到原总 CTP 初值与约束
+
+[有限正源十项检查](null_source/timelike/finite_stress/README.md)已给固定离散族的三区间裁决、临界正常共同历史、全部所需体积／H 图范数矩、总正能方差与正常正能时钟。其同态二次参照残差、真实 Q 法向导数和 work-law 交换子又表明：有限源存在性没有恢复原 AE/RSET。有限误差合同重开超临界模型，且已构造近似有明确的几何／真空源成本。
+
+**本轮复盘修正：**强量子约束、正 dust、半格和排序不是确定性 mean-SCE 推出的必要条件。该新增分支完成自身验收后归档；后续工作的优先级重新由原共同物理历史的缺口决定。
+
+1. 使用原完整总源的同一 in-in／CTP functional，明确放开的旧条件与固定保留的输入。优先审查有限初片、约束相容 geometry–matter boundary density；不复用已被排除的同 incoming 独立密度噪声切向。
+2. 同时给出绝对密度／动量约束、正常量子初态、Hadamard 初片正则性及 CY/K/N 完整块。非齐次方向必须实际通过空间零谐波的整体约束；PSD 或 Delta N 不能替代。
+3. 从同一作用量导出 mean、retarded Hessian、噪声及初始相关项，并给近似误差。两场不能无控制地借用 large-N 领先阶结论；初片 UV 不能用任意开关引力耦合绕过。
+4. 在绝对 baseline 与有限正窗通过后，再连接既有 NOON 压力差、真实控制器／载体总源、因果准备过去和局域引力校准。
+5. 以减少独立物理输入、受控恢复既有理论和可检验预测验收统一；文献结构先例、自伴性、证书数量和新分支存在性均不是统一完成。
+
+[新输入账本与验收标准](null_source/timelike/finite_stress/INPUTS_AND_NEXT_TEST.md) · [反思](null_source/timelike/finite_stress/REVIEW.md) · [同态参照检查](null_source/timelike/finite_stress/DISPERSION_GAP.md) · [回执](null_source/timelike/finite_stress/verification.json)
+
+146 项旧结果、536 文件冻结；10 项新检查，旧科学计算和旧 ODE 为零。以下为历史范围，原接受结果不改写。
+
+## 前轮 · 先验收有限正应力的物理定义域，再扩展总源历史
 
 [本轮九项证书](null_source/timelike/constraint_states/README.md)关闭原静态相关态7%—10%开口，给出完整态补偿代价、实际零模量子约束下界、关系态和有限正能时钟。随后建立的明确正尘埃几何模型通过自伴演化检查，却在下一轮有限应力验收被拒收：保持原动量分布的正常态，不能同时满足有限总H二阶矩和开放时间窗有限正物质能。
 

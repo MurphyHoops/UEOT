@@ -5,7 +5,19 @@
 - [中文第71章](book/UEOT_PHYSICS.md#ch-71) · [English Chapter 71](book/UEOT_PHYSICS.en.md#ch-71) · [完整书稿与3.12版印本](book/README.md)
 - [科学说明与复核程序](correlated_bath/README.md) · [状态](status/CURRENT.json) · [主张账本](status/CLAIM_LEDGER_v31.15.json) · [研究路线](ROADMAP.md)
 
-## 当前研究：约束量子态、正能时钟与有限应力验收
+## 当前研究：有限正源历史、同态参照残差与路线回审
+
+[本轮十项新检查](null_source/timelike/finite_stress/README.md)对一个明确新增的 K-inspired 正体积／正尘埃模型完成三区间验收：亚临界负谱态没有正阶体积矩；超临界不能容纳完整原高斯 P 律；临界点可构造正常联合态、固定演化和有限总正源方差。同一 dust 的正常正能时钟提升也保留完整资源账本。
+
+继续验收后发现：裸源态与原法向导数不能由 P 律保持推出；经典对称 work-law 留下非零交换子；明确二次参照的同态约束均值有严格非零残差。有限误差还会重新打开超临界路线，所构造近似的体积／真空总能成本增长。因此这项约化存在性结果不等于原 AE/QFT 或仪器闭合。
+
+**优先级重新校正：strong dust 和离散几何是新增分支，不是原 mean-SCE 的必要条件。下一主任务回到同一总 CTP 作用量的约束相容边界态、绝对噪声与初始相关，再接原完整场论响应。** 不继续用增加时钟或排序替代共同物理历史。
+
+[正常态](null_source/timelike/finite_stress/CRITICAL_STATE.md) · [总正源](null_source/timelike/finite_stress/POSITIVE_SOURCE.md) · [同态残差](null_source/timelike/finite_stress/DISPERSION_GAP.md) · [导数与 Ward 范围](null_source/timelike/finite_stress/SOURCE_OBSERVABLES.md) · [复盘与下一门](null_source/timelike/finite_stress/INPUTS_AND_NEXT_TEST.md) · [回执](null_source/timelike/finite_stress/verification.json)
+
+146 项旧结果复用、536 个继承科学文件冻结；本轮只执行新增检查，旧 checker／ODE 不运行。Core 只读、GI 排除、PR 开放草稿，整体物理统一与经验校准仍开放。
+
+## 前轮研究：约束量子态、正能时钟与有限应力验收
 
 [本轮九项检查与完整结果](null_source/timelike/constraint_states/README.md)把原静态相关态下界加强到严格 >10.072315975%，并给出固定完整边缘态的正能补偿条件、量子约束下界、关系物理内积及新的正规应力等价源族。有限正能时钟保留全部源尾，短窗条件态误差受控，但完整约束 RMS 约 0.5，时钟能量约为原总能量的 13.42%；三者分别记账。
 
