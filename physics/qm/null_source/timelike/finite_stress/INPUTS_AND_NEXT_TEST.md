@@ -63,3 +63,9 @@ TOTAL_BOUNDARY_GATE 已将完整装置的守恒总谱律与当前原输入的窄
 ## 有限初片入口已有的实际对象
 
 FINITE_SLICE_UV 已给原作用量内的 exact KG matter-Cauchy family、正定初片协方差、高频展开、真实时间嵌入导数和 canonical boundary phase。下一步不再从“任意几何初值 + 旧静态量子态”出发，而要把所选几何 jets、同一合法态和边界相位一同代入原 finite-slice constraint/CTP map。指定平滑过去是新的制备输入，仍须由真实控制器的 total action 解释；它没有自动通过 mean-SCE，更没有通过完整涨落初值。sigma 不是全应力弱噪声参数，旧 static 总能量界也不移植到新 Hamiltonian。
+
+## 当前首选起点：已匹配有限片的原精确平均历史
+
+GEOMETRY_MATCHING 已拒收一条有受控正窗残差的明确 prescribed 曲线及其普通 classical scalar 补偿，并在原真实 mean family 内构造一次选参的 a0=A、h0>0 截面。这是下一任务的具体起点：同一作用量、同一合法 incoming 态和同一正窗都已经确定，不再从任意 jets 拼接开始。
+
+下一闭环直接求这条非静态背景上的初始 lapse/density 与全部 momentum constraint map、完整绝对 noise/contact/state-transport 块及必要的 geometry–matter–device 联合边界态。旧 static N00 和守恒总能量谱律不能不经推导移植；sharp-slice 压力方差也不能以已完成的时间平滑核代替。若选薄层替代源，必须另计它在动态背景的 noise 和共同制备装置。

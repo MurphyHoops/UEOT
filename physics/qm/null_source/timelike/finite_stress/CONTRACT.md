@@ -30,3 +30,12 @@ derivative and canonical action boundary term, and tests ultraviolet
 representation matching. Its prescribed geometry is not called a
 self-consistent Einstein/device history. Finite WKB order, old reference
 energy, new RSET and infinite-field implementability remain distinct.
+
+GEOMETRY_MATCHING uses the original fixed incoming matter functional to
+exclude one prescribed positive-window geometry with controlled full RSET
+remainders and actual normal derivatives. Its required additive repair
+violates NEC, excluding only ordinary homogeneous positive-canonical
+classical scalar repair. Separately, a unique one-time amplitude selection
+inside the frozen exact mean family gives a(0)=A and h(0)>0, with all mean
+residuals and their finite normal derivatives exactly zero. It does not
+close nonstatic CTP, the quantum joint boundary density or any device.

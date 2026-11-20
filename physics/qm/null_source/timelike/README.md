@@ -14,7 +14,9 @@
 
 [模型](finite_stress/MODEL.md) · [正常共同态](finite_stress/CRITICAL_STATE.md) · [总正源](finite_stress/POSITIVE_SOURCE.md) · [实际导数](finite_stress/SOURCE_OBSERVABLES.md) · [同态参照残差](finite_stress/DISPERSION_GAP.md) · [下一门](finite_stress/INPUTS_AND_NEXT_TEST.md) · [回执](finite_stress/verification.json)
 
-十二项新增检查、146 项复用、536 个继承科学文件冻结。Core 只读、GI 排除、旧 checker／ODE 不运行、PR 开放草稿，整体统一仍开放。
+十五项新增检查、146 项复用、536 个继承科学文件冻结。Core 只读、GI 排除、旧 checker／ODE 不运行、PR 开放草稿，整体统一仍开放。
+
+最新的有限片检查已把态和几何同步起来：[同态残差与真实几何截面](finite_stress/GEOMETRY_MATCHING.md)先拒收一个需要负 rho+p 的普通标量补偿候选，再在原精确 mean family 中一次选参得到 a0=A、h0>0 的真实正窗历史，全部平均缺陷及法向导数恒零。相应[合法初片态与边界相位](finite_stress/FINITE_SLICE_UV.md)必须随几何运输。下一闭环在这条实际历史上计算非静态的完整初始约束／绝对噪声／交叉块，再验收装置和引力记录。
 
 **前轮入口：**[约束量子态、正能时钟与有限应力验收](constraint_states/README.md)。原静态相关态下界加强为严格 >10.072315975%；完整态补偿条件、实际零模量子约束界、关系物理内积和新的正规应力等价族已给出。有限正能时钟的微小条件误差、约0.5的完整约束RMS和约13.42%的源能成本分别保留。
 
