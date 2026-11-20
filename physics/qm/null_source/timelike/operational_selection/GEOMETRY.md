@@ -55,14 +55,14 @@ Delta G=Jbar Delta p。Jbar 仍在同一区间箱，因而可逆。
 
 显式逆矩阵给
 \[
-|\Delta z|<1.091(|\Delta u|+|\Delta h|/\sigma),
+|\Delta z|\le1.091(|\Delta u|+|\Delta h|/\sigma),
 \]
 \[
-|\Delta w|<2.31\times10^{-6}|\Delta u|+
+|\Delta w|\le2.31\times10^{-6}|\Delta u|+
 1.052|\Delta h|/\sigma,
 \]
 \[
-\|\Delta p\|_\infty<2.18\|\Delta\mathcal G\|_\infty.
+\|\Delta p\|_\infty\le2.18\|\Delta\mathcal G\|_\infty.
 \]
 这是两个相容像集数据点的绝对误差界。任意有噪数据不自动属于像集；
 Rw=10^-51 的相对快幅估计仍需极高精度。
@@ -109,7 +109,7 @@ e^(±U)、e^(±2U)、e^(±3U) 均在 [.999,1.001] 内，于是
 
 同 epsilon、同 eta 时 z 相同，故
 \[
-|\Delta\theta|<2.1|\Delta w|/\sigma\le2.1R_w/\sigma
+|\Delta\theta|\le2.1|\Delta w|/\sigma\le2.1R_w/\sigma
 <2.244\times10^{-57}.
 \]
 这是真正的跨几何编码差，绝不能将 1/sigma 本身当作该差。
@@ -125,7 +125,7 @@ e^(±U)、e^(±2U)、e^(±3U) 均在 [.999,1.001] 内，于是
 \[
 (1+s\zeta\overline K_z)\Delta\eta=-\overline K_w\Delta w.
 \]
-分母≥1−1.005004Rz/2>.999，故 |Delta eta|<1.043|Delta w|/sigma。
+分母≥1−1.005004Rz/2>.999，故 |Delta eta|≤1.043|Delta w|/sigma。
 同理
 \[
 \Delta\theta=(1+s\zeta\overline B_z)\Delta\eta+\overline B_w\Delta w,

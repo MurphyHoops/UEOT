@@ -4,7 +4,7 @@
 前轮已构造同一实际量子态与几何的精确 nonlinear mean-SCE 历史；
 这次继续检验它能否唯一选解、承接完整源涨落并被实际制备读出。
 
-**最强新增结果：**在固定原两场、M2/U0、完整 S0 律及 AE 处方下，
+**最强新增结果：**在固定 incoming A、原两场、M2/U0、完整 S0 律及 AE 处方下，
 允许非平稳、挤压、跨模和零高纠缠，
 正频 E4 范数≤1/5000 的任意中央 CQ 几何—态候选仍有正时间窗归一化约束 RMS严格>7%。
 低／高频分别估计的动态 QEI 已把负正常序能量补偿包括在内。
@@ -17,7 +17,7 @@
 | 光滑／解析加时间协变是否唯一选慢支 | 几何自治图有幂律分类；完整参考时标协变仍允许解析非零快幅反例 | [SELECTION](SELECTION.md) |
 | 两幅度能否由理想几何数据识别 | (u,h/sigma) 在整个实半矩形单射，逆绝对误差增益<2.18 | [GEOMETRY](GEOMETRY.md) |
 | 原实际零模能提供多少读数信息 | 精确 CQ 重叠、有限二元错误率；d=1/sigma时5%错误率至少45次独立编码 | [CLOCK](CLOCK.md) |
-| 真正的快幅几何差能否被该零模读出 | 同 proper-time、当前认证域内任意最终零模读数 D<6.08e−52 | [GEOMETRY](GEOMETRY.md) · [CLOCK](CLOCK.md) |
+| 真正的快幅几何差能否被该零模读出 | 同 epsilon、共同过去原点、两端在D的 proper-time 对齐：任意最终零模读数 D<6.08e−52 | [GEOMETRY](GEOMETRY.md) · [CLOCK](CLOCK.md) |
 | 完整连续读源的代价是什么 | Gaussian pointer CP instrument、Q反作用、指定指针能量界、源精度—时钟 MMSE 恒等式 | [INSTRUMENT](INSTRUMENT.md) |
 | 非平稳高模和纠缠能否消除全源约束残差 | 在 r=1/5000 的同正频 E4 域中，RMS>123753/(1250000sqrt2)>.07 | [FLUCTUATIONS](FLUCTUATIONS.md) |
 

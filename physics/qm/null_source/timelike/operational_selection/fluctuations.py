@@ -2,6 +2,7 @@
 from common import *
 import sympy as sp
 def result():
+    assert above(SLOW,"1.99")
     # Reuse the complete fixed-prescription vacuum bound; no old checker runs.
     assert NORMS["geometry_ball_radius"]=="0.1"
     assert NORMS["all_fixed_contacts_zero_thermal_retained"]
