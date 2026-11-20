@@ -54,7 +54,7 @@ history; changing sigma or a boundary condition at each time is inadmissible.
 The reference generator G in a code is not a scale factor. A capped
 generator gives trace-norm state control; that alone does not certify
 unbounded RSET, full QFT multi-time dynamics or initial normal derivatives.
-The positive clock carries a finite explicit stress budget and cannot be
+The positive clock carries a finite explicit energy budget and cannot be
 silently attached to the old geometry.
 
 ## Next acceptance order

@@ -8,14 +8,17 @@ generator is the original full local QFT dynamics.
 
 ## 1. A smooth bounded clock encoding
 
-Subtract only the fixed static c-number from the full source Hamiltonian:
+Subtract only the fixed static c-number, and retain the complete
+excitation Hamiltonian on the full source Hilbert space:
 \[
- H=H_{\rm exc}=E_sS_0+\Omega N\ge0,\quad
+ H=H_{\rm full,exc}=E_sS_0+\Omega N+H_{\rm rest}\ge0,\quad
  E_s=\pi^2M_2/A^3,\quad\Omega=\sqrt3/A .
 \]
-All other nonzero modes have their full vacuum state, not a numerical
-cutoff; their excitation energy is zero on the given input. The full
-operator and any later field insertion still include them.
+Here H_rest>=0 contains every other nonzero mode. Those modes are in their
+full vacuum state on the specified input, so H_rest rho=0. Only the
+input energy law and MGF reduce to Es S0+Omega N. Every H in V, f(H),
+the actual constraint and later field insertions means the full operator
+above; no mode is dropped from that operator.
 
 Choose a smooth nonincreasing chi with chi=1 on (-infinity,0],
 chi=0 on [1,infinity), and 0<=chi<=1. It can be fixed explicitly using
@@ -163,8 +166,10 @@ abstract clock in a real spatial stress distribution. Such a clock cannot
 be appended while claiming the original background remains a total-source
 solution.
 
-Smooth capping preserves the finite-mode input's regularity and moments,
-but using f(H) as an actual universal QFT Hamiltonian would change
+Smooth capping preserves finiteness of the relevant polynomial moments.
+The energy and joint P,N spectral moments are preserved exactly, whereas
+general bare Q moments need not equal their original values. Using f(H)
+as an actual universal QFT Hamiltonian would change
 multi-time transition frequencies, including those probed by field
 insertions outside the populated shell. Only the explicitly compared
 conditional states and bounded/coarsened records are certified here.

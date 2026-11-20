@@ -114,8 +114,10 @@ Gaussian time average. The two statements are not interchangeable.
 If a common source/memory unitary W commutes with its complete free H,
 then (I tensor W)V=VW for both encodings. Consequently it acts on one
 common constrained history and preserves its constraint residual.
-The accepted finite-shell NOON gate with its full pure-memory output has
-this property for the explicitly degenerate abstract memory Hamiltonian.
+The accepted finite-shell NOON gate, with its complete source--memory
+output starting from a pure memory, has this property for the explicitly
+degenerate abstract memory Hamiltonian. The final reduced memory is not
+assumed pure; its correlations and entropy remain included.
 All its earlier entropy and transient interaction obligations remain.
 
 The statement is algebraic and post-gate. It does not construct a cap-local

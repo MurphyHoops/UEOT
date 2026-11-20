@@ -2,9 +2,11 @@
 
 ## Actual state, not a newly chosen covariance
 
-Use the accepted unfiltered state in its common de-sheared seed frame:
-[Qj,Pk]=i delta_jk, v=Var(Pj)=x0/4,
-Var(Qj)=1/(4v), Cov(Qj,Pj)=0.
+Use the accepted unfiltered state in its common de-sheared seed frame,
+with [Qj,Pk]=i delta_jk. Within each coherent Gaussian component,
+v=Var_component(Pj)=x0/4, Var_component(Qj)=1/(4v), and
+Cov_component(Qj,Pj)=0. The full mixture also contains the variance of
+its component momentum means; its total Var(Pj) is not set equal to v.
 Each coherent component has Q mean zero and momentum mean
 sqrt(K2)(y,z), K2=2*pi^2*M2. The radial distribution has mean
 L=1+sqrt(3)/4. No uniform angle or vanishing overall momentum mean is

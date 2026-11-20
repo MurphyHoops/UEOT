@@ -134,7 +134,7 @@ compressed radius is assumed.
 
 For any chosen R>0 there is some nonzero finite negative spectral band
 [-E2,-E1], with E2>E1>2R, because the spectrum is unbounded below. A normal
-state supported there has finite energy moments. With an even smooth
+state supported there has finite energy moments. With an even normalized smooth
 packet h supported in [-2R,2R], the map
 \[
  (V_d\psi)(p)=h(p+H_\theta)\psi,\quad p>0

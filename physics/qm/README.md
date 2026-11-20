@@ -21,7 +21,7 @@
 
 随后在原两场 k=2 简并热壳中构造新的正的正规量子态（非高斯）：完整 W2、每场热边缘、全能量谱及同一精确静态平均几何均保持，但完整局域噪声有非零纯压力差。明确平衡光滑历史使零模相位严格抵消、全部高模重叠受控，得到全自由场影响幅度差 >2.04165e-10；这是 prescribed-history 结果，不是引力观测精度。
 
-完整纯记忆门、熵资源与真实 U(2) 载体未来因子化已给出。新的因果审查又证明单 cap 的精确无选择全局制备必须满足 T>=pi-chi0；chi0=1/128 时准备时间至少超过旧响应窗614万倍。源—几何交叉相关及量子不确定关系也已纳入。**下一门是未被排除的全源引力合同、绝对联合初值约束与实际准备过去。** 新载体不能沿用旧裸场 A/P/K0。
+从纯初始记忆出发的完整源—记忆门、熵资源与真实 U(2) 载体未来因子化已给出。新的因果审查又证明单 cap 的精确无选择全局制备必须满足 T>=pi-chi0；chi0=1/128 时准备时间至少超过旧响应窗614万倍。源—几何交叉相关及量子不确定关系也已纳入。**下一门是未被排除的全源引力合同、绝对联合初值约束与实际准备过去。** 新载体不能沿用旧裸场 A/P/K0。
 
 [约束](null_source/timelike/total_source/CONSTRAINTS.md) · [全场见证](null_source/timelike/total_source/HISTORY_WITNESS.md) · [载体](null_source/timelike/total_source/CARRIER.md) · [准备因果界](null_source/timelike/total_source/PREPARATION_CAUSALITY.md) · [反思与下一验收](null_source/timelike/total_source/INPUTS_AND_NEXT_TEST.md) · [回执](null_source/timelike/total_source/verification.json)。复用121项、冻结438文件，旧 checker/ODE不执行。Core只读、GI排除、PR开放草稿不合并，整体统一及经验确认仍开放。
 
