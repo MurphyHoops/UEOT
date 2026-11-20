@@ -16,4 +16,10 @@ Each certificate names its assumptions. A well-defined source influence is not a
 
 ## Current status
 
-Research and integration are in progress. The final README, review, actual run receipt and exact-head CI will state which calculations passed and which physical responsibilities remain open.
+Sixteen new symbolic/interval certificates have passed the complete local
+runner. All three native actual-source audits and targeted correction
+readbacks passed. The reviewed mathematical commit is
+6aff714fff283160ca2f6a0e24c9595197052059. The final source-bound receipt and
+exact-head CI distinguish executed evidence from the physical OPEN items.
+The common total on-shell preparation, constrained quantum/geometric joint
+initial state, gravitational instrument and physical unification remain OPEN.

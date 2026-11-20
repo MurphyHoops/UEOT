@@ -27,3 +27,14 @@ normalization, marginal-state and regularity wording corrections have been
 applied; new certificates were regenerated successfully. A write transport
 request timed out before execution; root verified unchanged content and no
 active session before retrying. No duplicate mutation or old checker run.
+
+## Source finalization
+
+UTC 2026-11-20T17:18:26.533550+00:00
+
+All three actual-source correction readbacks passed at 6aff714f, with no
+remaining review item. Root checked the reported Git blob IDs and bytes.
+The final commit adds only audit/status/session evidence and the regenerated
+source-bound receipt. Final exact-head CI and draft-PR readback are reported
+in the PR and delivery message; writing a run into its own source commit
+would change that commit. The physical unification goal remains OPEN.

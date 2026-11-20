@@ -30,8 +30,13 @@ commit and recorded the corresponding SHA-256 in agent_reviews.json.
    Gaussian state, and identify the static background of the pure-pressure
    formula. Shell marginal/stationarity wording is confined to the shell.
 
-All corrections are now in source. Targeted remote readback of the changed
-blobs will be recorded after the correction commit. The earlier exact-head
+All corrections are in commit 6aff714fff283160ca2f6a0e24c9595197052059.
+A, B and C each actually reread their changed blobs through GitHub and gave
+PASS with no remaining review item. Root independently verified all reported
+new blob IDs and byte SHA-256 values; see agent_reviews.json.
+The final receipt/evidence commit changes only audit/session/status metadata
+and the source-bound execution receipt, leaving these mathematical sources
+and scientific result payloads unchanged. The earlier exact-head
 CI evidence is preserved in checkpoint_ci.json: 16 PASS entries, source
 head 7795e4f4, and the observed artifact digest.
 
