@@ -5,7 +5,15 @@
 - [中文第71章](book/UEOT_PHYSICS.md#ch-71) · [English Chapter 71](book/UEOT_PHYSICS.en.md#ch-71) · [完整书稿与3.12版印本](book/README.md)
 - [科学说明与复核程序](correlated_bath/README.md) · [状态](status/CURRENT.json) · [主张账本](status/CLAIM_LEDGER_v31.15.json) · [研究路线](ROADMAP.md)
 
-## 当前研究：联合全时平均历史与全记录残差下界
+## 当前研究：允许量子相关后仍有静态残差下界
+
+[最新推广及证书](null_source/timelike/correlated_static/README.md)接续已经闭合的联合全时平均历史，继续检验零模／高模反相关能否抵消总噪声。现在允许相关与纠缠、高模任意平稳占据及更多壳，不要求条件乘积态；完整静态方程仍给总激发阈值上限。用正高模 Hamiltonian、联合谱正部不等式和完整记录的高半径尾，认证记录加权相对源／约束 RMS严格 **>7%**。
+
+前驱乘积准备的 **>10%** 界继续保留。新7%界覆盖更广相关态，不排除7%—10%之间的改进，也不宣称尖锐最优；两者都不是逐支普遍界或几何 RMS。高模边缘平稳、完整静态 mean-SCE、固定 U0/M2 和输入 S0 谱保持是明确条件。
+
+下一任务进一步收窄为动态联合初态、正窗约束传播及可校准引力记录；只加静态源相关性不足以消除残差。Core物理选择和总体统一目标仍开放。[两项新检查](null_source/timelike/correlated_static/run_verification.py) · [回执](null_source/timelike/correlated_static/verification.json)。67项前驱结果复用，246个科学文件逐字冻结，包括整个 joint_history；旧检查与模式／几何ODE未重跑。
+
+## 前轮研究：联合全时平均历史与全记录残差下界
 
 [本轮完整证明与证书](null_source/timelike/joint_history/README.md)接续 a40f7333。固定原 M2、同一常势 U0 与 AE 处方，重设计正规零模和有限热壳准备；真实平滑 CP 筛选的成功、失败各自对应一个合法 Hadamard 态与唯一静态几何，全部平均 Einstein 方程在整条历史上成立。两支热占据均为正，未逐时换根。
 
