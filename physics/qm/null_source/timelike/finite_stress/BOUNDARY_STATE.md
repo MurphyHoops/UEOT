@@ -121,8 +121,8 @@ functional. A changed transport/controller requires a fresh calculation.
 Between rho_plus and rho_minus the complete W2 itself is identical:
 a quadratic operator cannot connect A1 and A2. Their higher stress
 correlations and influence are different. All fixed-background Hadamard
-singularities are preserved because only finitely many mode moments
-have changed, by finite smooth functions.
+singularities are preserved: only finitely many modes have changed, so
+the W2 difference is a finite sum of smooth mode functions.
 
 ## 4. A uniformly small absolute global density residual
 
@@ -351,6 +351,21 @@ cross-species terms, with the actual normalized states, gives
  ={1-\frac d2(1\pm1)y\over(\alpha^*)^{d+2}},\qquad d=4.
 \tag{77a}
 \]
+
+An independent source-operator consistency check uses the actual shell
+unitary exp(i lambda Q), Q=A2+A2^dagger. It has
+y=sinh(2 lambda)^2 and alpha*=cosh(2 lambda). The mixed shell factors
+in (77b) expand as
+\[
+ F_+=1-(8+20p)\lambda^2+O(\lambda^4),\qquad
+ F_-=1-(8+4p)\lambda^2+O(\lambda^4).
+\]
+Their second derivatives are minus the absolute Q variances
+16+40p and 16+8p already computed in (73). This checks the noise
+normalization against the exact non-Gaussian factor, including the
+vacuum term. It is an algebraic unitary family, not a claim that every
+such squeeze has been implemented by a prescribed metric or a device.
+
 The minus state is a lowest-weight vector of the collective pair-lowering
 operator; it is not a pressure eigenstate and is not invariant under
 general squeezing.
@@ -403,7 +418,10 @@ epsilon2), beta=0. Both correlated branches then equal
 \[
  e^{-is(E_*+d\varepsilon_2)}W(s\sigma).
 \]
-Including the common renormalized c-number phase gives
+On this static subfamily the phase ledger is explicitly
+F_rest^ren(s)=exp[-is(E_c-d epsilon2)]: the displayed shell implementer
+already includes its d epsilon2 vacuum energy. Thus no vacuum term is
+counted twice. Combining these factors gives
 \[
  F_\pm(s)=e^{-is(E_c+E_*)}W(s\sigma).
 \tag{77c}

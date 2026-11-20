@@ -60,3 +60,9 @@ BOUNDARY_STATE 在原两场作用量上构造新的正常零模—NOON 壳关联
 
 这轮反思保留原完整源合同为主问题，把替代态作为量化清楚的比较结果。下一步必须给出包含几何与装置的真实边界态及同一总作用量，而非再次从低 source-only variance 推断引力降噪。
 对替代源已进一步给出实际分支求和的 exact homogeneous influence，而非由 W2 假定 Gaussian trace-log。对同一静态时间平移，它精确还原完整总能量律；小 profile 相位域有显式累积量余项界。这闭合了一个实际初态因子，但共同模式可实现性、真空相位、边界 Ward 和非齐次几何仍各有条件。下一研究重点应是退化约束如何与合法新边界数据或非线性几何共同满足，而不是继续只降低物质边缘的方差。
+
+## 6. 继续闭合后得到的两项筛选标准
+
+完整守能装置保存全部总能量律，因此不应仅追踪有限方差。原 Gaussian ring 输入给出窄能带的统一概率界，在新例子 2σ 的总能带上约为 2.0e-7；它针对完整 source+device，并不否定 source marginal 可以被改变。初始相关、不同端点 Hamiltonian 或持续相互作用是需要独立证据的新条件。
+
+再查原非线性 Ward，二阶密度核在 incoming 一阶解方向仍为零，证明直接喊出 sqrt(noise) 不能代替压力方程和边界数据。这里明确复用前轮的全阶 incoming 排除、normal additive no-point obstruction 和 physical Hilbert 区分，没有把它们重算成新成果。当前有用的下一项是 finite-slice 的真实联合密度及其初始约束像；继续增加模型或继续只降源边缘方差都不能自动越过这道门。

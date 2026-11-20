@@ -2,7 +2,7 @@
 import ast,hashlib,json
 from common import *
 NAMES=["model","phase_diagram","critical_state","volume_moments","positive_source",
- "source_observables","dispersion_gap","finite_clock","robustness","original_ctp_gate","boundary_state"]
+ "source_observables","dispersion_gap","finite_clock","robustness","original_ctp_gate","boundary_state","total_boundary_gate"]
 science={n:json.loads((HERE/(n+".json")).read_text()) for n in NAMES}
 for n,j in science.items():
     assert j["status"]=="PASS"
@@ -36,6 +36,9 @@ assert science["boundary_state"]["actual_autonomous_preparation_constructed"] is
 assert science["boundary_state"]["exact_correlated_nonGaussian_homogeneous_boundary_factor_derived"] is True
 assert science["boundary_state"]["full_metric_Gaussian_closure_error_claimed"] is False
 assert science["boundary_state"]["unrestricted_infinite_vacuum_phase_newly_computed"] is False
+assert science["total_boundary_gate"]["bound_applies_to_new_source_marginal_distance"] is False
+assert science["total_boundary_gate"]["finite_slice_C2_or_full_boundary_CTP_constructed"] is False
+assert science["total_boundary_gate"]["normal_additive_no_point_obstruction_reused_not_new_discovery"] is True
 allowed={"__future__","argparse","hashlib","json","math","pathlib","mpmath","sympy","common","ast"}
 for n in NAMES+["common","review"]:
     tree=ast.parse((HERE/(n+".py")).read_text())

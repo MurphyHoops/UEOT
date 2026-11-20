@@ -122,6 +122,10 @@ assert s.simplify(1-(1-4*y)/(1+y)-5*y/(1+y))==0
 assert s.simplify(1-1/(1+y)-y/(1+y))==0
 assert s.simplify(E0+4*w-(E2+6*w))==0
 assert s.Rational(1,5)/24+(s.Rational(1,3)**2)/(8*(1-s.Rational(1,3)/2))==s.Rational(1,40)
+lam=s.symbols("lam",real=True)
+for sign,expected_variance in [(1,16+40*p),(-1,16+8*p)]:
+    factor=(1-p)/s.cosh(2*lam)**4+p*(1-2*(1+sign)*s.sinh(2*lam)**2)/s.cosh(2*lam)**6
+    assert s.simplify(s.diff(factor,lam,2).subs(lam,0)+expected_variance)==0
 assert above(1-5*prob) and above(1-2*prob)
 
 finish("boundary_state.py",{
@@ -158,6 +162,7 @@ finish("boundary_state.py",{
  "common_canonical_endpoint_and_implementable_evolutions_required":True,
  "unrestricted_infinite_vacuum_phase_newly_computed":False,
  "exact_static_total_energy_characteristic_function_checked":True,
+ "exact_squeeze_second_derivative_matches_absolute_noise":True,
  "B_plus_modulus_lower":outward(1-5*prob),
  "B_minus_modulus_lower":outward(1-2*prob),
  "zero_profile_log_domain":"real |A^3 sigma DeltaI|<=1, declared decreasing even bump",
