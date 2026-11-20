@@ -16,6 +16,9 @@ def result():
     assert sp.expand(rho*rho+2*v0*v0*v.dot(v)+sp.trace(Tij.T*Tij)-4*rho*rho)==0
     actual_w=C/2500
     energy_lower=A/(4*actual_w)
+    s_actual=1/(4*BETA_FIELD2*actual_w)
+    energy_upper=s_actual*TIME_TV**2/(X*VOLUME*A)
+    assert below(energy_upper,"1.88e-11")
     assert above(energy_lower,"8.31e-14")
     Wlower=1/(12*iv.pi**2*A*actual_w**2)
     assert above(Wlower,"1.7e-42")
@@ -28,7 +31,8 @@ def result():
       "spatial_integral_u":"plus or minus A^-2",
       "nonselective_added_mean_tensor":"2*s*T[u], s=1/(4*v_m)",
       "actual_target_out_injected_energy_strict_lower":outward(energy_lower),
-      "full_nonselective_mean_tensor_integrated_Frobenius_upper":outward(exact("3.76e-11")),
+      "actual_target_out_injected_energy_upper":outward(energy_upper),
+      "full_nonselective_mean_tensor_integrated_Frobenius_upper":outward(2*energy_upper),
       "nonselective_anisotropic_mean_L2_squared_strict_lower":outward(Wlower),
       "complete_flags_weighted_anisotropic_mean_L2_squared_has_same_lower":True,
       "at_least_one_flag_has_nonzero_local_anisotropic_mean":True,
@@ -37,8 +41,8 @@ def result():
       "raw_linear_moment_includes_actual_CQ_means":True,
       "nonselective_noise_increment_positive_semidefinite_on_real_smooth_tests":True,
       "nonselective_noise_increment_at_least_squared_mean_shift":True,
-      "integrated_momentum_upper":outward(exact("1.88e-11")),
-      "integrated_anisotropic_pressure_upper":outward(2*iv.sqrt(exact(2)/3)*exact("1.88e-11")),
+      "integrated_momentum_upper":outward(energy_upper),
+      "integrated_anisotropic_pressure_upper":outward(2*iv.sqrt(exact(2)/3)*energy_upper),
       "original_cross_species_noise_retained":True,
       "conditional_noise_obtained_by_total_covariance":True,
       "position_SO4_twirl_applied":False,

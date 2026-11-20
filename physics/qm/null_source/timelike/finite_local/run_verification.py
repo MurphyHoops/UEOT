@@ -1,4 +1,4 @@
-"""Reuse 91 immutable results; verify twenty actual-state local-history certificates."""
+"""Reuse 91 immutable results; verify twenty-nine actual-state and preparation certificates."""
 from __future__ import annotations
 import argparse
 from concurrent.futures import ThreadPoolExecutor
@@ -42,7 +42,17 @@ ENTRIES=[
     ("renormalization","renormalization.py",["--check"]),
     ("controller","controller.py",["--check"]),
     ("local_tensor","local_tensor.py",["--check"]),
+    ("conditional_tensor","conditional_tensor.py",["--check"]),
+    ("pulse_ward","pulse_ward.py",["--check"]),
+    ("implementation_bridge","implementation_bridge.py",["--check"]),
+    ("conditional_noise","conditional_noise.py",["--check"]),
+    ("symmetry_exit","symmetry_exit.py",["--check"]),
+    ("invariant_preparation","invariant_preparation.py",["--check"]),
+    ("static_preparation","static_preparation.py",["--check"]),
+    ("clock_resource","clock_resource.py",["--check"]),
+    ("static_instrument","static_instrument.py",["--check"]),
     ("review","review.py",["--check"])]
+assert len(ENTRIES)==29
 def sha(data):return hashlib.sha256(data).hexdigest()
 def file_sha(path):return sha(path.read_bytes())
 def git(*args):return subprocess.check_output(["git",*args],cwd=REPO)
@@ -138,7 +148,7 @@ def main():
     require(sources==current_manifest(),"New sources changed during execution")
     passed=all(row["returncode"]==0 for row in rows)
     science={name:json.loads((HERE/(name+".json")).read_text())
-             for name in ["semantics","records","evolution","profile","ultraviolet","local_readout","locality","backaction","fluctuations","long_filter","transport","smooth_binary","actual_history","dynamic_filter","kinetic_probe","conditional","renormalization","controller","local_tensor","review"]}
+             for name,_,_ in ENTRIES}
     require(all(d["status"]=="PASS" for d in science.values()),"Scientific receipt not passed")
     result={"schema":"ueot-finite-local-verification/1",
         "timestamp_utc":datetime.now(timezone.utc).isoformat(),"git_head_at_execution":head,
@@ -146,7 +156,7 @@ def main():
         "python":sys.version,"dependencies":actual,"reused":reused,"executed_now":rows,
         "current_source_manifest":sources,"source_manifests_unchanged_after_execution":True,
         "old_scientific_entries_rerun":0,"new_mode_ODE_integrations":0,"new_geometry_ODE_integrations":0,
-        "new_interval_and_symbolic_certificates":20,"read_only_parallel_workers":2,
+        "new_interval_and_symbolic_certificates":len(ENTRIES),"read_only_parallel_workers":2,
         "scientific_exit":{
             "actual_same_state_projected_joint_RMS_upper":science["actual_history"]["actual_joint_two_projected_equation_RMS_upper"],
             "actual_short_local_source_Bayes_risk_upper":science["smooth_binary"]["complete_two_flag_source_Bayes_risk_upper"],
@@ -156,11 +166,16 @@ def main():
             "explicit_local_mean_and_added_noise_kernel":True,
             "new_controller_finite_renormalization_data_required":True,
             "native_review_agents":3,"external_human_peer_review":False,
+            "new_radial_same_geometry_source_RMS_upper":science["static_preparation"]["single_ring_joint_projected_residual_RMS_upper"],
+            "new_radial_source_variance":science["invariant_preparation"]["single_ring_source_variance"],
+            "source_clock_shear_invariant_gate":science["clock_resource"]["general_form_domain_inequality"],
+            "deterministic_mean_geometry_distinguishes_same_two_point_preparations":False,
+            "new_quiet_actual_local_same_static_RMS_upper":science["static_instrument"]["actual_local_same_static_joint_RMS_upper"],
             "total_controller_source_and_local_Einstein_history":"OPEN",
             "whole_unified_physics_goal":"OPEN"},
         "status":"PASS" if passed else "FAIL"}
     output.write_text(json.dumps(result,indent=2,sort_keys=True,ensure_ascii=False)+"\n")
-    print("Reused 91 results with 336 unchanged scientific files; executed 20 new entries.")
+    print("Reused 91 results with 336 unchanged scientific files; executed 29 new entries.")
     print("Receipt: "+str(output))
     return 0 if passed else 1
 if __name__=="__main__":raise SystemExit(main())

@@ -1,30 +1,51 @@
 # Scientific exit and reflection
 
-The first new construction supplied a lawful finite-initial family and a reference high state, with complete spatially averaged mean and fluctuation bounds. Reflection exposed two unnecessary choices: an overprecise continuous source reader and a replacement high-state preparation. The actual source has two well-separated radial components. A smooth two-flag weak reader retains every event and internal rotation symmetry, while same-CCR smooth transport retains the actual poststate. Positive-operator domination and Minkowski then control its real zero/high correlations. ACTUAL_HISTORY.md certifies the complete two-projection future RMS below \(7.6\,10^{-6}\).
+The actual original two-radius source does not need an overprecise continuous record. The smooth low/high reader, same-CCR state transport and retained zero/high correlations close its positive-window two-projection RMS below 7.6e-6. This is the first cycle. It does not make the smooth preparation background on shell.
 
-That improvement does not close the physical history. Three concrete calculations set the next priorities:
+The second cycle computed each actual flag's full local mean tensor and noise, the pulse Cauchy covariance and Ward/work ledger, and a finite field-probe bridge in stress moments. Each flag has nonzero static-out anisotropy. Sufficiently small finite coupling realizes the target projected margin below 8e-6, but no calibrated coupling or uniform probe-energy budget is supplied. Apparatus/controller counterterms and total source remain necessary.
 
-1. At a common short-pulse out slice, the actual local nonselective state has strictly nonzero anisotropic stress, with a quantitative \(L^2\) lower bound and an exact extra local stress-noise kernel. At least one complete binary flag therefore requires a nonhomogeneous response or explicit device compensation.
-2. Keeping the old static geometry in the high flag requires additional negative averaged energy exceeding 10% of its positive density normalization. The ideal pure-\(P\), unchanged-high special case also violates NEC. The broader short-pulse claim is about energy, not an unproved NEC sign.
-3. A finite local kinetic field-probe model needs a new \((\Box\chi)^2\) finite counterterm and a common controller stress/force/noise action. Free-field renormalization choices do not determine it.
+The third cycle closed an unproductive interpretation: identical full O(2) twirls and common covariant linear CP instruments leave the original angular preparations' invariant histories indistinguishable. This conclusion is not reversed by the following new preparation contract.
 
-## A further check: the finite-initial branches have different pasts
+## New radial comparison, with its own reader and resources
 
-For the leading mean family, set \(y=b^2\). The first integral contains \(F(y)=y-\kappa+\zeta/y^2\). A double root requires \(y=2\kappa/3\), \(\zeta=4\kappa^3/27\). Since \(\zeta=\beta(1-\kappa^3)\) and \(\kappa^3=(1+q)^{-1}\), the critical ratio is \(q_{\rm crit}=4/(27\beta)\).
+The two-ring and single-ring invariant inputs have the same complete two-point function, Gaussian covariance, high state and source mean. On the same certified exact static mean geometry and same positive window, full high modes included, their source-side joint residuals obey R_mid<1.4e-6 and R_two>0.14. Their full target noise difference is exactly (3/16) J tensor J. The source generating functions also exhibit different third and fourth cumulants.
 
-The actual two posterior means lie on opposite sides of this value. The lower branch has a bounce in its leading backward extension; the critical branch approaches the static separatrix; the higher branch has a singular leading backward extension. The chosen finite-initial future family therefore cannot be relabeled as a common original static past. The explicit smooth preparation connects lawful states, but remains off shell until its total controller source is solved.
+The new annulus reader distinguishes those source inputs, but combines the old low/high radii in its outer flag. It does not inherit the old posterior-feedback bound. Its own pointer kinetic-cost bound is substantially larger. Neither its target statistics nor an artificially record-controlled geometry is an intrinsic gravity prediction.
 
-There is also unavoidable classical geometry spread. Since \(a_0^6=x_c^3(1+\mu_b/\mu)\), the law of total variance gives
+Reflection then produced a strict normal-state counterexample to unrestricted single-ring optimality. Gamma-type Schwartz states can approximately halve its source variance at the same two-point function while nearly doubling its dilation-clock variance. With the extra original clock-resource constraint, the single ring is already close to the general Schrodinger-Robertson lower bound. Carrying the D/S covariance makes this comparison invariant under known shear. The source instrument is blind to pure zero-mode time encoding; no clock apparatus has been supplied by defining D.
+
+## The finite-initial branches do not share the old static past
+
+For the leading family, y=b^2 has first integral F(y)=y-kappa+zeta/y^2. Its double root is y=2kappa/3, zeta=4kappa^3/27. Since zeta=beta(1-kappa^3) and kappa^3=(1+q)^(-1), the critical posterior ratio is qcrit=4/(27beta). The actual low/high posterior means straddle it. Their leading backward extensions have respectively a bounce and a singularity, with the static separatrix between them.
+
+The explicit finite smooth preparation transports legal states, but does not prove a common original static physical past. Nor does small conditional source uncertainty remove geometry spread:
 \[
-{\operatorname{sd}(a_0^6)\over E(a_0^6)}
+ {\operatorname{sd}(a_0^6)\over E(a_0^6)}
  ={\sqrt{\operatorname{Var}(S_0)-E\operatorname{Var}(S_0|b)}\over2\mu}>0.15.
 \]
-Small conditional source uncertainty is not disappearance of the record-dependent geometry distribution. The script checks the strict inequality using the new complete binary risk.
 
-## Verification and claim boundaries
+## The next gate is a physical law and constrained total history
 
-The new cohort has 20 checks. It reuses 91 predecessor results and the immutable 336-file scientific chain, without executing old checkers or integrating old mode/geometry ODEs. The scripts verify symbolic identities, rational/interval inequalities and documentary provenance. Their PASS status does not turn every surrounding theorem into a machine-checked formal proof. The derivations and independent native-agent audits remain part of the evidence.
+The new radial inputs have identical mean stress functionals throughout any common prescribed linear background family, hence equal complete relative mean responses, including shared contacts and finite counterterms. Deterministic mean-SCE with the same legal geometric data and common selection rule gives the same geometry wherever well posed. A different noise kernel alone is not a new mean-gravity prediction.
 
-Core is read-only. GI is outside this task. No claim derives Hilbert space, the Born rule, the matter action, Einstein dynamics, the controller parameters or observed physics from Core. The PR remains a draft; no human external peer review or empirical calibration is asserted.
+The next cycle must therefore supply and test:
 
-The next meaningful cycle is one constrained total-source initial-value problem: keep the same actual preparation, specify the apparatus/controller renormalized action and initial data, compute the local retarded response from the same kernels, and test both mean constraints and the full coupled noise Ward identities. A smaller projected residual cannot replace that task.
+1. One renormalized total action, actual apparatus/controller preparation, finite coupling and reader; all counterterm coefficients fixed throughout the protocol.
+2. A stated law carrying source fluctuations into geometry, with constraint-compatible joint initial data. A zero-initial retarded inverse is not automatically defined on the homogeneous constant source-noise direction.
+3. Its causal complete tensor response and block Ward identities, including probe/reader/controller cross noise, and stability on the actual window. A second-cumulant stochastic truncation must retain an explicit non-Gaussian error responsibility.
+4. An actual calibrated gravitational observable with nonzero response to J, compared under the same resources and operation rules. Source discrimination alone does not meet this test.
+5. A reduction of independent physical inputs or a new empirical distinction that can bear the unification claim.
+
+This prioritization is already used: the symmetric angular route is closed under its contract; the distinct radial route has a source-side success; the next missing link is stated rather than hidden in a presumed Einstein inverse.
+
+## Verification boundary
+
+There are 29 new checks. They reuse 91 predecessor results and an unchanged 336-file scientific chain, with no old checker execution and no mode/geometry ODE integration. They verify specified symbolic identities, interval/rational inequalities and provenance. PASS does not formalize every prose theorem.
+
+Core is read-only; GI is excluded; the PR remains a draft. Hilbert space, Born probability, matter content, Einstein dynamics, apparatus parameters, the physical selection of fast modes and quantum geometry have not been derived from Core. Native-agent audits are not external human peer review. No empirical calibration or completed physical unification is claimed.
+
+## Subsequent concrete closure
+
+The new quiet preparation is now connected to the actual short local pointer and complete annulus outcomes on one common static future geometry. STATIC_INSTRUMENT.md bounds its added joint RMS below 2.9e-14 and its full target projected RMS below 1.4e-6. Both components use the common 3/(2A^2) normalizer. The explicit two-center alternative preserves the original actual A and matches all its first/second field moments, while changing the first field's full preparation marginal. A separate global D-clock/readout-and-mean-restoration benchmark retains a source RMS below 1.4e-6 at reference proper-time error below 2.3 model units, with its changed Q covariance retained.
+
+These are target-source and instrument results. Autonomous preparation also has a total-energy spectral conservation ledger: at fixed stationary background and equal initial total-energy law, energy-conserving closed preparation cannot reduce the complete total-energy variance merely by reducing the target's share. Device variance and correlations must be included. This gate is not the GR Hamiltonian constraint and not a universal local-gravity no-go.

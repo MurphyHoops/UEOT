@@ -2,21 +2,24 @@
 
 本图延续同一物理任务。权威执行状态为[CURRENT](status/CURRENT.json)，稳定结果为[主文](book/UEOT_PHYSICS.md)及现行claim ledger。Core只读，GI不在范围。数学闭合、物理选择、计算实现、经验检验分别登记。
 
-## 当前 · 同态局域仪器和投影残差已闭，推进共同总源与非齐次响应
+## 当前 · 完成源侧闭环，验收约束相容的总源和涨落引力法则
 
-[本轮闭环与反思](null_source/timelike/finite_local/README.md)已完成固定先验的平滑二结果弱测量、全部记录、同一量子态运输和正时间窗两投影 RMS <7.6e−6。实际高模反作用与零高条件相关均已计入。只继续提高源读数精度，已不是首要物理任务。
+[本轮29项证书及反思](null_source/timelike/finite_local/README.md)已有两个分别登记的结果：原实际局域二结果测后态的共同正窗两投影 RMS <7.6e-6；明确改变径向准备后，同一精确静态平均几何的单环源 RMS <1.4e-6，而双环 >0.14。完整条件局域张量/噪声、脉冲 Cauchy 数据、有限场探针的应力矩实现桥也已完成。不能用这些投影界代替装置总源和全部局域 Einstein 方程。
 
-同一实际局域通道还给出了非选择局域应力和噪声的精确核、严格各向异性及目标场注入能量上下界。保留齐性 FLRW 的两条投影并不能完成 pointwise tensor SCE。有限初片两分支又跨越 leading separatrix，不能把它们重新称为同一原静态过去。
+原角向制备的 O(2)/线性 CP 完整记录等价已关闭该合同内的辨识路线。新的径向噪声差是真实不同物理输入，但二点函数和完整平均响应仍相同；确定性 mean-SCE 自身不产生不同几何。新 annulus 分类器不能继承旧 low/high 后验反馈。正常态源精度—时钟资源界已加入准入，新增量子准备/钟仪器不得免费使用。
 
 **下一轮按以下实体结果验收：**
 
-1. 固定一个完整 apparatus/controller renormalized action、初态、读出动力学和有限参数。自由场 AE 不固定新 \((\Box\chi)^2\) 等控制场系数；这些系数必须跨结果及全过程固定。先检验原共同初片与全部源的约束，不能通过瞬时换背景或逐时改 subtraction 配平。
-2. 保持本轮真实测后态和局域源/噪声核，求非齐次度规的因果响应，覆盖 \(0i\) 和各向异性 \(ij\) 分量。具体指标是全张量残差、响应误差、同一总源 Ward，以及因果可用的记录；禁止无声做空间位置平均。
-3. 用同一 in-in functional 得到 mean equations、retarded Hessian 与 \((T,O_\chi)\) 的全块 noise。若采用二阶累积量或有效理论截断，明确其误差；精确 CQ 应力分布一般并非 Gaussian。同时求解控制器运动，补全准备段的总 Einstein 方程。
-4. 在共同物理历史成立后，以同资源和共同操作规则比较原制备 old/new 的真实引力记录。完整 \(O(2)\)/线性 CP 记录等价仍是必须遵守的门；新装置反作用不能冒称原制备降噪效应。
-5. 以减少独立物理输入、已知理论一致性和可区分经验后果检验统一。场内容、Born/Einstein 动力学、装置有限参数和量子几何均未由 Core 自动推出。
+1. 明确一个有独立物理依据的 beyond-mean 动力学合同，用于承接实际非高斯源分布。区分确定性平均方程、二阶随机近似、测量反馈与非交换几何；任何新增法则和概率解释逐项登记。
+2. 先构造约束相容的状态—几何联合初值及共同传播。静态全 AE 线性守恒保留初始 Hamiltonian 常数；固定全部初始几何 jets、高态和额外源时，非零恒定源涨落不能直接交给零初值 retarded inverse。
+3. 固定一个完整 apparatus/controller renormalized action、初态、有限参数和读出动力学。旧自由 AE 不固定新 (Box chi)^2 等有限系数；所有系数跨结果与全过程固定。有限耦合存在定理须补成数值误差常数与可行能量区间。
+4. 从同一 in-in functional 计算 mean、retarded Hessian 及完整 (T,O_chi) block noise，涵盖非齐次 0i/各向异性 ij、控制器运动及准备段的总 Ward。若用第二累积量截断，明确非高斯误差；同时验证 fast-mode 选择和实际窗口稳定性。
+5. 证明某个真实、因果且可校准的引力读出对 J 响应非零，再按共同资源比较全部记录。源分类、人为反馈几何及数学 D-clock 不直接视为引力信号或已实现装置。
+6. 由独立物理输入的减少、已知理论一致性及经验辨识承担统一验收。场内容、Born/Einstein 动力学、设备参数与量子几何仍未由 Core 推出。
 
-[实际态和正窗](null_source/timelike/finite_local/ACTUAL_HISTORY.md) · [局域张量](null_source/timelike/finite_local/LOCAL_TENSOR.md) · [条件与因果](null_source/timelike/finite_local/CONDITIONAL.md) · [重整化](null_source/timelike/finite_local/RENORMALIZATION.md) · [共同总源门](null_source/timelike/finite_local/CONTROLLER.md)。二十项新检查，91 项复用，336 个科学文件冻结。下方保留各历史阶段的路线。
+[实际历史](null_source/timelike/finite_local/ACTUAL_HISTORY.md) · [实现桥](null_source/timelike/finite_local/IMPLEMENTATION_BRIDGE.md) · [全条件源](null_source/timelike/finite_local/CONDITIONAL_NOISE.md) · [新准备和约束](null_source/timelike/finite_local/INVARIANT_PREPARATION.md) · [源钟资源](null_source/timelike/finite_local/CLOCK_RESOURCE.md) · [控制器](null_source/timelike/finite_local/CONTROLLER.md)。29项新检查，91项复用，336个科学文件冻结。Core只读、GI排除、PR开放草稿。下方保留历史路线。
+
+同一静态几何上的[实际局域环带读出](null_source/timelike/finite_local/STATIC_INSTRUMENT.md)也已通过完整测后 RMS <1.4e-6；无需反馈换几何。新增两中心制备保留原实际A的一、二点函数，但改变完整制备边缘；自主实现须核对全装置能量谱及交叉相关。
 
 ## 前轮 · 动态全源约束已有排除定理，转向可成立的联合物理历史
 

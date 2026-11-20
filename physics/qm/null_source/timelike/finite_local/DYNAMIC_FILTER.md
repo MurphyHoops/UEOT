@@ -52,3 +52,5 @@ The phase contribution to the double-probe trace distance is at most
 \((|\Delta R_h|+|\Delta R_0|)/(4v_m)\); add it by the triangle inequality.
 
 The script reports bounds for \(w=A^2\) and for \(w=C/2500\). These are fixed-input out-channel estimates. During the pulse the matter source changes, as LONG_FILTER.md proves even in the exactly static case. Neither the controller stress nor the full Einstein equation during the pulse is closed. The pulse smearing still refers to the specified known metric; an autonomous unknown-metric calibration procedure is not supplied.
+
+The substitution of upper gain and high variance bounds is monotone: with a=delta_beta^2(C*mu-2v)/(4w)<2, D0^-2 exp(-a/D0) decreases for D0>=1. The script explicitly checks this gate.

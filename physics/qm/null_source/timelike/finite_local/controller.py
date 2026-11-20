@@ -3,7 +3,7 @@ import json,sympy as sp
 from common import *
 def result():
     b=json.loads((HERE/"smooth_binary.json").read_text())
-    high_mu=box(b["conditional_source_means"][1])-box(b["conditional_source_mean_error_upper"])
+    high_mu=box(b["conditional_source_mean_centers"][1])-box(b["conditional_source_mean_error_upper"])
     dm=high_mu-MU
     assert above(dm,"0.43")
     delta_source_density=M2*dm/(2*X**3)

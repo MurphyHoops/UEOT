@@ -4,6 +4,8 @@ def result():
     eps=exact("0.01");m=exact(31)/32;M=exact(33)/32
     caps=[5,22,212,2220,29000]
     assert below(caps[0]*eps**2/3,1-m*m)
+    assert above(iv.sqrt(1-5*eps**2/3)-212*eps**4/72,m)
+    assert below(iv.sqrt(1+5*eps**2/3)+212*eps**4/72,M)
     cq=(1+M+M*M)/(m*m*(1+m))
     terms=[
       cq*5*212/4,

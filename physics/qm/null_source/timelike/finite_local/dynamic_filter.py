@@ -19,7 +19,9 @@ def result():
     for name,w in [("strong_reference",X),("weak_binary",C/2500)]:
         vm=BETA_FIELD2*w
         D0=1+(gain**2*VP+high/BETA_FIELD2)/(4*w)
-        exponent=gain**2*(C*MU-2*VP)/(4*w*D0)
+        noncentral=gain**2*(C*MU-2*VP)/(4*w)
+        assert below(noncentral,2)  # overlap decreases with D0>=1
+        exponent=noncentral/D0
         dg=iv.sqrt(1-iv.exp(-exponent)/D0**2)
         phase=(Rhigh+Rzero)/(4*vm)
         outputs[name]={"pointer_noise":outward(w),"gain_and_high_joint_D_upper":outward(dg),
