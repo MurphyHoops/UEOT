@@ -1,0 +1,28 @@
+{
+  "analytic_proofs_required": [
+    "closed fixed buffer",
+    "all-order Volterra regularity",
+    "Banach fixed point",
+    "strict parameter shooting",
+    "Hadamard propagation"
+  ],
+  "checks": {
+    "Pauli_quadratic_joint_error": true,
+    "driver_initial_NEC_slope": true,
+    "finite_mode_counterterm_principal_cancellation": true,
+    "fixed_M2_constraint_source": true,
+    "fixed_driver_not_confused_with_integrated_control": true,
+    "initial_symbol_coefficients": true,
+    "residual_fluid_conservation": true,
+    "second_phase_log_coefficient": true,
+    "smooth_compact_principal_kernel": true,
+    "strict_shooting_constants": true
+  },
+  "formal_Lean_proof": false,
+  "physical_controller_from_residual_fluid": false,
+  "schema": "ueot-compatible-algebra/1",
+  "source_sha256": {
+    "algebra.py": "e702c423d425dc5ce25c8e5a51805070d19a4345aee68ca47b606425244f15af"
+  },
+  "status": "PASS"
+}

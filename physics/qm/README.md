@@ -5,7 +5,17 @@
 - [中文第71章](book/UEOT_PHYSICS.md#ch-71) · [English Chapter 71](book/UEOT_PHYSICS.en.md#ch-71) · [完整书稿与3.12版印本](book/README.md)
 - [科学说明与复核程序](correlated_bath/README.md) · [状态](status/CURRENT.json) · [主张账本](status/CLAIM_LEDGER_v31.15.json) · [研究路线](ROADMAP.md)
 
-## 当前研究：实际全场导数排除原准备历史
+## 当前研究：后释放共同历史与准备驱动的必要条件
+
+[本轮完整证明与证书](null_source/timelike/compatible_evolution/README.md)已把实际态范数、全部反馈、自映射、同窗全阶正则性和固定源约束射击连在一起。对此前任一实际初片根，保持同一完整态、固定 \(M_2\) 与 AE 处方，在 \(T=2^{-40}\) 内保留 \([0,T/4]\) 参考准备段，随后以预定光滑数学驱动在 \(3T/4\) 释放；同一 \(C^\infty\) 几何及其 Hadamard 态在 \([3T/4,T]\) 满足无驱动完整平均方程。
+
+实际参考积分残差 \(<3.735471570\,10^{-6}\)，完整收缩率 \(<6.494552\,10^{-12}\)，自映射余量 \(>0.0613793585\)。这是一项局部数学存在结果，尚未实现准备装置，也没有推翻从 \(0\) 立即无驱动延拓的旧排除。
+
+闭合后继续得到两项物理裁决：本次收缩、零端点驱动必在某个开区间违反 NEC；一个明确的双场量子完成模型使完整总应力不变记录同分布，同时至少增加原场 \(\sqrt3/2\) 的相干源预算，且严格不满足原单场初片几何。因此下一验收转向实际量子准备系统、全部总源噪声与同一新历史上的引力仪器。
+
+[存在证书](null_source/timelike/compatible_evolution/history.json) · [解析正则性](null_source/timelike/compatible_evolution/REGULARITY.md) · [独立物理审查](null_source/timelike/compatible_evolution/REVIEW.md) · [六项复算与49项旧结果复用](null_source/timelike/compatible_evolution/run_verification.py) · [回执](null_source/timelike/compatible_evolution/verification.json)。186个旧科学文件保持原字节；没有模式或几何 ODE 重算。Core、正式书稿、Lean 与经验身份保留原责任。
+
+## 前轮研究：实际全场导数排除原准备历史
 
 [本轮闭环裁决与共同演化](null_source/timelike/prepared_dynamics/README.md)已经完成上一轮要求的实际法向导数检查。对全部初片根，完整场有
 \(Q_p'(0)\in[-13.769547,-11.113955]\)，而当前平滑过去固定 \(a'''(0)=0\)。初片正交空间残差的法向导数严格为正，因此这些根没有保持原过去、原完整态与固定源强的光滑 SCE 正时间窗延拓。上一轮初片存在定理保留。
