@@ -47,7 +47,9 @@ def result():
     post_rms=iv.sqrt(2*(M2/(3*X**2))**2*post_variance+high)
     assert below(post_rms,"1.4e-6")
     return {
-      "same_reference_complete_two_point_function_and_high_state":True,
+      "Gamma_matches_uniform_angle_reference_two_point_function_and_high_state":True,
+      "Gamma_reference_scope":"isotropic uniform-angle two-ring and single-ring preparations only",
+      "Gamma_matches_original_actual_nonzero_m_anisotropic_M":False,
       "Gamma_candidate":"rank<=2 mixture of adjacent odd-k Schwartz vectors",
       "Gamma_shape_parameter_enclosure":outward(gamma_D),
       "Gamma_source_variance_upper":outward(gamma_upper),
@@ -75,6 +77,8 @@ def result():
       "specific_clock_reference_proper_time_standard_deviation":outward(clock_sd),
       "specific_clock_future_same_static_source_RMS_upper":outward(post_rms),
       "specific_clock_restores_full_two_point_function":False,
+      "specific_clock_future_origin":"common static slice after stipulated D readout and fixed restoration",
+      "specific_clock_free_wait_shear_reset":False,
       "specific_clock_is_local_total_source_implementation":False,
       "proof":"CLOCK_RESOURCE.md"}
 if __name__=="__main__":finish("clock_resource.py",result(),["CLOCK_RESOURCE.md","invariant_preparation.json","static_preparation.json"])

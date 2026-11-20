@@ -12,7 +12,7 @@ The two-ring and single-ring invariant inputs have the same complete two-point f
 
 The new annulus reader distinguishes those source inputs, but combines the old low/high radii in its outer flag. It does not inherit the old posterior-feedback bound. Its own pointer kinetic-cost bound is substantially larger. Neither its target statistics nor an artificially record-controlled geometry is an intrinsic gravity prediction.
 
-Reflection then produced a strict normal-state counterexample to unrestricted single-ring optimality. Gamma-type Schwartz states can approximately halve its source variance at the same two-point function while nearly doubling its dilation-clock variance. With the extra original clock-resource constraint, the single ring is already close to the general Schrodinger-Robertson lower bound. Carrying the D/S covariance makes this comparison invariant under known shear. The source instrument is blind to pure zero-mode time encoding; no clock apparatus has been supplied by defining D.
+Reflection then produced a strict normal-state counterexample to unrestricted single-ring optimality. Within the isotropic uniform-angle reference comparison, Gamma-type Schwartz states can approximately halve the single-ring source variance at the same two-point function while nearly doubling its dilation-clock variance. With the extra original clock-resource constraint, the single ring is already close to the general Schrodinger-Robertson lower bound. Carrying the D/S covariance makes this comparison invariant under known shear. The source instrument is blind to pure zero-mode time encoding; no clock apparatus has been supplied by defining D.
 
 ## The finite-initial branches do not share the old static past
 

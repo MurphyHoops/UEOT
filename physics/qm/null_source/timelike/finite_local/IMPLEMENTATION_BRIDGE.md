@@ -131,7 +131,7 @@ E_{\psi,0}^{(1)}+E_{\psi,0}^{(2)}
 \]
 This is not a lower bound for the entire renormalized apparatus stress. It does prove that the increasingly accurate limit has no uniform finite zero-sector energy budget. Partial tracing the probes does not remove their gravitational source.
 
-If a quantitative squared-residual error bound \(K_mg_c^2\) and a probe energy budget \(E_*\) are later supplied, a necessary/sufficient-bound compatibility check includes
+If a quantitative squared-residual error bound \(K_mg_c^2\) and a positive zero-sector probe energy budget \(E_*\) are later supplied, a necessary/sufficient-bound compatibility check includes
 \(g_c^2\ge K_E/E_*\) and \(g_c^2\le\Delta_{\rm RMS^2}/K_m\), together with hyperbolicity and validity bounds. The constants and the total controller/reader sources must be obtained before claiming that these allowed intervals overlap.
 
 The terminal reader, control-field counterterms, total constrained preparation and nonhomogeneous metric response remain open. The present theorem closes the target stress-moment bridge under its stated apparatus preparation and terminal-reader assumptions.

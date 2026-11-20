@@ -1,6 +1,6 @@
 # Source precision has a clock-resource contract
 
-This is a new mathematical reflection gate after the actual single-ring calculation. It neither replaces that preparation nor constructs a new apparatus. Fix the same canonical reference, C, v, high state, and mean mu. Set r=v/C, L=1+sqrt(3)/4, mu=L+2r. The zero-mode pair has [Q_i,P_j]=i delta_ij.
+This is a new mathematical reflection gate after the actual single-ring calculation. It neither replaces that preparation nor constructs a new apparatus. **The Gamma counterexample and its equal-two-point claim compare only the isotropic uniform-angle radial preparations. They do not match the original actual input's nonzero first moments or anisotropic second moments, nor the separate two-center preparation matching that input.** Fix the same canonical reference, C, v, high state, and mean mu. Set r=v/C, L=1+sqrt(3)/4, mu=L+2r. The zero-mode pair has [Q_i,P_j]=i delta_ij.
 
 ## A normal-state counterexample to unrestricted single-ring optimality
 
@@ -26,7 +26,7 @@ and E(1/X)=alpha/(k-1) give ||grad psi_k||^2=alpha. For k=1 the inverse moment i
 
 Let kappa=alpha C mu=mu/(2r), k_-=2 floor((kappa-1)/2)+1, and k_+=k_-+2. Mix the two vectors with w_+=(kappa-k_-)/2 and w_-=1-w_+. This rank-at-most-two density is positive and normal; its vectors need not be orthogonal. It has E k=kappa and Var(k)<=1. At each fixed original parameter choice, this is one fixed preparation, not a sequence of roots selected in time.
 
-Its complete zero-mode two-point function equals that of the previous radial preparations, with the same high state. Yet
+Its complete zero-mode two-point function equals that of the isotropic uniform-angle two-ring and single-ring preparations, with the same high state. This equality excludes the original actual nonzero-m, anisotropic-M input and its separately matched two-center alternative. Yet
 \[
  V_{\Gamma}(S_0)=4r^2[\kappa+\operatorname{Var}(k)]
  \le 2rL+8r^2,
@@ -136,3 +136,5 @@ on the same positive window. Its numerical upper end is approximately 1.3162e-6.
 This is a consistent target-state and global-instrument budget, not a local apparatus or total-gravity completion. The Q covariance change is retained, no old conditional posterior or annulus performance is reused, and the controller work during readout/restoration is not included in the future target-only residual. The much longer positive window, approximately 10009 model units, does not convert this single reference reading into a completed physical clock history.
 
 The restored static mean-SCE statement is nonselective. Individual D outcomes can have different source means; their complete weighted residual second moment nevertheless equals the nonselective quadratic expectation on the one prescribed geometry. No per-record exact mean solution is inferred.
+
+For the future residual in this benchmark, choose a single static Cauchy origin t_star after the stipulated D readout and fixed restoration are complete. The time window is translated to lambda*(t_proper-t_star) in [0,0.1]. Any intervening free wait carries its Q/P shear; the covariance is not reset. This translation leaves source moments and the absolute high-mode Fourier bounds unchanged. The reported <2.3 resolution remains that of the reference D reading, not a new claim of a localized continuously running clock.

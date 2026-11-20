@@ -4,7 +4,9 @@ This extends STATIC_PREPARATION.md to a real target-state change. Use either its
 
 ## Fixed observable and complete-record convention
 
-Both stress components use the same positive normalization G0=3/(2A^2). For a real normalized smooth positive time window g of proper duration 0.1/lambda, define
+Both stress components use the same positive normalization G0=3/(2A^2). Choose an outcome-independent common static Cauchy slice eta_star **after** the short pointer pulse, the finite-probe h support when that realization is used, and the stipulated terminal-reader completion (and any stipulated record distribution). Put tau=lambda*(t_proper-t_proper,star). The normalized smooth positive window g is supported in this future tau interval [0,0.1], of proper duration 0.1/lambda. It is not the old pulse-centered eta=0 window. Translating the window only multiplies the high-mode Fourier factors by phases, so all absolute spectral and displacement bounds below are unchanged. All free waiting phases and zero-mode shear are retained; the terminal reader's physical implementation remains an assumption of the stated instrument.
+
+Define
 \[
  C_\rho=\overline{\rho}_g/G_0-1,\qquad
  C_p=\overline p_g/G_0+1/3,\qquad
