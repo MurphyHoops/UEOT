@@ -39,3 +39,13 @@ classical scalar repair. Separately, a unique one-time amplitude selection
 inside the frozen exact mean family gives a(0)=A and h(0)>0, with all mean
 residuals and their finite normal derivatives exactly zero. It does not
 close nonstatic CTP, the quantum joint boundary density or any device.
+
+DYNAMIC_CHARGE continues on the actual matched nonstatic mean geometry.
+It derives the dependent density/pressure linear response and constructs
+the full global smooth incoming charge in the declared state's GNS L2,
+using uniform exact-Jost estimates and a common cutoff limit. Both old
+and thin sources retain positive charge variance. Sharp-time spatial
+average density variance diverges for h!=0 in the declared high-vacuum
+family; this is not a failure of Hadamard mean-RSET. The residual gate
+requires pressure matching over the full declared past and zero geometry
+charge; it does not exclude new finite-boundary or device histories.

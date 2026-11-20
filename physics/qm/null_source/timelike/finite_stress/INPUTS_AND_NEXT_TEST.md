@@ -69,3 +69,9 @@ FINITE_SLICE_UV 已给原作用量内的 exact KG matter-Cauchy family、正定�
 GEOMETRY_MATCHING 已拒收一条有受控正窗残差的明确 prescribed 曲线及其普通 classical scalar 补偿，并在原真实 mean family 内构造一次选参的 a0=A、h0>0 截面。这是下一任务的具体起点：同一作用量、同一合法 incoming 态和同一正窗都已经确定，不再从任意 jets 拼接开始。
 
 下一闭环直接求这条非静态背景上的初始 lapse/density 与全部 momentum constraint map、完整绝对 noise/contact/state-transport 块及必要的 geometry–matter–device 联合边界态。旧 static N00 和守恒总能量谱律不能不经推导移植；sharp-slice 压力方差也不能以已完成的时间平滑核代替。若选薄层替代源，必须另计它在动态背景的 noise 和共同制备装置。
+
+## 最新已关闭的非静态入口与下一实际任务
+
+DYNAMIC_CHARGE 已计算当前 U 的完整 mean density/pressure Ward 关系，并实际构造原源与薄层源的全场平滑 conserved charge。初始 density 的缺口现在是明确的 charge／交叉相关条件；非静态 sharp-density 方差按 K³ 发散，不能用旧 static N00 填入初片矩阵。
+
+下一项应给一个具体的正常 geometry–matter–device（或明确声明并受控的CQ）边界对象及总作用量，定义其实际平滑约束可观测量，计算 charge、momentum 与全部 mixed 初始块，并在同一准备过去中检查总能量及因果性。只给 classical反相关样本、只匹配mean、只降低source marginal、或仅在正窗前藏入未计账pressure残差，均不能签收。完整tensor CTP/受控误差通过以后再连接NOON差和局域校准。

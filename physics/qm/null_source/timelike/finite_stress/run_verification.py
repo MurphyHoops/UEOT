@@ -1,4 +1,4 @@
-"""Reuse 146 frozen results and verify fifteen new finite-stress/original-constraint certificates."""
+"""Reuse 146 frozen results and verify sixteen new finite-stress/original-constraint certificates."""
 from __future__ import annotations
 import argparse
 from concurrent.futures import ThreadPoolExecutor
@@ -25,8 +25,8 @@ RANGES=[PREFIX+d+"/" for d in DIRECTORIES]+[
  "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/ScientificClosure/SISCFutureResponseCore.lean"]
 VERSIONS={"numpy":"2.5.4","scipy":"1.18.1","sympy":"1.14.0","mpmath":"1.3.0"}
 ENTRIES=["model","phase_diagram","critical_state","volume_moments","positive_source",
- "source_observables","dispersion_gap","finite_clock","robustness","original_ctp_gate","boundary_state","total_boundary_gate","finite_slice_uv","geometry_matching","review"]
-assert len(ENTRIES)==15
+ "source_observables","dispersion_gap","finite_clock","robustness","original_ctp_gate","boundary_state","total_boundary_gate","finite_slice_uv","geometry_matching","dynamic_charge","review"]
+assert len(ENTRIES)==16
 def sha(data):return hashlib.sha256(data).hexdigest()
 def file_sha(path):return sha(path.read_bytes())
 def git(*args):return subprocess.check_output(["git",*args],cwd=REPO)
@@ -165,6 +165,9 @@ def main():
         "separate_corrected_original_mean_history_has_a0_A_and_h0_positive":True,
         "probe_classical_scalar_additive_repair_excluded":True,
         "nonstatic_CTP_joint_boundary_state_constructed":False,
+        "nonstatic_full_field_smooth_incoming_charge_constructed":True,
+        "nonstatic_sharp_density_variance_diverges_in_declared_high_vacuum_state":True,
+        "nonstatic_incoming_charge_RMS":science["dynamic_charge"]["incoming_charge_RMS"],
         "same_bare_state_and_old_normal_derivatives_claimed":False,
         "classical_symmetric_work_law_automatic":False,
         "strong_positive_dust_is_required_by_original_mean_SCE_goal":False,
@@ -174,7 +177,7 @@ def main():
         "whole_unified_physics_goal":"OPEN"},
       "status":"PASS" if passed else "FAIL"}
     output.write_text(json.dumps(result,indent=2,sort_keys=True,ensure_ascii=False)+"\n")
-    print("Reused 146 results with 536 unchanged scientific files; executed 15 new entries.")
+    print("Reused 146 results with 536 unchanged scientific files; executed 16 new entries.")
     print("Receipt: "+str(output))
     return 0 if passed else 1
 if __name__=="__main__":raise SystemExit(main())

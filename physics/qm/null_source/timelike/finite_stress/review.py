@@ -2,7 +2,7 @@
 import ast,hashlib,json
 from common import *
 NAMES=["model","phase_diagram","critical_state","volume_moments","positive_source",
- "source_observables","dispersion_gap","finite_clock","robustness","original_ctp_gate","boundary_state","total_boundary_gate","finite_slice_uv","geometry_matching"]
+ "source_observables","dispersion_gap","finite_clock","robustness","original_ctp_gate","boundary_state","total_boundary_gate","finite_slice_uv","geometry_matching","dynamic_charge"]
 science={n:json.loads((HERE/(n+".json")).read_text()) for n in NAMES}
 for n,j in science.items():
     assert j["status"]=="PASS"
@@ -45,6 +45,9 @@ assert science["finite_slice_uv"]["old_static_energy_divergence_called_new_RSET_
 assert science["geometry_matching"]["corrected_all_mean_residuals_and_finite_normal_derivatives_zero"] is True
 assert science["geometry_matching"]["probe_exact_mean_solution"] is False
 assert science["geometry_matching"]["full_nonstatic_CTP_noise_and_quantum_boundary_state_constructed"] is False
+assert science["dynamic_charge"]["full_field_smooth_charge_constructed_in_declared_state_GNS_L2"] is True
+assert science["dynamic_charge"]["old_static_N00_relabelled_as_nonstatic_instantaneous_noise"] is False
+assert science["dynamic_charge"]["deterministic_mean_history_invalidated"] is False
 allowed={"__future__","argparse","hashlib","json","math","pathlib","mpmath","sympy","common","ast"}
 for n in NAMES+["common","review"]:
     tree=ast.parse((HERE/(n+".py")).read_text())
