@@ -33,13 +33,13 @@ jobs:
           python-version: '3.14'
       - name: Install the same scientific dependencies
         run: python -m pip install numpy==2.5.4 scipy==1.18.1 sympy==1.14.0 mpmath==1.3.0
-      - name: Reuse 121 predecessor results and verify 16 total-source certificates
-        run: python -B physics/qm/null_source/timelike/total_source/run_verification.py --output "$RUNNER_TEMP/total-source-verification.json" --logs "$RUNNER_TEMP/total-source-logs"
+      - name: Reuse 137 predecessor results and verify 9 constraint-state certificates
+        run: python -B physics/qm/null_source/timelike/constraint_states/run_verification.py --output "$RUNNER_TEMP/constraint-states-verification.json" --logs "$RUNNER_TEMP/constraint-states-logs"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: total-source-research
+          name: constraint-states-research
           path: |
-            ${{ runner.temp }}/total-source-verification.json
-            ${{ runner.temp }}/total-source-logs/
+            ${{ runner.temp }}/constraint-states-verification.json
+            ${{ runner.temp }}/constraint-states-logs/
           if-no-files-found: error

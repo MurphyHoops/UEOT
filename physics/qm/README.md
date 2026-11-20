@@ -5,7 +5,17 @@
 - [中文第71章](book/UEOT_PHYSICS.md#ch-71) · [English Chapter 71](book/UEOT_PHYSICS.en.md#ch-71) · [完整书稿与3.12版印本](book/README.md)
 - [科学说明与复核程序](correlated_bath/README.md) · [状态](status/CURRENT.json) · [主张账本](status/CLAIM_LEDGER_v31.15.json) · [研究路线](ROADMAP.md)
 
-## 当前研究：完整总源、约束退化与可区别热壳制备
+## 当前研究：约束量子态、正能时钟与有限应力验收
+
+[本轮九项检查与完整结果](null_source/timelike/constraint_states/README.md)把原静态相关态下界加强到严格 >10.072315975%，并给出固定完整边缘态的正能补偿条件、量子约束下界、关系物理内积及新的正规应力等价源族。有限正能时钟保留全部源尾，短窗条件态误差受控，但完整约束 RMS 约 0.5，时钟能量约为原总能量的 13.42%；三者分别记账。
+
+继续构造 leading-GR 两零模正尘埃模型后，有限应力审查给出新的排除：在所声明排序、半线域和固定分离自伴扩张中，有限总 H² 与开放时间窗有限正物质能迫使动量进入一个只含原概率 <2.85e-12 的小盘。自伴演化存在，但不能作为原态的有限应力历史。**下一关先验收有独立物理依据的几何约束和正物质形式域，再连接非零场、完整 AE 和局域总装置。**
+
+[有限应力证明](null_source/timelike/constraint_states/DUST_REGULARITY.md) · [源族](null_source/timelike/constraint_states/RELATIONAL.md) · [正能时钟](null_source/timelike/constraint_states/POSITIVE_CLOCK.md) · [反思](null_source/timelike/constraint_states/REVIEW.md) · [回执](null_source/timelike/constraint_states/verification.json)
+
+复用137项前驱结果、冻结498个继承科学文件，旧检查和旧 ODE 不重跑。下列旧节是历史入口；本轮加强或拒收以新证明的明确范围为准。Core只读、GI排除、PR开放草稿，整体物理统一仍开放。
+
+## 前轮研究：完整总源、约束退化与可区别热壳制备
 
 [本轮16项证书](null_source/timelike/total_source/README.md)先排除一个关键捷径：完整 AE 密度的合法几何一阶变化与 Einstein 侧相消，原实际态仍有正密度方差，因此当前独立噪声齐性线性扩张没有绝对约束基态。这个结论不否定精确 mean-SCE。
 
