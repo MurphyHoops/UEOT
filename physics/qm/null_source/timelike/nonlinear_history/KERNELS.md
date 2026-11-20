@@ -85,7 +85,7 @@ M<3 时所有 k≥2 的 Born 级数在当前球内一致收敛。外层核又给
 
 ## 3. 精确裸压力与能量
 
-由 X=|v|²、Y=Re(v* v')、Z=|v'|² 的解析 partner 延拓，保持真正 canonical 导数 (v'−hv)/a²。利用 Theta h=V−h²，
+由 X=|v|²、Y=Re(v* v')、Z=|v'|² 的解析 partner 延拓，保持真正单位法向导数 (v'−hv)/a²；canonical momentum 为 a(v'−hv)。利用 Theta h=V−h²，
 
 \[
 p_k=\frac1{2\omega}\left[

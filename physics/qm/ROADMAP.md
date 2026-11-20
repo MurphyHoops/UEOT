@@ -13,7 +13,7 @@
 1. 为剩余几何幅度给独立的物理准备或选择机制。pure-slow 支是可用数学支；单变量解析、未来有界与降阶不由原 incoming/Hadamard 条件自动给出。
 2. 明确承接完整源谱的涨落引力模型，构造状态—几何联合约束初值及共同传播。固定 A、仅随机增长幅度的方案已排除；如改变过去、条件高模或场内容，须重新核算其物理输入。
 3. 在同一共同历史上实现局域制备、probe/clock，核算设备总应力、参考与交叉噪声、全部成功／失败／停止 CP 记录和校准。
-4. 检验原降噪在同资源、共同协变选择／仪器下是否有可辨认引力后果。相同完整联合 O(2) twirl 的记录等价继续有效；人为不同快幅度不能记为原制备信号。
+4. 检验原降噪在同资源、共同协变选择／仪器下是否有可辨认引力后果。相同完整联合 O(2) twirl 的记录等价沿用完整线性 CP 合同；非线性选择还须基于共同闭合约化数据，单独协变不足。人为不同快幅度不能记为原制备信号。
 5. 以减少独立物理假设或可区分经验检验承担统一责任；本轮精确平均定理没有导出场内容、U0、物理选解或完整量子引力。
 
 [全阶核](null_source/timelike/nonlinear_history/KERNELS.md) · [精确存在与正窗](null_source/timelike/nonlinear_history/EXISTENCE.md) · [反思及下一门](null_source/timelike/nonlinear_history/SELECTION.md) · [证据审查](null_source/timelike/nonlinear_history/REVIEW.md) · [回执](null_source/timelike/nonlinear_history/verification.json)。五项新检查，复用80项结果，冻结293个科学文件；Core只读，GI不在范围。
