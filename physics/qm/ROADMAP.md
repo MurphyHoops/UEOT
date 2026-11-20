@@ -2,7 +2,23 @@
 
 本图延续同一物理任务。权威执行状态为[CURRENT](status/CURRENT.json)，稳定结果为[主文](book/UEOT_PHYSICS.md)及现行claim ledger。Core只读，GI不在范围。数学闭合、物理选择、计算实现、经验检验分别登记。
 
-## 当前 · 保留双增长自由度，推进真正的非线性共同历史
+## 当前 · 精确平均共同历史已成立，推进物理选解与联合涨落
+
+[最新非线性闭环](null_source/timelike/nonlinear_history/README.md)已完成完整同半径 RSET 映射、四阶对数逆、显式收缩和同幅度误差。固定当前双场、AE、M2/U0 及完整 incoming 制备，得到保留慢／快两幅度的精确 mean-SCE 历史；Ward 使全部齐次平均约束和法向残差恒为零。认证球 1e−25、收缩率≤0.128、残差—距离增益<2.3e20；这是极保守非空域，未覆盖旧 1e−4 窗。
+
+存在后继续关闭了两个具体问题：当前 incoming 条件确实不唯一选择快幅度；固定 A 只随机化增长幅度，确实不能吸收非退化零模源谱的过去常数约束。完整数学证明与物理范围见[选解裁决](null_source/timelike/nonlinear_history/SELECTION.md)。
+
+**本次闭合后下一验收：**
+
+1. 为剩余几何幅度给独立的物理准备或选择机制。pure-slow 支是可用数学支；单变量解析、未来有界与降阶不由原 incoming/Hadamard 条件自动给出。
+2. 明确承接完整源谱的涨落引力模型，构造状态—几何联合约束初值及共同传播。固定 A、仅随机增长幅度的方案已排除；如改变过去、条件高模或场内容，须重新核算其物理输入。
+3. 在同一共同历史上实现局域制备、probe/clock，核算设备总应力、参考与交叉噪声、全部成功／失败／停止 CP 记录和校准。
+4. 检验原降噪在同资源、共同协变选择／仪器下是否有可辨认引力后果。相同完整联合 O(2) twirl 的记录等价继续有效；人为不同快幅度不能记为原制备信号。
+5. 以减少独立物理假设或可区分经验检验承担统一责任；本轮精确平均定理没有导出场内容、U0、物理选解或完整量子引力。
+
+[全阶核](null_source/timelike/nonlinear_history/KERNELS.md) · [精确存在与正窗](null_source/timelike/nonlinear_history/EXISTENCE.md) · [反思及下一门](null_source/timelike/nonlinear_history/SELECTION.md) · [证据审查](null_source/timelike/nonlinear_history/REVIEW.md) · [回执](null_source/timelike/nonlinear_history/verification.json)。五项新检查，复用80项结果，冻结293个科学文件；Core只读，GI不在范围。
+
+## 前轮 · 保留双增长自由度，推进真正的非线性共同历史
 
 [新一轮完整证明](null_source/timelike/dynamic_inverse/README.md)已经关闭此前线性逆不明的核心部分：完整响应在开右半平面恰有两条简单正实根；快根与同 incoming 态及完整线性约束相容。sigma_F/A∈(11.45521916747,11.45521917820)，sigma_F/s_*∈(468087.119,468087.342)。
 

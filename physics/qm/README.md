@@ -5,7 +5,17 @@
 - [中文第71章](book/UEOT_PHYSICS.md#ch-71) · [English Chapter 71](book/UEOT_PHYSICS.en.md#ch-71) · [完整书稿与3.12版印本](book/README.md)
 - [科学说明与复核程序](correlated_bath/README.md) · [状态](status/CURRENT.json) · [主张账本](status/CLAIM_LEDGER_v31.15.json) · [研究路线](ROADMAP.md)
 
-## 当前研究：完整谱、合法态匹配与保留双增长模的逆
+## 当前研究：精确非线性共同历史与剩余物理选解
+
+[最新全阶证明与五项证书](null_source/timelike/nonlinear_history/README.md)已关闭前轮的非线性映射缺口：精确协方差乘积把完整 RSET 分成可认证的低 Born 核和同半径可和高尾；全部固定 AE、实际零模和热壳保留。四阶加对数的 Wiener 空间现在与真实响应图域接通。
+
+由显式收缩构造，保留慢／快两个幅度的**精确 nonlinear mean-SCE 历史**存在。认证总球为 1e−25，收缩率≤0.128；固定双圆盘 (1e−28,1e−51) 给真实正窗 T=1/sigma_F。同一 incoming Q/P、eta_ref、完整源谱及占据随几何运输，完整平均约束和全部法向残差恒为零。同幅度残差到真解的距离增益 <2.3e20。半径是保守充分条件，未覆盖旧 1e−4 种子窗。
+
+闭合后已继续证明：固定慢幅度与 incoming 条件仍有不同快幅度的精确解，前 468087 个慢整数增长阶也不足以选解；仅随机化增长幅度不能承接非退化源谱产生的过去常数约束。下一关转向**独立物理选解、状态—几何联合涨落约束及其真实仪器**。平均存在不自动给出这些物理输入。
+
+[全阶核](null_source/timelike/nonlinear_history/KERNELS.md) · [存在与误差](null_source/timelike/nonlinear_history/EXISTENCE.md) · [闭环后裁决](null_source/timelike/nonlinear_history/SELECTION.md) · [审查](null_source/timelike/nonlinear_history/REVIEW.md) · [回执](null_source/timelike/nonlinear_history/verification.json)。复用80项结果，冻结293个继承科学文件；旧checker与ODE不重跑。Core只读，GI排除，PR保持草稿，整体物理统一和经验确认仍开放。
+
+## 前轮研究：完整谱、合法态匹配与保留双增长模的逆
 
 [最新证明与六项证书](null_source/timelike/dynamic_inverse/README.md)继续推进同态近似历史到精确演化的缺口。完整开右半平面响应谱现已分类：除慢根 s_*≈2 外，恰有另一条简单正实快根，sigma_F/A∈(11.45521916747,11.45521917820)。它通过完整线性约束、与原 incoming 态运输相容，不能由 Hadamard 条件或坐标变换删除。
 
