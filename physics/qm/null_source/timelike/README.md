@@ -4,9 +4,14 @@
 
 同态二次参照具有严格非零约束均值残差；允许有限源误差又会打开有明确资源成本的超临界替代。**该新增量子几何分支不再被当成原 mean-SCE 的必要前置门。下一任务回到同一总 CTP 作用量的合法边界态、绝对约束及完整初始相关。**
 
+
+原总源已继续推进一关：SO(4) 协变条件下，非零空间谐波不能补偿整体密度约束；完整零行还明确要求原 incoming 定义域和时间 Ward。有限初片的能量积分常数须作为真实新边界列，满足绝对方差／交叉相关及量子不确定性条件，不能仅指定一块经典 PSD 矩阵。
+
+[原约束投影与边界条件](finite_stress/ORIGINAL_CTP_GATE.md)
+
 [模型](finite_stress/MODEL.md) · [正常共同态](finite_stress/CRITICAL_STATE.md) · [总正源](finite_stress/POSITIVE_SOURCE.md) · [实际导数](finite_stress/SOURCE_OBSERVABLES.md) · [同态参照残差](finite_stress/DISPERSION_GAP.md) · [下一门](finite_stress/INPUTS_AND_NEXT_TEST.md) · [回执](finite_stress/verification.json)
 
-十项新增检查、146 项复用、536 个继承科学文件冻结。Core 只读、GI 排除、旧 checker／ODE 不运行、PR 开放草稿，整体统一仍开放。
+十一项新增检查、146 项复用、536 个继承科学文件冻结。Core 只读、GI 排除、旧 checker／ODE 不运行、PR 开放草稿，整体统一仍开放。
 
 **前轮入口：**[约束量子态、正能时钟与有限应力验收](constraint_states/README.md)。原静态相关态下界加强为严格 >10.072315975%；完整态补偿条件、实际零模量子约束界、关系物理内积和新的正规应力等价族已给出。有限正能时钟的微小条件误差、约0.5的完整约束RMS和约13.42%的源能成本分别保留。
 

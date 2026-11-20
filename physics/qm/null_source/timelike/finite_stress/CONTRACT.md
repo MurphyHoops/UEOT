@@ -11,3 +11,7 @@ The prior continuum positive-dust model failed finite positive matter energy for
 A K-quantization-inspired reduced model is a new model, not a Core deduction or the original full field theory. A normal physical state is not a local preparation apparatus. An exact spectral theorem is not a numerical approximation claim. Symbolic certificates check the stated algebra and intervals; the accompanying analytic proofs are not machine-formal or externally peer-reviewed.
 
 The new user request at 2026-11-20 18:36:06 UTC explicitly requires at least three additional hours of substantive work. Earliest delivery is 2026-11-20 21:36:06 UTC (2026-11-21 05:36:06 Asia/Shanghai). Earlier work is not counted toward this new minimum.
+
+## Reflection and direct return to the original constraint
+
+After closing the declared finite-source branch, the same active cohort also contains ORIGINAL_CTP_GATE. It reads frozen original data and proves an explicitly conditional SO(4) projection/boundary statement. The dust/lattice candidate is not assumed to be a prerequisite of the original mean-SCE goal. The full tensor CTP functional, a normal quantum boundary state and empirical calibration remain open.

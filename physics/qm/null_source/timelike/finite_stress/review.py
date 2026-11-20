@@ -2,7 +2,7 @@
 import ast,hashlib,json
 from common import *
 NAMES=["model","phase_diagram","critical_state","volume_moments","positive_source",
- "source_observables","dispersion_gap","finite_clock","robustness"]
+ "source_observables","dispersion_gap","finite_clock","robustness","original_ctp_gate"]
 science={n:json.loads((HERE/(n+".json")).read_text()) for n in NAMES}
 for n,j in science.items():
     assert j["status"]=="PASS"
@@ -24,6 +24,10 @@ assert science["finite_clock"]["same_dust_counted_once"] is True
 assert science["finite_clock"]["unconditional_source_equals_input_claimed"] is False
 assert science["robustness"]["model_sequence_is_fixed_mu_limit"] is False
 assert science["robustness"]["old_A_free_history_matched"] is False
+assert science["original_ctp_gate"]["SO4_alone_suffices_for_full_lapse_row"] is False
+assert science["original_ctp_gate"]["actual_full_inhomogeneous_CTP_Hessian_computed"] is False
+assert science["original_ctp_gate"]["normal_quantum_boundary_state_constructed"] is False
+assert science["original_ctp_gate"]["deterministic_mean_solution_invalidated"] is False
 allowed={"__future__","argparse","hashlib","json","math","pathlib","mpmath","sympy","common","ast"}
 for n in NAMES+["common","review"]:
     tree=ast.parse((HERE/(n+".py")).read_text())

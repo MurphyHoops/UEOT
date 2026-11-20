@@ -7,11 +7,16 @@
 
 ## 当前研究：有限正源历史、同态参照残差与路线回审
 
-[本轮十项新检查](null_source/timelike/finite_stress/README.md)对一个明确新增的 K-inspired 正体积／正尘埃模型完成三区间验收：亚临界负谱态没有正阶体积矩；超临界不能容纳完整原高斯 P 律；临界点可构造正常联合态、固定演化和有限总正源方差。同一 dust 的正常正能时钟提升也保留完整资源账本。
+[本轮十一项新检查](null_source/timelike/finite_stress/README.md)对一个明确新增的 K-inspired 正体积／正尘埃模型完成三区间验收：亚临界负谱态没有正阶体积矩；超临界不能容纳完整原高斯 P 律；临界点可构造正常联合态、固定演化和有限总正源方差。同一 dust 的正常正能时钟提升也保留完整资源账本。
 
 继续验收后发现：裸源态与原法向导数不能由 P 律保持推出；经典对称 work-law 留下非零交换子；明确二次参照的同态约束均值有严格非零残差。有限误差还会重新打开超临界路线，所构造近似的体积／真空总能成本增长。因此这项约化存在性结果不等于原 AE/QFT 或仪器闭合。
 
 **优先级重新校正：strong dust 和离散几何是新增分支，不是原 mean-SCE 的必要条件。下一主任务回到同一总 CTP 作用量的约束相容边界态、绝对噪声与初始相关，再接原完整场论响应。** 不继续用增加时钟或排序替代共同物理历史。
+
+
+原总源已继续推进一关：SO(4) 协变条件下，非零空间谐波不能补偿整体密度约束；完整零行还明确要求原 incoming 定义域和时间 Ward。有限初片的能量积分常数须作为真实新边界列，满足绝对方差／交叉相关及量子不确定性条件，不能仅指定一块经典 PSD 矩阵。
+
+[原约束投影与边界条件](null_source/timelike/finite_stress/ORIGINAL_CTP_GATE.md)
 
 [正常态](null_source/timelike/finite_stress/CRITICAL_STATE.md) · [总正源](null_source/timelike/finite_stress/POSITIVE_SOURCE.md) · [同态残差](null_source/timelike/finite_stress/DISPERSION_GAP.md) · [导数与 Ward 范围](null_source/timelike/finite_stress/SOURCE_OBSERVABLES.md) · [复盘与下一门](null_source/timelike/finite_stress/INPUTS_AND_NEXT_TEST.md) · [回执](null_source/timelike/finite_stress/verification.json)
 

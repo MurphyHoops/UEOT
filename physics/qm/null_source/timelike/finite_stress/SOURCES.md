@@ -38,3 +38,10 @@ do not certify UEOT physical unification or empirical success.
   https://arxiv.org/pdf/1906.07554
   This is prior evidence for volume-domain problems in different flat scalar-clock models,
   not a theorem for our closed positive-dust family. No first-discovery claim is made.
+
+- P. R. Anderson, C. Molina-Paris and E. Mottola, "Linear Response, Validity of Semi-Classical Gravity, and the Stability of Flat Space," gr-qc/0209075.
+  https://arxiv.org/pdf/gr-qc/0209075
+  Equations (3.4)-(3.9) and the page-8 discussion require the retarded commutator and local contact terms together.
+- S. Hollands and R. M. Wald, "Conservation of the stress tensor in perturbative interacting quantum field theory in curved spacetimes," gr-qc/0404074.
+  https://arxiv.org/pdf/gr-qc/0404074
+  Section 4.3 and Theorem 5.1 connect covariant metric variation and the Ward identity. They do not establish our uncomputed boundary extension.
