@@ -2,7 +2,22 @@
 
 本图延续同一物理任务。权威执行状态为[CURRENT](status/CURRENT.json)，稳定结果为[主文](book/UEOT_PHYSICS.md)及现行claim ledger。Core只读，GI不在范围。数学闭合、物理选择、计算实现、经验检验分别登记。
 
-## 当前 · 相关与纠缠的静态出口已受定量限制，推进动态联合反馈
+## 当前 · 同态动态正窗已受控，推进精确演化与涨落法则
+
+[最新证明与五项证书](null_source/timelike/dynamic_seed/README.md)固定原 M2、U0、AE 和前驱 unfiltered 实际量子态；同步计算真实 Jost 法向数据及二阶几何修正 beta≈−1/3。继续闭合统一高频尾、完整 RSET 解析余项和 Ward 传播后，已得到 eta∈[0,1] 的同态近似共同历史：空间方程 |S|<1.642×10^-8，正交能量／空间 Einstein 缺陷乘 x 后分别 <2.465×10^-12、3.284×10^-8；初片及整个窗口的法向导数也有认证界。
+
+[完整动态记录定理](null_source/timelike/dynamic_seed/RECORDS.md)同时给出筛选条件：若完整联合 twirl 相同、共同动力学与每个仪器结果保持 O(2)，所有动态、自适应、成功／失败／停止记录同律。单纯延长演化不会为当前 old/new 制备产生引力辨识。
+
+**闭合后的下一验收：**
+
+1. 在同一固定 incoming 合同下，证明近似轨迹附近精确 nonlinear SCE 解的存在或排除及解误差。须给完整线性化算子的有界逆、AE 高阶初值和 nonlinear/Volterra 余项；小残差和单个 D_new(2s)≠0 均不足。
+2. 明确承接完整源涨落的引力法则及联合约束初值。本轮确定性种子没有吸收新的正负随机能量参数；平均 SCE、随机反馈与算符约束继续分别验收。
+3. 为真实局域制备和 probe/clock 计入总应力、参考系统、全部 CP 结果及校准。先检验联合 twirl；仍同类时结束该辨识方向，有差别时明确新增物理资源及其责任。
+4. 用减少独立物理输入或同资源经验分离推进统一目标。前驱 >7% 静态强二阶矩界不升级为 mean-SCE 失败或几何 RMS。
+
+[动态证明](null_source/timelike/dynamic_seed/DYNAMICS.md) · [反思与下一门](null_source/timelike/dynamic_seed/REVIEW.md) · [回执](null_source/timelike/dynamic_seed/verification.json)。复用69项旧结果，254个继承科学文件保持原字节；Core只读，GI不在范围，经验状态不升级。
+
+## 前轮 · 相关与纠缠的静态出口已受定量限制，推进动态联合反馈
 
 [最新独立增量](null_source/timelike/correlated_static/README.md)进一步审查前驱10%界的条件乘积态假设。允许任意零模／高模相关与纠缠，以及不限于热态或k=2的平稳正高模激发，仍有全记录加权相对源／约束 RMS **>7%**。证明使用整片平均必要方程、总激发阈值导数 M2 τ′=2N、强交换的正部谱不等式和实际输入高半径支的Jensen下界。
 

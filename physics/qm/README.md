@@ -5,7 +5,15 @@
 - [中文第71章](book/UEOT_PHYSICS.md#ch-71) · [English Chapter 71](book/UEOT_PHYSICS.en.md#ch-71) · [完整书稿与3.12版印本](book/README.md)
 - [科学说明与复核程序](correlated_bath/README.md) · [状态](status/CURRENT.json) · [主张账本](status/CLAIM_LEDGER_v31.15.json) · [研究路线](ROADMAP.md)
 
-## 当前研究：允许量子相关后仍有静态残差下界
+## 当前研究：同一实际态的动态正窗与完整记录裁决
+
+[最新证明、计算和证书](null_source/timelike/dynamic_seed/README.md)把固定原 M2、U0、AE 与实际 incoming 态连接到非静态二阶几何。真实法向数据、完整无限模 UV 尾和 Ward 传播现已给出 eta∈[0,1] 的受控近似共同历史：|S|<1.642×10^-8，正交能量／空间 Einstein 缺陷乘 x 后分别 <2.465×10^-12、3.284×10^-8，整个窗口的法向导数亦有界。
+
+闭合后已将下一优先级改为**附近精确 nonlinear SCE 解的存在／排除及误差**，继而验证承接完整源涨落的明确引力法则与联合初值。完整动态 O(2) 记录定理同时说明：联合 twirl 相同且共同通道／仪器协变时，延长观测或增加测量不能区分 old/new。真实设备和新物理资源须明示核算。
+
+[动态证明](null_source/timelike/dynamic_seed/DYNAMICS.md) · [操作与时钟](null_source/timelike/dynamic_seed/RECORDS.md) · [复核及下一门](null_source/timelike/dynamic_seed/REVIEW.md) · [五项新检查](null_source/timelike/dynamic_seed/run_verification.py) · [回执](null_source/timelike/dynamic_seed/verification.json)。复用69项前驱结果，冻结254个科学文件；旧 checker 和旧 ODE 不重跑。精确非线性解、随机约束、真实引力仪器与物理统一目标仍开放。
+
+## 前轮研究：允许量子相关后仍有静态残差下界
 
 [最新推广及证书](null_source/timelike/correlated_static/README.md)接续已经闭合的联合全时平均历史，继续检验零模／高模反相关能否抵消总噪声。现在允许相关与纠缠、高模任意平稳占据及更多壳，不要求条件乘积态；完整静态方程仍给总激发阈值上限。用正高模 Hamiltonian、联合谱正部不等式和完整记录的高半径尾，认证记录加权相对源／约束 RMS严格 **>7%**。
 
