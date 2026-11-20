@@ -49,7 +49,8 @@ def result():
     dconstraint=sp.simplify(-sp.Rational(2,3)*x*(2*rho0*u+drho))
     assert dconstraint==0
     dcurvature=6*(sigma*sigma-2)*u/x
-    eta,J=sp.symbols("eta J",real=True)
+    eta=sp.symbols("eta",real=True)
+    J=sp.symbols("J",real=True,nonzero=True)
     h_example=J*eta**2/2
     V_example=sp.diff(h_example,eta)+h_example*h_example
     assert V_example.subs(eta,0)==0

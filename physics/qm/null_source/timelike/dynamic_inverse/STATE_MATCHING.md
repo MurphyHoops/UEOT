@@ -71,7 +71,7 @@ h=0 时能量对数项确实消失，不能无条件宣称所有 stress 分量�
 都收敛的必要充分条件仅是 h Delta j=0、Delta ell=0。
 它显著弱于全阶 Hadamard。
 
-一个明确反例：旧 a=A，新 a=A exp(J eta³/6)。在 eta=0，
+一个明确反例：固定 J≠0，旧 a=A，新 a=A exp(J eta³/6)。在 eta=0，
 a,h,V 相同，Delta V'=J、Delta V''=0。冻结旧静态 covariance 后，
 两个片上 sums 有限，但缺失 J/(8omega³) 的 cross covariance，所以新态不是 Hadamard。
 不能把单片有限值升级为邻域内完整 RSET 合法。
@@ -225,7 +225,8 @@ f in C_c^infinity((0,infinity))，w=G*f 的全部导数可转移到 f，
 ## 7. 继续推进：双变量精确 incoming 态的收敛构造
 
 这一步先关闭实际态构造，不宣称几何满足非线性 SCE。
-取双圆盘 Wiener 代数 A，u00=0，Theta=s_* z partial_z+sigma_F w partial_w，
+本节 A 是包含常数项与一次项的完整双圆盘 Wiener 代数，区别于 INVERSE 第6节仅含总阶至少二的校正空间。
+取 u00=0，Theta=s_* z partial_z+sigma_F w partial_w，
 V=Theta²u+(Theta u)²∈A。所有非零单项式的 lambda_nm>=s_*>0。
 
 令 F_{+,00}=F_{-,00}=1，定义
