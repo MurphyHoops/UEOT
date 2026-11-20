@@ -18,7 +18,7 @@ vminus=16*(2*N**2+2*N+1)-32*WEIGHT
 assert above(vminus-uncertainty,0)
 finish("initial_correlations.py",{
  "proof":"INITIAL_CORRELATIONS.md",
- "same_source_and_geometry_marginals_different_test_variances":True,
+ "same_source_and_initial_amplitude_marginals_different_test_variances":True,
  "both_joint_covariances_are_positive_Gram_matrices":True,
  "necessary_initial_contribution_condition":"Delta(H CY H* + H K R* + R K* H*)=0",
  "actual_shell_quantum_Robertson_rhs":outward(uncertainty**2),

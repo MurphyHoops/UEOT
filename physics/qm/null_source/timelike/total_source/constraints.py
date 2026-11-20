@@ -20,6 +20,11 @@ rz=M*mu/(2*x**3);rv=(2*B-1/(4*s.pi**2)+Jn)/x**2
 enthalpy=2*rz+s.Rational(4,3)*rv+1/(48*s.pi**2*x**2)
 assert s.simplify(x*dr+s.Rational(3,2)*enthalpy)==0
 kappa=M2/(3*X**2);assert above(kappa,"0.23")
+mb=exact(".11");wb=1+mb/(6*(1-mb/3));ddwb=2*mb/(1-mb/3)
+e2_bound=(ddwb/2+exact(".1")*wb+exact(".1")*ddwb+6*wb)/(2*iv.sqrt(3))
+E3_bound=exact(1)/8+exact(".0025")+mb**2/8+exact(".01")*mb/4+exact(".1")*exact(".12")/4
+vacuum_bracket_bound=1+exact(".505")+E3_bound+1+4
+assert below(e2_bound,2) and below(E3_bound,".133") and below(vacuum_bracket_bound,7)
 bound=exact("1.01")+exact(2)/3*(exact(".6")*iv.exp(exact(".4"))+exact("1.01")*iv.exp(exact(".2"))+7*iv.exp(exact(".2"))/(2*iv.pi**2*exact("6e9"))+exact(".16")*iv.exp(exact(".2"))/(iv.pi**2*exact("6e9")))
 assert below(bound,3)
 constant=3*iv.exp(exact(".04"))/(exact(".23")*exact(".01")*exact(".9"))
@@ -32,8 +37,8 @@ finish("constraints.py",{
  "AE_dynamic_log_density_variation":"-u/(16*pi^2*A^4)",
  "complete_density_tangent":"delta_rho_geom=-3*u/A^2",
  "independent_density_source_linear_constraint":"xi_rho_total=0",
- "quadratic_necessary_bound":"abs(delta_m)<1510*||u||_E4^2 for ||u||<=0.01",
- "kappa":outward(kappa),"E_ball_upper":outward(bound),"quadratic_constant_upper":outward(constant),
+ "quadratic_necessary_bound":"abs(delta_m)<1510*||u||_E4^2 for 0<||u||<=0.01; u=0 implies delta_m=0",
+ "kappa":outward(kappa),"derived_e2_norm_upper":outward(e2_bound),"derived_vacuum_bracket_norm_upper":outward(vacuum_bracket_bound),"E_ball_upper":outward(bound),"quadratic_constant_upper":outward(constant),
  "absolute_stochastic_constraint_solved_by_zero_density_noise_difference":False,
  "new_common_nonlinear_history_or_pointwise_metric_lower_bound_proved":False,
  "actual_baseline_spatial_average_density_variance":outward(density_variance),

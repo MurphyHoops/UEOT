@@ -1,10 +1,10 @@
 # UEOT Physics Roadmap
 
-本图延续同一物理任务。权威执行状态为[CURRENT](status/CURRENT.json)，稳定结果为[主文](book/UEOT_PHYSICS.md)及现行claim ledger。Core只读，GI不在范围。数学闭合、物理选择、计算实现、经验检验分别登记。
+本图延续同一物理任务。稳定书稿状态为[CURRENT](status/CURRENT.json)，本轮研究执行以当前节链接的回执为准；稳定结果为[主文](book/UEOT_PHYSICS.md)及现行claim ledger。Core只读，GI不在范围。数学闭合、物理选择、计算实现、经验检验分别登记。
 
 ## 当前 · 从可区别总源转向合法联合初态与因果准备历史
 
-[本轮16项检查与反思](null_source/timelike/total_source/README.md)已给完整 AE 的密度切向退化、实际 baseline 正密度方差、新正常热壳相干的完整局域纯压力差、非零全场平滑历史影响、实际记忆／载体未来总源，以及局域全局制备时间必要界。后者使原小窗全局门替代方案被明确排除。新增经典自主控制基准单独登记，不与原量子模型拼接。
+[本轮16项检查与反思](null_source/timelike/total_source/README.md)已给完整 AE 的密度切向退化、实际 baseline 正密度方差、新正规热壳相干的完整局域纯压力差、非零全场平滑历史影响、实际记忆／载体未来总源，以及局域全局制备时间必要界。后者使原小窗全局门替代方案被明确排除。新增经典自主控制基准单独登记，不与原量子模型拼接。
 
 **下一项验收按缺失物理内容排序：**
 

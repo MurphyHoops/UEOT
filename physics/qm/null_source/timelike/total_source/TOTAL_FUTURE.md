@@ -23,7 +23,8 @@ The endpoint removes this extra term without an assumed environment reset.
 
 ## 2. Prescribed future propagation, allowing nonzero memory stress
 
-Start at a common postpreparation Cauchy surface with these actual outputs.
+In this section take the maximal-coherence endpoint c=w. Start at a common
+postpreparation Cauchy surface with these actual outputs.
 Assume the same future theory, no direct shell-memory recoupling,
 U_g=U_s,g tensor U_m,g, and
 T_total=T_s tensor I+I tensor T_m. The memory may have nonzero stress.

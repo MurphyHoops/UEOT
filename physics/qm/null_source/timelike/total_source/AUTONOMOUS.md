@@ -64,7 +64,7 @@ On |chi|<=L/2, b>=e^{-1/3}>2/3; with dchi/dzeta<=Pi this gives
 \[
  1/120<|\Delta\psi|<(2/75)\sqrt{15/14}.
 \]
-The free-out clock momentum equals its incoming value, as do both shift momenta. The full stiff source is K/a^6 throughout: internal readout dynamics does not create a change in the complete conserved source.
+The free-out clock momentum equals its incoming value, as do both shift momenta. The full stiff source is K/(V0^2 a^6) throughout: internal readout dynamics does not create a change in the complete conserved source.
 
 ## Explicit quantum reduction, without a quantum pulse shortcut
 

@@ -31,7 +31,10 @@ Both joint covariances are positive Gram matrices:
 \[
  \Sigma_\pm=\begin{pmatrix}I_2&\pm v\\\pm v^T&v^Tv\end{pmatrix}\ge0 .
 \]
-The entire source law and all initial geometric jet marginals coincide.
+The entire source law and the marginal law of the homogeneous initial amplitude
+coincide. In particular the metric, first and second derivative initial
+marginals coincide, since their forced contributions vanish. No unavailable
+higher-order initial jet is assumed.
 Nevertheless
 \[
  {\rm Var}\,\ell(u_+)=0,\qquad
@@ -68,7 +71,8 @@ Then
  [Q,P]=2i(4N_{\rm tot}+16),\qquad
  \langle4N_{\rm tot}+16\rangle=16(1+2n)>0.
 \]
-For any normally prepared joint state with finite required moments, if a
+For any normal joint extension of either specified NOON state, with finite
+required moments, if a
 geometry/carrier variable Y commutes with the matter algebra,
 \[
  {\rm Var}(Q-kY){\rm Var}(P)

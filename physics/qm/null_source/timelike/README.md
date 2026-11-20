@@ -2,7 +2,7 @@
 
 **当前入口：**[完整总源、约束退化与热壳相干](total_source/README.md)。完整 AE 密度切向与 Einstein 侧相消，而实际基态仍有正密度噪声，故当前独立噪声齐性线性扩张失败；确定性平均解保留。
 
-另一个新正常制备保持完整 W2 与全能量谱，却有完整局域纯压力噪声差。实际光滑平衡历史给非零全场影响，并包括零模与无限高模；真实记忆／U(2)载体未来总源也已纳入。局域因果审查进一步证明全局精确无选择准备需 T>=pi-chi0，不能沿用原小响应窗。共同绝对联合初值、准备段全源与可校准引力读出仍开放。
+另一个新正规制备保持完整 W2 与全能量谱，却有完整局域纯压力噪声差。实际光滑平衡历史给非零全场影响，并包括零模与无限高模；真实记忆／U(2)载体未来总源也已纳入。局域因果审查进一步证明全局精确无选择准备需 T>=pi-chi0，不能沿用原小响应窗。共同绝对联合初值、准备段全源与可校准引力读出仍开放。
 
 [全约束](total_source/CONSTRAINTS.md) · [无限场见证](total_source/HISTORY_WITNESS.md) · [载体](total_source/CARRIER.md) · [局域准备门槛](total_source/PREPARATION_CAUSALITY.md) · [反思](total_source/REVIEW.md) · [下一验收](total_source/INPUTS_AND_NEXT_TEST.md) · [回执](total_source/verification.json)。16项新检查、121项复用、438文件冻结。Core只读、GI排除、PR开放草稿，物理统一未完成。
 

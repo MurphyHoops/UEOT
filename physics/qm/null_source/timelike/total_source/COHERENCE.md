@@ -20,8 +20,8 @@ Thus these are normalized positive normal states, not formal covariance
 assignments. The main preparation below uses the endpoint c=w.
 
 Both vectors have the same total energy, so the complete total-Hamiltonian
-spectral law is unchanged. The states are stationary for the static free
-Hamiltonian, but in general not KMS. Each entire species marginal remains
+spectral law is unchanged. The shell states are stationary for the static free
+Hamiltonian, but in general not KMS. Each species' entire k=2 shell marginal remains
 the original thermal marginal. Any operator of degree <=2 in all field
 creation/annihilation operators has zero matrix element between A1 and A2:
 connecting them requires two annihilations in one species AND two creations

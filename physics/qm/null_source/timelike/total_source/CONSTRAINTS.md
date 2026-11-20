@@ -53,7 +53,19 @@ On the frozen complex E4 ball ||u||<=0.1 define
 Here delta m is a change of the zero-mode mean parameter mu, not a measured
 sharp value of an unmeasured quantum operator. On this ball E(0;0)=DE(0;0)=0.
 The frozen analytic bounds give x rho_z<0.6, x U0<1.01, x>6e9, n<0.02,
-a complete vacuum density bracket <7 and ||e2||<2. Hence
+a complete vacuum density bracket <7 and ||e2||<2 as follows.
+These two bounds are derived within the original E4 analytic domain and
+positive-frequency spectrum; they are not claims about arbitrary C4 functions.
+For M=.11 and omega2^2=3, the frozen W-series estimates give
+||W||<=1+M/[6(1-M/3)]<1.02 and
+||Theta^2 W||<=2M/(1-M/3)<.23.
+All nonzero frequencies exceed 1, so ||Theta W||<.23, while ||Theta h||<=.1.
+The complete energy formula then gives
+||e2||<(.23/2+.1*1.02+.1*.23+6*1.02)/(2sqrt(3))<2.
+Also ||Theta V||<=.12, ||E1||<=.505 and
+||E3||<=1/8+.0025+.11^2/8+.01*.11/4+.1*.12/4=.1322875<.133.
+Together with the frozen subtracted mode-sum bound <1 and ||r_an||<1,
+the density bracket is bounded by 1+.505+.133+1+4<7. Hence
 \[
  \|E(u;0)\|\le1.01+\tfrac23[
  .6 e^{.4}+1.01e^{.2}
@@ -64,11 +76,15 @@ linear terms zero, gives for t=||u||<=0.01
 \[
  \|E(u;0)\|\le {3t^2\over(0.1)^2(1-10t)}.
 \]
-Any solution of this necessary density equation therefore obeys
+After evaluation at any chosen slice in the analytic domain, any compatible
+datum with 0<t<=0.01 obeys
 \[
  |\delta m|\le {3e^{4t}\over\kappa(0.1)^2(1-10t)}t^2
                       <1510t^2 .
 \]
+At t=0 the equation instead gives delta m=0 exactly; a strict 0<0 is not asserted.
+If the entire old u00=0 incoming history must solve E identically, its constant
+term already forces delta m=0; the finite-slice bound does not bypass this.
 This is an E4-norm necessary bound; it is not a pointwise lower bound on a
 metric signal, an existence theorem, or a stability theorem. A constant
 nonzero delta m cannot share the unchanged all-past static solution without

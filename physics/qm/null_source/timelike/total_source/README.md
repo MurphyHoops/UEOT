@@ -9,7 +9,7 @@
 | 问题 | 本轮结论 | 证明／可复算证书 |
 |---|---|---|
 | 几何一阶初值能否吸收独立密度涨落 | 完整 AE 的 delta rho_geom=-3u/A2 与 Einstein 侧相消；原实际平均密度方差>0，指定线性随机 baseline 失败 | [约束](CONSTRAINTS.md) · [数值](constraints.json) |
-| 能否保留全部 W2 和能量谱而改变总源噪声 | 可以。k=2 完整简并壳层上的正常正态 rho_plus/minus 保留均值，完整局域噪声差为非零纯压力 rank-two 核 | [态](COHERENCE.md) · [全张量](PRESSURE_NOISE.md) |
+| 能否保留全部 W2 和能量谱而改变总源噪声 | 可以。k=2 完整简并壳层上的正的正规量子态（非高斯） rho_plus/minus 保留均值，共同静态背景上的完整局域噪声差为非零纯压力 rank-two 核 | [态](COHERENCE.md) · [全张量](PRESSURE_NOISE.md) |
 | 壳层差能否通过真实平滑背景留在全无限场中 | 可以。平衡双脉冲使 F0=1、33/100000<abs(beta2)<1/600、abs(Frest)>exp(-5/54)>0.9；固定原占据时 abs(Delta Ffull)>2.04165e-10 | [全阶公式](INFLUENCE.md) · [历史见证](HISTORY_WITNESS.md) |
 | 准备是否隐藏了资源与装置 | 已给完整纯记忆 dilation、熵与控制波动；c=w 的实际 joint 差因子化。U(2) 真实载体在完整表示扇区的未来源也已保留 | [准备](PREPARATION.md) · [实际记忆](TOTAL_FUTURE.md) · [载体](CARRIER.md) |
 | 这种全局准备能否立即用一个局域 cap 实现 | 不能。共同静态 S3、同输入和无选择局域操作要求准备共形时间 T>=pi-chi0；否则存在不可改变但目标要求改变的局域观测 | [因果门槛](PREPARATION_CAUSALITY.md) |
