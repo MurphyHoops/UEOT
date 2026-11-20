@@ -38,6 +38,7 @@ finish("dispersion_gap.py",{
  "all_Gaussian_records_retained":True,
  "reference":"4 gamma sqrt(v) (arcsin sqrt(h))^2 sqrt(v), h=(2-S-S*)/4",
  "global_volume_weighted_ratio_claimed":False,
- "linear_single_observable_mean_claimed":False,
+ "ratio_diagnostics_are_linear_observable_means":False,
+ "same_state_reference_constraint_linear_mean_claimed":True,
  "metric_or_experimental_error_claimed":False,
  "full_GR_AE_reference_equivalence_claimed":False})

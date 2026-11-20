@@ -18,6 +18,8 @@ assert science["volume_moments"]["weighted_energy_term_wrongly_assumed_nonpositi
 assert science["positive_source"]["total_positive_energy_variance_finite_each_finite_time_window"] is True
 assert science["source_observables"]["naive_classical_symmetric_work_law_exact"] is False
 assert science["dispersion_gap"]["global_volume_weighted_ratio_claimed"] is False
+assert science["dispersion_gap"]["ratio_diagnostics_are_linear_observable_means"] is False
+assert science["dispersion_gap"]["same_state_reference_constraint_linear_mean_claimed"] is True
 assert science["finite_clock"]["same_dust_counted_once"] is True
 assert science["finite_clock"]["unconditional_source_equals_input_claimed"] is False
 assert science["robustness"]["model_sequence_is_fixed_mu_limit"] is False

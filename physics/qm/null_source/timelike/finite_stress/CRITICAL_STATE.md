@@ -35,7 +35,8 @@ Let h(s)=sqrt(s)w(s). A central second-difference bound gives
 Indeed, with z=1/[(s-1)(2-s)]>=4,
 |w'|<=16, |w''|<=416 and |h''|<=416sqrt(2)+16+1/4<605.
 The support count and square-root factors give
-C_T<=4*605/[(sqrt(3/8))exp(-4/3)]<16000.
+C_T,derived<=4*605/[(sqrt(3/8))exp(-4/3)]<16000;
+we use the larger fixed constant C_T=16000 throughout.
 This estimate applies to b_B; the original-H seed is chi_B=Jb_B.
 
 Choose
@@ -70,8 +71,8 @@ contribute at most m/2 and M_0^2/R=m/4, respectively. Thus the band
 \]
 No approximate-eigenvector assumption is used here.
 
-Fix one real f in C_c^infinity((-2R,-r/2)), 0<=f<=1, equal to one on
-[-R,-r]. An explicit choice is
+Fix one real f in C_c^infinity(R), with support contained in
+[-2R,-r/2], 0<=f<=1, equal to one on [-R,-r]. An explicit choice is
 f(e)=s((e+2R)/R)s((-e-r/2)/(r/2)),
 where s(x)=0 for x<=0, s(x)=1 for x>=1, and for 0<x<1,
 s(x)=exp(-1/x)/(exp(-1/x)+exp(-1/(1-x))).

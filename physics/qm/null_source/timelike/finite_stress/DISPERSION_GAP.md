@@ -1,9 +1,10 @@
 # A nonzero classical-dispersion comparison cost
 
-The following is an operator bound in the declared model. Its final
-average is a probability-weighted diagnostic over the conserved P
-spectral label, not an already constructed laboratory record or a
-linear observable's single expectation.
+The following bounds apply to the declared model. The conditional-ratio
+averages in sections 1-3 are probability-weighted diagnostics over the
+conserved P spectral label. Section 5 separately proves a linear mean
+of a declared comparison form. Neither is an already constructed
+laboratory record.
 
 ## 1. Positivity forces a nonzero conditional kinetic fraction
 
@@ -82,8 +83,10 @@ Jensen for tau_P gives
                     \over4\gamma\langle v\rangle_P}
  \ge\Delta(m(P))\ge p_4(m(P)).
 \]
-The relative difference is d(P)/m(P), with its continuous zero limit.
-Both p4 and p4(x)/x are increasing on nonnegative x. Therefore
+For m(P)>0 the relative difference is d(P)/m(P). The lower-bound
+function p4(x)/x extends continuously by zero at x=0; no zero limit
+for the actual ratio d(P)/m(P) is inferred from m(P) tending to zero.
+Both p4 and this extension of p4(x)/x are increasing on nonnegative x. Therefore
 \[
  E_P d(P)\ge p_*p_4(b_*),\qquad
  E_P[d(P)/m(P)]\ge p_*p_4(b_*)/b_* .
@@ -124,8 +127,11 @@ This is a genuine linear mean:
 <Delta K>=q Tr[(sqrt(v) rho sqrt(v)) Delta(h)], finite whenever <v>
 is finite. It does not interchange probability and volume weights.
 
+Keep the same joint state, proper-dust lapse, and E (or p after the
+normal clock lift); change only the kinetic comparison form.
 Define only a Hermitian comparison form h_ref=h_poly-DeltaK; no new
-self-adjoint reference dynamics is assumed. In the physical state,
+self-adjoint reference dynamics is assumed. A changed state or clock
+would be a different comparison contract. In the physical state,
 E=-H_poly, so
 \[
  \langle E+h_{\rm ref}\rangle=-\langle\Delta K\rangle.

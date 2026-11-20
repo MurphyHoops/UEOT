@@ -9,7 +9,7 @@ Only one of these is included in the corresponding energy ledger.
 
 The critical state has H<=-h_min with
 h_min=(r/2)B_*^(1/3)>0. Take 0<sigma<h_min and a fixed real even
-normalized h0 in C_c^infinity((-1,1)).
+normalized h0 in C_c^infinity(R), with support contained in [-1,1].
 Let h_sigma(u)=sigma^-1/2 h0(u/sigma), and define
 \[
  (W_\sigma\psi)(p)=h_\sigma(p+H)\psi,\qquad p>0.

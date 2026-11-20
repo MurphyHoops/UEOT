@@ -126,9 +126,13 @@ For eta_N<=1/4 the normalized filtered section phi_P obeys
 ||phi_P-g_N||<=2eta_N. Its energy support is contained in
 [-3Lambda_N/2,-Lambda_N/2].
 
-The isometries V_N psi(P)=phi_P psi(P) and J_N psi(P)=g_N psi(P)
-therefore satisfy ||V_N-J_N||<=2eta_N. Purification and partial-trace
-contractivity imply
+Let H_cap=1_{|P|<=Pcap} H_source, which contains the support of rho_F.
+The map V_N psi(P)=phi_P psi(P) is an isometry on H_cap; no negative
+spectral section at all P is claimed for a fixed supercritical model.
+The product isometry J_N psi(P)=g_N psi(P) is defined on the full
+source space. They satisfy ||V_N-J_N|_{H_cap}||<=2eta_N.
+Purification, the triangle inequality against J_N rho_old J_N*,
+and partial-trace contractivity imply
 \[
  D_{\rm tr}(\operatorname{Tr}_{g}V_N\rho_FV_N^*,\rho_{\rm old})
  \le\sqrt{\epsilon_{\rm tail}}+2\eta_N .

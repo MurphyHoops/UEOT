@@ -97,17 +97,17 @@ the actual mean geometry and the local stress prescription together.
 ## 5. Finite moments do not automatically supply the Ward identity
 
 There is a concrete ordering test. In the normal clock representation
-put S0=P^2, E_+=qv+p+S0/(2v), and define the classical volume-work
-coefficient P_cl=V0*pressure=-q+S0/(2v^2).
+put S=P^2, E_+=qv+p+S/(2v), and define the classical volume-work
+coefficient P_cl=V0*pressure=-q+S/(2v^2).
 The exact Heisenberg derivatives satisfy
 \[
  \dot E_++\tfrac12\{P_{\rm cl},\dot v\}
- ={S_0\over4}[v^{-1},[v^{-1},\dot v]].
+ ={S\over4}[v^{-1},[v^{-1},\dot v]].
 \tag{34a}
 \]
 The right-hand side is generally nonzero. Its upper adjacent entry is
-i S0 gamma/[4(n(n+1))^(3/2)], and its fiber norm is at most
-S0 gamma[2^(-3/2)+6^(-3/2)]/4. The original P4 moment makes the
+i S gamma/[4(n(n+1))^(3/2)], and its fiber norm is at most
+S gamma[2^(-3/2)+6^(-3/2)]/4. The original P4 moment makes the
 residual's second moment finite.
 
 This follows directly from dot(v^-1)=-v^-1 dot(v) v^-1. It is an
