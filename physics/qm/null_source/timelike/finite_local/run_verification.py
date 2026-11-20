@@ -1,4 +1,4 @@
-"""Reuse 91 immutable results; verify twenty-nine actual-state and preparation certificates."""
+"""Reuse 91 immutable results; verify thirty actual-state and preparation certificates."""
 from __future__ import annotations
 import argparse
 from concurrent.futures import ThreadPoolExecutor
@@ -51,8 +51,9 @@ ENTRIES=[
     ("static_preparation","static_preparation.py",["--check"]),
     ("clock_resource","clock_resource.py",["--check"]),
     ("static_instrument","static_instrument.py",["--check"]),
+    ("source_influence","source_influence.py",["--check"]),
     ("review","review.py",["--check"])]
-assert len(ENTRIES)==29
+assert len(ENTRIES)==30
 def sha(data):return hashlib.sha256(data).hexdigest()
 def file_sha(path):return sha(path.read_bytes())
 def git(*args):return subprocess.check_output(["git",*args],cwd=REPO)
@@ -171,11 +172,13 @@ def main():
             "source_clock_shear_invariant_gate":science["clock_resource"]["general_form_domain_inequality"],
             "deterministic_mean_geometry_distinguishes_same_two_point_preparations":False,
             "new_quiet_actual_local_same_static_RMS_upper":science["static_instrument"]["actual_local_same_static_joint_RMS_upper"],
+            "exact_zero_source_history_influence":True,
+            "source_Gaussian_log_error_upper_at_phase_point_one":science["source_influence"]["relative_Gaussian_log_error_upper"],
             "total_controller_source_and_local_Einstein_history":"OPEN",
             "whole_unified_physics_goal":"OPEN"},
         "status":"PASS" if passed else "FAIL"}
     output.write_text(json.dumps(result,indent=2,sort_keys=True,ensure_ascii=False)+"\n")
-    print("Reused 91 results with 336 unchanged scientific files; executed 29 new entries.")
+    print("Reused 91 results with 336 unchanged scientific files; executed 30 new entries.")
     print("Receipt: "+str(output))
     return 0 if passed else 1
 if __name__=="__main__":raise SystemExit(main())

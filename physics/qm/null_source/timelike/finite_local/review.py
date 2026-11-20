@@ -1,7 +1,7 @@
 """Independent separatrix, retained geometry spread and scope audit."""
 import json,sympy as sp
 from common import *
-NAMES=["semantics","records","evolution","profile","ultraviolet","local_readout","locality","backaction","fluctuations","long_filter","transport","smooth_binary","actual_history","dynamic_filter","kinetic_probe","conditional","renormalization","controller","local_tensor","conditional_tensor","pulse_ward","implementation_bridge","conditional_noise","symmetry_exit","invariant_preparation","static_preparation","clock_resource","static_instrument"]
+NAMES=["semantics","records","evolution","profile","ultraviolet","local_readout","locality","backaction","fluctuations","long_filter","transport","smooth_binary","actual_history","dynamic_filter","kinetic_probe","conditional","renormalization","controller","local_tensor","conditional_tensor","pulse_ward","implementation_bridge","conditional_noise","symmetry_exit","invariant_preparation","static_preparation","clock_resource","static_instrument","source_influence"]
 def result():
     d={n:json.loads((HERE/(n+".json")).read_text()) for n in NAMES}
     assert all(x["status"]=="PASS" for x in d.values())
@@ -32,6 +32,8 @@ def result():
     assert d["clock_resource"]["Gamma_preparation_or_local_clock_instrument_built"] is False
     assert below(box(d["static_preparation"]["single_ring_joint_projected_residual_RMS_upper"]),"1.4e-6")
     assert below(box(d["static_instrument"]["actual_local_same_static_joint_RMS_upper"]),"1.4e-6")
+    assert below(box(d["source_influence"]["relative_Gaussian_log_error_upper"]),"5.03e-7")
+    assert d["source_influence"]["metric_probability_law_constraints_or_stability_derived"] is False
     return {
       "separatrix_condition":"zeta=4*kappa^3/27; qcrit=4/(27*beta)",
       "critical_posterior_mean_ratio":outward(qcrit),
@@ -40,7 +42,7 @@ def result():
       "initial_a_to_six_relative_standard_deviation_lower":outward(geometry_spread),
       "conditional_source_precision_removes_classical_geometry_spread":False,
       "actual_same_state_projected_positive_time_RMS_upper":outward(total),
-      "new_scientific_checks":29,"frozen_results_reused_without_execution":91,
+      "new_scientific_checks":30,"frozen_results_reused_without_execution":91,
       "native_read_only_review_agents":3,
       "new_radial_same_geometry_RMS_upper":d["static_preparation"]["single_ring_joint_projected_residual_RMS_upper"],
       "new_radial_source_comparison_is_original_angular_success":False,

@@ -4,7 +4,7 @@
 
 反思后关闭原角向制备的对称记录等价出口，另以不同径向准备在同一精确静态平均几何上得到单环源 RMS <1.4e-6、双环 >0.14 和完整 rank-one 噪声差。新环带读出不承接旧反馈后验；源—时钟资源界也已纳入。相同二点函数仍给相同平均几何，下一门是约束相容的涨落引力法则、真实装置总源及可校准局域响应。
 
-[实际态](finite_local/ACTUAL_HISTORY.md) · [全张量](finite_local/CONDITIONAL_TENSOR.md) · [实现桥](finite_local/IMPLEMENTATION_BRIDGE.md) · [新制备](finite_local/INVARIANT_PREPARATION.md) · [共同静态窗](finite_local/STATIC_PREPARATION.md) · [时钟资源](finite_local/CLOCK_RESOURCE.md) · [反思](finite_local/REVIEW.md) · [回执](finite_local/verification.json)。29项新检查，复用91项，冻结336文件；Core只读、GI排除，旧程序和ODE不重跑，PR开放草稿。完整物理统一未完成。以下为历史入口。
+[实际态](finite_local/ACTUAL_HISTORY.md) · [全张量](finite_local/CONDITIONAL_TENSOR.md) · [实现桥](finite_local/IMPLEMENTATION_BRIDGE.md) · [新制备](finite_local/INVARIANT_PREPARATION.md) · [共同静态窗](finite_local/STATIC_PREPARATION.md) · [时钟资源](finite_local/CLOCK_RESOURCE.md) · [反思](finite_local/REVIEW.md) · [回执](finite_local/verification.json)。30项新检查，复用91项，冻结336文件；Core只读、GI排除，旧程序和ODE不重跑，PR开放草稿。完整物理统一未完成。以下为历史入口。
 
 **前轮入口：**[物理选解、动态联合约束与实际读数](operational_selection/README.md)。固定incoming A、原双场、完整源谱、M2/U0与AE，动态QEI现已允许非平稳、挤压和纠缠高态；在正频E4≤1/5000的中央CQ几何—态候选中，正时间窗归一化全记录约束RMS仍严格>7%。这不否定精确平均历史，也不是几何RMS或所有量子几何的排除。
 

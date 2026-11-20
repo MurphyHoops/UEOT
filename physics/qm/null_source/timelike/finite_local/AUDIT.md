@@ -32,3 +32,7 @@ Root separately observed exact-head scientific CI 44762048714, job 136376833866,
 The source review requested two explicit scope corrections: the Gamma equal-two-point claim must name the uniform-angle reference in every standalone entry, and the actual static future window must start after the pulse/probe/reader, with waiting shear retained. This revision makes both contracts explicit in prose and JSON. It also names E_* in the finite implementation bridge as a positive zero-sector probe-energy budget. These changes do not alter the numerical bounds. Their final pushed delta review is still pending here.
 
 During local development, a correlated interval expression was simplified before comparison, and two aggregate dictionary indices introduced by text editing were corrected. The full 29-check local gate then passed before publication; no failed intermediate output is presented as an accepted certificate.
+
+## Successor derivation after the 29-check gate
+
+After A, B and C passed the c42ca847 scope/time delta, they independently checked a thirtieth source-influence calculation: fixed-state canonical zero evolution, exact radial characteristic, the common-past ideal-short nonselective subalgebra factorization, continuous-log Gaussian remainder, and the failure of a global relative positive-noise ordering. Its actual pushed-source review is pending until publication. It introduces no new gravity law or old-checker execution.

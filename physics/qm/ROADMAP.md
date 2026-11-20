@@ -4,7 +4,7 @@
 
 ## 当前 · 完成源侧闭环，验收约束相容的总源和涨落引力法则
 
-[本轮29项证书及反思](null_source/timelike/finite_local/README.md)已有两个分别登记的结果：原实际局域二结果测后态的共同正窗两投影 RMS <7.6e-6；明确改变径向准备后，同一精确静态平均几何的单环源 RMS <1.4e-6，而双环 >0.14。完整条件局域张量/噪声、脉冲 Cauchy 数据、有限场探针的应力矩实现桥也已完成。不能用这些投影界代替装置总源和全部局域 Einstein 方程。
+[本轮30项证书及反思](null_source/timelike/finite_local/README.md)已有两个分别登记的结果：原实际局域二结果测后态的共同正窗两投影 RMS <7.6e-6；明确改变径向准备后，同一精确静态平均几何的单环源 RMS <1.4e-6，而双环 >0.14。完整条件局域张量/噪声、脉冲 Cauchy 数据、有限场探针的应力矩实现桥也已完成。不能用这些投影界代替装置总源和全部局域 Einstein 方程。
 
 原角向制备的 O(2)/线性 CP 完整记录等价已关闭该合同内的辨识路线。新的径向噪声差是真实不同物理输入，但二点函数和完整平均响应仍相同；确定性 mean-SCE 自身不产生不同几何。新 annulus 分类器不能继承旧 low/high 后验反馈。正常态源精度—时钟资源界已加入准入，新增量子准备/钟仪器不得免费使用。
 
@@ -17,7 +17,7 @@
 5. 证明某个真实、因果且可校准的引力读出对 J 响应非零，再按共同资源比较全部记录。源分类、人为反馈几何及数学 D-clock 不直接视为引力信号或已实现装置。
 6. 由独立物理输入的减少、已知理论一致性及经验辨识承担统一验收。场内容、Born/Einstein 动力学、设备参数与量子几何仍未由 Core 推出。
 
-[实际历史](null_source/timelike/finite_local/ACTUAL_HISTORY.md) · [实现桥](null_source/timelike/finite_local/IMPLEMENTATION_BRIDGE.md) · [全条件源](null_source/timelike/finite_local/CONDITIONAL_NOISE.md) · [新准备和约束](null_source/timelike/finite_local/INVARIANT_PREPARATION.md) · [源钟资源](null_source/timelike/finite_local/CLOCK_RESOURCE.md) · [控制器](null_source/timelike/finite_local/CONTROLLER.md)。29项新检查，91项复用，336个科学文件冻结。Core只读、GI排除、PR开放草稿。下方保留历史路线。
+[实际历史](null_source/timelike/finite_local/ACTUAL_HISTORY.md) · [实现桥](null_source/timelike/finite_local/IMPLEMENTATION_BRIDGE.md) · [全条件源](null_source/timelike/finite_local/CONDITIONAL_NOISE.md) · [新准备和约束](null_source/timelike/finite_local/INVARIANT_PREPARATION.md) · [源钟资源](null_source/timelike/finite_local/CLOCK_RESOURCE.md) · [控制器](null_source/timelike/finite_local/CONTROLLER.md)。30项新检查，91项复用，336个科学文件冻结。Core只读、GI排除、PR开放草稿。下方保留历史路线。
 
 同一静态几何上的[实际局域环带读出](null_source/timelike/finite_local/STATIC_INSTRUMENT.md)也已通过完整测后 RMS <1.4e-6；无需反馈换几何。新增两中心制备保留原实际A的一、二点函数，但改变完整制备边缘；自主实现须核对全装置能量谱及交叉相关。
 
