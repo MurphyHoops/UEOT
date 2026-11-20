@@ -2,7 +2,22 @@
 
 本图延续同一物理任务。权威执行状态为[CURRENT](status/CURRENT.json)，稳定结果为[主文](book/UEOT_PHYSICS.md)及现行claim ledger。Core只读，GI不在范围。数学闭合、物理选择、计算实现、经验检验分别登记。
 
-## 当前 · 完成源侧闭环，验收约束相容的总源和涨落引力法则
+## 当前 · 从可区别总源转向合法联合初态与因果准备历史
+
+[本轮16项检查与反思](null_source/timelike/total_source/README.md)已给完整 AE 的密度切向退化、实际 baseline 正密度方差、新正常热壳相干的完整局域纯压力差、非零全场平滑历史影响、实际记忆／载体未来总源，以及局域全局制备时间必要界。后者使原小窗全局门替代方案被明确排除。新增经典自主控制基准单独登记，不与原量子模型拼接。
+
+**下一项验收按缺失物理内容排序：**
+
+1. 选择并明示未被排除的全源引力合同。原 mean-SCE 仍有精确共同静态解；指定的独立噪声线性扩张没有绝对约束基态。若引入非线性联合初值、额外态／设备自由度或量子几何，逐项登记新增法则及概率解释。
+2. 构造同一实际总初态的绝对密度／动量约束、Hadamard匹配及共同过去，给完整初始几何块与源交叉块。Delta N_rho=0、Gaussian PSD 或删快模均不能代替它。
+3. 把实际 U(2) 载体与量子制备接到局域控制作用量；保留全部控制、程序、参考、相互作用应力。单 cap 先满足 T>=pi-chi0，分布式或较长过去明确另行建模；不把全局等能量门当原短窗仪器。
+4. 对含载体／控制器的总模型重新求共同 mean、约束和 retarded response。旧 A/P/K0 不能继承；同一 in-in functional 给总 Ward、完整噪声和非高斯误差，再检查初片 UV 与快模选择。
+5. 最后给真实引力记录的非零响应、有限资源和校准。2.04e-10 是规定背景的幅度差下界，4229 次是理想源分类重复数，均不是已实现引力测量。
+6. 统一验收仍由减少独立物理输入、与已知理论一致及可区分经验后果承担。Core只读，不把新增场、Born结构、Einstein动力学或量子几何称为已从Core导出。
+
+[输入边界](null_source/timelike/total_source/INPUTS_AND_NEXT_TEST.md) · [共同初值](null_source/timelike/total_source/INITIAL_CORRELATIONS.md) · [因果准备](null_source/timelike/total_source/PREPARATION_CAUSALITY.md) · [范围审查](null_source/timelike/total_source/REVIEW.md) · [回执](null_source/timelike/total_source/verification.json)。121项复用、438科学文件冻结、16项新证书；旧程序不重跑。以下保留前轮路线。
+
+## 前轮 · 完成源侧闭环，验收约束相容的总源和涨落引力法则
 
 [本轮30项证书及反思](null_source/timelike/finite_local/README.md)已有两个分别登记的结果：原实际局域二结果测后态的共同正窗两投影 RMS <7.6e-6；明确改变径向准备后，同一精确静态平均几何的单环源 RMS <1.4e-6，而双环 >0.14。完整条件局域张量/噪声、脉冲 Cauchy 数据、有限场探针的应力矩实现桥也已完成。不能用这些投影界代替装置总源和全部局域 Einstein 方程。
 

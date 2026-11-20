@@ -5,7 +5,17 @@
 - [中文第71章](book/UEOT_PHYSICS.md#ch-71) · [English Chapter 71](book/UEOT_PHYSICS.en.md#ch-71) · [完整书稿与3.12版印本](book/README.md)
 - [科学说明与复核程序](correlated_bath/README.md) · [状态](status/CURRENT.json) · [主张账本](status/CLAIM_LEDGER_v31.15.json) · [研究路线](ROADMAP.md)
 
-## 当前研究：同态局域闭环、共同几何新制备与引力动力学下一关
+## 当前研究：完整总源、约束退化与可区别热壳制备
+
+[本轮16项证书](null_source/timelike/total_source/README.md)先排除一个关键捷径：完整 AE 密度的合法几何一阶变化与 Einstein 侧相消，原实际态仍有正密度方差，因此当前独立噪声齐性线性扩张没有绝对约束基态。这个结论不否定精确 mean-SCE。
+
+随后在原两场 k=2 简并热壳中构造新正常正态：完整 W2、每场热边缘、全能量谱及同一精确静态平均几何均保持，但完整局域噪声有非零纯压力差。明确平衡光滑历史使零模相位严格抵消、全部高模重叠受控，得到全自由场影响幅度差 >2.04165e-10；这是 prescribed-history 结果，不是引力观测精度。
+
+完整纯记忆门、熵资源与真实 U(2) 载体未来因子化已给出。新的因果审查又证明单 cap 的精确无选择全局制备必须满足 T>=pi-chi0；chi0=1/128 时准备时间至少超过旧响应窗614万倍。源—几何交叉相关及量子不确定关系也已纳入。**下一门是未被排除的全源引力合同、绝对联合初值约束与实际准备过去。** 新载体不能沿用旧裸场 A/P/K0。
+
+[约束](null_source/timelike/total_source/CONSTRAINTS.md) · [全场见证](null_source/timelike/total_source/HISTORY_WITNESS.md) · [载体](null_source/timelike/total_source/CARRIER.md) · [准备因果界](null_source/timelike/total_source/PREPARATION_CAUSALITY.md) · [反思与下一验收](null_source/timelike/total_source/INPUTS_AND_NEXT_TEST.md) · [回执](null_source/timelike/total_source/verification.json)。复用121项、冻结438文件，旧 checker/ODE不执行。Core只读、GI排除、PR开放草稿不合并，整体统一及经验确认仍开放。
+
+## 前轮研究：同态局域闭环、共同几何新制备与引力动力学下一关
 
 [本轮30项证书](null_source/timelike/finite_local/README.md)完成原实际源的平滑二结果弱读出、同一量子态运输和共同正时间窗：两条空间平均方程联合 RMS <7.6e-6，全部高模与条件相关保留。两个真实结果的局域各向异性、完整条件均值/噪声、脉冲法向数据及有限场探针的应力矩实现桥已给出；目标场有限耦合 RMS <8e-6 的存在不等于已校准装置或总源闭合。
 
