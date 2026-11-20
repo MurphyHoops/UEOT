@@ -1,0 +1,60 @@
+{
+  "D_backaction": "DeltaVar(D)=E(S0^2)/v_m",
+  "Q_backaction": "v_m * sum_i DeltaVar(Q_i) = mu/(2*pi^2*M2), minimum Gaussian pointer",
+  "all_Y_probabilities_independent_of_theta": true,
+  "clock_QFI_after": "(2*pi^2*M2)^2/A^4 * E_p MMSE(S0|Y,p)",
+  "clock_QFI_after_upper": "(2*pi^2*M2)^2*v_m/A^4",
+  "clock_QFI_loss": "same factor * E_p Var_Y(E[S0|Y,p])",
+  "coherent_pointer_purification_available_in_clock_bound": false,
+  "complete_record_domain": "all y in R, no failure or tail discarded",
+  "example_45_copy_D_after_upper": 0.32961477044723986,
+  "example_45_copy_error_lower": 0.33519261477638,
+  "example_D_backaction": [
+    2241025403815.5894,
+    2241025403815.592
+  ],
+  "example_measurement_variance": [
+    9.999999999999998e-13,
+    1.0000000000000002e-12
+  ],
+  "example_single_D_after_upper": 0.0491360688738678,
+  "example_sum_Q_backaction": [
+    2.3321494835674147e-09,
+    2.332153897041986e-09
+  ],
+  "finite_test_D_after_upper": "abs(dtheta)*pi^2*M2/A^2 * sqrt(N*v_m)",
+  "geometry_ODE_integrations": 0,
+  "instrument": "K_y=(2*pi*v_m)^(-1/4)*exp[-(y-S0)^2/(4*v_m)]",
+  "local_gravitational_device_constructed": false,
+  "minimum_pointer_energy_over_Omega_half": [
+    433012.7019113598,
+    433012.70191136
+  ],
+  "mode_ODE_integrations": 0,
+  "necessary_measurement_variance_for_45_copy_error_0_05": [
+    7.455412704338087e-12,
+    7.455462099886289e-12
+  ],
+  "nonselective_full_P_spectrum_and_free_matter_T_algebra_preserved": true,
+  "old_checkers_executed": 0,
+  "pointer_and_interaction_stress_included_in_invariance_claim": false,
+  "pointer_energy_scope": "only Hptr=Omega*(X^2+Pi^2)/2 with fixed Omega, centered calibration and optimized v",
+  "pointer_unitary": "exp[-i*g*(S0-mu)*Pi], Y=mu+Xout/g, v_m=VarX/g^2",
+  "proof": "INSTRUMENT.md",
+  "readout_law": "Y=S0+independent N(0,v_m)",
+  "schema": "ueot-operational-selection-instrument/1",
+  "source_sha256": {
+    "physics/qm/null_source/timelike/dynamic_inverse/fast_root.json": "601c5a2b5d40013d60905d6bbf84973b8c327bf1cbc336036b523c5f948a6afe",
+    "physics/qm/null_source/timelike/dynamic_inverse/harmonics.json": "e0f3f8b5f7b8a3b431527f58deac44c024df45187d355d82135fc4829117a70c",
+    "physics/qm/null_source/timelike/dynamic_seed/bounds.json": "26f898e389b7972604f39352f0a6b5a71fddc0e44e2abd2b6911d1ba1a974582",
+    "physics/qm/null_source/timelike/joint_history/history.json": "0d419ec9ff6d30dafcc9a23855bf5c0b73a872e27175157a057a50059a4ded2d",
+    "physics/qm/null_source/timelike/nonlinear_history/history.json": "9735b168d83f8b084d8190102777d2bbc8f9baabdae2d498763f1f37c491d26d",
+    "physics/qm/null_source/timelike/nonlinear_history/norm_bounds.json": "031255a6e607a2bfe6c6e9ceca9f5df216e8333e9993815e277a3b55042b2869",
+    "physics/qm/null_source/timelike/operational_selection/INSTRUMENT.md": "74589217160cfcde4ec36b82a675de801282fec4a4e541cf9e411786aaf6ee5c",
+    "physics/qm/null_source/timelike/operational_selection/common.py": "c37a06e32b9430fa965b5bd3b0ed2d9f78f2bf4956de28c507cf72d1905550e8",
+    "physics/qm/null_source/timelike/operational_selection/instrument.py": "8f891518a6acb09be7c2541da76ec509a3730bed83af239e748f8ba273d83b2e",
+    "physics/qm/null_source/timelike/physical_source/static_source.json": "aefc2eb6bb670d2a1de6496483d07bd929921358d80047175b33a45f38d452dc"
+  },
+  "status": "PASS",
+  "universal_measurement_energy_bound_claimed": false
+}

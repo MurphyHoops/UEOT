@@ -5,7 +5,19 @@
 - [中文第71章](book/UEOT_PHYSICS.md#ch-71) · [English Chapter 71](book/UEOT_PHYSICS.en.md#ch-71) · [完整书稿与3.12版印本](book/README.md)
 - [科学说明与复核程序](correlated_bath/README.md) · [状态](status/CURRENT.json) · [主张账本](status/CLAIM_LEDGER_v31.15.json) · [研究路线](ROADMAP.md)
 
-## 当前研究：精确非线性共同历史与剩余物理选解
+## 当前研究：完整源的动态约束与可操作选解
+
+[本轮新证明与六项证书](null_source/timelike/operational_selection/README.md)接续已闭合的精确平均共同历史，继续完成选解、全源约束和实际读取的审查。
+
+最强新增结论是：固定原双场、M2/U0、AE及完整S0边缘，允许非平稳、挤压、跨模和零高纠缠，正频E4范数≤1/5000的中央CQ几何—态候选仍有正时间窗归一化约束RMS严格 **>7%**。动态QEI已包括负正常序能量补偿；低／高频合并估计使这一排除域远大于前轮极小存在域。E4同时控制导数，不能当作单独度规振幅；这不否定精确平均解，也不是几何RMS。
+
+物理选解方面，完整时间协变必须同步变换原零模参考时标；解析制备仍可含非零快幅。理想数据(u,h/sigma)现已在整个认证半矩形上全域可逆，逆误差增益<2.18，但实际原零模时钟在同proper-time快幅比较中的最终读数D<6.08e−52，此界限于现有认证域与既定资源。
+
+本轮还构造全部连续记录的Gaussian源仪器，证明读源精度与剩余时钟QFI的MMSE恒等式，并核算canonical反作用及指定指针能量。全局CP构造尚未完成局域引力装置。下一优先任务是**尚未被排除的几何—态联合初值、完整约束传播，再接局域总源与校准**；继续添加小扰动高模相关不再是未检验出口。
+
+[动态QEI与7%定理](null_source/timelike/operational_selection/FLUCTUATIONS.md) · [完整时标选解](null_source/timelike/operational_selection/SELECTION.md) · [几何与实际读数](null_source/timelike/operational_selection/CLOCK.md) · [源仪器](null_source/timelike/operational_selection/INSTRUMENT.md) · [复核](null_source/timelike/operational_selection/REVIEW.md) · [回执](null_source/timelike/operational_selection/verification.json)。六项新检查，复用85项结果，冻结312文件；旧checker和ODE不重跑。Core只读、GI排除、PR开放草稿不合并，统一与经验确认仍开放。下方各节保留对应历史阶段的状态。
+
+## 前轮研究：精确非线性共同历史与剩余物理选解
 
 [最新全阶证明与五项证书](null_source/timelike/nonlinear_history/README.md)已关闭前轮的非线性映射缺口：精确协方差乘积把完整 RSET 分成可认证的低 Born 核和同半径可和高尾；全部固定 AE、实际零模和热壳保留。四阶加对数的 Wiener 空间现在与真实响应图域接通。
 

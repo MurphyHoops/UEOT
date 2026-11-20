@@ -2,7 +2,26 @@
 
 本图延续同一物理任务。权威执行状态为[CURRENT](status/CURRENT.json)，稳定结果为[主文](book/UEOT_PHYSICS.md)及现行claim ledger。Core只读，GI不在范围。数学闭合、物理选择、计算实现、经验检验分别登记。
 
-## 当前 · 精确平均共同历史已成立，推进物理选解与联合涨落
+## 当前 · 动态全源约束已有排除定理，转向可成立的联合物理历史
+
+[本轮闭环](null_source/timelike/operational_selection/README.md)给出三个决定后续方向的结果：
+
+- 完整参考时标协变与解析制备不唯一选出纯慢支；几何自治性是额外物理合同。两项理想几何数据虽能全域识别幅度，实际读取还受既定量子资源限制。
+- 原零模CQ时钟已有有限识别界；在相位差1/sigma处，5%错误率至少需要45次独立编码，非免费同几何新增时钟。当前小认证域中的同proper-time快幅读取D<6.08e−52，不外推到所有快模。
+- 动态QEI将非平稳、挤压和纠缠高态纳入。在固定A、两场、M2/U0/AE与完整源谱的正频E4≤1/5000类中，全部记录加权的平滑源／约束RMS仍严格>7%。它排除这类候选的强约束或任意小残差，不推翻mean-SCE。
+
+**据此立即采用的下一验收顺序：**
+
+1. 明确一个尚未被该必要界排除的联合物理模型。优先给有限初片的合法几何—态数据，说明是否放宽固定incoming A或正频E4合同；若增加物质／设备或非交换几何，列出新增总源、约束和概率法则。只随机化两增长幅度、仅增加高模相关都不能作为默认答案。
+2. 在同一个完整源谱和实际态上证明约束与演化的共同传播及误差。满足Hadamard／canonical匹配；禁止逐时换根、归零原剪切或冻结态单改jets。本轮更大排除域不是更大精确解存在域。
+3. 构造一个有限时空支撑的probe/controller。给联合初态、因果耦合、全部CP记录、装置与开关总应力、交叉噪声和校准。本轮Gaussian全局源仪器已给精度—反作用—时钟MMSE基准，尚未实现这个局域门。
+4. 用同资源及共同选择规则比较原制备old/new的引力记录。保留完整O(2)／线性CP合同，明示额外参考和对称破缺；不能把人为不同快幅或丢弃失败记录当成制备效应。
+5. 由独立物理输入的减少、已知理论一致性和可区分经验后果承担统一验收。场内容、U0、物理选解和量子几何仍未由Core推出。
+
+[完整源必要界](null_source/timelike/operational_selection/FLUCTUATIONS.md) · [选择规则分类](null_source/timelike/operational_selection/SELECTION.md) · [实际时钟](null_source/timelike/operational_selection/CLOCK.md) · [完整仪器](null_source/timelike/operational_selection/INSTRUMENT.md) · [审查与准入条件](null_source/timelike/operational_selection/REVIEW.md)。
+六项新检查、85项复用、312继承文件冻结；Core只读，GI排除。下方是阶段性历史路线，以上述当前节为最新任务裁决。
+
+## 前轮 · 精确平均共同历史已成立，推进物理选解与联合涨落
 
 [最新非线性闭环](null_source/timelike/nonlinear_history/README.md)已完成完整同半径 RSET 映射、四阶对数逆、显式收缩和同幅度误差。固定当前双场、AE、M2/U0 及完整 incoming 制备，得到保留慢／快两幅度的精确 mean-SCE 历史；Ward 使全部齐次平均约束和法向残差恒为零。认证球 1e−25、收缩率≤0.128、残差—距离增益<2.3e20；这是极保守非空域，未覆盖旧 1e−4 窗。
 

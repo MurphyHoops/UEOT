@@ -1,6 +1,12 @@
 # 同一源的平均应力、测量扰动与几何记录
 
-**当前入口：**[精确非线性共同历史与物理选解](nonlinear_history/README.md)。完整 RSET 在四阶加对数的同半径空间中闭合，保持固定 M2/U0、全部 AE、实际 incoming Q/P/eta_ref、源谱和热壳，构造保留两增长幅度的精确 nonlinear mean-SCE 历史。认证球 1e−25、收缩率≤0.128；完整平均残差及法向导数在真实正窗恒为零，同幅度残差—距离增益<2.3e20。当前充分半径不覆盖旧 1e−4 种子窗。
+**当前入口：**[物理选解、动态联合约束与实际读数](operational_selection/README.md)。固定原双场、完整源谱、M2/U0与AE，动态QEI现已允许非平稳、挤压和纠缠高态；在正频E4≤1/5000的中央CQ几何—态候选中，正时间窗归一化全记录约束RMS仍严格>7%。这不否定精确平均历史，也不是几何RMS或所有量子几何的排除。
+
+完整时间协变须同时变换零模参考时标，解析制备仍可有非零快幅。理想几何双读数全域可逆，原零模实际读取却有明确资源界；完整Gaussian源仪器又给精度／反作用和时钟MMSE损失。下一门是尚未被排除的联合初值及共同约束传播，再接局域装置总源与校准。
+
+[动态约束](operational_selection/FLUCTUATIONS.md) · [完整选解](operational_selection/SELECTION.md) · [几何读取](operational_selection/GEOMETRY.md) · [时钟](operational_selection/CLOCK.md) · [仪器](operational_selection/INSTRUMENT.md) · [审查](operational_selection/REVIEW.md) · [回执](operational_selection/verification.json)。六项新检查，复用85项结果，冻结312文件；旧checker/ODE不重跑，Core只读，GI排除，PR开放草稿不合并。以下为历史阶段入口。
+
+**前轮入口：**[精确非线性共同历史与物理选解](nonlinear_history/README.md)。完整 RSET 在四阶加对数的同半径空间中闭合，保持固定 M2/U0、全部 AE、实际 incoming Q/P/eta_ref、源谱和热壳，构造保留两增长幅度的精确 nonlinear mean-SCE 历史。认证球 1e−25、收缩率≤0.128；完整平均残差及法向导数在真实正窗恒为零，同幅度残差—距离增益<2.3e20。当前充分半径不覆盖旧 1e−4 种子窗。
 
 闭合后已继续得到精确非唯一性：固定慢幅度和 incoming 条件仍不能选定快幅度；只随机化这两个幅度也不能承接非退化源谱的过去常数约束。下一主任务因此是物理选解和状态—几何联合涨落约束，再接局域仪器、总源与校准。
 

@@ -1,0 +1,70 @@
+{
+  "CP_geometry_instrument_constructed": false,
+  "Jacobian_box": [
+    [
+      ".996",
+      "1.004"
+    ],
+    [
+      ".96",
+      "1.04"
+    ],
+    [
+      "-2.2e-6",
+      "2.2e-6"
+    ],
+    [
+      ".959",
+      "1.041"
+    ]
+  ],
+  "U_uniform_upper": 5.0083996889443974e-29,
+  "actual_zero_phase": "theta=eta-eta_ref+Theta^-1(exp(-2U)-1)",
+  "all_convex_average_Jacobians_determinant_lower": 0.9551617119999999,
+  "arbitrary_noisy_data_in_image_claimed": false,
+  "coefficient_derivative_bounds": {
+    "d_w_Theta_v_over_sigma": 0.037873893418920515,
+    "d_z_Theta_v": 0.013439502310974693,
+    "v_w": 0.03787379455305282,
+    "v_z": 0.0033598755777588495
+  },
+  "domain": "real |z|<=Rz/2, |w|<=Rw/2, frozen exact U=z+w+v",
+  "geometry_ODE_integrations": 0,
+  "global_injectivity_on_real_half_rectangle": true,
+  "ideal_observables": [
+    "u=log(a/A) from 3-curvature",
+    "h/sigma=a*H_proper/sigma"
+  ],
+  "inverse_Linf_gain_upper": 2.179057591623037,
+  "mode_ODE_integrations": 0,
+  "old_checkers_executed": 0,
+  "proof": "GEOMETRY.md",
+  "requires_image_convex": false,
+  "same_eta_phase_difference_upper": 2.2431721726030338e-57,
+  "same_proper_time_domain": "same epsilon, both endpoints in half rectangle, common incoming proper origin",
+  "same_proper_time_phase_difference_upper": 3.3433947144035693e-57,
+  "schema": "ueot-operational-selection-geometry/1",
+  "source_sha256": {
+    "physics/qm/null_source/timelike/dynamic_inverse/fast_root.json": "601c5a2b5d40013d60905d6bbf84973b8c327bf1cbc336036b523c5f948a6afe",
+    "physics/qm/null_source/timelike/dynamic_inverse/harmonics.json": "e0f3f8b5f7b8a3b431527f58deac44c024df45187d355d82135fc4829117a70c",
+    "physics/qm/null_source/timelike/dynamic_seed/bounds.json": "26f898e389b7972604f39352f0a6b5a71fddc0e44e2abd2b6911d1ba1a974582",
+    "physics/qm/null_source/timelike/joint_history/history.json": "0d419ec9ff6d30dafcc9a23855bf5c0b73a872e27175157a057a50059a4ded2d",
+    "physics/qm/null_source/timelike/nonlinear_history/history.json": "9735b168d83f8b084d8190102777d2bbc8f9baabdae2d498763f1f37c491d26d",
+    "physics/qm/null_source/timelike/nonlinear_history/norm_bounds.json": "031255a6e607a2bfe6c6e9ceca9f5df216e8333e9993815e277a3b55042b2869",
+    "physics/qm/null_source/timelike/operational_selection/GEOMETRY.md": "81c7a05f068184ca363642311a700a4d04f93bb5a81305300acb9d9b76c80d21",
+    "physics/qm/null_source/timelike/operational_selection/common.py": "c37a06e32b9430fa965b5bd3b0ed2d9f78f2bf4956de28c507cf72d1905550e8",
+    "physics/qm/null_source/timelike/operational_selection/geometry.py": "6566963a05430af31d800d58110588611c0615cb516f365ea5b9bdffe8b7cab3",
+    "physics/qm/null_source/timelike/physical_source/static_source.json": "aefc2eb6bb670d2a1de6496483d07bd929921358d80047175b33a45f38d452dc"
+  },
+  "status": "PASS",
+  "w_error": "<2.31e-6*abs(du)+1.052*abs(dh)/sigma",
+  "weight_2s": [
+    1190.5202759526394,
+    1190.5202759526417
+  ],
+  "weight_sigma_plus_s": [
+    1.0561392242852462e+25,
+    1.056141263338177e+25
+  ],
+  "z_error": "<1.091*(abs(du)+abs(dh)/sigma)"
+}
