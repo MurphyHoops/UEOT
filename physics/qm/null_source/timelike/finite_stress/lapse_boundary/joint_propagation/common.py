@@ -41,5 +41,21 @@ def finish(script,payload,inputs=(),proof=None):
       full_field_Einstein_CTP_device_solution=False,physical_unification="OPEN")
     out=HERE/(name+".json")
     if args.write:out.write_text(json.dumps(payload,indent=2,ensure_ascii=False,sort_keys=True)+"\n")
-    else:require(json.loads(out.read_text())==payload,"Source-bound result differs: "+name)
+    else:
+        expected=json.loads(out.read_text())
+        if expected!=payload:
+            differences=[]
+            def compare(a,b,path=""):
+                if len(differences)>=10:return
+                if isinstance(a,dict) and isinstance(b,dict):
+                    for key in sorted(set(a)|set(b)):
+                        if key not in a or key not in b:
+                            differences.append({"path":path+"/"+key,"expected":a.get(key),"actual":b.get(key)})
+                        else:compare(a[key],b[key],path+"/"+key)
+                elif isinstance(a,list) and isinstance(b,list) and len(a)==len(b):
+                    for i,(x,y) in enumerate(zip(a,b)):compare(x,y,path+"/"+str(i))
+                elif a!=b:differences.append({"path":path,"expected":a,"actual":b})
+            compare(expected,payload)
+            print(json.dumps({"result_mismatches":differences},ensure_ascii=False),file=sys.stderr)
+            raise RuntimeError("Source-bound result differs: "+name)
     print("PASS: "+name)

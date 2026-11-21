@@ -250,3 +250,47 @@ cross terms and its quadratic term. In the lapse action,
 The scalar lapse term is a boundary rewrite only together with that
 mandatory linear-chi term and the transported states/observables.
 The scalar-only nu comparison changes the constraint itself.
+
+
+## C9. Scalar and quadratic counterterms cannot cancel the same four-sector budget
+
+Keep the original fixed ordering, alpha_K, principal/source connection,
+the C5 high-vacuum input and the exact finite-K metaplectic frame.
+Let V_ct,K be a symmetric polynomial of degree at most two in the
+HIGH source q,p variables, with kappa multiplication coefficients and
+NO geometry momentum or kappa derivatives. Coefficients may depend
+on K with arbitrary magnitude. Assume an actual selected self-adjoint
+modified snapshot exists, agrees with H_K+V_ct,K on the regular input,
+and that this C5 input is in its domain with finite spectral second
+moment. These domain statements are premises, not consequences of
+a formal polynomial.
+
+Metaplectic conjugation preserves polynomial degree. Therefore the
+counterterm maps the high vacuum only to sectors with at most two
+particles. Its high-four projection is EXACTLY zero. Centering the
+modified generator also adds only a vacuum component. For
+B_K=epsilon_K(H_K+V_ct,K), projection onto that orthogonal sector gives
+
+    Var_C5(B_K)
+      >=epsilon_K^2 alpha_K^2 integral n/kappa^2 [
+          8(sum_j |c_j|^2)^2+16sum_j |c_j|^4],
+    liminf Var_C5(B_K)>=I_2/2>0.                     (C.9)
+
+The last limit uses sum|c_j|^2=K/8+O(1), sum|c_j|^4=O(1) and
+epsilon_K alpha_K K->-2. A fixed regular mixed low/reference factor
+has the same Hilbert--Schmidt projection proof. Only D(H+V), not
+D((H+V)^2), is needed.
+
+The scalar and quadratic contractions of the explicitly expanded
+(delta Q_osc)^2 in C2 belong to this class. They cannot remove the remaining
+four-creation sector, even if a scalar choice cancels the first
+bounded fast phase. In a candidate whose limiting fast group is I,
+this prevents its source second moment from matching the zero
+limiting variance on the same input.
+
+This is not a physical requirement that all generator variances vanish,
+nor a general exclusion of every modified continuum kernel.
+Geometry-momentum terms, genuinely quartic/composite interactions,
+changes of alpha/connection, changed inputs and changed physical
+comparison are outside this precise projection argument. They must
+be derived with their full action, domains and source rows.

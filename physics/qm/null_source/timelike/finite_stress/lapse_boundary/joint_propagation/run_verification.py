@@ -12,7 +12,7 @@ NEW=PREFIX+"finite_stress/lapse_boundary/joint_propagation/"
 PARENT=PREFIX+"finite_stress/lapse_boundary/joint_feedback/verification.json"
 WORKFLOW=".github/workflows/ueot-physics-source-response.yml"
 ROUTES=[WORKFLOW,"physics/qm/README.md","physics/qm/ROADMAP.md",PREFIX+"README.md"]
-ENTRIES=['rare_preparation', 'adiabatic_connection', 'initial_layer', 'bounded_witness', 'local_constraint', 'rescaled_kernel', 'snapshot_spectrum', 'scalar_counterterm', 'dephasing_control', 'interior_collapse', 'ordering_sweep', 'rare_fisher', 'gaussian_control', 'probe_response', 'review']
+ENTRIES=['rare_preparation', 'adiabatic_connection', 'initial_layer', 'bounded_witness', 'local_constraint', 'rescaled_kernel', 'snapshot_spectrum', 'scalar_counterterm', 'dephasing_control', 'interior_collapse', 'ordering_sweep', 'rare_fisher', 'gaussian_control', 'probe_response', 'memory_action', 'memory_influence', 'review']
 VERSIONS={"numpy":"2.5.4","scipy":"1.18.1","sympy":"1.14.0","mpmath":"1.3.0"}
 def require(ok,msg):
     if not ok:raise RuntimeError(msg)

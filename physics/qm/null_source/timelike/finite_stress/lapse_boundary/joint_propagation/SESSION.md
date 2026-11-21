@@ -87,3 +87,27 @@ fixed finite-rank probes then lose their complete output effect.
 The root's two new algebra/finite-matrix checks passed. Three readonly
 agents independently reviewed the analytic arguments; immutable CP3
 source rereads remain pending. No physical apparatus closure is claimed.
+
+## Third closure: an actual memory source and conditional CTP data
+
+The harmonic memory is now a new conformal-lapse source with actual
+finite-K direct-sum evolution. Its complete fast limit and fixed-test
+zero theorem are proved; the regular growing-Gaussian rate also
+survives its actual dynamics. Passive canonical mixed terms are
+separated from active preparation. An exact three-square identity
+bounds the complete source+memory clock variance, including all
+cross correlations, even after a legal total-mean/current retuning.
+The same preparation supplies a normal momentum instrument for w,
+an actual energy-record instrument, and a closed conditional CTP
+influence with positive ordered covariance and endpoint/contact rows.
+No local autonomous active gate or full joint geometry solution is
+claimed. The source-only compact-probe theorem is not silently applied
+to the enlarged dynamical-memory Hilbert space.
+
+CP3 remote science failed two result-equality checks after their
+internal numerical assertions passed. Source-hash review and the other
+13 entries passed. Displayed NumPy regression values had been stored
+without rounding; CP4 rounds only those reporting fields, preserving
+full-precision assertions and all source/result identity requirements.
+The shared checker now prints precise mismatch paths if a failure
+recurs. Final exact-head remote verification remains required.

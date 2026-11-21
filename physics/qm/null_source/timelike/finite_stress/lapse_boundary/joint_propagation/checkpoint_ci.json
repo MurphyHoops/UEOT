@@ -29,6 +29,30 @@
       "publication_run": 44921610153,
       "publication_conclusion": "success",
       "scope": "intermediate exact-head CI; not final-head claim"
+    },
+    {
+      "commit": "d2795c79b8450471d6663de891cfb07e4517a95f",
+      "science_run": 44923427791,
+      "science_conclusion": "success",
+      "publication_run": 44923427780,
+      "publication_conclusion": "success",
+      "evidence": "workflow list returned for the exact commit; this row is not a decoded-log claim"
+    },
+    {
+      "commit": "5da02028086444762e6d95ad16cf2ee462820252",
+      "science_run": 44924791225,
+      "science_job": 136908413770,
+      "science_conclusion": "failure",
+      "publication_run": 44924791286,
+      "publication_conclusion": "success",
+      "decoded_failure_entries": [
+        "gaussian_control",
+        "probe_response"
+      ],
+      "decoded_failure": "Source-bound result differs after internal numerical assertions; review source hashes passed",
+      "diagnosis": "unrounded floating regression display payloads compared by exact JSON equality across Mac/Linux",
+      "repair": "round reported matrix examples to 10 decimals only; retain full-precision assertions, exact source hashes and strict result comparison; add mismatch-path diagnostics",
+      "repair_remote_verification": "PENDING_CP4"
     }
   ]
 }

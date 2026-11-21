@@ -56,19 +56,27 @@ for sig in [0.25,0.75,2.,8.]:
 sig=iv.mpf(10);S=iv.mpf(4)
 hide=S/(iv.sqrt(2*iv.pi)*sig)
 require(below(hide,1) and above(hide),"Nontrivial outward hiding example")
+# Round displayed regression numbers only; all assertions above use full precision.
+for row in rows:
+    for key,value in row.items():
+        if isinstance(value,float):row[key]=round(value,10)
 finish("gaussian_control.py",{
+"floating_report_rounding":"10 decimal places; a rounded zero is not an exact identity",
 "preparation":"normal Gaussian random-phase channel, fixed once at initial slice",
 "effective_trace_bound":"erf(|s|/(2sqrt(2)sigma)) <= |s|/(sqrt(2pi)sigma)",
 "effective_QFI_upper":"1/sigma^2",
 "fixed_C5_sharp_effective_QFI":"sigma^2 F_Q ->1",
 "actual_original_C9_QFI_upper_claimed":False,
+"quantitative_Gaussian_input_class":"regular finite low-moment class; arbitrary normal inputs only fixed-sigma or existence-only slow diagonal",
 "added_positive_form":"sigma^2 I5/4","added_current_variance":"sigma^2 I6/4",
 "current_mean_preserved":True,"energy_target":"once retuned p_sigma=p-alpha sigma^2 I5/(4DeltaE)",
 "source_marginal_preserved_by_channel":True,"old_source_marginal_preserved_after_retune":False,
 "sigma_K":"(log K)^(1/10)","actual_profile_error_and_reduced_hiding":"O((log K)^(-1/10))",
 "operator_norm_bound":"sqrt(2pi)||p_x||infinity/sigma",
 "purity_bound":"sqrt(pi)||p_x||infinity/sigma",
-"normal_trace_one_limit":False,"fixed_original_prepared_kernel":"ZERO",
+"normal_trace_one_limit":False,
+"auxiliary_full_line_Weyl_limit":"positive normalized state, nonregular in translations; no inherited Stone momentum",
+"auxiliary_Weyl_algebra_is_original_half_line_algebra":False,"fixed_original_prepared_kernel":"ZERO",
 "coherent_memory":"normal isometry, complete phase distinction retained",
 "continuous_classical_record":"normal L1 density field, not trace-class delta diagonal",
 "positive_form_QFI_tradeoff":"F_Q q_D >= I2^2/(4b)",

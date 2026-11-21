@@ -164,10 +164,14 @@ fixed w. It is not a uniformly bounded instantaneous control.
 
 An infinite conditional-tail projection must not be silently called a
 finite-K operation. Start instead with fixed M and the C5 finite-prefix
-isometry V_M from BOUNDED_WITNESS. Choose a finite-rank low projection
-P_L, and define the WHOLE-bulk finite-rank projection
+isometry V_M from BOUNDED_WITNESS. Explicitly attach the fixed omega
+vacuum above M, Vhat_M=iota_{infinity,M}V_M. Choose a finite-rank low
+projection P_L and define the WHOLE-bulk finite-rank projection
 
-    A_{M,L}=V_M P_L V_M*.
+    A_{M,L}=Vhat_M P_L Vhat_M*
+       =(V_M P_L V_M*) tensor |omega_{>M}><omega_{>M}|.
+
+This differs from the older witness with identity on the unused tail.
 
 It has compact kappa support. For K>=M it preserves the physical
 vacuum-tail subspace i_K H_K. Its restriction there is a bounded
@@ -185,8 +189,8 @@ compactness to the noncompact identity-tail interaction.
 
 Let tau be the fixed low input (a shared reference is allowed),
 w_L=Tr(P_L tau)>0, chi(s)=integral n exp[is/(2kappa)], and
-delta_M=||V_M-V_infinity||op. The fixed-prefix bounds give delta_M->0.
-For rho_M=V_M tau V_M*,
+delta_M=||Vhat_M-V_infinity||op. The fixed-prefix bounds give delta_M->0.
+For rho_M=Vhat_M tau Vhat_M*,
 
     Tr A_{M,L}rho_M=w_L,
     Tr A_{M,L}F_s rho_M F_s*=w_L|chi(s)|^2.
@@ -229,7 +233,8 @@ convergence of Wtilde_K to F_s on this compact family gives
 
     sup_s||(Wtilde_K-F_s)C(s)||op->0.
 
-For a Gaussian-prepared purification Psi_sigma,K, including its memory
+For the REGULAR Gaussian-prepared family of G4 and its purification
+Psi_sigma,K, including its memory
 and any reference, the exact decomposition is
 
     (Wtilde_K V_I,K-F_s V_I,infinity)Psi_sigma,K

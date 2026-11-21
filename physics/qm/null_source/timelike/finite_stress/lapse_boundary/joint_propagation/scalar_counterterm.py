@@ -31,7 +31,16 @@ require(sp.Rational(4,1)*sp.Rational(1,8)==sp.Rational(1,2),"Remaining second mo
 x,y=sp.symbols("x y",positive=True)
 ri=sp.integrate(sp.integrate(1/(x+y),(y,0,1)),(x,0,1))
 require(sp.simplify(ri-2*sp.log(2))==0,"Virtual double-shell coefficient")
+# Exact one-mode degree-selection check; the many-mode proof is C9.
+ann=sp.zeros(6)
+for jj in range(1,6):ann[jj-1,jj]=sp.sqrt(jj)
+cre=ann.T;qq=(ann+cre)/sp.sqrt(2);pp=(ann-cre)/(sp.I*sp.sqrt(2))
+for quadratic in [sp.eye(6),qq,pp,qq*qq,(qq*pp+pp*qq)/2,pp*pp]:
+    require(sp.simplify(quadratic[4,0])==0,"No four-particle creation from degree<=2")
+require(sp.simplify((qq**4)[4,0])!=0,"Quartic four-particle sector remains")
 finish("scalar_counterterm.py",{
+"scalar_quadratic_counterterm_gate":"same C5/principal/no geometry derivatives: liminf scaled variance >=I2/2",
+"counterterm_gate_is_all_models_exclusion":False,
 "model_changed_for_candidate":True,"original_AE_modified_in_this_cohort":False,
 "necessary_leading_scalar_for_equal_time_densities":"v(kappa)=1/(2kappa)+constant",
 "phase_fixed_gate_requires_constant_zero":True,

@@ -52,6 +52,38 @@ is asymptotically ineffective. The noncompact N4 readout, local field
 couplings and a retained-memory controller remain separate tests. Their success would not undo the
 fixed-test N3 rejection without a new physical interpretation.
 
+## Reflection after the real memory closure
+
+The added harmonic memory now has a retained-lapse action, actual
+finite-K joint propagation and an exact conditional influence. It
+still gives zero on the specified original joint fixed tests.
+A passive endpoint transform with action-derived mixed terms preserves
+that result. A genuine active Gaussian preparation can match initial
+total mean/current and has a calibrated w pointer, but its complete
+clock variance obeys the positive lower bound in MEMORY_ACTION.
+The pointer is not a calibration of C_source, and the conditional
+influence is not a solved quantum-geometric path integral.
+
+Do not prioritize another normal preparation or spectator-memory
+correlation as a repair of the already excluded joint gate. Nor does
+scalar/quadratic Wick subtraction remove the unchanged C5 four-sector
+budget (SCALAR_COUNTERTERM C9).
+
+The next primary deliverable is a concrete full-action composite
+constraint prescription, or a separately justified physical observable/
+test comparison, with its actual normal/nonregular domain specified.
+A proposed operator modification must include its quartic/derivative
+content and every lapse/contact row before a new history or device
+is claimed. The auxiliary Weyl limit in GAUSSIAN_CONTROL retains a
+classical law but loses strong continuity of the translation group;
+it supplies no automatic replacement for the old derivative constraint.
+
+The existing memory action, positive influence and exact normal
+instruments are reusable verification cases for that next prescription.
+Its four-dimensional local origin and the autonomous active preparation
+are additional physical gates, not evidence that the current original
+normal joint-kernel obstruction has disappeared.
+
 ## Global goal
 
 A mathematically consistent, empirically calibrated unified physical

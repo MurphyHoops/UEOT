@@ -64,7 +64,12 @@ W,V,F,L=sp.symbols("W V F L",commutative=False)
 require(sp.expand(W*V-F*L-(W*(V-L)+(W-F)*(L-1)+(W-F)))==0,"Complete Gaussian/probe difference decomposition")
 r,CM,sigma=sp.symbols("r CM sigma",positive=True)
 require(sp.simplify((sp.sqrt(2*CM/sigma)*g*sp.sqrt(r))**2-2*CM*g*g*r/sigma)==0,"Hilbert-Schmidt pulse budget")
+# Round displayed regression numbers only; all assertions above use full precision.
+for row in rows:
+    for key,value in row.items():
+        if isinstance(value,float):row[key]=round(value,10)
 finish("probe_response.py",{
+"floating_report_rounding":"10 decimal places; a rounded zero is not an exact identity",
 "picture":"W_K=U(u,u_i), interaction W_K^* A W_K",
 "fixed_original_clock_whole_bulk_compact_couplings":"same-K free diamond difference tends to zero",
 "compactness_is_operator_compactness_not_spacetime_support":True,
@@ -78,6 +83,7 @@ finish("probe_response.py",{
 "finite_cutoff_embedding":"fixed finite-prefix rank projection; zero-extension restriction then identity-tail transfer",
 "actual_C9_fixed_effect_gap":"w_L(1-|chi(s)|^2)-2delta_M >0 after one fixed M choice",
 "Gaussian_compact_probe_composition":"proved three-term bound; same-K preparation, no normal limit asserted",
+"quantitative_Gaussian_input_class":"regular finite low-moment class; arbitrary normal inputs only fixed-sigma or existence-only slow diagonal",
 "Gaussian_compact_probe_full_effect":"tends to zero including retained reference",
 "Gaussian_rank_r_success_upper":"r sqrt(2pi)||p_x||infinity/sigma",
 "failure_record_retained":True,"local_autonomous_action_or_total_stress_constructed":False,

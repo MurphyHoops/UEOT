@@ -21,3 +21,8 @@ unification must remain OPEN in every scientific result.
 Final coverage additionally requires at least two immutable readers
 for GAUSSIAN_CONTROL and PROBE_RESPONSE, besides all three on the
 complete initial-layer and fixed-interior-collapse proofs.
+
+The final audit also requires independent immutable coverage of the
+two memory proofs and the common/runner/review infrastructure. Printed
+floating regression values have a declared10-decimal reporting rule;
+all internal tolerance checks and exact source identities are retained.

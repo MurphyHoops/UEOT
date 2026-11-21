@@ -230,10 +230,80 @@
       },
       "findings": [],
       "scope": "Actual immutable CP2 reread; prior assigned findings verified addressed"
+    },
+    {
+      "commit": "5da02028086444762e6d95ad16cf2ee462820252",
+      "agent": "/root/a_joint_propagation",
+      "status": "FINDINGS",
+      "main_mathematics": "PASS",
+      "scientific_execution_by_agent": false,
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/GAUSSIAN_CONTROL.md": "7367cf057fe0c04f2e50fb047238c46d0790c29d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/gaussian_control.py": "7b7b470cd33d9f5c44233b52d45163bce396a375",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/PROBE_RESPONSE.md": "beda7272edb54bf2550655ced0a197f1e568e715",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/probe_response.py": "1a0789ae18679a81d844eaddd1238fd94c1ff742",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/RESCALED_KERNEL.md": "c3d6fd90f0597caff83ade8b84504bfc770af4e6"
+      },
+      "findings": [
+        {
+          "id": "A5",
+          "issue": "Gaussian G5 must bound the unweighted bulk kernel and retain endpoint weights as tested forms.",
+          "resolution": "PATCHED_PENDING_CP4_IMMUTABLE_REVIEW"
+        }
+      ]
+    },
+    {
+      "commit": "5da02028086444762e6d95ad16cf2ee462820252",
+      "agent": "/root/b_constraint_kernel",
+      "status": "FINDINGS",
+      "main_mathematics": "PASS",
+      "scientific_execution_by_agent": false,
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/GAUSSIAN_CONTROL.md": "7367cf057fe0c04f2e50fb047238c46d0790c29d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/gaussian_control.py": "7b7b470cd33d9f5c44233b52d45163bce396a375",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/PROBE_RESPONSE.md": "beda7272edb54bf2550655ced0a197f1e568e715",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/probe_response.py": "1a0789ae18679a81d844eaddd1238fd94c1ff742",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/rescaled_kernel.py": "9562b5c511fdd163978fe95245984297db443f8a",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/review.py": "3da52f4cd25cf9b1f3eaf08814a24f8047435a6d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/run_verification.py": "6ed13406fd4eacb22f26864534f45428981b14e1",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/BOUNDED_WITNESS.md": "df32dee2e58909623a6a447d764d03f0812854f9",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/gaussian_control.json": "313f653e9614844b7f89b6c45e22c4247fa82085",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/probe_response.json": "c792c4b801fb970c862697f85cb388f5c243b15b",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/verification.json": "9b44f7b33c5e5f4160c86dff3e1fdd7ff7a38aee"
+      },
+      "findings": [
+        {
+          "id": "B7",
+          "issue": "Define Vhat_M with fixed vacuum tail in the whole-bulk compact projection, distinct from the older identity-tail witness.",
+          "resolution": "PATCHED_PENDING_CP4_IMMUTABLE_REVIEW"
+        }
+      ]
+    },
+    {
+      "commit": "5da02028086444762e6d95ad16cf2ee462820252",
+      "agent": "/root/c_prepared_record",
+      "status": "FINDINGS",
+      "main_mathematics": "PASS",
+      "scientific_execution_by_agent": false,
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/GAUSSIAN_CONTROL.md": "7367cf057fe0c04f2e50fb047238c46d0790c29d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/gaussian_control.py": "7b7b470cd33d9f5c44233b52d45163bce396a375",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/PROBE_RESPONSE.md": "beda7272edb54bf2550655ced0a197f1e568e715",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/probe_response.py": "1a0789ae18679a81d844eaddd1238fd94c1ff742",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/DEPHASING_CONTROL.md": "eca5b3cdfbef751dc2aeb4c25c0bf1ad1f7e4ee4",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/dephasing_control.py": "4c39ebe4e51bd4d12f8cdb5bc8a5e54124603453"
+      },
+      "findings": [
+        {
+          "id": "C7",
+          "issue": "Quantitative Gaussian rates, finite resource moments and retuning require the regular low-moment class; abstract normal-channel claims have broader scope.",
+          "resolution": "PATCHED_PENDING_CP4_IMMUTABLE_REVIEW"
+        }
+      ]
     }
   ],
-  "immutable_review_file_identities": 75,
-  "unique_commit_file_count": 51,
+  "immutable_review_file_identities": 97,
+  "unique_commit_file_count": 65,
   "external_human_peer_review": false,
   "machine_formal_proof": false
 }

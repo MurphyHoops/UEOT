@@ -70,3 +70,19 @@ readers actually fetched another25 file identities and verified all
 identities are recorded in source_audits.json. INITIAL_LAYER and
 INTERIOR_COLLAPSE were each reread by all three. CP3 adds two science
 entries; their current immutable source audit is still pending.
+
+## CP3 audit and remote failure repair
+
+Three native agents made22 further actual immutable file reads at
+5da02028086444762e6d95ad16cf2ee462820252, bringing the recorded
+identity count to97. They found three scope/notation issues: regular
+low-moment hypotheses, raw weighted versus unweighted kernel bounds,
+and the vacuum-tail embedding of the new compact projection. CP4
+patches all three and awaits actual immutable rereading.
+
+Science run44924791225 failed only gaussian_control/probe_response
+result equality; the traceback reached finish after their numerical
+assertions. The strict source review passed. Numerical reporting is
+now rounded to10 decimal places for platform stability; assertions
+and source hashes remain strict. The failed checkpoint is retained
+in checkpoint_ci.json, not counted as a successful final CI.
