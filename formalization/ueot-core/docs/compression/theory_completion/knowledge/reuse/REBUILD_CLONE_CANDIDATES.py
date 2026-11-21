@@ -30,10 +30,11 @@ sys.path.insert(0, str(HERE.parent))
 from fkrg import no_lean_comments
 
 
-def scan():
+def scan(module_limit=724):
     data = reuse.load()
     source_lines = {}
-    for item in data["modules"]:
+    mods = data["modules"][:module_limit] if module_limit is not None else data["modules"]
+    for item in mods:
         path = item["path"]
         stripped = no_lean_comments((reuse.REPO / path).read_text())
         source_lines[path] = [

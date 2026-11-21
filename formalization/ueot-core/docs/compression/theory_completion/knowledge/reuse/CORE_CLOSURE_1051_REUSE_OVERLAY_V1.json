@@ -1,0 +1,2041 @@
+{
+  "schema": "FKRG_REUSE_OVERLAY_V1",
+  "overlay_id": "CORE_CLOSURE_1051_REUSE_OVERLAY_V1",
+  "source_checkpoint": "worktree-sha256:3f1552a580f1ae93b959804f49b83781283e0560ac2cc994f8849efbaa949a7c",
+  "source_checkpoint_kind": "SYNCHRONIZED_1051_MODULE_PURE_KERNEL_SOURCE",
+  "baseline_ref": "a3f95dc1a6821978e173e23015f026994fb60c65",
+  "base_snapshot_modules": 724,
+  "prior_overlay": {
+    "path": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/FINITE_DATA_LOOP_REUSE_OVERLAY_V1.json",
+    "sha256": "a627955e025c5a8054a2c811f573e7602157f6afce9c08b4a587895b4f473713"
+  },
+  "source_hash_overrides": {
+    "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion.lean": "dc3759eff9c9f6fd13bba3acdf254c9f9f99bae1895e7bcda6226ecff54d4556"
+  },
+  "added_modules": [
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianBoundedC2DynkinSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianBoundedC2DynkinSource.lean",
+      "content_sha256": "6f89c99296b09f1360915035f3e07bc51e70230dd73c80ee469686980b9d916b",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianBoundedContinuousQV",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianBoundedContinuousQV.lean",
+      "content_sha256": "e2597d54729aad6c07a563b9c30bcc757995a0219e7fdfad727d295fad7d4a9a",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianBoundedControlReadout",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianBoundedControlReadout.lean",
+      "content_sha256": "745455a9ea5635510a5e53154e0501294167156fa02405e5047bf7ba0ba12b35",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianBoundedControlSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianBoundedControlSource.lean",
+      "content_sha256": "d77a768fe3ed2ae06a64db659e18ec1069f39212e400050f062604226ee4cfee",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianBoundedDriftLimitSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianBoundedDriftLimitSource.lean",
+      "content_sha256": "1a8401c1a274707be559982e10cdca8b10696a0f441e895f348c7e496643c37a",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianBoundedExponentialLimitSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianBoundedExponentialLimitSource.lean",
+      "content_sha256": "23e7d864bb53324ce99240ed8cf87a4e9b8da97c124ae896ab41a4fdafa15282",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianBoundedGirsanovSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianBoundedGirsanovSource.lean",
+      "content_sha256": "a963199e1010b48217bdd6ff402493a15a7960954830dcf0a52d24aa17a838d0",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianBoundedMovingLawSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianBoundedMovingLawSource.lean",
+      "content_sha256": "4dbfd5ed9faa881bb692bcf2bd8a44016e806f63fcefab78d480c90b71b07d4b",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianBoundedMultiplierLimit",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianBoundedMultiplierLimit.lean",
+      "content_sha256": "1805c7fb6d0e9c558b9978d71f674283b76e86d127b78bde72185ba9dc81cc33",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianBoundedPastMultiplier",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianBoundedPastMultiplier.lean",
+      "content_sha256": "df08751b596eb2a7c1cd4d71732eebecd470572fee3370c136deed63ab9b5522",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianBoundedPredictableApproximation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianBoundedPredictableApproximation.lean",
+      "content_sha256": "8241350da8c17bf77379c7856098b0f063aea96e02e4797864738a2074f56382",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianBoundedTerminalKLSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianBoundedTerminalKLSource.lean",
+      "content_sha256": "805fbc226d333db17edf92fc6ade496bc574729e80ad34f00c830a24e26d0e41",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianBoundedTerminalL2Source",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianBoundedTerminalL2Source.lean",
+      "content_sha256": "be83bd697d769aa2192347968765c1a5098abd7a45f44fe26c830a8189651cb9",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianBoundedTerminalMeanSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianBoundedTerminalMeanSource.lean",
+      "content_sha256": "6072643efcc7db8741f1a802e24f12e00c784d8804be0d8c80381f9f62c02775",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianCommonRefinement",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianCommonRefinement.lean",
+      "content_sha256": "5cd41cd71310797092a1df7f31ce82ef0ac251efb372d8cc37e5477b5af3e60b",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianConstantGirsanovSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianConstantGirsanovSource.lean",
+      "content_sha256": "7cca207a5b3621fb327d217c9213d943faf6f13a2e050486ac2372e27f2b0c59",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousAdaptedInputs",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianContinuousAdaptedInputs.lean",
+      "content_sha256": "4cd517268b6b641eb24f70aa2719f349a9d115b4f015179851a207fe66663a81",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianContinuousSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianContinuousSource.lean",
+      "content_sha256": "b657ceb4335459de47531177344c787a440c1c461b6e36c4ff221c5d81521509",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianControlledC2Source",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianControlledC2Source.lean",
+      "content_sha256": "2048451a6ef9e432a63e6b5a3a685c4026df19af01953773704af38c1e2a4a9b",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianControlledDiscountSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianControlledDiscountSource.lean",
+      "content_sha256": "5107e2ffec7ec8eca4d7bc4688d78722112aafdfcff8452104d9b9f48f7cf91b",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianControlledDynkinSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianControlledDynkinSource.lean",
+      "content_sha256": "721d67604b8266a1800ecc027d32e96d9c067786ba617351ac6b3733bc07d9ec",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianControlledHJBSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianControlledHJBSource.lean",
+      "content_sha256": "a78f5cae68aaabb1c3adef7545bf2c8dad9a9f1682d08be8faef73aa7af49ec4",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianControlledHorizonTestInput",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianControlledHorizonTestInput.lean",
+      "content_sha256": "bb096d77d9fc0573e811d02a170bfb625a4ebcf8314a965e17acf098b9044b87",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianControlledInfiniteRewardSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianControlledInfiniteRewardSource.lean",
+      "content_sha256": "d09f24d5735112bd00ae98b71a09b77a4afed2137658cac40c9e597b0643d499",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianControlledItoIdentitySource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianControlledItoIdentitySource.lean",
+      "content_sha256": "2f521189645f2897195d6d768d61beb3eee68f4c67a6ea65abc9013802936240",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianControlledItoRunSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianControlledItoRunSource.lean",
+      "content_sha256": "fc678a253734b6ddb80410d84c5d96ab75fbdcf30b6286cfce3e3e4e5e5d541e",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianControlledOccupationSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianControlledOccupationSource.lean",
+      "content_sha256": "98fff21c398ac34f6625e02e9b8764ea06b7e6744ebcd02f7f998f3162295c26",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianControlledReadTimeSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianControlledReadTimeSource.lean",
+      "content_sha256": "033285ec1674e7b6a9025ef58a4467b013e2b8f155a05e635213c5d8dc259e14",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianControlledTestInput",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianControlledTestInput.lean",
+      "content_sha256": "3d016e9333e6c352c8345fc3749e0288ce405606d46393d3de7f6159f2a78528",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianCountableSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianCountableSource.lean",
+      "content_sha256": "983dad5c1d1a49cdd81b0e9930fe2f360f9af724d9ae8cc6688b81c52be9ce7d",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianDeterministicGaussianIntegral",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianDeterministicGaussianIntegral.lean",
+      "content_sha256": "4adccec6d64804bd5ac216d17fa01d96b8aaf98932bf5417588e7b8b00c38c2e",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteDensityL2Source",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteDensityL2Source.lean",
+      "content_sha256": "d8a15d557ee51964ab76046adf30606918d71e4cee99489f5cdf113cf9aa85f7",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteGaussianTiltSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteGaussianTiltSource.lean",
+      "content_sha256": "3372aae6f8b0c3583b3b5d3fb3cbd8f65f134de8a562831581c184ccc1fc8b6f",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteProductSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteProductSource.lean",
+      "content_sha256": "f2aec380912ab8ef207adec8b8b38ce094201f552cc1ff20efc13f6a5b8dcec4",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteSpanLeftInputs",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteSpanLeftInputs.lean",
+      "content_sha256": "045ea09af37e6e6f33468278c0ca62c910391e067214b2818c772d8a93928023",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteStateDriftCrossQV",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteStateDriftCrossQV.lean",
+      "content_sha256": "cfcb467053aa8bd549d3646ced5c9f596401a3d94659e9bd96ac87a5dc81e4a6",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteStateDriftItoSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteStateDriftItoSource.lean",
+      "content_sha256": "53b693604df83299f756faae583b4484f4fd19e72385b06f32b305742bd16777",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteStateDriftRiemann",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteStateDriftRiemann.lean",
+      "content_sha256": "ff6a6aa4d0d2704cf69f5a429231f099c1e25347e7e7aeb483bbf03fb5b8054d",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteStateDriftSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteStateDriftSource.lean",
+      "content_sha256": "6869a7e002de8bae10d29e3879cf388cbf2ea22a97bedb204b23ab72ce26f20e",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteStateItoSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteStateItoSource.lean",
+      "content_sha256": "b24cbe65ca12a9bcb17cd727f6db4d00a80d9c74d4a239278f528d249787332b",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteStateTaylorRemainder",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteStateTaylorRemainder.lean",
+      "content_sha256": "81abd608eff043a4bbe7066ca14162dd32ab48e023cdf7dfdd88b14faeb9adb8",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteStepConditionalSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteStepConditionalSource.lean",
+      "content_sha256": "1d89af03bd3568d9544b6c74e1ea28a9ba26be2198df2cce17f2a4d5d54c97ca",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteStepExponentialSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteStepExponentialSource.lean",
+      "content_sha256": "4911c7d5a71e0a2e31aadbe5280e5fb522f815e0154b27cc3d104b6f564261cb",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteStepShiftedSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteStepShiftedSource.lean",
+      "content_sha256": "14edab6999232051f8becaa44bd939b08c2b6ed50420c9a035cfaaa8972a5bd4",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFiniteStepTerminalKLSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFiniteStepTerminalKLSource.lean",
+      "content_sha256": "e4c48b7b84857b21a0a77f1482573ca8418dcdb701147c74be93c966ab34f4e8",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianFullInputQV",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianFullInputQV.lean",
+      "content_sha256": "cd3908fb7c079ba72ba9cd9273127ba925cb78b2d5e44278d1e285c8ab1b112c",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianL2Closure",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianGaussianL2Closure.lean",
+      "content_sha256": "87565ecaacc7b661d6b8c534013e37f60a88cedf564fac1ecd9e6190630e2041",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianGaussianTiltSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianGaussianTiltSource.lean",
+      "content_sha256": "dd867d4114bac119a5c13b9922ad3016af7e58a52ba26f952d27233062ab0da9",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralClosure",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralClosure.lean",
+      "content_sha256": "c9967cc526519101a6737254c7f9c323c3698d589332f3f7d499285cbcf0b41f",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralCompensator",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralCompensator.lean",
+      "content_sha256": "47e92e0c28133aa9b08914725f166f9b11ca1bac6ac1c446f3fcae47684073c7",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralConditionalStep",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralConditionalStep.lean",
+      "content_sha256": "ef68b464a23394bebcf93d7020d8a5aa2783b6c179b19ac99f1b26696058463c",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralContinuousVersion",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralContinuousVersion.lean",
+      "content_sha256": "07dc5febacbb95032f5d77fbe3686a404e8c254c893f25ccc51329b3267f21af",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralCrossVariation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralCrossVariation.lean",
+      "content_sha256": "4a0c5de081464f6866936573a78a1e953be79c4251d8cac9c3e75cdef8554790",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralEnergyL1",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralEnergyL1.lean",
+      "content_sha256": "923ee69ecb1b368b9bc92908475a66376ed5650ee059e83e77d2d9594bc3cc9f",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralFinitePaths",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralFinitePaths.lean",
+      "content_sha256": "d995fe3ec039f47fb6ae755cba0710251ee0f31915fc84bff3885d5e4c8b49df",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralGridL1",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralGridL1.lean",
+      "content_sha256": "b820ff44549d01edca368356173f015a41bea864f6a759cebfdf9a77aae2123d",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralL2TimeContinuity",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralL2TimeContinuity.lean",
+      "content_sha256": "5b8347b48be9b2425feda9aa89ca4f5dd3273424afe6fc3796bee1faa3fe20c7",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralLiteralIntervals",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralLiteralIntervals.lean",
+      "content_sha256": "0c81ff30498539a3e32c12a8fb6b1df7153170c524e88aeb36a2c546cb4e8dd0",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMartingale",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralMartingale.lean",
+      "content_sha256": "3ae8ce73e2af10e77c388d4c2814709dd2f3fd781f547e5c379b9a1e2b36c451",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralMaximalControl",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralMaximalControl.lean",
+      "content_sha256": "f86216faa66d07a32bfc271e5b93cacfa48520e8293352483b7752fadb272d69",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralPastLocalization",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralPastLocalization.lean",
+      "content_sha256": "16bbc321df90d0713abd7ec9aa3808312e87f67af23ac81b37d315dffada6931",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralProductCompensator",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralProductCompensator.lean",
+      "content_sha256": "a32b30436d62c897b03c1ccecb8112d7b6cd8e01c6b5af7e1f73b7c5e1c38144",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralRepresentation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralRepresentation.lean",
+      "content_sha256": "9afebdd6e4d84fc4d6d39126d13c64101e7f18578a6c0f152e988f40b3a81857",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralSquareL1",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralSquareL1.lean",
+      "content_sha256": "e405281d30cb6ea9cf6df2f8e5b7b0c6ea426e7ffe6f2d0db8460b4e18e241ca",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTaylorLimit",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralTaylorLimit.lean",
+      "content_sha256": "02108df7431a54c836836d7de106f9992ed15ba517be19b702201aabc3544638",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeEnergy",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralTimeEnergy.lean",
+      "content_sha256": "bee1474c31ffc4500fd005f1233c06173f10c62dea6c5a978a9e1453b9ca196a",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralTimeTruncation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralTimeTruncation.lean",
+      "content_sha256": "1f8e95f87328821f5a5061d19df1b8c156554e7c3bc19612685e4c981d905af6",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianIntegralWeightedQV",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianIntegralWeightedQV.lean",
+      "content_sha256": "0491d8e103fd1ff5fa012a068af8148bb29be9aaf2e4dc8e571f07434df9c6bf",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianLeftMultiplierInputs",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianLeftMultiplierInputs.lean",
+      "content_sha256": "58180d7b212a1ff23d2f1bb2dd90d1b0665e36b6f6952fa48983101fa9a12010",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianLiteralGridBinding",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianLiteralGridBinding.lean",
+      "content_sha256": "7865ccb64d8f903d435003974715b9740556c91ec89b9b23c7842840cae8f046",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianLiteralGridLimit",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianLiteralGridLimit.lean",
+      "content_sha256": "be52816e2e1813908ed389b349d0d465105c8534b0f5b403b62d9ae8bb4ebf9b",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMartingaleSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMartingaleSource.lean",
+      "content_sha256": "a51aedd39c0a819fb9fb045d008aac7ab622049f5bb749e2dab32d3dbdd25cc3",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianMeasuredStepTransport",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianMeasuredStepTransport.lean",
+      "content_sha256": "ff83a0cc1417555107a484d840d90467b1bf96845a49fd50e0412aec6bf8705a",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOneStepIntegral",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianOneStepIntegral.lean",
+      "content_sha256": "1d6e33f0f951cd604557b89353069c450428bdb14b9a19afc70f60470176b9ec",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOwnQBoundedInput",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianOwnQBoundedInput.lean",
+      "content_sha256": "7149716534ac6b10140afece13d92fd84089dfd22584b087c407040ca5f122e6",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOwnQConditionalStep",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianOwnQConditionalStep.lean",
+      "content_sha256": "9497b48ad269e1e8a07d910b9c1f5c8aa6ea7dde80c5ae51d012a5f4cd52d828",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOwnQCrossDrift",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianOwnQCrossDrift.lean",
+      "content_sha256": "e671760cd6a6f74d4d472f9dee699c030e316561898591dd54818b1f2686f1ab",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOwnQFinitePaths",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianOwnQFinitePaths.lean",
+      "content_sha256": "8882138d9653981a8b890fea80b1d87c97584ead66fb222cac06d3b0fee42ea9",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOwnQFullIntegralSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianOwnQFullIntegralSource.lean",
+      "content_sha256": "26f06cf77c0e381f5b1927f8f6d04f41b7dff13abe269aa9a259050963ce96de",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOwnQHorizonCrossDrift",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianOwnQHorizonCrossDrift.lean",
+      "content_sha256": "69a13755598e7cfcdf6948b2c6bf9def48895a774ecf8dfc8b789956acafb49d",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOwnQHorizonTargetIntegral",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianOwnQHorizonTargetIntegral.lean",
+      "content_sha256": "ff243a79b3756d58563bd624fbe3161d18dcb5c0d1b0b66bb3f4c4a56be306da",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOwnQHorizonTargetShift",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianOwnQHorizonTargetShift.lean",
+      "content_sha256": "c3c4f232a0a0617a6ace53ffa1705e9e91ca15f0084f1c8d0568b7fd0d31057b",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOwnQIntegralClosure",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianOwnQIntegralClosure.lean",
+      "content_sha256": "71d8bf92de9ff1636aeca4c4b1838939f892fb1193645882cf4a66a2abd1b105",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOwnQIntegralMartingale",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianOwnQIntegralMartingale.lean",
+      "content_sha256": "0673c07aa34d948b26a66a7af11e394ca02c2b3433a0c5a51845460555da21cf",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOwnQIntegralShift",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianOwnQIntegralShift.lean",
+      "content_sha256": "eacd4af94096ed6856b6ace696a35c26e25747a8536f49062201c4990578a0fc",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOwnQOneStepIntegral",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianOwnQOneStepIntegral.lean",
+      "content_sha256": "117726cc46506e40d82a9554d0462ae4ec2afdc1cd09c85f0d43664945db3be0",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOwnQPredictableDensity",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianOwnQPredictableDensity.lean",
+      "content_sha256": "a0fceb3047dc0798de6e99c5d8134a5780f1914b1cf0b2499f7b0daf2abacb50",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOwnQRepresentation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianOwnQRepresentation.lean",
+      "content_sha256": "32db2842da6a824efbffe5003cadbd8062e1a4e088e89b9261133d22042bd7d7",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOwnQSimpleIntegral",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianOwnQSimpleIntegral.lean",
+      "content_sha256": "46eb0b46759fe36796ef597d97affd2b02fe78fc16a2c6163cd65d2782d19dc4",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOwnQTargetIntegral",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianOwnQTargetIntegral.lean",
+      "content_sha256": "e96273716d4d19ad112c65ab030b2d0ad6cd55f87bf66f5b10ac19b7150a2846",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOwnQTargetShift",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianOwnQTargetShift.lean",
+      "content_sha256": "bb553179cf9de66bfbb99d6d5c9fb098ef7e1613321dbf976411deec5403dbc5",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOwnQTimeInput",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianOwnQTimeInput.lean",
+      "content_sha256": "429f25604f0d8ad7d7cb5625527b312b561e787c47ea067ad3232a0eac599ab2",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOwnQTimeTruncation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianOwnQTimeTruncation.lean",
+      "content_sha256": "35c8586156c695838208e12935598cd0ab90b223d53ecad98ca9ee116a53f98c",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianOwnQUnboundedIntervalSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianOwnQUnboundedIntervalSource.lean",
+      "content_sha256": "15f27b87f0d584b3bee188ddd225aefbf04db9858cab14cdb3fe6e0d7403b2fb",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPartitionLeftInputs",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPartitionLeftInputs.lean",
+      "content_sha256": "e2c822fb1e9907872059efb34e192bdd49e8550f21dbf0a2801719202fe331c1",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPartitionQV",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPartitionQV.lean",
+      "content_sha256": "c2caa08467656b15bf4ff3c9d93e698941f6679ff500c7e3b83e0b1b02363df1",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepExponentialSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPastStepExponentialSource.lean",
+      "content_sha256": "9b6c28351fa69955ecd89d4cc9601d842c801b3a9706dd097996e20813f591fa",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepGaussianResidualSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPastStepGaussianResidualSource.lean",
+      "content_sha256": "fa59886cb88fd84f0c29e85147679ec0d643dfa3e01b8b348104d311585d3a67",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepGirsanovSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPastStepGirsanovSource.lean",
+      "content_sha256": "b4e79275dd45800e0ad082ad3f0525aa808dc64a2361438d5332cc55eccd61b2",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepShiftedSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPastStepShiftedSource.lean",
+      "content_sha256": "b9f3853b0387b301006bd3a9f0614b17c9af25a921e684e3b676f76580a743de",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPastStepTiltKernelSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPastStepTiltKernelSource.lean",
+      "content_sha256": "b4ab0cb59d195d82f4c411edce25eadf8b1480a2b2d81158b2a5d0bd13b76c20",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableDensity",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableDensity.lean",
+      "content_sha256": "e1e90471b7ce3514d365eb53f666d40b8466e6373159feacc4a3f8f123e23aee",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableInputs",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableInputs.lean",
+      "content_sha256": "cfce88106ce5c1bd871fb898ddd098eeeb4c404c13f5455535b825a0c080ac68",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianPredictableMultiplier",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianPredictableMultiplier.lean",
+      "content_sha256": "e8eaefd7c837b30e9eb289706817c07b2432e1339bddddcb390d03f41ec960aa",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianProjectiveSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianProjectiveSource.lean",
+      "content_sha256": "ea0959f51edd4647d322532982bc59d3556204fea2dd4dec6614d00d7a361cae",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianQuadraticVariation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianQuadraticVariation.lean",
+      "content_sha256": "3fe2a598d1512dd68031da87d0298d7d910da146021481be8be6447e90862fd2",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianQuadraticVariationSteps",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianQuadraticVariationSteps.lean",
+      "content_sha256": "512c6c13c94660909be7f6381b189e06da7fb3acbe6d674d7d64a0e03f34b421",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianSampledCellIncrement",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianSampledCellIncrement.lean",
+      "content_sha256": "aafc3a0c2103cb9b5b403de679a060c6935c39945fde34f48c2733860d58f7b4",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianScalarItoSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianScalarItoSource.lean",
+      "content_sha256": "47ac00fd2ad251e5535c897c3026e1333e1b5058ef49362dd1c7a2faa852d403",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianScalarTaylorRemainder",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianScalarTaylorRemainder.lean",
+      "content_sha256": "b1221249ca590d3e243508b0fbcb65bcc54b4debeae1e6e79327df88b7a55ff6",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianSimplePastMultiplier",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianSimplePastMultiplier.lean",
+      "content_sha256": "b2154d4aac56c714b862d863b48d93844be043a9595b0b678174fd871c1decf9",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianSimplePredictableIntegral",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianSimplePredictableIntegral.lean",
+      "content_sha256": "90a9d7f4b3209d613e12ba274baf14c09148820bdd074a0beb55b3bae61e04cd",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianTimeIntegrand",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianTimeIntegrand.lean",
+      "content_sha256": "f3b6437b82d664b54f90a1a3f5cd6c77ef05c07b63b9b3dca533de54f4f007c3",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVaryingInputQV",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVaryingInputQV.lean",
+      "content_sha256": "e794294b8486f155726ef6bc5391a7487b41b3a77def09d5191999fdf0a565c3",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorCrossPartitionQV",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorCrossPartitionQV.lean",
+      "content_sha256": "51df209016ac57d0137098f4dc740717cb7d4fda209e67b13b5dfbd64ad21d96",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorFiniteSpanLeftInputs",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorFiniteSpanLeftInputs.lean",
+      "content_sha256": "ed16a20387e0fdb9fc1415c267133e328dfaf06772a7fa2eeb748802af2abb4f",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorFiniteStateCrossQV",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorFiniteStateCrossQV.lean",
+      "content_sha256": "efbcf3c4b305bccfc01fedcc4139eae711e9a615dbe32e4948b36bfc6adab1c8",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralClosure",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralClosure.lean",
+      "content_sha256": "bc824206e5cff44b17322f99218a12c5246e54d7644c36aa222b2596cfaf5ce5",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralConditionalSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralConditionalSource.lean",
+      "content_sha256": "adbef59c1d24d2f817c5b3d3cb5643375ea35e42ceb0ba400fde5ff42584ba16",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralContinuousVersion",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralContinuousVersion.lean",
+      "content_sha256": "cc441c95664692d1dfbacdf63131163e352b35716d1d92c563e920b0e4079812",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralEnergyL1",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralEnergyL1.lean",
+      "content_sha256": "8d4e2d187d369e013e0f14be837d517ef4dae52fa9a4fea95ec1f88e39c5adeb",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralFinitePaths",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralFinitePaths.lean",
+      "content_sha256": "21828e40c1a267e1ee3a5cb9c7f4e84ab5f0986c19d143cadbca251fcd0240f1",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralGridL1",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralGridL1.lean",
+      "content_sha256": "498e08b3d154fa0f2d6cdebf539a2eec0ca6b454fa0a83b5f8d67a64e83b2543",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralL2TimeContinuity",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralL2TimeContinuity.lean",
+      "content_sha256": "69420cd98cd9604d3a32982c1b5b29e3d730c692b43c934d15d31a7654bbfda9",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralMaximalControl",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralMaximalControl.lean",
+      "content_sha256": "b40fb7d3f47973e39662863943fdb839c01770e67fd17c4877ca3c5fb601e98e",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralTimeEnergy",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralTimeEnergy.lean",
+      "content_sha256": "ea22745b847ec65f97a08e89e2879e58a99212f7c0e01c9ec0edc50bd07113b8",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorIntegralTimeSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorIntegralTimeSource.lean",
+      "content_sha256": "7fe7ae20332d15c194db233d02e5fc14a9bcea6d6e85b0485df8c6745f7705bb",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorLeftMultiplierBinding",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorLeftMultiplierBinding.lean",
+      "content_sha256": "5e5c8bb6ecb3d762f4793f55e5366cc42e8319d5288147feb638754631d38fae",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorLiteralGridBinding",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorLiteralGridBinding.lean",
+      "content_sha256": "fdcfeecb51fb9d7222b4becc83935f437c2419f03646190ed54a8a6cf8a5f5c9",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorOneStepIntegral",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorOneStepIntegral.lean",
+      "content_sha256": "977bc60121199b6fd51ade3abd0fe46c4fdab861c9dcf8a2138d007027ba40e3",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorPartitionLeftInputs",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorPartitionLeftInputs.lean",
+      "content_sha256": "35af0ca7efb69e95e3b911c48ec8a377d2bca8e6123036e7ad5bf75d152907f1",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorPartitionQV",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorPartitionQV.lean",
+      "content_sha256": "61b6e6c5dcba74791cf11405792684c8852b736b9dc5a27f545c99d01d568d6a",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorPastMultiplierBinding",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorPastMultiplierBinding.lean",
+      "content_sha256": "7b56dc66f371fd71f4a5b6dfe0077a5a4805bfcda30a216e6597f240edf4d9b6",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorPredictableDensity",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorPredictableDensity.lean",
+      "content_sha256": "e7d9cf22e62ee060cd69f400891d0e4f95367fbc67ec95c64994070df1eccc82",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorPredictableInputs",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorPredictableInputs.lean",
+      "content_sha256": "7760fcc28c5b947b9c3e065f4d375f904f6eb5b3221d11cc73e75d32e73ad585",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorPredictableMultiplier",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorPredictableMultiplier.lean",
+      "content_sha256": "f026ab9d4c4dbbcccf9903f197d20d9da87af69ce641302a64c37ac9af6aa694",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorQuadraticVariation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorQuadraticVariation.lean",
+      "content_sha256": "e794b78bd86eae5f799663c4e3e2fcdd2e0795e4d2742e81c759790a6440dce6",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorQuadraticVariationSteps",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorQuadraticVariationSteps.lean",
+      "content_sha256": "5f3d9b8f94eead91083a33910520fe0bd4a21ad124b39e5bc6e5869bbee005bc",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorRepresentation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorRepresentation.lean",
+      "content_sha256": "c4681276155ece718d35c545d2e5cc16b3100d3c7bf815b4542b1ee012f05685",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorSimplePredictableIntegral",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorSimplePredictableIntegral.lean",
+      "content_sha256": "fb5dfd299616d6f4a9c66f31bc6d7004a526f1ceb6f5bbc8452f4a37f4535ab0",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorTimeInput",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorTimeInput.lean",
+      "content_sha256": "46136fc5a91f55f738867562f70886db5d8945b61f4e998791d2b19f553bd0be",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianVectorWeightedCrossQV",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianVectorWeightedCrossQV.lean",
+      "content_sha256": "819a0cf1671add76eaae351bb34f14baf940b6bd5e0e8882c19cfce3e45a665b",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianWeightedIncrementBinding",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/BrownianWeightedIncrementBinding.lean",
+      "content_sha256": "1d1c2f14a37b10559635151b8ba92f70ae18bc9ee18d19d41bd02950677a1a3d",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CompactKilledSpectralBinding",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CompactKilledSpectralBinding.lean",
+      "content_sha256": "15041411aeba46406398b83989e5ee3e482355a9bc3eeeb304deebb15e751126",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CompactSpectralSemigroupSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CompactSpectralSemigroupSource.lean",
+      "content_sha256": "c91a801e990fe3096c9489ad86b3beb89620e52cf34f8568b62a4f14db0b1970",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConflictOrganizationalSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ConflictOrganizationalSource.lean",
+      "content_sha256": "d523ada9013587a156853642ed8f834ca5a3140e1cc19297d74ca75f0d39fa7c",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConflictParametricCommonConsumer",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ConflictParametricCommonConsumer.lean",
+      "content_sha256": "17af126c9a82d4b588a6d40a6e308e48880a098ef0d2d0eba40a32308dc04695",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConflictParametricControl",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ConflictParametricControl.lean",
+      "content_sha256": "1eb35818db6c4f5c7bd4a8d62d8c0a6b1d3e4f6faf86198549b8d8b5339a0242",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConflictParametricInfinite",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ConflictParametricInfinite.lean",
+      "content_sha256": "930ceba251de31306f4dcbe7798b11b58d45c439e10b264a4fa51a04da4df39d",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConflictParametricPath",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ConflictParametricPath.lean",
+      "content_sha256": "0da3f97eb17f58d6133fec6a24755a8b454b38e903c02c6679ac13d6ed2369fb",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConflictParametricQSD",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ConflictParametricQSD.lean",
+      "content_sha256": "13c5f72564822a05d0e4c8c2de9de90d20db8419bb4d70e3985dd5b8c721e3b0",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConflictParametricSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ConflictParametricSource.lean",
+      "content_sha256": "7d006f58935e2a39d0ddc1f9b51c4fe63634ef127c43dadc9db4f96a782badb7",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.ConflictParametricStationary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ConflictParametricStationary.lean",
+      "content_sha256": "23febcaea41f2ffee0ebb89c0de6bee3b4a71cac88bfbcb7c578eda434864cbf",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeControlPopulation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeControlPopulation.lean",
+      "content_sha256": "533c9cdedccc2f5016cec438c5fcd9a84f00abd18dcd78c251e21df7ca6441aa",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeFeedback",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeFeedback.lean",
+      "content_sha256": "8f8b610dcdf4559cd77f3dc5a12fe67405d22add344d951dc9fc154be73e9f05",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeFeedbackBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeFeedbackBoundary.lean",
+      "content_sha256": "ec1c8d5184bd94c111069e66a20b1745f813c0372be4f52f46234c7649ec8513",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeFormation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeFormation.lean",
+      "content_sha256": "daa2b899b5016446bc15a1e9d6df353f1e2703e31a1192a768890aa7c19decd9",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthAttainment",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeGrowthAttainment.lean",
+      "content_sha256": "952740533202112b37765f3a887dbe1e65dbee1864f386abb7b3abf759529edd",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthClassification",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeGrowthClassification.lean",
+      "content_sha256": "ce5f6f1119a3a1c209148280200fed532377ba4b28a6745813ab3dcae0bd7dcb",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeGrowthPopulation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeGrowthPopulation.lean",
+      "content_sha256": "e69d2ef25be8a7ea0a74bc6e8c7d24580cd1d614691c5e38d9c5292848864b54",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeLineage",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeLineage.lean",
+      "content_sha256": "d0b6682394505e8a20599c8c9e7a9dcf7504d3ca726de9767123d0d279df1bb7",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeOneStep",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeOneStep.lean",
+      "content_sha256": "dfd341b0a7d381b138cebc98c3725f594d047cc28b234f49506222dfaf97789c",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativePopulation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativePopulation.lean",
+      "content_sha256": "b6e62acd425e1c1bc5c2d289836f4d32052a65716715b00e8a24f227801a64f3",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeQuotient",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeQuotient.lean",
+      "content_sha256": "9e8965d43f36d27eb36a56d68d2a70fd564bd0a1170b2a7352990eba50666cce",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeRepair",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeRepair.lean",
+      "content_sha256": "17c0306ea6547c9dfb67a45810d26b2ead8de52077b2dc35b7a5388403049e7d",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreRegenerativeSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreRegenerativeSource.lean",
+      "content_sha256": "75e76b0673918186de3aac253e0c4810f9bd4895236f150d408cf27a9a8ed793",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.CoreTheoryClosure",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/CoreTheoryClosure.lean",
+      "content_sha256": "c14befb44ce0d87a7db3d044671c1f88ca9415a822597c1bca0eedd9eaec50ac",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveAdaptiveReadCalibration",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveAdaptiveReadCalibration.lean",
+      "content_sha256": "9da9749c94e7e2ce8c7506c74c3d8fa8e33ac40ccba64e00384ed57340dc0d13",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveFiniteCalibrationCoverage",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveFiniteCalibrationCoverage.lean",
+      "content_sha256": "de3de06bb475f18d1a3151add0498df85a6f823b697a0f1ff572a13531313ae0",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveFiniteNoisyCalibration",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveFiniteNoisyCalibration.lean",
+      "content_sha256": "d9a1869f2f7441a9413f40b0f9445b8f7bdc538bfd74fb9d8d35c08755486676",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveFiniteRankFactorization",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveFiniteRankFactorization.lean",
+      "content_sha256": "20429af68d918e340d6bd125b4f799cc5c3b4a3b8c8fe6d4055b8c74e47693b5",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveNoisyOperationalCalibration",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDriveNoisyOperationalCalibration.lean",
+      "content_sha256": "521ac01c2d9f48ac16ff6ed57c63ae1373eac42e346a4ff26b1a4457001ba0c2",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDrivePersistentReadCounterexample",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDrivePersistentReadCounterexample.lean",
+      "content_sha256": "94496497bc6855640617abe2e948de48fa40f2c84380d6e429150bde95b9a73a",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDrivePositiveOrientationCalibration",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/DualDrivePositiveOrientationCalibration.lean",
+      "content_sha256": "57ea819883cf621ca134d32f9b4d99632298e7ada118a24723955ae534b4c822",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteClockLeftApproximation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteClockLeftApproximation.lean",
+      "content_sha256": "22977e28ac09f0a560129047ae5e99bc426a82b747c6b93e9eaa676558807654",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionBelief",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionBelief.lean",
+      "content_sha256": "666e20bb89e6d7d6d67c18686affd77f3efe35db94edc267ae9cb857c59c516c",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAG",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAG.lean",
+      "content_sha256": "607de7f667582ebd4c6ce4cf3474da060a34eaef9aca0c034b03416e2394e1a5",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAGGenerator.lean",
+      "content_sha256": "820a13e48a1d09b90234dbff4da2080ca40440a5fc39861187d99a9d90007bf3",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionFastSolver",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionFastSolver.lean",
+      "content_sha256": "452125851510ca2e1fb02b06d00c42426ef3779c58af5c05f59baff5c79a1c6e",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionFilteredModel",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionFilteredModel.lean",
+      "content_sha256": "b776570849884cd2fe9f428d84d1b9beba9c54df2e280a02962ccf72c68d9270",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionRefinement",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionRefinement.lean",
+      "content_sha256": "b791816f598419c0edfdecce20d5cea49b61002611762ae6ab195f8391af900e",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionSolver",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionSolver.lean",
+      "content_sha256": "c1cd7e4ffdd03f5a8056b5f8dd4e59dc6f092be61349f439b5bb03ae5445ee4d",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionSolverExecution",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionSolverExecution.lean",
+      "content_sha256": "f4682ddfbf95caca07dad310502dbe1f2aef1efdc48a336983cf7d24d5b372f3",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionSupportedPolicy",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionSupportedPolicy.lean",
+      "content_sha256": "725811de7421ec35a180f2669ddbdd658557539c508055903ca8990e7eaaee5d",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteMechanismRegretCertificate",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMechanismRegretCertificate.lean",
+      "content_sha256": "2f6335d4f220acb47092982779c99f015fdd0dd3d8f1ebe7c4ff1acff590057a",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteReplicaCarrierErasureSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteReplicaCarrierErasureSource.lean",
+      "content_sha256": "ee376e379c4ee99b04d71df31c3d1ee4f38dfe3fcd584f85d65ff42459de00c3",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteResponseCarrierFrontier",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteResponseCarrierFrontier.lean",
+      "content_sha256": "b8f67add1c23b2d5f3752aec476c5aeccc9cc5142eca02e32fd573ed26b65f7d",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteSourceGrowthControl",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSourceGrowthControl.lean",
+      "content_sha256": "e740049e85e72ecfdd09e8d583e6a4a92fdc31904a503142e2475db33268896f",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveAdaptiveCanonical",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveAdaptiveCanonical.lean",
+      "content_sha256": "752effd3bb314a756db5ec78b7a9f0602e9fc8e3e0e2d76aaed9fe907417ab23",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveCanonicalSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveCanonicalSource.lean",
+      "content_sha256": "d3b986dc16dff3feb201f0f27a0f23ae3ece5f4aa3f05aad84184fc585b28d50",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveHistoryCanonical",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveHistoryCanonical.lean",
+      "content_sha256": "71573deef8dc308025aee2cecabaa6cbab10b6310e64e8e7c72b9c60b28784c3",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveHistoryControl",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveHistoryControl.lean",
+      "content_sha256": "07a84881744a7c42919130e995c866c69f65d4f906c7a21270c8fe068ae7a32c",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveJointPath",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveJointPath.lean",
+      "content_sha256": "4921b3880b0fdf7979585dc63dc00a07e87e31604f4a94bcec52c8e602964834",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveLatentPath",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveLatentPath.lean",
+      "content_sha256": "588ac5f6ff03e9f0b3af72a45f717a2792c77649d78714417906bd425a07f71d",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveResponseRecursion",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveResponseRecursion.lean",
+      "content_sha256": "5882e71ff4d417e2e6a8e7c41c734dbba0b4bff72533a2bd830a431ea2988190",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSensor",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSensor.lean",
+      "content_sha256": "ef89784d1e4c22e0ba0445e9c7d3de8edea73a9dbffb597e3c72610d1048e80c",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSensorWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSensorWitness.lean",
+      "content_sha256": "13cf94181a1a18c9de14e7546faca3507b91701521c757687a80dab721a67aea",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSource.lean",
+      "content_sha256": "d2b0eb37c97e8e1c417aea49e705d1b782f32b0eaea3772acecc349849fd1f36",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveSourceWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveSourceWitness.lean",
+      "content_sha256": "8dff59860e06946377ce0f847c29c5a9417375d09dce8ca4dde0fa1bf9f26fe5",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.MeasurablePredictiveWordController",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/MeasurablePredictiveWordController.lean",
+      "content_sha256": "61be37e3b9394e8a790d870acf8b844fe712e97220c26b74528c78f585bf276d",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OUConditionalInnovationSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OUConditionalInnovationSource.lean",
+      "content_sha256": "73675ee316e3e51343f9d31bf7b6c49981dad81ccfa9ff7100cbe1466f23fe60",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OUExponentialGaussianIntegral",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OUExponentialGaussianIntegral.lean",
+      "content_sha256": "a8faf244ff280a63779b029065a4d7c0e1c7d0b2b062babb187d72ccd3525a86",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OUExponentialRiemann",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OUExponentialRiemann.lean",
+      "content_sha256": "536663b43dff8176fd062a3c42e6d5be718176592bc267a47d6ac4dfb1e25dd5",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OUPhysicalConditionalKernelSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OUPhysicalConditionalKernelSource.lean",
+      "content_sha256": "ed689f9d245d5126a43b2edbd41d9ed5615300f1cb1e0f1e47b3ea199662c95f",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OUPhysicalFutureNoise",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OUPhysicalFutureNoise.lean",
+      "content_sha256": "287bc54780f82b9c594e1e4b68ba0816d2e834d0c9d92d145fbff7a4ad2805c1",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OUPhysicalIntegralBinding",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OUPhysicalIntegralBinding.lean",
+      "content_sha256": "4d5fc4cb63453556a9c48be4da813050a4b2f0a6c24e70b889e04572465fae92",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OUPhysicalRecoverySource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OUPhysicalRecoverySource.lean",
+      "content_sha256": "f2d2550fb53e66286664679536fe053d7871f591224d67929dfb0d78857ffa64",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OUPhysicalTransitionSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OUPhysicalTransitionSource.lean",
+      "content_sha256": "6eb52862606cb1526afe553d382bca61ce520964708d42f2a749294ef9c21f68",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OUPhysicalVolterraSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OUPhysicalVolterraSource.lean",
+      "content_sha256": "03d8316032a883a193de928e467d7872daced84ddb7d3c89fc889a963cff0b8f",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OUQuadraticDynkinSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OUQuadraticDynkinSource.lean",
+      "content_sha256": "aebe1a2b61a495e155adfba3f1c9072760acfafa0d15229d8290dd70fc2d3425",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OUSemigroupSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OUSemigroupSource.lean",
+      "content_sha256": "e0d9a2b624b1651851d9d4de7fdbf0c056261483c6005e30317b35b0eedc76fd",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.OUTransitionKernelSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/OUTransitionKernelSource.lean",
+      "content_sha256": "23a3f5c418709d81faf237fd8036803bdb657a3b84fbb262f783254f1e657072",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PredictableDriftPointSamplingCounterexample",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PredictableDriftPointSamplingCounterexample.lean",
+      "content_sha256": "d2b5a9f5be021bc02db73368770aba4a14f0b5e955b4eb3dad9b2797c157fa92",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PrimitiveMarkovMixing",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PrimitiveMarkovMixing.lean",
+      "content_sha256": "29b74ebed87e3838727751a7845cba680da9b228dea9d6f3dd32e990e55bf980",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PrimitivePerronBiEigen",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PrimitivePerronBiEigen.lean",
+      "content_sha256": "badb0a43a635c4c96c1a97f724d6e3ca086cdb259000c8c9099500b65a6cd709",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PrimitivePerronClosure",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PrimitivePerronClosure.lean",
+      "content_sha256": "b667ebc4dcfff38b447655fd5c0c63fdc9d912b5a0a928e22f26b9556c542628",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PrimitivePerronDoob",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PrimitivePerronDoob.lean",
+      "content_sha256": "04f2a6e52d2712743faf6c73f0373ec033bbea229016ab42b194a62347b9c9c2",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PrimitivePerronSimplicity",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PrimitivePerronSimplicity.lean",
+      "content_sha256": "c5ad81324684fedecae675adc54d674ca947c0ac1bcf88f2b5069588a6198c93",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PrimitivePerronSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PrimitivePerronSource.lean",
+      "content_sha256": "e2e3a65d0dadd1cf4753a17040d228b06c5690664593b3cd1a0956583dd09049",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PrimitivePerronSpectral",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PrimitivePerronSpectral.lean",
+      "content_sha256": "b9ce24ce303f7f2d655290523dbf325ef78b22166be84e9525f99237437acfa8",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.PrimitivePerronUniqueness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/PrimitivePerronUniqueness.lean",
+      "content_sha256": "1f9492264412940b2bed25f3ec9caaf7da2659b198139cd7224552bdbccfed17",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterActuatorPopulationScale",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterActuatorPopulationScale.lean",
+      "content_sha256": "0f8de43a37326a0f093d3db02ad8dd539075ae6a2df31f3487558edcba0fdac1",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterActuatorScaleSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterActuatorScaleSource.lean",
+      "content_sha256": "edc4c07bd0693b7f3048737573bd000eb39d0d65d7b2355e358eccb8a39f40fe",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterBirthMaintenance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterBirthMaintenance.lean",
+      "content_sha256": "b39c11631a93a50d54aadd8514ee0ca87fe5af35b3b8bce6adeee97344d76e97",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterBlockFormationTransport",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterBlockFormationTransport.lean",
+      "content_sha256": "9c73c7e086b9b4216bafd5d94233d918ad761f8fb1011aeb0d07b5825ed0c3a5",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterBlockInfiniteTransport",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterBlockInfiniteTransport.lean",
+      "content_sha256": "8916a6ae62ed7fc4f82fdbc8227c2d1497228188de9cc488cedd9ca04bffd5fe",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterBlockReturnTransport",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterBlockReturnTransport.lean",
+      "content_sha256": "c9412bfdb65e4ab480f8e0ae16bbdfb585201e8ea5d40ecbb8c22da36383bc6d",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterBodyCanonicalPath",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterBodyCanonicalPath.lean",
+      "content_sha256": "b5d21ee763734329fe58b6a42e993b3050d62e36f3b2eddb2ba17544047456a3",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterBodyHittingSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterBodyHittingSource.lean",
+      "content_sha256": "34898c0684ddeab06b071f720105d37ab68c294d0bdb2518c46711d839e8f82c",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountHistory",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionCountHistory.lean",
+      "content_sha256": "90f91bd2099aa40863fd93183a3bb83fea39e1c71bc627ed0b0ea4c8d83dc7b5",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionCountPosterior",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionCountPosterior.lean",
+      "content_sha256": "025eb3d86c3a3d7d0664e7b369da2bd22f29f2b67ef123b06f25c0a613ffaffd",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserver",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserver.lean",
+      "content_sha256": "50de0ef837ea9fa367ed20a7bd5532e2e70f3ec579b9cf5c79783b14fe7939a9",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionObserverSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionObserverSource.lean",
+      "content_sha256": "82440929ed9f3375bd749c10c0be82aea4988b67797b05f896e09aedb4ecd16c",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentation.lean",
+      "content_sha256": "79cd246bf4e6d91293a9ba3c293808a8f241a7ca78fa25a0e01fc2bfa7a1095d",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationBounds",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationBounds.lean",
+      "content_sha256": "c70e8582717e1d237734931f14c60b98ffe25cdbc6b6597841273382c728fecb",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationModel",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationModel.lean",
+      "content_sha256": "8b9fac843eddd706d6bd4f52082323fe0f94db3124d75ee2c54c46b5e5bb1dde",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationNative",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationNative.lean",
+      "content_sha256": "75b6fd2dbfc99af15a666a7f2b3e4f641dde53af64f481b3160900d2f08b0f49",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationPayment.lean",
+      "content_sha256": "1ad07bfc79cbb51c05a9d113d6c36109173ae5a5c33c7373b4ffe0ab82625d0b",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationWitnesses",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationWitnesses.lean",
+      "content_sha256": "800d533e3ce059e1e5b5e4680bdbaa9139fa9ef8edea55b4f43854c80f9d6ce0",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultControlModel",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultControlModel.lean",
+      "content_sha256": "c20cceafe6208878d3e7824c0ba2b57f8b7ca90690f6cb7e6e02fe3ee471d1ee",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultControlSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultControlSource.lean",
+      "content_sha256": "5a787e967fddae5f8f00b9f7321b9e8917bf4ac857c42b0ba1bb215dccd1cda4",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultDynamicPrice",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultDynamicPrice.lean",
+      "content_sha256": "571771ad8ff385635667ee1c9630bf56ac821f50ac3e884af4c9bec8ad3b9794",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultDynamicPriceProgram",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultDynamicPriceProgram.lean",
+      "content_sha256": "6bcd48eeef2ce841c442e973e7b55f6a56fb8b4bea633acaca50730ad314ab9b",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultDynamicProbe",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultDynamicProbe.lean",
+      "content_sha256": "f52e70bee9e827e666234b8b441a3d11e6531b71cd0af89041759126b7b84ef4",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultDynamicProbeClocked",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultDynamicProbeClocked.lean",
+      "content_sha256": "bfa1431914ec2aa7b133de37332092ceaee8cdec6d360e4c71a984a4e062bb90",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultDynamicProbeHistoryPrice",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultDynamicProbeHistoryPrice.lean",
+      "content_sha256": "29298a58d7aacda57e965a10d349b42d3a2ea2b00ff34e244e43f81a997aa1fb",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultDynamicProbeInfinite",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultDynamicProbeInfinite.lean",
+      "content_sha256": "f1436fa5d53c35280b6bf7304847a7a2893b5945c7a9e2cf1f7391e8a2540420",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultDynamicProbeLifecycle",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultDynamicProbeLifecycle.lean",
+      "content_sha256": "ff563451b82e577af57b6ad91f3e1d822f68b0ebfd42b57299e3de1f72f205ac",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultDynamicProbeNativeHomeostasis",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultDynamicProbeNativeHomeostasis.lean",
+      "content_sha256": "665d1a5cd3b4853a3cd572fa35387503052b65d56caaef584bb8f843b6efd708",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultDynamicProbeP9Terminal",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultDynamicProbeP9Terminal.lean",
+      "content_sha256": "c7742e7799115561e0ceb174963650e3185f6878662c4def14efea0f95a4a17a",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultDynamicProbeParentDiscovery",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultDynamicProbeParentDiscovery.lean",
+      "content_sha256": "80a9ae39ca2b0d267044a7f971d957e847abab42c25afdc40618a3c8c0c7e272",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultDynamicProbePopulation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultDynamicProbePopulation.lean",
+      "content_sha256": "e3f09f5c9df81868c75e3e86fb4df8c1b925ba8cd1170873bed583170375bccc",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultDynamicProbeResource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultDynamicProbeResource.lean",
+      "content_sha256": "6e26bcecf570a7a1d0b41650908766a0ca06027902f4843c815d3b6901ae7cc6",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFeedbackResource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFeedbackResource.lean",
+      "content_sha256": "c14603695b6307139cae75e1fcaa9eabe844ac7ee6b51c86fd1017f829500986",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeInfinite",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeInfinite.lean",
+      "content_sha256": "993ba1e935e8bafd3b674a2196937d182db507b3cbbad021b19f0cb990198046",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFinitePurposeProbe",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFinitePurposeProbe.lean",
+      "content_sha256": "74ea8da20d8ec7b0b529f85fe0ebb77c5eafca0dfc89b98e66f6d0063be4dff4",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFiniteResourceBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFiniteResourceBoundary.lean",
+      "content_sha256": "b182753910ac609dbd29414f4f6e112050d7cd98a9e0535788e287c99cc2699a",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFiniteResourceMaintenance",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFiniteResourceMaintenance.lean",
+      "content_sha256": "e347f6a0c01bfd4e454deaebdc9746ad5078f4e6a4591c89b62311b6353363e5",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFiniteResourceWitness",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFiniteResourceWitness.lean",
+      "content_sha256": "fdb9d2ee15a5d309ad20fc8b726c0980065e995462b57199993cba42bb4af4c4",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultFundedProbe",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultFundedProbe.lean",
+      "content_sha256": "3698ffc5f467676f75c5d3fb7f1c1d9e7304ae420c563396004fa5d465b1eec5",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultInfiniteRecord",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultInfiniteRecord.lean",
+      "content_sha256": "89749be05f2e4229e78ede7c1e4032c0c2fc9245a9aa435c88594f4441087024",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultJointRecord",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultJointRecord.lean",
+      "content_sha256": "b7be526a4350c7b84db6e355495486fee9f55062288b7c0ce2fef251e76ff7b1",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultNativeOrganization",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultNativeOrganization.lean",
+      "content_sha256": "41a4998a4577d5dce8cf1c32dd660302a626a575f9294912b969b081f6e32cbc",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultPurposeInformation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultPurposeInformation.lean",
+      "content_sha256": "fd469724190edbe91334751f45b1a61f187a1e17ef34dd441b4cb48df21103b1",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFaultSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFaultSource.lean",
+      "content_sha256": "bd0d262a11aa11759cd5c1ca4af0b80d70d6a9b60907e5b45d806871d6f2fbeb",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterFiniteGenerationCommonConsumer",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterFiniteGenerationCommonConsumer.lean",
+      "content_sha256": "9da8ece0a43deb56f71d789f8876600a7d6764041f1a6bbec9c0b2f8c2b80d60",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterInstructionGOASource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterInstructionGOASource.lean",
+      "content_sha256": "a1a45c0ca3e9c601d556783782383500d7cdecdacb83481114a7781bcee66c9d",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterInstructionGODScale",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterInstructionGODScale.lean",
+      "content_sha256": "1e948ff2936c1b1e666ef4719b0cdda2c6fd3cd43081dc413a6f23d1de347202",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterInstructionHomeostasis",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterInstructionHomeostasis.lean",
+      "content_sha256": "f6d7f9bcf862c365b74af876ed9a26222aa04a76d9c638567a4905c48040dc34",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterInstructionNativeSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterInstructionNativeSource.lean",
+      "content_sha256": "437d722cdd055762869c16091bc57155c71335b863cb5289ba1a11f2ae7ed7e5",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterInstructionPurposeScale",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterInstructionPurposeScale.lean",
+      "content_sha256": "86a51cd668a37aa0e191317ef45e145137af9485c023813cf72943443c96a08a",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterInstructionRecoveryScale",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterInstructionRecoveryScale.lean",
+      "content_sha256": "a3f68cc68395c23ecba107339e9ec94ce6442811f1bb5965f182b064d4df736b",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterInstructionScaleSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterInstructionScaleSource.lean",
+      "content_sha256": "7805d622664bf41b53d3a12850e70bfdc172583df01a40e44c32a3b09fd8d577",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionBoundary",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionBoundary.lean",
+      "content_sha256": "3d0789e771a33e8b166c3ea6bfa1be055f7e3058ab2b1a6a5a172c10d9b7a25b",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionConsumer",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionConsumer.lean",
+      "content_sha256": "94ea218ac0e7342256afb9da8a1ced08c13a83f9c526e5acb3cb03986767ffc8",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionExecution",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionExecution.lean",
+      "content_sha256": "2128ed2f43b6635351d90d3ba54a597c88d27f79013602816e52692a3ad045f3",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionExpectedBounds",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionExpectedBounds.lean",
+      "content_sha256": "6089b8e7a43757b4548a3da0bedba7012910fcaed4bf6fe2aa57c116b9e5a3ef",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionFixedTail",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionFixedTail.lean",
+      "content_sha256": "b53d7276f9f0ff7a5deaccdb07ce3cbceaf0e3c03b3c9282ae0a475d994f104f",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionFreeTail",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionFreeTail.lean",
+      "content_sha256": "11c16509bade8b4842703ab3b0bf29b1c605c4000b44d81b6d0a27481cb03b3b",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionNativeConsumer",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionNativeConsumer.lean",
+      "content_sha256": "1bb2319bc8e5eda862f19cd16df68174e01506a4fafeee27b88cd1d87f84ec9e",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionNativeLaw",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionNativeLaw.lean",
+      "content_sha256": "37366b5d2bb9415dd0573a6946f9103673ac1974114002bc0f7f5ac0dccaf0f7",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionOptimality",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionOptimality.lean",
+      "content_sha256": "bce517edc07c393303e7f56f4db7416092736703602140608f9c1d5655f00728",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionSource.lean",
+      "content_sha256": "0bc3063d4651196dc7aac2a12e68916600cb48b1e10a26052d216bb5147035d5",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionValueBounds",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointDecisionValueBounds.lean",
+      "content_sha256": "d32f9f26df6a70b3828a92009acad9b729dee674067d246b5ab106b2a1df17fd",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointRecord",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterJointRecord.lean",
+      "content_sha256": "54c85da08919b7639a34cb8f1d3f39e07936212da1eafaab709133e9972f8329",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecision",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecision.lean",
+      "content_sha256": "08dcb466bfeee8c8def69fd21586983dee711bfbfa0f4d02db956c78b7a23c67",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionConsumer.lean",
+      "content_sha256": "e7acd8e081f6df03b7ef3b6b8125c6fba1e24aa476fbf711a26d44f9f126c5e2",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionInformation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionInformation.lean",
+      "content_sha256": "f3108ed6dccc17cc185bd3e90690441859842792680a1020a3b2a38306d21d26",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionNative",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionNative.lean",
+      "content_sha256": "5072dba45d4dc37af0f84d2b23f46d9991275625898e2621c93ad36e01f69a71",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionNativeConsumer",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionNativeConsumer.lean",
+      "content_sha256": "5c09636f0b162da02b2b8aea58a819a2f57c5c34bc17c3ef84371a2e59244762",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionRealization",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionRealization.lean",
+      "content_sha256": "b89e3c59a23f11c9ce01505c35db773733e8a8f41e834c9ff0ec1ab79994f901",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionRegret",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionRegret.lean",
+      "content_sha256": "ed7be23b721a2f4d39cca6f1afe6f56f782d2297fcd2528831506eba659202eb",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionShort",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionShort.lean",
+      "content_sha256": "441efe828108d33df39fa9bfbb3baf165764623de0d1c5418eecee9b658fbd40",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionSource.lean",
+      "content_sha256": "39ef691c42beadc5b197f5c58f13d29c42db325e438a01a1a643bbccf3aa1946",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismExperimentLaw",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentLaw.lean",
+      "content_sha256": "2dc4895a06f9ce9d0bccf06a0df4a873007b4e61527255b36e0201a07ecb6e21",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismExperimentPaths",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentPaths.lean",
+      "content_sha256": "58dfc79768e0f63236f6e9d0aa34144465bcaf5f5523c3f79faa48d233e69a42",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismExperimentRate",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentRate.lean",
+      "content_sha256": "5f68f7b67927a8a13d718cfd70b0507f28ff420f60c5b1f469830506931e3d69",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismExperimentSharp",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentSharp.lean",
+      "content_sha256": "070939117ed0721d4675b345387757827440a5dd4a8e92209266285e6cb5d33f",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismExperimentZero",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismExperimentZero.lean",
+      "content_sha256": "d21f93ded954a789dfbfd25f24d7cd2390dc17d30a676e8869db15c9033f858d",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismPurpose",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismPurpose.lean",
+      "content_sha256": "894c582b6c6805e72e72f158091cdd1e6878e444cc56070456dd45b110f0cbf3",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismTableLaw",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismTableLaw.lean",
+      "content_sha256": "87ed379104eaa0b18466a82e42ec4606e56639e25c51e38ff96c2b70e1f01638",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterOwnProgramJointJournal",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterOwnProgramJointJournal.lean",
+      "content_sha256": "6d4a9dbe1088add27be629c4610645dc6b53bfd1beefe6b870dee86eba50d2da",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterOwnProgramJournalLearning",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterOwnProgramJournalLearning.lean",
+      "content_sha256": "7f28bcedb02d4c98396312a71b51076a80b080d5c0fbdf909ce310f74ae2241b",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterOwnProgramPopulation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterOwnProgramPopulation.lean",
+      "content_sha256": "17b62952c33732d00a24364a4dd2cee1609cb1730a1158869b877918be04928e",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterPopulationCurrentParentContinuation",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterPopulationCurrentParentContinuation.lean",
+      "content_sha256": "ef5040094b2317b2c596cfcc78628644638868e0a296cf4a9777e1ff166f620e",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterPopulationFiniteEpisodeResource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterPopulationFiniteEpisodeResource.lean",
+      "content_sha256": "cfa7fd59fdab723eccdf22334b0f78519852bd201ddc98398f97a6ce48ea1f14",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterPopulationFundedInfinite",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterPopulationFundedInfinite.lean",
+      "content_sha256": "31bb2dd57fee97bdf00eb1ea3cbc2b4e21c62a40a92c3690d83052a0629749e1",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterPopulationFundedProtocol",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterPopulationFundedProtocol.lean",
+      "content_sha256": "dd6e3e5596295b1b50e87e8e1ec0565b20dcc49d11f556091619030af767ca26",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterPopulationFundingObstruction",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterPopulationFundingObstruction.lean",
+      "content_sha256": "242a8f0b2c17483b9942a639712793e4b6a720d82b6b5a0a2a88ac6eca418c7c",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterPopulationHistorySource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterPopulationHistorySource.lean",
+      "content_sha256": "0ad113554a31d360af2a07e1be03164c462ab671baf38d59946a4833d5a4bfab",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterPopulationJournalLearning",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterPopulationJournalLearning.lean",
+      "content_sha256": "3d0bcdf765d3a09de47fe4bbc29ffb283536590376ceb3e464c5d8217f18fff7",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterPopulationOwnerClockTransport",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterPopulationOwnerClockTransport.lean",
+      "content_sha256": "5933605da1022008dfa2e24814ed917a90a1066a2958c6ab68281397b19d63bb",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterPopulationTypePrice",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterPopulationTypePrice.lean",
+      "content_sha256": "f10936b41d4b7c600009cf2919cec27962c6aedc42d7cb9c60d75d089ce2a827",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterPredictiveSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterPredictiveSource.lean",
+      "content_sha256": "d896a886f388e7f5cfb58a245507384374f35520577229d30ddbce2bb35f5690",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterProgramOptimality",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterProgramOptimality.lean",
+      "content_sha256": "4c7cedcf6d0068c0b79dfee98879b92329f33dc0089ae8bfd4711f0629bd12c3",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterRepairHistory",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterRepairHistory.lean",
+      "content_sha256": "17dcd06aaf1daf47ac379c6e3b68769a4738a840bed6dbeb9179c2f04446981c",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterRepairSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterRepairSource.lean",
+      "content_sha256": "904c7ccafdffbb52a1f9ea5e0f048c9bac2ed35f59cd9918e228ae98dc38b6a7",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterResourceSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterResourceSource.lean",
+      "content_sha256": "ffa4d02b21e46b940d8709802f4873661301d7eac35375491ba1837713b14e4c",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterRotatingBodyP10",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterRotatingBodyP10.lean",
+      "content_sha256": "9d00090cfc4edf58377d25184eb3bc82db8938d38c899110a3f430f64ff84b58",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterRotatingBodyReturns",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterRotatingBodyReturns.lean",
+      "content_sha256": "2eff872c92a3af885d9d52da972b934edc9ec39a8519212fd165a1e779127287",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterRotatingBodySource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterRotatingBodySource.lean",
+      "content_sha256": "50c583b356e86c8c5daa796bcc5ed8600696feaf02e4c82c51391ccbd4f41776",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterRotatingChildRepair",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterRotatingChildRepair.lean",
+      "content_sha256": "7355cd40789516b7801b7b08539d4b8e4cf4bdb3509113cd552b9c798dbc564f",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterSemanticInstructionInfinite",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterSemanticInstructionInfinite.lean",
+      "content_sha256": "71bcf4b012b4560a55484aca1b4a25cfcc384644cc0d6179f01d5deba981c5d3",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterSemanticInstructionScale",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterSemanticInstructionScale.lean",
+      "content_sha256": "a6281dddb549ca2aa2f67db2649122c8430a750cecb52e7b0c50531ecb244b1b",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterTimestampedBirthSource",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterTimestampedBirthSource.lean",
+      "content_sha256": "f046221efe5e8802000e93bff8a713f601b70029728f0a04783992da21b89ffc",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.SourceCohortFeedback",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SourceCohortFeedback.lean",
+      "content_sha256": "1afaa2633cfb7f424afc5111f76d2ff4468de5429d0ede5a28c979f4beff729e",
+      "source_origin": "UEOT_MAINTAINED"
+    },
+    {
+      "module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.WaitingRepairControl",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/WaitingRepairControl.lean",
+      "content_sha256": "33a5bd1f68899c9d4aaa4996a8e2ab132f708ae5348e7135fb6cdd85db6ab725",
+      "source_origin": "UEOT_MAINTAINED"
+    }
+  ],
+  "public_theorems": [
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.exact_cached_data",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionConsumer.lean",
+      "line": 663,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer.exact_two_data",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionConsumer.lean",
+      "line": 701,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionConsumer",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionRegret.minimax_regret_exact",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionRegret.lean",
+      "line": 158,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionRegret",
+      "source_theorem_deps": []
+    },
+    {
+      "name": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionRealization.returned_beats_every_raw_regret",
+      "path": "formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionRealization.lean",
+      "line": 176,
+      "source_origin": "UEOT_MAINTAINED",
+      "registration_kind": "new_source_public",
+      "source_module": "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecisionRealization",
+      "source_theorem_deps": []
+    }
+  ],
+  "type_distinctness": {
+    "verifier": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_CORE_CLOSURE_1051_OVERLAY_TYPES.lean",
+    "registered_prior_theorems": 4630,
+    "new_theorems": 4,
+    "cross_isDefEq_comparisons": 18520,
+    "internal_isDefEq_comparisons": 6,
+    "definitionally_equal_matches": 0,
+    "status": "PASS"
+  },
+  "lexical_pr_preflight": {
+    "base_public_lexical_theorem_count": 4630,
+    "candidate_public_lexical_theorem_count": 4634,
+    "new_public_source_theorem_count": 4,
+    "new_theorems_with_lexical_reuse_candidates": 0
+  },
+  "scientific_role": "UNCOUNTED_CORE_CLOSURE_PURE_KERNEL_SYNC",
+  "counted_core_impact": "NONE",
+  "proof_dependency_certification": {
+    "verifier": "formalization/ueot-core/docs/compression/theory_completion/knowledge/reuse/VERIFY_CORE_CLOSURE_1051_OVERLAY_TYPES.lean",
+    "measure": "Lean .thmInfo.value.getUsedConstants restricted to the registered base+overlay theorem nodes",
+    "registered_direct_edges": 0,
+    "edges": [],
+    "status": "PASS"
+  }
+}

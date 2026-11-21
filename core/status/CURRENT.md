@@ -1,12 +1,9 @@
 # UEOT Core — Current State
 
-Updated: 2026-11-13 (Asia/Shanghai)
+Updated: 2026-11-22 (Asia/Shanghai)
 
-Scope reconciliation starts from main `cb17211653fde30aa50e0e9848798a6a5b3b3f12`.
-PR #447 supplies the latest Core mathematical extension; the maintained
-philosophical and mathematical books are versions 3.0 and 4.1, and the independent
-successor reference specification is version 1.0. The containing commit and its
-merge record identify adoption of this update; this baseline is not a branch pin.
+Scope reconciliation builds on main `a3f95dc1a6821978e173e23015f026994fb60c65`.
+PR #447 supplies the latest Core growth extension, and the 2026-11-22 comprehensive Core upgrade completes pure-kernel Lean 4 verification across all 1,051 modules (zero `native_decide`, zero `sorryAx`), upgrades the maintained philosophical and mathematical bilingual books to versions 3.1 and 4.2, and synchronizes all governance/reuse ledgers; the independent successor reference specification remains version 1.0. The containing commit and its merge record identify adoption of this update; this baseline is not a branch pin.
 Refresh actual main and open work before a new task.
 
 **Content: CLASSIFIED_CORE_CLOSED. Empirical support: UNVERIFIED.**
@@ -108,7 +105,8 @@ conditions remain unchanged; zero-probability boundaries are outside this unit.
 | Original Core and later conditional modules | Their exact source-matched Lean endpoints and recorded assumptions; no theorem-count substitute |
 | PR #447 growth extension | Three new modules, affected public entry and boundary consumer checked; 15 listed axiom prints, exact source probe and independent readers ([validation](../../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/VALIDATION.json)) |
 | PR #446 task-dependent 2/3/4 classes and `(s,b,bq)` rank-three example | Written proofs plus independent exact checks; no new complete dedicated Lean endpoints claimed |
-| Current Core books | Mathematics 4.1 and philosophy 3.0, each in Chinese and English; follow the current [mathematics](../../mathematics/README.md) and [philosophy](../../philosophy/README.md) edition manifests. PR #447's 241/98 pages and its navigation/visual receipts belong to that historical edition, not to the current bilingual artifacts. |
+| Current Core books | Mathematics 4.2 (ZH 255 pp. / EN 354 pp., including Chapter 40 and Appendix G) and Philosophy 3.1 (ZH 104 pp. / EN 157 pp., including exclusionary criteria, Lakatosian refutation table, and 61-item philosophical bibliography); follow the current [mathematics](../../mathematics/README.md) and [philosophy](../../philosophy/README.md) edition manifests. Historical page counts and receipts belong to their respective editions. |
+| 2026-11-22 pure-kernel Lean & governance upgrade | Full `lake build UEOT` (9,757 jobs) and [ExhaustiveAxiomAudit.lean](../../formalization/ueot-core/scripts/ExhaustiveAxiomAudit.lean) verify 0 `sorryAx` and 0 nonstandard axioms (`Lean.ofReduceBool` eliminated from `RegisterMechanismDecisionConsumer` via integer-scaled `csolveInt` + `decide`); [PID_STATUS.yaml](../../formalization/ueot-core/docs/PID_STATUS.yaml), [ASSUMPTION_CLASSIFICATION_106.md](../../formalization/ueot-core/docs/ASSUMPTION_CLASSIFICATION_106.md), `UMC_GLOBAL_MODULE_DAG_V4.json` (1,051 modules), and the 20th FKRG reuse overlay are synchronized. |
 | 2026-11-13 scope and source-matrix correction | The constitution and current contracts are explicitly reconciled; P-CTL-01's matrix premise is corrected to `0 < beta < 1`. The [evidence record](../../research/audits/core-closure-2026-11-13/MATHEMATICAL_EVIDENCE_AND_CONTRIBUTION.md) distinguishes source identity and historical checked receipts from a fresh Lean execution, which this documentation-only revision does not claim. |
 | 2026-11-13 D3 targeted reproduction | Fifteen selected Lean source files compiled successfully; 44 declarations received fresh type/axiom queries (37 in recompiled modules, 7 in reused modules), plus 12 definition/structure prints. [Successor execution and review](../../research/audits/core-closure-2026-11-13/d3-reproduction-2026-11-13/README.md) distinguishes successful Lean commands, preserved failed wrappers, cached dependencies and independent interpretation; this is not a full clean build. |
 | 2026-11-13 finite contribution comparison | The [completion review](../../research/audits/core-closure-2026-11-13/completion-review-2026-11-13/README.md) closes the selected D4 comparisons with three precise mathematical mappings and two philosophical/mechanistic comparisons. It preserves limited A, prior execution boundaries and unresolved global priority; the next-stage SQLite document is an execution prompt, not an experiment result. |

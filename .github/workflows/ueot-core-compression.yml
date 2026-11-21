@@ -84,10 +84,21 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if grep -RInE '^[[:space:]]*(axiom|opaque)[[:space:]]|\b(sorry|admit|native_decide)\b' formalization/ueot-core/UEOT/V3/Compression; then
-            echo "Forbidden proof escape found in compression namespace." >&2
-            exit 1
-          fi
+          python3 - <<'PY'
+          import pathlib, re, sys
+          sys.path.insert(0, "formalization/ueot-core/docs/compression/theory_completion/knowledge")
+          from fkrg import no_lean_comments
+          pat = re.compile(r"^[ \t]*(?:private[ \t]+|protected[ \t]+)?(?:axiom|opaque)\b|\b(?:sorry|admit|native_decide)\b", re.M)
+          bad = []
+          for p in sorted(pathlib.Path("formalization/ueot-core/UEOT/V3/Compression").rglob("*.lean")):
+              code = no_lean_comments(p.read_text(encoding="utf-8"))
+              for m in pat.finditer(code):
+                  ln = code[:m.start()].count("\n") + 1
+                  bad.append(f"{p}:{ln}:{m.group(0)}")
+          if bad:
+              print("Forbidden proof escape found in compression namespace:\n" + "\n".join(bad), file=sys.stderr)
+              sys.exit(1)
+          PY
 
       - name: Validate compression ledger and matrix
         env:

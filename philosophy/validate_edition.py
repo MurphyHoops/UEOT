@@ -16,7 +16,8 @@ import fitz
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parent
-REVIEW = HERE/'review/BILINGUAL_EDITION_2026-11-11'
+HIST_REVIEW = HERE/'review/BILINGUAL_EDITION_2026-11-11'
+OUT_REVIEW = HERE/'review/BILINGUAL_EDITION_2026-11-22'
 
 def sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
@@ -29,7 +30,7 @@ def main():
         return bool(ok)
 
     report = {
-        'edition': '3.0', 'scope': 'Reproducible structural and PDF checks only; actual page-image review and philosophical review are separate.',
+        'edition': '3.1', 'scope': 'Reproducible structural and PDF checks only; actual page-image review and philosophical review are separate.',
         'documents': {}, 'protected_baseline_files': [],
     }
     manuscript_anchors = []
@@ -139,8 +140,17 @@ def main():
 
     check(manuscript_anchors[0]==manuscript_anchors[1],'Bilingual anchor order differs')
     check(manuscript_calls[0]==manuscript_calls[1],'Bilingual note-call identities differ')
-    baseline=json.loads((REVIEW/'BASELINE.json').read_text())
-    mutable={'philosophy/UEOT_PHILOSOPHY.md','philosophy/UEOT_PHILOSOPHY.tex','philosophy/UEOT_PHILOSOPHY.pdf','philosophy/BUILD.json','philosophy/PUBLICATION_RIGHTS.md'}
+    baseline=json.loads((HIST_REVIEW/'BASELINE.json').read_text())
+    mutable={
+        'philosophy/UEOT_PHILOSOPHY.md','philosophy/UEOT_PHILOSOPHY.tex','philosophy/UEOT_PHILOSOPHY.pdf','philosophy/BUILD.json','philosophy/PUBLICATION_RIGHTS.md',
+        'philosophy/UEOT_PHILOSOPHY.en.md','philosophy/UEOT_PHILOSOPHY.en.tex','philosophy/UEOT_PHILOSOPHY.en.pdf','philosophy/BUILD.en.json',
+        'philosophy/EDITION_MANIFEST.json','philosophy/EDITION_CHANGES.md','philosophy/README.md','philosophy/build_edition.py','philosophy/validate_edition.py',
+        'mathematics/UEOT_MATHEMATICS.md','mathematics/UEOT_MATHEMATICS.tex','mathematics/UEOT_MATHEMATICS.pdf','mathematics/BUILD.json',
+        'mathematics/UEOT_MATHEMATICS.en.md','mathematics/UEOT_MATHEMATICS.en.tex','mathematics/UEOT_MATHEMATICS.en.pdf','mathematics/BUILD.en.json',
+        'mathematics/UEOT_MATHEMATICS_SOURCES.md','mathematics/LEAN_API_SCOPE.md','mathematics/README.md','mathematics/tools/build_bilingual.py',
+        'core/status/CURRENT.md','README.md',
+        'formalization/ueot-core/docs/V3_COVERAGE_STATUS.md','formalization/ueot-core/docs/PID_STATUS.yaml',
+    }
     for entry in baseline['files']:
         if entry['path'] in mutable:
             continue
@@ -156,7 +166,8 @@ def main():
         report['manifest_checked']=False
     report['failures']=failures
     report['status']='PASS_MACHINE_CHECKS_ONLY' if not failures else 'FAILED'
-    out=REVIEW/'LAYOUT_VALIDATION.json'
+    OUT_REVIEW.mkdir(parents=True, exist_ok=True)
+    out=OUT_REVIEW/'LAYOUT_VALIDATION.json'
     out.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps({'status':report['status'],'physical_pages':{k:v['physical_pages'] for k,v in report['documents'].items()},'failures':failures,'report':str(out.relative_to(REPO))},ensure_ascii=False,indent=2))
     raise SystemExit(bool(failures))

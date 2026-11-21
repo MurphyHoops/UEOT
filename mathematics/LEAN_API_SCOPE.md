@@ -1,6 +1,6 @@
 ## 阅读说明：数学论证与 Lean 接口范围
 
-本说明逐项区分已发布的生产接口，以及已有书面证明但尚无专门形式端点的连接。**当前数学合同采用至 PR #447（2026-11-11）**：Core 定本保持 `CLASSIFIED_CORE_CLOSED`，严格正概率域的增长分类已完成新增 Lean 合同；经验支持仍为 `UNVERIFIED`。调用仍须读取完整定理类型。
+本说明逐项区分已发布的生产接口，以及已有书面证明但尚无专门形式端点的连接。**当前数学合同更新至 v4.2（2026-11-22，含 PR #447 基础上的全库纯内核升级与第 40 章中间层文档化）**：全仓 1,051 个 Lean 4 模块全部通过纯内核标准三公理验证（零 `native_decide`、零 `sorryAx`）；Core 定本保持 `CLASSIFIED_CORE_CLOSED`，经验支持仍为 `UNVERIFIED`。调用仍须读取完整定理类型。
 
 当前总入口为[Core 定本](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_theory_closure_v1/README.md)及其后继[增长参数分类](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/README.md)。以下按来源批次保留接口演进：第 1 节的七个扩展模块和 666 模块统计是当时的范围，不是当前全仓统计；第 2 节已按后继证明更正旧书面义务的状态。冻结的 106 个 P-ID 不因这些后继模块重新编号。
 
@@ -82,3 +82,15 @@ PR #447 另有三个新增生产模块，由原 `CoreTheoryClosure` 公共入口
 两个程序的内部达到解释使用各自的真实受损创始体、`founder_program`、原继承不变式和 `programPolicy_positive_branch_is_internal`。一般 canonical 人口上的 `programPolicy theta` 首先是公开请求规则，不能无条件改称全体成员已带有该内部程序。原 stop、真实拒绝、观察、六单位事务、身份与遗传未改变；旧选择反馈常数和 cohort 合同未扩大。指数最优不等于每个有限期限人数最优，两个固定程序失优不等于所有含真实修复的政策失优。
 
 [实际 Lean 验证](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/LEAN_VALIDATION.json)绑定三个新模块、受影响公共入口和边界消费者的五次成功检查；15 个所列关键端点仅使用 `propext`、`Classical.choice`、`Quot.sound`。未重跑历史全工程，且该端点范围不改写 PR #443 已披露的数值信任。八组有理数源探针是独立交叉核对，不是新的 Lean 原生执行或经验验证。五项出口的实际状态见[最终验证](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/VALIDATION.json)；该研究单元已完成并停止自动扩题。
+
+## 2026-11-22（v4.2）：全库纯内核公理完备与第 40 章六个中间生产层
+
+1. **纯内核公理消去 `native_decide`**：PR #443 中 `RegisterMechanismDecisionConsumer` 的 `exact_cached_data` 与 `exact_two_data` 原先调用 `native_decide`（引入 `Lean.ofReduceBool` 编译器执行信任）。本版通过整数标度动态规划 `csolveInt` 与 `csolveInt_eq_cachedAt` 将三步与两步有理数精确值归约为纯内核 `decide` 定理 `kernel_int_h3` 与 `kernel_int_h2`。经 [ExhaustiveAxiomAudit.lean](../formalization/ueot-core/scripts/ExhaustiveAxiomAudit.lean) 全环境核验，整个 1,051 模块生产库（含 `UEOT` 根导入可达的 1,030 模块、19,987 个常量）满足 `nonstandard_users=0`、`sorryAx_users=0`，仅使用 `propext`、`Classical.choice`、`Quot.sound`。
+2. **第 40 章覆盖的六个中间形式化层**：
+   - [FiniteSupportFixedPoint](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean)、[SupportMemoryController](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean)、[FiniteMemoryPhysicalSafety](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean)、[FiniteMemorySeparation](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean)：最大支持不动点、至多 $2^{|X|}-1$ 记忆状态控制器、全时间轨迹安全与无记忆分离反例（M-40.1）。
+   - [InfiniteSupportViability](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/InfiniteSupportViability.lean)：有限动作集下 $(\forall T,\exists\pi_T)\iff(\exists\pi_\infty)$ 的紧致量词交换（M-40.2）。
+   - [TotalFiniteWindow](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindow.lean) 与 [HomogeneousMemorySurvival](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/HomogeneousMemorySurvival.lean)：全定义窗口条件化回退无关性与齐次记忆闭环的无限生存概率极限（M-40.3）。
+   - [ExecutableSupportController](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean)：可计算 `synthesize : Option Program` 综合器的可靠性与完备性（M-40.4）。
+   - [FixedSampleSupportNoGo](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FixedSampleSupportNoGo.lean) 与 [NoisyFiniteRiskOracle](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean)：固定样本量下无间隔精确零支持不可认证定理，以及有理经验 TV 判别器的选后联合风险保证（M-40.5）。
+   - [ObservableBeliefQuotient](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean)：连续信念单纯形上商核存在唯一性的 `ClosedTests` 充要条件及混叠见证（M-40.6）。
+3. **106 项前提显式分类**：全部 106 个稳定 P-ID 的接口前提角色见 [ASSUMPTION_CLASSIFICATION_106.md](../formalization/ueot-core/docs/ASSUMPTION_CLASSIFICATION_106.md)。开放数学问题见数学书附录 G（`O-OPEN-01`—`O-OPEN-12`）。

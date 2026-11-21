@@ -41,3 +41,6 @@ jobs:
 
       - name: Build UEOT from lock
         run: lake build UEOT
+
+      - name: Exhaustive kernel axiom purity audit
+        run: lake env lean scripts/ExhaustiveAxiomAudit.lean
