@@ -17,6 +17,14 @@
 
 历史 PR #447 产物为数学书 **241 页**、哲学书 **98 页**；对应[导航检查](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/PDF_NAVIGATION.json)和[选页视觉验收](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/core_growth_classification_v1/VISUAL_REVIEW.json)已经完成。BUILD.json 保留构建阶段的原始回执，视觉验收由后继记录承担；下面各历史版本的页数与指纹保留其原时点。
 
+## 2026-11-22：v4.2 中英双语学术修订版（纯内核公理完备与中间层收官）
+
+本版在 v4.1 双语编辑版基础上完成系统升级（中文 PDF **255 页**，英文 PDF **354 页**，`check_bilingual_structure.py` 全部 449 个节级单元 `hard_issue_count: 0`、`alignment_warning_count: 0`）：
+
+- **全库纯内核公理完备**：消除 `RegisterMechanismDecisionConsumer` 中仅存的两处 `native_decide`，以整数标度动态规划 `csolveInt` 与纯内核 `decide` 定理（`kernel_int_h3`、`kernel_int_h2`）替代；全库 1,051 个 Lean 4 模块零 `sorryAx`、零非标准公理。
+- **新增第 40 章（M-40.1—M-40.6）与附录 F.6**：完整覆盖有限支持最大不动点与有限记忆控制器、全时间零未认证策略与紧致量词交换、全有限窗口条件化与齐次记忆生存极限、可执行控制器综合器 `synthesize`、固定样本零支持不可判定定理与带噪风险判别器、以及可观测信念商的 `ClosedTests` 充要条件。
+- **局部假设补全、符号消歧、扩充书目与开放问题注册表**：修正 §15.9 运输映射类型并补齐 20 余处局部命题显式前提；新增附录 A.2 跨章符号作用域消歧表；附录 C.5 学术书目扩充至 45 条；新增附录 G 开放数学问题注册表（`O-OPEN-01`—`O-OPEN-12`）；修复 `UEOT_MATHEMATICS_SOURCES.md` 中 9 处拆分模块源码链接并新增 [106 项前提分类](../formalization/ueot-core/docs/ASSUMPTION_CLASSIFICATION_106.md)。当前内容状态仍为 `CLASSIFIED_CORE_CLOSED`，外部经验状态仍为 `UNVERIFIED`。
+
 ## 2026-11-11：v4.1 完整中英双语学术编辑版
 
 本版依据主干 `3d443ec29eb17af1fc00699a74e2d42d73516d81` 的 v4.0 编订。中文与英文均含核心总论、40 章（0—39）及附录 A—F；保留全部 106 个原 P-ID、42 个 M 编号与第 39 章 95 节。46 个章/附录导读、后继章节主题索引、局部假设澄清和 15 条完整书目帮助读者独立理解正文。历史代码与回执保留原身份，英文没有省略附录或用摘要代替正文。

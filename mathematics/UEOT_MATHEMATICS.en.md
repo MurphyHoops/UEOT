@@ -1,8 +1,8 @@
 ---
 title: "UEOT Core: A Complete Mathematical Theory"
 subtitle: "From Object and Evolution to Prediction, Realization, Persistence, Composition, Purpose, and Learning"
-version: "4.1 (Bilingual Academic Edition)"
-date: "2026-11-11"
+version: "4.2 (Bilingual Academic Revised Edition)"
+date: "2026-11-22"
 status: "Bilingual academic edition; mathematical contracts frozen; publication acceptance recorded separately"
 author: "Degui Qian (钱德桂)"
 lang: en
@@ -10,7 +10,7 @@ format: "UTF-8 Markdown + LaTeX math"
 scope: "General Core; existing interfaces retained; no new domain application"
 ---
 
-**Edition and reading responsibilities.** This v4.1 bilingual academic edition revises the v4.0 text at main commit `3d443ec29eb17af1fc00699a74e2d42d73516d81`, dated 2026-11-11. The original Core v3.0, the 106 P-IDs, the Lean sources, and their validation contracts retain their original identities. The edition audit records added reading guides, explicit hypotheses, historical wording, and bibliographic corrections. Automated structural checks and separated review do not replace external mathematical peer review. In the text, “actual” means an object genuinely constructed from the declared mathematical source or an executed program record; it does not by itself mean a natural-world experiment.
+**Edition and reading responsibilities.** This v4.2 bilingual academic revised edition systematically upgrades the v4.1 bilingual text anchored at main commit `3d443ec29eb17af1fc00699a74e2d42d73516d81`. The original Core v3.0 and the 106 stable P-IDs retain their identities, and all 1,051 Lean 4 modules in the library are now verified purely inside the kernel under the three standard axioms (zero `native_decide`). This edition adds Chapter 40 covering six intermediate formalized layers, the symbol-scope disambiguation table in Appendix A.2, an expanded scholarly bibliography in Appendix C.5, the correspondences in Appendix F.6, and the open-problem register in Appendix G, while making local theorem hypotheses explicit; automated structural checks do not replace external mathematical peer review. In the text, “actual” means an object genuinely constructed from the declared mathematical source or an executed program record; it does not by itself mean a natural-world experiment.
 
 **Copyright and contributions.** © 2025–2026 Degui Qian and the respective rights holders. Expression already licensed under CC BY 4.0 remains available under that license; changing language or format does not revoke it. This edition grants no additional blanket license for the new v4.1 English translation or new editorial expression; rights remain with the respective holders under current repository policy and applicable law. This does not restrict historically licensed material. Third-party material retains its own terms. Mathematical ideas, theorems, and methods do not become copyright-exclusive through this notice. Both texts were prepared with native AI editorial assistance; authorship and project attribution remain unchanged. The complete boundary appears in [PUBLICATION_RIGHTS](PUBLICATION_RIGHTS.md).
 
@@ -59,6 +59,7 @@ scope: "General Core; existing interfaces retained; no new domain application"
 - [38. From Registered Sampling to Actual Joint Risk After Data-Dependent Selection](#ch-38)
 
 - [39. Common-source constructions for execution, faults, reproduction, and purpose](#ch-39)
+- [40. Finite Memory, All-Time Policies, Executable Synthesis, Noisy Oracles, and Observable Belief Quotients](#ch-40)
 
 - [Appendix A. Index of Symbols and Types](#appendix-a)
 - [Appendix B. Register of Proved Results](#appendix-b)
@@ -66,12 +67,13 @@ scope: "General Core; existing interfaces retained; no new domain application"
 - [Appendix D. Complete Executable Verification from v3.0 and Historical Output](#appendix-d)
 - [Appendix E. Conventions for Maintenance, Extension, and Reproduction](#appendix-e)
 - [Appendix F. Source Correspondences and Evidence Levels of the Maintained Edition](#appendix-f)
+- [Appendix G. Register of Open Mathematical Problems](#appendix-g)
 
 <a id="core-theory"></a>
 
 # Core synthesis: organization, action, and inheritance from a common source
 
-This synthesis provides a self-contained entry to the present Core edition. Its conceptual starting point is the object–evolution problem in Degui Qian's original paper. It retains the completed system of conditional mathematics developed below, while explicitly revising universal assertions that exceeded the proofs. Chapters 0–39, the 106 stable P identifiers, and their formalization mappings remain in place. The synthesis places the mutually compatible main results before the developmental record. A definitive edition fixes the claims, assumptions, counterexamples, and responsibilities of interpretation; it does not establish empirical universality. Empirical support remains **UNVERIFIED**.
+This synthesis provides a self-contained entry to the present Core edition. Its conceptual starting point is the object–evolution problem in Degui Qian's original paper. It retains the completed system of conditional mathematics developed below, while explicitly revising universal assertions that exceeded the proofs. Chapters 0–40, the 106 stable P identifiers, and their formalization mappings remain in place. The synthesis places the mutually compatible main results before the developmental record. A definitive edition fixes the claims, assumptions, counterexamples, and responsibilities of interpretation; it does not establish empirical universality. Empirical support remains **UNVERIFIED**.
 
 ## I. Core objects and the stated outcome
 
@@ -674,7 +676,7 @@ Any other canonical minimal statistic satisfying the same requirements generates
 $$
 K_i(h,\{1\})=\mathbf1_{\{h=i\}}.
 $$
-Each version differs only on a null singleton, so a constant statistic is sufficient separately for each protocol. Yet the pointwise collection of all coordinates distinguishes every $h$. Consequently, “almost everywhere separately” cannot be replaced without further assumptions by “simultaneously on a common set.”
+Each version differs only on a null singleton, so a constant statistic is sufficient separately for each protocol. The pointwise coordinate map $h\mapsto(K_i(h,\{1\}))_{i\in[0,1]}$ separates every $h$ set-theoretically; under the uncountable product $\sigma$-algebra, on $[0,1]$ its pullback generates only the countable–cocountable $\sigma$-algebra (which remains Lebesgue-trivial modulo null sets), yet the codomain ceases to be standard Borel and no single probability-one set $E_0$ lets a constant statistic across all $i\in[0,1]$ simultaneously recover $K_i(h,\{1\})$. Consequently, protocol-by-protocol almost-sure factorization cannot be upgraded without further assumptions to simultaneous almost-sure factorization into a standard Borel codomain.
 
 Possible extensions require a common structural kernel explicitly defined at every reachable point; or a countable dense protocol family with responses continuous in the protocol, where continuity and the chosen versions hold on a common probability-one set. Equality on the dense family then extends by continuity. If protocols have different historical distributions, common support must also be specified explicitly.
 
@@ -861,12 +863,12 @@ $$
 
 <a id="p-int-01"></a>
 
-**P-INT-01: A necessary and sufficient condition for structured sufficiency.**
+**P-INT-01: A necessary and sufficient condition for structured sufficiency.** For measurable compressions $M=f(H^S)$ and $U=g(H^E)$, there exists a measurable map $\Psi$ such that
 $$
 Y_f^+\perp H\mid(M,U)
 \iff C^f=\Psi(M,U)\quad\text{a.s.}
 $$
-For an entire countable intervention family, this holds protocol by protocol when common versions are used.
+Whenever the joint mutual information is well-defined, combining with P-INFO-02 gives $\varepsilon_{\rm joint}=0\iff Y_f^+\perp H\mid(M,U)$. For an entire countable intervention family, this holds protocol by protocol when common regular versions are used.
 
 **Proof.** The forward implication is the minimality assertion in P-PRED-01. For the reverse implication, use
 $E[C^f(B)\mid M,U]=C^f(B)$ and the tower property to show that the future probabilities conditional on the complete history and on the representation coincide. ∎
@@ -1104,7 +1106,7 @@ Without equivariance, changing representatives may change the future on the quot
 
 <a id="p-per-02"></a>
 
-**P-PER-02.** Let $P_t$ be a Feller semigroup on a Polish space that maps $C_b$ into $C_b$. If
+**P-PER-02.** Let $P_t$ be a Feller semigroup on a Polish space that maps $C_b$ into $C_b$, such that for every $f\in C_b$ the map $t\mapsto\mu_0P_tf$ is Borel measurable. If
 $$
 \bar\mu_T=\frac1T\int_0^T\mu_0P_t\,dt
 $$
@@ -1121,7 +1123,7 @@ These are averages of time-marginal distributions. The statement does not assert
 
 ## 8.5 A Finite-State Viability Kernel
 
-For finite state and action spaces and an admissible persistence domain $K_0=\mathcal V$, define recursively
+For a finite state space $X$, a nonempty finite action space $A$, and an admissible persistence domain $K_0=\mathcal V$, define recursively
 $$
 K_{n+1}=\{x\in K_n:\exists a,\ P(K_n\mid x,a)=1\}.
 $$
@@ -1343,7 +1345,7 @@ $$
 -L_D\phi_n=\lambda_n\phi_n,\qquad
 0<\lambda_1<\lambda_2\le\cdots.
 $$
-Normalize $\|\phi_1\|_2=1$. Let the initial probability density $g\in L^2(m)$ satisfy $g\ge0$ and $\int g\,dm=1$, and write $a_1=\langle g,\phi_1\rangle>0$.
+Suppose the killed semigroup $P_t^D=e^{tL_D}$ acts on densities with respect to $m$, so that $\mu_t^c(dx)=(P_t^Dg)(x)m(dx)/\int_DP_t^Dg\,dm$. Normalize $\|\phi_1\|_2=1$, let the initial probability density $g\in L^2(m)$ satisfy $g\ge0$ and $\int g\,dm=1$, and write $a_1=\langle g,\phi_1\rangle>0$.
 
 <a id="p-qsd-04"></a>
 
@@ -1974,11 +1976,11 @@ Monotonicity is an assumption about the particular model. Natural systems may ha
 
 ## 15.9 Actual Obligations for Composing Formation, Binding, and Transport
 
-Let $f_0,f_1$ form candidates at the two ends, $t_x$ transport underlying inputs, $B_0,B_1$ implement binding, and $t_p$ transport the parent level. Approximate commutation of formation and approximate commutation of binding are separate assumptions. If $B_1$ is $L$-Lipschitz for the intermediate metric, then
+Let $f_i:X_i\to F_i$ form candidates and $B_i:F_i\to P_i$ implement binding at the two ends ($i\in\{0,1\}$), with underlying input transport $t_X:X_0\to X_1$, intermediate formation transport $t_F:F_0\to F_1$, and parent-output transport $t_P:P_0\to P_1$. Approximate commutation of formation $d_F(f_1(t_Xx),t_F(f_0x))\le\epsilon_F$ and approximate commutation of binding $d_P(B_1(t_Fu),t_P(B_0u))\le\epsilon_B$ are separate assumptions. If $d_P$ satisfies the pseudo-metric triangle inequality and $B_1$ with respect to $(d_F,d_P)$ is $L$-Lipschitz ($L\ge0$), then
 
-$$d\bigl(B_1(f_1(t_xx)),t_p(B_0(f_0x))\bigr)\le L\epsilon_F+\epsilon_B.$$
+$$d_P\bigl(B_1(f_1(t_Xx)),t_P(B_0(f_0x))\bigr)\le L\epsilon_F+\epsilon_B.$$
 
-For the proof, insert $B_1(t_f(f_0x))$, apply Lipschitz continuity to the first part and the binding-transport bound to the second. C4's certified_formed_structural_continuation additionally requires actual formation relations at both ends and budgets within the margin. It does not identify a structural distance bound with equality of parent-token identity. Complete types appear in §34.4.
+For the proof, insert $B_1(t_F(f_0x))$ between the endpoints, apply Lipschitz continuity of $B_1$ and the formation-transport bound to the first part, and apply the binding-transport bound to the second. C4's `certified_formed_structural_continuation` additionally requires actual formation relations at both ends and total error within the structural margin; it does not identify a structural distance bound with equality of parent-token identity. Complete formal types appear in §34.4.
 
 <a id="ch-16"></a>
 
@@ -2017,6 +2019,8 @@ With different sample sizes across cells, allocate separate $\alpha_j$ and then 
 ## 16.2 Defect Error Does Not Add a Dependence on the Number of Carrier Candidates
 
 <a id="p-stat-02"></a>
+
+Define the empirical response-diameter defect by the same fiber formula as $e(S)$, namely $\widehat e(S)=\max_i\max_{R_S(h)=R_S(h')}D_{\rm TV}(\widehat p_{h,i},\widehat p_{h',i})$.
 
 **P-STAT-02.** On the simultaneous response-error event,
 $$
@@ -2457,7 +2461,7 @@ V(x)\ge E\left[\int_0^T e^{-\rho t}r\,dt+e^{-\rho T}V(X_T)\right].
 $$
 Boundedness makes the terminal term vanish. The optimal selector makes the inequality an equality throughout. ∎
 
-If the value function has only viscosity regularity, the relevant standard control theory must be used; a classical gradient that does not exist cannot be inserted into the formula.
+If the value function has only viscosity regularity, the relevant standard control theory must be used; a classical gradient that does not exist cannot be inserted into the formula. In the Lean formalization, `DiffusionHJBVerification.p_ctl_03` abstracts the generator action and the finite-horizon Itô expectation identity `ItoRun` as explicit interface hypotheses; concrete instances derived from controlled Brownian stochastic integrals appear in §§39.39–39.45.
 
 ## 19.5 The formal type of GOD
 
@@ -2514,7 +2518,7 @@ Accurate prediction of an object's own future does not guarantee reward closure,
 
 ## 20.2 Span-sensitive approximate quotient bounds
 
-Suppose reward and transition errors are bounded by $\epsilon_r,\epsilon_p$, respectively, with the same action correspondence as above. Put
+With the same action correspondence as above, suppose uniform reward and pushforward-transition errors satisfy $\sup_{x,a}|r(x,a)-\bar r(f(x),a)|\le\epsilon_r$ and $\sup_{x,a}D_{\rm TV}(f_\#P_{x,a},\bar P_{f(x),a})\le\epsilon_p$. Put
 $$
 w=\bar V^*\circ f,\quad
 \delta=\epsilon_r+\beta\epsilon_p\operatorname{sp}(\bar V^*),\quad
@@ -2603,7 +2607,7 @@ If the two occupancy distributions are dominated by a validation distribution $\
 $$
 \frac{(C_*+C_{\widehat\pi})E_\nu\delta}{1-\beta}.
 $$
-This is a concrete connection between the coverage conditions of Chapter 16 and control quotients. When $C_*$ is unknown, the expression cannot be reported as an actually computed guarantee.
+This is a concrete connection between the coverage conditions of Chapter 16 and control quotients; the formal endpoint `LocalApproxControlQuotient.p_quo_05` states the comparison over stationary policies (which already attain the global optimal discounted value on finite models by P-CTL-01). When $C_*$ is unknown, the expression cannot be reported as an actually computed guarantee.
 
 ## 20.6 The order of composition for same-source quotients and constrained control
 
@@ -2713,9 +2717,7 @@ The theorem does not apply when recurrent support changes.
 
 ## 21.5 Spectral stability of symmetric killed kernels
 
-Let $Q$ be symmetric, nonnegative, irreducible, and substochastic, with positive unit principal eigenvector $u$ and spectral gap
-$g=\rho-\lambda_2>0$. Let a symmetric perturbation $E$ satisfy
-$\|E\|_2\le\eta<g/2$, with $\widehat Q=Q+E$ retaining the same properties.
+Let $Q$ be symmetric, nonnegative, irreducible, and substochastic, with positive unit principal eigenvector $u$, second Rayleigh value $\lambda_2=\max_{v\perp u,\|v\|_2=1}\langle v,Qv\rangle$, and spectral gap $g=\rho-\lambda_2>0$. Let a symmetric perturbation $E$ satisfy $\|E\|_2\le\eta<g/2$, with $\widehat Q=Q+E$ retaining the same nonnegative irreducible substochastic properties and having positive unit principal eigenvector $\widehat u$ (principal eigenvalue $\widehat\rho$).
 
 <a id="p-goa-04"></a>
 
@@ -2906,7 +2908,7 @@ If the certified-row predicate is $C(y,a)\iff a=1$, actual uncertified-row occup
 
 #### 21.7.4.1 An exact identity for conditioning the whole path
 
-For $\theta<1$ and any fixed T, the full finite state–action path law conditional on $S_T$ equals the path law of $\pi_0$ over the same horizon.
+For $\theta<1$ and any fixed $T$, conditional on $S_T$, the law of the full finite state–action path $(X_0,A_0,\dots,A_{T-1},X_T)$ (up to terminal state $X_T$, comprising $T$ decision steps and excluding any unconditioned post-horizon $A_T$) equals the path law of $\pi_0$ over the same horizon.
 
 Indeed, every surviving path has action 1 throughout. Its $\pi_\theta$ mass is therefore the mass of the same path under $\pi_0$, multiplied by $(1-\theta)^T$. Nonsurviving paths have zero conditional mass. Divide by (21.7-11). This explains how conditioning produces the fair internal kernel (21.7-9), while also showing that the two unconditional deployment laws differ. This simple constant-hazard instance does not establish a general identity between a Q-process and finite-window conditioning.
 
@@ -2924,7 +2926,7 @@ $$
 $$
 for $0<\theta\le1$. At $\theta=0$, this probability equals one.
 
-persistent_survival_null, actual_eventual_failure_ae, and zero_theta_survives_ae prove these assertions in the same infinite experiment. For positive parameters the conclusion is almost everywhere, not pointwise: null infinite-safe sample paths are not deleted to manufacture pointwise failure. The general assertion “for each finite T there exists a feasible policy” still cannot be changed to “there exists one policy that survives forever.”
+persistent_survival_null, actual_eventual_failure_ae, and zero_theta_survives_ae prove these assertions in the same infinite experiment. For positive parameters the conclusion is almost everywhere, not pointwise: null infinite-safe sample paths are not deleted to manufacture pointwise failure. The general assertion “for each finite $T$ there exists a feasible policy” cannot have its quantifiers exchanged unconditionally to yield positive infinite-horizon survival probability $\Pr(\tau=\infty)>0$; for finite action sets, the compactness equivalence between arbitrarily long finite-horizon zero-uncovered policies and a single all-time zero-uncovered policy, together with finite-memory realization, is proved separately in Chapter 40.
 
 ### 21.7.5 Optimality, viability, and invariant laws on the full space
 
@@ -3127,7 +3129,7 @@ $$
 
 If $Z_T$ is measurable with respect to the path of $X$, no information is lost under projection and the second inequality is an equality. A common sufficient setting has a square invertible diffusion matrix, driving coefficients and controls determined by observable state history, and well-defined SDEs and changes of measure, so that Brownian increments and the density ratio can be reconstructed from the state path.
 
-**N-KL-01.** Take two-dimensional noise, $\sigma=(1,0)$, and $u=(0,1)$. Changing the second noise coordinate leaves the state-path law of $X=W_1$ unchanged, hence state KL is zero while control energy is $T/2$. This rules out unconditional equality of state-path KL and total control energy for arbitrary degenerate diffusions.
+**N-KL-01.** Take two-dimensional noise, $\sigma=(1,0)$, and $u=(0,1)$. Changing the second noise coordinate leaves the state-path law of $X=W_1$ unchanged, hence state KL is zero while the half-norm quadratic control energy matching P-KL-05, namely $\tfrac12\int_0^T\|u_t\|^2dt$, equals $T/2$. This rules out unconditional equality of state-path KL and total control energy for arbitrary degenerate diffusions.
 
 For precise Girsanov and entropy conditions, see the original mathematical literature. Here the form used explicitly retains true-martingale and observability conditions. [Léonard's paper](https://leonard.perso.math.cnrs.fr/papers/2012-Leonard-Girsanov%20theory%20under%20a%20finite%20entropy%20condition.pdf)
 
@@ -3406,7 +3408,7 @@ This is not an exact formula for $E[Z_{n+1}/|Z_{n+1}|]$ in a general finite rand
 
 <a id="p-evo-01"></a>
 
-**P-EVO-01: exact decomposition into selection and transmission.** For numerical parent-type traits $z_i$ and offspring-type traits $z'_j$, put $(Kz')_i=\sum_jK_{ij}z'_j$. Then
+**P-EVO-01: exact decomposition into selection and transmission.** Let the parent-type frequency $p$ be a probability row vector with positive mean reproduction intensity $\bar b=pb>0$. For numerical parent-type traits $z_i$ and offspring-type traits $z'_j$, put $(Kz')_i=\sum_jK_{ij}z'_j$. Then
 $$
 p'z'-pz=
 \frac{\operatorname{Cov}_p(b,z)}{\bar b}
@@ -3466,7 +3468,7 @@ $$
 
 <a id="p-evo-04"></a>
 
-**P-EVO-04: reproductive-value martingale.** With finite initial counts,
+**P-EVO-04: reproductive-value martingale.** Given a K-PF-01 positive right eigenpair $Mr=Rr$ ($R>0,r>0$) and finite initial counts,
 $$
 W_n=R^{-n}Z_nr
 $$
@@ -3474,7 +3476,7 @@ is a nonnegative integrable martingale, and $EW_n=Z_0r$.
 
 **Proof.** Its conditional expectation is $R^{-(n+1)}Z_nMr=R^{-n}Z_nr$. Nonnegativity and finite first moments give integrability. ∎
 
-**K-MAR-01.** A nonnegative martingale converges almost surely to a finite $W_\infty$. This alone gives neither $EW_\infty=EW_0$, $L^1$ convergence, nor $W_\infty>0$ on nonextinction. Those require additional uniform integrability and offspring moment conditions. This edition does not include the corresponding deeper branching-process theorems as unconditional core results. Random extinction, finite-population drift, and deterministic mean growth must be reported separately.
+**K-MAR-01.** A nonnegative martingale converges almost surely to a finite $W_\infty$. This alone gives neither $EW_\infty=EW_0$, $L^1$ convergence, nor $W_\infty>0$ on nonextinction: for instance, a single-type critical Galton–Watson process ($R=1$, positive offspring variance, and $Z_0=1$) goes extinct in finite time almost surely so $W_\infty=0$, whereas every generation mean remains $EW_n=1$ and $L^1$ convergence fails. Nondegenerate positive limits require additional uniform integrability and Kesten–Stigum offspring moment conditions. Random extinction, finite-population drift, and deterministic mean growth must be reported separately.
 
 ## 25.6 Bridging actual lineage through the same reproduction operator
 
@@ -3541,7 +3543,7 @@ Since $p^\top Ap=0$, this is replicator dynamics. Moreover,
 $$
 \frac{d}{dt}\log(p_1p_2p_3)=\mathbf1^\top Ap=0.
 $$
-A noncentral interior trajectory cannot converge to the boundary or the unique interior equilibrium: its product is a fixed positive number below the central value. Thus not every selection trajectory converges to an optimal point. Antisymmetry also prevents a general interpretation of this dynamics as the flow of one strictly increasing potential.
+Every noncentral interior trajectory moves periodically along a compact closed level curve $p_1p_2p_3=c\in(0,1/27)$ and cannot converge to the boundary or the unique interior equilibrium $(1/3,1/3,1/3)$; thus not every selection trajectory converges to an optimal point. Along any nontrivial periodic orbit of period $T_0>0$, any continuous function $V$ satisfies $V(p(T_0))-V(p(0))=0$, ruling out any strict Lyapunov potential satisfying $\dot V>0$ along nontrivial trajectories.
 
 If two environments reverse the ordering of $R_1,R_2$, their fixed-fitness orderings do not jointly specify a unique optimal type. Generalization across environments must specify an environment distribution, a worst-case objective, or an adaptation mechanism.
 
@@ -3587,7 +3589,7 @@ then $Z_t=(X_t,S_t)$ is a controlled Markov state. Self-modification does not ma
 
 <a id="p-ref-01"></a>
 
-**P-REF-01: reflexive state augmentation.** Under the displayed condition and measurable-kernel assumptions, every causal policy determines a unique path law of $Z$ from its initial law and $K$. A deterministic modification $S_{t+1}=F(S_t,X_t,a_t,\xi_t)$ is a special case.
+**P-REF-01: reflexive state augmentation.** Under the displayed condition and measurable-kernel assumptions, every causal policy determines a unique path law of $Z$ from its initial law and $K$. When given $(X_t,S_t,a_t)$ the exogenous disturbance $\xi_t$ is conditionally independent of $H_t$ with a specified time-homogeneous conditional law, structural modification $S_{t+1}=F(S_t,X_t,a_t,\xi_t)$ is a special case.
 
 **Proof.** Conditional independence gives the one-step kernel factorization; apply the kernel extension of Chapter 2. If compressed to $\phi(Z_t)$, the controlled closure conditions of Chapter 7 must be established again. Reflexivity does not grant automatic closure. ∎
 
@@ -3606,7 +3608,7 @@ An observation with zero denominator is impossible in the current model. The int
 
 <a id="p-ref-02"></a>
 
-**P-REF-02: belief sufficiency.** In this model, the conditional laws of the next observation and updated belief depend only on $b_t,a_t$. A bounded discounted task can therefore be rewritten as a belief-state control problem.
+**P-REF-02: belief sufficiency.** In this model, when immediate rewards are bounded functions of $(\theta,x,a)$ and admissible policies are causal functions of observable history, the conditional law of the next observation, the expected immediate reward, and the conditional law of the updated belief depend only on $(b_t,a_t)$. A bounded discounted task can therefore be rewritten as a belief-state control problem.
 
 **Proof.** Total probability over hidden state and parameter gives the predictive observation law in the denominator; Bayes' formula gives the update. The next belief is a deterministic function of the current belief, action, and observation, so its kernel depends only on $(b_t,a_t)$. The conditional expectation of a bounded reward is handled in the same way. ∎
 
@@ -3624,7 +3626,12 @@ $$
 
 **Proof.** Fix any action $a$. For each $Y$, the maximum is at least the conditional utility of that action. Take expectations, then maximize over the fixed actions. ∎
 
-If the signal reveals an independent coin irrelevant to every action's payoff, mutual information can be $\log2$ while decision value is zero. Information with costs, physical effects, or interference with action may have negative net value. Thus $\Phi$ cannot unconditionally mean maximizing whatever information is available.
+Conversely, when payoff span across $\theta$ is bounded by $\operatorname{sp}_\theta(u)=\max_a(\sup_\theta u(a,\theta)-\inf_\theta u(a,\theta))<\infty$, combining P-MET-02, K-INF-02 (Pinsker), and concavity of the square root yields a one-way upper bound from mutual information:
+$$
+0\le E_Y\max_a E[u(a,\theta)\mid Y]-\max_a E[u(a,\theta)]
+\le\operatorname{sp}_\theta(u)\sqrt{\tfrac12 I(Y;\theta)}.
+$$
+No reverse lower bound holds: if the signal reveals an independent coin irrelevant to every action's payoff, mutual information can be $\log2$ while decision value is zero. Information with costs, physical effects, or interference with action may have negative net value. Thus $I(Y;\theta)$ is only a necessary capacity upper bound on free decision gain, and $\Phi$ cannot unconditionally mean maximizing whatever information is available.
 
 ## 27.4 Objective revision and misspecification risk
 
@@ -3765,7 +3772,7 @@ $$
 
 <a id="p-api-01"></a>
 
-**P-API-01: composition of exact and approximate process interfaces.** If $A\to B$ and $B\to C$ have these types, then
+**P-API-01: composition of exact and approximate process interfaces.** If $A\to B$ (with protocol lift $J_{AB}:\mathcal U_B\to\mathcal U_A$) and $B\to C$ (with protocol lift $J_{BC}:\mathcal U_C\to\mathcal U_B$, so $J_{BC}(\mathcal U_C)\subseteq\mathcal U_B$) have these types, then
 $$
 J_{AC}=J_{AB}\circ J_{BC},\qquad
 C_{AC}=C_{BC}\circ C_{AB}.
@@ -3798,7 +3805,7 @@ until the partition stops changing.
 
 <a id="p-alg-01"></a>
 
-**P-ALG-01: correctness and coarseness of finite stable partitioning.** The algorithm terminates in finitely many steps. Its terminal partition is the coarsest controlled-lumpable partition refining $\mathcal P_0$. Its quotient therefore preserves the original outputs, rewards, and one-step distributions for all actions, and by induction the corresponding output laws at every finite horizon.
+**P-ALG-01: correctness and coarseness of finite stable partitioning.** Call a partition $\mathcal Q$ refining $\mathcal P_0$ (strongly) controlled-lumpable if for every action $a\in A$ and blocks $C,B\in\mathcal Q$, the block transition probability $\sum_{y\in B}P_a(x,y)$ is constant across $x\in C$ (as opposed to distribution-dependent weak lumpability). The algorithm terminates in finitely many steps, and its terminal partition is the coarsest controlled-lumpable partition refining $\mathcal P_0$. Its quotient therefore preserves the original outputs, rewards, and one-step distributions for all actions, and by induction the corresponding output laws at every finite horizon.
 
 **Proof.** Iteration only splits blocks, never merges them. Every strict change increases the number of blocks, so there are at most $|X|-|\mathcal P_0|$ strict changes. At termination, states in one block have the same transition probability to every quotient block under every action, establishing closure. Let $\mathcal Q$ be any stable partition refining $\mathcal P_0$, and assume inductively that it refines $\mathcal P_n$. Each $\mathcal P_n$ block is a union of $\mathcal Q$ blocks; states in a common $\mathcal Q$ block have equal transition probabilities to these unions. The next iteration therefore cannot split a $\mathcal Q$ block. Thus $\mathcal Q$ refines the terminal partition, proving coarseness. Finite-horizon preservation follows by kernel recursion. ∎
 
@@ -4524,7 +4531,7 @@ $$d_P(B_1(f_1(t_Xx)),t_P(B_0(f_0x)))\le L\epsilon_F+\epsilon_B.$$
 
 If both endpoint outputs also satisfy the actual formation relation and the right-hand side is within a prespecified structural tolerance, one obtains the corresponding continuation certificate for the formed structures.
 
-**Proof.** Insert $B_1(t_F(f_0x))$ between the endpoints. Bound the first segment by the Lipschitz property of $B_1$ and the formation error, and the second by the binding-transport error. The formation relations and the tolerance remain separate assumptions; the triangle inequality does not create them. ∎
+**Proof.** Using the pseudo-metric triangle inequality of the parent distance $d_P$, insert $B_1(t_F(f_0x))$ between the endpoints. Bound the first segment by the Lipschitz property of $B_1$ and the formation error, and the second by the binding-transport error. The formation relations and the tolerance remain separate assumptions; the triangle inequality does not create them. ∎
 
 **Lean.** ScientificClosure.approximate_fbt_realized_bound, certified_structural_continuation, and certified_formed_structural_continuation.
 
@@ -5157,7 +5164,7 @@ Both directions use support bridges for the same actual law. Neither circularly 
 
 **Lean.** viablePolicy_support_step, viablePolicy_supported_histories_viable, viablePolicy_zero_uncovered, supported_viable_of_zero_uncovered, and initial_viability_iff_exists_zero_uncovered_policy.
 
-For $T=0$, the left terminal condition is true; on the right, the explicit base policy suffices and there are no times requiring certification. The theorem also shows that, for this objective of almost-sure stepwise certification, success of a randomized history policy implies success of a deterministic history policy selected by the support recursion. It implies neither infinite-horizon viability, reward optimality, learning optimality, nor robustness to approximate support tests.
+For $T=0$, the left terminal condition is true; on the right, the explicit base policy suffices and there are no times requiring certification. The theorem also shows that, for this objective of almost-sure stepwise certification, success of a randomized history policy implies success of a deterministic history policy selected by the support recursion. When the action set is finite, the fixed-point characterization and finite-memory realization of all-time zero-uncovered policies appear in §§40.1–40.2 (M-40.1, M-40.2); nevertheless, zero uncovered occupancy still implies neither positive infinite-horizon survival under nontrivial killing, reward optimality, learning optimality, nor robustness to margin-free approximate support tests.
 
 ## 37.5 Executable Decision on Finite Relation Tables
 
@@ -5177,7 +5184,7 @@ For a finite set $S$, enumerate successors using $R$, group them by observation 
 
 **Proof.** Induct on $k$. Exactness of the relation table identifies every constructed finite successor set with Succ. Finite action enumeration represents the existential quantifier, and enumeration of the finite observation image represents all nonempty successors. Rewriting the Boolean and logical connectives at each level proves equivalence with $V$; then apply M-37.3. ∎
 
-**Lean.** finiteViabilityCheck and finiteViabilityCheck_correct. The actual executable layer consists of finiteRelationSuccessor, finiteRelationViabilityCheck, and finiteRelationViabilityCheck_correct. It first proves equality of its output with the former check and then reuses that check's correctness, without rebuilding the policy-existence proof.
+**Lean.** `finiteViabilityCheck` and `finiteViabilityCheck_correct`. The actual executable layer consists of `finiteRelationSuccessor`, `finiteRelationViabilityCheck`, and `finiteRelationViabilityCheck_correct` (grouping by observation equality uses `DecidableEq Y`). It first proves equality of its output with the former check and then reuses that check's correctness; the executable finite-memory controller synthesizer `ExecutableSupportController.synthesize` built on this layer appears in §40.4 (M-40.4).
 
 The following pseudocode gives the complete control structure. It requires exactSupport to be a proved exact relation table, an enumerable image of observe, and decidable certified.
 
@@ -5359,7 +5366,7 @@ The definition of canonical $G$ contains the unknown true source $p_j$. It is th
 
 ## 38.4 From Rowwise Fit to Selected Conditional Risk
 
-For each training record one may select a quotient map $q_\omega$, an initial law, a reference kernel $\widehat P^\omega$, and a causal policy $\pi^\omega$. The microscopic source $P$ retains its identity, and the registered rows remain those fixed before training.
+For each training record one may select a quotient map $q_\omega$, an initial law, a reference kernel $\widehat P^\omega$, and a causal policy $\pi^\omega$. The microscopic source $P$ retains its identity, and the registered rows remain those fixed before training; the training data assume a generative reset protocol drawing independent samples within each registered row $p_j$ (formalized as a coordinate product experiment in §38.10.1), rather than a single dependent trajectory without martingale concentration.
 
 Assume only on $G$ that:
 
@@ -5477,10 +5484,10 @@ $$
 =16e^{-8}\le\frac1{16}.
 $$
 
-An existing numerical exponential bound proves the final step; a floating-point approximation does not replace the formal inequality. Thus
+An existing numerical exponential bound proves the final step; a floating-point approximation does not replace the formal inequality. Substituting $\alpha=16e^{-8}$ and $\beta=1/2$ into the sharp mixture bound $\alpha+(1-\alpha)\beta=\beta+(1-\beta)\alpha$ of M-38.3 yields
 
 $$
-\Pr_J(E)\le\frac12+8e^{-8}\le\frac{17}{32}<1.
+\Pr_J(E)\le\frac12+\left(1-\frac12\right)\cdot16e^{-8}=\frac12+8e^{-8}\le\frac{17}{32}<1.
 $$
 
 ### 38.6.4 Exact Actual Risk
@@ -5542,7 +5549,15 @@ The standard axiom set is a subset of propext, Classical.choice, and Quot.sound;
 
 The book has now connected the following steps individually: define actual finite paths from a supplied actual source and registered information; derive conditional posteriors and state–action occupancies from those paths; decide finite viability under partial observation by support recursion and construct a policy; combine its actual coverage with registered empirical calibration; construct the genuine joint law of training and the data-selected conditional deployment kernel; and finally bound the probability of a common microscopic failure event.
 
-This chain still starts from explicit mathematical inputs: the actual source, observation protocol, exact support or an effective exact representation, training-generation protocol, failure event, and task-certification conditions. Application in an open world requires checking those inputs. Finite-support viability does not automatically learn unknown transition probabilities; finite-horizon zero uncovered occupancy is not an infinite-lifetime theorem; and a general risk certificate does not uniquely identify the source of purpose. Recording these boundaries in the theorems gives subsequent empirical and philosophical work precise interfaces to test.
+This chain still starts from explicit mathematical inputs: the actual source, observation protocol, exact support or an effective exact representation, training-generation protocol, failure event, and task-certification conditions. Application in an open world requires checking those inputs. Finite-support viability does not automatically learn unknown transition probabilities; finite-horizon zero uncovered occupancy is not an infinite-lifetime theorem; and a general risk certificate does not uniquely identify the source of purpose. Recording these boundaries in the theorems gives subsequent empirical and philosophical work precise interfaces to test. Throughout the book, five closure tiers are kept strictly separate so that distinct epistemic levels are never conflated under a single label of “closure”:
+
+| Closure tier | Mathematical scope and representative content | Present truth status |
+|---|---|---|
+| Conditional theorem closure | Under explicit hypotheses, all 106 stable P-IDs and M-propositions are proved purely inside the Lean 4 kernel (using only `propext`, `Classical.choice`, `Quot.sound`) | `PROVED_PURE_KERNEL` |
+| Boundary and no-go closure | Counterexamples including N-PRED-01, N-INT-01, N-KL-01, N-BRG-01, fixed-sample support impossibility, and two-drive gauge non-uniqueness are formalized | `PROVED_BOUNDARY` |
+| Classified common-source closure | Chapters 39–40 and the Core Synthesis jointly derive repair, prediction, control, and inheritance from concrete components, the six-unit ledger, census clocks, and stochastic sources | `CLASSIFIED_CORE_CLOSED` |
+| Strong unconditional unified closure | Strong original claims that every persistent system has nonempty $\Omega$, a unique global attractor, universal two-dimensional drives, or automatic evolutionary optimization | `NOT_ESTABLISHED` (disproved in general) |
+| External empirical support | Physical, biological, or social experimental confirmation beyond synthetic models and program checks | `UNVERIFIED` |
 
 ## 38.10 Actual Rowwise Sampling and the Selected Envelope on One Good Event
 
@@ -7052,18 +7067,113 @@ The same returned object has a complete Store interpretation. On every positive-
 
 Verification in this work binds the same input, source code, Lean returned tables, and four-point private seed. Two mechanisms, four private seeds, and all three-step Bool×Bool primitive tapes give $2\times4\times4^3=512$ short native runs. Complete enumeration covers birth labels and all 1536 payment prefixes. Actual Lean packed execution is compared path by path with an independent complete Store replay. A separate Fraction checker that does not import the solver recursion being checked verifies all-action oracle values, the dual value, the attaining strategy, and fees. Execution enumeration checks wiring and identity; universal optimality is supplied by the formal proof.
 
-The three-step and two-step closed-form numerical equalities use Lean `native_decide` finite computational certificates. They respectively depend on the two computer-generated native-decision certificates listed in the axiom audit and on correctness of Lean's compiled execution. General source bridges, upper bounds over all strategies, and payment derivations are separately established by logical proofs. The original attempt at direct kernel reduction, stopped because of computational cost, is retained; this engineering interruption is not interpreted as a mathematical counterexample. Independent exact checking reduces implementation-wiring risk and is not presented as sampling evidence replacing formal proof.
+In the initial PR #443 delivery, the three-step and two-step closed-form rational value equalities used `native_decide` computational certificates; in the present v4.2 source library, because the kernel-reduction bottleneck from irreducible rational inversion has been eliminated via exact integer-scaled dynamic programming `csolveInt`, both equalities are now proved purely inside the Lean kernel via `decide` (`kernel_int_h3`, `kernel_int_h2`), leaving zero nonstandard compiler-trust axioms across all 1,051 modules (relying solely on `propext`, `Classical.choice`, `Quot.sound`). General source bridges, upper bounds over all strategies, and payment derivations are established by logical proofs; independent exact checking remains as wiring cross-verification rather than a substitute for formal proof.
 
 Source code and principal endpoints, axiom dependencies, actual artifacts, compilation failures and corrections, independent checks, and release status are recorded in the [mechanism decision delivery package](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/mechanism_decision_closure_v1/README.md). Completion judgments for the original eight conditional mathematical contracts and PR441 and PR442 are retained. The new conclusions connect organizational fault structure, permitted evidence, and achievable action loss; they do not claim to discover real mechanisms or derive normative objectives.
 
 S/G are synthetic mathematical mechanisms, and empirical support remains **UNVERIFIED**. The distinguishing H3 receipt occurs at the terminal time; no result proves or requires this information to improve later decisions in the same H3 task. The outer randomized controller's reliable random source and computing resources are registered conditions, not internalized object hardware. Work stops once the six contract conditions are complete; it does not automatically increase H, add a third mechanism or permissions, or introduce a compression platform or performance gate.
 
+<a id="ch-40"></a>
+
+# 40. Finite Memory, All-Time Policies, Executable Synthesis, Noisy Oracles, and Observable Belief Quotients
+
+**Chapter question.** Between the finite-horizon support viability, registered sampling calibration, and common-source finite decision theory of Chapters 36–39, what intermediate mathematical structures are needed to pass from “a policy exists for each finite horizon” to an executably synthesized finite-memory all-time controller, while characterizing fixed-sample undecidability and continuous belief-quotient descent?
+
+**Reading route.** This chapter develops six formalized production module groups in sequence: construct the greatest fixed point of the monotone support operator on the bounded subset arena together with a finite-memory controller (§40.1), and prove the compactness equivalence between arbitrarily long finite-horizon policies and a single all-time policy for finite actions (§40.2); establish total finite-window conditioning and the monotone infinite-horizon survival limit of the augmented homogeneous Markov chain (§40.3), yielding a sound and complete executable controller synthesizer (§40.4); prove the fixed-sample impossibility theorem for exact zero-support certification alongside the joint guarantee of the noisy finite-risk oracle (§40.5); and characterize existence and uniqueness of observable belief quotients via closed test families (§40.6).
+
+## 40.1 Greatest Fixed Points of Finite Support and Finite-Memory Controllers
+
+For a time-homogeneous finite state set $X$, nonempty finite action set $A$, observation map $q:X\to Y$, exact support relation $R(x,a,x')\iff P(x,a)(x')>0$, and certification predicate $C(x,a)$, let $\mathcal A\subseteq 2^X\setminus\{\varnothing\}$ be the finite arena of reachable nonempty observation-fiber subsets, whose cardinality satisfies $|\mathcal A|+1\le 2^{|X|}$. Define the monotone one-step support preimage operator
+$$
+\Phi(\mathcal W)=\bigl\{S\in\mathcal A:\exists a\in A,\ (\forall x\in S,\ C(x,a))\wedge(\forall y\in q(X),\ \operatorname{Succ}_R(S,a,y)\neq\varnothing\Rightarrow\operatorname{Succ}_R(S,a,y)\in\mathcal W)\bigr\}.
+$$
+Top-down iteration $\mathcal W_0=\mathcal A$, $\mathcal W_{k+1}=\Phi(\mathcal W_k)$ decreases monotonically and stabilizes in at most $|\mathcal A|$ steps at the greatest post-fixed point $\mathcal W_*=\mathcal W_{|\mathcal A|}$.
+
+<a id="m-40-1"></a>
+
+**M-40.1: Greatest support fixed point and finite-memory separation.** A set $S\in\mathcal W_*$ if and only if for every finite horizon $k\in\mathbb N$ one has $V(0,k,S)$. Whenever every nonempty initial support satisfies $S_0(y)\in\mathcal W_*$, with internal memory in $\mathcal W_*$ (at most $2^{|X|}-1$ memory states), the finite-memory controller $\pi_{\rm mem}$ updating memory deterministically by support transition and selecting a winning action achieves at every time $n\in\mathbb N$ zero uncovered occupancy $\nu_n^{\pi_{\rm mem}}(C^c)=0$; if certified transitions also preserve a safe set $K\subseteq X$, the closed-loop trajectory under the Kolmogorov infinite-trajectory measure remains forever in $K$ with probability one. Moreover, there exists an explicit partially observed finite source for which every memoryless stationary observation-feedback policy $\pi(y)$ incurs $\nu_0^\pi(C^c)+\nu_1^\pi(C^c)>0$, whereas a two-state finite-memory controller achieves zero uncovered occupancy at all times.
+
+**Proof.** Induction on $k$ yields $S\in\mathcal W_k\iff V(0,k,S)$. Since $\mathcal W_{k+1}\subseteq\mathcal W_k\subseteq\mathcal A$ and $\mathcal A$ is finite, strict shrinkage occurs at most $|\mathcal A|$ times before $\mathcal W_{m+1}=\mathcal W_m$, stabilizing for all $k\ge m$ at the greatest fixed point $\mathcal W_*=\Phi(\mathcal W_*)$. Using the current trace support $S_n\in\mathcal W_*$ as the controller's finite memory state, induction along positive-mass histories shows $S_n=\operatorname{traceSupport}(g_n)\in\mathcal W_*$, so each chosen action is jointly certified on $S_n$. When certified transitions preserve $K$, every finite prefix has safety probability one, extending to the countable trajectory space by monotone convergence. The memoryless separation witness uses two latent branches sharing an initial observation while requiring alternating two-step actions: any stationary policy fixes a single action distribution per observation and incurs positive uncovered mass over the first two steps, whereas a one-bit flip memory tracks the singleton latent support exactly. ∎
+
+**Lean.** `FiniteSupportFixedPoint.supportWinning_fixed`, `supportWinning_greatest_of_postfixed`, `supportWinning_iff_all_horizons`, `supportArenaCard_add_one_le_pow`; `SupportMemoryController.supportMemoryController_zero_uncovered`, `bounded_horizon_iff_all_times_zero_uncovered`; `SupportMemoryCheck.finiteMemoryCheck_iff_exists_all_times_policy`; `FiniteMemoryPhysicalSafety.supportMemoryController_all_times_physical_safe`; `FiniteMemorySeparation.flip_controller_zero_uncovered` and `stationary_feedback_cannot_certify_two_rows`.
+
+## 40.2 All-Time Zero-Uncovered Policies and Compact Quantifier Exchange
+
+For time-inhomogeneous finite-action systems, Chapter 37 gave for each fixed finite horizon $T$ the recursive viability condition $V(0,T,S)$. When for each $T\in\mathbb N$ there exists separately a zero-uncovered policy $\pi_T$, can the quantifiers be exchanged to obtain one all-time policy $\pi_\infty$?
+
+<a id="m-40-2"></a>
+
+**M-40.2: All-time support viability and quantifier exchange for finite actions.** For a finite state set $X$ and nonempty finite action set $A$, define all-time support viability by $V_\infty(n,S)\iff\forall k\in\mathbb N,\ V(n,k,S)$. Given a full base policy $\pi_{\rm base}$, the following three statements are equivalent:
+
+1. For every nonempty initial observation support $S_0(y)\neq\varnothing$, $V_\infty(0,S_0(y))$ holds;
+2. For every finite horizon $T\in\mathbb N$, there exists a policy $\pi_T$ such that $\forall n<T,\ \nu_n^{\pi_T}(C_n^c)=0$;
+3. There exists a single causal history policy $\pi_\infty$ such that for every time $n\in\mathbb N$, one has $\nu_n^{\pi_\infty}(C_n^c)=0$.
+
+**Proof.** $(3)\Rightarrow(2)$ sets $\pi_T=\pi_\infty$, and $(2)\Leftrightarrow(1)$ applies M-37.3 at each $T$. For $(1)\Rightarrow(3)$, use finiteness of $A$ (König-type finite-branching compactness): fixing a state set satisfying $V_\infty(n,S)$, for each $k\in\mathbb N$ let $A_k\subseteq A$ be the set of jointly certified actions sending every nonempty successor into $V(n+1,k,\cdot)$. Then $A_{k+1}\subseteq A_k$ and every $A_k$ is nonempty. Because $A$ is finite, $\bigcap_{k\in\mathbb N}A_k\neq\varnothing$; choosing any action in this intersection preserves $V_\infty(n+1,\cdot)$ across all nonempty successors. Recursive assembly yields a single deterministic history policy $\pi_\infty$ certified at every finite prefix. ∎
+
+**Lean.** `InfiniteSupportViability.infiniteViable_step`, `infiniteViablePolicy_zero_uncovered`, `initial_infiniteViability_iff_exists_all_times_zero_uncovered_policy`, `arbitrarily_long_zero_uncovered_iff_single_all_times_policy`. If the action space $A$ is infinite (for example when horizon $T$ requires choosing $a>T$), the intersection of $A_k$ can be empty and quantifier exchange fails without compactness; likewise, all-time zero uncovered occupancy does not by itself imply positive infinite-horizon survival probability under nontrivial killing.
+
+## 40.3 Total Finite-Window Conditioning and Homogeneous Memory Survival Limits
+
+In killed or conditioned survival analysis, finite-window conditioned path laws require a total interface on degenerate zero-survival branches while guaranteeing that positive-survival predictions never depend on the fallback convention.
+
+<a id="m-40-3"></a>
+
+**M-40.3: Total window conditioning and monotone survival limit for homogeneous memory.** Equipped with an explicit fallback kernel for zero-mass survival branches, the total finite-window path law coincides prefix by prefix with the actual conditioned path law whenever survival mass is positive, and its positive-window prefix probabilities are independent of the fallback choice; an explicit actual-source witness simultaneously exhibits reachable branches whose window survival mass is zero. Furthermore, for the closed-loop homogeneous Markov chain $(X_n,M_n)$ formed by a time-homogeneous finite-memory controller and source, let $Q_K$ be the substochastic killed operator restricted to the safe set $K$; under the unique Kolmogorov infinite augmented-trajectory measure $\mathbb P$, every horizon $T\in\mathbb N$ satisfies $\mathbb P(\forall n\le T,\ X_n\in K)=\mathbf 1_K^\top Q_K^T\mu_0$, with exact monotone limit
+$$
+\lim_{T\to\infty}\mathbf 1_K^\top Q_K^T\mu_0=\mathbb P(\forall n\in\mathbb N,\ X_n\in K).
+$$
+
+**Proof.** Whenever window survival mass is positive, conditional row normalization evaluates only positive-mass atoms inside the surviving support, so fallback branches receive zero weight or are never entered, matching actual conditioned prefixes. For the closed-loop pair $(X_n,M_n)$, one-step transitions depend solely on the current physical and memory states; the Ionescu-Tulcea theorem yields a unique infinite-trajectory measure $\mathbb P$ whose finite-dimensional cylinder masses inductively equal the total mass of $Q_K^T$ on the safe set. Since the events $E_T=\{\forall n\le T,\ X_n\in K\}$ decrease monotonically to $\bigcap_{T\in\mathbb N}E_T$, continuity of probability from above yields the limit identity. ∎
+
+**Lean.** `TotalFiniteWindow.generated_prefix_eq_actual`, `windowPathLaw_fallback_independent`, `generated_ambient_fallback_independent`, `TotalFiniteWindowWitness.null_row_actual_source_witness`; `HomogeneousMemorySurvival.actual_augmentedTrajMeasure_eq_homogeneous`, `actual_finite_survival_eq_killed_mass`, `killed_mass_tendsto_actual_infinite_survival`.
+
+## 40.4 Executable Synthesis of Support Controllers
+
+While M-40.1 establishes mathematical existence of a finite-memory controller, engineering deployment and formal verification require a fully computable synthesis procedure returning a concrete `Option Program` directly from finite relation tables without invoking nonconstructive choice.
+
+<a id="m-40-4"></a>
+
+**M-40.4: Soundness and completeness of executable finite-memory controller synthesis.** Given Boolean tables representing source support, certification, and initial supports exactly, together with an explicit action enumeration order, the computable synthesizer `synthesize` terminates within at most $2^{|X|}$ bounded fixed-point iterations, and `synthesize` returns `some prog` if and only if an all-time zero-uncovered causal policy exists. Whenever `synthesize` returns `some prog`, the resulting program `prog` achieves zero uncovered occupancy at every time; if initial supports lie in a safe set $K$ and certified transitions preserve $K$, the closed-loop process satisfies at every $T\in\mathbb N$ killed mass equal to $1$ and all-time physical safety probability equal to $1$.
+
+**Proof.** Instantiate the fixed-point iteration of §40.1 with computable table lookup `findAction` along the supplied action order and Boolean fixed-point check `boundedCheck`. By M-37.4 and M-40.1, `boundedCheck` returns true if and only if all nonempty initial supports lie in $\mathcal W_*$; combining with M-40.2 gives equivalence to existence of an all-time zero-uncovered policy. When `some prog` is returned, `prog` selects at each reachable memory state the first action passing the check, inductively maintaining equality between program memory and actual trace support; applying M-40.1 and M-40.3 yields all-time zero uncovered mass and almost-sure perpetual safety. ∎
+
+**Lean.** `ExecutableSupportController.Program`, `synthesize`, `synthesize_isSome_iff_exists_all_times_policy`, `synthesize_some_zero_uncovered`, `synthesize_some_all_times_physical_safe`, `synthesize_some_killed_mass_one`; `ExecutableSupportControllerWitness.synthesis_returns_program`, `synthesis_rejections`.
+
+## 40.5 Fixed-Sample Support Impossibility and Noisy Finite-Risk Oracles
+
+Both Chapter 37 and §40.4 require exact equivalence $R(x,a,x')\iff P(x,a)(x')>0$. When the true source is unknown and only a fixed finite sample count $N$ per row is observed, can any sample-only procedure certify exact zero support uniformly without an assumed minimum positive transition margin?
+
+<a id="m-40-5"></a>
+
+**M-40.5: Impossibility of uniform fixed-sample zero-support certification and noisy calibrated risk selection.**
+
+1. (Fixed-sample no-go) Fix any finite sample size $N\in\mathbb N$ and any decision rule $\psi:X^N\to\{\mathrm{true},\mathrm{false}\}$. Whenever on a baseline source assigning zero mass to $x^*$, denoted $p_0$, the rule $\psi$ has certification probability on zero-hit records at least $\alpha_0>0$, then for every $\varepsilon\in(0,1)$ and contaminated source $p_\varepsilon=(1-\varepsilon)p_0+\varepsilon\delta_{x^*}$, the probability that $\psi$ under $p_\varepsilon^N$ falsely certifies exact zero support is at least $\alpha_0(1-\varepsilon)^N$; in particular, whenever $(1-\varepsilon)^N\ge 1-\delta$ the false-certification rate is at least $\alpha_0(1-\delta)$, ruling out any margin-free uniform fixed-sample exact-zero certificate.
+2. (Noisy risk oracle) Replacing exact zero tests by explicit separation tolerances and rational empirical TV budgets yields the executable `NoisyFiniteRiskOracle`: on the canonical calibration event $G$ (whose bad-event probability is at most $\alpha_N$), empirical defect decisions are two-sided sound, selecting the first certified candidate bounds actual deployment failure risk by the reported rational budget $\beta$, and the joint probability of acceptance together with deployment failure is at most $\min\{1,\alpha_N+(1-\alpha_N)\beta\}$.
+
+**Proof.** Part 1: on every record avoiding $x^*$ of length $N$, the likelihood under $p_\varepsilon^N$ is at least that under $p_0^N$ multiplied by $(1-\varepsilon)^N$; letting $\varepsilon\downarrow0$ rules out margin-free uniform exact-zero certification. Part 2: on the simultaneous calibration event $G$, rational empirical distributions lie within the registered TV radii of the true rows, so the triangle inequality transfers empirical defect checks and pushforward reference risks to the actual source; splitting the joint training–deployment law across $G$ and $G^c$ and applying M-38.3 completes the bound. ∎
+
+**Lean.** `FixedSampleSupportNoGo.exists_positive_source_false_certification`, `no_uniform_exact_zero_certificate`; `NoisyFiniteRiskOracle.noisyDecision_certified_sound`, `noisyDecision_rejected_sound`, `accepts_actual_risk_and_safety_on_good`, `selected_accepts_and_failure_joint_le`; `NoisyFiniteRiskOracleWitness.computed_certificate_controls_actual_process`.
+
+## 40.6 Observable Belief Quotients and Closed-Test Characterization
+
+In partially observed prediction and control, the full latent-state belief $b\in\Delta(X)$ typically carries dimensions indistinguishable under every admissible future observation test. When does belief updating descend exactly to a Markov kernel on observable test coordinates?
+
+<a id="m-40-6"></a>
+
+**M-40.6: Closed-test characterization of observable belief quotients.** On the finite-state belief simplex $\Delta(X)$, let a finite future-observation test map be $\tau:\Delta(X)\to[0,1]^m$ (whose first coordinates determine one-step observation probabilities and whose image is closed and convex). One-step belief evolution admits on $\tau(\Delta(X))$ a quotient kernel $\bar K$ intertwining exactly with $\tau$ (and such $\bar K$ is unique) if and only if the test family satisfies `ClosedTests`, meaning every one-step post-transition test expectation factors through $\tau(b)$. When `ClosedTests` holds, all finite-horizon observation laws, observation-based expected rewards, and observable safety probabilities factor through $\tau(b)$; without `ClosedTests` no such quotient kernel exists, and hidden-state-dependent rewards or safety predicates fail to descend.
+
+**Proof.** If a quotient kernel $\bar K$ exists, post-step test expectations depend only on $\tau(b)$, giving `ClosedTests`. Conversely, taking a section `liftBelief` on the compact convex image with $\tau(\operatorname{liftBelief}(z))=z$, `ClosedTests` ensures that for any two beliefs satisfying $\tau(b_1)=\tau(b_2)=z$, namely $b_1,b_2$, the pushforward one-step laws on quotient coordinates coincide, so $\bar K(z,\cdot)$ is well-defined and uniquely determined by surjectivity. Induction over horizon length factors all finite-prefix observation responses. An explicit three-state aliasing witness simultaneously demonstrates two distinct latent beliefs sharing all future observation tests (so C1 quotient descent holds), a perturbed source violating `ClosedTests` that admits no quotient, and non-descent of purely latent readouts. ∎
+
+**Lean.** `ObservableBeliefQuotient.ClosedTests`, `closed_tests_iff_existsUnique_quotient`, `finite_test_response_factors`, `observation_reward_factors`; `ObservableBeliefQuotientWitness.actual_C1_descends`, `aliases_have_all_same_future_tests`, `no_quotient_without_closed_tests`, `hidden_readouts_do_not_descend`.
 
 <a id="appendix-a"></a>
 
 # Appendix A. Index of Symbols and Types
 
 **How to use this appendix.** This appendix identifies the spaces, units, and roles attached to symbols. Where a letter is reused in a local model, its explicit local definition applies. Shared notation is not evidence that two sources, policies, or metrics are identical.
+
+## A.1 Principal Symbols and Types
 
 The same character may denote a local variable in different chapters. The table gives its principal type. Every use must be interpreted according to the definition at that location.
 
@@ -7103,6 +7213,22 @@ The same character may denote a local variable in different chapters. The table 
 | $R,l,r$ | Principal growth factor, long-term composition, and reproductive value | Chapter 25 |
 | ETI | The four-component certificate of evolutionary transition in individuality used in this book | Chapter 26 |
 | $b_t(\theta,x)$ | Posterior belief over parameter and state | Chapter 27 |
+
+## A.2 Disambiguation of Overloaded Symbols Across Scopes
+
+Because this book spans measure-theoretic probability, Markov control, statistical calibration, spectral theory, and population evolution, several standard letters serve established conventions in distinct chapters. Readers and formal consumers must interpret them strictly within their declared local scopes rather than equating shared letters across chapters:
+
+| Symbol | Scope 1 | Scope 2 | Scope 3 / remark |
+|---|---|---|---|
+| $\eta$ | Empirical TV estimation radius (Chapter 16) | Symmetric spectral perturbation bound $\|E\|_2\le\eta$ (§21.5) | Empirical fitting error $\eta_n(\omega)$ (Chapter 38) or local positive tolerance (§34.5) |
+| $N$ | Samples per registered cell or rowwise allocation $N_j$ (Chapters 16, 38, 40) | Time-averaging horizon or total population count $N_T$ (Core Synthesis, §21.7) | Sample size in design Gram matrix $G_N$ (Chapter 17) |
+| $D$ | Non-absorption domain $m(D)<\infty$ (§10.4) or integration measure $D(k)$ (§15.8) | Approximate control-quotient value bound $\delta/(1-\beta)$ (§20.2) | Damaged body type `D` in the common-source model (Core Synthesis, Chapter 39) |
+| $H$ | History random variable $H_t$ or Shannon entropy $H(\cdot)$ (Chapters 2, 5, 25) | Pushforward history map $H_q$ (Chapters 36, 38) | Healthy body type `H` or finite decision horizon in the common-source model (Core Synthesis, Chapter 39) |
+| $Q$ | Action-value function $Q^*(x,a)$ (Chapter 19) or controlled path law $\mathbf Q$ (Chapter 22) | Substochastic killed transition operator $Q,Q_K$ (Chapters 10, 21, 40) | Behavioral law map $Q_\theta^e$ (Chapter 26) |
+| $M,K$ | Internal state $M$ and conditional response kernel $K_i$ (Chapters 4, 6) | Viability-kernel iterates $K_n,K_\infty$ or safe set $K$ (Chapters 8, 35, 40) | Mean reproduction operator $M=D_bK$ and transmission kernel $K$ (Chapter 25); alphabet size $K$ (Chapter 16) |
+| $L,B,R$ | Cell count $L$, generator $\mathcal L,L_D$, or Lipschitz constant $L$ (Chapters 9, 10, 15, 16) | Binding map $B_i$, resource budget $B$, or reproduction vector $b$ (Chapters 15, 23, 25) | Perron growth factor $R$, fitness $R_i$, reward bound $R$, or Boolean support table $R_n$ (Chapters 20, 25, 26, 37, 40) |
+| $C,\pi,T$ | Canonical predictive kernel $C$, certified-row predicate $C_n$, or path readout $C_{AB}$ (Chapters 4, 28, 36–40) | Policy $\pi$, coarse family map $\pi_*$, or partition $\pi$ (Chapters 14, 15, 18–20) | Horizon $T$, measurable map $T$, or neutral hereditary tag $T$ (Chapters 3, 4, 25, 36–40) |
+| $\theta,\rho,\nu$ | Mechanism/model parameter $\theta$ or compiled program label $\theta_0,\theta_1$ (Core Synthesis, §§21.7, 27, 39) | Continuous discount rate $\rho>0$, spectral radius $\rho$, or registered radius $\rho_n$ (Chapters 19, 21, 38) | Invariant measure $\nu$, validation distribution $\nu$, or actual deployment occupancy $\nu_n^\pi$ (Chapters 8, 20, 36–40) |
 
 <a id="appendix-b"></a>
 
@@ -7332,6 +7458,35 @@ The following records supply authors, titles, editions or years for the standard
 | Daniel Revuz and Marc Yor. *Continuous Martingales and Brownian Motion*. 3rd ed., Springer, 1999. [DOI](https://doi.org/10.1007/978-3-662-06400-9) | Chapters 9, 19, 22, 39: martingales, stochastic integration, Itô calculus, and change of measure. |
 | E. B. Davies. *Heat Kernels and Spectral Theory*. Cambridge University Press, 1989. [Publisher](https://www.cambridge.org/core/books/heat-kernels-and-spectral-theory/39DC7EE2A5DCCE9DEF581D2F52A73E1F) | Sections 10.4 and 39.74: background on self-adjoint elliptic operators and spectral methods; the specific semigroup conditions remain in force. |
 | Frank W. Warner. *Foundations of Differentiable Manifolds and Lie Groups*. Springer, 1983; original edition 1971. [DOI](https://doi.org/10.1007/978-1-4757-1799-0) | Chapter 24: differential forms and the Hodge theorem, especially Chapter 6 of the cited book. |
+| James P. Crutchfield and Karl Young. *Inferring Statistical Complexity*. Physical Review Letters 63(2):105–108, 1989. [DOI](https://doi.org/10.1103/PhysRevLett.63.105) | Chapters 4–5: foundational formulation of $\epsilon$-machines and statistical complexity. |
+| C. J. Burke and M. Rosenblatt. *A Markovian Function of a Markov Chain*. Annals of Mathematical Statistics 29(4):1112–1122, 1958. [DOI](https://doi.org/10.1214/aoms/1177706444) | Chapter 7: lumpability criteria under which functions of Markov chains remain Markovian. |
+| John G. Kemeny and J. Laurie Snell. *Finite Markov Chains*. Van Nostrand, 1960; Springer reprint 1976. | Chapters 7, 9, 21: strong versus weak lumpability and potential theory for finite Markov chains. |
+| R. L. Dobrushin. *Central Limit Theorem for Nonstationary Markov Chains I, II*. Theory of Probability and Its Applications 1:65–80, 329–383, 1956. [DOI](https://doi.org/10.1137/1101006) | Chapters 1, 21: original source of the total-variation contraction (ergodicity) coefficient. |
+| Robert Paige and Robert E. Tarjan. *Three Partition Refinement Algorithms*. SIAM Journal on Computing 16(6):973–989, 1987. [DOI](https://doi.org/10.1137/0216062) | Section 28.5: algorithmic background for finite partition refinement and coarsest stable quotients. |
+| Robert Givan, Thomas Dean, and Matthew Greig. *Equivalence Notions and Model Minimization in Markov Decision Processes*. Artificial Intelligence 147(1–2):163–223, 2003. [DOI](https://doi.org/10.1016/S0004-3702(02)00376-4) | Chapters 20, 28: stochastic bisimulation and exact MDP model minimization. |
+| J. L. Doob. *Conditional Brownian Motion and the Boundary Limits of Harmonic Functions*. Bulletin de la Société Mathématique de France 85:431–458, 1957. | Chapters 10, 21: foundational treatment of conditioned processes and the Doob $h$-transform. |
+| J. N. Darroch and E. Seneta. *On Quasi-Stationary Distributions in Absorbing Discrete-Time Finite Markov Chains*. Journal of Applied Probability 2(1):88–100, 1965. [DOI](https://doi.org/10.2307/3211876) | Chapters 10, 21: classical theory of quasi-stationary distributions and positive eigenvectors for finite absorbing chains. |
+| Pierre Collet, Servet Martínez, and Jaime San Martín. *Quasi-Stationary Distributions: Markov Chains, Diffusions and Dynamical Systems*. Springer, 2013. [DOI](https://doi.org/10.1007/978-3-642-33131-2) | Chapters 10, 21: comprehensive monograph on discrete- and continuous-time QSDs and $Q$-processes. |
+| Richard Bellman. *Dynamic Programming*. Princeton University Press, 1957. | Chapters 19–20: foundational treatise on dynamic programming and optimality equations. |
+| David Blackwell. *Discounted Dynamic Programming*. Annals of Mathematical Statistics 36(1):226–235, 1965. [DOI](https://doi.org/10.1214/aoms/1177700285) | Chapter 19: contraction operators and existence of stationary optimal policies in discounted control. |
+| Karl Johan Åström. *Optimal Control of Markov Processes with Incomplete State Information*. Journal of Mathematical Analysis and Applications 10(1):174–205, 1965. [DOI](https://doi.org/10.1016/0022-247X(65)90154-X) | Chapters 27, 40: foundational formulation of belief-state sufficiency in partially observed Markov control. |
+| Dimitri P. Bertsekas and Steven E. Shreve. *Stochastic Optimal Control: The Discrete-Time Case*. Academic Press, 1978; Athena Scientific reprint 1996. | Chapters 2, 19, 27: measurable selection on Borel spaces and discrete-time stochastic optimal control. |
+| Christos H. Papadimitriou and John N. Tsitsiklis. *The Complexity of Markov Decision Processes*. Mathematics of Operations Research 12(3):441–450, 1987. [DOI](https://doi.org/10.1287/moor.12.3.441) | Chapters 27, 37, 40: computational-complexity background for partially observed Markov control. |
+| Wendell H. Fleming and Halil Mete Soner. *Controlled Markov Processes and Viscosity Solutions*. 2nd ed., Springer, 2006. [DOI](https://doi.org/10.1007/0-387-31071-1) | Section 19.4: continuous-time controlled diffusions, classical HJB verification theorems, and viscosity boundaries. |
+| Ioannis Karatzas and Steven E. Shreve. *Brownian Motion and Stochastic Calculus*. 2nd ed., Springer, 1991. [DOI](https://doi.org/10.1007/978-1-4612-0949-2) | Chapters 9, 19, 22, 39: Brownian motion, predictable stochastic integration, Itô's formula, and Girsanov's theorem. |
+| M. S. Pinsker. *Information and Information Stability of Random Variables and Processes*. Holden-Day, 1964 (Russian original 1960). | Chapters 1, 5, 22, 27: Pinsker's inequality bounding total variation by relative entropy. |
+| Imre Csiszár. *I-Divergence Geometry of Probability Distributions and Minimization Problems*. Annals of Probability 3(1):146–158, 1975. [DOI](https://doi.org/10.1214/aop/1176996454) | Chapters 22, 23: KL $I$-projections and exponential-family geometry. |
+| Paul L. Williams and Randall D. Beer. *Nonnegative Decomposition of Multivariate Information*. arXiv:1004.2515, 2010. [Preprint](https://arxiv.org/abs/1004.2515) | Chapters 6, 15: background comparison on redundancy, unique information, and synergy. |
+| Wassily Hoeffding. *Probability Inequalities for Sums of Bounded Random Variables*. Journal of the American Statistical Association 58(301):13–30, 1963. [DOI](https://doi.org/10.1080/01621459.1963.10500830) | Chapters 16, 38, 40: exponential concentration inequalities for sums of bounded independent variables. |
+| Colin McDiarmid. *On the Method of Bounded Differences*. Surveys in Combinatorics, Cambridge University Press, pp. 148–188, 1989. [DOI](https://doi.org/10.1017/CBO9781107359949.008) | Chapter 16: bounded-differences concentration background for empirical functionals. |
+| Lucien Le Cam. *Convergence of Estimates Under Dimensionality Restrictions*. Annals of Statistics 1(1):38–53, 1973. [DOI](https://doi.org/10.1214/aos/1176342362) | Chapters 17, 40: two-point testing lower bounds on statistical distinguishability (Le Cam's method). |
+| Alexandre B. Tsybakov. *Introduction to Nonparametric Estimation*. Springer, 2009. [DOI](https://doi.org/10.1007/b13794) | Chapters 16, 17: minimax statistical lower bounds, Fano's method, and divergence bounds. |
+| Judea Pearl. *Causality: Models, Reasoning, and Inference*. 2nd ed., Cambridge University Press, 2009. [DOI](https://doi.org/10.1017/CBO9780511803161) | Chapters 2, 6, 12, 17, 38: distinction between interventional protocols and passive conditioning. |
+| George R. Price. *Selection and Covariance*. Nature 227:520–521, 1970. [DOI](https://doi.org/10.1038/227520a0) | Chapters 25, 39: exact covariance–transmission decomposition (Price's identity). |
+| Krishna B. Athreya and Peter E. Ney. *Branching Processes*. Springer, 1972. [DOI](https://doi.org/10.1007/978-3-642-65371-1) | Chapter 25: multitype branching processes, reproductive-value martingales, and $L^1$-degeneracy boundaries. |
+| Josef Hofbauer and Karl Sigmund. *Evolutionary Games and Population Dynamics*. Cambridge University Press, 1998. [DOI](https://doi.org/10.1017/CBO9781139173179) | Chapter 26: replicator dynamics, rock–paper–scissors invariants, and non-gradient cycling. |
+| Leonardo de Moura and Sebastian Ullrich. *The Lean 4 Theorem Prover and Programming Language*. CADE-28, Lecture Notes in Computer Science 12699:625–635, Springer, 2021. [DOI](https://doi.org/10.1007/978-3-030-79876-5_37) | Formal verification foundation: dependent-type kernel and standard axiom discipline. |
+| The mathlib Community. *The Lean Mathematical Library*. CPP 2020, ACM, pp. 367–381, 2020. [DOI](https://doi.org/10.1145/3372885.3373824) | Formal verification foundation: measure theory, Markov kernels, topology, and linear algebra library. |
 
 <a id="appendix-d"></a>
 
@@ -8030,3 +8185,39 @@ For Sections 39.75–39.81, the original actual source, finite-horizon optimalit
 Sections 39.82–39.88 are adopted through the public entry UC.RegisterDecisionRepresentation. RegisterDecisionObserver/Source and CountPosterior/History supply admissible-history statistics; RepresentationModel supplies the joint refinement derived from the source; FiniteJointDecisionDAG/Generator supplies full-action checking and shared artifacts; RepresentationNative/Payment supplies direct native execution and a literal prefix ledger; Bounds/Witnesses supplies actual array bounds and positive and negative boundary cases. Exact inputs, outputs, sources, axioms, and execution records appear in the [decision-representation delivery package](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/decision_representation_closure_v1/README.md).
 
 Sections 39.89–39.95 use the public entry UC.RegisterMechanismDecision. The new native S/G source and joint-history filtering, all-policy experimental coupling, finite fixed-mechanism regret certificates, the same privately randomized returned program, and the actual prefix ledger jointly support the conclusions. Source endpoints, actual inputs and outputs, and independent acceptance appear in the [mechanism-decision delivery package](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/mechanism_decision_closure_v1/README.md).
+
+## F.6 Chapter 40 Intermediate Layers and Pure-Kernel Upgrade Correspondences (v4.2)
+
+The table below connects the six intermediate-layer propositions of Chapter 40 to their production source modules and records the repository-wide pure-kernel axiom audit; the 106 stable P-IDs and earlier historical receipts remain unchanged.
+
+| Proposition / check | Source modules and key declarations | Present scope and boundary |
+|---|---|---|
+| [M-40.1](#m-40-1) | [FiniteSupportFixedPoint](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean), [SupportMemoryController](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean), [FiniteMemoryPhysicalSafety](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean), [FiniteMemorySeparation](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean) | Finite states and actions, arena cardinality $\le 2^{|X|}-1$; establishes greatest support fixed point, all-time physical safety, and strict separation over memoryless stationary policies |
+| [M-40.2](#m-40-2) | [InfiniteSupportViability](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/InfiniteSupportViability.lean): `initial_infiniteViability_iff_exists_all_times_zero_uncovered_policy`, `arbitrarily_long_zero_uncovered_iff_single_all_times_policy` | All-time zero-uncovered policies and quantifier exchange for finite states and nonempty finite actions; neither infinite action sets nor positive infinite-horizon survival hold unconditionally |
+| [M-40.3](#m-40-3) | [TotalFiniteWindow](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindow.lean), [TotalFiniteWindowWitness](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindowWitness.lean), [HomogeneousMemorySurvival](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/HomogeneousMemorySurvival.lean) | Total finite-window conditioning independent of fallback on positive-survival branches; monotone convergence of finite killed mass to infinite-trajectory survival probability for homogeneous closed loops |
+| [M-40.4](#m-40-4) | [ExecutableSupportController](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean), [ExecutableSupportControllerWitness](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean): `synthesize`, `synthesize_isSome_iff_exists_all_times_policy` | Fully computable `Option Program` synthesizer with proved soundness and completeness; requires an exact Boolean representation of transition support |
+| [M-40.5](#m-40-5) | [FixedSampleSupportNoGo](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FixedSampleSupportNoGo.lean), [NoisyFiniteRiskOracle](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean), [NoisyFiniteRiskOracleWitness](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracleWitness.lean) | Rules out margin-free uniform fixed-sample exact-zero support certification; provides post-selection joint-risk control under rational empirical TV budgets |
+| [M-40.6](#m-40-6) | [ObservableBeliefQuotient](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean), [ObservableBeliefQuotientWitness](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean): `closed_tests_iff_existsUnique_quotient` | Necessary and sufficient `ClosedTests` criterion for existence and uniqueness of quotient kernels on the continuous belief simplex, with three-state aliasing witnesses |
+| Pure-kernel axiom audit | [RegisterMechanismDecisionConsumer](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionConsumer.lean), [ExhaustiveAxiomAudit](../formalization/ueot-core/scripts/ExhaustiveAxiomAudit.lean), [106-item assumption classification](../formalization/ueot-core/docs/ASSUMPTION_CLASSIFICATION_106.md) | Integer-scaled dynamic programming `csolveInt` eliminates both `native_decide` occurrences; zero `sorryAx` and zero nonstandard axioms across all 1,051 modules |
+
+<a id="appendix-g"></a>
+
+# Appendix G. Register of Open Mathematical Problems
+
+**How to use this appendix.** Using the `O` (open problem) epistemic tag declared in Chapter 0, this register explicitly records twelve substantive mathematical problems lying beyond the boundaries of the theorems proved in this edition. Listing them openly provides sharp targets for subsequent mathematical research and prevents local finite witnesses or conditional interfaces from being misread as settled general theory.
+
+| Identifier | Mathematical problem and target statement | Why present theorems leave it open and what resolution requires |
+|---|---|---|
+| O-OPEN-01 | **Minimum-memory synthesis complexity for partially observed support controllers.** Given finite $(X,A,q,R,C)$ and a memory bound $m<|\mathcal W_*|$, what is the exact computational complexity class (NP-complete vs PSPACE-complete) and polynomial inapproximability lower bound for deciding existence of an all-time zero-uncovered controller with at most $m$ internal memory states? | M-40.1 and M-40.4 construct a complete synthesizer with memory count at most $2^{|X|}-1$, but do not establish minimal-automaton reductions or tight complexity lower bounds under a prescribed memory cap $m$. |
+| O-OPEN-02 | **All-time support viability and measurable selection on compact metric action spaces.** When state and action spaces are compact metric or standard Borel spaces with upper/lower hemicontinuous support correspondences, under what exact conditions does $(\forall T,\exists\pi_T)\iff(\exists\pi_\infty)$ hold with a Borel-measurable selector? | M-40.2 relies crucially on finite-intersection compactness over a finite action set; continuous action spaces require closed-graph topological hypotheses combined with Kuratowski–Ryll-Nardzewski measurable selection. |
+| O-OPEN-03 | **Post-selection deployment risk bounds from single-trajectory adaptive sampling without resets.** When generative resets `do(x,a)` are unavailable and data come from one dependent exploratory trajectory, how can self-normalized martingale concentration be coupled without leakage to data-selected quotient maps $q_\omega$, event envelopes, and path errors? | Chapter 38 (M-38.5–M-38.7) relies on independent within-row product sampling; along a single trajectory, empirical row counts are random stopping times coupled to candidate selection, requiring self-normalized change-of-measure bounds. |
+| O-OPEN-04 | **Finite-observation escape and path-risk bounds for non-atomic continuous Markov kernels.** When the microscopic source $P(x,a,\cdot)$ is a non-atomic Borel Markov kernel rather than a discrete PMF, how can the one-sided escape encoding of §36.8 be extended to continuous-state deployment risk certificates with sharp concentration constants? | Present `PathObservationEscape` and `ArbitraryObservationRisk` allow infinite observation spaces $Y$, but still require finite $X$ and $A$ for PMF summation and subset union bounds. |
+| O-OPEN-05 | **Quantitative quasi-stationary prefactors and pseudospectral sensitivity for non-self-adjoint killed operators.** For irreversible absorbing processes with a strict spectral gap but large eigenvector condition number or nontrivial pseudospectrum, how can explicit transient prefactors $C_g$ and mixing horizons be certified from finite observations? | P-QSD-04 and P-GOA-04 rely on self-adjoint/reversible structure or symmetric perturbations; for general non-normal killed kernels, transient amplification is governed by pseudospectral geometry and lacks a unified formalized bound. |
+| O-OPEN-06 | **Formal verification of viscosity-solution HJB comparison and feedback synthesis.** When the continuous-time optimal value function $V$ fails to be $C^2$ (for example under state-space boundary constraints or switching surfaces), how can the Crandall–Ishii lemma, comparison principle, and suboptimal feedback synthesis be formalized in Lean 4? | P-CTL-03 and §§39.39–39.45 require classical bounded $C^2$ regularity with explicit second-derivative bounds and do not yet cover nonsmooth viscosity solutions. |
+| O-OPEN-07 | **Long-horizon error propagation for approximate observable belief quotients ($\varepsilon$-`ClosedTests`).** If $\tau:\Delta(X)\to[0,1]^m$ satisfies one-step test closure only up to defect $\varepsilon>0$, what are sharp discounted and ergodic prediction-error bounds in terms of $\varepsilon$ and nonlinear filter-contraction rates? | M-40.6 characterizes exact `ClosedTests` ($\varepsilon=0$) for existence and uniqueness of quotient kernels; approximate test closure requires coupling fiber-diameter defects with projective Hilbert-metric or Dobrushin filter contraction. |
+| O-OPEN-08 | **Stochastic finite-population feedback with endogenous mutation and carrying-capacity competition.** When multitype populations experience rare cross-program mutation $K_{\theta\theta'}>0$ alongside shared carrying capacity and density-dependent competition, over what metastable time window do empirical proportions track the principal selection branch? | Parts IV–V of the Core Synthesis establish growth classification and independent-cohort concentration under faithful copying and fixed per-capita open inflow; nonlinear crowding requires Freidlin–Wentzell large-deviations and metastability analysis. |
+| O-OPEN-09 | **Sufficient local-interaction criteria for renormalization-group (RG) predictive compatibility.** In spatially coupled lattice or field models under block-spin coarse-graining sequences, what concrete spectral-gap and locality conditions suffice for C1 predictive sufficiency and P9 cross-scale dynamical closure to hold asymptotically? | Chapter 34 proves that arbitrary coarse-graining does not automatically yield RG predictive closure (giving explicit gap counterexamples), leaving constructive positive theorems for interacting lattice systems open. |
+| O-OPEN-10 | **General algebraic-geometric classification of task-dependent minimal representations across multiple compiled programs.** Part III of the Core Synthesis proves for two programs by hand the task-dependent $2/3/4$ minimal-representation split and the rank-three boundary of $(s,b,bq)$; for $k$ compiled programs on $d$-dimensional body registers, how does this classify with a unified Lean rank theorem? | The present $2/3/4$ classification and rank-three Jacobian determinant are recorded as written proofs and exact arithmetic checks (see `LEAN_API_SCOPE.md`), without a general multi-program formalization. |
+| O-OPEN-11 | **Minimax experiment–control duality rates for multiple unknown fault mechanisms and long horizons.** When candidate fault-mechanism families satisfy $|\mathcal M|=m\ge 3$ with paid diagnostic probes and finite-wallet horizon $H\to\infty$, what is the asymptotic minimax regret rate in $(H,m)$ and can optimal randomized controllers be computed in polynomial time? | Sections 39.89–39.95 establish exact dual values and pure-kernel `decide` proofs for two mechanisms $\{S,G\}$ at short horizons; general mechanism counts and asymptotic horizon scaling remain open. |
+| O-OPEN-12 | **Interventional canonical Markov boundaries under deterministic constraints.** When joint laws violate strict positivity because of deterministic functional constraints or manifold support, P-INT-03 fails; how can interventional kernels define a unique canonical minimal structural interface with finite-sample consistent estimators? | P-INT-03 relies on the intersection property to rule out deterministic aliases; canonical interventional representatives and sample complexity under deterministic constraints remain to be generalized. |
+
