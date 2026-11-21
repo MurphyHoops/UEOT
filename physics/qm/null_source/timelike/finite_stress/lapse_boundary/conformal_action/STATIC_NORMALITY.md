@@ -198,7 +198,9 @@ For arbitrary normal inputs the trace limit exists but can vanish.
 
 ## U5. Spectral subtraction does not settle the gravitational phase
 
-At finite K let E_gs,N,K=(n_s/2)Tr Omega_N,K. Then
+At finite K let E_gs,N,K=(n_s/2)Tr_(Pi_K H) Omega_N,K.
+This trace is over the finite low-mode block only, not the free-tail
+extension used in the cutoff convergence proof. Then
 
  F_K^(0)=exp{iT[E_gs,+,K-E_gs,-,K]} F_K^bare.               (U12)
 

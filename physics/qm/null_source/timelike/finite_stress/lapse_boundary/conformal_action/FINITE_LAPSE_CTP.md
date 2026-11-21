@@ -158,11 +158,14 @@ Gram positivity. The quadratic cumulant model with N>=0 is also
 a positive Gaussian kernel, but is not identified with the full
 nonlinear influence at finite amplitude.
 
-Completed: a same-state, finite-initial two-lapse normal influence,
+Completed here: a same-state, finite-initial two-lapse normal influence,
 its phase-correct source/contact mapping and renormalized second
-cumulants. Still open: the full finite-amplitude all-field limit,
+cumulants. STATIC_NORMALITY subsequently constructs the full
+finite-amplitude normal limit in the named spectral-zero prescription.
+The locally covariant physical-phase limit remains open, as do
 smooth metric/boundary renormalization, all tensor columns and the
-joint Einstein-CTP state/evolution.
+joint Einstein-CTP state/evolution. HADAMARD_SPLIT separately
+rejects upgrading this same abrupt old input to a Hadamard state.
 
 Primary phase reference checked: Guaita--Hackl--Quella,
 https://arxiv.org/abs/2409.11628, sections IV.1 and IV.3.
