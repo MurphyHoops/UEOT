@@ -29,3 +29,26 @@ this is not 58 analytic proof reviews. CP1 input omission remains recorded and r
 Observed exact-head science CI 44885931899/job136791101762: 14 PASS (13 science plus 1 scope),
 artifact14699478002; publication44885931902 also succeeded.
 These are the current cohort totals, not CP1 plus CP2 added as independent results.
+
+
+### CP3 immutable review and CP4 corrections
+
+CP3 265012b5fc22904e8439103c8c5da13f6778d880 passed the local 21-entry
+runner (20 scientific entries plus one binding/scope entry), with
+190 results reused and 698 predecessor scientific files unchanged.
+Three native agents actually read the immutable source. Their review
+identified three precision corrections: a containing-cap causal bound
+does not require filling that cap; the original-variable scalar-clock
+solution includes the factor a; and the zero-mode temporal stress
+derivative is represented by momentum rather than by a static slice
+configuration. CP4 corrects these wordings without changing the
+underlying formulas. CP4 also supplies the previously abbreviated
+absolute-first-stress-moment convergence proof. Immutable blob
+ledgers and exact-head CI observations are recorded separately.
+
+The added UV entry controls the declared common-cutoff quadratic
+coefficients and fixed-lapse u–u weak pairings. It is not a new proof
+of the already frozen full-field kernel existence and not a proof of
+the quantum-geometric continuum limit. An additional initial
+geometric derivative is incorporated within NEGATIVE_RECOVERY,
+without incrementing the scientific entry count.

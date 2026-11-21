@@ -51,3 +51,19 @@ h_i 是前驱 QUIET_WINDOW 一次选择 c=exp(-20000) 的实际历史；
 CP1曾遗漏非零U0；该完整输入结论已经撤回。
 CP2补回U0及一二阶导数后经三名只读代理重新验收，历史记录保留。
 本轮仍在继续，时长及后续检查点以[会话记录](SESSION.md)和[审计](AUDIT.md)为准。
+
+
+## 后继闭环：实际共同截止的二阶 CTP
+
+[ACTUAL_UV_BRIDGE.md](ACTUAL_UV_BRIDGE.md) 使用原实际非静态模式、
+同一 incoming 态和 AE_K action，给 potential response 的 O(K^-2)
+测试范数尾、平滑 noise 的 O(K^(1-2m)) 尾（m=1,2,3），并保留
+参考 k=1 接触、真实低模 NOON 记录及零模/壳层相关。
+由共同极限得到同态正型有序核和该态的 GNS–L² 域；
+固定共形 lapse 的 u–u 弱 Hessian 同时控制链式接触项。
+这没有重复签收已有全场核存在性，也不证明 G_K→G_U、
+任意 lapse/tensor 行、联合量子几何传播子或有限幅影响泛函的极限。
+
+NEGATIVE_RECOVERY 的一次相位修正还补齐一个初始膨胀率导数，
+保持旧完整 raw 源与两项初始均值；巨大几何方差代价仍存在，
+原共同正时间历史仍未恢复。

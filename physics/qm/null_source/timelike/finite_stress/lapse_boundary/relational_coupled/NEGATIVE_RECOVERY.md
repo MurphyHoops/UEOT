@@ -197,3 +197,50 @@ but the fixed old source and a narrow geometric state cannot supply
 them together in the declared quantization. A physical replacement
 must address the tail/state/domain costs and the subsequent common
 history, not just tune two means.
+
+
+## N6. Reflection and one additional initial geometric derivative
+
+The real two-packet construction has a limitation that can be computed:
+its initial derivative of the mean expansion with respect to u is zero,
+whereas the prescribed history requires h'_eta/h. Here prime_eta denotes
+the original conformal derivative, not differentiation with respect to u.
+
+This derivative is legitimate in the weak-energy evolution. In the
+W/R0 representation use B_R=kappa/(1+kappa/R). It preserves the common
+form domain: the ground-state product rule and |B_R'|<=1 give
+q_eta[B_R psi]<=2R²q_eta[psi]+2<kappa^-1>.
+The commutator form is bounded uniformly in R by
+2|alpha|sqrt(q_eta I), I=<kappa^-1>, alpha=1/(2g).
+Apply the Lions integrated Ehrenfest identity, then dominated convergence
+on a compact u interval using continuity in the common form norm.
+The result is a continuously differentiable mean
+\[
+ {d\langle\kappa\rangle\over du}
+     ={1\over g}\langle\kappa^{-1/2}P_\kappa\kappa^{-1/2}\rangle .
+                                                               \tag{N7}
+\]
+This does not assume the unresolved strong-domain transport of the
+original raw Hrel.
+
+Multiply the once-selected real packet profile by exp(i b kappa²/2).
+Its current in N6 is b, its q_eta increases by b²h, and its mean kappa
+and complete original-phi source marginal are unchanged.
+Choose once
+\[
+ b=g\,h'_\eta/h .
+\]
+Then the initial derivative equals the old h'_eta/h exactly.
+The G expectation shifts by -b²h/(2|g|), independently of R.
+The same continuity bracket therefore fixes one new R_*; at R_up the
+extra negative term after multiplication by h³ is
+|g|(h'_eta)²h²/2, below the previous strict margin by the frozen bounds.
+The lower bracket remains negative.
+
+Thus the initial expansion mean, pure geometric momentum mean and this
+one initial expansion derivative can all be matched in a normal joint
+state with the exact old raw source. The enormous third moment and
+variance bounds still apply. This is not recovery of the old positive-
+time history: the canonical P_kappa includes, among other terms,
+-H_K<kappa²>/4, whose large-tail value has not been matched, and the
+remaining geometric jets and state preparation still require a proof.

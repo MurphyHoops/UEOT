@@ -40,6 +40,7 @@ require(s.simplify(lower.subs(RR,Rup)*hh**3-target)==0,"Finite large-tail upper 
 require(below(3*iv.exp(60)*h*h+iv.mpf(".02")*iv.exp(60)*h**8/60000+iv.mpf(".0004")*h**12/60000,1),"Strict upper-bracket remainder")
 require(below(3*iv.exp(60)*h*h+iv.exp(30)*h**4+h**6,1),"Strict low-packet sign budget")
 require(below(h**6+iv.mpf(".02")*iv.exp(160)*h**3,iv.mpf(".4")),"Large-tail necessary lower resource margin")
+require(below((-g)*iv.exp(-2316)*h*h/2,1),"Phase-corrected initial jet stays within IVT margin")
 finish("negative_recovery.py",dict(
  actual_K=K,real_nonzero_mode_count=d,occupation_support_norm_bounds={str(n):M[n] for n in M},
  raw_source_cube_integer_bound=product,raw_source_cube_log_upper=160,
@@ -56,6 +57,9 @@ finish("negative_recovery.py",dict(
  witness_T3_lower="h^-3/2",witness_R_lower="h^-2/3",witness_variance_lower="h^-1/12",
  log_variance_strict_lower=outward(19980-iv.ln(12)),
  log_relative_variance_strict_lower=outward(3*19980-iv.ln(12)),
+ one_initial_expansion_u_derivative_can_also_be_matched=True,
+ initial_phase="exp(i*g*hprime_eta/h*kappa^2/2)",
+ raw_Hrel_strong_domain_transport_used_for_Ehrenfest=False,
  full_old_mean_history_recovered=False,semiclassical_geometry_recovered=False,
  autonomous_preparation_constructed=False,source_cube_is_renormalized_continuum_energy=False),
  [new+"coefficient_window.json",new+"geometric_momentum.json",new+"source_budgets.json",

@@ -50,3 +50,5 @@ The negative-g large-tail state matches initial means only. The local
 preparation gate applies to the full local prescribed-background QFT, not to
 sharp finite-K microcausality. All full-field, old-history and apparatus
 completion flags remain OPEN.
+
+CP4 adds one actual common-cutoff quadratic CTP certificate with fixed-conformal-lapse u-u weak contact tails; all full quantum-geometric continuum and device claims remain OPEN.

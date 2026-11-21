@@ -2,7 +2,7 @@
 import ast,json
 from pathlib import Path
 from common import *
-SCIENCE=['coefficient_window', 'coupled_forms', 'snapshot_domain', 'physical_slice', 'ordering_domain', 'lens_evolution', 'source_budgets', 'mean_recovery', 'preparation_frontier', 'cutoff_gate', 'all_sign_evolution', 'geometric_momentum', 'shifted_state', 'g_zero_boundary', 'boundary_matching', 'matter_clock', 'angular_clock_input', 'symmetric_clock', 'raw_source_boundary', 'negative_recovery']
+SCIENCE=['coefficient_window', 'coupled_forms', 'snapshot_domain', 'physical_slice', 'ordering_domain', 'lens_evolution', 'source_budgets', 'mean_recovery', 'preparation_frontier', 'cutoff_gate', 'all_sign_evolution', 'geometric_momentum', 'shifted_state', 'g_zero_boundary', 'boundary_matching', 'matter_clock', 'angular_clock_input', 'symmetric_clock', 'raw_source_boundary', 'negative_recovery', 'actual_uv_bridge']
 allowed={"common","sympy","math","json","fractions","itertools","mpmath"}
 for name in SCIENCE:
     src=(HERE/(name+".py")).read_text();tree=ast.parse(src)

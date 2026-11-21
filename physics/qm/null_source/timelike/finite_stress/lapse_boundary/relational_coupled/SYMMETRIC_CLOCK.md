@@ -149,7 +149,7 @@ dp2=P1 dtheta. The exact physical unitary to the positive R_T sector is
 \]
 It preserves norm for any spectral type nu. Fourier transforming S5
 in phi2 gives exactly the positive-clock solution
-exp(+i phi1 Omega)(2Omega)^-1/2 Vxi of MATTER_CLOCK.
+a exp(+i phi1 Omega)(2Omega)^-1/2 Vxi of MATTER_CLOCK.
 
 If tau is supported on a closed positive subband [lambda0,lambda1]
 and g is supported in |theta|<pi/4, then

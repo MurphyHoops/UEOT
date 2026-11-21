@@ -84,8 +84,7 @@ After the same T_a identification, the original minimally coupled
 massless raw source stress at any point of S3 is a real Weyl quadratic
 in
 R_i={P_0,j, p_osc,j, omega_j q_osc,j}.
-Zero-mode Q does not occur: its time derivative is zero and its spatial
-harmonic is constant. For example, in an orthonormal frame
+Zero-mode configuration Q0 does not occur: the massless stress contains derivatives only, the zero spatial harmonic has vanishing spatial gradient, and its time derivative is represented by P0. For example, in an orthonormal frame
 T_nn=a^-4[p_raw(x)²+|grad q(x)|²]/2. The momentum and spatial stress
 components have the analogous symmetrized derivative products.
 
@@ -162,3 +161,25 @@ two-time tensor CTP response, general spatial gravitational constraints,
 the old quiet-history recovery and a calibrated device are still
 separate tasks. The absence of a joint normal geometric boundary state
 is fully compatible with these finite source limits.
+
+
+### Absolute first moments under the moving finite-mode stress
+
+The p=1 conclusion also concerns absolute first moments, not only signed
+means. On the common lambda0 core each T_alpha(a) is essentially
+self-adjoint and depends strongly continuously on a. The resolvent
+identity on that core, whose (T_alpha(a_c)+i) image is dense, proves
+strong resolvent convergence as a tends to a_c.
+
+For a core vector psi the uniformly bounded ||T_alpha(a)psi||² controls
+the spectral absolute-value tail beyond R by R^-1||T_alpha(a)psi||².
+Bounded continuous spectral approximants therefore give continuity of
+<psi,|T_alpha(a)|psi>. The uniform form bound |T_alpha(a)|<=C lambda0
+then extends this continuity by lambda0-form approximation to
+D(lambda0^1/2). Polarization yields weak operator continuity of the
+uniformly bounded sandwich lambda0^-1/2 |T_alpha(a)| lambda0^-1/2.
+Pairing this with the p=1 weighted trace limit proves convergence of
+the absolute first stress moment for every stated normal finite-energy
+density. No operator-Lipschitz property of the absolute-value function
+is assumed. The p=2 symmetrized weak second moments retain their
+separate product-domain qualification.

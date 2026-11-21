@@ -162,9 +162,10 @@ globally changed field-mean output is
 \[
                     \eta_{\rm out}-\eta_{\rm pre}+r\ge\pi.
 \]
-A preparation wholly within the current 1/50 conformal window must
-therefore cover a cap of radius at least pi-1/50 to escape this
-particular causal obstruction. A longer real preparation past,
+A preparation wholly within the current 1/50 conformal window cannot
+remain confined to any fixed cap of radius r<pi-1/50. Any cap known
+to contain the full coupling support must meet that radius bound.
+This does not require the coupling to fill every point of a large cap. A longer real preparation past,
 distributed apparatus, or a local clock goal is not excluded.
 No apparatus stress or experiment time in seconds is inferred.
 

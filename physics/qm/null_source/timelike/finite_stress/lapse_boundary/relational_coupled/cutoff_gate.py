@@ -34,7 +34,7 @@ finish("cutoff_gate.py",dict(
  frozen_V_comparison_C2_tail_bounds=["M^3/(2K^2)","M^2/K^2","3M/(2K^2)"],
  demonstration_M=2,demonstration_K=64,demonstration_tail_bounds=[outward(x) for x in tails],
  static_high_frequency_Hessian_log_divergence_cancels=True,
- actual_nonstatic_incoming_CTP_limit_proved=False,
+ actual_nonstatic_finite_amplitude_incoming_CTP_limit_proved=False,
  isolated_W_fixed_Fock_limit_rejection_reused=True,
  normal_ordering_scalar_subtraction_makes_sharp_Q_L2=False,
  combined_full_propagator_limit_excluded=False,
