@@ -8,6 +8,8 @@ Core只读、GI排除，前驱190项复用，698个源/证明/结果/审计文�
 新的runner只执行本目录科学脚本和本范围入口；source before/after保持一致。
 每个科学JSON绑定自己的源码、新common、证明正文与实际输入字节。
 
-当前正结果属于声明的finite-K量子化候选。原完整snapshot可自伴而不半有界；
+联合量子态与完整算子结果属于声明的finite-K量子化候选。
+同一实际背景的二阶CTP与齐次因果逆另给声明域内的共同截止极限；
+两者尚未合成联合量子几何态的全场极限。原完整snapshot可自伴而不半有界；
 moving-frame正型不能冒充原frame下界；normal physical slice不等于旧mean恢复。
 完整全场、任意局域Einstein约束、实际总装置和经验统一仍OPEN。

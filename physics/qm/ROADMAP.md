@@ -1,9 +1,9 @@
 <!-- RELATIONAL_COUPLED_CURRENT -->
-本轮更新：完整有限模式联合演化、原Πg恢复门、保旧raw源的大尾正常态、scalar-clock物理解空间与准备成本；物理统一仍OPEN。
+本轮更新：同一作用量的完整有限模联合演化、正常物理态、完整源历史恢复的严格限制，以及实际共同截止CTP与齐次因果逆强极限；物理统一仍OPEN。
 
 # UEOT Physics Roadmap
 
-> 2026-11-21 最新接续：[完整有限模演化、原几何动量与统一验收](null_source/timelike/finite_stress/lapse_boundary/relational_coupled/README.md)。已接通正常物理切片，完成正负g演化及Πg恢复门；全场、真实装置和物理统一仍OPEN。190项复用、698个前驱文件冻结。下文旧节保留其历史范围。
+> 2026-11-21 最新接续：[完整有限模演化、原几何动量与统一验收](null_source/timelike/finite_stress/lapse_boundary/relational_coupled/README.md)。已接通有限K正常物理切片，完成完整source第一jet恢复排除及实际齐次retarded逆共同截止强收敛。22个科学入口加1个绑定入口；190项复用、698个前驱文件冻结。联合量子态的空间K极限、真实装置和物理统一仍OPEN。下文旧节保留其历史范围。
 
 > 2026-11-21 接续：[实际 lapse、完整源噪声、因果响应与准备验收](null_source/timelike/finite_stress/lapse_boundary/INPUTS_AND_NEXT_TEST.md)。新入口复用163项并冻结600个前驱科学文件；物理统一仍OPEN。
 

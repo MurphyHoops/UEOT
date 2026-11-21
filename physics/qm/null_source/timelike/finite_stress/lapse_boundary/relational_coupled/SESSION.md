@@ -1,7 +1,7 @@
 # 2026-11-21 第二工作段
 
 实际起点07:34:18 UTC（上海15:34:18），最低3小时终点10:34:18 UTC。
-当前为进行中记录，不预填最终时间。
+以下保留发生时序；实际最低时长观察和后续验收见文末及session_timing.json。
 
 恢复现场：本地/远端HEAD均2eb6ef97，原分支clean，PR468 open draft。
 上下文完整时直接用现行源码核对，不重新启动旧科学验证或额外工作区。
@@ -113,3 +113,38 @@ state, autonomous apparatus, or physical unification is claimed.
 This section records prepared CP5 derivations, not an advance declaration
 of immutable CP5 review or final CI success. The actual reviews and CI
 observations are recorded separately after they occur.
+
+
+## CP5 actual source review and CP6 clarification
+
+At immutable CP5 5042bd6c85c1a3e289d4099ec4ba8507934bede7, A/B/C actually
+read 8/8/36 files or semantic diffs. Root matched all 52 reported Git blobs.
+The cumulative ledger now contains 15 checkpoint review records,
+286 reported identities and 176 distinct commit-file pairs,
+with zero mismatches. C separately verified 85 manifest hashes, 244 JSON
+source bindings and the unchanged 698-file inherited manifest. Hash checks
+are not counted as additional analytic proof reviews.
+
+The same-head science run 44894406070/job136816867572 and existing
+manuscript/PDF run 44894406080 both succeeded. Root and C independently
+matched decoded-log SHA256
+8b2662c78df3ae8566c67eb67b1d97ec291455499b8d4f483662bd0a34c45e94.
+The log contains all 23 PASS entries, the actual head, and 190/698 reuse.
+Artifact14703014313 has digest
+sha256:6b1a55d8d45d019d98bfe8c22910224c3ee65474f00f5839579c21d63bd5d659.
+
+The reviewers accepted the stated mathematical chains and identified two
+clarifications now made for CP6: N7 writes the combined raw endpoint/W
+phase cancellation explicitly and does not claim W alone commutes with
+D0; N10 names the full joint initial generator H_* and defines J only as
+the initial common-core commutator coefficient. The initial H-norm Taylor
+argument needs no additional unbounded-moment differentiability theorem.
+These corrections have not yet been counted as an immutable CP6 review.
+
+The actual minimum-duration observation was 2026-11-21 10:35:07 UTC,
+18:35:07 Asia/Shanghai: 10849 seconds after the original
+07:34:18 UTC start (3 hours 49 seconds). Review, verification and delivery
+continue after this observation. Interruption recovery did not reset the
+clock and did not turn pending agent reviews into completed reviews.
+The precise timing record is session_timing.json; duration is not physics
+evidence. Physical unification remains OPEN.

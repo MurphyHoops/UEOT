@@ -258,9 +258,13 @@ V_s=exp(i s D0). It is bounded and unitary, and
  V_sP^2V_s^\dagger=e^{-2s}P^2,\qquad
  [P^2,V_s]=(1-e^{-2s})P^2V_s .
 \]
-Under the raw-phi, W, R0 and T_a identifications this is the same
-observable: the extra matter transformations are dilations commuting
-with D0, and the remaining phase is geometric. V_s and its adjoint
+This assertion concerns the combined raw-to-comparison map. The raw-to-bulk
+map contains e^(i kappa Q) T_a, while W^dagger=e^(-i S_g)e^(-i kappa Q).
+The two source-dependent phases therefore cancel:
+W^dagger e^(i kappa Q) T_a=e^(-i S_g) T_a. After R0^dagger, the remaining
+zero-mode matter transformations are dilations commuting with D0 and the
+residual phase is geometric. The transported V_s consequently has the same
+form; W alone is not asserted to commute with D0. V_s and its adjoint
 preserve the common weak-energy form domain: zero momentum only scales
 by a finite constant, so lambda0³ remains equivalent, while the
 geometric form is unchanged. The commutator form is controlled by the
@@ -526,7 +530,10 @@ or experimental lower bound in N14.
 For the actual N4/N6 initial raw product family, one can go further
 even if the first derivative is compared using the harmonic clock
 rate 1/I instead. Let sigma be the old raw source, Hs=Hraw(A),
-I2=<kappa^-2> and J=(dI/du)_i. At the initial slice,
+I2=<kappa^-2> and J=<i[H_geometry,kappa^-1]>_i, the initial
+common-core commutator coefficient. This definition does not invoke a
+global theorem differentiating the unbounded inverse-kappa moment.
+At the initial slice,
 \[
  \sigma'=-iI[H_s,\sigma],\qquad
  \sigma''=-i[I H_s'+JH_s,\sigma]
@@ -535,9 +542,11 @@ I2=<kappa^-2> and J=(dI/du)_i. At the initial slice,
 Both formulas are legitimate here. Each rank-two source support vector
 is Schwartz and each geometric packet, including its phase, is smooth
 with compact support away from kappa=0. These are in every required
-initial common-core product domain. The approximation
-psi_app(u)=psi-i delta u H0 psi
-+delta u²(-i H0'-H0²)psi/2 has an H-valued residual O(delta u²).
+initial common-core product domain. Write H_*=Hrel,raw(u_i) for the full raw joint generator, and
+H_*' for its initial coefficient derivative on this common core;
+H_* here is not the source-only H0 used elsewhere. The approximation
+psi_app(u)=psi-i delta u H_* psi
++delta u²(-i H_*'-H_*²)psi/2 has an H-valued residual O(delta u²).
 Weak Duhamel and unitarity give norm error O(delta u³).
 Partial trace of the finite-rank density then justifies the displayed
 second-order expansion without global strong-domain transport.
