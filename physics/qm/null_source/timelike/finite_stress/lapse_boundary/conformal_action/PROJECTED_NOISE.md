@@ -109,8 +109,9 @@ bounded spatially nonconstant fluctuation.
 
 ## L4. The SAME observable with a backreacting independent apparatus
 
-Let a source-independent K_app commute H_c, with a normal apparatus
-state rho_A on a common invariant spectral interval I_A. Assume the
+Let a source-independent K_app commute H_c, with the INITIAL PRODUCT
+state |0><0| tensor rho_A and rho_A a normal apparatus state on a
+common invariant spectral interval I_A. Assume the
 whole rectangle N in [0,L], e in I_A is admitted for
 T(u)=E_c+N+f(u)e. Actual U is the same reduced h(u,T), and the observable
 is A_(m,L) tensor I_A. Let mu(de)=Tr rho_A dP_K(e). Then
@@ -126,6 +127,11 @@ expectation depends only on its K spectral law.
 For the three-field apparatus of LOCAL_AUTONOMOUS, f=exp[-2(u-.55)].
 Its complete energy-class hull plus L fits inside the new 1e8 slab.
 
+For the following comparison also require the SAME .9 kappa and
+4e11 sqrt(Delta) lower margins on every intermediate spectral segment
+from the vacuum energy to the full source/apparatus rectangle.
+This is stronger than mere branch admission. The positive local
+device and the entire 1e8 slab satisfy it.
 With S_max=sup|f e|, the SAME fixed vacuum-profile comparison has
 
  |Theta_(n,e)-n tau0|<=Gamma[n²+2nS_max],

@@ -1,5 +1,8 @@
 # O. All finite-cutoff scalar causal commutator rows and equal-time contacts
 
+For m>=3, work on the same stationary fixed-background Einstein-
+cylinder conformal vacuum, in conformal time. This is distinct from
+the nonlinear actual u-clock covariance in PROJECTED_NOISE.
 Use the explicit creation convention in SPATIAL_NOISE:
 v_n=(1,-in/ell,b(n)), b(z)=[1-3z²/ell]/[2(ell-3)],
 and W_ij(t)=sum_n w_n conjugate(v_n,i)v_n,j exp(-int).

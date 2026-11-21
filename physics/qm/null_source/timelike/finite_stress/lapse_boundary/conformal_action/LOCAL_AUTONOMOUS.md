@@ -165,6 +165,8 @@ source bands [999,1001] and [-1001,-999], w_chi=10,
 probe band [-50,50], w_p=100, threshold Q_psi=0.
 Both source classes have the SAME total K spectral law for reflected
 source input packets. The guaranteed displacement is d=.048951.
+The certificate uses the strictly smaller distance .04895 and
+checks both threshold margins from the actual A1 and momentum bands.
 The common K band is [50449013,50552263].
 The output contrast is >=1-2epsilon. This is a source-sign record,
 not an energy record.

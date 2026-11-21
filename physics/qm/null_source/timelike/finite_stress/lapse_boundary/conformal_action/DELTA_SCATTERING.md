@@ -81,8 +81,8 @@ Hence
 ||W_in-I tensor chi_free||<=e_in=sqrt(2)R(L,0).
 At positive tau with d=tau p_-/m-L>0, the exact interacting state
 differs from the complete free outgoing R/T superposition by at most
-sqrt(2)R(d,tau). Its two outgoing momentum supports are disjoint,
-so its negative-momentum probability is exactly
+sqrt(2)R(d,tau). The COMPARISON outgoing state's two momentum supports are disjoint,
+so that comparison state's negative-momentum probability is exactly
 integral |r_E|²|phi|² dp. No reflected branch is discarded.
 
 ## H4. Exact critical evolution and controlled spectral comparison

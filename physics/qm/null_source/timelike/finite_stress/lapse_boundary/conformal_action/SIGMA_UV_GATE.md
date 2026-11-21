@@ -12,7 +12,7 @@ On a flat Euclidean spacetime patch take the background
 
  chi=chi0, phi=v x0, psi=0, with k_c'(chi0) nonzero.
 
-It is on shell because Gamma^A_(phi phi)=0. The unit tangent is
+It is on shell for the MATTER equations because Gamma^A_(phi phi)=0. The unit tangent is
 e_phi; an orthonormal transverse basis is e_chi and
 (e_psi-k_c e_phi)/sqrt(1-k_c²). Direct target curvature calculation
 gives the two Jacobi eigenvalues
@@ -46,6 +46,11 @@ integrated heat total derivative vanishes. Local derivative field
 redefinitions may move this term within a four-derivative basis; they
 do not justify silently keeping only the original two-derivative
 action. No full counterterm-basis classification is claimed here.
+In a coupled gravity EFT, a derivative-dependent metric redefinition
+may trade some matter quartics for curvature--matter terms using the
+Einstein equations. Our flat matter background is not a solution of
+the full Einstein equations. Such a trade still changes the stated
+action, couplings and metric observable, and requires new lapse rows.
 
 A second witness follows the controller itself:
 chi=vx0, phi=psi=0. Its transverse sectional curvatures are
@@ -97,6 +102,11 @@ Then (J3) reads
 
  delta T=-V C_q f(u)^4[(P_phi-k P_psi)/(1-k²)]^4,
  f(u)=a_*²/a².                                         (J4)
+
+Equation (J3) is a first-order fixed-momentum variation, not a
+globally self-adjoint/semibounded exact quartic Hamiltonian. No
+renormalized finite coefficient or quantitative loop-smallness
+assumption has yet been assigned.
 
 The old two-derivative term scales as fK. In general the new
 coefficient depends on Q_chi and does not commute with P_chi².

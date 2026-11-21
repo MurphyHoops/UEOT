@@ -24,7 +24,14 @@ def moments(center,width):
  v4=width**4*(iv.mpf(1)/80-1/(4*iv.pi**2)+3/(2*iv.pi**4))
  return (center**2+v2)/2,center**2*v2+(v4-v2*v2)/4
 def record(name,wc,wp,d,source_low,source_high,threshold):
- wc=iv.mpf(wc);wp=iv.mpf(wp);distance=iv.mpf(d)
+ wc=iv.mpf(wc);wp=iv.mpf(wp);distance=iv.mpf(d);theta=iv.mpf(threshold)
+ A1=interval(iv.mpf('.49').a,(iv.mpf('.49')/iv.mpf('.9999')).b)
+ low_center=-A1*interval(*source_low)/10000
+ high_center=-A1*interval(*source_high)/10000
+ low_margin=low_center-theta
+ high_margin=theta-high_center
+ require(bool(distance.b<low_margin.a) and bool(distance.b<high_margin.a),
+         'declared distance certified from source bands, A1 and threshold')
  pm=10000-wc/2;pp=10000+wc/2;pr=wp/2;ps=iv.mpf(1001)
  lows=[];highs=[]
  for lo,hi in [source_low,source_high]:
@@ -68,6 +75,10 @@ def record(name,wc,wp,d,source_low,source_high,threshold):
  return {'source_bands':[source_low,source_high],
  'controller_momentum_width':outward(wc),'probe_width':outward(wp),
  'threshold':threshold,'probe_threshold_distance':d,
+ 'low_trial_center_bounds':outward(low_center),
+ 'high_trial_center_bounds':outward(high_center),
+ 'low_threshold_margin_bounds':outward(low_margin),
+ 'high_threshold_margin_bounds':outward(high_margin),
  'class_energy_bands':[outward(interval(lo.a,hi.b)) for lo,hi in zip(lows,highs)],
  'common_energy_band':outward(band),'common_midpoint':outward(mid),
  'kappa_bounds':outward(extrema(rows,'kappa')),'tau_bounds':outward(tau),
@@ -77,8 +88,8 @@ def record(name,wc,wp,d,source_low,source_high,threshold):
  'total_effect_error_bound':outward(err),'readout_contrast_lower_bound':outward(gap),
  'initial_contrast_upper_bound':outward(2*ein),
  'balanced_total_K_mean':outward(mean),'balanced_total_K_variance':outward(var)}
-sign=record('sign',10,100,'.048951',[-1001,-999],[999,1001],0)
-energy=record('energy',24,220,'.02445',[-1,1],[999,1001],-.0245)
+sign=record('sign',10,100,'.04895',[-1001,-999],[999,1001],'0')
+energy=record('energy',24,220,'.02445',[-1,1],[999,1001],'-.0245')
 finish('local_autonomous.py',{'sign_record':sign,'energy_record':energy,
  'action_four_dimensional_classically_local':True,
  'quantization':'three homogeneous scalar degrees plus declared conformal sector',

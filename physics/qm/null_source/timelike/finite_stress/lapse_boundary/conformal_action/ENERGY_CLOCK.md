@@ -61,7 +61,9 @@ For high-mode-vacuum projections P_K, exact spectral commutation gives
 U_K P_K=U_infinity P_K and uniform strong/adjoint convergence.
 For any normal rho, normalized P_K rho P_K converge in trace norm.
 Two-time physical-kernel trace norm error equals the initial error.
-Fixed nonzero compact physical tests give positive kernel values.
+There EXIST fixed nonzero compact physical tests with positive
+kernel values. Nonzero tests in the constraint image have zero
+physical norm, exactly as the quotient in M3 requires.
 Normality alone does not imply Hadamard or finite stress moments.
 
 ## M3. Exact finite-energy test complex

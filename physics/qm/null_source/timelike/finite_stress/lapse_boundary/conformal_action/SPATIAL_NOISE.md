@@ -117,7 +117,11 @@ Therefore the Wightman block <T_i(t)T_j(t')> is
  C_m sum_n conjugate(v_n,i) v_n,j exp[-in(t-t')].        (K9)
 
 Each spectral matrix is the positive outer product u_n u_n*,
-u_n=conjugate(v_n). The symmetrized noise is its real time kernel.
+u_n=conjugate(v_n). The symmetrized noise is N_ij(t,t')=Re W_ij(t,t').
+The density-only L² time-test extension in (K5) does not automatically
+supply the momentum/shear domain; their extra time derivatives must
+be included. The chosen six-box test is regular enough for the
+fixed-m scalar block in (K9).
 Density, momentum, pressure and scalar anisotropic stress are not
 independent noises. Vector and transverse tensor sectors are not
 computed here.
