@@ -3,7 +3,9 @@ import sympy as s
 from common import *
 prefix="physics/qm/null_source/timelike/"
 inp=prefix+"joint_history/history.json"
-A=box(load(inp)["cases"]["unfiltered"]["A"])
+history=load(inp)
+A=box(history["cases"]["unfiltered"]["A"]);U0=box(history["fixed_U0"])
+require(above(U0,"1.49e-10") and below(U0,"1.50e-10"),"Nonzero frozen U0 retained")
 K0=65536;J=interval("-0.01","0.01")
 def harmonic(k):
     n=iv.mpf(k)
@@ -50,7 +52,7 @@ require(uniform(Klo) and uniform(Khi),"Certified common-K band endpoints")
 require(not uniform(Klo-1) and not uniform(Khi+1),"Uniform band adjacent boundaries")
 finish("coefficient_window.py",dict(
  selected_K=K0,clock_patch_u=["-1/100","1/100"],
- frozen_A=outward(A),g_on_patch=outward(g),d1_on_patch=outward(d1),d3_on_patch=outward(d3),
+ frozen_A=outward(A),frozen_U0=outward(U0),g_on_patch=outward(g),d1_on_patch=outward(d1),d3_on_patch=outward(d3),
  certified_uniform_positive_band_K=[Klo,Khi],
  negative_controls=neg,source_real_mode_count=K0*(K0+1)*(2*K0+1)//3,
  all_scalar_counterterms_retained=True,

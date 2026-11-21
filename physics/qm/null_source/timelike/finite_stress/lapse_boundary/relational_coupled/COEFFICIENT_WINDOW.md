@@ -23,7 +23,9 @@ g_K=C/120-H_K/4，ell0=log(A²/4)+2EulerGamma，a=Ae^u。
  d_1={3V_0a^2\over2}-g_K+{K(K+1)\over4}+{29\over120},\quad
  d_3={59\over720}-{g_K\over2}.                         \tag{C1}
 \]
-当前分支U0=0。没有删除零模、真空常数或固定AE反项。
+当前冻结 U0 为 joint_history/history.json 的 fixed_U0，严格为正，约1.497246e-10。
+它只进入 d0，完整保留；没有删除零模、真空常数或固定AE反项。
+CP1误写U0=0且数值漏项，已在后继检查点纠正；审计保留该发现。
 
 ## 2. 实际冻结输入给非空窗口
 

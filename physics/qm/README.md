@@ -1,6 +1,6 @@
 # UEOT-QM 物理学阅读入口
 
-> 2026-11-21 continuation: [Complete finite-K relational dynamics and physical slice](null_source/timelike/finite_stress/lapse_boundary/relational_coupled/README.md). Reuse 190 accepted entries; preserve 698 predecessor files. Full physical unification remains OPEN.
+> 2026-11-21 最新接续：[完整有限模演化、原几何动量与统一验收](null_source/timelike/finite_stress/lapse_boundary/relational_coupled/README.md)。已接通正常物理切片，完成正负g演化及Πg恢复门；全场、真实装置和物理统一仍OPEN。190项复用、698个前驱文件冻结。下文旧节保留其历史范围。
 
 > 2026-11-21 接续：[实际 lapse、完整源噪声、因果响应与准备验收](null_source/timelike/finite_stress/lapse_boundary/README.md)。新入口复用163项并冻结600个前驱科学文件；物理统一仍OPEN。
 

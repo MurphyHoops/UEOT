@@ -19,3 +19,28 @@
 
 半轴Hardy、Poincaré、闭型表示和Stone群定理是标准数学输入。
 本目录明确区分这些输入与对当前固定作用量/源态/参数的新应用。
+
+## 后继闭环实际核对的一级来源
+
+- L. Bruneau, J. Dereziński, V. Georgescu, *Homogeneous Schrödinger operators
+  on half-line*, https://users.fuw.edu.pl/~derezins/homogeneous.pdf .
+  root实际打开原作者PDF，核半轴Hardy、inverse-square与Friedrichs范围。
+  ORDERING_DOMAIN的具体参数映射和资源界由本目录自行推导。
+- P. Korman, *A remark on Pinney's equation*,
+  https://homepages.uc.edu/~kormanp/pinney.pdf .
+  root实际读取两页原文；使用标准Wronskian构造，具体lens恒等式另验。
+- P. R. Anderson, W. Eaker, *Analytic approximation and an improved method
+  for computing the stress-energy of quantized scalar fields in
+  Robertson-Walker spacetimes*, https://arxiv.org/pdf/gr-qc/9906055 .
+  root实际读取原文eqs.(5)--(9)附近：源与adiabatic counterterms必须合并。
+  它没有给本量子几何/CTP算子的全场存在性。
+- S. Hollands, R. M. Wald, https://arxiv.org/abs/gr-qc/0103074 ,
+  https://arxiv.org/abs/gr-qc/0111108 .
+  root实际核对两篇摘要所述local/covariant Wick与time-ordered产品范围；
+  只作固定背景重整化责任说明，未声称逐页审读或套用到量子几何。
+
+- Z. Ammari, S. Breteaux, *Propagation of chaos for many-boson systems in
+  one dimension with a point pair-interaction*, https://arxiv.org/pdf/0906.3047 .
+  root实际读 Appendix C Definition C.1、Corollary C.4 及所列全部比较型假设，
+  特别是 D(F^(3/2)) 上的commutator条件；A/C独立核对。
+  本轮只使用其抽象传播定理，不搬用该文many-boson物理模型或结论。

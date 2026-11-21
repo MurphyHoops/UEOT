@@ -29,7 +29,9 @@ kinematic L²，也不宣称其不可能属于有限patch的某L²空间。
  \Gamma_\Psi(u,v)=fU(u,u0)\rho_0U(v,u0)^\dagger f
 \]
 只在其自然局部测试/加权意义下使用；正确归一化是
-Tr(κΓΨ(u,u))=1，不把可能未定义的flat trace当物理trace。
+Tr(Rκ ΓΨ(u,u) Rκ)=1；Tr(κΓΨ)只作为这份weighted trace的记号。
+这里不对可能非trace-class的raw kernel使用无界循环性，
+也不把可能未定义的flat trace当物理trace。
 
 ## 2. 同一端点权重的组合律
 

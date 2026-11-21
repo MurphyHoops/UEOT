@@ -12,7 +12,7 @@ NEW=PREFIX+"finite_stress/lapse_boundary/relational_coupled/"
 PARENT=PREFIX+"finite_stress/lapse_boundary/verification.json"
 WORKFLOW=".github/workflows/ueot-physics-source-response.yml"
 ROUTES=[WORKFLOW,"physics/qm/README.md","physics/qm/ROADMAP.md",PREFIX+"README.md"]
-ENTRIES=["coefficient_window","coupled_forms","snapshot_domain","physical_slice","review"]
+ENTRIES=['coefficient_window', 'coupled_forms', 'snapshot_domain', 'physical_slice', 'ordering_domain', 'lens_evolution', 'source_budgets', 'mean_recovery', 'preparation_frontier', 'cutoff_gate', 'all_sign_evolution', 'geometric_momentum', 'shifted_state', 'review']
 VERSIONS={"numpy":"2.5.4","scipy":"1.18.1","sympy":"1.14.0","mpmath":"1.3.0"}
 def require(ok,msg):
     if not ok:raise RuntimeError(msg)
@@ -106,7 +106,10 @@ def main():
       "scientific_exit":{"finite_K_complete_unitary_weak_evolution":True,
         "finite_K_original_snapshot_selfadjoint_realization":True,
         "clock_patch_normal_physical_slice_state":True,
-        "old_mean_history_recovery":"OPEN","full_field_limit":"OPEN",
+        "positive_branch_old_pure_geometry_budget_recovery":"REJECTED in stated quantization",
+        "full_same_mean_history_recovery":"OPEN","full_field_limit":"OPEN",
+        "all_nonzero_g_finite_K_weak_unitary_evolution":True,
+        "positive_confining_covariant_geometry_domain_transport":True,
         "local_autonomous_total_device":"OPEN","physical_unification":"OPEN"}}
     out.write_text(json.dumps(result,indent=2,ensure_ascii=False,sort_keys=True)+"\n")
     print("Reused 190 results with 698 unchanged scientific files; executed "+str(len(ENTRIES))+" new entries.")

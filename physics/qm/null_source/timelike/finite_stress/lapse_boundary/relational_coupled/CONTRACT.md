@@ -32,3 +32,10 @@ physics/qm/null_source/timelike/README.md。
 
 所选量子measure、ordering、clock patch和边界为明确候选输入。
 新定理不改变经典action的物理选择地位，不提升Core或经验状态。
+
+## 当前数值输入及类型补充
+
+h_i、epsilon和极端指数均指冻结QUIET_WINDOW中c=exp(-20000)的一次选参分支，
+不与更早c=1e-55历史混用。U0读取history.fixed_U0，严格非零。
+新增结果均在现行Core↔Physics合同的明示B/S/P/E输入下验收；
+Hilbert/Born、Einstein、AE、场内容及ordering/Friedrichs选择未由Core导出。
