@@ -307,7 +307,7 @@
     {
       "commit": "2338e5e8e9d2fad9dadbbb504d30593a9667d7ed",
       "agent": "/root/a_joint_propagation",
-      "status": "FINDINGS",
+      "status": "FINDINGS_ADDRESSED",
       "main_mathematics": "PASS",
       "scientific_execution_by_agent": false,
       "files": {
@@ -327,15 +327,16 @@
         {
           "id": "A6",
           "issue": "Name the original covariant frame before W, distinct from the old raw momentum frame.",
-          "resolution": "PATCHED_PENDING_CP5_IMMUTABLE_REVIEW"
+          "resolution": "VERIFIED_ADDRESSED_BY_CP5_IMMUTABLE_REVIEW"
         },
         {
           "id": "A7",
           "issue": "The four-particle limit I2/2 is a squared norm.",
-          "resolution": "PATCHED_PENDING_CP5_IMMUTABLE_REVIEW"
+          "resolution": "VERIFIED_ADDRESSED_BY_CP5_IMMUTABLE_REVIEW"
         }
       ],
-      "scope": "Actual immutable CP4 full source reads; reported blob IDs independently matched by root; prior assigned CP3 findings verified addressed"
+      "scope": "Actual immutable CP4 full source reads; reported blob IDs independently matched by root; prior assigned CP3 findings verified addressed",
+      "resolved_by_commit": "5614169c29525af873e2dc6fac634051997a9366"
     },
     {
       "commit": "2338e5e8e9d2fad9dadbbb504d30593a9667d7ed",
@@ -367,7 +368,7 @@
     {
       "commit": "2338e5e8e9d2fad9dadbbb504d30593a9667d7ed",
       "agent": "/root/c_prepared_record",
-      "status": "FINDINGS",
+      "status": "FINDINGS_ADDRESSED",
       "main_mathematics": "PASS",
       "scientific_execution_by_agent": false,
       "files": {
@@ -385,19 +386,82 @@
         {
           "id": "C8",
           "issue": "Exact influence Hessian already contains net preintegration contacts; do not add the bare NN contact twice.",
-          "resolution": "PATCHED_PENDING_CP5_IMMUTABLE_REVIEW"
+          "resolution": "VERIFIED_ADDRESSED_BY_CP5_IMMUTABLE_REVIEW"
         },
         {
           "id": "C9",
           "issue": "Name the illustrative asymptotic coefficient explicitly as a lower bound.",
-          "resolution": "PATCHED_PENDING_CP5_IMMUTABLE_REVIEW"
+          "resolution": "VERIFIED_ADDRESSED_BY_CP5_IMMUTABLE_REVIEW"
         }
       ],
-      "scope": "Actual immutable CP4 full source reads; reported blob IDs independently matched by root; prior assigned CP3 findings verified addressed"
+      "scope": "Actual immutable CP4 full source reads; reported blob IDs independently matched by root; prior assigned CP3 findings verified addressed",
+      "resolved_by_commit": "5614169c29525af873e2dc6fac634051997a9366"
+    },
+    {
+      "commit": "5614169c29525af873e2dc6fac634051997a9366",
+      "agent": "/root/a_joint_propagation",
+      "status": "FINDINGS",
+      "main_mathematics": "PASS",
+      "scientific_execution_by_agent": false,
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_ACTION.md": "0f169f86b420e1397774fbb0bb3377c1fd4b23be",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_action.py": "f76d94f347573d472c22f2c679331c01321a070c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_INFLUENCE.md": "ee027f8b7f19eb94742fdf1b21889be068d7f0bf",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_action.json": "94771b47a63b73a94bc074f3a20e6ee8ef1c2f6b"
+      },
+      "findings": [
+        {
+          "id": "A8",
+          "issue": "Reporting string must distinguish matrix identity tolerance1e-12 from illustrative risk quadrature tolerance1e-10; assertions remain before rounding.",
+          "resolution": "PATCHED_PENDING_CP6_IMMUTABLE_REVIEW"
+        }
+      ],
+      "scope": "Actual immutable CP5 fetch/read; CP4 findings verified addressed, actual HS calibration and final Pi instrument passed"
+    },
+    {
+      "commit": "5614169c29525af873e2dc6fac634051997a9366",
+      "agent": "/root/b_constraint_kernel",
+      "status": "PASS",
+      "main_mathematics": "PASS",
+      "scientific_execution_by_agent": false,
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_ACTION.md": "0f169f86b420e1397774fbb0bb3377c1fd4b23be",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_action.py": "f76d94f347573d472c22f2c679331c01321a070c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_INFLUENCE.md": "ee027f8b7f19eb94742fdf1b21889be068d7f0bf",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/README.md": "3583e2eccef7bf298d9e1662324e51c8d22aa74d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/NEXT_GATE.md": "c46f914454435873e3ca60dfd4dc4f8e68bcb58f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/SESSION.md": "31225ff0d94f826f33c808d193047aacdfb8328b",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/source_audits.json": "1508d35ff70ba545d65243dc7b6ec5927d6d8147",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/review.json": "7ea4501bd439a861e503fb60fc61aa492e4b5e80"
+      },
+      "findings": [],
+      "scope": "Actual immutable CP5 fetch/read; CP4 findings verified addressed, actual HS calibration and final Pi instrument passed"
+    },
+    {
+      "commit": "5614169c29525af873e2dc6fac634051997a9366",
+      "agent": "/root/c_prepared_record",
+      "status": "FINDINGS",
+      "main_mathematics": "PASS",
+      "scientific_execution_by_agent": false,
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_ACTION.md": "0f169f86b420e1397774fbb0bb3377c1fd4b23be",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_action.py": "f76d94f347573d472c22f2c679331c01321a070c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_INFLUENCE.md": "ee027f8b7f19eb94742fdf1b21889be068d7f0bf",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_action.json": "94771b47a63b73a94bc074f3a20e6ee8ef1c2f6b",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_influence.json": "168e0f03b9a50a984fb070441b2e13b307284d49"
+      },
+      "findings": [
+        {
+          "id": "C10",
+          "issue": "Reporting string must distinguish matrix identity tolerance1e-12 from illustrative risk quadrature tolerance1e-10; assertions remain before rounding.",
+          "resolution": "PATCHED_PENDING_CP6_IMMUTABLE_REVIEW"
+        }
+      ],
+      "scope": "Actual immutable CP5 fetch/read; CP4 findings verified addressed, actual HS calibration and final Pi instrument passed"
     }
   ],
-  "immutable_review_file_identities": 133,
-  "unique_commit_file_count": 81,
+  "immutable_review_file_identities": 150,
+  "unique_commit_file_count": 91,
   "external_human_peer_review": false,
   "machine_formal_proof": false
 }

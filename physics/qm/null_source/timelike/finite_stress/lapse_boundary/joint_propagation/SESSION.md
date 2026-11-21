@@ -135,3 +135,21 @@ physics by this cohort. Full tensor dynamics, autonomous preparation,
 physical clock/comparison selection and empirical validation remain
 open. These direct the next action-based gate rather than another
 normal-state tuning inside the rejected original fixed-test limit.
+
+## Fifth closure: fixed lapse dressing and homogeneous stress
+
+The proper-time factor was tested in the same retained-lapse framework.
+For fixed smooth positive f(u), the actual finite-K block realizations,
+fast and fixed-test results, Gaussian calibration and full initial
+variance bound extend with explicit f_i mean retuning and u/contact
+rows. A nonconstant f does not inherit moving-level cancellation at
+every reset. Exact homogeneous stress projections and their complete
+rho-p memory covariance follow from the same conserved H_M spectral
+law; f=1 and f=a are different source models.
+
+These are restricted homogeneous results, not local 4D stress or a
+new mean-geometry solution. Independent native mathematical checks
+preceded the source implementation. CP5 added17 actual logged
+immutable file identities (150 cumulative); two reporting-string
+clarifications are patched for CP6. The three-hour session is still
+IN_PROGRESS until an actual qualifying clock observation.

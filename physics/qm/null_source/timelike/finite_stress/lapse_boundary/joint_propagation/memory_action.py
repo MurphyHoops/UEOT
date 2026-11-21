@@ -46,6 +46,28 @@ require(sp.simplify(limit-mass*mass*omega**4/(2*k*k))==0,"Complete total-varianc
 ell,K=sp.symbols("ell K",positive=True)
 require(sp.Rational(2,10)*2==sp.Rational(2,5),"Chosen total-variance growth exponent")
 require(sp.simplify((ell/K)*ell**sp.Rational(1,5)-ell**sp.Rational(6,5)/K)==0,"Actual memory residual scale")
+# Fixed smooth clock dressing: retained-lapse/u Ward balance and contacts.
+uu=sp.Function("uu")(eta);fw=sp.Function("fw")(uu)
+HMF=fw*HM;GNf=-HMF
+Guf=-N*sp.diff(fw,uu)*HM
+Gqf=-sp.diff(p,eta)-N*fw*mass*omega*omega*q
+Gpf=sp.diff(q,eta)-N*fw*p/mass
+wardf=sp.diff(uu,eta)*Guf+sp.diff(q,eta)*Gqf+sp.diff(p,eta)*Gpf-N*sp.diff(GNf,eta)
+require(sp.simplify(wardf)==0,"Dressed full lapse/u Ward identity")
+ff=sp.symbols("ff",positive=True)
+Lagf=mass*qd*qd/(2*nn*ff)-nn*ff*mass*omega*omega*qq*qq/2
+require(sp.simplify(sp.diff(Lagf,nn,2)-mass*qd*qd/(nn**3*ff))==0,"Dressed configuration lapse contact")
+Bf=ff*mass*omega*omega*X/2+alpha*X**5/4;Cf=ff*X/(2*mass)
+limitf=sp.limit(2*(Bf-Cf/(4*v*v))**2,v,sp.oo).subs(alpha,0)
+require(sp.simplify(limitf-ff*ff*mass*mass*omega**4/(2*k*k))==0,"Dressed complete variance lower coefficient")
+# Homogeneous variational stress only; exact continuity of a conserved HM.
+ucl=sp.symbols("ucl",real=True)
+af,vzero,em=sp.symbols("af Vzero Em",positive=True)
+ffu=sp.Function("ffu")(ucl);ag=af*sp.exp(ucl)
+rho_f=ffu*em/(vzero*ag**4)
+pressure_f=(ffu-sp.diff(ffu,ucl))*em/(3*vzero*ag**4)
+require(sp.simplify(sp.diff(rho_f,ucl)+3*(rho_f+pressure_f))==0,"Dressed homogeneous continuity")
+require(sp.simplify((ffu-sp.diff(ffu,ucl)).subs(ffu,ag).doit())==0,"Proper-time lapse dressing is pressureless in this projection")
 # Memory Gaussian instrument, all outcomes included.
 z,w1,w2=sp.symbols("z w1 w2",real=True)
 dens=sp.sqrt(2*v/sp.pi)*sp.exp(-2*v*z*z)
@@ -100,7 +122,7 @@ for vv0 in [25.,100.]:
         require(risk<=bound0+1e-10,"Illustrative complete-outcome clipped risk")
         calibration.append({"v":vv0,"conditional_kappa":kk0,"risk_rounded":round(risk,10),"analytic_upper_rounded":round(bound0,10)})
 finish("memory_action.py",{
-"floating_report_rounding":"10 decimal places; internal regression tolerance remains 1e-12",
+"floating_report_rounding":"10 decimal places after assertions; matrix identity tolerance 1e-12, illustrative risk tolerance 1e-10",
 "added_source":"M>0, Omega>0 conformal-lapse harmonic memory",
 "action":"integral(Pi Lambda_prime-N H_M)deta",
 "actual_finite_K_evolution":"direct sum of selected d0+E_n block propagators",
@@ -116,6 +138,15 @@ finish("memory_action.py",{
 "variance_increment_or_constraint_residual_bound":False,
 "actual_Gaussian_harmonic_memory_rate":"O((log K)^(-1/10)); added residual O((log K)^(6/5)/K)",
 "moving_high_energy_comparison":"E_n~K/(2log K), source fast identity, no normal joint limit, remaining variance I2/2",
+"fixed_smooth_lapse_dressing":"f(u)>0 fixed smooth bounded on declared chart; blocks d0+E_n f(u)",
+"dressed_actual_fast_zero_and_calibration":"same limits and rates; f-dependent constants and correct f_i mean retuning",
+"dressed_variance_liminf":"at least f_i^2 M^2 Omega^4 I2/2",
+"dressed_conditional_influence":"same Mehler formula with tau=integral N f(u)deta",
+"memory_energy_spectral_law":"exactly conserved by actual direct-sum propagator",
+"homogeneous_memory_stress":"rho=f HM/(V0 a^4), p=(f-f_prime)HM/(3V0 a^4)",
+"homogeneous_memory_covariance":"N_AB=r_A(u)r_B(v) Var_out(HM), all cross rows retained",
+"local_four_dimensional_stress_from_homogeneous_projection_claimed":False,
+"nonconstant_dressing_moving_level_cancels_all_resets":False,
 "continuous_pointer":"normal complete instrument for w=1/(2kappa), noise 1/(4v)",
 "pointer_is_original_Csource":False,
 "actual_clipped_kappa_MSE":"<=[b^2/sigma+(b-a)e_K]^2+(b-a)^2 delta_K; O((log K)^(-1/5))",

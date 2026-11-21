@@ -470,6 +470,12 @@ At the final time measure the memory Pi PVM after the complete actual
 unitary. This is a normal complete instrument. The initial diagonal
 Kraus density M_z is not assumed to persist through harmonic evolution;
 M16 controls the bounded cost in the actual final joint state.
+For a Borel outcome set E the final source/CQ instrument is
+I_E(rho)=Tr_M[P_E U_K^M W_sigma rho W_sigma* U_K^M* P_E],
+where P_E=I tensor 1_E(Pi). It is normal, CP, countably additive and
+complete. Fourier transformation of the Hilbert-valued memory state
+gives an L1 trace-class outcome density. No trace-class sharp momentum
+eigenstate of the measured memory is asserted.
 
 The joint cost B=(kappa_hat(Pi)-kappa_I(kappa))^2 satisfies
 0<=B<=(b-a)^2 on the whole Hilbert space and commutes with F_s tensor I.
@@ -539,3 +545,150 @@ remain absent. M9a supplies only the stated bounded shrinking-window
 calibration, not a laboratory or C_source calibration. Conditional memory histories are calculated
 separately in MEMORY_INFLUENCE; they do not integrate or solve the
 quantum geometry. Physical unification remains OPEN.
+
+## M11. A fixed smooth lapse dressing, including the proper-time factor
+
+The conformal convention can be tested rather than renamed. On the
+same compact reset-u chart choose a FIXED smooth real f(u)>0, with
+bounded coefficients and the derivatives required by ALL_SIGN.
+Define a separate homogeneous model
+
+    S_M,f=integral [Pi Lambda'-N f(u)H_M]d eta,
+    C_M,f=f(u)H_M, H_M,f^(u)=f(u)H_M/kappa.          (M.22)
+
+The proper-time worldline factor for the declared metric would be
+f(u)=a_geom(u). This comparison alone does not construct a local
+worldtube, a homogeneous ensemble of physical oscillators or their
+four-dimensional stress. The metric-to-worldline factor and the
+homogeneous constraint prescription must not be conflated.
+
+The exact phase-space rows are
+
+    Gamma_N=-f H_M, Gamma_u=-N f' H_M,
+    Gamma_Lambda=-Pi'-N f M Omega^2 Lambda,
+    Gamma_Pi=Lambda'-N f Pi/M.
+
+They satisfy the off-shell identity
+u'Gamma_u+Lambda'Gamma_Lambda+Pi'Gamma_Pi-N(Gamma_N)'=0.
+In particular the u row is nonzero when f' is nonzero.
+
+After eliminating Pi put z=N f(u):
+L_M=M Lambda'^2/(2z)-z M Omega^2 Lambda^2/2.
+All configuration contacts follow from the original z,Lambda Hessian
+AND the second variation of z:
+
+    delta z=f delta N+N f' delta u,
+    delta_1 delta_2 z
+       =f'(delta_1 N delta_2 u+delta_2 N delta_1 u)
+          +N f'' delta_1 u delta_2 u.               (M.23)
+
+Thus delta^2 S includes S_z[delta^2 z] as well as
+S_zz[delta z,delta z], both mixed z-Lambda terms and the Lambda-Lambda
+form. The f=1 NN contact becomes M Lambda'^2/(N^3 f); simply copying
+the remaining f=1 contacts would omit the new u rows. On CTP apply
+this on each branch, retaining the same endpoint kick and density.
+
+For each fixed memory energy n, d_0(u) is shifted by E_n f(u), within
+the existing finite-K coefficient class. Use those selected block
+domains, their unitary direct sum and finite-energy projections.
+The old M7 trial is unchanged. Its only new residual is
+-f(u)kappa^-1 H_M(v_0+eta), bounded by sup|f| times the old memory
+residual. Projections onto physical H_M eigenlevels still commute
+with the generator. The same projected weak-Duhamel proof therefore
+gives M5, uniform reset and adjoints, M6 and the Gaussian M16 rate.
+The actual final-Pi calibration M9a also holds, with f-dependent
+constants. No uniform all-n graph bound is introduced.
+
+At the initial slice write f_i=f(u_i). The active mean increment is
+alpha_K v I_5/4+f_i I_3/(8M), in addition to the initial product memory
+budget f_i I_1 h_0. Matching the same total target requires
+
+    p_total,f=[E_total,*-E_0,K-alpha_K v I_5/4
+                      -f_i(I_1 h_0+I_3/(8M))]/Delta E_K.
+
+For fixed f_i and v=o(K/log K), it is cofinally legal and still
+asymptotic to1/(2log K). In M14a replace
+
+    B by B_f=f_i M Omega^2 X/2+alpha_K X^5/4,
+    C by C_f=f_i X/(2M), J by J_f=f_i X^2/(2M),
+    A_v by H_S+f_i X^3/(8M)+vB_f+C_f/(4v),
+
+and leave L unchanged. The same three orthogonal memory sectors give
+
+    liminf Var_out(H_total,f)/v^2
+       >= f_i^2 M^2 Omega^4 I_2/2>0.                (M.24)
+
+The mixed contribution in ||Z_f sqrt(rho)||^2 includes
+alpha_K f_i I_6/(2M); no covariance is deleted. The retuned C9 and
+bounded calibration rates survive, with the same declared regularity.
+
+The SAME conditional Mehler influence applies with
+tau_±=integral N_± f(u_±)d eta=integral f(u)du/kappa_±.
+Its lapse/u functional derivatives must use M23, plus the unchanged
+initial kick derivatives. Explicitly, for interior variations at fixed
+initial kicks, ell_AB=ell_tt t_A t_B+ell_t t_AB, with the branch signs
+in t=tau_+-tau_-. In original lapse variables,
+tau_N=f, tau_u=Nf', tau_Nu=f' delta, tau_uu=Nf'' delta, tau_NN=0.
+On the physical contour ell_t=-i E_out and ell_tt=-Var_out(H_M).
+The exact influence already includes the net preintegration contacts;
+the bare configuration Hessian must not be added twice. This remains
+conditional on histories.
+
+Do not copy M8 unchanged: one moving energy level that cancels the
+leading scalar at u_i has E_n~K/[2f_i log K]. At another reset u_0 its
+leading addition is f(u_0)/(2f_i kappa), so nonconstant f generally
+prevents identity cancellation at every reset with one preparation.
+
+The extension does not cover cutoff-dependent f_K with uncontrolled
+size/derivatives, operator-valued f, new kappa dependence, unbounded
+clock charts or different singular endpoints. The original fixed-test
+joint gate remains rejected for this declared fixed smooth class.
+
+## M12. Exact homogeneous memory stress projections and covariance
+
+This is the variational projection of the declared homogeneous action,
+not a construction of a local four-dimensional stress operator.
+For ds^2=a_geom(u)^2[-N^2 d eta^2+dOmega_3^2], a_geom=A exp(u),
+the two restricted metric variations give
+
+    Gamma_N=-V0 a_geom^4 rho_M,
+    Gamma_u=N V0 a_geom^4(-rho_M+3p_M).
+
+Using M22 therefore fixes the homogeneous memory operators
+
+    rho_M(u)=f(u)H_M/[V0 a_geom(u)^4],
+    p_M(u)=[f(u)-f'(u)]H_M/[3V0 a_geom(u)^4].       (M.25)
+
+The same rows follow after eliminating Pi using
+Pi=M Lambda'/(Nf), retaining all kinetic f dependence.
+Every spectral projection of H_M commutes with the ACTUAL block
+propagator; the post-preparation memory energy law and all its existing
+finite moments are exactly conserved. Thus M25 obeys the exact
+homogeneous Ward/continuity equation
+
+    partial_u rho_M+3(rho_M+p_M)=0.                 (M.26)
+
+For f=1 this contribution has p_M=rho_M/3 and redshifts as a_geom^-4.
+For f=a_geom it has p_M=0 and rho_M=H_M/(V0 a_geom^3).
+These are different homogeneous sources. They are not two unit labels
+for the same original mean history. A physical homogeneous ensemble
+or local worldline stress still requires its own derivation.
+
+Write rho_M=r_rho(u)H_M and p_M=r_p(u)H_M with the real coefficients
+in M25. On the same actively prepared state and actual joint evolution,
+
+    N_AB(u,v)=r_A(u)r_B(v) Var_out(H_M),
+    A,B in {rho,p},                                 (M.27)
+
+for both connected ordered and symmetric memory-only covariance.
+This positive rank-one kernel retains the rho-p cross rows; it is
+not obtained by adding independent density and pressure noise.
+The exact Var_out(H_M) is M13, unchanged as an energy law by f dressing.
+
+The complete source/geometry/controller tensor covariance is not M27.
+No lower bound on it follows just by keeping this memory block.
+M14/M24 are separate complete INITIAL u-clock variance statements.
+The conditional influence in M11 and the actual homogeneous stress
+projection here remain within the declared model; neither supplies
+the missing autonomous active gate or solves the full Einstein--CTP
+equations for the added total source.

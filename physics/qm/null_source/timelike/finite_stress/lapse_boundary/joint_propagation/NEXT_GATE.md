@@ -98,6 +98,20 @@ diagonal. Improving this bounded pointer therefore does not by itself
 solve the joint constraint or furnish a finite-resource autonomous
 apparatus. The next action/test-prescription gate above stays primary.
 
+## The lapse convention has now been tested explicitly
+
+MEMORY_ACTION M11 also covers fixed smooth positive f(u) multiplying
+N H_M, including f=a_geom on a compact chart. Its actual block
+evolution, zero fixed joint tests, Gaussian calibration and complete
+variance lower bound persist; all new u/contact rows and f_i retuning
+are retained. A nonconstant f cannot inherit the moving-level scalar
+cancellation at every reset from f=1.
+
+This closes a restricted lapse-dressing comparison. It is still not
+a derivation of a local worldtube or homogeneous physical ensemble.
+The autonomous local action must decide its actual clock weight,
+controller and total stress, not only rename the present Hamiltonian.
+
 ## Global goal
 
 A mathematically consistent, empirically calibrated unified physical

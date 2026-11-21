@@ -100,3 +100,13 @@ d46269e420baa5e99760be9a1f5792f42d4d034368a9b415bea5113d4ee9d097.
 This closes the Mac/Linux display-payload issue; CP3's failed run stays
 in the record and final-head CI is still required. Calibration adds
 checks to memory_action, not a seventeenth science theorem.
+
+## CP5 review and the next restricted comparison
+
+CP5 actual immutable reads added4+8+5=17 logged identities, for150.
+All CP4 findings and the sharpened actual calibration passed. Two
+readers requested a reporting-only distinction between the unchanged
+1e-12 matrix identity tolerance and the new illustrative1e-10 risk
+quadrature tolerance; this is patched for CP6. No certified quadrature
+error or full-field numerical proof is claimed. The f-dressing and
+homogeneous stress additions use the same memory_action entry.

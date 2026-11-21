@@ -50,6 +50,9 @@
     }
   ],
   "continuous_pointer": "normal complete instrument for w=1/(2kappa), noise 1/(4v)",
+  "dressed_actual_fast_zero_and_calibration": "same limits and rates; f-dependent constants and correct f_i mean retuning",
+  "dressed_conditional_influence": "same Mehler formula with tau=integral N f(u)deta",
+  "dressed_variance_liminf": "at least f_i^2 M^2 Omega^4 I2/2",
   "energy_record_instrument": "K_n=U_K^(E_n) M_n, all n retained",
   "exact_total_variance": "Var_rho(A_v)+2<(vB-C/(4v))^2>+||Z sqrt(rho)||HS^2",
   "finite_noncommuting_matrix_regression": {
@@ -57,15 +60,21 @@
     "variance": 0.3346228448
   },
   "fixed_original_joint_tested_kernel": "ZERO for every normal preparation sequence",
-  "floating_report_rounding": "10 decimal places; internal regression tolerance remains 1e-12",
+  "fixed_smooth_lapse_dressing": "f(u)>0 fixed smooth bounded on declared chart; blocks d0+E_n f(u)",
+  "floating_report_rounding": "10 decimal places after assertions; matrix identity tolerance 1e-12, illustrative risk tolerance 1e-10",
   "full_field_Einstein_CTP_device_solution": false,
   "geometry_ODE_integrations": 0,
+  "homogeneous_memory_covariance": "N_AB=r_A(u)r_B(v) Var_out(HM), all cross rows retained",
+  "homogeneous_memory_stress": "rho=f HM/(V0 a^4), p=(f-f_prime)HM/(3V0 a^4)",
   "illustrative_asymptotic_coefficient_lower_bound_M1_Omega1_support11over10_19over10": [
     0.1385041551246537,
     0.13850415512465375
   ],
+  "local_four_dimensional_stress_from_homogeneous_projection_claimed": false,
+  "memory_energy_spectral_law": "exactly conserved by actual direct-sum propagator",
   "mode_ODE_integrations": 0,
   "moving_high_energy_comparison": "E_n~K/(2log K), source fast identity, no normal joint limit, remaining variance I2/2",
+  "nonconstant_dressing_moving_level_cancels_all_resets": false,
   "old_source_marginal_preserved_by_total_retune": false,
   "passive_endpoint": "all operator, state, endpoint and domain transports required",
   "physical_unification": "OPEN",
@@ -79,10 +88,10 @@
     "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/GAUSSIAN_CONTROL.md": "bab667a8b8b03d30c5bf2e42e5ad5b09d1e5ea1392da9fef4cc1de55706d8969",
     "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/INITIAL_LAYER.md": "8ccb07ddfcaa61ea34aa657e8decc610920b06a4a9478f4780f4c71ecdc6107a",
     "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/INTERIOR_COLLAPSE.md": "5dc550b53ec326b843c311e945a6ed64e03571257e9c7e0123065e2b2dcb8ac0",
-    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_ACTION.md": "80de0588904c58429f53cc1c934c2100bedeb3adcd4828f1d0e9c4446faf2129",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_ACTION.md": "25a30c33ad33344ea6430b2cd6f9c255bea2d69fe1d8b8ed913109c5ee70d852",
     "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/SCALAR_COUNTERTERM.md": "729da2930bd1b0ac4ec31a023ccd55b419cee84f00970ad45e86ee5e126aaa0a",
     "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/common.py": "e5cada98ee5de6a679996b64dc23af4aeb2cea97dc45514382f98888ed5512e8",
-    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_action.py": "a964f892ed903934ae09a1605bfab80a06bc77f81f3b260e6946f91536654a4a",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_action.py": "1557cb24781f77d464c9f20fc814ea304a51244ca0453a5c738574e461eab201",
     "physics/qm/null_source/timelike/finite_stress/lapse_boundary/relational_coupled/ALL_SIGN_EVOLUTION.md": "cd9eba699c9e33f7c3054f380a8e98ce2984c08e3256d56a1fa9e89c2e2353fd"
   },
   "status": "PASS",
