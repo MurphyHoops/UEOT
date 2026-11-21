@@ -25,6 +25,18 @@
 bulk CTP二次式为qΔ L_R qc+(i/2)qΔ Nη qΔ，另保留真实initial mixed functional。
 这只到二阶cumulant层，非Gaussian源不能由它自动变成完整Gaussian物理过程。
 
+正常kinematic强约束与原mean/CTP的层次区别见[合同复盘](CONTRACT_LAYERS.md)。下列强约束验收只对已明确选择的候选适用，不提升为原mean-SCE的普遍公理。
+
+## 本轮继续关闭的定义域与作用量接口
+
+CAUSAL_DOMAINS已证明：完整静态G对实际平稳source的全过去卷积没有GNS L²极限。
+因此第4项的无限过去分支已在声明合同下拒收，不继续把它当未检查候选。
+有限K实际pressure因果逆和off-shell Ward缺陷现已明确。
+FINITE_SOURCE_DOMAIN给实际U上的源起始UV系数与含源Q/D初始块的精确取消；
+该block还没有被证明来自正常geometry/装置准备。
+ACTION_RESPONSE已将同AE总action行重写到Q响应核与完整局部项；
+COVARIANT_RESPONSE给严格紧支测试上的协变两腿及contact账本，固定AE tensor转换仍待完成。
+
 ## 下一首要交付及拒收条件
 
 1. 从同一总作用量和一次真实准备过程给出有限初片joint density或约束后物理态与内积。

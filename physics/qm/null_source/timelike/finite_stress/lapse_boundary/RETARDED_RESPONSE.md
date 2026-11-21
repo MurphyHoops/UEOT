@@ -152,7 +152,7 @@ R6证明这些求和和参数导数合法交换。
  +(hV/2-V'/4)w'-h\delta V'/4+\delta V''/12.          \tag{R9}
 \]
 δE1=δAe，δE3=δCe+δAe/2；压力类似。
-冻结KERNELS §7的H1,T1,H3,T3,r_an,p_an全部原样保留并作链式导数：
+冻结KERNELS §7的H1,T1,H3,T3,r_an,p_an全部原样保留并作链式导数（此处局部v=a″/a即V，不是R7的模式v_k）：
 \[
  \delta h=w',\quad \delta v=w''+2hw',\quad
  \delta a3=w'''+3hw''+3vw',\quad

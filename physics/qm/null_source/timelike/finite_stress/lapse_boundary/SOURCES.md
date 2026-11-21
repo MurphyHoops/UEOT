@@ -31,5 +31,8 @@ total_source/PRESSURE_NOISE已有一般矩阵元差式与static pure-pressure结
 - Vassilevich，heat kernel coefficient与Lorentzian局部counterterms：
   https://arxiv.org/abs/hep-th/0306138 。若引入新F(χ)耦合，必须另声明新增局部参数，不能借旧free AE处方自动固定。
 
+- Moretti，守恒point-splitting与四维η=1/3：
+  https://arxiv.org/pdf/gr-qc/0109048 。用于COVARIANT_RESPONSE的接触账本，尚不替代固定AE转换。
+
 文献用于明确方法与适用范围；本模型新增公式、数字及限制以本目录证明/证书为准。
 原生代理的审读不冒充文献作者确认、外部人类同行评议或形式化证明。

@@ -26,7 +26,8 @@ endpoint = Bt.subs(t,1)-Bt.subs(t,0)
 coefs = [s.simplify(s.diff(endpoint,eps,i).subs(eps,0)/s.factorial(i)) for i in range(3)]
 assert coefs == [s.Rational(7,2),-11,34]
 # g00 chain-rule contact.
-a, j = s.symbols("a j", positive=True)
+a = s.symbols("a", positive=True)
+j = s.symbols("j", negative=True)
 Nj = s.sqrt(-j)/a
 assert s.simplify(s.diff(Nj,j)+1/(2*a*a*Nj)) == 0
 assert s.simplify(s.diff(Nj,j,2)+1/(4*a**4*Nj**3)) == 0

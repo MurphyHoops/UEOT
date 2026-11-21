@@ -8,7 +8,8 @@ Core只读、GI排除，不运行旧科学模块或旧ODE，不创建新worktree
 全场域、参数收敛、正常性及观测代数证明在对应正文，原生三个只读代理的不可变源码审查另存。
 没有外部人类同行评议或机器形式化证明的声明。
 
-source tensor N和齐次retarded RSET导数已明确；
+source tensor N和齐次retarded RSET导数、finite-K实际因果逆、
+同源初片UV取消、固定AE action重写及协变接触账本已明确；
 任意tensor retarded Hessian、几何初始正常密度、完整总装置源、
 Einstein–CTP联合正窗、截断余项、实际引力仪器及物理统一继续OPEN。
 原RELATIONAL观测商原理与QUANTUM_FLOOR连续谱强约束阻断按复用登记，

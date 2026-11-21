@@ -93,7 +93,7 @@ T6 来自条件 N=2 的零模二矩 A³e2，而不是把零模与壳层独立。
  a_\gamma a_\delta|A_\pm\rangle
        =s_\gamma\delta_{\gamma\delta}|0\rangle/\sqrt d .
 \]
-新检查器用不截断的 occupation-word 作用及精确有理数检验全部有序四振子词；它没有利用坏 CCR 的有限 Fock 矩阵边界。
+新检查器用不截断的 occupation-word 作用及精确有理数检验全部65536个有序四振子词；raw四点对p至多一次、Gaussian配对与κ右式至多二次，所以p=0,1/7,2/5三个不同有理点的精确相等足以确定整个二次多项式，不是随机数值抽查。它没有利用坏 CCR 的有限 Fock 矩阵边界。
 
 ## 4. 完整 tensor 噪声公式
 

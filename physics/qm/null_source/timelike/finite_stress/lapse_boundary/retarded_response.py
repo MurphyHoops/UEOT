@@ -46,7 +46,8 @@ for expr,target in ((a3jet,w3+3*u1*w2+3*(u2+u1*u1)*w1),
     require(s.expand(variation-target)==0,"Actual local metric contact chain")
 finish("retarded_response.py",dict(
  residual_first_nonzero_inverse_omega_order=6,
- residual_polynomial_degree=poly.degree(),
+ four_F_squared_residual_polynomial_degree=poly.degree(),
+ reduced_P_polynomial_degree=poly.degree()-3,
  WKB_coefficients_and_both_frozen_AE_stress_subtractors_exact=True,
  fixed_log_contacts_retained=True, dropping_log_contact_negative_control=True,
  sufficient_scale_direction_derivatives=8,

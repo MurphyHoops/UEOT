@@ -2,7 +2,8 @@
 import ast,json
 from common import HERE,REPO,require,sha,finish
 ENTRIES=["action_boundary","endpoint_domain","tensor_noise","dynamic_witness","source_ctp",
-         "smooth_preparation","operational_state","retarded_response","quiet_window"]
+         "smooth_preparation","operational_state","retarded_response","quiet_window",
+         "causal_domain","finite_causal","finite_source_domain","action_response","covariant_response"]
 allowed={"common","sympy","fractions","itertools","math","mpmath"}
 for name in ENTRIES:
     result=json.loads((HERE/(name+".json")).read_text())

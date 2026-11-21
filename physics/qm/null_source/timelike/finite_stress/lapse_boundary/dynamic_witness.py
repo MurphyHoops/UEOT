@@ -1,7 +1,8 @@
 """Actual-history interval witnesses; frozen prior outputs are read, never executed."""
 from common import iv, load, box, exact, above, below, outward, require, finish
 inputs = ["dynamic_seed/bounds.json", "dynamic_inverse/fast_root.json",
-          "joint_history/history.json", "finite_stress/geometry_matching.json"]
+          "joint_history/history.json", "finite_stress/geometry_matching.json", "finite_stress/BOUNDARY_STATE.md",
+          "finite_stress/lapse_boundary/TENSOR_NOISE.md"]
 s = box(load(inputs[0])["positive_root_s"])
 sf = box(load(inputs[1])["fast_conformal_growth_rate"])
 hist = load(inputs[2])["cases"]["unfiltered"]
@@ -26,6 +27,7 @@ bup=om*r+err/2
 require(above(blow/c,".7"),"Positive-window density witness failed")
 dr_lo=32*p*(iv.mpf(".7")*c/(V0*A**4))**2
 dr_hi=32*p*(bup/(V0*A**4))**2
+require(below(iv.exp(iv.mpf(2)/3),2),"Bump mu2 lower bound")
 sigma=om/(100*A)
 absrho_lo=sigma*sigma*iv.exp(-12*rho)/(128*V0*V0*A**6)
 ratio_rho=dr_hi/absrho_lo

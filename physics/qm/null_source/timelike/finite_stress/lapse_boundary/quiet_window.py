@@ -2,7 +2,7 @@
 from common import iv,load,box,above,below,outward,require,finish
 inputs=["dynamic_seed/bounds.json","dynamic_inverse/fast_root.json",
         "joint_history/history.json","finite_stress/geometry_matching.json",
-        "nonlinear_history/EXISTENCE.md"]
+        "nonlinear_history/EXISTENCE.md", "finite_stress/lapse_boundary/TENSOR_NOISE.md"]
 s=box(load(inputs[0])["positive_root_s"])
 sf=box(load(inputs[1])["fast_conformal_growth_rate"])
 h=load(inputs[2])["cases"]["unfiltered"];A=box(h["A"])

@@ -14,7 +14,8 @@ PARENT=PREFIX+"finite_stress/verification.json"
 WORKFLOW=".github/workflows/ueot-physics-source-response.yml"
 ROUTES=[WORKFLOW,"physics/qm/README.md","physics/qm/ROADMAP.md",PREFIX+"README.md"]
 ENTRIES=["action_boundary","endpoint_domain","tensor_noise","dynamic_witness","source_ctp",
-         "smooth_preparation","operational_state","retarded_response","quiet_window","review"]
+         "smooth_preparation","operational_state","retarded_response","quiet_window",
+         "causal_domain","finite_causal","finite_source_domain","action_response","covariant_response","review"]
 VERSIONS={"numpy":"2.5.4","scipy":"1.18.1","sympy":"1.14.0","mpmath":"1.3.0"}
 def require(ok,msg):
     if not ok:raise RuntimeError(msg)
@@ -70,7 +71,7 @@ def frozen():
       "decoded_parent_log_sha256":ci["decoded_job_log_sha256"],"routing_baseline":routes}
 def current_manifest():
     paths=[p for p in HERE.rglob("*") if p.is_file() and p!=HERE/"verification.json"
-           and "__pycache__" not in p.parts and p.suffix in {".py",".md",".json"}]
+           and "__pycache__" not in p.parts and (p.suffix in {".py",".md",".json"} or p.name==".gitignore")]
     paths += [REPO/p for p in ROUTES]
     return {str(p.relative_to(REPO)):sha(p.read_bytes()) for p in sorted(paths)}
 def scope():

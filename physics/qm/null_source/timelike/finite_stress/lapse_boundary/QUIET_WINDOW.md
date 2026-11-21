@@ -1,7 +1,7 @@
 # 复盘后的一次新选参：安静的齐次源窗口与真实快方向敏感性
 
 原c=10^−55短窗的绝对压力预算很大。不能把这一结论扩大到所有窗口。
-本页构造另一条完整mean历史及一个明确时间平滑器，然后检查它仍留下什么几何问题。
+本页构造另一条完整mean历史及一个明确时间平滑器，然后检查它仍留下什么几何问题。全文RMS指中心化涨落√Var=√N，不是非中心√〈T²〉。
 原M2、U0、incoming薄层源及σ=√3/(100A)保持；新的是一次选定的几何初始幅度。
 这不是逐时换根，也不是把原固定初值历史直接延长。
 
@@ -89,14 +89,14 @@ c的极端精细是数学选择。尚没有装置能实现它的资源证明。
 完整profile+number+pair方差<24/(V0²A⁸)，RMS<5/(V0A⁴)。
 按实际平方范数三角不等式合并，
 \[
- \operatorname{RMS}(\bar p_f)<{533340\over V_0A^4}.
+ \operatorname{RMS}(\delta\bar p_f)<{533340\over V_0A^4}.
 \tag{Q7}
 \]
 原精确mean方程又给p_f<0和
 |〈p_f〉|≥e^−2tq(1/2−tq)/A²>0.49/A²。
 因此
 \[
- {\operatorname{RMS}(\bar p_f)\over|\langle\bar p_f\rangle|}
+ {\operatorname{RMS}(\delta\bar p_f)\over|\langle\bar p_f\rangle|}
  <{533340\over0.49V_0A^2}<10^{-5}.                  \tag{Q8}
 \]
 
@@ -111,9 +111,9 @@ Hρ=e^−4U[−iFG/2+G²/(4ω)]
 高模RMS≤2tq401²/(V0A⁴)，低number/pair亦O(tq)；
 profile RMS<ω2/(50V0A⁴)。保守合并为
 \[
- {\operatorname{RMS}(\bar\rho_f)}<{0.1\over V_0A^4},
+ {\operatorname{RMS}(\delta\bar\rho_f)}<{0.1\over V_0A^4},
  \quad
- {\operatorname{RMS}(\bar\rho_f)\over\langle\bar\rho_f\rangle}
+ {\operatorname{RMS}(\delta\bar\rho_f)\over\langle\bar\rho_f\rangle}
  <{0.1\over1.49V_0A^2}<10^{-12}.                   \tag{Q9}
 \]
 meanρ=3(1+h²)/(2a²)给分母下界。
