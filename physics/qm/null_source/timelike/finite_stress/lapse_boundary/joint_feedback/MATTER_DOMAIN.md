@@ -110,7 +110,7 @@ This establishes domain ambiguity in the original positive spectral sector. It p
 
 ## M4. A common original Dirac observable distinguishes physical outputs
 
-The ambiguity can be read after the actual original rigging, not only through the auxiliary Lorentzian record. For a kinematic test \(f\), write \(f_a:=a f\) and \(\widehat f_a:=\mathcal F_2(a f)\), where \(\mathcal F_2\) Fourier-transforms the two original zero-mode coordinates. For common annular radial tests with
+The ambiguity can be read after the actual original rigging, not only through the auxiliary Lorentzian record. For the actual positive band set \(I\subset(0,\infty)\) and a kinematic test \(f\), write \(f_a:=a f\) and \(\widehat f_a:=\mathcal F_2(a f)\), where \(\mathcal F_2\) Fourier-transforms the two original zero-mode coordinates. For common annular radial tests with
 \[
 \widehat f_a(p)=\sum_j q_j(|p|^2)\psi_j,\qquad
 q_j\in C_c^\infty(I),\quad \psi_j\in D_0,

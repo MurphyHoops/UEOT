@@ -26,7 +26,7 @@ V_K(\kappa)=e^{i\theta_K\kappa}\,
  \exp[i(\kappa-\kappa_*)Q_{3:K}],\qquad
 Q_{3:K}=\tfrac12\sum_{k=3}^K\sum_{m,i}q_{kmi}^2 .                   \tag{E2}
 \]
-The low unitary is supported on the specified fixed low modes; it may be arbitrary and depend on \(\kappa,K\). Scalar phases and the fixed reference \(\kappa_*\) are retained. The bulk embedding and the geometry/source partition are fixed throughout the theorem.
+The low unitary is supported on the specified fixed low modes; it may be arbitrary and depend on \(\kappa,K\). Scalar phases and the fixed reference \(\kappa_*\) are retained. The bulk embedding and the geometry/source partition are fixed throughout the theorem. The overlap/normality arguments also allow any measurable controlled scalar phase in place of the displayed linear phase: it is absorbed into the remaining input, and the absolute high overlap is unchanged. No derivative claim is made for an arbitrary measurable phase.
 
 ## E2. Exact overlap and escape from every fixed normal target
 
@@ -326,7 +326,7 @@ discarding it falsely gives zero at \(\lambda=1/2\). These are actual smooth \(L
 
 ### E6c. A lower bound for arbitrary finite-rank joint extensions
 
-There is a further bound for an **exact fixed** finite-rank geometry marginal \(\gamma\); trace-approximating marginals with components outside its support require the earlier band theorem instead. Let
+There is a further bound for an **exact fixed** finite-rank geometry marginal \(\gamma\); trace-approximating marginals with components outside its support are not covered by this leakage argument; E4 and MIXED_RESOURCE handle them. Let
 \[
 P=\operatorname{supp}\gamma\subset D(\kappa),\quad
 A_0=P(\kappa-\kappa_*)P,\quad

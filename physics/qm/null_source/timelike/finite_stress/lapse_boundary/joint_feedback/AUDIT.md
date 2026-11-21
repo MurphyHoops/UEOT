@@ -22,3 +22,7 @@ Checkpoint `8761c84586dbf72a91687b624b412d88119b6f85` was actually read by three
 ## Second immutable checkpoint
 
 At `7fdf76a16b465fa39eca9e46c560a88508e83ff0`, agents actually read 14 assigned file records; root verified their blobs with zero mismatch (`audit_checkpoint2.json`). A and B independently found the extra h in the near-recovery velocity display. The preparation parameter and kinetic budget were already correct; the equation, test label and current check were corrected. The finite Green initial traces, actual cost margins and core-only positive-window scope were also made explicit. This correction is retained in history, not counted as a new physics result.
+
+## Third and fourth immutable checkpoints
+
+At ba8ab73c46010a05bb828102354456f160841c6b, 22 actual agent-file reads were root-checked against Git with zero mismatch (audit_checkpoint3.json). The positive-band proof was rewritten directly for bounded open sets; the finite/full energy and varied-history wording were corrected. At 9eb6efdf516f3833051561ddd169442bd0581935, 10 actual reads include all three agents independently reviewing the complete mixed resource proof. The finite-support Sylvester notation and original packet phase were clarified afterward. These are native read-only reviews, not external peer review. A stale boundary-interface source receipt was detected after the matter-proof edit; that dependent receipt was refreshed before the successful aggregate. No failed source-binding run was described as a scientific acceptance.

@@ -257,7 +257,13 @@ For the present \(\kappa\) multiplication operator on \(L^2(\mathbb R_+)\),
 
 ## M8. Matching upper construction with the target held exactly fixed
 
-For a finite-rank target, diagonalize \(Y_\gamma\). If its eigenvectors are \(y_j\), define
+For a finite-rank target whose support lies in \(D(\kappa)\), define the finite matrix
+\[
+(Y_\gamma)_{ij}=
+ \frac{2\sqrt{\lambda_i\lambda_j}}{\lambda_i+\lambda_j}
+ \langle\phi_i,(\kappa-\kappa_*)\phi_j\rangle
+\]
+on that support, and diagonalize it. This does not claim a bounded Sylvester operator on the full unbounded-\(\kappa\) space. If its eigenvectors are \(y_j\), define
 \(p_j=\langle y_j,\gamma y_j\rangle\) and
 \(\psi_j=\sqrt\gamma y_j/\sqrt{p_j}\) when \(p_j>0\).
 The Sylvester identity gives
@@ -294,7 +300,7 @@ In fact it has no trace-norm convergent incoming subsequence in the common incom
 ## M9. An actual coherence-dependent preparation cost
 
 For the disjoint central/far packets of NEAR_RECOVERY, let \(m=(1-\delta)h\),
-\(w=\delta h/(R-m)\), and normalized packets \(\psi_c,\psi_R\). Their within-packet variances are
+\(w=\delta h/(R-m)\), and normalized packets \(\psi_c,\psi_R\). When comparing the original initial local geometry readings, include its common phase \(e^{i b_{\rm geo}\kappa^2/2}\) in both packets; a constant relative phase alone does not replace that preparation. Hold the chosen finite-cutoff packet, root and phase fixed in the resource limit. This phase commutes with \(\kappa\), so all formulas below are unchanged. Their within-packet variances are
 \[
 v_c=\mu_2\delta(1-\delta)^2h^2,\qquad v_R=\mu_2R^2/100.
 \]
@@ -328,7 +334,7 @@ For this family
 D_{\rm tr}(\gamma_\chi,\gamma_\xi)
  =|\chi-\xi|\sqrt{w(1-w)}.
 \]
-Small trace distance can coexist with a large change in the coefficient when the packet separation is large; the sharp lower bound concerns a fixed limiting target, not a uniform continuity claim over unbounded geometry supports. Disjoint support also makes all legitimate finite initial local differential jets insensitive to this coherence, but does not identify their later joint histories.
+Small trace distance can coexist with a large change in the coefficient when the packet separation is large; the sharp lower bound concerns a fixed limiting target, not a uniform continuity claim over unbounded geometry supports. Disjoint support also makes all legitimate finite initial local differential jets insensitive to this coherence, but does not identify their later joint histories. In particular, the inverse-dressed source preparation attaining the resource coefficient is not the old source preparation and need not preserve its momentum or constraint budget.
 
 ## M10. Closure and next physical gate
 
@@ -342,4 +348,4 @@ The next physical acceptance must specify a common full-field state/algebra and 
 
 The finite-dimensional variance convex-roof identity and its Sylvester ensemble are due to Sixia Yu, *Quantum Fisher Information as the Convex Roof of Variance*, arXiv:1302.5311, equations 1, 4, 6 and 8. The infinite-normal extension and trace-convergent resource limit above are proved here rather than assumed from that paper.
 
-The accompanying checker verifies the oscillator shear, exact stable-frequency remainder, Gaussian backaction exponent, conditional-energy algebra, full-support Fisher/leakage identity, actual packet coherence formula and error exponents. It is not a formal proof of the operator-domain or infinite-cutoff arguments. Those arguments are explicit above and separately reviewed.
+The accompanying checker and its source-bound endpoint checks verify the oscillator shear, exact stable-frequency remainder, Gaussian backaction exponent, conditional-energy algebra, full-support Fisher/leakage identity, actual packet coherence formula and error exponents. It is not a formal proof of the operator-domain or infinite-cutoff arguments. Those arguments are explicit above and separately reviewed.
