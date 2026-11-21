@@ -1,8 +1,8 @@
 {
   "schema": "standalone-philosophy-build/2",
-  "version": "2.0",
-  "built_at_utc": "2026-11-21T19:22:45.195832+00:00",
-  "git_base_commit": "c5e67a09b3948fd54bc24f8f11d8e88acc5ec20b",
+  "version": "2.1",
+  "built_at_utc": "2026-11-21T23:30:12.176139+00:00",
+  "git_base_commit": "b16fc25b9a05d65a16d94dfcee3967fcd7d50030",
   "commands": [
     "pandoc manuscript.md --standalone --number-sections --natbib --template=template.tex --lua-filter=layout.lua --to=latex --output=manuscript.tex",
     "latexmk -xelatex -interaction=nonstopmode -halt-on-error -outdir=build manuscript.tex"
@@ -28,19 +28,23 @@
     ]
   },
   "inputs": {
-    "manuscript.md": "c6e5b35c65c8e68ac260c75158085bf741e5a485d8637a5d69cd30d45bcb0d19",
+    "manuscript.md": "832ab015408c0c52c3457c88db27bb57d11da368c3a875ddd2c1f3b1777795c7",
     "references.bib": "25939e7eb75d19d22024242b00841ac7bb6eb1512eb171f9533a1cfbfeee64f4",
     "template.tex": "8c936d209503af48782d2d8af53651dcccb261bf5fd0fffd1ceac77517e40465",
     "layout.lua": "fe43b69ca5e3e94cc5b1740d6fdd540f4c8d934dcaec617f144352da53842c31",
-    "build.py": "664750750007f02cb688bef2cd4d4426a1bbb1183cd6088160d28c9259b30d78"
+    "build.py": "f7596f373080419f3965a3f0a9a1cbdec616e47a69e0a1c248383326afe96dfe",
+    "generate_figures.py": "ccc457001d354ecf9f583fc0724ed62a93354fb232deeeb5419e784aadcea64d",
+    "figures/fig1_architecture_and_lattice.pdf": "5ae37cfdf1049c5e86dcfbee826cd2af28ac2d0014f04e214869636faff34c51",
+    "figures/fig2_memory_and_phase.pdf": "6ff219c8d102ab78856accd33d55b78a781b31eaba93905e162c38b28c0d8ceb",
+    "figures/fig3_preservation_and_rungs.pdf": "d5950fd8d8e5f649d628ab34d7d49da1f88a460717da40dc0c0989a0a1f10ad6"
   },
   "outputs": {
-    "manuscript.tex": "883f297eff72d71d36a1dc8a6f94badd456a20217d7692e876a4aa056b8a0927",
-    "manuscript.pdf": "71746066cec9209090768bb0d62c9f8343b3979a59acba7b2bda75e4fee45ba0"
+    "manuscript.tex": "4b7db5f53bff7e983ab520053d22d52baffb8a87c1c4758619981ec5c9ff0edf",
+    "manuscript.pdf": "17ed57e0fcccfaba6cfbb968e71fda33ce1680b8637ebb1bdd1e7b7312c3f62a"
   },
-  "pages": 30,
+  "pages": 32,
   "undefined_references_or_tex_errors": [],
   "missing_glyphs": [],
   "overfull_boxes": [],
-  "visual_review": "Rendered PNG pages inspected for layout, tables, mathematics, and bibliography."
+  "visual_review": "Rendered PNG pages inspected for layout, vector figures, tables, mathematics, and bibliography."
 }

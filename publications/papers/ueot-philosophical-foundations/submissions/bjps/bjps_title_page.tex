@@ -1,0 +1,42 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=26mm]{geometry}
+\usepackage{fontspec}
+\IfFontExistsTF{Liberation Serif}{%
+  \setmainfont{Liberation Serif}%
+}{%
+  \setmainfont{Times New Roman}%
+}
+\IfFontExistsTF{Liberation Sans}{%
+  \setsansfont{Liberation Sans}%
+}{%
+  \setsansfont[Path=../../../../../tools/books/.cache/fonts/,
+    BoldFont=DejaVuSans-Bold.ttf,
+    ItalicFont=DejaVuSans-Oblique.ttf,
+    BoldItalicFont=DejaVuSans-BoldOblique.ttf]{DejaVuSans.ttf}%
+}
+\IfFontExistsTF{DejaVu Sans Mono}{%
+  \setmonofont[Scale=0.86]{DejaVu Sans Mono}%
+}{%
+  \setmonofont[Path=../../../../../tools/books/.cache/fonts/,
+    Scale=0.86,
+    BoldFont=DejaVuSansMono-Bold.ttf,
+    ItalicFont=DejaVuSansMono-Oblique.ttf,
+    BoldItalicFont=DejaVuSansMono-BoldOblique.ttf]{DejaVuSansMono.ttf}%
+}
+\usepackage{setspace}
+\setstretch{1.18}
+\begin{document}
+\thispagestyle{empty}
+\noindent{\large\bfseries The British Journal for the Philosophy of Science — Separate Title \& Metadata Sheet\par}
+\vspace{10pt}
+\hrule height 0.6pt
+\vspace{16pt}
+\noindent{\fontsize{17}{22}\selectfont\bfseries What Prediction Leaves Out: Relational Objecthood and the Grounds of Purpose\par}
+\vspace{16pt}
+\noindent\textbf{Author:} Degui Qian\\
+\textbf{Affiliation:} Independent Researcher\\
+\textbf{Email:} \texttt{[insert-email-in-Editorial-Manager]}\\
+\textbf{Abstract Word Count:} 169 words ($\le 300$ limit)\\
+\textbf{Total Manuscript Word Count (including main text, self-contained Appendix proofs, tables, captions, and all 93 references, excluding abstract):} 8849 words (firm limit: $\le 10,000$ words)\\
+\textbf{Acknowledgements \& Disclosures (for post-acceptance inclusion only, omitted from triple-anonymous manuscript):} The author declares no competing interests and no external funding. AI-assisted tools were used during bibliographic verification, algebraic cross-checking, and editorial preparation; the author bears sole responsibility for all philosophical arguments and formal results.
+\end{document}

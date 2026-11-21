@@ -185,14 +185,21 @@ genealogical, and evaluative descriptions---paired with constructive
 conditions showing when these descriptions genuinely cohere in one and
 the same process.
 
-This article supplies that diagnosis and constructive synthesis. Its
-central thesis is that object individuation and purposive attribution
-are distinct but mutually constraining explanatory tasks governed by a
-typed \emph{principle of explanatory preservation}. A representation
-adequate for predicting a declared family of observables licenses an
-inference about persistence, causal mechanism, or purpose only
-if---together with explicitly stated auxiliary premises---it preserves
-the structural invariants required by that target claim at its stated
+This article supplies that diagnosis and constructive synthesis.
+Underlying our formal results is a structural
+\emph{forward-marginalization asymmetry}: predictive sufficiency
+marginalizes over past causal pathways and internal mechanisms to retain
+only equivalence classes of forward observable distributions, whereas
+diachronic objecthood and purposive explanation depend on counterfactual
+perturbation stability, paid restorative work, and bearer-specific
+selective or regulatory contrasts---precisely the modal, energetic, and
+genealogical distinctions that forward marginalization erases.
+Consequently, object individuation and purposive attribution must be
+governed by a typed \emph{principle of explanatory preservation}: a
+representation adequate for predicting a declared family of observables
+licenses an inference about persistence, causal mechanism, or purpose
+only if---together with explicitly stated auxiliary premises---it
+preserves the invariants required by that target claim at its stated
 grain of precision. Neither predictive equivalence nor behavioral
 optimality delivers ontology or teleology for free. Instead:
 
@@ -383,7 +390,7 @@ support a further scientific or philosophical explanation? Let
 quantity required by the intended conclusion. At the level of exact
 set-theoretic attribution from \(q(s)\) alone, a map
 \(\bar{F}: \mathcal{Z} \to \mathcal{V}\) satisfies
-\(F = \bar{F} \circ q\) if and only if \(F\) is constant on every fibre
+\(F = \bar{F} \circ q\) if and only if \(F\) is constant on every fiber
 \(q^{-1}(z)\) for \(z \in q(\mathcal{S})\). Taken in isolation, this
 elementary factorization lemma is analytic. Its philosophical bite
 emerges only when we recognize that scientific explanations target
@@ -409,7 +416,7 @@ corresponding tier:
   determinate realized property of a specific token history \(h\)---such
   as whether \emph{this} device paid a repair cost at \(t=1\), or
   whether \emph{this} token survived to \(t=2\)---then the joint
-  evidence \((q(h), E_{\mathrm{aux}}(h))\) must be fibre-constant with
+  evidence \((q(h), E_{\mathrm{aux}}(h))\) must be fiber-constant with
   respect to that realized value on the support of admissible histories.
 \item
   \textbf{Distributional and aggregate attribution.} Scientific
@@ -419,7 +426,7 @@ corresponding tier:
   \(3\), respectively. From \(q(h)\) alone, exact token-level
   expenditure is unidentifiable. Yet if justified auxiliary evidence
   supplies a prior assigning probability \(1/2\) to each branch within
-  that fibre, the combined representation \((q, \mu_{\text{fibre}})\)
+  that fiber, the combined representation \((q, \mu_{\text{fiber}})\)
   \emph{does} preserve the population fee distribution
   \(\frac{1}{2}\delta_0 + \frac{1}{2}\delta_3\) and expected expenditure
   \(3/2\). Preservation forbids promoting that aggregate expectation
@@ -455,12 +462,14 @@ of state-test functions inducing the belief equivalence
 observation \(o \in \mathcal{O}\), define the unnormalized one-step
 Bayes--Bellman update operator
 \((U_{a,o} f)(x) := \sum_{x' \in \mathcal{X}} T(x' \mid x, a)\, O(o \mid a, x')\, f(x')\).
-Suppose \(\mathbf{1} \in \mathcal{F}\). Then the normalized Bayesian
-belief filter descends to a well-defined deterministic macro-update on
-\(\Delta(\mathcal{X})/{\equiv_{\mathcal{F}}}\) across all reachable
-positive-probability observation branches if and only if \(\mathcal{F}\)
-is invariant under \(U_{a,o}\) for all \(a \in \mathcal{A}\) and
-\(o \in \mathcal{O}\).}
+Suppose \(\mathbf{1} \in \mathcal{F}\). Then the quotient
+\(\Delta(\mathcal{X})/{\equiv_{\mathcal{F}}}\) jointly preserves (i)
+one-step observation probabilities \(p(o \mid b, a)\) and (ii)
+normalized Bayesian posterior equivalence
+\(\mathrm{Bayes}(b,a,o) \equiv_{\mathcal{F}} \mathrm{Bayes}(b',a,o)\)
+across all positive-probability branches \((a,o)\) if and only if
+\(\mathcal{F}\) is invariant under \(U_{a,o}\) for all
+\(a \in \mathcal{A}\) and \(o \in \mathcal{O}\).}
 
 Proposition 2 (proved in Appendix A.1) pinpoints why static data
 compression so often fails dynamic agency: two belief states can agree
@@ -516,7 +525,7 @@ very internal restoration work that keeps an object intact.
 We therefore defend \emph{Constrained Relational Objecthood}: an
 organized process in a domain warrants defeasible realist recognition as
 a distinct diachronic object---rather than an arbitrary mereological
-fusion or observer-projected artefact---when three jointly constraining
+fusion or observer-projected artifact---when three jointly constraining
 criteria are met:
 
 \begin{enumerate}
@@ -568,8 +577,8 @@ construct a self-contained finite stochastic process \(\mathcal{M}\)
 variable, physical gate, resource unit, genealogy tag, and transition
 probability is explicit.
 
-\subsection{Physical architecture, internal programmes, and resource
-accounting}\label{physical-architecture-internal-programmes-and-resource-accounting}
+\subsection{Physical architecture, internal programs, and resource
+accounting}\label{physical-architecture-internal-programs-and-resource-accounting}
 
 At any discrete census \(t \in \mathbb{N}\), a living individual (or
 \emph{token}) in \(\mathcal{M}\) is a physical register assembly
@@ -618,26 +627,31 @@ equipped with five structural components:
   that enters no transition or cost rule.
 \end{itemize}
 
-Two canonical \emph{hereditary internal programmes} will serve as our
+Two canonical \emph{hereditary internal programs} will serve as our
 primary comparison class: \(\theta_0 = (\mathrm{care}, \mathrm{care})\),
 whose intact active and backup rows all store \(0\), and
 \(\theta_1 = (\mathrm{bloom}, \mathrm{care})\), whose healthy row stores
 \(1\) and damaged row stores \(0\). Standard environmental damage flips
 both active bits while leaving backup bits and \(b_{\mathrm{boot}} = 1\)
-intact, and closes the execution gate (\(g = \mathrm{closed}\)).
-Consequently, when a damaged token (\(D\)) carrying \(\theta_0\) or
-\(\theta_1\) undergoes paid restoration, it spends \(3\) of its \(6\)
-budget units to recover its true active rows via majority vote and
-reopen \(g = \mathrm{open}\). Because only \(3\) units remain and \(2\)
-must be escrowed for potential outputs, \emph{only \texttt{care} (\(1\)
-unit) is physically affordable after repair}: \(3 + 1 + 2 = 6\). By
-contrast, if a damaged body requests \texttt{bloom} (\(2\) units), total
-required prepayment (\(3 + 2 + 2 = 7 > 6\)) exceeds the six-unit budget;
-the transaction hardware \emph{rejects} the unaffordable request,
-refunds the \(5\)-unit inflow, preserves the damaged token unchanged
-with \(1\) unit, and does not expose it to that step's actuation noise.
-Finally, an explicit \texttt{stop} action terminates the token with zero
-outputs.
+intact, and closes the execution gate (\(g = \mathrm{closed}\)); the
+token's internal diagnostic state \(d \in \{H, D\}\) is read directly
+from its own gate-and-parity hardware rather than supplied by an
+external oracle. Upon any executed step, surviving and newborn tokens
+first replicate the intact or newly restored three-cell rows with
+\(g = \mathrm{open}\) before encountering independent post-step
+active-cell lesion with probability \(q\) (Figure 1a). Consequently,
+when a damaged token (\(D\)) carrying \(\theta_0\) or \(\theta_1\)
+undergoes paid restoration, it spends \(3\) of its \(6\) budget units to
+recover its true active rows via majority vote and reopen
+\(g = \mathrm{open}\). Because only \(3\) units remain and \(2\) must be
+escrowed for potential outputs, \emph{only \texttt{care} (\(1\) unit) is
+physically affordable after repair}: \(3 + 1 + 2 = 6\). By contrast, if
+a damaged body requests \texttt{bloom} (\(2\) units), total required
+prepayment (\(3 + 2 + 2 = 7 > 6\)) exceeds the six-unit budget; the
+transaction hardware \emph{rejects} the unaffordable request, refunds
+the \(5\)-unit inflow, preserves the damaged token unchanged with \(1\)
+unit, and does not expose it to that step's actuation noise. Finally, an
+explicit \texttt{stop} action terminates the token with zero outputs.
 
 \Needspace{16\baselineskip}
 
@@ -690,7 +704,7 @@ cost}\label{task-relative-predictive-partitions-and-the-erasure-of-restorative-c
 
 Consider now the four canonical single-founder initial configurations
 \(\{\theta_0 H, \theta_0 D, \theta_1 H, \theta_1 D\}\) operating
-autonomously under their stored internal programmes in the proliferative
+autonomously under their stored internal programs in the proliferative
 regime \(\gamma > \delta\) and \(s + b > 1\) (where \texttt{bloom}
 yields a net expected output gain \(\gamma - \delta > 0\) and
 \texttt{care} is supercritical). Let \(B_t \in \mathbb{N}\) denote the
@@ -779,7 +793,7 @@ Erased Causal / Historical Invariant
 \endlastfoot
 One-step strict births \((B_1)\) &
 \(\{\theta_0 H, \theta_0 D, \theta_1 D\}\), \(\{\theta_1 H\}\) (2
-classes) & Latent stored programme \(\theta_1\) in \(\theta_1 D\) \&
+classes) & Latent stored program \(\theta_1\) in \(\theta_1 D\) \&
 repair fee \(R_1\) \\
 All finite birth records \((B_1,\dots,B_T)\), \(\forall T\) &
 \(\{\theta_0 H, \theta_0 D\}\), \(\{\theta_1 D\}\), \(\{\theta_1 H\}\)
@@ -787,8 +801,7 @@ All finite birth records \((B_1,\dots,B_T)\), \(\forall T\) &
 on \(\theta_0\) \\
 One-step births + repair fee \((B_1, R_1)\) & \(\{\theta_0 H\}\),
 \(\{\theta_1 H\}\), \(\{\theta_0 D, \theta_1 D\}\) (3 classes) & Stored
-hereditary programme distinguishing \(\theta_0 D\) from
-\(\theta_1 D\) \\
+hereditary program distinguishing \(\theta_0 D\) from \(\theta_1 D\) \\
 Multi-step births + repair fee \((B_1, B_2, \dots, R_1)\) &
 \(\{\theta_0 H\}\), \(\{\theta_0 D\}\), \(\{\theta_1 H\}\),
 \(\{\theta_1 D\}\) (4 classes) & Causally silent physical tag \(\tau\)
@@ -810,7 +823,26 @@ initially pay \(3\) units and execute \texttt{care}; their stored
 hereditary difference (\(\theta_0\) vs.~\(\theta_1\)) remains causally
 latent until healthy second-generation tokens execute at \(t=2\)
 (\(27/64\) vs.~\(39/64\)). Adequacy is strictly indexed to the joint
-explanatory contrast posed.
+explanatory contrast posed (Figure 1b).
+
+\begin{figure}
+\centering
+\includegraphics[width=0.99\linewidth,height=\textheight,keepaspectratio,alt={Physical
+register architecture and predictive quotient lattice of the
+regenerative process \textbackslash mathcal\{M\}. (a) Internal
+three-cell instruction rows, parity/gate diagnostic, majority-vote
+restorer, physical execution gate, and six-unit transaction paths. (b)
+Non-monotonic diamond lattice of minimal predictive partitions across
+four observation protocols (Proposition 3), showing two incomparable
+three-class quotients.}]{figures/fig1_architecture_and_lattice.pdf}
+\caption{Physical register architecture and predictive quotient lattice
+of the regenerative process \(\mathcal{M}\). (a) Internal three-cell
+instruction rows, parity/gate diagnostic, majority-vote restorer,
+physical execution gate, and six-unit transaction paths. (b)
+Non-monotonic diamond lattice of minimal predictive partitions across
+four observation protocols (Proposition 3), showing two incomparable
+three-class quotients.}
+\end{figure}
 
 \subsection{Lawful tag quotients versus von Neumann's
 syntactic--constructor
@@ -827,7 +859,7 @@ and expected outcomes under every permitted public-history policy
 \emph{lawful explanatory compression}.
 
 By contrast, two superficially plausible informational compressions fail
-catastrophically. First, projecting a token onto its stored programme
+catastrophically. First, projecting a token onto its stored program
 \(\theta\) while erasing its diagnostic state (\(H\) vs.~\(D\)) destroys
 action affordability: \texttt{bloom} is feasible on \(H\) (\(4 \le 6\))
 but rejected on \(D\) (\(7 > 6\)). Second, and more subtly, projecting a
@@ -852,7 +884,14 @@ energized to translate instructions into causal work)
 agency or genetics that equate an organism's state with its decoded
 sequence erase the physical enabling constraints---gates, polymerase
 machinery, metabolic ATP budgets---that turn syntax into causal
-execution.
+execution. Microbial physiology illustrates both separations concretely:
+in bacterial methyl-directed DNA mismatch repair, hemimethylated
+template strands preserve backup sequence information while
+ATP-consuming MutS--MutL--MutH complexes restore damaged active strands
+and reopen stalled replisome progression; two daughter cells with
+identical post-repair division distributions nevertheless differ in
+depleted intracellular ATP reserves (\(R_1\)), and unmethylated sequence
+identity without replisome gate clearance fails to support replication.
 
 \section{Persistence, organizational closure, and diachronic
 bearers}\label{persistence-organizational-closure-and-diachronic-bearers}
@@ -1060,9 +1099,10 @@ fixed-\(n\) black-box test can certify \(r = 0\) with high probability
 across arbitrarily small positive hazard rates \(r = \varepsilon > 0\)
 \citep{leCam1973, mayo2018}.}
 
-Philosophically, Proposition 6 closes two major loopholes. Part (a)
-shows why internal memory registers---extending an agent's effective
-horizon beyond instantaneous sensory surfaces
+Philosophically, Proposition 6 closes two major loopholes. Part (a),
+illustrated in Figure 2a, shows why internal memory
+registers---extending an agent's effective horizon beyond instantaneous
+sensory surfaces
 \citep{sethTsakiris2018, kaelbling1998, papadimitriouTsitsiklis1987}---can
 be \emph{constitutively necessary} for viable persistence even when the
 underlying safe region \(K^\star\) is state-defined. Part (b) proves why
@@ -1227,7 +1267,7 @@ reward? Recall from Table 1 that one-step expected total output
 \texttt{bloom}. Because each surviving or newborn token enters the next
 census damaged with probability \(q\) (where repair forces
 \texttt{care}) and healthy with probability \(1-q\), the two hereditary
-programmes \(\theta_0 = (\mathrm{care},\mathrm{care})\) and
+programs \(\theta_0 = (\mathrm{care},\mathrm{care})\) and
 \(\theta_1 = (\mathrm{bloom},\mathrm{care})\) carry intrinsic per-capita
 multiplication rates
 
@@ -1240,8 +1280,12 @@ and population counts---together with arbitrary joint randomization
 across living tokens---to issue action requests (\texttt{care},
 \texttt{bloom}, \texttt{stop}), but may \emph{not} peek at
 contemporaneous actuation/damage noise before acting or read causally
-silent tags. Let \(N_t\) denote total living population size at census
-\(t\).
+silent tags. Each living token at census \(t\) occupies an independent
+local six-unit resource site (\(1\) carried escrow unit plus \(5\) local
+inflow units), contrasting open per-capita resource regimes with
+globally capped finite habitats where exponential branching
+\(\rho_* > 1\) is bounded by carrying capacity. Let \(N_t\) denote total
+living population size at census \(t\).
 
 \textbf{Theorem 1 (Full-policy expected growth ceiling and same-process
 joint realization).} \emph{Fix any parameter vector
@@ -1265,7 +1309,7 @@ and any finite non-empty canonical initial population \(P_0\). Define}
   across \(\Pi_{\mathrm{pub}}\).}
 \item
   \textbf{Exact same-process joint realization from a damaged founder.}
-  \emph{Starting from a single damaged founder carrying stored programme
+  \emph{Starting from a single damaged founder carrying stored program
   \(\theta_i\) (\(i \in \{0,1\}\)), paid majority-vote physical
   restoration (\(R_1 = 3\)), gate-mediated internal execution of the
   restored code, faithful hereditary transmission, and two-sided
@@ -1282,17 +1326,51 @@ Theorem 1 (proved in Appendix A.5) delivers both our constructive
 compatibility benchmark and three sharp philosophical separations
 concerning purpose and persistence:
 
-First, \emph{implementation semantics shape what counts as optimal}. Why
-does the constant \(1\) appear inside
+First, \emph{implementation semantics shape what counts as optimal}
+(Figure 2b). Why does the constant \(1\) appear inside
 \(\rho_* = \max\{1, \lambda_0, \lambda_1\}\)? Because in subcritical
-environments where both \(\lambda_0 < 1\) and \(\lambda_1 < 1\),
-repeatedly submitting the unaffordable \texttt{bloom} request on a
-damaged token triggers transaction rejection, preserving that single
-token without actuation noise (\(N_t \equiv 1 = 1^t\)). Far from
-asserting a natural law that ``inactivity prevents decay,'' this exposes
-how optimal-control conclusions depend on the exact physical semantics
-of failed or refused actions: if rejected requests instead suffered
-background attrition, the unit floor would vanish.
+environments where both \(\lambda_0 < 1\) and \(\lambda_1 < 1\) (Regime
+I of Figure 2b), repeatedly submitting the unaffordable \texttt{bloom}
+request on a damaged token triggers transaction rejection, preserving
+that single token without actuation noise
+(\(N_t \equiv 1 = 1^t\))---analogous to metabolically dormant bacterial
+persister cells surviving antibiotic or starvation regimes that drive
+actively dividing phenotypes (\(\lambda_0, \lambda_1 < 1\)) toward
+extinction, whereas iteroparous maintenance (\texttt{care}, Regime II)
+and semelparous or high-fecundity proliferative investment
+(\texttt{bloom}, Regime III) dominate distinct ecological regions. Far
+from asserting a universal law that inactivity prevents decay, Regime I
+exposes how optimal-control conclusions depend on the physical semantics
+of arrested actuation: if rejected requests suffered background
+attrition, the unit floor would vanish.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.99\linewidth,height=\textheight,keepaspectratio,alt={Finite-memory
+viability separation and full-policy demographic phase diagram. (a)
+Five-state partially observed viability witness (Proposition 6a) in
+which observation pooling h(y\_L)=h(y\_R)=o\_M forces every reactive
+policy \textbackslash pi\_0(o\_t) into two-step failure with probability
+1/2 while one-step memory \textbackslash pi\_1(o\_\{t-1\},o\_t)
+maintains perpetual viability in K\^{}\textbackslash star. (b) Exact
+(k\_c, k\_b) attainment phase diagram at damage rate q = 1/3 (Theorem
+1), showing the subcritical refusal/dormancy floor (\textbackslash
+rho\_*=1), conservative maintenance attainment (\textbackslash
+theta\_0), proliferative attainment (\textbackslash theta\_1), and the
+critical (11/12, 25/24) and supercritical (9/8, 5/4) rational
+witnesses.}]{figures/fig2_memory_and_phase.pdf}
+\caption{Finite-memory viability separation and full-policy demographic
+phase diagram. (a) Five-state partially observed viability witness
+(Proposition 6a) in which observation pooling \(h(y_L)=h(y_R)=o_M\)
+forces every reactive policy \(\pi_0(o_t)\) into two-step failure with
+probability \(1/2\) while one-step memory \(\pi_1(o_{t-1},o_t)\)
+maintains perpetual viability in \(K^\star\). (b) Exact \((k_c, k_b)\)
+attainment phase diagram at damage rate \(q = 1/3\) (Theorem 1), showing
+the subcritical refusal/dormancy floor (\(\rho_*=1\)), conservative
+maintenance attainment (\(\theta_0\)), proliferative attainment
+(\(\theta_1\)), and the critical \((11/12, 25/24)\) and supercritical
+\((9/8, 5/4)\) rational witnesses.}
+\end{figure}
 
 Second, \emph{proliferative optimization splits the organism from the
 lineage}. Whenever \(\gamma > \delta > 0\) and \(\lambda_1 \ge 1\),
@@ -1483,15 +1561,30 @@ regenerative model \(\mathcal{M}\):
   persistence \citep{korsgaard1996, street2006, scanlon1998}. Predatory
   institutions can exhibit formidable constraint closure; autonomous
   agents can reflectively sacrifice individual or lineage survival for
-  justified commitments \citep{list2019}.
+  justified commitments \citep{list2019} (Figure 3).
 \end{enumerate}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.99\linewidth,height=\textheight,keepaspectratio,alt={Summary
+of typed explanatory preservation across representational quotients
+(left) and its alignment with the four stratified grounds of functional
+and purposive attribution (right), highlighting required invariance
+bridges versus illicit cross-bearer
+transfers.}]{figures/fig3_preservation_and_rungs.pdf}
+\caption{Summary of typed explanatory preservation across
+representational quotients (left) and its alignment with the four
+stratified grounds of functional and purposive attribution (right),
+highlighting required invariance bridges versus illicit cross-bearer
+transfers.}
+\end{figure}
 
 \section{Explanatory discipline, competitor diagnostics, and testable
 discriminations}\label{explanatory-discipline-competitor-diagnostics-and-testable-discriminations}
 
 \subsection{Diagnosing cross-bearer and cross-grain fallacies across
 contemporary
-programmes}\label{diagnosing-cross-bearer-and-cross-grain-fallacies-across-contemporary-programmes}
+programs}\label{diagnosing-cross-bearer-and-cross-grain-fallacies-across-contemporary-programs}
 
 The value of a philosophical framework lies in the inferential errors it
 catches and the rival insights it integrates without distortion.
@@ -1616,7 +1709,7 @@ interventional severity \citep{mayo2018}.
 \textbf{Objection 2: The preservation principle is trivially analytic.}
 \emph{Saying that an explanation must preserve the distinctions it needs
 is just elementary set theory (\(F = \bar{F} \circ q\)).}
-\textbf{Reply.} The set-theoretic fibre condition is indeed analytic
+\textbf{Reply.} The set-theoretic fiber condition is indeed analytic
 once \(F\) and \(q\) are fixed; the non-trivial philosophical and
 mathematical work lies in discovering \emph{which} widely trusted
 compressions silently destroy \emph{which} explanatory invariants. Prior
@@ -1742,55 +1835,47 @@ every \(h \in \mathcal{H} \setminus N\),
 
 \emph{Proof of Proposition 2.} For any belief
 \(b \in \Delta(\mathcal{X})\), action \(a \in \mathcal{A}\), and
-observation \(o \in \mathcal{O}\), the unnormalized post-observation
-measure
+observation \(o \in \mathcal{O}\), the unnormalized updated measure
 \(b'_{a,o}(x') = \sum_{x \in \mathcal{X}} b(x) T(x' \mid x,a) O(o \mid a,x')\)
-satisfies the duality identity
-\(\langle b'_{a,o}, f\rangle = \langle b, U_{a,o} f\rangle\) for every
-\(f \in \mathbb{R}^{\mathcal{X}}\). Because
-\(\mathbf{1} \in \mathcal{F}\), the observation probability
+satisfies \(\langle b'_{a,o}, f\rangle = \langle b, U_{a,o} f\rangle\)
+for every \(f \in \mathbb{R}^{\mathcal{X}}\), and in particular
 \(p(o \mid b, a) = \langle b'_{a,o}, \mathbf{1}\rangle = \langle b, U_{a,o}\mathbf{1}\rangle\).
+
 (\emph{Sufficiency}) Suppose
-\(U_{a,o}\mathcal{F} \subseteq \mathcal{F}\) for all \((a,o)\). Let
+\(U_{a,o}\mathcal{F} \subseteq \mathcal{F}\) for all \((a,o)\), and let
 \(b \equiv_{\mathcal{F}} \tilde{b}\). Since
 \(U_{a,o}\mathbf{1} \in \mathcal{F}\),
-\(p(o \mid b, a) = \langle b, U_{a,o}\mathbf{1}\rangle = \langle \tilde{b}, U_{a,o}\mathbf{1}\rangle = p(o \mid \tilde{b}, a)\).
-Whenever \(p(o \mid b,a) > 0\), the normalized posteriors
-\(\mathrm{Bayes}(b,a,o) = b'_{a,o}/p(o \mid b,a)\) and
-\(\mathrm{Bayes}(\tilde{b},a,o) = \tilde{b}'_{a,o}/p(o \mid \tilde{b},a)\)
-satisfy, for every \(f \in \mathcal{F}\),
+\(p(o \mid b, a) = \langle b, U_{a,o}\mathbf{1}\rangle = \langle \tilde{b}, U_{a,o}\mathbf{1}\rangle = p(o \mid \tilde{b}, a)\),
+establishing (i). Whenever \(p(o \mid b,a) > 0\), every
+\(f \in \mathcal{F}\) satisfies \(U_{a,o}f \in \mathcal{F}\) and hence
 \[\langle \mathrm{Bayes}(b,a,o), f\rangle = \frac{\langle b, U_{a,o}f\rangle}{p(o \mid b,a)} = \frac{\langle \tilde{b}, U_{a,o}f\rangle}{p(o \mid \tilde{b},a)} = \langle \mathrm{Bayes}(\tilde{b},a,o), f\rangle,\]
-because \(U_{a,o}f \in \mathcal{F}\). Thus
-\(\mathrm{Bayes}(b,a,o) \equiv_{\mathcal{F}} \mathrm{Bayes}(\tilde{b},a,o)\).
-(\emph{Necessity}) Suppose conversely that for some \((a,o)\) and
-\(f_0 \in \mathcal{F}\), \(g := U_{a,o}f_0 \notin \mathcal{F}\) (or
-\(U_{a,o}\mathbf{1} \notin \mathcal{F}\)). Since \(\mathcal{F}\) is a
-linear subspace of \(\mathbb{R}^{\mathcal{X}}\), there exists a non-zero
-vector \(v \in \mathcal{F}^\perp\) such that
-\(\langle v, h\rangle \neq 0\) for some
-\(h \in \{U_{a,o}\mathbf{1}, g\}\). Note
-\(\langle v, \mathbf{1}\rangle = 0\) since
-\(\mathbf{1} \in \mathcal{F}\). Choosing an interior belief
-\(b^\circ \in \Delta(\mathcal{X})\) with \(b^\circ(x) > 0\) for all
-\(x\) (and \(p(o \mid b^\circ, a) > 0\), since otherwise
-\(U_{a,o} \equiv 0 \in \mathcal{F}\)) and \(\varepsilon > 0\) small
-enough that
-\(\tilde{b} := b^\circ + \varepsilon v \in \Delta(\mathcal{X})\), we
-have \(b^\circ \equiv_{\mathcal{F}} \tilde{b}\). If
-\(\langle v, U_{a,o}\mathbf{1}\rangle = 0\), then
-\(p(o \mid b^\circ, a) = p(o \mid \tilde{b}, a) > 0\) while
-\(\langle b^\circ, g\rangle \neq \langle \tilde{b}, g\rangle\), so
-\(\langle \mathrm{Bayes}(b^\circ,a,o), f_0\rangle \neq \langle \mathrm{Bayes}(\tilde{b},a,o), f_0\rangle\).
-If \(\langle v, U_{a,o}\mathbf{1}\rangle \neq 0\), then either
-\(\langle \mathrm{Bayes}(b^\circ,a,o), f\rangle\) already differs for
-some \(f \in \mathcal{F}\), or else \(U_{a,o}f = c_f U_{a,o}\mathbf{1}\)
-for every \(f \in \mathcal{F}\); in the latter case
-\(p(o \mid b^\circ, a) \neq p(o \mid \tilde{b}, a)\) violates
-observation-probability invariance across equivalent beliefs (and adding
-any downstream action distinguishing survival/reward breaks multi-step
-equivalence). Hence \(U_{a,o}\mathcal{F} \subseteq \mathcal{F}\) is
-necessary and sufficient for joint observation-law and
-posterior-quotient invariance. \(\square\)
+establishing
+\(\mathrm{Bayes}(b,a,o) \equiv_{\mathcal{F}} \mathrm{Bayes}(\tilde{b},a,o)\)
+and thus (ii).
+
+(\emph{Necessity}) Suppose (i) and (ii) hold for all
+\(b \equiv_{\mathcal{F}} \tilde{b}\) and \((a,o)\). Fix any \((a,o)\)
+and any \(v \in \mathcal{F}^\perp\); since
+\(\mathbf{1} \in \mathcal{F}\), we have
+\(\langle v, \mathbf{1}\rangle = 0\). Choose the strictly positive
+uniform belief \(b^\circ(x) = 1/|\mathcal{X}|\) and \(\varepsilon > 0\)
+small enough that
+\(\tilde{b} := b^\circ + \varepsilon v \in \Delta(\mathcal{X})\), so
+\(b^\circ \equiv_{\mathcal{F}} \tilde{b}\). By (i),
+\(\langle b^\circ, U_{a,o}\mathbf{1}\rangle = \langle b^\circ + \varepsilon v, U_{a,o}\mathbf{1}\rangle\),
+forcing \(\langle v, U_{a,o}\mathbf{1}\rangle = 0\). Since
+\(v \in \mathcal{F}^\perp\) was arbitrary,
+\(U_{a,o}\mathbf{1} \in (\mathcal{F}^\perp)^\perp = \mathcal{F}\). Next,
+fix any \(f \in \mathcal{F}\). If \(p_0 := p(o \mid b^\circ, a) = 0\),
+positivity of \(b^\circ\) and non-negativity of \(U_{a,o}\mathbf{1}\)
+imply \(U_{a,o}\mathbf{1} \equiv 0\), whence
+\(|U_{a,o}f| \le \|f\|_\infty U_{a,o}\mathbf{1} = 0\) and
+\(U_{a,o}f = 0 \in \mathcal{F}\). If instead \(p_0 > 0\), then
+\(p(o \mid \tilde{b}, a) = p_0 > 0\) by (i), and (ii) yields
+\(\langle b^\circ, U_{a,o}f\rangle / p_0 = \langle b^\circ + \varepsilon v, U_{a,o}f\rangle / p_0\),
+so \(\langle v, U_{a,o}f\rangle = 0\) for all
+\(v \in \mathcal{F}^\perp\). Therefore
+\(U_{a,o}f \in (\mathcal{F}^\perp)^\perp = \mathcal{F}\). \(\square\)
 
 \subsection{A.2 Cut-set reconstruction, finite-memory separation, and
 fixed-sample impossibility (Propositions 5 and
@@ -1957,7 +2042,7 @@ no transition probability, affordability check, or payment depends on
 \(\tau\), erasing \(\tau\) defines a strong Markov lumpability
 \citep{burkeRosenblatt1958} commuting with every public-history policy.
 (b) Consider two tokens with row cells \((1,1,1)\) and \((0,0,0)\)
-(majority-decoded programme
+(majority-decoded program
 \(\theta_1 = (\mathrm{bloom}, \mathrm{care})\)) and diagnosis \(H\), one
 with \(g = \mathrm{open}\) and one with \(g = \mathrm{closed}\).
 Majority decoding maps both to \(\theta_1\), yet raw actuation without

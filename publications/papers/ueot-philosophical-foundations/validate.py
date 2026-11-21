@@ -40,6 +40,17 @@ required = [
     "manuscript.md", "manuscript.tex", "manuscript.pdf", "references.bib",
     "ABSTRACT_ZH.md", "CLAIM_MATRIX.md", "README.md", "COPYRIGHT_AND_LICENSE.md",
     "BUILD_RECEIPT.json", "template.tex", "layout.lua", "build.py", "validate.py",
+    "generate_figures.py",
+    "figures/fig1_architecture_and_lattice.pdf",
+    "figures/fig2_memory_and_phase.pdf",
+    "figures/fig3_preservation_and_rungs.pdf",
+    "submissions/bjps/bjps_blinded_manuscript.pdf",
+    "submissions/bjps/VALIDATION_BJPS.json",
+    "submissions/philosophy-of-science/pos_blinded_manuscript.pdf",
+    "submissions/philosophy-of-science/VALIDATION_POS.json",
+    "submissions/synthese/synthese_blinded_manuscript.pdf",
+    "submissions/synthese/synthese_title_page.pdf",
+    "submissions/synthese/VALIDATION_SYNTHESE.json",
 ]
 absent = [n for n in required if not (ROOT / n).is_file()]
 
@@ -124,7 +135,7 @@ if not arithmetic_ok:
 
 record = {
     "schema": "standalone-philosophy-editorial-validation/2",
-    "version": "2.0",
+    "version": "2.1",
     "checked_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
     "status": "PASS" if not errors else "FAIL",
     "errors": errors,
