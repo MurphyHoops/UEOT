@@ -86,3 +86,17 @@ assertions. The strict source review passed. Numerical reporting is
 now rounded to10 decimal places for platform stability; assertions
 and source hashes remain strict. The failed checkpoint is retained
 in checkpoint_ci.json, not counted as a successful final CI.
+
+## CP4 findings and remote portability closure
+
+The three CP4 actual immutable reviews added11+16+9=36 file identities,
+for133 in total. All main mathematics passed. The three CP3 scope
+findings were verified corrected. Four CP4 wording/contact/report-label
+findings are patched and await CP5. Audit remains IN_PROGRESS here.
+
+The CP4 decoded remote log confirms17 PASS entries at the exact head,
+231 reused entries and859 frozen files. Artifact14716352110 has digest
+d46269e420baa5e99760be9a1f5792f42d4d034368a9b415bea5113d4ee9d097.
+This closes the Mac/Linux display-payload issue; CP3's failed run stays
+in the record and final-head CI is still required. Calibration adds
+checks to memory_action, not a seventeenth science theorem.

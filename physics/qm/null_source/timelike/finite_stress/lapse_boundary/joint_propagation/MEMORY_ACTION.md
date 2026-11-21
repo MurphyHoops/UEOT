@@ -106,7 +106,7 @@ remain different questions.
 ## M4. The Gaussian endpoint unitary and every mandatory mixed term
 
 Put theta=Lambda/(2kappa), U=exp(i theta), X=kappa^-1,
-alpha_K=1/(2g_K), and D=P_kappa-A_K-Q_K in the original raw frame.
+alpha_K=1/(2g_K), and D=P_kappa-A_K-Q_K in the original covariant frame before W.
 U is a fixed, cutoff-independent unitary on the joint Hilbert space,
 commuting with R,f,P_u and the original endpoint W_K. On the regular
 compact-kappa/Schwartz test class,
@@ -385,7 +385,7 @@ zero. Equation (M.6)'s zero JOINT fixed-test gate therefore remains intact; a
 memory-traced readout or moving-label test is a different comparison.
 
 For the regular pure C5 source, the scaled vacuum component now
-vanishes, but the four-particle norm still tends to I_2/2. Thus the
+vanishes, but the four-particle squared norm still tends to I_2/2. Thus the
 scaled mean tends to zero while its variance tends to I_2/2>0.
 The second-moment gate remains open. This rule does not claim the
 actual C9 targets or the original common geometry are preserved.
@@ -447,6 +447,85 @@ the same preparation; they cannot be removed by calling this pointer
 an independent instrument. The ACTIVE gate implementation remains
 an additional physical task.
 
+## M9a. Calibration under the ACTUAL memory propagation
+
+A bounded estimator avoids an unjustified unbounded-moment inference.
+For a declared interval I=[a,b], define
+
+    w_min=1/(2b), w_max=1/(2a),
+    kappa_hat(z)=1/[2 clamp(z,w_min,w_max)],
+    kappa_I(kappa)=clamp(kappa,a,b).
+
+For every kappa>0, kappa_hat(w(kappa))=kappa_I(kappa).
+The estimator is globally 2b^2-Lipschitz. The exact immediate pointer
+noise in M17 therefore gives, with EVERY outcome retained,
+
+    E[(kappa_hat(Pi)-kappa_I)^2]initial <=b^4/v.       (M.19)
+
+This is a clipped estimator, not an unbiased kappa estimate.
+The target is globally clipped too; compact initial support alone
+would not justify an unbounded late-time error.
+
+At the final time measure the memory Pi PVM after the complete actual
+unitary. This is a normal complete instrument. The initial diagonal
+Kraus density M_z is not assumed to persist through harmonic evolution;
+M16 controls the bounded cost in the actual final joint state.
+
+The joint cost B=(kappa_hat(Pi)-kappa_I(kappa))^2 satisfies
+0<=B<=(b-a)^2 on the whole Hilbert space and commutes with F_s tensor I.
+Let e_K(sigma) be the ACTUAL common-vector error in M16, uniformly
+on the declared window. For a regular mixed low/reference input,
+use the same Hilbert--Schmidt purification A=W_sigma V_K sqrt(tau);
+M16 applies with its stated finite low-moment budget. Minkowski gives
+
+    RMS_C5 = ||sqrt(B) U_K^M A||_HS
+       <= ||sqrt(B)(F_s tensor I)A||_HS
+           +(b-a)||(U_K^M-F_s tensor I)A||_HS
+       <= b^2/sigma+(b-a)e_K(sigma).                (M.20)
+
+This uses the proved VECTOR/Hilbert--Schmidt propagation estimate;
+it is not a square-root inference from a trace-distance bound.
+The total-mean-retuned C9 input differs from the corresponding
+regular C5 input by delta_K<=p_total+r=O(1/log K). The same preparation
+and complete unitary preserve that trace distance. Thus
+
+    MSE_C9 <= [b^2/sigma+(b-a)e_K(sigma)]^2
+                 +(b-a)^2 delta_K.                 (M.20a)
+
+With the ORIGINAL sigma_K=(log K)^1/10 and v_K=(log K)^1/5,
+e_K=O((log K)^-1/10). Consequently the actual MSE is
+O((log K)^-1/5) and the actual RMS is O((log K)^-1/10).
+All outcomes, source-memory covariance and actual harmonic-memory
+dynamics remain included. This sharpens the valid but weaker estimate
+b^4/v+(b-a)^2 D_tr; no new diagonal or rare-branch derivative estimate
+is needed. Balancing sigma^-1 and sigma^4/sqrt(log K) optimizes this
+displayed upper bound at exponent1/10, not the physical device.
+
+The projector Q=1_{kappa outside I} annihilates the comparison
+purification, so Prob_C5(kappa outside I)<=e_K^2; C9 adds delta_K.
+For any fixed r_0>0, the commuting joint pointer/current-kappa event obeys
+
+    Prob_C9(|kappa_hat(Pi)-kappa|>=r_0)
+       <= e_K^2+delta_K+MSE_C9/r_0^2 ->0.            (M.21)
+
+It has the same O((log K)^-1/5) upper rate at fixed r_0. A limiting
+classical joint law may concentrate on the kappa/pointer diagonal;
+a two-variable Lebesgue density or normal quantum limit is not implied.
+This is probability calibration of the untruncated kappa on the stated
+family, not a bound on its untruncated MSE.
+
+For the declared conformal metric,
+d tau_proper=a_geom N d eta and H_proper=kappa/a_geom(u).
+Dividing the estimator and bounded target by the same a_geom(u)>0
+divides the MSE bound M20a by a_geom(u)^2. This defines a clipped relational Hubble
+readout; it does not construct a quantum proper-time operator or an
+experimental unit conversion.
+
+The result holds on the SHRINKING u_i+epsilon_K[0,S] windows with the
+explicitly prepared Gaussian memory. It is not the original fixed-u
+N4 readout, a measured C_source constraint charge, an autonomous gate,
+or the already matched old common geometry.
+
 ## M10. Remaining action and measurement problem
 
 We have added a specified positive oscillator source, constructed its
@@ -455,7 +534,8 @@ Gaussian propagation result, transported every endpoint variable, and
 kept real memory energy and mixed fluctuations.
 
 A local four-dimensional autonomous mechanism for the ACTIVE U gate,
-the controller stress, the full tensor Einstein--CTP solution and
-calibration remain absent. Conditional memory histories are calculated
+the controller stress and the full tensor Einstein--CTP solution
+remain absent. M9a supplies only the stated bounded shrinking-window
+calibration, not a laboratory or C_source calibration. Conditional memory histories are calculated
 separately in MEMORY_INFLUENCE; they do not integrate or solve the
 quantum geometry. Physical unification remains OPEN.

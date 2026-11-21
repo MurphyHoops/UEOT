@@ -84,6 +84,20 @@ Its four-dimensional local origin and the autonomous active preparation
 are additional physical gates, not evidence that the current original
 normal joint-kernel obstruction has disappeared.
 
+## Bounded calibration is now closed on the declared fast window
+
+MEMORY_ACTION M9a transfers the actual common-purification bound to a
+bounded clipped kappa/Hubble pointer. The same sigma=(log K)^1/10
+gives MSE O((log K)^-1/5) and RMS O((log K)^-1/10), including the
+total-retuned C9 preparation. Unclipped kappa converges in probability;
+its unbounded MSE is unproved. This is a useful instrument benchmark,
+not the original fixed-clock N4 gate or a measurement of C_source.
+
+The total variance lower growth (log K)^2/5 persists along this same
+diagonal. Improving this bounded pointer therefore does not by itself
+solve the joint constraint or furnish a finite-resource autonomous
+apparatus. The next action/test-prescription gate above stays primary.
+
 ## Global goal
 
 A mathematically consistent, empirically calibrated unified physical

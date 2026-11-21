@@ -86,7 +86,7 @@ argument composes it with the growing Gaussian family and proves that
 fixed finite-rank probes then lose their complete output effect.
 The root's two new algebra/finite-matrix checks passed. Three readonly
 agents independently reviewed the analytic arguments; immutable CP3
-source rereads remain pending. No physical apparatus closure is claimed.
+source rereads were subsequently completed and their findings addressed by CP4. No physical apparatus closure is claimed.
 
 ## Third closure: an actual memory source and conditional CTP data
 
@@ -111,3 +111,27 @@ without rounding; CP4 rounds only those reporting fields, preserving
 full-precision assertions and all source/result identity requirements.
 The shared checker now prints precise mismatch paths if a failure
 recurs. Final exact-head remote verification remains required.
+
+## Fourth closure: actual bounded calibration and independent review
+
+The common-vector/HS estimate gives the clipped pointer RMS bound
+b^2/sigma+(b-a)e_K. Including complete retuned C9 trace comparison yields
+MSE O((log K)^-1/5) and RMS O((log K)^-1/10) on the original Gaussian
+diagonal. A valid weaker trace-only estimate was sharpened after
+independent C, B and A mathematical checks. The untruncated target
+is controlled in probability only. All outcomes are retained.
+
+CP4 science44927983507 and publication44927983569 succeeded at
+2338e5e8e9d2fad9dadbbb504d30593a9667d7ed. The decoded science log
+contains17 PASS entries,231 reused entries and859 unchanged files.
+Three native agents read36 further immutable file identities, for133
+in total. They verified the three CP3 findings addressed; four new
+wording/contact/report-label clarifications are patched for CP5.
+
+The project planning documents distinguish a completed research
+package from a completed scientific port. Core's conditional,
+protocol-relative theory is not changed or promoted to empirical
+physics by this cohort. Full tensor dynamics, autonomous preparation,
+physical clock/comparison selection and empirical validation remain
+open. These direct the next action-based gate rather than another
+normal-state tuning inside the rejected original fixed-test limit.

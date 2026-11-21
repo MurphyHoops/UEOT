@@ -79,6 +79,26 @@ require(abs(var-rhs)<1e-12,"Complete noncommuting total variance identity")
 require(var+1e-12>=2*np.trace(rho@T@T).real,"Positive complete-source lower term")
 bound=1/(2*(iv.mpf(19)/10)**2)
 require(above(bound),"Illustrative asymptotic lower coefficient")
+# Bounded clipped calibration: exact Lipschitz coefficient, then illustrative
+# conditional Gaussian quadrature (not an unbounded-moment certificate).
+aa,bb,xx=sp.symbols("aa bb xx",positive=True)
+require(sp.simplify(-sp.diff(1/(2*xx),xx).subs(xx,1/(2*bb))-2*bb**2)==0,"Clipped inverse Lipschitz constant")
+require(sp.simplify((2*bb**2)**2/(4*v)-bb**4/v)==0,"Clipped initial MSE bound")
+a_rate=sp.Rational(1,10)
+require(4*a_rate-sp.Rational(1,2)==-a_rate,"Common-vector error balances pointer RMS")
+require(-2*a_rate==sp.Rational(-1,5),"Squared-cost actual MSE exponent")
+require(-1 < -2*a_rate,"Retuned rare input has a smaller bounded-risk term")
+nodes,weights=np.polynomial.hermite.hermgauss(96)
+calibration=[]
+lo=1.1;hi=1.9
+for vv0 in [25.,100.]:
+    for kk0 in [lo,1.5,hi]:
+        zz=1/(2*kk0)+nodes/np.sqrt(2*vv0)
+        est=1/(2*np.clip(zz,1/(2*hi),1/(2*lo)))
+        risk=float(np.sum(weights*(est-kk0)**2)/np.sqrt(np.pi))
+        bound0=hi**4/vv0
+        require(risk<=bound0+1e-10,"Illustrative complete-outcome clipped risk")
+        calibration.append({"v":vv0,"conditional_kappa":kk0,"risk_rounded":round(risk,10),"analytic_upper_rounded":round(bound0,10)})
 finish("memory_action.py",{
 "floating_report_rounding":"10 decimal places; internal regression tolerance remains 1e-12",
 "added_source":"M>0, Omega>0 conformal-lapse harmonic memory",
@@ -98,8 +118,13 @@ finish("memory_action.py",{
 "moving_high_energy_comparison":"E_n~K/(2log K), source fast identity, no normal joint limit, remaining variance I2/2",
 "continuous_pointer":"normal complete instrument for w=1/(2kappa), noise 1/(4v)",
 "pointer_is_original_Csource":False,
+"actual_clipped_kappa_MSE":"<=[b^2/sigma+(b-a)e_K]^2+(b-a)^2 delta_K; O((log K)^(-1/5))",
+"actual_clipped_kappa_RMS":"O((log K)^(-1/10))",
+"calibration_transfer":"same vector/HS purification from M16; complete C9 trace comparison",
+"unclipped_kappa_probability_consistency":True,"unclipped_kappa_MSE_controlled":False,
+"conditional_pointer_regressions":calibration,
 "energy_record_instrument":"K_n=U_K^(E_n) M_n, all n retained",
-"illustrative_asymptotic_coefficient_M1_Omega1_support11over10_19over10":outward(bound),
+"illustrative_asymptotic_coefficient_lower_bound_M1_Omega1_support11over10_19over10":outward(bound),
 "finite_noncommuting_matrix_regression":{"variance":round(var,10),"three_square_identity":round(rhs,10)},
 "autonomous_active_gate_or_four_dimensional_apparatus_constructed":False
 },inputs=[

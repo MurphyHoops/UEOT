@@ -52,7 +52,23 @@
       "decoded_failure": "Source-bound result differs after internal numerical assertions; review source hashes passed",
       "diagnosis": "unrounded floating regression display payloads compared by exact JSON equality across Mac/Linux",
       "repair": "round reported matrix examples to 10 decimals only; retain full-precision assertions, exact source hashes and strict result comparison; add mismatch-path diagnostics",
-      "repair_remote_verification": "PENDING_CP4"
+      "repair_remote_verification": "VERIFIED_CP4_17_PASS_EXACT_HEAD"
+    },
+    {
+      "commit": "2338e5e8e9d2fad9dadbbb504d30593a9667d7ed",
+      "science_run": 44927983507,
+      "science_job": 136918181228,
+      "science_conclusion": "success",
+      "publication_run": 44927983569,
+      "publication_conclusion": "success",
+      "decoded_pass_entries": 17,
+      "decoded_log_sha256": "6699589510ef4b8dcd62c5238c1abba23fcc2b9fdaf7af1b1df13dc8266bcfd1",
+      "decoded_reused_entries": 231,
+      "decoded_frozen_files": 859,
+      "artifact_id": 14716352110,
+      "artifact_size_bytes": 55200,
+      "artifact_sha256": "d46269e420baa5e99760be9a1f5792f42d4d034368a9b415bea5113d4ee9d097",
+      "scope": "Exact head, decoded log and artifact metadata verified; final head still needs its own CI"
     }
   ]
 }

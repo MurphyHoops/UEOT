@@ -169,8 +169,12 @@ In I.6 the two subscripts label second functional derivatives. The delta contact
 varying kappa^-1 and must accompany the energy covariance.
 For the retained lapse itself, the interior derivative of t is +1
 on the plus branch and -1 on the minus branch; its second derivative
-is zero. The original action contacts in MEMORY_ACTION and the
-endpoint lapse terms remain distinct contributions.
+is zero. The configuration-action contacts in MEMORY_ACTION belong to the
+PRE-integration derivation: they must be combined there with the
+memory response, measure and equal-time terms. The exact F already
+contains their net effect. Do NOT add those bare contacts again to
+the exact influence Hessian in I.4-I.6. Endpoint a,b chain-rule terms
+still have to be included when the initial endpoints/lapses vary.
 
 With F=exp(i S_IF), S_IF=-i log F. Its physical plus lapse derivative
 is -E_q, with the opposite minus-branch sign. These are conditional
