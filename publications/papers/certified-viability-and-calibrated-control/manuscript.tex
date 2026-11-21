@@ -1,0 +1,2495 @@
+% Standalone journal-submission typesetting template (Journal of Automated Reasoning style).
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=26mm,headheight=15pt,headsep=8mm]{geometry}
+\usepackage{fontspec}
+\IfFontExistsTF{Liberation Serif}{%
+  \setmainfont{Liberation Serif}%
+}{%
+  \setmainfont{Times New Roman}%
+}
+\IfFontExistsTF{Liberation Sans}{%
+  \setsansfont{Liberation Sans}%
+}{%
+  \setsansfont[Path=../../../tools/books/.cache/fonts/,
+    BoldFont=DejaVuSans-Bold.ttf,
+    ItalicFont=DejaVuSans-Oblique.ttf,
+    BoldItalicFont=DejaVuSans-BoldOblique.ttf]{DejaVuSans.ttf}%
+}
+\IfFontExistsTF{DejaVu Sans Mono}{%
+  \setmonofont[Scale=0.84]{DejaVu Sans Mono}%
+}{%
+  \setmonofont[Path=../../../tools/books/.cache/fonts/,
+    Scale=0.84,
+    BoldFont=DejaVuSansMono-Bold.ttf,
+    ItalicFont=DejaVuSansMono-Oblique.ttf,
+    BoldItalicFont=DejaVuSansMono-BoldOblique.ttf]{DejaVuSansMono.ttf}%
+}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{microtype}
+\usepackage{setspace}
+\setstretch{1.13}
+\usepackage{longtable,booktabs,array,calc}
+\newcounter{none}
+\usepackage{needspace}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage[authoryear,round]{natbib}
+\usepackage{xcolor}
+\definecolor{linkblue}{HTML}{1F4463}
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[unicode,colorlinks=true,allcolors=linkblue,bookmarksnumbered=true]{hyperref}
+\usepackage{xurl}
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Pure-Kernel Verified Controller Synthesis, Fixed-Sample
+Impossibility, and Calibrated Post-Selection Risk under Partial
+Observation},
+  pdfauthor={Degui Qian},
+  pdfsubject={Interactive Theorem Proving, Partially Observed Stochastic Control, and Calibrated Risk Certification},
+  pdfkeywords={interactive theorem proving; Lean 4; partially observable
+Markov decision processes; safe controller synthesis; post-selection
+inference; minimax regret}
+}
+\setlength{\parindent}{1.15em}
+\setlength{\parskip}{2pt}
+\setlength{\emergencystretch}{2.5em}
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
+\widowpenalty=10000
+\clubpenalty=10000
+\displaywidowpenalty=10000
+\providecommand{\tightlist}{\setlength{\itemsep}{2pt}\setlength{\parskip}{0pt}}
+\providecommand{\passthrough}[1]{#1}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\footnotesize Qian: Pure-Kernel Verified Controller Synthesis}
+\fancyhead[R]{\footnotesize Calibrated Post-Selection Risk under Partial Observation}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.25pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\small\thepage}\renewcommand{\headrulewidth}{0pt}}
+\begin{document}
+\thispagestyle{plain}
+\begin{center}
+{\fontsize{18.5}{23}\selectfont\bfseries Pure-Kernel Verified Controller
+Synthesis, Fixed-Sample Impossibility, and Calibrated Post-Selection
+Risk under Partial Observation\par}
+\vspace{11pt}
+{\large Degui Qian\par}
+\vspace{3pt}
+{\small Independent Researcher\par}
+\vspace{5pt}
+{\small November 2026\par}
+\end{center}
+\vspace{4pt}
+\begin{abstract}
+\noindent Safety-critical stochastic controllers deployed under partial
+observation face three interlocking verification gaps. First,
+qualitative shield and supervisory synthesis methods require exact
+transition supports, whereas data-driven pipelines estimate transitions
+from finite samples and select state abstractions after observing
+training data. Second, continuous belief-state compressions often fail
+dynamic closure or obscure hidden safety hazards. Third, mechanized
+proofs of rational dynamic-programming bounds frequently invoke
+unverified native code evaluation, enlarging the trusted computing base
+beyond the proof kernel. This article resolves all three gaps within an
+end-to-end mathematical and Lean 4 formalization relying solely on
+Lean's three standard logical axioms. We prove exact equivalence between
+positive-mass posterior supports and combinatorial trace-support
+recursion without assuming finite observation spaces, establish
+König-type finite-action compactness equating arbitrarily long horizon
+policies with a single all-time safe policy, and verify a computable
+finite-memory controller synthesizer achieving almost-sure
+infinite-trajectory safety. We then prove that no randomized
+fixed-sample black-box test can uniformly certify exact zero transition
+leakage, replacing fragile zero-support premises with a computable
+rational empirical total-variation oracle that bounds joint
+post-selection acceptance-and-deployment failure without candidate-count
+union bounds. Finally, we characterize measurable Markov belief
+quotients via closed test spaces and establish exact
+fault-discrimination and randomized minimax regret bounds
+(\(3/128 < 1/32\)) via GCD-free integer-scaled dynamic programming
+verified purely inside the kernel.
+\end{abstract}
+\vspace{4pt}
+\noindent{\small\textbf{Keywords:} interactive theorem proving; Lean 4;
+partially observable Markov decision processes; safe controller
+synthesis; post-selection inference; minimax regret}
+\vspace{12pt}
+
+\section{Introduction: bridging structural safety, statistical
+calibration, and kernel
+trust}\label{introduction-bridging-structural-safety-statistical-calibration-and-kernel-trust}
+
+Designing and certifying autonomous controllers for partially observed
+stochastic systems requires reconciling three traditions whose
+foundational assumptions rarely align. In formal methods, supervisory
+control \citep{ramadgeWonham1987, tabuada2009, cassandrasLafortune2021},
+probabilistic model checking
+\citep{baierKatoen2008, kwiatkowska2011, dehnert2017}, and shield
+synthesis for reinforcement learning
+\citep{chatterjee2016, alshiekh2018, junges2021} construct finite-memory
+strategies that enforce safety or almost-sure reachability invariants
+across unbounded horizons. Crucially, qualitative support-based
+synthesis assumes an \emph{exact} relational specification of which
+state transitions carry strictly positive probability. In statistical
+machine learning and robust control, by contrast, transition kernels are
+unknown and must be estimated from finite sample trajectories
+\citep{kearnsSingh2002, strehl2009, nilimElGhaoui2005, wiesemann2013},
+while practitioners routinely use the same training dataset both to
+select a coarse observation abstraction
+\citep{ravindranBarto2004, ferns2004} and to bound downstream deployment
+failure---creating a classic post-selection inference hazard
+\citep{berk2013, mayo2018}. Meanwhile, in interactive theorem proving
+\citep{nipkowPaulsonWenzel2002, bertotCasteran2004, mouraUllrich2021},
+recent formalizations have mechanized foundational measure-theoretic
+Markov processes and tabular dynamic programming
+\citep{hoelzl2017, vajjha2021, schaeffelerAbdulaziz2023}, yet concrete
+rational horizon evaluations for partially observed belief trees often
+suffer severe kernel reduction blowup from repeated
+greatest-common-divisor normalization, tempting developments to trust
+external compilers via native evaluation axioms \citep{boespflug2011}.
+
+When these three layers are left disconnected, subtle soundness bugs
+slip between their interfaces. Consider four concrete failure modes that
+arise in naive combinations of synthesis, abstraction, and statistical
+testing:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \emph{Reference-posterior circularity and dead-end prefixes.} In
+  partially observed control, the posterior distribution over hidden
+  states at a coarse action--observation history depends on the prior
+  actions chosen along that history
+  \citep{astrom1965, smallwoodSondik1973, kaelbling1998}. Proving that a
+  synthesized policy visits only certified state--action pairs relative
+  to a \emph{pre-fixed} reference posterior fails if deploying the new
+  controller shifts positive probability onto previously unvisited
+  observation branches. Conversely, verifying that an action is locally
+  certified at the present step does not imply that the resulting
+  support admits any safe continuation at subsequent steps.
+\item
+  \emph{The illusion of black-box zero-risk certification.} Because
+  support-based shields require exact transition supports
+  \(R(x,a,z) \iff P(x,a)(z) > 0\), it is tempting to certify
+  \(P(x,a)(x^*) = 0\) empirically after observing zero visits to a
+  hazardous state \(x^*\) across \(N\) independent trials. Yet without
+  an independently justified minimum positive transition margin, an
+  adversarial or unmodeled contamination rate
+  \(\varepsilon \in (0, 1/N)\) produces an all-safe training record with
+  high probability \((1-\varepsilon)^N\) while breaking infinite-horizon
+  almost-sure safety.
+\item
+  \emph{Post-selection optimism and candidate-count inflation.} When an
+  algorithm scans a family of candidate coarse observation maps
+  \(q_1, \dots, q_m\) on empirical transition data and deploys the first
+  abstraction passing a defect threshold, conditioning naively on
+  acceptance invalidates finite-sample concentration, whereas taking a
+  union bound over all \(m\) candidate abstractions inflates sample
+  complexity even though all abstractions project the \emph{same}
+  underlying state--action transition rows. Moreover, even on standard
+  Borel spaces where exact predictive compression succeeds
+  \citep{crutchfieldYoung1989, shaliziCrutchfield2001, barnettCrutchfield2015},
+  two latent beliefs that agree on every future observation test can
+  assign opposite values to hidden-state safety predicates.
+\item
+  \emph{Resource-gated fault ambiguity and compiler-trusted reflection.}
+  In cyber-physical and fault-tolerant register architectures, probing
+  whether faults act locally on a single dispatched unit or globally
+  across backup units consumes prepaid operational budget. Under strict
+  per-step prepayment, insufficient budget renders distinct fault
+  mechanisms observationally indistinguishable; at intermediate
+  horizons, deterministic controllers hit discrete payoff-lattice
+  barriers that pre-committed randomized controllers strictly beat
+  \citep{vonNeumann1928, wald1950, savage1951}. Certifying exact
+  rational minimax regret across full observation trees via
+  computational reflection \citep{boutin1997, gregoireMahboubi2005}
+  forfeits pure-kernel assurance if rational arithmetic triggers
+  compiler-trusted evaluation.
+\end{enumerate}
+
+This article presents a unified mathematical theory and complete
+pure-kernel Lean 4 formalization \citep{mouraUllrich2021, mathlib2020}
+that closes each of these gaps with necessary-and-sufficient
+characterizations, executable algorithms, sharp impossibility theorems,
+and machine-checked counterexamples. Every theorem, witness,
+synthesizer, statistical risk oracle, and minimax regret bound reported
+in this paper has been formally verified in Lean 4 (version 4.33.1) over
+Mathlib, and audited across the entire compiled environment to depend
+\emph{exclusively} on Lean's three standard foundational
+axioms---propositional extensionality (\texttt{propext}), classical
+choice (\texttt{Classical.choice}), and quotient soundness
+(\texttt{Quot.sound}) \citep{carneiro2019}---with zero incomplete proofs
+(\texttt{sorryAx}) and zero compiler-trust evaluation axioms
+(\texttt{Lean.ofReduceBool} / \texttt{native\_decide}). At the same
+time, to ensure that the article can be read and refereed independently
+by control theorists, statisticians, and formal-methods researchers
+without inspecting Lean source files, all mathematical definitions,
+theorem statements, and complete proofs are presented self-containedly
+in Sections 2--6 and the Mathematical Appendix.
+
+Our main contributions form a tightly integrated chain across four
+levels:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Exact trace-support viability, König quantifier exchange, and
+  executable synthesis (Sections 2--3).} For finite state spaces \(X\),
+  finite action sets \(A\), and \emph{arbitrary} (possibly uncountable)
+  observation spaces \(Y\), Theorem 1 proves that on every coarse
+  history of positive probability under an arbitrary causal policy
+  \(\pi\), the exact posterior support coincides with a
+  policy-independent combinatorial trace-support recursion \(S_n(g)\),
+  yielding a non-circular equivalence between backward support viability
+  \(V(0, T, S_0(y))\) and existence of a causal policy achieving zero
+  uncertified state--action occupancy \(\nu_n^\pi(C_n^c) = 0\) across
+  \([0,T)\). Theorem 2 establishes a König-type compactness equivalence
+  \citep{konig1927} for time-inhomogeneous systems: arbitrarily long
+  finite-horizon zero-uncovered policies exist if and only if a
+  \emph{single} causal policy \(\pi_\infty\) certifies all times
+  \(n \in \mathbb{N}\) simultaneously, paired with an explicit
+  infinite-action counterexample. Theorem 3 proves stabilization of the
+  greatest winning-support fixed point \(\mathcal{W}_*\)
+  \citep{tarski1955, aubinCellina1984, aubin1991} in at most
+  \(2^{|X|} - 1\) iterations, connects closed-loop substochastic killed
+  matrix powers \(\mathbf{1}_K^\top Q_K^T \mu_0\)
+  \citep{darrochSeneta1965, seneta1981, collet2013} to the Kolmogorov
+  infinite-trajectory safety probability
+  \(\mathbb{P}(\forall n \in \mathbb{N},\, X_n \in K)\)
+  \citep{kallenberg2021}, and establishes soundness and completeness of
+  a purely computable synthesizer \texttt{synthesize} returning
+  deterministic finite-memory programs
+  \texttt{Option\ (Program\ X\ Y\ A)}.
+\item
+  \textbf{Fixed-sample impossibility and candidate-free calibrated
+  post-selection risk (Section 4).} Theorem 4 proves that for any fixed
+  sample size \(N \ge 1\), significance level \(\alpha \ge 0\), and
+  \emph{randomized} certification kernel
+  \(\psi : \{0,1\}^N \to \Delta(\{\mathrm{true}, \mathrm{false}\})\),
+  uniform \(\alpha\)-validity over positive hazard rates \(p \in (0,1)\)
+  forces \(\mathbb{P}_0(\psi = \mathrm{true}) \le \alpha\) at \(p = 0\)
+  \citep{leCam1973, tsybakov2009}. Separating structural support priors
+  from quantitative transition uncertainty, Theorem 5 constructs the
+  exact joint training--selected-deployment law
+  \(J(\omega, h) = \mu(\omega) K_{s(\omega)}(h)\) and verifies a purely
+  rational computable \texttt{NoisyFiniteRiskOracle}. Because a single
+  simultaneous row-calibration event
+  \(G = \{\forall (x,a),\, d_{\mathrm{TV}}(P_{x,a}, \widehat{P}_{x,a}) \le u\}\)
+  \citep{hoeffding1963, mcdiarmid1989, pinsker1964} controls empirical
+  coarse-graining defects uniformly across \emph{all} candidate
+  abstractions \(q_1, \dots, q_m\) via Markov pushforward contractivity
+  \citep{dobrushin1956, csiszar1975}, selecting the first certified
+  candidate incurs \emph{zero candidate-count union-bound penalty} and
+  satisfies the sharp unconditional joint bound
+  \(\mathbb{P}_J(\mathrm{accept} \land E) \le \min\{1, \alpha_N + (1-\alpha_N)\beta\}\).
+\item
+  \textbf{Continuous observable belief quotients vs.~prepaid
+  fault-mechanism minimax regret (Sections 5--6).} On standard Borel
+  state spaces \(X\)
+  \citep{giry1982, bertsekasShreve1978, hernandezLerma1996}, Theorem 6
+  proves that the regular Bayesian posterior-belief transition kernel
+  descends through an observable test coordinate
+  \(c(b) = b(q^{-1}\{1\}) \in [0,1]\) to a unique measurable Markov
+  quotient kernel \(\bar{K}\)
+  \citep{burkeRosenblatt1958, kemenySnell1960, larsenSkou1991, givanDeanGreig2003}
+  if and only if the underlying kernel satisfies one-step source-fiber
+  test closure (\texttt{ClosedTests}), while proving non-descent of
+  latent rewards and safety sets
+  \citep{jaeger2000, littmanSuttonSingh2001}. When structural
+  uncertainty instead concerns \emph{how faults propagate} across
+  redundant slots under a strict non-replenished prepayment wallet \(B\)
+  \citep{altman1999, conantAshby1970, pearl2009}---comparing local
+  serial faults (\(S\)) against global correlated faults
+  (\(G\))---Theorem 7 establishes the exact three-step total-variation
+  distinguishability \(\Delta_{3,B} = r^2(1-r)\mathbf{1}_{B \ge c}\)
+  \citep{blackwell1953, coverThomas2006}, derives a Bayes--minimax
+  regret certificate \citep{bellman1957, blackwell1965, savage1951}, and
+  proves that at \((r, H, B, c, \lambda, d) = (1/2, 3, 2, 1, 1/4, 1)\)
+  pre-run private randomization strictly lowers worst-case regret from
+  the deterministic lattice minimum \(1/32\) to the exact full-history
+  minimax optimum \(R^* = 3/128\).
+\item
+  \textbf{Pure-kernel formalization architecture and GCD-free integer
+  dynamic programming (Section 7).} We detail how executable synthesis
+  and rational risk certification are cleanly decoupled from
+  noncomputable measure-theoretic semantics, how unnormalized
+  integer-weighted belief lists (\texttt{UBelief}) and dyadic scaling
+  (\texttt{csolveInt}, \texttt{csourceInt}) eliminate rational fraction
+  reduction so that exact multi-step POMDP oracle and Bayes values
+  compile via pure-kernel \texttt{decide}, and how our environment-wide
+  axiom audit compares against existing developments in Isabelle/HOL,
+  Coq/Rocq, and Lean 4
+  \citep{affeldt2014, eberl2015, hoelzlNipkow2012, hoelzl2017, vajjha2021, schaeffelerAbdulaziz2023}.
+\end{itemize}
+
+\section{Trace-support viability and compact quantifier exchange under
+partial
+observation}\label{trace-support-viability-and-compact-quantifier-exchange-under-partial-observation}
+
+\subsection{Microscopic and coarse path laws without reference-policy
+circularity}\label{microscopic-and-coarse-path-laws-without-reference-policy-circularity}
+
+Let \(X\) be a finite state space, \(A\) be a nonempty action set, and
+\(Y\) be an arbitrary observation space equipped with a deterministic
+observation map \(q: X \to Y\). Crucially, we do \emph{not} assume at
+the mathematical specification layer that \(Y\) is finite or even
+countable: because \(X\) is finite, at any step all observations
+realized with positive probability lie inside the finite image
+\(q(X) \subseteq Y\). Time-inhomogeneous stochastic dynamics are
+specified by an initial state probability mass function (PMF)
+\(p_0 \in \Delta(X)\) and a sequence of transition kernels
+\(P_n: X \times A \to \Delta(X)\) for \(n \in \mathbb{N}\)
+\citep{paz1971, puterman1994}. At each step \(n\), a task-specific
+safety or operational specification is represented by a binary
+state--action certification relation \(C_n \subseteq X \times A\); a
+pair \((x,a) \in C_n\) is \emph{certified} at step \(n\), and
+\((x,a) \in C_n^c := (X \times A) \setminus C_n\) is \emph{uncertified}
+(or \emph{uncovered}).
+
+A \emph{coarse causal history} of length \(n\) records the initial
+observation together with the sequence of applied actions and received
+observations:
+\[\mathcal{H}_0 := Y, \qquad \mathcal{H}_{n+1} := \mathcal{H}_n \times (A \times Y).\]
+Correspondingly, a \emph{microscopic history} \(h_n \in \mathcal{M}_n\)
+records the full state--action trajectory \(\mathcal{M}_0 := X\) and
+\(\mathcal{M}_{n+1} := \mathcal{M}_n \times (A \times X)\), projecting
+onto coarse histories via \(\pi_0(x_0) := q(x_0)\) and
+\(\pi_{n+1}(h_n, (a_n, x_{n+1})) := (\pi_n(h_n), (a_n, q(x_{n+1})))\),
+with terminal state \(\mathrm{last}_0(x_0) := x_0\) and
+\(\mathrm{last}_{n+1}(h_n, (a_n, x_{n+1})) := x_{n+1}\). A \emph{causal
+policy} is a sequence of history-dependent action kernels
+\(\pi = (\pi_n)_{n \in \mathbb{N}}\) where
+\(\pi_n: \mathcal{H}_n \to \Delta(A)\) may employ arbitrary real-valued
+randomization weights. Together with \((p_0, q, P)\), any causal policy
+\(\pi\) induces a sequence of microscopic path PMFs
+\(\mu_n^\pi \in \Delta(\mathcal{M}_n)\), coarse path PMFs
+\(\bar{p}_n^\pi := (\pi_n)_\# \mu_n^\pi \in \Delta(\mathcal{H}_n)\), and
+step-\(n\) \emph{deployment state--action occupancy laws}
+\(\nu_n^\pi \in \Delta(X \times A)\) defined by
+\[\nu_n^\pi(x, a) := \sum_{\substack{h \in \mathcal{M}_n \\ \mathrm{last}_n(h) = x}} \mu_n^\pi(h)\, \pi_n(\pi_n(h))(a).\]
+On any coarse history \(g \in \mathcal{H}_n\) with
+\(\bar{p}_n^\pi(g) > 0\), conditioning \(\mu_n^\pi\) on the fiber
+\(\pi_n^{-1}(\{g\})\) and projecting onto \(\mathrm{last}_n\) yields the
+exact terminal-state posterior \(\rho_n^{\pi, g} \in \Delta(X)\).
+
+While the numerical posterior \(\rho_n^{\pi, g}\) depends in general on
+the quantitative transition probabilities \(P_k\) and policy weights
+\(\pi_k\), its \emph{support}
+\(\operatorname{supp}\rho_n^{\pi, g} := \{x \in X : \rho_n^{\pi, g}(x) > 0\}\)
+is governed by a purely combinatorial \emph{trace-support recursion}
+that makes no reference to \(\pi\). For any subset \(S \subseteq X\),
+action \(a \in A\), and observation \(y \in Y\), define
+\[S_0(y) := \{x \in X : p_0(x) > 0 \land q(x) = y\},\]
+\[\operatorname{Succ}_n(S, a, y) := \{x' \in X : q(x') = y \land \exists x \in S,\ P_n(x,a)(x') > 0\},\]
+and along any coarse history
+\(g_{n+1} = (g_n, (a, y)) \in \mathcal{H}_{n+1}\) set \(S_0(y_0)\) at
+\(n=0\) and
+\(S_{n+1}(g_n, (a, y)) := \operatorname{Succ}_n(S_n(g_n), a, y)\).
+
+To characterize when a causal controller can avoid uncertified
+state--action pairs over \(k\) remaining steps starting from step \(n\)
+and possible state set \(S \subseteq X\), define the \emph{backward
+support-viability predicate} \(V(n, k, S)\) recursively on
+\(k \in \mathbb{N}\): \[\begin{aligned}
+V(n, 0, S) &:\iff \mathrm{True}, \\
+V(n, k+1, S) &:\iff \exists a \in A,\ \bigl(\forall x \in S,\ C_n(x,a)\bigr) \\
+&\qquad\quad \land \bigl(\forall y \in Y,\ \operatorname{Succ}_n(S,a,y) \neq \varnothing \implies V(n+1, k, \operatorname{Succ}_n(S,a,y))\bigr).
+\end{aligned}\] Notice the strict quantifier discipline in
+\(V(n, k+1, S)\): \textbf{one and the same action} \(a \in A\) must
+simultaneously certify \emph{every} state \(x \in S\) indistinguishable
+under the current history, and \textbf{every} observation branch \(y\)
+carrying non-empty successor support must remain viable for the
+remaining \(k\) steps. Weakening \(\exists a \forall x\) to
+\(\forall x \exists a\) would illegally peek at the unobserved hidden
+state; weakening \(\forall y\) to \(\exists y\) would gamble on lucky
+observations \citep{madani2003, chatterjee2016}.
+
+\textbf{Theorem 1 (Actual posterior-support bridge and finite-horizon
+viability equivalence).} \emph{Fix \((p_0, q, P, C)\), a finite horizon
+\(T \in \mathbb{N}\), and an arbitrary complete base policy
+\(\pi_{\mathrm{base}}\) supplying well-typed actions outside viable
+branches.}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Exact posterior-support bridge.} \emph{Under any causal policy
+  \(\pi\), an initial observation \(y \in Y\) satisfies
+  \(\bar{p}_0^\pi(y) > 0\) iff \(S_0(y) \neq \varnothing\); for every
+  \(n \in \mathbb{N}\) and every \(g \in \mathcal{H}_n\) with
+  \(\bar{p}_n^\pi(g) > 0\),
+  \(\operatorname{supp}\rho_n^{\pi, g} = S_n(g)\); and
+  \(\bar{p}_{n+1}^\pi(g, (a, y)) > 0\) iff \(\bar{p}_n^\pi(g) > 0\),
+  \(\pi_n(g)(a) > 0\), and
+  \(\operatorname{Succ}_n(S_n(g), a, y) \neq \varnothing\).}
+\item
+  \textbf{Necessary and sufficient finite-horizon synthesis.} \emph{The
+  following two statements are equivalent:}
+  \[\bigl(\forall y \in Y,\ S_0(y) \neq \varnothing \implies V(0, T, S_0(y))\bigr)
+  \iff
+  \bigl(\exists \pi,\ \forall n < T,\ \nu_n^\pi(C_n^c) = 0\bigr),\]
+  \emph{where \(\nu_n^\pi\) is the actual deployment occupancy generated
+  by \((p_0, q, P)\) and \(\pi\) itself. In particular, whenever a
+  randomized history-dependent policy achieves \(\nu_n^\pi(C_n^c) = 0\)
+  for all \(n < T\), a deterministic history-dependent policy \(\pi^V\)
+  achieves the same guarantee.}
+\end{enumerate}
+
+Theorem 1 (proved in Appendix A.1) eliminates two persistent pitfalls in
+partially observed safety analysis. First, because \(S_n(g)\) depends
+only on the \emph{recorded} actions inside \(g\) and not on
+counterfactual randomization weights of \(\pi\), replacing one
+microscopic prefix in \(\pi_n^{-1}(\{g\})\) by another preserves
+\(\pi_n(g)(a) > 0\); this symmetry allows both sufficiency and necessity
+to be proved directly on the policy's own induced path measure without
+circularly fixing a reference posterior. Second, two minimal
+counterexamples---both formally verified alongside Theorem
+1---demonstrate why neither naive fiber-based shielding nor myopic step
+certification can substitute for \(V(n, k, S)\):
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Trace support vs.~current observation fiber (\(4\)-state
+  witness).} Let \(X = \{0,1\}^2\) write states as
+  \((\text{phase } b, \text{side } s)\), with uniform initial support on
+  \(\{(0,0), (0,1)\}\), observations \(q(0,s) = \mathrm{some}(s)\) and
+  \(q(1,0) = q(1,1) = \mathrm{none}\), deterministic transitions
+  \((0,s) \xrightarrow{a} (1,s)\), and step-1 certification
+  \(C_1((1,s), a) \iff a = s\). At \(n=1\), the pooled observation fiber
+  \(q^{-1}(\{\mathrm{none}\}) = \{(1,0), (1,1)\}\) admits \emph{no}
+  common certified action, so any memoryless shield operating on
+  \(q(X_1)\) fails. Yet the two positive-mass coarse histories
+  \(g_L = (\mathrm{some}(0), (0, \mathrm{none}))\) and
+  \(g_R = (\mathrm{some}(1), (0, \mathrm{none}))\) have singleton trace
+  supports \(S_1(g_L) = \{(1,0)\}\) and \(S_1(g_R) = \{(1,1)\}\),
+  achieving \(\nu_1^\pi(C_1^c) = 0\).
+\item
+  \textbf{Certified prefixes entering unavoidable dead ends (\(T=2\)
+  witness).} Take \(X = A = \{0,1\}\), constant observation
+  \(q(x) \equiv \star\), uniform \(p_0\), transition \(X_1 = A_0\)
+  followed by \(X_2 = X_1\), and certification
+  \(C_n(x,a) \iff (n = 0 \lor x = 0)\). At \(n = 0\), \emph{both}
+  actions \(a = 0\) and \(a = 1\) satisfy \(C_0(x,a)\) across
+  \(S_0(\star) = \{0,1\}\). Yet choosing \(a = 1\) transitions to
+  \(S_1(\star, (1, \star)) = \{1\}\), where \(V(1, 1, \{1\})\) is false
+  and \(\nu_1(C_1^c) = 1\), whereas \(a = 0\) reaches \(\{0\}\) and
+  maintains \(\nu_n(C_n^c) = 0\) for \(n \in \{0,1\}\). Checking
+  one-step action admissibility without recursive lookahead is unsound
+  even on viable plants.
+\end{itemize}
+
+\subsection{Compact quantifier exchange from arbitrary finite horizons
+to all-time
+policies}\label{compact-quantifier-exchange-from-arbitrary-finite-horizons-to-all-time-policies}
+
+Suppose a time-inhomogeneous partially observed plant
+\((p_0, q, (P_n)_{n\ge 0}, (C_n)_{n\ge 0})\) admits, for \emph{each}
+finite horizon \(T \in \mathbb{N}\) separately, a policy \(\pi^{(T)}\)
+satisfying \(\nu_n^{\pi^{(T)}}(C_n^c) = 0\) for all \(n < T\). Because
+\(\pi^{(T)}\) may vary incompatibly with \(T\), does there necessarily
+exist a \emph{single} causal policy \(\pi_\infty\) that certifies all
+steps \(n \in \mathbb{N}\) simultaneously?
+
+When the action set \(A\) is infinite, the answer is \emph{no}: consider
+\(X = \{0, 1\}\) (\(1\) unsafe), \(A = \mathbb{N}\), trivial
+observation, and time-dependent dynamics where choosing action
+\(a \in \mathbb{N}\) at \(n = 0\) keeps the system in state \(0\) up to
+step \(n = a\) and transitions to the uncertified state \(1\) at step
+\(n = a + 1\). For every finite horizon \(T\), choosing \(a = T\) yields
+a policy certified on \([0, T)\), yet every single choice of initial
+action \(a_0 \in \mathbb{N}\) fails at step \(a_0 + 1\). When \(A\) is
+\emph{finite}, however, discrete König-type compactness
+\citep{konig1927} closes the quantifier gap completely---even when
+\((P_n, C_n)\) are non-stationary and \(Y\) is infinite:
+
+\textbf{Theorem 2 (All-time support viability and finite-action
+quantifier exchange).} \emph{Let \(X\) and \(A\) be finite, with \(A\)
+nonempty, \(Y\) arbitrary, and
+\((p_0, q, (P_n)_{n\ge 0}, (C_n)_{n\ge 0})\) fixed with fallback policy
+\(\pi_{\mathrm{base}}\). Define all-time support viability by
+\(V_\infty(n, S) :\iff \forall k \in \mathbb{N},\ V(n, k, S)\). The
+following three conditions are equivalent:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \emph{Every nonempty initial observation support satisfies
+  \(V_\infty(0, S_0(y))\).}
+\item
+  \emph{For every finite horizon \(T \in \mathbb{N}\), there exists a
+  causal policy \(\pi_T\) such that
+  \(\forall n < T,\ \nu_n^{\pi_T}(C_n^c) = 0\).}
+\item
+  \emph{There exists a single deterministic causal policy \(\pi_\infty\)
+  such that
+  \(\forall n \in \mathbb{N},\ \nu_n^{\pi_\infty}(C_n^c) = 0\).}
+\end{enumerate}
+
+The key step in proving \((1) \implies (3)\) (detailed in Appendix A.1)
+observes that for any \((n, S)\) satisfying \(V_\infty(n, S)\), the sets
+\(A_k := \{a \in A : (\forall x \in S,\, C_n(x,a)) \land (\forall y,\, \operatorname{Succ}_n(S,a,y) \neq \varnothing \implies V(n+1, k, \operatorname{Succ}_n(S,a,y)))\}\)
+are nonempty by \(V(n, k+1, S)\) and nested downward
+(\(A_{k+1} \subseteq A_k\)) because
+\(V(n+1, k+1, S') \implies V(n+1, k, S')\). Since \(A\) is finite,
+\(K := \max_{a \notin \bigcap_k A_k} k(a)\) bounds all finite failure
+horizons, forcing \(\bigcap_{k \in \mathbb{N}} A_k \neq \varnothing\).
+Selecting one action in this intersection at each \(V_\infty\)-viable
+history preserves \(V_\infty\) along every positive-mass trajectory of
+\(\pi_\infty\) itself.
+
+\section{Greatest support fixed points, infinite-trajectory survival,
+and executable
+synthesis}\label{greatest-support-fixed-points-infinite-trajectory-survival-and-executable-synthesis}
+
+\subsection{Greatest fixed points on the observation-fiber arena and
+Kolmogorov trajectory
+safety}\label{greatest-fixed-points-on-the-observation-fiber-arena-and-kolmogorov-trajectory-safety}
+
+While Theorem 2 constructs an all-time causal policy \(\pi_\infty\) for
+general time-inhomogeneous systems, \(\pi_\infty\) indexes actions by
+growing histories \(g_n \in \mathcal{H}_n\) and invokes classical choice
+over infinite horizon intersections. For \emph{time-homogeneous} support
+structures---where a decidable ternary relation
+\(R \subseteq X \times A \times X\) represents the transition support
+\(R(x,a,z) \iff P_n(x,a)(z) > 0\) and a decidable binary relation
+\(C \subseteq X \times A\) represents step certification---both
+unbounded history growth and nonconstructive choice can be eliminated
+simultaneously
+\citep{papadimitriouTsitsiklis1987, chatterjee2016, junges2021}.
+
+Define the \emph{observation-fiber support arena}
+\(\mathcal{A}_q \subseteq 2^X \setminus \{\varnothing\}\) as the family
+of nonempty subsets \(S \subseteq X\) lying inside a single observation
+fiber (\(\exists y \in Y,\ S \subseteq q^{-1}(\{y\})\)). Because the
+fibers \(\{q^{-1}(\{y\})\}_{y \in q(X)}\) partition \(X\) into disjoint
+finite sets of sizes \(m_1 + \dots + m_r = |X|\), the cardinality of
+\(\mathcal{A}_q\) satisfies the sharp bound
+\[|\mathcal{A}_q| = \sum_{i=1}^r (2^{m_i} - 1) \le 2^{|X|} - 1,\] with
+equality only when \(q\) is constant on \(X\). On subsets
+\(\mathcal{W} \subseteq \mathcal{A}_q\), define the monotone one-step
+winning-support preimage operator
+\(\Phi: 2^{\mathcal{A}_q} \to 2^{\mathcal{A}_q}\) by \[\begin{aligned}
+\Phi(\mathcal{W}) := \Bigl\{S \in \mathcal{A}_q : \exists a \in A,\ &\bigl(\forall x \in S,\ C(x,a)\bigr) \\
+&\land \bigl(\forall y \in Y,\ \operatorname{Succ}_R(S,a,y) \neq \varnothing \implies \operatorname{Succ}_R(S,a,y) \in \mathcal{W}\bigr)\Bigr\},
+\end{aligned}\] where
+\(\operatorname{Succ}_R(S,a,y) := \{z \in X : q(z) = y \land \exists x \in S,\ R(x,a,z)\}\).
+By Tarski's lattice fixed-point theorem on the finite powerset
+\(2^{\mathcal{A}_q}\) \citep{tarski1955, baierKatoen2008}, top-down
+Kleene iteration \(\mathcal{W}_0 := \mathcal{A}_q\),
+\(\mathcal{W}_{k+1} := \Phi(\mathcal{W}_k)\) shrinks strictly at most
+\(|\mathcal{A}_q|\) times and stabilizes by step
+\(B_X := 2^{|X|} - 1 \ge |\mathcal{A}_q|\) at the greatest fixed point
+\(\mathcal{W}_* := \operatorname{gfp}(\Phi) = \mathcal{W}_{B_X}\), the
+discrete partially observed counterpart of Aubin's viability kernel
+\citep{aubinCellina1984, aubin1991}.
+
+To connect step-by-step zero uncertified occupancy to \emph{physical
+state-space safety} and \emph{quasi-stationary survival operators}
+\citep{doob1957, darrochSeneta1965, collet2013}, let \(K \subseteq X\)
+be a designated safe state region. When a time-homogeneous source
+\(P: X \times A \to \Delta(X)\) is placed in closed loop with a
+deterministic finite-memory controller
+\(\mathcal{C}_{\mathrm{mem}} = (M, m_0, \alpha, \delta)\) having finite
+memory set \(M \subseteq 2^X\), initial memory map \(m_0: Y \to M\),
+action map \(\alpha: M \to A\), and deterministic memory update
+\(\delta: M \times A \times Y \to M\), the augmented pair
+\((X_n, M_n)_{n \in \mathbb{N}}\) forms a time-homogeneous Markov chain
+on \(X \times M\). By the Ionescu--Tulcea extension theorem
+\citep{kallenberg2021}, \((X_n, M_n)\) induces a unique Kolmogorov
+probability measure \(\mathbb{P}_{\mathcal{C}_{\mathrm{mem}}}\) on the
+infinite trajectory space \((X \times M)^{\mathbb{N}}\). Restricting the
+augmented transition matrix to the safe cylinder
+\(\widetilde{K} := K \times M\) defines the substochastic \emph{killed
+operator} \(Q_K\) \citep{seneta1981, hoelzl2017}. Notice also that when
+conditioning finite-window path laws on positive survival mass
+\(\mathbb{P}(\forall n \le T,\, X_n \in K) > 0\), supplying an explicit
+total fallback kernel on zero-survival branches guarantees that all
+positive-mass conditioned prefix laws are completely independent of the
+fallback convention.
+
+\subsection{Computable controller synthesis and end-to-end semantic
+soundness}\label{computable-controller-synthesis-and-end-to-end-semantic-soundness}
+
+In Lean 4, probability mass functions (\texttt{PMF}) over
+real/extended-nonnegative-real weights (\texttt{ENNReal}, i.e.,
+\([0,\infty]\)) live in the \texttt{noncomputable} mathematical
+specification fragment because real arithmetic is classical. A genuine
+verified controller synthesizer must therefore construct an
+\emph{executable data structure} whose runtime initialization, action
+selection, and memory update execute purely over decidable finite types
+without invoking probability oracles or \texttt{Classical.choice}
+\citep{mouraUllrich2021, schaeffelerAbdulaziz2023}.
+
+Fix finite types \(X, A\) with decidable equality on \(X, Y, A\),
+decidable relations \(R(x,a,z)\) and \(C(x,a)\), an explicit initial
+support table \(I_0 \subseteq X\) (a \texttt{Finset\ X}), an ordered
+action enumeration \(L_A = [a_1, \dots, a_k]\) covering \(A\), and an
+explicit fallback action \(a_{\mathrm{fb}} \in A\). Define an executable
+finite-state controller record \texttt{Program\ X\ Y\ A} consisting of
+three computable functions:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \texttt{initialMemory(y)} \(:= \{x \in I_0 : q(x) = y\}\);
+\item
+  \texttt{update(S,\ a,\ y)}
+  \(:= \{z \in X : q(z) = y \land \exists x \in S,\ R(x,a,z)\}\);
+\item
+  \texttt{action(S)}: scanning \(a \in L_A\) in list order, return the
+  first action passing \texttt{stepCheck(S,\ a)}---which verifies
+  \(S \neq \varnothing\), \(\forall x \in S,\, C(x,a)\), and that for
+  every \(z \in X\) with
+  \(S' := \mathrm{update}(S, a, q(z)) \neq \varnothing\), bounded
+  recursive viability
+  \texttt{ViabilityCheck}\((B_X, S') = \mathrm{true}\) at depth
+  \(B_X = 2^{|X|} - 1\); if \(S = \varnothing\) or no action passes,
+  return \(a_{\mathrm{fb}}\).
+\end{enumerate}
+
+The top-level computable procedure
+\texttt{synthesize}\((q, R, C, I_0, L_A, a_{\mathrm{fb}}) : \mathrm{Option}(\mathrm{Program}\ X\ Y\ A)\)
+checks three decidable guards---(i) \(I_0 \neq \varnothing\), (ii) every
+\(a \in A\) appears in \(L_A\), and (iii) for every \(x \in I_0\),
+\texttt{ViabilityCheck}\((B_X, \mathrm{initialMemory}(q(x))) = \mathrm{true}\)---returning
+\texttt{some\ prog} if all three hold and \texttt{none} otherwise.
+
+\Needspace{28\baselineskip}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Layer / Construct
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Mathematical Object or Runtime Type
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Verification Role \& Exact Scope
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Trace support \(S_n(g)\) & Subset \(S_n(g) \subseteq q^{-1}(\{y_n\})\) &
+Equals \(\operatorname{supp}\rho_n^{\pi,g}\) on
+\(\bar{p}_n^\pi(g) > 0\); no finiteness of \(Y\) needed \\
+Compactness policy \(\pi_\infty\) & History kernel
+\(\mathcal{H}_n \to \Delta(A)\) & Time-inhomogeneous \((P_n, C_n)\);
+requires finite \(A\) (Theorem 2) \\
+Winning arena \(\mathcal{W}_*\) &
+\(\operatorname{gfp}(\Phi) = \mathcal{W}_{2^{|X|}-1} \subseteq \mathcal{A}_q\)
+& Stabilizes in \(\le |\mathcal{A}_q| \le 2^{|X|}-1\) steps; separates
+\(m \ge 1\) vs.~\(m=0\) \\
+Killed survival power &
+\(\mathbf{1}_{\widetilde{K}}^\top Q_K^T \widetilde{\mu}_0\) on
+\(X \times M\) & Equals \(\mathbb{P}(\forall n \le T,\, X_n \in K)\);
+converges as \(T \to \infty\) to
+\(\mathbb{P}(\forall n,\, X_n \in K)\) \\
+\texttt{synthesize} output & Computable
+\texttt{Option\ (Program\ X\ Y\ A)} & Purely executable
+(\texttt{Finset\ X}, \texttt{List.find?}); sound \& complete iff
+\(\pi_\infty\) exists \\
+\end{longtable}
+}
+
+Table 1. Stratified hierarchy from non-stationary trace-support
+viability to computable finite-memory controller synthesis and
+infinite-trajectory survival.
+
+\textbf{Theorem 3 (Greatest support fixed point, infinite-trajectory
+survival, and sound-and-complete executable synthesis).} \emph{Let \(X\)
+and \(A\) be finite with decidable equality on \(X, Y, A\), let \(R\)
+and \(C\) be decidable relations, let \(L_A\) cover \(A\) with fallback
+\(a_{\mathrm{fb}} \in A\), and let \((p_0, (P_n)_{n\ge 0})\) be any
+stochastic plant satisfying exact support agreement
+\(I_0 = \operatorname{supp} p_0\) and
+\(\operatorname{supp} P_n(x,a) = \{z \in X : R(x,a,z)\}\) together with
+\(C_n(x,a) \iff C(x,a)\) for all \(n \in \mathbb{N}\) (note that the
+numerical transition probabilities \(P_n(x,a)(z) > 0\) may vary
+arbitrarily with \(n\) so long as their support equals \(R\)).}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Greatest fixed point and memory separation.}
+  \emph{\(\mathcal{W}_* = \mathcal{W}_{2^{|X|}-1}\) is the greatest
+  post-fixed point of \(\Phi\) on \(\mathcal{A}_q\), and
+  \(S \in \mathcal{W}_*\) iff \(V_\infty(0, S)\) holds. Moreover, there
+  exist three-state partially observed plants in which every memoryless
+  observation-feedback policy \(\pi_0: Y \to \Delta(A)\) incurs positive
+  uncertified mass \(\nu_0^{\pi_0}(C^c) + \nu_1^{\pi_0}(C^c) > 0\) (and
+  hits an absorbing failure state within two steps), whereas a two-state
+  finite-memory controller achieves \(\nu_n(C^c) = 0\) for all
+  \(n \in \mathbb{N}\).}
+\item
+  \textbf{Soundness and completeness of \texttt{synthesize}.}
+  \emph{\texttt{synthesize}\((q, R, C, I_0, L_A, a_{\mathrm{fb}})\)
+  returns \texttt{some\ prog} if and only if there exists a causal
+  policy \(\pi\) satisfying \(\nu_n^\pi(C_n^c) = 0\) for all
+  \(n \in \mathbb{N}\). Whenever \texttt{synthesize} returns
+  \texttt{some\ prog}, the deterministic policy induced by \texttt{prog}
+  satisfies \(\mathrm{memory}_n(\mathrm{prog}, g) = S_n(g)\) for every
+  history \(g \in \mathcal{H}_n\) (including zero-mass histories) and
+  achieves \(\nu_n^{\mathrm{prog}}(C_n^c) = 0\) for all
+  \(n \in \mathbb{N}\).}
+\item
+  \textbf{Kolmogorov infinite-trajectory safety and killed-operator
+  identity.} \emph{Suppose in addition that \(I_0 \subseteq K\) for a
+  safe set \(K \subseteq X\) and certified transitions preserve \(K\)
+  (\(\forall x \in K,\, \forall a,\, C(x,a) \implies \forall z,\, R(x,a,z) \implies z \in K\)).
+  For any time-homogeneous Markov kernel \(P\) with support \(R\), the
+  closed-loop augmented chain \((X_n, M_n)\) satisfies
+  \(\mathbb{P}_{\mathrm{prog}}(\forall n \le T,\, X_n \in K) = \mathbf{1}_{\widetilde{K}}^\top Q_K^T \widetilde{\mu}_0 = 1\)
+  for every \(T \in \mathbb{N}\), and in the monotone limit
+  \(\mathbb{P}_{\mathrm{prog}}(\forall n \in \mathbb{N},\, X_n \in K) = \lim_{T\to\infty} \mathbf{1}_{\widetilde{K}}^\top Q_K^T \widetilde{\mu}_0 = 1\).}
+\end{enumerate}
+
+Theorem 3 (proved in Appendix A.2) cleanly separates \emph{algorithmic
+execution} from \emph{probabilistic verification}. Consider the concrete
+three-state hidden-phase cemetery plant
+\(X = \{\mathrm{false}, \mathrm{true}, \bot\}\) (\texttt{Option\ Bool},
+with safe set \(K = \{\mathrm{false}, \mathrm{true}\}\) and absorbing
+cemetery \(\bot = \mathrm{none}\)), binary actions
+\(A = \{\mathrm{false}, \mathrm{true}\}\), completely uninformative
+constant observation \(q(x) \equiv ()\), transition
+\(f(\bot, a) = \bot\) and \(f(b, a) = \neg b\) if \(a = b\) else
+\(\bot\) for \(b \in \{\mathrm{false}, \mathrm{true}\}\), and
+certification \(C(x,a) \iff x = a\). Executed inside the Lean kernel via
+\texttt{decide}, \texttt{synthesize} on \(I_0 = \{\mathrm{false}\}\)
+with \(L_A = [\mathrm{false}, \mathrm{true}]\) returns
+\texttt{some\ prog} whose internal memory alternates
+\(\{\mathrm{false}\} \xrightarrow{\mathrm{false}} \{\mathrm{true}\} \xrightarrow{\mathrm{true}} \{\mathrm{false}\}\),
+guaranteeing
+\(\mathbb{P}_{\mathrm{prog}}(\forall n \in \mathbb{N},\, X_n \in K) = 1\)
+and unit killed mass at every horizon. Conversely, on the mixed initial
+support \(I_{\mathrm{mix}} = \{\mathrm{false}, \mathrm{true}\}\),
+\texttt{synthesize} returns \texttt{none}---and by completeness (Theorem
+3.2), this single finite computation \emph{constructively refutes} the
+existence of \emph{any} randomized full-history policy achieving
+all-time certification from the uniform initial law
+\(\frac{1}{2}\delta_{\mathrm{false}} + \frac{1}{2}\delta_{\mathrm{true}}\).
+
+\section{Fixed-sample impossibility and calibrated post-selection
+risk}\label{fixed-sample-impossibility-and-calibrated-post-selection-risk}
+
+\subsection{Impossibility of margin-free fixed-sample zero-support
+certification}\label{impossibility-of-margin-free-fixed-sample-zero-support-certification}
+
+Theorem 3 requires exact agreement \(R(x,a,z) \iff P(x,a)(z) > 0\)
+between the Boolean support table supplied to \texttt{synthesize} and
+the true plant. Suppose an engineer does not possess a structural
+physics or hardware proof that an uncertified transition \(z^*\) has
+exact probability zero, and attempts instead to \emph{certify}
+\(p := P(x,a)(z^*) = 0\) statistically from a fixed number \(N \ge 1\)
+of independent transitions drawn from \((x,a)\)
+\citep{leCam1973, tsybakov2009, mayo2018}. Let
+\(W = (W_1, \dots, W_N) \in \{0,1\}^N\) denote the binary indicator
+record of visits to \(z^*\) under
+\(W_k \stackrel{\mathrm{i.i.d.}}{\sim} \mathrm{Bernoulli}(p)\). To
+encompass all possible randomized and deterministic statistical
+procedures, represent a certification rule by a Markov kernel
+\(\psi: \{0,1\}^N \to \Delta(\{\mathrm{true}, \mathrm{false}\})\), where
+\(\psi(w)(\mathrm{true}) \in [0,1]\) is the probability of issuing an
+exact-zero support certificate upon observing record \(w\). Write
+\(\Gamma_\psi(p) := \mathbb{E}_p[\psi(W)(\mathrm{true})]\) for the
+probability of certification under true hazard rate \(p \in [0,1]\).
+
+\textbf{Theorem 4 (Impossibility of uniform fixed-sample zero-support
+certification).} \emph{Fix any finite sample count \(N \ge 1\), any
+randomized certification rule
+\(\psi: \{0,1\}^N \to \Delta(\{\mathrm{true}, \mathrm{false}\})\), and
+any false-certification tolerance \(\alpha \ge 0\). Let
+\(\rho := \psi(\mathbf{0}_N)(\mathrm{true})\) denote the rule's
+acceptance probability on the all-zero record
+\(\mathbf{0}_N = (0, \dots, 0)\).}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \emph{At \(p = 0\), \(\Gamma_\psi(0) = \rho\), and for every
+  \(p \in [0,1]\), \(\Gamma_\psi(p) \ge \rho (1 - p)^N\).}
+\item
+  \emph{Whenever \(\Gamma_\psi(0) > \alpha\), the explicit strictly
+  positive hazard rate
+  \(p_* := \frac{\rho - \alpha}{2 \rho N} \in (0, 1)\) satisfies
+  \(\Gamma_\psi(p_*) > \alpha\).}
+\item
+  \emph{Consequently, if \(\psi\) is uniformly \(\alpha\)-valid across
+  all positive hazard rates---meaning \(\Gamma_\psi(p) \le \alpha\) for
+  all \(p \in (0, 1)\)---then \(\Gamma_\psi(0) \le \alpha\): no
+  fixed-sample rule has non-trivial uniform power above its size
+  \(\alpha\) to certify exact zero support.}
+\end{enumerate}
+
+Theorem 4 (proved in Appendix A.3 via \((1-p)^N \ge 1 - Np\))
+establishes an irreducible epistemic boundary between \emph{structural
+support guarantees} and \emph{finite-sample statistical guarantees}.
+Observing zero catastrophic transitions in \(N = 10^6\) black-box
+rollouts cannot by itself discharge the exact support premise \(R\) of
+\texttt{synthesize} without an external lower margin
+\(p \in \{0\} \cup [p_{\min}, 1]\) derived from domain physics or
+hardware isolation. When transition probabilities are learned from
+finite data without a zero-vs-margin gap, verification must shift from
+claiming \(\mathbb{P}(\text{violation}) = 0\) to bounding
+\emph{calibrated finite-horizon deployment risk}---including the
+statistical cost of data-dependent model and abstraction selection.
+
+\subsection{Good-event post-selection risk and the computable noisy
+finite-risk
+oracle}\label{good-event-post-selection-risk-and-the-computable-noisy-finite-risk-oracle}
+
+Suppose we draw a training record \(\omega \in \Omega\) from a
+registered sampling experiment \(\mu \in \Delta(\Omega)\), apply a
+data-dependent selector \(s: \Omega \to \mathcal{C}\) that inspects the
+entire training record \(\omega\) to choose a candidate abstraction and
+controller \(c = s(\omega)\)
+\citep{berk2013, kearnsSingh2002, strehl2009}, and then deploy that
+selected controller on the \emph{same} underlying unknown plant \(P\),
+generating a finite-horizon microscopic trajectory
+\(h \in \mathcal{M}_T\) drawn from the conditional deployment law
+\(K_{s(\omega)} \in \Delta(\mathcal{M}_T)\). Together, training and
+subsequent deployment define the exact \emph{joint
+training--selected-deployment measure}
+\[J(\omega, h) := \mu(\omega)\, K_{s(\omega)}(h), \qquad (\omega, h) \in \Omega \times \mathcal{M}_T.\]
+Fix a common microscopic failure event \(E \subseteq \mathcal{M}_T\)
+(importantly, \(E\) is anchored in the true microscopic trajectory space
+so that changing the macro-abstraction \(q_j\) cannot redefine what
+counts as physical failure). How can we bound the unconditional joint
+failure probability \(\mathbb{P}_J(E) := J(\Omega \times E)\) when both
+the chosen abstraction \(q_{s(\omega)}\) and the empirical reference
+transition model depend on \(\omega\)?
+
+Two structural insights yield a clean, candidate-count-free solution:
+
+First, \emph{risk budgets need only hold on a simultaneous
+row-calibration Good event \(G \subseteq \Omega\)}. Suppose
+\(\mu(G^c) \le \alpha \in [0,1]\), and for every \(\omega \in G\) the
+conditional deployment risk \(r(\omega) := K_{s(\omega)}(E)\) satisfies
+\(r(\omega) \le \beta \in [0,1]\). Splitting
+\(\sum_{\omega \in \Omega} \mu(\omega) r(\omega)\) across \(G\) and
+\(G^c\) and bounding \(r(\omega) \le 1\) on \(G^c\) yields the exact
+mixture inequality
+\[\mathbb{P}_J(E) \le \mu(G^c) + (1 - \mu(G^c))\beta \le \min\{1,\, \alpha + (1 - \alpha)\beta\},\]
+requiring \emph{zero} regularity or small-budget properties on
+out-of-calibration records \(\omega \in G^c\). Indeed, in our formalized
+two-action product-sampling witness (\(X = A = \{0,1\}\), \(N = 256\)
+independent draws per action row with true failure rates
+\(p_0(1) = 1/8\) and \(p_1(1) = 1/4\), where the adaptive selector
+\(A(\omega)\) deploys action \(0\) w.p. \(7/8\) and action \(1\) w.p.
+\(1/8\)), the exact joint failure probability is
+\(\mathbb{P}_J(E) = \frac{7}{8}\cdot\frac{1}{8} + \frac{1}{8}\cdot\frac{1}{4} = \frac{9}{64}\);
+setting calibration radius \(u = 1/8\) gives Hoeffding failure bound
+\(\alpha = 16 e^{-8} \le 1/16\) and good-event budget \(\beta = 1/2\),
+certifying
+\(\mathbb{P}_J(E) \le \frac{1}{2} + 8 e^{-8} \le \frac{17}{32} < 1\).
+Yet the pathological all-ones record
+\(\omega_{\mathrm{all}} = (1, \dots, 1) \in \{0,1\}^{512}\) occurs with
+strictly positive probability \((1/8)^{256}(1/4)^{256} > 0\) and yields
+clipped empirical budget \(1 > \beta = 1/2\), proving that any theorem
+demanding a small empirical budget on \emph{every} positive-mass
+training record is vacuously false under genuine i.i.d. sampling.
+Moreover, a two-branch selector with \(\mu(G^c) = 1/4\), \(r|_G = 1/2\),
+and \(r|_{G^c} = 1\) attains
+\(\mathbb{P}_J(E) = \frac{1}{4} + \frac{3}{4}\cdot\frac{1}{2} = \frac{5}{8} = \alpha + (1-\alpha)\beta\)
+with equality, establishing sharpness.
+
+Second, \emph{simultaneous microscopic row calibration eliminates
+candidate-count union bounds and double-charging}. Suppose we register a
+family of \(m\) candidate observation abstractions
+\(q_0, \dots, q_{m-1}: X \to Y\) (for finite \(X, Y, A\)) and collect
+\(N \ge 1\) i.i.d. next-state samples
+\(\omega_{x,a,1}, \dots, \omega_{x,a,N} \sim P(x,a)\) for each
+microscopic pair \((x,a) \in X \times A\) under the product experiment
+\(\mu_N = \bigotimes_{(x,a)} P(x,a)^{\otimes N}\) (generalizing
+immediately to unequal row allocations \(N_{x,a} \ge 1\)). Let
+\(\widehat{P}_{x,a}(\omega)(z) := \frac{1}{N}\sum_{k=1}^N \mathbf{1}\{\omega_{x,a,k} = z\} \in \mathbb{Q}\)
+be the rational empirical distribution, and define the \emph{single
+canonical calibration event}
+\[G_u := \Bigl\{\omega \in \Omega_N : \forall (x,a) \in X \times A,\ d_{\mathrm{TV}}\bigl(P(x,a),\, \widehat{P}_{x,a}(\omega)\bigr) \le u\Bigr\},\]
+whose complement satisfies Hoeffding's finite-subset concentration bound
+\citep{hoeffding1963}
+\[\mu_N(G_u^c) \le \alpha_N(u) := \min\Bigl\{1,\, |X|\,|A|\, 2^{|X|+1} \exp(-2 N u^2)\Bigr\}.\]
+Notice that \(G_u\) depends \emph{only} on the microscopic transition
+rows \((x,a) \in X \times A\)---not on \(m\) or on the candidates
+\(\{q_j\}_{j=0}^{m-1}\). For any candidate \(q: X \to Y\), define its
+computable rational \emph{empirical lumpability defect}
+\citep{burkeRosenblatt1958, ferns2004, ravindranBarto2004}
+\[\widehat{\delta}_q(\omega) := \max_{\substack{x, x' \in X,\, a \in A \\ q(x) = q(x')}} d_{\mathrm{TV}}\bigl(\widehat{P}_{x,a}(\omega),\, \widehat{P}_{x',a}(\omega)\bigr) \in \mathbb{Q},
+\qquad
+\delta_q(P) := \max_{\substack{x, x' \in X,\, a \in A \\ q(x) = q(x')}} d_{\mathrm{TV}}\bigl(P(x,a),\, P(x',a)\bigr),\]
+where
+\(d_{\mathrm{TV}}(p, p') = 1 - \sum_{z \in X} \min\{p(z), p'(z)\}\) and
+\(\delta_q(P)\) denotes the true microscopic defect. On \(G_u\), the
+triangle inequality gives
+\(|\widehat{\delta}_q(\omega) - \delta_q(P)| \le 2u\) simultaneously for
+\emph{every} function \(q: X \to Y\). Furthermore, choosing the minimum
+element \(\mathrm{rep}_q(y) \in q^{-1}(\{y\})\) under a linear order on
+\(X\) defines a computable rational macro-reference kernel:
+\[\widehat{K}_q(\omega)(y, a) := q_\# \widehat{P}_{\mathrm{rep}_q(y), a}(\omega).\]
+Because pushforward by \(q\) is a Markov contraction in total variation
+\citep{dobrushin1956, pinsker1964}, for every \(x \in X\) and
+\(a \in A\) on \(G_u\), \[\begin{aligned}
+d_{\mathrm{TV}}\bigl(q_\# P(x,a),\, \widehat{K}_q(\omega)(q(x), a)\bigr)
+&\le d_{\mathrm{TV}}\bigl(q_\# P(x,a),\, q_\# \widehat{P}_{x,a}(\omega)\bigr)
+   + d_{\mathrm{TV}}\bigl(q_\# \widehat{P}_{x,a}(\omega),\, q_\# \widehat{P}_{\mathrm{rep}_q(q(x)), a}(\omega)\bigr) \\
+&\le u + \widehat{\delta}_q(\omega),
+\end{aligned}\] charging \emph{only one} sampling radius \(u\) rather
+than \(2u\).
+
+Combining \texttt{synthesize} from Section 3 with this rational
+calibration chain yields the fully computable
+\texttt{NoisyFiniteRiskOracle}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Three-valued interval defect scan.} Given rational defect
+  threshold \(\tau \ge 0\) and radius \(u \ge 0\),
+  \texttt{noisyDecision}\((q_j, \omega, u, \tau)\) returns
+  \texttt{certified} if
+  \(\widehat{\delta}_{q_j}(\omega) + 2u \le \tau\), \texttt{rejected} if
+  \(\widehat{\delta}_{q_j}(\omega) - 2u > \tau\), and \texttt{ambiguous}
+  otherwise. Scanning \(j = 0, \dots, m-1\) in order,
+  \texttt{selectCandidate} stops at the first non-rejected index: if
+  that index is \texttt{certified}, it outputs \texttt{some\ j}; if
+  \texttt{ambiguous} or all \(m\) candidates are \texttt{rejected}, it
+  outputs \texttt{none} (halting deployment rather than cherry-picking
+  past an ambiguous test).
+\item
+  \textbf{Rational reference-history risk and acceptance gate.} For the
+  synthesized controller \(\mathrm{prog}_j\)
+  (\texttt{synthesize}\((q_j, R, C, I_0, L_A, a_{\mathrm{fb}}) = \mathrm{some\ prog}_j\))
+  and macro failure indicator
+  \(\mathrm{bad}_j: \mathcal{H}_T \to \mathrm{Bool}\) covering \(E\)
+  (\(E \subseteq \pi_T^{(q_j)\,-1}(\{\mathrm{bad}_j = \mathrm{true}\})\)),
+  compute exact rational reference failure mass
+  \(\widehat{R}_T(\mathrm{prog}_j, q_j, \omega)\) under
+  \(\widehat{K}_{q_j}(\omega)\) and rational path budget
+  \[\widehat{B}_T(\mathrm{prog}_j, q_j, \omega, u) := \min\Bigl\{1,\, \widehat{R}_T(\mathrm{prog}_j, q_j, \omega) + T \min\bigl\{1,\, u + \widehat{\delta}_{q_j}(\omega)\bigr\}\Bigr\} \in \mathbb{Q}.\]
+  The total Boolean gate \texttt{selectedAccepts} returns \texttt{true}
+  iff \texttt{selectCandidate} \(= \mathrm{some}\ j\),
+  \(0 \le \beta \le 1\), and
+  \(\widehat{B}_T(\mathrm{prog}_j, q_j, \omega, u) \le \beta\).
+\end{enumerate}
+
+\Needspace{28\baselineskip}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Oracle Mechanism / Bound
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Formula or Operational Rule
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Formal Property Verified
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Calibration failure bound \(\alpha_N(u)\) &
+\(\min\{1,\, |X|\,|A|\, 2^{|X|+1} e^{-2Nu^2}\}\) & Independent of
+candidate count \(m\) \\
+Three-valued defect test & \(\widehat{\delta}_q + 2u \le \tau\) /
+\(\widehat{\delta}_q - 2u > \tau\) / \texttt{ambiguous} & Sound both
+ways on \(G_u\); stops on first non-reject \\
+One-step reference TV allowance &
+\(\min\{1,\, u + \widehat{\delta}_{q_j}(\omega)\}\) & Single-\(u\)
+charge via pushforward contraction \\
+Zero uncovered deficit \(\kappa_n\) &
+\(\nu_n^{\mathrm{prog}_j}(C^c) = 0\) via Theorem 3 & Discharged by
+\texttt{synthesize}, not assumed \\
+Joint post-selection failure &
+\(\mathbb{P}_J(\mathrm{selectedAccepts} \land E) \le \min\{1, \alpha_N + (1-\alpha_N)\beta\}\)
+& Unconditional joint law (no selection bias) \\
+\end{longtable}
+}
+
+Table 2. Architecture and error accounting of the computable
+\texttt{NoisyFiniteRiskOracle}.
+
+\textbf{Theorem 5 (Two-sided noisy defect soundness and post-selection
+joint deployment risk).} \emph{Fix finite \(X, Y, A\), horizon
+\(T \in \mathbb{N}\), sample size \(N \ge 1\), rational parameters
+\(u, \tau \ge 0\) and \(\beta \in [0,1]\), known structural support
+\(R\) with synthesized controllers
+\(\mathrm{synthesize}(q_j, R, C, I_0, L_A, a_{\mathrm{fb}}) = \mathrm{some\ prog}_j\)
+for \(j \in \{0, \dots, m-1\}\), rational initial law \(p_0\), and
+microscopic failure event \(E \subseteq \mathcal{M}_T\) covered by
+\(\mathrm{bad}_j\) under each \(q_j\).}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{First-candidate soundness on \(G_u\).} \emph{For every
+  training record \(\omega \in G_u\), if \texttt{selectCandidate}
+  returns \texttt{some\ j}, then \(\delta_{q_j}(P) \le \tau\) and every
+  earlier candidate \(i < j\) satisfies \(\delta_{q_i}(P) > \tau\).
+  Moreover, if \texttt{accepts} holds at \(j\), the true conditional
+  deployment failure risk of \(\mathrm{prog}_j\) satisfies
+  \(K_j(E) \le \beta\), while if \(I_0 \subseteq K\) and \((R, C)\)
+  preserve \(K\), \(\mathrm{prog}_j\) simultaneously maintains
+  \(\mathbb{P}_{\mathrm{prog}_j}(\forall n \in \mathbb{N},\, X_n \in K) = 1\).}
+\item
+  \textbf{Unconditional post-selection joint bound.} \emph{Under the
+  joint training--selected-deployment law \(J\) induced by \(\mu_N\),
+  \texttt{selectCandidate}, and same-plant deployment,}
+  \[\mathbb{P}_J\bigl(\mathrm{selectedAccepts}(\omega) = \mathrm{true} \land h \in E\bigr)
+  \le \min\bigl\{1,\, \alpha_N(u) + (1 - \alpha_N(u))\beta\bigr\}.\]
+\end{enumerate}
+
+Notice why Theorem 5 (proved in Appendix A.4) bounds the \emph{joint}
+event
+\(\{\mathrm{selectedAccepts}(\omega) = \mathrm{true} \land h \in E\}\)
+rather than conditioning on
+\(\{\mathrm{selectedAccepts} = \mathrm{true}\}\): if the true plant has
+excessive risk \(K_j(E) > \beta\) for every candidate, acceptance can
+occur \emph{only} on the rare bad calibration event \(G_u^c\) (with
+probability at most \(\alpha_N(u)\)), where the conditional risk given
+erroneous acceptance may be close to \(1\), yet the unconditional joint
+risk of erroneously accepting \emph{and} failing remains tightly bounded
+(Figure 1). Our formalized three-state progress-vs-cemetery family
+(\texttt{NoisyFiniteRiskOracleWitness}, with safe start
+\(\mathrm{some\ false}\), safe goal \(\mathrm{some\ true}\), cemetery
+\(\mathrm{none}\), and unknown progress rate \(\theta \in \{1/4, 1/8\}\)
+sharing exact support \(R\)) illustrates both regimes concretely: at
+\(T=2\), \(u = 1/20\), \(\tau = 1/8\), and \(\beta = 7/10\), both
+returned controllers satisfy
+\(\mathbb{P}(\forall n,\, X_n \neq \mathrm{none}) = 1\); at
+\(N = 4096\), the prospective confidence bound is strictly non-trivial
+(\(\alpha_{4096}(1/20) = 48 e^{-512/25} < 1\), proved purely
+analytically via \((1 + 256/25)^2 < e^{512/25}\) without floating-point
+approximations); the \(\theta = 1/4\) plant has true missed-goal risk
+\((3/4)^2 = 9/16 = 0.5625 \le 7/10\), whereas the slow \(\theta = 1/8\)
+plant has true missed-goal risk \((7/8)^2 = 49/64 = 0.765625 > 7/10\),
+is provably rejected on \emph{every} record in \(G_{1/20}\), and suffers
+erroneous acceptance with probability at most \(48 e^{-512/25}\).
+
+\begin{figure}
+\centering
+\includegraphics[width=0.99\linewidth,height=\textheight,keepaspectratio,alt={End-to-end
+pure-kernel synthesis and candidate-free post-selection risk
+architecture. (a) Separation between black-box zero-leakage
+impossibility (Theorem 4), simultaneous microscopic row calibration G\_u
+pushing forward across arbitrary candidate abstractions
+q\_0,\textbackslash dots,q\_\{m-1\} without union-bound inflation
+(Theorem 5), and executable finite-memory controller synthesis (Theorems
+1--3). (b) Certified joint risk envelope \textbackslash
+min\textbackslash\{1, \textbackslash alpha\_N + (1-\textbackslash
+alpha\_N)\textbackslash beta\textbackslash\} on the three-state
+progress-vs-cemetery witness (\textbar X\textbar=3, \textbar
+A\textbar=1, u=1/20, \textbackslash beta=7/10) compared against naive
+m-candidate union bounds (m \textbackslash in \textbackslash\{20,
+200\textbackslash\}).}]{figures/fig1_synthesis_and_calibration.pdf}
+\caption{End-to-end pure-kernel synthesis and candidate-free
+post-selection risk architecture. (a) Separation between black-box
+zero-leakage impossibility (Theorem 4), simultaneous microscopic row
+calibration \(G_u\) pushing forward across arbitrary candidate
+abstractions \(q_0,\dots,q_{m-1}\) without union-bound inflation
+(Theorem 5), and executable finite-memory controller synthesis (Theorems
+1--3). (b) Certified joint risk envelope
+\(\min\{1, \alpha_N + (1-\alpha_N)\beta\}\) on the three-state
+progress-vs-cemetery witness (\(|X|=3, |A|=1, u=1/20, \beta=7/10\))
+compared against naive \(m\)-candidate union bounds
+(\(m \in \{20, 200\}\)).}
+\end{figure}
+
+\section{Continuous observable belief quotients on standard Borel
+spaces}\label{continuous-observable-belief-quotients-on-standard-borel-spaces}
+
+Sections 2--4 tracked hidden states either combinatorially via finite
+supports \(S_n \in \mathcal{A}_q\) or approximately via empirical
+lumpability defects \(\widehat{\delta}_q\). In general partially
+observed Markov control on Polish or standard Borel state spaces
+\((X, \Sigma_X)\)
+\citep{bertsekasShreve1978, hernandezLerma1996, kallenberg2021}, optimal
+and predictive controllers instead maintain a continuous \emph{belief
+state} \(b \in \mathcal{P}(X)\) in the Giry space of probability
+measures on \(X\) \citep{astrom1965, giry1982}. Given a Markov
+transition kernel \(P: X \times A \to \mathcal{P}(X)\) and a measurable
+binary observation map \(q: X \to \{0,1\}\) (with deterministic
+observation kernel \(O((x,a), \cdot) = \delta_{q(x)}\)), each
+belief--action pair \((b,a)\) induces a predicted state measure
+\(\widehat{b}_a := \int_X P(x,a)\, db(x)\), a predicted observation
+measure
+\(\bar{o}_{b,a} := q_\# \widehat{b}_a \in \mathcal{P}(\{0,1\})\),
+and---because \(X\) is a standard Borel space---a measurable regular
+conditional probability kernel yielding the Bayesian posterior belief
+\(\mathrm{Post}(b,a,y) \in \mathcal{P}(X)\) uniquely for
+\(\bar{o}_{b,a}\)-almost every \(y \in \{0,1\}\). Pushing
+\(\bar{o}_{b,a}\) forward through \(y \mapsto \mathrm{Post}(b,a,y)\)
+defines the measurable \emph{posterior-belief transition kernel}
+\(\mathcal{K}_{\mathrm{bel}}: \mathcal{P}(X) \times A \to \mathcal{P}(\mathcal{P}(X))\).
+
+When can the infinite-dimensional belief space \(\mathcal{P}(X)\) be
+compressed without loss to the one-dimensional observable coordinate
+\(c_q: \mathcal{P}(X) \to [0,1]\) defined by
+\(c_q(b) := b(q^{-1}(\{1\}))\)? Assume \(q\) is surjective, witnessed by
+explicit representatives \(x_0, x_1 \in X\) with \(q(x_0) = 0\) and
+\(q(x_1) = 1\). Then \(c_q\) maps \(\mathcal{P}(X)\) surjectively onto
+the compact convex interval \([0,1]\) with explicit measurable affine
+section \(\sigma_{x_0, x_1}: [0,1] \to \mathcal{P}(X)\) given by
+\(\sigma_{x_0, x_1}(u) := (1 - u)\delta_{x_0} + u \delta_{x_1}\),
+satisfying \(c_q(\sigma_{x_0, x_1}(u)) = u\) for all \(u \in [0,1]\).
+Define the \emph{closed-tests condition} (\texttt{ClosedTests}) on
+\((P, q)\) by requiring one-step observable transition invariance across
+\(q\)-fibers
+\citep{burkeRosenblatt1958, kemenySnell1960, larsenSkou1991, givanDeanGreig2003}:
+\[\begin{aligned}
+\mathrm{ClosedTests}(P, q) :\iff \forall x, x' \in X,\ q(x) = q(x') \implies \\
+\forall a \in A,\ P(x,a)\bigl(q^{-1}(\{1\})\bigr) = P(x',a)\bigl(q^{-1}(\{1\})\bigr).
+\end{aligned}\] For any finite action--observation test word
+\(w = [(a_1, y_1), \dots, (a_k, y_k)] \in (A \times \{0,1\})^*\), define
+the multi-step test response \(F_w: X \to [0,1]\) recursively by
+\(F_{[]}(x) := 1\) and
+\(F_{(a,y)::w'}(x) := \int_{q^{-1}(\{y\})} F_{w'}(z)\, P(x,a)(dz)\),
+with belief test expectation \(T_w(b) := \int_X F_w(x)\, db(x)\)
+\citep{jaeger2000, littmanSuttonSingh2001}.
+
+\textbf{Theorem 6 (Closed-test characterization of measurable Markov
+belief quotients).} \emph{Let \((X, \Sigma_X)\) be a nonempty standard
+Borel space, \((A, \Sigma_A)\) a measurable action space,
+\(P: X \times A \to \mathcal{P}(X)\) a Markov kernel, and
+\(q: X \to \{0,1\}\) a measurable map with \(q(x_0) = 0\) and
+\(q(x_1) = 1\).}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Necessary and sufficient belief-kernel descent.}
+  \emph{\(\mathrm{ClosedTests}(P, q)\) holds if and only if there exists
+  a unique Markov quotient kernel
+  \(\bar{K}: [0,1] \times A \to \mathcal{P}([0,1])\) intertwining
+  \(\mathcal{K}_{\mathrm{bel}}\) across every input belief
+  \(b \in \mathcal{P}(X)\) and action \(a \in A\):}
+  \[(c_q)_\# \mathcal{K}_{\mathrm{bel}}(b, a) = \bar{K}\bigl(c_q(b), a\bigr).\]
+  \emph{Moreover, \(\bar{K}\) is given explicitly by pulling
+  \(\mathcal{K}_{\mathrm{bel}}\) back along the affine section
+  \(\sigma_{x_0, x_1}\) and pushing forward by \(c_q\); conversely,
+  existence of \textbf{any} kernel \(\bar{K}\) (even without assuming
+  \(\bar{K}\) is Markov) satisfying
+  \((c_q)_\# \mathcal{K}_{\mathrm{bel}}(b,a) = \bar{K}(c_q(b), a)\) for
+  all point-mass beliefs \(b = \delta_x\) already forces
+  \(\mathrm{ClosedTests}(P, q)\).}
+\item
+  \textbf{Multi-step predictive sufficiency vs.~hidden-state
+  non-descent.} \emph{Whenever \(\mathrm{ClosedTests}(P, q)\) holds,
+  every multi-step test expectation \(T_w(b)\)
+  (\(w \in (A \times \{0,1\})^*\)), every observation-measurable reward
+  \(\int_X r(q(x))\, db(x) = (1 - c_q(b))r(0) + c_q(b)r(1)\), and
+  observable-class probabilities factor solely through \(c_q(b)\).
+  Nevertheless, on the four-state parity-noise system \(X = \{0,1\}^2\)
+  with \(q(x_1, x_2) = x_1\), Bernoulli\((1/4)\) noise \(N\), and
+  transition
+  \((x_1, x_2) \xrightarrow{a, N} (x_1 \oplus (a \land N),\, x_2 \oplus N)\),
+  \(\mathrm{ClosedTests}(P, q)\) holds and
+  \(\delta_{(0,0)}, \delta_{(0,1)}\) induce identical expectations on
+  \textbf{all} future action--observation words \(w\), yet no function
+  of \(c_q(b)\) can represent the latent reward
+  \(\int \mathbf{1}\{x_2 = 1\}\, db\) or the latent safety probability
+  \(b(\{x_2 = 0\})\), and perturbing step transitions to
+  \((a ? x_2 : x_1,\, x_2)\) destroys \(\mathrm{ClosedTests}\) and
+  eliminates all belief quotients.}
+\end{enumerate}
+
+Theorem 6 (proved in Appendix A.5) highlights two delicate
+measure-theoretic points that informal POMDP abstractions gloss over.
+First, regular conditional probabilities on standard Borel spaces are
+determined only \(\bar{o}_{b,a}\)-almost everywhere; assigning arbitrary
+point values on null observation branches must never affect the
+pushforward coordinate law \((c_q)_\# \mathcal{K}_{\mathrm{bel}}(b,a)\),
+which our proof establishes via almost-everywhere posterior projection
+\((q_\# \mathrm{Post}(b,a,y) = \delta_y\) for \(\bar{o}_{b,a}\)-a.e.
+\(y\)) yielding the exact scalar identity
+\((c_q)_\# \mathcal{K}_{\mathrm{bel}}(b,a) = \{0 \mapsto \bar{o}_{b,a}(\{0\}),\, 1 \mapsto \bar{o}_{b,a}(\{1\})\}\).
+Second, Theorem 6.2 demonstrates formally why exact predictive
+equivalence \citep{shaliziCrutchfield2001, littmanSuttonSingh2001} does
+\emph{not} automatically preserve state-space safety: when hazardous
+failure resides in a dynamically decoupled or latent coordinate \(x_2\),
+compressing beliefs to \(c_q(b)\) preserves every observable prediction
+while erasing whether the system occupies \(x_2 = 0\) or \(x_2 = 1\).
+
+\section{Prepaid resource constraints, fault-mechanism discrimination,
+and minimax
+regret}\label{prepaid-resource-constraints-fault-mechanism-discrimination-and-minimax-regret}
+
+\subsection{Serial versus correlated fault propagation under strict
+prepayment}\label{serial-versus-correlated-fault-propagation-under-strict-prepayment}
+
+In Sections 2--5, state uncertainty arose from coarse sensors while the
+underlying transition mechanism \(P\) was fixed. In fault-tolerant
+distributed stores, redundant avionics, and replicating register
+assemblies \citep{athreyaNey1972, altman1999, cassandrasLafortune2021},
+a second, deeper structural ambiguity arises: \textbf{how do faults
+propagate across redundant components when active repair requires
+prepaid operational budget?} If an action creates a healthy backup slot
+and a subsequent step suffers a fault, does that fault corrupt only the
+currently dispatched slot, or does a shared environmental shock
+simultaneously corrupt the undispatched backup?
+
+To analyze this question with complete mathematical transparency,
+consider a dynamic register store initialized at step \(t = 0\) with a
+single damaged root slot (\texttt{root0} holding bit \(\neg g\), where
+\(g \in \{\mathrm{false}, \mathrm{true}\}\) is the public target bit)
+and an initially absent secondary backup slot (\texttt{child1}
+\(= \mathrm{none}\)). At each step \(t \in \{0, \dots, H-1\}\), nature
+draws an independent tick mode
+\(M_t \in \{\mathrm{normal}, \mathrm{fault}\}\) with
+\(\mathbb{P}(M_t = \mathrm{normal}) = r \in [0,1] \cap \mathbb{Q}\) and
+\(\mathbb{P}(M_t = \mathrm{fault}) = 1 - r\) (together with an
+independent fair birth label retained in world lineage records). Two
+candidate environmental fault mechanisms \(m \in \{S, G\}\) govern how
+faults affect the store, with \(m\) fixed before \(t=0\) for the entire
+run:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Serial local fault (\(S\)).} A normal step executes the
+  requested operation on the addressed slot: idling a healthy slot
+  (\texttt{bit} \(= g\)) or writing \(g\) to an existing slot produces
+  one newborn (filling \texttt{child1} with a healthy bit \(g\) if
+  \texttt{child1} was \texttt{none}, and appending subsequent births to
+  tail records), whereas writing \(\neg g\) overwrites the addressed
+  slot with \(\neg g\) and produces zero births. A fault step on an
+  existing addressed slot corrupts \emph{only that addressed slot} to
+  \(\neg g\), leaves undispatched slots intact, charges zero write fee,
+  and produces zero births.
+\item
+  \textbf{Global correlated fault (\(G\)).} Normal-mode execution is
+  identical to \(S\). Whenever a tick enters fault mode
+  (\(M_t = \mathrm{fault}\)), however---including during idle requests,
+  requests to an absent \texttt{child1}, or post-\texttt{stop}
+  ticks---\emph{every currently living slot in the store} has its
+  physical bit reset to \(\neg g\).
+\end{itemize}
+
+At each step, the controller selects from a seven-action menu
+\(\mathcal{A}_7\): permanent \texttt{stop} (which commits the current
+and all remaining steps to idling \texttt{root0} while world noise
+continues), \texttt{idle} at \texttt{root0} or \texttt{child1},
+\texttt{write\ false} at \texttt{root0} or \texttt{child1}, or
+\texttt{write\ true} at \texttt{root0} or \texttt{child1}. Crucially,
+the controller operates under \textbf{two strict physical constraints}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Prepaid non-replenished wallet (\(B\)).} The controller begins
+  with rational budget \(B_0 = B \ge 0\) and write tariff \(c > 0\).
+  Every write request (\texttt{cap}\((a) = 1\); \texttt{stop} and
+  \texttt{idle} have \texttt{cap}\((a) = 0\)) is filtered \emph{before}
+  execution by the hard prepayment gate
+  \(c \cdot \mathrm{cap}(a_t) \le B_t\). One cannot submit an
+  unaffordable write hoping that a fault or absent slot will waive the
+  actual charge. Only a normal-mode write to an existing slot deducts
+  \(C_t = c\) (\(B_{t+1} = B_t - c\)); faulted writes, absent-slot
+  writes, and idles deduct \(C_t = 0\).
+\item
+  \textbf{Two-bit transaction receipts.} After each step, the controller
+  observes \emph{only} the two-bit receipt
+  \(o_t = (\mathrm{birth}_t, \mathrm{paid}_t) \in \{0,1\}^2\), recording
+  whether a birth occurred and whether tariff \(c\) was actually
+  charged, without direct read access to internal slot bits, fault
+  modes, or which mechanism \(m \in \{S, G\}\) is active.
+\end{enumerate}
+
+Notice immediately how \(S\) and \(G\) break naive state observers.
+Suppose \(B \ge c\) and \(0 < r < 1\). At \(t=0\), the controller writes
+\(g\) to \texttt{root0} and observes \(o_0 = (1, 1)\) (occurring w.p.
+\(r\) under both \(S\) and \(G\)): \texttt{root0} is now repaired to
+\(g\), \texttt{child1} is allocated with healthy bit \(g\), and
+remaining wallet is \(B - c\). At \(t=1\), the controller idles
+\texttt{root0} and observes \(o_1 = (0, 0)\) (occurring w.p. \(1-r\)
+under both \(S\) and \(G\)). After this identical positive-probability
+receipt prefix \([(1,1), (0,0)]\) (mass \(r(1-r)\)), the hidden store
+under \(S\) has \((\mathrm{root0} = \neg g,\ \mathrm{child1} = g)\)---so
+\texttt{child1} survives as an intact backup!---whereas under \(G\) the
+fault wiped \emph{both} slots to
+\((\mathrm{root0} = \neg g,\ \mathrm{child1} = \neg g)\). Under a prior
+\(w = (w_S, w_G)\) over \(\{S, G\}\), the marginal posterior on \(m\)
+after \([(1,1), (0,0)]\) is still \((w_S, w_G)\), yet \textbf{mechanism
+identity and physical backup state have become strictly entangled}:
+multiplying the mechanism marginal by the state marginal would fabricate
+impossible worlds.
+
+\subsection{Exact discrimination bounds, Bayes--minimax duality, and
+strict benefit of
+randomization}\label{exact-discrimination-bounds-bayesminimax-duality-and-strict-benefit-of-randomization}
+
+Fix horizon \(H\), budget \(B\), tariff \(c > 0\), fee price
+\(\lambda \ge 0\), and discount \(d \in [0,1]\), evaluating any causal
+policy \(\pi\) (permitted to use complete action--receipt histories plus
+arbitrary real-valued private randomness independent of \(m\) and world
+noise) under mechanism \(m \in \{S, G\}\) by net discounted payoff
+\[J_m(\pi) := \mathbb{E}_m^\pi\!\left[\sum_{t=0}^{H-1} d^t \bigl(\mathrm{birth}_t - \lambda C_t\bigr)\right].\]
+Let \(P_m^\pi\) denote the induced probability distribution over
+complete length-\(H\) action--receipt histories (and private-seed
+decision tables), and let
+\(\Delta_{H,B} := \sup_\pi d_{\mathrm{TV}}(P_S^\pi, P_G^\pi)\) be the
+maximum total-variation distinguishability achievable by \emph{any}
+legal adaptive experiment
+\citep{blackwell1953, leCam1973, coverThomas2006}. Simultaneously, let
+\(V_m^* := \sup_\pi J_m(\pi)\) denote the oracle optimal value when
+\(m\) is known (subject to the same receipt interface and wallet \(B\)),
+and define \emph{worst-case minimax regret} \citep{wald1950, savage1951}
+across unknown \(m \in \{S, G\}\) by
+\[R_m(\pi) := V_m^* - J_m(\pi), \qquad R(\pi) := \max_{m \in \{S, G\}} R_m(\pi), \qquad R^* := \inf_\pi R(\pi).\]
+Notice that for any prior weights
+\(w = (w_S, w_G) \in \Delta(\{S, G\})\), if
+\(V_w^* := \sup_\pi (w_S J_S(\pi) + w_G J_G(\pi))\) is the Bayes-optimal
+value on the joint \texttt{(mechanism,\ store)} belief state
+\citep{bellman1957, blackwell1965, smallwoodSondik1973}, then every
+legal policy \(\pi\) satisfies
+\(R(\pi) \ge w_S R_S(\pi) + w_G R_G(\pi) \ge w_S V_S^* + w_G V_G^* - V_w^*\).
+Thus, exhibiting a dual weight vector \(w\) and a concrete legal policy
+\(\rho\) satisfying the sandwich identity
+\[L(w) := w_S V_S^* + w_G V_G^* - V_w^* = \max_{m \in \{S,G\}} \bigl(V_m^* - J_m(\rho)\bigr) =: U(\rho)\]
+certifies \emph{both} the exact minimax regret \(R^* = L(w) = U(\rho)\)
+over all full-history real-randomized policies \emph{and} optimality of
+\(\rho\) \citep{vonNeumann1928}.
+
+\Needspace{28\baselineskip}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Policy / Quantity
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Payoff \(J_S(\cdot)\) under \(S\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Payoff \(J_G(\cdot)\) under \(G\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Regret \(R_S(\cdot)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Regret \(R_G(\cdot)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Max Regret \(R(\cdot)\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Oracle \(S\)-table \(\pi_S\) & \(41/32\) & \(37/32\) & \(0\) & \(3/32\)
+& \(3/32 = 12/128\) \\
+Oracle \(G\)-table \(\pi_G\) (best det.) & \(40/32\) & \(40/32\) &
+\(1/32\) & \(0\) & \(1/32 = 4/128\) \\
+Seeded mixture \(\rho = \frac{1}{4}\pi_S + \frac{3}{4}\pi_G\) &
+\(161/128\) & \(157/128\) & \(3/128\) & \(3/128\) & \textbf{\(3/128\)}
+(\(= R^*\)) \\
+\end{longtable}
+}
+
+Table 3. Exact three-step payoff and regret matrix at
+\((r, H, B, c, \lambda, d) = (1/2, 3, 2, 1, 1/4, 1)\), verified purely
+inside the Lean 4 kernel (\texttt{kernel\_int\_h3}). Dual weights
+\(w = (3/4, 1/4)\) give \(V_w^* = 5/4 = 40/32\) and
+\(L(w) = \frac{3}{4}\cdot\frac{41}{32} + \frac{1}{4}\cdot\frac{40}{32} - \frac{5}{4} = \frac{3}{128}\).
+
+\textbf{Theorem 7 (Exact fault-discrimination bound, minimax regret
+duality, and deterministic lattice gap).} \emph{Consider the prepaid
+register fault model with mechanisms \(\{S, G\}\) starting from a single
+damaged root.}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Exact path-coupling distinguishability.} \emph{Across all
+  real-randomized adaptive history strategies (including shared private
+  randomness between controller and terminal classifier),
+  \(\Delta_{H,B} = 0\) whenever \(H \le 2\), whenever \(B < c\),
+  whenever \(r \in \{0,1\}\), or whenever only \texttt{root0} is
+  dispatched. At horizon \(H = 3\),}
+  \[\Delta_{3,B} = \begin{cases} r^2(1 - r), & B \ge c, \\ 0, & B < c, \end{cases}\]
+  \emph{attained when \(B \ge c\) by the three-step probe
+  \texttt{write\ g\ to\ root0} \(\to\) \texttt{idle\ root0} \(\to\)
+  \texttt{idle\ child1}, whose receipt trace \([(1,1), (0,0), (1,0)]\)
+  has probability \(r^2(1-r)\) under \(S\) and \(0\) under \(G\).
+  Moreover, for every \(H \ge 1\) and \(r \in (0,1)\), shared all-fault
+  mass \((1-r)^H\) forces every total binary classifier under equal
+  priors to incur error at least \((1-r)^H / 2 > 0\) (and at
+  \(H=3, r=1/2\), minimum classification error is
+  \(\frac{1}{2}(1 - 1/8) = 7/16\)). Nevertheless, observational
+  indistinguishability need not force decision loss: at
+  \((r, H, B, c, \lambda, d) = (1/2, 2, 2, 1, 1/4, 1)\),
+  \(\Delta_{2,2} = 0\) yet a single deterministic table attains
+  \(V_S^* = V_G^* = 13/16\) simultaneously.}
+\item
+  \textbf{Exact minimax regret and strict randomization advantage.}
+  \emph{Fix \((r, H, B, c, \lambda, d) = (1/2, 3, 2, 1, 1/4, 1)\) with
+  \(g = \mathrm{true}\). Then:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \emph{The full-menu oracle values are \(V_S^* = 41/32\) and
+    \(V_G^* = 40/32 = 5/4\), with cross-evaluations
+    \(J_G(\pi_S) = 37/32\) and \(J_S(\pi_G) = 40/32\);}
+  \item
+    \emph{Under dual weights \(w = (3/4, 1/4)\), the joint-belief Bayes
+    value is \(V_w^* = 5/4\), yielding \(L(w) = 3/128\);}
+  \item
+    \emph{Drawing an independent uniform four-point private seed
+    \(u \in \{0,1,2,3\}\) at initialization to execute \(\pi_S\) if
+    \(u = 0\) and \(\pi_G\) if \(u \in \{1,2,3\}\) satisfies every
+    prefix prepayment constraint \(B_t = 2 - \sum_{j<t} C_j \ge 0\)
+    pathwise and achieves \(J_S(\rho) = 161/128\) and
+    \(J_G(\rho) = 157/128\), establishing \(R^* = R(\rho) = 3/128\) over
+    all real-randomized history strategies;}
+  \item
+    \emph{Every deterministic permitted-history strategy
+    \(\pi_{\mathrm{det}}\) satisfies
+    \(J_m(\pi_{\mathrm{det}}) \in \frac{1}{32}\mathbb{Z}\), forcing
+    \(R(\pi_{\mathrm{det}}) \ge 1/32 > 3/128\) (with \(1/32\) attained
+    by \(\pi_G\)).}
+  \end{itemize}
+\end{enumerate}
+
+Theorem 7 (proved in Appendix A.6) illuminates the precise interplay
+between information, budget, and randomization (Figure 2). Why do
+\(\pi_S\) and \(\pi_G\) diverge at the third step? Only along the
+ambiguous prefix \([(1,1), (0,0)]\) (probability \(1/4\), remaining
+wallet \(1\), one step left): under \(S\), idling \texttt{child1} is
+free and yields conditional expected payoff \(1/2\), beating a paid
+re-write of \texttt{root0} (\(1/2 - 1/4 \cdot 1/2 = 3/8\)); under \(G\),
+\texttt{child1} was wiped by the correlated fault, so idling
+\texttt{child1} yields \(0\) while re-writing \texttt{root0} yields
+\(3/8\). Note also two sharp conceptual distinctions: first, the dual
+weights \(w = (3/4, 1/4)\) certifying the minimax lower bound are
+\emph{opposite} to the deployment mixture weights \((1/4, 3/4)\) in
+\(\rho\); second, although \(H=3\) is the earliest horizon at which an
+experiment can distinguish \(S\) from \(G\) (\(\Delta_{3,2} = 1/8\)),
+the distinguishing receipt arrives at the \emph{terminal} tick \(t=2\),
+too late to inform earlier actions within that three-step task---which
+is precisely why hedging via pre-committed private randomness reduces
+worst-case regret from \(4/128\) to \(3/128\).
+
+\begin{figure}
+\centering
+\includegraphics[width=0.99\linewidth,height=\textheight,keepaspectratio,alt={Three-step
+prepaid fault-mechanism divergence and exact minimax regret saddle
+(Theorem 7). (a) Branching register trajectory along the ambiguous
+prefix o\_0=(1,1), o\_1=(0,0) separating serial local faults (S,
+\textbackslash mathrm\{child\}\_1 intact) from global correlated faults
+(G, \textbackslash mathrm\{child\}\_1 wiped) with exact total-variation
+gap \textbackslash Delta\_\{3,B\} = r\^{}2(1-r) = 1/8. (b) Worst-case
+regret envelope \textbackslash max\textbackslash\{R\_S(\textbackslash
+rho\_p), R\_G(\textbackslash rho\_p)\textbackslash\} over mixtures
+\textbackslash rho\_p = p\textbackslash pi\_S + (1-p)\textbackslash
+pi\_G, showing the deterministic \textbackslash
+frac\{1\}\{32\}\textbackslash mathbb\{Z\} lattice barrier (1/32 = 4/128
+at \textbackslash pi\_G) and the exact randomized minimax saddle R\^{}*
+= 3/128 at p = 1/4 certified inside the Lean 4 kernel via
+csolveInt.}]{figures/fig2_fault_regret_and_kernel_dp.pdf}
+\caption{Three-step prepaid fault-mechanism divergence and exact minimax
+regret saddle (Theorem 7). (a) Branching register trajectory along the
+ambiguous prefix \(o_0=(1,1), o_1=(0,0)\) separating serial local faults
+(\(S\), \(\mathrm{child}_1\) intact) from global correlated faults
+(\(G\), \(\mathrm{child}_1\) wiped) with exact total-variation gap
+\(\Delta_{3,B} = r^2(1-r) = 1/8\). (b) Worst-case regret envelope
+\(\max\{R_S(\rho_p), R_G(\rho_p)\}\) over mixtures
+\(\rho_p = p\pi_S + (1-p)\pi_G\), showing the deterministic
+\(\frac{1}{32}\mathbb{Z}\) lattice barrier (\(1/32 = 4/128\) at
+\(\pi_G\)) and the exact randomized minimax saddle \(R^* = 3/128\) at
+\(p = 1/4\) certified inside the Lean 4 kernel via
+\protect\texttt{csolveInt}.}
+\end{figure}
+
+\section{Pure-kernel Lean 4 formalization architecture, GCD-free integer
+reduction, and related
+work}\label{pure-kernel-lean-4-formalization-architecture-gcd-free-integer-reduction-and-related-work}
+
+\subsection{Decoupling executable synthesis and rational oracles from
+classical measure
+semantics}\label{decoupling-executable-synthesis-and-rational-oracles-from-classical-measure-semantics}
+
+A recurring architectural tension in formalizing stochastic control
+inside dependent type theory
+\citep{mouraUllrich2021, mathlib2020, carneiro2019} is that realistic
+theorems must speak about standard mathematical objects---Lebesgue
+integrals, regular conditional probabilities on standard Borel spaces,
+Kolmogorov infinite-trajectory extensions, and real exponential
+Hoeffding bounds---all of which in Mathlib are \texttt{noncomputable}
+and rely on \texttt{Classical.choice}, whereas synthesized controllers
+and statistical acceptance gates must be \emph{genuinely executable
+programs} free of classical axioms at runtime.
+
+Our Lean 4 architecture resolves this tension through a strict
+\textbf{two-layer semantic bridge}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Purely computable syntax and decision layer.} In
+  \texttt{ExecutableSupportController}, the controller type
+  \texttt{Program\ X\ Y\ A} stores
+  \texttt{initialMemory\ :\ Y\ →\ Finset\ X},
+  \texttt{action\ :\ Finset\ X\ →\ A}, and
+  \texttt{update\ :\ Finset\ X\ →\ A\ →\ Y\ →\ Finset\ X}. The
+  synthesizer \texttt{synthesize} uses \texttt{Finset.filter},
+  \texttt{List.find?}, and bounded Boolean recursion up to
+  \(2^{|X|} - 1\). Likewise, in \texttt{NoisyFiniteRiskOracle},
+  empirical masses, \(L_1\)/TV overlaps
+  \(1 - \sum_z \min\{\widehat{p}(z), \widehat{p}'(z)\}\), fiber defects
+  \(\widehat{\delta}_q\), three-valued interval decisions
+  (\texttt{certified}, \texttt{rejected}, \texttt{ambiguous}),
+  representative selection (\texttt{Finset.min\textquotesingle{}} under
+  an explicit \texttt{LinearOrder\ X}), reference history sums, and
+  \texttt{selectedAccepts} are written entirely over \texttt{ℕ},
+  \texttt{ℚ}, \texttt{Bool}, and \texttt{Option}. None of these
+  definitions imports \texttt{PMF} or \texttt{Measure}.
+\item
+  \textbf{Noncomputable measure-theoretic interpretation layer.} Only in
+  proof sections do we lift a \texttt{Program} via \texttt{PMF.pure} to
+  a stochastic \texttt{FiniteMemoryController}, embed empirical count
+  ratios into \texttt{PMF.toMeasure}, construct the Ionescu--Tulcea
+  trajectory measure \texttt{stateTrajMeasure} on
+  \((X \times \mathrm{Finset}\ X)^{\mathbb{N}}\), and apply Hoeffding
+  concentration on the product row law (\texttt{productRowLaw} in
+  \texttt{VariableRegisteredSamples}). Bridge lemmas
+  (\texttt{empiricalTV\_eq}, \texttt{referenceRisk\_eq}, and
+  \texttt{memory\_eq\_traceSupport}) prove exact equality between the
+  rational/combinatorial runtime outputs and their measure-theoretic
+  counterparts, transferring \texttt{accepts\ =\ true} directly into
+  real probability bounds without ever requiring runtime code to compute
+  with reals.
+\end{enumerate}
+
+\subsection{\texorpdfstring{Eliminating \texttt{native\_decide} via
+GCD-free integer-scaled dynamic
+programming}{Eliminating native\_decide via GCD-free integer-scaled dynamic programming}}\label{eliminating-native_decide-via-gcd-free-integer-scaled-dynamic-programming}
+
+The most instructive formal-verification obstacle encountered in this
+work arose in proving \texttt{exact\_cached\_data} and
+\texttt{exact\_two\_data} for Theorem 7
+(\texttt{RegisterMechanismDecisionConsumer}). Evaluating the exact
+Bayes-optimal value \(V_3^*(b_0, 2)\) over the joint
+\texttt{(FaultMechanism\ ×\ Store)} belief space explores all \(7\)
+actions and \(4\) two-bit receipts across depth \(3\) (\(28\)
+action--observation branches per node). In the general rational POMDP
+solver (\texttt{FiniteJointDecisionSolver}), every positive-mass receipt
+\((a, o)\) updates the rational belief \(b \in \Delta(\mathcal{W})\) via
+normalized Bayes division:
+\[b^{a,o}(w') = \frac{\sum_{w,z} b(w)\, P(z \mid w)\, \mathbf{1}\{O(w,a,z)=o,\ T(w,a,z)=w'\}}{m_b^a(o)} \in \mathbb{Q}.\]
+In Lean 4, each rational addition and division (\texttt{ℚ}) maintains
+coprime numerator/denominator normal form by invoking \texttt{Nat.gcd}.
+Inside compiled native code (\texttt{\#eval} or
+\texttt{native\_decide}), Euclidean GCD over small integers takes
+microseconds. Inside Lean's \textbf{logical kernel reducer}
+(\texttt{decide}), however, unfolding nested \texttt{Nat.gcd} recursion
+across hundreds of rational belief-normalization nodes triggers severe
+term blowup. A common shortcut in both Coq (\texttt{native\_compute};
+\citet{boespflug2011}) and Lean 4 (\texttt{native\_decide}) delegates
+Boolean evaluation to the code generator/compiler, introducing the
+nonstandard compiler-trust axiom \texttt{Lean.ofReduceBool} (and
+\texttt{Lean.trustCompiler}), which expands the trusted computing base
+from the small logical kernel (\textasciitilde{}\(10^4\) lines) to the
+entire compiler pipeline, runtime representation, and foreign
+primitives.
+
+To achieve \textbf{100\% pure-kernel verification} (\texttt{decide} with
+zero \texttt{Lean.ofReduceBool}), we designed an exact
+\emph{unnormalized integer-scaled dynamic programming mirror}
+(\texttt{csolveInt} and \texttt{csourceInt}) and proved its bisimulation
+with the rational Bayes solver (\texttt{csolveInt\_spec}):
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Unnormalized integer beliefs (\texttt{UBelief}).} Represent an
+  unnormalized belief as an association list
+  \(U = [(w_1, u_1), \dots, (w_k, u_k)]\) with positive integer weights
+  (\texttt{List\ (World\ ×\ ℕ)}), total weight
+  \(\mathrm{usum}(U) := \sum_i u_i \in \mathbb{N}\), and linear
+  functional \(\mathrm{uexpect}(U, f) := \sum_i u_i f(w_i)\). Define the
+  representation invariant \texttt{Represents}\((U, b)\) by
+  \[\mathrm{usum}(U) > 0 \quad \land \quad \forall f: \mathcal{W} \to \mathbb{Q},\ \mathrm{uexpect}(U, f) = \mathrm{usum}(U) \cdot \mathbb{E}_b[f].\]
+  At \(r = 1/2\), clearing the \(1/2\) tick-mode denominator updates
+  \(U \mapsto U'_{a,o} := \mathrm{unext}(U, a, o)\) purely by integer
+  list insertion (\texttt{uinsert}), satisfying the division-free
+  identity \(2\,\mathrm{usum}(U)\, m_b^a(o) = \mathrm{usum}(U'_{a,o})\)
+  and preserving \texttt{Represents}\((U'_{a,o}, b^{a,o})\) whenever
+  \(\mathrm{usum}(U'_{a,o}) > 0\).
+\item
+  \textbf{Dyadic horizon-and-tariff scaling.} At price
+  \(\lambda = 1/4\),
+  \(4 \cdot \mathrm{gain}(a,o) = \mathrm{gain}_4(o) := 4\,\mathbf{1}\{\mathrm{birth}\} - \mathbf{1}\{\mathrm{paid}\} \in \mathbb{Z}\).
+  Defining the integer dynamic program
+  \texttt{csolveInt}\((n, (U, \mathrm{bal})) \in \mathbb{Z} \times \mathrm{CTree}_n\)
+  recursively at remaining horizon \(n+1\) via
+  \[\mathrm{stepObs}(o) := \begin{cases}
+  0, & \mathrm{usum}(U'_{a,o}) = 0, \\
+  2^n \cdot \mathrm{usum}(U'_{a,o}) \cdot \mathrm{gain}_4(o) + \mathrm{csolveInt}_n(U'_{a,o}, \mathrm{bal}'_o)_1, & \mathrm{usum}(U'_{a,o}) > 0,
+  \end{cases}\] satisfies---by induction on \(n\) with \emph{zero
+  rational division}---the exact scaling invariant
+  \[\bigl(\mathrm{csolveInt}_n(U, \mathrm{bal})_1 : \mathbb{Q}\bigr) = 4 \cdot 2^n \cdot \mathrm{usum}(U) \cdot V_n^*(b, \mathrm{bal}),\]
+  together with exact equality of returned policy trees
+  (\texttt{toTable\ =\ solve}) because positive scaling by
+  \(c_{n+1} := 4 \cdot 2^{n+1} \cdot \mathrm{usum}(U) > 0\) preserves
+  strict action inequalities
+  (\(\mathrm{score}_{\mathbb{Z}}(a_1) < \mathrm{score}_{\mathbb{Z}}(a_2) \iff Q(a_1) < Q(a_2)\))
+  and tie-breaking order (\texttt{cselectScored\_map}).
+\item
+  \textbf{Instantaneous pure-kernel \texttt{decide} certification.}
+  Initializing \(U_{\mathrm{knownS}} = [(w_S, 1)]\)
+  (\(\mathrm{usum} = 1\), scale \(4 \cdot 2^3 \cdot 1 = 32\)),
+  \(U_{\mathrm{knownG}} = [(w_G, 1)]\) (scale \(32\)), and
+  \(U_{\mathrm{dual}} = [(w_S, 3), (w_G, 1)]\) (\(\mathrm{usum} = 4\),
+  scale \(4 \cdot 2^3 \cdot 4 = 128\)), Lean's pure kernel
+  \texttt{decide} reduces the seven integer equalities
+  \[\mathrm{csolveInt}_3(U_S, 2)_1 = 41,\quad \mathrm{csolveInt}_3(U_G, 2)_1 = 40,\quad \mathrm{csolveInt}_3(U_{\mathrm{dual}}, 2)_1 = 160,\]
+  \[\begin{aligned}
+  \mathrm{csourceInt}(\pi_S, w_S) &= 41, \qquad \mathrm{csourceInt}(\pi_S, w_G) = 37, \\
+  \mathrm{csourceInt}(\pi_G, w_S) &= 40, \qquad \mathrm{csourceInt}(\pi_G, w_G) = 40
+  \end{aligned}\] in pure ring arithmetic (\texttt{ℕ}/\texttt{ℤ}),
+  immediately yielding \(41/32\), \(40/32 = 5/4\), \(160/128 = 5/4\),
+  and \(37/32\) (and similarly \(13 / (4 \cdot 2^2) = 13/16\) at \(H=2\)
+  via \texttt{kernel\_int\_h2}).
+\end{enumerate}
+
+\Needspace{28\baselineskip}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Verification Dimension
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Present Lean 4 Development
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Prior Mechanized \& Algorithmic Baselines
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Logical trust base & Pure Lean 4 kernel:
+\texttt{\{propext,\ Classical.choice,\ Quot.sound\}} (\texttt{0}
+\texttt{sorryAx}, \texttt{0} \texttt{ofReduceBool}) &
+\texttt{native\_compute} / \texttt{native\_decide} trust compiler
+\citep{boespflug2011}; external LP/SMT in Storm/PRISM
+\citep{kwiatkowska2011, dehnert2017} \\
+Observation \& state model & Partial observation (\texttt{q:\ X\ →\ Y},
+arbitrary \(Y\) for support; Borel \(X\) for \texttt{ClosedTests}) &
+Full-state tabular MDPs in Isabelle/Coq
+\citep{hoelzl2017, vajjha2021, schaeffelerAbdulaziz2023} \\
+Synthesis vs.~trajectories & Computable \texttt{Option\ Program} linked
+to Kolmogorov \(\mathbb{P}(\forall n,\, X_n \in K)=1\) \& killed
+\(Q_K^T\) & Qualitative POMDP shields unverified in ITP
+\citep{chatterjee2016, alshiekh2018, junges2021} \\
+Statistical calibration & Fixed-sample zero-support no-go +
+post-selection joint \(J(\omega,h)\) without \(m\)-union bound &
+Known-kernel pCTL/MDPs \citep{hoelzlNipkow2012} or unformalized PAC-MDP
+bounds \citep{strehl2009} \\
+Resource-gated fault regret & Prepaid cap
+\(c\cdot\mathrm{cap}(a)\le B_t\), TV \(\Delta_{3,B}=r^2(1-r)\), minimax
+\(R^*=3/128 < 1/32\) & Unconstrained action menus or known single
+transition kernel \\
+\end{longtable}
+}
+
+Table 4. Comparison of our pure-kernel Lean 4 formalization with related
+interactive theorem proving and probabilistic verification frameworks.
+
+To verify kernel purity mechanically rather than by manual inspection,
+an environment metaprogram (\texttt{ExhaustiveAxiomAudit}) traverses
+\texttt{env.constants} across all compiled modules in the library,
+invokes \texttt{Lean.collectAxioms} on every theorem and definition, and
+throws a build error if any declaration depends on \texttt{sorryAx},
+\texttt{Lean.ofReduceBool}, \texttt{Lean.trustCompiler},
+\texttt{unsafe}, \texttt{opaque}, or any custom \texttt{axiom} outside
+\texttt{\{propext,\ Classical.choice,\ Quot.sound\}}---passing with zero
+nonstandard users across all 1,051 modules (19,987 compiled constants,
+including 13,004 theorem declarations).
+
+\subsection{Comparison with related work in interactive theorem proving,
+POMDP verification, and
+statistics}\label{comparison-with-related-work-in-interactive-theorem-proving-pomdp-verification-and-statistics}
+
+Our results connect and extend four lines of research:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Mechanized probability, Markov processes, and MDPs.} In
+  Isabelle/HOL \citep{nipkowPaulsonWenzel2002}, \citet{hoelzlNipkow2012}
+  verified finite-state pCTL model checking, \citet{eberl2015} verified
+  density compilers, and \citet{hoelzl2017} formalized
+  general-state-space Markov chains and fully observed Markov decision
+  processes via the Ionescu--Tulcea theorem, extended by
+  \citet{schaeffelerAbdulaziz2023} to verified executable value and
+  policy iteration for tabular fully observed MDPs. In Coq/Rocq
+  \citep{bertotCasteran2004}, \citet{affeldt2014} developed
+  finite-support information theory (\texttt{Infotheo}), and
+  \citet{vajjha2021} (\texttt{CertiRL}) formalized contraction
+  convergence of value/policy iteration for fully observed discounted
+  MDPs. Building on Lean 4 \citep{mouraUllrich2021} and Mathlib's
+  measure and kernel libraries \citep{mathlib2020}, our work advances
+  mechanized stochastic control into the \emph{partially observed},
+  \emph{statistically calibrated post-selection}, and
+  \emph{budget-prepaid fault-discrimination} regimes, while
+  demonstrating how GCD-free integer scaling eliminates
+  \texttt{native\_decide} on multi-step POMDP belief trees.
+\item
+  \textbf{Qualitative POMDP synthesis, shielding, and partition
+  refinement.} Classical supervisory control
+  \citep{ramadgeWonham1987, cassandrasLafortune2021} and
+  partition-refinement minimization
+  \citep{paigeTarjan1987, givanDeanGreig2003} assume known transition
+  structures, while qualitative POMDP parity/reachability algorithms
+  \citep{chatterjee2016, junges2021} and RL shields \citep{alshiekh2018}
+  rely on exact support graphs implemented in unverified C++/Python
+  engines \citep{kwiatkowska2011, dehnert2017}. Theorems 1--3 provide
+  the first machine-checked end-to-end equivalence from
+  arbitrary-observation trace supports and König quantifier exchange to
+  an executable finite-memory synthesizer (\texttt{synthesize})
+  certified on its own Kolmogorov infinite-trajectory law, while Theorem
+  6 characterizes exact Borel-space belief-kernel descent via
+  \texttt{ClosedTests}.
+\item
+  \textbf{Statistical lower bounds, post-selection inference, and metric
+  discipline.} Theorem 4 formalizes a crisp non-asymptotic instance of
+  Le Cam's two-point indistinguishability method
+  \citep{leCam1973, tsybakov2009} tailored directly to support-shield
+  soundness. Theorem 5 complements selective inference \citep{berk2013}
+  and adaptive bandit/MDP concentration
+  \citep{kearnsSingh2002, strehl2009, abbasiYadkori2011} by proving that
+  simultaneous microscopic row calibration controls empirical
+  lumpability defects across arbitrary finite families of candidate
+  observation maps without candidate-count union bounds---using exact
+  total variation rather than kernel maximum mean discrepancy
+  \citep{gretton2012}, which cannot bound indicator safety events
+  without additional regularity.
+\item
+  \textbf{Robust MDPs and minimax regret under structural ambiguity.}
+  Unlike rectangular robust MDPs where nature chooses a fresh worst-case
+  transition row at every step \citep{nilimElGhaoui2005, wiesemann2013},
+  Theorem 7 analyzes \emph{persistent} structural fault ambiguity
+  (\(m \in \{S, G\}\) fixed prior to the run) under hard per-step
+  prepayment, proving via Bayes--minimax duality
+  \citep{vonNeumann1928, wald1950, savage1951} an exact gap (\(3/128\)
+  vs.~\(1/32\)) between pre-committed private randomization and
+  deterministic control.
+\end{itemize}
+
+\section{Conclusion and open formalization
+problems}\label{conclusion-and-open-formalization-problems}
+
+Certifying autonomous decision-makers under partial observation requires
+respecting the exact epistemic contract of each mathematical layer. When
+exact structural transition supports are justified by domain
+architecture, trace-support recursion and greatest fixed points on the
+observation-fiber arena yield a sound and complete computable controller
+synthesizer (\texttt{synthesize}) guaranteeing unit killed survival mass
+and almost-sure perpetual safety without finite-observation or
+reference-posterior assumptions. When transitions are known only through
+finite black-box samples, uniform exact-zero support certification is
+provably impossible, but pairing structural safety synthesis with
+simultaneous row calibration (\texttt{NoisyFiniteRiskOracle}) delivers
+rigorous, candidate-count-free bounds on joint post-selection acceptance
+and deployment failure. When continuous beliefs are compressed to
+observable test coordinates, \texttt{ClosedTests} characterizes exact
+Markov descent while exposing hidden-safety non-descent; and when
+prepaid interventions confront ambiguous local versus global fault
+propagation, GCD-free integer dynamic programming certifies exact
+randomized minimax regret purely inside Lean's logical kernel.
+
+Four concrete open problems invite future formalization work:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \emph{Memoized winning-support synthesis and complexity bounds.} Our
+  verified synthesizer reuses recursive bounded viability checking up to
+  depth \(2^{|X|}-1\) for proof simplicity; formalizing a memoized
+  bottom-up DAG table over \(\mathcal{A}_q\) with verified
+  EXPTIME/polynomial-in-\(|\mathcal{A}_q|\) step bounds would connect
+  directly to large-scale shield benchmarks \citep{junges2021}.
+\item
+  \emph{Approximate \(\varepsilon\)-\texttt{ClosedTests} long-horizon
+  belief filtering.} Extending Theorem 6 from exact \texttt{ClosedTests}
+  (\(\varepsilon = 0\)) to \(\varepsilon\)-approximate test closure by
+  coupling one-step belief-quotient defects with
+  Dobrushin/Hilbert-metric filter contraction \citep{dobrushin1956}
+  would yield infinite-horizon discounted and ergodic error bounds.
+\item
+  \emph{Adaptive sequential stopping vs.~fixed row allocations.}
+  Extending Theorem 4 and Theorem 5 from fixed row allocations
+  \(N_{x,a}\) to sequentially stopped martingale confidence sequences
+  \citep{wald1950, abbasiYadkori2011} would characterize exact
+  sample-complexity trade-offs when transition margins are unknown.
+\item
+  \emph{Asymptotic minimax fault regret for \(m \ge 3\) fault
+  topologies.} Generalizing Theorem 7's exact \(H=3\) \(\{S, G\}\)
+  duality (\(R^* = 3/128\)) to \(m \ge 3\) hierarchical
+  fault-propagation graphs and horizons \(H \to \infty\) would establish
+  sharp asymptotic minimax regret scaling under finite prepayment
+  budgets.
+\end{enumerate}
+
+\section*{Appendix: Self-contained proofs of Theorems
+1--7}\label{appendix-self-contained-proofs-of-theorems-17}
+\addcontentsline{toc}{section}{Appendix: Self-contained proofs of
+Theorems 1--7}
+
+To make every mathematical claim independently verifiable without
+consulting formal proof scripts, this Appendix supplies concise,
+complete proofs of Theorems 1--7.
+
+\subsection{A.1 Posterior-support bridge, viability equivalence, and
+quantifier exchange (Theorems 1 and
+2)}\label{a.1-posterior-support-bridge-viability-equivalence-and-quantifier-exchange-theorems-1-and-2}
+
+\emph{Proof of Theorem 1.} (1) \emph{Support bridge.} For \(n = 0\),
+\(\bar{p}_0^\pi(y) = \sum_{x \in X : q(x)=y} p_0(x)\). Since \(X\) is
+finite and \(p_0(x) \ge 0\), this finite sum is strictly positive iff
+\(\exists x \in X\) with \(p_0(x) > 0\) and \(q(x) = y\), i.e.,
+\(S_0(y) \neq \varnothing\); for such \(y\),
+\(\rho_0^{\pi, y}(x) = p_0(x)\mathbf{1}\{q(x)=y\}/\bar{p}_0^\pi(y) > 0 \iff x \in S_0(y)\).
+Now assume inductively at step \(n\) that for every
+\(g \in \mathcal{H}_n\),
+\(\bar{p}_n^\pi(g) > 0 \iff \exists h \in \mathcal{M}_n\) with
+\(\pi_n(h) = g\) and \(\mu_n^\pi(h) > 0\), and that on
+\(\bar{p}_n^\pi(g) > 0\),
+\(\{ \mathrm{last}_n(h) : \pi_n(h)=g,\ \mu_n^\pi(h)>0 \} = S_n(g) = \operatorname{supp}\rho_n^{\pi,g}\).
+For \(g' = (g, (a, y)) \in \mathcal{H}_{n+1}\), by definition of the
+causal transition kernel,
+\[\bar{p}_{n+1}^\pi(g, (a, y)) = \sum_{\substack{h \in \mathcal{M}_n \\ \pi_n(h) = g}} \mu_n^\pi(h)\, \pi_n(g)(a) \sum_{\substack{x' \in X \\ q(x') = y}} P_n(\mathrm{last}_n(h), a)(x').\]
+Notice that \(\pi_n(g)(a)\) depends on \(h\) \emph{only} through
+\(g = \pi_n(h)\). Because all factors are non-negative and sums are
+finite, \(\bar{p}_{n+1}^\pi(g, (a, y)) > 0\) iff \(\pi_n(g)(a) > 0\) and
+there exist \(h \in \mathcal{M}_n\) with
+\(\pi_n(h) = g, \mu_n^\pi(h) > 0\) and \(x' \in X\) with \(q(x') = y\)
+and \(P_n(\mathrm{last}_n(h), a)(x') > 0\). By the induction hypothesis,
+the existence of such \(h\) is equivalent to \(\bar{p}_n^\pi(g) > 0\)
+and \(\mathrm{last}_n(h) \in S_n(g)\), which together with \(q(x') = y\)
+and \(P_n(\mathrm{last}_n(h),a)(x') > 0\) is equivalent to
+\(x' \in \operatorname{Succ}_n(S_n(g), a, y) = S_{n+1}(g')\).
+Normalizing by \(\bar{p}_{n+1}^\pi(g') > 0\) gives
+\(\operatorname{supp}\rho_{n+1}^{\pi, g'} = S_{n+1}(g')\).
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \emph{Viability equivalence.} First observe that by expanding
+  \[\nu_n^\pi(x,a) = \sum_{g \in \mathcal{H}_n : \bar{p}_n^\pi(g)>0} \bar{p}_n^\pi(g)\, \rho_n^{\pi,g}(x)\, \pi_n(g)(a)\]
+  (via pushforward of the finite support
+  \(\operatorname{supp}\mu_n^\pi\)), Part (1) implies
+  \[\nu_n^\pi(C_n^c) = 0 \iff \forall g \in \operatorname{supp}\bar{p}_n^\pi,\ \forall a \in \operatorname{supp}\pi_n(g),\ \forall x \in S_n(g),\ C_n(x,a).\]
+  (\emph{Sufficiency}) Suppose
+  \(\forall y \in Y,\ S_0(y) \neq \varnothing \implies V(0, T, S_0(y))\).
+  Define the deterministic policy \(\pi^V\) at step \(n\) and history
+  \(g \in \mathcal{H}_n\) as follows: if \(n < T\) and
+  \(V(n, T-n, S_n(g))\) holds, select a witness action \(a^* \in A\)
+  from the existential definition of \(V(n, T-n, S_n(g))\) and set
+  \(\pi_n^V(g) := \delta_{a^*}\); otherwise set
+  \(\pi_n^V(g) := \pi_{\mathrm{base}, n}(g)\). By induction on
+  \(n \in \{0, \dots, T\}\), every
+  \(g \in \operatorname{supp}\bar{p}_n^{\pi^V}\) satisfies
+  \(V(n, T-n, S_n(g))\): at \(n=0\),
+  \(\bar{p}_0^{\pi^V}(y) > 0 \implies S_0(y) \neq \varnothing \implies V(0, T, S_0(y))\);
+  if true at \(n < T\), then for
+  \((g, (a, y)) \in \operatorname{supp}\bar{p}_{n+1}^{\pi^V}\), Part (1)
+  gives \(g \in \operatorname{supp}\bar{p}_n^{\pi^V}\), \(a = a^*\) (the
+  unique element of \(\operatorname{supp}\pi_n^V(g)\)), and
+  \(\operatorname{Succ}_n(S_n(g), a^*, y) \neq \varnothing\), whence the
+  universal successor clause of \(V(n, T-n, S_n(g))\) yields
+  \(V(n+1, T-n-1, S_{n+1}(g, (a^*, y)))\). Moreover, at every \(n < T\)
+  and \(g \in \operatorname{supp}\bar{p}_n^{\pi^V}\), \(a^*\) satisfies
+  \(\forall x \in S_n(g),\, C_n(x, a^*)\), proving
+  \(\nu_n^{\pi^V}(C_n^c) = 0\). (\emph{Necessity}) Suppose \(\pi\)
+  satisfies \(\nu_n^\pi(C_n^c) = 0\) for all \(n < T\). We prove by
+  backward induction on \(k \in \{0, \dots, T\}\) that for
+  \(n = T - k\), every \(g \in \operatorname{supp}\bar{p}_n^\pi\)
+  satisfies \(V(n, k, S_n(g))\). For \(k = 0\),
+  \(V(T, 0, S) = \mathrm{True}\). Assuming the claim for \(k < T\) (so
+  \(n = T - (k+1) < T\)) and fixing
+  \(g \in \operatorname{supp}\bar{p}_n^\pi\), choose any
+  \(a \in \operatorname{supp}\pi_n(g)\) (nonempty as
+  \(\pi_n(g) \in \Delta(A)\)). Since \(\nu_n^\pi(C_n^c) = 0\),
+  \(\forall x \in S_n(g),\, C_n(x,a)\). For any \(y \in Y\) with
+  \(\operatorname{Succ}_n(S_n(g), a, y) \neq \varnothing\), Part (1)
+  implies \((g, (a, y)) \in \operatorname{supp}\bar{p}_{n+1}^\pi\), so
+  the induction hypothesis gives
+  \(V(n+1, k, \operatorname{Succ}_n(S_n(g), a, y))\). Hence
+  \(V(n, k+1, S_n(g))\) holds. Evaluating at \(n = 0\) (\(k = T\)) on
+  \(S_0(y) \neq \varnothing\)
+  (\(\iff y \in \operatorname{supp}\bar{p}_0^\pi\)) completes the proof.
+  \(\square\)
+\end{enumerate}
+
+\emph{Proof of Theorem 2.} \((3) \implies (2)\) is immediate by setting
+\(\pi_T := \pi_\infty\), and \((2) \iff (1)\) applies Theorem 1.2 at
+every \(T \in \mathbb{N}\). To prove \((1) \implies (3)\), first note by
+easy induction on \(k\) that \(V(n, k+1, S) \implies V(n, k, S)\) for
+all \(n, S\). Fix any \((n, S)\) satisfying \(V_\infty(n, S)\)
+(\(\forall k,\, V(n, k, S)\)), and for each \(k \in \mathbb{N}\) define
+\[\begin{aligned}
+D_k := \Bigl\{a \in A : \bigl(\forall x \in S,\ C_n(x,a)\bigr) \land \bigl(\forall y \in Y,\ &\operatorname{Succ}_n(S,a,y) \neq \varnothing \\
+&\implies V(n+1, k, \operatorname{Succ}_n(S,a,y))\bigr)\Bigr\}.
+\end{aligned}\] By \(V(n, k+1, S)\), each \(D_k\) is nonempty, and
+monotonicity of \(V\) in \(k\) gives \(D_{k+1} \subseteq D_k\), hence
+\(D_j \subseteq D_i\) whenever \(i \le j\). Suppose toward a
+contradiction that \(\bigcap_{k \in \mathbb{N}} D_k = \varnothing\).
+Then for every \(a \in A\) there exists \(k(a) \in \mathbb{N}\) with
+\(a \notin D_{k(a)}\). Because \(A\) is finite,
+\(K := \max_{a \in A} k(a) \in \mathbb{N}\) is well-defined, and since
+\(D_K \neq \varnothing\) we can pick \(a^\star \in D_K\). Since
+\(k(a^\star) \le K\), downward nesting gives
+\(a^\star \in D_{k(a^\star)}\), contradicting
+\(a^\star \notin D_{k(a^\star)}\). Thus
+\(\bigcap_{k \in \mathbb{N}} D_k \neq \varnothing\), yielding an action
+\(a^\star \in A\) certifying \(S\) at step \(n\) and sending every
+nonempty \(\operatorname{Succ}_n(S, a^\star, y)\) into
+\(V_\infty(n+1, \cdot)\). Defining
+\(\pi_{\infty, n}(g) := \delta_{a^\star(n, S_n(g))}\) whenever
+\(V_\infty(n, S_n(g))\) holds (and \(\pi_{\mathrm{base}, n}(g)\)
+otherwise), forward induction via Theorem 1.1 shows
+\(V_\infty(n, S_n(g))\) holds on every
+\(g \in \operatorname{supp}\bar{p}_n^{\pi_\infty}\) for all
+\(n \in \mathbb{N}\), whence \(\nu_n^{\pi_\infty}(C_n^c) = 0\) for all
+\(n \in \mathbb{N}\). \(\square\)
+
+\subsection{A.2 Greatest fixed point, infinite-trajectory safety, and
+executable synthesis (Theorem
+3)}\label{a.2-greatest-fixed-point-infinite-trajectory-safety-and-executable-synthesis-theorem-3}
+
+\emph{Proof of Theorem 3.} (1) By induction on \(k \in \mathbb{N}\), for
+every \(S \in \mathcal{A}_q\), \(S \in \mathcal{W}_k \iff V_R(0, k, S)\)
+(using
+\(\operatorname{Succ}_R(S,a,y) \neq \varnothing \implies \operatorname{Succ}_R(S,a,y) \in \mathcal{A}_q\)).
+Since \(\mathcal{W}_0 = \mathcal{A}_q\) and \(\Phi\) is
+\(\subseteq\)-monotone, \(\mathcal{W}_{k+1} \subseteq \mathcal{W}_k\)
+for all \(k\). By the pigeonhole principle on finite \(\mathcal{A}_q\),
+there exists \(m \le |\mathcal{A}_q| \le 2^{|X|} - 1 = B_X\) with
+\(\mathcal{W}_{m+1} = \mathcal{W}_m\), which then equals
+\(\mathcal{W}_k\) for all \(k \ge m\); in particular
+\(\mathcal{W}_* := \mathcal{W}_{B_X} = \Phi(\mathcal{W}_*)\) satisfies
+\(S \in \mathcal{W}_* \iff \forall k,\, V_R(0, k, S)\). Any post-fixed
+point
+\(\mathcal{U} \subseteq \Phi(\mathcal{U}) \subseteq \mathcal{A}_q\)
+satisfies \(\mathcal{U} \subseteq \mathcal{W}_k\) for all \(k\) by
+induction, so \(\mathcal{W}_* = \operatorname{gfp}(\Phi)\). For the
+three-state separation witness
+\(X = \{\mathrm{false}, \mathrm{true}, \bot\}\) with constant
+observation \(q(x) \equiv ()\) and initial law
+\(p_0 = \delta_{\mathrm{false}}\), step \(n=0\) starts at
+\(X_0 = \mathrm{false}\) and requires \(a_0 = \mathrm{false}\)
+(\(C(\mathrm{false}, a) \iff a = \mathrm{false}\)), which transitions
+deterministically to \(X_1 = \mathrm{true}\) and requires
+\(a_1 = \mathrm{true}\)
+(\(C(\mathrm{true}, a) \iff a = \mathrm{true}\)). Any stationary
+memoryless policy
+\(\pi_0: \{()\} \to \Delta(\{\mathrm{false}, \mathrm{true}\})\) assigns
+a fixed weight \(\theta = \pi_0(())(\mathrm{true}) \in [0,1]\) at both
+\(n=0\) and \(n=1\): if \(\theta > 0\), then
+\(\nu_0^{\pi_0}(C^c) = \theta > 0\); if \(\theta = 0\), then
+\(X_1 = \mathrm{true}\) with probability \(1\) and
+\(\nu_1^{\pi_0}(C^c) = 1 - \theta = 1 > 0\), yielding
+\(\nu_0^{\pi_0}(C^c) + \nu_1^{\pi_0}(C^c) = \theta + (1-\theta)^2 \ge 3/4 > 0\).
+Meanwhile, the two-state support controller alternating
+\(\{\mathrm{false}\} \leftrightarrow \{\mathrm{true}\}\) achieves
+\(\nu_n(C^c) = 0\) for all \(n \in \mathbb{N}\).
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\setcounter{enumi}{1}
+\item
+  Because \(I_0 = \operatorname{supp} p_0\) and \(p_0 \in \Delta(X)\)
+  has total mass \(1\), \(I_0 \neq \varnothing\) holds automatically,
+  and \(L_A\) covers \(A\) by hypothesis. By exactness of \((I_0, R)\),
+  \texttt{initialMemory}\((y) = S_0(y)\) and
+  \texttt{nextMemory}\((S, a, y) = \operatorname{Succ}_n(S, a, y)\) for
+  all \(n\), so induction on \(n\) gives
+  \(\mathrm{memory}_n(\mathrm{prog}, g) = S_n(g)\) for all
+  \(g \in \mathcal{H}_n\). Moreover, \texttt{finiteMemoryCheck}
+  evaluates \texttt{ViabilityCheck}\((B_X, S_0(q(x)))\) across
+  \(x \in I_0\), which by Part (1) holds iff
+  \(\forall y,\, S_0(y) \neq \varnothing \implies S_0(y) \in \mathcal{W}_* \iff V_\infty(0, S_0(y))\),
+  which by Theorem 2 holds iff
+  \(\exists \pi,\, \forall n,\, \nu_n^\pi(C_n^c) = 0\). When
+  \texttt{synthesize} \(= \mathrm{some\ prog}\), for every
+  \(S \in \mathcal{W}_*\) there exists \(a \in A \subseteq L_A\) passing
+  \texttt{stepCheck}\((S, a)\); hence \texttt{List.find?} returns
+  \texttt{some\ b} with \texttt{stepCheck}\((S, b) = \mathrm{true}\)
+  (never falling back to \(a_{\mathrm{fb}}\)), certifying all
+  \(x \in S\) and keeping all nonempty successors in \(\mathcal{W}_*\).
+  Induction over \(g \in \operatorname{supp}\bar{p}_n^{\mathrm{prog}}\)
+  via Theorem 1.1 yields \(S_n(g) \in \mathcal{W}_*\) and
+  \(\nu_n^{\mathrm{prog}}(C_n^c) = 0\) for all \(n \in \mathbb{N}\).
+\item
+  On the augmented chain \(Z_n = (X_n, M_n) \in X \times 2^X\) under
+  time-homogeneous \(P\), one-step transition probabilities depend
+  solely on \((X_n, M_n)\). For each \(T \in \mathbb{N}\), expanding the
+  cylinder event
+  \(E_T := \{\omega \in (X \times 2^X)^{\mathbb{N}} : \forall n \le T,\, X_n(\omega) \in K\}\)
+  by induction on \(T\) identifies
+  \(\mathbb{P}_{\mathrm{prog}}(E_T) = \mathbf{1}_{\widetilde{K}}^\top Q_K^T \widetilde{\mu}_0\),
+  where \(\widetilde{\mu}_0(x, S) = p_0(x)\mathbf{1}\{S = S_0(q(x))\}\).
+  Since \(E_{T+1} \subseteq E_T\) and
+  \(\mathbb{P}_{\mathrm{prog}}(E_0) \le 1 < \infty\), continuity of
+  probability measures from above \citep{kallenberg2021} gives
+  \(\mathbb{P}_{\mathrm{prog}}(\bigcap_{T \ge 0} E_T) = \lim_{T \to \infty} \mathbf{1}_{\widetilde{K}}^\top Q_K^T \widetilde{\mu}_0\).
+  Finally, when \(I_0 \subseteq K\), \(K\)-closure under \((C, R)\)
+  together with \(\nu_n^{\mathrm{prog}}(C^c) = 0\) implies by induction
+  on \(T\) that every positive-mass microscopic trajectory
+  \(h_T \in \operatorname{supp}\mu_T^{\mathrm{prog}}\) satisfies
+  \(x_0, \dots, x_T \in K\), whence
+  \(\mathbb{P}_{\mathrm{prog}}(E_T) = 1\) for all \(T \in \mathbb{N}\)
+  and
+  \(\mathbb{P}_{\mathrm{prog}}(\forall n \in \mathbb{N},\, X_n \in K) = 1\).
+  \(\square\)
+\end{enumerate}
+
+\subsection{A.3 Fixed-sample zero-support impossibility (Theorem
+4)}\label{a.3-fixed-sample-zero-support-impossibility-theorem-4}
+
+\emph{Proof of Theorem 4.} Under
+\(W = (W_1, \dots, W_N) \stackrel{\mathrm{i.i.d.}}{\sim} \mathrm{Bernoulli}(p)\),
+\(\mathbb{P}_p(W = \mathbf{0}_N) = (1 - p)^N\); in particular, at
+\(p = 0\), \(\mathbb{P}_0(W = \mathbf{0}_N) = 1\) and
+\(\mathbb{P}_0(W = w) = 0\) for \(w \neq \mathbf{0}_N\). Expanding the
+bind expectation over \(\{0,1\}^N\) gives
+\[\Gamma_\psi(p) = \sum_{w \in \{0,1\}^N} \mathbb{P}_p(W = w)\, \psi(w)(\mathrm{true}).\]
+Evaluating at \(p = 0\) yields
+\(\Gamma_\psi(0) = \psi(\mathbf{0}_N)(\mathrm{true}) = \rho\), and
+retaining only the non-negative summand \(w = \mathbf{0}_N\) for general
+\(p \in [0,1]\) yields
+\(\Gamma_\psi(p) \ge \mathbb{P}_p(W = \mathbf{0}_N)\, \psi(\mathbf{0}_N)(\mathrm{true}) = \rho (1 - p)^N\),
+proving (1).
+
+For (2), assume \(\rho = \Gamma_\psi(0) > \alpha \ge 0\), so
+\(\rho > 0\) and \(\rho - \alpha > 0\). Since \(N \ge 1\), the
+denominator \(2\rho N > 0\), and
+\(p_* := \frac{\rho - \alpha}{2\rho N}\) satisfies \(p_* > 0\) and
+\(p_* \le \frac{\rho}{2\rho \cdot 1} = \frac{1}{2} < 1\), so
+\(p_* \in (0, 1)\). By Bernoulli's inequality on \(-p_* \ge -1\),
+\((1 - p_*)^N \ge 1 - N p_*\). Multiplying by \(\rho > 0\) and
+substituting \(N \rho p_* = \frac{\rho - \alpha}{2}\) gives
+\[\Gamma_\psi(p_*) \ge \rho (1 - p_*)^N \ge \rho (1 - N p_*) = \rho - \frac{\rho - \alpha}{2} = \frac{\rho + \alpha}{2} > \alpha.\]
+Part (3) follows immediately by contraposition: if
+\(\Gamma_\psi(p) \le \alpha\) for all \(p \in (0,1)\), then
+\(\Gamma_\psi(0) > \alpha\) is impossible, so
+\(\Gamma_\psi(0) \le \alpha\). \(\square\)
+
+\subsection{A.4 Calibrated post-selection risk and the noisy finite-risk
+oracle (Theorem
+5)}\label{a.4-calibrated-post-selection-risk-and-the-noisy-finite-risk-oracle-theorem-5}
+
+\emph{Proof of Theorem 5.} (1) \emph{Simultaneous defect calibration and
+first-PASS soundness.} Fix \(\omega \in G_u\), so
+\(d_{\mathrm{TV}}(P(x,a), \widehat{P}_{x,a}(\omega)) \le u\) for every
+\((x,a) \in X \times A\). For any candidate \(q: X \to Y\) and any pair
+\(x, x' \in X\) with \(q(x) = q(x')\) and action \(a \in A\), the
+triangle inequality gives \[\begin{aligned}
+\bigl|d_{\mathrm{TV}}(\widehat{P}_{x,a}(\omega), \widehat{P}_{x',a}(\omega)) - d_{\mathrm{TV}}(P(x,a), P(x',a))\bigr|
+&\le d_{\mathrm{TV}}(\widehat{P}_{x,a}(\omega), P(x,a)) \\
+&\quad + d_{\mathrm{TV}}(P(x',a), \widehat{P}_{x',a}(\omega)) \le 2u.
+\end{aligned}\] Taking maxima over \(\{(x, x', a) : q(x) = q(x')\}\)
+yields \(|\widehat{\delta}_q(\omega) - \delta_q(P)| \le 2u\).
+Consequently, if
+\texttt{noisyDecision}\((q, \omega, u, \tau) = \mathrm{certified}\)
+(\(\widehat{\delta}_q(\omega) + 2u \le \tau\)), then
+\(\delta_q(P) \le \widehat{\delta}_q(\omega) + 2u \le \tau\); if
+\texttt{noisyDecision} \(= \mathrm{rejected}\)
+(\(\widehat{\delta}_q(\omega) - 2u > \tau\)), then
+\(\delta_q(P) \ge \widehat{\delta}_q(\omega) - 2u > \tau\). Because
+\texttt{selectCandidate} scans \(i = 0, \dots, m-1\) sequentially, halts
+at the first index where \texttt{noisyDecision}
+\(\neq \mathrm{rejected}\), and returns \texttt{some\ j} only when that
+halting index satisfies \texttt{noisyDecision} \(= \mathrm{certified}\),
+every \(i < j\) was \texttt{rejected} (\(\delta_{q_i}(P) > \tau\)) while
+\(j\) is \texttt{certified} (\(\delta_{q_j}(P) \le \tau\)).
+
+Next, for any \(x \in X\) and \(a \in A\), let
+\(x_{\mathrm{rep}} := \mathrm{rep}_{q_j}(q_j(x))\), which satisfies
+\(q_j(x_{\mathrm{rep}}) = q_j(x)\). By data-processing contraction of
+total variation under \(q_j\)
+(\(d_{\mathrm{TV}}(q_\# \nu_1, q_\# \nu_2) \le d_{\mathrm{TV}}(\nu_1, \nu_2)\)),
+on \(\omega \in G_u\) we have \[\begin{aligned}
+d_{\mathrm{TV}}\bigl((q_j)_\# P(x,a),\, \widehat{K}_{q_j}(\omega)(q_j(x), a)\bigr)
+&\le d_{\mathrm{TV}}\bigl(P(x,a), \widehat{P}_{x,a}(\omega)\bigr) + d_{\mathrm{TV}}\bigl(\widehat{P}_{x,a}(\omega), \widehat{P}_{x_{\mathrm{rep}}, a}(\omega)\bigr) \\
+&\le u + \widehat{\delta}_{q_j}(\omega),
+\end{aligned}\] and trivially \(\le 1\), hence
+\(\le \varepsilon_j(\omega) := \min\{1, u + \widehat{\delta}_{q_j}(\omega)\}\)
+across all certified pairs. By standard step-by-step path coupling
+between the pushed-forward true coarse trajectory law
+\((\pi_T^{(q_j)})_\# K_j\) and the macro-reference trajectory law
+\(\widehat{\mathbb{P}}_T^{(j,\omega)}\) under the same causal policy
+\(\mathrm{prog}_j\), one-step row discrepancies accumulate additively up
+to uncertified occupancy \(\kappa_n = \nu_n^{\mathrm{prog}_j}(C^c)\):
+\[d_{\mathrm{TV}}\bigl((\pi_T^{(q_j)})_\# K_j,\, \widehat{\mathbb{P}}_T^{(j,\omega)}\bigr) \le \sum_{n=0}^{T-1} \bigl[\varepsilon_j(\omega) + (1 - \varepsilon_j(\omega))\nu_n^{\mathrm{prog}_j}(C^c)\bigr].\]
+By Theorem 3.2,
+\texttt{synthesize}\((q_j, \dots) = \mathrm{some\ prog}_j\) guarantees
+\(\nu_n^{\mathrm{prog}_j}(C^c) = 0\) for every \(n\), eliminating the
+second term. Since
+\(E \subseteq (\pi_T^{(q_j)})^{-1}(\{\mathrm{bad}_j = \mathrm{true}\})\),
+we obtain
+\(K_j(E) \le (\pi_T^{(q_j)})_\# K_j(\{\mathrm{bad}_j = \mathrm{true}\}) \le \widehat{B}_T(\mathrm{prog}_j, q_j, \omega, u)\).
+Thus \texttt{accepts} \(= \mathrm{true}\) (\(\widehat{B}_T \le \beta\))
+implies \(K_j(E) \le \beta\) on \(G_u\), while Theorem 3.3
+simultaneously yields
+\(\mathbb{P}_{\mathrm{prog}_j}(\forall n,\, X_n \in K) = 1\).
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \emph{Concentration of \(G_u\) and joint post-selection bound.} For
+  each pair \((x,a) \in X \times A\) and subset \(B \subseteq X\),
+  \(\widehat{P}_{x,a}(\omega)(B) - P(x,a)(B)\) is the average of \(N\)
+  i.i.d. centered \([0,1]\)-valued indicators
+  \(\mathbf{1}\{\omega_{x,a,k} \in B\} - P(x,a)(B)\), so Hoeffding's
+  inequality \citep{hoeffding1963} gives
+  \(\mu_N(|\widehat{P}_{x,a}(B) - P(x,a)(B)| > u) \le 2 e^{-2Nu^2}\) for
+  every \(u \ge 0\). Unioning over all \(2^{|X|}\) subsets
+  \(B \subseteq X\) gives
+  \(\mu_N(d_{\mathrm{TV}}(P(x,a), \widehat{P}_{x,a}) > u) = \mu_N(\max_{B \subseteq X} |\widehat{P}_{x,a}(B) - P(x,a)(B)| > u) \le 2 \cdot 2^{|X|} e^{-2Nu^2}\).
+  Summing over \(|X|\,|A|\) rows and clipping at \(1\) yields
+  \(\mu_N(G_u^c) \le \alpha_N(u) \in [0,1]\). Finally, let
+  \(F(\omega) := \{h \in \mathcal{M}_T : \mathrm{selectedAccepts}(\omega) = \mathrm{true} \land h \in E\}\).
+  For \(\omega \in G_u\), either \texttt{selectCandidate}
+  \(= \mathrm{none}\) (so \texttt{selectedAccepts} \(= \mathrm{false}\)
+  and \(K_{s(\omega)}(F(\omega)) = 0 \le \beta\)), or
+  \texttt{selectCandidate} \(= \mathrm{some}\ j\): if \texttt{accepts}
+  \(= \mathrm{false}\), again \(F(\omega) = \varnothing\)
+  (\(0 \le \beta\)); if \texttt{accepts} \(= \mathrm{true}\), Part (1)
+  gives \(K_j(F(\omega)) = K_j(E) \le \beta\). Splitting
+  \(J(\{(\omega, h) : h \in F(\omega)\}) = \sum_{\omega \in G_u} \mu_N(\omega) K_{s(\omega)}(F(\omega)) + \sum_{\omega \in G_u^c} \mu_N(\omega) K_{s(\omega)}(F(\omega))\)
+  gives
+  \(\le (1 - \mu_N(G_u^c))\beta + \mu_N(G_u^c) \cdot 1 = \beta + (1 - \beta)\mu_N(G_u^c) \le \min\{1, \alpha_N(u) + (1 - \alpha_N(u))\beta\}\)
+  since \(1 - \beta \ge 0\). \(\square\)
+\end{enumerate}
+
+\subsection{A.5 Continuous observable belief quotients on standard Borel
+spaces (Theorem
+6)}\label{a.5-continuous-observable-belief-quotients-on-standard-borel-spaces-theorem-6}
+
+\emph{Proof of Theorem 6.} (1) Let \(v: \{0,1\} \to [0,1]\) map
+\(0 \mapsto 0, 1 \mapsto 1\). Under the deterministic observation kernel
+\(O((x,a), \cdot) = \delta_{q(x)}\), for any \(b \in \mathcal{P}(X)\)
+and \(a \in A\), the joint state--observation prediction measure on
+\(X \times \{0,1\}\) is \((\mathrm{id} \times q)_\# \widehat{b}_a\). By
+disintegration on the standard Borel space \(X\), for
+\(\bar{o}_{b,a}\)-almost every \(y \in \{0,1\}\), the regular posterior
+\(\mathrm{Post}(b,a,y)\) concentrates on \(q^{-1}(\{y\})\), so
+\(q_\# \mathrm{Post}(b,a,y) = \delta_y\) and hence
+\(c_q(\mathrm{Post}(b,a,y)) = v(y)\) for \(\bar{o}_{b,a}\)-a.e. \(y\).
+Because
+\(\mathcal{K}_{\mathrm{bel}}(b,a) = (\mathrm{Post}(b,a,\cdot))_\# \bar{o}_{b,a}\),
+pushing forward by \(c_q\) yields the exact identity
+\[(c_q)_\# \mathcal{K}_{\mathrm{bel}}(b, a) = v_\# \bar{o}_{b,a} \qquad (\forall b \in \mathcal{P}(X),\ \forall a \in A).\]
+(\emph{Sufficiency \& uniqueness}) Assume
+\(\mathrm{ClosedTests}(P, q)\). Let \(\mathrm{repr}(0) := x_0\) and
+\(\mathrm{repr}(1) := x_1\), so \(q(\mathrm{repr}(y)) = y\). For every
+\(x \in X\), \(q(x) = q(\mathrm{repr}(q(x)))\), so
+\(\mathrm{ClosedTests}\) gives
+\(P(x,a)(q^{-1}(\{1\})) = P(\mathrm{repr}(q(x)), a)(q^{-1}(\{1\}))\);
+since probabilities on \(\{0,1\}\) sum to \(1\),
+\(q_\# P(x,a) = q_\# P(\mathrm{repr}(q(x)), a)\). Integrating over
+\(x \sim b\) gives, for any measurable \(S \subseteq \{0,1\}\),
+\[\begin{aligned}
+\bar{o}_{b,a}(S) &= \int_X (q_\# P(x,a))(S)\, db(x)
+= \int_X \bigl(q_\# P(\mathrm{repr}(q(x)), a)\bigr)(S)\, db(x) \\
+&= \int_{\{0,1\}} \bigl(q_\# P(\mathrm{repr}(y), a)\bigr)(S)\, d(q_\# b)(y).
+\end{aligned}\] Because two measures on \(\{0,1\}\) coincide iff they
+assign the same mass to \(\{1\}\),
+\(c_q(b) = c_q(b') \implies q_\# b = q_\# b' \implies \bar{o}_{b,a} = \bar{o}_{b',a}\).
+Define the measurable Markov kernel
+\(\bar{K}: [0,1] \times A \to \mathcal{P}([0,1])\) by
+\(\bar{K}(u, a) := (c_q)_\# \mathcal{K}_{\mathrm{bel}}(\sigma_{x_0,x_1}(u), a)\).
+Since \(c_q(\sigma_{x_0,x_1}(c_q(b))) = c_q(b)\), we have
+\(\bar{o}_{b,a} = \bar{o}_{\sigma_{x_0,x_1}(c_q(b)), a}\) and hence
+\((c_q)_\# \mathcal{K}_{\mathrm{bel}}(b,a) = v_\# \bar{o}_{b,a} = \bar{K}(c_q(b), a)\).
+If any kernel \(K'\) also satisfies
+\((c_q)_\# \mathcal{K}_{\mathrm{bel}}(b,a) = K'(c_q(b), a)\) for all
+\((b,a)\), evaluating at \(b = \sigma_{x_0,x_1}(u)\) gives
+\(K'(u,a) = \bar{K}(u,a)\) via \(c_q(\sigma_{x_0,x_1}(u)) = u\).
+(\emph{Necessity}) Conversely, suppose
+\((c_q)_\# \mathcal{K}_{\mathrm{bel}}(b,a) = K'(c_q(b), a)\) holds for
+some kernel \(K'\). Take any \(x, x' \in X\) with \(q(x) = q(x')\) and
+any \(a \in A\). For point-mass beliefs,
+\(c_q(\delta_x) = v(q(x)) = v(q(x')) = c_q(\delta_{x'})\), so
+\((c_q)_\# \mathcal{K}_{\mathrm{bel}}(\delta_x, a) = (c_q)_\# \mathcal{K}_{\mathrm{bel}}(\delta_{x'}, a)\),
+i.e., \(v_\# \bar{o}_{\delta_x, a} = v_\# \bar{o}_{\delta_{x'}, a}\).
+Evaluating both measures on the singleton \(\{1\} \subseteq [0,1]\)
+(whose \(v\)-preimage is \(\{1\} \subseteq \{0,1\}\)) yields
+\(P(x,a)(q^{-1}(\{1\})) = \bar{o}_{\delta_x, a}(\{1\}) = \bar{o}_{\delta_{x'}, a}(\{1\}) = P(x',a)(q^{-1}(\{1\}))\),
+establishing \(\mathrm{ClosedTests}(P, q)\).
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Under \(\mathrm{ClosedTests}(P, q)\), induction on word length \(|w|\)
+  shows \(F_w(x) = g_w(q(x))\) for a function \(g_w: \{0,1\} \to [0,1]\)
+  (base \(g_{[]} \equiv 1\); step
+  \(F_{(a,y)::w'}(x) = \int \mathbf{1}\{q(z)=y\} g_{w'}(q(z))\, P(x,a)(dz)\)
+  depends only on \(q_\# P(x,a)\), which depends only on \(q(x)\)), so
+  \(T_w(b) = \int g_w\, d(q_\# b)\) depends only on \(c_q(b)\). On
+  \(X = \{0,1\}^2\) with \(q(x_1,x_2) = x_1\) and transition
+  \((x_1 \oplus (a \land N),\, x_2 \oplus N)\)
+  (\(N \sim \mathrm{Bern}(1/4)\)), \(q(x') = x_1 \oplus (a \land N)\) is
+  independent of \(x_2\), so \(\mathrm{ClosedTests}\) holds;
+  \(\delta_{(0,0)}\) and \(\delta_{(0,1)}\) both have \(c_q = 0\) (hence
+  identical \(T_w\) for all \(w\)), yet
+  \(\int \mathbf{1}\{x_2=1\}\, d\delta_{(0,0)} = 0 \neq 1 = \int \mathbf{1}\{x_2=1\}\, d\delta_{(0,1)}\)
+  and
+  \(\delta_{(0,0)}(\{x_2=0\}) = 1 \neq 0 = \delta_{(0,1)}(\{x_2=0\})\).
+  Under the perturbed deterministic transition
+  \((a ? x_2 : x_1,\, x_2)\) at \(a = 1\), \((0,0) \mapsto (0,0)\)
+  (\(q = 0\)) whereas \((0,1) \mapsto (1,1)\) (\(q = 1\)) despite
+  \(q(0,0) = 0 = q(0,1)\), violating \(\mathrm{ClosedTests}\) and ruling
+  out any quotient kernel by Part (1). \(\square\)
+\end{enumerate}
+
+\subsection{A.6 Prepaid fault-mechanism discrimination and minimax
+regret (Theorem
+7)}\label{a.6-prepaid-fault-mechanism-discrimination-and-minimax-regret-theorem-7}
+
+\emph{Proof of Theorem 7.} (1) \emph{Coupling and distinguishability
+bounds.} Fix any real-randomized strategy \(\pi\) and private random
+seed realization \(\xi\) (which reduces \(\pi(\xi)\) to a deterministic
+receipt-indexed action tree and terminal decision rule; integrating over
+\(\xi\) preserves TV bounds by convexity). Couple \(S\) and \(G\)
+step-by-step on the exact same tick-mode sequence
+\((M_0, \dots, M_{H-1}) \in \{\mathrm{normal}, \mathrm{fault}\}^H\).
+Initially both stores equal
+\((\mathrm{root0} = \neg g,\ \mathrm{child1} = \mathrm{none})\).
+Observe:
+
+\begin{itemize}
+\tightlist
+\item
+  If \(B < c\), no write request is ever affordable (\(c \cdot 1 > B\)),
+  so only \texttt{stop} and \texttt{idle} are legal; from
+  \((\neg g, \mathrm{none})\), no birth or charge ever occurs under
+  either \(S\) or \(G\), giving identical receipt \((0,0)^H\) and
+  \(\Delta_{H,B} = 0\).
+\item
+  If \(r = 0\) (all ticks fault) or \(r = 1\) (no tick faults, so \(S\)
+  and \(G\) execute identical transitions), \(P_S^\pi = P_G^\pi\) and
+  \(\Delta_{H,B} = 0\).
+\item
+  If only \texttt{root0} is ever addressed, \texttt{child1}'s bit is
+  never queried, and \texttt{root0} experiences the exact same bit
+  transitions under \(S\) and \(G\) on every mode sequence (since a
+  fault on a \texttt{root0} request sets \texttt{root0} to \(\neg g\)
+  under both \(S\) and \(G\), and a normal step updates \texttt{root0}
+  identically), yielding \(\Delta_{H,B} = 0\).
+\item
+  For \(H \le 2\) with arbitrary legal actions: at \(t = 0\),
+  \texttt{child1} is \texttt{none}, so both \(S\) and \(G\) emit
+  identical \(o_0\) and reach identical \(t=1\) stores. At \(t = 1\),
+  since the two stores at the start of \(t=1\) are identical, any legal
+  action \(a_1\) produces identical receipt \(o_1\) under \(S\) and
+  \(G\) (their post-\(t=1\) hidden \texttt{child1} bits can diverge only
+  if \(t=0\) created a healthy \texttt{child1},
+  i.e.~\(M_0 = \mathrm{normal}\), and \(t=1\) suffered
+  \(M_1 = \mathrm{fault}\) on a \texttt{root0} operation---which still
+  emits \(o_1 = (0,0)\) under both.). Hence \(P_S^\pi = P_G^\pi\) at
+  \(H \le 2\), proving \(\Delta_{H,B} = 0\) for \(H \le 2\).
+\item
+  At \(H = 3\): by the preceding bullet, \(o_0\) and \(o_1\) match on
+  \emph{every} mode word \((M_0, M_1, M_2)\), and the post-\(t=1\)
+  stores differ \emph{only} if \(M_0 = \mathrm{normal}\) and
+  \(M_1 = \mathrm{fault}\), while at \(t=2\) a fault
+  (\(M_2 = \mathrm{fault}\)) forces \(o_2 = (0,0)\) regardless of store
+  state. Thus \((o_0, o_1, o_2)\) can differ between \(S\) and \(G\)
+  \emph{only} on the unique mode word
+  \((M_0, M_1, M_2) = (\mathrm{normal}, \mathrm{fault}, \mathrm{normal})\),
+  which has probability \(r(1-r)r = r^2(1-r)\). By the coupling
+  inequality, \(d_{\mathrm{TV}}(P_S^\pi, P_G^\pi) \le r^2(1-r)\) for
+  every \(\pi\). Conversely, when \(B \ge c\), the fixed legal sequence
+  \(a_0 = \text{write }g\text{ to root0}\), \(a_1 = \text{idle root0}\),
+  \(a_2 = \text{idle child1}\) emits \([(1,1), (0,0), (1,0)]\) iff
+  \((M_0, M_1, M_2) = (\mathrm{normal}, \mathrm{fault}, \mathrm{normal})\)
+  under \(S\) (probability \(r^2(1-r)\)) and \emph{never} under \(G\)
+  (probability \(0\)), attaining \(\Delta_{3,B} = r^2(1-r)\).
+\end{itemize}
+
+For binary classification under equal priors
+\(\frac{1}{2}\delta_S + \frac{1}{2}\delta_G\), minimum Bayes error is
+\(\frac{1}{2}(1 - d_{\mathrm{TV}}(P_S^\pi, P_G^\pi))\)
+(\(= \frac{1}{2}(1 - 1/8) = 7/16\) at \(H=3, r=1/2\)), and since the
+all-fault word \(M_{0:H-1} = \mathrm{fault}^H\) has mass \((1-r)^H\) and
+produces identical trajectories under \(S\) and \(G\),
+\(1 - d_{\mathrm{TV}}(P_S^\pi, P_G^\pi) \ge (1-r)^H\), giving error
+\(\ge (1-r)^H/2\). At \((r,H,B,c,\lambda,d) = (1/2, 2, 2, 1, 1/4, 1)\),
+writing \(g\) to \texttt{root0} at \(t=0\) (expected step-0 net payoff
+\(\frac{1}{2}(1 - \frac{1}{4}) = \frac{3}{8}\); w.p. \(1/2\) repairs
+\texttt{root0} with remaining wallet \(1\), w.p. \(1/2\) faults with
+remaining wallet \(2\)) followed at \(t=1\) by idling \texttt{root0}
+after \((1,1)\) (expected payoff \(\frac{1}{2}\cdot 1 = \frac{1}{2}\))
+and writing \(g\) to \texttt{root0} after \((0,0)\) (expected payoff
+\(\frac{3}{8}\)) yields total payoff
+\(\frac{3}{8} + \frac{1}{2}\cdot\frac{1}{2} + \frac{1}{2}\cdot\frac{3}{8} = \frac{13}{16} = V_S^* = V_G^*\).
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \emph{Exact three-step minimax regret and deterministic lattice gap.}
+  Fix \((r, H, B, c, \lambda, d) = (1/2, 3, 2, 1, 1/4, 1)\). Exhaustive
+  dynamic programming (verified in the Lean kernel via
+  \texttt{csolveInt\_spec} and \texttt{kernel\_int\_h3}) establishes the
+  exact optimal values over all \(7\)-action tables:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Under known \(S\): \(\pi_S\) writes \(g\) to \texttt{root0} at \(t=0\)
+  (step-0 mean \(3/8\)):
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Branch \(o_0 = (1,1)\) (prob. \(1/2\), wallet \(1\), \texttt{root0}
+    \(=g\), \texttt{child1} \(=g\)): idles \texttt{root0} at \(t=1\)
+    (step-1 mean \(1/2\)); if \(o_1 = (1,0)\) (cond. prob. \(1/2\)),
+    idles \texttt{root0} at \(t=2\) (mean \(1/2\)); if \(o_1 = (0,0)\)
+    (cond. prob. \(1/2\), \texttt{root0} \(=\neg g\) while
+    \texttt{child1} \(=g\) under \(S\)), idles \texttt{child1} at
+    \(t=2\) (mean \(1/2\) under \(S\), \textbf{but \(0\) under \(G\)}).
+    Thus the \(o_0=(1,1)\) continuation yields
+    \(\frac{1}{2} + \frac{1}{2} = 1\) under \(S\), and
+    \(\frac{1}{2} + \frac{1}{2}\cdot\frac{1}{2} + \frac{1}{2}\cdot 0 = \frac{3}{4}\)
+    under \(G\).
+  \item
+    Branch \(o_0 = (0,0)\) (prob. \(1/2\), wallet \(2\), \texttt{root0}
+    \(=\neg g\), \texttt{child1} \(=\mathrm{none}\)): reduces to the
+    \(H=2, B=2\) problem solved above, yielding continuation value
+    \(13/16\) under \emph{both} \(S\) and \(G\). Hence
+    \(V_S^* = J_S(\pi_S) = \frac{3}{8} + \frac{1}{2}\cdot 1 + \frac{1}{2}\cdot\frac{13}{16} = \frac{12 + 16 + 13}{32} = \frac{41}{32}\),
+    whereas
+    \(J_G(\pi_S) = \frac{3}{8} + \frac{1}{2}\cdot\frac{3}{4} + \frac{1}{2}\cdot\frac{13}{16} = \frac{37}{32}\).
+  \end{itemize}
+\item
+  Under known \(G\): \(\pi_G\) differs from \(\pi_S\) \emph{only} after
+  \([(1,1), (0,0)]\) (prob. \(1/4\), wallet \(1\)), where \(\pi_G\)
+  writes \(g\) to \texttt{root0} (mean
+  \(\frac{1}{2}(1 - \frac{1}{4}) = \frac{3}{8}\) under both \(S\) and
+  \(G\).). Hence
+  \(V_G^* = J_G(\pi_G) = J_S(\pi_G) = \frac{3}{8} + \frac{1}{2}\bigl(\frac{1}{2} + \frac{1}{2}\cdot\frac{1}{2} + \frac{1}{2}\cdot\frac{3}{8}\bigr) + \frac{1}{2}\cdot\frac{13}{16} = \frac{40}{32} = \frac{5}{4}\).
+\item
+  Under dual prior \(w = (3/4, 1/4)\): at the ambiguous prefix
+  \([(1,1), (0,0)]\), the posterior over \(\{S, G\}\) remains
+  \((3/4, 1/4)\); idling \texttt{child1} yields Bayes continuation
+  \(\frac{3}{4}\cdot\frac{1}{2} + \frac{1}{4}\cdot 0 = \frac{3}{8}\),
+  tying with writing \(g\) to \texttt{root0} (\(3/8\)), while no earlier
+  deviation can beat writing \(g\) at \(t=0\) and idling \texttt{root0}
+  after \((1,1)\). Thus \(V_w^* = \frac{5}{4}\), giving the universal
+  minimax lower bound across \emph{all} real-randomized strategies:
+  \[R^* \ge L(w) = \frac{3}{4}\cdot\frac{41}{32} + \frac{1}{4}\cdot\frac{40}{32} - \frac{5}{4} = \frac{123 + 40 - 160}{128} = \frac{3}{128}.\]
+\item
+  Simultaneously, the four-point seeded strategy
+  \(\rho = \frac{1}{4}\pi_S + \frac{3}{4}\pi_G\) satisfies
+  \(J_S(\rho) = \frac{1}{4}\cdot\frac{41}{32} + \frac{3}{4}\cdot\frac{40}{32} = \frac{161}{128}\)
+  (\(R_S(\rho) = \frac{164 - 161}{128} = \frac{3}{128}\)) and
+  \(J_G(\rho) = \frac{1}{4}\cdot\frac{37}{32} + \frac{3}{4}\cdot\frac{40}{32} = \frac{157}{128}\)
+  (\(R_G(\rho) = \frac{160 - 157}{128} = \frac{3}{128}\)), proving
+  \(R^* = \frac{3}{128}\).
+\item
+  Finally, for any deterministic strategy \(\pi_{\mathrm{det}}\), each
+  of the \(2^3 = 8\) equiprobable mode sequences
+  \((M_0, M_1, M_2) \in \{\mathrm{normal}, \mathrm{fault}\}^3\)
+  (probability \(1/8\) each) induces an integer birth count in
+  \(\mathbb{Z}\) and an integer fee count in \(\mathbb{Z}\) scaled by
+  \(\lambda = 1/4\), so pathwise net payoff lies in
+  \(\frac{1}{4}\mathbb{Z}\) and expected payoff
+  \(J_m(\pi_{\mathrm{det}})\) lies in
+  \(\frac{1}{8}\cdot\frac{1}{4}\mathbb{Z} = \frac{1}{32}\mathbb{Z}\).
+  Because \(V_S^* = 41/32 \in \frac{1}{32}\mathbb{Z}\) and
+  \(V_G^* = 40/32 \in \frac{1}{32}\mathbb{Z}\),
+  \(R(\pi_{\mathrm{det}}) \in \frac{1}{32}\mathbb{Z}\). Since
+  \(R(\pi_{\mathrm{det}}) \ge R^* = 3/128 > 0\), integrality forces
+  \(R(\pi_{\mathrm{det}}) \ge 1/32 = 4/128\) (attained by \(\pi_G\)).
+  \(\square\)
+\end{itemize}
+
+\section*{Declarations}\label{declarations}
+\addcontentsline{toc}{section}{Declarations}
+
+\textbf{Funding.} The author received no external funding, grants, or
+financial support for the research, formalization, authorship, or
+preparation of this manuscript.
+
+\textbf{Conflicts of interest / Competing interests.} The author
+declares no financial or non-financial competing interests relevant to
+the content of this article.
+
+\textbf{Availability of data and material.} Not applicable. No empirical
+datasets were generated or analyzed; all mathematical proofs, finite
+counterexamples, and exact rational dynamic-programming evaluations are
+self-contained in the text and Mathematical Appendix.
+
+\textbf{Code availability.} Every definition, theorem, executable
+controller synthesizer, rational statistical risk oracle,
+counterexample, and GCD-free integer dynamic-programming certificate
+reported in this article has been formally verified in Lean 4 (v4.33.1)
+over Mathlib across 1,051 compiled modules, passing an environment-wide
+axiom audit restricting transitive dependencies exclusively to
+\texttt{\{propext,\ Classical.choice,\ Quot.sound\}} (\texttt{0}
+\texttt{sorryAx}, \texttt{0} \texttt{Lean.ofReduceBool}). Reproducible
+build and verification scripts accompany the submission package and Lean
+4 formalization archive.
+
+\textbf{Authors' contributions.} Single-authored manuscript. The sole
+author conceived the mathematical framework and formalization
+architecture, proved the mathematical and mechanized results, and wrote
+the manuscript; AI-assisted tools were used during bibliographic
+cross-checking, Lean proof engineering, and editorial preparation, with
+the author bearing sole responsibility for all theorems, formal
+specifications, and scholarly attributions.
+
+\textbf{Rights.} Copyright © 2026 Degui Qian. Licensed under Creative
+Commons Attribution 4.0 International (CC BY 4.0).
+
+\clearpage
+\begingroup
+\setstretch{1.02}
+\small
+\setlength{\bibsep}{5.5pt}
+\bibliographystyle{plainnat}
+\bibliography{references}
+\endgroup
+\end{document}
