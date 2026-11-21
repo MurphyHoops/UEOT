@@ -47,3 +47,8 @@ artifact14690857152，digest sha256:d6ed85588ca91151b7c8a4bbb66504aa628b8bfe6ffc
 新增实际inverse、prepared readout、density residual、fixed AE action lift、mixed source boundary、明确cost witness、normal canonical comparator与Hadamard gate与准备后mean入口共9个科学证书入口，合计23科学+1scope。每项均有证明、源码、源文件哈希和JSON；计数不是新定理数。CP2回读新增46个身份，累计93条/91个distinct pair，零不一致。新的不变源码审读与CI需另记，不继承旧版结论。
 
 正常Gaussian门及finite-mode修正均只是显式canonical模型中的状态/CP算例；后者Hadamard而前者失败。两者不被记作真实引力装置或原共同mean的完成。独立载体和旧不确定原理、连续谱normal核原则均按前驱结果复用。
+
+## 第四检查点与审读修订
+
+在CP3的23科学+1scope上增加incoming_preparation和quantum_endpoint，当前25科学+1scope。Gaussian编码、A_P原则及sharp shear数据均复用；新增是当前Hi残差/资源、joint purity验收。CP3实际44身份回读已核，累计137条/124不同pair零不一致；完整CI证据已入checkpoint_ci.json。
+readout W7增加support长度√2并以冻结中心+width验证emax；最终宽界及e19000拒收保持。此为真实审读修订，不把CP3源码称作已含该修正。后续检查点另验。

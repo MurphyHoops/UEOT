@@ -37,9 +37,11 @@ ddp=normfactor*(4*iv.mpf(4)**4*iv.exp(-4)+12*iv.mpf(3)**3*iv.exp(-3)+6*iv.mpf(2)
 require(below(dp,10) and below(ddp,200),"Elementary radial profile derivative bounds")
 # These bounds feed the explicit canonical support-vector estimates.
 require(above(sigma,"2e-7") and above(A,"8e4"),"Canonical norm lower denominators")
-qnorm=2/(iv.mpf("8e4")**3)*(10/iv.mpf("2e-7")+iv.mpf("1e6")*200/iv.mpf("2e-7")**2)
-dnorm=1+2*iv.mpf("1e6")*10/iv.mpf("2e-7")
-pnorm=2*iv.mpf("1e5")**3*iv.mpf("1e6")
+emax=Ez+2*iv.sqrt(3)/A+sigma
+require(below(emax,"1e6"),"Full radial support energy upper")
+qnorm=iv.sqrt(2)*2/(iv.mpf("8e4")**3)*(10/iv.mpf("2e-7")+emax*200/iv.mpf("2e-7")**2)
+dnorm=1+iv.sqrt(2)*2*emax*10/iv.mpf("2e-7")
+pnorm=2*iv.mpf("1e5")**3*emax
 require(below(qnorm,"1e8") and below(dnorm,"1e15") and below(pnorm,"1e22"),"Canonical support-vector norms")
 hnorm=iv.mpf(".016")/iv.sqrt(128)-iv.exp(60)*eps
 require(above(hnorm,".001"),"Same-state initial charge norm")

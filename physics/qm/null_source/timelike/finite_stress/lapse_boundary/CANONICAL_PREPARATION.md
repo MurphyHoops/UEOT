@@ -16,7 +16,7 @@ MIXED_BOUNDARY 给出两条弱行，READOUT_WITNESS 拒收它为受控弱涨落�
 \[
  b_{kr}={\nu_k q_{kr}+i p_{kr}\over\sqrt{2\nu_k}}
 \]
-定义瞬时 H0−VQ 的标准 annihilator。
+定义瞬时 H0−VQ 的标准 annihilator。这里 p=p_bulk=q′，不是物理应力中的 q′−hq。
 若 v_k=e^−iωη F_k/√(2ω)，其混合系数为
 \[
  \beta_k={e^{i\omega i}\{(\nu_k-\omega_k)F_k^*(i)
@@ -65,7 +65,7 @@ P_g 的谱测度无 atom；对任意简单张量和任意 λ，
 于是不存在 trace-one 正常联合态满足
 Tr ρ A²=0，或等价 Aρ^(1/2)=0；
 均值〈A〉=0 的正常态当然仍可存在。
-谱原理沿用前驱 QUANTUM_FLOOR，本轮新增是实际 H_i 的自伴实现及以下明确准备。
+谱原理沿用前驱 QUANTUM_FLOOR，本轮新增是实际 H_i 的自伴实现，以及把前驱 RELATIONAL 的 normal Gaussian encoding 应用到这个实际荷、其UV与资源门；通用Gaussian构造本身复用。
 
 Dirac/group averaging 可在分布 δ(h_i p+E) 上另建 physical inner product，
 形式权重含 |h_i|^−1；这属于另一约束后空间。
@@ -158,6 +158,8 @@ F=∬exp[−(E−E')²/(8δ²)]dμψ(E)dμψ(E')，
 \[K_z=(2\pi\delta^2)^{-1/4}\exp[-(z-H_i)^2/(4\delta^2)],\quad {\cal I}_z(\rho)=K_z\rho K_z.\]
 全部 z 的积分 trace-preserving，POVM 是 H_i 谱的 Gaussian smearing；非选择 map 正是 C7。这里所有记录都计入，没有只保留窄带成功分支。
 若把 U 只用作 canonical 坐标变换并同步运输态和观测量，不产生物理准备；本页明确固定原因子代数与 A，主动改变 boundary density。U†AU=h_iP≠A，因此这不是封闭总约束守恒的自主实施。controller 的 constraint/stress 不能省去。
+
+当前 h_i′>[0.9(9·10^5)²−(2.1)²−1]c>0：W11 同一 E4 余项因 λ²/w4(λ)≤1 给 |Θ²v_i|<c。因此 V_i=h_i′+h_i²>0。
 
 当前 V_i>0 的零模 inverted oscillator 经线性 symplectic 变换及 y=log|x| 化为 dilation 的平移生成元，具有纯绝对连续谱；与其余模的张量谱和仍如此。故对当前有限秩源，δ→0 时 Tr(P_Mρ′_δ)→0，Dtr→1。这个结论来自 Fourier 矩阵元的衰减及宽 Gaussian 平均，不把正常精确极限当作存在。
 

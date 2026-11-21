@@ -29,7 +29,9 @@ require(all(exponent>1 for exponent in [4,3,2]),"Unitary, energy mean and operat
 require(19980-3*iv.ln(10)>19000,"Finite branch momentum cost remains large")
 zz,ee,ff=s.symbols("zz ee ff",real=True)
 require(s.expand((zz-ee)**2+(zz-ff)**2-2*(zz-(ee+ff)/2)**2-(ee-ff)**2/2)==0,"CP instrument Gaussian overlap")
+require(s.Rational(9,10)*900000**2-s.Rational(21,10)**2-1>0,"Actual inverted zero-mode potential positive")
 finish("canonical_preparation.py",dict(
+ normal_Gaussian_encoding_principle_reused_from_RELATIONAL=True,
  complete_normal_CP_instrument_in_toy_model=True,
  toy_control_gate_commutes_with_full_constraint=False,
  source_trace_distance_tends_one_as_constraint_tolerance_tends_zero=True,
@@ -59,5 +61,5 @@ finish("canonical_preparation.py",dict(
   "finite_stress/lapse_boundary/READOUT_WITNESS.md",
   "finite_stress/lapse_boundary/CONSTRAINT_RESIDUAL.md",
   "finite_stress/lapse_boundary/ACTUAL_INVERSE.md",
-  "constraint_states/QUANTUM_FLOOR.md"],
+  "constraint_states/QUANTUM_FLOOR.md","constraint_states/RELATIONAL.md"],
  proof="CANONICAL_PREPARATION.md")

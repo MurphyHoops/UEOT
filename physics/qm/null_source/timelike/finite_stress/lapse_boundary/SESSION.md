@@ -64,3 +64,11 @@ actual-U压力的尖起始K³/K发散与同源Q/D边界块的精确取消已同�
 本阶段脚本曾发现一处canonical D符号错误（已按Q=i∂P纠正），并发现一个区间helper误传整数的检查代码错误（已纠正）；这些不是通过项，也未隐藏为科学结果。实际证书通过后才进入验收。
 
 有限模门之后继续计算：PREPARED_MEAN给同一门参数的二/四矩运输、zero density=pressure严格增加、原H_in均值严格增加、自由Ward和新的共同mean方程。同时拒收固定旧高模态只调u'''的修复：其Cqp高频差不在H^(3/2)，不能称新Hadamard初值。此处尚未宣称新mean正窗解已得。
+
+## 第四阶段：保source应力的准备与第二几何端点门
+
+复盘没有停在finite-K mean重匹配入口。进一步改用B=AδH_in，得到正常Hadamard、保持完整原A_P/stress/influence限制的对照；新交付是对actual H_i残差的显式二次式、余项、pointer mean、完整cross和资源预算。δ0=10^-6可控制目标近似RMS，bare Dtr>0.999、zero Q增量>2e12、geometry P资源仍保留。通用Gaussian encoding及观测商均明确复用旧RELATIONAL。
+
+继续检查原第二canonical对：将单独端点shear主动施于固定normalκ波包的reduced purity→0，故无normal trace全场极限；Gaussian宽s时√K purity→1/s。这个具体失败说明一对toy变量不能直接替代原两对geometry。共同action/state cancellation与不同物理内积未排除。
+
+CP3三原生代理实际回读44个身份，root核对累计137条/124个distinct pair、零不一致。CP3科学CI44870759050（24 PASS）与publication44870759008均成功且exact head已核。审读发现并修正readout的sup→L² sqrt(2)与完整支持能量门；宽最终常数保持成立。实际逆λ边界与Hi正性补证、RELATIONAL复用来源也已补齐。

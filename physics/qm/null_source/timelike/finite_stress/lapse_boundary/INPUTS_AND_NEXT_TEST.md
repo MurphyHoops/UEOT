@@ -8,7 +8,15 @@ ACTION_LIFT 从原 homogeneous lapse action 的两条 variation、边界势和 f
 
 CANONICAL_PREPARATION 给实际 H_i 的自伴实现与明确正常近似联合态。HADAMARD_GATE 又证明全场 Gaussian 门破坏当前高频相干，同 AE 平均 density 有正 logarithmic 发散；只控制有限低模给正常、Hadamard 且可控制 constraint tail 的修正。两者均改变完整源态，不可再沿用旧 quiet mean/noise。
 
-## 下一首要交付：有限模式准备后的同一总源 mean 与局域实施
+## 当前新增的更强对照及首要交付
+
+INCOMING_PREPARATION改用B=AδH_in，正常Gaussian编码与A_P原则复用前驱，但actual H_i残差已新算：δ0=10^−6时目标RMS处于[10^−6,1.000001·10^−6)，可明确消均值。source Hadamard与完整应力functional保持，bare Dtr>0.999，pointer P资源仍巨大。它不是原P_u的已证实现，geometry joint均值沿旧U尚未证明。
+
+QUANTUM_ENDPOINT已拒收把−[κQ_K]单独主动施于固定normal几何波包再取全场极限的方案：reduced purity→0，无normal trace极限。仍须在有限K共同合并action、density、gluing与端点，不能把单独shear当新装置。
+
+**首要交付：将同source-functional对照放回ACTION_LIFT的真实P_u/Pκ及约束数据。** 写出同一canonical map下全部初始均值、二矩、混合块、共同域和物理内积；检验pointer识别是否成立并保留其资源。先解决这个物理识别，再接完整geometry演化。
+
+## 保留的另一分支：有限Hi模式准备后的新mean与局域实施
 
 1. 固定 preparation cutoff K≥2、constraint tolerance δ0、同一真实几何时钟；明确有限 source/control Hilbert 模型与所有记录。
 2. 用同一 Gaussian gate 参数运输全部二阶、四阶 source 矩，保留原 zero–shell 相关及门产生的跨模相关；先固定 K 后取 stress observable cutoff L→∞。
@@ -27,3 +35,10 @@ CANONICAL_PREPARATION 给实际 H_i 的自伴实现与明确正常近似联合�
 - 每个有限K合法就宣称K→∞在同AE应力域合法。
 
 物理统一核心目标继续OPEN。下一项要交付实际改变态后的共同演化及总源，而不是新增未经实现的协方差假设。
+
+## 已收敛的下一具体候选：有限K relational clock 域
+
+若明确选择 L²(du dκ)⊗Hsource、P_u=−i∂u、Pκ=−i∂κ 的对称 ordering，并限于κ>0、gK(u)≠0的compact common core，令D=Pκ−A_K−Q，可写 C_K=κP_u+D²/(2gK)+Hrest,0。这项ordering不是原classical action唯一决定的。
+取f=κ^(−1/2)，则
+\[ fC_Kf=P_u+H_{rel},\qquad fD^2f=\kappa^{-1}D^2+i\kappa^{-2}D-3/(4\kappa^3).\]
+这是对称congruence，不是unitary conjugation；χ=κ^(1/2)Ψ仅在形式约束核上作映射。下一次应实际证明/否决这个候选的selfadjoint域、κ=0边界、随u的unitary propagator和finite-slice source transport，再决定physical inner product。不能用这个等式宣称已经有正常物理态或与旧kinematic谱等价。

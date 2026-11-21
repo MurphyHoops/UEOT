@@ -46,7 +46,7 @@ CAUSAL_DOMAINS的完整静态G0满足
  \mu_J=\sum_{r=0}^3\|V^{(r)}\|_{L^1(-\infty,T]},\quad V=U''+h^2.
 \]
 它不是旧KERNELS里名为M的E2范数。
-所有非零背景频率λ>s*>1，积分降一阶，故
+所有非零背景频率λ≥s*>1，积分降一阶，故
 \[
  \sup|U^{(j)}|\le\varepsilon\ (j\le4),\quad
  \|U^{(j)}\|_1\le\varepsilon\ (j\le5),\quad

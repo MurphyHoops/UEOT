@@ -3,7 +3,7 @@
 从 eae6769b97393b310054c21b804d7ed03a1371dc 接续同一分支/PR #468。
 核心物理统一目标、完整几何—物质—装置闭环仍未实现。
 
-最新闭环：原lapse作用量强制的混合初始列已推出；实际全场齐次逆、双约束弱解和具体读数成本已完成。该弱解的指定读数失控；继续构造正常相关门后，又发现全场门的Hadamard失败，并给出有限模式正常Hadamard近似修正。下一门是修正态的实际mean与总装置准备，不能复用门前历史。
+最新闭环：原lapse作用量强制的混合初始列已推出；实际全场齐次逆、双约束弱解和具体读数成本已完成。该弱解的指定读数失控；继续构造正常相关门后，又发现全场门的Hadamard失败，并给出有限模式正常Hadamard近似修正。进一步构造incoming能量门后，原source应力functional可精确保留，但其pointer与真实两对几何canonical变量尚未识别；把单独端点shear用于第二对的具体normal极限又被拒收。下一门是共同action/态/端点下的真实canonical embedding与总源。
 
 本轮先完成有限截止lapse/端点分类，再计算已匹配实际非静态历史上的完整绝对source tensor噪声、
 实际齐次retarded RSET导数、初始source荷混合块与六个Killing momentum荷。
@@ -37,6 +37,8 @@
 | 正常canonical对照 | 自伴H_i、正常近似联合态、CP仪器与完整资源；源态改变 | [CANONICAL_PREPARATION](CANONICAL_PREPARATION.md), [JSON](canonical_preparation.json) |
 | 准备态UV再验收 | 全场Gaussian门同AE密度log发散；有限模正常Hadamard修正及tail界 | [HADAMARD_GATE](HADAMARD_GATE.md), [JSON](hadamard_gate.json) |
 | 准备后mean入口 | 同门全部二/四矩、zero mean严格增加、完整新mean方程；拒收只调几何初导 | [PREPARED_MEAN](PREPARED_MEAN.md), [JSON](prepared_mean.json) |
+| 同应力 incoming 准备 | 正常Hadamard、原source functional保持；实际Hi约束RMS受控，裸态Dtr>0.999和巨大P资源 | [INCOMING_PREPARATION](INCOMING_PREPARATION.md), [JSON](incoming_preparation.json) |
+| 第二几何对端点门 | 固定normal geometry input的active shear纯度趋0，无normal trace极限 | [QUANTUM_ENDPOINT](QUANTUM_ENDPOINT.md), [JSON](quantum_endpoint.json) |
 
 所有RMS比值都有指定测试、同一实际态/几何和模型单位；不是度规误差、SI时间或实验灵敏度。
 源二阶核也不是完整Gaussian几何过程；高阶累积量、初始joint state和真实装置仍承担各自责任。
@@ -52,7 +54,7 @@
 python -B physics/qm/null_source/timelike/finite_stress/lapse_boundary/run_verification.py
 ~~~
 
-本检查点执行23个科学证书入口及1个范围检查；数目不等于新定理数。
+本检查点执行25个科学证书入口及1个范围检查；数目不等于新定理数。
 新入口复用旧163项，冻结600个前驱科学文件，只执行本目录新检查。
 自动证书、解析证明、原生代理审读和GitHub CI各自记录，不相互替代。
 Core只读，GI排除，PR保留草稿且不合并。
