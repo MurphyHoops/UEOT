@@ -15,3 +15,10 @@ Timing is not inferred from test counts or predecessor work.
 These are programmatic provenance/scope checks. The mathematical arguments
 remain the stated analytic proofs and their independent source reviews.
 No machine-formal proof or external human peer review is claimed.
+
+
+The AST import/call rules are limited static source checks, not a general
+Python execution sandbox. The non-runner allowlist excludes importlib;
+the runner's separately reviewed importlib.metadata only reads versions.
+Relative imports and direct eval/exec/__import__ calls are rejected.
+Actual immutable source inspection complements these syntactic checks.

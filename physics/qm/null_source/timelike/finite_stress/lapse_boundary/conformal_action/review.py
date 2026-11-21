@@ -9,7 +9,7 @@ for node in tree.body:
     if isinstance(node,ast.Assign) and any(isinstance(x,ast.Name) and x.id=='ENTRIES' for x in node.targets):
         entries=ast.literal_eval(node.value)
 require(entries and entries[-1]=='review','entrypoint list')
-allowed={'__future__','common','model','ast','json','re','subprocess','sys','datetime','pathlib','argparse','hashlib','math','os','tempfile','time','concurrent','importlib','numpy','scipy','sympy','mpmath','fractions','functools','itertools'}
+allowed={'__future__','common','model','ast','json','re','subprocess','sys','datetime','pathlib','argparse','hashlib','math','os','tempfile','time','concurrent','numpy','scipy','sympy','mpmath','fractions','functools','itertools'}
 for p in HERE.glob('*.py'):
     if p.name in {'run_verification.py'}:continue
     for node in ast.walk(ast.parse(p.read_text())):
