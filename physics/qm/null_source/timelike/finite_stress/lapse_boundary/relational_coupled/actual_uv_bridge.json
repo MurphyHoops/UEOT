@@ -1,10 +1,13 @@
 {
   "GNS_L2_cutoff_limit_on_declared_state": true,
   "NOON_low_block_and_metric_cross_correlations_retained": true,
+  "actual_H2_to_Y_response_tail": true,
+  "actual_H4_to_terminal_H2_dual_action_tail": true,
   "actual_fixed_conformal_lapse_u_u_weak_Hessian_contact_tail": true,
   "arbitrary_lapse_tensor_Hessian_limit_proved": false,
   "finite_K_backgrounds_individually_mean_solutions_asserted": false,
   "finite_K_inverse_to_full_inverse_convergence_proved": false,
+  "finite_K_off_shell_action_pressure_terms_retained": true,
   "finite_amplitude_influence_limit_proved": false,
   "full_field_Einstein_CTP_device_solution": false,
   "fullfield_kernel_existence_reused_not_new": true,
@@ -98,12 +101,30 @@
     "physics/qm/null_source/timelike/finite_stress/lapse_boundary/TENSOR_NOISE.md": "49ab59ad42e561099c90db3c5a7f4f46c42e0935519e98b38519e9aaea72e0e5",
     "physics/qm/null_source/timelike/finite_stress/lapse_boundary/actual_inverse.json": "8bbae5eb09fc123e63842f7e7c895be1c87f23403c9bf1d9aca7da815a3125af",
     "physics/qm/null_source/timelike/finite_stress/lapse_boundary/quiet_window.json": "96d4a5f0a006ddf9df768ea8954fa928ea4dc0895047eff7c44b4138c5e221d9",
-    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/relational_coupled/ACTUAL_UV_BRIDGE.md": "5d96a91a13c4a304ccbf237ab7302bedb752a636ba4f8916941c55f775a002e7",
-    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/relational_coupled/actual_uv_bridge.py": "876e97563a67313e6188849f6b7f6dcfa6a3ec921b9864066932ac247b102bf7",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/relational_coupled/ACTUAL_UV_BRIDGE.md": "3227a61b091031d564195d4bc0edb115a5effa298fbe5dcbfb5e7133174e1427",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/relational_coupled/actual_uv_bridge.py": "785abe665a87f39f89ad852eaafa79f636dd8dbdeee27da689b9cb18684981ea",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/relational_coupled/coefficient_window.json": "d84ed06695d10dbbb5d3668b380923e4e7c894f3c95b73b5ec863a1ea5e050f5",
     "physics/qm/null_source/timelike/finite_stress/lapse_boundary/relational_coupled/common.py": "6b0b3c8540b85a1d74a0d47e3d361666fb70cfa72ff5f94d5494297b2fcd112e",
     "physics/qm/null_source/timelike/finite_stress/lapse_boundary/relational_coupled/cutoff_gate.json": "7bc74b19261bd701a2156782b0ce8959e277977bbeba1fed27483f8db6aacd19",
     "physics/qm/null_source/timelike/nonlinear_history/KERNELS.md": "f39baaea35c089adb8dae9628a07c82b407c1ec2b197789f346725d4ff1296cb"
   },
   "status": "PASS",
-  "verification_kind": "exact algebra or outward interval checks; analytic proofs stated separately"
+  "strong_inverse_convergence_not_implied_by_weak_tail": true,
+  "verification_kind": "exact algebra or outward interval checks; analytic proofs stated separately",
+  "weak_Sobolev_bounds": [
+    {
+      "K": 65536,
+      "weak_X_to_terminal_H2_dual_tail": [
+        3.1118261804118884e-11,
+        3.111827652654138e-11
+      ]
+    },
+    {
+      "K": 131072,
+      "weak_X_to_terminal_H2_dual_tail": [
+        1.555913090204511e-11,
+        1.5559138263256355e-11
+      ]
+    }
+  ]
 }

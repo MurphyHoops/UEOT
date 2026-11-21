@@ -85,3 +85,31 @@ of the already frozen full-field kernel existence and not a proof of
 the quantum-geometric continuum limit. An additional initial
 geometric derivative is incorporated within NEGATIVE_RECOVERY,
 without incrementing the scientific entry count.
+
+
+### CP5 research closure before immutable review
+
+CP5 integrates the actual common-cutoff retarded inverse proof, the
+fixed-thin-source bounded witness, the general free-source weak first-jet
+obstruction, the initial product-state purity curvature, and the
+scalar-clock radial spectral-measure gate. The current runner has
+22 scientific entries plus one scope/source-binding entry. These are
+analytic proofs with exact certificate checks, not machine formal proofs.
+The inverse result is strong convergence for each forcing; no operator-norm
+convergence or rate is claimed. The pressure threshold K1 is existential,
+whereas the uniform static/action threshold K0=10^9 is analytic. No billion
+mode enumeration was run. Advanced/adjoint convergence and the resulting
+source-GNS readout limit remain follow-up work.
+
+The general source theorem uses weak derivatives against source Schwartz
+rank-one observables. It does not assert trace-norm differentiability for
+all normal states. The stronger trace Taylor/purity statement is restricted
+to the explicitly constructed initial product family. The actual reduced
+finite-K source evolution is a normal CPTP channel for each fixed geometry
+initial state; it need not be a source-only Markov or unitary evolution.
+No complete old-source history, full spatial gravity, continuum joint
+state, autonomous apparatus, or physical unification is claimed.
+
+This section records prepared CP5 derivations, not an advance declaration
+of immutable CP5 review or final CI success. The actual reviews and CI
+observations are recorded separately after they occur.

@@ -229,6 +229,103 @@ not contradict the older bare-state zero-variance exclusion.
 An arbitrary absolutely continuous law also need not have the smooth
 Q moments required of the current thin source.
 
+
+## S4a. An exact resolvent gate for the old continuous radial law
+
+The next object can be specified without guessing the spectral type.
+Fix the actual self-adjoint Rbar and a faithful trace-one density
+tau_* = sum 2^-j |e_j><e_j|. Let nu_*(B)=Tr(tau_* E_Rbar(B)) and
+\[
+ p_\epsilon(\lambda)={1\over\pi}\operatorname{Im}
+     \operatorname{Tr}\big[\tau_*(\overline R-\lambda-i\epsilon)^{-1}\big]
+   =\int{\epsilon\over\pi[(x-\lambda)^2+\epsilon^2]}\,d\nu_*(x).
+                                                               \tag{S9}
+\]
+The Poisson/Herglotz boundary theorem gives, for Lebesgue-almost every
+lambda, p(lambda)=lim_(epsilon down 0)p_epsilon(lambda)
+=d(nu_*)_ac/dlambda. See Gesztesy--Tsekanovskii, Theorem 2.2(v), Eq.(2.17),
+https://arxiv.org/pdf/funct-an/9712004. For the old smooth density
+mu_old=f_old dlambda, S8 is exactly
+\[
+ f_{\rm old}=0\quad\hbox{a.e. on }\{p=0\},\qquad
+ q_{\rm TV,min}=\int_{\{p=0\}} f_{\rm old}(\lambda)\,d\lambda .
+                                                               \tag{S10}
+\]
+The singular part of nu_* is supported on a Lebesgue-null set and cannot
+carry a nonzero part of this absolutely continuous target. On {p>0},
+f_old/p is the Radon--Nikodym density, which proves both assertions
+using S8 and its total-variation frontier.
+
+Every finite epsilon gives p_epsilon>0 everywhere. This is not the
+acceptance test: a single point mass at lambda0 gives that positivity
+for every epsilon while its limiting p vanishes almost everywhere.
+A finite mesh or finite broadening by itself cannot certify S10.
+
+One concrete sufficient construction is available if an actual vector
+psi has a boundary density p_psi>0 mu_old-almost everywhere. Put
+F(lambda)=sqrt(f_old(lambda)/p_psi(lambda)) on that support and zero
+elsewhere. Then
+\[
+                  \xi=F(\overline R)P_{\rm ac}\psi
+\]
+is well defined with norm squared integral f_old=1 and has the exact
+radial law mu_old. The potentially unbounded functional calculus is
+legitimate on this vector by that same norm integral. This does not
+assume an arbitrary psi covers the faithful spectrum; psi and its
+boundary density must actually be supplied. The mixed construction in
+S8 remains valid without choosing a cyclic vector. Neither construction
+automatically gives raw-stress/Q domains, the old N2 conditional
+coherence, a Hadamard joint state or acceptable geometric moments.
+
+## S4b. Why existing extension freedom does not pass the gate
+
+Infinite deficiency indices, two-sided unbounded spectrum and a
+conjugation symmetry do not fix a spectral measure. An explicit
+diagnostic is S=-i partial_t on
+L2((0,2pi)_t) tensor L2((0,1)_y), with H0^1 in t as its domain.
+Both deficiency spaces are infinite. The compact core has arbitrarily
+positive and negative expectations, and
+(Jf)(t,y)=overline(f(2pi-t,y)) commutes with S.
+
+The periodic extension f(2pi,y)=f(0,y) has pure point spectrum Z with
+infinite multiplicity. The equally self-adjoint extension
+f(2pi,y)=exp(2pi i y)f(0,y), after f=exp(i y t)g, becomes
+-i partial_t+y on the periodic domain. Its spectral representation is
+the direct sum of multiplication by n+y, n in Z; it has purely
+absolutely continuous spectrum all R. Both domains are J invariant.
+This example is a diagnostic, not a replacement operator for Rbar.
+
+General results constructing chosen spectra by extension also require
+a gap/regularity hypothesis on the underlying symmetric operator.
+The required lower norm bound on the current target intervals has not
+been proved for Rbar0. See Michelangeli, Section 1 Eq.(1.1),
+https://arxiv.org/pdf/2304.02579, and Albeverio et al., Section 1,
+https://web.ma.utexas.edu/mp_arc/c/04/04-177.pdf.
+Their hypotheses cannot be supplied solely by n_+=n_-=infinity.
+
+The next admissible construction must therefore specify a genuine
+self-adjoint domain containing the original whole-kappa smooth core,
+then compute S9 on the two fixed old radial intervals. Its full
+adjoint boundary form must be controlled, including any kappa/source
+infinity contributions. Imposing a kappa=0 hard wall and taking a
+half-line Friedrichs domain generally removes original core functions
+crossing zero; that solves a different minimal operator and cannot
+silently select this Rbar extension. The physical CTP/initial-density
+rule choosing the domain still remains to be constructed.
+
+
+For a direct rejection of the simplest attempted shortcut, the raw
+whole-kappa principal part is (a²/g)(partial_kappa-i A_K)².
+Kappa=0 is an interior point with nonzero second-order coefficient.
+A smooth positive-half-line function with value zero but nonzero
+derivative at zero, extended by zero, produces
+(a²/g)phi_+'(0) delta(kappa) under this operator.
+It is not in the original whole-line adjoint L2 graph domain.
+For piecewise smooth candidates, continuity of the function and its
+covariant derivative removes the delta-prime and delta terms.
+This is a concrete rejection of zero extension, not a complete trace
+classification of the maximal adjoint domain.
+
 ## S5. The next physical recovery object
 
 Choose an extension from an actual boundary/CTP preparation rule and

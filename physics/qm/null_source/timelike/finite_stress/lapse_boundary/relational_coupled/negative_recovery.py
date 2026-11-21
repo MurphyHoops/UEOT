@@ -41,6 +41,26 @@ require(below(3*iv.exp(60)*h*h+iv.mpf(".02")*iv.exp(60)*h**8/60000+iv.mpf(".0004
 require(below(3*iv.exp(60)*h*h+iv.exp(30)*h**4+h**6,1),"Strict low-packet sign budget")
 require(below(h**6+iv.mpf(".02")*iv.exp(160)*h**3,iv.mpf(".4")),"Large-tail necessary lower resource margin")
 require(below((-g)*iv.exp(-2316)*h*h/2,1),"Phase-corrected initial jet stays within IVT margin")
+
+require(s.simplify((1-w)*2/hh+w/RR-(2/hh-1/RR))==0,"Exact two-packet inverse-moment witness")
+ss=s.symbols("dilation_parameter",positive=True)
+require(s.simplify((1-s.exp(-2*ss))*s.exp(2*ss)-(s.exp(2*ss)-1))==0,"Two equivalent bounded dilation commutators")
+require(below(h,1),"For R>=1 the inverse moment differs strictly from old 1/h")
+
+
+# A fixed bounded radial-flow observable compresses the actual source jet.
+Eshift,sflow,center,width,phase=s.symbols("Eshift sflow center width phase",real=True)
+psi=s.Function("radial_profile")
+require(s.simplify(Eshift*psi(Eshift-sflow)-(Eshift-sflow)*psi(Eshift-sflow)-sflow*psi(Eshift-sflow))==0,"Exact energy-translation commutator on support")
+require(s.simplify(s.exp(-s.I*phase*Eshift)*s.exp(s.I*phase*(Eshift-sflow))-s.exp(-s.I*phase*sflow))==0,"Common finite-slice phase compression")
+kap=s.symbols("positive_kappa",positive=True)
+require(s.simplify((kap-hh)**2/kap-(kap-2*hh+hh**2/kap))==0,"Exact Jensen defect before taking mean kappa=h")
+e2=box(bs["minimum_zero_energy_center"]);sig=box(bs["example_sigma"])
+require(above(e2-2*sig),"A compact radial flow exists away from energy zero")
+require(above(iv.exp(-iv.mpf(2)/3)/4),"Strict actual bump overlap for s=sigma/2")
+
+invmean,invsecond,commnorm=s.symbols("invmean invsecond commnorm",real=True)
+require(s.expand(2*invmean**2*commnorm-2*invsecond*commnorm+2*(invsecond-invmean**2)*commnorm)==0,"Product-source purity curvature")
 finish("negative_recovery.py",dict(
  actual_K=K,real_nonzero_mode_count=d,occupation_support_norm_bounds={str(n):M[n] for n in M},
  raw_source_cube_integer_bound=product,raw_source_cube_log_upper=160,
@@ -60,6 +80,28 @@ finish("negative_recovery.py",dict(
  one_initial_expansion_u_derivative_can_also_be_matched=True,
  initial_phase="exp(i*g*hprime_eta/h*kappa^2/2)",
  raw_Hrel_strong_domain_transport_used_for_Ehrenfest=False,
+ two_packet_family_full_old_raw_source_history="REJECTED by bounded dilation first derivative",
+ bounded_Hermitian_source_witness="sin(s D0) for an explicit sufficiently small nonzero s",
+ witness_implies_every_mean_RSET_component_differs=False,
+ two_packet_dilation_rejection_alone_extended_to_all_entangled_source_extensions=False,
+ exact_fixed_raw_source_first_jet_recovery="REJECTED for positive-kappa finite-form normal u-clock joint states",
+ fixed_source_first_jet_rejection_allows_entanglement=True,
+ fixed_source_first_jet_rejection_independent_of_g_sign=True,
+ fixed_radial_flow_shift="sigma/2",
+ radial_flow_overlap_lower=outward(iv.exp(-iv.mpf(2)/3)/4),
+ exact_relative_source_derivative_excess="h*<kappa^-1>-1 = <(kappa-h)^2/(h*kappa)> > 0",
+ uniform_positive_error_floor_for_all_normal_states=False,
+ free_source_general_normal_first_jet_obstruction=True,
+ general_obstruction_requires_positive_kappa_u_clock_and_finite_common_form=True,
+ original_free_source_has_no_point_spectrum=True,
+ weighted_source_density_defined_by_Hilbert_Schmidt_sandwich=True,
+ general_obstruction_is_mean_RSET_no_go=False,
+ thin_fixed_marginal_initial_trace_distance_linear_lower=True,
+ two_packet_product_source_purity_second_derivative_strictly_negative=True,
+ product_purity_result_extended_to_all_initial_entanglement=False,
+ source_trace_distance_bounds_are_state_dependent_initial_asymptotics=True,
+ nonzero_uniform_time_radius_or_experimental_error_claimed=False,
+ arbitrary_nonadditive_device_or_other_clock_excluded=False,
  full_old_mean_history_recovered=False,semiclassical_geometry_recovered=False,
  autonomous_preparation_constructed=False,source_cube_is_renormalized_continuum_energy=False),
  [new+"coefficient_window.json",new+"geometric_momentum.json",new+"source_budgets.json",

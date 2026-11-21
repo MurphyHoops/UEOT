@@ -249,3 +249,107 @@ low zero/k2、gravity、U0 和完整有限 anomaly 项相同，差严格为
 
 任意 lapse/tensor 变分和有限初片混合块、联合几何—源传播子与正常态的
 全场极限、有限幅影响泛函余项、G_K→G_U、装置/控制器及实验桥仍开放。
+
+
+## U8. A weak Sobolev tail on the actual inverse input class
+
+The C_c³ bound U7 is insufficient for the existing pressure inverse:
+X consists of H4 functions with initial derivatives 0 through 3,
+and D_Uw is in H2, not necessarily C³. There is nevertheless a direct
+weaker estimate on that input class, without imposing a fifth derivative.
+
+Let Y=L2(I,e^(-2gamma t)dt), gamma=24A, and let f be in H2 with
+f(0)=f'(0)=0, extended causally by zero to the past.
+Two integrations by parts in U6 leave
+-iA(t)/(2omega)+A'(t)/(4omega²)
+-minus the integral of A''/(4omega²).
+The local amplitude and imaginary A' errors are bounded per shell by
+D(3/8+18mu)k^-3 ||f||Y.
+The remainder uses
+|A''|<=16|f''|+128mu|f'|/omega+256mu|f|/omega.
+Weighted causal integration has norm at most 1/gamma.
+Finally sum_(k>K)k²/omega^4<2/K and
+sum_(k>K)k²/omega^5<3/(2K²). Therefore
+\[
+ \begin{split}
+ \|(R_\infty^{AE}-R_K^{AE})f\|_Y\le{}&
+ {4\over\gamma K}\|f''\|_Y+
+ {24\mu\over\gamma K^2}\|f'\|_Y\\
+ &+\left\{{9/16+27\mu\over K^2}
+                 +{48\mu\over\gamma K^2}\right\}\|f\|_Y .
+ \end{split}                                                   \tag{U14}
+\]
+First prove on smooth causal tests and extend in H2 by these uniform
+bounds; no oscillatory-kernel pointwise summation is used.
+
+For w in X, f=D_Uw has exactly those two initial zero traces. The
+finite-window inequalities of ACTUAL_INVERSE I2 and |h^(j)|<=epsilon
+give, writing ||w||X=||w^(4)||Y,
+\[
+ \|f''\|_Y\le(1+2\epsilon/\gamma+4\epsilon/\gamma^2+
+                       2\epsilon/\gamma^3)\|w\|_X,
+\]
+\[
+ \|f'\|_Y\le(\gamma^{-1}+2\epsilon\gamma^{-2}
+                   +2\epsilon\gamma^{-3})\|w\|_X,\quad
+ \|f\|_Y\le(\gamma^{-2}+2\epsilon\gamma^{-3})\|w\|_X .
+\]
+Let Z be terminal-zero H2 tests with z(T)=z'(T)=0 and norm
+||z||Z=||z''||_(L2,+gamma). Then
+||D_Uz||_(+gamma)<=(1+2epsilon/gamma)||z||Z and
+||z'||_(+gamma)<=||z||Z/gamma.
+Define the retarded weak row by its causal distributional pairing,
+equivalently integral (D_Uz) R_tail(D_Uw)
++2 integral z' Q_tail w'. This definition retains the zero-past
+distribution at the initial endpoint; it does not assume an extra
+strong trace for the limiting R_tail f.
+U10 and U14 yield
+\[
+ \|{\cal H}_{U,\infty}-{\cal H}_{U,K}\|_{X\to Z^*}
+ \le(1+2\epsilon/\gamma)\,[c_2 A_2+c_1 A_1+c_0 A_0]
+                       +{2m_K\over\gamma^2}=O(K^{-1}),           \tag{U15}
+\]
+where c_j are the three coefficients of U14 and A_j the three bounds
+just displayed. This is a weak action-row norm, not the Y output norm
+required for the old inverse theorem.
+
+## U9. The inverse frontier and the finite-cutoff off-shell identity
+
+Neither U7 nor U15 proves G_K to G_U convergence. Left multiplication
+by D_U-adjoint lowers regularity, and the full static row has a
+D4 log(D) part while each fixed finite-K static row has a finite
+fourth-order leading coefficient. The difference is not a bounded
+small map H4 to L2. Even on the full graph domain, its composition with
+the full inverse need not tend to zero in operator norm: at fixed K
+and arbitrarily high frequency the full logarithm dominates.
+A Neumann argument using such a small-difference premise is unavailable.
+
+A separate resolvent estimate must retain the fast poles and show
+appropriate uniform control in a common right half-plane, or provide
+another valid stable topology for the inverses. The previously proved
+G_U is a direct full-field construction; its existence alone does not
+establish convergence of a sequence of finite-K inverses.
+
+There is also an exact off-shell term before comparing pressure and
+action inverses. On the fixed full-field background U, finite-K mean
+residuals E_K,S_K generally do not vanish. The same Ward identity is
+E_K'=h(2S_K-E_K). Varying with a zero-past w gives
+\[
+ e_K'+he_K=2h s_K+w'(2S_K-E_K).
+\]
+Using Gamma_u=3V0 a²(S_K+E_K/2) therefore gives
+\[
+ \widehat{\cal H}_K w=M_U L_{\mathrm{pressure},K}w
+ +e^{2U}(2S_K+E_K)w
+ +{e^U\over2}\int_0^t e^{U(s)}w'(s)(2S_K(s)-E_K(s))\,ds .
+                                                               \tag{U16}
+\]
+Here M_U is the frozen full-history Ward map, and initial perturbation
+traces are zero. U16 does not set the finite-K residuals to zero.
+Their required norms and the uniform inverse estimate must be checked
+in the next convergence test. This page does not claim a new bound for
+all of those residual norms from its C1 Q-tail alone.
+
+### 本轮随后关闭的逆门
+
+本页单独的平滑/弱尾仍不足以推出逆收敛。随后 ACTUAL_CUTOFF_INVERSE.md 另行完成了所需统一resolvent估计、actual-minus-static强比较和off-shell修正，关闭声明prepared域中的retarded强逆收敛。其证明不使用本页已指出无效的裸H4小差假设。

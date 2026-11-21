@@ -12,7 +12,7 @@ NEW=PREFIX+"finite_stress/lapse_boundary/relational_coupled/"
 PARENT=PREFIX+"finite_stress/lapse_boundary/verification.json"
 WORKFLOW=".github/workflows/ueot-physics-source-response.yml"
 ROUTES=[WORKFLOW,"physics/qm/README.md","physics/qm/ROADMAP.md",PREFIX+"README.md"]
-ENTRIES=['coefficient_window', 'coupled_forms', 'snapshot_domain', 'physical_slice', 'ordering_domain', 'lens_evolution', 'source_budgets', 'mean_recovery', 'preparation_frontier', 'cutoff_gate', 'all_sign_evolution', 'geometric_momentum', 'shifted_state', 'g_zero_boundary', 'boundary_matching', 'matter_clock', 'angular_clock_input', 'symmetric_clock', 'raw_source_boundary', 'negative_recovery', 'actual_uv_bridge', 'review']
+ENTRIES=['coefficient_window', 'coupled_forms', 'snapshot_domain', 'physical_slice', 'ordering_domain', 'lens_evolution', 'source_budgets', 'mean_recovery', 'preparation_frontier', 'cutoff_gate', 'all_sign_evolution', 'geometric_momentum', 'shifted_state', 'g_zero_boundary', 'boundary_matching', 'matter_clock', 'angular_clock_input', 'symmetric_clock', 'raw_source_boundary', 'negative_recovery', 'actual_uv_bridge', 'actual_cutoff_inverse', 'review']
 VERSIONS={"numpy":"2.5.4","scipy":"1.18.1","sympy":"1.14.0","mpmath":"1.3.0"}
 def require(ok,msg):
     if not ok:raise RuntimeError(msg)
@@ -107,10 +107,13 @@ def main():
         "finite_K_original_snapshot_selfadjoint_realization":True,
         "clock_patch_normal_physical_slice_state":True,
         "positive_branch_old_pure_geometry_budget_recovery":"REJECTED in stated quantization",
+        "exact_old_raw_source_history_positive_kappa_finite_form":"REJECTED",
         "full_same_mean_history_recovery":"OPEN","full_field_limit":"OPEN",
         "all_nonzero_g_finite_K_weak_unitary_evolution":True,
         "positive_confining_covariant_geometry_domain_transport":True,
         "actual_common_cutoff_quadratic_CTP_weak_u_u_bridge":True,
+        "actual_prepared_retarded_cutoff_inverse_strong_limit":True,
+        "pressure_cutoff_threshold_numerically_certified":False,
         "g_zero_complete_finite_K_scattering":True,
         "finite_K_raw_source_boundary_stress_covariances":True,
         "negative_same_raw_source_controlled_geometry_recovery":"REJECTED",

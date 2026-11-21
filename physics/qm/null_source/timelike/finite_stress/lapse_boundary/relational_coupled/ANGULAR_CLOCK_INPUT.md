@@ -108,6 +108,12 @@ It does show that the directed momentum and preserved thin energy law
 by themselves do not supply a precise reading of the current window.
 A full instrument, apparatus energy and backreaction remain to be
 derived from their action.
+The same A3 bound holds for any normal incoming source with the same
+energy variance, nonzero mean P1 and the stated finite moments and
+commutator domain. It does not require the particular angular bump,
+purity or radial/angular factorization. It remains a bound on this
+single field-value mean-drift calibration, not on every clock POVM.
+
 
 ## A4. Homogeneous influence, a Gaussian restriction and local preparation
 

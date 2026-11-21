@@ -55,6 +55,31 @@ for K in [65536,131072]:
   noise_tail_by_m=[outward(x) for x in Ntail],
   quadratic_CTP_tail_m3=outward(Rtail+Ntail[2]/2),
   GNS_L2_squared_tail_m3=outward(Mtail*Mtail+Ntail[2])))
+
+# Weighted H2 response tail and exact metric/pressure off-shell algebra.
+require(2*s.Rational(16,9)<4,"Second-derivative Sobolev tail coefficient")
+require(16*s.Rational(3,2)==24 and 32*s.Rational(3,2)==48,"First/zeroth Sobolev coefficients")
+require(s.Rational(3,2)*s.Rational(3,8)==s.Rational(9,16) and s.Rational(3,2)*18==27,"Local Sobolev coefficient")
+ww=s.Function("w")(t);hh=s.Function("h")(t)
+require(s.simplify(s.diff(s.diff(ww,t,2)+2*hh*s.diff(ww,t),t,2)-(s.diff(ww,t,4)+2*hh*s.diff(ww,t,3)+4*s.diff(hh,t)*s.diff(ww,t,2)+2*s.diff(hh,t,2)*s.diff(ww,t)))==0,"No fifth derivative in actual H2 input")
+U,EE,SS,ss,ee,ww0,Int_s,Int_def=s.symbols("U E S svar evar w0 Int_s Int_def",real=True)
+efromward=2*s.exp(-U)*Int_s+s.exp(-U)*Int_def
+action=s.exp(2*U)*(ss+ee/2+2*ww0*(SS+EE/2))
+pressure=s.exp(2*U)*ss+s.exp(U)*Int_s
+off=s.exp(2*U)*(2*SS+EE)*ww0+s.exp(U)*Int_def/2
+require(s.simplify(action.subs(ee,efromward)-pressure-off)==0,"Finite-K off-shell action-pressure identity")
+co=load(new+"coefficient_window.json");AA=box(co["frozen_A"]);gamma=24*AA;small=iv.exp(-1158)
+weak_rows=[]
+for KK in [65536,131072]:
+ c2=4/(gamma*KK);c1=24*mu/(gamma*KK*KK)
+ c0=(iv.mpf(9)/16+27*mu)/(KK*KK)+48*mu/(gamma*KK*KK)
+ A2=1+2*small/gamma+4*small/gamma**2+2*small/gamma**3
+ A1=1/gamma+2*small/gamma**2+2*small/gamma**3
+ A0=1/gamma**2+2*small/gamma**3
+ mtail=D*(iv.mpf(3)/16+3*mu/8)/(2*KK*KK)+64*mu/(3*KK)
+ bound=(1+2*small/gamma)*(c2*A2+c1*A1+c0*A0)+2*mtail/gamma**2
+ weak_rows.append(dict(K=KK,weak_X_to_terminal_H2_dual_tail=outward(bound)))
+
 finish("actual_uv_bridge.py",dict(
  same_actual_background_and_incoming_state=True,same_AE_finite_cutoff_sequence=True,
  same_reference_k1_contact_retained=True,NOON_low_block_and_metric_cross_correlations_retained=True,
@@ -63,7 +88,10 @@ finish("actual_uv_bridge.py",dict(
  same_state_ordered_kernel_positive=True,GNS_L2_cutoff_limit_on_declared_state=True,
  actual_fixed_conformal_lapse_u_u_weak_Hessian_contact_tail=True,
  illustration_test_norms="Each displayed L1 and sup derivative norm <=1; Delta L1<=1 for CTP illustration",
- illustrative_bounds=rows,
+ illustrative_bounds=rows,weak_Sobolev_bounds=weak_rows,
+ actual_H2_to_Y_response_tail=True,actual_H4_to_terminal_H2_dual_action_tail=True,
+ finite_K_off_shell_action_pressure_terms_retained=True,
+ strong_inverse_convergence_not_implied_by_weak_tail=True,
  fullfield_kernel_existence_reused_not_new=True,old_mode_or_geometry_ODE_executed=False,
  finite_K_backgrounds_individually_mean_solutions_asserted=False,
  finite_amplitude_influence_limit_proved=False,arbitrary_lapse_tensor_Hessian_limit_proved=False,
@@ -71,4 +99,4 @@ finish("actual_uv_bridge.py",dict(
  quantum_geometry_joint_state_propagator_continuum_limit_proved=False),
  [base+"ACTUAL_INVERSE.md",base+"actual_inverse.json",base+"ACTION_RESPONSE.md",
  base+"TENSOR_NOISE.md",base+"QUIET_WINDOW.md",base+"quiet_window.json",
- pre+"nonlinear_history/KERNELS.md",new+"cutoff_gate.json"],proof="ACTUAL_UV_BRIDGE.md")
+ pre+"nonlinear_history/KERNELS.md",new+"cutoff_gate.json",new+"coefficient_window.json"],proof="ACTUAL_UV_BRIDGE.md")

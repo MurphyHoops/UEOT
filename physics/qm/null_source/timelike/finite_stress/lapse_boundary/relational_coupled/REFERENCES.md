@@ -81,3 +81,20 @@ group-average equivalence merely from a classical constraint rescaling.
   and Eq.(3.23), including the nonselective/selected distinction.
   ANGULAR_CLOCK_INPUT applies this only to the complete local QFT
   on the prescribed geometry, not to a sharp finite-K model.
+
+
+## Additional spectral recovery references inspected in this turn
+
+- Gesztesy and Tsekanovskii, *On Matrix-Valued Herglotz Functions*,
+  https://arxiv.org/pdf/funct-an/9712004, Section 2 Theorem 2.2(v),
+  Eq.(2.17): boundary imaginary part gives the absolutely continuous
+  spectral density. Used only for the scalar faithful-resolvent gate.
+- Michelangeli, *On Creating New Essential Spectrum by Self-Adjoint
+  Extension of Gapped Operators*, https://arxiv.org/pdf/2304.02579,
+  Section 1 Eq.(1.1): the gap hypothesis must actually hold before
+  an extension spectrum construction is applicable.
+- Albeverio, Brasche, Malamud and Neidhardt,
+  *Inverse Spectral Theory for Symmetric Operators with Several Gaps*,
+  https://web.ma.utexas.edu/mp_arc/c/04/04-177.pdf, Section 1:
+  the extension theorem's gap/Weyl assumptions and multi-gap limits.
+  These references do not determine the current Rbar spectral measure.

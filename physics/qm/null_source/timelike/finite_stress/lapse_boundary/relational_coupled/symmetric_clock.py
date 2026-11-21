@@ -24,6 +24,14 @@ A=box(co["frozen_A"]);sig=box(bs["example_sigma"]);e2=box(bs["minimum_zero_energ
 e0=e2+2*iv.sqrt(3)/A
 support=interval((2*A**3*(e2-sig)).a,(2*A**3*(e0+sig)).b)
 require(above(support), "Old thin radial target is positive and nondegenerate")
+
+# A finite broadening is not evidence of an absolutely continuous law.
+delta,epsilon=s.symbols("delta epsilon",positive=True)
+poisson=epsilon/(s.pi*(delta*delta+epsilon*epsilon))
+require(s.limit(poisson,epsilon,0,dir="+")==0,"Atomic resolvent is positive at finite epsilon but zero a.e. at the boundary")
+tt,yy=s.symbols("tt yy",real=True);gg=s.Function("gg")(tt)
+require(s.simplify(s.exp(-s.I*yy*tt)*(-s.I*s.diff(s.exp(s.I*yy*tt)*gg,tt))-(-s.I*s.diff(gg,tt)+yy*gg))==0,"Twisted-boundary diagnostic spectral transform")
+
 finish("symmetric_clock.py",dict(
  same_original_two_zero_mode_momenta=True,
  chosen_extension_family_preserves_zero_translations_and_O2=True,
@@ -42,6 +50,9 @@ finish("symmetric_clock.py",dict(
  restricted_RT_maximal_type="equivalent to Lebesgue",
  any_prescribed_nonempty_positive_clock_band_exists=True,
  old_total_radial_law_not_deduced_from_single_clock_ac=True,
+ old_radial_resolvent_acceptance="lim epsilon->0 Poisson density positive mu_old-almost everywhere",
+ finite_epsilon_positive_density_is_sufficient=False,
+ zero_extended_half_line_clock_is_whole_kappa_extension=False,
  selected_Rbar_spectral_type_calculated=False,
  old_N2_conditional_law_and_complete_source_recovered=False,
  old_geometry_moments_or_mean_history_recovered=False,

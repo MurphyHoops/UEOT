@@ -1,4 +1,4 @@
-# Negative-g recovery: a controlled-tail rejection and a normal large-tail example
+# Geometric recovery, normal examples and an exact fixed-source history obstruction
 
 This returns to the actual old-source recovery question. The branch is
 the actual K=131072 member of the same homogeneous action, fixed
@@ -244,3 +244,331 @@ variance bounds still apply. This is not recovery of the old positive-
 time history: the canonical P_kappa includes, among other terms,
 -H_K<kappa²>/4, whose large-tail value has not been matched, and the
 remaining geometric jets and state preparation still require a proof.
+
+
+## N7. A bounded source record rejects this candidate's full old source history
+
+Matching the preceding three geometric data still does not reproduce
+the old complete raw source evolution. This can be tested directly,
+without using the large variance as a proxy for history mismatch.
+
+Let D0=sum_j{phi_j,P_j}/2 be the original two-zero-mode dilation and
+V_s=exp(i s D0). It is bounded and unitary, and
+\[
+ V_sP^2V_s^\dagger=e^{-2s}P^2,\qquad
+ [P^2,V_s]=(1-e^{-2s})P^2V_s .
+\]
+Under the raw-phi, W, R0 and T_a identifications this is the same
+observable: the extra matter transformations are dilations commuting
+with D0, and the remaining phase is geometric. V_s and its adjoint
+preserve the common weak-energy form domain: zero momentum only scales
+by a finite constant, so lambda0³ remains equivalent, while the
+geometric form is unchanged. The commutator form is controlled by the
+existing lambda0/kappa estimate. The Lions pairing therefore supplies
+a continuously differentiable bounded-record expectation. It does not
+require strong-domain transport of the unbounded D0.
+
+The original raw-phi initial state of N4/N6 is a geometry/source product,
+with exactly the old raw source density sigma. Define
+I=<kappa^-1> and M_s=Tr(sigma P²V_s). The zero-mode part of the original
+u-clock Hamiltonian is P²/(2a² kappa). All its other terms commute
+with V_s, so at the common initial a=A,
+\[
+ F_{\rm joint}'(0)={i(1-e^{-2s})\over2A^2}\,I M_s,\qquad
+ F_{\rm old}'(0)={i(1-e^{-2s})\over2A^2h}\,M_s .             \tag{N8}
+\]
+Prime here means the u derivative. The second formula is the actual
+prescribed old source history, with du/deta=h. There is no resetting
+of source annuli or replacement of h by an independently selected value.
+
+The source support vectors are Schwartz, so M_s tends to
+M0=Tr(sigma P²)>0 as s tends to zero. One can specify a nonzero witness:
+for the actual spectral decomposition sigma=sum_j p_j|psi_j><psi_j|,
+let C=sum_j p_j||P²psi_j|| ||D0psi_j||<infinity.
+Then |M_s-M0|<=|s|C. Any
+0<s<min{1,M0/[2(C+M0)]} has Re M_s>M0/2.
+The bounded self-adjoint source observable sin(sD0) consequently has
+a strictly different initial derivative in the two histories.
+
+For the two geometric packets Jensen's inequality gives exactly
+\[
+ I\ge(1-w){2\over h}+{w\over R}
+       ={2\over h}-{1\over R}>{1\over h}.                  \tag{N9}
+\]
+The quadratic phase in N6 does not change this inverse moment or the
+raw source factorization. Thus N8 differs for every once-selected
+root in this family. These normal candidates cannot reproduce the old
+complete raw-source history on any positive interval starting at the
+matched slice, even after the initial expansion derivative is repaired.
+
+This rejects this specific preparation family as a full-history
+recovery. It does not reject all normal entangled extensions with that
+source marginal. The bounded witness is not by itself proof that each
+mean-RSET component differs, and it is not a calibrated physical
+instrument; an apparatus action and its stress are still absent.
+
+
+## N8. Exact fixed-source first-jet obstruction for every allowed joint extension
+
+The preceding product-state rejection can be strengthened using the
+actual source support. Fix any finite K, a nonzero-g u-clock patch,
+positive kappa, the declared eta>=-1/4 Friedrichs choice, and a normal
+joint physical-slice density with finite common comparison-form energy.
+Require its complete original-phi source marginal to be the current
+rho_phi,old and <kappa>=h>0 at a=A. Arbitrary geometry/source entanglement
+is allowed. This uses the physical-slice density with its already
+derived raw-variable transport, not a flat kinematic zero eigenvector.
+
+### The actual bounded source observable
+
+Set E=(P1²+P2²)/(2A³). The two-dimensional radial measure is
+r dr=A³ dE. Absorb this constant into the radial unitary identification.
+The actual source support vectors have the form
+\[
+ \psi_N(E,\theta,\mathrm{osc})
+ =\sigma^{-1/2}w((E-e_N)/\sigma)
+       e^{i\Theta E+i\gamma_N}u_0(\theta)\xi_N,\quad N=0,2.
+ \tag{N10}
+\]
+BOUNDARY_STATE (67),(68) fix w and the centers once. Common finite-slice
+transport gives the same real phase slope Theta=-A³ I_i in both
+branches; the transported oscillator vectors xi_0,xi_2 remain orthogonal.
+Let P_M project onto their rank-two span. The old zero/shell correlation
+and the branch probabilities are retained.
+
+Choose a real Cc-infinity vector field v(E) on (0,infinity), equal to one
+on [e2-2sigma,e0+2sigma] and zero near zero and infinity. That interval
+is positive for the actual frozen input. Its complete flow Phi_s defines
+a unitary on the same radial source Hilbert space,
+\[
+ (V_s f)(E)=\sqrt{\partial_E\Phi_{-s}(E)}\,f(\Phi_{-s}(E)).
+\]
+For 0<s<sigma the two source supports and their shifted images stay in
+the unit-speed region, so V_s psi_N(E)=psi_N(E-s). This is a bounded
+observable construction, not a physical gate or an everywhere
+self-adjoint variable conjugate to a semibounded energy.
+
+Define j(s)=integral w(z)w(z-s/sigma)dz. The actual bump is positive on
+(-1,1), so j(s)>0 for 0<s<sigma. Orthogonality of xi_0,xi_2 and the common
+phase give
+\[
+ P_MV_sP_M=e^{-i\Theta s}j(s)P_M.
+\]
+At the initial slice the original raw conformal source Hamiltonian is
+Hraw=A E+Hosc. It commutes with V_s in the oscillator part, and
+[E,V_s]psi_N=s V_spsi_N. Thus the self-adjoint bounded record
+\[
+ B_s={e^{i\Theta s}V_s-e^{-i\Theta s}V_s^\dagger\over2i},
+ \qquad\|B_s\|\le1
+\]
+satisfies the exact compression
+\[
+       P_M\,i[H_{\rm raw},B_s]\,P_M
+                  =A s j(s)P_M=:c_sP_M,\qquad c_s>0.       \tag{N11}
+\]
+Fix s=sigma/2 once. For the displayed normalized bump, an optional
+explicit bound follows on z in [0,1/2]:
+j(sigma/2)>=w(1/2)²/2>=exp(-2/3)/4>0.
+Normalization cancels the overall exp(-1) in the original bump.
+
+The global flow has bounded energy displacement, hence preserves all
+fixed zero-energy polynomial weights and lambda0³ up to finite
+equivalence. It commutes with the geometry and nonzero oscillators.
+The T_a and zero-mode R0 dilations cancel in the original Noether
+momenta, leaving fixed reference momenta in the W/R0 representation.
+Consequently this observable is constant in that representation;
+there is no omitted time-dependent-observable term.
+B_s preserves the common form domain and its form commutator is
+controlled by the existing source-energy/kappa and inverse-kappa
+bounds. The Lions product rule gives a genuine C1 expectation,
+including for normal densities of finite comparison-form energy.
+One does not assume transport of an unbounded Q0 domain or of the
+original raw Hamiltonian's strong operator domain.
+
+### Joint entanglement cannot remove this particular initial discrepancy
+
+Positivity and the exact source marginal imply
+rho=(I tensor P_M)rho(I tensor P_M). Every non-source term of the
+original u-clock Hamiltonian commutes with B_s. The source term is
+Hraw/kappa, so N11 gives for every such joint state
+\[
+ {d\langle B_s\rangle_{\rm joint}\over du}\bigg|_i=c_s I,
+ \quad I=\langle\kappa^{-1}\rangle .
+\]
+The actual old prescribed source, with the same u and du/deta=h,
+instead gives c_s/h. The finite-form hypothesis makes I finite.
+Using <kappa>=h,
+\[
+ I-{1\over h}={\langle(\kappa-h)^2/\kappa\rangle\over h^2}>0,
+ \qquad
+ {\partial_u\langle B_s\rangle_{\rm joint}\over
+  \partial_u\langle B_s\rangle_{\rm old}}-1
+      =hI-1={\langle(\kappa-h)^2/(h\kappa)\rangle}>0.         \tag{N12}
+\]
+Strictness follows because a normal geometry marginal on the positive
+kappa multiplication representation cannot have support on the
+singleton kappa=h. The weighted raw-variable gluing does not create
+such a spectral projection.
+
+Therefore the unchanged complete raw source marginal and the old
+expansion mean cannot extend to the identical complete old raw-source
+history on a positive u interval in this stated quantum class.
+This result does not depend on the sign of g or on the two-packet ansatz.
+It is a first-derivative obstruction for an actual bounded source
+record, derived from the same action and the actual thin-state support.
+
+There is no common positive error floor for all normal states:
+narrow normal geometry families may make hI-1 approach zero, subject
+to the other geometric momentum and domain/resource conditions.
+For N4/N6's two packets, the stronger numerical ratio
+hI-1>=1-h/R follows from N9 and is close to one.
+The angularly directed rho_g has the same two translated radial
+profiles and common phase, so the same conclusion applies if its
+complete marginal and its own prescribed-history target are held fixed.
+
+This is not a no-go for physical unification, a changed source
+preparation, a different mean-history target, the signed-kappa
+matter-clock quantization, or states outside the declared finite-form
+contract. It is also not proof that every mean-RSET component differs.
+No apparatus implementing B_s has been constructed.
+
+
+## N9. The underlying obstruction for an arbitrary normal free source
+
+There is a broader structural statement in the same selected model.
+It removes the special thin/rank-two assumption but retains positive
+kappa, the u-clock, normal physical-slice states, finite comparison-form
+energy, finite <kappa>=h, and the original free raw separation
+Hrel=H_geometry+Hs(a)/kappa. It addresses equality of the complete
+source first jet, not merely mean stress.
+
+Let sigma=Tr_geometry rho. Define the positive trace-class weighted
+source density without an unbounded cyclic trace:
+\[
+ X=(\kappa^{-1/2}\otimes I)\rho^{1/2},\qquad
+ \tau=\operatorname{Tr}_{\rm geometry}(XX^\dagger),\qquad
+ \operatorname{Tr}\tau=I=\langle\kappa^{-1}\rangle .
+ \tag{N13}
+\]
+Finite I makes X Hilbert--Schmidt. For every bounded source rank-one
+O=|f><g| with f,g Schwartz, [Hs,O] extends to a bounded finite-rank
+operator. The raw source weak first derivative is
+Tr tau i[Hs,O]. Under the W/R0/T_a identification O(u) is a C1
+finite-rank family with Schwartz vectors, preserving the common form
+domain. Its explicit derivative cancels the source dilation term in
+the transformed generator. The Lions product rule thus gives precisely
+this raw expression; no assertion that the entire reduced-density
+curve is trace-norm C1 is necessary.
+
+If all these source-record derivatives equal evolution of the same
+sigma on the prescribed classical history with expansion h, then the
+self-adjoint trace-class operator K=tau-sigma/h obeys
+\[
+             \operatorname{Tr}K\,i[H_s,O]=0
+\]
+for every such rank-one O. Equivalently,
+<g,K Hs f>=<Hs g,Kf> on the Schwartz core.
+For fixed core f, the adjoint definition implies Kf belongs to D(Hs)
+and HsKf=K Hs f. Graph-core approximation and closedness extend this to
+K D(Hs) subset D(Hs), with equality of the two products on D(Hs).
+K therefore commutes with every resolvent and the spectral group of Hs.
+
+The original finite-K raw source Hamiltonian has no point spectrum.
+Its nonzero-mode oscillator factors have a countable eigenbasis, while
+in each such channel the two free zero modes contribute
+P_zero²/(2a²); each fixed total energy surface in R²_P has Lebesgue
+measure zero. The countable channel sum still has zero eigenprojection
+at every energy. Fixed scalar energy shifts do not affect this fact.
+
+A nonzero compact self-adjoint K has a nonzero eigenvalue of finite
+multiplicity. Strong commutation would make its finite-dimensional
+eigenspace invariant under the Hs spectral group, yielding an Hs
+eigenvector. Since Hs has no eigenvectors, K must be zero.
+Taking traces in tau=sigma/h gives I=1/h, contradicting strict
+Jensen for a normal positive-kappa marginal with mean h.
+
+Thus exact classical full-source-first-jet recovery is impossible in
+this free, positive-kappa, finite-form u-clock class even for a changed
+normal source and arbitrary joint entanglement. At least one bounded
+Schwartz finite-rank source record differs. N8 supplies a concrete
+single fixed observable for the actual thin source; N9 is an existence
+argument for a general source.
+
+This is not a restriction on all possible quantum gravity dynamics.
+It does not cover nonadditive geometry/source or apparatus interactions,
+a different clock/normality domain, approximate histories, conditional
+records, or the weaker requirement of matching only mean RSET.
+The next joint-history object is the actual weighted source tau and
+its geometry correlations, not an assumed substitution tau=sigma/<kappa>.
+Writing tau=I sigma+Delta, Tr Delta=0, makes the source weak derivative
+-i[Hs,tau] explicit. For an initial product Delta=0, the source's initial
+clock rate corresponds to 1/I, which is smaller than <kappa>.
+A physical approximate or alternative-clock history must calculate
+this difference and its resources instead of deleting it.
+
+
+## N10. Quantitative initial errors and the next reduced-source dynamics
+
+The explicit N8 witness already gives a state-dependent local error.
+For trace distance D_tr=(1/2)||rho-sigma||1, ||B_s||<=1 and its C1
+expectation imply
+\[
+ \liminf_{\delta u\downarrow0}
+ {D_{\rm tr}(\sigma_{\rm joint}(\delta u),\sigma_{\rm old}(\delta u))
+       \over\delta u}
+       \ge {c_s\over2}(I-1/h)>0 .                         \tag{N14}
+\]
+This allows the initial entanglement covered by N8. With the fixed
+s=sigma/2 and width sigma=sqrt(3)/(100A),
+c_s=sqrt(3)j(sigma/2)/200. There is no state-independent finite-window
+or experimental lower bound in N14.
+
+For the actual N4/N6 initial raw product family, one can go further
+even if the first derivative is compared using the harmonic clock
+rate 1/I instead. Let sigma be the old raw source, Hs=Hraw(A),
+I2=<kappa^-2> and J=(dI/du)_i. At the initial slice,
+\[
+ \sigma'=-iI[H_s,\sigma],\qquad
+ \sigma''=-i[I H_s'+JH_s,\sigma]
+                  -I_2[H_s,[H_s,\sigma]] .
+\]
+Both formulas are legitimate here. Each rank-two source support vector
+is Schwartz and each geometric packet, including its phase, is smooth
+with compact support away from kappa=0. These are in every required
+initial common-core product domain. The approximation
+psi_app(u)=psi-i delta u H0 psi
++delta u²(-i H0'-H0²)psi/2 has an H-valued residual O(delta u²).
+Weak Duhamel and unitarity give norm error O(delta u³).
+Partial trace of the finite-rank density then justifies the displayed
+second-order expansion without global strong-domain transport.
+
+The purity p(u)=Tr sigma(u)² consequently satisfies
+\[
+ p''(0)=-2\,\operatorname{Var}(\kappa^{-1})
+                         \|[H_s,\sigma]\|_{HS}^2<0 .       \tag{N15}
+\]
+The inverse-kappa variance is positive for these normal packets.
+The commutator is Hilbert--Schmidt and nonzero: otherwise the compact
+normal sigma would commute with the point-spectrum-free Hs, contrary
+to the argument in N9.
+
+Every closed prescribed-background unitary source history starting
+at the same sigma preserves purity, including after a smooth change
+of time parameter. This product candidate therefore cannot be repaired
+merely by replacing h with 1/I.
+For trace-one densities,
+|Tr rho²-Tr sigma²|<=2 D_tr(rho,sigma), obtained by pairing rho-sigma
+with rho+sigma-I. Hence every such unitary target obeys
+\[
+ \liminf_{\delta u\downarrow0}{D_{\rm tr}
+       (\sigma_{\rm joint}(\delta u),\sigma_{\rm unitary}(\delta u))
+             \over(\delta u)^2}
+ \ge {1\over2}\operatorname{Var}(\kappa^{-1})
+                          \|[H_s,\sigma]\|_{HS}^2>0 .      \tag{N16}
+\]
+N15/N16 apply to these initial product preparations, not arbitrary
+initially entangled joint states. The coefficients are state-dependent
+and no common nonzero time radius has been certified. They identify
+the actual reduced-source channel and the weighted density tau as
+the next objects to evolve, rather than a closed free source on a
+prescribed classical geometry. No device calibration follows.

@@ -52,3 +52,5 @@ sharp finite-K microcausality. All full-field, old-history and apparatus
 completion flags remain OPEN.
 
 CP4 adds one actual common-cutoff quadratic CTP certificate with fixed-conformal-lapse u-u weak contact tails; all full quantum-geometric continuum and device claims remain OPEN.
+
+Additional current entry: same-cutoff static/action resolvent uniformity for K>=1e9 and actual retarded strong inverse convergence; pressure threshold K1 only existential after retained off-shell correction. No strong adjoint or full quantum joint-state cutoff limit is inferred. General source-jet obstruction is confined to positive-kappa, free raw separation and finite common-form normal states.
