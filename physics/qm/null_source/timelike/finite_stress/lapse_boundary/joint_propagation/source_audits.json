@@ -400,7 +400,7 @@
     {
       "commit": "5614169c29525af873e2dc6fac634051997a9366",
       "agent": "/root/a_joint_propagation",
-      "status": "FINDINGS",
+      "status": "FINDINGS_ADDRESSED",
       "main_mathematics": "PASS",
       "scientific_execution_by_agent": false,
       "files": {
@@ -413,10 +413,11 @@
         {
           "id": "A8",
           "issue": "Reporting string must distinguish matrix identity tolerance1e-12 from illustrative risk quadrature tolerance1e-10; assertions remain before rounding.",
-          "resolution": "PATCHED_PENDING_CP6_IMMUTABLE_REVIEW"
+          "resolution": "VERIFIED_ADDRESSED_BY_CP6_IMMUTABLE_REVIEW"
         }
       ],
-      "scope": "Actual immutable CP5 fetch/read; CP4 findings verified addressed, actual HS calibration and final Pi instrument passed"
+      "scope": "Actual immutable CP5 fetch/read; CP4 findings verified addressed, actual HS calibration and final Pi instrument passed",
+      "resolved_by_commit": "2346f8f496159c3712a410bb02f5523f554ad034"
     },
     {
       "commit": "5614169c29525af873e2dc6fac634051997a9366",
@@ -440,7 +441,7 @@
     {
       "commit": "5614169c29525af873e2dc6fac634051997a9366",
       "agent": "/root/c_prepared_record",
-      "status": "FINDINGS",
+      "status": "FINDINGS_ADDRESSED",
       "main_mathematics": "PASS",
       "scientific_execution_by_agent": false,
       "files": {
@@ -454,14 +455,82 @@
         {
           "id": "C10",
           "issue": "Reporting string must distinguish matrix identity tolerance1e-12 from illustrative risk quadrature tolerance1e-10; assertions remain before rounding.",
-          "resolution": "PATCHED_PENDING_CP6_IMMUTABLE_REVIEW"
+          "resolution": "VERIFIED_ADDRESSED_BY_CP6_IMMUTABLE_REVIEW"
         }
       ],
-      "scope": "Actual immutable CP5 fetch/read; CP4 findings verified addressed, actual HS calibration and final Pi instrument passed"
+      "scope": "Actual immutable CP5 fetch/read; CP4 findings verified addressed, actual HS calibration and final Pi instrument passed",
+      "resolved_by_commit": "2346f8f496159c3712a410bb02f5523f554ad034"
+    },
+    {
+      "commit": "2346f8f496159c3712a410bb02f5523f554ad034",
+      "agent": "/root/a_joint_propagation",
+      "status": "FINDINGS",
+      "main_mathematics": "PASS_WITH_CONDITIONAL_MOMENT_CORRECTION",
+      "scientific_execution_by_agent": false,
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_ACTION.md": "99a33c0102058741966898a99ff1e720d8c8e0b0",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_action.py": "8a6147ebc0d2e453670ff2a453510ca81cf1d282",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_action.json": "8ad43ffe29d3a21da70a785ee99639c1d907ec4c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/UNIFICATION_PROGRESS.md": "74cf80df9a907d5319864078f12d2e0ace52dd38"
+      },
+      "findings": [
+        {
+          "id": "A9",
+          "issue": "M11 fixed-history influence derivatives use conditional E_q,V_q, distinct from M13 source-averaged energy cumulants; M12 marginal covariance remains correct.",
+          "resolution": "PATCHED_PENDING_CP7_IMMUTABLE_REVIEW"
+        }
+      ],
+      "scope": "Actual immutable CP6 fetched/read; fixed f evolution, total variance, homogeneous stress, CP instrument and remaining physical scope checked"
+    },
+    {
+      "commit": "2346f8f496159c3712a410bb02f5523f554ad034",
+      "agent": "/root/b_constraint_kernel",
+      "status": "FINDINGS",
+      "main_mathematics": "PASS_WITH_CONDITIONAL_MOMENT_CORRECTION",
+      "scientific_execution_by_agent": false,
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_ACTION.md": "99a33c0102058741966898a99ff1e720d8c8e0b0",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_action.py": "8a6147ebc0d2e453670ff2a453510ca81cf1d282",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/UNIFICATION_PROGRESS.md": "74cf80df9a907d5319864078f12d2e0ace52dd38",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/README.md": "ed6a36609eb7c94e0c75a9acabcb95e5caa88f2f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/NEXT_GATE.md": "e3496f651aa8c858eda38a290ecacc4aa07384bb",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/SESSION.md": "bd50179eb832fdf17819eef36ae47b40cc8d6ae2",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/AUDIT.md": "b77692e08f9705b770978a8642d8f69de5f993bf"
+      },
+      "findings": [
+        {
+          "id": "B8",
+          "issue": "M11 fixed-history influence derivatives use conditional E_q,V_q, distinct from M13 source-averaged energy cumulants; M12 marginal covariance remains correct.",
+          "resolution": "PATCHED_PENDING_CP7_IMMUTABLE_REVIEW"
+        }
+      ],
+      "scope": "Actual immutable CP6 fetched/read; fixed f evolution, total variance, homogeneous stress, CP instrument and remaining physical scope checked"
+    },
+    {
+      "commit": "2346f8f496159c3712a410bb02f5523f554ad034",
+      "agent": "/root/c_prepared_record",
+      "status": "FINDINGS",
+      "main_mathematics": "PASS_WITH_CONDITIONAL_MOMENT_CORRECTION",
+      "scientific_execution_by_agent": false,
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_ACTION.md": "99a33c0102058741966898a99ff1e720d8c8e0b0",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_action.py": "8a6147ebc0d2e453670ff2a453510ca81cf1d282",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_action.json": "8ad43ffe29d3a21da70a785ee99639c1d907ec4c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_INFLUENCE.md": "ee027f8b7f19eb94742fdf1b21889be068d7f0bf",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/NEXT_GATE.md": "e3496f651aa8c858eda38a290ecacc4aa07384bb"
+      },
+      "findings": [
+        {
+          "id": "C11",
+          "issue": "M11 fixed-history influence derivatives use conditional E_q,V_q, distinct from M13 source-averaged energy cumulants; M12 marginal covariance remains correct.",
+          "resolution": "PATCHED_PENDING_CP7_IMMUTABLE_REVIEW"
+        }
+      ],
+      "scope": "Actual immutable CP6 fetched/read; fixed f evolution, total variance, homogeneous stress, CP instrument and remaining physical scope checked"
     }
   ],
-  "immutable_review_file_identities": 150,
-  "unique_commit_file_count": 91,
+  "immutable_review_file_identities": 166,
+  "unique_commit_file_count": 100,
   "external_human_peer_review": false,
   "machine_formal_proof": false
 }

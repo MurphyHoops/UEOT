@@ -153,3 +153,13 @@ preceded the source implementation. CP5 added17 actual logged
 immutable file identities (150 cumulative); two reporting-string
 clarifications are patched for CP6. The three-hour session is still
 IN_PROGRESS until an actual qualifying clock observation.
+
+## Final scientific review before timing closure
+
+The CP6 f-dressing results passed both exact-head workflows. Three
+native readers then distinguished conditional fixed-history cumulants
+from the source-averaged energy variance in one new M11 sentence.
+The correction keeps E_q,V_q in the conditional influence and the full
+marginal variance in the actual homogeneous stress block. The recorded
+audit is166 actual identities; source rereading of this correction and
+the final three-hour clock observation remain pending.

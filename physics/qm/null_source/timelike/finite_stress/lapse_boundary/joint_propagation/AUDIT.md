@@ -110,3 +110,16 @@ readers requested a reporting-only distinction between the unchanged
 quadrature tolerance; this is patched for CP6. No certified quadrature
 error or full-field numerical proof is claimed. The f-dressing and
 homogeneous stress additions use the same memory_action entry.
+
+## CP6 conditional/marginal correction
+
+CP6 added4+7+5=16 actual logged immutable identities (166 cumulative).
+All three readers confirmed the new fixed-f evolution and homogeneous
+stress result. They independently identified one important conditional
+versus marginal distinction: at a fixed endpoint kick q the conditional
+Mehler log derivatives use E_q,V_q, whereas M13/M12 use the fully
+prepared-state marginal variance, including Var_mu(E_q). M11 now
+states this law of total variance explicitly. M12 is unchanged.
+The correction awaits CP7 immutable verification. CP6 science and
+publication CI passed, but their automatic entries alone did not
+settle this analytic interpretation; the source audit supplied it.

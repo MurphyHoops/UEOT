@@ -142,6 +142,7 @@ finish("memory_action.py",{
 "dressed_actual_fast_zero_and_calibration":"same limits and rates; f-dependent constants and correct f_i mean retuning",
 "dressed_variance_liminf":"at least f_i^2 M^2 Omega^4 I2/2",
 "dressed_conditional_influence":"same Mehler formula with tau=integral N f(u)deta",
+"conditional_influence_Hessian":"fixed common kick q uses E_q,V_q; M13 marginal variance adds Var_mu(E_q)",
 "memory_energy_spectral_law":"exactly conserved by actual direct-sum propagator",
 "homogeneous_memory_stress":"rho=f HM/(V0 a^4), p=(f-f_prime)HM/(3V0 a^4)",
 "homogeneous_memory_covariance":"N_AB=r_A(u)r_B(v) Var_out(HM), all cross rows retained",

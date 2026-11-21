@@ -629,7 +629,13 @@ initial kick derivatives. Explicitly, for interior variations at fixed
 initial kicks, ell_AB=ell_tt t_A t_B+ell_t t_AB, with the branch signs
 in t=tau_+-tau_-. In original lapse variables,
 tau_N=f, tau_u=Nf', tau_Nu=f' delta, tau_uu=Nf'' delta, tau_NN=0.
-On the physical contour ell_t=-i E_out and ell_tt=-Var_out(H_M).
+At a fixed common initial kick a=b=q on the physical contour,
+ell_t=-i E_q and ell_tt=-V_q, with E_q,V_q from MEMORY_INFLUENCE I4.
+These are CONDITIONAL fixed-history derivatives. They are not the
+source-averaged M13 variance used by M12. Averaging the energy law gives
+Var_out(H_M)=integral V_q dmu(q)+Var_mu(E_q); the latter dispersion
+must be included for the full prepared-state covariance, not inserted
+into a conditional-history Hessian.
 The exact influence already includes the net preintegration contacts;
 the bare configuration Hessian must not be added twice. This remains
 conditional on histories.
