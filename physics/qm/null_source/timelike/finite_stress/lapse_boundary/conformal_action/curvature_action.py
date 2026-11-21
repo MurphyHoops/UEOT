@@ -33,10 +33,17 @@ zero('net_scalar_boundary',-kap*Q+(1-b)*kap*Q+b*kap*Q)
 eps,t=s.symbols('eps t')
 aN,av,ar,aq,bN,bv,br,bq=s.symbols('aN av ar aq bN bv br bq')
 xs=[N,v,r,q];aa=[aN,av,ar,aq];bb=[bN,bv,br,bq]
-first=sum(s.diff(L,x)*a for x,a in zip(xs,aa))
-mixed=sum(s.diff(first,x)*z for x,z in zip(xs,bb))
+shift={x:x+eps*a+t*z for x,a,z in zip(xs,aa,bb)}
+num=r*r/2-b*v*q*r+b*v*v*Q
+pot=(k*k-b)*Q
+dN=eps*aN+t*bN
+inverse2=1/N-dN/N**2+dN**2/N**3
+expanded=s.expand(num.subs(shift,simultaneous=True)*inverse2
+                  -(N+dN)*pot.subs(shift,simultaneous=True))
+coefficient=expanded.coeff(eps,1).coeff(t,1)
 h=s.hessian(L,xs)
-zero('full_mixed_hessian',mixed-(s.Matrix(aa).T*h*s.Matrix(bb))[0])
+zero('full_mixed_hessian_polynomial_coefficient',
+     coefficient-(s.Matrix(aa).T*h*s.Matrix(bb))[0])
 finish('curvature_action.py',{'identities':checks,'finite_modes':'arbitrary by additivity',
  'xi_conformal':'1/6','beta_conformal':0,'changed_physical_model':True,
  'original_minimal_AE_mean_history_inherited':False,

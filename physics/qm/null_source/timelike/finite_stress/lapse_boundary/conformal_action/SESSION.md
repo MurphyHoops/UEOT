@@ -24,3 +24,33 @@ e5b116d06a6519da2689dbe9cad80b82e406f330；PR 开放且为草稿。
 
 本日志随实际闭环、审核及继续研究更新。此刻尚未到达三小时，
 没有提前填写结束时间或宣称物理统一。
+
+
+### Second substantive work segment (still in progress)
+
+After the first independent reviews, the propagator/mixed-density
+gluing distinction, coherent-pure input scope, fixed de Sitter radius
+notation, independent contact coefficient check and relative-import
+guard were corrected. The 32 actual immutable file identities were
+verified and saved, retaining the findings for later immutable review.
+
+The root then derived and executed the positive delta comparison,
+the local-action homogeneous controller/source/probe instrument,
+the sigma-model one-loop obstruction, complete conformal scalar
+noise, the actual reduced spatial covariance bridge, an all-energy
+conditioned-clock comparison and the spatial causal response rows.
+A first symbolic fixed-coordinate UV check failed because an ss^8
+substitution was applied before factoring the common scale. The
+algebraic normalization was factored and the meaningful identity
+then passed; no failed run is counted as a passing certificate.
+
+The energy-class local record has an actual contrast lower bound
+above .5375, initial contrast at most .002784, and complete total
+energy retained. Its incoming wave operator and terminal compressed
+reader remain mathematical preparation/instrument specifications,
+not a full autonomous preparation-and-readout apparatus.
+
+The one-loop calculation identifies a concrete four-derivative
+matter requirement; the spatial lapse calculation identifies an
+independent finite Weyl-squared coupling invisible to all FLRW
+mean fits. Neither is replaced by a guessed experimental value.

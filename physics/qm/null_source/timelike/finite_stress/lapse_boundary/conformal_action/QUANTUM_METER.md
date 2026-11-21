@@ -75,12 +75,15 @@ Let Phi_bar_j=(Phi_j,++Phi_j,-)/2. The nonselective source coherence is
 
 The source energy distribution is unchanged, while the full bare
 state generally changes. After the stated diagonal phase calibration,
-a balanced vacuum/one-particle input changes in trace distance by
-[1-cos(Delta_1/2)]/2. The optimal conditional-memory distinguishability
+the coherent pure input (|vac>+exp(i theta)|1>)/sqrt(2) changes in
+trace distance by [1-cos(Delta_1/2)]/2. A diagonal balanced mixture
+need not change at all. This phase-compensated distance is a lower
+bound on the uncompensated distance for that coherent pure example;
+the mathematical phase comparison does not implement an extra device. The optimal conditional-memory distinguishability
 is sin(Delta_1/2); the actual sigma_y record gap is sin(Delta_1)/2.
 This does not evade the earlier fixed-bare-marginal extension exclusion.
 
-Before readout, for the balanced source state,
+Before readout, for any source state with balanced populations,
 
  <T>=E_c+1/2+30f,  Var(T)=1/4+(625/2)f².
 

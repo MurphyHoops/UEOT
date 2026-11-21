@@ -39,10 +39,20 @@ cq=np.zeros((20,20),complex)
 for i,K in enumerate([K0,K1]):
     cq[i*10:(i+1)*10,i*10:(i+1)*10]=K@U@rho@U.conj().T@K
 require(abs(np.trace(cq)-1)<1e-12,'complete CQ record')
+# A raw propagator glues; a prepared mixed-state kernel does not.
+F=np.kron(np.diag([1.,np.sqrt(.5)]),I)
+metric=np.kron(np.diag([1.,2.]),I)
+require(np.linalg.norm(F@U@F@metric@F@V@F-F@U@V@F)<1e-12,
+        'weighted propagator gluing')
+prepared_product=F@U@rho@F@metric@F@rho@V.conj().T@F
+require(np.linalg.norm(prepared_product-F@U@rho@rho@V.conj().T@F)<1e-12,
+        'prepared kernel composition contains rho squared')
+require(np.linalg.norm(prepared_product-F@U@rho@V.conj().T@F)>1e-3,
+        'mixed density kernel is not idempotent')
 finish('joint_continuum.py',{'exact_analytic_cutoff_identity':'U_K P_K=U_infinity P_K',
  'uniform_normal_kernel_error':'||rho_K-rho||_1',
  'regression_dimension':10,'regression_tolerance':1e-12,
- 'regression_all_passed':True,'positive_fixed_physical_test_lower_bound':'q/4',
+ 'regression_all_passed':True,'mixed_state_gluing_regression':True,'positive_fixed_physical_test_lower_bound':'q/4',
  'all_normal_inputs_allowed_for_bounded_observables':True,
  'arbitrary_normal_inputs_automatically_Hadamard':False,
  'full_generator_semibounded_claimed':False},inputs=[old])

@@ -35,9 +35,10 @@ zero('complete_constraint_coefficients',H-(pk*pk/(2*g)+d0+d1*k*k+d3*k**4))
 des={c:1+k*k,j:2*k*(1+k*k)}
 zero('deSitter_anomaly_plus_Casimir',(Ean+n/240).subs(des)-n*(1+k*k)**2/480)
 zero('deSitter_R2_energy',E(Lr0).subs(des))
-# The closed de Sitter chart obeys a²=A²(1+k²).
-constraint=-3*V*A*A*(1+k*k)**2/2+V*U*A**4*(1+k*k)**2+n*(1+k*k)**2/480
-zero('deSitter_mean_density',constraint.subs(U,s.Rational(3,2)/A**2-n/(480*V*A**4)))
+# ell_dS is independent of the frozen normalization A in a=A exp(u).
+ell=s.symbols('ell_dS',positive=True)
+constraint=-3*V*ell**2*(1+k*k)**2/2+V*U*ell**4*(1+k*k)**2+n*(1+k*k)**2/480
+zero('deSitter_mean_density',constraint.subs(U,s.Rational(3,2)/ell**2-n/(480*V*ell**4)))
 zero('deSitter_trace_equation',trace.subs({c:1+k*k,l:2*(1+k*k)*(1+3*k*k)})+n*(1+k*k)**2/120)
 finish('anomaly_action.py',{'identities':checks,'n_real_scalars_example':2,
  'Casimir_energy_example':'1/120','geometry_coefficient':'lambda-n_s/240',

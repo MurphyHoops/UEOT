@@ -86,18 +86,23 @@ pressure corrections.
 
 ## B4. A useful independent de Sitter check
 
-On a=A/cos(eta), N=1, kappa=tan(eta), chi=1+kappa²,
+On a=ell_dS/cos(eta), N=1, kappa=tan(eta), chi=1+kappa²,
 Dchi=2kappa chi,
 
     E_c+E_an=n_s(1+kappa²)²/480,
-    rho_conf=n_s/(480 V_3 A⁴).
+    rho_conf=n_s/(480 V_3 ell_dS⁴).
 
 The trace gives p_conf=-rho_conf on this geometry.
 A constant-curvature R² variation vanishes in four dimensions.
 Thus the NEW conformal vacuum mean equations admit this explicit
 closed de Sitter history when
 
-    U_0=3/(2A²)-n_s/(480V_3 A⁴).
+    U_0=3/(2ell_dS²)-n_s/(480V_3 ell_dS⁴).
+
+Here ell_dS is a de Sitter curvature radius determined by U_0; it is
+not the frozen normalization A in a=Aexp(u). In the u chart the
+origin is u=log(ell_dS/A)-log(cos eta). The actual numerical tests
+retain the original A and U_0 intervals; this check does not retune them.
 
 This checks both density and pressure, not just a scalar sum.
 It is a NEW semiclassical fixed-background history; it is not yet

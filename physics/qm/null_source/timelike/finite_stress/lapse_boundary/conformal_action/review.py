@@ -16,7 +16,10 @@ for p in HERE.glob('*.py'):
         if isinstance(node,ast.Import):
             for alias in node.names:require(alias.name.split('.')[0] in allowed,'forbidden import '+alias.name)
         if isinstance(node,ast.ImportFrom):
-            require((node.module or '').split('.')[0] in allowed,'forbidden from import '+str(node.module))
+            require(node.level==0 and (node.module or '').split('.')[0] in allowed,
+                    'forbidden relative/from import '+str(node.module))
+        if isinstance(node,ast.Call) and isinstance(node.func,ast.Name):
+            require(node.func.id not in {'eval','exec','__import__'},'dynamic execution forbidden')
 for name in entries[:-1]:
     d=json.loads((HERE/(name+'.json')).read_text())
     require(d['status']=='PASS' and d['physical_unification']=='OPEN','science scope '+name)
@@ -36,7 +39,10 @@ for row in audit['records']:
         require(sha(b)==h,'immutable audit file mismatch '+rel)
         identities+=1
     if row['status'] in {'PASS','RESOLVED'}:seen.add(row['reviewer'])
-if audit['final_audit_complete']:require(seen==expected,'final review missing a reviewer')
+if audit['final_audit_complete']:
+    require(seen==expected,'final review missing a reviewer')
+    require(all(x['status']=='RESOLVED' for x in audit.get('findings',[])),
+            'unresolved final source finding')
 timing=json.loads((HERE/'session_timing.json').read_text())
 require(timing['start_utc']=='2026-11-21T18:02:22Z' and not timing['prior_session_time_counted'],'session origin')
 if timing['end_utc'] is not None:

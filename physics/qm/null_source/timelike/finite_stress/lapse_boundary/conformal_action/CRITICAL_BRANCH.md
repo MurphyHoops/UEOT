@@ -57,7 +57,12 @@ R and R^-1 are bounded on the admitted chart/band. Expanding it gives
 The connection term cannot be dropped. Raw states are
 Psi=R^-1 U psi_i, and
 Gamma_raw(u,v)=R(u)^-1 U(u,i)rho U(v,i)*R(v)^-1.
-Weighted diagonal trace is one, and weighted gluing uses kappa(v).
+Weighted diagonal trace is one. Define the separate raw PROPAGATOR
+K_raw(u,v)=R(u)^-1 U(u,v)R(v)^-1. It obeys
+K_raw(u,v)kappa(v)K_raw(v,w)=K_raw(u,w).
+The prepared density kernel Gamma_raw is positive as a Gram kernel;
+its analogous product contains rho² and need not equal Gamma_raw.
+No idempotence of an arbitrary normal density operator is assumed.
 Fixed compact physical tests give a nonzero positive kernel by
 continuity; an inverse-propagator test is unnecessary.
 
