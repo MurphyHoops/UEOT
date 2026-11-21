@@ -18,3 +18,5 @@ Einstein–CTP联合正窗、截断余项、实际引力仪器及物理统一继
 第三检查点范围扩至23个科学证书入口。特别核验actual inverse域、fullmode低模选择、H_i与原lapse Hamiltonian区别、λ修复两行负对照、完整cross成本、global门normal/Hadamard区分以及finite preparation K与stress cutoff L。全物理目标始终OPEN。
 
 第四检查点扩至25个科学入口。incoming准备必须保留原Hi target与pointer mean、B/Hi谱区别、A_P复用、完整裸态改变及geometry embedding OPEN。quantum endpoint只排除固定normal product输入的active独立shear极限，不能排除共同action/state相消。
+
+第五检查点为26科学入口：relational_domain必须区分congruence与unitary、半轴一阶形式动量与二阶Friedrichs、自选ordering与原action唯一性、主块传播与完整耦合传播。全部额外域假设写明。

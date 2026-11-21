@@ -5,7 +5,7 @@ ENTRIES=["action_boundary","endpoint_domain","tensor_noise","dynamic_witness","s
          "smooth_preparation","operational_state","retarded_response","quiet_window",
          "causal_domain","finite_causal","finite_source_domain","action_response","covariant_response",
          "actual_inverse","prepared_readout","constraint_residual","action_lift",
-         "mixed_boundary","readout_witness","canonical_preparation","hadamard_gate","prepared_mean","incoming_preparation","quantum_endpoint"]
+         "mixed_boundary","readout_witness","canonical_preparation","hadamard_gate","prepared_mean","incoming_preparation","quantum_endpoint","relational_domain"]
 allowed={"common","sympy","fractions","itertools","math","mpmath"}
 for name in ENTRIES:
     result=json.loads((HERE/(name+".json")).read_text())

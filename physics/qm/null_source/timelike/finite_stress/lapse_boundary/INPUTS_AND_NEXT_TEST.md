@@ -42,3 +42,9 @@ QUANTUM_ENDPOINT已拒收把−[κQ_K]单独主动施于固定normal几何波包
 取f=κ^(−1/2)，则
 \[ fC_Kf=P_u+H_{rel},\qquad fD^2f=\kappa^{-1}D^2+i\kappa^{-2}D-3/(4\kappa^3).\]
 这是对称congruence，不是unitary conjugation；χ=κ^(1/2)Ψ仅在形式约束核上作映射。下一次应实际证明/否决这个候选的selfadjoint域、κ=0边界、随u的unitary propagator和finite-slice source transport，再决定physical inner product。不能用这个等式宣称已经有正常物理态或与旧kinematic谱等价。
+
+## 已继续闭合的 principal reference 与下一剩余算子
+
+RELATIONAL_DOMAIN 已实际完成上述候选的几何主块：Liouville变换得到−∂x²−5/(36x²)，Hardy界给Friedrichs自伴实现；finite-K source connection同域unitary运输，并给不跨g_K=0的主块精确clock传播。半轴Pκ/D本身未被宣为自伴。
+
+首要未完成对象已进一步收敛为R5全算子：A0/(2gK(u))+H0,K/κ+𝒟_K+[V0a4U0−Lg−Lct,0]/κ。需要实际控制这些剩余项的共同域/相对界、随u传播和同源初态运输，再取同AE全场极限。只有主块已闭合；原physical内积、真实joint geometry及装置校准仍未给出。

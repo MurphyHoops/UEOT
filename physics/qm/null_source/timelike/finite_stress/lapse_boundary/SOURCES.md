@@ -41,3 +41,5 @@ total_source/PRESSURE_NOISE已有一般矩阵元差式与static pure-pressure结
 
 Bruneau–Dereziński, Bogoliubov Hamiltonians and one-parameter groups of Bogoliubov transformations, https://arxiv.org/abs/math-ph/0511069 ：Hilbert–Schmidt implementability与二次Hamiltonian自伴域的外部参考；本轮Hi的具体ω阶数另由原incoming解算出。
 Hu–Roura–Verdaguer, https://arxiv.org/abs/gr-qc/0402029 ，Appendix D：有限初时、不相关初态和noise distribution的边界问题；该Minkowski/large-N讨论不能替代当前闭S3最小耦合的准备构造。root已实际打开PDF相应段落。
+
+Junker–Schrohe, Adiabatic Vacuum States on General Spacetime Manifolds, https://arxiv.org/abs/math-ph/0109010 ，用于区分有限adiabatic regularity与Hadamard的背景参考。本轮具体H^(3/2)/log阻断由已写模式展开独立导出；不套用未核模型条件。

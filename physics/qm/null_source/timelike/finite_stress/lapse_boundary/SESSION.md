@@ -72,3 +72,11 @@ actual-U压力的尖起始K³/K发散与同源Q/D边界块的精确取消已同�
 继续检查原第二canonical对：将单独端点shear主动施于固定normalκ波包的reduced purity→0，故无normal trace全场极限；Gaussian宽s时√K purity→1/s。这个具体失败说明一对toy变量不能直接替代原两对geometry。共同action/state cancellation与不同物理内积未排除。
 
 CP3三原生代理实际回读44个身份，root核对累计137条/124个distinct pair、零不一致。CP3科学CI44870759050（24 PASS）与publication44870759008均成功且exact head已核。审读发现并修正readout的sup→L² sqrt(2)与完整支持能量门；宽最终常数保持成立。实际逆λ边界与Hi正性补证、RELATIONAL复用来源也已补齐。
+
+## 第五阶段：实际关闭关系时钟候选的主算符域
+
+没有把下一任务只留成建议：继续从finite-K action约束的一个明确ordering候选构造principal域。fCf的对称congruence与平直Weyl方案有明确ħ²差，原classical action不唯一决定量子ordering。A0经unitary Liouville变换成为−∂x²−5/(36x²)，Hardy界给可闭正型与Friedrichs selfadjoint realization，保留κ=0边界选择。finite-K connection的domain和不跨gK=0的主块clock propagator均已给；完整H0/κ、dilation和几何势之和的域与全场极限仍待证。
+
+再对照用户所给Core开放端口与科学闭合纲领：本轮只关闭明确物理模型中的任务包，不改C1–C7全端口状态，不新增Core公理或counted theorem。没有现实观测数据、装置校准和独立经验桥的地方保持未完成；分析证明、自动检查和原生代理审读不替代外部同行评议或实验。
+
+CP4三代理追加33个不可变身份，连同B对CP3 action证明的补读，root累计核对171条身份、141个不同提交—文件pair、零不一致。科学CI44872114228的26PASS与publication44872114232成功已实际核对。最终时长/最后提交与CI仍在最终记录中填写。

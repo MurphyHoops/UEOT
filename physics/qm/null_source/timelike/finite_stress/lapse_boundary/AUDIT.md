@@ -52,3 +52,7 @@ artifact14690857152，digest sha256:d6ed85588ca91151b7c8a4bbb66504aa628b8bfe6ffc
 
 在CP3的23科学+1scope上增加incoming_preparation和quantum_endpoint，当前25科学+1scope。Gaussian编码、A_P原则及sharp shear数据均复用；新增是当前Hi残差/资源、joint purity验收。CP3实际44身份回读已核，累计137条/124不同pair零不一致；完整CI证据已入checkpoint_ci.json。
 readout W7增加support长度√2并以冻结中心+width验证emax；最终宽界及e19000拒收保持。此为真实审读修订，不把CP3源码称作已含该修正。后续检查点另验。
+
+## 第五检查点
+
+新增relational_domain后为26科学+1scope=27入口。它只认证明示ordering的principal selfadjoint reference、finite-K domain运输和主块传播；全耦合Hrel/全场/physicaljoint/装置未签。CP4三原生审读及补读累计171身份、141distinct pair，零不一致；CP4 exact-head科学与publication CI均success，26个decoded PASS、head与artifact digest已实存。

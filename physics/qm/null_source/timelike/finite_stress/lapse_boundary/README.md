@@ -39,6 +39,7 @@
 | 准备后mean入口 | 同门全部二/四矩、zero mean严格增加、完整新mean方程；拒收只调几何初导 | [PREPARED_MEAN](PREPARED_MEAN.md), [JSON](prepared_mean.json) |
 | 同应力 incoming 准备 | 正常Hadamard、原source functional保持；实际Hi约束RMS受控，裸态Dtr>0.999和巨大P资源 | [INCOMING_PREPARATION](INCOMING_PREPARATION.md), [JSON](incoming_preparation.json) |
 | 第二几何对端点门 | 固定normal geometry input的active shear纯度趋0，无normal trace极限 | [QUANTUM_ENDPOINT](QUANTUM_ENDPOINT.md), [JSON](quantum_endpoint.json) |
+| 关系clock主块 | 明确ordering，Friedrichs自伴域、finite-K connection运输与主块精确传播；完整耦合仍OPEN | [RELATIONAL_DOMAIN](RELATIONAL_DOMAIN.md), [JSON](relational_domain.json) |
 
 所有RMS比值都有指定测试、同一实际态/几何和模型单位；不是度规误差、SI时间或实验灵敏度。
 源二阶核也不是完整Gaussian几何过程；高阶累积量、初始joint state和真实装置仍承担各自责任。
@@ -54,7 +55,7 @@
 python -B physics/qm/null_source/timelike/finite_stress/lapse_boundary/run_verification.py
 ~~~
 
-本检查点执行25个科学证书入口及1个范围检查；数目不等于新定理数。
+本检查点执行26个科学证书入口及1个范围检查；数目不等于新定理数。
 新入口复用旧163项，冻结600个前驱科学文件，只执行本目录新检查。
 自动证书、解析证明、原生代理审读和GitHub CI各自记录，不相互替代。
 Core只读，GI排除，PR保留草稿且不合并。
