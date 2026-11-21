@@ -397,3 +397,5 @@
 [完整物理责任图](audits/PERSISTENT_BATH_v31.14/PREMISES_AND_RESPONSIBILITIES.md)保留13类领域和15项引力/宇宙学责任，不以有限探针替代场论、时空或统一物理的证明。
 
 若候选只增加不可检验自由函数、用目标数据反填前提，或在全部允许实验内被竞争环境完全覆盖，就停止该识别路线，保留不可识别结果及最少新增观测。反例关闭逻辑问题，不把被否定正向猜想改为已证。计数不是物理完成比例。
+
+2026-11-21 接续检查点：lapse_boundary 已推进到固定 AE lapse action、实际全场齐次逆、同源双约束弱解及准备态的 normal/Hadamard 分层验收；当前具体读数候选被成本拒收，全场门被UV拒收，有限模修正仍待新mean与总源。见 `physics/qm/null_source/timelike/finite_stress/lapse_boundary/INPUTS_AND_NEXT_TEST.md`。物理统一仍OPEN。

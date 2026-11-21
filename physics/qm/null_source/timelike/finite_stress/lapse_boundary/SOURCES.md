@@ -36,3 +36,8 @@ total_source/PRESSURE_NOISE已有一般矩阵元差式与static pure-pressure结
 
 文献用于明确方法与适用范围；本模型新增公式、数字及限制以本目录证明/证书为准。
 原生代理的审读不冒充文献作者确认、外部人类同行评议或形式化证明。
+
+## 后续定义域核验的一手资料
+
+Bruneau–Dereziński, Bogoliubov Hamiltonians and one-parameter groups of Bogoliubov transformations, https://arxiv.org/abs/math-ph/0511069 ：Hilbert–Schmidt implementability与二次Hamiltonian自伴域的外部参考；本轮Hi的具体ω阶数另由原incoming解算出。
+Hu–Roura–Verdaguer, https://arxiv.org/abs/gr-qc/0402029 ，Appendix D：有限初时、不相关初态和noise distribution的边界问题；该Minkowski/large-N讨论不能替代当前闭S3最小耦合的准备构造。root已实际打开PDF相应段落。

@@ -41,3 +41,9 @@ artifact14690857152，digest sha256:d6ed85588ca91151b7c8a4bbb66504aa628b8bfe6ffc
 既有手稿/publication run44863754602成功。结构化证据见checkpoint_ci.json。
 第一提交误含本cohort自己的common bytecode；后续提交删除，并在新目录加入ignore。
 旧600个科学文件未因此改变。这里如实保留已推送历史，不改写提交。
+
+## 第三检查点增量
+
+新增实际inverse、prepared readout、density residual、fixed AE action lift、mixed source boundary、明确cost witness、normal canonical comparator与Hadamard gate与准备后mean入口共9个科学证书入口，合计23科学+1scope。每项均有证明、源码、源文件哈希和JSON；计数不是新定理数。CP2回读新增46个身份，累计93条/91个distinct pair，零不一致。新的不变源码审读与CI需另记，不继承旧版结论。
+
+正常Gaussian门及finite-mode修正均只是显式canonical模型中的状态/CP算例；后者Hadamard而前者失败。两者不被记作真实引力装置或原共同mean的完成。独立载体和旧不确定原理、连续谱normal核原则均按前驱结果复用。

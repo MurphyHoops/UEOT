@@ -15,7 +15,9 @@ WORKFLOW=".github/workflows/ueot-physics-source-response.yml"
 ROUTES=[WORKFLOW,"physics/qm/README.md","physics/qm/ROADMAP.md",PREFIX+"README.md"]
 ENTRIES=["action_boundary","endpoint_domain","tensor_noise","dynamic_witness","source_ctp",
          "smooth_preparation","operational_state","retarded_response","quiet_window",
-         "causal_domain","finite_causal","finite_source_domain","action_response","covariant_response","review"]
+         "causal_domain","finite_causal","finite_source_domain","action_response","covariant_response",
+         "actual_inverse","prepared_readout","constraint_residual","action_lift",
+         "mixed_boundary","readout_witness","canonical_preparation","hadamard_gate","prepared_mean","review"]
 VERSIONS={"numpy":"2.5.4","scipy":"1.18.1","sympy":"1.14.0","mpmath":"1.3.0"}
 def require(ok,msg):
     if not ok:raise RuntimeError(msg)
@@ -119,6 +121,10 @@ def main():
       "native_read_only_research_agents":3,"external_human_peer_review":False,
       "scientific_exit":{"full_absolute_source_tensor_noise":True,
        "actual_homogeneous_retarded_RSET_response":True,"source_charge_and_Killing_mixed_blocks":True,
+       "actual_full_field_homogeneous_causal_and_advanced_inverse":True,
+       "source_GNS_two_constraint_weak_solution":True,
+       "controlled_weak_metric_fluctuation_candidate":False,
+       "normal_finite_mode_Hadamard_canonical_comparator":True,
        "normal_finite_smooth_memory_comparator":True,
        "full_tensor_retarded_Hessian":False,"normal_geometry_boundary_state":False,
        "physical_total_preparation_and_calibrated_gravity":"OPEN",

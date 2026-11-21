@@ -50,3 +50,17 @@ actual-U压力的尖起始K³/K发散与同源Q/D边界块的精确取消已同�
 
 继续推进的核心是实际quiet-U算子与静态逆的同域相对范数；
 先证明deterministic inverse，再对实际噪声、初始混合及proper-time观测验收。
+
+## 第三阶段：实际逆、混合约束与准备态连续复盘
+
+实际quiet-U相对静态算子差已给1000ε的H4→L²界，Neumann参数<e−1100；独立advanced逆使实际proper-time读数可搬到H³ source测试。共同cutoff的边界组合与完整原态zero/shell/high方差、C混合块均已写出。
+
+随后验证发现原fullmode减除虽然解pressure，仍留H_i密度荷。保裸源边缘的carrier仍有严格支撑泄漏下界。进一步从完整finite-K AE lapse action推导真实source初始动量列，并在full-field transpose域同时闭合pressure与density。对明确g，固定参数反三角给修复RMS>e19000，因此该候选在弱涨落门被拒收。
+
+没有停在拒收：继续证明H_i自伴并构造正常Gaussian相关态、完整CP读数和资源。再次验收发现normal全场门丢失Hadamard高频相干，same-AE density差log发散；再改成finite-mode门，给normal+Hadamard正例和约束tail界。新态改变原source mean，下一轮必须重做共同历史和总源。
+
+第二不可变检查点5c99c9890b217ee6b95c3c67b27a2e199c127ee4的三代理实读已由root核对；截至此处累计93条提交—文件身份、91个不同pair、零不一致。其科学CI44866904875与publication CI44866904857均已观察成功，decoded科学日志15 PASS与exact head已核。
+
+本阶段脚本曾发现一处canonical D符号错误（已按Q=i∂P纠正），并发现一个区间helper误传整数的检查代码错误（已纠正）；这些不是通过项，也未隐藏为科学结果。实际证书通过后才进入验收。
+
+有限模门之后继续计算：PREPARED_MEAN给同一门参数的二/四矩运输、zero density=pressure严格增加、原H_in均值严格增加、自由Ward和新的共同mean方程。同时拒收固定旧高模态只调u'''的修复：其Cqp高频差不在H^(3/2)，不能称新Hadamard初值。此处尚未宣称新mean正窗解已得。

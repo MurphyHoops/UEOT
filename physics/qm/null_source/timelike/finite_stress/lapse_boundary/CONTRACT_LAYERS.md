@@ -14,7 +14,7 @@ post-Core科学闭合纲领也区分条件定理、有限实例、指定应用�
 
 | 层次 | 现有明示输入 | 本轮能完成什么 | 没有自动给出的内容 |
 |---|---|---|---|
-| 原mean-SCE | 两个自由minimal massless场、固定AE处方、固定incoming态、G=2〈T〉 | 同一实际mean历史与平均约束；完整源响应/噪声 | geometry Hilbert空间、几何概率律、仪器 |
+| 原mean-SCE | 两个自由minimal massless场、固定AE处方、固定incoming态、G=2〈T〉 | 同一实际mean历史与平均约束；完整源张量噪声、齐次因果响应 | geometry Hilbert空间、几何概率律、仪器 |
 | 物质CTP与二阶响应 | F[g+,g−]=Trρs U−†U+，正确lapse/端点变分 | mean、retarded RSET导数、noise、contact与Ward | 正常jointgeometry密度、初始混合核、非Gaussian截断有效性 |
 | 额外强量子约束候选 | 声明运动学Hilbert、constraint算符/域、正常R并要求强零残差 | 审查具体候选，给明确接受或排除 | 不是前两层普遍强制的唯一实现方式 |
 
@@ -76,3 +76,7 @@ total_source/CONTRACT明确source influence不等于gravitational probability la
 - finite_stress/ORIGINAL_CTP_GATE.md、TOTAL_BOUNDARY_GATE.md、MODEL.md。
 - total_source/CONTRACT.md。
 全部在本轮基线或只读Core源上核对，本页没有修改上述文件。
+
+## 当前接续结果
+
+前述finite-preparation causal map现已按ACTUAL_INVERSE/PREPARED_READOUT完成；ACTION_LIFT还给同AE finite-K完整lapse代表及canonical约束。MIXED_BOUNDARY是同源双行弱解，指定读数被READOUT_WITNESS拒收。正常canonical门先由HADAMARD_GATE拒收全场版本，再给finite-mode修正；PREPARED_MEAN给门后精确矩运输与新共同mean入口。它们均不把normal性所在代数或真实引力准备问题省略。

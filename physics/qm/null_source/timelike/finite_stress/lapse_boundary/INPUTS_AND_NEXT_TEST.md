@@ -1,80 +1,29 @@
-# 闭环之后的下一项：实际几何初始块、因果逆与观测预算
+# 当前验收合同与下一项
 
-## 已验收输入
+## 已闭合的当前层
 
-本轮的完整source N、同一实际态的齐次retarded RSET响应、初始C–future stress混合列、
-六个global Killing momentum行及其定义域已明确。
-保留完整裸边缘的独立carrier修复已由前驱排除；pure canonical endpoint混合也不能造新物理荷。
-21级正常记录允许改变裸态并保留当前非选择源应力限制，但记忆Z不是几何约束荷。
+固定原 AE 约定、同一正常 source 与同一实际历史，已经完成完整 source tensor noise、齐次 retarded RSET 导数、全场因果/advanced 逆与其明确图域。初片 sharp 项先共同组合再取 GNS 极限。
 
-## 必须保留的实际线性约束矩阵
+ACTION_LIFT 从原 homogeneous lapse action 的两条 variation、边界势和 finite-K canonical constraint 推出初始 δP_u=−H_i/h_i。MIXED_BOUNDARY 据此构造同源双行 transpose 弱解。READOUT_WITNESS 对固定 c=e−20000 的实际 proper-expansion 读数给 RMS>e19000，拒收此候选为受控弱涨落方案。
 
-背景E=S=0，ν=δN、w=δlog a、δκ=w′−hν。
-以RETARDED_RESPONSE的同态算子Rρ、Rp定义
-\[
- {\cal E}=2h\delta\kappa-\tfrac23a^2(2\rho w+R_\rho[w,\nu]),
-\]
-\[
- {\cal S}=(\delta\kappa)'-\nu h'+h\delta\kappa
-                    +a^2(2pw+R_p[w,\nu]).
-\]
-原action给δΓ_N=(3V0a²/2)E，δΓ_u=3V0a²(S+E/2)。
-实际源力η_N=−V0a⁴ξρ、η_u=V0a⁴(−ξρ+3ξp)，
-两action方程恰为E=(2/3)a²ξρ、S=−a²ξp。
-噪声必须取同一源力的完整绝对协方差；不把两个分量独立化。
-bulk CTP二次式为qΔ L_R qc+(i/2)qΔ Nη qΔ，另保留真实initial mixed functional。
-这只到二阶cumulant层，非Gaussian源不能由它自动变成完整Gaussian物理过程。
+CANONICAL_PREPARATION 给实际 H_i 的自伴实现与明确正常近似联合态。HADAMARD_GATE 又证明全场 Gaussian 门破坏当前高频相干，同 AE 平均 density 有正 logarithmic 发散；只控制有限低模给正常、Hadamard 且可控制 constraint tail 的修正。两者均改变完整源态，不可再沿用旧 quiet mean/noise。
 
-正常kinematic强约束与原mean/CTP的层次区别见[合同复盘](CONTRACT_LAYERS.md)。下列强约束验收只对已明确选择的候选适用，不提升为原mean-SCE的普遍公理。
+## 下一首要交付：有限模式准备后的同一总源 mean 与局域实施
 
-## 本轮继续关闭的定义域与作用量接口
+1. 固定 preparation cutoff K≥2、constraint tolerance δ0、同一真实几何时钟；明确有限 source/control Hilbert 模型与所有记录。
+2. 用同一 Gaussian gate 参数运输全部二阶、四阶 source 矩，保留原 zero–shell 相关及门产生的跨模相关；先固定 K 后取 stress observable cutoff L→∞。
+3. 从保留 lapse 的同一作用量重算 finite-slice density、pressure、法向导数和 AE counterterms。源态改变后需重新证明正时间窗共同 mean history；不能只变几何初导并保旧高频态。
+4. 把 controller、interaction stress、读出器放回完整总约束。当前 mode-global CP 门不是局域、协变、自主装置，也不与旧总约束对易。
+5. 指定原高阶 canonical constraint 的 ordering、domain、physical inner product 或严谨的约束后代数，再判断何种 normal joint state 是正确要求。toy 的运动学核空不能排除 Dirac 物理空间。
+6. 在新实际共同历史上重建完整 tensor response/initial mixed blocks 与仪器校准；平均匹配和正 Gram 不替代这一步。
 
-CAUSAL_DOMAINS已证明：完整静态G对实际平稳source的全过去卷积没有GNS L²极限。
-因此第4项的无限过去分支已在声明合同下拒收，不继续把它当未检查候选。
-有限K实际pressure因果逆和off-shell Ward缺陷现已明确。
-FINITE_SOURCE_DOMAIN给实际U上的源起始UV系数与含源Q/D初始块的精确取消；
-该block还没有被证明来自正常geometry/装置准备。
-ACTION_RESPONSE已将同AE总action行重写到Q响应核与完整局部项；
-COVARIANT_RESPONSE给严格紧支测试上的协变两腿及contact账本，固定AE tensor转换仍待完成。
+## 不再重复的失败路径
 
-## 下一首要交付及拒收条件
+- 保持旧rank-two完整裸边缘，仅添加独立carrier；旧谱定理/新的支撑泄漏界均不能绕过。
+- 使用单独sharp Q/D端点或把有限平滑荷当成sharp density。
+- 原fullmode R只解pressure便宣称density已满足。
+- 忽略1/h_i、权重转换、zero相干或source cross，以小源噪声宣称小几何涨落。
+- 全场Gaussian Hi dephasing仅凭normal性签为Hadamard准备。
+- 每个有限K合法就宣称K→∞在同AE应力域合法。
 
-1. 从同一总作用量和一次真实准备过程给出有限初片joint density或约束后物理态与内积。
-   必须明确“正常”是原运动学source⊗carrier代数还是由原约束构造的物理代数。
-2. 实际满足C_geom−C_pre=C_source，保留已知C–stress关联及局域动量约束。
-   若C_geom−C_pre仍是独立carrier-only自伴量，应用旧TOTAL_BOUNDARY_GATE §4（及QUANTUM_FLOOR）的连续谱强约束阻断：
-   当前C无点谱，C⊗1−1⊗Z也无点谱，故原普通tensor Hilbert中的正常态不可能精确强匹配。
-   这是前驱一般论证的当前应用，不新增定理；没有统一正残差下界。
-3. 若有真正含源的mixed/preparation列，明确它的action来源、域、正性和正常联合态。
-   不能从可写出的有限协方差直接推定Hilbert态或局域装置存在。
-4. 在声明的有限准备片、gauge和边界合同B下构造G_R^B。
-   从−∞作用于静态过去不衰减的压力涨落，需要单独的过去加权GNS L²证明；
-   几何的正频Wiener逆不能自动作用于平稳噪声。
-5. 首个物理几何测试取同一初片起算的proper-time expansion：
-   O_g=δ∫g(τ)Hphys(τ)dτ=−∫g′(τ)w_τ(τ)dτ，g为明确compact测试。
-   先把它经实际G_R^B的adjoint拉回source域，再计算完整初始+源+交叉方差和截断误差。
-
-若w=w_B+G_R^B b，b=−a²ξp，F为上述几何测试，K_F=(G_R^B)*F，则必须实际验收
-\[
- \operatorname{Var}O_F
- =\operatorname{Var}O_B+N_{bb}(K_F,K_F)
- +2\operatorname{Cov}_{sym}(O_B,b(K_F)).
-\]
-已知Cov(C,b(K))=−ασ²μ2∫a²LK，不能随手设为零。
-正交投影检验为
-\[
- \min_z\operatorname{Var}(\xi_p(f)-zC)
- =N_{pp}(f,f)-\sigma^2\mu_2L_f^2\ge0,\quad z=L_f/\alpha .
-\]
-它只去掉profile块，number/pair/highvac部分仍在。
-这是GNS二阶投影，不是声称已实现条件测量。
-
-## 本轮复盘已改变的选择
-
-短窗绝对pressure很大，新长窗指定source测试可以较弱，两结论并不矛盾。
-但同一新mean族的anchored proper-time快方向log增益>18709；
-源的正单位f预算不能控制未知G_R^*F的预算。
-因此下一步优先真正的准备/边界/因果逆与观测，停止重复缩窄σ、重复固定裸态carrier或把端点相位当物理修复。
-
-后续任何新interaction都必须重算total stress及其renormalization。
-上述工作完成前，完整几何—物质—装置闭环与物理统一均OPEN。
+物理统一核心目标继续OPEN。下一项要交付实际改变态后的共同演化及总源，而不是新增未经实现的协方差假设。
