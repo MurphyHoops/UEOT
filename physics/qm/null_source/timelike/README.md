@@ -1,5 +1,7 @@
 # 同一源的平均应力、测量扰动与几何记录
 
+> 2026-11-21 continuation: [Complete finite-K relational dynamics and physical slice](finite_stress/lapse_boundary/relational_coupled/README.md). Reuse 190 accepted entries; preserve 698 predecessor files. Full physical unification remains OPEN.
+
 > 2026-11-21 接续：[实际 lapse、完整源噪声、因果响应与准备验收](finite_stress/lapse_boundary/README.md)。新入口复用163项并冻结600个前驱科学文件；物理统一仍OPEN。
 
 **当前入口：**[有限正源的共同历史与路线回审](finite_stress/README.md)。固定 K-inspired 正体积族的三个区间已验收；临界模型有正规联合态、固定演化、有限总正源方差和正常正能 dust 提升。原 P 律保持，但裸态、法向导数、完整 Ward 和原 AE/QFT 并未自动恢复。

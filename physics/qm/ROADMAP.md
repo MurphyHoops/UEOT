@@ -1,5 +1,7 @@
 # UEOT Physics Roadmap
 
+> 2026-11-21 continuation: [Complete finite-K relational dynamics and physical slice](null_source/timelike/finite_stress/lapse_boundary/relational_coupled/README.md). Reuse 190 accepted entries; preserve 698 predecessor files. Full physical unification remains OPEN.
+
 > 2026-11-21 接续：[实际 lapse、完整源噪声、因果响应与准备验收](null_source/timelike/finite_stress/lapse_boundary/INPUTS_AND_NEXT_TEST.md)。新入口复用163项并冻结600个前驱科学文件；物理统一仍OPEN。
 
 本图延续同一物理任务。稳定书稿状态为[CURRENT](status/CURRENT.json)，本轮研究执行以当前节链接的回执为准；稳定结果为[主文](book/UEOT_PHYSICS.md)及现行claim ledger。Core只读，GI不在范围。数学闭合、物理选择、计算实现、经验检验分别登记。

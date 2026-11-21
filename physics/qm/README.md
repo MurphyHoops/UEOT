@@ -1,5 +1,7 @@
 # UEOT-QM 物理学阅读入口
 
+> 2026-11-21 continuation: [Complete finite-K relational dynamics and physical slice](null_source/timelike/finite_stress/lapse_boundary/relational_coupled/README.md). Reuse 190 accepted entries; preserve 698 predecessor files. Full physical unification remains OPEN.
+
 > 2026-11-21 接续：[实际 lapse、完整源噪声、因果响应与准备验收](null_source/timelike/finite_stress/lapse_boundary/README.md)。新入口复用163项并冻结600个前驱科学文件；物理统一仍OPEN。
 
 当前候选书稿含第0–71章、六个附录和210项结果。第71章研究共享同一 Ramsey 曲线的相关浴，给出带符号干预、有限预测与类空场响应的适用条件。本次留出与校准均使用合成数据。
