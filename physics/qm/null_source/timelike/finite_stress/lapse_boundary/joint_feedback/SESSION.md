@@ -8,7 +8,7 @@ Local HEAD, remote branch, and PR head were checked at `42d0c223173fa81ce0a75d7d
 
 The previous result leaves physical unification open. The present task follows the current joint-generator, actual-source, domain, and readout gaps instead of restarting the already accepted mean-history computation.
 
-## Early findings requiring proof and review
+## Initial historical snapshot: findings requiring proof and review
 
 - Raw source energy has an exact joint Ward identity because its instantaneous commutator with the original source Hamiltonian vanishes. Pressure response retains the inverse-expansion weighted source state.
 - Geometry phase data invisible to several initial means can change the next source jet. An original-preparation construction is under independent review.
@@ -28,3 +28,7 @@ Checkpoint 7fdf76a16b465fa39eca9e46c560a88508e83ff0 carried 9 science entries pl
 ## Closure after the correlated-state construction
 
 Checkpoint f11a5f59c4dc0067e5702aa9ee463df0c3339da1 records 17 science checks plus one scope check, all passing with the 213-entry/782-file inheritance unchanged. The final research continuation constructed a normal changed-source bulk state, then a rare-excitation/rare-phase preparation with exact specified initial clock mean and geometry current. Its generator variance and initial second geometry jet fail the stated stronger gates. All three agents reviewed the written proof at that immutable checkpoint. Full constraint dynamics, genuine preparation and physical unification remain open. Final source/progress review and exact-head CI are being completed before the final time record.
+
+## Final review and next-test concretization, still in progress
+
+The sixth checkpoint review has 11 precisely scoped agent/file records, verified against Git. Two documentation-only corrections were incorporated. Root inspected decoded exact-head science and manuscript logs and all publication job statuses for checkpoint6; checkpoint6_ci.json records this evidence. The next task was refined by all three agents into NEXT_PROPAGATOR_TEST.md: a first bounded prepared joint record, a stronger two-sided complete-propagator gate, a positive two-time constraint kernel, and the separate stress/clock/domain requirements. These tests are explicitly unexecuted and add no scientific certificate. The original PR account is preserved verbatim under its historical header in PR_HISTORY_42d0c223.md. Final minimum-duration evidence remains to be recorded after the actual gate.

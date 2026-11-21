@@ -9,7 +9,7 @@ The decoded job log was actually fetched, contains 23 PASS entries, and has SHA-
 Artifact metadata for 14704565235 identifies the same head and digest.
 The metadata is preserved in baseline_ci.json; no binary artifact was claimed to have been independently unpacked.
 
-## New working derivations
+## Initial historical snapshot: new working derivations
 
 Root wrote and executed the first five independent entries. All five passed their initial exact/interval checks. Three native read-only agents reviewed derivations and actual frozen source texts; these are distinct from immutable new-source audits.
 
@@ -32,3 +32,9 @@ At ba8ab73c46010a05bb828102354456f160841c6b, 22 actual agent-file reads were roo
 At f11a5f59c4dc0067e5702aa9ee463df0c3339da1, 15 agent-file records were actually read and root-verified against Git, with zero mismatch (audit_checkpoint5.json). Twelve are full reads; three explicitly cover selected sections already read in earlier checkpoints. The five checkpoints total 78 recorded identity checks. Final clarifications distinguish clock-generator/covariant forms from the full constraint, label conformal-time derivatives and the fixed-q source Hamiltonian correctly, and supply the direct differentiated Gaussian tail. The rare-phase checker label identifies its kinetic contribution only.
 
 Review also withdrew an exploratory inference from bare canonical Pi_g divergence: the original reference itself depends on K, so that unsubtracted comparison is not an accepted exclusion. The conditional Gaussian checker initially exposed an overlapping symbolic-moment substitution issue; polynomial coefficients were paired with exact Gaussian moments instead, and the unchanged analytic formula then passed. These corrections are not additional science entries. All later acceptance refers to the source-bound passing results.
+
+## Sixth immutable checkpoint and decoded CI
+
+At 38c8dc6228e0cb36ea0b71f486234d4fc9f31a01, 11 agent-file records were root-verified against Git with zero mismatch (audit_checkpoint6.json): eight full reads and three complete CP6-change reviews against CP5 full reads. Six checkpoints therefore have 89 recorded identities, with their actual reading scope retained. C identified an omitted I1 in a README-only leading-coefficient summary and an inverted Chinese phrase; both were corrected after the checkpoint. The detailed Gaussian proof already had the correct coefficient. Early audit/session statements are explicitly labelled historical snapshots.
+
+The same checkpoint has successful science run 44911515864 (job 136868157313) and successful publication jobs in run 44911515756. Root actually fetched and inspected decoded science and manuscript logs. The science log contains 18 PASS entries and the 213-result/782-file summary. Exact head, log digests and artifact metadata are saved in checkpoint6_ci.json; the artifact ZIP was not independently unpacked. These observations certify checkpoint6, not a later commit. Final exact-head CI is separately reported in the PR and final delivery.

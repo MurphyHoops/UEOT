@@ -27,7 +27,8 @@ independently reviewed; the checks are not machine formal proofs or external pee
 
 The changed-source conditional Gaussian family has a normal bulk joint-state limit
 in an explicitly fixed representation. Its source-plus-scalar-counterterm mean converges,
-but the original covariant geometry form grows as K/4. A rare high excitation and rare
+but the projective derivative metric grows as K/4 and its covariant geometry form as
+K I1/4. A rare high excitation and rare
 geometry phase mixture can simultaneously retain that normal limit, the chosen kappa
 law, a specified initial kappa rate and one exact clock mean.
 
@@ -47,7 +48,10 @@ an existing residual spectral law; it supplies no free new constraint charge.
 
 The original complete cutoff dynamics does not exactly intertwine that kinematic net.
 A renormalized joint propagator, its physical state/domain, full constraints and
-source/controller/probe budget still require a common construction.
+source/controller/probe budget still require a common construction. The unexecuted
+[NEXT_PROPAGATOR_TEST.md](NEXT_PROPAGATOR_TEST.md) fixes the original comparison,
+a first bounded prepared record, the stronger two-sided propagator gate, and the
+separate original-constraint and stress/clock responsibilities.
 
 ## Verification and inheritance
 
