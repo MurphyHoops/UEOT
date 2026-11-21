@@ -31,7 +31,7 @@ run_verification另检查旧inventory、内容、CI链、版本、范围与执�
 完整Einstein–CTP解及其高阶误差、经验校准和物理统一均OPEN。
 此处不宣称外部人类同行评议或机器形式化证明。
 
-最终执行/CI/提交身份与本轮计时在后续审计checkpoint补充，保持结论与证据范围一致。
+各科学checkpoint与实际时长见本页后续记录；最后文档提交的准确head验收由同一PR记录。
 
 ## 已观察的第一不可变检查点
 
@@ -56,3 +56,14 @@ readout W7增加support长度√2并以冻结中心+width验证emax；最终宽�
 ## 第五检查点
 
 新增relational_domain后为26科学+1scope=27入口。它只认证明示ordering的principal selfadjoint reference、finite-K domain运输和主块传播；全耦合Hrel/全场/physicaljoint/装置未签。CP4三原生审读及补读累计171身份、141distinct pair，零不一致；CP4 exact-head科学与publication CI均success，26个decoded PASS、head与artifact digest已实存。
+
+## 最终科学检查点与证据边界
+
+三原生代理在5个科学检查点留下15份记录；root逐项核对190条身份、153个不同提交—文件pair，零不一致。
+CP5 aa93834aeed02af6c499f654ca57f4398975e558 的科学run44872896966、job136751145927与publication run44872896902均已观察success。科学解码日志27条PASS、exact head和163/600冻结摘要已实际读取；artifact14694961250及digest已入checkpoint_ci.json。C独立解码日志与root所得SHA256一致。
+
+最后文档提交不增加科学证书。其准确head的CI与最终文档回读结果另由同一PR记录，避免把尚未执行的结果写成已通过，也避免反复提交只为把本提交自己的CI写入自身。最终本地verification.json明确保留执行时HEAD与dirty状态；它绑定当时全部源码，不能冒充提交后的CI回执。
+
+## 本轮时长与最终交付方式
+
+本轮最低时长验收已实际完成，起止与秒数见session_timing.json。该时点后继续执行最终源码绑定检查、提交、准确head的CI和PR更新；不把后续未知时点写成既成事实。最终本地执行仍为27项，前驱163项复用、600个科学文件冻结。最后提交的两项CI及文档回读由同一开放草稿PR记录。
