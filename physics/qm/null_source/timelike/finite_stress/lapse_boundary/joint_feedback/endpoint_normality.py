@@ -5,7 +5,8 @@ P="physics/qm/null_source/timelike/finite_stress/lapse_boundary/"
 paths=[P+"quiet_window.json",P+"relational_coupled/actual_uv_bridge.json",
  P+"ENDPOINT_DOMAIN.md",P+"ACTION_BOUNDARY.md",P+"ACTUAL_INVERSE.md",
  P+"relational_coupled/ACTUAL_UV_BRIDGE.md",
- P+"relational_coupled/PHYSICAL_SLICE.md"]
+ P+"relational_coupled/PHYSICAL_SLICE.md",
+ P+"joint_feedback/NEAR_RECOVERY.md",P+"joint_feedback/MIXED_RESOURCE.md"]
 quiet,uv=load(paths[0]),load(paths[1])
 require(quiet["new_initial_slow_amplitude_exact"]=="exp(-20000)" and uv["same_actual_background_and_incoming_state"],"Actual incoming endpoint")
 mu=exact(".1");om=iv.sqrt(8)
@@ -74,7 +75,9 @@ finish("endpoint_normality.py",dict(
  cutoff_inputs_automatically_one_consistent_raw_state=False,
  disjoint_support_mixed_target_exact_minimum=True,
  general_finite_rank_mixed_attainable_leading_coefficient="F_Q(gamma,kappa)/16",
- general_mixed_arbitrary_entangled_optimality_proved=False,
+ general_mixed_arbitrary_entangled_optimality_proved=True,
+ sharp_general_mixed_proof="MIXED_RESOURCE.md",
+ normal_output_excludes_trace_normal_incoming_subsequence=True,
  exact_finite_rank_target_universal_leakage_lower=True,
  leakage_finite_K_bound="positive part of l S - 2 sqrt(l ||L|| R (C_A l+2||A0||^2) S)",
  commuting_compressed_position_mixed_target_globally_sharp_leading=True,

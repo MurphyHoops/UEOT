@@ -16,7 +16,7 @@ For \(N_\epsilon=1+\epsilon\mu\), choose a fixed small parameter interval with \
 f(t)=\int_0^t\mu(s)\,ds,\qquad W=z-hf.
 \]
 This \(\tau\) is unit-lapse **conformal** time, not the proper clock of PREPARED_LIMIT.
-The family is the original physical history rewritten in that coordinate, with the incoming identification fixed in the past. For the scalar stress components,
+The varied history \(u_\epsilon=U+\epsilon z,\ N_\epsilon=1+\epsilon\mu\) is written in unit-lapse conformal time, with the incoming identification fixed in the past. For the scalar stress components,
 \[
 \boxed{\delta_y\rho=D_W\rho+f\rho',\qquad
        \delta_y p=D_Wp+fp'.}                                       \tag{L1}

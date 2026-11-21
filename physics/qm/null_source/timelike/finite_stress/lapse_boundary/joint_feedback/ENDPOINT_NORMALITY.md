@@ -97,7 +97,9 @@ D_{\rm tr}(\rho_K,\rho_K^J)\le\sqrt{1-p}.
 \]
 The modes above \(J\) in \(\rho_K^J\) are pure vacuum and factor from the rest. For fixed \(J\), E5 applies to their growing tail, regardless of the remaining correlations. Apply contraction, then take \(K\to\infty\), \(J\to\infty\), and \(\epsilon\to0\). When \(p=0\), use the trivial probability bound instead of defining the normalized compression.
 
-Every **fixed** normal input is tail tight because \(P_J\uparrow I\) strongly. A uniformly bounded incoming excitation-energy family is another sufficient condition. Thus merely allowing finite-energy correlated preparation does not automatically repair the fixed-frame continuum problem. No input-convergence assumption was used in the family statement.
+Every **fixed** normal input is tail tight because \(P_J\uparrow I\) strongly. A uniformly bounded expectation of the **full** incoming \(H_{\rm exc}=\sum_{k\ge3,r}\omega_kN_{kr}\) is another sufficient condition. A bound only on the truncated \(H_{{\rm exc},K}\) does not by itself control modes above \(K\); E4 treats the truncated-energy problem independently. Thus merely allowing finite-energy correlated preparation does not automatically repair the fixed-frame continuum problem. No input-convergence assumption was used in the family statement.
+
+There is also an exact compactness consequence. Any family converging in trace norm to a normal input in the common incoming Fock embedding is uniformly tail tight: use the limit's tail and trace-distance contraction for all sufficiently large indices, and \(P_J\uparrow I\) for the finitely many remaining inputs. Hence, if the endpoint geometry outputs converge in trace norm to a fixed normal target, the incoming family has **no trace-norm convergent subsequence** to a normal input in this embedding. This conclusion uses tail tightness, not the invalid inference that diverging energy alone prevents trace convergence. It allows a different representation or an algebraic non-normal limit; neither supplies joint dynamics automatically.
 
 ## E4. A sharper finite-cutoff resource inequality for arbitrary correlations
 
@@ -146,7 +148,7 @@ For a fixed target \(\gamma\), a directly reviewable error/resource form is
 \]
 It applies at finite \(K\) when \(S_{K,L}>0\).
 
-If \(\gamma_K\to\gamma\) normally, select \(F\) with \(\operatorname{Tr}F\gamma\ge3/4\), then a fixed \(L\) with \(a_L(F)\le1/4\). Equation E11 gives
+If \(\gamma_K\to\gamma\) in trace norm, select \(F\) with \(\operatorname{Tr}F\gamma\ge3/4\), then a fixed \(L\) with \(a_L(F)\le1/4\). Equation E11 gives
 \[
 \liminf E_K/K^2\ge1/(8L)>0.                                       \tag{E13}
 \]
@@ -300,7 +302,7 @@ Mixing the normal pure-target endpoint optimizers for the displayed ensemble giv
 E_{\rm upper}(K,\gamma)=\sum_jp_jE_{\min}(K,v_j),\qquad
 \boxed{\lim E_{\rm upper}/K^2=C_\gamma/4=F_Q(\gamma,\kappa)/16.}       \tag{E19}
 \]
-For the explicitly restricted class of finite or countable mixtures of pure-geometry product outputs, this leading coefficient is optimal, even if the ensemble varies with \(K\): \(v_j\le\|\kappa P\|^2\) makes the logarithmic remainder uniform. A matching lower bound for arbitrary entangled outputs of a general mixed \(\gamma\) is **not** proved. E18 supplies that stronger equality only for disjoint-support mixtures.
+For the explicitly restricted class of finite or countable mixtures of pure-geometry product outputs, this leading coefficient is optimal, even if the ensemble varies with \(K\): \(v_j\le\|\kappa P\|^2\) makes the logarithmic remainder uniform. The independent proof in [MIXED_RESOURCE.md](MIXED_RESOURCE.md) now supplies the matching lower bound for arbitrary normal entangled inputs, all normal finite-second-moment targets, and trace-convergent approximate outputs. E18 retains its stronger exact finite-cutoff equality for disjoint-support mixtures.
 
 A fully continuous geometry example checks the otherwise easily lost form term. Let \(b(x)\) be an even smooth normalized bump, \(\mu_j=\int x^j|b|^2\), and \(m>\ell>0\). Put
 \[
@@ -395,7 +397,7 @@ Combining the explicit lower and attainable upper gives
 \]
 If \([\gamma,P\kappa P]=0\), then \(Y=P\kappa P\), \(C_\gamma=l\), and the global optimal leading coefficient is exactly \(l/4\). This includes maximally mixed states on a fixed finite-dimensional support and the overlapping-packet example with \(\lambda=1/2\), whose coefficient is
 \(\ell^2(\mu_4/\mu_2-\mu_2)/8\).
-For general noncommuting targets the interval in E22 remains a real open gap; no universal QFI lower bound has been claimed.
+E22 is a useful elementary finite-cutoff leakage bound. Its former noncommuting leading-order gap is closed by [MIXED_RESOURCE.md](MIXED_RESOURCE.md), which proves the sharp \(F_Q/16\) coefficient without a finite-rank restriction. The leakage argument here alone does not prove that stronger theorem.
 
 ## E7. A positive algebraic limit, and the exact representation change it requires
 

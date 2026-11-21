@@ -71,33 +71,46 @@ Thus all those moments and initial jets agree although a bounded record can diff
 \]
 This is a statement about the auxiliary self-adjoint group parameter. It is not a proper-clock or apparatus prediction until a domain has been selected.
 
-## M3. Two nonzero, different positive-band projections exist
+## M3. Two nonzero, different projections exist on the actual positive bands
 
-A whole positive bounded band cannot be declared physically irrelevant for every allowed domain. More precisely, for every nonempty bounded open interval \(I\), there are two \(J\)-compatible self-adjoint extensions for which \(E_I(R_Q)\) are nonzero and different. A finite union of such intervals is handled by selecting an interior interval.
+For every nonempty bounded open **set** \(I\subset\mathbb R\), there are two \(J\)-compatible self-adjoint extensions whose \(E_I\) projections are both nonzero and different. This includes the finite union of the two old positive bands. The proof uses only boundedness of \(I\) and a neighborhood of a point contained in \(I\); a smaller interval's projection difference is not assumed to imply the union's difference. The two extensions can moreover be chosen to differ by a rank-one boundary phase.
 
-Here is a proof specialized to the already present symmetric operator. Let
-\(\mathcal H_s=\overline{\operatorname{span}}\{\ker(S^*-z):\Im z\ne0\}\);
-its orthogonal complement is the self-adjoint part. The standard defect transport
+Let \(\mathcal H_s\) be the closed span of all \(\ker(S^*-z)\), \(\Im z\ne0\). For any extension \(R_Q\), the bounded invertible defect transport
 \[
 T_{z,w}=I+(z-w)(R_Q-z)^{-1}
 \]
-maps \(\ker(S^*-w)\) onto \(\ker(S^*-z)\). It shows that \(\mathcal H_s\) reduces every extension. The identity
-\(D(S)=D(R_Q)\cap D(R_{-Q})\)
-then shows it reduces \(S\). Its restriction is a nonzero simple symmetric operator, and it is \(J\)-invariant.
+maps \(\ker(S^*-w)\) onto \(\ker(S^*-z)\). Thus each nonreal resolvent preserves \(\mathcal H_s\) (the case \(z=w\) follows by continuity); its adjoint also preserves it, so \(\mathcal H_s\) reduces every extension. The identity
+\(D(S)=D(R_Q)\cap D(R_{-Q})\) shows it reduces \(S\). The complementary restriction has zero defects and is self-adjoint. The restriction \(S_s\) on \(\mathcal H_s\) is \(J\)-invariant and retains the nonzero deficiency spaces.
 
-Suppose all the band projections on this simple part were zero. For \(\lambda\) strictly inside \(I\), every extension has a spectral gap at \(\lambda\), so \(S_s-\lambda\) is bounded below and has closed range. If it were onto, solving
-\((S_s-\lambda)x=(S_s^*-\lambda)y\)
-would imply \(D(S_s^*)=D(S_s)\), contradicting simplicity and its nonzero defect. Thus \(\ker(S_s^*-\lambda)\ne0\). Select a nonzero \(J\)-real member \(y\). In its von Neumann decomposition, the negative defect component is \(Jx_+\); choosing a \(J\)-adapted \(Q\) with \(Qx_+=Jx_+\) puts \(y\) in its extension domain. That extension has eigenvalue \(\lambda\), a contradiction. Some band projection is therefore nonzero.
+Suppose every \(J\)-compatible extension has zero \(E_I\) projection on \(\mathcal H_s\). Choose \(\lambda\) in the interior of \(I\). The gap around \(\lambda\) gives a positive lower bound for
+\(\|(S_s-\lambda)f\|/\|f\|\), so \(S_s-\lambda\) is injective with closed range. It cannot be onto: if it were, \(\ker(S_s^*-\lambda)=0\), and solving
+\((S_s-\lambda)x=(S_s^*-\lambda)y\) for each \(y\in D(S_s^*)\) would imply \(y=x\in D(S_s)\), making \(S_s\) self-adjoint. Thus there is a nonzero real defect at \(\lambda\). Choose a \(J\)-real \(y\) in it. Its von Neumann decomposition at fixed reference \(\pm i\) has the form
+\(y=f_0+x_++Jx_+\), with \(x_+\ne0\); otherwise \(y\in D(S_s)\) would contradict injectivity. A \(J\)-adapted graph unitary sending \(x_+\) to \(Jx_+\) puts \(y\) in its extension domain and makes \(\lambda\) an eigenvalue. This contradicts the zero band projection. Some \(J\)-compatible \(Q_0\) therefore has
+\(P_0=E_I(R_{Q_0})|_{\mathcal H_s}\ne0\).
 
-Choose such an extension \(Q_0\). A smooth compact spectral function in \(I\) is nonzero on it; norm-resolvent continuity under small \(J\)-adapted boundary phases preserves nonzero band projection nearby. Suppose all nearby band projections were the same \(P\). Phase variations along each real vector of the adapted defect conjugation imply that \(P\) commutes with the corresponding rank-one defect maps, their adjoints and their products. Hence \(P\) is the same scalar \(0\) or \(1\) on the positive and negative defect spaces. Defect transport extends that scalar to \(\mathcal H_s\). Since \(P\ne0\), it must be \(I\) on the simple part.
+At reference \(\pm i\), define the defect-space conjugation \(K_0=JQ_0\) on \(N_+\). For every unit \(K_0\)-real vector \(x\), \(Q_0x=Jx\). Let
+\[
+Q_{\theta,x}=Q_0[I+(e^{i\theta}-1)|x\rangle\langle x|].
+\]
+These graph unitaries remain \(J\)-compatible. Their Cayley transforms obey
+\[
+W_{Q_{\theta,x}}-W_{Q_0}
+ =-(e^{i\theta}-1)|Jx\rangle\langle x|.
+\]
+This is a rank-one change tending to zero in norm. Choose \(q\in C_c^\infty(I)\) with
+\(q(R_{Q_0})|_{\mathcal H_s}\ne0\). Norm-resolvent continuity and continuous functional calculus for \(q\) ensure that
+\(E_I(R_{Q_{\theta,x}})|_{\mathcal H_s}\ne0\) for sufficiently small phases, uniformly in \(x\) because the displayed norm difference is \(|e^{i\theta}-1|\).
 
-But then the extension's spectrum on that part is contained in bounded \(I\), so it is a bounded self-adjoint operator there. Its closed dense restriction \(S_s\) would also have full domain, making \(S_s\) self-adjoint, again a contradiction. There must be a nearby nonzero, different band projection.
+Assume every such sufficiently small rank-one phase change has the same band projection \(P_0\). Then \(P_0\) commutes with \(W_{Q_0},W_{Q_{\theta,x}}\), their rank-one differences and their adjoints. Products show commutation with
+\(|x\rangle\langle x|\) and \(|Jx\rangle\langle Jx|\) for every \(K_0\)-real \(x\). Commutation with \(|Jx\rangle\langle x|\) gives the same eigenvalue, either zero or one, on \(x,Jx\). A \(K_0\)-real orthonormal basis and its pairwise real sums show that this scalar is the same on all of \(N_+\) and \(N_-\). Defect transport with \(R_{Q_0}\), which commutes with \(P_0\), propagates it to every nonreal defect space and then all of \(\mathcal H_s\). Since \(P_0\ne0\), \(P_0=I\) there.
 
-This proof establishes domain ambiguity in the original positive spectral sector. It does **not** prove an absolutely continuous spectral density on either old-source band.
+The extension's spectrum on \(\mathcal H_s\) is then contained in the bounded **closure** of \(I\), so its restriction is bounded. A closed dense restriction of a bounded operator has full domain, making \(S_s\) self-adjoint, a contradiction. At least one explicit small rank-one phase change therefore has a nonzero band projection different from \(P_0\). The two full original extensions have different nonzero projections, with the self-adjoint complementary part unchanged.
+
+This establishes domain ambiguity in the original positive spectral sector. It proves neither that a selected domain passes the old absolutely continuous spectral gate nor that a boundary completion is physically selected.
 
 ## M4. A common original Dirac observable distinguishes physical outputs
 
-The ambiguity can be read after the actual original rigging, not only through the auxiliary Lorentzian record. For common annular tests with
+The ambiguity can be read after the actual original rigging, not only through the auxiliary Lorentzian record. For a kinematic test \(f\), write \(f_a:=a f\) and \(\widehat f_a:=\mathcal F_2(a f)\), where \(\mathcal F_2\) Fourier-transforms the two original zero-mode coordinates. For common annular radial tests with
 \[
 \widehat f_a(p)=\sum_j q_j(|p|^2)\psi_j,\qquad
 q_j\in C_c^\infty(I),\quad \psi_j\in D_0,
