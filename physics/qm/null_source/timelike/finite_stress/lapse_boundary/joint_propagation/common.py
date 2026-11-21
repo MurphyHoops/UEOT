@@ -35,7 +35,7 @@ def finish(script,payload,inputs=(),proof=None):
     require(all(p.is_file() and not p.is_symlink() for p in paths),"Source file missing")
     payload.update(schema="ueot-joint-propagation-"+name+"/1",status="PASS",
       source_sha256={str(p.relative_to(REPO)):sha(p.read_bytes()) for p in sorted(set(paths))},
-      verification_kind="exact algebra or outward interval checks; analytic proofs stated separately",
+      verification_kind="exact algebra, outward interval checks, or explicitly tolerance-based floating-point regressions; analytic proofs stated separately",
       predecessor_scientific_modules_imported_or_executed=0,
       mode_ODE_integrations=0,geometry_ODE_integrations=0,
       full_field_Einstein_CTP_device_solution=False,physical_unification="OPEN")

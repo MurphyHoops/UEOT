@@ -65,3 +65,12 @@ preparation/measurement device remain OPEN. The positive rescaled
 quantum model is a mathematically derived singular limit; its parameter
 is not identified with laboratory proper time or seconds.
 The next concrete admissibility problem is in NEXT_GATE.md.
+
+## Intermediate CP1 checkpoint
+
+CP1 03b3906cb9b0817178ef7d02f0a3ed29a81c7e4b was pushed and its
+science/publication workflows succeeded. Three readonly agents made
+50 immutable source reads. The root accepted and patched their
+16 findings before continuing to Gaussian preparation and bounded
+probe response. The session remains IN_PROGRESS; no three-hour
+completion is claimed at this intermediate checkpoint.

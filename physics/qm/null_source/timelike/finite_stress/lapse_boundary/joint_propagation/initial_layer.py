@@ -37,6 +37,7 @@ finish("initial_layer.py",{
 "uniform_strong_adjoint_and_two_time_limit":True,
 "same_time_cutoff_pair":"K=N^2,L=N; rescaled L-time=2s/N",
 "coefficient_examples":rows,
+"coefficient_example_scope":{"illustrative_only":True,"G_at_initial_slice":"19/120","support":["11/10","19/10"],"J":3,"s":4,"frozen_actual_history_parameters":False},
 "ordinary_time_uniform_initial_window":"REJECTED",
 "ordinary_fixed_positive_time_limit":"OPEN",
 "full_corrector_domain_argument":"analytic proof P2-P4; not certified by finite algebra alone",

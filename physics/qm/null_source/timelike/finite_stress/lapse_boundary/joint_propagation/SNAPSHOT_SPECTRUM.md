@@ -76,7 +76,8 @@ and integral_0^infinity e^-s(1+s)^5 ds=326 further give
 
 For the fixed C5 limit vector add 2||Psi_K-Psi_infinity||=O(K^-1/2).
 For Im z=b>0 replace 326 by
-sum_{j=0}^5 binomial(5,j)j!/b^(j+1); the lower half-plane uses the reverse
+sum_{j=0}^5 binomial(5,j)j!/b^(j+1), and the fixed-vector tail by
+(2/b)||Psi_K-Psi_infinity||; the lower half-plane uses the reverse
 group. These are analytic profile-dependent rates, not operator-norm
 convergence or a practical numerical cutoff threshold.
 

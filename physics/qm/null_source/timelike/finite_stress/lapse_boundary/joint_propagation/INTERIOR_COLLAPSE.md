@@ -90,7 +90,7 @@ this bulk comparison. It is not merely a frozen-snapshot diagnostic.
 There is no contradiction with finite-K physical Hilbert spaces.
 Each finite-K exact quotient still completes to H and has normal
 trace-one slice states. Its adapted section J_{h,K} depends on K and
-still satisfies T_K J_{h,K}=I. Such moving tests are outside (I.2).
+still satisfies T_K f_kappa J_{h,K}=I, equivalently T_C,K J_{h,K}=I. Such moving tests are outside (I.2).
 Likewise slice delta evaluation, unbounded traces, and the rescaled
 tests epsilon_K^-1 Phi((u-u_i)/epsilon_K) are not fixed L^1 vector
 tests. RESCALED_KERNEL supplies a positive, normalized limit on that

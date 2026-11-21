@@ -5,7 +5,7 @@ from common import finish, require, iv, interval, outward, below, above
 K,k=sp.symbols("K k",integer=True,positive=True)
 nu=lambda z:z/4-sp.Rational(1,16)-1/(8*z)-1/(8*(z+1))
 require(sp.simplify(nu(K)-nu(K-1)-K*K/(4*(K*K-1)))==0,"Reference variance telescoping")
-require(sp.simplify(nu(2)-sp.Rational(1,3))==0,"Reference variance initial shell")
+require(sp.simplify(nu(sp.Integer(2))-sp.Rational(1,3))==0,"Reference variance initial shell")
 u,g0,v,N=sp.symbols("u g0 v N",real=True)
 g=g0+u/4; r=v/(2*g); ff=-r
 require(sp.simplify(sp.diff(r,u)+v/(8*g*g))==0,"New lapse mixed contact")

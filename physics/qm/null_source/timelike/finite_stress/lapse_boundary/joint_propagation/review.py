@@ -14,7 +14,7 @@ for name in SCI:
         if isinstance(node,ast.Import):
             require(all(a.name.split(".")[0] in allowed for a in node.names),"Unexpected scientific import")
         if isinstance(node,ast.ImportFrom):
-            require((node.module or "").split(".")[0] in allowed,"Unexpected scientific import-from")
+            require(node.level==0 and (node.module or "").split(".")[0] in allowed,"Unexpected scientific import-from")
         if isinstance(node,ast.Call) and isinstance(node.func,ast.Attribute):
             require(node.func.attr not in {"solve_ivp","odeint","run","Popen","system","exec"},"Old/ODE/external science execution")
     d=json.loads((HERE/(name+".json")).read_text())
@@ -26,7 +26,7 @@ aud=json.loads((HERE/"source_audits.json").read_text())
 require(len(aud["native_agents"])==len(set(aud["native_agents"]))==3,"Exactly three readonly agents")
 identities=[]; coverage={}
 for row in aud["checkpoints"]:
-    require(row["agent"] in aud["native_agents"] and row["status"] in {"PASS","FINDINGS_ADDRESSED"},"Audit actor/status")
+    require(row["agent"] in aud["native_agents"] and row["status"] in {"PASS","FINDINGS","FINDINGS_ADDRESSED"},"Audit actor/status")
     for rel,blob in row["files"].items():
         actual=subprocess.check_output(["git","rev-parse",row["commit"]+":"+rel],cwd=REPO,text=True).strip()
         require(actual==blob,"Immutable audited file identity")
@@ -35,6 +35,7 @@ for row in aud["checkpoints"]:
         if cur==blob:coverage.setdefault(rel,set()).add(row["agent"])
 require(len(identities)==len(set(identities))==aud["immutable_review_file_identities"],"Audit count/duplicates")
 if aud["status"]=="COMPLETE":
+    require(all(row["status"]!="FINDINGS" for row in aud["checkpoints"]),"Unresolved immutable audit finding")
     for name in SCI:
         for suffix in [".py",".md"]:
             rel=PREFIX+(name.upper() if suffix==".md" else name)+suffix

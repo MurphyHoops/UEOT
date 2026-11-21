@@ -115,7 +115,13 @@ controlled W_K and T_K. For the actual C5 bulk vector Psi_K,
        <=C_S[ell^-1/2+ell/K].                         (P.1)
 
 The constants are finite and can be bounded from fixed profile
-seminorms, support parameters and low moments. No practically usable
+seminorms, support parameters and low moments. More precisely, with
+the support, J, S and the regular low input fixed, the entire trial,
+correction and residual construction is linear in g, and (P.1) has
+right side C_{I,J,S,zeta} ||g||_{H^4}[ell^-1/2+ell/K]. The constant
+C_{I,J,S,zeta} is independent of the profile within that fixed support.
+This explicit uniform dependence justifies the varying smooth phase
+profiles used in DEPHASING_CONTROL and GAUSSIAN_CONTROL. No practically usable
 numerical cutoff threshold is asserted. For a fixed regular low
 mixture, the same proof uses its Hilbert-Schmidt purification and
 finite H_0,low/D_low norm budget.

@@ -45,8 +45,10 @@ and use sum_{k>M}k^-3<=1/(2M^2). If the phase anchor lies outside
 [a,b], enlarge the interval in the bound.
 
 The initial probability is at least 1-e_M^2 because the comparison
-vector lies in the projection range. A normalized pure-state
-expectation changes by at most its vector-norm error; purification
+vector lies in the projection range. For a fixed effect 0<=E<=I,
+its probability on two normalized pure states changes by at most
+their vector-norm distance. This statement is about effect/projection
+probabilities, not every norm-one self-adjoint expectation. Purification
 gives the same bound for any fixed low mixture. If e_K(s) denotes
 the actual complete propagation error from INITIAL_LAYER, then
 

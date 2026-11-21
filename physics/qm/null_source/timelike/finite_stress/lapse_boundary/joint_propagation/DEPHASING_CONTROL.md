@@ -166,7 +166,10 @@ For any fixed original compact-kappa spacetime tests,
 Thus its prepared vector-test two-time kernel collapses to ZERO,
 although every finite-K recovered weighted diagonal has trace one.
 It cannot pass the nonzero normalized prepared-kernel gate. The
-state-independent rigging is a different object and need not vanish.
+state-independent rigging is a different object; this operator-norm
+argument alone does not address it. INTERIOR_COLLAPSE separately
+proves that the actual state-independent rigging also vanishes on
+fixed original-clock vector tests in the frozen bulk comparison.
 Multiplying this kernel by N changes the weighted trace to N, so
 it does not restore the same trace-one preparation.
 
@@ -202,7 +205,7 @@ work cost is claimed by this abstract preparation.
 
 For the pure-profile Fourier family in its cyclic space, sigma_N=P_N/N
 and the bounded effective generator is w(t)=1/(2Q_mu(t)).
-The SLD solution L=2i[(I-P_N)wP_N-P_Nw(I-P_N)] gives exactly
+The SLD operator L_SLD=2i[(I-P_N)wP_N-P_Nw(I-P_N)] gives exactly
 
     F_Q(sigma_N,w)
        =4/N ||(I-P_N)wP_N||_2^2

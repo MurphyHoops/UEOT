@@ -69,8 +69,8 @@ kappa^-1 coefficient is covered by the same energy comparison.
 No old theorem executable is rerun.
 
 Since epsilon_K V_ct,K^nu->1/(2kappa) in local C^4, this candidate
-has rescaled full propagator limit I. Its frozen snapshot has strong
-resolvent limit zero. This is a controlled result for a changed model;
+has rescaled full propagator limit I. Its SCALED frozen snapshot
+epsilon_K H_K^nu(u_i) has strong resolvent limit zero. This is a controlled result for a changed model;
 it is not acceptance of a new physical counterterm.
 
 Scalar subtraction is not the complete finite-K Wick expansion.
@@ -138,7 +138,8 @@ total derivative has zero interior Euler--Lagrange rows, so this
 candidate is not the old endpoint canonical rewrite.
 
 The extra action is consistent with its own homogeneous time Ward
-identity: h delta Gamma_u-N(delta Gamma_N)'=0. It must not be rejected
+identity: u' delta Gamma_u-N(delta Gamma_N)'=0, where the prime in
+this identity denotes the original eta derivative. It must not be rejected
 by falsely claiming that it violates that identity. It changes the
 original AE/action density and pressure rows. The four-dimensional
 local covariant origin of this new u-dependent potential is not given.
@@ -169,6 +170,10 @@ second-moment gate. A kappa-dependent potential is not a constant
 energy shift, so its variance must be recalculated, as above.
 
 ## C6. Static virtual correction: useful but not a next-time theorem
+
+In this section G(u)=C(u)/120=(19+15 ell_0+30u)/120
+=g_K(u)+Harmonic(K)/4. This scalar coefficient is distinct from
+the kappa-dependent vacuum metric G_K(kappa).
 
 Let R_4=kappa^-1(Cdagger)^2 vacuum. The exact inverse-gap form is
 

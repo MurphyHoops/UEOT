@@ -64,4 +64,5 @@ finish("dephasing_control.py",{
 "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_feedback/CORRELATED_GAUSSIAN.md",
 "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/INITIAL_LAYER.md",
 "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/RARE_PREPARATION.md",
-"physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/RESCALED_KERNEL.md"])
+"physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/RESCALED_KERNEL.md",
+"physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/INTERIOR_COLLAPSE.md"])

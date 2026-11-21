@@ -33,9 +33,10 @@ finish("snapshot_spectrum.py",{
 "actual_C9_scaled_mean_limit":0,"limiting_normal_state_mean":"-I1/2",
 "positive_tail_first_moment_liminf":"at least I1/2 beyond every fixed R>1/(2a)",
 "actual_scaled_variance_over_logK_liminf":"at least I1^2/2",
-"QFI_lower_bound_claimed":False,
+"mixed_C9_QFI_lower_bound_inferred_from_variance":False,
 "illustrative_scalar_rare_tail_only":rows
 },inputs=[
 "physics/qm/null_source/timelike/finite_stress/lapse_boundary/relational_coupled/ALL_SIGN_EVOLUTION.md",
 "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_feedback/CORRELATED_GAUSSIAN.md",
-"physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/INITIAL_LAYER.md"])
+"physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/INITIAL_LAYER.md",
+"physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/ADIABATIC_CONNECTION.md"])

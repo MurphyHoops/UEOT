@@ -29,4 +29,6 @@ finish("bounded_witness.py",{
 },inputs=[
 "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_feedback/CORRELATED_GAUSSIAN.md",
 "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/INITIAL_LAYER.md",
-"physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/RARE_PREPARATION.md"])
+"physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/RARE_PREPARATION.md",
+"physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/LOCAL_CONSTRAINT.md",
+"physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/RESCALED_KERNEL.md"])

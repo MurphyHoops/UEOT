@@ -49,3 +49,15 @@ decoded log, job result and artifact metadata rather than a badge alone.
 
 See source_audits.json for immutable review findings and identities,
 and verification.json for the actual execution receipt.
+
+## CP1 immutable review and exact-head CI
+
+Checkpoint 03b3906cb9b0817178ef7d02f0a3ed29a81c7e4b received
+50 reviewer/commit/file reads from the three native readonly agents.
+All three found the main mathematics consistent, with 16 specific
+clarity, exact-arithmetic, binding or status findings. Those findings
+are recorded verbatim in source_audits.json; their corrections await
+CP2 immutable rereading. These are source audits, not external peer
+review or machine-formal proofs. CP1 science run 44921610167 and
+publication run 44921610153 completed successfully at that exact head.
+CP1 is an intermediate checkpoint; the final head needs its own CI.

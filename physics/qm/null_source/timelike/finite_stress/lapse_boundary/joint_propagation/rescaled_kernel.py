@@ -46,7 +46,7 @@ finish("rescaled_kernel.py",{
 "weighted_trace_preserved":True,"raw_density_gluing_includes_rho_squared":True,
 "finite_complete_CP_histories_converge":True,"failure_records_retained":True,
 "all_trace_normal_preparations_uniform_original_initial_window":"REJECTED",
-"fixed_original_interior_test_convergence":"OPEN",
+"fixed_original_interior_test_convergence":"ZERO; nonzero fixed-vector gate REJECTED by INTERIOR_COLLAPSE",
 "raw_flat_kernel_trace_class_for_arbitrary_normal_input":False,
 "operator_norm_or_diamond_convergence_claimed":False,
 "local_autonomous_device_constructed":False
