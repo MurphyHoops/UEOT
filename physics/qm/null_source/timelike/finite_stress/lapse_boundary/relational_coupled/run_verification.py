@@ -12,7 +12,7 @@ NEW=PREFIX+"finite_stress/lapse_boundary/relational_coupled/"
 PARENT=PREFIX+"finite_stress/lapse_boundary/verification.json"
 WORKFLOW=".github/workflows/ueot-physics-source-response.yml"
 ROUTES=[WORKFLOW,"physics/qm/README.md","physics/qm/ROADMAP.md",PREFIX+"README.md"]
-ENTRIES=['coefficient_window', 'coupled_forms', 'snapshot_domain', 'physical_slice', 'ordering_domain', 'lens_evolution', 'source_budgets', 'mean_recovery', 'preparation_frontier', 'cutoff_gate', 'all_sign_evolution', 'geometric_momentum', 'shifted_state', 'review']
+ENTRIES=['coefficient_window', 'coupled_forms', 'snapshot_domain', 'physical_slice', 'ordering_domain', 'lens_evolution', 'source_budgets', 'mean_recovery', 'preparation_frontier', 'cutoff_gate', 'all_sign_evolution', 'geometric_momentum', 'shifted_state', 'g_zero_boundary', 'boundary_matching', 'matter_clock', 'angular_clock_input', 'symmetric_clock', 'raw_source_boundary', 'negative_recovery', 'review']
 VERSIONS={"numpy":"2.5.4","scipy":"1.18.1","sympy":"1.14.0","mpmath":"1.3.0"}
 def require(ok,msg):
     if not ok:raise RuntimeError(msg)
@@ -110,6 +110,13 @@ def main():
         "full_same_mean_history_recovery":"OPEN","full_field_limit":"OPEN",
         "all_nonzero_g_finite_K_weak_unitary_evolution":True,
         "positive_confining_covariant_geometry_domain_transport":True,
+        "g_zero_complete_finite_K_scattering":True,
+        "finite_K_raw_source_boundary_stress_covariances":True,
+        "negative_same_raw_source_controlled_geometry_recovery":"REJECTED",
+        "negative_same_raw_source_two_initial_means_with_large_tails":True,
+        "scalar_clock_selfadjoint_constraint_positive_rigging_and_band_Abel":True,
+        "symmetry_preserving_Dirac_to_scalar_clock_normal_state_bridge":True,
+        "old_complete_source_and_semiclassical_history_recovered":False,
         "local_autonomous_total_device":"OPEN","physical_unification":"OPEN"}}
     out.write_text(json.dumps(result,indent=2,ensure_ascii=False,sort_keys=True)+"\n")
     print("Reused 190 results with 698 unchanged scientific files; executed "+str(len(ENTRIES))+" new entries.")

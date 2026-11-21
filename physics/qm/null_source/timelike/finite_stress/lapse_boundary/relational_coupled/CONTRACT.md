@@ -39,3 +39,14 @@ h_i、epsilon和极端指数均指冻结QUIET_WINDOW中c=exp(-20000)的一次选
 不与更早c=1e-55历史混用。U0读取history.fixed_U0，严格非零。
 新增结果均在现行Core↔Physics合同的明示B/S/P/E输入下验收；
 Hilbert/Born、Einstein、AE、场内容及ordering/Friedrichs选择未由Core导出。
+
+## Additional closed objects and scope
+The later entries retain the same homogeneous geometry sector and full finite-K
+matter terms. Scalar-clock constructions explicitly change the declared clock,
+kappa configuration sector and boundary domain; they do not silently continue
+the old u-clock physical inner product. Normal Dirac states are distinguished
+from normal bare source states and kinematic zero-eigenvectors.
+The negative-g large-tail state matches initial means only. The local
+preparation gate applies to the full local prescribed-background QFT, not to
+sharp finite-K microcausality. All full-field, old-history and apparatus
+completion flags remain OPEN.

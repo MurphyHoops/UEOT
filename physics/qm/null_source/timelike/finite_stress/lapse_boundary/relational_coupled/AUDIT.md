@@ -17,5 +17,15 @@ CP1=336772e76103c9884205d6548b4eb4d03af07da9 的5项CI成功，三个只读代�
 后续B主动交叉读取history.fixed_U0发现非零U0被错写为0；A/C/root均独立确认。
 遗漏影响d0及其一二阶导数数值绑定，不能因宽界仍足够而忽略。
 当前代码补V0a4U0以及4/16倍导数，并直接绑定冻结history字段。
-CP1完整输入正确性的结论撤回，等待修后immutable重新审查；旧blob与CI记录原样留痕。
+CP1完整输入正确性的结论撤回；修后CP2已重新审查通过，旧blob与CI记录原样留痕。
 此事说明自动脚本、模型推导审查和物理输入交叉核对须同时进行。
+
+## CP2 corrected-input immutable acceptance
+
+CP2 211cc684546a7a4570f20c2bad11025f851caf90 received A/B/C scoped PASS after actual source reads of 24/19/30 files.
+Root independently matched all 73 reported Git blob identities with zero mismatch.
+C additionally fetched/hash-checked 58 manifest entries and 142 source bindings;
+this is not 58 analytic proof reviews. CP1 input omission remains recorded and retracted.
+Observed exact-head science CI 44885931899/job136791101762: 14 PASS (13 science plus 1 scope),
+artifact14699478002; publication44885931902 also succeeded.
+These are the current cohort totals, not CP1 plus CP2 added as independent results.

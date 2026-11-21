@@ -1,67 +1,53 @@
-# 完整有限模演化、纯几何动量与统一验收
+# 同一作用量的有限模联合演化、恢复代价与物理态
 
-**物理统一仍未完成。** 本轮从原 lapse action 的完整关系算子继续：
-已将有限模式的全部源项、几何项、端点和选定定义域接成酉演化及正常物理切片态；
-继而算清原几何动量预算，拒收当前正型候选对旧 quiet 初始几何数据的恢复。
-这与原平均方程解仍成立相容。
+**物理统一仍未完成。** 本轮已经把同一齐次 lapse 作用量的完整有限模式
+几何—物质算子接到酉演化和正常物理解空间，并实际检验旧历史的恢复条件。
+当前主要物理结论是：正型候选无法恢复旧纯几何动量预算；负型候选在保留
+旧 raw 源及受控几何三阶矩时同样失败。放开几何远尾后，已构造保留旧 raw 源、
+精确匹配初片两个几何均值的正常态，但其巨大几何方差使它不能签收为旧历史。
 
-本轮使用冻结基线 **2eb6ef97be385cdcf764d63f9ec43adf8ac67b1c**。
-数值中的 h_i 指前驱 QUIET_WINDOW 一次选择 c=exp(-20000) 的实际历史，
-不是更早 c=1e-55、h约1e-49 的历史；两份初值不能拼接。
-所有时间和能量数值保留模型单位。
+这里的几何自由度是已声明的齐次 a/κ；“完整有限模”指同一代表中所有项及
+两个物质场的 k≤K 模均保留，不表示全部空间引力约束已求解。
 
-## 已完成的研究闭环
+冻结基线：**2eb6ef97be385cdcf764d63f9ec43adf8ac67b1c**。
+h_i 是前驱 QUIET_WINDOW 一次选择 c=exp(-20000) 的实际历史；
+不是更早 c=1e-55 的初值。A、U0、incoming薄层源和σ保持同一冻结输入。
+时间和能量均为模型单位。
 
-| 验收对象 | 结果 | 证明及数值入口 |
+## 研究闭环入口
+
+| 问题 | 已得到的可验收结果 | 入口 |
 |---|---|---|
-| 同一作用量的实际有限 K 系数 | 保留全部 AE、真空常数和冻结非零 U0；正负分支已明确 | [系数](COEFFICIENT_WINDOW.md)、[外向结果](coefficient_window.json) |
-| 完整联合算子与演化 | 每固定有限 K、g不为零的紧时钟窗、每固定η≥−1/4的Friedrichs选择，完整弱酉演化成立；源占据数截断已移除，空间K未移除 | [共同型域](COUPLED_FORMS.md)、[lens](LENS_EVOLUTION.md)、[两种符号](ALL_SIGN_EVOLUTION.md) |
-| 原固定时刻算子 | 明确自伴实现；不把形式对称或几项自伴的相加当证明 | [snapshot域](SNAPSHOT_DOMAIN.md)、[两种符号扩展](ALL_SIGN_EVOLUTION.md) |
-| 约束后正常态 | 正的切片内积、加权gluing、局部正rigging form和正常初态 | [物理切片](PHYSICAL_SLICE.md) |
-| 排序与几何资源 | 全指定η族包括临界端点的强逆矩界；不要求源与几何独立 | [排序域](ORDERING_DOMAIN.md) |
-| 原源与 incoming 准备 | 完整Q二矩、NOON四阶矩、实际Pu参考和相同输入的准备成本 | [源预算](SOURCE_BUDGETS.md) |
-| 固定准备门 | 任意独立正常指针，包括混态和任意相位，不能同时支付必要源资源并保持小实际残差 | [准备前沿](PREPARATION_FRONTIER.md) |
-| 两均值正例及复盘 | 改变裸态后可精确匹配κ与Pu，但真实raw源能、几何尾和纯几何动量未恢复 | [正常态对照](SHIFTED_STATE.md) |
-| 真正的几何动量 | Πg=Pu+D−2κQ；正型窗口强域运输成立，旧κ/Πg预算不相容；负g得到三阶资源前沿 | [几何动量主结果](GEOMETRIC_MOMENTUM.md) |
-| 全场续接 | 同约定静态高频Hessian抵消及C²尾界已算；单个裸系数变号不能否定联合连续极限 | [UV门](CUTOFF_GATE.md) |
+| 同一实际系数是否完整 | 全部 AE、真空常数、非零 U0 及其导数已保留 | [系数](COEFFICIENT_WINDOW.md)、[共同型](COUPLED_FORMS.md) |
+| 完整联合有限模演化 | 每固定有限K、g不为零的紧时钟窗、固定η≥−1/4的Friedrichs选择，完整弱酉演化成立；占据数截断M已移除，空间K未移除 | [两种符号](ALL_SIGN_EVOLUTION.md)、[lens](LENS_EVOLUTION.md)、[ordering](ORDERING_DOMAIN.md) |
+| 原snapshot与物理切片 | 明确自伴实现、正内积、正常密度和加权gluing；不把运动学零核当物理态空间 | [snapshot](SNAPSHOT_DOMAIN.md)、[切片](PHYSICAL_SLICE.md) |
+| 真正的几何动量 | Πg=Pu+D−2κQ；正型窗有协变强域运输及不依赖裸源边缘的恢复排除 | [几何动量](GEOMETRIC_MOMENTUM.md) |
+| 负型候选的旧源恢复 | actual raw H³<exp(160)；受控T3拒收；放开远尾后给出rank≤2正常初态匹配κ/Πg均值，计算远尾和方差代价 | [负分支闭环](NEGATIVE_RECOVERY.md) |
+| 原Pu与准备对照 | 源二矩、任意正常指针的固定门前沿、改变源的两均值对照；均与Πg验收分开 | [源预算](SOURCE_BUDGETS.md)、[Pu门](MEAN_RECOVERY.md)、[准备前沿](PREPARATION_FRONTIER.md)、[shift对照](SHIFTED_STATE.md) |
+| g=0时钟边界 | 完整双向散射映射、所有正常态的有界κ概率逃逸；并构造关系算子的自伴匹配域族 | [边界](G_ZERO_BOUNDARY.md)、[匹配域](BOUNDARY_MATCHING.md) |
+| 原φ源在边界的极限 | raw源边缘正常极限、源能量加权极限、有限K全部raw应力均值和同片协方差极限 | [源矩与应力](RAW_SOURCE_BOUNDARY.md) |
+| 原零模作为另一时钟 | 原约束的自伴实现、正常正频解、显式rigging及原C的限定Abel群平均 | [物质时钟](MATTER_CLOCK.md) |
+| 保原零模对称性的正常态 | 两方向Dirac角因子、正频KG映射、旧径向源律的精确谱测度验收门 | [双零模物理态](SYMMETRIC_CLOCK.md) |
+| 单向时钟源的真实成本 | 能量律/齐次 prescribed influence 保持，完整裸态改变；单次读数、Gaussian门和局域非选择准备均有明确限制 | [角态准备](ANGULAR_CLOCK_INPUT.md) |
+| 空间K极限 | 静态同AE源/反项Hessian领先项抵消；孤立frame失败不等于合并演化失败 | [截止门](CUTOFF_GATE.md) |
 
-[MEAN_RECOVERY](MEAN_RECOVERY.md)保留中间的Pu/源Q²条件门；
-后继Πg门解释了为何它不是完整几何恢复标准。这个推导顺序留作复盘，
-不把相同结论拆成多个新定理计数。
+## 当前恢复边界
 
-## 最关键的几何结论
+正、负分支的上述结论均相对于明确量子化和域，不是全部量子引力的no-go。
+负分支远尾态只匹配初片均值；它不是原平均Einstein历史或可校准装置。
+物质时钟的正常Dirac态也不自动是保留完整原bare source的正常联合准备。
+[统一进展](UNIFICATION_PROGRESS.md)把这些连接和未完成责任逐层列明。
 
-在已声明正型窗、正常有限几何型能量态中，
-\[
--\langle\Pi_g\rangle\ge
- \frac{\alpha_\eta^2}{2g\langle\kappa\rangle^3}
- -\frac{|d_0|}{\langle\kappa\rangle}
- +d_1\langle\kappa\rangle,\qquad
- \alpha_\eta=1+\frac{\sqrt{1+4\eta}}2 .
-\]
-它保留原源正平方及完整反项，允许纠缠，不需要固定源裸边缘。
-实际K=65536给：若平均κ≤1e-9，则−平均Πg≥5/κ均值³；
-旧纯几何参考却满足|Πg,ref|<exp(-1130)。因此该量子化候选不能恢复这两项旧数据。
-这不是所有量子引力的排除，也不是已校准的宇宙膨胀率界。
+## 验证与追溯
 
-## 统一进展与后续责任
+当前设置 **20个科学检查入口 + 1个范围/源码绑定入口**。
+解析域、波算子、正常态和制备证明由正文及独立源码审查承担；
+入口数不等于新定理数或机器形式化证明。
+运行回执见 [verification.json](verification.json)，
+实际不可变源码审查见 [agent_reviews.json](agent_reviews.json)，
+已观察CI见 [checkpoint_ci.json](checkpoint_ci.json)。
+复用190项前驱结果、冻结698个前驱科学文件，旧科学模块和旧ODE未执行。
 
-[统一进展报告](UNIFICATION_PROGRESS.md)区分已证模型连接、外部物理输入、
-物理选择、经验检验及下一可验对象。有限模存在性没有代替全场CTP、其他空间模式、
-真实局域装置或已知理论的受控恢复。
-
-目前继续研究g=0边界和合并的全场对象；没有用等待时间代替推导，
-也没有承诺本轮可以完成自然规律的统一。
-
-## 复核与输入更正
-
-CP1的自动检查通过后，后续独立交叉审查发现d0漏掉了冻结非零U0。
-现已补回该项及其一、二阶导数，重新绑定实际输入。
-[审计](AUDIT.md)和[原生审查记录](agent_reviews.json)保留初始误放及更正过程；
-CI成功本身不等于物理输入完整。
-
-[验收合同](CONTRACT.md) · [本轮记录](SESSION.md) · [复核范围](REVIEW.md) ·
-[自动回执](verification.json) · [已观察CI](checkpoint_ci.json) · [外部一级数学来源](REFERENCES.md)
-
-复用190项前驱结果，698个前驱科学文件保持原字节；新自动入口数量以回执为准。
-旧科学模块、旧mode/geometry ODE不运行。Core只读，GI排除，原分支与开放草稿PR468保留。
+CP1曾遗漏非零U0；该完整输入结论已经撤回。
+CP2补回U0及一二阶导数后经三名只读代理重新验收，历史记录保留。
+本轮仍在继续，时长及后续检查点以[会话记录](SESSION.md)和[审计](AUDIT.md)为准。

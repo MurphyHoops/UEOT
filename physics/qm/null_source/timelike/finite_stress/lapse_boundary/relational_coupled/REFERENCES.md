@@ -44,3 +44,40 @@
   root实际读 Appendix C Definition C.1、Corollary C.4 及所列全部比较型假设，
   特别是 D(F^(3/2)) 上的commutator条件；A/C独立核对。
   本轮只使用其抽象传播定理，不搬用该文many-boson物理模型或结论。
+
+## Clock-boundary and scalar-clock sources actually checked
+
+- Bruneau--Derezinski--Georgescu, the above homogeneous-operator paper:
+  root additionally read Theorem 5.2 (Hankel unitary diagonalization) and
+  the local-projection decay used in the proof of Theorem 6.1.
+  G_ZERO_BOUNDARY proves the complete coupled wave operators itself;
+  that result is not quoted from the free inverse-square paper.
+- D. Lenz, T. Weinmann, M. Wirth, *Self-adjoint extensions of bipartite
+  Hamiltonians*, https://arxiv.org/pdf/1912.03670 .
+  Root read Section 1, especially Theorem 1.2 on deficiency spaces and
+  the self-adjoint extension parametrization. Only that general standard
+  theorem is used; the UEOT operator is not asserted to be their
+  separable bipartite Hamiltonian.
+- P. A. Hoehn, A. R. H. Smith, M. P. E. Lock,
+  *Equivalence of Approaches to Relational Quantum Dynamics in
+  Relativistic Settings*, Frontiers in Physics (2021),
+  https://www.frontiersin.org/journals/physics/articles/10.3389/fphy.2021.587083/full .
+  Root read the section 6 discussion distinguishing the conserved
+  Klein--Gordon current and raw wavefunction probabilities, and the
+  section 7 frequency-sector caveat. It is a framework comparison,
+  not a proof of the current extension, source embedding or device.
+
+The bounded-congruence Abel calculation in MATTER_CLOCK uses an explicit
+resolvent/Laplace/Duhamel argument written there. It does not infer
+group-average equivalence merely from a classical constraint rescaling.
+
+- Ammari--Breteaux, Appendix B Theorem B.2 in the already cited
+  https://arxiv.org/pdf/0906.3047 : root additionally read the exact
+  form version of Nelson's commutator theorem, including its
+  D(S^(3/2)) hypothesis. RAW_SOURCE_BOUNDARY verifies those hypotheses
+  for the actual finite-K source quadratics.
+- C. J. Fewster, R. Verch, *Quantum fields and local measurements*,
+  https://arxiv.org/pdf/1810.06512 : root read Proposition 3.1(b)
+  and Eq.(3.23), including the nonselective/selected distinction.
+  ANGULAR_CLOCK_INPUT applies this only to the complete local QFT
+  on the prescribed geometry, not to a sharp finite-K model.

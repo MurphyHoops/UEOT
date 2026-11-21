@@ -1,3 +1,6 @@
+<!-- RELATIONAL_COUPLED_CURRENT -->
+本轮更新：完整有限模式联合演化、原Πg恢复门、保旧raw源的大尾正常态、scalar-clock物理解空间与准备成本；物理统一仍OPEN。
+
 # 同一源的平均应力、测量扰动与几何记录
 
 > 2026-11-21 最新接续：[完整有限模演化、原几何动量与统一验收](finite_stress/lapse_boundary/relational_coupled/README.md)。已接通正常物理切片，完成正负g演化及Πg恢复门；全场、真实装置和物理统一仍OPEN。190项复用、698个前驱文件冻结。下文旧节保留其历史范围。
