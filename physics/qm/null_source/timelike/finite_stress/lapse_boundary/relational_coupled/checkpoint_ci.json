@@ -643,6 +643,142 @@
         "status": "completed"
       },
       "scientific_acceptance": "Scoped analytic/source PASS after A/B/C actual reads; N7 combined-frame and N10 full-joint-generator/initial-core-J clarifications are recorded for CP6, not assumed already reviewed."
+    },
+    {
+      "artifacts": [
+        {
+          "archive_download_url": "https://api.github.com/repos/MurphyHoops/UEOT/actions/artifacts/14703563237/zip",
+          "created_at": "2026-11-21T10:41:23Z",
+          "digest": "sha256:5bb3c039f0328c95c4d43338908466285d1b3685fe54bb8abe4af189805015bc",
+          "expired": false,
+          "expires_at": "2027-02-19T10:40:40Z",
+          "id": 14703563237,
+          "name": "relational-coupled-research",
+          "size_in_bytes": 50113,
+          "updated_at": "2026-11-21T10:41:23Z",
+          "url": "https://api.github.com/repos/MurphyHoops/UEOT/actions/artifacts/14703563237",
+          "workflow_run": {
+            "head_branch": "codex/physics-source-response-20261119",
+            "head_repository_id": 1146718528,
+            "head_sha": "cfec0a6bdfec735008cbf5ccb4b7b17ce0369659",
+            "id": 44895469960,
+            "repository_id": 1146718528
+          }
+        }
+      ],
+      "commit": "cfec0a6bdfec735008cbf5ccb4b7b17ce0369659",
+      "decoded_PASS_entries": [
+        "coupled_forms",
+        "coefficient_window",
+        "snapshot_domain",
+        "physical_slice",
+        "ordering_domain",
+        "lens_evolution",
+        "source_budgets",
+        "mean_recovery",
+        "preparation_frontier",
+        "all_sign_evolution",
+        "cutoff_gate",
+        "shifted_state",
+        "geometric_momentum",
+        "boundary_matching",
+        "g_zero_boundary",
+        "angular_clock_input",
+        "matter_clock",
+        "symmetric_clock",
+        "raw_source_boundary",
+        "negative_recovery",
+        "actual_uv_bridge",
+        "review",
+        "actual_cutoff_inverse"
+      ],
+      "decoded_head_observed": true,
+      "decoded_log_observed": true,
+      "decoded_log_path": "/private/tmp/ueot-relational-cp6-job-136820058638.log",
+      "decoded_log_sha256": "bca5ff3a13b796ba827467fe618a261df8298bab0b43e55d0280c33b1e90dfc7",
+      "jobs": [
+        {
+          "conclusion": "success",
+          "id": 136820058638,
+          "logs_url": null,
+          "name": "reproduce",
+          "run_id": 44895469960,
+          "status": "completed",
+          "steps": [
+            {
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Run actions/checkout@v6",
+              "number": 2,
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Run actions/setup-python@v6",
+              "number": 3,
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install the same scientific dependencies",
+              "number": 4,
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Reuse 190 predecessor results and verify relational-coupled entries",
+              "number": 5,
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Run actions/upload-artifact@v4",
+              "number": 6,
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Run actions/setup-python@v6",
+              "number": 11,
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@v6",
+              "number": 12,
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 13,
+              "status": "completed"
+            }
+          ]
+        }
+      ],
+      "publication": {
+        "conclusion": "success",
+        "head_sha": "cfec0a6bdfec735008cbf5ccb4b7b17ce0369659",
+        "html_url": "https://github.com/MurphyHoops/UEOT/actions/runs/44895469964",
+        "id": 44895469964,
+        "path": ".github/workflows/ueot-qm-chapter71-publication.yml",
+        "status": "completed"
+      },
+      "run": {
+        "conclusion": "success",
+        "head_sha": "cfec0a6bdfec735008cbf5ccb4b7b17ce0369659",
+        "html_url": "https://github.com/MurphyHoops/UEOT/actions/runs/44895469960",
+        "id": 44895469960,
+        "path": ".github/workflows/ueot-physics-source-response.yml",
+        "status": "completed"
+      },
+      "scientific_acceptance": "Actual immutable A/B/C scoped PASS; N7 combined-frame identity and N10 full-joint H_*/initial-core J clarifications resolved. No science conclusion or domain was expanded."
     }
   ],
   "schema": "ueot-relational-coupled-observed-ci/1"

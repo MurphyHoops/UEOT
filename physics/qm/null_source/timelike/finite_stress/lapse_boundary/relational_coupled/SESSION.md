@@ -148,3 +148,39 @@ continue after this observation. Interruption recovery did not reset the
 clock and did not turn pending agent reviews into completed reviews.
 The precise timing record is session_timing.json; duration is not physics
 evidence. Physical unification remains OPEN.
+
+
+## CP6 accepted; evidence-only final closeout
+
+The final scientific checkpoint is
+cfec0a6bdfec735008cbf5ccb4b7b17ce0369659. A/B/C actually reread
+7/6/14 relevant immutable files or deltas and accepted both N7/N10
+clarifications. Root matched all 27 newly reported Git blobs.
+The final scientific ledger contains 18 records across six
+immutable checkpoints (including the explicitly retained CP1 input
+error/retraction), 313 reported identities and
+190 distinct commit-file pairs, with zero mismatch.
+C additionally checked 87 current manifest hashes, 244 JSON source
+bindings, the unchanged 698-file inherited manifest, and the exact
+14701-character archived prior PR body. These metadata checks do not
+constitute additional analytic proof reviews.
+
+Exact-head science44895469960/job136820058638 and existing publication
+44895469964 both succeeded, actually observed by root and C. The decoded
+science log contains 23 PASS entries and the correct head/reuse summary;
+its independently matched SHA256 is
+bca5ff3a13b796ba827467fe618a261df8298bab0b43e55d0280c33b1e90dfc7.
+Artifact14703563237 has digest
+sha256:5bb3c039f0328c95c4d43338908466285d1b3685fe54bb8abe4af189805015bc.
+
+A proposed inverse-budget edit was not made: the declared K>=10^9
+already implies K^-2<=(1/2)K^-1, so the existing /2 estimate is valid.
+The review resolved this question without changing scientific bytes.
+
+This final closeout changes only these audit/session notes, the actual
+review/CI evidence and the aggregate receipt. The proof, executable
+certificate, result, scope contract and source-binding bytes remain
+those of the accepted scientific checkpoint. Final closeout CI is
+observed after its commit and reported in PR468 and delivery; no future
+CI success is predeclared here. The PR stays open/draft, Core read-only,
+GI excluded, and physical unification OPEN.
