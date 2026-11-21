@@ -1,0 +1,1690 @@
+{
+  "schema": "UEOT_CORE_106_ASSUMPTION_CLASSIFICATION_V1",
+  "updated": "2026-11-22",
+  "frozen_ledger_sha256": "621da1e3c2a9b87aab0a07ca0624fe192fe15cc9bcd1c5aa6f5e669526a4d948",
+  "kernel_axiom_purity": {
+    "verifier": "formalization/ueot-core/scripts/ExhaustiveAxiomAudit.lean",
+    "total_modules": 1051,
+    "constant_defining_modules": 1030,
+    "total_constants": 19987,
+    "total_theorems": 13004,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "nonstandard_axiom_users": 0,
+    "sorryAx_users": 0,
+    "native_decide_users": 0
+  },
+  "class_counts": {
+    "domain_modeling_adapter": 72,
+    "generated_from_four_core_generators": 11,
+    "explicit_no_go_or_gauge_boundary": 6,
+    "protocol_calibration_contract": 12,
+    "standard_math_interface": 5
+  },
+  "entries": {
+    "P-ALG-01": {
+      "pid": "P-ALG-01",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 2911,
+      "lean_theorems": [
+        "UEOT.V3.PAlg01.p_alg_01"
+      ],
+      "schema_labels": [
+        "finite_stable_quotient",
+        "partition_refinement",
+        "coarsest_fixed_point"
+      ],
+      "summary": "The terminal stable partition yields a quotient, but the frozen theorem also proves finite refinement termination, coarsest stable refinement, output/reward/transition preservation, stochastic normalization, and all finite-horizon output-word laws."
+    },
+    "P-ALI-01": {
+      "pid": "P-ALI-01",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 2462,
+      "lean_theorems": [
+        "UEOT.V3.AlignmentGlobalExactness.p_ali_01"
+      ],
+      "schema_labels": [
+        "one_form_exactness",
+        "closed_period_criterion",
+        "global_integrability"
+      ],
+      "summary": "On the connected source manifold, the canonical C1 one-form is globally exact exactly when every closed piecewise-smooth path has zero period. Lean proves both directions using path integrals and the reconstructed potential, giving the frozen global integrability criterion rather than a local curl-only surrogate."
+    },
+    "P-ALI-02": {
+      "pid": "P-ALI-02",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 2489,
+      "lean_theorems": [
+        "UEOT.V3.AlignmentParentValue.p_ali_02"
+      ],
+      "schema_labels": [
+        "parent_value_chain_rule",
+        "hilbert_alignment",
+        "gradient_decomposition"
+      ],
+      "summary": "On a heterogeneous finite real Hilbert direct sum, the actual child-gradient update trajectory and parent gradient certificate give the exact derivative of parent value. Lean then decomposes that derivative into aligned and deviation terms and proves the frozen Cauchy-Schwarz lower bound."
+    },
+    "P-ALI-03": {
+      "pid": "P-ALI-03",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 2507,
+      "lean_theorems": [
+        "UEOT.V3.AlignmentThreshold.p_ali_03"
+      ],
+      "schema_labels": [
+        "coordination_threshold",
+        "alignment_interpolation",
+        "sign_recovery"
+      ],
+      "summary": "For the coordinated field G_eta=(1-eta)G+eta g with eta in the source unit interval and negative uncoordinated alignment, Lean proves the parent directional derivative is positive exactly when eta exceeds the frozen rational coordination threshold."
+    },
+    "P-API-01": {
+      "pid": "P-API-01",
+      "compression_disposition": "generated",
+      "assumption_class": "generated_from_four_core_generators",
+      "source_line": 2878,
+      "lean_theorems": [
+        "UEOT.V3.ProcessInterface.p_api_01_exact",
+        "UEOT.V3.ProcessInterface.p_api_01_approx"
+      ],
+      "schema_labels": [
+        "transport_certificate",
+        "interface_composition"
+      ],
+      "summary": "The audit identifies both exact and approximate source clauses; M-TC-01 reconstructs exact naturality and the min-1 additive total-variation defect bound."
+    },
+    "P-BRG-01": {
+      "pid": "P-BRG-01",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 2652,
+      "lean_theorems": [
+        "UEOT.V3.FixedFitnessRecurrenceUniqueness.p_brg_01_closedForm_of_recurrence",
+        "UEOT.V3.FixedFitnessConcentration.p_brg_01"
+      ],
+      "schema_labels": [
+        "fixed_fitness_replicator",
+        "support_concentration",
+        "geometric_selection_decay"
+      ],
+      "summary": "For finite types with fixed strictly positive fitness and no mutation, the source recurrence uniquely yields the closed form; initially absent types stay absent, every supported suboptimal type decays with its explicit geometric factor, total suboptimal mass converges to zero, and support maximizers preserve their initial relative proportions."
+    },
+    "P-BRG-02": {
+      "pid": "P-BRG-02",
+      "compression_disposition": "retained_boundary",
+      "assumption_class": "explicit_no_go_or_gauge_boundary",
+      "source_line": 2680,
+      "lean_theorems": [
+        "UEOT.V3.SelectionBridge.ReplicationBridge.behavior_equiv_fitness_eq",
+        "UEOT.V3.SelectionBridge.ReplicationBridge.behavior_equiv_same_multiplier",
+        "UEOT.V3.SelectionBridge.ReplicationBridge.behavior_equiv_positive_ratio_preserved"
+      ],
+      "schema_labels": [
+        "behavioral_equivalence",
+        "selection_indistinguishability",
+        "replication_factorization"
+      ],
+      "summary": "When reproduction factors through one common functional of the environmental response/path law, behaviorally equivalent controller types have exactly equal fitness multipliers; selection through this bridge alone cannot distinguish them, and positive-mass ratios are preserved. Mutation, material costs, or extra type-dependent replication channels are explicitly outside the bridge."
+    },
+    "P-CAR-01": {
+      "pid": "P-CAR-01",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 1135,
+      "lean_theorems": [
+        "UEOT.V3.Access.sufficient_mono",
+        "UEOT.V3.Access.contains_minimal"
+      ],
+      "schema_labels": [
+        "upward_sufficiency",
+        "finite_minimal_reconstruction",
+        "access_family"
+      ],
+      "summary": "Restriction consistency makes sufficiency upward closed, and every sufficient finite carrier contains an inclusion-minimal sufficient carrier. The Lean formulation supports both pointwise and common-filter/a.e. semantics through FactorsAt."
+    },
+    "P-CAR-02": {
+      "pid": "P-CAR-02",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 1151,
+      "lean_theorems": [
+        "UEOT.V3.Access.erasure_survives",
+        "UEOT.V3.Access.erasure_failure",
+        "UEOT.V3.Access.minimal_erasure"
+      ],
+      "schema_labels": [
+        "access_erasure_duality",
+        "blocker_hitting",
+        "minimal_failure_family"
+      ],
+      "summary": "The canonical Lean chain proves that recovery after deleting D is equivalent to some minimal sufficient carrier avoiding D, failure is equivalent to hitting all minimal sufficient carriers, and inclusion-minimal failing deletions are exactly the blocker."
+    },
+    "P-CAR-03": {
+      "pid": "P-CAR-03",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 1157,
+      "lean_theorems": [
+        "UEOT.Blocker.blocker_involution",
+        "UEOT.Blocker.blocker_empty",
+        "UEOT.Blocker.blocker_singleton_empty"
+      ],
+      "schema_labels": [
+        "blocker_involution",
+        "clutter_duality",
+        "finite_boolean_hypergraph"
+      ],
+      "summary": "For finite universes and clutter families, the generic Lean blocker is involutive, with the source degenerate conventions b(empty)={empty} and b({empty})=empty proved explicitly."
+    },
+    "P-CAR-04": {
+      "pid": "P-CAR-04",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 1196,
+      "lean_theorems": [
+        "UEOT.V3.DecoderRadius.decoder_radius_bounds"
+      ],
+      "schema_labels": [
+        "fiber_diameter",
+        "minimax_decoder_radius",
+        "metric_radius_diameter"
+      ],
+      "summary": "The Lean metric core proves exactly e/2 <= r <= e without assuming the decoder infimum is attained, using IsLUB for response-fiber diameters and IsGLB for achievable decoder bounds. The source TV case is a specialization of the pseudometric theorem."
+    },
+    "P-COMP-01": {
+      "pid": "P-COMP-01",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 1364,
+      "lean_theorems": [
+        "UEOT.V3.CompositionPathSource.p_comp_01"
+      ],
+      "schema_labels": [
+        "conditional_path_irreducibility",
+        "partition_factorization",
+        "conditional_kl_margin"
+      ],
+      "summary": "The frozen theorem starts from one common joint law of the interface and all child paths, reblocks that same conditional path law over every genuine nontrivial child partition, and uses conditional KL to characterize factorization. Nonnegativity, KL-zero iff conditional independence, and positivity of the finite minimum are all source-facing exact."
+    },
+    "P-COMP-02": {
+      "pid": "P-COMP-02",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 1386,
+      "lean_theorems": [
+        "UEOT.V3.CompositionInterventionJS.jsDiv_mem_Icc_logTwo",
+        "UEOT.V3.CompositionInterventionJS.jsDiv_eq_zero_iff",
+        "UEOT.V3.CompositionInterventionJS.cutJSMargin_pos_iff"
+      ],
+      "schema_labels": [
+        "intervention_irreducibility",
+        "jensen_shannon_divergence",
+        "finite_cut_margin"
+      ],
+      "summary": "For arbitrary probability record laws, the canonical Lean layer proves 0 <= JS <= log 2 using the actual midpoint law, JS=0 iff the laws agree, and positivity of the finite declared-cut margin iff every declared intervention changes the record law."
+    },
+    "P-COMP-03": {
+      "pid": "P-COMP-03",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 1402,
+      "lean_theorems": [
+        "UEOT.V3.CompositionMargin.p_comp_03"
+      ],
+      "schema_labels": [
+        "composition_margin",
+        "lipschitz_stability",
+        "finite_minimum"
+      ],
+      "summary": "For a finite nonempty cut family with individual Lipschitz constants, the minimum cut-distance composition margin is exactly (1 + max L_pi)-Lipschitz. The source constant is retained rather than silently replaced by 2."
+    },
+    "P-COMP-04": {
+      "pid": "P-COMP-04",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 1422,
+      "lean_theorems": [
+        "UEOT.V3.CompositionParentInformation.p_comp_04"
+      ],
+      "schema_labels": [
+        "parent_information_bound",
+        "deterministic_data_processing",
+        "conditional_entropy"
+      ],
+      "summary": "Exact sufficiency/minimality gives a parent core C_P=g(M_P,U); conditioning on child-core side information and U, deterministic processing cannot increase discrete Shannon entropy, yielding H(C_P|children,U) <= H(M_P|children,U) through genuine conditional kernels."
+    },
+    "P-COMP-05": {
+      "pid": "P-COMP-05",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 1451,
+      "lean_theorems": [
+        "UEOT.V3.CompositionBooleanAtoms.p_comp_05"
+      ],
+      "schema_labels": [
+        "booleanization",
+        "overlap_atoms",
+        "minimal_boolean_algebra"
+      ],
+      "summary": "The nonempty membership-signature cells of finitely many overlapping declared regions form exactly the atoms of the unique least Boolean algebra generated by those regions, and the regions are recovered as unions of the corresponding signature atoms."
+    },
+    "P-COMP-06": {
+      "pid": "P-COMP-06",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 1465,
+      "lean_theorems": [
+        "UEOT.V3.CompositionCarrierLift.p_comp_06"
+      ],
+      "schema_labels": [
+        "carrier_lift",
+        "minimal_cover",
+        "two_stage_minimization"
+      ],
+      "summary": "When a child coalition is sufficient exactly when its covered physical region contains some physical minimal carrier, the minimal sufficient child coalitions are the outer inclusion-minima of the union of all per-carrier minimal covering coalitions. The second minimization is preserved explicitly."
+    },
+    "P-COMP-07": {
+      "pid": "P-COMP-07",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 1491,
+      "lean_theorems": [
+        "UEOT.V3.CompositionWindow.p_comp_07"
+      ],
+      "schema_labels": [
+        "monotone_threshold_window",
+        "compact_interval",
+        "attained_boundaries"
+      ],
+      "summary": "On a compact coupling interval, continuous monotone integration and antitone fidelity diagnostics have attained threshold boundaries; the joint feasible set is exactly the closed interval between them when ordered and empty otherwise."
+    },
+    "P-CORE-01": {
+      "pid": "P-CORE-01",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "protocol_calibration_contract",
+      "source_line": 3198,
+      "lean_theorems": [
+        "UEOT.V3.CoreOperationalAssembly.p_core_01"
+      ],
+      "schema_labels": [
+        "operational_assembly",
+        "common_good_event",
+        "certificate_composition",
+        "probability_union_bound"
+      ],
+      "summary": "The frozen finite operational core theorem is an assembly result: one finite set of distinct certification-event keys gives a common-good-event union bound, and every realized sample in that event simultaneously receives response/class/carrier recovery, quotient control and action certificates, same-policy path control, optional long-run/history ports, and the integrity-margin certificate. Reused events are counted only once."
+    },
+    "P-CTL-01": {
+      "pid": "P-CTL-01",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 1877,
+      "lean_theorems": [
+        "UEOT.V3.FiniteDiscountedControl.p_ctl_01_causal_optimality",
+        "UEOT.V3.FiniteDiscountedControl.Model.fixedPoint_unique",
+        "UEOT.V3.FiniteDiscountedControl.Model.valueIteration_tendsto",
+        "UEOT.V3.FiniteDiscountedControl.Model.valueError_le_residual",
+        "UEOT.V3.FiniteDiscountedControl.CausalPolicy.infiniteValue_le_optimal",
+        "UEOT.V3.FiniteDiscountedControl.greedy_infiniteValue_eq_optimal"
+      ],
+      "schema_labels": [
+        "discounted_bellman_control",
+        "causal_policy_optimality",
+        "stationary_greedy_selector"
+      ],
+      "summary": "The frozen finite discounted-control result combines Bellman fixed-point structure with arbitrary-history causal-policy optimality: every causal randomized policy is bounded by the optimal value, while a stationary deterministic greedy policy attains it. The surrounding canonical module also supplies contraction, arbitrary-initial value iteration, uniqueness, and the residual stopping bound required by the source."
+    },
+    "P-CTL-02": {
+      "pid": "P-CTL-02",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 1918,
+      "lean_theorems": [
+        "UEOT.V3.CompactFellerControl.Model.p_ctl_02"
+      ],
+      "schema_labels": [
+        "compact_feller_control",
+        "bellman_fixed_point",
+        "measurable_argmax",
+        "causal_policy_optimality"
+      ],
+      "summary": "For compact Feller discounted control, Lean proves Bellman contraction and the unique continuous fixed point, constructs a measurable greedy selector attaining the pointwise Bellman maximum, bounds every randomized full-history causal policy by that value, and proves the stationary selector attains it."
+    },
+    "P-CTL-03": {
+      "pid": "P-CTL-03",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "standard_math_interface",
+      "source_line": 1932,
+      "lean_theorems": [
+        "UEOT.V3.DiffusionHJBVerification.p_ctl_03"
+      ],
+      "schema_labels": [
+        "diffusion_hjb_verification",
+        "ito_localization",
+        "measurable_selector",
+        "continuous_time_control"
+      ],
+      "summary": "The source-facing continuous-time HJB verification theorem proves that the bounded C2 candidate value dominates every admissible diffusion control and that the measurable maximizing selector, once its closed-loop Ito run exists, attains the value. The proof route retains the source Ito, localization, terminal-decay, and integrability structure.",
+      "post_core_concrete_instantiations": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianControlledItoRunSource",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianControlledHJBSource"
+      ]
+    },
+    "P-DDH-01": {
+      "pid": "P-DDH-01",
+      "compression_disposition": "retained_boundary",
+      "assumption_class": "explicit_no_go_or_gauge_boundary",
+      "source_line": 2348,
+      "lean_theorems": [
+        "UEOT.V3.DualDriveGauge.p_ddh_01"
+      ],
+      "schema_labels": [
+        "dual_drive_gauge",
+        "objective_nonidentifiability",
+        "algebraic_invariance"
+      ],
+      "summary": "Adding a common gauge field chi to Phi while adding lambda times chi to Pi leaves the combined objective Pi minus lambda Phi exactly unchanged. The theorem therefore records the frozen algebraic non-identifiability, with semantic anchoring of the two drive axes remaining a separate empirical or modeling obligation."
+    },
+    "P-DDH-02": {
+      "pid": "P-DDH-02",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 2370,
+      "lean_theorems": [
+        "UEOT.V3.ExponentialFamilyCalculus.p_ddh_02"
+      ],
+      "schema_labels": [
+        "exponential_family_calculus",
+        "log_partition_gradient",
+        "covariance_hessian"
+      ],
+      "summary": "For an arbitrary finite alphabet, strictly positive baseline PMF, arbitrary finite parameter dimension including zero, and prescribed feature map, Lean proves the log-partition gradient is the tilted feature mean and the derivative of that gradient is exactly the tilted covariance operator."
+    },
+    "P-DDH-03": {
+      "pid": "P-DDH-03",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 2380,
+      "lean_theorems": [
+        "UEOT.V3.ExponentialFamilyIProjection.p_ddh_03"
+      ],
+      "schema_labels": [
+        "moment_i_projection",
+        "exponential_tilt",
+        "kl_variational_minimization"
+      ],
+      "summary": "Whenever the target moment is represented by a finite natural parameter, the corresponding exponential tilt globally minimizes KL over every probability law having that moment, with equality exactly at the tilt. The theorem deliberately requires no full-rank feature family, strict convexity, positive-definite covariance, or unique parameter."
+    },
+    "P-DDH-04": {
+      "pid": "P-DDH-04",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 2402,
+      "lean_theorems": [
+        "UEOT.V3.CommonBottleneckRank.p_ddh_04"
+      ],
+      "schema_labels": [
+        "common_bottleneck_factorization",
+        "jacobian_rank_bound",
+        "shared_latent_geometry"
+      ],
+      "summary": "If all stacked response coordinates factor through one common differentiable two-dimensional latent bottleneck at the same budget point, the stacked response Jacobian factors through that latent derivative and therefore has rank at most two. The theorem explicitly excludes mixing derivatives from different budget points or unrelated per-environment bottlenecks."
+    },
+    "P-DDH-05": {
+      "pid": "P-DDH-05",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 2426,
+      "lean_theorems": [
+        "UEOT.V3.SingularValueEffectiveDimension.p_ddh_05"
+      ],
+      "schema_labels": [
+        "singular_value_perturbation",
+        "effective_dimension_threshold",
+        "spectral_certificate"
+      ],
+      "summary": "Under a genuine Euclidean operator-two-norm perturbation of the finite sensitivity matrix, every indexed singular value moves by at most eta. If the threshold lies strictly between the source second/third singular-value margins, exactly the first two estimated singular values exceed it."
+    },
+    "P-DYN-01": {
+      "pid": "P-DYN-01",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 587,
+      "lean_theorems": [
+        "UEOT.V3.DynamicsKernel.strongLumpability_iff_pathLaw_of_surjective"
+      ],
+      "schema_labels": [
+        "quotient_descent",
+        "dynamics_lumpability"
+      ],
+      "summary": "The frozen theorem is the measurable-surjective strong-lumpability/path-law equivalence. Compression evidence currently recovers only set-level quotient descent, so the M-QD-01 mapping remains partial."
+    },
+    "P-DYN-02": {
+      "pid": "P-DYN-02",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 603,
+      "lean_theorems": [
+        "UEOT.V3.CTMCSemigroupNonnegative.p_dyn_02_nonnegative_semigroup_iff_blockSum",
+        "UEOT.V3.CTMCSemigroupNonnegative.exists_macro_ctmc_semigroup_of_blockSum_constant"
+      ],
+      "schema_labels": [
+        "ctmc_generator_semigroup_intertwining",
+        "finite_lumpability",
+        "continuous_time_quotient_adapter"
+      ],
+      "summary": "The frozen finite-CTMC criterion is exactly realized: fibre-constant block sums define the macro generator, generator intertwining is equivalent to the block-sum condition, and exponentiation carries the intertwining to every nonnegative semigroup time. This is quotient-shaped but includes a genuinely continuous-time linear-semigroup adapter beyond bare M-QD-01."
+    },
+    "P-DYN-03": {
+      "pid": "P-DYN-03",
+      "compression_disposition": "generated",
+      "assumption_class": "generated_from_four_core_generators",
+      "source_line": 623,
+      "lean_theorems": [
+        "UEOT.V3.PathError.p_dyn_03_finite_path_error"
+      ],
+      "schema_labels": [
+        "sequential_transport_certificate",
+        "path_coupling"
+      ],
+      "summary": "The frozen theorem combines a sharp multiplicative path-coupling certificate with its additive union-bound corollary. The extended M-TC-01 now recovers the multiplicative survival recurrence through a domain-generic certificate theorem, while finite-PMF common mass, one-step TV-to-overlap, the exact TV/common-mass identity, and the product-to-sum union bound remain explicit source/domain adapters."
+    },
+    "P-DYN-04": {
+      "pid": "P-DYN-04",
+      "compression_disposition": "generated",
+      "assumption_class": "generated_from_four_core_generators",
+      "source_line": 640,
+      "lean_theorems": [
+        "UEOT.V3.DynamicsCrossScale.p_dyn_04_cross_scale_tv",
+        "UEOT.V3.DynamicsCrossScale.p_dyn_04_exact_intertwining"
+      ],
+      "schema_labels": [
+        "transport_certificate",
+        "cross_scale_factorization"
+      ],
+      "summary": "The reachable-image approximate cross-scale theorem is exactly contraction under the coarse map plus triangle splitting through the common microscopic pushforward, while the exact clause is a commuting factorization triangle; both are rederived in the compression namespace."
+    },
+    "P-EVO-01": {
+      "pid": "P-EVO-01",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 2551,
+      "lean_theorems": [
+        "UEOT.V3.EvolutionPrice.p_evo_01"
+      ],
+      "schema_labels": [
+        "price_equation",
+        "selection_transmission_decomposition",
+        "mean_frequency_update"
+      ],
+      "summary": "For the frozen deterministic mean-frequency update, Lean proves the exact Price-style decomposition of offspring trait change into the weighted covariance selection term and the weighted transmission-change term divided by mean fitness. Individual fitness values may vanish; only positive mean fitness is required."
+    },
+    "P-EVO-02": {
+      "pid": "P-EVO-02",
+      "compression_disposition": "retained_boundary",
+      "assumption_class": "explicit_no_go_or_gauge_boundary",
+      "source_line": 2568,
+      "lean_theorems": [
+        "UEOT.V3.EvolutionSharedLabel.p_evo_02"
+      ],
+      "schema_labels": [
+        "shared_label_information",
+        "mutual_information_additivity",
+        "irrelevant_label_inflation"
+      ],
+      "summary": "For a finite label independent of the joint parental/offspring variables and copied identically to both sides, Lean proves exact mutual-information additivity: attaching the shared irrelevant label increases measured heritable information by precisely its entropy. The independence and exact-copy assumptions remain explicit."
+    },
+    "P-EVO-03": {
+      "pid": "P-EVO-03",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 2589,
+      "lean_theorems": [
+        "UEOT.V3.EvolutionPerronGrowth.p_evo_03"
+      ],
+      "schema_labels": [
+        "principal_mode_dominance",
+        "perron_growth",
+        "normalized_composition",
+        "reproductive_value_uniqueness"
+      ],
+      "summary": "From one source-tied primitive-matrix Perron certificate, the Lean theorem derives scaled mean growth toward the rank-one principal mode, normalized mean composition toward the left Perron vector, and uniqueness of any positive linear reproductive valuation as the Perron right eigendirection."
+    },
+    "P-EVO-04": {
+      "pid": "P-EVO-04",
+      "compression_disposition": "generated",
+      "assumption_class": "generated_from_four_core_generators",
+      "source_line": 2609,
+      "lean_theorems": [
+        "UEOT.V3.EvolutionReproductiveMartingale.p_evo_04"
+      ],
+      "schema_labels": [
+        "right_eigenfunction_martingale",
+        "reproductive_value",
+        "conditional_mean_dynamics"
+      ],
+      "summary": "The canonical Lean endpoint preserves the frozen conditional-mean offspring dynamics and derives that R^{-n} Z_n r is a nonnegative integrable martingale with constant expected reproductive value, using the positive Perron right eigenrelation rather than assuming the martingale directly."
+    },
+    "P-FAC-01": {
+      "pid": "P-FAC-01",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 254,
+      "lean_theorems": [
+        "UEOT.V3.RepresentationCovariance.p_fac_01_covariance_bundle",
+        "UEOT.V3.RepresentationCovariance.homTrajMeasure_transport_covariance",
+        "UEOT.V3.RepresentationCovariance.causalLaw_transport_equiv",
+        "UEOT.V3.RepresentationCovariance.causalPolicyValue_transport_bundle"
+      ],
+      "schema_labels": [
+        "representation_covariance",
+        "bimeasurable_transport",
+        "pathlaw_value_naturality"
+      ],
+      "summary": "The frozen representation-covariance theorem transports dynamics, readout, predictive sufficiency, finite path records, rewards, and policy values through a bimeasurable change of microscopic coordinates. The canonical Lean family derives one-step closure, predictive factorization, path-law naturality, and finite-feedback value covariance from the transported kernels rather than assuming value equality separately."
+    },
+    "P-GOA-01": {
+      "pid": "P-GOA-01",
+      "compression_disposition": "generated",
+      "assumption_class": "generated_from_four_core_generators",
+      "source_line": 2103,
+      "lean_theorems": [
+        "UEOT.V3.FiniteCesaroInvariant.p_goa_01"
+      ],
+      "schema_labels": [
+        "cesaro_limit_invariance",
+        "finite_markov_chain",
+        "occupation_limit"
+      ],
+      "summary": "The frozen finite-chain theorem is exactly reconstructed by the M-OI wrapper: simplex compactness supplies a convergent Cesaro subsequence, the source Cesaro telescope supplies vanishing one-step evolution defect, and the common observable-residual theorem identifies every cluster point as invariant."
+    },
+    "P-GOA-02": {
+      "pid": "P-GOA-02",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 2129,
+      "lean_theorems": [
+        "UEOT.V3.FiniteDobrushin.p_goa_02",
+        "UEOT.V3.FiniteDobrushin.tv_step_le_dobrushin"
+      ],
+      "schema_labels": [
+        "dobrushin_contraction",
+        "invariant_uniqueness",
+        "stationary_perturbation"
+      ],
+      "summary": "For a finite stochastic kernel, the canonical event-supremum-TV Dobrushin coefficient gives the exact contraction. Combining invariant existence with alpha below one yields a unique invariant law, and rowwise kernel perturbation gives the frozen stationary-law bound epsilon divided by one minus alpha without an L1 normalization change."
+    },
+    "P-GOA-03": {
+      "pid": "P-GOA-03",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 2155,
+      "lean_theorems": [
+        "UEOT.V3.FiniteRecurrentDecompositionStability.p_goa_03"
+      ],
+      "schema_labels": [
+        "recurrent_decomposition",
+        "resolvent_perturbation",
+        "cesaro_limit_mixture",
+        "absorption_stability"
+      ],
+      "summary": "For two finite chains with the same transient type and recurrent-class partition, Lean proves the frozen resolvent and absorption-matrix perturbation bound under the source smallness condition, proves both displayed recurrent mixtures are the actual periodic-safe Cesaro limits from the same initial state, and then establishes the total-variation mixture stability bound."
+    },
+    "P-GOA-04": {
+      "pid": "P-GOA-04",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 2186,
+      "lean_theorems": [
+        "UEOT.V3.SymmetricKilledSpectralStability.p_goa_04"
+      ],
+      "schema_labels": [
+        "principal_eigenpair_stability",
+        "spectral_gap_perturbation",
+        "squared_eigenvector_tv"
+      ],
+      "summary": "For finite symmetric nonnegative killed kernels, a positive unit principal mode with Rayleigh spectral gap and a small Euclidean operator-norm perturbation imply the sharp principal-eigenvalue displacement bound and a quantitative total-variation bound between the squared principal-mode probability laws."
+    },
+    "P-ID-01": {
+      "pid": "P-ID-01",
+      "compression_disposition": "generated",
+      "assumption_class": "generated_from_four_core_generators",
+      "source_line": 971,
+      "lean_theorems": [
+        "UEOT.V3.TransportDefect.FrozenTransportSystem.p_id_01"
+      ],
+      "schema_labels": [
+        "transport_certificate",
+        "identity_transport"
+      ],
+      "summary": "The source-facing supremum endpoint transport defect is bounded by the finite sum of adjacent defects, and M-TC-01 reconstructs the same conclusion from generic additive transport accumulation."
+    },
+    "P-ID-02": {
+      "pid": "P-ID-02",
+      "compression_disposition": "generated",
+      "assumption_class": "generated_from_four_core_generators",
+      "source_line": 1007,
+      "lean_theorems": [
+        "UEOT.V3.DevelopmentTransport.development_pipeline"
+      ],
+      "schema_labels": [
+        "weighted_transport_certificate",
+        "discrete_gronwall",
+        "development_transport"
+      ],
+      "summary": "The canonical source-facing theorem propagates a one-step model residual through stage-dependent Lipschitz dynamics and gives the exact finite-horizon product/sum error formula. The new M-TC weighted-chain theorem reproduces that formula for heterogeneous stage types, with the frozen metric statement as an exact specialization."
+    },
+    "P-INFO-01": {
+      "pid": "P-INFO-01",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 376,
+      "lean_theorems": [
+        "UEOT.V3.InformationStatistic.mutualInfo_eq_statistic_add_conditional",
+        "UEOT.V3.InformationStatistic.mutualInfo_statistic_ge_sub_of_conditional_le",
+        "UEOT.V3.InformationMemoryBound.p_info_01_discrete_entropy"
+      ],
+      "schema_labels": [
+        "information_chain_rule",
+        "deterministic_statistic",
+        "entropy_memory_bound"
+      ],
+      "summary": "The canonical Lean stack matches all frozen clauses: deterministic-statistic mutual information splits into retained information plus a genuine conditional-KL residual, a residual upper bound yields the quantitative retention inequality, and for countable discrete memory the retained information is bounded by extended Shannon entropy."
+    },
+    "P-INFO-02": {
+      "pid": "P-INFO-02",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 397,
+      "lean_theorems": [
+        "UEOT.V3.InformationPInfo02.p_info_02_finite",
+        "UEOT.V3.InformationPInfo02.p_info_02_ennreal"
+      ],
+      "schema_labels": [
+        "conditional_pinsker",
+        "information_to_prediction_error",
+        "average_tv_certificate"
+      ],
+      "summary": "The frozen conditional-information-to-predictive-TV theorem is recovered in both finite-information real form and an all-cases extended-real form. The proof route identifies the source conditional information with averaged kernel KL, applies Pinsker pointwise, and uses the square-root averaging step without adding an absolute-continuity assumption to the source contract."
+    },
+    "P-INFO-03": {
+      "pid": "P-INFO-03",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 432,
+      "lean_theorems": [
+        "UEOT.V3.InformationPredictiveRateZero.predictiveObjectRateZero_eq_sourceEntropy"
+      ],
+      "schema_labels": [
+        "zero_distortion_rate",
+        "predictive_core_recoverability",
+        "canonical_achievability"
+      ],
+      "summary": "The frozen zero-distortion object rate theorem is matched by the canonical Lean equality between optimal randomized zero-TV representation rate and the conditional entropy of the countable canonical predictive core. The converse uses recoverability of the predictive law from any zero-distortion encoder, while the canonical core itself supplies the achieving representation."
+    },
+    "P-INFO-04": {
+      "pid": "P-INFO-04",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 450,
+      "lean_theorems": [
+        "UEOT.V3.InformationPInfo04.p_info_04",
+        "UEOT.V3.InformationConditionalBinaryMutualEntropy.p_info_04_conditional_binary"
+      ],
+      "schema_labels": [
+        "fano_lower_bound",
+        "decoder_error_certificate",
+        "conditional_binary_information"
+      ],
+      "summary": "The Lean endpoints recover both frozen information lower bounds: the sharp K-way uniform-identity Fano inequality for any measurable decoder and the conditional binary version with decoder error at most epsilon. The infinite-information case is handled explicitly rather than hidden behind a finiteness premise."
+    },
+    "P-INFO-05": {
+      "pid": "P-INFO-05",
+      "compression_disposition": "retained_boundary",
+      "assumption_class": "explicit_no_go_or_gauge_boundary",
+      "source_line": 468,
+      "lean_theorems": [
+        "UEOT.V3.InformationPacking.merged_histories_decoder_lower_bound",
+        "UEOT.V3.InformationPacking.packing_ncard_image",
+        "UEOT.V3.InformationEntropy.p_info_05_uniform_entropy"
+      ],
+      "schema_labels": [
+        "packing_obstruction",
+        "decoder_triangle_lower_bound",
+        "cardinality_entropy_bound"
+      ],
+      "summary": "All frozen packing clauses are represented canonically: merging two histories forces at least half their response-law TV separation as decoder error on one branch; a pairwise-separated finite packing forces injectivity and hence at least N representation values; under the uniform input the representation entropy is exactly log N."
+    },
+    "P-INT-01": {
+      "pid": "P-INT-01",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 488,
+      "lean_theorems": [
+        "UEOT.V3.InformationPInt01Common.p_int_01",
+        "UEOT.V3.InformationPInt01Common.p_int_01_common_decoder"
+      ],
+      "schema_labels": [
+        "conditional_independence_factorization",
+        "common_version",
+        "structured_sufficiency"
+      ],
+      "summary": "The frozen structured-sufficiency iff is matched by the countable common-version Lean theorem: protocolwise conditional-independence closure through the joint internal/environment statistic is equivalent to one decoder family that factors all response kernels on a common conull set, with a measurable state-valued decoder available as a corollary."
+    },
+    "P-INT-02": {
+      "pid": "P-INT-02",
+      "compression_disposition": "generated",
+      "assumption_class": "generated_from_four_core_generators",
+      "source_line": 524,
+      "lean_theorems": [
+        "UEOT.V3.StructuredQuotient.p_int_02"
+      ],
+      "schema_labels": [
+        "two_sided_quotient_descent",
+        "canonical_product_factorization",
+        "minimal_refinement"
+      ],
+      "summary": "The finite structural-kernel theorem is matched exactly: quotienting the internal and environment coordinates by universal response equality gives a well-defined canonical response kernel, and every other exact separated representation refines each canonical equivalence relation. No Bellman, policy, statistical, or algorithmic assumptions enter this result."
+    },
+    "P-INT-03": {
+      "pid": "P-INT-03",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 570,
+      "lean_theorems": [
+        "UEOT.V3.MarkovBoundary.p_int_03_boundary_unique"
+      ],
+      "schema_labels": [
+        "markov_boundary_uniqueness",
+        "graphoid_intersection",
+        "minimal_blanket"
+      ],
+      "summary": "The canonical Lean wrapper proves the frozen uniqueness result for two minimal Markov blankets under the stated semigraphoid-style conditional-independence laws including intersection. The proof is actually stronger than the manuscript's finite-universe surface once the CI axioms are supplied, while preserving the source warning that intersection is a genuine extra condition."
+    },
+    "P-INV-01": {
+      "pid": "P-INV-01",
+      "compression_disposition": "retained_boundary",
+      "assumption_class": "explicit_no_go_or_gauge_boundary",
+      "source_line": 1696,
+      "lean_theorems": [
+        "UEOT.V3.BinaryTesting.p_inv_01"
+      ],
+      "schema_labels": [
+        "binary_testing",
+        "total_variation_duality",
+        "identifiability_lower_bound"
+      ],
+      "summary": "On a general measurable space, equal-prior binary testing has minimum average error exactly one half times (1-TV), and the Lean theorem returns a measurable optimal test together with optimality against every measurable alternative."
+    },
+    "P-INV-02": {
+      "pid": "P-INV-02",
+      "compression_disposition": "retained_boundary",
+      "assumption_class": "explicit_no_go_or_gauge_boundary",
+      "source_line": 1717,
+      "lean_theorems": [
+        "UEOT.V3.FisherGauge.p_inv_02"
+      ],
+      "schema_labels": [
+        "fisher_gauge",
+        "likelihood_invariance",
+        "zero_score_direction"
+      ],
+      "summary": "Along a smooth likelihood-invariant orbit, if the orbit derivative of log likelihood equals the directional score, the tangent direction has zero Fisher action. The proof explicitly converts likelihood invariance into an almost-everywhere zero directional score."
+    },
+    "P-INV-03": {
+      "pid": "P-INV-03",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 1723,
+      "lean_theorems": [
+        "UEOT.V3.FisherIntersection.p_inv_03"
+      ],
+      "schema_labels": [
+        "fisher_information_accumulation",
+        "kernel_intersection",
+        "multi_intervention"
+      ],
+      "summary": "For independent centered experiment scores with the required integrability/measurability, joint Fisher action is the sum of experiment Fisher actions and its zero kernel is exactly the intersection of the individual Fisher zero kernels."
+    },
+    "P-INV-04": {
+      "pid": "P-INV-04",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "protocol_calibration_contract",
+      "source_line": 1747,
+      "lean_theorems": [
+        "UEOT.V3.DesignIdentifiability.p_inv_04"
+      ],
+      "schema_labels": [
+        "gram_identifiability",
+        "linear_inverse_problem",
+        "positive_definiteness"
+      ],
+      "summary": "For a fixed noiseless finite design, the parameter-to-observation map is injective exactly when the empirical Gram quadratic form is positive in every nonzero direction. This is the literal algebraic identifiability criterion."
+    },
+    "P-INV-05": {
+      "pid": "P-INV-05",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "protocol_calibration_contract",
+      "source_line": 1757,
+      "lean_theorems": [
+        "UEOT.V3.PredictableOLSSourceConfidence.measure_source_goodGram_and_euclidean_error_gt_le_alpha"
+      ],
+      "schema_labels": [
+        "predictable_ols",
+        "good_gram_event",
+        "adaptive_design_concentration"
+      ],
+      "summary": "Under predictable bounded design, adapted conditionally sub-Gaussian noise, and the source OLS normal equation, the probability of simultaneously having the matrix good-Gram condition and Euclidean estimation error beyond the frozen radius is at most alpha. The formalization makes the needed next-filtration noise measurability explicit."
+    },
+    "P-KL-01": {
+      "pid": "P-KL-01",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 2214,
+      "lean_theorems": [
+        "UEOT.V3.PathEventKL.p_kl_01"
+      ],
+      "schema_labels": [
+        "kl_data_processing",
+        "event_bernoulli_projection",
+        "information_lower_bound"
+      ],
+      "summary": "For an absolutely continuous reachable law and baseline path law, measurable-event projection to a Bernoulli indicator gives the exact frozen lower bound: full-law KL dominates Bernoulli KL of the event probabilities. The source absolute-continuity premise and boundary interpretation are kept even though the generic data-processing theorem is stronger."
+    },
+    "P-KL-02": {
+      "pid": "P-KL-02",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 2227,
+      "lean_theorems": [
+        "UEOT.V3.PathEventIProjection.p_kl_02"
+      ],
+      "schema_labels": [
+        "event_i_projection",
+        "kl_variational_minimization",
+        "explicit_rn_optimizer"
+      ],
+      "summary": "The global constrained KL problem ranges over all probability laws absolutely continuous with respect to the baseline. If the required event mass is inactive the infimum is zero at the baseline; if active, Lean constructs the exact two-region Radon-Nikodym tilt, proves its probability and event mass, and proves the optimum equals Bernoulli KL including the p equals one boundary."
+    },
+    "P-KL-03": {
+      "pid": "P-KL-03",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 2260,
+      "lean_theorems": [
+        "UEOT.V3.PathKLChain.p_kl_03",
+        "UEOT.V3.PathKLChain.p_kl_03_general"
+      ],
+      "schema_labels": [
+        "path_kl_chain_rule",
+        "history_dependent_kernel",
+        "conditional_kl_accumulation"
+      ],
+      "summary": "For genuinely history-dependent finite-horizon kernels with rowwise absolute continuity, Lean proves path KL equals the sum of expected one-step conditional KL terms under the source path law. The general version also adds the initial-law KL, preserving the frozen theorem beyond a homogeneous Markov surrogate."
+    },
+    "P-KL-04": {
+      "pid": "P-KL-04",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 2271,
+      "lean_theorems": [
+        "UEOT.V3.FiniteCTMCPathKL.p_kl_04_holding",
+        "UEOT.V3.FiniteCTMCPathKL.p_kl_04_clock",
+        "UEOT.V3.FiniteCTMCPathKL.p_kl_04"
+      ],
+      "schema_labels": [
+        "ctmc_path_kl",
+        "jump_rate_entropy",
+        "clock_time_information_cost"
+      ],
+      "summary": "For finite nonexplosive continuous-time jump processes with the same initial state and source support inclusion, the canonical proof identifies the path-law likelihood ratio, integrates jump and holding contributions, and obtains exactly the frozen literal clock-time KL rate integral over jump intensities with the zero diagonal convention."
+    },
+    "P-KL-05": {
+      "pid": "P-KL-05",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "standard_math_interface",
+      "source_line": 2302,
+      "lean_theorems": [
+        "UEOT.V3.GirsanovPathKL.TerminalGirsanovData.p_kl_05"
+      ],
+      "schema_labels": [
+        "girsanov_relative_entropy",
+        "control_energy_identity",
+        "observed_path_data_processing"
+      ],
+      "summary": "Under the frozen terminal Girsanov setup, Lean derives the full-space identity KL(Q||P0) equals one half the expected clock-time control energy and separately proves that every measurable observed state path has KL no larger than that full-space cost. Hidden noise directions therefore retain information that state observation may lose.",
+      "post_core_concrete_instantiations": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianBoundedGirsanovSource",
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianBoundedTerminalKLSource"
+      ]
+    },
+    "P-MET-01": {
+      "pid": "P-MET-01",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 140,
+      "lean_theorems": [
+        "UEOT.V3.TotalVariation.tvDist_map_le",
+        "UEOT.V3.TVKernel.tvDist_comp_le",
+        "UEOT.V3.TotalVariation.tvDist_map_measurableEquiv"
+      ],
+      "schema_labels": [
+        "data_processing_contraction",
+        "bimeasurable_isometry",
+        "transport_metric_adapter"
+      ],
+      "summary": "The frozen theorem supplies the metric infrastructure used by later transport certificates: total variation contracts under measurable readout pushforward and under a common Markov kernel, while a bimeasurable bijection is an exact TV isometry. The three canonical Lean theorems match these source clauses exactly."
+    },
+    "P-MET-02": {
+      "pid": "P-MET-02",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 153,
+      "lean_theorems": [
+        "UEOT.V3.TVSpan.abs_integral_sub_le_span"
+      ],
+      "schema_labels": [
+        "tv_span_duality",
+        "observable_sensitivity",
+        "metric_adapter"
+      ],
+      "summary": "The frozen span estimate is exactly the total-variation dual bound for a bounded measurable real observable after centering by its midpoint. The canonical Lean theorem uses literal supremum-minus-infimum span and probability measures, matching the source expectation-gap inequality without changing the error scale."
+    },
+    "P-OMG-01": {
+      "pid": "P-OMG-01",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 1077,
+      "lean_theorems": [
+        "UEOT.V3.OmegaMinimalFailure.p_omg_01"
+      ],
+      "schema_labels": [
+        "finite_minimal_reconstruction",
+        "monotone_failure",
+        "minimal_generator_family"
+      ],
+      "summary": "The Lean source-facing theorem exactly reconstructs every finite monotone failure event from its inclusion-minimal failing deletion sets: failure of D iff D contains a minimal failure. The proof separates finite minimal-subset existence from failure monotonicity."
+    },
+    "P-OMG-02": {
+      "pid": "P-OMG-02",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 1095,
+      "lean_theorems": [
+        "UEOT.V3.OmegaIntegrityMargin.p_omg_02"
+      ],
+      "schema_labels": [
+        "distance_to_set_stability",
+        "one_lipschitz_margin",
+        "metric_adapter"
+      ],
+      "summary": "The frozen integrity margin is distance to a fixed nonempty failure set. The Lean endpoint retains that source domain and proves the exact 1-Lipschitz perturbation bound using Mathlib's more general point-to-set distance theorem."
+    },
+    "P-PER-01": {
+      "pid": "P-PER-01",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 679,
+      "lean_theorems": [
+        "UEOT.V3.PersistenceOmega.p_per_01"
+      ],
+      "schema_labels": [
+        "omega_limit_compactness",
+        "invariant_limit_set",
+        "topological_persistence"
+      ],
+      "summary": "The Lean endpoint matches the frozen nonnegative-time semiflow theorem: precompactness plus eventual residence in a closed persistence domain yields a nonempty compact omega-limit set contained in the domain, and every nonnegative time map acts onto that omega-limit set."
+    },
+    "P-PER-02": {
+      "pid": "P-PER-02",
+      "compression_disposition": "generated",
+      "assumption_class": "generated_from_four_core_generators",
+      "source_line": 705,
+      "lean_theorems": [
+        "UEOT.V3.PersistenceOccupation.FellerOccupationSystem.p_per_02"
+      ],
+      "schema_labels": [
+        "occupation_limit_invariance",
+        "feller_tightness",
+        "closed_support_preservation"
+      ],
+      "summary": "The frozen source-facing Feller occupation theorem is exactly reconstructed by the M-OI wrapper: tightness yields a weakly convergent occupation subsequence, domain-specific Feller/shift adapters establish asymptotically vanishing observable evolution defect, the common observable-residual theorem gives invariance of the limit, and the original closed-support inheritance remains explicit."
+    },
+    "P-PER-03": {
+      "pid": "P-PER-03",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 729,
+      "lean_theorems": [
+        "UEOT.V3.ViabilitySource.p_per_03"
+      ],
+      "schema_labels": [
+        "finite_monotone_stabilization",
+        "viability_kernel",
+        "stationary_policy_realization",
+        "pathwise_safety"
+      ],
+      "summary": "The frozen finite deletion recursion is recovered exactly: finite stabilization, equality with the sure-safe winning set, existence of a deterministic stationary preserving selector, and probability-one infinite-trajectory safety from every initial law supported on the kernel."
+    },
+    "P-PER-04": {
+      "pid": "P-PER-04",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "standard_math_interface",
+      "source_line": 745,
+      "lean_theorems": [
+        "UEOT.V3.ViabilityTangency.p_per_04"
+      ],
+      "schema_labels": [
+        "tangent_cone_necessity",
+        "viability_geometry"
+      ],
+      "summary": "The Lean endpoint matches the frozen necessary condition: a curve differentiable at zero and remaining in the closed viability domain for nonnegative time has initial velocity in the positive Bouligand contingent cone."
+    },
+    "P-PRED-01": {
+      "pid": "P-PRED-01",
+      "compression_disposition": "generated",
+      "assumption_class": "generated_from_four_core_generators",
+      "source_line": 294,
+      "lean_theorems": [
+        "UEOT.V3.PredictionDependent.canonical_ae_minimal",
+        "UEOT.V3.PredictionDependent.canonical_ae_sigma_minimal",
+        "UEOT.V3.PredictionDependent.canonical_kernel_sufficient"
+      ],
+      "schema_labels": [
+        "quotient_descent",
+        "prediction_minimality",
+        "ae_factorization"
+      ],
+      "summary": "The frozen theorem is a countable common-null-set measurable descent statement: any statistic through which every protocol response kernel factors also carries the bundled canonical response state, while coordinate evaluation makes the canonical state itself sufficient. M-QD-01 now reconstructs the full factorization/minimality/sufficiency claim."
+    },
+    "P-PRED-02": {
+      "pid": "P-PRED-02",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 330,
+      "lean_theorems": [
+        "UEOT.V3.PredictionRefinement.pushTargetDependent_apply",
+        "UEOT.V3.PredictionRefinement.protocol_refinement_sigma_le_dependent",
+        "UEOT.V3.PredictionRefinement.sigmaCanonicalDependent_iUnion_of_monotone"
+      ],
+      "schema_labels": [
+        "response_pushforward_functoriality",
+        "protocol_factor_refinement",
+        "sigma_join_continuity"
+      ],
+      "summary": "The frozen theorem packages two mathematically distinct mechanisms. Measurable target transformations act coordinatewise by kernel pushforward, while protocol-family inclusion and countable unions act on the generated sigma-factor by order monotonicity and joins. The current Lean module proves all three clauses exactly, including a dependent-future-space strengthening, but no single existing meta-generator honestly explains the whole bundle."
+    },
+    "P-PRED-03": {
+      "pid": "P-PRED-03",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 351,
+      "lean_theorems": [
+        "UEOT.V3.PredictionUpdate.p_pred_03_recursive_update"
+      ],
+      "schema_labels": [
+        "bayesian_recursive_closure",
+        "measurable_state_update",
+        "protocol_closure"
+      ],
+      "summary": "The source theorem is a Bayes-closure statement: if the current canonical coordinates include each observation marginal and required observation-plus-continuation cylinder, then the next continuation-response vector is a measurable function of the current state, action, and observation and equality of current states is preserved by the update. The Lean source-facing wrapper recovers this claim with the zero-probability extension explicit."
+    },
+    "P-PROC-01": {
+      "pid": "P-PROC-01",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 199,
+      "lean_theorems": [
+        "UEOT.V3.ConcreteHistoryMarkovization.p_proc_01_history_markovization"
+      ],
+      "schema_labels": [
+        "state_augmentation",
+        "history_markovization",
+        "kernel_readout_recovery"
+      ],
+      "summary": "The frozen theorem states that an arbitrary history-dependent controlled process becomes time-homogeneous Markov after augmenting the state by time and complete history. The Lean wrapper constructs one Markov kernel on the tagged growing-history carrier and proves that the physical readout recovers every supplied history-dependent transition kernel exactly."
+    },
+    "P-QSD-01": {
+      "pid": "P-QSD-01",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 847,
+      "lean_theorems": [
+        "UEOT.V3.QSDTVLimit.p_qsd_01"
+      ],
+      "schema_labels": [
+        "conditioned_limit_eigenmeasure",
+        "projective_semigroup_fixed_point",
+        "exponential_survival"
+      ],
+      "summary": "The canonical Lean theorem preserves the frozen continuous-time killed-subprobability semigroup, one literal initial law, total-variation convergence of its normalized surviving marginals, positivity of q-survival for every positive finite lag, and right continuity at zero. It derives the QSD eigenmeasure relation, multiplicativity of q-survival, and the nonnegative exponential decay rate rather than assuming them."
+    },
+    "P-QSD-02": {
+      "pid": "P-QSD-02",
+      "compression_disposition": "generated",
+      "assumption_class": "generated_from_four_core_generators",
+      "source_line": 879,
+      "lean_theorems": [
+        "UEOT.V3.QSDPerron.p_qsd_02",
+        "UEOT.V3.QSDPerron.p_qsd_02_killed"
+      ],
+      "schema_labels": [
+        "positive_eigenstructure",
+        "doob_h_transform",
+        "quasi_stationary_distribution",
+        "transformed_invariant_law"
+      ],
+      "summary": "Conditional on the source-designated Perron data, the Lean layer exactly derives qQ^n=rho^n q, survival mass rho^n, a stochastic nonnegative Doob h-transform, and the invariant probability q*h; the killed wrapper also derives rho<=1 from substochastic rows."
+    },
+    "P-QSD-03": {
+      "pid": "P-QSD-03",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 901,
+      "lean_theorems": [
+        "UEOT.V3.QSDDurationWindow.p_qsd_03",
+        "UEOT.V3.QSDDurationWindow.window_nonempty_iff"
+      ],
+      "schema_labels": [
+        "dual_exponential_threshold",
+        "duration_window",
+        "same_initial_certificate"
+      ],
+      "summary": "The Lean theorem solves the two source exponential inequalities exactly and intersects them on the same initial law, preserving the closed singleton-window case and preventing a mixing estimate for one initial state from being spliced with a survival estimate for another."
+    },
+    "P-QSD-04": {
+      "pid": "P-QSD-04",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "standard_math_interface",
+      "source_line": 928,
+      "lean_theorems": [
+        "UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.p_qsd_04"
+      ],
+      "schema_labels": [
+        "principal_mode_dominance",
+        "spectral_gap_qsd",
+        "survival_scale",
+        "reversible_killed_spectrum"
+      ],
+      "summary": "The source-facing theorem exactly reconstructs the normalized positive principal-eigenfunction QSD, exponential TV attraction at the lambda2-lambda1 spectral-gap rate, and eventual survival lower bound at the principal lambda1 decay rate from the reversible compact-resolvent spectral datum."
+    },
+    "P-QUO-01": {
+      "pid": "P-QUO-01",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 1973,
+      "lean_theorems": [
+        "UEOT.V3.FiniteDiscountedControl.ExactControlQuotient.p_quo_01"
+      ],
+      "schema_labels": [
+        "control_quotient",
+        "bellman_intertwining",
+        "policy_lifting"
+      ],
+      "summary": "The quotient map supplies the representational skeleton, but the source-facing theorem also preserves optimal value and lifts a macro-optimal policy against the full causal policy class via Bellman fixed-point machinery."
+    },
+    "P-QUO-02": {
+      "pid": "P-QUO-02",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 2001,
+      "lean_theorems": [
+        "UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.p_quo_02"
+      ],
+      "schema_labels": [
+        "approximate_control_quotient",
+        "span_sensitive_value_bound",
+        "lifted_policy_regret"
+      ],
+      "summary": "The finite approximate quotient uses genuine total variation between pushed-forward microscopic rows and macro rows, derives continuation error through the TV span bound, and proves the exact source value error D together with the lifted macro-greedy microscopic regret bound between zero and 2D."
+    },
+    "P-QUO-03": {
+      "pid": "P-QUO-03",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 2024,
+      "lean_theorems": [
+        "UEOT.V3.CoreOperationalAssembly.macro_gap_certifies_micro_action"
+      ],
+      "schema_labels": [
+        "action_gap_certificate",
+        "quotient_qvalue_transfer",
+        "unique_action_recovery"
+      ],
+      "summary": "Using the same approximate quotient and its derived D-radius action-value comparison, Lean proves that a macro greedy action separated from every competitor by more than 2D is the genuine unique microscopic optimal action at every represented state. No unrelated action-value error premise is added."
+    },
+    "P-QUO-04": {
+      "pid": "P-QUO-04",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 2042,
+      "lean_theorems": [
+        "UEOT.V3.FiniteDiscountedControl.Model.p_quo_04"
+      ],
+      "schema_labels": [
+        "policy_resolvent",
+        "discounted_occupancy",
+        "neumann_series",
+        "state_action_occupancy"
+      ],
+      "summary": "The canonical theorem packages the exact fixed-policy resolvent identity, its convergent Neumann-series representation, normalized discounted state occupancy and its fixed-point equation, the exact occupancy expectation representation of value residuals, and the corresponding state-action occupancy marginal and unit-mass identities."
+    },
+    "P-QUO-05": {
+      "pid": "P-QUO-05",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 2063,
+      "lean_theorems": [
+        "UEOT.V3.FiniteDiscountedControl.LocalApproxControlQuotient.p_quo_05"
+      ],
+      "schema_labels": [
+        "occupancy_weighted_regret",
+        "local_residual_error",
+        "approximate_quotient_policy"
+      ],
+      "summary": "The frozen local-error refinement compares an arbitrary designated true-optimal stationary microscopic policy with an arbitrary macro-optimal lifted selector and bounds initial-law regret by the sum of their own discounted occupancy-weighted local errors divided by one minus the discount. Tied-optimal cases and policy-specific occupancies are retained."
+    },
+    "P-REC-01": {
+      "pid": "P-REC-01",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 760,
+      "lean_theorems": [
+        "UEOT.V3.RecoveryProbability.p_rec_01_mean_bound",
+        "UEOT.V3.RecoveryProbability.p_rec_01_tail_bound"
+      ],
+      "schema_labels": [
+        "discrete_affine_drift",
+        "geometric_recovery_bound",
+        "markov_tail"
+      ],
+      "summary": "The source conditional affine drift is converted to the exact geometric mean bound, and the same numerator yields the stated Markov tail bound. Finiteness propagation and the persistent error floor are kept explicit in the Lean route."
+    },
+    "P-REC-02": {
+      "pid": "P-REC-02",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "standard_math_interface",
+      "source_line": 783,
+      "lean_theorems": [
+        "UEOT.V3.RecoveryDynkin.p_rec_02"
+      ],
+      "schema_labels": [
+        "continuous_lyapunov_drift",
+        "dynkin_gronwall",
+        "mean_square_recovery"
+      ],
+      "summary": "The source-facing wrapper keeps the Dynkin/localization/integrability certificate explicit, integrates the pointwise generator drift into an expectation differential inequality, obtains the exact exponential affine bound, and transfers it through the Lyapunov domination to mean-square distance.",
+      "post_core_concrete_instantiations": [
+        "UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.BrownianBoundedC2DynkinSource"
+      ]
+    },
+    "P-REC-03": {
+      "pid": "P-REC-03",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 804,
+      "lean_theorems": [
+        "UEOT.V3.RecoveryHittingPoisson.p_rec_03"
+      ],
+      "schema_labels": [
+        "hitting_time_potential",
+        "first_step_identity",
+        "poisson_equation"
+      ],
+      "summary": "For states outside the target with finite expected hitting time, first-step Markov decomposition gives the exact canonical Poisson equation P V_A - V_A = -1; the Lean proof also derives the needed one-step integrability from finiteness rather than assuming it."
+    },
+    "P-REC-04": {
+      "pid": "P-REC-04",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 814,
+      "lean_theorems": [
+        "UEOT.V3.RecoveryHittingBound.p_rec_04_hitting_time_bound"
+      ],
+      "schema_labels": [
+        "stopped_drift",
+        "lyapunov_hitting_time",
+        "recovery_time_bound"
+      ],
+      "summary": "The Lean theorem reconstructs the frozen negative-drift hitting-time guarantee by a nonnegative survival-potential recurrence, finite-horizon telescoping, monotone passage to expected hitting time, and division by the positive finite drift constant."
+    },
+    "P-REF-01": {
+      "pid": "P-REF-01",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 2710,
+      "lean_theorems": [
+        "UEOT.V3.ReflexivePRef01.p_ref_01",
+        "UEOT.V3.ReflexivePRef01.p_ref_01_structureModification",
+        "UEOT.V3.ReflexivePRef01.p_ref_01_compression_closure_iff_kernel",
+        "UEOT.V3.ReflexivePRef01.p_ref_01_compression_closure_iff_pathLaw"
+      ],
+      "schema_labels": [
+        "reflexive_state_augmentation",
+        "controlled_path_law_uniqueness",
+        "structural_modification",
+        "controlled_compression_closure"
+      ],
+      "summary": "On the reflexive state X times S, an initial probability law, controlled Markov kernel, and arbitrary causal randomized policy determine a unique infinite state path law. Deterministic structural modification is a specialization, while any further compression requires its own action-wise controlled lumpability/path-law closure obligation."
+    },
+    "P-REF-02": {
+      "pid": "P-REF-02",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 2729,
+      "lean_theorems": [
+        "UEOT.V3.PRef02.p_ref_02_general_joint",
+        "UEOT.V3.PRef02.p_ref_02_general_update",
+        "UEOT.V3.PRef02.p_ref_02_discrete_observation",
+        "UEOT.V3.PRef02.p_ref_02_discrete_posterior",
+        "UEOT.V3.PRef02.p_ref_02_discrete_modelConflict",
+        "UEOT.V3.PRef02.p_ref_02_discounted_step"
+      ],
+      "schema_labels": [
+        "bayesian_recursive_closure",
+        "belief_state_sufficiency",
+        "posterior_disintegration"
+      ],
+      "summary": "The frozen belief-sufficiency theorem combines prediction of the next observation, Bayesian posterior updating, and one-step bounded-discount control data as functions of the current belief and action. The Lean assembly preserves both the general Standard-Borel posterior/disintegration interface and the finite explicit Bayes formula with mandatory zero-evidence model conflict."
+    },
+    "P-REF-03": {
+      "pid": "P-REF-03",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 2739,
+      "lean_theorems": [
+        "UEOT.V3.FreeInformationValue.p_ref_03"
+      ],
+      "schema_labels": [
+        "free_information_value",
+        "conditional_expectation_decision",
+        "ignorable_signal"
+      ],
+      "summary": "With an arbitrary signal sub-sigma-algebra, a finite nonempty action set, and integrable payoffs, the informed decision value is at least the best fixed-action value. The proof uses conditional expectation and the fact that a free signal can always be ignored, without discretizing the signal."
+    },
+    "P-REF-04": {
+      "pid": "P-REF-04",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 2753,
+      "lean_theorems": [
+        "UEOT.V3.Decision.goal_regret"
+      ],
+      "schema_labels": [
+        "uniform_objective_error",
+        "two_epsilon_regret",
+        "estimated_argmax"
+      ],
+      "summary": "If the estimated objective is uniformly within epsilon of the true objective and the chosen policy maximizes the estimate, then every competitor has true-objective advantage at most 2 epsilon. The Lean theorem is exactly the frozen robust-regret inequality and adds no hidden compactness or existence assumptions beyond the supplied maximizer."
+    },
+    "P-REF-05": {
+      "pid": "P-REF-05",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 2779,
+      "lean_theorems": [
+        "UEOT.V3.Agency.feasibleValue_mono",
+        "UEOT.V3.Agency.feasibleValueReal_mono",
+        "UEOT.V3.Agency.extension_optimalValue_mono"
+      ],
+      "schema_labels": [
+        "feasible_set_monotonicity",
+        "optimal_value_order",
+        "policy_extension"
+      ],
+      "summary": "For a fixed real-valued evaluation, enlarging the feasible policy set cannot reduce optimal value. Lean provides a total EReal formulation with no hidden nonempty/boundedness assumptions and the ordinary real-supremum version under the standard conditions, plus the source same-evaluation decision-extension wrapper."
+    },
+    "P-RES-01": {
+      "pid": "P-RES-01",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 1223,
+      "lean_theorems": [
+        "UEOT.V3.ClosureResolution.minimal_property_coarse_graining"
+      ],
+      "schema_labels": [
+        "closure_system_coarse_graining",
+        "minimal_family_transport",
+        "upward_property"
+      ],
+      "summary": "For nested closure systems and a fixed upward property, the Lean theorem exactly transports the fine minimal admissible family by coarse closure followed by inclusion minimization."
+    },
+    "P-RES-02": {
+      "pid": "P-RES-02",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 1233,
+      "lean_theorems": [
+        "UEOT.V3.ClosureResolution.closure_comp_of_nested",
+        "UEOT.V3.ClosureResolution.resolutionMap_comp"
+      ],
+      "schema_labels": [
+        "closure_composition",
+        "resolution_functoriality",
+        "minimal_family_transport"
+      ],
+      "summary": "Nested closure operators satisfy cl_r(cl_s(S))=cl_r(S), and the induced minimal-family resolution maps compose exactly. The Lean minimal-family theorem is slightly stronger than the source three-scale statement because it needs only finiteness of the top family."
+    },
+    "P-RES-03": {
+      "pid": "P-RES-03",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 1267,
+      "lean_theorems": [
+        "UEOT.V3.BlockerNaturality.blocker_naturality"
+      ],
+      "schema_labels": [
+        "blocker_naturality",
+        "coarse_pushforward",
+        "finite_boolean_hypergraph"
+      ],
+      "summary": "For finite Boolean carriers, pushforward by a coarse map commutes exactly with taking blockers after image minimization, including degenerate families."
+    },
+    "P-RES-04": {
+      "pid": "P-RES-04",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 1294,
+      "lean_theorems": [
+        "UEOT.Resolution.lower_adjunction",
+        "UEOT.Resolution.upper_adjunction"
+      ],
+      "schema_labels": [
+        "galois_connection",
+        "lower_restrict_upper_adjunction",
+        "upward_family"
+      ],
+      "summary": "The generic Lean order layer proves Ext^- ⊣ Res ⊣ Ext^+ exactly for upward families. The library result does not require surjectivity for the two adjunction equivalences, so it is strictly more general than the surrounding source coarse-map context."
+    },
+    "P-RES-05": {
+      "pid": "P-RES-05",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 1324,
+      "lean_theorems": [
+        "UEOT.V3.Resolution.pushFamily_realization_interval"
+      ],
+      "schema_labels": [
+        "realization_interval",
+        "adjunction_endpoints",
+        "coarse_clutter"
+      ],
+      "summary": "The Lean theorem characterizes exact coarse minimal-family pushforward by the same lower/upper realization interval between the two adjoint endpoint families. It is valid without adding a surjectivity assumption."
+    },
+    "P-RES-06": {
+      "pid": "P-RES-06",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 1337,
+      "lean_theorems": [
+        "UEOT.V3.Resolution.endpoint_equality_iff_unique_active_fibers"
+      ],
+      "schema_labels": [
+        "endpoint_uniqueness",
+        "active_fiber",
+        "realization_interval"
+      ],
+      "summary": "Under the source surjective coarse map and coarse antichain, the lower and upper realization endpoints coincide exactly iff every coarse atom active in the object has a unique microscopic preimage."
+    },
+    "P-STAT-01": {
+      "pid": "P-STAT-01",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "protocol_calibration_contract",
+      "source_line": 1512,
+      "lean_theorems": [
+        "UEOT.V3.FiniteAlphabetPStat01.p_stat_01_tail",
+        "UEOT.V3.FiniteAlphabetPStat01Radius.p_stat_01_radius"
+      ],
+      "schema_labels": [
+        "finite_alphabet_concentration",
+        "simultaneous_tv_bound",
+        "confidence_radius"
+      ],
+      "summary": "For finitely many fixed finite-alphabet response cells sampled independently, the Lean source layer proves the simultaneous TV tail and the exact clipped confidence radius, including the deterministic TV<=1 clipping branch."
+    },
+    "P-STAT-02": {
+      "pid": "P-STAT-02",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "protocol_calibration_contract",
+      "source_line": 1536,
+      "lean_theorems": [
+        "UEOT.V3.StatisticalDefect.p_stat_02"
+      ],
+      "schema_labels": [
+        "uniform_response_error",
+        "carrier_defect_stability",
+        "deterministic_perturbation"
+      ],
+      "summary": "A simultaneous per-response TV estimation error eta deterministically controls every carrier response-defect error by 2 eta, with no carrier-count factor. The probability of the response event belongs to P-STAT-01 rather than this deterministic theorem."
+    },
+    "P-STAT-03": {
+      "pid": "P-STAT-03",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "protocol_calibration_contract",
+      "source_line": 1555,
+      "lean_theorems": [
+        "UEOT.V3.Threshold.approximate_family"
+      ],
+      "schema_labels": [
+        "threshold_stability",
+        "fixed_tolerance_recovery",
+        "minimal_family"
+      ],
+      "summary": "Under a uniform 2 eta estimation error and a strict margin away from the declared tolerance delta, threshold classification is pointwise stable and therefore the inclusion-minimal threshold family is recovered exactly."
+    },
+    "P-STAT-04": {
+      "pid": "P-STAT-04",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "protocol_calibration_contract",
+      "source_line": 1565,
+      "lean_theorems": [
+        "UEOT.V3.Threshold.exact_family"
+      ],
+      "schema_labels": [
+        "zero_set_recovery",
+        "gap_condition",
+        "minimal_family"
+      ],
+      "summary": "For nonnegative true defects with a positive gap Delta away from zero, a threshold tau strictly between the error bands recovers exactly the inclusion-minimal zero-defect family from the estimated defects."
+    },
+    "P-STAT-05": {
+      "pid": "P-STAT-05",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "protocol_calibration_contract",
+      "source_line": 1596,
+      "lean_theorems": [
+        "UEOT.V3.PredictiveClassRecovery.p_stat_05"
+      ],
+      "schema_labels": [
+        "predictive_class_recovery",
+        "separation_margin",
+        "protocol_distance"
+      ],
+      "summary": "If distinct true predictive classes are separated by gamma and every response law is estimated within TV eta with 2 eta < gamma/2, the empirical gamma/2 protocol-distance threshold recovers the true predictive equivalence relation exactly."
+    },
+    "P-STAT-06": {
+      "pid": "P-STAT-06",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "protocol_calibration_contract",
+      "source_line": 1617,
+      "lean_theorems": [
+        "UEOT.V3.HilbertMeanSourceRadius.source_meanError_tail_exact_radius",
+        "UEOT.V3.HilbertMeanSourceSimultaneous.source_simultaneous_exact_radius"
+      ],
+      "schema_labels": [
+        "hilbert_mean_concentration",
+        "rkhs_embedding_error",
+        "simultaneous_union"
+      ],
+      "summary": "The source-facing chain proves the exact per-channel Hilbert/RKHS mean-embedding radius and then closes heterogeneous channels on one common raw sample space by a finite alpha/L union bound. The full proof keeps the martingale/conditional-MGF machinery upstream rather than hiding it in the final union step."
+    },
+    "P-STAT-07": {
+      "pid": "P-STAT-07",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "protocol_calibration_contract",
+      "source_line": 1632,
+      "lean_theorems": [
+        "UEOT.V3.MMDTransportSource.p_stat_07_source",
+        "UEOT.V3.MMDTransport.p_stat_07"
+      ],
+      "schema_labels": [
+        "representation_covariance",
+        "kernel_metric_isometry",
+        "bimeasurable_transport"
+      ],
+      "summary": "The frozen theorem synchronously transports both laws and the kernel through a bimeasurable bijection and states exact MMD invariance. The Lean source wrapper realizes the transported kernel through the pulled-back Hilbert feature map and proves mean-embedding MMD equality, with the three-kernel-expectation energy form independently checked."
+    },
+    "P-STAT-08": {
+      "pid": "P-STAT-08",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "protocol_calibration_contract",
+      "source_line": 1653,
+      "lean_theorems": [
+        "UEOT.V3.FiniteCandidatePStat08.p_stat_08"
+      ],
+      "schema_labels": [
+        "finite_candidate_validation",
+        "uniform_concentration",
+        "erm_excess_risk"
+      ],
+      "summary": "For finitely many fixed candidates with [0,1] losses and independent validation data, simultaneous Hoeffding control at radius sqrt(log(2m/alpha)/(2N)) plus the deterministic ERM interpolation yields excess true risk at most twice that radius with failure probability at most alpha."
+    },
+    "P-STAT-09": {
+      "pid": "P-STAT-09",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "protocol_calibration_contract",
+      "source_line": 1673,
+      "lean_theorems": [
+        "UEOT.V3.AverageErrorTransport.p_stat_09"
+      ],
+      "schema_labels": [
+        "distribution_shift_certificate",
+        "density_ratio_transport"
+      ],
+      "summary": "The frozen theorem deliberately packages two distinct distribution-shift mechanisms: TV controls a bounded observable additively, whereas Radon-Nikodym domination controls it multiplicatively; only the TV half fits the present M-TC-01 contraction-style calculus."
+    },
+    "P-TEL-01": {
+      "pid": "P-TEL-01",
+      "compression_disposition": "retained_adapter",
+      "assumption_class": "domain_modeling_adapter",
+      "source_line": 1832,
+      "lean_theorems": [
+        "UEOT.V3.RewardInfinite.shaping_limit_value",
+        "UEOT.V3.RewardInfinite.policy_values_affine_from_bounded_state_potential"
+      ],
+      "schema_labels": [
+        "discounted_telescoping",
+        "potential_shaping",
+        "policy_order_invariance"
+      ],
+      "summary": "For |beta|<1 and bounded state potential, the shaped discounted return telescopes to a positive-affine transform of the original value plus the explicit initial-potential and constant-reward terms; with positive scale, policy maximizers are preserved exactly."
+    }
+  }
+}

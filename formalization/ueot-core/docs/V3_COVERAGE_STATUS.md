@@ -12,7 +12,7 @@ This file is the **authoritative source-level P-ID ledger** for the frozen
 - official target: `lake build UEOT`
 - integration branch: `main`
 - canonical source object: project File Library
-- exact canonical source bytes in public repo: pending synchronization
+- exact canonical source bytes in public repo: synced at `mathematics/source/core-v3.0/UEOT_Core_Mathematics_v3.0_Complete.md` (183,440 bytes; SHA-256 verified)
 
 A P-ID is counted `proved` only after frozen-source semantic matching, official
 import reachability, feature/integration/post-main CI gates, prohibited-proof

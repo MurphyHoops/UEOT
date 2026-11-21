@@ -101,33 +101,622 @@ def tableJ {H : ℕ} (table : Table Act Obs H) (m : FaultMechanism) : ℚ :=
   sourceValue (source parameters) (gain parameters) parameters.discount table
     (initialWorld parameters.goal m)
 
+/-! ### Pure integer-scaled kernel evaluation (zero compiler-trust axioms) -/
+
+section KernelIntExactEval
+
+open RegisterJointDecisionSource (effective cap)
+open RegisterJointDecisionConsumer (Wallet allActions menu menu_nonempty advance charge)
+
+private theorem sum_obs {X : Type*} [AddCommMonoid X] (f : Obs → X) :
+    (∑ o : Obs, f o) =
+      f (false, false) + f (false, true) + f (true, false) + f (true, true) := by
+  rw [Fintype.sum_prod_type]
+  have hb : (Finset.univ : Finset Bool) = {false, true} := by decide
+  simp [hb, add_assoc]
+
+private theorem sum_noise_params (w : World) (a : Act) (F : Obs → World → ℚ) :
+    (∑ z : Noise, (source parameters).chance w z *
+        F ((source parameters).observe w a z) ((source parameters).next w a z)) =
+      (1 / 2 : ℚ) * F (observe true w a (true, false)) (step true w a (true, false)) +
+      (1 / 2 : ℚ) * F (observe true w a (false, false)) (step true w a (false, false)) := by
+  rw [show (∑ z : Noise, _) = _ by exact sum_obs _]
+  dsimp [source, parameters, RegisterJointDecisionSource.primitiveWeight]
+  rw [step_label true w a false true false, observe_label true w a false true false,
+      step_label true w a true true false, observe_label true w a true true false]
+  ring
+
+private abbrev UBelief := List (World × ℕ)
+
+private def usum : UBelief → ℕ
+  | [] => 0
+  | (_, u) :: rest => u + usum rest
+
+private def uexpect (U : UBelief) (f : World → ℚ) : ℚ :=
+  match U with
+  | [] => 0
+  | (w, u) :: rest => (u : ℚ) * f w + uexpect rest f
+
+private def uinsert (w : World) (u : ℕ) : UBelief → UBelief
+  | [] => [(w, u)]
+  | (w', u') :: rest =>
+      if w = w' then (w', u' + u) :: rest
+      else (w', u') :: uinsert w u rest
+
+private theorem usum_uinsert (w : World) (u : ℕ) (U : UBelief) :
+    usum (uinsert w u U) = u + usum U := by
+  induction U with
+  | nil => simp [uinsert, usum]
+  | cons hd tl ih =>
+      rcases hd with ⟨w', u'⟩
+      dsimp [uinsert]
+      split
+      · simp [usum]; omega
+      · simp [usum, ih]; omega
+
+private theorem uexpect_uinsert (w : World) (u : ℕ) (U : UBelief) (f : World → ℚ) :
+    uexpect (uinsert w u U) f = (u : ℚ) * f w + uexpect U f := by
+  induction U with
+  | nil => simp [uinsert, uexpect]
+  | cons hd tl ih =>
+      rcases hd with ⟨w', u'⟩
+      dsimp [uinsert]
+      split
+      · next h => subst h; simp [uexpect, Nat.cast_add]; ring
+      · simp [uexpect, ih]; ring
+
+private def unext (U : UBelief) (a : Act) (o : Obs) : UBelief :=
+  match U with
+  | [] => []
+  | (w, u) :: rest =>
+      let acc := unext rest a o
+      let acc1 := if observe true w a (true, false) = o
+        then uinsert (step true w a (true, false)) u acc else acc
+      if observe true w a (false, false) = o
+        then uinsert (step true w a (false, false)) u acc1 else acc1
+
+private theorem usum_unext_cast (U : UBelief) (a : Act) (o : Obs) :
+    ((usum (unext U a o) : ℕ) : ℚ) =
+      uexpect U (fun w =>
+        (if observe true w a (true, false) = o then (1 : ℚ) else 0) +
+        (if observe true w a (false, false) = o then (1 : ℚ) else 0)) := by
+  induction U with
+  | nil => simp [unext, usum, uexpect]
+  | cons hd tl ih =>
+      rcases hd with ⟨w, u⟩
+      dsimp only [unext, uexpect]
+      by_cases h1 : observe true w a (true, false) = o <;>
+      by_cases h2 : observe true w a (false, false) = o <;>
+      simp only [h1, h2, ↓reduceIte, usum_uinsert, Nat.cast_add, ih] <;> ring
+
+private theorem uexpect_unext (U : UBelief) (a : Act) (o : Obs) (f : World → ℚ) :
+    uexpect (unext U a o) f =
+      uexpect U (fun w =>
+        (if observe true w a (true, false) = o then f (step true w a (true, false)) else 0) +
+        (if observe true w a (false, false) = o then f (step true w a (false, false)) else 0)) := by
+  induction U with
+  | nil => simp [unext, uexpect]
+  | cons hd tl ih =>
+      rcases hd with ⟨w, u⟩
+      dsimp only [unext, uexpect]
+      by_cases h1 : observe true w a (true, false) = o <;>
+      by_cases h2 : observe true w a (false, false) = o <;>
+      simp only [h1, h2, ↓reduceIte, uexpect_uinsert, ih] <;> ring
+
+private def Represents (U : UBelief) (b : Belief World) : Prop :=
+  0 < usum U ∧ ∀ f : World → ℚ, uexpect U f = (usum U : ℚ) * expect b f
+
+private theorem mass_from_represents {U : UBelief} {b : Belief World}
+    (hUb : Represents U b) (a : Act) (o : Obs) :
+    2 * (usum U : ℚ) * mass (source parameters) b a o = (usum (unext U a o) : ℚ) := by
+  rw [usum_unext_cast, hUb.2]
+  have hmass : mass (source parameters) b a o =
+      expect b (fun w =>
+        (1 / 2 : ℚ) * (if observe true w a (true, false) = o then 1 else 0) +
+        (1 / 2 : ℚ) * (if observe true w a (false, false) = o then 1 else 0)) := by
+    unfold mass joint expect
+    rw [Fintype.sum_prod_type]
+    apply Finset.sum_congr rfl
+    intro x _
+    have h := sum_noise_params (b.state x) a (fun o' _ => if o' = o then (1 : ℚ) else 0)
+    calc
+      (∑ z : Noise, if (source parameters).observe (b.state x) a z = o
+          then b.weight x * (source parameters).chance (b.state x) z else 0)
+        = b.weight x * (∑ z : Noise, (source parameters).chance (b.state x) z *
+            (if (source parameters).observe (b.state x) a z = o then 1 else 0)) := by
+          rw [Finset.mul_sum]
+          apply Finset.sum_congr rfl
+          intro z _
+          split <;> ring
+      _ = b.weight x * ((1 / 2 : ℚ) * (if observe true (b.state x) a (true, false) = o then 1 else 0) +
+            (1 / 2 : ℚ) * (if observe true (b.state x) a (false, false) = o then 1 else 0)) := by
+          rw [h]
+  rw [hmass]
+  dsimp [expect]
+  rw [Finset.mul_sum, Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro x _
+  ring
+
+private theorem represents_posterior {U : UBelief} {b : Belief World}
+    (hUb : Represents U b) (a : Act) (o : Obs) (hpos : 0 < usum (unext U a o)) :
+    Represents (unext U a o) (posterior (source parameters) b a o) := by
+  refine ⟨hpos, fun f => ?_⟩
+  have hm := mass_from_represents hUb a o
+  have hS0 : (usum U : ℚ) ≠ 0 := Nat.cast_ne_zero.mpr (Nat.pos_iff_ne_zero.mp hUb.1)
+  have hSno : (usum (unext U a o) : ℚ) ≠ 0 := Nat.cast_ne_zero.mpr (Nat.pos_iff_ne_zero.mp hpos)
+  have hmass_ne : mass (source parameters) b a o ≠ 0 := by
+    intro hz
+    rw [hz, mul_zero] at hm
+    exact hSno hm.symm
+  unfold posterior
+  dsimp only
+  simp only [hmass_ne, ↓reduceDIte]
+  rw [uexpect_unext, hUb.2]
+  dsimp [expect, normalizeWeights]
+  rw [Fintype.sum_prod_type]
+  simp only [div_mul_eq_mul_div, ← Finset.sum_div]
+  have hjoint :
+      (∑ x : b.Atom, ∑ z : Noise, joint (source parameters) b a o (x, z) *
+          f ((source parameters).next (b.state x) a z)) =
+        (1 / 2 : ℚ) * expect b (fun w =>
+          (if observe true w a (true, false) = o then f (step true w a (true, false)) else 0) +
+          (if observe true w a (false, false) = o then f (step true w a (false, false)) else 0)) := by
+    dsimp [expect]
+    rw [Finset.mul_sum]
+    apply Finset.sum_congr rfl
+    intro x _
+    have h := sum_noise_params (b.state x) a (fun o' w' => if o' = o then f w' else 0)
+    calc
+      (∑ z : Noise, joint (source parameters) b a o (x, z) *
+          f ((source parameters).next (b.state x) a z))
+        = b.weight x * (∑ z : Noise, (source parameters).chance (b.state x) z *
+            (if (source parameters).observe (b.state x) a z = o
+              then f ((source parameters).next (b.state x) a z) else 0)) := by
+          rw [Finset.mul_sum]
+          apply Finset.sum_congr rfl
+          intro z _
+          unfold joint
+          split <;> ring
+      _ = (1 / 2 : ℚ) * (b.weight x *
+            ((if observe true (b.state x) a (true, false) = o
+              then f (step true (b.state x) a (true, false)) else 0) +
+             (if observe true (b.state x) a (false, false) = o
+              then f (step true (b.state x) a (false, false)) else 0))) := by
+          rw [h]
+          split <;> split <;> ring
+  change (usum U : ℚ) * expect b (fun w =>
+      (if observe true w a (true, false) = o then f (step true w a (true, false)) else 0) +
+      (if observe true w a (false, false) = o then f (step true w a (false, false)) else 0)) = _
+  rw [hjoint, ← hm]
+  field_simp [hS0, hmass_ne]
+
+private def gain4 (o : Obs) : ℤ :=
+  (if o.1 then 4 else 0) - (if o.2 then 1 else 0)
+
+private theorem gain_eq_gain4 (a : Act) (o : Obs) :
+    4 * gain parameters a o = (gain4 o : ℚ) := by
+  rcases o with ⟨b₁, b₂⟩
+  cases b₁ <;> cases b₂ <;> norm_num [gain, parameters, charge, gain4]
+
+private def capNat (a : Act) : ℕ :=
+  if (effective false a).2.isSome then 1 else 0
+
+private theorem cap_eq_capNat (a : Act) : cap a = (capNat a : ℚ) := by
+  unfold cap capNat
+  split <;> norm_num
+
+private def menuNat (bal : ℕ) : List Act :=
+  allActions.filter (fun a => decide (capNat a ≤ bal))
+
+private theorem menuNat_eq_menu (bal : ℕ) :
+    menuNat bal = menu parameters.tariff ⟨(bal : ℚ), Nat.cast_nonneg bal⟩ := by
+  unfold menuNat menu
+  congr 1
+  funext a
+  have hc : parameters.tariff * cap a = (capNat a : ℚ) := by
+    rw [cap_eq_capNat]
+    dsimp [parameters]
+    ring
+  simp only [hc, Nat.cast_le]
+
+private theorem menuNat_nonempty (bal : ℕ) : menuNat bal ≠ [] := by
+  rw [menuNat_eq_menu]
+  exact menu_nonempty _ _
+
+private def advanceNat (bal : ℕ) (o : Obs) : ℕ :=
+  if o.2 then bal - 1 else bal
+
+private theorem advanceNat_eq_advance (bal : ℕ) (a : Act) (o : Obs) :
+    (⟨(advanceNat bal o : ℚ), Nat.cast_nonneg _⟩ : Wallet) =
+      advance parameters.tariff ⟨(bal : ℚ), Nat.cast_nonneg bal⟩ a o := by
+  apply Subtype.ext
+  dsimp [advanceNat, advance, parameters, charge]
+  rcases o with ⟨b₁, b₂⟩
+  cases b₂
+  · simp
+  · simp only [↓reduceIte]
+    cases bal with
+    | zero => norm_num
+    | succ k =>
+        simp only [Nat.add_sub_cancel, Nat.cast_add, Nat.cast_one, add_sub_cancel_right]
+        exact (max_eq_right (Nat.cast_nonneg k)).symm
+
+private inductive CTree : ℕ → Type where
+  | chalt : CTree 0
+  | cnode {n : ℕ} : Act → CTree n → CTree n → CTree n → CTree n → CTree (n + 1)
+
+private def CTree.child {n : ℕ} (t00 t01 t10 t11 : CTree n) : Obs → CTree n
+  | (false, false) => t00
+  | (false, true) => t01
+  | (true, false) => t10
+  | (true, true) => t11
+
+private def CTree.toTable : {n : ℕ} → CTree n → Table Act Obs n
+  | 0, .chalt => .halt
+  | _ + 1, .cnode a t00 t01 t10 t11 =>
+      .node a (fun o => (CTree.child t00 t01 t10 t11 o).toTable)
+
+private def cselectScored {X : Type*} (x : ℤ × X) : List (ℤ × X) → ℤ × X
+  | [] => x
+  | y :: ys =>
+      let best := cselectScored y ys
+      if x.1 < best.1 then best else x
+
+private theorem cselectScored_map {X : Type*} (f : Act → ℤ × X) (scoreQ : Act → ℚ)
+    (c : ℚ) (hc : 0 < c) (hsc : ∀ a, (f a).1 = c * scoreQ a) :
+    ∀ (xs : List Act) (a : Act),
+      cselectScored (f a) (xs.map f) = f (selectBest scoreQ a xs) := by
+  intro xs
+  induction xs with
+  | nil => intro a; rfl
+  | cons b bs ih =>
+      intro a
+      simp only [List.map_cons, cselectScored, selectBest, ih]
+      have hlt : ((f a).1 < (f (selectBest scoreQ b bs)).1) ↔
+          (scoreQ a < scoreQ (selectBest scoreQ b bs)) := by
+        rw [← Int.cast_lt (R := ℚ), hsc a, hsc (selectBest scoreQ b bs)]
+        constructor <;> intro h <;> nlinarith
+      by_cases h : scoreQ a < scoreQ (selectBest scoreQ b bs)
+      · have hi : (f a).1 < (f (selectBest scoreQ b bs)).1 := hlt.mpr h
+        simp [h, hi]
+      · have hi : ¬ ((f a).1 < (f (selectBest scoreQ b bs)).1) := fun h' => h (hlt.mp h')
+        simp [h, hi]
+
+private def cchooseScored {X : Type*} (f : Act → ℤ × X) :
+    (xs : List Act) → xs ≠ [] → ℤ × X
+  | [], h => False.elim (h rfl)
+  | x :: rest, _ => cselectScored (f x) (rest.map f)
+
+private def cactionInt {n : ℕ}
+    (rec : UBelief × ℕ → ℤ × CTree n) (i : UBelief × ℕ) (a : Act) :
+    ℤ × CTree (n + 1) :=
+  let stepObs (o : Obs) : ℤ × CTree n :=
+    let U' := unext i.1 a o
+    let So := usum U'
+    if So = 0 then
+      (0, (rec (i.1, advanceNat i.2 o)).2)
+    else
+      let c := rec (U', advanceNat i.2 o)
+      (((2 ^ n : ℕ) : ℤ) * (So : ℤ) * gain4 o + c.1, c.2)
+  let r00 := stepObs (false, false)
+  let r01 := stepObs (false, true)
+  let r10 := stepObs (true, false)
+  let r11 := stepObs (true, true)
+  (r00.1 + r01.1 + r10.1 + r11.1, .cnode a r00.2 r01.2 r10.2 r11.2)
+
+private def csolveInt : (n : ℕ) → UBelief × ℕ → ℤ × CTree n
+  | 0, _ => (0, .chalt)
+  | n + 1, i =>
+      cchooseScored (cactionInt (csolveInt n) i) (menuNat i.2) (menuNat_nonempty i.2)
+
+private theorem cactionInt_spec (n : ℕ)
+    (ih : ∀ (U : UBelief) (b : Belief World) (bal : ℕ),
+      Represents U b →
+      ((csolveInt n (U, bal)).1 : ℚ) =
+        4 * (2 ^ n : ℚ) * (usum U : ℚ) *
+          optimalValue (model parameters) n (b, ⟨(bal : ℚ), Nat.cast_nonneg bal⟩) ∧
+      (csolveInt n (U, bal)).2.toTable =
+        solve (model parameters) n (b, ⟨(bal : ℚ), Nat.cast_nonneg bal⟩))
+    (U : UBelief) (b : Belief World) (bal : ℕ) (hUb : Represents U b) (a : Act) :
+    ((cactionInt (csolveInt n) (U, bal) a).1 : ℚ) =
+      4 * (2 ^ (n + 1) : ℚ) * (usum U : ℚ) *
+        qValue (model parameters) (optimalValue (model parameters) n)
+          (b, ⟨(bal : ℚ), Nat.cast_nonneg bal⟩) a ∧
+    (cactionInt (csolveInt n) (U, bal) a).2.toTable =
+      .node a (fun o => solve (model parameters) n
+        ((model parameters).next (b, ⟨(bal : ℚ), Nat.cast_nonneg bal⟩) a o)) := by
+  have hobs (o : Obs) :
+      (let U' := unext U a o
+       let So := usum U'
+       if So = 0 then ((0 : ℤ), (csolveInt n (U, advanceNat bal o)).2)
+       else
+         let c := csolveInt n (U', advanceNat bal o)
+         (((2 ^ n : ℕ) : ℤ) * (So : ℤ) * gain4 o + c.1, c.2)).1 =
+        (4 * (2 ^ (n + 1) : ℚ) * (usum U : ℚ) *
+          ((model parameters).prob (b, ⟨(bal : ℚ), Nat.cast_nonneg bal⟩) a o *
+            ((model parameters).reward (b, ⟨(bal : ℚ), Nat.cast_nonneg bal⟩) a o +
+              (model parameters).discount *
+                optimalValue (model parameters) n
+                  ((model parameters).next (b, ⟨(bal : ℚ), Nat.cast_nonneg bal⟩) a o))) : ℚ) ∧
+      (let U' := unext U a o
+       let So := usum U'
+       if So = 0 then ((0 : ℤ), (csolveInt n (U, advanceNat bal o)).2)
+       else
+         let c := csolveInt n (U', advanceNat bal o)
+         (((2 ^ n : ℕ) : ℤ) * (So : ℤ) * gain4 o + c.1, c.2)).2.toTable =
+        solve (model parameters) n
+          ((model parameters).next (b, ⟨(bal : ℚ), Nat.cast_nonneg bal⟩) a o) := by
+    have hm := mass_from_represents hUb a o
+    have hS0 : (usum U : ℚ) ≠ 0 := Nat.cast_ne_zero.mpr (Nat.pos_iff_ne_zero.mp hUb.1)
+    have hadv := advanceNat_eq_advance bal a o
+    dsimp only
+    by_cases hSo : usum (unext U a o) = 0
+    · simp only [hSo, ↓reduceIte, Int.cast_zero]
+      have hmz : mass (source parameters) b a o = 0 := by
+        rw [hSo, Nat.cast_zero] at hm
+        have h2S : 2 * (usum U : ℚ) ≠ 0 := mul_ne_zero (by norm_num) hS0
+        exact (mul_eq_zero.mp hm).resolve_left h2S
+      have hpost : posterior (source parameters) b a o = b := by simp [posterior, hmz]
+      have ⟨_, ht⟩ := ih U b (advanceNat bal o) hUb
+      refine ⟨?_, ?_⟩
+      · change (0 : ℚ) = 4 * (2 ^ (n + 1) : ℚ) * (usum U : ℚ) * (mass (source parameters) b a o * _)
+        simp [hmz]
+      · change (csolveInt n (U, advanceNat bal o)).2.toTable =
+          solve (model parameters) n (posterior (source parameters) b a o,
+            advance parameters.tariff ⟨(bal : ℚ), Nat.cast_nonneg bal⟩ a o)
+        rw [hpost, ← hadv, ht]
+    · simp only [hSo, ↓reduceIte]
+      have hpos : 0 < usum (unext U a o) := Nat.pos_of_ne_zero hSo
+      have hrep' := represents_posterior hUb a o hpos
+      have ⟨hv, ht⟩ := ih (unext U a o) (posterior (source parameters) b a o)
+        (advanceNat bal o) hrep'
+      refine ⟨?_, ?_⟩
+      · push_cast
+        rw [hv, ← gain_eq_gain4 a o, ← hm, hadv]
+        change (2 : ℚ) ^ n * (2 * (usum U : ℚ) * mass (source parameters) b a o) *
+            (4 * gain parameters a o) +
+          4 * (2 : ℚ) ^ n * (2 * (usum U : ℚ) * mass (source parameters) b a o) *
+            optimalValue (model parameters) n
+              ((model parameters).next (b, ⟨(bal : ℚ), Nat.cast_nonneg bal⟩) a o) =
+          4 * (2 : ℚ) ^ (n + 1) * (usum U : ℚ) *
+            (mass (source parameters) b a o *
+              (gain parameters a o + 1 *
+                optimalValue (model parameters) n
+                  ((model parameters).next (b, ⟨(bal : ℚ), Nat.cast_nonneg bal⟩) a o)))
+        ring
+      · change (csolveInt n (unext U a o, advanceNat bal o)).2.toTable =
+          solve (model parameters) n (posterior (source parameters) b a o,
+            advance parameters.tariff ⟨(bal : ℚ), Nat.cast_nonneg bal⟩ a o)
+        rw [← hadv, ht]
+  unfold cactionInt
+  refine ⟨?_, ?_⟩
+  · push_cast
+    rw [qValue, sum_obs, mul_add, mul_add, mul_add]
+    exact congrArg₂ (· + ·)
+      (congrArg₂ (· + ·)
+        (congrArg₂ (· + ·) (hobs (false, false)).1 (hobs (false, true)).1)
+        (hobs (true, false)).1)
+      (hobs (true, true)).1
+  · have h00 := (hobs (false, false)).2
+    have h01 := (hobs (false, true)).2
+    have h10 := (hobs (true, false)).2
+    have h11 := (hobs (true, true)).2
+    change Table.node a (fun o => (CTree.child _ _ _ _ o).toTable) = _
+    congr 1
+    funext o
+    rcases o with ⟨b₁, b₂⟩
+    cases b₁ <;> cases b₂ <;> dsimp only [CTree.child]
+    · exact h00
+    · exact h01
+    · exact h10
+    · exact h11
+
+private theorem csolveInt_spec :
+    ∀ (n : ℕ) (U : UBelief) (b : Belief World) (bal : ℕ),
+      Represents U b →
+      ((csolveInt n (U, bal)).1 : ℚ) =
+        4 * (2 ^ n : ℚ) * (usum U : ℚ) *
+          optimalValue (model parameters) n (b, ⟨(bal : ℚ), Nat.cast_nonneg bal⟩) ∧
+      (csolveInt n (U, bal)).2.toTable =
+        solve (model parameters) n (b, ⟨(bal : ℚ), Nat.cast_nonneg bal⟩) := by
+  intro n
+  induction n with
+  | zero =>
+      intro U b bal _
+      exact ⟨by simp [csolveInt], rfl⟩
+  | succ n ih =>
+      intro U b bal hUb
+      have hcpos : (0 : ℚ) < 4 * (2 ^ (n + 1) : ℚ) * (usum U : ℚ) := by
+        have hS : (0 : ℚ) < (usum U : ℚ) := Nat.cast_pos.mpr hUb.1
+        positivity
+      have hsc (a : Act) := (cactionInt_spec n ih U b bal hUb a).1
+      have hchooseBest_eq : ∀ (s : Act → ℚ) (xs ys : List Act) (hx : xs ≠ []) (hy : ys ≠ []),
+          xs = ys → chooseBest s xs hx = chooseBest s ys hy := by
+        intro s xs ys hx hy hxy
+        subst hxy
+        rfl
+      have hchoose : cchooseScored (cactionInt (csolveInt n) (U, bal))
+          (menuNat bal) (menuNat_nonempty bal) =
+          cactionInt (csolveInt n) (U, bal)
+            (chosenAction (model parameters) n (b, ⟨(bal : ℚ), Nat.cast_nonneg bal⟩)) := by
+        have hmap : ∀ (xs : List Act) (hne : xs ≠ []),
+            cchooseScored (cactionInt (csolveInt n) (U, bal)) xs hne =
+              cactionInt (csolveInt n) (U, bal)
+                (chooseBest (qValue (model parameters) (optimalValue (model parameters) n)
+                  (b, ⟨(bal : ℚ), Nat.cast_nonneg bal⟩)) xs hne) := by
+          intro xs hne
+          cases xs with
+          | nil => exact (hne rfl).elim
+          | cons x xs => exact cselectScored_map _ _ _ hcpos hsc xs x
+        rw [hmap]
+        congr 1
+        exact hchooseBest_eq _ _ _ _ _ (menuNat_eq_menu bal)
+      dsimp only [csolveInt]
+      rw [hchoose]
+      have ⟨hv, ht⟩ := cactionInt_spec n ih U b bal hUb
+        (chosenAction (model parameters) n (b, ⟨(bal : ℚ), Nat.cast_nonneg bal⟩))
+      exact ⟨hv.trans (by rw [optimalValue_succ]), ht.trans (solve_succ _ _ _).symm⟩
+
+private def csourceInt : {n : ℕ} → CTree n → World → ℤ
+  | 0, .chalt, _ => 0
+  | n + 1, .cnode a t00 t01 t10 t11, w =>
+      let oT := observe true w a (true, false)
+      let wT := step true w a (true, false)
+      let oF := observe true w a (false, false)
+      let wF := step true w a (false, false)
+      ((2 ^ n : ℕ) : ℤ) * gain4 oT + csourceInt (CTree.child t00 t01 t10 t11 oT) wT +
+      (((2 ^ n : ℕ) : ℤ) * gain4 oF + csourceInt (CTree.child t00 t01 t10 t11 oF) wF)
+
+private theorem csourceInt_spec :
+    ∀ {n : ℕ} (t : CTree n) (w : World),
+      (csourceInt t w : ℚ) =
+        4 * (2 ^ n : ℚ) * sourceValue (source parameters) (gain parameters)
+          parameters.discount t.toTable w := by
+  intro n t
+  induction t with
+  | chalt => intro w; simp [csourceInt, CTree.toTable, sourceValue]
+  | @cnode n a t00 t01 t10 t11 ih00 ih01 ih10 ih11 =>
+      intro w
+      have ihChild (o : Obs) (w' : World) :
+          (csourceInt (CTree.child t00 t01 t10 t11 o) w' : ℚ) =
+            4 * (2 ^ n : ℚ) * sourceValue (source parameters) (gain parameters)
+              parameters.discount ((CTree.child t00 t01 t10 t11 o).toTable) w' := by
+        rcases o with ⟨b₁, b₂⟩
+        cases b₁ <;> cases b₂ <;> dsimp [CTree.child]
+        · exact ih00 w'
+        · exact ih01 w'
+        · exact ih10 w'
+        · exact ih11 w'
+      have hsrc : sourceValue (source parameters) (gain parameters) parameters.discount
+          ((CTree.cnode a t00 t01 t10 t11).toTable) w =
+          ∑ z : Noise, (source parameters).chance w z *
+            (gain parameters a ((source parameters).observe w a z) + parameters.discount *
+              sourceValue (source parameters) (gain parameters) parameters.discount
+                ((CTree.child t00 t01 t10 t11 ((source parameters).observe w a z)).toTable)
+                ((source parameters).next w a z)) := rfl
+      rw [hsrc, sum_noise_params w a (fun o' w' =>
+        gain parameters a o' + parameters.discount *
+          sourceValue (source parameters) (gain parameters) parameters.discount
+            ((CTree.child t00 t01 t10 t11 o').toTable) w')]
+      unfold csourceInt
+      push_cast
+      rw [ihChild, ihChild, ← gain_eq_gain4 a (observe true w a (true, false)),
+          ← gain_eq_gain4 a (observe true w a (false, false))]
+      dsimp [parameters]
+      ring
+
+private def initUBelief : Input → UBelief
+  | .knownS => [(initialWorld true .S, 1)]
+  | .knownG => [(initialWorld true .G, 1)]
+  | .dual => [(initialWorld true .S, 3), (initialWorld true .G, 1)]
+
+private theorem represents_initUBelief (q : Input) :
+    Represents (initUBelief q) (registeredInfo q).1 := by
+  refine ⟨by cases q <;> decide, fun f => ?_⟩
+  dsimp [registeredInfo, initialInfo, initialBelief, expect]
+  rw [sum_mechanisms]
+  cases q <;> (simp [initUBelief, usum, uexpect, prior, parameters]; try ring)
+
+private theorem csolveInt_eq_cachedAt (q : Input) (H : ℕ) :
+    ((csolveInt H (initUBelief q, 2)).1 : ℚ) =
+      4 * (2 ^ H : ℚ) * (usum (initUBelief q) : ℚ) * (cachedAt q H).1 ∧
+    ∀ m, (csourceInt (csolveInt H (initUBelief q, 2)).2 (initialWorld true m) : ℚ) =
+      4 * (2 ^ H : ℚ) * tableJ (cachedAt q H).2 m := by
+  have ⟨hv, ht⟩ := csolveInt_spec H (initUBelief q) (registeredInfo q).1 2 (represents_initUBelief q)
+  have hinfo : ((registeredInfo q).1, (⟨((2 : ℕ) : ℚ), Nat.cast_nonneg 2⟩ : Wallet)) = registeredInfo q := by
+    apply Prod.ext rfl
+    apply Subtype.ext
+    norm_num [registeredInfo, initialInfo]
+  rw [hinfo] at hv ht
+  refine ⟨?_, ?_⟩
+  · rw [cachedAt_eq]
+    exact hv
+  · intro m
+    rw [csourceInt_spec, ht, tableJ, cachedAt_eq]
+    rfl
+
+private theorem kernel_int_h3 :
+    (csolveInt 3 (initUBelief .knownS, 2)).1 = 41 ∧
+    (csolveInt 3 (initUBelief .knownG, 2)).1 = 40 ∧
+    (csolveInt 3 (initUBelief .dual, 2)).1 = 160 ∧
+    csourceInt (csolveInt 3 (initUBelief .knownS, 2)).2 (initialWorld true .S) = 41 ∧
+    csourceInt (csolveInt 3 (initUBelief .knownS, 2)).2 (initialWorld true .G) = 37 ∧
+    csourceInt (csolveInt 3 (initUBelief .knownG, 2)).2 (initialWorld true .S) = 40 ∧
+    csourceInt (csolveInt 3 (initUBelief .knownG, 2)).2 (initialWorld true .G) = 40 := by
+  decide
+
+private theorem kernel_int_h2 :
+    (csolveInt 2 (initUBelief .knownS, 2)).1 = 13 ∧
+    (csolveInt 2 (initUBelief .knownG, 2)).1 = 13 ∧
+    csourceInt (csolveInt 2 (initUBelief .knownS, 2)).2 (initialWorld true .S) = 13 ∧
+    csourceInt (csolveInt 2 (initUBelief .knownS, 2)).2 (initialWorld true .G) = 13 := by
+  decide
+
+end KernelIntExactEval
+
 /- Small exact computation of ALL legal action scores, through the old solver.
 This is not a check of only the deployed path. The separate matrix fields
 execute the same returned tables in each actual fixed mechanism.
-The bounded kernel-expansion attempt is retained in the evidence packet. These
-two closed finite evaluations use native_decide (Lean.ofReduceBool), whose
-compiler-evaluation trust dependency is disclosed in the axiom audit. -/
-set_option maxRecDepth 4096 in
-set_option maxHeartbeats 12000000 in
- theorem exact_cached_data :
+Both finite evaluations below are proved purely inside the Lean kernel via `decide`
+over exact integer-scaled dynamic programming, using zero compiler-trust axioms. -/
+theorem exact_cached_data :
     let s := cachedResult .knownS
     let g := cachedResult .knownG
     let b := cachedResult .dual
     s.1 = 41/32 ∧ g.1 = 5/4 ∧ b.1 = 5/4 ∧
       tableJ s.2 .S = 41/32 ∧ tableJ s.2 .G = 37/32 ∧
       tableJ g.2 .S = 5/4 ∧ tableJ g.2 .G = 5/4 := by
-  native_decide
+  have hs := csolveInt_eq_cachedAt .knownS 3
+  have hg := csolveInt_eq_cachedAt .knownG 3
+  have hb := csolveInt_eq_cachedAt .dual 3
+  have hk := kernel_int_h3
+  have h1 : (usum (initUBelief .knownS) : ℚ) = 1 := by decide
+  have h2 : (usum (initUBelief .knownG) : ℚ) = 1 := by decide
+  have h3 : (usum (initUBelief .dual) : ℚ) = 4 := by decide
+  have k1 : ((csolveInt 3 (initUBelief .knownS, 2)).1 : ℚ) = 41 := by exact_mod_cast hk.1
+  have k2 : ((csolveInt 3 (initUBelief .knownG, 2)).1 : ℚ) = 40 := by exact_mod_cast hk.2.1
+  have k3 : ((csolveInt 3 (initUBelief .dual, 2)).1 : ℚ) = 160 := by exact_mod_cast hk.2.2.1
+  have k4 : (csourceInt (csolveInt 3 (initUBelief .knownS, 2)).2 (initialWorld true .S) : ℚ) = 41 := by
+    exact_mod_cast hk.2.2.2.1
+  have k5 : (csourceInt (csolveInt 3 (initUBelief .knownS, 2)).2 (initialWorld true .G) : ℚ) = 37 := by
+    exact_mod_cast hk.2.2.2.2.1
+  have k6 : (csourceInt (csolveInt 3 (initUBelief .knownG, 2)).2 (initialWorld true .S) : ℚ) = 40 := by
+    exact_mod_cast hk.2.2.2.2.2.1
+  have k7 : (csourceInt (csolveInt 3 (initUBelief .knownG, 2)).2 (initialWorld true .G) : ℚ) = 40 := by
+    exact_mod_cast hk.2.2.2.2.2.2
+  have s1 := hs.1; have g1 := hg.1; have b1 := hb.1
+  have sS := hs.2 .S; have sG := hs.2 .G
+  have gS := hg.2 .S; have gG := hg.2 .G
+  rw [k1, h1] at s1; rw [k2, h2] at g1; rw [k3, h3] at b1
+  rw [k4] at sS; rw [k5] at sG; rw [k6] at gS; rw [k7] at gG
+  dsimp only [cachedResult]
+  refine ⟨by linarith, by linarith, by linarith,
+          by linarith, by linarith, by linarith, by linarith⟩
 
 /-- A nondegenerate short-horizon common optimizer. Two ticks can have value
 13/16 even though no allowed experiment can yet separate the mechanisms. -/
 def commonTwo : Table Act Obs 2 := (cachedAt .knownS 2).2
 
-set_option maxRecDepth 4096 in
-set_option maxHeartbeats 3000000 in
- theorem exact_two_data :
+theorem exact_two_data :
     (cachedAt .knownS 2).1 = 13/16 ∧ (cachedAt .knownG 2).1 = 13/16 ∧
       tableJ commonTwo .S = 13/16 ∧ tableJ commonTwo .G = 13/16 := by
-  native_decide
+  have hs := csolveInt_eq_cachedAt .knownS 2
+  have hg := csolveInt_eq_cachedAt .knownG 2
+  have hk := kernel_int_h2
+  have h1 : (usum (initUBelief .knownS) : ℚ) = 1 := by decide
+  have h2 : (usum (initUBelief .knownG) : ℚ) = 1 := by decide
+  have k1 : ((csolveInt 2 (initUBelief .knownS, 2)).1 : ℚ) = 13 := by exact_mod_cast hk.1
+  have k2 : ((csolveInt 2 (initUBelief .knownG, 2)).1 : ℚ) = 13 := by exact_mod_cast hk.2.1
+  have k3 : (csourceInt (csolveInt 2 (initUBelief .knownS, 2)).2 (initialWorld true .S) : ℚ) = 13 := by
+    exact_mod_cast hk.2.2.1
+  have k4 : (csourceInt (csolveInt 2 (initUBelief .knownS, 2)).2 (initialWorld true .G) : ℚ) = 13 := by
+    exact_mod_cast hk.2.2.2
+  have s1 := hs.1; have g1 := hg.1
+  have sS := hs.2 .S; have sG := hs.2 .G
+  rw [k1, h1] at s1; rw [k2, h2] at g1; rw [k3] at sS; rw [k4] at sG
+  dsimp only [commonTwo]
+  refine ⟨by linarith, by linarith, by linarith, by linarith⟩
 
  theorem short_common_values :
     optimalValue (model parameters) 2 (registeredInfo .knownS) = 13/16 ∧
