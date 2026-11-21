@@ -22,6 +22,12 @@ state-independent rigging 和任意正常准备的固定测试两时核都退化
 它们不是原固定时间门的通过。原 C5 与实际 C9 还分别显示平方矩逃逸、
 一阶矩逃逸和真正由测量证明的导数信息不收敛。
 
+复盘后继续构造了高斯准备与真实有限 K 的有界探针 Dyson 演化。
+高斯约化读数可按明确速率隐藏，但完整记忆保留区别；固定有限秩
+探针接入该逃逸准备族后作用也消失，投影成功概率受 O(1/sigma) 约束。
+对原实际 C9 则可构造非零快时间两结果读数，所需峰值强度为
+K/log K 量级；它还不是局域自主引力装置。
+
 ## 可验收入口
 
 | 文件 | 新闭环 | 保留的边界 |
@@ -38,6 +44,8 @@ state-independent rigging 和任意正常准备的固定测试两时核都退化
 | [RARE_FISHER.md](RARE_FISHER.md) | 实际混合 C9 的完整测量 Fisher 下界 | 不从方差推 QFI |
 | [DEPHASING_CONTROL.md](DEPHASING_CONTROL.md) | 平滑改准备、实际对角选择、资源及完整记忆 | 丢失正常极限，非闭环修复 |
 | [SCALAR_COUNTERTERM.md](SCALAR_COUNTERTERM.md) | leading 分类、具体候选与 lapse/action 代价 | 未采用新反项，四维来源开放 |
+| [GAUSSIAN_CONTROL.md](GAUSSIAN_CONTROL.md) | 高斯正常准备、实际误差、精确信息／资源与完整记忆 | 极限态不正常，实际原生成元 QFI 不由此控制 |
+| [PROBE_RESPONSE.md](PROBE_RESPONSE.md) | 原时钟紧算符耦合消失；实际快时间仪器及高斯组合 | 全局受控算例，装置总应力未闭合 |
 
 每个科学入口有独立的新 Python 检查与源绑定 JSON。
 检查验证代数、有限矩阵或外向数值界；无限维结论由文档中的解析证明

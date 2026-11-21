@@ -17,3 +17,7 @@ final completion requires actual current scientific-source coverage.
 This is a scope/binding entry, not a scientific theorem or machine
 proof. The full original Einstein--CTP/device problem and physical
 unification must remain OPEN in every scientific result.
+
+Final coverage additionally requires at least two immutable readers
+for GAUSSIAN_CONTROL and PROBE_RESPONSE, besides all three on the
+complete initial-layer and fixed-interior-collapse proofs.

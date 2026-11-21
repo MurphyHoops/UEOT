@@ -74,3 +74,16 @@ science/publication workflows succeeded. Three readonly agents made
 16 findings before continuing to Gaussian preparation and bounded
 probe response. The session remains IN_PROGRESS; no three-hour
 completion is claimed at this intermediate checkpoint.
+
+## Second research closure: preparation and probe
+
+Gaussian normal preparation now has exact current/form costs, a sharp
+effective Fisher asymptotic, a normal coherent memory and an explicit
+actual-evolution diagonal. A bounded finite-K Dyson probe gives a
+complete two-outcome instrument on the actual C9 input in the fast
+window, with peak strength of order K/log K. A separate compactness
+argument composes it with the growing Gaussian family and proves that
+fixed finite-rank probes then lose their complete output effect.
+The root's two new algebra/finite-matrix checks passed. Three readonly
+agents independently reviewed the analytic arguments; immutable CP3
+source rereads remain pending. No physical apparatus closure is claimed.

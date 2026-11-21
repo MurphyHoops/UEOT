@@ -4,7 +4,7 @@ import ast,json,subprocess
 from datetime import datetime,timezone
 from pathlib import Path
 from common import HERE,REPO,sha,require,finish
-SCI=['rare_preparation','adiabatic_connection','initial_layer','bounded_witness','local_constraint','rescaled_kernel','snapshot_spectrum','scalar_counterterm','dephasing_control','interior_collapse','ordering_sweep','rare_fisher']
+SCI=['rare_preparation', 'adiabatic_connection', 'initial_layer', 'bounded_witness', 'local_constraint', 'rescaled_kernel', 'snapshot_spectrum', 'scalar_counterterm', 'dephasing_control', 'interior_collapse', 'ordering_sweep', 'rare_fisher', 'gaussian_control', 'probe_response']
 PREFIX="physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/"
 ROUTES=[".github/workflows/ueot-physics-source-response.yml","physics/qm/README.md","physics/qm/ROADMAP.md","physics/qm/null_source/timelike/README.md"]
 allowed={"__future__","numpy","sympy","common","collections"}
@@ -42,6 +42,8 @@ if aud["status"]=="COMPLETE":
             require(rel in coverage,"Current science not immutably audited: "+rel)
     for name in ["INITIAL_LAYER.md","INTERIOR_COLLAPSE.md"]:
         require(len(coverage.get(PREFIX+name,set()))==3,"Critical proof requires all three readers")
+    for name in ["GAUSSIAN_CONTROL.md","PROBE_RESPONSE.md"]:
+        require(len(coverage.get(PREFIX+name,set()))>=2,"New preparation/probe proof needs independent rereading")
 tim=json.loads((HERE/"session_timing.json").read_text())
 start=datetime.fromisoformat(tim["start_utc"])
 require(start.isoformat()=="2026-11-21T14:47:45+00:00" and not tim["previous_session_counted"],"New session clock")

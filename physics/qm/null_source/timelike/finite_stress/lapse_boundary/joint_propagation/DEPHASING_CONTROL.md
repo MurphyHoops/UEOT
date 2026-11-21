@@ -169,7 +169,7 @@ It cannot pass the nonzero normalized prepared-kernel gate. The
 state-independent rigging is a different object; this operator-norm
 argument alone does not address it. INTERIOR_COLLAPSE separately
 proves that the actual state-independent rigging also vanishes on
-fixed original-clock vector tests in the frozen bulk comparison.
+fixed original-clock vector tests in the fixed bulk comparison.
 Multiplying this kernel by N changes the weighted trace to N, so
 it does not restore the same trace-one preparation.
 

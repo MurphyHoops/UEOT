@@ -10,8 +10,12 @@ at each K, with the same selected boundary family.
 
 Accordingly do not repeat state-only normal preparation tuning or
 allowed-ordering tuning as a repair of that nonzero fixed-test gate.
-The high-rank Fourier construction can hide a reduced record but
-fails normality and leaves the complete record visible.
+The Fourier and Gaussian constructions can hide a reduced record but
+fail normality and leave the complete record visible. The Gaussian
+actual-evolution rate, exact current/form costs and normal coherent
+memory are now explicit. Fixed operator-compact probes cannot recover
+that escaping family's record; an actual memory-accessing controller
+is a distinct gate.
 
 ## Next concrete object
 
@@ -41,8 +45,11 @@ The next minimum acceptance items are:
    a phase theta(u)/kappa also shifts the geometry momentum and adds
    a mandatory linear-chi term. Co-transport states and observables.
 
-The fixed noncompact N4 readout and actual bounded/unbounded probe
-couplings are useful separate tests. Their success would not undo the
+Actual bounded probe coupling has now been constructed in the derived
+fast window, including a complete two-result instrument and its growing
+strength. Fixed original-clock, fixed-strength operator-compact coupling
+is asymptotically ineffective. The noncompact N4 readout, local field
+couplings and a retained-memory controller remain separate tests. Their success would not undo the
 fixed-test N3 rejection without a new physical interpretation.
 
 ## Global goal

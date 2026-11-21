@@ -61,3 +61,12 @@ CP2 immutable rereading. These are source audits, not external peer
 review or machine-formal proofs. CP1 science run 44921610167 and
 publication run 44921610153 completed successfully at that exact head.
 CP1 is an intermediate checkpoint; the final head needs its own CI.
+
+## CP2 corrections verified
+
+At d2795c79b8450471d6663de891cfb07e4517a95f the three native
+readers actually fetched another25 file identities and verified all
+16 CP1 findings addressed. The accumulated75 reviewer/commit/file
+identities are recorded in source_audits.json. INITIAL_LAYER and
+INTERIOR_COLLAPSE were each reread by all three. CP3 adds two science
+entries; their current immutable source audit is still pending.
