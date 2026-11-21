@@ -1,0 +1,127 @@
+{
+  "baseline": "a3ae75078ae903163bf0759fbd302e836aeeea84",
+  "empirical_status": "SYNTHETIC_ONLY",
+  "finite_budget": {
+    "alternatives": [
+      {
+        "all_output_tv_upper": 0.001,
+        "far_amplitude": 1000,
+        "m4": 1.6897499949375,
+        "m4_increase": 0.0022499949375,
+        "single_preparation_tv_exact": "1/1000000000",
+        "tail_probability_exact": "9/4000000000000000"
+      },
+      {
+        "all_output_tv_upper": 0.001,
+        "far_amplitude": 1000000,
+        "m4": 2251.6874999949373,
+        "m4_increase": 2249.9999999949373,
+        "single_preparation_tv_exact": "1/1000000000",
+        "tail_probability_exact": "9/4000000000000000000000"
+      },
+      {
+        "all_output_tv_upper": 0.001,
+        "far_amplitude": 1000000000,
+        "m4": 2250000001.6875,
+        "m4_increase": 2250000000.0,
+        "single_preparation_tv_exact": "1/1000000000",
+        "tail_probability_exact": "9/4000000000000000000000000000"
+      }
+    ],
+    "base_m4": 1.6875,
+    "confidence_consequence": "uniform coverage 1-alpha implies P_base(U=infinity)>=1-alpha",
+    "max_independent_preparations": 1000000,
+    "total_tv_budget": 0.001
+  },
+  "input_sha256": {
+    "instrument/result.json": "cbe013ae525866f82487ba0e7139449d85dddb4530c1c82f876aff6c37ae4d77"
+  },
+  "local_pointer": {
+    "E_H4_squared_upper": 807629610.358735,
+    "archived_mode_values_are_numerical_not_UV_certificate": true,
+    "effective_gaussian_variance": 75.40659242310721,
+    "field_covariance_W22": 3.4789767276425763,
+    "field_only_per_start": {
+      "delta_energy": 3.6961293623779023,
+      "metric_work": 0.10503423403194323,
+      "switch_work": 3.591095128345959
+    },
+    "finite_readout": {
+      "bits": 40,
+      "decoder_roundoff_allowance": 1.131955810002644e-12,
+      "digitization_bias_upper": 0.00015404423782384096,
+      "effective_variance_calibration_radius_required": 0.002,
+      "overflow_prob_upper": 2.2571768119076647e-19,
+      "radius": 79.65430881449649,
+      "tail_bias_upper": 8.046339918465736e-11,
+      "total_bias_upper": 0.00916604431828724,
+      "variance_bias_upper": 0.009012000000000001
+    },
+    "ignored_pointer_shear_negative_control": {
+      "beta": 1.0,
+      "m4_bias": 5.324029403148996,
+      "missed_variance": 0.778782675109949
+    },
+    "independent_calibration_starts_not_included": true,
+    "known_source_m2": 0.75,
+    "mean_m2": 0.3037638592321619,
+    "pointer_lambda": 1.0,
+    "pointer_var_P": 0.07186021050776185,
+    "pointer_var_Q": 3.4789767276425763,
+    "prior_source_support_B": 1.5,
+    "prospective_starts_both_named_candidates": 211021923148,
+    "prospective_starts_per_named_candidate_Chebyshev": 105510961574,
+    "reference_contract": "instrument.state_scale: eta -1/8 to -1/16, same minimal field",
+    "shear_compensation_required": true,
+    "standard_baseline_uses_same_records_and_budget": true,
+    "status": "CONDITIONAL_DESIGN_AND_SYNTHETIC_CHECK; NO_DEVICE_CERTIFICATION",
+    "synthetic_rows": [
+      {
+        "candidate": "A",
+        "hermite_estimate": 6.385229155334763,
+        "interval_95_family": [
+          0.5625,
+          1.6875
+        ],
+        "kept_starts": 200000,
+        "m4_truth": 0.5625,
+        "ordinary_deconvolution_estimate": 6.3852291553375835,
+        "overflow_flags": 0,
+        "sum_z2": 15177816.14049487,
+        "sum_z4": 3456628910.7872295,
+        "synthetic_starts": 200000
+      },
+      {
+        "candidate": "B",
+        "hermite_estimate": 200.14721981762827,
+        "interval_95_family": [
+          0.5625,
+          1.6875
+        ],
+        "kept_starts": 200000,
+        "m4_truth": 1.6875,
+        "ordinary_deconvolution_estimate": 200.14721981763068,
+        "overflow_flags": 0,
+        "sum_z2": 15172225.385400824,
+        "sum_z4": 3492851830.1754045,
+        "synthetic_starts": 200000
+      }
+    ]
+  },
+  "quantum_contraction": {
+    "ancilla_and_POVM_tv": 0.00026166058181268867,
+    "quantum_one_copy": 0.0010859889684946605,
+    "quantum_two_copies": 0.0021164331760789848,
+    "source_tv": 0.022222222222222223
+  },
+  "restoration": {
+    "random_law_checks": 300,
+    "restoration": "D_t<=m4<=D_t+(t^2/6)^(eta/2)*K_(4+eta), 0<eta<=2",
+    "unbounded_tail_negative_control": {
+      "actual_m4": 10001.6874999775,
+      "bounded_readout_D": 1.588939948552686,
+      "false_support_bound": 1.6875,
+      "known_counterexample_violates_assumed_support": true
+    }
+  }
+}

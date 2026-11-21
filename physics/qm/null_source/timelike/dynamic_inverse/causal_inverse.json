@@ -1,0 +1,70 @@
+{
+  "G_bound": "exp(gamma*t)/(pi*c*gamma^3*delta1*delta2)",
+  "G_prefactor": [
+    4.78793823040708e-08,
+    4.787949568187191e-08
+  ],
+  "Gprime_bound": "exp(gamma*t)/(2*c*gamma^2*delta1*delta2)",
+  "Gprime_prefactor": [
+    0.14751396835067226,
+    0.14751424787121623
+  ],
+  "both_positive_poles_retained": true,
+  "c": [
+    1.1410015023527985e-12,
+    1.141002584133318e-12
+  ],
+  "causal_G_regular_class": "C1, G(t)=0 for t<=0, G'(0)=0; G is an exponentially growable causal distribution inverse",
+  "chosen_gamma_over_A": 24,
+  "complete_nonlinear_SCE_IVP_solved": false,
+  "delta_definition": "delta_j=1-r_j/gamma^2",
+  "delta_fast": [
+    0.7721839471864654,
+    0.772183947613206
+  ],
+  "delta_slow": [
+    0.99999999999896,
+    0.9999999999989603
+  ],
+  "derivative_bounds_for_smooth_f": "w^(m)=G*f^(m), with the same sup gain; not a bound for G'' itself",
+  "general_finite_T_gain": "G_prefactor*(exp(gamma*T)-1)/gamma",
+  "geometry_ODE_integrations": 0,
+  "mode_ODE_integrations": 0,
+  "old_checkers_executed": 0,
+  "past_slow_residual_convolution_automatically_converges": false,
+  "perturbed_exact_proper_duration": "Between exp(-norm(u))/24 and exp(norm(u))/24; not exactly 1/24",
+  "positive_real_identity_exact": true,
+  "positive_real_lower": "Re[-F(s^2)/s]>=c*Re(s)/abs(s)^2, Re(s)>0",
+  "proof": "INVERSE.md",
+  "renormalized_factor_identity": "-F(y)=c+sum mu_k*y/(y+b_k), c=-D(0)/(r1*r2)>0, mu_k=W_k/[b_k*(b_k+r1)*(b_k+r2)]>0",
+  "residual_test_forcing_is_added_physical_device": false,
+  "schema": "ueot-dynamic-inverse-causal_inverse/1",
+  "seed_eta_0_1_nonlinear_error_certified": false,
+  "short_conformal_window": [
+    5.098416013977445e-07,
+    5.098418426099144e-07
+  ],
+  "short_window_sup_w_per_sup_f": [
+    4.19448075149911e-14,
+    4.194492668442846e-14
+  ],
+  "short_window_sup_wprime_per_sup_f": [
+    1.292298419588293e-07,
+    1.2923014797353992e-07
+  ],
+  "smooth_physical_test_domain": "f in C_c^infinity((0,infinity)); w=G*f is C-infinity with all zero-past jets and original incoming modes transported",
+  "source_sha256": {
+    "physics/qm/null_source/timelike/dynamic_inverse/causal_inverse.py": "abf396b305a3adaf915411c921fdc5d4db612f4a716a1859d39f9dfe9d158694",
+    "physics/qm/null_source/timelike/dynamic_inverse/common.py": "4af8fbf41ce53b78d8df6d5a2dffd84a079742ddaecdcefffa19bb5b3264e0c9",
+    "physics/qm/null_source/timelike/dynamic_inverse/fast_root.json": "601c5a2b5d40013d60905d6bbf84973b8c327bf1cbc336036b523c5f948a6afe",
+    "physics/qm/null_source/timelike/dynamic_inverse/fast_root.py": "21aed417e2aa6816e1550d1a9a43b052c6edf987d268a701b7ad540a6fcf4047",
+    "physics/qm/null_source/timelike/dynamic_seed/bounds.json": "26f898e389b7972604f39352f0a6b5a71fddc0e44e2abd2b6911d1ba1a974582",
+    "physics/qm/null_source/timelike/dynamic_seed/window.json": "ec936023d51e5fca98d74cefd22a0c30fa6e49bc274ed0653e5404760c8509c4",
+    "physics/qm/null_source/timelike/joint_history/history.json": "0d419ec9ff6d30dafcc9a23855bf5c0b73a872e27175157a057a50059a4ded2d",
+    "physics/qm/null_source/timelike/physical_source/static_source.json": "aefc2eb6bb670d2a1de6496483d07bd929921358d80047175b33a45f38d452dc"
+  },
+  "stable_low_growth_inverse_exists": false,
+  "static_background_proper_duration": "1/24 model time units",
+  "status": "PASS",
+  "symbol_inverse_bound": "abs(1/P(s))<=1/[c*gamma*delta1*delta2*abs(s)^3], Re(s)=gamma>sigma_F"
+}

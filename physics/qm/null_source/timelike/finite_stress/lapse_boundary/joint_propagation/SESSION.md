@@ -1,0 +1,192 @@
+# Session: joint propagation, original-clock kernel and preparation
+
+## Actual clock and authorization
+
+This new work segment began at **2026-11-21 14:47:45 UTC**,
+**2026-11-21 22:47:45 Asia/Shanghai**. Its earliest three-hour endpoint is
+**2026-11-21 17:47:45 UTC**, **2026-11-22 01:47:45 Asia/Shanghai**.
+The previous session's work is not counted again. The current status
+and actual closing observation are in session_timing.json.
+The recorded minimum-duration closing observation is **2026-11-21 17:47:55 UTC**,
+**2026-11-22T01:47:55+08:00**, elapsed **3h 0m 10s**.
+The recorded session gate is COMPLETE. Final immutable CI is checked
+separately at the delivered head.
+
+The user requested continued research closures, reflection and further
+work toward physical unification for at least three actual hours.
+The original Mac branch/worktree remains in use. Root writes and
+executes new science; exactly three native agents perform read-only
+research and source review. Core stays read-only, GI excluded, and the
+existing PR remains an open draft with no merge.
+
+## Verified baseline
+
+Local HEAD, remote branch and PR #468 head were aligned at
+bcfde447685b0d976a94ef1e754b72fd8307cb8a before new work.
+The baseline scientific run 44913620246/job136874432876 succeeded,
+with 18 decoded PASS entries and the exact head. The decoded log and
+artifact identities are retained in baseline_ci.json.
+Its 213 reused plus 18 executed entries yield 231 reusable entries
+for this cohort; its inherited782 plus current76 scientific files and
+its receipt yield859 frozen files. These counts are checked, not used
+as a count of new theorems.
+
+## Research closures and reflections
+
+1. The complete high-mode connection and an inverse-excitation-gap
+   corrector close actual shrinking-window propagation. All low/source/
+   scalar terms remain, and the actual weak Duhamel domain is explicit.
+2. Density extends the result to the complete fixed bulk Hilbert space.
+   Normal rescaled two-time kernels and complete bounded CP histories
+   follow. Original clock and rescaled tests are kept distinct.
+3. Uniform reset throughout a clock chart plus a shift/dense-range
+   argument closes the original fixed-test kernel question negatively.
+   The stronger result is not inferred from an initial derivative.
+4. The same obstruction survives every allowed cutoff ordering,
+   constant in the clock at each K, in the same Friedrichs family.
+5. Exact C9 operational distances and a complete failure-retaining
+   Fisher measurement separate bounded convergence from moment and
+   derivative information. Pure C5 has a distinct square-moment tail.
+6. A smooth Fourier phase-hiding preparation is explicitly constructed.
+   The actual N_K diagonal can preserve declared initial means after
+   once-retuning, but loses the normal state limit and nonzero tested
+   kernel; its complete classical/coherent record keeps the phase gap.
+7. Leading scalar changes are classified. A concrete nu_K subtraction
+   cancels the first phase layer but is a changed action, has mandatory
+   lapse/u/contact rows and still loses second-moment convergence.
+   The original prescription is not edited.
+
+After each closure the next question is chosen from the remaining
+actual gate. No state-only or allowed-ordering tuning is presented as
+a rescue of the now-rejected original fixed-test kernel.
+
+## Current scientific exit
+
+Physical unification, a full four-dimensional joint Einstein--CTP
+solution, all spatial constraints and an autonomous calibrated
+preparation/measurement device remain OPEN. The positive rescaled
+quantum model is a mathematically derived singular limit; its parameter
+is not identified with laboratory proper time or seconds.
+The next concrete admissibility problem is in NEXT_GATE.md.
+
+## Intermediate CP1 checkpoint
+
+CP1 03b3906cb9b0817178ef7d02f0a3ed29a81c7e4b was pushed and its
+science/publication workflows succeeded. Three readonly agents made
+50 immutable source reads. The root accepted and patched their
+16 findings before continuing to Gaussian preparation and bounded
+probe response. The session remains IN_PROGRESS; no three-hour
+completion is claimed at this intermediate checkpoint.
+
+## Second research closure: preparation and probe
+
+Gaussian normal preparation now has exact current/form costs, a sharp
+effective Fisher asymptotic, a normal coherent memory and an explicit
+actual-evolution diagonal. A bounded finite-K Dyson probe gives a
+complete two-outcome instrument on the actual C9 input in the fast
+window, with peak strength of order K/log K. A separate compactness
+argument composes it with the growing Gaussian family and proves that
+fixed finite-rank probes then lose their complete output effect.
+The root's two new algebra/finite-matrix checks passed. Three readonly
+agents independently reviewed the analytic arguments; immutable CP3
+source rereads were subsequently completed and their findings addressed by CP4. No physical apparatus closure is claimed.
+
+## Third closure: an actual memory source and conditional CTP data
+
+The harmonic memory is now a new conformal-lapse source with actual
+finite-K direct-sum evolution. Its complete fast limit and fixed-test
+zero theorem are proved; the regular growing-Gaussian rate also
+survives its actual dynamics. Passive canonical mixed terms are
+separated from active preparation. An exact three-square identity
+bounds the complete source+memory clock variance, including all
+cross correlations, even after a legal total-mean/current retuning.
+The same preparation supplies a normal momentum instrument for w,
+an actual energy-record instrument, and a closed conditional CTP
+influence with positive ordered covariance and endpoint/contact rows.
+No local autonomous active gate or full joint geometry solution is
+claimed. The source-only compact-probe theorem is not silently applied
+to the enlarged dynamical-memory Hilbert space.
+
+CP3 remote science failed two result-equality checks after their
+internal numerical assertions passed. Source-hash review and the other
+13 entries passed. Displayed NumPy regression values had been stored
+without rounding; CP4 rounds only those reporting fields, preserving
+full-precision assertions and all source/result identity requirements.
+The shared checker now prints precise mismatch paths if a failure
+recurs. Final exact-head remote verification remains required.
+
+## Fourth closure: actual bounded calibration and independent review
+
+The common-vector/HS estimate gives the clipped pointer RMS bound
+b^2/sigma+(b-a)e_K. Including complete retuned C9 trace comparison yields
+MSE O((log K)^-1/5) and RMS O((log K)^-1/10) on the original Gaussian
+diagonal. A valid weaker trace-only estimate was sharpened after
+independent C, B and A mathematical checks. The untruncated target
+is controlled in probability only. All outcomes are retained.
+
+CP4 science44927983507 and publication44927983569 succeeded at
+2338e5e8e9d2fad9dadbbb504d30593a9667d7ed. The decoded science log
+contains17 PASS entries,231 reused entries and859 unchanged files.
+Three native agents read36 further immutable file identities, for133
+in total. They verified the three CP3 findings addressed; four new
+wording/contact/report-label clarifications are patched for CP5.
+
+The project planning documents distinguish a completed research
+package from a completed scientific port. Core's conditional,
+protocol-relative theory is not changed or promoted to empirical
+physics by this cohort. Full tensor dynamics, autonomous preparation,
+physical clock/comparison selection and empirical validation remain
+open. These direct the next action-based gate rather than another
+normal-state tuning inside the rejected original fixed-test limit.
+
+## Fifth closure: fixed lapse dressing and homogeneous stress
+
+The proper-time factor was tested in the same retained-lapse framework.
+For fixed smooth positive f(u), the actual finite-K block realizations,
+fast and fixed-test results, Gaussian calibration and full initial
+variance bound extend with explicit f_i mean retuning and u/contact
+rows. A nonconstant f does not inherit moving-level cancellation at
+every reset. Exact homogeneous stress projections and their complete
+rho-p memory covariance follow from the same conserved H_M spectral
+law; f=1 and f=a are different source models.
+
+These are restricted homogeneous results, not local 4D stress or a
+new mean-geometry solution. Independent native mathematical checks
+preceded the source implementation. CP5 added17 actual logged
+immutable file identities (150 cumulative); two reporting-string
+clarifications are patched for CP6. The three-hour session is still
+IN_PROGRESS until an actual qualifying clock observation.
+
+## Final scientific review before timing closure
+
+The CP6 f-dressing results passed both exact-head workflows. Three
+native readers then distinguished conditional fixed-history cumulants
+from the source-averaged energy variance in one new M11 sentence.
+The correction keeps E_q,V_q in the conditional influence and the full
+marginal variance in the actual homogeneous stress block. The recorded
+audit is166 actual identities; source rereading of this correction and
+the final three-hour clock observation remain pending.
+
+## Recorded closure and delivered evidence
+
+The actual clock observation above is 10810 seconds after the new
+start, satisfying the requested10800-second minimum without adding
+prior sessions or parallel-agent durations. Scientific source review
+is COMPLETE:176 logged identities,106 distinct commit-file pairs,
+21 records and7 immutable scientific checkpoints, with all findings
+addressed and current-source coverage checked.
+
+The final local runner records its true pre-commit HEAD and dirty
+worktree source manifest. Its17 entries,231 reused results and859
+unchanged predecessor scientific files are checked again at the final
+immutable remote head. Final remote workflow URLs are supplied with
+the delivered PR; the checkpoint ledger intentionally records only
+already observed earlier heads, avoiding a self-referential future
+commit claim.
+
+Physical unification is OPEN. Actual joint propagation, the original
+fixed-test rejection, complete harmonic-memory dynamics, bounded
+calibration and homogeneous lapse/stress comparisons are closed at
+their declared scopes. The next primary action/test-prescription
+contract remains NEXT_GATE.md; no original mean history, local 4D
+apparatus, full tensor feedback or empirical calibration is inferred.

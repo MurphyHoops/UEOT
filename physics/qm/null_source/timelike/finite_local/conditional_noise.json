@@ -1,0 +1,47 @@
+{
+  "Gaussian_blocks_only_used_before_actual_CQ_and_record_mixing": true,
+  "all_flag_local_stress_noise_kernels_explicit_as_finite_integrals": true,
+  "arbitrary_Hadamard_state_claimed_finite_fourth_moments": false,
+  "conditional_connected_Wightman": "W_c=W_0+s*u*uprime-c*cprime/V",
+  "delta_z": "delta/(1-2*delta*z)",
+  "full_device_total_noise_or_metric_response_solved": false,
+  "geometry_ODE_integrations": 0,
+  "invariant_moment_vector": [
+    "abs(p)^2",
+    "p.dot(r)",
+    "abs(r)^2"
+  ],
+  "mode_ODE_integrations": 0,
+  "moment_generator": "Z_b=(1-2*delta*z)^-1*exp(delta_z*t^2/2)*P_b((sqrt(R)+delta_z*t)^2;delta_z)",
+  "needed_derivatives": [
+    "t",
+    "z",
+    "tt",
+    "tz",
+    "zz"
+  ],
+  "new_Rice_numerical_integrations": 0,
+  "old_checkers_executed": 0,
+  "proof": "CONDITIONAL_NOISE.md",
+  "retarded_contact_seagull_and_local_counterterm_variations_calculated": false,
+  "same_branch_KG_transport_applies_to_all_kernel_entries": true,
+  "same_state_nonlocal_stress_commutator_input_explicit": true,
+  "schema": "ueot-finite-local-conditional_noise/1",
+  "source_cross_species_classical_noise_included": true,
+  "source_sha256": {
+    "physics/qm/null_source/timelike/finite_local/CONDITIONAL_NOISE.md": "e2ba9d14cab3268cac81413f0090d918b609ce09f3aca1413c0b34f5b9e588f6",
+    "physics/qm/null_source/timelike/finite_local/actual_history.json": "bd9943eca2d9cb233d77f292a98731e839282749a7be1e421a6ea769e89581fe",
+    "physics/qm/null_source/timelike/finite_local/common.py": "8e5423693746c413087155409d357863cb99bebc988105beb377c41b5a409081",
+    "physics/qm/null_source/timelike/finite_local/conditional.json": "586c99278ada6b4a3af8b96a79e8a20329ab15b3bfdd6c152b7ff390e9994bc3",
+    "physics/qm/null_source/timelike/finite_local/conditional_noise.py": "e618e9c0223bf0cad70eac40ed690ec3b4befe3db540012ed0718a286c4659fd",
+    "physics/qm/null_source/timelike/finite_local/conditional_tensor.json": "90ac601652816836de7154369a71e29a068f28f0e84cbe87c452188dcb85228e",
+    "physics/qm/null_source/timelike/joint_history/history.json": "0d419ec9ff6d30dafcc9a23855bf5c0b73a872e27175157a057a50059a4ded2d",
+    "physics/qm/null_source/timelike/nonlinear_history/kernels.json": "ec8a76f8c3b735f8a2ac469caa643c5454eb384df7861c15fb877a7710825b21",
+    "physics/qm/null_source/timelike/operational_selection/fluctuations.json": "4e7bd02726fce167d84ec7313e93dc23deffd0430cebecbe5f1ed37f4470f82c",
+    "physics/qm/null_source/timelike/operational_selection/instrument.json": "07af60c432c4722293f61554abe95cb320b26f27d743026c9d2b504dc56c0f4a",
+    "physics/qm/null_source/timelike/physical_source/static_source.json": "aefc2eb6bb670d2a1de6496483d07bd929921358d80047175b33a45f38d452dc"
+  },
+  "state": "same actual source CQ prior and complete smooth binary instrument",
+  "status": "PASS",
+  "zero_high_quantum_correlations_included": true
+}

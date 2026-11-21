@@ -1,0 +1,142 @@
+{
+  "baseline": "3346989339cfbfa2322812448cee336c8633ff89",
+  "status": "PASS",
+  "contract_sha256": "132dc59567479517ba376d34bd4f31fda78b86c6e2fbfdae3333c4e0f49536d9",
+  "field": {
+    "Ric_uu": "2 K",
+    "T_uu": "(dh/du)^2",
+    "trace": 0,
+    "divergence": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "mixed_improved_center_matched_xi": "2/47",
+    "mixed_improved_center_fixed_xi": "2/95"
+  },
+  "geodesic_exit": {
+    "0.25": [
+      0.8158847049766927,
+      -0.17601319669791368
+    ],
+    "-0.25": [
+      0.8158847049766927,
+      -0.17601319669791368
+    ],
+    "0.125": [
+      0.9530286695139218,
+      -0.04645951552502413
+    ],
+    "0.0": [
+      1.0,
+      0.0
+    ]
+  },
+  "probes": {
+    "pulse_half_integral": 0.6034501612189371,
+    "symmetric_arm_phase": 0.0,
+    "groups": {
+      "3": {
+        "Wfund_Wadj_pbright": [
+          [
+            0.33333333333333337,
+            5.551115123125783e-17,
+            0.6666666666666667
+          ],
+          [
+            0.33333333333333337,
+            5.551115123125783e-17,
+            0.6666666666666667
+          ],
+          [
+            0.8047378541243649,
+            0.6035533905932737,
+            0.9023689270621824
+          ]
+        ],
+        "two_amplitude_N": 3.0000000000000067,
+        "wrong_N_residual": 0.07625461122391533,
+        "max_shift_at_003": 0.020902864376269054
+      },
+      "5": {
+        "Wfund_Wadj_pbright": [
+          [
+            0.6000000000000001,
+            0.3333333333333333,
+            0.8
+          ],
+          [
+            0.6000000000000001,
+            0.3333333333333333,
+            0.8
+          ],
+          [
+            0.882842712474619,
+            0.7702200572599404,
+            0.9414213562373095
+          ]
+        ],
+        "two_amplitude_N": 5.0000000000000115,
+        "wrong_N_residual": 0.027451660040609754,
+        "max_shift_at_003": 0.017135831175456858
+      }
+    }
+  },
+  "BESII": {
+    "source": "arXiv:0903.0900, Table 1 and Eq. (2)",
+    "sqrt_s_GeV": 2.6,
+    "signal_yield": 23833,
+    "muon_Born_pb": 12848.295197084291,
+    "printed_table_R_alpha0": 2.2070844932713567,
+    "printed_table_excess": 0.027084493271356536,
+    "reproduces_published_two_decimals": false,
+    "reported_R": 2.18,
+    "two_error_box": [
+      1.98,
+      2.38
+    ],
+    "colors": {
+      "3": {
+        "R0": "2",
+        "alpha_s_over_pi_coefficient": "1",
+        "expected_box": [
+          1.62,
+          2.42
+        ],
+        "disjoint_if_both_budgets_hold": false,
+        "dynamics_times_response_to_match": [
+          0.99,
+          1.19
+        ],
+        "epsilon_for_exact_selected_yield_at_Born": 0.7041703075782263
+      },
+      "5": {
+        "R0": "17/5",
+        "alpha_s_over_pi_coefficient": "9/5",
+        "expected_box": [
+          2.754,
+          4.114
+        ],
+        "disjoint_if_both_budgets_hold": true,
+        "dynamics_times_response_to_match": [
+          0.5823529411764706,
+          0.7
+        ],
+        "epsilon_for_exact_selected_yield_at_Born": 0.414217827987192
+      }
+    }
+  },
+  "inference_mixture": {
+    "scalar_Ramsey_mean_profile": 0.9966458924137557,
+    "Maxwell_flux_share": 0.005,
+    "signed_probability_shifts": [
+      -0.0003022362630660247,
+      0.0003022362630660247,
+      0.0004355521947234098
+    ],
+    "held_geometry": 0.008709142040730367,
+    "wide_either_axis_absolute_shift_bound": 0.00043082663672215274,
+    "counterexample_Maxwell_share_rejected_by_known_Ramsey": 0.64
+  }
+}

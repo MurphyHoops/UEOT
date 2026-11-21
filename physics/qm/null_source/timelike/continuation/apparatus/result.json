@@ -1,0 +1,95 @@
+{
+  "status": "CLASSICAL_INITIAL_CONSTRAINTS_AND_LOCAL_TRANSFER_COUNTEREXAMPLE",
+  "scientific_base": "a3ae75078ae903163bf0759fbd302e836aeeea84",
+  "units": "core radius=1, 4*pi*G=1; masses are Gm",
+  "source_GM_ADM": "7565/26208",
+  "apparatus_profile": {
+    "center_area_radius": "33/50",
+    "half_width": "1/100",
+    "peak_density": "1/10",
+    "shape": "(1-z²)^12 for |z|<1, zero elsewhere",
+    "I0": "8388608/16900975",
+    "I2": "8388608/456326325"
+  },
+  "delta_GM": "7707885568/35650494140625",
+  "delta_GM_decimal": 0.00021620697703644427,
+  "total_GM": "329545783197551/1140815812500000",
+  "initial_global_2mu_over_R_upper": "278320506635051/370765139062500",
+  "initial_radial_metric_ratio_at_outer_edge": [
+    "50037976803807/50000000000000",
+    "50037976803809/50000000000000"
+  ],
+  "proper_shell_thickness_increment": [
+    "205569909/50000000000000",
+    "103613421/25000000000000"
+  ],
+  "inner_initial_chi_interval": [
+    "3633354073247833884643/9444732965739290427392",
+    "1135423147889948088951/2951479051793528258560"
+  ],
+  "center_collection_eta": "3/8",
+  "conformal_margin": [
+    "969632613517/100000000000000",
+    "969632613521/100000000000000"
+  ],
+  "center_proper_margin": [
+    "1423412750469/100000000000000",
+    "718292067533/50000000000000"
+  ],
+  "center_protection": "same initial data in R<13/20; classical domain of dependence",
+  "local_transfer": {
+    "source_phi3": "Delta_gamma(Pi) + Pi*(2*Pi² + rho_d + S_d)",
+    "dust_source_phi3_at_peak": "21/10",
+    "stiff_source_phi3_at_peak": "12/5",
+    "stiff_minus_dust_phi3": "3/10",
+    "center_phi3_both": "2",
+    "difference_cubic_coefficient": "1/20",
+    "finite_window_prediction": "NOT_PROVIDED: higher-derivative and lifespan bounds required"
+  },
+  "concentration_counterexamples": [
+    {
+      "height": 1,
+      "half_width": "1/10000",
+      "delta_GM": "344099108864/15915399169921875",
+      "delta_GM_decimal": 2.162051389287832e-05,
+      "delta_phi3_stiff_minus_dust": 3,
+      "initial_compactness_upper": 0.7500655266370446
+    },
+    {
+      "height": 10,
+      "half_width": "1/1000000",
+      "delta_GM": "752716800000064/348149356842041015625",
+      "delta_GM_decimal": 2.1620513874497245e-06,
+      "delta_phi3_stiff_minus_dust": 30,
+      "initial_compactness_upper": 0.7500065516807979
+    },
+    {
+      "height": 100,
+      "half_width": "1/100000000",
+      "delta_GM": "235224000000000002/1087966740131378173828125",
+      "delta_GM_decimal": 2.1620513874495406e-07,
+      "delta_phi3_stiff_minus_dust": 300,
+      "initial_compactness_upper": 0.750000655167097
+    },
+    {
+      "height": 1000,
+      "half_width": "1/10000000000",
+      "delta_GM": "168017142857142857143/7771191000938415527343750000",
+      "delta_GM_decimal": 2.1620513874495406e-08,
+      "delta_phi3_stiff_minus_dust": 3000,
+      "initial_compactness_upper": 0.7500000655167087
+    }
+  ],
+  "not_claimed": [
+    "self-consistent absolute quantum reference stress",
+    "real detector stress or hardware verification",
+    "finite-window local transfer accuracy",
+    "non-spherical apparatus protection",
+    "unchanged quantum covariance at outer sensor"
+  ],
+  "references": [
+    "https://arxiv.org/abs/gr-qc/0703035",
+    "https://doi.org/10.1007/BF01645389",
+    "https://doi.org/10.1103/PhysRev.136.B571"
+  ]
+}

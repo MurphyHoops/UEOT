@@ -1,0 +1,124 @@
+{
+  "baseline": "a3ae75078ae903163bf0759fbd302e836aeeea84",
+  "claim": "minimal_reference_seed_and_exact_relative_source_response",
+  "reference": {
+    "canonical_source": "physics/qm/null_source/timelike/instrument/instrument.py",
+    "state_scale_function_sha256": "9b1dcc2949ee92a57778eeffb5c2e2fe73f6e8efb365084f594110abe939a375",
+    "instrument_file_sha256": "99c3507fe65d294fa278fc4284b9e1f66400f1b2645fbf0ddacad123fd56dd61",
+    "static_until_eta": -0.125,
+    "physical_scale_from_eta": -0.0625,
+    "zero_mode_is_regular_Gaussian_not_static_vacuum": true,
+    "nonzero_mode_static_frequency": "sqrt(k^2-1), k>=2",
+    "different_valid_reference_in_quantum_README": "static <= -1/2, physical >= -1/4; not this absolute seed"
+  },
+  "symbolic": {
+    "minimal_mode_potential": "k^2+sec(2eta)^2",
+    "UV_power_and_log_terms_separately_conserved": true,
+    "finite_rank_shell_KG_equation": true,
+    "finite_rank_shell_stress_and_conservation": true,
+    "zero_mode_canonical_uncertainty_and_stiff_scaling": true,
+    "finite_rank_state_difference_UV_tail": "exactly_zero"
+  },
+  "static_absolute_seed": {
+    "background": "auxiliary_static_S3_only",
+    "a_squared": 3,
+    "last_mode": 1024,
+    "zero_mode_zeta": 1,
+    "renormalization": "Anderson_Eaker_1999_Eq12_mu1_no_extra_finite_terms",
+    "finite_residual_sum_plus_certified_tail": [
+      0.1106494711034753,
+      0.1106494711616262
+    ],
+    "tail_interval": [
+      -2.980235075400181e-08,
+      -2.9744199881023197e-08
+    ],
+    "rho_analytic_correction": [
+      -0.0003635511823728381,
+      -0.000363551182372838
+    ],
+    "rho": [
+      -5.2130755106094484e-05,
+      -5.2130754942430155e-05
+    ],
+    "pressure": [
+      0.0010380520779056533,
+      0.0010380520779602084
+    ],
+    "effective_SEC": [
+      0.0015310127393054328,
+      0.0015310127394690977
+    ],
+    "trace_minus_plus_plus_plus": [
+      0.0031662869886593904,
+      0.0031662869889867197
+    ],
+    "rho_zero_mode_before_state_independent_subtractions": [
+      0.0014072386616991355,
+      0.001407238661699136
+    ],
+    "conformal_vacuum_rho_normalization_check": [
+      2.345397769498559e-05,
+      2.3453977694985597e-05
+    ],
+    "d_rho_d_log_mu": [
+      -0.000351809665424784,
+      -0.00035180966542478387
+    ],
+    "physical_sphere_absolute_stress_certified": false
+  },
+  "finite_rank_response": {
+    "independent_ODE_max_stress_error": 8.881784197001252e-16,
+    "rows": [
+      {
+        "radius_fraction": 0.99,
+        "radius": 1.7147302994931883,
+        "eta_on_classical_background": 0.09991585002346963,
+        "H_classical": -0.11811468305982735,
+        "shell_delta_rho_per_epsilon": 0.5302540506070809,
+        "shell_delta_pressure_per_epsilon": 0.47664864979763966,
+        "shell_delta_effective_SEC_per_epsilon": 0.9801,
+        "shell_delta_H_coefficient_of_hbar_epsilon": -1.496438424279836,
+        "zero_mode_delta_rho_per_delta_zeta": 0.00149470879720031,
+        "zero_mode_delta_H_coefficient_of_hbar_delta_zeta": -0.004218241566809018
+      },
+      {
+        "radius_fraction": 0.97,
+        "radius": 1.6800892833418108,
+        "eta_on_classical_background": 0.1727592073892551,
+        "H_classical": -0.21424933879371488,
+        "shell_delta_rho_per_epsilon": 0.5923622010840686,
+        "shell_delta_pressure_per_epsilon": 0.4298125996386437,
+        "shell_delta_effective_SEC_per_epsilon": 0.9409,
+        "shell_delta_H_coefficient_of_hbar_epsilon": -0.9216087580001217,
+        "zero_mode_delta_rho_per_delta_zeta": 0.0016894189160884048,
+        "zero_mode_delta_H_coefficient_of_hbar_delta_zeta": -0.00262843116280672
+      },
+      {
+        "radius_fraction": 0.94,
+        "radius": 1.6281277591147445,
+        "eta_on_classical_background": 0.24365035330325616,
+        "H_classical": -0.3254817503792268,
+        "shell_delta_rho_per_epsilon": 0.6899338162064284,
+        "shell_delta_pressure_per_epsilon": 0.3590887279311904,
+        "shell_delta_effective_SEC_per_epsilon": 0.8835999999999999,
+        "shell_delta_H_coefficient_of_hbar_epsilon": -0.706577061440536,
+        "zero_mode_delta_rho_per_delta_zeta": 0.0020398612902641465,
+        "zero_mode_delta_H_coefficient_of_hbar_delta_zeta": -0.002089068780750845
+      }
+    ],
+    "same_physical_radius_derivative_only": true,
+    "finite_hbar_remainder_certified": false,
+    "full_nonlinear_semiclassical_solution": false
+  },
+  "sources": [
+    "https://arxiv.org/pdf/gr-qc/9906055",
+    "https://arxiv.org/pdf/gr-qc/0512118"
+  ],
+  "remaining_open": [
+    "controlled_dynamic_UV_remainder_after_reference_interpolation",
+    "absolute_minimal_stress_on_the_physical_finite_sphere",
+    "full_self_consistent_feedback_with_finite_error",
+    "global_semiclassical_initial_constraints_and_instrument_stress"
+  ]
+}

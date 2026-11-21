@@ -1,0 +1,168 @@
+{
+  "calibration": {
+    "rod_mean": 1.0130041162069217,
+    "clock_mean": [
+      -1.0029998970967746,
+      0.9989834815424676
+    ],
+    "matter_plus_counts": [
+      81836,
+      49598
+    ]
+  },
+  "prediction": {
+    "gain": [
+      1.0124847044063994,
+      1.0135235280074437
+    ],
+    "clock_rate": [
+      1.0004528657185767,
+      1.0015305129206653
+    ],
+    "clock_offset": [
+      -0.0025470313781974906,
+      -0.0014693841761095094
+    ],
+    "kappa": [
+      0.9602489458404083,
+      1.034592244675549
+    ],
+    "held_A": [
+      -0.3879720917533309,
+      -0.3600933546901531
+    ],
+    "matter": [
+      0.31042221243884977,
+      0.3254077892015771
+    ],
+    "geometry": {
+      "minimal": {
+        "weighted_ricci": [
+          0.00778480672131843,
+          0.009527666494158697
+        ],
+        "jacobi_remainder": 0.0011397542520135973,
+        "camera_readout": [
+          0.006728013985149121,
+          0.010811681909400342
+        ],
+        "operator_bound": 0.16727150360401533
+      },
+      "improved": {
+        "weighted_ricci": [
+          0.05716853729447263,
+          0.06800397286541933
+        ],
+        "jacobi_remainder": 0.002791747612097872,
+        "camera_readout": [
+          0.05505566782812817,
+          0.07175312838620206
+        ],
+        "operator_bound": 0.2712796216808604
+      }
+    }
+  },
+  "held": {
+    "matter_plus": 20773,
+    "frame_mean": [
+      [
+        [
+          1.013000698826456,
+          -2.2687746833143267e-06
+        ],
+        [
+          7.2159012307618446e-06,
+          1.012998743898958
+        ]
+      ],
+      [
+        [
+          1.012884317365971,
+          4.1517509136426055e-05
+        ],
+        [
+          4.710569699395264e-05,
+          1.0129758753776794
+        ]
+      ],
+      [
+        [
+          1.0027123783889957,
+          0.002511459974428635
+        ],
+        [
+          0.0025247478867227668,
+          1.0173270592174775
+        ]
+      ],
+      [
+        [
+          1.0007961069040245,
+          0.002558956049435008
+        ],
+        [
+          0.002578228014727502,
+          1.0182339708181105
+        ]
+      ]
+    ],
+    "geo_mean": 0.00870109902575353,
+    "geo_sd": 0.008131287386541891,
+    "raw_frames_sha256": "4de368ce51044e963530622c27df77d630fc52f7ee8e83dbfcfa74efb61814cc"
+  },
+  "verdict": {
+    "held_matter_interval": [
+      0.3101077173032408,
+      0.3238339330873842
+    ],
+    "held_geo_interval": [
+      0.008152050394387794,
+      0.009250147657119265
+    ],
+    "source_consistent": true,
+    "geometry_outcome": {
+      "minimal": "compatible",
+      "improved": "rejected"
+    }
+  },
+  "crosschecks": {
+    "free_clock_absorbing_single_Y": 0.3942715520800151,
+    "narrow_matter_p_at_free_clock": 0.31695488477849265,
+    "equal_budget_standard_model": "same Jacobi and Ramsey probabilities",
+    "improved_counterfactual": {
+      "minimal": "rejected",
+      "improved": "compatible"
+    },
+    "flipped_matter_control": {
+      "minimal": "source_monitor_failed",
+      "improved": "source_monitor_failed"
+    },
+    "free_camera_gain_absorbing_single_Y": 0.13987458890500376,
+    "unbounded_Weyl": [
+      {
+        "cycles_per_chord": 0,
+        "absolute_max_coordinate_gap_to_improved": 0.01764960565741025,
+        "signed_Y_gap_to_improved": -0.0536665569161876,
+        "ODE_vs_independent_positions": 3.3641978092191493e-12
+      },
+      {
+        "cycles_per_chord": 2,
+        "absolute_max_coordinate_gap_to_improved": 8.688594051009524e-06,
+        "signed_Y_gap_to_improved": -2.178536373520501e-07,
+        "ODE_vs_independent_positions": 1.3986368729845822e-09
+      },
+      {
+        "cycles_per_chord": 4,
+        "absolute_max_coordinate_gap_to_improved": 4.284281756139485e-06,
+        "signed_Y_gap_to_improved": -2.3599566745247103e-08,
+        "ODE_vs_independent_positions": 1.3796077613648094e-09
+      },
+      {
+        "cycles_per_chord": 8,
+        "absolute_max_coordinate_gap_to_improved": 2.1155633692648834e-06,
+        "signed_Y_gap_to_improved": 1.0936980210374259e-08,
+        "ODE_vs_independent_positions": 1.4104732937170184e-09
+      }
+    ]
+  }
+}

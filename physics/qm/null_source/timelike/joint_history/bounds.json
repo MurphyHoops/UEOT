@@ -1,0 +1,94 @@
+{
+  "acceptance_scope": "extra second-moment/operator-constraint requirement, distinct from mean SCE",
+  "all_record_static_thermal_noise_floor": {
+    "average_branch_relative_density_variance_lower": [
+      0.010145116512526456,
+      0.010145193309217513
+    ],
+    "average_conditional_density_variance_lower": [
+      5.117120009126195e-22,
+      5.117168428759401e-22
+    ],
+    "complete_energy_marginal_preserved": true,
+    "conditional_variance_S0_lower": "3/16+L/nu0",
+    "geometry_fluctuation_lower_bound": false,
+    "mean_SCE_disproved": false,
+    "numeric_lower_enclosure": [
+      0.18750000000778808,
+      0.18750000000778816
+    ],
+    "record_count_unrestricted": true,
+    "universal_strict_record_weighted_relative_RMS_lower": [
+      0.10072315975065406,
+      0.10072315975065409
+    ],
+    "universal_strict_relative_variance_lower": [
+      0.01014515491015578,
+      0.010145154910155784
+    ],
+    "zero_high_conditional_product_required": true
+  },
+  "density_bound": {
+    "density_cap": [
+      268805.32576961635,
+      268805.7072948566
+    ],
+    "formula": "sup f_S0 <= sqrt(pi*nu)/(4*sqrt(rmin))",
+    "nu_rmin_at_least": 16,
+    "rmin": 1,
+    "small_region_to_cap_ratio_at_nu_rmin_16": [
+      0.6108380567086571,
+      0.6108380567086573
+    ]
+  },
+  "external_matter_nonstatic_or_changed_U_excluded_by_this_theorem": false,
+  "finite_classical_records": {
+    "average_conditional_variance_lower": "4*rmin/(3*pi*nu*N^2)",
+    "preserves_nonselective_S0_law_required": true,
+    "selected_N_records_mass_p_unnormalized_lower": "4*rmin*p^3/(3*pi*nu*N^2)",
+    "two_record_floor": [
+      2.88324662108627e-13,
+      2.8832548056870555e-13
+    ]
+  },
+  "geometry_ODE_integrations": 0,
+  "global_static_thermal_cap": {
+    "N_derivative_on_G_positive": "N'<-3/2-kappa/x<0",
+    "U0_and_M2_fixed": true,
+    "all_positive_radius_roots_covered": true,
+    "mu_upper": "mu_old=L+2/nu0",
+    "n_nonnegative_required": true,
+    "positive_mu_unique_root": true,
+    "radius_upper": "x0"
+  },
+  "mode_ODE_integrations": 0,
+  "old_checkers_executed": 0,
+  "rare_mean_preserving_selection": {
+    "arbitrary_filter_without_preserved_input_law_covered": false,
+    "gap_radius_distances": [
+      [
+        0.10295346726238166,
+        0.10295346726238169
+      ],
+      [
+        0.08168936799071809,
+        0.08168936799071812
+      ]
+    ],
+    "log_success_upper": [
+      -1177597998.6579838,
+      -1177594655.8491929
+    ],
+    "mean_window": "abs(mu_selected-L)<=d/8",
+    "success_upper": "2*exp(-2*nu/625)",
+    "variance_at_most": "d^2/128"
+  },
+  "schema": "ueot-joint-history-bounds/1",
+  "source_sha256": {
+    "physics/qm/null_source/timelike/joint_history/bounds.py": "084d34d4b932a7e61639253986465cbd46c23e5a6570a77841f4fc465bc206bd",
+    "physics/qm/null_source/timelike/joint_history/common.py": "b19de1ce7826a935f4aa8927580c8097f2924a08b8c3dfc44d56c44ea081422f",
+    "physics/qm/null_source/timelike/physical_source/stability.json": "0eb5ce9002a7c6fae5f2ae4b680a4dcaf58837e4cfccefe9e8083aabc4b25a12",
+    "physics/qm/null_source/timelike/physical_source/static_source.json": "aefc2eb6bb670d2a1de6496483d07bd929921358d80047175b33a45f38d452dc"
+  },
+  "status": "PASS"
+}

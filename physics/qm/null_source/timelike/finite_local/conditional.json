@@ -1,0 +1,33 @@
+{
+  "Gaussian_record_covariance": "S=Cov_sym(B,B)+nu",
+  "actual_CQ_state_mixed_with_Bayes_updated_latent_weights": true,
+  "conditional_Hadamard_finite_rank_change": true,
+  "conditional_covariance_change_outside_JplusK_may_be_nonzero": true,
+  "conditional_inference_is_instantaneous_physical_gravity_feedback": false,
+  "conditional_mean": "m_p+c*S^-1*(y-b_p)",
+  "full_controller_noise_and_cross_noise_supplied": false,
+  "full_target_probe_conditional_covariance": "C-c*S^-1*c^T+(1/4)*d*nu^-1*d^T",
+  "geometry_ODE_integrations": 0,
+  "mode_ODE_integrations": 0,
+  "nonselective_local_change_outside_JplusK": 0,
+  "old_checkers_executed": 0,
+  "probe_reader_backaction_omitted": false,
+  "proof": "CONDITIONAL.md",
+  "record_stress_covariance_one_Gaussian_block": "L(x)L(x')/S+2*T[c](x)T[c](x')/S^2",
+  "schema": "ueot-finite-local-conditional/1",
+  "source_sha256": {
+    "physics/qm/null_source/timelike/finite_local/CONDITIONAL.md": "71905b2d10d6c66e4702c3a28010147bc680e6df228f8f1137168ca88133c0e5",
+    "physics/qm/null_source/timelike/finite_local/common.py": "8e5423693746c413087155409d357863cb99bebc988105beb377c41b5a409081",
+    "physics/qm/null_source/timelike/finite_local/conditional.py": "d38f51674d656b60d945fa017016f1e8a79255aa1c276962d8c807887ca4fe33",
+    "physics/qm/null_source/timelike/finite_local/kinetic_probe.json": "ffe1f4e452425cafd3e5e310edc8279b846d792da202adca2b6c679f023fb282",
+    "physics/qm/null_source/timelike/joint_history/history.json": "0d419ec9ff6d30dafcc9a23855bf5c0b73a872e27175157a057a50059a4ded2d",
+    "physics/qm/null_source/timelike/nonlinear_history/kernels.json": "ec8a76f8c3b735f8a2ac469caa643c5454eb384df7861c15fb877a7710825b21",
+    "physics/qm/null_source/timelike/operational_selection/fluctuations.json": "4e7bd02726fce167d84ec7313e93dc23deffd0430cebecbe5f1ed37f4470f82c",
+    "physics/qm/null_source/timelike/operational_selection/instrument.json": "07af60c432c4722293f61554abe95cb320b26f27d743026c9d2b504dc56c0f4a",
+    "physics/qm/null_source/timelike/physical_source/static_source.json": "aefc2eb6bb670d2a1de6496483d07bd929921358d80047175b33a45f38d452dc"
+  },
+  "status": "PASS",
+  "target_out_commutator_d": 0,
+  "total_noise": "posterior average of Gaussian-block noise plus covariance of block means",
+  "whole_CQ_mixture_assumed_Gaussian": false
+}

@@ -1,0 +1,45 @@
+{
+  "CV_epsilon_minimum_budget": "max(d/2,(d-eps)/(1+eps))",
+  "abstract_state_preparation_not_a_local_engineering_implementation": true,
+  "all_record_effects_species_invariant_required": true,
+  "equal_law_minimum_radial_variance": "max(d-b,0)^2 for b>=d/2",
+  "full_bounded_O2_invariant_record_laws_equal_at_common_radial_law": true,
+  "full_noise_difference_coefficient": "-sqrt(3)*b + 3/4",
+  "full_noise_kernel": "2*N0+(1+b)*N1+Var(R)*(C tensor C)",
+  "global_energy_spectrum_also_makes_radial_law_equality_necessary": true,
+  "includes_reference_reservoir_and_cross_noise": true,
+  "latent_radial_TV_sharp": "max(0,1-2*b/d), d=sqrt(3)/2",
+  "low_budget_radial_probabilities": {
+    "new": [
+      "0",
+      "-2*sqrt(3)*b/3 + 1",
+      "2*sqrt(3)*b/3"
+    ],
+    "old": [
+      "-2*sqrt(3)*b/3 + 1/2",
+      "2*sqrt(3)*b/3",
+      "1/2"
+    ],
+    "support": [
+      "1 - sqrt(3)/2",
+      "1",
+      "sqrt(3)/2 + 1"
+    ]
+  },
+  "minimum_budget_common_radial_CV": "sqrt(3)/(4+sqrt(3))",
+  "minimum_budget_common_radial_variance": "3/16",
+  "minimum_equal_law_average_budget": "sqrt(3)/4",
+  "mode_ODE_integrations": 0,
+  "old_checkers_executed": 0,
+  "old_fixed_radius_budget_retained": "sqrt(3)/2",
+  "quantum_energy_TV_not_asserted_equal_to_latent_TV": true,
+  "retarded_commutator_kernel": "2*chi0+(1+b)*chi1",
+  "schema": "ueot-physical-source-budget/1",
+  "source_sha256": {
+    "physics/qm/null_source/timelike/continuation/quantum/result.json": "5e53bd95c2e081db434baf7a0d3e250ec5af241bd73ba12266c7467183050db8",
+    "physics/qm/null_source/timelike/physical_source/budget.py": "496c333dad1a768cb4db447261b3dbae54946996d09fc4ca2df7acd575ba4102",
+    "physics/qm/null_source/timelike/physical_source/common.py": "0740c3123d167ac6cc1594b99089d4db741d3cdcd21550ed894507724470b3b2",
+    "physics/qm/null_source/timelike/prepared_initial/result.json": "aab2fd86f936b969139681678bab5ea2cf927864a12f4356239e23bc9d1aa88f"
+  },
+  "status": "PASS"
+}

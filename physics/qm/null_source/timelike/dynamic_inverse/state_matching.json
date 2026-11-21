@@ -1,0 +1,89 @@
+{
+  "Hadamard_matching_equals_same_incoming_state": false,
+  "Jost_V_to_F_map_entire": true,
+  "Jost_Wronskian_Theta_derivative_exact": 0,
+  "Jost_bound": "norm(F_k)_A <= exp(norm(V)_A/(2*omega_k*s_*))",
+  "Jost_construction_condition": "u_00=0, Theta^2*u in A; hence V_00=0 and finite norm(V)_A",
+  "Jost_equation": "F_plus=1+K_plus(V*F_plus), multiplier K_plus=1/[lambda*(lambda-2i*omega)]; conjugate partner has +2i*omega",
+  "Jost_iteration_power_bound": "norm((K*M_V)^j)<= [norm(V)/(2*omega_k*s_*)]^j/j!",
+  "Jost_small_norm_condition_required": false,
+  "Riccati_first_eight": [
+    "-V0",
+    "-V1",
+    "V0**2 - V2",
+    "4*V0*V1 - V3",
+    "-2*V0**3 + 6*V0*V2 + 5*V1**2 - V4",
+    "-16*V0**2*V1 + 8*V0*V3 + 18*V1*V2 - V5",
+    "5*V0**4 - 30*V0**2*V2 - 50*V0*V1**2 + 10*V0*V4 + 28*V1*V3 + 19*V2**2 - V6",
+    "64*V0**3*V1 - 48*V0**2*V3 - 216*V0*V1*V2 + 12*V0*V5 - 60*V1**3 + 40*V1*V4 + 68*V2*V3 - V7"
+  ],
+  "Riccati_highest_jet_coefficient": -1,
+  "actual_Jost_delta_X": "sigma**2*u/(omega*(4*omega**2 + sigma**2))",
+  "actual_Jost_delta_Y": "sigma**3*u/(2*omega*(4*omega**2 + sigma**2))",
+  "actual_Jost_delta_Z": "-omega*sigma**2*u/(4*omega**2 + sigma**2)",
+  "all_order_Hadamard_matching_theorem": "STATE_MATCHING.md; current smooth homogeneous S3 pure-high-mode / finite-thermal-shell class",
+  "bidisc_Hadamard_scope": "Real smooth geometry along every strictly interior bidisc history; full repeated UV expansion on compact time intervals, not a same-radius RSET bound",
+  "canonical_identification": "phi=v/a, pi=a*(v'-h*v); fix a,h before identifying Cauchy covariances",
+  "delta_E3": "-dj*h/4",
+  "delta_P3": "-dj*h/4 + dl/12",
+  "exact_bidisc_Jost_state_construction": true,
+  "example_Jost_contraction_ratio_bound": [
+    0.007274612084981283,
+    0.007274613453440697
+  ],
+  "example_Jost_norm_exponential_bound": [
+    1.0073011363543884,
+    1.0073011377328396
+  ],
+  "example_bidisc_Rw": [
+    1.1410015023329999e-14,
+    1.1410015023330002e-14
+  ],
+  "example_bidisc_Rz": [
+    0.009999999999999997,
+    0.01
+  ],
+  "example_is_exact_SCE_solution": false,
+  "example_off_shell_geometry": "u=z+w, Rz=1/100, Rw=1/(100*sigma_upper^2)",
+  "example_potential_norm_bound": [
+    0.05039999094594093,
+    0.050400000426905844
+  ],
+  "fast_mode_curvature_variation": "u*(6*sigma**2 - 12)/x",
+  "fast_mode_is_gauge": false,
+  "finite_one_slice_stress_is_full_Hadamard": false,
+  "finite_stress_nonHadamard_counterexample": "a_new=A*exp(J*eta^3/6), a_old=A, old static Cauchy covariance at eta=0",
+  "first_Wronskian_variation": 0,
+  "fixed_incoming_delta_rho": "-3*u/x",
+  "frozen_state_abstract_CCR_positivity_disproved": false,
+  "full_renormalized_nonlinear_map_closed": false,
+  "geometry_ODE_integrations": 0,
+  "h_zero_caveat": "The energy logarithm vanishes at h=0; this does not by itself certify or disprove a finite full RSET.",
+  "leading_bare_minus_AE_log_cancellation_checked": true,
+  "leading_correction_alone_is_full_Hadamard_proof": false,
+  "leading_synchronized_cross_covariance": "delta Re(v* v')=delta V'/(8*omega^3)+O(omega^-5)",
+  "linear_Hamiltonian_defect": 0,
+  "matching_all_jets_requires_analytic_geometry": false,
+  "mode_ODE_integrations": 0,
+  "nonlinear_solution_nonuniqueness_proved": false,
+  "old_checkers_executed": 0,
+  "same_actual_zero_mode": "q=Q+(P/A^2)*(eta-eta_ref+Theta_inverse(exp(-2*u)-1)); same incoming Q,P and unchanged eta_ref",
+  "same_slow_first_two_past_coefficients_fix_fast_amplitude": false,
+  "schema": "ueot-dynamic-inverse-state_matching/1",
+  "single_field_frozen_p_log_coefficient": "(dj*h/4 - dl/12)/(4*pi**2*a**4)",
+  "single_field_frozen_rho_log_coefficient": "dj*h/(16*pi**2*a**4)",
+  "single_slice_both_stress_sums_finite_iff": "h*delta V'=0 and delta V''=0, at fixed a,h,V and old Hadamard covariance",
+  "source_sha256": {
+    "physics/qm/null_source/timelike/dynamic_inverse/common.py": "4af8fbf41ce53b78d8df6d5a2dffd84a079742ddaecdcefffa19bb5b3264e0c9",
+    "physics/qm/null_source/timelike/dynamic_inverse/fast_root.json": "601c5a2b5d40013d60905d6bbf84973b8c327bf1cbc336036b523c5f948a6afe",
+    "physics/qm/null_source/timelike/dynamic_inverse/fast_root.py": "21aed417e2aa6816e1550d1a9a43b052c6edf987d268a701b7ad540a6fcf4047",
+    "physics/qm/null_source/timelike/dynamic_inverse/state_matching.py": "5ee841c2ce4d4910be03de10259457942154a94380f28cbb152a1705c52a66a8",
+    "physics/qm/null_source/timelike/dynamic_seed/bounds.json": "26f898e389b7972604f39352f0a6b5a71fddc0e44e2abd2b6911d1ba1a974582",
+    "physics/qm/null_source/timelike/dynamic_seed/window.json": "ec936023d51e5fca98d74cefd22a0c30fa6e49bc274ed0653e5404760c8509c4",
+    "physics/qm/null_source/timelike/joint_history/history.json": "0d419ec9ff6d30dafcc9a23855bf5c0b73a872e27175157a057a50059a4ded2d",
+    "physics/qm/null_source/timelike/physical_source/static_source.json": "aefc2eb6bb670d2a1de6496483d07bd929921358d80047175b33a45f38d452dc"
+  },
+  "status": "PASS",
+  "two_field_frozen_p_log_coefficient": "(dj*h/4 - dl/12)/(2*pi**2*a**4)",
+  "two_field_frozen_rho_log_coefficient": "dj*h/(8*pi**2*a**4)"
+}

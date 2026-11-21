@@ -1,0 +1,37 @@
+{
+  "Bayes_risk_upper": "E Var(S0|z) <= 4*w*mu/C + 4*w^2/C^2",
+  "actual_source_nonselective_spectral_law_preserved": true,
+  "arbitrary_unknown_input_universal_mean_feedback_proved": false,
+  "complete_record_MSE_upper_using_all_modes": [
+    2.912776013797463e-09,
+    2.912784282222609e-09
+  ],
+  "geometry_ODE_integrations": 0,
+  "global_scalar_source_posterior_and_local_vector_posterior_distinct": true,
+  "local_record_model": "z=P+N(0,w I2), w=(Vhigh(f)+vm)/beta_f^2",
+  "measured_high_state_and_zero_high_correlations_can_be_reset_freely": false,
+  "mode_ODE_integrations": 0,
+  "old_checkers_executed": 0,
+  "policy_calibrated_to_fixed_original_prior": true,
+  "posterior_covariance_P_given_z_p": "v*w/(v+w) I2",
+  "posterior_latent_weights": "prior(dp)*exp(-|z-p|^2/[2(v+w)]), normalized",
+  "posterior_mean_P_given_z_p": "(w*p+v*z)/(v+w)",
+  "posterior_mean_tower_law": "E_z mu_z = original mu",
+  "posterior_mu": "[E_{p|z}|(w*p+v*z)/(v+w)|^2 + 2*v*w/(v+w)]/C",
+  "posterior_mu_strict_lower": "2*v*w/[C*(v+w)] > 0",
+  "posterior_mu_unbounded_at_large_record": true,
+  "proof": "RECORDS.md",
+  "record_domain": "all z in R^2; no tail, failure, or stop records discarded",
+  "schema": "ueot-finite-local-records/1",
+  "source_sha256": {
+    "physics/qm/null_source/timelike/finite_local/RECORDS.md": "df7079492b0a6592bdd2b5e942a3bf6713e3712ed812a1b52ffc6792edd785d6",
+    "physics/qm/null_source/timelike/finite_local/common.py": "8e5423693746c413087155409d357863cb99bebc988105beb377c41b5a409081",
+    "physics/qm/null_source/timelike/finite_local/records.py": "0180d8cda7505b4ac14766a208fb3838a69e3dd559b667c76953550387dac8f2",
+    "physics/qm/null_source/timelike/joint_history/history.json": "0d419ec9ff6d30dafcc9a23855bf5c0b73a872e27175157a057a50059a4ded2d",
+    "physics/qm/null_source/timelike/nonlinear_history/kernels.json": "ec8a76f8c3b735f8a2ac469caa643c5454eb384df7861c15fb877a7710825b21",
+    "physics/qm/null_source/timelike/operational_selection/fluctuations.json": "4e7bd02726fce167d84ec7313e93dc23deffd0430cebecbe5f1ed37f4470f82c",
+    "physics/qm/null_source/timelike/operational_selection/instrument.json": "07af60c432c4722293f61554abe95cb320b26f27d743026c9d2b504dc56c0f4a",
+    "physics/qm/null_source/timelike/physical_source/static_source.json": "aefc2eb6bb670d2a1de6496483d07bd929921358d80047175b33a45f38d452dc"
+  },
+  "status": "PASS"
+}

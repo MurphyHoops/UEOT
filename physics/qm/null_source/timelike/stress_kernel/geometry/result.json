@@ -1,0 +1,150 @@
+{
+  "ADM_noise_interface": {
+    "classical_background_on_shell": true,
+    "classical_forced_model": "delta(G_ab-2*T_classical_ab)=2*xi_ab",
+    "classical_scalar_is_positive_amplitude_base_not_mixture_mean": true,
+    "covariance": "Cov(O_F,O_H)=N(F_lambda*u_lambda*u_lambda,H_lambda*u_lambda*u_lambda)",
+    "full_quantum_response": "full EL requires delta_C-delta<RSET_nn>=xi_nn, including local renormalization terms",
+    "gauge_invariance_condition": "covariant coupled metric-scalar operator on its classical on-shell background; normal-variation terms multiply E_background=0",
+    "new_sign_source_variance": "lambda^-8*C0+d_lambda^2*lambda^-6*C1",
+    "normalization": "centered variance may be divided by (lambda^-2*D)^2, not by the zero mean of O_F",
+    "observable": "O_F=int F_lambda*delta_C dvol_lambda; delta_C=xi_nn",
+    "same_F_full_C0_numerics_delegated_to_sibling_noise_certificate": true,
+    "units": "4*pi*G=1, hence Einstein G_ab=2*T_ab",
+    "unsubtracted_curvature_noise_bound_from_C0_alone": false
+  },
+  "input_sha256": {
+    "physics/qm/null_source/timelike/response/CONTRACT.md": "4b45639fefbe7f73388b9ad41a253d4415a54754a185634ff5c3d54458cc0de4",
+    "physics/qm/null_source/timelike/response/geometry/result.json": "3a288a6f1b0eea9d926555fa603d25243ca5367351d24051cc7c185a554091af",
+    "physics/qm/null_source/timelike/response/noise/result.json": "2c0e5acc23976f41a02e53406e499b67f6cb104b90185e66da670cac496ebf3c",
+    "physics/qm/null_source/timelike/response/verification.json": "d554f48c1537df01501b2b3d4d07b4ea1c41993bd9e5a9090a40ff87b04d864f",
+    "physics/qm/null_source/timelike/stress_kernel/geometry/check.py": "15c06f0cd0ad42b143d8d619ee27da39b1e1184cbd19a9af2067076e5faa9ea0"
+  },
+  "new_mode_integrations": 0,
+  "numerical": {
+    "KG_local_flux_is_strictly_negative_at_center": true,
+    "KG_local_flux_negative_control_abs": [
+      "6582705945947582911799397052673137181641029624759670354735560085673829293689777/7588550360256754183279148073529370729071901715047420004889892225542594864082845696",
+      "6609973512551622095037238291090784493644836657379798280858605446017699415872521/7588550360256754183279148073529370729071901715047420004889892225542594864082845696"
+    ],
+    "cells_per_integral": 2048,
+    "geometry_interval": [
+      "0",
+      "3/16"
+    ],
+    "local_density_test_causal_support": "chi+eta<=1/4<arcsin(1/sqrt(3))",
+    "method": "outward interval Riemann bounds with exact bump extrema",
+    "normalized_readout_L1_upper": [
+      "937162552324981557870366372178791770340605611534789977046154420195137799326265/226156424291633194186662080095093570025917938800079226639565593765455331328",
+      "937162552324981557870366372178791770340605611534789977046154420195137799326265/226156424291633194186662080095093570025917938800079226639565593765455331328"
+    ],
+    "positive_amplitude_transfer_Dpsi": [
+      "2925156258021249236758228814731021927401200600938293077579194360357086223341327/118571099379011784113736688648896417641748464297615937576404566024103044751294464",
+      "183121785243866391487590180802700691270315837365854569892751757174747297366535/7410693711188236507108543040556026102609279018600996098525285376506440296955904"
+    ],
+    "positive_window_retarded_test_at_eta0": [
+      "1236536607014625950334900980775187589863513229805936134771547856682878214761833/948568795032094272909893509191171341133987714380927500611236528192824358010355712",
+      "619472749830396611722629811965087211389836575936068081980601960536627531836969/474284397516047136454946754595585670566993857190463750305618264096412179005177856"
+    ],
+    "psi_integral": [
+      "3287639835715708650024836532903202883490278940504491117632958337784979106239627/237142198758023568227473377297792835283496928595231875152809132048206089502588928",
+      "6585929053701591715778150966326555999984304809973109982702121131089064557028481/474284397516047136454946754595585670566993857190463750305618264096412179005177856"
+    ],
+    "psi_support": [
+      "1/16",
+      "1/8"
+    ],
+    "q_L1_upper": [
+      "5918683484279717194393222547457676807960193376819737298765044945596532965712679/57896044618658097711785492504343953926634992332820282019728792003956564819968",
+      "5918683484279717194393222547457676807960193376819737298765044945596532965712679/57896044618658097711785492504343953926634992332820282019728792003956564819968"
+    ],
+    "q_at_center_negative": [
+      "-1364523980597769070915593594446439880596451660132872135335098710476479251928657/1809251394333065553493296640760748560207343510400633813116524750123642650624",
+      "-5458095922391076283662374377785759522385806640531488541340394841905917007714625/7237005577332262213973186563042994240829374041602535252466099000494570602496"
+    ],
+    "q_at_eta_19_over_160_positive": [
+      "1569052433245254573121163793237469280218623176296792684765410342185135978523541/904625697166532776746648320380374280103671755200316906558262375061821325312",
+      "784526216622627286560581896618734640109311588148396342382705171092567989261779/452312848583266388373324160190187140051835877600158453279131187530910662656"
+    ],
+    "uniform_beta_calibration_error_gain_certified_below": 5000
+  },
+  "reviewed_base": "29d49e3eee6299e2085492b0e061288b8166b5fa",
+  "same_local_ADM_density_test": "b(32*(eta-3/32))*b(8*chi), b(x)=exp(-1/(1-x^2)) for |x|<1, otherwise 0",
+  "schema": "ueot-smooth-geometry-noise-readouts/1",
+  "scope": {
+    "Core_unique_physical_selection": false,
+    "ODE_filter_applies_to_declared_archived_L": true,
+    "ODE_filter_automatically_applies_to_changed_nonlocal_quantum_response": false,
+    "ODE_time_readout_fixed_conformal_identification": true,
+    "ODE_trace_noise_certified_by_density_C0_alone": false,
+    "actual_geometry_instrument_or_hardware_data": false,
+    "full_Einstein_Langevin_solution_constructed": false,
+    "generic_intrinsic_geometry_noise_set_to_zero": false,
+    "initial_noise_cross_correlations_assumed_zero": false,
+    "linear_map_covariance_identity_establishes_smallness_of_old_order_one_noise": false,
+    "localized_spatial_window_justifies_homogeneous_stochastic_metric": false,
+    "noise_constants_transported_to_finitely_corrected_geometry": false,
+    "nonlinear_SCE_solution_constructed": false
+  },
+  "status": "ADJOINT_DOMAIN_AND_LOCAL_CONSTRAINT_INTERFACE_CERTIFIED",
+  "symbolic": {
+    "ADM_density_residual": "C=(R3+K^2-Kij*Kij)/4-rho_classical",
+    "ADM_first_variation": "3*C1_no_quantum/(2*lambda^2*A^4)",
+    "ADM_homogeneous_background": "C[A,27]=0",
+    "Green_derivative_jump": "1",
+    "Green_diagonal": "0",
+    "Lagrange_boundary_identity": "d_t[G*psi_prime-G_t*psi]=G*Lpsi",
+    "Wronskian": "1",
+    "absolute_scale_and_relative_volume": {
+      "L_A": "-36/A^3",
+      "amplitude_particular_solution": "beta=(d_lambda^2/4)*A*(Y^2-1)",
+      "fixed_proper_clock_relative_log_volume_change": "-3*kappa*h*tau/a; generally nonzero",
+      "fixed_proper_clock_time_shift": "delta_eta=-kappa*tau/a",
+      "integral_q_A": "-4*Dpsi",
+      "own_initial_relative_log_volume_at_common_eta": "3*beta/A-3*beta(0)/A(0)=0",
+      "own_initial_volume_ratio_at_common_eta": "cos(2*eta)^(3/2), independent of M",
+      "pure_classical_stiff_family": "a_M^2=sqrt(M/3)*cos(2*eta), M>0",
+      "q_reconstruction_needs_absolute_initial_scale": "int q*beta=(1/3)*int q*A*y-4*Dpsi*beta(0)/A(0)",
+      "relative_volume_blindness_asserted_for_proper_clock_instrument": false
+    },
+    "all_homogeneous_initial_terms_removed": true,
+    "beta_normalization": "beta=delta_a/lambda; L beta=lambda^2*A^3*(xi_rho-3xi_p)/3",
+    "classical_amplitude_forcing": "-9/A^3",
+    "compact_adjoint_domain_iff": "integral q*v=0 and integral q*u=0",
+    "conformal_time_flux": "J^i=-A^-2*gamma^ij*T_eta_j; scalar J^i=-A^-2*phi_prime*D^i(phi)",
+    "covariance_difference_PSD_rank_at_most_one": true,
+    "explicit_readout": "psi=b(32*(eta-3/32)); q=Lpsi; G_adjoint*q=psi",
+    "generic_readout_intrinsic_source_cross_terms_may_exist": true,
+    "initial_correlation_negative_control": {
+      "independent_Z_E_variances": [
+        "3/4",
+        "1"
+      ],
+      "induced_old_minus_new": "3/4",
+      "new_source": "E",
+      "old_source": "E+Z",
+      "same_initial_H": "-Z",
+      "statistical_counterexample_not_constructed_EL_state": true,
+      "total_old_minus_new": "-3/4"
+    },
+    "initial_source_independence_needed_for_this_filter": false,
+    "legal_local_trace_test": {
+      "all_mode_trace_noise_numeric_bound_supplied": false,
+      "classical_D_of_H": "-Dpsi",
+      "compact_four_dimensional_test": true,
+      "legal_stress_test_by_itself_constructs_local_geometry_response": false,
+      "new_full_noise": "N_G(H,K)+d_lambda^2*Re<W_G[L_f(H)L_f(K)]>",
+      "old_minus_new_noise": "(3/4)*d_lambda^4*D(H)*D(K)",
+      "spatial_window": "w=b(8*chi)/integral b(8*chi) dOmega_3",
+      "tensor": "H^ab=-psi*w*g_lambda^ab/(3*lambda^2*A)"
+    },
+    "local_weighted_energy_balance": "rho_w_prime+3*h*(rho_w+p_w)=integral D_i(w)*J^i dOmega",
+    "local_weighted_source_is_automatically_FLRW_conserved": false,
+    "old_minus_new_filtered_covariance": "(3/4)*kappa_i*kappa_j for the same declared linear response",
+    "operator": "L=d_eta^2+1-3*sec(2*eta)^2 on [0,3/16]",
+    "physical_KG_flux_negative_control": "phi=u(eta)*cos(chi), omega^2=3, u=u_prime=1 at eta=3/32",
+    "positive_nonzero_q_fails_compact_past_test": true,
+    "retarded_G": "u(eta)*v(s)-v(eta)*u(s)",
+    "signed_transfer_for_biased_source": "kappa=-d_lambda^2*Dpsi; Dpsi=9*integral psi/A^3"
+  }
+}

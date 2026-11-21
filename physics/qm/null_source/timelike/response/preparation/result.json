@@ -1,0 +1,282 @@
+{
+  "general_parity_and_uniqueness_proofs": "README mathematical proof; finite symbolic checks are supplementary",
+  "inherited_input_sha256": {
+    "physics/qm/null_source/FINITE_WINDOW.md": "c14f64f168a406df9e39ef7f1b6cee22c0366f6a0bf824ed581d7c0eb8f47163",
+    "physics/qm/null_source/timelike/compatibility/CONTRACT.md": "3921b7f6a8654a41960f8915883547a2f75078039ede5a00be79c89f3ad215f4",
+    "physics/qm/null_source/timelike/compatibility/constraints/result.json": "0572e61ebbaa2ab388a9af0c84adff52dabdc0fffcd618b36b5c6cb8c4a8f903",
+    "physics/qm/null_source/timelike/compatibility/review.json": "48bfcc47ef0db2f849505e4cb34714e3d4c68e7928a71cf7d9d27220b0b4e512",
+    "physics/qm/null_source/timelike/continuation/SOURCE.md": "b9387acfdbf6f4ca2efdb2869cbfd496257292dafe511c5f1b5dea48e3745cd9",
+    "physics/qm/null_source/timelike/instrument/CONTRACT.md": "93f536a3d2111c0a4b8ac65d1fbc1e4f3b82a142c532096a3d9cb10692f9617b",
+    "physics/qm/null_source/timelike/instrument/instrument.py": "99c3507fe65d294fa278fc4284b9e1f66400f1b2645fbf0ddacad123fd56dd61",
+    "physics/qm/null_source/timelike/instrument/joint_bound.py": "ea994eed8631012e91922317cb5bf58a9e6a83288fe7c9e0a3b327c878224df0",
+    "physics/qm/null_source/timelike/instrument/result.json": "cbe013ae525866f82487ba0e7139449d85dddb4530c1c82f876aff6c37ae4d77"
+  },
+  "new_hardware_data": false,
+  "new_mode_integrations": 0,
+  "readout": {
+    "allowed_instrument": "one logical controlled-Weyl interaction, then complete qubit X readout",
+    "calibrated_success_probability": "[1+contrast*visibility*Re(exp(i*phase_error)*chi(theta))]/2 + probability_error",
+    "calibration_contract": {
+      "actual_calibration_performed": false,
+      "actual_to_nominal_gain_interval": [
+        "199/200",
+        "201/200"
+      ],
+      "additional_readout_contrast_interval": [
+        "99/100",
+        "1"
+      ],
+      "additive_probability_error_interval": [
+        "-1/1000",
+        "1/1000"
+      ],
+      "failure_semantics": "heralded preparation failure before interrogation; successful preparation satisfies the candidate state and calibration contract; not arbitrary selective mid-protocol loss",
+      "flagged_startup_failure_probability_interval": [
+        "0",
+        "1/100"
+      ],
+      "phase_error_interval": [
+        "-1/100",
+        "1/100"
+      ],
+      "prepared_candidate_is_conditional_on_success": true
+    },
+    "calibration_intervals_cover_both_fixed_sign_labels": true,
+    "complete_record_probabilities": {
+      "flagged_failure": "f",
+      "minus": "(1-f)*(1-p)",
+      "plus": "(1-f)*p",
+      "these_three_entries_are_correlated": true
+    },
+    "dual_smearing": "J_lambda=lambda^-3*J",
+    "equivalent_normal_clock_gain": "g_physical=lambda*gamma=5, multiplying (w/a_lambda)*Z*integral F*Phi",
+    "equivalent_unit_normalized_smearing": "J_normalized_lambda=lambda^-4*J with gain g_physical=5",
+    "exact_nonlinear_semiclassical_solution_proved": false,
+    "fixed_background_instrument_field_energy": {
+      "bound_formula": "g_physical^2*norm(F)^2/(2*lambda^3*(3*cos(1/2))^(3/2))",
+      "extends_mean_or_geometric_response_certificate_past_3_over_16": false,
+      "full_field_and_regular_zero_mode_included": true,
+      "gain_upper": "201/40",
+      "new_nonselective_field_energy_upper": [
+        "1739831035004715637096335600234017073559492171867938736383060850927522850235837/121416805764108066932466369176469931665150427440758720078238275608681517825325531136",
+        "1739831035004715637096335600234017073559492171867938736383060850927522850235837/121416805764108066932466369176469931665150427440758720078238275608681517825325531136"
+      ],
+      "pointer_initial_Z_mean": "0",
+      "pointwise_geometric_feedback_certified": false,
+      "probe_and_drive_stress_included": false,
+      "proof": "Etilde=a_lambda^3*E; on the contracting interval d sqrt(2*Etilde)/deta <= abs(g)*w*norm(F)",
+      "readout_eta": "1/4",
+      "retarded_support_chi_at_readout": "83/800",
+      "retarded_support_chi_plus_eta_at_readout": "283/800",
+      "within_original_inner_conformal_patch": true
+    },
+    "fixed_sample_theorem": {
+      "calibration_preparation_drive_and_geometry_costs_included_in_256": false,
+      "certified_minimum_distance_to_threshold": "3/20",
+      "decision": "old if empirical plus frequency >=3/10; new otherwise",
+      "decision_threshold": "3/10",
+      "independent_fresh_launches": 256,
+      "launches_actually_executed": 0,
+      "per_hypothesis_error_upper": "602804347818697469900427594547194407096068994368731277864939564925903372292179/60708402882054033466233184588234965832575213720379360039119137804340758912662765568",
+      "score": "1 for plus; 0 for minus or flagged failure; keep all three raw labels",
+      "two_separate_arms_if_both_candidates_tested": 512
+    },
+    "ideal_X_Kraus": "cos(gamma*Phi), -i*sin(gamma*Phi); each CP branch is parity covariant",
+    "ideal_X_distinguishes": "old amplitude law versus new sign law; not the two internal signs of the new law",
+    "ideal_X_effects": "(I +/- cos(2*gamma*Phi(J_lambda)))/2 are parity even",
+    "ideal_success_probability": "[1+visibility*Re(chi(theta))]/2",
+    "lambda": 8192,
+    "mean_equation_certificates_reused_by_exact_two_point_identity": {
+      "exact_correlated_source": {
+        "M2_formula": "27*lambda^4-54*lambda^2*Qeff0",
+        "M2_interval": [
+          "1563188030651159714105025627189437635976479747006818029804112516468594411512917/12855504354071922204335696738729300820177623950262342682411008",
+          "6252772535628203293102395460435914348631281440643555989406117011037188110750037/51422017416287688817342786954917203280710495801049370729644032"
+        ],
+        "Qeff0_and_M2_are_correlated": true,
+        "density_bound_from_conservation": "2824224608794790878677669557446250034948671027726916131793406952873067365079603/3794275180128377091639574036764685364535950857523710002444946112771297432041422848",
+        "density_bound_from_direct_stress": "275124833440682539662260078665028905752549113780356450395788441940870019042571/948568795032094272909893509191171341133987714380927500611236528192824358010355712",
+        "initial_density_defect": "0",
+        "initial_momentum_defect": "0",
+        "uniform_density_relative_defect_upper": "275124833440682539662260078665028905752549113780356450395788441940870019042571/948568795032094272909893509191171341133987714380927500611236528192824358010355712",
+        "uniform_focusing_relative_defect_upper": "5829173272233285437221699326524234229247667789829109482125729478652100845320699/948568795032094272909893509191171341133987714380927500611236528192824358010355712",
+        "uniform_pressure_relative_defect_upper": "240016335994713116762755596119082375117063771307667515396949265340286805856669/29642774844752946028434172162224104410437116074403984394101141506025761187823616"
+      },
+      "explicit_rational_source": {
+        "M2": "429686555411453073482635766351305649630645042436307099806171689623211932876934504958700221/3533694129556768659166595001485837031654967793751237916243212402585239552",
+        "Qhat": "26698022317975541277631390650230227743401948197335644043941202884168218308574142969/474284397516047136454946754595585670566993857190463750305618264096412179005177856",
+        "initial_Einstein_nn_relative_abs_upper": "3171052829200408677335422056635511659505054010737106370400991265058641711988737/1942668892225729070919461906823518906642406839052139521251812409738904285205208498176",
+        "initial_density_defect_interval": [
+          "-6342105658400817354670844113271023319010108021474212740801982530117283423977473/521481209941628438084722096232800809229175908778479680162851955034721612739414196782949728256",
+          "3171052829200408677335422056635511659505054010737106370400991265058641711988737/260740604970814219042361048116400404614587954389239840081425977517360806369707098391474864128"
+        ],
+        "is_exact_initial_constraint_solution": false,
+        "uniform_density_relative_defect_upper": "273576467801424527612779892113937347325056411626676222675866082924728104144139/948568795032094272909893509191171341133987714380927500611236528192824358010355712",
+        "uniform_pressure_relative_defect_upper": "239967949568486303886209340289360763916204624365365008280701691621032371016093/29642774844752946028434172162224104410437116074403984394101141506025761187823616"
+      }
+    },
+    "mean_phi_window_interval": [
+      "140683951911717239157547490150221636292971917560420772807581207436600779666715/463168356949264781694283940034751631413079938662562256157830336031652518559744",
+      "4502517238469248714902737364268103255055244327661174247620764968591176673936923/14821387422376473014217086081112052205218558037201992197050570753012880593911808"
+    ],
+    "new_all_launch_plus_interval": [
+      "4968894390193375675625111276199696196751440525432308432980286573811614351518381/7588550360256754183279148073529370729071901715047420004889892225542594864082845696",
+      "949059102248003361453369192380613970680574290329347844347190466381720019155027/7410693711188236507108543040556026102609279018600996098525285376506440296955904"
+    ],
+    "new_aperture_and_gain_are_declared_not_old_probabilities_reused": true,
+    "new_success_plus_interval": [
+      "2509542621309785694760157210201866766036081073450660824737518471622027450261809/3794275180128377091639574036764685364535950857523710002444946112771297432041422848",
+      "949059102248003361453369192380613970680574290329347844347190466381720019155027/7410693711188236507108543040556026102609279018600996098525285376506440296955904"
+    ],
+    "nominal_gain_gamma": "5/lambda relative to dual smearing J_lambda=lambda^-3*J",
+    "odd_quadrature_access": "Y reads sin(2*gamma*Phi); nonzero phase offset can also add an odd component",
+    "old_all_launch_plus_interval": [
+      "429561639615826159918890519228035235985018080897265583950062774268568733784777/926336713898529563388567880069503262826159877325124512315660672063305037119488",
+      "3630489400772542137396051472910829241529583589195050515589377734904416031225215/7410693711188236507108543040556026102609279018600996098525285376506440296955904"
+    ],
+    "old_success_plus_interval": [
+      "108475161519148020181538009906069504036620727499309490896480498552668872167873/231584178474632390847141970017375815706539969331281128078915168015826259279872",
+      "3630489400772542137396051472910829241529583589195050515589377734904416031225215/7410693711188236507108543040556026102609279018600996098525285376506440296955904"
+    ],
+    "physical_local_detector_and_drive_stress_constructed": false,
+    "probe_initial_state": "+X",
+    "reference_variance_includes_infinite_field": true,
+    "reference_visibility_lower": "5626892992158935725482058220444931668229762025147468602050718441130349381579141/7410693711188236507108543040556026102609279018600996098525285376506440296955904",
+    "same_source_mean_certificate_holds_in_each_sign_branch": true,
+    "source_amplitude_ratio": [
+      "3705340723378544489997236830662571668456822251765851433770386872463855565303105/3705346855594118253554271520278013051304639509300498049262642688253220148477952",
+      "1852673385843448094756370818278048421078131812982703197955965315894098752614023/1852673427797059126777135760139006525652319754650249024631321344126610074238976"
+    ],
+    "source_mean_certificates_apply_before_or_without_interrogation": true,
+    "source_phase": "theta=10*(actual_gain/nominal_gain)*sqrt(M2/(27*lambda^4))*mu",
+    "source_phase_interval": [
+      "5599212019576810135582701698808735820419398618972128242607297122498180226078795/1852673427797059126777135760139006525652319754650249024631321344126610074238976",
+      "5656287152740913925608998213004166082313738879123737101322784295437282253427483/1852673427797059126777135760139006525652319754650249024631321344126610074238976"
+    ]
+  },
+  "reference_variance": {
+    "all_nonzero_modes_variance_upper": [
+      "5172232081867969117526675872911891945953548348730520882279244312588181620607443/14134776518227074636666380005943348126619871175004951664972849610340958208",
+      "5172232081867969117526675872911891945953548348730520882279244312588181620607443/14134776518227074636666380005943348126619871175004951664972849610340958208"
+    ],
+    "amplitude_bound": "|u_k|^2 <= exp(2*r)/(2*a^2*sqrt(k^2-1))",
+    "aperture_diameter_less_than_window_width": true,
+    "base_smearing": "J=w(eta)*F(chi)/a(eta)^4",
+    "convenient_log_variation_cap": "1/8",
+    "coordinate_support_within_inner_domain": true,
+    "full_base_smeared_field_variance_upper": [
+      "5172232215602740163001808648306458288466901017858496818421847123173252837125011/14134776518227074636666380005943348126619871175004951664972849610340958208",
+      "5172232215602740163001808648306458288466901017858496818421847123173252837125011/14134776518227074636666380005943348126619871175004951664972849610340958208"
+    ],
+    "new_mode_integrations": 0,
+    "preparation_total_log_variation_upper": [
+      "2009473710576502284161270078787019089112228637462930751662278300575114941533379/29642774844752946028434172162224104410437116074403984394101141506025761187823616",
+      "2009473710576502284161270078787019089112228637462930751662278300575114941533379/29642774844752946028434172162224104410437116074403984394101141506025761187823616"
+    ],
+    "regular_zero_mode_variance_upper": [
+      "1121848570270241062600737062377338250307068291961733327077696413087449000672211/118571099379011784113736688648896417641748464297615937576404566024103044751294464",
+      "1121848570270241062600737062377338250307068291961733327077696413087449000672211/118571099379011784113736688648896417641748464297615937576404566024103044751294464"
+    ],
+    "scale_squared_lower": "27/10",
+    "spatial_L2_squared_upper": [
+      "18396229467674573553421465969100437742992066124347247609853893352191834968521/6901746346790563787434755862277025452451108972170386555162524223799296",
+      "18396229467674573553421465969100437742992066124347247609853893352191834968521/6901746346790563787434755862277025452451108972170386555162524223799296"
+    ],
+    "spatial_radius_chi": "1/100",
+    "support_reports_reach_center_before_eta": "1/4",
+    "these_coordinate_checks_prove_a_physical_detector": false,
+    "time_window_eta": [
+      "5/32",
+      "3/16"
+    ],
+    "uses_Parseval_without_mode_cutoff": true,
+    "w_and_F": "nonnegative C-infinity compactly supported; integral w deta=integral F dOmega3=1",
+    "zero_mode_J_upper": "25/216"
+  },
+  "reviewed_base": "d6ec9eda409ba78d1d7993d7648ba26b5a34374d",
+  "schema": "ueot-response-preparation/1",
+  "source_sha256": {
+    "physics/qm/null_source/timelike/response/preparation/check.py": "fd2711b46fa066fd9b6986ce5d28afa9a2baa36eb838d692e7a4439e59990036"
+  },
+  "status": "ZERO_CLASSICAL_MIXTURE_NOISE_WITH_PRESERVED_MEAN_AND_CERTIFIED_CHANGED_READOUT",
+  "symbolic": {
+    "complete_record_normalization": "failure+(1-failure)*p+(1-failure)*(1-p)=1",
+    "finite_parity_algebra_sanity_degrees": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "fixed_mean_second_moment": {
+      "admissible_mean": "-1 <= m <= 1",
+      "minimum_Var_Y_squared": "0",
+      "minus_weight": "(1-m)/2",
+      "plus_weight": "(1+m)/2",
+      "proof": "E[(Y^2-1)^2]>=0; equality iff Y^2=1 a.s.; first moment fixes both weights",
+      "zero_variance_support_subset": [
+        "-1",
+        "1"
+      ]
+    },
+    "moments": {
+      "-1": {
+        "new_centered_third_moment": "3/4",
+        "new_minus_probability": "3/4",
+        "new_moments_0_through_4": [
+          "1",
+          "-1/2",
+          "1",
+          "-1/2",
+          "1"
+        ],
+        "new_plus_probability": "1/4",
+        "old_moments_0_through_4": [
+          "1",
+          "-1/2",
+          "1",
+          "-5/4",
+          "7/4"
+        ]
+      },
+      "1": {
+        "new_centered_third_moment": "-3/4",
+        "new_minus_probability": "1/4",
+        "new_moments_0_through_4": [
+          "1",
+          "1/2",
+          "1",
+          "1/2",
+          "1"
+        ],
+        "new_plus_probability": "3/4",
+        "old_moments_0_through_4": [
+          "1",
+          "1/2",
+          "1",
+          "5/4",
+          "7/4"
+        ]
+      }
+    },
+    "new_X_second_moment": "3/4",
+    "new_characteristic": "cos(t)+i*s*sin(t)/2",
+    "old_X_symmetry_preserved": false,
+    "old_and_new_full_states_equal": false,
+    "old_and_new_one_and_two_point_functions_equal": true,
+    "old_characteristic": "exp(i*s*t/2)*cos(sqrt(3)*t/2)",
+    "parity_theorem": {
+      "actual_gravity_dynamics_selected_by_this_theorem": false,
+      "even_algebra_restriction": "all biased +/-f mixtures equal omega_+ on gamma(A)=A",
+      "finite_adaptive_instrument_condition": "every Heisenberg branch map commutes with gamma with record labels fixed; all terminal accessible effects are even",
+      "odd_field_access_allowed_in_this_conclusion": false,
+      "record_conclusion": "all finite adaptive complete record probabilities agree for +f, -f and any sign weights",
+      "reference_assumption": "gamma-invariant centered quasifree Hadamard reference",
+      "state_relation": "omega_- = omega_+ composed with gamma",
+      "stress_n_point_scope": "products of separately smooth compactly smeared Wick stress tensors in their common domain"
+    },
+    "stress_variance_removed_exact": "(3/4)*A_f^2 for centered quasifree reference"
+  }
+}
