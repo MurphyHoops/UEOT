@@ -63,6 +63,8 @@ For any finite list of tests, the whole Gram matrix, symmetric covariances, and 
 ## P3. The density residual is controlled without pretending finite K is on shell
 
 For the \(\lambda=1\) boundary candidate, the finite-mode construction fixes the initial density defect to zero and has zero initial geometry and first-derivative traces. Let \(r_K=e_K-d_K^{\rm source}\) denote the linear density defect; the superscript distinguishes the source density from ADVANCED_CUTOFF's scalar norm bound \(d_K\).
+At finite cutoff the pressure Green function has diagonal traces $G=G_t=G_{tt}=0$, $G_{ttt}=1/\gamma_{4,K}$. Thus $v_0=G(t,0)$ has zero initial traces through order two, while $v_1=G_s(t,0)$ has $v_1(0)=v_1'(0)=0$. The forced solution has four zero initial traces; both the original $Q,D$ boundary combination and the charge multiple of $v_0$ therefore preserve $w_K(0)=w_K'(0)=0$ (ACTION_LIFT, L6–L8). These identities are used at finite K before combining the potentially divergent blocks.
+
 The actual finite-mode Ward identity gives
 \[
 r_K'+hr_K=(2S_K-E_K)w_K',\qquad r_K(0)=0.

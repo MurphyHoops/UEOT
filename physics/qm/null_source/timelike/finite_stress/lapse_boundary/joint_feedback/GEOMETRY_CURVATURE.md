@@ -147,7 +147,7 @@ Thus for **every fixed ordering**, the particular normal family that makes the s
 
 ## G4. The mismatch survives on a positive interval
 
-The two actual histories have the same initial mean and velocity. Let their total third-order remainder constant be \(C_\kappa<\infty\) on a common interval \(0\le t\le T_0\). For
+For the actual core preparations covered by POSITIVE_WINDOW, the two histories have the same initial mean and velocity. A general normal state with only a separately justified initial force identity is not automatically covered by the third-order remainder claim. Let their total third-order remainder constant be \(C_\kappa<\infty\) on a common interval \(0\le t\le T_0\). For
 \[
 0<t\le\min\{T_0,d_\kappa/(4C_\kappa)\}
 \]

@@ -42,9 +42,9 @@ The joint state is \(|\psi_g\rangle\langle\psi_g|\otimes\sigma\). It is normal, 
 The identities
 \[
 (1-w)m+wR=h,\qquad
-\langle\kappa\rangle'_u=2\alpha b_{\rm geo}\langle\kappa\rangle=h'_\eta/h
+\langle\kappa\rangle'_u=2\alpha\langle B\rangle=2\alpha b_{\rm geo}=h'_\eta/h
 \]
-hold exactly. No parameter is selected again at later times.
+hold exactly, because the phase contributes $\theta'/\kappa=b_{\rm geo}$ to $B$, while its kinetic-form cost is $b_{\rm geo}^2\langle\kappa\rangle=b_{\rm geo}^2h$. No parameter is selected again at later times.
 
 Let \(I_1=\langle\kappa^{-1}\rangle\). Evenness gives
 \[
@@ -141,6 +141,8 @@ q_\eta[\psi_g]>\frac{h^{-3}}{12\delta},
 \operatorname{Var}(\kappa^{-1})\le\frac{10\delta}{h^2}.                  \tag{N3}
 \]
 For completeness, the lower \(R_*\) bound follows by combining \(F(R_*)\in(-1,1)\) with the negative central form term: the positive source and linear terms are negligible after multiplication by \(\delta h^3\), so the positive cubic term must exceed a fixed multiple of \(1/(\delta h^3)\). Since \(T_3<2h^3+4\delta hR_*^2\), the displayed conservative constant follows. The same balance gives the stated \(T_3\) bound. The lower variance follows from \(w(R_*-h)^2\), using \(w>\delta h/R_*\), \(R_*\gg h\), and the lower radius. Upper bounds use \(R_*\le R_{\rm up}\); inverse variance uses the central width \(\epsilon m\), the shift \(m-h=-\delta h\), and the remote weight.
+
+For explicit cost margins, $Z(h)=h^3+2e^{60}h^2+e^{30}h^4+2h^6<1$ and $q_c>10$. The root equation gives $4\delta hR^2>q_c/h^3$, hence $R>(1/2)\sqrt{q_c/\delta}h^{-2}>h^{-2}/(5\delta)$. It also gives $d_3T_3>3q_c/h^3-1-2e^{60}/h-e^{30}h$, which proves the displayed cubic cost. The remote conditional second moment is below $(3/2)R^2$, yielding the constant $30$ in the variance upper bound. For the inverse variance, $h^2\operatorname{Var}(\kappa^{-1})\le\mathbb E(h/\kappa-1)^2$; its central contribution is at most $\delta/(1-\sqrt\delta)^4<2\delta$, and the remote one is below $w<\delta/4$. This is stronger than the stated $10\delta$ bound.
 
 Thus making the source first-jet error arbitrarily small drives large higher geometric moments. This family is not a controlled small-fluctuation geometry. Although the geometry probability measures converge weakly to a delta mass at \(h\) as \(\delta\downarrow0\), no trace-one normal geometry density has that \(\kappa\) distribution; there is no trace-norm normal limit with that law. A decreasing rare-tail probability does not control the high-moment budget.
 

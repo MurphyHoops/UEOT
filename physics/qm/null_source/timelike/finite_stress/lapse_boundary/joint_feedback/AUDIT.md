@@ -18,3 +18,7 @@ No new immutable checkpoint has yet been reviewed at the time of this initial re
 ## First immutable checkpoint
 
 Checkpoint `8761c84586dbf72a91687b624b412d88119b6f85` was actually read by three native agents. The 17 agent-file read records and their Git blob identities are in `audit_checkpoint1.json`; root checked every identity against Git, with zero mismatch. Three presentation/domain clarifications were incorporated afterward and require the next checkpoint review. No agent executed science, and these are not external human peer reviews.
+
+## Second immutable checkpoint
+
+At `7fdf76a16b465fa39eca9e46c560a88508e83ff0`, agents actually read 14 assigned file records; root verified their blobs with zero mismatch (`audit_checkpoint2.json`). A and B independently found the extra h in the near-recovery velocity display. The preparation parameter and kinetic budget were already correct; the equation, test label and current check were corrected. The finite Green initial traces, actual cost margins and core-only positive-window scope were also made explicit. This correction is retained in history, not counted as a new physics result.

@@ -2,7 +2,7 @@
 import ast,json
 from pathlib import Path
 from common import *
-SCIENCE=['weighted_evolution', 'raw_ward', 'pressure_witness', 'positive_window', 'closure_counterexample', 'near_recovery', 'geometry_curvature', 'advanced_cutoff', 'prepared_limit']
+SCIENCE=['weighted_evolution', 'raw_ward', 'pressure_witness', 'positive_window', 'closure_counterexample', 'near_recovery', 'geometry_curvature', 'advanced_cutoff', 'prepared_limit', 'interior_lapse', 'endpoint_normality', 'matter_domain', 'boundary_interface', 'spectral_preparation']
 allowed={"common","sympy","math","json","fractions","itertools","mpmath"}
 for name in SCIENCE:
     src=(HERE/(name+".py")).read_text();tree=ast.parse(src)

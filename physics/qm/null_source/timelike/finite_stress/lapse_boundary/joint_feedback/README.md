@@ -17,3 +17,7 @@ See [CONTRACT.md](CONTRACT.md), [SESSION.md](SESSION.md), [REVIEW.md](REVIEW.md)
 ## Subsequent closures in the same session
 
 NEAR_RECOVERY constructs arbitrary source first-jet tolerance with a normal state and the complete initial budget. GEOMETRY_CURVATURE then rejects recovery of the next geometry derivative, including an ordering-range class theorem and an all-fixed-ordering packet corollary. ADVANCED_CUTOFF independently proves the advanced strong limit; PREPARED_LIMIT carries the combined source/boundary readouts through it. These are distinct finite-K joint-evolution and fixed-classical-background full-field response statements. They do not yet make a single full-field normal joint theory.
+
+## Further closures after review
+
+INTERIOR_LAPSE closes all four homogeneous interior lapse/scale response and noise blocks on the same external classical history. ENDPOINT_NORMALITY proves fixed-frame normality escape, a quadratic preparation resource frontier, the exact pure/disjoint-mixture optimum, and a sharp leading result for commuting finite-rank mixed targets; general noncommuting mixed optimality remains open. MATTER_DOMAIN proves unselected original scalar-clock boundary completions change a common physical Dirac record. BOUNDARY_INTERFACE provides complete domain coordinates and the actual unresolved radial gate. SPECTRAL_PREPARATION derives exact success/error bounds and a smooth lift through the original rigging, conditional on an available reference and selected domain. None selects missing physical inputs for free.

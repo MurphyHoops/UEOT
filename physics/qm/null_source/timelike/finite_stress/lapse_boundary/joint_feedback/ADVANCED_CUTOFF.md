@@ -52,7 +52,7 @@ The shift derivative of the normalized WKB mode is
 \[
 \partial_\zeta W/W=-\Omega'/(2\Omega)-i(\Omega-\omega),
 \]
-so it is \(O(\omega^{-3/2})\), and its first time derivative is \(O(\omega^{-1/2})\).
+so \(\partial_\zeta W=O(\omega^{-3/2})\), and its first time derivative is \(O(\omega^{-1/2})\).
 The zero-incoming Duhamel equation for \(e=v-W\), and then for \(\partial_\zeta e\), gives \(e,\partial_\zeta e=O(\omega^{-15/2})\) and their first time derivatives \(O(\omega^{-13/2})\).
 
 Substituting in the physical density/pressure and the **same frozen \(k\)-AE subtractors** gives a per-mode remainder and its shift derivative bounded by \(Ck^{-5}\). The degeneracy is \(k^2\). The zero-mode momentum, low occupation, and \(U_0\) are not reselected, and their means transform by the same shift. Therefore, for some finite stated-seminorm constant \(C_{\rm mean,1}\),
@@ -89,7 +89,7 @@ Here \(\mu<5\varepsilon\).
 The integration identity is explicitly
 \[
 D T_R^{\rm adv}f=T_R^{\rm adv}f'
- +T_{D_+R}^{\rm adv}f-R(T,t)f(T).
+ +T_{D_+R}^{\rm adv}f-R^{\rm adv}(t,T)f(T).
 \]
 The terminal zero traces of \(D_Uz\) remove the displayed boundary term and the one in its second derivative. The static advanced \(K_{0,K}\) map from terminal-zero \(H^1\) to \(Y_-\) is independently uniformly bounded by \(3/\sqrt\gamma\) times the derivative norm, and converges strongly by its reflected multiplier.
 
