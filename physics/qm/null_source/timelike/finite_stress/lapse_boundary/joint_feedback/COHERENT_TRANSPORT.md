@@ -168,7 +168,7 @@ A dynamics compatible with T6 would require, for all bounded local \(A\),
  =j_{LK}(\bar U_K^\dagger A\bar U_K).
 \]
 Its common-core derivative requires
-\([\bar H_L,jA]=j[\bar H_K,A]\). JOINT_CUTOFF J4 directly disproves this exact condition for the original coefficients. J10–J11 additionally reject the unchanged actual-source product-core generator limit. CORRELATED_GAUSSIAN subsequently constructs a different, changed-source normal bulk state limit; its original covariant constraint form still diverges. Thus that positive state construction closes a kinematic question without supplying compatible physical dynamics.
+\([\bar H_L,jA]=j[\bar H_K,A]\). JOINT_CUTOFF J4 directly disproves this exact condition for the original coefficients. J10–J11 additionally reject the unchanged actual-source product-core generator limit. CORRELATED_GAUSSIAN subsequently constructs a different, changed-source normal bulk state limit; its original covariant derivative form still diverges. Thus that positive state construction closes a kinematic question without supplying compatible physical dynamics.
 
 A renormalized propagator limit can still be a different mathematical question, but it needs uniform estimates, a declared topology, transported adjoints and a common preparation/domain. It does not follow from T6, the finite-\(K\) unitary theorem, or the fixed-background CTP limit. The latter retains an external classical geometry and is not already a solution of the quantum joint evolution.
 

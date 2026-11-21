@@ -33,6 +33,7 @@ sumP=s.summation(k**3-beta*k/2,(k,1,K))-beta**2*H/8
 require(s.simplify(pot-(D0/kap+D1*kap+D3*kap**3-sumP/kap))==0,"Exact original counterterm cancellation")
 x=s.symbols("x",positive=True)
 require(s.simplify(s.diff(s.sqrt(1-x),x,3)+3/(8*(1-x)**s.Rational(5,2)))==0,"Controlled source tail third derivative")
+require(s.simplify(s.diff((1-x)**(-s.Rational(1,2)),x,2)-3/(4*(1-x)**s.Rational(5,2)))==0,"Direct differentiated source tail bound")
 shell=k*k*(k*k-1)/(k*k-beta)**2
 positive=((2*beta-1)*k*k-beta*beta)/(k*k-beta)**2
 require(s.simplify(shell-1-positive)==0,"Metric shell excess")
@@ -71,7 +72,7 @@ rr,nu,bp=s.symbols("rare_phase_probability target_velocity phase",nonzero=True,r
 bpvalue=g*nu/rr
 require(s.simplify((rr*bp/g).subs(bp,bpvalue)-nu)==0,"Exact rare-phase initial velocity")
 require(s.simplify((rr*bp**2*m/(2*g)).subs(bp,bpvalue)-g*nu**2*m/(2*rr))==0,"Rare-phase complete mean shift")
-require(s.simplify((-2/(4*g**2)*rr*bp**2*I1).subs(bp,bpvalue)+nu**2*I1/(2*rr))==0,"Rare-phase force correction")
+require(s.simplify((-2/(4*g**2)*rr*bp**2*I1).subs(bp,bpvalue)+nu**2*I1/(2*rr))==0,"Rare-phase kinetic force correction")
 finish("correlated_gaussian.py",dict(
  changed_complete_bare_source=True,
  original_counterterms_and_U0_retained=True,

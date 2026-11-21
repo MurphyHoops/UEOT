@@ -1,33 +1,61 @@
-# Joint feedback and the remaining physical interfaces
+# Joint feedback, normal preparations and the remaining physical limit
 
-Fixed predecessor: `42d0c223173fa81ce0a75d7dbb5f39ef32fc2dfd`.
+**Physical unification: OPEN.** This cohort continues the fixed predecessor
+`42d0c223173fa81ce0a75d7dbb5f39ef32fc2dfd` on the original branch.
+The user-facing synthesis is [UNIFICATION_PROGRESS.md](UNIFICATION_PROGRESS.md).
+[CONTRACT.md](CONTRACT.md), [SESSION.md](SESSION.md), [AUDIT.md](AUDIT.md) and
+[verification.json](verification.json) record the accepted scope, actual timing,
+immutable review and execution.
 
-This cohort continues the original finite-mode geometry–matter evolution, its actual incoming source, and the actual-background response. Physical unification is **OPEN**. The current contract and session record distinguish each new closure from reused results and from the full normal geometry–source–apparatus problem.
+## What this cohort establishes
 
-## First closure: actual joint pressure and the information it requires
+| Connected problem | Proof and independent check entries | Scope |
+|---|---|---|
+| Same-unitary source and actual pressure | [WEIGHTED_EVOLUTION](WEIGHTED_EVOLUTION.md), [RAW_WARD](RAW_WARD.md), [PRESSURE_WITNESS](PRESSURE_WITNESS.md) | Original finite cutoff, explicit higher-energy domains and actual incoming source |
+| Initial data, source tolerance and geometry force | [POSITIVE_WINDOW](POSITIVE_WINDOW.md), [CLOSURE_COUNTEREXAMPLE](CLOSURE_COUNTEREXAMPLE.md), [NEAR_RECOVERY](NEAR_RECOVERY.md), [GEOMETRY_CURVATURE](GEOMETRY_CURVATURE.md) | Candidate-dependent positive windows; reduced initial data do not close feedback; stated recovery classes rejected |
+| Actual-background response and preparation | [ADVANCED_CUTOFF](ADVANCED_CUTOFF.md), [PREPARED_LIMIT](PREPARED_LIMIT.md), [INTERIOR_LAPSE](INTERIOR_LAPSE.md) | Independent advanced strong limit, combined source/boundary GNS readouts, all four homogeneous interior lapse/scale blocks |
+| Canonical endpoint and sharp normal-target resources | [ENDPOINT_NORMALITY](ENDPOINT_NORMALITY.md), [MIXED_RESOURCE](MIXED_RESOURCE.md) | Normal finite-second-moment targets, arbitrary correlated inputs and trace-convergent approximants; sharp incoming-excitation coefficient F_Q/16 |
+| Original scalar-clock domain and preparation | [MATTER_DOMAIN](MATTER_DOMAIN.md), [BOUNDARY_INTERFACE](BOUNDARY_INTERFACE.md), [SPECTRAL_PREPARATION](SPECTRAL_PREPARATION.md) | Observable boundary-domain ambiguity; actual radial gate remains open; conditional QND preparation success/error frontier |
+| Joint cutoff and a concrete correlated candidate | [JOINT_CUTOFF](JOINT_CUTOFF.md), [CORRELATED_GAUSSIAN](CORRELATED_GAUSSIAN.md) | Original generator UV tests; positive normal bulk state construction; exact mean/current repair still fails stated second-moment and initial-curvature gates |
 
-- [WEIGHTED_EVOLUTION.md](WEIGHTED_EVOLUTION.md): higher source-energy domains of the same complete unitary; a trace-class weighted source equation and the operator-valued geometry current.
-- [RAW_WARD.md](RAW_WARD.md): exact original raw source energy conservation and pressure feedback, with its unbounded-observable cutoff argument.
-- [PRESSURE_WITNESS.md](PRESSURE_WITNESS.md): an actual incoming coefficient, with a controlled Wiener remainder, and a pressure-row obstruction for all stated extensions with the previous two-packet geometry law.
-- [CLOSURE_COUNTEREXAMPLE.md](CLOSURE_COUNTEREXAMPLE.md): two actual normal preparations with the same source reductions and matched initial geometry readings but different next pressure response.
-- [POSITIVE_WINDOW.md](POSITIVE_WINDOW.md): complete-generator, candidate-dependent positive-time bounds; no numerical experimental time radius is asserted.
+There are **17 scientific check entries and one scope/source-binding entry**.
+They check the finite algebra, explicit bounds and actual source identities they implement.
+Analytic domain, continuum and positivity proofs are stated in the pages and
+independently reviewed; the checks are not machine formal proofs or external peer review.
 
-See [CONTRACT.md](CONTRACT.md), [SESSION.md](SESSION.md), [REVIEW.md](REVIEW.md), and [REFERENCES.md](REFERENCES.md) for scope and verification responsibilities. Subsequent closures in this working segment will be added only after their proofs and checks are integrated.
+## The final candidate is a positive construction with a precise failure
 
-## Subsequent closures in the same session
+The changed-source conditional Gaussian family has a normal bulk joint-state limit
+in an explicitly fixed representation. Its source-plus-scalar-counterterm mean converges,
+but the original covariant geometry form grows as K/4. A rare high excitation and rare
+geometry phase mixture can simultaneously retain that normal limit, the chosen kappa
+law, a specified initial kappa rate and one exact clock mean.
 
-NEAR_RECOVERY constructs arbitrary source first-jet tolerance with a normal state and the complete initial budget. GEOMETRY_CURVATURE then rejects recovery of the next geometry derivative, including an ordering-range class theorem and an all-fixed-ordering packet corollary. ADVANCED_CUTOFF independently proves the advanced strong limit; PREPARED_LIMIT carries the combined source/boundary readouts through it. These are distinct finite-K joint-evolution and fixed-classical-background full-field response statements. They do not yet make a single full-field normal joint theory.
+The resulting clock variance is at least order K²/log K, while its actual initial
+geometry curvature has leading coefficient -4 I3 K/(log K)². These are initial-state
+and jet statements, with a profile-dependent sufficiently large cutoff; they do not
+provide a uniform positive-time window or a full-constraint residual theorem.
+The preparations change the old complete bare source and are not autonomous devices.
 
-## Further closures after review
+## Canonical covariance and physical preparation are distinct
 
-INTERIOR_LAPSE closes all four homogeneous interior lapse/scale response and noise blocks on the same external classical history. ENDPOINT_NORMALITY proves fixed-frame normality escape, a quadratic preparation resource frontier, the exact pure/disjoint-mixture optimum, and a finite-cutoff leakage bound. MIXED_RESOURCE then closes the general mixed leading-order gap: arbitrary normal finite-second-moment targets have sharp incoming-excitation coefficient F_Q/16, including a lower bound for trace-convergent approximate outputs. MATTER_DOMAIN proves unselected original scalar-clock boundary completions change a common physical Dirac record. BOUNDARY_INTERFACE provides complete domain coordinates and the actual unresolved radial gate. SPECTRAL_PREPARATION derives exact success/error bounds and a smooth lift through the original rigging, conditional on an available reference and selected domain. None selects missing physical inputs for free.
+[COHERENT_TRANSPORT.md](COHERENT_TRANSPORT.md) is a synthesis, not another automatic
+science entry. It keeps both CTP endpoint states, propagators and final pairing,
+derives the relevant connection/contact identities on their domains, and constructs
+a coherent transported observable algebra. Pure representation transport preserves
+an existing residual spectral law; it supplies no free new constraint charge.
 
-## Joint-limit review after the resource closure
+The original complete cutoff dynamics does not exactly intertwine that kinematic net.
+A renormalized joint propagator, its physical state/domain, full constraints and
+source/controller/probe budget still require a common construction.
 
-[JOINT_CUTOFF.md](JOINT_CUTOFF.md) retains the original complete generator and counterterms, derives a conditional logarithmic geometry-current budget, and rejects its unchanged actual-source product-core UV limit by explicit pair and expectation coefficients. [COHERENT_TRANSPORT.md](COHERENT_TRANSPORT.md) combines the exact CTP density/propagator/final-pairing transport, legitimate initial contact domains, and a regular transported observable algebra. Its kinematic consistency does not supply the missing complete joint propagator; no propagator nonexistence theorem is claimed.
+## Verification and inheritance
 
-## A changed-source correlated candidate was then constructed and tested
+The independent runner reuses **213 accepted predecessor entries** and verifies
+**782 frozen scientific files** against the fixed predecessor. Only this cohort is
+executed. No predecessor scientific module or old mode/geometry ODE is imported or run.
+Only this directory and the four declared routing files are changed. Core is read-only,
+GI is excluded, and PR 468 remains an open draft.
 
-[CORRELATED_GAUSSIAN.md](CORRELATED_GAUSSIAN.md) gives an exact conditional high-source Gaussian ground family. The original source and scalar counterterms cancel, and a normal bulk joint-state limit is constructed with an explicit fixed relation to the actual bulk Jost Fock reference. Its original covariant geometric form grows as K/4, however, and the complete clock-generator expectation diverges as -K I1/(2 log K). This specific candidate therefore fails the finite original constraint budget even though its normality gate passes. No Hadamard, full-history or propagator nonexistence claim follows.
-
-The subsequent rare-shell mixture in CORRELATED_GAUSSIAN matches one specified clock mean exactly and preserves that normal bulk limit. Its clock variance grows at least K²/log K, and its actual initial geometry curvature has a controlled -4 I3 K/(log K)² leading term. These are initial-state/jet results; no uniform positive-time window or full constraint residual is inferred from them.
+See [REFERENCES.md](REFERENCES.md) for prior mathematical sources and
+[REVIEW.md](REVIEW.md) for what automatic checks and native reviews actually establish.

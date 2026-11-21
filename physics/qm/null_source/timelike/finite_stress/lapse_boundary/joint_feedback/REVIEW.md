@@ -1,7 +1,11 @@
 # Review and executable scope
 
-The current independent automatic entries check the finite algebra and bounds stated in their proof pages. Each JSON binds the exact checker, shared utilities, proof, and actual frozen inputs by SHA-256. The scope entry rejects predecessor imports, verifies all source bindings, and keeps physical unification open.
+This cohort has 17 independent scientific check entries and one scope/source-binding entry. The scripts verify the exact finite algebra, actual input enclosures and inequalities they implement. Each JSON binds its own code, shared utilities, proof page and declared sources by SHA-256. They do not mechanically prove all infinite-dimensional domain and convergence statements; those analytic proofs are written explicitly and independently reviewed.
 
-Only the new cohort is executed. The aggregate runner independently checks the complete inherited inventory, its bytes against the fixed predecessor commit, the parent receipt, and the observed exact-head CI log/artifact identity before and after execution. Four routing files are the sole allowed predecessor changes.
+Only this cohort is executed. The aggregate runner checks 213 inherited results and the complete 782-file frozen inventory against the fixed predecessor, before and after the run. Four routing files are the sole allowed predecessor changes. No old scientific module or mode/geometry ODE is imported or executed.
 
-Three native read-only research agents have crosschecked the working derivations. Immutable-commit source audits will be recorded in AUDIT.md after the checkpoint is available; draft discussions alone are not represented as such audits. Root is the sole writer and executor. There is no external human peer review or machine formal proof.
+Five immutable checkpoints have 78 recorded agent/file identity checks. The fifth includes three explicitly labelled section reads; these are not represented as full-document reviews. Root verifies every recorded blob against Git. Additional working derivation discussions are not counted as immutable source audits. Native agents are not external human peer reviewers, and these results are not machine formal proofs or empirical validation.
+
+The main scope separations are mandatory: fixed-background CTP versus quantum joint dynamics; raw versus bulk normality; reference excitation versus total device energy; a clock-generator variance versus the full constraint residual; finite-cutoff initial jets versus a uniform positive-time limit; and normality versus the original covariant derivative domain. The same-K canonical counterterms must also be retained when comparing geometric momentum.
+
+See AUDIT.md for corrections and actual review records, UNIFICATION_PROGRESS.md for the physical responsibility table, and SESSION.md for the separately measured work interval. Physical unification remains OPEN.

@@ -28,4 +28,4 @@ New work is confined to this `joint_feedback/` directory and four existing routi
 
 ## Status
 
-Work in progress. No new proof, automatic entry, final elapsed time, or unified physical theory is certified by this contract.
+The scoped scientific results are recorded in the 17 proof/check pairs, the source-bound scope entry, and the immutable audits. Physical unification remains OPEN. The actual independently measured session interval is recorded in SESSION.md; neither a check count nor an elapsed-time requirement upgrades a conditional result to a unified physical theory.

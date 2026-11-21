@@ -4,7 +4,7 @@
 
 This page tests the original finite-\(K\) joint evolution after the resource closure in MIXED_RESOURCE. It does not substitute a simplified source or remove the dilation term. On the complete fixed-q, source-connection W-frame clock generator of RELATIONAL_DOMAIN R5 and ALL_SIGN_EVOLUTION,
 \[
-\bar H_K(u)=\alpha_K A_\eta+\kappa^{-1}H_{0,K}(u)+{\cal D}_K
+\bar H_K(u)=\alpha_K A_\eta+\kappa^{-1}H_{0,K}+{\cal D}_K
  +d_{0,K}/\kappa+d_{1,K}\kappa+d_{3,K}\kappa^3,\qquad
 \alpha_K=(2g_K)^{-1}.                                             \tag{J1}
 \]
@@ -118,7 +118,7 @@ v_k=e^{-i\vartheta_k}/\sqrt{2\Omega_k},\quad
 \Omega_k=\omega_k/|F_k|^2,\quad
 c_k=h_i+\Omega_k'/(2\Omega_k).
 \]
-The canonical momentum is the actual raw \(\pi=q'-h_iq\), not the instantaneous \(q'\). The exact Wronskian gives the displayed phase derivative. ACTUAL_UV_BRIDGE U5 bounds the first two derivatives of
+The canonical momentum is the actual raw \(\pi=q'-h_iq\), not the instantaneous \(q'\). The exact Wronskian gives the displayed phase derivative. Here primes on q and Omega are conformal-time derivatives at the accepted slice, not derivatives in the u clock. ACTUAL_UV_BRIDGE U5 bounds the zeroth and first conformal-time derivatives of
 \(|F|^2-1-V/(2\omega^2)\), and consequently
 \[
 \Omega_k=\omega_k+O(\omega_k^{-1}),\qquad

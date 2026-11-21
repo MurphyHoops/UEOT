@@ -1,4 +1,4 @@
-# A correlated Gaussian candidate: normal bulk limit, divergent original constraint form
+# A correlated Gaussian candidate: normal bulk limit, divergent covariant geometry form
 
 ## C1. The candidate after the unchanged-source route fails
 
@@ -119,7 +119,7 @@ A different scalar phase cannot repair this divergence: it adds a positive amoun
 If one restores a prescribed nonzero instantaneous \(\kappa\) rate \(\nu\) using the additional phase
 \(\exp[i(g_K\nu)\kappa^2/2]\) on a real amplitude of mean \(m\), the added form is \((g_K\nu)^2m\), and its energy contribution is \(g_K\nu^2m/2=O(\log K)\). It does not change C7.
 
-This rejects this conditional-ground-state family's finite complete-constraint-form route with the original counterterms. It is not a claim that negative energy alone makes a normal state illegal, or that all other correlated preparations and strong propagator limits are impossible.
+This rejects this conditional-ground-state family's finite covariant clock-generator-form route with the original counterterms. It is not a claim that negative energy alone makes a normal state illegal, or that all other correlated preparations and strong propagator limits are impossible.
 
 ## C5. Nevertheless a normal bulk joint state limit can be constructed
 
@@ -188,7 +188,7 @@ The real-amplitude derivative adds
 \(\sum k^2\kappa^2/(4\Omega_k^4)\); together they are exactly \({\cal G}_K\).
 Replacing the covariant derivative by a bare derivative would delete this divergence and change the original constraint.
 
-The distinction is now explicit: a positive normal bulk joint state limit exists for this candidate, while its prescribed complete constraint form has no finite limit. No Hadamard/microlocal condition for the full joint geometry family, original mean-history recovery, full pressure/force match, momentum constraint, or autonomous preparation is established by normality.
+The distinction is now explicit: a positive normal bulk joint state limit exists for this candidate, while its prescribed covariant geometry form has no finite limit. No Hadamard/microlocal condition for the full joint geometry family, original mean-history recovery, full pressure/force match, momentum constraint, or autonomous preparation is established by normality.
 
 This candidate changes the original complete incoming source and its momentum correlations. Its success at conditional source diagonalization and its normal bulk limit cannot be combined with the earlier old-source \(\Pi_g\), pressure or curvature budgets without recalculation. The next accepted preparation must pass those physical gates and the complete continuum dynamics together.
 
@@ -257,7 +257,13 @@ The ground source-force brace has a uniform bound. Hellmann–Feynman for the ex
 -\frac{d_{1,K}}{\kappa}-3d_{3,K}\kappa
 =-\kappa^{-1}\partial_\kappa {\cal V}_{K,\rm ground}(\kappa).
 \]
-The C2 remainder and its \(\kappa\) derivative have uniformly summable tails on the fixed interval, so this brace is \(O(1)\). A single \(n=1\) high mode adds exactly
+This differentiable remainder is direct, not a derivative of a big-O assertion. For
+\(R_k=k^2\sqrt{k^2-\beta}-P_k\), the second Taylor remainder of \((1-x)^{-1/2}\) gives
+\[
+|\partial_\kappa R_k|
+ \le\frac{3b\,\beta_{\max}^2}{8(1-r)^{5/2}k^3}.
+\]
+Together with C3 and \(a>0\), this makes \(\partial_\kappa(R_k/\kappa)\) uniformly summable. The force brace is therefore \(O(1)\). A single \(n=1\) high mode adds exactly
 \(\omega_K^2/(\kappa^3\Omega_K)\).
 With \(p_K\sim1/(2\log K)\) and \(2\alpha_K\sim-4/\log K\), that addition contributes another
 \(-2K I_3/(\log K)^2\). Consequently, for derivatives in the \(u\) clock at the initial slice,
@@ -277,7 +283,7 @@ For a real fixed profile, the Berry-flat initial \(\kappa\) current is zero. The
 
 The failure of the single global phase in C8 is not a universal current obstruction. A second normal mixture restores the initial current while retaining the C5 state limit.
 
-Take the fixed profile \(g\) real. At the initial slice choose once
+Take the fixed profile \(g\) real. Here \(B=\kappa^{-1/2}P_\kappa\kappa^{-1/2}\) is the original symmetric current form, distinct from the scalar counterterm and Berry coefficient. At the initial slice choose once
 \[
 r_K=(\log K)^{-2},\qquad b_K=g_K(u_i)\nu/r_K,\qquad
 T_K=e^{ib_K\kappa^2/2}.

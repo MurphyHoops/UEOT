@@ -24,3 +24,7 @@ The first 6-entry aggregate passed with 213 inherited entries and 782 unchanged 
 ## Subsequent closures and further review
 
 Checkpoint 7fdf76a16b465fa39eca9e46c560a88508e83ff0 carried 9 science entries plus scope; ba8ab73c46010a05bb828102354456f160841c6b carried 14 plus scope. The former extra-h display was corrected; the third audit refined a bounded-open-set projection proof and initial lapse/energy wording. At 9eb6efdf516f3833051561ddd169442bd0581935, 15 science entries plus scope passed. All three agents independently read and passed the sharp normal-target F_Q/16 resource proof. After that closure, the work continued to the complete-generator cutoff test and coherent CTP transport. The present segment is still running; no final elapsed duration is asserted here.
+
+## Closure after the correlated-state construction
+
+Checkpoint f11a5f59c4dc0067e5702aa9ee463df0c3339da1 records 17 science checks plus one scope check, all passing with the 213-entry/782-file inheritance unchanged. The final research continuation constructed a normal changed-source bulk state, then a rare-excitation/rare-phase preparation with exact specified initial clock mean and geometry current. Its generator variance and initial second geometry jet fail the stated stronger gates. All three agents reviewed the written proof at that immutable checkpoint. Full constraint dynamics, genuine preparation and physical unification remain open. Final source/progress review and exact-head CI are being completed before the final time record.
