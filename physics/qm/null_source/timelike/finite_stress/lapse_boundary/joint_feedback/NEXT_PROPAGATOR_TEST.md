@@ -197,10 +197,12 @@ second preparation Duhamel insertions from T4. A canonical endpoint connection
 alone does not supply the physical preparation or enforce its initial
 constraint column.
 
-Only after these tests can a local autonomous controller/probe coupling be
-specified and its interaction stress, complete success/failure output and
-calibration checked in the same total source. N4 is a mathematical bounded
-record, not such a device.
+An autonomous-instrument claim additionally requires a specified local
+controller/probe coupling, with its interaction stress, complete success/failure
+output and calibration included in the same total source. The combined system
+must pass the corresponding tests; an added apparatus does not inherit a test
+of the earlier system for free. N4 is a mathematical bounded record, not such
+a device.
 
 ## N6. Alternative scalar clock: the earlier gate stays open
 
