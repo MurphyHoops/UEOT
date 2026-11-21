@@ -1,4 +1,7 @@
 <!-- RELATIONAL_COUPLED_CURRENT -->
+
+最新研究：[完整联合传播与原固定时间核](null_source/timelike/finite_stress/lapse_boundary/joint_propagation/README.md)。正的缩放时间量子极限已推导；原固定测试非零核门被拒收，物理统一仍 OPEN。
+
 本轮更新：同一作用量的完整有限模联合演化、正常物理态、完整源历史恢复的严格限制，以及实际共同截止CTP与齐次因果逆强极限；物理统一仍OPEN。
 
 # UEOT Physics Roadmap
