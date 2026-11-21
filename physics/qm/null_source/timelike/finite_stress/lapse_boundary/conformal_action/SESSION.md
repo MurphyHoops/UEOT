@@ -113,3 +113,19 @@ v<p_probe²>+v²/2。finite-variance 准备的完整非选择输出均值与
 
 Z reader 脚本一次把比较谓词当作数值端点，首次生成明确报 TypeError；
 已改为正确的严格区间比较和 outward 端点，未将该失败计为通过。
+
+## 复盘之后再闭合：同一自主全场模型的有限时间源记录
+
+AA 改用已在耦合区的多项式controller波包、真实高模dressed相关态
+以及两份低模source coherent码。完整固定H下的二次weakcommutator
+有统一energy-form界；用 squared-resolvent 正则化证明Taylor
+余项，再通过实际H_K与moving input极限得到正时间记录。
+精确中心概率质量59123/65536、独立|r'|<=3.2和outward区间给
+t=.0004时完整二元probability差>8.7352772198078e-6。
+两初始记录均1/2，全部结果保留；总H谱律相同，不能解释为
+geometry/energy charge测量。新准备的能量账没有套用Z5的56/1290。
+
+这一结果把“自主全场动力学存在”继续推进到“同一动力学里有具体
+正时间source信息记录”，但需要实际产生已准备相关的过去。
+因此NEXT_GATE更新为真实相关准备或外来波包碰撞，而非重复寻找
+任意一个正常state或把新态当原完整裸态不变。

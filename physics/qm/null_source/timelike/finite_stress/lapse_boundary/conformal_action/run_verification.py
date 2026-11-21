@@ -12,7 +12,7 @@ NEW=PREFIX+"finite_stress/lapse_boundary/conformal_action/"
 PARENT=PREFIX+"finite_stress/lapse_boundary/joint_propagation/verification.json"
 WORKFLOW=".github/workflows/ueot-physics-source-response.yml"
 ROUTES=[WORKFLOW,"physics/qm/README.md","physics/qm/ROADMAP.md",PREFIX+"README.md"]
-ENTRIES=['curvature_action', 'anomaly_action', 'clock_compactness', 'joint_continuum', 'energy_stability', 'critical_branch', 'quantum_meter', 'delta_scattering', 'local_autonomous', 'sigma_uv_gate', 'spatial_noise', 'projected_noise', 'energy_clock', 'weyl_response', 'scalar_response', 'geometry_calibration', 'sigma_counterterms', 'mixed_action', 'perturbation_budget', 'finite_lapse_ctp', 'static_normality', 'hadamard_split', 'smooth_preparation', 'local_field_probe', 'probe_phase', 'quantum_controller', 'review']
+ENTRIES=['curvature_action', 'anomaly_action', 'clock_compactness', 'joint_continuum', 'energy_stability', 'critical_branch', 'quantum_meter', 'delta_scattering', 'local_autonomous', 'sigma_uv_gate', 'spatial_noise', 'projected_noise', 'energy_clock', 'weyl_response', 'scalar_response', 'geometry_calibration', 'sigma_counterterms', 'mixed_action', 'perturbation_budget', 'finite_lapse_ctp', 'static_normality', 'hadamard_split', 'smooth_preparation', 'local_field_probe', 'probe_phase', 'quantum_controller', 'autonomous_record', 'review']
 VERSIONS={"numpy":"2.5.4","scipy":"1.18.1","sympy":"1.14.0","mpmath":"1.3.0"}
 def require(ok,msg):
     if not ok:raise RuntimeError(msg)
@@ -116,7 +116,8 @@ def main():
         "local_field_probe_complete_instrument":"CONSTRUCTED with prescribed pulse and explicit gain/noise",
         "probe_physical_CTP_phase":"CONSTRUCTED for spatially constant smooth r on fixed ESU",
         "quantum_controller_full_field_H":"SEMIBOUNDED and actual cutoff limit; global QM controller",
-        "same_autonomous_controller_record_calibration":"OPEN",
+        "same_autonomous_controller_record_calibration":"CONSTRUCTED for changed active-region correlated preparation; source sign only",
+        "outside_packet_pulse_tracking_and_geometry_calibration":"OPEN",
         "four_dimensional_joint_Einstein_CTP_solution":"OPEN",
         "autonomous_complete_preparer_and_terminal_reader":"OPEN",
         "physical_unification":"OPEN"}}

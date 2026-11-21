@@ -17,6 +17,8 @@ the [next acceptance gate](NEXT_GATE.md), [contract](CONTRACT.md),
 - Actual smooth common-past field preparation with finite late energy moments.
 - A semibounded autonomous global quantum controller coupled to the full field Fock space,
   with actual canonical-cutoff convergence and a normal finite-energy input.
+- An actual finite-time source-sign record in that same autonomous full-field model,
+  using a distinct explicit correlated preparation and a uniform energy-form remainder.
 - A local source/probe action, full normal instrument, nonzero calibrated transfer,
   and a locally subtracted finite-amplitude two-branch phase on a declared ESU pulse family.
 
@@ -54,7 +56,8 @@ Each named proof has a matching lowercase Python entry and source-bound JSON.
 | [W Smooth preparation](SMOOTH_PREPARATION.md) | Same-past KG preparation and full Gaussian reader | Prescribed metric; terminal apparatus open |
 | [X Local field probe](LOCAL_FIELD_PROBE.md) | Actual local field coupling and complete calibrated instrument | Prescribed coupling control |
 | [Y Probe phase](PROBE_PHASE.md) | Local r² subtraction and actual full-field normal CTP limit | Fixed ESU, spatially constant r(t) |
-| [Z Quantum controller](QUANTUM_CONTROLLER.md) | Semibounded autonomous full-field total Hamiltonian and actual cutoff limit | Global QM control; record calibration and local 4D realization open |
+| [Z Quantum controller](QUANTUM_CONTROLLER.md) | Semibounded autonomous full-field total Hamiltonian, finite-variance input and reader backaction | Global QM control; physical preparation and terminal apparatus open |
+| [AA Autonomous record](AUTONOMOUS_RECORD.md) | Actual finite-time source-sign record in the same full-field H | Changed active-region correlated preparation; not an energy/geometry record |
 
 ## Model separation
 
