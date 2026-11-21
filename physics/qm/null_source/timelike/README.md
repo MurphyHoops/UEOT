@@ -189,3 +189,7 @@
 主审另用量子组的同一光滑时窗重算 −∫w″ log V、∫wRic 与膨胀平方，校验两组等式的对接。仪器与识别两组最初使用了不同的静态过去至 FLRW 的尺度插值；指定同一参考态后，两条独立求解路径的 32 个联合概率格最大差 <10⁻¹²。核验入口同时复算平面参考、有限谱、热留出、涨落和分布式读出。[联合核验](joint.py) · [回执](result.json)
 
 2026-11-21 接续检查点：lapse_boundary 已推进到固定 AE lapse action、实际全场齐次逆、同源双约束弱解及准备态的 normal/Hadamard 分层验收；当前具体读数候选被成本拒收，全场门被UV拒收，有限模修正仍待新mean与总源。见 `physics/qm/null_source/timelike/finite_stress/lapse_boundary/INPUTS_AND_NEXT_TEST.md`。物理统一仍OPEN。
+
+## Current joint-feedback continuation (2026-11-21)
+
+The [joint-feedback cohort](finite_stress/lapse_boundary/joint_feedback/README.md) follows the same complete finite-mode evolution and actual incoming source. It derives the weighted source/current equations, the raw Ward identity, an actual pressure-row witness, and controlled positive-time distinctions. Further joint-state, lapse-response, boundary-domain and preparation gates remain open. Physical unification is OPEN.

@@ -256,3 +256,7 @@
 Core只读，GI不在范围。原182项结果对象、105条主张及历史回执保留原身份；新增六项单列。复杂量子结构、有效控制、真实物理过滤和蓝面积约束仍是独立输入。没有真实数据就不声称经验闭环，也不将有限示例等同完整量子、场论、粒子或引力理论。
 
 2026-11-21 接续检查点：lapse_boundary 已推进到固定 AE lapse action、实际全场齐次逆、同源双约束弱解及准备态的 normal/Hadamard 分层验收；当前具体读数候选被成本拒收，全场门被UV拒收，有限模修正仍待新mean与总源。见 `physics/qm/null_source/timelike/finite_stress/lapse_boundary/INPUTS_AND_NEXT_TEST.md`。物理统一仍OPEN。
+
+## Current joint-feedback continuation (2026-11-21)
+
+The [joint-feedback cohort](null_source/timelike/finite_stress/lapse_boundary/joint_feedback/README.md) follows the same complete finite-mode evolution and actual incoming source. It derives the weighted source/current equations, the raw Ward identity, an actual pressure-row witness, and controlled positive-time distinctions. Further joint-state, lapse-response, boundary-domain and preparation gates remain open. Physical unification is OPEN.
