@@ -59,6 +59,8 @@ Replace every Hilbert norm in \(R_H\) by the \(Q\) norm to define \(R_Q\). Core 
 \]
 This step is not inferred from T2 or from unitarity in the Hilbert norm.
 
+The same argument holds in every fixed $Q_p$, $p\ge3$. In particular, the first-order approximation is $\Psi(t)=\phi-itH_*\phi+O_{Q_6}(t^2)$. E6 expresses $\sigma'=-i[H_s,\tau]$ as a continuous quadratic map on $Q_6$ with smooth coefficients. Differentiating that identity at the core initial vector proves that the coefficient denoted $\sigma_2$ is the genuine initial right second derivative in trace norm. The pressure derivative formula in RAW_WARD is likewise a continuous quadratic expression on $Q_6$; the same argument supplies its genuine next derivative. Thus the uses of ordinary second derivatives in CLOSURE_COUNTEREXAMPLE do not follow from a Peano expansion alone. No arbitrary finite-$Q_3$ second-derivative assertion is added.
+
 Let \(c_M=\|\kappa^{-1/2}\|_{Q\to\mathcal H}\), which is finite by E3, and
 \(\beta_l=\kappa^{-1/2}v_l\), \(v_0=\phi\). Set
 \[

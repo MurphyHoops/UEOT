@@ -12,7 +12,7 @@ NEW=PREFIX+"finite_stress/lapse_boundary/joint_feedback/"
 PARENT=PREFIX+"finite_stress/lapse_boundary/relational_coupled/verification.json"
 WORKFLOW=".github/workflows/ueot-physics-source-response.yml"
 ROUTES=[WORKFLOW,"physics/qm/README.md","physics/qm/ROADMAP.md",PREFIX+"README.md"]
-ENTRIES=['weighted_evolution', 'raw_ward', 'pressure_witness', 'positive_window', 'closure_counterexample', 'review']
+ENTRIES=['weighted_evolution', 'raw_ward', 'pressure_witness', 'positive_window', 'closure_counterexample', 'near_recovery', 'geometry_curvature', 'advanced_cutoff', 'prepared_limit', 'review']
 VERSIONS={"numpy":"2.5.4","scipy":"1.18.1","sympy":"1.14.0","mpmath":"1.3.0"}
 def require(ok,msg):
     if not ok:raise RuntimeError(msg)
@@ -103,7 +103,7 @@ def main():
       "mode_ODE_integrations":0,"geometry_ODE_integrations":0,
       "new_scientific_entries":len(ENTRIES)-1,"new_scope_binding_entries":1,
       "native_read_only_research_agents":3,"external_human_peer_review":False,"machine_formal_proof":False,
-      "scientific_exit":{'same_complete_finite_K_unitary_higher_source_domains': True, 'actual_raw_source_energy_Ward': True, 'actual_fixed_geometry_law_pressure_recovery': 'REJECTED in stated regular finite-K class', 'sigma_tau_and_initial_geometry_readings_close_feedback': False, 'positive_candidate_dependent_joint_time_bounds': True, 'full_same_mean_history_recovery': 'OPEN', 'full_field_normal_joint_limit': 'OPEN', 'autonomous_total_device': 'OPEN', 'physical_unification': 'OPEN'}}
+      "scientific_exit":{'same_complete_finite_K_unitary_higher_source_domains': True, 'actual_raw_source_energy_Ward': True, 'actual_fixed_geometry_law_pressure_recovery': 'REJECTED in stated regular finite-K class', 'sigma_tau_and_initial_geometry_readings_close_feedback': False, 'positive_candidate_dependent_joint_time_bounds': True, 'full_same_mean_history_recovery': 'REJECTED for stated regular ordering class and near-recovery family', 'full_field_normal_joint_limit': 'OPEN', 'autonomous_total_device': 'OPEN', 'physical_unification': 'OPEN'}}
     out.write_text(json.dumps(result,indent=2,ensure_ascii=False,sort_keys=True)+"\n")
     print("Reused 213 results with 782 unchanged scientific files; executed "+str(len(ENTRIES))+" new entries.")
     print("Receipt: "+str(out));return 0 if ok else 1

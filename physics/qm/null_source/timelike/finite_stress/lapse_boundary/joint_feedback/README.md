@@ -13,3 +13,7 @@ This cohort continues the original finite-mode geometry–matter evolution, its 
 - [POSITIVE_WINDOW.md](POSITIVE_WINDOW.md): complete-generator, candidate-dependent positive-time bounds; no numerical experimental time radius is asserted.
 
 See [CONTRACT.md](CONTRACT.md), [SESSION.md](SESSION.md), [REVIEW.md](REVIEW.md), and [REFERENCES.md](REFERENCES.md) for scope and verification responsibilities. Subsequent closures in this working segment will be added only after their proofs and checks are integrated.
+
+## Subsequent closures in the same session
+
+NEAR_RECOVERY constructs arbitrary source first-jet tolerance with a normal state and the complete initial budget. GEOMETRY_CURVATURE then rejects recovery of the next geometry derivative, including an ordering-range class theorem and an all-fixed-ordering packet corollary. ADVANCED_CUTOFF independently proves the advanced strong limit; PREPARED_LIMIT carries the combined source/boundary readouts through it. These are distinct finite-K joint-evolution and fixed-classical-background full-field response statements. They do not yet make a single full-field normal joint theory.

@@ -14,3 +14,7 @@ The metadata is preserved in baseline_ci.json; no binary artifact was claimed to
 Root wrote and executed the first five independent entries. All five passed their initial exact/interval checks. Three native read-only agents reviewed derivations and actual frozen source texts; these are distinct from immutable new-source audits.
 
 No new immutable checkpoint has yet been reviewed at the time of this initial record. This section will be updated with actual commit/file identities and review findings. Predecessor files remain subject to the aggregate byte-inventory gate. Core is read-only; GI excluded; PR remains draft and unmerged.
+
+## First immutable checkpoint
+
+Checkpoint `8761c84586dbf72a91687b624b412d88119b6f85` was actually read by three native agents. The 17 agent-file read records and their Git blob identities are in `audit_checkpoint1.json`; root checked every identity against Git, with zero mismatch. Three presentation/domain clarifications were incorporated afterward and require the next checkpoint review. No agent executed science, and these are not external human peer reviews.

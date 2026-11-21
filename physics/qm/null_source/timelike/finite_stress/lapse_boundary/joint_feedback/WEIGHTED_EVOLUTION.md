@@ -63,7 +63,7 @@ Thus, after removing this fixed pure geometry phase, raw \(Q_p\) norms are equiv
 
 ## E2. Positive trace-class weighted reductions
 
-Work in that phase-removed raw representation. For a density purification \(\Psi\), define
+Work in that phase-removed raw representation. In its fixed reference norm use $y=(2/3)\kappa^{3/2}$ and the corresponding fixed source reference weight $\lambda$; these norms are equivalent to the transported lens norms on the compact interval. The bound below uses this raw norm, not a literal identification of the moving lens coordinate. For a density purification \(\Psi\), define
 \[
  \sigma=\operatorname{Tr}_{G,\rm ref}|\Psi\rangle\langle\Psi|,\quad
  \beta=\kappa^{-1/2}\Psi,\quad

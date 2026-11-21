@@ -28,7 +28,7 @@ Apply the same fixed pure geometry phase to return to the original raw frame. Te
 They have exactly the same full \(\kappa\) probability law, source \(\sigma\),
 \(\tau=I_1\sigma\), every finite \(\kappa\) moment, and \(I_2\).
 The extra contribution to the initial \(\kappa\) velocity is
-\(\pm g^{-1}\langle F\rangle_s=0\).
+\(\pm(1-w)g^{-1}\langle F\rangle_s=0\).
 The difference of phase kinetic energies is proportional to
 \(4b(1-w)h\langle yF\rangle_s=0\).
 
