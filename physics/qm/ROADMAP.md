@@ -415,7 +415,13 @@ The [joint-feedback cohort](null_source/timelike/finite_stress/lapse_boundary/jo
 
 ## 2026-11-22: changed conformal action and actual joint histories
 
-The next independent cohort studies a full curvature-coupling/action change,
-its normal fixed-clock continuum, critical branch and finite-time apparatus.
-The original minimal model remains frozen; physical unification is open.
-See the [new research entry](null_source/timelike/finite_stress/lapse_boundary/conformal_action/README.md).
+The [conformal-action cohort](null_source/timelike/finite_stress/lapse_boundary/conformal_action/README.md) now includes the changed
+curvature action and critical homogeneous records, source-containing lapse
+counterterms, actual full-field static cutoff limits with a sudden-state
+Hadamard/energy rejection, smooth common-past preparation, a local field probe
+and a locally renormalized finite-amplitude probe CTP phase. It also constructs
+a semibounded autonomous global quantum-controller/full-field Hamiltonian,
+finite total-energy variance preparation and exact terminal-reader backaction.
+These are explicitly distinct models; full physical unification remains OPEN.
+See the [Chinese progress report](null_source/timelike/finite_stress/lapse_boundary/conformal_action/UNIFICATION_PROGRESS.md) and
+[next acceptance gate](null_source/timelike/finite_stress/lapse_boundary/conformal_action/NEXT_GATE.md).

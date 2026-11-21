@@ -162,7 +162,11 @@ On the exact coupled equations, the improved total tensor obeys
 
 On ESU, H_r=H0,s+H0,p+integral r phi psi and
 d<H_r>/dt=integral rdot <phi psi>.
-These are exact classical-action/finite-cutoff identities.
+The pointwise Ward equation is a classical local-action identity;
+its quantum version requires the common local renormalization below.
+The finite canonical cutoff has the exact integrated Hamiltonian
+work identity. No arbitrary spatial cutoff is asserted to preserve
+the unprojected pointwise local Ward equation.
 The prescribed r supplies work. Deleting the probe or the
 interaction energy would change the physical source.
 
