@@ -123,3 +123,29 @@ states this law of total variance explicitly. M12 is unchanged.
 The correction awaits CP7 immutable verification. CP6 science and
 publication CI passed, but their automatic entries alone did not
 settle this analytic interpretation; the source audit supplied it.
+
+## Final scientific source review complete
+
+At CP7 779b9156a35d88b8320459c865520c685f340d08 all three readers
+actually reread the conditional/marginal correction. Their3+4+3=10
+further identities bring the ledger to176 registered reviewer/commit/
+file identities,106 distinct commit-file pairs,21 records and7
+immutable scientific checkpoints. All registered findings are resolved.
+These are logged source-review counts, not the number of theorems or
+all ancillary tool reads.
+
+source_audits.json is COMPLETE. The scope checker verifies every
+current scientific proof/script has an immutable read, both critical
+propagation proofs have all three readers, the newer preparation/probe/
+memory proofs have independent coverage, and verification infrastructure
+is covered. Timing and final-head remote CI are separate gates; neither
+is inferred from this completed scientific source review.
+
+## Actual duration gate
+
+The observed segment closed at 2026-11-21T17:47:55+00:00, after10810
+seconds (3h 0m 10s). The clock gate does not count earlier
+sessions or parallel durations. The final local receipt is explicitly
+pre-commit; final exact-head remote jobs/log/artifact metadata and PR
+state are verified after the closing commit. Core is unchanged, GI
+excluded and the original branch remains an open unmerged draft.

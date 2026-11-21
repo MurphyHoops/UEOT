@@ -7,7 +7,10 @@ This new work segment began at **2026-11-21 14:47:45 UTC**,
 **2026-11-21 17:47:45 UTC**, **2026-11-22 01:47:45 Asia/Shanghai**.
 The previous session's work is not counted again. The current status
 and actual closing observation are in session_timing.json.
-At this checkpoint the session is IN_PROGRESS.
+The recorded minimum-duration closing observation is **2026-11-21 17:47:55 UTC**,
+**2026-11-22T01:47:55+08:00**, elapsed **3h 0m 10s**.
+The recorded session gate is COMPLETE. Final immutable CI is checked
+separately at the delivered head.
 
 The user requested continued research closures, reflection and further
 work toward physical unification for at least three actual hours.
@@ -163,3 +166,27 @@ The correction keeps E_q,V_q in the conditional influence and the full
 marginal variance in the actual homogeneous stress block. The recorded
 audit is166 actual identities; source rereading of this correction and
 the final three-hour clock observation remain pending.
+
+## Recorded closure and delivered evidence
+
+The actual clock observation above is 10810 seconds after the new
+start, satisfying the requested10800-second minimum without adding
+prior sessions or parallel-agent durations. Scientific source review
+is COMPLETE:176 logged identities,106 distinct commit-file pairs,
+21 records and7 immutable scientific checkpoints, with all findings
+addressed and current-source coverage checked.
+
+The final local runner records its true pre-commit HEAD and dirty
+worktree source manifest. Its17 entries,231 reused results and859
+unchanged predecessor scientific files are checked again at the final
+immutable remote head. Final remote workflow URLs are supplied with
+the delivered PR; the checkpoint ledger intentionally records only
+already observed earlier heads, avoiding a self-referential future
+commit claim.
+
+Physical unification is OPEN. Actual joint propagation, the original
+fixed-test rejection, complete harmonic-memory dynamics, bounded
+calibration and homogeneous lapse/stress comparisons are closed at
+their declared scopes. The next primary action/test-prescription
+contract remains NEXT_GATE.md; no original mean history, local 4D
+apparatus, full tensor feedback or empirical calibration is inferred.
