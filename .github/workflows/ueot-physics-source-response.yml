@@ -33,13 +33,13 @@ jobs:
           python-version: '3.14'
       - name: Install the same scientific dependencies
         run: python -m pip install numpy==2.5.4 scipy==1.18.1 sympy==1.14.0 mpmath==1.3.0
-      - name: Reuse 231 predecessor results and verify joint-propagation entries
-        run: python -B physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/run_verification.py --output "$RUNNER_TEMP/joint-propagation-verification.json" --logs "$RUNNER_TEMP/joint-propagation-logs"
+      - name: Reuse 248 predecessor results and verify conformal-action entries
+        run: python -B physics/qm/null_source/timelike/finite_stress/lapse_boundary/conformal_action/run_verification.py --output "$RUNNER_TEMP/conformal-action-verification.json" --logs "$RUNNER_TEMP/conformal-action-logs"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: joint-propagation-research
+          name: conformal-action-research
           path: |
-            ${{ runner.temp }}/joint-propagation-verification.json
-            ${{ runner.temp }}/joint-propagation-logs/
+            ${{ runner.temp }}/conformal-action-verification.json
+            ${{ runner.temp }}/conformal-action-logs/
           if-no-files-found: error

@@ -411,3 +411,11 @@
 ## Current joint-feedback continuation (2026-11-21)
 
 The [joint-feedback cohort](null_source/timelike/finite_stress/lapse_boundary/joint_feedback/README.md) follows the same complete finite-mode evolution and actual incoming source. It derives the weighted source/current equations, the raw Ward identity, an actual pressure-row witness, and controlled positive-time distinctions. Further joint-state, lapse-response, boundary-domain and preparation gates remain open. Physical unification is OPEN.
+
+
+## 2026-11-22: changed conformal action and actual joint histories
+
+The next independent cohort studies a full curvature-coupling/action change,
+its normal fixed-clock continuum, critical branch and finite-time apparatus.
+The original minimal model remains frozen; physical unification is open.
+See the [new research entry](null_source/timelike/finite_stress/lapse_boundary/conformal_action/README.md).
