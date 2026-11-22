@@ -67,9 +67,11 @@ Grounds of Purpose\par}
 \end{center}
 \vspace{4pt}
 \begin{abstract}
-\noindent Expanded mathematical derivations and rational witness
-verifications supporting Propositions 1--7 and Theorem 1 (anonymized for
-double-blind review).
+\noindent Expanded mathematical derivations, Blackwell non-simulability
+and parameter-identifiability witnesses, subcritical finite-birth
+bounds, competing-mechanism transition equations, and rational witness
+verifications supporting Propositions 1--7, Theorem 1, and Section 6
+(anonymized for double-blind review).
 \end{abstract}
 \vspace{8pt}
 
@@ -80,8 +82,10 @@ proofs}\label{expanded-formal-definitions-and-proofs}
 
 To ensure that every formal claim in the article is self-contained and
 independently verifiable without external manuscripts, this supplement
-provides expanded derivations of Propositions 1--7 and Theorem 1
-alongside exact rational witness calculations.
+provides expanded derivations of Propositions 1--7, Theorem 1 (including
+the subcritical finite-cumulative-births corollary), the three-step
+parameter-variation boundary for Proposition 3, and the explicit
+competing-mechanism transition laws of Section 6.2.
 
 \subsection{Predictive minimality and belief-quotient descent
 (Propositions 1 and
@@ -165,10 +169,11 @@ quotient recursion requires matching observation laws and posterior
 \(\mathcal{F}\)-expectations only across reachable pairs in the same
 \(\equiv_{\mathcal{F}}\)-fiber, not invariance on
 \(\operatorname{span}(\mathcal{R})\) (under the 3-state cycle
-\(0 \to 1 \to 2 \to 0\) from \(\delta_0\),
-\(\mathcal{R}=\{\delta_0,\delta_1,\delta_2\}\) spans \(\mathbb{R}^3\),
-yet \(\mathcal{F}=\operatorname{span}\{\mathbf{1},(0,1,2)\}\) separates
-\(\mathcal{R}\) injectively while
+\(0 \to 1 \to 2 \to 0\) with uninformative observations from
+\(\delta_0\), \(\mathcal{R}=\{\delta_0,\delta_1,\delta_2\}\) spans
+\(\mathbb{R}^3\), yet
+\(\mathcal{F}=\operatorname{span}\{\mathbf{1},(0,1,2)\}\) separates
+\(\mathcal{R}\) injectively with no merged fibers while
 \(U(0,1,2)=(1,2,0)\notin\mathcal{F}\)). \(\square\)
 
 \subsection{Cut-set reconstruction, finite-memory separation, and
@@ -221,8 +226,9 @@ contradicting \(\operatorname{rank}(Dg \cdot Df) \le 2\) for any \(C^1\)
 factorization through \(\mathbb{R}^2\). \(\square\)
 
 \subsection{\texorpdfstring{Regenerative process \(\mathcal{M}\),
-incomparable refinements, and quotients (Propositions 3 and
-4)}{Regenerative process \textbackslash mathcal\{M\}, incomparable refinements, and quotients (Propositions 3 and 4)}}\label{regenerative-process-mathcalm-incomparable-refinements-and-quotients-propositions-3-and-4}
+Blackwell non-simulability, and 3-step parameter boundary (Propositions
+3 and
+4)}{Regenerative process \textbackslash mathcal\{M\}, Blackwell non-simulability, and 3-step parameter boundary (Propositions 3 and 4)}}\label{regenerative-process-mathcalm-blackwell-non-simulability-and-3-step-parameter-boundary-propositions-3-and-4}
 
 \emph{Exact transition specification of \(\mathcal{M}\).} Each step on a
 living token proceeds through internal/public diagnosis
@@ -257,40 +263,120 @@ against \(6\) units, actuation, and post-step damage:
   damage w.p. \(q\) (becoming \(D\)) and stays \(H\) w.p. \(1-q\).
 \end{itemize}
 
-\emph{Proof of Proposition 3.} Across \emph{any} strict Table 1
-parameter vector (\(0 < \delta < s < 1\), \(b > 0\), \(\gamma > 0\),
-\(b+\gamma < 1\), \(0 < q < 1\), without assuming \(\gamma > \delta\) or
-\(s+b > 1\)): \textbf{(1)} \emph{At \(t=1\)}: \(\theta_0 H\) runs
-healthy \texttt{care} (\(B_1 \sim \mathrm{Bern}(b), R_1 = 0\));
-\(\theta_0 D\) and \(\theta_1 D\) both pay \(R_1 = 3\), restore their
-codes, and run \texttt{care} (\(B_1 \sim \mathrm{Bern}(b)\));
-\(\theta_1 H\) runs healthy \texttt{bloom}
-(\(B_1 \sim \mathrm{Bern}(b+\gamma), R_1 = 0\)). Since \(\gamma > 0\),
-\(b + \gamma \neq b\), giving two \(B_1\)-classes:
-\(\{\theta_0 H, \theta_0 D, \theta_1 D\}\) and \(\{\theta_1 H\}\).
+\emph{Proof of Proposition 3.} Fix any strict Table 1 parameter vector
+\((s,\delta,b,\gamma,q)\) (\(0 < \delta < s < 1\), \(b > 0\),
+\(\gamma > 0\), \(b+\gamma < 1\), \(0 < q < 1\), without assuming
+\(\gamma > \delta\) or \(s+b > 1\)) and restrict \(\mathcal{M}\) to
+autonomous execution of the stored hereditary program from the four
+single-founder configurations
+\(\Theta_{\mathrm{init}} := \{\theta_0 H, \theta_0 D, \theta_1 H, \theta_1 D\}\):
 
-\textbf{(2)} \emph{All finite birth records \((B_1,\dots,B_T)\)}: After
-\(t=1\), both \(\theta_0 H\) and \(\theta_0 D\) leave
+\textbf{(1)} \emph{At \(t=1\)}: \(\theta_0 H\) runs healthy
+\texttt{care} (\(B_1 \sim \mathrm{Bern}(b), R_1 = 0\)); \(\theta_0 D\)
+and \(\theta_1 D\) both pay \(R_1 = 3\), restore their codes, and run
+\texttt{care} (\(B_1 \sim \mathrm{Bern}(b)\)); \(\theta_1 H\) runs
+healthy \texttt{bloom} (\(B_1 \sim \mathrm{Bern}(b+\gamma), R_1 = 0\)).
+Since \(\gamma > 0\), \(b + \gamma \neq b\), giving two minimal \(B_1\)
+law classes: \(\{\theta_0 H, \theta_0 D, \theta_1 D\}\) and
+\(\{\theta_1 H\}\).
+
+\textbf{(2)} \emph{Two-step saturation across all finite birth records
+\((B_1,\dots,B_T)\)}: After \(t=1\), both \(\theta_0 H\) and
+\(\theta_0 D\) leave
 \((I_{\mathrm{ret}}, B_1) \sim \mathrm{Bern}(s) \otimes \mathrm{Bern}(b)\)
-of \(\theta_0\)-tokens independently damaged w.p. \(q\), inducing
-identical joint laws on \((B_1, \dots, B_T)\) for all \(T \ge 1\).
-Comparing \(\theta_0 D\) and \(\theta_1 D\) at \(t=2\): both have
-\(\mathbb{E}[N_1] = s + b > 0\), each healthy at \(t=2\) w.p. \(1-q\)
-and damaged w.p. \(q\), giving \(\mathbb{E}_{\theta_0 D}[B_2] = (s+b)b\)
-versus
+of \(\theta_0\)-tokens independently damaged w.p. \(q\) (with unspent
+escrow cleared), inducing identical joint laws on \((B_1, \dots, B_T)\)
+for all \(T \ge 1\) and hence on \((B_t)_{t\ge 1}\). Comparing
+\(\theta_0 D\) and \(\theta_1 D\) at \(t=2\): both have
+\(\mathbb{E}[N_1] = s + b > 0\), each token healthy at \(t=2\) w.p.
+\(1-q\) and damaged w.p. \(q\), giving
+\(\mathbb{E}_{\theta_0 D}[B_2] = (s+b)b\) versus
 \(\mathbb{E}_{\theta_1 D}[B_2] = (s+b)\bigl[(1-q)(b+\gamma) + q b\bigr]\);
 since \((s+b)(1-q)\gamma > 0\), \(\theta_1 D \not\sim \theta_0 D\),
-yielding three classes \(\{\theta_0 H, \theta_0 D\}\),
+yielding three law classes \(\{\theta_0 H, \theta_0 D\}\),
 \(\{\theta_1 D\}\), \(\{\theta_1 H\}\) (\(27/64\) vs.~\(39/64\) at
 \((3/4, 1/8, 3/8, 1/4, 1/3)\)).
 
-\textbf{(3)} \emph{Adding \(R_1\)}: On \((B_1, R_1)\),
-\((\theta_0 H) \mapsto (\mathrm{Bern}(b), 0)\),
-\((\theta_1 H) \mapsto (\mathrm{Bern}(b+\gamma), 0)\), and
-\(\theta_0 D, \theta_1 D \mapsto (\mathrm{Bern}(b), 3)\), yielding three
-classes \(\{\theta_0 H\}, \{\theta_1 H\}, \{\theta_0 D, \theta_1 D\}\)
-incomparable with (2). Adjoining \(R_1\) to \((B_1, B_2, \dots)\) splits
-\(\{\theta_0 H, \theta_0 D\}\) into four singletons. \(\square\)
+\textbf{(3)} \emph{Adding \(R_1\) and single-run overlap}: On
+\((B_1, R_1)\),
+\((\theta_0 H) \mapsto \mathrm{Bern}(b)\otimes\delta_0\),
+\((\theta_1 H) \mapsto \mathrm{Bern}(b+\gamma)\otimes\delta_0\), and
+\(\theta_0 D, \theta_1 D \mapsto \mathrm{Bern}(b)\otimes\delta_3\),
+yielding three classes
+\(\{\theta_0 H\}, \{\theta_1 H\}, \{\theta_0 D, \theta_1 D\}\)
+incomparable with (2). Adjoining \(R_1\) to \((B_1, B_2)\) splits
+\(\{\theta_0 H, \theta_0 D\}\) into four distinct probability laws,
+whereas individual sample trajectories still overlap (for example,
+\((B_1, B_2, R_1) = (0, 0, 0)\) occurs with positive probability under
+both \(\theta_0 H\) and \(\theta_1 H\)). \(\square\)
+
+\emph{Blackwell post-processing non-simulability.} In Blackwell's
+\citeyearpar{blackwell1953} comparison of statistical experiments on
+parameter space \(\Theta_{\mathrm{init}}\)
+\citep{barnettCrutchfield2015}, protocol \(\mathcal{P}_A = (B_1, B_2)\)
+Blackwell-dominates \(\mathcal{P}_B = (B_1, R_1)\) iff there exists a
+founder-independent Markov kernel \(K\) mapping outcomes of
+\((B_1, B_2)\) to distributions on \(\{0,1\}\times\{0,3\}\) such that
+\(K \circ \mathcal{L}_x(B_1, B_2) = \mathcal{L}_x(B_1, R_1)\) for all
+\(x \in \Theta_{\mathrm{init}}\). Because
+\(\mathcal{L}_{\theta_0 H}(B_1, B_2) = \mathcal{L}_{\theta_0 D}(B_1, B_2)\),
+any such \(K\) forces
+\(K \circ \mathcal{L}_{\theta_0 H}(B_1, B_2) = K \circ \mathcal{L}_{\theta_0 D}(B_1, B_2)\),
+contradicting
+\(\mathbb{P}_{\theta_0 H}(R_1 = 3) = 0 \neq 1 = \mathbb{P}_{\theta_0 D}(R_1 = 3)\).
+Conversely, because
+\(\mathcal{L}_{\theta_0 D}(B_1, R_1) = \mathcal{L}_{\theta_1 D}(B_1, R_1) = \mathrm{Bern}(b)\otimes\delta_3\),
+any founder-independent kernel \(K'\) applied to \((B_1, R_1)\) assigns
+identical output laws to \(\theta_0 D\) and \(\theta_1 D\),
+contradicting
+\(\mathbb{E}_{\theta_0 D}[B_2] \neq \mathbb{E}_{\theta_1 D}[B_2]\).
+Hence \((B_1, B_2)\) and \((B_1, R_1)\) are mutually non-simulable under
+randomized post-processing.
+
+\emph{Three-step parameter-variation boundary witness (\(\delta = 1/8\)
+vs.~\(\delta' = 1/4\)).} Two-step birth saturation in Proposition 3(2)
+holds on \(\Theta_{\mathrm{init}}\) \emph{at fixed parameters}. Once
+unknown mechanism parameters enter the inference target, \(t = 3\)
+carries strictly new birth information. Initialize a single damaged
+proliferative founder \(\theta_1 D\) at fixed
+\((s, b, \gamma, q) = (3/4, 3/8, 1/4, 1/3)\) while varying the maternal
+\texttt{bloom} survival penalty \(\delta \in (0, 3/4)\). At \(t=1\),
+\(\theta_1 D\) repairs and executes \texttt{care}, yielding
+\((I_{\mathrm{ret}}, B_1) \sim \mathrm{Bern}(3/4)\otimes\mathrm{Bern}(3/8)\)
+independent of \(\delta\), with \((N_1, B_1)\) probabilities
+\(\mathbb{P}(N_1=0, B_1=0) = 5/32\),
+\(\mathbb{P}(N_1=1, B_1=0) = 15/32\),
+\(\mathbb{P}(N_1=1, B_1=1) = 3/32\), and
+\(\mathbb{P}(N_1=2, B_1=1) = 9/32\). Each token in \(P_1\) is
+independently \(H\) at \(t=2\) w.p. \(1-q = 2/3\) (executing
+\texttt{bloom} with strict-birth probability \(b+\gamma = 5/8\)) or
+\(D\) w.p. \(q = 1/3\) (executing repaired \texttt{care} with
+strict-birth probability \(b = 3/8\)), giving marginal step-2
+strict-birth probability
+\(u := \frac{2}{3}\cdot\frac{5}{8} + \frac{1}{3}\cdot\frac{3}{8} = \frac{13}{24}\)
+per \(P_1\)-token---completely independent of step-2 maternal survival
+\(s - \delta\). Consequently, for \emph{every} \(\delta \in (0, 3/4)\)
+(in particular \(\delta = 1/8\) and \(\delta' = 1/4\)), the exact joint
+distribution of \((B_1, B_2)\) on \(\{0,1\}\times\{0,1,2\}\) is
+identical: \[\begin{aligned}
+\mathbb{P}(B_1=0, B_2=0) &= \frac{5}{32} + \frac{15}{32}\cdot\frac{11}{24} = \frac{95}{256},\\
+\mathbb{P}(B_1=0, B_2=1) &= \frac{15}{32}\cdot\frac{13}{24} = \frac{65}{256},\\
+\mathbb{P}(B_1=0, B_2=2) &= 0,\\
+\mathbb{P}(B_1=1, B_2=0) &= \frac{3}{32}\cdot\frac{11}{24} + \frac{9}{32}\left(\frac{11}{24}\right)^2 = \frac{209}{2048},\\
+\mathbb{P}(B_1=1, B_2=1) &= \frac{3}{32}\cdot\frac{13}{24} + \frac{9}{32}\cdot 2\cdot\frac{13}{24}\cdot\frac{11}{24} = \frac{195}{1024},\\
+\mathbb{P}(B_1=1, B_2=2) &= \frac{9}{32}\left(\frac{13}{24}\right)^2 = \frac{169}{2048}.
+\end{aligned}\] At \(t=2\), however, maternal \texttt{bloom} survival
+\(s - \delta\) governs expected surviving/offspring population size
+\(\mathbb{E}_{\theta_1 D,\delta}[N_2] = k_c\,\lambda_1(\delta)\), where
+\(k_c = s+b = 9/8\) and
+\(\lambda_1(\delta) = (1-q)(s - \delta + b + \gamma) + q k_c\). Because
+each token in \(P_2\) generates \(u = 13/24\) expected strict births at
+\(t=3\), third-step expected births split strictly between
+\(\delta = 1/8\) (\(k_b = 5/4\), \(\lambda_1 = 29/24\)) and
+\(\delta' = 1/4\) (\(k_b' = 9/8\), \(\lambda_1' = 9/8\)):
+\[\mathbb{E}_{\theta_1 D,\delta=1/8}[B_3] = \frac{9}{8}\cdot\frac{29}{24}\cdot\frac{13}{24} = \frac{377}{512},
+\qquad
+\mathbb{E}_{\theta_1 D,\delta'=1/4}[B_3] = \frac{9}{8}\cdot\frac{9}{8}\cdot\frac{13}{24} = \frac{351}{512}.\]
 
 \emph{Proof of Proposition 4.} \textbf{(a)} Because no transition
 probability, affordability check, or payment depends on \(\tau\),
@@ -302,28 +388,34 @@ lifted from the quotient (in particular, across \(\Pi_{\mathrm{pub}}\)).
 \(g = \mathrm{closed}\) diverge under raw actuation without gate-opening
 repair. \(\square\)
 
-\subsection{Full-policy growth ceiling, autonomous attainment, and
-switching witness (Theorem
-1)}\label{full-policy-growth-ceiling-autonomous-attainment-and-switching-witness-theorem-1}
+\subsection{Full-policy growth ceiling, subcritical finite-births bound,
+and switching witness (Theorem
+1)}\label{full-policy-growth-ceiling-subcritical-finite-births-bound-and-switching-witness-theorem-1}
 
 \emph{Proof of Theorem 1.} \textbf{(1)} \emph{Upper envelope and
 tightness across \(\Pi_{\mathrm{pub}}\).} Define
 \(v(H) := \max\{k_c, k_b\}\) and \(v(D) := k_c\)
-(\(0 < k_c \le v(x) \le v_{\max}\)). Any executed step with mean output
-\(k \in \{k_c, k_b\}\) satisfies
+(\(0 < k_c \le v(x) \le v_{\max}\)), and set
+\(\bar{\lambda} := \max\{\lambda_0, \lambda_1\}\) so
+\(\rho_* = \max\{1, \bar{\lambda}\}\). Any actively executed step
+(\texttt{care} on \(H\) or \(D\), or \texttt{bloom} on \(H\)) with mean
+output \(k \in \{k_c, k_b\}\) satisfies
 \((L_a v)(x) = k\bigl[(1-q)v(H) + q v(D)\bigr]\). In \emph{Case 1}
-(\(\gamma \le \delta\), \(k_b \le k_c\)), \(\rho_* = \max\{1, k_c\}\),
-\(v \equiv k_c\), and \((L_a v)(x) \le \rho_* v(x)\) across all
-\((x,a)\). In \emph{Case 2} (\(\gamma > \delta\), \(k_b > k_c\)),
-\(\lambda_1 = (1-q)k_b + q k_c > \lambda_0\),
-\(\rho_* = \max\{1, \lambda_1\}\), \(v(H) = k_b > k_c = v(D)\), and
-again
-\((L_{\mathrm{bloom}}v)(H) = k_b\lambda_1 = \lambda_1 v(H) \le \rho_* v(H)\),
-\((L_{\mathrm{care}}v)(H) = k_c\lambda_1 < \lambda_1 v(H)\),
-\((L_{\mathrm{care}}v)(D) = k_c\lambda_1 = \lambda_1 v(D) \le \rho_* v(D)\),
-and rejected \((D,\mathrm{bloom})\) yields \(v(D) \le \rho_* v(D)\).
+(\(\gamma \le \delta\), \(k_b \le k_c\)),
+\(\bar{\lambda} = \lambda_0 = k_c\), \(v \equiv k_c\), and
+\((L_a v)(x) \le k_c v(x) = \bar{\lambda} v(x)\) for every actively
+executed action. In \emph{Case 2} (\(\gamma > \delta\), \(k_b > k_c\)),
+\(\bar{\lambda} = \lambda_1 = (1-q)k_b + q k_c > \lambda_0\),
+\(v(H) = k_b > k_c = v(D)\), and
+\((L_{\mathrm{bloom}}v)(H) = k_b\lambda_1 = \bar{\lambda} v(H)\),
+\((L_{\mathrm{care}}v)(H) = k_c\lambda_1 < \bar{\lambda} v(H)\), and
+\((L_{\mathrm{care}}v)(D) = k_c\lambda_1 = \bar{\lambda} v(D)\).
+Meanwhile, rejected \((D,\mathrm{bloom})\) preserves the \(D\)-token
+unchanged (\((L_{\mathrm{bloom}}v)(D) = v(D) \le \rho_* v(D)\)) with
+\(0\) births, and \texttt{stop} yields
+\((L_{\mathrm{stop}}v)(x) = 0 \le \rho_* v(x)\) with \(0\) births.
 Summing \(V(P_t) := \sum_{u\in P_t} v(x_u)\) under any
-\(\pi \in \Pi_{\mathrm{pub}}\) yields
+\(\pi \in \Pi_{\mathrm{pub}}\) gives
 \(\mathbb{E}_\pi[V(P_{t+1}) \mid \mathcal{F}_t] \le \rho_* V(P_t)\) and
 \(\mathbb{E}_\pi[N_t] \le \frac{v_{\max}|P_0|}{k_c}\rho_*^t\). Tightness
 holds via \(\pi_{\mathrm{dorm}} \in \Pi_{\mathrm{pub}}\) (\texttt{care}
@@ -333,6 +425,38 @@ stationary \(\theta_0\) when \(\rho_* = \lambda_0\), and stationary
 \(\theta_1\) when \(\rho_* = \lambda_1\)
 (\(\mathbb{E}_{\theta_1}[V(P_t)] = V(P_0)\lambda_1^t\)).
 
+\emph{Subcritical finite-cumulative-births corollary
+(\(\bar{\lambda} < 1\)).} Suppose
+\(\bar{\lambda} := \max\{\lambda_0, \lambda_1\} < 1\) (so
+\(\rho_* = 1\)). At step \(t \ge 1\) (transitioning \(P_{t-1} \to P_t\)
+and producing strict births \(B_t\)), let \(A_t\) denote the number of
+tokens in \(P_{t-1}\) that actively execute \texttt{care} or healthy
+\texttt{bloom}. On each of those \(A_t\) active tokens,
+\((L_a v)(x) - v(x) \le -(1 - \bar{\lambda})v(x) \le -(1 - \bar{\lambda})k_c < 0\),
+whereas rejected \((D,\mathrm{bloom})\) changes \(v(D)\) by \(0\) and
+\texttt{stop} changes \(v(x)\) by \(-v(x) \le 0\). Conditioning on
+\(\mathcal{F}_{t-1}\) and taking expectations gives
+\[\mathbb{E}_\pi\bigl[V(P_{t-1}) - V(P_t)\bigm|\mathcal{F}_{t-1}\bigr] \ge (1 - \bar{\lambda}) k_c\,\mathbb{E}_\pi[A_t \mid \mathcal{F}_{t-1}].\]
+Telescoping from \(t=1\) to \(T\) and using \(V(P_T) \ge 0\) yields
+\((1 - \bar{\lambda})k_c \sum_{t=1}^T \mathbb{E}_\pi[A_t] \le V(P_0) - \mathbb{E}_\pi[V(P_T)] \le V(P_0)\).
+Because rejected \((D,\mathrm{bloom})\) and \texttt{stop} generate zero
+births and each active token generates at most \(b + \gamma\) expected
+strict births
+(\(\mathbb{E}_\pi[B_t] \le (b+\gamma)\mathbb{E}_\pi[A_t]\)), monotone
+convergence as \(T \to \infty\) yields
+\[\mathbb{E}_\pi\!\left[\sum_{t=1}^\infty B_t\right] \le \frac{(b + \gamma) V(P_0)}{(1 - \bar{\lambda}) k_c} < \infty
+\qquad (\forall \pi \in \Pi_{\mathrm{pub}}),\] whence
+\(\sum_{t=1}^\infty B_t < \infty\) \(\mathbb{P}_\pi\)-almost surely. For
+instance, from a single founder at
+\((s,\delta,b,\gamma,q) = (1/2, 1/4, 1/4, 1/8, 1/3)\) (\(k_c = 3/4\),
+\(k_b = 5/8\), \(\bar{\lambda} = 3/4\), \(V(P_0) = 3/4\)), the universal
+upper bound is \(\frac{(3/8)(3/4)}{(1/4)(3/4)} = \frac{3}{2}\), bounding
+both \(\pi_{\mathrm{dorm}}\) on \(D\) (\(0\) births) and autonomous
+\(\theta_0 D\) (\(\sum_{t=1}^\infty (3/4)^{t-1}(1/4) = 1\) expected
+total birth). Thus subcritical attainment of \(\rho_* = 1\) preserves
+only arrested tokens rather than ongoing operational work or continuing
+lineage reproduction.
+
 \textbf{(2)} \emph{Autonomous hereditary attainment versus switching
 policies.} Under autonomous multi-generational execution of \(\theta_0\)
 from \(\theta_0 D\),
@@ -340,9 +464,8 @@ from \(\theta_0 D\),
 Under autonomous execution of \(\theta_1\) from \(\theta_1 D\),
 \(\mathbb{E}_{\theta_1 D}[N_t] = k_c \lambda_1^{t-1} = \Theta(\rho_*^t) \iff \gamma \ge \delta \land \lambda_1 \ge 1\).
 By contrast, at \((s,\delta,b,\gamma,q) = (1/2, 1/4, 1/4, 1/8, 1/3)\)
-(\(k_c = 3/4 < 1\), \(k_b = 5/8 < 1\), \(\lambda_1 = 2/3 < 1\),
-\(\rho_* = 1\)), a switching controller
-\(\pi_{\mathrm{sw}} \in \Pi_{\mathrm{pub}}\) that runs \texttt{care} at
+(\(\rho_* = 1\)), a switching controller
+\(\pi_{\mathrm{sw}} \in \Pi_{\mathrm{pub}}\) running \texttt{care} at
 \(t=1\) (\(R_1 = 3\), reopening \(g\)) and \(\pi_{\mathrm{dorm}}\) for
 \(t \ge 2\) retains a damaged parent at \(t=2\) w.p. \(sq = 1/6\) (and
 leaves at least one \(D\)-token w.p.
@@ -350,18 +473,102 @@ leaves at least one \(D\)-token w.p.
 \(\frac{1}{6} \le \mathbb{E}_{\pi_{\mathrm{sw}}}[N_t] \le C\). The
 critical \((2/3,1/8,1/4,1/4,1/3)\) and supercritical
 \((3/4,1/8,3/8,1/4,1/3)\) rational identities follow identically as in
-the main text. \(\square\)
+Appendix A of the main manuscript. \(\square\)
+
+\subsection{\texorpdfstring{Explicit competing-mechanism transition
+laws: \(\mathcal{M}_{\mathrm{vote}}\) versus
+\(\mathcal{M}_{\mathrm{bypass}}\) (Section
+6.2)}{Explicit competing-mechanism transition laws: \textbackslash mathcal\{M\}\_\{\textbackslash mathrm\{vote\}\} versus \textbackslash mathcal\{M\}\_\{\textbackslash mathrm\{bypass\}\} (Section 6.2)}}\label{explicit-competing-mechanism-transition-laws-mathcalm_mathrmvote-versus-mathcalm_mathrmbypass-section-6.2}
+
+To formalize the causal-abstraction and interventional comparison in
+Section 6.2 \citep{rubenstein2017}, initialize a single damaged
+conservative founder \((\theta_0, D)\) (active bits of \((r_H, r_D)\)
+flipped so parity disagrees with intact zero backups,
+\(g = \mathrm{closed}\), per-step six-unit budget \(1 + 5 = 6\)) under
+autonomous conservative execution (\texttt{care} requested whenever
+living):
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Bootstrap majority-vote mechanism
+  (\(\mathcal{M}_{\mathrm{vote}}\)).} On \((D, \mathrm{care})\) with
+  six-unit budget:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    If \(b_{\mathrm{boot}} = 1\), majority voting reads the three cells
+    of \((r_H, r_D)\), pays \(R_t = 3\) plus \(1\) actuation and \(2\)
+    escrow (\(3+1+2=6\)), restores intact \((r_H, r_D)\) with
+    \(g \leftarrow \mathrm{open}\), and executes \texttt{care},
+    producing
+    \((I_{\mathrm{ret}}, B_t) \sim \mathrm{Bern}(s)\otimes\mathrm{Bern}(b)\)
+    of \(\theta_0\)-tokens that each suffer post-step damage
+    (\(d = D, g = \mathrm{closed}\)) independently w.p. \(q\).
+  \item
+    Under surgical ablation \(\mathrm{do}(b_{\mathrm{boot}} = 0)\),
+    majority voting cannot execute on \(D\): \(g\) remains
+    \(\mathrm{closed}\), no restoration or actuation fee is spent
+    (\(R_t = 0\)), zero births occur (\(B_t = 0\)), and the unrecovered
+    \((\theta_0, D)\) token remains absorbed in
+    \((D, g=\mathrm{closed})\) for all \(t \ge 1\).
+  \end{itemize}
+\item
+  \textbf{Bootstrap-independent auxiliary-latch mechanism
+  (\(\mathcal{M}_{\mathrm{bypass}}\)).} Carries a hardwired auxiliary
+  \texttt{care}-latch that does not read \(b_{\mathrm{boot}}\). On
+  \((D, \mathrm{care})\) with six-unit budget, for \emph{both}
+  \(b_{\mathrm{boot}} = 1\) and \(b_{\mathrm{boot}} = 0\), the auxiliary
+  latch pays \(R_t = 3\) plus \(1\) actuation and \(2\) escrow
+  (\(3+1+2=6\)), restores intact \((r_H, r_D)\) and sets
+  \(g \leftarrow \mathrm{open}\) by step end, and enters the \emph{exact
+  same} post-step law
+  \((I_{\mathrm{ret}}, B_t) \sim \mathrm{Bern}(s)\otimes\mathrm{Bern}(b)\)
+  of \(\theta_0\)-tokens independently damaged w.p. \(q\) (re-engaging
+  identically whenever \(D\) recurs at later steps).
+\end{enumerate}
+
+\emph{Observational-plus-calorimetric tie versus interventional
+separation.} Under unperturbed \(b_{\mathrm{boot}} = 1\),
+\(\mathcal{M}_{\mathrm{vote}}\) and \(\mathcal{M}_{\mathrm{bypass}}\)
+execute identical step kernels on both \((\theta_0, H)\) and
+\((\theta_0, D)\), inducing the \textbf{exact same infinite-horizon
+joint law} on \(((B_t, R_t))_{t\ge 1}\) (at
+\((3/4, 1/8, 3/8, 1/4, 1/3)\), \(R_1 = 3\), \(\mathbb{E}[B_1] = 3/8\),
+\(\mathbb{E}[R_2] = 3q(s+b) = 9/8\), and
+\(\mathbb{E}[B_2] = (s+b)b = 27/64\) under both mechanisms). Under
+\(\mathrm{do}(b_{\mathrm{boot}} = 0)\) from \((\theta_0, D)\),
+\(\mathcal{M}_{\mathrm{vote}}\) yields recovery probability \(0\) with
+\((R_1, B_1, B_2) = (0, 0, 0)\) w.p. \(1\)
+(\(\mathbb{E}[B_1 \mid \mathrm{do}(b_{\mathrm{boot}}=0)] = 0\)), whereas
+\(\mathcal{M}_{\mathrm{bypass}}\) recovers w.p. \(1\) with \(R_1 = 3\),
+\(\mathbb{E}[B_1 \mid \mathrm{do}(b_{\mathrm{boot}}=0)] = b = 3/8 > 0\),
+and \(\mathbb{E}[B_2 \mid \mathrm{do}(b_{\mathrm{boot}}=0)] = 27/64\).
 
 \section*{Declarations}\label{declarations}
 \addcontentsline{toc}{section}{Declarations}
 
-\textbf{Competing interests and AI disclosure.} The author(s) declare no
-competing interests or external funding. Generative AI systems (Gemini 4
-Carbon and ChatGPT 6 Astra) were used under the direction and
-verification of the human author(s) during algebraic cross-checking,
-bibliographic verification, and editorial preparation; the human
-author(s) bear sole responsibility for all arguments, proofs, and
-citations.
+\textbf{Competing interests, code availability, and AI disclosure.} The
+author(s) declare no competing interests or external funding. An
+anonymized, zero-dependency Python 3 standard-library script
+(\texttt{verify\_standalone.py}, runnable directly via
+\texttt{python3\ verify\_standalone.py}) and the vector figure generator
+(\texttt{generate\_figures.py}) accompany the submission package,
+independently verifying in exact \texttt{fractions.Fraction} arithmetic
+the Proposition 2 reachable-set counterexample, Proposition 3 protocol
+partitions and three-step parameter witness (\(377/512\)
+vs.~\(351/512\)), Theorem 1 growth ceilings and subcritical
+finite-births bound, and Section 6.2 competing-mechanism laws
+(\(\mathcal{M}_{\mathrm{vote}}\) vs.~\(\mathcal{M}_{\mathrm{bypass}}\)).
+The human author(s) conceived the philosophical problem, core framework,
+regenerative model, and proofs, directed all revisions, verified every
+calculation and citation, and bear full academic responsibility; ChatGPT
+6 Astra assisted with adversarial referee-style stress-testing and
+formal/conceptual critique, and Gemini 4 Carbon implemented the
+\texttt{fractions.Fraction} verification and Matplotlib figure scripts,
+audited BibTeX/TeX builds, and assisted with prose/TeX formatting.
 
 \clearpage
 \begingroup

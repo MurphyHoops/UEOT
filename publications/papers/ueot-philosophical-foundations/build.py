@@ -55,8 +55,9 @@ def digest(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-# 1. Regenerate vector PDF & 300-DPI PNG figures
-execute([sys.executable, "generate_figures.py"], "generate_figures")
+# 1. Run standalone exact-rational verifier & regenerate vector PDF / 300-DPI PNG figures
+execute([sys.executable, "-B", "verify_standalone.py"], "verify_standalone")
+execute([sys.executable, "-B", "generate_figures.py"], "generate_figures")
 
 # 2. Build Master Edition
 execute([
@@ -74,11 +75,12 @@ for old_png in OUT.glob("page-*.png"):
     old_png.unlink()
 execute(["pdftoppm", "-png", "-r", "144", "manuscript.pdf", "build/page"], "pdftoppm")
 
-# 3. Sync shared assets (references.bib, layout.lua, generate_figures.py, figures/*) across all 3 journal packages
+# 3. Sync shared assets (references.bib, layout.lua, generate_figures.py, verify_standalone.py, figures/*) across all 3 journal packages
 for sub in (SYN_DIR, BJPS_DIR, POS_DIR):
     shutil.copy2(ROOT / "references.bib", sub / "references.bib")
     shutil.copy2(ROOT / "layout.lua", sub / "layout.lua")
     shutil.copy2(ROOT / "generate_figures.py", sub / "generate_figures.py")
+    shutil.copy2(ROOT / "verify_standalone.py", sub / "verify_standalone.py")
     (sub / "figures").mkdir(exist_ok=True)
     for fig_file in (ROOT / "figures").glob("*"):
         if fig_file.is_file():
@@ -87,7 +89,12 @@ for sub in (SYN_DIR, BJPS_DIR, POS_DIR):
 # 4. Generate & compile Synthese double-anonymous package
 master_md = (ROOT / "manuscript.md").read_text(encoding="utf-8")
 syn_md = master_md
-for strip_line in ('author: "Degui Qian"\n', 'date: "November 2026"\n', 'version: "2.3"\n'):
+for strip_line in (
+    'author: "Degui Qian"\n',
+    'date: "November 2026"\n',
+    'version: "2.4"\n',
+    'version: "2.3"\n',
+):
     syn_md = syn_md.replace(strip_line, "", 1)
 
 syn_declarations = """# Declarations {.unnumbered}
@@ -96,11 +103,11 @@ syn_declarations = """# Declarations {.unnumbered}
 
 **Conflicts of interest / Competing interests.** The author(s) declare no financial or non-financial competing interests relevant to the content of this article.
 
-**Availability of data and material.** Not applicable. No empirical datasets were generated or analyzed; all mathematical models, proofs, and rational witness calculations are self-contained in the text and Appendix.
+**Availability of data and material.** Not applicable. No empirical datasets were generated or analyzed; all mathematical models, proofs, and exact rational witness calculations are self-contained in the text and Appendix.
 
-**Code availability.** Reproducible Python scripts used to generate Figures 1–3 and verify exact rational arithmetic accompany the submission package; to preserve double-anonymous peer review, the permanent archival DOI of the companion Apache-2.0 Lean 4 formalizations is recorded on the separate unblinded Title Page.
+**Code availability.** Anonymized, zero-dependency Python 3 standard-library verification code (`verify_standalone.py`, runnable via `python3 verify_standalone.py`) and reproducible figure-generation code (`generate_figures.py`) are bundled directly in the anonymous submission package so referees can independently verify all exact rational distributions, parameter-identifiability witnesses, and branching bounds. To preserve double-anonymous peer review, the permanent archival DOI of the companion Apache-2.0 Lean 4 formalizations is recorded on the separate unblinded Title Page.
 
-**Author contributions and AI disclosure.** This research and manuscript were directed by the human author(s) and completed with Gemini 4 Carbon and ChatGPT 6 Astra across philosophical analysis, mathematical derivation, algebraic and formal cross-checking, bibliographic verification, and manuscript preparation. In accordance with Springer Nature authorship and generative AI policies, AI systems are not listed as co-authors; the human author(s) defined the philosophical theses, conceptual architecture, and mathematical models, audited and verified every argument, proof, rational calculation, and scholarly citation, and bear sole academic and legal responsibility for the entire work (full named attribution is provided on the separate unblinded Title Page).
+**Author contributions and AI disclosure.** The human author(s) independently conceived the philosophical problem, core theses, typed preservation framework, and stochastic regenerative model, directed all revisions, personally derived or verified every proof, exact rational calculation, and scholarly citation, and bear full academic and legal responsibility for the entire work. During iterative revision, **ChatGPT 6 Astra** was used for adversarial referee-style stress-testing and mathematical/conceptual critique (quantifier scopes, reachable-set conditions, fixed-parameter saturation and three-step parameter boundaries, subcritical finite-birth bounds, and competing-mechanism transition specifications), and **Gemini 4 Carbon** was used for exact `fractions.Fraction` verification (`verify_standalone.py`), Matplotlib vector figure generation (`generate_figures.py`), prose harmonization, and BibTeX/LaTeX formatting under human audit. In accordance with Springer Nature authorship and generative AI policies, AI systems are not listed as co-authors (full named attribution is provided on the separate unblinded Title Page).
 """
 ack_idx = syn_md.index("# Acknowledgements and declarations {.unnumbered}")
 syn_md = syn_md[:ack_idx] + syn_declarations
@@ -166,10 +173,11 @@ head_sha = git_probe.stdout.strip() if git_probe.returncode == 0 else "standalon
 
 record = {
     "schema": "standalone-philosophy-build/3",
-    "version": "2.3",
+    "version": "2.4",
     "built_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
     "git_base_commit": head_sha,
     "commands": [
+        "python3 verify_standalone.py",
         "python3 generate_figures.py",
         "pandoc manuscript.md --standalone --number-sections --natbib --template=template.tex --lua-filter=layout.lua --to=latex --output=manuscript.tex",
         "latexmk -xelatex -interaction=nonstopmode -halt-on-error -outdir=build manuscript.tex",
@@ -183,7 +191,7 @@ record = {
         k: digest(ROOT / k)
         for k in [
             "manuscript.md", "references.bib", "template.tex", "layout.lua",
-            "build.py", "generate_figures.py",
+            "build.py", "generate_figures.py", "verify_standalone.py",
             "figures/fig1_architecture_and_lattice.pdf",
             "figures/fig2_memory_and_phase.pdf",
             "figures/fig3_preservation_and_rungs.pdf",
@@ -202,15 +210,18 @@ record = {
         k: digest(ROOT / k)
         for k in [
             "manuscript.tex", "manuscript.pdf",
+            "submissions/synthese/verify_standalone.py",
             "submissions/synthese/synthese_blinded_manuscript.md",
             "submissions/synthese/synthese_blinded_manuscript.tex",
             "submissions/synthese/synthese_blinded_manuscript.pdf",
             "submissions/synthese/synthese_title_page.pdf",
+            "submissions/bjps/verify_standalone.py",
             "submissions/bjps/bjps_blinded_manuscript.tex",
             "submissions/bjps/bjps_blinded_manuscript.pdf",
             "submissions/bjps/bjps_online_technical_appendix.tex",
             "submissions/bjps/bjps_online_technical_appendix.pdf",
             "submissions/bjps/bjps_title_page.pdf",
+            "submissions/philosophy-of-science/verify_standalone.py",
             "submissions/philosophy-of-science/pos_blinded_manuscript.tex",
             "submissions/philosophy-of-science/pos_blinded_manuscript.pdf",
             "submissions/philosophy-of-science/pos_supplementary_appendix.tex",
