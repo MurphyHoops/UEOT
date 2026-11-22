@@ -84,7 +84,7 @@ def build(language, env, invocation):
     info = subprocess.check_output(['pdfinfo', str(pdf)], text=True)
     pages = int(re.search(r'^Pages:\s+(\d+)', info, re.M).group(1))
     receipt = {
-        'schema': 'ueot.mathematics.bilingual.build.v1', 'edition': '4.1', 'language': language,
+        'schema': 'ueot.mathematics.bilingual.build.v1', 'edition': '4.2', 'language': language,
         'status': 'COMPILED_REQUIRES_VISUAL_REVIEW',
         'source': str(source.relative_to(REPO)), 'source_sha256': shared.sha(source),
         'latex': str(tex.relative_to(REPO)), 'latex_sha256': shared.sha(tex),
@@ -121,7 +121,7 @@ def main():
     shared.CACHE.mkdir(parents=True, exist_ok=True)
     env = shared.font_environment(args.font_dir.resolve(), args.download_fonts)
     # Fixed edition date, separate from the unchanged legacy builder's epoch.
-    env['SOURCE_DATE_EPOCH'] = '1794355200'  # 2026-11-11 00:00:00 UTC
+    env['SOURCE_DATE_EPOCH'] = '1795305600'  # 2026-11-22 00:00:00 UTC
     env['FORCE_SOURCE_DATE'] = '1'
     if args.runtime_dir:
         runtime = args.runtime_dir.resolve()

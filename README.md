@@ -6,8 +6,8 @@ UEOT studies objects, persistence, evolution and purpose through **three indepen
 
 | Work | Scope | Read |
 |---|---|---|
-| **客体、演化与意义 — 一种开放的统一自然哲学** | Philosophical arguments about process, relation, identity, life, purpose, meaning, freedom and a shared world; six parts and thirty chapters | [Markdown](./philosophy/UEOT_PHILOSOPHY.md) · [PDF](./philosophy/UEOT_PHILOSOPHY.pdf) · [LaTeX](./philosophy/UEOT_PHILOSOPHY.tex) |
-| **UEOT 数学著作** | Definitions, assumptions, proofs, counterexamples, algorithms and explicit Lean correspondences; the complete original Core together with later mathematical developments | [Markdown](./mathematics/UEOT_MATHEMATICS.md) · [PDF](./mathematics/UEOT_MATHEMATICS.pdf) · [LaTeX](./mathematics/UEOT_MATHEMATICS.tex) |
+| **客体、演化与意义 — 一种开放的统一自然哲学** (v3.1, ZH/EN) | Philosophical arguments about process, relation, identity, life, purpose, meaning, freedom and a shared world; six parts, thirty chapters, and bilingual editions | [ZH Markdown](./philosophy/UEOT_PHILOSOPHY.md) · [ZH PDF](./philosophy/UEOT_PHILOSOPHY.pdf) · [EN Markdown](./philosophy/UEOT_PHILOSOPHY.en.md) · [EN PDF](./philosophy/UEOT_PHILOSOPHY.en.pdf) |
+| **UEOT 数学著作** (v4.2, ZH/EN) | Definitions, assumptions, proofs, counterexamples, algorithms, open problems, and explicit Lean correspondences across Chapters 0–40 and Appendices A–G | [ZH Markdown](./mathematics/UEOT_MATHEMATICS.md) · [ZH PDF](./mathematics/UEOT_MATHEMATICS.pdf) · [EN Markdown](./mathematics/UEOT_MATHEMATICS.en.md) · [EN PDF](./mathematics/UEOT_MATHEMATICS.en.pdf) |
 | **《UEOT物理学》** | Physical assumptions, quantum/QFT derivations, falsifiable predictions, proof status and limits; maintained separately from Core mathematics | [3.12 bilingual manuscript candidate](./physics/qm/book/README.md) · [3.12 PDF](./physics/qm/book/UEOT_PHYSICS.pdf) · [3.12 LaTeX](./physics/qm/book/UEOT_PHYSICS.tex) · [3.11 archive](https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978e173e23015f026994fb60c65/physics/qm/book/README.md) |
 
 Philosophy develops concepts and normative arguments; mathematics verifies conditional claims and their limits; physics separately records sector-specific assumptions, derivations, and falsifiable tests. The three books remain independent reading works, not mutually interchangeable certificates.
@@ -47,7 +47,7 @@ See [Project Architecture](./docs/PROJECT_ARCHITECTURE.md) for the target struct
 
 ## Formal verification
 
-**Current Core status — 2026-11-13:** start at the [current state and reading route](./core/status/CURRENT.md), the [successor reference specification 1.0](./core/specifications/successor/README.md), then the [Lean package](./formalization/ueot-core/README.md). Core content is **CLASSIFIED_CORE_CLOSED** within its stated conditional scope; empirical support remains **UNVERIFIED**.
+**Current Core status — 2026-11-22:** start at the [current state and reading route](./core/status/CURRENT.md), the [successor reference specification 1.0](./core/specifications/successor/README.md), then the [Lean package](./formalization/ueot-core/README.md). All 1,051 Lean 4 modules in `formalization/ueot-core` compile cleanly and pass pure-kernel standard-axiom verification (zero `sorryAx`, zero `native_decide`). Core content is **CLASSIFIED_CORE_CLOSED** within its stated conditional scope; empirical support remains **UNVERIFIED**.
 
 The [2026-11-13 scope resolution](./council/resolutions/20261113-core-claim-scope-reconciliation.md)
 aligns the constitution, canonical claims, glossary and method with those

@@ -20,18 +20,18 @@ class ProofReuseTests(unittest.TestCase):
 
     def test_evidence_and_sources_exact_baseline(self):
         res = reuse.status(self.data)
-        self.assertEqual(res["module_source_hashes_verified"], 724)
-        self.assertEqual(res["ueot_maintained_modules"], 713)
+        self.assertEqual(res["module_source_hashes_verified"], 1051)
+        self.assertEqual(res["ueot_maintained_modules"], 1040)
         self.assertEqual(res["vendor_modules"], 11)
-        self.assertEqual(res["public_source_theorems_with_direct_proof_graph"], 4630)
+        self.assertEqual(res["public_source_theorems_with_direct_proof_graph"], 4634)
         self.assertEqual(res["verified_equal_type_groups"], 37)
         self.assertEqual(res["equal_type_statement_names"], 77)
         self.assertEqual(res["near_type_not_defeq_candidate_pairs"], 15)
         self.assertEqual(res["crossfile_exact_code_clone_candidates"], 68)
-        self.assertEqual(res["overlay_public_theorems"], 837)
+        self.assertEqual(res["overlay_public_theorems"], 841)
         self.assertEqual(res["overlay_cross_snapshot_defeq_matches"], 0)
         self.assertEqual(res["overlay_lexical_reuse_candidates"], 219)
-        self.assertEqual(res["overlay_count"], 19)
+        self.assertEqual(res["overlay_count"], 20)
         self.assertEqual(res["overlay_registered_direct_edges"], 1337)
         self.assertEqual(res["overlay_historical_public_repairs"], 1)
         self.assertEqual(res["overlay_existing_registered_direct_edge_repairs"], 1)
@@ -39,7 +39,7 @@ class ProofReuseTests(unittest.TestCase):
                              for row in self.data["graph"].values()), 6224)
 
     def test_calibrated_defect_overlay_chain_and_kernel_graph(self):
-        self.assertEqual(len(self.data["overlays"]), 19)
+        self.assertEqual(len(self.data["overlays"]), 20)
         prior, current = self.data["overlays"][:2]
         self.assertEqual(prior["base_snapshot_modules"], 633)
         self.assertEqual(current["base_snapshot_modules"], 634)
@@ -2931,7 +2931,7 @@ class ProofReuseTests(unittest.TestCase):
 
     def test_new_lean_module_cannot_be_omitted_from_index(self):
         live = reuse.live_source_paths()
-        self.assertEqual(len(live), 724)
+        self.assertEqual(len(live), 1051)
         new = "formalization/ueot-core/UEOT/V3/FutureNovelLemma.lean"
         with mock.patch.object(reuse, "live_source_paths", return_value=live | {new}):
             with self.assertRaisesRegex(RuntimeError, "STALE_AUDIT_SOURCE_SET"):

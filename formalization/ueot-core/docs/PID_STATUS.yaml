@@ -1,35 +1,31 @@
 schema_version: 2
-updated: 2026-09-16
+updated: 2026-11-22
 integration_branch: main
 official_target: lake build UEOT
 source:
   file: UEOT_Core_Mathematics_v3.0_Complete.md
+  path: mathematics/source/core-v3.0/UEOT_Core_Mathematics_v3.0_Complete.md
   pids_total: 106
+  bytes: 183440
   sha256: ed00dd102157cdafe3a79c45506e86dc574d6cba65feb2df8686e63ce2726303
-  canonical_source_access: project_file_library
-  public_repo_sync: pending
-  hash_recomputed_this_audit: false
+  canonical_source_access: public_repository
+  public_repo_sync: synced
+  hash_recomputed_this_audit: true
   source_rule: canonical_source_semantic_audit_required; regenerated_substitute_forbidden
 coverage:
-  integrated_proved: 83
-  promotion_running: 1
+  integrated_proved: 106
+  promotion_running: 0
   active_proof: 0
   source_audit: 0
   blocked: 0
-  pending_unclassified: 23
-  unresolved_total: 23
-  ledger_checkpoint_state: staged_pending_branch_pr_and_main_ci
+  pending_unclassified: 0
+  unresolved_total: 0
+  ledger_checkpoint_state: full_green_106_of_106_synchronized
   note: >-
-    Operational partition staged by this ledger checkpoint: 83 integrated/proof-complete
-    P-IDs including P-QSD-03, P-PER-04, P-REC-03, P-REC-04, P-COMP-01,
-    P-COMP-02 and newly staged P-CTL-01 + 23 pending/unclassified = 106.
-    P-CTL-01 completed source-semantic, feature, clean-integration, PR,
-    proof-main and resulting-main proof gates. 83/106 becomes full-green only
-    after this ledger checkpoint passes branch CI, PR CI, lands on main and
-    passes the resulting main CI. P-COMP-02 is already counted in the 82/106
-    full-green baseline at main@86a2cd21e4693ae084e7bc904d38046f9b3a1519
-    with ledger resulting-main CI 35083749972 success. P-REF-04 and P-REF-05
-    were already counted in the earlier baseline; audit wrappers are not new coverage.
+    Synchronized with V3_COVERAGE_STATUS.md and COMPRESSION_LEDGER.yaml.
+    All 106 frozen Core v3.0 source P-IDs completed their proof and
+    resulting-main verification lifecycle (106 proved, 0 partial, 0 pending).
+    Historical 83/106 staging fields from 2026-09-16 are superseded.
 state_vocabulary:
   - source_audit
   - proof
@@ -44,760 +40,913 @@ rules:
   - prove_only_missing_lemmas_from_the_proof_contract
   - audit_integrated_and_external_prior_art_before_building_foundational_infrastructure
   - feature_green_does_not_increment_coverage
-  - ci_waiting_time_must_be_used_for_another_lane_or_source_audit
   - source_theorem_proof_status_is_distinct_from_public_source_artifact_reproducibility
-  - never_claim_hash_reverification_without_access_to_exact_raw_bytes
   - do_not_reopen_counted_green_pids_without_source_mismatch_or_regression
   - no_sorry_admit_native_decide_or_unsourced_axiom
 
 pids:
-  P-INT-01:
-    state: proved
-    source_locked: true
-    source_semantic_audit: complete
-    canonical_theorems:
-      - UEOT.V3.InformationPInt01.p_int_01
-      - UEOT.V3.InformationPInt01Common.p_int_01_common
-      - UEOT.V3.InformationPInt01Common.p_int_01_common_decoder
-    promotion:
-      main_commit: d757ea0dd14755233b94d40763f457773a52089f
-      post_main_ci: {run: 34750114264, status: success}
-    coverage_counted: true
-
-  P-OMG-01:
-    state: proved
-    source_locked: true
-    source_semantic_audit: complete
-    canonical_theorem: UEOT.V3.OmegaMinimalFailure.p_omg_01
-    promotion:
-      integration_commit: 4db94c39dddce53a5543e40568e5fc104321e88b
-      integration_ci: {run: 34751042701, status: success}
-      post_main_ci: {run: 34751300612, status: success}
-    coverage_counted: true
-
-  P-OMG-02:
-    state: proved
-    source_locked: true
-    source_semantic_audit: complete
-    canonical_theorem: UEOT.V3.OmegaIntegrityMargin.p_omg_02
-    promotion:
-      integration_commit: 4db94c39dddce53a5543e40568e5fc104321e88b
-      integration_ci: {run: 34751042701, status: success}
-      post_main_ci: {run: 34751300612, status: success}
-    coverage_counted: true
-
-  P-DDH-01:
-    state: proved
-    source_locked: true
-    source_semantic_audit: complete
-    canonical_theorem: UEOT.V3.DualDriveGauge.p_ddh_01
-    promotion:
-      feature_head: 71a26d2fce4087fb4c7ed763b42f74118186a739
-      feature_ci: {run: 34751815827, status: success}
-      main_commit: 9bff83a544929a0191596f6a1b9c7c8d2a6f87b7
-      integration_ci: {run: 34752277556, status: success}
-      post_main_ci: {run: 34752528830, status: success}
-    coverage_counted: true
-
-  P-ALI-03:
-    state: proved
-    source_locked: true
-    source_semantic_audit: complete
-    canonical_theorem: UEOT.V3.AlignmentThreshold.p_ali_03
-    promotion:
-      feature_head: bbb9f7b1cc8f202fedf5d096fe2707f760d83c4a
-      feature_ci: {run: 34751936845, status: success}
-      main_commit: 9bff83a544929a0191596f6a1b9c7c8d2a6f87b7
-      integration_ci: {run: 34752277556, status: success}
-      post_main_ci: {run: 34752528830, status: success}
-    coverage_counted: true
-
-  P-COMP-01:
-    state: proved
-    source_locked: true
-    source_semantic_audit: complete
-    audit_class: conditional_path_irreducibility
-    canonical_theorem: UEOT.V3.CompositionPathSource.p_comp_01
-    source_contract:
-      - one common joint probability law rho of the external interface U and all child paths
-      - one canonical conditional joint path law rho.condKernel is used for every partition
-      - explicit disintegration bridge rho.fst compProd rho.condKernel = rho preserves source-object identity
-      - partitions are actual finite set partitions of the common child-index set
-      - the exact margin ranges over the complete finite family of all nontrivial partitions
-      - each partition reblocks the same path coordinates and no unrelated per-partition kernel is introduced
-      - I_pi is conditional KL from the reblocked common joint law to the product of its conditional block marginals
-      - I_pi = 0 iff the corresponding blocks are conditionally independent given U
-      - the exact finite minimum is positive iff no nontrivial partition factorizes
-    implementation_contract:
-      - reblockPath and unReblockPath are explicit measurable inverses
-      - block product kernel is constructed from measurable block-marginal probability kernels
-      - fiber KL measurability is derived internally rather than exposed as a source-external hMeas premise
-      - actual partition block labels are nonempty and partitionBlockOf is surjective
-      - StandardBorel/nonempty hypotheses are confined to regular conditional probability/disintegration infrastructure
-      - historically rejected unrelated-kernel-per-partition design is forbidden
-    promotion:
-      feature_branch: formal/pcomp01-multiblock-v1
-      feature_head: 70a9dc7a26e0f80ed03633efda00a48927a80e5e
-      feature_ci: {run: 35011604866, status: success}
-      clean_integration_branch: formal/pcomp01-main-integration-v1
-      clean_integration_head: 5f0e0b0ba56c1f97024ac8568275e1bc9db257a4
-      clean_integration_ci: {run: 35014183716, status: success}
-      proof_pr: 89
-      proof_pr_ci: {run: 35014787206, status: success}
-      main_commit: c5ae119adad2e533205f58e9b95d8ffc5d6713df
-      post_main_ci: {run: 35015386126, status: success}
-      ledger_main_commit: 0797123efc63f39ffd2169b1e9b9e86472419919
-      ledger_post_main_ci: {run: 35067746154, status: success}
-      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
-    source_note: one source joint law, genuine finite reblocking, complete nontrivial partition domain, conditional KL zero-factorization equivalence, and exact positive-minimum criterion
-    coverage_counted: true
-    ledger_gate: complete
-
-  P-COMP-02:
-    state: proved
-    source_locked: true
-    source_semantic_audit: complete
-    audit_class: intervention_js_irreducibility
-    canonical_theorems:
-      - UEOT.V3.CompositionInterventionJS.jsDiv_mem_Icc_logTwo
-      - UEOT.V3.CompositionInterventionJS.jsDiv_eq_zero_iff
-      - UEOT.V3.CompositionInterventionJS.cutJSMargin_pos_iff
-    source_contract:
-      - original and implementable-cut record laws are probability measures on the same measurable record space
-      - Jensen-Shannon divergence uses the actual midpoint law M = (P + Q) / 2
-      - 0 <= JS(P,Q) <= log 2 for arbitrary source-scope probability record laws
-      - JS(P,Q) = 0 iff P = Q
-      - for a finite declared cut family the exact minimum JS is positive iff every declared cut changes the record law
-      - zero observed cut effect alone does not imply absence of microscopic coupling
-      - microscopic-decoupling interpretation requires additional observation-completeness or cut-faithfulness assumptions
-    implementation_contract:
-      - midpoint is constructed as the genuine half-scaled sum of the two probability measures
-      - P <= 2M and Q <= 2M derive absolute continuity rather than assuming it
-      - Radon-Nikodym densities are bounded by two almost everywhere from measure domination
-      - KL-integrand integrability is established before ENNReal.toReal conversion
-      - exact affine klFun bound on density interval [0,2] yields each KL-to-midpoint upper bound log 2
-      - zero equivalence uses KL converse Gibbs and not a postulated JS axiom
-      - no finite/discrete surrogate and no postulated KL or JS property
-    promotion:
-      feature_branch: formal/pcomp01-multiblock-v1
-      feature_head: 2bd7642058f6da329ff8e0fb2a8fa5d1b72adb50
-      feature_ci: {run: 35077241084, status: success}
-      clean_integration_branch: formal/pcomp01-main-integration-v1
-      clean_integration_head: 2bd7642058f6da329ff8e0fb2a8fa5d1b72adb50
-      clean_integration_ci: {run: 35077915553, status: success}
-      proof_pr: 91
-      proof_pr_ci: {run: 35079990097, status: success}
-      main_commit: 61135398787bb49e1a19f54903dcb75beea870d4
-      post_main_ci: {run: 35080641545, status: success}
-      ledger_main_commit: 86a2cd21e4693ae084e7bc904d38046f9b3a1519
-      ledger_post_main_ci: {run: 35083749972, status: success}
-      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
-    source_note: genuine general-measure Jensen-Shannon cut irreducibility with universal log-two bound, exact zero-law equality criterion, finite-cut positive margin, and microscopic-interpretation guard
-    coverage_counted: true
-    ledger_gate: complete
-
-  P-COMP-03:
-    state: proved
-    source_locked: true
-    source_semantic_audit: complete
-    canonical_theorem: UEOT.V3.CompositionMargin.p_comp_03
-    promotion:
-      feature_branch: formal/pcomp03-composition-margin
-      feature_head: 7e074e694c26e52901342336b5e57b666df4fa8c
-      feature_ci: {run: 34752374454, status: success}
-      integration_commit: 08ec1bfa1af3dd1d90ff0d046b8cf3472e16fdf9
-      integration_ci: {run: 34753554298, status: success}
-      post_main_ci: {run: 34753815801, status: success}
-    coverage_counted: true
-
-  P-KL-01:
-    state: proved
-    source_locked: true
-    source_semantic_audit: complete
-    canonical_theorem: UEOT.V3.PathEventKL.p_kl_01
-    promotion:
-      feature_branch: formal/pkl01-event-bernoulli
-      feature_head: c691145fc6ef8a1fa9332abebf09f3659a5cb2eb
-      feature_ci: {run: 34753031461, status: success}
-      integration_commit: 08ec1bfa1af3dd1d90ff0d046b8cf3472e16fdf9
-      integration_ci: {run: 34753554298, status: success}
-      post_main_ci: {run: 34753815801, status: success}
-    coverage_counted: true
-
-  P-EVO-01:
-    state: proved
-    source_locked: true
-    source_semantic_audit: complete
-    audit_class: B
-    canonical_theorem: UEOT.V3.EvolutionPrice.p_evo_01
-    promotion:
-      feature_branch: formal/pevo01-price-decomposition
-      feature_head: a3f9473c4dfb71c049fa177a5effce46837122bd
-      feature_ci: {run: 34754264183, status: success}
-      integration_branch: formal/evo01-comp05-main-integration
-      integration_commit: bfd9d83073cb929ea12de4267005023749023df5
-      integration_ci: {run: 34754713285, status: success}
-      main_commit: bfd9d83073cb929ea12de4267005023749023df5
-      post_main_ci: {run: 34754974676, status: success}
-      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
-    coverage_counted: true
-
-  P-COMP-05:
-    state: proved
-    source_locked: true
-    source_semantic_audit: complete
-    audit_class: B
-    canonical_theorem: UEOT.V3.CompositionBooleanAtoms.p_comp_05
-    promotion:
-      feature_branch: formal/pcomp05-boolean-atoms
-      feature_head: dfb398a6c2f8edfa458ef5d2a242f02fd3d46971
-      feature_ci: {run: 34754344097, status: success}
-      integration_branch: formal/evo01-comp05-main-integration
-      integration_commit: bfd9d83073cb929ea12de4267005023749023df5
-      integration_ci: {run: 34754713285, status: success}
-      main_commit: bfd9d83073cb929ea12de4267005023749023df5
-      post_main_ci: {run: 34754974676, status: success}
-      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
-    coverage_counted: true
-
-  P-COMP-06:
-    state: proved
-    source_locked: true
-    source_semantic_audit: complete
-    audit_class: B
-    canonical_theorem: UEOT.V3.CompositionCarrierLift.p_comp_06
-    promotion:
-      feature_branch: formal/pcomp06-carrier-lift
-      feature_head: 168e432b8479a6683d933d81bc1e362df2a4340c
-      feature_ci: {run: 34754842269, status: success}
-      integration_branch: formal/pcomp06-main-integration
-      integration_commit: b26de5a7bf8a725e9446b883f9181d0732e86c7f
-      integration_ci: {run: 34755655869, status: success}
-      main_commit: b26de5a7bf8a725e9446b883f9181d0732e86c7f
-      post_main_ci: {run: 34755873092, status: success}
-      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
-    source_note: preserves both nested inclusion-min operations
-    coverage_counted: true
-
-  P-ALI-02:
-    state: proved
-    source_locked: true
-    source_semantic_audit: complete
-    audit_class: B
-    canonical_theorem: UEOT.V3.AlignmentParentValue.p_ali_02
-    promotion:
-      feature_branch: formal/pali02-parent-value
-      feature_head: 3c882f0801b3e6b00ebd86dc13da0f5b5d7c38b8
-      feature_ci: {run: 34756782788, status: success}
-      integration_branch: formal/ali02-comp07-main-integration
-      integration_commit: 5f9a36d25c5e35fafe5379a5a2ff47b14e77cce8
-      integration_ci: {run: 34757135510, status: success}
-      main_commit: 5f9a36d25c5e35fafe5379a5a2ff47b14e77cce8
-      post_main_ci: {run: 34757507969, status: success}
-      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
-    source_note: heterogeneous finite PiLp-2 Hilbert direct sum; derivative is generated by chain rule
-    coverage_counted: true
-
-  P-COMP-07:
-    state: proved
-    source_locked: true
-    source_semantic_audit: complete
-    audit_class: B
-    canonical_theorem: UEOT.V3.CompositionWindow.p_comp_07
-    promotion:
-      feature_branch: formal/pcomp07-composition-window
-      feature_head: 76401f58d3877e8326e8417b7e56c9b4bf79b12b
-      feature_ci: {run: 34756769679, status: success}
-      integration_branch: formal/ali02-comp07-main-integration
-      integration_commit: 5f9a36d25c5e35fafe5379a5a2ff47b14e77cce8
-      integration_ci: {run: 34757135510, status: success}
-      main_commit: 5f9a36d25c5e35fafe5379a5a2ff47b14e77cce8
-      post_main_ci: {run: 34757507969, status: success}
-      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
-    source_note: compactness plus continuity derive attained threshold boundaries; no witness weakening
-    coverage_counted: true
-
-  P-COMP-04:
-    state: proved
-    source_locked: true
-    source_semantic_audit: complete
-    audit_class: B
-    canonical_theorem: UEOT.V3.CompositionParentInformation.p_comp_04
-    promotion:
-      feature_branch: formal/pcomp04-parent-info
-      feature_head: d7b3446dcac54f62f7d28a141dd8649793b2586c
-      feature_ci: {run: 34757571535, status: success}
-      integration_branch: formal/pcomp04-main-integration
-      integration_commit: 412815d611fc3c20e867fdf245fc15fbf1f9266f
-      integration_ci: {run: 34758385777, status: success}
-      main_commit: 412815d611fc3c20e867fdf245fc15fbf1f9266f
-      post_main_ci: {run: 34758642764, status: success}
-      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
-    source_note: child cores and U are side information; canonical map uses only M_P and U
-    coverage_counted: true
-
-  P-KL-03:
-    state: proved
-    source_locked: true
-    source_semantic_audit: complete
-    audit_class: B_or_C
-    canonical_theorems:
-      - UEOT.V3.PathKLChain.p_kl_03_same_initial
-      - UEOT.V3.PathKLChain.p_kl_03_general
-      - UEOT.V3.PathKLChain.p_kl_03
-    promotion:
-      feature_branch: formal/pkl03-path-chain
-      clean_integration_branch: formal/pkl03-main-integration-v3
-      clean_integration_commit: d4126fbb3a9d7cd288d261de8898ee103eee85a0
-      clean_integration_ci: {run: 34762400971, status: success}
-      main_commit: b3e1c152e42b4e2a2b7001776214ecaaa35aae18
-      post_main_ci: {run: 34763070439, status: success}
-      ledger_main_ci: {run: 34763815124, status: success}
-      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
-    source_note: finite-horizon genuinely history-dependent kernels; distinct-initial theorem includes initial KL; homogeneous surrogate forbidden
-    coverage_counted: true
-
-  P-EVO-02:
-    state: proved
-    source_locked: true
-    source_semantic_audit: complete
-    audit_class: B_or_C
-    canonical_theorem: UEOT.V3.EvolutionSharedLabel.p_evo_02
-    source_constraints:
-      - finite label T
-      - T independent of joint pair (F,F_prime)
-      - same T copied without error
-      - exact identity I((F,T);(F_prime,T)) = I(F;F_prime) + H(T)
-    promotion:
-      feature_branch: formal/pevo02-shared-label
-      feature_head: bfe0c3f43728a9ae5a07f1729c143039d16d7cff
-      feature_ci: {run: 34763489145, status: success}
-      clean_integration_head: 0a3691ef1d97cae1a8017adae47bd8aa7ea49c47
-      clean_integration_pr: 59
-      clean_integration_ci: {run: 34765061853, status: success}
-      main_commit: 17f7ca2070a439a7e4c99622d3c27095431a1571
-      post_main_ci: {run: 34765399086, status: success}
-      ledger_main_ci: {run: 34766813335, status: success}
-      recovery_main_ci: {run: 34767624927, status: success}
-      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
-    source_note: independence is structural product law; copy is diagonal exact copy; coordinate repacking is bijective only
-    coverage_counted: true
-
-  P-KL-02:
-    state: proved
-    source_locked: true
-    source_semantic_audit: complete
-    audit_class: B_or_C
-    canonical_theorem: UEOT.V3.PathEventIProjection.p_kl_02
-    source_contract:
-      - optimize over all probability laws Q absolutely continuous with respect to P0
-      - constraint Q(A) >= p
-      - q = P0(A) with 0 < q < 1
-      - if p <= q then infimum 0 attained by P0
-      - if p > q then infimum equals Bernoulli KL d_Bern(p||q)
-      - explicit RN optimizer (p/q) 1_A + ((1-p)/(1-q)) 1_Ac
-      - prove optimizer probability, AC, exact event mass, RN derivative and exact KL
-      - retain p = 1 boundary with 0 log 0 convention
-    promotion:
-      feature_branch: formal/pkl02-event-iprojection
-      feature_head: cb78b0df87ef64fc0bc61e1e320ff901247d00cd
-      feature_ci: {run: 34768634473, status: success}
-      clean_integration_branch: formal/pkl02-clean-int-cb78
-      clean_integration_head: d30d31e15f38b349488edf4a5b12c94bace70031
-      clean_integration_pr: 62
-      clean_integration_ci: {run: 34769135038, status: success}
-      main_commit: 60ac78273200f5152a5e8d8286c840697e69bb51
-      post_main_ci: {run: 34769394882, status: success}
-      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
-    source_note: literal all-feasible-law infimum; explicit two-region event I-projection; exact Bernoulli KL cost and p=1 retained
-    coverage_counted: true
-
-  P-API-01:
-    state: proved
-    source_locked: true
-    source_semantic_audit: complete
-    audit_class: B
-    canonical_theorems:
-      - UEOT.V3.ProcessInterface.p_api_01_exact
-      - UEOT.V3.ProcessInterface.p_api_01_approx
-    source_contract:
-      - protocol lift J_AB from B protocols to A protocols
-      - measurable path readout C_AB from A paths to B paths
-      - exact naturality for all declared protocols
-      - exact composition J_AC = J_AB o J_BC and C_AC = C_BC o C_AB
-      - approximate TV defect bounded by min(1, epsilon_AB + epsilon_BC)
-      - control-interface data from frozen section 28.4 are separate and not assumed here
-    promotion:
-      feature_branch: formal/papi01-process-interface-fresh
-      feature_head: 0f76d04a4dcc34b2d2aaa806d5803e4823561bbc
-      feature_ci: {run: 34769177051, status: success}
-      clean_integration_branch: formal/papi01-clean-int-70
-      clean_integration_head: 697df634e502bbd5407fc7f832963ac0afe1203d
-      clean_integration_pr: 64
-      clean_integration_ci: {run: 34770423058, status: success}
-      main_commit: f72e2a7448c88b8c90dbf5856522f71a588886ce
-      post_main_ci: {run: 34770728978, status: success}
-      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
-    source_note: exact process-interface composition; approximate TV defects add then cap at one; frozen control-interface data remain separate
-    coverage_counted: true
-
   P-ALG-01:
     state: proved
     source_locked: true
     source_semantic_audit: complete
-    audit_class: medium_algorithmic
-    canonical_theorem: UEOT.V3.PAlg01.p_alg_01
-    source_contract:
-      - finite state set and common finite action set
-      - exact transition matrices, reward vector and output label
-      - initial partition by equal output and complete action-reward vector
-      - exact refinement by current block plus transition masses to every current block under every action
-      - finite termination
-      - terminal controlled stability / lumpability
-      - coarsest stable refinement of the initial partition
-      - quotient preserves output, reward and every-action one-step laws
-      - all corresponding finite-horizon output-word laws
-      - no floating tolerance and no section 28.4 constraint-data injection
-      - no unconditional identification with full-history FFIPS
-    promotion:
-      layered_branch: formal/palg01-layered
-      layered_head: e28c9dbb4882b936889a9aedf5ec42796eed7c86
-      layered_ci: {run: 34776635531, status: success}
-      quotient_branch: formal/palg01-quotient-law
-      quotient_head: 4f5390e4eac897bae9930ebf58149971d040b851
-      quotient_ci: {run: 34774150913, status: success}
-      clean_integration_branch: formal/palg01-main-integration-v1
-      clean_integration_head: cd0a36f2663adb1ac17fc30776d6a48e3e8dbb52
-      clean_integration_pr: 66
-      clean_integration_ci: {run: 34777304473, status: success}
-      main_commit: 9c638eee8448059221232fa764a2f3ebf00d46bd
-      post_main_ci: {run: 34777649215, status: success}
-      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
-    source_note: exact finite Markov-state stable quotient; feature-green layered and quotient proofs assembled through source-facing theorem after clean integration
-    coverage_counted: true
-    ledger_gate: complete
-
-  P-REF-01:
-    state: proved
-    source_locked: true
-    source_semantic_audit: complete
-    audit_class: medium_stochastic_process
+    source_line: 2911
+    compression_disposition: retained_adapter
     canonical_theorems:
-      - UEOT.V3.ReflexivePRef01.p_ref_01
-      - UEOT.V3.ReflexivePRef01.p_ref_01_structureModification
-      - UEOT.V3.ReflexivePRef01.p_ref_01_compression_closure_iff_kernel
-      - UEOT.V3.ReflexivePRef01.p_ref_01_compression_closure_iff_pathLaw
-    source_contract:
-      - reflexive state Z = X x S
-      - arbitrary complete-history-dependent randomized causal policy
-      - initial law plus controlled Markov kernel plus fixed policy uniquely determine the infinite Z path law
-      - Ionescu-Tulcea existence and finite-prefix/projective-limit uniqueness
-      - structural modification S_next = F(S,X,a,xi) is a specialization, not a policy restriction
-      - any further compression requires a separate action-wise controlled closure obligation
-    promotion:
-      feature_branch: formal/pref01-source-assembly-v2
-      feature_head: 8649c0763ac2326177812209bab3f32ad92680f7
-      feature_ci: {run: 34803657950, status: success}
-      complete_assembly_ci: {run: 34802710747, status: success}
-      clean_integration_branch: formal/pref01-main-integration-v1
-      clean_integration_head: 85148ee2e9cba8afa5e23406a51c09515d45e052
-      clean_integration_pr: 69
-      clean_integration_ci: {run: 34804007035, status: success}
-      main_commit: 1c4de9fc60b653e8c3594bba1a01a0eed510578a
-      post_main_ci: {run: 34804335400, status: success}
-      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
-    source_note: source-facing theorem is valid on arbitrary measurable spaces once supplied kernels are Markov; this strengthens the Core-wide Standard-Borel default
-    coverage_counted: true
-    ledger_gate: complete
-
-  P-REF-02:
+      - UEOT.V3.PAlg01.p_alg_01
+  P-ALI-01:
     state: proved
     source_locked: true
     source_semantic_audit: complete
-    audit_class: finite_belief_control
+    source_line: 2462
+    compression_disposition: retained_adapter
     canonical_theorems:
-      - UEOT.V3.PRef02.p_ref_02_general_joint
-      - UEOT.V3.PRef02.p_ref_02_general_update
-      - UEOT.V3.PRef02.p_ref_02_discrete_observation
-      - UEOT.V3.PRef02.p_ref_02_discrete_posterior
-      - UEOT.V3.PRef02.p_ref_02_modelConflict
-      - UEOT.V3.PRef02.p_ref_02_discounted_step
-    source_contract:
-      - finite static latent parameter and hidden state
-      - predictive observation law and Bayes update depend only on current belief and action
-      - positive-evidence discrete Bayes fraction
-      - zero denominator is model conflict, never arbitrary posterior
-      - general Standard-Borel posterior factorization for arbitrary measurable observation space
-      - bounded discounted one-step task is expressed in belief-state control coordinates
-      - no generic Bellman overclaim in this P-ID
-    promotion:
-      feature_branch: formal/pref02-belief-core-v1
-      clean_integration_branch: formal/pref02-main-integration-v1
-      clean_integration_head: 0037fc0e494b46200ead20e2f5c3ce84a66eb577
-      clean_integration_push_ci: {run: 34808870460, status: success}
-      clean_integration_pr: 71
-      clean_integration_pr_ci: {run: 34810019287, status: success}
-      main_commit: c1213a6014f37a84bdfe128cced1a472b682248e
-      post_main_ci: {run: 34810452071, status: success}
-      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
-    source_note: finite explicit Bayes/modelConflict interface plus general posterior/disintegration sufficiency; one-step discounted control data depend only on belief and action
-    coverage_counted: true
-    ledger_gate: complete
-
-  P-REF-03:
+      - UEOT.V3.AlignmentGlobalExactness.p_ali_01
+  P-ALI-02:
     state: proved
     source_locked: true
     source_semantic_audit: complete
-    audit_class: arbitrary_signal_information_value
-    canonical_theorem: UEOT.V3.FreeInformationValue.p_ref_03
-    source_contract:
-      - arbitrary signal space represented by a sub-sigma-algebra
-      - finite nonempty action set
-      - integrable payoffs
-      - signal is free and may be ignored
-      - informed expected value is weakly at least the best fixed-action value
-    promotion:
-      feature_branch: formal/pref03-free-information-v1
-      feature_head: 7ed287043f6da1e3d53bc67a95b7377bb989382a
-      feature_ci: {run: 34809014590, status: success}
-      clean_integration_branch: formal/pref03-main-integration-v1
-      clean_integration_head: 1403f8529ec6920bfe2fb4ecb86ab55a2cfb6c3b
-      clean_integration_ci: {run: 34812358314, status: success}
-      clean_integration_pr: 73
-      clean_integration_pr_ci: {run: 34812784352, status: success}
-      main_commit: 0ebef06b4a2be2eb88d5b5708ca4bd5901db7b92
-      post_main_ci: {run: 34814852905, status: success}
-      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
-    source_note: arbitrary signal sigma-algebra retained; no finite-ization of the signal; fixed actions remain feasible so free information cannot lower value
-    coverage_counted: true
-    ledger_gate: complete
-
+    source_line: 2489
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.AlignmentParentValue.p_ali_02
+  P-ALI-03:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 2507
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.AlignmentThreshold.p_ali_03
+  P-API-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 2878
+    compression_disposition: generated
+    canonical_theorems:
+      - UEOT.V3.ProcessInterface.p_api_01_exact
+      - UEOT.V3.ProcessInterface.p_api_01_approx
   P-BRG-01:
     state: proved
     source_locked: true
     source_semantic_audit: complete
-    audit_class: finite_fixed_fitness_concentration
-    feature_branch: formal/pbrg01-fixed-fitness-v1
-    feature_head: b3f47b89ad901fb11f322d7f386d5a86ba06e708
-    feature_ci: {run: 34815094214, status: success}
+    source_line: 2652
+    compression_disposition: retained_adapter
     canonical_theorems:
       - UEOT.V3.FixedFitnessRecurrenceUniqueness.p_brg_01_closedForm_of_recurrence
       - UEOT.V3.FixedFitnessConcentration.p_brg_01
-    source_contract:
-      - finite type space and fixed strictly positive fitness R_i
-      - exact no-mutation replicator recurrence implies the explicit closed form
-      - R_star is the maximum fitness over initially positive support
-      - initially absent types remain absent without mutation
-      - each supported suboptimal type has geometric factor (R_i/R_star)^n
-      - finite total suboptimal mass is bounded by a finite sum of geometric terms and tends to zero exponentially
-      - support maximizers preserve their initial relative proportions
-    promotion:
-      clean_integration_branch: formal/pbrg01-main-integration-v1
-      clean_integration_head: a40b18ddc99617b25d873b376edf2aab3b096061
-      clean_integration_ci: {run: 34817101777, status: success}
-      clean_integration_pr: 75
-      clean_integration_pr_ci: {run: 34817631959, status: success}
-      main_commit: 667471f1627ef762ebb116d082f2ed588132fa67
-      post_main_ci: {run: 34818138195, status: success}
-      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
-    source_note: recurrence-uniqueness converse plus support-preserving fixed-fitness concentration and maximizer-ratio preservation match the frozen source contract
-    coverage_counted: true
-    ledger_gate: complete
-
-  P-QSD-03:
+  P-BRG-02:
     state: proved
     source_locked: true
     source_semantic_audit: complete
-    audit_class: qsd_duration_window
+    source_line: 2680
+    compression_disposition: retained_boundary
     canonical_theorems:
-      - UEOT.V3.QSDDurationWindow.p_qsd_03
-      - UEOT.V3.QSDDurationWindow.window_nonempty_iff
-    source_contract:
-      - one fixed initial law for both conditional-stability and survival estimates
-      - conditional-stability error bounded by C exp(-gamma t) for t >= t0
-      - survival probability bounded below by c exp(-lambda t)
-      - C c gamma lambda epsilon p are positive and p <= c
-      - usable closed window is [max(t0,0,log(C/epsilon)/gamma), log(c/p)/lambda]
-      - endpoint equality and singleton windows are retained
-    promotion:
-      feature_branch: formal/pqsd03-duration-window-v1
-      feature_head: 11076f31eec199a4e80ba13e00e037c5e62a2de2
-      feature_ci: {run: 34831456183, status: success}
-      clean_integration_branch: formal/pqsd03-main-integration
-      clean_integration_head: 8e85e687ea11a8dac89ebe7ebbab8240551d8f99
-      clean_integration_ci: {run: 34847211649, status: success}
-      clean_integration_pr: 79
-      clean_integration_pr_ci: {run: 34848043040, status: success}
-      main_commit: bab0b0718afaee90e858d71e41340066ba1774d8
-      post_main_ci: {run: 34848676178, status: success}
-      ledger_main_commit: 6561169fae9529a822642c5b6921d7d9c59aa250
-      ledger_post_main_ci: {run: 34856357799, status: success, attempt: 3}
-      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
-    source_note: exact same-initial-law mixing/survival duration window; P-QSD-01 and P-QSD-04 remain distinct source propositions
-    coverage_counted: true
-    ledger_gate: complete
-
-  P-PER-04:
+      - UEOT.V3.SelectionBridge.ReplicationBridge.behavior_equiv_fitness_eq
+      - UEOT.V3.SelectionBridge.ReplicationBridge.behavior_equiv_same_multiplier
+      - UEOT.V3.SelectionBridge.ReplicationBridge.behavior_equiv_positive_ratio_preserved
+  P-CAR-01:
     state: proved
     source_locked: true
     source_semantic_audit: complete
-    audit_class: viability_tangency
-    canonical_theorem: UEOT.V3.ViabilityTangency.p_per_04
-    source_contract:
-      - closed viability/identity domain
-      - viable trajectory differentiable at time zero
-      - trajectory remains in the domain for nonnegative time
-      - positive-time Bouligand contingent cone h downarrow 0
-      - initial velocity belongs to that contingent cone
-      - K-VIA-01 Marchaud/Nagumo theorem remains separate
-    implementation_contract:
-      - Mathlib posTangentConeAt equals tangentConeAt NNReal and is used instead of the two-sided real tangent cone
-      - positive-time difference quotients use HasDerivAt.tendsto_slope_zero_right
-      - trajectory increments are the tangent-cone witness
-      - no custom UEOT tangent-cone definition
-      - real normed-space generalization preserves the frozen R^d theorem
-    promotion:
-      feature_branch: formal/pper04-tangency-necessity-v1
-      feature_head: ce6eccf5ca4b6f30aae1dcd0416fc1b79286f2d2
-      feature_ci: {run: 34858878140, status: success}
-      clean_integration_branch: formal/pper04-main-integration-v1
-      clean_integration_head: f5db4c5e547866e488ad1d33c0789bc0ce5ec48c
-      clean_integration_ci: {run: 34862446244, status: success}
-      clean_integration_pr: 83
-      clean_integration_pr_ci: {run: 34863236502, status: success}
-      main_commit: ba9b9c350038dafa52afdda954d2294361a01fc7
-      post_main_ci: {run: 34863965181, status: success}
-      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
-    source_note: positive Bouligand cone through the pinned Mathlib sequence/filter characterization; no two-sided-cone or Nagumo overclaim
-    coverage_counted: true
-    ledger_gate: complete
-
-  P-REC-03:
+    source_line: 1135
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.Access.sufficient_mono
+      - UEOT.V3.Access.contains_minimal
+  P-CAR-02:
     state: proved
     source_locked: true
     source_semantic_audit: complete
-    audit_class: markov_hitting_potential_poisson
-    canonical_theorem: UEOT.V3.RecoveryHittingPoisson.p_rec_03
-    source_contract:
-      - homogeneous discrete-time Markov transition kernel
-      - measurable target set A
-      - tau_A is the first hitting time and V_A(x) = E_x tau_A in ENNReal
-      - V_A vanishes on A
-      - for x outside A and finite V_A(x), first-step plus homogeneous Markov restart yields P V_A(x) - V_A(x) = -1
-      - finiteness is used only to pass the ENNReal first-step identity to the real-valued source endpoint
-    implementation_contract:
-      - path-shift and finite-hitting recursion prove the pathwise first-step identity without assuming Markov restart
-      - homogeneous path-law restart under shift is derived from the Ionescu-Tulcea construction
-      - initial-law mixture and one-step marginal transport identify the kernel integral
-      - the canonical ENNReal first-step identity is proved before the real-valued endpoint
-      - no finite-state specialization
-      - no assumed restart or Poisson identity
-    promotion:
-      feature_branch: formal/prec03-first-step-v1
-      feature_head: 1e01c64824f2e3441b8492cc1f8731895eed467f
-      feature_ci: {run: 34985193231, status: success}
-      clean_integration_branch: formal/prec03-main-integration-v1
-      clean_integration_head: 5142964d87fe53be7b0598d428c49991f50c837f
-      clean_integration_ci: {run: 34985962098, status: success}
-      proof_pr: 87
-      proof_pr_ci: {run: 34986723827, status: success}
-      main_commit: b337cb8a15e0996f6c285bd073773832fb21500e
-      post_main_ci: {run: 34987526584, status: success}
-      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
-    source_note: source-strength hitting-potential Poisson equation via pathwise first-step decomposition and derived homogeneous Markov restart
-    coverage_counted: true
-    ledger_gate: complete
-
-  P-REC-04:
+    source_line: 1151
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.Access.erasure_survives
+      - UEOT.V3.Access.erasure_failure
+      - UEOT.V3.Access.minimal_erasure
+  P-CAR-03:
     state: proved
     source_locked: true
     source_semantic_audit: complete
-    audit_class: markov_drift_hitting_time
-    canonical_theorem: UEOT.V3.RecoveryHittingBound.p_rec_04_hitting_time_bound
-    source_contract:
-      - homogeneous discrete-time Markov transition kernel
-      - measurable hit set A
-      - nonnegative finite-valued Lyapunov potential V
-      - positive finite drift constant c
-      - outside A the drift condition is equivalently PV + c <= V
-      - conclusion E_x tau_A <= V(x)/c
-      - finite-horizon stopped/tail-sum estimate followed by monotone convergence
-    implementation_contract:
-      - trajectory law is derived from the source state kernel
-      - nonnegative hitting time is represented in ENNReal by survival-tail truncations
-      - one-step survival-potential recurrence is proved from the kernel drift
-      - finite horizons telescope before the monotone limit
-      - no finite-state specialization
-      - no assumed stopped inequality
-      - no global future-integrability premise
-    promotion:
-      feature_branch: formal/prec04-drift-hitting-time-v1
-      feature_head: 3ea9086976ac595eb034a125390d69264e12772e
-      feature_ci: {run: 34875538212, status: success}
-      clean_integration_branch: formal/prec04-main-integration-v1
-      clean_integration_head: 50ac5834ff74fe4aa5229b60be87a256e762c778
-      clean_integration_ci: {run: 34877803577, status: success}
-      proof_pr: 85
-      proof_pr_ci: {run: 34880820942, status: success}
-      main_commit: 4946a4435d3c15efbf0ca13aed7b44e65defc79c
-      post_main_ci: {run: 34882613059, status: success}
-      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
-    source_note: source-strength Markov drift-to-hitting-time bound via survival-tail telescoping and monotone convergence
-    coverage_counted: true
-    ledger_gate: complete
-
+    source_line: 1157
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.Blocker.blocker_involution
+      - UEOT.Blocker.blocker_empty
+      - UEOT.Blocker.blocker_singleton_empty
+  P-CAR-04:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1196
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.DecoderRadius.decoder_radius_bounds
+  P-COMP-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1364
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.CompositionPathSource.p_comp_01
+  P-COMP-02:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1386
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.CompositionInterventionJS.jsDiv_mem_Icc_logTwo
+      - UEOT.V3.CompositionInterventionJS.jsDiv_eq_zero_iff
+      - UEOT.V3.CompositionInterventionJS.cutJSMargin_pos_iff
+  P-COMP-03:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1402
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.CompositionMargin.p_comp_03
+  P-COMP-04:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1422
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.CompositionParentInformation.p_comp_04
+  P-COMP-05:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1451
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.CompositionBooleanAtoms.p_comp_05
+  P-COMP-06:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1465
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.CompositionCarrierLift.p_comp_06
+  P-COMP-07:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1491
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.CompositionWindow.p_comp_07
+  P-CORE-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 3198
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.CoreOperationalAssembly.p_core_01
   P-CTL-01:
     state: proved
     source_locked: true
     source_semantic_audit: complete
-    audit_class: finite_discounted_control_causal_optimality
-    canonical_theorem: UEOT.V3.FiniteDiscountedControl.p_ctl_01_causal_optimality
-    supporting_theorems:
+    source_line: 1877
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.FiniteDiscountedControl.p_ctl_01_causal_optimality
       - UEOT.V3.FiniteDiscountedControl.Model.fixedPoint_unique
       - UEOT.V3.FiniteDiscountedControl.Model.valueIteration_tendsto
       - UEOT.V3.FiniteDiscountedControl.Model.valueError_le_residual
       - UEOT.V3.FiniteDiscountedControl.CausalPolicy.infiniteValue_le_optimal
       - UEOT.V3.FiniteDiscountedControl.greedy_infiniteValue_eq_optimal
-    source_contract:
-      - finite state space
-      - finite nonempty state-dependent feasible action family
-      - bounded one-step reward
-      - discount factor beta satisfies 0 < beta < 1
-      - Bellman optimality operator has a unique fixed point
-      - value iteration converges to that fixed point from every initial value function
-      - a deterministic stationary greedy policy attains the optimal value at every state
-      - optimality is against arbitrary causal policies, not only stationary Markov policies
-      - Bellman residual supplies the declared a-posteriori stopping/error bound
-    implementation_contract:
-      - state-dependent feasible actions are represented directly rather than replaced by one common unconstrained action set
-      - contraction and fixed-point uniqueness are derived from the discounted Bellman operator
-      - value-iteration convergence is proved from arbitrary initial conditions
-      - causal policies retain full history dependence and randomization in the comparison class
-      - stationary greedy optimality is bridged to infinite-horizon discounted value
-      - no finite-horizon-only surrogate and no stationary-policy-only optimality claim
-    promotion:
-      feature_branch: formal/pcomp01-multiblock-v1
-      feature_head: 47218ef06c63ed81ab3974d107f0d3d46cc49ecb
-      feature_ci: {run: 35098260086, status: success}
-      clean_integration_branch: formal/pcomp01-main-integration-v1
-      clean_integration_head: 45440746a7086b74bc65ba741611f98a8da92f27
-      clean_integration_ci: {run: 35099296408, status: success}
-      proof_pr: 93
-      proof_pr_ci: {run: 35102272835, status: success}
-      main_commit: 3efe7ebc74d8f2a6705c12a5218a7880f5a3688c
-      post_main_ci: {run: 35104140440, status: success}
-      prohibited_proof_audit: {sorry: 0, admit: 0, native_decide: 0, unsourced_axiom: 0}
-    source_note: source-strength finite discounted Bellman existence, arbitrary-initial value-iteration convergence, residual stopping bound, and stationary deterministic optimality against all causal policies
-    coverage_counted: true
-    ledger_gate: pending_this_ledger_checkpoint_pr_and_main_ci
-
-audits:
+  P-CTL-02:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1918
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.CompactFellerControl.Model.p_ctl_02
+  P-CTL-03:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1932
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.DiffusionHJBVerification.p_ctl_03
+  P-DDH-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 2348
+    compression_disposition: retained_boundary
+    canonical_theorems:
+      - UEOT.V3.DualDriveGauge.p_ddh_01
+  P-DDH-02:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 2370
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.ExponentialFamilyCalculus.p_ddh_02
+  P-DDH-03:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 2380
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.ExponentialFamilyIProjection.p_ddh_03
+  P-DDH-04:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 2402
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.CommonBottleneckRank.p_ddh_04
+  P-DDH-05:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 2426
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.SingularValueEffectiveDimension.p_ddh_05
+  P-DYN-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 587
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.DynamicsKernel.strongLumpability_iff_pathLaw_of_surjective
+  P-DYN-02:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 603
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.CTMCSemigroupNonnegative.p_dyn_02_nonnegative_semigroup_iff_blockSum
+      - UEOT.V3.CTMCSemigroupNonnegative.exists_macro_ctmc_semigroup_of_blockSum_constant
+  P-DYN-03:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 623
+    compression_disposition: generated
+    canonical_theorems:
+      - UEOT.V3.PathError.p_dyn_03_finite_path_error
+  P-DYN-04:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 640
+    compression_disposition: generated
+    canonical_theorems:
+      - UEOT.V3.DynamicsCrossScale.p_dyn_04_cross_scale_tv
+      - UEOT.V3.DynamicsCrossScale.p_dyn_04_exact_intertwining
+  P-EVO-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 2551
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.EvolutionPrice.p_evo_01
+  P-EVO-02:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 2568
+    compression_disposition: retained_boundary
+    canonical_theorems:
+      - UEOT.V3.EvolutionSharedLabel.p_evo_02
   P-EVO-03:
-    state: archive
-    audit_class: non_quick_foundation
-    source_note: >-
-      Requires the full K-PF-01 primitive nonnegative-matrix Perron-Frobenius
-      asymptotic package: positive left/right Perron vectors, spectral gap and
-      normalized power convergence. Pinned Mathlib exposes Matrix.IsPrimitive
-      definitions but no directly reusable complete asymptotic theorem was
-      found. Do not weaken to an assumed-convergence surrogate.
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 2589
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.EvolutionPerronGrowth.p_evo_03
+  P-EVO-04:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 2609
+    compression_disposition: generated
+    canonical_theorems:
+      - UEOT.V3.EvolutionReproductiveMartingale.p_evo_04
+  P-FAC-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 254
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.RepresentationCovariance.p_fac_01_covariance_bundle
+      - UEOT.V3.RepresentationCovariance.homTrajMeasure_transport_covariance
+      - UEOT.V3.RepresentationCovariance.causalLaw_transport_equiv
+      - UEOT.V3.RepresentationCovariance.causalPolicyValue_transport_bundle
+  P-GOA-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 2103
+    compression_disposition: generated
+    canonical_theorems:
+      - UEOT.V3.FiniteCesaroInvariant.p_goa_01
+  P-GOA-02:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 2129
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.FiniteDobrushin.p_goa_02
+      - UEOT.V3.FiniteDobrushin.tv_step_le_dobrushin
+  P-GOA-03:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 2155
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.FiniteRecurrentDecompositionStability.p_goa_03
+  P-GOA-04:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 2186
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.SymmetricKilledSpectralStability.p_goa_04
+  P-ID-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 971
+    compression_disposition: generated
+    canonical_theorems:
+      - UEOT.V3.TransportDefect.FrozenTransportSystem.p_id_01
+  P-ID-02:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1007
+    compression_disposition: generated
+    canonical_theorems:
+      - UEOT.V3.DevelopmentTransport.development_pipeline
+  P-INFO-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 376
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.InformationStatistic.mutualInfo_eq_statistic_add_conditional
+      - UEOT.V3.InformationStatistic.mutualInfo_statistic_ge_sub_of_conditional_le
+      - UEOT.V3.InformationMemoryBound.p_info_01_discrete_entropy
+  P-INFO-02:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 397
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.InformationPInfo02.p_info_02_finite
+      - UEOT.V3.InformationPInfo02.p_info_02_ennreal
+  P-INFO-03:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 432
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.InformationPredictiveRateZero.predictiveObjectRateZero_eq_sourceEntropy
+  P-INFO-04:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 450
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.InformationPInfo04.p_info_04
+      - UEOT.V3.InformationConditionalBinaryMutualEntropy.p_info_04_conditional_binary
+  P-INFO-05:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 468
+    compression_disposition: retained_boundary
+    canonical_theorems:
+      - UEOT.V3.InformationPacking.merged_histories_decoder_lower_bound
+      - UEOT.V3.InformationPacking.packing_ncard_image
+      - UEOT.V3.InformationEntropy.p_info_05_uniform_entropy
+  P-INT-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 488
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.InformationPInt01Common.p_int_01
+      - UEOT.V3.InformationPInt01Common.p_int_01_common_decoder
+  P-INT-02:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 524
+    compression_disposition: generated
+    canonical_theorems:
+      - UEOT.V3.StructuredQuotient.p_int_02
+  P-INT-03:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 570
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.MarkovBoundary.p_int_03_boundary_unique
+  P-INV-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1696
+    compression_disposition: retained_boundary
+    canonical_theorems:
+      - UEOT.V3.BinaryTesting.p_inv_01
+  P-INV-02:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1717
+    compression_disposition: retained_boundary
+    canonical_theorems:
+      - UEOT.V3.FisherGauge.p_inv_02
+  P-INV-03:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1723
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.FisherIntersection.p_inv_03
+  P-INV-04:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1747
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.DesignIdentifiability.p_inv_04
+  P-INV-05:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1757
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.PredictableOLSSourceConfidence.measure_source_goodGram_and_euclidean_error_gt_le_alpha
+  P-KL-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 2214
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.PathEventKL.p_kl_01
+  P-KL-02:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 2227
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.PathEventIProjection.p_kl_02
+  P-KL-03:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 2260
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.PathKLChain.p_kl_03
+      - UEOT.V3.PathKLChain.p_kl_03_general
+  P-KL-04:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 2271
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.FiniteCTMCPathKL.p_kl_04_holding
+      - UEOT.V3.FiniteCTMCPathKL.p_kl_04_clock
+      - UEOT.V3.FiniteCTMCPathKL.p_kl_04
+  P-KL-05:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 2302
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.GirsanovPathKL.TerminalGirsanovData.p_kl_05
+  P-MET-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 140
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.TotalVariation.tvDist_map_le
+      - UEOT.V3.TVKernel.tvDist_comp_le
+      - UEOT.V3.TotalVariation.tvDist_map_measurableEquiv
+  P-MET-02:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 153
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.TVSpan.abs_integral_sub_le_span
+  P-OMG-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1077
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.OmegaMinimalFailure.p_omg_01
+  P-OMG-02:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1095
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.OmegaIntegrityMargin.p_omg_02
+  P-PER-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 679
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.PersistenceOmega.p_per_01
+  P-PER-02:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 705
+    compression_disposition: generated
+    canonical_theorems:
+      - UEOT.V3.PersistenceOccupation.FellerOccupationSystem.p_per_02
+  P-PER-03:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 729
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.ViabilitySource.p_per_03
+  P-PER-04:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 745
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.ViabilityTangency.p_per_04
+  P-PRED-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 294
+    compression_disposition: generated
+    canonical_theorems:
+      - UEOT.V3.PredictionDependent.canonical_ae_minimal
+      - UEOT.V3.PredictionDependent.canonical_ae_sigma_minimal
+      - UEOT.V3.PredictionDependent.canonical_kernel_sufficient
+  P-PRED-02:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 330
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.PredictionRefinement.pushTargetDependent_apply
+      - UEOT.V3.PredictionRefinement.protocol_refinement_sigma_le_dependent
+      - UEOT.V3.PredictionRefinement.sigmaCanonicalDependent_iUnion_of_monotone
+  P-PRED-03:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 351
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.PredictionUpdate.p_pred_03_recursive_update
+  P-PROC-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 199
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.ConcreteHistoryMarkovization.p_proc_01_history_markovization
+  P-QSD-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 847
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.QSDTVLimit.p_qsd_01
+  P-QSD-02:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 879
+    compression_disposition: generated
+    canonical_theorems:
+      - UEOT.V3.QSDPerron.p_qsd_02
+      - UEOT.V3.QSDPerron.p_qsd_02_killed
+  P-QSD-03:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 901
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.QSDDurationWindow.p_qsd_03
+      - UEOT.V3.QSDDurationWindow.window_nonempty_iff
+  P-QSD-04:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 928
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.ReversibleKilledSpectralQSD.SpectralData.p_qsd_04
+  P-QUO-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1973
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.FiniteDiscountedControl.ExactControlQuotient.p_quo_01
+  P-QUO-02:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 2001
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.FiniteDiscountedControl.ApproxControlQuotient.p_quo_02
+  P-QUO-03:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 2024
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.CoreOperationalAssembly.macro_gap_certifies_micro_action
+  P-QUO-04:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 2042
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.FiniteDiscountedControl.Model.p_quo_04
+  P-QUO-05:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 2063
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.FiniteDiscountedControl.LocalApproxControlQuotient.p_quo_05
+  P-REC-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 760
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.RecoveryProbability.p_rec_01_mean_bound
+      - UEOT.V3.RecoveryProbability.p_rec_01_tail_bound
+  P-REC-02:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 783
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.RecoveryDynkin.p_rec_02
+  P-REC-03:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 804
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.RecoveryHittingPoisson.p_rec_03
+  P-REC-04:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 814
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.RecoveryHittingBound.p_rec_04_hitting_time_bound
+  P-REF-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 2710
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.ReflexivePRef01.p_ref_01
+      - UEOT.V3.ReflexivePRef01.p_ref_01_structureModification
+      - UEOT.V3.ReflexivePRef01.p_ref_01_compression_closure_iff_kernel
+      - UEOT.V3.ReflexivePRef01.p_ref_01_compression_closure_iff_pathLaw
+  P-REF-02:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 2729
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.PRef02.p_ref_02_general_joint
+      - UEOT.V3.PRef02.p_ref_02_general_update
+      - UEOT.V3.PRef02.p_ref_02_discrete_observation
+      - UEOT.V3.PRef02.p_ref_02_discrete_posterior
+      - UEOT.V3.PRef02.p_ref_02_discrete_modelConflict
+      - UEOT.V3.PRef02.p_ref_02_discounted_step
+  P-REF-03:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 2739
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.FreeInformationValue.p_ref_03
+  P-REF-04:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 2753
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.Decision.goal_regret
+  P-REF-05:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 2779
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.Agency.feasibleValue_mono
+      - UEOT.V3.Agency.feasibleValueReal_mono
+      - UEOT.V3.Agency.extension_optimalValue_mono
+  P-RES-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1223
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.ClosureResolution.minimal_property_coarse_graining
+  P-RES-02:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1233
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.ClosureResolution.closure_comp_of_nested
+      - UEOT.V3.ClosureResolution.resolutionMap_comp
+  P-RES-03:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1267
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.BlockerNaturality.blocker_naturality
+  P-RES-04:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1294
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.Resolution.lower_adjunction
+      - UEOT.Resolution.upper_adjunction
+  P-RES-05:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1324
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.Resolution.pushFamily_realization_interval
+  P-RES-06:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1337
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.Resolution.endpoint_equality_iff_unique_active_fibers
+  P-STAT-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1512
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.FiniteAlphabetPStat01.p_stat_01_tail
+      - UEOT.V3.FiniteAlphabetPStat01Radius.p_stat_01_radius
+  P-STAT-02:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1536
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.StatisticalDefect.p_stat_02
+  P-STAT-03:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1555
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.Threshold.approximate_family
+  P-STAT-04:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1565
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.Threshold.exact_family
+  P-STAT-05:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1596
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.PredictiveClassRecovery.p_stat_05
+  P-STAT-06:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1617
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.HilbertMeanSourceRadius.source_meanError_tail_exact_radius
+      - UEOT.V3.HilbertMeanSourceSimultaneous.source_simultaneous_exact_radius
+  P-STAT-07:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1632
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.MMDTransportSource.p_stat_07_source
+      - UEOT.V3.MMDTransport.p_stat_07
+  P-STAT-08:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1653
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.FiniteCandidatePStat08.p_stat_08
+  P-STAT-09:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1673
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.AverageErrorTransport.p_stat_09
+  P-TEL-01:
+    state: proved
+    source_locked: true
+    source_semantic_audit: complete
+    source_line: 1832
+    compression_disposition: retained_adapter
+    canonical_theorems:
+      - UEOT.V3.RewardInfinite.shaping_limit_value
+      - UEOT.V3.RewardInfinite.policy_values_affine_from_bounded_state_potential

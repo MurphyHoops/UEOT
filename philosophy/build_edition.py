@@ -73,7 +73,7 @@ def build(lang: str, env: dict[str,str]) -> dict:
         raise RuntimeError('A build input changed during compilation; rebuild the frozen edition.')
     shutil.copyfile(generated,pdf)
     report={
-        'document':'philosophy','language':lang,'edition':'3.0',
+        'document':'philosophy','language':lang,'edition':'3.1',
         'status':'COMPILED_REQUIRES_VISUAL_REVIEW',
         'source':str(source.relative_to(REPO)),'source_sha256':source_hash,
         'latex':str(tex.relative_to(REPO)),'latex_sha256':sha(tex),
@@ -101,7 +101,7 @@ def main():
     args=parser.parse_args()
     CACHE.mkdir(parents=True,exist_ok=True)
     env=shared.font_environment(args.font_dir.resolve(),args.download_fonts)
-    env['SOURCE_DATE_EPOCH']=str(int(datetime(2026,11,11,tzinfo=timezone.utc).timestamp()))
+    env['SOURCE_DATE_EPOCH']=str(int(datetime(2026,11,22,tzinfo=timezone.utc).timestamp()))
     if args.texmf:env['TEXINPUTS']=str(args.texmf.resolve())+'//:'+env.get('TEXINPUTS','')
     if args.format_dir:env['TEXFORMATS']=str(args.format_dir.resolve())+'//:'+env.get('TEXFORMATS','')
     for lang in (['zh','en'] if args.language=='all' else [args.language]):

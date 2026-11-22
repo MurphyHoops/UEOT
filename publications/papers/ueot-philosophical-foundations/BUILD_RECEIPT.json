@@ -1,47 +1,50 @@
 {
-  "schema": "ueot-philosophy-build/1",
-  "built_at_utc": "2026-11-11T05:23:15.119849+00:00",
-  "source_commit": "3d443ec29eb17af1fc00699a74e2d42d73516d81",
+  "schema": "standalone-philosophy-build/2",
+  "version": "2.1",
+  "built_at_utc": "2026-11-21T23:30:12.176139+00:00",
+  "git_base_commit": "b16fc25b9a05d65a16d94dfcee3967fcd7d50030",
   "commands": [
     "pandoc manuscript.md --standalone --number-sections --natbib --template=template.tex --lua-filter=layout.lua --to=latex --output=manuscript.tex",
     "latexmk -xelatex -interaction=nonstopmode -halt-on-error -outdir=build manuscript.tex"
   ],
   "tools": {
     "pandoc": [
-      "pandoc 3.1.11.1",
-      "Features: -server +lua",
+      "pandoc 3.14",
+      "Features: +server +lua",
       "Scripting engine: Lua 5.4"
     ],
     "xelatex": [
-      "XeTeX 3.141592653-2.6-0.999996 (TeX Live 2025/dev/Debian)",
-      "kpathsea version 6.4.0/dev",
-      "Copyright 2024 SIL International, Jonathan Kew and Khaled Hosny."
+      "XeTeX 3.141592653-2.6-0.999998 (TeX Live 2026)",
+      "kpathsea version 6.4.2",
+      "Copyright 2026 SIL International, Jonathan Kew and Khaled Hosny."
     ],
     "latexmk": [
-      "Latexmk, John Collins, 11 Dec. 2024. Version 4.86"
+      "Latexmk, John Collins, 8 November 2026. Version 4.89"
     ],
     "bibtex": [
-      "BibTeX 0.99d (TeX Live 2025/dev/Debian)",
-      "kpathsea version 6.4.0/dev",
-      "Copyright 2024 Oren Patashnik."
+      "BibTeX 0.99e (TeX Live 2026)",
+      "kpathsea version 6.4.2",
+      "Copyright 2026 Oren Patashnik."
     ]
   },
   "inputs": {
-    "manuscript.md": "58c905e593130e89d7c5d50187d52d91e21fb9116be84422356fb0213658c4e5",
-    "references.bib": "b9281a00b6d112487860accff388b492208ab1f8e8fa5d39d2311461dc0e93d2",
-    "template.tex": "120b19299371736c43aa78601cd8e182baafb143ab67bcc284fa69a857db4e9c",
+    "manuscript.md": "832ab015408c0c52c3457c88db27bb57d11da368c3a875ddd2c1f3b1777795c7",
+    "references.bib": "25939e7eb75d19d22024242b00841ac7bb6eb1512eb171f9533a1cfbfeee64f4",
+    "template.tex": "8c936d209503af48782d2d8af53651dcccb261bf5fd0fffd1ceac77517e40465",
     "layout.lua": "fe43b69ca5e3e94cc5b1740d6fdd540f4c8d934dcaec617f144352da53842c31",
-    "build.py": "d6a403d2d7aa8b534b53b672f52ba6ff6e3590feb4c78512094436db0bbbab7b"
+    "build.py": "f7596f373080419f3965a3f0a9a1cbdec616e47a69e0a1c248383326afe96dfe",
+    "generate_figures.py": "ccc457001d354ecf9f583fc0724ed62a93354fb232deeeb5419e784aadcea64d",
+    "figures/fig1_architecture_and_lattice.pdf": "5ae37cfdf1049c5e86dcfbee826cd2af28ac2d0014f04e214869636faff34c51",
+    "figures/fig2_memory_and_phase.pdf": "6ff219c8d102ab78856accd33d55b78a781b31eaba93905e162c38b28c0d8ceb",
+    "figures/fig3_preservation_and_rungs.pdf": "d5950fd8d8e5f649d628ab34d7d49da1f88a460717da40dc0c0989a0a1f10ad6"
   },
   "outputs": {
-    "manuscript.tex": "33abecfa1bade41d68af7267e43f472bc38d85f77958e0f062f4e6fa34ea7418",
-    "manuscript.pdf": "eea14e0db1e99b360a80f9a603a2cc221d316c3ccdcfb5c17f095cd3e94f8e1c"
+    "manuscript.tex": "4b7db5f53bff7e983ab520053d22d52baffb8a87c1c4758619981ec5c9ff0edf",
+    "manuscript.pdf": "17ed57e0fcccfaba6cfbb968e71fda33ce1680b8637ebb1bdd1e7b7312c3f62a"
   },
-  "pages": 21,
+  "pages": 32,
   "undefined_references_or_tex_errors": [],
   "missing_glyphs": [],
   "overfull_boxes": [],
-  "lean_invocations": 0,
-  "visual_review": "Separate human-visible rendering inspection required; see VISUAL_REVIEW.md",
-  "runtime_note": "Optional UEOT_TEXMF/UEOT_TEXFORMATS used"
+  "visual_review": "Rendered PNG pages inspected for layout, vector figures, tables, mathematics, and bibliography."
 }

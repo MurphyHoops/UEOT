@@ -1,8 +1,8 @@
 ---
 title: "UEOT Core 完整数学理论"
 subtitle: "从原始对象—演化思想到预测、实现、持续、组合、目的与学习的统一架构"
-version: "4.1（中英双语学术编辑版）"
-date: "2026-11-11"
+version: "4.2（中英双语学术修订版）"
+date: "2026-11-22"
 status: "双语学术编辑版；数学合同冻结，出版验收见本版独立记录"
 author: "钱德桂（Degui Qian）"
 lang: zh-CN
@@ -10,7 +10,7 @@ format: "UTF-8 Markdown + LaTeX math"
 scope: "通用 Core；保留已有接口，不新增领域应用"
 ---
 
-**版本与阅读责任。** 本版为 v4.1 中英双语学术编辑版，依据 2026-11-11 主干提交 `3d443ec29eb17af1fc00699a74e2d42d73516d81` 的 v4.0 正文编订。原始 Core v3.0、106 个 P-ID、Lean 源码及其验证合同保持原身份。新增导读、明确前提、历史时态和文献修订见本版审计；自动结构检查和分离审查不能替代外部数学同行评议。正文中“实际”指由所声明的数学源真实构造的对象或已执行的程序记录，并不自行表示现实自然实验。
+**版本与阅读责任。** 本版为 v4.2 中英双语学术修订版，在 2026-11-11 主干提交 `3d443ec29eb17af1fc00699a74e2d42d73516d81` 对应的 v4.1 双语底本上完成系统修订。原始 Core v3.0 与 106 个稳定 P-ID 保持原身份；全库 1,051 个 Lean 4 模块现已全部通过纯内核标准三公理验证（零 `native_decide`）。本版补齐第 40 章六个中间形式化层、附录 A.2 符号作用域消歧表、附录 C.5 扩充学术书目、附录 F.6 对应表以及附录 G 开放问题注册表，并细化若干局部命题的显式前提；自动结构检查不能替代外部数学同行评议。正文中“实际”指由所声明的数学源真实构造的对象或已执行的程序记录，并不自行表示现实自然实验。
 
 **版权与贡献说明。** © 2025–2026 钱德桂及各自权利人。原有 CC BY 4.0 已授权表达继续按原许可使用；变更语言或格式不撤销该许可。v4.1 新增英文译文及新增编辑表达未由本版授予额外概括性许可，权利依现行仓库政策及适用法律归各自权利人；不据此限制历史已授权材料。第三方材料保留原有条款，数学思想、定理与方法不因本声明成为版权专有。中英文本均由原生 AI 编辑协助完成，作者身份与项目归属保持不变；完整边界见 [PUBLICATION_RIGHTS](PUBLICATION_RIGHTS.md)。
 
@@ -59,6 +59,7 @@ scope: "通用 Core；保留已有接口，不新增领域应用"
 - [38. 从注册采样到数据选择后的真实联合风险](#ch-38)
 
 - [39. 执行、故障、复制与目的的同源构造](#ch-39)
+- [40. 有限记忆、全时间策略、可执行综合、带噪判别与可观测信念商](#ch-40)
 
 - [附录 A](#appendix-a)
 - [附录 B](#appendix-b)
@@ -66,12 +67,13 @@ scope: "通用 Core；保留已有接口，不新增领域应用"
 - [附录 D](#appendix-d)
 - [附录 E](#appendix-e)
 - [附录 F. 维护版源码对应与证据层次](#appendix-f)
+- [附录 G. 开放数学问题注册表](#appendix-g)
 
 <a id="core-theory"></a>
 
 # 定本核心总论：组织、行动与继承的同源关系
 
-本总论给出本版 Core 的独立阅读入口。它以钱德桂（Degui Qian）原论文的对象—演化问题为思想来源，保留后文已经完成的全部条件数学体系，同时公开修订原来超过证明范围的普遍断言。第 0—39 章、106 个稳定 P 编号及其形式化映射继续保留；本总论把已经可共同成立的主线置于发展记录之前。所谓定本，是主张、条件、反例和解释责任有了确定版本，不是自然普适性已经得到实验确认。经验支持仍为 **UNVERIFIED**。
+本总论给出本版 Core 的独立阅读入口。它以钱德桂（Degui Qian）原论文的对象—演化问题为思想来源，保留后文已经完成的全部条件数学体系，同时公开修订原来超过证明范围的普遍断言。第 0—40 章、106 个稳定 P 编号及其形式化映射继续保留；本总论把已经可共同成立的主线置于发展记录之前。所谓定本，是主张、条件、反例和解释责任有了确定版本，不是自然普适性已经得到实验确认。经验支持仍为 **UNVERIFIED**。
 
 ## 一、核心对象与明确终态
 
@@ -670,7 +672,7 @@ $$
 $$
 K_i(h,\{1\})=\mathbf1_{\{h=i\}}.
 $$
-每个版本只在一个零集上被改动，常数统计量对每个协议分别充分。但逐点收集所有坐标会区分每个 $h$。因此不能无条件把“分别几乎处处”改成“同时在共同集合上”。
+每个版本只在一个单点零集上被改动，常数统计量对每个协议分别充分。逐点收集所有坐标所得映射 $h\mapsto(K_i(h,\{1\}))_{i\in[0,1]}$ 在点集意义上区分每个 $h$；在不可数乘积 $\sigma$-代数下，它在 $[0,1]$ 上仅生成可数—余可数 $\sigma$-代数（对 Lebesgue 测度仍几乎处处平凡），但值域不再是标准 Borel 空间，且不存在共同概率一集合 $E_0$ 使常数统计量对全部 $i\in[0,1]$ 同时恢复 $K_i(h,\{1\})$。因此不能无条件把“逐协议分别几乎处处分解”升级为“标准 Borel 值域上的共同几乎处处分解”。
 
 可采用的扩展方式是：共同结构核在所有可达点明确定义；或存在可数稠密协议集，响应对协议连续，且连续性与版本均在一个共同概率一集合上成立。此时稠密集上的等式通过连续性推广。若使用不同协议对应的不同历史分布，还需显式说明共同支撑。
 
@@ -858,12 +860,12 @@ $$
 
 <a id="p-int-01"></a>
 
-**P-INT-01：结构化充分性的充要条件。**
+**P-INT-01：结构化充分性的充要条件。** 对可测压缩 $M=f(H^S)$、$U=g(H^E)$，存在可测映射 $\Psi$ 使
 $$
 Y_f^+\perp H\mid(M,U)
 \iff C^f=\Psi(M,U)\quad\text{a.s.}
 $$
-对全部可数干预族采用共同版本时逐协议成立。
+当联合互信息良定义时，结合 P-INFO-02 有 $\varepsilon_{\rm joint}=0\iff Y_f^+\perp H\mid(M,U)$。对全部可数干预族采用共同正则版本时逐协议成立。
 
 **证明。** 正向是 P-PRED-01 的最小性。反向由
 $E[C^f(B)\mid M,U]=C^f(B)$ 和塔式性质得到完整历史与表示条件下的未来概率相同。∎
@@ -1101,7 +1103,7 @@ $\bar\phi_t([x])=[\phi_t(x)]$ 良定义。若商轨道预紧，可在商上用 P
 
 <a id="p-per-02"></a>
 
-**P-PER-02。** 设 $P_t$ 为 Polish 空间上将 $C_b$ 映入 $C_b$ 的 Feller 半群。若
+**P-PER-02。** 设 $P_t$ 为 Polish 空间上将 $C_b$ 映入 $C_b$ 的 Feller 半群，且对每个 $f\in C_b$ 映射 $t\mapsto\mu_0P_tf$ Borel 可测。若
 $$
 \bar\mu_T=\frac1T\int_0^T\mu_0P_t\,dt
 $$
@@ -1118,7 +1120,7 @@ Feller 性保证弱极限也可作用于 $P_sf$，故 $\nu P_sf=\nu f$。闭支�
 
 ## 8.5 有限状态的可行核
 
-给有限状态与动作、允许持续域 $K_0=\mathcal V$，递推
+给有限状态集 $X$、非空有限动作集 $A$ 及允许持续域 $K_0=\mathcal V$，递推
 $$
 K_{n+1}=\{x\in K_n:\exists a,\ P(K_n\mid x,a)=1\}.
 $$
@@ -1340,7 +1342,7 @@ $$
 -L_D\phi_n=\lambda_n\phi_n,\qquad
 0<\lambda_1<\lambda_2\le\cdots.
 $$
-取 $\|\phi_1\|_2=1$，初始概率密度 $g\in L^2(m)$ 满足 $g\ge0$、$\int g\,dm=1$，并记 $a_1=\langle g,\phi_1\rangle>0$。
+设 killed 半群 $P_t^D=e^{tL_D}$ 作用于相对 $m$ 的密度，满足 $\mu_t^c(dx)=(P_t^Dg)(x)m(dx)/\int_DP_t^Dg\,dm$；取 $\|\phi_1\|_2=1$，初始概率密度 $g\in L^2(m)$ 满足 $g\ge0$、$\int g\,dm=1$，并记 $a_1=\langle g,\phi_1\rangle>0$。
 
 <a id="p-qsd-04"></a>
 
@@ -1972,11 +1974,11 @@ $$
 
 ## 15.9 形成—binding—传输的真实组合义务
 
-设 $f_0,f_1$ 分别形成两端候选，$t_x$ 运输底层输入，$B_0,B_1$ 实现 binding，$t_p$ 运输父层。形成近似可交换与 binding 近似可交换是两项假设。若 $B_1$ 对中间度量为 $L$-Lipschitz，则
+设两端候选形成映射为 $f_i:X_i\to F_i$，binding 映射为 $B_i:F_i\to P_i$（$i\in\{0,1\}$），底层输入运输为 $t_X:X_0\to X_1$，中间候选层运输为 $t_F:F_0\to F_1$，父输出层运输为 $t_P:P_0\to P_1$。形成近似可交换 $d_F(f_1(t_Xx),t_F(f_0x))\le\epsilon_F$ 与 binding 近似可交换 $d_P(B_1(t_Fu),t_P(B_0u))\le\epsilon_B$ 是两项独立假设。若 $d_P$ 满足伪度量三角不等式且 $B_1$ 对 $(d_F,d_P)$ 为 $L$-Lipschitz（$L\ge0$），则
 
-$$d\bigl(B_1(f_1(t_xx)),t_p(B_0(f_0x))\bigr)\le L\epsilon_F+\epsilon_B.$$
+$$d_P\bigl(B_1(f_1(t_Xx)),t_P(B_0(f_0x))\bigr)\le L\epsilon_F+\epsilon_B.$$
 
-证明插入 $B_1(t_f(f_0x))$，对第一段用 Lipschitz，第二段用 binding 传输界。C4 的 certified_formed_structural_continuation 还要求两端实际形成关系及预算在 margin 内；它不把结构距离界等同于父 token 身份相等。完整类型见第 34.4 节。
+证明在两端之间插入 $B_1(t_F(f_0x))$，对第一段使用 $B_1$ 的 Lipschitz 性质与形成运输界，对第二段使用 binding 传输界。C4 的 `certified_formed_structural_continuation` 还要求两端实际形成关系成立且总预算落在容限内；它不把结构距离界等同于父 token 身份相等。完整形式类型见第 34.4 节。
 
 <a id="ch-16"></a>
 
@@ -2015,6 +2017,8 @@ $$
 ## 16.2 缺损误差不额外依赖载体候选数量
 
 <a id="p-stat-02"></a>
+
+按与 $e(S)$ 相同的读出纤维公式定义经验响应直径缺损 $\widehat e(S)=\max_i\max_{R_S(h)=R_S(h')}D_{\rm TV}(\widehat p_{h,i},\widehat p_{h',i})$。
 
 **P-STAT-02。** 在同时响应误差事件上，
 $$
@@ -2455,7 +2459,7 @@ V(x)\ge E\left[\int_0^T e^{-\rho t}r\,dt+e^{-\rho T}V(X_T)\right].
 $$
 有界性使终端项消失。最优选择器使不等式处处取等号。∎
 
-若值函数只有 viscosity 正则性，采用相应标准控制理论；不能把不存在的经典梯度直接代入。
+若值函数只有 viscosity 正则性，采用相应标准控制理论；不能把不存在的经典梯度直接代入。在 Lean 形式化中，`DiffusionHJBVerification.p_ctl_03` 将生成元算子与有限时域 Itô 期望关系 `ItoRun` 抽象为显式接口前提；从受控 Brownian 随机积分推出的具体实例见第 39.39—39.45 节。
 
 ## 19.5 GOD 的正式类型
 
@@ -2512,7 +2516,7 @@ $T(\bar v\circ f)=(\bar T\bar v)\circ f$。
 
 ## 20.2 跨度敏感的近似商界
 
-设奖励与转移误差分别不超过 $\epsilon_r,\epsilon_p$，且动作对应同前。令
+设动作对应同前，奖励与推送转移的一致误差满足 $\sup_{x,a}|r(x,a)-\bar r(f(x),a)|\le\epsilon_r$ 与 $\sup_{x,a}D_{\rm TV}(f_\#P_{x,a},\bar P_{f(x),a})\le\epsilon_p$。令
 $$
 w=\bar V^*\circ f,\quad
 \delta=\epsilon_r+\beta\epsilon_p\operatorname{sp}(\bar V^*),\quad
@@ -2601,7 +2605,7 @@ $$
 $$
 \frac{(C_*+C_{\widehat\pi})E_\nu\delta}{1-\beta}.
 $$
-这是第 16 章覆盖条件与控制商的具体连接。未知 $C_*$ 时不能把该表达报告为已计算的实际保证。
+这是第 16 章覆盖条件与控制商的具体连接；对应形式端点 `LocalApproxControlQuotient.p_quo_05` 在平稳策略类上表述（有限折扣模型中平稳确定性策略已由 P-CTL-01 达到全局最优值）。未知 $C_*$ 时不能把该表达报告为已计算的实际保证。
 
 ## 20.6 同源商与受限控制的组合顺序
 
@@ -2711,8 +2715,7 @@ $(\widehat N-N)R+\widehat N(\widehat R-R)$ 得第一式。
 ## 21.5 对称 killed 核的谱稳定性
 
 设 $Q$ 对称、非负、不可约、次随机，单位正主向量 $u$，谱间隔
-$g=\rho-\lambda_2>0$。对称扰动 $E$ 满足
-$\|E\|_2\le\eta<g/2$，且 $\widehat Q=Q+E$ 保持同类性质。
+正交补上的 Rayleigh 第二特征值 $\lambda_2=\max_{v\perp u,\|v\|_2=1}\langle v,Qv\rangle$ 给出谱隙 $g=\rho-\lambda_2>0$。对称扰动 $E$ 满足 $\|E\|_2\le\eta<g/2$，且 $\widehat Q=Q+E$ 保持同类非负不可约亚随机性质并具有正单位主特征向量 $\widehat u$（主特征值 $\widehat\rho$）。
 
 <a id="p-goa-04"></a>
 
@@ -2903,7 +2906,7 @@ $$
 
 #### 21.7.4.1 全路径条件化的精确等式
 
-对 $\theta<1$，在任意固定 T 下，以 $S_T$ 为条件的完整有限状态—动作路径律等于 $\pi_0$ 的同长路径律。
+对 $\theta<1$，在任意固定 $T$ 下，以 $S_T$ 为条件的完整有限状态—动作路径 $(X_0,A_0,\dots,A_{T-1},X_T)$（截至终端状态 $X_T$，共 $T$ 个决策步，不含未条件化的终端后动作 $A_T$）的条件律等于 $\pi_0$ 的同长路径律。
 
 证明如下：每一条存活路径的动作全部为 1，故其 $\pi_\theta$ 路径质量等于相同路径的 $\pi_0$ 质量乘以 $(1-\theta)^T$；非存活路径的条件质量为零；最后除以（21.7-11）。这说明条件化怎样产生（21.7-9）的公平内部核，同时也说明两种无条件部署律并不相等。这个简单常危险率实例不提供一般 Q-process 与有限时窗条件化恒等的定理。
 
@@ -2921,7 +2924,7 @@ $$
 $$
 对 $0<\theta\le1$ 成立。对于 $\theta=0$，该概率为一。
 
-persistent_survival_null、actual_eventual_failure_ae 和 zero_theta_survives_ae 已在这个同一无限实验中证明上述结论。正参数的结论是几乎处处；不把零测度的无限安全样本点删去后宣称逐点失效。通用“每个有限 T 存在可行策略”的命题仍不能直接换量词成“存在一个策略无限存活”。
+persistent_survival_null、actual_eventual_failure_ae 和 zero_theta_survives_ae 已在这个同一无限实验中证明上述结论。正参数的结论是几乎处处；不把零测度的无限安全样本点删去后宣称逐点失效。通用“每个有限 $T$ 存在可行策略”的命题不能无条件换量词为“存在正无限存活概率 $\Pr(\tau=\infty)>0$”；在有限动作集下，“任意长有限时域存在零未认证策略”与“单一策略全时间零未认证”的紧致等价及有限记忆实现另见第 40 章。
 
 ### 21.7.5 最优性、可行性与全空间不变律
 
@@ -3124,7 +3127,7 @@ $$
 
 若 $Z_T$ 对 $X$ 路径可测，则信息未在投影中丢失，第二式取等号。一个常用充分设置是：扩散矩阵方阵可逆、驱动和控制均由可观测状态历史决定、相应 SDE 与测度变换良定义，使 Brownian 增量和密度比可从状态路径重构。
 
-**N-KL-01。** 取二维噪声、$\sigma=(1,0)$、$u=(0,1)$。改变第二个噪声坐标不改变 $X=W_1$ 的状态路径律，所以状态 KL 为零；控制能量却为 $T/2$。这排除了任意退化扩散中“状态路径 KL 恒等于全部控制能量”的表述。
+**N-KL-01。** 取二维噪声、$\sigma=(1,0)$、$u=(0,1)$。改变第二个噪声坐标不改变 $X=W_1$ 的状态路径律，所以状态 KL 为零；而按 P-KL-05 同口径计入二分之一系数的二次控制能量 $\tfrac12\int_0^T\|u_t\|^2dt$ 却为 $T/2$。这排除了任意退化扩散中“状态路径 KL 恒等于全部控制能量”的表述。
 
 Girsanov 与熵的精确条件可参见原始数学研究；本文使用上述有真鞅与可观测性限定的形式。[Léonard 原文](https://leonard.perso.math.cnrs.fr/papers/2012-Leonard-Girsanov%20theory%20under%20a%20finite%20entropy%20condition.pdf)
 
@@ -3403,7 +3406,7 @@ $$
 
 <a id="p-evo-01"></a>
 
-**P-EVO-01：选择与传递的精确分解。** 对父类型数值性状 $z_i$ 和后代类型性状 $z'_j$，令 $(Kz')_i=\sum_jK_{ij}z'_j$。则
+**P-EVO-01：选择与传递的精确分解。** 设亲本类型频率 $p$ 为概率行向量且平均繁殖强度 $\bar b=pb>0$。对父类型数值性状 $z_i$ 和后代类型性状 $z'_j$，令 $(Kz')_i=\sum_jK_{ij}z'_j$。则
 $$
 p'z'-pz=
 \frac{\operatorname{Cov}_p(b,z)}{\bar b}
@@ -3463,7 +3466,7 @@ $$
 
 <a id="p-evo-04"></a>
 
-**P-EVO-04：繁殖价值鞅。** 有限初始计数下，
+**P-EVO-04：繁殖价值鞅。** 在 K-PF-01 正右特征对 $Mr=Rr$（$R>0,r>0$）与有限初始计数下，
 $$
 W_n=R^{-n}Z_nr
 $$
@@ -3471,7 +3474,7 @@ $$
 
 **证明。** 条件期望为 $R^{-(n+1)}Z_nMr=R^{-n}Z_nr$。非负性和有限一阶矩给可积性。∎
 
-**K-MAR-01。** 非负鞅几乎处处收敛到有限 $W_\infty$。但不由此得到 $EW_\infty=EW_0$、$L^1$ 收敛，或“未灭绝时 $W_\infty>0$”。这些结论需要额外的一致可积性和繁殖矩条件。本版不把相应分支过程深层定理作为无条件核心。随机灭绝、有限种群漂变和确定性平均增长必须分别报告。
+**K-MAR-01。** 非负鞅几乎处处收敛到有限 $W_\infty$。但不由此得到 $EW_\infty=EW_0$、$L^1$ 收敛，或“未灭绝时 $W_\infty>0$”：例如单类型临界 Galton–Watson 分支过程（$R=1$、繁殖方差非零且 $Z_0=1$）几乎必然有限步灭绝，故 $W_\infty=0$，而每代均值恒为 $EW_n=1$，$L^1$ 收敛不成立。非退化正极限需要额外的一致可积性与 Kesten–Stigum 型繁殖矩条件。随机灭绝、有限种群漂变和确定性平均增长必须分别报告。
 
 ## 25.6 以同一繁殖算子桥接实际谱系
 
@@ -3538,7 +3541,7 @@ $$
 $$
 \frac{d}{dt}\log(p_1p_2p_3)=\mathbf1^\top Ap=0.
 $$
-非中心内部轨道不可能趋向边界或唯一内部平衡，因为其乘积为固定的正数且小于中心值；因此“所有选择轨道都收敛到一个最优点”不成立。反对称性也阻止将该动力学一般解释为单一严格上升势函数流。
+非中心内部轨道限制在 $p_1p_2p_3=c\in(0,1/27)$ 的紧致闭曲线上周期往复，不可能趋向边界或唯一内部平衡 $(1/3,1/3,1/3)$；因此“所有选择轨道都收敛到一个最优点”不成立。沿任意周期 $T_0>0$ 的非平凡闭轨道，任意连续函数 $V$ 必满足 $V(p(T_0))-V(p(0))=0$，故不存在沿非平凡轨道处处满足 $\dot V>0$ 的严格 Lyapunov 势。
 
 若两个环境交换 $R_1,R_2$ 的大小，就不存在由这两个固定适合度排序共同指定的唯一最优类型。跨环境泛化必须明确环境分布、最坏情况目标或适应机制。
 
@@ -3584,7 +3587,7 @@ $$
 
 <a id="p-ref-01"></a>
 
-**P-REF-01：反身状态增广。** 在上述条件和可测核条件下，给定任意因果策略，$Z$ 的路径律由初始律及 $K$ 唯一确定；确定性修改 $S_{t+1}=F(S_t,X_t,a_t,\xi_t)$ 是其特例。
+**P-REF-01：反身状态增广。** 在上述条件和可测核条件下，给定任意因果策略，$Z$ 的路径律由初始律及 $K$ 唯一确定；当给定 $(X_t,S_t,a_t)$ 时外生扰动 $\xi_t$ 与历史 $H_t$ 条件独立且具有给定时齐条件律时，结构修改 $S_{t+1}=F(S_t,X_t,a_t,\xi_t)$ 是其特例。
 
 **证明。** 条件独立给出一步核分解，再用第 2 章核扩张。若压缩为 $\phi(Z_t)$，仍须重新满足第 7 章的受控闭合条件；反身性不提供自动闭合。∎
 
@@ -3603,7 +3606,7 @@ $$
 
 <a id="p-ref-02"></a>
 
-**P-REF-02：信念充分性。** 上述模型下，下一观测的条件律和更新信念的条件律只依赖 $b_t,a_t$。有界折扣任务因此可转写为信念状态控制问题。
+**P-REF-02：信念充分性。** 上述模型下，若即时奖励为 $(\theta,x,a)$ 的有界函数且允许策略为可观测历史的因果策略，则下一观测的条件律、即时条件期望奖励和更新信念的条件律均只依赖 $(b_t,a_t)$。有界折扣任务因此可转写为信念状态控制问题。
 
 **证明。** 对隐状态和参数求全概率得到分母中的预测观测律；Bayes 公式给更新。下一信念是当前信念、动作和观测的确定函数，故其核仅依赖 $(b_t,a_t)$。有界奖励的条件期望同理。∎
 
@@ -3621,7 +3624,12 @@ $$
 
 **证明。** 固定任意动作 $a$，逐个 $Y$ 的最大值不小于该动作的条件收益。取期望，再对固定动作取最大。∎
 
-若信号揭示一个与所有行动收益无关的独立硬币，互信息可以为 $\log2$，决策价值仍为零。若信息有成本、改变物理状态或妨碍行动，净价值也可能为负。因此不能把 $\Phi$ 无条件等同于“最大化任意可获得信息”。
+反之，当收益关于 $\theta$ 的跨度有界 $\operatorname{sp}_\theta(u)=\max_a(\sup_\theta u(a,\theta)-\inf_\theta u(a,\theta))<\infty$ 时，由 P-MET-02、K-INF-02（Pinsker）及平方根凹性可得互信息对决策价值的单向上界
+$$
+0\le E_Y\max_a E[u(a,\theta)\mid Y]-\max_a E[u(a,\theta)]
+\le\operatorname{sp}_\theta(u)\sqrt{\tfrac12 I(Y;\theta)}.
+$$
+下界却不成立：若信号揭示一个与所有行动收益无关的独立硬币，互信息可以为 $\log2$，决策价值仍为零。若信息有成本、改变物理状态或妨碍行动，净价值也可能为负。因此 $I(Y;\theta)$ 只是免费决策增益的必要容量上界，不能把 $\Phi$ 无条件等同于“最大化任意可获得信息”。
 
 ## 27.4 目标修订与误指定风险
 
@@ -3762,7 +3770,7 @@ $$
 
 <a id="p-api-01"></a>
 
-**P-API-01：精确与近似过程接口的复合。** 若 $A\to B$ 和 $B\to C$ 具有上述类型，则
+**P-API-01：精确与近似过程接口的复合。** 若 $A\to B$（协议提升 $J_{AB}:\mathcal U_B\to\mathcal U_A$）和 $B\to C$（协议提升 $J_{BC}:\mathcal U_C\to\mathcal U_B$，使 $J_{BC}(\mathcal U_C)\subseteq\mathcal U_B$）具有上述类型，则
 $$
 J_{AC}=J_{AB}\circ J_{BC},\qquad
 C_{AC}=C_{BC}\circ C_{AB}.
@@ -3795,7 +3803,7 @@ $$
 
 <a id="p-alg-01"></a>
 
-**P-ALG-01：有限稳定分割的正确性与最粗性。** 算法有限终止，终止分割是所有细化 $\mathcal P_0$ 的受控可合并分割中最粗者。因此其商保留原输出、奖励和所有动作下的一步分布，并由归纳保留相应全部有限时域输出律。
+**P-ALG-01：有限稳定分割的正确性与最粗性。** 称分割 $\mathcal Q$（细化 $\mathcal P_0$）为（强）受控可合并的，若对每个动作 $a\in A$ 与任意块 $C,B\in\mathcal Q$，块转移概率 $\sum_{y\in B}P_a(x,y)$ 在 $x\in C$ 上为常数（区别于依赖特定初始分布的弱可合并性）。算法有限终止，终止分割是所有细化 $\mathcal P_0$ 的受控可合并分割中最粗者。因此其商保留原输出、奖励和所有动作下的一步分布，并由归纳保留相应全部有限时域输出律。
 
 **证明。** 每轮只细分、不合并；每次严格改变至少增加一个块，故严格改变次数最多 $|X|-|\mathcal P_0|$。终止时，同块状态到每个商块的转移概率在每个动作下相同，因此闭合成立。若 $\mathcal Q$ 是任一稳定且细化 $\mathcal P_0$ 的分割，归纳假设其细化 $\mathcal P_n$。每个 $\mathcal P_n$ 块是若干 $\mathcal Q$ 块的并；同一 $\mathcal Q$ 块内到这些并集的概率相同，故下一轮也不会将该 $\mathcal Q$ 块拆开。因此 $\mathcal Q$ 细化终止分割，证明最粗性。有限时域结论由核递推。∎
 
@@ -4521,7 +4529,7 @@ $$d_P(B_1(f_1(t_Xx)),t_P(B_0(f_0x)))\le L\epsilon_F+\epsilon_B.$$
 
 若两端输出还分别满足实际形成关系，且右侧不超过预先指定的结构容限，则得到相应已形成结构的延续证书。
 
-**证明。** 在两端之间插入 $B_1(t_F(f_0x))$。第一段用 $B_1$ 的 Lipschitz 与形成误差；第二段用 binding 传输误差。形成关系和容限分别保留，不由三角不等式创造。∎
+**证明。** 在满足伪度量三角不等式的父层距离 $d_P$ 下，于两端之间插入 $B_1(t_F(f_0x))$。第一段用 $B_1$ 的 Lipschitz 与形成误差；第二段用 binding 传输误差。形成关系和容限分别保留，不由三角不等式创造。∎
 
 **Lean。** ScientificClosure.approximate_fbt_realized_bound、certified_structural_continuation、certified_formed_structural_continuation。
 
@@ -5155,7 +5163,7 @@ $$
 
 **Lean。** viablePolicy_support_step、viablePolicy_supported_histories_viable、viablePolicy_zero_uncovered、supported_viable_of_zero_uncovered、initial_viability_iff_exists_zero_uncovered_policy。
 
-当 $T=0$ 时，左侧终值为真，右侧任取显式基准策略且没有需认证的时刻，两侧相符。该定理也说明：对这一“概率一逐步认证”目标，若某个随机历史策略成功，则存在由支持递推选出的确定性历史策略成功。它不推出无限时域生存、奖励最优性、学习最优性或对近似支持判断的鲁棒性。
+当 $T=0$ 时，左侧终值为真，右侧任取显式基准策略且没有需认证的时刻，两侧相符。该定理也说明：对这一“概率一逐步认证”目标，若某个随机历史策略成功，则存在由支持递推选出的确定性历史策略成功。当动作集有限时，全时间零未认证策略的不动点刻画与有限记忆实现见第 40.1—40.2 节（M-40.1、M-40.2）；但零未认证占据仍不自动推出非平凡吸收核下的正无限存活率、奖励最优性、学习最优性或对无间隔近似支持判断的鲁棒性。
 
 ## 37.5 有限关系表上的可执行判定
 
@@ -5175,7 +5183,7 @@ $$
 
 **证明。** 对 $k$ 归纳。关系表精确性给每个构造的有限后继集合与 Succ 相同；有限动作枚举对应存在量词，有限观察像枚举对应所有非空后继。将布尔与逻辑连接逐层改写即得检验与 $V$ 等价，再用 M-37.3。∎
 
-**Lean。** finiteViabilityCheck、finiteViabilityCheck_correct；实际可执行层为 finiteRelationSuccessor、finiteRelationViabilityCheck、finiteRelationViabilityCheck_correct。后者先证明其输出与前者相同，再复用前者正确性；没有重复建设策略存在证明。
+**Lean。** `finiteViabilityCheck`、`finiteViabilityCheck_correct`；实际可执行层为 `finiteRelationSuccessor`、`finiteRelationViabilityCheck`、`finiteRelationViabilityCheck_correct`（按观察相等分组使用 `DecidableEq Y`）。后者先证明其输出与前者相同，再复用前者正确性；在此基础上的可执行有限记忆控制器综合器 `ExecutableSupportController.synthesize` 见第 40.4 节（M-40.4）。
 
 下列伪代码给出完整控制结构。它要求 exactSupport 为已证明精确的关系表，observe 的像可枚举，certified 可判定。
 
@@ -5357,7 +5365,7 @@ $$
 
 ## 38.4 从逐行拟合到选定条件风险
 
-对每个训练记录，可以选择商映射 $q_\omega$、初始律、参考核 $\widehat P^\omega$ 和因果策略 $\pi^\omega$。微观源 $P$ 保持同一身份，注册行也仍是训练前固定的行。
+对每个训练记录，可以选择商映射 $q_\omega$、初始律、参考核 $\widehat P^\omega$ 和因果策略 $\pi^\omega$。微观源 $P$ 保持同一身份，注册行也仍是训练前固定的行；训练数据假定来自对各注册行 $p_j$ 的生成式重置独立采样协议（其坐标积测度实现见第 38.10.1 节），而非未经鞅集中处理的自适应单轨迹采样。
 
 假定仅在 $G$ 上：
 
@@ -5475,10 +5483,10 @@ $$
 =16e^{-8}\le\frac1{16}.
 $$
 
-已有指数数值界给最后一步；本轮没有凭浮点近似替代形式不等式。因此
+已有指数数值界给最后一步；本轮没有凭浮点近似替代形式不等式。将 $\alpha=16e^{-8}$ 与 $\beta=1/2$ 代入 M-38.3 的紧混合界 $\alpha+(1-\alpha)\beta=\beta+(1-\beta)\alpha$，即得
 
 $$
-\Pr_J(E)\le\frac12+8e^{-8}\le\frac{17}{32}<1.
+\Pr_J(E)\le\frac12+\left(1-\frac12\right)\cdot16e^{-8}=\frac12+8e^{-8}\le\frac{17}{32}<1.
 $$
 
 ### 38.6.4 精确实际风险
@@ -5540,7 +5548,15 @@ $$
 
 本书现已把下列关系逐项接通：给定实际源和注册信息，定义真实有限路径；从该路径产生条件后验与状态—动作占据；以支持递推判定部分观察下的有限可行性并构造策略；将所得实际覆盖与注册经验校准组合；对训练后选择的条件部署核构造真正联合律，最后得到共同微观失败事件的概率界。
 
-这个闭环仍以明确数学输入为起点：实际源、观察协议、精确支持或其有效表示、训练生成协议、失败事件和任务认证条件。将它用于开放世界时，必须检验这些输入。有限支持可行性不是未知转移概率的自动学习器，有限时域零占据不是无限寿命定理，通用风险证书不是目的来源的唯一识别。正因为这些边界已经进入定理而不是隐藏在解释中，后续经验和哲学研究才有明确可检验的接口。
+这个闭环仍以明确数学输入为起点：实际源、观察协议、精确支持或其有效表示、训练生成协议、失败事件和任务认证条件。将它用于开放世界时，必须检验这些输入。有限支持可行性不是未知转移概率的自动学习器，有限时域零占据不是无限寿命定理，通用风险证书不是目的来源的唯一识别。正因为这些边界已经进入定理而不是隐藏在解释中，后续经验和哲学研究才有明确可检验的接口。全书统一采用以下五层闭合状态区分，避免把不同强度的结论混称为同一种“闭环”：
+
+| 闭合层级 | 数学含义与代表范围 | 当前真值状态 |
+|---|---|---|
+| 条件定理闭合 | 给定显式公设下，106 个稳定 P-ID 与 M 编号命题在 Lean 4 纯内核（仅用 `propext`、`Classical.choice`、`Quot.sound`）全部证毕 | `PROVED_PURE_KERNEL` |
+| 边界与不可能性闭合 | N-PRED-01、N-INT-01、N-KL-01、N-BRG-01、固定样本支持不可判定及二维驱动规范自由度等反例已形式化 | `PROVED_BOUNDARY` |
+| 同源分类核心闭合 | 第 39—40 章及核心总论从真实部件、六单位账本、普查时钟与连续/离散构造源联合导出修复、预测、控制与继承 | `CLASSIFIED_CORE_CLOSED` |
+| 无条件强统一闭合 | “任意持久系统必具非空 $\Omega$、唯一全局吸引子、普适二维驱动或演化自动最优化”等原论文强纲领 | `NOT_ESTABLISHED`（已证一般不成立） |
+| 外部自然经验支持 | 合成模型与程序核验之外的物理、生物或社会实验复现 | `UNVERIFIED` |
 
 
 ## 38.10 逐行真实采样与同一良事件上的选中包络
@@ -7059,18 +7075,113 @@ $$R^*=R(\rho)=\frac3{128}.$$
 
 本轮验证绑定同一个输入、源码、Lean 返回表和四点私种子。两机制、四种私种子、三步完整 Bool×Bool primitive tape 共 $2\times4\times4^3=512$ 条短原生运行；完整枚举覆盖出生标签和所有1536个付款前缀。实际 Lean packed 执行与独立完整 Store 重放逐路径比较，另一个不导入待验证 solver 递归的 Fraction 检查器核全动作 oracle、对偶值、达到者和费用。执行枚举负责接线和身份，普遍最优性由形式证明承担。
 
-三步与两步的闭式数值等式使用 Lean 的 `native_decide` 有限计算证书，分别依赖公理审计列出的两条计算机生成的原生判定证书，以及 Lean 编译执行的正确性；一般源桥、全策略上界和付款推导另由逻辑证明给出。直接内核展开因计算开销中止的原尝试保留，不将这一工程中止解释为数学反例。独立 exact 核对用于降低实现接线风险，未被写成替代形式证明的抽样证据。
+在 PR #443 首版交付时，三步与两步的闭式有理数值等式曾使用 `native_decide` 有限计算证书；在本版（v4.2）源码中，由于有理数求逆在内核归约中的不可约障碍已被精确整数标度动态规划 `csolveInt` 消除，这两条等式现已完全改由纯内核 `decide` 定理（`kernel_int_h3`、`kernel_int_h2`）直接归约证明，全库 1,051 个模块不再使用任何非标准编译器信任公理（仅依赖 `propext`、`Classical.choice`、`Quot.sound`）。一般源桥、全策略上界和付款推导由逻辑证明给出；独立 exact 核对继续作为实现接线的交叉验证，不替代形式证明。
 
 源码及主端点、公理依赖、实际产物、编译失败与修正、独立检查和发布状态见[机制决策交付包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/mechanism_decision_closure_v1/README.md)。原八项条件数学合同、PR441 和 PR442 的完成裁决保留。新结论把组织故障结构、允许证据和可实现行动损失接在一起，不宣称发现现实机制或推出规范目标。
 
 S/G 是合成数学机制，经验支持仍为 **UNVERIFIED**。H3 的分离收据出现在终端，未证明也未要求该信息改善同一 H3 的后续决策。外层随机控制器的可靠随机源与计算资源是登记条件，没有被内化为对象硬件。六项合同完成即停止，不自动增加 H、第三机制、权限、压缩平台或性能门。
 
+<a id="ch-40"></a>
+
+# 40. 有限记忆、全时间策略、可执行综合、带噪判别与可观测信念商
+
+**本章问题。** 在第 36—39 章的有限时域支持生存、注册采样校准与同源有限决策之间，还需要哪些中间结构才能把“任意有限时域存在策略”推进到“可执行综合的有限记忆全时间控制器”，并刻画有限样本不可判定性与连续信念商降落？
+
+**阅读路线。** 本章按六个已形式化的生产模块群展开：先在幂集有界竞技场上构造单调支持算子的最大不动点与有限记忆控制器（§40.1），证明有限动作下任意长有限时域与单一全时间策略的紧致等价（§40.2）；再建立全有限窗口条件化与齐次记忆马尔可夫增广的无限生存测度极限（§40.3），由此给出完备且可靠的可执行控制器综合器（§40.4）；最后证明固定样本量下精确支持零元测试的不可能性与带噪风险判别器的联合保证（§40.5），并给出部分观察下连续信念核降落为商核的闭合测试充要条件（§40.6）。
+
+## 40.1 有限支持最大不动点与有限记忆控制器
+
+在时齐有限状态集 $X$、非空有限动作集 $A$、观察映射 $q:X\to Y$、精确支持关系 $R(x,a,x')\iff P(x,a)(x')>0$ 与认证谓词 $C(x,a)$ 下，令可达非空观察纤维子集构成的有限支持竞技场为 $\mathcal A\subseteq 2^X\setminus\{\varnothing\}$，其基数满足 $|\mathcal A|+1\le 2^{|X|}$。定义单调一步支持前像算子
+$$
+\Phi(\mathcal W)=\bigl\{S\in\mathcal A:\exists a\in A,\ (\forall x\in S,\ C(x,a))\wedge(\forall y\in q(X),\ \operatorname{Succ}_R(S,a,y)\neq\varnothing\Rightarrow\operatorname{Succ}_R(S,a,y)\in\mathcal W)\bigr\}.
+$$
+自顶向下迭代 $\mathcal W_0=\mathcal A$、$\mathcal W_{k+1}=\Phi(\mathcal W_k)$ 单调递减，至多 $|\mathcal A|$ 步稳定于最大后不动点 $\mathcal W_*=\mathcal W_{|\mathcal A|}$。
+
+<a id="m-40-1"></a>
+
+**M-40.1：有限支持最大不动点与有限记忆分离。** 集合 $S\in\mathcal W_*$ 当且仅当对一切有限时域 $k\in\mathbb N$ 均有 $V(0,k,S)$。若所有非空初始支持满足 $S_0(y)\in\mathcal W_*$，则以 $\mathcal W_*$（至多 $2^{|X|}-1$ 个记忆状态）为内部记忆、按确定性支持转移更新记忆并选取获胜动作的有限记忆控制器 $\pi_{\rm mem}$，在全部时刻 $n\in\mathbb N$ 实现零未认证占据 $\nu_n^{\pi_{\rm mem}}(C^c)=0$；若认证转移同时保持安全集 $K\subseteq X$，则在 Kolmogorov 无限轨迹测度下以概率一永不退出 $K$。此外，存在显式部分观察有限源，使任意无记忆平稳观察反馈策略 $\pi(y)$ 必有 $\nu_0^\pi(C^c)+\nu_1^\pi(C^c)>0$，而二状态有限记忆控制器在所有时刻实现零未认证占据。
+
+**证明。** 对 $k$ 归纳可得 $S\in\mathcal W_k\iff V(0,k,S)$。因 $\mathcal W_{k+1}\subseteq\mathcal W_k\subseteq\mathcal A$ 且 $\mathcal A$ 有限，至多 $|\mathcal A|$ 次严格收缩后必有 $\mathcal W_{m+1}=\mathcal W_m$，此后对一切 $k\ge m$ 稳定并给出最大不动点 $\mathcal W_*=\Phi(\mathcal W_*)$。将当前迹支持 $S_n\in\mathcal W_*$ 作为控制器有限记忆状态，沿正质量历史归纳有 $S_n=\operatorname{traceSupport}(g_n)\in\mathcal W_*$，从而每步所选动作在 $S_n$ 上共同认证。若认证转移保持 $K$，有限前缀安全概率恒为一，由单调收敛推广至可数轨迹空间。无记忆分离反例取两个共享同一初始观察但需相反两步交替动作的潜态分支：平稳策略固定单一观察分布，首两步未认证质量之和严格为正，而一位翻转记忆精确追踪潜态支持。∎
+
+**Lean。** `FiniteSupportFixedPoint.supportWinning_fixed`、`supportWinning_greatest_of_postfixed`、`supportWinning_iff_all_horizons`、`supportArenaCard_add_one_le_pow`；`SupportMemoryController.supportMemoryController_zero_uncovered`、`bounded_horizon_iff_all_times_zero_uncovered`；`SupportMemoryCheck.finiteMemoryCheck_iff_exists_all_times_policy`；`FiniteMemoryPhysicalSafety.supportMemoryController_all_times_physical_safe`；`FiniteMemorySeparation.flip_controller_zero_uncovered` 与 `stationary_feedback_cannot_certify_two_rows`。
+
+## 40.2 全时间零未认证策略与紧致量词交换
+
+对于非时齐有限动作系统，第 37 章对每个固定有限时域 $T$ 给出了递推判定 $V(0,T,S)$。当对每个 $T\in\mathbb N$ 分别存在零未认证策略 $\pi_T$ 时，能否交换量词得到单一全时间策略 $\pi_\infty$？
+
+<a id="m-40-2"></a>
+
+**M-40.2：有限动作下的全时间支持生存与量词交换。** 在有限状态集 $X$ 与非空有限动作集 $A$ 下，定义全时间支持生存谓词 $V_\infty(n,S)\iff\forall k\in\mathbb N,\ V(n,k,S)$。给定完整基准策略 $\pi_{\rm base}$，以下三项等价：
+
+1. 对所有非空初始观察支持 $S_0(y)\neq\varnothing$，有 $V_\infty(0,S_0(y))$；
+2. 对每个有限时域 $T\in\mathbb N$，存在策略 $\pi_T$ 使 $\forall n<T,\ \nu_n^{\pi_T}(C_n^c)=0$；
+3. 存在单一因果历史策略 $\pi_\infty$，使对全部时刻 $n\in\mathbb N$ 均有 $\nu_n^{\pi_\infty}(C_n^c)=0$。
+
+**证明。** $(3)\Rightarrow(2)$ 取 $\pi_T=\pi_\infty$；$(2)\Leftrightarrow(1)$ 对每个 $T$ 应用 M-37.3。关键步 $(1)\Rightarrow(3)$ 利用 $A$ 的有限性（树上的 König 型有限分支紧致性）：固定满足 $V_\infty(n,S)$ 的状态集，对每个 $k\in\mathbb N$ 令 $A_k\subseteq A$ 为使所有非空后继满足 $V(n+1,k,\cdot)$ 的共同认证动作集，则 $A_{k+1}\subseteq A_k$ 且每个 $A_k$ 非空。由于 $A$ 有限，$\bigcap_{k\in\mathbb N}A_k\neq\varnothing$，任取其中一动作即可使全部非空后继保持 $V_\infty(n+1,\cdot)$。递归拼装得到单一确定性历史策略 $\pi_\infty$，其每个有限前缀均满足零未认证条件。∎
+
+**Lean。** `InfiniteSupportViability.infiniteViable_step`、`infiniteViablePolicy_zero_uncovered`、`initial_infiniteViability_iff_exists_all_times_zero_uncovered_policy`、`arbitrarily_long_zero_uncovered_iff_single_all_times_policy`。若动作集 $A$ 无限（例如时域 $T$ 要求选取 $a>T$），$A_k$ 的交集可为空，量词交换不再无条件成立；该定理同样不把“全时间零未认证占据”等同于有正吸收核时的正无限存活率。
+
+## 40.3 全有限窗口条件化与齐次记忆生存极限
+
+在吸收或条件生存分析中，有限窗口条件路径律在存活质量为零的退化分支上需要全定义接口，同时必须保证在一切正存活质量情形下不依赖人工补入的退化分支。
+
+<a id="m-40-3"></a>
+
+**M-40.3：全定义窗口条件化与齐次记忆生存单调极限。** 给定显式退化回退核，全定义有限窗口路径律在存活事件质量为正时与真实条件路径律逐前缀恒等，且其正质量前缀概率与退化回退选择无关；同时存在真实源见证某些可达分支的窗口存活质量确为零。进一步，对时齐有限记忆控制器与源组成的闭环增广齐次 Markov 链 $(X_n,M_n)$，设 $Q_K$ 为限制在安全集 $K$ 上的亚随机 killed 算子，则在唯一 Kolmogorov 无限增广轨迹测度 $\mathbb P$ 下，对一切 $T\in\mathbb N$ 有 $\mathbb P(\forall n\le T,\ X_n\in K)=\mathbf 1_K^\top Q_K^T\mu_0$，并有精确单调极限
+$$
+\lim_{T\to\infty}\mathbf 1_K^\top Q_K^T\mu_0=\mathbb P(\forall n\in\mathbb N,\ X_n\in K).
+$$
+
+**证明。** 当窗口存活质量为正时，条件行归一化只读取存活支持内的正质量原子，回退分支乘以零或永不触发，故与真实条件前缀一致。对闭环系统 $(X_n,M_n)$，一步转移仅依赖当前物理状态与记忆状态，Ionescu-Tulcea 定理给出唯一无限轨迹测度 $\mathbb P$，其有限维柱集分布归纳等于 $Q_K^T$ 在安全集上的总质量。事件 $E_T=\{\forall n\le T,\ X_n\in K\}$ 单调递减至 $\bigcap_{T\in\mathbb N}E_T$，由概率测度上连续性得极限等式。∎
+
+**Lean。** `TotalFiniteWindow.generated_prefix_eq_actual`、`windowPathLaw_fallback_independent`、`generated_ambient_fallback_independent`、`TotalFiniteWindowWitness.null_row_actual_source_witness`；`HomogeneousMemorySurvival.actual_augmentedTrajMeasure_eq_homogeneous`、`actual_finite_survival_eq_killed_mass`、`killed_mass_tendsto_actual_infinite_survival`。
+
+## 40.4 可执行支持控制器综合
+
+M-40.1 证明了有限记忆控制器的数学存在性；工程与形式验证还要求一个完全可计算的综合函数，直接从有限关系表返回可执行程序对象 `Option Program`，而非依赖非构造选择公理。
+
+<a id="m-40-4"></a>
+
+**M-40.4：可执行有限记忆控制器综合的可靠性与完备性。** 给定精确表示源支持的布尔关系表、认证表、初始支持表与显式动作枚举序，可计算综合器 `synthesize` 在至多 $2^{|X|}$ 步有界不动点迭代内终止，且 `synthesize` 返回 `some prog` 当且仅当存在全时间零未认证因果策略。一旦 `synthesize` 返回 `some prog`，所得程序 `prog` 在全部时刻实现零未认证占据；若初始支持位于安全集 $K$ 且认证转移保持 $K$，则闭环过程满足对一切 $T\in\mathbb N$ 的 killed 质量等于 $1$ 且全时间物理安全概率等于 $1$。
+
+**证明。** 将 §40.1 的不动点迭代按给定动作枚举序具象化为有限表查找 `findAction` 与布尔检验 `boundedCheck`。由 M-37.4 与 M-40.1，`boundedCheck` 返回真当且仅当初始非空支持全部属于 $\mathcal W_*$；结合 M-40.2 得与全时间零未认证策略存在性的双向等价。当返回 `some prog` 时，`prog` 在每个可达记忆状态选取首个通过检验的认证动作，由归纳保持程序记忆等于真实迹支持，代入 M-40.1 与 M-40.3 即得全时间零未认证与安全概率一。∎
+
+**Lean。** `ExecutableSupportController.Program`、`synthesize`、`synthesize_isSome_iff_exists_all_times_policy`、`synthesize_some_zero_uncovered`、`synthesize_some_all_times_physical_safe`、`synthesize_some_killed_mass_one`；`ExecutableSupportControllerWitness.synthesis_returns_program`、`synthesis_rejections`。
+
+## 40.5 固定样本精确支持不可判定性与带噪有限风险判别器
+
+第 37 章与 §40.4 的精确支持综合均要求布尔等价式 $R(x,a,x')\iff P(x,a)(x')>0$。若真实源未知、只能对每行采集固定有限样本 $N$，能否构造一个仅读经验样本的判别器，在不附加最小正转移下界的前提下一致认证精确支持？
+
+<a id="m-40-5"></a>
+
+**M-40.5：固定样本精确零元认证的不可能性与带噪校准风险判别。**
+
+1. （固定样本不可能性）固定任意有限样本量 $N\in\mathbb N$ 与任意判别规则 $\psi:X^N\to\{\mathrm{true},\mathrm{false}\}$。若在对 $x^*$ 赋零质量的基准源 $p_0$ 上，$\psi$ 在零命中记录上的认证概率至少为 $\alpha_0>0$，则对任意 $\varepsilon\in(0,1)$ 与污染源 $p_\varepsilon=(1-\varepsilon)p_0+\varepsilon\delta_{x^*}$，$\psi$ 在 $p_\varepsilon^N$ 下误发精确零支持证书的概率至少为 $\alpha_0(1-\varepsilon)^N$；特别地，当 $(1-\varepsilon)^N\ge 1-\delta$ 时误判率至少为 $\alpha_0(1-\delta)$，从而不存在无正分离间隔的一致固定样本精确零元证书。
+2. （带噪风险判别器）改用显式分离容限与有理数经验 TV 预算，构造可执行带噪判别器 `NoisyFiniteRiskOracle`：在规范校准事件 $G$（坏事件概率至多 $\alpha_N$）上，经验缺损判定双侧可靠，从候选族中选出首个通过证书的模型时，其真实部署目标失败风险受所报有理预算 $\beta$ 控制，且选后接受与部署失败的联合概率不超过 $\min\{1,\alpha_N+(1-\alpha_N)\beta\}$。
+
+**证明。** 第一部分：在避开 $x^*$ 的每条长为 $N$ 的样本记录上，$p_\varepsilon^N$ 的似然至少为 $p_0^N$ 似然乘以 $(1-\varepsilon)^N$；令 $\varepsilon\downarrow0$ 即排除无正分离间隔的一致精确零支持检验。第二部分：在同时校准事件 $G$ 上，有理数经验分布与真实行的 TV 误差受注册半径控制，三角不等式保证经验缺损和推送参考风险同步传至真实源；最后对联合测度分解 $G$ 与 $G^c$，复用 M-38.3 的混合界。∎
+
+**Lean。** `FixedSampleSupportNoGo.exists_positive_source_false_certification`、`no_uniform_exact_zero_certificate`；`NoisyFiniteRiskOracle.noisyDecision_certified_sound`、`noisyDecision_rejected_sound`、`accepts_actual_risk_and_safety_on_good`、`selected_accepts_and_failure_joint_le`；`NoisyFiniteRiskOracleWitness.computed_certificate_controls_actual_process`。
+
+## 40.6 可观测信念商与闭合测试特征
+
+在部分观察受控或预测过程中，完整隐状态信念 $b\in\Delta(X)$ 往往包含未来任何允许观察测试都无法区分的冗余维度。何时信念更新动力学能够精确降落到可观测测试坐标商空间上？
+
+<a id="m-40-6"></a>
+
+**M-40.6：可观测信念商存在唯一性的闭合测试充要条件。** 在有限状态信念单纯形 $\Delta(X)$ 上，设有限未来观察测试映射为 $\tau:\Delta(X)\to[0,1]^m$（首坐标决定一步观察分布，测试像集闭凸）。一步信念演化在商像 $\tau(\Delta(X))$ 上存在商核 $\bar K$ 与 $\tau$ 精确交织（且该 $\bar K$ 唯一），当且仅当测试族满足 `ClosedTests`，即每一步转移后的测试期望均通过 $\tau(b)$ 分解。当 `ClosedTests` 成立时，全部有限时域观察预测律、观察奖励期望与安全类概率均通过 $\tau(b)$ 分解；缺少 `ClosedTests` 时不存在此类商核，依赖不可观测隐态的奖励或安全谓词亦不降落。
+
+**证明。** 若商核 $\bar K$ 存在，一步后的测试期望仅依赖 $\tau(b)$，即得 `ClosedTests`。反之，在紧凸像集上取截面 `liftBelief` 使 $\tau(\operatorname{liftBelief}(z))=z$，由 `ClosedTests` 知对满足 $\tau(b_1)=\tau(b_2)=z$ 的任意两信念 $b_1,b_2$，推送到商坐标的一步核完全相同，故 $\bar K(z,\cdot)$ 良定义且由满射性唯一确定。归纳复合给出全部有限前缀观察响应的因子化。显式三状态混叠见证同时展示：两个不同隐态信念具有相同的全部未来观察测试（C1 商降落成立），破坏 `ClosedTests` 的扰动源无商核，纯隐态读出亦无法从商坐标恢复。∎
+
+**Lean。** `ObservableBeliefQuotient.ClosedTests`、`closed_tests_iff_existsUnique_quotient`、`finite_test_response_factors`、`observation_reward_factors`；`ObservableBeliefQuotientWitness.actual_C1_descends`、`aliases_have_all_same_future_tests`、`no_quotient_without_closed_tests`、`hidden_readouts_do_not_descend`。
 
 <a id="appendix-a"></a>
 
 # 附录 A. 符号与类型索引
 
 **查阅说明。** 本附录用于查清符号所指的空间、单位和角色。相同字母在局部模型中重新使用时，应以该节明示定义为准；符号相同不是两个源、策略或度量相同的证据。
+
+## A.1 主符号与类型表
 
 同一字符在不同章节可能是局部变量；下表给主类型。实际引用必须以所在定义为准。
 
@@ -7110,6 +7221,22 @@ S/G 是合成数学机制，经验支持仍为 **UNVERIFIED**。H3 的分离收�
 | $R,l,r$ | 主增长因子、长期组成、繁殖价值 | 第 25 章 |
 | ETI | 本文四分量的演化个体性转变证书 | 第 26 章 |
 | $b_t(\theta,x)$ | 参数—状态后验信念 | 第 27 章 |
+
+## A.2 重载符号的跨章作用域消歧表
+
+由于本书横跨测度论、马尔可夫控制、统计校准、谱理论与种群演化，若干标准数学字母在不同章节承担各自领域的惯用角色。阅读与形式化调用时严格按下表局部作用域区分，不得跨章混同：
+
+| 符号 | 作用域一 | 作用域二 | 作用域三 / 备注 |
+|---|---|---|---|
+| $\eta$ | 经验 TV 估计半径（第 16 章） | 对称谱扰动范数上界 $\|E\|_2\le\eta$（第 21.5 节） | 经验拟合误差 $\eta_n(\omega)$（第 38 章）或局部正容差（第 34.5 节） |
+| $N$ | 每注册单元样本数或逐行样本分配 $N_j$（第 16、38、40 章） | 时间平均步数或人口总数 $N_T$（核心总论、第 21.7 节） | 设计样本量 $G_N$（第 17 章） |
+| $D$ | 吸收存活域 $m(D)<\infty$（第 10.4 节）或整合度 $D(k)$（第 15.8 节） | 近似控制商总值误差上界 $\delta/(1-\beta)$（第 20.2 节） | 核心同源模型中的损坏身体类型 `D`（核心总论、第 39 章） |
+| $H$ | 历史随机变量 $H_t$ 或香农熵 $H(\cdot)$（第 2、5、25 章） | 推送历史映射 $H_q$（第 36、38 章） | 核心同源模型中的健康身体类型 `H` 或决策时域步数（核心总论、第 39 章） |
+| $Q$ | 动作值函数 $Q^*(x,a)$（第 19 章）或受控路径测度 $\mathbf Q$（第 22 章） | 亚随机 killed 转移算子 $Q,Q_K$（第 10、21、40 章） | 行为分布映射 $Q_\theta^e$（第 26 章） |
+| $M,K$ | 内部状态 $M$ 与条件响应核 $K_i$（第 4、6 章） | 可行核递推 $K_n,K_\infty$ 或安全集 $K$（第 8、35、40 章） | 平均繁殖算子 $M=D_bK$ 与传递核 $K$（第 25 章）；字母表大小 $K$（第 16 章） |
+| $L,B,R$ | 单元数 $L$、生成元 $\mathcal L,L_D$ 或 Lipschitz 常数 $L$（第 9、10、15、16 章） | binding 映射 $B_i$、资源预算 $B$ 或繁殖向量 $b$（第 15、23、25 章） | Perron 主增长因子 $R$、复制适合度 $R_i$、奖励界 $R$ 或布尔支持表 $R_n$（第 20、25、26、37、40 章） |
+| $C,\pi,T$ | 规范预测核 $C$、认证行谓词 $C_n$ 或路径读出 $C_{AB}$（第 4、28、36—40 章） | 策略 $\pi$、粗粒化投影 $\pi_*$ 或划分 $\pi$（第 14、15、18—20 章） | 时间范围 $T$、可测同构/推送 $T$ 或无关遗传标签 $T$（第 3、4、25、36—40 章） |
+| $\theta,\rho,\nu$ | 机制/模型参数 $\theta$ 或编译程序标签 $\theta_0,\theta_1$（核心总论、第 21.7、27、39 章） | 连续折扣率 $\rho>0$、谱半径 $\rho$ 或注册校准半径 $\rho_n$（第 19、21、38 章） | 不变测度 $\nu$、验证分布 $\nu$ 或真实部署占据律 $\nu_n^\pi$（第 8、20、36—40 章） |
 
 <a id="appendix-b"></a>
 
@@ -7339,6 +7466,35 @@ S/G 是合成数学机制，经验支持仍为 **UNVERIFIED**。H3 的分离收�
 | Daniel Revuz and Marc Yor. *Continuous Martingales and Brownian Motion*. 3rd ed., Springer, 1999。[DOI](https://doi.org/10.1007/978-3-662-06400-9) | 第 9、19、22、39 章；鞅、随机积分、Itô 与测度变换。 |
 | E. B. Davies. *Heat Kernels and Spectral Theory*. Cambridge University Press, 1989。[出版社](https://www.cambridge.org/core/books/heat-kernels-and-spectral-theory/39DC7EE2A5DCCE9DEF581D2F52A73E1F) | 第 10.4、39.74 节；自伴椭圆算子和谱方法的背景；具体半群条件仍逐项保留。 |
 | Frank W. Warner. *Foundations of Differentiable Manifolds and Lie Groups*. Springer, 1983；原版 1971。[DOI](https://doi.org/10.1007/978-1-4757-1799-0) | 第 24 章；微分形式与 Hodge 定理，尤其第 6 章。 |
+| James P. Crutchfield and Karl Young. *Inferring Statistical Complexity*. Physical Review Letters 63(2):105–108, 1989。[DOI](https://doi.org/10.1103/PhysRevLett.63.105) | 第 4–5 章；$\epsilon$-机器与统计复杂度的原始提出。 |
+| C. J. Burke and M. Rosenblatt. *A Markovian Function of a Markov Chain*. Annals of Mathematical Statistics 29(4):1112–1122, 1958。[DOI](https://doi.org/10.1214/aoms/1177706444) | 第 7 章；Markov 链函数保持 Markov 性的可合并条件。 |
+| John G. Kemeny and J. Laurie Snell. *Finite Markov Chains*. Van Nostrand, 1960；Springer 重印 1976。 | 第 7、9、21 章；强/弱可合并性（lumpability）与有限链基础势理论。 |
+| R. L. Dobrushin. *Central Limit Theorem for Nonstationary Markov Chains I, II*. Theory of Probability and Its Applications 1:65–80, 329–383, 1956。[DOI](https://doi.org/10.1137/1101006) | 第 1、21 章；TV 收缩系数（Dobrushin 遍历系数）的原始来源。 |
+| Robert Paige and Robert E. Tarjan. *Three Partition Refinement Algorithms*. SIAM Journal on Computing 16(6):973–989, 1987。[DOI](https://doi.org/10.1137/0216062) | 第 28.5 节；有限状态分割细化与最粗稳定商算法的经典复杂度背景。 |
+| Robert Givan, Thomas Dean, and Matthew Greig. *Equivalence Notions and Model Minimization in Markov Decision Processes*. Artificial Intelligence 147(1–2):163–223, 2003。[DOI](https://doi.org/10.1016/S0004-3702(02)00376-4) | 第 20、28 章；受控双模拟（stochastic bisimulation）与精确控制商。 |
+| J. L. Doob. *Conditional Brownian Motion and the Boundary Limits of Harmonic Functions*. Bulletin de la Société Mathématique de France 85:431–458, 1957。 | 第 10、21 章；条件过程与 Doob $h$-变换的奠基文献。 |
+| J. N. Darroch and E. Seneta. *On Quasi-Stationary Distributions in Absorbing Discrete-Time Finite Markov Chains*. Journal of Applied Probability 2(1):88–100, 1965。[DOI](https://doi.org/10.2307/3211876) | 第 10、21 章；有限吸收链准平稳分布与正特征向量的经典理论。 |
+| Pierre Collet, Servet Martínez, and Jaime San Martín. *Quasi-Stationary Distributions: Markov Chains, Diffusions and Dynamical Systems*. Springer, 2013。[DOI](https://doi.org/10.1007/978-3-642-33131-2) | 第 10、21 章；离散与连续时间准平稳分布及 $Q$-过程的系统专著。 |
+| Richard Bellman. *Dynamic Programming*. Princeton University Press, 1957。 | 第 19–20 章；动态规划与最优性方程的奠基著作。 |
+| David Blackwell. *Discounted Dynamic Programming*. Annals of Mathematical Statistics 36(1):226–235, 1965。[DOI](https://doi.org/10.1214/aoms/1177700285) | 第 19 章；折扣动态规划压缩映射与平稳最优策略存在性。 |
+| Karl Johan Åström. *Optimal Control of Markov Processes with Incomplete State Information*. Journal of Mathematical Analysis and Applications 10(1):174–205, 1965。[DOI](https://doi.org/10.1016/0022-247X(65)90154-X) | 第 27、40 章；部分可观测 Markov 决策过程中信念状态充分性的原始提出。 |
+| Dimitri P. Bertsekas and Steven E. Shreve. *Stochastic Optimal Control: The Discrete-Time Case*. Academic Press, 1978；Athena Scientific 重印 1996。 | 第 2、19、27 章；Borel 空间可测选择与离散随机最优控制。 |
+| Christos H. Papadimitriou and John N. Tsitsiklis. *The Complexity of Markov Decision Processes*. Mathematics of Operations Research 12(3):441–450, 1987。[DOI](https://doi.org/10.1287/moor.12.3.441) | 第 27、37、40 章；部分观察控制的计算复杂度背景。 |
+| Wendell H. Fleming and Halil Mete Soner. *Controlled Markov Processes and Viscosity Solutions*. 2nd ed., Springer, 2006。[DOI](https://doi.org/10.1007/0-387-31071-1) | 第 19.4 节；连续时间受控扩散、经典 HJB 验证定理与黏性解边界。 |
+| Ioannis Karatzas and Steven E. Shreve. *Brownian Motion and Stochastic Calculus*. 2nd ed., Springer, 1991。[DOI](https://doi.org/10.1007/978-1-4612-0949-2) | 第 9、19、22、39 章；Brownian 运动、可预测随机积分、Itô 公式与 Girsanov 定理。 |
+| M. S. Pinsker. *Information and Information Stability of Random Variables and Processes*. Holden-Day, 1964（俄文原版 1960）。 | 第 1、5、22、27 章；KL 散度控制全变差距离的 Pinsker 不等式。 |
+| Imre Csiszár. *I-Divergence Geometry of Probability Distributions and Minimization Problems*. Annals of Probability 3(1):146–158, 1975。[DOI](https://doi.org/10.1214/aop/1176996454) | 第 22、23 章；KL $I$-投影与指数族几何。 |
+| Paul L. Williams and Randall D. Beer. *Nonnegative Decomposition of Multivariate Information*. arXiv:1004.2515, 2010。[预印本](https://arxiv.org/abs/1004.2515) | 第 6、15 章；多变量冗余、独有与协同信息的背景对照。 |
+| Wassily Hoeffding. *Probability Inequalities for Sums of Bounded Random Variables*. Journal of the American Statistical Association 58(301):13–30, 1963。[DOI](https://doi.org/10.1080/01621459.1963.10500830) | 第 16、38、40 章；有界独立样本指数集中不等式。 |
+| Colin McDiarmid. *On the Method of Bounded Differences*. Surveys in Combinatorics, Cambridge University Press, pp. 148–188, 1989。[DOI](https://doi.org/10.1017/CBO9781107359949.008) | 第 16 章；有界差分集中与经验函数偏差界背景。 |
+| Lucien Le Cam. *Convergence of Estimates Under Dimensionality Restrictions*. Annals of Statistics 1(1):38–53, 1973。[DOI](https://doi.org/10.1214/aos/1176342362) | 第 17、40 章；两点检验可分辨性下界（Le Cam 方法）。 |
+| Alexandre B. Tsybakov. *Introduction to Nonparametric Estimation*. Springer, 2009。[DOI](https://doi.org/10.1007/b13794) | 第 16、17 章；统计极小极大下界、Fano 与散度方法。 |
+| Judea Pearl. *Causality: Models, Reasoning, and Inference*. 2nd ed., Cambridge University Press, 2009。[DOI](https://doi.org/10.1017/CBO9780511803161) | 第 2、6、12、17、38 章；干预协议与被动条件观察的区分。 |
+| George R. Price. *Selection and Covariance*. Nature 227:520–521, 1970。[DOI](https://doi.org/10.1038/227520a0) | 第 25、39 章；选择协方差与传递余项精确分解（Price 恒等式）。 |
+| Krishna B. Athreya and Peter E. Ney. *Branching Processes*. Springer, 1972。[DOI](https://doi.org/10.1007/978-3-642-65371-1) | 第 25 章；多类型分支过程、繁殖价值鞅及 $L^1$ 退化边界。 |
+| Josef Hofbauer and Karl Sigmund. *Evolutionary Games and Population Dynamics*. Cambridge University Press, 1998。[DOI](https://doi.org/10.1017/CBO9781139173179) | 第 26 章；复制动力学、石头—剪刀—布守恒量与非势流循环。 |
+| Leonardo de Moura and Sebastian Ullrich. *The Lean 4 Theorem Prover and Programming Language*. CADE-28, Lecture Notes in Computer Science 12699:625–635, Springer, 2021。[DOI](https://doi.org/10.1007/978-3-030-79876-5_37) | 全书形式化验证底座；依值类型论内核与标准公理体系。 |
+| The mathlib Community. *The Lean Mathematical Library*. CPP 2020, ACM, pp. 367–381, 2020。[DOI](https://doi.org/10.1145/3372885.3373824) | 全书形式化验证底座；测度论、马尔可夫核、拓扑与线性代数基础库。 |
 
 <a id="appendix-d"></a>
 
@@ -8042,3 +8198,39 @@ C1 的源及传感器对应 UC.MeasurablePredictiveSource、UC.MeasurablePredict
 
 
 第 39.89—39.95 节采用 UC.RegisterMechanismDecision 公共入口。新 S/G 原生源与联合历史过滤、全策略实验耦合、有限固定机制后悔证书、同一私随机返回程序及实际前缀账本共同支持结论。源码端点、实际输入输出与独立验收见[机制决策交付包](../formalization/ueot-core/docs/compression/theory_completion/unified_closure/mechanism_decision_closure_v1/README.md)。
+
+## F.6 第 40 章中间层及纯内核升级对应（v4.2）
+
+下表列出第 40 章六个中间层命题与生产源码模块的精确对应，以及全库纯内核公理核验入口；原 106 个稳定 P-ID 与前文历史回执不因此改变。
+
+| 章内命题 / 核验项 | 源码模块与关键声明 | 当前范围与边界 |
+|---|---|---|
+| [M-40.1](#m-40-1) | [FiniteSupportFixedPoint](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteSupportFixedPoint.lean)、[SupportMemoryController](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/SupportMemoryController.lean)、[FiniteMemoryPhysicalSafety](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemoryPhysicalSafety.lean)、[FiniteMemorySeparation](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteMemorySeparation.lean) | 有限状态与动作，竞技场大小 $\le 2^{|X|}-1$；给出最大支持不动点、全时间物理安全与相对无记忆平稳策略的严格分离 |
+| [M-40.2](#m-40-2) | [InfiniteSupportViability](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/InfiniteSupportViability.lean)：`initial_infiniteViability_iff_exists_all_times_zero_uncovered_policy`、`arbitrarily_long_zero_uncovered_iff_single_all_times_policy` | 有限状态与非空有限动作下的全时间零未认证策略及量词交换；无限动作或正无限存活率不无条件成立 |
+| [M-40.3](#m-40-3) | [TotalFiniteWindow](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindow.lean)、[TotalFiniteWindowWitness](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/TotalFiniteWindowWitness.lean)、[HomogeneousMemorySurvival](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/HomogeneousMemorySurvival.lean) | 全定义有限窗口条件化在正存活分支上独立于回退核；齐次闭环链的有限生存质量单调收敛于无限轨迹生存概率 |
+| [M-40.4](#m-40-4) | [ExecutableSupportController](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportController.lean)、[ExecutableSupportControllerWitness](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ExecutableSupportControllerWitness.lean)：`synthesize`、`synthesize_isSome_iff_exists_all_times_policy` | 完全可计算的 `Option Program` 综合器，可靠性与完备性双向已证；依赖精确布尔支持表示 |
+| [M-40.5](#m-40-5) | [FixedSampleSupportNoGo](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FixedSampleSupportNoGo.lean)、[NoisyFiniteRiskOracle](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracle.lean)、[NoisyFiniteRiskOracleWitness](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/NoisyFiniteRiskOracleWitness.lean) | 排除无间隔的固定样本一致精确零支持检验；给出有理数经验 TV 预算下选后联合风险控制 |
+| [M-40.6](#m-40-6) | [ObservableBeliefQuotient](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotient.lean)、[ObservableBeliefQuotientWitness](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/ObservableBeliefQuotientWitness.lean)：`closed_tests_iff_existsUnique_quotient` | 连续信念单纯形上商核存在唯一性的 `ClosedTests` 充要条件及三状态混叠正反见证 |
+| 纯内核公理审计 | [RegisterMechanismDecisionConsumer](../formalization/ueot-core/UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterMechanismDecisionConsumer.lean)、[ExhaustiveAxiomAudit](../formalization/ueot-core/scripts/ExhaustiveAxiomAudit.lean)、[106 项前提分类](../formalization/ueot-core/docs/ASSUMPTION_CLASSIFICATION_106.md) | 整数标度动态规划 `csolveInt` 消去全部两处 `native_decide`；全库 1,051 模块零 `sorryAx`、零非标准公理 |
+
+<a id="appendix-g"></a>
+
+# 附录 G. 开放数学问题注册表
+
+**查阅说明。** 本附录使用第 0 章声明的 `O`（开放问题）证据标签，显式登记当前已证明定理边界之外的 12 个严肃数学问题。将其公开列出是为了给后续数学研究提供精确靶点，并防止把局部有限实例或条件接口误读为已解决的一般理论。
+
+| 开放编号 | 数学问题与目标陈述 | 现有结果为何尚未解决及所需突破 |
+|---|---|---|
+| O-OPEN-01 | **部分观察支持控制器的最小记忆综合复杂度。** 给定有限 $(X,A,q,R,C)$ 与记忆上界 $m<|\mathcal W_*|$，判定是否存在至多 $m$ 个内部记忆状态的全时间零未认证控制器，其精确计算复杂度类（NP-完全或 PSPACE-完全）及多项式不可近似下界是什么？ | M-40.1 与 M-40.4 构造了记忆状态数至多 $2^{|X|}-1$ 的完备综合器，但未给出规定上界 $m$ 时的最小状态自动机归约与紧复杂度下界。 |
+| O-OPEN-02 | **一般紧致度量动作空间上的全时间支持生存与可测选择。** 当状态与动作空间为一般紧致度量或标准 Borel 空间、支持对应满足上半或下半连续性时，何时 $(\forall T,\exists\pi_T)\iff(\exists\pi_\infty)$ 仍成立并具有 Borel 可测选择器？ | M-40.2 关键依赖有限动作集上的有限交非空性；连续动作集需结合集值拓扑闭图条件与 Kuratowski–Ryll-Nardzewski 型可测选择定理。 |
+| O-OPEN-03 | **单轨迹自适应无重置采样的选后部署风险界。** 在不允许生成式重置 `do(x,a)`、只能沿单一探索轨迹采集历史相关样本时，如何将自正则化鞅集中界与数据后选择商映射 $q_\omega$、事件包络及路径误差无泄漏地耦合？ | 第 38 章（M-38.5—M-38.7）依赖注册行内的独立采样产品结构；单轨迹下经验计数为随机停时并与候选选择耦合，需自正则化测度变换界。 |
+| O-OPEN-04 | **一般非原子连续 Markov 核上的有限观察逃逸与路径风险。** 当底层微观源 $P(x,a,\cdot)$ 为一般非原子 Borel Markov 核而非离散 PMF 时，如何把第 36.8 节的一侧有限逃逸编码扩展为具有紧集中常数的连续状态部署风险定理？ | 当前 `PathObservationEscape` 与 `ArbitraryObservationRisk` 允许无限观察空间 $Y$，但底层状态集 $X$ 与动作集 $A$ 仍要求有限以保证 PMF 求和与子集并合界。 |
+| O-OPEN-05 | **非自伴吸收算子的定量准平稳收敛常数与伪谱灵敏度。** 对一般非可逆吸收过程，当主特征值具严格谱隙但特征基条件数很大或具非平凡伪谱时，如何给出可由有限观测认证的显式瞬态预因子 $C_g$ 与混合时间界？ | P-QSD-04 与 P-GOA-04 依赖自伴/可逆结构或对称扰动；一般非正规吸收核的瞬态放大受伪谱几何支配，尚无统一形式化界。 |
+| O-OPEN-06 | **黏性解（viscosity solution）正则性下的受控扩散 HJB 形式化验证。** 当连续时间最优值函数 $V$ 不属于 $C^2$（例如含状态边界约束或切换控制面）时，如何在 Lean 4 中形式化 Crandall–Ishii 引理、比较原理与次最优反馈合成？ | P-CTL-03 与第 39.39—39.45 节要求经典有界 $C^2$ 正则性与显式二阶导数界，尚未涵盖非光滑黏性解理论。 |
+| O-OPEN-07 | **近似闭合测试（$\varepsilon$-`ClosedTests`）下连续信念商的长期误差传播。** 若测试映射 $\tau:\Delta(X)\to[0,1]^m$ 仅以缺陷 $\varepsilon>0$ 近似满足一步测试闭合，如何给出无限折扣或遍历平均观察预测误差关于 $\varepsilon$ 与非线性滤波收缩率的紧界？ | M-40.6 刻画了精确 `ClosedTests`（$\varepsilon=0$）下商核的存在唯一性；近似闭合下的误差累积需结合商纤维直径与射影 Hilbert 度量或 Dobrushin 滤波收缩。 |
+| O-OPEN-08 | **含内生突变与承载力竞争的随机有限人口跨尺度反馈。** 当多类型群体同时存在稀有跨程序突变 $K_{\theta\theta'}>0$、共享环境承载力与密度依赖竞争时，经验比例在多长亚稳时间尺度内逼近主选择分支？ | 核心总论第四、五部分处理忠实复制与固定人均开放流入下的增长分类及独立 cohort 集中界；非线性拥挤需 Freidlin–Wentzell 大偏差与亚稳态分析。 |
+| O-OPEN-09 | **重整化群（RG）不动点与预测商的跨尺度自动相容判据。** 在空间耦合格点或场模型中，给定块自旋粗粒化映射序列，哪些局部相互作用对称性与谱隙条件能充分推出 C1 预测充分性与 P9 跨尺度闭合渐近成立？ | 第 34 章已证任意粗粒化不会自动产生 RG 预测闭合（给出显式缺口反例），针对局部相互作用格点系统的构造性正面充分定理仍开放。 |
+| O-OPEN-10 | **多编译程序任务依赖最小表示维数的代数几何分类。** 定本核心总论第三部分对二程序模型以书面证明给出了任务依赖的 $2/3/4$ 最小表示拆分与公开响应 $(s,b,bq)$ 的局部秩三边界；对 $k$ 个编译程序与 $d$ 维身体寄存器如何给出一般分类并在 Lean 中统一证明秩判据？ | 当前 $2/3/4$ 分类与秩三 Jacobian 行列式登记为书面证明与精确算术核对（见 `LEAN_API_SCOPE.md`），一般多程序形式化尚未建立。 |
+| O-OPEN-11 | **未知多机制族与长时域下的极小极大实验—控制对偶率。** 当候选故障机制族满足 $|\mathcal M|=m\ge 3$、带费诊断探针与有限钱包时域 $H\to\infty$ 时，最小最坏情况后悔关于 $(H,m)$ 的渐近率及多项式时间最优随机控制算法是什么？ | 第 39.89—39.95 节给出了二机制 $\{S,G\}$ 在短时域下的精确对偶值与纯内核 `decide` 证明，一般机制数与渐近时域标度仍开放。 |
+| O-OPEN-12 | **确定性约束下的干预规范最小 Markov 边界。** 当联合分布因确定性函数约束或低维流形支撑违反严格正性时，P-INT-03 失效；如何利用干预核定义唯一规范最小结构接口并给出有限样本一致估计量？ | P-INT-03 依赖交叉正性排除确定性混叠；含确定性约束时的干预规范代表元及样本复杂度尚待一般化。 |
+
