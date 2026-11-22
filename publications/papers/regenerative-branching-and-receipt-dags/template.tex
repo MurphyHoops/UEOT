@@ -1,0 +1,98 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=25mm,headheight=14pt,headsep=8mm]{geometry}
+\usepackage{fontspec}
+\IfFontExistsTF{Liberation Serif}{%
+  \setmainfont{Liberation Serif}%
+}{%
+  \setmainfont{Times New Roman}%
+}
+\IfFontExistsTF{Liberation Sans}{%
+  \setsansfont{Liberation Sans}%
+}{%
+  \setsansfont[Path=../../../tools/books/.cache/fonts/,
+    BoldFont=DejaVuSans-Bold.ttf,
+    ItalicFont=DejaVuSans-Oblique.ttf,
+    BoldItalicFont=DejaVuSans-BoldOblique.ttf]{DejaVuSans.ttf}%
+}
+\IfFontExistsTF{DejaVu Sans Mono}{%
+  \setmonofont[Scale=0.86]{DejaVu Sans Mono}%
+}{%
+  \setmonofont[Path=../../../tools/books/.cache/fonts/,
+    Scale=0.86,
+    BoldFont=DejaVuSansMono-Bold.ttf,
+    ItalicFont=DejaVuSansMono-Oblique.ttf,
+    BoldItalicFont=DejaVuSansMono-BoldOblique.ttf]{DejaVuSansMono.ttf}%
+}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{microtype}
+\usepackage{setspace}
+\setstretch{1.13}
+\usepackage{longtable,booktabs,array,calc}
+\newcounter{none}
+\usepackage{needspace}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage[authoryear,round]{natbib}
+\usepackage{xcolor}
+\definecolor{linkblue}{HTML}{1F4463}
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[unicode,colorlinks=true,allcolors=linkblue,bookmarksnumbered=true]{hyperref}
+\usepackage{xurl}
+\urlstyle{same}
+\hypersetup{
+  pdftitle={$title$},
+  pdfauthor={$author$},
+  pdfsubject={Stochastic Dynamic Programming, Bayesian Adaptive Control, and Decision Diagrams},
+  pdfkeywords={$keywords$}
+}
+\setlength{\parindent}{1.15em}
+\setlength{\parskip}{2pt}
+\setlength{\emergencystretch}{3.5em}
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
+\widowpenalty=10000
+\clubpenalty=10000
+\displaywidowpenalty=10000
+\providecommand{\tightlist}{\setlength{\itemsep}{2pt}\setlength{\parskip}{0pt}}
+\providecommand{\passthrough}[1]{#1}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\footnotesize Qian: Prepayment Thresholds and Certified Polynomial Decision Diagrams}
+\fancyhead[R]{\footnotesize Partially Observed Regenerative Maintenance}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.25pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\small\thepage}\renewcommand{\headrulewidth}{0pt}}
+\begin{document}
+\thispagestyle{plain}
+\begin{center}
+{\fontsize{18.0}{22.5}\selectfont\bfseries $title$\par}
+\vspace{10pt}
+{\large $author$\par}
+\vspace{3pt}
+{\small Independent Researcher\par}
+\vspace{4pt}
+{\small $date$\par}
+\end{center}
+\vspace{4pt}
+\begin{abstract}
+\noindent $abstract$
+\end{abstract}
+\vspace{4pt}
+\noindent{\small\textbf{Keywords:} $keywords$}\par
+\vspace{3pt}
+\noindent{\small\textbf{MSC 2020 Subject Classification:} $msc2020$}\par
+\vspace{3pt}
+\noindent{\small\textbf{OR/MS Subject Classification:} $orms$}\par
+\vspace{10pt}
+
+$body$
+
+\clearpage
+\begingroup
+\setstretch{1.02}
+\small
+\setlength{\bibsep}{4.5pt}
+\bibliographystyle{plainnat}
+\bibliography{references}
+\endgroup
+\end{document}

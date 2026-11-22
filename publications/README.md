@@ -21,8 +21,9 @@ Self-contained English research articles prepared for international peer-reviewe
 
 | Article | Target domain / primary journals | Package |
 |---|---|---|
-| *What Prediction Leaves Out: Relational Objecthood and the Grounds of Purpose* (v2.0) | Philosophy of science, theoretical biology & cognitive science (*Synthese* / *Biology & Philosophy*) | [papers/ueot-philosophical-foundations/](./papers/ueot-philosophical-foundations/README.md) |
+| *What Prediction Leaves Out: Relational Objecthood and the Grounds of Purpose* (v2.1) | Philosophy of science, theoretical biology & cognitive science (*Synthese* / *BJPS* / *Philosophy of Science*) | [papers/ueot-philosophical-foundations/](./papers/ueot-philosophical-foundations/README.md) |
 | *Pure-Kernel Verified Controller Synthesis, Fixed-Sample Impossibility, and Calibrated Post-Selection Risk under Partial Observation* (v1.0) | Interactive theorem proving, safe POMDP control & statistical verification (*Journal of Automated Reasoning* / *ACM TOCL* / *IEEE TAC*) | [papers/certified-viability-and-calibrated-control/](./papers/certified-viability-and-calibrated-control/README.md) |
+| *Prepayment Thresholds, Informative Zero Receipts, and Certified Polynomial Decision Diagrams in Partially Observed Regenerative Maintenance* (v1.0) | Stochastic operations research, Bayesian adaptive control & decision diagrams (*Mathematics of Operations Research* / *Advances in Applied Probability*) | [papers/regenerative-branching-and-receipt-dags/](./papers/regenerative-branching-and-receipt-dags/README.md) |
 
 Revise the maintained sources when developing a new edition. A released
 edition can be recorded here together with its source identity and build
