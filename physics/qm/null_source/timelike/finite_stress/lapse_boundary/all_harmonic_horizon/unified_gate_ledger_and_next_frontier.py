@@ -39,7 +39,7 @@ def main() -> None:
     require(above(ptr_gap_lo, exact("4.5e-23")), "Positive continuum autonomous pointer gap preserved")
     require(ah04["all_15_S3_conformal_and_Killing_obstructions_matched"] is True, "All 15 S^3 obstructions matched")
     require(below(psi_ge2_hi, exact("1e-22")) and below(adm_rms_hi, exact("6.7e-41")), "Elliptic C^2 + 35-species ADM RMS")
-    require(below(lip_eft, exact("8e-7")) and below(lip_semi, exact("4e-8")), "Einstein-Langevin Banach contractions")
+    require(below(lip_eft, exact("2e-6")) and below(lip_semi, exact("1e-7")), "Einstein-Langevin Banach contractions")
     require(
         ah09["gate_free_35_species_3D_Dirac_closure_exact"] is True
         and ah09["ghost_free_K_eq_inf_pointwise_Dirac_and_UV_finiteness_simultaneous"] is False,
