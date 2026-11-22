@@ -207,3 +207,17 @@ linear local preparation/record chain. No global energy-preserving pointer
 is silently attached to the local cap instrument. Final scope review and
 the independently measured minimum-duration gate are still pending; no
 prior session time or predicted future time is reported as completed.
+
+## AP9 final report acceptance
+
+All three native read-only agents actually read UNIFICATION_PROGRESS.md,
+README.md, SESSION.md and AUDIT.md at c09f773bcfc4eb4ff4866585367eb54e289d47d0.
+All returned PASS with no blocking finding. B's nonblocking suggestions
+were applied: restrict the sharp-force summary to its active-coupling
+input, and explicitly label AP1-C's seven historical full-text reads.
+The ledger now has 27 actual records and 266 reviewer/commit/file identities
+(219 full-text, 47 hash-only). All four scientific findings remain RESOLVED.
+AP9 science44977522250 and publication44977522180 both succeeded; root
+read science job137070633888 and its 18 actual PASS entries.
+Science and synthesis are accepted; elapsed time remains IN_PROGRESS
+until the independently recorded three-hour threshold is actually passed.

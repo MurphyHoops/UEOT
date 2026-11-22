@@ -1,5 +1,5 @@
 {
-  "final_audit_complete": false,
+  "final_audit_complete": true,
   "findings": [
     {
       "checkpoint": "AP1",
@@ -67,6 +67,15 @@
     {
       "checkpoint": "AP1",
       "commit": "5a12e8a52b8d89ff6b4c7285f5ea72b2e2ab4f26",
+      "file_review_modes": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/COLLISION.md": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/RESOURCE_BUDGET.md": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/collision.json": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/collision.py": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/common.py": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/resource_budget.json": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/resource_budget.py": "full_text_read"
+      },
       "files": {
         "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/COLLISION.md": "7c1ad06e676e2e3a28949d7177710fb84f1f5e4a335b539e8cfc88b55b687abc",
         "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/RESOURCE_BUDGET.md": "9ddc2e44527a54820c334b09feb7473f2b26a1c159fa1a8183a845c4fbd4fcf8",
@@ -926,6 +935,69 @@
       "reviewer": "/root/c_record_stress",
       "scientific_execution": false,
       "scope": "Actual immutable four-file full-text review: local causal signal, complete all-outcome instrument, domains/energy, future smooth full-tensor noise increment, and frozen-source constraint range/sufficiency. No new findings.",
+      "status": "PASS"
+    },
+    {
+      "checkpoint": "AP9",
+      "commit": "c09f773bcfc4eb4ff4866585367eb54e289d47d0",
+      "file_review_modes": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/AUDIT.md": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/README.md": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/SESSION.md": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/UNIFICATION_PROGRESS.md": "full_text_read"
+      },
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/AUDIT.md": "7d4cd41516727b173a5f8ba4ac790f0645c3ba9a778db36ad26bb83a941c0001",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/README.md": "1ba12b27eb25bdf3d6d9bb179679ef5243393dc4047f2ba663de448693bc1e32",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/SESSION.md": "1e92025a3cc389b3ac3529106af7f0fc1c57274da84f9786cc2e3e62f22970ef",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/UNIFICATION_PROGRESS.md": "3043a05b2fbcf90f65bfa8b77b542daf7250c53f648308036b10adfc2201538e"
+      },
+      "independent_byte_hash_check": false,
+      "reviewer": "/root/a_outside_evolution",
+      "scientific_execution": false,
+      "scope": "Actually read all four final synthesis documents at this immutable commit. Checked model isolation, same-state/domain qualification, complete instrument and retained stress, frozen-source constraint scope, audit counts and honest IN_PROGRESS timing. No blocking findings; B's two nonblocking editorial suggestions are applied in the final metadata update.",
+      "status": "PASS"
+    },
+    {
+      "checkpoint": "AP9",
+      "commit": "c09f773bcfc4eb4ff4866585367eb54e289d47d0",
+      "file_review_modes": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/AUDIT.md": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/README.md": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/SESSION.md": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/UNIFICATION_PROGRESS.md": "full_text_read"
+      },
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/AUDIT.md": "7d4cd41516727b173a5f8ba4ac790f0645c3ba9a778db36ad26bb83a941c0001",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/README.md": "1ba12b27eb25bdf3d6d9bb179679ef5243393dc4047f2ba663de448693bc1e32",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/SESSION.md": "1e92025a3cc389b3ac3529106af7f0fc1c57274da84f9786cc2e3e62f22970ef",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/UNIFICATION_PROGRESS.md": "3043a05b2fbcf90f65bfa8b77b542daf7250c53f648308036b10adfc2201538e"
+      },
+      "independent_byte_hash_check": false,
+      "reviewer": "/root/b_preparation_domains",
+      "scientific_execution": false,
+      "scope": "Actually read all four final synthesis documents at this immutable commit. Checked model isolation, same-state/domain qualification, complete instrument and retained stress, frozen-source constraint scope, audit counts and honest IN_PROGRESS timing. No blocking findings; B's two nonblocking editorial suggestions are applied in the final metadata update.",
+      "status": "PASS"
+    },
+    {
+      "checkpoint": "AP9",
+      "commit": "c09f773bcfc4eb4ff4866585367eb54e289d47d0",
+      "file_review_modes": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/AUDIT.md": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/README.md": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/SESSION.md": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/UNIFICATION_PROGRESS.md": "full_text_read"
+      },
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/AUDIT.md": "7d4cd41516727b173a5f8ba4ac790f0645c3ba9a778db36ad26bb83a941c0001",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/README.md": "1ba12b27eb25bdf3d6d9bb179679ef5243393dc4047f2ba663de448693bc1e32",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/SESSION.md": "1e92025a3cc389b3ac3529106af7f0fc1c57274da84f9786cc2e3e62f22970ef",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/UNIFICATION_PROGRESS.md": "3043a05b2fbcf90f65bfa8b77b542daf7250c53f648308036b10adfc2201538e"
+      },
+      "independent_byte_hash_check": false,
+      "reviewer": "/root/c_record_stress",
+      "scientific_execution": false,
+      "scope": "Actually read all four final synthesis documents at this immutable commit. Checked model isolation, same-state/domain qualification, complete instrument and retained stress, frozen-source constraint scope, audit counts and honest IN_PROGRESS timing. No blocking findings; B's two nonblocking editorial suggestions are applied in the final metadata update.",
       "status": "PASS"
     }
   ],
