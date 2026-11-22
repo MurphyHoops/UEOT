@@ -11,6 +11,7 @@ A self-contained stochastic operations research, Bayesian dynamic programming, a
   - [Markdown source](manuscript.md) · [Generated LaTeX source](manuscript.tex) · [Verified external bibliography (96 entries)](references.bib)
   - [Programmatic vector figure generator](generate_figures.py) & [Vector/300-DPI Figures 1–3](figures/)
   - [Chinese abstract and structural synopsis](ABSTRACT_ZH.md) · [Claim, proof, and Lean 4 correspondence matrix](CLAIM_MATRIX.md)
+  - [Archived pure-kernel Lean 4 formalization (Apache-2.0, Zenodo DOI: 10.5281/zenodo.24433585)](https://doi.org/10.5281/zenodo.24433585)
   - [Build receipt](BUILD_RECEIPT.json) · [Editorial & live rational solver validation](VALIDATION.json) · [Checksums](SHA256SUMS)
 - **Portal-Ready Double-Anonymous Journal Package (`submissions/mor/`):**
   - [*Mathematics of Operations Research* (INFORMS) submission guide & manifest](submissions/mor/SUBMISSION_GUIDE_AND_MANIFEST.md)

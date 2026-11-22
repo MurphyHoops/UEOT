@@ -36,7 +36,7 @@
   - **为什么这篇论文是推广全局的“定海神针”：** 当国际学界看到作者团队不仅提出哲学洞见，而且拥有完全通过 Lean 4 纯逻辑内核审查的可执行控制器综合器、选后统计风险判别器与无 GCD 整数动态规划极小极大后悔证明时，“空泛哲学体系”的偏见瞬间瓦解！
   - **首选期刊：** ***Journal of Automated Reasoning* (JAR, Springer, SCI Q1)** —— 国际交互式定理证明与形式化数学最高旗舰期刊，篇幅充裕（25–35 页），高度推崇纯内核消除编译器信任边界（`native_decide` / `Lean.ofReduceBool`）、可执行程序与经典测度论双层桥接。
   - **并行快车道／梯队备选：** 精简会议版可投 **CPP (ACM SIGPLAN Certified Programs and Proofs)** 或 **ITP (Interactive Theorem Proving)** 快速建立形式化社区声誉；期刊备选 ***ACM Transactions on Computational Logic* (TOCL)** 或 ***IEEE Transactions on Automatic Control* (TAC)**。
-  - **预印本与工件：** **arXiv (`cs.LO` 主类，交叉 `cs.SY`, `math.OC`, `stat.ML`)** + **Zenodo 永久软件工件 DOI（`Apache-2.0` 审计导出包已就绪于 `publications/artifacts/lean4-core-export/`）**。
+  - **预印本与工件：** **arXiv (`cs.LO` 主类，交叉 `cs.SY`, `math.OC`, `stat.ML`)** + **Zenodo 永久软件工件 DOI（`Apache-2.0` 审计导出包已正式发布：[10.5281/zenodo.24433585](https://doi.org/10.5281/zenodo.24433585)，概念 DOI：[10.5281/zenodo.24433584](https://doi.org/10.5281/zenodo.24433584)，本地包位于 `publications/artifacts/lean4-core-export/`）**。
 
 ### 第二阶段（6–18 个月）：专业纵深扩展（运筹分枝控制 + 开放量子过程计量）
 

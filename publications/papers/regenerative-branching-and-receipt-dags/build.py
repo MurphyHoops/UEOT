@@ -67,6 +67,10 @@ execute(["pdftoppm", "-png", "-r", "144", "manuscript.pdf", "build/page"], "pdft
 src_md = (ROOT / "manuscript.md").read_text(encoding="utf-8")
 blinded_md = src_md.replace('author: "Degui Qian"\n', "")
 blinded_md = blinded_md.replace(
+    "permanently archived on Zenodo under the Apache License, Version 2.0 (Apache-2.0) at [doi:10.5281/zenodo.24433585](https://doi.org/10.5281/zenodo.24433585).",
+    "released under the Apache License, Version 2.0 (Apache-2.0); the permanent archival DOI is recorded on the separate unblinded Title Page in accordance with double-anonymous review guidelines.",
+)
+blinded_md = blinded_md.replace(
     "**Rights.** Copyright © 2026 Degui Qian. Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).",
     "**Anonymized review note.** Author identity, affiliation, and copyright holder metadata are provided on the separate unblinded Title Page in accordance with double-anonymous review guidelines.",
 )

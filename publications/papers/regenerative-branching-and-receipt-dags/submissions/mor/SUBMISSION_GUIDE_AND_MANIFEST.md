@@ -7,13 +7,13 @@
 | Upload Slot | File to Upload | Verified Status |
 |:---|:---|:---|
 | **Blinded Main Manuscript** | `mor_blinded_manuscript.pdf` (`.tex` + `.bib` included) | **0 author leaks**, embedded vector Figures 1–3, 0 TeX errors, 0 overfull boxes |
-| **Unblinded Title Page** | `mor_title_page.pdf` (`.tex` included) | Separate author metadata, disclosures, and license statement |
+| **Unblinded Title Page** | `mor_title_page.pdf` (`.tex` included) | Separate author metadata, disclosures, license statement, and Zenodo Apache-2.0 DOI (`https://doi.org/10.5281/zenodo.24433585`) |
 | **Figures (Vector / 300-DPI)** | `figures/fig1_*.pdf`, `fig2_*.pdf`, `fig3_*.pdf` (`.png` also supplied) | 3 programmatic vector figures |
 | **Cover Letter** | `cover_letter.md` | Tailored to *MOR* Stochastic Models / Dynamic Programming areas |
 
 ## 2. Automated Compliance Summary (`VALIDATION_MOR.json`)
 
-- **Double-Anonymous Check:** `PASS` (`anonymity_leaks = []` across body, headers, declarations, and PDF metadata)
+- **Double-Anonymous Check:** `PASS` (`anonymity_leaks = []` across body, headers, declarations, Zenodo DOI redaction, and PDF metadata)
 - **Abstract Word Count:** **182 words** (required: 150–200 words, single paragraph)
 - **Equations / Citations in Abstract:** **0** (`$` count = `0`, `@` count = `0`)
 - **Keywords Count:** **5 keywords** (required: 3–5 keywords)

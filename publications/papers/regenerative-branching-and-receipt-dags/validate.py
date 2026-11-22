@@ -306,7 +306,7 @@ mor_missing_glyphs = re.findall(r"^Missing character:.*$", mor_log, re.M)
 mor_overfull = re.findall(r"^Overfull.*$", mor_log, re.M)
 
 anonymity_leaks = [
-    tok for tok in ["Degui", "Qian", "MurphyHoops"]
+    tok for tok in ["Degui", "Qian", "MurphyHoops", "24433585", "24433584"]
     if tok in mor_text or tok in mor_info
 ]
 
