@@ -32,8 +32,12 @@ Companion 40-digit outward-interval verification suite (`mpmath.iv`, `iv.dps = 4
    - Python `verify_nonabelian_chiral.py` certifies a genuinely non-commuting $2^4$ 4D `SU(2)` Neuberger Overlap
      operator ($128 \times 128$ complex interval matrices) in 40-digit `mpmath.iv`, enclosing $(X^\dagger X)^{-1/2}$,
      $\|\hat\gamma_5^2 - I_{128}\|_F$, $\|P_+ D_{\mathrm{ov}}\hat P_- - D_{\mathrm{ov}}\hat P_-\|_F$,
-     symplectic Kramers reality $\|J D_{\mathrm{ov}} J^{-1} - \overline{D_{\mathrm{ov}}}\|_F$, and non-Abelian `SU(2)`
-     gauge covariance while keeping `"device_certified": false` and `"physical_unification": "OPEN"`.
+     the real structure $J = C_E \otimes i\tau_2$ ($J^2 = +I_{128}$) via $\|J D_{\mathrm{ov}} J^{-1} - \overline{D_{\mathrm{ov}}}\|_F$
+     (algebraically implying $\mathrm{Im}\det D_{\mathrm{ov}} = 0$), and non-Abelian `SU(2)` gauge covariance:
+     $D_{\mathrm{ov}}(U^g)$ is assembled from the Wilson kernel $X(U^g)$ built directly from the transformed links
+     $U^g_\mu(x) = g(x)U_\mu(x)g(x+\hat\mu)^\dagger$ with its own Riccati-certified enclosure of
+     $(X(U^g)^\dagger X(U^g))^{-1/2}$, and then compared with $G D_{\mathrm{ov}}(U) G^\dagger$, $G\hat P_-(U)G^\dagger$
+     and the Lüscher index of $D_{\mathrm{ov}}(U)$, while keeping `"device_certified": false` and `"physical_unification": "OPEN"`.
 
 ## Commands
 

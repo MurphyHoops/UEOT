@@ -9,11 +9,12 @@ Certifies in 40-digit outward interval arithmetic (`mpmath.iv`, `iv.dps = 40`):
    - Rigorous Sylvester/Riccati 40-digit outward-interval enclosure of (X^dagger X)^{-1/2} (128x128),
    - Deformed non-Abelian chirality involution ||hat_gamma_5^2 - I_128||_F < 1e-28,
    - Luscher asymmetric chiral gauge factorization ||P_+ D_ov hat_P_- - D_ov hat_P_-||_F < 1e-28,
-   - Non-Abelian SU(2) gauge covariance of Luscher projector ||hat_P_-(U^g) - G hat_P_-(U) G^dagger||_F < 1e-28
-     and zero gauge-orbit chiral index drift |Ind(D_ov(U^g)) - Ind(D_ov(U))| < 1e-29 under a non-commuting
+   - Non-Abelian SU(2) gauge covariance of D_ov(U^g) (constructed independently from X(U^g) via its own
+     Sylvester/Riccati inverse-sqrt enclosure!) and Luscher projector ||hat_P_-(U^g) - G hat_P_-(U) G^dagger||_F < 1e-28,
+     plus zero gauge-orbit chiral index drift |Ind(D_ov(U^g)) - Ind(D_ov(U))| < 1e-29 under a non-commuting
      site-dependent SU(2) gauge transformation G,
-   - Exact symplectic Kramers reality (J = C_E tensor i tau_2, J^2 = I_128):
-     ||J D_ov(U) J^{-1} - conj(D_ov(U))||_F < 1e-28 and |Im det D_ov(U)| == 0 in exact Kramers pairing,
+   - Exact real structure J = C_E tensor i tau_2 (C_E^2 = -I_4, (i tau_2)^2 = -I_2 -> J^2 = +I_128):
+     ||J D_ov(U) J^{-1} - conj(D_ov(U))||_F < 1e-28, algebraically implying Im det D_ov(U) = 0 and
      reducing single-doublet chiral Weyl phase ambiguity to Witten's Z_2 = {+1, -1} Pfaffian sign!
 2. Witten pi_4(SU(2)) = Z_2 & Mod-16 Dai-Freed Omega_5^Spin(BZ_4) = Z_16 Anomaly Audit:
    - Witten SU(2)_L doublet parity: quark-only N_d = 3 gives Z_0 + (-1)^3 Z_0 = 0 (Z_chiral = 0), whereas
@@ -55,7 +56,7 @@ from physics.unification.common import (
     write_json,
 )
 
-mp.dps = 56
+mp.dps = 50
 iv.dps = 40
 
 
@@ -234,7 +235,7 @@ def enclose_inv_sqrt_hpd_newton_cholesky(A_iv: list[list]) -> tuple[list[list], 
                     AW_mp[i, j] += aik * W_mp[k, j]
         G_mp = W_mp - W_mp * AW_mp
         max_g = max(abs(G_mp[i, j]) for i in range(n) for j in range(n))
-        if max_g < mp.mpf("1e-52"):
+        if max_g < mp.mpf("1e-43"):
             break
         scale_mp = max_g
         G_scaled_np = np.zeros((n, n), dtype=complex)
@@ -264,9 +265,35 @@ def enclose_inv_sqrt_hpd_newton_cholesky(A_iv: list[list]) -> tuple[list[list], 
         for k in range(i):
             z_ik = L_mp[i, k]
             diag_s -= z_ik.real * z_ik.real + z_ik.imag * z_ik.imag
+        require(diag_s > 0, f"Hermitian Cholesky pivot non-positive at row {i}: {diag_s}")
         L_mp[i, i] = mp.mpc(mp.sqrt(diag_s), 0)
 
     L_iv = mp_to_thin_iv_matrix(L_mp)
+    Y_enclosed, norm_R, delta_Y = riccati_certify_from_factor(A_iv, L_iv)
+    return Y_enclosed, norm_R, delta_Y, L_iv
+
+
+def iv_thin_midpoint_matrix(M: list[list]) -> list[list]:
+    """Exact thin (point) iv matrix at the binary midpoints of an interval matrix."""
+    out = []
+    for row in M:
+        new_row = []
+        for z in row:
+            re_m = (mp.make_mpf(z.real._mpi_[0]) + mp.make_mpf(z.real._mpi_[1])) / 2
+            im_m = (mp.make_mpf(z.imag._mpi_[0]) + mp.make_mpf(z.imag._mpi_[1])) / 2
+            new_row.append(iv.mpc(iv.mpf(re_m), iv.mpf(im_m)) if (re_m != 0 or im_m != 0) else iv.mpc(0, 0))
+        out.append(new_row)
+    return out
+
+
+def riccati_certify_from_factor(A_iv: list[list], L_iv: list[list]) -> tuple[list[list], object, object]:
+    """Rigorous 40-digit enclosure of A^{-1/2} around the exact PSD candidate Y = L L^H (L a thin point matrix).
+
+    For any Hermitian PSD candidate Y with R := I - Y A Y, ||R||_F < 1 implies A > 0, Y > 0 and
+    ||Y - A^{-1/2}||_F <= ||A||_F^{1/2} ||Y||_F^2 ||R||_F / (1 - ||R||_F); the bound is independent of how
+    the candidate L was obtained, so seeding is irrelevant to rigor.
+    """
+    n = len(A_iv)
     Y_tilde = iv_matmul(L_iv, iv_conj_transpose(L_iv))
 
     I_n = iv_eye(n)
@@ -410,7 +437,7 @@ def build_4d_su2_nonabelian_overlap() -> dict:
 
     # Enclose (X^dagger X)^{-1/2} in 40-digit outward interval arithmetic
     XdX = iv_matmul(iv_conj_transpose(X), X)
-    Y_iv, norm_R, delta_Y = enclose_inv_sqrt_hpd_newton_cholesky(XdX)
+    Y_iv, norm_R, delta_Y, L_chol_iv = enclose_inv_sqrt_hpd_newton_cholesky(XdX)
 
     I_dim = iv_eye(dim)
     U_ov = iv_matmul(X, Y_iv)
@@ -493,13 +520,32 @@ def build_4d_su2_nonabelian_overlap() -> dict:
     )
     require(strictly_below(gauge_kernel_cov_err, "1e-36"), f"SU(2) kernel gauge covariance failed: {gauge_kernel_cov_err}")
 
-    D_ov_ug = iv_matmul(G_gauge, iv_matmul(D_ov, G_dag))
+    # Enclose (X_ug^dagger X_ug)^{-1/2} independently from X_ug to test genuine operator-function covariance!
+    # Independently certify an enclosure of (X_ug^dagger X_ug)^{-1/2} against the Wilson kernel X_ug built from the
+    # transformed links: exact PSD point candidate Y_ug = L_ug L_ug^H (L_ug = midpoint(G L)), Riccati residual
+    # evaluated against X_ug^dagger X_ug only (never against D_ov(U)), then D_ov(U^g) assembled from X_ug.
+    XdX_ug = iv_matmul(iv_conj_transpose(X_ug), X_ug)
+    L_ug_iv = iv_thin_midpoint_matrix(iv_matmul(G_gauge, L_chol_iv))
+    Y_ug_iv, norm_R_ug, delta_Y_ug = riccati_certify_from_factor(XdX_ug, L_ug_iv)
+    D_ov_ug = iv_scale(iv.mpf(1) / a_lat, iv_add(I_dim, iv_matmul(X_ug, Y_ug_iv)))
+
+    dov_gauge_cov_err = iv_frobenius_norm(
+        iv_add(D_ov_ug, iv_matmul(G_gauge, iv_matmul(D_ov, G_dag)), scale_b=-1)
+    )
+    require(
+        dov_gauge_cov_err.a <= 0 and strictly_below(dov_gauge_cov_err, "1e-28"),
+        f"Non-Abelian Overlap operator SU(2) gauge covariance failed: {dov_gauge_cov_err}",
+    )
+
     G5_hat_ug = iv_matmul(G5, iv_add(I_dim, iv_scale(a_lat, D_ov_ug), scale_b=-1))
     P_hat_minus_ug = iv_scale(iv.mpf(1) / 2, iv_add(I_dim, G5_hat_ug, scale_b=-1))
     proj_gauge_cov_err = iv_frobenius_norm(
         iv_add(P_hat_minus_ug, iv_matmul(G_gauge, iv_matmul(P_hat_minus, G_dag)), scale_b=-1)
     )
-    require(strictly_below(proj_gauge_cov_err, "1e-28"), f"Luscher projector SU(2) covariance failed: {proj_gauge_cov_err}")
+    require(
+        proj_gauge_cov_err.a <= 0 and strictly_below(proj_gauge_cov_err, "1e-28"),
+        f"Luscher projector SU(2) covariance failed: {proj_gauge_cov_err}",
+    )
 
     idx_u = (iv.mpc(-a_lat / 2, 0) * iv_trace(iv_matmul(G5, D_ov))).real
     idx_ug = (iv.mpc(-a_lat / 2, 0) * iv_trace(iv_matmul(G5, D_ov_ug))).real
@@ -514,10 +560,13 @@ def build_4d_su2_nonabelian_overlap() -> dict:
         "max_plaquette_frobenius_distance": outward_str(max_plaq_dist, digits=40),
         "riccati_inv_sqrt_residual_fro": outward_str(norm_R, digits=40),
         "inv_sqrt_enclosure_radius_fro": outward_str(delta_Y, digits=40),
+        "riccati_inv_sqrt_ug_residual_fro": outward_str(norm_R_ug, digits=40),
+        "inv_sqrt_ug_enclosure_radius_fro": outward_str(delta_Y_ug, digits=40),
         "modified_chirality_involution_residual_fro": outward_str(g5_hat_sq_err, digits=40),
         "luscher_left_factorization_residual_fro": outward_str(luscher_fact_err, digits=40),
         "kramers_real_structure_D_ov_residual_fro": outward_str(kramers_reality_err, digits=40),
         "su2_kernel_gauge_covariance_residual_fro": outward_str(gauge_kernel_cov_err, digits=40),
+        "su2_overlap_operator_gauge_covariance_residual_fro": outward_str(dov_gauge_cov_err, digits=40),
         "luscher_projector_su2_covariance_residual_fro": outward_str(proj_gauge_cov_err, digits=40),
         "luscher_index_gauge_orbit_drift": outward_str(idx_gauge_drift, digits=40),
         "certified_admissible_su2_chiral_index": 0,
