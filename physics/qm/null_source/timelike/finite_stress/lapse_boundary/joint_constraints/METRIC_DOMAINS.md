@@ -76,6 +76,10 @@ where
  {\cal H}_{\rm can}=\tfrac12\sum_A
   (\pi_A^2+|\nabla\Phi_A|^2+\Phi_A^2)+r\phi\psi .
 \]
+Here the notation P_K[quadratic]P_K means compression of its canonical
+coefficient matrices on the real Cauchy space before Weyl quantization;
+it is not a finite-particle Fock projector. Equation (4) concerns the
+quadratic part only, leaving the scalar counterterm Ward identity separate.
 The canonical generator is not obtained by silently replacing this
 density with the improved sharp stress density.
 
@@ -84,7 +88,7 @@ The local canonical energy equation
  \nabla^i\sum_A\pi_A\nabla_i\Phi_A+\dot r\,\phi\psi\)
 and spatial integration by parts give
 \[
- \delta_\xi H_K=\partial_tF_{\xi,K}+i[H_{0,K},F_{\xi,K}] .          \tag{4}
+ \delta_\xi H_K^{\rm quad}=\partial_tF_{\xi,K}+i[H_{0,K},F_{\xi,K}] .          \tag{4}
 \]
 All \(n,k,b,\delta r\) coefficients reproduce METRIC_RESPONSE.md.
 Projection is legitimate at this order because the homogeneous
