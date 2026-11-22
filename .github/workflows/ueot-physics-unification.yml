@@ -1,0 +1,111 @@
+name: UEOT Physics Unification Gates
+
+on:
+  pull_request:
+    paths: &unification_paths
+      - "physics/unification/**"
+      - "formalization/ueot-physics-unification/**"
+      - "validation/physics_unification/**"
+      - "physics/qm/kernel/evidence/v31.15/**"
+      - ".github/workflows/ueot-physics-unification.yml"
+  push:
+    branches: [main]
+    paths: *unification_paths
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ueot-physics-unification-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  intervals-and-holdouts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.14"
+      - name: Install scientific dependencies
+        run: python -m pip install numpy==2.5.4 scipy==1.18.1 sympy==1.14.0 mpmath==1.3.0
+      - name: Verify all unification outward-interval certificates and empirical holdouts
+        run: python -B physics/unification/run_verification.py --check
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ueot-physics-unification-intervals-${{ github.run_id }}
+          path: |
+            physics/unification/verification.json
+            physics/unification/*/result.json
+            validation/physics_unification/VALIDATION_LEDGER.json
+          if-no-files-found: error
+
+  lean-unification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: formalization/ueot-physics-unification
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Check inherited Core + QM toolchain and dependency lock
+        run: python3 scripts/check_dependencies.py
+      - name: Install and verify official pinned Lean 4.33.1
+        shell: bash
+        run: |
+          set -o pipefail
+          bash ../ueot-qm/scripts/install_lean.sh "$RUNNER_TEMP/ueot-unif-lean"
+      - name: Restore pinned Lake packages cache
+        id: deps
+        uses: actions/cache/restore@v4
+        with:
+          path: formalization/ueot-physics-unification/.lake/packages
+          key: ueot-unif-deps-${{ runner.os }}-${{ hashFiles('formalization/ueot-physics-unification/lake-manifest.json', 'formalization/ueot-physics-unification/lean-toolchain') }}
+          restore-keys: |
+            ueot-qm-deps-${{ runner.os }}-
+      - name: Restore Mathlib proof cache
+        run: lake exe cache get
+      - name: Save pinned Lake packages cache
+        if: steps.deps.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: formalization/ueot-physics-unification/.lake/packages
+          key: ${{ steps.deps.outputs.cache-primary-key }}
+      - name: Reject syntactic proof escapes (comment-aware)
+        run: python3 scripts/check_no_escapes.py
+      - name: Build UEOTPhysicsUnification
+        shell: bash
+        run: |
+          set -o pipefail
+          lake build UEOTPhysicsUnification 2>&1 | tee lean-build.log
+      - name: Run exhaustive pure-kernel axiom audit
+        shell: bash
+        run: |
+          set -o pipefail
+          lake env lean scripts/ExhaustiveAxiomAudit.lean 2>&1 | tee axiom-audit.log
+          if grep -E '\b(sorryAx|Lean\.ofReduceBool|admit)\b' axiom-audit.log; then
+            exit 1
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ueot-physics-unification-lean-${{ github.run_id }}
+          path: |
+            formalization/ueot-physics-unification/lean-build.log
+            formalization/ueot-physics-unification/axiom-audit.log
+            formalization/ueot-physics-unification/lake-manifest.json
+          if-no-files-found: error

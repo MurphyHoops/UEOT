@@ -1,0 +1,55 @@
+{
+  "checked_mode": false,
+  "lean_formalization_package": "formalization/ueot-physics-unification",
+  "lean_modules": [
+    "UEOTPhysicsUnification.RealQuotientSelection",
+    "UEOTPhysicsUnification.CorrelatedBathIdentifiability",
+    "UEOTPhysicsUnification.GaugeFlavorSelection",
+    "UEOTPhysicsUnification.ConformalControlGravityGates"
+  ],
+  "physical_unification": "OPEN",
+  "rendezvous_compatibility": {
+    "frozen_predecessor_qm_files_untouched": true,
+    "pr_468_disjoint_paths": true
+  },
+  "schema": "ueot-physics-unification-verification/1",
+  "status": "PASS",
+  "suites": [
+    {
+      "certificate": "physics/unification/quantum_selection/result.json",
+      "certificate_sha256": "555d19a04bb51013a43c27922f3757b1457bef99f42a7bdd3561f2e1c4373f9b",
+      "duration_seconds": 0.116,
+      "script": "physics/unification/quantum_selection/verify_selection.py",
+      "script_sha256": "d4e44ce865e7502d74c91d5a91aedebe55663d1c945d413fe4b886142f6b0c32",
+      "status": "PASS",
+      "suite": "quantum_selection"
+    },
+    {
+      "certificate": "physics/unification/local_control_ctp/result.json",
+      "certificate_sha256": "78e818036b0d43c933e30c0c0c06cc9f1e59b4e3b87b29778c1fa9eed400ae88",
+      "duration_seconds": 5.892,
+      "script": "physics/unification/local_control_ctp/verify_control_ctp.py",
+      "script_sha256": "ef6f7c6f5f1d94ebf50071a0e6b7306581836687672b704f015e37f9844dd91f",
+      "status": "PASS",
+      "suite": "local_control_ctp"
+    },
+    {
+      "certificate": "physics/unification/matter_gauge_flavor/result.json",
+      "certificate_sha256": "b52b9389d31819f37a16742e9af4d463865182dc2275ae27604a56185f45696a",
+      "duration_seconds": 0.048,
+      "script": "physics/unification/matter_gauge_flavor/verify_matter_flavor.py",
+      "script_sha256": "3e2874e0d48e1ea187df71a95dae05f00238e2b35f10ab2a31885775e82f2c2a",
+      "status": "PASS",
+      "suite": "matter_gauge_flavor"
+    },
+    {
+      "certificate": "physics/unification/cosmology_perturbation/result.json",
+      "certificate_sha256": "b7cc1d5a34932938b1799866e8ab75d014f27516012827b9e95fc079ca7dfdd3",
+      "duration_seconds": 0.247,
+      "script": "physics/unification/cosmology_perturbation/verify_perturbation_holdout.py",
+      "script_sha256": "8467e3782d26b438741f09030fc41d60ec78e14b02706a21feeeb79c17dbb8c4",
+      "status": "PASS",
+      "suite": "cosmology_perturbation"
+    }
+  ]
+}
