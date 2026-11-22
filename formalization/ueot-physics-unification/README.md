@@ -1,7 +1,7 @@
 # `ueot-physics-unification` — Pure-Kernel Lean 4 Formalization of UEOT Physics Unification Gates
 
 Toolchain: `leanprover/lean4:v4.33.1` (exact byte match to `formalization/ueot-core` and `formalization/ueot-qm`).  
-Kernel audit: **15 modules, 239 constants, 159 theorems, 77 definitions, 0 `sorryAx`, 0 `Lean.ofReduceBool` (`native_decide`), 0 nonstandard axioms**.
+Kernel audit: **18 modules, 279 constants, 189 theorems, 87 definitions, 0 `sorryAx`, 0 `Lean.ofReduceBool` (`native_decide`), 0 nonstandard axioms**.
 
 This package extends formal machine-checked coverage across all non-`PR #468` sectors of the UEOT Physics responsibility matrix (`PREMISES_AND_RESPONSIBILITIES.md` & `CORE_PHYSICS_CONTRACT.md`) without modifying any historical file in `formalization/ueot-core` or `formalization/ueot-qm`.
 
@@ -24,6 +24,9 @@ This package extends formal machine-checked coverage across all non-`PR #468` se
 | `UEOTPhysicsUnification.ElectroweakCustodialAndSeesaw` | `P-EW-01`, `P-QFLAV-02`, `P-QNU-02` | `photon_zero_mode_and_z_eigenmode`, `custodial_rho_tree_level_one`, `higgs_triplet_breaks_custodial_rho`, `dirac_cp_phases_pos_iff_three_generations`, `type_one_seesaw_exact_roots_and_bound` |
 | `UEOTPhysicsUnification.SpacetimeDimensionAndEarlyLateCosmology` | `B-CAUS-01`, `S-DIM-03`, `P-QG-15`, `P-GRAV-FM-05` | `strict_monotone_forces_causal_antisymmetry`, `periodic_three_cycle_not_antisymmetric`, `spacetime_dim_four_unique_from_gravitons_and_orbits`, `yang_mills_and_conformal_sixth_select_dim_four`, `pure_gravity_loop_divergence_grows`, `fischer_marsden_s3_kernel_iff_ell_one`, `matter_response_lifts_ell_one_obstruction` |
 | `UEOTPhysicsUnification.ActionSelectionAndAttractorRates` | `P-PIPHI-01`, `P-GOA-02` | `posthoc_quadratic_objective_tautological`, `ostrogradsky_hamiltonian_unbounded_below`, `reducible_sector_stationary_continuum`, `doeblin_contraction_iterated_rate` |
+| `UEOTPhysicsUnification.CoreTransportToLiebRobinsonCone` | `C-LR-CONE-01` | `core_transport_strict_causal_cone`, `core_transport_lieb_robinson_moment_bound`, `lieb_robinson_velocity_pos`, `ballistic_supersonic_ray_exponential_decay`, `emergent_lieb_robinson_cone_locks_minkowski_metric` |
+| `UEOTPhysicsUnification.GPTSelfDualConeReconstruction` | `C-GPT-RECON-02` | `operational_gpt_minimal_separating_quotient`, `hermitian_psd_cone_self_dual`, `gleason_busch_born_density_existsUnique`, `jordan_composite_dim_defect_identity`, `hurwitz_jordan_local_tomography_uniquely_selects_complex`, `ueot_core_to_complex_qm_three_model_bridge` |
+| `UEOTPhysicsUnification.RenormalizedClockContinuum` | `P-CLOCK-UV-03` | `s3_clock_mode_weight_lower_bound`, `bare_clock_accuracy_energy_diverges`, `worldtube_smeared_variance_uniform_cauchy`, `weierstrass_deconvolved_clock_gate_exact`, `smeared_wick_quartic_graph_norm_uniform_bound`, `cosmological_constant_zero_enthalpy_no_go`, `dynamical_clock_frw_friedmann_conservation` |
 
 ## Local Build & Exhaustive Kernel Audit
 

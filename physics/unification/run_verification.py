@@ -30,6 +30,9 @@ SUITES = [
     ("electroweak_neutrino_seesaw", HERE / "electroweak_neutrino_seesaw/verify_ew_seesaw.py", HERE / "electroweak_neutrino_seesaw/result.json"),
     ("dimension_inflation_dm_qg", HERE / "dimension_inflation_dm_qg/verify_dim_cosmo_qg.py", HERE / "dimension_inflation_dm_qg/result.json"),
     ("pi_phi_god_goa_gates", HERE / "pi_phi_god_goa_gates/verify_piphi_goa.py", HERE / "pi_phi_god_goa_gates/result.json"),
+    ("lieb_robinson_lightcone", HERE / "lieb_robinson_lightcone/verify_lieb_robinson.py", HERE / "lieb_robinson_lightcone/result.json"),
+    ("gpt_self_dual_reconstruction", HERE / "gpt_self_dual_reconstruction/verify_gpt_reconstruction.py", HERE / "gpt_self_dual_reconstruction/result.json"),
+    ("clock_uv_renormalization", HERE / "clock_uv_renormalization/verify_clock_uv.py", HERE / "clock_uv_renormalization/result.json"),
 ]
 
 
@@ -100,6 +103,9 @@ def main() -> int:
             "UEOTPhysicsUnification.ElectroweakCustodialAndSeesaw",
             "UEOTPhysicsUnification.SpacetimeDimensionAndEarlyLateCosmology",
             "UEOTPhysicsUnification.ActionSelectionAndAttractorRates",
+            "UEOTPhysicsUnification.CoreTransportToLiebRobinsonCone",
+            "UEOTPhysicsUnification.GPTSelfDualConeReconstruction",
+            "UEOTPhysicsUnification.RenormalizedClockContinuum",
         ],
         "physical_unification": "OPEN",
         "rendezvous_compatibility": {
