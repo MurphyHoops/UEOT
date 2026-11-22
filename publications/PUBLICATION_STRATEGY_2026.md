@@ -2,9 +2,10 @@
 
 **编制日期：** 2026-11-22  
 **适用基线：**
-- 主干 `main` (`c5e67a09`, PR #469)：全库 1,051 个 Lean 4 模块纯内核三公理验证（`0` `sorryAx`、`0` `native_decide`），《UEOT 数学著作》v4.2 双语版（255 页中文 / 354 页英文），《客体、演化与意义》v3.1 双语版（104 页中文 / 157 页英文），后继规范 v1.0（30 项 `CSX-` 合同），SQLite 预注册事务合同检验（PR #464）。
-- 论文一分支 `pub/what-prediction-leaves-out-v2` (`b16fc25b`)：首篇独立英文哲学—数理生物学论文 *What Prediction Leaves Out: Relational Objecthood and the Grounds of Purpose* v2.0（30 页，93 篇核实外部文献，并备齐 `submissions/synthese/`、`submissions/bjps/`、`submissions/philosophy-of-science/` 三套双盲投稿包）。
-- 论文二分支 `pub/certified-viability-calibrated-control`：第二篇独立英文形式化方法—安全控制—统计校准旗舰论文 *Pure-Kernel Verified Controller Synthesis, Fixed-Sample Impossibility, and Calibrated Post-Selection Risk under Partial Observation* v1.0（34 页 PDF，正文 10,366 词 + 附录 3,924 词，摘要 209 词，6 个关键词，80 篇核实外部文献，Lean 4 纯内核映射及 `submissions/jar/` 投稿包）。
+- 主干 `main`：全库 1,051 个 Lean 4 模块纯内核三公理验证（`0` `sorryAx`、`0` `native_decide`，PR #469），《UEOT 数学著作》v4.2 双语版（255 页中文 / 354 页英文），《客体、演化与意义》v3.1 双语版（104 页中文 / 157 页英文），以及**三大领域独立英文期刊论文全部合入主干**：
+  1. **Paper 1（科学哲学与理论生物学，PR #470）：** `publications/papers/ueot-philosophical-foundations/` — *What Prediction Leaves Out: Relational Objecthood and the Grounds of Purpose* v2.1（32 页含矢量图，93 篇核实外部文献，备齐 `submissions/synthese/`、`submissions/bjps/`、`submissions/philosophy-of-science/` 三套双盲投稿包）。
+  2. **Paper 2（形式化验证、安全控制与统计校准，PR #471）：** `publications/papers/certified-viability-and-calibrated-control/` — *Pure-Kernel Verified Controller Synthesis, Fixed-Sample Impossibility, and Calibrated Post-Selection Risk under Partial Observation* v1.0（35 页含矢量图，80 篇核实外部文献，Lean 4 纯内核映射及 `submissions/jar/` 投稿包）。
+  3. **Paper 3（随机运筹、Bayes 自适应维护与认证多项式决策图，PR #472）：** `publications/papers/regenerative-branching-and-receipt-dags/` — *Prepayment Thresholds, Informative Zero Receipts, and Certified Polynomial Decision Diagrams in Partially Observed Regenerative Maintenance* v1.0（96 篇核实外部文献，含矢量图 Figures 1–3 与 INFORMS *Mathematics of Operations Research* 双盲直传包 `submissions/mor/`）。
 - 物理推进分支 `origin/codex/correlated-bath-and-local-field-20261118` (`67aa5c4d`, PR #467, 《UEOT 物理学》v3.12 双语候选版，0–71 章，210 项结果) 与 `origin/codex/physics-source-response-20261119` (`8bdeec29`, Draft PR #468，共形耦合、光滑 lapse 运输 Hadamard 态与自主全场正时间源记录）。
 
 ---
@@ -39,9 +40,9 @@
 
 ### 第二阶段（6–18 个月）：专业纵深扩展（运筹分枝控制 + 开放量子过程计量）
 
-- **随机运筹与数理生物学论文（Paper 3）：** *Growth Optimality, Prepayment Constraints, and Sufficient Receipt DAGs in Regenerative Branching Control*。
-  - **提取源：** 数学书核心总论第四、五部分 + §§39.75–39.88 + PR #447（36 原子严格正域全策略期望增长底数 $\rho_* = \max\{1,\lambda_0,\lambda_1\}$、受损始祖达到充要条件、独立 cohort 浓缩与灭绝反转、持久未知率 $r(\theta)$ 下的高价闭式边界 $V_{H+1}^*$、计数后验 $\sigma=(t,q,s,f,k)$ 全动作联合充分性与 $24(H+1)^4$ 认证共享 DAG）。
-  - **目标期刊：** ***Mathematics of Operations Research***（直接对话 Pliska 1976 与 Rothblum–Whittle 1982）→ ***Advances in Applied Probability*** → ***Journal of Mathematical Biology***。
+- **随机运筹与 Bayes 自适应维护论文（Paper 3，已完稿 v1.0 并配套 MOR 双盲直传包）：** *Prepayment Thresholds, Informative Zero Receipts, and Certified Polynomial Decision Diagrams in Partially Observed Regenerative Maintenance*。
+  - **提取源与核心突破：** 数学书 §§39.75–39.88 + 24 个纯内核 Lean 4 模块（原生谱系人口与压缩世界交换定理、逐样本路径预付安全与全历史实随机策略 Bayes 最优性、高价格闭式续程公式 $V_{H+1}^*$ 与充要阈值 $p < 1 + d M_H/\mu_1$、持久参数方差溢价 $d\,\mathrm{Var}(r_\theta)$、故障收据后验阈值收缩 $21/16 \to 5/4$、四步收据反馈增益 $d^3\mathbb{E}[r_\theta^3(1-r_\theta)]$ 与修复后零 $\theta$-揭示价值 $\mathrm{EVPI}_{\mathrm{post}}=0$、有信息零收据计数后验、五坐标摘要 $\sigma=(t,q,s,f,k)$ 全动作联合充分性与三向锐界见证、以及全动作认证共享决策图 $N_H \le 24(H+1)^4$ 将八步 $28^8$ 原始分支压缩为 $1,661$ 个认证节点与 $151$ 个执行节点）。
+  - **目标期刊：** ***Mathematics of Operations Research* (INFORMS, Q1，双盲直传包已就绪于 `submissions/mor/`)** → ***Advances in Applied Probability*** → ***Operations Research*** / ***Journal of Mathematical Biology***。
 
 - **开放量子系统与多时过程计量论文（Paper 4）：** *Separating Fluctuation and Signed Causal Response in Persistent Correlated Quantum Baths: Certified Interval Channels and Local-Field Microcausality*。
   - **提取源：** 《UEOT 物理学》第 69–71 章（`v31.13`–`v31.15`）：自由 Ramsey 全时长不可辨识对 $(3/10,1/2,1/4)$ 与 $(1/3,31/100,81/400)$、探针重置保留浴位移下的有符号 Weyl 交换相位 $s\lambda^2 F$ 辨识 $\lambda^2$、Galerkin 能量尾与 Duhamel 传播残差、精确有理 CP/TP 修复与半钻石范数证书（$<0.0354$）、以及涂抹局域标量场微因果严格零相位与双模截断类空伪相位（$0.00133\text{ rad}$）的对照。
