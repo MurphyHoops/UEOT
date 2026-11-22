@@ -1,0 +1,87 @@
+# Autonomous preparation, complete records and local-field gates
+
+Baseline: 8bdeec29495bf5db2819704dee4e3daf58e6d135.
+Physical unification OPEN. [本轮统一进展报告](UNIFICATION_PROGRESS.md).
+Science closure through AP8 and the AP9 final reporting audit are accepted.
+The independently recorded session is COMPLETE: 3 hours 0 minutes 2 seconds.
+See session_timing.json; physical unification remains OPEN.
+
+## Constructed global comparisons
+
+- [AB: actual outside full-field collision](COLLISION.md), [certificate](collision.json).
+- [AC: sharper finite resource budget](RESOURCE_BUDGET.md), [certificate](resource_budget.json).
+- [AD: autonomous exact-clock source-sign memory](AUTONOMOUS_MEMORY.md), [certificate](autonomous_memory.json).
+- [AE: all apparatus energy and full-source state change](ENERGY_ACCOUNTING.md), [certificate](energy_accounting.json).
+- [AF: calibrated energy-QND record](QND_ENERGY.md), [certificate](qnd_energy.json).
+
+AB--AE use a new fixed M=10^12 instance of the Z family. AF uses original
+M=1 with a different, explicitly global theta(H) apparatus and energy codes.
+The original M=1 physical-P collision has not been closed.
+
+## Domain and locality closure cycle
+
+- [AG: sharp force and Hadamard distinction](FORCE_DOMAIN.md), [certificate](force_domain.json).
+- [AH: self-adjoint smeared force and energy-limited instrument](SMEARED_FORCE.md), [certificate](smeared_force.json).
+- [AI: exact free composite noise and omitted controller modes](LOCAL_FORCING.md), [certificate](local_forcing.json).
+- [AJ: classical local stability and bare quantum cutoff gates](LOCAL_FIELD_LIFT.md), [certificate](local_field_lift.json).
+- [AK: source-containing local counterterms and lapse columns](LOCAL_COUNTERTERMS.md), [certificate](local_counterterms.json).
+
+All outcomes are retained in the constructed global instruments. The
+clock, LO and interaction terms are included where introduced. AH bounds
+retained-system energy cost but does not supply a physical external reader.
+AI is a free/first-Dyson calculation; AK is a one-loop background diagnostic.
+None is a positive normal continuum local apparatus coupled to Einstein
+constraints. Permanent macroscopic records and physical unification remain open.
+
+[Contract](CONTRACT.md) | [Verification](verification.json) |
+[Session](SESSION.md) | [Audit](AUDIT.md) | [Timing](session_timing.json)
+
+## Stable local action and actual preparation gate
+
+- [AL: complete symmetric local basis and one-loop scale boundary](LOCAL_BASIS.md), [certificate](local_basis.json).
+- [AM: same-state finite-cutoff CTP and preparation obstruction](LOCAL_CTP.md), [certificate](local_ctp.json).
+- [AN: smooth mass-source lapse and endpoint contacts](SOURCE_CONTACTS.md), [certificate](source_contacts.json).
+
+The local polynomial action is a new candidate. Global AB--AF readout
+gaps and resource calibrations do not transfer to it. The local acceptance
+now requires a correlated preparation, actual smooth-source joint limit,
+complete stress and all Ward/Einstein constraints on that same state.
+
+## Finite-slice preparation versus a completed switch
+
+[AO: exact first-Dyson spectrum and endpoint gate](SWITCHED_PREPARATION.md),
+[certificate](switched_preparation.json).
+A smooth complete outgoing switch has actual free-energy graph limits and
+a normal Hadamard comparison state. The same switch stopped while active
+does not have the required first-order Fock limit. This does not supply a
+full interacting preparation; it fixes the endpoint condition that the
+next construction must satisfy.
+
+## Exact correlated local comparison
+
+[AP: stationary two-field state, record and complete stress](STATIONARY_COMPARATOR.md),
+[certificate](stationary_comparator.json). This different local linear model
+has an exact coupled-Hadamard state and spacetime-smeared tensor noise,
+but its specified coherent codes fail the static Einstein pressure equation.
+A source-sign record is not an energy or geometric-charge record.
+
+## Actual finite-past preparation and work
+
+[AQ: smooth external ramp, actual all-mode state and calibrated record](EXTERNAL_RAMP.md),
+[certificate](external_ramp.json). The specified local linear model now
+has a real preparation past, explicit .43/(tau*k^3) final and
+.60/(tau*k^3) intermediate bounds, retained counterterm/work/phase,
+and the same-state sign record. Its external source and reader hardware
+have not been made into a local autonomous gravitational apparatus.
+
+## Local causal record and the next geometric gate
+
+[AR: separated-cap signal and complete local record](LOCAL_RECORD.md),
+[certificate](local_record.json), [reflection and next gate](NEXT_GATE.md).
+The actual AQ prepared state supports a finite-window receiver-local
+quantum record under the fixed local Hamiltonian, an explicit normal
+mathematical readout and retained local stress/energy accounting. The
+encoding violates the fixed-ESU pointwise Einstein constraint. A further
+frozen-density linearized metric repair fails four first-harmonic range
+conditions for this single-cap source; the full joint response is still
+required. No autonomous apparatus or physical unification is declared.

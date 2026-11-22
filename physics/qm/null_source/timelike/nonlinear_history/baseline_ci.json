@@ -1,0 +1,146 @@
+{
+  "run": {
+    "id": 44693131877,
+    "name": "Finite source response research",
+    "head_branch": "codex/physics-source-response-20261119",
+    "head_sha": "a01fd663eba988029cb6193c176489ad5bcab539",
+    "path": ".github/workflows/ueot-physics-source-response.yml",
+    "run_number": 19,
+    "event": "pull_request",
+    "status": "completed",
+    "conclusion": "success",
+    "run_attempt": 1,
+    "html_url": "https://github.com/MurphyHoops/UEOT/actions/runs/44693131877",
+    "created_at": "2026-11-20T07:11:30Z",
+    "updated_at": "2026-11-20T07:12:01Z"
+  },
+  "jobs": [
+    {
+      "id": 136143466953,
+      "name": "reproduce",
+      "head_sha": "a01fd663eba988029cb6193c176489ad5bcab539",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/MurphyHoops/UEOT/actions/runs/44693131877/job/136143466953",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-20T07:11:33Z",
+          "completed_at": "2026-11-20T07:11:34Z"
+        },
+        {
+          "name": "Run actions/checkout@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-20T07:11:34Z",
+          "completed_at": "2026-11-20T07:11:41Z"
+        },
+        {
+          "name": "Run actions/setup-python@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-20T07:11:41Z",
+          "completed_at": "2026-11-20T07:11:41Z"
+        },
+        {
+          "name": "Install the same scientific dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-20T07:11:41Z",
+          "completed_at": "2026-11-20T07:11:54Z"
+        },
+        {
+          "name": "Reuse 74 predecessor results and verify complete spectrum state matching and inverse",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-20T07:11:54Z",
+          "completed_at": "2026-11-20T07:11:56Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-20T07:11:56Z",
+          "completed_at": "2026-11-20T07:11:57Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-20T07:11:57Z",
+          "completed_at": "2026-11-20T07:11:58Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-11-20T07:11:58Z",
+          "completed_at": "2026-11-20T07:11:58Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-11-20T07:11:58Z",
+          "completed_at": "2026-11-20T07:11:58Z"
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 14609088446,
+      "name": "dynamic-inverse-research",
+      "size_in_bytes": 23967,
+      "url": "https://api.github.com/repos/MurphyHoops/UEOT/actions/artifacts/14609088446",
+      "archive_download_url": "https://api.github.com/repos/MurphyHoops/UEOT/actions/artifacts/14609088446/zip",
+      "expired": false,
+      "created_at": "2026-11-20T07:11:57Z",
+      "expires_at": "2027-02-18T07:11:30Z",
+      "updated_at": "2026-11-20T07:11:57Z",
+      "digest": "sha256:09084ff6506dc6262d5734a5cc537b28f72c520853b3597525f91ae50e0e3068",
+      "workflow_run": {
+        "id": 44693131877,
+        "repository_id": 1146718528,
+        "head_repository_id": 1146718528,
+        "head_branch": "codex/physics-source-response-20261119",
+        "head_sha": "a01fd663eba988029cb6193c176489ad5bcab539"
+      }
+    }
+  ],
+  "publication": {
+    "id": 44693131858,
+    "name": "Chapter 71 publication candidate",
+    "head_branch": "codex/physics-source-response-20261119",
+    "head_sha": "a01fd663eba988029cb6193c176489ad5bcab539",
+    "path": ".github/workflows/ueot-qm-chapter71-publication.yml",
+    "run_number": 24,
+    "event": "pull_request",
+    "status": "completed",
+    "conclusion": "success",
+    "run_attempt": 1,
+    "html_url": "https://github.com/MurphyHoops/UEOT/actions/runs/44693131858",
+    "created_at": "2026-11-20T07:11:30Z",
+    "updated_at": "2026-11-20T07:15:42Z"
+  },
+  "decoded_job_log_checked": {
+    "job_id": 136143466953,
+    "exact_head_seen": true,
+    "pass_lines": 6,
+    "reused_results": 74,
+    "inherited_files": 272,
+    "artifact_sha256": "09084ff6506dc6262d5734a5cc537b28f72c520853b3597525f91ae50e0e3068"
+  },
+  "semantics": "Read-only exact predecessor HEAD observation. Decoded logs confirm checkout, all six checks, immutable 74/272 reuse, and artifact digest. Science and publication succeeded. Only immutable JSON and source/hash evidence are reused; no inherited scientific program is imported or executed."
+}

@@ -1,0 +1,108 @@
+{
+  "schema": "ueot-finite-local-baseline-ci/1",
+  "semantics": "Fresh read-only GitHub run, job, step and artifact observations at the exact immutable predecessor head; no predecessor scientific checker or ODE executed in this cohort.",
+  "run": {
+    "id": 44736420603,
+    "name": "Finite source response research",
+    "head_branch": "codex/physics-source-response-20261119",
+    "head_sha": "09e1b46aba2632a49d63b10248d7cefc447dade5",
+    "path": ".github/workflows/ueot-physics-source-response.yml",
+    "event": "pull_request",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/MurphyHoops/UEOT/actions/runs/44736420603",
+    "created_at": "2026-11-20T12:30:58Z",
+    "updated_at": "2026-11-20T12:31:39Z",
+    "run_attempt": 1
+  },
+  "jobs": [
+    {
+      "id": 136288830204,
+      "name": "reproduce",
+      "head_sha": "09e1b46aba2632a49d63b10248d7cefc447dade5",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/MurphyHoops/UEOT/actions/runs/44736420603/job/136288830204",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-20T12:31:02Z",
+          "completed_at": "2026-11-20T12:31:05Z"
+        },
+        {
+          "name": "Run actions/checkout@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-20T12:31:05Z",
+          "completed_at": "2026-11-20T12:31:15Z"
+        },
+        {
+          "name": "Run actions/setup-python@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-20T12:31:15Z",
+          "completed_at": "2026-11-20T12:31:16Z"
+        },
+        {
+          "name": "Install the same scientific dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-20T12:31:16Z",
+          "completed_at": "2026-11-20T12:31:31Z"
+        },
+        {
+          "name": "Reuse 85 predecessor results and verify operational selection and joint constraints",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-20T12:31:31Z",
+          "completed_at": "2026-11-20T12:31:34Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-20T12:31:34Z",
+          "completed_at": "2026-11-20T12:31:35Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-20T12:31:35Z",
+          "completed_at": "2026-11-20T12:31:36Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-11-20T12:31:36Z",
+          "completed_at": "2026-11-20T12:31:36Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-11-20T12:31:36Z",
+          "completed_at": "2026-11-20T12:31:36Z"
+        }
+      ]
+    }
+  ],
+  "artifact": {
+    "id": 14628273669,
+    "name": "operational-selection-research",
+    "size_in_bytes": 26863,
+    "digest": "sha256:8bb36310175cc1cc86534a047eb1f72d3eed02ab2b6a0d4bd687821e003cdc1a"
+  }
+}

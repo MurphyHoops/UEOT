@@ -1,0 +1,226 @@
+> Current continuation (2026-11-22): [autonomous preparation and complete records](finite_stress/lapse_boundary/autonomous_preparation/README.md). Physical unification remains OPEN.
+
+<!-- RELATIONAL_COUPLED_CURRENT -->
+
+最新研究：[完整联合传播与原固定时间核](finite_stress/lapse_boundary/joint_propagation/README.md)。正的缩放时间量子极限已推导；原固定测试非零核门被拒收，物理统一仍 OPEN。
+
+本轮更新：同一作用量的完整有限模联合演化、正常物理态、完整源历史恢复的严格限制，以及实际共同截止CTP与齐次因果逆强极限；物理统一仍OPEN。
+
+# 同一源的平均应力、测量扰动与几何记录
+
+> 2026-11-21 最新接续：[完整有限模演化、原几何动量与统一验收](finite_stress/lapse_boundary/relational_coupled/README.md)。已接通有限K正常物理切片，完成完整source第一jet恢复排除及实际齐次retarded逆共同截止强收敛。22个科学入口加1个绑定入口；190项复用、698个前驱文件冻结。联合量子态的空间K极限、真实装置和物理统一仍OPEN。下文旧节保留其历史范围。
+
+> 2026-11-21 接续：[实际 lapse、完整源噪声、因果响应与准备验收](finite_stress/lapse_boundary/README.md)。新入口复用163项并冻结600个前驱科学文件；物理统一仍OPEN。
+
+**当前入口：**[有限正源的共同历史与路线回审](finite_stress/README.md)。固定 K-inspired 正体积族的三个区间已验收；临界模型有正规联合态、固定演化、有限总正源方差和正常正能 dust 提升。原 P 律保持，但裸态、法向导数、完整 Ward 和原 AE/QFT 并未自动恢复。
+
+同态二次参照具有严格非零约束均值残差；允许有限源误差又会打开有明确资源成本的超临界替代。**该新增量子几何分支不再被当成原 mean-SCE 的必要前置门。下一任务回到同一总 CTP 作用量的合法边界态、绝对约束及完整初始相关。**
+
+
+原总源已继续推进一关：SO(4) 协变条件下，非零空间谐波不能补偿整体密度约束；完整零行还明确要求原 incoming 定义域和时间 Ward。有限初片的能量积分常数须作为真实新边界列，满足绝对方差／交叉相关及量子不确定性条件，不能仅指定一块经典 PSD 矩阵。
+
+
+进一步已构造[原作用量上的正常替代边界源](finite_stress/BOUNDARY_STATE.md)：完整总平均应力保持，整体密度残差可任意小，并给完整 homogeneous 绝对噪声与光滑正窗预算。代价是原裸态大幅改变、canonical 涨落增长；精确正常零方差仍被排除，装置总能量方差也不能从账本中消失。这项源端结果没有替代待求的全源几何／装置基态。
+
+[原约束投影与边界条件](finite_stress/ORIGINAL_CTP_GATE.md)
+
+[模型](finite_stress/MODEL.md) · [正常共同态](finite_stress/CRITICAL_STATE.md) · [总正源](finite_stress/POSITIVE_SOURCE.md) · [实际导数](finite_stress/SOURCE_OBSERVABLES.md) · [同态参照残差](finite_stress/DISPERSION_GAP.md) · [下一门](finite_stress/INPUTS_AND_NEXT_TEST.md) · [回执](finite_stress/verification.json)
+
+十七项新增检查、146 项复用、536 个继承科学文件冻结。Core 只读、GI 排除、旧 checker／ODE 不运行、PR 开放草稿，整体统一仍开放。
+
+最新的有限片检查已把态和几何同步起来：[同态残差与真实几何截面](finite_stress/GEOMETRY_MATCHING.md)先拒收一个需要负 rho+p 的普通标量补偿候选，再在原精确 mean family 中一次选参得到 a0=A、h0>0 的真实正窗历史，全部平均缺陷及法向导数恒零。相应[合法初片态与边界相位](finite_stress/FINITE_SLICE_UV.md)必须随几何运输。下一闭环在这条实际历史上计算非静态的完整初始约束／绝对噪声／交叉块，再验收装置和引力记录。
+
+在该真实非静态历史上，[全场平滑约束荷与约束相容性](finite_stress/DYNAMIC_CHARGE.md)已继续建立：密度响应仍由压力因果像决定，原源守恒charge仍有正方差；非静态瞬时密度方差则确实发散。下一步需真实联合边界约束荷及装置过去，不能直接沿用旧静态初片方差。
+
+[薄层源的实际量子边界验收](finite_stress/BOUNDARY_EXTENSION.md)又排除了固定完整裸边缘、仅用独立载体反相关的候选；完整能谱与载体侧记录统计独立。下一具体构造需明示改变的源态或真实准备过去，并满足平滑的 C_geom-C_pre=C_source。
+
+**前轮入口：**[约束量子态、正能时钟与有限应力验收](constraint_states/README.md)。原静态相关态下界加强为严格 >10.072315975%；完整态补偿条件、实际零模量子约束界、关系物理内积和新的正规应力等价族已给出。有限正能时钟的微小条件误差、约0.5的完整约束RMS和约13.42%的源能成本分别保留。
+
+构造明确的两零模GR／正尘埃载体后又继续完成物理域审查：该半线平坦排序的固定分离自伴扩张，无法承载保持原P律、有限总H二阶矩且在开放时间窗具有有限正物质能的正常态。允许动量盘只含原概率 <2.85e-12。**下一门先给具有物理依据的有限正应力约束域，再接非零场、完整AE与局域装置。**
+
+完整配置空间 Laplace–Beltrami 排序也被同一酉等价排除覆盖；一般固定有限权重排序仍留下严格正的原动量坏尾，需使用依权重变化的界。
+
+[静态加强界](constraint_states/STATIC_BOUND.md) · [应力等价源族](constraint_states/RELATIONAL.md) · [正能时钟](constraint_states/POSITIVE_CLOCK.md) · [有限应力排除](constraint_states/DUST_REGULARITY.md) · [下一验收](constraint_states/INPUTS_AND_NEXT_TEST.md) · [回执](constraint_states/verification.json)。九项新检查、137项复用、498文件冻结。旧节保持历史范围；Core只读、GI排除、PR开放草稿，整体统一未完成。
+
+**前轮入口：**[完整总源、约束退化与热壳相干](total_source/README.md)。完整 AE 密度切向与 Einstein 侧相消，而实际基态仍有正密度噪声，故当前独立噪声齐性线性扩张失败；确定性平均解保留。
+
+另一个新正规制备保持完整 W2 与全能量谱，却有完整局域纯压力噪声差。实际光滑平衡历史给非零全场影响，并包括零模与无限高模；真实记忆／U(2)载体未来总源也已纳入。局域因果审查进一步证明全局精确无选择准备需 T>=pi-chi0，不能沿用原小响应窗。共同绝对联合初值、准备段全源与可校准引力读出仍开放。
+
+[全约束](total_source/CONSTRAINTS.md) · [无限场见证](total_source/HISTORY_WITNESS.md) · [载体](total_source/CARRIER.md) · [局域准备门槛](total_source/PREPARATION_CAUSALITY.md) · [反思](total_source/REVIEW.md) · [下一验收](total_source/INPUTS_AND_NEXT_TEST.md) · [回执](total_source/verification.json)。16项新检查、121项复用、438文件冻结。Core只读、GI排除、PR开放草稿，物理统一未完成。
+
+**前轮入口：**[实际局域态、共同正窗与新制备](finite_local/README.md)。原源的完整二结果弱测量和同态运输通过两投影 RMS <7.6e-6；两个真实分支的局域张量、条件噪声、脉冲法向数据和有限场探针应力矩实现桥已经接通。
+
+反思后关闭原角向制备的对称记录等价出口，另以不同径向准备在同一精确静态平均几何上得到单环源 RMS <1.4e-6、双环 >0.14 和完整 rank-one 噪声差。新环带读出不承接旧反馈后验；源—时钟资源界也已纳入。相同二点函数仍给相同平均几何，下一门是约束相容的涨落引力法则、真实装置总源及可校准局域响应。
+
+[实际态](finite_local/ACTUAL_HISTORY.md) · [全张量](finite_local/CONDITIONAL_TENSOR.md) · [实现桥](finite_local/IMPLEMENTATION_BRIDGE.md) · [新制备](finite_local/INVARIANT_PREPARATION.md) · [共同静态窗](finite_local/STATIC_PREPARATION.md) · [时钟资源](finite_local/CLOCK_RESOURCE.md) · [反思](finite_local/REVIEW.md) · [回执](finite_local/verification.json)。30项新检查，复用91项，冻结336文件；Core只读、GI排除，旧程序和ODE不重跑，PR开放草稿。完整物理统一未完成。以下为历史入口。
+
+**前轮入口：**[物理选解、动态联合约束与实际读数](operational_selection/README.md)。固定incoming A、原双场、完整源谱、M2/U0与AE，动态QEI现已允许非平稳、挤压和纠缠高态；在正频E4≤1/5000的中央CQ几何—态候选中，正时间窗归一化全记录约束RMS仍严格>7%。这不否定精确平均历史，也不是几何RMS或所有量子几何的排除。
+
+完整时间协变须同时变换零模参考时标，解析制备仍可有非零快幅。理想几何双读数全域可逆，原零模实际读取却有明确资源界；完整Gaussian源仪器又给精度／反作用和时钟MMSE损失。下一门是尚未被排除的联合初值及共同约束传播，再接局域装置总源与校准。
+
+[动态约束](operational_selection/FLUCTUATIONS.md) · [完整选解](operational_selection/SELECTION.md) · [几何读取](operational_selection/GEOMETRY.md) · [时钟](operational_selection/CLOCK.md) · [仪器](operational_selection/INSTRUMENT.md) · [审查](operational_selection/REVIEW.md) · [回执](operational_selection/verification.json)。六项新检查，复用85项结果，冻结312文件；旧checker/ODE不重跑，Core只读，GI排除，PR开放草稿不合并。以下为历史阶段入口。
+
+**前轮入口：**[精确非线性共同历史与物理选解](nonlinear_history/README.md)。完整 RSET 在四阶加对数的同半径空间中闭合，保持固定 M2/U0、全部 AE、实际 incoming Q/P/eta_ref、源谱和热壳，构造保留两增长幅度的精确 nonlinear mean-SCE 历史。认证球 1e−25、收缩率≤0.128；完整平均残差及法向导数在真实正窗恒为零，同幅度残差—距离增益<2.3e20。当前充分半径不覆盖旧 1e−4 种子窗。
+
+闭合后已继续得到精确非唯一性：固定慢幅度和 incoming 条件仍不能选定快幅度；只随机化这两个幅度也不能承接非退化源谱的过去常数约束。下一主任务因此是物理选解和状态—几何联合涨落约束，再接局域仪器、总源与校准。
+
+[全阶核](nonlinear_history/KERNELS.md) · [存在与误差](nonlinear_history/EXISTENCE.md) · [后继裁决](nonlinear_history/SELECTION.md) · [审查](nonlinear_history/REVIEW.md) · [回执](nonlinear_history/verification.json)。五项新检查，复用80项旧结果，冻结293个继承科学文件；Core只读、GI排除，整体统一目标仍开放。
+
+**前轮入口：**[完整谱、态匹配和保留双增长模的逆](dynamic_inverse/README.md)。完整开右半平面恰有两条简单正实增长根，快根 sigma_F/A∈(11.45521916747,11.45521917820)，通过完整线性约束并与同 incoming 态相容。保留两根的严格因果逆已给短窗增益；全部二阶及以上慢／快组合频率有统一 abs(P)>11.99，双变量 graph 系数逆恢复四阶导数。
+
+闭合后主任务改为保留两个幅度的完整非线性 AE/Jost 映射与余项，继而构造精确共同历史族及独立物理选解。有限初片逆不能直接修正旧无限过去；冻结片上态后只改 jerk 也触发 UV 匹配障碍。涨落与可校准局域仪器继续在共同历史成立后验收。
+
+[完整谱](dynamic_inverse/SPECTRUM.md) · [实际态](dynamic_inverse/STATE_MATCHING.md) · [两个逆](dynamic_inverse/INVERSE.md) · [反思接续](dynamic_inverse/REVIEW.md) · [回执](dynamic_inverse/verification.json)。六项新检查，复用74项旧结果，冻结272个继承科学文件；Core只读，GI排除，精确非线性和总体统一仍开放。
+
+**前轮入口：**[同态动态正窗、法向导数与完整记录](dynamic_seed/README.md)。保持原 M2、U0、AE 和前驱 unfiltered 实际态，精确 Jost/规范零模随几何共同演化；完整二阶修正、无限 UV 尾及 Ward 传播给 eta∈[0,1] 的实际残差上界。|S|<1.642×10^-8，正交能量／空间缺陷乘 x 后分别 <2.465×10^-12、3.284×10^-8，初片与全过程法向导数均受控。
+
+闭合后推进**近似轨迹附近精确 SCE 解的存在或排除及误差**，再接明确涨落法则、联合约束和局域仪器。完整动态 O(2) 记录等价已经排除同合同内靠延时或更多测量产生 old/new 引力辨识；若引入不同联合参考／设备或对称破缺，须明示新资源。
+
+[完整动态证明](dynamic_seed/DYNAMICS.md) · [操作定理](dynamic_seed/RECORDS.md) · [反思与接续](dynamic_seed/REVIEW.md) · [五项新检查](dynamic_seed/run_verification.py) · [回执](dynamic_seed/verification.json)。69项旧结果复用、254个科学文件冻结；精确解、随机约束与整体统一仍开放。
+
+**前轮入口：**[相关及纠缠态的静态残差界](correlated_static/README.md)。在刚闭合的联合全时平均历史后，继续检查零模／高模反相关的出口：去掉条件乘积假设、允许更多平稳高模，完整记录加权相对源／约束 RMS仍严格 **>7%**。正高模激发 Hamiltonian与静态总能量阈值给出这一广义界；局部交叉噪声没有被删去。
+
+前驱具体乘积准备的>10%界继续有效；新7%界不宣称相关态仍须>10%，也不是逐支或几何涨落下界。固定静态物质、平稳高模边缘及完整输入S0谱保持是必要合同。下一主任务集中到动态联合初态与约束传播，再接真实引力仪器。
+
+[新证明及适用范围](correlated_static/README.md) · [两项新检查](correlated_static/run_verification.py) · [回执](correlated_static/verification.json)。67项前驱结果复用、246个科学文件冻结，整个joint_history目录保持原字节。
+
+**前轮入口：**[联合全时平均历史、完整记录与静态残差限制](joint_history/README.md)。固定原 M2、同一 U0 和 AE，通过正规零模及有限热壳准备，把真实成功／失败条件态分别接到唯一静态几何上，完整平均方程全时成立；参数只选一次。
+
+完整总能量包含零模后验和八热振子卷积，全部局部噪声项保留。闭合后进一步证明所有正热静态分支的均值上限；任意完整记录细分仍留下条件方差 ≥3/16+L/ν0，按各支总平均密度归一后的记录加权源／约束 RMS严格 >10%。这不是几何涨落测量或对 mean-SCE 的否定。实际热态仍有齐性增长模。
+
+下一共同目标是承接完整源分布的动态联合初态与反馈，再接局域仪器和校准。全局 CP 准备尚不是因果控制器；旧／新 O(2) 不变总记录仍同律。
+
+[共同历史](joint_history/HISTORY.md) · [记录与响应](joint_history/RECORDS.md) · [全局限制](joint_history/BOUNDS.md) · [审查](joint_history/REVIEW.md) · [六项新检查](joint_history/run_verification.py) · [回执](joint_history/verification.json)。61项旧结果复用，225个旧科学文件原字节保持，旧检查／模式与几何ODE均不重跑。
+
+**前轮入口：**[完整总源、静态准备障碍与随机约束闭环](physical_source/README.md)。旧整个静态 S3 过去加一个独立自由 Hadamard 标量设备的完成已被长时 NEC 下界排除。随后以两个完整真实量子场、正规零模、原 M2 和明示常势 U 构造替代全时平均历史；新半径和态一次选择，新物理输入逐项登记。
+
+允许有限随机 reservoir 后，完整不变记录同律的最小平均相干预算为 sqrt(3)/4；最低成本必留共同径向方差3/16。完整能量谱、参考噪声和场—储备交叉项已纳入。真实 KG/AE 线性响应给增长模；固定同一 retarded 初态的 FLRW 一阶随机约束无法接纳实际非零总能量噪声。因此下一目标为**约束相容的状态—几何联合初值族及共同演化**，再接局域引力仪器。
+
+[记录与成本](physical_source/RECORDS.md) · [全部响应与约束排除](physical_source/RESPONSE.md) · [独立审查](physical_source/REVIEW.md) · [六项新检查](physical_source/run_verification.py) · [回执](physical_source/verification.json)。55项旧结果复用、204个旧科学文件原字节保持；旧局部后释放定理保留原范围。整体 S3 排除不外推未知外区，静态替代模型不称已实现原准备装置。
+
+**前轮入口：**[后释放共同历史、全阶正则性与真实驱动审查](compatible_evolution/README.md)。对实际初片根固定同一完整态、\(M_2\) 和 AE 处方，在 \(T=2^{-40}\) 保留固定准备区间，经预定光滑数学驱动后，存在同一 \(C^\infty\) 几何与 Hadamard 态，在 \([3T/4,T]\) 满足无驱动全部平均方程。参考积分残差 \(<3.735471570\,10^{-6}\)，完整反馈 \(\kappa<6.494552\,10^{-12}\)，自映射和唯一 Hamiltonian 射击均已认证。
+
+随后物理审查证明该收缩驱动必有 NEC 负区间；其真实量子装置实现仍开放。明确双场完成模型还使完整总应力不变记录同分布，并给出尖锐额外相干预算和原几何约束失配。下一共同目标是实际准备态／装置、全部总源相关和新历史上的引力仪器。旧立即释放排除保留。
+
+[存在证书](compatible_evolution/history.json) · [正则性证明](compatible_evolution/REGULARITY.md) · [独立审查](compatible_evolution/REVIEW.md) · [六项新检查](compatible_evolution/run_verification.py) · [回执](compatible_evolution/verification.json)。复用49项旧结果，冻结186个旧科学文件；没有模式或几何 ODE 重算。
+
+**前轮入口：**[实际全场法向导数、正时间历史排除及后继共同演化](prepared_dynamics/README.md)。此前初片根仍存在，但所有根都满足完整量子压力导数 \(Q_p'(0)\in[-13.769547,-11.113955]\)，与该 prepared 过去的 \(a'''(0)=0\) 不相容。保持同一平滑过去、完整态和固定源的无额外驱动 SCE 正窗延拓已经被排除。
+
+本轮还完成实际 AE 迹方程的积分归约及含固定局部项的短窗主算符逆；下一步从过去共同生成新几何和合法态，认证完整规则反馈及约束。原旧／新制备的 mean-only 几何记录相同；引力降噪后果需要明确的几何涨落动力学和装置总源。真实混合态的理想应力谱误判界 <0.024016 只属于原归档背景。
+
+[完整结果](prepared_dynamics/result.json) · [独立复核](prepared_dynamics/review.json) · [九项新检查](prepared_dynamics/run_verification.py) · [执行回执](prepared_dynamics/verification.json)。复用40项旧结果，冻结164个先前科学文件；新增256模严格传播与完整相位尾，旧模式及旧检查不重跑。
+
+**前轮入口：**[反思后的合法制备族与初片完整平均方程](prepared_initial/README.md)。保持原场、同一静态种子、λ=32768、AE μ=1/α=0，在明确光滑几何族上实际认证全量子应力 |Qρ|≤508、|Qp|≤84468；存在 |t*|≤15933/67108864 与正源，使物理初片全部平均 Einstein 分量同时成立。固有钟体积加速度相对修正 <0.011871011%。
+
+这是新几何上各自传播量子态的有限参数存在证书，不是旧核硬移植或受迫一阶解升级。未来 SCE、高阶接续、唯一/非零根、旧仪器概率复用仍未证明。下一优先任务是同一个固定源和完整场态沿一条有限时间几何历史的共同方程。
+
+[完整场区间](prepared_initial/result.json) · [独立主审](prepared_initial/review.py) · [两项新复算和38项旧结果复用](prepared_initial/run_verification.py) · [执行回执](prepared_initial/verification.json)。156个旧科学文件保持原字节；新参数族 UV 尾实际重算，旧模式 ODE 和旧检查不重跑。
+
+**前轮入口：**[重叠 TT 响应、因果对数主部与齐性调源盲性](overlap_response/README.md)。完整闭球面 Weyl/Bach 算子及 R² mixed 变分、标量 log 主部因果逆、同背景态差重叠响应，以及显式局域曲率平方辅助族的全模式因果逆与余项均已给出。
+
+原物理 **μ=1、α=0、G=2T、无额外有限曲率项**继续固定。额外系数 (b_extra,c_extra)=(0,0) 不表示参考 RSET 的固定 contacts 为零；非零 c 的辅助反例也不用于这一零额外项工作点。完整 prepared-reference TT kernel、实际余项和完整量子反馈仍开放，正实 log 极点不被删除或改称稳定性。
+
+[共同合同](overlap_response/CONTRACT.md) · [独立四维主审](overlap_response/review.py) · [四项新检查及34项旧结果复用](overlap_response/run_verification.py) · [执行回执](overlap_response/verification.json)。140个旧科学文件保持原字节，新增模式/几何 ODE为0。下述旧证据继续按各自合同使用。
+
+**前轮入口：**[中央固有钟、分离量子响应与已知张量形状](operational_response/README.md)。同一有限 lapse 上已保留中央固有钟触发的时移与 Jacobian；共同钟偏置 \(|\beta|\le10^{-5}\) 时旧/新概率差分别 <\(3.013810\times10^{-4}\) / <\(2.603350\times10^{-4}\)，固定64次完整启动风险门仍成立。严格分离 TT 窗的完整 RSET 导数有 \(|\chi|<0.249425721\) 及明确函数空间界；已知 TT 形状的校准 RMS <\(1.678368\times10^{-4}\)，条件记录合同下256次完整启动每假设错误 <\(7.837698\times10^{-6}\)。三条作用域分别列明，未合称完整 SCE。
+
+[共同合同](operational_response/CONTRACT.md) · [四项新检查及30项旧结果复用](operational_response/run_verification.py) · [执行回执](operational_response/verification.json)。124个旧科学文件保持原字节，新增模式与几何 ODE 为0。主审另以非零重叠 TT 见证证明齐性/分离证据无法单独确定净 Weyl 平方耦合。
+
+**前轮证据：**[有限度规响应与局部 TT](metric_response/README.md)给固定坐标 Weyl 概率、原始 TT 噪声与额外经典固有钟基准；[完整密度应力噪声](stress_kernel/README.md)在原齐性背景给完整相对方差 <0.450316%、旧/新完整方差比 >167.5436。这些密度噪声和平均缺陷没有搬到有限扰动几何。量子反馈、非线性自洽、外区态、真实装置与经验责任仍开放。以下保留工作来路。
+
+**主审日期 2026-11-19，工作基线 7437bd1d。** 四组从同一有限球的法向钟、两段开关和试束记录出发。两个物理进展可以独立验收。第一，指定态的平面源满足绝对半经典平均方程，有限内球另有一个从共形量子应力到收缩率、再到物质谱的可计算反馈。第二，即使已掌握同一平均方程及完整的两门记录，仍不能从中认证应力涨落的上限。[反馈与谱的计算、来源和边界](FEEDBACK.md) · [先行合同](CONTRACT.md)
+
+| 主责 | 已核验结果 | 使用条件 |
+|---|---|---|
+| Noether · 几何 | 对三维无旋类时束取 y=log(V/V₀)。Raychaudhuri 方程给 −∫w″y=∫w[Rᵤᵤ+θ²/3+σ²]。任意自由剪切均保留下界。原均匀核 256 格体积读数给 0.397247，确定采样误差 <0.039503，两组独立场窗的保守源下限均与平行平直束分离。 | 需无焦、共用固有时、三条空间轴，且独立排除或标定涡旋。不同世界线的体积先相加再取 log 会失效。[三项负控与核验](geometry/README.md) |
+| Gibbs · 量子应力 | 对任意 Hadamard 态令 m=⟨Φ⟩、E=Tᵤᵤ+T/2。对自由最小无质量场有 ∫g²E ≥ ∫g²(ṁ²+E_ref)−Q_ref[g]。原无焦平面源的指定参考态虽有 E_ref=0，曲背景 Q 仍比平直值低 0.0002903 至 0.0002915。 | 原有限球局部态的中心化涨落可以使相对参考的总有效应力为负。不同背景及不同时间权需各算一次。[差分量子界与参考态反例](quantum/README.md) |
+| Bacon · 仪器与能量 | 在固定有限球内核中，用受控 Weyl 门构造两次局域开关、因果响应和完整联合概率。平滑小孔径、g=0.05 的两门分别向场增加约 0.12160、0.12859 个能量单位；逐门核对开关功和度规功。 | 这些是固定度规内的仪器应力。若仍在中央开门，用同一几何权计得装置带来的有效应力约 5.75894，乘 8πG 后约 11.518，已经超过原几何读数 0.397。总装置应力、驱动与反馈须重算。[仪器合同](instrument/CONTRACT.md) · [回放与能量账](instrument/instrument.py) |
+| Popper · 识别 | 同一局部 Hadamard 背景可有与中心对称开关正交的偶极模，全部双轴概率不变而局部应力变化。完整双门也有相位绕回的反例；另一个半剂量读出可拆分指定候选。 | 直接改变应力的反例首先定义在同一固定背景。主审下面的反例另保持公共平均应力，从而可用于检验均值引力本身的盲区。[独立识别与经验核对](identification/README.md) |
+
+## 平均引力和双门记录为何仍看不到某些涨落
+
+在同一背景、同一中心参考态上，对原经典解 f 施加随机相干位移 Yf，Y=±1/2+X，X 对称且 E[X²]=3/4。每个候选均为正的 Hadamard 态混合，经典解可由有限源初值得到。源符号和一阶均值、E[Y²]=1 以及全部平均应力都相同。在给定共同重整化方案下，任何一个候选若在某度规上满足平均方程，另外的候选也满足这条方程。这个逻辑不要求先把有限球未知的最小场参考应力设成零。
+
+给两只开关各一次、用经典控制及最后可访问的探针/未操作参考作任意读出。前向和反向两段 Weyl 历史只产生四个正频率及其相反数，即两门单独的相位系数、两者的和与差。对受控源分布 X 的依赖因此只有这些位置的特征函数。支持额外相干旁路、继续访问场或增加门时，要重新列出频率与权限。
+
+**精确构造。** 令 STEP=6，X 在 ±j STEP 上对称配重。五个低位 j=1,…,5 各自的总质量取 p=3/(4 STEP² Σj²)，其余在零。其特征函数是 cos(STEP t) 的 Chebyshev 多项式。四个观测节点 xᵢ=cos(STEP ωᵢ) 已用原窗口的区间积分验证互异且不为一。对任意整数 N>5，取唯一五次多项式 H_N，在 xᵢ 上匹配 T_N、在 1 上匹配值 1 和导数 N²。两个候选的特征函数相差 γ[T_N−H_N]/N²，所以四处读数、归一性和二阶矩严格相等。将 H_N 写为
+
+    1 + N²(x−1) + Σᵢ [T_N(xᵢ)−1−N²(xᵢ−1)] (x−1)²/(xᵢ−1)² Πⱼ≠ᵢ (x−xⱼ)/(xᵢ−xⱼ).
+
+由 TᵢTⱼ 的二项乘法和区间节点得 Chebyshev 系数绝对和 ≤328 N²。取 γ=p/(2·328)，修正后每个原子质量非负。加在 ±N STEP 的小质量保留，四阶矩增量至少 γ STEP⁴(N²−328·5⁴)。每个候选本身都有有限能量和有限幅度，整个候选类没有共同逐次能量上限。
+
+对同一时空平滑涂抹的应力 A=T(F)，位移后 A=A₀+Y B+Y²A_f，A_f 是该经典解的涂抹应力。两个候选的前三阶矩相同，故 **Var₁A−Var₀A=A_f² ΔE[X⁴]**。N=10,000 与 1,000,000 的例子分别给四阶增量 7.48×10⁴ 与 7.48×10⁸，同时保留可访问的双门记录。对指定测试族的 Core 未来响应商因此不能选出唯一的应力噪声核。进一步把噪声核变成几何涨落需另给引力响应和初值；后选择的分支应力也未被这组等价式固定。[主审证明复算](noise.py) · [噪声核与几何涨落的物理区别](https://arxiv.org/abs/gr-qc/0508010)
+
+**有共同幅度上限时。** 取 A 候选 X=±√3/2 等概率，B 候选 X=0 的概率 2/3，其余等分到 ±1.5。两者应力方差差为 1.125 A_f²。对原两门，单个响应系数的差由对应余弦的四阶及以上项控制。任意输入的四条投影历史各有质量 pᵢ，交叉算符半迹范数按 √(pᵢpⱼ)/2 求和；对称差矩阵的最大行和给整个可访问输出半迹距离 ≤0.00073631。这包括保留全部分支的控制，与仪表误差 0.001 同量级。若全部源另有实测 |X|≤B，增加 t 和 2t 两个标定的特征函数，可用 [6−8Reχ(t)+2Reχ(2t)]/t⁴ 从下方估四阶矩，在 |t|B≤π 时再除以 sinc⁴(tB/2) 给上界。欠缺尾界时，同一方法只能给下界。
+
+## 让开关远离几何记录的因果过去
+
+在有限内球移动监测器到 χ=25/64、半厚 1/128，保留原窗口。所有开关满足 χ+η≤75/128，小于齐性初值的因果边界。其最早向心影响在 η=53/128 才到；几何组的末时面积在 η=3/8 已可收齐。固定背景的局域非选择操作因微因果性无法改变更早收齐的几何区场边缘记录；若主张可干预的引力也严格满足这个保护，需要一个因果的引力演化以及相同因果过去的初值。开启仪器的反作用仍发生在测头处，可能改变后续读数。按测量结果分组可以改变条件统计。测头与几何记录的比较要等信号抵达后进行。
+
+初始装置应力同样受到约束方程限制。一种明确的经典准备是在初片外围给定球对称、紧支撑的额外正密度和零动量流，保持 Kᵢⱼ=0。径向约束 μ′=4πG R²ρ 从中心积分，因此支撑之前的内球几何保持原值。支撑内与外部重新求解，并检查 2μ/R<1；现实非对称设备仍须提供相容初值。这一做法并未校准受装置影响的当地场均值向中心的转移。[几何与因果余量](plane_reference.py)
+
+**资源裁决。** 原强剂量 t=2 在中央小孔径的参考可见度约 10⁻³³。将整个薄球壳作为一个涂抹时，可见度约 0.0343，仍未达到原来 0.2 的门槛。另一次明定的候选判别用孤立第二门 t≈1.4，要求已标定场可见度 [0.190,0.193]、附加记录对比 [0.79,0.81] 和概率偏置≤0.001。合成两候选的正号概率区间分别为 [0.52520,0.52855] 与 [0.53633,0.54003]，每个候选 200,000 次启动的 95% 单独 Hoeffding 区间足以分开。完整校准、共同相位和重新制备另计。
+
+整壳同时作用不能默认为一个点探针。允许事先分发 GHZ 辅助、各站独立作受控 Weyl 门、事后比较全部奇偶位时，可以把壳剖面作平滑单位分解 j=Σjᵢ。在 GHZ 两码字上所有 Zᵢ 等于同一逻辑 Z，场的交换子是 c 数，时间序共同相位消去；各站 X 的乘积（换一个 Y 得另一正交分量）读出合成门。漏读需全数记账，例如给缺失位置赋独立公平位；独立读出误差使总对比乘各站转移率，相关误差则需联合标定。一个保守的有限覆盖用球面六个立方体面各 160² 个中心，平滑帽半径 2√2/160。每个支撑的共动直径小于一个门窗的宽度。这个具体设计每次需 153,600 个本地事件，每个候选需约 **307 亿个读出**；等转移率时每站须超过 0.999998465 才能保住 0.79。局部相互作用、GHZ 制备、驱动功和同步均需物理实现。该数是指定构造的成本，不是最优性下界。[分布式读出及完整计数](parity.py)
+
+## 真实资料的独立复算
+
+取得 Overstreet 等 2022 年钨环质量源实验的作者原表，平台 MD5 核对通过。在 +4.31 cm 与 +8.95 cm 两处，从三路独立配置的实测相位重建超出中点近似的信号，分别为 −124.608±23.918 mrad 与 −181.542±28.357 mrad，取整与论文一致。另计算了在未知协方差下、以同一权重传播的保守标准差上界。资料能检验外部质量源对原子量子相位的作用，尚无同一量子场应力回授几何的实测记录。[数据、误差及物理范围](experiment/README.md)
+
+## 2026-11-19 接续结果
+
+[新一轮主审与实际复算](continuation/README.md)已经推进统一参考态、辅助静态绝对应力尾界、原最小场完整有限秩应力、外围装置约束及有限资源下的噪声不可估计性。下列历史接续次序保留来路；当前依赖及已收窄的主张见[接续裁决](continuation/REVIEW.md)。
+
+### 同日后续：动态共同参考改变了反馈前提
+
+[动态研究的统一报告](evolution/README.md)已经把同一参考核从辅助静态段传播到原物理内核，给出真实误差包围、动态局部补项和无限模尾。固定原尺度、AE μ=1 且无额外有限曲率项时，初片全量子密度严格大于 **1.5101633543**，而原几何所要求的总密度是 **0.5**。所以原给定背景与该参考态不能直接组成总半经典解；有限曲率耦合仍可改变单点判断，新的自洽几何尚未构造。
+
+新一轮还认证了使用完整原时间窗的关系：总二阶源已标定时，两个新增密度读数可消去未知有限曲率系数；若该源也未知，则用三收缩拟合并留出第四数据检验。原 Ramsey 读数未被当成几何记录。精确压力、完整窗基线、反馈余项和真实测量装置仍待完成。[证明与总复算](evolution/run_verification.py) · [执行回执](evolution/verification.json)。下面的历史次序应按该[新依赖](evolution/README.md#7-接续设计已经因结果改变)理解。
+
+### 同日新进展：约束相容、合法态与小均值缺陷
+
+[新研究](compatibility/README.md)将整个光滑制备背景与参考核同形运输，保留物理初片完整零模协方差和原 bounded A 位移分布。它区分固定源、整个态运输、纯经典同形和相关重调四种合同。相关正源满足初片平均密度与动量约束，并在整个 η∈[0,3/16] 上通过两条独立路径认证小于1%的全场相对方程缺陷；明确有理近似另有初片残差证书。
+
+同一 h、K 的量子核移植有对数发散反例；有限秩修复可恢复 Hadamard 合法性，但仍不自动成为精确静态解。原混合源在指定密度测试族上的相对方差严格大于0.7495，小平均缺陷因此没有消除涨落责任。源半径、固有时间、Weyl 相位和装置成本也不能在放大尺度后直接沿用原数值。
+
+[共同合同](compatibility/CONTRACT.md) · [独立主审](compatibility/review.py) · [四项联合验证](compatibility/run_verification.py) · [回执](compatibility/verification.json)。该轮提出的[三项责任](compatibility/README.md#7-剩余问题已收窄为三个可验收出口)已由当前[响应研究](response/README.md)继续推进，现行次序见新的统一报告。
+
+## 历史接续次序
+
+1. 把最小量子场的**绝对应力与其反馈**算到原有限球上。固定 Hadamard 初值、物理 R² 系数和态的匹配范围，用独立的高频余项界验证重整化模式和；以这里已解的共形场与平面源交叉校验。
+2. 先核实可达的数据和资源。早期开关的本地场转移、双门的共同参考、初始引力装置应力、噪声尾界、壳上联合响应，任一项未定都应写入仪器合同。完整记录与同预算的标准模型共用，量子界、模拟表与实测分别登记。
+3. 把内核 Euler 迹、外区 Weyl 迹与热/冷态作为**同一候选类**的独立行。优先量化有限内外窗、阈值、相互作用迹和热制备误差；当这些项盖过候选差时保留不唯一。向一般量子引力推进还需给出独立于标准半经典 Einstein 方程的选择原理、可区分观测及噪声传播律。
+
+主审另用量子组的同一光滑时窗重算 −∫w″ log V、∫wRic 与膨胀平方，校验两组等式的对接。仪器与识别两组最初使用了不同的静态过去至 FLRW 的尺度插值；指定同一参考态后，两条独立求解路径的 32 个联合概率格最大差 <10⁻¹²。核验入口同时复算平面参考、有限谱、热留出、涨落和分布式读出。[联合核验](joint.py) · [回执](result.json)
+
+2026-11-21 接续检查点：lapse_boundary 已推进到固定 AE lapse action、实际全场齐次逆、同源双约束弱解及准备态的 normal/Hadamard 分层验收；当前具体读数候选被成本拒收，全场门被UV拒收，有限模修正仍待新mean与总源。见 `physics/qm/null_source/timelike/finite_stress/lapse_boundary/INPUTS_AND_NEXT_TEST.md`。物理统一仍OPEN。
+
+## Current joint-feedback continuation (2026-11-21)
+
+The [joint-feedback cohort](finite_stress/lapse_boundary/joint_feedback/README.md) follows the same complete finite-mode evolution and actual incoming source. It derives the weighted source/current equations, the raw Ward identity, an actual pressure-row witness, and controlled positive-time distinctions. Further joint-state, lapse-response, boundary-domain and preparation gates remain open. Physical unification is OPEN.
+
+
+## 2026-11-22: changed conformal action and actual joint histories
+
+The [conformal-action cohort](finite_stress/lapse_boundary/conformal_action/README.md) now includes the changed
+curvature action and critical homogeneous records, source-containing lapse
+counterterms, actual full-field static cutoff limits with a sudden-state
+Hadamard/energy rejection, smooth common-past preparation, a local field probe
+and a locally renormalized finite-amplitude probe CTP phase. It also constructs
+a semibounded autonomous global quantum-controller/full-field Hamiltonian,
+finite total-energy variance preparation and exact terminal-reader backaction.
+These are explicitly distinct models; full physical unification remains OPEN.
+See the [Chinese progress report](finite_stress/lapse_boundary/conformal_action/UNIFICATION_PROGRESS.md) and
+[next acceptance gate](finite_stress/lapse_boundary/conformal_action/NEXT_GATE.md).
+
+## 2026-11-22 — Same-preparation joint constraint continuation
+
+[Current joint-constraint research](finite_stress/lapse_boundary/joint_constraints/README.md) continues from the accepted autonomous-preparation cohort. It retains the actual finite-cutoff preparation and CTP boundary response, explicitly fixes a new stationary covariant mean datum, and tests the full static metric response. Four first-harmonic and one ground-specific homogeneous range conditions are derived. Local preparation, apparatus stress and joint quantum geometry remain under construction. Core remains read-only; GI remains excluded; physical unification is OPEN.
+
+## 2026-11-22 — Renormalized continuum apparatus, Parseval quadrupole closure and sub-critical bounce FRW
+
+[Renormalized-continuum research](finite_stress/lapse_boundary/renormalized_continuum/README.md) continues from the accepted joint-constraints cohort (`319` reused entries, `1,178` frozen scientific files). It establishes a finite-sensor geodesic-cap continuum apparatus composite (`rho_0 = 1/20`) with uniform $K \le \infty$ Friedrichs semiboundedness, eliminates the 2-channel controller spatial quadrupole via a 6-channel conformal Parseval frame, solves the sub-critical closed-FRW bounce with re-derived curved clock/controller evolution and Hadamard Cauchy transport, and proves a positive continuum 4D local autonomous pointer gap, bounded spacetime-smeared stress variance, and positive coupled two-branch CTP tensor/lapse noise kernel. Core remains read-only; GI remains excluded; physical unification is OPEN.
+
+## 2026-11-22 — Operational Planck sensor floor, all-harmonic ($\ell \ge 0$) constraint closure and localized flat-space clock
+
+[All-harmonic-horizon research](finite_stress/lapse_boundary/all_harmonic_horizon/README.md) continues from the accepted renormalized-continuum cohort (`332` reused entries, `1,231` frozen scientific files). It proves the squeezing-proof Planck sensor floor $L > L_{\min}\ell_P$ and three-regime RG trichotomy, closes all 15 $S^3$ conformal–Killing obstructions and all $\ell \ge 2$ elliptic ADM constraints with uniform 35-species smeared variance and local-slab Bianchi propagation, and constructs localized $\Lambda = 0$ flat-space clock initial data, gate-free 3D Dirac closure & Källén–Lehmann locality trichotomy, and dynamical Einstein–Langevin backreaction. Core remains read-only; GI remains excluded; physical unification is OPEN.

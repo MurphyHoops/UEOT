@@ -1,0 +1,110 @@
+{
+  "artifacts": [
+    {
+      "archive_download_url": "https://api.github.com/repos/MurphyHoops/UEOT/actions/artifacts/14645301597/zip",
+      "created_at": "2026-11-20T15:47:29Z",
+      "digest": "sha256:a5d7d0f621d61e483054ecbba53eb9247a39d3d6015b4510af4be0dd79f3f8b7",
+      "expired": false,
+      "expires_at": "2027-02-18T15:46:56Z",
+      "id": 14645301597,
+      "name": "finite-local-research",
+      "size_in_bytes": 41425,
+      "updated_at": "2026-11-20T15:47:29Z",
+      "url": "https://api.github.com/repos/MurphyHoops/UEOT/actions/artifacts/14645301597",
+      "workflow_run": {
+        "head_branch": "codex/physics-source-response-20261119",
+        "head_repository_id": 1146718528,
+        "head_sha": "5e2c2038ecd1d7d99db565cb38a475e594f54131",
+        "id": 44766713899,
+        "repository_id": 1146718528
+      }
+    }
+  ],
+  "commit": "5e2c2038ecd1d7d99db565cb38a475e594f54131",
+  "decoded_PASS_count": 30,
+  "decoded_science_job_log_observed": true,
+  "jobs": [
+    {
+      "conclusion": "success",
+      "id": 136393151233,
+      "logs_url": null,
+      "name": "reproduce",
+      "run_id": 44766713899,
+      "status": "completed",
+      "steps": [
+        {
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/checkout@v6",
+          "number": 2,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/setup-python@v6",
+          "number": 3,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Install the same scientific dependencies",
+          "number": 4,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Reuse 91 predecessor results and verify 30 actual-state and preparation certificates",
+          "number": 5,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/upload-artifact@v4",
+          "number": 6,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Run actions/setup-python@v6",
+          "number": 11,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v6",
+          "number": 12,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 13,
+          "status": "completed"
+        }
+      ]
+    }
+  ],
+  "observation_utc": "2026-11-20T15:55:09Z",
+  "publication": {
+    "conclusion": null,
+    "head_sha": "5e2c2038ecd1d7d99db565cb38a475e594f54131",
+    "html_url": "https://github.com/MurphyHoops/UEOT/actions/runs/44766713322",
+    "id": 44766713322,
+    "status": "in_progress"
+  },
+  "run": {
+    "conclusion": "success",
+    "head_sha": "5e2c2038ecd1d7d99db565cb38a475e594f54131",
+    "html_url": "https://github.com/MurphyHoops/UEOT/actions/runs/44766713899",
+    "id": 44766713899,
+    "path": ".github/workflows/ueot-physics-source-response.yml",
+    "status": "completed"
+  },
+  "schema": "ueot-finite-local-source-influence-checkpoint-ci/1",
+  "semantics": "Exact-head 30-check scientific CI observed before the final factual checkpoint. Publication is an honest in-progress snapshot at the stated time; subsequent completion is reported separately. This is not CI for the final factual commit."
+}

@@ -1,0 +1,138 @@
+{
+  "full_nonlinear_SCE": "OPEN",
+  "input_sha256": {
+    "physics/qm/null_source/timelike/compatibility/review.json": "48bfcc47ef0db2f849505e4cb34714e3d4c68e7928a71cf7d9d27220b0b4e512",
+    "physics/qm/null_source/timelike/response/review.py": "de49043fa656e67d33af5a1cbd07f3780565f994a6a4b5145488e5742234d4ea"
+  },
+  "joint_finite_test_scale_theorem": {
+    "full_C0_numerical_upper_bound_at_8192_available": false,
+    "geometry_bound": "(Ba+Da*log(lambda))/lambda^2",
+    "geometry_object": "background-sourced first-order response, not distance to a full SCE solution",
+    "geometry_sufficient_lambda": "max(8192,sqrt(2*Ba/delta_geometry),2*Da/delta_geometry)",
+    "joint_sufficient_lambda": "maximum of noise and geometry thresholds",
+    "noise_background": "homothetic g_lambda, not the nonhomothetic corrected candidate geometry",
+    "noise_constants": "c0*=max_i C0_i/D_i^2; c1*=max_i C1_i/D_i^2; both finite",
+    "noise_lambda_squared_threshold": "[c1*+sqrt(c1*^2+4*delta_noise*0.99^2*c0*)]/[2*delta_noise*0.99^2]",
+    "physical_size_and_proper_time_may_grow_with_lambda": true,
+    "quantifiers": "Fix a finite family of nonzero nonnegative C-infinity compact spacetime density tests first; then choose lambda and retune the exact correlated source at that lambda.",
+    "uniform_over_all_resolutions_at_fixed_lambda": false
+  },
+  "new_mode_integrations": 0,
+  "numerical": {
+    "b_absolute_upper": [
+      "5719003253225706409561333679943979886432849329092842471237648922957375315724275/226156424291633194186662080095093570025917938800079226639565593765455331328",
+      "5719003253225706409561333679943979886432849329092842471237648922957375315724275/226156424291633194186662080095093570025917938800079226639565593765455331328"
+    ],
+    "b_prime_absolute_upper": [
+      "3840161080345824688310929594302287574258459326269407616308023328423158445789475/14134776518227074636666380005943348126619871175004951664972849610340958208",
+      "3840161080345824688310929594302287574258459326269407616308023328423158445789475/14134776518227074636666380005943348126619871175004951664972849610340958208"
+    ],
+    "candidate_scale_positive": true,
+    "coherent_phase_on_positive_candidate": {
+      "complete_reference_visibility_on_changed_geometry_certified": false,
+      "fits_0p5_percent_combined_phase_gain_budget": true,
+      "relative_phase_change_abs_upper": [
+        "835962396007455579138010134704529977758508209874086063768599292543807430909/1852673427797059126777135760139006525652319754650249024631321344126610074238976",
+        "835962396007455579138010134704529977758508209874086063768599292543807430909/1852673427797059126777135760139006525652319754650249024631321344126610074238976"
+      ],
+      "relative_phase_ratio_interval": [
+        "3703676061644339174921102805149895313429673822145336981102668906829495138502671/3705346855594118253554271520278013051304639509300498049262642688253220148477952",
+        "1853509390193066582356273770273711055630078262860123110695089943419153881669885/1852673427797059126777135760139006525652319754650249024631321344126610074238976"
+      ],
+      "source_momentum_held_fixed": true,
+      "with_0p4_percent_physical_gain_interval": [
+        "922215339349440454555354598482323933043988781714188908294564557800544289487165/926336713898529563388567880069503262826159877325124512315660672063305037119488",
+        "1860923427753838848685698865354805899852598575911563603137870303192830497196565/1852673427797059126777135760139006525652319754650249024631321344126610074238976"
+      ]
+    },
+    "conditional_all_start_statistics": {
+      "independent_new_starts": 256,
+      "new_probability_upper": "3/20",
+      "old_probability_lower": "9/20",
+      "one_candidate_Hoeffding_error_upper": [
+        "602804347818697469900427594547194407096068994368731277864939564925903372292175/60708402882054033466233184588234965832575213720379360039119137804340758912662765568",
+        "2411217391274789879601710378188777628384275977474925111459758259703613489168721/242833611528216133864932738352939863330300854881517440156476551217363035650651062272"
+      ],
+      "threshold": "3/10"
+    },
+    "distance_to_exact_SCE_solution_certified": false,
+    "eta_interval": [
+      "0",
+      "3/16"
+    ],
+    "forcing_absolute_upper": [
+      "5047007718143614362522277195028378477724414003062910886771646670184075117294353/3533694129556768659166595001485837031654967793751237916243212402585239552",
+      "5047007718143614362522277195028378477724414003062910886771646670184075117294353/3533694129556768659166595001485837031654967793751237916243212402585239552"
+    ],
+    "lambda": 8192,
+    "maximum_kappa_squared": [
+      "4566516974467010930149496932987597237179659288234233413210293017079040321150015/1852673427797059126777135760139006525652319754650249024631321344126610074238976",
+      "4566516974467010930149496932987597237179659288234233413210293017079040321150015/1852673427797059126777135760139006525652319754650249024631321344126610074238976"
+    ],
+    "method": "constant_coefficient_positive_Volterra_comparison",
+    "uniform_first_order_conformal_H_absolute_upper": [
+      "4765254428788632454484743551452388600570079723586664265809599285940681954983987/1897137590064188545819787018382342682267975428761855001222473056385648716020711424",
+      "4765254428788632454484743551452388600570079723586664265809599285940681954983987/1897137590064188545819787018382342682267975428761855001222473056385648716020711424"
+    ],
+    "uniform_first_order_log_volume_absolute_upper": [
+      "160450483283376753102735190543620499144267888649096375054563688641820351003349/237142198758023568227473377297792835283496928595231875152809132048206089502588928",
+      "160450483283376753102735190543620499144267888649096375054563688641820351003349/237142198758023568227473377297792835283496928595231875152809132048206089502588928"
+    ],
+    "uniform_first_order_scale_relative_upper": [
+      "53483494427792251034245063514540166381422629549698791684854562880606783667783/237142198758023568227473377297792835283496928595231875152809132048206089502588928",
+      "53483494427792251034245063514540166381422629549698791684854562880606783667783/237142198758023568227473377297792835283496928595231875152809132048206089502588928"
+    ]
+  },
+  "physical_device_and_driver": "OPEN",
+  "quantitative_infinite_RSET_response": "OPEN",
+  "reviewed_base": "d6ec9eda409ba78d1d7993d7648ba26b5a34374d",
+  "schema": "ueot-response-independent-review/1",
+  "status": "PREPARATION_AND_LINEAR_RESPONSE_INDEPENDENTLY_REVIEWED",
+  "symbolic": {
+    "Weyl_normalization": {
+      "dual_gain": "gamma=g_phys/lambda",
+      "physical_gain_does_not_vanish": true
+    },
+    "X_probe_parity": {
+      "Kraus": "cos(gamma*Phi), -i*sin(gamma*Phi)",
+      "distinguishes_new_plus_minus_sign_branches": false,
+      "distinguishes_old_amplitudes_from_new_fixed_amplitudes": true,
+      "ideal_axis_phase_zero_required": true,
+      "odd_Y_quadrature_outside_this_record_contract": true,
+      "record_CP_branches_parity_covariant": true,
+      "residual_phase_can_introduce_odd_component": true
+    },
+    "classical_squared_amplitude_variances": {
+      "Gaussian_completion": "15/8",
+      "new_biased_sign": "0",
+      "old_symmetric": "3/4"
+    },
+    "constraint_in_relative_scale": "cos(2eta)*sin(2eta)*r_prime-2r=Qeff0-cos(2eta)^3*rhoeff",
+    "first_two_moments_preserved": true,
+    "fourth_moments": {
+      "Gaussian_completion": "23/8",
+      "new_biased_sign": "1",
+      "old_symmetric": "7/4"
+    },
+    "irreducible_zero_mode_ratios": {
+      "C0_00_over_D2": "1/(648*pi^4)",
+      "C1_over_D2": "1/(9*pi^2)"
+    },
+    "mixture_not_assumed_Gaussian": true,
+    "state_variation": {
+      "Duhamel": "delta z(t)=U(t,t0)delta z(t0)+integral U(t,s)delta K(s)z(s)ds",
+      "canonical_matrix": "K=[[0,a^-2],[-a^2*omega^2,0]]",
+      "constant_homothety_initial_variation": "delta u=-r*u, delta p=r*p",
+      "finite_mode_symplecticity_alone_proves_Hadamard": false,
+      "full_zero_covariance_determinant_variation": "0",
+      "infinite_RSET_derivative_norm_certified": false,
+      "initial_time": "common unchanged static preparation past; physical eta=0 data are not reset",
+      "linear_CCR_preserved": true,
+      "pointwise_commutator_does_not_remove_D_prime_for_variable_r": true,
+      "relative_scale_variation": "delta K=[[0,-2r/a^2],[-2r*a^2*omega^2,0]]",
+      "smooth_full_preparation_metric_variation_required": true,
+      "zero_mode": "delta p=0; delta q=-2p*integral r/a^2"
+    },
+    "zero_variance_distribution": "Y=+/-1, probabilities (1+/-m)/2, |m|<=1"
+  }
+}

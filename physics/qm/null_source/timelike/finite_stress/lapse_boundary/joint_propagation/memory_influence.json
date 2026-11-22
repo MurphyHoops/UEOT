@@ -1,0 +1,50 @@
+{
+  "CP_input": "pre-gate source density plus fixed normal preparation, not arbitrary post-gate reduced assignment",
+  "conditional_only": true,
+  "exact_influence": "continued d^(-1/2) times Gaussian endpoint exponential",
+  "finite_Gram_and_energy_series_regressions": [
+    {
+      "Gram_min_eigenvalue": 4.9251e-06,
+      "M": 0.8,
+      "Omega": 1.1,
+      "energy_series_error": 0.0,
+      "v": 0.2
+    },
+    {
+      "Gram_min_eigenvalue": 0.006101387,
+      "M": 1.3,
+      "Omega": 0.7,
+      "energy_series_error": 0.0,
+      "v": 3.0
+    }
+  ],
+  "floating_report_rounding": "10 decimal places; a rounded zero is not an exact identity",
+  "full_field_Einstein_CTP_device_solution": false,
+  "full_tensor_Einstein_CTP_solved": false,
+  "geometry_ODE_integrations": 0,
+  "initial_ordered_block": "[[Vq,-i q/(2M)],[i q/(2M),v]]",
+  "interior_kappa_contacts": "included chain-rule delta terms",
+  "joint_geometry_path_integral_solved": false,
+  "kappa_cross_endpoint_contact": "v/(4 kappa_i^4)",
+  "lapse_branches_varied_independently": true,
+  "memory_reset_or_independent_noise_assumed": false,
+  "mode_ODE_integrations": 0,
+  "ordered_block_determinant": "v V0 >=0",
+  "physical_unification": "OPEN",
+  "positive_Gram_and_unit_diagonal": true,
+  "predecessor_scientific_modules_imported_or_executed": 0,
+  "real_time_branch": "continuous from zero; full period has minus sign",
+  "same_lapse_memory_and_active_endpoint_state": true,
+  "schema": "ueot-joint-propagation-memory_influence/1",
+  "source_sha256": {
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/ACTION_BOUNDARY.md": "22775ec903d07abc01d806c43266ae1f041cb8bdd72d86efb0fd7828b38470f6",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/GAUSSIAN_CONTROL.md": "bab667a8b8b03d30c5bf2e42e5ad5b09d1e5ea1392da9fef4cc1de55706d8969",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_ACTION.md": "355ad389ef13bc72dadc888deaffffc9ebb7fe7aeda8d93bca0c24826c02031c",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_INFLUENCE.md": "d591183f719845aef7b2cab17f5c37e9979509f71bdf25343f59772b377e10c2",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/common.py": "e5cada98ee5de6a679996b64dc23af4aeb2cea97dc45514382f98888ed5512e8",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_influence.py": "134c0ad560adecbe4e14595b5d761590c4594463b38f866624ed3337f595c35e"
+  },
+  "status": "PASS",
+  "time_endpoint_contacts": "-i q/(2M), both endpoint branches",
+  "verification_kind": "exact algebra, outward interval checks, or explicitly tolerance-based floating-point regressions; analytic proofs stated separately"
+}

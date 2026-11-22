@@ -1,0 +1,128 @@
+{
+  "actual_hardware_or_new_Lean": "NONE",
+  "algebra": {
+    "commutator_and_retarded_kernel_difference": "0",
+    "distribution_moments": {
+      "-1": {
+        "new": [
+          "1",
+          "-1/2",
+          "1",
+          "-1/2",
+          "1"
+        ],
+        "old": [
+          "1",
+          "-1/2",
+          "1",
+          "-5/4",
+          "7/4"
+        ]
+      },
+      "1": {
+        "new": [
+          "1",
+          "1/2",
+          "1",
+          "1/2",
+          "1"
+        ],
+        "old": [
+          "1",
+          "1/2",
+          "1",
+          "5/4",
+          "7/4"
+        ]
+      }
+    },
+    "existing_variations_equal_without_asserting_their_existence": true,
+    "full_Cauchy_second_moment_preserved_under_arbitrary_common_linear_propagator": true,
+    "local_counterterm_response_not_reconstructible_from_connected_noise": true,
+    "mean_RSET_functional_equal_on_common_admissible_metric_class": true,
+    "mean_SCE_solution_sets_equal_nonemptiness_not_proved": true,
+    "noise_difference": "positive semidefinite rank one",
+    "ordered_stress_covariance_old_minus_new": "(3/4)*T[f](H)*T[f](K)",
+    "quadratic_CCR_bracket": "[Q(S),Q(T)]=i Q(S Omega T-T Omega S), Weyl ordered",
+    "scope": "free linear field; quadratic locally covariant RSET; same past state, displacement and fixed renormalization prescription"
+  },
+  "full_RSET_metric_derivative_norm": "OPEN",
+  "full_nonlinear_SCE_existence_and_stability": "OPEN",
+  "hamiltonian_and_Ward": {
+    "all_bounded_effects_automatically_differentiable": false,
+    "bounded_contraction_bound": "|d_epsilon <O>| <= 2*sqrt(Var G_lambda), ||O||<=1",
+    "canonical_conformal_generator": "delta H=r*(-p^2/a^2+a^2*omega^2*q^2)=-integral r*T_trace*dvol/deta",
+    "canonical_generator_matches_Duhamel_delta_K": true,
+    "effect_bound": "|d_epsilon p| <= sqrt(Var G_lambda), 0<=E<=1",
+    "effect_class": "finite Weyl-algebra instruments whose expectation is differentiable under the common retarded classical symplectic map",
+    "finite_epsilon_probability_bound_certified": false,
+    "fixed_fractional_profile_negative_control": "Without lambda^-2 in metric profile, Var G=(c0+d^2*lambda^2*c1), not a decaying bound.",
+    "homogeneous_linearized_Ward_identity": "delta_rho_prime+3*h*(delta_rho+delta_pressure)+3*r_prime*(rho+pressure)=0",
+    "incorrect_background_conservation_negative_control": "-6*r_prime*rho for the stiff source",
+    "lapse_family": "g_epsilon,00=-a_lambda^2*(1-2*epsilon*F/(D*lambda^2)); spatial metric unchanged",
+    "lapse_generator": "G_lambda=-lambda^2*A_lambda(F_lambda)/D, up to a central phase",
+    "local_lapse_KG_variation": "delta Box phi=a^-2*(-2*alpha*phi_second-(4*h*alpha+alpha_prime)*phi_prime-gradient(alpha).gradient(phi))",
+    "overlapping_support_retarded_distribution_needs_local_extension_and_contact_terms": true,
+    "response_sign": "d_epsilon <O> at zero = i <[G_lambda,O]> for unchanged future observable",
+    "retarded_two_point_variation": "delta W=-(E_ret delta P)_x W-(E_ret delta P)_y W, fixed past Cauchy data"
+  },
+  "input_sha256": {
+    "physics/qm/null_source/timelike/continuation/SOURCE.md": "b9387acfdbf6f4ca2efdb2869cbfd496257292dafe511c5f1b5dea48e3745cd9",
+    "physics/qm/null_source/timelike/response/CONTRACT.md": "4b45639fefbe7f73388b9ad41a253d4415a54754a185634ff5c3d54458cc0de4",
+    "physics/qm/null_source/timelike/response/geometry/README.md": "15f16dbd4e920cf8b788762111ad58add5dafd59571024d8a42e95857f93404e",
+    "physics/qm/null_source/timelike/response/noise/README.md": "809b93a9f0baf6e6fb34a52b0264474d841a0095cfe16a6ac48858a65cda4e87",
+    "physics/qm/null_source/timelike/response/noise/check.py": "263099f70d6cb89b999a9ec42956b1a42c0079ec9ba8ce899c4cfdf07c80974a",
+    "physics/qm/null_source/timelike/response/noise/result.json": "2c0e5acc23976f41a02e53406e499b67f6cb104b90185e66da670cac496ebf3c",
+    "physics/qm/null_source/timelike/response/preparation/README.md": "15b440401daba30233ba2328280d9ec602757521b94213735e10ca51c400eea3",
+    "physics/qm/null_source/timelike/response/review.py": "de49043fa656e67d33af5a1cbd07f3780565f994a6a4b5145488e5742234d4ea",
+    "physics/qm/null_source/timelike/stress_kernel/noise/check.py": "8e863e500082339282b9d6b033d5745b6a2d197e4681037d1b2a5c95349a80a2",
+    "physics/qm/null_source/timelike/stress_kernel/noise/result.json": "3cdca848a83cb15990533fc5928403be9a10a81d0dd8be5f7eed13621b536fe7"
+  },
+  "new_mode_integrations": 0,
+  "numerical": {
+    "absolute_record_probabilities_at_this_lambda_recomputed_here": false,
+    "bounded_contraction_derivative_absolute_upper": "14820395052572929077271686134341759326979336863172081790878074406801755/110427941548649020598956093796432407239217743554726184882600387580788736",
+    "c0_over_D2_upper": "45916058256410587589509214188056949696954678690086025043556209687424380232314998822884517079617164480988865272926667121184311849313752490388226048/8847447544643291267956024774584542000378823171623429334281498593974110279936974659296033943297294134623422065114230747392248365041",
+    "c1_over_D2_upper": "354316099668228890357914204406249580118001257818011148165192218563/205688069665150755269371147819668813122841983204197482918576128",
+    "calibration_map_and_pre_interrogation_failure_rate_fixed_during_variation": true,
+    "exact_correlated_source_retuned_across_lambda": true,
+    "first_derivative_at_epsilon_zero_only": true,
+    "future_Weyl_record_support": {
+      "chi_less_than": "1/100",
+      "time": [
+        "5/32",
+        "3/16"
+      ]
+    },
+    "generator_variance_upper": "8798904109616987903571457203237608865666533381063014562120881513118756797504465563318163781857732803205732464173334713912312704858484047427351770083519449881522260302065582910974180615996237679541139/1954010840629215328705687439098746523240608184174356692648896565384645788654731557956366666880272080932750000132455110636643888429309130832646730527546124222410732932456806460668705439166189994457956352",
+    "lambda": 32768,
+    "lapse_ratio_for_abs_epsilon_le_one_interval": [
+      "110427686231110076026032283445139394421194673540949358233785398731711109/110427941548649020598956093796432407239217743554726184882600387580788736",
+      "55214098432798826785416112397110312755120899269943795796776074321069919/55213970774324510299478046898216203619608871777363092441300193790394368"
+    ],
+    "local_observable_and_counterterms_unchanged_on_later_measurement_support": true,
+    "metric_00_relative_change_at_8192_upper": "4183117722224066212610059451310649250793836328518423681771021178661491/56539106072908298546665520023773392506479484700019806659891398441363832832",
+    "metric_00_relative_change_per_abs_epsilon_upper": "4183117722224066212610059451310649250793836328518423681771021178661491/904625697166532776746648320380374280103671755200316906558262375061821325312",
+    "one_effect_probability_derivative_absolute_upper": "14820395052572929077271686134341759326979336863172081790878074406801755/220855883097298041197912187592864814478435487109452369765200775161577472",
+    "one_effect_probability_derivative_upper_decimal": 0.06710437070876579,
+    "past_state_and_source_held_fixed_during_epsilon_variation": true,
+    "self_consistent_SCE_metric_perturbation": false,
+    "strict_time_gap": "1/32",
+    "test_D_interval": [
+      "94060871485667680198724340884394759470073147843322589023773580071/1725436586697640946858688965569256363112777243042596638790631055949824",
+      "378416179238744804851727266785085345215867925509952688296781488361/6901746346790563787434755862277025452451108972170386555162524223799296"
+    ],
+    "test_support": {
+      "chi_less_than": "1/8",
+      "time": [
+        "1/16",
+        "1/8"
+      ]
+    },
+    "uniform_path_variance_or_second_order_remainder_certified": false
+  },
+  "reviewed_base": "29d49e3eee6299e2085492b0e061288b8166b5fa",
+  "schema": "ueot-common-metric-retarded-response/1",
+  "source_sha256": "fed3098f9f07ee6f8e602ea9ed1bfe53b9e073e99e9cd40e4f5bce6099692b15",
+  "status": "COMMON_METRIC_EQUIVALENCE_AND_LOCAL_LAPSE_RESPONSE_CERTIFIED"
+}

@@ -1,0 +1,120 @@
+{
+  "CP_instrument": [
+    "sqrt(f(S))*rho*sqrt(f(S))",
+    "sqrt(1-f(S))*rho*sqrt(1-f(S))"
+  ],
+  "D_nu_bound": "1-4/d*sqrt(2/(pi*nu))-4/(d*nu) <= D_nu <= 1",
+  "bounded_energy_effect": "f(S)=min(1,abs(S-1)/d)",
+  "cases": {
+    "half_minimum": {
+      "b": [
+        0.21650635094610962,
+        0.21650635094610968
+      ],
+      "energy_TV_lower": 0.4999909043052994,
+      "energy_variance_quantum_part": [
+        2.4366292710707457e-11,
+        2.4366361878699187e-11
+      ],
+      "generic_energy_TV_correction_upper": 9.095694700481802e-06,
+      "nu": [
+        199702582930.8681,
+        199703149821.645
+      ]
+    },
+    "minimum_equal_law": {
+      "b": [
+        0.43301270189221924,
+        0.43301270189221935
+      ],
+      "common_energy_variance": [
+        0.18750000003115247,
+        0.1875000000311526
+      ],
+      "common_radial_CV": [
+        0.30216947925196214,
+        0.30216947925196225
+      ],
+      "common_radial_variance": [
+        0.1875,
+        0.1875
+      ],
+      "energy_variance_quantum_part": [
+        3.1152502966881596e-11,
+        3.115259139872033e-11
+      ],
+      "generic_energy_TV_correction_upper": 1.0284604016340588e-05,
+      "nu": [
+        183999165084.7407,
+        183999687398.6142
+      ]
+    },
+    "zero": {
+      "b": [
+        -5e-324,
+        5e-324
+      ],
+      "energy_TV_lower": 0.9999921476410368,
+      "energy_variance_quantum_part": [
+        1.8160085387045278e-11,
+        1.8160136937629965e-11
+      ],
+      "generic_energy_TV_correction_upper": 7.85235896304195e-06,
+      "nu": [
+        220262656264.98022,
+        220263281519.12814
+      ]
+    },
+    "zero_radial_noise": {
+      "b": [
+        0.8660254037844385,
+        0.8660254037844387
+      ],
+      "common_energy_variance": [
+        4.629074965394038e-11,
+        4.629088105834511e-11
+      ],
+      "common_radial_variance": [
+        0,
+        0
+      ],
+      "energy_variance_quantum_part": [
+        4.629074965394038e-11,
+        4.629088105834511e-11
+      ],
+      "generic_energy_TV_correction_upper": 1.253684167149138e-05,
+      "nu": [
+        161243455395.77856,
+        161243913113.5825
+      ]
+    }
+  },
+  "complete_energy_constant": "Ec=2*V*rhoq+V*U-1/(2*A)",
+  "complete_energy_variance": "VarR+4*(1+b)/nu+4/nu^2",
+  "conditional_Laplace": "(1+2*s/nu)^(-1)*exp(-s*R/(1+2*s/nu))",
+  "conditional_energy_law": "nu*S|R = noncentral_chi_square(df=2, noncentrality=nu*R)",
+  "energy_law_equality_iff_radial_law_equality": true,
+  "energy_scale": "Es=pi^2*M2/A^3",
+  "explicit_completion_quantum_TV_globally_minimal_claimed": false,
+  "explicit_low_budget_energy_TV_exact": "(1-2*b/d)*D_nu",
+  "generic_energy_TV_lower": "[1-2*b/d-4/d*sqrt(2*(1+b)/(pi*nu))-4/(d*nu)]_+",
+  "local_detector_or_gravity_channel_constructed": false,
+  "mode_ODE_integrations": 0,
+  "nonzero_mode_local_stress_noise_deleted": false,
+  "nu": "4*pi^2*M2/A^2",
+  "old_checkers_executed": 0,
+  "one_percent_common_radial_CV_budget": [
+    0.8475499047370678,
+    0.847549904737068
+  ],
+  "preparation_channel": "sum_j w_j W_j rho W_j^dagger",
+  "proof_uses_Laplace_uniqueness_not_moment_determinacy": true,
+  "schema": "ueot-physical-source-records/1",
+  "source_sha256": {
+    "physics/qm/null_source/timelike/continuation/quantum/result.json": "5e53bd95c2e081db434baf7a0d3e250ec5af241bd73ba12266c7467183050db8",
+    "physics/qm/null_source/timelike/physical_source/common.py": "0740c3123d167ac6cc1594b99089d4db741d3cdcd21550ed894507724470b3b2",
+    "physics/qm/null_source/timelike/physical_source/records.py": "b0b768ebd2eb007d9170df70313411455d3364516cc4fda8444f9851aa16f905",
+    "physics/qm/null_source/timelike/prepared_initial/result.json": "aab2fd86f936b969139681678bab5ea2cf927864a12f4356239e23bc9d1aa88f"
+  },
+  "status": "PASS"
+}

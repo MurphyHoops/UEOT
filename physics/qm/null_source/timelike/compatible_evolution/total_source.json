@@ -1,0 +1,92 @@
+{
+  "checks": {
+    "all_quadratic_species_contractions": true,
+    "coherent_vector_orbit": true,
+    "label_marginal_preserved": true,
+    "orthogonal_det_one": true,
+    "reservoir_fluctuations_included": true,
+    "second_reference_RSET_included": true
+  },
+  "exact_rotation": "ell^(-1/2) [[r_y,y],[-y,r_y]], r_y=sqrt(ell-y^2)",
+  "invariant_record_laws": {
+    "equal_prior_Bayes_error": "1/2",
+    "reason": "bounded effect invariance, not moment determinacy",
+    "total_variation": 0
+  },
+  "later_release_driver_NEC": {
+    "both_endpoint_driver_densities": 0,
+    "identity": "rho_Dprime=-3h(rho_D+p_D)",
+    "initial_NEC_slope": "-p_qprime(0)>0",
+    "proof": "nontrivial positive initial NEC and zero endpoint densities force weighted cancellation",
+    "some_open_interval_has_negative_NEC": true,
+    "strict_contraction": "h<0 for every t>0 in the constructed window",
+    "uniform_initial_positive_interval_length_certified": false
+  },
+  "old_geometry_normalized_constraint_absolute_lower": "116235944563517/134217728000000",
+  "original_label_distributions": {
+    "-1_new": [
+      [
+        "1",
+        "1/4"
+      ],
+      [
+        "-1",
+        "3/4"
+      ]
+    ],
+    "-1_old": [
+      [
+        "-1/2 + sqrt(3)/2",
+        "1/2"
+      ],
+      [
+        "-sqrt(3)/2 - 1/2",
+        "1/2"
+      ]
+    ],
+    "1_new": [
+      [
+        "1",
+        "3/4"
+      ],
+      [
+        "-1",
+        "1/4"
+      ]
+    ],
+    "1_old": [
+      [
+        "1/2 + sqrt(3)/2",
+        "1/2"
+      ],
+      [
+        "1/2 - sqrt(3)/2",
+        "1/2"
+      ]
+    ]
+  },
+  "outward_constraint_gate": "866025/1000000",
+  "schema": "ueot-total-source-symmetry/1",
+  "scope": {
+    "all_possible_noninvariant_instruments_covered": false,
+    "all_renormalized_energy_lower_bound": false,
+    "gravitational_channel_constructed": false,
+    "local_controller_implemented": false,
+    "original_single_field_geometry_repaired": false,
+    "same_original_field_marginal": true,
+    "second_identical_quantum_field_added": true,
+    "vanishing_mean_driver_implies_vanishing_driver_noise": false
+  },
+  "sharp_coherent_budget": {
+    "ell_min": "1+sqrt(3)/2",
+    "mean_reservoir_over_original_field_min": "sqrt(3)/2",
+    "original_field_fraction_at_fixed_total_max": "4-2*sqrt(3)"
+  },
+  "source_sha256": {
+    "../prepared_dynamics/result.json": "892f909fe013af7c8170decdd65d72527b3937521a8e7f33d1a52c4b03c3cbac",
+    "../prepared_initial/result.json": "aab2fd86f936b969139681678bab5ea2cf927864a12f4356239e23bc9d1aa88f",
+    "history.json": "49c89f687797bdfdb318100ca085c4bde7059230041495cf368164438b06c286",
+    "total_source.py": "7b3eb1a6e2743f886e01ccca4f939995936bd229fb579fd296d8cb5e282d96b7"
+  },
+  "status": "PASS"
+}

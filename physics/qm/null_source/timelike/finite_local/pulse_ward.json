@@ -1,0 +1,51 @@
+{
+  "Cauchy_normal_derivatives_and_zero_high_cross_terms_retained": true,
+  "free_out_conservation_closes_intermediate_total_source": false,
+  "free_out_mean_and_noise_conserved": true,
+  "geometry_ODE_integrations": 0,
+  "interaction_pointer_controller_must_cancel_Ward_defect": true,
+  "mode_ODE_integrations": 0,
+  "nonselective_spectral_history_is_jointly_readable_with_final_flag": false,
+  "nonselective_target_mean_change_during_pulse": "2*s*T[u_ret]",
+  "old_checkers_executed": 0,
+  "proof": "PULSE_WARD.md",
+  "retarded_displacement": "u_ret=G_ret f; Box u_ret=f",
+  "same_actual_short_pointer_channel": true,
+  "same_full_Cauchy_covariance": "Gamma_eta=Gamma_free_eta+s*r_eta*r_eta_transpose",
+  "same_pointer_momenta_used_at_all_pulse_times": true,
+  "schema": "ueot-finite-local-pulse_ward/1",
+  "source_multitime_covariance": "VarS0+4*mu*k_eta_eta_prime/C+4*k_eta_eta_prime^2/C^2",
+  "source_sha256": {
+    "physics/qm/null_source/timelike/finite_local/PULSE_WARD.md": "cd570975f232b1234c93b223a01703d0c9a54ed7f796a45681c3a3969a53aa94",
+    "physics/qm/null_source/timelike/finite_local/common.py": "8e5423693746c413087155409d357863cb99bebc988105beb377c41b5a409081",
+    "physics/qm/null_source/timelike/finite_local/local_tensor.json": "d92464c636646c32a8e932a5282594db226dd6e531fe80f535a3dd5f57f0e162",
+    "physics/qm/null_source/timelike/finite_local/pulse_ward.py": "60562c5a06ec6032f065ef514b984842656f95823be4d881ca4e93910dd86b38",
+    "physics/qm/null_source/timelike/joint_history/history.json": "0d419ec9ff6d30dafcc9a23855bf5c0b73a872e27175157a057a50059a4ded2d",
+    "physics/qm/null_source/timelike/nonlinear_history/kernels.json": "ec8a76f8c3b735f8a2ac469caa643c5454eb384df7861c15fb877a7710825b21",
+    "physics/qm/null_source/timelike/operational_selection/fluctuations.json": "4e7bd02726fce167d84ec7313e93dc23deffd0430cebecbe5f1ed37f4470f82c",
+    "physics/qm/null_source/timelike/operational_selection/instrument.json": "07af60c432c4722293f61554abe95cb320b26f27d743026c9d2b504dc56c0f4a",
+    "physics/qm/null_source/timelike/physical_source/static_source.json": "aefc2eb6bb670d2a1de6496483d07bd929921358d80047175b33a45f38d452dc"
+  },
+  "static_target_work": "Delta E=-2*s*integral sqrt(-g)*f*partial_proper_time(u_ret)",
+  "status": "PASS",
+  "strict_nonzero_target_work_lower": [
+    8.312652860736841e-14,
+    8.31267252483372e-14
+  ],
+  "target_Ward_defect_during_pulse": "2*s*f*grad(u_ret)",
+  "target_Ward_defect_identically_zero": false,
+  "whole_device_work_determined_by_target_POVM": false,
+  "whole_pulse_source_mean_increment_upper": [
+    2.3941759904625254e-19,
+    2.394189583058013e-19
+  ],
+  "whole_pulse_source_variance_increment": "2*mu*delta_mu+delta_mu^2",
+  "whole_pulse_two_target_fields_added_energy_upper": [
+    1.8694234800024306e-11,
+    1.869433208938532e-11
+  ],
+  "whole_pulse_zero_energy_transient_upper": [
+    1.3475965232923551e-13,
+    1.3475997111156685e-13
+  ]
+}

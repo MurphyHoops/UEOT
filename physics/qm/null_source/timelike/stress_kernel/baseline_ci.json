@@ -1,0 +1,85 @@
+{
+  "schema": "ueot-predecessor-public-ci-observation/1",
+  "observed_utc": "2026-11-19 14:01:24 UTC",
+  "semantics": "Public GitHub API observation retrieved by the primary reviewer; not a new execution or a cryptographic attestation. Exact archived input identities and actual passed run/job/step are checked separately.",
+  "run": {
+    "id": 44511966040,
+    "name": "Finite source response research",
+    "path": ".github/workflows/ueot-physics-source-response.yml",
+    "event": "pull_request",
+    "head_sha": "29d49e3eee6299e2085492b0e061288b8166b5fa",
+    "head_branch": "codex/physics-source-response-20261119",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/MurphyHoops/UEOT/actions/runs/44511966040",
+    "run_attempt": 1,
+    "created_at": "2026-11-19T11:07:40Z",
+    "updated_at": "2026-11-19T11:08:20Z"
+  },
+  "jobs": [
+    {
+      "id": 135518200543,
+      "name": "reproduce",
+      "head_sha": "29d49e3eee6299e2085492b0e061288b8166b5fa",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/MurphyHoops/UEOT/actions/runs/44511966040/job/135518200543",
+      "steps": [
+        {
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v6",
+          "number": 2,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-python@v6",
+          "number": 3,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install the same scientific dependencies",
+          "number": 4,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Reuse 18 predecessor results and verify four response results",
+          "number": 5,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "number": 6,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-python@v6",
+          "number": 11,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v6",
+          "number": 12,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "number": 13,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ]
+}

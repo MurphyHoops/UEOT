@@ -1,0 +1,58 @@
+{
+  "autonomous_device_constructed": false,
+  "distance_order": "1/(2 log K) for actual C9",
+  "exact_distance": "(p+sqrt(p^2+4c(p+c)(1-|z|^2)))/2; c=(1-p)r",
+  "failure_record_retained": true,
+  "full_field_Einstein_CTP_device_solution": false,
+  "geometry_ODE_integrations": 0,
+  "max_postselection_ratio_rounded": 0.4737174073,
+  "max_square_root_ratio_rounded": 0.57033873,
+  "mode_ODE_integrations": 0,
+  "ordinary_time_prepared_GNS_gate": "ground and C9 equivalent; convergence still OPEN",
+  "physical_unification": "OPEN",
+  "postselection_examples": 12,
+  "predecessor_scientific_modules_imported_or_executed": 0,
+  "same_complete_unitary_preserves_distance": true,
+  "sample_blocks": [
+    {
+      "abs_z_squared": 0.25,
+      "distance_rounded": 0.250748599,
+      "matrix_distance_verified": true,
+      "p": 0.1,
+      "r": 0.2
+    },
+    {
+      "abs_z_squared": 0.0,
+      "distance_rounded": 0.3649,
+      "matrix_distance_verified": true,
+      "p": 0.27,
+      "r": 0.13
+    },
+    {
+      "abs_z_squared": 1.0,
+      "distance_rounded": 0.02,
+      "matrix_distance_verified": true,
+      "p": 0.02,
+      "r": 0.91
+    },
+    {
+      "abs_z_squared": 0.04000000000000001,
+      "distance_rounded": 0.5878775383,
+      "matrix_distance_verified": true,
+      "p": 0.0,
+      "r": 0.6
+    }
+  ],
+  "schema": "ueot-joint-propagation-rare_preparation/1",
+  "shared_reference_scope": "same input through actual even/odd encodings; fixed p,r,b",
+  "source_sha256": {
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_feedback/CORRELATED_GAUSSIAN.md": "4f5f20d75585dbd99ec9300dd5095668440085bca2416354df1ff3f732ebf11f",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_feedback/NEXT_PROPAGATOR_TEST.md": "a81de49a7c99cefcf1fa7047bfcb382979fc7467b8fca94aaca32298e4194ec9",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/RARE_PREPARATION.md": "bf3b357d1513b471f32762a4a5022c585f5f756cde8129e9722b79125c43e0a9",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/common.py": "e5cada98ee5de6a679996b64dc23af4aeb2cea97dc45514382f98888ed5512e8",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/rare_preparation.py": "148bd436d629a20930a6c062be37673fbfa6ede4a0049de22efe268e9353330f"
+  },
+  "square_root_examples": 12,
+  "status": "PASS",
+  "verification_kind": "exact algebra, outward interval checks, or explicitly tolerance-based floating-point regressions; analytic proofs stated separately"
+}

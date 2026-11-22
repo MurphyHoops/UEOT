@@ -1,0 +1,972 @@
+{
+  "schema": "ueot-finite-stress-native-source-audits/1",
+  "native_agents": [
+    "a_joint_constraints",
+    "b_total_source",
+    "c_autonomous_device"
+  ],
+  "external_human_peer_review": false,
+  "semantics": "Actual immutable GitHub source readings and mathematical reviews by the three native agents. Reported Git blob identities are independently checked by root against the local immutable Git objects. Analytic proofs are not machine-formal theorems.",
+  "restrictions": {
+    "agents_project_executions": 0,
+    "agents_project_writes": 0,
+    "root_only_local_execution": true,
+    "predecessor_scientific_execution": 0,
+    "Core_read_only": true,
+    "GI_excluded": true
+  },
+  "checkpoints": [
+    {
+      "commit": "386a880c8682d0b0367626f3c9d371a6f8975ca9",
+      "reported_blobs": {
+        "MODEL.md": "d3d5202acbd85133220cb97c6fe8bd5ebb4a7599",
+        "model.py": "db0ec8ad882525ae6efb60ace65057f2175563bf",
+        "model.json": "3be0196673138b5587675a5cd39189dd2cf8d7d3",
+        "PHASE_DIAGRAM.md": "20e94f752645a0074a96e7c0c771a44a254f35ab",
+        "phase_diagram.py": "20021b97978dc3ede45736814e44a74734cab51e",
+        "phase_diagram.json": "619dced5ad5eb93b03dbf195e0acbaf1fa652007",
+        "DISPERSION_GAP.md": "0b28df3b885591658ba7f900cf40260a6fe337a8",
+        "dispersion_gap.py": "92300ec63a961660ce788047174a6f009bfef44c",
+        "dispersion_gap.json": "feed5229e2a27c887b3616b68366f407089f9be2",
+        "ROBUSTNESS.md": "ff51d8640e3181ebec8f291dae49424e858b8efb",
+        "robustness.py": "76187657bb798995f729cc70886e5a81a07fa7ae",
+        "robustness.json": "1624cf2d579cbe8aaf50daf8a0cefb619576f6f1",
+        "common.py": "bce4290367f1e0510a577fb805146445ce699043",
+        "README.md": "791ced2750c6c27e52656f896f4fe879fd739d4c",
+        "INPUTS_AND_NEXT_TEST.md": "d7a246d8143fca876731fe8fb4af6c9585279325",
+        "CONTRACT.md": "bfffd8cf9da3664265a5002698ef30fac529fb87",
+        "CRITICAL_STATE.md": "1fa9e3f20d995ec1676db5434fc2303e55d73a6f",
+        "critical_state.py": "465b81c104d5510471f1a5c1c2e47d70949664da",
+        "critical_state.json": "c8ce5b9f5d55639f167a11469eb6d445cc5b2801",
+        "VOLUME_MOMENTS.md": "10265e0b15d4feafacbca2b3255932401daec021",
+        "volume_moments.py": "ca24d9f56aca539c5c040ff7d4c8588bebbc49a4",
+        "volume_moments.json": "d22353f8265583f4e48401efa95a792d088b7f7e",
+        "REVIEW.md": "c2e3f08bd8d9ad170ba94d28c4fc25f8e585e96b",
+        "review.py": "f506362c6a0a108503474efded1891dde30af304",
+        "review.json": "0bf12346318c8da1379cdc3d2e0c9957a241e18c",
+        "run_verification.py": "e14908d4e503414cdd58adf71cac6738c53bef9a",
+        "baseline_ci.json": "d37fae22aeace36ec51a04b91e54500fb535eeec",
+        ".github/workflows/ueot-physics-source-response.yml": "e61025d27319d7f8524a2bd6bd0474873b966533",
+        "POSITIVE_SOURCE.md": "63888535665abc2d9edad859c09d65d0840f4d4c",
+        "positive_source.py": "b7a37baead579b3fafbd989babbebb6aba6dac0d",
+        "positive_source.json": "5dcbb0ba23cc043e08eef9f4297be68073e00955",
+        "SOURCE_OBSERVABLES.md": "585e44e5534ada1e98098f5de318d392f55bbfdb",
+        "source_observables.py": "9eea00a85086f46b01e4ea998dd6bab98559211f",
+        "source_observables.json": "dd14f9ac0499051de51f164405658011998f009d",
+        "FINITE_CLOCK.md": "e6efa195551a8d37803cc13c1f4ceb1f0e633555",
+        "finite_clock.py": "c812ba716da51e65e2dffde3e0e7560d6b47e6c9",
+        "finite_clock.json": "12e79cc18dbdcbfcec665205641b4f0dc6ade563"
+      },
+      "findings_and_resolution": "Initial mathematical/source reviews required explicit smooth-support and critical-filter qualifications, separation of same-state ratios from a linear mean, correction of a scope flag, and consistent S0 naming. Resolved and actually re-read at 3b713f9b.",
+      "reviews": [
+        {
+          "agent": "a_joint_constraints",
+          "actual_source_read": true,
+          "files": [
+            "MODEL.md",
+            "model.py",
+            "model.json",
+            "PHASE_DIAGRAM.md",
+            "phase_diagram.py",
+            "phase_diagram.json",
+            "DISPERSION_GAP.md",
+            "dispersion_gap.py",
+            "dispersion_gap.json",
+            "ROBUSTNESS.md",
+            "robustness.py",
+            "robustness.json",
+            "common.py",
+            "README.md",
+            "INPUTS_AND_NEXT_TEST.md"
+          ],
+          "outcome": "REVIEWED_FINDINGS_RESOLVED"
+        },
+        {
+          "agent": "b_total_source",
+          "actual_source_read": true,
+          "files": [
+            "CONTRACT.md",
+            "CRITICAL_STATE.md",
+            "critical_state.py",
+            "critical_state.json",
+            "VOLUME_MOMENTS.md",
+            "volume_moments.py",
+            "volume_moments.json",
+            "PHASE_DIAGRAM.md",
+            "phase_diagram.py",
+            "phase_diagram.json",
+            "common.py",
+            "REVIEW.md",
+            "review.py",
+            "review.json",
+            "run_verification.py",
+            "baseline_ci.json",
+            ".github/workflows/ueot-physics-source-response.yml",
+            "MODEL.md"
+          ],
+          "outcome": "REVIEWED_FINDINGS_RESOLVED"
+        },
+        {
+          "agent": "c_autonomous_device",
+          "actual_source_read": true,
+          "files": [
+            "POSITIVE_SOURCE.md",
+            "positive_source.py",
+            "positive_source.json",
+            "SOURCE_OBSERVABLES.md",
+            "source_observables.py",
+            "source_observables.json",
+            "FINITE_CLOCK.md",
+            "finite_clock.py",
+            "finite_clock.json",
+            "VOLUME_MOMENTS.md",
+            "volume_moments.py",
+            "volume_moments.json",
+            "DISPERSION_GAP.md",
+            "ROBUSTNESS.md",
+            "common.py",
+            "README.md",
+            "INPUTS_AND_NEXT_TEST.md"
+          ],
+          "outcome": "REVIEWED_FINDINGS_RESOLVED"
+        }
+      ]
+    },
+    {
+      "commit": "3b713f9b6e7b86df409527ad5b9455d1f4b14960",
+      "reported_blobs": {
+        "DISPERSION_GAP.md": "7df8d3e1af6e5feff9009830d11dc68cf8afa06b",
+        "dispersion_gap.py": "a89a145eec8eb729cfe2f4081086d9d95410218a",
+        "dispersion_gap.json": "39891d5fbbc491c7c74be226612088650adc38b3",
+        "ROBUSTNESS.md": "4f01288c89ff30af0c0bbcda5956701d7a8abf95",
+        "robustness.json": "60ab0fca92a1907e15c7723a879391ae15e53d95",
+        "CRITICAL_STATE.md": "3cdc2e6ce04f5aee9ef928edfac6d027fa415cc9",
+        "critical_state.json": "afa2939209567657a6facc0a16b3b3945b3bb3b9",
+        "review.py": "7e733ab8f882c0ee3f87eff66a58e028f66f5718",
+        "review.json": "146732cf9e9a6b9e60806c0125e4def39cca4808",
+        "FINITE_CLOCK.md": "f22994d8e3089e50f748731bc4f8c5da9333cbd2",
+        "finite_clock.json": "ae685652493a7c22ad42a1befa453da8b23e7f7a",
+        "SOURCE_OBSERVABLES.md": "16514a61fcfc6bb18de91e2c2e0fe9555aee99a7",
+        "source_observables.json": "587ed0dfa170ebd99d1a4f7af8ee2512c18fc7f1"
+      },
+      "findings_and_resolution": "All reported first-cohort findings closed by actual delta review. Reference comparison is not physical metric error; finite-error model sequence is not a fixed-mu or old-A history.",
+      "reviews": [
+        {
+          "agent": "a_joint_constraints",
+          "actual_source_read": true,
+          "files": [
+            "DISPERSION_GAP.md",
+            "dispersion_gap.py",
+            "dispersion_gap.json",
+            "ROBUSTNESS.md",
+            "robustness.json"
+          ],
+          "outcome": "PASS_WITH_STATED_SCOPE"
+        },
+        {
+          "agent": "b_total_source",
+          "actual_source_read": true,
+          "files": [
+            "CRITICAL_STATE.md",
+            "critical_state.json",
+            "review.py",
+            "review.json"
+          ],
+          "outcome": "PASS_WITH_STATED_SCOPE"
+        },
+        {
+          "agent": "c_autonomous_device",
+          "actual_source_read": true,
+          "files": [
+            "FINITE_CLOCK.md",
+            "finite_clock.json",
+            "SOURCE_OBSERVABLES.md",
+            "source_observables.json",
+            "DISPERSION_GAP.md",
+            "dispersion_gap.py",
+            "dispersion_gap.json",
+            "ROBUSTNESS.md",
+            "robustness.json"
+          ],
+          "outcome": "PASS_WITH_STATED_SCOPE"
+        }
+      ]
+    },
+    {
+      "commit": "2e1cacd3172185675c09659ba14a41f930cc4e92",
+      "reported_blobs": {
+        "ORIGINAL_CTP_GATE.md": "375c5d6f38e527bd4716f22d9e3c4283cf1c8277",
+        "original_ctp_gate.py": "958e9f3e50c798428b2be36f21dd72cf6b2f9830",
+        "original_ctp_gate.json": "adf52376a5d348c03e9d11c7a936df2e989db465",
+        "README.md": "d0ab09f7b29449d39c9913dcc2ce4bc381be304c",
+        "INPUTS_AND_NEXT_TEST.md": "60c50bdc747b446f9ab634a391402af9d6e9eef5",
+        "review.py": "4f08b76acf7d9bb2679be651b8ea7eb52756ec02",
+        "review.json": "a498360eb36f9d92e6762253e9e7e7bc1c9ba104",
+        "run_verification.py": "7d9614bedf82037a9740a59038360a2e5e6c87cb",
+        "REVIEW.md": "7c6106b3426cc6d7df5999bc41feb21f83b02870",
+        "CONTRACT.md": "2a6e59fc714848521979ea4c0b73691b25764fe0",
+        ".github/workflows/ueot-physics-source-response.yml": "76ebc0798b5068bb1fb046ebf5361c34c0f9b6a4"
+      },
+      "findings_and_resolution": "Conditional SO(4) projection does not by itself prove the lapse row; the actual incoming Ward/domain assumptions are retained. Mean-SCE is not invalidated.",
+      "reviews": [
+        {
+          "agent": "a_joint_constraints",
+          "actual_source_read": true,
+          "files": [
+            "ORIGINAL_CTP_GATE.md",
+            "original_ctp_gate.py",
+            "original_ctp_gate.json",
+            "README.md",
+            "INPUTS_AND_NEXT_TEST.md"
+          ],
+          "outcome": "PASS_WITH_STATED_SCOPE"
+        },
+        {
+          "agent": "b_total_source",
+          "actual_source_read": true,
+          "files": [
+            "ORIGINAL_CTP_GATE.md",
+            "original_ctp_gate.py",
+            "original_ctp_gate.json",
+            "review.py",
+            "review.json",
+            "run_verification.py",
+            "REVIEW.md",
+            "CONTRACT.md",
+            ".github/workflows/ueot-physics-source-response.yml"
+          ],
+          "outcome": "PASS_WITH_STATED_SCOPE"
+        },
+        {
+          "agent": "c_autonomous_device",
+          "actual_source_read": true,
+          "files": [
+            "ORIGINAL_CTP_GATE.md",
+            "original_ctp_gate.py",
+            "original_ctp_gate.json",
+            "README.md",
+            "INPUTS_AND_NEXT_TEST.md"
+          ],
+          "outcome": "PASS_WITH_STATED_SCOPE"
+        }
+      ]
+    },
+    {
+      "commit": "1539893c521d659bd047bd0b299dc0e6a74dee3b",
+      "reported_blobs": {
+        "BOUNDARY_STATE.md": "eec8592efb25d5b4da93c31047d6257ec9019365",
+        "boundary_state.py": "1a10cf1f29746c386a07d3fffda4592db3b085e6",
+        "boundary_state.json": "9a306a445f32a8a2663868b3baf48f374ccd7248",
+        "README.md": "fe4d6e0a875a1a0ba55759328aee403414c24c35",
+        "INPUTS_AND_NEXT_TEST.md": "f41d144c993221bccd16b61c516547cf5cb41c19",
+        "review.py": "e83601a01d19ca88a2922d56a31efa8e58cf5e70",
+        "review.json": "9a7a9d1c3340284e54dedf8d01d9862accbe0c77",
+        "run_verification.py": "f6571da31a118281586fa3e14893e33f80dc6c93",
+        "REVIEW.md": "f7eb988465b5b372cdd122a306ac80d725263b9e",
+        "CONTRACT.md": "e414ad744b11e1b5104695e3d2219276e41b1996",
+        ".github/workflows/ueot-physics-source-response.yml": "6a3d154fbe5d8670e7172bde7fe2d96bbea9fa18"
+      },
+      "findings_and_resolution": "Exact non-Gaussian branch sum and homogeneous noise passed. Static vacuum phase allocation and finite-mode Hadamard explanation were clarified and actually re-read at 3cb785c6.",
+      "reviews": [
+        {
+          "agent": "a_joint_constraints",
+          "actual_source_read": true,
+          "files": [
+            "BOUNDARY_STATE.md",
+            "boundary_state.py",
+            "boundary_state.json",
+            "README.md",
+            "INPUTS_AND_NEXT_TEST.md"
+          ],
+          "outcome": "PASS_WITH_STATED_SCOPE"
+        },
+        {
+          "agent": "b_total_source",
+          "actual_source_read": true,
+          "files": [
+            "BOUNDARY_STATE.md",
+            "boundary_state.py",
+            "boundary_state.json",
+            "review.py",
+            "review.json",
+            "run_verification.py",
+            "REVIEW.md",
+            "CONTRACT.md",
+            ".github/workflows/ueot-physics-source-response.yml"
+          ],
+          "outcome": "PASS_WITH_STATED_SCOPE"
+        },
+        {
+          "agent": "c_autonomous_device",
+          "actual_source_read": true,
+          "files": [
+            "BOUNDARY_STATE.md",
+            "boundary_state.py",
+            "boundary_state.json",
+            "README.md",
+            "INPUTS_AND_NEXT_TEST.md"
+          ],
+          "outcome": "PASS_WITH_STATED_SCOPE"
+        }
+      ]
+    },
+    {
+      "commit": "3cb785c6ad084b053beadcbef291a9b823bb1d23",
+      "reported_blobs": {
+        "TOTAL_BOUNDARY_GATE.md": "607dd5596a568fb082f52836617ca6b984f8faa1",
+        "total_boundary_gate.py": "85b923eb94084298fc4a7159fc6aff64e1e3541b",
+        "total_boundary_gate.json": "2c4d3656c5e8cb0b2f8770b3266111363c158d85",
+        "BOUNDARY_STATE.md": "e173987001ab8bba2bd3efcc6fc9ce959fd280ec",
+        "boundary_state.py": "bb16d071cbc5ff8c83f7bfa7cffd6fe28241cc91",
+        "boundary_state.json": "2143d79ebbd1e2433747493a0d612cb63f6cef01",
+        "README.md": "afe48931d2357abf69487f8dd47711234b0cc0f9",
+        "INPUTS_AND_NEXT_TEST.md": "5f8534997c5e47d95b28c94a0472618f0c5ce17f",
+        "review.py": "40396bfcdc41f27c1c582b3824a7a0704d1b6198",
+        "review.json": "d83ca8b9df6ad78440da5693917da182e5c35a1e",
+        "run_verification.py": "7dcf7534b41ca5c727831afccd4a65d84b81dcb3",
+        "REVIEW.md": "2e9245fc38377ca50fe21008a3da94087f783356",
+        "CONTRACT.md": "26a58c5f914f2f0ba89f4f31ec6bd1d0c7d1dcac",
+        ".github/workflows/ueot-physics-source-response.yml": "c77adb0ac6d7700b6b3a39625922023574693824"
+      },
+      "findings_and_resolution": "Math and source read completed. A required selected outcomes to sum to the SAME conserving nonselective output with the SAME endpoint Hamiltonian; B/C passed their scopes. Required clarification resolved at 75f6579a; do not treat the earlier wording as unconditional final approval.",
+      "reviews": [
+        {
+          "agent": "a_joint_constraints",
+          "actual_source_read": true,
+          "files": [
+            "TOTAL_BOUNDARY_GATE.md",
+            "total_boundary_gate.py",
+            "total_boundary_gate.json",
+            "BOUNDARY_STATE.md",
+            "boundary_state.py",
+            "boundary_state.json",
+            "README.md",
+            "INPUTS_AND_NEXT_TEST.md"
+          ],
+          "outcome": "REQUIRED_WORDING_FIX_RESOLVED_AT_75f6579a"
+        },
+        {
+          "agent": "b_total_source",
+          "actual_source_read": true,
+          "files": [
+            "TOTAL_BOUNDARY_GATE.md",
+            "total_boundary_gate.py",
+            "total_boundary_gate.json",
+            "BOUNDARY_STATE.md",
+            "boundary_state.py",
+            "boundary_state.json",
+            "review.py",
+            "review.json",
+            "run_verification.py",
+            "REVIEW.md",
+            "CONTRACT.md",
+            ".github/workflows/ueot-physics-source-response.yml"
+          ],
+          "outcome": "PASS_WITH_STATED_SCOPE"
+        },
+        {
+          "agent": "c_autonomous_device",
+          "actual_source_read": true,
+          "files": [
+            "TOTAL_BOUNDARY_GATE.md",
+            "total_boundary_gate.py",
+            "total_boundary_gate.json",
+            "BOUNDARY_STATE.md",
+            "boundary_state.py",
+            "boundary_state.json",
+            "README.md",
+            "INPUTS_AND_NEXT_TEST.md"
+          ],
+          "outcome": "PASS_WITH_STATED_SCOPE"
+        }
+      ]
+    },
+    {
+      "commit": "75f6579a25c52f42f8bd3aa8810bdf2d333d3a25",
+      "reported_blobs": {
+        "FINITE_SLICE_UV.md": "a2392a8b9aa5060debf42b74add688ff5261d37c",
+        "finite_slice_uv.py": "c8a6cc7d713b7ab4c127671998abc3514b050d19",
+        "finite_slice_uv.json": "e62e7bb6cf6c4edfa83e2c27fa8ed287f0c2f6ab",
+        "TOTAL_BOUNDARY_GATE.md": "f4fa4a68c78c01da902a924e18334213f2849a9f",
+        "total_boundary_gate.json": "d863a157769e8fac191f62bc9627db3b1446b41b",
+        "README.md": "0676b4022d984c3035b58117888709e22d5d199c",
+        "INPUTS_AND_NEXT_TEST.md": "ad771f18235705dcdb2bb94cb527985e9c2cbfe6",
+        "review.py": "67b56945d1fd5d5c9661dd7f15d95ae1e0e06749",
+        "review.json": "479bf106cdddc2864b326da3ad2612768ebf1a41",
+        "run_verification.py": "64d409579f78966384241b96cdc981322c218638",
+        "CONTRACT.md": "fa9a4b3e7bb24af3a7ec82a88d765d4eff9dff45",
+        "REVIEW.md": "e73e33fb09983c352010b5f4740aec002bcd7beb",
+        ".github/workflows/ueot-physics-source-response.yml": "3bdcee572e97f824842b1f1a634fceb12aa1b1c2"
+      },
+      "findings_and_resolution": "All three actual-source reviews passed. A verified the selected-record fix. Exact state transport, finite-cutoff boundary phase, quasifree scope and old-energy versus new-RSET distinctions passed.",
+      "reviews": [
+        {
+          "agent": "a_joint_constraints",
+          "actual_source_read": true,
+          "files": [
+            "FINITE_SLICE_UV.md",
+            "finite_slice_uv.py",
+            "finite_slice_uv.json",
+            "TOTAL_BOUNDARY_GATE.md",
+            "total_boundary_gate.json",
+            "README.md",
+            "INPUTS_AND_NEXT_TEST.md"
+          ],
+          "outcome": "PASS_WITH_STATED_SCOPE"
+        },
+        {
+          "agent": "b_total_source",
+          "actual_source_read": true,
+          "files": [
+            "FINITE_SLICE_UV.md",
+            "finite_slice_uv.py",
+            "finite_slice_uv.json",
+            "review.py",
+            "review.json",
+            "run_verification.py",
+            "REVIEW.md",
+            "CONTRACT.md",
+            ".github/workflows/ueot-physics-source-response.yml"
+          ],
+          "outcome": "PASS_WITH_STATED_SCOPE"
+        },
+        {
+          "agent": "c_autonomous_device",
+          "actual_source_read": true,
+          "files": [
+            "FINITE_SLICE_UV.md",
+            "finite_slice_uv.py",
+            "finite_slice_uv.json",
+            "TOTAL_BOUNDARY_GATE.md",
+            "total_boundary_gate.json",
+            "README.md",
+            "INPUTS_AND_NEXT_TEST.md"
+          ],
+          "outcome": "PASS_WITH_STATED_SCOPE"
+        }
+      ]
+    },
+    {
+      "commit": "734188fcfcd061cc3b2df865073a05a4c74285b6",
+      "reported_blobs": {
+        "GEOMETRY_MATCHING.md": "a98b0c69013e8bcf656bf3f817162653f1efb1c5",
+        "geometry_matching.py": "06535f1004683b7ce6f919c02e439020c9911999",
+        "geometry_matching.json": "127aee313c1fd76f8f97190985c46f0009a2fd1f",
+        "README.md": "0406d9d5fd755bd3705c0ff82763118fbb7050fe",
+        "INPUTS_AND_NEXT_TEST.md": "257ada1aeddbab114501f05f2aa9e1c4ade3500d",
+        "SOURCES.md": "aba61c3e3365c2b8f23b4fc00afe70b0a9e2f316",
+        "physics/qm/README.md": "36ebc4b97bdb102fc7974bba2cdce07f92c0756a",
+        "physics/qm/ROADMAP.md": "8107a16b7d62ffb7e5dae098983bdf4dbcd78966",
+        "physics/qm/null_source/timelike/README.md": "94850a7e3931587d125edc7d2d6fbebc431eae0e",
+        "review.py": "3a28b7cb39667885501b054b31526e9223b57c46",
+        "review.json": "0eb9448e17d5df4d2d9ea4bbe709e04f0f5d2e55",
+        "run_verification.py": "f05eab2414091c18c53646ea6f225df8868320a0",
+        "CONTRACT.md": "50cddac9973c08ef1a089d888e0c2035d78ab492",
+        "REVIEW.md": "478052f613f01676f61e62aa76c774011d3b3c1c",
+        ".github/workflows/ueot-physics-source-response.yml": "ce8e485007bae7e96c012ca8929b302779711b68"
+      },
+      "findings_and_resolution": "All three actual-source reviews passed. R=1.02, controlled exact RSET remainder, distinct original/device normal derivatives, two amplitudes and unit-radius to frozen-bidisc uniqueness bridge verified.",
+      "reviews": [
+        {
+          "agent": "a_joint_constraints",
+          "actual_source_read": true,
+          "files": [
+            "GEOMETRY_MATCHING.md",
+            "geometry_matching.py",
+            "geometry_matching.json",
+            "README.md",
+            "INPUTS_AND_NEXT_TEST.md"
+          ],
+          "outcome": "PASS_WITH_STATED_SCOPE"
+        },
+        {
+          "agent": "b_total_source",
+          "actual_source_read": true,
+          "files": [
+            "GEOMETRY_MATCHING.md",
+            "geometry_matching.py",
+            "geometry_matching.json",
+            "review.py",
+            "review.json",
+            "run_verification.py",
+            "REVIEW.md",
+            "CONTRACT.md",
+            ".github/workflows/ueot-physics-source-response.yml"
+          ],
+          "outcome": "PASS_WITH_STATED_SCOPE"
+        },
+        {
+          "agent": "c_autonomous_device",
+          "actual_source_read": true,
+          "files": [
+            "GEOMETRY_MATCHING.md",
+            "geometry_matching.py",
+            "geometry_matching.json",
+            "README.md",
+            "INPUTS_AND_NEXT_TEST.md",
+            "SOURCES.md",
+            "physics/qm/README.md",
+            "physics/qm/ROADMAP.md",
+            "physics/qm/null_source/timelike/README.md"
+          ],
+          "outcome": "PASS_WITH_STATED_SCOPE"
+        }
+      ]
+    },
+    {
+      "commit": "5c087e1fe8dd98817d10447e2538cc22e715060d",
+      "reported_blobs": {
+        "DYNAMIC_CHARGE.md": "da438db7e621d80ec5d8c2688090fd1bf9d1ba16",
+        "dynamic_charge.py": "9706dd5e1c476c75f96449c91e70b253ed4f905c",
+        "dynamic_charge.json": "7680b98fd362fc00e9a9816444f2482ed64ab284",
+        "review.py": "a982d16697aa4bf499906408185e9cb1d260ff29",
+        "review.json": "2a4c0317210d40a0e70c1f63929bdebc831b8b80",
+        "run_verification.py": "440c6527352454dcab0f26658d94f2b5063a6de7",
+        "CONTRACT.md": "024fa7149d5d97e894b4e1b748af0ee86910b77a",
+        "REVIEW.md": "0aff16648745f967997a61025400d4289bc5536a",
+        ".github/workflows/ueot-physics-source-response.yml": "056a148af0972d47ee27095cce7a16480b7299fc",
+        "README.md": "e0c92144b7597eb5c2ce4559cc087b6944c7e7c7",
+        "INPUTS_AND_NEXT_TEST.md": "f8473cbb45cecfd590cad0376cc4a237e1c8b0d2",
+        "physics/qm/README.md": "9f0d2a26dd4f65fdf04a78d17e16b034df602cbf",
+        "physics/qm/ROADMAP.md": "730e0b82b9955f23ce144e787b2f4cdf42eeff6f",
+        "physics/qm/null_source/timelike/README.md": "da69c33a30c7e0df5b00de89b20856351a25a05c"
+      },
+      "findings_and_resolution": "All three actual-source reviews passed the nonstatic Ward, uniform exact-Jost L2 bridge, sharp K^3 coefficient and full-past domain. Optional wording clarifications (constraint charge terminology, two-IBP same-order bound, original-input-only 0.1007 bound) are made in 05e0735a and submitted for actual delta review.",
+      "reviews": [
+        {
+          "agent": "a_joint_constraints",
+          "actual_source_read": true,
+          "files": [
+            "DYNAMIC_CHARGE.md",
+            "dynamic_charge.py",
+            "dynamic_charge.json",
+            "README.md",
+            "INPUTS_AND_NEXT_TEST.md"
+          ],
+          "outcome": "PASS_WITH_STATED_SCOPE"
+        },
+        {
+          "agent": "b_total_source",
+          "actual_source_read": true,
+          "files": [
+            "DYNAMIC_CHARGE.md",
+            "dynamic_charge.py",
+            "dynamic_charge.json",
+            "review.py",
+            "review.json",
+            "run_verification.py",
+            "CONTRACT.md",
+            "REVIEW.md",
+            ".github/workflows/ueot-physics-source-response.yml"
+          ],
+          "outcome": "PASS_WITH_STATED_SCOPE"
+        },
+        {
+          "agent": "c_autonomous_device",
+          "actual_source_read": true,
+          "files": [
+            "DYNAMIC_CHARGE.md",
+            "dynamic_charge.py",
+            "dynamic_charge.json",
+            "README.md",
+            "INPUTS_AND_NEXT_TEST.md",
+            "physics/qm/README.md",
+            "physics/qm/ROADMAP.md",
+            "physics/qm/null_source/timelike/README.md"
+          ],
+          "outcome": "PASS_WITH_STATED_SCOPE"
+        }
+      ]
+    },
+    {
+      "commit": "05e0735a60f01f89addad19e10d7f9678abc633b",
+      "reported_blobs": {
+        "BOUNDARY_EXTENSION.md": "3ff6c90f023c7e2ee20bba5f68c192de5b69c2d9",
+        "boundary_extension.py": "c40d7faf32fc86bedd37c9c4eedb9b97cad86a61",
+        "boundary_extension.json": "520899c3e7bcdeac78a642c19ebab0febcab6ce0",
+        "DYNAMIC_CHARGE.md": "495904fc6d91077ff71f5e9a5e6066a9498343d4",
+        "dynamic_charge.json": "880a21f596b2867327cc4759a1b038a54703a988",
+        "README.md": "6d34b1f63f5037d802ed142ffb37d527ca183e3e",
+        "INPUTS_AND_NEXT_TEST.md": "54265c09f2b0b4e1f50dd8cf661ddd0fbcca3bb5",
+        "review.py": "89b91fbd3f605b63019d367649d7862498f48391",
+        "review.json": "ade0e737add3da161171fffc653dcbf1041dc566",
+        "run_verification.py": "a0317b20f44173e453fa2832cee6c8d9c67386dc",
+        "CONTRACT.md": "a662a92fbfd751fd990992391ce2c1a0a8787148",
+        "REVIEW.md": "9c67439a2a05e15857ced54812a0c6ff71484cd0",
+        ".github/workflows/ueot-physics-source-response.yml": "dc0f7f4e2ccb6f88c212118c7f3bef26b8b97073",
+        "physics/qm/README.md": "a0643dabf2f863c8ec6536f2ccf1b5e74d42eba4",
+        "physics/qm/ROADMAP.md": "746dfca9d42756dce0c9a0e1b456361af49af319",
+        "physics/qm/null_source/timelike/README.md": "997df35cb462ebc92bd9c96ca104377b160d4fa3"
+      },
+      "findings_and_resolution": "All three actual-source reviews passed the scalar spectral compression, arbitrary normal extension, G-only conditioning, convolution/variance gate and smooth preparation-past signs. A/B actually verified the three DYNAMIC_CHARGE wording changes. A/C noted two README-only repeated-word typos, corrected by root in the closeout metadata change; no mathematical change.",
+      "reviews": [
+        {
+          "agent": "a_joint_constraints",
+          "actual_source_read": true,
+          "files": [
+            "BOUNDARY_EXTENSION.md",
+            "boundary_extension.py",
+            "boundary_extension.json",
+            "DYNAMIC_CHARGE.md",
+            "dynamic_charge.json",
+            "README.md",
+            "INPUTS_AND_NEXT_TEST.md"
+          ],
+          "outcome": "PASS_WITH_STATED_SCOPE"
+        },
+        {
+          "agent": "b_total_source",
+          "actual_source_read": true,
+          "files": [
+            "BOUNDARY_EXTENSION.md",
+            "boundary_extension.py",
+            "boundary_extension.json",
+            "DYNAMIC_CHARGE.md",
+            "dynamic_charge.json",
+            "review.py",
+            "review.json",
+            "run_verification.py",
+            "CONTRACT.md",
+            "REVIEW.md",
+            ".github/workflows/ueot-physics-source-response.yml"
+          ],
+          "outcome": "PASS_WITH_STATED_SCOPE"
+        },
+        {
+          "agent": "c_autonomous_device",
+          "actual_source_read": true,
+          "files": [
+            "BOUNDARY_EXTENSION.md",
+            "boundary_extension.py",
+            "boundary_extension.json",
+            "README.md",
+            "INPUTS_AND_NEXT_TEST.md",
+            "physics/qm/README.md",
+            "physics/qm/ROADMAP.md",
+            "physics/qm/null_source/timelike/README.md"
+          ],
+          "outcome": "PASS_WITH_STATED_SCOPE"
+        }
+      ]
+    }
+  ],
+  "status": "PASS_WITH_STATED_SCOPE",
+  "final_scientific_checkpoint": "05e0735a60f01f89addad19e10d7f9678abc633b",
+  "number_of_immutable_checkpoints": 9,
+  "number_of_agent_reports": 27,
+  "total_reported_file_readings": 228,
+  "unique_commit_file_identities": 144,
+  "root_verification": {
+    "observed_utc": "2026-11-20T21:23:42Z",
+    "against_local_immutable_git_objects": true,
+    "verified_commit_file_identities": 144,
+    "mismatches": [],
+    "scientific_checkpoint": "05e0735a60f01f89addad19e10d7f9678abc633b",
+    "scientific_checkpoint_worktree_clean": true,
+    "current_cohort_file_coverage": [
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/BOUNDARY_EXTENSION.md",
+        "git_blob": "3ff6c90f023c7e2ee20bba5f68c192de5b69c2d9",
+        "audited_at": "05e0735a60f01f89addad19e10d7f9678abc633b"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/BOUNDARY_STATE.md",
+        "git_blob": "e173987001ab8bba2bd3efcc6fc9ce959fd280ec",
+        "audited_at": "3cb785c6ad084b053beadcbef291a9b823bb1d23"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/CONTRACT.md",
+        "git_blob": "a662a92fbfd751fd990992391ce2c1a0a8787148",
+        "audited_at": "05e0735a60f01f89addad19e10d7f9678abc633b"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/CRITICAL_STATE.md",
+        "git_blob": "3cdc2e6ce04f5aee9ef928edfac6d027fa415cc9",
+        "audited_at": "3b713f9b6e7b86df409527ad5b9455d1f4b14960"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/DISPERSION_GAP.md",
+        "git_blob": "7df8d3e1af6e5feff9009830d11dc68cf8afa06b",
+        "audited_at": "3b713f9b6e7b86df409527ad5b9455d1f4b14960"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/DYNAMIC_CHARGE.md",
+        "git_blob": "495904fc6d91077ff71f5e9a5e6066a9498343d4",
+        "audited_at": "05e0735a60f01f89addad19e10d7f9678abc633b"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/FINITE_CLOCK.md",
+        "git_blob": "f22994d8e3089e50f748731bc4f8c5da9333cbd2",
+        "audited_at": "3b713f9b6e7b86df409527ad5b9455d1f4b14960"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/FINITE_SLICE_UV.md",
+        "git_blob": "a2392a8b9aa5060debf42b74add688ff5261d37c",
+        "audited_at": "75f6579a25c52f42f8bd3aa8810bdf2d333d3a25"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/GEOMETRY_MATCHING.md",
+        "git_blob": "a98b0c69013e8bcf656bf3f817162653f1efb1c5",
+        "audited_at": "734188fcfcd061cc3b2df865073a05a4c74285b6"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/INPUTS_AND_NEXT_TEST.md",
+        "git_blob": "54265c09f2b0b4e1f50dd8cf661ddd0fbcca3bb5",
+        "audited_at": "05e0735a60f01f89addad19e10d7f9678abc633b"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/MODEL.md",
+        "git_blob": "d3d5202acbd85133220cb97c6fe8bd5ebb4a7599",
+        "audited_at": "386a880c8682d0b0367626f3c9d371a6f8975ca9"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/ORIGINAL_CTP_GATE.md",
+        "git_blob": "375c5d6f38e527bd4716f22d9e3c4283cf1c8277",
+        "audited_at": "2e1cacd3172185675c09659ba14a41f930cc4e92"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/PHASE_DIAGRAM.md",
+        "git_blob": "20e94f752645a0074a96e7c0c771a44a254f35ab",
+        "audited_at": "386a880c8682d0b0367626f3c9d371a6f8975ca9"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/POSITIVE_SOURCE.md",
+        "git_blob": "63888535665abc2d9edad859c09d65d0840f4d4c",
+        "audited_at": "386a880c8682d0b0367626f3c9d371a6f8975ca9"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/README.md",
+        "git_blob": "6d34b1f63f5037d802ed142ffb37d527ca183e3e",
+        "audited_at": "05e0735a60f01f89addad19e10d7f9678abc633b"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/REVIEW.md",
+        "git_blob": "9c67439a2a05e15857ced54812a0c6ff71484cd0",
+        "audited_at": "05e0735a60f01f89addad19e10d7f9678abc633b"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/ROBUSTNESS.md",
+        "git_blob": "4f01288c89ff30af0c0bbcda5956701d7a8abf95",
+        "audited_at": "3b713f9b6e7b86df409527ad5b9455d1f4b14960"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/SOURCES.md",
+        "git_blob": "aba61c3e3365c2b8f23b4fc00afe70b0a9e2f316",
+        "audited_at": "734188fcfcd061cc3b2df865073a05a4c74285b6"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/SOURCE_OBSERVABLES.md",
+        "git_blob": "16514a61fcfc6bb18de91e2c2e0fe9555aee99a7",
+        "audited_at": "3b713f9b6e7b86df409527ad5b9455d1f4b14960"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/TOTAL_BOUNDARY_GATE.md",
+        "git_blob": "f4fa4a68c78c01da902a924e18334213f2849a9f",
+        "audited_at": "75f6579a25c52f42f8bd3aa8810bdf2d333d3a25"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/VOLUME_MOMENTS.md",
+        "git_blob": "10265e0b15d4feafacbca2b3255932401daec021",
+        "audited_at": "386a880c8682d0b0367626f3c9d371a6f8975ca9"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/boundary_extension.json",
+        "git_blob": "520899c3e7bcdeac78a642c19ebab0febcab6ce0",
+        "audited_at": "05e0735a60f01f89addad19e10d7f9678abc633b"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/boundary_extension.py",
+        "git_blob": "c40d7faf32fc86bedd37c9c4eedb9b97cad86a61",
+        "audited_at": "05e0735a60f01f89addad19e10d7f9678abc633b"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/boundary_state.json",
+        "git_blob": "2143d79ebbd1e2433747493a0d612cb63f6cef01",
+        "audited_at": "3cb785c6ad084b053beadcbef291a9b823bb1d23"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/boundary_state.py",
+        "git_blob": "bb16d071cbc5ff8c83f7bfa7cffd6fe28241cc91",
+        "audited_at": "3cb785c6ad084b053beadcbef291a9b823bb1d23"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/common.py",
+        "git_blob": "bce4290367f1e0510a577fb805146445ce699043",
+        "audited_at": "386a880c8682d0b0367626f3c9d371a6f8975ca9"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/critical_state.json",
+        "git_blob": "afa2939209567657a6facc0a16b3b3945b3bb3b9",
+        "audited_at": "3b713f9b6e7b86df409527ad5b9455d1f4b14960"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/critical_state.py",
+        "git_blob": "465b81c104d5510471f1a5c1c2e47d70949664da",
+        "audited_at": "386a880c8682d0b0367626f3c9d371a6f8975ca9"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/dispersion_gap.json",
+        "git_blob": "39891d5fbbc491c7c74be226612088650adc38b3",
+        "audited_at": "3b713f9b6e7b86df409527ad5b9455d1f4b14960"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/dispersion_gap.py",
+        "git_blob": "a89a145eec8eb729cfe2f4081086d9d95410218a",
+        "audited_at": "3b713f9b6e7b86df409527ad5b9455d1f4b14960"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/dynamic_charge.json",
+        "git_blob": "880a21f596b2867327cc4759a1b038a54703a988",
+        "audited_at": "05e0735a60f01f89addad19e10d7f9678abc633b"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/dynamic_charge.py",
+        "git_blob": "9706dd5e1c476c75f96449c91e70b253ed4f905c",
+        "audited_at": "5c087e1fe8dd98817d10447e2538cc22e715060d"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/finite_clock.json",
+        "git_blob": "ae685652493a7c22ad42a1befa453da8b23e7f7a",
+        "audited_at": "3b713f9b6e7b86df409527ad5b9455d1f4b14960"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/finite_clock.py",
+        "git_blob": "c812ba716da51e65e2dffde3e0e7560d6b47e6c9",
+        "audited_at": "386a880c8682d0b0367626f3c9d371a6f8975ca9"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/finite_slice_uv.json",
+        "git_blob": "e62e7bb6cf6c4edfa83e2c27fa8ed287f0c2f6ab",
+        "audited_at": "75f6579a25c52f42f8bd3aa8810bdf2d333d3a25"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/finite_slice_uv.py",
+        "git_blob": "c8a6cc7d713b7ab4c127671998abc3514b050d19",
+        "audited_at": "75f6579a25c52f42f8bd3aa8810bdf2d333d3a25"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/geometry_matching.json",
+        "git_blob": "127aee313c1fd76f8f97190985c46f0009a2fd1f",
+        "audited_at": "734188fcfcd061cc3b2df865073a05a4c74285b6"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/geometry_matching.py",
+        "git_blob": "06535f1004683b7ce6f919c02e439020c9911999",
+        "audited_at": "734188fcfcd061cc3b2df865073a05a4c74285b6"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/model.json",
+        "git_blob": "3be0196673138b5587675a5cd39189dd2cf8d7d3",
+        "audited_at": "386a880c8682d0b0367626f3c9d371a6f8975ca9"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/model.py",
+        "git_blob": "db0ec8ad882525ae6efb60ace65057f2175563bf",
+        "audited_at": "386a880c8682d0b0367626f3c9d371a6f8975ca9"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/original_ctp_gate.json",
+        "git_blob": "adf52376a5d348c03e9d11c7a936df2e989db465",
+        "audited_at": "2e1cacd3172185675c09659ba14a41f930cc4e92"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/original_ctp_gate.py",
+        "git_blob": "958e9f3e50c798428b2be36f21dd72cf6b2f9830",
+        "audited_at": "2e1cacd3172185675c09659ba14a41f930cc4e92"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/phase_diagram.json",
+        "git_blob": "619dced5ad5eb93b03dbf195e0acbaf1fa652007",
+        "audited_at": "386a880c8682d0b0367626f3c9d371a6f8975ca9"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/phase_diagram.py",
+        "git_blob": "20021b97978dc3ede45736814e44a74734cab51e",
+        "audited_at": "386a880c8682d0b0367626f3c9d371a6f8975ca9"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/positive_source.json",
+        "git_blob": "5dcbb0ba23cc043e08eef9f4297be68073e00955",
+        "audited_at": "386a880c8682d0b0367626f3c9d371a6f8975ca9"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/positive_source.py",
+        "git_blob": "b7a37baead579b3fafbd989babbebb6aba6dac0d",
+        "audited_at": "386a880c8682d0b0367626f3c9d371a6f8975ca9"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/review.json",
+        "git_blob": "ade0e737add3da161171fffc653dcbf1041dc566",
+        "audited_at": "05e0735a60f01f89addad19e10d7f9678abc633b"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/review.py",
+        "git_blob": "89b91fbd3f605b63019d367649d7862498f48391",
+        "audited_at": "05e0735a60f01f89addad19e10d7f9678abc633b"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/robustness.json",
+        "git_blob": "60ab0fca92a1907e15c7723a879391ae15e53d95",
+        "audited_at": "3b713f9b6e7b86df409527ad5b9455d1f4b14960"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/robustness.py",
+        "git_blob": "76187657bb798995f729cc70886e5a81a07fa7ae",
+        "audited_at": "386a880c8682d0b0367626f3c9d371a6f8975ca9"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/run_verification.py",
+        "git_blob": "a0317b20f44173e453fa2832cee6c8d9c67386dc",
+        "audited_at": "05e0735a60f01f89addad19e10d7f9678abc633b"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/source_observables.json",
+        "git_blob": "587ed0dfa170ebd99d1a4f7af8ee2512c18fc7f1",
+        "audited_at": "3b713f9b6e7b86df409527ad5b9455d1f4b14960"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/source_observables.py",
+        "git_blob": "9eea00a85086f46b01e4ea998dd6bab98559211f",
+        "audited_at": "386a880c8682d0b0367626f3c9d371a6f8975ca9"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/total_boundary_gate.json",
+        "git_blob": "d863a157769e8fac191f62bc9627db3b1446b41b",
+        "audited_at": "75f6579a25c52f42f8bd3aa8810bdf2d333d3a25"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/total_boundary_gate.py",
+        "git_blob": "85b923eb94084298fc4a7159fc6aff64e1e3541b",
+        "audited_at": "3cb785c6ad084b053beadcbef291a9b823bb1d23"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/volume_moments.json",
+        "git_blob": "d22353f8265583f4e48401efa95a792d088b7f7e",
+        "audited_at": "386a880c8682d0b0367626f3c9d371a6f8975ca9"
+      },
+      {
+        "path": "physics/qm/null_source/timelike/finite_stress/volume_moments.py",
+        "git_blob": "ca24d9f56aca539c5c040ff7d4c8588bebbc49a4",
+        "audited_at": "386a880c8682d0b0367626f3c9d371a6f8975ca9"
+      }
+    ],
+    "coverage_files": 57,
+    "all_covered": true
+  },
+  "closeout_delta": {
+    "scientific_code_proofs_and_result_values_changed": false,
+    "readme_editorial_replacement": {
+      "from": "约束约束荷",
+      "to": "约束荷",
+      "occurrences": 2
+    },
+    "metadata_written_by_root": [
+      "AUDIT.md",
+      "agent_reviews.json",
+      "ci_checkpoints.json",
+      "SESSION.md",
+      "verification.json"
+    ],
+    "scope": "Metadata and two README-only repeated-word corrections; final immutable CI is reported in the PR and final response after it completes."
+  }
+}

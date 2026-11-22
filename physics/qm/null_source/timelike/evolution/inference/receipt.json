@@ -1,0 +1,677 @@
+{
+  "schema": 1,
+  "status": "conditional_identification_not_experiment",
+  "source_sha256": {
+    "instrument/instrument.py": "99c3507fe65d294fa278fc4284b9e1f66400f1b2645fbf0ddacad123fd56dd61",
+    "continuation/SOURCE.md": "b9387acfdbf6f4ca2efdb2869cbfd496257292dafe511c5f1b5dea48e3745cd9",
+    "continuation/quantum/minimal_response.py": "286d018dab3d448ceb1b7b8ebc0ec1592875249bcd1036ecf58289af5347037b"
+  },
+  "coefficient_order": [
+    "epsilon_nine_mode",
+    "u_combined_stiff_density_A_over_27",
+    "v_effective_finite_curvature_6alpha"
+  ],
+  "row_normalization": "rho=(Gnn/2); E=(Rnn/2); 4*pi*G=1; baseline and reference subtracted before averaging",
+  "supports_eta_background_labels": [
+    [
+      0.03125,
+      0.0625
+    ],
+    [
+      0.15625,
+      0.1875
+    ]
+  ],
+  "new_geometry_contract_required": true,
+  "finite_hbar_remainder_bound_proved": false,
+  "dynamic_reference_window_error_proved_here": false,
+  "symbolic_checks": {
+    "conservation_three_basis_functions": true,
+    "H1_density_AE_and_DF_agree": true,
+    "H1_density": "6*(4*c^2-3)/c^6",
+    "H1_SEC": "18*(4*c^2-5)/c^6",
+    "H1_trace_AE_rho_minus_3p": "-48*(2*c^2-3)/c^6",
+    "finite_curvature_effective_coefficients": [
+      "1",
+      "1/3",
+      "1/3"
+    ],
+    "density_curvature_Wronskian_after_dividing_by_stiff": "10*(c**2 - 3)*(4*c**2 - 3)/c**4",
+    "SEC_curvature_Wronskian_after_dividing_by_stiff": "-20*(4*c**2 - 21)/c**2"
+  },
+  "known_stiff_two_density_windows": {
+    "calibration_contract": "u known exactly; bounded u error adds the recorded sensitivity",
+    "coefficient_order": [
+      "epsilon",
+      "v_6alpha"
+    ],
+    "rows": [
+      "rho_1",
+      "rho_2"
+    ],
+    "matrix": [
+      [
+        0.5067236970633353,
+        0.9905635684648527
+      ],
+      [
+        0.591528400159933,
+        0.7822491961512037
+      ]
+    ],
+    "condition_2_column_normalized": 10.275134685535358,
+    "epsilon_weights": [
+      -4.1266079070629615,
+      5.225531038175007
+    ],
+    "epsilon_error_gain_l1": 9.352138945237968,
+    "stiff_calibration_error_sensitivity": 2.081160877836843,
+    "determinant_interval": [
+      -0.18956726852324784,
+      -0.1895572879059861
+    ],
+    "epsilon_weight_intervals": [
+      [
+        -4.1267270210925275,
+        -4.126488799224696
+      ],
+      [
+        5.225380206285731,
+        5.2256818779046394
+      ]
+    ],
+    "epsilon_equal_row_error_gain_upper": 9.352408898997167,
+    "stiff_calibration_error_sensitivity_upper": 2.081488945844655,
+    "unit_gap_midpoint_total_row_error_max": 0.05346216203759157
+  },
+  "smooth_full_windows": {
+    "matrix_row_order": [
+      "rho_1",
+      "E_1",
+      "rho_2",
+      "E_2"
+    ],
+    "matrix": [
+      [
+        0.5067236970633353,
+        1.0135335606329967,
+        0.9905635684648527
+      ],
+      [
+        0.9955318236567151,
+        2.0270671212659934,
+        -3.191887142438812
+      ],
+      [
+        0.591528400159933,
+        1.198656449930146,
+        0.7822491961512037
+      ],
+      [
+        0.9414247778114464,
+        2.397312899860292,
+        -6.27545356432912
+      ]
+    ],
+    "condition_2_column_normalized_four_rows": 34.89905010145487,
+    "three_row_options": [
+      {
+        "omitted_row": 0,
+        "used_rows": [
+          1,
+          2,
+          3
+        ],
+        "determinant": -1.2624133678158906,
+        "condition_2_column_normalized": 36.18415277947709,
+        "epsilon_weights": [
+          7.444003065507271,
+          -4.015177198722049,
+          -4.286747807693901
+        ],
+        "epsilon_error_gain_l1": 15.745928071923222,
+        "all_parameters_inverse_norm_inf": 15.745928071923222,
+        "heldout_prediction_weights": [
+          -0.026737035055303622,
+          0.9439408964885101,
+          -0.026583729899744224
+        ],
+        "heldout_residual_equal_error_gain": 1.997261661443558
+      },
+      {
+        "omitted_row": 1,
+        "used_rows": [
+          0,
+          2,
+          3
+        ],
+        "determinant": 0.033753190469577615,
+        "condition_2_column_normalized": 1118.0249825525148,
+        "epsilon_weights": [
+          -278.41542826681734,
+          258.7925317556899,
+          -11.688068352660464
+        ],
+        "epsilon_error_gain_l1": 548.8960283751677,
+        "all_parameters_inverse_norm_inf": 548.8960283751677,
+        "heldout_prediction_weights": [
+          -37.401304891569794,
+          35.304621269188445,
+          -0.9942661871354583
+        ],
+        "heldout_residual_equal_error_gain": 74.70019234789369
+      },
+      {
+        "omitted_row": 2,
+        "used_rows": [
+          0,
+          1,
+          3
+        ],
+        "determinant": 1.1916436061552111,
+        "condition_2_column_normalized": 35.95329791009437,
+        "epsilon_weights": [
+          -4.253631995031295,
+          7.330273557743757,
+          -4.399825211742719
+        ],
+        "epsilon_error_gain_l1": 15.983730764517771,
+        "all_parameters_inverse_norm_inf": 15.983730764517771,
+        "heldout_prediction_weights": [
+          1.0593883618349744,
+          0.028324903767563855,
+          0.028162494069952092
+        ],
+        "heldout_residual_equal_error_gain": 2.11587575967249
+      },
+      {
+        "omitted_row": 3,
+        "used_rows": [
+          0,
+          1,
+          2
+        ],
+        "determinant": 0.033559655991843185,
+        "condition_2_column_normalized": 621.0620091674258,
+        "epsilon_weights": [
+          161.25456524952386,
+          11.755472029411614,
+          -156.22995608322256
+        ],
+        "epsilon_error_gain_l1": 329.23999336215803,
+        "all_parameters_inverse_norm_inf": 329.23999336215803,
+        "heldout_prediction_weights": [
+          -37.616993693937985,
+          -1.005766879069973,
+          35.50821875065846
+        ],
+        "heldout_residual_equal_error_gain": 75.13097932366642
+      }
+    ],
+    "two_density_rank": 2,
+    "two_density_nuisance_determinant": -0.39450959732878854,
+    "two_density_null_direction_epsilon_one": [
+      1.0,
+      -0.4805010562371318,
+      -0.019907607421864374
+    ],
+    "two_density_null_residual": [
+      -2.42861286636753e-17,
+      1.214306433183765e-17
+    ],
+    "false_alpha_zero_fit_bias_per_unit_v": [
+      50.23205344614771,
+      -24.13655473783405
+    ],
+    "independently_known_u_epsilon_gain": 9.352138945237968
+  },
+  "polynomial_full_windows_diagnostic": {
+    "matrix_row_order": [
+      "rho_1",
+      "E_1",
+      "rho_2",
+      "E_2"
+    ],
+    "matrix": [
+      [
+        0.506712373055859,
+        1.013510106688574,
+        0.9905831326239308
+      ],
+      [
+        0.9955392401913135,
+        2.027020213377148,
+        -3.191535873549641
+      ],
+      [
+        0.5915149513269624,
+        1.1986159258395195,
+        0.7823657305469697
+      ],
+      [
+        0.9414317912581996,
+        2.397231851679039,
+        -6.274372799630179
+      ]
+    ],
+    "condition_2_column_normalized_four_rows": 34.89559028402417,
+    "three_row_options": [
+      {
+        "omitted_row": 0,
+        "used_rows": [
+          1,
+          2,
+          3
+        ],
+        "determinant": -1.2623346240455007,
+        "condition_2_column_normalized": 36.18037810475016,
+        "epsilon_weights": [
+          7.4434108296166634,
+          -4.014331020268361,
+          -4.286737266743925
+        ],
+        "epsilon_error_gain_l1": 15.74447911662895,
+        "all_parameters_inverse_norm_inf": 15.74447911662895,
+        "heldout_prediction_weights": [
+          -0.02675209828340599,
+          0.9439432787777573,
+          -0.026567432903202643
+        ],
+        "heldout_residual_equal_error_gain": 1.997262809964366
+      },
+      {
+        "omitted_row": 1,
+        "used_rows": [
+          0,
+          2,
+          3
+        ],
+        "determinant": 0.0337700999290108,
+        "condition_2_column_normalized": 1117.2737114714935,
+        "epsilon_weights": [
+          -278.23652375836184,
+          258.6251654919248,
+          -11.678767442914618
+        ],
+        "epsilon_error_gain_l1": 548.5404566932012,
+        "all_parameters_inverse_norm_inf": 548.5404566932012,
+        "heldout_prediction_weights": [
+          -37.38024544490866,
+          35.284831446784374,
+          -0.9930971627628659
+        ],
+        "heldout_residual_equal_error_gain": 74.6581740544559
+      },
+      {
+        "omitted_row": 2,
+        "used_rows": [
+          0,
+          1,
+          3
+        ],
+        "determinant": 1.1915722839361969,
+        "condition_2_column_normalized": 35.949180179525236,
+        "epsilon_weights": [
+          -4.2527248305281935,
+          7.3296415169780955,
+          -4.3997212483347665
+        ],
+        "epsilon_error_gain_l1": 15.982087595841055,
+        "all_parameters_inverse_norm_inf": 15.982087595841055,
+        "heldout_prediction_weights": [
+          1.059385688189684,
+          0.02834079005048315,
+          0.0281451581895929
+        ],
+        "heldout_residual_equal_error_gain": 2.11587163642976
+      },
+      {
+        "omitted_row": 3,
+        "used_rows": [
+          0,
+          1,
+          2
+        ],
+        "determinant": 0.03353699042571846,
+        "condition_2_column_normalized": 621.423442367372,
+        "epsilon_weights": [
+          161.35308527408174,
+          11.759944425199588,
+          -156.322491374792
+        ],
+        "epsilon_error_gain_l1": 329.43552107407334,
+        "all_parameters_inverse_norm_inf": 329.43552107407334,
+        "heldout_prediction_weights": [
+          -37.64006871282798,
+          -1.006950817599706,
+          35.530089874206894
+        ],
+        "heldout_residual_equal_error_gain": 75.17710940463459
+      }
+    ],
+    "two_density_rank": 2,
+    "two_density_nuisance_determinant": -0.39439314359490085,
+    "two_density_null_direction_epsilon_one": [
+      1.0,
+      -0.48051123766739023,
+      -0.01989674228584523
+    ],
+    "two_density_null_residual": [
+      -1.0408340855860843e-17,
+      -2.0816681711721685e-17
+    ],
+    "false_alpha_zero_fit_bias_per_unit_v": [
+      50.259483971474786,
+      -24.150246847657712
+    ],
+    "independently_known_u_epsilon_gain": 9.355420321828174
+  },
+  "point_centers_diagnostic": {
+    "matrix_row_order": [
+      "rho_1",
+      "E_1",
+      "rho_2",
+      "E_2"
+    ],
+    "matrix": [
+      [
+        0.5066063390016061,
+        1.0132904948509704,
+        0.9907663080582364
+      ],
+      [
+        0.9956086864580017,
+        2.026580989701941,
+        -3.188246837557239
+      ],
+      [
+        0.5913890214978249,
+        1.1982364803524321,
+        0.783456822970529
+      ],
+      [
+        0.9414974631278811,
+        2.3964729607048643,
+        -6.264253508172719
+      ]
+    ],
+    "condition_2_column_normalized_four_rows": 34.8632368560119,
+    "three_row_options": [
+      {
+        "omitted_row": 0,
+        "used_rows": [
+          1,
+          2,
+          3
+        ],
+        "determinant": -1.2615960402427318,
+        "condition_2_column_normalized": 36.14507408965962,
+        "epsilon_weights": [
+          7.43787224157065,
+          -4.006409004823225,
+          -4.286643426506955
+        ],
+        "epsilon_error_gain_l1": 15.73092467290083,
+        "all_parameters_inverse_norm_inf": 15.73092467290083,
+        "heldout_prediction_weights": [
+          -0.02689308620593237,
+          0.9439652986490691,
+          -0.026414712769863225
+        ],
+        "heldout_residual_equal_error_gain": 1.9972730976248645
+      },
+      {
+        "omitted_row": 1,
+        "used_rows": [
+          0,
+          2,
+          3
+        ],
+        "determinant": 0.03392821106731122,
+        "condition_2_column_normalized": 1110.283476790392,
+        "epsilon_weights": [
+          -276.57191088503123,
+          257.06787745170885,
+          -11.59221101274736
+        ],
+        "epsilon_error_gain_l1": 545.2319993494875,
+        "all_parameters_inverse_norm_inf": 545.2319993494875,
+        "heldout_prediction_weights": [
+          -37.18427823205354,
+          35.1006683063705,
+          -0.9822120290543842
+        ],
+        "heldout_residual_equal_error_gain": 74.26715856747842
+      },
+      {
+        "omitted_row": 2,
+        "used_rows": [
+          0,
+          1,
+          3
+        ],
+        "determinant": 1.1909028829022124,
+        "condition_2_column_normalized": 35.91067199413943,
+        "epsilon_weights": [
+          -4.244233353235438,
+          7.323731708123995,
+          -4.398753631460944
+        ],
+        "epsilon_error_gain_l1": 15.966718692820379,
+        "all_parameters_inverse_norm_inf": 15.966718692820379,
+        "heldout_prediction_weights": [
+          1.0593609759078257,
+          0.028489486048289853,
+          0.027982715898207444
+        ],
+        "heldout_residual_equal_error_gain": 2.115833177854323
+      },
+      {
+        "omitted_row": 3,
+        "used_rows": [
+          0,
+          1,
+          2
+        ],
+        "determinant": 0.033324697034608726,
+        "condition_2_column_normalized": 624.8329399959521,
+        "epsilon_weights": [
+          162.28241676727833,
+          11.802147265400114,
+          -157.19537901403967
+        ],
+        "epsilon_error_gain_l1": 331.27994304671813,
+        "all_parameters_inverse_norm_inf": 331.27994304671813,
+        "heldout_prediction_weights": [
+          -37.857689716804124,
+          -1.0181101131114527,
+          35.73634537968676
+        ],
+        "heldout_residual_equal_error_gain": 75.61214520960235
+      }
+    ],
+    "two_density_rank": 2,
+    "two_density_nuisance_determinant": -0.39330298197729824,
+    "two_density_null_direction_epsilon_one": [
+      1.0,
+      -0.4806068940905068,
+      -0.019794719804597728
+    ],
+    "two_density_null_residual": [
+      2.42861286636753e-17,
+      8.673617379884035e-18
+    ],
+    "false_alpha_zero_fit_bias_per_unit_v": [
+      50.51852260963723,
+      -24.279550245458797
+    ],
+    "independently_known_u_epsilon_gain": 9.386225883810688
+  },
+  "point_replacement_matrix_bias": [
+    [
+      0.00011735806172918917,
+      0.00024306578202626383,
+      -0.00020273959338368286
+    ],
+    [
+      -7.68628012866035e-05,
+      0.00048613156405252766,
+      -0.0036403048815731864
+    ],
+    [
+      0.0001393786621081139,
+      0.00041996957771384125,
+      -0.0012076268193252915
+    ],
+    [
+      -7.268531643467302e-05,
+      0.0008399391554276825,
+      -0.011200056156400962
+    ]
+  ],
+  "certified_smooth_selected_design": {
+    "method": "interval midpoint + second derivative remainder + monotone endpoint-cell enclosure",
+    "cells": 1024,
+    "iv_decimal_digits": 35,
+    "normalization_integral_q": [
+      0.22199662615056903,
+      0.2219971900175104
+    ],
+    "matrix_intervals": [
+      [
+        [
+          0.5067224096911722,
+          0.5067249844387681
+        ],
+        [
+          1.0135309856501087,
+          1.0135361356224248
+        ],
+        [
+          0.9905610527010313,
+          0.990566084235064
+        ]
+      ],
+      [
+        [
+          0.995529295164283,
+          0.9955343521555694
+        ],
+        [
+          2.0270619713002174,
+          2.0270722712448497
+        ],
+        [
+          -3.1918952598754187,
+          -3.191879025022823
+        ]
+      ],
+      [
+        [
+          0.5915268971640356,
+          0.5915299031596479
+        ],
+        [
+          1.1986534039117567,
+          1.1986594959562717
+        ],
+        [
+          0.7822472102608026,
+          0.7822511820466488
+        ]
+      ],
+      [
+        [
+          0.9414223866522683,
+          0.941427168976698
+        ],
+        [
+          2.3973068078235134,
+          2.3973189919125435
+        ],
+        [
+          -6.275469544429763,
+          -6.275437584269066
+        ]
+      ]
+    ],
+    "selected_rows": [
+      1,
+      2,
+      3
+    ],
+    "selected_determinant": [
+      -1.2625971393371054,
+      -1.2622295965542167
+    ],
+    "epsilon_weight_intervals": [
+      [
+        7.442881732579332,
+        7.445124723612776
+      ],
+      [
+        -4.015843868624656,
+        -4.014510722166031
+      ],
+      [
+        -4.287393718540731,
+        -4.286102084101615
+      ]
+    ],
+    "epsilon_equal_absolute_error_gain_upper": 15.748362310778163,
+    "heldout_prediction_weight_intervals": [
+      [
+        -0.027905873324694432,
+        -0.02556820063966071
+      ],
+      [
+        0.9431019285533501,
+        0.9447799089060749
+      ],
+      [
+        -0.027254710241200922,
+        -0.02591274792161392
+      ]
+    ],
+    "heldout_residual_equal_error_gain_upper": 1.9999404924719704,
+    "unit_gap_midpoint_classification_total_row_error_max": 0.031749333050192806
+  },
+  "additional_third_density_window": {
+    "support": [
+      0.21875,
+      0.25
+    ],
+    "additional_radius_time_trigger_required": true,
+    "matrix": [
+      [
+        0.5067236970633353,
+        1.0135335606329967,
+        0.9905635684648527
+      ],
+      [
+        0.591528400159933,
+        1.198656449930146,
+        0.7822491961512037
+      ],
+      [
+        0.6750067649385884,
+        1.409009780841297,
+        0.3609207034477417
+      ]
+    ],
+    "condition_2_column_normalized": 859.8695937091743,
+    "epsilon_weights": [
+      -184.30232619405135,
+      283.4843189984141,
+      -108.58953330313089
+    ],
+    "epsilon_error_gain_l1": 576.3761784955964
+  },
+  "negative_controls": {
+    "two_density_epsilon_direction_hidden_by_nuisances": true,
+    "false_alpha_zero_can_create_false_nine_mode_signal": true,
+    "point_centers_are_not_full_window_coefficients": true,
+    "geometry_does_not_separate_classical_P_squared_and_zero_mode_variance": true,
+    "no_old_Ramsey_output_relabelled_as_geometry": true
+  }
+}

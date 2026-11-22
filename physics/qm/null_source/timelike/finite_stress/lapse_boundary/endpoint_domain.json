@@ -1,0 +1,79 @@
+{
+  "actual_state_variance_QK_over_K_limit": "1/4",
+  "arbitrary_scalar_rephasing_cannot_repair_strong_Cauchy": true,
+  "c_number_subtraction_cannot_repair_GNS_L2": true,
+  "finite_static_tail_examples": [
+    {
+      "K": 16,
+      "L": 32,
+      "certified_error_bound": [
+        0.006249999999999999,
+        0.00625
+      ],
+      "leading": [
+        -1.0000000000000002,
+        -0.9999999999999999
+      ],
+      "log_squared_tail_overlap": [
+        -1.0018093374201422,
+        -1.0018093374201418
+      ],
+      "static_kappa": "1/2"
+    },
+    {
+      "K": 64,
+      "L": 128,
+      "certified_error_bound": [
+        0.0015624999999999997,
+        0.0015625
+      ],
+      "leading": [
+        -4.000000000000001,
+        -3.9999999999999996
+      ],
+      "log_squared_tail_overlap": [
+        -4.000467576581256,
+        -4.000467576581254
+      ],
+      "static_kappa": "1/2"
+    },
+    {
+      "K": 256,
+      "L": 512,
+      "certified_error_bound": [
+        0.0003906249999999999,
+        0.000390625
+      ],
+      "leading": [
+        -16.000000000000004,
+        -15.999999999999998
+      ],
+      "log_squared_tail_overlap": [
+        -16.000117910703203,
+        -16.000117910703196
+      ],
+      "static_kappa": "1/2"
+    }
+  ],
+  "full_joint_Einstein_CTP_device_solution": false,
+  "geometry_ODE_integrations": 0,
+  "mode_ODE_integrations": 0,
+  "new_geometry_RSET_divergence_claimed": false,
+  "old_scientific_modules_imported_or_executed": 0,
+  "schema": "ueot-lapse-boundary-endpoint_domain/1",
+  "smooth_charge_limit_taken_after_finite_endpoint_cancellation": true,
+  "source_sha256": {
+    "physics/qm/null_source/timelike/finite_stress/DYNAMIC_CHARGE.md": "59be9797716e6667390e37f26089957db922bb295915dfe6917ecccd4231c5bd",
+    "physics/qm/null_source/timelike/finite_stress/FINITE_SLICE_UV.md": "de2e8e6074dab75b2cc8d8d6755447148a8b3da46b1f057394c902e46d89ca6c",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/ENDPOINT_DOMAIN.md": "161523626d4527dc07e27fea763905c9e1fe13cd5401d35f15dd0ae4e790540f",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/common.py": "1bab96cdf3e29965404970a44d2cad6530a552a54b8c79ae971ca8e97f63a956",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/endpoint_domain.py": "7b652ef7966a7ab0c04e0413920183f7a2eedd2bed1cfaebf9dc21e486e843f8"
+  },
+  "static_active_kick_energy_over_K_squared_limit": "kappa^2/(4A)",
+  "static_active_kick_number_over_K_limit": "kappa^2/2",
+  "status": "PASS",
+  "strong_limit_exclusion_is_for_declared_Fock_identification": true,
+  "tail_overlap_log_per_added_shell_limit": "-kappa^2/4",
+  "verification_kind": "new symbolic/exact or outward interval checks; analytic proofs separately stated",
+  "whole_physical_unification": "OPEN"
+}

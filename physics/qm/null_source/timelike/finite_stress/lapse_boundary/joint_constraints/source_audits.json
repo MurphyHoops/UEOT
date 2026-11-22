@@ -1,0 +1,806 @@
+{
+  "final_audit_complete": true,
+  "findings": [
+    {
+      "commit": "29ef032c2bf4cd4430edc3270ea164fbcb5e8ecc",
+      "file": "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/STATIC_RESPONSE.md",
+      "finding": "Constant K1 makes only the geometric linear momentum row vanish; full row additionally needs the matter momentum response.",
+      "fix": "Distinguished the geometric row from the full constraint; added the actual-history Hadamard-data boundary.",
+      "id": "JC1-A-001",
+      "resolution_commit": "f43725d881d6937d30b5bcb2970d76e4b5ad122d",
+      "resolution_reviewers": [
+        "/root/a_outside_evolution",
+        "/root/b_preparation_domains",
+        "/root/c_record_stress"
+      ],
+      "reviewer": "/root/a_outside_evolution",
+      "severity": "scope wording",
+      "status": "RESOLVED"
+    },
+    {
+      "commit": "f43725d881d6937d30b5bcb2970d76e4b5ad122d",
+      "file": "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/METRIC_DOMAINS.md",
+      "finding": "Equation (4) must identify the quadratic Hamiltonian only; the scalar counterterm Ward identity was not proved by it.",
+      "fix": "Added quad superscript and explicit canonical coefficient-matrix compression convention.",
+      "id": "JC2-B-001",
+      "resolution_commit": "0d641570b10aed0b0cee95b2e09dff200d0a5da9",
+      "resolution_reviewers": [
+        "/root/a_outside_evolution",
+        "/root/b_preparation_domains",
+        "/root/c_record_stress"
+      ],
+      "reviewer": "/root/b_preparation_domains",
+      "severity": "scope notation",
+      "status": "RESOLVED"
+    },
+    {
+      "commit": "0d641570b10aed0b0cee95b2e09dff200d0a5da9",
+      "file": "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SOURCE_HESSIAN.md",
+      "finding": "Ambiguous trace-square notation and missing minus-one-half wording for the real vacuum amplitude coefficient; displayed formulas correct.",
+      "fix": "Explicit Tr[(M^2)^2] versus (Tr M^2)^2; corrected coefficient description.",
+      "id": "JC3-B-001",
+      "resolution_commit": "f9f6b108c61ad0ac910c6a7bd1f3fd19b7914130",
+      "resolution_reviewers": [
+        "/root/a_outside_evolution",
+        "/root/b_preparation_domains",
+        "/root/c_record_stress"
+      ],
+      "reviewer": "/root/b_preparation_domains",
+      "severity": "scope wording or document identity",
+      "status": "RESOLVED"
+    },
+    {
+      "commit": "0d641570b10aed0b0cee95b2e09dff200d0a5da9",
+      "file": "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/LAPSE_HISTORY.md",
+      "finding": "Three lapse document identifiers duplicated earlier source/record identifiers.",
+      "fix": "Lapse history/curvature/phase numbered JC15/JC16/JC17.",
+      "id": "JC3-C-001",
+      "resolution_commit": "f9f6b108c61ad0ac910c6a7bd1f3fd19b7914130",
+      "resolution_reviewers": [
+        "/root/a_outside_evolution",
+        "/root/b_preparation_domains",
+        "/root/c_record_stress"
+      ],
+      "reviewer": "/root/c_record_stress",
+      "severity": "scope wording or document identity",
+      "status": "RESOLVED"
+    },
+    {
+      "commit": "0d641570b10aed0b0cee95b2e09dff200d0a5da9",
+      "file": "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/CLOCK_ACTUATOR.md",
+      "finding": "Every transfer smearing exceeded the established second-moment domain.",
+      "fix": "Restricted statement to transfer operators and second moments defined on the declared state/domain; initial positive variance retained.",
+      "id": "JC3-C-002",
+      "resolution_commit": "f9f6b108c61ad0ac910c6a7bd1f3fd19b7914130",
+      "resolution_reviewers": [
+        "/root/a_outside_evolution",
+        "/root/b_preparation_domains",
+        "/root/c_record_stress"
+      ],
+      "reviewer": "/root/c_record_stress",
+      "severity": "scope wording or document identity",
+      "status": "RESOLVED"
+    },
+    {
+      "commit": "f9f6b108c61ad0ac910c6a7bd1f3fd19b7914130",
+      "file": "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/TOTAL_COLUMNS.md",
+      "finding": "General finite-K controller equations omitted the common RHS P_K projector.",
+      "fix": "Inserted P_K and stated contraction/commutation so constants and l1 response remain valid.",
+      "id": "JC4-C-001",
+      "resolution_commit": "64ac74d66696d2cdadf4868fe76046444e80f29f",
+      "resolution_reviewers": [
+        "/root/a_outside_evolution",
+        "/root/b_preparation_domains",
+        "/root/c_record_stress"
+      ],
+      "reviewer": "/root/c_record_stress",
+      "severity": "finite-cutoff equation or parameter quantifier",
+      "status": "RESOLVED"
+    },
+    {
+      "commit": "f9f6b108c61ad0ac910c6a7bd1f3fd19b7914130",
+      "file": "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/TOTAL_COLUMNS.md",
+      "finding": "For variable smaller eta the same fixed g must satisfy both inverse threshold and the contrast inequality.",
+      "fix": "Replaced the ambiguous OR with an AND and explicitly fixed g once for all programs and both code signs.",
+      "id": "JC4-C-002",
+      "resolution_commit": "64ac74d66696d2cdadf4868fe76046444e80f29f",
+      "resolution_reviewers": [
+        "/root/a_outside_evolution",
+        "/root/b_preparation_domains",
+        "/root/c_record_stress"
+      ],
+      "reviewer": "/root/c_record_stress",
+      "severity": "finite-cutoff equation or parameter quantifier",
+      "status": "RESOLVED"
+    },
+    {
+      "commit": "64ac74d66696d2cdadf4868fe76046444e80f29f",
+      "file": "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/UNIFICATION_PROGRESS_ZH.md",
+      "finding": "Fewster--Verch assumes a bounded spacetime coupling region, not a bounded interaction operator; the summary now has three restricted results.",
+      "fix": "Clarified the coupling region and used these restricted results; added the precise perturbative-literature/Core inheritance boundary.",
+      "id": "JC5-B-001",
+      "resolution_commit": "282179835ceddd44ba8f6a5a94d632bc020d7fd7",
+      "resolution_reviewers": [
+        "/root/a_outside_evolution",
+        "/root/b_preparation_domains",
+        "/root/c_record_stress"
+      ],
+      "reviewer": "/root/b_preparation_domains",
+      "severity": "nonblocking literature wording",
+      "status": "RESOLVED"
+    }
+  ],
+  "native_read_only_agents": 3,
+  "records": [
+    {
+      "checkpoint": "JC1",
+      "commit": "29ef032c2bf4cd4430edc3270ea164fbcb5e8ecc",
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/CONTRACT.md": "0e9d57451d35286f11c03ccc50a1c3d0faea40c9919e08e8d4d0a45a41dcf615",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/GROUND_DATUM.md": "a998443afb8b58947ea97c142c6bea0aa0ae26cd32381cc5e0c48888e4b7a81b",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/METRIC_RESPONSE.md": "b1433e9cb2137781a9c5bba1da671fe9598798db43ae96568eec4f99a51288da",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/README.md": "636713781a5e76d9a7036ed93f9f0dbaa2135cce38e8b9603cd219af472d60a6",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/STATIC_RESPONSE.md": "575932e4a3855aa5a84b7b811e7d7035a0b922b6a19ac8bee52526b1b3c14561",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/common.py": "4b0b90e5fd8e4f1b1a3d432811ceafb26b31abf01a12e2a269edac941ee2be0f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/ground_datum.json": "3de754cbea151de5378aeafc943c09503a88c9c1ee100f263a991aa69f5136f5",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/ground_datum.py": "5622ec92bb8dd35b4835d92e71b0e48fb5ecd1816b649fd6fd4d0ef4ca02f82c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/metric_response.json": "a4fc385771d9fa9ed13886d006086cfbac908f84c9824a8b48fcb339e246df11",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/metric_response.py": "b1db341009566789a9be54fd233d52d975fac396597cd344ae4904bf70818ab8",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/review.py": "449b217c2c80a531bed6ae16ce5883e756e0d70a32c65e4aa6f2e8d12b0b0a29",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/run_verification.py": "772bdbfe66f048257eb694d01d9c10ba27bf5883c46db37519ff6cbe65a7a829",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/static_response.json": "382781758f9914e1a63aa683476dce8f221393ea1c59d982a48137b42382d541",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/static_response.py": "7f87a083cb66cea7ce01bda1ac6ab93c94de09911cffe589b6db0225fd33ceea"
+      },
+      "finding_ids": [
+        "JC1-A-001"
+      ],
+      "read_scope": "14 full files at the immutable commit; no scientific execution",
+      "reviewer": "/root/a_outside_evolution",
+      "status": "FINDINGS"
+    },
+    {
+      "checkpoint": "JC1",
+      "commit": "29ef032c2bf4cd4430edc3270ea164fbcb5e8ecc",
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/CONTRACT.md": "0e9d57451d35286f11c03ccc50a1c3d0faea40c9919e08e8d4d0a45a41dcf615",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/GROUND_DATUM.md": "a998443afb8b58947ea97c142c6bea0aa0ae26cd32381cc5e0c48888e4b7a81b",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/METRIC_RESPONSE.md": "b1433e9cb2137781a9c5bba1da671fe9598798db43ae96568eec4f99a51288da",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/README.md": "636713781a5e76d9a7036ed93f9f0dbaa2135cce38e8b9603cd219af472d60a6",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/STATIC_RESPONSE.md": "575932e4a3855aa5a84b7b811e7d7035a0b922b6a19ac8bee52526b1b3c14561",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/common.py": "4b0b90e5fd8e4f1b1a3d432811ceafb26b31abf01a12e2a269edac941ee2be0f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/ground_datum.json": "3de754cbea151de5378aeafc943c09503a88c9c1ee100f263a991aa69f5136f5",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/ground_datum.py": "5622ec92bb8dd35b4835d92e71b0e48fb5ecd1816b649fd6fd4d0ef4ca02f82c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/metric_response.json": "a4fc385771d9fa9ed13886d006086cfbac908f84c9824a8b48fcb339e246df11",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/metric_response.py": "b1db341009566789a9be54fd233d52d975fac396597cd344ae4904bf70818ab8",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/review.py": "449b217c2c80a531bed6ae16ce5883e756e0d70a32c65e4aa6f2e8d12b0b0a29",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/run_verification.py": "772bdbfe66f048257eb694d01d9c10ba27bf5883c46db37519ff6cbe65a7a829",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/static_response.json": "382781758f9914e1a63aa683476dce8f221393ea1c59d982a48137b42382d541",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/static_response.py": "7f87a083cb66cea7ce01bda1ac6ab93c94de09911cffe589b6db0225fd33ceea"
+      },
+      "finding_ids": [],
+      "read_scope": "14 full files at the immutable commit; no scientific execution",
+      "reviewer": "/root/b_preparation_domains",
+      "status": "PASS"
+    },
+    {
+      "checkpoint": "JC1",
+      "commit": "29ef032c2bf4cd4430edc3270ea164fbcb5e8ecc",
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/CONTRACT.md": "0e9d57451d35286f11c03ccc50a1c3d0faea40c9919e08e8d4d0a45a41dcf615",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/GROUND_DATUM.md": "a998443afb8b58947ea97c142c6bea0aa0ae26cd32381cc5e0c48888e4b7a81b",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/METRIC_RESPONSE.md": "b1433e9cb2137781a9c5bba1da671fe9598798db43ae96568eec4f99a51288da",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/README.md": "636713781a5e76d9a7036ed93f9f0dbaa2135cce38e8b9603cd219af472d60a6",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/STATIC_RESPONSE.md": "575932e4a3855aa5a84b7b811e7d7035a0b922b6a19ac8bee52526b1b3c14561",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/common.py": "4b0b90e5fd8e4f1b1a3d432811ceafb26b31abf01a12e2a269edac941ee2be0f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/ground_datum.json": "3de754cbea151de5378aeafc943c09503a88c9c1ee100f263a991aa69f5136f5",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/ground_datum.py": "5622ec92bb8dd35b4835d92e71b0e48fb5ecd1816b649fd6fd4d0ef4ca02f82c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/metric_response.json": "a4fc385771d9fa9ed13886d006086cfbac908f84c9824a8b48fcb339e246df11",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/metric_response.py": "b1db341009566789a9be54fd233d52d975fac396597cd344ae4904bf70818ab8",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/review.py": "449b217c2c80a531bed6ae16ce5883e756e0d70a32c65e4aa6f2e8d12b0b0a29",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/run_verification.py": "772bdbfe66f048257eb694d01d9c10ba27bf5883c46db37519ff6cbe65a7a829",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/static_response.json": "382781758f9914e1a63aa683476dce8f221393ea1c59d982a48137b42382d541",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/static_response.py": "7f87a083cb66cea7ce01bda1ac6ab93c94de09911cffe589b6db0225fd33ceea"
+      },
+      "finding_ids": [],
+      "read_scope": "14 full files at the immutable commit; no scientific execution",
+      "reviewer": "/root/c_record_stress",
+      "status": "PASS"
+    },
+    {
+      "checkpoint": "JC2",
+      "commit": "f43725d881d6937d30b5bcb2970d76e4b5ad122d",
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/AUDIT.md": "c10bc87458c01799a352cdd7218b5a430b663f2e192675f886788816b912222c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/AUTONOMOUS_GATE.md": "c77fff7b45ae3fde9cd05166fdf7bf56681381ced5457e52f2bb9f1458403515",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/JOINT_PREPARATION.md": "3b965c763b39913b261ad156b22361ba1b0ccbcb01ae3ad4f99b541cccb018ab",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/LOCAL_PREPARATION.md": "a0eede8c17cc78db9cf7531357034a4cdcc5ccd7537c245afe93158c50ef273a",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/METRIC_DOMAINS.md": "9430e55fe004556730b892f35e607dc113da28a87ffb7813be43c7df7f1ccb95",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/README.md": "536471981cf17abdd2b4206e70a6e8eb513c8ab1c04ec0e46951735786d17d2f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SESSION.md": "7fff322613bb8a3e5945018de10de584fd1e4953a5cd7ee64d06f6d932cca3f5",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SHARP_CHARGES.md": "6006334a8bdddfef87845216bbb2984c97a9d0f4f0d3f7f4b6ceae36dbe72eef",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SOURCE_ACCOUNTING.md": "b6f6478cad4135a1cb5363fcd6ce6e8d64914ce9964349737cd175f22b1ecc10",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/STATIC_RESPONSE.md": "bc0b6a233b22bdbd225a9661ea981952e76d00791d23694aaeff532f15093322",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/autonomous_gate.json": "9756bfbf26d46d7194c374105a07eeb6c4d1aed7de3798c6ab6485d7d916737c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/autonomous_gate.py": "2242cb3c4864c2e50e71a8d27e68eadb8642e5ae14457fcc7cb9ca9c76c06500",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/joint_preparation.json": "75f76ba691d9848516de3e60e29b2d11d7d8d01c448e9efbdf22ffb142606504",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/joint_preparation.py": "2347aefb2242570e9eab08bc267b3e9e556940f84e4befe5dddb5e3b25bb85d2",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/local_preparation.json": "b4af898b056f6bc4573f44a23f9ff5e95e27260973dfb26c670738af51ebe7a1",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/local_preparation.py": "788c2d78d3052dfd132d9cad71d6e98558efd6707e693fff3a9bd49eb39909a8",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/metric_domains.json": "d19ff7f66a743eeaf16262303533df448b764028175bd8a664127ef6b0813f95",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/metric_domains.py": "0aa2c8ccc38834b29aeaf8c03e977d62c50c6c708400a29896fea462be7996e2",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/run_verification.py": "faa1146b454f64b29437b5e5e91c3dff3ace949b2ab05118b05316fbbf4fd369",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/sharp_charges.json": "20e0fcfa2b750b73499e820b613a0237664482a3079612a47b6bcc29f5618637",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/sharp_charges.py": "1505bc5bbcd5a65a3f81a1ff9b8eb990dd1e448ed7eec7d3bea4e96e1b1b7991",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_accounting.json": "ec197dc79a0cc12e926609ab2f0a2c9cb22f3eea205f5de73e9deb0c50556dad",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_accounting.py": "dbae2186a4febc3545d530a51f34e3c35fbdeffc647ec63cc27338ecc3bd7fea",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_audits.json": "a7536a0f5bfb5e6e656d39caa127245e4866b03592788f31ea894684fcb9bf12",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/static_response.json": "08503a10afce58d8cb32e302d8a4d4f4181821374955aa7ff5426ed81d8f55d1"
+      },
+      "finding_ids": [
+        "JC2-B-001"
+      ],
+      "read_scope": "25 full files at the immutable commit; additional hash-only dependencies not counted; no scientific execution",
+      "resolved_finding_ids": [
+        "JC1-A-001"
+      ],
+      "reviewer": "/root/a_outside_evolution",
+      "status": "FINDINGS"
+    },
+    {
+      "checkpoint": "JC2",
+      "commit": "f43725d881d6937d30b5bcb2970d76e4b5ad122d",
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/AUDIT.md": "c10bc87458c01799a352cdd7218b5a430b663f2e192675f886788816b912222c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/AUTONOMOUS_GATE.md": "c77fff7b45ae3fde9cd05166fdf7bf56681381ced5457e52f2bb9f1458403515",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/JOINT_PREPARATION.md": "3b965c763b39913b261ad156b22361ba1b0ccbcb01ae3ad4f99b541cccb018ab",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/LOCAL_PREPARATION.md": "a0eede8c17cc78db9cf7531357034a4cdcc5ccd7537c245afe93158c50ef273a",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/METRIC_DOMAINS.md": "9430e55fe004556730b892f35e607dc113da28a87ffb7813be43c7df7f1ccb95",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/README.md": "536471981cf17abdd2b4206e70a6e8eb513c8ab1c04ec0e46951735786d17d2f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SESSION.md": "7fff322613bb8a3e5945018de10de584fd1e4953a5cd7ee64d06f6d932cca3f5",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SHARP_CHARGES.md": "6006334a8bdddfef87845216bbb2984c97a9d0f4f0d3f7f4b6ceae36dbe72eef",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SOURCE_ACCOUNTING.md": "b6f6478cad4135a1cb5363fcd6ce6e8d64914ce9964349737cd175f22b1ecc10",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/STATIC_RESPONSE.md": "bc0b6a233b22bdbd225a9661ea981952e76d00791d23694aaeff532f15093322",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/autonomous_gate.json": "9756bfbf26d46d7194c374105a07eeb6c4d1aed7de3798c6ab6485d7d916737c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/autonomous_gate.py": "2242cb3c4864c2e50e71a8d27e68eadb8642e5ae14457fcc7cb9ca9c76c06500",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/joint_preparation.json": "75f76ba691d9848516de3e60e29b2d11d7d8d01c448e9efbdf22ffb142606504",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/joint_preparation.py": "2347aefb2242570e9eab08bc267b3e9e556940f84e4befe5dddb5e3b25bb85d2",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/local_preparation.json": "b4af898b056f6bc4573f44a23f9ff5e95e27260973dfb26c670738af51ebe7a1",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/local_preparation.py": "788c2d78d3052dfd132d9cad71d6e98558efd6707e693fff3a9bd49eb39909a8",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/metric_domains.json": "d19ff7f66a743eeaf16262303533df448b764028175bd8a664127ef6b0813f95",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/metric_domains.py": "0aa2c8ccc38834b29aeaf8c03e977d62c50c6c708400a29896fea462be7996e2",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/run_verification.py": "faa1146b454f64b29437b5e5e91c3dff3ace949b2ab05118b05316fbbf4fd369",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/sharp_charges.json": "20e0fcfa2b750b73499e820b613a0237664482a3079612a47b6bcc29f5618637",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/sharp_charges.py": "1505bc5bbcd5a65a3f81a1ff9b8eb990dd1e448ed7eec7d3bea4e96e1b1b7991",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_accounting.json": "ec197dc79a0cc12e926609ab2f0a2c9cb22f3eea205f5de73e9deb0c50556dad",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_accounting.py": "dbae2186a4febc3545d530a51f34e3c35fbdeffc647ec63cc27338ecc3bd7fea",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_audits.json": "a7536a0f5bfb5e6e656d39caa127245e4866b03592788f31ea894684fcb9bf12",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/static_response.json": "08503a10afce58d8cb32e302d8a4d4f4181821374955aa7ff5426ed81d8f55d1"
+      },
+      "finding_ids": [
+        "JC2-B-001"
+      ],
+      "read_scope": "25 full files at the immutable commit; additional hash-only dependencies not counted; no scientific execution",
+      "resolved_finding_ids": [
+        "JC1-A-001"
+      ],
+      "reviewer": "/root/b_preparation_domains",
+      "status": "FINDINGS"
+    },
+    {
+      "checkpoint": "JC2",
+      "commit": "f43725d881d6937d30b5bcb2970d76e4b5ad122d",
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/AUDIT.md": "c10bc87458c01799a352cdd7218b5a430b663f2e192675f886788816b912222c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/AUTONOMOUS_GATE.md": "c77fff7b45ae3fde9cd05166fdf7bf56681381ced5457e52f2bb9f1458403515",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/JOINT_PREPARATION.md": "3b965c763b39913b261ad156b22361ba1b0ccbcb01ae3ad4f99b541cccb018ab",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/LOCAL_PREPARATION.md": "a0eede8c17cc78db9cf7531357034a4cdcc5ccd7537c245afe93158c50ef273a",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/METRIC_DOMAINS.md": "9430e55fe004556730b892f35e607dc113da28a87ffb7813be43c7df7f1ccb95",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/README.md": "536471981cf17abdd2b4206e70a6e8eb513c8ab1c04ec0e46951735786d17d2f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SESSION.md": "7fff322613bb8a3e5945018de10de584fd1e4953a5cd7ee64d06f6d932cca3f5",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SHARP_CHARGES.md": "6006334a8bdddfef87845216bbb2984c97a9d0f4f0d3f7f4b6ceae36dbe72eef",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SOURCE_ACCOUNTING.md": "b6f6478cad4135a1cb5363fcd6ce6e8d64914ce9964349737cd175f22b1ecc10",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/STATIC_RESPONSE.md": "bc0b6a233b22bdbd225a9661ea981952e76d00791d23694aaeff532f15093322",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/autonomous_gate.json": "9756bfbf26d46d7194c374105a07eeb6c4d1aed7de3798c6ab6485d7d916737c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/autonomous_gate.py": "2242cb3c4864c2e50e71a8d27e68eadb8642e5ae14457fcc7cb9ca9c76c06500",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/joint_preparation.json": "75f76ba691d9848516de3e60e29b2d11d7d8d01c448e9efbdf22ffb142606504",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/joint_preparation.py": "2347aefb2242570e9eab08bc267b3e9e556940f84e4befe5dddb5e3b25bb85d2",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/local_preparation.json": "b4af898b056f6bc4573f44a23f9ff5e95e27260973dfb26c670738af51ebe7a1",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/local_preparation.py": "788c2d78d3052dfd132d9cad71d6e98558efd6707e693fff3a9bd49eb39909a8",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/metric_domains.json": "d19ff7f66a743eeaf16262303533df448b764028175bd8a664127ef6b0813f95",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/metric_domains.py": "0aa2c8ccc38834b29aeaf8c03e977d62c50c6c708400a29896fea462be7996e2",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/run_verification.py": "faa1146b454f64b29437b5e5e91c3dff3ace949b2ab05118b05316fbbf4fd369",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/sharp_charges.json": "20e0fcfa2b750b73499e820b613a0237664482a3079612a47b6bcc29f5618637",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/sharp_charges.py": "1505bc5bbcd5a65a3f81a1ff9b8eb990dd1e448ed7eec7d3bea4e96e1b1b7991",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_accounting.json": "ec197dc79a0cc12e926609ab2f0a2c9cb22f3eea205f5de73e9deb0c50556dad",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_accounting.py": "dbae2186a4febc3545d530a51f34e3c35fbdeffc647ec63cc27338ecc3bd7fea",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_audits.json": "a7536a0f5bfb5e6e656d39caa127245e4866b03592788f31ea894684fcb9bf12",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/static_response.json": "08503a10afce58d8cb32e302d8a4d4f4181821374955aa7ff5426ed81d8f55d1"
+      },
+      "finding_ids": [
+        "JC2-B-001"
+      ],
+      "read_scope": "25 full files at the immutable commit; additional hash-only dependencies not counted; no scientific execution",
+      "resolved_finding_ids": [
+        "JC1-A-001"
+      ],
+      "reviewer": "/root/c_record_stress",
+      "status": "FINDINGS"
+    },
+    {
+      "checkpoint": "JC3",
+      "commit": "0d641570b10aed0b0cee95b2e09dff200d0a5da9",
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/AUDIT.md": "90d967114c73300bf904e58eafb3d2a092732bfe098392e511ff2419b181eccd",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/CLOCK_ACTUATOR.md": "9aeb079f2ee034569de72e10b0169a3ff29b33d09395e6d560dafbe901715539",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/LAPSE_CURVATURE.md": "4b640ba4bbfab36fd94e3e2b1b79ba325e0c48a1bba2d5843edf29cdbc3ff4a2",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/LAPSE_HISTORY.md": "15e6265f16338bc8da553b8e97bb11eb73a72722c99f4ec404c665c3f9c98f99",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/LAPSE_PHASE.md": "52d39279dc5d4e0e9a137ab256de872d5b356710fcb2daf6278e43644922777d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/METRIC_DOMAINS.md": "cb32cd5c916e40cdc363df15248492fbbc5f24fa193e1f36ec7bb35b98d2e81b",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/NEXT_GATE.md": "4d01a26ce1144179b2a89021c2aa5c15a59f281fe5332cf8b2fd3e03651d7a17",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/PREPARED_RECORD.md": "d9df8a40c2933abb7396b2036744250df8cd3d4d662d5b9b13b42b6fcfc15f56",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/QUANTIFIED_PREPARATION.md": "5a3c9085f5c993c7556cac24ecdbd4b8120f66390f6bbec16a767e056f513ce2",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/README.md": "823ceccaa479f7c3b40aca3bed4e2f4d6d922e75905393c56c7f46dcd8cc603c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SCALED_RECORD.md": "bf168f0ca8fa68804116c5a64e1257c904db8a7874386b0c1368650dd5a704f5",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SESSION.md": "429e90d1484281768473bef102dff8533b001fed82d6298410b1ce90d1a5c3f7",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SOURCE_CTP.md": "955103a4cb2e08d22f22f7fb7f2362337c1794b12e312dfc31ad68d521365710",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SOURCE_HESSIAN.md": "d57f3a1dcfee8a819c1d9551e430f9c2f06369a8e0cf9e9a74ea5a13af5c25ad",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/clock_actuator.json": "bb03cafe2161d434fa24ee0302a3ec66dfed1fb825c94050854a0cc75fedeb5e",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/clock_actuator.py": "8b28f66bb36ca3282163063d8cb7abfc8218e5873f33da84109f063b6020ba95",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/lapse_curvature.json": "deddb885d0d8a6c73dfc395fac919df8297b1a5d0b4e969fcdd516951fbb9b48",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/lapse_curvature.py": "90942adaff17daf13acd1d1d4b41ee6c79098ca1f11ea5a50b308bab3ebe6f4f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/lapse_history.json": "ef31f136d11fe7f9f3314c8c96ff1689a58dd4b6debf7d4851deb7515a9d0615",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/lapse_history.py": "a92cf46b04b18cea50393190f8728212bad0c5e9fd1ae60b31dba33da41ba1dd",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/lapse_phase.json": "36c0188cc81da9bacb135cbd6c0d3ba2e0c12e08700e5033b461c5b4da33ce0e",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/lapse_phase.py": "65cdf8326535f1f4fb54a64992d136b1c527e5553f07de66141510abac827eff",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/metric_domains.json": "93b7f8d7f3ba8766c19a7ee98f26ff5f9517e4a46464a948b8078bc1fb22310f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/prepared_record.json": "f87c4327535806e330347e77297f013da370f32dd93162e974727087b54c3ac0",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/prepared_record.py": "4918d62fcccbe9651a4178706eaa028313e6d3c77babb32e3280d19b5dbc83f2",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/quantified_preparation.json": "230c4b6ed157375c7a56c22c9103a1c12f708c80822cd8cd9484d4cb9c0836ee",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/quantified_preparation.py": "b0d292ac3c03a2ff2397c6cbf73537f02a09c2859155c3ff38b4ea6c9f5c707f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/run_verification.py": "3b7f72c27151a6e2d305eb7ee0e38038b9273bcb09bcad6f7f78cefe79bfe03a",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/scaled_record.json": "8bcc61716db7b0fcd782c3c7468e35c59aac1417a1e7b45e1440fdd79224e2cd",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/scaled_record.py": "a49c488902674c7f3ad93539ea72f96672720f7d07a19ec1ca9f6cf3613b8377",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_audits.json": "2dde3bead95a08349ae237867d8f1edee3ccd2b20f96cb61e89b2681896b4d1c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_ctp.json": "4371f2529b481a2e6110a0c501cc338c568a922ecb2dbb15acbebc51b19aabe3",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_ctp.py": "b249d7dbd21854b6162854d11a11e1bf82b409441ef27c7a1cfec9e2d19ded59",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_hessian.json": "5830bb8d6fdf7c676cde816eda7f107210368a56bff7e96e6c7445fd0fcd6747",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_hessian.py": "2eaf28a4428fbb35ec8abdc1472d548523a6a13d8c86f66edecd44155c4719d8"
+      },
+      "finding_ids": [
+        "JC3-B-001",
+        "JC3-C-001"
+      ],
+      "read_scope": "35 full files at immutable commit; 13 hash-only dependencies excluded from full-read count; no scientific execution",
+      "resolved_finding_ids": [
+        "JC2-B-001"
+      ],
+      "reviewer": "/root/a_outside_evolution",
+      "status": "FINDINGS"
+    },
+    {
+      "checkpoint": "JC3",
+      "commit": "0d641570b10aed0b0cee95b2e09dff200d0a5da9",
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/AUDIT.md": "90d967114c73300bf904e58eafb3d2a092732bfe098392e511ff2419b181eccd",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/CLOCK_ACTUATOR.md": "9aeb079f2ee034569de72e10b0169a3ff29b33d09395e6d560dafbe901715539",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/LAPSE_CURVATURE.md": "4b640ba4bbfab36fd94e3e2b1b79ba325e0c48a1bba2d5843edf29cdbc3ff4a2",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/LAPSE_HISTORY.md": "15e6265f16338bc8da553b8e97bb11eb73a72722c99f4ec404c665c3f9c98f99",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/LAPSE_PHASE.md": "52d39279dc5d4e0e9a137ab256de872d5b356710fcb2daf6278e43644922777d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/METRIC_DOMAINS.md": "cb32cd5c916e40cdc363df15248492fbbc5f24fa193e1f36ec7bb35b98d2e81b",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/NEXT_GATE.md": "4d01a26ce1144179b2a89021c2aa5c15a59f281fe5332cf8b2fd3e03651d7a17",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/PREPARED_RECORD.md": "d9df8a40c2933abb7396b2036744250df8cd3d4d662d5b9b13b42b6fcfc15f56",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/QUANTIFIED_PREPARATION.md": "5a3c9085f5c993c7556cac24ecdbd4b8120f66390f6bbec16a767e056f513ce2",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/README.md": "823ceccaa479f7c3b40aca3bed4e2f4d6d922e75905393c56c7f46dcd8cc603c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SCALED_RECORD.md": "bf168f0ca8fa68804116c5a64e1257c904db8a7874386b0c1368650dd5a704f5",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SESSION.md": "429e90d1484281768473bef102dff8533b001fed82d6298410b1ce90d1a5c3f7",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SOURCE_CTP.md": "955103a4cb2e08d22f22f7fb7f2362337c1794b12e312dfc31ad68d521365710",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SOURCE_HESSIAN.md": "d57f3a1dcfee8a819c1d9551e430f9c2f06369a8e0cf9e9a74ea5a13af5c25ad",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/clock_actuator.json": "bb03cafe2161d434fa24ee0302a3ec66dfed1fb825c94050854a0cc75fedeb5e",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/clock_actuator.py": "8b28f66bb36ca3282163063d8cb7abfc8218e5873f33da84109f063b6020ba95",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/lapse_curvature.json": "deddb885d0d8a6c73dfc395fac919df8297b1a5d0b4e969fcdd516951fbb9b48",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/lapse_curvature.py": "90942adaff17daf13acd1d1d4b41ee6c79098ca1f11ea5a50b308bab3ebe6f4f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/lapse_history.json": "ef31f136d11fe7f9f3314c8c96ff1689a58dd4b6debf7d4851deb7515a9d0615",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/lapse_history.py": "a92cf46b04b18cea50393190f8728212bad0c5e9fd1ae60b31dba33da41ba1dd",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/lapse_phase.json": "36c0188cc81da9bacb135cbd6c0d3ba2e0c12e08700e5033b461c5b4da33ce0e",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/lapse_phase.py": "65cdf8326535f1f4fb54a64992d136b1c527e5553f07de66141510abac827eff",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/metric_domains.json": "93b7f8d7f3ba8766c19a7ee98f26ff5f9517e4a46464a948b8078bc1fb22310f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/prepared_record.json": "f87c4327535806e330347e77297f013da370f32dd93162e974727087b54c3ac0",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/prepared_record.py": "4918d62fcccbe9651a4178706eaa028313e6d3c77babb32e3280d19b5dbc83f2",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/quantified_preparation.json": "230c4b6ed157375c7a56c22c9103a1c12f708c80822cd8cd9484d4cb9c0836ee",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/quantified_preparation.py": "b0d292ac3c03a2ff2397c6cbf73537f02a09c2859155c3ff38b4ea6c9f5c707f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/run_verification.py": "3b7f72c27151a6e2d305eb7ee0e38038b9273bcb09bcad6f7f78cefe79bfe03a",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/scaled_record.json": "8bcc61716db7b0fcd782c3c7468e35c59aac1417a1e7b45e1440fdd79224e2cd",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/scaled_record.py": "a49c488902674c7f3ad93539ea72f96672720f7d07a19ec1ca9f6cf3613b8377",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_audits.json": "2dde3bead95a08349ae237867d8f1edee3ccd2b20f96cb61e89b2681896b4d1c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_ctp.json": "4371f2529b481a2e6110a0c501cc338c568a922ecb2dbb15acbebc51b19aabe3",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_ctp.py": "b249d7dbd21854b6162854d11a11e1bf82b409441ef27c7a1cfec9e2d19ded59",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_hessian.json": "5830bb8d6fdf7c676cde816eda7f107210368a56bff7e96e6c7445fd0fcd6747",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_hessian.py": "2eaf28a4428fbb35ec8abdc1472d548523a6a13d8c86f66edecd44155c4719d8"
+      },
+      "finding_ids": [
+        "JC3-B-001",
+        "JC3-C-001",
+        "JC3-C-002"
+      ],
+      "read_scope": "35 full files at immutable commit; 13 hash-only dependencies excluded from full-read count; no scientific execution",
+      "resolved_finding_ids": [
+        "JC2-B-001"
+      ],
+      "reviewer": "/root/b_preparation_domains",
+      "status": "FINDINGS"
+    },
+    {
+      "checkpoint": "JC3",
+      "commit": "0d641570b10aed0b0cee95b2e09dff200d0a5da9",
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/AUDIT.md": "90d967114c73300bf904e58eafb3d2a092732bfe098392e511ff2419b181eccd",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/CLOCK_ACTUATOR.md": "9aeb079f2ee034569de72e10b0169a3ff29b33d09395e6d560dafbe901715539",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/LAPSE_CURVATURE.md": "4b640ba4bbfab36fd94e3e2b1b79ba325e0c48a1bba2d5843edf29cdbc3ff4a2",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/LAPSE_HISTORY.md": "15e6265f16338bc8da553b8e97bb11eb73a72722c99f4ec404c665c3f9c98f99",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/LAPSE_PHASE.md": "52d39279dc5d4e0e9a137ab256de872d5b356710fcb2daf6278e43644922777d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/METRIC_DOMAINS.md": "cb32cd5c916e40cdc363df15248492fbbc5f24fa193e1f36ec7bb35b98d2e81b",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/NEXT_GATE.md": "4d01a26ce1144179b2a89021c2aa5c15a59f281fe5332cf8b2fd3e03651d7a17",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/PREPARED_RECORD.md": "d9df8a40c2933abb7396b2036744250df8cd3d4d662d5b9b13b42b6fcfc15f56",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/QUANTIFIED_PREPARATION.md": "5a3c9085f5c993c7556cac24ecdbd4b8120f66390f6bbec16a767e056f513ce2",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/README.md": "823ceccaa479f7c3b40aca3bed4e2f4d6d922e75905393c56c7f46dcd8cc603c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SCALED_RECORD.md": "bf168f0ca8fa68804116c5a64e1257c904db8a7874386b0c1368650dd5a704f5",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SESSION.md": "429e90d1484281768473bef102dff8533b001fed82d6298410b1ce90d1a5c3f7",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SOURCE_CTP.md": "955103a4cb2e08d22f22f7fb7f2362337c1794b12e312dfc31ad68d521365710",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SOURCE_HESSIAN.md": "d57f3a1dcfee8a819c1d9551e430f9c2f06369a8e0cf9e9a74ea5a13af5c25ad",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/clock_actuator.json": "bb03cafe2161d434fa24ee0302a3ec66dfed1fb825c94050854a0cc75fedeb5e",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/clock_actuator.py": "8b28f66bb36ca3282163063d8cb7abfc8218e5873f33da84109f063b6020ba95",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/lapse_curvature.json": "deddb885d0d8a6c73dfc395fac919df8297b1a5d0b4e969fcdd516951fbb9b48",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/lapse_curvature.py": "90942adaff17daf13acd1d1d4b41ee6c79098ca1f11ea5a50b308bab3ebe6f4f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/lapse_history.json": "ef31f136d11fe7f9f3314c8c96ff1689a58dd4b6debf7d4851deb7515a9d0615",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/lapse_history.py": "a92cf46b04b18cea50393190f8728212bad0c5e9fd1ae60b31dba33da41ba1dd",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/lapse_phase.json": "36c0188cc81da9bacb135cbd6c0d3ba2e0c12e08700e5033b461c5b4da33ce0e",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/lapse_phase.py": "65cdf8326535f1f4fb54a64992d136b1c527e5553f07de66141510abac827eff",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/metric_domains.json": "93b7f8d7f3ba8766c19a7ee98f26ff5f9517e4a46464a948b8078bc1fb22310f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/prepared_record.json": "f87c4327535806e330347e77297f013da370f32dd93162e974727087b54c3ac0",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/prepared_record.py": "4918d62fcccbe9651a4178706eaa028313e6d3c77babb32e3280d19b5dbc83f2",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/quantified_preparation.json": "230c4b6ed157375c7a56c22c9103a1c12f708c80822cd8cd9484d4cb9c0836ee",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/quantified_preparation.py": "b0d292ac3c03a2ff2397c6cbf73537f02a09c2859155c3ff38b4ea6c9f5c707f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/run_verification.py": "3b7f72c27151a6e2d305eb7ee0e38038b9273bcb09bcad6f7f78cefe79bfe03a",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/scaled_record.json": "8bcc61716db7b0fcd782c3c7468e35c59aac1417a1e7b45e1440fdd79224e2cd",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/scaled_record.py": "a49c488902674c7f3ad93539ea72f96672720f7d07a19ec1ca9f6cf3613b8377",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_audits.json": "2dde3bead95a08349ae237867d8f1edee3ccd2b20f96cb61e89b2681896b4d1c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_ctp.json": "4371f2529b481a2e6110a0c501cc338c568a922ecb2dbb15acbebc51b19aabe3",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_ctp.py": "b249d7dbd21854b6162854d11a11e1bf82b409441ef27c7a1cfec9e2d19ded59",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_hessian.json": "5830bb8d6fdf7c676cde816eda7f107210368a56bff7e96e6c7445fd0fcd6747",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_hessian.py": "2eaf28a4428fbb35ec8abdc1472d548523a6a13d8c86f66edecd44155c4719d8"
+      },
+      "finding_ids": [
+        "JC3-C-001",
+        "JC3-C-002"
+      ],
+      "read_scope": "35 full files at immutable commit; 13 hash-only dependencies excluded from full-read count; no scientific execution",
+      "resolved_finding_ids": [
+        "JC2-B-001"
+      ],
+      "reviewer": "/root/c_record_stress",
+      "status": "FINDINGS"
+    },
+    {
+      "checkpoint": "JC4",
+      "commit": "f9f6b108c61ad0ac910c6a7bd1f3fd19b7914130",
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/ACTUATOR_MEANS.md": "cb8c0a57512f72ee75392804a2a635cf466bcd8bf97751109559cdf76f2ec918",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/AUDIT.md": "f0eff932d6d4ec9f5663f54f05f5d6e9bcb58e00331e293bd487b3a5fe3964e6",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/BACKREACTION_GATE.md": "351b419df10331e81d3ff7ce934ceedef7c7e38af2d430bae1b156ec31f84c86",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/CLOCK_ACTUATOR.md": "0c6bc931296a00271f14802061d8d8b10b81f591508137c6fcf9debdbbf98400",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/CLOCK_UV.md": "d0ff8c598544a6774851d12b86babd09b0a8df0c5b432c7e04de504436bd527c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/LAPSE_CURVATURE.md": "7c7af0db43cd767511383177d0e6d97d2d845851112d5b8d884d118ab9fbd480",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/LAPSE_HISTORY.md": "5347072b88364d9fcfe7cbc9bf8baf4f36205693b874871466f73ee60a879e1f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/LAPSE_PHASE.md": "8430f388b010e032815dbf5aa677693587497c3bd776121b32527917fb1a1017",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/NEXT_GATE.md": "915a249b47e165b87a4974a0d58f090307a911298d0721d8c17e6591e231e229",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/README.md": "05847fcb9937ad7c51d4e2c39d8a9777ed0c7c71e908074cea2efcde54fbb250",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SESSION.md": "85702f2032233879ce3cfc57cf898e92a6e33c6e33a1f1745e01afa28c166c23",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SOURCE_CTP.md": "0ed45e576834e40dd0356ba543c315598d9f8911eee722267c32fdf1f7c74a4d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SOURCE_HESSIAN.md": "6bc72c3c6e5f24a4c6d4c793e09aa517b292aaf866c61320c394a9a46623b49b",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/TOTAL_COLUMNS.md": "05cd5c014c8567bc943d7c8a992e9d694351720589c21be6331271d0ebc0962c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/actuator_means.json": "a7e33c5764ed497b98225f3808ea45bce6466ffc8acbbd6438e2b22d8d1d745f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/actuator_means.py": "155fb3c36fab445c47110d8acc7d95f8d624ab8b16a6860b9582223a3a2cc78b",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/backreaction_gate.json": "c0684e735de0e89539a24f3498f9359a9da3ef7e06c44cfd003d1d9be9e98534",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/backreaction_gate.py": "cc86e4462553435516c58a95c931878336486e5f1074281af0b0faf00f7835d3",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/clock_actuator.json": "fe7dd91f8b3679bf9f14e7a4aaf71fff07e6c72309ebf57bc87274f9746cbfed",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/clock_uv.json": "bcb68b4e84216e3b55186b15dcefa999b2fd2e9fefb8d03d93f790113e1bec2e",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/clock_uv.py": "84599c65917eba6999f33208f3a26bbfd4fb2dfbfe5db287072f3390475926bc",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/lapse_curvature.json": "ccef6e5b882c45a824087049291b992d7c178e2997655c7863833f1c8e147222",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/lapse_history.json": "b85b947b479fd6e9d5c78c1b0e006e1c7bb03ae2db9d7abb265b113926ab9a31",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/lapse_phase.json": "05f0b9a2f63dad22ffe31679a2b42fb67791d130108d69ad3e0cc3a1bc44e1fe",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/review.json": "5f86dfb9a04fc9f014b5eec9e032dceb9e7e0229c2d4e4b28b692d742bb3f119",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/review.py": "449b217c2c80a531bed6ae16ce5883e756e0d70a32c65e4aa6f2e8d12b0b0a29",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/run_verification.py": "e7c2ba4689cdf623136c8086ffcb710b27e4fe25a4dc0d63f4487aa54262f21a",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_audits.json": "f75ae8493779c021de709713aad5d9329f4bb01e62d5777a7f5bb688123a55a8",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_ctp.json": "8e51cf5a489b57609c4d3b5a99abb20285783559d0b41197d54d8b2cb75552a4",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_hessian.json": "f0bcf25317d6c00ad4e46ca54f203421d37218434e48e89be7c37674deaa75ef",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/total_columns.json": "bc0e365f1c88004bb5584490d4da5d864f22c76c730687e9b000d2fc7b6339f5",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/total_columns.py": "4f707ce2b3a6b8dcafa77fe45c32a6b8b0ab457d17dc16d7f1cce59942e77735"
+      },
+      "finding_ids": [
+        "JC4-C-001",
+        "JC4-C-002"
+      ],
+      "read_scope": "32 full immutable files; 19 hash-only dependencies excluded; 65 direct bindings checked; no scientific execution",
+      "resolved_finding_ids": [
+        "JC3-B-001",
+        "JC3-C-001",
+        "JC3-C-002"
+      ],
+      "reviewer": "/root/a_outside_evolution",
+      "status": "FINDINGS"
+    },
+    {
+      "checkpoint": "JC4",
+      "commit": "f9f6b108c61ad0ac910c6a7bd1f3fd19b7914130",
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/ACTUATOR_MEANS.md": "cb8c0a57512f72ee75392804a2a635cf466bcd8bf97751109559cdf76f2ec918",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/AUDIT.md": "f0eff932d6d4ec9f5663f54f05f5d6e9bcb58e00331e293bd487b3a5fe3964e6",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/BACKREACTION_GATE.md": "351b419df10331e81d3ff7ce934ceedef7c7e38af2d430bae1b156ec31f84c86",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/CLOCK_ACTUATOR.md": "0c6bc931296a00271f14802061d8d8b10b81f591508137c6fcf9debdbbf98400",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/CLOCK_UV.md": "d0ff8c598544a6774851d12b86babd09b0a8df0c5b432c7e04de504436bd527c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/LAPSE_CURVATURE.md": "7c7af0db43cd767511383177d0e6d97d2d845851112d5b8d884d118ab9fbd480",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/LAPSE_HISTORY.md": "5347072b88364d9fcfe7cbc9bf8baf4f36205693b874871466f73ee60a879e1f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/LAPSE_PHASE.md": "8430f388b010e032815dbf5aa677693587497c3bd776121b32527917fb1a1017",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/NEXT_GATE.md": "915a249b47e165b87a4974a0d58f090307a911298d0721d8c17e6591e231e229",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/README.md": "05847fcb9937ad7c51d4e2c39d8a9777ed0c7c71e908074cea2efcde54fbb250",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SESSION.md": "85702f2032233879ce3cfc57cf898e92a6e33c6e33a1f1745e01afa28c166c23",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SOURCE_CTP.md": "0ed45e576834e40dd0356ba543c315598d9f8911eee722267c32fdf1f7c74a4d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SOURCE_HESSIAN.md": "6bc72c3c6e5f24a4c6d4c793e09aa517b292aaf866c61320c394a9a46623b49b",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/TOTAL_COLUMNS.md": "05cd5c014c8567bc943d7c8a992e9d694351720589c21be6331271d0ebc0962c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/actuator_means.json": "a7e33c5764ed497b98225f3808ea45bce6466ffc8acbbd6438e2b22d8d1d745f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/actuator_means.py": "155fb3c36fab445c47110d8acc7d95f8d624ab8b16a6860b9582223a3a2cc78b",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/backreaction_gate.json": "c0684e735de0e89539a24f3498f9359a9da3ef7e06c44cfd003d1d9be9e98534",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/backreaction_gate.py": "cc86e4462553435516c58a95c931878336486e5f1074281af0b0faf00f7835d3",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/clock_actuator.json": "fe7dd91f8b3679bf9f14e7a4aaf71fff07e6c72309ebf57bc87274f9746cbfed",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/clock_uv.json": "bcb68b4e84216e3b55186b15dcefa999b2fd2e9fefb8d03d93f790113e1bec2e",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/clock_uv.py": "84599c65917eba6999f33208f3a26bbfd4fb2dfbfe5db287072f3390475926bc",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/lapse_curvature.json": "ccef6e5b882c45a824087049291b992d7c178e2997655c7863833f1c8e147222",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/lapse_history.json": "b85b947b479fd6e9d5c78c1b0e006e1c7bb03ae2db9d7abb265b113926ab9a31",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/lapse_phase.json": "05f0b9a2f63dad22ffe31679a2b42fb67791d130108d69ad3e0cc3a1bc44e1fe",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/review.json": "5f86dfb9a04fc9f014b5eec9e032dceb9e7e0229c2d4e4b28b692d742bb3f119",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/review.py": "449b217c2c80a531bed6ae16ce5883e756e0d70a32c65e4aa6f2e8d12b0b0a29",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/run_verification.py": "e7c2ba4689cdf623136c8086ffcb710b27e4fe25a4dc0d63f4487aa54262f21a",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_audits.json": "f75ae8493779c021de709713aad5d9329f4bb01e62d5777a7f5bb688123a55a8",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_ctp.json": "8e51cf5a489b57609c4d3b5a99abb20285783559d0b41197d54d8b2cb75552a4",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_hessian.json": "f0bcf25317d6c00ad4e46ca54f203421d37218434e48e89be7c37674deaa75ef",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/total_columns.json": "bc0e365f1c88004bb5584490d4da5d864f22c76c730687e9b000d2fc7b6339f5",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/total_columns.py": "4f707ce2b3a6b8dcafa77fe45c32a6b8b0ab457d17dc16d7f1cce59942e77735"
+      },
+      "finding_ids": [
+        "JC4-C-001"
+      ],
+      "read_scope": "32 full immutable files; 19 hash-only dependencies excluded; 65 direct bindings checked; no scientific execution",
+      "resolved_finding_ids": [
+        "JC3-B-001",
+        "JC3-C-001",
+        "JC3-C-002"
+      ],
+      "reviewer": "/root/b_preparation_domains",
+      "status": "FINDINGS"
+    },
+    {
+      "checkpoint": "JC4",
+      "commit": "f9f6b108c61ad0ac910c6a7bd1f3fd19b7914130",
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/ACTUATOR_MEANS.md": "cb8c0a57512f72ee75392804a2a635cf466bcd8bf97751109559cdf76f2ec918",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/AUDIT.md": "f0eff932d6d4ec9f5663f54f05f5d6e9bcb58e00331e293bd487b3a5fe3964e6",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/BACKREACTION_GATE.md": "351b419df10331e81d3ff7ce934ceedef7c7e38af2d430bae1b156ec31f84c86",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/CLOCK_ACTUATOR.md": "0c6bc931296a00271f14802061d8d8b10b81f591508137c6fcf9debdbbf98400",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/CLOCK_UV.md": "d0ff8c598544a6774851d12b86babd09b0a8df0c5b432c7e04de504436bd527c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/LAPSE_CURVATURE.md": "7c7af0db43cd767511383177d0e6d97d2d845851112d5b8d884d118ab9fbd480",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/LAPSE_HISTORY.md": "5347072b88364d9fcfe7cbc9bf8baf4f36205693b874871466f73ee60a879e1f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/LAPSE_PHASE.md": "8430f388b010e032815dbf5aa677693587497c3bd776121b32527917fb1a1017",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/NEXT_GATE.md": "915a249b47e165b87a4974a0d58f090307a911298d0721d8c17e6591e231e229",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/README.md": "05847fcb9937ad7c51d4e2c39d8a9777ed0c7c71e908074cea2efcde54fbb250",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SESSION.md": "85702f2032233879ce3cfc57cf898e92a6e33c6e33a1f1745e01afa28c166c23",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SOURCE_CTP.md": "0ed45e576834e40dd0356ba543c315598d9f8911eee722267c32fdf1f7c74a4d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SOURCE_HESSIAN.md": "6bc72c3c6e5f24a4c6d4c793e09aa517b292aaf866c61320c394a9a46623b49b",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/TOTAL_COLUMNS.md": "05cd5c014c8567bc943d7c8a992e9d694351720589c21be6331271d0ebc0962c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/actuator_means.json": "a7e33c5764ed497b98225f3808ea45bce6466ffc8acbbd6438e2b22d8d1d745f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/actuator_means.py": "155fb3c36fab445c47110d8acc7d95f8d624ab8b16a6860b9582223a3a2cc78b",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/backreaction_gate.json": "c0684e735de0e89539a24f3498f9359a9da3ef7e06c44cfd003d1d9be9e98534",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/backreaction_gate.py": "cc86e4462553435516c58a95c931878336486e5f1074281af0b0faf00f7835d3",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/clock_actuator.json": "fe7dd91f8b3679bf9f14e7a4aaf71fff07e6c72309ebf57bc87274f9746cbfed",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/clock_uv.json": "bcb68b4e84216e3b55186b15dcefa999b2fd2e9fefb8d03d93f790113e1bec2e",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/clock_uv.py": "84599c65917eba6999f33208f3a26bbfd4fb2dfbfe5db287072f3390475926bc",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/lapse_curvature.json": "ccef6e5b882c45a824087049291b992d7c178e2997655c7863833f1c8e147222",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/lapse_history.json": "b85b947b479fd6e9d5c78c1b0e006e1c7bb03ae2db9d7abb265b113926ab9a31",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/lapse_phase.json": "05f0b9a2f63dad22ffe31679a2b42fb67791d130108d69ad3e0cc3a1bc44e1fe",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/review.json": "5f86dfb9a04fc9f014b5eec9e032dceb9e7e0229c2d4e4b28b692d742bb3f119",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/review.py": "449b217c2c80a531bed6ae16ce5883e756e0d70a32c65e4aa6f2e8d12b0b0a29",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/run_verification.py": "e7c2ba4689cdf623136c8086ffcb710b27e4fe25a4dc0d63f4487aa54262f21a",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_audits.json": "f75ae8493779c021de709713aad5d9329f4bb01e62d5777a7f5bb688123a55a8",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_ctp.json": "8e51cf5a489b57609c4d3b5a99abb20285783559d0b41197d54d8b2cb75552a4",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_hessian.json": "f0bcf25317d6c00ad4e46ca54f203421d37218434e48e89be7c37674deaa75ef",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/total_columns.json": "bc0e365f1c88004bb5584490d4da5d864f22c76c730687e9b000d2fc7b6339f5",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/total_columns.py": "4f707ce2b3a6b8dcafa77fe45c32a6b8b0ab457d17dc16d7f1cce59942e77735"
+      },
+      "finding_ids": [
+        "JC4-C-001",
+        "JC4-C-002"
+      ],
+      "read_scope": "32 full immutable files; 19 hash-only dependencies excluded; 65 direct bindings checked; no scientific execution",
+      "resolved_finding_ids": [
+        "JC3-B-001",
+        "JC3-C-001",
+        "JC3-C-002"
+      ],
+      "reviewer": "/root/c_record_stress",
+      "status": "FINDINGS"
+    },
+    {
+      "checkpoint": "JC5",
+      "commit": "64ac74d66696d2cdadf4868fe76046444e80f29f",
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/AUDIT.md": "006eb48344b17e36399ca5e54b6ded43a490ba00e2603d93e45822ca67b5669d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/NEXT_GATE.md": "859d98f8af0c9e0029447f360e2f8a54ef6e0f04a25e3641d628b25c4843c8d6",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/POST_CLOSURE.md": "9106a4d81b8e8513e8a4d0551686eae5ae51cf780cf75ff56a2f5f88df6e718d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/README.md": "fe9bda42f816211e4f595e6e13e8b0bce1a0b20371509af9e5017fd40f94800d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SESSION.md": "93f46bab32fa236eb22550cc3ecdb0b0a586a51e0a239491881cd47d3adbcdb3",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/TOTAL_COLUMNS.md": "89b29f5589f2a96a2af5a6b695e4473a9b3cc5de1acaf141c8c449a846208ca4",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/UNIFICATION_PROGRESS_ZH.md": "327fad9d823265b244de09b19f6451ceccc96a9e4123d22a68727426b61472f2",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/WICK_CLOCK_GRAPH.md": "762e68640aade3b4449473c169e30d852548263d678bada21e757cca0e8163e9",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/post_closure.json": "f90fe8611d49bcbc18f1c8325a9b3e14a2f232eb1766293e35c83b04a1af6aa1",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/post_closure.py": "519fe5378a190207cd97d02eacbf0ba2f05c546d3bc50f9b97e79ed17ef325b6",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/review.json": "e25f818f3258cc757e0aab830647a8c29cf8021ac4b2018e6a1689d514b18623",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/review.py": "449b217c2c80a531bed6ae16ce5883e756e0d70a32c65e4aa6f2e8d12b0b0a29",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/run_verification.py": "aeeb6e6f9fa2d665e515b9b5358db104668b311106d55d757289b333abe7e5dd",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/session_timing.json": "b6decd262addf7a0073b4ff01f6c14d3279b2816dc1b80205d4cda69de87d2d3",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_audits.json": "f928c9d44e763e3aeb6519f55441c31bab8987d9ecd99231fbe5e14740920c4c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/total_columns.json": "b26e337a2898ffa0408bb3f6581435349dbde35953a8ab9f0c5040f0419440f6",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/wick_clock_graph.json": "94cfc8290b4491a09ff22e685cd5208f935d0931fa18a4cf0b86621cb1c1415f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/wick_clock_graph.py": "91d676ae5adcdf8593906f348397e964af720e3f7ec4f6408f0a9e9998dcbcb9"
+      },
+      "finding_ids": [
+        "JC5-B-001"
+      ],
+      "nonblocking_findings": true,
+      "read_scope": "18 full immutable files; 13 hash-only dependencies excluded; 29 direct bindings checked; no scientific execution",
+      "resolved_finding_ids": [
+        "JC4-C-001",
+        "JC4-C-002"
+      ],
+      "reviewer": "/root/a_outside_evolution",
+      "status": "FINDINGS"
+    },
+    {
+      "checkpoint": "JC5",
+      "commit": "64ac74d66696d2cdadf4868fe76046444e80f29f",
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/AUDIT.md": "006eb48344b17e36399ca5e54b6ded43a490ba00e2603d93e45822ca67b5669d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/NEXT_GATE.md": "859d98f8af0c9e0029447f360e2f8a54ef6e0f04a25e3641d628b25c4843c8d6",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/POST_CLOSURE.md": "9106a4d81b8e8513e8a4d0551686eae5ae51cf780cf75ff56a2f5f88df6e718d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/README.md": "fe9bda42f816211e4f595e6e13e8b0bce1a0b20371509af9e5017fd40f94800d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SESSION.md": "93f46bab32fa236eb22550cc3ecdb0b0a586a51e0a239491881cd47d3adbcdb3",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/TOTAL_COLUMNS.md": "89b29f5589f2a96a2af5a6b695e4473a9b3cc5de1acaf141c8c449a846208ca4",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/UNIFICATION_PROGRESS_ZH.md": "327fad9d823265b244de09b19f6451ceccc96a9e4123d22a68727426b61472f2",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/WICK_CLOCK_GRAPH.md": "762e68640aade3b4449473c169e30d852548263d678bada21e757cca0e8163e9",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/post_closure.json": "f90fe8611d49bcbc18f1c8325a9b3e14a2f232eb1766293e35c83b04a1af6aa1",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/post_closure.py": "519fe5378a190207cd97d02eacbf0ba2f05c546d3bc50f9b97e79ed17ef325b6",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/review.json": "e25f818f3258cc757e0aab830647a8c29cf8021ac4b2018e6a1689d514b18623",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/review.py": "449b217c2c80a531bed6ae16ce5883e756e0d70a32c65e4aa6f2e8d12b0b0a29",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/run_verification.py": "aeeb6e6f9fa2d665e515b9b5358db104668b311106d55d757289b333abe7e5dd",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/session_timing.json": "b6decd262addf7a0073b4ff01f6c14d3279b2816dc1b80205d4cda69de87d2d3",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_audits.json": "f928c9d44e763e3aeb6519f55441c31bab8987d9ecd99231fbe5e14740920c4c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/total_columns.json": "b26e337a2898ffa0408bb3f6581435349dbde35953a8ab9f0c5040f0419440f6",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/wick_clock_graph.json": "94cfc8290b4491a09ff22e685cd5208f935d0931fa18a4cf0b86621cb1c1415f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/wick_clock_graph.py": "91d676ae5adcdf8593906f348397e964af720e3f7ec4f6408f0a9e9998dcbcb9"
+      },
+      "finding_ids": [
+        "JC5-B-001"
+      ],
+      "nonblocking_findings": true,
+      "read_scope": "18 full immutable files; 13 hash-only dependencies excluded; 29 direct bindings checked; no scientific execution",
+      "resolved_finding_ids": [
+        "JC4-C-001",
+        "JC4-C-002"
+      ],
+      "reviewer": "/root/b_preparation_domains",
+      "status": "PASS"
+    },
+    {
+      "checkpoint": "JC5",
+      "commit": "64ac74d66696d2cdadf4868fe76046444e80f29f",
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/AUDIT.md": "006eb48344b17e36399ca5e54b6ded43a490ba00e2603d93e45822ca67b5669d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/NEXT_GATE.md": "859d98f8af0c9e0029447f360e2f8a54ef6e0f04a25e3641d628b25c4843c8d6",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/POST_CLOSURE.md": "9106a4d81b8e8513e8a4d0551686eae5ae51cf780cf75ff56a2f5f88df6e718d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/README.md": "fe9bda42f816211e4f595e6e13e8b0bce1a0b20371509af9e5017fd40f94800d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SESSION.md": "93f46bab32fa236eb22550cc3ecdb0b0a586a51e0a239491881cd47d3adbcdb3",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/TOTAL_COLUMNS.md": "89b29f5589f2a96a2af5a6b695e4473a9b3cc5de1acaf141c8c449a846208ca4",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/UNIFICATION_PROGRESS_ZH.md": "327fad9d823265b244de09b19f6451ceccc96a9e4123d22a68727426b61472f2",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/WICK_CLOCK_GRAPH.md": "762e68640aade3b4449473c169e30d852548263d678bada21e757cca0e8163e9",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/post_closure.json": "f90fe8611d49bcbc18f1c8325a9b3e14a2f232eb1766293e35c83b04a1af6aa1",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/post_closure.py": "519fe5378a190207cd97d02eacbf0ba2f05c546d3bc50f9b97e79ed17ef325b6",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/review.json": "e25f818f3258cc757e0aab830647a8c29cf8021ac4b2018e6a1689d514b18623",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/review.py": "449b217c2c80a531bed6ae16ce5883e756e0d70a32c65e4aa6f2e8d12b0b0a29",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/run_verification.py": "aeeb6e6f9fa2d665e515b9b5358db104668b311106d55d757289b333abe7e5dd",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/session_timing.json": "b6decd262addf7a0073b4ff01f6c14d3279b2816dc1b80205d4cda69de87d2d3",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_audits.json": "f928c9d44e763e3aeb6519f55441c31bab8987d9ecd99231fbe5e14740920c4c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/total_columns.json": "b26e337a2898ffa0408bb3f6581435349dbde35953a8ab9f0c5040f0419440f6",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/wick_clock_graph.json": "94cfc8290b4491a09ff22e685cd5208f935d0931fa18a4cf0b86621cb1c1415f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/wick_clock_graph.py": "91d676ae5adcdf8593906f348397e964af720e3f7ec4f6408f0a9e9998dcbcb9"
+      },
+      "finding_ids": [
+        "JC5-B-001"
+      ],
+      "nonblocking_findings": true,
+      "read_scope": "18 full immutable files; 13 hash-only dependencies excluded; 29 direct bindings checked; no scientific execution",
+      "resolved_finding_ids": [
+        "JC4-C-001",
+        "JC4-C-002"
+      ],
+      "reviewer": "/root/c_record_stress",
+      "status": "PASS"
+    },
+    {
+      "checkpoint": "JC6-documents",
+      "commit": "282179835ceddd44ba8f6a5a94d632bc020d7fd7",
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/AUDIT.md": "dd0af5e7d80889ca5b9abdcd5b7f39ac58cc590db58ff2e039611077532ab7d3",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/NEXT_GATE.md": "c7aa882eebf2324c04861b31d64f334456f884ff1c59947f6570a02da0da1090",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SESSION.md": "25fad59d32053af5f616d1f1bf30af1986cc1e5a9899a724a58f8dc36709ceb9",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/UNIFICATION_PROGRESS_ZH.md": "38c4e7c5bfdf4a08dc14b1bec8740c555e28ac71e7c518eaf066d798e4afe5bf",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/review.json": "18fc843ce7b5258914b3c8daea0f2b86f8754d15022bcdb2950ffab1718926d6",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/review.py": "449b217c2c80a531bed6ae16ce5883e756e0d70a32c65e4aa6f2e8d12b0b0a29",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/session_timing.json": "b6decd262addf7a0073b4ff01f6c14d3279b2816dc1b80205d4cda69de87d2d3",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_audits.json": "aae4ccafdc26dc750ccc43852c39bc508b16a65bb1fec31b52d95c7c714a6228"
+      },
+      "finding_ids": [],
+      "read_scope": "8 full immutable documentation/governance files; scientific content unchanged from JC5; no scientific execution",
+      "resolved_finding_ids": [
+        "JC5-B-001"
+      ],
+      "reviewer": "/root/a_outside_evolution",
+      "status": "PASS"
+    },
+    {
+      "checkpoint": "JC6-documents",
+      "commit": "282179835ceddd44ba8f6a5a94d632bc020d7fd7",
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/AUDIT.md": "dd0af5e7d80889ca5b9abdcd5b7f39ac58cc590db58ff2e039611077532ab7d3",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/NEXT_GATE.md": "c7aa882eebf2324c04861b31d64f334456f884ff1c59947f6570a02da0da1090",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SESSION.md": "25fad59d32053af5f616d1f1bf30af1986cc1e5a9899a724a58f8dc36709ceb9",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/UNIFICATION_PROGRESS_ZH.md": "38c4e7c5bfdf4a08dc14b1bec8740c555e28ac71e7c518eaf066d798e4afe5bf",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/review.json": "18fc843ce7b5258914b3c8daea0f2b86f8754d15022bcdb2950ffab1718926d6",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/review.py": "449b217c2c80a531bed6ae16ce5883e756e0d70a32c65e4aa6f2e8d12b0b0a29",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/session_timing.json": "b6decd262addf7a0073b4ff01f6c14d3279b2816dc1b80205d4cda69de87d2d3",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_audits.json": "aae4ccafdc26dc750ccc43852c39bc508b16a65bb1fec31b52d95c7c714a6228"
+      },
+      "finding_ids": [],
+      "read_scope": "8 full immutable documentation/governance files; scientific content unchanged from JC5; no scientific execution",
+      "resolved_finding_ids": [
+        "JC5-B-001"
+      ],
+      "reviewer": "/root/b_preparation_domains",
+      "status": "PASS"
+    },
+    {
+      "checkpoint": "JC6-documents",
+      "commit": "282179835ceddd44ba8f6a5a94d632bc020d7fd7",
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/AUDIT.md": "dd0af5e7d80889ca5b9abdcd5b7f39ac58cc590db58ff2e039611077532ab7d3",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/NEXT_GATE.md": "c7aa882eebf2324c04861b31d64f334456f884ff1c59947f6570a02da0da1090",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/SESSION.md": "25fad59d32053af5f616d1f1bf30af1986cc1e5a9899a724a58f8dc36709ceb9",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/UNIFICATION_PROGRESS_ZH.md": "38c4e7c5bfdf4a08dc14b1bec8740c555e28ac71e7c518eaf066d798e4afe5bf",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/review.json": "18fc843ce7b5258914b3c8daea0f2b86f8754d15022bcdb2950ffab1718926d6",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/review.py": "449b217c2c80a531bed6ae16ce5883e756e0d70a32c65e4aa6f2e8d12b0b0a29",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/session_timing.json": "b6decd262addf7a0073b4ff01f6c14d3279b2816dc1b80205d4cda69de87d2d3",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/source_audits.json": "aae4ccafdc26dc750ccc43852c39bc508b16a65bb1fec31b52d95c7c714a6228"
+      },
+      "finding_ids": [],
+      "read_scope": "8 full immutable documentation/governance files; scientific content unchanged from JC5; no scientific execution",
+      "resolved_finding_ids": [
+        "JC5-B-001"
+      ],
+      "reviewer": "/root/c_record_stress",
+      "status": "PASS"
+    }
+  ],
+  "reviewers": [
+    "/root/a_outside_evolution",
+    "/root/b_preparation_domains",
+    "/root/c_record_stress"
+  ]
+}

@@ -1,0 +1,582 @@
+{
+  "schema": "ueot-joint-propagation-source-audits/1",
+  "status": "COMPLETE",
+  "native_agents": [
+    "/root/a_joint_propagation",
+    "/root/b_constraint_kernel",
+    "/root/c_prepared_record"
+  ],
+  "checkpoints": [
+    {
+      "commit": "03b3906cb9b0817178ef7d02f0a3ed29a81c7e4b",
+      "agent": "/root/a_joint_propagation",
+      "status": "FINDINGS_ADDRESSED",
+      "main_mathematics": "PASS",
+      "scientific_execution_by_agent": false,
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/ADIABATIC_CONNECTION.md": "018831665267f3f9775efaa488cc76db0edb1763",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/adiabatic_connection.py": "db07bba9c1e430c74da258fdf2899bbcc729183a",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/INITIAL_LAYER.md": "eb4d7e8da8140b4d981c68a45d968107e58535e9",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/initial_layer.py": "bfb053b4b06d64677fcc0e70c508fff3911efeaf",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/INTERIOR_COLLAPSE.md": "fa36373a7cdca3d7865e26a819cef68655f1c43f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/interior_collapse.py": "36a3b030dfeceb63c8465def3fc9469b3af71d12",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/ORDERING_SWEEP.md": "73e01b48be76fd81c889ff24f6d0d1676167de5b",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/ordering_sweep.py": "2db9e26b3ba2fa5aaa06ef75e59da3f0d35138f0",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/SNAPSHOT_SPECTRUM.md": "6de9f30c1ca19777f378bf23cafc901e99fc8c3f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/snapshot_spectrum.py": "f14821844abdb370f33ddbaaa326d245b6aea884",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/SCALAR_COUNTERTERM.md": "bada760921fea0e6e51e89a6411a500c3e818410",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/scalar_counterterm.py": "16df7b794203a079846eb5e02da3e22ddebe062f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/common.py": "82599c64c9c6ff6d301f84deacdfad10e41fd17a",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/run_verification.py": "ce615ab132f917f9b1c1a4b7823fb06ae711d803"
+      },
+      "findings": [
+        {
+          "id": "A1",
+          "description": "Use an exact SymPy integer in the nu initial-shell check.",
+          "resolution": "VERIFIED_ADDRESSED_BY_CP2_IMMUTABLE_REVIEW"
+        },
+        {
+          "id": "A2",
+          "description": "For Im z=b the resolvent tail coefficient is 2/b.",
+          "resolution": "VERIFIED_ADDRESSED_BY_CP2_IMMUTABLE_REVIEW"
+        },
+        {
+          "id": "A3",
+          "description": "Make the main H4 profile budget linear explicitly.",
+          "resolution": "VERIFIED_ADDRESSED_BY_CP2_IMMUTABLE_REVIEW"
+        },
+        {
+          "id": "A4",
+          "description": "Identify the numerical phase example parameters as illustrative.",
+          "resolution": "VERIFIED_ADDRESSED_BY_CP2_IMMUTABLE_REVIEW"
+        }
+      ],
+      "resolved_by_commit": "d2795c79b8450471d6663de891cfb07e4517a95f"
+    },
+    {
+      "commit": "03b3906cb9b0817178ef7d02f0a3ed29a81c7e4b",
+      "agent": "/root/b_constraint_kernel",
+      "status": "FINDINGS_ADDRESSED",
+      "main_mathematics": "PASS",
+      "scientific_execution_by_agent": false,
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/INITIAL_LAYER.md": "eb4d7e8da8140b4d981c68a45d968107e58535e9",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/LOCAL_CONSTRAINT.md": "1a4d4ea83f5741b4643eb968ca57dab644c25fe8",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/INTERIOR_COLLAPSE.md": "fa36373a7cdca3d7865e26a819cef68655f1c43f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/RESCALED_KERNEL.md": "c3d6fd90f0597caff83ade8b84504bfc770af4e6",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/RARE_FISHER.md": "e4976bb1dedc0382a393cb315ebbad7a065705f1",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/SCALAR_COUNTERTERM.md": "bada760921fea0e6e51e89a6411a500c3e818410",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/local_constraint.py": "f54d6bb1e2b59db88b4afe870021e4951a8d3fb3",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/rescaled_kernel.py": "f1569ed5519202f3526c9914a15c918b0fceb919",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/interior_collapse.py": "36a3b030dfeceb63c8465def3fc9469b3af71d12",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/rare_fisher.py": "0812224604241cc9d1a5134982494377eef67035",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/scalar_counterterm.py": "16df7b794203a079846eb5e02da3e22ddebe062f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/common.py": "82599c64c9c6ff6d301f84deacdfad10e41fd17a",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/review.py": "a4232459088ba84a8b533e074f8af022212a8774",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/run_verification.py": "ce615ab132f917f9b1c1a4b7823fb06ae711d803",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/verification.json": "fd7148fb6ebaae201e1762932809da561f3aec73",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/local_constraint.json": "a2182cb99b36be45db8b2acca346d0a4e6d6b96b",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/rescaled_kernel.json": "cc735e15e4cbeac89f3dea077adcc4efc1daa161",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/interior_collapse.json": "dee7f483a3ef94c05777428ccb349364bb120924",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/rare_fisher.json": "d8769af84bf67397f0c66d393f65e4537a1af42b",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/scalar_counterterm.json": "4fa756e8dd563cabb681cd5e4a707c9f5d5f78b8",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/review.json": "8b3d96dfb1a64381129e6c688df0e5de57cde55e"
+      },
+      "findings": [
+        {
+          "id": "B1",
+          "description": "Restore f_kappa in the original adapted-section identity.",
+          "resolution": "VERIFIED_ADDRESSED_BY_CP2_IMMUTABLE_REVIEW"
+        },
+        {
+          "id": "B2",
+          "description": "Identify the scaled nu snapshot in the zero-resolvent claim.",
+          "resolution": "VERIFIED_ADDRESSED_BY_CP2_IMMUTABLE_REVIEW"
+        },
+        {
+          "id": "B3",
+          "description": "Use u prime in the retained-lapse Ward identity.",
+          "resolution": "VERIFIED_ADDRESSED_BY_CP2_IMMUTABLE_REVIEW"
+        },
+        {
+          "id": "B4",
+          "description": "Define the clock G(u) separately from projective G_K.",
+          "resolution": "VERIFIED_ADDRESSED_BY_CP2_IMMUTABLE_REVIEW"
+        },
+        {
+          "id": "B5",
+          "description": "Update the old interior-test machine status to the later rejection.",
+          "resolution": "VERIFIED_ADDRESSED_BY_CP2_IMMUTABLE_REVIEW"
+        },
+        {
+          "id": "B6",
+          "description": "Reject relative ImportFrom paths in the scope guard.",
+          "resolution": "VERIFIED_ADDRESSED_BY_CP2_IMMUTABLE_REVIEW"
+        }
+      ],
+      "resolved_by_commit": "d2795c79b8450471d6663de891cfb07e4517a95f"
+    },
+    {
+      "commit": "03b3906cb9b0817178ef7d02f0a3ed29a81c7e4b",
+      "agent": "/root/c_prepared_record",
+      "status": "FINDINGS_ADDRESSED",
+      "main_mathematics": "PASS",
+      "scientific_execution_by_agent": false,
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/RARE_PREPARATION.md": "84c3ea375b6097fd1a7b9fbd1d3dd3d5835803bf",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/rare_preparation.py": "961e82d5fb01bb6365e6f2f0cc318bc6222b5b34",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/BOUNDED_WITNESS.md": "5b95cb0d71b5ac138823ea1830beb6a56fa86491",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/bounded_witness.py": "690d00a721cf09885ee8930080e9024714a7f6fa",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/DEPHASING_CONTROL.md": "893582f583cb2965465632104818234e070c5c63",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/dephasing_control.py": "779377821e6fbbd9f8d6068613a08571d3e15cf6",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/RARE_FISHER.md": "e4976bb1dedc0382a393cb315ebbad7a065705f1",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/rare_fisher.py": "0812224604241cc9d1a5134982494377eef67035",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/INTERIOR_COLLAPSE.md": "fa36373a7cdca3d7865e26a819cef68655f1c43f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/interior_collapse.py": "36a3b030dfeceb63c8465def3fc9469b3af71d12",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/SNAPSHOT_SPECTRUM.md": "6de9f30c1ca19777f378bf23cafc901e99fc8c3f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/snapshot_spectrum.py": "f14821844abdb370f33ddbaaa326d245b6aea884",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/INITIAL_LAYER.md": "eb4d7e8da8140b4d981c68a45d968107e58535e9",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/common.py": "82599c64c9c6ff6d301f84deacdfad10e41fd17a",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/ADIABATIC_CONNECTION.md": "018831665267f3f9775efaa488cc76db0edb1763"
+      },
+      "findings": [
+        {
+          "id": "C1",
+          "description": "Restrict the vector-norm bound to effect/projection probabilities.",
+          "resolution": "VERIFIED_ADDRESSED_BY_CP2_IMMUTABLE_REVIEW"
+        },
+        {
+          "id": "C2",
+          "description": "Reconcile dephasing scope with the later state-independent collapse.",
+          "resolution": "VERIFIED_ADDRESSED_BY_CP2_IMMUTABLE_REVIEW"
+        },
+        {
+          "id": "C3",
+          "description": "Rename the SLD operator to avoid scalar-L ambiguity.",
+          "resolution": "VERIFIED_ADDRESSED_BY_CP2_IMMUTABLE_REVIEW"
+        },
+        {
+          "id": "C4",
+          "description": "Add direct witness/dephasing source dependencies.",
+          "resolution": "VERIFIED_ADDRESSED_BY_CP2_IMMUTABLE_REVIEW"
+        },
+        {
+          "id": "C5",
+          "description": "Include floating-point regression checks in verification metadata.",
+          "resolution": "VERIFIED_ADDRESSED_BY_CP2_IMMUTABLE_REVIEW"
+        },
+        {
+          "id": "C6",
+          "description": "Narrow the old QFI flag to the invalid mixed-variance inference.",
+          "resolution": "VERIFIED_ADDRESSED_BY_CP2_IMMUTABLE_REVIEW"
+        }
+      ],
+      "resolved_by_commit": "d2795c79b8450471d6663de891cfb07e4517a95f"
+    },
+    {
+      "commit": "d2795c79b8450471d6663de891cfb07e4517a95f",
+      "agent": "/root/a_joint_propagation",
+      "status": "PASS",
+      "main_mathematics": "PASS",
+      "scientific_execution_by_agent": false,
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/INITIAL_LAYER.md": "a1d97de61236a86a9e54cda73df529c2d487809b",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/INTERIOR_COLLAPSE.md": "55538630857788984ff0b70b2d26fddb63532473",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/SCALAR_COUNTERTERM.md": "784d93b8f14c51500c0c2ee75c8078629e7ece84",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/scalar_counterterm.py": "1f44078b5d5323a94caa2843a94f8e7972b5a15d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/SNAPSHOT_SPECTRUM.md": "6b6ab81cdfb9e8ccd3b51456cab516373aee3558",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/initial_layer.py": "5ed22eb7feb0292161b6bdc477095e648c695422",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/common.py": "d4eaa6d03648d866b602070f6c6800e2deb6c335"
+      },
+      "findings": [],
+      "scope": "Actual immutable CP2 reread; prior assigned findings verified addressed"
+    },
+    {
+      "commit": "d2795c79b8450471d6663de891cfb07e4517a95f",
+      "agent": "/root/b_constraint_kernel",
+      "status": "PASS",
+      "main_mathematics": "PASS",
+      "scientific_execution_by_agent": false,
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/INITIAL_LAYER.md": "a1d97de61236a86a9e54cda73df529c2d487809b",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/INTERIOR_COLLAPSE.md": "55538630857788984ff0b70b2d26fddb63532473",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/SCALAR_COUNTERTERM.md": "784d93b8f14c51500c0c2ee75c8078629e7ece84",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/rescaled_kernel.py": "c105a84716c714df3a06fbbbf5c169f8705cd8f5",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/review.py": "6eae2034290852e528fc03939e89604df71083a7",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/common.py": "d4eaa6d03648d866b602070f6c6800e2deb6c335",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/rescaled_kernel.json": "b0ed4892db703b2244005dbce844326a21030683",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/scalar_counterterm.py": "1f44078b5d5323a94caa2843a94f8e7972b5a15d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/source_audits.json": "49f8e7a1c809a92c18e5d06dc48a91563f8e173c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/verification.json": "932990e0d27fa29ad7c944fe04c4add6174afde4"
+      },
+      "findings": [],
+      "scope": "Actual immutable CP2 reread; prior assigned findings verified addressed"
+    },
+    {
+      "commit": "d2795c79b8450471d6663de891cfb07e4517a95f",
+      "agent": "/root/c_prepared_record",
+      "status": "PASS",
+      "main_mathematics": "PASS",
+      "scientific_execution_by_agent": false,
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/INITIAL_LAYER.md": "a1d97de61236a86a9e54cda73df529c2d487809b",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/INTERIOR_COLLAPSE.md": "55538630857788984ff0b70b2d26fddb63532473",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/BOUNDED_WITNESS.md": "df32dee2e58909623a6a447d764d03f0812854f9",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/bounded_witness.py": "1cf56d18827557dc554d2b2b22dcd1f79a8a2382",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/DEPHASING_CONTROL.md": "02d184aeb2174919dfeeb869a33c160701416ccc",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/dephasing_control.py": "4c39ebe4e51bd4d12f8cdb5bc8a5e54124603453",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/snapshot_spectrum.py": "cf2da4ada68ab62a600471fd746ce629b686b853",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/common.py": "d4eaa6d03648d866b602070f6c6800e2deb6c335"
+      },
+      "findings": [],
+      "scope": "Actual immutable CP2 reread; prior assigned findings verified addressed"
+    },
+    {
+      "commit": "5da02028086444762e6d95ad16cf2ee462820252",
+      "agent": "/root/a_joint_propagation",
+      "status": "FINDINGS_ADDRESSED",
+      "main_mathematics": "PASS",
+      "scientific_execution_by_agent": false,
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/GAUSSIAN_CONTROL.md": "7367cf057fe0c04f2e50fb047238c46d0790c29d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/gaussian_control.py": "7b7b470cd33d9f5c44233b52d45163bce396a375",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/PROBE_RESPONSE.md": "beda7272edb54bf2550655ced0a197f1e568e715",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/probe_response.py": "1a0789ae18679a81d844eaddd1238fd94c1ff742",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/RESCALED_KERNEL.md": "c3d6fd90f0597caff83ade8b84504bfc770af4e6"
+      },
+      "findings": [
+        {
+          "id": "A5",
+          "issue": "Gaussian G5 must bound the unweighted bulk kernel and retain endpoint weights as tested forms.",
+          "resolution": "VERIFIED_ADDRESSED_BY_CP4_IMMUTABLE_REVIEW"
+        }
+      ],
+      "resolved_by_commit": "2338e5e8e9d2fad9dadbbb504d30593a9667d7ed"
+    },
+    {
+      "commit": "5da02028086444762e6d95ad16cf2ee462820252",
+      "agent": "/root/b_constraint_kernel",
+      "status": "FINDINGS_ADDRESSED",
+      "main_mathematics": "PASS",
+      "scientific_execution_by_agent": false,
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/GAUSSIAN_CONTROL.md": "7367cf057fe0c04f2e50fb047238c46d0790c29d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/gaussian_control.py": "7b7b470cd33d9f5c44233b52d45163bce396a375",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/PROBE_RESPONSE.md": "beda7272edb54bf2550655ced0a197f1e568e715",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/probe_response.py": "1a0789ae18679a81d844eaddd1238fd94c1ff742",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/rescaled_kernel.py": "9562b5c511fdd163978fe95245984297db443f8a",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/review.py": "3da52f4cd25cf9b1f3eaf08814a24f8047435a6d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/run_verification.py": "6ed13406fd4eacb22f26864534f45428981b14e1",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/BOUNDED_WITNESS.md": "df32dee2e58909623a6a447d764d03f0812854f9",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/gaussian_control.json": "313f653e9614844b7f89b6c45e22c4247fa82085",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/probe_response.json": "c792c4b801fb970c862697f85cb388f5c243b15b",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/verification.json": "9b44f7b33c5e5f4160c86dff3e1fdd7ff7a38aee"
+      },
+      "findings": [
+        {
+          "id": "B7",
+          "issue": "Define Vhat_M with fixed vacuum tail in the whole-bulk compact projection, distinct from the older identity-tail witness.",
+          "resolution": "VERIFIED_ADDRESSED_BY_CP4_IMMUTABLE_REVIEW"
+        }
+      ],
+      "resolved_by_commit": "2338e5e8e9d2fad9dadbbb504d30593a9667d7ed"
+    },
+    {
+      "commit": "5da02028086444762e6d95ad16cf2ee462820252",
+      "agent": "/root/c_prepared_record",
+      "status": "FINDINGS_ADDRESSED",
+      "main_mathematics": "PASS",
+      "scientific_execution_by_agent": false,
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/GAUSSIAN_CONTROL.md": "7367cf057fe0c04f2e50fb047238c46d0790c29d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/gaussian_control.py": "7b7b470cd33d9f5c44233b52d45163bce396a375",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/PROBE_RESPONSE.md": "beda7272edb54bf2550655ced0a197f1e568e715",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/probe_response.py": "1a0789ae18679a81d844eaddd1238fd94c1ff742",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/DEPHASING_CONTROL.md": "eca5b3cdfbef751dc2aeb4c25c0bf1ad1f7e4ee4",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/dephasing_control.py": "4c39ebe4e51bd4d12f8cdb5bc8a5e54124603453"
+      },
+      "findings": [
+        {
+          "id": "C7",
+          "issue": "Quantitative Gaussian rates, finite resource moments and retuning require the regular low-moment class; abstract normal-channel claims have broader scope.",
+          "resolution": "VERIFIED_ADDRESSED_BY_CP4_IMMUTABLE_REVIEW"
+        }
+      ],
+      "resolved_by_commit": "2338e5e8e9d2fad9dadbbb504d30593a9667d7ed"
+    },
+    {
+      "commit": "2338e5e8e9d2fad9dadbbb504d30593a9667d7ed",
+      "agent": "/root/a_joint_propagation",
+      "status": "FINDINGS_ADDRESSED",
+      "main_mathematics": "PASS",
+      "scientific_execution_by_agent": false,
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_ACTION.md": "7dd66dcf3119c387b170b39d436aadf44aa03658",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_action.py": "306d8d1623a4cc96112223ffa042d89b8ccd70d6",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_INFLUENCE.md": "1ed7150b90142f9c97e320664dfec9de8f3be693",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_influence.py": "ab3751d256ae1a8c4f927ce65617a3cd1fcb856d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/GAUSSIAN_CONTROL.md": "e5347d84a6838148727164b01c68664aa3d685bf",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/gaussian_control.py": "4db79a4eb85a6e1dfb08cff6ea53d33c7382879a",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/PROBE_RESPONSE.md": "803136f6761296a427b23b74756cd338ab788056",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/probe_response.py": "e0ad933554e1119d4f2d22712efa08b1dc29b14f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/common.py": "040b62a93e829fcee8856c19abeb166043985f03",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/SCALAR_COUNTERTERM.md": "204aa1ba83b9f04afadba7863e19bd8e1a4c493a",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/scalar_counterterm.py": "4158fb12c1abb9a698554478e0111c6319458fad"
+      },
+      "findings": [
+        {
+          "id": "A6",
+          "issue": "Name the original covariant frame before W, distinct from the old raw momentum frame.",
+          "resolution": "VERIFIED_ADDRESSED_BY_CP5_IMMUTABLE_REVIEW"
+        },
+        {
+          "id": "A7",
+          "issue": "The four-particle limit I2/2 is a squared norm.",
+          "resolution": "VERIFIED_ADDRESSED_BY_CP5_IMMUTABLE_REVIEW"
+        }
+      ],
+      "scope": "Actual immutable CP4 full source reads; reported blob IDs independently matched by root; prior assigned CP3 findings verified addressed",
+      "resolved_by_commit": "5614169c29525af873e2dc6fac634051997a9366"
+    },
+    {
+      "commit": "2338e5e8e9d2fad9dadbbb504d30593a9667d7ed",
+      "agent": "/root/b_constraint_kernel",
+      "status": "PASS",
+      "main_mathematics": "PASS",
+      "scientific_execution_by_agent": false,
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_ACTION.md": "7dd66dcf3119c387b170b39d436aadf44aa03658",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_action.py": "306d8d1623a4cc96112223ffa042d89b8ccd70d6",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_INFLUENCE.md": "1ed7150b90142f9c97e320664dfec9de8f3be693",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_influence.py": "ab3751d256ae1a8c4f927ce65617a3cd1fcb856d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/GAUSSIAN_CONTROL.md": "e5347d84a6838148727164b01c68664aa3d685bf",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/gaussian_control.py": "4db79a4eb85a6e1dfb08cff6ea53d33c7382879a",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/PROBE_RESPONSE.md": "803136f6761296a427b23b74756cd338ab788056",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/probe_response.py": "e0ad933554e1119d4f2d22712efa08b1dc29b14f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/common.py": "040b62a93e829fcee8856c19abeb166043985f03",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/SCALAR_COUNTERTERM.md": "204aa1ba83b9f04afadba7863e19bd8e1a4c493a",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/scalar_counterterm.py": "4158fb12c1abb9a698554478e0111c6319458fad",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/review.py": "8333afae500d83bd8026bbc7a6de96db47fdca3e",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/run_verification.py": "4a18d292c1818fb6f130d7168fda4188a9cf5989",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_action.json": "3a1345f60476fd716c3ab901496df004d00ba2b8",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_influence.json": "f083c1db5bcc1382a9e05f80e392cbdddde54812",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/verification.json": "3bfc9d5ccdcb7629a313494c3a602e8bd7e7ff76"
+      },
+      "findings": [],
+      "scope": "Actual immutable CP4 full source reads; reported blob IDs independently matched by root; prior assigned CP3 findings verified addressed"
+    },
+    {
+      "commit": "2338e5e8e9d2fad9dadbbb504d30593a9667d7ed",
+      "agent": "/root/c_prepared_record",
+      "status": "FINDINGS_ADDRESSED",
+      "main_mathematics": "PASS",
+      "scientific_execution_by_agent": false,
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_ACTION.md": "7dd66dcf3119c387b170b39d436aadf44aa03658",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_action.py": "306d8d1623a4cc96112223ffa042d89b8ccd70d6",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_INFLUENCE.md": "1ed7150b90142f9c97e320664dfec9de8f3be693",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_influence.py": "ab3751d256ae1a8c4f927ce65617a3cd1fcb856d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/GAUSSIAN_CONTROL.md": "e5347d84a6838148727164b01c68664aa3d685bf",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/gaussian_control.py": "4db79a4eb85a6e1dfb08cff6ea53d33c7382879a",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/PROBE_RESPONSE.md": "803136f6761296a427b23b74756cd338ab788056",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/probe_response.py": "e0ad933554e1119d4f2d22712efa08b1dc29b14f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/common.py": "040b62a93e829fcee8856c19abeb166043985f03"
+      },
+      "findings": [
+        {
+          "id": "C8",
+          "issue": "Exact influence Hessian already contains net preintegration contacts; do not add the bare NN contact twice.",
+          "resolution": "VERIFIED_ADDRESSED_BY_CP5_IMMUTABLE_REVIEW"
+        },
+        {
+          "id": "C9",
+          "issue": "Name the illustrative asymptotic coefficient explicitly as a lower bound.",
+          "resolution": "VERIFIED_ADDRESSED_BY_CP5_IMMUTABLE_REVIEW"
+        }
+      ],
+      "scope": "Actual immutable CP4 full source reads; reported blob IDs independently matched by root; prior assigned CP3 findings verified addressed",
+      "resolved_by_commit": "5614169c29525af873e2dc6fac634051997a9366"
+    },
+    {
+      "commit": "5614169c29525af873e2dc6fac634051997a9366",
+      "agent": "/root/a_joint_propagation",
+      "status": "FINDINGS_ADDRESSED",
+      "main_mathematics": "PASS",
+      "scientific_execution_by_agent": false,
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_ACTION.md": "0f169f86b420e1397774fbb0bb3377c1fd4b23be",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_action.py": "f76d94f347573d472c22f2c679331c01321a070c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_INFLUENCE.md": "ee027f8b7f19eb94742fdf1b21889be068d7f0bf",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_action.json": "94771b47a63b73a94bc074f3a20e6ee8ef1c2f6b"
+      },
+      "findings": [
+        {
+          "id": "A8",
+          "issue": "Reporting string must distinguish matrix identity tolerance1e-12 from illustrative risk quadrature tolerance1e-10; assertions remain before rounding.",
+          "resolution": "VERIFIED_ADDRESSED_BY_CP6_IMMUTABLE_REVIEW"
+        }
+      ],
+      "scope": "Actual immutable CP5 fetch/read; CP4 findings verified addressed, actual HS calibration and final Pi instrument passed",
+      "resolved_by_commit": "2346f8f496159c3712a410bb02f5523f554ad034"
+    },
+    {
+      "commit": "5614169c29525af873e2dc6fac634051997a9366",
+      "agent": "/root/b_constraint_kernel",
+      "status": "PASS",
+      "main_mathematics": "PASS",
+      "scientific_execution_by_agent": false,
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_ACTION.md": "0f169f86b420e1397774fbb0bb3377c1fd4b23be",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_action.py": "f76d94f347573d472c22f2c679331c01321a070c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_INFLUENCE.md": "ee027f8b7f19eb94742fdf1b21889be068d7f0bf",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/README.md": "3583e2eccef7bf298d9e1662324e51c8d22aa74d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/NEXT_GATE.md": "c46f914454435873e3ca60dfd4dc4f8e68bcb58f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/SESSION.md": "31225ff0d94f826f33c808d193047aacdfb8328b",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/source_audits.json": "1508d35ff70ba545d65243dc7b6ec5927d6d8147",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/review.json": "7ea4501bd439a861e503fb60fc61aa492e4b5e80"
+      },
+      "findings": [],
+      "scope": "Actual immutable CP5 fetch/read; CP4 findings verified addressed, actual HS calibration and final Pi instrument passed"
+    },
+    {
+      "commit": "5614169c29525af873e2dc6fac634051997a9366",
+      "agent": "/root/c_prepared_record",
+      "status": "FINDINGS_ADDRESSED",
+      "main_mathematics": "PASS",
+      "scientific_execution_by_agent": false,
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_ACTION.md": "0f169f86b420e1397774fbb0bb3377c1fd4b23be",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_action.py": "f76d94f347573d472c22f2c679331c01321a070c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_INFLUENCE.md": "ee027f8b7f19eb94742fdf1b21889be068d7f0bf",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_action.json": "94771b47a63b73a94bc074f3a20e6ee8ef1c2f6b",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_influence.json": "168e0f03b9a50a984fb070441b2e13b307284d49"
+      },
+      "findings": [
+        {
+          "id": "C10",
+          "issue": "Reporting string must distinguish matrix identity tolerance1e-12 from illustrative risk quadrature tolerance1e-10; assertions remain before rounding.",
+          "resolution": "VERIFIED_ADDRESSED_BY_CP6_IMMUTABLE_REVIEW"
+        }
+      ],
+      "scope": "Actual immutable CP5 fetch/read; CP4 findings verified addressed, actual HS calibration and final Pi instrument passed",
+      "resolved_by_commit": "2346f8f496159c3712a410bb02f5523f554ad034"
+    },
+    {
+      "commit": "2346f8f496159c3712a410bb02f5523f554ad034",
+      "agent": "/root/a_joint_propagation",
+      "status": "FINDINGS_ADDRESSED",
+      "main_mathematics": "PASS_WITH_CONDITIONAL_MOMENT_CORRECTION",
+      "scientific_execution_by_agent": false,
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_ACTION.md": "99a33c0102058741966898a99ff1e720d8c8e0b0",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_action.py": "8a6147ebc0d2e453670ff2a453510ca81cf1d282",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_action.json": "8ad43ffe29d3a21da70a785ee99639c1d907ec4c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/UNIFICATION_PROGRESS.md": "74cf80df9a907d5319864078f12d2e0ace52dd38"
+      },
+      "findings": [
+        {
+          "id": "A9",
+          "issue": "M11 fixed-history influence derivatives use conditional E_q,V_q, distinct from M13 source-averaged energy cumulants; M12 marginal covariance remains correct.",
+          "resolution": "VERIFIED_ADDRESSED_BY_CP7_IMMUTABLE_REVIEW"
+        }
+      ],
+      "scope": "Actual immutable CP6 fetched/read; fixed f evolution, total variance, homogeneous stress, CP instrument and remaining physical scope checked",
+      "resolved_by_commit": "779b9156a35d88b8320459c865520c685f340d08"
+    },
+    {
+      "commit": "2346f8f496159c3712a410bb02f5523f554ad034",
+      "agent": "/root/b_constraint_kernel",
+      "status": "FINDINGS_ADDRESSED",
+      "main_mathematics": "PASS_WITH_CONDITIONAL_MOMENT_CORRECTION",
+      "scientific_execution_by_agent": false,
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_ACTION.md": "99a33c0102058741966898a99ff1e720d8c8e0b0",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_action.py": "8a6147ebc0d2e453670ff2a453510ca81cf1d282",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/UNIFICATION_PROGRESS.md": "74cf80df9a907d5319864078f12d2e0ace52dd38",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/README.md": "ed6a36609eb7c94e0c75a9acabcb95e5caa88f2f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/NEXT_GATE.md": "e3496f651aa8c858eda38a290ecacc4aa07384bb",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/SESSION.md": "bd50179eb832fdf17819eef36ae47b40cc8d6ae2",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/AUDIT.md": "b77692e08f9705b770978a8642d8f69de5f993bf"
+      },
+      "findings": [
+        {
+          "id": "B8",
+          "issue": "M11 fixed-history influence derivatives use conditional E_q,V_q, distinct from M13 source-averaged energy cumulants; M12 marginal covariance remains correct.",
+          "resolution": "VERIFIED_ADDRESSED_BY_CP7_IMMUTABLE_REVIEW"
+        }
+      ],
+      "scope": "Actual immutable CP6 fetched/read; fixed f evolution, total variance, homogeneous stress, CP instrument and remaining physical scope checked",
+      "resolved_by_commit": "779b9156a35d88b8320459c865520c685f340d08"
+    },
+    {
+      "commit": "2346f8f496159c3712a410bb02f5523f554ad034",
+      "agent": "/root/c_prepared_record",
+      "status": "FINDINGS_ADDRESSED",
+      "main_mathematics": "PASS_WITH_CONDITIONAL_MOMENT_CORRECTION",
+      "scientific_execution_by_agent": false,
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_ACTION.md": "99a33c0102058741966898a99ff1e720d8c8e0b0",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_action.py": "8a6147ebc0d2e453670ff2a453510ca81cf1d282",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_action.json": "8ad43ffe29d3a21da70a785ee99639c1d907ec4c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_INFLUENCE.md": "ee027f8b7f19eb94742fdf1b21889be068d7f0bf",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/NEXT_GATE.md": "e3496f651aa8c858eda38a290ecacc4aa07384bb"
+      },
+      "findings": [
+        {
+          "id": "C11",
+          "issue": "M11 fixed-history influence derivatives use conditional E_q,V_q, distinct from M13 source-averaged energy cumulants; M12 marginal covariance remains correct.",
+          "resolution": "VERIFIED_ADDRESSED_BY_CP7_IMMUTABLE_REVIEW"
+        }
+      ],
+      "scope": "Actual immutable CP6 fetched/read; fixed f evolution, total variance, homogeneous stress, CP instrument and remaining physical scope checked",
+      "resolved_by_commit": "779b9156a35d88b8320459c865520c685f340d08"
+    },
+    {
+      "commit": "779b9156a35d88b8320459c865520c685f340d08",
+      "agent": "/root/a_joint_propagation",
+      "status": "PASS",
+      "main_mathematics": "PASS",
+      "scientific_execution_by_agent": false,
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_ACTION.md": "3cba43394009d22b9af6f150275101c8403340bf",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_action.py": "d9a7d40c8481a2d2f491c479ac22d8a945093bb1",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/UNIFICATION_PROGRESS.md": "535ac73d5f4ba194fe4f4fad96f72356fbe4d8b9"
+      },
+      "findings": [],
+      "scope": "Actual immutable CP7 targeted reread; conditional/marginal correction verified; all prior assigned findings resolved"
+    },
+    {
+      "commit": "779b9156a35d88b8320459c865520c685f340d08",
+      "agent": "/root/b_constraint_kernel",
+      "status": "PASS",
+      "main_mathematics": "PASS",
+      "scientific_execution_by_agent": false,
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_ACTION.md": "3cba43394009d22b9af6f150275101c8403340bf",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_action.py": "d9a7d40c8481a2d2f491c479ac22d8a945093bb1",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/source_audits.json": "3753b2c5b01b6b51a4310f9d290b09cd346bc51f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/review.json": "e64474679a1e82e4638bd978745e8ae3b08cd909"
+      },
+      "findings": [],
+      "scope": "Actual immutable CP7 targeted reread; conditional/marginal correction verified; all prior assigned findings resolved"
+    },
+    {
+      "commit": "779b9156a35d88b8320459c865520c685f340d08",
+      "agent": "/root/c_prepared_record",
+      "status": "PASS",
+      "main_mathematics": "PASS",
+      "scientific_execution_by_agent": false,
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/MEMORY_ACTION.md": "3cba43394009d22b9af6f150275101c8403340bf",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_action.py": "d9a7d40c8481a2d2f491c479ac22d8a945093bb1",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/memory_action.json": "0250d0a9b6ec33dc656449bb5a450499b33ed89a"
+      },
+      "findings": [],
+      "scope": "Actual immutable CP7 targeted reread; conditional/marginal correction verified; all prior assigned findings resolved"
+    }
+  ],
+  "immutable_review_file_identities": 176,
+  "unique_commit_file_count": 106,
+  "external_human_peer_review": false,
+  "machine_formal_proof": false
+}

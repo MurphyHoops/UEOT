@@ -1,0 +1,288 @@
+# Bounded probes: fixed-clock decoupling and an actual fast-time instrument
+
+## P1. Picture, total system and comparison
+
+Use the unchanged complete source/geometry propagator
+
+    W_K(u)=Ucal_K(u,u_i), epsilon_K=log K/K,
+    Wtilde_K(s)=W_K(u_i+epsilon_K s),
+    F_s=exp[is/(2kappa)], H_fast=-1/(2kappa).
+
+The interaction picture of a source operator A is W_K* A W_K,
+not the reversed conjugation. The probe is finite dimensional.
+A bounded perturbation defines an actual finite-K total unitary by
+the Dyson equation on Hilbert space. This does not by itself preserve
+the old Q_K energy domain or its unbounded stress moments.
+
+Every statement below compares complete instruments, including all
+records. Fixed-clock comparisons are with the SAME-K free unitary;
+a fixed-clock continuum limit of that free family is not assumed.
+
+## P2. Fixed-strength compact probes decouple on the original clock
+
+Let A be compact on the WHOLE fixed bulk Hilbert space, and h in L^1
+on a fixed compact original-u interval. INTERIOR_COLLAPSE I4 implies
+
+    ||integral h(u) W_K(u)* A W_K(u)du|| ->0.          (P.1)
+
+For positive A and h, the integral is positive. If its operator norm
+did not tend to zero, choose a nearly maximizing unit vector for each
+K as that K's normal initial state. This contradicts I4, which covers
+arbitrary sequences of normal inputs. Decompose general compact A
+into real/imaginary positive/negative parts, and approximate general
+h in L^1, to obtain (P.1).
+
+Consider a fixed finite sum of self-adjoint total interactions
+
+    B_I,K(u)=sum_j h_j(u)[W_K(u)* A_j W_K(u)] tensor D_j,
+    C=sum_j ||h_j||_1 ||A_j|| ||D_j||<infinity,
+
+with compact A_j and bounded probe matrices D_j. Fixed norm-continuous
+probe free evolution can be included in D_j(u), using uniform step
+approximation. For each finite K, strong continuity of W_K and its
+adjoint plus compactness of A_j make the conjugation norm continuous.
+Thus the following are legitimate norm-Bochner integrals.
+
+Set G_K(t)=integral_a^t B_I,K(u)du. Equation P.1 at each t and the
+common L^1 continuity modulus give sup_t||G_K(t)||->0 by a finite
+time grid. The EXACT interaction equation i V_K'=B_I,K V_K gives,
+by integration by parts,
+
+    V_K(t)-I=-iG_K(t)V_K(t)
+                 +integral_a^t G_K(u)B_I,K(u)V_K(u)du,
+    sup_t||V_K(t)-I||<=sup_t||G_K(t)||(1+C)->0.        (P.2)
+
+Time ordering has been retained. There is no Born truncation or
+unjustified assumption of uniform derivatives of B_I,K.
+
+The coupled and same-K free unitary channels therefore differ in
+diamond norm by at most 2sup||V_K-I||, tending to zero. Any complete
+probe instrument and arbitrary reference preserve that bound.
+For an initially independent probe, its free marginal is independent
+of the source input, so these couplings acquire no asymptotically
+nontrivial new source record.
+
+Compact here means operator compactness, not compact spacetime support.
+This is a specified class. Multiplication B(kappa), geometry rank-one
+tensor I_source, finite-prefix P_M tensor I_tail, Weyl operators and
+stress operators are generally NOT compact on the whole bulk space.
+Cutoff-dependent couplings, growing strengths, shrinking windows and
+unbounded/local field interactions are not excluded by this theorem.
+Renormalized rare-success conditioning is not controlled if its
+success probability vanishes.
+
+## P3. A necessary interaction-strength scale on the fast window
+
+For ANY bounded added interaction, the exact interaction-picture
+Duhamel estimate is
+
+    ||V_I-I||<=integral ||H_int,K(u)||du.
+
+The trace distance of the full output from the same-K free output
+is at most that integral, including an arbitrary reference.
+If a complete output differs by at least delta>0 during an original
+window of length epsilon_K S, its peak strength must satisfy
+
+    sup ||H_int,K|| >=delta/(epsilon_K S)
+         =delta K/(S log K).                         (P.3)
+
+This is an Omega(K/log K) necessary bound in the declared u-clock
+Hamiltonian units. It is not an apparatus energy, four-dimensional
+stress, proper-time power or duration in seconds.
+
+## P4. An actual bounded finite-K control with a nontrivial fast limit
+
+Take a qubit with zero free Hamiltonian, fixed bounded self-adjoint A,
+real integrable h, and the explicitly changed total interaction
+
+    H_int,K(u)=(g/epsilon_K)h((u-u_i)/epsilon_K) A tensor sigma_y.
+
+At every finite K it is a bounded time-dependent perturbation.
+After rescaling, its interaction-picture generator is
+
+    B_I,K(s)=g h(s)[Wtilde_K(s)* A Wtilde_K(s)] tensor sigma_y.
+
+INITIAL_LAYER gives uniform strong convergence of both Wtilde_K and
+its adjoint. Hence B_I,K tends strongly to
+g h(s)F_s* A F_s tensor sigma_y, with a common integrable norm bound.
+Dyson's series, termwise dominated convergence and its factorial
+tail bound prove uniform strong convergence of the complete coupled
+unitary and adjoint to the evolution generated by
+
+    H_fast tensor I+g h(s) A tensor sigma_y.
+
+Every fixed normal input, shared reference, and complete finite probe
+readout consequently has trace-norm convergent CQ output. A
+trace-convergent prepared input family is also allowed. For general
+bounded A this is not uniform-input or diamond convergence.
+
+If A is whole-bulk compact, the interaction-picture conjugations
+converge in operator norm uniformly in s. In that case V_I,K converges
+in operator norm, although the full free Wtilde_K factor still only
+has a strong limit. Section P7 below supplies a separate extension
+for the specifically controlled Gaussian family.
+
+## P5. Explicit pulse, complete Kraus operators and error
+
+Let A=A*=A^2 preserve D(H_fast), with bounded commutator of norm C_A.
+Then A(s)=F_s* A F_s is norm Lipschitz:
+
+    ||A(s)-A(s_0)||<=C_A |s-s_0|.
+
+Take nonnegative f in C_c^infinity(-1,1), integral f=1,
+mu_1=integral |r|f(r)dr, and a pulse inside the rescaled window,
+
+    h_w(s)=w^-1 f((s-s_0)/w).
+
+The effective interaction pulse differs from
+exp[-ig A(s_0) tensor sigma_y] in operator norm by at most
+
+    |g| w mu_1 C_A.                                  (P.4)
+
+This is direct unitary Duhamel. For the initial qubit |0_z>, the ideal
+complete two-outcome instrument has interaction-picture Kraus operators
+
+    M_0=I-(1-cos g)A(s_0), M_1=sin g A(s_0),
+    M_0* M_0+M_1* M_1=I.
+
+Its click probability is sin^2(g)Tr[A rho_free(s_0)].
+At g=pi/2 this is the projection instrument (I-A(s_0),A(s_0)).
+Restore the free factors before and after the pulse in the Schrodinger
+picture. Both outcome records remain in the same normal CQ output.
+
+The complete CQ trace-norm error due to pulse width is at most
+2|g|w mu_1 C_A, with an arbitrary reference. First FIX w and take
+K to infinity using P4; then reduce w. No arbitrary joint w_K limit
+has been proved.
+
+The physical original-u duration is 2epsilon_K w for this support,
+the peak strength is |g| ||f||_infinity/(epsilon_K w), and the integrated
+strength is |g|. This explicitly attains the necessary scaling P3 at
+fixed w. It is not a uniformly bounded instantaneous control.
+
+## P6. A legal finite-cutoff witness, including the actual C9 input
+
+An infinite conditional-tail projection must not be silently called a
+finite-K operation. Start instead with fixed M and the C5 finite-prefix
+isometry V_M from BOUNDED_WITNESS. Explicitly attach the fixed omega
+vacuum above M, Vhat_M=iota_{infinity,M}V_M. Choose a finite-rank low
+projection P_L and define the WHOLE-bulk finite-rank projection
+
+    A_{M,L}=Vhat_M P_L Vhat_M*
+       =(V_M P_L V_M*) tensor |omega_{>M}><omega_{>M}|.
+
+This differs from the older witness with identity on the unused tail.
+
+It has compact kappa support. For K>=M it preserves the physical
+vacuum-tail subspace i_K H_K. Its restriction there is a bounded
+finite-K operation; extend it by zero on the orthogonal complement
+when applying P2/P4.
+
+The base free propagation preserves this subspace. Thus the compact
+zero-extension result first bounds the physical-sector difference.
+Extending the physical coupled/free pair with identity on the unused
+tail preserves that norm. For the fast strong limit, the subspace
+projections E_K=i_K i_K* tend strongly to I, and the two extensions
+agree on E_K; the difference on a fixed vector is bounded by
+2||(I-E_K)psi||. This is a two-step transfer, NOT an application of
+compactness to the noncompact identity-tail interaction.
+
+Let tau be the fixed low input (a shared reference is allowed),
+w_L=Tr(P_L tau)>0, chi(s)=integral n exp[is/(2kappa)], and
+delta_M=||Vhat_M-V_infinity||op. The fixed-prefix bounds give delta_M->0.
+For rho_M=Vhat_M tau Vhat_M*,
+
+    Tr A_{M,L}rho_M=w_L,
+    Tr A_{M,L}F_s rho_M F_s*=w_L|chi(s)|^2.
+
+The actual C5 limit rho_infinity differs from rho_M by trace distance
+at most delta_M. Its initial/evolved projection gap is therefore
+
+    >=w_L[1-|chi(s)|^2]-2delta_M.                     (P.5)
+
+For s>0 a nondegenerate smooth profile has |chi(s)|<1. Select L then
+M once so P.5 is positive. Actual C9 converges in trace norm to that
+C5 limit, and INITIAL_LAYER transports this SAME fixed effect to the
+actual complete fast evolution. Its commutator norm is
+
+    C_A=(1/2)sqrt(I_2-I_1^2).
+
+Choose pulse width so P.4 is smaller than a fixed fraction of the
+positive gap, then K sufficiently large. This constructs a bounded
+finite-K probe readout on the actual C9 preparation. A single cylinder
+pure state is a simpler special case with w_L=1.
+
+The filter is global and acts on every retained high-mode vacuum
+factor. Its mathematical finite-K existence is not locality or an
+autonomous implementation. Geometry-only projections tensor I_source
+are another valid fast-pulse choice but do not satisfy the compact
+hypothesis of P2.
+
+## P7. A proved composition with the growing Gaussian preparation
+
+The fixed-normal-input theorem P4 alone does not cover sigma_K->infinity,
+since those preparations have no normal limiting state. Keep the
+initial independent pure qubit from P5. For a fixed
+WHOLE-bulk compact A there is an additional argument.
+
+On source tensor finite probe, V_I,K->V_I,infinity in operator norm
+uniformly in s. The operator C(s)=V_I,infinity(s)-I is compact: each
+Dyson term is a norm integral of compact operators and the series
+converges in norm. Also s->C(s) is norm continuous. Uniform strong
+convergence of Wtilde_K to F_s on this compact family gives
+
+    sup_s||(Wtilde_K-F_s)C(s)||op->0.
+
+For the REGULAR Gaussian-prepared family of G4 and its purification
+Psi_sigma,K, including its memory
+and any reference, the exact decomposition is
+
+    (Wtilde_K V_I,K-F_s V_I,infinity)Psi_sigma,K
+      =Wtilde_K(V_I,K-V_I,infinity)Psi_sigma,K
+       +(Wtilde_K-F_s)C(s)Psi_sigma,K
+       +(Wtilde_K-F_s)Psi_sigma,K.                    (P.6)
+
+The first two terms are bounded in operator norm BEFORE tensoring the
+reference identity. C(s) tensor I_reference need not be compact.
+The last term is precisely the separately proved Gaussian profile
+estimate O((1+sigma^4)/sqrt(log K)). Thus sigma_K=(log K)^1/10 gives
+an actual coupled-versus-effective comparison for the SAME-K
+Gaussian-prepared family. There is still no limiting normal input;
+no unproved derivative/QFI convergence has been inserted.
+
+A further consequence closes the readout question for this class.
+GAUSSIAN_CONTROL gives ||rho_sigma,K||op<=C_M/sigma, with
+C_M=sqrt(2pi)||p_x||infinity, including the retuned C9 mixture.
+Since C(s) is compact, Tr rho_sigma,K C(s)*C(s)->0. Hence this compact
+probe's effective full output differs from the free output by a trace
+distance tending to zero. The same holds for the actual control,
+because V_I,K->V_I,infinity in operator norm. It includes a retained
+coherent memory/reference: the vector norm only uses the reduced
+source/probe density.
+
+For Hilbert--Schmidt A and a pure qubit input, the quantitative estimate is
+
+    ||V_I,infinity-I||_2
+       <=sqrt(2)|g| ||h||_1 ||A||_2,
+    D_tr(controlled output,free output)
+       <=sqrt(2C_M/sigma)|g| ||h||_1 ||A||_2.           (P.7)
+
+For a rank-r ideal projection readout, click probability is at most
+r C_M/sigma. Postselecting that branch does not remove its vanishing
+success probability or the retained failure record.
+
+This does not erase the original phase gap in the COMPLETE memory.
+The fixed decomposable memory-controlled witness in GAUSSIAN_CONTROL
+is not a whole-bulk compact source-only coupling. Recovery by an
+actual device that accesses that memory is a different physical gate.
+
+## P8. Physical scope
+
+The new probe and controller change the total system. Their stress,
+contact terms, lapse rows, energy/current domains, local covariance,
+autonomous preparation and calibration have not been included in the
+original gravitational source. The original common mean geometry
+cannot simply be inherited after adding this interaction.
+This is a normal complete quantum instrument and an explicit
+interaction-strength comparison, not a full Einstein--CTP apparatus
+solution or physical unification.

@@ -1,0 +1,148 @@
+{
+  "status": "INDEPENDENT_NARROW_ALGEBRA_AND_ANALYTIC_STEP_REVIEW",
+  "source_sha256": {
+    "propagation/background.py": "a961641afade6f9aaacef4e5dcffaa3b6cc408265d0263dc4bad46dbf6b9de2e",
+    "propagation/finite_modes.py": "6a3fe48efef7441d444e6834075f0380da03d2957f0c87bdeae2c0080d2a1ef0",
+    "stress/tail.py": "36d8301da25c481c3a97681fadaf7b0bcb522fed33b88d7c9e8b32c04010421d",
+    "propagation/result.json": "6d34ea46c7e27aacad159739504a17cace7aef046674fc693a6ecb06aee8c6b6",
+    "propagation/extra_eta0_256.json": "2767ac911243d69d18a295f9326d6b904dcd2dfd235e0b6c739d1b15516983bb",
+    "stress/tail_K256_M1024.json": "0cb769c390039e7b05ecc3a99258c7218ede5ee815b9c1579bba8f943a9ebfad"
+  },
+  "C_static_analytic_step": {
+    "constant_scale_factor": true,
+    "modes": [
+      {
+        "k": 2,
+        "exact_analytic_energy_discrepancy": [
+          "2979/20000000000000000000000000000000000000000000000000",
+          "149/1000000000000000000000000000000000000000000000000"
+        ],
+        "certified_energy_error": [
+          "65790924764094310669442681/50000000000000000000000000000000000000000000000000",
+          "131581849528188621338885367/100000000000000000000000000000000000000000000000000"
+        ],
+        "false_bound_without_Taylor_remainder": [
+          "-1/50000000000000000000000000000000000000000000000000",
+          "3/100000000000000000000000000000000000000000000000000"
+        ],
+        "omitted_remainder_negative_control_rejected": true
+      },
+      {
+        "k": 17,
+        "exact_analytic_energy_discrepancy": [
+          "5712696586201467/5000000000000000000000000000000000000000000000000",
+          "22850786344805869/20000000000000000000000000000000000000000000000000"
+        ],
+        "certified_energy_error": [
+          "65790924764094310669442681/50000000000000000000000000000000000000000000000000",
+          "131581849528188621338885367/100000000000000000000000000000000000000000000000000"
+        ],
+        "false_bound_without_Taylor_remainder": [
+          "-1/50000000000000000000000000000000000000000000000000",
+          "3/100000000000000000000000000000000000000000000000000"
+        ],
+        "omitted_remainder_negative_control_rejected": true
+      },
+      {
+        "k": 64,
+        "exact_analytic_energy_discrepancy": [
+          "3560138446870372350865431/100000000000000000000000000000000000000000000000000",
+          "890034611717593087716359/25000000000000000000000000000000000000000000000000"
+        ],
+        "certified_energy_error": [
+          "65790924764094310669442681/50000000000000000000000000000000000000000000000000",
+          "131581849528188621338885367/100000000000000000000000000000000000000000000000000"
+        ],
+        "false_bound_without_Taylor_remainder": [
+          "-1/50000000000000000000000000000000000000000000000000",
+          "3/100000000000000000000000000000000000000000000000000"
+        ],
+        "omitted_remainder_negative_control_rejected": true
+      }
+    ],
+    "cap_monotonicity_condition_guard": true
+  },
+  "B_W2_and_IBP": {
+    "T1_is_time_derivative": true,
+    "T2_is_time_derivative": true,
+    "defect_R_equals_delta_squared_Rn": true,
+    "phase_integration_by_parts_identity": true,
+    "degeneracy_aware_integral_powers": {
+      "5": {
+        "diagonal_integral_power": 6,
+        "energy_cross_constant_integral_power": 2,
+        "energy_cross_inverse_k_integral_power": 3,
+        "pressure_cross_integral_power": 1
+      },
+      "6": {
+        "diagonal_integral_power": 8,
+        "energy_cross_constant_integral_power": 3,
+        "energy_cross_inverse_k_integral_power": 4,
+        "pressure_cross_integral_power": 2
+      }
+    }
+  },
+  "B_finite_unresolved_gap": {
+    "eta_zero_gap_identity": true,
+    "static_binomial_first_tail_coefficient": "1/16",
+    "binomial_successive_ratio": "(j - 1/2)/(j + 1)",
+    "finite_unresolved_sum_lower": "-1/(32*K^2*(1-1/(K+1)^2)) - log(J/K)/2",
+    "scope": "K<k<=J; full k^2 degeneracy; J>K>=2",
+    "infinite_tail_still_required": true
+  },
+  "initial_density_lower_independent_audit": {
+    "method": "independent_eta0_closed_form_W2_and_finite_sum",
+    "scope": "mu1_and_no_extra_finite_curvature_term",
+    "rows": [
+      {
+        "finite_K": 64,
+        "splice_J": 3072,
+        "rho_cutoff": [
+          "66393343374890571536513372285278273469071362702583/100000000000000000000000000000000000000000000000000",
+          "66393343374890629248815800705471670689976651684393/100000000000000000000000000000000000000000000000000"
+        ],
+        "middle_lower": [
+          "-544772520759977393227702752414749780913131197111/100000000000000000000000000000000000000000000000000",
+          "-272386260379988696613851376207374890456565598553/50000000000000000000000000000000000000000000000000"
+        ],
+        "infinite_UV_lower": [
+          "-8573897000286301363533870327658273144089841939/50000000000000000000000000000000000000000000000000",
+          "-17147794000572602727067740655316546288179683873/100000000000000000000000000000000000000000000000000"
+        ],
+        "full_rho_lower": [
+          "65831423060130021540558601792208207141870051821599/100000000000000000000000000000000000000000000000000",
+          "16457855765032505385139650448052051785467512955401/25000000000000000000000000000000000000000000000000"
+        ],
+        "exceeds_half": true
+      },
+      {
+        "finite_K": 256,
+        "splice_J": 3072,
+        "rho_cutoff": [
+          "151383169036991747917029009314179861937162640669589/100000000000000000000000000000000000000000000000000",
+          "151393010398115641869852182663417192396936190057609/100000000000000000000000000000000000000000000000000"
+        ],
+        "middle_lower": [
+          "-43710725629532955828169457653652781156011238003/12500000000000000000000000000000000000000000000000",
+          "-349685805036263646625355661229222249248089904019/100000000000000000000000000000000000000000000000000"
+        ],
+        "infinite_UV_lower": [
+          "-8573897000286301363533870327658273144089841939/50000000000000000000000000000000000000000000000000",
+          "-17147794000572602727067740655316546288179683873/100000000000000000000000000000000000000000000000000"
+        ],
+        "full_rho_lower": [
+          "37754083859488727916919146478073830785406592770423/25000000000000000000000000000000000000000000000000",
+          "151016335437954911667676585912295323141626371081697/100000000000000000000000000000000000000000000000000"
+        ],
+        "exceeds_half": true
+      }
+    ],
+    "geometry_acceleration_not_imposed_as_initial_data": true
+  },
+  "not_claimed": [
+    "full finite-mode replay",
+    "full UV numerical replay",
+    "physical coupling selected",
+    "finite hbar remainder"
+  ]
+}

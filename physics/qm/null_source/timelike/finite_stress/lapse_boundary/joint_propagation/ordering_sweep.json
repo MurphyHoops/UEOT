@@ -1,0 +1,73 @@
+{
+  "M_K": "K+max(eta_K,0)",
+  "complete_generator_retained": true,
+  "epsilon_K": "log K/M_K",
+  "fixed_original_test_kernel_for_full_sequence": "ZERO",
+  "full_field_Einstein_CTP_device_solution": false,
+  "geometry_ODE_integrations": 0,
+  "mode_ODE_integrations": 0,
+  "ordering_class": "any eta_K>=-1/4, same selected Friedrichs family",
+  "other_boundary_realizations_covered": false,
+  "phase_examples": [
+    {
+      "derivative_outward": [
+        -4.098080732190424,
+        -0.4604016236830594
+      ],
+      "lambda": 0.0,
+      "phase_outward": [
+        0.29158769499927095,
+        1.5026296018031555
+      ]
+    },
+    {
+      "derivative_outward": [
+        -3.1768663342667853,
+        -0.379927256543458
+      ],
+      "lambda": 0.25,
+      "phase_outward": [
+        0.2844802449336637,
+        1.2406085649887304
+      ]
+    },
+    {
+      "derivative_outward": [
+        -2.255651936343146,
+        -0.29945288940385656
+      ],
+      "lambda": 0.5,
+      "phase_outward": [
+        0.2773727948680565,
+        0.978587528174305
+      ]
+    },
+    {
+      "derivative_outward": [
+        -0.4132231404958678,
+        -0.1385041551246537
+      ],
+      "lambda": 1.0,
+      "phase_outward": [
+        0.26315789473684204,
+        0.4545454545454546
+      ]
+    }
+  ],
+  "physical_unification": "OPEN",
+  "predecessor_scientific_modules_imported_or_executed": 0,
+  "schema": "ueot-joint-propagation-ordering_sweep/1",
+  "source_sha256": {
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/ADIABATIC_CONNECTION.md": "2f877312a535103deb72e6da9599e06744f1282c88040c52f6b69d4a29ff4a14",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/INITIAL_LAYER.md": "8ccb07ddfcaa61ea34aa657e8decc610920b06a4a9478f4780f4c71ecdc6107a",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/INTERIOR_COLLAPSE.md": "5dc550b53ec326b843c311e945a6ed64e03571257e9c7e0123065e2b2dcb8ac0",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/ORDERING_SWEEP.md": "0eaec40b7836ecf314c1d88468153df58b1c4f6241da7cf607f644ab9c3afd2d",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/common.py": "e5cada98ee5de6a679996b64dc23af4aeb2cea97dc45514382f98888ed5512e8",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_propagation/ordering_sweep.py": "22fd9bb55e13c19d77fe3b1be2c79c80ebfb8fb1b8460051124acf769d6dbcf4",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/relational_coupled/ALL_SIGN_EVOLUTION.md": "cd9eba699c9e33f7c3054f380a8e98ce2984c08e3256d56a1fa9e89c2e2353fd"
+  },
+  "status": "PASS",
+  "subsequence_phase": "lambda/(2 kappa)+2(1-lambda)/kappa^3",
+  "uniform_ordering_form_domain_assumed": false,
+  "verification_kind": "exact algebra, outward interval checks, or explicitly tolerance-based floating-point regressions; analytic proofs stated separately"
+}
