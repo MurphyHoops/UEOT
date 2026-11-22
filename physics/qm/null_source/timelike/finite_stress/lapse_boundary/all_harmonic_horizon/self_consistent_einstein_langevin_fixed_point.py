@@ -16,78 +16,80 @@ def verify_s3_tt_wave_and_cmc_lapse_symbolically() -> dict:
     y1, y2, y3 = sp.symbols("y1 y2 y3", real=True)
     ys = [y1, y2, y3]
     r2 = y1**2 + y2**2 + y3**2
-    denom = 1 + r2
-    xs = [2 * y1 / denom, 2 * y2 / denom, 2 * y3 / denom, (1 - r2) / denom]
-
-    fac = sp.Rational(4, 1) / denom**2
-    gamma_inv_diag = denom**2 / sp.Rational(4, 1)
-    jac = [[sp.diff(xs[a], ys[i]) for i in range(3)] for a in range(4)]
+    d_den = 1 + r2
+    xs_num = [2 * y1, 2 * y2, 2 * y3, 1 - r2]  # D * x_a
 
     # Left-invariant unit Killing 1-forms e^1, e^2 on unit S^3:
-    # e^1 = x_4 dx_1 - x_1 dx_4 + x_2 dx_3 - x_3 dx_2
-    # e^2 = x_4 dx_2 - x_2 dx_4 + x_3 dx_1 - x_1 dx_3
-    e1_amb = [xs[3], -xs[2], xs[1], -xs[0]]
-    e2_amb = [xs[2], xs[3], -xs[0], -xs[1]]
-    e1 = [sp.simplify(sum(e1_amb[a] * jac[a][i] for a in range(4))) for i in range(3)]
-    e2 = [sp.simplify(sum(e2_amb[a] * jac[a][i] for a in range(4))) for i in range(3)]
+    # Since sum_a e_amb_num[a] * xs_num[a] == 0 identically, e_i = e_num[i] / D^2 and h_{ij}^{TT} = H_num[i][j] / D^4:
+    e1_amb_n = [xs_num[3], -xs_num[2], xs_num[1], -xs_num[0]]
+    e2_amb_n = [xs_num[2], xs_num[3], -xs_num[0], -xs_num[1]]
+    require(sp.expand(sum(e1_amb_n[a] * xs_num[a] for a in range(4))) == 0, "Orthogonality e1 . x == 0")
+    require(sp.expand(sum(e2_amb_n[a] * xs_num[a] for a in range(4))) == 0, "Orthogonality e2 . x == 0")
 
-    h_tt = [[sp.simplify(e1[i] * e1[j] - e2[i] * e2[j]) for j in range(3)] for i in range(3)]
+    e1_n = [sp.expand(sum(e1_amb_n[a] * sp.diff(xs_num[a], ys[i]) for a in range(4))) for i in range(3)]
+    e2_n = [sp.expand(sum(e2_amb_n[a] * sp.diff(xs_num[a], ys[i]) for a in range(4))) for i in range(3)]
+    h_tt = [[sp.expand(e1_n[i] * e1_n[j] - e2_n[i] * e2_n[j]) / (d_den**4) for j in range(3)] for i in range(3)]
+    gamma_inv_diag = (d_den**2) / sp.Rational(4, 1)
 
-    # 1. Tracelessness gamma^{ij} h_{ij}^{TT} == 0:
-    tr_h = sp.simplify(gamma_inv_diag * sum(h_tt[i][i] for i in range(3)))
-    require(tr_h == 0, "Exact tracelessness of l=2 Killing-frame tensor harmonic")
+    # 1. Exact tracelessness gamma^{ij} h_{ij}^{TT} == 0 across all (y1, y2, y3):
+    tr_num = sp.expand(sp.together(gamma_inv_diag * sum(h_tt[i][i] for i in range(3))).as_numer_denom()[0])
+    require(tr_num == 0, "Exact tracelessness of l=2 Killing-frame tensor harmonic")
 
-    # Christoffel symbols Gamma^k_{ij} of gamma_{ij} = fac * delta_{ij}:
-    log_f_d = [sp.simplify(sp.diff(sp.log(fac), ys[i])) for i in range(3)]
-    chris = [[[sp.Integer(0) for _ in range(3)] for _ in range(3)] for _ in range(3)]
-    for k in range(3):
-        for i in range(3):
-            for j in range(3):
-                val = sp.Integer(0)
-                if k == i:
-                    val += sp.Rational(1, 2) * log_f_d[j]
-                if k == j:
-                    val += sp.Rational(1, 2) * log_f_d[i]
-                if i == j:
-                    val -= sp.Rational(1, 2) * log_f_d[k]
-                chris[k][i][j] = sp.simplify(val)
+    # Exact Christoffel symbols Gamma^k_{ij} of gamma_{ij} = (4/D^2) delta_{ij}:
+    def chris_val(k: int, i: int, j: int):
+        v = sp.Integer(0)
+        if k == i:
+            v -= 2 * ys[j]
+        if k == j:
+            v -= 2 * ys[i]
+        if i == j:
+            v += 2 * ys[k]
+        return v / d_den
 
-    def cov_deriv_cov2(t_cov):
-        """Return nabla_m t_{ij}."""
-        res = [[[sp.Integer(0) for _ in range(3)] for _ in range(3)] for _ in range(3)]
-        for m in range(3):
-            for i in range(3):
-                for j in range(3):
-                    v = sp.diff(t_cov[i][j], ys[m])
-                    for s in range(3):
-                        v -= chris[s][m][i] * t_cov[s][j] + chris[s][m][j] * t_cov[i][s]
-                    res[m][i][j] = sp.simplify(v)
-        return res
+    dh = [
+        [
+            [
+                sp.together(
+                    sp.diff(h_tt[i][j], ys[m])
+                    - sum(chris_val(s, m, i) * h_tt[s][j] + chris_val(s, m, j) * h_tt[i][s] for s in range(3))
+                )
+                for j in range(3)
+            ]
+            for i in range(3)
+        ]
+        for m in range(3)
+    ]
 
-    dh = cov_deriv_cov2(h_tt)
-
-    # 2. Divergence-free nabla^j h_{ij}^{TT} == 0:
+    # 2. Exact divergence-free nabla^j h_{ij}^{TT} == 0 across all (y1, y2, y3):
     for i in range(3):
-        div_i = sp.simplify(gamma_inv_diag * sum(dh[j][i][j] for j in range(3)))
-        require(div_i == 0, f"Exact transversality nabla^j h_{{ {i} j }}^{{TT}} == 0")
+        div_num = sp.expand(sp.together(gamma_inv_diag * sum(dh[j][i][j] for j in range(3))).as_numer_denom()[0])
+        require(div_num == 0, f"Exact transversality nabla^j h_{{ {i} j }}^{{TT}} == 0")
 
-    # 3. Exact rough Laplacian -Delta_rough h_{ij}^{TT} == 6 h_{ij}^{TT} => (-Delta_rough + 2) h_{ij}^{TT} == 8 h_{ij}^{TT}:
-    # Test symbolically at generic rational point (y1, y2, y3) = (1/3, -1/5, 1/2) AND symbolically along y2=y3=0:
-    pt = {y1: sp.Rational(1, 3), y2: sp.Rational(-1, 5), y3: sp.Rational(1, 2)}
+    # 3. Exact rough Laplacian (-Delta_rough + 2) h_{ij}^{TT} == 8 h_{ij}^{TT} across all general (y1, y2, y3):
     for i in range(3):
         for j in range(i, 3):
-            # gamma^{mn} nabla_m (dh_{n i j}):
-            lap_ij = sp.Integer(0)
-            for m in range(3):
-                v = sp.diff(dh[m][i][j], ys[m])
-                for s in range(3):
-                    v -= chris[s][m][m] * dh[s][i][j] + chris[s][m][i] * dh[m][s][j] + chris[s][m][j] * dh[m][i][s]
-                lap_ij += v
-            rough_plus_2 = (-gamma_inv_diag * lap_ij + 2 * h_tt[i][j]).subs(pt)
-            require(sp.simplify(rough_plus_2 - 8 * h_tt[i][j].subs(pt)) == 0, f"(-Delta_rough + 2)h^{{TT}} == 8 h^{{TT}} ({i},{j})")
+            lap_ij = sum(
+                sp.diff(dh[m][i][j], ys[m])
+                - sum(
+                    chris_val(s, m, m) * dh[s][i][j]
+                    + chris_val(s, m, i) * dh[m][s][j]
+                    + chris_val(s, m, j) * dh[m][i][s]
+                    for s in range(3)
+                )
+                for m in range(3)
+            )
+            res_num = sp.expand(sp.together((-gamma_inv_diag * lap_ij + 2 * h_tt[i][j]) - 8 * h_tt[i][j]).as_numer_denom()[0])
+            require(res_num == 0, f"Exact symbolic (-Delta_rough + 2)h^{{TT}} == 8 h^{{TT}} ({i},{j})")
 
-    # 4. Symbolic ADM Raychaudhuri CMC trace perturbation:
-    tau, eps, g_n, lam = sp.symbols("tau eps G Lambda", real=True)
+    # 4. Symbolic ADM Raychaudhuri CMC trace perturbation & exact monotone u-formula for 3*(H' - H^2):
+    tau, eps, g_n, lam, u_s, lam_l_s, ag_s = sp.symbols("tau eps G Lambda u lam_L alpha_G", positive=True)
+    q_s = lam_l_s * u_s**2 + (lam_l_s - 1) * u_s - ag_s
+    half_upp_s = (u_s - 1) * (2 * lam_l_s * u_s + lam_l_s - 1) + q_s
+    up_sq_s = 4 * (u_s - 1) * q_s
+    three_hp_h2_raw = 3 * (half_upp_s / u_s - 3 * up_sq_s / (4 * u_s**2))
+    three_hp_h2_monotone = 3 - 6 * (1 - lam_l_s - ag_s) / u_s - 9 * ag_s / (u_s**2)
+    require(sp.simplify(three_hp_h2_raw - three_hp_h2_monotone) == 0, "Exact monotone 3*(H' - H^2) formula")
+
     a_t = sp.Function("a")(tau)
     alp = sp.Function("alpha")(y1)
     lap_alp = sp.Symbol("LapS3_alpha", real=True)
@@ -95,16 +97,20 @@ def verify_s3_tt_wave_and_cmc_lapse_symbolically() -> dict:
     h_c = sp.diff(a_t, tau) / a_t
     k_bar = -3 * h_c / a_t
     # Raychaudhuri equation with N = a*(1 + eps*alpha), delta K = 0:
-    # (1 / (a*(1 + eps*alpha))) d_tau K_bar + (1 / (a^3*(1 + eps*alpha))) eps * LapS3_alpha - K_bar^2/3 - 4*pi*G*(rho_b+s_b + eps*drho_s) + lam == 0
-    bg_eq = sp.diff(k_bar, tau) / a_t - k_bar**2 / 3 - 4 * sp.pi * g_n * (rho_b + s_b) + lam
+    # (1 / (a*(1 + eps*alpha))) d_tau K_bar + (1 / (a^2*(1 + eps*alpha))) eps * LapS3_alpha - K_bar^2/3 - 4*pi*G*(rho_b+s_b + eps*drho_s) + lam == 0
     lin_eq = sp.simplify(
         sp.diff(
-            (sp.diff(k_bar, tau) / (a_t * (1 + eps * alp)) + eps * lap_alp / (a_t**2 * (1 + eps * alp)) - k_bar**2 / 3 - 4 * sp.pi * g_n * (rho_b + s_b + eps * drho_s) + lam)
+            (
+                sp.diff(k_bar, tau) / (a_t * (1 + eps * alp))
+                + eps * lap_alp / (a_t**2 * (1 + eps * alp))
+                - k_bar**2 / 3
+                - 4 * sp.pi * g_n * (rho_b + s_b + eps * drho_s)
+                + lam
+            )
             * a_t**2,
             eps,
         ).subs(eps, 0)
     )
-    # Subtract (-lap_alp + 3*(h_c^2 - d_tau h_c)*alp) + 4*pi*G*a^2*drho_s:
     h_prime = sp.diff(h_c, tau)
     expected_cmc_op = lap_alp - 3 * (h_c**2 - h_prime) * alp - 4 * sp.pi * g_n * a_t**2 * drho_s
     require(sp.simplify(lin_eq - expected_cmc_op) == 0, "Exact symbolic CMC lapse operator (-Delta_{S^3} + 3(H^2 - H'))alpha")
@@ -149,16 +155,19 @@ def main() -> None:
     c_wave = norm_eq_bound * iv.exp(exact(2) * slab_len * h_conf_sup)
     require(below(c_wave, exact("1.6")), "Exact radiative TT wave Gronwall constant < 1.6")
 
-    # 3. Exact CMC lapse elliptic coercivity on l >= 2 (-Delta_{S^3} >= 8):
-    # (u')^2 = 4(u - 1)Q(u) => 1/2 u'' = 2(u - 1)(2*lam*u + lam - 1) + Q(u), H' - H^2 = u''/(2u) - 3(u')^2/(4u^2):
-    q_iv = lam_l * (u_iv**2) + (lam_l - exact(1)) * u_iv - alpha_g
-    half_u_pp = exact(2) * (u_iv - exact(1)) * (exact(2) * lam_l * u_iv + lam_l - exact(1)) + q_iv
-    u_prime_sq_iv = iv.mpf([exact(0).a, (exact(4) * (u_max - exact(1)) * q_max).b])
-    three_hp_minus_h2 = exact(3) * (half_u_pp / u_iv - exact(3) * u_prime_sq_iv / (exact(4) * (u_iv**2)))
+    # 3. Exact CMC lapse elliptic coercivity on l >= 2 (-Delta_{S^3} >= 8) via monotone u-formula:
+    # 3*(H' - H^2) == 3 - 6*(1 - lam_L - alpha_G)/u - 9*alpha_G/u^2 (strictly increasing on u >= 1 since 1 - lam_L - alpha_G > 0):
+    require(above(exact(1) - lam_l - alpha_g, 0), "Positive coefficient 1 - lam_L - alpha_G > 0")
+    three_hp_minus_h2 = exact(3) - exact(6) * (exact(1) - lam_l - alpha_g) / u_iv - exact(9) * alpha_g / (u_iv**2)
+    require(above(three_hp_minus_h2, 0) and below(three_hp_minus_h2, exact("0.06")), "0 < 3(H' - H^2) < 0.06 << 8 across bounce slab")
+
     cmc_l2_min_eig = exact(8) - iv.mpf(three_hp_minus_h2.b)
     gamma_alpha = exact(9) / cmc_l2_min_eig
-    c_ell = exact(4) * gamma_alpha  # covers 16*pi*G / 4*pi*G = 4 and max(9/5, gamma_alpha) = gamma_alpha
-    require(above(cmc_l2_min_eig, exact("3.8")) and below(c_ell, exact("9.6")), "Strict l>=2 CMC lapse coercivity > 3.8")
+    nine_fifths = exact(9) / exact(5)
+    gamma_ell = nine_fifths if above(nine_fifths - gamma_alpha, 0) else gamma_alpha  # max(9/5, gamma_alpha) == 9/5
+    c_ell = exact(4) * gamma_ell  # 4 * (9/5) = 36/5 = 7.2 covering all 4 CMC elliptic components
+    require(above(cmc_l2_min_eig, exact("7.94")) and below(gamma_alpha, exact("1.14")), "Strict l>=2 CMC lapse coercivity > 7.94")
+    require(below(abs(c_ell - exact(36) / exact(5)), exact("1e-95")), "Exact combined elliptic H^2->H^4 gain C_ell == 36/5 = 7.2")
 
     # 4. Contraction bounds on Z = C^0(I_prop, H^4)^4 x X^{TT} at R_* = 5e-12:
     g_val = exact("1e-40")
@@ -200,7 +209,10 @@ def main() -> None:
             "slab_conformal_Hubble_sup": outward(h_conf_sup),
             "exact_k_ge_3_TT_norm_equivalence_sqrt_17_over_8": outward(norm_eq_exact),
             "TT_wave_energy_Gronwall_constant": outward(c_wave),
+            "three_H_prime_minus_H_sq_interval": outward(three_hp_minus_h2),
             "CMC_lapse_l2_min_eigenvalue_lower": float(outward(cmc_l2_min_eig)[0]),
+            "CMC_lapse_H2_to_H4_gain_gamma_alpha": outward(gamma_alpha),
+            "CMC_elliptic_H2_to_H4_gain_exact": "36/5",
             "CMC_elliptic_H2_to_H4_gain_upper": float(outward(c_ell)[1]),
             "Sobolev_H2_Bochner_algebra_constant_formula": "3*sqrt(3)/2",
             "Sobolev_H2_Bochner_algebra_constant": outward(c_h2_alg),
