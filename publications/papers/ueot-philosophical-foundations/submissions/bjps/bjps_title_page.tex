@@ -1,8 +1,8 @@
-\documentclass[11pt,a4paper]{article}
-\usepackage[margin=24mm]{geometry}
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
 \usepackage{fontspec}
-\IfFontExistsTF{Liberation Serif}{\setmainfont{Liberation Serif}}{\setmainfont{Times New Roman}}
-\IfFontExistsTF{DejaVu Sans Mono}{\setmonofont[Scale=0.84]{DejaVu Sans Mono}}{\IfFontExistsTF{Menlo}{\setmonofont[Scale=0.82]{Menlo}}{\setmonofont[Scale=0.84]{Courier New}}}
+\IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{\setmainfont{Liberation Serif}}
+\IfFontExistsTF{Menlo}{\setmonofont[Scale=0.82]{Menlo}}{\setmonofont[Scale=0.84]{Courier New}}
 \usepackage{setspace}
 \setstretch{1.15}
 \usepackage[unicode,colorlinks=true,allcolors=blue]{hyperref}
@@ -20,11 +20,12 @@
 \vspace{14pt}
 \noindent\textbf{Author:} Degui Qian\\
 \textbf{Affiliation:} Independent Researcher\\
-\textbf{Email:} Enter in Editorial Manager submission portal\\
-\textbf{Abstract Word Count:} 169 words ($\le$ 300 limit)\\
-\textbf{Total Manuscript Word Count:} Strictly $\le$ 10,000 words including main text, self-contained Appendix proofs, tables, captions, anonymized AI note, and all 93 references (excluding abstract; exact PDF word count verified in \texttt{VALIDATION\_BJPS.json}).
+\textbf{Email:} Enter in ScholarOne Manuscripts portal (\texttt{mc.manuscriptcentral.com/thebjps})\\
+\textbf{Formatting:} 12pt Times New Roman, 1.5 line spacing, 1-inch margins (strictly compliant with BSPS/BJPS guidelines)\\
+\textbf{Page Count (Main Text + Figures 1--3 + Tables 1--4 + Self-Contained Appendix, excl. Title/Abstract/References):} Strictly $\le$ 24 pages (exact count verified in \texttt{VALIDATION\_BJPS.json})\\
+\textbf{Total Word Count:} Strictly $\le$ 10,000 words including main text, Appendix proofs, tables, captions, post-abstract AI Statement, and all 96 references.
 
 \vspace{10pt}
 \noindent\textbf{Unblinded Disclosures (for Editorial Office \& Post-Acceptance Inclusion Only):}
-The author declares no competing financial or non-financial interests and received no external grant funding. This research and manuscript were directed by Degui Qian and completed with \textbf{Gemini 4 Carbon} and \textbf{ChatGPT 6 Astra} across philosophical analysis, mathematical derivation, algebraic and formal cross-checking, bibliographic verification, and manuscript preparation; per BSPS / University of Chicago Press authorship and generative AI policies, AI systems are not listed as co-authors, and Degui Qian verified every philosophical argument, mathematical proof, rational calculation, and citation, bearing sole academic and legal responsibility. Companion machine-checked Lean 4 formalizations of the core formal results are archived under Apache-2.0 on Zenodo at \href{https://doi.org/10.5281/zenodo.24433585}{doi:10.5281/zenodo.24433585} (withheld from the triple-anonymous referee manuscript).
+The author declares no competing financial or non-financial interests and received no external grant funding. This research and manuscript were directed by Degui Qian and completed with \textbf{Gemini 4 Carbon} and \textbf{ChatGPT 6 Astra} across philosophical analysis, mathematical derivation, algebraic and formal cross-checking, bibliographic verification, and manuscript preparation; per BSPS / University of Chicago Press authorship and generative AI policies, a concise anonymised AI Statement appears immediately after the Abstract on Page 1 of \texttt{bjps\_blinded\_manuscript.pdf} pointing to the full anonymised tool/date/prompt log in Appendix B of \texttt{bjps\_online\_technical\_appendix.pdf}, AI systems are not listed as co-authors, and Degui Qian verified every argument, proof, rational calculation, and citation, bearing sole academic and legal responsibility. Companion machine-checked Lean 4 formalisations of the core formal results are archived under Apache-2.0 on Zenodo at \href{https://doi.org/10.5281/zenodo.24433585}{doi:10.5281/zenodo.24433585} (withheld from the triple-anonymous referee files).
 \end{document}

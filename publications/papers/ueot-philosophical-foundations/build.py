@@ -87,7 +87,7 @@ for sub in (SYN_DIR, BJPS_DIR, POS_DIR):
 # 4. Generate & compile Synthese double-anonymous package
 master_md = (ROOT / "manuscript.md").read_text(encoding="utf-8")
 syn_md = master_md
-for strip_line in ('author: "Degui Qian"\n', 'date: "November 2026"\n', 'version: "2.1"\n'):
+for strip_line in ('author: "Degui Qian"\n', 'date: "November 2026"\n', 'version: "2.2"\n'):
     syn_md = syn_md.replace(strip_line, "", 1)
 
 syn_declarations = """# Declarations {.unnumbered}
