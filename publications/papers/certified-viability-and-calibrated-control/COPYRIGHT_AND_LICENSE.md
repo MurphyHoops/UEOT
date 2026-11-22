@@ -10,7 +10,7 @@ Copyright © 2026 Degui Qian. The original research prose, mathematical expositi
 
 <https://creativecommons.org/licenses/by/4.0/>
 
-Corresponding Lean 4 formalization source files in `formalization/ueot-core/` remain governed by the repository's software licensing scope documented at the repository root (`LICENSE_SCOPE.md` and `COPYRIGHT.md`).
+Exported pure-kernel Lean 4 formalization source files accompanying this article (`publications/artifacts/lean4-core-export/`, exported from `formalization/ueot-core/`) are audited and licensed under the **Apache License, Version 2.0 (`Apache-2.0`)** (see `LICENSES/Apache-2.0.txt`, `publications/artifacts/lean4-core-export/SOFTWARE_LICENSE_AUDIT.md`, and `NOTICE`). Non-code documentation under `formalization/ueot-core/docs/` remains governed by `CC BY 4.0` per root `LICENSE_SCOPE.md`.
 
 ## Third-party scholarly works
 

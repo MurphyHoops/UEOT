@@ -1,8 +1,8 @@
 {
   "schema": "standalone-jar-build/1",
   "version": "1.0",
-  "built_at_utc": "2026-11-22T00:24:12.813678+00:00",
-  "git_base_commit": "add25fe6fb97b0ed5f22016a567d76c976e0ebe8",
+  "built_at_utc": "2026-11-22T03:34:43.145737+00:00",
+  "git_base_commit": "83ecdb1242f97b406d68444b34d792b7d29c3682",
   "commands": [
     "pandoc manuscript.md --standalone --number-sections --natbib --template=template.tex --lua-filter=layout.lua --to=latex --output=manuscript.tex",
     "latexmk -xelatex -interaction=nonstopmode -halt-on-error -outdir=build manuscript.tex"
@@ -28,18 +28,18 @@
     ]
   },
   "inputs": {
-    "manuscript.md": "df19ce5bad56253bf6265e428356675a084dff8ff0ebdbf774936bbdc98790da",
+    "manuscript.md": "02d226067c0899d1ce28127d15d276c5dd8909d8e50a09a6ddb61ae098acc960",
     "references.bib": "7330234867ecc481da0dc08bdf935d615d8643f98090b325c2cbe023f29abb73",
     "template.tex": "086f316c2d8a6b71d148d073ed301005937c41b2af134c54174745cdfe1f43e3",
     "layout.lua": "de0148834a2d17d4d1c9a0734ed94f38f5dfdf614d550f7b103f8e0cb1149ce9",
     "generate_figures.py": "db7e44d67d5660a092a6ad5adcf0d3900c1a7321b267a1004efbfa1cbd814e15",
     "build.py": "424f44926091947bca091b3e160b36acdeb1e74be3d1b6604b75d43072eac659",
-    "figures/fig1_synthesis_and_calibration.pdf": "7d7b0fe446334fdd5db297f8d111bcb2c59c41bfa8a80944b583c8dc91fc3aba",
-    "figures/fig2_fault_regret_and_kernel_dp.pdf": "fc1f8a9ea5bf78b182cbebda8b657e6e288a49562f1c10dce6a50445f2785f82"
+    "figures/fig1_synthesis_and_calibration.pdf": "39ed1697045785274694658ed13a2d231060f47cf794110ecfb74cd0c46b85c7",
+    "figures/fig2_fault_regret_and_kernel_dp.pdf": "f6ec7a65587879f267fe44027ced6ad024b4e799bfd85bcdaa06c1c1242451d7"
   },
   "outputs": {
-    "manuscript.tex": "15fe36591fb50118cbf9efecd98fe973c2d590246751f7bcad1cf410ec26dbbf",
-    "manuscript.pdf": "78a4a9bd6eab57fc359983ec98a6caf7e166a74e7f377d9b67f18aacaa3d4020"
+    "manuscript.tex": "4a4944d10d93b12c6958d81c88b7929c22f806537737fbebeeb387c61e26251c",
+    "manuscript.pdf": "034125507c0cafa705ca24ec5db1da614a69af14ccb3850c52c68b22760af9ab"
   },
   "pages": 35,
   "undefined_references_or_tex_errors": [],

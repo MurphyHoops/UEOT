@@ -14,6 +14,12 @@ prospective defaults. [LICENSE_SCOPE.md](../LICENSE_SCOPE.md)
 identifies three formal books, open research, code, physics, data,
 third-party content and UEOT-GI as distinct license categories.
 
-**Do not infer** Apache-2.0 for current Lean code, CC0 for a public
+**Do not infer** Apache-2.0 for un-audited code directories, CC0 for a public
 dataset, exclusivity for any presently published book, or a license
 for the separate UEOT-GI codebase. Those require separate actions.
+
+The official Apache License, Version 2.0 text is supplied in
+[Apache-2.0.txt](Apache-2.0.txt) for explicitly audited and designated
+software exports—specifically the exported pure-kernel Lean 4 proof
+archive documented in
+[publications/artifacts/lean4-core-export/](../publications/artifacts/lean4-core-export/README.md).

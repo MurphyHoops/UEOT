@@ -198,7 +198,14 @@ scientific claims still require their respective audited gates.
 
 ## Licensing note
 
-The present repository policy update does **not** by itself relicense
-this Lean code to Apache-2.0. Existing historical grants, any imported
-code notices and contributor rights require review before a new code license
-is issued. See [license scope](../../LICENSE_SCOPE.md).
+Following the 2026-11-22 contributor, header, and Lake/Mathlib dependency audit
+recorded in
+[publications/artifacts/lean4-core-export/SOFTWARE_LICENSE_AUDIT.md](../../publications/artifacts/lean4-core-export/SOFTWARE_LICENSE_AUDIT.md),
+exported pure-kernel Lean 4 proof source files (`UEOT.lean`, `UEOT/`, `scripts/`,
+and Lake configuration) are released under the **Apache License, Version 2.0
+(`Apache-2.0`)** together with the attribution notices in
+[NOTICE](../../publications/artifacts/lean4-core-export/NOTICE) (verbatim legal
+text in [LICENSES/Apache-2.0.txt](../../LICENSES/Apache-2.0.txt)). Non-code
+research documentation under `docs/` remains governed by CC BY 4.0, and earlier
+valid historical grants are preserved unrevoked; see
+[license scope](../../LICENSE_SCOPE.md).
