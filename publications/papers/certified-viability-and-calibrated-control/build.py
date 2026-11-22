@@ -80,6 +80,7 @@ jar_md = master_md.replace(
 
 shutil.copy2(ROOT / "references.bib", JAR_DIR / "references.bib")
 shutil.copy2(ROOT / "layout.lua", JAR_DIR / "layout.lua")
+shutil.copy2(ROOT / "verify_standalone.py", JAR_DIR / "verify_standalone.py")
 (JAR_DIR / "figures").mkdir(exist_ok=True)
 for fig_file in (ROOT / "figures").glob("*"):
     if fig_file.is_file():
@@ -121,8 +122,8 @@ git_probe = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, env=ENV, capt
 head_sha = git_probe.stdout.strip() if git_probe.returncode == 0 else "standalone"
 
 record = {
-    "schema": "standalone-jar-build/3",
-    "version": "1.1",
+    "schema": "standalone-jar-build/4",
+    "version": "1.2",
     "built_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
     "git_base_commit": head_sha,
     "commands": [
@@ -140,7 +141,7 @@ record = {
         k: digest(ROOT / k)
         for k in [
             "manuscript.md", "references.bib", "template.tex", "layout.lua",
-            "generate_figures.py", "build.py",
+            "generate_figures.py", "verify_standalone.py", "build.py",
             "figures/fig1_synthesis_and_calibration.pdf",
             "figures/fig2_fault_regret_and_kernel_dp.pdf",
             "submissions/jar/template_jar.tex",
@@ -155,6 +156,7 @@ record = {
             "submissions/jar/jar_manuscript.tex",
             "submissions/jar/jar_manuscript.pdf",
             "submissions/jar/jar_title_page.pdf",
+            "submissions/jar/verify_standalone.py",
         ]
     },
     "pages": int(re.search(r"^Pages:\s+(\d+)", info, re.M).group(1)),

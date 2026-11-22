@@ -47,6 +47,11 @@ def normalize_version(raw: str) -> str:
 
 def render_export_readme(version: str, toolchain: str) -> str:
     """Render top-level README.md embedded inside the exported archive."""
+    audit_cmd = (
+        "lake env lean --run scripts/ExhaustiveAxiomAudit.lean"
+        if version == "1.0.0"
+        else "lake env lean scripts/ExhaustiveAxiomAudit.lean"
+    )
     return f"""# Pure-Kernel Lean 4 Formalization Archive (v{version})
 
 **License:** Apache License, Version 2.0 (`Apache-2.0` — see `LICENSE` and `NOTICE`)  
@@ -66,7 +71,7 @@ def render_export_readme(version: str, toolchain: str) -> str:
 ```bash
 lake exe cache get
 lake build UEOT
-lake env lean --run scripts/ExhaustiveAxiomAudit.lean
+{audit_cmd}
 ```
 """
 

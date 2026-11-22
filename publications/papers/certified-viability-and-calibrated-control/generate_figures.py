@@ -90,9 +90,9 @@ def build_fig1():
     # Separate Structural Support Prior (left) from Per-Row Sample Experiment (right)
     draw_box(ax1, 0.02, 0.73, 0.44, 0.175,
              "Prior Structural Support $(I_0, R, C)$\n"
-             "From hardware / physics isolation\n"
+             "$I_0 = \\mathrm{supp}(p_0),\\; R = \\mathrm{supp}(P)$\n"
              "(Thm. 4: not from fixed-$N$ rollouts)",
-             facecolor=LIGHT_TEAL, edgecolor=TEAL, fontsize=8.1)
+             facecolor=LIGHT_TEAL, edgecolor=TEAL, fontsize=8.05)
 
     draw_box(ax1, 0.51, 0.73, 0.465, 0.175,
              "Per-Row Samples $\\omega_{x,a,k} \\sim P(x,a)$\n"
@@ -104,12 +104,12 @@ def build_fig1():
              "Executable Synthesizer (Thm. 3)\n"
              "$\\mathrm{synthesize} : \\mathrm{Option\\ (Program)}$\n"
              "Winning $\\mathcal{W}_*$ ($\\leq 2^{|X|}-1$ rounds)\n"
-             "Certifies $\\nu_n^{\\mathrm{prog}}(C^c) = 0$",
-             facecolor="white", edgecolor=TEAL, fontsize=8.05)
+             "All-$\\omega$ safety $\\mathbb{P}_{\\mathrm{prog}}(\\forall n, X_n \\in K)=1$",
+             facecolor="white", edgecolor=TEAL, fontsize=7.95)
 
     draw_box(ax1, 0.52, 0.42, 0.455, 0.21,
              "Candidate-Free Risk Gate (Thm. 5)\n"
-             "Fiber row discrepancy $|\\delta_{q_j} - \\widehat{\\delta}_{q_j}| \\leq 2u$\n"
+             "Fiber discrepancy $|\\delta_{q_j} - \\widehat{\\delta}_{q_j}| \\leq 2u$\n"
              "Zero $m$-union penalty across $q_0..q_{m-1}$\n"
              "Checks coarse envelope $\\widehat{B}_T \\leq \\beta$",
              facecolor=LIGHT_AMBER, edgecolor=AMBER, fontsize=8.0)
@@ -119,51 +119,74 @@ def build_fig1():
     draw_arrow(ax1, (0.465, 0.525), (0.505, 0.525), color=TEAL, lw=1.2)
 
     draw_box(ax1, 0.02, 0.05, 0.955, 0.27,
-             "End-to-End Measure & Post-Selection Guarantees (Pure Lean 4 Kernel)\n"
-             "1. Structural safety: $\\mathbf{1}_{\\widetilde{K}}^\\top Q_K^T \\widetilde{\\mu}_0 \\downarrow \\mathbb{P}_{\\mathrm{prog}}(\\forall n \\in \\mathbb{N}, X_n \\in K) = 1$\n"
-             "2. Joint risk: $\\mathbb{P}_J(\\mathrm{accept} \\wedge E) \\leq \\alpha_N + (1-\\alpha_N)\\beta$  (on $G_u$, accepted $K_j(E) \\leq \\beta$)\n"
-             "3. Witness ($N=4096$): $99.988\\%$ accept at $\\theta=1/4$; $5.97\\times 10^{-71}$ false accept at $\\theta=1/8$",
-             facecolor=LIGHT_BG, edgecolor=SLATE, fontsize=8.0)
+             "Decoupled Perpetual Safety & Finite-Horizon Risk Guarantees\n"
+             "1. Sample-free perpetual safety: $\\mathbb{P}_{\\mathrm{prog}_j}(\\forall n \\in \\mathbb{N}, X_n \\in K) = 1$ ($\\forall \\omega$)\n"
+             "2. On $G_u$: accepted $K_j(E) \\leq \\beta$;  uncond. $\\mathbb{P}_J(\\mathrm{accept} \\wedge E) \\leq \\alpha_N + (1-\\alpha_N)\\beta$\n"
+             "3. Macro $\\widehat{K}_{q_j}$ (20–62 paths) vs. micro $\\widehat{P}$ (8,248 paths): 72×–147× faster",
+             facecolor=LIGHT_BG, edgecolor=SLATE, fontsize=7.95)
 
     draw_arrow(ax1, (0.24, 0.405), (0.32, 0.335), color=TEAL, lw=1.2)
     draw_arrow(ax1, (0.742, 0.405), (0.66, 0.335), color=AMBER, lw=1.2)
 
-    # Panel (b): Candidate-Free Joint Risk Envelope vs Naive m-Candidate Union Bounds
-    N_grid = np.linspace(500, 4500, 400)
-    beta = 0.70
-    alpha_1 = np.minimum(1.0, 48.0 * np.exp(-N_grid / 200.0))
-    joint_cand_free = np.minimum(1.0, alpha_1 + (1.0 - alpha_1) * beta)
-    a20 = np.minimum(1.0, 20.0 * 48.0 * np.exp(-N_grid / 200.0))
-    a200 = np.minimum(1.0, 200.0 * 48.0 * np.exp(-N_grid / 200.0))
-    joint_union_20 = np.minimum(1.0, a20 + (1.0 - a20) * beta)
-    joint_union_200 = np.minimum(1.0, a200 + (1.0 - a200) * beta)
+    # Panel (b): Exact Binomial Operating Curve P_theta(selectedAccepts) vs Progress Rate theta
+    import math as _math
 
-    ax2.plot(N_grid, joint_cand_free, color=NAVY, lw=2.3,
-             label="Candidate-free $\\alpha_N + (1-\\alpha_N)\\beta$ (any $m$)")
-    ax2.plot(N_grid, joint_union_20, color=AMBER, lw=1.7, ls="--",
-             label="Naive $m$-union ($m = 20$)")
-    ax2.plot(N_grid, joint_union_200, color=CRIMSON, lw=1.7, ls="-.",
-             label="Naive $m$-union ($m = 200$)")
-    ax2.axhline(beta, color=TEAL, lw=1.15, ls=":", label="Budget $\\beta = 7/10$")
+    def binom_accept_prob_float(n_samp: int, th_val: float, k_lo: int, k_hi: int) -> float:
+        if th_val <= 0.0:
+            return 0.0
+        if th_val >= 1.0:
+            return 1.0 if k_hi == n_samp else 0.0
+        lp = _math.log(th_val)
+        lq = _math.log(1.0 - th_val)
+        lg_n = _math.lgamma(n_samp + 1)
+        logs = [
+            lg_n - _math.lgamma(k + 1) - _math.lgamma(n_samp - k + 1) + k * lp + (n_samp - k) * lq
+            for k in range(k_lo, k_hi + 1)
+        ]
+        m = max(logs)
+        return _math.exp(m) * sum(_math.exp(v - m) for v in logs)
 
-    n_mark = 4096.0
-    a_mark = 48.0 * np.exp(-512.0 / 25.0)
-    j_mark = a_mark + (1.0 - a_mark) * beta
-    ax2.scatter([n_mark], [j_mark], color=NAVY, s=46, zorder=5)
-    ax2.annotate("$N=4096$: $\\alpha_{4096} \\approx 6.12\\times 10^{-8}$\n($99.988\\%$ accept at $\\theta=1/4$)",
-                 xy=(n_mark, j_mark), xytext=(1750, 0.565),
-                 arrowprops=dict(arrowstyle="->", color=NAVY, lw=1.05),
-                 fontsize=8.1, color=NAVY,
-                 bbox=dict(boxstyle="round,pad=0.20", facecolor="white", edgecolor="#CBD5E1", alpha=0.95))
+    theta_grid = np.linspace(0.11, 0.29, 181)
+    curve_4096 = np.array([binom_accept_prob_float(4096, float(t), 924, 3174) for t in theta_grid])
+    curve_16384 = np.array([binom_accept_prob_float(16384, float(t), 3175, 13516) for t in theta_grid])
 
-    ax2.set_title("(b) Witness Joint Risk ($|X|=3, |A|=1, u=1/20$)",
-                  fontsize=10.0, fontweight="bold", color=NAVY, pad=9)
-    ax2.set_xlabel("Samples per state–action pair $N$", fontsize=9.2)
-    ax2.set_ylabel("Certified bound $\\mathbb{P}_J(\\mathrm{accept} \\wedge E)$", fontsize=9.1)
-    ax2.set_xlim(500, 4500)
-    ax2.set_ylim(0.52, 1.03)
+    th_crit = 1.0 - np.sqrt(0.70)     # ~0.16334
+    th_pad_05 = 1.0 - np.sqrt(0.60)   # ~0.22540
+    th_pad_025 = 1.0 - np.sqrt(0.65)  # ~0.19377
+
+    ax2.axvspan(0.11, th_crit, color="#FCE8EC", alpha=0.65, zorder=0, label="Invalid ($(1{-}\\theta)^2 > 0.7$)")
+    ax2.axvspan(th_crit, th_pad_05, color="#FDF0E6", alpha=0.70, zorder=0, label="$2u$ abstention band ($u{=}1/20$)")
+    ax2.axvline(th_crit, color=CRIMSON, lw=1.2, ls=":")
+    ax2.axvline(th_pad_05, color=AMBER, lw=1.1, ls=":")
+
+    ax2.plot(theta_grid, curve_4096, color=NAVY, lw=2.3,
+             label="$N{=}4096, u{=}1/20$ ($\\alpha{\\approx}6.1{\\times}10^{-8}$)")
+    ax2.plot(theta_grid, curve_16384, color=TEAL, lw=1.85, ls="--",
+             label="$N{=}16384, u{=}1/40$ (same $\\alpha$)")
+
+    pts = [
+        (0.125, 0.0, "$\\theta{=}1/8$\n$5.97{\\times}10^{-71}$", (0.113, 0.23), CRIMSON),
+        (0.20, binom_accept_prob_float(4096, 0.20, 924, 3174), "$\\theta{=}1/5$: $0.003\\%$\n($97.8\\%$ at $u{=}1/40$)", (0.130, 0.56), AMBER),
+        (0.25, binom_accept_prob_float(4096, 0.25, 924, 3174), "$\\theta{=}1/4$\n$99.988\\%$", (0.236, 0.74), NAVY),
+    ]
+    for tx, ty, lbl, xy_txt, col in pts:
+        ax2.scatter([tx], [ty], color=col, s=42, zorder=6)
+        ax2.annotate(
+            lbl, xy=(tx, ty), xytext=xy_txt,
+            arrowprops=dict(arrowstyle="->", color=col, lw=0.95),
+            fontsize=7.65, color=col, fontweight="bold",
+            bbox=dict(boxstyle="round,pad=0.17", facecolor="white", edgecolor="#CBD5E1", alpha=0.94),
+            zorder=7,
+        )
+
+    ax2.set_title("(b) Acceptance Operating Curve vs. True Progress $\\theta$",
+                  fontsize=9.9, fontweight="bold", color=NAVY, pad=9)
+    ax2.set_xlabel("True progress probability $\\theta$ (valid iff $\\theta \\geq 0.1633$)", fontsize=8.9)
+    ax2.set_ylabel("Acceptance probability $\\mathbb{P}_{\\theta}(\\mathrm{selectedAccepts})$", fontsize=8.9)
+    ax2.set_xlim(0.11, 0.29)
+    ax2.set_ylim(-0.04, 1.06)
     ax2.grid(True, linestyle=":", alpha=0.5)
-    ax2.legend(loc="upper right", fontsize=7.8, frameon=True, facecolor="white", framealpha=0.94)
+    ax2.legend(loc="upper left", fontsize=7.35, frameon=True, facecolor="white", framealpha=0.95)
 
     for ext in ("pdf", "png"):
         fig.savefig(FIG_DIR / f"fig1_synthesis_and_calibration.{ext}", dpi=300, bbox_inches="tight")

@@ -1,8 +1,8 @@
 {
-  "schema": "standalone-jar-build/3",
-  "version": "1.1",
-  "built_at_utc": "2026-11-22T10:15:26.890966+00:00",
-  "git_base_commit": "8809ec8d226fda073b39917b80c779594bccd231",
+  "schema": "standalone-jar-build/4",
+  "version": "1.2",
+  "built_at_utc": "2026-11-22T13:19:13.910436+00:00",
+  "git_base_commit": "eb9ff6f2aca57dd8136405f9d7a853540fd9cd8a",
   "commands": [
     "pandoc manuscript.md --standalone --number-sections --natbib --template=template.tex --lua-filter=layout.lua --to=latex --output=manuscript.tex",
     "latexmk -xelatex -interaction=nonstopmode -halt-on-error -outdir=build manuscript.tex",
@@ -31,27 +31,29 @@
     ]
   },
   "inputs": {
-    "manuscript.md": "4c0c0f1c7bbcb1227dc4e136dd5d92a00c8567a5d29be84a473aeb7fd475af93",
-    "references.bib": "7453e803c968c70a86fc60ea891d88eafc23aa670e087fa3f43c5a4b0531d46a",
+    "manuscript.md": "d8b73f372b045de025e0bf8e997b2fb160698a75c4d54361981a737d6ccb2bdf",
+    "references.bib": "cbea45284b4e5c8bd756440c2620f3d95793d20e5ac1a6a852c2c809e0deab71",
     "template.tex": "5c9338c21647699537db60bcbd656421441074d1a21efb0ed694c07f8a930d9b",
     "layout.lua": "de0148834a2d17d4d1c9a0734ed94f38f5dfdf614d550f7b103f8e0cb1149ce9",
-    "generate_figures.py": "a5bf3daed807cee5ed1cf90b75f4922596ffc9f2379e3a2e6ce494389e3f1706",
-    "build.py": "c52c317d11ba51d93de105049391bbc061f163dbe86f225ab71a85b0c3397a8c",
-    "figures/fig1_synthesis_and_calibration.pdf": "52950f07d0b075814c25815c9f02f98b99e0f58f3f7b9a0c7c83b20fb296a9bd",
-    "figures/fig2_fault_regret_and_kernel_dp.pdf": "aa4048914ad84139163a0edaf6f745ea341eb2a82361c022c9c84ae898373da2",
+    "generate_figures.py": "774edcaa537cc803bc69595ea5547ca40584cb89a5b4196fdd4a35a24fe9c92e",
+    "verify_standalone.py": "e22a6a30b3f35f4b47e765a514019cda33ad1b2affbba03904230b9198b8314e",
+    "build.py": "39e16178bbac36791d7e150f17d2dd6c3d8ed538f23f7203eb945226781f8956",
+    "figures/fig1_synthesis_and_calibration.pdf": "ac590cdb3cd4148ec75ba8bbd5b83993d80d7e260b9dcda4fb625345539bab80",
+    "figures/fig2_fault_regret_and_kernel_dp.pdf": "a07c5a3924dd3b7e0d32bfcea9b873804454b294149c31b9b52819aa24be5c07",
     "submissions/jar/template_jar.tex": "e9f8c8a2bdc1bc6e7ac182d11ad50d9563a635247ac9f03bc4b49e92fef78de9",
-    "submissions/jar/jar_title_page.tex": "95f585275af20816de30c61b7635d502a0244a387851b593b44253fcb696cae1"
+    "submissions/jar/jar_title_page.tex": "924c6d5ed2b711a3e1189c4f990e1b4c0810114f2dd5539201438c2f7805784b"
   },
   "outputs": {
-    "manuscript.tex": "7b991b2227194f8a30ae1131d4968dd630cf40ec730a4378b352237adaba5b3c",
-    "manuscript.pdf": "3193b804c41b4c1c1327825956975a7c53874415f4304b9a392d2ab340032c9d",
-    "submissions/jar/jar_manuscript.md": "0ac4b7e04ef6bc5e21fd362d85159982d7a26d656598d588ecd2f62cdb204312",
-    "submissions/jar/jar_manuscript.tex": "656dca1462284c8ba47ee0c6c103d3a41060fa657ab8c317eea2c8f7d31cde3d",
-    "submissions/jar/jar_manuscript.pdf": "0c651467a45bd6fc057f3d6098c5c7681d0324b91a7a622c1ab13ab9bb2bc7cf",
-    "submissions/jar/jar_title_page.pdf": "e28cab14ec97f81ba0764c319e20bccb8dd37efc8d67083522e95376e81f7d4e"
+    "manuscript.tex": "76e23dc8a600f553b1b84d5a745b3d240b1c8b25a60cfd42aa6e0aa9f07ca17c",
+    "manuscript.pdf": "d2724009c71a7775ab739af666b7cb401ea958fa891277144e79b74b968e8bdb",
+    "submissions/jar/jar_manuscript.md": "8cf5dbbdee4f17f99c29e84655ff8fec401da406074a2386dd62e1dbb6f5e5fd",
+    "submissions/jar/jar_manuscript.tex": "56a682a5bb04740e2a2715f2de77de55c33544c17b80aa4ae9ff3e35bb3ce1e9",
+    "submissions/jar/jar_manuscript.pdf": "438f354d2f20d6c2722ff36b8abed7ae9636ff80255fa0aea19eb7a0bdabe957",
+    "submissions/jar/jar_title_page.pdf": "39b21f75022aea46dccb85db1feba52e1c9cc144b84c340e34cd18c1b1127ab2",
+    "submissions/jar/verify_standalone.py": "e22a6a30b3f35f4b47e765a514019cda33ad1b2affbba03904230b9198b8314e"
   },
-  "pages": 36,
-  "jar_pages": 36,
+  "pages": 38,
+  "jar_pages": 38,
   "undefined_references_or_tex_errors": [],
   "missing_glyphs": [],
   "overfull_boxes": [],

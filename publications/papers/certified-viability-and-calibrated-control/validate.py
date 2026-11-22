@@ -19,6 +19,8 @@ import sys
 
 ROOT = Path(__file__).resolve().parent
 JAR_DIR = ROOT / "submissions" / "jar"
+sys.path.insert(0, str(ROOT))
+import verify_standalone  # noqa: E402
 ENV = os.environ.copy()
 ENV["PATH"] = ":".join([
     str(Path.home() / "Library/TinyTeX/bin/universal-darwin"),
@@ -145,22 +147,9 @@ def initial_world(mech: str) -> World:
 
 
 # ---------------------------------------------------------------------------
-# 2. Exact binomial operating characteristics for Theorem 5 witness
+# 2. Run zero-dependency standalone exact-integer/rational verifier
 # ---------------------------------------------------------------------------
-def exact_binom_prob(n: int, theta: Q, k_set: set[int]) -> float:
-    p = float(theta)
-    q = 1.0 - p
-    log_p = math.log(p)
-    log_q = math.log(q)
-    lg_n = math.lgamma(n + 1)
-    log_terms = [
-        lg_n - math.lgamma(k + 1) - math.lgamma(n - k + 1) + k * log_p + (n - k) * log_q
-        for k in k_set
-    ]
-    if not log_terms:
-        return 0.0
-    m = max(log_terms)
-    return math.exp(m) * sum(math.exp(lt - m) for lt in log_terms)
+standalone_report = verify_standalone.run_all_standalone_checks()
 
 
 # ---------------------------------------------------------------------------
@@ -193,12 +182,14 @@ required = [
     "manuscript.md", "manuscript.tex", "manuscript.pdf", "references.bib",
     "ABSTRACT_ZH.md", "CLAIM_MATRIX.md", "README.md", "COPYRIGHT_AND_LICENSE.md",
     "BUILD_RECEIPT.json", "template.tex", "layout.lua", "build.py", "validate.py",
+    "verify_standalone.py",
     "submissions/jar/jar_manuscript.md",
     "submissions/jar/jar_manuscript.tex",
     "submissions/jar/jar_manuscript.pdf",
     "submissions/jar/jar_title_page.tex",
     "submissions/jar/jar_title_page.pdf",
     "submissions/jar/template_jar.tex",
+    "submissions/jar/verify_standalone.py",
     "submissions/jar/SUBMISSION_GUIDE_AND_MANIFEST.md",
     "submissions/jar/cover_letter.md",
 ]
@@ -247,6 +238,7 @@ required_single_blind_tokens = [
     "Degui Qian",
     "10.5281/zenodo.24433585",
     "ExhaustiveAxiomAudit",
+    "verify_standalone.py",
     "Gemini 4 Carbon",
     "ChatGPT 6 Astra",
 ]
@@ -303,20 +295,21 @@ nontrivial_conf_4096 = 48.0 * math.exp(-512.0 / 25.0)
 # Sample cost check at |X|=100, |A|=5, u=0.05, alpha=0.05 using alpha_N(u) = |X||A|2^(|X|+1)e^(-2Nu^2)
 n_scale_100_5 = math.ceil(((100 + 1) * math.log(2.0) + math.log(100.0 * 5.0 / 0.05)) / (2.0 * 0.05 ** 2))
 
-# Exact acceptance set for NoisyFiniteRiskOracleWitness at N=4096, u=1/20, tau=1/8, beta=7/10
+# Exact acceptance set & exact integer binomial probabilities via verify_standalone
 u_wit = Q(1, 20)
 tau_wit = Q(1, 8)
 beta_wit = Q(7, 10)
-accepted_ks = {
-    k for k in range(4097)
-    if ((1 - Q(k, 4096)) - 2 * u_wit > tau_wit)  # coarse candidate q_0 rejected
-    and ((1 - Q(k, 4096)) ** 2 + 2 * u_wit <= beta_wit)  # identity candidate q_1 accepted
-}
+k_lo_wit, k_hi_wit = verify_standalone.exact_accepted_k_range(4096, u_wit, tau_wit, beta_wit)
+accepted_ks = set(range(k_lo_wit, k_hi_wit + 1))
 boundary_k820_in_good_event = abs(Q(820, 4096) - Q(1, 4)) <= u_wit
 boundary_k820_budget = (1 - Q(820, 4096)) ** 2 + 2 * u_wit
-prob_accept_quarter = exact_binom_prob(4096, Q(1, 4), accepted_ks)
-prob_abstain_quarter = exact_binom_prob(4096, Q(1, 4), set(range(4097)) - accepted_ks)
-prob_accept_eighth = exact_binom_prob(4096, Q(1, 8), accepted_ks)
+prob_accept_quarter_q = verify_standalone.exact_binomial_prob(4096, Q(1, 4), k_lo_wit, k_hi_wit)
+prob_abstain_quarter_q = Q(1) - prob_accept_quarter_q
+prob_accept_fifth_q = verify_standalone.exact_binomial_prob(4096, Q(1, 5), k_lo_wit, k_hi_wit)
+prob_accept_017_q = verify_standalone.exact_binomial_prob(4096, Q(17, 100), k_lo_wit, k_hi_wit)
+prob_accept_eighth_q = verify_standalone.exact_binomial_prob(4096, Q(1, 8), k_lo_wit, k_hi_wit)
+k_lo_16384, k_hi_16384 = verify_standalone.exact_accepted_k_range(16384, Q(1, 40), tau_wit, beta_wit)
+prob_accept_fifth_16384_q = verify_standalone.exact_binomial_prob(16384, Q(1, 5), k_lo_16384, k_hi_16384)
 
 # Run standalone full 7-action rational POMDP solver at H=2 and H=3
 wS = initial_world("S")
@@ -362,11 +355,15 @@ arithmetic = {
     "goal_risk_eighth": str(goal_risk_eighth),
     "alpha_4096_lt_one": round(nontrivial_conf_4096, 12),
     "per_row_sample_cost_100_5": n_scale_100_5,
-    "witness_accept_k_range": [min(accepted_ks), max(accepted_ks)],
+    "witness_accept_k_range": [k_lo_wit, k_hi_wit],
     "witness_k820_budget": round(float(boundary_k820_budget), 6),
-    "witness_prob_accept_theta_quarter": round(prob_accept_quarter, 6),
-    "witness_prob_abstain_theta_quarter": round(prob_abstain_quarter, 6),
-    "witness_prob_accept_theta_eighth": float(f"{prob_accept_eighth:.4e}"),
+    "witness_prob_accept_theta_quarter_display": verify_standalone.format_sci_from_fraction(prob_accept_quarter_q, 5),
+    "witness_prob_abstain_theta_quarter_display": verify_standalone.format_sci_from_fraction(prob_abstain_quarter_q, 5),
+    "witness_prob_accept_theta_fifth_display": verify_standalone.format_sci_from_fraction(prob_accept_fifth_q, 5),
+    "witness_prob_accept_theta_017_display": verify_standalone.format_sci_from_fraction(prob_accept_017_q, 5),
+    "witness_prob_accept_theta_eighth_display": verify_standalone.format_sci_from_fraction(prob_accept_eighth_q, 5),
+    "witness_prob_accept_theta_fifth_16384_display": verify_standalone.format_sci_from_fraction(prob_accept_fifth_16384_q, 5),
+    "multi_abstraction_benchmark": standalone_report["part2_multi_abstraction_12state_benchmark"]["structural_summary"],
     "tv_h3_half": str(tv_h3_half),
     "err_h3_half": str(err_h3_half),
     "dp_h2_common_opt": str(dp_h2_S_val),
@@ -400,9 +397,14 @@ arithmetic_ok = (
     and accepted_ks == set(range(924, 3175))
     and boundary_k820_in_good_event
     and round(float(boundary_k820_budget), 3) == 0.740
-    and round(prob_accept_quarter, 6) == 0.999876
-    and round(prob_abstain_quarter, 6) == 0.000124
-    and 5.9e-71 <= prob_accept_eighth <= 6.1e-71
+    and verify_standalone.format_sci_from_fraction(prob_accept_quarter_q, 5) == "9.9988e-1"
+    and verify_standalone.format_sci_from_fraction(prob_abstain_quarter_q, 4) == "1.236e-4"
+    and verify_standalone.format_sci_from_fraction(prob_accept_fifth_q, 5) == "2.9491e-5"
+    and verify_standalone.format_sci_from_fraction(prob_accept_017_q, 5) == "4.6100e-20"
+    and verify_standalone.format_sci_from_fraction(prob_accept_eighth_q, 5) == "5.9748e-71"
+    and verify_standalone.format_sci_from_fraction(prob_accept_fifth_16384_q, 4) == "9.775e-1"
+    and standalone_report["status"] == "PASS"
+    and (JAR_DIR / "verify_standalone.py").read_bytes() == (ROOT / "verify_standalone.py").read_bytes()
     and tv_h3_half == Q(1, 8)
     and err_h3_half == Q(7, 16)
     and dp_h2_S_val == Q(13, 16)
@@ -457,8 +459,8 @@ if jar_record["status"] != "PASS":
     errors.append(f"JAR single-blind package validation failed: {jar_record}")
 
 record = {
-    "schema": "standalone-jar-editorial-validation/3",
-    "version": "1.1",
+    "schema": "standalone-jar-editorial-validation/4",
+    "version": "1.2",
     "checked_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
     "status": "PASS" if not errors else "FAIL",
     "errors": errors,
@@ -484,6 +486,7 @@ record = {
     "jar_pages": jar_pages,
     "jar_title_page_pages": jar_title_pages,
     "jar_validation_status": jar_record["status"],
+    "standalone_verifier_status": standalone_report["status"],
     "unresolved_markers_in_pdf": unresolved_pdf,
     "printed_arithmetic": arithmetic,
     "printed_arithmetic_status": "PASS" if arithmetic_ok else "FAIL",
@@ -497,6 +500,8 @@ sha_files = sorted([
     for p in ROOT.rglob("*")
     if p.is_file()
     and "build" not in p.parts
+    and "__pycache__" not in p.parts
+    and not p.name.endswith(".pyc")
     and p.name not in {".gitignore", "SHA256SUMS", ".DS_Store"}
 ])
 sha_lines = [f"{sha(ROOT / f)}  {f}" for f in sha_files if (ROOT / f).is_file()]

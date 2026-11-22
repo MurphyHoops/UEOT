@@ -237,12 +237,13 @@ quotient soundness (\texttt{Quot.sound}) \citep{carneiro2019}---with
 zero incomplete proofs (\texttt{sorryAx}) and zero compiler-trust
 evaluation axioms (\texttt{Lean.ofReduceBool} /
 \texttt{native\_decide}). All mathematical definitions, analytical
-proofs of Theorems 1--7, and explicit strategy evaluations are presented
-in Sections 2--6 and Appendix A.1--A.6, while full-menu optimality
-across all seven-action trees in Theorem 7.2 is established as a
-computer-assisted pure-kernel dynamic-programming proof independently
-reproducible via both Lean (\texttt{lake\ env\ lean}) and our standalone
-exact-rational Python solver (\texttt{validate.py}).
+proofs of Theorems 1--6 and Theorem 7.1, and explicit strategy
+evaluations are presented in Sections 2--6 and Appendix A.1--A.6, while
+full-menu optimality across all seven-action trees in Theorem 7.2 is
+established as a computer-assisted pure-kernel dynamic-programming proof
+independently reproducible via both Lean (\texttt{lake\ env\ lean}) and
+our zero-dependency standalone Python verifier
+(\texttt{verify\_standalone.py}).
 
 Our main contributions form a tightly integrated chain across four
 levels:
@@ -286,21 +287,20 @@ levels:
   uniform \(\alpha\)-validity over positive hazard rates \(p \in (0,1)\)
   forces \(\mathbb{P}_0(\psi = \mathrm{true}) \le \alpha\) at \(p = 0\)
   \citep{leCam1973, tsybakov2009}. Pairing prior structural supports
-  \((I_0, R)\) with per-row empirical transitions, Theorem 5 constructs
-  the exact joint training--selected-deployment law
-  \(J(\omega, h) = \mu(\omega) K_{s(\omega)}(h)\) and verifies the
-  rational computable \texttt{NoisyFiniteRiskOracle}. On a single
-  simultaneous row-calibration event \(G_u\)
-  \citep{hoeffding1963, mcdiarmid1989, pinsker1964}, Markov pushforward
-  contractivity \citep{dobrushin1956, csiszar1975} controls microscopic
-  fiber row-discrepancies uniformly across \emph{all} candidate
-  abstractions \(q_0, \dots, q_{m-1}\) without \(m\)-union penalties,
-  bounding erroneous acceptance of \(> \beta\)-risk controllers by
-  \(\alpha_N(u)\) and unconditional joint failure by
-  \(\mathbb{P}_J(\mathrm{accept} \land E) \le \min\{1, \alpha_N + (1-\alpha_N)\beta\}\),
-  alongside explicit accounting of sample costs and witness
-  acceptance/abstention rates (\(99.988\%\)
-  vs.~\(5.97 \times 10^{-71}\)).
+  \((I_0 = \operatorname{supp}(p_0),\, R = \operatorname{supp}(P))\)
+  with per-row empirical transitions, Theorem 5 separates sample-free
+  infinite-horizon safety in \(K\) from calibrated finite-horizon risk
+  on the joint training--selected-deployment law
+  \(J(\omega, h) = \mu(\omega) K_{s(\omega)}(h)\), verifying
+  \texttt{NoisyFiniteRiskOracle} across \emph{all} candidate
+  abstractions \(q_0, \dots, q_{m-1}\) on a single row-calibration event
+  \(G_u\) \citep{hoeffding1963, mcdiarmid1989, pinsker1964} via Markov
+  pushforward contractivity \citep{dobrushin1956, csiszar1975} without
+  \(m\)-union penalties. Exact integer-binomial operating curves
+  (\(u_N \propto N^{-1/2}\)) and a \(12\)-state multi-abstraction
+  benchmark quantify compact \(4\)-state controllers and
+  \(72\times\)--\(147\times\) faster macro-reference verification
+  against microscopic \(\widehat{P}\) evaluation.
 \item
   \textbf{Binary-observation belief quotients vs.~prepaid
   fault-mechanism minimax regret (Sections 5--6).} On standard Borel
@@ -1081,26 +1081,35 @@ Table 2. Architecture and error accounting of the computable
 \textbf{Theorem 5 (Two-sided fiber-discrepancy soundness and
 post-selection joint deployment risk).} \emph{Fix finite \(X, Y, A\),
 horizon \(T \in \mathbb{N}\), sample size \(N \ge 1\), rational
-parameters \(u, \tau \ge 0\) and \(\beta \in [0,1]\), known structural
-support \(R\) with synthesized controllers
+parameters \(u, \tau \ge 0\) and \(\beta \in [0,1]\), rational initial
+law \(p_0\) with exact initial support
+\(I_0 = \operatorname{supp}(p_0)\), exact structural transition support
+\(R\) satisfying \(R(x,a,z) \iff P(x,a)(z) > 0\), synthesized
+controllers
 \(\mathrm{synthesize}(q_j, R, C, I_0, L_A, a_{\mathrm{fb}}) = \mathrm{some\ prog}_j\)
-for \(j \in \{0, \dots, m-1\}\), rational initial law \(p_0\), and
-microscopic failure event \(E \subseteq \mathcal{M}_T\) covered by
-\(\mathrm{bad}_j\) under each \(q_j\).}
+for \(j \in \{0, \dots, m-1\}\), and microscopic failure event
+\(E \subseteq \mathcal{M}_T\) covered by \(\mathrm{bad}_j\) under each
+\(q_j\).}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \textbf{First-candidate soundness on \(G_u\).} \emph{For every
-  training record \(\omega \in G_u\), if \texttt{selectCandidate}
-  returns \texttt{some\ j}, then \(\delta_{q_j}(P) \le \tau\) and every
-  earlier candidate \(i < j\) satisfies \(\delta_{q_i}(P) > \tau\).
-  Moreover, if \texttt{accepts} holds at \(j\), the true conditional
-  deployment failure risk of \(\mathrm{prog}_j\) satisfies
-  \(K_j(E) \le \beta\), while if \(I_0 \subseteq K\) and \((R, C)\)
-  preserve \(K\), \(\mathrm{prog}_j\) simultaneously maintains
-  \(\mathbb{P}_{\mathrm{prog}_j}(\forall n \in \mathbb{N},\, X_n \in K) = 1\).}
+  \textbf{Sample-independent infinite-horizon structural safety.}
+  \emph{Whenever \(I_0 \subseteq K\) and \((R, C)\) preserve \(K\),
+  every synthesized candidate \(\mathrm{prog}_j\) satisfies
+  \(\nu_n^{\mathrm{prog}_j}(C^c) = 0\) (\(\forall n \in \mathbb{N}\))
+  and
+  \(\mathbb{P}_{\mathrm{prog}_j}(\forall n \in \mathbb{N},\, X_n \in K) = 1\)
+  unconditionally---regardless of whether \(\omega \in G_u\).}
+\item
+  \textbf{First-candidate soundness and finite-horizon risk on \(G_u\).}
+  \emph{For every training record \(\omega \in G_u\), if
+  \texttt{selectCandidate} returns \texttt{some\ j}, then
+  \(\delta_{q_j}(P) \le \tau\) and every earlier candidate \(i < j\)
+  satisfies \(\delta_{q_i}(P) > \tau\); moreover, if \texttt{accepts}
+  holds at \(j\), the true finite-horizon deployment failure risk of
+  \(\mathrm{prog}_j\) satisfies \(K_j(E) \le \beta\).}
 \item
   \textbf{Unconditional post-selection joint bound.} \emph{Under the
   joint training--selected-deployment law \(J\) induced by \(\mu_N\),
@@ -1117,29 +1126,32 @@ engineering trade-offs accompany that guarantee (Figure 1):
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \textbf{Selection-wide control versus post-acceptance conditional
-  risk.} On \(G_u\), \emph{every} candidate passing \texttt{accepts}
-  satisfies \(K_j(E) \le \beta\); hence the probability of accepting a
-  controller whose true risk exceeds \(\beta\) is at most
+  \textbf{Decoupled perpetual safety, selection-wide control, and
+  post-acceptance conditional risk.} Perpetual safety in \(K\) (Part 1)
+  rests solely on prior structural support \((I_0, R, C)\) and never
+  awaits \(G_u\), whereas \(G_u\) governs finite-horizon performance
+  risk \(K_j(E) \le \beta\) (Part 2). On \(G_u\), \emph{every} candidate
+  passing \texttt{accepts} satisfies \(K_j(E) \le \beta\); hence false
+  acceptance of \(> \beta\)-risk controllers has probability at most
   \(\alpha_N(u)\), and unconditionally
   \(\mathbb{P}_J(\mathrm{selectedAccepts} \land E) \le \min\{1, \alpha_N + (1-\alpha_N)\beta\}\)
-  (note that the \(5/8 = 1/4 + \frac{3}{4}\cdot\frac{1}{2}\) two-branch
-  example above establishes sharpness of the general good-event mixture
-  inequality itself). If every candidate has \(K_j(E) > \beta\),
-  acceptance occurs only on \(G_u^c\), where conditional risk
-  \emph{given} erroneous acceptance can approach \(1\) even while
-  unconditional joint failure stays tiny.
+  (the \(5/8 = 1/4 + \frac{3}{4}\cdot\frac{1}{2}\) two-branch witness
+  establishes sharpness of this general good-event mixture inequality).
+  If every candidate has \(K_j(E) > \beta\), acceptance occurs only on
+  \(G_u^c\), where conditional failure \emph{given} rare erroneous
+  acceptance can approach \(1\) even while unconditional joint failure
+  stays negligible.
 \item
   \textbf{Input contract and microscopic-discrepancy conservatism.}
   First, the sampling interface assumes generative per-pair draws
-  \(\omega_{x,a,k} \sim P(x,a)\), prior hardware/domain structural
-  support \((I_0, R)\) feeding \texttt{synthesize} (Figure 1a,
-  reconciling Theorem 5 with Theorem 4), and a coarse failure
-  upper-envelope \(\mathrm{bad}_j\) covering \(E\); passively logged
-  partial-observation trajectories require separate identification.
-  Second, \(\delta_q(P)\) measures \emph{unprojected} microscopic row
-  differences inside each \(q\)-fiber, which is strictly stronger than
-  projected Markov lumpability
+  \(\omega_{x,a,k} \sim P(x,a)\), prior structural support
+  \((I_0 = \operatorname{supp}(p_0), R = \operatorname{supp}(P))\)
+  feeding \texttt{synthesize} (Figure 1a, reconciling Theorem 5 with
+  Theorem 4), and a coarse failure upper-envelope \(\mathrm{bad}_j\)
+  covering \(E\); passively logged partial-observation trajectories
+  require separate identification. Second, \(\delta_q(P)\) measures
+  \emph{unprojected} microscopic row differences inside each
+  \(q\)-fiber, which is stronger than projected Markov lumpability
   \(\delta_q^{\mathrm{proj}}(P) := \max_{q(x)=q(x'), a} d_{\mathrm{TV}}(q_\# P(x,a), q_\# P(x',a)) \le \delta_q(P)\):
   on \(X = \{a,b,c\}\) with \(q(a)=q(b)=0, q(c)=1\) and deterministic
   self-loops \(P(x,\cdot) = \delta_x\), projected rows match
@@ -1151,72 +1163,205 @@ engineering trade-offs accompany that guarantee (Figure 1):
   event and \(u + \widehat{\delta}_q^{\mathrm{proj}}\) error bound when
   screening purely macro-lumpable quotients).
 \item
-  \textbf{Sample scaling and exact witness acceptance versus abstention
-  rates.} Eliminating the \(m\)-candidate factor leaves per-row sample
-  scaling
+  \textbf{Sample scaling and exact operating curve across \(\theta\)
+  (Figure 1b).} Eliminating the \(m\)-candidate factor leaves per-row
+  sample scaling
   \(N = \lceil \frac{1}{2u^2}((|X|+1)\ln 2 + \ln(|X||A|/\alpha))\rceil\)
-  (for instance, \(|X|=100, |A|=5, u=0.05, \alpha_N=0.05\) requires
-  \(N = 15{,}844\) draws per pair). On our formalized three-state
-  progress-vs-cemetery witness (\texttt{NoisyFiniteRiskOracleWitness},
-  with \(T=2, u=1/20, \tau=1/8, \beta=7/10, N=4096\), where
-  \(\alpha_{4096}(1/20) = 48 e^{-512/25} \approx 6.12 \times 10^{-8} < 1\)
-  is proved analytically via \((1 + 256/25)^2 < e^{512/25}\)), exact
-  binomial evaluation over progress counts
-  \(k \sim \mathrm{Binomial}(4096, \theta)\) reveals the precise
-  operating trade-off: \texttt{selectedAccepts} selects and accepts the
-  identity controller iff \(k \in \{924, \dots, 3174\}\) (since
-  \((1 - k/4096) - 2u > 1/8\) rejects the coarse candidate \(q_0\) iff
-  \(k \le 3174\), and \((1 - k/4096)^2 + 2u \le 7/10\) accepts \(q_1\)
-  iff \(k \ge 924\)). On the \textbf{valid plant \(\theta = 1/4\)} (true
-  risk \(9/16 = 0.5625 \le 0.7\)), the oracle achieves
-  \textbf{\(99.988\%\) correct acceptance}
-  (\(\mathbb{P}(\mathrm{accept}) = 0.999876\)) and only
-  \textbf{\(0.0124\%\) conservative abstention}---abstaining on boundary
-  records \(820 \le k \le 923\) that still lie inside \(G_{1/20}\)
-  (e.g., at \(k = 820\),
-  \(|\widehat{\theta} - 1/4| = 51/1024 \le 1/20\), yet padded budget
-  \((1 - 205/1024)^2 + 1/10 \approx 0.740 > 0.7\)). On the
-  \textbf{invalid plant \(\theta = 1/8\)} (true risk
-  \(49/64 = 0.765625 > 0.7\)), \emph{every} record in \(G_{1/20}\) is
-  rejected, yielding \textbf{false-acceptance probability
-  \(5.97 \times 10^{-71} \ll \alpha_{4096}\)} and
-  \textbf{\(> 99.999999\%\) abstention}. The oracle thus selects valid
-  controllers with near-unit power rather than controlling joint risk
-  via blanket abstention.
+  (\(N = 15{,}844\) at \(|X|=100, |A|=5, u=0.05, \alpha_N=0.05\)). On
+  our formalized three-state witness
+  (\texttt{NoisyFiniteRiskOracleWitness},
+  \(T=2, u=1/20, \tau=1/8, \beta=7/10, N=4096\),
+  \(\alpha_{4096}(1/20) = 48 e^{-512/25} \approx 6.12 \times 10^{-8} < 1\)),
+  \texttt{selectedAccepts} accepts the identity controller iff progress
+  count \(k \in \{924, \dots, 3174\}\) (\((1 - k/4096) - 2u > 1/8\)
+  rejects coarse \(q_0\) iff \(k \le 3174\), and
+  \((1 - k/4096)^2 + 2u \le 7/10\) accepts \(q_1\) iff \(k \ge 924\)).
+  Exact arbitrary-precision integer binomial summation
+  (\texttt{verify\_standalone.py}) maps the full operating curve across
+  true progress rates \(\theta\) (valid iff
+  \((1-\theta)^2 \le 0.7 \iff \theta \ge 1 - \sqrt{0.7} \approx 0.16334\)):
+  at \(\theta = 1/4\) (true risk \(9/16 = 0.5625\)), acceptance is
+  \textbf{\(99.988\%\)} (\(0.0124\%\) abstention on boundary records
+  \(820 \le k \le 923\) inside \(G_{1/20}\),
+  e.g.~\(\widehat{B}_2(820) \approx 0.740 > 0.7\)); at \(\theta = 1/5\)
+  (risk \(16/25 = 0.64 \le 0.7\)) and \(\theta = 17/100\) (risk
+  \(0.6889 \le 0.7\)), acceptance drops to \textbf{\(0.00295\%\)} and
+  \textbf{\(4.61 \times 10^{-20}\)}; and at invalid \(\theta = 1/8\)
+  (risk \(49/64 \approx 0.7656 > 0.7\)), false acceptance is
+  \textbf{\(5.97 \times 10^{-71}\)}. Why do \(\theta = 1/5\) and
+  \(0.17\) abstain? Because fixed \(u = 1/20\) deducts a \(2u = 0.10\)
+  margin, requiring
+  \(\widehat{\theta} \ge 1 - \sqrt{0.6} \approx 0.22540\): increasing
+  \(N\) while holding \(u\) fixed drives acceptance to \(0\) on
+  \((0.1633, 0.2254)\), whereas scaling \(u_N \propto N^{-1/2}\)
+  (\(u = 1/40\) at \(N = 16{,}384\), keeping
+  \(\alpha \approx 6.12 \times 10^{-8}\) identical; Figure 1b dashed
+  curve) halves the abstention band to \((0.1633, 0.1938)\) and lifts
+  \(\theta = 1/5\) acceptance from \textbf{\(0.003\%\) to \(97.8\%\)}.
+  Thus, at fixed \((N, u)\), the oracle achieves near-unit acceptance
+  when true risk margin exceeds \(Tu\), while conservatively abstaining
+  near the \(\beta\) boundary unless \(u_N\) shrinks with \(N\).
 \end{enumerate}
 
 \begin{figure}
 \centering
 \includegraphics[width=0.99\linewidth,height=\textheight,keepaspectratio,alt={End-to-end
-pure-kernel synthesis and candidate-free post-selection risk
-architecture. (a) Separation between prior structural support (I\_0, R,
-C) feeding synthesize (reconciling Theorem 4's fixed-sample zero-leakage
-impossibility with Theorem 3's exact safety) and simultaneous per-row
-calibration G\_u controlling microscopic fiber row-discrepancies across
-candidate abstractions q\_0,\textbackslash dots,q\_\{m-1\} without
-union-bound inflation (Theorem 5). (b) Certified joint risk envelope
-\textbackslash min\textbackslash\{1, \textbackslash alpha\_N +
-(1-\textbackslash alpha\_N)\textbackslash beta\textbackslash\} on the
-three-state witness (\textbar X\textbar=3, \textbar A\textbar=1, u=1/20,
-\textbackslash beta=7/10, achieving 99.988\textbackslash\% true
-acceptance at \textbackslash theta=1/4 vs.~5.97\textbackslash times
-10\^{}\{-71\} false acceptance at \textbackslash theta=1/8) compared
-against naive m-candidate union
-bounds.}]{figures/fig1_synthesis_and_calibration.pdf}
-\caption{End-to-end pure-kernel synthesis and candidate-free
-post-selection risk architecture. (a) Separation between prior
-structural support \((I_0, R, C)\) feeding \protect\texttt{synthesize}
-(reconciling Theorem 4's fixed-sample zero-leakage impossibility with
-Theorem 3's exact safety) and simultaneous per-row calibration \(G_u\)
-controlling microscopic fiber row-discrepancies across candidate
-abstractions \(q_0,\dots,q_{m-1}\) without union-bound inflation
-(Theorem 5). (b) Certified joint risk envelope
-\(\min\{1, \alpha_N + (1-\alpha_N)\beta\}\) on the three-state witness
-(\(|X|=3, |A|=1, u=1/20, \beta=7/10\), achieving \(99.988\%\) true
-acceptance at \(\theta=1/4\) vs.~\(5.97\times 10^{-71}\) false
-acceptance at \(\theta=1/8\)) compared against naive \(m\)-candidate
-union bounds.}
+pure-kernel synthesis and calibrated post-selection risk operating
+curve. (a) Separation between sample-free perpetual safety from prior
+structural support (I\_0 = \textbackslash mathrm\{supp\}(p\_0), R =
+\textbackslash mathrm\{supp\}(P), C) and finite-horizon risk calibration
+on G\_u across q\_0,\textbackslash dots,q\_\{m-1\} (Theorem 5). (b)
+Exact binomial acceptance curve \textbackslash
+mathbb\{P\}\_\textbackslash theta(\textbackslash
+mathrm\{selectedAccepts\}) across true progress rates \textbackslash
+theta on the three-state witness, showing near-unit acceptance when risk
+margin exceeds 2u (\textbackslash theta=1/4), conservative abstention
+inside the 2u-margin band (\textbackslash theta=1/5), and shrinkage of
+that band under u\_N \textbackslash propto N\^{}\{-1/2\} (N=16\{,\}384,
+u=1/40 at identical \textbackslash alpha \textbackslash approx 6.12
+\textbackslash times
+10\^{}\{-8\}).}]{figures/fig1_synthesis_and_calibration.pdf}
+\caption{End-to-end pure-kernel synthesis and calibrated post-selection
+risk operating curve. (a) Separation between sample-free perpetual
+safety from prior structural support
+\((I_0 = \mathrm{supp}(p_0), R = \mathrm{supp}(P), C)\) and
+finite-horizon risk calibration on \(G_u\) across \(q_0,\dots,q_{m-1}\)
+(Theorem 5). (b) Exact binomial acceptance curve
+\(\mathbb{P}_\theta(\mathrm{selectedAccepts})\) across true progress
+rates \(\theta\) on the three-state witness, showing near-unit
+acceptance when risk margin exceeds \(2u\) (\(\theta=1/4\)),
+conservative abstention inside the \(2u\)-margin band (\(\theta=1/5\)),
+and shrinkage of that band under \(u_N \propto N^{-1/2}\)
+(\(N=16{,}384, u=1/40\) at identical
+\(\alpha \approx 6.12 \times 10^{-8}\)).}
 \end{figure}
+
+\subsection{Evaluating non-trivial abstraction selection against
+microscopic-reference
+verification}\label{evaluating-non-trivial-abstraction-selection-against-microscopic-reference-verification}
+
+The formalized three-state witness above tests the risk gate cleanly
+(\texttt{\textbar{}A\textbar{}\ =\ 1}, with coarse \(q_0\) pooling start
+and goal so every accepted run uses \(q_1 = \mathrm{id}\)), leaving open
+a practical question: \emph{when multiple non-identity coarse
+abstractions synthesize valid controllers, what concrete sensor, memory,
+and verification savings does macro-reference selection buy relative to
+evaluating the selected coarse controller directly on the empirical
+microscopic model \(\widehat{P}(\omega)\)?} Note that on \(G_u\),
+evaluating any fixed coarse controller \(\mathrm{prog}_j\) directly on
+\(\widehat{P}(\omega)\) also requires no \(m\)-union bound and pays only
+\(T u\) (avoiding both \(T\widehat{\delta}_{q_j}\) and coarse-envelope
+slack), at the cost of summing microscopic state trajectories of
+cardinality up to \(|X|^{T+1}\).
+
+To quantify these trade-offs on common datasets,
+\texttt{verify\_standalone.py} evaluates a \(12\)-state, \(3\)-action
+(\texttt{boost}, \texttt{steady}, \texttt{hazard}), horizon-\(T=4\)
+staged pipeline (\(K = \{0,\dots,10\}\), unsafe cemetery \(\bot = 11\),
+uniform initial law \(p_0\) over \(S_A \cup S_B = \{0,\dots,7\}\),
+target set \(G = G_{\mathrm{buf}} \cup G_{\mathrm{main}}\) with
+\(G_{\mathrm{buf}} = \{8\}\) and \(G_{\mathrm{main}} = \{9,10\}\)). On
+stage \(S_A = \{0,1,2,3\}\), \texttt{boost} is safe and reaches \(G\)
+w.p. \(0.70\) (\(0.69\) on \(\{2,3\}\)); on delicate stage
+\(S_B = \{4,5,6,7\}\) and quiet buffer goal
+\(G_{\mathrm{buf}} = \{8\}\), \texttt{boost} leaks to \(\bot\) w.p.
+\(1/2\) whereas \texttt{steady} is safe and reaches \(G\) w.p. \(0.60\)
+(\(0.59\) on \(\{6,7,8\}\)). Compare four abstractions (Table 3):
+\emph{(i)} \(q_{\mathrm{pool3}}\) (\(|Y|=3\): pools \(\{0,\dots,8\}\)),
+which forces \texttt{steady} everywhere (true missed-\(G\) risk
+\(0.07836\)) and has \(\delta_{q_{\mathrm{pool3}}} = 1\); \emph{(ii)}
+non-identity \(q_{\mathrm{coarse4}}\) (\(|Y|=4\): separates \(S_A\) from
+\(S_B \cup G_{\mathrm{buf}}\)), whose synthesized controller plays
+\texttt{boost} on \(S_A\) and \texttt{steady} on
+\(S_B \cup G_{\mathrm{buf}}\) (cutting true risk to \textbf{\(0.04469\)}
+with \(\delta_{q_{\mathrm{coarse4}}} = 1/100\), while paying
+\(+0.01069\) coarse-envelope slack from pooling \(G_{\mathrm{buf}}\)
+with \(S_B\)); \emph{(iii)} non-identity \(q_{\mathrm{fine5}}\)
+(\(|Y|=5\): isolates \(G_{\mathrm{buf}}\)), achieving true risk
+\textbf{\(0.04469\)} with \textbf{only \(4\) reachable memory states}
+(vs.~\(11\) under \(q_{\mathrm{id12}}\)) and zero envelope overshoot;
+and \emph{(iv)} full-state / microscopic-reference evaluation on
+\(\widehat{P}\) (\(|X|=12\)).
+
+\Needspace{28\baselineskip}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Abstraction / Verifier
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Sensor \(\lvert Y\rvert\) \& Reach. Memory
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+True \(\delta_q\) \& True Risk \(K_j(E)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Pos. Ref. Paths \& Exact Eval Time
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(100\)-Trial Accept (\(\tau{=}0.125,\) \(\beta{=}0.34\))
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Abstention Breakdown (Fiber / Env. / \(u{+}\widehat{\delta}\))
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(q_{\mathrm{pool3}}\) (\texttt{steady} only) & \(\lvert Y\rvert=3\),
+mem \(3\) & \(\delta=1\), risk \(0.07836\) & \(5\) paths
+(\(0.5\text{ ms}\)) & \(0\%\) (rejected \(100\%\)) & Cleanly rejected
+(\(\widehat{\delta}-2u > \tau\)) \\
+\(q_{\mathrm{coarse4}}\) (non-id, menu A) & \(\lvert Y\rvert=4\), mem
+\(5\) & \(\delta=\frac{1}{100}\), risk \(0.04469\) & \textbf{\(20\)
+paths (\(0.9\text{ ms}\))} & \textbf{\(56\%\)} (\(96\%\) at
+\(\beta{=}0.38\)) & \(0\%\) / \(15\%\) / \(29\%\) (\(51\%\) fiber,
+\(\tau{=}0.095\)) \\
+\(q_{\mathrm{fine5}}\) (non-id, menu B) & \(\lvert Y\rvert=5\),
+\textbf{mem \(4\)} & \(\delta=\frac{1}{100}\), risk \(0.04469\) &
+\textbf{\(62\) paths (\(1.7\text{ ms}\))} & \textbf{\(75\%\)} (\(99\%\)
+at \(\beta{=}0.38\)) & \(0\%\) / \(0\%\) / \(25\%\) (\(41\%\) fiber,
+\(\tau{=}0.095\)) \\
+Micro-ref \(\widehat{P}\) / \(q_{\mathrm{id12}}\) &
+\(\lvert X\rvert=12\), mem \(11\) & \(\delta=0\), risk \(0.04469\) &
+\(8{,}248\) paths (\(135\text{ ms}\)) & \(100\%\) (even at
+\(\beta{=}0.20\)) & Pays \(Tu=0.10\) only;
+\textbf{\(72\times\)--\(147\times\) slower} \\
+\end{longtable}
+}
+
+Table 3. Multi-abstraction comparison on the \(12\)-state, \(3\)-action,
+\(T=4\) benchmark across \(100\) seeded datasets (\(N=2500\) per row,
+\(u = 1/40\); reproduced by \texttt{verify\_standalone.py}).
+
+Across \(100\) seeded training datasets (\(N=2500, u=1/40\)), Table 3
+isolates three concrete design lessons: \emph{(i)} non-identity
+abstractions \(q_{\mathrm{coarse4}}\) and \(q_{\mathrm{fine5}}\) reduce
+controller memory (\(4\)--\(5\) states vs.~\(11\)), sensor cardinality
+(\(4\)--\(5\) vs.~\(12\)), and exact rational reference-verification
+paths from \(8{,}248\) to \(20\)--\(62\)
+(\textbf{\(72\times\)--\(147\times\) faster} than microscopic
+\(\widehat{P}\) evaluation) while matching optimal full-state risk
+(\(0.04469\) vs.~\(0.07836\)); \emph{(ii)} candidate ordering matters
+because \texttt{selectCandidate} commits to the first \(\tau\)-certified
+index before checking \(\widehat{B}_T \le \beta\): at
+\(\tau = 0.125, \beta = 0.34\), Menu A
+(\([q_{\mathrm{pool3}}, q_{\mathrm{coarse4}}, q_{\mathrm{fine5}}]\))
+abstains on \(19\%\) more runs than Menu B
+(\([q_{\mathrm{pool3}}, q_{\mathrm{fine5}}, q_{\mathrm{coarse4}}]\):
+\(56\%\) vs.~\(75\%\) acceptance, including \(15\%\) from
+\(q_{\mathrm{coarse4}}\)'s coarse-envelope slack and \(25\%\)--\(29\%\)
+from \((u+\widehat{\delta})\) margins), whereas tightening \(\tau\) to
+\(0.095\) triggers \(41\%\)--\(51\%\) \texttt{ambiguous}
+fiber-discrepancy abstentions (\texttt{selectCandidate\ =\ none}); and
+\emph{(iii)} when microscopic \(\widehat{P}\) evaluation is
+computationally affordable, certifying the \emph{coarse} controller
+\texttt{prog\_fine5} via \(\widehat{P}\) combines compact \(4\)-state
+runtime deployment with tighter \(Tu\)-only statistical margins
+(accepting \(10/10\) runs even at \(\beta = 0.20\)).
 
 \section{Binary-observation belief quotients on standard Borel
 spaces}\label{binary-observation-belief-quotients-on-standard-borel-spaces}
@@ -1323,11 +1468,17 @@ Borel space, \((A, \Sigma_A)\) a measurable action space,
 
 Theorem 6 (proved in Appendix A.5) serves as a clean boundary theorem
 showing that \emph{exact predictive sufficiency can erase hidden safety
-invariants}. Note its exact geometric structure under deterministic
-binary \(q: X \to \{0,1\}\): while the input coordinate
-\(c_q(b) \in [0,1]\) varies continuously across prior beliefs
-\(b \in \mathcal{P}(X)\), upon receiving \(y \in \{0,1\}\) the regular
-posterior \(\mathrm{Post}(b,a,y)\) concentrates on \(q^{-1}(\{y\})\) so
+invariants}. Note its exact geometric and measure-theoretic scope under
+deterministic binary \(q: X \to \{0,1\}\): on positive-probability
+branches \(\bar{o}_{b,a}(\{y\}) > 0\), the posterior reduces directly to
+the normalized fiber restriction
+\(\widehat{b}_a(\cdot \cap q^{-1}(\{y\})) / \widehat{b}_a(q^{-1}(\{y\}))\),
+while standard Borel \((X, \Sigma_X)\) is the setting adopted by our
+Mathlib \texttt{posteriorKernel} formalization to package all branches
+into a single measurable Markov kernel \(\mathcal{K}_{\mathrm{bel}}\).
+While the input coordinate \(c_q(b) \in [0,1]\) varies continuously
+across prior beliefs \(b \in \mathcal{P}(X)\), upon receiving
+\(y \in \{0,1\}\) the posterior concentrates on \(q^{-1}(\{y\})\) so
 \(c_q(\mathrm{Post}(b,a,y)) = y \in \{0,1\}\) for
 \(\bar{o}_{b,a}\)-a.e.~\(y\) (rendering the pushforward immune to
 null-branch conventions). Under \texttt{ClosedTests}, \(\bar{K}(u, a)\)
@@ -1518,7 +1669,7 @@ Seeded mixture \(\rho = \frac{1}{4}\pi_S + \frac{3}{4}\pi_G\) &
 \end{longtable}
 }
 
-Table 3. Exact three-step payoff and regret matrix at
+Table 4. Exact three-step payoff and regret matrix at
 \((r, H, B, c, \lambda, d) = (1/2, 3, 2, 1, 1/4, 1)\), verified purely
 inside the Lean 4 kernel (\texttt{kernel\_int\_h3}). Dual weights
 \(w = (3/4, 1/4)\) give \(V_w^* = 5/4 = 40/32\) and
@@ -1842,8 +1993,9 @@ to Kolmogorov \(\mathbb{P}(\forall n,\, X_n \in K)=1\) \& killed
 \citep{chatterjee2016, junges2021, carr2023} \\
 Statistical calibration & Fixed-sample zero-support no-go +
 post-selection joint \(J(\omega,h)\) without \(m\)-union bound &
-Known-kernel pCTL/MDPs \citep{hoelzlNipkow2012} or unformalized PAC-MDP
-bounds \citep{strehl2009} \\
+Uncertain POMDP/iMDP solvers outside ITP
+\citep{cubuktepe2021, badings2023} or known-kernel pCTL
+\citep{hoelzlNipkow2012} \\
 Resource-gated fault regret & Prepaid cap
 \(c\cdot\mathrm{cap}(a)\le B_t\), TV \(\Delta_{3,B}=r^2(1-r)\), minimax
 \(R^*=3/128 < 1/32\) & Unconstrained action menus or known single
@@ -1851,7 +2003,7 @@ transition kernel \\
 \end{longtable}
 }
 
-Table 4. Comparison of our Lean 4 formalization with related interactive
+Table 5. Comparison of our Lean 4 formalization with related interactive
 theorem proving and POMDP verification frameworks.
 
 To check axiom dependencies mechanically, our metaprogram
@@ -1897,23 +2049,25 @@ guarantee-and-interface boundaries:
   risk calibration}, and \emph{GCD-free integer kernel reduction} on
   belief trees.
 \item
-  \textbf{Qualitative POMDP winning regions and safe-RL shielding.}
-  \citet{chatterjee2016} established decidability of qualitative POMDP
-  objectives, \citet{junges2021} developed scalable SAT- and BDD-based
-  algorithms for computing belief-support winning regions enforcing
-  almost-sure reachability in POMDPs, and \citet{alshiekh2018} and
-  \citet{carr2023} deployed support-based shields to constrain
-  reinforcement learning under partial observability in unverified
-  C++/Python toolchains \citep{kwiatkowska2011, dehnert2017}. Rather
-  than competing on SAT/BDD state-space scale, Theorems 1--3 provide a
-  \emph{machine-checked semantic bridge} inside an interactive theorem
-  prover---connecting a concrete executable finite-memory synthesizer
-  (\texttt{synthesize\ :\ Option\ (Program\ X\ Y\ A)}) directly to
-  actual-policy posterior supports, killed substochastic operators
-  \(Q_K^T\), and the Kolmogorov infinite-trajectory measure
-  \(\mathbb{P}_{\mathrm{prog}}(\forall n \in \mathbb{N},\, X_n \in K) = 1\),
-  while Theorems 4--5 formalize what happens when exact transition
-  probabilities are unknown and abstractions are selected from data.
+  \textbf{POMDP winning regions, uncertain POMDPs, and safe-RL
+  shielding.} \citet{chatterjee2016} established decidability of
+  qualitative POMDP objectives, \citet{junges2021} developed scalable
+  SAT- and BDD-based belief-support winning-region synthesis for
+  almost-sure reachability, \citet{cubuktepe2021} synthesized robust
+  finite-state controllers for uncertain POMDPs via dualization and
+  linear-programming relaxations, \citet{badings2023} propagated
+  sample-based uncertainty into interval-MDP abstractions for dynamical
+  control, and \citet{alshiekh2018} and \citet{carr2023} deployed
+  support-based shields for partially observed reinforcement learning in
+  unverified C++/Python toolchains \citep{kwiatkowska2011, dehnert2017}.
+  Rather than competing on SAT/BDD or LP benchmark scale, our distinct
+  contribution is \emph{machine-checked end-to-end semantic integration}
+  inside an interactive theorem prover---unifying support-driven
+  executable finite-memory synthesis (\texttt{synthesize}),
+  data-dependent observation-abstraction selection
+  (\texttt{selectCandidate}), and unconditional post-selection joint
+  deployment risk (\texttt{NoisyFiniteRiskOracle}) under Kolmogorov
+  trajectory measures.
 \item
   \textbf{Statistical lower bounds, post-selection inference, and metric
   discipline.} Theorem 4 formalizes a non-asymptotic Le Cam
@@ -2006,8 +2160,8 @@ the candidate strategies \(\pi_S, \pi_G, \rho\) and the
 full-menu optimality across all seven-action trees in Theorem 7.2 is
 certified by pure-kernel integer dynamic programming
 (\texttt{csolveInt\_spec}, \texttt{kernel\_int\_h3}) and independently
-verified by the standalone exact-rational solver in
-\texttt{validate.py}.
+verified by the zero-dependency exact-rational solver in
+\texttt{verify\_standalone.py}.
 
 \subsection{Posterior-support bridge, viability equivalence, and
 quantifier exchange (Theorems 1 and
@@ -2289,19 +2443,22 @@ between the pushed-forward true coarse trajectory law
 \(\mathrm{prog}_j\), one-step row discrepancies accumulate additively up
 to uncertified occupancy \(\kappa_n = \nu_n^{\mathrm{prog}_j}(C^c)\):
 \[d_{\mathrm{TV}}\bigl((\Pi_T^{(q_j)})_\# K_j,\, \widehat{\mathbb{P}}_T^{(j,\omega)}\bigr) \le \sum_{n=0}^{T-1} \bigl[\varepsilon_j(\omega) + (1 - \varepsilon_j(\omega))\nu_n^{\mathrm{prog}_j}(C^c)\bigr].\]
-By Theorem 3.2,
-\texttt{synthesize}\((q_j, \dots) = \mathrm{some\ prog}_j\) guarantees
-\(\nu_n^{\mathrm{prog}_j}(C^c) = 0\) for every \(n\), eliminating the
-second term. Since
+By Theorem 3.2 (applied using \(I_0 = \operatorname{supp}(p_0)\) and
+\(R(x,a,z) \iff P(x,a)(z) > 0\)), the output \(\mathrm{some\ prog}_j\)
+of \texttt{synthesize} at candidate \(q_j\) guarantees
+\(\nu_n^{\mathrm{prog}_j}(C^c) = 0\) for every \(n\) (and Theorem 3.3
+yields \(\mathbb{P}_{\mathrm{prog}_j}(\forall n,\, X_n \in K) = 1\)
+unconditionally for Part (1)), eliminating the second term in the
+coupling sum. Since
 \(E \subseteq (\Pi_T^{(q_j)})^{-1}(\{\mathrm{bad}_j = \mathrm{true}\})\),
 we obtain
-\(K_j(E) \le (\Pi_T^{(q_j)})_\# K_j(\{\mathrm{bad}_j = \mathrm{true}\}) \le \widehat{B}_T(\mathrm{prog}_j, q_j, \omega, u)\).
-Thus \texttt{accepts} \(= \mathrm{true}\) (\(\widehat{B}_T \le \beta\))
-implies \(K_j(E) \le \beta\) on \(G_u\), while Theorem 3.3
-simultaneously yields
-\(\mathbb{P}_{\mathrm{prog}_j}(\forall n,\, X_n \in K) = 1\).
+\(K_j(E) \le (\Pi_T^{(q_j)})_\# K_j(\{\mathrm{bad}_j = \mathrm{true}\})\)
+and consequently
+\(K_j(E) \le \widehat{B}_T(\mathrm{prog}_j, q_j, \omega, u)\). Thus
+\texttt{accepts} \(= \mathrm{true}\) (\(\widehat{B}_T \le \beta\))
+implies \(K_j(E) \le \beta\) on \(G_u\), establishing Part (2).
 
-\textbf{(2)} \emph{Concentration of \(G_u\) and joint post-selection
+\textbf{(3)} \emph{Concentration of \(G_u\) and joint post-selection
 bound.} For each pair \((x,a) \in X \times A\) and subset
 \(B \subseteq X\), \(\widehat{P}_{x,a}(\omega)(B) - P(x,a)(B)\) is the
 average of \(N\) i.i.d. centered \([0,1]\)-valued indicators
@@ -2320,7 +2477,7 @@ For \(\omega \in G_u\), either \texttt{selectCandidate}
 and \(K_{s(\omega)}(F(\omega)) = 0 \le \beta\)), or
 \texttt{selectCandidate} \(= \mathrm{some}\ j\): if \texttt{accepts}
 \(= \mathrm{false}\), again \(F(\omega) = \varnothing\)
-(\(0 \le \beta\)); if \texttt{accepts} \(= \mathrm{true}\), Part (1)
+(\(0 \le \beta\)); if \texttt{accepts} \(= \mathrm{true}\), Part (2)
 gives \(K_j(F(\omega)) = K_j(E) \le \beta\). Splitting
 \(J(\{(\omega, h) : h \in F(\omega)\}) = \sum_{\omega \in G_u} \mu_N(\omega) K_{s(\omega)}(F(\omega)) + \sum_{\omega \in G_u^c} \mu_N(\omega) K_{s(\omega)}(F(\omega))\)
 gives
@@ -2487,18 +2644,33 @@ writing \(g\) to \texttt{root0} at \(t=0\) (expected step-0 net payoff
 remaining wallet \(2\)) followed at \(t=1\) by idling \texttt{root0}
 after \((1,1)\) (expected payoff \(\frac{1}{2}\cdot 1 = \frac{1}{2}\))
 and writing \(g\) to \texttt{root0} after \((0,0)\) (expected payoff
-\(\frac{3}{8}\)) yields total payoff
-\(\frac{3}{8} + \frac{1}{2}\cdot\frac{1}{2} + \frac{1}{2}\cdot\frac{3}{8} = \frac{13}{16} = V_S^* = V_G^*\).
+\(\frac{3}{8}\)) achieves
+\(\frac{3}{8} + \frac{1}{2}\cdot\frac{1}{2} + \frac{1}{2}\cdot\frac{3}{8} = \frac{13}{16}\)
+under both \(S\) and \(G\). To see analytically that \(\frac{13}{16}\)
+is optimal over \emph{all} policies, observe that at the final step
+\(t=1\) expected net payoff is at most \(\frac{1}{2}\) when an intact
+\(g\)-slot exists (\texttt{idle}, fee \(0\)) and at most
+\(\frac{1}{2}(1 - \frac{1}{4}) = \frac{3}{8}\) when every existing slot
+holds \(\neg g\) (\texttt{write} \(g\)). At \(t=0\) from
+\((\mathrm{root0}=\neg g, \mathrm{child1}=\mathrm{none})\), writing
+\(g\) to \texttt{root0} is bounded above by
+\(\frac{3}{8} + \frac{1}{2}\cdot\frac{1}{2} + \frac{1}{2}\cdot\frac{3}{8} = \frac{13}{16}\),
+whereas every other \(t=0\) action (\texttt{stop}, \texttt{idle},
+\texttt{write} \(\neg g\), or addressing absent \texttt{child1}) yields
+\(0\) birth at \(t=0\) (immediate net payoff \(\le 0\)) and leaves no
+intact \(g\)-slot at \(t=1\) (continuation \(\le \frac{3}{8}\)), hence
+total payoff \(\le \frac{3}{8} < \frac{13}{16}\); thus
+\(V_S^*(2) = V_G^*(2) = \frac{13}{16}\).
 
 \textbf{(2)} \emph{Exact three-step minimax regret and deterministic
 lattice gap.} Fix \((r, H, B, c, \lambda, d) = (1/2, 3, 2, 1, 1/4, 1)\).
 Full-menu optimality across all \(7\)-action trees is established by
 pure-kernel integer dynamic programming (\texttt{csolveInt\_spec},
 \texttt{kernel\_int\_h3}) and independently cross-checked by the
-exact-rational solver in \texttt{validate.py}; the closed-form
-evaluations of the returned trees \(\pi_S\), \(\pi_G\), dual prior
-\(w = (3/4, 1/4)\), and seeded mixture \(\rho\) verify the saddle
-directly:
+zero-dependency exact-rational solver in \texttt{verify\_standalone.py};
+the closed-form evaluations of the returned trees \(\pi_S\), \(\pi_G\),
+dual prior \(w = (3/4, 1/4)\), and seeded mixture \(\rho\) verify the
+saddle directly:
 
 \begin{itemize}
 \tightlist
@@ -2584,34 +2756,42 @@ declares no financial or non-financial competing interests relevant to
 the content of this article.
 
 \textbf{Availability of data and material.} Not applicable. No empirical
-datasets were generated or analyzed; analytical proofs and closed-form
-strategy evaluations appear in Sections 2--6 and Appendix A.1--A.6,
-accompanied by the standalone exact-rational Python solver
-(\texttt{validate.py}).
+datasets were generated or analyzed; analytical proofs, simulation
+benchmarks, and closed-form strategy evaluations appear in Sections 2--6
+and Appendix A.1--A.6, accompanied by the standalone zero-dependency
+Python standard-library verifier (\texttt{verify\_standalone.py}).
 
 \textbf{Code availability.} The version-pinned Lean 4 (\texttt{v4.33.1},
 Mathlib commit \texttt{0df444a360ea}) formalization archive
 (\texttt{v1.0.0})---comprising 1,051 compiled
 \texttt{.lean}/\texttt{.olean} library modules, of which 1,030
-declaration-defining modules (19,987 constants, 13,004 theorems) are
-verified by \texttt{ExhaustiveAxiomAudit.lean} in \texttt{scripts/} to
-depend solely on \{\texttt{propext}, \texttt{Classical.choice},
-\texttt{Quot.sound}\} (\texttt{0} \texttt{sorryAx}, \texttt{0}
+declaration-defining modules (19,987 constants, 13,004 theorems) pass
+the global axiom audit (\texttt{ExhaustiveAxiomAudit}) under
+\{\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}\}
+(\texttt{0} \texttt{sorryAx}, \texttt{0}
 \texttt{Lean.ofReduceBool})---is permanently archived on Zenodo under
-Apache-2.0 at
-\href{https://doi.org/10.5281/zenodo.24433585}{doi:10.5281/zenodo.24433585}
-(Concept DOI:
-\href{https://doi.org/10.5281/zenodo.24433584}{doi:10.5281/zenodo.24433584}).
-Referees can reproduce the full build, key module checks
-(\texttt{ExecutableSupportControllerWitness},
-\texttt{NoisyFiniteRiskOracleWitness}, and
-\texttt{RegisterMechanismDecisionConsumer}), and global axiom audit from
-a clean unpack by running \texttt{lake\ exe\ cache\ get},
-\texttt{lake\ build}, and \texttt{lake\ env\ lean} on
-\texttt{scripts/ExhaustiveAxiomAudit.lean}, and can independently
-cross-check all 7-action rational dynamic-programming values and
-binomial acceptance rates by running \texttt{validate.py} with
-\texttt{python3}.
+the Apache-2.0 license (version DOI:
+\href{https://doi.org/10.5281/zenodo.24433585}{10.5281/zenodo.24433585};
+Concept DOI:
+\href{https://doi.org/10.5281/zenodo.24433584}{10.5281/zenodo.24433584}).
+From a clean unpack of that archive, referees can reproduce the full
+build, individual witness checks (Table 5), and global axiom audit via:
+
+\begin{verbatim}
+lake exe cache get && lake build
+lake env lean scripts/ExhaustiveAxiomAudit.lean
+\end{verbatim}
+
+(Note: omit the \texttt{-\/-run} flag printed in \texttt{v1.0.0}'s
+archive \texttt{README.md}, as the audit file executes at elaboration
+time via \texttt{run\_cmd} without \texttt{main}.) Accompanying this
+submission directly is \texttt{verify\_standalone.py}, a self-contained
+Python 3 standard-library script with zero external file dependencies
+(\texttt{python3\ verify\_standalone.py}) that independently verifies
+all exact arbitrary-precision integer binomial probabilities
+(distinguishing exact rational sums from decimal displays), the 12-state
+multi-abstraction benchmark (Table 3), and the full 7-action
+exact-rational POMDP dynamic program (Theorem 7).
 
 \textbf{Author contributions and AI disclosure.} This research and
 manuscript were directed by Degui Qian and completed with Gemini 4
