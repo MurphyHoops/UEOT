@@ -34,3 +34,32 @@ preserved, the record gap is >=1/5161, and the whole Z state changes strictly
 but by half trace distance <.022. Clock energy fluctuations remain explicitly
 in the complete-energy inference residual. None of these statements identifies
 a gravitational charge or constructs a local macroscopic final readout.
+
+## AP2 review and next closure cycle
+
+AP2 5b55f4485b411c9eca1f1e56f742326144b56643 was pushed with
+five scientific entries plus review, all passing. All three native
+read-only agents fully read the 14 declared files at that exact commit.
+A additionally hash-checked two predecessor files and all 23 new
+certificate binding entries (15 distinct sources). No agent ran science.
+Both AP1 wording findings were confirmed resolved at AP2.
+
+AG proves a linearly divergent sharp-time force variance despite a finite
+total-energy second moment. It separately disproves a finite-energy to
+Hadamard inference. AH then constructs the actual time-smeared self-adjoint
+force, its canonical-cutoff normal instrument and finite first/second
+energy costs. This is a completed rejection followed by a constructive
+replacement on the same retained Hamiltonian.
+
+AI computes normalized full-spatial free composite noise and an explicit
+nonzero omitted local-controller mode at first Dyson order. AJ separates a
+classically viable bounded local controller from two invalid bare quantum
+shortcuts. AK derives the source-containing one-loop counterterm Hessian,
+local lapse columns and finite-time endpoint contacts; it also excludes
+the bare cubic stability shortcut and identifies new quartics required by
+a classical stability repair.
+
+A second exact-symbolic check initially used structural SymPy equality for
+an algebraically identical rational correlation expression. It was changed
+to factor(the difference) == 0. The analytic formula was unchanged; no
+scientific result was accepted from the failed invocation.

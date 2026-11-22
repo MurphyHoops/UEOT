@@ -14,3 +14,14 @@ Root alone runs new scientific Python through Desktop Commander Local Mac.
 No old scientific module, mode ODE or geometry ODE is executed.
 Core stays read-only; GI excluded. These certificates and native agent reviews
 are not external human peer review or machine formal proofs.
+
+## AP2 immutable resolution
+
+AP2 is 5b55f4485b411c9eca1f1e56f742326144b56643. Three PASS
+records were obtained from the same three native read-only agents.
+There are now six immutable review records and 68 recorded commit-file
+identities: 63 full-text reads and five hash-only checkpoint reads.
+AP1 records retain FINDINGS; the two findings now carry the verified AP2
+resolution. B and C did not independently recalculate hashes. Root binds
+every declared identity to git-show bytes; A additionally checked the
+new certificate hashes. AG--AK await their own immutable review.
