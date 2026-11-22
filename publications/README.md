@@ -25,6 +25,10 @@ Self-contained English research articles prepared for international peer-reviewe
 | *Pure-Kernel Verified Controller Synthesis, Fixed-Sample Impossibility, and Calibrated Post-Selection Risk under Partial Observation* (v1.0) | Interactive theorem proving, safe POMDP control & statistical verification (*Journal of Automated Reasoning* / *ACM TOCL* / *IEEE TAC*) | [papers/certified-viability-and-calibrated-control/](./papers/certified-viability-and-calibrated-control/README.md) |
 | *Prepayment Thresholds, Informative Zero Receipts, and Certified Polynomial Decision Diagrams in Partially Observed Regenerative Maintenance* (v1.0) | Stochastic operations research, Bayesian adaptive control & decision diagrams (*Mathematics of Operations Research* / *Advances in Applied Probability*) | [papers/regenerative-branching-and-receipt-dags/](./papers/regenerative-branching-and-receipt-dags/README.md) |
 
+Audited companion software and formalization archives prepared for Zenodo / archival DOI deposition:
+
+- **Pure-Kernel Lean 4 Formalization Export (`Apache-2.0`, 1,051 modules):** [artifacts/lean4-core-export/](./artifacts/lean4-core-export/README.md) ([license & dependency audit](./artifacts/lean4-core-export/SOFTWARE_LICENSE_AUDIT.md), [`NOTICE`](./artifacts/lean4-core-export/NOTICE), deterministic packager [`export_lean4_archive.py`](./artifacts/lean4-core-export/export_lean4_archive.py)).
+
 Revise the maintained sources when developing a new edition. A released
 edition can be recorded here together with its source identity and build
 provenance. A philosophical argument, mathematical theorem and empirical

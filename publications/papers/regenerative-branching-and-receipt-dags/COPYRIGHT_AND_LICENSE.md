@@ -6,9 +6,9 @@
 - **Author & Copyright Holder:** Copyright © 2026 Degui Qian.
 - **Prose & Figures License:** Creative Commons Attribution 4.0 International (**CC BY 4.0**, https://creativecommons.org/licenses/by/4.0/).
 
-## Build, Validation, and Figure Generation Scripts
+## Exported Lean 4 Proof Code & Verification Scripts
 
-- The publication build, layout, figure-generation, and exact-rational validation helpers inside this directory (`build.py`, `validate.py`, `generate_figures.py`, `layout.lua`) are publication-packaging utilities accompanying this standalone release; see root `LICENSE_SCOPE.md` and `COPYRIGHT.md` for repository-wide governance of code, fonts, and maintained book sources.
+- The exported pure-kernel Lean 4 formalization archive (`publications/artifacts/lean4-core-export/`, exported from `formalization/ueot-core/`) and the standalone Python verification and figure-generation scripts (`build.py`, `validate.py`, `generate_figures.py`, `layout.lua`) accompanying this release are licensed under the **Apache License, Version 2.0 (`Apache-2.0`)** (see `LICENSES/Apache-2.0.txt`, `publications/artifacts/lean4-core-export/SOFTWARE_LICENSE_AUDIT.md`, and `NOTICE`). Non-code documentation under `formalization/ueot-core/docs/` remains governed by `CC BY 4.0` per root `LICENSE_SCOPE.md`.
 
 ## Relationship to Maintained Repository Sources
 

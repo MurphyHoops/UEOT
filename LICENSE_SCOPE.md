@@ -17,7 +17,8 @@ notices. Read the original notice in
 | `philosophy/UEOT_PHILOSOPHY.{md,tex,pdf}` | Historical CC BY expression remains licensed | Newly authored future *edition-specific* expression: rights set in that edition; not automatically relicensed by root policy |
 | `mathematics/UEOT_MATHEMATICS.{md,tex,pdf}` | Same rule | Same rule |
 | `physics/qm/book/UEOT_PHYSICS.{md,tex,pdf}` | Same rule, including physics book v3.5 snapshot | Same rule |
-| `formalization/ueot-core/`, `formalization/ueot-qm/` | Audit prior terms, file headers and copyright ownership; no retroactive change | Explicit software license only after review; Apache-2.0 a candidate, not currently declared |
+| `formalization/ueot-core/` | Audit prior terms, file headers and copyright ownership; no retroactive change | Exported pure-kernel Lean 4 code & verification scripts audited (2026-11-22) and licensed under **Apache-2.0** (`publications/artifacts/lean4-core-export/`); `docs/` prose remains CC BY 4.0 |
+| `formalization/ueot-qm/` | Audit prior terms, file headers and copyright ownership; no retroactive change | Explicit software license only after separate review |
 | `physics/qm/kernel/`, `physics/qm/benchmarks/`, `tools/`, `validation/` executable scripts | Existing terms and dependencies to be audited | Software license to be explicitly selected after audit; prose reports follow their designated research license |
 | `validation/` scientific reports, descriptions, original research figures | Respect historic rights and third parties | Owned research text and figures: CC BY 4.0 unless clearly excluded |
 | Raw experimental data, third-party datasets, model weights, notebooks, figures sourced externally | Follow the dataset/asset provider's terms | Per-dataset declaration after provenance, consent, privacy and rights review; CC0 is an option for owned data |
