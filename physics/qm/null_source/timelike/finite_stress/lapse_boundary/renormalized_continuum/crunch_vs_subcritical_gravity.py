@@ -5,12 +5,17 @@ from common import iv,load,require,above,below,outward,finish
 jc="physics/qm/null_source/timelike/finite_stress/lapse_boundary/joint_constraints/"
 load(jc+"backreaction_gate.json")
 
-# 1. Exact Lambda=0 closed-form solution u(tau) = beta_r/2 + sqrt(alpha_G + beta_r^2/4)*sin(2*tau)
-tau,alpha_s,beta_s,lam_s=sp.symbols("tau alpha_G beta_r lam_L",positive=True)
+# 1. Exact Lambda=0 closed-form solution and exact turnaround-root polynomial factorization Eq. (3)
+tau,alpha_s,beta_s,lam_s,u_s,u1_s=sp.symbols("tau alpha_G beta_r lam_L u u1",positive=True)
 R_s=sp.sqrt(alpha_s+beta_s**2/4)
 u_exact=beta_s/2+R_s*sp.sin(2*tau)
 res_lambda0=sp.simplify(sp.diff(u_exact,tau)**2-4*(alpha_s+beta_s*u_exact-u_exact**2))
 require(res_lambda0==0,"exact Lambda=0 Friedmann integral")
+# For lam_neg = -lam_s <= 0 and beta_r = u1 + lam_s*u1^2 - alpha_G/u1:
+beta_sub=u1_s+lam_s*(u1_s**2)-alpha_s/u1_s
+Q_neg=alpha_s+beta_sub*u_s-(u_s**2)-lam_s*(u_s**3)
+Q_factored=(u1_s-u_s)*(alpha_s/u1_s+(1+lam_s*u1_s)*u_s+lam_s*(u_s**2))
+require(sp.simplify(Q_neg-Q_factored)==0,"exact turnaround-root polynomial factorization for Lambda<=0")
 
 # 2. Exact turnaround algebra Q(1)=0 and Q'(1) = 2*lam_L - 1 - alpha_G
 u_var=sp.Symbol("u",positive=True)

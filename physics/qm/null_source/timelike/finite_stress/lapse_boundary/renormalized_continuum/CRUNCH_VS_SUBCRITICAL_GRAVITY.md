@@ -16,11 +16,15 @@ On $ds^2 = a(\tau)^2(-d\tau^2 + d\Omega_3^2)$, conservation $\nabla_\mu(g^{\mu\n
 \[
  (u')^2 = 4\big(\alpha_G + \beta_r u - u^2 + \lambda_\Lambda u^3\big) =: 4 Q(u). \tag{2}
 \]
-When $\lambda_\Lambda \le 0$, $(u')^2 \le 4(\alpha_G + \beta_r u - u^2) = 4\big[R^2 - (u - u_0)^2\big]$ where $u_0 = \frac{\beta_r}{2} \ge 0$ and $R = \sqrt{\alpha_G + \frac{\beta_r^2}{4}} > u_0$ (strictly, since $\alpha_G > 0$). By Sturm/differential comparison on the maximal positivity interval $(u = 0 \text{ to } u = 0)$,
+When $\lambda_\Lambda \le 0$, $Q(0) = \alpha_G > 0$ and $\lim_{u\to+\infty} Q(u) = -\infty$, while $Q''(u) = 6\lambda_\Lambda u - 2 < 0$ for all $u > 0$, so $Q$ has a unique positive turnaround root $u_1 \in (0, u_0 + R]$ ($u_0 = \frac{\beta_r}{2} \ge 0$, $R = \sqrt{\alpha_G + \frac{\beta_r^2}{4}} > u_0$). Eliminating $\beta_r = u_1 - \lambda_\Lambda u_1^2 - \frac{\alpha_G}{u_1}$ yields the exact factorization on $u \in (0, u_1)$:
 \[
- \Delta\tau_{\mathrm{universe}} \le \int_0^{u_0 + R} 2\,\frac{du}{2\sqrt{R^2 - (u - u_0)^2}} = \frac{\pi}{2} + \arcsin\!\left(\frac{u_0}{R}\right) = \frac{\pi}{2} + \arcsin\!\left(\frac{\beta_r}{\sqrt{4\alpha_G + \beta_r^2}}\right). \tag{3}
+ Q(u) = (u_1 - u)\left[\frac{\alpha_G}{u_1} + (1 - \lambda_\Lambda u_1)u - \lambda_\Lambda u^2\right] \ge (u_1 - u)\left(\frac{\alpha_G}{u_1} + u\right) > (u_1 - u)\,u, \tag{3}
 \]
-At $\beta_r = 0$, $\Delta\tau_{\mathrm{universe}} \le \frac{\pi}{2}$ (with equality at $\Lambda = 0$, $u(\tau) = \sqrt{\alpha_G}\sin(2\tau + \phi_0)$). For every $\beta_r \ge 0$ and $\alpha_G > 0$, $\frac{\beta_r}{\sqrt{4\alpha_G + \beta_r^2}} < 1 \implies \Delta\tau_{\mathrm{universe}} < \pi < \pi + 4$.
+which bounds $|u'| = 2\sqrt{Q(u)}$ **from below** and therefore bounds its reciprocal from above:
+\[
+ \Delta\tau_{\mathrm{universe}} = \int_0^{u_1}\frac{du}{\sqrt{Q(u)}} \le \int_0^{u_1}\frac{du}{\sqrt{(u_1 - u)(\alpha_G/u_1 + u)}} = \frac{\pi}{2} + \arcsin\!\left(\frac{u_1^2 - \alpha_G}{u_1^2 + \alpha_G}\right) \le \frac{\pi}{2} + \arcsin\!\left(\frac{\beta_r}{\sqrt{4\alpha_G + \beta_r^2}}\right). \tag{3'}
+\]
+At $\beta_r = 0$, $u_1^2 \le \alpha_G$ (`Q(u_1) = \alpha_G - u_1^2 + \lambda_\Lambda u_1^3 = 0 \implies u_1^2 = \alpha_G + \lambda_\Lambda u_1^3 \le \alpha_G`), so $\Delta\tau_{\mathrm{universe}} \le \frac{\pi}{2}$ (with equality at $\Lambda = 0$, $u(\tau) = \sqrt{\alpha_G}\sin(2\tau + \phi_0)$). For every $\beta_r \ge 0$ and $\alpha_G > 0$, $\frac{\beta_r}{\sqrt{4\alpha_G + \beta_r^2}} < 1 \implies \Delta\tau_{\mathrm{universe}} < \pi < \pi + 4$.
 
 ## 2. Necessary and Sufficient Sub-Critical Bounce Conditions
 

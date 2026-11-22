@@ -17,7 +17,7 @@ We state explicitly the Cortez–Mena Marugán–Velhinho representation distinc
 
 For any rescaled mode satisfying $\tilde y_k''(\tau) + \big(\omega_k^2 + q(\tau)\big)\tilde y_k(\tau) = 0$ on $[-1, \pi + 3]$ with $q(0) = q'(0) = 0$ and $|q(\tau)| \le \frac{1}{2}\omega_k^2$ (specifically $q_\pm(\tau) = \mu_\pm w(\tau)$ with $\omega_{\pm,k} = \sqrt{k^2 + \mu_\pm}$, and $q_X(\tau) = -\big(\frac{a''(\tau)}{a(\tau)} - a''(0)\big)$ with $\omega_{X,k} = \sqrt{k^2 - 1 - a''(0)}$ for $k \ge 2$), the interaction-phase Bogoliubov system
 \[
- \tilde\beta_k'(\tau) = -\frac{i q(\tau)}{2\omega_k} e^{i\Phi_k(\tau)}\tilde\alpha_k(\tau), \qquad \Phi_k'(\tau) = 2\omega_k - \frac{q(\tau)}{\omega_k} \ge \frac{3}{2}\omega_k \tag{1}
+ \tilde\beta_k'(\tau) = -\frac{i q(\tau)}{2\omega_k} e^{i\Phi_k(\tau)}\tilde\alpha_k(\tau), \qquad \Phi_k'(\tau) = 2\omega_k + \frac{q(\tau)}{\omega_k} \ge 2\omega_k - \frac{|q(\tau)|}{\omega_k} \ge \frac{3}{2}\omega_k \tag{1}
 \]
 satisfies the exact Gronwall envelope $|\tilde\alpha_k(\tau)| \le \cosh\!\big(\frac{\|q\|_{L^1}}{2\omega_k}\big)$ and $|\tilde\beta_k(\tau)| \le \sinh\!\big(\frac{\|q\|_{L^1}}{2\omega_k}\big)$. Integrating (1) by parts once using $q(0) = 0$ yields
 \[
