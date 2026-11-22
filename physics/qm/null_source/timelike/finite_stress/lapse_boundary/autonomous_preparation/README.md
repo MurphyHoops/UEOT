@@ -3,7 +3,8 @@
 Baseline: 8bdeec29495bf5db2819704dee4e3daf58e6d135.
 Physical unification OPEN. [本轮统一进展报告](UNIFICATION_PROGRESS.md).
 Science closure through AP8 and the AP9 final reporting audit are accepted.
-Only the independently measured session-duration closure remains IN_PROGRESS.
+The independently recorded session is COMPLETE: 3 hours 0 minutes 2 seconds.
+See session_timing.json; physical unification remains OPEN.
 
 ## Constructed global comparisons
 

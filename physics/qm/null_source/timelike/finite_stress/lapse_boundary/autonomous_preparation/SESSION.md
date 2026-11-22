@@ -221,3 +221,17 @@ AP9 science44977522250 and publication44977522180 both succeeded; root
 read science job137070633888 and its 18 actual PASS entries.
 Science and synthesis are accepted; elapsed time remains IN_PROGRESS
 until the independently recorded three-hour threshold is actually passed.
+
+## Independently timed session closure
+
+Actual clock receipt: 2026-11-22T02:57:49Z, 2026-11-22 10:57:49 Beijing.
+Start was 2026-11-21T23:57:47Z. The independent elapsed interval is
+10802 seconds (3 hours 0 minutes 2 seconds); minimum 10800 seconds is met.
+No earlier session is counted and no future duration is inferred.
+The final 18-entry verification, immutable commit, push, exact-head remote
+CI and PR delivery follow this conservative timing checkpoint.
+All three AP9 report audits passed; four scientific findings are resolved.
+17 source-bound scientific entries plus one scope entry are the automatic
+cohort. Core remains read-only, GI excluded, original draft PR unmerged.
+The physical unification goal and the same-state Einstein/matter/apparatus
+history remain OPEN, with the next acceptance target in NEXT_GATE.md.
