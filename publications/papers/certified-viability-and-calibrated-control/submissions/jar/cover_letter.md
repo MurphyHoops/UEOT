@@ -1,0 +1,24 @@
+# Cover Letter — Submission to *Journal of Automated Reasoning*
+
+Dear Editors-in-Chief of the *Journal of Automated Reasoning*,
+
+Please consider the enclosed manuscript, **"Pure-Kernel Verified Controller Synthesis, Fixed-Sample Impossibility, and Calibrated Post-Selection Risk under Partial Observation,"** for publication as an original research article in the *Journal of Automated Reasoning*.
+
+Interactive theorem provers have made landmark progress in formalizing measure-theoretic Markov processes and tabular Markov decision processes—notably in *Journal of Automated Reasoning* developments such as Hölzl (2017) in Isabelle/HOL and Affeldt, Hagiwara, and Sénizergues (2014) in Coq. Yet certifying autonomous controllers under *partial observation* when transition probabilities are estimated from finite data exposes three foundational verification gaps:
+1. Qualitative shield and supervisory synthesis methods require exact transition supports, whereas data-driven pipelines estimate transitions from finite samples and select coarse state abstractions *after* inspecting the training data.
+2. Continuous belief-state quotients on standard Borel spaces often fail Markov closure or erase hidden-state safety invariants even when predictive compression is exact.
+3. Concrete rational dynamic-programming proofs over partially observed belief trees suffer severe kernel reduction blowup from repeated `Nat.gcd` fraction normalization, tempting developments to enlarge the trusted computing base with unverified compiler evaluation (`native_decide` / `Lean.ofReduceBool`).
+
+This article resolves all three gaps in a unified mathematical theory and an end-to-end pure-kernel Lean 4 (v4.33.1 / Mathlib) formalization spanning 1,051 compiled modules:
+- **Structural synthesis and classical safety bridge (Theorems 1–3):** Without assuming finite observation spaces at the specification layer, we prove exact equality between positive-mass Bayesian posterior supports and policy-independent combinatorial trace-support recursion, establish König-type finite-action compactness $(\forall T,\,\exists\pi_T) \iff (\exists\pi_\infty)$, connect substochastic killed matrix powers to Kolmogorov infinite-trajectory safety $\mathbb{P}(\forall n \in \mathbb{N},\, X_n \in K)$, and verify soundness and completeness of a purely computable finite-memory controller synthesizer `synthesize : Option (Program X Y A)`.
+- **Statistical impossibility and candidate-count-free post-selection calibration (Theorems 4–5):** We prove that no randomized fixed-sample black-box test can uniformly certify exact zero transition leakage above level $\alpha$, and verify a purely rational computable `NoisyFiniteRiskOracle` establishing the joint training–selected-deployment failure bound $\mathbb{P}_J(\mathrm{accept} \land E) \le \min\{1, \alpha_N + (1-\alpha_N)\beta\}$ without candidate-count union bounds.
+- **Standard-Borel belief quotients, prepaid fault minimax regret, and GCD-free pure-kernel `decide` (Theorems 6–7 & Section 7):** We characterize measurable Giry belief quotients via closed test spaces (`ClosedTests`), establish exact three-step fault-mechanism distinguishability $\Delta_{3,B} = r^2(1-r)\mathbf{1}_{B \ge c}$ and randomized minimax regret $R^* = 3/128 < 1/32$, and introduce unnormalized integer-weighted belief lists (`UBelief`) with dyadic integer dynamic programming (`csolveInt`) so that all rational horizon certificates reduce inside Lean's logical kernel via `decide`. An environment-wide axiom audit confirms zero `sorryAx` and zero `Lean.ofReduceBool`, leaving only `{propext, Classical.choice, Quot.sound}`.
+
+To ensure seamless refereeing by both formal-methods specialists and control/statistical theorists, all mathematical definitions, counterexamples, and complete proofs of Theorems 1–7 are presented self-containedly in Sections 2–6 and the Mathematical Appendix, paired with an explicit Lean 4 correspondence architecture in Section 7. In accordance with Springer Nature guidelines, the manuscript includes a 209-word abstract, 6 keywords, and the mandatory `Declarations` section immediately preceding the 80 verified references.
+
+This manuscript is original, independent work and is not under consideration at any other venue. Thank you very much for your time and consideration.
+
+Sincerely,
+
+Degui Qian  
+Independent Researcher

@@ -15,6 +15,15 @@ one another through explicit cross-references:
 | UEOT Core Mathematics | [UEOT_MATHEMATICS.md](../mathematics/UEOT_MATHEMATICS.md) | [mathematics/](../mathematics/README.md) |
 | *UEOT物理学* | [UEOT_PHYSICS.md](../physics/qm/book/UEOT_PHYSICS.md) | [physics/qm/book/](../physics/qm/book/README.md) |
 
+## Standalone journal articles and publication strategy
+
+Self-contained English research articles prepared for international peer-reviewed journals (with zero unpublished self-citations, self-contained mathematical appendices, and reproducible build/validation receipts) are maintained under `papers/`, guided by the [2026–2028 publication strategy](./PUBLICATION_STRATEGY_2026.md):
+
+| Article | Target domain / primary journals | Package |
+|---|---|---|
+| *What Prediction Leaves Out: Relational Objecthood and the Grounds of Purpose* (v2.0) | Philosophy of science, theoretical biology & cognitive science (*Synthese* / *Biology & Philosophy*) | [papers/ueot-philosophical-foundations/](./papers/ueot-philosophical-foundations/README.md) |
+| *Pure-Kernel Verified Controller Synthesis, Fixed-Sample Impossibility, and Calibrated Post-Selection Risk under Partial Observation* (v1.0) | Interactive theorem proving, safe POMDP control & statistical verification (*Journal of Automated Reasoning* / *ACM TOCL* / *IEEE TAC*) | [papers/certified-viability-and-calibrated-control/](./papers/certified-viability-and-calibrated-control/README.md) |
+
 Revise the maintained sources when developing a new edition. A released
 edition can be recorded here together with its source identity and build
 provenance. A philosophical argument, mathematical theorem and empirical
