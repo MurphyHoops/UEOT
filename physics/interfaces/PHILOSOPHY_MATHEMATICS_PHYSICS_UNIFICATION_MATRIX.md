@@ -116,14 +116,14 @@ Baseline `main` provides `21` Python suites and `21` Lean modules (`cosmology_pe
 | 19 | `horizon_minimum_scale` | `OperationalHorizonMinimumScale.lean` | `P-HORIZON-CLOCK-01` | Phil Ch. 4, 6, 9, 17; Math Ch. 5, 8, 14 (`AH01`–`AH02`) | `B + S + P + O` |
 | 20 | `all_harmonic_elliptic` | `AllHarmonicConstraintEllipticity.lean` | `P-ADM-ALLHARM-02` | Phil Ch. 3, 16, 18, 29; Math Ch. 12, 15, 24 (`AH03`–`AH06`) | `B + S + P + O` |
 | 21 | `localized_clock_dirac` | `LocalizedClockAndDiracAlgebra.lean` | `P-FLAT-DIRAC-03` | Phil Ch. 4, 9, 16, 28; Math Ch. 8–9, 16 (`AH07`–`AH09`) | `B + S + P + E + O` |
-| 22 | `discrete_quantum_geometry` *(Wave-6 Angle 1)* | `DiscreteQuantumGeometryWheelerDeWitt.lean` | `P-QG-WDW-01` | Phil Ch. 2, 4, 5, 29; Math Ch. 3–4, 8 (`AH01`/`AH09` frontier) | `B + S + P + O + X` |
-| 23 | `chiral_gauge_overlap_clock` *(Wave-6 Angle 2)* | `ChiralGaugeOverlapClockBridge.lean` | `P-CHIRAL-CLOCK-01` | Phil Ch. 3, 6, 18, 29; Math Ch. 12, 14 (`(3,3,1)` + Luscher overlap) | `B + S + P + O + X` |
-| 24 | `core_dimensionless_constants` *(Wave-6 Angle 3)* | `CoreUnitGaugeAndDimensionlessConstants.lean` | `C-BUCKINGHAM-01` | Phil Ch. 13, 17, 28–29; Math Ch. 1.2, 3, 33 (`QuotientDescent` → `ℐ_Λ`) | `C + B + P + O + X` |
-| 25 | `mesoscopic_decoherence_gravimetry` *(Wave-6 Angle 4)* | `MesoscopicDecoherenceGravimetry.lean` | `P-MESO-BMV-01` | Phil Ch. 10, 16, 28; Math Ch. 15–16, 38 (`AH08` + non-LOCC BMV holdout) | `B + S + P + E + O + X` |
+| 22 | `discrete_quantum_geometry` *(Wave-6 Angle 1)* | `DiscreteQuantumGeometryWheelerDeWitt.lean` | `P-DISCRETE-QG-01` | Phil Ch. 2, 4, 5, 29; Math Ch. 3–4, 8 (`AH01`/`AH09` frontier) | `B + S + P + O + X` |
+| 23 | `chiral_gauge_overlap_clock` *(Wave-6 Angle 2)* | `ChiralGaugeOverlapClockBridge.lean` | `P-CHIRAL-CLOCK-02` | Phil Ch. 3, 6, 18, 29; Math Ch. 12, 14 (`(3,3,1)` + Luscher overlap) | `B + S + P + O + X` |
+| 24 | `core_dimensionless_constants` *(Wave-6 Angle 3)* | `CoreUnitGaugeAndDimensionlessConstants.lean` | `C-CORE-CONST-01`, `P-GUT-DESERT-02` | Phil Ch. 13, 17, 28–29; Math Ch. 1.2, 3, 33 (`QuotientDescent` → `ℐ_Λ`) | `C + B + P + O + X` |
+| 25 | `mesoscopic_decoherence_gravimetry` *(Wave-6 Angle 4)* | `MesoscopicDecoherenceGravimetry.lean` | `P-MESO-BMV-06` | Phil Ch. 10, 16, 28; Math Ch. 15–16, 38 (`AH08` + non-LOCC BMV holdout) | `B + S + P + E + O + X` |
 | 26 | `math_v42_closed_tests_bridge` *(Wave-6 Angle 5)* | `MathV42ClosedTestsAndMechanismBridge.lean` | `C-MATH42-BRIDGE-01` | Phil Ch. 2, 7–8, 10, 13; Math Ch. 33, 39.89–95, 40 (`M-40.1`–`M-40.6`, `FisherGauge`, `SISCFutureResponseCore`), App. G `O-OPEN-01`–`12` | `C + B + O + X` |
 | 27 | `philosophy_v31_omega_bridge` *(Wave-6 Angle 6)* | `PhilosophyV31OmegaObserverBridge.lean` | `P-PHIL31-OMEGA-01`, `P-PHIL31-REALIZ-02`, `P-PHIL31-LAKATOS-03` | Phil Parts I–VI (`Ch. 1–30`); Math Ch. 3, 8, 12, 21, 23.4, 27, 39.75–88 (`PersistenceOmega`, `ViabilityKernel`, `Agency`, `RepresentationCovariance`, `RegisterDecisionRepresentation`) | `C + B + S + P + O + X` |
 | — | * Paired `CorrelatedBathIdentifiability.lean` (`P-MICRO-10`) & Physics Book `Ch. 71 SISC` | `CorrelatedBathIdentifiability.lean` + `UEOTQM.*` | `P-MICRO-10` | Phil Ch. 3, 8, 10, 28, 30; Math Ch. 4, 6, 16–17, 36, 38 | `C + B + P + E + O + X` |
-| — | * PR #468 `all_harmonic_horizon` (`345` cumulative entries: `RC01`–`RC12` + `AH01`–`AH12`) | Bridged in Modules `18–25, 27` | `RC01`–`RC12`, `AH01`–`AH12` | Phil Ch. 4, 6–9, 13, 16–17, 28–30; Math Ch. 7–9, 14, 16, 32–33 | `C + B + S + P + E + O + X` |
+| — | * PR #468 `all_harmonic_horizon` (`345` cumulative entries: `RC01`–`RC12` + `AH01`–`AH12`) | Bridged in Modules `18–27` | `RC01`–`RC12`, `AH01`–`AH12` | Phil Ch. 4, 6–9, 13, 16–17, 28–30; Math Ch. 7–9, 14, 16, 32–33 | `C + B + S + P + E + O + X` |
 
 ---
 
