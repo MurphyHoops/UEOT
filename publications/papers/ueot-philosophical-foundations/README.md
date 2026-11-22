@@ -7,11 +7,12 @@ A self-contained philosophical and mathematical research article examining when 
 ## Master deliverables and journal submission folders
 
 - **Master Complete Edition (v2.1):**
-  - [Typeset master manuscript (PDF, 32 pages, with Figures 1–3)](manuscript.pdf)
+  - [Typeset master manuscript (PDF, with Figures 1–3)](manuscript.pdf)
   - [Markdown source](manuscript.md) · [LaTeX source](manuscript.tex) · [Verified bibliography (93 entries)](references.bib)
   - [Programmatic vector figure generator](generate_figures.py) & [Vector/300-DPI Figures 1–3](figures/)
   - [Chinese abstract and structural synopsis](ABSTRACT_ZH.md) · [Claim and proof matrix](CLAIM_MATRIX.md)
-  - [Build receipt](BUILD_RECEIPT.json) · [Editorial/arithmetic validation](VALIDATION.json)
+  - [Companion pure-kernel Lean 4 formalization archive (Apache-2.0, Zenodo DOI: 10.5281/zenodo.24433585)](https://doi.org/10.5281/zenodo.24433585)
+  - [Build receipt](BUILD_RECEIPT.json) · [Editorial/arithmetic validation](VALIDATION.json) · [Checksums](SHA256SUMS)
 - **Three Uncompressed, Portal-Ready Journal Submission Packages (`submissions/`):**
   1. [**`submissions/bjps/`**](submissions/bjps/SUBMISSION_GUIDE_AND_MANIFEST.md) — *The British Journal for the Philosophy of Science* (Triple-anonymous, UK English `en-GB`, concise abstract, self-contained manuscript + 93 references strictly $\le 10,000$ words, optional expanded online appendix, separate Title Page & Cover Letter)
   2. [**`submissions/philosophy-of-science/`**](submissions/philosophy-of-science/SUBMISSION_GUIDE_AND_MANIFEST.md) — *Philosophy of Science* (Double-anonymous, US English `en-US`, Page 1 Title $\to$ $\le 100$-word Abstract $\to$ Section 1, total manuscript incl. abstract & 93 references strictly $\le 9,500$ words, optional online supplement & Portal Metadata/Cover Note)
@@ -29,10 +30,10 @@ A self-contained philosophical and mathematical research article examining when 
 From this directory (with Python 3, Matplotlib/NumPy for figure regeneration, Pandoc, XeLaTeX, BibTeX, Latexmk, and Poppler utilities installed):
 
 ```bash
-python3 generate_figures.py
 python3 build.py
 python3 validate.py
+shasum -a 256 -c SHA256SUMS
 ```
 
-- `build.py` compiles `manuscript.md` + `references.bib` via Pandoc and `latexmk -xelatex`, verifying zero LaTeX/citation errors, zero missing glyphs, and zero overfull boxes, and writes `BUILD_RECEIPT.json`.
-- `validate.py` verifies abstract and main-body word budgets, 1-to-1 citation parity across all 93 external BibTeX entries, absence of unpublished self-citations or internal project jargon, PDF text extraction integrity, and exact rational arithmetic for all printed model identities, writing `VALIDATION.json`.
+- `build.py` regenerates Figures 1–3 and compiles the master `manuscript.pdf` alongside all seven submission PDFs across `submissions/{synthese,bjps,philosophy-of-science}/` via Pandoc and `latexmk -xelatex`, verifying zero LaTeX/citation errors, zero missing glyphs, and zero overfull boxes, and writes `BUILD_RECEIPT.json`.
+- `validate.py` verifies abstract and word-count budgets across all editions, 1-to-1 citation parity and zero BibTeX warnings across all 93 external BibTeX entries, strict double-/triple-anonymous blinding across all five blinded review PDFs, and exact rational arithmetic for all printed model identities, writing `VALIDATION.json`, `VALIDATION_{SYNTHESE,BJPS,POS}.json`, and `SHA256SUMS`.

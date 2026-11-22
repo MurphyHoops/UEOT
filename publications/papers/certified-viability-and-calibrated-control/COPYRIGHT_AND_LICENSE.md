@@ -20,6 +20,6 @@ Exported pure-kernel Lean 4 formalization source files accompanying this article
 
 `build.py`, `validate.py`, `layout.lua`, and `template.tex` are standalone reproducible typesetting and verification scripts invoking local installations of Pandoc, XeLaTeX, BibTeX, Latexmk, and Poppler utilities.
 
-## Research assistance disclosure
+## Author direction and generative AI assistance disclosure
 
-AI-assisted tools were used during bibliographic verification, Lean 4 proof engineering, and editorial preparation. All mathematical theorems, formal specifications, and scholarly attributions remain the sole responsibility of the named author.
+This research and manuscript were directed by **Degui Qian** and completed with **Gemini 4 Carbon** and **ChatGPT 6 Astra** across mathematical derivation, pure-kernel Lean 4 formalization engineering, computable rational oracle verification, bibliographic cross-checking, and manuscript preparation. In accordance with Springer Nature and COPE authorship and generative AI policies, AI systems are not listed as co-authors; Degui Qian defined the research program, problem formulations, and formalization architecture, audited and verified every mathematical theorem, Lean 4 proof declaration, counterexample witness, and scholarly attribution, and bears sole academic and legal responsibility for the entire work.

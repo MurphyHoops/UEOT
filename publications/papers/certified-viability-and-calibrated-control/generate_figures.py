@@ -116,10 +116,10 @@ def build_fig1():
 
     draw_box(ax1, 0.53, 0.10, 0.44, 0.21,
              "End-to-End Measure & Risk Guarantees\n"
-             "Safety: $\\mathbf{1}_K^\\top Q_K^T \\mu_0 \\downarrow \\mathbb{P}(\\forall n \\in \\mathbb{N}, X_n \\in K)$\n"
+             "Safety: $\\mathbf{1}_{\\widetilde{K}}^\\top Q_K^T \\widetilde{\\mu}_0 \\downarrow \\mathbb{P}(\\forall n \\in \\mathbb{N}, X_n \\in K)$\n"
              "Post-Selection: $\\mathbb{P}_J(\\mathrm{accept} \\wedge E) \\leq \\alpha_N + (1-\\alpha_N)\\beta$\n"
-             "Kernel Axioms: $\\{\\mathrm{propext},\\ \\mathrm{choice},\\ \\mathrm{Quot.sound}\\}$",
-             facecolor=LIGHT_BG, edgecolor=SLATE, fontsize=7.9)
+             "Kernel Axioms: $\\{\\mathrm{propext},\\ \\mathrm{Classical.choice},\\ \\mathrm{Quot.sound}\\}$",
+             facecolor=LIGHT_BG, edgecolor=SLATE, fontsize=7.75)
 
     draw_arrow(ax1, (0.245, 0.41), (0.245, 0.325), color=TEAL, lw=1.2)
     draw_arrow(ax1, (0.75, 0.41), (0.75, 0.325), color=SLATE, lw=1.2)
@@ -147,7 +147,7 @@ def build_fig1():
     a_mark = 48.0 * np.exp(-512.0 / 25.0)
     j_mark = a_mark + (1.0 - a_mark) * beta
     ax2.scatter([n_mark], [j_mark], color=NAVY, s=44, zorder=5)
-    ax2.annotate("$N=4096$: $\\alpha_{4096} = 48 e^{-512/25}$\n$\\approx 6.22\\times 10^{-8} < 1$",
+    ax2.annotate("$N=4096$: $\\alpha_{4096} = 48 e^{-512/25}$\n$\\approx 6.12\\times 10^{-8} < 1$",
                  xy=(n_mark, j_mark), xytext=(2480, 0.57),
                  arrowprops=dict(arrowstyle="->", color=NAVY, lw=1.0),
                  fontsize=8.0, color=NAVY)
@@ -183,43 +183,43 @@ def build_fig2():
              "$t = 0$:  Initial damaged $\\mathrm{root}_0$ ($\\neg g$), wallet $B = 2,\\ c = 1$.  Action $a_0 = \\mathrm{write}\\ g\\ \\mathrm{to}\\ \\mathrm{root}_0$",
              facecolor=LIGHT_BG, edgecolor=SLATE, fontsize=8.15)
 
-    draw_box(ax1, 0.03, 0.51, 0.56, 0.15,
+    draw_box(ax1, 0.03, 0.53, 0.56, 0.145,
              "$o_0 = (1,1)$ (prob. $1/2$, wallet $1$)\n"
              "$\\mathrm{root}_0 = g$, spawned backup $\\mathrm{child}_1 = g$\n"
              "$t = 1$: $a_1 = \\mathrm{idle}\\ \\mathrm{root}_0$",
              facecolor=LIGHT_BLUE, edgecolor=NAVY, fontsize=8.0)
 
-    draw_box(ax1, 0.64, 0.51, 0.31, 0.15,
+    draw_box(ax1, 0.64, 0.53, 0.31, 0.145,
              "$o_0 = (0,0)$ (prob. $1/2$)\n"
              "Reduces to $H=2, B=2$\n"
              "Common value $13/16$",
              facecolor="white", edgecolor=MUTED, fontsize=8.0, linestyle="--")
 
-    draw_arrow(ax1, (0.31, 0.75), (0.31, 0.675), color=NAVY, lw=1.15)
-    draw_arrow(ax1, (0.79, 0.75), (0.79, 0.675), color=MUTED, lw=1.05, ls="--")
+    draw_arrow(ax1, (0.31, 0.742), (0.31, 0.692), color=NAVY, lw=1.15)
+    draw_arrow(ax1, (0.79, 0.742), (0.79, 0.692), color=MUTED, lw=1.05, ls="--")
 
     # Shared ambiguous observation node cleanly placed between rows
-    draw_box(ax1, 0.16, 0.39, 0.66, 0.072,
+    draw_box(ax1, 0.16, 0.375, 0.66, 0.072,
              "Ambiguous prefix $o_1 = (0,0)$ (prob. $1/4$): identical receipt under $S$ and $G$",
              facecolor=LIGHT_CRIMSON, edgecolor=CRIMSON, fontsize=7.85, fontweight="bold")
-    draw_arrow(ax1, (0.31, 0.505), (0.38, 0.468), color=CRIMSON, lw=1.1)
+    draw_arrow(ax1, (0.31, 0.512), (0.38, 0.465), color=CRIMSON, lw=1.1)
 
-    draw_box(ax1, 0.03, 0.08, 0.43, 0.24,
+    draw_box(ax1, 0.03, 0.06, 0.43, 0.235,
              "Serial Local Mechanism $S$:\n"
              "$\\mathrm{root}_0 = \\neg g$,  $\\mathrm{child}_1$ remains intact ($g$)\n"
              "$\\pi_S$: idle $\\mathrm{child}_1 \\Rightarrow$ mean $1/2$\n"
              "($V_S^* = 41/32$,  $J_G(\\pi_S) = 37/32$)",
              facecolor=LIGHT_TEAL, edgecolor=TEAL, fontsize=7.95)
 
-    draw_box(ax1, 0.51, 0.08, 0.44, 0.24,
+    draw_box(ax1, 0.51, 0.06, 0.44, 0.235,
              "Global Correlated Mechanism $G$:\n"
              "$\\mathrm{root}_0 = \\neg g$,  $\\mathrm{child}_1$ corrupted ($\\neg g$)\n"
              "$\\pi_G$: write $g$ to $\\mathrm{root}_0 \\Rightarrow$ mean $3/8$\n"
              "($V_G^* = 40/32 = 5/4$;  $\\Delta_{3,B} = r^2(1-r) = 1/8$)",
              facecolor=LIGHT_AMBER, edgecolor=AMBER, fontsize=7.95)
 
-    draw_arrow(ax1, (0.33, 0.385), (0.245, 0.33), color=TEAL, lw=1.2)
-    draw_arrow(ax1, (0.65, 0.385), (0.72, 0.33), color=AMBER, lw=1.2)
+    draw_arrow(ax1, (0.33, 0.356), (0.245, 0.313), color=TEAL, lw=1.2)
+    draw_arrow(ax1, (0.65, 0.356), (0.72, 0.313), color=AMBER, lw=1.2)
 
     # Panel (b): Minimax Regret Saddle Geometry
     p = np.linspace(0, 1, 500)

@@ -9,19 +9,20 @@
 \IfFontExistsTF{Liberation Sans}{%
   \setsansfont{Liberation Sans}%
 }{%
-  \setsansfont[Path=../../../../../tools/books/.cache/fonts/,
-    BoldFont=DejaVuSans-Bold.ttf,
-    ItalicFont=DejaVuSans-Oblique.ttf,
-    BoldItalicFont=DejaVuSans-BoldOblique.ttf]{DejaVuSans.ttf}%
+  \IfFontExistsTF{Latin Modern Sans}{%
+    \setsansfont{Latin Modern Sans}%
+  }{%
+    \setsansfont{Helvetica}%
+  }%
 }
 \IfFontExistsTF{DejaVu Sans Mono}{%
-  \setmonofont[Scale=0.86]{DejaVu Sans Mono}%
+  \setmonofont[Scale=0.84]{DejaVu Sans Mono}%
 }{%
-  \setmonofont[Path=../../../../../tools/books/.cache/fonts/,
-    Scale=0.86,
-    BoldFont=DejaVuSansMono-Bold.ttf,
-    ItalicFont=DejaVuSansMono-Oblique.ttf,
-    BoldItalicFont=DejaVuSansMono-BoldOblique.ttf]{DejaVuSansMono.ttf}%
+  \IfFontExistsTF{Menlo}{%
+    \setmonofont[Scale=0.82]{Menlo}%
+  }{%
+    \setmonofont[Scale=0.84]{Courier New}%
+  }%
 }
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{microtype}
@@ -72,17 +73,18 @@ Theorem 1 (anonymised for triple-blind review).
 \end{abstract}
 \vspace{10pt}
 
-\section*{Appendix: Formal definitions and
-proofs}\label{appendix-formal-definitions-and-proofs}
-\addcontentsline{toc}{section}{Appendix: Formal definitions and proofs}
+\appendix
+
+\section{Formal definitions and
+proofs}\label{formal-definitions-and-proofs}
 
 To ensure that every formal claim in the article is self-contained and
 independently verifiable without external manuscripts, this Appendix
 provides concise proofs of Propositions 1--7 and Theorem 1.
 
-\subsection{A.1 Predictive minimality and belief-quotient descent
+\subsection{Predictive minimality and belief-quotient descent
 (Propositions 1 and
-2)}\label{a.1-predictive-minimality-and-belief-quotient-descent-propositions-1-and-2}
+2)}\label{predictive-minimality-and-belief-quotient-descent-propositions-1-and-2}
 
 \emph{Proof of Proposition 1.} Because each
 \((\mathcal{Y}_i, \Sigma_{\mathcal{Y}_i})\) is countably generated,
@@ -156,27 +158,28 @@ so \(\langle v, U_{a,o}f\rangle = 0\) for all
 \(v \in \mathcal{F}^\perp\). Therefore
 \(U_{a,o}f \in (\mathcal{F}^\perp)^\perp = \mathcal{F}\). \(\square\)
 
-\subsection{A.2 Cut-set reconstruction, finite-memory separation, and
+\subsection{Cut-set reconstruction, finite-memory separation, and
 fixed-sample impossibility (Propositions 5 and
-6)}\label{a.2-cut-set-reconstruction-finite-memory-separation-and-fixed-sample-impossibility-propositions-5-and-6}
+6)}\label{cut-set-reconstruction-finite-memory-separation-and-fixed-sample-impossibility-propositions-5-and-6}
 
 \emph{Proof of Proposition 5.} Let \(\mathcal{V}_{\min}\) be the set of
 \(\subseteq\)-minimal elements of
-\(\mathcal{F}(\mathcal{C}, \mathcal{I})\). If \(M \subseteq D\) for some
+\(\mathcal{F}(\mathcal{C}, \mathcal{I})\). If
+\(M \subseteq D \in \mathcal{I}\) for some
 \(M \in \mathcal{V}_{\min} \subseteq \mathcal{F}\), then
 \(D \in \mathcal{F}\) by monotonicity. Conversely, if
-\(D \in \mathcal{F}\), finiteness of \(D\) implies
-\(|D| \in \mathbb{N}\); choosing a subset \(M \subseteq D\) with
-\(M \in \mathcal{F}\) of minimum cardinality yields
-\(M \in \mathcal{V}_{\min}\) with \(M \subseteq D\). Uniqueness holds
-because no two distinct elements of an antichain are comparable: if
-\(\mathcal{A}_1, \mathcal{A}_2\) are two antichains generating
+\(D \in \mathcal{F}\), finiteness of \(D\) and downward closure of
+\(\mathcal{I}\) imply \(|D| \in \mathbb{N}\); choosing a subset
+\(M \subseteq D\) with \(M \in \mathcal{F}\) of minimum cardinality
+yields \(M \in \mathcal{V}_{\min}\) with \(M \subseteq D\). Uniqueness
+holds because no two distinct elements of an antichain are comparable:
+if \(\mathcal{A}_1, \mathcal{A}_2\) are two antichains generating
 \(\mathcal{F}\) upward, each \(M \in \mathcal{A}_1\) contains some
 \(M' \in \mathcal{A}_2\) which contains some \(M'' \in \mathcal{A}_1\),
 forcing \(M = M'' = M'\). \(\square\)
 
-\emph{Proof of Proposition 6.} \emph{(a) Finite-memory separation
-witness.} Consider the five-state system
+\emph{Proof of Proposition 6.} \textbf{(a)} \emph{Finite-memory
+separation witness.} Consider the five-state system
 \(\mathcal{X} = \{x_L, x_R, y_L, y_R, \bot\}\) with safe set
 \(S = \{x_L, x_R, y_L, y_R\}\), actions \(\mathcal{A} = \{a_L, a_R\}\),
 and observation space \(\mathcal{O} = \{o_L, o_R, o_M, o_\bot\}\) given
@@ -202,8 +205,9 @@ incurring two-step failure probability
 By contrast, the one-step memory controller \(\pi_1(o_{t-1}, o_t)\) that
 plays \(a_L\) on \((o_L, o_M)\) and \(a_R\) on \((o_R, o_M)\) (and
 \(a_L\) otherwise) satisfies
-\(\mathbb{P}_{\pi_1}(X_t \in K^\star\ \forall t \ge 0) = 1\). \emph{(b)
-Fixed-sample impossibility.} Under
+\(\mathbb{P}_{\pi_1}(X_t \in K^\star\ \forall t \ge 0) = 1\).
+
+\textbf{(b)} \emph{Fixed-sample impossibility.} Under
 \(Z_1, \dots, Z_n \stackrel{\mathrm{i.i.d.}}{\sim} \mathrm{Bernoulli}(r)\),
 represent any (possibly randomised) certification rule by
 \(\psi: \{0,1\}^n \to [0,1]\), where \(\psi(z)\) is the probability of
@@ -217,8 +221,8 @@ if \(g(0) \ge 1 - \beta > \alpha\), then
 \(g(\varepsilon) \ge 1 - \beta - n\varepsilon > \alpha\) for every
 \(\varepsilon \in (0, (1 - \beta - \alpha)/n)\). \(\square\)
 
-\subsection{A.3 Smooth bottleneck obstruction (Proposition
-7)}\label{a.3-smooth-bottleneck-obstruction-proposition-7}
+\subsection{Smooth bottleneck obstruction (Proposition
+7)}\label{smooth-bottleneck-obstruction-proposition-7}
 
 \emph{Proof of Proposition 7.} On \(U\), \(\Psi(s,b,q) = (s, b, bq)\) is
 \(C^\infty\) with Jacobian matrix
@@ -231,14 +235,16 @@ Thus \(\operatorname{rank} D\Psi(u) = 3\) for every \(u \in U\). If
 \(3 = \operatorname{rank} D\Psi(u) \le \min\{\operatorname{rank} Dg(f(u)),\, \operatorname{rank} Df(u)\} \le 2\),
 a contradiction. \(\square\)
 
-\subsection{\texorpdfstring{A.4 Regenerative process \(\mathcal{M}\),
-the 2--3--4 partition, and quotients (Propositions 3 and
-4)}{A.4 Regenerative process \textbackslash mathcal\{M\}, the 2--3--4 partition, and quotients (Propositions 3 and 4)}}\label{a.4-regenerative-process-mathcalm-the-234-partition-and-quotients-propositions-3-and-4}
+\subsection{\texorpdfstring{Regenerative process \(\mathcal{M}\), the
+2--3--4 partition, and quotients (Propositions 3 and
+4)}{Regenerative process \textbackslash mathcal\{M\}, the 2--3--4 partition, and quotients (Propositions 3 and 4)}}\label{regenerative-process-mathcalm-the-234-partition-and-quotients-propositions-3-and-4}
 
 \emph{Exact transition specification of \(\mathcal{M}\).} Each step on a
-living token proceeds through diagnosis \(d \in \{H, D\}\), action
-request \(a \in \{\mathrm{care}, \mathrm{bloom}, \mathrm{stop}\}\),
-budget check against \(6\) units, actuation, and post-step damage:
+living token proceeds through diagnosis \(d \in \{H, D\}\) (where
+\(d = H\) iff row parity matches backups and \(g = \mathrm{open}\)),
+action request
+\(a \in \{\mathrm{care}, \mathrm{bloom}, \mathrm{stop}\}\), budget check
+against \(6\) units, actuation, and post-step damage:
 
 \begin{itemize}
 \tightlist
@@ -252,7 +258,7 @@ budget check against \(6\) units, actuation, and post-step damage:
   \(2 + 2 = 4 \le 6\), retains parent w.p. \(s - \delta\) and creates
   \(1\) strict newborn w.p. \(b + \gamma\) independently.
 \item
-  Damaged (\(d = D\), active bits flipped, \(g = \mathrm{closed}\),
+  Damaged (\(d = D\), active bits flipped or \(g = \mathrm{closed}\),
   backups intact, \(b_{\mathrm{boot}} = 1\)): \texttt{care} pays
   \(R = 3\) to majority-restore active bits and set
   \(g = \mathrm{open}\), then spends \(1 + 2 = 3\) (\(3+3=6 \le 6\)) to
@@ -268,17 +274,18 @@ budget check against \(6\) units, actuation, and post-step damage:
   \(1-q\).
 \end{itemize}
 
-\emph{Proof of Proposition 3.} Under autonomous internal execution: (1)
-\emph{At \(t=1\)}: \(\theta_0 H\) runs healthy \texttt{care}
-(\(B_1 \sim \mathrm{Bern}(b), R_1 = 0\)); \(\theta_0 D\) and
-\(\theta_1 D\) both pay \(R_1 = 3\), restore their codes, and run
+\emph{Proof of Proposition 3.} Under autonomous internal execution:
+\textbf{(1)} \emph{At \(t=1\)}: \(\theta_0 H\) runs healthy
+\texttt{care} (\(B_1 \sim \mathrm{Bern}(b), R_1 = 0\)); \(\theta_0 D\)
+and \(\theta_1 D\) both pay \(R_1 = 3\), restore their codes, and run
 \texttt{care} (\(B_1 \sim \mathrm{Bern}(b)\)); \(\theta_1 H\) runs
 healthy \texttt{bloom} (\(B_1 \sim \mathrm{Bern}(b+\gamma), R_1 = 0\)).
 Since \(\gamma > 0\), \(b + \gamma \neq b\), giving exactly two
 \(B_1\)-classes: \(\{\theta_0 H, \theta_0 D, \theta_1 D\}\) and
-\(\{\theta_1 H\}\). (2) \emph{All finite birth records
-\((B_1,\dots,B_T)\)}: After actuation at \(t=1\), both \(\theta_0 H\)
-and \(\theta_0 D\) yield
+\(\{\theta_1 H\}\).
+
+\textbf{(2)} \emph{All finite birth records \((B_1,\dots,B_T)\)}: After
+actuation at \(t=1\), both \(\theta_0 H\) and \(\theta_0 D\) yield
 \((I_{\mathrm{ret}}, B_1) \sim \mathrm{Bern}(s) \otimes \mathrm{Bern}(b)\)
 of tokens all carrying \(\theta_0\), independently damaged w.p. \(q\).
 Hence their post-\(t=1\) population states have identical distributions,
@@ -307,7 +314,8 @@ classes: \(\{\theta_0 H, \theta_0 D\}\), \(\{\theta_1 D\}\),
 \(\mathbb{E}_{\theta_0 D}[B_2] = \frac{9}{8}\cdot\frac{3}{8} = \frac{27}{64}\)
 and
 \(\mathbb{E}_{\theta_1 D}[B_2] = \frac{9}{8}\bigl(\frac{3}{8} + \frac{2}{3}\cdot\frac{1}{4}\bigr) = \frac{9}{8}\cdot\frac{13}{24} = \frac{39}{64}\).
-(3) \emph{Adding \(R_1\)}: On \((B_1, R_1)\) alone,
+
+\textbf{(3)} \emph{Adding \(R_1\)}: On \((B_1, R_1)\) alone,
 \((\theta_0 H) \mapsto (\mathrm{Bern}(b), 0)\),
 \((\theta_1 H) \mapsto (\mathrm{Bern}(b+\gamma), 0)\), and both
 \(\theta_0 D, \theta_1 D \mapsto (\mathrm{Bern}(b), 3)\), yielding three
@@ -316,25 +324,26 @@ Adjoining \(R_1\) to \((B_1, B_2, \dots)\) splits
 \(\{\theta_0 H, \theta_0 D\}\) via \(R_1 = 0 \neq 3\), yielding all four
 singletons. \(\square\)
 
-\emph{Proposition 4 (Tag erasure vs.~gate erasure).} \emph{(a) Because
-no transition probability, affordability check, or payment depends on
-\(\tau\), erasing \(\tau\) defines a strong Markov lumpability
-\citep{burkeRosenblatt1958} commuting with every public-history policy.
-(b) Consider two tokens with row cells \((1,1,1)\) and \((0,0,0)\)
-(majority-decoded programme
-\(\theta_1 = (\mathrm{bloom}, \mathrm{care})\)) and diagnosis \(H\), one
-with \(g = \mathrm{open}\) and one with \(g = \mathrm{closed}\).
-Majority decoding maps both to \(\theta_1\), yet raw actuation without
-repair executes \texttt{bloom} on \(g = \mathrm{open}\) (birth rate
-\(b+\gamma\)) and is blocked on \(g = \mathrm{closed}\).} \(\square\)
+\emph{Proof of Proposition 4 (Tag erasure vs.~gate erasure).}
+\textbf{(a)} Because no transition probability, affordability check, or
+payment depends on \(\tau\), erasing \(\tau\) defines a strong Markov
+lumpability \citep{burkeRosenblatt1958} commuting with every
+public-history policy. \textbf{(b)} Consider two tokens with intact
+three-cell rows \((1,1,1)\) and \((0,0,0)\) (majority-decoded programme
+\(\theta_1 = (\mathrm{bloom}, \mathrm{care})\)), one with
+\(g = \mathrm{open}\) and one with \(g = \mathrm{closed}\). Majority
+decoding maps both to \(\theta_1\), yet raw actuation without
+gate-opening repair executes \texttt{bloom} on \(g = \mathrm{open}\)
+(birth rate \(b+\gamma\)) and is physically blocked by
+\(g = \mathrm{closed}\). \(\square\)
 
-\subsection{A.5 Full-policy growth ceiling, attainment, and extinction
+\subsection{Full-policy growth ceiling, attainment, and extinction
 bounds (Theorem
-1)}\label{a.5-full-policy-growth-ceiling-attainment-and-extinction-bounds-theorem-1}
+1)}\label{full-policy-growth-ceiling-attainment-and-extinction-bounds-theorem-1}
 
-\emph{Proof of Theorem 1.} (1) \emph{Reproductive-potential upper
-envelope and optimality of \(\rho_*\).} Define the positive single-token
-potential \(v: \{H, D\} \to (0, \infty)\) by
+\emph{Proof of Theorem 1.} \textbf{(1)} \emph{Reproductive-potential
+upper envelope and optimality of \(\rho_*\).} Define the positive
+single-token potential \(v: \{H, D\} \to (0, \infty)\) by
 \[v(H) := \max\{k_c, k_b\}, \qquad v(D) := k_c,\] so
 \(0 < v_{\min} := k_c \le v(x) \le v_{\max} := \max\{k_c, k_b\}\) for
 \(x \in \{H, D\}\). For any single-token diagnosis \(x\) and action
@@ -381,13 +390,13 @@ actuation and damage noises are independent of the public history
 whence by induction
 \[\mathbb{E}_\pi[N_t] \le \frac{1}{v_{\min}} \mathbb{E}_\pi[V(P_t)] \le \frac{v_{\max} |P_0|}{k_c} \rho_*^t =: C \rho_*^t \qquad (\forall \pi \in \Pi_{\mathrm{pub}},\ \forall t \ge 0).\]
 To establish tightness and minimality of \(\rho_*\) from any non-empty
-\(P_0\): if \(\rho_* = 1\), either \(P_0\) already contains a
-\(D\)-token (preserved w.p. \(1\) by repeating \texttt{bloom}) or
-executing \texttt{care} at \(t=1\) on an \(H\)-token yields a surviving
-\(D\)-token w.p. at least \(s q > 0\), after which repeating
-\texttt{bloom} on \(D\)-tokens maintains
-\(\mathbb{E}[N_t] \ge s q \cdot 1^t\); if
-\(\rho_* = \lambda_0 \ge \max\{1, \lambda_1\}\), stationary
+\(P_0\): if \(\rho_* = 1\), define \(\pi_{\mathrm{dorm}}\) requesting
+\texttt{care} on \(H\) and \texttt{bloom} on \(D\)---either \(P_0\)
+already contains a \(D\)-token (preserved w.p. \(1\)) or executing
+\texttt{care} at \(t=1\) on an \(H\)-token yields a surviving
+\(D\)-token w.p. at least \(s q > 0\), maintaining
+\(\mathbb{E}_{\pi_{\mathrm{dorm}}}[N_t] \ge \min\{1, s q\} \cdot 1^t\);
+if \(\rho_* = \lambda_0 \ge \max\{1, \lambda_1\}\), stationary
 \texttt{care} (\(\theta_0\)) yields
 \(\mathbb{E}_{\theta_0}[N_t] = |P_0| \lambda_0^t\); and if
 \(\rho_* = \lambda_1 \ge \max\{1, \lambda_0\}\) (\(\gamma \ge \delta\)),
@@ -397,13 +406,7 @@ eigen-equality \((L_{\theta_1(x)} v)(x) = \lambda_1 v(x)\), so
 \(\frac{V(P_0)}{v_{\max}} \rho_*^t \le \mathbb{E}_{\theta_1}[N_t] \le \frac{V(P_0)}{v_{\min}} \rho_*^t\)
 for all \(t \ge 0\).
 
-\begin{enumerate}
-\def\labelenumi{(\arabic{enumi})}
-\setcounter{enumi}{1}
-\tightlist
-\item
-  \emph{Exact attainment conditions from a damaged founder.}
-\end{enumerate}
+\textbf{(2)} \emph{Exact attainment conditions from a damaged founder.}
 
 \begin{itemize}
 \tightlist
@@ -465,6 +468,16 @@ healthy founders \(\theta_1 H\)
   \(\mathbb{P}(N_1^{(1)} + N_1^{(0)} > 0) = 1 - \frac{9}{64}\cdot\frac{5}{32} = \frac{4006}{4096}\),
   \(\mathbb{E}[S_1 \mid N_1 > 0] = \frac{2095}{4006}\). \(\square\)
 \end{itemize}
+
+\section*{Declaration of generative AI
+assistance}\label{declaration-of-generative-ai-assistance}
+\addcontentsline{toc}{section}{Declaration of generative AI assistance}
+
+Generative AI systems (Gemini 4 Carbon and ChatGPT 6 Astra) were used
+under the direction and full verification of the human author(s) during
+mathematical cross-checking, bibliographic verification, and editorial
+preparation; the human author(s) take full scholarly responsibility for
+the manuscript.
 
 \clearpage
 \begingroup

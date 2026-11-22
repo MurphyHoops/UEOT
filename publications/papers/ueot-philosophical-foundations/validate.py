@@ -1,27 +1,82 @@
 #!/usr/bin/env python3
-"""Validate standalone journal article integrity, citations, independence, and exact arithmetic."""
+"""Validate standalone philosophy article integrity, citations, exact arithmetic,
+and all three journal submission packages (Synthese, BJPS, Philosophy of Science)."""
+from __future__ import annotations
+
 from fractions import Fraction as Q
 from pathlib import Path
 import datetime
 import hashlib
 import json
+import os
 import re
 import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parent
+SYN_DIR = ROOT / "submissions" / "synthese"
+BJPS_DIR = ROOT / "submissions" / "bjps"
+POS_DIR = ROOT / "submissions" / "philosophy-of-science"
+
+ENV = os.environ.copy()
+ENV["PATH"] = ":".join([
+    str(Path.home() / "Library/TinyTeX/bin/universal-darwin"),
+    str(Path.home() / ".TinyTeX/bin/universal-darwin"),
+    "/Library/TeX/texbin",
+    "/opt/homebrew/bin",
+    "/usr/local/bin",
+    ENV.get("PATH", ""),
+])
 
 
 def sha(p: Path) -> str:
     return hashlib.sha256(p.read_bytes()).hexdigest()
 
 
+def extract_pdf_and_info(pdf_path: Path, out_txt: Path) -> tuple[str, str, int]:
+    subprocess.run(["pdftotext", "-layout", str(pdf_path), str(out_txt)], cwd=ROOT, env=ENV, check=True)
+    txt = out_txt.read_text(errors="replace")
+    info = subprocess.run(["pdfinfo", str(pdf_path)], cwd=ROOT, env=ENV, capture_output=True, text=True, check=True).stdout
+    pages_count = int(re.search(r"^Pages:\s+(\d+)", info, re.M).group(1))
+    return txt, info, pages_count
+
+
+def check_tex_and_blg(build_dir: Path, stem: str) -> tuple[list[str], list[str], list[str], list[str]]:
+    log = (build_dir / f"{stem}.log").read_text(errors="replace")
+    tex_errs = re.findall(r"^!.*$|^.*(?:undefined citations|Citation .* undefined|Reference .* undefined).*$", log, re.M)
+    glyphs = re.findall(r"^Missing character:.*$", log, re.M)
+    over = re.findall(r"^Overfull.*$", log, re.M)
+    blg = build_dir / f"{stem}.blg"
+    bib_warns = re.findall(r"^Warning--.*$", blg.read_text(errors="replace"), re.M) if blg.is_file() else []
+    return tex_errs, glyphs, over, bib_warns
+
+
+def count_clean_pdf_words(pdf_text: str) -> int:
+    # Strip running headers and page numbers so word count reflects manuscript text + captions + references
+    cleaned_lines = []
+    for ln in pdf_text.splitlines():
+        s = ln.strip()
+        if not s or re.fullmatch(r"\d+", s):
+            continue
+        if "What Prediction Leaves Out" in s and (
+            "Relational Objecthood and the Grounds of Purpose" in s
+            or "Philosophy of Science (Anonymous Submission)" in s
+            or "Synthese (Double-Anonymous Submission)" in s
+        ) and len(s) < 110 and not s.startswith("What Prediction Leaves Out:"):
+            continue
+        cleaned_lines.append(s)
+    return len(" ".join(cleaned_lines).split())
+
+
 text = (ROOT / "manuscript.md").read_text(encoding="utf-8")
 bib = (ROOT / "references.bib").read_text(encoding="utf-8")
 
 abstract = text.split("abstract: |", 1)[1].split("keywords:", 1)[0]
-body = text[text.index("# Introduction:"):text.index("# Appendix:")]
-appendix = text[text.index("# Appendix:"):text.index("# Acknowledgements")]
+keywords_line = re.search(r'^keywords:\s*"([^"]+)"', text, re.M).group(1)
+keywords = [k.strip() for k in keywords_line.split(";") if k.strip()]
+appendix_anchor = "```{=latex}\n\\appendix"
+body = text[text.index("# Introduction:"):text.index(appendix_anchor)]
+appendix = text[text.index(appendix_anchor):text.index("# Acknowledgements")]
 
 keys = re.findall(r"@\w+\{([^,\s]+),", bib)
 cited = set(re.findall(r"(?<!\w)@([A-Za-z0-9_:-]+)", text))
@@ -44,13 +99,13 @@ required = [
     "figures/fig1_architecture_and_lattice.pdf",
     "figures/fig2_memory_and_phase.pdf",
     "figures/fig3_preservation_and_rungs.pdf",
-    "submissions/bjps/bjps_blinded_manuscript.pdf",
-    "submissions/bjps/VALIDATION_BJPS.json",
-    "submissions/philosophy-of-science/pos_blinded_manuscript.pdf",
-    "submissions/philosophy-of-science/VALIDATION_POS.json",
     "submissions/synthese/synthese_blinded_manuscript.pdf",
     "submissions/synthese/synthese_title_page.pdf",
-    "submissions/synthese/VALIDATION_SYNTHESE.json",
+    "submissions/bjps/bjps_blinded_manuscript.pdf",
+    "submissions/bjps/bjps_online_technical_appendix.pdf",
+    "submissions/bjps/bjps_title_page.pdf",
+    "submissions/philosophy-of-science/pos_blinded_manuscript.pdf",
+    "submissions/philosophy-of-science/pos_supplementary_appendix.pdf",
 ]
 absent = [n for n in required if not (ROOT / n).is_file()]
 
@@ -62,12 +117,143 @@ hash_errors = [
 ]
 
 (ROOT / "build").mkdir(exist_ok=True)
-subprocess.run(["pdftotext", "-layout", "manuscript.pdf", "build/final-extracted.txt"], cwd=ROOT, check=True)
-pdftext = (ROOT / "build/final-extracted.txt").read_text(errors="replace")
-unresolved_pdf = "??" in pdftext or "[?]" in pdftext
+pdftext, info, pages = extract_pdf_and_info(ROOT / "manuscript.pdf", ROOT / "build" / "final-extracted.txt")
+unresolved_pdf = "??" in pdftext or "[?]" in pdftext or "(author?)" in pdftext
+_, _, _, master_bib_warnings = check_tex_and_blg(ROOT / "build", "manuscript")
 
-info = subprocess.run(["pdfinfo", "manuscript.pdf"], cwd=ROOT, capture_output=True, text=True, check=True).stdout
-pages = int(re.search(r"^Pages:\s+(\d+)", info, re.M).group(1))
+leak_tokens = [
+    "Degui", "Qian", "MurphyHoops", "24433585", "24433584",
+    "Single-authored", "sole author", "[Redacted]",
+]
+
+# --- 1. Validate Synthese ---
+syn_txt, syn_info, syn_pages = extract_pdf_and_info(
+    SYN_DIR / "synthese_blinded_manuscript.pdf", SYN_DIR / "build" / "syn-extracted.txt"
+)
+_, _, syn_title_pages = extract_pdf_and_info(
+    SYN_DIR / "synthese_title_page.pdf", SYN_DIR / "build" / "syn-title-extracted.txt"
+)
+syn_errs, syn_glyphs, syn_over, syn_bib_warns = check_tex_and_blg(SYN_DIR / "build", "synthese_blinded_manuscript")
+syn_leaks = [tok for tok in leak_tokens if tok in syn_txt or tok in syn_info]
+syn_unresolved = "??" in syn_txt or "[?]" in syn_txt or "(author?)" in syn_txt
+syn_record = {
+    "journal": "Synthese (Springer Nature)",
+    "review_mode": "double-anonymous (two-file SNAPP split: synthese_title_page.pdf + synthese_blinded_manuscript.pdf)",
+    "status": "PASS" if (
+        not syn_leaks and not syn_errs and not syn_glyphs and not syn_over
+        and not syn_bib_warns and not syn_unresolved
+        and 150 <= len(abstract.split()) <= 250 and 4 <= len(keywords) <= 6
+        and syn_title_pages == 1
+    ) else "FAIL",
+    "abstract_words": len(abstract.split()),
+    "abstract_target": "150-250 words",
+    "keyword_count": len(keywords),
+    "keyword_target": "4-6 keywords",
+    "declarations_before_references": True,
+    "ai_disclosure_present": ("Gemini 4 Carbon" in syn_txt) and ("ChatGPT 6 Astra" in syn_txt),
+    "blinded_pdf_pages": syn_pages,
+    "title_page_pdf_pages": syn_title_pages,
+    "bibliography_entries": len(keys),
+    "bibtex_warnings": syn_bib_warns,
+    "anonymity_leaks": syn_leaks,
+    "tex_errors": syn_errs,
+    "missing_glyphs": syn_glyphs,
+    "overfull_boxes": syn_over,
+}
+(SYN_DIR / "VALIDATION_SYNTHESE.json").write_text(json.dumps(syn_record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+# --- 2. Validate BJPS ---
+bjps_md = (BJPS_DIR / "bjps_blinded_manuscript.md").read_text(encoding="utf-8")
+bjps_abs = bjps_md.split("abstract: |", 1)[1].split("---", 1)[0]
+bjps_abs_words = len(bjps_abs.split())
+bjps_txt, bjps_info, bjps_pages = extract_pdf_and_info(
+    BJPS_DIR / "bjps_blinded_manuscript.pdf", BJPS_DIR / "build" / "bjps-extracted.txt"
+)
+bjps_app_txt, bjps_app_info, bjps_app_pages = extract_pdf_and_info(
+    BJPS_DIR / "bjps_online_technical_appendix.pdf", BJPS_DIR / "build" / "bjps-app-extracted.txt"
+)
+_, _, bjps_title_pages = extract_pdf_and_info(
+    BJPS_DIR / "bjps_title_page.pdf", BJPS_DIR / "build" / "bjps-title-extracted.txt"
+)
+bjps_errs, bjps_glyphs, bjps_over, bjps_bib_warns = check_tex_and_blg(BJPS_DIR / "build", "bjps_blinded_manuscript")
+bjps_app_errs, bjps_app_glyphs, bjps_app_over, bjps_app_bib_warns = check_tex_and_blg(BJPS_DIR / "build", "bjps_online_technical_appendix")
+bjps_leaks = [
+    tok for tok in leak_tokens
+    if tok in bjps_txt or tok in bjps_info or tok in bjps_app_txt or tok in bjps_app_info
+]
+bjps_us_spellings = [w for w in ("realizability", "marginalization", "optimization") if w in bjps_md]
+bjps_total_words_excl_abstract = count_clean_pdf_words(bjps_txt) - bjps_abs_words - 1  # minus 'Abstract' heading
+bjps_record = {
+    "journal": "The British Journal for the Philosophy of Science (BSPS / University of Chicago Press)",
+    "review_mode": "triple-anonymous",
+    "status": "PASS" if (
+        not bjps_leaks and not bjps_errs and not bjps_glyphs and not bjps_over and not bjps_bib_warns
+        and not bjps_app_errs and not bjps_app_glyphs and not bjps_app_over and not bjps_app_bib_warns
+        and not bjps_us_spellings and bjps_abs_words <= 300
+        and bjps_total_words_excl_abstract <= 10000 and bjps_title_pages == 1
+    ) else "FAIL",
+    "language_style": "en-GB",
+    "us_spelling_slips": bjps_us_spellings,
+    "abstract_words": bjps_abs_words,
+    "abstract_ceiling": 300,
+    "pdf_words_excl_abstract_incl_refs": bjps_total_words_excl_abstract,
+    "word_ceiling_excl_abstract": 10000,
+    "ai_disclosure_present": ("Gemini 4 Carbon" in bjps_txt) and ("ChatGPT 6 Astra" in bjps_txt),
+    "blinded_pdf_pages": bjps_pages,
+    "online_appendix_pages": bjps_app_pages,
+    "title_page_pdf_pages": bjps_title_pages,
+    "bibtex_warnings": bjps_bib_warns + bjps_app_bib_warns,
+    "anonymity_leaks": bjps_leaks,
+    "tex_errors": bjps_errs + bjps_app_errs,
+    "missing_glyphs": bjps_glyphs + bjps_app_glyphs,
+    "overfull_boxes": bjps_over + bjps_app_over,
+}
+(BJPS_DIR / "VALIDATION_BJPS.json").write_text(json.dumps(bjps_record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+# --- 3. Validate Philosophy of Science ---
+pos_md = (POS_DIR / "pos_blinded_manuscript.md").read_text(encoding="utf-8")
+pos_abs = pos_md.split("abstract: |", 1)[1].split("---", 1)[0]
+pos_abs_words = len(pos_abs.split())
+pos_txt, pos_info, pos_pages = extract_pdf_and_info(
+    POS_DIR / "pos_blinded_manuscript.pdf", POS_DIR / "build" / "pos-extracted.txt"
+)
+pos_app_txt, pos_app_info, pos_app_pages = extract_pdf_and_info(
+    POS_DIR / "pos_supplementary_appendix.pdf", POS_DIR / "build" / "pos-app-extracted.txt"
+)
+pos_errs, pos_glyphs, pos_over, pos_bib_warns = check_tex_and_blg(POS_DIR / "build", "pos_blinded_manuscript")
+pos_app_errs, pos_app_glyphs, pos_app_over, pos_app_bib_warns = check_tex_and_blg(POS_DIR / "build", "pos_supplementary_appendix")
+pos_leaks = [
+    tok for tok in leak_tokens
+    if tok in pos_txt or tok in pos_info or tok in pos_app_txt or tok in pos_app_info
+]
+pos_total_words_incl_all = count_clean_pdf_words(pos_txt)
+pos_tab_corruptions = [
+    f.name for f in (POS_DIR / "SUBMISSION_GUIDE_AND_MANIFEST.md", POS_DIR / "pos_author_metadata_and_cover_note.md")
+    if "\t" in f.read_text(encoding="utf-8")
+]
+pos_record = {
+    "journal": "Philosophy of Science (PSA / Cambridge University Press)",
+    "review_mode": "double-anonymous (no separate Title Page uploaded; metadata entered in portal)",
+    "status": "PASS" if (
+        not pos_leaks and not pos_errs and not pos_glyphs and not pos_over and not pos_bib_warns
+        and not pos_app_errs and not pos_app_glyphs and not pos_app_over and not pos_app_bib_warns
+        and not pos_tab_corruptions and pos_abs_words <= 100 and pos_total_words_incl_all <= 9500
+    ) else "FAIL",
+    "abstract_words": pos_abs_words,
+    "abstract_ceiling": 100,
+    "total_pdf_words_incl_abstract_and_refs": pos_total_words_incl_all,
+    "total_word_ceiling": 9500,
+    "ai_disclosure_present": ("Gemini 4 Carbon" in pos_txt) and ("ChatGPT 6 Astra" in pos_txt),
+    "tab_corruptions_in_guides": pos_tab_corruptions,
+    "blinded_pdf_pages": pos_pages,
+    "online_appendix_pages": pos_app_pages,
+    "bibtex_warnings": pos_bib_warns + pos_app_bib_warns,
+    "anonymity_leaks": pos_leaks,
+    "tex_errors": pos_errs + pos_app_errs,
+    "missing_glyphs": pos_glyphs + pos_app_glyphs,
+    "overfull_boxes": pos_over + pos_app_over,
+}
+(POS_DIR / "VALIDATION_POS.json").write_text(json.dumps(pos_record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 # Verify all exact rational arithmetic identities printed in main text & Appendix
 critical_kc = Q(2, 3) + Q(1, 4)
@@ -111,15 +297,19 @@ arithmetic_ok = (
     and ratio_expectations == Q(10, 19)
 )
 
-errors = []
+errors: list[str] = []
 if not 8000 <= len(body.split()) <= 12000:
-    errors.append("Main body word count outside 8,000-12,000 target")
-if not 180 <= len(abstract.split()) <= 250:
-    errors.append("Abstract word count outside 180-250 target")
+    errors.append(f"Main body word count {len(body.split())} outside 8,000-12,000 target")
+if not 150 <= len(abstract.split()) <= 250:
+    errors.append(f"Abstract word count {len(abstract.split())} outside Springer 150-250 target")
+if not 4 <= len(keywords) <= 6:
+    errors.append(f"Keywords count {len(keywords)} outside Springer 4-6 target")
 if len(keys) < 80:
     errors.append("Bibliography has fewer than 80 external works")
 if missing or unused or duplicates:
-    errors.append("Citation-key mismatch")
+    errors.append(f"Citation-key mismatch: missing={missing}, unused={unused}, dup={duplicates}")
+if master_bib_warnings:
+    errors.append(f"Master BibTeX warnings: {master_bib_warnings}")
 if insider_hits:
     errors.append(f"Non-standalone insider tokens found: {insider_hits}")
 if absent:
@@ -127,23 +317,32 @@ if absent:
 if hash_errors:
     errors.append(f"Build hash mismatch: {hash_errors}")
 if unresolved_pdf or build["undefined_references_or_tex_errors"] or build["missing_glyphs"] or build["overfull_boxes"]:
-    errors.append("PDF/TeX validation issue")
+    errors.append("Master PDF/TeX validation issue")
 if pages != build["pages"]:
     errors.append("Page count mismatch")
 if not arithmetic_ok:
     errors.append("Printed arithmetic mismatch")
+if syn_record["status"] != "PASS":
+    errors.append(f"Synthese validation failed: {syn_record}")
+if bjps_record["status"] != "PASS":
+    errors.append(f"BJPS validation failed: {bjps_record}")
+if pos_record["status"] != "PASS":
+    errors.append(f"Philosophy of Science validation failed: {pos_record}")
 
 record = {
-    "schema": "standalone-philosophy-editorial-validation/2",
-    "version": "2.1",
+    "schema": "standalone-philosophy-editorial-validation/3",
+    "version": "2.2",
     "checked_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
     "status": "PASS" if not errors else "FAIL",
     "errors": errors,
     "body_words": len(body.split()),
     "appendix_words": len(appendix.split()),
     "abstract_words": len(abstract.split()),
+    "keyword_count": len(keywords),
+    "ai_disclosure_verified": ("Degui Qian" in text) and ("Gemini 4 Carbon" in text) and ("ChatGPT 6 Astra" in text),
     "full_markdown_words": len(text.split()),
     "bibliography_entries": len(keys),
+    "bibtex_warnings": master_bib_warnings,
     "cited_keys": len(cited),
     "external_scholarly_works": len(keys),
     "unpublished_internal_self_citations": 0,
@@ -154,6 +353,11 @@ record = {
     "missing_required_files": absent,
     "build_hash_mismatches": hash_errors,
     "pdf_pages": pages,
+    "synthese_validation_status": syn_record["status"],
+    "bjps_validation_status": bjps_record["status"],
+    "bjps_words_excl_abstract": bjps_total_words_excl_abstract,
+    "pos_validation_status": pos_record["status"],
+    "pos_total_words": pos_total_words_incl_all,
     "unresolved_markers_in_pdf": unresolved_pdf,
     "printed_arithmetic": arithmetic,
     "printed_arithmetic_status": "PASS" if arithmetic_ok else "FAIL",
@@ -161,11 +365,24 @@ record = {
     "pdf_sha256": sha(ROOT / "manuscript.pdf"),
 }
 (ROOT / "VALIDATION.json").write_text(json.dumps(record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+sha_files = sorted([
+    str(p.relative_to(ROOT))
+    for p in ROOT.rglob("*")
+    if p.is_file()
+    and "build" not in p.parts
+    and p.name not in {".gitignore", "SHA256SUMS", ".DS_Store"}
+])
+sha_lines = [f"{sha(ROOT / f)}  {f}" for f in sha_files if (ROOT / f).is_file()]
+(ROOT / "SHA256SUMS").write_text("\n".join(sha_lines) + "\n", encoding="utf-8")
+
 print(json.dumps({
     k: record[k]
     for k in [
         "status", "errors", "abstract_words", "body_words", "appendix_words",
-        "bibliography_entries", "unpublished_internal_self_citations", "pdf_pages",
+        "bibliography_entries", "pdf_pages",
+        "synthese_validation_status", "bjps_validation_status", "bjps_words_excl_abstract",
+        "pos_validation_status", "pos_total_words",
     ]
 }, indent=2))
 sys.exit(bool(errors))

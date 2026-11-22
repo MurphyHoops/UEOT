@@ -298,15 +298,30 @@ mor_info = subprocess.run(
 ).stdout
 mor_pages = int(re.search(r"^Pages:\s+(\d+)", mor_info, re.M).group(1))
 mor_log = (MOR_DIR / "build" / "mor_blinded_manuscript.log").read_text(errors="replace")
+mor_blg = (MOR_DIR / "build" / "mor_blinded_manuscript.blg").read_text(errors="replace")
+master_blg = (ROOT / "build" / "manuscript.blg").read_text(errors="replace")
 mor_tex_errors = re.findall(
-    r"^!.*$|^.*(?:undefined citations|Citation .* undefined|Reference .* undefined).*$",
+    r"^!.*$|^.*(?:undefined citations|Citation .* undefined|Reference .* undefined|\(author\?\)).*$",
     mor_log, re.M,
 )
+mor_bib_warnings = re.findall(r"^Warning--.*$", mor_blg, re.M)
+master_bib_warnings = re.findall(r"^Warning--.*$", master_blg, re.M)
 mor_missing_glyphs = re.findall(r"^Missing character:.*$", mor_log, re.M)
 mor_overfull = re.findall(r"^Overfull.*$", mor_log, re.M)
 
+mor_page_splits = mor_text.split("\x0c")
+ref_page_idx = next(
+    (idx for idx, pg in enumerate(mor_page_splits) if re.search(r"^\s*(?:\d+\s+)?References\s*$", pg, re.M)),
+    mor_pages,
+)
+mor_pages_excl_references = ref_page_idx  # 0-based index of first References page = count of preceding pages
+abstract_on_page_2 = len(mor_page_splits) >= 2 and ("Abstract." in mor_page_splits[1])
+
 anonymity_leaks = [
-    tok for tok in ["Degui", "Qian", "MurphyHoops", "24433585", "24433584"]
+    tok for tok in [
+        "Degui", "Qian", "MurphyHoops", "24433585", "24433584",
+        "Single-authored", "sole author", "Gemini", "ChatGPT",
+    ]
     if tok in mor_text or tok in mor_info
 ]
 
@@ -314,19 +329,25 @@ mor_record = {
     "journal": "Mathematics of Operations Research (INFORMS)",
     "review_mode": "double-anonymous (two-file split: mor_title_page.pdf + mor_blinded_manuscript.pdf)",
     "status": "PASS" if (
-        not anonymity_leaks and not mor_tex_errors and not mor_missing_glyphs
-        and not mor_overfull and 150 <= len(abstract.split()) <= 200
+        not anonymity_leaks and not mor_tex_errors and not mor_bib_warnings
+        and not mor_missing_glyphs and not mor_overfull
+        and abstract_on_page_2 and mor_pages_excl_references <= 40
+        and 100 <= len(abstract.split()) <= 150
         and "$" not in abstract and "@" not in abstract and 3 <= len(keywords) <= 5
     ) else "FAIL",
     "abstract_words": len(abstract.split()),
-    "abstract_target": "150-200 words, single paragraph, 0 equations, 0 citations",
+    "abstract_target": "<= 150 words (official INFORMS MOR limit), on Page 2 following blinded Title Page, 0 equations, 0 citations",
+    "abstract_on_page_2": abstract_on_page_2,
     "equations_or_citations_in_abstract": ("$" in abstract) or ("@" in abstract),
     "keyword_count": len(keywords),
     "keyword_target": "3-5 keywords",
     "msc2020_present": "MSC 2020" in mor_text,
     "orms_present": "OR/MS" in mor_text,
     "pdf_pages": mor_pages,
+    "pdf_pages_excl_references": mor_pages_excl_references,
+    "page_ceiling_excl_references": 40,
     "bibliography_entries": len(keys),
+    "bibtex_warnings": mor_bib_warnings,
     "anonymity_leaks": anonymity_leaks,
     "tex_errors": mor_tex_errors,
     "missing_glyphs": mor_missing_glyphs,
@@ -337,8 +358,10 @@ mor_record = {
 errors = []
 if not 6500 <= len(body.split()) <= 12000:
     errors.append(f"Main body word count {len(body.split())} outside 6,500-12,000 target")
-if not 150 <= len(abstract.split()) <= 200:
-    errors.append(f"Abstract word count {len(abstract.split())} outside 150-200 MOR target")
+if not 100 <= len(abstract.split()) <= 150:
+    errors.append(f"Abstract word count {len(abstract.split())} outside <= 150 MOR target")
+if master_bib_warnings:
+    errors.append(f"Master BibTeX warnings: {master_bib_warnings}")
 if "$" in abstract or "@" in abstract:
     errors.append("Abstract contains equations or citations")
 if not 3 <= len(keywords) <= 5:

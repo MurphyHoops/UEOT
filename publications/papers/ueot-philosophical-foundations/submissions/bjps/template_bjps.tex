@@ -9,19 +9,20 @@
 \IfFontExistsTF{Liberation Sans}{%
   \setsansfont{Liberation Sans}%
 }{%
-  \setsansfont[Path=../../../../../tools/books/.cache/fonts/,
-    BoldFont=DejaVuSans-Bold.ttf,
-    ItalicFont=DejaVuSans-Oblique.ttf,
-    BoldItalicFont=DejaVuSans-BoldOblique.ttf]{DejaVuSans.ttf}%
+  \IfFontExistsTF{Latin Modern Sans}{%
+    \setsansfont{Latin Modern Sans}%
+  }{%
+    \setsansfont{Helvetica}%
+  }%
 }
 \IfFontExistsTF{DejaVu Sans Mono}{%
-  \setmonofont[Scale=0.86]{DejaVu Sans Mono}%
+  \setmonofont[Scale=0.84]{DejaVu Sans Mono}%
 }{%
-  \setmonofont[Path=../../../../../tools/books/.cache/fonts/,
-    Scale=0.86,
-    BoldFont=DejaVuSansMono-Bold.ttf,
-    ItalicFont=DejaVuSansMono-Oblique.ttf,
-    BoldItalicFont=DejaVuSansMono-BoldOblique.ttf]{DejaVuSansMono.ttf}%
+  \IfFontExistsTF{Menlo}{%
+    \setmonofont[Scale=0.82]{Menlo}%
+  }{%
+    \setmonofont[Scale=0.84]{Courier New}%
+  }%
 }
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{microtype}

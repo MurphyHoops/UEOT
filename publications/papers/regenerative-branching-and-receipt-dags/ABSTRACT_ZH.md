@@ -3,7 +3,8 @@
 **英文标题：** *Prepayment Thresholds, Informative Zero Receipts, and Certified Polynomial Decision Diagrams in Partially Observed Regenerative Maintenance*  
 **中文参考标题：** 《部分可观测再生维护中的预付阈值、有信息零收据与经认证多项式决策图》  
 **作者：** 钱德贵（Degui Qian）  
-**版本：** 1.0（独立学术期刊主稿版及 INFORMS *Mathematics of Operations Research* 双盲直传包，2026 年 11 月）
+**版本：** 1.0（独立学术期刊主稿版及 INFORMS *Mathematics of Operations Research* 双盲直传包，2026 年 11 月）  
+**研究与 AI 协作声明：** 本研究与论文在作者钱德贵（Degui Qian）指导下，由 **Gemini 4 Carbon** 与 **ChatGPT 6 Astra** 协作完成；全部数学证明、纯内核 Lean 4 定理、精确有理数基准与学术引证均经作者逐一核验，由作者独立承担全部学术与法律责任。
 
 ## 摘要
 

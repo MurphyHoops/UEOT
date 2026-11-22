@@ -10,19 +10,20 @@
 \IfFontExistsTF{Liberation Sans}{%
   \setsansfont{Liberation Sans}%
 }{%
-  \setsansfont[Path=../../../tools/books/.cache/fonts/,
-    BoldFont=DejaVuSans-Bold.ttf,
-    ItalicFont=DejaVuSans-Oblique.ttf,
-    BoldItalicFont=DejaVuSans-BoldOblique.ttf]{DejaVuSans.ttf}%
+  \IfFontExistsTF{Latin Modern Sans}{%
+    \setsansfont{Latin Modern Sans}%
+  }{%
+    \setsansfont{Helvetica}%
+  }%
 }
 \IfFontExistsTF{DejaVu Sans Mono}{%
   \setmonofont[Scale=0.84]{DejaVu Sans Mono}%
 }{%
-  \setmonofont[Path=../../../tools/books/.cache/fonts/,
-    Scale=0.84,
-    BoldFont=DejaVuSansMono-Bold.ttf,
-    ItalicFont=DejaVuSansMono-Oblique.ttf,
-    BoldItalicFont=DejaVuSansMono-BoldOblique.ttf]{DejaVuSansMono.ttf}%
+  \IfFontExistsTF{Menlo}{%
+    \setmonofont[Scale=0.81]{Menlo}%
+  }{%
+    \setmonofont[Scale=0.84]{Courier New}%
+  }%
 }
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{microtype}
@@ -107,8 +108,8 @@ post-selection acceptance-and-deployment failure without candidate-count
 union bounds. Finally, we characterize measurable Markov belief
 quotients via closed test spaces and establish exact
 fault-discrimination and randomized minimax regret bounds
-(\(3/128 < 1/32\)) via GCD-free integer-scaled dynamic programming
-verified purely inside the kernel.
+(\(3/128 < 1/32\)) via greatest-common-divisor-free integer-scaled
+dynamic programming verified purely inside the kernel.
 \end{abstract}
 \vspace{4pt}
 \noindent{\small\textbf{Keywords:} interactive theorem proving; Lean 4;
@@ -254,7 +255,8 @@ levels:
   greatest winning-support fixed point \(\mathcal{W}_*\)
   \citep{tarski1955, aubinCellina1984, aubin1991} in at most
   \(2^{|X|} - 1\) iterations, connects closed-loop substochastic killed
-  matrix powers \(\mathbf{1}_K^\top Q_K^T \mu_0\)
+  matrix powers
+  \(\mathbf{1}_{\widetilde{K}}^\top Q_K^T \widetilde{\mu}_0\)
   \citep{darrochSeneta1965, seneta1981, collet2013} to the Kolmogorov
   infinite-trajectory safety probability
   \(\mathbb{P}(\forall n \in \mathbb{N},\, X_n \in K)\)
@@ -331,13 +333,13 @@ observation}\label{trace-support-viability-and-compact-quantifier-exchange-under
 \subsection{Microscopic and coarse path laws without reference-policy
 circularity}\label{microscopic-and-coarse-path-laws-without-reference-policy-circularity}
 
-Let \(X\) be a finite state space, \(A\) be a nonempty action set, and
-\(Y\) be an arbitrary observation space equipped with a deterministic
-observation map \(q: X \to Y\). Crucially, we do \emph{not} assume at
-the mathematical specification layer that \(Y\) is finite or even
-countable: because \(X\) is finite, at any step all observations
-realized with positive probability lie inside the finite image
-\(q(X) \subseteq Y\). Time-inhomogeneous stochastic dynamics are
+Let \(X\) be a finite state space, \(A\) be a finite nonempty action
+set, and \(Y\) be an arbitrary observation space equipped with a
+deterministic observation map \(q: X \to Y\). Crucially, we do
+\emph{not} assume at the mathematical specification layer that \(Y\) is
+finite or even countable: because \(X\) is finite, at any step all
+observations realized with positive probability lie inside the finite
+image \(q(X) \subseteq Y\). Time-inhomogeneous stochastic dynamics are
 specified by an initial state probability mass function (PMF)
 \(p_0 \in \Delta(X)\) and a sequence of transition kernels
 \(P_n: X \times A \to \Delta(X)\) for \(n \in \mathbb{N}\)
@@ -355,8 +357,8 @@ observations:
 Correspondingly, a \emph{microscopic history} \(h_n \in \mathcal{M}_n\)
 records the full state--action trajectory \(\mathcal{M}_0 := X\) and
 \(\mathcal{M}_{n+1} := \mathcal{M}_n \times (A \times X)\), projecting
-onto coarse histories via \(\pi_0(x_0) := q(x_0)\) and
-\(\pi_{n+1}(h_n, (a_n, x_{n+1})) := (\pi_n(h_n), (a_n, q(x_{n+1})))\),
+onto coarse histories via \(\Pi_0(x_0) := q(x_0)\) and
+\(\Pi_{n+1}(h_n, (a_n, x_{n+1})) := (\Pi_n(h_n), (a_n, q(x_{n+1})))\),
 with terminal state \(\mathrm{last}_0(x_0) := x_0\) and
 \(\mathrm{last}_{n+1}(h_n, (a_n, x_{n+1})) := x_{n+1}\). A \emph{causal
 policy} is a sequence of history-dependent action kernels
@@ -365,13 +367,13 @@ policy} is a sequence of history-dependent action kernels
 randomization weights. Together with \((p_0, q, P)\), any causal policy
 \(\pi\) induces a sequence of microscopic path PMFs
 \(\mu_n^\pi \in \Delta(\mathcal{M}_n)\), coarse path PMFs
-\(\bar{p}_n^\pi := (\pi_n)_\# \mu_n^\pi \in \Delta(\mathcal{H}_n)\), and
+\(\bar{p}_n^\pi := (\Pi_n)_\# \mu_n^\pi \in \Delta(\mathcal{H}_n)\), and
 step-\(n\) \emph{deployment state--action occupancy laws}
 \(\nu_n^\pi \in \Delta(X \times A)\) defined by
-\[\nu_n^\pi(x, a) := \sum_{\substack{h \in \mathcal{M}_n \\ \mathrm{last}_n(h) = x}} \mu_n^\pi(h)\, \pi_n(\pi_n(h))(a).\]
+\[\nu_n^\pi(x, a) := \sum_{\substack{h \in \mathcal{M}_n \\ \mathrm{last}_n(h) = x}} \mu_n^\pi(h)\, \pi_n(\Pi_n(h))(a).\]
 On any coarse history \(g \in \mathcal{H}_n\) with
 \(\bar{p}_n^\pi(g) > 0\), conditioning \(\mu_n^\pi\) on the fiber
-\(\pi_n^{-1}(\{g\})\) and projecting onto \(\mathrm{last}_n\) yields the
+\(\Pi_n^{-1}(\{g\})\) and projecting onto \(\mathrm{last}_n\) yields the
 exact terminal-state posterior \(\rho_n^{\pi, g} \in \Delta(X)\).
 
 While the numerical posterior \(\rho_n^{\pi, g}\) depends in general on
@@ -407,10 +409,11 @@ state; weakening \(\forall y\) to \(\exists y\) would gamble on lucky
 observations \citep{madani2003, chatterjee2016}.
 
 \textbf{Theorem 1 (Actual posterior-support bridge and finite-horizon
-viability equivalence).} \emph{Fix \((p_0, q, P, C)\), a finite horizon
-\(T \in \mathbb{N}\), and an arbitrary complete base policy
-\(\pi_{\mathrm{base}}\) supplying well-typed actions outside viable
-branches.}
+viability equivalence).} \emph{Let \(X\) and \(A\) be finite with \(A\)
+nonempty, \(Y\) arbitrary, \((p_0, q, P, C)\) fixed,
+\(T \in \mathbb{N}\) a finite horizon, and \(\pi_{\mathrm{base}}\) an
+arbitrary complete base policy supplying well-typed actions outside
+viable branches.}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -442,7 +445,7 @@ Theorem 1 (proved in Appendix A.1) eliminates two persistent pitfalls in
 partially observed safety analysis. First, because \(S_n(g)\) depends
 only on the \emph{recorded} actions inside \(g\) and not on
 counterfactual randomization weights of \(\pi\), replacing one
-microscopic prefix in \(\pi_n^{-1}(\{g\})\) by another preserves
+microscopic prefix in \(\Pi_n^{-1}(\{g\})\) by another preserves
 \(\pi_n(g)(a) > 0\); this symmetry allows both sufficiency and necessity
 to be proved directly on the policy's own induced path measure without
 circularly fixing a reference posterior. Second, two minimal
@@ -494,7 +497,9 @@ satisfying \(\nu_n^{\pi^{(T)}}(C_n^c) = 0\) for all \(n < T\). Because
 exist a \emph{single} causal policy \(\pi_\infty\) that certifies all
 steps \(n \in \mathbb{N}\) simultaneously?
 
-When the action set \(A\) is infinite, the answer is \emph{no}: consider
+When the action set \(A\) is allowed to be countably infinite (for which
+Theorem 1's finite-horizon trace-support identity still holds over
+finitely supported policies), the answer is \emph{no}: consider
 \(X = \{0, 1\}\) (\(1\) unsafe), \(A = \mathbb{N}\), trivial
 observation, and time-dependent dynamics where choosing action
 \(a \in \mathbb{N}\) at \(n = 0\) keeps the system in state \(0\) up to
@@ -535,11 +540,14 @@ observes that for any \((n, S)\) satisfying \(V_\infty(n, S)\), the sets
 \(A_k := \{a \in A : (\forall x \in S,\, C_n(x,a)) \land (\forall y,\, \operatorname{Succ}_n(S,a,y) \neq \varnothing \implies V(n+1, k, \operatorname{Succ}_n(S,a,y)))\}\)
 are nonempty by \(V(n, k+1, S)\) and nested downward
 (\(A_{k+1} \subseteq A_k\)) because
-\(V(n+1, k+1, S') \implies V(n+1, k, S')\). Since \(A\) is finite,
-\(K := \max_{a \notin \bigcap_k A_k} k(a)\) bounds all finite failure
-horizons, forcing \(\bigcap_{k \in \mathbb{N}} A_k \neq \varnothing\).
-Selecting one action in this intersection at each \(V_\infty\)-viable
-history preserves \(V_\infty\) along every positive-mass trajectory of
+\(V(n+1, k+1, S') \implies V(n+1, k, S')\). If
+\(\bigcap_{k \in \mathbb{N}} A_k\) were empty, each \(a \in A\) would
+fail at some horizon \(k(a)\), and since \(A\) is finite and nonempty,
+\(K := \max_{a \in A} k(a)\) would satisfy \(A_K = \varnothing\),
+contradicting \(A_K \neq \varnothing\); hence
+\(\bigcap_{k \in \mathbb{N}} A_k \neq \varnothing\). Selecting one
+action in this intersection at each \(V_\infty\)-viable history
+preserves \(V_\infty\) along every positive-mass trajectory of
 \(\pi_\infty\) itself.
 
 \section{Greatest support fixed points, infinite-trajectory survival,
@@ -603,7 +611,8 @@ on \(X \times M\). By the Ionescu--Tulcea extension theorem
 \citep{kallenberg2021}, \((X_n, M_n)\) induces a unique Kolmogorov
 probability measure \(\mathbb{P}_{\mathcal{C}_{\mathrm{mem}}}\) on the
 infinite trajectory space \((X \times M)^{\mathbb{N}}\). Restricting the
-augmented transition matrix to the safe cylinder
+augmented transition matrix (written in column-stochastic operator form
+acting on state--memory distributions) to the safe cylinder
 \(\widetilde{K} := K \times M\) defines the substochastic \emph{killed
 operator} \(Q_K\) \citep{seneta1981, hoelzl2017}. Notice also that when
 conditioning finite-window path laws on positive survival mass
@@ -639,26 +648,28 @@ three computable functions:
 \item
   \texttt{initialMemory(y)} \(:= \{x \in I_0 : q(x) = y\}\);
 \item
-  \texttt{update(S,\ a,\ y)}
+  \texttt{update(S,\ a,\ y)} (\texttt{nextMemory\ q\ R})
   \(:= \{z \in X : q(z) = y \land \exists x \in S,\ R(x,a,z)\}\);
 \item
   \texttt{action(S)}: scanning \(a \in L_A\) in list order, return the
   first action passing \texttt{stepCheck(S,\ a)}---which verifies
   \(S \neq \varnothing\), \(\forall x \in S,\, C(x,a)\), and that for
   every \(z \in X\) with
-  \(S' := \mathrm{update}(S, a, q(z)) \neq \varnothing\), bounded
-  recursive viability
-  \texttt{ViabilityCheck}\((B_X, S') = \mathrm{true}\) at depth
-  \(B_X = 2^{|X|} - 1\); if \(S = \varnothing\) or no action passes,
-  return \(a_{\mathrm{fb}}\).
+  \(S' := \mathrm{update}(S, a, q(z)) \neq \varnothing\), the bounded
+  recursive predicate \texttt{finiteRelationViabilityCheck} holds on
+  \((B_X, S')\) at depth \(B_X = 2^{|X|} - 1\); if \(S = \varnothing\)
+  or no action passes, return \(a_{\mathrm{fb}}\).
 \end{enumerate}
 
 The top-level computable procedure
 \texttt{synthesize}\((q, R, C, I_0, L_A, a_{\mathrm{fb}}) : \mathrm{Option}(\mathrm{Program}\ X\ Y\ A)\)
 checks three decidable guards---(i) \(I_0 \neq \varnothing\), (ii) every
-\(a \in A\) appears in \(L_A\), and (iii) for every \(x \in I_0\),
-\texttt{ViabilityCheck}\((B_X, \mathrm{initialMemory}(q(x))) = \mathrm{true}\)---returning
-\texttt{some\ prog} if all three hold and \texttt{none} otherwise.
+\(a \in A\) appears in \(L_A\), and (iii) the initial check
+\texttt{finiteMemoryCheck} holds, verifying
+\texttt{finiteRelationViabilityCheck} on
+\((B_X, \mathrm{initialMemory}(q(x)))\) for every
+\(x \in I_0\)---returning \texttt{some\ prog} if all three hold and
+\texttt{none} otherwise.
 
 \Needspace{28\baselineskip}
 
@@ -725,12 +736,13 @@ arbitrarily with \(n\) so long as their support equals \(R\)).}
   \emph{\(\mathcal{W}_* = \mathcal{W}_{2^{|X|}-1}\) is the greatest
   post-fixed point of \(\Phi\) on \(\mathcal{A}_q\), and
   \(S \in \mathcal{W}_*\) iff \(V_\infty(0, S)\) holds. Moreover, there
-  exist three-state partially observed plants in which every memoryless
-  observation-feedback policy \(\pi_0: Y \to \Delta(A)\) incurs positive
-  uncertified mass \(\nu_0^{\pi_0}(C^c) + \nu_1^{\pi_0}(C^c) > 0\) (and
-  hits an absorbing failure state within two steps), whereas a two-state
-  finite-memory controller achieves \(\nu_n(C^c) = 0\) for all
-  \(n \in \mathbb{N}\).}
+  exist three-state partially observed plants in which every stationary
+  memoryless observation-feedback policy \(\pi_0: Y \to \Delta(A)\)
+  incurs positive uncertified mass
+  \(\nu_0^{\pi_0}(C^c) + \nu_1^{\pi_0}(C^c) \ge 1 > 0\) (and hits an
+  absorbing failure state within two steps with probability at least
+  \(3/4\)), whereas a two-state finite-memory controller achieves
+  \(\nu_n(C^c) = 0\) for all \(n \in \mathbb{N}\).}
 \item
   \textbf{Soundness and completeness of \texttt{synthesize}.}
   \emph{\texttt{synthesize}\((q, R, C, I_0, L_A, a_{\mathrm{fb}})\)
@@ -758,13 +770,16 @@ Theorem 3 (proved in Appendix A.2) cleanly separates \emph{algorithmic
 execution} from \emph{probabilistic verification}. Consider the concrete
 three-state hidden-phase cemetery plant
 \(X = \{\mathrm{false}, \mathrm{true}, \bot\}\) (\texttt{Option\ Bool},
-with safe set \(K = \{\mathrm{false}, \mathrm{true}\}\) and absorbing
-cemetery \(\bot = \mathrm{none}\)), binary actions
+writing \texttt{false} and \texttt{true} for the safe states
+\texttt{some\ false}, \texttt{some\ true} in
+\(K = \{\mathrm{false}, \mathrm{true}\}\) and \(\bot = \mathrm{none}\)
+for the absorbing cemetery), binary actions
 \(A = \{\mathrm{false}, \mathrm{true}\}\), completely uninformative
 constant observation \(q(x) \equiv ()\), transition
 \(f(\bot, a) = \bot\) and \(f(b, a) = \neg b\) if \(a = b\) else
 \(\bot\) for \(b \in \{\mathrm{false}, \mathrm{true}\}\), and
-certification \(C(x,a) \iff x = a\). Executed inside the Lean kernel via
+certification \(C(x,a) \iff x = \mathrm{some}(a)\) (so \(C(\bot, a)\) is
+false for all \(a\)). Executed inside the Lean kernel via
 \texttt{decide}, \texttt{synthesize} on \(I_0 = \{\mathrm{false}\}\)
 with \(L_A = [\mathrm{false}, \mathrm{true}]\) returns
 \texttt{some\ prog} whose internal memory alternates
@@ -935,7 +950,10 @@ triangle inequality gives
 \(|\widehat{\delta}_q(\omega) - \delta_q(P)| \le 2u\) simultaneously for
 \emph{every} function \(q: X \to Y\). Furthermore, choosing the minimum
 element \(\mathrm{rep}_q(y) \in q^{-1}(\{y\})\) under a linear order on
-\(X\) defines a computable rational macro-reference kernel:
+\(X\) when \(q^{-1}(\{y\}) \neq \varnothing\) (and a fixed fallback
+state \(x_{\mathrm{fb}} \in X\) on empty fibers \(y \notin q(X)\), which
+never receive positive mass) defines a total computable rational
+macro-reference kernel:
 \[\widehat{K}_q(\omega)(y, a) := q_\# \widehat{P}_{\mathrm{rep}_q(y), a}(\omega).\]
 Because pushforward by \(q\) is a Markov contraction in total variation
 \citep{dobrushin1956, pinsker1964}, for every \(x \in X\) and
@@ -973,15 +991,16 @@ calibration chain yields the fully computable
   (\texttt{synthesize}\((q_j, R, C, I_0, L_A, a_{\mathrm{fb}}) = \mathrm{some\ prog}_j\))
   and macro failure indicator
   \(\mathrm{bad}_j: \mathcal{H}_T \to \mathrm{Bool}\) covering \(E\)
-  (\(E \subseteq \pi_T^{(q_j)\,-1}(\{\mathrm{bad}_j = \mathrm{true}\})\)),
+  (\(E \subseteq (\Pi_T^{(q_j)})^{-1}(\{\mathrm{bad}_j = \mathrm{true}\})\)),
   compute exact rational reference failure mass
   \(\widehat{R}_T(\mathrm{prog}_j, q_j, \omega)\) under
   \(\widehat{K}_{q_j}(\omega)\) and rational path budget
   \[\widehat{B}_T(\mathrm{prog}_j, q_j, \omega, u) := \min\Bigl\{1,\, \widehat{R}_T(\mathrm{prog}_j, q_j, \omega) + T \min\bigl\{1,\, u + \widehat{\delta}_{q_j}(\omega)\bigr\}\Bigr\} \in \mathbb{Q}.\]
   The total Boolean gate \texttt{selectedAccepts} returns \texttt{true}
-  iff \texttt{selectCandidate} \(= \mathrm{some}\ j\),
+  iff \texttt{selectCandidate} \(= \mathrm{some}\ j\) and the candidate
+  gate \texttt{accepts} holds (\(N \ge 1\), \(u \ge 0\), \(\tau \ge 0\),
   \(0 \le \beta \le 1\), and
-  \(\widehat{B}_T(\mathrm{prog}_j, q_j, \omega, u) \le \beta\).
+  \(\widehat{B}_T(\mathrm{prog}_j, q_j, \omega, u) \le \beta\)).
 \end{enumerate}
 
 \Needspace{28\baselineskip}
@@ -1122,18 +1141,21 @@ observed Markov control on Polish or standard Borel state spaces
 \citep{bertsekasShreve1978, hernandezLerma1996, kallenberg2021}, optimal
 and predictive controllers instead maintain a continuous \emph{belief
 state} \(b \in \mathcal{P}(X)\) in the Giry space of probability
-measures on \(X\) \citep{astrom1965, giry1982}. Given a Markov
-transition kernel \(P: X \times A \to \mathcal{P}(X)\) and a measurable
-binary observation map \(q: X \to \{0,1\}\) (with deterministic
-observation kernel \(O((x,a), \cdot) = \delta_{q(x)}\)), each
-belief--action pair \((b,a)\) induces a predicted state measure
+measures on \(X\), equipped with the Giry \(\sigma\)-algebra
+\(\Sigma_{\mathcal{P}(X)}\) generated by the evaluation maps
+\(b \mapsto b(E)\) for \(E \in \Sigma_X\) \citep{astrom1965, giry1982}.
+Given a Markov transition kernel \(P: X \times A \to \mathcal{P}(X)\)
+(\texttt{ProbabilityTheory.Kernel} in Mathlib) and a measurable binary
+observation map \(q: X \to \{0,1\}\) (with deterministic observation
+kernel \(O((x,a), \cdot) = \delta_{q(x)}\)), each belief--action pair
+\((b,a)\) induces a predicted state measure
 \(\widehat{b}_a := \int_X P(x,a)\, db(x)\), a predicted observation
 measure
 \(\bar{o}_{b,a} := q_\# \widehat{b}_a \in \mathcal{P}(\{0,1\})\),
 and---because \(X\) is a standard Borel space---a measurable regular
-conditional probability kernel yielding the Bayesian posterior belief
-\(\mathrm{Post}(b,a,y) \in \mathcal{P}(X)\) uniquely for
-\(\bar{o}_{b,a}\)-almost every \(y \in \{0,1\}\). Pushing
+conditional probability kernel (\texttt{posteriorKernel}) yielding the
+Bayesian posterior belief \(\mathrm{Post}(b,a,y) \in \mathcal{P}(X)\)
+uniquely for \(\bar{o}_{b,a}\)-almost every \(y \in \{0,1\}\). Pushing
 \(\bar{o}_{b,a}\) forward through \(y \mapsto \mathrm{Post}(b,a,y)\)
 defines the measurable \emph{posterior-belief transition kernel}
 \(\mathcal{K}_{\mathrm{bel}}: \mathcal{P}(X) \times A \to \mathcal{P}(\mathcal{P}(X))\).
@@ -1197,8 +1219,8 @@ Borel space, \((A, \Sigma_A)\) a measurable action space,
   \(\int_X r(q(x))\, db(x) = (1 - c_q(b))r(0) + c_q(b)r(1)\), and
   observable-class probabilities factor solely through \(c_q(b)\).
   Nevertheless, on the four-state parity-noise system \(X = \{0,1\}^2\)
-  with \(q(x_1, x_2) = x_1\), Bernoulli\((1/4)\) noise \(N\), and
-  transition
+  with binary actions \(A = \{0,1\}\), \(q(x_1, x_2) = x_1\),
+  Bernoulli\((1/4)\) noise \(N\), and transition
   \((x_1, x_2) \xrightarrow{a, N} (x_1 \oplus (a \land N),\, x_2 \oplus N)\),
   \(\mathrm{ClosedTests}(P, q)\) holds and
   \(\delta_{(0,0)}, \delta_{(0,1)}\) induce identical expectations on
@@ -1206,8 +1228,9 @@ Borel space, \((A, \Sigma_A)\) a measurable action space,
   of \(c_q(b)\) can represent the latent reward
   \(\int \mathbf{1}\{x_2 = 1\}\, db\) or the latent safety probability
   \(b(\{x_2 = 0\})\), and perturbing step transitions to
-  \((a ? x_2 : x_1,\, x_2)\) destroys \(\mathrm{ClosedTests}\) and
-  eliminates all belief quotients.}
+  \((\text{if } a = 1 \text{ then } x_2 \text{ else } x_1,\, x_2)\)
+  destroys \(\mathrm{ClosedTests}\) and eliminates all belief
+  quotients.}
 \end{enumerate}
 
 Theorem 6 (proved in Appendix A.5) highlights two delicate
@@ -1217,8 +1240,8 @@ determined only \(\bar{o}_{b,a}\)-almost everywhere; assigning arbitrary
 point values on null observation branches must never affect the
 pushforward coordinate law \((c_q)_\# \mathcal{K}_{\mathrm{bel}}(b,a)\),
 which our proof establishes via almost-everywhere posterior projection
-\((q_\# \mathrm{Post}(b,a,y) = \delta_y\) for \(\bar{o}_{b,a}\)-a.e.
-\(y\)) yielding the exact scalar identity
+(\(q_\# \mathrm{Post}(b,a,y) = \delta_y\) for
+\(\bar{o}_{b,a}\)-a.e.~\(y\)) yielding the exact scalar identity
 \((c_q)_\# \mathcal{K}_{\mathrm{bel}}(b,a) = \{0 \mapsto \bar{o}_{b,a}(\{0\}),\, 1 \mapsto \bar{o}_{b,a}(\{1\})\}\).
 Second, Theorem 6.2 demonstrates formally why exact predictive
 equivalence \citep{shaliziCrutchfield2001, littmanSuttonSingh2001} does
@@ -1365,8 +1388,9 @@ Thus, exhibiting a dual weight vector \(w\) and a concrete legal policy
 \(\rho\) satisfying the sandwich identity
 \[L(w) := w_S V_S^* + w_G V_G^* - V_w^* = \max_{m \in \{S,G\}} \bigl(V_m^* - J_m(\rho)\bigr) =: U(\rho)\]
 certifies \emph{both} the exact minimax regret \(R^* = L(w) = U(\rho)\)
-over all full-history real-randomized policies \emph{and} optimality of
-\(\rho\) \citep{vonNeumann1928}.
+over all full-history real-randomized behavioral and private-seed
+policies (\texttt{RawCausalPolicy}) \emph{and} optimality of \(\rho\)
+\citep{vonNeumann1928}.
 
 \Needspace{28\baselineskip}
 
@@ -1563,9 +1587,10 @@ Our Lean 4 architecture resolves this tension through a strict
   (\texttt{certified}, \texttt{rejected}, \texttt{ambiguous}),
   representative selection (\texttt{Finset.min\textquotesingle{}} under
   an explicit \texttt{LinearOrder\ X}), reference history sums, and
-  \texttt{selectedAccepts} are written entirely over \texttt{ℕ},
-  \texttt{ℚ}, \texttt{Bool}, and \texttt{Option}. None of these
-  definitions imports \texttt{PMF} or \texttt{Measure}.
+  \texttt{selectedAccepts} are written entirely over computable Lean
+  types (\texttt{Nat}, \texttt{Rat}, \texttt{Bool}, and
+  \texttt{Option}). None of these definitions imports \texttt{PMF} or
+  \texttt{Measure}.
 \item
   \textbf{Noncomputable measure-theoretic interpretation layer.} Only in
   proof sections do we lift a \texttt{Program} via \texttt{PMF.pure} to
@@ -1587,11 +1612,10 @@ Our Lean 4 architecture resolves this tension through a strict
 GCD-free integer-scaled dynamic
 programming}{Eliminating native\_decide via GCD-free integer-scaled dynamic programming}}\label{eliminating-native_decide-via-gcd-free-integer-scaled-dynamic-programming}
 
-The most instructive formal-verification obstacle encountered in this
-work arose in proving \texttt{exact\_cached\_data} and
-\texttt{exact\_two\_data} for Theorem 7
-(\texttt{RegisterMechanismDecisionConsumer}). Evaluating the exact
-Bayes-optimal value \(V_3^*(b_0, 2)\) over the joint
+The most instructive formal-verification obstacle in this work arose in
+certifying \texttt{exact\_cached\_data} and \texttt{exact\_two\_data}
+for Theorem 7 (\texttt{RegisterMechanismDecisionConsumer}). Evaluating
+the exact Bayes-optimal value \(V_3^*(b_0, 2)\) over the joint
 \texttt{(FaultMechanism\ ×\ Store)} belief space explores all \(7\)
 actions and \(4\) two-bit receipts across depth \(3\) (\(28\)
 action--observation branches per node). In the general rational POMDP
@@ -1628,7 +1652,7 @@ with the rational Bayes solver (\texttt{csolveInt\_spec}):
   \textbf{Unnormalized integer beliefs (\texttt{UBelief}).} Represent an
   unnormalized belief as an association list
   \(U = [(w_1, u_1), \dots, (w_k, u_k)]\) with positive integer weights
-  (\texttt{List\ (World\ ×\ ℕ)}), total weight
+  (\texttt{List\ (World\ ×\ Nat)}), total weight
   \(\mathrm{usum}(U) := \sum_i u_i \in \mathbb{N}\), and linear
   functional \(\mathrm{uexpect}(U, f) := \sum_i u_i f(w_i)\). Define the
   representation invariant \texttt{Represents}\((U, b)\) by
@@ -1645,12 +1669,15 @@ with the rational Bayes solver (\texttt{csolveInt\_spec}):
   \(4 \cdot \mathrm{gain}(a,o) = \mathrm{gain}_4(o) := 4\,\mathbf{1}\{\mathrm{birth}\} - \mathbf{1}\{\mathrm{paid}\} \in \mathbb{Z}\).
   Defining the integer dynamic program
   \texttt{csolveInt}\((n, (U, \mathrm{bal})) \in \mathbb{Z} \times \mathrm{CTree}_n\)
-  recursively at remaining horizon \(n+1\) via
+  recursively at remaining horizon \(n+1\) by summing over
+  \(o \in \{0,1\}^2\) the branch score
   \[\mathrm{stepObs}(o) := \begin{cases}
   0, & \mathrm{usum}(U'_{a,o}) = 0, \\
   2^n \cdot \mathrm{usum}(U'_{a,o}) \cdot \mathrm{gain}_4(o) + \mathrm{csolveInt}_n(U'_{a,o}, \mathrm{bal}'_o)_1, & \mathrm{usum}(U'_{a,o}) > 0,
-  \end{cases}\] satisfies---by induction on \(n\) with \emph{zero
-  rational division}---the exact scaling invariant
+  \end{cases}\] and maximizing
+  \(\sum_{o \in \{0,1\}^2} \mathrm{stepObs}(o)\) across legal actions
+  \(a \in \mathrm{menuNat}(\mathrm{bal})\), satisfies---by induction on
+  \(n\) with \emph{zero rational division}---the exact scaling invariant
   \[\bigl(\mathrm{csolveInt}_n(U, \mathrm{bal})_1 : \mathbb{Q}\bigr) = 4 \cdot 2^n \cdot \mathrm{usum}(U) \cdot V_n^*(b, \mathrm{bal}),\]
   together with exact equality of returned policy trees
   (\texttt{toTable\ =\ solve}) because positive scaling by
@@ -1670,7 +1697,7 @@ with the rational Bayes solver (\texttt{csolveInt\_spec}):
   \[\begin{aligned}
   \mathrm{csourceInt}(\pi_S, w_S) &= 41, \qquad \mathrm{csourceInt}(\pi_S, w_G) = 37, \\
   \mathrm{csourceInt}(\pi_G, w_S) &= 40, \qquad \mathrm{csourceInt}(\pi_G, w_G) = 40
-  \end{aligned}\] in pure ring arithmetic (\texttt{ℕ}/\texttt{ℤ}),
+  \end{aligned}\] in pure ring arithmetic (\texttt{Nat}/\texttt{Int}),
   immediately yielding \(41/32\), \(40/32 = 5/4\), \(160/128 = 5/4\),
   and \(37/32\) (and similarly \(13 / (4 \cdot 2^2) = 13/16\) at \(H=2\)
   via \texttt{kernel\_int\_h2}).
@@ -1701,7 +1728,7 @@ Logical trust base & Pure Lean 4 kernel:
 \texttt{native\_compute} / \texttt{native\_decide} trust compiler
 \citep{boespflug2011}; external LP/SMT in Storm/PRISM
 \citep{kwiatkowska2011, dehnert2017} \\
-Observation \& state model & Partial observation (\texttt{q:\ X\ →\ Y},
+Observation \& state model & Partial observation (\(q: X \to Y\),
 arbitrary \(Y\) for support; Borel \(X\) for \texttt{ClosedTests}) &
 Full-state tabular MDPs in Isabelle/Coq
 \citep{hoelzl2017, vajjha2021, schaeffelerAbdulaziz2023} \\
@@ -1860,39 +1887,39 @@ Four concrete open problems invite future formalization work:
   budgets.
 \end{enumerate}
 
-\section*{Appendix: Self-contained proofs of Theorems
-1--7}\label{appendix-self-contained-proofs-of-theorems-17}
-\addcontentsline{toc}{section}{Appendix: Self-contained proofs of
-Theorems 1--7}
+\appendix
+
+\section{Self-contained proofs of Theorems
+1--7}\label{self-contained-proofs-of-theorems-17}
 
 To make every mathematical claim independently verifiable without
 consulting formal proof scripts, this Appendix supplies concise,
 complete proofs of Theorems 1--7.
 
-\subsection{A.1 Posterior-support bridge, viability equivalence, and
+\subsection{Posterior-support bridge, viability equivalence, and
 quantifier exchange (Theorems 1 and
-2)}\label{a.1-posterior-support-bridge-viability-equivalence-and-quantifier-exchange-theorems-1-and-2}
+2)}\label{posterior-support-bridge-viability-equivalence-and-quantifier-exchange-theorems-1-and-2}
 
-\emph{Proof of Theorem 1.} (1) \emph{Support bridge.} For \(n = 0\),
-\(\bar{p}_0^\pi(y) = \sum_{x \in X : q(x)=y} p_0(x)\). Since \(X\) is
-finite and \(p_0(x) \ge 0\), this finite sum is strictly positive iff
-\(\exists x \in X\) with \(p_0(x) > 0\) and \(q(x) = y\), i.e.,
-\(S_0(y) \neq \varnothing\); for such \(y\),
+\emph{Proof of Theorem 1.} \textbf{(1)} \emph{Support bridge.} For
+\(n = 0\), \(\bar{p}_0^\pi(y) = \sum_{x \in X : q(x)=y} p_0(x)\). Since
+\(X\) is finite and \(p_0(x) \ge 0\), this finite sum is strictly
+positive iff \(\exists x \in X\) with \(p_0(x) > 0\) and \(q(x) = y\),
+i.e., \(S_0(y) \neq \varnothing\); for such \(y\),
 \(\rho_0^{\pi, y}(x) = p_0(x)\mathbf{1}\{q(x)=y\}/\bar{p}_0^\pi(y) > 0 \iff x \in S_0(y)\).
 Now assume inductively at step \(n\) that for every
 \(g \in \mathcal{H}_n\),
 \(\bar{p}_n^\pi(g) > 0 \iff \exists h \in \mathcal{M}_n\) with
-\(\pi_n(h) = g\) and \(\mu_n^\pi(h) > 0\), and that on
+\(\Pi_n(h) = g\) and \(\mu_n^\pi(h) > 0\), and that on
 \(\bar{p}_n^\pi(g) > 0\),
-\(\{ \mathrm{last}_n(h) : \pi_n(h)=g,\ \mu_n^\pi(h)>0 \} = S_n(g) = \operatorname{supp}\rho_n^{\pi,g}\).
+\(\{ \mathrm{last}_n(h) : \Pi_n(h)=g,\ \mu_n^\pi(h)>0 \} = S_n(g) = \operatorname{supp}\rho_n^{\pi,g}\).
 For \(g' = (g, (a, y)) \in \mathcal{H}_{n+1}\), by definition of the
 causal transition kernel,
-\[\bar{p}_{n+1}^\pi(g, (a, y)) = \sum_{\substack{h \in \mathcal{M}_n \\ \pi_n(h) = g}} \mu_n^\pi(h)\, \pi_n(g)(a) \sum_{\substack{x' \in X \\ q(x') = y}} P_n(\mathrm{last}_n(h), a)(x').\]
+\[\bar{p}_{n+1}^\pi(g, (a, y)) = \sum_{\substack{h \in \mathcal{M}_n \\ \Pi_n(h) = g}} \mu_n^\pi(h)\, \pi_n(g)(a) \sum_{\substack{x' \in X \\ q(x') = y}} P_n(\mathrm{last}_n(h), a)(x').\]
 Notice that \(\pi_n(g)(a)\) depends on \(h\) \emph{only} through
-\(g = \pi_n(h)\). Because all factors are non-negative and sums are
+\(g = \Pi_n(h)\). Because all factors are non-negative and sums are
 finite, \(\bar{p}_{n+1}^\pi(g, (a, y)) > 0\) iff \(\pi_n(g)(a) > 0\) and
 there exist \(h \in \mathcal{M}_n\) with
-\(\pi_n(h) = g, \mu_n^\pi(h) > 0\) and \(x' \in X\) with \(q(x') = y\)
+\(\Pi_n(h) = g, \mu_n^\pi(h) > 0\) and \(x' \in X\) with \(q(x') = y\)
 and \(P_n(\mathrm{last}_n(h), a)(x') > 0\). By the induction hypothesis,
 the existence of such \(h\) is equivalent to \(\bar{p}_n^\pi(g) > 0\)
 and \(\mathrm{last}_n(h) \in S_n(g)\), which together with \(q(x') = y\)
@@ -1901,57 +1928,51 @@ and \(P_n(\mathrm{last}_n(h),a)(x') > 0\) is equivalent to
 Normalizing by \(\bar{p}_{n+1}^\pi(g') > 0\) gives
 \(\operatorname{supp}\rho_{n+1}^{\pi, g'} = S_{n+1}(g')\).
 
-\begin{enumerate}
-\def\labelenumi{(\arabic{enumi})}
-\setcounter{enumi}{1}
-\tightlist
-\item
-  \emph{Viability equivalence.} First observe that by expanding
-  \[\nu_n^\pi(x,a) = \sum_{g \in \mathcal{H}_n : \bar{p}_n^\pi(g)>0} \bar{p}_n^\pi(g)\, \rho_n^{\pi,g}(x)\, \pi_n(g)(a)\]
-  (via pushforward of the finite support
-  \(\operatorname{supp}\mu_n^\pi\)), Part (1) implies
-  \[\nu_n^\pi(C_n^c) = 0 \iff \forall g \in \operatorname{supp}\bar{p}_n^\pi,\ \forall a \in \operatorname{supp}\pi_n(g),\ \forall x \in S_n(g),\ C_n(x,a).\]
-  (\emph{Sufficiency}) Suppose
-  \(\forall y \in Y,\ S_0(y) \neq \varnothing \implies V(0, T, S_0(y))\).
-  Define the deterministic policy \(\pi^V\) at step \(n\) and history
-  \(g \in \mathcal{H}_n\) as follows: if \(n < T\) and
-  \(V(n, T-n, S_n(g))\) holds, select a witness action \(a^* \in A\)
-  from the existential definition of \(V(n, T-n, S_n(g))\) and set
-  \(\pi_n^V(g) := \delta_{a^*}\); otherwise set
-  \(\pi_n^V(g) := \pi_{\mathrm{base}, n}(g)\). By induction on
-  \(n \in \{0, \dots, T\}\), every
-  \(g \in \operatorname{supp}\bar{p}_n^{\pi^V}\) satisfies
-  \(V(n, T-n, S_n(g))\): at \(n=0\),
-  \(\bar{p}_0^{\pi^V}(y) > 0 \implies S_0(y) \neq \varnothing \implies V(0, T, S_0(y))\);
-  if true at \(n < T\), then for
-  \((g, (a, y)) \in \operatorname{supp}\bar{p}_{n+1}^{\pi^V}\), Part (1)
-  gives \(g \in \operatorname{supp}\bar{p}_n^{\pi^V}\), \(a = a^*\) (the
-  unique element of \(\operatorname{supp}\pi_n^V(g)\)), and
-  \(\operatorname{Succ}_n(S_n(g), a^*, y) \neq \varnothing\), whence the
-  universal successor clause of \(V(n, T-n, S_n(g))\) yields
-  \(V(n+1, T-n-1, S_{n+1}(g, (a^*, y)))\). Moreover, at every \(n < T\)
-  and \(g \in \operatorname{supp}\bar{p}_n^{\pi^V}\), \(a^*\) satisfies
-  \(\forall x \in S_n(g),\, C_n(x, a^*)\), proving
-  \(\nu_n^{\pi^V}(C_n^c) = 0\). (\emph{Necessity}) Suppose \(\pi\)
-  satisfies \(\nu_n^\pi(C_n^c) = 0\) for all \(n < T\). We prove by
-  backward induction on \(k \in \{0, \dots, T\}\) that for
-  \(n = T - k\), every \(g \in \operatorname{supp}\bar{p}_n^\pi\)
-  satisfies \(V(n, k, S_n(g))\). For \(k = 0\),
-  \(V(T, 0, S) = \mathrm{True}\). Assuming the claim for \(k < T\) (so
-  \(n = T - (k+1) < T\)) and fixing
-  \(g \in \operatorname{supp}\bar{p}_n^\pi\), choose any
-  \(a \in \operatorname{supp}\pi_n(g)\) (nonempty as
-  \(\pi_n(g) \in \Delta(A)\)). Since \(\nu_n^\pi(C_n^c) = 0\),
-  \(\forall x \in S_n(g),\, C_n(x,a)\). For any \(y \in Y\) with
-  \(\operatorname{Succ}_n(S_n(g), a, y) \neq \varnothing\), Part (1)
-  implies \((g, (a, y)) \in \operatorname{supp}\bar{p}_{n+1}^\pi\), so
-  the induction hypothesis gives
-  \(V(n+1, k, \operatorname{Succ}_n(S_n(g), a, y))\). Hence
-  \(V(n, k+1, S_n(g))\) holds. Evaluating at \(n = 0\) (\(k = T\)) on
-  \(S_0(y) \neq \varnothing\)
-  (\(\iff y \in \operatorname{supp}\bar{p}_0^\pi\)) completes the proof.
-  \(\square\)
-\end{enumerate}
+\textbf{(2)} \emph{Viability equivalence.} First observe that by
+expanding
+\[\nu_n^\pi(x,a) = \sum_{g \in \mathcal{H}_n : \bar{p}_n^\pi(g)>0} \bar{p}_n^\pi(g)\, \rho_n^{\pi,g}(x)\, \pi_n(g)(a)\]
+(via pushforward of the finite support
+\(\operatorname{supp}\mu_n^\pi\)), Part (1) implies
+\[\nu_n^\pi(C_n^c) = 0 \iff \forall g \in \operatorname{supp}\bar{p}_n^\pi,\ \forall a \in \operatorname{supp}\pi_n(g),\ \forall x \in S_n(g),\ C_n(x,a).\]
+(\emph{Sufficiency}) Suppose
+\(\forall y \in Y,\ S_0(y) \neq \varnothing \implies V(0, T, S_0(y))\).
+Define the deterministic policy \(\pi^V\) at step \(n\) and history
+\(g \in \mathcal{H}_n\) as follows: if \(n < T\) and
+\(V(n, T-n, S_n(g))\) holds, select a witness action \(a^* \in A\) from
+the existential definition of \(V(n, T-n, S_n(g))\) and set
+\(\pi_n^V(g) := \delta_{a^*}\); otherwise set
+\(\pi_n^V(g) := \pi_{\mathrm{base}, n}(g)\). By induction on
+\(n \in \{0, \dots, T\}\), every
+\(g \in \operatorname{supp}\bar{p}_n^{\pi^V}\) satisfies
+\(V(n, T-n, S_n(g))\): at \(n=0\),
+\(\bar{p}_0^{\pi^V}(y) > 0 \implies S_0(y) \neq \varnothing \implies V(0, T, S_0(y))\);
+if true at \(n < T\), then for
+\((g, (a, y)) \in \operatorname{supp}\bar{p}_{n+1}^{\pi^V}\), Part (1)
+gives \(g \in \operatorname{supp}\bar{p}_n^{\pi^V}\), \(a = a^*\) (the
+unique element of \(\operatorname{supp}\pi_n^V(g)\)), and
+\(\operatorname{Succ}_n(S_n(g), a^*, y) \neq \varnothing\), whence the
+universal successor clause of \(V(n, T-n, S_n(g))\) yields
+\(V(n+1, T-n-1, S_{n+1}(g, (a^*, y)))\). Moreover, at every \(n < T\)
+and \(g \in \operatorname{supp}\bar{p}_n^{\pi^V}\), \(a^*\) satisfies
+\(\forall x \in S_n(g),\, C_n(x, a^*)\), proving
+\(\nu_n^{\pi^V}(C_n^c) = 0\). (\emph{Necessity}) Suppose \(\pi\)
+satisfies \(\nu_n^\pi(C_n^c) = 0\) for all \(n < T\). We prove by
+backward induction on \(k \in \{0, \dots, T\}\) that for \(n = T - k\),
+every \(g \in \operatorname{supp}\bar{p}_n^\pi\) satisfies
+\(V(n, k, S_n(g))\). For \(k = 0\), \(V(T, 0, S) = \mathrm{True}\).
+Assuming the claim for \(k < T\) (so \(n = T - (k+1) < T\)) and fixing
+\(g \in \operatorname{supp}\bar{p}_n^\pi\), choose any
+\(a \in \operatorname{supp}\pi_n(g)\) (nonempty as
+\(\pi_n(g) \in \Delta(A)\)). Since \(\nu_n^\pi(C_n^c) = 0\),
+\(\forall x \in S_n(g),\, C_n(x,a)\). For any \(y \in Y\) with
+\(\operatorname{Succ}_n(S_n(g), a, y) \neq \varnothing\), Part (1)
+implies \((g, (a, y)) \in \operatorname{supp}\bar{p}_{n+1}^\pi\), so the
+induction hypothesis gives
+\(V(n+1, k, \operatorname{Succ}_n(S_n(g), a, y))\). Hence
+\(V(n, k+1, S_n(g))\) holds. Evaluating at \(n = 0\) (\(k = T\)) on
+\(S_0(y) \neq \varnothing\)
+(\(\iff y \in \operatorname{supp}\bar{p}_0^\pi\)) completes the proof.
+\(\square\)
 
 \emph{Proof of Theorem 2.} \((3) \implies (2)\) is immediate by setting
 \(\pi_T := \pi_\infty\), and \((2) \iff (1)\) applies Theorem 1.2 at
@@ -1967,7 +1988,7 @@ monotonicity of \(V\) in \(k\) gives \(D_{k+1} \subseteq D_k\), hence
 \(D_j \subseteq D_i\) whenever \(i \le j\). Suppose toward a
 contradiction that \(\bigcap_{k \in \mathbb{N}} D_k = \varnothing\).
 Then for every \(a \in A\) there exists \(k(a) \in \mathbb{N}\) with
-\(a \notin D_{k(a)}\). Because \(A\) is finite,
+\(a \notin D_{k(a)}\). Because \(A\) is finite and nonempty,
 \(K := \max_{a \in A} k(a) \in \mathbb{N}\) is well-defined, and since
 \(D_K \neq \varnothing\) we can pick \(a^\star \in D_K\). Since
 \(k(a^\star) \le K\), downward nesting gives
@@ -1985,13 +2006,13 @@ otherwise), forward induction via Theorem 1.1 shows
 \(n \in \mathbb{N}\), whence \(\nu_n^{\pi_\infty}(C_n^c) = 0\) for all
 \(n \in \mathbb{N}\). \(\square\)
 
-\subsection{A.2 Greatest fixed point, infinite-trajectory safety, and
+\subsection{Greatest fixed point, infinite-trajectory safety, and
 executable synthesis (Theorem
-3)}\label{a.2-greatest-fixed-point-infinite-trajectory-safety-and-executable-synthesis-theorem-3}
+3)}\label{greatest-fixed-point-infinite-trajectory-safety-and-executable-synthesis-theorem-3}
 
-\emph{Proof of Theorem 3.} (1) By induction on \(k \in \mathbb{N}\), for
-every \(S \in \mathcal{A}_q\), \(S \in \mathcal{W}_k \iff V_R(0, k, S)\)
-(using
+\emph{Proof of Theorem 3.} \textbf{(1)} By induction on
+\(k \in \mathbb{N}\), for every \(S \in \mathcal{A}_q\),
+\(S \in \mathcal{W}_k \iff V_R(0, k, S)\) (using
 \(\operatorname{Succ}_R(S,a,y) \neq \varnothing \implies \operatorname{Succ}_R(S,a,y) \in \mathcal{A}_q\)).
 Since \(\mathcal{W}_0 = \mathcal{A}_q\) and \(\Phi\) is
 \(\subseteq\)-monotone, \(\mathcal{W}_{k+1} \subseteq \mathcal{W}_k\)
@@ -2013,71 +2034,71 @@ observation \(q(x) \equiv ()\) and initial law
 (\(C(\mathrm{false}, a) \iff a = \mathrm{false}\)), which transitions
 deterministically to \(X_1 = \mathrm{true}\) and requires
 \(a_1 = \mathrm{true}\)
-(\(C(\mathrm{true}, a) \iff a = \mathrm{true}\)). Any stationary
-memoryless policy
+(\(C(\mathrm{true}, a) \iff a = \mathrm{true}\)), whereas \(C(\bot, a)\)
+is false for all \(a\). Any stationary memoryless policy
 \(\pi_0: \{()\} \to \Delta(\{\mathrm{false}, \mathrm{true}\})\) assigns
 a fixed weight \(\theta = \pi_0(())(\mathrm{true}) \in [0,1]\) at both
-\(n=0\) and \(n=1\): if \(\theta > 0\), then
-\(\nu_0^{\pi_0}(C^c) = \theta > 0\); if \(\theta = 0\), then
-\(X_1 = \mathrm{true}\) with probability \(1\) and
-\(\nu_1^{\pi_0}(C^c) = 1 - \theta = 1 > 0\), yielding
-\(\nu_0^{\pi_0}(C^c) + \nu_1^{\pi_0}(C^c) = \theta + (1-\theta)^2 \ge 3/4 > 0\).
+\(n=0\) and \(n=1\): at \(n=0\), \(\nu_0^{\pi_0}(C^c) = \theta\),
+sending mass \(\theta\) into \(X_1 = \bot\) and mass \(1-\theta\) into
+\(X_1 = \mathrm{true}\); at \(n=1\), the absorbing cemetery branch
+\(X_1 = \bot\) incurs uncertified mass \(\theta \cdot 1 = \theta\) while
+the \(X_1 = \mathrm{true}\) branch incurs uncertified mass
+\((1-\theta)^2\), so
+\(\nu_1^{\pi_0}(C^c) = \theta + (1-\theta)^2 \ge 3/4\). Summing the two
+steps gives
+\(\nu_0^{\pi_0}(C^c) + \nu_1^{\pi_0}(C^c) = \theta + [\theta + (1-\theta)^2] = 1 + \theta^2 \ge 1 > 0\),
+and two-step cemetery absorption satisfies
+\(\mathbb{P}^{\pi_0}(X_2 = \bot) = \theta + (1-\theta)^2 \ge 3/4\).
 Meanwhile, the two-state support controller alternating
 \(\{\mathrm{false}\} \leftrightarrow \{\mathrm{true}\}\) achieves
 \(\nu_n(C^c) = 0\) for all \(n \in \mathbb{N}\).
 
-\begin{enumerate}
-\def\labelenumi{(\arabic{enumi})}
-\setcounter{enumi}{1}
-\item
-  Because \(I_0 = \operatorname{supp} p_0\) and \(p_0 \in \Delta(X)\)
-  has total mass \(1\), \(I_0 \neq \varnothing\) holds automatically,
-  and \(L_A\) covers \(A\) by hypothesis. By exactness of \((I_0, R)\),
-  \texttt{initialMemory}\((y) = S_0(y)\) and
-  \texttt{nextMemory}\((S, a, y) = \operatorname{Succ}_n(S, a, y)\) for
-  all \(n\), so induction on \(n\) gives
-  \(\mathrm{memory}_n(\mathrm{prog}, g) = S_n(g)\) for all
-  \(g \in \mathcal{H}_n\). Moreover, \texttt{finiteMemoryCheck}
-  evaluates \texttt{ViabilityCheck}\((B_X, S_0(q(x)))\) across
-  \(x \in I_0\), which by Part (1) holds iff
-  \(\forall y,\, S_0(y) \neq \varnothing \implies S_0(y) \in \mathcal{W}_* \iff V_\infty(0, S_0(y))\),
-  which by Theorem 2 holds iff
-  \(\exists \pi,\, \forall n,\, \nu_n^\pi(C_n^c) = 0\). When
-  \texttt{synthesize} \(= \mathrm{some\ prog}\), for every
-  \(S \in \mathcal{W}_*\) there exists \(a \in A \subseteq L_A\) passing
-  \texttt{stepCheck}\((S, a)\); hence \texttt{List.find?} returns
-  \texttt{some\ b} with \texttt{stepCheck}\((S, b) = \mathrm{true}\)
-  (never falling back to \(a_{\mathrm{fb}}\)), certifying all
-  \(x \in S\) and keeping all nonempty successors in \(\mathcal{W}_*\).
-  Induction over \(g \in \operatorname{supp}\bar{p}_n^{\mathrm{prog}}\)
-  via Theorem 1.1 yields \(S_n(g) \in \mathcal{W}_*\) and
-  \(\nu_n^{\mathrm{prog}}(C_n^c) = 0\) for all \(n \in \mathbb{N}\).
-\item
-  On the augmented chain \(Z_n = (X_n, M_n) \in X \times 2^X\) under
-  time-homogeneous \(P\), one-step transition probabilities depend
-  solely on \((X_n, M_n)\). For each \(T \in \mathbb{N}\), expanding the
-  cylinder event
-  \(E_T := \{\omega \in (X \times 2^X)^{\mathbb{N}} : \forall n \le T,\, X_n(\omega) \in K\}\)
-  by induction on \(T\) identifies
-  \(\mathbb{P}_{\mathrm{prog}}(E_T) = \mathbf{1}_{\widetilde{K}}^\top Q_K^T \widetilde{\mu}_0\),
-  where \(\widetilde{\mu}_0(x, S) = p_0(x)\mathbf{1}\{S = S_0(q(x))\}\).
-  Since \(E_{T+1} \subseteq E_T\) and
-  \(\mathbb{P}_{\mathrm{prog}}(E_0) \le 1 < \infty\), continuity of
-  probability measures from above \citep{kallenberg2021} gives
-  \(\mathbb{P}_{\mathrm{prog}}(\bigcap_{T \ge 0} E_T) = \lim_{T \to \infty} \mathbf{1}_{\widetilde{K}}^\top Q_K^T \widetilde{\mu}_0\).
-  Finally, when \(I_0 \subseteq K\), \(K\)-closure under \((C, R)\)
-  together with \(\nu_n^{\mathrm{prog}}(C^c) = 0\) implies by induction
-  on \(T\) that every positive-mass microscopic trajectory
-  \(h_T \in \operatorname{supp}\mu_T^{\mathrm{prog}}\) satisfies
-  \(x_0, \dots, x_T \in K\), whence
-  \(\mathbb{P}_{\mathrm{prog}}(E_T) = 1\) for all \(T \in \mathbb{N}\)
-  and
-  \(\mathbb{P}_{\mathrm{prog}}(\forall n \in \mathbb{N},\, X_n \in K) = 1\).
-  \(\square\)
-\end{enumerate}
+\textbf{(2)} Because \(I_0 = \operatorname{supp} p_0\) and
+\(p_0 \in \Delta(X)\) has total mass \(1\), \(I_0 \neq \varnothing\)
+holds automatically, and \(L_A\) covers \(A\) by hypothesis. By
+exactness of \((I_0, R)\), \texttt{initialMemory}\((y) = S_0(y)\) and
+\texttt{nextMemory}\((S, a, y) = \operatorname{Succ}_n(S, a, y)\) for
+all \(n\), so induction on \(n\) gives
+\(\mathrm{memory}_n(\mathrm{prog}, g) = S_n(g)\) for all
+\(g \in \mathcal{H}_n\). Moreover, \texttt{finiteMemoryCheck} evaluates
+\texttt{finiteRelationViabilityCheck}\((B_X, S_0(q(x)))\) across
+\(x \in I_0\), which by Part (1) holds iff
+\(\forall y,\, S_0(y) \neq \varnothing \implies S_0(y) \in \mathcal{W}_* \iff V_\infty(0, S_0(y))\),
+which by Theorem 2 holds iff
+\(\exists \pi,\, \forall n,\, \nu_n^\pi(C_n^c) = 0\). When
+\texttt{synthesize} \(= \mathrm{some\ prog}\), for every
+\(S \in \mathcal{W}_*\) there exists \(a \in A \subseteq L_A\) passing
+\texttt{stepCheck}\((S, a)\); hence \texttt{List.find?} returns
+\texttt{some\ b} with \texttt{stepCheck}\((S, b) = \mathrm{true}\)
+(never falling back to \(a_{\mathrm{fb}}\)), certifying all \(x \in S\)
+and keeping all nonempty successors in \(\mathcal{W}_*\). Induction over
+\(g \in \operatorname{supp}\bar{p}_n^{\mathrm{prog}}\) via Theorem 1.1
+yields \(S_n(g) \in \mathcal{W}_*\) and
+\(\nu_n^{\mathrm{prog}}(C_n^c) = 0\) for all \(n \in \mathbb{N}\).
 
-\subsection{A.3 Fixed-sample zero-support impossibility (Theorem
-4)}\label{a.3-fixed-sample-zero-support-impossibility-theorem-4}
+\textbf{(3)} On the augmented chain
+\(Z_n = (X_n, M_n) \in X \times 2^X\) under time-homogeneous \(P\),
+one-step transition probabilities depend solely on \((X_n, M_n)\). For
+each \(T \in \mathbb{N}\), expanding the cylinder event
+\(E_T := \{\omega \in (X \times 2^X)^{\mathbb{N}} : \forall n \le T,\, X_n(\omega) \in K\}\)
+by induction on \(T\) identifies
+\(\mathbb{P}_{\mathrm{prog}}(E_T) = \mathbf{1}_{\widetilde{K}}^\top Q_K^T \widetilde{\mu}_0\),
+where \(\widetilde{\mu}_0(x, S) = p_0(x)\mathbf{1}\{S = S_0(q(x))\}\).
+Since \(E_{T+1} \subseteq E_T\) and
+\(\mathbb{P}_{\mathrm{prog}}(E_0) \le 1 < \infty\), continuity of
+probability measures from above \citep{kallenberg2021} gives
+\(\mathbb{P}_{\mathrm{prog}}(\bigcap_{T \ge 0} E_T) = \lim_{T \to \infty} \mathbf{1}_{\widetilde{K}}^\top Q_K^T \widetilde{\mu}_0\).
+Finally, when \(I_0 \subseteq K\), \(K\)-closure under \((C, R)\)
+together with \(\nu_n^{\mathrm{prog}}(C^c) = 0\) implies by induction on
+\(T\) that every positive-mass microscopic trajectory
+\(h_T \in \operatorname{supp}\mu_T^{\mathrm{prog}}\) satisfies
+\(x_0, \dots, x_T \in K\), whence
+\(\mathbb{P}_{\mathrm{prog}}(E_T) = 1\) for all \(T \in \mathbb{N}\) and
+\(\mathbb{P}_{\mathrm{prog}}(\forall n \in \mathbb{N},\, X_n \in K) = 1\).
+\(\square\)
+
+\subsection{Fixed-sample zero-support impossibility (Theorem
+4)}\label{fixed-sample-zero-support-impossibility-theorem-4}
 
 \emph{Proof of Theorem 4.} Under
 \(W = (W_1, \dots, W_N) \stackrel{\mathrm{i.i.d.}}{\sim} \mathrm{Bernoulli}(p)\),
@@ -2091,9 +2112,9 @@ Evaluating at \(p = 0\) yields
 retaining only the non-negative summand \(w = \mathbf{0}_N\) for general
 \(p \in [0,1]\) yields
 \(\Gamma_\psi(p) \ge \mathbb{P}_p(W = \mathbf{0}_N)\, \psi(\mathbf{0}_N)(\mathrm{true}) = \rho (1 - p)^N\),
-proving (1).
+proving \textbf{(1)}.
 
-For (2), assume \(\rho = \Gamma_\psi(0) > \alpha \ge 0\), so
+For \textbf{(2)}, assume \(\rho = \Gamma_\psi(0) > \alpha \ge 0\), so
 \(\rho > 0\) and \(\rho - \alpha > 0\). Since \(N \ge 1\), the
 denominator \(2\rho N > 0\), and
 \(p_* := \frac{\rho - \alpha}{2\rho N}\) satisfies \(p_* > 0\) and
@@ -2102,17 +2123,17 @@ denominator \(2\rho N > 0\), and
 \((1 - p_*)^N \ge 1 - N p_*\). Multiplying by \(\rho > 0\) and
 substituting \(N \rho p_* = \frac{\rho - \alpha}{2}\) gives
 \[\Gamma_\psi(p_*) \ge \rho (1 - p_*)^N \ge \rho (1 - N p_*) = \rho - \frac{\rho - \alpha}{2} = \frac{\rho + \alpha}{2} > \alpha.\]
-Part (3) follows immediately by contraposition: if
+Part \textbf{(3)} follows immediately by contraposition: if
 \(\Gamma_\psi(p) \le \alpha\) for all \(p \in (0,1)\), then
 \(\Gamma_\psi(0) > \alpha\) is impossible, so
 \(\Gamma_\psi(0) \le \alpha\). \(\square\)
 
-\subsection{A.4 Calibrated post-selection risk and the noisy finite-risk
+\subsection{Calibrated post-selection risk and the noisy finite-risk
 oracle (Theorem
-5)}\label{a.4-calibrated-post-selection-risk-and-the-noisy-finite-risk-oracle-theorem-5}
+5)}\label{calibrated-post-selection-risk-and-the-noisy-finite-risk-oracle-theorem-5}
 
-\emph{Proof of Theorem 5.} (1) \emph{Simultaneous defect calibration and
-first-PASS soundness.} Fix \(\omega \in G_u\), so
+\emph{Proof of Theorem 5.} \textbf{(1)} \emph{Simultaneous defect
+calibration and first-PASS soundness.} Fix \(\omega \in G_u\), so
 \(d_{\mathrm{TV}}(P(x,a), \widehat{P}_{x,a}(\omega)) \le u\) for every
 \((x,a) \in X \times A\). For any candidate \(q: X \to Y\) and any pair
 \(x, x' \in X\) with \(q(x) = q(x')\) and action \(a \in A\), the
@@ -2138,8 +2159,9 @@ every \(i < j\) was \texttt{rejected} (\(\delta_{q_i}(P) > \tau\)) while
 
 Next, for any \(x \in X\) and \(a \in A\), let
 \(x_{\mathrm{rep}} := \mathrm{rep}_{q_j}(q_j(x))\), which satisfies
-\(q_j(x_{\mathrm{rep}}) = q_j(x)\). By data-processing contraction of
-total variation under \(q_j\)
+\(q_j(x_{\mathrm{rep}}) = q_j(x)\) since
+\(x \in q_j^{-1}(\{q_j(x)\}) \neq \varnothing\). By data-processing
+contraction of total variation under \(q_j\)
 (\(d_{\mathrm{TV}}(q_\# \nu_1, q_\# \nu_2) \le d_{\mathrm{TV}}(\nu_1, \nu_2)\)),
 on \(\omega \in G_u\) we have \[\begin{aligned}
 d_{\mathrm{TV}}\bigl((q_j)_\# P(x,a),\, \widehat{K}_{q_j}(\omega)(q_j(x), a)\bigr)
@@ -2149,59 +2171,54 @@ d_{\mathrm{TV}}\bigl((q_j)_\# P(x,a),\, \widehat{K}_{q_j}(\omega)(q_j(x), a)\big
 \(\le \varepsilon_j(\omega) := \min\{1, u + \widehat{\delta}_{q_j}(\omega)\}\)
 across all certified pairs. By standard step-by-step path coupling
 between the pushed-forward true coarse trajectory law
-\((\pi_T^{(q_j)})_\# K_j\) and the macro-reference trajectory law
+\((\Pi_T^{(q_j)})_\# K_j\) and the macro-reference trajectory law
 \(\widehat{\mathbb{P}}_T^{(j,\omega)}\) under the same causal policy
 \(\mathrm{prog}_j\), one-step row discrepancies accumulate additively up
 to uncertified occupancy \(\kappa_n = \nu_n^{\mathrm{prog}_j}(C^c)\):
-\[d_{\mathrm{TV}}\bigl((\pi_T^{(q_j)})_\# K_j,\, \widehat{\mathbb{P}}_T^{(j,\omega)}\bigr) \le \sum_{n=0}^{T-1} \bigl[\varepsilon_j(\omega) + (1 - \varepsilon_j(\omega))\nu_n^{\mathrm{prog}_j}(C^c)\bigr].\]
+\[d_{\mathrm{TV}}\bigl((\Pi_T^{(q_j)})_\# K_j,\, \widehat{\mathbb{P}}_T^{(j,\omega)}\bigr) \le \sum_{n=0}^{T-1} \bigl[\varepsilon_j(\omega) + (1 - \varepsilon_j(\omega))\nu_n^{\mathrm{prog}_j}(C^c)\bigr].\]
 By Theorem 3.2,
 \texttt{synthesize}\((q_j, \dots) = \mathrm{some\ prog}_j\) guarantees
 \(\nu_n^{\mathrm{prog}_j}(C^c) = 0\) for every \(n\), eliminating the
 second term. Since
-\(E \subseteq (\pi_T^{(q_j)})^{-1}(\{\mathrm{bad}_j = \mathrm{true}\})\),
+\(E \subseteq (\Pi_T^{(q_j)})^{-1}(\{\mathrm{bad}_j = \mathrm{true}\})\),
 we obtain
-\(K_j(E) \le (\pi_T^{(q_j)})_\# K_j(\{\mathrm{bad}_j = \mathrm{true}\}) \le \widehat{B}_T(\mathrm{prog}_j, q_j, \omega, u)\).
+\(K_j(E) \le (\Pi_T^{(q_j)})_\# K_j(\{\mathrm{bad}_j = \mathrm{true}\}) \le \widehat{B}_T(\mathrm{prog}_j, q_j, \omega, u)\).
 Thus \texttt{accepts} \(= \mathrm{true}\) (\(\widehat{B}_T \le \beta\))
 implies \(K_j(E) \le \beta\) on \(G_u\), while Theorem 3.3
 simultaneously yields
 \(\mathbb{P}_{\mathrm{prog}_j}(\forall n,\, X_n \in K) = 1\).
 
-\begin{enumerate}
-\def\labelenumi{(\arabic{enumi})}
-\setcounter{enumi}{1}
-\tightlist
-\item
-  \emph{Concentration of \(G_u\) and joint post-selection bound.} For
-  each pair \((x,a) \in X \times A\) and subset \(B \subseteq X\),
-  \(\widehat{P}_{x,a}(\omega)(B) - P(x,a)(B)\) is the average of \(N\)
-  i.i.d. centered \([0,1]\)-valued indicators
-  \(\mathbf{1}\{\omega_{x,a,k} \in B\} - P(x,a)(B)\), so Hoeffding's
-  inequality \citep{hoeffding1963} gives
-  \(\mu_N(|\widehat{P}_{x,a}(B) - P(x,a)(B)| > u) \le 2 e^{-2Nu^2}\) for
-  every \(u \ge 0\). Unioning over all \(2^{|X|}\) subsets
-  \(B \subseteq X\) gives
-  \(\mu_N(d_{\mathrm{TV}}(P(x,a), \widehat{P}_{x,a}) > u) = \mu_N(\max_{B \subseteq X} |\widehat{P}_{x,a}(B) - P(x,a)(B)| > u) \le 2 \cdot 2^{|X|} e^{-2Nu^2}\).
-  Summing over \(|X|\,|A|\) rows and clipping at \(1\) yields
-  \(\mu_N(G_u^c) \le \alpha_N(u) \in [0,1]\). Finally, let
-  \(F(\omega) := \{h \in \mathcal{M}_T : \mathrm{selectedAccepts}(\omega) = \mathrm{true} \land h \in E\}\).
-  For \(\omega \in G_u\), either \texttt{selectCandidate}
-  \(= \mathrm{none}\) (so \texttt{selectedAccepts} \(= \mathrm{false}\)
-  and \(K_{s(\omega)}(F(\omega)) = 0 \le \beta\)), or
-  \texttt{selectCandidate} \(= \mathrm{some}\ j\): if \texttt{accepts}
-  \(= \mathrm{false}\), again \(F(\omega) = \varnothing\)
-  (\(0 \le \beta\)); if \texttt{accepts} \(= \mathrm{true}\), Part (1)
-  gives \(K_j(F(\omega)) = K_j(E) \le \beta\). Splitting
-  \(J(\{(\omega, h) : h \in F(\omega)\}) = \sum_{\omega \in G_u} \mu_N(\omega) K_{s(\omega)}(F(\omega)) + \sum_{\omega \in G_u^c} \mu_N(\omega) K_{s(\omega)}(F(\omega))\)
-  gives
-  \(\le (1 - \mu_N(G_u^c))\beta + \mu_N(G_u^c) \cdot 1 = \beta + (1 - \beta)\mu_N(G_u^c) \le \min\{1, \alpha_N(u) + (1 - \alpha_N(u))\beta\}\)
-  since \(1 - \beta \ge 0\). \(\square\)
-\end{enumerate}
+\textbf{(2)} \emph{Concentration of \(G_u\) and joint post-selection
+bound.} For each pair \((x,a) \in X \times A\) and subset
+\(B \subseteq X\), \(\widehat{P}_{x,a}(\omega)(B) - P(x,a)(B)\) is the
+average of \(N\) i.i.d. centered \([0,1]\)-valued indicators
+\(\mathbf{1}\{\omega_{x,a,k} \in B\} - P(x,a)(B)\), so Hoeffding's
+inequality \citep{hoeffding1963} gives
+\(\mu_N(|\widehat{P}_{x,a}(B) - P(x,a)(B)| > u) \le 2 e^{-2Nu^2}\) for
+every \(u \ge 0\). By Scheffé's variational identity
+\(d_{\mathrm{TV}}(p, q) = \max_{B \subseteq X} |p(B) - q(B)|\), unioning
+over all \(2^{|X|}\) subsets \(B \subseteq X\) gives
+\(\mu_N(d_{\mathrm{TV}}(P(x,a), \widehat{P}_{x,a}) > u) = \mu_N(\max_{B \subseteq X} |\widehat{P}_{x,a}(B) - P(x,a)(B)| > u) \le 2 \cdot 2^{|X|} e^{-2Nu^2}\).
+Summing over \(|X|\,|A|\) rows and clipping at \(1\) yields
+\(\mu_N(G_u^c) \le \alpha_N(u) \in [0,1]\). Finally, let
+\(F(\omega) := \{h \in \mathcal{M}_T : \mathrm{selectedAccepts}(\omega) = \mathrm{true} \land h \in E\}\).
+For \(\omega \in G_u\), either \texttt{selectCandidate}
+\(= \mathrm{none}\) (so \texttt{selectedAccepts} \(= \mathrm{false}\)
+and \(K_{s(\omega)}(F(\omega)) = 0 \le \beta\)), or
+\texttt{selectCandidate} \(= \mathrm{some}\ j\): if \texttt{accepts}
+\(= \mathrm{false}\), again \(F(\omega) = \varnothing\)
+(\(0 \le \beta\)); if \texttt{accepts} \(= \mathrm{true}\), Part (1)
+gives \(K_j(F(\omega)) = K_j(E) \le \beta\). Splitting
+\(J(\{(\omega, h) : h \in F(\omega)\}) = \sum_{\omega \in G_u} \mu_N(\omega) K_{s(\omega)}(F(\omega)) + \sum_{\omega \in G_u^c} \mu_N(\omega) K_{s(\omega)}(F(\omega))\)
+gives
+\(\le (1 - \mu_N(G_u^c))\beta + \mu_N(G_u^c) \cdot 1 = \beta + (1 - \beta)\mu_N(G_u^c) \le \min\{1, \alpha_N(u) + (1 - \alpha_N(u))\beta\}\)
+since \(1 - \beta \ge 0\). \(\square\)
 
-\subsection{A.5 Continuous observable belief quotients on standard Borel
+\subsection{Continuous observable belief quotients on standard Borel
 spaces (Theorem
-6)}\label{a.5-continuous-observable-belief-quotients-on-standard-borel-spaces-theorem-6}
+6)}\label{continuous-observable-belief-quotients-on-standard-borel-spaces-theorem-6}
 
-\emph{Proof of Theorem 6.} (1) Let \(v: \{0,1\} \to [0,1]\) map
+\emph{Proof of Theorem 6.} \textbf{(1)} Let \(v: \{0,1\} \to [0,1]\) map
 \(0 \mapsto 0, 1 \mapsto 1\). Under the deterministic observation kernel
 \(O((x,a), \cdot) = \delta_{q(x)}\), for any \(b \in \mathcal{P}(X)\)
 and \(a \in A\), the joint state--observation prediction measure on
@@ -2253,43 +2270,38 @@ Evaluating both measures on the singleton \(\{1\} \subseteq [0,1]\)
 \(P(x,a)(q^{-1}(\{1\})) = \bar{o}_{\delta_x, a}(\{1\}) = \bar{o}_{\delta_{x'}, a}(\{1\}) = P(x',a)(q^{-1}(\{1\}))\),
 establishing \(\mathrm{ClosedTests}(P, q)\).
 
-\begin{enumerate}
-\def\labelenumi{(\arabic{enumi})}
-\setcounter{enumi}{1}
-\tightlist
-\item
-  Under \(\mathrm{ClosedTests}(P, q)\), induction on word length \(|w|\)
-  shows \(F_w(x) = g_w(q(x))\) for a function \(g_w: \{0,1\} \to [0,1]\)
-  (base \(g_{[]} \equiv 1\); step
-  \(F_{(a,y)::w'}(x) = \int \mathbf{1}\{q(z)=y\} g_{w'}(q(z))\, P(x,a)(dz)\)
-  depends only on \(q_\# P(x,a)\), which depends only on \(q(x)\)), so
-  \(T_w(b) = \int g_w\, d(q_\# b)\) depends only on \(c_q(b)\). On
-  \(X = \{0,1\}^2\) with \(q(x_1,x_2) = x_1\) and transition
-  \((x_1 \oplus (a \land N),\, x_2 \oplus N)\)
-  (\(N \sim \mathrm{Bern}(1/4)\)), \(q(x') = x_1 \oplus (a \land N)\) is
-  independent of \(x_2\), so \(\mathrm{ClosedTests}\) holds;
-  \(\delta_{(0,0)}\) and \(\delta_{(0,1)}\) both have \(c_q = 0\) (hence
-  identical \(T_w\) for all \(w\)), yet
-  \(\int \mathbf{1}\{x_2=1\}\, d\delta_{(0,0)} = 0 \neq 1 = \int \mathbf{1}\{x_2=1\}\, d\delta_{(0,1)}\)
-  and
-  \(\delta_{(0,0)}(\{x_2=0\}) = 1 \neq 0 = \delta_{(0,1)}(\{x_2=0\})\).
-  Under the perturbed deterministic transition
-  \((a ? x_2 : x_1,\, x_2)\) at \(a = 1\), \((0,0) \mapsto (0,0)\)
-  (\(q = 0\)) whereas \((0,1) \mapsto (1,1)\) (\(q = 1\)) despite
-  \(q(0,0) = 0 = q(0,1)\), violating \(\mathrm{ClosedTests}\) and ruling
-  out any quotient kernel by Part (1). \(\square\)
-\end{enumerate}
+\textbf{(2)} Under \(\mathrm{ClosedTests}(P, q)\), induction on word
+length \(|w|\) shows \(F_w(x) = g_w(q(x))\) for a function
+\(g_w: \{0,1\} \to [0,1]\) (base \(g_{[]} \equiv 1\); step
+\(F_{(a,y)::w'}(x) = \int \mathbf{1}\{q(z)=y\} g_{w'}(q(z))\, P(x,a)(dz)\)
+depends only on \(q_\# P(x,a)\), which depends only on \(q(x)\)), so
+\(T_w(b) = \int g_w\, d(q_\# b)\) depends only on \(c_q(b)\). On
+\(X = \{0,1\}^2\) with \(A = \{0,1\}\), \(q(x_1,x_2) = x_1\), and
+transition \((x_1 \oplus (a \land N),\, x_2 \oplus N)\)
+(\(N \sim \mathrm{Bern}(1/4)\)), \(q(x') = x_1 \oplus (a \land N)\) is
+independent of \(x_2\), so \(\mathrm{ClosedTests}\) holds;
+\(\delta_{(0,0)}\) and \(\delta_{(0,1)}\) both have \(c_q = 0\) (hence
+identical \(T_w\) for all \(w\)), yet
+\(\int \mathbf{1}\{x_2=1\}\, d\delta_{(0,0)} = 0 \neq 1 = \int \mathbf{1}\{x_2=1\}\, d\delta_{(0,1)}\)
+and
+\(\delta_{(0,0)}(\{x_2=0\}) = 1 \neq 0 = \delta_{(0,1)}(\{x_2=0\})\).
+Under the perturbed deterministic transition
+\((\text{if } a = 1 \text{ then } x_2 \text{ else } x_1,\, x_2)\) at
+\(a = 1\), \((0,0) \mapsto (0,0)\) (\(q = 0\)) whereas
+\((0,1) \mapsto (1,1)\) (\(q = 1\)) despite \(q(0,0) = 0 = q(0,1)\),
+violating \(\mathrm{ClosedTests}\) and ruling out any quotient kernel by
+Part (1). \(\square\)
 
-\subsection{A.6 Prepaid fault-mechanism discrimination and minimax
-regret (Theorem
-7)}\label{a.6-prepaid-fault-mechanism-discrimination-and-minimax-regret-theorem-7}
+\subsection{Prepaid fault-mechanism discrimination and minimax regret
+(Theorem
+7)}\label{prepaid-fault-mechanism-discrimination-and-minimax-regret-theorem-7}
 
-\emph{Proof of Theorem 7.} (1) \emph{Coupling and distinguishability
-bounds.} Fix any real-randomized strategy \(\pi\) and private random
-seed realization \(\xi\) (which reduces \(\pi(\xi)\) to a deterministic
-receipt-indexed action tree and terminal decision rule; integrating over
-\(\xi\) preserves TV bounds by convexity). Couple \(S\) and \(G\)
-step-by-step on the exact same tick-mode sequence
+\emph{Proof of Theorem 7.} \textbf{(1)} \emph{Coupling and
+distinguishability bounds.} Fix any real-randomized strategy \(\pi\) and
+private random seed realization \(\xi\) (which reduces \(\pi(\xi)\) to a
+deterministic receipt-indexed action tree and terminal decision rule;
+integrating over \(\xi\) preserves TV bounds by convexity). Couple \(S\)
+and \(G\) step-by-step on the exact same tick-mode sequence
 \((M_0, \dots, M_{H-1}) \in \{\mathrm{normal}, \mathrm{fault}\}^H\).
 Initially both stores equal
 \((\mathrm{root0} = \neg g,\ \mathrm{child1} = \mathrm{none})\).
@@ -2324,7 +2336,7 @@ Observe:
   if \(t=0\) created a healthy \texttt{child1},
   i.e.~\(M_0 = \mathrm{normal}\), and \(t=1\) suffered
   \(M_1 = \mathrm{fault}\) on a \texttt{root0} operation---which still
-  emits \(o_1 = (0,0)\) under both.). Hence \(P_S^\pi = P_G^\pi\) at
+  emits \(o_1 = (0,0)\) under both). Hence \(P_S^\pi = P_G^\pi\) at
   \(H \le 2\), proving \(\Delta_{H,B} = 0\) for \(H \le 2\).
 \item
   At \(H = 3\): by the preceding bullet, \(o_0\) and \(o_1\) match on
@@ -2362,17 +2374,11 @@ and writing \(g\) to \texttt{root0} after \((0,0)\) (expected payoff
 \(\frac{3}{8}\)) yields total payoff
 \(\frac{3}{8} + \frac{1}{2}\cdot\frac{1}{2} + \frac{1}{2}\cdot\frac{3}{8} = \frac{13}{16} = V_S^* = V_G^*\).
 
-\begin{enumerate}
-\def\labelenumi{(\arabic{enumi})}
-\setcounter{enumi}{1}
-\tightlist
-\item
-  \emph{Exact three-step minimax regret and deterministic lattice gap.}
-  Fix \((r, H, B, c, \lambda, d) = (1/2, 3, 2, 1, 1/4, 1)\). Exhaustive
-  dynamic programming (verified in the Lean kernel via
-  \texttt{csolveInt\_spec} and \texttt{kernel\_int\_h3}) establishes the
-  exact optimal values over all \(7\)-action tables:
-\end{enumerate}
+\textbf{(2)} \emph{Exact three-step minimax regret and deterministic
+lattice gap.} Fix \((r, H, B, c, \lambda, d) = (1/2, 3, 2, 1, 1/4, 1)\).
+Exhaustive dynamic programming (verified inside the kernel via
+\texttt{csolveInt\_spec} and \texttt{kernel\_int\_h3}) establishes the
+exact optimal values over all \(7\)-action tables:
 
 \begin{itemize}
 \tightlist
@@ -2408,7 +2414,7 @@ and writing \(g\) to \texttt{root0} after \((0,0)\) (expected payoff
   \([(1,1), (0,0)]\) (prob. \(1/4\), wallet \(1\)), where \(\pi_G\)
   writes \(g\) to \texttt{root0} (mean
   \(\frac{1}{2}(1 - \frac{1}{4}) = \frac{3}{8}\) under both \(S\) and
-  \(G\).). Hence
+  \(G\)). Hence
   \(V_G^* = J_G(\pi_G) = J_S(\pi_G) = \frac{3}{8} + \frac{1}{2}\bigl(\frac{1}{2} + \frac{1}{2}\cdot\frac{1}{2} + \frac{1}{2}\cdot\frac{3}{8}\bigr) + \frac{1}{2}\cdot\frac{13}{16} = \frac{40}{32} = \frac{5}{4}\).
 \item
   Under dual prior \(w = (3/4, 1/4)\): at the ambiguous prefix
@@ -2464,24 +2470,31 @@ self-contained in the text and Mathematical Appendix.
 
 \textbf{Code availability.} Every definition, theorem, executable
 controller synthesizer, rational statistical risk oracle,
-counterexample, and GCD-free integer dynamic-programming certificate
-reported in this article has been formally verified in Lean 4 (v4.33.1)
-over Mathlib across 1,051 compiled modules, passing an environment-wide
-axiom audit restricting transitive dependencies exclusively to
-\texttt{\{propext,\ Classical.choice,\ Quot.sound\}} (\texttt{0}
-\texttt{sorryAx}, \texttt{0} \texttt{Lean.ofReduceBool}). The exported
-Lean 4 formalization archive (v1.0.0) and accompanying verification
-scripts are permanently archived on Zenodo under the Apache License,
-Version 2.0 (Apache-2.0) at
-\href{https://doi.org/10.5281/zenodo.24433585}{doi:10.5281/zenodo.24433585}.
+counterexample, and greatest-common-divisor-free integer
+dynamic-programming certificate reported in this article has been
+formally verified in Lean 4 (v4.33.1) over Mathlib across 1,051 compiled
+modules, passing an environment-wide axiom audit
+(\texttt{ExhaustiveAxiomAudit}) restricting transitive dependencies
+exclusively to \texttt{\{propext,\ Classical.choice,\ Quot.sound\}}
+(\texttt{0} \texttt{sorryAx}, \texttt{0} \texttt{Lean.ofReduceBool}).
+The exported Lean 4 formalization archive (v1.0.0) and accompanying
+verification scripts are permanently archived on Zenodo under the Apache
+License, Version 2.0 (Apache-2.0) at
+\href{https://doi.org/10.5281/zenodo.24433585}{doi:10.5281/zenodo.24433585}
+(Concept DOI:
+\href{https://doi.org/10.5281/zenodo.24433584}{doi:10.5281/zenodo.24433584}).
 
-\textbf{Authors' contributions.} Single-authored manuscript. The sole
-author conceived the mathematical framework and formalization
-architecture, proved the mathematical and mechanized results, and wrote
-the manuscript; AI-assisted tools were used during bibliographic
-cross-checking, Lean proof engineering, and editorial preparation, with
-the author bearing sole responsibility for all theorems, formal
-specifications, and scholarly attributions.
+\textbf{Author contributions and AI disclosure.} This research and
+manuscript were directed by Degui Qian and completed with Gemini 4
+Carbon and ChatGPT 6 Astra across mathematical derivation, pure-kernel
+Lean 4 formalization engineering, computable rational oracle
+verification, bibliographic cross-checking, and manuscript preparation.
+In accordance with Springer Nature authorship and generative AI
+policies, AI systems are not listed as co-authors; Degui Qian defined
+the research program, problem formulations, and formalization
+architecture, audited and verified every mathematical proof, mechanized
+Lean 4 declaration, counterexample witness, and scholarly citation, and
+bears sole academic and legal responsibility for the entire work.
 
 \textbf{Rights.} Copyright © 2026 Degui Qian. Licensed under Creative
 Commons Attribution 4.0 International (CC BY 4.0).

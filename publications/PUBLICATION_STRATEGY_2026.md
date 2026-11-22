@@ -3,9 +3,9 @@
 **编制日期：** 2026-11-22  
 **适用基线：**
 - 主干 `main`：全库 1,051 个 Lean 4 模块纯内核三公理验证（`0` `sorryAx`、`0` `native_decide`，PR #469），《UEOT 数学著作》v4.2 双语版（255 页中文 / 354 页英文），《客体、演化与意义》v3.1 双语版（104 页中文 / 157 页英文），以及**三大领域独立英文期刊论文全部合入主干**：
-  1. **Paper 1（科学哲学与理论生物学，PR #470）：** `publications/papers/ueot-philosophical-foundations/` — *What Prediction Leaves Out: Relational Objecthood and the Grounds of Purpose* v2.1（32 页含矢量图，93 篇核实外部文献，备齐 `submissions/synthese/`、`submissions/bjps/`、`submissions/philosophy-of-science/` 三套双盲投稿包）。
-  2. **Paper 2（形式化验证、安全控制与统计校准，PR #471）：** `publications/papers/certified-viability-and-calibrated-control/` — *Pure-Kernel Verified Controller Synthesis, Fixed-Sample Impossibility, and Calibrated Post-Selection Risk under Partial Observation* v1.0（35 页含矢量图，80 篇核实外部文献，Lean 4 纯内核映射及 `submissions/jar/` 投稿包）。
-  3. **Paper 3（随机运筹、Bayes 自适应维护与认证多项式决策图，PR #472）：** `publications/papers/regenerative-branching-and-receipt-dags/` — *Prepayment Thresholds, Informative Zero Receipts, and Certified Polynomial Decision Diagrams in Partially Observed Regenerative Maintenance* v1.0（96 篇核实外部文献，含矢量图 Figures 1–3 与 INFORMS *Mathematics of Operations Research* 双盲直传包 `submissions/mor/`）。
+  1. **Paper 1（科学哲学与理论生物学，PR #470）：** `publications/papers/ueot-philosophical-foundations/` — *What Prediction Leaves Out: Relational Objecthood and the Grounds of Purpose* v2.1（93 篇核实外部文献，备齐 `submissions/synthese/`、`submissions/bjps/`、`submissions/philosophy-of-science/` 三套双盲／三盲直传投稿包）。
+  2. **Paper 2（形式化验证、安全控制与统计校准，PR #471）：** `publications/papers/certified-viability-and-calibrated-control/` — *Pure-Kernel Verified Controller Synthesis, Fixed-Sample Impossibility, and Calibrated Post-Selection Risk under Partial Observation* v1.0（35 页含矢量图，80 篇核实外部文献，Lean 4 纯内核映射及 Springer *JAR* 双盲直传包 `submissions/jar/`）。
+  3. **Paper 3（随机运筹、Bayes 自适应维护与认证多项式决策图，PR #472）：** `publications/papers/regenerative-branching-and-receipt-dags/` — *Prepayment Thresholds, Informative Zero Receipts, and Certified Polynomial Decision Diagrams in Partially Observed Regenerative Maintenance* v1.0（96 篇核实外部文献，含矢量图 Figures 1–3 与 INFORMS *Mathematics of Operations Research* 官方格式双盲直传包 `submissions/mor/`）。
 - 物理推进分支 `origin/codex/correlated-bath-and-local-field-20261118` (`67aa5c4d`, PR #467, 《UEOT 物理学》v3.12 双语候选版，0–71 章，210 项结果) 与 `origin/codex/physics-source-response-20261119` (`8bdeec29`, Draft PR #468，共形耦合、光滑 lapse 运输 Hadamard 态与自主全场正时间源记录）。
 
 ---
@@ -27,9 +27,9 @@
 
 ### 第一阶段（0–9 个月）：双旗舰单点破冰（Wedge Phase — 零内部黑话、全自包含证明）
 
-- **哲学与理论生物学楔子（Paper 1，已完稿 v2.0）：** *What Prediction Leaves Out: Relational Objecthood and the Grounds of Purpose*。直击当代科学哲学与认知科学最火热的三大焦点——马尔可夫毯（Markov blankets）边界争议、计算力学预测压缩实在论、以及组织目的论与演化选择功能论的规范性争论（正面回应 Bruineberg 2022、Raja 2021、Corti 2023、Bich 2024、Cuciniello 2026）。
-  - **首选期刊：** ***Synthese***（Springer, A&HCI / SSCI Q1，支持 10,000–12,000 正文词数 + 独立数学证明附录，恰为上述争论的核心主场）。
-  - **梯队备选：** ***Biology & Philosophy***（Springer Q1）→ ***Studies in History and Philosophy of Science***（若改投 *BJPS*，需裁剪至全稿含附录 $\le 10,000$ 词）。
+- **哲学与理论生物学楔子（Paper 1，已完稿 v2.1）：** *What Prediction Leaves Out: Relational Objecthood and the Grounds of Purpose*。直击当代科学哲学与认知科学最火热的三大焦点——马尔可夫毯（Markov blankets）边界争议、计算力学预测压缩实在论、以及组织目的论与演化选择功能论的规范性争论（正面回应 Bruineberg 2022、Raja 2021、Corti 2023、Bich 2024、Cuciniello 2026）。
+  - **首选期刊：** ***Synthese***（Springer, A&HCI / SSCI Q1，双盲直传包已就绪于 `submissions/synthese/`，支持 10,000–12,000 正文词数 + 独立数学证明附录，恰为上述争论的核心主场）。
+  - **顶级综合与梯队备选：** ***The British Journal for the Philosophy of Science* (BJPS)**（三盲英式拼写、全稿含附录与 93 篇文献 $\le 10,000$ 词定制包已就绪于 `submissions/bjps/`）与 ***Philosophy of Science***（双盲美式、98 词摘要、全稿总词数 $\le 9,500$ 词定制包已就绪于 `submissions/philosophy-of-science/`）；梯队备选 ***Biology & Philosophy*** → ***Studies in History and Philosophy of Science***。
   - **预印本：** **PhilSci-Archive** + **arXiv (`q-bio.PE` / `physics.hist-ph`)**。
 
 - **形式化验证、安全控制与统计校准楔子（Paper 2，本次完稿 v1.0）：** *Pure-Kernel Verified Controller Synthesis, Fixed-Sample Impossibility, and Calibrated Post-Selection Risk under Partial Observation*。将 UEOT 最具压倒性公信力的资产——**1,051 模块纯内核 Lean 4 证明库（零 `sorryAx`、零 `native_decide`）与数学书第 36–40 章闭环链条**——转化为计算机科学与控制论顶刊可直接审稿的硬核成果。
@@ -41,7 +41,7 @@
 ### 第二阶段（6–18 个月）：专业纵深扩展（运筹分枝控制 + 开放量子过程计量）
 
 - **随机运筹与 Bayes 自适应维护论文（Paper 3，已完稿 v1.0 并配套 MOR 双盲直传包）：** *Prepayment Thresholds, Informative Zero Receipts, and Certified Polynomial Decision Diagrams in Partially Observed Regenerative Maintenance*。
-  - **提取源与核心突破：** 数学书 §§39.75–39.88 + 24 个纯内核 Lean 4 模块（原生谱系人口与压缩世界交换定理、逐样本路径预付安全与全历史实随机策略 Bayes 最优性、高价格闭式续程公式 $V_{H+1}^*$ 与充要阈值 $p < 1 + d M_H/\mu_1$、持久参数方差溢价 $d\,\mathrm{Var}(r_\theta)$、故障收据后验阈值收缩 $21/16 \to 5/4$、四步收据反馈增益 $d^3\mathbb{E}[r_\theta^3(1-r_\theta)]$ 与修复后零 $\theta$-揭示价值 $\mathrm{EVPI}_{\mathrm{post}}=0$、有信息零收据计数后验、五坐标摘要 $\sigma=(t,q,s,f,k)$ 全动作联合充分性与三向锐界见证、以及全动作认证共享决策图 $N_H \le 24(H+1)^4$ 将八步 $28^8$ 原始分支压缩为 $1,661$ 个认证节点与 $151$ 个执行节点）。
+  - **提取源与核心突破：** 数学书 §§39.75–39.88 + 30 个纯内核 Lean 4 模块（原生谱系人口与压缩世界交换定理、逐样本路径预付安全与全历史实随机策略 Bayes 最优性、高价格闭式续程公式 $V_{H+1}^*$ 与充要阈值 $p < 1 + d M_H/\mu_1$、持久参数方差溢价 $d\,\mathrm{Var}(r_\theta)$、故障收据后验阈值收缩 $21/16 \to 5/4$、四步收据反馈增益 $d^3\mathbb{E}[r_\theta^3(1-r_\theta)]$ 与修复后零 $\theta$-揭示价值 $\mathrm{EVPI}_{\mathrm{post}}=0$、有信息零收据计数后验、五坐标摘要 $\sigma=(t,q,s,f,k)$ 全动作联合充分性与三向锐界见证、以及全动作认证共享决策图 $N_H \le 24(H+1)^4$ 将八步 $28^8$ 原始分支压缩为 $1,661$ 个认证节点与 $151$ 个执行节点）。
   - **目标期刊：** ***Mathematics of Operations Research* (INFORMS, Q1，双盲直传包已就绪于 `submissions/mor/`)** → ***Advances in Applied Probability*** → ***Operations Research*** / ***Journal of Mathematical Biology***。
 
 - **开放量子系统与多时过程计量论文（Paper 4）：** *Separating Fluctuation and Signed Causal Response in Persistent Correlated Quantum Baths: Certified Interval Channels and Local-Field Microcausality*。
