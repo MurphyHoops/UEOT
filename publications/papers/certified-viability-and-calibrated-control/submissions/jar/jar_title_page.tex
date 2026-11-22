@@ -1,10 +1,10 @@
-\documentclass[10.5pt,a4paper]{article}
-\usepackage[margin=22mm]{geometry}
+\documentclass[10.2pt,a4paper]{article}
+\usepackage[margin=21mm]{geometry}
 \usepackage{fontspec}
 \IfFontExistsTF{Liberation Serif}{\setmainfont{Liberation Serif}}{\setmainfont{Times New Roman}}
-\IfFontExistsTF{DejaVu Sans Mono}{\setmonofont[Scale=0.84]{DejaVu Sans Mono}}{\IfFontExistsTF{Menlo}{\setmonofont[Scale=0.84]{Menlo}}{\setmonofont[Scale=0.84]{Courier New}}}
+\IfFontExistsTF{DejaVu Sans Mono}{\setmonofont[Scale=0.83]{DejaVu Sans Mono}}{\IfFontExistsTF{Menlo}{\setmonofont[Scale=0.82]{Menlo}}{\setmonofont[Scale=0.83]{Courier New}}}
 \usepackage{setspace}
-\setstretch{1.11}
+\setstretch{1.08}
 \usepackage[unicode,colorlinks=true,allcolors=blue]{hyperref}
 \hypersetup{
   pdftitle={Title Page: Pure-Kernel Verified Controller Synthesis, Fixed-Sample Impossibility, and Calibrated Post-Selection Risk under Partial Observation},
@@ -14,38 +14,36 @@
 \pagestyle{empty}
 \begin{center}
 {\LARGE\bfseries Pure-Kernel Verified Controller Synthesis, Fixed-Sample Impossibility, and Calibrated Post-Selection Risk under Partial Observation\par}
-\vspace{9pt}
-{\large\bfseries Separate Unblinded Title Page — \emph{Journal of Automated Reasoning}\par}
+\vspace{8pt}
+{\large\bfseries Author \& Declarations Summary Sheet — \emph{Journal of Automated Reasoning}\par}
 \end{center}
 
-\vspace{7pt}
-\noindent\textbf{Author:} Degui Qian\\
-\textbf{Affiliation:} Independent Researcher\\
-\textbf{Date:} November 2026
+\vspace{6pt}
+\noindent\textbf{Author:} Degui Qian\quad\textbf{Affiliation:} Independent Researcher\quad\textbf{Date:} November 2026
 
-\vspace{7pt}
+\vspace{5pt}
 \noindent\textbf{MSC 2020 Subject Classification:} 68V15 (Primary); 93E20, 90C40, 62C20 (Secondary)\\
 \textbf{ACM CCS (2012):} Theory of computation $\to$ Logic and verification; Sequential decision making; Planning under uncertainty\\
 \textbf{Keywords:} interactive theorem proving; Lean 4; partially observable Markov decision processes; safe controller synthesis; post-selection inference; minimax regret
 
-\vspace{8pt}
-\noindent\textbf{Springer Nature Declarations (Unblinded Record)}
+\vspace{6pt}
+\noindent\textbf{Springer Nature Declarations \& Referee Verification Entry Points}
 
-\vspace{5pt}
+\vspace{4pt}
 \noindent\textbf{Funding:} The author received no external funding, grants, or financial support for the research, formalization, authorship, or preparation of this manuscript.
 
-\vspace{5pt}
+\vspace{4pt}
 \noindent\textbf{Conflicts of interest / Competing interests:} The author declares no financial or non-financial competing interests relevant to the content of this article.
 
-\vspace{5pt}
-\noindent\textbf{Availability of data and material:} Not applicable. No empirical datasets were generated or analyzed; all mathematical proofs, finite counterexamples, and exact rational dynamic-programming evaluations are self-contained in the blinded manuscript and Mathematical Appendix.
+\vspace{4pt}
+\noindent\textbf{Availability of data and material:} Not applicable. No empirical datasets were generated or analyzed; all analytical proofs, counterexamples, and exact rational dynamic-programming evaluations are provided in the manuscript, Mathematical Appendix, and standalone verification script \texttt{validate.py}.
 
-\vspace{5pt}
-\noindent\textbf{Code availability:} Every definition, theorem, executable controller synthesizer, rational statistical risk oracle, counterexample, and greatest-common-divisor-free integer dynamic-programming certificate reported in the manuscript has been formally verified in Lean 4 (v4.33.1) over Mathlib across 1,051 compiled modules, passing an environment-wide axiom audit (\texttt{ExhaustiveAxiomAudit}) restricting transitive dependencies exclusively to \texttt{\{propext, Classical.choice, Quot.sound\}} (\texttt{0} \texttt{sorryAx}, \texttt{0} \texttt{Lean.ofReduceBool}). The exported Lean 4 formalization archive (v1.0.0) and accompanying verification scripts are permanently archived on Zenodo under the Apache License, Version 2.0 (Apache-2.0) at \href{https://doi.org/10.5281/zenodo.24433585}{doi:10.5281/zenodo.24433585} (Concept DOI: \href{https://doi.org/10.5281/zenodo.24433584}{doi:10.5281/zenodo.24433584}).
+\vspace{4pt}
+\noindent\textbf{Code availability \& reproducible referee check:} Every definition, theorem, executable controller synthesizer, rational statistical risk oracle, counterexample, and greatest-common-divisor-free integer dynamic-programming certificate reported in this article has been checked by Lean 4 (v4.33.1) over Mathlib across 1,051 compiled library modules (1,030 declaration-defining modules and 21 import-aggregator modules), passing an environment-wide axiom audit (\texttt{scripts/ExhaustiveAxiomAudit.lean}: 19,987 constants, 13,004 theorems, 6,281 definitions) restricting transitive dependencies exclusively to \texttt{\{propext, Classical.choice, Quot.sound\}} (\texttt{0} \texttt{sorryAx}, \texttt{0} \texttt{Lean.ofReduceBool}). The version-pinned Lean 4 formalization archive (v1.0.0) is permanently archived on Zenodo under Apache-2.0 at \href{https://doi.org/10.5281/zenodo.24433585}{doi:10.5281/zenodo.24433585} (Concept DOI: \href{https://doi.org/10.5281/zenodo.24433584}{doi:10.5281/zenodo.24433584}) and can be verified from a clean unpack via \texttt{lake build \&\& lake env lean scripts/ExhaustiveAxiomAudit.lean} alongside \texttt{python3 validate.py}.
 
-\vspace{5pt}
-\noindent\textbf{Author contributions and AI disclosure:} This research and manuscript were directed by Degui Qian and completed with \textbf{Gemini 4 Carbon} and \textbf{ChatGPT 6 Astra} across mathematical derivation, pure-kernel Lean 4 formalization engineering, computable rational oracle verification, bibliographic cross-checking, and manuscript preparation. In accordance with Springer Nature authorship and generative AI policies, AI systems are not listed as co-authors; Degui Qian defined the research program, problem formulations, and formalization architecture, audited and verified every mathematical proof, mechanized Lean 4 declaration, counterexample witness, and scholarly citation, and bears sole academic and legal responsibility for the entire work.
+\vspace{4pt}
+\noindent\textbf{Author contributions and AI disclosure:} This research and manuscript were directed by Degui Qian and completed with \textbf{Gemini 4 Carbon} and \textbf{ChatGPT 6 Astra} across mathematical derivation, Lean 4 formalization engineering, computable rational oracle implementation, bibliographic checking, and manuscript drafting. In accordance with Springer Nature authorship and generative AI policies, AI systems are not listed as co-authors. Degui Qian independently formulated the research questions, theorem statements, statistical risk contracts, and two-layer formalization architecture; re-ran Lean 4 (v4.33.1) typechecking and \texttt{scripts/ExhaustiveAxiomAudit.lean} locally across all compiled modules; cross-checked every exact rational dynamic-programming value, binomial acceptance/abstention rate, and finite counterexample via standalone exact-rational scripts (\texttt{validate.py}); verified every cited external reference; and bears sole academic and legal responsibility for the entire work.
 
-\vspace{5pt}
+\vspace{4pt}
 \noindent\textbf{Prior Open Dissemination \& Rights:} Copyright \copyright\ 2026 Degui Qian. Preprint prose and figures are licensed under Creative Commons Attribution 4.0 International (CC BY 4.0), permitted under Springer Nature preprint policies.
 \end{document}

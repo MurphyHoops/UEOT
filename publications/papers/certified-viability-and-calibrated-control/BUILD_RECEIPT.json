@@ -1,13 +1,13 @@
 {
-  "schema": "standalone-jar-build/2",
+  "schema": "standalone-jar-build/3",
   "version": "1.1",
-  "built_at_utc": "2026-11-22T07:20:52.070794+00:00",
-  "git_base_commit": "4b04fb0b030b99fb04439c00ca3026862a7ea114",
+  "built_at_utc": "2026-11-22T10:15:26.890966+00:00",
+  "git_base_commit": "8809ec8d226fda073b39917b80c779594bccd231",
   "commands": [
     "pandoc manuscript.md --standalone --number-sections --natbib --template=template.tex --lua-filter=layout.lua --to=latex --output=manuscript.tex",
     "latexmk -xelatex -interaction=nonstopmode -halt-on-error -outdir=build manuscript.tex",
-    "pandoc jar_blinded_manuscript.md --standalone --number-sections --natbib --template=template_jar.tex --lua-filter=layout.lua --to=latex --output=jar_blinded_manuscript.tex",
-    "latexmk -xelatex -interaction=nonstopmode -halt-on-error -outdir=build jar_blinded_manuscript.tex",
+    "pandoc jar_manuscript.md --standalone --number-sections --natbib --template=template_jar.tex --lua-filter=layout.lua --to=latex --output=jar_manuscript.tex",
+    "latexmk -xelatex -interaction=nonstopmode -halt-on-error -outdir=build jar_manuscript.tex",
     "latexmk -xelatex -interaction=nonstopmode -halt-on-error -outdir=build jar_title_page.tex"
   ],
   "tools": {
@@ -31,27 +31,27 @@
     ]
   },
   "inputs": {
-    "manuscript.md": "afdbcdd6f5635c5f010312b1ad2e2b1197d42dcb82ef7081678160536794e3e8",
-    "references.bib": "e86d669beec3eb4acf1f5483e9164806a7921dcc59bd9da8c5ea11781b81cfe5",
+    "manuscript.md": "4c0c0f1c7bbcb1227dc4e136dd5d92a00c8567a5d29be84a473aeb7fd475af93",
+    "references.bib": "7453e803c968c70a86fc60ea891d88eafc23aa670e087fa3f43c5a4b0531d46a",
     "template.tex": "5c9338c21647699537db60bcbd656421441074d1a21efb0ed694c07f8a930d9b",
     "layout.lua": "de0148834a2d17d4d1c9a0734ed94f38f5dfdf614d550f7b103f8e0cb1149ce9",
-    "generate_figures.py": "b5e7749a1d0012397090cc947b0995758573e89164205550c707fd387569d0c1",
-    "build.py": "f94b15b5c3611a0221f301f3d795ba3ef7a1c3a2aeb0bf88597373a8a65fb2ba",
-    "figures/fig1_synthesis_and_calibration.pdf": "5fe3db7f06039cd764765cf2db82e5a3ff344047629afce291e92ff643b5af9a",
-    "figures/fig2_fault_regret_and_kernel_dp.pdf": "5fabb0f40408ccebca7fc050dd70d4593c25d2c3b91e8fd12223c13a03e8e6ed",
-    "submissions/jar/template_jar.tex": "b026e984a04c17e69ae40a347f0a71732d9c951f560869943d524fffef68baea",
-    "submissions/jar/jar_title_page.tex": "04d407cfc2a71d441de4d3d1e83d511ff8679304e8df80c997bb0159813d6305"
+    "generate_figures.py": "a5bf3daed807cee5ed1cf90b75f4922596ffc9f2379e3a2e6ce494389e3f1706",
+    "build.py": "c52c317d11ba51d93de105049391bbc061f163dbe86f225ab71a85b0c3397a8c",
+    "figures/fig1_synthesis_and_calibration.pdf": "52950f07d0b075814c25815c9f02f98b99e0f58f3f7b9a0c7c83b20fb296a9bd",
+    "figures/fig2_fault_regret_and_kernel_dp.pdf": "aa4048914ad84139163a0edaf6f745ea341eb2a82361c022c9c84ae898373da2",
+    "submissions/jar/template_jar.tex": "e9f8c8a2bdc1bc6e7ac182d11ad50d9563a635247ac9f03bc4b49e92fef78de9",
+    "submissions/jar/jar_title_page.tex": "95f585275af20816de30c61b7635d502a0244a387851b593b44253fcb696cae1"
   },
   "outputs": {
-    "manuscript.tex": "d153f245e45047a236cadbc6dfac29f0cc0b6ebbb64b19b3a38c8b0344bdb34b",
-    "manuscript.pdf": "92b8ba5e8a022aaa12bd4f4ac3538d94673027e9f68f48787543c19bc7e2a0d6",
-    "submissions/jar/jar_blinded_manuscript.md": "f7f7c170e7e50a47f3876c23c22fcf7c9ac14a286f0e4647863416056cd4b0bb",
-    "submissions/jar/jar_blinded_manuscript.tex": "a8bbaa9ed2fba95c8411af335dc3fe31eef186e8762c6b58cc100916eccb509d",
-    "submissions/jar/jar_blinded_manuscript.pdf": "e20e7275711f482533ad7e47233c520a1f6127e789f739c226ad652d9070a8bb",
-    "submissions/jar/jar_title_page.pdf": "ffe979455e558e8a7e8b033023d025749fe6d7029892a44de19745ed6a57e163"
+    "manuscript.tex": "7b991b2227194f8a30ae1131d4968dd630cf40ec730a4378b352237adaba5b3c",
+    "manuscript.pdf": "3193b804c41b4c1c1327825956975a7c53874415f4304b9a392d2ab340032c9d",
+    "submissions/jar/jar_manuscript.md": "0ac4b7e04ef6bc5e21fd362d85159982d7a26d656598d588ecd2f62cdb204312",
+    "submissions/jar/jar_manuscript.tex": "656dca1462284c8ba47ee0c6c103d3a41060fa657ab8c317eea2c8f7d31cde3d",
+    "submissions/jar/jar_manuscript.pdf": "0c651467a45bd6fc057f3d6098c5c7681d0324b91a7a622c1ab13ab9bb2bc7cf",
+    "submissions/jar/jar_title_page.pdf": "e28cab14ec97f81ba0764c319e20bccb8dd37efc8d67083522e95376e81f7d4e"
   },
-  "pages": 35,
-  "jar_blinded_pages": 35,
+  "pages": 36,
+  "jar_pages": 36,
   "undefined_references_or_tex_errors": [],
   "missing_glyphs": [],
   "overfull_boxes": [],
