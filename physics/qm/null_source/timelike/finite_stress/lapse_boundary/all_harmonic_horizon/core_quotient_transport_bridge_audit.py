@@ -34,7 +34,7 @@ def main() -> None:
         "S_ANOMALY_OR_STABILITY_SELECTED": [
             "spacetime_dimension_D_eq_4",
             "conformal_scalar_coupling_xi_eq_1_over_6",
-            "quartic_sos_vacuum_stability_and_local_mediator_dirac_closure",
+            "quartic_sos_vacuum_stability_and_gate_free_3d_dirac_closure",
             "su3c_su3l_u1x_anomaly_and_ir_asymptotic_freedom_selection",
         ],
         "P_IRREDUCIBLE_PHYSICAL_POSTULATE": [

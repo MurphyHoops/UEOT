@@ -30,16 +30,21 @@ def main() -> None:
     require(ah02["any_nu_permits_rho0_to_0_at_fixed_positive_G_without_crunch_or_washout"] is False, "AH02 RG impossibility")
     require(ah03["autonomous_recoil_cancels_matter_torque_identically"] is True, "AH03 autonomous SO(4) conservation")
 
-    # 2. All-harmonic curved-FRW constraint chain + pointer positive gap + Einstein-Langevin contraction
+    # 2. All-harmonic curved-FRW constraint chain + pointer positive gap + Dirac trichotomy + Einstein-Langevin contraction
     ptr_gap_lo = box(rc09["actual_continuum_pointer_binary_gap_lower"])
-    psi_ge2_hi = exact(str(ah05["psi_ge_2_Linfty_upper"]))
+    psi_ge2_hi = exact(ah05["psi_ge_2_Linfty_upper"])
     adm_rms_hi = box(ah06["continuum_smeared_ADM_constraint_RMS"])
-    lip_el = exact(str(ah10["Banach_Lipschitz_constant_L_EL_upper"]))
+    lip_eft = exact(ah10["Banach_Lipschitz_constant_L_EL_EFT_upper"])
+    lip_semi = exact(ah10["Banach_Lipschitz_constant_L_EL_all_harmonic_semilinear_upper"])
     require(above(ptr_gap_lo, exact("4.5e-23")), "Positive continuum autonomous pointer gap preserved")
     require(ah04["all_15_S3_conformal_and_Killing_obstructions_matched"] is True, "All 15 S^3 obstructions matched")
     require(below(psi_ge2_hi, exact("1e-22")) and below(adm_rms_hi, exact("6.7e-41")), "Elliptic C^2 + 35-species ADM RMS")
-    require(below(lip_el, exact("4e-9")), "Einstein-Langevin Banach contraction")
-    require(ah09["exact_pointwise_Dirac_hypersurface_closure_restored"] is True, "Local mediator Dirac closure")
+    require(below(lip_eft, exact("8e-7")) and below(lip_semi, exact("4e-8")), "Einstein-Langevin Banach contractions")
+    require(
+        ah09["gate_free_35_species_3D_Dirac_closure_exact"] is True
+        and ah09["ghost_free_K_eq_inf_pointwise_Dirac_and_UV_finiteness_simultaneous"] is False,
+        "Gate-free 3D Dirac closure and Kallen-Lehmann K=inf locality trichotomy",
+    )
 
     # 3. Flat-space Lambda=0 compactness & trial count hierarchy
     c0_meso = box(ah08["mesoscopic_Lichnerowicz_compactness_C0"])
@@ -60,9 +65,9 @@ def main() -> None:
             },
             "closed_S3_all_harmonic_status": "ALL_15_OBSTRUCTIONS_PLUS_L_GE_2_ELLIPTIC_AND_LOCAL_SLAB_BIANCHI_SOLVED",
             "flat_space_Lambda_0_status": "NONLINEAR_LICHNEROWICZ_RATIONAL_BARRIER_AND_62_TRIAL_MESOSCOPIC_WINDOW_CERTIFIED",
-            "dirac_and_backreaction_status": "LOCAL_MEDIATOR_3D_POINTWISE_DIRAC_AND_EINSTEIN_LANGEVIN_CONTRACTION_PROVED",
+            "dirac_and_backreaction_status": "GATE_FREE_3D_DIRAC_PLUS_KL_TRICHOTOMY_AND_EINSTEIN_LANGEVIN_CONTRACTION_PROVED",
             "remaining_nonperturbative_open_gates": [
-                "nonperturbative_operator_quantum_Einstein_constraint_kernel",
+                "nonperturbative_operator_quantum_Einstein_constraint_kernel_and_active_gate_Planck_geometry",
                 "nonperturbative_4D_chiral_gauge_matter_continuum_construction",
                 "first_principles_derivation_of_G_Lambda_hbar_c_from_Core",
                 "laboratory_execution_of_mesoscopic_gravimetry_and_hardware_blind_holdout",

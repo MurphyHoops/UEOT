@@ -133,7 +133,7 @@ def main():
       "scientific_exit":{
         "operational_horizon_minimum_sensor_scale_and_RG_trichotomy":"PROVED_FOR_ALL_NORMAL_FOCK_STATES_AND_POWER_LAW_RG_EXPONENTS",
         "all_harmonic_l_ge_0_constraint_closure_and_smeared_Bianchi":"SOLVED_ACROSS_ALL_15_S3_OBSTRUCTIONS_L_GE_2_ELLIPTIC_MODES_AND_LOCAL_SLAB_BIANCHI",
-        "localized_flat_space_clock_and_dynamical_Einstein_Langevin":"SOLVED_WITH_RATIONAL_LICHNEROWICZ_BARRIER_LOCAL_MEDIATOR_DIRAC_AND_LANGEVIN_CONTRACTION",
+        "localized_flat_space_clock_and_dynamical_Einstein_Langevin":"SOLVED_WITH_RATIONAL_LICHNEROWICZ_BARRIER_GATE_FREE_DIRAC_KL_TRICHOTOMY_AND_LANGEVIN_CONTRACTION",
         "nonperturbative_quantum_Einstein_and_hardware_certification":"OPEN",
         "physical_unification":"OPEN"}}
     out.write_text(json.dumps(result,indent=2,ensure_ascii=False,sort_keys=True)+"\n")

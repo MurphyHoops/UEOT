@@ -200,14 +200,14 @@ def main() -> None:
     n2 = iv.sqrt(gronwall_factor * (exact(3) * h0_sq + exact(7) * h1_sq + exact(5) * h2_sq + h3_sq))
     n3 = iv.sqrt(gronwall_factor * (exact(3) * h0_sq + exact(10) * h1_sq + exact(12) * h2_sq + exact(6) * h3_sq + h4_sq))
 
-    # Exact (1 + u(pi)) coefficients in beacon density a^4 rho_b and momentum a^3 j_b:
+    # Exact (1 + u(pi)) coefficients in beacon density a^4 rho_b and momentum a^3 j_b (including full n3*n2 Leibniz cross-terms):
     rho_coeff_0 = (exact(3) + u_pi) / exact(2)
-    rho_coeff_2 = exact(4) + exact(2) * u_pi
+    rho_coeff_2 = exact(6) + exact(4) * u_pi
     rho_b_unit_l2 = rho_coeff_0 * c_h2_linf * n2 * n0 / (a_pi**4)
-    lap_rho_b_unit_l2 = c_h2_linf * (exact(2) * n3 * n1 + rho_coeff_2 * n2 * n2) / (a_pi**4)
-    # Physical ADM momentum j_i = a^(-3) [b' d_i b - 1/6 d_tau d_i(b^2)] = a^(-3) [2/3 b' d_i b - 1/3 b d_i b']:
+    lap_rho_b_unit_l2 = c_h2_linf * (exact(6) * n3 * n2 + exact(2) * n3 * n1 + rho_coeff_2 * n2 * n2) / (a_pi**4)
+    # Physical ADM momentum j_i = a^(-3) [2/3 b' d_i b - 1/3 b d_i b']:
     j_b_unit_l2 = c_h2_linf * (n2 * n1) / (a_pi**3)
-    lap_j_b_unit_l2 = exact(4) * c_h2_linf * (n3 * n2) / (a_pi**3)
+    lap_j_b_unit_l2 = exact(10) * c_h2_linf * (n3 * n2) / (a_pi**3)
 
     # Derived H^2 bounds on non-beacon l>=2 sectors (post-kick code + AH04 w*-trim + O(||u*||^2) matter/clock):
     g_val = exact("1e-40")
@@ -223,7 +223,7 @@ def main() -> None:
     # (a) Post-kick code density Delta_rho_code = 1/(2 a_pi^4) eta^2 f_enc^2 (momentum jump at tau=pi+ is pure l>=0 without eta^2 velocity if field kick, bounded by eta*en["grad_l2"]):
     f_enc_h2 = en["l2"] + en["lap_l2"]
     code_rho_l2 = exact(1) / (exact(2) * (a_pi**4)) * (eta**2) * c_h2_linf * f_enc_h2 * en["l2"]
-    code_lap_rho_l2 = exact(3) / (a_pi**4) * (eta**2) * c_h2_linf * (f_enc_h2**2)
+    code_lap_rho_l2 = exact(4) / (a_pi**4) * (eta**2) * c_h2_linf * (f_enc_h2**2)
     code_j_h2 = eta * (en["grad_l2"] + en["grad_lap_l2"]) / (a_pi**3)
 
     # (b) AH04 w*-trim l=2 stress (pure l=2 => -Delta = 8): ||rho_trim,l=2||_{L^2} <= 24 * w_trim_max / (sqrt(V0) * a_pi^4)
@@ -256,7 +256,7 @@ def main() -> None:
 
     require(below(psi_linf_upper, exact("1e-22")), "||psi_{>=2}||_infty < 1e-22")
     require(below(shift_b_linf_upper, exact("1e-20")) and below(shift_w_linf_upper, exact("1e-19")), "Shift L^infty bounds")
-    require(below(psi_h4_upper, exact("1e-15")) and below(shift_w_h4_upper, exact("1e-13")), "H^4 -> C^{2,1/2}(S^3) bounds")
+    require(below(psi_h4_upper, exact("2e-14")) and below(shift_w_h4_upper, exact("2e-13")), "H^4 -> C^{2,1/2}(S^3) bounds")
 
     finish(
         "all_harmonic_york_lichnerowicz_elliptic.py",

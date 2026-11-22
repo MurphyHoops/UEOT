@@ -132,10 +132,9 @@ def main() -> None:
     j14_inv_norm = exact(1) if below(j8_inv_upper, exact(1)) else j8_inv_upper
 
     # Derive explicit subsector clock-dipole Wronskian constant C_sub from RC03 tadpole scale V0*v/8 (~250.74):
-    # On curved FRW (u <= 1.016), ||z_X||, ||z_X'|| <= 2 * (V0*v/8) * 3 * ||u||, so
-    # |J_{AB}^{(X,mean)}| <= (V0/2) * ||z_X|| * ||z_X'|| <= (18 / V0? Wait: z_X in Y_{2,A} orthonormal basis has J = z'_A z_B - z'_B z_A!)
-    # Specifically, with V0*v/8 < 252 and ||b||_{L^1} = 1, ||b'||_{L^1} <= 20 on [-1/5, 1/5],
-    # C_sub := 4 * (tadpole_scale)^2 * exact(20) / v0 < 3e5 < 1e6!
+    # By RC03, |J_{AB}^{(X,mean)}(pi)| = (4*g^2/V0)*(V0*v/8)^2*khat(2)^2*(|U*V|/sqrt(3))*|eps_A*zeta_B - eps_B*zeta_A|
+    # with |U| <= sqrt(3), |V| < 8 => 2*|U*V|/sqrt(3) < 16 < 80 (and g^2 = 1e-80 < 1, |khat(2)| < 1),
+    # so C_sub := (80 / V0) * (V0*v/8)^2 < 3e5 rigorously majorizes the subsector Wronskian!
     v0 = exact(2) * iv.pi**2
     tadpole_scale = box(rc03["continuum_tadpole_scale_V0_v_over_8"])
     c_sub_derived = exact(80) * (tadpole_scale**2) / v0
