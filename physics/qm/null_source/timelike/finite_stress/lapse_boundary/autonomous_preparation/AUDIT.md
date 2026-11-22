@@ -1,64 +1,89 @@
-# Audit -- in progress
-Parent exact-head science CI 44949581819 succeeded at baseline 8bdeec29:
-28 decoded PASS entries, exact log and artifact identities in baseline_ci.json.
-The driver freezes 1023 inherited scientific files and reuses 276 results.
+# Audit: autonomous preparation and local record research
 
-AP1: 5a12e8a52b8d89ff6b4c7285f5ea72b2e2ab4f26.
-Science 44968084893 and publication 44968084924 succeeded.
-Three immutable read-only agent records cover 24 commit--file identities
-(21 full-text review identities plus 3 ancestor hash-only identities).
-Two proof wording findings are corrected in the working sources, awaiting
-fixed-commit confirmation. The ledger retains the original FINDINGS records.
+Physical unification remains OPEN. Science-source audit through AP8 is
+complete; final report audit and the independently timed session closure
+remain in progress. The machine-readable ledger is source_audits.json.
 
-Root alone runs new scientific Python through Desktop Commander Local Mac.
-No old scientific module, mode ODE or geometry ODE is executed.
-Core stays read-only; GI excluded. These certificates and native agent reviews
-are not external human peer review or machine formal proofs.
+## Scope and evidence
 
-## AP2 immutable resolution
+Root alone wrote files and ran the new scientific Python via Desktop
+Commander Local Mac. Exactly three native read-only agents performed
+independent derivation and immutable-source review. No predecessor
+scientific module, mode ODE or geometry ODE was executed/imported.
+Core remains read-only; GI is excluded; the existing branch and open
+draft PR #468 are preserved, with no merge.
 
-AP2 is 5b55f4485b411c9eca1f1e56f742326144b56643. Three PASS
-records were obtained from the same three native read-only agents.
-There are now six immutable review records and 68 recorded commit-file
-identities: 63 full-text reads and five hash-only checkpoint reads.
-AP1 records retain FINDINGS; the two findings now carry the verified AP2
-resolution. B and C did not independently recalculate hashes. Root binds
-every declared identity to git-show bytes; A additionally checked the
-new certificate hashes. AG--AK await their own immutable review.
+The driver reuses 276 predecessor verification entries and freezes 1023
+scientific files, checking exact inventory, working bytes and baseline
+Git bytes before and after each run. The baseline is
+8bdeec29495bf5db2819704dee4e3daf58e6d135. Its exact-head science run
+44949581819/job136984324176 has 28 decoded PASS entries and a recorded
+log/artifact identity in baseline_ci.json; publication44949581820 passed.
 
-## AP3 immutable audit
+The new cohort has 17 scientific certificate entrypoints and one scope/
+source-binding entrypoint. Certificates, analytic proofs, native internal
+review, CI and experiments are different evidence classes. No external
+human peer review, machine formal proof, new counted Core theorem or
+laboratory result is claimed.
 
-Nine review records now contain 120 commit-file identities: 108 full-text
-reads and 12 hash-only checkpoint reads. AP3 has three PASS records, no
-new findings. Root verified every declared identity against immutable
-git-show bytes. The current AL--AN additions await their own fixed-commit
-review; this session remains in progress.
+## Immutable checkpoints and observed CI
 
-## AP4 review
+| Checkpoint | Full review commit | New science + scope entries then | Science CI | Existing manuscript CI |
+|---|---|---:|---:|---:|
+| AP1 | 5a12e8a52b8d89ff6b4c7285f5ea72b2e2ab4f26 | 2 + 1 | 44968084893 | 44968084924 |
+| AP2 | 5b55f4485b411c9eca1f1e56f742326144b56643 | 5 + 1 | 44970028728 | 44970028730 |
+| AP3 | 64d5a69d50eed59a0a27a301074dc89b15b8c2af | 10 + 1 | 44970781095 | 44970781114 |
+| AP4 | accc1f0356cf6e4ef2e126e4ff1d904c345463c7 | 13 + 1 | 44972195272 | 44972195257 |
+| AP5 | 7696fd194d9c7d739b484e9025e636d40ff4811c | 14 + 1 | 44973076343 | 44973076316 |
+| AP6 | 556c15ade1cbb752a8a0a07730ad337c6e7106ac | 15 + 1 | 44974085206 | 44974085106 |
+| AP7 | d286f8333d8d52cf1f210a8928aecdf4af5a47f4 | 16 + 1 | 44975134504 | 44975134498 |
+| AP8 | aa3c20c561415158f3d22f0759aa666174bf39a9 | 17 + 1 | 44976789340 | 44976789333 |
 
-Twelve review records contain 165 commit-file identities: 141 full-text
-reads and 24 hash-only reads. AP4's science/domain review passed; its one
-editorial finding remains OPEN pending immutable AP5 reread. AL/AM/AN
-clarifications and AO will be audited at that next checkpoint.
+All listed workflow conclusions were actually observed as success.
+AP4 science sources were first committed at6af32fd7d991e3555e006c84fe32bf233c5da8c6
+before the completed receipt was persisted; the complete AP4 checkpoint
+above includes that receipt. The source manifest did not change during
+the verification run. Later checkpoints waited for receipt completion
+before committing. Final exact-head CI is to be checked after the final
+timing/report commit; these earlier runs are not a claim about that head.
 
-## AP5 fixed-commit audit
+## Review records and findings
 
-Three PASS records at 7696fd194d9c7d739b484e9025e636d40ff4811c add
-27 full-text and 8 hash-only commit-file identities. Ledger total:
-15 records, 200 identities (168 full-text, 32 hash-only). All findings
-currently resolved; final audit is still pending further work. Identity
-repetitions across reviewers/checkpoints are not distinct scientific files.
+The ledger currently contains 24 actual immutable
+review records and 254 commit-file identities: 207
+full-text identities and 47 hash-only checkpoint identities.
+Repeated identities across agents/checkpoints are not distinct files.
+Root matches every declared SHA256 to git-show bytes. A additionally
+checked certificate bindings independently; B and C did mathematical
+and scope review without claiming independent byte-hash recomputation.
 
-## AP6 immutable review
+Four findings are retained with their original FINDINGS records and
+actual immutable resolution:
 
-Three actual full-text reads of the three AP files, plus five A hash-only
-sources, bring the ledger to 18 records and 214 identities (177 full-text,
-37 hash-only). AP6-C-001 remains open pending immutable verification of
-the explicit graph-domain clarification. All three agents are read-only;
-only root executed the new science.
+| Finding | Correction | Resolved at |
+|---|---|---|
+| AP1-C-001 | Bound direction: above, not below | AP2 |
+| AP1-A-002 | Define scalar Taylor remainder and remove symbol collision | AP2 |
+| AP4-C-001 | Nonempty stability region, since eta=0 is included | AP5 |
+| AP6-C-001 | Common-diagonal graphs / varying-H_K recovery; finite bare tails need not be in the fixed full-H form domain | AP7 |
 
-## AP7 immutable review
+All four are RESOLVED. AP8 has three PASS records and no new finding.
+The full scientific audit includes AR's future smooth tensor-noise
+increment and NEXT_GATE's limited frozen-source scalar-curvature test.
+Those additions are not independent Core theorems or extra certificate
+entrypoints.
 
-All three PASS; AP6-C-001 resolved at d286f8333d8d52cf1f210a8928aecdf4af5a47f4.
-Current ledger: 21 records, 237 identities
-(195 full-text, 42 hash-only). Final audit still pending.
+## Timing and interpretation
+
+Independent start:2026-11-21T23:57:47Z /2026-11-22 07:57:47 Beijing.
+The three-hour threshold is2026-11-22T02:57:47Z /10:57:47 Beijing.
+No earlier session time is counted. session_timing.json remains the
+authoritative completed-time receipt; a future threshold is not elapsed
+work. This audit will be finalized after actual final scope review.
+
+The report distinguishes separate model families, real cutoff limits
+from formal loop expansions, mean insertions from sharp operator domains,
+record probability gaps from gravitational errors, and retained-field
+costs from the missing physical apparatus stress. The next gate is the
+same-state joint preparation/metric/apparatus response and all Einstein
+constraints; it has not been signed complete.

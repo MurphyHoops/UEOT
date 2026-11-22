@@ -1,7 +1,9 @@
 # Autonomous preparation, complete records and local-field gates
 
 Baseline: 8bdeec29495bf5db2819704dee4e3daf58e6d135.
-This independently timed session remains IN_PROGRESS. Physical unification OPEN.
+Physical unification OPEN. [本轮统一进展报告](UNIFICATION_PROGRESS.md).
+Science closure through AP8 is accepted; independent session timing and
+final reporting audit are still IN_PROGRESS.
 
 ## Constructed global comparisons
 

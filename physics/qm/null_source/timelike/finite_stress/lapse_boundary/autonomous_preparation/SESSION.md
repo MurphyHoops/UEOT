@@ -189,3 +189,21 @@ nonselective increment on smooth future tests; it reproduces the
 retained energy formula and does not subtract sharp divergent variances
 or include the missing apparatus stress. The root certificate checks
 the noncommuting Gaussian polynomial identity.
+
+## AP8 immutable acceptance and final synthesis
+
+All three agents actually read LOCAL_RECORD.md, local_record.py/json and
+NEXT_GATE.md at aa3c20c561415158f3d22f0759aa666174bf39a9, with PASS
+and no new findings. A checked all eight bindings and five additional
+hash-only dependencies. Science CI 44976789340 and manuscript/publication
+CI 44976789333 succeeded at exactly that head. The full 18-entry root
+receipt completed before this commit; 17 are science entries and one is
+scope/source binding. The AR tensor-noise addition was separately rerun
+through the full gate after its noncommuting Gaussian algebra was added.
+
+The Chinese progress report distinguishes the global high-mass comparison,
+the global energy-QND example, the nonlinear local candidate and the actual
+linear local preparation/record chain. No global energy-preserving pointer
+is silently attached to the local cap instrument. Final scope review and
+the independently measured minimum-duration gate are still pending; no
+prior session time or predicted future time is reported as completed.
