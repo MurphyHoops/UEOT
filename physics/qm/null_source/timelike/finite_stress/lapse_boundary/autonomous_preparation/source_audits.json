@@ -1,12 +1,114 @@
 {
-  "schema": "ueot-autonomous-preparation-source-audits/1",
+  "final_audit_complete": false,
+  "findings": [
+    {
+      "checkpoint": "AP1",
+      "correction_written": true,
+      "description": "AB2 bound-direction typo: bounded below should be bounded above.",
+      "id": "AP1-C-001",
+      "immutable_resolution_pending": true,
+      "reviewer": "/root/c_record_stress",
+      "status": "OPEN"
+    },
+    {
+      "checkpoint": "AP1",
+      "correction_written": true,
+      "description": "Define the scalar vacuum Taylor remainder explicitly and avoid collision with number operator h.",
+      "id": "AP1-A-002",
+      "immutable_resolution_pending": true,
+      "reviewer": "/root/a_outside_evolution",
+      "status": "OPEN"
+    }
+  ],
   "native_read_only_agents": 3,
+  "records": [
+    {
+      "checkpoint": "AP1",
+      "commit": "5a12e8a52b8d89ff6b4c7285f5ea72b2e2ab4f26",
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/COLLISION.md": "7c1ad06e676e2e3a28949d7177710fb84f1f5e4a335b539e8cfc88b55b687abc",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/RESOURCE_BUDGET.md": "9ddc2e44527a54820c334b09feb7473f2b26a1c159fa1a8183a845c4fbd4fcf8",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/collision.json": "51fae114e45826c62bd1243b9a6b889e8e0739cb2a64a6d7af30660f8c405d7b",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/collision.py": "79d70b5fa70475acd990001712e83c3b7d581cebf0f0deb7830e830d3af09e7d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/common.py": "8f113ddac750df06c9f6d69a4e3f30e4f191b76bd51bb5339fabc389c321fd2d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/resource_budget.json": "f9ad99c836c361b4f68544ea79a604579abd5a0e242b06343c29af77367ccec2",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/resource_budget.py": "d44664ac91fd6b9963be8786950b119c2b051f3e46dea53ff39768eba2d821a9"
+      },
+      "findings": [
+        "AP1-C-001"
+      ],
+      "reviewer": "/root/c_record_stress",
+      "scope": "Complete instrument, source/environment scope, residual and refined interval-budget logic; actual immutable files read; no scientific execution.",
+      "status": "FINDINGS"
+    },
+    {
+      "checkpoint": "AP1",
+      "commit": "5a12e8a52b8d89ff6b4c7285f5ea72b2e2ab4f26",
+      "file_review_modes": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/COLLISION.md": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/RESOURCE_BUDGET.md": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/collision.json": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/collision.py": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/common.py": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/resource_budget.json": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/resource_budget.py": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/conformal_action/PROBE_PHASE.md": "hash_only_at_this_checkpoint",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/conformal_action/QUANTUM_CONTROLLER.md": "hash_only_at_this_checkpoint",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/conformal_action/quantum_controller.json": "hash_only_at_this_checkpoint"
+      },
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/COLLISION.md": "7c1ad06e676e2e3a28949d7177710fb84f1f5e4a335b539e8cfc88b55b687abc",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/RESOURCE_BUDGET.md": "9ddc2e44527a54820c334b09feb7473f2b26a1c159fa1a8183a845c4fbd4fcf8",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/collision.json": "51fae114e45826c62bd1243b9a6b889e8e0739cb2a64a6d7af30660f8c405d7b",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/collision.py": "79d70b5fa70475acd990001712e83c3b7d581cebf0f0deb7830e830d3af09e7d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/common.py": "8f113ddac750df06c9f6d69a4e3f30e4f191b76bd51bb5339fabc389c321fd2d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/resource_budget.json": "f9ad99c836c361b4f68544ea79a604579abd5a0e242b06343c29af77367ccec2",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/resource_budget.py": "d44664ac91fd6b9963be8786950b119c2b051f3e46dea53ff39768eba2d821a9",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/conformal_action/PROBE_PHASE.md": "5b7cdaa7bae884492163e2a1ae7413db896b280ce08548223c13cd7378817a6f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/conformal_action/QUANTUM_CONTROLLER.md": "1ec6fe186a227b85c490ec2cd09dc91e573b43d0765f5f76f756493abeeef94c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/conformal_action/quantum_controller.json": "1f2599793b5d34bedd6c0dfe6f6ddcf17713eb006f124f0eaaef29e4a89dc7ba"
+      },
+      "findings": [
+        "AP1-C-001",
+        "AP1-A-002"
+      ],
+      "reviewer": "/root/a_outside_evolution",
+      "scope": "Actual immutable text read; mathematical/domain/resource scope audited; no scientific execution.",
+      "status": "FINDINGS"
+    },
+    {
+      "checkpoint": "AP1",
+      "commit": "5a12e8a52b8d89ff6b4c7285f5ea72b2e2ab4f26",
+      "file_review_modes": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/COLLISION.md": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/RESOURCE_BUDGET.md": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/collision.json": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/collision.py": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/common.py": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/resource_budget.json": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/resource_budget.py": "full_text_read"
+      },
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/COLLISION.md": "7c1ad06e676e2e3a28949d7177710fb84f1f5e4a335b539e8cfc88b55b687abc",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/RESOURCE_BUDGET.md": "9ddc2e44527a54820c334b09feb7473f2b26a1c159fa1a8183a845c4fbd4fcf8",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/collision.json": "51fae114e45826c62bd1243b9a6b889e8e0739cb2a64a6d7af30660f8c405d7b",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/collision.py": "79d70b5fa70475acd990001712e83c3b7d581cebf0f0deb7830e830d3af09e7d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/common.py": "8f113ddac750df06c9f6d69a4e3f30e4f191b76bd51bb5339fabc389c321fd2d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/resource_budget.json": "f9ad99c836c361b4f68544ea79a604579abd5a0e242b06343c29af77367ccec2",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/resource_budget.py": "d44664ac91fd6b9963be8786950b119c2b051f3e46dea53ff39768eba2d821a9"
+      },
+      "findings": [
+        "AP1-C-001"
+      ],
+      "reviewer": "/root/b_preparation_domains",
+      "scope": "Actual immutable text read; mathematical/domain/resource scope audited; no scientific execution.",
+      "status": "FINDINGS"
+    }
+  ],
   "reviewers": [
     "/root/a_outside_evolution",
     "/root/b_preparation_domains",
     "/root/c_record_stress"
   ],
-  "records": [],
-  "findings": [],
-  "final_audit_complete": false
+  "schema": "ueot-autonomous-preparation-source-audits/1"
 }

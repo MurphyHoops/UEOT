@@ -35,8 +35,12 @@ For example,
 c2< [7+(.85)^2/a] pi/[4sqrt(3)a].
 The differentiated vacuum sum satisfies
 sup_K||e_K'|| <= 5(.85)r_*^3 zeta(5)/[32a^(7/2)]<.003, (AC1)
-using zeta(5)<5/4. This estimate follows by Taylor's theorem for
-h'(z) at zero, with |h^(4)|<=15/[16a^(7/2)].
+using zeta(5)<5/4. Define the scalar function
+b(z)=[sqrt(1+z)+sqrt(1-z)-2]/2+z^2/8, so
+e_K(x)=sum_(k<=K) k^3 b(r(x)/k^2).
+Here b'(0)=b''(0)=b'''(0)=0. Taylor's theorem for b'(z),
+with |b^(4)|<=15/[16a^(7/2)], gives (AC1).
+This b is a scalar function, distinct from AB's number operator h.
 It is a bound on the SAME subtracted e_K; no x-dependent vacuum
 energy is discarded.
 

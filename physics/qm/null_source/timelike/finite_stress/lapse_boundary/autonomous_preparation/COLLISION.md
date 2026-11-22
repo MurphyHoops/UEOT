@@ -51,7 +51,7 @@ Psi_trial,K(t,x)=b_t(x) W_K(x) Phi_K(t).
 Then
 i Phi_K'=[D_K(X)+e_K(X)-i v A_K(X)] Phi_K.               (AB2)
 This does not prescribe the actual controller path. The actual evolution
-remains exp(-it H_M,K); its distance from this trial is bounded below.
+remains exp(-it H_M,K); its distance from this trial is bounded above.
 
 Let h=Nop+2 and c(x)=||theta'(x)||_l2, including both signs and k^2
 multiplicity. For the pair operators, the ordinary Fock estimates give
@@ -118,7 +118,13 @@ Thus the total vector error is bounded by
 epsilon_coarse=1310delta+2640/(M delta)+250/M.           (AB7)
 
 At every finite K, b_t is H2 and the finite-mode Gaussian vector has
-all number moments. The trial is in the actual operator domain, so
+all number moments. Its second x derivative is
+W_K[b_t''Phi_K+2b_t'A_KPhi_K+b_t(A_K'+A_K^2)Phi_K],
+which is in L2 by these moments and bounded squeeze coefficients.
+The finite-K fiber Hamiltonian also maps the trial into L2. Integration
+by parts in the closed-form representation identifies this vector with
+H_M,K acting on the trial. The trial is therefore in the actual operator
+domain, and is C1 in time as a Hilbert vector at finite K, so
 Duhamel is legitimate there. We do NOT assume that its infinite-mode
 version is differentiable in a bare free-energy domain, or that A Phi
 has finite field energy. Apply the estimates at finite K and then use
@@ -165,7 +171,10 @@ d_actual>=d_cl-2epsilon_coarse.
 For M=10^16 and delta=10^-7, epsilon_coarse=0.000133640000025
 and d_actual>0.0021. All are ESU model units, not seconds or SI resources.
 
-The exact normal CP instrument is defined by the fixed product environment,
+For a variable full-source input, the fixed environment is the controller
+packet tensor the full probe vacuum; high-source vacuum is part of the two
+chosen code states, not part of that environment.
+The exact normal CP instrument is defined by this fixed product environment,
 the actual U_M and M_z for arbitrary normal FULL-source/reference inputs.
 The numerical approximation bound is only proved for the specified two
 coherent codes (and may be extended under separately stated moment bounds).
