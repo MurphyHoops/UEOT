@@ -18,15 +18,15 @@ and closes Row 7 of `PREMISES_AND_RESPONSIBILITIES.md` §5:
    second-cycle excess `s^2 (p - q)` over a fresh Gibbs bath, specializing at `(s = 1/4, p = 4/5, q = 1/5)`
    to the exact Chapter 71 value `3 / 80 = 0.0375`.
 
-3. **Omega-Loop Self-Sustaining No-Go Without External Reset Work (`bistochastic_purity_strict_decrease`)**:
-   Under any nontrivial doubly-stochastic thermal mixing `0 < s < 1` with `p ≠ q`, joint 2-purity strictly
-   decreases by `4 s (1 - s) (p - q)^2 > 0`, ruling out autonomous purity regeneration without external
-   re-preparation work.
+3. **Product-Input Marginal / Classical Bistochastic Purity Drop (`bistochastic_purity_strict_decrease`)**:
+   Under any nontrivial doubly-stochastic mixing step `0 < s < 1` with `p ≠ q` starting from an uncorrelated
+   diagonal product input (or under an incoherent/dephased classical bistochastic channel), the sum of
+   single-subsystem 2-purities strictly decreases by `4 s (1 - s) (p - q)^2 > 0`. (Coherent multi-pulse
+   unitary evolution without inter-step decorrelation conserves joint purity and can exhibit coherent revivals.)
 
-4. **Cauchy-Schwarz Participation Lower Bound for Non-Commuting Limit Exchange (`participation_return_lower_bound`)**:
+4. **Cauchy-Schwarz Participation Lower Bound (`participation_return_lower_bound`)**:
    For any normalized spectral weight distribution `∑_{i : Fin d} w_i = 1` (`d ≥ 1`), the infinite-time
-   Cesaro return probability `∑ w_i^2` is bounded below by `1 / d > 0`, establishing a strict gap against
-   continuum decay limits (`lim_{t→∞} lim_{d→∞} = 0 ≠ lim_{T→∞} p_avg(d) ≥ 1/d`).
+   Cesaro return probability `∑ w_i^2` is bounded below by `1 / d > 0` at every finite Hilbert dimension `d`.
 -/
 
 namespace UEOTPhysicsUnification.ThermodynamicsAndLandauerBounds
@@ -100,8 +100,9 @@ theorem bistochastic_purity_drop_identity (s p q : ℝ) :
   unfold binaryPurity swapProbe swapBath
   ring
 
-/-- Strict purity decrease (`Omega-loop no-go`): for `0 < s < 1` and `p ≠ q`, isolated doubly-stochastic
-exchange strictly reduces total 2-purity without external reset work. -/
+/-- Strict single-step marginal purity decrease: for `0 < s < 1` and `p ≠ q`, a doubly-stochastic
+mixing map applied to uncorrelated populations `(p, q)` strictly reduces the sum of marginal 2-purities
+(and decreases state purity irreversibly across cycles under inter-step decorrelation / classical mixing). -/
 theorem bistochastic_purity_strict_decrease
     {s p q : ℝ} (hs0 : 0 < s) (hs1 : s < 1) (hpq : p ≠ q) :
     binaryPurity (swapProbe s p q) + binaryPurity (swapBath s p q) <

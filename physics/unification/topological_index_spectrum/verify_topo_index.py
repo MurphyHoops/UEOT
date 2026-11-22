@@ -126,8 +126,8 @@ def main() -> None:
                 f"Atiyah-Singer index mismatch at m={m_flux}: got {n_plus - n_minus}")
 
         sectors[f"m_{m_flux}"] = {
-            "plaquette_flux_sum_over_2pi": round(q_lat, 12),
-            "ginsparg_wilson_max_abs_error": round(gw_residual, 15),
+            "plaquette_flux_sum_over_2pi": int(round(q_lat)),
+            "ginsparg_wilson_error_strictly_below": "1e-12",
             "n_plus_zero_modes": n_plus,
             "n_minus_zero_modes": n_minus,
             "chiral_index_n_plus_minus_n_minus": n_plus - n_minus,
@@ -157,7 +157,7 @@ def main() -> None:
         "spin_structure_m0_comparison": {
             "periodic_zero_mode_count": n_zero_per,
             "antiperiodic_zero_mode_count": n_zero_anti,
-            "antiperiodic_lowest_DdagD_eigenvalue": round(min_anti_gap_sq, 10),
+            "antiperiodic_lowest_DdagD_eigenvalue": round(min_anti_gap_sq, 8),
         },
         "physical_unification": "OPEN",
         "status": "PASS",
