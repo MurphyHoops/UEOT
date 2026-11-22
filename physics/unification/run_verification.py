@@ -24,6 +24,12 @@ SUITES = [
     ("spacetime_gravity_bounds", HERE / "spacetime_gravity_bounds/verify_spacetime_gravity.py", HERE / "spacetime_gravity_bounds/result.json"),
     ("topological_index_spectrum", HERE / "topological_index_spectrum/verify_topo_index.py", HERE / "topological_index_spectrum/result.json"),
     ("flavor_spam_identifiability", HERE / "flavor_spam_identifiability/verify_flavor_spam.py", HERE / "flavor_spam_identifiability/result.json"),
+    ("superselection_born_contextuality", HERE / "superselection_born_contextuality/verify_superselection_born.py", HERE / "superselection_born_contextuality/result.json"),
+    ("micro_gaussian_tail_galerkin", HERE / "micro_gaussian_tail_galerkin/verify_gaussian_tail.py", HERE / "micro_gaussian_tail_galerkin/result.json"),
+    ("spin_statistics_qed", HERE / "spin_statistics_qed/verify_spin_qed.py", HERE / "spin_statistics_qed/result.json"),
+    ("electroweak_neutrino_seesaw", HERE / "electroweak_neutrino_seesaw/verify_ew_seesaw.py", HERE / "electroweak_neutrino_seesaw/result.json"),
+    ("dimension_inflation_dm_qg", HERE / "dimension_inflation_dm_qg/verify_dim_cosmo_qg.py", HERE / "dimension_inflation_dm_qg/result.json"),
+    ("pi_phi_god_goa_gates", HERE / "pi_phi_god_goa_gates/verify_piphi_goa.py", HERE / "pi_phi_god_goa_gates/result.json"),
 ]
 
 
@@ -88,6 +94,12 @@ def main() -> int:
             "UEOTPhysicsUnification.SpacetimeEquivalenceAndGravityBounds",
             "UEOTPhysicsUnification.TopologicalCarrierAndIndex",
             "UEOTPhysicsUnification.FlavorCyclicAndSPAMContract",
+            "UEOTPhysicsUnification.QuantumSuperselectionAndBorn",
+            "UEOTPhysicsUnification.CorrelatedGaussianTailAndGalerkin",
+            "UEOTPhysicsUnification.SymplecticSpinStatisticsAndQED",
+            "UEOTPhysicsUnification.ElectroweakCustodialAndSeesaw",
+            "UEOTPhysicsUnification.SpacetimeDimensionAndEarlyLateCosmology",
+            "UEOTPhysicsUnification.ActionSelectionAndAttractorRates",
         ],
         "physical_unification": "OPEN",
         "rendezvous_compatibility": {
