@@ -61,3 +61,12 @@ next construction must satisfy.
 has an exact coupled-Hadamard state and spacetime-smeared tensor noise,
 but its specified coherent codes fail the static Einstein pressure equation.
 A source-sign record is not an energy or geometric-charge record.
+
+## Actual finite-past preparation and work
+
+[AQ: smooth external ramp, actual all-mode state and calibrated record](EXTERNAL_RAMP.md),
+[certificate](external_ramp.json). The specified local linear model now
+has a real preparation past, explicit .43/(tau*k^3) final and
+.60/(tau*k^3) intermediate bounds, retained counterterm/work/phase,
+and the same-state sign record. Its external source and reader hardware
+have not been made into a local autonomous gravitational apparatus.

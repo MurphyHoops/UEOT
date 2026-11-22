@@ -139,3 +139,20 @@ explicit static-pressure rejection. Prior W/X local probe existence is
 acknowledged. This does not transfer AB resource numbers or replace the
 accepted original nonstatic mean geometry. Work continues within this
 independently timed session.
+
+## AP6 graph-domain correction and AQ preparation closure
+
+At immutable 556c15ade1cbb752a8a0a07730ad337c6e7106ac all three
+reviewers passed the AP coefficients but confirmed AP6-C-001: graph
+convergence must explicitly mean varying H_K recovery or fixed diagonal
+representation, not fixed physical H_r graphs for bare-tail cutoff
+vectors. The displayed varying-operator equations were correct; the
+ambiguous prose is corrected in this checkpoint and awaits reread.
+
+The next closed comparison AQ actually starts in the free past, retains
+all cutoff phases and the source counterterm, and derives a normal
+Hadamard ramp output, uniform mean/second-energy and mean-work control,
+and a complete same-state readout. At active intermediate times the third
+instantaneous energy moment diverges; endpoint flatness is essential for
+all final moments. No old mode/geometry ODE was rerun. The external ramp
+is not relabeled as an autonomous gravitational controller.

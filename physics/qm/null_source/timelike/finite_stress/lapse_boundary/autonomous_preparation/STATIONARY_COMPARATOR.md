@@ -60,7 +60,11 @@ Consequently
 \(H_{r,K}^j\Omega_{r,K}=e_K^j\Omega_{r,K}\to e^j\Omega_r\).
 A displacement of the \(k=1\) source mode has a finite coherent
 Poisson law independent of higher cutoffs, so the same convergence holds
-in every fixed coupled-energy graph for the displaced vectors below.
+as varying-operator graph recovery
+\(H_{r,K}^j\Psi_K\to H_r^j\Psi\) for every fixed integer power and
+the displaced vectors below. This is not fixed physical \(H_r\)-graph
+convergence: finite-cutoff vectors retain a bare high-mode vacuum tail
+and need not even belong to the full \(H_r\) form domain.
 No preparation from a decoupled finite past is asserted here.
 
 At each \(k\) the nonzero symmetric covariances are
@@ -252,8 +256,11 @@ Including degeneracies, the squared sum is bounded by
 \(H_r^p\) weight. The smooth coherent linear part is even simpler.
 In diagonal Fock space the cutoff vectors are projections onto
 constituents \(k,l\le K\), and \(W_K\to W\) transports them back.
-Thus the centered tensor vectors converge in every fixed dressed-energy
-graph. This is a fixed-background centered-noise construction; subtracting
+Thus the centered tensor vectors converge in each fixed power of the
+common diagonal energy graph before transport. After \(W_K\) transport
+they converge strongly with varying-operator graph recovery
+\(H_{r,K}^j v_K\to H_r^jv\), not in a fixed physical \(H_r\) graph.
+For noninteger weights use the positive operator \(1+H_r-e\). This is a fixed-background centered-noise construction; subtracting
 each cutoff ground expectation is not a full absolute-gravity
 renormalization prescription.
 

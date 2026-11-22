@@ -60,7 +60,7 @@ finish("stationary_comparator.py",{
 "nonselective_same_H_energy_variance":outward(outvar),
 "pressure_second_derivative":outward(p2),
 "sharp_pressure_variance_lower_bound":"K/225; diverges",
-"stress_noise":"Full matrix W, complete tensor, spacetime tests; actual centered K-vector graph convergence",
+"stress_noise":"Full matrix W, complete tensor, spacetime tests; actual centered K-vector strong convergence and varying-H_K graph recovery",
 "code_energy_laws_identical":True,"code_stress_statistics_identical":True,
 "source_sign_record_is_energy_or_geometry_charge_record":False,
 "initial_mixed_block":"derived coupled-ground covariance",

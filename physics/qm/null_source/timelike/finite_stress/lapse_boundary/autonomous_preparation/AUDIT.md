@@ -48,3 +48,11 @@ Three PASS records at 7696fd194d9c7d739b484e9025e636d40ff4811c add
 15 records, 200 identities (168 full-text, 32 hash-only). All findings
 currently resolved; final audit is still pending further work. Identity
 repetitions across reviewers/checkpoints are not distinct scientific files.
+
+## AP6 immutable review
+
+Three actual full-text reads of the three AP files, plus five A hash-only
+sources, bring the ledger to 18 records and 214 identities (177 full-text,
+37 hash-only). AP6-C-001 remains open pending immutable verification of
+the explicit graph-domain clarification. All three agents are read-only;
+only root executed the new science.
