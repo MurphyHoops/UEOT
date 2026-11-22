@@ -87,7 +87,7 @@ for sub in (SYN_DIR, BJPS_DIR, POS_DIR):
 # 4. Generate & compile Synthese double-anonymous package
 master_md = (ROOT / "manuscript.md").read_text(encoding="utf-8")
 syn_md = master_md
-for strip_line in ('author: "Degui Qian"\n', 'date: "November 2026"\n', 'version: "2.2"\n'):
+for strip_line in ('author: "Degui Qian"\n', 'date: "November 2026"\n', 'version: "2.3"\n'):
     syn_md = syn_md.replace(strip_line, "", 1)
 
 syn_declarations = """# Declarations {.unnumbered}
@@ -166,7 +166,7 @@ head_sha = git_probe.stdout.strip() if git_probe.returncode == 0 else "standalon
 
 record = {
     "schema": "standalone-philosophy-build/3",
-    "version": "2.2",
+    "version": "2.3",
     "built_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
     "git_base_commit": head_sha,
     "commands": [
