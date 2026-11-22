@@ -125,3 +125,19 @@ The ultraviolet review also distinguishes a reduced body limit from
 a complete apparatus limit. A varying-coupling singular sequence can
 retain the body process, but its clock energy/variance diverge and the
 fixed-width clock initial densities have no trace-norm Cauchy limit.
+
+## Fifth cycle: remaining spatial equations and a stronger ultraviolet test
+
+Reflection after the total eight-mean inverse exposed both the initial
+complete enthalpy and the two-Y spatial quadrupole. The first attempt to
+transfer the full spatial trace by the old H-form bound was rejected:
+its projected conformal force composite needs a stronger domain.
+An explicit potential-Laplacian bound, H-squared form estimate and
+ninth-order parametrix now supply the actual fixed-K mean limit. Noise,
+continuum Ward identities and the new geometry remain unproved.
+
+The bare-clock UV analysis was then strengthened: even after body-only
+Wick ordering, a positive four-body sector has initial Hamiltonian-image
+norm squared at least c g^2 K^3. Lower-body-degree subtractions cannot
+cancel that sector. This is a specified-input graph rejection with a
+fixed-g eventual cutoff threshold, not a universal interacting-QFT no-go.

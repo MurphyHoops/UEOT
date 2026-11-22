@@ -149,10 +149,12 @@ Dyson expansion gives a coefficient-wise majorant
 on every coefficient, not a Taylor bound inferred only from a real-axis
 norm inequality. The general spatial leading controller corrections solve
 \[
- (\partial_t^2-\Delta+1)z_j=-F_j C_u/2,\qquad
+ (\partial_t^2-\Delta+1)z_j=-F_j P_K C_u/2,\qquad
  (\partial_t^2-\Delta)z_X
-       =-\tfrac12c\sum_jF_j'(\mathbf u_j\cdot Z)C_u.
+       =-\tfrac12c\sum_jF_j'P_K[(\mathbf u_j\cdot Z)C_u].
 \]
+Here P_K is the same finite-mode orthogonal projector on every controller equation. It is an L2 contraction and commutes with the free propagators and first-harmonic projection, so the following bounds retain their stated constants.
+
 The mass-one retarded energy bound controls z_j, dot z_j and grad z_j.
 Only the first-harmonic part of z_X is used, with frequency sqrt(3);
 its zero mode is not inverted. Let
@@ -182,10 +184,12 @@ positive coupling threshold. No numerical value of g_total,* is asserted.
 
 ## 4. Combine the inverse and the complete record on one actual state
 
-Choose eta=10^-13 (or any smaller positive value) and a common code target in the proved y_0 ball. Take 0<g<min(g_total,*(64),1e-40), or any smaller value satisfying
+Choose eta=10^-13 (or any smaller positive value) and a common code target in the proved y_0 ball. Choose one fixed 0<g<min(g_total,*(64),1e-40) and also require
 \[
  C_{1,64}g+C_{2,64}g^2<d_{\rm ref}(\eta)/4 .
 \]
+For eta=1e-13 the stated g ceiling already implies this contrast inequality. For a smaller eta the displayed inequality is an additional requirement. Select g once; the resulting Hamiltonian stays fixed for all programs and both code signs.
+
 For every such finite choice, the same actual program u_(g,eta) solves the total eight projections after either code sign. The same complete Gaussian instrument then has positive contrast at least d_ref/2. The reference contrast is bounded below by 2.70e-4 eta^2 at K=64. At eta=1e-13 the same uniform clock bounds give an actual gap above 2.69e-30. No apparatus outcome or failure sector is discarded. The eight means are matched at the encoding slice T=pi; their vanishing has not been propagated through the subsequent interval or through the readout.
 
 This is an existence chain with genuine normal finite-mode joint states and one fixed autonomous Hamiltonian. It does not assign the new thresholds the old numerical values, and it does not bound its energy by the fixed-g example's upper bound. Its free controller stress and kinetic cost remain in the complete source.

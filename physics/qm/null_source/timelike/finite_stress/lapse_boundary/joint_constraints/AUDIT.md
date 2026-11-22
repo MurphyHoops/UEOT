@@ -57,3 +57,29 @@ Exact checkpoint CI queried and successful: JC1 science44982918908 /
 publication44982918916; JC2 science44984086205 / publication44984086172;
 JC3 science44987760330 / publication44987760384. Final-head CI remains
 to be observed after the final source commit.
+
+## JC4 immutable source review and fifth-cycle correction
+
+At f9f6b108c61ad0ac910c6a7bd1f3fd19b7914130 all three native
+read-only reviewers actually read the same 32 full files, separately
+checked 19 further hash-only dependencies and 65 direct bindings.
+The 96 added full commit-file identities bring the ledger to 318.
+Every returned full-file hash matches the corresponding Git blob.
+All three confirmed JC3-B-001, JC3-C-001 and JC3-C-002 resolved.
+
+Two accepted findings were corrected: general finite-K controller
+equations explicitly retain P_K; variable smaller codes require the
+same g to satisfy both the inverse threshold and contrast bound.
+The new immutable checkpoint will confirm these corrections.
+
+During fifth-cycle derivation the full spatial-trace claim was
+temporarily restricted to free Y because the projected conformal
+force composite was not covered by the old H-form bound. The final
+proof adds a potential-Laplacian estimate, an H-squared form on D(H)
+and an N9 mean parametrix. No Q-squared variance or continuum Ward
+claim follows. This was a substantive domain correction before
+immutable acceptance, not a failed test hidden by changing a tolerance.
+
+JC4 exact-head CI was observed successful: science44990010205 and
+publication44990010209. The new post-closure and Wick graph scripts
+were run only in the current cohort. No predecessor science was rerun.

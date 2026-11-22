@@ -14,8 +14,8 @@ Earlier session time is not counted. Physical unification remains OPEN.
 | Actual metric history | [Finite lapse pulse](LAPSE_HISTORY.md), [curvature terms](LAPSE_CURVATURE.md), [same-datum complete lapse phase/contact](LAPSE_PHASE.md) | Restricted metric family; explicit pulse fails mean Einstein constraint |
 | Autonomous comparison | [Exact quadratic-actuator rejection](AUTONOMOUS_GATE.md), [nonlinear clock actuator](CLOCK_ACTUATOR.md) | Normal finite-K device and positive bounded record; large total cost, no uniform interacting UV or joint Einstein closure |
 
-Twenty-two scientific certificates and one source/scope check are available.
-Each certificate binds its proof and inputs. These are not twenty-three new
+Twenty-four scientific certificates and one source/scope check are available.
+Each certificate binds its proof and inputs. These are not twenty-five new
 theorems, an external peer review, or machine-formal proofs.
 Reuse 294 accepted entries; freeze 1090 predecessor scientific files.
 
@@ -45,3 +45,20 @@ small energy budget cannot be transferred to the apparatus. [Next gate](NEXT_GAT
 
 [Contract](CONTRACT.md) · [Session](SESSION.md) · [Audit](AUDIT.md) ·
 [Verification](verification.json)
+
+## Fifth cycle after reflection
+
+[Remaining total-source rows](POST_CLOSURE.md) proves the actual initial
+enthalpy cost, an independent clock-energy uncertainty bound and a nonzero
+finite-K total spatial quadrupole. Its projected-force composite requires
+an added H-squared form argument and a ninth-order parametrix; it is not
+controlled by the earlier density/current form estimate alone.
+
+[Body-only Wick graph diagnostic](WICK_CLOCK_GRAPH.md) shows that simply
+Wick-ordering the body quartic leaves a four-particle Hamiltonian image
+with squared norm at least c g^2 K^3 on the declared fixed-g initial
+Gaussian sequence. This does not rule out different renormalized clock
+composites or correlated recovery sequences.
+
+[Chinese unification progress](UNIFICATION_PROGRESS_ZH.md) records the
+achieved scope and remaining physical ports.
