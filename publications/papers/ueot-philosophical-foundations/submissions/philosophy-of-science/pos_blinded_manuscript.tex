@@ -241,10 +241,10 @@ invariant, precision mode, and interventions---across four tiers:
 where a justified fiber prior \((1/2, 1/2)\) over costs \(\{0,3\}\)
 preserves mean cost \(3/2\) without identifying individual histories;
 \emph{(3) closed-loop belief descent}
-\citep{burkeRosenblatt1958, kemenySnell1960, givanDeanGreig2003}; and
-\emph{(4) counterfactual transport} across every interventional kernel
-\(P^{\mathrm{do}(\iota)}\) (\(\iota \in \mathcal{I}\))
-\citep{woodward2000}.
+\citep{burkeRosenblatt1958, kemenySnell1960, poupartBoutilier2003, givanDeanGreig2003};
+and \emph{(4) counterfactual transport} across every interventional
+kernel \(P^{\mathrm{do}(\iota)}\) (\(\iota \in \mathcal{I}\))
+\citep{woodward2000, rubenstein2017}.
 
 \textbf{Proposition 2 (Exact belief-quotient descent via closed test
 spaces).} \emph{Let \((\mathcal{X}, \mathcal{A}, \mathcal{O}, T, O)\) be
@@ -263,13 +263,15 @@ across all positive-probability branches \((a,o)\) if and only if
 
 Sufficiency in Proposition 2 holds on any
 \(\equiv_{\mathcal{F}}\)-saturated belief set, whereas necessity uses
-interior perturbations across the full simplex \(\Delta(\mathcal{X})\)
-(from a fixed prior, closure is required only on the reachable span).
-Crucially, observational closure
-\(U_{a,o}\mathcal{F} \subseteq \mathcal{F}\) does \emph{not}
-automatically preserve sunk repair costs or surgical interventions:
-those require state-tracked expenditure / auxiliary calorimetry (Tier 1)
-and \(\mathrm{do}(\iota)\)-kernel commutation (Tier 4).
+interior perturbations across \(\Delta(\mathcal{X})\) (on a
+forward-update-closed reachable set \(\mathcal{R}\) from a fixed prior,
+matching observation laws and posterior \(\mathcal{F}\)-expectations is
+required only across reachable pairs in the same
+\(\equiv_{\mathcal{F}}\)-fiber, not linear invariance on
+\(\operatorname{span}(\mathcal{R})\)). Crucially, observational closure
+\(U_{a,o}\mathcal{F} \subseteq \mathcal{F}\) does \emph{not} preserve
+sunk repair costs or surgical interventions without expenditure tracking
+(Tier 1) and \(\mathrm{do}(\iota)\)-consistency (Tier 4).
 
 \subsection{Against pure compressionism and blanket
 metaphysics}\label{against-pure-compressionism-and-blanket-metaphysics}
@@ -285,24 +287,25 @@ theorists treat stationary \emph{Markov blankets} as individuating
 self-evidencing agents \citep{friston2013, parrPezzuloFriston2022}.
 
 While rightly rejecting Lockean essences
-\citep{whitehead1929, dupre1993, dupreNicholson2018}, both accounts
-underdetermine real organization. Epistemic \emph{Pearl blankets} appear
-in passive linear diffusions and Gaussian field slices lacking physical
-cohesion \citep{raja2021, bruineberg2022, biehl2021}, while minimal
-output compression can erase paid restorative work (Proposition 3). If a
-defender of \citet{dennett1991} or \citet{ladymanRoss2007} replies that
-interventions and metabolic costs can be incorporated into a richer
-pattern, then \emph{passive output compression is no longer doing the
-ontological work on its own}: it has adopted interventional and
-energetic criteria. Under \emph{Constrained Relational Objecthood},
-three criteria---\emph{(1) multi-channel predictive--control
-compression} \citep{wimsatt2007}, \emph{(2) counterfactual intervention
-invariance} \citep{hacking1983, woodward2003, craver2007}, and \emph{(3)
+\citep{whitehead1929, dupre1993, dupreNicholson2018}, passive output
+compression alone underdetermines causal persistence. Epistemic
+\emph{Pearl blankets} appear in passive linear diffusions and Gaussian
+field slices lacking physical cohesion
+\citep{raja2021, bruineberg2022, biehl2021}, while minimal output
+compression erases paid restorative work (Proposition 3). A pattern
+realist following \citet{dennett1991} or \citet{ladymanRoss2007} can
+accept this counterexample by incorporating interventional and
+calorimetric channels into a richer pattern; our advance specifies
+\emph{which added channel licenses which explanatory claim}. Under
+\emph{Constrained Relational Objecthood}, three diagnostic
+checks---\emph{(1) multi-channel predictive--control compression}
+\citep{wimsatt2007}, \emph{(2) counterfactual intervention invariance}
+\citep{hacking1983, woodward2003, craver2007}, and \emph{(3)
 realization-cost accountability}
-\citep{jonas1966, rosen1991, montevilMossio2015}---act as objective
-worldly filters \citep{cartwright1999} narrowing candidates to cohesive
-processes, while symmetrical fission (Section 4.3) shows what bearer
-choice remains conventional.
+\citep{jonas1966, rosen1991, montevilMossio2015}---exclude
+under-evidenced individuation claims from passive output blankets
+\citep{cartwright1999}, while symmetrical fission (Section 4.3) shows
+where index continuation remains underdetermined.
 
 \section{A unified stochastic regenerative model of repair, execution,
 and
@@ -342,7 +345,7 @@ noise. Executed steps copy restored three-cell rows before independent
 post-step active-cell damage strikes each output w.p. \(q\);
 \texttt{stop} terminates with zero outputs.
 
-\Needspace{16\baselineskip}
+\Needspace{24\baselineskip}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
@@ -410,7 +413,7 @@ predicting all finite birth records \((B_1,\dots,B_T)\)
 adjoining \(R_1\) to \((B_1, B_2, \dots)\) yields their common
 refinement into \textbf{four} singletons.}
 
-\Needspace{16\baselineskip}
+\Needspace{24\baselineskip}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
@@ -421,41 +424,39 @@ refinement into \textbf{four} singletons.}
 \begin{minipage}[b]{\linewidth}\raggedright
 Observation Protocol \(\mathcal{P}\)
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Minimal Predictive Classes on
+Minimal Classes of Protocol Laws on
 \(\{\theta_0 H, \theta_0 D, \theta_1 H, \theta_1 D\}\)
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Erased Causal / Historical Invariant
+Unidentifiable from Protocol Law
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
 One-step strict births \((B_1)\) &
-\(\{\theta_0 H, \theta_0 D, \theta_1 D\}\), \(\{\theta_1 H\}\) (2
+\(\{\theta_0 H, \theta_0 D, \theta_1 D\}\), \(\{\theta_1 H\}\) (2 law
 classes) & Latent \(\theta_1\) in \(\theta_1 D\) \& repair fee
 \(R_1\) \\
-Infinite birth record \((B_t)_{t\ge 1}\) &
+Births \((B_1, B_2) \equiv (B_t)_{t\ge 1}\) &
 \(\{\theta_0 H, \theta_0 D\}\), \(\{\theta_1 D\}\), \(\{\theta_1 H\}\)
-(3 classes) & Founder repair expenditure \(R_1 \in \{0,3\}\) \\
+(3 law classes) & Founder repair expenditure \(R_1 \in \{0,3\}\) \\
 One-step births + fee \((B_1, R_1)\) & \(\{\theta_0 H\}\),
-\(\{\theta_1 H\}\), \(\{\theta_0 D, \theta_1 D\}\) (3 classes) &
+\(\{\theta_1 H\}\), \(\{\theta_0 D, \theta_1 D\}\) (3 law classes) &
 Hereditary difference \(\theta_0 D\) vs.~\(\theta_1 D\) \\
-Multi-step births + fee \((B_{1:T}, R_1)\) & Four singleton classes (4
-classes) & Causally silent tag \(\tau\) (lawfully quotiented) \\
+Two-step births + fee \((B_1, B_2, R_1)\) & Four singleton law classes
+(4 distinct laws) & Silent tag \(\tau\) (single runs still overlap) \\
 \end{longtable}
 }
 
-Table 2. Diamond lattice of minimal predictive partitions in
-\(\mathcal{M}\), showing two mutually incomparable three-class
-refinements.
+Table 2. Diamond lattice of minimal predictive partitions over protocol
+laws in \(\mathcal{M}\), showing two-step birth saturation and two
+incomparable three-class refinements.
 
-While each protocol expansion \(\mathcal{P} \subseteq \mathcal{P}'\)
-monotonically refines \(\sim_{\mathcal{P}}\), \emph{different}
-expansions produce incomparable partitions (Table 2; Figure 1b). Even
-the \emph{exact infinite-horizon birth law} merges \(\theta_0 H\)
-(\(R_1=0\)) with \(\theta_0 D\) (\(R_1=3\)), whereas \((B_1, R_1)\)
-resolves paid repair while merging \(\theta_0 D\) with \(\theta_1 D\).
-Which evidence is added determines which explanation is licensed.
+Two censuses \((B_1, B_2)\) exhaust everything \((B_t)_{t\ge 1}\) ever
+reveals on these founders: post-step confluence and census-end escrow
+clearing merge \(\theta_0 H\) (\(R_1=0\)) with \(\theta_0 D\)
+(\(R_1=3\)) for all \(t \ge 1\), whereas \((B_1, B_2, R_1)\) identifies
+all four \emph{probability laws} (though single runs can still overlap).
 
 \begin{figure}
 \centering
@@ -535,7 +536,7 @@ requires an additional slow-timescale loop maintaining
 \citep{aubinCellina1984, diPaolo2005, barandiaran2009, bich2024}
 modulates modes relative to viability boundaries.
 
-\Needspace{16\baselineskip}
+\Needspace{24\baselineskip}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
@@ -557,14 +558,18 @@ Paradigm Literature
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-1. Passive invariance & Dissipative/conservative law (\(\dot{x}=-x\)) &
-Shifts orbit; zero constraint restoration & Topological dynamics \\
+1. Passive invariance & Dissipative or conservative law (\(\dot{x}=-x\))
+& Shifts orbit; zero constraint restoration & Topological dynamics \\
 2. External servocontrol & Fixed feedback sensor--actuator & Regulates
 state; zero hardware self-repair & \citet{rosenblueth1943};
 \citet{conantAshby1970} \\
-3. Paid repair \& closure & Work restores \(g\), active code; closure
-loops \(b_{\mathrm{boot}}\) & Survives bounded damage; fails if
-\(b_{\mathrm{boot}}\) cut & \citet{kant1790}; \citet{varela1974};
+3a. Paid repair (\(\mathcal{M}\)) & Work restores \(g\), active code via
+scaffolded \(b_{\mathrm{boot}}=1\) & Survives fast damage; halts if
+\(b_{\mathrm{boot}}\) cut & \citet{vonNeumann1966};
+\citet{auWelshModrich1992} \\
+3b. Reciprocal closure & Slow loop on \(\tau_{\mathrm{boot}}\) also
+regenerates \(b_{\mathrm{boot}}\) & Cutting slow loop degrades
+\(b_{\mathrm{boot}}\) & \citet{kant1790}; \citet{varela1974};
 \citet{rosen1991}; \citet{montevilMossio2015} \\
 4. Adaptive viability & History-sensitive policy in kernel \(K^\star\) &
 Separates finite memory \(m\ge 1\) from \(m=0\) &
@@ -572,7 +577,8 @@ Separates finite memory \(m\ge 1\) from \(m=0\) &
 \end{longtable}
 }
 
-Table 3. Four non-equivalent regimes of temporal persistence.
+Table 3. Distinct regimes of temporal persistence, separating paid
+endogenous repair (3a) from reciprocal closure (3b).
 
 \subsection{Minimal cut-sets, finite-memory viability, and fixed-sample
 limits}\label{minimal-cut-sets-finite-memory-viability-and-fixed-sample-limits}
@@ -754,7 +760,7 @@ and Bedau's \citeyearpar{bedau1992} challenge: why does existential
 dependence support a functional \emph{ought}? Table 4 and Figure 3
 stratify four non-interchangeable grounds:
 
-\Needspace{16\baselineskip}
+\Needspace{24\baselineskip}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
@@ -802,21 +808,20 @@ explanation.
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \textbf{Answering Corti at Rung 2 via conditional functional
-  standards.} Pointing out that biology lacks moral obligations does not
-  answer \citet{corti2023}; what answers Corti is showing what an
-  \emph{objective system-conditional standard}---indexed to maintaining
-  viable organization \(K^\star\), without categorical value
-  \citep{bedau1992} or evolutionary innovation claims
-  \citep{cuciniello2026}---discriminates inside \(\mathcal{M}\)
-  \citep{nagel1977, walsh2015}. Relative to maintaining executable
-  integrity, \(\mathcal{M}\) sharply distinguishes \emph{(i)
-  malfunction} (\(b_{\mathrm{boot}}=0\) or stuck \(g=\mathrm{closed}\)
-  failing to restore execution under \texttt{care}), \emph{(ii)
-  accidental side-effect survival} (subcritical rejected \texttt{bloom}
-  preserving a damaged token as a budgetary by-product without restoring
-  code or \(g\)), and \emph{(iii) costly normal operation} (damaged
-  \texttt{care} paying \(R_1=3\) to restore active rows and execute).
+  \textbf{Operational conditional standards at Rung 2---and where
+  Corti's objection retains force.} Pointing out that biology lacks
+  moral obligations misses \citet{corti2023}; instead, Rung 2 supplies
+  an \emph{operational, system-conditional standard}
+  \citep{nagel1977, walsh2015} while pinpointing where Corti's challenge
+  retains force \citep{bedau1992, cuciniello2026}. \emph{Given} the
+  reference standard of maintaining executable integrity in \(K^\star\),
+  \(\mathcal{M}\) separates \emph{(i) malfunction}
+  (\(b_{\mathrm{boot}}=0\) or stuck \(g=\mathrm{closed}\)), \emph{(ii)
+  accidental side-effect survival} (rejected \texttt{bloom}), and
+  \emph{(iii) costly normal operation} (damaged \texttt{care},
+  \(R_1=3\)). Yet establishing why \(K^\star\) is a biological
+  organism's \emph{own} intrinsic norm requires independent grounding
+  via full reciprocal closure (Table 3, 3b) or Rung 3 selection.
 \item
   \textbf{Prospective demographic advantage versus retrospective Rung 3
   function.} In a preset environment with \(\gamma > \delta\),
@@ -839,14 +844,12 @@ explanation.
 \includegraphics[width=0.98\linewidth,height=\textheight,keepaspectratio,alt={Summary
 of typed explanatory preservation across representational quotients
 (left) and its alignment with the four stratified grounds of functional
-and purposive attribution (right), showing why interventional,
-cost-tracked, and genealogical evidence are needed beyond output
-quotients.}]{figures/fig3_preservation_and_rungs.pdf}
+and purposive attribution (right), showing which added evidence channels
+support each rung.}]{figures/fig3_preservation_and_rungs.pdf}
 \caption{Summary of typed explanatory preservation across
 representational quotients (left) and its alignment with the four
 stratified grounds of functional and purposive attribution (right),
-showing why interventional, cost-tracked, and genealogical evidence are
-needed beyond output quotients.}
+showing which added evidence channels support each rung.}
 \end{figure}
 
 \section{Competitor diagnostics, objections, and empirical
@@ -855,15 +858,14 @@ tests}\label{competitor-diagnostics-objections-and-empirical-tests}
 \subsection{Diagnosing cross-protocol leaps in contemporary
 programs}\label{diagnosing-cross-protocol-leaps-in-contemporary-programs}
 
-\emph{(1) Active inference:} beyond the known distinction between
-epistemic Pearl blankets and ontological Friston blankets
-\citep{bruineberg2022, raja2021}, \(\mathcal{M}\) satisfies local sparse
-mediation---internal rows \((r_H, r_D)\) act on births only via
-diagnostic \(d\) and gate \(g\)
+\emph{(1) Active inference:} beyond Pearl-versus-Friston blankets
+\citep{bruineberg2022, raja2021}, internal rows \((r_H, r_D)\) act on
+births only along \((r_H, r_D) \to (d_t, g_t, a_t) \to B_t\) through
+diagnostic \(d_t\), gate \(g_t\), \emph{and} executed action \(a_t\)
 \citep{friston2013, parrPezzuloFriston2022}---yet boundary birth laws
-\((B_t)_{t\ge 1}\) still erase paid repair \(R_1\), composite scores
-retain affine gauge freedom \citep{biehl2021}, and parent survival
-diverges from lineage growth, requiring Rung 2 hardware anchors
+\((B_t)_{t\ge 1}\) erase paid repair \(R_1\), composite scores retain
+affine gauge freedom \citep{biehl2021}, and parent survival diverges
+from lineage growth, requiring Rung 2 hardware anchors
 \citep{sethTsakiris2018}. \emph{(2) Computational mechanics:} minimal
 \(\varepsilon\)-transducers
 \citep{shaliziCrutchfield2001, barnettCrutchfield2015} and
@@ -887,20 +889,22 @@ constrained compatibility.
 \tightlist
 \item
   \emph{Constructive empiricism suffices \citep{vanFraassen1980}.}
-  Formal theorems never deductively compel realism. Our case is
-  comparative \citep{hacking1983, woodward2003}: Proposition 3 shows
-  that birth data \((B_t)_{t\ge 1}\) leave undamaged conservative
-  execution \emph{(H0)} (\(R_1=0\)) and backup-plus-gate repair
-  \emph{(H1)} (\(R_1=3\)) tied, whereas targeted ablations
-  (\(b_{\mathrm{boot}}=0\), \(2\)-unit funding, gate inhibition) and
-  calorimetry confirm \emph{(H1)}'s distinct counterfactual predictions
+  Formal theorems never compel realism; our case is comparative
+  \citep{hacking1983, woodward2003}. Under \emph{identical initial
+  damage} (\(d_0 = D\)), compare \(\mathcal{M}_{\mathrm{vote}}\)
+  (restoring rows via \(b_{\mathrm{boot}}=1\), \(R_1=3\)) with
+  \(\mathcal{M}_{\mathrm{bypass}}\) (an auxiliary bypass independent of
+  \(b_{\mathrm{boot}}\), matched on \((B_t)_{t\ge 1}\) and \(R_1=3\)):
+  calorimetry rules out unpaid histories, while
+  \(\mathrm{do}(b_{\mathrm{boot}}=0)\) yields divergent predictions
+  \citep{rubenstein2017} differentially supporting internal structure
   \citep{mayo2018}.
 \item
   \emph{Preservation is trivially analytic.} Fiber factorization
   (\(F = \bar{F}\circ q\)) is analytic once \(F\) and \(q\) are fixed;
   the substantive work is proving \emph{which} compressions destroy
-  \emph{which} invariants---including infinite-horizon cost erasure and
-  incomparable protocol refinements (Proposition 3),
+  \emph{which} invariants---including two-step birth saturation
+  alongside infinite-horizon cost erasure (Proposition 3),
   sequence-versus-gate separation (Proposition 4b), finite-memory
   viability (Proposition 6a), and critical deficits (\(11/12 < 1\)).
 \item
@@ -908,24 +912,25 @@ constrained compatibility.
   energy inflow is shared by all living cells and does not render repair
   fictitious \citep{jonas1966, montevilMossio2015}. However, because
   \(b_{\mathrm{boot}}=1\) is fixed on the modeled horizon,
-  \(\mathcal{M}\) establishes paid endogenous repair and state-sensitive
-  regulation on the fast timescale, leaving slow-timescale regeneration
-  of \(b_{\mathrm{boot}}\) (full reciprocal closure) and Rung 3
-  selection as explicit additional conditions.
+  \(\mathcal{M}\) establishes paid endogenous repair on the fast
+  timescale (Table 3, 3a), leaving slow-timescale regeneration of
+  \(b_{\mathrm{boot}}\) (3b) and Rung 3 selection as explicit additional
+  conditions.
 \item
-  \emph{Empirical discrimination between rival mechanisms.} Passive
-  birth equivalence does not imply that every birth-compatible model
-  fails every intervention; rather, experiments adjudicate
-  \emph{specified competing mechanisms} \citep{craver2007, mayo2018}. In
-  synthetic microbial repair circuits
-  \citep{auWelshModrich1992, hasanLeach2015}, four arms separate
-  damage-free/cost-free \emph{(H0)} from ATP-paid template-and-gate
-  repair \emph{(H1)}: \emph{(Arm 1)} matched post-recovery division
-  distributions; \emph{(Arm 2)} transient single-cell ATP calorimetry
-  isolating \(R_1\); \emph{(Arm 3)} replisome/transcriptional gate
-  inhibition without sequence mutation; and \emph{(Arm 4)} microfluidic
-  nutrient titration tracking mother-cell retention separately from
-  daughter births.
+  \emph{Empirical discrimination between rival mechanisms.} Mapping
+  model variables onto interventions \citep{craver2007, rubenstein2017}
+  in microbial repair circuits
+  \citep{auWelshModrich1992, hasanLeach2015} under controlled template
+  lesions (\(d_0 = D\)) tests cost-free \emph{(H0)},
+  \texttt{MutS–MutL–MutH} repair
+  \emph{(\(\mathcal{M}_{\mathrm{vote}}\))}, and template-independent
+  bypass \emph{(\(\mathcal{M}_{\mathrm{bypass}}\))} across: \emph{(Arm
+  1)} matched post-recovery division laws; \emph{(Arm 2)} single-cell
+  ATP calorimetry (\(R_1\)); \emph{(Arm 3)} selective \texttt{MutH}
+  inhibition (\(\mathrm{do}(b_{\mathrm{boot}}=0)\)) versus replisome
+  gate inhibition (\(g\)); and \emph{(Arm 4)} microfluidic nutrient
+  titration tracking mother-cell retention versus daughter births
+  \citep{mayo2018}.
 \end{enumerate}
 
 \section{Conclusion}\label{conclusion}

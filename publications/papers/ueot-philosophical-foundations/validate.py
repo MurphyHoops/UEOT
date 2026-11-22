@@ -209,8 +209,18 @@ bjps_fonts = subprocess.run(
     cwd=ROOT, env=ENV, capture_output=True, text=True, check=True
 ).stdout
 bjps_times_embedded = "TimesNewRoman" in bjps_fonts or "Times New Roman" in bjps_fonts
+def check_bjps_tables_unbroken(pdf_text: str) -> bool:
+    raw_pages = pdf_text.split("\f")
+    t4_pages = [
+        idx for idx, pg in enumerate(raw_pages, start=1)
+        if ("1. Systemic role" in pg) or ("4. Practical reason" in pg) or ("Table 4." in pg and "Four stratified" in pg)
+    ]
+    return len(set(t4_pages)) == 1
+
+
 bjps_intro_pg, bjps_refs_pg, bjps_counted_pages, bjps_ai_page1 = count_bjps_body_and_appendix_pages(bjps_txt)
-bjps_app_has_prompts = "Exact Representative Prompts Used" in bjps_app_txt
+bjps_app_has_prompts = "Complete Step-by-Step Workflow and Exact Prompts Producing Relied-Upon Outputs" in bjps_app_txt
+bjps_table4_unbroken = check_bjps_tables_unbroken(bjps_txt)
 bjps_errs, bjps_glyphs, bjps_over, bjps_bib_warns = check_tex_and_blg(BJPS_DIR / "build", "bjps_blinded_manuscript")
 bjps_app_errs, bjps_app_glyphs, bjps_app_over, bjps_app_bib_warns = check_tex_and_blg(BJPS_DIR / "build", "bjps_online_technical_appendix")
 bjps_leaks = [
@@ -235,7 +245,7 @@ bjps_record = {
         not bjps_leaks and not bjps_errs and not bjps_glyphs and not bjps_over and not bjps_bib_warns
         and not bjps_app_errs and not bjps_app_glyphs and not bjps_app_over and not bjps_app_bib_warns
         and not bjps_us_spellings and bjps_abs_words <= 300
-        and bjps_times_embedded and bjps_ai_page1 and bjps_app_has_prompts
+        and bjps_times_embedded and bjps_ai_page1 and bjps_app_has_prompts and bjps_table4_unbroken
         and bjps_intro_pg == 2 and bjps_counted_pages <= 24
         and bjps_total_words_excl_abstract <= 10000 and bjps_title_pages == 1
     ) else "FAIL",
@@ -247,6 +257,7 @@ bjps_record = {
     "abstract_ceiling": 300,
     "ai_statement_immediately_after_abstract_page1": bjps_ai_page1,
     "ai_full_prompt_log_in_online_appendix": bjps_app_has_prompts,
+    "table4_unbroken_on_single_page": bjps_table4_unbroken,
     "intro_starts_page": bjps_intro_pg,
     "references_start_page": bjps_refs_pg,
     "counted_pages_excl_title_abstract_refs": bjps_counted_pages,
@@ -404,8 +415,8 @@ if pos_record["status"] != "PASS":
     errors.append(f"Philosophy of Science validation failed: {pos_record}")
 
 record = {
-    "schema": "standalone-philosophy-editorial-validation/4",
-    "version": "2.2",
+    "schema": "standalone-philosophy-editorial-validation/5",
+    "version": "2.3",
     "checked_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
     "status": "PASS" if not errors else "FAIL",
     "errors": errors,

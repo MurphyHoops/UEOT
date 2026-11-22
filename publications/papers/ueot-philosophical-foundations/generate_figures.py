@@ -159,24 +159,24 @@ def build_fig1():
              facecolor=LIGHT_BLUE, edgecolor=NAVY, fontsize=8.8, fontweight="bold")
 
     draw_box(ax2, 0.015, 0.375, 0.435, 0.24,
-             "Infinite Births $(B_t)_{t \\geq 1}$\n"
-             "[3 Minimal Classes]\n"
+             "Births $(B_1, B_2) \\equiv (B_t)_{t \\geq 1}$\n"
+             "[3 Minimal Law Classes]\n"
              "$\\{\\theta_0 H, \\theta_0 D\\} \\mid \\{\\theta_1 D\\} \\mid \\{\\theta_1 H\\}$\n"
              "Erases repair fee $R_1 \\in \\{0,3\\}$",
-             facecolor=LIGHT_TEAL, edgecolor=TEAL, fontsize=8.15)
+             facecolor=LIGHT_TEAL, edgecolor=TEAL, fontsize=8.10)
 
     draw_box(ax2, 0.550, 0.375, 0.435, 0.24,
              "First Birth + Cost $(B_1, R_1)$\n"
-             "[3 Minimal Classes]\n"
+             "[3 Minimal Law Classes]\n"
              "$\\{\\theta_0 H\\} \\mid \\{\\theta_1 H\\} \\mid \\{\\theta_0 D, \\theta_1 D\\}$\n"
              "Erases $\\theta_0 D$ vs. $\\theta_1 D$ ($27/64, 39/64$)",
-             facecolor=LIGHT_AMBER, edgecolor=AMBER, fontsize=8.15)
+             facecolor=LIGHT_AMBER, edgecolor=AMBER, fontsize=8.10)
 
     draw_box(ax2, 0.09, 0.045, 0.82, 0.165,
-             "Multi-Step Births + Initial Expenditure $(B_1, B_2, \\dots, R_1)$\n"
-             "[4 Singletons]:  $\\{\\theta_0 H\\} \\mid \\{\\theta_0 D\\} \\mid \\{\\theta_1 H\\} \\mid \\{\\theta_1 D\\}$\n"
-             "(Lawfully quotients causally silent tag $\\tau$ under $\\Pi_{\\mathrm{pub}}$)",
-             facecolor="white", edgecolor=NAVY, lw=1.2, fontsize=8.5)
+             "Two-Step Births + Initial Cost $(B_1, B_2, R_1)$\n"
+             "[4 Distinct Joint Laws]:  $\\{\\theta_0 H\\} \\mid \\{\\theta_0 D\\} \\mid \\{\\theta_1 H\\} \\mid \\{\\theta_1 D\\}$\n"
+             "(Identifiable from joint law; quotients silent tag $\\tau$)",
+             facecolor="white", edgecolor=NAVY, lw=1.2, fontsize=8.4)
 
     draw_arrow(ax2, (0.37, 0.74), (0.235, 0.63), color=NAVY, lw=1.2)
     draw_arrow(ax2, (0.63, 0.74), (0.765, 0.63), color=NAVY, lw=1.2)
@@ -362,18 +362,18 @@ def build_fig3():
         draw_box(ax, 0.532, y, 0.448, 0.168, f"{title}\n{sub}",
                  facecolor=fc, edgecolor=ec, fontsize=8.25)
 
-    badge = dict(boxstyle="round,pad=0.15", fc="white", ec="none", alpha=0.94)
+    badge = dict(boxstyle="round,pad=0.14", fc="white", ec="none", alpha=0.94)
     draw_arrow(ax, (0.404, 0.345), (0.518, 0.525), color=TEAL, lw=1.25)
-    ax.text(0.462, 0.43, "grounds Rung 2", fontsize=8.0, color=TEAL,
-            ha="center", va="center", fontweight="bold", bbox=badge, zorder=5)
+    ax.text(0.461, 0.432, "evidence for\nRung 2", fontsize=7.6, color=TEAL,
+            ha="center", va="center", fontweight="bold", bbox=badge, zorder=5, linespacing=1.08)
 
     draw_arrow(ax, (0.404, 0.150), (0.518, 0.335), color=AMBER, lw=1.25)
-    ax.text(0.462, 0.245, "grounds Rung 3", fontsize=8.0, color=AMBER,
-            ha="center", va="center", fontweight="bold", bbox=badge, zorder=5)
+    ax.text(0.461, 0.245, "evidence for\nRung 3", fontsize=7.6, color=AMBER,
+            ha="center", va="center", fontweight="bold", bbox=badge, zorder=5, linespacing=1.08)
 
-    draw_arrow(ax, (0.404, 0.095), (0.518, 0.095), color=NAVY, lw=1.25)
-    ax.text(0.462, 0.095, "grounds Rung 4", fontsize=8.0, color=NAVY,
-            ha="center", va="center", fontweight="bold", bbox=badge, zorder=5)
+    draw_arrow(ax, (0.404, 0.088), (0.518, 0.088), color=NAVY, lw=1.25)
+    ax.text(0.461, 0.088, "evidence for\nRung 4", fontsize=7.6, color=NAVY,
+            ha="center", va="center", fontweight="bold", bbox=badge, zorder=5, linespacing=1.08)
 
     draw_arrow(ax, (0.404, 0.770), (0.518, 0.605), color=CRIMSON, lw=1.2, ls="--")
     ax.text(0.462, 0.70, "illicit transfer", fontsize=8.0, color=CRIMSON,

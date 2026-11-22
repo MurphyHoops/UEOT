@@ -131,10 +131,11 @@ establishing
 \(\mathrm{Bayes}(b,a,o) \equiv_{\mathcal{F}} \mathrm{Bayes}(\tilde{b},a,o)\)
 and thus (ii).
 
-(\emph{Necessity on \(\Delta(\mathcal{X})\)}) Suppose (i) and (ii) hold
-for all \(b \equiv_{\mathcal{F}} \tilde{b}\) in \(\Delta(\mathcal{X})\)
-and \((a,o)\). Fix any \((a,o)\) and any \(v \in \mathcal{F}^\perp\);
-since \(\mathbf{1} \in \mathcal{F}\), we have
+(\emph{Necessity on \(\Delta(\mathcal{X})\) and reachable-fibre
+boundary}) Suppose (i) and (ii) hold for all
+\(b \equiv_{\mathcal{F}} \tilde{b}\) in \(\Delta(\mathcal{X})\) and
+\((a,o)\). Fix any \((a,o)\) and any \(v \in \mathcal{F}^\perp\); since
+\(\mathbf{1} \in \mathcal{F}\), we have
 \(\langle v, \mathbf{1}\rangle = 0\). Choose the strictly positive
 uniform belief \(b^\circ(x) = 1/|\mathcal{X}|\) and \(\varepsilon > 0\)
 small enough that
@@ -143,17 +144,32 @@ small enough that
 \(\langle b^\circ, U_{a,o}\mathbf{1}\rangle = \langle b^\circ + \varepsilon v, U_{a,o}\mathbf{1}\rangle\),
 forcing \(\langle v, U_{a,o}\mathbf{1}\rangle = 0\). Since
 \(v \in \mathcal{F}^\perp\) was arbitrary,
-\(U_{a,o}\mathbf{1} \in (\mathcal{F}^\perp)^\perp = \mathcal{F}\). Next,
-fix any \(f \in \mathcal{F}\). If \(p_0 := p(o \mid b^\circ, a) = 0\),
-positivity of \(b^\circ\) and non-negativity of \(U_{a,o}\mathbf{1}\)
-imply \(U_{a,o}\mathbf{1} \equiv 0\), whence
+\(U_{a,o}\mathbf{1} \in (\mathcal{F}^\perp)^\perp = \mathcal{F}\)
+\citep{poupartBoutilier2003}. Next, fix any \(f \in \mathcal{F}\). If
+\(p_0 := p(o \mid b^\circ, a) = 0\), positivity of \(b^\circ\) and
+non-negativity of \(U_{a,o}\mathbf{1}\) imply
+\(U_{a,o}\mathbf{1} \equiv 0\), whence
 \(|U_{a,o}f| \le \|f\|_\infty U_{a,o}\mathbf{1} = 0\) and
 \(U_{a,o}f = 0 \in \mathcal{F}\). If instead \(p_0 > 0\), then
 \(p(o \mid \tilde{b}, a) = p_0 > 0\) by (i), and (ii) yields
 \(\langle b^\circ, U_{a,o}f\rangle / p_0 = \langle b^\circ + \varepsilon v, U_{a,o}f\rangle / p_0\),
 so \(\langle v, U_{a,o}f\rangle = 0\) for all
-\(v \in \mathcal{F}^\perp\). Therefore
-\(U_{a,o}f \in (\mathcal{F}^\perp)^\perp = \mathcal{F}\). \(\square\)
+\(v \in \mathcal{F}^\perp\), whence
+\(U_{a,o}f \in (\mathcal{F}^\perp)^\perp = \mathcal{F}\). When
+restricting to a forward-update-closed reachable subset
+\(\mathcal{R} \subseteq \Delta(\mathcal{X})\) from a fixed prior, exact
+recursion on \(\mathcal{R}/{\equiv_{\mathcal{F}}}\) requires matching
+observation probabilities and posterior \(\mathcal{F}\)-expectations
+only across reachable pairs \((b, b') \in \mathcal{R}^2\) merged in the
+same \(\equiv_{\mathcal{F}}\)-fibre, rather than subspace invariance on
+\(\operatorname{span}(\mathcal{R})\): on \(\mathcal{X}=\{0,1,2\}\) under
+the deterministic cycle \(0 \to 1 \to 2 \to 0\) with trivial
+observations from \(\delta_0\),
+\(\mathcal{R}=\{\delta_0,\delta_1,\delta_2\}\) spans \(\mathbb{R}^3\),
+yet \(\mathcal{F}=\operatorname{span}\{\mathbf{1},(0,1,2)\}\) takes
+distinct values \(0,1,2\) on \(\mathcal{R}\) (zero false merges, exact
+quotient recursion) while \(U(0,1,2) = (1,2,0) \notin \mathcal{F}\).
+\(\square\)
 
 \subsection{Cut-set reconstruction, finite-memory separation, and
 fixed-sample impossibility (Propositions 5, 6, and
@@ -342,53 +358,112 @@ Policy)}\label{detailed-documentation-of-generative-ai-use-bspsbjps-ai-policy}
 In compliance with the \emph{British Journal for the Philosophy of
 Science} AI Policy
 (\url{https://www.thebsps.org/auxhyp/bjps-ai-policy/}), this appendix
-provides a complete, triple-anonymised record sufficient to reconstruct
-how generative AI tools were used under human direction and
-verification:
+provides a complete, triple-anonymised record reconstructing every stage
+in which generative AI systems were used, the division of labour between
+human direction/verification and AI execution, and the exact prompts
+producing all outputs relied upon in the submitted manuscript and
+supplement:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \textbf{Tools and Access Dates.} Gemini 4 Carbon (Google DeepMind
-  agentic workspace environment) and ChatGPT 6 Astra (OpenAI reasoning
-  environment), accessed during November 2026.
+  \textbf{System Identifiers, Environments, and Dates of Use.} Two
+  generative AI systems were used during November 2026: \textbf{Gemini 4
+  Carbon} (accessed via the Google DeepMind Antigravity agentic
+  workspace) and \textbf{ChatGPT 6 Astra} (accessed via the OpenAI
+  reasoning interface). Neither system is listed as an author; human
+  author(s) directed every stage and take sole academic and legal
+  responsibility for the entire work.
 \item
-  \textbf{Division of Intellectual Responsibility and Verification.} The
-  human author(s) defined the research questions, philosophical
-  positions, model architecture, and revision criteria, and
-  independently checked every mathematical proof, rational fraction
-  (\(27/64\), \(39/64\), \(11/12\), \(25/24\), \(243/2048\),
-  \(2095/4096\), \(2095/4006\), \(10/19\), \(1/6\), \(17/72\)), Python
-  verification script, and external bibliographic entry (96 works).
-\item
-  \textbf{Exact Representative Prompts Used.}
+  \textbf{Explicit Division of Labour Across Research, Verification,
+  Writing, and Figures.}
 
   \begin{itemize}
   \tightlist
   \item
-    \emph{Formal and Algebraic Audit Prompt:} ``Audit every mathematical
-    statement, quantifier scope, and rational calculation in the
-    manuscript, including Proposition 3's parameter assumptions and
-    Theorem 1(2)'s policy quantifier over \(\Pi_{\mathrm{pub}}\) versus
-    fixed autonomous hereditary programmes \(\theta_i\); verify all
-    fractions exactly using Python \texttt{fractions.Fraction}.''
+    \emph{Independently conceived and verified by the human author(s):}
+    Selection of the philosophical research problem, core theses
+    (forward-marginalisation condition, typed explanatory preservation,
+    three diagnostic checks for relational objecthood, four
+    bearer-indexed grounds of purpose), architecture of the regenerative
+    model \(\mathcal{M}\) and same-damage rival mechanisms
+    (\(\mathcal{M}_{\mathrm{vote}}\)
+    vs.~\(\mathcal{M}_{\mathrm{bypass}}\)), line-by-line mathematical
+    audit of Propositions 1--7 and Theorem 1, independent execution of
+    the Python rational verification script (\texttt{validate.py}), and
+    verification of all 98 cited references against primary publication
+    records.
   \item
-    \emph{Bibliographic and Formatting Verification Prompt:} ``Verify
-    all BibTeX entries against primary publication metadata with zero
-    BibTeX warnings, generate vector figures in Python/Matplotlib, and
-    format the blinded manuscript in 12pt Times New Roman with 1.5 line
-    spacing, 1-inch margins, and strict triple-anonymous compliance
-    within the 24-page \emph{BJPS} limit.''
+    \emph{Assisted by AI systems under human instruction and audit:}
+    Algebraic cross-checking of rational parameter witnesses,
+    Python/Matplotlib code generation for vector Figures 1--3
+    (\texttt{generate\_figures.py}), BibTeX formatting and
+    \texttt{en-GB} prose polishing, and editorial stress-testing of
+    quantifier scopes and causal-intervention formulations.
+  \end{itemize}
+\item
+  \textbf{Complete Step-by-Step Workflow and Exact Prompts Producing
+  Relied-Upon Outputs.} The five prompts below constitute the complete
+  sequence of substantive prompts whose outputs were incorporated (after
+  human verification and editing) into the manuscript and supplement:
+
+  \begin{itemize}
+  \tightlist
   \item
-    \emph{Critical Referee Calibration Prompt:} ``Analyse the referee
-    report on the blinded manuscript, adopt all mathematically and
-    philosophically warranted improvements---separating Theorem 1
-    quantifiers, replacing non-monotonic with incomparable refinements,
-    testing relational objecthood against symmetrical fission,
-    distinguishing paid endogenous repair from full reciprocal
-    constraint closure, and separating prospective lineage growth from
-    retrospective Rung 3 selection---and re-verify all builds.''
+    \emph{Stage 1 --- Algebraic \& Proof Audit:} ``Check all
+    mathematical statements, quantifier scopes, and exact rational
+    witness values in Propositions 1--7 and Theorem 1 of the
+    regenerative register model, including Proposition 3's strict Table
+    1 domain, two-step birth saturation
+    \((B_1, B_2) \equiv (B_t)_{t\ge 1}\), and Theorem 1's full-policy
+    ceiling \(\rho_* = \max\{1, \lambda_0, \lambda_1\}\) over
+    \(\Pi_{\mathrm{pub}}\) versus autonomous hereditary programmes
+    \(\theta_i\); verify all fractions (\(27/64\), \(39/64\), \(11/12\),
+    \(25/24\), \(243/2048\), \(2095/4096\), \(2095/4006\), \(10/19\),
+    \(1/6\), \(17/72\)) in Python using exact
+    \texttt{fractions.Fraction}.''
+  \item
+    \emph{Stage 2 --- Programmatic Vector Figure Generation:} ``Write a
+    reproducible Python/Matplotlib script \texttt{generate\_figures.py}
+    generating vector PDF and 300-DPI PNG files for Figures 1--3
+    (physical register architecture and incomparable protocol-law
+    diamond lattice; five-state finite-memory viability witness and
+    \((k_c, k_b)\) attainment phase diagram at \(q=1/3\); typed
+    explanatory preservation and four stratified grounds of purpose with
+    calibrated evidence-channel arrows) with zero overlapping labels.''
+  \item
+    \emph{Stage 3 --- Bibliographic Verification \& BJPS Formatting:}
+    ``Cross-check all 98 external BibTeX entries against primary
+    publication metadata with zero BibTeX warnings, convert prose to
+    British English (\texttt{en-GB}), and format the triple-anonymous
+    manuscript in 12pt Times New Roman with 1.5 line spacing, 1-inch
+    margins, unbroken comparison tables, post-abstract AI Statement on
+    Page 1, and counted pages strictly within the 24-page \emph{BJPS}
+    ceiling.''
+  \item
+    \emph{Stage 4 --- Quantifier \& Protocol-Lattice Revision:} ``Revise
+    Theorem 1 to separate the full-policy benchmark over
+    \(\Pi_{\mathrm{pub}}\) from autonomous multi-generational execution
+    of fixed hereditary programmes \(\theta_i\), add the subcritical
+    switching witness \((1/2, 1/4, 1/4, 1/8, 1/3)\), replace
+    non-monotonic terminology with mutually incomparable refinements in
+    Proposition 3, split paid endogenous repair from slow-timescale
+    reciprocal constraint closure in Table 3, and separate prospective
+    demographic growth from retrospective Rung 3 selection.''
+  \item
+    \emph{Stage 5 --- Causal-Mechanism, Reachable-Fibre \& Normativity
+    Calibration:} ``Refine Proposition 2's reachable-set remark using
+    the three-state cyclic counterexample and cite Poupart and Boutilier
+    (2003); include executed action \(a_t\) in the Markov-blanket
+    mediation path \((r_H, r_D) \to (d_t, g_t, a_t) \to B_t\); formulate
+    two competing recovery mechanisms under identical initial damage
+    (\(\mathcal{M}_{\mathrm{vote}}\)
+    vs.~\(\mathcal{M}_{\mathrm{bypass}}\)) tested via
+    \(\mathrm{do}(b_{\mathrm{boot}}=0)\) citing Rubenstein et
+    al.~(2017); and calibrate Rung 2 conditional standards vis-à-vis
+    Corti (2023) and relational objecthood vis-à-vis Ladyman and Ross
+    (2007).''
   \end{itemize}
 \end{enumerate}
 
