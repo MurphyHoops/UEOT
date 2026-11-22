@@ -27,12 +27,12 @@ rho_X_si=(hbar_si*c_si)/(2*(g**2)*(R_s3**4))
 mass_density_si=rho_X_si/(c_si**2)
 require(above(rho_X_si,iv.mpf("1.32e30")) and below(rho_X_si,iv.mpf("1.33e30")),"astrophysical closure energy density")
 
-# Certified pointer gap in (4.5e-23, 1e-21): exact Pinsker/KL bound N >= 0.81*(1 - Delta^2) / Delta^2
+# Load both certified lower and Cauchy-Schwarz upper bounds on the pointer binary gap from RC09:
 gap_lo=box(ptr["actual_continuum_pointer_binary_gap_lower"])
-gap_conservative_hi=iv.mpf("1e-21")
-require(above(gap_lo,iv.mpf("4.5e-23")) and below(gap_lo,gap_conservative_hi),"pointer binary gap scale")
-N_trials_min=iv.mpf("0.81")*(1-(gap_conservative_hi**2))/(gap_conservative_hi**2)
-require(above(N_trials_min,iv.mpf("8e41")),"prohibitive trial count for direct binary readout")
+gap_hi=box(ptr["actual_continuum_pointer_binary_gap_upper"])
+require(above(gap_lo,iv.mpf("4.5e-23")) and below(gap_lo,gap_hi) and below(gap_hi,iv.mpf("3e-18")),"certified two-sided pointer binary gap enclosure")
+N_trials_min=iv.mpf("0.81")*(1-(gap_hi**2))/(gap_hi**2)
+require(above(N_trials_min,iv.mpf("1e35")),"prohibitive trial count for direct binary readout")
 
 finish("calibration_and_open_gates.py",{
   "Planck_length_m":outward(l_pl),

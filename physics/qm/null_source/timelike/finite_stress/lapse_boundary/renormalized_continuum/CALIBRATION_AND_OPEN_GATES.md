@@ -24,9 +24,9 @@ which is an astrophysical/cosmological spatial-closure density (comparable to su
 
 ## 2. Exact Bhattacharyya / KL Sample-Complexity Floor and Open Unification Gates
 
-For symmetric binary coin laws $P_\pm = \big(\frac{1 \pm \Delta}{2}, \frac{1 \mp \Delta}{2}\big)$ with total-variation gap $\Delta := \Delta P_{\mathrm{ptr},\infty} \in (4.5 \times 10^{-23}, 10^{-21})$ at $\eta = 10^{-13}$ (`RC09`), distinguishing $P_+$ from $P_-$ with error probability $p_{\mathrm{err}} \le 0.05$ requires by Pinsker's data-processing bound $N_{\mathrm{trials}}\,D_{\mathrm{KL}}(P_+ \| P_-) \ge 2(1 - 2 p_{\mathrm{err}})^2 = 1.62$ and $D_{\mathrm{KL}}(P_+ \| P_-) = \Delta\ln\frac{1+\Delta}{1-\Delta} \le \frac{2\Delta^2}{1 - \Delta^2}$:
+For symmetric binary coin laws $P_\pm = \big(\frac{1 \pm \Delta}{2}, \frac{1 \mp \Delta}{2}\big)$ with total-variation gap $\Delta := \Delta P_{\mathrm{ptr},\infty} \in (4.5 \times 10^{-23}, 3 \times 10^{-18})$ certified from both sides at $\eta = 10^{-13}$ (`RC09`, where the upper bound follows by Cauchy–Schwarz on $\|\langle\tilde Q_p\rangle\|_{L^2} \le 1.15\,\eta$ and $\|\mathcal{K}_{\rho_0}^2 h_{\mathrm{rec}}^{\mathrm{sym}}\|_{L^2} \le 1$), distinguishing $P_+$ from $P_-$ with error probability $p_{\mathrm{err}} \le 0.05$ requires by Pinsker's data-processing bound $N_{\mathrm{trials}}\,D_{\mathrm{KL}}(P_+ \| P_-) \ge 2(1 - 2 p_{\mathrm{err}})^2 = 1.62$ and $D_{\mathrm{KL}}(P_+ \| P_-) = \Delta\ln\frac{1+\Delta}{1-\Delta} \le \frac{2\Delta^2}{1 - \Delta^2}$:
 \[
- N_{\mathrm{trials}} \ge \frac{0.81\,(1 - \Delta^2)}{\Delta^2} > 8 \times 10^{41}\text{ independent universe/apparatus runs}, \tag{4}
+ N_{\mathrm{trials}} \ge \frac{0.81\,(1 - \Delta^2)}{\Delta^2} > 10^{35}\text{ independent universe/apparatus runs}, \tag{4}
 \]
 confirming that the positive probability gap proves **mathematical distinguishability inside the model**, not an experimentally accessible gravitational measurement.
 

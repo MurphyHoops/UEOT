@@ -58,15 +58,16 @@ g=iv.mpf(1)/10**40;eta=iv.mpf(1)/10**13;lam_ptr=iv.mpf(1)/100;r_b=iv.mpf(1)/10**
 lam_tilde=lam_ptr*g/r_b  # = 1e-28
 vx_inf=box(comp["continuum_smeared_variances"]["X_rho0_infty"])
 vp_inf=box(comp["continuum_smeared_variances"]["body_tadpole_v_rho0_infty"])
+vq_env=iv.mpf("1.01")*vp_inf  # safe upper envelope for <tilde Q_{p,rho0}^2>_FRW including mu_- = -1/5 and FRW drift
 cap_vol_half=2*iv.pi*(iv.mpf(1)/2-iv.sin(1)/2)
 c_core=iv.mpf("0.5")/iv.sqrt(cap_vol_half)
 b_eff_sup=lam_ptr*c_core  # = lam_tilde * (r_b / g) * c_core
 F_sup=iv.mpf(1);Fp_sup=iv.mpf(200);T_gate_tau=2*delta_tau_half
 
 # (a) Quantum beacon fluctuation error (using lam_tilde = 1e-28)
-delta_beacon=T_gate_tau*V0*(lam_tilde*a_max*F_sup*(vp_inf**iv.mpf("1.5"))+2*lam_tilde*b_eff_sup*(F_sup**2)*iv.sqrt(3)*(vp_inf**iv.mpf("1.5"))+2*(lam_tilde**2)*(F_sup**2)*iv.sqrt(15)*(vp_inf**2))
-# (b) Clock-jitter error including BOTH coherent beacon b_eff_sup^2 and quantum variance lam_tilde^2 * vp_inf
-delta_ptr_clock=g*T_gate_tau*V0*Fp_sup*iv.sqrt(vx_inf)*(b_eff_sup*a_max*vp_inf+2*(b_eff_sup**2)*iv.sqrt(3)*vp_inf+2*(lam_tilde**2)*iv.sqrt(15)*(vp_inf**2))
+delta_beacon=T_gate_tau*V0*(lam_tilde*a_max*F_sup*(vq_env**iv.mpf("1.5"))+2*lam_tilde*b_eff_sup*(F_sup**2)*iv.sqrt(3)*(vq_env**iv.mpf("1.5"))+2*(lam_tilde**2)*(F_sup**2)*iv.sqrt(15)*(vq_env**2))
+# (b) Clock-jitter error including BOTH coherent beacon b_eff_sup^2 and quantum variance lam_tilde^2 * vq_env
+delta_ptr_clock=g*T_gate_tau*V0*Fp_sup*iv.sqrt(vx_inf)*(b_eff_sup*a_max*vq_env+2*(b_eff_sup**2)*iv.sqrt(3)*vq_env+2*(lam_tilde**2)*iv.sqrt(15)*(vq_env**2))
 delta_prep=box(comp["continuum_joint_vector_error_upper"])
 delta_total=delta_prep+delta_beacon+delta_ptr_clock
 require(below(delta_beacon,iv.mpf("2e-25")) and below(delta_ptr_clock,iv.mpf("1e-34")) and below(delta_total,iv.mpf("2e-25")),"suppressed beacon and clock vector errors")
@@ -80,13 +81,17 @@ den_ptr=iv.sqrt(2*iv.mpf("0.51"))
 arg_ptr=mu_ptr_shift/den_ptr
 gap_ptr_ref=2*arg_ptr/iv.sqrt(iv.pi)*iv.exp(-(arg_ptr**2))
 gap_ptr_actual=gap_ptr_ref-2*delta_total
-require(above(gap_ptr_ref,iv.mpf("4.8e-23")) and above(gap_ptr_actual,iv.mpf("4.5e-23")),"strictly positive continuum k=1 pointer binary gap")
+# Rigorous Cauchy-Schwarz upper bound: ||<tilde Q_p(tau)>||_{L^2} <= 1.15*eta, ||K_{rho0}^2 h_rec^sym||_{L^2} <= 1,
+# int dtau a(tau) F_read(theta(tau)) = int dtheta a(tau)^3 F_read(theta) <= a_max^3 * gate_int, omega_ptr_1 >= sqrt(2), Var >= 0.49
+mu_ptr_shift_hi=lam_ptr*(a_max**3)*gate_int*iv.mpf("1.15")*eta/iv.sqrt(iv.sqrt(2)*V0)
+gap_ptr_actual_hi=(2/iv.sqrt(iv.pi))*(mu_ptr_shift_hi/iv.sqrt(2*iv.mpf("0.49")))+2*delta_total
+require(above(gap_ptr_ref,iv.mpf("4.8e-23")) and above(gap_ptr_actual,iv.mpf("4.5e-23")) and below(gap_ptr_actual_hi,iv.mpf("3e-18")),"certified lower and Cauchy-Schwarz upper bounds on continuum pointer binary gap")
 
 # Beacon background beta contribution and full pointer interaction energy (including quantum beacon variance!)
 H1_beacon_sq=iv.mpf(1)+iv.mpf(80)**2
 delta_beta_beacon=iv.mpf(1)/10*(r_b**2)*H1_beacon_sq/V0
 E_beacon_model=(r_b**2)*H1_beacon_sq/(2*(g**2))
-E_ptr_inc_upper=((b_eff_sup**2)*V0*vp_inf+(lam_tilde**2)*V0*(vp_inf**2))
+E_ptr_inc_upper=((b_eff_sup**2)*V0*vq_env+(lam_tilde**2)*V0*(vq_env**2))
 require(below(delta_beta_beacon,iv.mpf("4e-26")) and below(E_ptr_inc_upper,iv.mpf("0.25")),"negligible beacon FRW backreaction and bounded pointer energy")
 
 finish("local_autonomous_pointer.py",{
@@ -107,6 +112,7 @@ finish("local_autonomous_pointer.py",{
   "pointer_k1_quadrature_shift_lower":outward(mu_ptr_shift),
   "reference_pointer_binary_gap_lower":outward(gap_ptr_ref),
   "actual_continuum_pointer_binary_gap_lower":outward(gap_ptr_actual),
+  "actual_continuum_pointer_binary_gap_upper":outward(gap_ptr_actual_hi),
   "beacon_FRW_radiation_beta_contribution_upper":outward(delta_beta_beacon),
   "beacon_initial_energy_upper":outward(E_beacon_model),
   "pointer_interaction_energy_upper":outward(E_ptr_inc_upper),
