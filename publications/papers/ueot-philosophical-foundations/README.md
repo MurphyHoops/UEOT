@@ -1,39 +1,34 @@
 # What Prediction Leaves Out: Relational Objecthood and the Grounds of Purpose
 
-**Degui Qian · Version 2.1 (Standalone Master Edition & Three Journal Submission Packages) · November 2026**
+**Degui Qian · Version 2.2 (Standalone Master Edition & Three Journal Submission Packages) · November 2026**
 
 A self-contained philosophical and mathematical research article examining when successful predictive representations justify ontological claims about what persists as an individual and teleological claims about what its activity is for.
 
 ## Master deliverables and journal submission folders
 
-- **Master Complete Edition (v2.1):**
+- **Master Complete Edition (v2.2):**
   - [Typeset master manuscript (PDF, with Figures 1–3)](manuscript.pdf)
-  - [Markdown source](manuscript.md) · [LaTeX source](manuscript.tex) · [Verified bibliography (93 entries)](references.bib)
+  - [Markdown source](manuscript.md) · [LaTeX source](manuscript.tex) · [Verified bibliography (96 entries)](references.bib)
   - [Programmatic vector figure generator](generate_figures.py) & [Vector/300-DPI Figures 1–3](figures/)
   - [Chinese abstract and structural synopsis](ABSTRACT_ZH.md) · [Claim and proof matrix](CLAIM_MATRIX.md)
   - [Companion pure-kernel Lean 4 formalization archive (Apache-2.0, Zenodo DOI: 10.5281/zenodo.24433585)](https://doi.org/10.5281/zenodo.24433585)
   - [Build receipt](BUILD_RECEIPT.json) · [Editorial/arithmetic validation](VALIDATION.json) · [Checksums](SHA256SUMS)
 - **Three Uncompressed, Portal-Ready Journal Submission Packages (`submissions/`):**
-  1. [**`submissions/bjps/`**](submissions/bjps/SUBMISSION_GUIDE_AND_MANIFEST.md) — *The British Journal for the Philosophy of Science* (Triple-anonymous, UK English `en-GB`, concise abstract, self-contained manuscript + 93 references strictly $\le 10,000$ words, optional expanded online appendix, separate Title Page & Cover Letter)
-  2. [**`submissions/philosophy-of-science/`**](submissions/philosophy-of-science/SUBMISSION_GUIDE_AND_MANIFEST.md) — *Philosophy of Science* (Double-anonymous, US English `en-US`, Page 1 Title $\to$ $\le 100$-word Abstract $\to$ Section 1, total manuscript incl. abstract & 93 references strictly $\le 9,500$ words, optional online supplement & Portal Metadata/Cover Note)
-  3. [**`submissions/synthese/`**](submissions/synthese/SUBMISSION_GUIDE_AND_MANIFEST.md) — *Synthese* (Double-anonymous Springer two-file split: separate `synthese_title_page.pdf` + blinded `synthese_blinded_manuscript.pdf` with 150–250-word abstract, 6 keywords, integrated proofs, and mandatory `Declarations` before `References`)
+  1. [**`submissions/bjps/`**](submissions/bjps/SUBMISSION_GUIDE_AND_MANIFEST.md) — *The British Journal for the Philosophy of Science* (Triple-anonymous, UK English `en-GB`, **12pt Times New Roman, 1.5x spacing, 1-in margins**, post-abstract AI Statement + Appendix B prompt log, strictly $\le 24$ pages excl. Title/Abstract/References and $\le 10,000$ words)
+  2. [**`submissions/philosophy-of-science/`**](submissions/philosophy-of-science/SUBMISSION_GUIDE_AND_MANIFEST.md) — *Philosophy of Science* (Double-anonymous, US English `en-US`, Page 1 Title $\to$ 96-word Abstract ($\le 100$ words) $\to$ Section 1, total manuscript incl. abstract & 96 references strictly $\le 9,500$ words)
+  3. [**`submissions/synthese/`**](submissions/synthese/SUBMISSION_GUIDE_AND_MANIFEST.md) — *Synthese* (Double-anonymous Springer two-file split: separate `synthese_title_page.pdf` + blinded `synthese_blinded_manuscript.pdf` with 194-word abstract, 6 keywords, integrated proofs, and mandatory `Declarations` before `References`)
 
-## Core contributions of Version 2.1
+## Core contributions of Version 2.2
 
-1. **Strictly standalone foundational article with Forward-Marginalization Asymmetry.** Written as an independent, self-contained inaugural article with zero reliance on unpublished internal manuscripts or external repository snapshots. Diagnoses the structural *forward-marginalization asymmetry* explaining why predictive compression erases modal, energetic, and genealogical grounds, with every formal definition, proposition, counterexample, and theorem proved in full in the Mathematical Appendix.
-2. **Typed Principle of Explanatory Preservation & Constrained Relational Objecthood.** Establishes countable-protocol predictive minimality (Proposition 1) and the exact two-condition equivalence for closed-test Bayes–Bellman belief-quotient descent (Proposition 2), defending three jointly exclusionary criteria for relational objecthood—non-trivial predictive–control compression, counterfactual intervention invariance, and realization-cost/constraint accountability—against pure compressionism and unconstrained Markov-blanket metaphysics (Figure 3).
-3. **Unified regenerative model, biological realizations, and four sharp separations.** Presents a single stochastic repair–reproduction model $\mathcal{M}$ with internal parity/gate diagnostics and intact-template replication (Figure 1a), grounded in bacterial methyl-directed DNA mismatch repair (`MutS–MutL–MutH`), proving: (i) the non-monotonic 2–3–3–4 predictive quotient diamond lattice and infinite-horizon erasure of paid repair expenditure (Proposition 3, Figure 1b); (ii) lawful silent-tag quotients versus von Neumann's gap between decoded symbolic instructions and physical gate actuation (Proposition 4); (iii) minimal destructive cut-set reconstruction (Proposition 5), finite-memory versus memoryless viability separation (Figure 2a), and fixed-sample zero-violation certification impossibility (Proposition 6); and (iv) dual-criterion affine gauge underdetermination plus a local rank-three smooth bottleneck obstruction (Proposition 7).
-4. **Full-policy growth ceiling and Four-Rung Grounds of Purpose.** Proves the exact expected population growth ceiling $\rho_* = \max\{1, \lambda_0, \lambda_1\}$ and necessary-and-sufficient joint realization conditions from a damaged founder (Theorem 1, Figure 2b)—matching bacterial persister dormancy (`1`), iteroparous maintenance (`care`), and high-fecundity proliferation (`bloom`)—isolating organism-versus-lineage trade-offs, critical finite-deadline deficits ($11/12 < 1$), and single-population stochastic extinction ($243/2048$). Formulates a four-rung stratification of purposive grounds engaging contemporary philosophy of biology, cognitive science, and normativity across **93 verified external scholarly works**.
+1. **Incomparable Predictive Refinements & Forward-Marginalization Asymmetry.** Proves across the full strict parameter domain of $\mathcal{M}$ that undamaged and self-repairing conservative individuals share the exact infinite-horizon birth law while paying $0$ versus $3$ repair units, and that extending birth censuses versus adjoining first-step repair calorimetry produces *mutually incomparable three-class refinements* (Proposition 3, Figure 1b)—showing that which type of evidence is added dictates which explanatory question becomes identifiable.
+2. **Typed Explanatory Preservation & Calibrated Relational Objecthood.** Establishes countable-protocol predictive minimality (Proposition 1) and closed-test Bayes–Bellman belief-quotient descent (Proposition 2), calibrating three exclusionary criteria for relational objecthood—tested explicitly against symmetrical fission and distinguishing fast-timescale paid endogenous repair from full slow-timescale reciprocal constraint closure (Figure 3).
+3. **Syntactic–Constructor Separation, Viability Memory, & Empirical Predictions.** Formalizes $\tau$-blind Markov lumpability versus von Neumann's gap between decoded symbolic instructions and physical gate actuation (Proposition 4), finite-memory versus memoryless viability separation (Proposition 6a, Figure 2a), fixed-sample zero-risk impossibility (Proposition 6b), and smooth bottleneck rank obstructions (Proposition 7), separating established *E. coli* `MutS–MutL–MutH` biochemistry from testable calorimetry predictions.
+4. **Full-Policy Ceiling vs. Autonomous Hereditary Attainment & Four-Rung Purpose.** Benchmarks autonomous multi-generational execution of fixed hereditary programs $\theta_i$ against the full public-history growth ceiling $\rho_* = \max\{1, \lambda_0, \lambda_1\}$ (Theorem 1, Figure 2b)—contrasting active hereditary persistence with subcritical dormancy switching $(1/2, 1/4, 1/4, 1/8, 1/3)$—and stratifies four bearer-indexed grounds of purpose separating conditional Rung 2 regulatory standards (answering Corti 2023), prospective growth, and retrospective Rung 3 selection across **96 verified external scholarly works**.
 
 ## Reproducible build and verification
-
-From this directory (with Python 3, Matplotlib/NumPy for figure regeneration, Pandoc, XeLaTeX, BibTeX, Latexmk, and Poppler utilities installed):
 
 ```bash
 python3 build.py
 python3 validate.py
 shasum -a 256 -c SHA256SUMS
 ```
-
-- `build.py` regenerates Figures 1–3 and compiles the master `manuscript.pdf` alongside all seven submission PDFs across `submissions/{synthese,bjps,philosophy-of-science}/` via Pandoc and `latexmk -xelatex`, verifying zero LaTeX/citation errors, zero missing glyphs, and zero overfull boxes, and writes `BUILD_RECEIPT.json`.
-- `validate.py` verifies abstract and word-count budgets across all editions, 1-to-1 citation parity and zero BibTeX warnings across all 93 external BibTeX entries, strict double-/triple-anonymous blinding across all five blinded review PDFs, and exact rational arithmetic for all printed model identities, writing `VALIDATION.json`, `VALIDATION_{SYNTHESE,BJPS,POS}.json`, and `SHA256SUMS`.

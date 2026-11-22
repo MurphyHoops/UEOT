@@ -11,7 +11,7 @@
 
 ## Compliance Summary (`VALIDATION_SYNTHESE.json`)
 - **Double-Anonymous Blinding:** PASS (`anonymity_leaks = []`, zero occurrences of `Degui`, `Qian`, `MurphyHoops`, `24433585`, `24433584`, `Single-authored`, or `sole author` in blinded PDF text and metadata)
-- **Abstract Length:** **196 words** (required: 150–250 words)
+- **Abstract Length:** **194 words** (required: 150–250 words)
 - **Keywords Count:** **6 keywords** (required: 4–6 keywords)
 - **Springer Mandatory Declarations & AI Transparency:** Placed immediately before `References` in anonymized form in `synthese_blinded_manuscript.pdf` and in full named form on the 1-page `synthese_title_page.pdf` (research directed by **Degui Qian** and completed with **Gemini 4 Carbon** and **ChatGPT 6 Astra**)
-- **Bibliography Parity:** **93/93** verified external scholarly works resolved (`0` missing, `0` unused, `0` BibTeX warnings)
+- **Bibliography Parity:** **96/96** verified external scholarly works resolved (`0` missing, `0` unused, `0` BibTeX warnings)

@@ -1,25 +1,21 @@
-\documentclass[11pt,a4paper]{article}
-\usepackage[margin=26mm,headheight=14pt,headsep=8mm]{geometry}
+\documentclass[12pt,letterpaper]{article}
+\usepackage[margin=1in,headheight=15pt,headsep=8mm]{geometry}
 \usepackage{fontspec}
-\IfFontExistsTF{Liberation Serif}{%
-  \setmainfont{Liberation Serif}%
-}{%
+\IfFontExistsTF{Times New Roman}{%
   \setmainfont{Times New Roman}%
+}{%
+  \setmainfont{Liberation Serif}%
 }
-\IfFontExistsTF{Liberation Sans}{%
+\IfFontExistsTF{Helvetica}{%
+  \setsansfont[Scale=0.92]{Helvetica}%
+}{%
   \setsansfont{Liberation Sans}%
-}{%
-  \IfFontExistsTF{Latin Modern Sans}{%
-    \setsansfont{Latin Modern Sans}%
-  }{%
-    \setsansfont{Helvetica}%
-  }%
 }
-\IfFontExistsTF{DejaVu Sans Mono}{%
-  \setmonofont[Scale=0.84]{DejaVu Sans Mono}%
+\IfFontExistsTF{Menlo}{%
+  \setmonofont[Scale=0.82]{Menlo}%
 }{%
-  \IfFontExistsTF{Menlo}{%
-    \setmonofont[Scale=0.82]{Menlo}%
+  \IfFontExistsTF{DejaVu Sans Mono}{%
+    \setmonofont[Scale=0.83]{DejaVu Sans Mono}%
   }{%
     \setmonofont[Scale=0.84]{Courier New}%
   }%
@@ -27,7 +23,7 @@
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{microtype}
 \usepackage{setspace}
-\setstretch{1.18}
+\onehalfspacing
 \usepackage{longtable,booktabs,array,calc}
 \newcounter{none}
 \usepackage{needspace}
@@ -41,7 +37,7 @@
 \usepackage{xurl}
 \urlstyle{same}
 \hypersetup{pdftitle={$title$},pdfauthor={},pdfsubject={BJPS Triple-Anonymous Submission}}
-\setlength{\parindent}{1.15em}
+\setlength{\parindent}{1.2em}
 \setlength{\parskip}{2pt}
 \setlength{\emergencystretch}{2.5em}
 \setcounter{secnumdepth}{2}
@@ -59,21 +55,26 @@
 \begin{document}
 \thispagestyle{plain}
 \begin{center}
-{\fontsize{18}{23}\selectfont\bfseries $title$\par}
+{\fontsize{17}{22}\selectfont\bfseries $title$\par}
 \end{center}
-\vspace{6pt}
+\vspace{8pt}
 \begin{abstract}
 \noindent $abstract$
 \end{abstract}
+$if(aistatement)$
+\vspace{12pt}
+\noindent\textbf{AI Statement.} $aistatement$\par
+\clearpage
+$else$
 \vspace{10pt}
+$endif$
 
 $body$
 
 \clearpage
 \begingroup
-\setstretch{1.02}
-\small
-\setlength{\bibsep}{5pt}
+\onehalfspacing
+\setlength{\bibsep}{4pt}
 \bibliographystyle{plainnat}
 \bibliography{references}
 \endgroup
