@@ -92,7 +92,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\small UEOT PHYSICS}
-\fancyhead[R]{\small Bilingual revision 3.11}
+\fancyhead[R]{\small Bilingual revision 3.12}
 \fancyfoot[C]{\small\thepage}
 \setlength{\headheight}{16pt}
 \renewcommand{\headrulewidth}{0.3pt}
@@ -123,29 +123,30 @@
   \vspace{10mm}
   {\color{teal}\rule{\textwidth}{1pt}\par}
   \vspace{7mm}
-  {\large Third edition\quad Bilingual revision 3.11\par}
+  {\large Third edition\quad Bilingual revision 3.12\par}
   \vspace{6mm}
-  {Degui Qian\par}
+  {Historical book by Degui Qian\par}\smallskip
+  {Chapter 71: AI-assisted research proposal\par}
   \vspace{5mm}
-  {71 chapters\quad 6 appendices\quad UEOT-QM Kernel 1.14\par}
+  {72 chapters\quad 6 appendices\quad UEOT-PHYSICS\par}
   \vfill
   {Objects and protocols\quad Quantum operations and fields\par}
   \vspace{3mm}
   {Proofs, countermodels, and empirical limits\par}
   \vspace{7mm}
-  {14 November 2026\par}
+  {18 November 2026\par}
   \end{titlepage}
 }
 \makeatother
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
-\usepackage{bookmark}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
   pdftitle={UEOT Physics},
-  pdfauthor={Degui Qian},
+  pdfauthor={Historical book by Degui Qian. Chapter 71 is an AI-assisted research proposal.},
   colorlinks=true,
   linkcolor={teal},
   filecolor={Maroon},
@@ -162,8 +163,9 @@
 \makeatother
 \subtitle{From Object Mathematics to Quantum Physics: Derivations,
 Formal Proofs, and Research Boundaries}
-\author{Degui Qian}
-\date{2026-11-14}
+\author{Historical book by Degui Qian. Chapter 71 is an AI-assisted
+research proposal.}
+\date{2026-11-18}
 
 \begin{document}
 \frontmatter
@@ -175,7 +177,7 @@ Formal Proofs, and Research Boundaries}
 \tableofcontents
 }
 \mainmatter
-\chapter{0. Scope, domains, and responsibilities of proof}\label{ch-0}
+\chapter{0. Scope, domains, and responsibilities of proof}\label{ch-0}\hypertarget{ch-0}{}
 
 Reading this book begins by distinguishing mathematical validity of a
 model from evidence that the model describes nature. This chapter
@@ -834,7 +836,20 @@ gain, and global quantum selection remains open. Actual replay,
 historical execution reuse, and publication verification are recorded
 separately; CURRENT and auditable receipts determine release status.
 
-\chapter{1. Bridging UEOT Core and quantum physics}\label{ch-1}
+\section{0.15 Reading the Chapter 71 candidate}
+
+The \protect\hyperlink{ch-71}{correlated-bath chapter} adds seven
+results to the continuous source candidate for edition 3.12. The
+\href{README.md}{edition index} records the builds and reviewed pages
+for each reading copy. The
+\href{https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978\allowbreak e173e23015f02699\allowbreak 4fb60c65/physics/qm/book/UEOT_PHYSICS.en.pdf}{Chapter
+70 PDF} preserves edition 3.11. The 210 result IDs include 203 inherited
+results and the claim ledger retains 126 prior claims. The new work has
+paper, interval and synthetic evidence. Its empirical and formal-proof
+status is given in the \href{../correlated_bath/README.md}{research
+packet}.
+
+\chapter{1. Bridging UEOT Core and quantum physics}\label{ch-1}\hypertarget{ch-1}{}
 
 A quantum device can accumulate a long history even when predicting a
 particular future task does not require retaining it all. We construct
@@ -904,7 +919,7 @@ P-PRED-03{]}
 
 \section{1.2 General Core does not select a quantum sector}
 
-\phantomsection\label{p-qbr-01}{}
+\protect\hypertarget{p-qbr-01}{}{}
 
 \textbf{P-QBR-01: A classical realization countermodel.} General
 predictive factors, state closure, access carriers, persistence, and
@@ -1217,7 +1232,7 @@ because a kernel now exists. {[}S5, status notes; §5.5 and the later
 kernel-evidence chapters{]}
 
 \chapter{2. Quantum selection: when complex quantum theory is
-selected}\label{ch-2}
+selected}\label{ch-2}\hypertarget{ch-2}{}
 
 Classical probability, real quantum theory, and complex quantum theory
 can each describe operational statistics; the question is which
@@ -1287,7 +1302,7 @@ for the claim that this set of selection principles is sufficient.
 
 \section{2.3 Independence and satisfaction in quantum theory}
 
-\phantomsection\label{p-qsel-01}{}
+\protect\hypertarget{p-qsel-01}{}{}
 
 \textbf{P-QSEL-01: Classical and real-quantum deletion witnesses.}
 Finite classical probability theory satisfies local tomography but
@@ -1358,7 +1373,7 @@ reconstruction. Replacing exact equalities by small numerical errors is
 not sufficient to transfer an exact reconstruction theorem.
 
 \chapter{3. Fisher action, complex amplitudes, and conditional Born
-arguments}\label{ch-3}
+arguments}\label{ch-3}\hypertarget{ch-3}{}
 
 How do a probability density and phase combine into Schrödinger
 dynamics, and when does a statistical inequality become quantum
@@ -1381,7 +1396,7 @@ select it automatically. Electromagnetic coupling additionally requires
 an independent specification of \(\nabla S-qA\), \(q\phi\), and gauge
 transformations.
 
-\phantomsection\label{p-qact-01}{}
+\protect\hypertarget{p-qact-01}{}{}
 
 \textbf{P-QACT-01: Conditional Madelung--Schrödinger equivalence.}
 Compactly supported variations of the action yield \[
@@ -1441,7 +1456,7 @@ Let a normalized one-dimensional density \(\rho\) have finite variance
 and position Fisher information \(I_x=\int(\rho')^2/\rho\,dx\), with
 vanishing boundary terms.
 
-\phantomsection\label{p-qact-02}{}
+\protect\hypertarget{p-qact-02}{}{}
 
 \textbf{P-QACT-02.} \[
 \operatorname{Var}(X)I_x\ge1.
@@ -1519,7 +1534,7 @@ rule.
 
 \section{3.4 Unbiased branch weights and actual outcomes}
 
-\phantomsection\label{p-qborn-02}{}
+\protect\hypertarget{p-qborn-02}{}{}
 
 \textbf{P-QBORN-02: Probabilities of an unbiased final branch.} Suppose
 branch weights \(p_a(t)\in[0,1]\) are martingales with respect to a
@@ -1543,7 +1558,7 @@ are independent premises. Objectivity of public records has not
 established them.
 
 \chapter{4. Finite-dimensional quantum operations: states, effects,
-channels, and instruments}\label{ch-4}
+channels, and instruments}\label{ch-4}\hypertarget{ch-4}{}
 
 Every later finite quantum calculation uses the operational grammar
 introduced here: states describe preparations, effects describe events,
@@ -1588,7 +1603,7 @@ J(\mathcal E)=\sum_{ij}|i\rangle\langle j|\otimes
 \mathcal E(\rho)=\operatorname{Tr}_A[(\rho^\top\otimes I)J].
 \]
 
-\phantomsection\label{p-qop-01}{}
+\protect\hypertarget{p-qop-01}{}{}
 
 \textbf{P-QOP-01: Finite Choi--Kraus equivalence.} \[
 \mathcal E\ {\rm CP}\iff J(\mathcal E)\succeq0
@@ -1644,7 +1659,7 @@ have different numbers of Kraus terms. Padding a common array with zero
 terms leaves the channel unchanged; omitting a branch or a term does not
 establish completeness.
 
-\phantomsection\label{p-qop-02}{}
+\protect\hypertarget{p-qop-02}{}{}
 
 \textbf{P-QOP-02: No signalling.} A local CPTP map \(\mathcal E_A\) does
 not change the unconditioned state of \(B\).
@@ -1665,7 +1680,7 @@ channel difference we use the diamond norm \[
 \] where auxiliary dimension equal to the finite input dimension \(d\)
 suffices. The channel discrimination distance is half this norm.
 
-\phantomsection\label{p-qop-03}{}
+\protect\hypertarget{p-qop-03}{}{}
 
 \textbf{P-QOP-03: Operational error and propagation.} Any
 effect-probability difference is bounded by trace distance, and CPTP
@@ -1723,7 +1738,7 @@ check of one model does not automatically formalize all the spectral and
 norm theory used here. {[}Q2, §4; S4, §§2, 9{]}
 
 \chapter{5. Quantum FFIPS and realizations of quantum
-objects}\label{ch-5}
+objects}\label{ch-5}\hypertarget{ch-5}{}
 
 Whether a density matrix contains all predictive information depends on
 the allowed future experiments and on environmental memory. This chapter
@@ -1733,7 +1748,7 @@ to comparing total channels alone.
 
 \section{5.1 States as representations of complete future predictions}
 
-\phantomsection\label{p-qff-01}{}
+\protect\hypertarget{p-qff-01}{}{}
 
 \textbf{P-QFF-01: Finite quantum FFIPS.} Assume the current \(\rho_h\)
 is sufficient for every future process, and future protocols contain a
@@ -1789,7 +1804,7 @@ effect \(F\) is tested, its logical effect must be
 \(\bar F=\mathcal E^*(F)\), or have the same pairing on the specified
 input class.
 
-\phantomsection\label{p-qff-02}{}
+\protect\hypertarget{p-qff-02}{}{}
 
 \textbf{P-QFF-02: Path preservation by a quantum quotient.} Under
 branchwise commutation, a physical initial state
@@ -1926,7 +1941,7 @@ negative controls answer which data were compiled. Experiments and
 sector bridges answer how those data correspond to physics.
 
 \chapter{6. Measurement: coherent parents, public quotients, and
-conditional predictive states}\label{ch-6}
+conditional predictive states}\label{ch-6}\hypertarget{ch-6}{}
 
 Measurement involves joint quantum evolution, publicly readable labels,
 and conditional prediction once an outcome is known. Separating these
@@ -1942,7 +1957,7 @@ V|\psi\rangle=\sum_{a,\mu}A_{a\mu}|\psi\rangle\otimes|a,\mu\rangle,\qquad
 Q_a=\sum_\mu|a,\mu\rangle\langle a,\mu|.
 \]
 
-\phantomsection\label{p-qmeas-01}{}
+\protect\hypertarget{p-qmeas-01}{}{}
 
 \textbf{P-QMEAS-01: Parent-system completion.} \(V^\dagger V=I\), and \[
 \mathcal M_a(\rho)=
@@ -1965,7 +1980,7 @@ can be implemented experimentally.
 \section{6.2 Conditioning as the predictive state of an outcome-extended
 history}
 
-\phantomsection\label{p-qmeas-02}{}
+\protect\hypertarget{p-qmeas-02}{}{}
 
 \textbf{P-QMEAS-02.} After outcome \(a\) occurs, with \(p_a>0\), every
 future quantum effect \(F\) has conditional probability \[
@@ -1986,7 +2001,7 @@ connection organizes those steps; it does not add collapse dynamics.
 
 Let \(\Delta_R(\Omega)=\sum_a(I\otimes Q_a)\Omega(I\otimes Q_a)\).
 
-\phantomsection\label{p-qmeas-03}{}
+\protect\hypertarget{p-qmeas-03}{}{}
 
 \textbf{P-QMEAS-03: Public blindness.} If \([B,I\otimes Q_a]=0\) for
 every \(a\), then \[
@@ -2021,7 +2036,7 @@ M_{ab}\ge0,\quad\sum_bM_{ab}=1.
 \] The row vector of public probabilities consequently evolves as
 \(p'=pM\).
 
-\phantomsection\label{p-qmeas-04}{}
+\protect\hypertarget{p-qmeas-04}{}{}
 
 \textbf{P-QMEAS-04.} The matrix \(M\) is a classical stochastic matrix.
 
@@ -2075,7 +2090,7 @@ record criteria in this book are related but distinct conditions;
 terminology alone does not make them interchangeable.
 
 \chapter{7. Complete classification of strong record-nondisturbing
-dynamics}\label{ch-7}
+dynamics}\label{ch-7}\hypertarget{ch-7}{}
 
 If a channel leaves every quantum state within each record branch
 untouched, how can it still change coherence between branches? A
@@ -2096,7 +2111,7 @@ pointwise, not merely each branch's total probability. Remove
 zero-dimensional branches first to avoid assigning spurious independent
 parameters to unobservable blocks.
 
-\phantomsection\label{p-qsrn-01}{}
+\protect\hypertarget{p-qsrn-01}{}{}
 
 \textbf{P-QSRN-01: Complete SRN classification.} SRN holds exactly for
 channels \[
@@ -2123,7 +2138,7 @@ extension; it is not claimed as an original UEOT operator theorem.
 
 \section{7.2 Composition, blindness, and underdetermination}
 
-\phantomsection\label{p-qsrn-02}{}
+\protect\hypertarget{p-qsrn-02}{}{}
 
 \textbf{P-QSRN-02.} \[
 \mathcal A_K\mathcal A_L=\mathcal A_{K\odot L}.
@@ -2149,7 +2164,7 @@ repeated halving, contradict continuity at zero. A nonzero continuous
 multiplicative function admits a local logarithm and hence the
 exponential form.
 
-\phantomsection\label{p-qsrn-03}{}
+\protect\hypertarget{p-qsrn-03}{}{}
 
 \textbf{P-QSRN-03: Necessary and sufficient generator-cone conditions.}
 These maps are CPTP for every \(t\ge0\) exactly when \[
@@ -2196,7 +2211,7 @@ time-homogeneous semigroup. Changing records or environmental memory
 require a different model.
 
 \chapter{8. QDRR: record writing, erasure by inversion, and finite
-data}\label{ch-8}
+data}\label{ch-8}\hypertarget{ch-8}{}
 
 QDRR writes a record and then reverses the writing to probe coherence
 invisible to public labels. We derive what it reconstructs within SRN,
@@ -2218,7 +2233,7 @@ these orthogonal image branches and does not leak input outside the
 image. Defining it on the whole space requires an explicit action on the
 orthogonal complement.
 
-\phantomsection\label{p-qqdr-01}{}
+\protect\hypertarget{p-qqdr-01}{}{}
 
 \textbf{P-QQDR-01: Coherent pullback.} \[
 W^\dagger\widetilde{\mathcal A}_K(WXW^\dagger)W=\mathcal A_K(X).
@@ -2248,7 +2263,7 @@ registers cannot be attributed directly to fundamental collapse.
 Prepare \((|a\rangle+e^{i\phi}|b\rangle)/\sqrt2\) and measure
 \(X_{ab}=|a\rangle\langle b|+|b\rangle\langle a|\).
 
-\phantomsection\label{p-qqdr-02}{}
+\protect\hypertarget{p-qqdr-02}{}{}
 
 \textbf{P-QQDR-02.} \[
 \langle X_{ab}\rangle_\phi
@@ -2275,7 +2290,7 @@ settings, but the sampling assumptions for Hoeffding within each setting
 must hold. When \(m=1\) there are no off-diagonal parameters; \(L=0\)
 must not be inserted into the logarithmic formula below.
 
-\phantomsection\label{p-qqdr-03}{}
+\protect\hypertarget{p-qqdr-03}{}{}
 
 \textbf{P-QQDR-03: Simultaneous error.} With probability at least
 \(1-\alpha\), \[
@@ -2380,7 +2395,7 @@ actualization-strength bound from them, or performed a QDRR hardware
 experiment.
 
 \chapter{9. Quantum information, error correction, and
-metrology}\label{ch-9}
+metrology}\label{ch-9}\hypertarget{ch-9}{}
 
 Copyable public records and the impossibility of cloning arbitrary
 unknown quantum states are compatible because they preserve different
@@ -2411,7 +2426,7 @@ different questions.
 
 \section{9.2 No cloning}
 
-\phantomsection\label{p-qinfo-01}{}
+\protect\hypertarget{p-qinfo-01}{}{}
 
 \textbf{P-QINFO-01.} No single unitary implements
 \(|\psi\rangle|0\rangle\mapsto|\psi\rangle|\psi\rangle\) for every
@@ -2464,7 +2479,7 @@ subject to support and regularity conditions.
 For a pure unitary family
 \(|\psi_\theta\rangle=e^{-i\theta G}|\psi\rangle\):
 
-\phantomsection\label{p-qinfo-02}{}
+\protect\hypertarget{p-qinfo-02}{}{}
 
 \textbf{P-QINFO-02.} \[
 F_Q=4(\langle G^2\rangle-\langle G\rangle^2).
@@ -2472,10 +2487,9 @@ F_Q=4(\langle G^2\rangle-\langle G\rangle^2).
 
 \textbf{Proof.} Substitute \(|\dot\psi\rangle=-iG|\psi\rangle\) into the
 pure-state tangent-projection formula
-\(F_Q=4(\langle\dot\psi|\dot\psi\rangle-
-|\langle\psi|\dot\psi\rangle|^2)\). This formula can also be derived
-directly by solving for the SLD on the state support and its orthogonal
-tangent subspace. \(\square\)
+\(F_Q=4(\langle\dot\psi|\dot\psi\rangle- |\langle\psi|\dot\psi\rangle|^2)\).
+This formula can also be derived directly by solving for the SLD on the
+state support and its orthogonal tangent subspace. \(\square\)
 
 Metrological optimality is not GOD for every task. Optimal measurements
 for several parameters may be incompatible, so individual
@@ -2483,7 +2497,7 @@ single-parameter Fisher bounds cannot automatically be attained
 simultaneously.
 
 \chapter{10. Infinite-dimensional quantum theory: domains and normal
-states}\label{ch-10}
+states}\label{ch-10}\hypertarget{ch-10}{}
 
 When finite matrices give way to continuous position or momentum,
 familiar formulas may remain while operator domains and state types
@@ -2557,7 +2571,7 @@ i\hbar\partial_t\psi_t=H\psi_t.
 orbit, but need not have a strong derivative. Stone's theorem supplies
 the time generator, not the numerical value of \(\hbar\).
 
-\phantomsection\label{p-qinf-01}{}
+\protect\hypertarget{p-qinf-01}{}{}
 
 \textbf{P-QINF-01: Trace-norm continuity of normal states.} For strongly
 continuous \(U(t)\) and any trace-class \(\rho\),
@@ -2583,7 +2597,7 @@ Under separating protocols, a normal state therefore still uniquely
 represents a sufficient future. Countable identifiability does not imply
 efficient learning from finite samples.
 
-\phantomsection\label{p-qinf-02}{}
+\protect\hypertarget{p-qinf-02}{}{}
 
 \textbf{P-QINF-02: Energy-truncation error.} Let \(H\ge0\), let a
 truncation projection \(\Pi\) commute with \(H\), and assume
@@ -2607,7 +2621,7 @@ states below the cutoff. Multistep truncation must control the energy
 tail and dynamical defect at each step.
 
 \chapter{11. Phase space, Weyl--CCR structure, and the action
-scale}\label{ch-11}
+scale}\label{ch-11}\hypertarget{ch-11}{}
 
 This chapter asks which physical inputs produce position--momentum
 noncommutativity. The argument proceeds from projective phase-space
@@ -2638,7 +2652,7 @@ dimensionless. If \(q,p\) have physical position and momentum units,
 convention for the multiplier requires a corresponding change in the
 definition of \(\kappa\) below.
 
-\phantomsection\label{p-qccr-01}{}
+\protect\hypertarget{p-qccr-01}{}{}
 
 \textbf{P-QCCR-01: A single scale from symplectic covariance.} If every
 symplectic transformation preserves the alternating form \(B\), then
@@ -2664,7 +2678,7 @@ greater than one. This is the projection formulation of irreducibility,
 imposed only on the orbital canonical factor; it does not exclude
 additional internal multiplicities such as spin.
 
-\phantomsection\label{p-qccr-02}{}
+\protect\hypertarget{p-qccr-02}{}{}
 
 \textbf{P-QCCR-02.} In a complex Hilbert representation, UCA and
 dimension greater than one exclude the trivial multiplier class.
@@ -2700,7 +2714,7 @@ representation. Dropping irreducibility introduces a multiplicity
 factor. Dropping regularity or passing to field theory with infinitely
 many degrees of freedom removes this uniqueness conclusion.
 
-\phantomsection\label{p-qccr-03}{}
+\protect\hypertarget{p-qccr-03}{}{}
 
 \textbf{P-QCCR-03.} On the common invariant dense Schwartz domain, \[
 [Q_j,P_k]\psi=i\hbar\delta_{jk}\psi.
@@ -2741,7 +2755,7 @@ common \(\kappa\) and hence one scale. Global physical mixing and
 numerical calibration remain sector facts, not consequences of tensor
 composition alone.
 
-\chapter{12. Standard nonrelativistic calculation models}\label{ch-12}
+\chapter{12. Standard nonrelativistic calculation models}\label{ch-12}\hypertarget{ch-12}{}
 
 An abstract quantum structure becomes usable when it calculates wave
 packets, transmission probabilities, and bound energies. Free particles,
@@ -2864,7 +2878,7 @@ and approximation errors. Hartree--Fock, configuration interaction, and
 density-functional theory can be connected to this framework; a one-body
 solution does not automatically certify their accuracy.
 
-\chapter{13. The finite-mode Gaussian sector}\label{ch-13}
+\chapter{13. The finite-mode Gaussian sector}\label{ch-13}\hypertarget{ch-13}{}
 
 Gaussian models compress a restricted family of infinite-dimensional
 quantum states into means and covariances, making them especially
@@ -2876,7 +2890,7 @@ Let \(R=(Q_1,P_1,\ldots,Q_n,P_n)\) satisfy
 \([R_j,R_k]=i\hbar\Omega_{jk}\). Define the mean \(d=\langle R\rangle\)
 and symmetric covariance \(V_{jk}=\langle\{R_j-d_j,R_k-d_k\}\rangle/2\).
 
-\phantomsection\label{p-qgauss-01}{}
+\protect\hypertarget{p-qgauss-01}{}{}
 
 \textbf{P-QGAUSS-01: A necessary covariance condition.} \[
 V+\frac{i\hbar}{2}\Omega\succeq0.
@@ -2940,7 +2954,8 @@ condition. Numerical truncation must also use the tail bound of §10.4;
 approximate CCR of finite matrices do not replace the actual
 infinite-dimensional modes.
 
-\chapter{14. Symmetry, spin, and nonrelativistic particles}\label{ch-14}
+\chapter{14. Symmetry, spin, and nonrelativistic
+particles}\label{ch-14}\hypertarget{ch-14}{}
 
 Spin labels, free-particle energies, and time reversal arise from
 concrete symmetry representations rather than geometric metaphors alone.
@@ -3086,7 +3101,7 @@ measurement-choice, detection, and no-signalling conditions. A
 simulation is not a substitute for their realization.
 
 \chapter{15. Identical particles, Fock space, and
-superselection}\label{ch-15}
+superselection}\label{ch-15}\hypertarget{ch-15}{}
 
 Indifference to particle labels is not enough to determine which
 exchange statistics nature realizes. We first examine permutation
@@ -3192,7 +3207,7 @@ degrees of freedom cannot directly control all representations of
 infinite-mode CCR. Chapter 21 states separate contracts for vacuum,
 thermal-state, and other phase representations in quantum fields.
 
-\chapter{16. Many-body structure, locality, and phases}\label{ch-16}
+\chapter{16. Many-body structure, locality, and phases}\label{ch-16}\hypertarget{ch-16}{}
 
 Many-body difficulty is not merely larger matrices: locality,
 thermodynamic limits, and controlled approximations must fit together.
@@ -3323,7 +3338,7 @@ public readout. The nonidentifiability bounds of Chapters 6--8 and 41
 continue to apply to many-body systems.
 
 \chapter{17. Open systems: GKSL dynamics, thermal baths, and
-trajectories}\label{ch-17}
+trajectories}\label{ch-17}\hypertarget{ch-17}{}
 
 Tracing out an environment yields a channel under suitable initial-state
 assumptions, but not necessarily a memoryless semigroup. This
@@ -3434,7 +3449,7 @@ step-size convergence, and stationary residual
 distance to a unique stationary state; control of an inverse generator
 or a mixing gap is needed.
 
-\chapter{18. Non-Markovian processes and memory objects}\label{ch-18}
+\chapter{18. Non-Markovian processes and memory objects}\label{ch-18}\hypertarget{ch-18}{}
 
 Two histories can leave the same current system state while their
 environments retain information that changes the future. A two-qubit
@@ -3487,7 +3502,7 @@ reprepare the system as \(|0\rangle\), then apply
 the same system state at the break but futures \(|0\rangle\) and
 \(|1\rangle\).
 
-\phantomsection\label{p-qmem-01}{}
+\protect\hypertarget{p-qmem-01}{}{}
 
 \textbf{P-QMEM-01: Irreducible error from omitted memory.} If the true
 future states of two histories have trace distance \(d\), any predictor
@@ -3542,7 +3557,7 @@ comparison language, not a guarantee of lower computational cost in
 every problem.
 
 \chapter{19. Thermal equilibrium, response, and entropy
-production}\label{ch-19}
+production}\label{ch-19}\hypertarget{ch-19}{}
 
 Free-energy minimality of a Gibbs state, stationarity under a thermal
 bath, and actual thermalization are different questions. Relative
@@ -3555,7 +3570,7 @@ definitions at strong coupling.
 For a finite system, let \(\rho_T=e^{-\beta_TH}/Z\) and
 \(F_T(\rho)=\operatorname{Tr}\rho H-\beta_T^{-1}S(\rho)\).
 
-\phantomsection\label{p-qtherm-01}{}
+\protect\hypertarget{p-qtherm-01}{}{}
 
 \textbf{P-QTHERM-01: Free energy and relative entropy.} \[
 F_T(\rho)-F_T(\rho_T)
@@ -3580,15 +3595,15 @@ F(t)=\langle A\tau_t(B)\rangle_T,\quad
 F(t+i\beta_T\hbar)=\langle\tau_t(B)A\rangle_T.
 \]
 
-\phantomsection\label{p-qtherm-02}{}
+\protect\hypertarget{p-qtherm-02}{}{}
 
 \textbf{P-QTHERM-02: KMS for finite Gibbs systems.} The stated boundary
 condition holds.
 
-\textbf{Proof.} Analytic continuation gives \(\tau_{t+i\beta_T\hbar}(B)=
-e^{-\beta_TH}\tau_t(B)e^{\beta_TH}\). Insert this into the Gibbs trace
-and cyclically move factors to obtain the other boundary. Finite
-dimension guarantees analyticity. \(\square\)
+\textbf{Proof.} Analytic continuation gives
+\(\tau_{t+i\beta_T\hbar}(B)= e^{-\beta_TH}\tau_t(B)e^{\beta_TH}\).
+Insert this into the Gibbs trace and cyclically move factors to obtain
+the other boundary. Finite dimension guarantees analyticity. \(\square\)
 
 For Hermitian \(B\), define
 \(S_B(\omega)=\int dt\,e^{i\omega t}\langle B(t)B(0)\rangle_T\). The
@@ -3645,7 +3660,7 @@ separately.
 
 \section{19.5 Spohn's inequality and physical entropy production}
 
-\phantomsection\label{p-qtherm-03}{}
+\protect\hypertarget{p-qtherm-03}{}{}
 
 \textbf{P-QTHERM-03.} If a CPTP semigroup \(\Lambda_t\) has a full-rank
 stationary state \(\sigma\), then \(D(\Lambda_t\rho\|\sigma)\) is
@@ -3654,9 +3669,9 @@ nonincreasing. Along differentiable full-rank trajectories, \[
 \]
 
 \textbf{Proof.} Relative-entropy data processing gives
-\(D(\Lambda_{t+s}\rho\|\Lambda_s\sigma)
-\le D(\Lambda_t\rho\|\sigma)\). Use stationarity of \(\sigma\) and take
-the right derivative. \(\square\)
+\(D(\Lambda_{t+s}\rho\|\Lambda_s\sigma) \le D(\Lambda_t\rho\|\sigma)\).
+Use stationarity of \(\sigma\) and take the right derivative.
+\(\square\)
 
 For \(\sigma=\rho_T\), a fixed Hamiltonian, and a valid heat/work split,
 this becomes \(\dot S-\beta_T\dot Q\ge0\). For an arbitrary reference
@@ -3664,7 +3679,7 @@ state, strong coupling, or a non-Markovian reduction, declining relative
 entropy is not automatically total thermodynamic entropy production.
 
 \chapter{20. Quantum GOD/GOA: tasks, control, and long-term
-structure}\label{ch-20}
+structure}\label{ch-20}\hypertarget{ch-20}{}
 
 Existence of a quantum object does not specify the task a controller
 wants it to perform. Once rewards, resources, and feedback are fixed,
@@ -3694,7 +3709,7 @@ define \[
 \beta_C\sum_op(o|\rho,a)V(\rho_{a,o})\right].
 \]
 
-\phantomsection\label{p-qctl-01}{}
+\protect\hypertarget{p-qctl-01}{}{}
 
 \textbf{P-QCTL-01.} The operator \(T\) is a \(\beta_C\) contraction on
 bounded functions and has a unique bounded fixed point. Under the
@@ -3751,7 +3766,7 @@ matrix certificates for persistence structures; they do not supply an
 undeclared evaluation function.
 
 \chapter{21. Relativistic quantum fields: domains and additional
-assumptions}\label{ch-21}
+assumptions}\label{ch-21}\hypertarget{ch-21}{}
 
 Relativistic field theory does not arise simply by enlarging finite
 matrices: local algebras, operator distributions, and representation
@@ -3868,7 +3883,7 @@ completion. This book does not prove the four-dimensional Yang--Mills
 mass gap, full nonperturbative existence of QED, or quantum gravity.
 
 \chapter{22. The free scalar field: modes, propagation, and
-causality}\label{ch-22}
+causality}\label{ch-22}\hypertarget{ch-22}{}
 
 The free scalar field provides an explicit starting point for modes,
 propagators, and causality. Distinguishing vacuum correlations, Feynman
@@ -3893,7 +3908,7 @@ E_{\mathbf p}a^\dagger(\mathbf p)a(\mathbf p).
 \] This selects a positive-frequency decomposition in a flat background.
 A general curved spacetime need not have a unique global vacuum.
 
-\phantomsection\label{p-qkg-01}{}
+\protect\hypertarget{p-qkg-01}{}{}
 
 \textbf{P-QKG-01: Canonical relations and propagation.}
 Distributionally, these modes give \[
@@ -3920,7 +3935,7 @@ by momentum reversal. \(\square\)
 kernel. The Feynman kernel is not a classical probability for signal
 propagation.
 
-\phantomsection\label{p-qkg-02}{}
+\protect\hypertarget{p-qkg-02}{}{}
 
 \textbf{P-QKG-02: Spacelike causality.} For \(x^2<0\), an orthochronous
 Lorentz transformation takes \(x\) to \(x^0=0\). The commutator integral
@@ -3947,7 +3962,7 @@ second-order transition probability is an integral of the smeared
 inputs. An instantaneous point-detector limit may diverge.
 
 \chapter{23. Dirac and Maxwell fields and their physical degrees of
-freedom}\label{ch-23}
+freedom}\label{ch-23}\hypertarget{ch-23}{}
 
 Dirac and Maxwell fields show how spin, statistics, and gauge
 constraints alter the physical degrees of freedom. Mode and constraint
@@ -3973,7 +3988,7 @@ The Clifford relations and Dirac Lagrangian \[
 energy counts positive-energy particle and antiparticle excitations;
 normal-ordered charge assigns opposite signs.
 
-\phantomsection\label{p-qdir-01}{}
+\protect\hypertarget{p-qdir-01}{}{}
 
 \textbf{P-QDIR-01.} Multiplication of the Dirac operator by its
 conjugate factor gives
@@ -4050,7 +4065,7 @@ interfaces. Eliminating gauge redundancy and deleting physical boundary
 degrees of freedom are different operations.
 
 \chapter{24. Interactions, generating functionals, and
-scattering}\label{ch-24}
+scattering}\label{ch-24}\hypertarget{ch-24}{}
 
 Calculations with interactions first require a distinction between bare
 and renormalized parameters, regulators, and perturbative order. On that
@@ -4149,7 +4164,7 @@ For centre-of-mass two-to-two scattering, \[
 handled consistently. Average initial spins only when the preparation
 does not resolve them.
 
-\phantomsection\label{p-qunit-01}{}
+\protect\hypertarget{p-qunit-01}{}{}
 
 \textbf{P-QUNIT-01: Optical theorem.} From \(S^\dagger S=I\),
 \(-i(T-T^\dagger)=T^\dagger T\). Take the initial-state diagonal element
@@ -4160,7 +4175,7 @@ squared intermediate-state amplitudes, including statistical factors.
 not make every truncated amplitude exactly unitary.
 
 \chapter{25. Renormalization: explicit one-loop benchmarks and
-schemes}\label{ch-25}
+schemes}\label{ch-25}\hypertarget{ch-25}{}
 
 One-loop integrals make renormalization concrete: regulator dependence
 enters parameter relations, while matched quantities enter physical
@@ -4174,7 +4189,7 @@ With a Euclidean spherical hard cutoff, \[
 I_\Lambda(m)=\int_{|q|<\Lambda}\frac{d^4q}{(2\pi)^4}
 \frac1{q^2+m^2}
 =\frac1{16\pi^2}\left[\Lambda^2-m^2\log(1+\Lambda^2/m^2)\right].
-\] \phantomsection\label{p-qren-01}{}
+\] \protect\hypertarget{p-qren-01}{}{}
 
 \textbf{P-QREN-01.} The four-dimensional unit-sphere area is \(2\pi^2\).
 Setting \(u=q^2\) and integrating \(u/(u+m^2)\) gives the expression
@@ -4203,7 +4218,7 @@ is \(\mathcal M_{\rm tree}=-\lambda\). The sign difference is
 conventional, not a physical inconsistency. General kinematics requires
 three separate channels; \(s=t=u\) cannot be imposed arbitrarily.
 
-\phantomsection\label{p-qren-02}{}
+\protect\hypertarget{p-qren-02}{}{}
 
 \textbf{P-QREN-02: Subtracted bubble.} Use
 \(1/(AB)=\int_0^1dx/[xA+(1-x)B]^2\). After shifting the loop variable,
@@ -4227,7 +4242,7 @@ B_R(z;z_0)=\frac1{16\pi^2}\int_0^1dx
 \] \[
 \mathcal M(s,t,u)=-\lambda+
 \frac{\lambda^2}{2}\bigl[B_R(s)+B_R(t)+B_R(u)\bigr]+O(\lambda^3).
-\] \phantomsection\label{p-qren-03}{}
+\] \protect\hypertarget{p-qren-03}{}{}
 
 \textbf{P-QREN-03: Two-particle cut.} For \(s>4m^2\), the interval where
 the logarithm's denominator is negative has length
@@ -4311,7 +4326,7 @@ order does not identify the full Wilsonian action flow with every
 nonperturbative datum of Callan--Symanzik evolution.
 
 \chapter{26. Wilsonian RG, effective field theory, and bridges to
-Core}\label{ch-26}
+Core}\label{ch-26}\hypertarget{ch-26}{}
 
 Low-energy observations need not retain a heavy field explicitly, but
 its effects must enter effective coefficients. Schur complements and
@@ -4337,7 +4352,7 @@ UV-directed parameter of Chapter 25.
 
 \section{26.2 A fully checkable heavy-field matching example}
 
-\phantomsection\label{p-qeft-01}{}
+\protect\hypertarget{p-qeft-01}{}{}
 
 \textbf{P-QEFT-01: Quadratic Schur complement.} Eliminating the heavy
 field from the two-real-field momentum kernel \[
@@ -4431,7 +4446,7 @@ data differ. Fixed points, spectral gaps, Markov order, and object
 minimality are concepts belonging to their respective settings. No
 general theorem identifies them unconditionally one to one.
 
-\phantomsection\label{p-qeft-02}{}
+\protect\hypertarget{p-qeft-02}{}{}
 
 \textbf{P-QEFT-02: A restricted real-time bridge.} Fix the same
 system--environment partition, initial state, joint unitary evolution,
@@ -4463,7 +4478,7 @@ interpretation. A shared coarse-graining intuition does not replace
 these interfaces.
 
 \chapter{27. QED: gauge structure, BRST, and Ward
-identities}\label{ch-27}
+identities}\label{ch-27}\hypertarget{ch-27}{}
 
 Gauge redundancy must remain consistent in quantum calculations, or
 longitudinal terms and counterterms can produce spurious results. The
@@ -4574,7 +4589,7 @@ Ward--Takahashi theorem invoked in §27.2 are three distinct forms of
 evidence.
 
 \chapter{28. Computable QED applications: scattering, running, and
-magnetic moments}\label{ch-28}
+magnetic moments}\label{ch-28}\hypertarget{ch-28}{}
 
 The preceding rules now calculate three quantities: a cross section, an
 effective charge, and an anomalous magnetic moment. These reproduce
@@ -4589,7 +4604,7 @@ one-photon tree exchange: \[
 \mathcal M=\frac{e^2}{s}
 [\bar v(p_2)\gamma^\mu u(p_1)]
 [\bar u(k_1)\gamma_\mu v(k_2)].
-\] \phantomsection\label{p-qqed-01}{}
+\] \protect\hypertarget{p-qqed-01}{}{}
 
 \textbf{P-QQED-01.} Spin completeness and \[
 \operatorname{Tr}(\not a\gamma^\mu\not b\gamma^\nu)
@@ -4632,7 +4647,7 @@ For spacelike \(Q^2>0\), define the positive screening function \[
 \] The first uses \(\int x^2(1-x)^2dx=1/30\); the second uses
 \(\int x(1-x)dx=1/6\) and its logarithmic moment.
 
-\phantomsection\label{p-qqed-02}{}
+\protect\hypertarget{p-qqed-02}{}{}
 
 \textbf{P-QQED-02: Threshold beta function.} Differentiating with
 respect to \(\log Q\), through \(O(\alpha^2)\), gives \[
@@ -4685,7 +4700,7 @@ anomalies. The QED sector has not supplied a new independent UEOT
 prediction of physical constants.
 
 \chapter{29. Non-Abelian gauge fields and a candidate Standard Model
-structure}\label{ch-29}
+structure}\label{ch-29}\hypertarget{ch-29}{}
 
 Gauge anomalies strongly constrain candidate particle tables but
 generally leave several consistent solutions. After fixing non-Abelian
@@ -4779,7 +4794,7 @@ fundamentals and two antifundamentals. \(SU(2)\) has no perturbative
 cubic anomaly, but its Witten global anomaly requires an even total
 number of fundamental doublets, here \(N_f(N_c+1)\).
 
-\phantomsection\label{p-qsm-01}{}
+\protect\hypertarget{p-qsm-01}{}{}
 
 \textbf{P-QSM-01: Anomaly solutions and nonuniqueness.} The three linear
 equations give \(y_L=-N_cy_Q,\ y_D=-2y_Q-y_U,\ y_E=2N_cy_Q\). The cubic
@@ -4825,7 +4840,7 @@ determinant-line discussion} and the
 analysis}.
 
 \chapter{30. Higgs, Yukawa, flavour, and neutrino
-structures}\label{ch-30}
+structures}\label{ch-30}\hypertarget{ch-30}{}
 
 The Higgs mechanism explains how mass terms arise in a chosen model
 without automatically fixing Yukawa values. Explicit mass matrices lead
@@ -4844,7 +4859,7 @@ H=\frac1{\sqrt2}\binom{0}{v+h},\\ v^2=\mu_H^2/\lambda_H.
 \] This is unitary-gauge parameterization near a particular vacuum, not
 a proof of global gauge fixing.
 
-\phantomsection\label{p-qhig-01}{}
+\protect\hypertarget{p-qhig-01}{}{}
 
 \textbf{P-QHIG-01: Mass matrices.} Expanding
 \((D_\mu H)^\dagger D^\mu H\) gives \[
@@ -4879,7 +4894,7 @@ V_{\rm CKM}=U_{uL}^\dagger U_{dL}.
 GIM cancellation follow from this structure. Degenerate masses enlarge
 the residual basis-change group.
 
-\phantomsection\label{p-qflav-01}{}
+\protect\hypertarget{p-qflav-01}{}{}
 
 \textbf{P-QFLAV-01: Generic nondegenerate \(N\)-generation quark
 counting.} Two complex Yukawa matrices contain \(4N^2\) real parameters.
@@ -4908,7 +4923,7 @@ convention \[
 factor of two depends on the operator definition and must agree with the
 mass formula.
 
-\phantomsection\label{p-qnu-01}{}
+\protect\hypertarget{p-qnu-01}{}{}
 
 \textbf{P-QNU-01: Type-I seesaw.} With invertible \(M_R\) and
 heavy--light separation \(\|M_D M_R^{-1}\|\ll1\), \[
@@ -4945,7 +4960,7 @@ constraints, then predict flavour observables not used to select the
 realization. An arbitrarily fitted relabelling is not a mass theory.
 
 \chapter{31. Three generations and three colours: conditional theorems
-and simpler premises}\label{ch-31}
+and simpler premises}\label{ch-31}\hypertarget{ch-31}{}
 
 Selecting exactly three generations first faces replication: conditions
 closed under copying families cannot determine a unique positive count.
@@ -4965,7 +4980,7 @@ general UEOT Core.
 
 \section{31.1 The replication-invariance obstruction}
 
-\phantomsection\label{p-qg3-01}{}
+\protect\hypertarget{p-qg3-01}{}{}
 
 \textbf{P-QG3-01.} Suppose an axiom class \(\mathcal A\) contains a
 model \(T\) and is closed under family replication by some \(r>1\): the
@@ -4997,7 +5012,7 @@ than the existence of a parent object: it fixes its chiral
 representation assignment and assumes no other uncounted contribution to
 that cubic anomaly.
 
-\phantomsection\label{p-qg3-02}{}
+\protect\hypertarget{p-qg3-02}{}{}
 
 \textbf{P-QG3-02: All integer solutions.} \[
 A_H/a=N_f+N_c(2k-N_f)=0
@@ -5041,7 +5056,7 @@ Add the following explicit assumptions.
   recalculation; the bound is not unconditional.
 \end{itemize}
 
-\phantomsection\label{p-qg3-03}{}
+\protect\hypertarget{p-qg3-03}{}{}
 
 \textbf{P-QG3-03: Selection without primitivity.} Within the
 intersection of H-QG3-1, 2, and 3, the unique positive integer anomaly
@@ -5122,7 +5137,7 @@ field, \textbf{including charged \(E^c\)}, not just \(e^c,u^c,d^c,J^c\).
 For \(q_E=0\), the neutral singlet contributes nothing to these local
 anomalies.
 
-\phantomsection\label{p-qg3-04}{}
+\protect\hypertarget{p-qg3-04}{}{}
 
 \textbf{P-QG3-04.} For this full representation table, imposing the
 \(L^3\) anomaly equation and summing directly gives \[
@@ -5190,7 +5205,7 @@ retains its own analytical and exact-regression evidence. A count of
 formalized theorems cannot replace these precise coverage relations.
 
 \chapter{32. Further results, topological routes, and open
-boundaries}\label{ch-32}
+boundaries}\label{ch-32}\hypertarget{ch-32}{}
 
 Topological and framing ideas yield testable selection only after their
 realizations, maps, and completion conditions are specified. This
@@ -5220,7 +5235,7 @@ necessary weak-AF bound leave seven candidates: \[
 (3,3),(3,4),(3,5),(4,3),(4,4),(5,3),(6,3).
 \]
 
-\phantomsection\label{p-qfr-01}{}
+\protect\hypertarget{p-qfr-01}{}{}
 
 \textbf{P-QFR-01.} On this seven-point set, the framing equation selects
 exactly \((3,3)\) if and only if \(\chi=1\bmod48\).
@@ -5244,7 +5259,7 @@ established.
 
 \section{32.2 Autonomy, object partitions, and external completions}
 
-\phantomsection\label{p-qfr-02}{}
+\protect\hypertarget{p-qfr-02}{}{}
 
 \textbf{P-QFR-02.} If a joint process factorizes exactly as
 \(\mathbf T_{FC}=\mathbf T_F\otimes\mathbf T_C\), and a legitimate cut
@@ -5332,7 +5347,7 @@ no new hardware data and announces no discovery of objective collapse,
 supraquantum performance, or particles beyond the Standard Model.
 
 \chapter{33. Interface contracts for the complete
-architecture}\label{ch-33}
+architecture}\label{ch-33}\hypertarget{ch-33}{}
 
 Composition across chapters can easily lose types, normalization, system
 identity, or evidential scope. Interface contracts make finite quantum
@@ -5634,7 +5649,7 @@ and only then cite the corresponding all-word, posterior, or error
 result in Chapters 49--50. Export alone retains status
 \texttt{LEAN\_\allowbreak SOURCE\_\allowbreak EXPORTED\_\allowbreak NOT\_\allowbreak COMPILED}, not formal verification.
 
-\chapter{34. Complete application paths}\label{ch-34}
+\chapter{34. Complete application paths}\label{ch-34}\hypertarget{ch-34}{}
 
 An application must connect preparation, calculation, measurement,
 error, and controls rather than stop at a result formula. Calibration,
@@ -5795,7 +5810,7 @@ Passing three-generation arithmetic does not establish the complete
 model's success.
 
 \chapter{35. Assembling the quantum framework: errors and
-extensions}\label{ch-35}
+extensions}\label{ch-35}\hypertarget{ch-35}{}
 
 After modules are assembled, the framework must show whether local
 errors still control final records. This chapter combines channel and
@@ -5940,7 +5955,7 @@ specified finite history-memory and common-controller cases mentioned in
 diamond-distance theorem.
 
 \chapter{36. The generation problem: calculations must use the correct
-gauge group}\label{ch-36}
+gauge group}\label{ch-36}\hypertarget{ch-36}{}
 
 The same field content has different gauge carriers and running
 coefficients in different energy regimes, so generation selection first
@@ -6038,7 +6053,7 @@ analysis; two coefficient signs are not a complete UV completion.
 \section{36.4 High-energy classification and a five-colour
 counterexample}
 
-\phantomsection\label{g-01}{}
+\protect\hypertarget{g-01}{}{}
 
 \textbf{G-01: All integer solutions for the three-scalar content.} Under
 (36.1), \(N_c\ge3\), \(n_s=3\) and \(b_C>0,b_L>0\), \[
@@ -6089,7 +6104,7 @@ q_{J+}=\frac1{2N_c}-\frac{\sqrt3\beta_8}{2},\quad
 q_{J-}=\frac1{2N_c}+\frac{\sqrt3\beta_8}{2}.
 \] Include \(e^c,E^c,u^c,d^c,J^c\) with the required multiplicities.
 
-\phantomsection\label{g-02}{}
+\protect\hypertarget{g-02}{}{}
 
 \textbf{G-02: Local completion for general colour number.} Under (36.1),
 all six local anomalies, \(C^3,L^3,C^2X,L^2X,\mathrm{grav}^2X,X^3\),
@@ -6135,7 +6150,7 @@ the extended weak carrier exists, and why it has this representation
 content, remain open.
 
 \chapter{37. Testable flavour constraints from generation
-nonuniversality}\label{ch-37}
+nonuniversality}\label{ch-37}\hypertarget{ch-37}{}
 
 For a specified neutral-vector candidate with generation-dependent
 couplings, unknown flavour rotations do not make every observation
@@ -6176,7 +6191,7 @@ claimed as an original discovery.
 
 \section{37.2 Rank-one sum rules constrain the unknown parameters}
 
-\phantomsection\label{f-01}{}
+\protect\hypertarget{f-01}{}{}
 
 \textbf{F-01.} For \(B=G-g_0I=\Delta g\,uu^\dagger\), \[
 B_{ij}B_{kl}=B_{il}B_{kj},\qquad
@@ -6201,7 +6216,7 @@ separately for each process would not preserve that candidate.
 
 \section{37.3 FCNCs cannot vanish in both up and down sectors}
 
-\phantomsection\label{f-02}{}
+\protect\hypertarget{f-02}{}{}
 
 \textbf{F-02.} In a nondegenerate mass basis, if both \(P_u\) and
 \(P_d\) are diagonal, at least one entry of \(V\) has modulus one, and
@@ -6226,7 +6241,7 @@ orientation}
 Let \(\operatorname{off}(A)\) denote the matrix obtained by removing the
 diagonal, and let \(p_i=|u_i|^2,q_j=|(V^\dagger u)_j|^2\).
 
-\phantomsection\label{f-03}{}
+\protect\hypertarget{f-03}{}{}
 
 \textbf{F-03.} \[
 \|\operatorname{off}G_u\|_F^2+
@@ -6261,8 +6276,8 @@ integrating out \(Z'\) below its mass gives \[
 +O(\partial^2/M_{Z'}^4).
 \tag{37.6}
 \] For the fixed chiral operator
-\(O_{ij}^{u,d}=(\bar q_{Li}\gamma_\mu q_{Lj})
-(\bar q_{Li}\gamma^\mu q_{Lj})\), \[
+\(O_{ij}^{u,d}=(\bar q_{Li}\gamma_\mu q_{Lj}) (\bar q_{Li}\gamma^\mu q_{Lj})\),
+\[
 C_{ij}^{u,d}=-\frac{(G_{u,d})_{ij}^{\,2}}{2M_{Z'}^2}.
 \tag{37.7}
 \] Recording both the operator and its conjugate with directed indices
@@ -6314,7 +6329,7 @@ other meson/heavy-vector contributions to low-energy processes still
 follow the contract in §37.5.
 
 \chapter{38. Coherence phases impose constraints on the
-dynamics}\label{ch-38}
+dynamics}\label{ch-38}\hypertarget{ch-38}{}
 
 Coherent phases cannot be chosen independently of decay: complete
 positivity constrains their joint behaviour. A sharp three-branch bound
@@ -6367,7 +6382,7 @@ Gough, Nurdin and Viola; it is not a first discovery by UEOT.
 
 \section{38.3 A sharp CP bound for three branches}
 
-\phantomsection\label{m-01}{}
+\protect\hypertarget{m-01}{}{}
 
 \textbf{M-01.} Every three branches must satisfy \[
 \boxed{\ 
@@ -6410,7 +6425,7 @@ be expressed as \[
 S^2-2(\gamma_{ab}^2+\gamma_{bc}^2+\gamma_{ca}^2)\le S^2/3.
 \] Consequently:
 
-\phantomsection\label{m-02}{}
+\protect\hypertarget{m-02}{}{}
 
 \textbf{M-02.} \[
 S\ge\sqrt3\,|\Omega_{abc}|.
@@ -6464,7 +6479,7 @@ counterexample motivates the stronger four-level criterion in the next
 chapter.
 
 \chapter{39. A four-level criterion: excluding the entire random-phase
-noise class}\label{ch-39}
+noise class}\label{ch-39}\hypertarget{ch-39}{}
 
 This chapter turns the question of which noise class is excluded into a
 concrete four-level test, with a channel, witness constants, and a
@@ -6485,7 +6500,7 @@ K_{\rm cl}=\mathbb E[zz^\dagger].
 non-Gaussian or non-Markovian; it is not restricted to exponential
 decay.
 
-\phantomsection\label{m-03}{}
+\protect\hypertarget{m-03}{}{}
 
 \textbf{M-03: Four is the minimum number of branches for single-time
 separation.} For \(m\le3\), every correlation matrix
@@ -6553,7 +6568,7 @@ B=\begin{pmatrix}
 \tag{39.5}
 \]
 
-\phantomsection\label{m-04}{}
+\protect\hypertarget{m-04}{}{}
 
 \textbf{M-04: A sharp classical lower bound.} \[
 \boxed{\operatorname{Tr}(WK_{\rm cl})\ge
@@ -6591,7 +6606,7 @@ obtained from an optimizer.
 
 \section{39.4 Tolerance to additional dephasing}
 
-\phantomsection\label{m-05}{}
+\protect\hypertarget{m-05}{}{}
 
 \textbf{M-05.} For \(K_\epsilon=(1-\epsilon)K_*+\epsilon I\), \[
 \operatorname{Tr}(WK_\epsilon)=4\epsilon.
@@ -6631,7 +6646,7 @@ p_{\rm cl}:=\frac{\kappa}{4w_{\max}}
 binary POVM with an ancillary qubit. The complexity has moved into
 trusted preparation and effect calibration; it has not disappeared.
 
-\phantomsection\label{e-01}{}
+\protect\hypertarget{e-01}{}{}
 
 \textbf{E-01: A finite-sample rejection test.} For independent
 identically distributed trials with the model and measurement fixed in
@@ -6665,7 +6680,7 @@ If a random-unitary channel preserves every \(|a\rangle\langle a|\)
 exactly, its positive rank-one summands force every constituent unitary
 to be diagonal in this basis. Only then does it belong to (39.1).
 
-\phantomsection\label{e-02}{}
+\protect\hypertarget{e-02}{}{}
 
 \textbf{E-02: A robust bound for approximate population preservation.}
 If a general random-unitary channel
@@ -6711,7 +6726,7 @@ construction is a candidate tool for quantum-noise spectroscopy and
 QCVV, not an established new law of nature.
 
 \chapter{40. Actualization dynamics: from assumed single-branch
-selection to a conditional theorem}\label{ch-40}
+selection to a conditional theorem}\label{ch-40}\hypertarget{ch-40}{}
 
 For an explicitly specified stochastic state equation, can absorption
 into spectral branches be proved rather than assumed? This chapter
@@ -6730,7 +6745,7 @@ actualization motivates the nonlinear single-qubit rule \[
 before averaging with the usual Born weights. This is not an equivalent
 rewriting of a linear quantum channel.
 
-\phantomsection\label{c-01}{}
+\protect\hypertarget{c-01}{}{}
 
 \textbf{C-01: An explicit contradiction from remote preparation.} The
 same density matrix \(\rho=(I+0.6X)/2\) has two decompositions: \[
@@ -6793,7 +6808,7 @@ quantum measurement},
 \href{https://arxiv.org/abs/quant-ph/0107153}{original
 martingale-reduction research}.
 
-\phantomsection\label{c-02}{}
+\protect\hypertarget{c-02}{}{}
 
 \textbf{C-02: Norm preservation and a linear ensemble average.} A
 normalized initial state remains normalized, and \[
@@ -6833,7 +6848,7 @@ degenerate; the conclusion concerns spectral subspaces.
 Define \(p_a(t)=\langle P_a\rangle_t\) and
 \(V(t)=\langle A^2\rangle_t-\bar a_t^2\).
 
-\phantomsection\label{c-03}{}
+\protect\hypertarget{c-03}{}{}
 
 \textbf{C-03: A single spectral branch with Born weights.} Under (40.3)
 and the conditions just stated, \[
@@ -6889,7 +6904,7 @@ following kind; C-03 does not assert exact finite-time collapse.
 
 \section{40.4 A computable finite-time concentration rate}
 
-\phantomsection\label{c-04}{}
+\protect\hypertarget{c-04}{}{}
 
 \textbf{C-04: Decay of pairwise uncertainty.} Retain the finite-spectrum
 and \([H,A]=0\) conditions of §40.3. Then \[
@@ -7020,7 +7035,7 @@ Their comparison requires common responses and experimentally
 distinguishable conditions.
 
 \chapter{41. Why coherence loss alone still does not establish objective
-collapse}\label{ch-41}
+collapse}\label{ch-41}\hypertarget{ch-41}{}
 
 Different system--environment realizations can produce the same system
 channel, limiting what system-only statistics can identify about
@@ -7031,7 +7046,7 @@ and control specification.
 
 \section{41.1 Identifiability limits of system-only statistics}
 
-\phantomsection\label{c-05}{}
+\protect\hypertarget{c-05}{}{}
 
 \textbf{C-05: Equivalence with an unrestricted quantum environment.}
 Every finite CPTP channel
@@ -7113,7 +7128,7 @@ papers nor performed a QDRR hardware experiment. QDRR remains a proposed
 test with explicit controls, calibration and failure conditions.
 
 \chapter{42. Executable research protocols and the status of the
-arguments}\label{ch-42}
+arguments}\label{ch-42}\hypertarget{ch-42}{}
 
 After deriving a candidate curve, one must still specify which
 parameters may be fitted, which data are held out, and what would count
@@ -7321,7 +7336,7 @@ experimental performance comparisons. Deriving something independently
 does not by itself establish scholarly priority.
 
 \chapter{43. Global phase, boundary conditions, and topological
-quantization}\label{ch-43}
+quantization}\label{ch-43}\hypertarget{ch-43}{}
 
 Local amplitude and phase equations do not replace the global boundary
 conditions of a wavefunction. The ring with twisted boundary conditions
@@ -7363,7 +7378,7 @@ satisfying the boundary condition imposes the same condition on the
 adjoint domain. Thus the domain is self-adjoint, not merely formally
 symmetric.
 
-\phantomsection\label{p-ugl-01}{}
+\protect\hypertarget{p-ugl-01}{}{}
 
 \textbf{P-UGL-01: Ring spectrum and gauge invariance.} \[
 f_n(x)=L^{-1/2}e^{i(2\pi n+\theta)x/L},\quad
@@ -7402,7 +7417,7 @@ allowed interference protocols as a response object; naming the
 protocols does not derive the numerical value of \(\hbar\).
 
 \chapter{44. Topological quantum objects: Berry bundles and SSH edge
-states}\label{ch-44}
+states}\label{ch-44}\hypertarget{ch-44}{}
 
 Topological protection becomes an inspectable physical property only
 with a specified Hamiltonian, symmetry, and boundary termination. The
@@ -7423,7 +7438,7 @@ southern patch take \(u_S=e^{-i\varphi}u_N\). Then \[
 \quad \mathcal A_S=\frac{1+\cos\vartheta}{2}d\varphi.
 \]
 
-\phantomsection\label{p-utp-01}{}
+\protect\hypertarget{p-utp-01}{}{}
 
 \textbf{P-UTP-01: Chern number of this eigenline.} Direct
 differentiation gives \[
@@ -7467,7 +7482,7 @@ the physical edge state.
 
 \section{44.3 A semi-infinite boundary and finite-chain errors}
 
-\phantomsection\label{p-utp-02}{}
+\protect\hypertarget{p-utp-02}{}{}
 
 \textbf{P-UTP-02: A semi-infinite zero mode.} For a chain terminated on
 the left at \(A_1\), if \(t_1<t_2\), \[
@@ -7511,7 +7526,7 @@ does not directly derive the number of electron generations, fundamental
 particles or an absolutely everlasting object.
 
 \chapter{45. A nonperturbative starting point: finite lattice gauge
-models and interfaces across scales}\label{ch-45}
+models and interfaces across scales}\label{ch-45}\hypertarget{ch-45}{}
 
 A finite lattice provides a well-defined, computable starting point for
 nonperturbative work, but existence of its measure does not construct
@@ -7536,7 +7551,7 @@ S_W=\beta\sum_p\left(1-\frac1N\operatorname{ReTr}U_p\right),
 chosen for each unoriented plaquette. There is no fermion determinant,
 chemical potential or real-time phase factor in this section.
 
-\phantomsection\label{p-ulg-01}{}
+\protect\hypertarget{p-ulg-01}{}{}
 
 \textbf{P-ULG-01: Existence and gauge invariance of the finite model.}
 On the finite product of compact groups, \(0\le S_W\le2\beta N_p\),
@@ -7588,7 +7603,7 @@ submodel on the four links of a single square: \(u_l=\pm1\), plaquette
 counting measure, there are 16 configurations, eight each with
 \(P=\pm1\).
 
-\phantomsection\label{p-ulg-02}{}
+\protect\hypertarget{p-ulg-02}{}{}
 
 \textbf{P-ULG-02: Exact partition function and response.} \[
 Z=16\cosh\beta,\qquad \langle P\rangle=\tanh\beta,
@@ -7644,7 +7659,7 @@ freedom proves the mass gap of four-dimensional continuum Yang--Mills
 theory.
 
 \chapter{46. Experimental statistics with history dependence and
-optional stopping}\label{ch-46}
+optional stopping}\label{ch-46}\hypertarget{ch-46}{}
 
 Device drift and history-dependent choices can invalidate a simple
 independent-trial analysis. Conditional null hypotheses and
@@ -7668,7 +7683,7 @@ leakage and identifiable systematic errors. The condition holds if every
 history-conditioned channel belongs to the tested class. Knowing only
 that time-averaged noise belongs to that class is insufficient.
 
-\phantomsection\label{p-ust-01}{}
+\protect\hypertarget{p-ust-01}{}{}
 
 \textbf{P-UST-01: A fixed-sample test for correlated trials.} Under
 these conditions, for fixed \(n\), \[
@@ -7707,7 +7722,7 @@ L_n=\prod_{t=1}^n
 \left(\frac{1-q}{1-p_0}\right)^{1-X_t},\quad L_0=1.
 \]
 
-\phantomsection\label{p-ust-02}{}
+\protect\hypertarget{p-ust-02}{}{}
 
 \textbf{P-UST-02: An optional-stopping certificate.} Under the null
 hypothesis, \(L_n\) is a nonnegative supermartingale, because the
@@ -7754,7 +7769,7 @@ has been performed, and no new decoherence mechanism in nature has been
 established.
 
 \chapter{47. Research programme: from closed modules to distinguishable
-physics}\label{ch-47}
+physics}\label{ch-47}\hypertarget{ch-47}{}
 
 A research roadmap should be organized around propositions or
 experiments that can be delivered, checked, and rejected, rather than
@@ -8408,7 +8423,7 @@ and applicability conditions preserved. Evidence closes open entries,
 and failed directions retain traceable reasons.
 
 \chapter{48. The integrated monograph, status interfaces, and continuing
-maintenance}\label{ch-48}
+maintenance}\label{ch-48}\hypertarget{ch-48}{}
 
 A maintainable monograph must keep its text, stable IDs, sources, and
 verification status aligned. This chapter specifies how those interfaces
@@ -8417,15 +8432,13 @@ into generic Core would make the claimed derivation circular.
 
 \section{48.1 One canonical theoretical source}
 
-The book's fixed title is \emph{UEOT Physics}, its stable document
-identity is \texttt{UEOT-\allowbreak PHYSICS}, and its current bilingual revision is
-3.11. The canonical text is \texttt{physics/\allowbreak qm/\allowbreak book/\allowbreak UEOT\_\allowbreak PHYSICS.\allowbreak md};
-the Chinese PDF is generated from that text. The complete English
-counterpart is \texttt{UEOT\_\allowbreak PHYSICS.\allowbreak en.\allowbreak md}, and its PDF is compiled
-from that English source. Chapters 0--70 and appendices A--F form one
-continuous, complete document. All earlier physical topics are retained,
-and new proofs are integrated into the corresponding arguments. Readers
-should not have to reconstruct a proof from several old versions.
+The book retains the document identity \texttt{UEOT-\allowbreak PHYSICS}. Its
+continuous Chinese and English manuscripts cover Chapters 0--71 and
+Appendices A--F. The
+\href{https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978\allowbreak e173e23015f02699\allowbreak 4fb60c65/physics/qm/book/UEOT_PHYSICS.en.pdf}{previous
+reading edition} ends with Chapter 70. The \href{README.md}{edition
+index} distinguishes the manuscript, the PDF build and the reviewed
+release.
 
 Version reports, PRs, logs and mathematical modules each retain their
 own identity, without competing with the monograph as the authoritative
@@ -8469,12 +8482,12 @@ Statement, domain and checking evidence must be retrieved together.
 \begin{Verbatim}[breaklines,breakanywhere,fontsize=\scriptsize]
 document:
   id: UEOT-PHYSICS
-  edition: "3.11"
+  edition: "3.12"
   canonical_source: physics/qm/book/UEOT_PHYSICS.md
-  derivative_pdf: physics/qm/book/UEOT_PHYSICS.pdf
+  derivative_pdf_path: physics/qm/book/UEOT_PHYSICS.pdf
   english_source: physics/qm/book/UEOT_PHYSICS.en.md
-  english_pdf: physics/qm/book/UEOT_PHYSICS.en.pdf
-  chapter_range: [0, 70]
+  derivative_english_pdf_path: physics/qm/book/UEOT_PHYSICS.en.pdf
+  chapter_range: [0, 71]
   fundamental_unique_derivation_complete: false
   four_dimensional_nonperturbative_qft_complete: false
   quantum_gravity_complete: false
@@ -8578,7 +8591,8 @@ unconditional derivation of the target. Changes to the frozen Core
 continue through its governance process; the developments recorded here
 concern QM-domain implementation and integration into the monograph.
 
-\chapter{49. The verified finite quantum kernel of UEOT-QM}\label{ch-49}
+\chapter{49. The verified finite quantum kernel of
+UEOT-QM}\label{ch-49}\hypertarget{ch-49}{}
 
 The finite quantum kernel begins here: matrices generate record
 probabilities, states may agree on every allowed future, and finite
@@ -8650,7 +8664,7 @@ the reachable image of \(S\). Arbitrary extensions to unreachable
 elements are outside the uniqueness claim. This is the quantum instance
 of protocol-relative sufficiency developed in Chapter 1.
 
-\phantomsection\label{p-qkr-01}{}
+\protect\hypertarget{p-qkr-01}{}{}
 
 \textbf{P-QKR-01 (Posterior closure of the response object).} For the
 same action and outcome, suppose the probability is \(p>0\). The actual
@@ -8696,7 +8710,7 @@ linear span of word effects is closed under pullback. Finite
 dimensionality of the matrix space guarantees that \(W\) has a finite
 generating family consisting of actual word effects.
 
-\phantomsection\label{p-qkr-02}{}
+\protect\hypertarget{p-qkr-02}{}{}
 
 \textbf{P-QKR-02 (A local finite representation determines every future
 response).} Choose a finite generating family \(B_j=E_{w_j}\) with
@@ -8756,7 +8770,7 @@ unbalanced: different paths need not have the same length. Branch
 choices depend only on records already obtained. A leaf probability is
 the trace after composing the branch maps along its path.
 
-\phantomsection\label{p-qkr-03}{}
+\protect\hypertarget{p-qkr-03}{}{}
 
 \textbf{P-QKR-03 (All-word coordinates determine a complete finite
 adaptive tree).} For the same protocol described above, leaf
@@ -8823,7 +8837,7 @@ basis matrix to its actual word effect; and equality of every local
 pullback to the supplied finite expansion. It contains no assumption
 field asserting correctness of predictions for all futures.
 
-\phantomsection\label{p-qkr-04}{}
+\protect\hypertarget{p-qkr-04}{}{}
 
 \textbf{P-QKR-04 (Soundness of an exact certificate).} If the actual
 computable check returns \(\operatorname{check}(D)=\mathrm{true}\), the
@@ -8890,7 +8904,7 @@ from a finite truncation to unbounded operators, infinite volume, or a
 continuum limit requires the corresponding error and existence theorems.
 
 \chapter{50. From Born probabilities to quantum error
-propagation}\label{ch-50}
+propagation}\label{ch-50}\hypertarget{ch-50}{}
 
 An error can be composed along dynamics only after the compared objects
 and metric are specified. Born probabilities for all valid effects yield
@@ -8915,7 +8929,7 @@ P_E(\rho)=\operatorname{Re}\operatorname{Tr}(E\rho).
 \] This is the actual definition of \texttt{Effect}, covering the entire
 matrix-order interval \([0,I]\).
 
-\phantomsection\label{p-qst-01}{}
+\protect\hypertarget{p-qst-01}{}{}
 
 \textbf{P-QST-01 (Positive pairing and effect bounds).} For every
 \(X\succeq0\) and effect \(E\), \[
@@ -8944,7 +8958,7 @@ outcome, define \[
 F=\sum_o\Phi_o^*(E_o)=\sum_{o,k}K_{ok}^{\dagger}E_oK_{ok}.
 \]
 
-\phantomsection\label{p-qst-02}{}
+\protect\hypertarget{p-qst-02}{}{}
 
 \textbf{P-QST-02 (Complete pullback of continuation effects).} \(F\) is
 an effect, and \[
@@ -8983,7 +8997,7 @@ is a supremum over all effects. Neither finitely many tomographic
 measurements nor a training or test set is substituted for that
 supremum.
 
-\phantomsection\label{p-qst-03}{}
+\protect\hypertarget{p-qst-03}{}{}
 
 \textbf{P-QST-03 (Basic contract for the observable distance).} The
 distance satisfies \(0\le d_E\le1\), symmetry, \(d_E(\rho,\rho)=0\), and
@@ -9016,7 +9030,7 @@ space must not be confused with the set of all effects.
 
 \section{50.4 Channel contraction and model defects}
 
-\phantomsection\label{p-qst-04}{}
+\protect\hypertarget{p-qst-04}{}{}
 
 \textbf{P-QST-04 (One-step stability of a complete Kraus channel).} The
 channel \(\Phi\) defined by a complete instrument satisfies \[
@@ -9060,7 +9074,7 @@ in their actual temporal order by \[
 \delta_j=\Delta_E(\Phi_j,\Psi_j).
 \]
 
-\phantomsection\label{p-qst-05}{}
+\protect\hypertarget{p-qst-05}{}{}
 
 \textbf{P-QST-05 (Composable error for quantum trajectories).} For every
 finite \(n\), \[
@@ -9107,7 +9121,7 @@ outcomes discarded can miss label information used by a controller.
 For the same instrument and outcome \(o\), suppose \(p=p_o(\rho)>0\) and
 \(q=p_o(\sigma)>0\), with posteriors \(\rho_o,\sigma_o\).
 
-\phantomsection\label{p-qst-06}{}
+\protect\hypertarget{p-qst-06}{}{}
 
 \textbf{P-QST-06 (Postselection error and preservation of positive
 support).} We have \[
@@ -9175,7 +9189,7 @@ discharge those explicit obligations; stronger titles for existing
 theorems cannot do so.
 
 \chapter{51. Randomized quantum realizations and certified error
-budgets}\label{ch-51}
+budgets}\label{ch-51}\hypertarget{ch-51}{}
 
 A worst-case supremum over unknown channels is not generally an
 executable algorithm; probability mixtures over a common operation
@@ -9203,7 +9217,7 @@ p_b\ge0,\qquad \sum_{b\in B}p_b=1.
 outcome set and Kraus index set. If the index sets differ, the verified
 zero-padding construction of Section 49.5 may be applied first.
 
-\phantomsection\label{p-qmx-01}{}
+\protect\hypertarget{p-qmx-01}{}{}
 
 \textbf{P-QMX-01 (An actual realization of a probability mixture).} For
 any library of density operators \(\rho_b\), \(\rho_p=\sum_b p_b\rho_b\)
@@ -9253,7 +9267,7 @@ denoted by \(f_b\): \[
 looser \(\ell^1\) estimate. The formal proof includes the factor of one
 half obtained from normalization.
 
-\phantomsection\label{p-qmx-02}{}
+\protect\hypertarget{p-qmx-02}{}{}
 
 \textbf{P-QMX-02 (A uniform bound for changed weights in a common
 library).} For a common density-operator library and a common
@@ -9282,7 +9296,7 @@ this is what permits both suprema. The Lean entry points are
 
 \section{51.3 Decomposing the budget when library members also change}
 
-\phantomsection\label{p-qmx-03}{}
+\protect\hypertarget{p-qmx-03}{}{}
 
 \textbf{P-QMX-03 (A joint bound for weight and member errors).} Given
 two complete-channel libraries \(\Phi_b,\Psi_b\) on a common carrier,
@@ -9313,7 +9327,7 @@ therefore make the conclusion false.
 
 \section{51.4 Rational budgets and composition over time}
 
-\phantomsection\label{p-qmx-04}{}
+\protect\hypertarget{p-qmx-04}{}{}
 
 \textbf{P-QMX-04 (Interpretation of an exact rational budget).} Suppose
 the weights are rational, nonnegative, and normalized. Define, using
@@ -9385,7 +9399,7 @@ explicitly retain random branches and control histories as classical
 registers before comparing the complete joint channels.
 
 \chapter{52. Long-time averages, compactness, and stationary quantum
-states}\label{ch-52}
+states}\label{ch-52}\hypertarget{ch-52}{}
 
 Stationarity of long-time averages and convergence of the state at every
 step are different assertions. Finite-dimensional compactness yields
@@ -9411,7 +9425,7 @@ Fix a complete Kraus channel \(\Phi\) and an initial density operator
 the initial state and ends at \(N-1\), fixing the endpoints in the
 telescoping identity below.
 
-\phantomsection\label{p-qce-01}{}
+\protect\hypertarget{p-qce-01}{}{}
 
 \textbf{P-QCE-01 (Exact residual and all-effect budget for an average
 state).} We have \[
@@ -9446,7 +9460,7 @@ complex Euclidean vector norm, not the trace norm. Lean uses Mathlib's
 usual matrix topology; one cannot replace it by an artificial topology
 that makes every sequence converge.
 
-\phantomsection\label{p-qce-02}{}
+\protect\hypertarget{p-qce-02}{}{}
 
 \textbf{P-QCE-02 (Compactness of the actual density-operator set).}
 \(\mathcal D_d\) is closed and bounded, hence compact in finite
@@ -9480,7 +9494,7 @@ and Kraus channels satisfy their premises.
 \section{52.3 Invariant subsequential limits and existence of stationary
 states}
 
-\phantomsection\label{p-qce-03}{}
+\protect\hypertarget{p-qce-03}{}{}
 
 \textbf{P-QCE-03 (A stationary density operator for a finite complete
 channel).} For every initial state \(\rho_0\), there exist a density
@@ -9526,7 +9540,7 @@ persistence interface{]}
 \section{52.4 Counterexamples: periodic orbits and multiple stationary
 states}
 
-\phantomsection\label{n-qce-01}{}
+\protect\hypertarget{n-qce-01}{}{}
 
 \textbf{N-QCE-01 (Average invariance does not imply orbit convergence or
 uniqueness).} The premises of P-QCE-01 through P-QCE-03 imply neither
@@ -9582,7 +9596,7 @@ used above. Energy compactness, tail control, and operator-domain
 contracts must then be supplied.
 
 \chapter{53. Conditional survival, diagonal quantum realizations, and
-the Core spectral bridge}\label{ch-53}
+the Core spectral bridge}\label{ch-53}\hypertarget{ch-53}{}
 
 Survival must first correspond to an actual instrument outcome before
 lifetime or conditional state is discussed. A diagonal quantum
@@ -9614,7 +9628,7 @@ Q_{ij}\ge0,\qquad s_i:=\sum_jQ_{ij}\le1.
 the destination \(j\). Interchanging these indices while retaining the
 same \(Q\) would change the convention and the model.
 
-\phantomsection\label{p-qsv-01}{}
+\protect\hypertarget{p-qsv-01}{}{}
 
 \textbf{P-QSV-01 (A complete quantum instrument for a substochastic
 kernel).} Take survival and failure Kraus matrices \[
@@ -9648,7 +9662,7 @@ is not interpreted as resurrection.
 \section{53.2 Quantum and classical descriptions of the same survival
 record}
 
-\phantomsection\label{p-qsv-02}{}
+\protect\hypertarget{p-qsv-02}{}{}
 
 \textbf{P-QSV-02 (Intertwining diagonal dynamics with finite success
 words).} For every complex operator \(X\), \[
@@ -9699,7 +9713,7 @@ survival eigenfactor satisfying the relation. Its identification with
 the global spectral radius and uniqueness as a dominant eigenvalue are
 not outputs of the theorem below.
 
-\phantomsection\label{p-qsv-03}{}
+\protect\hypertarget{p-qsv-03}{}{}
 
 \textbf{P-QSV-03 (The geometric survival law of the actual all-success
 record).} Under these premises, \(0<r\le1\), and \[
@@ -9753,7 +9767,7 @@ Qh=rh,\qquad h_i>0,\qquad \sum_iq_ih_i=1.
 \widetilde Q_{ij}=\frac{Q_{ij}h_j}{rh_i},\qquad \pi_i=q_ih_i.
 \]
 
-\phantomsection\label{p-qsv-04}{}
+\protect\hypertarget{p-qsv-04}{}{}
 
 \textbf{P-QSV-04 (A complete realization of the Doob kernel and
 invariant success records).} \(\widetilde Q\) is nonnegative with each
@@ -9813,7 +9827,7 @@ Qh=(3/4,3/8)=rh,\qquad \sum_iq_ih_i=1.
 probability \(2^{-n}\), and every conditional state remains \(D(q)\).
 The unconditional state also contains the failure-branch contribution.
 
-\phantomsection\label{n-qsv-01}{}
+\protect\hypertarget{n-qsv-01}{}{}
 
 \textbf{N-QSV-01 (The QSD, Doob invariant law, and an arbitrary initial
 state are distinct).} In this example, \[
@@ -9879,7 +9893,7 @@ preserving the independent question of why UEOT should select quantum
 structure.
 
 \chapter{54. The classical purification boundary on the same Core
-process}\label{ch-54}
+process}\label{ch-54}\hypertarget{ch-54}{}
 
 If generic Core interfaces admit a complete classical model in which a
 mixed state cannot be purified, those interfaces do not automatically
@@ -9911,7 +9925,7 @@ system is the actual sum marginal \[
 interface group listed below does not itself select or exclude this
 composition rule; it is not a necessary physical consequence of Core.
 
-\phantomsection\label{p-qcl-01}{}
+\protect\hypertarget{p-qcl-01}{}{}
 
 \textbf{P-QCL-01 (States, responses, and transport on the full
 simplex).} The pairing above lies in \([0,1]\), and all effects separate
@@ -9966,7 +9980,7 @@ theorem.
 
 \section{54.2 Failure of purification for every finite ancillary system}
 
-\phantomsection\label{n-qcl-01}{}
+\protect\hypertarget{n-qcl-01}{}{}
 
 \textbf{N-QCL-01 (A two-point mixed state has no finite classical
 purification).} Suppose \(z_0\ne z_1\) and
@@ -10016,7 +10030,7 @@ trivial program/resource fields, and zero reward. Full readout is this
 model's B interpretation; it does not assert that every conceivable
 physical label is measurable.
 
-\phantomsection\label{p-qcl-02}{}
+\protect\hypertarget{p-qcl-02}{}{}
 
 \textbf{P-QCL-02 (The actual terminal quotient retains two-point
 support).} The model's actual \texttt{terminal\allowbreak Setoid} satisfies
@@ -10056,7 +10070,7 @@ Fix initial state \(\delta_{x_0}\) and the explicit always-true policy
 separate trajectory is invented merely to satisfy the desired
 conclusion.
 
-\phantomsection\label{p-qcl-03}{}
+\protect\hypertarget{p-qcl-03}{}{}
 
 \textbf{P-QCL-03 (A common-source safe trajectory and a
 purification-separation certificate).} This model satisfies the finite
@@ -10137,7 +10151,7 @@ endogenous goal selection. {[}S2, S4; QM316{]}
 
 \section{54.5 Why removing the readout must remove this counterexample}
 
-\phantomsection\label{n-qcl-02}{}
+\protect\hypertarget{n-qcl-02}{}{}
 
 \textbf{N-QCL-02 (An operational quotient can remove microscopic
 mixing).} Keep exactly the same \(K\), but use the existing
@@ -10221,7 +10235,7 @@ complex Hilbert, Born, or Kraus structure already supplied as input as
 an origin derived from Core.
 
 \chapter{55. A local-tomography separation for the real quantum
-sector}\label{ch-55}
+sector}\label{ch-55}\hypertarget{ch-55}{}
 
 Local tomography asks whether all local product tests determine an
 arbitrary joint state; a finite sample of tests cannot replace that
@@ -10276,7 +10290,7 @@ P_\pm=\frac{I\pm H}{2},\qquad
 \rho_\pm=\frac{P_\pm}{2}=\frac{I\pm H}{4}.
 \]
 
-\phantomsection\label{p-qrt-01}{}
+\protect\hypertarget{p-qrt-01}{}{}
 
 \textbf{P-QRT-01 (Two valid, distinct real joint states).} Both
 \(\rho_+,\rho_-\) are real, Hermitian, positive semidefinite density
@@ -10314,7 +10328,7 @@ E=\begin{pmatrix}a&b\\b&d\end{pmatrix},
 \] This identity holds for all real Hermitian local matrices, not merely
 for a few commonly used projections.
 
-\phantomsection\label{n-qrt-01}{}
+\protect\hypertarget{n-qrt-01}{}{}
 
 \textbf{N-QRT-01 (Real local product tests do not determine the joint
 state).} For every pair of real local effects \(E,F\), \[
@@ -10352,7 +10366,7 @@ unformalized dimension count for it.
 \section{55.3 A valid real joint test distinguishes the states
 perfectly}
 
-\phantomsection\label{p-qrt-02}{}
+\protect\hypertarget{p-qrt-02}{}{}
 
 \textbf{P-QRT-02 (Deterministic discrimination by a joint effect).}
 \(P_+\) is a valid real joint effect, and \[
@@ -10373,7 +10387,7 @@ establish this distinction.
 
 \section{55.4 Removing local reality restores a distinguishing test}
 
-\phantomsection\label{n-qrt-02}{}
+\protect\hypertarget{n-qrt-02}{}{}
 
 \textbf{N-QRT-02 (Discrimination when complex local effects are
 allowed).} Take the complex local effect \[
@@ -10400,7 +10414,7 @@ complex quantum theory itself.
 \section{55.5 Linear postprocessing cannot recover the missing joint
 effect}
 
-\phantomsection\label{n-qrt-03}{}
+\protect\hypertarget{n-qrt-03}{}{}
 
 \textbf{N-QRT-03 (The distinguishing effect is outside the finite real
 span of product effects).} There is no finite index set \(J\), no
@@ -10473,7 +10487,7 @@ into a mathematical problem with explicit exclusion obligations. {[}S2,
 S3; QM316{]}
 
 \chapter{56. Coherence-preserving conditional evolution and quantum Doob
-channels}\label{ch-56}
+channels}\label{ch-56}\hypertarget{ch-56}{}
 
 Discarding off-diagonal entries while conditioning on survival would
 lose quantum coherence. Explicit left and right spectral objects
@@ -10533,7 +10547,7 @@ c_\rho=\operatorname{Tr}F(\rho),\qquad
 \mathcal F(\rho)=F(\rho)/c_\rho.
 \]
 
-\phantomsection\label{p-qqd-01}{}
+\protect\hypertarget{p-qqd-01}{}{}
 
 \textbf{P-QQD-01 (Validity of filter normalization).} \(F\) and
 \(F^{-1}\) are inverses and preserve positive semidefiniteness. For
@@ -10570,7 +10584,7 @@ Explicitly require \[
 r>0,\qquad \Phi^*(H)=rH.
 \]
 
-\phantomsection\label{p-qqd-02}{}
+\protect\hypertarget{p-qqd-02}{}{}
 
 \textbf{P-QQD-02 (An actual quantum Doob instrument).} Define \[
 \widetilde K_k=r^{-1/2}SK_kT.
@@ -10602,7 +10616,7 @@ not proved here.
 
 \section{56.4 Finite-time conditioning for an arbitrary initial state}
 
-\phantomsection\label{p-qqd-03}{}
+\protect\hypertarget{p-qqd-03}{}{}
 
 \textbf{P-QQD-03 (Finite intertwining on all operators and the actual
 conditional state).} Under P-QQD-02, for every complex operator \(X\)
@@ -10663,7 +10677,7 @@ separate named Lean theorem.
 \section{56.5 A right eigenstate supplies the quasi-stationary and
 Doob-stationary states}
 
-\phantomsection\label{p-qqd-04}{}
+\protect\hypertarget{p-qqd-04}{}{}
 
 \textbf{P-QQD-04 (Quasi-stationarity, geometric survival, and
 stationarity of the actual channel).} Suppose \(r>0\). If a density
@@ -10736,7 +10750,7 @@ c_{\rho_*}=8/5,
 boundary of Section 56.2: it exceeds one and is therefore not an outcome
 probability of the source instrument.
 
-\phantomsection\label{p-qqd-05}{}
+\protect\hypertarget{p-qqd-05}{}{}
 
 \textbf{P-QQD-05 (A nondiagonal Doob witness computable on all
 matrices).} For every complex operator \(X\), the actual Doob channel in
@@ -10763,7 +10777,7 @@ rational inputs. Square roots enter only through the verified conversion
 to an ordinary instrument; floating-point approximations do not enter
 the proof.
 
-\phantomsection\label{n-qqd-01}{}
+\protect\hypertarget{n-qqd-01}{}{}
 
 \textbf{N-QQD-01 (Three distinctions that must be retained).} In this
 example, removing the failure Kraus operators breaks completeness of the
@@ -10809,7 +10823,7 @@ but success events, inputs, control costs, and actual observations still
 require separate definitions. {[}S1, S2, S4; QM316; QM317{]}
 
 \chapter{57. Purification and operational principles in the complete
-state space}\label{ch-57}
+state space}\label{ch-57}\hypertarget{ch-57}{}
 
 A purification principle concerns the full state space and an actual
 discard operation, not only a selected class of vector states. Positive
@@ -10888,7 +10902,7 @@ subset of states, does not discharge the proof obligation here.
 \section{57.2 Why Unit-Vector States Are Extreme Points of the Complete
 Convex Set}
 
-\phantomsection\label{p-pur-01}{}
+\protect\hypertarget{p-pur-01}{}{}
 
 \textbf{P-PUR-01 (Vector purity in the complete density-state space).}
 Let \(P=|v\rangle\langle v|\) with \(\operatorname{Tr}P=1\). Then \(P\)
@@ -10963,7 +10977,7 @@ joint inputs; the check is not restricted to product states. For product
 density states, \(\operatorname{Tr}\sigma=1\) further gives
 \(\operatorname{Tr}_{\alpha}(\rho\otimes\sigma)=\rho\).
 
-\phantomsection\label{p-pur-02}{}
+\protect\hypertarget{p-pur-02}{}{}
 
 \textbf{P-PUR-02 (Existence of a purification for every finite complex
 density state).} For every \(\rho\in\mathcal D(\iota)\), there exists
@@ -11016,7 +11030,7 @@ the general proof.
 
 \section{57.4 Three Concrete Models and Separate Candidate Principles}
 
-\phantomsection\label{p-opt-01}{}
+\protect\hypertarget{p-opt-01}{}{}
 
 \textbf{P-OPT-01 (Three concrete presentations in one operational
 language).} The complete classical simplex, complete real density-matrix
@@ -11058,7 +11072,7 @@ obligations.
 \section{57.5 How Countermodels Constrain Quantum Selection Without
 Presupposing It}
 
-\phantomsection\label{n-opt-01}{}
+\protect\hypertarget{n-opt-01}{}{}
 
 \textbf{N-OPT-01 (Basic operational laws do not automatically select a
 quantum theory).} The complete classical model satisfies the declared
@@ -11131,7 +11145,7 @@ selection requires proof or empirical constraints on the source of the
 additional principles themselves.
 
 \chapter{58. Joint records, quantum memory, and finite adaptive
-protocols}\label{ch-58}
+protocols}\label{ch-58}\hypertarget{ch-58}{}
 
 When later actions depend on earlier outcomes, comparing
 outcome-forgetting quantum channels can miss real predictive
@@ -11163,7 +11177,7 @@ Its actual operator map is \(\mathcal C(X)=\sum_kK_kXK_k^\dagger\).
 Input and output dimensions may differ; the trace identities remain
 meaningful on their respective spaces.
 
-\phantomsection\label{p-cq-01}{}
+\protect\hypertarget{p-cq-01}{}{}
 
 \textbf{P-CQ-01 (Complete positivity, trace preservation, and effect
 contraction for rectangular channels).} This map preserves the complex
@@ -11220,7 +11234,7 @@ These are actual rectangular matrices from \(\iota\) to
 \(V_{o,k}^\dagger V_{o,k}=K_{o,k}^\dagger K_{o,k}\), so completeness
 follows directly from the original instrument.
 
-\phantomsection\label{p-cq-02}{}
+\protect\hypertarget{p-cq-02}{}{}
 
 \textbf{P-CQ-02 (Joint block state and marginals of an actual
 instrument).} These Kraus matrices define the channel
@@ -11284,7 +11298,7 @@ protocol's rectangular channel. This dependent index retains the leaf
 label, path length, and chosen subtree simultaneously; it does not
 require all leaves to have equal depth.
 
-\phantomsection\label{p-cq-03}{}
+\protect\hypertarget{p-cq-03}{}{}
 
 \textbf{P-CQ-03 (Record-and-memory realization of every finite
 protocol).} For any current complete finite protocol \(\pi\), actual
@@ -11358,7 +11372,7 @@ E_S=\operatorname{diag}(\mathbf1_S)\otimes I_\iota.
 Both it and its complement are positive, and its probability on the
 joint block state is exactly the actual record probability of \(S\).
 
-\phantomsection\label{p-cq-04}{}
+\protect\hypertarget{p-cq-04}{}{}
 
 \textbf{P-CQ-04 (Joint-distance and perturbation control of record
 distributions).} Let \(p_{I,\rho}\) be the actual record distribution.
@@ -11405,7 +11419,7 @@ constant above without proof. {[}QM317{]}
 
 \section{58.5 Discarding Labels Erases Actual Distinguishability}
 
-\phantomsection\label{n-cq-01}{}
+\protect\hypertarget{n-cq-01}{}{}
 
 \textbf{N-CQ-01 (Equal unconditional channels do not control record
 error).} Use the same two-dimensional quantum memory. Instrument \(I\)
@@ -11467,7 +11481,7 @@ retain allowed observations and allowed controls as substantive model
 content.
 
 \chapter{59. Exact dynamics of noncommutative conditional
-persistence}\label{ch-59}
+persistence}\label{ch-59}\hypertarget{ch-59}{}
 
 An exactly solvable noncommuting model tests whether the objects used in
 conditioned dynamics actually fit together. Explicit Doob trajectories,
@@ -11535,7 +11549,7 @@ Doob Orbit}
 
 Let \(a_n=3^{-n}\).
 
-\phantomsection\label{p-qdd-01}{}
+\protect\hypertarget{p-qdd-01}{}{}
 
 \textbf{P-QDD-01 (Exact dynamics of the present Doob channel).} For
 every complex matrix \(X\) and every \(n\ge0\),
@@ -11610,7 +11624,7 @@ density-state space; they are not checks only on diagonal states or
 finitely sampled inputs. The filter normalization factor \(c_\tau\) may
 exceed \(1\) and is not a physical success probability.
 
-\phantomsection\label{p-qdd-02}{}
+\protect\hypertarget{p-qdd-02}{}{}
 
 \textbf{P-QDD-02 (Closed forms for the actual source success operator
 and its mass).} For the same source model,
@@ -11666,7 +11680,7 @@ Since the success mass is strictly positive at every finite \(n\), the
 existing \texttt{conditional\allowbreak State} is well defined for every density
 input.
 
-\phantomsection\label{p-qdd-03}{}
+\protect\hypertarget{p-qdd-03}{}{}
 
 \textbf{P-QDD-03 (The actual conditional state and its quantitative
 convergence).} Write \(\tau_{\mid n}=\Phi^n(\tau)/m_n(\tau)\). Then
@@ -11713,7 +11727,7 @@ interchangeable.
 \section{59.5 Different Limits for the Conditional Steady State and
 Unconditional Success Mass}
 
-\phantomsection\label{p-qdd-04}{}
+\protect\hypertarget{p-qdd-04}{}{}
 
 \textbf{P-QDD-04 (Decay of finite-success probabilities and the role of
 the initial state).} For every density state \(\tau\) and each finite
@@ -11755,7 +11769,7 @@ must optimize. {[}S1; S2; S4; QM317{]}
 \section{59.6 A Positive Spectral Metric Does Not Guarantee a Unique
 Attractor}
 
-\phantomsection\label{n-qdd-01}{}
+\protect\hypertarget{n-qdd-01}{}{}
 
 \textbf{N-QDD-01 (A valid identity-Doob negative control).} There exists
 an actual complete source instrument whose success branch strictly
@@ -11818,7 +11832,7 @@ counterexamples, formal proofs, and empirical requirements jointly
 constrain UEOT's explanatory aims.
 
 \chapter{60. Separation by all effects and universal local tomography in
-the complex model}\label{ch-60}
+the complex model}\label{ch-60}\hypertarget{ch-60}{}
 
 When does the all-effect distance actually separate density matrices?
 Valid effects first span all Hermitian operators; real and imaginary
@@ -11897,7 +11911,7 @@ supply a separating effect in advance. {[}QM318{]}
 \section{60.2 Every Hermitian Operator Lies in the Real Span of Valid
 Effects}
 
-\phantomsection\label{p-sep-01}{}
+\protect\hypertarget{p-sep-01}{}{}
 
 \textbf{P-SEP-01 (Representation of a Hermitian operator by valid
 effects).} For every finite carrier \(\iota\) and every Hermitian matrix
@@ -11985,7 +11999,7 @@ This intermediate step does not require \(X,Y\) to be density states.
 Hermiticity is needed for the valid-effect representation of the test
 \(H\).
 
-\phantomsection\label{p-sep-02}{}
+\protect\hypertarget{p-sep-02}{}{}
 
 \textbf{P-SEP-02 (Separation by all effects and the matrix meaning of
 zero distance).} For any \(\rho,\sigma\in\mathcal D(\iota)\),
@@ -12171,7 +12185,7 @@ and both sides of the second are zero. For Hermitian \(X\), the diagonal
 imaginary parts vanish in any case. These boundaries are included in the
 actual general declarations.
 
-\phantomsection\label{p-clt-01}{}
+\protect\hypertarget{p-clt-01}{}{}
 
 \textbf{P-CLT-01 (Universal local tomography of the complete finite
 complex model).} For any finite carriers \(\iota,\nu\) and any
@@ -12266,7 +12280,7 @@ They satisfy \(X^2=Y^2=I\) and
 \(T_{01}\) is \(-Y\), so using standard \(Y\) here does not alter the
 reconstruction sign fixed in §60.5.
 
-\phantomsection\label{n-sep-01}{}
+\protect\hypertarget{n-sep-01}{}{}
 
 \textbf{N-SEP-01 (Even all diagonal effects fail to identify coherent
 states).} Define
@@ -12476,7 +12490,7 @@ checkable finite realization for that work. Completeness of the finite
 realization is not final completion of a theory of nature.
 
 \chapter{61. Complete purity and unitary equivalence of finite
-purifications}\label{ch-61}
+purifications}\label{ch-61}\hypertarget{ch-61}{}
 
 The assertion that a pure state is a vector state must follow from
 extremality in the full density-state convex set, rather than being
@@ -12581,7 +12595,7 @@ established by an actual positive-matrix decomposition in the next step.
 \section{61.3 Deriving a Normalized Vector from Any Convex Extreme
 Point}
 
-\phantomsection\label{p-puc-01}{}
+\protect\hypertarget{p-puc-01}{}{}
 
 \textbf{P-PUC-01 (Purity characterization in the complete finite complex
 density space).} For every \(\rho\in\mathcal D(\iota)\),
@@ -12767,7 +12781,7 @@ performed by this source. {[}QM318{]}
 
 \section{61.6 Arbitrary Purifications on the Same Auxiliary Carrier}
 
-\phantomsection\label{p-pun-01}{}
+\protect\hypertarget{p-pun-01}{}{}
 
 \textbf{P-PUN-01 (Unitary equivalence of all purifications on the same
 auxiliary carrier).} Suppose
@@ -12822,7 +12836,7 @@ can be compared.
 \section{61.7 Different Carriers Require Actual Rectangular Isometric
 Channels}
 
-\phantomsection\label{p-aux-01}{}
+\protect\hypertarget{p-aux-01}{}{}
 
 \textbf{P-AUX-01 (Actual channel, marginal, and purity of an auxiliary
 isometric embedding).} Let \(J:\mathbb C^\alpha\to\mathbb C^\beta\) be
@@ -12916,7 +12930,7 @@ identities belong to different source carriers. Construct
 \widetilde\Phi=\mathcal E_{J_\beta}(\Phi).
 \]
 
-\phantomsection\label{p-pun-02}{}
+\protect\hypertarget{p-pun-02}{}{}
 
 \textbf{P-PUN-02 (Unitary equivalence after common extension for
 different finite auxiliary carriers).} Suppose
@@ -13021,7 +13035,7 @@ example. {[}QM318{]}
 \section{61.10 Joint-Density Negative Controls for Three Incorrect
 Action Directions}
 
-\phantomsection\label{n-pun-01}{}
+\protect\hypertarget{n-pun-01}{}{}
 
 \textbf{N-PUN-01 (The adjoint, transpose, and entrywise conjugate cannot
 replace the actual auxiliary action).} For the fixed \(U\) and
@@ -13089,7 +13103,7 @@ left canonical embedding is
 J=\begin{bmatrix}1&0\\0&1\\0&0\end{bmatrix}.
 \]
 
-\phantomsection\label{n-aux-01}{}
+\protect\hypertarget{n-aux-01}{}{}
 
 \textbf{N-AUX-01 (Strict auxiliary enlargement is an isometric
 embedding, not a two-sided unitary equivalence).} This actual
@@ -13230,7 +13244,7 @@ independent premises, actual proofs, and testable physical
 correspondences. {[}QM318{]}
 
 \chapter{62. Per-action record-error budgets with retained
-history}\label{ch-62}
+history}\label{ch-62}\hypertarget{ch-62}{}
 
 Resolving protocol error into individual actions requires causal
 histories and quantum memory. Under a common fixed-depth controller,
@@ -13326,7 +13340,7 @@ a state. Writing the embedding \(V_h:e_i\mapsto e_{(h,i)}\) gives
 \(X_h=V_h^\dagger XV_h\). The same principal-submatrix construction is
 used for output effects.
 
-\phantomsection\label{p-arb-01}{}
+\protect\hypertarget{p-arb-01}{}{}
 
 \textbf{P-ARB-01 (History blocks, normalized weights, and valid block
 effects).} If \(\zeta\in\mathcal D(H\times\iota)\), every principal
@@ -13384,7 +13398,7 @@ memory, and writes the same \(h\) to the output. Summing Kraus terms
 over different \(h\) is an incoherent channel sum, implementing actual
 history dephasing.
 
-\phantomsection\label{p-arb-02}{}
+\protect\hypertarget{p-arb-02}{}{}
 
 \textbf{P-ARB-02 (Action-weighted bound for the actual history-reading
 channel).} This Kraus family forms a trace-preserving completely
@@ -13483,7 +13497,7 @@ permutation embeds the initial state through
 joint density \(\zeta^I_{C,\rho}\). At depth zero no action is called,
 so nonemptiness of the action carrier is unnecessary.
 
-\phantomsection\label{p-arb-03}{}
+\protect\hypertarget{p-arb-03}{}{}
 
 \textbf{P-ARB-03 (Matrix agreement between finite-history evolution and
 the original complete protocol).} For any fixed \(N\), controller \(C\),
@@ -13578,7 +13592,7 @@ constructed as \texttt{run\ J\ (C.\allowbreak truncate\ t)\ σ}. The value \(a_t
 nonnegative, and a zero-mass history contributes zero by the zero-block
 theorem. It is not the whole-protocol defect under a different name.
 
-\phantomsection\label{p-arb-04}{}
+\protect\hypertarget{p-arb-04}{}{}
 
 \textbf{P-ARB-04 (Actual per-action sum budget and complete-record TV).}
 Under the stated fixed finite depth, common controller, and common
@@ -13689,7 +13703,7 @@ take \(I_{\mathrm{some}(o)}=J_{\mathrm{some}(o)}=\mathsf D_o\). The
 controller thus actually reads the previous record and changes the
 subsequent instrument accordingly.
 
-\phantomsection\label{p-arb-05}{}
+\protect\hypertarget{p-arb-05}{}{}
 
 \textbf{P-ARB-05 (An exact rational witness saturating the stepwise
 budget).} For every two-dimensional input density state, the first
@@ -13748,7 +13762,7 @@ take \(\widehat J_{\mathrm{none}}=\mathsf D_1\) and
 implementations have the same actual quantum channel after labels are
 discarded: the identity channel.
 
-\phantomsection\label{n-arb-01}{}
+\protect\hypertarget{n-arb-01}{}{}
 
 \textbf{N-ARB-01 (Zero unlabelled action defects can coexist with
 maximum complete-record error).} Every unlabelled action defect of these
@@ -13883,7 +13897,7 @@ results. The frozen 106 Core items and four generators retain their
 identity.
 
 \chapter{63. Full-effect distance, trace absolute value, and optimal
-binary discrimination}\label{ch-63}
+binary discrimination}\label{ch-63}\hypertarget{ch-63}{}
 
 The probability distance defined by a supremum has a concrete spectral
 expression in the finite complex model, and an optimal test attains it.
@@ -13994,7 +14008,7 @@ diagonal matrix is PSD and unitary conjugation preserves PSD, giving
 \operatorname{Re}\operatorname{Tr}T_U(d)=\sum_i d_i.
 \]
 
-\phantomsection\label{p-tdist-01}{}
+\protect\hypertarget{p-tdist-01}{}{}
 
 \textbf{P-TDIST-01 (Positive and negative spectral parts and the actual
 absolute value of a finite Hermitian matrix).} For any finite Hermitian
@@ -14141,7 +14155,7 @@ Every effect therefore satisfies
 Any PSD decomposition gives this valid upper bound. Equality requires a
 further effect that attains it.
 
-\phantomsection\label{p-tdist-02}{}
+\protect\hypertarget{p-tdist-02}{}{}
 
 \textbf{P-TDIST-02 (Half-trace-absolute-value formula and an optimal
 effect for full-effect distance).} For any complete finite complex
@@ -14210,7 +14224,7 @@ s(E;\rho,\sigma)
 =\frac{1+p_\rho(E)-p_\sigma(E)}2.
 \]
 
-\phantomsection\label{p-dec-01}{}
+\protect\hypertarget{p-dec-01}{}{}
 
 \textbf{P-DEC-01 (Actual optimal success probability for equal-prior
 binary discrimination).} Every valid effect satisfies
@@ -14256,7 +14270,7 @@ takes neither the final distance nor an assertion that all effects
 satisfy the final bound as input. Its inputs are matrix positivity and
 multiplication identities.
 
-\phantomsection\label{p-tcert-01}{}
+\protect\hypertarget{p-tcert-01}{}{}
 
 \textbf{P-TCERT-01 (Distance certificate from a PSD support
 decomposition).} Given actual density states \(\rho,\sigma\), matrices
@@ -14464,7 +14478,7 @@ here; every concrete example is exact arithmetic or a formal witness.
 {[}QM319{]}
 
 \chapter{64. Minimum auxiliary dimension and direct isometries for
-purification}\label{ch-64}
+purification}\label{ch-64}\hypertarget{ch-64}{}
 
 The ancilla dimension needed for purification, and direct comparison of
 different ancillas, depend on exact rank and isometry direction. This
@@ -14547,7 +14561,7 @@ Thus \(J_e^\dagger J_e=I_\alpha\). The finite-cardinality inequality
 actual rectangular isometry. This step does not invoke purification
 existence or place the desired matrix into an assumption field.
 
-\phantomsection\label{p-pdm-01}{}
+\protect\hypertarget{p-pdm-01}{}{}
 
 \textbf{P-PDM-01 (Exact dimension ordering for a rectangular isometry).}
 For finite carriers \(\alpha,\beta\),
@@ -14620,7 +14634,7 @@ because \(J\) acts on the vector's auxiliary index; the factor is not
 \(AJ^\dagger\). Conjugation belongs in outer products and isometry
 identities and cannot be moved to the wrong position.
 
-\phantomsection\label{p-pdm-02}{}
+\protect\hypertarget{p-pdm-02}{}{}
 
 \textbf{P-PDM-02 (A dimension-directed direct isometry for arbitrary
 actual purifications).} Suppose \(\Psi\in\mathcal D(\iota\times\alpha)\)
@@ -14661,7 +14675,7 @@ the rectangular factor \(A\in M_{\iota\times\alpha}(\mathbb C)\) by
 =(AA^\dagger)_{ij}.
 \]
 
-\phantomsection\label{p-pdm-03}{}
+\protect\hypertarget{p-pdm-03}{}{}
 
 \textbf{P-PDM-03 (Actual rank lower bound for all convex-pure
 extensions).} For every such pure state and actual marginal,
@@ -14749,7 +14763,7 @@ verbally inherited from the uncompressed vector.
 \section{64.6 Attainment of the Minimum and the Criterion for a
 Specified Carrier}
 
-\phantomsection\label{p-pdm-04}{}
+\protect\hypertarget{p-pdm-04}{}{}
 
 \textbf{P-PDM-04 (Exact minimum auxiliary dimension of finite complex
 purification).} For every finite complex density state \(\rho\) and
@@ -14842,7 +14856,7 @@ relation. Its complex phases cannot be discarded without conditions.
 Chapter 61's negative controls for three wrong action directions remain
 in force.
 
-\phantomsection\label{n-pdm-01}{}
+\protect\hypertarget{n-pdm-01}{}{}
 
 \textbf{N-PDM-01 (Equal marginals do not remove the dimension direction
 required by a direct isometry).} The pure states with two- and
@@ -14900,7 +14914,7 @@ actual systems, and testable predictions retain their separate open
 obligations.
 
 \chapter{65. Variable-length stopping protocols, original joint leaf
-states, and budgets weighted by continued activity}\label{ch-65}
+states, and budgets weighted by continued activity}\label{ch-65}\hypertarget{ch-65}{}
 
 A protocol that stops early should not continue charging action error to
 branches that have already stopped. The original finite stopping tree is
@@ -15013,7 +15027,7 @@ history decoding to \(l\) is proved equal to \(e_N(l)\). Thus encoding
 is injective, and the legal complete histories are exactly the image of
 original-leaf encoding.
 
-\phantomsection\label{p-stop-01}{}
+\protect\hypertarget{p-stop-01}{}{}
 
 \textbf{P-STOP-01 (Actual absorbing padding of an original finite
 stopping tree).} For any \(N\ge H(\pi)\), any original input matrix
@@ -15085,7 +15099,7 @@ J^\dagger\widetilde E J
 =(J^\dagger J)E(J^\dagger J)=E.
 \]
 
-\phantomsection\label{p-stop-02}{}
+\protect\hypertarget{p-stop-02}{}{}
 
 \textbf{P-STOP-02 (Full-effect distance preservation and the connection
 to the original joint leaf state).} For any finite rectangular isometry
@@ -15179,7 +15193,7 @@ will still be executed at that time. It is not a posterior-renormalized
 survival distribution: stopped mass remains in the complete record
 state.
 
-\phantomsection\label{p-stop-03}{}
+\protect\hypertarget{p-stop-03}{}{}
 
 \textbf{P-STOP-03 (Per-action error budget under a common finite
 stopping rule).} For the same original complete finite tree \(\pi\), two
@@ -15240,7 +15254,7 @@ stops \((1,0)\) and \((1,1)\). Their probabilities are
 p_I=(3/4,1/4,0),\qquad p_J=(3/4,3/16,1/16).
 \]
 
-\phantomsection\label{p-stop-04}{}
+\protect\hypertarget{p-stop-04}{}{}
 
 \textbf{P-STOP-04 (Exact \(1/16\) record difference in a stopping
 protocol).} For these actual qubit instruments and their common stopping
@@ -15264,7 +15278,7 @@ would give a looser bound and cannot replace the exact accounting here.
 
 \section{65.8 A Boundary Control for the Common Stopping Rule}
 
-\phantomsection\label{p-stop-05}{}
+\protect\hypertarget{p-stop-05}{}{}
 
 \textbf{P-STOP-05 (Identical quantum actions do not control all records
 under different stopping rules).} Use identical identity quantum
@@ -15315,7 +15329,7 @@ neither alter the frozen Core responsibilities nor promote the finite
 quantum model into a complete theory of nature.
 
 \chapter{66. Finite conditional processes of the original instrument,
-allowed implementations, and full costs}\label{ch-66}
+allowed implementations, and full costs}\label{ch-66}\hypertarget{ch-66}{}
 
 \textbf{Reading guide.} Constructing a new process in which an original
 experiment's rare accepted records become typical requires preserving
@@ -15380,7 +15394,7 @@ leaf. Define the effects backwards, node by node: \[
 H_h=\sum_{o,\mu}K_{h,o,\mu}^{\dagger}H_{ho}K_{h,o,\mu}.
 \]
 
-\phantomsection\label{p-fcond-01}{} \textbf{P-FCOND-01 (Acceptance
+\protect\hypertarget{p-fcond-01}{}{} \textbf{P-FCOND-01 (Acceptance
 effects of the same finite original experiment).} At every node,
 \(0\preceq H_h\preceq I\). For any unnormalized positive input \(X\),
 the total mass of all accepted leaves in that subtree is exactly
@@ -15412,7 +15426,7 @@ zero on its kernel. The finite-dimensional spectral theorem gives \[
 T_hS_h=S_hT_h=P_h,\quad P_h^2=P_h=P_h^{\dagger},\quad P_hS_h=S_h.
 \]
 
-\phantomsection\label{p-fcond-02}{} \textbf{P-FCOND-02 (Kernel
+\protect\hypertarget{p-fcond-02}{}{} \textbf{P-FCOND-02 (Kernel
 annihilation from the backward Gram sum).} The original backward
 recurrence implies, for every hidden branch, \[
 S_{ho}K_{h,o,\mu}(I-P_h)=0.
@@ -15443,7 +15457,7 @@ label set, and add the hidden completion branches
 \(J_{h,o,\nu}(I-P_h)\). The label remains \(o\), while the hidden index
 is enlarged to the disjoint sum of the two types of Kraus index.
 
-\phantomsection\label{p-fcond-03}{} \textbf{P-FCOND-03 (Support
+\protect\hypertarget{p-fcond-03}{}{} \textbf{P-FCOND-03 (Support
 transformation and a valid completion on the full space).} The Gram sum
 of the principal branches is \(P_h\), and that of the completion
 branches is \(I-P_h\). The resulting \(\widetilde{\mathcal I}_{h,o}\) is
@@ -15474,10 +15488,10 @@ For \(p_G>0\), define the actual initial state \[
 \widetilde\rho_0=S_0\rho S_0/p_G.
 \] Positivity and P-FCOND-01 ensure that its trace is one.
 
-\phantomsection\label{p-fcond-04}{} \textbf{P-FCOND-04 (Conditioning the
-full leaf record and terminal state from the same original experiment).}
-Running the complete instrument tree constructed above gives, at every
-original leaf, \[
+\protect\hypertarget{p-fcond-04}{}{} \textbf{P-FCOND-04 (Conditioning
+the full leaf record and terminal state from the same original
+experiment).} Running the complete instrument tree constructed above
+gives, at every original leaf, \[
 \widetilde X_\ell(\widetilde\rho_0)=
 \begin{cases}X_\ell(\rho)/p_G,&\ell\in G,\\0,&\ell\notin G.\end{cases}
 \] The full classical--quantum (CQ) joint state therefore equals
@@ -15523,7 +15537,7 @@ C(F)_{(i,r),(j,s)}=F(|i\rangle\langle j|)_{r,s}.
 if \(F=G\). The vector representing an instrument must retain the Choi
 block for every visible \(o\).
 
-\phantomsection\label{p-fcond-05}{} \textbf{P-FCOND-05 (A convex-hull
+\protect\hypertarget{p-fcond-05}{}{} \textbf{P-FCOND-05 (A convex-hull
 equivalence preserving outcomes and observation permissions).} Given
 complex-linear input restrictions \(R_h\) at the nodes, an allowed
 randomization satisfying \[
@@ -15581,7 +15595,7 @@ theorem for quantum circuits of arbitrary length.
 \section{66.7 Positive certificates, separation certificates, and
 observation constraints}
 
-\phantomsection\label{p-fcond-06}{} \textbf{P-FCOND-06 (A finite
+\protect\hypertarget{p-fcond-06}{}{} \textbf{P-FCOND-06 (A finite
 negative separation certificate for the allowed class).} Suppose a
 real-linear functional \(f\) and a real number \(b\) satisfy
 \(f(v_a)\le b\) for every allowed action vector \(v_a\), whereas
@@ -15618,7 +15632,7 @@ F_H(\rho)=\frac{\sqrt H\rho\sqrt H}{\operatorname{Tr}(H\rho)},\qquad
 unknown inputs. Checking a single known input cannot establish such a
 channel.
 
-\phantomsection\label{p-fcond-07}{} \textbf{P-FCOND-07 (Classification
+\protect\hypertarget{p-fcond-07}{}{} \textbf{P-FCOND-07 (Classification
 of deterministic initialization on all unknown inputs).} Let
 \(H\succeq0\), \(H\ne0\) be a finite-dimensional matrix. If only the
 system output marginal is required, one deterministic CPTP map realizes
@@ -15671,7 +15685,7 @@ A=\sqrt{H_0/c}.
 \] Since \(I-A^{\dagger}A\succeq0\), a failure Kraus operator can be
 added to form an actual complete instrument.
 
-\phantomsection\label{p-fcond-08}{} \textbf{P-FCOND-08 (Actual success
+\protect\hypertarget{p-fcond-08}{}{} \textbf{P-FCOND-08 (Actual success
 probability and posterior state of the scaled filter).} This complete
 filtering instrument succeeds with probability \(p_G/c\). Its state
 after success is \(\widetilde\rho_0\), independently of the scale \(c\).
@@ -15699,7 +15713,7 @@ with mean \(\mu\). The cost includes the actions, preparation, failure
 detection, and reset actually carried out during that attempt. Within a
 single attempt, cost may be correlated with success or failure.
 
-\phantomsection\label{p-fcond-09}{} \textbf{P-FCOND-09 (Full cost of
+\protect\hypertarget{p-fcond-09}{}{} \textbf{P-FCOND-09 (Full cost of
 independent resets until success).} If each reset produces the same
 independent trial, the expected total cost until the first success is
 \(\mu/p\). Truncating at no more than \(n\) attempts gives expected cost
@@ -15736,7 +15750,7 @@ with the same acceptance extractor and positive success probabilities
 normalization used in this book, equivalently the distance defined by
 all effects.
 
-\phantomsection\label{p-fcond-10}{} \textbf{P-FCOND-10 (Propagation of
+\protect\hypertarget{p-fcond-10}{}{} \textbf{P-FCOND-10 (Propagation of
 error from full outputs to conditioned outputs).} If
 \(D(\Omega,\Omega')\le\varepsilon\), then \[
 |p-q|\le\varepsilon,\qquad
@@ -15777,7 +15791,7 @@ masses of the reference implementation. Here each step must be compared
 as a complete CP instrument retaining its visible labels, with the
 initial-state error recorded separately.
 
-\phantomsection\label{p-fcond-11}{} \textbf{P-FCOND-11 (A usable local
+\protect\hypertarget{p-fcond-11}{}{} \textbf{P-FCOND-11 (A usable local
 error bound for valid Kraus approximations).} Consider two actual
 complete Kraus families \(\{L_j\},\{M_j\}\) with the same visible labels
 and with their hidden indices aligned by zero padding. For every
@@ -15831,7 +15845,7 @@ errors. In the singular case, the support must be fixed and certified
 before applying the corresponding lower bound on that support.
 Floating-point sorting alone cannot determine the exact rank.
 
-\phantomsection\label{c-fcond-01}{} \textbf{C-FCOND-01 (Small positive
+\protect\hypertarget{c-fcond-01}{}{} \textbf{C-FCOND-01 (Small positive
 eigenvalues cannot be treated as zero).} Let
 \(H_\epsilon=\operatorname{diag}(1,\epsilon)\) and
 \(H_0=\operatorname{diag}(1,0)\), with \(\epsilon>0\). Although
@@ -15982,7 +15996,7 @@ test whether a specified implementation meets the full-record, cost, and
 error contracts established here.
 
 \chapter{67. Operational identity, microscopic truncation, and robust
-implementation with shared parameters}\label{ch-67}
+implementation with shared parameters}\label{ch-67}\hypertarget{ch-67}{}
 
 This chapter continues the finite conditioning chain already closed in
 Chapter 66. The new responsibility is to connect the statistical
@@ -16017,7 +16031,7 @@ experimentalist has acquired all those measurement capabilities.
 
 \section{67.2 Operational identity of actual events}
 
-\phantomsection\label{p-opt-02}{}
+\protect\hypertarget{p-opt-02}{}{}
 
 \textbf{P-OPT-02 (Four equivalent identities for events in
 positive-dimensional finite complex systems).} Let the input and output
@@ -16060,7 +16074,7 @@ operational error.
 
 \section{67.3 Visible labels and the operational quotient}
 
-\phantomsection\label{p-opt-03}{}
+\protect\hypertarget{p-opt-03}{}{}
 
 \textbf{P-OPT-03 (Composition respects identity at every visible
 label).} Fix a visible outcome alphabet. Two complete instruments have
@@ -16132,7 +16146,7 @@ every hidden branch of a complete readout within the system cutoff. The
 readout need not be diagonal in auxiliary excitation: its component
 along any fixed readout vector cannot create higher system excitation.
 
-\phantomsection\label{p-micro-01}{}
+\protect\hypertarget{p-micro-01}{}{}
 
 \textbf{P-MICRO-01 (A microscopic bridge to complete adaptive CQ
 truncation).} For this actual action family, finite outcome/hidden
@@ -16172,7 +16186,7 @@ between two fixed channels.
 \section{67.5 Necessary premises, normal trace class, and actual
 filtering}
 
-\phantomsection\label{c-micro-01}{}
+\protect\hypertarget{c-micro-01}{}{}
 
 \textbf{C-MICRO-01 (Mean-energy preservation does not imply branchwise
 truncation).} On three levels with energies zero, one, and two, a
@@ -16188,7 +16202,7 @@ vacuum. Reversing those operations produces an excited oscillator. The
 CP compositions have distance one on the same input. This checks actual
 channels; anticommutation of two Kraus matrices would not suffice.
 
-\phantomsection\label{p-micro-02}{}
+\protect\hypertarget{p-micro-02}{}{}
 
 \textbf{P-MICRO-02 (Normal trace-class postselection and complete
 preparation records).} For the same normal CP trace-nonincreasing
@@ -16283,7 +16297,7 @@ target.
 
 \section{67.7 Joint calibration and robust certificates}
 
-\phantomsection\label{p-rob-01}{}
+\protect\hypertarget{p-rob-01}{}{}
 
 \textbf{P-ROB-01 (Deployment error and separation on one parameter
 set).} Fix complete outputs, input/reference scope, and observation
@@ -16327,7 +16341,7 @@ actual dual norm. If neither upper nor lower bounds decide the requested
 precision, report insufficient certification, rather than identifying
 solver failure with physical impossibility.
 
-\phantomsection\label{c-rob-01}{}
+\protect\hypertarget{c-rob-01}{}{}
 
 \textbf{C-ROB-01 (Pointwise realizability does not imply one robust
 deployment).} For this chapter's conditional target, each known
@@ -16350,7 +16364,7 @@ floating thresholds.
 
 \section{67.8 Exact benefit of visible history and the complete error}
 
-\phantomsection\label{p-rob-02}{}
+\protect\hypertarget{p-rob-02}{}{}
 
 \textbf{P-ROB-02 (An exact design-region certificate for the same
 source).} At each step the library implements an actual gate and emits
@@ -16475,7 +16489,7 @@ objective actualization from standard environmental mechanisms.
 
 \section{67.10 Long-time marginal mixing versus complete memory}
 
-\phantomsection\label{p-micro-03}{}
+\protect\hypertarget{p-micro-03}{}{}
 
 \textbf{P-MICRO-03 (Single-excitation marginal mixing without
 full-record forgetting).} Further fix the single-excitation basis order
@@ -16568,7 +16582,7 @@ identities, corrections after failed checks, and uncovered domains
 remain in this iteration's audit and execution records.
 
 \chapter{68. Segmented excitation growth and controlled blue-pulse
-omission}\label{ch-68}
+omission}\label{ch-68}\hypertarget{ch-68}{}
 
 Chapter 67 established finite truncation for excitation-preserving
 operations. This chapter permits one specific form of excitation growth:
@@ -16622,7 +16636,7 @@ does not establish Lamb-Dicke validity throughout its carrier.
 
 \section{68.2 A growth window derived from a self-adjoint generator}
 
-\phantomsection\label{p-micro-04}{}
+\protect\hypertarget{p-micro-04}{}{}
 
 \textbf{P-MICRO-04 (Finite excitation growth under segmented blue
 pulses).} For every nonnegative integer cutoff and every real pulse
@@ -16671,7 +16685,7 @@ statement. \(\square\)
 \section{68.3 Rectangular instruments, stopping records, and
 composition}
 
-\phantomsection\label{p-opt-04}{}
+\protect\hypertarget{p-opt-04}{}{}
 
 \textbf{P-OPT-04 (Complete rectangular operations on growing carriers).}
 For fixed finite actions, outcomes, observation permissions, and maximum
@@ -16784,7 +16798,7 @@ not free consequences of writing a projection.
 
 \section{68.5 Energy-weighted omission of the blue pulse}
 
-\phantomsection\label{p-micro-05}{}
+\protect\hypertarget{p-micro-05}{}{}
 
 \textbf{P-MICRO-05 (Complete-record omission bound using a no-blue
 reference).} Fix the same legal record policy and the same red and phase
@@ -16836,7 +16850,7 @@ observation permissions require a new prefix budget.
 
 \section{68.6 Simultaneous interaction does not preserve a hard window}
 
-\phantomsection\label{c-micro-02}{}
+\protect\hypertarget{c-micro-02}{}{}
 
 \textbf{C-MICRO-02 (An infinite-tail counterexample for simultaneous red
 and blue interaction).} The segmented result does not imply finite
@@ -16872,7 +16886,7 @@ as a proved positive statement.
 
 \section{68.7 A certificate for the complete common-source chain}
 
-\phantomsection\label{p-rob-03}{}
+\protect\hypertarget{p-rob-03}{}{}
 
 \textbf{P-ROB-03 (A joint certificate for growth, physical filtering,
 and pulse omission).} Use the source, two-step acceptance event, and
@@ -16929,7 +16943,7 @@ its conditional target.
 
 \section{68.8 Flag counts do not identify blue pulse area}
 
-\phantomsection\label{c-rob-02}{}
+\protect\hypertarget{c-rob-02}{}{}
 
 \textbf{C-ROB-02 (Identical flag probabilities do not certify the
 blue-pulse terminal state).} All original flag-record probabilities in
@@ -17030,7 +17044,7 @@ the current roadmap. Completing this finite growth example does not
 complete physics across those domains.
 
 \chapter{69. Simultaneous dynamics, genuine truncation error, and
-calibrated complete predictions}\label{ch-69}
+calibrated complete predictions}\label{ch-69}\hypertarget{ch-69}{}
 
 \section{69.1 Continuing from the infinite-tail counterexample}
 
@@ -17084,7 +17098,7 @@ reads only permitted visible histories.
 
 \section{69.2 Approximate operational stability of a complete tree}
 
-\phantomsection\label{p-opt-05}{}
+\protect\hypertarget{p-opt-05}{}{}
 
 \textbf{P-OPT-05 (Complete-CQ error from unnormalized reference
 prefixes).} Fix a finite-height classical control tree, actions, visible
@@ -17132,7 +17146,7 @@ state-independent path probabilities below.
 
 \section{69.3 Energy and boundary flow from the actual generator}
 
-\phantomsection\label{p-micro-06}{}
+\protect\hypertarget{p-micro-06}{}{}
 
 \textbf{P-MICRO-06 (Self-adjoint simultaneous source, energy budget, and
 boundary defect).} For the real parameters of Section 69.1 with
@@ -17208,7 +17222,7 @@ certificate instead uses the integral-free prior bound next.
 
 \section{69.4 A finite remainder for genuine Galerkin evolution}
 
-\phantomsection\label{p-micro-07}{}
+\protect\hypertarget{p-micro-07}{}{}
 
 \textbf{P-MICRO-07 (Genuine truncation bound from finite Duhamel
 expansion).} Let \(N,L\ge0\) and \(K=N+2L\). In either specified
@@ -17277,7 +17291,7 @@ special path formula.
 
 \section{69.5 Compression need not inherit the infinite invariant}
 
-\phantomsection\label{c-micro-03}{}
+\protect\hypertarget{c-micro-03}{}{}
 
 \textbf{C-MICRO-03 (Galerkin compression does not preserve this
 quadrature invariant).} The infinite force and probe phase strongly
@@ -17300,7 +17314,7 @@ separately.
 \section{69.6 Identifiable calibration and a nominal parameter without
 hidden truth}
 
-\phantomsection\label{p-rob-04}{}
+\protect\hypertarget{p-rob-04}{}{}
 
 \textbf{P-ROB-04 (Joint calibration, nominal parameters, and
 shared-force stability).} Freeze independent fresh preparations, fixed
@@ -17377,7 +17391,7 @@ acquire Hoeffding precision.
 
 \section{69.7 One certificate for the complete output}
 
-\phantomsection\label{p-rob-05}{}
+\protect\hypertarget{p-rob-05}{}{}
 
 \textbf{P-ROB-05 (Composing physical preparation, robust deployment,
 nominal calibration, and finite prediction).} Under the shared model,
@@ -17532,7 +17546,7 @@ Lorentzian geometry, and the cosmological targets remain on the
 continuous roadmap.
 
 \chapter{70. Complete persistent-environment processes, finite
-certification, and selection limits}\label{ch-70}
+certification, and selection limits}\label{ch-70}\hypertarget{ch-70}{}
 
 \section{70.1 Shared object and proof obligations}
 
@@ -17584,7 +17598,7 @@ generated by the registered preparations, operations and effects from a
 sector. The following construction states why these targets cannot be
 silently exchanged.
 
-\phantomsection\label{c-qsel-02}{} \textbf{C-QSEL-02 (Operational
+\protect\hypertarget{c-qsel-02}{}{} \textbf{C-QSEL-02 (Operational
 equivalence of hidden completions of a reachable sector and the boundary
 of global quantum selection).} Fix a reachable complex-quantum operation
 library, including complete finite tests, parallel composition,
@@ -17742,7 +17756,7 @@ tomographed. This distinction permits finite ordinary preparations and
 readouts to control every untouched reference. It does not permit reuse
 of the same certification after changing an intermediate intervention.
 
-\phantomsection\label{p-tom-01}{} \textbf{P-TOM-01 (An explicit
+\protect\hypertarget{p-tom-01}{}{} \textbf{P-TOM-01 (An explicit
 finite-tester stability bound and its preparation, readout and dimension
 obligations).} For \(d\ge2\), choose the following \(d^2\) legal pure
 preparations and binary-effect settings:
@@ -17921,7 +17935,7 @@ the stipulated terminal output. Complex Hilbert space, the Born rule, CP
 operations, oscillator dynamics and vacuum preparation remain
 independent physical inputs, not structures uniquely derived from Core.
 
-\phantomsection\label{p-micro-08}{} \textbf{P-MICRO-08 (A complete
+\protect\hypertarget{p-micro-08}{}{} \textbf{P-MICRO-08 (A complete
 persistent Gaussian-bath process on a common domain).} We first
 construct a legitimate common source and then derive its full multitime
 response. General finite Gaussian states specify the scope of the
@@ -18074,7 +18088,7 @@ dynamics are therefore different assumptions.
 
 \subsection{Finite Duhamel expansion and the all-input lift}
 
-\phantomsection\label{p-micro-09}{} \textbf{P-MICRO-09 (An all-input
+\protect\hypertarget{p-micro-09}{}{} \textbf{P-MICRO-09 (An all-input
 finite approximation of the same persistent source).} Let \(P_K\)
 project onto occupation at most K in each mode, let \(J_K\) be its
 inclusion, and use the actual compression
@@ -18212,7 +18226,7 @@ relative couplings, preparation or control permissions.
 
 \subsection{A strict memory witness for the fixed three-slot source}
 
-\phantomsection\label{c-qmem-01}{} \textbf{C-QMEM-01 (Equal single-slot
+\protect\hypertarget{c-qmem-01}{}{} \textbf{C-QMEM-01 (Equal single-slot
 channels do not determine a multitime process).} Repreparing vacuum
 after every slot defines a different process. Its isolated single-slot
 channel equals the true source for every input and reference, because
@@ -18242,7 +18256,7 @@ strong standard baseline.
 
 \subsection{Why interval Choi bounds control arbitrary reference inputs}
 
-\phantomsection\label{p-num-01}{} \textbf{P-NUM-01 (From interval Choi
+\protect\hypertarget{p-num-01}{}{} \textbf{P-NUM-01 (From interval Choi
 bounds to a physical terminal instrument).} With normalized Bell vector
 \(|\Omega_2\rangle=(|00\rangle+|11\rangle)/\sqrt2\), define the four
 normalized Choi blocks in output-S followed by input-reference order:
@@ -18386,11 +18400,11 @@ representation, causal-composition and limit obligations.
 
 \section{70.7 Persistent-memory lower bounds after a causal break}
 
-\phantomsection\label{p-qmem-02}{} \textbf{P-QMEM-02 (A necessary memory
-dimension from causal-break response rank).} At a fixed temporal cut, if
-the Hilbert dimension of every history-carrying register crossing the
-cut is jointly \(D\), the response matrix for histories \(h\) and future
-events \(t\) satisfies
+\protect\hypertarget{p-qmem-02}{}{} \textbf{P-QMEM-02 (A necessary
+memory dimension from causal-break response rank).} At a fixed temporal
+cut, if the Hilbert dimension of every history-carrying register
+crossing the cut is jointly \(D\), the response matrix for histories
+\(h\) and future events \(t\) satisfies
 
 \[
 H_{ht}=\operatorname{tr}(F_t\sigma_h),\qquad
@@ -18454,12 +18468,13 @@ signal.
 \section{70.8 Joint identification, finite-sample coverage, and
 same-source certification}
 
-\phantomsection\label{p-rob-06}{} \textbf{P-ROB-06 (joint identification
-and coverage from two trusted settings).} For the declared two-mode
-vacuum source, let \(\lambda\in[1/5,2/5]\) be the common coupling scale
-and \(\eta\in[9/10,1]\) a fixed symmetric visibility shared by the
-declared binary readouts. A fresh trial prepares \(|+X\rangle\), evolves
-for t, and measures X. Its observed mean is
+\protect\hypertarget{p-rob-06}{}{} \textbf{P-ROB-06 (joint
+identification and coverage from two trusted settings).} For the
+declared two-mode vacuum source, let \(\lambda\in[1/5,2/5]\) be the
+common coupling scale and \(\eta\in[9/10,1]\) a fixed symmetric
+visibility shared by the declared binary readouts. A fresh trial
+prepares \(|+X\rangle\), evolves for t, and measures X. Its observed
+mean is
 
 \[
 \mu_t=\eta e^{-a(t)\lambda^2},\qquad
@@ -18531,7 +18546,7 @@ set. The displayed rectangle is only an outer enclosure. The generator's
 truth file is read solely by generation and a separate generator audit;
 it is not an input to estimation or held-out decisions.
 
-\phantomsection\label{p-rob-07}{} \textbf{P-ROB-07 (a complete CQ
+\protect\hypertarget{p-rob-07}{}{} \textbf{P-ROB-07 (a complete CQ
 certificate and independent holdout).} Combining the same-source
 all-input parameter bound, the K=20 Galerkin bound, and the
 interval-validated exact rational CP/TP repair gives
@@ -18697,8 +18712,266 @@ distinguishable exit conditions, and full physics responsibility map.
 Completed chapter counts do not measure the fraction of physics solved.
 {[}QM3114{]}
 
+\chapter{71. What a correlated bath lets us infer}\label{ch-71}\hypertarget{ch-71}{}
+
+A Ramsey fringe can be measured for every waiting time and still leave
+two sources indistinguishable. To separate them, the experiment must ask
+a different question. Prepare the probe with either sign, let it
+displace the bath, then replace the probe while the bath keeps that
+displacement. The sign of the later phase tests how the bath responded.
+This chapter follows that idea from the permitted operation to an error
+bound for the entire stopped record.
+
+\textbf{Research attribution.} Chapter 71 presents an AI-assisted
+research proposal for review. Degui Qian is credited for the historical
+book. Independent human review and author endorsement of these new
+claims are pending.
+
+\section{71.1 Which pure states must a control reach?}
+
+\protect\hypertarget{c-qsel-03}{}{}
+
+\textbf{C-QSEL-03 (ambient and reachable continuity).} Suppose every
+pair of pure states of each declared system, including composites, must
+be connected by a permitted continuous path of reversible controls
+starting at the identity. In a direct sum of matrix blocks a pure state
+has weight one in one block. A reversible affine map preserves
+extremality. The starting block weight along the path is therefore
+continuous with values in \(\{0,1\}\) and stays one. This excludes a
+nontrivial classical simplex and a standard direct sum with at least two
+available sectors. A continuous preparation path crossing between blocks
+must pass through weight one half, where the central effect separates it
+from every pure state by at least one half.
+
+A reachable face can give the opposite verdict. Extend the qubit to
+\(M_2(\mathbb C)\oplus\mathbb C\), prepare \((\rho,0)\), and let each
+branch multiply the hidden block by an outcome weight. Its zero persists
+separately on every branch, also with an untouched reference. Induction
+over the record gives exactly the same probabilities in every reachable
+circuit. Full continuous qubit rotations are transitive on the visible
+pure rays. Testing that face supplies no evidence of ambient access.
+\href{../correlated_bath/selection/SELECTION.md}{Selection proof}
+
+\protect\hypertarget{c-qsel-04}{}{}
+
+\textbf{C-QSEL-04 (continuous controls and product tomography).} In full
+real quantum theory a plane rotation takes one ray to another. In the
+complex theory one can continuously interpolate the eigenphases of a
+unitary connecting the rays. Both satisfy the path requirement with
+their full control libraries. For two rebits let \(J\) denote the real
+quarter-turn matrix. The two states \((I\pm J\otimes J)/4\) agree on
+every product of real symmetric effects because \(\mathrm{tr}(AJ)=0\)
+for symmetric \(A\). The joint effect \((I+J\otimes J)/2\) separates
+them perfectly.
+
+Imposing local tomography still leaves a different countermodel. Take
+convex mixtures of products of pure qubits, local unitary paths and
+destructive binary spin tests with contrast \(0<\nu<1\). The pure
+preparations are product rays and local paths connect them. Products of
+noisy effects span all product observables, yet every pure joint
+preparation has pure marginals. A mixed qubit has no pure dilation in
+this library. With contrast one half even antipodal one-copy inputs have
+a probability gap of at most one half. Continuity is an independent
+sector postulate. This comparison removes zero independently supplied
+premises from the reconstruction.
+\href{../correlated_bath/selection/check_selection.py}{Exact witnesses}
+
+\section{71.2 The bath remembers its preparation clock}
+
+\protect\hypertarget{p-micro-10}{}{}
+
+\textbf{P-MICRO-10 (correlated histories and total-number cutoff).} Use
+the Chapter 70 frequencies \((1,3/2)\) and couplings \((1,3/5)\). Each
+shot starts with an arbitrary probe and finite reference in product with
+a centered two-mode Gaussian bath. Its normal covariance has diagonal
+\(n\) and real off-diagonal \(c\), with zero anomalous moments. The
+symmetric and antisymmetric modes have thermal means \(n+c,n-c\). Assume
+\(0\le n\le 3/5\), \(|c|\le n\), \(1/5\le\lambda\le2/5\) and a
+phase-locked start. Keep the bath through all three slots. Both trees
+retain the subnormalized final probe and reference in each of
+\(f,pf,ppf,ppp\). The second timing exchanges the first two durations in
+\((2/3,3/4,1/2)\).
+
+Put \(w=\lambda^2\), \(u=w(2n+1)\) and \(v=wc\). For a stopped pair of
+spin histories, rotate the difference of their unit-coupling
+displacements back to the preparation frame at the elapsed prefix time.
+Call the result \(d\). Its Gaussian attenuation and the Weyl exchange
+phase give a scalar weight \[
+I(p)=\exp(-Au-Bv+iPw),\qquad A=\|d\|^2/2,\quad B=2\operatorname{Re}(\bar d_1d_2).
+\] Here \(P\) includes the difference of the two history phases and
+their displacement exchange phase. Summing the corresponding system
+matrix outer products gives the Choi block of that record. Omitting the
+frame rotation changes the cross term when \(c\ne0\). Only the
+\emph{initial} characteristic function is Gaussian in this calculation.
+
+There is a second construction. Truncate at total occupation \(K\),
+normalize the retained bath and bound the omitted thermal tail in the
+passive modes. Creation out of the top occupied shell is the boundary
+defect in Duhamel's formula. Weight its propagated norm by the live
+prefixes before tracing the bath. For \(K=16\) the same-parameter half
+trace-distance bound is 0.011677620430 uniformly over inputs and both
+timings. The rational finite channel including arithmetic and trace
+completion has upper bound 0.027602916940 for supported rational
+parameters. The certificate below uses the infinite-source history sum
+directly and incurs its own numerical repair once.
+\href{../correlated_bath/dynamics/DYNAMICS.md}{Dynamics and cutoff
+proof}
+
+\section{71.3 Which measurement separates two Ramsey-equivalent
+sources?}
+
+\protect\hypertarget{c-qmem-02}{}{}
+
+\textbf{C-QMEM-02 (an exact Ramsey ambiguity).} Free Ramsey means are
+\(\eta\exp(-A_tu-B_tv)\). With the same visibility,
+\((\lambda,n,c)=(3/10,1/2,1/4)\) and \((1/3,31/100,81/400)\) both give
+\((u,v)=(9/50,9/400)\). Every duration agrees. At \(\eta=0.96\) the
+joint event of three passes and a negative \(YZ\) sign differs by more
+than 0.001730089430 on the original timing. Agreement of all free
+fringes leaves a measurable uncertainty on this stopped observable.
+\href{../correlated_bath/inference/verification.json}{Interval witness}
+
+\protect\hypertarget{p-qmem-03}{}{}
+
+\textbf{P-QMEM-03 (signed response after a causal break).} At \(a=2/3\)
+replace the initially positive or negative \(Z\) eigenstate by the same
+\(+X\) state, retaining the bath. After \(b=3/4\) measure both
+quadratures on separately prepared shots. With
+\(z_s=\langle X\rangle_s-i\langle Y\rangle_s\), Weyl multiplication
+gives \[
+z_s=R\exp[i(\delta+s wF)],\qquad w=\frac{\arg(z_+\overline{z_-})}{2F}.
+\] The known timing gives \(1.819240198557\le F\le1.819240198558\),
+\(R>0\) and \(0<2wF<\pi\). The principal argument recovers \(w\) even
+with a shared phase offset. The zero-time visibility and two independent
+Ramsey log means recover \(u,v\), then the positive \(\lambda\), \(n\)
+and \(c\). Separate sign-dependent offsets could absorb the phase
+exactly. A bath reset would erase the displacement altogether. The
+construction requires a calibrated reset of the probe alone, a shared
+phase reference and a stationary preparation.
+\href{../correlated_bath/inference/INFERENCE.md}{Inference and inverse
+stability}
+
+\section{71.4 From a simultaneous confidence set to complete output
+error}
+
+\protect\hypertarget{p-rob-08}{}{}
+
+\textbf{P-ROB-08 (interior interpolation and complete-output
+certificate).} On the 99\% calibration coverage event the true point
+lies in a rational polytope. Two Ramsey strips, the \(w\) interval and
+\(w+2|v|\le u\le11w/5\) preserve joint information lost by projecting
+each parameter separately. Splitting at the midpoints of the \(u\) and
+\(w\) ranges gives four convex cells and 18 distinct vertices. Checking
+the vertices alone can miss an interior phase excursion. For example the
+unitary with diagonal entries \(1,e^{i\theta}\) gives the same channel
+at \(0,2\pi\) and takes \(|+\rangle\) to an orthogonal state at \(\pi\).
+
+For a point expressed as a convex average of vertices, the linear terms
+in the Taylor expansion of \(I\) cancel. Throughout each segment
+\(|I|\le1\) because \(|B|\le2A\) and \(u\ge2|v|\). The variance of
+either real coordinate is at most one quarter its squared range. Thus
+the scalar remainder is bounded by \[
+\frac{\operatorname{range}(Au+Bv)^2+\operatorname{range}(Pw)^2}{8}.
+\] Multiply by the Frobenius norm of each history outer product and sum.
+For normalized qubit Choi blocks \(J_r\), Schmidt normalization of a
+pure input and the rank-four trace norm bound give \[
+\tfrac12\|\Delta\|_\diamond\le\sum_r\|\Delta J_r\|_1\le2\sum_r\|\Delta J_r\|_F .
+\] Convexity covers mixed inputs. Add each cell's interpolation
+remainder to its worst interval-enclosed vertex error and take the
+maximum. Exact rational CP and trace-preserving completion of the
+nominal instrument costs at most \(10^{-8}\).
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2100}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2000}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2800}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3100}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Timing
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Complete half diamond
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Bell eight-cell analog TV
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Bell 40-bit sampler TV
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Original & 0.033892297103 & 0.046090140885 & 0.046090140889 \\
+First two slots exchanged & 0.035357047207 & 0.047554890989 &
+0.047554890993 \\
+\end{longtable}
+
+Each entry is an outward upper bound. Only the complete channel column
+ranges over arbitrary inputs and untouched finite references. The other
+columns use the specified Bell input and one declared binary tester
+combined with four record labels. They include visibility uncertainty
+and an analog allowance of 0.0005 per cell. Digitizing the cumulative
+probabilities adds at most \(4/2^{40}\) in total variation. Normalizing
+a rare postselected state or changing an intermediate intervention
+requires a separate bound.
+\href{../correlated_bath/certificate/PROOF.md}{Certificate proof} ·
+\href{../correlated_bath/certificate/joint-result.json}{Rational bounds}
+
+The fit used 720,000 synthetic calibration shots. On 408,000 independent
+frozen holdout shots the two Bell timings and a separately timed break
+were compatible with prediction. The deliberately changed readout had
+four disjoint cells. The calibrated standard persistent quantum process
+gives the same predictions and statistical performance. Model
+membership, sign-dependent drift and matched-device performance remain
+experimental questions.
+\href{../correlated_bath/inference/holdout_results.json}{Holdout
+decisions}
+
+\section{71.5 Where a two-mode probe loses locality}
+
+\protect\hypertarget{p-field-01}{}{}
+
+\textbf{P-FIELD-01 (matching two modes and testing a spacelike signal).}
+In a specified massive free scalar field on a circle, the circumference
+and compact smearing profile can be chosen so that the zero and first
+cosine modes reproduce the two bath frequencies and relative couplings.
+Keep their correlated preparation and put the higher modes in vacuum.
+Two switched probes then sample different field quantities. The signed
+phase integrates the retarded commutator, while coherence attenuation
+samples the symmetric two-point function. At strictly spacelike
+separation microcausality sets the full signed phase to zero.
+
+With \(\lambda=0.3\), \(n=0.5\), \(c=0.25\) and antipodal probes
+switched for \(1/5\) each, the first two modes alone give 0.001330794
+radians. Higher modes are necessary for cancellation. With both probes
+at the same location and the original first two durations the two-mode
+and field phases are about 0.16373 and 0.20916 radians. The smearing
+bounds the phase tail by a constant times \(M^{-10}\) after \(M\)
+shells. At \(M=160\) the example's phase tail is below
+\(2.486\times10^{-12}\) radians. These tests concern the chosen free
+field, geometry and preparation. Their physical selection and extension
+to interacting fields remain open.
+\href{../correlated_bath/field/FIELD.md}{Local probe and tail proof} ·
+\href{../correlated_bath/field/observed.json}{Interval results}
+
+For two equal-gap qubits in an exchange pulse, the bath gains 3/20 of
+the gap energy. Reusing that bath after probe preparation increases the
+next excitation probability by 0.0375 compared with supplying a fresh
+bath. In the matter example both three and five colors pass the integer
+singlet-charge rule. In the cosmological example dust plus a
+cosmological constant and a canonical scalar share one expansion
+history, while their perturbations differ at nonzero wave number. These
+comparisons specify which observation has to change to distinguish two
+models.
+
+The accompanying \href{../correlated_bath/sectors/RESULTS.md}{sector
+calculations} test thermal memory, matter assignments and geometry under
+separate assumptions. A field sourced by external switching, a
+memoryless replacement bath and a change of background metric each
+define a different experiment. None supplies the missing device
+calibrations, a unique matter sector or gravitational field equations.
+
 \chapter{Appendix A. Notation, units, and responsibilities of standard
-theorems}\label{appendix-a}
+theorems}\label{appendix-a}\hypertarget{appendix-a}{}
 
 \section{A.1 Common notation}
 
@@ -18892,7 +19165,7 @@ Chapters 60 and 63 establish state separation and the
 half-trace-absolute-value identity. An arbitrary-ancilla diamond-norm
 identification remains a separate obligation.
 
-\chapter{Appendix B. Registry of numbered results}\label{appendix-b}
+\chapter{Appendix B. Registry of numbered results}\label{appendix-b}\hypertarget{appendix-b}{}
 
 The 3.7 bilingual revision preserves all 173 stable result IDs of
 research edition 3.6, without adding or withdrawing another result.
@@ -18929,385 +19202,425 @@ Result
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\hyperref[p-qbr-01]{P-QBR-01} & 1 & P-QBR-01: A classical realization
-countermodel. \\
-\hyperref[p-qsel-01]{P-QSEL-01} & 2 & P-QSEL-01: Classical and
+\protect\hyperlink{p-qbr-01}{P-QBR-01} & 1 & P-QBR-01: A classical
+realization countermodel. \\
+\protect\hyperlink{p-qsel-01}{P-QSEL-01} & 2 & P-QSEL-01: Classical and
 real-quantum deletion witnesses. \\
-\hyperref[p-qact-01]{P-QACT-01} & 3 & P-QACT-01: Conditional
+\protect\hyperlink{p-qact-01}{P-QACT-01} & 3 & P-QACT-01: Conditional
 Madelung--Schrödinger equivalence. \\
-\hyperref[p-qact-02]{P-QACT-02} & 3 & P-QACT-02. \\
-\hyperref[p-qborn-02]{P-QBORN-02} & 3 & P-QBORN-02: Probabilities of an
-unbiased final branch. \\
-\hyperref[p-qop-01]{P-QOP-01} & 4 & P-QOP-01: Finite Choi--Kraus
-equivalence. \\
-\hyperref[p-qop-02]{P-QOP-02} & 4 & P-QOP-02: No signalling. \\
-\hyperref[p-qop-03]{P-QOP-03} & 4 & P-QOP-03: Operational error and
-propagation. \\
-\hyperref[p-qff-01]{P-QFF-01} & 5 & P-QFF-01: Finite quantum FFIPS. \\
-\hyperref[p-qff-02]{P-QFF-02} & 5 & P-QFF-02: Path preservation by a
-quantum quotient. \\
-\hyperref[p-qmeas-01]{P-QMEAS-01} & 6 & P-QMEAS-01: Parent-system
-completion. \\
-\hyperref[p-qmeas-02]{P-QMEAS-02} & 6 & P-QMEAS-02. \\
-\hyperref[p-qmeas-03]{P-QMEAS-03} & 6 & P-QMEAS-03: Public blindness. \\
-\hyperref[p-qmeas-04]{P-QMEAS-04} & 6 & P-QMEAS-04. \\
-\hyperref[p-qsrn-01]{P-QSRN-01} & 7 & P-QSRN-01: Complete SRN
+\protect\hyperlink{p-qact-02}{P-QACT-02} & 3 & P-QACT-02. \\
+\protect\hyperlink{p-qborn-02}{P-QBORN-02} & 3 & P-QBORN-02:
+Probabilities of an unbiased final branch. \\
+\protect\hyperlink{p-qop-01}{P-QOP-01} & 4 & P-QOP-01: Finite
+Choi--Kraus equivalence. \\
+\protect\hyperlink{p-qop-02}{P-QOP-02} & 4 & P-QOP-02: No signalling. \\
+\protect\hyperlink{p-qop-03}{P-QOP-03} & 4 & P-QOP-03: Operational error
+and propagation. \\
+\protect\hyperlink{p-qff-01}{P-QFF-01} & 5 & P-QFF-01: Finite quantum
+FFIPS. \\
+\protect\hyperlink{p-qff-02}{P-QFF-02} & 5 & P-QFF-02: Path preservation
+by a quantum quotient. \\
+\protect\hyperlink{p-qmeas-01}{P-QMEAS-01} & 6 & P-QMEAS-01:
+Parent-system completion. \\
+\protect\hyperlink{p-qmeas-02}{P-QMEAS-02} & 6 & P-QMEAS-02. \\
+\protect\hyperlink{p-qmeas-03}{P-QMEAS-03} & 6 & P-QMEAS-03: Public
+blindness. \\
+\protect\hyperlink{p-qmeas-04}{P-QMEAS-04} & 6 & P-QMEAS-04. \\
+\protect\hyperlink{p-qsrn-01}{P-QSRN-01} & 7 & P-QSRN-01: Complete SRN
 classification. \\
-\hyperref[p-qsrn-02]{P-QSRN-02} & 7 & P-QSRN-02. \\
-\hyperref[p-qsrn-03]{P-QSRN-03} & 7 & P-QSRN-03: Necessary and
+\protect\hyperlink{p-qsrn-02}{P-QSRN-02} & 7 & P-QSRN-02. \\
+\protect\hyperlink{p-qsrn-03}{P-QSRN-03} & 7 & P-QSRN-03: Necessary and
 sufficient generator-cone conditions. \\
-\hyperref[p-qqdr-01]{P-QQDR-01} & 8 & P-QQDR-01: Coherent pullback. \\
-\hyperref[p-qqdr-02]{P-QQDR-02} & 8 & P-QQDR-02. \\
-\hyperref[p-qqdr-03]{P-QQDR-03} & 8 & P-QQDR-03: Simultaneous error. \\
-\hyperref[p-qinfo-01]{P-QINFO-01} & 9 & P-QINFO-01. \\
-\hyperref[p-qinfo-02]{P-QINFO-02} & 9 & P-QINFO-02. \\
-\hyperref[p-qinf-01]{P-QINF-01} & 10 & P-QINF-01: Trace-norm continuity
-of normal states. \\
-\hyperref[p-qinf-02]{P-QINF-02} & 10 & P-QINF-02: Energy-truncation
+\protect\hyperlink{p-qqdr-01}{P-QQDR-01} & 8 & P-QQDR-01: Coherent
+pullback. \\
+\protect\hyperlink{p-qqdr-02}{P-QQDR-02} & 8 & P-QQDR-02. \\
+\protect\hyperlink{p-qqdr-03}{P-QQDR-03} & 8 & P-QQDR-03: Simultaneous
 error. \\
-\hyperref[p-qccr-01]{P-QCCR-01} & 11 & P-QCCR-01: A single scale from
-symplectic covariance. \\
-\hyperref[p-qccr-02]{P-QCCR-02} & 11 & P-QCCR-02. \\
-\hyperref[p-qccr-03]{P-QCCR-03} & 11 & P-QCCR-03. \\
-\hyperref[p-qgauss-01]{P-QGAUSS-01} & 13 & P-QGAUSS-01: A necessary
-covariance condition. \\
-\hyperref[p-qmem-01]{P-QMEM-01} & 18 & P-QMEM-01: Irreducible error from
-omitted memory. \\
-\hyperref[p-qtherm-01]{P-QTHERM-01} & 19 & P-QTHERM-01: Free energy and
-relative entropy. \\
-\hyperref[p-qtherm-02]{P-QTHERM-02} & 19 & P-QTHERM-02: KMS for finite
-Gibbs systems. \\
-\hyperref[p-qtherm-03]{P-QTHERM-03} & 19 & P-QTHERM-03. \\
-\hyperref[p-qctl-01]{P-QCTL-01} & 20 & P-QCTL-01. \\
-\hyperref[p-qkg-01]{P-QKG-01} & 22 & P-QKG-01: Canonical relations and
-propagation. \\
-\hyperref[p-qkg-02]{P-QKG-02} & 22 & P-QKG-02: Spacelike causality. \\
-\hyperref[p-qdir-01]{P-QDIR-01} & 23 & P-QDIR-01. \\
-\hyperref[p-qunit-01]{P-QUNIT-01} & 24 & P-QUNIT-01: Optical theorem. \\
-\hyperref[p-qren-01]{P-QREN-01} & 25 & P-QREN-01. \\
-\hyperref[p-qren-02]{P-QREN-02} & 25 & P-QREN-02: Subtracted bubble. \\
-\hyperref[p-qren-03]{P-QREN-03} & 25 & P-QREN-03: Two-particle cut. \\
-\hyperref[p-qeft-01]{P-QEFT-01} & 26 & P-QEFT-01: Quadratic Schur
-complement. \\
-\hyperref[p-qeft-02]{P-QEFT-02} & 26 & P-QEFT-02: A restricted real-time
-bridge. \\
-\hyperref[p-qqed-01]{P-QQED-01} & 28 & P-QQED-01. \\
-\hyperref[p-qqed-02]{P-QQED-02} & 28 & P-QQED-02: Threshold beta
-function. \\
-\hyperref[p-qsm-01]{P-QSM-01} & 29 & P-QSM-01: Anomaly solutions and
-nonuniqueness. \\
-\hyperref[p-qhig-01]{P-QHIG-01} & 30 & P-QHIG-01: Mass matrices. \\
-\hyperref[p-qflav-01]{P-QFLAV-01} & 30 & P-QFLAV-01: Generic
+\protect\hyperlink{p-qinfo-01}{P-QINFO-01} & 9 & P-QINFO-01. \\
+\protect\hyperlink{p-qinfo-02}{P-QINFO-02} & 9 & P-QINFO-02. \\
+\protect\hyperlink{p-qinf-01}{P-QINF-01} & 10 & P-QINF-01: Trace-norm
+continuity of normal states. \\
+\protect\hyperlink{p-qinf-02}{P-QINF-02} & 10 & P-QINF-02:
+Energy-truncation error. \\
+\protect\hyperlink{p-qccr-01}{P-QCCR-01} & 11 & P-QCCR-01: A single
+scale from symplectic covariance. \\
+\protect\hyperlink{p-qccr-02}{P-QCCR-02} & 11 & P-QCCR-02. \\
+\protect\hyperlink{p-qccr-03}{P-QCCR-03} & 11 & P-QCCR-03. \\
+\protect\hyperlink{p-qgauss-01}{P-QGAUSS-01} & 13 & P-QGAUSS-01: A
+necessary covariance condition. \\
+\protect\hyperlink{p-qmem-01}{P-QMEM-01} & 18 & P-QMEM-01: Irreducible
+error from omitted memory. \\
+\protect\hyperlink{p-qtherm-01}{P-QTHERM-01} & 19 & P-QTHERM-01: Free
+energy and relative entropy. \\
+\protect\hyperlink{p-qtherm-02}{P-QTHERM-02} & 19 & P-QTHERM-02: KMS for
+finite Gibbs systems. \\
+\protect\hyperlink{p-qtherm-03}{P-QTHERM-03} & 19 & P-QTHERM-03. \\
+\protect\hyperlink{p-qctl-01}{P-QCTL-01} & 20 & P-QCTL-01. \\
+\protect\hyperlink{p-qkg-01}{P-QKG-01} & 22 & P-QKG-01: Canonical
+relations and propagation. \\
+\protect\hyperlink{p-qkg-02}{P-QKG-02} & 22 & P-QKG-02: Spacelike
+causality. \\
+\protect\hyperlink{p-qdir-01}{P-QDIR-01} & 23 & P-QDIR-01. \\
+\protect\hyperlink{p-qunit-01}{P-QUNIT-01} & 24 & P-QUNIT-01: Optical
+theorem. \\
+\protect\hyperlink{p-qren-01}{P-QREN-01} & 25 & P-QREN-01. \\
+\protect\hyperlink{p-qren-02}{P-QREN-02} & 25 & P-QREN-02: Subtracted
+bubble. \\
+\protect\hyperlink{p-qren-03}{P-QREN-03} & 25 & P-QREN-03: Two-particle
+cut. \\
+\protect\hyperlink{p-qeft-01}{P-QEFT-01} & 26 & P-QEFT-01: Quadratic
+Schur complement. \\
+\protect\hyperlink{p-qeft-02}{P-QEFT-02} & 26 & P-QEFT-02: A restricted
+real-time bridge. \\
+\protect\hyperlink{p-qqed-01}{P-QQED-01} & 28 & P-QQED-01. \\
+\protect\hyperlink{p-qqed-02}{P-QQED-02} & 28 & P-QQED-02: Threshold
+beta function. \\
+\protect\hyperlink{p-qsm-01}{P-QSM-01} & 29 & P-QSM-01: Anomaly
+solutions and nonuniqueness. \\
+\protect\hyperlink{p-qhig-01}{P-QHIG-01} & 30 & P-QHIG-01: Mass
+matrices. \\
+\protect\hyperlink{p-qflav-01}{P-QFLAV-01} & 30 & P-QFLAV-01: Generic
 nondegenerate \(N\)-generation quark counting. \\
-\hyperref[p-qnu-01]{P-QNU-01} & 30 & P-QNU-01: Type-I seesaw. \\
-\hyperref[p-qg3-01]{P-QG3-01} & 31 & P-QG3-01. \\
-\hyperref[p-qg3-02]{P-QG3-02} & 31 & P-QG3-02: All integer solutions. \\
-\hyperref[p-qg3-03]{P-QG3-03} & 31 & P-QG3-03: Selection without
-primitivity. \\
-\hyperref[p-qg3-04]{P-QG3-04} & 31 & P-QG3-04. \\
-\hyperref[p-qfr-01]{P-QFR-01} & 32 & P-QFR-01. \\
-\hyperref[p-qfr-02]{P-QFR-02} & 32 & P-QFR-02. \\
-\hyperref[g-01]{G-01} & 36 & G-01: All integer solutions for the
-three-scalar content. \\
-\hyperref[g-02]{G-02} & 36 & G-02: Local completion for general colour
-number. \\
-\hyperref[f-01]{F-01} & 37 & F-01. \\
-\hyperref[f-02]{F-02} & 37 & F-02. \\
-\hyperref[f-03]{F-03} & 37 & F-03. \\
-\hyperref[m-01]{M-01} & 38 & M-01. \\
-\hyperref[m-02]{M-02} & 38 & M-02. \\
-\hyperref[m-03]{M-03} & 39 & M-03: Four is the minimum number of
-branches for single-time separation. \\
-\hyperref[m-04]{M-04} & 39 & M-04: A sharp classical lower bound. \\
-\hyperref[m-05]{M-05} & 39 & M-05. \\
-\hyperref[e-01]{E-01} & 39 & E-01: A finite-sample rejection test. \\
-\hyperref[e-02]{E-02} & 39 & E-02: A robust bound for approximate
-population preservation. \\
-\hyperref[c-01]{C-01} & 40 & C-01: An explicit contradiction from remote
-preparation. \\
-\hyperref[c-02]{C-02} & 40 & C-02: Norm preservation and a linear
-ensemble average. \\
-\hyperref[c-03]{C-03} & 40 & C-03: A single spectral branch with Born
-weights. \\
-\hyperref[c-04]{C-04} & 40 & C-04: Decay of pairwise uncertainty. \\
-\hyperref[c-05]{C-05} & 41 & C-05: Equivalence with an unrestricted
-quantum environment. \\
-\hyperref[p-ugl-01]{P-UGL-01} & 43 & P-UGL-01: Ring spectrum and gauge
-invariance. \\
-\hyperref[p-utp-01]{P-UTP-01} & 44 & P-UTP-01: Chern number of this
-eigenline. \\
-\hyperref[p-utp-02]{P-UTP-02} & 44 & P-UTP-02: A semi-infinite zero
-mode. \\
-\hyperref[p-ulg-01]{P-ULG-01} & 45 & P-ULG-01: Existence and gauge
-invariance of the finite model. \\
-\hyperref[p-ulg-02]{P-ULG-02} & 45 & P-ULG-02: Exact partition function
-and response. \\
-\hyperref[p-ust-01]{P-UST-01} & 46 & P-UST-01: A fixed-sample test for
-correlated trials. \\
-\hyperref[p-ust-02]{P-UST-02} & 46 & P-UST-02: An optional-stopping
-certificate. \\
-\hyperref[p-qkr-01]{P-QKR-01} & 49 & P-QKR-01 (Posterior closure of the
-response object). \\
-\hyperref[p-qkr-02]{P-QKR-02} & 49 & P-QKR-02 (A local finite
+\protect\hyperlink{p-qnu-01}{P-QNU-01} & 30 & P-QNU-01: Type-I
+seesaw. \\
+\protect\hyperlink{p-qg3-01}{P-QG3-01} & 31 & P-QG3-01. \\
+\protect\hyperlink{p-qg3-02}{P-QG3-02} & 31 & P-QG3-02: All integer
+solutions. \\
+\protect\hyperlink{p-qg3-03}{P-QG3-03} & 31 & P-QG3-03: Selection
+without primitivity. \\
+\protect\hyperlink{p-qg3-04}{P-QG3-04} & 31 & P-QG3-04. \\
+\protect\hyperlink{p-qfr-01}{P-QFR-01} & 32 & P-QFR-01. \\
+\protect\hyperlink{p-qfr-02}{P-QFR-02} & 32 & P-QFR-02. \\
+\protect\hyperlink{g-01}{G-01} & 36 & G-01: All integer solutions for
+the three-scalar content. \\
+\protect\hyperlink{g-02}{G-02} & 36 & G-02: Local completion for general
+colour number. \\
+\protect\hyperlink{f-01}{F-01} & 37 & F-01. \\
+\protect\hyperlink{f-02}{F-02} & 37 & F-02. \\
+\protect\hyperlink{f-03}{F-03} & 37 & F-03. \\
+\protect\hyperlink{m-01}{M-01} & 38 & M-01. \\
+\protect\hyperlink{m-02}{M-02} & 38 & M-02. \\
+\protect\hyperlink{m-03}{M-03} & 39 & M-03: Four is the minimum number
+of branches for single-time separation. \\
+\protect\hyperlink{m-04}{M-04} & 39 & M-04: A sharp classical lower
+bound. \\
+\protect\hyperlink{m-05}{M-05} & 39 & M-05. \\
+\protect\hyperlink{e-01}{E-01} & 39 & E-01: A finite-sample rejection
+test. \\
+\protect\hyperlink{e-02}{E-02} & 39 & E-02: A robust bound for
+approximate population preservation. \\
+\protect\hyperlink{c-01}{C-01} & 40 & C-01: An explicit contradiction
+from remote preparation. \\
+\protect\hyperlink{c-02}{C-02} & 40 & C-02: Norm preservation and a
+linear ensemble average. \\
+\protect\hyperlink{c-03}{C-03} & 40 & C-03: A single spectral branch
+with Born weights. \\
+\protect\hyperlink{c-04}{C-04} & 40 & C-04: Decay of pairwise
+uncertainty. \\
+\protect\hyperlink{c-05}{C-05} & 41 & C-05: Equivalence with an
+unrestricted quantum environment. \\
+\protect\hyperlink{p-ugl-01}{P-UGL-01} & 43 & P-UGL-01: Ring spectrum
+and gauge invariance. \\
+\protect\hyperlink{p-utp-01}{P-UTP-01} & 44 & P-UTP-01: Chern number of
+this eigenline. \\
+\protect\hyperlink{p-utp-02}{P-UTP-02} & 44 & P-UTP-02: A semi-infinite
+zero mode. \\
+\protect\hyperlink{p-ulg-01}{P-ULG-01} & 45 & P-ULG-01: Existence and
+gauge invariance of the finite model. \\
+\protect\hyperlink{p-ulg-02}{P-ULG-02} & 45 & P-ULG-02: Exact partition
+function and response. \\
+\protect\hyperlink{p-ust-01}{P-UST-01} & 46 & P-UST-01: A fixed-sample
+test for correlated trials. \\
+\protect\hyperlink{p-ust-02}{P-UST-02} & 46 & P-UST-02: An
+optional-stopping certificate. \\
+\protect\hyperlink{p-qkr-01}{P-QKR-01} & 49 & P-QKR-01 (Posterior
+closure of the response object). \\
+\protect\hyperlink{p-qkr-02}{P-QKR-02} & 49 & P-QKR-02 (A local finite
 representation determines every future response). \\
-\hyperref[p-qkr-03]{P-QKR-03} & 49 & P-QKR-03 (All-word coordinates
-determine a complete finite adaptive tree). \\
-\hyperref[p-qkr-04]{P-QKR-04} & 49 & P-QKR-04 (Soundness of an exact
-certificate). \\
-\hyperref[p-qst-01]{P-QST-01} & 50 & P-QST-01 (Positive pairing and
-effect bounds). \\
-\hyperref[p-qst-02]{P-QST-02} & 50 & P-QST-02 (Complete pullback of
-continuation effects). \\
-\hyperref[p-qst-03]{P-QST-03} & 50 & P-QST-03 (Basic contract for the
-observable distance). \\
-\hyperref[p-qst-04]{P-QST-04} & 50 & P-QST-04 (One-step stability of a
-complete Kraus channel). \\
-\hyperref[p-qst-05]{P-QST-05} & 50 & P-QST-05 (Composable error for
-quantum trajectories). \\
-\hyperref[p-qst-06]{P-QST-06} & 50 & P-QST-06 (Postselection error and
-preservation of positive support). \\
-\hyperref[p-qmx-01]{P-QMX-01} & 51 & P-QMX-01 (An actual realization of
-a probability mixture). \\
-\hyperref[p-qmx-02]{P-QMX-02} & 51 & P-QMX-02 (A uniform bound for
-changed weights in a common library). \\
-\hyperref[p-qmx-03]{P-QMX-03} & 51 & P-QMX-03 (A joint bound for weight
-and member errors). \\
-\hyperref[p-qmx-04]{P-QMX-04} & 51 & P-QMX-04 (Interpretation of an
-exact rational budget). \\
-\hyperref[p-qce-01]{P-QCE-01} & 52 & P-QCE-01 (Exact residual and
-all-effect budget for an average state). \\
-\hyperref[p-qce-02]{P-QCE-02} & 52 & P-QCE-02 (Compactness of the actual
-density-operator set). \\
-\hyperref[p-qce-03]{P-QCE-03} & 52 & P-QCE-03 (A stationary density
-operator for a finite complete channel). \\
-\hyperref[n-qce-01]{N-QCE-01} & 52 & N-QCE-01 (Average invariance does
-not imply orbit convergence or uniqueness). \\
-\hyperref[p-qsv-01]{P-QSV-01} & 53 & P-QSV-01 (A complete quantum
-instrument for a substochastic kernel). \\
-\hyperref[p-qsv-02]{P-QSV-02} & 53 & P-QSV-02 (Intertwining diagonal
-dynamics with finite success words). \\
-\hyperref[p-qsv-03]{P-QSV-03} & 53 & P-QSV-03 (The geometric survival
-law of the actual all-success record). \\
-\hyperref[p-qsv-04]{P-QSV-04} & 53 & P-QSV-04 (A complete realization of
-the Doob kernel and invariant success records). \\
-\hyperref[n-qsv-01]{N-QSV-01} & 53 & N-QSV-01 (The QSD, Doob invariant
-law, and an arbitrary initial state are distinct). \\
-\hyperref[p-qcl-01]{P-QCL-01} & 54 & P-QCL-01 (States, responses, and
-transport on the full simplex). \\
-\hyperref[n-qcl-01]{N-QCL-01} & 54 & N-QCL-01 (A two-point mixed state
-has no finite classical purification). \\
-\hyperref[p-qcl-02]{P-QCL-02} & 54 & P-QCL-02 (The actual terminal
-quotient retains two-point support). \\
-\hyperref[p-qcl-03]{P-QCL-03} & 54 & P-QCL-03 (A common-source safe
-trajectory and a purification-separation certificate). \\
-\hyperref[n-qcl-02]{N-QCL-02} & 54 & N-QCL-02 (An operational quotient
-can remove microscopic mixing). \\
-\hyperref[p-qrt-01]{P-QRT-01} & 55 & P-QRT-01 (Two valid, distinct real
-joint states). \\
-\hyperref[n-qrt-01]{N-QRT-01} & 55 & N-QRT-01 (Real local product tests
-do not determine the joint state). \\
-\hyperref[p-qrt-02]{P-QRT-02} & 55 & P-QRT-02 (Deterministic
+\protect\hyperlink{p-qkr-03}{P-QKR-03} & 49 & P-QKR-03 (All-word
+coordinates determine a complete finite adaptive tree). \\
+\protect\hyperlink{p-qkr-04}{P-QKR-04} & 49 & P-QKR-04 (Soundness of an
+exact certificate). \\
+\protect\hyperlink{p-qst-01}{P-QST-01} & 50 & P-QST-01 (Positive pairing
+and effect bounds). \\
+\protect\hyperlink{p-qst-02}{P-QST-02} & 50 & P-QST-02 (Complete
+pullback of continuation effects). \\
+\protect\hyperlink{p-qst-03}{P-QST-03} & 50 & P-QST-03 (Basic contract
+for the observable distance). \\
+\protect\hyperlink{p-qst-04}{P-QST-04} & 50 & P-QST-04 (One-step
+stability of a complete Kraus channel). \\
+\protect\hyperlink{p-qst-05}{P-QST-05} & 50 & P-QST-05 (Composable error
+for quantum trajectories). \\
+\protect\hyperlink{p-qst-06}{P-QST-06} & 50 & P-QST-06 (Postselection
+error and preservation of positive support). \\
+\protect\hyperlink{p-qmx-01}{P-QMX-01} & 51 & P-QMX-01 (An actual
+realization of a probability mixture). \\
+\protect\hyperlink{p-qmx-02}{P-QMX-02} & 51 & P-QMX-02 (A uniform bound
+for changed weights in a common library). \\
+\protect\hyperlink{p-qmx-03}{P-QMX-03} & 51 & P-QMX-03 (A joint bound
+for weight and member errors). \\
+\protect\hyperlink{p-qmx-04}{P-QMX-04} & 51 & P-QMX-04 (Interpretation
+of an exact rational budget). \\
+\protect\hyperlink{p-qce-01}{P-QCE-01} & 52 & P-QCE-01 (Exact residual
+and all-effect budget for an average state). \\
+\protect\hyperlink{p-qce-02}{P-QCE-02} & 52 & P-QCE-02 (Compactness of
+the actual density-operator set). \\
+\protect\hyperlink{p-qce-03}{P-QCE-03} & 52 & P-QCE-03 (A stationary
+density operator for a finite complete channel). \\
+\protect\hyperlink{n-qce-01}{N-QCE-01} & 52 & N-QCE-01 (Average
+invariance does not imply orbit convergence or uniqueness). \\
+\protect\hyperlink{p-qsv-01}{P-QSV-01} & 53 & P-QSV-01 (A complete
+quantum instrument for a substochastic kernel). \\
+\protect\hyperlink{p-qsv-02}{P-QSV-02} & 53 & P-QSV-02 (Intertwining
+diagonal dynamics with finite success words). \\
+\protect\hyperlink{p-qsv-03}{P-QSV-03} & 53 & P-QSV-03 (The geometric
+survival law of the actual all-success record). \\
+\protect\hyperlink{p-qsv-04}{P-QSV-04} & 53 & P-QSV-04 (A complete
+realization of the Doob kernel and invariant success records). \\
+\protect\hyperlink{n-qsv-01}{N-QSV-01} & 53 & N-QSV-01 (The QSD, Doob
+invariant law, and an arbitrary initial state are distinct). \\
+\protect\hyperlink{p-qcl-01}{P-QCL-01} & 54 & P-QCL-01 (States,
+responses, and transport on the full simplex). \\
+\protect\hyperlink{n-qcl-01}{N-QCL-01} & 54 & N-QCL-01 (A two-point
+mixed state has no finite classical purification). \\
+\protect\hyperlink{p-qcl-02}{P-QCL-02} & 54 & P-QCL-02 (The actual
+terminal quotient retains two-point support). \\
+\protect\hyperlink{p-qcl-03}{P-QCL-03} & 54 & P-QCL-03 (A common-source
+safe trajectory and a purification-separation certificate). \\
+\protect\hyperlink{n-qcl-02}{N-QCL-02} & 54 & N-QCL-02 (An operational
+quotient can remove microscopic mixing). \\
+\protect\hyperlink{p-qrt-01}{P-QRT-01} & 55 & P-QRT-01 (Two valid,
+distinct real joint states). \\
+\protect\hyperlink{n-qrt-01}{N-QRT-01} & 55 & N-QRT-01 (Real local
+product tests do not determine the joint state). \\
+\protect\hyperlink{p-qrt-02}{P-QRT-02} & 55 & P-QRT-02 (Deterministic
 discrimination by a joint effect). \\
-\hyperref[n-qrt-02]{N-QRT-02} & 55 & N-QRT-02 (Discrimination when
-complex local effects are allowed). \\
-\hyperref[n-qrt-03]{N-QRT-03} & 55 & N-QRT-03 (The distinguishing effect
-is outside the finite real span of product effects). \\
-\hyperref[p-qqd-01]{P-QQD-01} & 56 & P-QQD-01 (Validity of filter
-normalization). \\
-\hyperref[p-qqd-02]{P-QQD-02} & 56 & P-QQD-02 (An actual quantum Doob
-instrument). \\
-\hyperref[p-qqd-03]{P-QQD-03} & 56 & P-QQD-03 (Finite intertwining on
-all operators and the actual conditional state). \\
-\hyperref[p-qqd-04]{P-QQD-04} & 56 & P-QQD-04 (Quasi-stationarity,
-geometric survival, and stationarity of the actual channel). \\
-\hyperref[p-qqd-05]{P-QQD-05} & 56 & P-QQD-05 (A nondiagonal Doob
-witness computable on all matrices). \\
-\hyperref[n-qqd-01]{N-QQD-01} & 56 & N-QQD-01 (Three distinctions that
-must be retained). \\
-\hyperref[p-pur-01]{P-PUR-01} & 57 & P-PUR-01 (Vector purity in the
-complete density-state space). \\
-\hyperref[p-pur-02]{P-PUR-02} & 57 & P-PUR-02 (Existence of a
+\protect\hyperlink{n-qrt-02}{N-QRT-02} & 55 & N-QRT-02 (Discrimination
+when complex local effects are allowed). \\
+\protect\hyperlink{n-qrt-03}{N-QRT-03} & 55 & N-QRT-03 (The
+distinguishing effect is outside the finite real span of product
+effects). \\
+\protect\hyperlink{p-qqd-01}{P-QQD-01} & 56 & P-QQD-01 (Validity of
+filter normalization). \\
+\protect\hyperlink{p-qqd-02}{P-QQD-02} & 56 & P-QQD-02 (An actual
+quantum Doob instrument). \\
+\protect\hyperlink{p-qqd-03}{P-QQD-03} & 56 & P-QQD-03 (Finite
+intertwining on all operators and the actual conditional state). \\
+\protect\hyperlink{p-qqd-04}{P-QQD-04} & 56 & P-QQD-04
+(Quasi-stationarity, geometric survival, and stationarity of the actual
+channel). \\
+\protect\hyperlink{p-qqd-05}{P-QQD-05} & 56 & P-QQD-05 (A nondiagonal
+Doob witness computable on all matrices). \\
+\protect\hyperlink{n-qqd-01}{N-QQD-01} & 56 & N-QQD-01 (Three
+distinctions that must be retained). \\
+\protect\hyperlink{p-pur-01}{P-PUR-01} & 57 & P-PUR-01 (Vector purity in
+the complete density-state space). \\
+\protect\hyperlink{p-pur-02}{P-PUR-02} & 57 & P-PUR-02 (Existence of a
 purification for every finite complex density state). \\
-\hyperref[p-opt-01]{P-OPT-01} & 57 & P-OPT-01 (Three concrete
+\protect\hyperlink{p-opt-01}{P-OPT-01} & 57 & P-OPT-01 (Three concrete
 presentations in one operational language). \\
-\hyperref[n-opt-01]{N-OPT-01} & 57 & N-OPT-01 (Basic operational laws do
-not automatically select a quantum theory). \\
-\hyperref[p-cq-01]{P-CQ-01} & 58 & P-CQ-01 (Complete positivity, trace
-preservation, and effect contraction for rectangular channels). \\
-\hyperref[p-cq-02]{P-CQ-02} & 58 & P-CQ-02 (Joint block state and
-marginals of an actual instrument). \\
-\hyperref[p-cq-03]{P-CQ-03} & 58 & P-CQ-03 (Record-and-memory
+\protect\hyperlink{n-opt-01}{N-OPT-01} & 57 & N-OPT-01 (Basic
+operational laws do not automatically select a quantum theory). \\
+\protect\hyperlink{p-cq-01}{P-CQ-01} & 58 & P-CQ-01 (Complete
+positivity, trace preservation, and effect contraction for rectangular
+channels). \\
+\protect\hyperlink{p-cq-02}{P-CQ-02} & 58 & P-CQ-02 (Joint block state
+and marginals of an actual instrument). \\
+\protect\hyperlink{p-cq-03}{P-CQ-03} & 58 & P-CQ-03 (Record-and-memory
 realization of every finite protocol). \\
-\hyperref[p-cq-04]{P-CQ-04} & 58 & P-CQ-04 (Joint-distance and
+\protect\hyperlink{p-cq-04}{P-CQ-04} & 58 & P-CQ-04 (Joint-distance and
 perturbation control of record distributions). \\
-\hyperref[n-cq-01]{N-CQ-01} & 58 & N-CQ-01 (Equal unconditional channels
-do not control record error). \\
-\hyperref[p-qdd-01]{P-QDD-01} & 59 & P-QDD-01 (Exact dynamics of the
-present Doob channel). \\
-\hyperref[p-qdd-02]{P-QDD-02} & 59 & P-QDD-02 (Closed forms for the
-actual source success operator and its mass). \\
-\hyperref[p-qdd-03]{P-QDD-03} & 59 & P-QDD-03 (The actual conditional
-state and its quantitative convergence). \\
-\hyperref[p-qdd-04]{P-QDD-04} & 59 & P-QDD-04 (Decay of finite-success
-probabilities and the role of the initial state). \\
-\hyperref[n-qdd-01]{N-QDD-01} & 59 & N-QDD-01 (A valid identity-Doob
-negative control). \\
-\hyperref[p-sep-01]{P-SEP-01} & 60 & P-SEP-01 (Representation of a
-Hermitian operator by valid effects). \\
-\hyperref[p-sep-02]{P-SEP-02} & 60 & P-SEP-02 (Separation by all effects
-and the matrix meaning of zero distance). \\
-\hyperref[p-clt-01]{P-CLT-01} & 60 & P-CLT-01 (Universal local
+\protect\hyperlink{n-cq-01}{N-CQ-01} & 58 & N-CQ-01 (Equal unconditional
+channels do not control record error). \\
+\protect\hyperlink{p-qdd-01}{P-QDD-01} & 59 & P-QDD-01 (Exact dynamics
+of the present Doob channel). \\
+\protect\hyperlink{p-qdd-02}{P-QDD-02} & 59 & P-QDD-02 (Closed forms for
+the actual source success operator and its mass). \\
+\protect\hyperlink{p-qdd-03}{P-QDD-03} & 59 & P-QDD-03 (The actual
+conditional state and its quantitative convergence). \\
+\protect\hyperlink{p-qdd-04}{P-QDD-04} & 59 & P-QDD-04 (Decay of
+finite-success probabilities and the role of the initial state). \\
+\protect\hyperlink{n-qdd-01}{N-QDD-01} & 59 & N-QDD-01 (A valid
+identity-Doob negative control). \\
+\protect\hyperlink{p-sep-01}{P-SEP-01} & 60 & P-SEP-01 (Representation
+of a Hermitian operator by valid effects). \\
+\protect\hyperlink{p-sep-02}{P-SEP-02} & 60 & P-SEP-02 (Separation by
+all effects and the matrix meaning of zero distance). \\
+\protect\hyperlink{p-clt-01}{P-CLT-01} & 60 & P-CLT-01 (Universal local
 tomography of the complete finite complex model). \\
-\hyperref[n-sep-01]{N-SEP-01} & 60 & N-SEP-01 (Even all diagonal effects
-fail to identify coherent states). \\
-\hyperref[p-puc-01]{P-PUC-01} & 61 & P-PUC-01 (Purity characterization
-in the complete finite complex density space). \\
-\hyperref[p-pun-01]{P-PUN-01} & 61 & P-PUN-01 (Unitary equivalence of
-all purifications on the same auxiliary carrier). \\
-\hyperref[p-aux-01]{P-AUX-01} & 61 & P-AUX-01 (Actual channel, marginal,
-and purity of an auxiliary isometric embedding). \\
-\hyperref[p-pun-02]{P-PUN-02} & 61 & P-PUN-02 (Unitary equivalence after
-common extension for different finite auxiliary carriers). \\
-\hyperref[n-pun-01]{N-PUN-01} & 61 & N-PUN-01 (The adjoint, transpose,
-and entrywise conjugate cannot replace the actual auxiliary action). \\
-\hyperref[n-aux-01]{N-AUX-01} & 61 & N-AUX-01 (Strict auxiliary
+\protect\hyperlink{n-sep-01}{N-SEP-01} & 60 & N-SEP-01 (Even all
+diagonal effects fail to identify coherent states). \\
+\protect\hyperlink{p-puc-01}{P-PUC-01} & 61 & P-PUC-01 (Purity
+characterization in the complete finite complex density space). \\
+\protect\hyperlink{p-pun-01}{P-PUN-01} & 61 & P-PUN-01 (Unitary
+equivalence of all purifications on the same auxiliary carrier). \\
+\protect\hyperlink{p-aux-01}{P-AUX-01} & 61 & P-AUX-01 (Actual channel,
+marginal, and purity of an auxiliary isometric embedding). \\
+\protect\hyperlink{p-pun-02}{P-PUN-02} & 61 & P-PUN-02 (Unitary
+equivalence after common extension for different finite auxiliary
+carriers). \\
+\protect\hyperlink{n-pun-01}{N-PUN-01} & 61 & N-PUN-01 (The adjoint,
+transpose, and entrywise conjugate cannot replace the actual auxiliary
+action). \\
+\protect\hyperlink{n-aux-01}{N-AUX-01} & 61 & N-AUX-01 (Strict auxiliary
 enlargement is an isometric embedding, not a two-sided unitary
 equivalence). \\
-\hyperref[p-arb-01]{P-ARB-01} & 62 & P-ARB-01 (History blocks,
+\protect\hyperlink{p-arb-01}{P-ARB-01} & 62 & P-ARB-01 (History blocks,
 normalized weights, and valid block effects). \\
-\hyperref[p-arb-02]{P-ARB-02} & 62 & P-ARB-02 (Action-weighted bound for
-the actual history-reading channel). \\
-\hyperref[p-arb-03]{P-ARB-03} & 62 & P-ARB-03 (Matrix agreement between
-finite-history evolution and the original complete protocol). \\
-\hyperref[p-arb-04]{P-ARB-04} & 62 & P-ARB-04 (Actual per-action sum
-budget and complete-record TV). \\
-\hyperref[p-arb-05]{P-ARB-05} & 62 & P-ARB-05 (An exact rational witness
-saturating the stepwise budget). \\
-\hyperref[n-arb-01]{N-ARB-01} & 62 & N-ARB-01 (Zero unlabelled action
-defects can coexist with maximum complete-record error). \\
-\hyperref[p-tdist-01]{P-TDIST-01} & 63 & P-TDIST-01 (Positive and
-negative spectral parts and the actual absolute value of a finite
+\protect\hyperlink{p-arb-02}{P-ARB-02} & 62 & P-ARB-02 (Action-weighted
+bound for the actual history-reading channel). \\
+\protect\hyperlink{p-arb-03}{P-ARB-03} & 62 & P-ARB-03 (Matrix agreement
+between finite-history evolution and the original complete protocol). \\
+\protect\hyperlink{p-arb-04}{P-ARB-04} & 62 & P-ARB-04 (Actual
+per-action sum budget and complete-record TV). \\
+\protect\hyperlink{p-arb-05}{P-ARB-05} & 62 & P-ARB-05 (An exact
+rational witness saturating the stepwise budget). \\
+\protect\hyperlink{n-arb-01}{N-ARB-01} & 62 & N-ARB-01 (Zero unlabelled
+action defects can coexist with maximum complete-record error). \\
+\protect\hyperlink{p-tdist-01}{P-TDIST-01} & 63 & P-TDIST-01 (Positive
+and negative spectral parts and the actual absolute value of a finite
 Hermitian matrix). \\
-\hyperref[p-tdist-02]{P-TDIST-02} & 63 & P-TDIST-02
+\protect\hyperlink{p-tdist-02}{P-TDIST-02} & 63 & P-TDIST-02
 (Half-trace-absolute-value formula and an optimal effect for full-effect
 distance). \\
-\hyperref[p-dec-01]{P-DEC-01} & 63 & P-DEC-01 (Actual optimal success
-probability for equal-prior binary discrimination). \\
-\hyperref[p-tcert-01]{P-TCERT-01} & 63 & P-TCERT-01 (Distance
+\protect\hyperlink{p-dec-01}{P-DEC-01} & 63 & P-DEC-01 (Actual optimal
+success probability for equal-prior binary discrimination). \\
+\protect\hyperlink{p-tcert-01}{P-TCERT-01} & 63 & P-TCERT-01 (Distance
 certificate from a PSD support decomposition). \\
-\hyperref[p-pdm-01]{P-PDM-01} & 64 & P-PDM-01 (Exact dimension ordering
-for a rectangular isometry). \\
-\hyperref[p-pdm-02]{P-PDM-02} & 64 & P-PDM-02 (A dimension-directed
-direct isometry for arbitrary actual purifications). \\
-\hyperref[p-pdm-03]{P-PDM-03} & 64 & P-PDM-03 (Actual rank lower bound
-for all convex-pure extensions). \\
-\hyperref[p-pdm-04]{P-PDM-04} & 64 & P-PDM-04 (Exact minimum auxiliary
-dimension of finite complex purification). \\
-\hyperref[n-pdm-01]{N-PDM-01} & 64 & N-PDM-01 (Equal marginals do not
-remove the dimension direction required by a direct isometry). \\
-\hyperref[p-stop-01]{P-STOP-01} & 65 & P-STOP-01 (Actual absorbing
-padding of an original finite stopping tree). \\
-\hyperref[p-stop-02]{P-STOP-02} & 65 & P-STOP-02 (Full-effect distance
-preservation and the connection to the original joint leaf state). \\
-\hyperref[p-stop-03]{P-STOP-03} & 65 & P-STOP-03 (Per-action error
-budget under a common finite stopping rule). \\
-\hyperref[p-stop-04]{P-STOP-04} & 65 & P-STOP-04 (Exact \(1/16\) record
-difference in a stopping protocol). \\
-\hyperref[p-stop-05]{P-STOP-05} & 65 & P-STOP-05 (Identical quantum
-actions do not control all records under different stopping rules). \\
-\hyperref[p-fcond-01]{P-FCOND-01} & 66 & P-FCOND-01 (Acceptance effects
-of the same finite original experiment). \\
-\hyperref[p-fcond-02]{P-FCOND-02} & 66 & P-FCOND-02 (Kernel annihilation
-from the backward Gram sum). \\
-\hyperref[p-fcond-03]{P-FCOND-03} & 66 & P-FCOND-03 (Support
+\protect\hyperlink{p-pdm-01}{P-PDM-01} & 64 & P-PDM-01 (Exact dimension
+ordering for a rectangular isometry). \\
+\protect\hyperlink{p-pdm-02}{P-PDM-02} & 64 & P-PDM-02 (A
+dimension-directed direct isometry for arbitrary actual
+purifications). \\
+\protect\hyperlink{p-pdm-03}{P-PDM-03} & 64 & P-PDM-03 (Actual rank
+lower bound for all convex-pure extensions). \\
+\protect\hyperlink{p-pdm-04}{P-PDM-04} & 64 & P-PDM-04 (Exact minimum
+auxiliary dimension of finite complex purification). \\
+\protect\hyperlink{n-pdm-01}{N-PDM-01} & 64 & N-PDM-01 (Equal marginals
+do not remove the dimension direction required by a direct isometry). \\
+\protect\hyperlink{p-stop-01}{P-STOP-01} & 65 & P-STOP-01 (Actual
+absorbing padding of an original finite stopping tree). \\
+\protect\hyperlink{p-stop-02}{P-STOP-02} & 65 & P-STOP-02 (Full-effect
+distance preservation and the connection to the original joint leaf
+state). \\
+\protect\hyperlink{p-stop-03}{P-STOP-03} & 65 & P-STOP-03 (Per-action
+error budget under a common finite stopping rule). \\
+\protect\hyperlink{p-stop-04}{P-STOP-04} & 65 & P-STOP-04 (Exact
+\(1/16\) record difference in a stopping protocol). \\
+\protect\hyperlink{p-stop-05}{P-STOP-05} & 65 & P-STOP-05 (Identical
+quantum actions do not control all records under different stopping
+rules). \\
+\protect\hyperlink{p-fcond-01}{P-FCOND-01} & 66 & P-FCOND-01 (Acceptance
+effects of the same finite original experiment). \\
+\protect\hyperlink{p-fcond-02}{P-FCOND-02} & 66 & P-FCOND-02 (Kernel
+annihilation from the backward Gram sum). \\
+\protect\hyperlink{p-fcond-03}{P-FCOND-03} & 66 & P-FCOND-03 (Support
 transformation and a valid completion on the full space). \\
-\hyperref[p-fcond-04]{P-FCOND-04} & 66 & P-FCOND-04 (Conditioning the
-full leaf record and terminal state from the same original
-experiment). \\
-\hyperref[p-fcond-05]{P-FCOND-05} & 66 & P-FCOND-05 (A convex-hull
-equivalence preserving outcomes and observation permissions). \\
-\hyperref[p-fcond-06]{P-FCOND-06} & 66 & P-FCOND-06 (A finite negative
-separation certificate for the allowed class). \\
-\hyperref[p-fcond-07]{P-FCOND-07} & 66 & P-FCOND-07 (Classification of
-deterministic initialization on all unknown inputs). \\
-\hyperref[p-fcond-08]{P-FCOND-08} & 66 & P-FCOND-08 (Actual success
-probability and posterior state of the scaled filter). \\
-\hyperref[p-fcond-09]{P-FCOND-09} & 66 & P-FCOND-09 (Full cost of
-independent resets until success). \\
-\hyperref[p-fcond-10]{P-FCOND-10} & 66 & P-FCOND-10 (Propagation of
-error from full outputs to conditioned outputs). \\
-\hyperref[p-fcond-11]{P-FCOND-11} & 66 & P-FCOND-11 (A usable local
-error bound for valid Kraus approximations). \\
-\hyperref[c-fcond-01]{C-FCOND-01} & 66 & C-FCOND-01 (Small positive
-eigenvalues cannot be treated as zero). \\
-\hyperref[p-opt-02]{P-OPT-02} & 67 & P-OPT-02 (Four equivalent
+\protect\hyperlink{p-fcond-04}{P-FCOND-04} & 66 & P-FCOND-04
+(Conditioning the full leaf record and terminal state from the same
+original experiment). \\
+\protect\hyperlink{p-fcond-05}{P-FCOND-05} & 66 & P-FCOND-05 (A
+convex-hull equivalence preserving outcomes and observation
+permissions). \\
+\protect\hyperlink{p-fcond-06}{P-FCOND-06} & 66 & P-FCOND-06 (A finite
+negative separation certificate for the allowed class). \\
+\protect\hyperlink{p-fcond-07}{P-FCOND-07} & 66 & P-FCOND-07
+(Classification of deterministic initialization on all unknown
+inputs). \\
+\protect\hyperlink{p-fcond-08}{P-FCOND-08} & 66 & P-FCOND-08 (Actual
+success probability and posterior state of the scaled filter). \\
+\protect\hyperlink{p-fcond-09}{P-FCOND-09} & 66 & P-FCOND-09 (Full cost
+of independent resets until success). \\
+\protect\hyperlink{p-fcond-10}{P-FCOND-10} & 66 & P-FCOND-10
+(Propagation of error from full outputs to conditioned outputs). \\
+\protect\hyperlink{p-fcond-11}{P-FCOND-11} & 66 & P-FCOND-11 (A usable
+local error bound for valid Kraus approximations). \\
+\protect\hyperlink{c-fcond-01}{C-FCOND-01} & 66 & C-FCOND-01 (Small
+positive eigenvalues cannot be treated as zero). \\
+\protect\hyperlink{p-opt-02}{P-OPT-02} & 67 & P-OPT-02 (Four equivalent
 identities for events in positive-dimensional finite complex
 systems). \\
-\hyperref[p-opt-03]{P-OPT-03} & 67 & P-OPT-03 (Composition respects
-identity at every visible label). \\
-\hyperref[p-micro-01]{P-MICRO-01} & 67 & P-MICRO-01 (A microscopic
-bridge to complete adaptive CQ truncation). \\
-\hyperref[c-micro-01]{C-MICRO-01} & 67 & C-MICRO-01 (Mean-energy
-preservation does not imply branchwise truncation). \\
-\hyperref[p-micro-02]{P-MICRO-02} & 67 & P-MICRO-02 (Normal trace-class
-postselection and complete preparation records). \\
-\hyperref[p-rob-01]{P-ROB-01} & 67 & P-ROB-01 (Deployment error and
-separation on one parameter set). \\
-\hyperref[c-rob-01]{C-ROB-01} & 67 & C-ROB-01 (Pointwise realizability
-does not imply one robust deployment). \\
-\hyperref[p-rob-02]{P-ROB-02} & 67 & P-ROB-02 (An exact design-region
-certificate for the same source). \\
-\hyperref[p-micro-03]{P-MICRO-03} & 67 & P-MICRO-03 (Single-excitation
-marginal mixing without full-record forgetting). \\
-\hyperref[p-micro-04]{P-MICRO-04} & 68 & P-MICRO-04 (Finite excitation
-growth under segmented blue pulses). \\
-\hyperref[p-opt-04]{P-OPT-04} & 68 & P-OPT-04 (Complete rectangular
-operations on growing carriers). \\
-\hyperref[p-micro-05]{P-MICRO-05} & 68 & P-MICRO-05 (Complete-record
-omission bound using a no-blue reference). \\
-\hyperref[c-micro-02]{C-MICRO-02} & 68 & C-MICRO-02 (An infinite-tail
-counterexample for simultaneous red and blue interaction). \\
-\hyperref[p-rob-03]{P-ROB-03} & 68 & P-ROB-03 (A joint certificate for
-growth, physical filtering, and pulse omission). \\
-\hyperref[c-rob-02]{C-ROB-02} & 68 & C-ROB-02 (Identical flag
+\protect\hyperlink{p-opt-03}{P-OPT-03} & 67 & P-OPT-03 (Composition
+respects identity at every visible label). \\
+\protect\hyperlink{p-micro-01}{P-MICRO-01} & 67 & P-MICRO-01 (A
+microscopic bridge to complete adaptive CQ truncation). \\
+\protect\hyperlink{c-micro-01}{C-MICRO-01} & 67 & C-MICRO-01
+(Mean-energy preservation does not imply branchwise truncation). \\
+\protect\hyperlink{p-micro-02}{P-MICRO-02} & 67 & P-MICRO-02 (Normal
+trace-class postselection and complete preparation records). \\
+\protect\hyperlink{p-rob-01}{P-ROB-01} & 67 & P-ROB-01 (Deployment error
+and separation on one parameter set). \\
+\protect\hyperlink{c-rob-01}{C-ROB-01} & 67 & C-ROB-01 (Pointwise
+realizability does not imply one robust deployment). \\
+\protect\hyperlink{p-rob-02}{P-ROB-02} & 67 & P-ROB-02 (An exact
+design-region certificate for the same source). \\
+\protect\hyperlink{p-micro-03}{P-MICRO-03} & 67 & P-MICRO-03
+(Single-excitation marginal mixing without full-record forgetting). \\
+\protect\hyperlink{p-micro-04}{P-MICRO-04} & 68 & P-MICRO-04 (Finite
+excitation growth under segmented blue pulses). \\
+\protect\hyperlink{p-opt-04}{P-OPT-04} & 68 & P-OPT-04 (Complete
+rectangular operations on growing carriers). \\
+\protect\hyperlink{p-micro-05}{P-MICRO-05} & 68 & P-MICRO-05
+(Complete-record omission bound using a no-blue reference). \\
+\protect\hyperlink{c-micro-02}{C-MICRO-02} & 68 & C-MICRO-02 (An
+infinite-tail counterexample for simultaneous red and blue
+interaction). \\
+\protect\hyperlink{p-rob-03}{P-ROB-03} & 68 & P-ROB-03 (A joint
+certificate for growth, physical filtering, and pulse omission). \\
+\protect\hyperlink{c-rob-02}{C-ROB-02} & 68 & C-ROB-02 (Identical flag
 probabilities do not certify the blue-pulse terminal state). \\
-\hyperref[p-opt-05]{P-OPT-05} & 69 & P-OPT-05 (Complete-CQ error from
-unnormalized reference prefixes). \\
-\hyperref[p-micro-06]{P-MICRO-06} & 69 & P-MICRO-06 (Self-adjoint
-simultaneous source, energy budget, and boundary defect). \\
-\hyperref[p-micro-07]{P-MICRO-07} & 69 & P-MICRO-07 (Genuine truncation
-bound from finite Duhamel expansion). \\
-\hyperref[c-micro-03]{C-MICRO-03} & 69 & C-MICRO-03 (Galerkin
+\protect\hyperlink{p-opt-05}{P-OPT-05} & 69 & P-OPT-05 (Complete-CQ
+error from unnormalized reference prefixes). \\
+\protect\hyperlink{p-micro-06}{P-MICRO-06} & 69 & P-MICRO-06
+(Self-adjoint simultaneous source, energy budget, and boundary
+defect). \\
+\protect\hyperlink{p-micro-07}{P-MICRO-07} & 69 & P-MICRO-07 (Genuine
+truncation bound from finite Duhamel expansion). \\
+\protect\hyperlink{c-micro-03}{C-MICRO-03} & 69 & C-MICRO-03 (Galerkin
 compression does not preserve this quadrature invariant). \\
-\hyperref[p-rob-04]{P-ROB-04} & 69 & P-ROB-04 (Joint calibration,
-nominal parameters, and shared-force stability). \\
-\hyperref[p-rob-05]{P-ROB-05} & 69 & P-ROB-05 (Composing physical
-preparation, robust deployment, nominal calibration, and finite
+\protect\hyperlink{p-rob-04}{P-ROB-04} & 69 & P-ROB-04 (Joint
+calibration, nominal parameters, and shared-force stability). \\
+\protect\hyperlink{p-rob-05}{P-ROB-05} & 69 & P-ROB-05 (Composing
+physical preparation, robust deployment, nominal calibration, and finite
 prediction). \\
-\hyperref[c-qsel-02]{C-QSEL-02} & 70 & C-QSEL-02 (Operational
+\protect\hyperlink{c-qsel-02}{C-QSEL-02} & 70 & C-QSEL-02 (Operational
 equivalence of hidden completions of a reachable sector and the boundary
 of global quantum selection). \\
-\hyperref[p-tom-01]{P-TOM-01} & 70 & P-TOM-01 (An explicit finite-tester
-stability bound and its preparation, readout and dimension
+\protect\hyperlink{p-tom-01}{P-TOM-01} & 70 & P-TOM-01 (An explicit
+finite-tester stability bound and its preparation, readout and dimension
 obligations). \\
-\hyperref[p-micro-08]{P-MICRO-08} & 70 & P-MICRO-08 (A complete
+\protect\hyperlink{p-micro-08}{P-MICRO-08} & 70 & P-MICRO-08 (A complete
 persistent Gaussian-bath process on a common domain). \\
-\hyperref[p-micro-09]{P-MICRO-09} & 70 & P-MICRO-09 (An all-input finite
-approximation of the same persistent source). \\
-\hyperref[c-qmem-01]{C-QMEM-01} & 70 & C-QMEM-01 (Equal single-slot
-channels do not determine a multitime process). \\
-\hyperref[p-num-01]{P-NUM-01} & 70 & P-NUM-01 (From interval Choi bounds
-to a physical terminal instrument). \\
-\hyperref[p-qmem-02]{P-QMEM-02} & 70 & P-QMEM-02 (A necessary memory
-dimension from causal-break response rank). \\
-\hyperref[p-rob-06]{P-ROB-06} & 70 & P-ROB-06 (joint identification and
-coverage from two trusted settings). \\
-\hyperref[p-rob-07]{P-ROB-07} & 70 & P-ROB-07 (a complete CQ certificate
-and independent holdout). \\
+\protect\hyperlink{p-micro-09}{P-MICRO-09} & 70 & P-MICRO-09 (An
+all-input finite approximation of the same persistent source). \\
+\protect\hyperlink{c-qmem-01}{C-QMEM-01} & 70 & C-QMEM-01 (Equal
+single-slot channels do not determine a multitime process). \\
+\protect\hyperlink{p-num-01}{P-NUM-01} & 70 & P-NUM-01 (From interval
+Choi bounds to a physical terminal instrument). \\
+\protect\hyperlink{p-qmem-02}{P-QMEM-02} & 70 & P-QMEM-02 (A necessary
+memory dimension from causal-break response rank). \\
+\protect\hyperlink{p-rob-06}{P-ROB-06} & 70 & P-ROB-06 (joint
+identification and coverage from two trusted settings). \\
+\protect\hyperlink{p-rob-07}{P-ROB-07} & 70 & P-ROB-07 (a complete CQ
+certificate and independent holdout). \\
+\protect\hyperlink{c-qsel-03}{C-QSEL-03} & 71 & C-QSEL-03 (ambient and
+reachable continuity). \\
+\protect\hyperlink{c-qsel-04}{C-QSEL-04} & 71 & C-QSEL-04 (continuous
+controls and product tomography). \\
+\protect\hyperlink{p-micro-10}{P-MICRO-10} & 71 & P-MICRO-10 (correlated
+histories and total-number cutoff). \\
+\protect\hyperlink{c-qmem-02}{C-QMEM-02} & 71 & C-QMEM-02 (an exact
+Ramsey ambiguity). \\
+\protect\hyperlink{p-qmem-03}{P-QMEM-03} & 71 & P-QMEM-03 (signed
+response after a causal break). \\
+\protect\hyperlink{p-rob-08}{P-ROB-08} & 71 & P-ROB-08 (interior
+interpolation and complete-output certificate). \\
+\protect\hyperlink{p-field-01}{P-FIELD-01} & 71 & P-FIELD-01 (matching
+two modes and testing a spacelike signal). \\
 \end{longtable}
 
 \chapter{Appendix C. Sources, inheritance, and research
-integrity}\label{appendix-c}
+integrity}\label{appendix-c}\hypertarget{appendix-c}{}
 
 \section{C.1 The source boundary of this edition}
 
@@ -19731,8 +20044,12 @@ synthetic records, and cross-review:
 physics obligations:
 \texttt{physics/\allowbreak qm/\allowbreak audits/\allowbreak PERSISTENT\_\allowbreak BATH\_\allowbreak v31.\allowbreak 14/\allowbreak PREMISES\_\allowbreak AND\_\allowbreak RESPONSIBILITIES.\allowbreak md}.
 
+{[}QM3115{]} \href{../correlated_bath/README.md}{Correlated source and
+reproducible checks}. \href{../ROADMAP.md}{Evidence and open physical
+responsibilities}.
+
 \chapter{Appendix D. Complete inherited verification code and versioned
-receipts}\label{appendix-d}
+receipts}\label{appendix-d}\hypertarget{appendix-d}{}
 
 \section{D.1 Execution contract}
 
@@ -20657,21 +20974,20 @@ editions 3.1--3.7:
 \end{Verbatim}
 
 \chapter{Appendix E. Reading editions, compilation, and revision
-contract}\label{appendix-e}
+contract}\label{appendix-e}\hypertarget{appendix-e}{}
 
 \section{E.1 Complete semantic sources and derived reading editions}
 
-The maintained Chinese source \texttt{UEOT\_\allowbreak PHYSICS.\allowbreak md} and its complete
-English counterpart \texttt{UEOT\_\allowbreak PHYSICS.\allowbreak en.\allowbreak md} each contain Chapters
-0--70 and Appendices A--F. Their corresponding \texttt{.\allowbreak tex} and
-\texttt{.\allowbreak pdf} files are actual derivatives of those sources, with
-mathematical typesetting, a full chapter contents list, stable result
-IDs, original derivations, and embedded code. Edition 3.11 adds the
-Chapter 70 persistent-environment processes, finite certification, and
-selection limits to the continuous bilingual manuscript while retaining
-Chapter 69 and all earlier results. The edition number identifies a
-publication; the text and evidence determine which physical questions
-are resolved or open.
+The \protect\hyperlink{ch-71}{correlated-bath chapter} adds seven
+results to the continuous source candidate for edition 3.12. The
+\href{README.md}{edition index} records the builds and reviewed pages
+for each reading copy. The
+\href{https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978\allowbreak e173e23015f02699\allowbreak 4fb60c65/physics/qm/book/UEOT_PHYSICS.en.pdf}{Chapter
+70 PDF} preserves edition 3.11. The 210 result IDs include 203 inherited
+results and the claim ledger retains 126 prior claims. The new work has
+paper, interval and synthetic evidence. Its empirical and formal-proof
+status is given in the \href{../correlated_bath/README.md}{research
+packet}.
 
 Both languages carry the same scientific commitments. Their prose is
 adapted for natural reading, while assumptions, formulas, constants,
@@ -20751,7 +21067,7 @@ code. The same notice appears in the Chinese and English sources and
 their generated reading editions.
 
 \chapter{Appendix F. Formalized scope and the complete named axiom
-audit}\label{appendix-f}
+audit}\label{appendix-f}\hypertarget{appendix-f}{}
 
 \section{F.1 Verified identity and counts}
 
@@ -22553,6 +22869,20 @@ retain separate identities. Complete evidence is in
 scoped visual review are in \texttt{physics/\allowbreak qm/\allowbreak book/\allowbreak evidence/\allowbreak v3.\allowbreak 11/\allowbreak };
 reviewing the new and changed pages does not claim a fresh page-by-page
 review of all inherited content.
+
+\section{F.10 Proof scope of Chapter 71}
+
+Chapter 71 adds seven paper and computational results. All 203 earlier
+result objects and 126 earlier claims retain their original identities.
+The inherited Lean execution applies to its historical 158-input source
+set. The new chapter adds no Lean declaration, hardware observations or
+independent human review.
+
+On the preceding merged Chapter 70 source, PR \#466 main run 44318642942
+rebuilt the existing QM library, audited its theorem axioms and checked
+the retained witnesses. Chapters 69--71 added no Lean declarations. The
+\href{../kernel/evidence/v31.14/integration-verification.json}{recorded
+run} identifies the prior commit.
 
 \backmatter
 \end{document}

@@ -1,0 +1,17 @@
+{
+  "version":1, "block":1000, "grid_bits":40,
+  "alpha_cal":0.01, "alpha_hold":0.01,
+  "bias_mean":0.001, "bias_event":0.0005,
+  "lambda":[0.2,0.4], "n":[0,0.6], "abs_c_leq_n":true, "eta":[0.9,1],
+  "common_break_offset_rad":[-0.02,0.02],
+  "original":["2/3","3/4","1/2"], "swap":["3/4","2/3","1/2"],
+  "bell_tests":["XX","XY","YZ","ZZ"], "records":["f","pf","ppf","ppp"],
+  "calibration":{"R0":40000,"Rshort":150000,"Rlong":150000,"Xp":30000,"Xm":30000,"Yp":160000,"Ym":160000},
+  "holdout_phase":{"Hp":60000,"Hm":60000},
+  "shots_per_bell_setting":24000,
+  "holdout_families":["original","swap","readout_challenge"],
+  "cal_seed":2718281828, "hold_seed":3141592653,
+  "decision":"99% simultaneous calibration mean bands; outer interval predictions; reject family on any disjoint simultaneous holdout cell. Additional frozen sign-aligned Y midpoint test of two named alternatives on distinct holdout.",
+  "nominal_rule":"bound-constrained least squares with count-weighted squared expectation residuals from the seven calibration settings, then verify the interval constraints and physicality; inconclusive if no verified feasible witness.",
+  "nuisance":"One common break-frame offset for both signs, X and Y; residual setting mean bias <=0.001 and Bell cell bias <=0.0005. Independent synthetic shots conditional on block schedule. Terminal record reliable. No unreported loss."
+}

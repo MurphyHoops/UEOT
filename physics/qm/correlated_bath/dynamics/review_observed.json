@@ -1,0 +1,65 @@
+{
+  "status": "PASS",
+  "freeze_sha256": "1ed04d9b4dc22cbff70017614ff653b65c58f26435b068c7a2c7fe44be9668be",
+  "predictions_sha256": "b99b9542009b7604098560aa643dae088ce99277a56a14899617e6fed7874672",
+  "holdout_sha256": "a1c4a7aa613f5e3eb58b8ec664c100bf8c05236f76932aa5909d9ef2cb152190",
+  "cuts_checked": 93,
+  "max_abs_CDF_grid_error": 0.4856342547880643,
+  "Fock_K20_vs_96_Bell_cells_max_abs": 1.845210273465625e-08,
+  "Fock_breaks": {
+    "2/3,s=1": {
+      "Fock_phase": 0.16373165440115303,
+      "Fock_vs_Weyl_coherence": 3.798838724943999e-08
+    },
+    "2/3,s=-1": {
+      "Fock_phase": -0.16373165440115303,
+      "Fock_vs_Weyl_coherence": 3.798838724943999e-08
+    },
+    "1,s=1": {
+      "Fock_phase": 0.2750611687227961,
+      "Fock_vs_Weyl_coherence": 7.625054947267501e-08
+    },
+    "1,s=-1": {
+      "Fock_phase": -0.2750611687227961,
+      "Fock_vs_Weyl_coherence": 7.625054947267501e-08
+    }
+  },
+  "calibration_bands_checked": 7,
+  "holdout_bands_checked": 100,
+  "disjoint": [
+    "readout_challenge_XX/0",
+    "readout_challenge_XX/1",
+    "readout_challenge_ZZ/0",
+    "readout_challenge_ZZ/1"
+  ],
+  "examples": {
+    "original_ZZ": {
+      "index": 0,
+      "count": 88,
+      "N": 24000,
+      "measured": [
+        "0",
+        "3606120533/200000000000"
+      ],
+      "predicted": [
+        "123607641/100000000000",
+        "599204859/100000000000"
+      ],
+      "ideal_probability": 0.00375
+    },
+    "readout_challenge_ZZ": {
+      "index": 0,
+      "count": 796,
+      "N": 24000,
+      "measured": [
+        "18802730669/1000000000000",
+        "9506120533/200000000000"
+      ],
+      "predicted": [
+        "123607641/100000000000",
+        "599204859/100000000000"
+      ],
+      "ideal_probability": 0.032812499999999994
+    }
+  }
+}
