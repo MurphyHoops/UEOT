@@ -32,3 +32,14 @@ constraints. Permanent macroscopic records and physical unification remain open.
 
 [Contract](CONTRACT.md) | [Verification](verification.json) |
 [Session](SESSION.md) | [Audit](AUDIT.md) | [Timing](session_timing.json)
+
+## Stable local action and actual preparation gate
+
+- [AL: complete symmetric local basis and one-loop scale boundary](LOCAL_BASIS.md), [certificate](local_basis.json).
+- [AM: same-state finite-cutoff CTP and preparation obstruction](LOCAL_CTP.md), [certificate](local_ctp.json).
+- [AN: smooth mass-source lapse and endpoint contacts](SOURCE_CONTACTS.md), [certificate](source_contacts.json).
+
+The local polynomial action is a new candidate. Global AB--AF readout
+gaps and resource calibrations do not transfer to it. The local acceptance
+now requires a correlated preparation, actual smooth-source joint limit,
+complete stress and all Ward/Einstein constraints on that same state.

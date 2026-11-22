@@ -49,6 +49,7 @@ The hypotheses here have been checked above; compact resolvent is not assumed.
 
 This is the actual Z canonical \(H_K\), not compression of an already
 constructed limit force. Define \(F_K(g)\) by (AH.1) with \(H_K\).
+Hereafter \(F_K(g)\) denotes its self-adjoint closure.
 The preceding argument works uniformly in \(K\), including the embedded
 free high tail. Let \(\Pi_K\) project to its vacuum tail. It commutes with
 \(H_K,p,F_K(g)\) and tends strongly to one.

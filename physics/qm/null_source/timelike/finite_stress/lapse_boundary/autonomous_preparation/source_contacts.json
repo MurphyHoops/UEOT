@@ -1,0 +1,40 @@
+{
+  "direct_bulk_source_Hessian": "c_ct*N*sqrt(h)*diag(1,2)*delta",
+  "direct_local_CTP_counterterm_mixed_branch_bulk_Hessian": "0",
+  "external_source_Ward_work_terms_retained": true,
+  "full_field_Einstein_CTP_device_solution": false,
+  "full_influence_mixed_branch_covariance_set_to_zero": false,
+  "geometry_ODE_integrations": 0,
+  "initial_density_and_metric_projector_variations_automatically_zero": false,
+  "mixed_lapse_source_column": "c_ct*sqrt(h)*[(partial_i P_s)*sigma_i+zeta_i_eff*(R_h*sigma_i-2*Delta_h*sigma_i)]",
+  "mode_ODE_integrations": 0,
+  "normal_joint_continuum_limit_constructed": false,
+  "operator_words_domain_required_for_CTP_second_derivatives": true,
+  "physical_unification": "OPEN",
+  "predecessor_scientific_modules_imported_or_executed": 0,
+  "real_c_number_counterterm_cancels_symmetrized_noise": false,
+  "real_c_number_counterterm_history_Gram_positivity_preserved": true,
+  "schema": "ueot-autonomous-preparation-source_contacts/1",
+  "source_curvature": "R*(zeta_chi*s_chi+2*zeta_s*s_s)",
+  "source_endpoint": "c_ct/6*[integral sqrt(h)*partial_t(s_chi+2*s_s)/N]",
+  "source_heat_polynomial": "a*sc + 3*alpha*sc*x**2 + 2*b*ss + 3*beta*p**2*ss + 3*beta*q**2*ss + eta*p**2*sc + eta*q**2*sc + 2*eta*ss*x**2 + kappa*p**2*ss + kappa*q**2*ss + sc**2/2 + ss**2",
+  "source_sha256": {
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/LOCAL_BASIS.md": "f51e9d1b038af7d3f989f892db4616492ee870291aa3af62ef1eebd4c77d3cc4",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/LOCAL_COUNTERTERMS.md": "93540adaf996bc223100b29aa93eaddbcdbe104d505711151063a1990b1bb4cc",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/LOCAL_CTP.md": "1bcbc789d14d31f9d0420d4d489d582bf8d215bd7caf6839a21c2bd2f8735dc9",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/SOURCE_CONTACTS.md": "7297e528c4fa3ca5c326d5d71bdee5b428c29d1b6d8f33875fcd353b70d9285f",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/common.py": "8f113ddac750df06c9f6d69a4e3f30e4f191b76bd51bb5339fabc389c321fd2d",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_basis.json": "f8b66574d9b54b273ee3bc700e76fb702934bdcc605b723dd82c44f3a763c5bf",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_counterterms.json": "3671e80a282af2e073f9b83b174db1481e0293fc5d7cda21bfdb89c218e5aa8d",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_ctp.json": "76a208fecd841f0ac9abdb881702ae33578753c1d2ab8b6b1586727afa8f9721",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/source_contacts.py": "815a8a80f22b47f003c4b9708f71beb3c7f23699a6ab57a565b5ad901451d689"
+  },
+  "source_total_derivative": "-box(s_chi+2*s_s)/6",
+  "sources": "real smooth scalar mass-squared profiles s_chi,s_s with phi/psi exchange",
+  "status": "PASS",
+  "tree_Hamiltonian_N_s_contacts": [
+    "O_chi",
+    "O_s"
+  ],
+  "verification_kind": "exact algebra, outward interval checks, or explicitly tolerance-based floating-point regressions; analytic proofs stated separately"
+}

@@ -25,3 +25,11 @@ AP1 records retain FINDINGS; the two findings now carry the verified AP2
 resolution. B and C did not independently recalculate hashes. Root binds
 every declared identity to git-show bytes; A additionally checked the
 new certificate hashes. AG--AK await their own immutable review.
+
+## AP3 immutable audit
+
+Nine review records now contain 120 commit-file identities: 108 full-text
+reads and 12 hash-only checkpoint reads. AP3 has three PASS records, no
+new findings. Root verified every declared identity against immutable
+git-show bytes. The current AL--AN additions await their own fixed-commit
+review; this session remains in progress.

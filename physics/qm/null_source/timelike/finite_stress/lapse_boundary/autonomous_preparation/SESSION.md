@@ -63,3 +63,34 @@ A second exact-symbolic check initially used structural SymPy equality for
 an algebraically identical rational correlation expression. It was changed
 to factor(the difference) == 0. The analytic formula was unchanged; no
 scientific result was accepted from the failed invocation.
+
+## AP3 completed; AL--AN constructive local cycle
+
+AP3 64d5a69d50eed59a0a27a301074dc89b15b8c2af passed all
+11 new entries (10 science plus scope review). Exact-head research CI
+44970781095 and publication CI 44970781114 succeeded. All three native
+agents fully read its 15 AG--AK files, with no new findings. A additionally
+hash-checked seven direct dependencies and all 26 certificate bindings
+across 18 distinct source files. The nonblocking AH notation suggestion
+(self-adjoint closure denoted F_K) was incorporated in the next checkpoint.
+
+AL replaces the unclosed minimal stabilizer by the complete eight-orbit
+symmetric local potential. Its full one-loop polynomial, curvature and
+endpoint basis is explicit; a raw stable cone is nonempty and remains
+invariant under the formal one-loop quartic flow. That flow cannot be used
+as a weak-coupling UV completion at arbitrarily high scale.
+
+AM constructs a concrete positive normal finite-mode CTP kernel and a
+strict initial H/mass covariance block from one Gaussian preparation.
+It retains the raw zero-point and interaction energy. It then rejects
+both fixed-free-vacuum graph recovery for the fixed quartic sequence
+and the instantaneous mass kick's normal Fock cutoff limit. Smooth-time
+sources and different preparations remain open.
+
+AN closes the newly identified source-functional bookkeeping gap:
+constant-coupling closure alone omits source-square, curvature, composite
+mixing, lapse-source and endpoint contacts. The actual two-branch signs,
+fixed-density condition and external-source Ward work terms are recorded.
+Real source-only c-number counterterms change branch phases, not symmetric
+noise. All local-candidate results remain separate from AB--AF global
+apparatus calibration.
