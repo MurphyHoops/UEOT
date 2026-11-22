@@ -1,7 +1,7 @@
 # `ueot-physics-unification` — Pure-Kernel Lean 4 Formalization of UEOT Physics Unification Gates
 
 Toolchain: `leanprover/lean4:v4.33.1` (exact byte match to `formalization/ueot-core` and `formalization/ueot-qm`).  
-Kernel audit: **18 modules, 279 constants, 189 theorems, 87 definitions, 0 `sorryAx`, 0 `Lean.ofReduceBool` (`native_decide`), 0 nonstandard axioms**.
+Kernel audit: **21 modules, 298 constants, 207 theorems, 88 definitions, 0 `sorryAx`, 0 `Lean.ofReduceBool` (`native_decide`), 0 nonstandard axioms**.
 
 This package extends formal machine-checked coverage across all non-`PR #468` sectors of the UEOT Physics responsibility matrix (`PREMISES_AND_RESPONSIBILITIES.md` & `CORE_PHYSICS_CONTRACT.md`) without modifying any historical file in `formalization/ueot-core` or `formalization/ueot-qm`.
 
@@ -27,6 +27,9 @@ This package extends formal machine-checked coverage across all non-`PR #468` se
 | `UEOTPhysicsUnification.CoreTransportToLiebRobinsonCone` | `C-LR-CONE-01` | `core_transport_strict_causal_cone`, `core_transport_lieb_robinson_moment_bound`, `lieb_robinson_velocity_pos`, `ballistic_supersonic_ray_exponential_decay`, `emergent_lieb_robinson_cone_locks_minkowski_metric` |
 | `UEOTPhysicsUnification.GPTSelfDualConeReconstruction` | `C-GPT-RECON-02` | `operational_gpt_minimal_separating_quotient`, `hermitian_psd_cone_self_dual`, `gleason_busch_born_density_existsUnique`, `jordan_composite_dim_defect_identity`, `hurwitz_jordan_local_tomography_uniquely_selects_complex`, `ueot_core_to_complex_qm_three_model_bridge` |
 | `UEOTPhysicsUnification.RenormalizedClockContinuum` | `P-CLOCK-UV-03` | `s3_clock_mode_weight_lower_bound`, `bare_clock_accuracy_energy_diverges`, `worldtube_smeared_variance_uniform_cauchy`, `weierstrass_deconvolved_clock_gate_exact`, `smeared_wick_quartic_graph_norm_uniform_bound`, `cosmological_constant_zero_enthalpy_no_go`, `dynamical_clock_frw_friedmann_conservation` |
+| `UEOTPhysicsUnification.OperationalHorizonMinimumScale` | `P-HORIZON-CLOCK-01` | `squeezing_proof_dimensionless_energy_quadratic`, `quadratic_positive_root_lower_bound`, `gravitational_horizon_excludes_pointlike_clock`, `rg_exponent_universal_obstruction`, `marginal_rg_fixed_G_crunch_threshold` |
+| `UEOTPhysicsUnification.AllHarmonicConstraintEllipticity` | `P-ADM-ALLHARM-02` | `s3_conformal_killing_obstruction_dim_fifteen`, `york_lichnerowicz_multiplier_factorization`, `york_lichnerowicz_zero_iff_ell_one`, `york_lichnerowicz_ell_ge_two_bounds`, `collinear_controls_zero_so4_torque`, `quadrature_trim_exact_block_solution`, `sobolev_green_cross_telescoping`, `sobolev_green_cross_partial_sum_bound` |
+| `UEOTPhysicsUnification.LocalizedClockAndDiracAlgebra` | `P-FLAT-DIRAC-03` | `lichnerowicz_critical_rational_identities`, `lichnerowicz_subcritical_barrier_and_contraction`, `adm_mass_density_rational_enclosure`, `cnumber_normal_ordering_preserves_commutator`, `local_mediator_vs_nonlocal_smearing_dirac_defect` |
 
 ## Local Build & Exhaustive Kernel Audit
 

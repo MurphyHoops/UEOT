@@ -33,6 +33,9 @@ SUITES = [
     ("lieb_robinson_lightcone", HERE / "lieb_robinson_lightcone/verify_lieb_robinson.py", HERE / "lieb_robinson_lightcone/result.json"),
     ("gpt_self_dual_reconstruction", HERE / "gpt_self_dual_reconstruction/verify_gpt_reconstruction.py", HERE / "gpt_self_dual_reconstruction/result.json"),
     ("clock_uv_renormalization", HERE / "clock_uv_renormalization/verify_clock_uv.py", HERE / "clock_uv_renormalization/result.json"),
+    ("horizon_minimum_scale", HERE / "horizon_minimum_scale/verify_horizon_scale.py", HERE / "horizon_minimum_scale/result.json"),
+    ("all_harmonic_elliptic", HERE / "all_harmonic_elliptic/verify_all_harmonic.py", HERE / "all_harmonic_elliptic/result.json"),
+    ("localized_clock_dirac", HERE / "localized_clock_dirac/verify_localized_dirac.py", HERE / "localized_clock_dirac/result.json"),
 ]
 
 
@@ -106,6 +109,9 @@ def main() -> int:
             "UEOTPhysicsUnification.CoreTransportToLiebRobinsonCone",
             "UEOTPhysicsUnification.GPTSelfDualConeReconstruction",
             "UEOTPhysicsUnification.RenormalizedClockContinuum",
+            "UEOTPhysicsUnification.OperationalHorizonMinimumScale",
+            "UEOTPhysicsUnification.AllHarmonicConstraintEllipticity",
+            "UEOTPhysicsUnification.LocalizedClockAndDiracAlgebra",
         ],
         "physical_unification": "OPEN",
         "rendezvous_compatibility": {
