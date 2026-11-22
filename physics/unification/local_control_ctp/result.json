@@ -9,46 +9,46 @@
       "m_3": {
         "C_m": [
           "0.0112579092935930857",
-          "0.0112579092935930857"
+          "0.0112579092935930858"
         ],
         "ell": 8,
         "noise_quadratic_form_unit_eps": [
           "0.000923223140470576547",
-          "0.000923223140470576547"
+          "0.000923223140470576548"
         ],
         "phase_tail_factor_K500": [
-          "5.65153819341743894e-9",
-          "5.65153819341743894e-9"
+          "5.65153819341743894E-9",
+          "5.65153819341743895E-9"
         ]
       },
       "m_4": {
         "C_m": [
           "0.0506605918211688857",
-          "0.0506605918211688857"
+          "0.0506605918211688858"
         ],
         "ell": 15,
         "noise_quadratic_form_unit_eps": [
-          "0.00400660709776020485",
+          "0.00400660709776020484",
           "0.00400660709776020485"
         ],
         "phase_tail_factor_K500": [
-          "2.54319218703784752e-8",
-          "2.54319218703784752e-8"
+          "2.54319218703784752E-8",
+          "2.54319218703784753E-8"
         ]
       },
       "m_5": {
         "C_m": [
           "0.14184965709927288",
-          "0.14184965709927288"
+          "0.141849657099272881"
         ],
         "ell": 24,
         "noise_quadratic_form_unit_eps": [
-          "0.0108069185356074311",
+          "0.010806918535607431",
           "0.0108069185356074311"
         ],
         "phase_tail_factor_K500": [
-          "7.12093812370597307e-8",
-          "7.12093812370597307e-8"
+          "7.12093812370597306E-8",
+          "7.12093812370597307E-8"
         ]
       }
     }
@@ -59,37 +59,51 @@
     "P-UNIF-CHI-02",
     "P-UNIF-CTP-03"
   ],
-  "source_sha256": "8f7c1a971bf05a60f765eebd7759f6bc25d480e141cd4951fa266ee86778bec6",
+  "source_sha256": "ef6f7c6f5f1d94ebf50071a0e6b7306581836687672b704f015e37f9844dd91f",
   "split_core_and_collision": {
     "r_double_prime_supremum": [
       "6.45085151060407419",
       "6.45085151761222717"
     ],
     "r_prime_supremum": [
-      "0.847128084426977644",
+      "0.847128084426977643",
       "0.847128084426977644"
     ],
-    "split_core_uv_rates_at_t_0p22": {
+    "same_cutoff_split_core_uv_rates_at_t_0p22": {
+      "1": {
+        "omitted_modes_above": 1,
+        "probe_probability_orthogonality_error_upper": "0.991853191037485333",
+        "state_norm_upper": "0.995918249842999003",
+        "two_branch_contrast_allowance_upper": "1.98370638207497067"
+      },
       "100": {
+        "omitted_modes_above": 100,
         "probe_probability_orthogonality_error_upper": "0.00967570283794071829",
-        "state_norm_upper": "0.0983651505253412327"
+        "state_norm_upper": "0.0983651505253412327",
+        "two_branch_contrast_allowance_upper": "0.0193514056758814366"
       },
       "1000": {
-        "probe_probability_orthogonality_error_upper": "0.00096609913568332769",
-        "state_norm_upper": "0.0310821353140887091"
+        "omitted_modes_above": 1000,
+        "probe_probability_orthogonality_error_upper": "0.000966099135683327691",
+        "state_norm_upper": "0.0310821353140887092",
+        "two_branch_contrast_allowance_upper": "0.00193219827136665539"
       },
       "10000": {
-        "probe_probability_orthogonality_error_upper": "0.0000965635624936853808",
-        "state_norm_upper": "0.00982667606536846111"
+        "omitted_modes_above": 10000,
+        "probe_probability_orthogonality_error_upper": "0.0000965635624936853809",
+        "state_norm_upper": "0.00982667606536846111",
+        "two_branch_contrast_allowance_upper": "0.000193127124987370762"
       }
     },
-    "z5_outside_collision_t_0p22": {
-      "full_field_uv_tail_allowance_K0_10000": 0.0001931271,
+    "z5_truncated_k1_collision_t_0p22": {
+      "full_field_m1_p10_collision_certified": false,
+      "full_field_m1_p10_status": "OPEN",
       "initial_total_energy_mean_exact": "56.5",
       "initial_total_energy_variance_exact": "1290.5",
-      "low_mode_binary_contrast_abs": 0.0029689533,
-      "net_full_field_contrast_lower_estimate": 0.0027758262,
-      "post_reader_total_energy_mean_exact": "69.0"
+      "matched_omitted_modes_ge_2_allowance_upper": "1.98370638207497067",
+      "post_reader_total_energy_mean_exact": "69.0",
+      "simulated_cutoff_K0": 1,
+      "truncated_k1_binary_contrast_abs": 0.0029689533
     }
   },
   "status": "PASS"

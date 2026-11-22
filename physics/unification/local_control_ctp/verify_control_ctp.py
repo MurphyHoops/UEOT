@@ -49,14 +49,15 @@ def verify_split_core_and_collision() -> dict:
     require(strictly_below(rpp_sup, "6.450852") and strictly_above(rpp_sup, "6.450851"),
             "Exact ||r''||_inf enclosure failed")
 
-    # 1B. Quantitative Split-Core UV Dressing bounds at K0 = 1000, 10000 for Z5 input (E_in = 56.5)
+    # 1B. Quantitative Split-Core UV Dressing bounds comparing full H to H_{K0} at the SAME cutoff K0
+    #     for K0 in (1, 100, 1000, 10000) on Z5 input (M = 1, p0 = 10, E_in = 56.5, t = 0.22):
     M_ctrl = iv.mpf("1.0")
     e_min_abs = iv.mpf("0.0001415186126")
     E_in = iv.mpf("56.5")
     t_eval = iv.mpf("0.22")
 
     rates = {}
-    for K0 in (100, 1000, 10000):
+    for K0 in (1, 100, 1000, 10000):
         k0_iv = iv.mpf(K0)
         s1 = (rp_sup ** 2) / (8 * ((1 - r_star) ** 2) * k0_iv)
         g1 = iv.sqrt(s1 / 2)
@@ -71,12 +72,15 @@ def verify_split_core_and_collision() -> dict:
         # Parallel component comes only from 2nd-order Duhamel <= 0.5 * t^2 * C_uv^2 + t * etail
         par_err = iv.mpf("0.5") * (t_eval ** 2) * (C_uv ** 2) + t_eval * etail
         probe_prob_err = iv.mpf("0.5") * (2 * par_err + norm_err ** 2)
+        two_branch_allowance = 2 * probe_prob_err
         rates[str(K0)] = {
+            "omitted_modes_above": int(K0),
             "state_norm_upper": outward_str(norm_err)[1],
             "probe_probability_orthogonality_error_upper": outward_str(probe_prob_err)[1],
+            "two_branch_contrast_allowance_upper": outward_str(two_branch_allowance)[1],
         }
 
-    # Verify O(K0^(-1)) scaling on probe probability error: at K0=10000 it is < 1.1e-4!
+    # Verify O(K0^(-1)) scaling on same-cutoff H vs H_{K0} probe probability error: at K0=10000 it is < 1.2e-4!
     require(float(rates["10000"]["probe_probability_orthogonality_error_upper"]) < 1.2e-4,
             "Orthogonality-accelerated UV probe error bound too loose")
 
@@ -160,21 +164,28 @@ def verify_split_core_and_collision() -> dict:
     # Note <p_p(t)>_+ is NEGATIVE because dot(p_p) = -q_p - r q_s < 0 when r > 0, q_s > 0!
     # So |p_+(t) - p_-(t)| = exp(-sigma^2 s^2 / 2) * |<sin(s p_p)>_+|!
     contrast_k1 = math.exp(-0.5 * (sigma_par**2) * (s_par**2)) * abs(exp_sin_pp)
-    uv_err_k10k = 2.0 * float(rates["10000"]["probe_probability_orthogonality_error_upper"])
-    require(contrast_k1 > 0.0029 and contrast_k1 > 15.0 * uv_err_k10k,
-            f"Collision contrast {contrast_k1} must exceed UV tail error {uv_err_k10k} with wide margin")
+    matched_k1_omitted_allowance = float(rates["1"]["two_branch_contrast_allowance_upper"])
+    require(contrast_k1 > 0.0029, f"Truncated k=1 collision contrast {contrast_k1} below expected benchmark")
+    # Matched-cutoff audit: the simulation evolves only k <= K0_sim = 1 (omitting all modes k >= 2).
+    # At M = 1, p0 = 10, the matched K0 = 1 Split-Core bound covering all omitted modes k >= 2 exceeds
+    # contrast_k1, so full-field M = 1 collision is honestly recorded as OPEN rather than subtracted
+    # against an unmatched high cutoff!
+    require(matched_k1_omitted_allowance > contrast_k1,
+            "Matched K0=1 first-order omitted-mode bound unexpectedly smaller than k=1 contrast")
 
     return {
         "r_prime_supremum": outward_str(rp_sup),
         "r_double_prime_supremum": outward_str(rpp_sup),
-        "split_core_uv_rates_at_t_0p22": rates,
-        "z5_outside_collision_t_0p22": {
+        "same_cutoff_split_core_uv_rates_at_t_0p22": rates,
+        "z5_truncated_k1_collision_t_0p22": {
+            "simulated_cutoff_K0": 1,
             "initial_total_energy_mean_exact": "56.5",
             "initial_total_energy_variance_exact": "1290.5",
             "post_reader_total_energy_mean_exact": "69.0",
-            "low_mode_binary_contrast_abs": round(contrast_k1, 10),
-            "full_field_uv_tail_allowance_K0_10000": round(uv_err_k10k, 10),
-            "net_full_field_contrast_lower_estimate": round(contrast_k1 - uv_err_k10k, 10),
+            "truncated_k1_binary_contrast_abs": round(contrast_k1, 10),
+            "matched_omitted_modes_ge_2_allowance_upper": rates["1"]["two_branch_contrast_allowance_upper"],
+            "full_field_m1_p10_collision_certified": False,
+            "full_field_m1_p10_status": "OPEN",
         },
     }
 
@@ -273,8 +284,10 @@ def main() -> None:
     if args.check and args.output.is_file():
         existing = __import__("json").loads(args.output.read_text())
         require(existing["status"] == payload["status"] == "PASS", "Status mismatch")
-        require(existing["split_core_and_collision"]["z5_outside_collision_t_0p22"] ==
-                payload["split_core_and_collision"]["z5_outside_collision_t_0p22"], "Collision drift")
+        require(existing["split_core_and_collision"] ==
+                payload["split_core_and_collision"], "Split-core / collision certificate drift")
+        require(existing["local_chi_and_smooth_ctp"] ==
+                payload["local_chi_and_smooth_ctp"], "Local chi / CTP certificate drift")
     else:
         write_json(args.output, payload)
     print("PASS: local_control_ctp (HG-1, HG-2, HG-3)")

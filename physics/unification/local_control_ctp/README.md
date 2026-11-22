@@ -8,7 +8,7 @@ Sector inputs: Conformal scalar coupling xi = 1/6, local Yukawa/trilinear scalar
 Standard physical inputs: Einstein-cylinder background S^3 x R, Fock representation, Hadamard common past
 Effective assumptions: Second-cumulant CTP expansion O(eps^2) for inhomogeneous lapse modes m >= 3
 Formal status: Algebraic/stability/cancellation theorems proved in Lean 4 (ConformalControlGravityGates.lean, 0 sorryAx) + 40-digit outward-interval certificate
-Observable/benchmark: Z5 outside collision binary contrast 0.00296895 > UV error 0.00019313 (net >= 0.0027758); total mean energy 56.5 -> 69.0
+Observable/benchmark: Same-cutoff H vs H_{K0} UV probe error < 9.66e-5 at K0=10000; truncated K0=1 outside collision contrast 0.00296895 (full-field M=1, p0=10 remains OPEN because matched K0=1 omitted-mode k>=2 bound exceeds 0.00297)
 Falsification condition: Violation of m_chi^2 >= lam_c^2 / (2 g_4) (when g_chi = 0) yields negative classical energy rays; omission of Weyl^2 leaves divergent static susceptibility
 ```
 
@@ -18,7 +18,7 @@ For the autonomous full-field Hamiltonian $H = \lim_{K\to\infty} H_K$ on $L^2(\m
 - Exact calculus bounds enclose $\|r'\|_\infty \in [0.84712808, 0.84712809]$ (attained at $\frac{1}{x(1-x)} = 3 + \sqrt{3}$) and $\|r''\|_\infty \in [6.45085151, 6.45085152]$ (attained near $w \approx 6.6728237010$), tightening prior connection bounds by $>11\times$.
 - Dressing only ultraviolet modes $k > K_0$ via $\mathcal{W}_{>K_0} = \int_{\mathbb{R}}^\oplus W_{>K_0}(x)\,dx$ leaves the common-past `Z5` preparation on $[-2,-1]$ unchanged ($\mathcal{W}_{>K_0}^\dagger \Psi_\pm(0) = \Psi_\pm(0)$) while eliminating high-mode frequency shifts ($d\Gamma_{>K_0}(\omega(x))|0\rangle_{>K_0} \equiv 0$).
 - This yields an explicit **$O(K_0^{-1/2})$ Hilbert-space norm convergence rate** for the Mosco limit and, by particle-number orthogonality $\langle 0_{>K_0} | E_{\mathrm{probe}} | 2_{>K_0}\rangle = 0$, an **$O(K_0^{-1})$ convergence rate** on $k=1$ probe expectations ($< 9.66\times 10^{-5}$ per branch at $K_0 = 10000$, $t = 0.22$).
-- Direct unitary evolution of the `Z5` outside $H^2$ wavepacket ($M=1, p_0=10, \langle H\rangle_{\mathrm{in}} = 56.5, \mathrm{Var}(H)_{\mathrm{in}} = 1290.5$) colliding with $(0,1)$ gives low-mode binary momentum-reader contrast $0.0029689533$ at $t = 0.22$ ($\sigma = 0.1, \langle H\rangle_{\mathrm{out}} = 69.0$), exceeding the two-branch $K_0=10000$ UV allowance $0.0001931271$ by $>15.3\times$.
+- Direct unitary evolution of the truncated $K_0 = 1$ (`k = 1` pair) `Z5` outside $H^2$ wavepacket ($M=1, p_0=10, \langle H\rangle_{\mathrm{in}} = 56.5, \mathrm{Var}(H)_{\mathrm{in}} = 1290.5$) colliding with $(0,1)$ gives truncated $k=1$ binary momentum-reader contrast $0.0029689533$ at $t = 0.22$ ($\sigma = 0.1, \langle H\rangle_{\mathrm{out}} = 69.0$). Because the matched $K_0 = 1$ Split-Core bound covering all omitted modes $k \ge 2$ exceeds $0.00297$ at $M = 1, p_0 = 10$ (whereas the $K_0 = 10000$ tail bound $0.0001931272$ covers only modes $k > 10000$ relative to $H_{10000}$), full-field $M = 1, p_0 = 10$ collision remains explicitly **OPEN** pending intermediate-mode $2 \le k \le K_0$ control.
 
 ## 2. Four-Dimensional Local Control Field $\chi(x^\mu)$ (`P-UNIF-CHI-02`)
 
