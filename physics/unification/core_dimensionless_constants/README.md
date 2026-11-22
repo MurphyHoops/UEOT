@@ -1,0 +1,20 @@
+# `core_dimensionless_constants` — Read-Only `Core v3` Buckingham-Quotient Unit-Gauge Elimination & 1-Loop Gauge Unification Defect (`C-CORE-CONST-01`, `P-GUT-DESERT-02`)
+
+Companion 40-digit outward-interval verification suite (`mpmath.iv`, `iv.dps = 40`) for `UEOTPhysicsUnification.CoreUnitGaugeAndDimensionlessConstants`, addressing `NEXT_GATE` Frontier 3 while keeping `Core v3` (`core/` and `formalization/ueot-core/`) strictly read-only (`"Core_v3_modified": false`, `"physical_unification": "OPEN"`):
+
+1. **Unimodular Buckingham Lattice & `QuotientDescent` / `FisherGauge` Unit-Gauge Elimination (`C-CORE-CONST-01`)**:
+   - In raw $(M, L, T)$ units, the integer dimensional exponent matrix $M_{\mathrm{Planck}} = \begin{pmatrix}-1 & 3 & -2 \\ 1 & 2 & -1 \\ 0 & 1 & -1\end{pmatrix}$ of $(G, \hbar, c)$ has $\det M_{\mathrm{Planck}} = 2$ with exact integer adjugate $M_{\mathrm{Planck}} A_{\mathrm{Planck}} = 2 I_3$ because every constant in $\{G, \hbar, c, \Lambda\}$ has even total $(M, L, T)$ exponent sum $e_M + e_L + e_T \in 2\mathbb{Z}$ (the algebraic origin of the half-integer square-root exponents in $m_P, \ell_P, t_P$).
+   - Relative to the index-$2$ parity sublattice basis $B_{\mathrm{even}} = \begin{pmatrix}1 & 1 & 0 \\ 0 & 2 & 0 \\ 0 & 1 & -1\end{pmatrix}$ ($(M L, L^2, L T^{-1})$), $M_{\mathrm{Planck}} = M_{\mathrm{even}} B_{\mathrm{even}}$ where $M_{\mathrm{even}} = \begin{pmatrix}-1 & 1 & 2 \\ 1 & 0 & 1 \\ 0 & 0 & 1\end{pmatrix}$ is unimodular over $\mathbb{Z}$ ($\det M_{\mathrm{even}} = -1$) with explicit integer inverse $M_{\mathrm{even}}^{-1} \in \mathrm{GL}_3(\mathbb{Z})$, and the $4\times 4$ Buckingham monomial map $(G, \hbar, c, \Lambda) \mapsto (G, \hbar, c, \mathcal{I}_\Lambda)$ has $\det U_{\mathrm{Buckingham}} = +1$ with integer kernel spanned uniquely by $(1, 1, -3, 1)$.
+   - On $(\mathbb{R}_{>0})^3$, $(G, \hbar, c)$ is a free transitive torsor under $(\lambda_M, \lambda_L, \lambda_T) \in (\mathbb{R}_{>0})^3$, so `UEOT.V3.Compression.QuotientDescent.existsUnique_descend` factors every unit-invariant observable of $(G, \Lambda, \hbar, c)$ **uniquely** through $\mathcal{I}_\Lambda := \frac{G\hbar\Lambda}{c^3} = \Lambda\ell_P^2$ (while `UEOT.V3.FisherGauge.p_inv_02` annihilates all three unit-gauge tangent directions in Fisher information).
+   - Encloses CODATA-2022 + Planck-2018+BAO $\mathcal{I}_\Lambda^{\mathrm{obs}} \in [2.829\times 10^{-122},\; 2.948\times 10^{-122}] \subset [2.8\times 10^{-122},\; 3.0\times 10^{-122}]$ vs `RC05`/`RC12`'s sub-critical bounce benchmark $\mathcal{I}_\Lambda^{\mathrm{model}} \approx 3.93909\times 10^{-82}$ ($> 10^{40}$ scale gap; $\mathcal{I}_\Lambda$ itself is **not** derived from `Core v3`).
+
+2. **Exact 1-Loop $(3,3,1)$ Gauge Unification Triangle & PDG-2024 Desert Exclusion (`P-GUT-DESERT-02`)**:
+   - Proves canonical $\mathrm{SU}(5)$ hypercharge normalization $k_Y = \frac{3}{5}$, exact 1-loop $(3,3,1)$ SM beta coefficients $(b_1, b_2, b_3) = (\frac{41}{10}, -\frac{19}{6}, -7)$, generation-independence of $(b_i - b_j)$, and exact RG scale-invariance of $\Delta_{123} := (b_2 - b_3)\alpha_1^{-1} + (b_3 - b_1)\alpha_2^{-1} + (b_1 - b_2)\alpha_3^{-1}$ ($\Delta_{123} = 0$ iff single-threshold desert unification holds).
+   - Certifies $\Delta_{123}^{\mathrm{obs}}(M_Z) \in [-41.27, -40.10]$ ($1\sigma$) and $\Delta_{123}^{\mathrm{obs}} < -38$ across the full $3\sigma$ PDG-2024 hyper-rectangle, excluding naive single-step 1-loop minimal SM desert unification at $> 83\sigma$ ($\gg 10\sigma$), with $\sin^2\hat\theta_W^{\mathrm{desert}}(M_Z) \in [0.2072, 0.2079]$ and pairwise crossing gap $\log_{10}(M_{23}/M_{12}) > 3.92$ ($M_{12} \in [1.005\times 10^{13},\; 1.031\times 10^{13}]\text{ GeV}$ vs $M_{23} \in [8.75\times 10^{16},\; 1.11\times 10^{17}]\text{ GeV}$).
+
+## Reproducible Verification
+
+```bash
+/private/tmp/ueot-lapse-boundary-20261121-venv/bin/python -B physics/unification/core_dimensionless_constants/verify_core_constants.py --write
+/private/tmp/ueot-lapse-boundary-20261121-venv/bin/python -B physics/unification/core_dimensionless_constants/verify_core_constants.py --check
+```

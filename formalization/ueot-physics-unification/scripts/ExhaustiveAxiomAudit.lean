@@ -44,6 +44,7 @@ run_cmd do
       if !extra.isEmpty then
         nBad := nBad + 1
         if extra.contains `sorryAx then nSorry := nSorry + 1
+  let expectedModules : Nat := 27
   logInfo m!"UNIFICATION_AXIOM_AUDIT modules={modsSeen.size} constants={total} theorems={nThm} defs={nDef} axiomDecls={nAx} opaque={nOpaque} unsafe={nUnsafe} nonstandard_users={nBad} sorryAx_users={nSorry}"
-  if nBad > 0 || nAx > 0 || nOpaque > 0 || nUnsafe > 0 then
-    throwError m!"UNIFICATION_AXIOM_AUDIT_FAILED: nonstandard_users={nBad} axiomDecls={nAx} opaque={nOpaque} unsafe={nUnsafe}"
+  if modsSeen.size != expectedModules || nBad > 0 || nAx > 0 || nOpaque > 0 || nUnsafe > 0 || nSorry > 0 then
+    throwError m!"UNIFICATION_AXIOM_AUDIT_FAILED: modules={modsSeen.size} expected={expectedModules} nonstandard_users={nBad} axiomDecls={nAx} opaque={nOpaque} unsafe={nUnsafe}"
