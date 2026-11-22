@@ -191,9 +191,11 @@ Both estimates refer to the same orthogonal four-particle component.
 
 The same orthogonal-sector lower bound survives any additional scalar
 or quadratic counterterm at fixed quartic coefficient. This rejects graph
-recovery of this fixed free-vacuum input for the stated sequence after
+recovery using precisely the fixed vacuum vectors \(\Omega_K\) for the stated sequence after
 those adjustments. It does not reject other correlated preparations,
-running quartics, other representations or all continuum theories.
+running quartics, other representations or all continuum theories. It also
+does not exclude a different correlated recovery sequence converging to
+the same Hilbert-space vector, if such a sequence can actually be proved.
 
 ## AM5. The sharp mass pulse itself fails the required normal cutoff limit
 

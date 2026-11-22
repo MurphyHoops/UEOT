@@ -43,3 +43,13 @@ The local polynomial action is a new candidate. Global AB--AF readout
 gaps and resource calibrations do not transfer to it. The local acceptance
 now requires a correlated preparation, actual smooth-source joint limit,
 complete stress and all Ward/Einstein constraints on that same state.
+
+## Finite-slice preparation versus a completed switch
+
+[AO: exact first-Dyson spectrum and endpoint gate](SWITCHED_PREPARATION.md),
+[certificate](switched_preparation.json).
+A smooth complete outgoing switch has actual free-energy graph limits and
+a normal Hadamard comparison state. The same switch stopped while active
+does not have the required first-order Fock limit. This does not supply a
+full interacting preparation; it fixes the endpoint condition that the
+next construction must satisfy.

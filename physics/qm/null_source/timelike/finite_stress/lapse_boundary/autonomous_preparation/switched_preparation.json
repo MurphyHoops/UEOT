@@ -1,0 +1,59 @@
+{
+  "active_center_K_minimum": 176,
+  "active_center_T": "0",
+  "active_center_squared_norm_lower_at_K1000": [
+    0.24476009022436937,
+    0.24476009022436943
+  ],
+  "active_center_squared_norm_lower_at_K176": [
+    0.0013343771856430514,
+    0.0013343771856430518
+  ],
+  "active_endpoint_K_condition": "K>=max(8,4*A_T/abs(f(T))), A_T=abs(f_prime(T))+L1_past(f_second)",
+  "active_endpoint_squared_norm_lower": "5*lambda^2*abs(f(T))^2*K^3/(2^19*V0^2)",
+  "actual_constituent_K_full_cubic_sectors": "n<=K+2",
+  "actual_constituent_K_full_quartic_sectors": "n<=K+3",
+  "all_continuum_representations_or_nondifferentiable_limits_excluded": false,
+  "bump_derivative_maximum_interval": [
+    21.703570857103383,
+    21.70357085710339
+  ],
+  "comparison_state_claimed_as_exact_interacting_preparation": false,
+  "complete_C_infinity_compact_switch_all_free_energy_graph_limits": true,
+  "complete_outgoing_first_vector_squared_norm_lower_interval": [
+    3.491310082613696e-07,
+    3.491310082613697e-07
+  ],
+  "constructed_normalized_free_comparison_state_Hadamard": true,
+  "cubic_weight": "g^2*(n^2-1)/(64*V0), odd n>=3",
+  "cutoff_uniform_normalized_state_O_epsilon_squared_remainder_at_active_end": false,
+  "fixed_bump_tau": ".1",
+  "fixed_g": ".1",
+  "fixed_lambda": ".1",
+  "full_field_Einstein_CTP_device_solution": false,
+  "geometry_ODE_integrations": 0,
+  "higher_Dyson_remainder_or_interacting_unitary_constructed": false,
+  "m2_endpoint_finite_free_mean_energy": false,
+  "mode_ODE_integrations": 0,
+  "normalized_active_first_vector_trace_norm_limit": false,
+  "object": "free first-Dyson vector of AL/AM cubic plus Wick quartic comparison",
+  "physical_unification": "OPEN",
+  "predecessor_scientific_modules_imported_or_executed": 0,
+  "pure_cubic_endpoint_jet_graph_condition": "m>p+1/2",
+  "quartic_endpoint_jet_graph_condition": "m>p+3/2",
+  "quartic_weight": "5*lambda^2*n^2*(n^2-4)/(2048*V0^2), even n>=4",
+  "schema": "ueot-autonomous-preparation-switched_preparation/1",
+  "source_sha256": {
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/LOCAL_BASIS.md": "bb1dae3211c6bc5056b2949b35c4b39c02edd1fd9c212321ab54339c00eb136a",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/LOCAL_CTP.md": "86359865084a0727b77a525795f07dd029fa56a4fd9c0b634f1abbd6532c6501",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/LOCAL_FORCING.md": "4dc9c754dc3b9a2cd10e6a7025959aa6cc81d2a624d26fc46cda410e70e23075",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/SWITCHED_PREPARATION.md": "d4676c6e5c564493d4d47cf9d20af54ad2a367008f759fca2b4e6e29b703ba6e",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/common.py": "8f113ddac750df06c9f6d69a4e3f30e4f191b76bd51bb5339fabc389c321fd2d",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_basis.json": "79465c6736ca0e9e3ec893c3ccbc49e4bc119622aadcb26c0625dd520ce8c8bb",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_ctp.json": "d84f8b39a6d783ccfa020630c13b1d5f2f5ce618e9eda884d40a749cc7e4d67c",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_forcing.json": "82dc5fb0453d4999e5b6e23183353db97729f52a43f02fb910784b84017e1612",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/switched_preparation.py": "e4c373142d4bb05d6e894887dd426cd40e549d3d0679511c3a3393d4a105af75"
+  },
+  "status": "PASS",
+  "verification_kind": "exact algebra, outward interval checks, or explicitly tolerance-based floating-point regressions; analytic proofs stated separately"
+}

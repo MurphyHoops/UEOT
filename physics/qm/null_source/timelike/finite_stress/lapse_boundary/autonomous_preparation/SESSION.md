@@ -94,3 +94,31 @@ fixed-density condition and external-source Ward work terms are recorded.
 Real source-only c-number counterterms change branch phases, not symmetric
 noise. All local-candidate results remain separate from AB--AF global
 apparatus calibration.
+
+## AP4 immutable review and AO endpoint cycle
+
+AP4 science sources were committed as 6af32fd7d991e3555e006c84fe32bf233c5da8c6;
+the completed 14-entry receipt was persisted immediately afterward in
+accc1f0356cf6e4ef2e126e4ff1d904c345463c7. The source byte manifest remained
+unchanged during verification; the latter is the full immutable AP4
+review checkpoint. All three agents read its 11 declared files; A also
+hash-checked 12 dependencies and 30 certificate binding entries across
+21 source paths. No new science/domain defect was found. AP4-C-001 records
+a wording correction: eta>=0 makes the declared stability region nonempty,
+not open in the full parameter space. The correction awaits AP5 resolution.
+
+The subsequent AO cycle compares the same positive compact switch at its
+completed outgoing endpoint and at its active center. It constructs the
+full first-Dyson 3/4-particle spectrum and actual free-energy graph cutoff
+limits at the completed endpoint. A normalized comparison vector is a
+positive normal free Hadamard state, without claiming an interacting
+preparation error bound. The active endpoint instead has an explicit K^3
+squared-norm lower bound; normalized active first vectors also fail to
+produce a trace-norm normal-state limit. The endpoint-jet criterion
+separates finite norm from finite energy. Uniform first-order remainders
+are rejected, while different correlated/renormalized preparations remain
+open. These statements do not declare all continuum local theories absent.
+
+AN now explicitly retains arbitrary symmetry-allowed finite source cross
+contacts, including s_chi*s_s. AM expressly rejects only the fixed vacuum
+input sequence, not every possible correlated graph recovery sequence.

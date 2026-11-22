@@ -80,7 +80,7 @@ coefficient convention as AK, not from an independent noise ansatz.
 
 ## AL3. Nonempty classical stability region
 
-A sufficient open region is
+A sufficient nonempty stability region is
 \[
  \alpha>0,\quad\beta>0,\quad\kappa>-\beta,\quad\eta\ge0.
 \]

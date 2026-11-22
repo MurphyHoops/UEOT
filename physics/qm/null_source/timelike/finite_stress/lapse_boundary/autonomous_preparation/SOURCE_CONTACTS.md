@@ -71,6 +71,11 @@ The direct bulk source Hessian is the local kernel
   =c_{\rm ct}N\sqrt h
        \begin{pmatrix}1&0\\0&2\end{pmatrix}\delta^{(4)}.     \tag{AN.5}
 \]
+Further symmetry-allowed finite source contacts, including
+\(s_\chi s_s\), require independent renormalization conditions.
+The diagonal ratio \(1:2\) and zero cross term in (AN.5) belong to the
+displayed one-loop representative, not every finite scheme.
+
 This is the direct variation of the local counterterm. The full
 state-dependent influence Hessian contains additional connected
 correlations and does not equal this matrix.

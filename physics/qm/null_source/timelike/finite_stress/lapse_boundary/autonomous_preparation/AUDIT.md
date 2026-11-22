@@ -33,3 +33,10 @@ reads and 12 hash-only checkpoint reads. AP3 has three PASS records, no
 new findings. Root verified every declared identity against immutable
 git-show bytes. The current AL--AN additions await their own fixed-commit
 review; this session remains in progress.
+
+## AP4 review
+
+Twelve review records contain 165 commit-file identities: 141 full-text
+reads and 24 hash-only reads. AP4's science/domain review passed; its one
+editorial finding remains OPEN pending immutable AP5 reread. AL/AM/AN
+clarifications and AO will be audited at that next checkpoint.

@@ -30,6 +30,15 @@
       ],
       "reviewer": "/root/a_outside_evolution",
       "status": "RESOLVED"
+    },
+    {
+      "checkpoint": "AP4",
+      "correction_written": true,
+      "description": "eta>=0 includes a boundary, so call the sufficient stability region nonempty rather than open.",
+      "id": "AP4-C-001",
+      "immutable_resolution_pending": true,
+      "reviewer": "/root/c_record_stress",
+      "status": "OPEN"
     }
   ],
   "native_read_only_agents": 3,
@@ -398,6 +407,144 @@
       "scientific_execution": false,
       "scope": "Full fixed-commit AG--AK mathematical/domain/scope review; no scientific execution.",
       "status": "PASS"
+    },
+    {
+      "checkpoint": "AP4",
+      "commit": "accc1f0356cf6e4ef2e126e4ff1d904c345463c7",
+      "file_review_modes": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/FORCE_DOMAIN.md": "hash_only_at_this_checkpoint",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/LOCAL_BASIS.md": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/LOCAL_COUNTERTERMS.md": "hash_only_at_this_checkpoint",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/LOCAL_CTP.md": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/LOCAL_FORCING.md": "hash_only_at_this_checkpoint",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/RESOURCE_BUDGET.md": "hash_only_at_this_checkpoint",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/SMEARED_FORCE.md": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/SOURCE_CONTACTS.md": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/common.py": "hash_only_at_this_checkpoint",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/force_domain.json": "hash_only_at_this_checkpoint",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_basis.json": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_basis.py": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_counterterms.json": "hash_only_at_this_checkpoint",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_ctp.json": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_ctp.py": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_forcing.json": "hash_only_at_this_checkpoint",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/resource_budget.json": "hash_only_at_this_checkpoint",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/smeared_force.json": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/smeared_force.py": "hash_only_at_this_checkpoint",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/source_contacts.json": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/source_contacts.py": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/conformal_action/QUANTUM_CONTROLLER.md": "hash_only_at_this_checkpoint",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/conformal_action/quantum_controller.json": "hash_only_at_this_checkpoint"
+      },
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/FORCE_DOMAIN.md": "f810fee800d376e26c264194152c29fc4de2a9b55051d4b91976af4d72b98b87",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/LOCAL_BASIS.md": "f51e9d1b038af7d3f989f892db4616492ee870291aa3af62ef1eebd4c77d3cc4",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/LOCAL_COUNTERTERMS.md": "93540adaf996bc223100b29aa93eaddbcdbe104d505711151063a1990b1bb4cc",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/LOCAL_CTP.md": "1bcbc789d14d31f9d0420d4d489d582bf8d215bd7caf6839a21c2bd2f8735dc9",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/LOCAL_FORCING.md": "4dc9c754dc3b9a2cd10e6a7025959aa6cc81d2a624d26fc46cda410e70e23075",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/RESOURCE_BUDGET.md": "1041332746739e50c3e3af2702e6d34160475135bd7bdc75cf005d7f1ced8476",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/SMEARED_FORCE.md": "bbb2d5564cad6f507018d885788c9abe7cb32f14ea468b52d883353cb5cb8a41",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/SOURCE_CONTACTS.md": "7297e528c4fa3ca5c326d5d71bdee5b428c29d1b6d8f33875fcd353b70d9285f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/common.py": "8f113ddac750df06c9f6d69a4e3f30e4f191b76bd51bb5339fabc389c321fd2d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/force_domain.json": "4efca7dd869312ace0524bb3b24fb5ed914fff8f42a75095d2208f4484058726",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_basis.json": "f8b66574d9b54b273ee3bc700e76fb702934bdcc605b723dd82c44f3a763c5bf",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_basis.py": "d29c23535915c6794b226e5aa888922be6283eb6abd308e643748a217b0f4c60",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_counterterms.json": "3671e80a282af2e073f9b83b174db1481e0293fc5d7cda21bfdb89c218e5aa8d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_ctp.json": "76a208fecd841f0ac9abdb881702ae33578753c1d2ab8b6b1586727afa8f9721",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_ctp.py": "540a636b279a31c82b1940d55a460e2860a8978fcaa91d1f5c3dec470745748d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_forcing.json": "82dc5fb0453d4999e5b6e23183353db97729f52a43f02fb910784b84017e1612",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/resource_budget.json": "212fa595d3d72c4707e0f1dad07e97a4f8c5093df3bef9bcc298efe62192e3af",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/smeared_force.json": "cff7ed8e124e730aae10a692b9acb28de2eb3ee86fc10a806ccb41fdb9fcfc49",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/smeared_force.py": "d43492bb43cae31e9c5b325f04050bd518cf47c417f799e783bc18ed0bacefa0",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/source_contacts.json": "a98cfde89f21d5384387f13771bfc4da81e391cbf245674da997ea9b3a68a18e",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/source_contacts.py": "815a8a80f22b47f003c4b9708f71beb3c7f23699a6ab57a565b5ad901451d689",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/conformal_action/QUANTUM_CONTROLLER.md": "1ec6fe186a227b85c490ec2cd09dc91e573b43d0765f5f76f756493abeeef94c",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/conformal_action/quantum_controller.json": "1f2599793b5d34bedd6c0dfe6f6ddcf17713eb006f124f0eaaef29e4a89dc7ba"
+      },
+      "findings": [
+        "AP4-C-001"
+      ],
+      "independent_byte_hash_check": true,
+      "reviewer": "/root/a_outside_evolution",
+      "scientific_execution": false,
+      "scope": "Science/domain/scope PASS; one shared editorial region-openness finding. A and C recommended explicit arbitrary finite source cross-contact scope.",
+      "status": "FINDINGS"
+    },
+    {
+      "checkpoint": "AP4",
+      "commit": "accc1f0356cf6e4ef2e126e4ff1d904c345463c7",
+      "file_review_modes": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/LOCAL_BASIS.md": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/LOCAL_CTP.md": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/SMEARED_FORCE.md": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/SOURCE_CONTACTS.md": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_basis.json": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_basis.py": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_ctp.json": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_ctp.py": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/smeared_force.json": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/source_contacts.json": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/source_contacts.py": "full_text_read"
+      },
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/LOCAL_BASIS.md": "f51e9d1b038af7d3f989f892db4616492ee870291aa3af62ef1eebd4c77d3cc4",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/LOCAL_CTP.md": "1bcbc789d14d31f9d0420d4d489d582bf8d215bd7caf6839a21c2bd2f8735dc9",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/SMEARED_FORCE.md": "bbb2d5564cad6f507018d885788c9abe7cb32f14ea468b52d883353cb5cb8a41",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/SOURCE_CONTACTS.md": "7297e528c4fa3ca5c326d5d71bdee5b428c29d1b6d8f33875fcd353b70d9285f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_basis.json": "f8b66574d9b54b273ee3bc700e76fb702934bdcc605b723dd82c44f3a763c5bf",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_basis.py": "d29c23535915c6794b226e5aa888922be6283eb6abd308e643748a217b0f4c60",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_ctp.json": "76a208fecd841f0ac9abdb881702ae33578753c1d2ab8b6b1586727afa8f9721",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_ctp.py": "540a636b279a31c82b1940d55a460e2860a8978fcaa91d1f5c3dec470745748d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/smeared_force.json": "cff7ed8e124e730aae10a692b9acb28de2eb3ee86fc10a806ccb41fdb9fcfc49",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/source_contacts.json": "a98cfde89f21d5384387f13771bfc4da81e391cbf245674da997ea9b3a68a18e",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/source_contacts.py": "815a8a80f22b47f003c4b9708f71beb3c7f23699a6ab57a565b5ad901451d689"
+      },
+      "findings": [
+        "AP4-C-001"
+      ],
+      "independent_byte_hash_check": false,
+      "reviewer": "/root/b_preparation_domains",
+      "scientific_execution": false,
+      "scope": "Science/domain/scope PASS; one shared editorial region-openness finding. A and C recommended explicit arbitrary finite source cross-contact scope.",
+      "status": "FINDINGS"
+    },
+    {
+      "checkpoint": "AP4",
+      "commit": "accc1f0356cf6e4ef2e126e4ff1d904c345463c7",
+      "file_review_modes": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/LOCAL_BASIS.md": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/LOCAL_CTP.md": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/SMEARED_FORCE.md": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/SOURCE_CONTACTS.md": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_basis.json": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_basis.py": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_ctp.json": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_ctp.py": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/smeared_force.json": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/source_contacts.json": "full_text_read",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/source_contacts.py": "full_text_read"
+      },
+      "files": {
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/LOCAL_BASIS.md": "f51e9d1b038af7d3f989f892db4616492ee870291aa3af62ef1eebd4c77d3cc4",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/LOCAL_CTP.md": "1bcbc789d14d31f9d0420d4d489d582bf8d215bd7caf6839a21c2bd2f8735dc9",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/SMEARED_FORCE.md": "bbb2d5564cad6f507018d885788c9abe7cb32f14ea468b52d883353cb5cb8a41",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/SOURCE_CONTACTS.md": "7297e528c4fa3ca5c326d5d71bdee5b428c29d1b6d8f33875fcd353b70d9285f",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_basis.json": "f8b66574d9b54b273ee3bc700e76fb702934bdcc605b723dd82c44f3a763c5bf",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_basis.py": "d29c23535915c6794b226e5aa888922be6283eb6abd308e643748a217b0f4c60",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_ctp.json": "76a208fecd841f0ac9abdb881702ae33578753c1d2ab8b6b1586727afa8f9721",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/local_ctp.py": "540a636b279a31c82b1940d55a460e2860a8978fcaa91d1f5c3dec470745748d",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/smeared_force.json": "cff7ed8e124e730aae10a692b9acb28de2eb3ee86fc10a806ccb41fdb9fcfc49",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/source_contacts.json": "a98cfde89f21d5384387f13771bfc4da81e391cbf245674da997ea9b3a68a18e",
+        "physics/qm/null_source/timelike/finite_stress/lapse_boundary/autonomous_preparation/source_contacts.py": "815a8a80f22b47f003c4b9708f71beb3c7f23699a6ab57a565b5ad901451d689"
+      },
+      "findings": [
+        "AP4-C-001"
+      ],
+      "independent_byte_hash_check": false,
+      "reviewer": "/root/c_record_stress",
+      "scientific_execution": false,
+      "scope": "Science/domain/scope PASS; one shared editorial region-openness finding. A and C recommended explicit arbitrary finite source cross-contact scope.",
+      "status": "FINDINGS"
     }
   ],
   "reviewers": [
