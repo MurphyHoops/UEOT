@@ -12,7 +12,7 @@ This entry uses the new AP ground on unit ESU, not the older AQ input. Only the 
 The source-square counterterm on this column is
 \(C_K[h]={\cal H}_K|h|^2/64\).
 
-The extension of the old datum is explicit. Off this column use the quadratic source invariant Tr(M^2)^2 as in SOURCE_ACCOUNTING. Set the additional finite coefficient of (Tr M^2)^2, and other newly allowed trace-source finite terms, to zero. The old traceless two-field datum alone could not fix these new coefficients. A different finite Hamiltonian term gamma |h|^2 would change the phase by -gamma integral |h|^2 and the response below by -2 gamma h. This convention is held fixed in every subsequent source computation.
+The extension of the old datum is explicit. Off this column use the quadratic source invariant \(\operatorname{Tr}[(M^2)^2]\) as in SOURCE_ACCOUNTING. Set the additional finite coefficient of \((\operatorname{Tr}M^2)^2\), and other newly allowed trace-source finite terms, to zero. The old traceless two-field datum alone could not fix these new coefficients. A different finite Hamiltonian term gamma |h|^2 would change the phase by -gamma integral |h|^2 and the response below by -2 gamma h. This convention is held fixed in every subsequent source computation.
 
 ## 1. Derive at finite cutoff before taking limits
 
@@ -29,7 +29,7 @@ Let \(\widehat h(\Omega)=\int e^{i\Omega t}h(t)\,dt\) and
  ={c_h(0)\over\Omega}
    -{1\over\Omega^2}\int_0^\infty c_h''(u)\sin(\Omega u)\,du .
 \]
-The real part is the pair-creation probability coefficient. The imaginary term contains a logarithm which cannot be discarded by choosing an arbitrary phase for the Gaussian implementer.
+The real part is minus one half of the pair-creation probability coefficient. The imaginary term contains a logarithm which cannot be discarded by choosing an arbitrary phase for the Gaussian implementer.
 
 For two real histories set Delta=h_+-h_- and Sigma=(h_++h_-)/2. The quadratic CTP logarithm is
 \[

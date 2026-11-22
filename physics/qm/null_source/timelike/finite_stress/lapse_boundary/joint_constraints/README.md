@@ -14,19 +14,34 @@ Earlier session time is not counted. Physical unification remains OPEN.
 | Actual metric history | [Finite lapse pulse](LAPSE_HISTORY.md), [curvature terms](LAPSE_CURVATURE.md), [same-datum complete lapse phase/contact](LAPSE_PHASE.md) | Restricted metric family; explicit pulse fails mean Einstein constraint |
 | Autonomous comparison | [Exact quadratic-actuator rejection](AUTONOMOUS_GATE.md), [nonlinear clock actuator](CLOCK_ACTUATOR.md) | Normal finite-K device and positive bounded record; large total cost, no uniform interacting UV or joint Einstein closure |
 
-Eighteen scientific certificates and one source/scope check are available.
-Each certificate binds its proof and inputs. These are not nineteen new
+Twenty-two scientific certificates and one source/scope check are available.
+Each certificate binds its proof and inputs. These are not twenty-three new
 theorems, an external peer review, or machine-formal proofs.
 Reuse 294 accepted entries; freeze 1090 predecessor scientific files.
 
+## Fourth cycle: actual means, total source and decisive boundaries
+
+- [Actual matter-plus-interaction means](ACTUATOR_MEANS.md) use high-order
+  norm estimates plus energy-form interpolation to prove a finite-K C1
+  inverse, with an explicit target ball and an existential coupling threshold.
+- [Total first-harmonic columns](TOTAL_COLUMNS.md) retain the controller's
+  surviving tadpole response and prove an actual total eight-projection
+  inverse at K64 for sufficiently small targets/couplings. Its coupling threshold
+  is not certified by the fixed-g record example.
+- [Backreaction and full energy variance](BACKREACTION_GATE.md) reject the
+  old small-background reading and solve a separate clock-only FRW comparison.
+- [Bare clock ultraviolet gate](CLOCK_UV.md) proves strong collapse of the
+  bounded bare switch at fixed g and a positive raw quartic K-cubed tail.
+
 ## Next active gate
 
-The finite-K apparatus now makes an approximate bounded record concrete.
-Its norm estimate cannot by itself transfer unbounded stress means, source
-CTP phases between different programs, or the old small energy budget.
-The next work is the actual weighted stress/program-derivative limit and
-the geometry with the full controller source, followed by a legitimate
-four-dimensional continuum device. [Next gate](NEXT_GATE.md)
+Actual weighted means and the total eight-projection inverse are now
+constructed at fixed cutoff. They do not solve the homogeneous or higher
+spatial constraints, full operator noise, or common geometry. The next work
+is a renormalized apparatus/clock and its complete source on an actual
+constraint-compatible geometry; the bare fixed-g switch fails its direct
+continuum test. Source CTP phases between different programs and the old
+small energy budget cannot be transferred to the apparatus. [Next gate](NEXT_GATE.md)
 
 [Contract](CONTRACT.md) · [Session](SESSION.md) · [Audit](AUDIT.md) ·
 [Verification](verification.json)

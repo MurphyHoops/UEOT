@@ -1,4 +1,4 @@
-# JC12 — An actual lapse history supplies a missing preparation column
+# JC15 — An actual lapse history supplies a missing preparation column
 
 ## 1. Same incoming state, a real metric history
 

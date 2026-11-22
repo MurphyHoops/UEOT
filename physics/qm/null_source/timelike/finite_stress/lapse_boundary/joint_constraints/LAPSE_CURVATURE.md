@@ -1,4 +1,4 @@
-# JC13 — Exact curvature data do not alone fix the metric phase
+# JC16 — Exact curvature data do not alone fix the metric phase
 
 Use the actual lapse family in LAPSE_HISTORY.md,
 \(N=1+f(t)Z\), \(q=fZ/(1+fZ)\).

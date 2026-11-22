@@ -190,7 +190,8 @@ At finite spectral K, the local equations contain P_K of the nonlinear forces. I
 \]
 This residual must remain in local tests. Its full spatial energy integral is zero because each canonical velocity lies in Ran P_K. Likewise the SO(4) Killing charges are conserved, since their generators commute with the common cutoff and the interaction is invariant. Exact total Hamiltonian spectral conservation is therefore established without asserting a false finite-cutoff local Ward identity.
 
-For a complete energy split H_m+H_c, including the interaction in one specified side, the transfer operators satisfy dot H_m=-dot H_c exactly. Every common time-smearing has covariance matrix
+For a complete energy split H_m+H_c, including the interaction in one specified side, the transfer operators satisfy dot H_m=-dot H_c exactly. For any common transfer time-smearing whose operator and second moment
+exist on the declared state/domain, its covariance matrix is
 Var(W_f) times [[1,-1],[-1,1]]. The source and controller transfer noises cannot be made independent.
 
 In the declared initial Gaussian domain the transfer variance is strictly

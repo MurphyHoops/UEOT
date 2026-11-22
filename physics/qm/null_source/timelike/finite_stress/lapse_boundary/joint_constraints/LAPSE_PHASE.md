@@ -1,4 +1,4 @@
-# JC15 — The complete finite phase on the restricted lapse history
+# JC17 — The complete finite phase on the restricted lapse history
 
 ## Scope and datum
 

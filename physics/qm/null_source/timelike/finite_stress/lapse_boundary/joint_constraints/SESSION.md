@@ -84,3 +84,44 @@ and the full gravitational source; it cannot infer them from trace norm.
 
 This checkpoint is still IN_PROGRESS. Its timing does not assert the
 three-hour minimum has already elapsed.
+
+## Fourth cycle: actual weighted means, then the complete source
+
+High-order Gaussian-polynomial parametrices and energy-form interpolation
+now turn the autonomous vector approximation into actual C1 convergence
+of matter-plus-interaction mean projections. A finite-K inverse follows;
+its coupling threshold is existence-only. The same-state record can be
+retained by choosing a sufficiently small finite coupling, with the full
+increasing controller cost.
+
+Reflection exposed a further missing term: the free apparatus has an
+order-u response even as g tends to zero. Its small mean correction
+multiplies the large clock/program mean. Keeping the first parametrix
+correction produces the full controller columns. At K64 their matrix has
+strict determinant margin and the total limiting inverse norm is below
+.03. The actual total-source eight-projection inverse and a positive
+complete record therefore exist for sufficiently small targets/couplings.
+This is not a numerical threshold or a solution of all spatial modes.
+
+The clock's kinetic mean and complete Hamiltonian variance give exact
+large-cost bounds; the old ESU small-background reading fails under the
+stated residual bounds. A separate exact classical clock-only FRW
+comparison shows why the free clock program must be recomputed after
+backreaction. The bare nonlinear clock switch also fails its direct
+fixed-coupling continuum profile test, despite its bounded strong-zero
+limit: its unrenormalized quartic mean has a positive K^3 tail.
+
+The next task is the renormalized full apparatus and actual common
+geometry, not another repetition of the body-only preparation inverse.
+
+The full-source control and target radii have now been retained
+explicitly by a coefficient-wise controller-response majorant. Only
+its actual coupling threshold remains existential. Thus eta=1e-13
+can participate in the same total-eight-mean and positive-record
+existence statement with some sufficiently small g; the specifically
+fixed g=1e-40 is still not certified below that threshold.
+
+The ultraviolet review also distinguishes a reduced body limit from
+a complete apparatus limit. A varying-coupling singular sequence can
+retain the body process, but its clock energy/variance diverge and the
+fixed-width clock initial densities have no trace-norm Cauchy limit.

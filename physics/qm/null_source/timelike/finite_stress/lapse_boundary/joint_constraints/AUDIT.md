@@ -35,3 +35,25 @@ immutable-source reviews until the committed files are actually read.
 An outward-interval strict lower bound initially reused a rounded number
 in LAPSE_HISTORY; using the unrounded interval quantity restored the
 intended strict margin. No scientific conclusion was weakened to pass.
+
+## JC3 immutable source review
+
+All three reviewers actually read the same 35 full files at
+0d641570b10aed0b0cee95b2e09dff200d0a5da9 and independently returned
+matching SHA256 identities. Their 105 additional full commit-file
+identities bring the recorded total to 222. Thirteen further hash-only
+dependencies per reviewer are explicitly excluded from that full count.
+
+All confirmed JC2-B-001 resolved. The accepted editorial findings are:
+explicit source-invariant trace parentheses and the real-amplitude
+minus-one-half factor (JC3-B-001); three duplicated lapse chapter
+identifiers (JC3-C-001); and a transfer-smearing second-moment domain
+qualification (JC3-C-002). The fixes preserve the computed formulas.
+The SOURCE_CTP energy cross term now states its two-Hilbert--Schmidt
+bound explicitly. The next immutable review checks these fixes and
+the actual total-source continuation.
+
+Exact checkpoint CI queried and successful: JC1 science44982918908 /
+publication44982918916; JC2 science44984086205 / publication44984086172;
+JC3 science44987760330 / publication44987760384. Final-head CI remains
+to be observed after the final source commit.

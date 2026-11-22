@@ -1,42 +1,40 @@
-# Next acceptance gate after the third research cycle
+# Next acceptance gate after the total-source first-harmonic closure
 
-## What is now available
+## Completed finite-cutoff statement
 
-The exact common-cutoff action columns, a distinguished stationary AP mean
-background, actual compact-source normal preparation with eight controlled
-matter means, the complete source-family CTP phase and power, and a
-restricted actual lapse CTP/contact have been constructed. A nonlinear
-clock/Y model gives a normal autonomous finite-K preparation and a retained
-positive bounded record with a complete large source cost.
+A fixed autonomous nonlinear Hamiltonian has normal programmed states,
+actual C1 mean response and a local inverse for all eight retained-total
+first-harmonic density/longitudinal-momentum means at K64. A same-program
+complete mathematical probe record stays positive for sufficiently small
+codes/couplings. Only the limiting inverse is numerically bounded; the
+control/target radii are explicit, while the actual coupling threshold
+is existential. Homogeneous and higher modes and operator constraints remain.
 
-## The immediate mathematical question
+## The next physical task
 
-For each fixed K, prove or reject convergence of the actual clock-actuator
-body stress means AND their eight program derivatives in a weighted
-domain as g tends to zero. Norm convergence alone is insufficient.
-If an actual inverse theorem follows, distinguish existence of some
-g_*(K) from a certified value, matter-only projections from total-source
-constraints, and finite K from a uniform continuum statement.
+The large clock kinetic source and its complete energy variance must enter
+the background, its initial mixed block and all metric variations.
+A pure change of Lambda cannot remove its enthalpy. Solve or reject a
+common geometry with the complete source, then derive the clock trajectory
+and preparation/readout program on it. Do not reuse X=t/g or cos(2t) on a
+new geometry by declaration. Higher-curvature response needs the
+corresponding derivative bounds.
 
-## The physical question which cannot be postponed
+## The next continuum task
 
-Include X,Y, their interaction, and the controller initial mixed block in
-the metric variation. The clock has rho+p=1/g^2 in the reference, so its
-backreaction is not the eta^2 body perturbation. Keep G and Lambda fixed
-unless a new datum is explicitly declared. Either derive a controlled
-constraint/evolution solution with the full source, or reject the proposed
-background using an actual residual. Recompute source programming and
-readout along that common geometry; the ESU trigonometric program is not
-automatically transported.
+The current bare compact F(gX_K) tends strongly to zero at fixed g while
+the raw initial quartic mean grows as K^3. The next candidate therefore
+requires an explicit renormalized local composite/interaction, its new
+counterterms, a normal actual preparation and uniform source/metric
+limits. Changing the cutoff-dependent coupling under the bare clock
+accuracy contract raises energy; it is not a continuum completion.
 
-## Continuum and instrument obligations
+## The next instrument task
 
-A fixed spectral cutoff leaves local Ward projection residuals. A
-four-dimensional interacting limit requires its own renormalized action,
-normal initial state, source and metric variations, contacts, joint noise,
-and uniform estimates. The mathematical Gaussian reader still needs a
-local autonomous pointer and its complete stress/record collection.
-Preserve every outcome; do not divide out controller program overlaps.
+The complete Gaussian instrument is a normal mathematical map. Its local
+autonomous pointer, energy source, real record collection and all
+interaction/controller stress still require a construction. Preserve all
+outcomes and the actual controller program overlaps.
 
-Physical unification remains OPEN. The unchanged Core v3 assembly
-theorems do not establish these additional physical constructions.
+Physical unification remains OPEN. Core v3 stays unchanged. These
+research closures do not establish its additional physical open ports.

@@ -164,7 +164,14 @@ The leading neighboring-shell term implies
  \operatorname{Tr}(D\gamma_K(t))
                     ={ |h(t)|^2\over64}\log K+O(1).
 \]
-The cross term is finite because D L^-1 B is bounded and R has the weighted Hilbert--Schmidt control; the higher Gaussian powers are also finite. Thus the active state is normal and Hadamard for its actual sourced equation, but is not in the form domain of the old AP excitation Hamiltonian. This is compatible with finite renormalized source energy. At the final, smoothly switched-off endpoint, LOCAL_PREPARATION gives all final AP energy moments and their actual weighted cutoff limits. Those endpoint results must not be advertised as a common old-energy graph throughout an active mass pulse.
+The cross term is finite by the explicit two-Hilbert--Schmidt estimate
+\[
+ |\operatorname{Tr}(D z_0R^\dagger)|
+ \le\|z_0\|_{\rm HS}\|DR\|_{\rm HS},\qquad z_0=-{\cal L}^{-1}B.
+\]
+The higher Gaussian powers are finite because Dz_0 is bounded and z is
+Hilbert--Schmidt, so Dzz^\dagger is Hilbert--Schmidt; the remaining
+resolvent factor is bounded by ||z||<1. Thus the active state is normal and Hadamard for its actual sourced equation, but is not in the form domain of the old AP excitation Hamiltonian. This is compatible with finite renormalized source energy. At the final, smoothly switched-off endpoint, LOCAL_PREPARATION gives all final AP energy moments and their actual weighted cutoff limits. Those endpoint results must not be advertised as a common old-energy graph throughout an active mass pulse.
 
 ## Decision and next gate
 
