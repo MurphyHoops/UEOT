@@ -1,3 +1,5 @@
+> Current continuation (2026-11-22): [autonomous preparation and complete records](finite_stress/lapse_boundary/autonomous_preparation/README.md). Physical unification remains OPEN.
+
 <!-- RELATIONAL_COUPLED_CURRENT -->
 
 最新研究：[完整联合传播与原固定时间核](finite_stress/lapse_boundary/joint_propagation/README.md)。正的缩放时间量子极限已推导；原固定测试非零核门被拒收，物理统一仍 OPEN。
