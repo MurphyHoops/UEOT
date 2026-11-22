@@ -141,3 +141,14 @@ Wick ordering, a positive four-body sector has initial Hamiltonian-image
 norm squared at least c g^2 K^3. Lower-body-degree subtractions cannot
 cancel that sector. This is a specified-input graph rejection with a
 fixed-g eventual cutoff threshold, not a universal interacting-QFT no-go.
+
+## Literature and purpose review before delivery
+
+The Core source and post-Core matrix were re-read for the acceptance
+boundary: a closed work package is not a closed scientific port or
+physical unification. Hollands--Wald section 5.2 and its discussion
+were checked against the next renormalization task. Their polynomial
+formal-series Ward theorem does not construct the current nonpolynomial
+clock composite at finite coupling. Fewster--Verch's bounded spacetime
+coupling region was distinguished from a bounded interaction operator.
+The next gate now states these exact inheritance limits.

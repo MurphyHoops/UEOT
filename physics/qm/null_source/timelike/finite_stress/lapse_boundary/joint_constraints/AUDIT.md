@@ -83,3 +83,27 @@ immutable acceptance, not a failed test hidden by changing a tolerance.
 JC4 exact-head CI was observed successful: science44990010205 and
 publication44990010209. The new post-closure and Wick graph scripts
 were run only in the current cohort. No predecessor science was rerun.
+
+## JC5 immutable scientific review
+
+All three native read-only reviewers actually read the same 18 full
+files at 64ac74d66696d2cdadf4868fe76046444e80f29f and returned matching
+Git SHA256 identities. The 54 additional full identities bring this
+ledger to 15 review records and 372 reviewer/commit/file identities.
+Thirteen hash-only dependencies per reviewer are excluded from that
+count; all 29 direct bindings were independently checked.
+
+All confirmed both JC4 findings resolved. The new mean-domain repair,
+actual full finite-K quadrupole, specified-input body-Wick graph
+rejection and homogeneous autonomous lapse/noise column passed.
+A nonblocking literature wording correction (JC5-B-001) distinguishes
+a bounded spacetime coupling region from a bounded interaction operator.
+The next documentation checkpoint reviews this wording and the precise
+Core / perturbative-theory inheritance contract.
+
+JC5 science44991824460 and publication44991824417 both succeeded.
+The actual decoded science job137114334207 contains 25 distinct PASS
+entries, exact head64ac74d66696d2cdadf4868fe76046444e80f29f and the
+294-entry/1090-file reuse line. Artifact14742202480 has the same head
+and digest sha256:3222a22b80cffcddde5eea6cba4c97f7e6aba7fac0085cd928c7e9e3a01aef9e.
+These are internal/source/CI checks, not external peer review or formal proof.
