@@ -152,8 +152,10 @@ def build_fig1():
     # Panel (b): Incomparable-Refinement Diamond Lattice of Minimal Predictive Quotients
     ax2.text(0.01, 0.985, "(b) Incomparable Refinements of Minimal Quotients (Prop. 3)",
              fontsize=10.5, fontweight="bold", color=NAVY, ha="left", va="top")
+    ax2.text(0.50, 0.934, "Fixed-parameter 4-founder laws (autonomous hereditary execution)",
+             fontsize=8.25, fontweight="bold", color=SLATE, ha="center", va="center")
 
-    draw_box(ax2, 0.14, 0.755, 0.72, 0.145,
+    draw_box(ax2, 0.14, 0.742, 0.72, 0.138,
              "One-Step Birth Protocol $(B_1)$  [2 Minimal Classes]\n"
              "$\\{\\theta_0 H,\\; \\theta_0 D,\\; \\theta_1 D\\} \\quad \\mid \\quad \\{\\theta_1 H\\}$",
              facecolor=LIGHT_BLUE, edgecolor=NAVY, fontsize=8.8, fontweight="bold")
@@ -175,11 +177,11 @@ def build_fig1():
     draw_box(ax2, 0.09, 0.045, 0.82, 0.165,
              "Two-Step Births + Initial Cost $(B_1, B_2, R_1)$\n"
              "[4 Distinct Joint Laws]:  $\\{\\theta_0 H\\} \\mid \\{\\theta_0 D\\} \\mid \\{\\theta_1 H\\} \\mid \\{\\theta_1 D\\}$\n"
-             "(Identifiable from joint law; quotients silent tag $\\tau$)",
+             "(Identifiable in law, single runs overlap; quotients silent tag $\\tau$)",
              facecolor="white", edgecolor=NAVY, lw=1.2, fontsize=8.4)
 
-    draw_arrow(ax2, (0.37, 0.74), (0.235, 0.63), color=NAVY, lw=1.2)
-    draw_arrow(ax2, (0.63, 0.74), (0.765, 0.63), color=NAVY, lw=1.2)
+    draw_arrow(ax2, (0.37, 0.725), (0.235, 0.63), color=NAVY, lw=1.2)
+    draw_arrow(ax2, (0.63, 0.725), (0.765, 0.63), color=NAVY, lw=1.2)
     draw_arrow(ax2, (0.235, 0.36), (0.37, 0.225), color=TEAL, lw=1.2)
     draw_arrow(ax2, (0.765, 0.36), (0.63, 0.225), color=AMBER, lw=1.2)
 

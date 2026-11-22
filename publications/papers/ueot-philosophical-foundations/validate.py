@@ -13,7 +13,12 @@ import re
 import subprocess
 import sys
 
+sys.dont_write_bytecode = True
+
 ROOT = Path(__file__).resolve().parent
+sys.path.insert(0, str(ROOT))
+import verify_standalone
+
 SYN_DIR = ROOT / "submissions" / "synthese"
 BJPS_DIR = ROOT / "submissions" / "bjps"
 POS_DIR = ROOT / "submissions" / "philosophy-of-science"
@@ -49,6 +54,30 @@ def check_tex_and_blg(build_dir: Path, stem: str) -> tuple[list[str], list[str],
     blg = build_dir / f"{stem}.blg"
     bib_warns = re.findall(r"^Warning--.*$", blg.read_text(errors="replace"), re.M) if blg.is_file() else []
     return tex_errs, glyphs, over, bib_warns
+
+
+def normalize_pdf_text(pdf_text: str, strip_lineno: bool = False) -> str:
+    """Normalize pdftotext -layout output by stripping margin line numbers,
+    running headers/page numbers, hyphenated line wraps, and newline splits."""
+    lines = []
+    for ln in pdf_text.splitlines():
+        if strip_lineno:
+            ln = re.sub(r"^\s*\d+\s+", "", ln)
+        else:
+            ln = re.sub(r"^\s*\d+\s{2,}", "", ln)
+        s = ln.strip()
+        if not s or re.fullmatch(r"\d+", s):
+            continue
+        if "What Prediction Leaves Out" in s and (
+            "Relational Objecthood and the Grounds of Purpose" in s
+            or "Philosophy of Science (Anonymous Submission)" in s
+            or "Synthese (Double-Anonymous Submission)" in s
+        ) and len(s) < 110 and not s.startswith("What Prediction Leaves Out:"):
+            continue
+        lines.append(s)
+    joined = "\n".join(lines)
+    joined = re.sub(r"-\s*\n\s*", "", joined)
+    return re.sub(r"\s+", " ", joined).strip()
 
 
 def count_clean_pdf_words(pdf_text: str) -> int:
@@ -124,19 +153,32 @@ required = [
     "manuscript.md", "manuscript.tex", "manuscript.pdf", "references.bib",
     "ABSTRACT_ZH.md", "CLAIM_MATRIX.md", "README.md", "COPYRIGHT_AND_LICENSE.md",
     "BUILD_RECEIPT.json", "template.tex", "layout.lua", "build.py", "validate.py",
-    "generate_figures.py",
+    "generate_figures.py", "verify_standalone.py",
     "figures/fig1_architecture_and_lattice.pdf",
     "figures/fig2_memory_and_phase.pdf",
     "figures/fig3_preservation_and_rungs.pdf",
+    "submissions/synthese/verify_standalone.py",
     "submissions/synthese/synthese_blinded_manuscript.pdf",
     "submissions/synthese/synthese_title_page.pdf",
+    "submissions/bjps/verify_standalone.py",
     "submissions/bjps/bjps_blinded_manuscript.pdf",
     "submissions/bjps/bjps_online_technical_appendix.pdf",
     "submissions/bjps/bjps_title_page.pdf",
+    "submissions/philosophy-of-science/verify_standalone.py",
     "submissions/philosophy-of-science/pos_blinded_manuscript.pdf",
     "submissions/philosophy-of-science/pos_supplementary_appendix.pdf",
 ]
 absent = [n for n in required if not (ROOT / n).is_file()]
+
+verify_src_bytes = (ROOT / "verify_standalone.py").read_bytes()
+verify_copy_mismatches = [
+    rel for rel in (
+        "submissions/synthese/verify_standalone.py",
+        "submissions/bjps/verify_standalone.py",
+        "submissions/philosophy-of-science/verify_standalone.py",
+    )
+    if not (ROOT / rel).is_file() or (ROOT / rel).read_bytes() != verify_src_bytes
+]
 
 build = json.loads((ROOT / "BUILD_RECEIPT.json").read_text(encoding="utf-8"))
 hash_errors = [
@@ -148,12 +190,34 @@ hash_errors = [
 (ROOT / "build").mkdir(exist_ok=True)
 pdftext, info, pages = extract_pdf_and_info(ROOT / "manuscript.pdf", ROOT / "build" / "final-extracted.txt")
 unresolved_pdf = "??" in pdftext or "[?]" in pdftext or "(author?)" in pdftext
-_, _, _, master_bib_warnings = check_tex_and_blg(ROOT / "build", "manuscript")
+master_errs, master_glyphs, master_over, master_bib_warnings = check_tex_and_blg(ROOT / "build", "manuscript")
 
 leak_tokens = [
     "Degui", "Qian", "MurphyHoops", "24433585", "24433584",
     "Single-authored", "sole author", "[Redacted]",
 ]
+
+verify_src_txt = (ROOT / "verify_standalone.py").read_text(encoding="utf-8")
+gen_fig_txt = (ROOT / "generate_figures.py").read_text(encoding="utf-8")
+bundled_script_leaks = [
+    f"{sname}:{tok}"
+    for sname, stxt in (
+        ("verify_standalone.py", verify_src_txt),
+        ("generate_figures.py", gen_fig_txt),
+    )
+    for tok in leak_tokens
+    if tok in stxt
+]
+bundled_script_insider_hits = [
+    f"{sname}:{tok}"
+    for sname, stxt in (
+        ("verify_standalone.py", verify_src_txt),
+        ("generate_figures.py", gen_fig_txt),
+    )
+    for tok in forbidden_insider_tokens
+    if tok in stxt
+]
+insider_hits = sorted(set(insider_hits) | set(bundled_script_insider_hits))
 
 # --- 1. Validate Synthese ---
 syn_txt, syn_info, syn_pages = extract_pdf_and_info(
@@ -162,15 +226,23 @@ syn_txt, syn_info, syn_pages = extract_pdf_and_info(
 _, _, syn_title_pages = extract_pdf_and_info(
     SYN_DIR / "synthese_title_page.pdf", SYN_DIR / "build" / "syn-title-extracted.txt"
 )
-syn_errs, syn_glyphs, syn_over, syn_bib_warns = check_tex_and_blg(SYN_DIR / "build", "synthese_blinded_manuscript")
-syn_leaks = [tok for tok in leak_tokens if tok in syn_txt or tok in syn_info]
+syn_norm = normalize_pdf_text(syn_txt, strip_lineno=True)
+syn_b_errs, syn_b_glyphs, syn_b_over, syn_b_bib_warns = check_tex_and_blg(SYN_DIR / "build", "synthese_blinded_manuscript")
+syn_t_errs, syn_t_glyphs, syn_t_over, syn_t_bib_warns = check_tex_and_blg(SYN_DIR / "build", "synthese_title_page")
+syn_errs = syn_b_errs + syn_t_errs
+syn_glyphs = syn_b_glyphs + syn_t_glyphs
+syn_over = syn_b_over + syn_t_over
+syn_bib_warns = syn_b_bib_warns + syn_t_bib_warns
+syn_leaks = [tok for tok in leak_tokens if tok in syn_txt or tok in syn_norm or tok in syn_info] + bundled_script_leaks
 syn_unresolved = "??" in syn_txt or "[?]" in syn_txt or "(author?)" in syn_txt
+syn_verifier_ok = (SYN_DIR / "verify_standalone.py").is_file() and (SYN_DIR / "verify_standalone.py").read_bytes() == verify_src_bytes
+syn_ai_ok = ("Gemini 4 Carbon" in syn_norm) and ("ChatGPT 6 Astra" in syn_norm)
 syn_record = {
     "journal": "Synthese (Springer Nature)",
     "review_mode": "double-anonymous (two-file SNAPP split: synthese_title_page.pdf + synthese_blinded_manuscript.pdf)",
     "status": "PASS" if (
         not syn_leaks and not syn_errs and not syn_glyphs and not syn_over
-        and not syn_bib_warns and not syn_unresolved
+        and not syn_bib_warns and not syn_unresolved and syn_verifier_ok and syn_ai_ok
         and 150 <= len(abstract.split()) <= 250 and 4 <= len(keywords) <= 6
         and syn_title_pages == 1
     ) else "FAIL",
@@ -179,7 +251,8 @@ syn_record = {
     "keyword_count": len(keywords),
     "keyword_target": "4-6 keywords",
     "declarations_before_references": True,
-    "ai_disclosure_present": ("Gemini 4 Carbon" in syn_txt) and ("ChatGPT 6 Astra" in syn_txt),
+    "ai_disclosure_present": syn_ai_ok,
+    "verify_standalone_bundled": syn_verifier_ok,
     "blinded_pdf_pages": syn_pages,
     "title_page_pdf_pages": syn_title_pages,
     "bibliography_entries": len(keys),
@@ -193,6 +266,7 @@ syn_record = {
 
 # --- 2. Validate BJPS ---
 bjps_md = (BJPS_DIR / "bjps_blinded_manuscript.md").read_text(encoding="utf-8")
+bjps_app_md = (BJPS_DIR / "bjps_online_technical_appendix.md").read_text(encoding="utf-8")
 bjps_abs = bjps_md.split("abstract: |", 1)[1].split("aistatement: |", 1)[0]
 bjps_abs_words = len(bjps_abs.split())
 bjps_txt, bjps_info, bjps_pages = extract_pdf_and_info(
@@ -204,6 +278,8 @@ bjps_app_txt, bjps_app_info, bjps_app_pages = extract_pdf_and_info(
 _, _, bjps_title_pages = extract_pdf_and_info(
     BJPS_DIR / "bjps_title_page.pdf", BJPS_DIR / "build" / "bjps-title-extracted.txt"
 )
+bjps_norm = normalize_pdf_text(bjps_txt)
+bjps_app_norm = normalize_pdf_text(bjps_app_txt)
 bjps_fonts = subprocess.run(
     ["pdffonts", str(BJPS_DIR / "bjps_blinded_manuscript.pdf")],
     cwd=ROOT, env=ENV, capture_output=True, text=True, check=True
@@ -219,14 +295,22 @@ def check_bjps_tables_unbroken(pdf_text: str) -> bool:
 
 
 bjps_intro_pg, bjps_refs_pg, bjps_counted_pages, bjps_ai_page1 = count_bjps_body_and_appendix_pages(bjps_txt)
-bjps_app_has_prompts = "Complete Step-by-Step Workflow and Exact Prompts Producing Relied-Upon Outputs" in bjps_app_txt
+bjps_app_has_prompts = "Complete Step-by-Step Workflow and Exact Prompts Producing Relied-Upon Outputs" in bjps_app_norm
 bjps_table4_unbroken = check_bjps_tables_unbroken(bjps_txt)
-bjps_errs, bjps_glyphs, bjps_over, bjps_bib_warns = check_tex_and_blg(BJPS_DIR / "build", "bjps_blinded_manuscript")
+bjps_b_errs, bjps_b_glyphs, bjps_b_over, bjps_b_bib_warns = check_tex_and_blg(BJPS_DIR / "build", "bjps_blinded_manuscript")
 bjps_app_errs, bjps_app_glyphs, bjps_app_over, bjps_app_bib_warns = check_tex_and_blg(BJPS_DIR / "build", "bjps_online_technical_appendix")
+bjps_t_errs, bjps_t_glyphs, bjps_t_over, bjps_t_bib_warns = check_tex_and_blg(BJPS_DIR / "build", "bjps_title_page")
+bjps_all_errs = bjps_b_errs + bjps_app_errs + bjps_t_errs
+bjps_all_glyphs = bjps_b_glyphs + bjps_app_glyphs + bjps_t_glyphs
+bjps_all_over = bjps_b_over + bjps_app_over + bjps_t_over
+bjps_all_bib_warns = bjps_b_bib_warns + bjps_app_bib_warns + bjps_t_bib_warns
 bjps_leaks = [
     tok for tok in leak_tokens
-    if tok in bjps_txt or tok in bjps_info or tok in bjps_app_txt or tok in bjps_app_info
-]
+    if tok in bjps_txt or tok in bjps_norm or tok in bjps_info
+    or tok in bjps_app_txt or tok in bjps_app_norm or tok in bjps_app_info
+] + bundled_script_leaks
+bjps_verifier_ok = (BJPS_DIR / "verify_standalone.py").is_file() and (BJPS_DIR / "verify_standalone.py").read_bytes() == verify_src_bytes
+bjps_ai_ok = ("Gemini 4 Carbon" in bjps_norm) and ("ChatGPT 6 Astra" in bjps_norm)
 bjps_us_spellings = [
     w for w in (
         "realizability", "realizable", "marginalization", "marginalizes",
@@ -235,16 +319,15 @@ bjps_us_spellings = [
         "fiber", "modeled", "modeling", "randomization", "randomized",
         "normalized", "factorization", "generalizes", "naturalized", "artifact",
     )
-    if w in bjps_md
+    if w in bjps_md or w in bjps_app_md
 ]
 bjps_total_words_excl_abstract = count_clean_pdf_words(bjps_txt) - bjps_abs_words - 1
 bjps_record = {
     "journal": "The British Journal for the Philosophy of Science (BSPS / University of Chicago Press)",
     "review_mode": "triple-anonymous",
     "status": "PASS" if (
-        not bjps_leaks and not bjps_errs and not bjps_glyphs and not bjps_over and not bjps_bib_warns
-        and not bjps_app_errs and not bjps_app_glyphs and not bjps_app_over and not bjps_app_bib_warns
-        and not bjps_us_spellings and bjps_abs_words <= 300
+        not bjps_leaks and not bjps_all_errs and not bjps_all_glyphs and not bjps_all_over and not bjps_all_bib_warns
+        and not bjps_us_spellings and bjps_abs_words <= 300 and bjps_verifier_ok and bjps_ai_ok
         and bjps_times_embedded and bjps_ai_page1 and bjps_app_has_prompts and bjps_table4_unbroken
         and bjps_intro_pg == 2 and bjps_counted_pages <= 24
         and bjps_total_words_excl_abstract <= 10000 and bjps_title_pages == 1
@@ -257,6 +340,7 @@ bjps_record = {
     "abstract_ceiling": 300,
     "ai_statement_immediately_after_abstract_page1": bjps_ai_page1,
     "ai_full_prompt_log_in_online_appendix": bjps_app_has_prompts,
+    "verify_standalone_bundled": bjps_verifier_ok,
     "table4_unbroken_on_single_page": bjps_table4_unbroken,
     "intro_starts_page": bjps_intro_pg,
     "references_start_page": bjps_refs_pg,
@@ -264,15 +348,15 @@ bjps_record = {
     "bjps_page_ceiling_excl_title_abstract_refs": 24,
     "pdf_words_excl_abstract_incl_refs": bjps_total_words_excl_abstract,
     "word_ceiling_excl_abstract": 10000,
-    "ai_disclosure_present": ("Gemini 4 Carbon" in bjps_txt) and ("ChatGPT 6 Astra" in bjps_txt),
+    "ai_disclosure_present": bjps_ai_ok,
     "blinded_pdf_total_pages": bjps_pages,
     "online_appendix_pages": bjps_app_pages,
     "title_page_pdf_pages": bjps_title_pages,
-    "bibtex_warnings": bjps_bib_warns + bjps_app_bib_warns,
+    "bibtex_warnings": bjps_all_bib_warns,
     "anonymity_leaks": bjps_leaks,
-    "tex_errors": bjps_errs + bjps_app_errs,
-    "missing_glyphs": bjps_glyphs + bjps_app_glyphs,
-    "overfull_boxes": bjps_over + bjps_app_over,
+    "tex_errors": bjps_all_errs,
+    "missing_glyphs": bjps_all_glyphs,
+    "overfull_boxes": bjps_all_over,
 }
 (BJPS_DIR / "VALIDATION_BJPS.json").write_text(json.dumps(bjps_record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
@@ -286,12 +370,17 @@ pos_txt, pos_info, pos_pages = extract_pdf_and_info(
 pos_app_txt, pos_app_info, pos_app_pages = extract_pdf_and_info(
     POS_DIR / "pos_supplementary_appendix.pdf", POS_DIR / "build" / "pos-app-extracted.txt"
 )
+pos_norm = normalize_pdf_text(pos_txt)
+pos_app_norm = normalize_pdf_text(pos_app_txt)
 pos_errs, pos_glyphs, pos_over, pos_bib_warns = check_tex_and_blg(POS_DIR / "build", "pos_blinded_manuscript")
 pos_app_errs, pos_app_glyphs, pos_app_over, pos_app_bib_warns = check_tex_and_blg(POS_DIR / "build", "pos_supplementary_appendix")
 pos_leaks = [
     tok for tok in leak_tokens
-    if tok in pos_txt or tok in pos_info or tok in pos_app_txt or tok in pos_app_info
-]
+    if tok in pos_txt or tok in pos_norm or tok in pos_info
+    or tok in pos_app_txt or tok in pos_app_norm or tok in pos_app_info
+] + bundled_script_leaks
+pos_verifier_ok = (POS_DIR / "verify_standalone.py").is_file() and (POS_DIR / "verify_standalone.py").read_bytes() == verify_src_bytes
+pos_ai_ok = ("Gemini 4 Carbon" in pos_norm) and ("ChatGPT 6 Astra" in pos_norm)
 pos_total_words_incl_all = count_clean_pdf_words(pos_txt)
 pos_tab_corruptions = [
     f.name for f in (POS_DIR / "SUBMISSION_GUIDE_AND_MANIFEST.md", POS_DIR / "pos_author_metadata_and_cover_note.md")
@@ -304,12 +393,14 @@ pos_record = {
         not pos_leaks and not pos_errs and not pos_glyphs and not pos_over and not pos_bib_warns
         and not pos_app_errs and not pos_app_glyphs and not pos_app_over and not pos_app_bib_warns
         and not pos_tab_corruptions and pos_abs_words <= 100 and pos_total_words_incl_all <= 9500
+        and pos_verifier_ok and pos_ai_ok
     ) else "FAIL",
     "abstract_words": pos_abs_words,
     "abstract_ceiling": 100,
     "total_pdf_words_incl_abstract_and_refs": pos_total_words_incl_all,
     "total_word_ceiling": 9500,
-    "ai_disclosure_present": ("Gemini 4 Carbon" in pos_txt) and ("ChatGPT 6 Astra" in pos_txt),
+    "ai_disclosure_present": pos_ai_ok,
+    "verify_standalone_bundled": pos_verifier_ok,
     "tab_corruptions_in_guides": pos_tab_corruptions,
     "blinded_pdf_pages": pos_pages,
     "online_appendix_pages": pos_app_pages,
@@ -347,6 +438,11 @@ uncond_share = sum(
 )
 cond_share = uncond_share / (1 - p_n1_theta1[0] * p_n1_theta0[0])
 
+standalone_res = verify_standalone.run_all_standalone_checks()
+param_witness = standalone_res["proposition_3"]["parameter_boundary_witness"]
+subcrit_births = standalone_res["theorem_1"]["subcritical_finite_births"]
+sec6_mechs = standalone_res["section_6_mechanisms"]
+
 arithmetic = {
     "critical_kc": str(critical_kc),
     "critical_kb": str(critical_kb),
@@ -358,13 +454,23 @@ arithmetic = {
     "switching_any_damaged_prob": str(sw_any_d),
     "theta0D_second_births": str(b2_care),
     "theta1D_second_births": str(b2_bloom),
+    "theta1D_delta18_b3": param_witness["theta1D_delta18_b3"],
+    "theta1D_delta14_b3": param_witness["theta1D_delta14_b3"],
+    "subcritical_finite_births_bound_single_D": subcrit_births["upper_bound_single_D"],
+    "subcritical_theta0D_cumulative_births": subcrit_births["theta0D_cumulative_expected_births"],
+    "do_b_boot_0_M_vote_eb1": sec6_mechs["do_b_boot_0_M_vote_eb1"],
+    "do_b_boot_0_M_bypass_eb1": sec6_mechs["do_b_boot_0_M_bypass_eb1"],
+    "do_b_boot_0_M_bypass_eb2": sec6_mechs["do_b_boot_0_M_bypass_eb2"],
     "first_census_extinction_inversion": str(ext_inversion),
     "unconditional_expected_share": str(uncond_share),
     "conditioned_expected_share": str(cond_share),
     "ratio_of_expectations": str(ratio_expectations),
 }
 arithmetic_ok = (
-    critical_kc == Q(11, 12)
+    standalone_res["status"] == "PASS"
+    and param_witness["theta1D_delta18_b3"] == "377/512"
+    and param_witness["theta1D_delta14_b3"] == "351/512"
+    and critical_kc == Q(11, 12)
     and critical_kb == Q(25, 24)
     and critical_lambda == Q(1, 1)
     and sw_kc == Q(3, 4)
@@ -381,6 +487,10 @@ arithmetic_ok = (
 )
 
 errors: list[str] = []
+if 'version: "2.4"' not in text:
+    errors.append("manuscript.md frontmatter missing version: \"2.4\"")
+if build.get("version") != "2.4":
+    errors.append(f"BUILD_RECEIPT.json version {build.get('version')} != 2.4")
 if not 8000 <= len(body.split()) <= 12000:
     errors.append(f"Main body word count {len(body.split())} outside 8,000-12,000 target")
 if not 150 <= len(abstract.split()) <= 250:
@@ -395,18 +505,28 @@ if master_bib_warnings:
     errors.append(f"Master BibTeX warnings: {master_bib_warnings}")
 if insider_hits:
     errors.append(f"Non-standalone insider tokens found: {insider_hits}")
+if bundled_script_leaks:
+    errors.append(f"Anonymity leak tokens in bundled scripts: {bundled_script_leaks}")
+if verify_copy_mismatches:
+    errors.append(f"Bundled verify_standalone.py byte-mismatch or missing: {verify_copy_mismatches}")
 if non_monotonic_hits:
     errors.append(f"Deprecated 'non-monotonic' terminology remaining in: {non_monotonic_hits}")
 if absent:
     errors.append(f"Missing deliverables: {absent}")
 if hash_errors:
     errors.append(f"Build hash mismatch: {hash_errors}")
-if unresolved_pdf or build["undefined_references_or_tex_errors"] or build["missing_glyphs"] or build["overfull_boxes"]:
+if (
+    unresolved_pdf
+    or master_errs or master_glyphs or master_over
+    or build["undefined_references_or_tex_errors"]
+    or build["missing_glyphs"]
+    or build["overfull_boxes"]
+):
     errors.append("Master PDF/TeX validation issue")
 if pages != build["pages"]:
     errors.append("Page count mismatch")
 if not arithmetic_ok:
-    errors.append("Printed arithmetic mismatch")
+    errors.append("Printed arithmetic or standalone verifier mismatch")
 if syn_record["status"] != "PASS":
     errors.append(f"Synthese validation failed: {syn_record}")
 if bjps_record["status"] != "PASS":
@@ -415,8 +535,8 @@ if pos_record["status"] != "PASS":
     errors.append(f"Philosophy of Science validation failed: {pos_record}")
 
 record = {
-    "schema": "standalone-philosophy-editorial-validation/5",
-    "version": "2.3",
+    "schema": "standalone-philosophy-editorial-validation/6",
+    "version": "2.4",
     "checked_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
     "status": "PASS" if not errors else "FAIL",
     "errors": errors,
@@ -432,6 +552,9 @@ record = {
     "external_scholarly_works": len(keys),
     "unpublished_internal_self_citations": 0,
     "insider_tokens_found": insider_hits,
+    "bundled_script_anonymity_leaks": bundled_script_leaks,
+    "verify_standalone_copy_mismatches": verify_copy_mismatches,
+    "standalone_verifier_status": standalone_res["status"],
     "non_monotonic_hits": non_monotonic_hits,
     "missing_citations": missing,
     "unused_entries": unused,
@@ -456,8 +579,11 @@ record = {
 sha_files = sorted([
     str(p.relative_to(ROOT))
     for p in ROOT.rglob("*")
+    for rel_parts in [p.relative_to(ROOT).parts]
     if p.is_file()
-    and "build" not in p.parts
+    and "build" not in rel_parts
+    and "__pycache__" not in rel_parts
+    and p.suffix not in {".pyc", ".pyo"}
     and p.name not in {".gitignore", "SHA256SUMS", ".DS_Store"}
 ])
 sha_lines = [f"{sha(ROOT / f)}  {f}" for f in sha_files if (ROOT / f).is_file()]

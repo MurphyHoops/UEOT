@@ -64,9 +64,12 @@ Grounds of Purpose\par}
 \vspace{8pt}
 \begin{abstract}
 \noindent Expanded self-contained mathematical definitions, derivations,
-and rational witness calculations supporting Propositions 1--7 and
-Theorem 1 (Appendix A), together with the full anonymised generative AI
-documentation log required by the BSPS/BJPS AI Policy (Appendix B).
+and rational witness calculations supporting Propositions 1--7, Theorem
+1, and Section 6.2 (Appendix A), reproducible via the bundled
+triple-anonymised Python 3 standard-library script
+\texttt{verify\_standalone.py}, together with the complete anonymised
+generative AI documentation log required by the BSPS/BJPS AI Policy
+(Appendix B).
 \end{abstract}
 \vspace{10pt}
 
@@ -77,8 +80,13 @@ proofs}\label{expanded-formal-definitions-and-proofs}
 
 To ensure that every formal claim in the article is self-contained and
 independently verifiable without external manuscripts, this supplement
-provides expanded derivations of Propositions 1--7 and Theorem 1
-alongside exact rational witness calculations.
+provides expanded derivations of Propositions 1--7, Theorem 1, and the
+Section 6.2 interventional mechanism contrast alongside exact rational
+witness calculations. Referees can also verify every rational identity,
+finite-population distribution, and interventional transition from
+scratch using only the Python 3 standard library by running
+\texttt{python3\ verify\_standalone.py} (bundled in triple-anonymised
+form alongside \texttt{generate\_figures.py} in the submission files).
 
 \subsection{Predictive minimality and belief-quotient descent
 (Propositions 1 and
@@ -221,8 +229,9 @@ contradicting \(\operatorname{rank}(Dg \cdot Df) \le 2\) for any \(C^1\)
 factorisation through \(\mathbb{R}^2\). \(\square\)
 
 \subsection{\texorpdfstring{Regenerative process \(\mathcal{M}\),
-incomparable refinements, and quotients (Propositions 3 and
-4)}{Regenerative process \textbackslash mathcal\{M\}, incomparable refinements, and quotients (Propositions 3 and 4)}}\label{regenerative-process-mathcalm-incomparable-refinements-and-quotients-propositions-3-and-4}
+Blackwell non-simulability, and the three-step parameter boundary
+(Propositions 3 and
+4)}{Regenerative process \textbackslash mathcal\{M\}, Blackwell non-simulability, and the three-step parameter boundary (Propositions 3 and 4)}}\label{regenerative-process-mathcalm-blackwell-non-simulability-and-the-three-step-parameter-boundary-propositions-3-and-4}
 
 \emph{Exact transition specification of \(\mathcal{M}\).} Each step on a
 living token proceeds through internal/public diagnosis
@@ -257,20 +266,21 @@ against \(6\) units, actuation, and post-step damage:
   damage w.p. \(q\) (becoming \(D\)) and stays \(H\) w.p. \(1-q\).
 \end{itemize}
 
-\emph{Proof of Proposition 3.} Across \emph{any} strict Table 1
-parameter vector (\(0 < \delta < s < 1\), \(b > 0\), \(\gamma > 0\),
+\emph{Proof of Proposition 3.} Fix \emph{any} strict Table 1 parameter
+vector (\(0 < \delta < s < 1\), \(b > 0\), \(\gamma > 0\),
 \(b+\gamma < 1\), \(0 < q < 1\), without assuming \(\gamma > \delta\) or
-\(s+b > 1\)): \textbf{(1)} \emph{At \(t=1\)}: \(\theta_0 H\) runs
-healthy \texttt{care} (\(B_1 \sim \mathrm{Bern}(b), R_1 = 0\));
-\(\theta_0 D\) and \(\theta_1 D\) both pay \(R_1 = 3\), restore their
-codes, and run \texttt{care} (\(B_1 \sim \mathrm{Bern}(b)\));
-\(\theta_1 H\) runs healthy \texttt{bloom}
-(\(B_1 \sim \mathrm{Bern}(b+\gamma), R_1 = 0\)). Since \(\gamma > 0\),
-\(b + \gamma \neq b\), giving two \(B_1\)-classes:
+\(s+b > 1\)) and consider autonomous hereditary execution from
+\(\{\theta_0 H, \theta_0 D, \theta_1 H, \theta_1 D\}\): \textbf{(1)}
+\emph{At \(t=1\)}: \(\theta_0 H\) runs healthy \texttt{care}
+(\(B_1 \sim \mathrm{Bern}(b), R_1 = 0\)); \(\theta_0 D\) and
+\(\theta_1 D\) both pay \(R_1 = 3\), restore their codes, and run
+\texttt{care} (\(B_1 \sim \mathrm{Bern}(b)\)); \(\theta_1 H\) runs
+healthy \texttt{bloom} (\(B_1 \sim \mathrm{Bern}(b+\gamma), R_1 = 0\)).
+Since \(\gamma > 0\), \(b + \gamma \neq b\), giving two \(B_1\)-classes:
 \(\{\theta_0 H, \theta_0 D, \theta_1 D\}\) and \(\{\theta_1 H\}\).
 
-\textbf{(2)} \emph{All finite birth records \((B_1,\dots,B_T)\)}: After
-\(t=1\), both \(\theta_0 H\) and \(\theta_0 D\) leave
+\textbf{(2)} \emph{All finite birth records \((B_1,\dots,B_T)\) at fixed
+parameters}: After \(t=1\), both \(\theta_0 H\) and \(\theta_0 D\) leave
 \((I_{\mathrm{ret}}, B_1) \sim \mathrm{Bern}(s) \otimes \mathrm{Bern}(b)\)
 of \(\theta_0\)-tokens independently damaged w.p. \(q\), inducing
 identical joint laws on \((B_1, \dots, B_T)\) for all \(T \ge 1\).
@@ -292,6 +302,67 @@ classes \(\{\theta_0 H\}, \{\theta_1 H\}, \{\theta_0 D, \theta_1 D\}\)
 incomparable with (2). Adjoining \(R_1\) to \((B_1, B_2, \dots)\) splits
 \(\{\theta_0 H, \theta_0 D\}\) into four singletons. \(\square\)
 
+\emph{Blackwell experiment non-simulability and three-step
+parameter-variation boundary.} Across the four fixed-parameter founders
+\(F \in \{\theta_0 H, \theta_0 D, \theta_1 H, \theta_1 D\}\),
+\((B_1, B_2)\) and \((B_1, R_1)\) are mutually incomparable as
+statistical experiments \citep{blackwell1953, barnettCrutchfield2015}:
+for any uniform randomised post-processing kernel \(M_1\) applied to
+\((B_1, B_2)\), equality of
+\(\mathcal{L}_{\theta_0 H}(B_1, B_2) = \mathcal{L}_{\theta_0 D}(B_1, B_2)\)
+forces
+\(M_1 \circ \mathcal{L}_{\theta_0 H}(B_1, B_2) = M_1 \circ \mathcal{L}_{\theta_0 D}(B_1, B_2)\),
+which cannot match
+\(\mathcal{L}_{\theta_0 H}(B_1, R_1) \neq \mathcal{L}_{\theta_0 D}(B_1, R_1)\)
+(\(R_1 = 0\) vs.~\(3\)); symmetrically, any kernel \(M_2\) applied to
+\((B_1, R_1)\) assigns identical post-processed laws to \(\theta_0 D\)
+and \(\theta_1 D\) (since both have
+\((B_1, R_1) \sim \mathrm{Bern}(b) \otimes \delta_3\)), failing to
+reproduce
+\(\mathbb{E}_{\theta_1 D}[B_2] - \mathbb{E}_{\theta_0 D}[B_2] = (s+b)(1-q)\gamma > 0\).
+
+Furthermore, two-step saturation \((B_1, B_2) \equiv (B_t)_{t\ge 1}\)
+requires \emph{fixed} model parameters. Once unknown parameters enter
+the inference target, \(t=3\) carries strictly new information.
+Initialise \(\theta_1 D\) at fixed
+\((s, b, \gamma, q) = (3/4, 3/8, 1/4, 1/3)\) and compare maternal
+\texttt{bloom} survival penalty \(\delta = 1/8\) against
+\(\delta' = 1/4\):
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \emph{Identical \((B_1, B_2)\) joint law:} At \(t=1\), \(\theta_1 D\)
+  repairs (\(R_1=3\)) and executes \texttt{care}, whose retention
+  \(s=3/4\), birth \(b=3/8\) (\(\mathbb{E}[N_1] = 9/8\)), and post-step
+  damage \(q=1/3\) do not involve \(\delta\). At \(t=2\), conditional on
+  \((B_1, N_1)\) and step-\(2\) diagnoses, each \(H\)-token generates a
+  strict birth w.p. \(b+\gamma = 5/8\) and each \(D\)-token repairs and
+  generates a strict birth w.p. \(b = 3/8\); because maternal
+  \texttt{bloom} survival \(s-\delta\) acts on \(N_2\) only \emph{after}
+  \(B_2\) is generated, the entire joint distribution on
+  \((B_1, B_2) \in \{0,1\} \times \{0,1,2\}\)---specifically
+  \((0,0): \frac{95}{256}\), \((0,1): \frac{65}{256}\), \((0,2): 0\),
+  \((1,0): \frac{209}{2048}\), \((1,1): \frac{195}{1024}\),
+  \((1,2): \frac{169}{2048}\)---is identical under \(\delta = 1/8\) and
+  \(\delta' = 1/4\).
+\item
+  \emph{Strict separation at \(t=3\):} At the end of \(t=2\), an
+  \(H\)-token leaves mean outputs
+  \(k_b(\delta) = s - \delta + b + \gamma\) (\(5/4\) for \(\delta=1/8\)
+  vs.~\(9/8\) for \(\delta'=1/4\)) while a \(D\)-token leaves
+  \(k_c = 9/8\), giving
+  \(\lambda_1(1/8) = \frac{2}{3}\cdot\frac{5}{4} + \frac{1}{3}\cdot\frac{9}{8} = \frac{29}{24}\)
+  and \(\lambda_1(1/4) = \frac{9}{8}\), so
+  \(\mathbb{E}_\delta[N_2] = \frac{9}{8}\lambda_1(\delta)\). Every token
+  in \(N_2\) enters \(t=3\) independently as \(H\) w.p. \(2/3\) and
+  \(D\) w.p. \(1/3\), producing
+  \(\frac{2}{3}\cdot\frac{5}{8} + \frac{1}{3}\cdot\frac{3}{8} = \frac{13}{24}\)
+  expected step-\(3\) births. Hence
+  \[\mathbb{E}_{\delta=1/8}[B_3] = \frac{9}{8}\cdot\frac{29}{24}\cdot\frac{13}{24} = \frac{377}{512} \neq \frac{351}{512} = \frac{9}{8}\cdot\frac{9}{8}\cdot\frac{13}{24} = \mathbb{E}_{\delta'=1/4}[B_3].\]
+\end{enumerate}
+
 \emph{Proof of Proposition 4.} \textbf{(a)} Because no transition
 probability, affordability check, or payment depends on \(\tau\),
 erasing \(\tau\) defines a strong Markov lumpability
@@ -302,9 +373,9 @@ lifted from the quotient (in particular, across \(\Pi_{\mathrm{pub}}\)).
 \(g = \mathrm{closed}\) diverge under raw actuation without gate-opening
 repair. \(\square\)
 
-\subsection{Full-policy growth ceiling, autonomous attainment, and
-switching witness (Theorem
-1)}\label{full-policy-growth-ceiling-autonomous-attainment-and-switching-witness-theorem-1}
+\subsection{Full-policy growth ceiling, subcritical finite births, and
+rival mechanisms (Theorem 1 and Section
+6.2)}\label{full-policy-growth-ceiling-subcritical-finite-births-and-rival-mechanisms-theorem-1-and-section-6.2}
 
 \emph{Proof of Theorem 1.} \textbf{(1)} \emph{Upper envelope and
 tightness across \(\Pi_{\mathrm{pub}}\).} Define
@@ -320,9 +391,9 @@ tightness across \(\Pi_{\mathrm{pub}}\).} Define
 again
 \((L_{\mathrm{bloom}}v)(H) = k_b\lambda_1 = \lambda_1 v(H) \le \rho_* v(H)\),
 \((L_{\mathrm{care}}v)(H) = k_c\lambda_1 < \lambda_1 v(H)\),
-\((L_{\mathrm{care}}v)(D) = k_c\lambda_1 = \lambda_1 v(D) \le \rho_* v(D)\),
-and rejected \((D,\mathrm{bloom})\) yields \(v(D) \le \rho_* v(D)\).
-Summing \(V(P_t) := \sum_{u\in P_t} v(x_u)\) under any
+\((L_{\mathrm{care}}v)(D) = k_c\lambda_1 = \lambda_1 v(D)\), and
+rejected \((D,\mathrm{bloom})\) yields \(v(D) \le \rho_* v(D)\). Summing
+\(V(P_t) := \sum_{u\in P_t} v(x_u)\) under any
 \(\pi \in \Pi_{\mathrm{pub}}\) yields
 \(\mathbb{E}_\pi[V(P_{t+1}) \mid \mathcal{F}_t] \le \rho_* V(P_t)\) and
 \(\mathbb{E}_\pi[N_t] \le \frac{v_{\max}|P_0|}{k_c}\rho_*^t\). Tightness
@@ -352,118 +423,318 @@ critical \((2/3,1/8,1/4,1/4,1/3)\) and supercritical
 \((3/4,1/8,3/8,1/4,1/3)\) rational identities follow identically as in
 the main text. \(\square\)
 
+\emph{Corollary (Subcritical finite cumulative expected births across
+\(\Pi_{\mathrm{pub}}\)).} Suppose
+\(\bar{\lambda} := \max\{\lambda_0, \lambda_1\} < 1\). In both Cases 1
+and 2 above, every actively executed \texttt{care} or healthy
+\texttt{bloom} step on token \(u \in A_t \subseteq P_{t-1}\) satisfies
+\((L_{a_u} v)(x_u) \le \bar{\lambda} v(x_u)\), dropping conditional
+expected potential by at least
+\((1 - \bar{\lambda})v(x_u) \ge (1 - \bar{\lambda})k_c > 0\), whereas
+frozen \((D, \mathrm{bloom})\) refusal yields \(0\) potential drop and
+\(0\) births (and \texttt{stop} yields \(0 \le v(x_u)\) and \(0\)
+births). Writing \(M_t := |A_t|\), we have
+\(\mathbb{E}_\pi[V(P_t) \mid \mathcal{F}_{t-1}] \le V(P_{t-1}) - (1 - \bar{\lambda})k_c M_t\)
+and \(\mathbb{E}_\pi[B_t \mid \mathcal{F}_{t-1}] \le (b + \gamma)M_t\).
+Telescoping over \(t = 1, \dots, T\) and applying monotone convergence
+gives
+\(\mathbb{E}_\pi[\sum_{t=1}^\infty B_t] \le \frac{(b+\gamma)V(P_0)}{(1-\bar{\lambda})k_c} < \infty\)
+for every \(\pi \in \Pi_{\mathrm{pub}}\) (e.g., at
+\((1/2, 1/4, 1/4, 1/8, 1/3)\) from \(\theta_0 D\),
+\(\pi_{\mathrm{dorm}}\) yields \(0\) births while autonomous
+\(\theta_0 D\) yields \(\sum_{t\ge 1} (3/4)^{t-1}(1/4) = 1 < \infty\)).
+\(\square\)
+
+\emph{Explicit interventional transition rules for
+\(\mathcal{M}_{\mathrm{vote}}\) versus \(\mathcal{M}_{\mathrm{bypass}}\)
+(Section 6.2).} Initialise a single damaged conservative founder
+\((\theta_0, D)\) (\(g = \mathrm{closed}\), six-unit per-step budget):
+
+\begin{itemize}
+\tightlist
+\item
+  Under \(\mathcal{M}_{\mathrm{vote}}\) (bootstrap majority-vote): on
+  \((D, \mathrm{care})\), if \(b_{\mathrm{boot}} = 1\), voting restores
+  intact \((r_H, r_D)\) and \(g \leftarrow \mathrm{open}\) at repair
+  cost \(R_t = 3\), spends \(1 + 2 = 3\) on \texttt{care}, and
+  transitions into
+  \((I_{\mathrm{ret}}, B_t) \sim \mathrm{Bern}(s) \otimes \mathrm{Bern}(b)\)
+  of \(\theta_0\)-tokens independently damaged w.p. \(q\); under
+  \(\mathrm{do}(b_{\mathrm{boot}} = 0)\), voting fails, \(g\) remains
+  \(\mathrm{closed}\), \(R_t = 0\), \(B_t = 0\), and the token remains
+  absorbed in unrecovered \(D\) (\(B_t = 0\) for all \(t \ge 1\)).
+\item
+  Under \(\mathcal{M}_{\mathrm{bypass}}\) (bootstrap-independent
+  auxiliary latch): an independent hardwired auxiliary
+  \texttt{care}-latch that does not read \(b_{\mathrm{boot}}\) handles
+  \((D, \mathrm{care})\) (re-engaging whenever \(D\) recurs), paying
+  \(R_t = 3\) (\(+1\) actuation, \(+2\) escrow), restoring
+  \((r_H, r_D)\) and \(g \leftarrow \mathrm{open}\) at step end, and
+  entering
+  \((I_{\mathrm{ret}}, B_t) \sim \mathrm{Bern}(s) \otimes \mathrm{Bern}(b)\)
+  of \(\theta_0\)-tokens damaged w.p. \(q\) identically under both
+  \(b_{\mathrm{boot}} = 1\) and \(\mathrm{do}(b_{\mathrm{boot}} = 0)\)
+  \citep{rubenstein2017}. Thus \(b_{\mathrm{boot}} = 1\) couples
+  \(((B_t, R_t))_{t\ge 1}\) identically across
+  \(\mathcal{M}_{\mathrm{vote}}\) and \(\mathcal{M}_{\mathrm{bypass}}\),
+  whereas \(\mathrm{do}(b_{\mathrm{boot}} = 0)\) yields
+  \((R_1 = 0, \mathbb{E}[B_1] = 0)\) under
+  \(\mathcal{M}_{\mathrm{vote}}\) versus
+  \((R_1 = 3, \mathbb{E}[B_1] = b > 0)\) under
+  \(\mathcal{M}_{\mathrm{bypass}}\).
+\end{itemize}
+
 \section{Detailed documentation of generative AI use (BSPS/BJPS AI
 Policy)}\label{detailed-documentation-of-generative-ai-use-bspsbjps-ai-policy}
 
 In compliance with the \emph{British Journal for the Philosophy of
 Science} AI Policy
 (\url{https://www.thebsps.org/auxhyp/bjps-ai-policy/}), this appendix
-provides a complete, triple-anonymised record reconstructing every stage
+provides an audited, triple-anonymised record reconstructing every stage
 in which generative AI systems were used, the division of labour between
-human direction/verification and AI execution, and the exact prompts
-producing all outputs relied upon in the submitted manuscript and
-supplement:
+human conception/audit and AI execution, and the exact prompts, AI
+outputs, and human verifications producing all relied-upon material in
+the manuscript and supplement:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \textbf{System Identifiers, Environments, and Dates of Use.} Two
-  generative AI systems were used during November 2026: \textbf{Gemini 4
-  Carbon} (accessed via the Google DeepMind Antigravity agentic
-  workspace) and \textbf{ChatGPT 6 Astra} (accessed via the OpenAI
-  reasoning interface). Neither system is listed as an author; human
-  author(s) directed every stage and take sole academic and legal
-  responsibility for the entire work.
+  \textbf{System Identifiers, Environments, Dates of Use, and Anonymous
+  Referee Verification.} Two generative AI systems were used during
+  November 2026: \textbf{ChatGPT 6 Astra} (OpenAI reasoning interface)
+  and \textbf{Gemini 4 Carbon} (Google DeepMind Antigravity workspace).
+  Neither system is listed as an author; the human author(s) directed
+  every stage and hold sole academic and legal responsibility for the
+  entire work. To enable direct, zero-trust referee verification without
+  external links, the self-contained, triple-anonymised Python 3
+  standard-library script \texttt{verify\_standalone.py} (runnable via
+  \texttt{python3\ verify\_standalone.py}) is bundled alongside
+  \texttt{generate\_figures.py} directly in the anonymous submission
+  files.
 \item
-  \textbf{Explicit Division of Labour Across Research, Verification,
-  Writing, and Figures.}
+  \textbf{Explicit Division of Labour Across Conception, Critique,
+  Verification, and Writing.}
 
   \begin{itemize}
   \tightlist
   \item
-    \emph{Independently conceived and verified by the human author(s):}
-    Selection of the philosophical research problem, core theses
-    (forward-marginalisation condition, typed explanatory preservation,
-    three diagnostic checks for relational objecthood, four
-    bearer-indexed grounds of purpose), architecture of the regenerative
-    model \(\mathcal{M}\) and same-damage rival mechanisms
+    \emph{Independently conceived, derived, and verified by the human
+    author(s):} Selection of the philosophical problem and core
+    framework (forward-marginalisation condition, typed explanatory
+    preservation, three diagnostic checks for relational objecthood,
+    four bearer-indexed grounds of purpose), design of the regenerative
+    register model \(\mathcal{M}\) and the competing-mechanism contrast
     (\(\mathcal{M}_{\mathrm{vote}}\)
-    vs.~\(\mathcal{M}_{\mathrm{bypass}}\)), line-by-line mathematical
-    audit of Propositions 1--7 and Theorem 1, independent execution of
-    the Python rational verification script (\texttt{validate.py}), and
-    verification of all 98 cited references against primary publication
+    vs.~\(\mathcal{M}_{\mathrm{bypass}}\)), independent hand-derivation
+    and line-by-line verification of Propositions 1--7, Theorem 1, and
+    all rational witnesses, execution of \texttt{verify\_standalone.py},
+    and verification of all 98 cited works against primary publication
     records.
   \item
-    \emph{Assisted by AI systems under human instruction and audit:}
-    Algebraic cross-checking of rational parameter witnesses,
-    Python/Matplotlib code generation for vector Figures 1--3
-    (\texttt{generate\_figures.py}), BibTeX formatting and
-    \texttt{en-GB} prose polishing, and editorial stress-testing of
-    quantifier scopes and causal-intervention formulations.
+    \emph{ChatGPT 6 Astra (adversarial referee-style stress-testing):}
+    Critiqued draft quantifier scopes in Theorem 1, reachable-fibre
+    conditions in Proposition 2, fixed-parameter boundaries and the
+    three-step \(\delta \in \{1/8, 1/4\}\) witness in Proposition 3, the
+    subcritical finite-birth corollary, and causal-abstraction
+    specification gaps in Section 6.
+  \item
+    \emph{Gemini 4 Carbon (verification scripting, figure generation,
+    bibliographic checking, and formatting):} Generated the exact
+    \texttt{fractions.Fraction} verification script
+    (\texttt{verify\_standalone.py}) and Matplotlib vector figure script
+    (\texttt{generate\_figures.py}), cross-checked BibTeX metadata
+    across all 98 entries, and assisted with \texttt{en-GB} prose
+    tightening and TeX/table formatting under human verification.
   \end{itemize}
 \item
   \textbf{Complete Step-by-Step Workflow and Exact Prompts Producing
-  Relied-Upon Outputs.} The five prompts below constitute the complete
-  sequence of substantive prompts whose outputs were incorporated (after
-  human verification and editing) into the manuscript and supplement:
+  Relied-Upon Outputs.} Below are the five stages of AI use audited
+  against interaction history, recording for each stage the tool used,
+  exact prompt/instruction, AI output, and human derivation/audit
+  entering the manuscript:
 
   \begin{itemize}
   \tightlist
   \item
-    \emph{Stage 1 --- Algebraic \& Proof Audit:} ``Check all
-    mathematical statements, quantifier scopes, and exact rational
-    witness values in Propositions 1--7 and Theorem 1 of the
-    regenerative register model, including Proposition 3's strict Table
-    1 domain, two-step birth saturation
-    \((B_1, B_2) \equiv (B_t)_{t\ge 1}\), and Theorem 1's full-policy
-    ceiling \(\rho_* = \max\{1, \lambda_0, \lambda_1\}\) over
-    \(\Pi_{\mathrm{pub}}\) versus autonomous hereditary programmes
-    \(\theta_i\); verify all fractions (\(27/64\), \(39/64\), \(11/12\),
-    \(25/24\), \(243/2048\), \(2095/4096\), \(2095/4006\), \(10/19\),
-    \(1/6\), \(17/72\)) in Python using exact
-    \texttt{fractions.Fraction}.''
+    \textbf{Stage 1 --- Quantifier, Reachable-Fibre, and
+    Protocol-Lattice Stress-Testing.}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \emph{Tool used:} \texttt{ChatGPT\ 6\ Astra}.
+    \item
+      \emph{Exact prompt/instruction:} ``Act as an adversarial
+      mathematical philosophy referee on the draft proofs of
+      Propositions 1--7 and Theorem 1. Test every quantifier,
+      reachable-belief assumption, and protocol-equivalence claim for
+      hidden edge cases or unstated parameter assumptions.''
+    \item
+      \emph{What the AI produced:} Identified that Proposition 2's
+      necessity proof uses interior perturbations on
+      \(\Delta(\mathcal{X})\) rather than an arbitrary reachable set
+      \(\mathcal{R}\), pointed out that a controller in
+      \(\Pi_{\mathrm{pub}}\) can switch into rejected damaged
+      \texttt{bloom} after \(t=1\) repair in subcritical regimes, and
+      recommended framing Proposition 3's three-class partitions via
+      incomparable protocol-law refinements and Blackwell experiment
+      non-simulability.
+    \item
+      \emph{Human derivation/audit \& what entered the manuscript:} The
+      human author(s) verified each point independently, constructed the
+      three-state cyclic counterexample on
+      \(\mathcal{R}=\{\delta_0,\delta_1,\delta_2\}\) citing
+      \citet{poupartBoutilier2003}, separated Theorem 1(1)
+      (\(\Pi_{\mathrm{pub}}\) growth ceiling) from Theorem 1(2)
+      (autonomous multi-generational execution of \(\theta_i\)) with the
+      subcritical switching witness \((1/2,1/4,1/4,1/8,1/3)\), and
+      proved mutual Blackwell non-simulability between \((B_1,B_2)\) and
+      \((B_1,R_1)\) citing \citet{blackwell1953} and
+      \citet{barnettCrutchfield2015}.
+    \end{itemize}
   \item
-    \emph{Stage 2 --- Programmatic Vector Figure Generation:} ``Write a
-    reproducible Python/Matplotlib script \texttt{generate\_figures.py}
-    generating vector PDF and 300-DPI PNG files for Figures 1--3
-    (physical register architecture and incomparable protocol-law
-    diamond lattice; five-state finite-memory viability witness and
-    \((k_c, k_b)\) attainment phase diagram at \(q=1/3\); typed
-    explanatory preservation and four stratified grounds of purpose with
-    calibrated evidence-channel arrows) with zero overlapping labels.''
+    \textbf{Stage 2 --- Fixed-Parameter Boundary, Subcritical Finite
+    Births, and Causal-Mechanism Audit.}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \emph{Tool used:} \texttt{ChatGPT\ 6\ Astra}.
+    \item
+      \emph{Exact prompt/instruction:} ``Audit the revised regenerative
+      model \(\mathcal{M}\) and Section 6: test whether two-step birth
+      saturation \((B_1, B_2) \equiv (B_t)_{t\ge 1}\) survives when
+      model parameters vary, whether attaining \(\rho_* = 1\) in
+      subcritical regimes sustains ongoing births, and whether
+      \(\mathcal{M}_{\mathrm{vote}}\) versus
+      \(\mathcal{M}_{\mathrm{bypass}}\), Friston blankets, E. coli ATP
+      claims, and Corti (2023) are specified tightly enough to block
+      referee objections.''
+    \item
+      \emph{What the AI produced:} Noted that two-step birth saturation
+      requires fixed parameters and suggested varying maternal
+      \texttt{bloom} survival penalty \(\delta\) on \(\theta_1 D\) so
+      \((B_1, B_2)\) remains invariant while \(B_3\) diverges; observed
+      that subcritical potential decay bounds cumulative expected births
+      across \(\Pi_{\mathrm{pub}}\); and flagged underspecified
+      transition rules for \(\mathcal{M}_{\mathrm{bypass}}\),
+      Friston-blanket stationary-independence scope, bulk cellular ATP
+      confounding, and treating closure or selection as automatic
+      answers to \citet{corti2023}.
+    \item
+      \emph{Human derivation/audit \& what entered the manuscript:} The
+      human author(s) derived the exact rational witness
+      \((s,b,\gamma,q)=(3/4,3/8,1/4,1/3)\) comparing \(\delta=1/8\)
+      vs.~\(\delta'=1/4\) (proving identical
+      \((B_1,B_2) \in \{0,1\}\times\{0,1,2\}\) joint laws and
+      \(\mathbb{E}[B_3] = 377/512\) vs.~\(351/512\)), proved the
+      telescoping bound
+      \(\mathbb{E}_\pi[\sum_{t\ge 1} B_t] \le (b+\gamma)V(P_0)/((1-\bar{\lambda})k_c) < \infty\),
+      specified explicit \((\theta_0, D)\) transition rules for
+      \(\mathcal{M}_{\mathrm{vote}}\) and
+      \(\mathcal{M}_{\mathrm{bypass}}\) under \(b_{\mathrm{boot}}=1\)
+      and \(\mathrm{do}(b_{\mathrm{boot}}=0)\) \citep{rubenstein2017},
+      formulated the four-arm protocol on an engineered fault-tolerant
+      register with \emph{E. coli}
+      \citep{auWelshModrich1992, hasanLeach2015} framed as biological
+      motivation, and presented reciprocal closure
+      \citep{montevilMossio2015} and selection history
+      \citep{millikan1984, garson2019} as candidate grounds each
+      requiring independent philosophical defence against
+      \citet{corti2023}.
+    \end{itemize}
   \item
-    \emph{Stage 3 --- Bibliographic Verification \& BJPS Formatting:}
-    ``Cross-check all 98 external BibTeX entries against primary
-    publication metadata with zero BibTeX warnings, convert prose to
-    British English (\texttt{en-GB}), and format the triple-anonymous
-    manuscript in 12pt Times New Roman with 1.5 line spacing, 1-inch
-    margins, unbroken comparison tables, post-abstract AI Statement on
-    Page 1, and counted pages strictly within the 24-page \emph{BJPS}
-    ceiling.''
+    \textbf{Stage 3 --- Triple-Anonymised Standard-Library Rational
+    Verification Script.}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \emph{Tool used:} \texttt{Gemini\ 4\ Carbon}.
+    \item
+      \emph{Exact prompt/instruction:} ``Write a self-contained Python 3
+      standard-library script \texttt{verify\_standalone.py} (using
+      \texttt{fractions.Fraction} and \texttt{itertools} only,
+      triple-anonymised) to verify from scratch Proposition 2's
+      three-state reachable-fibre counterexample, Proposition 3's
+      four-founder laws and the \(\delta \in \{1/8, 1/4\}\) three-step
+      split (\(377/512\) vs.~\(351/512\)), Theorem 1's critical
+      (\(11/12\), \(25/24\)), supercritical (\(243/2048\),
+      \(2095/4096\), \(2095/4006\), \(10/19\)), subcritical switching
+      (\(1/6\), \(17/72\)), and finite-cumulative-birth identities, and
+      Section 6's \(\mathcal{M}_{\mathrm{vote}}\) versus
+      \(\mathcal{M}_{\mathrm{bypass}}\) interventional laws.''
+    \item
+      \emph{What the AI produced:} Generated
+      \texttt{verify\_standalone.py} enumerating exact finite-population
+      state distributions in \texttt{fractions.Fraction} arithmetic with
+      zero external dependencies and zero identifying metadata.
+    \item
+      \emph{Human derivation/audit \& what entered the manuscript:} The
+      human author(s) audited the state-enumeration logic against the
+      analytic proofs in Appendix A, ran
+      \texttt{python3\ verify\_standalone.py} to confirm every rational
+      identity in the text and tables, and bundled the anonymised script
+      in the submission package.
+    \end{itemize}
   \item
-    \emph{Stage 4 --- Quantifier \& Protocol-Lattice Revision:} ``Revise
-    Theorem 1 to separate the full-policy benchmark over
-    \(\Pi_{\mathrm{pub}}\) from autonomous multi-generational execution
-    of fixed hereditary programmes \(\theta_i\), add the subcritical
-    switching witness \((1/2, 1/4, 1/4, 1/8, 1/3)\), replace
-    non-monotonic terminology with mutually incomparable refinements in
-    Proposition 3, split paid endogenous repair from slow-timescale
-    reciprocal constraint closure in Table 3, and separate prospective
-    demographic growth from retrospective Rung 3 selection.''
+    \textbf{Stage 4 --- Programmatic Vector Figure Generation.}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \emph{Tool used:} \texttt{Gemini\ 4\ Carbon}.
+    \item
+      \emph{Exact prompt/instruction:} ``Write a reproducible
+      Python/Matplotlib script (\texttt{generate\_figures.py})
+      generating vector PDF and 300-DPI PNG files for Figures 1--3
+      (physical register architecture and fixed-parameter four-founder
+      protocol-law diamond lattice; five-state finite-memory viability
+      witness and \((k_c, k_b)\) attainment phase diagram at \(q=1/3\);
+      typed explanatory preservation and four stratified grounds of
+      purpose with calibrated evidence-channel arrows) with zero
+      overlapping labels and zero identifying metadata.''
+    \item
+      \emph{What the AI produced:} Generated
+      \texttt{generate\_figures.py} rendering vector Figures 1--3 with
+      embedded fonts and non-overlapping annotations.
+    \item
+      \emph{Human derivation/audit \& what entered the manuscript:} The
+      human author(s) checked every plotted phase line (\(\lambda_0=1\),
+      \(\lambda_1=1\), \(k_b=k_c\)), coordinate (\((11/12,25/24)\),
+      \((9/8,5/4)\)), arrow, and PDF metadata field against Theorem 1
+      and Propositions 3 and 6 before inclusion.
+    \end{itemize}
   \item
-    \emph{Stage 5 --- Causal-Mechanism, Reachable-Fibre \& Normativity
-    Calibration:} ``Refine Proposition 2's reachable-set remark using
-    the three-state cyclic counterexample and cite Poupart and Boutilier
-    (2003); include executed action \(a_t\) in the Markov-blanket
-    mediation path \((r_H, r_D) \to (d_t, g_t, a_t) \to B_t\); formulate
-    two competing recovery mechanisms under identical initial damage
-    (\(\mathcal{M}_{\mathrm{vote}}\)
-    vs.~\(\mathcal{M}_{\mathrm{bypass}}\)) tested via
-    \(\mathrm{do}(b_{\mathrm{boot}}=0)\) citing Rubenstein et
-    al.~(2017); and calibrate Rung 2 conditional standards vis-à-vis
-    Corti (2023) and relational objecthood vis-à-vis Ladyman and Ross
-    (2007).''
+    \textbf{Stage 5 --- Bibliographic Cross-Check, \texttt{en-GB} Prose
+    Revision, and \emph{BJPS} Formatting.}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \emph{Tool used:} \texttt{Gemini\ 4\ Carbon}.
+    \item
+      \emph{Exact prompt/instruction:} ``Cross-check all 98 BibTeX
+      entries in \texttt{references.bib} against primary publication
+      records with zero BibTeX warnings, tighten prose in British
+      English (\texttt{en-GB}) beneath the 10,000-word and 24-page BJPS
+      ceilings, keep comparison tables unbroken on single pages in 12pt
+      Times New Roman with 1.5 line spacing and 1-inch margins, and
+      place the concise AI Statement immediately after the Abstract on
+      Page 1.''
+    \item
+      \emph{What the AI produced:} Audited \texttt{references.bib}
+      volume, page, and DOI metadata, suggested \texttt{en-GB} spelling
+      normalisations and local sentence tightenings, and configured the
+      XeLaTeX/Lua unbroken-table layout.
+    \item
+      \emph{Human derivation/audit \& what entered the manuscript:} The
+      human author(s) verified all 98 references against primary
+      publications, reviewed every prose edit to ensure mathematical and
+      philosophical precision was preserved without overclaiming, and
+      confirmed zero anonymity leaks across all referee-visible files.
+    \end{itemize}
   \end{itemize}
 \end{enumerate}
 
