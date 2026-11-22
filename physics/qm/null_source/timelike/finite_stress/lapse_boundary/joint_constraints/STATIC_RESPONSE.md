@@ -176,10 +176,18 @@ projection at second order contains
 Here \(\rho_{2,\rm response}\) includes **all** state, metric, normal,
 counterterm and apparatus terms. The \(h_2\) part disappears by (3).
 For instance a constant \(K_1=\kappa\gamma\) supplies \(6\kappa^2V_0\)
-and satisfies the linear momentum constraint, but its associated
-quantum-state response has not been computed. The positive second radius
+and makes the geometric linear momentum row vanish; the full row
+additionally requires the corresponding matter momentum response to
+vanish. That quantum-state response has not been computed. The positive second radius
 derivative in GROUND_DATUM.md provides another exact diagnostic.
 
 Equation (6) is a second-order range balance. It is not identified with
 a full Einstein KID/Taub theorem, not a construction of a common
 nonstatic history, and not a quantum constraint solution.
+
+A static-ground Cauchy covariance for an ultrastatic spatial metric is
+not automatically Hadamard for an arbitrary nonstatic spacetime with
+the same spatial metric and extrinsic curvature on one slice. Its
+ultraviolet Cauchy symbols also depend on the actual operator and
+metric jets. The allowed second-order directions above still require
+a legitimate history and state transport.

@@ -16,9 +16,22 @@ This independently timed session began 2026-11-22 03:24:17 UTC
   of the actual ground-based scalar response; a nonzero independent state
   column and its energy cost; the required second geometric order.
 
-Three scientific certificates and one source/scope check are available.
+Nine scientific certificates and one source/scope check are available.
 These are computed certificates with separately stated analytic proofs,
-not four new theorems or an external peer review.
+not ten new theorems or an external peer review.
+
+## Second closed research cycle
+
+- [Continuum domains](METRIC_DOMAINS.md): actual first tangents, gauge nulls,
+  and the fixed-bare-representation obstruction.
+- [Sharp charges](SHARP_CHARGES.md): finite dipole, divergent quadrupole,
+  and a preparation energy bound.
+- [Local preparation](LOCAL_PREPARATION.md) and
+  [joint preparation](JOINT_PREPARATION.md): actual smooth source pulses,
+  normal endpoint states and eight controllable mean projections.
+- [Source accounting](SOURCE_ACCOUNTING.md) and
+  [autonomous gate](AUTONOMOUS_GATE.md): source counterterms, net work,
+  transfer noise and the exact pure-history quadratic-actuator rejection.
 
 ## Active next cycle
 
