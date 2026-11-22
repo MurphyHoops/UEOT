@@ -1,0 +1,30 @@
+# `all_harmonic_horizon` 中文统一进展报告：普朗克传感器视界下界、$S^3$ 全谐波（$\ell \ge 0$）约束闭合、渐近平直局域时钟与动态反作用不动点
+
+**当前总体结论：物理统一的核心目标仍保持未闭合（`"physical_unification": "OPEN"`）。**
+
+本批次在已验收的 `renormalized_continuum` 基线提交 `56cad47620e1a85047c58f775b9dc617da62bbbc` 之上独立推进，逐字节冻结全部 **1,231 个前驱科学文件**、复用 **332 项已通过前驱结果**（`0` 次前驱科学模块导入或重跑，`0` 次场模或几何数值 ODE 积分），针对 `renormalized_continuum/NEXT_GATE.md` 所列全部五道开放门控完成了 **12 项新科学证明与 100 位向外区间算术证书（`AH01`–`AH12`）及 1 项范围/源码绑定门（`review`）**，累计验证链推进至 **345 项**。
+
+---
+
+## 一、五组核心科学突破摘要
+
+### 1. 点局域极限 $\rho_0 \to 0$ 的量子引力视界禁行定理与重整化群三分法（`AH01`–`AH02`）
+- **抗压缩正规 Fock 态操作型普朗克下界（`AH01`）**：不假设正规序能量密度逐点非负、不限于高斯或未压缩态，对任意总重整化能量 $E_{\mathrm{tot}} = \mathrm{Tr}(\rho H_{\mathrm{ren}}) \ge 0$ 的正规量子态 $\rho$，利用精确等时对易子 $[X_L, \dot X_L] = i\hbar c^2 c_{w,2} L^{-3}$、Plancherel 有理 Beta 常数（$J_0 = \frac{32768}{2078505}$，无量纲动能比 $\bar a = \sqrt{7}$）及斜厄米涂抹算符不等式 $-(A - A^\dagger)^2 \le 4 A^\dagger A + 2[A, A^\dagger]$，严格证明局域因果门分辨度 $\Delta t|\langle\dot X_L\rangle_\rho| \ge \mathcal{N}_{\mathrm{gate}}\sqrt{\mathrm{Var}_\rho(X_L)}$（$\Delta t = \eta_t L/c$）要求 $E_{\mathrm{tot}} \ge \frac{\mathcal{E}_{\min}\hbar c}{L}$；联立球对称捕获面非形成条件 $\frac{2 G E_{\mathrm{tot}}}{c^4} < \lambda_{\mathrm{sys}} L$，强制给出**严格正的最小传感器半径**：
+  $$L > L_{\min} := \sqrt{\frac{2\mathcal{E}_{\min}}{\lambda_{\mathrm{sys}}}}\,\ell_P \qquad \bigl(\mathcal{N}_{\mathrm{gate}}=1,\eta_t=1,\lambda_{\mathrm{sys}}=2\text{ 时 }L_{\min} > 0.153\,\ell_P \approx 2.47\times 10^{-36}\text{ m}\bigr).$$
+- **非渐近双侧方差括号与全指数 RG 三分法（`AH02`）**：证明对一切 $\rho_0 \in (0, 1/3]$，单位 $S^3$ 非齐次测地帽方差满足显式双侧不等式 $\frac{25}{576\pi^2}\rho_0^{-2} < \sigma_{X,\mathrm{osc},\rho_0,\infty}^2 < \overline c_\sigma \rho_0^{-2}$（$\overline c_\sigma < 70.5$），Friedrichs 真空位移满足 $C_{\mathrm{shift},\rho_0} > \frac{75}{1024}\rho_0^{-4} \to +\infty$；对幂律重整化 $g(\rho_0) = g_{\mathrm{ref}}(\rho_0/\rho_{\mathrm{ref}})^\nu$（$\forall\nu\in\mathbb{R}$），$\nu < 1$ 触发量子门相位洗出，$\nu > 1$ 与临界 $\nu = 1$ 在固定物理引力常数 $G > 0$ 下均越过 `RC05` 的亚临界反弹门限 $\alpha_G = 1/3$（$\nu = 1$ 的精确大挤压临界半径为 $\rho_{\mathrm{crunch}}(1) = \frac{\sqrt{30}}{200}\text{ rad} \approx 0.027386\text{ rad}$）。
+
+### 2. $S^3$ 完整 15 维共形—Killing 阻碍闭合、全谐波 $\ell \ge 2$ 椭圆反演与涂抹 Bianchi 传播（`AH03`–`AH06`）
+- **15 维阻碍审计与自主反冲角动量抵消（`AH03`）**：符号证明 $(S^3, a^2\gamma)$ 上线性化 ADM 约束伴随核由 `1` 个 $\ell=0$ Friedmann 模、`4` 个 $\ell=1$ 标量模、`4` 个真共形 Killing 梯度与 `6` 个 $SO(4)$ Killing 旋转矢量构成（$1+4+4+6 = 15 = \dim\mathfrak{so}(5,1)$）；证明可分离共形旁观场动量密度恒为精确空间梯度（Killing 荷恒零），`RC08`–`RC09` 轴对称协议在全阶下满足 $J_{AB}^{\mathrm{tot}}(\tau) \equiv 0$；对一般非共线三维控制 $\mathbf{u}_0\wedge\mathbf{u}_1 \neq 0$，规定背景物质子扇区具严格正二阶 Clebsch–Gordan 力矩 $+\varkappa_{\mathrm{rot}} > 3.7\times 10^{-4}$，而在 $SO(4)$ 不变自主总哈密顿量下控制器与时钟反冲精确抵消物质力矩（$\mathbf{J}_{\mathrm{rot}}^{\mathrm{app+matter}}(\mathbf{u}) \equiv \mathbf{0}$），因此单靠 $\mathbf{u}\in\mathbb{R}^8$ 无法匹配一般 $\mathbf{y}_{\mathrm{rot}} \neq \mathbf{0}$。
+- **正交平衡共形旋转配平与 14 参数弯曲逆（`AH04`）**：构造 6 组正交平衡共形偶极四重态（24 通道，载波尺度 $N_0 = 10^{-24}$），弯曲因子 $a(\tau)^2\cdot a(\tau)^{-2} \equiv 1$ 精确相消，实现 Killing 荷精确单位阵响应 $I_6$、对径奇偶零串扰（$0_{8\times 6}$）、总能量恒等于 $24 N_0$（严格独立于 $\mathbf{w}$）及 $\mathbf{w}=\mathbf{0}$ 处逐点 $SO(4)$ 各向同性纯辐射，在自主总源（$\mathbf{w}^* = \mathbf{y}_{\mathrm{rot}}$）与物质子扇区两套合同下闭合全部 14 维非齐次阻碍。
+- **全谐波 $\ell \ge 2 \dots \infty$ 椭圆解与局域演化板层 Bianchi 传播（`AH05`–`AH06`）**：符号核验标量、纵向矢量、横向无散矢量（负特征值 $-\frac{5}{2}$）三扇区共享普适可逆因子 $(\ell-1)(\ell+3) \ge 5$（$\ell \ge 2$），导出三维球面 Sobolev–Green 级数精确闭式值 $\frac{\pi^2}{12} - \frac{55}{576}$ 与完整二项式 Sobolev 波范数包络，证出 $H^4(S^3)\hookrightarrow C^{2,1/2}(S^3)$ 解满足 $\|\psi_{\ge 2}\|_{L^\infty(S^3)} < 10^{-22}$；进而对完整 35 标量场复合体证明无需尖锐片 $\mathcal{Q}(H_{0,3}(X))$ 定义域的 $K \le \infty$ 时空涂抹 ADM 约束均方根涨落 $< 6.7\times 10^{-41}$，并在无脉冲、无非局域门的局域弯曲演化子板层 $(\pi, 5.90)$ 与 $(\tau(\theta=1/5), \pi)$ 上由空间平均 Einstein 闭合条件导出四维缩并 Bianchi 约束传播。
+
+### 3. 渐近平直（$\Lambda = 0$）局域时钟初值与介观相干引力测量窗口（`AH07`–`AH08`）
+- **消除宇宙学临界密度要求（`AH07`）**：在 $\Lambda = 0$ 的渐近平直 $\mathbb{R}^{1,3}$ 中，对紧支撑光滑非负能量波包构造精确 $C^1(\mathbb{R}^3)$ Lichnerowicz 上解屏障 $\psi_+(r)$（$\psi_{\max} = \frac{5}{4}$），证出尖锐有理亚临界紧致度门限 $\mathcal{C}_{\mathrm{crit}} = \frac{2048}{9375} \approx 0.21845$、严格 Banach 收缩常数 $L_{\mathcal{T}} = \frac{9375}{2048}\mathcal{C}_0 < 1$、坐标与本征 ADM 质量包络（$M_{\mathrm{coord}} < M_{\mathrm{ADM}} \le \frac{3125}{1024}M_{\mathrm{coord}}$，$\frac{4}{5}M_{\mathrm{proper}} < M_{\mathrm{ADM}} < M_{\mathrm{proper}}$）及全空间无极小面/无视界条件 $\frac{d}{dr}(r\psi^2) > \frac{2}{3} > 0$（屏障本身 $\ge \frac{35}{36} > 0$），将局域时钟能量密度较闭合 $S^3$ 降低逾 $30$ 个数量级。
+- **普适引力相位标度与 62/242 次试验介观窗口（`AH08`）**：导出亚视界局域波包引力相位恒等式 $\Delta\phi_{\mathrm{grav}} = (E_{\mathrm{src}}/E_P)(E_{\mathrm{probe}}/E_P)\frac{c T_{\mathrm{int}}}{d_{\mathrm{sep}}}$，定量证明 $10\text{ pg}$、间距 $200\,\mu\text{m}$、相干时间 $1\text{ s}$ 的平直空间介观凝聚体协议在 $\mathcal{C}_0 < 3\times 10^{-37}$ 下产生 $\Delta\phi_{\mathrm{grav}} \in [0.3164, 0.3165]\text{ rad}$，对称差分分支仅需 **$62$ 次独立试验**（单支开/关中点偏置仅需 **$242$ 次**）即可达 95% Hoeffding 置信度分辨（较 `RC12` 超弱场体制降低 $10^{32}$–$10^{33}$ 倍；同时诚实声明宏观空间相干制备尚未在实验室执行）。
+
+### 4. 厄米局域媒介链恢复三维逐点 Dirac 超曲面代数与 Einstein–Langevin 收缩不动点（`AH09`–`AH10`）
+- **无反常三维弯曲逐点 Dirac 代数（`AH09`）**：符号证明非局域空间帽涂抹在重叠区内产生非零 $O(g\rho_0^2)$ 超局域 Dirac 缺陷，而改用厄米正定无快子的 $5$ 场三对角局域共形辅助媒介链（$M_\Sigma = 20, \mu_\Sigma^2 = \frac{1}{2}M_\Sigma^2$，最小质量平方特征值 $> 53 > 0$，保持 $\frac{3}{16}M_\Sigma^{10}k^{-10}$ 紫外衰减与有限 Friedrichs 下界）可在任意三维弯曲黎曼流形上严格恢复**逐点零缺陷 Dirac 超曲面形变括号**（且正规序 $c$ 数减项中心反常恒为零）。
+- **动态半经典/随机反作用不动点（`AH10`）**：由单位 $S^3$ 正 Ricci 曲率 Bochner 恒等式严格导出闭式 $H^2(S^3)$ Banach 代数常数 $\frac{3\sqrt{3}}{2}$，在 $\mathcal{X} = C^0(\mathcal{I}, H^3_{\ell\ge 2}(S^3))\cap C^1(\mathcal{I}, H^2_{\ell\ge 2}(S^3))$（球半径 $R_* = 10^{-12}$）上结合 `AH05` 导出的椭圆初值与确定性应力界，证明非线性波规范 Einstein–Langevin 映射覆盖超过 $5\times 10^{23}\sigma$ 的 35 物种涂抹应力涨落实现，且具严格收缩常数 $L_{\mathrm{EL}} < 4\times 10^{-9} \ll 1$。
+
+### 5. `Core v3` 定量输运桥与不可约公设审计（`AH11`–`AH12`）
+- 证出 $120$ 步离散 Dyson–Lieb–Robinson 输运链在超光速比 $\eta_{\mathrm{LR}} = \frac{2}{5}$ 下的泄漏尾界 $< 2\times 10^{-48} < 10^{-45}$，并逐项清点仍未从只读 `Core v3` 导出的 4 类物理公设与 3 项非微扰前沿（见 [NEXT_GATE.md](NEXT_GATE.md)），确保科学边界诚实透明。

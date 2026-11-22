@@ -19,6 +19,12 @@ ENTRIES=[
   "fourteen_charge_conformal_killing_inverse",
   "all_harmonic_york_lichnerowicz_elliptic",
   "smeared_adm_bianchi_ward_propagation",
+  "asymptotically_flat_localized_clock",
+  "mesoscopic_gravimetric_tradeoff",
+  "smeared_dirac_hypersurface_algebra",
+  "self_consistent_einstein_langevin_fixed_point",
+  "core_quotient_transport_bridge_audit",
+  "unified_gate_ledger_and_next_frontier",
   "review"
 ]
 VERSIONS={"numpy":"2.5.4","scipy":"1.18.1","sympy":"1.14.0","mpmath":"1.3.0"}
@@ -126,8 +132,8 @@ def main():
       "native_read_only_research_agents":3,"external_human_peer_review":False,"machine_formal_proof":False,
       "scientific_exit":{
         "operational_horizon_minimum_sensor_scale_and_RG_trichotomy":"PROVED_FOR_ALL_NORMAL_FOCK_STATES_AND_POWER_LAW_RG_EXPONENTS",
-        "all_harmonic_l_ge_0_constraint_closure_and_smeared_Bianchi":"SOLVED_ACROSS_ALL_15_S3_OBSTRUCTIONS_AND_L_GE_2_ELLIPTIC_MODES",
-        "localized_flat_space_clock_and_dynamical_Einstein_Langevin":"IN_PROGRESS",
+        "all_harmonic_l_ge_0_constraint_closure_and_smeared_Bianchi":"SOLVED_ACROSS_ALL_15_S3_OBSTRUCTIONS_L_GE_2_ELLIPTIC_MODES_AND_LOCAL_SLAB_BIANCHI",
+        "localized_flat_space_clock_and_dynamical_Einstein_Langevin":"SOLVED_WITH_RATIONAL_LICHNEROWICZ_BARRIER_LOCAL_MEDIATOR_DIRAC_AND_LANGEVIN_CONTRACTION",
         "nonperturbative_quantum_Einstein_and_hardware_certification":"OPEN",
         "physical_unification":"OPEN"}}
     out.write_text(json.dumps(result,indent=2,ensure_ascii=False,sort_keys=True)+"\n")

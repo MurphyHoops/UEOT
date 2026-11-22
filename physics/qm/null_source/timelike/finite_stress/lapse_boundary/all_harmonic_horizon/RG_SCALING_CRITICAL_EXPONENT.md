@@ -16,10 +16,10 @@ By `AH01`, $\hat\kappa_{\rho_0}(k) > 5/6$ for all $1 \le k \le N(\rho_0) = \lflo
 1. For $2 \le k \le M(\rho_0)$, $|\hat\kappa_{\rho_0}(k)| \le 1$ gives $\sum_{k=2}^{M} k\hat\kappa_{\rho_0}(k)^2 < \frac{(\rho_0^{-1}+1)(\rho_0^{-1}+2)}{2} \le \frac{10}{9}\rho_0^{-2}$.
 2. For $k > M(\rho_0)$, $k \le \frac{k^2(k^2-1)}{M(M^2-1)} \le \frac{9}{8}\rho_0^3 k^2(k^2-1)$. By $S^3$ gradient Parseval ($-\Delta_{S^3} Y_{k,m} = (k^2-1)Y_{k,m}$),
    $$\sum_{k=2}^\infty k^2(k^2-1)\hat\kappa_{\rho_0}(k)^2 = V_0\int_{S^3} |\nabla_{S^3}\kappa_{\rho_0}(e_4, y)|^2\,d\mu(y) = \frac{V_0 \int_0^{\rho_0} 64\sin^2\chi(\cos\chi-\cos\rho_0)^{14}\sin^2\chi\,d\chi}{4\pi\Bigl(\int_0^{\rho_0}(\cos\chi-\cos\rho_0)^8\sin^2\chi\,d\chi\Bigr)^2}.$$
-   Using $\alpha_0 u \le \sin u \le u$ on $[0, 1/3]$ with $\alpha_0 := 3\sin(1/3)$ gives $\cos\chi-\cos\rho_0 = 2\sin\frac{\rho_0+\chi}{2}\sin\frac{\rho_0-\chi}{2} \in [\frac{\alpha_0^2}{2}(\rho_0^2-\chi^2), \frac{1}{2}(\rho_0^2-\chi^2)]$, whence
-   $$\sum_{k=2}^\infty k^2(k^2-1)\hat\kappa_{\rho_0}(k)^2 \le \frac{V_0 \cdot \frac{1}{1024}\rho_0^{33} J_2}{4\pi \cdot \Bigl(\frac{\alpha_0^{18}}{256}\rho_0^{19} J_0\Bigr)^2} = \frac{16 V_0 J_2}{\pi \alpha_0^{36} J_0^2}\,\rho_0^{-5}.$$
+   Using $\alpha_0 u \le \sin u \le u$ on $[0, 1/3]$ with $\alpha_0 := 3\sin(1/3)$ gives $\cos\chi-\cos\rho_0 = 2\sin\frac{\rho_0+\chi}{2}\sin\frac{\rho_0-\chi}{2} \in [\frac{\alpha_0^2}{2}(\rho_0^2-\chi^2), \frac{1}{2}(\rho_0^2-\chi^2)]$ and $64\cdot 2^{-14}\cdot 256^{-1} = \frac{1}{65536}$, whence
+   $$\sum_{k=2}^\infty k^2(k^2-1)\hat\kappa_{\rho_0}(k)^2 \le \frac{V_0 \cdot \frac{1}{65536}\rho_0^{33} J_2}{4\pi \cdot \Bigl(\frac{\alpha_0^{18}}{256}\rho_0^{19} J_0\Bigr)^2} = \frac{V_0 J_2}{4\pi \alpha_0^{36} J_0^2}\,\rho_0^{-5}.$$
 Combining zero, low, and high modes proves $\underline{c}_\sigma \rho_0^{-2} < \sigma_{X,\rho_0,\infty}^2 < \overline{c}_\sigma \rho_0^{-2}$ for **every** $\rho_0 \in (0, 1/3]$ with explicit closed-form $\overline{c}_\sigma$:
-$$\overline{c}_\sigma := \frac{8}{9 V_0} + \frac{1}{\sqrt{3} V_0}\left(\frac{10}{9} + \frac{18 V_0 J_2}{\pi \alpha_0^{36} J_0^2}\right).$$
+$$\overline{c}_\sigma := \frac{8}{9 V_0} + \frac{1}{\sqrt{3} V_0}\left(\frac{10}{9} + \frac{9 V_0 J_2}{32\pi \alpha_0^{36} J_0^2}\right).$$
 
 ## 3. Exact Three-Regime RG Classification as $\rho_0 \to 0^+$
 

@@ -26,11 +26,11 @@ def main() -> None:
     alpha0 = exact(3) * iv.sin(exact(1) / exact(3))
     require(above(alpha0, exact("0.9815")), "Chord factor alpha0 > 0.9815 on [0, 1/3]")
 
-    high_tail_coeff = (exact(18) * v0 * j2) / (iv.pi * (alpha0**36) * (j0**2))
+    high_tail_coeff = (exact(9) * v0 * j2) / (exact(32) * iv.pi * (alpha0**36) * (j0**2))
     c_upper = exact(8) / (exact(9) * v0) + (exact(1) / (iv.sqrt(exact(3)) * v0)) * (
         exact(10) / exact(9) + high_tail_coeff
     )
-    require(above(c_upper - c_lower, 0), "Strict two-sided bracket c_lower < c_upper")
+    require(above(c_upper - c_lower, 0) and below(c_upper, exact("71")), "Tightened two-sided bracket c_upper < 71")
 
     # Verify Friedrichs shift quartic divergence C_shift,rho0 > (75 / 1024) * rho0^(-4) at rho0 = 1/20
     rho_ref = exact(1) / exact(20)
@@ -67,7 +67,7 @@ def main() -> None:
     # Quantum gate variance g(rho0)^2 * sigma^2 stays strictly inside (c_lower * g_ref^2 / rho_ref^2, c_upper * g_ref^2 / rho_ref^2)
     sigma_gate_nu1_lower = c_lower * (g_ref**2) / (rho_ref**2)
     sigma_gate_nu1_upper = c_upper * (g_ref**2) / (rho_ref**2)
-    require(above(sigma_gate_nu1_lower, exact("1.7e-80")) and below(sigma_gate_nu1_upper, exact("1e-73")), "Marginal gate variance bounded")
+    require(above(sigma_gate_nu1_lower, exact("1.7e-80")) and below(sigma_gate_nu1_upper, exact("3e-76")), "Marginal gate variance bounded")
 
     # Yet at fixed G, alpha_G(rho0; 1) = (1/10) * (rho_ref / rho0)^2 hits 1/3 at rho_crunch(1) = rho_ref * sqrt(3/10)!
     rho_crunch_nu1 = rho_ref * iv.sqrt(alpha_g_ref / alpha_g_crit)

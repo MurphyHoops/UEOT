@@ -1,0 +1,15 @@
+# Next Acceptance Gates After `all_harmonic_horizon`
+
+With `AH01`–`AH12` completed on top of `renormalized_continuum` (`332 + 13 = 345` cumulative verified entries on open draft `PR #468`), every perturbative, harmonic, flat-space localization, and semiclassical/Langevin gate posed in `renormalized_continuum/NEXT_GATE.md` has an explicit proof or quantitative obstruction certificate. The remaining distance to genuine physical unification is now sharply concentrated on four irreducible non-perturbative and empirical frontiers:
+
+1. **Non-perturbative operator-valued quantum geometry (`beyond Einstein–Langevin`)**:
+   `AH09` restores exact 3D curved pointwise Dirac hypersurface commutators via a Hermitian tachyon-free 5-field local mediator chain and `AH10` proves a nonlinear Banach fixed point for c-number stochastic/semiclassical Einstein–Langevin backreaction ($C_{H^2,\mathrm{alg}} = \frac{3\sqrt{3}}{2}$, $L_{\mathrm{EL}} < 4\times 10^{-9}$). Constructing a UV-complete, anomaly-free **operator-valued** quantum gravitational Hilbert space solving $\hat{\mathcal{H}}_{\mathrm{tot}}\Psi_{\mathrm{phys}} = 0$ non-perturbatively at finite Planck coupling remains `OPEN`.
+
+2. **Continuum non-perturbative 4D chiral gauge + fermion matter construction**:
+   All matter/apparatus proofs in `PR #468` operate in scalar/bosonic QFT, while `main` (`GaugeFlavorSelection.lean`) establishes anomaly/asymptotic-freedom selection of $(3,3,1)$. A rigorous non-perturbative 4D continuum construction of interacting chiral gauge fields coupled to the autonomous clock/pointer apparatus remains `OPEN`.
+
+3. **First-principles derivation of dimensional couplings and field content from `Core v3`**:
+   `AH11` documents the 4 irreducible postulate classes (`(G, \Lambda, \hbar, c)`, gravitational action normalization, field multiplet, canonical Fock quantization) that are not derived from read-only `Core v3`.
+
+4. **Experimental execution of mesoscopic gravimetry & matched-protocol quantum hardware holdouts**:
+   `AH08` reduces the required gravimetric trial count to $62$ differential ($242$ on/off) runs in a $\Lambda = 0$ flat-space $10\text{ pg}$ coherent condensate protocol, and `HARDWARE_CERTIFICATION_CONTRACT.md` defines the blind hardware holdout schema, but actual laboratory execution (`DEVICE_CERTIFIED`) remains `OPEN`.

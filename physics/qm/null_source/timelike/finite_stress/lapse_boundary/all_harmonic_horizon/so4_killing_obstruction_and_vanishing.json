@@ -1,24 +1,27 @@
 {
-  "Killing_L2_norms": "pi**2",
+  "Clebsch_Gordan_pair_weight_formula": "k*(k+1)/(16*omega_k*omega_{k+1}) * khat(k)^2 * khat(k+1)^2",
   "SO4_Killing_vector_count": 6,
+  "autonomous_RC08_total_SO4_Killing_charges_all_u": 0,
+  "autonomous_recoil_cancels_matter_torque_identically": true,
   "axisymmetric_RC08_RC09_protocol_SO4_Killing_charges_all_orders": 0,
-  "continuum_2nd_order_rotational_torque_kappa_rot": [
-    -0.00033296317940494525,
-    -0.000332963179404731
+  "continuum_external_2nd_order_rotational_torque_kappa_rot": [
+    0.00037649624674377546,
+    0.0003764962467437757
   ],
-  "dominant_12_pair_torque_coeff": [
-    0.0007744401622376887,
-    0.0007744401622376889
-  ],
+  "dipole_normalization_Z_A": "x_A",
   "full_field_Einstein_CTP_device_solution": false,
   "general_3D_noncollinear_target_requires_6_channel_rotational_trim": true,
   "geometry_ODE_integrations": 0,
-  "high_mode_torque_tail_above_k200_upper": 1.0708704477611941e-16,
+  "high_mode_torque_tail_above_k300_upper": 4.124501174328479e-20,
   "homogeneous_l0_count": 1,
   "mode_ODE_integrations": 0,
-  "noncollinear_u_1e_17_witness_J12": [
-    -3.329631794049453e-38,
-    -3.32963179404731e-38
+  "noncollinear_u_1e_17_external_witness_J12": [
+    3.764962467437755e-38,
+    3.7649624674377564e-38
+  ],
+  "pair_12_torque_contrib": [
+    -0.001910854508400363,
+    -0.0019108545084003626
   ],
   "physical_unification": "OPEN",
   "predecessor_scientific_modules_imported_or_executed": 0,
@@ -26,12 +29,11 @@
   "scalar_l1_Fischer_Marsden_count": 4,
   "schema": "ueot-all-harmonic-horizon-so4_killing_obstruction_and_vanishing/1",
   "separable_conformal_spectator_momentum_is_exact_gradient": true,
-  "separable_spectator_SO4_Killing_charges_identically_zero": true,
   "source_sha256": {
-    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/all_harmonic_horizon/SO4_KILLING_OBSTRUCTION_AND_VANISHING.md": "755f80c9be4b09998fa18a840e5ebe1ec07d3bf695593a7613661190f332bbcc",
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/all_harmonic_horizon/SO4_KILLING_OBSTRUCTION_AND_VANISHING.md": "a46b584e6801f8571066c01cf8d2465777a44422c2f07905071d1ef91e0d392d",
     "physics/qm/null_source/timelike/finite_stress/lapse_boundary/all_harmonic_horizon/common.py": "215dd60300b7e76430d7e8a71d377ef1a2accd6a01c7ffe0092bfd4237aef9a9",
     "physics/qm/null_source/timelike/finite_stress/lapse_boundary/all_harmonic_horizon/model.py": "3e39381dff2a150bacf0828ecb20bd59abcab341d7741d278e14652eaf761e05",
-    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/all_harmonic_horizon/so4_killing_obstruction_and_vanishing.py": "efc0dc49966e98778527e8a9bd6b7d042f3c8705ff3678a7649869932a48f737"
+    "physics/qm/null_source/timelike/finite_stress/lapse_boundary/all_harmonic_horizon/so4_killing_obstruction_and_vanishing.py": "f7dc9e2c6d5e78cdcff2e8dde76160d7c18dbb03791339ed56194d751d0611f3"
   },
   "status": "PASS",
   "total_obstruction_dimension": 15,
