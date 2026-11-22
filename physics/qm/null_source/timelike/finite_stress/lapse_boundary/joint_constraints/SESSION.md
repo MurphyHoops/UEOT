@@ -152,3 +152,20 @@ formal-series Ward theorem does not construct the current nonpolynomial
 clock composite at finite coupling. Fewster--Verch's bounded spacetime
 coupling region was distinguished from a bounded interaction operator.
 The next gate now states these exact inheritance limits.
+
+## Recorded three-hour closure
+
+Independent scientific work and internal audit closed at 2026-11-22T06:24:31Z
+(2026-11-22T14:24:31+08:00 Beijing), after 10814 seconds from 03:24:17 UTC.
+No prior-session or parallel-agent time is included. Final delivery/CI
+checks continue afterwards.
+
+All three native read-only reviewers completed the JC6 documentation
+checkpoint at 282179835ceddd44ba8f6a5a94d632bc020d7fd7 and confirmed
+JC5-B-001 resolved. The source ledger now contains 18 records and
+396 full reviewer/commit/file identities, all checked against Git bytes.
+Five scientific checkpoints contribute 372 identities; the final
+documentation checkpoint contributes 24. The 24 scientific certificate
+entries plus one scope/source check pass, with 294 prior entries reused
+and 1090 prior scientific files unchanged. No new physical port or
+physical unification is declared closed.

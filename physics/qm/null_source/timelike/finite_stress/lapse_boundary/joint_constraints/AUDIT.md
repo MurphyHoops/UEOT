@@ -1,6 +1,6 @@
-# Audit in progress
+# Completed internal source audit
 
-Actual source review records and final timing will be added as completed.
+Actual source review records and final timing are recorded below.
 The baseline CI data is in baseline_ci.json; inherited scientific files are
 frozen by the new driver. Physical unification remains OPEN.
 
@@ -107,3 +107,23 @@ entries, exact head64ac74d66696d2cdadf4868fe76046444e80f29f and the
 294-entry/1090-file reuse line. Artifact14742202480 has the same head
 and digest sha256:3222a22b80cffcddde5eea6cba4c97f7e6aba7fac0085cd928c7e9e3a01aef9e.
 These are internal/source/CI checks, not external peer review or formal proof.
+
+## JC6 documentation review and recorded close
+
+All three native reviewers read all eight requested documentation and
+governance files at 282179835ceddd44ba8f6a5a94d632bc020d7fd7 and returned
+the same actual Git SHA256 identities. JC5-B-001 is resolved. These
+24 identities bring the recorded total to 18 reviews and 396 identities
+(15 scientific reviews/372 identities plus 3 documentation reviews/24).
+All eight registered findings are RESOLVED. Hash-only dependencies are
+not counted as full reads.
+
+The independently observed close is 2026-11-22T06:24:31Z, elapsed 10814 seconds,
+with the three-hour gate satisfied. The actual final receipt records its
+pre-commit head and dirty source manifest honestly; exact-final-head
+GitHub Actions is the separate delivery execution evidence. Final
+administrative reads, if performed after this ledger, are separate
+from the 396 registered identities.
+
+This audit is internal native-agent review, not external human peer
+review or machine formal proof. Physical unification remains OPEN.
