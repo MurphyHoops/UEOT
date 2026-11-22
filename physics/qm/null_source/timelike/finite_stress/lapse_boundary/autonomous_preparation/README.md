@@ -53,3 +53,11 @@ a normal Hadamard comparison state. The same switch stopped while active
 does not have the required first-order Fock limit. This does not supply a
 full interacting preparation; it fixes the endpoint condition that the
 next construction must satisfy.
+
+## Exact correlated local comparison
+
+[AP: stationary two-field state, record and complete stress](STATIONARY_COMPARATOR.md),
+[certificate](stationary_comparator.json). This different local linear model
+has an exact coupled-Hadamard state and spacetime-smeared tensor noise,
+but its specified coherent codes fail the static Einstein pressure equation.
+A source-sign record is not an energy or geometric-charge record.

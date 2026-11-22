@@ -40,3 +40,11 @@ Twelve review records contain 165 commit-file identities: 141 full-text
 reads and 24 hash-only reads. AP4's science/domain review passed; its one
 editorial finding remains OPEN pending immutable AP5 reread. AL/AM/AN
 clarifications and AO will be audited at that next checkpoint.
+
+## AP5 fixed-commit audit
+
+Three PASS records at 7696fd194d9c7d739b484e9025e636d40ff4811c add
+27 full-text and 8 hash-only commit-file identities. Ledger total:
+15 records, 200 identities (168 full-text, 32 hash-only). All findings
+currently resolved; final audit is still pending further work. Identity
+repetitions across reviewers/checkpoints are not distinct scientific files.

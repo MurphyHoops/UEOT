@@ -122,3 +122,20 @@ open. These statements do not declare all continuum local theories absent.
 AN now explicitly retains arbitrary symmetry-allowed finite source cross
 contacts, including s_chi*s_s. AM expressly rejects only the fixed vacuum
 input sequence, not every possible correlated graph recovery sequence.
+
+## AP5 immutable review and AP stationary comparison
+
+All three native agents actually reread the nine AP5 files at
+7696fd194d9c7d739b484e9025e636d40ff4811c and returned PASS. AP4-C-001
+was resolved there; the finite-source-contact and correlated-recovery
+scope clarifications also passed. A separately verified 30 binding entries
+covering 15 distinct source files. AP5 exact-head science 44973076343
+and publication 44973076316 succeeded.
+
+Reflection led to AP: a specified constant-coupling local two-field ground,
+source-only coherent codes, all-mode energy law and instrument, complete
+mixed covariance/tensor noise, actual cutoff graph convergence, and an
+explicit static-pressure rejection. Prior W/X local probe existence is
+acknowledged. This does not transfer AB resource numbers or replace the
+accepted original nonstatic mean geometry. Work continues within this
+independently timed session.
