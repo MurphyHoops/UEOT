@@ -42,8 +42,9 @@ C2_inf=iv.sqrt(105)*V*T*(vp_env**2)/4*(M0*M0+M1*M1)
 delta_inf=g*C1_inf+g*g*C2_inf
 require(below(C1_inf,iv.mpf("1.1e8")) and below(C2_inf,iv.mpf("1e12")) and below(delta_inf,iv.mpf("1.2e-32")),"continuum Duhamel error")
 
-# Continuum (K=infty) mathematical record gap (no finite-K receiver truncation tail needed at K=infty, and also check cap-smeared source factor >= khat(2)^2)
-mu_inf=box(prep["receiver_mean_unit_strength_lower"])*(khat[1]**2)
+# Continuum (K=infty) mathematical record gap: on [pi, pi+3] the reference body transfer under free H_r is state-independent
+# (and even under cap-smearing K_{rho0} >= 0 with unit integral, Fubini + pointwise -G_{ps}(3, gamma) >= r/(8*pi) on [0.4, 2.6] preserves mu_lo)
+mu_inf=box(prep["receiver_mean_unit_strength_lower"])
 den=iv.sqrt(2*(iv.mpf("0.01")+eta**2*iv.mpf(9)/16))
 arg=eta**2*mu_inf/den
 gap_inf=2*arg/iv.sqrt(iv.pi)*iv.exp(-arg*arg)

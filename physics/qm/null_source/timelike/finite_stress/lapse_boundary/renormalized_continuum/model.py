@@ -31,6 +31,7 @@ def _isin(m,k,r0):
 
 def geodesic_cap_spectrum(inv_r0=20,Kmax=512,nsub=32):
     r0=iv.mpf(1)/inv_r0
+    require(r0.a>0 and r0.b<(iv.pi/2).a,"Cap radius must lie in (0, pi/2)")
     c0=iv.cos(r0)
     alphas=[None]
     for terms in ALPHA_POLYS:
@@ -62,7 +63,7 @@ def power_tail_upper(exponent,Ksplit):
     p=iv.mpf(exponent)
     return (iv.mpf(Ksplit)**(1-p))/(p-1)
 
-def frw_bounce_enclosure(alpha_G=None,lam_L=None,N=100,T_end=None):
+def frw_bounce_enclosure(alpha_G=None,lam_L=None,N=220,T_end=None):
     """Exact Taylor-Picard outward-interval enclosure of u(tau)=a(tau)^2 for
     u'' = 2*(3*lam_L*u^2 - 2*u + beta_r), u(0)=1, u'(0)=0, beta_r = 1 - alpha_G - lam_L,
     with ZERO ODE integrations."""
@@ -80,9 +81,11 @@ def frw_bounce_enclosure(alpha_G=None,lam_L=None,N=100,T_end=None):
         u2_n=sum(c[j]*c[n-j] for j in range(n+1))
         rhs_n=2*(3*lam_L*u2_n-2*c[n]+(beta_r if n==0 else 0))
         c[n+2]=rhs_n/((n+1)*(n+2))
-    # Defect polynomial d_N(tau) = 6*lam_L * sum_{m=N-1}^{2N} (sum_{j+k=m, 2<=j,k<=N} c[j]*c[k]) tau^m
+    require(all(c[n].a>=0 for n in range(N+1)),"Nonnegative Taylor coefficients required for monotone defect bound")
+    # Exact ODE residual d_N(tau) = 6*lam_L*u_N^2 - 4*u_N + 2*beta_r - u_N''
+    # = 4*mu0*(w_c[N-1]*tau^(N-1) + w_c[N]*tau^N) + 6*lam_L * sum_{m=N-1}^{2N} (sum_{j+k=m, 2<=j,k<=N} c[j]*c[k]) tau^m
     w_c=[iv.mpf(0) if i==0 else c[i] for i in range(N+1)]
-    defect_T=iv.mpf(0)
+    defect_T=4*mu0*(w_c[N-1]*(T_end**(N-1))+w_c[N]*(T_end**N))
     for m in range(N-1,2*N+1):
         conv=iv.mpf(0)
         j_lo=max(2,m-N);j_hi=min(N,m-2)
@@ -90,29 +93,26 @@ def frw_bounce_enclosure(alpha_G=None,lam_L=None,N=100,T_end=None):
             conv+=w_c[j]*w_c[m-j]
         defect_T+=6*lam_L*conv*(T_end**m)
     w_T=sum(w_c[n]*(T_end**n) for n in range(2,N+1))
-    # Weighted Banach contraction on |tau| <= T_end with weight exp(gamma*|tau|), gamma = 2:
-    # For |r(tau)| <= R_ball, |(Picard(r))(tau) - w_N(tau)|:
-    # Write r = u - u_N; r'' = (2*mu0 + 12*lam_L*w_N)*r + 6*lam_L*r^2 + defect.
-    # On sup norm ||r||_inf <= R_ball over [-T_end, T_end] using gamma-weighted norm ||r||_gamma = sup e^{-gamma|tau|}|r(tau)|:
-    gamma=iv.mpf(2)
-    L_lin=(2*mu0+12*lam_L*w_T)/(gamma**2)
+    # Write r = u - u_N; r'' = (4*mu0 + 12*lam_L*w_N)*r + 6*lam_L*r^2 + d_N(tau), where 12*lam_L - 4 = 4*mu0.
+    # Weighted Banach norm ||r||_gamma = sup_{|tau|<=T_end} exp(-gamma*|tau|)*|r(tau)| with gamma = 3:
+    gamma=iv.mpf(3)
+    lin_coef_T=4*mu0+12*lam_L*w_T
+    L_lin=lin_coef_T/(gamma**2)
     require(L_lin.b<iv.mpf("0.45"),"Weighted linear Picard contraction < 0.45")
-    # Source norm in gamma-weighted space: sup_{|tau|<=T} e^{-gamma|tau|} int_0^tau (tau-s) defect(s) ds
-    # Since defect(s) >= 0 increases on [0, T], int_0^|tau| (|tau|-s) defect(s) ds <= T^2/2 * defect_T
     src_sup=(T_end**2/2)*defect_T
-    # Unweighted sup radius R_ball = exp(gamma*T_end) * rho_gamma where L_lin*rho_gamma + (6*lam_L*exp(gamma*T_end)/gamma^2)*rho_gamma^2 + src_sup <= rho_gamma
     egT=iv.exp(gamma*T_end)
     rho_g=2*src_sup/(1-L_lin)
     quad_term=(6*lam_L*egT/(gamma**2))*(rho_g**2)
-    require((L_lin*rho_g+quad_term+src_sup).b<rho_g.a,"Strict Banach self-map")
+    L_lip=L_lin+(12*lam_L*egT/(gamma**2))*rho_g
+    require((L_lin*rho_g+quad_term+src_sup).b<rho_g.a and L_lip.b<iv.mpf("0.5"),"Strict Banach self-map and Lipschitz contraction")
     R_u=egT*rho_g
-    # Derivative error: |r'(tau)| <= T_end * ((2*mu0 + 12*lam_L*w_T)*R_u + 6*lam_L*R_u^2 + defect_T)
-    R_up=T_end*((2*mu0+12*lam_L*w_T)*R_u+6*lam_L*(R_u**2)+defect_T)
-    R_upp=(2*mu0+12*lam_L*w_T)*R_u+6*lam_L*(R_u**2)+defect_T
+    R_up=T_end*(lin_coef_T*R_u+6*lam_L*(R_u**2)+defect_T)
+    R_upp=lin_coef_T*R_u+6*lam_L*(R_u**2)+defect_T
     return {"alpha_G":alpha_G,"lam_L":lam_L,"beta_r":beta_r,"eps0":eps0,"mu0":mu0,
             "N":N,"T_end":T_end,"coeffs":c,"w_T_poly":w_T,"R_u":R_u,"R_up":R_up,"R_upp":R_upp}
 
 def eval_frw(enc,tau_iv):
+    require(abs(tau_iv).b<=enc["T_end"].b,"Evaluation time outside certified [-T_end, T_end]")
     c=enc["coeffs"];N=enc["N"]
     u_p=sum(c[n]*(tau_iv**n) for n in range(N+1))
     up_p=sum(n*c[n]*(tau_iv**(n-1)) for n in range(1,N+1))
@@ -121,6 +121,7 @@ def eval_frw(enc,tau_iv):
     rup=iv.mpf([-enc["R_up"].b,enc["R_up"].b])
     rupp=iv.mpf([-enc["R_upp"].b,enc["R_upp"].b])
     u=u_p+ru;up=up_p+rup;upp=upp_p+rupp
+    require(u.a>0,"Scale factor squared must remain strictly positive")
     a=iv.sqrt(u)
     ap=up/(2*a)
     app=(2*u*upp-up**2)/(4*u*a)

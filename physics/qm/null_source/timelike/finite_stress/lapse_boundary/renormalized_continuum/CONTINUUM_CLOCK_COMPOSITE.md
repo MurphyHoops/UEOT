@@ -6,23 +6,27 @@ Combining the finite-range geodesic-cap sensor kernel $\kappa_{\rho_0}$ ($\rho_0
 
 1. **Zero-point divergence eliminated**: `CLOCK_ACTUATOR`'s bare zero-point sum $E_{\mathrm{zp},K} \sim K^4$ is replaced by $H_{0,\mathrm{ren},K}|\Omega_{\mathrm{osc}}\rangle = 0$ while retaining a **uniform $K$-independent lower bound** $-C_{\mathrm{shift},\rho_0}$ for all $K \in \mathbb{N} \cup \{\infty\}$ and a canonical Friedrichs self-adjoint realization $H_{\mathrm{ren},\infty}^{\rho_0,\mathrm{Fr}}$ at $K = \infty$.
 2. **Fixed-$g$ continuum switch stability**: Smeared variances $\sigma_{X,\rho_0,\infty}^2, \sigma_{Y,\rho_0,\infty}^2, v_{\rho_0,\infty}$ converge rapidly as $K \to \infty$, preventing the fixed-$g$ Gaussian smearing collapse of `CLOCK_UV`.
-3. **Four-particle graph convergence and vanishing cutoff Ward residual**: The interaction tail $\|(V_{\mathrm{int},\infty}^{\rho_0} - V_{\mathrm{int},K}^{\rho_0})\Psi_{\mathrm{init},\infty}\|$ decays as $O(K^{-18}) \to 0$, and the finite-$K$ commutator residual $[P_K\mathcal{K}_{\rho_0}, Z_a]$ decays as $O(K^{-10}) \to 0$.
+3. **Four-particle graph convergence and vanishing cutoff projection commutator**: The body tadpole/Wick variance tail $v_{\rho_0,\infty} - v_{\rho_0,K}$ (and squared four-particle Wick graph norm difference) decays as $O(K^{-18}) \to 0$ (so $\|(V_{\mathrm{int},\infty}^{\rho_0} - V_{\mathrm{int},K}^{\rho_0})\Psi_{\mathrm{init},\infty}\| = O(K^{-9}) \to 0$), and the finite-$K$ cutoff projection commutator $[P_K, \mathcal{K}_{\rho_0} Z_a]$ decays in operator norm as $O(K^{-10}) \to 0$.
 
 At finite $K$, essential self-adjointness holds on smooth compactly supported configuration vectors; at $K = \infty$, self-adjointness is proved specifically for the **Friedrichs realization** of the closed lower-semibounded form, together with explicit norm bounds on the continuum Duhamel difference on the prepared sector.
 
 ## 1. Uniform $K$-Independent Lower Bound and Curved-Slice Stability
 
-Let $H_{0,\mathrm{ren},K}$ be the sum of the homogeneous clock kinetic energy $\frac{1}{2} p_{X,0}^2 \ge 0$ and the normal-ordered oscillator number Hamiltonians of $X_{k\ge 2}$ ($\omega_{X,k} = \sqrt{k^2 - 1}$), the conformal controllers $Y_A$ ($\omega_{Y,k} = k$), and the conformal body doublet $\Phi_\pm$ ($\omega_{\pm,k} = \sqrt{k^2 \pm 1/5}$). For each active channel $j \in \{0, 1\}$, Parseval's identity on $S^3$, $k \ge 1$, and $p_{j,k,m}^2 \ge 0$ give
+On static unit ESU ($a = 1$), let $H_{0,\mathrm{ren},K}$ be the sum of the homogeneous clock kinetic energy $\frac{1}{2} p_{X,0}^2 \ge 0$ and the normal-ordered oscillator number Hamiltonians of $X_{k\ge 2}$ ($\omega_{X,k} = \sqrt{k^2 - 1}$), the conformal controllers $Y_A$ ($\omega_{Y,k} = k$), and the conformal body doublet $\Phi_\pm$ ($\omega_{\pm,k} = \sqrt{k^2 \pm 1/5}$), and set $H_{\mathrm{ren},K}^{\rho_0} := H_{0,\mathrm{ren},K} + V_{\mathrm{int},K}^{\rho_0}$. On a curved FRW slice of scale factor $a \in (0, \sqrt{3/2}]$, write $(\tilde X, \tilde Y_A, \tilde\Phi_\pm)$ for the Weyl-rescaled fields, let $H_{0,\mathrm{ren},K}(a) \ge 0$ be the **instantaneous slice normal-ordered free generator** (avoiding any $a \neq 1$ vs $a = 1$ zero-point subtraction mismatch on $\tilde\Phi_\pm$ or $X$), and set
 \[
- \frac{3}{8}\int_{S^3} Y_{j,\rho_0,K}(x)^2\,dV_\gamma = \frac{3}{8}\sum_{k=1}^K \hat\kappa_{\rho_0}(k)^2 \sum_{m=1}^{k^2} q_{j,k,m}^2 \le \frac{3}{4}\sum_{k=1}^K \hat\kappa_{\rho_0}(k)^2 \sum_{m=1}^{k^2}\Big(h_{j,k,m,\mathrm{ren}} + \frac{k}{2}\Big) \le \frac{3}{4} H_{0,\mathrm{ren},K}(Y_j) + \frac{3}{8}\sum_{k=1}^\infty k^3 \hat\kappa_{\rho_0}(k)^2, \tag{1}
+ V_{\mathrm{int},K}^{\rho_0}(a) := \int_{S^3} dV_\gamma\left[\frac{g a}{2}\sum_{j=0}^1 \tilde Y_{j,\rho_0,K} F_j(g X_{\rho_0,K})\,\tilde\Phi_{+,\rho_0,K}^2 + \frac{g^2}{4}\sum_{j=0}^1 F_j(g X_{\rho_0,K})^2\,\tilde\Phi_{+,\rho_0,K}^4\right], \qquad H_{\mathrm{ren},K}^{\rho_0}(a) := H_{0,\mathrm{ren},K}(a) + V_{\mathrm{int},K}^{\rho_0}(a).
 \]
-since $0 \le \hat\kappa_{\rho_0}(k)^2 \le 1$ and $h_{j,k,m,\mathrm{ren}} \ge 0$. Combining the two active channels $j \in \{0, 1\}$ with the exact algebraic identity (valid for any conformal scale factor $a > 0$ satisfying $a^2 \le 3/2$, including static ESU $a = 1$)
+Because the massless conformal controllers $\tilde Y_j$ have strictly $a$-independent dispersion $\omega_{Y,k} \equiv k$, Parseval's identity on $S^3$, $k \ge 1$, and $p_{j,k,m}^2 \ge 0$ give for each active channel $j \in \{0, 1\}$
+\[
+ \frac{3}{8}\int_{S^3} \tilde Y_{j,\rho_0,K}(x)^2\,dV_\gamma = \frac{3}{8}\sum_{k=1}^K \hat\kappa_{\rho_0}(k)^2 \sum_{m=1}^{k^2} q_{j,k,m}^2 \le \frac{3}{4}\sum_{k=1}^K \hat\kappa_{\rho_0}(k)^2 \sum_{m=1}^{k^2}\Big(h_{j,k,m,\mathrm{ren}} + \frac{k}{2}\Big) \le \frac{3}{4} H_{0,\mathrm{ren},K}(\tilde Y_j) + \frac{3}{8}\sum_{k=1}^\infty k^3 \hat\kappa_{\rho_0}(k)^2, \tag{1}
+\]
+since $0 \le \hat\kappa_{\rho_0}(k)^2 \le 1$ and $h_{j,k,m,\mathrm{ren}} \ge 0$. Combining the two active channels $j \in \{0, 1\}$ with the exact algebraic identity (valid for any $a \in (0, \sqrt{3/2}]$, including static ESU $a = 1$)
 \[
  \frac{3}{8}\tilde Y^2 + \frac{g a}{2}\tilde Y F \tilde\Phi^2 + \frac{g^2}{4} F^2 \tilde\Phi^4 = \frac{3}{8}\left(\tilde Y + \frac{2 g a}{3} F \tilde\Phi^2\right)^2 + \frac{g^2}{4}\left(1 - \frac{2 a^2}{3}\right) F^2 \tilde\Phi^4 \ge 0, \tag{2}
 \]
-proves the uniform operator/form inequality
+proves both the controller-plus-interaction block bound $\sum_{j=0}^1 H_{0,\mathrm{ren},K}(\tilde Y_j) + V_{\mathrm{int},K}^{\rho_0}(a) + C_{\mathrm{shift},\rho_0} \ge \frac{1}{4}\sum_{j=0}^1 H_{0,\mathrm{ren},K}(\tilde Y_j) \ge 0$ and the full slice-renormalized inequality
 \[
- H_{\mathrm{ren},K}^{\rho_0}(a) + C_{\mathrm{shift},\rho_0} \ge \frac{1}{4} H_{0,\mathrm{ren},K} \ge 0 \qquad \forall K \in \mathbb{N} \cup \{\infty\}, \quad \forall a \in (0, \sqrt{3/2}], \tag{3}
+ H_{\mathrm{ren},K}^{\rho_0}(a) + C_{\mathrm{shift},\rho_0} \ge \frac{1}{4} H_{0,\mathrm{ren},K}(a) \ge 0 \qquad \forall K \in \mathbb{N} \cup \{\infty\}, \quad \forall a \in (0, \sqrt{3/2}], \tag{3}
 \]
 with finite $K$-independent vacuum shift
 \[

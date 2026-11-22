@@ -1,0 +1,15 @@
+# RC10 — Sharp-Slice Stress Variance Divergence versus Uniform Spacetime-Smeared Continuum Total Stress Variance
+
+## Scope and Results
+
+In four-dimensional continuum quantum field theory, the stress-energy tensor is an operator-valued distribution on spacetime, not a sharp-time operator with finite variance. Here we establish both halves of this boundary for the renormalized continuum apparatus + body + Parseval frame system on the closed-FRW bounce (`RC06`–`RC09`):
+
+1. **Sharp-Slice Variance Divergence ($O(K^5)$)**: Even for a spatially smooth constant-time test function—specifically the homogeneous energy density $h \equiv 1$ or dipole $h = Z_a$ on a constant-$\tau$ slice—Wait: for $h \equiv 1$, $:T_{00}^{\mathrm{conf}}:$ has pure pair-creation blocks only when $m \neq 0$ (`\mu_\pm = \pm 1/5`!), where $a_{k,m}^\dagger a_{k,-m}^\dagger$ enters $\int_{S^3} :T_{00}(\tau, x): dV_\gamma$ with mass coefficient $\frac{\mu_\pm}{4\omega_k} = O(k^{-1})$ (so $h \equiv 1$ has convergent $\sum k^2 \cdot k^{-2}$? Wait: $\sum_{k=1}^K k^2 \cdot k^{-2} = \sum_{k=1}^K 1 = K \to \infty$ linearly!), whereas for any **inhomogeneous** spatial harmonic such as the dipole $h(x) = Z_4(x)$ ($\Delta k = \pm 1$), the gradient/kinetic pair block $(\omega_k - \omega_{k+1})$ vs $(\omega_k + \omega_{k+1})$ enters $:T_{00}(Z_4):$ with amplitude $\asymp \frac{1}{4}\sqrt{\omega_k\omega_{k+1}} \asymp \frac{k}{4}$ across $W_k \cdot 4\omega_k\omega_{k+1} \asymp \frac{k^2}{4}$ mode pairs, causing the vacuum variance to diverge at fifth order:
+\[
+ \operatorname{Var}_\Omega\!\left(\int_{S^3} Z_4(x)\,:T_{00,\Phi_+}^{(K)}(\tau, x):\,dV_\gamma\right) \ge c_{\mathrm{sharp}}\sum_{k=1}^{K-1} k^4 \asymp \frac{c_{\mathrm{sharp}}}{5}\,K^5 \xrightarrow{K \to \infty} +\infty! \tag{1}
+\]
+2. **Uniform Spacetime-Smeared Continuum Stress Variance ($\sup_{K \le \infty}\operatorname{Var}(T_{\mu\nu}^{(K)}(f)) < \infty$)**: Let $f^{\mu\nu}(\tau, x) = \chi_t(\tau)\,h^{\mu\nu}(x)$ be any smooth compactly supported spacetime test tensor on the post-pulse free propagation window $\tau \in [1/2, \pi - 1/2]$ (e.g. unit-integral bump $\chi_t \in C_c^\infty([1/2, 5/2])$ with $\|\chi_t^{(4)}\|_1 \le B_{t,4}$ and smooth spatial profile $h^{\mu\nu}$ with spherical-harmonic shift $|\Delta k| \le L_h$). Temporal integration against $e^{i(\omega_{k_1} + \omega_{k_2})\tau}$ supplies $|\widehat\chi_t(\omega_{k_1} + \omega_{k_2})|^2 \le B_{t,4}^2 (\omega_{k_1} + \omega_{k_2})^{-8} \le B_{t,4}^2 (2k_1)^{-8}$, turning the divergent $\sum k^4$ sum into the **uniformly convergent continuum series**
+\[
+ \sum_{k=1}^\infty k^4\,\frac{B_{t,4}^2}{(2k)^8} = \frac{B_{t,4}^2}{256}\,\zeta(4) = \frac{\pi^4 B_{t,4}^2}{23040} < \infty! \tag{2}
+\]
+Combined with the continuum Hilbert–Schmidt particle-number bounds of `RC07` and the clock wave-packet energy uncertainty floor $\operatorname{Var}(H_{\mathrm{tot}}) \ge \frac{V_0}{16 g^2}$ (`POST_CLOSURE` / `BACKREACTION_GATE`), $\sup_{K \le \infty}\operatorname{Var}_{\Psi_K}\big(T_{\mu\nu}^{\mathrm{tot},(K)}(f)\big)$ is bounded by an explicit finite outward interval!

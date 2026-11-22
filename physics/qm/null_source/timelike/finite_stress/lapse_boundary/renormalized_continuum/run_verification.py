@@ -12,7 +12,21 @@ NEW=PREFIX+"finite_stress/lapse_boundary/renormalized_continuum/"
 PARENT=PREFIX+"finite_stress/lapse_boundary/joint_constraints/verification.json"
 WORKFLOW=".github/workflows/ueot-physics-source-response.yml"
 ROUTES=[WORKFLOW,"physics/qm/README.md","physics/qm/ROADMAP.md",PREFIX+"README.md"]
-ENTRIES=["geodesic_cap_kernel","continuum_clock_composite","continuum_tadpole_columns","review"]
+ENTRIES=[
+  "geodesic_cap_kernel",
+  "continuum_clock_composite",
+  "continuum_tadpole_columns",
+  "parseval_isotropic_frame",
+  "crunch_vs_subcritical_gravity",
+  "dynamical_frw_clock_program",
+  "hadamard_cauchy_transport",
+  "curved_continuum_inverse",
+  "local_autonomous_pointer",
+  "continuum_stress_variance",
+  "coupled_ctp_tensor_kernel",
+  "calibration_and_open_gates",
+  "review"
+]
 VERSIONS={"numpy":"2.5.4","scipy":"1.18.1","sympy":"1.14.0","mpmath":"1.3.0"}
 def require(ok,msg):
     if not ok:raise RuntimeError(msg)

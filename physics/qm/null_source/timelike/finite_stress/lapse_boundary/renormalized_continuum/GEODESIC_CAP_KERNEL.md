@@ -46,6 +46,6 @@ Integrating $\int_0^{\rho_0} g(\chi)\sin(k\chi)\,d\chi$ by parts nine times elim
 \]
 whence for every integer $k \ge 1$,
 \[
- |\hat\kappa_{\rho_0}(k)| \le \frac{B_{\rho_0}}{k^{10}}, \qquad B_{\rho_0} := \frac{4\pi}{C_{\rho_0}}\left(40320\sin^9\rho_0 + \int_0^{\rho_0} |g^{(9)}(\chi)|\,d\chi\right). \tag{8}
+ |\hat\kappa_{\rho_0}(k)| \le \frac{B_{\rho_0}}{k^{10}}, \qquad B_{\rho_0} := \frac{4\pi}{C_{\rho_0}}\left(40320\sin^9\rho_0 + \int_0^{\rho_0} |g^{(9)}(\chi)|\,d\chi\right) \le \overline B_{\rho_0}, \tag{8}
 \]
-At $\rho_0 = 1/20$, $\hat\kappa_{\rho_0}(2) \in (0.9998214, 0.9998215)$ and $\hat\kappa_{\rho_0}(k)^2 \le B_{\rho_0}^2 k^{-20}$, making all continuum variance, Sobolev $H_{0,3}$, and four-particle graph sums rapidly convergent.
+where `model.py` encloses $\int_0^{\rho_0}|g^{(9)}(\chi)|\,d\chi$ conservatively from above via a monotone 64-subinterval monomial-triangle-inequality Riemann majorant $\overline B_{\rho_0}$. At $\rho_0 = 1/20$, $\hat\kappa_{\rho_0}(2) \in (0.9998214, 0.9998215)$ and $\hat\kappa_{\rho_0}(k)^2 \le \overline B_{\rho_0}^2 k^{-20}$, making all continuum variance, Sobolev $H_{0,3}$, and four-particle graph sums rapidly convergent.
