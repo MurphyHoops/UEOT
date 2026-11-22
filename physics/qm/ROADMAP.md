@@ -427,3 +427,7 @@ finite total-energy variance preparation and exact terminal-reader backaction.
 These are explicitly distinct models; full physical unification remains OPEN.
 See the [Chinese progress report](null_source/timelike/finite_stress/lapse_boundary/conformal_action/UNIFICATION_PROGRESS.md) and
 [next acceptance gate](null_source/timelike/finite_stress/lapse_boundary/conformal_action/NEXT_GATE.md).
+
+## 2026-11-22 — Same-preparation joint constraint continuation
+
+[Current joint-constraint research](null_source/timelike/finite_stress/lapse_boundary/joint_constraints/README.md) continues from the accepted autonomous-preparation cohort. It retains the actual finite-cutoff preparation and CTP boundary response, explicitly fixes a new stationary covariant mean datum, and tests the full static metric response. Four first-harmonic and one ground-specific homogeneous range conditions are derived. Local preparation, apparatus stress and joint quantum geometry remain under construction. Core remains read-only; GI remains excluded; physical unification is OPEN.
